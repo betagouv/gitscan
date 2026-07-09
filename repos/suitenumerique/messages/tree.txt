@@ -63,6 +63,7 @@
 │   ├── selfcheck.md
 │   ├── theme-customization.md
 │   ├── tiered-storage.md
+│   ├── webhooks.md
 │   └── worker.md
 ├── env.d
 │   └── development
@@ -73,6 +74,7 @@
 │       ├── frontend.e2e
 │       ├── keycloak.defaults
 │       ├── keycloak.e2e
+│       ├── mta-in-py.defaults
 │       ├── mta-in.defaults
 │       ├── mta-in.e2e
 │       ├── mta-out.defaults
@@ -156,6 +158,7 @@
     │   │   ├── management
     │   │   │   └── commands
     │   │   │       ├── __init__.py
+    │   │   │       ├── backfill_postmark.py
     │   │   │       ├── bucket_cors.py
     │   │   │       ├── create_bucket.py
     │   │   │       ├── createsuperuser.py
@@ -176,10 +179,12 @@
     │   │   ├── mda
     │   │   │   ├── __init__.py
     │   │   │   ├── autoreply.py
+    │   │   │   ├── dispatch_webhooks.py
     │   │   │   ├── draft.py
     │   │   │   ├── inbound.py
     │   │   │   ├── inbound_auth.py
     │   │   │   ├── inbound_create.py
+    │   │   │   ├── inbound_pipeline.py
     │   │   │   ├── inbound_tasks.py
     │   │   │   ├── inline_images.py
     │   │   │   ├── outbound.py
@@ -191,7 +196,9 @@
     │   │   │   ├── selfcheck_reporting.py
     │   │   │   ├── signing.py
     │   │   │   ├── smtp.py
-    │   │   │   └── utils.py
+    │   │   │   ├── spam.py
+    │   │   │   ├── utils.py
+    │   │   │   └── webhook_payload.py
     │   │   ├── metrics.py
     │   │   ├── middlewares.py
     │   │   ├── migrations
@@ -226,6 +233,7 @@
     │   │   │   ├── 0029_attachment_message_not_null.py
     │   │   │   ├── 0030_remove_attachment__deprecated_messages_and_more.py
     │   │   │   ├── 0031_message_mime_id_index.py
+    │   │   │   ├── 0032_inboundmessage_blob_envelope.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── services
@@ -285,7 +293,7 @@
     │   │   │           │   └── change_form.html
     │   │   │           ├── channel
     │   │   │           │   ├── change_form.html
-    │   │   │           │   └── regenerated_api_key.html
+    │   │   │           │   └── regenerated_secret.html
     │   │   │           ├── mailbox
     │   │   │           │   └── change_form.html
     │   │   │           ├── maildomain
@@ -312,6 +320,7 @@
     │   │   │   │   └── test_backends.py
     │   │   │   ├── commands
     │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── test_backfill_postmark.py
     │   │   │   │   ├── test_re_store_blobs.py
     │   │   │   │   └── test_verify_blobs.py
     │   │   │   ├── conftest.py
@@ -339,6 +348,7 @@
     │   │   │   ├── mda
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── test_autoreply.py
+    │   │   │   │   ├── test_dispatch_webhooks.py
     │   │   │   │   ├── test_gmail_labels_and_headers_blocks.py
     │   │   │   │   ├── test_inbound.py
     │   │   │   │   ├── test_inbound_auth.py
@@ -356,6 +366,7 @@
     │   │   │   │   └── test_spam_processing.py
     │   │   │   ├── models
     │   │   │   │   ├── test_blob.py
+    │   │   │   │   ├── test_inbound_message.py
     │   │   │   │   ├── test_labels.py
     │   │   │   │   ├── test_mailbox.py
     │   │   │   │   ├── test_maildomain.py
@@ -395,6 +406,7 @@
     │   │   │   │   ├── test_task_importer.py
     │   │   │   │   ├── test_task_send_message.py
     │   │   │   │   └── test_tiered_storage_tasks.py
+    │   │   │   ├── test_admin_inbound_reprocess.py
     │   │   │   ├── test_checks.py
     │   │   │   ├── test_settings.py
     │   │   │   ├── test_signals.py
@@ -468,7 +480,6 @@
     │   ├── eslint.config.mjs
     │   ├── i18next.config.ts
     │   ├── index.html
-    │   ├── instrumentation-client.ts
     │   ├── orval.config.ts
     │   ├── package-lock.json
     │   ├── package.json
@@ -633,6 +644,7 @@
     │   ├── scripts
     │   │   └── print-bundle-stats.mjs
     │   ├── src
+    │   │   ├── bootstrap.tsx
     │   │   ├── features
     │   │   │   ├── api
     │   │   │   │   ├── api-error.ts
@@ -674,11 +686,9 @@
     │   │   │   │   │   │   ├── calendar_*.ts  (10 files)
     │   │   │   │   │   │   ├── change_flag_request_request.ts
     │   │   │   │   │   │   ├── channel.ts
+    │   │   │   │   │   │   ├── channel_create_response.ts
     │   │   │   │   │   │   ├── channel_request.ts
-    │   │   │   │   │   │   ├── config_retrieve200.ts
-    │   │   │   │   │   │   ├── config_retrieve200_driv_e.ts
-    │   │   │   │   │   │   ├── config_retrieve200_schemacustomattributesmaildomai_n.ts
-    │   │   │   │   │   │   ├── config_retrieve200_schemacustomattributesuse_r.ts
+    │   │   │   │   │   │   ├── config_*.ts  (7 files)
     │   │   │   │   │   │   ├── contact.ts
     │   │   │   │   │   │   ├── contacts_list_params.ts
     │   │   │   │   │   │   ├── delivery_status_update_response.ts
@@ -719,7 +729,7 @@
     │   │   │   │   │   │   ├── placeholders_retrieve200_i18n.ts
     │   │   │   │   │   │   ├── read_message_template.ts
     │   │   │   │   │   │   ├── read_message_template_metadata.ts
-    │   │   │   │   │   │   ├── regenerated_api_key_response.ts
+    │   │   │   │   │   │   ├── regenerated_secret_response.ts
     │   │   │   │   │   │   ├── reset_password_error.ts
     │   │   │   │   │   │   ├── reset_password_internal_server_error.ts
     │   │   │   │   │   │   ├── reset_password_not_found.ts
@@ -754,6 +764,7 @@
     │   │   │   │   │   │   └── threads.ts
     │   │   │   │   │   └── users
     │   │   │   │   │       └── users.ts
+    │   │   │   │   ├── query-client.tsx
     │   │   │   │   └── utils.ts
     │   │   │   ├── auth
     │   │   │   │   ├── index.tsx
@@ -807,7 +818,9 @@
     │   │   │   │   └── utils.ts
     │   │   │   ├── config
     │   │   │   │   ├── constants.ts
-    │   │   │   │   └── index.ts
+    │   │   │   │   ├── index.ts
+    │   │   │   │   ├── resolve.test.ts
+    │   │   │   │   └── resolve.ts
     │   │   │   ├── controlled-modals
     │   │   │   │   ├── index.ts
     │   │   │   │   ├── mailbox-settings.tsx
@@ -948,6 +961,7 @@
     │   │   │   │       │   │   ├── _index.scss
     │   │   │   │       │   │   ├── index.tsx
     │   │   │   │       │   │   ├── tags-selector.tsx
+    │   │   │   │       │   │   ├── webhook-integration-form.tsx
     │   │   │   │       │   │   └── widget-integration-form.tsx
     │   │   │   │       │   ├── modal-compose-mailbox-autoreply
     │   │   │   │       │   │   └── index.tsx
@@ -1134,11 +1148,14 @@
     │   │   │   │   ├── sent-box
     │   │   │   │   │   ├── index.tsx
     │   │   │   │   │   └── queued-message.tsx
+    │   │   │   │   ├── theme-favicons.ts
     │   │   │   │   ├── theme.tsx
     │   │   │   │   ├── thread-listbox-focus.tsx
     │   │   │   │   ├── thread-selection-core.test.ts
     │   │   │   │   ├── thread-selection-core.ts
     │   │   │   │   └── thread-selection.tsx
+    │   │   │   ├── sentry
+    │   │   │   │   └── index.ts
     │   │   │   ├── signatures
     │   │   │   │   └── components
     │   │   │   │       └── signature-composer
@@ -1302,7 +1319,8 @@
     │   ├── tsconfig.json
     │   ├── tsr.config.json
     │   ├── vite.config.ts
-    │   └── vitest.config.ts
+    │   ├── vitest.config.ts
+    │   └── vitest.setup.ts
     ├── jmap-email
     │   ├── CHANGELOG.md
     │   ├── CONTRIBUTING.md
@@ -1384,7 +1402,9 @@
     │       └── test_rspamd_api.py
     ├── mta-in
     │   ├── Dockerfile
+    │   ├── Dockerfile.pymta
     │   ├── README.md
+    │   ├── entrypoint.pymta.sh
     │   ├── entrypoint.sh
     │   ├── etc
     │   │   ├── localmap
@@ -1396,11 +1416,28 @@
     │   │   ├── api
     │   │   │   ├── __init__.py
     │   │   │   └── mda.py
-    │   │   └── delivery_milter.py
+    │   │   ├── delivery_milter.py
+    │   │   └── pymta
+    │   │       ├── __init__.py
+    │   │       ├── address.py
+    │   │       ├── controller.py
+    │   │       ├── handler.py
+    │   │       ├── limits.py
+    │   │       ├── mda_async.py
+    │   │       ├── metrics.py
+    │   │       ├── server.py
+    │   │       ├── settings.py
+    │   │       └── smtp_protocol.py
     │   ├── tests
     │   │   ├── conftest.py
+    │   │   ├── test_address.py
     │   │   ├── test_attachments.py
     │   │   ├── test_email_delivery.py
+    │   │   ├── test_handler.py
+    │   │   ├── test_limits.py
+    │   │   ├── test_mda_async.py
+    │   │   ├── test_metrics.py
+    │   │   ├── test_security.py
     │   │   └── test_smtp_protocol.py
     │   └── uv.lock
     ├── mta-out
@@ -1432,4 +1469,4 @@
             ├── requirements.txt
             ├── test_smtp.py
             └── test_socks_proxy.py
-305 directories, 1325 files
+307 directories, 1366 files
