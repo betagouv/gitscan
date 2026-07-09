@@ -8,12 +8,29 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [1.23.0] - 2026-07-08
+
+### Added
+
+- ✨(backend) extend analytics module to support feature flags
+- ✨(backend) implement feature flags in Posthog analytics backend
+- ✨(agents) report errors to Sentry for all LiveKit agents
+
 ### Changed
 
 - ⬆️(agents) upgrade to python 3.14 slim
 - ⬆️(dependencies) update python dependencies
 - 💥(summary) remove v1 related code #1362
 - ✨(meet) use compatible with summary v2 #1362
+- ♻️(backend) refactor analytics backend from Protocol to abstract class
+- 🔥(summary) remove call to summary enabled feature flag
+- ♻️(frontend) wrap MuteEveryoneButton with AdminOrOwnerOnly
+- ⬆️(frontend) upgrade livekit-client from 2.19.0 to 2.19.2
+- ⬆️(frontend) upgrade posthog-js from 1.386.5 to 1.387.0
+- ⬆️(frontend) upgrade @tanstack/react-query from 5.100.14 to 5.101.0
+- ⬆️(frontend) update the frontend build image to Node 22
+- 🔒️(frontend) update docker image to nginx-unprivileged:1.30.3-alpine3.23
+- ✨(summary) more precise analytics events
 
 ### Fixed
 
