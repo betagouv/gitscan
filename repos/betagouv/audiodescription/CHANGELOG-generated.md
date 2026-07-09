@@ -1,23 +1,29 @@
-## Changelog : audiodescription (30 derniers jours, au 06 juillet 2026)
+## Changelog : audiodescription (30 derniers jours, au 8 juillet 2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a bénéficié d'améliorations significatives en termes d'infrastructure et de services externes. Le service d'envoi d'emails a été migré vers Sendethic, remplaçant Brevo. Des optimisations ont été apportées à la configuration pour le déploiement en pré-production et en production, incluant l'ajout de Redis et l'utilisation de RustFS pour le stockage S3.
+Ce mois-ci, les améliorations se concentrent sur l'infrastructure et l'intégration de nouveaux services pour l'envoi d'emails et le stockage de fichiers. Des corrections de cache et des ajustements de configuration ont également été apportés pour améliorer la stabilité et la performance de la plateforme.
 
 ### Évolutions fonctionnelles
-- Remplacement de Brevo par Sendethic pour l'envoi d'emails, notamment pour la gestion du patrimoine [#11](https://github.com/betagouv/audiodescription/pull/11).
-- Correction de l'icône "affiches parlantes" pour une meilleure expérience utilisateur.
+- Intégration de Proconnect pour la gestion des utilisateurs, avec ajout d'une option d'authentification via Proconnect sur le formulaire de connexion.
+- Remplacement de Brevo par Sendethic pour l'envoi d'emails, notamment pour la gestion du patrimoine. [#11](https://github.com/betagouv/audiodescription/pull/11)
+- Ajout d'un exemple de configuration pour les paramètres dans le répertoire de configuration Docker.
+- Correction de l'icône "affiches parlantes".
 - Suppression des messages Drupal inutiles sur la page d'inscription à la newsletter.
 
 ### Évolutions techniques
-- Migration de Matomo vers l'instance culture pour le suivi analytique.
-- Ajout de Redis pour améliorer les performances et la scalabilité.
-- Intégration de RustFS pour l'utilisation de S3.
-- Mise à jour de la configuration Dockerfile pour la production.
-- Mise à jour des fichiers de configuration pour le déploiement en pré-production (compose.staging.yml).
-- Utilisation de la nouvelle URL pour le service Sendethic.
+- Mise à jour de la configuration Matomo pour utiliser l'instance "culture" au lieu de "beta".
+- Implémentation de RustFS pour le stockage S3.
+- Ajout de Redis pour la mise en cache.
+- Mise à jour du Dockerfile pour la production et du fichier `compose.staging.yml`.
+- Amélioration de la gestion du cache sur la création et la mise à jour des nœuds.
+- Correction d'une erreur lors de la génération du HTML.
+- Mise à jour de la configuration S3 pour l'environnement de pré-production.
+- Utilisation de la nouvelle URL pour Sendethic.
 
 ### Autres changements
-- Ajout d'un exemple de configuration dans le répertoire de configuration Docker.
-- Mise à jour de la documentation avec les versions actuelles.
+- Suppression d'un hook inutilisé dans la configuration S3.
+- Suppression d'un processus inutile de la documentation.
+- Mise à jour de la configuration pour l'environnement S3.
+- Mise à jour des versions dans la documentation.
 - Correction du fichier `composer.lock`.
-- Mise à jour des packages PHP.
+- Mise à jour des packages.
