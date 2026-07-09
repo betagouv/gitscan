@@ -1,32 +1,35 @@
-## Changelog : ui-kit (30 derniers jours, au 3 juillet 2026)
+## Changelog : ui-kit (30 derniers jours, au 8 juillet 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à la recherche et au filtrage, avec l'ajout de composants pour réinitialiser les filtres et un composant "SmartScroller" pour une navigation fluide. Des corrections d'accessibilité et des améliorations visuelles ont également été apportées, notamment au menu utilisateur et aux modales. Enfin, de nouvelles icônes ont été générées à partir de Figma.
+Cette version apporte des améliorations significatives à l'accessibilité, notamment pour le composant StorageGauge et le menu utilisateur. De nouveaux composants ont été ajoutés, comme SmartScroller et HelpMenu, enrichissant la bibliothèque. Des corrections de bugs et des optimisations ont été apportées pour améliorer l'expérience utilisateur et la stabilité du code.
 
 ### Évolutions fonctionnelles
-- Ajout d'une option pour réinitialiser les filtres dans les composants `Filter` et `SearchFilter`.
-- Implémentation du composant `SmartScroller` pour une navigation améliorée dans les listes longues.
-- Ajout d'un support pour les sous-éléments personnalisés dans le composant `Filter`.
-- Amélioration de l'accessibilité du menu utilisateur avec des attributs ARIA appropriés.
+- Ajout du composant `StorageGauge` pour afficher l'utilisation du stockage, avec des améliorations d'accessibilité.
 - Ajout d'une option pour masquer la vue mobile du menu utilisateur via la prop `withMobileView`.
-- Ajout d'un menu d'aide (`HelpMenu`) avec des liens légaux et des options personnalisées.
+- Ajout d'un bouton de réinitialisation au filtre et à la recherche filtrée.
+- Ajout du composant `SmartScroller` pour un défilement plus fluide.
+- Ajout du composant `HelpMenu` avec support pour des liens légaux et des options personnalisées.
+- Amélioration de l'accessibilité du menu utilisateur avec des labels ARIA pour les liens ouvrant une nouvelle fenêtre.
 - Centrage du contenu des boutons des modales sur mobile.
-- Ajout d'une option pour ouvrir les liens dans une nouvelle fenêtre avec un label accessible.
+- Effet de survol sur la poignée de redimensionnement du panneau.
+- Correction de problèmes de positionnement de LaGaufreV2.
 
 ### Évolutions techniques
-- Refactorisation du composant `MenuItem` pour réutiliser le composant `MenuItemBody`.
-- Extraction du composant de réinitialisation de ligne dans un composant partagé.
-- Mise à jour des icônes à partir de la source Figma.
-- Amélioration de la gestion du focus clavier dans les options du filtre de recherche.
-- Correction d'un problème empêchant le drag-and-drop dans la vue arborescente (`TreeView`).
-- Correction d'un bug dans la modale qui empêchait la fermeture correcte au survol.
-- Amélioration de la performance du composant `SmartScroller` en maintenant les flèches montées.
+- Refactorisation du code pour améliorer la réutilisation des composants `MenuItemBody`.
+- Extraction du composant `reset row` en un composant partagé.
+- Utilisation de classes de modificateur pour la couleur de remplissage du `gauge`.
+- Amélioration de la gestion des événements pour le panneau `SmartScroller` afin d'éviter des problèmes de flou.
+- Mise à jour de la bibliothèque d'icônes à partir de Figma.
+- Suppression des règles `pointer-events` qui perturbaient le drag-and-drop dans l'arborescence.
+- Ajout de tests E2E pour les nouveaux composants et les fonctionnalités améliorées.
+- Correction d'un bug empêchant la fermeture du sous-panneau de filtre sur clic extérieur.
 
 ### Autres changements
-- Ajout de traductions allemandes et espagnoles pour le label de nouvelle fenêtre du menu.
-- Ajout d'une catégorie "docs" pour les fichiers de documentation LaSuite numérique.
-- Ajout de tests E2E pour le composant `HelpMenu` et le comportement de la fermeture du sous-panneau de filtre.
-- Ajout d'un effet de survol sur la poignée de redimensionnement du panneau.
-- Correction de problèmes liés à la modale de recherche.
-- Correction de l'utilisation de `currentColor` pour le remplissage des SVG dans `LaGaufreV2`.
-- Utilisation de la balise `<header>` au lieu de `<div>` pour l'en-tête dans la mise en page, améliorant ainsi l'accessibilité.
+- Traduction du placeholder par défaut du filtre utilisateur en différentes langues.
+- Ajout d'une catégorie de documentation "docs" pour lasuite/docs.
+- Ajout de traductions allemandes et espagnoles pour le menu.
+- Ajout de stories et de documentation pour les nouveaux composants.
+- Correction de problèmes de style dans le menu utilisateur.
+- Amélioration de la gestion des tests et des timeouts.
+- Ajout de tests Playwright pour la couverture des composants.
+- Correction de bugs mineurs et améliorations de la qualité du code.
