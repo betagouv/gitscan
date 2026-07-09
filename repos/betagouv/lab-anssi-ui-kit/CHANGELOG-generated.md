@@ -1,31 +1,38 @@
-## Changelog : lab-anssi-ui-kit (30 derniers jours, au 01 juillet 2026)
+## Changelog : lab-anssi-ui-kit (30 derniers jours, au 8 juillet 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a continué d'améliorer et d'étendre la bibliothèque de composants, en se concentrant sur l'ajout de nouvelles fonctionnalités aux composants existants, l'amélioration de l'accessibilité et la correction de bugs. Plusieurs composants ont été mis à jour pour correspondre plus précisément aux spécifications du DSFR et offrir une plus grande flexibilité aux développeurs.
+Cette version apporte des améliorations significatives aux composants existants, notamment pour les champs de saisie (DsfrInput), les alertes (DsfrAlert), les listes déroulantes (DsfrDropdown) et les vignettes (DsfrTile). Des corrections de bugs et des améliorations de l'accessibilité ont également été apportées. La sécurité a été renforcée avec l'ajout d'outils d'analyse de code.
 
 ### Évolutions fonctionnelles
-- **DsfrRange:** Ajout de la prise en charge de `box-sizing` pour une meilleure gestion de la mise en page.
-- **DsfrTabnav:** Possibilité de définir des slots pour les liens du composant, offrant plus de contrôle sur leur contenu.
-- **DsfrCheckboxesGroup & DsfrRadiosGroup:** Ajout de la prise en charge de la taille et de la graisse pour les légendes, améliorant la lisibilité et l'accessibilité.
-- **DsfrLabel:** Ajout du composant `DsfrLabel` pour une meilleure sémantique et accessibilité. Remplacement de l'utilisation directe de la balise `<label>` par ce nouveau composant dans l'ensemble du code.
-- **DsfrInput:** Ajout de variations 'addon' (avec un bouton submit associé) et 'action' (avec un bouton d'action associé) pour plus de flexibilité. Factorisation du code pour une meilleure maintenabilité.
-- **DsfrAlert:** Ajout de la prop `titleTag` pour personnaliser la balise HTML du titre de l'alerte. Amélioration de la logique d'affichage du titre et de la description en fonction de la taille de l'alerte.
-- **DsfrTile:** Ajout de la prop `noIcon` pour masquer l'icône associée au lien.
-- **DsfrTable:** Ajout de la gestion des lignes désactivées et d'une action pour gérer la propriété `--row-height`. Ajout d'une story d'exemple pour les tableaux avec lignes désactivées.
-- **DsfrToggle:** Ajout de la propriété `hideLabel` pour masquer le label et correction de l'affichage de l'état "checked".
-- **DsfrDropdown:** Ajout de la prop `disabled` pour désactiver le bouton d'ouverture et correction de l'alignement à droite du menu déroulant.
+- Ajout de la possibilité de masquer le label du composant `DsfrToggle` grâce à la propriété `hideLabel`.
+- Le composant `DsfrInput` propose désormais des variations 'addon' et 'action' pour associer un bouton submit ou d'action au champ de saisie.
+- Ajout d'une propriété `noIcon` au composant `DsfrTile` pour masquer l'icône associée au lien.
+- Amélioration de l'accessibilité du composant `DsfrDropdown` avec la possibilité de le désactiver via la prop `disabled`.
+- Le composant `DsfrAlert` permet désormais de personnaliser la balise HTML du titre grâce à la propriété `titleTag`.
+- Ajout de la prise en charge des couleurs hover et active pour le composant `DsfrTag` dans le thème MSC.
+- Ajout de stories d'exemples pour le composant `DsfrInput` afin de couvrir l'ensemble des variations du DSFR.
+- Amélioration de l'organisation des stories d'exemples pour une meilleure lisibilité.
 
 ### Évolutions techniques
-- **Gestion des événements:** Uniformisation de la façon de déclarer les `CustomEvent` et ajout des événements émis par les composants en tant qu'attributs des éléments.
-- **Génération de `web-types`:** Ajout d'un fichier `web-types` pour améliorer l'intégration avec les éditeurs de code.
-- **Storybook:** Ajout de la déclaration du dossier statique pour Storybook.
-- **CI/CD:** Mise à jour de l'étape de checkout dans le workflow CI pour utiliser la référence du dépôt et un `fetch-depth` de 0.
-- **Dépendances:** Mise à jour des versions de plusieurs dépendances (Vitest, Storybook, eslint, etc.).
-- **Thèmes MSC:** Ajout des couleurs `hover` et `active` pour le composant `DsfrTag`.
+- Mise à jour des dépendances : Svelte, Vite, Storybook, Vitest, PostCSS, Playwright, TypeScript, ESLint, etc.
+- Renforcement de la sécurité : ajout des outils `checkov` et `zizmor` pour la validation de la configuration et correction des vulnérabilités potentielles.
+- Sécurisation du workflow CI : désactivation des identifiants `git` des dépôts clonés et prévention des injections.
+- Amélioration de la configuration du workflow CI pour utiliser la référence du dépôt et un fetch-depth de 0.
+- Refactorisation du code du composant `DsfrInput` pour une meilleure maintenabilité.
+- Optimisation du composant `DsfrSegmented` avec l'utilisation de `requestAnimationFrame` pour améliorer les performances lors du redimensionnement.
+- Ajout de la configuration pour Code Connect (Figma).
+- Ajout d'un fichier `renovate.json` pour la gestion automatisée des dépendances.
 
 ### Autres changements
-- **Documentation:** Amélioration de l'organisation des stories d'exemples. Ajout des URLs de documentation pour chaque composant.
-- **Version:** Passage à la version 1.55.0, puis 1.54.2, 1.54.1, 1.54.0 et 1.53.4.
-- **PrésentationANSSI:** Uniformisation de la structure et du style du composant `PresentationANSSI` avec les éléments du DSFR.
-- **Configuration:** Mise à jour du fichier `renovate.json`.
-- **Corrections:** Correction de la création du dossier `/dist` dans le workflow CI.
+- Documentation : Amélioration de la documentation et ajout de stories d'exemples.
+- Version du kit mise à jour à la version 1.55.1.
+- Uniformisation de la structure et du style du composant `PresentationANSSI` avec les éléments du DSFR.
+- Correction de l'alignement à droite du menu déroulant du composant `DsfrDropdown`.
+- Correction de l'affichage de l'état checked du composant `DsfrToggle`.
+- Ajout de la gestion du style pour l'état disabled du composant `DsfrCheckbox`.
+- Ajout d'une action pour gérer la propriété `--row-height` du composant `DsfrTable`.
+- Ajout d'une story exemple de tableau avec lignes désactivées pour le composant `DsfrTable`.
+- Ajout de la prise en charge de la taille et de la graisse pour les légendes des composants `DsfrCheckboxesGroup` et `DsfrRadiosGroup`.
+- Ajout de la prise en charge de la taille et de la graisse pour le composant `DsfrLabel`.
+- Remplacement de l'usage de la balise `label` par le composant `DsfrLabel`.
+- Ajout du composant `DsfrLabel`.
