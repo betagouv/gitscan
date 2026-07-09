@@ -1,0 +1,131 @@
+version: '2.1'
+services:
+  redis:
+    container_name: "redis"
+    image: redis:3.2.7
+
+  postgres:
+    container_name: "psql"
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=airflow
+      - POSTGRES_PASSWORD=airflow
+      - POSTGRES_DB=airflow
+    #TODO: benig able to save psql db, not working at the moment
+    #volumes:
+    #  - ${POSTGRESQL_VOLUME}:/var/lib/postgresql/data/pgdata
+
+  mongo:
+    image: mongo
+    container_name: "mongodb"
+    ports:
+      - "27017:27017"
+    volumes:
+      - ${MONGO_VOLUME}:/data/db
+
+  neo4j:
+      image: neo4j:latest
+      environment:
+        - NEO4J_CACHE_MEMORY=10G
+        - NEO4J_HEAP_MEMORY=10G
+      ports:
+          - "7474:7474"
+          - "7687:7687"
+      volumes:
+          - $HOME/neo4j/data:/data
+          - $HOME/neo4j/conf:/conf
+
+  webserver:
+    container_name: airflow-webserver
+    build:
+      context: ./airflow
+      args:
+        proxy: ${http_proxy}
+    restart: always
+    environment:
+      - LOAD_EX=y
+      - FERNET_KEY=46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=
+      - EXECUTOR=Celery
+    depends_on:
+      - postgres
+      - redis
+      - mongo
+    volumes:
+      - ./airflow/dags:/usr/local/airflow/dags
+    ports:
+      - "8080:8080"
+    command: webserver
+    healthcheck:
+      test: ["CMD-SHELL", "[ -f /usr/local/airflow/airflow-webserver.pid ]"]
+      interval: 30s
+      timeout: 30s
+      retries: 3
+
+  flower:
+    container_name: airflow-flower
+    build:
+      context: ./airflow
+      args:
+        proxy: ${http_proxy}
+    restart: always
+    depends_on:
+        - redis
+        - mongo
+    environment:
+        - EXECUTOR=Celery
+    ports:
+        - "5555:5555"
+    command: flower
+
+  scheduler:
+      container_name: airflow-scheduler
+      build:
+        context: ./airflow
+        args:
+          proxy: ${http_proxy}
+      restart: always
+      depends_on:
+          - webserver
+      volumes:
+          - ./airflow/dags:/usr/local/airflow/dags
+          # Uncomment to include custom plugins
+          # - ./plugins:/usr/local/airflow/plugins
+      environment:
+          - LOAD_EX=y
+          - FERNET_KEY=46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=
+          - EXECUTOR=Celery
+          # - POSTGRES_USER=airflow
+          # - POSTGRES_PASSWORD=airflow
+          # - POSTGRES_DB=airflow
+          # - REDIS_PASSWORD=redispass
+      command: scheduler
+
+  worker:
+      container_name: airflow-worker
+      build:
+        context: ./airflow
+        args:
+          proxy: ${http_proxy}
+      restart: always
+      depends_on:
+          - scheduler
+      volumes:
+          - ./airflow/dags:/usr/local/airflow/dags
+          # Uncomment to include custom plugins
+          # - ./plugins:/usr/local/airflow/plugins
+      environment:
+          - FERNET_KEY=46BKJoQYlPPOexq0OhDZnIlNepKFf87WFwLbfzqDDho=
+          - EXECUTOR=Celery
+          # - POSTGRES_USER=airflow
+          # - POSTGRES_PASSWORD=airflow
+          # - POSTGRES_DB=airflow
+          # - REDIS_PASSWORD=redispass
+      command: worker
+  
+  elasticsearch:
+      container_name: es
+      image: elasticsearch:5.6.10
+      ports: 
+        - "9200:9200"

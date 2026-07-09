@@ -1,0 +1,109 @@
+.
+├── .gitattributes
+├── .gitignore
+├── .travis.yml
+├── Makefile
+├── README.md
+├── airflow
+│   ├── Dockerfile
+│   ├── airflow.cfg
+│   ├── dags
+│   │   ├── openresearchcorpus.py
+│   │   ├── tagger.py
+│   │   └── wikipedia.py
+│   ├── requirements.txt
+│   └── script
+│       ├── entrypoint.sh
+│       └── install.sh
+├── api
+│   └── tagger
+│       ├── Dockerfile
+│       ├── README.md
+│       ├── __init__.py
+│       ├── app.py
+│       ├── config.py
+│       ├── models
+│       │   ├── __init__.py
+│       │   ├── modeling.ipynb
+│       │   ├── models.py
+│       │   └── multiprocess.py
+│       ├── requirements.txt
+│       └── tests
+│           ├── __init__.py
+│           ├── corpus_txt_test.txt
+│           ├── test_api.py
+│           ├── test_models.py
+│           └── test_textacy_format.py
+├── deploy
+│   ├── README.md
+│   ├── Vagrantfile
+│   └── ansible
+│       ├── dev.yml
+│       └── roles
+│           ├── docker
+│           │   ├── defaults
+│           │   │   └── main.yml
+│           │   └── tasks
+│           │       └── main.yml
+│           └── mongodb
+│               └── tasks
+│                   └── main.yml
+├── docker-compose.yml
+├── neo4j
+│   ├── README.md
+│   ├── neo4j.ipynb
+│   ├── rnsr.csv
+│   └── uai.csv
+├── ontology
+│   ├── cnrs
+│   │   ├── cnrs.py
+│   │   ├── cnrs_annuaire
+│   │   └── user-config.py
+│   └── wikidata
+│       ├── README.md
+│       ├── category.py
+│       ├── scientific_disciplines_depth_4.pickle
+│       ├── scientific_disciplines_depth_5.pickle
+│       ├── scientific_disciplines_depth_6.pickle
+│       ├── user-config.py
+│       ├── wikibot.py
+│       └── wikidataNeo.ipynb
+└── scrapers
+    ├── README.md
+    ├── campusfrance
+    │   ├── campusfrance
+    │   │   ├── __init__.py
+    │   │   ├── items.py
+    │   │   ├── middlewares.py
+    │   │   ├── pipelines.py
+    │   │   ├── settings.py
+    │   │   └── spiders
+    │   │       ├── __init__.py
+    │   │       └── candidature.py
+    │   ├── geckodriver.log
+    │   └── scrapy.cfg
+    ├── gican
+    │   ├── gican
+    │   │   ├── __init__.py
+    │   │   ├── items.py
+    │   │   ├── middlewares.py
+    │   │   ├── pipelines.py
+    │   │   ├── settings.py
+    │   │   └── spiders
+    │   │       ├── __init__.py
+    │   │       ├── gican.py
+    │   │       └── ids_gican.py
+    │   └── scrapy.cfg
+    ├── gifas
+    │   ├── gifas
+    │   │   ├── __init__.py
+    │   │   ├── items.py
+    │   │   ├── middlewares.py
+    │   │   ├── pipelines.py
+    │   │   ├── settings.py
+    │   │   └── spiders
+    │   │       ├── __init__.py
+    │   │       └── enterprise.py
+    │   └── scrapy.cfg
+    └── requirements.txt
+30 directories, 78 files
