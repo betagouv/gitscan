@@ -78,9 +78,6 @@
 │   │   │   │   │   ├── cadastre
 │   │   │   │   │   │   ├── cadastre.service.ts
 │   │   │   │   │   │   └── cadastre.types.ts
-│   │   │   │   │   ├── datagouv-lovac
-│   │   │   │   │   │   ├── datagouv-lovac.service.ts
-│   │   │   │   │   │   └── datagouv-lovac.types.ts
 │   │   │   │   │   ├── datagouv-zonage-abc
 │   │   │   │   │   │   ├── datagouv-zonage-abc.service.ts
 │   │   │   │   │   │   └── datagouv-zonage-abc.types.ts
@@ -132,6 +129,7 @@
 │   │   │   │   │   │       ├── zonage-sismique.service.ts
 │   │   │   │   │   │       └── zonage-sismique.types.ts
 │   │   │   │   │   ├── ign-wfs
+│   │   │   │   │   │   ├── ign-wfs.service.spec.ts
 │   │   │   │   │   │   ├── ign-wfs.service.ts
 │   │   │   │   │   │   └── ign-wfs.types.ts
 │   │   │   │   │   ├── service-public
@@ -161,6 +159,8 @@
 │   │   │   │   │   ├── bpe.repository.ts
 │   │   │   │   │   ├── enrichissement.repository.ts
 │   │   │   │   │   ├── ite-fret.repository.ts
+│   │   │   │   │   ├── lovac.repository.spec.ts
+│   │   │   │   │   ├── lovac.repository.ts
 │   │   │   │   │   ├── site.repository.ts
 │   │   │   │   │   └── transport-stops.repository.ts
 │   │   │   │   └── services
@@ -268,11 +268,13 @@
 │   │   │   │   │   │   ├── algorithme.constants.ts
 │   │   │   │   │   │   ├── algorithme.types.ts
 │   │   │   │   │   │   ├── criteres-metadata.guard.spec.ts
+│   │   │   │   │   │   ├── distance.utils.ts
 │   │   │   │   │   │   ├── fiabilite.calculator.spec.ts
 │   │   │   │   │   │   ├── fiabilite.calculator.ts
 │   │   │   │   │   │   └── versions
 │   │   │   │   │   │       ├── index.ts
 │   │   │   │   │   │       ├── v1.1.ts
+│   │   │   │   │   │       ├── v1.10.ts
 │   │   │   │   │   │       ├── v1.2.ts
 │   │   │   │   │   │       ├── v1.3.ts
 │   │   │   │   │   │       ├── v1.4.ts
@@ -280,9 +282,11 @@
 │   │   │   │   │   │       ├── v1.6.ts
 │   │   │   │   │   │       ├── v1.7.ts
 │   │   │   │   │   │       ├── v1.8.ts
-│   │   │   │   │   │       └── v1.9.ts
+│   │   │   │   │   │       ├── v1.9.ts
+│   │   │   │   │   │       └── versions.spec.ts
 │   │   │   │   │   ├── calcul.service.spec.ts
 │   │   │   │   │   ├── calcul.service.ts
+│   │   │   │   │   ├── distance-unite.spec.ts
 │   │   │   │   │   ├── orchestrateur.service.spec.ts
 │   │   │   │   │   └── orchestrateur.service.ts
 │   │   │   │   └── utils
@@ -335,6 +339,7 @@
 │   │   │   │   ├── import-bpe.ts
 │   │   │   │   ├── import-epci-communes.ts
 │   │   │   │   ├── import-ite-fret.ts
+│   │   │   │   ├── import-lovac.ts
 │   │   │   │   ├── import-transport-stops.ts
 │   │   │   │   ├── partenaires
 │   │   │   │   │   ├── aura.ts
@@ -382,6 +387,7 @@
 │   │   │   │   │   │   ├── 0026_rare_medusa.sql
 │   │   │   │   │   │   ├── 0027_partage_page_partenaire.sql
 │   │   │   │   │   │   ├── 0028_partenaires_et_sites.sql
+│   │   │   │   │   │   ├── 0029_famous_blur.sql
 │   │   │   │   │   │   └── meta
 │   │   │   │   │   │       ├── 0001_snapshot.json
 │   │   │   │   │   │       ├── 0002_snapshot.json
@@ -407,6 +413,7 @@
 │   │   │   │   │   │       ├── 0026_snapshot.json
 │   │   │   │   │   │       ├── 0027_snapshot.json
 │   │   │   │   │   │       ├── 0028_snapshot.json
+│   │   │   │   │   │       ├── 0029_snapshot.json
 │   │   │   │   │   │       └── _journal.json
 │   │   │   │   │   ├── schema.ts
 │   │   │   │   │   └── schemas
@@ -422,6 +429,7 @@
 │   │   │   │   │       ├── raw-bpe.schema.ts
 │   │   │   │   │       ├── raw-imports-log.schema.ts
 │   │   │   │   │       ├── raw-ite-fret.schema.ts
+│   │   │   │   │       ├── raw-lovac.schema.ts
 │   │   │   │   │       ├── raw-transport-stops.schema.ts
 │   │   │   │   │       └── sites.schema.ts
 │   │   │   │   ├── guards
@@ -579,6 +587,12 @@
 │       │   │   │   │   └── DocumentationIframe.tsx
 │       │   │   │   └── pages
 │       │   │   │       └── DocumentationIntegrationPage.tsx
+│       │   │   ├── documentation-sources
+│       │   │   │   ├── export
+│       │   │   │   │   ├── SourcesPdfDocument.tsx
+│       │   │   │   │   └── generateSourcesPdf.tsx
+│       │   │   │   └── pages
+│       │   │   │       └── DocumentationSourcesPage.tsx
 │       │   │   ├── donnees-utilisees
 │       │   │   │   ├── components
 │       │   │   │   │   ├── ApisExternesPanel.tsx
@@ -830,27 +844,39 @@
 │   │   ├── 0020-contact-multisites-calendrier-zcal.md
 │   │   ├── 0021-persistance-base-partenaires-sites.md
 │   │   ├── 0022-migration-typescript-6.md
-│   │   └── 0023-export-pdf-react-pdf-renderer.md
+│   │   ├── 0023-export-pdf-react-pdf-renderer.md
+│   │   ├── 0024-lovac-referentiel-local.md
+│   │   ├── 0025-etat-bati-valeur-dupliquee-scores-identiques.md
+│   │   ├── 0026-source-verite-unique-documentation-sources.md
+│   │   ├── 0027-unite-distances-metres-conversion-km-frontiere-algo.md
+│   │   ├── 0028-filtrage-serveur-wfs-voies-grande-circulation.md
+│   │   └── 0028-tag-version-algorithme-reflete-version-utilisee.md
 │   ├── ajout-partenaire.md
 │   ├── analytics-tracking.md
 │   ├── enrichissement.md
 │   ├── evaluation-mutabilite.md
-│   └── integration
-│       ├── README.md
-│       ├── html
-│       │   └── integration-mutafriches.html
-│       └── react
-│           ├── README.md
-│           ├── index.html
-│           ├── package.json
-│           └── src
-│               └── App.jsx
+│   ├── integration
+│   │   ├── README.md
+│   │   ├── html
+│   │   │   └── integration-mutafriches.html
+│   │   └── react
+│   │       ├── README.md
+│   │       ├── index.html
+│   │       ├── package.json
+│   │       └── src
+│   │           └── App.jsx
+│   └── sources-donnees-externes.md
 ├── eslint.config.mjs
 ├── package.json
 ├── packages
 │   └── shared-types
 │       ├── package.json
 │       ├── src
+│       │   ├── documentation
+│       │   │   ├── index.ts
+│       │   │   ├── sources-donnees.data.spec.ts
+│       │   │   ├── sources-donnees.data.ts
+│       │   │   └── sources-donnees.types.ts
 │       │   ├── donnees-externes
 │       │   │   ├── api-monitoring.types.ts
 │       │   │   ├── imports.types.ts
@@ -960,6 +986,7 @@
 ├── pnpm-workspace.yaml
 ├── scalingo.json
 ├── scripts
+│   ├── generate-sources-doc.cjs
 │   └── setup.sh
 └── tsconfig.json
-220 directories, 744 files
+223 directories, 768 files
