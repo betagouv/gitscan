@@ -38,6 +38,7 @@
 ├── LICENSE
 ├── Procfile
 ├── README.md
+├── SECURITY.md
 ├── backend
 │   └── src
 │       └── app
@@ -188,7 +189,6 @@
 │   ├── .pre-commit-config.yaml
 │   ├── LICENSE
 │   ├── README.md
-│   ├── activities_to_create.json
 │   ├── archive
 │   │   ├── .dockerignore
 │   │   ├── Makefile
@@ -229,6 +229,7 @@
 │   ├── compose.yaml
 │   ├── config.py
 │   ├── create_activities.py
+│   ├── custom_lci.json
 │   ├── docker
 │   │   ├── Dockerfile
 │   │   └── entrypoint.sh
@@ -295,8 +296,8 @@
 │   │   │   ├── agave-default.json
 │   │   │   ├── alfalfa-organic-2025.json
 │   │   │   ├── alga.json
+│   │   │   ├── almond-in-shell-fr-2025.json
 │   │   │   ├── almond-in-shell-fr.json
-│   │   │   ├── almond-inshell-fr.json
 │   │   │   ├── anchovy-fr.json
 │   │   │   ├── apple-compote-fr.json
 │   │   │   ├── apple-fr.json
@@ -305,7 +306,7 @@
 │   │   │   ├── artichoke-fr.json
 │   │   │   ├── asian-250g-pasta-opp-bag.json
 │   │   │   ├── asian-60g-pasta-opp-bag.json
-│   │   │   ├── asparagu-fr.json
+│   │   │   ├── asparagus-fr.json
 │   │   │   ├── avocado-non-eu.json
 │   │   │   ├── baby-250g-deserts-proxy-pack-rigid-plastic-other-than.json
 │   │   │   ├── baby-340g-biscuits-cereals-proxy-pack-rigid-plastic-other.json
@@ -326,7 +327,7 @@
 │   │   │   ├── beef-*.json  (6 files)
 │   │   │   ├── beer-1500g-proxy-pack-glass.json
 │   │   │   ├── beetroot-fr.json
-│   │   │   ├── bellpepper-unheated-greenhouse-fr.json
+│   │   │   ├── bell-pepper-unheated-greenhouse-fr.json
 │   │   │   ├── biscuit-200g-shortbread-proxy-pack-plastic-film.json
 │   │   │   ├── biscuits-100g-proxy-pack-plastic-film.json
 │   │   │   ├── biscuits-150g-proxy-pack-plastic-film.json
@@ -347,7 +348,7 @@
 │   │   │   ├── breaded-400g-products-xps-tray-film.json
 │   │   │   ├── breakfast-cereals.json
 │   │   │   ├── brie-cheese.json
-│   │   │   ├── broad-beans-eu.json
+│   │   │   ├── broad-bean-eu.json
 │   │   │   ├── broccoli-eu.json
 │   │   │   ├── broiler-conventional-fr-live.json
 │   │   │   ├── broiler-organic-fr-live.json
@@ -713,7 +714,7 @@
 │   │   │   ├── uncured-300g-cheeses-similar-cat-glass-jar.json
 │   │   │   ├── vanilla-10g-proxy-pack-glass.json
 │   │   │   ├── vanilla-75g-sugar-proxy-pack-cardboard.json
-│   │   │   ├── vanilla-alcoholic-or-aqueou-extract-fr-overseas.json
+│   │   │   ├── vanilla-alcoholic-or-aqueous-extract-fr-overseas.json
 │   │   │   ├── veal-meat.json
 │   │   │   ├── vegetable-950g-dishes-frozen-plastic-bag-small-sachets.json
 │   │   │   ├── vegetable-mix.json
@@ -742,63 +743,7 @@
 │   │   │   ├── zucchini-eu.json
 │   │   │   ├── zucchini-fr.json
 │   │   │   └── zucchini-organic.json
-│   │   ├── custom
-│   │   │   ├── aluminum-extrusion.json
-│   │   │   ├── aluminum-rolling-0-2-mm.json
-│   │   │   ├── aluminum-rolling-0-26-mm.json
-│   │   │   ├── battery-assembling.json
-│   │   │   ├── bleaching-average-aquatic-pollution-scenario.json
-│   │   │   ├── bleaching.json
-│   │   │   ├── carbon-fiber-manufacturing.json
-│   │   │   ├── conventional-spinning-40-nm.json
-│   │   │   ├── cooking-*.json  (9 files)
-│   │   │   ├── cooling.json
-│   │   │   ├── copper-wire-drawing.json
-│   │   │   ├── coton-rdp.json
-│   │   │   ├── coton-rdpc.json
-│   │   │   ├── desizing.json
-│   │   │   ├── distribution.json
-│   │   │   ├── dyeing-*.json  (7 files)
-│   │   │   ├── ei-laine-nouvelle-filiere.json
-│   │   │   ├── elasthane.json
-│   │   │   ├── fading.json
-│   │   │   ├── finishing.json
-│   │   │   ├── freezing.json
-│   │   │   ├── frying.json
-│   │   │   ├── heat-europe.json
-│   │   │   ├── heat-row.json
-│   │   │   ├── heat-treatment.json
-│   │   │   ├── knitting-*.json  (5 files)
-│   │   │   ├── machining-metal-stamping.json
-│   │   │   ├── mercerization.json
-│   │   │   ├── microwaving.json
-│   │   │   ├── non-conventional-spinning-40-nm.json
-│   │   │   ├── oven-cooking.json
-│   │   │   ├── pan-cooking.json
-│   │   │   ├── pan-reheating.json
-│   │   │   ├── panels-*.json  (6 files)
-│   │   │   ├── passenger-car.json
-│   │   │   ├── printing-dyes.json
-│   │   │   ├── printing-paste.json
-│   │   │   ├── printing-pigment.json
-│   │   │   ├── printing-substantive.json
-│   │   │   ├── retail-dry-product.json
-│   │   │   ├── retail-fresh-product.json
-│   │   │   ├── retail-frozen-product.json
-│   │   │   ├── sawing-air-drying-wood.json
-│   │   │   ├── sawing-kiln-drying-wood.json
-│   │   │   ├── scouring.json
-│   │   │   ├── spinning-40-nm.json
-│   │   │   ├── stainless-steel-rolling.json
-│   │   │   ├── steel-rolling.json
-│   │   │   ├── steel-wire-drawing.json
-│   │   │   ├── textile-end-of-life-process-mix.json
-│   │   │   ├── use-*.json  (8 files)
-│   │   │   ├── vehicle-assembling.json
-│   │   │   ├── washing-synthetic-fiber.json
-│   │   │   ├── weaving-40-nm-and-250-gm2.json
-│   │   │   └── weaving.json
-│   │   ├── ecobalyse
+│   │   ├── ecobalyse_custom_lci
 │   │   │   ├── air-transport.json
 │   │   │   ├── almond-shelled-with-skin-organic.json
 │   │   │   ├── almond-shelled-with-skin.json
@@ -865,8 +810,6 @@
 │   │   │   ├── dairy-spread-25pct-fat-v1.json
 │   │   │   ├── dairy-spread-25pct-fat-v2.json
 │   │   │   ├── dibond.json
-│   │   │   ├── diesel-b7-euro4.json
-│   │   │   ├── diesel-b7-euro6.json
 │   │   │   ├── dry-goat-cheese-chabichou-type.json
 │   │   │   ├── dry-goat-cheese.json
 │   │   │   ├── egg-shelled-raw-v1.json
@@ -875,6 +818,8 @@
 │   │   │   ├── emmental-cheese-v1.json
 │   │   │   ├── emmental-cheese-v2.json
 │   │   │   ├── eol-*.json  (15 files)
+│   │   │   ├── ev-other-materials-rer.json
+│   │   │   ├── ev-other-materials-row.json
 │   │   │   ├── faisselle-6pct-fat-v1.json
 │   │   │   ├── faisselle-6pct-fat-v2.json
 │   │   │   ├── feta-type-cheese-cow-milk-v1.json
@@ -959,7 +904,6 @@
 │   │   │   ├── petit-suisse-10pct-fat-v2.json
 │   │   │   ├── petit-suisse-4pct-fat-v1.json
 │   │   │   ├── petit-suisse-4pct-fat-v2.json
-│   │   │   ├── petrol-e10-euro6.json
 │   │   │   ├── pineapple-pulp-raw-organic.json
 │   │   │   ├── pineapple-pulp-raw-v1.json
 │   │   │   ├── pineapple-pulp-raw-v2.json
@@ -1016,10 +960,68 @@
 │   │   │   ├── tomato-peeled-canned-drained.json
 │   │   │   ├── tomme-cheese-cow-milk-v1.json
 │   │   │   ├── tomme-cheese-cow-milk-v2.json
+│   │   │   ├── vehicle-*.json  (9 files)
 │   │   │   ├── walnut-shelled-organic.json
 │   │   │   ├── walnut-shelled-wfldb.json
 │   │   │   ├── walnut-shelled.json
 │   │   │   └── white-*.json  (5 files)
+│   │   ├── ecobalyse_manual_lcia
+│   │   │   ├── aluminum-extrusion.json
+│   │   │   ├── aluminum-rolling-0-2-mm.json
+│   │   │   ├── aluminum-rolling-0-26-mm.json
+│   │   │   ├── battery-assembling.json
+│   │   │   ├── bleaching-average-aquatic-pollution-scenario.json
+│   │   │   ├── bleaching.json
+│   │   │   ├── carbon-fiber-manufacturing.json
+│   │   │   ├── conventional-spinning-40-nm.json
+│   │   │   ├── cooking-*.json  (9 files)
+│   │   │   ├── cooling.json
+│   │   │   ├── copper-wire-drawing.json
+│   │   │   ├── coton-rdp.json
+│   │   │   ├── coton-rdpc.json
+│   │   │   ├── desizing.json
+│   │   │   ├── distribution.json
+│   │   │   ├── dyeing-*.json  (7 files)
+│   │   │   ├── ei-laine-nouvelle-filiere.json
+│   │   │   ├── elasthane.json
+│   │   │   ├── fading.json
+│   │   │   ├── finishing.json
+│   │   │   ├── freezing.json
+│   │   │   ├── frying.json
+│   │   │   ├── heat-europe.json
+│   │   │   ├── heat-row.json
+│   │   │   ├── heat-treatment.json
+│   │   │   ├── knitting-*.json  (5 files)
+│   │   │   ├── machining-metal-stamping.json
+│   │   │   ├── mercerization.json
+│   │   │   ├── metal-transforming-ecoscore.json
+│   │   │   ├── microwaving.json
+│   │   │   ├── non-conventional-spinning-40-nm.json
+│   │   │   ├── oven-cooking.json
+│   │   │   ├── pan-cooking.json
+│   │   │   ├── pan-reheating.json
+│   │   │   ├── panels-*.json  (6 files)
+│   │   │   ├── passenger-car.json
+│   │   │   ├── printing-dyes.json
+│   │   │   ├── printing-paste.json
+│   │   │   ├── printing-pigment.json
+│   │   │   ├── printing-substantive.json
+│   │   │   ├── retail-dry-product.json
+│   │   │   ├── retail-fresh-product.json
+│   │   │   ├── retail-frozen-product.json
+│   │   │   ├── sawing-air-drying-wood.json
+│   │   │   ├── sawing-kiln-drying-wood.json
+│   │   │   ├── scouring.json
+│   │   │   ├── spinning-40-nm.json
+│   │   │   ├── stainless-steel-rolling.json
+│   │   │   ├── steel-rolling.json
+│   │   │   ├── steel-wire-drawing.json
+│   │   │   ├── textile-end-of-life-process-mix.json
+│   │   │   ├── use-*.json  (8 files)
+│   │   │   ├── vehicle-*.json  (7 files)
+│   │   │   ├── washing-synthetic-fiber.json
+│   │   │   ├── weaving-40-nm-and-250-gm2.json
+│   │   │   └── weaving.json
 │   │   ├── ecoinvent-3-11
 │   │   │   ├── apple.json
 │   │   │   ├── apricot.json
@@ -1028,7 +1030,7 @@
 │   │   │   ├── bell-pepper-green-yellow-or-red-default.json
 │   │   │   ├── bell-pepper.json
 │   │   │   ├── broad-bean-default.json
-│   │   │   ├── brussel-sprout-default.json
+│   │   │   ├── brussels-sprout-default.json
 │   │   │   ├── chickpea-dried-default.json
 │   │   │   ├── chickpea.json
 │   │   │   ├── cocoa-bean-default.json
@@ -1116,11 +1118,11 @@
 │   │   ├── ginko-2025
 │   │   │   ├── agave-organic.json
 │   │   │   ├── alfalfa-organic.json
-│   │   │   ├── almond-inshell-organic.json
+│   │   │   ├── almond-in-shell-organic.json
 │   │   │   ├── apple-organic.json
 │   │   │   ├── apricot-organic.json
 │   │   │   ├── artichoke-organic.json
-│   │   │   ├── asparagu-organic.json
+│   │   │   ├── asparagus-organic.json
 │   │   │   ├── avocado-organic.json
 │   │   │   ├── banana-organic.json
 │   │   │   ├── basmati-rice-organic.json
@@ -1208,7 +1210,7 @@
 │   │   ├── wfldb
 │   │   │   ├── apple-non-eu.json
 │   │   │   ├── apricot-non-eu.json
-│   │   │   ├── asparagu-default.json
+│   │   │   ├── asparagus-default.json
 │   │   │   ├── banana-default.json
 │   │   │   ├── barley-whole-default.json
 │   │   │   ├── bay-leaf-default.json
@@ -1243,7 +1245,7 @@
 │   │   │   ├── sunflower-seed-default.json
 │   │   │   ├── sweet-corn-eu.json
 │   │   │   ├── swine-industrial-ca-live.json
-│   │   │   └── vanilla-alcoholic-or-aqueou-extract-default.json
+│   │   │   └── vanilla-alcoholic-or-aqueous-extract-default.json
 │   │   └── woolmark
 │   │       └── ei-laine-par-defaut.json
 │   ├── migrations
@@ -1276,8 +1278,8 @@
 │   │   ├── README.txt
 │   │   └── simapro.py
 │   ├── tests
-│   │   ├── activities_to_create.json
 │   │   ├── conftest.py
+│   │   ├── custom_lci.json
 │   │   ├── fixtures
 │   │   │   ├── activities.json
 │   │   │   ├── bw-project-forwast-with-ef31.tar.gz
@@ -1287,11 +1289,11 @@
 │   │   │   │   └── raw_to_transformed_ratios.json
 │   │   │   ├── forwast.json
 │   │   │   ├── lci_catalog
-│   │   │   │   ├── custom
+│   │   │   │   ├── ecobalyse_custom_lci
+│   │   │   │   │   └── example-activity-from-scratch.json
+│   │   │   │   ├── ecobalyse_manual_lcia
 │   │   │   │   │   ├── elasthane.json
 │   │   │   │   │   └── mercerization.json
-│   │   │   │   ├── ecobalyse
-│   │   │   │   │   └── example-activity-from-scratch.json
 │   │   │   │   └── forwast
 │   │   │   │       ├── egg-bleublanccoeur.json
 │   │   │   │       ├── ei-acrylique.json
@@ -1701,4 +1703,4 @@
 │   ├── rate-limiting.spec.js
 │   └── server.spec.js
 └── uv.lock
-144 directories, 1907 files
+144 directories, 1923 files
