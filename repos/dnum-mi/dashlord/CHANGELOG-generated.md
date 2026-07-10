@@ -1,14 +1,13 @@
-## Changelog : dashlord (30 derniers jours, au 5 juillet 2026)
+## Changelog : dashlord (30 derniers jours, au 2026-07-09)
 
 ### Résumé
-Ce changelog détaille les mises à jour récentes de DashLord, principalement axées sur l'ajout et la mise à jour de sources de données.  Le projet continue d'enrichir sa couverture de sites web gouvernementaux et administratifs français pour améliorer la surveillance des bonnes pratiques techniques.
+Ce changelog couvre une période d'activité intense, principalement axée sur la mise à jour de la liste des URLs surveillées par DashLord.  De nombreuses sources de données ont été actualisées, assurant ainsi la pertinence et la fraîcheur des informations fournies par l'outil.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle visible pour les utilisateurs n'a été apportée durant cette période.
+Aucune évolution fonctionnelle majeure n'a été apportée durant cette période. Les changements se concentrent sur la maintenance et la mise à jour des sources de données.
 
 ### Évolutions techniques
-*   Mise à jour massive des sources de données : de nombreux sites web gouvernementaux et administratifs ont été ajoutés ou mis à jour pour assurer une couverture exhaustive des données surveillées.
-*   Mise à jour des dépendances de reporting.
+Aucune évolution technique n'a été apportée durant cette période.
 
 ### Autres changements
-Aucun autre changement significatif n'a été apporté.
+La majorité des commits concernent la mise à jour de la liste des URLs surveillées, couvrant un large éventail de domaines gouvernementaux et de services publics français. Ces mises à jour garantissent que DashLord continue de fournir des informations à jour et pertinentes sur la qualité technique de ces sites web.
