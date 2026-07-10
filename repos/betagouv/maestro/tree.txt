@@ -337,8 +337,10 @@
 │   │   │   ├── config.ts
 │   │   │   ├── fetchUtils.test.ts
 │   │   │   ├── fetchUtils.ts
+│   │   │   ├── maplibre.ts
 │   │   │   ├── stringUtils.test.ts
-│   │   │   └── stringUtils.ts
+│   │   │   ├── stringUtils.ts
+│   │   │   └── zodJitless.ts
 │   │   └── views
 │   │       ├── AdminView
 │   │       │   ├── AdminView.stories.tsx
@@ -728,7 +730,9 @@
 │   │   │   ├── 103-subplan-substance-kinds.ts
 │   │   │   ├── 104-laboratory-billing-address.ts
 │   │   │   ├── 105-laboratory-sacha-email-without-gpg.ts
-│   │   │   └── 106-backfill-laboratory-residue-mappings.ts
+│   │   │   ├── 106-analysis-residues-daoa.ts
+│   │   │   ├── 106-backfill-laboratory-residue-mappings.ts
+│   │   │   └── 107-analysis-rai-states.ts
 │   │   └── seeds
 │   │       ├── departments
 │   │       │   └── departmentsSeed.ts
@@ -890,22 +894,31 @@
 │   │   │   ├── example-rai-1.xml
 │   │   │   ├── example-rai-RestPest_DAOA.xml
 │   │   │   ├── example-rai-RestPest_DAOA_CU.xml
+│   │   │   ├── example-rai-daoa-valid.xml
 │   │   │   ├── sachaCommemoratifsService.integration.test.ts
 │   │   │   ├── sachaCommemoratifsService.ts
 │   │   │   ├── sachaDAI.test.ts
 │   │   │   ├── sachaDAI.ts
 │   │   │   ├── sachaErrors.ts
+│   │   │   ├── sachaRAI.integration.test.ts
+│   │   │   ├── sachaRAI.test.ts
 │   │   │   ├── sachaRAI.ts
+│   │   │   ├── sachaRAIValidation.test.ts
+│   │   │   ├── sachaRAIValidation.ts
 │   │   │   ├── sachaReferences.test.ts
 │   │   │   ├── sachaReferences.ts
 │   │   │   ├── sachaReferential.ts
+│   │   │   ├── sachaResidueMapping.ts
 │   │   │   ├── sachaSender.ts
 │   │   │   ├── sachaToXML.test.ts
 │   │   │   ├── sachaToXML.ts
 │   │   │   ├── sachaValidator.test.ts
 │   │   │   ├── sachaValidator.ts
 │   │   │   ├── schema.xsd
+│   │   │   ├── script.ts
+│   │   │   ├── sftpService.integration.test.ts
 │   │   │   ├── sftpService.ts
+│   │   │   ├── testUtils.ts
 │   │   │   └── validateSachaXml.ts
 │   │   ├── excelService
 │   │   │   ├── excelService.test.ts
@@ -1073,6 +1086,7 @@
 │   │   │   ├── AnalysisStatus.ts
 │   │   │   ├── Analyte.ts
 │   │   │   └── Residue
+│   │   │       ├── AnalysisKind.ts
 │   │   │       ├── ContaminationSource.ts
 │   │   │       ├── Residue.test.ts
 │   │   │       ├── Residue.ts
@@ -1213,4 +1227,4 @@
     ├── express-jwt
     │   └── index.d.ts
     └── knex-stringcase.d.ts
-227 directories, 988 files
+227 directories, 1002 files
