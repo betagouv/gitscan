@@ -1,16 +1,15 @@
-## Changelog : schema.data.gouv.fr (30 derniers jours, au 25 juin 2026)
+## Changelog : schema.data.gouv.fr (30 derniers jours, au 10 juillet 2026)
 
 ### Résumé
-Le site schema.data.gouv.fr a connu une période d'activité soutenue, principalement axée sur la mise à jour régulière des recommandations et du site web lui-même. Des corrections ont été apportées concernant la langue de l'interface et le format des données pour le schéma "aides". Un schéma a été migré vers le format datapackage.
+Les dernières mises à jour du site schema.data.gouv.fr concernent principalement des actualisations régulières des recommandations de schémas de données et du contenu du site web. Une correction a été apportée pour assurer que l'interface est bien en français. Une amélioration a également été faite pour réintégrer le dispositif d'aide aux datapackages.
 
 ### Évolutions fonctionnelles
-- Correction du réglage de la langue de l'interface utilisateur pour afficher le français de France (fr-FR).
-- Le schéma "aides" a été temporairement rétabli au format tableschema, puis migré vers le format datapackage.
-- Le schéma "acceslibre" a été migré vers le format datapackage [#344](https://github.com/datagouv/schema.data.gouv.fr/issues/344).
+- Correction du réglage de la langue pour afficher l'interface en français (fr-FR) [#90faf06](https://github.com/datagouv/schema.data.gouv.fr/commit/90faf06).
+- Réintégration du dispositif d'aide aux datapackages [#fdd7846](https://github.com/datagouv/schema.data.gouv.fr/commit/fdd7846).
 
 ### Évolutions techniques
-- Mise à jour régulière des fichiers de configuration de consolidation.
-- Mises à jour continues du site web et des recommandations.
+- Mise à jour du fichier de consolidation de la configuration [#51a4080](https://github.com/datagouv/schema.data.gouv.fr/commit/51a4080).
+- Mises à jour régulières du site web et des recommandations (multiples commits par etalab).
 
 ### Autres changements
--  Aucun autre changement significatif à signaler.
+- Mise à jour de la page "à propos" (apropos.md) [#4ab9b23](https://github.com/datagouv/schema.data.gouv.fr/commit/4ab9b23).
