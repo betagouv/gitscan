@@ -1,33 +1,37 @@
-## Changelog : Docurba (30 derniers jours, au 03 juillet 2026)
+## Changelog : Docurba (30 derniers jours, au 09 juillet 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives de l'API interne, notamment l'ajout d'informations sur les collectivités et leurs membres, ainsi que par des corrections et des optimisations de l'interface utilisateur, en particulier sur les pages de gestion des procédures et des événements. Des efforts importants ont également été consacrés à la suppression de composants inutilisés et à la mise à jour des dépendances.
+Cette période a été marquée par des améliorations significatives de la gestion des événements et des collectivités, ainsi que par des corrections et des optimisations techniques. L'application a bénéficié de l'ajout de nouvelles fonctionnalités pour le suivi des procédures et l'accès aux données, tout en renforçant la sécurité et la fiabilité du système.
 
 ### Évolutions fonctionnelles
-
-*   **API Interne:** Ajout du siren à la collectivité via l'API interne. [#716ef46](https://github.com/MTES-MCT/Docurba/commit/716ef46)
-*   **API Interne:** Exposition des groupes et membres des collectivités via l'API interne. [#91ee156](https://github.com/MTES-MCT/Docurba/commit/91ee156)
-*   **Gestion des événements:** Historisation de toutes les modifications d'événements. [#cfb4754](https://github.com/MTES-MCT/Docurba/commit/cfb4754)
-*   **Interface Utilisateur:** Ajout de l'ID de la procédure dans l'onglet Procédures et Validations. [#53de844](https://github.com/MTES-MCT/Docurba/commit/53de844)
-*   **Interface Utilisateur:** Amélioration de la détection des événements de lancement. [#e0a4a68](https://github.com/MTES-MCT/Docurba/commit/e0a4a68)
-*   **Interface Utilisateur:** Application de la loi Huwart à toutes les procédures. [#bcac074](https://github.com/MTES-MCT/Docurba/commit/bcac074)
-*   **Interface Utilisateur:** Correction du tri des procédures par date. [#e0c83d6](https://github.com/MTES-MCT/Docurba/commit/e0c83d6)
-*   **Administration:** Possibilité de rechercher les utilisateurs par email dans l'interface d'administration. [#29e6ea8](https://github.com/MTES-MCT/Docurba/commit/29e6ea8)
-*   **Administration:** Possibilité de modifier les mots de passe des utilisateurs dans l'interface d'administration. [#29e6ea8](https://github.com/MTES-MCT/Docurba/commit/29e6ea8)
-*   **Administration:** Lister les procédures dont le périmètre inclue la commune. [#818abbd](https://github.com/MTES-MCT/Docurba/commit/818abbd)
+- Ajout de l'ID de la procédure dans l'onglet Procédures et Validations pour une meilleure identification.
+- Amélioration de la détection des événements de lancement et de l'application de la loi Huwart à toutes les procédures dans l'interface Nuxt.
+- Ajout de la date des procédures sur les pages procédures et collectivités dans l'interface Nuxt.
+- Possibilité de rechercher des événements de prescription plus précisément dans l'interface Nuxt.
+- Historisation de toutes les modifications d'événements, permettant un suivi précis des changements.
+- Ajout de la possibilité de lister les procédures dont le périmètre inclut une commune dans l'administration Django.
+- Ajout de la gestion des catégories PAC et d'une nouvelle catégorie d'événements dans l'API Django.
+- Amélioration de l'affichage des événements et de la gestion des dates associées.
+- Ajout de la possibilité de modifier les événements dans l'administration Django.
+- Ajout de la recherche d'utilisateurs par email dans l'administration Django.
+- Ajout de la possibilité de modifier le mot de passe des utilisateurs dans l'administration Django.
 
 ### Évolutions techniques
-
-*   **API:** Utilisation de Syrupy pour les tests d'API interne. [#2b1215a](https://github.com/MTES-MCT/Docurba/commit/2b1215a)
-*   **Tests:** Ajout de tests unitaires pour l'API interne. [#fff3ebf](https://github.com/MTES-MCT/Docurba/commit/fff3ebf)
-*   **Base de données:** Ajout d'index pour remplacer une vue matérialisée obsolète. [#2e3d1c5](https://github.com/MTES-MCT/Docurba/commit/2e3d1c5)
-*   **Déploiement:** Mise à jour du trigger Nuxt3 avec une commande de gestion. [#92361da](https://github.com/MTES-MCT/Docurba/commit/92361da)
-*   **Dépendances:** Mises à jour de plusieurs dépendances : Django, Django Debug Toolbar, Django Environ, pytest, ruff, cryptography, pyjwt, supabase.
-*   **Suppression de code obsolète:** Suppression de vues matérialisées, de commandes de gestion, de composants React inutilisés et d'assets inutilisés.
+- Mise à jour de plusieurs dépendances : Django, Django Debug Toolbar, Django Environ, Pytest, Ruff, Cryptography, PyJWT, Supabase.
+- Refonte de la gestion des types d'événements, avec l'ajout de nouveaux types et une configuration améliorée.
+- Amélioration de l'API interne Django pour exposer des informations supplémentaires sur les collectivités (SIREN, groupes, membres).
+- Suppression de composants et d'assets inutilisés dans l'interface Nuxt, allégeant le code et améliorant les performances.
+- Suppression de vues publiques obsolètes et de commandes de gestion inutilisées.
+- Amélioration de l'intégration de pg_history pour un suivi plus précis des modifications de données.
+- Correction de bugs et d'anomalies dans l'interface Nuxt et l'API Django.
+- Amélioration de la configuration des templates.
+- Restriction de l'accès aux tables de versements aux utilisateurs vérifiés pour renforcer la sécurité.
+- Ajout de tests unitaires et d'intégration pour améliorer la qualité du code et la couverture des tests.
+- Utilisation de Syrupy pour les tests de l'API interne Django.
+- Mise à jour de la configuration de l'environnement Django.
 
 ### Autres changements
-
-*   **Documentation:** Ajout de commentaires dans le code. [#775c627](https://github.com/MTES-MCT/Docurba/commit/775c627)
-*   **Configuration:** Ajout d'une variable d'environnement pour activer le débogage SQL. [#9a1f36a](https://github.com/MTES-MCT/Docurba/commit/9a1f36a)
-*   **Sécurité:** Utilisation de `format_html` pour éviter les failles XSS dans l'interface d'administration. [#a5747fc](https://github.com/MTES-MCT/Docurba/commit/a5747fc)
-*   **CORS:** Correction d'un problème de configuration CORS en environnement local. [#ac5aa58](https://github.com/MTES-MCT/Docurba/commit/ac5aa58)
+- Ajout d'une variable d'environnement `DEBUG_SQL` pour faciliter le débogage des requêtes SQL.
+- Suppression temporaire du fichier `.gitignore` puis restauration pour corriger un problème de configuration.
+- Documentation mise à jour pour refléter les changements apportés.
+- Correction de petites anomalies et améliorations de la lisibilité du code.
