@@ -269,6 +269,8 @@
 │   │   │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   │   ├── importer
 │   │   │   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │   │   ├── importer-ia
+│   │   │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   │   ├── layout.tsx
 │   │   │   │   │   │   │   │   │   └── nouveau
 │   │   │   │   │   │   │   │   │       └── page.tsx
@@ -321,8 +323,13 @@
 │   │   │   │   │   │   │   │   │   │       │   ├── action-not-found.view.tsx
 │   │   │   │   │   │   │   │   │   │       │   ├── action.view.tsx
 │   │   │   │   │   │   │   │   │   │       │   ├── components.new-referentiel
+│   │   │   │   │   │   │   │   │   │       │   │   ├── indicateurs-score
+│   │   │   │   │   │   │   │   │   │       │   │   │   ├── subaction.indicateur-list.tsx
+│   │   │   │   │   │   │   │   │   │       │   │   │   ├── subaction.indicateur-modal-resultats.tsx
+│   │   │   │   │   │   │   │   │   │       │   │   │   ├── subaction.indicateur-modal.tsx
+│   │   │   │   │   │   │   │   │   │       │   │   │   ├── subaction.indicateur.skeleton.tsx
+│   │   │   │   │   │   │   │   │   │       │   │   │   └── subaction.indicateur.tsx
 │   │   │   │   │   │   │   │   │   │       │   │   ├── subaction-comments.button.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── subaction-score-indicatif.tsx
 │   │   │   │   │   │   │   │   │   │       │   │   ├── subaction.tsx
 │   │   │   │   │   │   │   │   │   │       │   │   └── subactions.list-container.tsx
 │   │   │   │   │   │   │   │   │   │       │   ├── components.old-referentiel
@@ -951,10 +958,13 @@
 │   │   │   │       │   │   ├── render-smoke.spec.tsx
 │   │   │   │       │   │   ├── reorderable.spec.tsx
 │   │   │   │       │   │   └── user-data-cell.spec.tsx
+│   │   │   │       │   ├── adapters
+│   │   │   │       │   │   ├── indicateur-grid-adapter.spec.ts
+│   │   │   │       │   │   └── indicateur-grid-adapter.ts
+│   │   │   │       │   ├── apply-open-data-selections.spec.ts
+│   │   │   │       │   ├── apply-open-data-selections.ts
 │   │   │   │       │   ├── cell-input.tsx
 │   │   │   │       │   ├── cell-props.ts
-│   │   │   │       │   ├── choices-snapshot.spec.ts
-│   │   │   │       │   ├── choices-snapshot.ts
 │   │   │   │       │   ├── drag-reorder
 │   │   │   │       │   │   ├── drag-handle.tsx
 │   │   │   │       │   │   ├── draggable-header-label.tsx
@@ -967,9 +977,12 @@
 │   │   │   │       │   ├── grid-context.tsx
 │   │   │   │       │   ├── grid-frame.tsx
 │   │   │   │       │   ├── grid-head.tsx
+│   │   │   │       │   ├── grid-legend.tsx
 │   │   │   │       │   ├── grid-model.ts
 │   │   │   │       │   ├── group-header-cell.tsx
 │   │   │   │       │   ├── index.ts
+│   │   │   │       │   ├── indicateur-grid-shape.spec.ts
+│   │   │   │       │   ├── indicateur-grid-shape.ts
 │   │   │   │       │   ├── indicateur-values-grid.tsx
 │   │   │   │       │   ├── keyboard-navigation
 │   │   │   │       │   │   ├── grid-navigation.spec.ts
@@ -995,6 +1008,7 @@
 │   │   │   │       │   │   ├── paste-values.ts
 │   │   │   │       │   │   └── use-grid-copy-paste.ts
 │   │   │   │       │   ├── reference-year
+│   │   │   │       │   │   ├── reference-year-change-modal.tsx
 │   │   │   │       │   │   ├── reference-year-editor.spec.tsx
 │   │   │   │       │   │   └── reference-year-editor.tsx
 │   │   │   │       │   ├── row-header.tsx
@@ -1004,8 +1018,9 @@
 │   │   │   │       │   ├── unit.tsx
 │   │   │   │       │   ├── use-cell-edit.spec.ts
 │   │   │   │       │   ├── use-cell-edit.ts
-│   │   │   │       │   ├── use-choices-snapshot.ts
 │   │   │   │       │   ├── use-get-table.tsx
+│   │   │   │       │   ├── use-indicateur-grid-data.ts
+│   │   │   │       │   ├── use-indicateur-grid-write-actions.ts
 │   │   │   │       │   ├── user-data-cell.tsx
 │   │   │   │       │   ├── variation
 │   │   │   │       │   │   ├── variation-hint.tsx
@@ -1327,8 +1342,17 @@
 │   │   │   │   │   │   ├── create-plan.modal.tsx
 │   │   │   │   │   │   └── create-plan.view.tsx
 │   │   │   │   │   ├── import-plan
+│   │   │   │   │   │   ├── ai-import-progress.tsx
+│   │   │   │   │   │   ├── ai-import-steps.model.spec.ts
+│   │   │   │   │   │   ├── ai-import-steps.model.ts
+│   │   │   │   │   │   ├── ai-import.form.tsx
+│   │   │   │   │   │   ├── ai-import.view.tsx
 │   │   │   │   │   │   ├── data
-│   │   │   │   │   │   │   └── use-import-plan.ts
+│   │   │   │   │   │   │   ├── use-enqueue-ai-import.ts
+│   │   │   │   │   │   │   ├── use-get-ai-import-status.ts
+│   │   │   │   │   │   │   ├── use-get-current-ai-import.ts
+│   │   │   │   │   │   │   ├── use-import-plan.ts
+│   │   │   │   │   │   │   └── use-redirect-to-created-plan.ts
 │   │   │   │   │   │   └── request-plan-import-view.tsx
 │   │   │   │   │   ├── list-all-plans
 │   │   │   │   │   │   ├── all-plans.view.tsx
@@ -1582,11 +1606,15 @@
 │   │   │   │   │   │       └── sections
 │   │   │   │   │   │           ├── acte-engagement.section.spec.tsx
 │   │   │   │   │   │           ├── acte-engagement.section.tsx
-│   │   │   │   │   │           ├── candidature-documents.section.spec.tsx
-│   │   │   │   │   │           ├── candidature-documents.section.tsx
-│   │   │   │   │   │           ├── delete-preuve-button.tsx
-│   │   │   │   │   │           ├── rename-preuve-button.tsx
-│   │   │   │   │   │           └── upload-preuve-button.tsx
+│   │   │   │   │   │           ├── candidature-documents
+│   │   │   │   │   │           │   ├── candidature-documents.section.spec.tsx
+│   │   │   │   │   │           │   ├── candidature-documents.section.tsx
+│   │   │   │   │   │           │   ├── delete-preuve-button.tsx
+│   │   │   │   │   │           │   └── rename-preuve-button.tsx
+│   │   │   │   │   │           ├── document-line.tsx
+│   │   │   │   │   │           ├── download-preuve-button.tsx
+│   │   │   │   │   │           ├── upload-preuve-button.tsx
+│   │   │   │   │   │           └── use-download-preuve.ts
 │   │   │   │   │   ├── checklist-page-header
 │   │   │   │   │   │   ├── checklist-page-header.tsx
 │   │   │   │   │   │   ├── conseiller-referent.item.tsx
@@ -1697,7 +1725,7 @@
 │   │   │   │   │   ├── HeaderLabellisation.tsx
 │   │   │   │   │   ├── MessageCompletudeECi.tsx
 │   │   │   │   │   ├── fixture.json
-│   │   │   │   │   ├── new-referentiel-layout.banner.tsx
+│   │   │   │   │   ├── new-referentiel-layout.gate.tsx
 │   │   │   │   │   ├── numLabels.tsx
 │   │   │   │   │   ├── request-audit
 │   │   │   │   │   │   ├── audit-selection.spec.ts
@@ -1777,6 +1805,10 @@
 │   │   │   │   │   ├── useAddPreuves.ts
 │   │   │   │   │   └── usePreuves.ts
 │   │   │   │   ├── referentiel-context.tsx
+│   │   │   │   ├── referentiel-mode
+│   │   │   │   │   ├── get-referentiel-mode-banner-props.ts
+│   │   │   │   │   ├── referentiel-mode.banner.tsx
+│   │   │   │   │   └── use-referentiel-mode.ts
 │   │   │   │   ├── referentiel.table
 │   │   │   │   │   ├── audit-input-cell.tsx
 │   │   │   │   │   ├── empty-cell.tsx
@@ -1836,7 +1868,6 @@
 │   │   │   │   │   │   └── useMembres.ts
 │   │   │   │   │   ├── useTableauDeBordReferentielData.ts
 │   │   │   │   │   └── utils.ts
-│   │   │   │   ├── use-is-new-referentiel-layout-enabled.ts
 │   │   │   │   ├── use-referentiel-te-enabled.ts
 │   │   │   │   ├── use-snapshot.tsx
 │   │   │   │   └── utils.ts
@@ -2210,6 +2241,11 @@
 │   │   │   │   │   ├── collectivite-preferences.router.ts
 │   │   │   │   │   ├── collectivite-preferences.service.spec.ts
 │   │   │   │   │   └── collectivite-preferences.service.ts
+│   │   │   │   ├── collectivite-referentiel-mode
+│   │   │   │   │   ├── collectivite-referentiel-mode.service.ts
+│   │   │   │   │   ├── referentiel-mode-guard.errors.ts
+│   │   │   │   │   ├── referentiel-mode-guard.router.e2e-spec.ts
+│   │   │   │   │   └── referentiel-mode-guard.service.ts
 │   │   │   │   ├── collectivite.controller.spec.ts
 │   │   │   │   ├── collectivite.controller.ts
 │   │   │   │   ├── collectivites
@@ -2887,6 +2923,7 @@
 │   │   │   │   │   │   ├── ai-plan-import-job.repository.ts
 │   │   │   │   │   │   ├── ai-plan-import.constants.ts
 │   │   │   │   │   │   ├── ai-plan-import.errors.ts
+│   │   │   │   │   │   ├── ai-plan-import.full-flow.e2e-spec.ts
 │   │   │   │   │   │   ├── ai-plan-import.module.ts
 │   │   │   │   │   │   ├── ai-plan-import.queue.ts
 │   │   │   │   │   │   ├── ai-plan-import.trpc-errors.ts
@@ -2902,6 +2939,25 @@
 │   │   │   │   │   │   │   ├── validate-xlsx-archive.spec.ts
 │   │   │   │   │   │   │   └── validate-xlsx-archive.ts
 │   │   │   │   │   │   ├── generate-import-draft
+│   │   │   │   │   │   │   ├── draft-to-import-plan-input.spec.ts
+│   │   │   │   │   │   │   ├── draft-to-import-plan-input.ts
+│   │   │   │   │   │   │   ├── generate-import-draft.service.spec.ts
+│   │   │   │   │   │   │   ├── generate-import-draft.service.ts
+│   │   │   │   │   │   │   ├── generate-import-draft.worker.spec.ts
+│   │   │   │   │   │   │   └── generate-import-draft.worker.ts
+│   │   │   │   │   │   ├── get-import-status
+│   │   │   │   │   │   │   ├── get-import-status.input.ts
+│   │   │   │   │   │   │   ├── get-import-status.output.ts
+│   │   │   │   │   │   │   ├── get-import-status.router.ts
+│   │   │   │   │   │   │   ├── get-import-status.service.spec.ts
+│   │   │   │   │   │   │   └── get-import-status.service.ts
+│   │   │   │   │   │   ├── models
+│   │   │   │   │   │   │   ├── ai-plan-import-job.table.ts
+│   │   │   │   │   │   │   ├── ai-plan-import-job.ts
+│   │   │   │   │   │   │   ├── disableable-field.ts
+│   │   │   │   │   │   │   ├── extracted-action.ts
+│   │   │   │   │   │   │   └── plan-draft.ts
+│   │   │   │   │   │   ├── pipeline
 │   │   │   │   │   │   │   ├── __fixtures__
 │   │   │   │   │   │   │   │   └── sample.pdf
 │   │   │   │   │   │   │   ├── consolidate-actions
@@ -2913,8 +2969,6 @@
 │   │   │   │   │   │   │   │   ├── select-low-score-actions.ts
 │   │   │   │   │   │   │   │   ├── update-actions-with-consolidated-entries.spec.ts
 │   │   │   │   │   │   │   │   └── update-actions-with-consolidated-entries.ts
-│   │   │   │   │   │   │   ├── draft-to-import-plan-input.spec.ts
-│   │   │   │   │   │   │   ├── draft-to-import-plan-input.ts
 │   │   │   │   │   │   │   ├── enrich-sous-actions
 │   │   │   │   │   │   │   │   ├── apply-enrichments.spec.ts
 │   │   │   │   │   │   │   │   ├── apply-enrichments.ts
@@ -2934,10 +2988,6 @@
 │   │   │   │   │   │   │   │   └── extraction-response-to-extracted-actions.ts
 │   │   │   │   │   │   │   ├── extract-text.spec.ts
 │   │   │   │   │   │   │   ├── extract-text.ts
-│   │   │   │   │   │   │   ├── generate-import-draft.service.spec.ts
-│   │   │   │   │   │   │   ├── generate-import-draft.service.ts
-│   │   │   │   │   │   │   ├── generate-import-draft.worker.spec.ts
-│   │   │   │   │   │   │   ├── generate-import-draft.worker.ts
 │   │   │   │   │   │   │   ├── qualitative-review
 │   │   │   │   │   │   │   │   ├── qualitative-review.prompt.ts
 │   │   │   │   │   │   │   │   ├── qualitative-review.schema.ts
@@ -2956,23 +3006,13 @@
 │   │   │   │   │   │   │       ├── score-actions.schema.ts
 │   │   │   │   │   │   │       ├── score-actions.spec.ts
 │   │   │   │   │   │   │       └── score-actions.ts
-│   │   │   │   │   │   ├── get-import-status
-│   │   │   │   │   │   │   ├── get-import-status.input.ts
-│   │   │   │   │   │   │   ├── get-import-status.output.ts
-│   │   │   │   │   │   │   ├── get-import-status.router.ts
-│   │   │   │   │   │   │   ├── get-import-status.service.spec.ts
-│   │   │   │   │   │   │   └── get-import-status.service.ts
-│   │   │   │   │   │   ├── models
-│   │   │   │   │   │   │   ├── ai-plan-import-job.table.ts
-│   │   │   │   │   │   │   ├── ai-plan-import-job.ts
-│   │   │   │   │   │   │   ├── disableable-field.ts
-│   │   │   │   │   │   │   ├── extracted-action.ts
-│   │   │   │   │   │   │   └── plan-draft.ts
 │   │   │   │   │   │   └── prompts
 │   │   │   │   │   │       ├── consolidation.prompt.ts
 │   │   │   │   │   │       ├── enrichment.prompt.ts
 │   │   │   │   │   │       ├── extraction.prompt.ts
 │   │   │   │   │   │       ├── ignore-directive.ts
+│   │   │   │   │   │       ├── prompt-template.spec.ts
+│   │   │   │   │   │       ├── prompt-template.ts
 │   │   │   │   │   │       ├── qualitative-review.prompt.ts
 │   │   │   │   │   │       └── scoring.prompt.ts
 │   │   │   │   │   ├── compute-budget
@@ -3183,10 +3223,12 @@
 │   │   │   │   │   ├── get-referentiel.service.spec.ts
 │   │   │   │   │   └── get-referentiel.service.ts
 │   │   │   │   ├── handle-mesure-pilotes
+│   │   │   │   │   ├── handle-mesure-pilotes.errors.ts
 │   │   │   │   │   ├── handle-mesure-pilotes.router.e2e-spec.ts
 │   │   │   │   │   ├── handle-mesure-pilotes.router.ts
 │   │   │   │   │   └── handle-mesure-pilotes.service.ts
 │   │   │   │   ├── handle-mesure-services
+│   │   │   │   │   ├── handle-mesure-services.errors.ts
 │   │   │   │   │   ├── handle-mesure-services.router.e2e-spec.ts
 │   │   │   │   │   ├── handle-mesure-services.router.ts
 │   │   │   │   │   └── handle-mesure-services.service.ts
@@ -3241,6 +3283,7 @@
 │   │   │   │   │   ├── get-labellisation.service.ts
 │   │   │   │   │   ├── handle-mesure-audit-statut
 │   │   │   │   │   │   ├── handle-mesure-audit-statut.dto.ts
+│   │   │   │   │   │   ├── handle-mesure-audit-statut.errors.ts
 │   │   │   │   │   │   ├── handle-mesure-audit-statut.router.e2e-spec.ts
 │   │   │   │   │   │   ├── handle-mesure-audit-statut.router.ts
 │   │   │   │   │   │   ├── handle-mesure-audit-statut.service.ts
@@ -3279,6 +3322,7 @@
 │   │   │   │   │   │   ├── start-audit.router.e2e-spec.ts
 │   │   │   │   │   │   ├── start-audit.router.ts
 │   │   │   │   │   │   └── start-audit.service.ts
+│   │   │   │   │   ├── storage-upload-fenetre-edition.e2e-spec.ts
 │   │   │   │   │   ├── update-audit-report
 │   │   │   │   │   │   ├── update-audit-report.errors.ts
 │   │   │   │   │   │   ├── update-audit-report.input.ts
@@ -3286,6 +3330,7 @@
 │   │   │   │   │   │   ├── update-audit-report.router.ts
 │   │   │   │   │   │   └── update-audit-report.service.ts
 │   │   │   │   │   └── validate-audit
+│   │   │   │   │       ├── validate-audit.errors.ts
 │   │   │   │   │       ├── validate-audit.router.e2e-spec.ts
 │   │   │   │   │       ├── validate-audit.router.ts
 │   │   │   │   │       └── validate-audit.service.ts
@@ -3419,6 +3464,7 @@
 │   │   │   │   │   │   ├── list-snapshots.service.e2e-spec.ts
 │   │   │   │   │   │   └── list-snapshots.service.ts
 │   │   │   │   │   ├── snapshot.table.ts
+│   │   │   │   │   ├── snapshots.errors.ts
 │   │   │   │   │   ├── snapshots.router.e2e-spec.ts
 │   │   │   │   │   ├── snapshots.router.ts
 │   │   │   │   │   ├── snapshots.service.ts
@@ -3441,6 +3487,7 @@
 │   │   │   │       ├── get-action-status-create-to-complete-referentiel.spec.ts
 │   │   │   │       ├── referentiel-action-statut.test-fixture.ts
 │   │   │   │       ├── update-action-statut-historique.repository.ts
+│   │   │   │       ├── update-action-statut.errors.ts
 │   │   │   │       ├── update-action-statut.router.e2e-spec.ts
 │   │   │   │       ├── update-action-statut.router.ts
 │   │   │   │       └── update-action-statut.service.ts
@@ -3628,6 +3675,7 @@
 │   │   │       │   └── sheet.service.ts
 │   │   │       ├── llm
 │   │   │       │   ├── gemini.repository.ts
+│   │   │       │   ├── is-transient-error.spec.ts
 │   │   │       │   ├── llm.errors.ts
 │   │   │       │   ├── llm.module.ts
 │   │   │       │   ├── llm.repository.ts
@@ -4392,6 +4440,7 @@
 │       │   │   │       ├── index.ts
 │       │   │   │       ├── utils.test.ts
 │       │   │   │       └── utils.ts
+│       │   │   ├── import-statut-emt.ts
 │       │   │   ├── ingest-instance-gouvernance-migration-output.ts
 │       │   │   ├── migrate-instance-gouvernance-to-tags.ts
 │       │   │   └── migrate-notes-complementaires.ts
@@ -4549,10 +4598,7 @@
 │   │   │   │   ├── bucket.sql
 │   │   │   │   ├── bucket@v2.93.0.sql
 │   │   │   │   ├── bucket@v4.36.0.sql
-│   │   │   │   ├── bucket_rls_ademe_read.sql
-│   │   │   │   ├── bucket_rls_strict_read.sql
-│   │   │   │   ├── bucket_rls_super_admin_write.sql
-│   │   │   │   ├── bucket_rls_visiteur_read.sql
+│   │   │   │   ├── bucket_*.sql  (5 files)
 │   │   │   │   ├── code_siren_commune.sql
 │   │   │   │   ├── collectivite.sql
 │   │   │   │   ├── collectivite@v2.8.0.sql
@@ -4902,6 +4948,7 @@
 │   │   │   │   ├── referentiel.sql
 │   │   │   │   ├── referentiel@v4.50.0.sql
 │   │   │   │   ├── remove-view-action-audit-state.sql
+│   │   │   │   ├── rename_te.sql
 │   │   │   │   ├── score_snapshot.sql
 │   │   │   │   ├── score_snapshot@v4.36.0.sql
 │   │   │   │   ├── update_te_hierarchie.sql
@@ -5092,10 +5139,7 @@
 │   │   │   │   ├── bucket.sql
 │   │   │   │   ├── bucket@v2.93.0.sql
 │   │   │   │   ├── bucket@v4.36.0.sql
-│   │   │   │   ├── bucket_rls_ademe_read.sql
-│   │   │   │   ├── bucket_rls_strict_read.sql
-│   │   │   │   ├── bucket_rls_super_admin_write.sql
-│   │   │   │   ├── bucket_rls_visiteur_read.sql
+│   │   │   │   ├── bucket_*.sql  (5 files)
 │   │   │   │   ├── code_siren_commune.sql
 │   │   │   │   ├── collectivite.sql
 │   │   │   │   ├── collectivite@v2.8.0.sql
@@ -5446,6 +5490,7 @@
 │   │   │   │   ├── referentiel.sql
 │   │   │   │   ├── referentiel@v4.50.0.sql
 │   │   │   │   ├── remove-view-action-audit-state.sql
+│   │   │   │   ├── rename_te.sql
 │   │   │   │   ├── score_snapshot.sql
 │   │   │   │   ├── score_snapshot@v4.36.0.sql
 │   │   │   │   ├── update_te_hierarchie.sql
@@ -5637,10 +5682,7 @@
 │   │       │   ├── bucket.sql
 │   │       │   ├── bucket@v2.93.0.sql
 │   │       │   ├── bucket@v4.36.0.sql
-│   │       │   ├── bucket_rls_ademe_read.sql
-│   │       │   ├── bucket_rls_strict_read.sql
-│   │       │   ├── bucket_rls_super_admin_write.sql
-│   │       │   ├── bucket_rls_visiteur_read.sql
+│   │       │   ├── bucket_*.sql  (5 files)
 │   │       │   ├── code_siren_commune.sql
 │   │       │   ├── collectivite.sql
 │   │       │   ├── collectivite@v2.8.0.sql
@@ -5989,6 +6031,7 @@
 │   │       │   ├── referentiel.sql
 │   │       │   ├── referentiel@v4.50.0.sql
 │   │       │   ├── remove-view-action-audit-state.sql
+│   │       │   ├── rename_te.sql
 │   │       │   ├── score_snapshot.sql
 │   │       │   ├── score_snapshot@v4.36.0.sql
 │   │       │   ├── update_te_hierarchie.sql
@@ -6154,6 +6197,7 @@
 │   └── tests
 │       ├── collectivite
 │       │   ├── bucket_rls.sql
+│       │   ├── bucket_rls_auditeur_edit_window.sql
 │       │   ├── bucket_rls_super_admin.sql
 │       │   ├── collectivite_test.sql
 │       │   └── identite.sql
@@ -6225,6 +6269,7 @@
 │   │   ├── 2026-05-20-001-feat-badges-etat-audit-labellisation-plan.md
 │   │   ├── 2026-06-04-001-feat-condition-referentiel-expr-cible-seuil-prd.md
 │   │   ├── 2026-06-11-001-feat-bascule-referentiel-te-prd.md
+│   │   ├── 2026-06-11-002-feat-bascule-referentiel-te-pr4-plan.md
 │   │   ├── 2026-06-24-001-refactor-auth-into-app-plan.md
 │   │   └── 2026-06-25-001-fix-export-indicateurs-tous-resultats-filtre-plan.md
 │   └── solutions
@@ -6334,6 +6379,9 @@
 │   │   │   │   ├── request-labellisation-from-new-checklist.spec.ts
 │   │   │   │   ├── request-labellisation-non-cot.spec.ts
 │   │   │   │   └── start-labellisation-cot.spec.ts
+│   │   │   ├── referentiel-mode
+│   │   │   │   ├── referentiel-mode-banner.pom.ts
+│   │   │   │   └── referentiel-mode-banner.spec.ts
 │   │   │   ├── referentiels.fixture.ts
 │   │   │   ├── scores
 │   │   │   │   ├── accordion-header-click.spec.ts
@@ -6474,6 +6522,8 @@
 │   │   ├── package.json
 │   │   ├── src
 │   │   │   ├── collectivites
+│   │   │   │   ├── can-mutate-referentiel.rules.spec.ts
+│   │   │   │   ├── can-mutate-referentiel.rules.ts
 │   │   │   │   ├── categorie-tag.schema.ts
 │   │   │   │   ├── collectivite-banatic-type.enum.ts
 │   │   │   │   ├── collectivite-preferences.schema.spec.ts
@@ -7446,10 +7496,6 @@
 │   │   │   ├── fetchData.ts
 │   │   │   ├── index.ts
 │   │   │   └── saveData.ts
-│   │   ├── import_statut_emt
-│   │   │   ├── fetchData.ts
-│   │   │   ├── index.ts
-│   │   │   └── saveData.ts
 │   │   ├── send_user_pai_to_brevo
 │   │   │   ├── fetchData.ts
 │   │   │   └── index.ts
@@ -7468,5 +7514,6 @@
 │       └── recovery.html
 ├── tsconfig.base.json
 ├── tsconfig.json
-└── vitest.config.ts
-1284 directories, 6430 files
+├── vitest.config.ts
+└── vitest.workspace.ts
+1291 directories, 6482 files

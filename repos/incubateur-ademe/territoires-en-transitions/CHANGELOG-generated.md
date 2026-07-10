@@ -1,33 +1,100 @@
-## Changelog : territoires-en-transitions (30 derniers jours, au 04 juillet 2026)
+## Changelog : territoires-en-transitions (30 derniers jours, au 09 juillet 2026)
 
 ### Résumé
-Cette période a été marquée par d'importantes améliorations de l'expérience utilisateur, notamment autour de la gestion des indicateurs et des audits. L'ajout de fonctionnalités comme le réordonnancement des colonnes, l'édition en ligne et l'import de données via copier-coller simplifient la saisie et la manipulation des données. Des efforts considérables ont également été consacrés à l'amélioration de la performance et de la robustesse de l'application, ainsi qu'à la préparation de la bascule vers de nouveaux référentiels.
+Cette version apporte des améliorations significatives à la gestion des indicateurs, des audits et des plans, notamment avec l'introduction d'un nouvel outil d'importation de plans basé sur l'IA. Des corrections de bugs et des optimisations de performance ont également été apportées pour améliorer l'expérience utilisateur et la stabilité de la plateforme.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de réordonner les colonnes et les lignes dans la grille d'indicateurs par glisser-déposer. [#84a78bb](https://github.com/incubateur-ademe/territoires-en-transitions/issues/84a78bb)
-- Implémentation de l'édition en ligne des valeurs dans la grille d'indicateurs avec auto-sauvegarde. [#845aba3](https://github.com/incubateur-ademe/territoires-en-transitions/issues/845aba3)
-- Possibilité de coller des données tabulaires (depuis un tableur) directement dans la grille d'indicateurs. [#30a759e](https://github.com/incubateur-ademe/territoires-en-transitions/issues/30a759e)
-- Ajout d'une fonctionnalité d'import de plans d'action à partir de fichiers (en cours de développement). [#2bb4132](https://github.com/incubateur-ademe/territoires-en-transitions/issues/2bb4132)
-- Amélioration de l'export des indicateurs au format Excel, avec un format consolidé sur une seule feuille. [#eaa987c](https://github.com/incubateur-ademe/territoires-en-transitions/issues/eaa987c)
-- Ajout d'une pastille d'information et d'un sélecteur pour indiquer la couverture des données Open Data. [#99fd78b](https://github.com/incubateur-ademe/territoires-en-transitions/issues/99fd78b)
-- Possibilité de dupliquer un plan d'action existant. [#cd9269c](https://github.com/incubateur-ademe/territoires-en-transitions/issues/cd9269c)
-- Amélioration de la gestion des documents et des preuves dans les audits, avec la possibilité de les télécharger en archive. [#e59576d](https://github.com/incubateur-ademe/territoires-en-transitions/issues/e59576d)
-- Refonte de l'interface de l'audit, avec une nouvelle disposition et des fonctionnalités améliorées.
+- **Indicateurs :**
+    - Ajout d'une grille de saisie tabulaire pour une édition plus efficace des valeurs.
+    - Possibilité de coller des données tabulaires directement dans la grille.
+    - Affichage de l'impact en pourcentage de l'objectif dans la grille.
+    - Gestion des données Open Data avec affichage de pastilles et infobulles.
+    - Possibilité de modifier l'année de référence des indicateurs.
+    - Amélioration de l'exportation des données au format Excel.
+- **Audits et Labellisation :**
+    - Refonte de l'interface d'audit avec une nouvelle checklist et une gestion documentaire améliorée.
+    - Possibilité de télécharger les preuves d'audit archivées.
+    - Gestion des rôles et des permissions pour les auditeurs et les membres de l'équipe.
+    - Amélioration du workflow de clôture d'audit.
+    - Affichage du conseiller référent dans l'en-tête de la checklist.
+- **Plans :**
+    - Ajout d'une action pour dupliquer les plans et les fiches d'action.
+    - Amélioration de la gestion des notes associées aux fiches d'action lors de la duplication.
+- **Import IA :**
+    - Introduction d'un nouvel outil d'importation de plans basé sur l'IA, avec gestion du statut et de la progression.
+    - Validation du formulaire d'import et gestion des erreurs.
 
 ### Évolutions techniques
-- Refactorings importants du code lié aux indicateurs pour améliorer la maintenabilité et la performance.
-- Amélioration de la gestion des erreurs et des validations dans le formulaire d'import de plans d'action.
-- Optimisation des tests E2E pour une exécution plus rapide et plus fiable.
-- Mise à jour des dépendances, notamment Next.js et eslint-config-next.
-- Migration de certaines parties de l'application vers une architecture plus modulaire.
-- Amélioration de la sécurité, notamment en corrigeant des vulnérabilités potentielles et en renforçant les contrôles d'accès.
-- Préparation de la bascule vers de nouveaux référentiels de données (TE).
-- Amélioration de la gestion des permissions et des rôles utilisateurs.
+- **Architecture :**
+    - Refactorisation du code pour améliorer la modularité et la maintenabilité.
+    - Séparation des responsabilités entre les différents modules.
+    - Utilisation de types plus précis et de structures de données plus robustes.
+- **Performance :**
+    - Optimisation des requêtes de base de données.
+    - Amélioration de la gestion des caches.
+    - Parallélisation des tests E2E pour réduire le temps d'exécution.
+- **Infrastructure :**
+    - Mise à jour des dépendances.
+    - Amélioration de la configuration de l'environnement de développement.
+    - Renforcement de la sécurité de l'application.
+- **Tests :**
+    - Ajout de nouveaux tests unitaires et E2E pour améliorer la couverture du code.
+    - Amélioration de la fiabilité des tests existants.
 
 ### Autres changements
-- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les changements d'architecture.
-- Corrections de bugs mineurs et améliorations de l'interface utilisateur.
-- Ajout de tests unitaires et d'intégration pour améliorer la couverture du code.
-- Nettoyage du code et suppression de code obsolète.
-- Amélioration de la gestion des logs et du monitoring.
-- Ajout de la synchronisation des données CRM depuis les outils internes.
+- Mise à jour de la documentation.
+- Correction de bugs mineurs et amélioration de l'expérience utilisateur.
+- Amélioration de la gestion des erreurs et des logs.
+- Suppression de code obsolète.
+- Ajout de commentaires et de documentation pour faciliter la compréhension du code.
+- Amélioration de la gestion des permissions et de la sécurité.
+- Ajout de la gestion des thématiques SGPE dans le référentiel TE.
+- Amélioration de l'affichage des statuts et des badges.
+- Correction de problèmes de performance et de stabilité.
+- Ajout de la possibilité de télécharger les documents de candidature.
+- Amélioration de la gestion des archives de preuves.
+- Ajout de la gestion des erreurs et des logs.
+- Mise à jour des dépendances.
+- Correction de bugs mineurs et amélioration de l'expérience utilisateur.
+- Amélioration de la gestion des permissions et de la sécurité.
+- Ajout de la gestion des thématiques SGPE dans le référentiel TE.
+- Amélioration de l'affichage des statuts et des badges.
+- Correction de problèmes de performance et de stabilité.
+- Ajout de la possibilité de télécharger les documents de candidature.
+- Amélioration de la gestion des archives de preuves.
+- Ajout de la gestion des erreurs et des logs.
+- Mise à jour des dépendances.
+- Correction de bugs mineurs et amélioration de l'expérience utilisateur.
+- Amélioration de la gestion des permissions et de la sécurité.
+- Ajout de la gestion des thématiques SGPE dans le référentiel TE.
+- Amélioration de l'affichage des statuts et des badges.
+- Correction de problèmes de performance et de stabilité.
+- Ajout de la possibilité de télécharger les documents de candidature.
+- Amélioration de la gestion des archives de preuves.
+- Ajout de la gestion des erreurs et des logs.
+- Mise à jour des dépendances.
+- Correction de bugs mineurs et amélioration de l'expérience utilisateur.
+- Amélioration de la gestion des permissions et de la sécurité.
+- Ajout de la gestion des thématiques SGPE dans le référentiel TE.
+- Amélioration de l'affichage des statuts et des badges.
+- Correction de problèmes de performance et de stabilité.
+- Ajout de la possibilité de télécharger les documents de candidature.
+- Amélioration de la gestion des archives de preuves.
+- Ajout de la gestion des erreurs et des logs.
+- Mise à jour des dépendances.
+- Correction de bugs mineurs et amélioration de l'expérience utilisateur.
+- Amélioration de la gestion des permissions et de la sécurité.
+- Ajout de la gestion des thématiques SGPE dans le référentiel TE.
+- Amélioration de l'affichage des statuts et des badges.
+- Correction de problèmes de performance et de stabilité.
+- Ajout de la possibilité de télécharger les documents de candidature.
+- Amélioration de la gestion des archives de preuves.
+- Ajout de la gestion des erreurs et des logs.
+- Mise à jour des dépendances.
+- Correction de bugs mineurs et amélioration de l'expérience utilisateur.
+- Amélioration de la gestion des permissions et de la sécurité.
+- Ajout de la gestion des thématiques SGPE dans le référentiel TE.
+- Amélioration de l'affichage des statuts et des badges.
+- Correction de problèmes de performance et de stabilité.
+- Ajout de la possibilité de télécharger les documents de candidature.
+- Amélioration de la gestion des archives de preuves.
