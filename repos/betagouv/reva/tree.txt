@@ -744,10 +744,7 @@
     │   │   │   │   ├── certificateur-registry-manager-token.json
     │   │   │   │   ├── certificateur-token.json
     │   │   │   │   ├── collaborateur-token.json
-    │   │   │   │   ├── gestionnaire-token.json
-    │   │   │   │   ├── silent-check-sso.html
-    │   │   │   │   ├── status-iframe.html
-    │   │   │   │   └── step1.html
+    │   │   │   │   └── gestionnaire-token.json
     │   │   │   ├── candidacies
     │   │   │   │   └── candidacies.json
     │   │   │   ├── candidacy
@@ -830,6 +827,7 @@
     │   │   │   │   ├── applecalendar.svg
     │   │   │   │   ├── googlecalendar.svg
     │   │   │   │   └── outlook.svg
+    │   │   │   ├── logo-france-competences.svg
     │   │   │   ├── logo-france-vae.png
     │   │   │   └── logo-gouv.png
     │   │   ├── silent-check-sso.html
@@ -1828,6 +1826,8 @@
     │   │   │   │       ├── GoalsSection.tsx
     │   │   │   │       ├── ParcoursSection.tsx
     │   │   │   │       └── PdfLink.tsx
+    │   │   │   ├── download-tile
+    │   │   │   │   └── DownloadTile.tsx
     │   │   │   ├── dsfr
     │   │   │   │   ├── defaultColorScheme.ts
     │   │   │   │   ├── index.tsx
@@ -1900,7 +1900,6 @@
     │   │   │   ├── public-header
     │   │   │   │   └── PublicHeader.tsx
     │   │   │   ├── script
-    │   │   │   │   ├── Produktly.tsx
     │   │   │   │   └── Tarteaucitron.ts
     │   │   │   ├── search
     │   │   │   │   └── search-list
@@ -2073,6 +2072,9 @@
     │   │   │   │   └── certification-registry-manager
     │   │   │   │       └── certification-registry-manager.spec.ts
     │   │   │   └── certifications
+    │   │   │       ├── [certificationId]
+    │   │   │       │   └── structure
+    │   │   │       │       └── update-certification-structure.spec.ts
     │   │   │       └── certification-details.spec.ts
     │   │   ├── (certificateur)
     │   │   │   ├── candidacies
@@ -2124,12 +2126,6 @@
     │   │       └── helpers
     │   │           ├── auth
     │   │           │   ├── login.ts
-    │   │           │   ├── pages
-    │   │           │   │   ├── mock-redirect-to-silent-check-sso.html
-    │   │           │   │   ├── silent-check-sso-with-login-required.html
-    │   │           │   │   ├── silent-check-sso.html
-    │   │           │   │   ├── status-iframe.html
-    │   │           │   │   └── step1.html
     │   │           │   └── tokens
     │   │           │       ├── aapCollaborateurToken.json
     │   │           │       ├── aapToken.json
@@ -2313,9 +2309,6 @@
     │   │   │   │   ├── sendNewEmailCandidateEmail.ts
     │   │   │   │   ├── sendPreviousEmailCandidateEmail.ts
     │   │   │   │   └── sendPreviousOrganismCandidateChangeOrganismEmail.ts
-    │   │   │   ├── events
-    │   │   │   │   ├── audit-event.type.ts
-    │   │   │   │   └── cancel-drop-out.audit-event.ts
     │   │   │   ├── features
     │   │   │   │   ├── addExperienceToCandidacy.test.ts
     │   │   │   │   ├── addExperienceToCandidacy.ts
@@ -2359,8 +2352,6 @@
     │   │   │   │   ├── manuallyUpdateCandidacyCertificationAuthority.test.ts
     │   │   │   │   ├── manuallyUpdateCandidacyCertificationAuthority.ts
     │   │   │   │   ├── markFeasibilityFileResourceFirstAsRead.ts
-    │   │   │   │   ├── refreshCertificationAuthorityOfCandidacy.test.ts
-    │   │   │   │   ├── refreshCertificationAuthorityOfCandidacy.ts
     │   │   │   │   ├── searchOrganismsForCandidacy.test.ts
     │   │   │   │   ├── searchOrganismsForCandidacy.ts
     │   │   │   │   ├── searchOrganismsForCandidacyAsAdmin.ts
@@ -2550,13 +2541,20 @@
     │   │   │       ├── isCandidacyCertificationAuthorityUpdatable.test.ts
     │   │   │       ├── isCandidacyCertificationAuthorityUpdatable.ts
     │   │   │       ├── isUserCertificationRegistryManagerOfCertification.ts
+    │   │   │       ├── refreshCertificationAuthorityOfCandidacies.test.ts
+    │   │   │       ├── refreshCertificationAuthorityOfCandidacies.ts
+    │   │   │       ├── refreshCertificationAuthorityOfCandidacy.test.ts
+    │   │   │       ├── refreshCertificationAuthorityOfCandidacy.ts
     │   │   │       ├── searchCertificationAuthoritiesAndLocalAccounts.ts
     │   │   │       ├── sendEmailsForCertificationExpiration.ts
     │   │   │       ├── transferCandidacyToAnotherCertificationAuthority.ts
     │   │   │       ├── transferCandidacyToCertificationAuthorityLocalAccount.ts
     │   │   │       ├── updateCertificationAuthority.ts
+    │   │   │       ├── updateCertificationAuthorityCertifications.test.ts
     │   │   │       ├── updateCertificationAuthorityCertifications.ts
+    │   │   │       ├── updateCertificationAuthorityDepartments.test.ts
     │   │   │       ├── updateCertificationAuthorityDepartments.ts
+    │   │   │       ├── updateCertificationAuthorityDepartmentsAndCertifications.test.ts
     │   │   │       ├── updateCertificationAuthorityDepartmentsAndCertifications.ts
     │   │   │       ├── updateCertificationAuthorityLocalAccountCertifications.ts
     │   │   │       ├── updateCertificationAuthorityLocalAccountDepartments.ts
@@ -2975,10 +2973,6 @@
     │   │   │   └── utils
     │   │   │       └── rncp.helpers.ts
     │   │   ├── shared
-    │   │   │   ├── audit
-    │   │   │   │   ├── audit-event.entity.ts
-    │   │   │   │   ├── audit-event.repository.ts
-    │   │   │   │   └── audit-event.type.ts
     │   │   │   ├── auth
     │   │   │   │   ├── auth.helper.ts
     │   │   │   │   ├── getKeycloakAdmin.ts
@@ -4523,6 +4517,8 @@
     │   │   │   │   └── migration.sql
     │   │   │   ├── 20260702091644_add_feasibility_file_resource_first_read_at_column_to_candidacy_table
     │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260706140948_remove_audit_log_table
+    │   │   │   │   └── migration.sql
     │   │   │   └── migration_lock.toml
     │   │   ├── schema.prisma
     │   │   └── seed
@@ -4656,6 +4652,7 @@
     │   ├── public
     │   │   ├── bg-candidate.svg
     │   │   ├── components
+    │   │   │   ├── document.svg
     │   │   │   └── verified-badge.svg
     │   │   ├── files
     │   │   │   ├── Dossier_faisabilité_candidat_autonome.pdf
@@ -4990,15 +4987,34 @@
     │   │   │   │   │   │   │   │   │   │   │   ├── CertificationSection.tsx
     │   │   │   │   │   │   │   │   │   │   │   ├── CompetenciesBlocksSection.tsx
     │   │   │   │   │   │   │   │   │   │   │   ├── EligibilitySection.tsx
-    │   │   │   │   │   │   │   │   │   │   │   └── PrerequisitesSection.tsx
+    │   │   │   │   │   │   │   │   │   │   │   ├── PrerequisitesSection.tsx
+    │   │   │   │   │   │   │   │   │   │   │   ├── SendFileCertificateurSection.tsx
+    │   │   │   │   │   │   │   │   │   │   │   └── SwornStatementSection.tsx
+    │   │   │   │   │   │   │   │   │   │   ├── attachments
+    │   │   │   │   │   │   │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   │   │   │   │   │   │   └── attachments.hook.ts
+    │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   │   │   ├── certification
     │   │   │   │   │   │   │   │   │   │   │   ├── certification.hook.ts
     │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   │   │   │   ├── competencies-blocks
+    │   │   │   │   │   │   │   │   │   │   │   └── [blocDeCompetencesId]
+    │   │   │   │   │   │   │   │   │   │   │       └── page.tsx
     │   │   │   │   │   │   │   │   │   │   ├── eligibility
     │   │   │   │   │   │   │   │   │   │   │   ├── eligibility.hook.ts
     │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   │   │   ├── feasibility-demat-autonome.hook.ts
-    │   │   │   │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   │   │   │   ├── page.tsx
+    │   │   │   │   │   │   │   │   │   │   ├── prerequisites
+    │   │   │   │   │   │   │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   │   │   │   │   │   │   ├── CertificationPrerequisiteInput.tsx
+    │   │   │   │   │   │   │   │   │   │   │   │   ├── PrerequisiteInput.tsx
+    │   │   │   │   │   │   │   │   │   │   │   │   └── prerequisites.hook.ts
+    │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   │   │   │   └── sworn-statement
+    │   │   │   │   │   │   │   │   │   │       ├── _components
+    │   │   │   │   │   │   │   │   │   │       │   └── swornStatement.hook.ts
+    │   │   │   │   │   │   │   │   │   │       └── page.tsx
     │   │   │   │   │   │   │   │   │   └── feasibility-demat-autonome-resources
     │   │   │   │   │   │   │   │   │       ├── feasibility-demat-autonome-resources.hook.ts
     │   │   │   │   │   │   │   │   │       └── page.tsx
@@ -5122,8 +5138,10 @@
     │   │   │   ├── badge
     │   │   │   │   ├── badge-completed
     │   │   │   │   │   └── BadgeCompleted.tsx
-    │   │   │   │   └── badge-to-complete
-    │   │   │   │       └── BadgeToComplete.tsx
+    │   │   │   │   ├── badge-to-complete
+    │   │   │   │   │   └── BadgeToComplete.tsx
+    │   │   │   │   └── custom-error-badge
+    │   │   │   │       └── CustomErrorBadge.tsx
     │   │   │   ├── card
     │   │   │   │   ├── candidacy-card
     │   │   │   │   │   └── CandidacyCard.tsx
@@ -6144,4 +6162,4 @@
         ├── tsconfig.json
         └── types
             └── primitives.d.ts
-2062 directories, 4084 files
+2072 directories, 4092 files

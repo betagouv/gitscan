@@ -1,3 +1,40 @@
+2026-07-09T16:36:47+02:00 - 62075da - ThomasDos : fix(api): archive draft dematerialized feasibility when switching candidacy to autonome
+2026-07-09T14:42:13+02:00 - 054b9dc - Pierre A : refacto(admin):remove setState in useEffect anti pattern in SearchFilterBar component
+2026-07-09T14:37:53+02:00 - 3f14e39 - Pierre A : fix(admin):remove conflicting event handlers on search bar input
+2026-07-09T13:15:19+02:00 - 2386f0c - ThomasDos : tests(admin): mock global layout handlers in the FC certificateurs structure spec
+2026-07-09T12:14:21+02:00 - a2e5944 - ThomasDos : fix(admin): fix import order in StructureForm
+2026-07-09T12:14:20+02:00 - d5f6229 - ThomasDos : feat(admin): display France compétences certificateurs on the certification structure page
+2026-07-09T12:14:19+02:00 - 0c4eb03 - ThomasDos : feat(api): expose France compétences certificateurs on getFCCertification
+2026-07-09T10:51:40+02:00 - 0738191 - Alexandre Garbe : feat(website): updated cgu page -> replace helpdesk email adress by a link to the contact form
+2026-07-09T10:40:07+02:00 - f033a33 - Alexandre Garbe : feat(admin): admin user can click on a certification authority card in the candidacy summary to view the certification authority details
+2026-07-08T19:37:20+02:00 - 0dd07d7 - Alexandre Garbe : fix(api): faster refreshCertificationAuthorityOfCandidacies implementation
+2026-07-08T14:48:34+02:00 - 9bfed1a - Alexandre Garbe : chore(api): moved updateCertificationOfCandidacy to the certification-authority module
+2026-07-08T14:48:34+02:00 - 9130258 - Alexandre Garbe : feat(api): certification authority of candidacies are refreshed when a certification authority departments or certifications mapping changes
+2026-07-08T14:48:34+02:00 - 21cd655 - Alexandre Garbe : feat(api): updated refreshCertificationAuthorityOfCandidacies to handle the case where a certification authority mapping no longer cover some candidacies
+2026-07-08T13:58:10+02:00 - c08ff4e - Pierre A : refacto(admin):fix setState in useEffect anti pattern
+2026-07-08T13:58:10+02:00 - b540fb0 - Pierre A : fix(api):fix dv status filter
+2026-07-08T13:58:10+02:00 - 98133b0 - Pierre A : fix(admin):fix admin candidacies search bar behavior when hitting enter
+2026-07-08T13:17:41+02:00 - 41e7d5e - Florian Bonniec : feat(admin): improved design of feasibility-aap/sworn-statement page
+2026-07-07T16:49:34+02:00 - bd1b73f - Florian Bonniec : feat(candidate): added SendFileCertificateurSection to feasibility-demat-autonome page for df demat autonome
+2026-07-07T15:38:26+02:00 - 3bc1440 - Florian Bonniec : feat(candidate): added feasibility-demat-autonome/sworn-statement page for df demat autonome
+2026-07-07T13:12:17+02:00 - 1cc1e9c - Florian Bonniec : feat(api,candidate): added feasibility-demat-autonome/attachments page for df demat autonome
+2026-07-06T18:07:57+02:00 - 8509f19 - Pierre A : chore(admin):siplify fixture by removing no longer needed data
+2026-07-06T17:30:01+02:00 - 1449be5 - Pierre A : chore(api):remove unused security preset
+2026-07-06T17:28:34+02:00 - db4818f - Pierre A : fix(api):use correct role-base check for CGU accept as mutation is always tied to current certification authority
+2026-07-06T17:18:50+02:00 - 041cca5 - Florian Bonniec : feat(candidate): improved Breadcrumb for df demat autonome
+2026-07-06T17:01:52+02:00 - d713efb - Alexandre Garbe : feat(admin): removed the post login cookie cleanup since it interfere with the silent-check-sso removal
+2026-07-06T17:01:46+02:00 - 5f34d4c - Alexandre Garbe : feat(admin): removed silent-check-sso except for impersonate flow since its no longer used and conflict with the deactivation of the keyckloak login page
+2026-07-06T16:24:33+02:00 - 9d8b0ec - ThomasDos : chore(api): remove unused CandidacyDropOut type
+2026-07-06T16:24:32+02:00 - dd2230c - ThomasDos : chore(api): remove unused audit_event table and related code
+2026-07-06T16:22:48+02:00 - 77194b2 - Florian Bonniec : feat(api,candidate): added feasibility-demat-autonome/prerequisites page for df demat autonome
+2026-07-06T14:35:07+02:00 - b3ba5b0 - Pierre A : tests(admin):update fixtures with new required competence block details
+2026-07-06T14:35:07+02:00 - 9318970 - Pierre A : fix(admin,candidate):simplify compentence block completion detection
+2026-07-06T14:23:29+02:00 - dfe1f8b - Florian Bonniec : feat(api,candidate): added feasibility-demat-autonome/competencies-blocks/[blocDeCompetencesId] page for df demat autonome
+2026-07-06T13:31:01+02:00 - fe93aba - Pierre A : tests(admin,candidate):fix e2e tests for new comptence block display logic
+2026-07-06T11:44:46+02:00 - d51b497 - Pierre A : feat(admin,candidate):fix accordion paddings - disable accordion when compentence block details are not completed
+2026-07-06T11:36:49+02:00 - 63c391d - ThomasDos : chore(infra, website, admin, candidate): remove produkly
+2026-07-06T11:36:49+02:00 - 46c242b - ThomasDos : chore(infra): pin java 21 for metabase-scalingo
+2026-07-06T10:14:08+02:00 - 68b5e79 - Pierre A : chore(interop):replace auth_api_key header with auth-api-key
 2026-07-03T16:56:12+02:00 - dda396e - Florian Bonniec : feat(api,candidate): added feasibility-demat-autonome/certification page for df demat autonome
 2026-07-03T16:41:46+02:00 - cfd1ac8 - ThomasDos : test(interop): bootstrap vitest with jwt round-trip test and CI job
 2026-07-03T16:27:58+02:00 - f29da56 - fbonniec : Merge pull request #1057 from betagouv/dependabot/npm_and_yarn/packages/reva-api/microsoft/kiota-http-fetchlibrary-1.0.0-preview.103
