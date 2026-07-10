@@ -6,6 +6,20 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [v5.4.1] - 2026-07-09
+
+### Changed
+
+- ♻️(backend) reset collaboration connection in cascade for all children #2507
+
+### Fixed
+
+- 💄(frontend) fix some UI/UX in the left panel #2516
+- 🐛(frontend) fix tree dnd firefox #2516
+
+
+## [v5.4.0] - 2026-07-07
+
 ### Added
 
 - ✨(y-provider) preserve callouts, PDFs, page breaks, interlinking
@@ -25,19 +39,21 @@ and this project adheres to
 - 🚚(frontend) move Waffle to bottom left #2455
 - ♿️(frontend) remove redundant aria-label on table of contents links #2459
 - ♻️(core) fix typo in settings COLLABORATION_WS_NOT_CONNECTED_READY_ONLY #2481
+- ♻️(backend) scope document search by document id instead of path #2501
 
 ### Fixed
 
-- 🐛(backend) prevent owner from leaving a soft-deleted document
+- 🐛(backend) prevent owner from leaving a soft-deleted document #2456
 - 🐛(frontend) fix removed item in the tree #2420
 - 🐛(frontend) fix service worker causing reload on tab focus #2454
 - 🐛(backend) update restore ability for inherited deletion #2148
 - 🔧(dev) make the dev stack domain-agnostic #2498
 - 🐛(frontend) stop force index redirect when delete doc #2490
+- 🐛(frontend) fix CTA on move modal on mobile #2502
 
 ### Removed
 
-- 🔥(backend) remove unused default authentication backend
+- 🔥(backend) remove unused default authentication backend #2480
 
 ## [v5.3.0] - 2026-06-19
 
@@ -1404,7 +1420,9 @@ and this project adheres to
 - ✨(frontend) Coming Soon page (#67)
 - 🚀 Impress, project to manage your documents easily and collaboratively.
 
-[unreleased]: https://github.com/suitenumerique/docs/compare/v5.3.0...main
+[unreleased]: https://github.com/suitenumerique/docs/compare/v5.4.1...main
+[v5.4.1]: https://github.com/suitenumerique/docs/releases/v5.4.1
+[v5.4.0]: https://github.com/suitenumerique/docs/releases/v5.4.0
 [v5.3.0]: https://github.com/suitenumerique/docs/releases/v5.3.0
 [v5.2.1]: https://github.com/suitenumerique/docs/releases/v5.2.1
 [v5.2.0]: https://github.com/suitenumerique/docs/releases/v5.2.0
