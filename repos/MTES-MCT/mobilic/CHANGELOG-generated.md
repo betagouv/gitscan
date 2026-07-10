@@ -1,32 +1,32 @@
-## Changelog : mobilic (30 derniers jours, au 03 juillet 2026)
+## Changelog : mobilic (30 derniers jours, au 09 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur pour les administrateurs et les employés, notamment dans la gestion des missions et des activités. Des optimisations de performance ont également été apportées, en particulier au niveau du tableau de bord administrateur, et des corrections de bugs ont été implémentées pour améliorer la stabilité de l'application.
+Les dernières mises à jour de mobilic améliorent l'expérience utilisateur, notamment sur la gestion des missions (annulation, validation), l'interface d'administration et la navigation. Des corrections de bugs et des améliorations de performance ont également été apportées. L'application s'adapte mieux aux différents rôles utilisateurs et aux configurations spécifiques.
 
 ### Évolutions fonctionnelles
-- Amélioration de la vue des activités pour les administrateurs, avec des corrections de disposition et de tri [#885](https://github.com/MTES-MCT/mobilic/issues/885).
-- Modification de l'étiquette pour le transport lourd dans les congés [#887](https://github.com/MTES-MCT/mobilic/issues/887).
-- Modification du bouton de remplacement d'activité pour les administrateurs [#870](https://github.com/MTES-MCT/mobilic/issues/870).
-- Changement du type de bouton "Modifier activité" pour les employés, utilisation d'un composant DSFR [#879](https://github.com/MTES-MCT/mobilic/issues/879).
-- Modification du format de l'heure pour chaque ligne d'activité dans la vue employé [#880](https://github.com/MTES-MCT/mobilic/issues/880).
-- Ajout d'un bouton de soumission fixe en bas du résumé de mission [#868](https://github.com/MTES-MCT/mobilic/issues/868).
-- Renommage du bouton "Conduire" lorsque d'autres tâches sont désactivées [#867](https://github.com/MTES-MCT/mobilic/issues/867).
-- Masquage de la sélection du conducteur pour les missions d'accompagnement [#875](https://github.com/MTES-MCT/mobilic/issues/875).
-- Correction de l'affichage du champ "Conducteur" en dehors du mode équipe [#872](https://github.com/MTES-MCT/mobilic/issues/872).
-- Correction de l'autorisation de sélectionner "Accompagnement" dans le menu déroulant [#872](https://github.com/MTES-MCT/mobilic/issues/872).
+- Ajout de la possibilité d'annuler une mission en cours. [#889](https://github.com/MTES-MCT/mobilic/issues/889)
+- Amélioration de la vue des activités pour les administrateurs, avec des corrections de tri et d'affichage. [#885](https://github.com/MTES-MCT/mobilic/issues/885)
+- Modification du libellé pour les missions de transport de marchandises lourdes. [#881](https://github.com/MTES-MCT/mobilic/issues/881)
+- Modification du type de bouton d'édition d'activité pour utiliser un composant DSFR. [#879](https://github.com/MTES-MCT/mobilic/issues/879)
+- Amélioration de la gestion de la validation des missions dans l'interface d'administration (rafraîchissement des données). [#874](https://github.com/MTES-MCT/mobilic/issues/874) et [#873](https://github.com/MTES-MCT/mobilic/issues/873)
+- Ajout de la possibilité de modifier les jours de travail enregistrés. [#859](https://github.com/MTES-MCT/mobilic/issues/859)
+- Modification du format d'affichage de l'heure des activités pour les employés. [#880](https://github.com/MTES-MCT/mobilic/issues/880)
+- Suppression de l'option FranceConnect lors de l'inscription d'un employé. [#890](https://github.com/MTES-MCT/mobilic/issues/890)
+- Ajout de logos de partenaires sur la page dédiée. [#892](https://github.com/MTES-MCT/mobilic/issues/892)
 
 ### Évolutions techniques
-- Déduplication des requêtes d'historique concurrentes pour la même mission afin d'améliorer les performances [#886](https://github.com/MTES-MCT/mobilic/issues/886).
-- Optimisation des performances du tableau de bord administrateur en limitant les requêtes aux données de la semaine en cours [#865](https://github.com/MTES-MCT/mobilic/issues/865).
-- Refactorisation du filtrage hebdomadaire sur le client pour simplifier le code [#865](https://github.com/MTES-MCT/mobilic/issues/865).
-- Correction d'un problème de rafraîchissement du panneau de validation administrateur [#873](https://github.com/MTES-MCT/mobilic/issues/873).
-- Correction d'un bug lié à la configuration de l'entreprise dans la PWA [#872](https://github.com/MTES-MCT/mobilic/issues/872).
-- Correction d'une faute de frappe dans la documentation du contrôleur [#871](https://github.com/MTES-MCT/mobilic/issues/871).
-- Correction de problèmes liés au téléchargement de l'historique du contrôleur C1B [#857](https://github.com/MTES-MCT/mobilic/issues/857).
-- Correction d'un problème d'agrégation des temps de travail dans les vues hebdomadaires et mensuelles [#844](https://github.com/MTES-MCT/mobilic/issues/844).
-- Correction d'un problème de longue pause (NATINF_32083) [#843](https://github.com/MTES-MCT/mobilic/issues/843).
+- Refonte de l'en-tête (header) avec le DSFR, améliorant l'accessibilité et l'adaptabilité mobile.
+- Optimisation des requêtes pour éviter les doublons et améliorer les performances. [#886](https://github.com/MTES-MCT/mobilic/issues/886)
+- Amélioration de la gestion des filtres après validation d'une mission ou d'un congé. [#893](https://github.com/MTES-MCT/mobilic/issues/893)
+- Refactoring du code pour centraliser les constantes et améliorer la lisibilité.
+- Mise à jour de la gestion des logos des partenaires pour une meilleure intégration visuelle.
+- Amélioration de la persistance de l'ID de l'entreprise sélectionnée dans l'en-tête.
+- Optimisation de la barre de validation fixe sur la page de détails de la mission.
+- Correction de bugs et amélioration de la qualité du code (linting, suppression de code inutile).
 
 ### Autres changements
-- Amélioration de la documentation de la page du contrôleur [#863](https://github.com/MTES-MCT/mobilic/issues/863).
-- Ajout de labels pour améliorer l'accessibilité des icônes [#870](https://github.com/MTES-MCT/mobilic/issues/870).
-- Nettoyage du code et des imports [#870](https://github.com/MTES-MCT/mobilic/issues/870).
+- Mise à jour de la documentation du contrôleur. [#871](https://github.com/MTES-MCT/mobilic/issues/871)
+- Amélioration de la page d'accueil avec l'intégration du DSFR header et footer. [#869](https://github.com/MTES-MCT/mobilic/issues/869)
+- Correction de problèmes d'affichage et de style divers.
+- Correction de problèmes d'accessibilité.
+- Ajustements de style pour améliorer l'expérience utilisateur.
