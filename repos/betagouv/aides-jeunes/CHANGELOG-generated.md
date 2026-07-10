@@ -1,15 +1,17 @@
-## Changelog : aides-jeunes (30 derniers jours, au 25 juin 2026)
+## Changelog : aides-jeunes (30 derniers jours, au 8 juillet 2026)
 
 ### Résumé
-Ce changelog présente les améliorations apportées au simulateur d'aides-jeunes au cours du dernier mois. Les principales évolutions concernent l'amélioration de l'outil de contribution simplifié, avec l'ajout d'une navigation latérale et la possibilité de sélectionner une institution. Des corrections de bugs ont également été apportées pour améliorer la stabilité et l'expérience utilisateur.
+Cette mise à jour améliore l'expérience utilisateur en permettant de filtrer les institutions par code département lors de la contribution, corrige des bugs liés au tri des ressources et à la gestion des erreurs réseau, et met à jour les données de l'aide permis de conduire pour les demandeurs d'emploi.
 
 ### Évolutions fonctionnelles
-- **Outil de contribution simplifié :** Ajout d'une navigation latérale pour faciliter l'utilisation de l'outil [#5120](https://github.com/betagouv/aides-jeunes/pull/5120).
-- **Outil de contribution simplifié :** Possibilité de sélectionner une institution lors de la contribution [#5133](https://github.com/betagouv/aides-jeunes/pull/5133).
-- **Aide permis demandeur d'emploi :** Mise à jour de la configuration de l'aide "permis demandeur d'emploi" [#5151](https://github.com/betagouv/aides-jeunes/pull/5151).
-- **Conditions générales :** Correction du libellé des conditions générales dans l'outil de contribution [#5149](https://github.com/betagouv/aides-jeunes/pull/5149).
+- Amélioration de l'outil de contribution simplifié : ajout de la possibilité de sélectionner une institution lors de la contribution, avec affichage du code département associé. [#5133](https://github.com/betagouv/aides-jeunes/pull/5133)
+- Mise à jour des données de l'aide "Permis de conduire pour les demandeurs d'emploi". [#5151](https://github.com/betagouv/aides-jeunes/pull/5151)
 
 ### Évolutions techniques
-- **Correction de bug :** Résolution d'un problème de mutation de tableau réactif dans la fonction de tri des ressources [#5155](https://github.com/betagouv/aides-jeunes/pull/5155).
-- **Correction de bug :** Prévention des erreurs réseau non gérées lors du chargement des paramètres OpenFisca [#5157](https://github.com/betagouv/aides-jeunes/pull/5157).
-- **Mises à jour de dépendances :** Mise à jour de plusieurs dépendances, incluant `js-yaml`, `jsonwebtoken`, `dsfr` et `axios` [#5145](https://github.com/betagouv/aides-jeunes/pull/5145), [#5143](https://github.com/betagouv/aides-jeunes/pull/5143) et corrections via `npm audit fix` [#5144](https://github.com/betagouv/aides-jeunes/pull/5144).
+- Correction d'un bug qui provoquait une mutation inattendue du tableau réactif lors du tri des ressources. [#5155](https://github.com/betagouv/aides-jeunes/pull/5155)
+- Correction d'une erreur réseau non gérée lors du préchargement des paramètres OpenFisca. [#5157](https://github.com/betagouv/aides-jeunes/pull/5157)
+- Ajout du code du département aux suggestions d'institution pour faciliter la contribution. [#5130](https://github.com/betagouv/aides-jeunes/pull/5130)
+
+### Autres changements
+- Mise à jour de la dépendance `js-yaml` dans le répertoire `/contribuer`. [#5161](https://github.com/betagouv/aides-jeunes/pull/5161)
+- Mise à jour de la dépendance `openfisca-france` dans le répertoire `/openfisca`. [#5152](https://github.com/betagouv/aides-jeunes/pull/5162)
