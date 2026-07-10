@@ -1,31 +1,48 @@
 .
-├── .claude
+├── .agents
 │   └── skills
-│       └── nouvelle-migration-knex
-│           └── SKILL.md
+│       ├── nouvelle-migration-knex
+│       │   └── SKILL.md
+│       └── playwright-cli
+│           ├── SKILL.md
+│           └── references
+│               ├── element-attributes.md
+│               ├── playwright-tests.md
+│               ├── request-mocking.md
+│               ├── running-code.md
+│               ├── session-management.md
+│               ├── spec-driven-testing.md
+│               ├── storage-state.md
+│               ├── test-generation.md
+│               ├── tracing.md
+│               └── video-recording.md
 ├── .env.template
+├── .envrc
 ├── .github
 │   └── workflows
 │       ├── cellar-deploiement.yml
-│       ├── checkov.yml
 │       ├── compare-financements.yml
 │       ├── deploiement-node.yml
 │       ├── deploiement-wc-demande-diag.yml
 │       ├── deploiement.yml
 │       ├── grist-deploiement-guides.yml
 │       ├── grist-deploiement.yml
-│       └── integration-continue.yml
+│       ├── integration-continue.yml
+│       └── securite-ci.yml
 ├── .gitignore
 ├── .npmrc
 ├── .nvmrc
+├── .playwright
+│   └── cli.config.json
 ├── .prettierignore
 ├── .prettierrc.cjs
 ├── .ruby-version
+├── AGENTS.md
 ├── CLAUDE.md
 ├── LICENSE
 ├── README.md
 ├── back
-│   ├── CLAUDE.md
+│   ├── AGENTS.md
 │   ├── eslint.config.mjs
 │   ├── knexfile.ts
 │   ├── migrations
@@ -478,7 +495,7 @@
 │   └── tsconfig.json
 ├── comparaison-grist
 │   ├── .env.template
-│   ├── CLAUDE.md
+│   ├── AGENTS.md
 │   ├── eslint.config.mjs
 │   ├── package.json
 │   ├── src
@@ -502,9 +519,10 @@
 │   │           └── constructeurGuideGrist.ts
 │   ├── tsconfig.json
 │   └── vitest.config.js
+├── default.nix
 ├── demande-diag
 │   ├── .gitignore
-│   ├── CLAUDE.md
+│   ├── AGENTS.md
 │   ├── README.md
 │   ├── package.json
 │   ├── plugin
@@ -525,7 +543,7 @@
 ├── docker-compose.yml
 ├── front
 │   ├── 404.html
-│   ├── CLAUDE.md
+│   ├── AGENTS.md
 │   ├── Gemfile
 │   ├── Gemfile.lock
 │   ├── _config.yml
@@ -903,7 +921,7 @@
 │   ├── lib-svelte
 │   │   ├── .gitignore
 │   │   ├── .prettierrc.cjs
-│   │   ├── CLAUDE.md
+│   │   ├── AGENTS.md
 │   │   ├── README.md
 │   │   ├── eslint.config.mjs
 │   │   ├── index.html
@@ -1181,6 +1199,8 @@
 │   │   │   ├── plateforme
 │   │   │   │   ├── aseptisationDuHtml.client.ts
 │   │   │   │   ├── aseptisationDuHtml.serveur.ts
+│   │   │   │   ├── environnement.client.ts
+│   │   │   │   ├── environnement.serveur.ts
 │   │   │   │   ├── plateforme.plugin.ts
 │   │   │   │   ├── webComponent.client.ts
 │   │   │   │   └── webComponent.serveur.ts
@@ -1376,7 +1396,7 @@
 │   └── vitest.config.js
 ├── mise-a-jour-financements
 │   ├── .env.template
-│   ├── CLAUDE.md
+│   ├── AGENTS.md
 │   ├── eslint.config.mjs
 │   ├── package.json
 │   ├── src
@@ -1403,6 +1423,9 @@
 │   │   └── metier
 │   │       └── comparateurFinancement.spec.ts
 │   └── tsconfig.json
+├── npins
+│   ├── default.nix
+│   └── sources.json
 ├── package.json
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
@@ -1415,6 +1438,7 @@
 │   │   └── route-sans-validation.ts
 │   └── tsconfig.json
 ├── renovate.json
-└── scripts
-    └── get-node-version.sh
-200 directories, 1262 files
+├── scripts
+│   └── get-node-version.sh
+└── shell.nix
+204 directories, 1282 files
