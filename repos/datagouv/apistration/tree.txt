@@ -441,6 +441,7 @@
 │   │   │   ├── cnaf_msa_prestation_de_service_unique.yml
 │   │   │   ├── cnaf_msa_quotient_familial.yml
 │   │   │   ├── cnav_allocation_adulte_handicape.yml
+│   │   │   ├── cnav_allocation_rentree_scolaire.yml
 │   │   │   ├── cnav_allocation_soutien_familial.yml
 │   │   │   ├── cnav_complementaire_sante_solidaire.yml
 │   │   │   ├── cnav_prime_activite.yml
@@ -1123,6 +1124,19 @@
 │   │   │   ├── fake_france_connect_cnaf.yaml
 │   │   │   ├── france_connect_cnaf.yaml
 │   │   │   └── summary.csv
+│   │   ├── api_particulier_v3_cnav_allocation_rentree_scolaire_with_civility
+│   │   │   ├── 200_allocataire.yaml
+│   │   │   ├── 200_non_beneficiaire.yaml
+│   │   │   ├── 200_ouvrant_droit.yaml
+│   │   │   ├── 404.yaml
+│   │   │   ├── 502.yaml
+│   │   │   ├── README.md
+│   │   │   └── summary.csv
+│   │   ├── api_particulier_v3_cnav_allocation_rentree_scolaire_with_france_connect
+│   │   │   ├── 200_allocataire.yaml
+│   │   │   ├── 404.yaml
+│   │   │   ├── README.md
+│   │   │   └── summary.csv
 │   │   ├── api_particulier_v3_cnav_allocation_soutien_familial_with_civility
 │   │   │   ├── 200_beneficiaire.yaml
 │   │   │   ├── 200_non_beneficiaire.yaml
@@ -1733,6 +1747,8 @@
 │   │   │   │       │   ├── allocation_adulte_handicape_with_france_connect_controller.rb
 │   │   │   │       │   ├── allocation_enfant_handicape_with_civility_controller.rb
 │   │   │   │       │   ├── allocation_enfant_handicape_with_france_connect_controller.rb
+│   │   │   │       │   ├── allocation_rentree_scolaire_with_civility_controller.rb
+│   │   │   │       │   ├── allocation_rentree_scolaire_with_france_connect_controller.rb
 │   │   │   │       │   ├── allocation_soutien_familial_with_civility_controller.rb
 │   │   │   │       │   ├── allocation_soutien_familial_with_france_connect_controller.rb
 │   │   │   │       │   ├── complementaire_sante_solidaire_with_civility_controller.rb
@@ -1801,6 +1817,7 @@
 │   │   │   ├── blacklisted_token_error.rb
 │   │   │   ├── cibtp_missing_payments_error.rb
 │   │   │   ├── conflict_error.rb
+│   │   │   ├── delegation_siret_mismatch_error.rb
 │   │   │   ├── dgfip_entreprise_unprocessable_entity_error.rb
 │   │   │   ├── dgfip_potential_not_found_error.rb
 │   │   │   ├── dns_resolution_error.rb
@@ -1906,29 +1923,38 @@
 │   │   │   │   └── validate_sexe_etat_civil.rb
 │   │   │   ├── cnav
 │   │   │   │   ├── allocation_adulte_handicape
-│   │   │   │   │   └── build_resource.rb
+│   │   │   │   │   ├── build_resource.rb
+│   │   │   │   │   └── validate_response.rb
 │   │   │   │   ├── allocation_enfant_handicape
-│   │   │   │   │   └── build_resource.rb
+│   │   │   │   │   ├── build_resource.rb
+│   │   │   │   │   └── validate_response.rb
+│   │   │   │   ├── allocation_rentree_scolaire
+│   │   │   │   │   ├── build_resource.rb
+│   │   │   │   │   └── validate_response.rb
 │   │   │   │   ├── allocation_soutien_familial
-│   │   │   │   │   └── build_resource.rb
+│   │   │   │   │   ├── build_resource.rb
+│   │   │   │   │   └── validate_response.rb
 │   │   │   │   ├── authenticate.rb
 │   │   │   │   ├── build_resource.rb
 │   │   │   │   ├── complementaire_sante_solidaire
-│   │   │   │   │   └── build_resource.rb
+│   │   │   │   │   ├── build_resource.rb
+│   │   │   │   │   └── validate_response.rb
 │   │   │   │   ├── extract_code_commune_from_transcogage.rb
 │   │   │   │   ├── make_request.rb
 │   │   │   │   ├── participation_familiale_eaje
 │   │   │   │   │   ├── build_resource.rb
 │   │   │   │   │   └── validate_response.rb
 │   │   │   │   ├── prime_activite
-│   │   │   │   │   └── build_resource.rb
+│   │   │   │   │   ├── build_resource.rb
+│   │   │   │   │   └── validate_response.rb
 │   │   │   │   ├── quotient_familial_v2
 │   │   │   │   │   ├── build_resource.rb
 │   │   │   │   │   ├── make_request.rb
 │   │   │   │   │   ├── validate_month.rb
 │   │   │   │   │   └── validate_year.rb
 │   │   │   │   ├── revenu_solidarite_active
-│   │   │   │   │   └── build_resource.rb
+│   │   │   │   │   ├── build_resource.rb
+│   │   │   │   │   └── validate_response.rb
 │   │   │   │   ├── validate_code_cog_insee_commune_naissance.rb
 │   │   │   │   ├── validate_code_cog_insee_commune_naissance_or_transcogage_params.rb
 │   │   │   │   ├── validate_date_naissance.rb
@@ -2212,6 +2238,8 @@
 │   │   │   │       │   ├── build_resource_collection.rb
 │   │   │   │       │   └── validate_response.rb
 │   │   │   │       ├── make_request.rb
+│   │   │   │       ├── payload_parser.rb
+│   │   │   │       ├── payload_parsing.rb
 │   │   │   │       └── validate_response.rb
 │   │   │   ├── mocked_interactor.rb
 │   │   │   ├── msa
@@ -2340,6 +2368,7 @@
 │   │   │   ├── cnav
 │   │   │   │   ├── allocation_adulte_handicape.rb
 │   │   │   │   ├── allocation_enfant_handicape.rb
+│   │   │   │   ├── allocation_rentree_scolaire.rb
 │   │   │   │   ├── allocation_soutien_familial.rb
 │   │   │   │   ├── complementaire_sante_solidaire.rb
 │   │   │   │   ├── participation_familiale_eaje.rb
@@ -2639,6 +2668,8 @@
 │   │   │   │   │   │   ├── v2.rb
 │   │   │   │   │   │   └── v3.rb
 │   │   │   │   │   ├── allocation_enfant_handicape
+│   │   │   │   │   │   └── v3.rb
+│   │   │   │   │   ├── allocation_rentree_scolaire
 │   │   │   │   │   │   └── v3.rb
 │   │   │   │   │   ├── allocation_soutien_familial
 │   │   │   │   │   │   ├── v2.rb
@@ -3070,6 +3101,7 @@
 │   │   │   ├── bdf_error_spec.rb
 │   │   │   ├── blacklisted_token_error_spec.rb
 │   │   │   ├── conflict_error_spec.rb
+│   │   │   ├── delegation_siret_mismatch_error_spec.rb
 │   │   │   ├── dgfip_entreprise_unprocessable_entity_error_spec.rb
 │   │   │   ├── dgfip_potential_not_found_error_spec.rb
 │   │   │   ├── dns_resolution_error_spec.rb
@@ -3310,6 +3342,12 @@
 │   │   │   │   │   │   ├── make_request_valid.json
 │   │   │   │   │   │   ├── valid_beneficiaire.json
 │   │   │   │   │   │   └── valid_beneficiaire_ouvrant_droit.json
+│   │   │   │   │   ├── allocation_rentree_scolaire
+│   │   │   │   │   │   ├── 404.json
+│   │   │   │   │   │   ├── make_request_valid.json
+│   │   │   │   │   │   ├── non_beneficiaire.json
+│   │   │   │   │   │   ├── valid_beneficiaire.json
+│   │   │   │   │   │   └── valid_beneficiaire_ouvrant_droit.json
 │   │   │   │   │   ├── allocation_soutien_familial
 │   │   │   │   │   │   ├── 404.json
 │   │   │   │   │   │   ├── make_request_valid.json
@@ -3456,8 +3494,8 @@
 │   │   │   │   │       ├── with_ine_valid_response.json
 │   │   │   │   │       └── with_ine_valid_response_with_admis_statut.json
 │   │   │   │   ├── mi
-│   │   │   │   │   ├── association-77567227238579-1dac.xml
-│   │   │   │   │   └── association-77567227238579.xml
+│   │   │   │   │   ├── association-77567227238579-1dac.json
+│   │   │   │   │   └── association-77567227238579.json
 │   │   │   │   ├── pdf
 │   │   │   │   │   ├── bad.pdf
 │   │   │   │   │   ├── damaged-with-warnings.pdf
@@ -3575,6 +3613,8 @@
 │   │   │   │   ├── allocation_adulte_handicape
 │   │   │   │   │   └── build_resource_spec.rb
 │   │   │   │   ├── allocation_enfant_handicape
+│   │   │   │   │   └── build_resource_spec.rb
+│   │   │   │   ├── allocation_rentree_scolaire
 │   │   │   │   │   └── build_resource_spec.rb
 │   │   │   │   ├── allocation_soutien_familial
 │   │   │   │   │   └── build_resource_spec.rb
@@ -3816,6 +3856,7 @@
 │   │   │   │       │   ├── build_resource_collection_spec.rb
 │   │   │   │       │   └── validate_response_spec.rb
 │   │   │   │       ├── make_request_spec.rb
+│   │   │   │       ├── payload_parser_spec.rb
 │   │   │   │       └── validate_response_spec.rb
 │   │   │   ├── msa
 │   │   │   │   └── conformites_cotisations
@@ -3951,6 +3992,7 @@
 │   │   │   ├── cnav
 │   │   │   │   ├── allocation_adulte_handicape_spec.rb
 │   │   │   │   ├── allocation_enfant_handicape_spec.rb
+│   │   │   │   ├── allocation_rentree_scolaire_spec.rb
 │   │   │   │   ├── allocation_soutien_familial_spec.rb
 │   │   │   │   ├── complementaire_sante_solidaire_spec.rb
 │   │   │   │   ├── participation_familiale_eaje_spec.rb
@@ -4249,6 +4291,9 @@
 │   │   │   │       │   ├── allocation_enfant_handicape
 │   │   │   │       │   │   ├── allocation_enfant_handicape_with_civility_spec.rb
 │   │   │   │       │   │   └── allocation_enfant_handicape_with_france_connect_spec.rb
+│   │   │   │       │   ├── allocation_rentree_scolaire
+│   │   │   │       │   │   ├── allocation_rentree_scolaire_with_civility_spec.rb
+│   │   │   │       │   │   └── allocation_rentree_scolaire_with_france_connect_spec.rb
 │   │   │   │       │   ├── allocation_soutien_familial_with_civility_spec.rb
 │   │   │   │       │   ├── allocation_soutien_familial_with_france_connect_spec.rb
 │   │   │   │       │   ├── complementaire_sante_solidaire_with_civility_spec.rb
@@ -5507,6 +5552,7 @@
     │   │   │   │   └── notify_reporters.rb
     │   │   │   ├── archive_current_authorization_request.rb
     │   │   │   ├── archive_previous_authorization_request.rb
+    │   │   │   ├── create_editor_delegation.rb
     │   │   │   ├── create_or_prolong_token.rb
     │   │   │   ├── extract_mailjet_variables.rb
     │   │   │   ├── find_or_create_authorization_request.rb
@@ -6243,7 +6289,8 @@
     │   │   ├── 20260318100001_validate_editor_tokens_foreign_keys.rb
     │   │   ├── 20260505100000_create_changelog_subscriptions.rb
     │   │   ├── 20260520132026_add_fields_to_editors.rb
-    │   │   └── 20260605120000_create_admin_activities.rb
+    │   │   ├── 20260605120000_create_admin_activities.rb
+    │   │   └── 20260706120000_add_created_via_to_editor_delegations.rb
     │   ├── schema.rb
     │   ├── seeds.rb
     │   └── views
@@ -7036,6 +7083,7 @@
     │   │   ├── feature_helper.rb
     │   │   └── specs_helper.rb
     │   ├── helpers_spec
+    │   │   ├── application_helper_spec.rb
     │   │   ├── external_url_helper_spec.rb
     │   │   ├── scope_helper_spec.rb
     │   │   └── tag_color_helper_spec.rb
@@ -7062,6 +7110,7 @@
     │   │   │   │   └── notify_reporters_spec.rb
     │   │   │   ├── archive_current_authorization_request_spec.rb
     │   │   │   ├── archive_previous_authorization_request_spec.rb
+    │   │   │   ├── create_editor_delegation_spec.rb
     │   │   │   ├── create_or_prolong_token_spec.rb
     │   │   │   ├── extract_mailjet_variables_spec.rb
     │   │   │   ├── find_or_create_authorization_request_spec.rb
@@ -7218,6 +7267,7 @@
     │   │       │   │   ├── index.rb
     │   │       │   │   └── show.rb
     │   │       │   ├── faq.rb
+    │   │       │   ├── layout_landmarks.rb
     │   │       │   ├── logout.rb
     │   │       │   ├── pages.rb
     │   │       │   ├── show_token_from_magic_link.rb
@@ -7251,4 +7301,4 @@
     │   └── .gitkeep
     └── vendor
         └── .keep
-1470 directories, 6113 files
+1477 directories, 6156 files
