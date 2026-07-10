@@ -1,24 +1,27 @@
-## Changelog : OTP-DS-to-Grist (30 derniers jours, au 2 juillet 2026)
+## Changelog : OTP-DS-to-Grist (30 derniers jours, au 9 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la gestion des configurations de synchronisation, notamment la possibilité de gérer plusieurs configurations simultanément et d'améliorer l'expérience utilisateur lors de leur création et sauvegarde. Des corrections de bugs ont également été apportées pour améliorer la stabilité et la fiabilité de l'application.
+Ce mois-ci, les améliorations se concentrent sur la gestion des configurations de synchronisation, notamment la possibilité de gérer plusieurs configurations, de les supprimer et de les charger. Des corrections ont également été apportées pour améliorer la stabilité et l'expérience utilisateur, comme la gestion du statut de synchronisation et la résolution de blocages dans le formulaire de configuration. Enfin, des optimisations ont été faites pour l'affichage des données dans Grist.
 
 ### Évolutions fonctionnelles
-- Possibilité de gérer plusieurs configurations de synchronisation avec l'API OTP. [#309](https://github.com/betagouv/OTP-DS-to-Grist/issues/309)
-- Ajout de la possibilité de supprimer plusieurs configurations simultanément. [#373](https://github.com/betagouv/OTP-DS-to-Grist/issues/373)
-- Implémentation du statut de synchronisation même sans configuration définie. [#324](https://github.com/betagouv/OTP-DS-to-Grist/issues/324)
-- Amélioration de la gestion des erreurs et affichage de messages plus clairs. [#315](https://github.com/betagouv/OTP-DS-to-Grist/issues/315)
-- Possibilité de charger une configuration existante. [#372](https://github.com/betagouv/OTP-DS-to-Grist/issues/372)
-- Possibilité de sauvegarder une seule configuration. [#371](https://github.com/betagouv/OTP-DS-to-Grist/issues/371)
-- Ajout d'un volet dédié à la gestion des configurations dans l'interface utilisateur. [#362](https://github.com/betagouv/OTP-DS-to-Grist/issues/362) et [#358](https://github.com/betagouv/OTP-DS-to-Grist/issues/358)
-- Correction d'un bug empêchant la suppression de la table répétable générique. [#347](https://github.com/betagouv/OTP-DS-to-Grist/issues/347)
-- Correction d'un bug lié à la troncature des valeurs de texte trop longues. [#381](https://github.com/betagouv/OTP-DS-to-Grist/issues/381) et [#383](https://github.com/betagouv/OTP-DS-to-Grist/issues/383)
+- Possibilité de synchroniser plusieurs configurations simultanément. [#375](https://github.com/betagouv/OTP-DS-to-Grist/issues/375)
+- Ajout de la fonctionnalité de suppression d'une configuration. [#373](https://github.com/betagouv/OTP-DS-to-Grist/issues/373)
+- Ajout de la fonctionnalité de chargement d'une configuration. [#372](https://github.com/betagouv/OTP-DS-to-Grist/issues/372)
+- Possibilité de sauvegarder une configuration individuelle. [#371](https://github.com/betagouv/OTP-DS-to-Grist/issues/371)
+- Affichage du statut de synchronisation même en l'absence de configuration. [#324](https://github.com/betagouv/OTP-DS-to-Grist/issues/324)
+- Correction d'un blocage du formulaire de configuration lors de la saisie du numéro DN. [#388](https://github.com/betagouv/OTP-DS-to-Grist/issues/388)
+- Correction du test de connexion DN sur une configuration déjà sauvegardée. [#391](https://github.com/betagouv/OTP-DS-to-Grist/issues/391)
+- Masquage automatique des colonnes `_id` dans Grist pour une meilleure lisibilité. [#386](https://github.com/betagouv/OTP-DS-to-Grist/issues/386)
 
 ### Évolutions techniques
-- Modification du paramètre `max_length` dans la fonction `normalize_column_name` pour une meilleure gestion des noms de colonnes. [#355](https://github.com/betagouv/OTP-DS-to-Grist/issues/355)
-- Installation de Vue.js et de DSFR pour l'interface utilisateur. [#328](https://github.com/betagouv/OTP-DS-to-Grist/issues/328) et [#342](https://github.com/betagouv/OTP-DS-to-Grist/issues/342)
+- L'API gère désormais plusieurs configurations. [#309](https://github.com/betagouv/OTP-DS-to-Grist/issues/309)
+- Suppression de la création de la table répétable générique `_repetable_rows` dans Grist. [#347](https://github.com/betagouv/OTP-DS-to-Grist/issues/347)
+- Suppression de la logique de troncature des valeurs de texte pour éviter les erreurs. [#381](https://github.com/betagouv/OTP-DS-to-Grist/issues/381) et [#383](https://github.com/betagouv/OTP-DS-to-Grist/issues/383)
+- Correction d'un paramètre `max_length` incorrect dans la fonction `normalize_column_name`. [#355](https://github.com/betagouv/OTP-DS-to-Grist/issues/355)
 
 ### Autres changements
+- Installation de Vue DSFR pour améliorer l'interface utilisateur. [#342](https://github.com/betagouv/OTP-DS-to-Grist/issues/342)
 - Mise à jour de la documentation et du tutoriel. [#346](https://github.com/betagouv/OTP-DS-to-Grist/issues/346)
-- Correction de chemin du manifest et mise à jour de l'interface Vue.js.
-- Diverses mises à jour de dépendances (urllib3, form-data, ruff, pytest, cryptography, baseline-browser-mapping, eslint, python-socketio, sqlalchemy). Ces mises à jour sont de maintenance et n'impactent pas directement l'utilisateur.
+- Correction d'un message d'erreur persistant. [#315](https://github.com/betagouv/OTP-DS-to-Grist/issues/315)
+- Correction du chemin du manifest.
+- Mise à jour de la vue. [#340](https://github.com/betagouv/OTP-DS-to-Grist/issues/340)
