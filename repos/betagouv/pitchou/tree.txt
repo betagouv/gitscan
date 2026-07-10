@@ -65,6 +65,7 @@
 │       │   │   │   ├── DSFR
 │       │   │   │   │   ├── BoutonModale.svelte
 │       │   │   │   │   └── Pagination.svelte
+│       │   │   │   ├── DatePicker.svelte
 │       │   │   │   ├── DownloadButton.svelte
 │       │   │   │   ├── EspècesProtégéesGroupéesParImpact.svelte
 │       │   │   │   ├── ListeDossiers
@@ -92,7 +93,9 @@
 │       │   │   ├── server
 │       │   │   │   ├── auth.ts
 │       │   │   │   ├── fichier.test.ts
-│       │   │   │   └── fichier.ts
+│       │   │   │   ├── fichier.ts
+│       │   │   │   ├── uploadLimit.test.ts
+│       │   │   │   └── uploadLimit.ts
 │       │   │   ├── shared
 │       │   │   │   ├── aarri.ts
 │       │   │   │   ├── créerObjetCapDepuisURLs.ts
@@ -100,8 +103,11 @@
 │       │   │   │   └── main.ts
 │       │   │   ├── state
 │       │   │   │   └── store.svelte.ts
-│       │   │   └── stats
-│       │   │       └── stats.ts
+│       │   │   ├── stats
+│       │   │   │   └── stats.ts
+│       │   │   └── upload
+│       │   │       ├── uploadSizeHint.test.ts
+│       │   │       └── uploadSizeHint.ts
 │       │   └── routes
 │       │       ├── +error.svelte
 │       │       ├── +layout.svelte
@@ -190,6 +196,11 @@
 │       │       │       ├── +server.ts
 │       │       │       └── filtres
 │       │       │           └── +server.ts
+│       │       ├── attachment-autre
+│       │       │   ├── +server.ts
+│       │       │   └── fichier
+│       │       │       └── [fichierId]
+│       │       │           └── +server.ts
 │       │       ├── avis-expert
 │       │       │   ├── +server.ts
 │       │       │   ├── [avisExpertId]
@@ -260,13 +271,17 @@
 │       │       │       │   ├── DossierGénérationDocuments.svelte
 │       │       │       │   ├── DossierInstruction.svelte
 │       │       │       │   ├── DossierMessagerie.svelte
+│       │       │       │   ├── DossierPiecesJointes.svelte
+│       │       │       │   ├── DossierPiecesJointes.svelte.test.ts
 │       │       │       │   ├── DossierPorteurDeProjet.svelte
 │       │       │       │   ├── DossierProjet.svelte
 │       │       │       │   ├── EnteteDossier.svelte
 │       │       │       │   ├── ModaleAjouterPièceJointe.svelte
 │       │       │       │   ├── affichageValeurs.ts
+│       │       │       │   ├── attachmentAutre.ts
 │       │       │       │   ├── avisExpert.ts
-│       │       │       │   └── générerDocument.ts
+│       │       │       │   ├── générerDocument.ts
+│       │       │       │   └── ouvrirModaleAjouterPieceJointe.svelte.test.ts
 │       │       │       ├── Dossier.svelte
 │       │       │       ├── TagRésultatContrôle.svelte
 │       │       │       └── messages
@@ -471,6 +486,7 @@
 │   ├── instruction
 │   │   ├── DN-Pitchou.png
 │   │   ├── FAQ.md
+│   │   ├── ajouter-membre-groupe-instructeurs.md
 │   │   ├── articulation-dn-pitchou.md
 │   │   ├── cerfa.md
 │   │   ├── depot-dossier-petitionnaires.md
@@ -491,7 +507,9 @@
 │   │   ├── embarquement-nouveau-service-instructeur.md
 │   │   ├── index.md
 │   │   ├── phases-instructions.md
-│   │   └── phases_pitchou.png
+│   │   ├── phases_pitchou.png
+│   │   ├── premiers-pas
+│   │   └── saisine-cnpn.md
 │   ├── projet-pitchou
 │   │   ├── ajouter-une-espece-manquante.md
 │   │   ├── evenements-suivis.md
@@ -1217,8 +1235,12 @@
 │   │   │   ├── 20260629120000_ajout-date-mise-en-service.ts
 │   │   │   ├── 20260629140000_unique-nom-numéro-démarche-groupe-instructeurs.ts
 │   │   │   ├── 20260701120000_porteur-de-projet.ts
-│   │   │   └── 20260702120000_cartographie-projet.ts
+│   │   │   ├── 20260702120000_cartographie-projet.ts
+│   │   │   ├── 20260706150000_add-attachment-autre.ts
+│   │   │   └── 20260707120000_ajout-document-bdc-statut.ts
 │   │   ├── package.json
+│   │   ├── scripts
+│   │   │   └── wipe-schema.ts
 │   │   ├── seeds
 │   │   │   ├── dev
 │   │   │   │   ├── 01_espece_taxref.ts
@@ -1255,6 +1277,7 @@
 │   │   │   │   ├── aarri.ts
 │   │   │   │   ├── analyse_utilisation.ts
 │   │   │   │   ├── arête_dossier__fichier_pièces_jointes_pétitionnaire.ts
+│   │   │   │   ├── attachmentAutre.ts
 │   │   │   │   ├── avis_expert.test.ts
 │   │   │   │   ├── avis_expert.ts
 │   │   │   │   ├── capability-geomce.ts
@@ -1299,6 +1322,7 @@
 │   │   │   ├── object-storage.test.ts
 │   │   │   ├── object-storage.ts
 │   │   │   ├── taxref.ts
+│   │   │   ├── évènements_métriques.test.ts
 │   │   │   └── évènements_métriques.ts
 │   │   └── tsconfig.json
 │   ├── server-utils
@@ -1408,4 +1432,4 @@
 │   └── tsconfig.json
 ├── tsconfig.base.json
 └── tsconfig.json
-186 directories, 1265 files
+191 directories, 1284 files
