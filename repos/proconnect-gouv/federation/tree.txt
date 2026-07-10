@@ -544,7 +544,6 @@
 │   │   │   │   │   │   ├── temporary-restricted-error.svg
 │   │   │   │   │   │   └── unauthorized-email-error.svg
 │   │   │   │   │   ├── js
-│   │   │   │   │   │   ├── crisp.js
 │   │   │   │   │   │   ├── email-fca.js
 │   │   │   │   │   │   ├── email-suggestion.js
 │   │   │   │   │   │   ├── form-validation.js
@@ -1204,7 +1203,10 @@
 │   ├── migrations
 │   │   ├── 20250203155216-remove_alt_field_from_provider_collection.ts
 │   │   ├── 20260526121027-delete_available_scopes_in_database.ts
-│   │   └── 20260526122818-set_roles_and_organization_label_for_every_sp.ts
+│   │   ├── 20260526122818-set_roles_and_organization_label_for_every_sp.ts
+│   │   ├── 20260706134953-move_client.email_to_collaborators.ts
+│   │   ├── 20260707145416-default_value_for_isMfaCompliant.ts
+│   │   └── 20260708100033-fix_default_value_for_isMfaCompliant.ts
 │   ├── nest-cli.json
 │   ├── package.json
 │   ├── scripts
@@ -1381,11 +1383,8 @@
     │   │       │   ├── service-provider-configs.json
     │   │       │   └── service-providers.json
     │   │       ├── k8s
-    │   │       │   ├── api-common.json
     │   │       │   ├── environment.json
-    │   │       │   ├── identity-provider-configs.json
     │   │       │   ├── identity-providers.json
-    │   │       │   ├── service-provider-configs.json
     │   │       │   └── service-providers.json
     │   │       └── scopes.json
     │   ├── integration
@@ -1537,4 +1536,4 @@
     │   └── parse-business-log.ts
     ├── tsconfig.json
     └── yarn.lock
-354 directories, 1185 files
+354 directories, 1184 files
