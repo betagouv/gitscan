@@ -283,6 +283,8 @@
 │   │       │       ├── VoteModal.svelte
 │   │       │       ├── VoteSelect.svelte
 │   │       │       └── index.ts
+│   │       ├── maintenance
+│   │       │   └── +page.svelte
 │   │       └── metrics
 │   │           └── +server.ts
 │   ├── static
@@ -605,6 +607,7 @@
 │   │   │       ├── 09abb45aa086_initial_schema.py
 │   │   │       ├── 137fbd6418e6_remove_unique_constraint_on_system_msg_.py
 │   │   │       ├── 67e629fed515_merge_drop_session_hash_and_remove_.py
+│   │   │       ├── 83c86b798214_simplify_system_msg_.py
 │   │   │       ├── 88e025e5dbfa_drop_comparison_session_hash.py
 │   │   │       ├── 89de92001a7e_merge_voted_at_and_web_search_results_.py
 │   │   │       ├── a3f7c1e9b2d4_add_turn_voted_at.py
@@ -618,7 +621,6 @@
 │   │   │   ├── messages
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── llm.py
-│   │   │   │   ├── system.py
 │   │   │   │   └── user.py
 │   │   │   ├── turn.py
 │   │   │   └── utils.py
@@ -637,6 +639,9 @@
 │   │   ├── start_duckdb.sh
 │   │   └── verify_dataset.sql
 │   ├── logger.py
+│   ├── maintenance
+│   │   ├── actions.py
+│   │   └── cli.py
 │   ├── models
 │   │   ├── README.md
 │   │   ├── __init__.py
@@ -677,4 +682,4 @@
 │   ├── utils.py
 │   └── validation.py
 └── uv.lock
-107 directories, 572 files
+109 directories, 575 files

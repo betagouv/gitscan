@@ -1,21 +1,18 @@
 {
   "url": "https://github.com/betagouv/ComparIA",
   "name": "ComparIA",
-  "description": "ComparIA est une plateforme open source permettant de collecter des données de préférence humaine pour l'évaluation des modèles de langage, en particulier pour les langues moins représentées et les secteurs spécifiques. Elle vise à sensibiliser aux biais et à l'impact environnemental des modèles.",
+  "description": "ComparIA est une plateforme open source pour collecter des données de préférences humaines pour les modèles de langage, en particulier pour les langues moins représentées et les secteurs spécifiques. Elle vise à sensibiliser aux biais et à l'impact environnemental des modèles.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
-    "Visualisation de données & Cartographie",
     "Authentification & Accès",
-    "Statistiques & Rapports",
     "Recherche & Filtres",
-    "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
-    "Intelligence Artificielle & NLP"
+    "Visualisation de données & Cartographie",
+    "Sécurité & Conformité"
   ],
   "audience": [
-    "Grand public",
     "Professionnels",
     "Agents de l'Administration",
     "Associations"
@@ -23,26 +20,16 @@
   "dependencies": [
     "ecologits",
     "fastapi",
-    "json5",
     "litellm",
-    "google-auth",
-    "numpy",
-    "prometheus-fastapi-instrumentator",
     "psycopg2-binary",
     "pydantic",
     "sqlalchemy",
-    "pydantic-settings",
-    "python-logging-loki",
     "redis",
     "requests",
-    "rich",
-    "sentry-sdk",
-    "uvicorn",
-    "altcha",
-    "sqlmodel",
-    "psycopg",
-    "alembic",
-    "linkup-sdk"
+    "numpy",
+    "pandas",
+    "polars",
+    "huggingface_hub"
   ],
   "components": [
     "API REST & GraphQL",
@@ -50,7 +37,7 @@
     "Python (scripts & backend)",
     "Docker & Conteneurs",
     "Frontend React",
-    "Microservices & Architecture"
+    "Tests"
   ],
   "auth": {
     "methods": [
@@ -58,18 +45,25 @@
       "oauth2"
     ]
   },
-  "tests": null,
-  "workflows": null,
-  "lastActivity": "2026-06-29T12:00:36+02:00",
+  "tests": "Pytest",
+  "workflows": [
+    "CI/CD & Déploiement"
+  ],
+  "lastActivity": "2026-07-09T16:57:35+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
-  "metrics": null,
+  "metrics": {
+    "stars": null,
+    "forks": null,
+    "contributors": null,
+    "openIssues": null
+  },
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
     "Python",
-    "Intelligence Artificielle & LLM",
-    "Sécurité & Auth"
+    "Intelligence Artificielle & NLP",
+    "Sécurité & Conformité"
   ]
 }
