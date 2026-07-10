@@ -1,14 +1,13 @@
-## Changelog : doc.demarches-simplifiees.fr (30 derniers jours, au 5 juin 2026)
+## Changelog : doc.demarches-simplifiees.fr (30 derniers jours, au 09 juillet 2026)
 
 ### Résumé
-Ce changelog présente les mises à jour récentes de la documentation de demarches-simplifiees.fr. Les modifications se concentrent sur l'amélioration de la documentation et la correction de quelques problèmes liés à l'affichage dans Gitbook.
+Les récentes mises à jour se concentrent sur l'amélioration de la documentation de l'API GraphQL, notamment en ajoutant la prise en charge des mutations pour la gestion des démarches (publication, modification, clonage). Des ajustements mineurs ont également été effectués sur la plateforme GitBook.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle majeure n'a été déployée durant cette période.
+- Amélioration de la documentation de l'API GraphQL avec l'ajout des mutations pour les démarches : publication, modification et clonage. [#1202](https://github.com/betagouv/doc.demarches-simplifiees.fr/issues/1202)
 
 ### Évolutions techniques
-- Correction de problèmes d'affichage dans Gitbook. [#1196](https://github.com/betagouv/doc.demarches-simplifiees.fr/issues/1196)
-- Amélioration de la structure de la documentation dans Gitbook. [#1195](https://github.com/betagouv/doc.demarches-simplifiees.fr/issues/1195)
+- Aucune évolution technique majeure à signaler.
 
 ### Autres changements
-Aucun autre changement significatif à signaler.
+- Mises à jour et ajustements mineurs sur la plateforme GitBook. [#1197](https://github.com/betagouv/doc.demarches-simplifiees.fr/issues/1197), [#1198](https://github.com/betagouv/doc.demarches-simplifiees.fr/issues/1198), [#1199](https://github.com/betagouv/doc.demarches-simplifiees.fr/issues/1199), [#1200](https://github.com/betagouv/doc.demarches-simplifiees.fr/issues/1200), [#1201](https://github.com/betagouv/doc.demarches-simplifiees.fr/issues/1201), [#1203](https://github.com/betagouv/doc.demarches-simplifiees.fr/issues/1203), [#1204](https://github.com/betagouv/doc.demarches-simplifiees.fr/issues/1204), [#1205](https://github.com/betagouv/doc.demarches-simplifiees.fr/issues/1205)
