@@ -1,24 +1,25 @@
-## Changelog : mobilic-api (30 derniers jours, au 06 juillet 2026)
+## Changelog : mobilic-api (30 derniers jours, au 09 juillet 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a travaillé sur l'amélioration des performances de l'API, notamment au niveau de la page d'accueil et de la gestion des requêtes. Des corrections ont été apportées pour assurer la fiabilité des données et des fonctionnalités existantes, ainsi que l'ajout de la possibilité de lier un contact et une entreprise à une transaction.
+Les dernières mises à jour de l'API Mobilic se concentrent sur l'amélioration de la gestion des webinaires, l'intégration avec Brevo (outil de marketing), l'expérience administrateur et l'observabilité de l'application. Des corrections de bugs et des optimisations de performance ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Possibilité d'ajouter un contact à une transaction (deal) [#715](https://github.com/MTES-MCT/mobilic-api/pull/715).
-- Amélioration de la vue des activités pour les administrateurs [#719](https://github.com/MTES-MCT/mobilic-api/pull/719).
-- Ajout de la possibilité de supprimer un contexte (context) [#4995470](https://github.com/MTES-MCT/mobilic-api/commit/4995470).
-- Amélioration du traitement des pauses longues dans le calcul des alertes réglementaires [#701](https://github.com/MTES-MCT/mobilic-api/pull/701).
+- Ajout de la possibilité de lier un contact et une entreprise à un deal. [#715](https://github.com/MTES-MCT/mobilic-api/pull/715)
+- Amélioration de la vue des activités pour les administrateurs, avec la possibilité de supprimer un contexte. [#719](https://github.com/MTES-MCT/mobilic-api/pull/719)
+- Ajout de la gestion des jours travaillés modifiés (ajout/édition). [#707](https://github.com/MTES-MCT/mobilic-api/pull/707)
+- Intégration de la synchronisation des deals existants avec Brevo, avec une option de test (dry-run). [#725](https://github.com/MTES-MCT/mobilic-api/pull/725)
+- Possibilité de supprimer un contexte via l'API. [#720](https://github.com/MTES-MCT/mobilic-api/pull/720)
 
 ### Évolutions techniques
-- Optimisation des requêtes pour la page d'accueil de l'administration, améliorant significativement les performances [#713](https://github.com/MTES-MCT/mobilic-api/pull/713).
-- Instrumentation des requêtes SQL pour le suivi des performances via Sentry [#706](https://github.com/MTES-MCT/mobilic-api/pull/706).
-- Augmentation du nombre de workers Gunicorn et ajustement des timeouts pour améliorer la capacité de l'API à gérer les requêtes [#711](https://github.com/MTES-MCT/mobilic-api/pull/711).
-- Correction d'un effet de bord qui réinitialisait les modifications d'administration via le "freeze" des missions [#706](https://github.com/MTES-MCT/mobilic-api/pull/706).
-- Correction de la registration de la mutation `snooze_nb_worker_info` [#716](https://github.com/MTES-MCT/mobilic-api/pull/716).
-- Simplification du code lié aux réglementations en supprimant des variables inutilisées [#701](https://github.com/MTES-MCT/mobilic-api/pull/701).
+- Optimisation de la récupération des webinaires en utilisant un cache Redis et en gérant les limites de débit. [#725](https://github.com/MTES-MCT/mobilic-api/pull/725)
+- Ajout d'indicateurs SQL pour l'observabilité et le suivi des performances des requêtes dans Sentry. [#706](https://github.com/MTES-MCT/mobilic-api/pull/706)
+- Correction d'un effet secondaire involontaire qui réinitialisait les modifications administratives des missions. [#716](https://github.com/MTES-MCT/mobilic-api/pull/716) et [#718](https://github.com/MTES-MCT/mobilic-api/pull/718)
+- Correction de bugs et améliorations de la robustesse de l'intégration Brevo, notamment la gestion des erreurs et l'idempotence. [#727](https://github.com/MTES-MCT/mobilic-api/pull/727)
+- Correction de tests et suppression de code mort dans divers modules.
 
 ### Autres changements
-- Corrections et améliorations diverses du code Brevo (synchronisation des transactions, gestion des erreurs, idempotence) [#715](https://github.com/MTES-MCT/mobilic-api/pull/715).
-- Amélioration de la description du champ `dismiss_context` pour inclure un exemple de payload [#5cb296c](https://github.com/MTES-MCT/mobilic-api/commit/5cb296c).
-- Corrections de tests unitaires et d'intégration pour assurer la stabilité du code.
-- Corrections de petites inconsistances et erreurs mineures dans divers modules.
+- Ajout d'exemples de payload dans la description d'un champ pour améliorer la documentation.
+- Amélioration de la description du champ `dismiss_context`.
+- Correction de la mutation `register_snooze_nb_worker_info`.
+- Correction de tests pour assurer la non-régression des données d'activités.
+- Amélioration de la complexité du code (Sonarcloud) pour l'intégration Brevo et le module `control`.
