@@ -12,12 +12,15 @@
 │   │   └── codeql-config.yml
 │   ├── dependabot.yml
 │   └── workflows
-│       └── ci.yml
+│       ├── ci.yml
+│       └── release.yml
 ├── .gitignore
 ├── .irbrc
+├── .release-please-manifest.json
 ├── .rspec
 ├── .rubocop.yml
 ├── .ruby-version
+├── CHANGELOG.md
 ├── Dockerfile
 ├── Gemfile
 ├── Gemfile.lock
@@ -85,8 +88,6 @@
 │   │   ├── process_batch_sites_creation_job.rb
 │   │   ├── process_site_upload_job.rb
 │   │   ├── remove_inactive_sessions_job.rb
-│   │   ├── remove_inactive_teams_job.rb
-│   │   ├── remove_inactive_users_job.rb
 │   │   ├── remove_orphan_tags_job.rb
 │   │   └── run_check_job.rb
 │   ├── libs
@@ -310,7 +311,10 @@
 │   │   ├── 20260521085323_add_last_audited_at_to_sites.rb
 │   │   ├── 20260521085429_backfill_last_audited_at.rb
 │   │   ├── 20260601082116_remove_current_from_audits.rb
-│   │   └── 20260601092126_remove_url_from_audits.rb
+│   │   ├── 20260601092126_remove_url_from_audits.rb
+│   │   ├── 20260702092639_add_user_to_audits.rb
+│   │   ├── 20260702092721_backfill_audits_with_user.rb
+│   │   └── 20260702124628_add_not_null_constraint_to_audits_user_id.rb
 │   ├── queue_schema.rb
 │   ├── schema.rb
 │   └── seeds.rb
@@ -354,6 +358,7 @@
 │   ├── icon.png
 │   ├── icon.svg
 │   └── robots.txt
+├── release-please-config.json
 ├── script
 │   └── .keep
 ├── spec
@@ -394,7 +399,6 @@
 │   │   ├── process_batch_sites_creation_job_spec.rb
 │   │   ├── process_site_upload_job_spec.rb
 │   │   ├── remove_inactive_sessions_job_spec.rb
-│   │   ├── remove_inactive_users_job_spec.rb
 │   │   └── run_check_job_spec.rb
 │   ├── lib
 │   │   └── string_comparison_spec.rb
@@ -425,6 +429,7 @@
 │   │   └── user_spec.rb
 │   ├── rails_helper.rb
 │   ├── requests
+│   │   ├── audits_controller_spec.rb
 │   │   ├── authentication_spec.rb
 │   │   ├── jdma_widget_spec.rb
 │   │   ├── sites_controller_spec.rb
@@ -457,4 +462,4 @@
         ├── axe.fr.json
         ├── axe.min.js
         └── stealth.min.js
-78 directories, 381 files
+78 directories, 386 files
