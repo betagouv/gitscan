@@ -49,6 +49,7 @@
 │   ├── restore-web-db
 │   ├── sass
 │   └── upgrade-deps
+├── csplab-frontend.code-workspace
 ├── csplab.code-workspace
 ├── dev
 │   ├── .python-version
@@ -480,8 +481,12 @@
         │   └── recruteur
         │       ├── __init__.py
         │       └── usecases
+        │           ├── creer_note.py
+        │           ├── editer_note.py
         │           ├── get_organisme_recruteur.py
         │           ├── initialize_organisme_steps.py
+        │           ├── lister_notes_candidature.py
+        │           ├── supprimer_note.py
         │           └── update_organisme_steps.py
         ├── bin
         │   ├── backup-db-to-scaleway.sh
@@ -615,20 +620,31 @@
         │   └── recruteur
         │       ├── entities
         │       │   ├── __init__.py
+        │       │   ├── candidature_recruteur.py
         │       │   ├── etape_recrutement.py
-        │       │   └── organisme_recruteur.py
+        │       │   ├── note.py
+        │       │   ├── organisme_recruteur.py
+        │       │   └── recrutement.py
         │       ├── errors
         │       │   ├── __init__.py
-        │       │   └── erreur_recrutement.py
+        │       │   ├── candidature_errors.py
+        │       │   ├── erreur_recrutement.py
+        │       │   └── note_errors.py
         │       ├── events
         │       │   ├── __init__.py
+        │       │   ├── note_events.py
         │       │   └── organisme_events.py
         │       ├── repositories
         │       │   ├── __init__.py
+        │       │   ├── note_repository_interface.py
         │       │   └── organisme_repository_interface.py
+        │       ├── services
+        │       │   ├── __init__.py
+        │       │   └── note_query_service_interface.py
         │       └── value_objects
         │           ├── __init__.py
-        │           └── categorie_etapes_recrutement.py
+        │           ├── categorie_etapes_recrutement.py
+        │           └── statut_recrutement.py
         ├── eslint.config.mjs
         ├── infrastructure
         │   ├── __init__.py
@@ -737,8 +753,15 @@
         │   │   │   │       └── seed_recruteur_datas.py
         │   │   │   ├── migrations
         │   │   │   │   ├── 0001_initial.py
+        │   │   │   │   ├── 0002_notemodel.py
+        │   │   │   │   ├── 0003_recrutement_etapes.py
         │   │   │   │   └── __init__.py
-        │   │   │   └── models.py
+        │   │   │   └── models
+        │   │   │       ├── __init__.py
+        │   │   │       ├── etape.py
+        │   │   │       ├── note.py
+        │   │   │       ├── organisme.py
+        │   │   │       └── recrutement.py
         │   │   ├── referentiel
         │   │   │   ├── __init__.py
         │   │   │   ├── admin.py
@@ -849,6 +872,7 @@
         │   │       └── logger.py
         │   ├── mappers
         │   │   ├── __init__.py
+        │   │   ├── note_mapper.py
         │   │   ├── organisme_identite_mapper.py
         │   │   ├── organisme_recruteur_mapper.py
         │   │   ├── qdrant_filters_mapper.py
@@ -879,6 +903,8 @@
         │       │   └── postgres_user_source_repository.py
         │       ├── recruteur
         │       │   ├── __init__.py
+        │       │   ├── postgres_note_query_service.py
+        │       │   ├── postgres_note_repository.py
         │       │   └── postgres_organisme_repository.py
         │       ├── repository_factory.py
         │       └── shared
@@ -988,13 +1014,18 @@
         │   │   ├── package.json
         │   │   ├── src
         │   │   │   ├── api
+        │   │   │   │   ├── client.test.ts
+        │   │   │   │   ├── client.ts
+        │   │   │   │   ├── errors.test.ts
+        │   │   │   │   ├── errors.ts
         │   │   │   │   └── utilisateur.ts
         │   │   │   ├── app
         │   │   │   │   ├── App.vue
         │   │   │   │   ├── icons.ts
         │   │   │   │   ├── main.ts
-        │   │   │   │   └── routes.ts
+        │   │   │   │   └── navigation.ts
         │   │   │   ├── components
+        │   │   │   │   ├── ErrorBoundary.vue
         │   │   │   │   ├── base
         │   │   │   │   │   ├── CspAvatar
         │   │   │   │   │   │   ├── CspAvatar.stories.ts
@@ -1008,6 +1039,9 @@
         │   │   │   │   │   ├── CspButton
         │   │   │   │   │   │   ├── CspButton.stories.ts
         │   │   │   │   │   │   └── CspButton.vue
+        │   │   │   │   │   ├── CspCallout
+        │   │   │   │   │   │   ├── CspCallout.stories.ts
+        │   │   │   │   │   │   └── CspCallout.vue
         │   │   │   │   │   ├── CspCard
         │   │   │   │   │   │   ├── CspCard.stories.ts
         │   │   │   │   │   │   └── CspCard.vue
@@ -1037,6 +1071,12 @@
         │   │   │   │   │   ├── CspInput
         │   │   │   │   │   │   ├── CspInput.stories.ts
         │   │   │   │   │   │   └── CspInput.vue
+        │   │   │   │   │   ├── CspMeta
+        │   │   │   │   │   │   ├── CspMeta.stories.ts
+        │   │   │   │   │   │   ├── CspMeta.vue
+        │   │   │   │   │   │   ├── CspMetaList.stories.ts
+        │   │   │   │   │   │   ├── CspMetaList.vue
+        │   │   │   │   │   │   └── types.ts
         │   │   │   │   │   ├── CspPagination
         │   │   │   │   │   │   ├── CspPagination.stories.ts
         │   │   │   │   │   │   └── CspPagination.vue
@@ -1078,11 +1118,14 @@
         │   │   │   │   │   ├── CspToast
         │   │   │   │   │   │   ├── CspToast.stories.ts
         │   │   │   │   │   │   ├── CspToast.vue
-        │   │   │   │   │   │   └── CspToastProvider.vue
+        │   │   │   │   │   │   ├── CspToastProvider.vue
+        │   │   │   │   │   │   └── CspToaster.vue
         │   │   │   │   │   └── CspTooltip
         │   │   │   │   │       ├── CspTooltip.stories.ts
         │   │   │   │   │       └── CspTooltip.vue
         │   │   │   │   └── layout
+        │   │   │   │       ├── AppShell.types.ts
+        │   │   │   │       ├── AppShell.vue
         │   │   │   │       ├── CspAppLayout
         │   │   │   │       │   └── CspAppLayout.vue
         │   │   │   │       ├── CspPageHeader
@@ -1098,31 +1141,73 @@
         │   │   │   │           ├── CspSidebarTrigger.vue
         │   │   │   │           └── CspSidebarUser.vue
         │   │   │   ├── composables
+        │   │   │   │   ├── async
+        │   │   │   │   │   ├── useAsyncState.test.ts
+        │   │   │   │   │   ├── useAsyncState.ts
+        │   │   │   │   │   ├── useDebounce.test.ts
+        │   │   │   │   │   └── useDebounce.ts
         │   │   │   │   ├── dnd
         │   │   │   │   │   ├── useDraggableElement.ts
         │   │   │   │   │   └── useDropTargetElement.ts
-        │   │   │   │   ├── useColorMode.test.ts
-        │   │   │   │   ├── useColorMode.ts
-        │   │   │   │   ├── useCurrentUser.test.ts
-        │   │   │   │   ├── useCurrentUser.ts
-        │   │   │   │   ├── useSidebar.test.ts
-        │   │   │   │   └── useSidebar.ts
+        │   │   │   │   ├── storage
+        │   │   │   │   │   ├── useDraft.test.ts
+        │   │   │   │   │   └── useDraft.ts
+        │   │   │   │   └── ui
+        │   │   │   │       ├── useColorMode.test.ts
+        │   │   │   │       ├── useColorMode.ts
+        │   │   │   │       ├── useDisclosure.test.ts
+        │   │   │   │       ├── useDisclosure.ts
+        │   │   │   │       ├── useSidebar.test.ts
+        │   │   │   │       ├── useSidebar.ts
+        │   │   │   │       ├── useToast.test.ts
+        │   │   │   │       └── useToast.ts
+        │   │   │   ├── constants
+        │   │   │   │   └── organisme.ts
         │   │   │   ├── env.d.ts
         │   │   │   ├── features
-        │   │   │   │   └── ats
-        │   │   │   │       ├── HomeView.vue
-        │   │   │   │       ├── ParametresView.vue
-        │   │   │   │       ├── api
-        │   │   │   │       │   └── recrutement.ts
+        │   │   │   │   ├── etapes-recrutement
+        │   │   │   │   │   ├── api.ts
+        │   │   │   │   │   ├── components
+        │   │   │   │   │   │   └── EtapesRecrutementList.vue
+        │   │   │   │   │   ├── composables
+        │   │   │   │   │   │   ├── useEtapesRecrutement.test.ts
+        │   │   │   │   │   │   └── useEtapesRecrutement.ts
+        │   │   │   │   │   ├── constants
+        │   │   │   │   │   │   └── etape-recrutement.ts
+        │   │   │   │   │   └── types.ts
+        │   │   │   │   └── recrutements
+        │   │   │   │       ├── api.ts
+        │   │   │   │       ├── columns.ts
         │   │   │   │       ├── components
-        │   │   │   │       │   ├── AtsAppShell.vue
-        │   │   │   │       │   └── EtapesRecrutementList.vue
-        │   │   │   │       ├── navigation.ts
-        │   │   │   │       └── recrutements
-        │   │   │   │           └── MesRecrutementsView.vue
-        │   │   │   ├── shared
-        │   │   │   │   └── components
-        │   │   │   │       └── ErrorBoundary.vue
+        │   │   │   │       │   ├── RecrutementsFiltersDrawer.vue
+        │   │   │   │       │   ├── RecrutementsTables.stories.ts
+        │   │   │   │       │   └── cells
+        │   │   │   │       │       ├── CandidaturesCell.vue
+        │   │   │   │       │       ├── ElapsedDaysCell.vue
+        │   │   │   │       │       ├── EtapeRecrutementCell.vue
+        │   │   │   │       │       ├── OffreActionsCell.vue
+        │   │   │   │       │       └── OffreIntituleCell.vue
+        │   │   │   │       ├── composables
+        │   │   │   │       │   ├── useRecrutementCandidatures.ts
+        │   │   │   │       │   ├── useRecrutements.test.ts
+        │   │   │   │       │   ├── useRecrutements.ts
+        │   │   │   │       │   ├── useRecrutementsFilters.test.ts
+        │   │   │   │       │   └── useRecrutementsFilters.ts
+        │   │   │   │       ├── format.ts
+        │   │   │   │       ├── mock.ts
+        │   │   │   │       ├── routes.ts
+        │   │   │   │       ├── types.ts
+        │   │   │   │       ├── utils
+        │   │   │   │       │   ├── filters.test.ts
+        │   │   │   │       │   └── filters.ts
+        │   │   │   │       └── views
+        │   │   │   │           ├── MesRecrutementsView.vue
+        │   │   │   │           └── RecrutementCandidaturesView.vue
+        │   │   │   ├── router
+        │   │   │   │   └── index.ts
+        │   │   │   ├── stores
+        │   │   │   │   ├── currentUser.test.ts
+        │   │   │   │   └── currentUser.ts
         │   │   │   ├── stories
         │   │   │   │   ├── 01-fondations
         │   │   │   │   │   ├── Tokens.stories.ts
@@ -1144,18 +1229,25 @@
         │   │   │   │   └── theme.css
         │   │   │   ├── types
         │   │   │   │   └── api.d.ts
-        │   │   │   └── utils
-        │   │   │       ├── api.test.ts
-        │   │   │       ├── api.ts
-        │   │   │       ├── errors.test.ts
-        │   │   │       ├── errors.ts
-        │   │   │       ├── format.test.ts
-        │   │   │       └── format.ts
+        │   │   │   ├── utils
+        │   │   │   │   ├── date.test.ts
+        │   │   │   │   ├── date.ts
+        │   │   │   │   ├── format.test.ts
+        │   │   │   │   └── format.ts
+        │   │   │   └── views
+        │   │   │       ├── HomeView.vue
+        │   │   │       └── ParametresView.vue
         │   │   ├── tsconfig.json
         │   │   ├── tsconfig.node.json
         │   │   └── vite.config.ts
         │   ├── identite
         │   │   ├── __init__.py
+        │   │   ├── apps.py
+        │   │   ├── management
+        │   │   │   ├── __init__.py
+        │   │   │   └── commands
+        │   │   │       ├── __init__.py
+        │   │   │       └── create_user_with_source.py
         │   │   ├── serializers.py
         │   │   ├── urls.py
         │   │   └── views.py
@@ -1199,7 +1291,11 @@
         │   │   ├── mappers.py
         │   │   ├── serializers.py
         │   │   ├── urls.py
-        │   │   └── views.py
+        │   │   └── views
+        │   │       ├── __init__.py
+        │   │       ├── notes.py
+        │   │       ├── organismes.py
+        │   │       └── recrutements.py
         │   ├── static
         │   │   ├── api
         │   │   │   ├── guide_api.md
@@ -1335,6 +1431,8 @@
         │   │   │   └── test_vectorize_documents.py
         │   │   └── recruteur
         │   │       ├── __init__.py
+        │   │       ├── test_lister_note_usecases.py
+        │   │       ├── test_note_usecases.py
         │   │       └── test_organisme_steps.py
         │   ├── conftest.py
         │   ├── domain
@@ -1351,7 +1449,10 @@
         │   │   │   └── test_utilisateurs.py
         │   │   └── recruteur
         │   │       ├── __init__.py
-        │   │       └── test_organisme.py
+        │   │       ├── test_candidature_recruteur.py
+        │   │       ├── test_note.py
+        │   │       ├── test_organisme.py
+        │   │       └── test_recrutement.py
         │   ├── factories
         │   │   ├── __init__.py
         │   │   ├── api_log_factory.py
@@ -1383,7 +1484,11 @@
         │   │   │   └── vectorized_document_factory.py
         │   │   ├── recruteur
         │   │   │   ├── __init__.py
-        │   │   │   └── organisme_factory.py
+        │   │   │   ├── candidature_recruteur_factory.py
+        │   │   │   ├── etapes_recrutement_factory.py
+        │   │   │   ├── note_factory.py
+        │   │   │   ├── organisme_factory.py
+        │   │   │   └── recrutement_factory.py
         │   │   └── referentiel
         │   │       ├── __init__.py
         │   │       ├── concours_factory.py
@@ -1441,6 +1546,9 @@
         │   │   │   └── test_vectorize_documents.py
         │   │   ├── recruteur
         │   │   │   ├── __init__.py
+        │   │   │   ├── test_note_query_service.py
+        │   │   │   ├── test_note_repository.py
+        │   │   │   ├── test_notes_usecases.py
         │   │   │   ├── test_organisme_admin.py
         │   │   │   └── test_organisme_steps.py
         │   │   ├── referentiel
@@ -1520,7 +1628,10 @@
         │   │   │   └── test_views.py
         │   │   └── recruteur
         │   │       ├── __init__.py
-        │   │       └── test_views.py
+        │   │       ├── test_views_ats_base.py
+        │   │       ├── test_views_notes.py
+        │   │       ├── test_views_organismes.py
+        │   │       └── test_views_recrutements.py
         │   └── utils
         │       ├── async_in_memory_cv_metadata_repository.py
         │       ├── form_test_utils.py
@@ -1533,4 +1644,4 @@
         │       ├── test_api_request_logger_middleware.py
         │       └── test_interface_aware_mock.py
         └── uv.lock
-319 directories, 1216 files
+337 directories, 1309 files
