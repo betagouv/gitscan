@@ -1,35 +1,40 @@
-## Changelog : ma-cantine (30 derniers jours, au 30 juin 2026)
+## Changelog : ma-cantine (30 derniers jours, au 6 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent principalement sur l'amélioration de la gestion des achats, notamment avec l'ajout de nouvelles informations sur l'origine des produits (circuit court, local, etc.) et la refonte de l'interface utilisateur pour la création et la modification des achats. Des améliorations techniques ont également été apportées pour le suivi des modifications des données et l'audit des actions réalisées par les utilisateurs.
+Les dernières mises à jour de ma-cantine améliorent l'expérience utilisateur dans la gestion des achats, notamment avec une meilleure présentation des informations et la prise en charge de nouveaux critères comme l'origine des produits et le circuit court. Des améliorations techniques importantes ont été apportées à l'historisation des données et à l'API, renforçant la traçabilité et la sécurité.
 
 ### Évolutions fonctionnelles
-- **Achats :** Ajout de nouveaux champs pour caractériser les achats : catégories ÉGalim, origine, indication si le produit est local ou en circuit court.
-- **Achats :** Refonte de la définition du "local" avec la possibilité de spécifier une distance en kilomètres.
-- **Achats :** Possibilité de dupliquer un achat en sélectionnant une cantine différente.
-- **Achats :** Amélioration de l'autocomplétion des champs "Description" et "Fournisseurs" lors de la création d'un achat.
-- **Achats :** L'API permet désormais de créer, modifier et supprimer des achats via un nouvel endpoint.
-- **Achats :** Ajout d'un endpoint dédié à l'upload et la suppression de factures.
+- **Achats :** Amélioration de la présentation visuelle des libellés et des valeurs dans les formulaires d'achat.
+- **Achats :** Remontée du bloc facture pour une meilleure accessibilité.
+- **Achats :** Ajout de la possibilité de dupliquer un achat en sélectionnant une cantine spécifique.
+- **Achats :** Mise à jour des valeurs autorisées pour les origines et la définition du local.
+- **Contact :** Ajout d'un bandeau de service réduit.
 - **Ressources :** Ajout des nouveaux guides du CNRC.
-- **Diagnostics :** Amélioration du script de remplissage des champs `invalid_reason_list` et `warning_reason_list`.
-- **Diagnostics :** Les diagnostics avec un coût de repas inférieur à 0.1 sont maintenant marqués comme aberrants.
+- **Famille de produit :** Renommage de la catégorie 'Boulangerie / Pâtisserie fraîches' (suppression de 'et surgelées').
+- **Imports :** Correction du lien vers l'ancienne page d'import des achats SIRET.
+- **Achats :** Ajout de la prise en compte des critères "EGalim", "Origine", "Local" et "Circuit Court" dans les achats.
 
 ### Évolutions techniques
-- **Historisation :** Ajout d'un nouveau champ `history_source` pour identifier l'application OAuth2 ayant modifié un objet (cantine, diagnostic, achat, évaluation de gaspillage).
-- **Historisation :** Refactorisation du système d'historisation pour améliorer la traçabilité des modifications.
-- **API :** Restriction de l'accès aux achats pour les éditeurs, qui ne peuvent désormais accéder qu'à leurs propres achats.
-- **API :** Ouverture de l'accès aux achats pour les utilisateurs authentifiés via OAuth2.
-- **API :** Amélioration de la gestion des erreurs et des codes de retour (retour d'un 404 si la cantine n'est pas trouvée).
-- **Commandes de gestion :** Ajout d'une classe de base pour les commandes de gestion afin de faciliter le logging des résultats.
-- **Commandes de gestion :** Les résultats des commandes de gestion sont maintenant enregistrés dans une table dédiée.
-- **Tests :** Correction de tests cassés suite aux modifications apportées.
-- **Refactoring :** Suppression du code lié à l'ancienne API Adresse.
-- **Refactoring :** Simplification du code lié au calcul du coût des repas.
+- **API :** Regroupement des endpoints API par lot fonctionnel pour une meilleure organisation.
+- **API :** Correction de warnings dans la console Swagger.
+- **API :** Restriction de l'accès aux achats aux seuls éditeurs autorisés via OAuth2.
+- **API :** Ouverture de l'accès aux éditeurs (OAuth2) pour la création d'achats.
+- **Historisation :** Ajout d'un nouveau champ `history_source_api_oauth2_application` pour suivre l'application ayant modifié un objet.
+- **Historisation :** Ajout du champ `history_source` à plusieurs modèles (Cantine, Diagnostic, Mesure de gaspillage, Action sur les ressources).
+- **Historisation :** Remplacement de `authentication_method` par `history_source`.
+- **Historisation :** Déplacement des signaux dans le modèle pour une meilleure organisation.
+- **Commandes de gestion :** Ajout d'une classe de base `MaCantineBaseCommand` pour gérer le loggage des résultats des commandes.
+- **Commandes de gestion :** Loggage des résultats des commandes dans une table dédiée `CommandLog`.
+- **Diagnostics :** Amélioration du script pour remplir les champs `invalid_reason_list` et `warning_reason_list`.
+- **Diagnostics :** Marquage des TD avec un coût de repas inférieur à 0.1 comme aberrants.
+- **API :** Amélioration de la gestion des erreurs 404 lorsque la cantine est inconnue.
+- **API :** Utilisation de `IsCanteenManagerUrlParam` au lieu de `IsLinkedCanteenManager` pour une meilleure cohérence.
 
 ### Autres changements
-- **Documentation :** Mise à jour de la documentation de l'API pour refléter les changements apportés.
-- **Imports :** Ajout de support pour les nouveaux formats d'import des achats.
-- **Imports :** Réorganisation de la page d'import.
-- **Achats :** Renommage des champs du modèle Achats en français.
-- **Achats :** Mise à jour des valeurs autorisées pour les champs "Origines" et "Définition de locale".
-- **Achats :** Correction de divers problèmes d'affichage et de comportement du formulaire d'achat.
+- **Documentation API :** Masquage du champ `creation_source` dans Swagger.
+- **Documentation API :** Remplissage du `help_text` des champs avec leur `verbose_name`.
+- **Achats :** Correction d'un problème de pre-commit sur le fichier `achats.json`.
+- **Achats :** Mise à jour des valeurs dans `definition_local` et ajout de `definition_local_km` suite aux modifications apportées.
+- **Achats :** Ajustements sur le formulaire d'achat.
+- **Achats :** Ajout de nouvelles propriétés `categories_egalim`, `origine`, `est_local` et `est_circuit_court`.
+- **Achats :** Refonte de `definition_local` avec l'ajout d'un nouveau champ `definition_local_km` et modification des choix.
