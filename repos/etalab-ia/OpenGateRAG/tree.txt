@@ -1,0 +1,87 @@
+.
+├── .dockerignore
+├── .env.example
+├── .github
+│   ├── .trivyignore
+│   ├── ISSUE_TEMPLATE
+│   │   ├── ⚙️-feature---improvements---chore.md
+│   │   └── 🐞-bug-report.md
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   ├── badges
+│   │   └── coverage.json
+│   ├── codeql.config.yml
+│   ├── semgrep-rules.yml
+│   ├── tests
+│   │   ├── compose.yml
+│   │   ├── config.opengatellm.yml
+│   │   ├── e2e
+│   │   │   ├── assets
+│   │   │   │   ├── html.html
+│   │   │   │   ├── markdown.md
+│   │   │   │   ├── pdf.pdf
+│   │   │   │   └── pdf_too_large.pdf
+│   │   │   ├── conftest.py
+│   │   │   ├── test_collections.py
+│   │   │   ├── test_documents.py
+│   │   │   └── test_search.py
+│   │   └── start_services.sh
+│   └── workflows
+│       ├── build_and_deploy.yml
+│       ├── run_tests.yml
+│       ├── semgrep.yml
+│       └── trivy-scan.yml
+├── .gitignore
+├── LICENSE
+├── README.md
+├── compose.example.yml
+├── config.example.yml
+├── opengaterag
+│   ├── __init__.py
+│   ├── api
+│   │   ├── Dockerfile
+│   │   ├── __init__.py
+│   │   ├── app.py
+│   │   ├── endpoints
+│   │   │   ├── __init__.py
+│   │   │   ├── collections.py
+│   │   │   ├── documents.py
+│   │   │   └── search.py
+│   │   ├── helpers
+│   │   │   ├── __init__.py
+│   │   │   ├── _accesscontroller.py
+│   │   │   ├── _documentmanager.py
+│   │   │   ├── _elasticsearchvectorstore.py
+│   │   │   └── _parsermanager.py
+│   │   ├── main.py
+│   │   ├── schemas
+│   │   │   ├── __init__.py
+│   │   │   ├── chunks.py
+│   │   │   ├── collections.py
+│   │   │   ├── core.py
+│   │   │   ├── documents.py
+│   │   │   └── search.py
+│   │   ├── tests
+│   │   │   └── unit
+│   │   │       ├── test_accesscontroller.py
+│   │   │       ├── test_documentmanager.py
+│   │   │       └── test_elasticsearchvectorstore.py
+│   │   └── utils
+│   │       ├── __init__.py
+│   │       ├── configuration.py
+│   │       ├── context.py
+│   │       ├── dependencies.py
+│   │       ├── elasticsearch.py
+│   │       ├── exceptions.py
+│   │       ├── lifespan.py
+│   │       ├── logging.py
+│   │       ├── sql.py
+│   │       └── variables.py
+│   └── docs
+│       ├── __init__.py
+│       ├── app.py
+│       └── openapi.py
+├── pyproject.toml
+└── scripts
+    ├── gunicorn.conf.py
+    └── startup_api.sh
+18 directories, 68 files
