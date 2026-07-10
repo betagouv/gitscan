@@ -158,6 +158,7 @@
 │   │   ├── apisix-suit.ingress.yaml
 │   │   ├── apisix-suit.yaml
 │   │   ├── audit-cleanup-cron.yaml
+│   │   ├── declaration-cleanup-cron.yaml
 │   │   ├── export-cron.yaml
 │   │   ├── gip-mds-import-cron.yaml
 │   │   └── notifications-deployment.yaml
@@ -172,6 +173,7 @@
 ├── docker-compose.yml
 ├── docs
 │   ├── Déclarations-&-Parcours-CSE.md
+│   ├── PUBLIC-API.md
 │   ├── SUIT-API.md
 │   ├── architecture.md
 │   ├── features.md
@@ -250,6 +252,9 @@
 │   │   │   ├── 0039_cse_opinion_file.sql
 │   │   │   ├── 0040_reconcile_drifted_schema.sql
 │   │   │   ├── 0041_curvy_forgotten_one.sql
+│   │   │   ├── 0042_certain_starbolt.sql
+│   │   │   ├── 0043_vengeful_bucky.sql
+│   │   │   ├── 0044_natural_sentinels.sql
 │   │   │   └── meta
 │   │   │       ├── 0000_snapshot.json
 │   │   │       ├── 0001_snapshot.json
@@ -278,6 +283,9 @@
 │   │   │       ├── 0039_snapshot.json
 │   │   │       ├── 0040_snapshot.json
 │   │   │       ├── 0041_snapshot.json
+│   │   │       ├── 0042_snapshot.json
+│   │   │       ├── 0043_snapshot.json
+│   │   │       ├── 0044_snapshot.json
 │   │   │       └── _journal.json
 │   │   ├── drizzle.config.ts
 │   │   ├── next.config.js
@@ -303,9 +311,12 @@
 │   │   │           └── proconnect-logo.svg
 │   │   ├── scripts
 │   │   │   ├── audit-cleanup.mjs
+│   │   │   ├── audit-domain-leaks.sh
+│   │   │   ├── backfill-company-region-department.mjs
 │   │   │   ├── check-journal.mjs
 │   │   │   ├── copy-dsfr.mjs
 │   │   │   ├── copy-swagger-ui.mjs
+│   │   │   ├── declaration-cleanup.mjs
 │   │   │   ├── entrypoint.sh
 │   │   │   ├── fetch-companies.ts
 │   │   │   ├── generate-edge-case-gip-data.ts
@@ -375,6 +386,26 @@
 │   │   │   │   │   ├── prefill-pdf
 │   │   │   │   │   │   └── route.ts
 │   │   │   │   │   ├── public
+│   │   │   │   │   │   ├── declarations
+│   │   │   │   │   │   │   ├── [siren]
+│   │   │   │   │   │   │   │   ├── [year]
+│   │   │   │   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   │   │   │   └── route.test.ts
+│   │   │   │   │   │   │   │   │   └── route.ts
+│   │   │   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   │   │   └── route.test.ts
+│   │   │   │   │   │   │   │   └── route.ts
+│   │   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   │   └── route.test.ts
+│   │   │   │   │   │   │   ├── export
+│   │   │   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   │   │   └── route.test.ts
+│   │   │   │   │   │   │   │   └── route.ts
+│   │   │   │   │   │   │   └── route.ts
+│   │   │   │   │   │   ├── openapi.json
+│   │   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   │   └── route.test.ts
+│   │   │   │   │   │   │   └── route.ts
 │   │   │   │   │   │   └── referents-egalite-professionnelle
 │   │   │   │   │   │       ├── __tests__
 │   │   │   │   │   │       │   └── route.test.ts
@@ -389,7 +420,8 @@
 │   │   │   │   │   ├── upload
 │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   └── route.test.ts
-│   │   │   │   │   │   └── route.ts
+│   │   │   │   │   │   ├── route.ts
+│   │   │   │   │   │   └── uploadAudit.ts
 │   │   │   │   │   └── v1
 │   │   │   │   │       ├── docs
 │   │   │   │   │       │   └── route.ts
@@ -626,6 +658,7 @@
 │   │   │   │   │       ├── YearsFilter.tsx
 │   │   │   │   │       ├── __tests__
 │   │   │   │   │       │   ├── AdminKpiTile.test.tsx
+│   │   │   │   │       │   ├── CampaignProgressionChart.test.tsx
 │   │   │   │   │       │   ├── CampaignProgressionTable.test.tsx
 │   │   │   │   │       │   ├── CampaignRateTile.test.tsx
 │   │   │   │   │       │   ├── CompletionFunnelChart.test.tsx
@@ -947,6 +980,8 @@
 │   │   │   │   │   │       ├── GapSideBySide.tsx
 │   │   │   │   │   │       ├── IndicatorSections.tsx
 │   │   │   │   │   │       ├── QuartileColumn.tsx
+│   │   │   │   │   │       ├── __tests__
+│   │   │   │   │   │       │   └── IndicatorSections.test.tsx
 │   │   │   │   │   │       ├── index.ts
 │   │   │   │   │   │       └── parseStep5Categories.ts
 │   │   │   │   │   └── types.ts
@@ -984,7 +1019,9 @@
 │   │   │   │   │   │   ├── PayGapTable.tsx
 │   │   │   │   │   │   ├── QuartileSection.tsx
 │   │   │   │   │   │   ├── VariablePaySection.tsx
-│   │   │   │   │   │   └── WorkforceSection.tsx
+│   │   │   │   │   │   ├── WorkforceSection.tsx
+│   │   │   │   │   │   └── __tests__
+│   │   │   │   │   │       └── VariablePaySection.test.tsx
 │   │   │   │   │   └── types.ts
 │   │   │   │   ├── domain
 │   │   │   │   │   ├── __tests__
@@ -1006,11 +1043,14 @@
 │   │   │   │   │   │   ├── gap.test.ts
 │   │   │   │   │   │   ├── indicatorG.test.ts
 │   │   │   │   │   │   ├── number.test.ts
+│   │   │   │   │   │   ├── percentage.test.ts
+│   │   │   │   │   │   ├── publicData.test.ts
 │   │   │   │   │   │   ├── quartile.test.ts
 │   │   │   │   │   │   ├── regions.test.ts
 │   │   │   │   │   │   ├── scoreBracket.test.ts
 │   │   │   │   │   │   ├── siren.test.ts
-│   │   │   │   │   │   └── submissionRate.test.ts
+│   │   │   │   │   │   ├── submissionRate.test.ts
+│   │   │   │   │   │   └── workforce.test.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── shared
 │   │   │   │   │   │   ├── campaign.ts
@@ -1030,11 +1070,14 @@
 │   │   │   │   │   │   ├── gap.ts
 │   │   │   │   │   │   ├── indicatorG.ts
 │   │   │   │   │   │   ├── number.ts
+│   │   │   │   │   │   ├── percentage.ts
+│   │   │   │   │   │   ├── publicData.ts
 │   │   │   │   │   │   ├── quartile.ts
 │   │   │   │   │   │   ├── regions.ts
 │   │   │   │   │   │   ├── scoreBracket.ts
 │   │   │   │   │   │   ├── siren.ts
-│   │   │   │   │   │   └── submissionRate.ts
+│   │   │   │   │   │   ├── submissionRate.ts
+│   │   │   │   │   │   └── workforce.ts
 │   │   │   │   │   └── types.ts
 │   │   │   │   ├── error
 │   │   │   │   │   ├── ErrorArtwork.tsx
@@ -1078,6 +1121,7 @@
 │   │   │   │   │   ├── schemas.ts
 │   │   │   │   │   ├── shared
 │   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   ├── apiLabels.test.ts
 │   │   │   │   │   │   │   └── statusHistoryLabels.test.ts
 │   │   │   │   │   │   ├── apiLabels.ts
 │   │   │   │   │   │   ├── constants.ts
@@ -1201,11 +1245,13 @@
 │   │   │   │   ├── mail
 │   │   │   │   │   ├── ResendReceiptButton.tsx
 │   │   │   │   │   ├── __tests__
-│   │   │   │   │   │   └── enqueueReceipt.test.ts
+│   │   │   │   │   │   ├── enqueueReceipt.test.ts
+│   │   │   │   │   │   └── sendRules.test.ts
 │   │   │   │   │   ├── buildReceiptAttachments.ts
 │   │   │   │   │   ├── enqueueReceipt.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── schemas.ts
+│   │   │   │   │   ├── sendRules.ts
 │   │   │   │   │   ├── server.ts
 │   │   │   │   │   └── types.ts
 │   │   │   │   ├── my-space
@@ -1284,6 +1330,15 @@
 │   │   │   │   │   │   └── phone.test.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── phone.ts
+│   │   │   │   │   └── schemas.ts
+│   │   │   │   ├── public-api
+│   │   │   │   │   ├── declarationsBySirenService.test.ts
+│   │   │   │   │   ├── declarationsBySirenService.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── openapi.test.ts
+│   │   │   │   │   ├── openapi.ts
+│   │   │   │   │   ├── projection.test.ts
+│   │   │   │   │   ├── projection.ts
 │   │   │   │   │   └── schemas.ts
 │   │   │   │   ├── publicStats
 │   │   │   │   │   ├── CurrentCampaignRateTile.tsx
@@ -1425,6 +1480,7 @@
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   ├── auditCleanupScript.integration.test.ts
 │   │   │   │   │   │   ├── cachedAuth.test.ts
+│   │   │   │   │   │   ├── declarationCleanupScript.integration.test.ts
 │   │   │   │   │   │   ├── log.test.ts
 │   │   │   │   │   │   ├── requestContext.test.ts
 │   │   │   │   │   │   ├── trpcMiddleware.test.ts
@@ -1437,6 +1493,7 @@
 │   │   │   │   ├── auth
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   ├── companyAccess.test.ts
+│   │   │   │   │   │   ├── config.providers.test.ts
 │   │   │   │   │   │   ├── config.test.ts
 │   │   │   │   │   │   ├── impersonation.test.ts
 │   │   │   │   │   │   ├── logout-route.test.ts
@@ -1449,9 +1506,12 @@
 │   │   │   │   │   └── proconnect-logout.ts
 │   │   │   │   ├── db
 │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── companyLocation.integration.test.ts
+│   │   │   │   │   │   ├── declarationConditions.test.ts
 │   │   │   │   │   │   ├── getGlobalSettings.test.ts
 │   │   │   │   │   │   └── schema-comments.test.ts
 │   │   │   │   │   ├── auditSchema.ts
+│   │   │   │   │   ├── declarationConditions.ts
 │   │   │   │   │   ├── getCampaignDeadlines.ts
 │   │   │   │   │   ├── getGlobalSettings.ts
 │   │   │   │   │   ├── index.ts
@@ -1475,6 +1535,8 @@
 │   │   │   │       │   ├── fileValidation.test.ts
 │   │   │   │       │   ├── gipMds.test.ts
 │   │   │   │       │   ├── matomo.test.ts
+│   │   │   │       │   ├── publicDeclarationsService.integration.test.ts
+│   │   │   │       │   ├── publicDeclarationsService.test.ts
 │   │   │   │       │   ├── s3.test.ts
 │   │   │   │       │   ├── suit.test.ts
 │   │   │   │       │   ├── uploadPipeline.test.ts
@@ -1487,6 +1549,7 @@
 │   │   │   │       ├── gatewaySource.ts
 │   │   │   │       ├── gipMds.ts
 │   │   │   │       ├── matomo.ts
+│   │   │   │       ├── publicDeclarationsService.ts
 │   │   │   │       ├── s3.ts
 │   │   │   │       ├── suit.ts
 │   │   │   │       ├── uploadPipeline.ts
@@ -1508,13 +1571,17 @@
 │       ├── README.md
 │       ├── package.json
 │       ├── scripts
-│       │   └── smoke.ts
+│       │   └── previewMails.ts
 │       ├── src
 │       │   ├── __tests__
 │       │   │   ├── publisher.test.ts
 │       │   │   └── queue.test.ts
+│       │   ├── dates.ts
 │       │   ├── db.ts
 │       │   ├── eligibility
+│       │   │   ├── __tests__
+│       │   │   │   └── campaignDeadlines.test.ts
+│       │   │   ├── campaignDeadlines.ts
 │       │   │   ├── client.ts
 │       │   │   ├── dedup.ts
 │       │   │   ├── index.ts
@@ -1546,6 +1613,9 @@
 │       │   │   ├── template
 │       │   │   │   ├── EmailBody.tsx
 │       │   │   │   ├── EmailButton.tsx
+│       │   │   │   ├── EmailClosingParagraph.tsx
+│       │   │   │   ├── EmailComplianceCriteriaList.tsx
+│       │   │   │   ├── EmailContactParagraph.tsx
 │       │   │   │   ├── EmailCtaWithLink.tsx
 │       │   │   │   ├── EmailDivider.tsx
 │       │   │   │   ├── EmailFooter.tsx
@@ -1557,20 +1627,22 @@
 │       │   │   │   ├── EmailLayout.tsx
 │       │   │   │   ├── EmailLink.tsx
 │       │   │   │   ├── EmailParagraph.tsx
+│       │   │   │   ├── EmailReceiptDisclaimer.tsx
 │       │   │   │   ├── EmailShell.tsx
 │       │   │   │   ├── EmailSignature.tsx
 │       │   │   │   ├── MarianneLogoBlock.tsx
 │       │   │   │   ├── baseCss.ts
 │       │   │   │   ├── index.ts
+│       │   │   │   ├── mailCopy.ts
 │       │   │   │   └── tokens.ts
 │       │   │   └── types.ts
 │       │   ├── publisher.ts
 │       │   ├── queue.ts
 │       │   ├── schedules
 │       │   │   ├── __tests__
+│       │   │   │   ├── dailyReminders.test.ts
 │       │   │   │   ├── dispatch.test.ts
 │       │   │   │   └── registerSchedules.test.ts
-│       │   │   ├── dates.ts
 │       │   │   ├── definitions.ts
 │       │   │   ├── dispatch.ts
 │       │   │   ├── handlers.ts
@@ -1621,4 +1693,4 @@
 │   ├── setup-worktree.sh
 │   └── teardown-worktree.sh
 └── sonar-project.properties
-275 directories, 1348 files
+289 directories, 1406 files
