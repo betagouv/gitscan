@@ -1,31 +1,46 @@
-## Changelog : mon-indemnisation-justice (30 derniers jours, au 03 juillet 2026)
+## Changelog : mon-indemnisation-justice (30 derniers jours, au 06 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la robustesse de l'application, l'ajout de nouvelles fonctionnalités pour la gestion des dossiers et des agents, ainsi que sur l'intégration de données externes et l'amélioration de l'expérience utilisateur, notamment avec l'ajout d'un espace public pour le test d'éligibilité. Des corrections de sécurité (CSP) et de gestion des erreurs ont également été apportées.
+Ce mois-ci, l'application a connu des améliorations significatives en termes de gestion des données (import CSV, entités FDO), de correction de bugs (affichage, PDF, erreurs FIP6/FDO) et d'expérience utilisateur (navigation, affichage des pièces jointes, onglets agents). Un nouveau module de test d'éligibilité a été développé pour l'espace public. Des travaux ont également été réalisés pour améliorer la robustesse et la fiabilité de l'application, notamment au niveau du worker et de la gestion des erreurs.
 
 ### Évolutions fonctionnelles
-- Ajout d'un espace public pour le test d'éligibilité avec un formulaire et des étapes guidées. [#33aa28c](https://github.com/betagouv/mon-indemnisation-justice/commit/33aa28c)
-- Possibilité de modifier les critères de recherche des dossiers. [#b3785de](https://github.com/betagouv/mon-indemnisation-justice/commit/b3785de)
-- Affichage des pièces jointes au format PDF directement dans l'application. [#216a13f](https://github.com/betagouv/mon-indemnisation-justice/commit/216a13f)
-- Création d'un onglet dédié aux "Agents à valider" pour faciliter la gestion des accès. [#69e1d74](https://github.com/betagouv/mon-indemnisation-justice/commit/69e1d74)
-- Amélioration du navigateur de pages pour une meilleure expérience utilisateur. [#6778b21](https://github.com/betagouv/mon-indemnisation-justice/commit/6778b21)
-- Ajout d'un composant "Frise temporelle" pour visualiser l'historique des dossiers. [#e909378](https://github.com/betagouv/mon-indemnisation-justice/commit/e909378)
-- Possibilité de masquer les outils Tanstack pour une interface plus épurée. [#e8aeaf1](https://github.com/betagouv/mon-indemnisation-justice/commit/e8aeaf1)
-- Précision du test d'éligibilité pour les bris de porte. [#613b72b](https://github.com/betagouv/mon-indemnisation-justice/commit/613b72b)
-- Mise à jour du lien vers le questionnaire de satisfaction. [#d5e0003](https://github.com/betagouv/mon-indemnisation-justice/commit/d5e0003)
+- Ajout d'un importeur CSV basique pour les données des gendarmeries.
+- Création d'un nouvel onglet "Agents à valider" pour faciliter la gestion des agents.
+- Amélioration de la navigation et de l'affichage des listes d'agents (séparation actifs/inactifs en onglets).
+- Possibilité de modifier les critères de recherche des dossiers.
+- Affichage des pièces jointes au format PDF directement dans l'application.
+- Intégration du test d'éligibilité pour les dysfonctionnements dans l'espace public.
+- Mise à jour de l'avis d'intervention pour la Gendarmerie Nationale.
+- Amélioration du navigateur de pages avec correction de glitchs d'affichage.
+- Ajout d'une frise temporelle pour l'historique des dossiers.
+- Suppression de la quittance subrogative pour les bailleurs sociaux.
 
 ### Évolutions techniques
-- Refonte de l'architecture du worker avec l'utilisation de `pierrelemee/supervisor-docker` pour la gestion et la surveillance des tâches. [#dd74ef7](https://github.com/betagouv/mon-indemnisation-justice/commit/dd74ef7)
-- Création d'images Docker pour le déploiement des applications web et worker. [#dad9add](https://github.com/betagouv/mon-indemnisation-justice/commit/dad9add)
-- Intégration de Sentry pour la gestion des erreurs et le suivi des performances. [#9a526f7](https://github.com/betagouv/mon-indemnisation-justice/commit/9a526f7)
-- Amélioration de la gestion des erreurs FIP6 et FDO avec affichage et remontée des erreurs. [#8272609](https://github.com/betagouv/mon-indemnisation-justice/commit/8272609) et [#4d0b818](https://github.com/betagouv/mon-indemnisation-justice/commit/4d0b818)
-- Mise en place d'un cache buster via une variable d'environnement. [#fc393c6](https://github.com/betagouv/mon-indemnisation-justice/commit/fc393c6)
-- Correction de problèmes de CSP (Content Security Policy) pour améliorer la sécurité de l'application. [#6c29178](https://github.com/betagouv/mon-indemnisation-justice/commit/6c29178) et autres commits liés.
-- Utilisation de la version legacy de `react-pdf` pour résoudre des problèmes de compatibilité. [#f6e7923](https://github.com/betagouv/mon-indemnisation-justice/commit/f6e7923)
+- Intégration de `vite-plugin-node-polyfills` pour résoudre les erreurs de conversion Node -> Browser.
+- Refonte de l'architecture du worker avec l'utilisation de `pierrelemee/supervisor-docker` pour la gestion des tâches cron.
+- Déploiement des applications web et worker sur l'environnement `develop`.
+- Correction de l'utilisation de `vite-plugin-static-copy` en dépendance non dev.
+- Utilisation de l'URL de déconnexion fournie par l'API pour une meilleure gestion de la déconnexion.
+- Amélioration de la gestion des erreurs FIP6 et FDO avec affichage et remontée des erreurs.
+- Refactoring de l'espace public avec amélioration de la qualité et de la cohérence du code.
+- Utilisation de la version legacy de `react-pdf` pour résoudre des problèmes de compatibilité.
+- Injection de l'URL de déconnexion dans le contexte agent.
 
 ### Autres changements
-- Importation des données des gendarmeries et création de l'entité `EtablissementFDO`. [#8a87013](https://github.com/betagouv/mon-indemnisation-justice/commit/8a87013) et [#a50541d](https://github.com/betagouv/mon-indemnisation-justice/commit/a50541d)
-- Ajout d'un importeur CSV basique. [#ed7b87b](https://github.com/betagouv/mon-indemnisation-justice/commit/ed7b87b)
-- Correction de divers bugs et améliorations de la qualité du code.
-- Mise à jour de la documentation et des tests unitaires.
-- Suppression de Storybook dans l'espace visiteur et refactoring du code de l'espace public. [#e69825b](https://github.com/betagouv/mon-indemnisation-justice/commit/e69825b) et autres commits liés.
+- Correction du bouton du SideMenu pour empêcher la soumission du formulaire.
+- Intégration de la FAQ modifiée.
+- Figeage de la configuration de supervisor dans le Dockerfile du worker.
+- Ajout d'un test unitaire sur la route de suppression.
+- Création d'une modale de suppression de pièce jointe (sans action réelle pour le moment).
+- Correction de l'adresse pouvant être manquante sur un dossier.
+- Correction de bugs liés à la modale de mot de passe oublié.
+- Fluidification de l'affichage des champs en tiroir.
+- Purge de la boîte de réception et envoi des emails au chargement des fixtures.
+- Correction d'un argument optionnel dans `Requerant.nomSimple`.
+- Correction de tests unitaires.
+- Provisionnement des données en test et en production.
+- Intégration du Ministère de l'intérieur comme administration.
+- Ajout de modèles TypeScript et de conteneurs Inversify pour le TestEligibiliteManager.
+- Suppression de Storybook sur l'espace visiteur et mise en place d'un routeur.
+- Ajout de formulaires Tanstack sur les pages de l'espace public.
+- Refactoring du code pour améliorer la qualité et la cohérence.
