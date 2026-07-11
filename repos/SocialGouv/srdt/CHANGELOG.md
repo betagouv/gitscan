@@ -1,3 +1,53 @@
+# [1.47.0](https://github.com/SocialGouv/srdt/compare/v1.46.2...v1.47.0) (2026-07-09)
+
+
+### Features
+
+* add nouveautes section ([#396](https://github.com/SocialGouv/srdt/issues/396)) ([5431bc9](https://github.com/SocialGouv/srdt/commit/5431bc95cd773c24391cc98bdd216b8769d5002a))
+
+## [1.46.2](https://github.com/SocialGouv/srdt/compare/v1.46.1...v1.46.2) (2026-07-02)
+
+
+### Bug Fixes
+
+* ux sidebar header ([#385](https://github.com/SocialGouv/srdt/issues/385)) ([64627b7](https://github.com/SocialGouv/srdt/commit/64627b7a9019f8736dd81eb159f79c8d07a96c8f))
+
+## [1.46.1](https://github.com/SocialGouv/srdt/compare/v1.46.0...v1.46.1) (2026-06-30)
+
+
+### Bug Fixes
+
+* various display fix new display ([#384](https://github.com/SocialGouv/srdt/issues/384)) ([9f3f641](https://github.com/SocialGouv/srdt/commit/9f3f64160eded513e6288e84bb1f127e10f65777))
+
+# [1.46.0](https://github.com/SocialGouv/srdt/compare/v1.45.0...v1.46.0) (2026-06-30)
+
+
+### Features
+
+* footer and scroll bars ([#383](https://github.com/SocialGouv/srdt/issues/383)) ([02bc05a](https://github.com/SocialGouv/srdt/commit/02bc05afba94d78330de424e7110e6646c81d37d))
+
+# [1.45.0](https://github.com/SocialGouv/srdt/compare/v1.44.0...v1.45.0) (2026-06-30)
+
+
+### Features
+
+* continue chat box ([#382](https://github.com/SocialGouv/srdt/issues/382)) ([c469598](https://github.com/SocialGouv/srdt/commit/c469598c6b7ea244a6ebdc04adb4b70a0d590c6d))
+
+# [1.44.0](https://github.com/SocialGouv/srdt/compare/v1.43.1...v1.44.0) (2026-06-29)
+
+
+### Features
+
+* new intro screen ([a1d01a6](https://github.com/SocialGouv/srdt/commit/a1d01a6f95f8eb8b8371ca70178a5e43239aa21b))
+
+## [1.43.1](https://github.com/SocialGouv/srdt/compare/v1.43.0...v1.43.1) (2026-05-29)
+
+
+### Bug Fixes
+
+* **api:** improve error handling ([#367](https://github.com/SocialGouv/srdt/issues/367)) ([d042e6c](https://github.com/SocialGouv/srdt/commit/d042e6c79d8c8a8a8be610cbe844849157216b3b))
+* **web:** report Python API errors to Sentry and read new error format ([#378](https://github.com/SocialGouv/srdt/issues/378)) ([60ad7d6](https://github.com/SocialGouv/srdt/commit/60ad7d6c886a0b28b37faf37614349ce3fe7e914))
+
 # [1.43.0](https://github.com/SocialGouv/srdt/compare/v1.42.1...v1.43.0) (2026-05-22)
 
 

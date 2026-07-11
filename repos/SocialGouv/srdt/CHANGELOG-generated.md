@@ -1,22 +1,18 @@
-## Changelog : srdt (30 derniers jours, au 22 mai 2026)
+## Changelog : srdt (30 derniers jours, au 9 juillet 2026)
 
 ### Résumé
-Ce mois-ci, l'assistant virtuel SRDT a bénéficié d'améliorations significatives en termes d'expérience utilisateur, notamment une refonte de l'affichage du statut de la convention collective, l'ajout d'un lien vers un questionnaire d'évaluation et la possibilité de changer de modèle d'IA via une configuration Kubernetes. Des corrections de bugs ont également été apportées pour améliorer la stabilité et la précision du système, notamment concernant l'anonymisation des données de localisation et la permissivité du prompt. Enfin, des métriques de performance ont été ajoutées pour le suivi du temps de génération des réponses.
+Cette version apporte des améliorations significatives à l'interface utilisateur de l'assistant virtuel SRDT, notamment une nouvelle section "Nouveautés", des corrections d'affichage, l'ajout d'un footer et de barres de défilement, ainsi qu'une amélioration de la continuité des conversations.
 
 ### Évolutions fonctionnelles
-- Ajout d'un lien vers un questionnaire d'évaluation sur la page d'accueil. [#372](https://github.com/SocialGouv/srdt/issues/372)
-- Refonte de l'affichage du badge de statut de la convention collective. [#374](https://github.com/SocialGouv/srdt/issues/374)
-- Le badge de convention collective est désormais toujours affiché. [#365](https://github.com/SocialGouv/srdt/issues/365)
-- Correction de l'affichage des labels et des textes d'aide pour l'IDCC. [#364](https://github.com/SocialGouv/srdt/issues/364)
-- Possibilité de changer de modèle d'IA depuis une configuration Kubernetes. [#366](https://github.com/SocialGouv/srdt/issues/366)
+- Ajout d'une section "Nouveautés" pour informer les utilisateurs des dernières mises à jour et fonctionnalités. [#396](https://github.com/SocialGouv/srdt/issues/396)
+- Amélioration de l'expérience utilisateur de la barre latérale avec une correction d'affichage. [#385](https://github.com/SocialGouv/srdt/issues/385)
+- Correction de divers problèmes d'affichage de l'interface. [#384](https://github.com/SocialGouv/srdt/issues/384)
+- Ajout d'un footer et de barres de défilement pour une meilleure navigation. [#383](https://github.com/SocialGouv/srdt/issues/383)
+- Possibilité de continuer une conversation sans interruption. [#382](https://github.com/SocialGouv/srdt/issues/382)
+- Nouvelle page d'introduction pour une meilleure expérience utilisateur initiale.
 
 ### Évolutions techniques
-- Ajout du suivi du temps de génération des réponses pour Metabase. [#348](https://github.com/SocialGouv/srdt/issues/348)
-- Correction concernant l'utilisation du modèle ChatGPT en production.
-- Correction de bugs liés aux contributions et autres éléments. [#351](https://github.com/SocialGouv/srdt/issues/351) [#352](https://github.com/SocialGouv/srdt/issues/352) [#357](https://github.com/SocialGouv/srdt/issues/357) [#359](https://github.com/SocialGouv/srdt/issues/359)
-- Suppression de l'anonymisation des localisations. [#370](https://github.com/SocialGouv/srdt/issues/370)
-- Amélioration de la permissivité du prompt. [#363](https://github.com/SocialGouv/srdt/issues/363)
+- Aucune évolution technique majeure n'a été identifiée dans les commits récents.
 
 ### Autres changements
-- Suppression du "tally". [#376](https://github.com/SocialGouv/srdt/issues/376)
-- Publication des versions : 1.43.0, 1.42.1, 1.42.0, 1.41.0, 1.40.3, 1.40.2, 1.40.1, 1.40.0, 1.39.7, 1.39.6, 1.39.5.
+- Publication des versions 1.47.0, 1.46.2, 1.46.1, 1.46.0, 1.45.0 et 1.44.0.
