@@ -109,6 +109,8 @@
 │   │   │   │   │   └── page.tsx
 │   │   │   │   └── page.tsx
 │   │   │   ├── api
+│   │   │   │   ├── contribution-rating
+│   │   │   │   │   └── route.ts
 │   │   │   │   ├── enterprises
 │   │   │   │   │   ├── accords
 │   │   │   │   │   │   └── [siret]
@@ -384,8 +386,10 @@
 │   │   │   │   │   ├── accords
 │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   ├── controller.test.ts
+│   │   │   │   │   │   │   ├── service.es.test.ts
 │   │   │   │   │   │   │   └── service.test.ts
 │   │   │   │   │   │   ├── controller.ts
+│   │   │   │   │   │   ├── queries.ts
 │   │   │   │   │   │   ├── service.ts
 │   │   │   │   │   │   └── types.ts
 │   │   │   │   │   ├── agreements
@@ -395,6 +399,12 @@
 │   │   │   │   │   │   │   └── service.es.test.ts
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   ├── queries.ts
+│   │   │   │   │   │   └── service.ts
+│   │   │   │   │   ├── contribution-rating
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   ├── controller.test.ts
+│   │   │   │   │   │   │   └── service.test.ts
+│   │   │   │   │   │   ├── controller.ts
 │   │   │   │   │   │   └── service.ts
 │   │   │   │   │   ├── contributions
 │   │   │   │   │   │   ├── __tests__
@@ -687,6 +697,17 @@
 │   │   │       │   ├── contributionUtils.ts
 │   │   │       │   ├── index.ts
 │   │   │       │   ├── queries.ts
+│   │   │       │   ├── rating
+│   │   │       │   │   ├── ContributionRating.tsx
+│   │   │       │   │   ├── RatingConfirmation.tsx
+│   │   │       │   │   ├── RatingIcon.tsx
+│   │   │       │   │   ├── RatingSlider.tsx
+│   │   │       │   │   ├── __tests__
+│   │   │       │   │   │   ├── ContributionRating.test.tsx
+│   │   │       │   │   │   └── tracking.test.ts
+│   │   │       │   │   ├── constants.ts
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   └── tracking.ts
 │   │   │       │   ├── tracking.ts
 │   │   │       │   └── type.ts
 │   │   │       ├── convention-collective
@@ -3823,6 +3844,7 @@
 │   │   ├── .gitignore
 │   │   ├── .prettierignore
 │   │   ├── .prettierrc.mjs
+│   │   ├── CHANGELOG.md
 │   │   ├── README.md
 │   │   ├── eslint.config.mjs
 │   │   ├── events
@@ -3905,4 +3927,4 @@
 │       └── tsconfig.json
 ├── pnpm-lock.yaml
 └── pnpm-workspace.yaml
-953 directories, 2954 files
+958 directories, 2971 files
