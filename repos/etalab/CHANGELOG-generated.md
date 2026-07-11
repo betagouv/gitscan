@@ -1,21 +1,22 @@
-# Synthèse d'activité : etalab (du 27 avril 2026 au 8 juin 2026)
+# Synthèse d'activité : etalab (du 28 avril 2026 au 08 juin 2026)
 
 ## Résumé de l'activité
-L'activité récente d'etalab s'est concentrée sur l'amélioration et la maintenance de ses outils et données, notamment dans les domaines du transport, du covoiturage, des données d'aide sociale et des API d'administration. Plusieurs dépôts ont bénéficié de corrections de bugs, d'optimisations de performance et de mises à jour de données. L'ajout de nouvelles fonctionnalités, comme l'extension du schéma des dispositifs d'aide via des "data packages" ([schema-dispositif-aide](/repos/etalab/schema-dispositif-aide)) et l'intégration de nouvelles API (CNOUS, MSA) dans [admin_api_entreprise](/repos/etalab/admin_api_entreprise), témoignent d'une volonté d'enrichir l'offre de services.  Des améliorations significatives ont également été apportées à [data_pass](/repos/etalab/data_pass) pour la gestion des droits et l'expérience utilisateur.
+L'activité récente d'etalab s'est concentrée sur l'amélioration et la maintenance de ses outils et services liés aux données de transport, aux normes, au covoiturage et à l'administration publique. Plusieurs dépôts ont bénéficié de corrections de bugs, d'optimisations de performances et d'ajouts de nouvelles fonctionnalités, notamment concernant l'import de données IRVE, la gestion des lieux de covoiturage et l'API Data Pass. L'accent a également été mis sur la sécurité, avec des mises à jour de dépendances et des améliorations de la gestion des clés API. Les mises à jour du profil France NeTEx et du schéma dispositif d'aide visent à améliorer l'interopérabilité et la flexibilité des données.
 
 ## Sécurité
-- Migration des scopes des tokens vers les demandes d'autorisation dans [admin_api_entreprise](/repos/etalab/admin_api_entreprise) pour une meilleure gestion des accès.
+- Correction de bugs liés à la suppression de fichiers sur S3 dans [flask-storage](/repos/etalab/flask-storage) pour éviter des suppressions accidentelles.
 - Rotation annuelle du token webhook dans [admin_api_entreprise](/repos/etalab/admin_api_entreprise) pour renforcer la sécurité.
+- Migration des scopes des tokens vers les demandes d'autorisation dans [admin_api_entreprise](/repos/etalab/admin_api_entreprise) pour une meilleure gestion des accès.
 
 ## Autres changements notables
 - Passage à l'allocateur mémoire `jemalloc` dans [transport-validator](/repos/etalab/transport-validator) pour optimiser la consommation mémoire en production.
-- Refactoring important dans [transport-site](/repos/etalab/transport-site) avec suppression de code obsolète et simplification de l'architecture.
-- Mise à jour de Ruby à la dernière version dans [data_pass](/repos/etalab/data_pass).
-- Migration du scope TVA d'API Entreprise de VIES vers la DGFIP dans [data_pass](/repos/etalab/data_pass).
+- Suppression du code lié à TimescaleDB dans [transport-site](/repos/etalab/transport-site) suite à sa décommission.
+- Ajout de l'architecture des "data packages" dans [schema-dispositif-aide](/repos/etalab/schema-dispositif-aide) pour permettre des extensions de schéma plus flexibles.
+- Migration du scope TVA de VIES vers la DGFIP dans [data_pass](/repos/etalab/data_pass).
 
 ## Dépôts les plus actifs
-- [transport-site](/repos/etalab/transport-site) : Consolidation et gestion des données IRVE, améliorations de la précision des coordonnées et optimisations de l'architecture.
-- [data_pass](/repos/etalab/data_pass) : Amélioration de la gestion des droits d'accès, ajout de nouvelles API et maintenance technique.
-- [admin_api_entreprise](/repos/etalab/admin_api_entreprise) : Intégration de nouvelles API (CNOUS, MSA), amélioration de l'interface d'administration et renforcement de la sécurité.
-- [transport-validator](/repos/etalab/transport-validator) : Optimisation de la performance et de la consommation mémoire.
-- [schema-dispositif-aide](/repos/etalab/schema-dispositif-aide) : Ajout de la prise en charge des extensions de schéma via l'architecture des "data packages".
+- [transport-site](/repos/etalab/transport-site) : Amélioration de l'import et de la consolidation des données IRVE, ajout de nouveaux opérateurs de vélos en libre-service et corrections de bugs.
+- [data_pass](/repos/etalab/data_pass) : Amélioration de la recherche d'utilisateurs, de la gestion des droits, ajout de nouvelles APIs et amélioration de la gestion de session.
+- [admin_api_entreprise](/repos/etalab/admin_api_entreprise) : Ajout de nouvelles APIs, amélioration de la gestion des tokens et des performances.
+- [transport-validator](/repos/etalab/transport-validator) : Optimisation de la consommation mémoire en production.
+- [formulaire-qf](/repos/etalab/formulaire-qf) : Correction d'un bug de sélection des collectivités et mise à jour des dépendances.

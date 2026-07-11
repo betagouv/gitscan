@@ -1,28 +1,27 @@
-# Synthèse d'activité : suitenumerique (du 15/06 au 15/07)
+# Synthèse d'activité : suitenumerique (du 22 mai au 11 juillet 2026)
 
 ## Résumé de l'activité
-L'organisation suitenumerique a connu une période d'activité soutenue, marquée par des améliorations significatives en termes de sécurité, d'expérience utilisateur et de performance. Plusieurs projets ont bénéficié de refontes techniques majeures, notamment la migration vers Vite pour les applications `calendars` et `messages`, et l'adoption de Dramatiq pour la gestion des tâches asynchrones dans `st-home`. L'accent a également été mis sur l'amélioration de la sécurité, avec des corrections de vulnérabilités dans `people` et `conversations`, et le renforcement de la sécurité des transferts de fichiers dans `transfers`. De nouvelles fonctionnalités ont été introduites, comme les liens de téléchargement uniques dans `transfers` et `st-transfers`, et l'amélioration du blog dans `st-home`.
+L'organisation suitenumerique a connu une période d'activité soutenue, marquée par des améliorations significatives de l'expérience utilisateur et de la sécurité de ses différentes applications. La migration vers des technologies plus modernes comme Vite et Astro se poursuit, notamment pour les projets `transfers`, `docs` et `calendars`, afin d'améliorer les performances et la maintenabilité. L'intégration de la messagerie Matrix dans `hub` et l'ajout de fonctionnalités de partage de fichiers sécurisé dans `st-transfers` sont des avancées notables pour les utilisateurs finaux.  Des efforts importants ont également été consacrés à la correction de bugs et à l'amélioration de la robustesse des applications, notamment `messages`, `conversations` et `find`.
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié d'améliorations en matière de sécurité :
-
-- Correction de vulnérabilités dans `people` avec la mise à jour de plusieurs dépendances (PyJWT, cryptography, tornado, etc.) et la mise à jour de Python.
-- Renforcement de la sécurité des téléchargements dans [transfers](/repos/suitenumerique/transfers) avec l'ajout d'un scanner de fichiers et la correction de failles identifiées lors d'une revue de code.
-- Correction d'une vulnérabilité OIDC dans [conversations](/repos/suitenumerique/conversations) exposant le port interne.
+Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
+- Correction de vulnérabilités dans `accounts` et `media-sdk` avec la mise à jour de dépendances critiques (PyJWT, cryptography).
+- Renforcement de la sécurité du flux de téléchargement dans [transfers](/repos/suitenumerique/transfers).
+- Correction de vulnérabilités Dockerfile dans `dictaphone`.
+- Renforcement de la sécurité du traitement des données ICS dans [calendars](/repos/suitenumerique/calendars).
 
 ## Autres changements notables
-Plusieurs évolutions techniques majeures ont été réalisées :
-
-- Migration du frontend de `calendars` vers Vite pour améliorer les performances. [calendars](/repos/suitenumerique/calendars)
-- Migration du frontend de `messages` vers Vite et Tanstack Router pour améliorer les performances et la maintenabilité. [messages](/repos/suitenumerique/messages)
-- Migration du système de tâches asynchrones de Celery vers Dramatiq dans `st-home` pour une meilleure performance et fiabilité. [st-home](/repos/suitenumerique/st-home)
-- Refonte de l'infrastructure CI/CD dans `accounts` pour une meilleure organisation et réutilisation des workflows. [accounts](/repos/suitenumerique/accounts)
-- Intégration de Ruff pour l'analyse statique du code dans `accounts`. [accounts](/repos/suitenumerique/accounts)
+- Migration de Next.js vers Vite dans [transfers](/repos/suitenumerique/transfers) et de l'architecture frontend de [calendars](/repos/suitenumerique/calendars) pour une meilleure performance.
+- Migration complète du site web [docs](/repos/suitenumerique/docs-website) vers Astro, avec récupération du contenu directement depuis le projet Docs.
+- Migration du système de tâches asynchrones de Celery vers Dramatiq dans [st-home](/repos/suitenumerique/st-home) pour une meilleure performance.
+- Refonte de l'infrastructure CI/CD dans [accounts](/repos/suitenumerique/accounts) pour une meilleure organisation et réutilisation des workflows.
+- Refonte complète du MTA-in en Python pur dans [messages](/repos/suitenumerique/messages), supprimant la dépendance à Postfix.
 
 ## Dépôts les plus actifs
-- [ui-kit](/repos/suitenumerique/ui-kit) : Amélioration de l'accessibilité, ajout de traductions et corrections de bugs.
-- [transfers](/repos/suitenumerique/transfers) : Améliorations de la sécurité, ajout de liens de téléchargement uniques et migration vers Vite et Tanstack Router.
-- [st-home](/repos/suitenumerique/st-home) : Refonte du blog, corrections de la carte de déploiement et migration vers Dramatiq.
-- [messages](/repos/suitenumerique/messages) : Amélioration de l'expérience utilisateur, refonte technique vers Vite et Tanstack Router et renforcement de la sécurité.
-- [calendars](/repos/suitenumerique/calendars) : Refonte des RSVP, migration vers Vite et renforcement de la sécurité du traitement des données ICS.
-- [conversations](/repos/suitenumerique/conversations) : Amélioration de la gestion des erreurs, intégration de Celery et correction de vulnérabilités de sécurité.
+- [ui-kit](/repos/suitenumerique/ui-kit) : Ajout de nouveaux composants et améliorations d'accessibilité.
+- [st-home](/repos/suitenumerique/st-home) : Refonte du blog et migration vers Dramatiq.
+- [messages](/repos/suitenumerique/messages) : Améliorations de l'interface utilisateur, correction de bugs et refonte du MTA-in.
+- [hub](/repos/suitenumerique/hub) : Intégration de la messagerie Matrix et ajout de nouvelles fonctionnalités.
+- [calendars](/repos/suitenumerique/calendars) : Refonte de la gestion des RSVP et migration vers Vite.
+- [docs-website](/repos/suitenumerique/docs-website) : Migration vers Astro et refonte du contenu.
+- [meet](/repos/suitenumerique/meet) : Amélioration de l'affichage des participants et ajout d'un formulaire de feedback.

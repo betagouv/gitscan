@@ -1,20 +1,28 @@
-# Synthèse d'activité : SocialGouv (du 15 mai au 15 juin 2026)
+# Synthèse d'activité : SocialGouv (du 27 mai 2026 au 29 juin 2026)
 
 ## Résumé de l'activité
-L'activité récente de SocialGouv a été marquée par une forte concentration sur l'amélioration de la sécurité, la modernisation des infrastructures et l'enrichissement des fonctionnalités de ses outils. Plusieurs dépôts ont bénéficié de migrations vers des gestionnaires de paquets plus performants comme pnpm, renforçant ainsi la sécurité et la gestion des dépendances. Des efforts importants ont également été déployés pour améliorer l'accessibilité des services, notamment via l'intégration de nouvelles fonctionnalités et la correction de bugs. L'organisation prépare activement l'arrêt de certains services, tout en continuant à développer de nouveaux outils et à améliorer l'expérience utilisateur de ses plateformes existantes. Les dépôts [vao](/repos/SocialGouv/vao), [token-bureau](/repos/SocialGouv/token-bureau), [srdt](/repos/SocialGouv/srdt), [smart-allow](/repos/SocialGouv/smart-allow), [legi-data](/repos/SocialGouv/legi-data) et [cdtn-admin](/repos/SocialGouv/cdtn-admin) ont été particulièrement actifs.
+L'activité récente de SocialGouv est marquée par une forte concentration sur la maintenance, la sécurité et l'amélioration de l'expérience utilisateur de ses outils. Plusieurs dépôts ont bénéficié de corrections de bugs, de mises à jour de dépendances et d'ajustements de configuration pour garantir la stabilité et la performance des applications. Des efforts significatifs ont également été déployés pour préparer l'arrêt de certains services, comme Recosanté, en informant les utilisateurs et en assurant une transition en douceur. Plusieurs projets ont progressé dans l'intégration de nouvelles fonctionnalités, notamment l'ajout de support pour des technologies émergentes comme l'IA et l'automatisation, ainsi que l'amélioration de l'accessibilité et de la sécurité des applications. Les dépôts les plus actifs incluent [vao](/repos/SocialGouv/vao), [token-bureau](/repos/SocialGouv/token-bureau), [matomo-next](/repos/SocialGouv/matomo-next) et [cdtn-admin](/repos/SocialGouv/cdtn-admin).
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié d'améliorations significatives en matière de sécurité. [smart-allow](/repos/SocialGouv/smart-allow) a ajouté une fonctionnalité bloquant l'envoi de données à des fournisseurs d'IA externes, et [dsfr-mcp](/repos/SocialGouv/dsfr-mcp) a reçu une correction de sécurité importante. [domifa](/repos/SocialGouv/domifa) a également bénéficié de corrections de vulnérabilités. [buildkit-operator](/repos/SocialGouv/buildkit-operator) a renforcé la sécurité de la chaîne d'approvisionnement logicielle avec l'implémentation de la signature cosign et de la génération de SBOM.
+Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
+
+*   Correction d'une vulnérabilité dans [archifiltre-mails](/repos/SocialGouv/archifiltre-mails).
+*   Renforcement de la sécurité dans [domifa](/repos/SocialGouv/domifa) avec des corrections et des ajustements.
+*   Amélioration de la sécurité des builds avec l'intégration de Kata Containers dans [buildkit-operator](/repos/SocialGouv/buildkit-operator).
+*   Mise en place d'une gestion des secrets locale scellée dans [iterion](/repos/SocialGouv/iterion).
 
 ## Autres changements notables
-Plusieurs dépôts ont connu des évolutions techniques majeures. [vao](/repos/SocialGouv/vao) a migré vers des routes Typescript et augmenté les ressources de sa base de données. [token-bureau](/repos/SocialGouv/token-bureau) a refactorisé son code en un monorepo et migré vers pnpm. [matomo-postgres](/repos/SocialGouv/matomo-postgres) a mis à jour sa version de Node.js. [infra-apps](/repos/SocialGouv/infra-apps) a migré les datastores d'Iterion vers une infrastructure plus robuste. [cdtn-admin](/repos/SocialGouv/cdtn-admin) a ajouté un script pour le dump de la base de données.
+*   **Migration vers pnpm:** Plusieurs dépôts, dont [token-bureau](/repos/SocialGouv/token-bureau), [revu](/repos/SocialGouv/revu), [nos1000jours-blues-epds-widget](/repos/SocialGouv/nos1000jours-blues-epds-widget), et [dashlord](/repos/SocialGouv/dashlord) ont migré vers pnpm pour une meilleure gestion des dépendances.
+*   **Intégration de l'IA:** Des avancées ont été réalisées dans l'intégration de l'IA, notamment avec l'ajout de support pour Claude Opus 4.8 dans [claw-code-go](/repos/SocialGouv/claw-code-go) et l'exploration de l'utilisation de l'IA pour la génération de code dans [git-ai-trace](/repos/SocialGouv/git-ai-trace).
+*   **Amélioration de l'infrastructure:** Des améliorations ont été apportées à l'infrastructure, notamment avec la migration des builds vers buildkit-operator dans [cdtn-admin](/repos/SocialGouv/cdtn-admin) et l'optimisation des ressources PostgreSQL dans [vao](/repos/SocialGouv/vao).
+*   **Préparation de l'arrêt de Recosanté:** Une bannière d'information a été ajoutée à [recosante](/repos/SocialGouv/recosante) pour informer les utilisateurs de l'arrêt du service.
 
 ## Dépôts les plus actifs
-*   [vao](/repos/SocialGouv/vao) : Amélioration de l'expérience utilisateur pour le renouvellement d'agrément et implémentation de la validation OTP.
-*   [token-bureau](/repos/SocialGouv/token-bureau) : Corrections de bugs, améliorations de la gestion des permissions et migration vers pnpm.
-*   [srdt](/repos/SocialGouv/srdt) : Améliorations de l'expérience utilisateur, de l'accessibilité et ajout de nouvelles fonctionnalités.
-*   [cdtn-admin](/repos/SocialGouv/cdtn-admin) : Ajout de nouveaux types de contributions et amélioration de la gestion des données.
-*   [matomo-next](/repos/SocialGouv/matomo-next) : Ajout d'un proxy de suivi côté serveur et prise en charge des tests A/B.
-*   [dashlord](/repos/SocialGouv/dashlord) : Amélioration de l'interface utilisateur et ajout de nouvelles fonctionnalités de gestion des données.
-*   [legi-data](/repos/SocialGouv/legi-data) : Mises à jour régulières des données législatives.
-*   [iterion](/repos/SocialGouv/iterion) : Activation de l'inscription ouverte et déploiement d'une marketplace de bots.
+*   [vao](/repos/SocialGouv/vao) : Amélioration significative du flux de premier agrément et de la gestion des documents.
+*   [token-bureau](/repos/SocialGouv/token-bureau) : Corrections de bugs et amélioration de la gestion des permissions.
+*   [matomo-next](/repos/SocialGouv/matomo-next) : Ajout d'un proxy pour contourner les bloqueurs de publicités et prise en charge des tests A/B.
+*   [cdtn-admin](/repos/SocialGouv/cdtn-admin) : Amélioration du sitemap, ajout de nouvelles fonctionnalités d'analyse et corrections de bugs.
+*   [srdt](/repos/SocialGouv/srdt) : Amélioration de l'interface utilisateur de l'assistant virtuel.
+*   [iterion](/repos/SocialGouv/iterion) : Ajout de l'authentification GitHub SSO et lancement d'un marketplace public.
+*   [legi-data](/repos/SocialGouv/legi-data) : Mises à jour régulières des données légales.
+*   [dashlord](/repos/SocialGouv/dashlord) : Amélioration de l'interface utilisateur et ajout de nouvelles fonctionnalités.

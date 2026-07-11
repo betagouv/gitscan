@@ -1,19 +1,22 @@
-# Synthèse d'activité : numerique-gouv (du 2024-05-12 au 2024-06-30)
+# Synthèse d'activité : numerique-gouv (du 03 mai 2026 au 03 juillet 2026)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation numerique-gouv s'est concentrée sur l'amélioration de l'expérience utilisateur et la correction de bugs dans plusieurs de ses projets. On note des avancées significatives sur l'internationalisation de [sites-faciles](/repos/numerique-gouv/sites-faciles) et [sites-faciles-fork-1](/repos/numerique-gouv/sites-faciles-fork-1), avec l'ajout de la gestion de plusieurs langues et d'un sélecteur de langue.  Des améliorations ont également été apportées à la gestion des notifications avec [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api) et à l'affichage des bannières dans les applications mobiles [ami-app-ios](/repos/numerique-gouv/ami-app-ios) et [ami-app-android](/repos/numerique-gouv/ami-app-android). Enfin, des efforts ont été déployés pour simplifier le déploiement et améliorer la stabilité de certains services, comme [sites-conformes](/repos/numerique-gouv/sites-conformes) et [francetransfert](/repos/numerique-gouv/francetransfert).
+L'organisation numerique-gouv a connu une période d'activité soutenue, marquée par des améliorations significatives sur plusieurs de ses projets. Les efforts se sont concentrés sur l'internationalisation des plateformes [sites-faciles](/repos/numerique-gouv/sites-faciles) et [sites-faciles-fork-1](/repos/numerique-gouv/sites-faciles-fork-1), avec l'ajout de la gestion multilingue et de sélecteurs de langue.  Des améliorations importantes ont également été apportées à la publication et au déploiement de certains projets comme [sites-conformes](/repos/numerique-gouv/sites-conformes) et [b3desk](/repos/numerique-gouv/b3desk), avec l'automatisation des releases et l'optimisation des processus. Enfin, des corrections de bugs et des optimisations de performance ont été réalisées sur l'ensemble des projets, améliorant ainsi l'expérience utilisateur et la stabilité des services.
 
 ## Sécurité
-- Correction d'une vulnérabilité potentielle en mettant à jour l'image de base Keycloak dans [dockerfiles](/repos/numerique-gouv/dockerfiles).
+- Correction de l'image de base Keycloak dans [dockerfiles](/repos/numerique-gouv/dockerfiles) pour bénéficier des dernières corrections de sécurité.
+- Mise à jour de dépendances de sécurité pour `js-yaml` et `next` dans [lasuite-landingpage](/repos/numerique-gouv/lasuite-landingpage).
 
 ## Autres changements notables
-- Mise en place d'un déploiement en un clic sur Scalingo pour [sites-faciles](/repos/numerique-gouv/sites-faciles) et [sites-conformes](/repos/numerique-gouv/sites-conformes).
+- Refonte du modèle de données dans [statistiques-impact](/repos/numerique-gouv/statistiques-impact) avec l'introduction du modèle "Record".
+- Mise en place d'un déploiement en un clic sur Scalingo pour [sites-faciles](/repos/numerique-gouv/sites-faciles).
 - Automatisation du versionnement et de la publication sur PyPi pour [sites-conformes](/repos/numerique-gouv/sites-conformes).
-- Refactorisation de la structure du projet et adoption de la couleur d'accent par défaut du DSFR pour [ami-design-system-ios](/repos/numerique-gouv/ami-design-system-ios).
+- Amélioration de l'intégration des claims OIDC dans [b3desk](/repos/numerique-gouv/b3desk).
+- Refactoring de la structure du projet [ami-design-system-ios](/repos/numerique-gouv/ami-design-system-ios) pour une meilleure organisation.
 
 ## Dépôts les plus actifs
-- [sites-faciles](/repos/numerique-gouv/sites-faciles) : Amélioration de l'internationalisation et simplification du déploiement.
-- [sites-conformes](/repos/numerique-gouv/sites-conformes) : Amélioration du processus de publication et correction de bugs.
-- [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api) : Amélioration de la gestion des notifications et des préférences de localisation.
-- [django-dsfr](/repos/numerique-gouv/django-dsfr) : Correction de l'affichage des formulaires DSFR et amélioration du processus de release.
-- [b3desk](/repos/numerique-gouv/b3desk) : Amélioration de la gestion des réunions et automatisation de la publication des releases.
+- [statistiques-impact](/repos/numerique-gouv/statistiques-impact) : Refonte du modèle de données et amélioration de l'infrastructure.
+- [sites-faciles](/repos/numerique-gouv/sites-faciles) : Internationalisation de la plateforme et simplification du déploiement.
+- [sites-conformes](/repos/numerique-gouv/sites-conformes) : Automatisation de la publication et amélioration de la configuration.
+- [b3desk](/repos/numerique-gouv/b3desk) : Amélioration de la gestion des réunions et intégration OIDC.
+- [lasuite-landingpage](/repos/numerique-gouv/lasuite-landingpage) : Ajout d'informations sur les webinaires et l'intégration de Tchap.

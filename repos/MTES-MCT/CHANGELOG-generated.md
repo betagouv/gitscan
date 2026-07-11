@@ -1,33 +1,29 @@
-# Synthèse d'activité : MTES-MCT (du 23 mai au 29 juin 2026)
+# Synthèse d'activité : MTES-MCT (du 22 mai 2026 au 09 juillet 2026)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation MTES-MCT a été marquée par une forte concentration sur l'amélioration des applications existantes, avec des mises à jour significatives pour des outils clés comme Trackdéchets, Partageons l'eau, et les plateformes autour de l'accès au logement (Dossier Facile, Mon Devis Sans Oublis). Ces mises à jour incluent des améliorations de la sécurité (authentification multi-facteurs sur Trackdéchets, correction de vulnérabilités), de l'expérience utilisateur (nouvelles fonctionnalités, refonte d'interfaces), et de la performance (optimisation des requêtes, migration vers des technologies plus récentes).  Plusieurs dépôts ont bénéficié d'améliorations de la qualité du code et de l'automatisation des tests. L'intégration de nouvelles sources de données et l'ajout de fonctionnalités spécifiques à certains domaines (ICPE pour Envergo, gestion des ERP pour Acceslibre) témoignent d'une volonté de répondre aux besoins spécifiques des utilisateurs.
+L'activité récente de l'organisation MTES-MCT a été marquée par des améliorations significatives sur plusieurs fronts. Un effort important a été consacré à l'amélioration de l'expérience utilisateur, notamment sur les applications web comme *dossierfacile-frontend*, *otelo-front* et *Lucca*, avec des refontes d'interfaces, l'ajout de nouvelles fonctionnalités et la correction de bugs. La sécurité a également été une priorité, avec des mises à jour de dépendances et l'implémentation de l'authentification multi-facteurs sur *trackdechets*. De nombreux dépôts ont bénéficié de corrections de bugs et d'optimisations de performance, et plusieurs projets ont progressé dans l'intégration de nouvelles sources de données et de fonctionnalités clés, comme l'intégration de données de préfectures dans *dialog-integrations* ou l'ajout de la gestion des garanties dans *mobilic*. [zero-logement-vacant](/repos/MTES-MCT/zero-logement-vacant) a connu des améliorations de performance et de gestion des données.
 
 ## Sécurité
 Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
 
-*   **Trackdéchets** : Implémentation de l'authentification multi-facteurs (MFA) avec journalisation des événements, gestion des réinitialisations et codes de récupération.
-*   **Apilos** : Correction d'une vulnérabilité CVE.
-*   **Keycloak-FranceConnect** : Activation de l'authentification à deux facteurs pour ProConnect.
-*   **Docurba**: Mise en place d'un reverse proxy Nginx pour améliorer la sécurité.
+*   Implémentation de l'authentification multi-facteurs (MFA) sur [trackdechets](/repos/MTES-MCT/trackdechets).
+*   Correction d'une faille de sécurité sur [ecobalyse](/repos/MTES-MCT/ecobalyse) concernant la falsification du token d'authentification.
+*   Correction d'une vulnérabilité CVE sur [dossierfacile-infra](/repos/MTES-MCT/dossierfacile-infra).
+*   Renforcement de la sécurité des accès aux tables de versements sur [Docurba](/repos/MTES-MCT/Docurba).
 
 ## Autres changements notables
-Plusieurs projets ont connu des évolutions techniques majeures :
-
-*   **Zero-logement-vacant** : Migration vers React Router v7 et refonte de l'importation des données LOVAC avec DuckDB et Parquet pour une meilleure performance et scalabilité.
-*   **Vizeau** : Ajout de la gestion des étapes de projet et d'une page "Mes territoires".
-*   **Sparte** : Refonte de la page d'accueil et correction de problèmes de cache.
-*   **Partaj** : Migration vers React 18 et mise à jour de plusieurs dépendances.
-*   **Lucca-scripts** : Ajout d'une colonne 'parcelle' dans l'historique des statistiques.
-*   **Docurba**: Intégration de l'authentification Supabase et refactorisation de l'architecture Django.
+*   Plusieurs dépôts ont été mis à jour avec de nouvelles versions de leurs dépendances, améliorant la stabilité et la sécurité.
+*   Des migrations de bases de données ont été effectuées sur plusieurs projets pour supporter de nouvelles fonctionnalités.
+*   Des améliorations significatives de l'infrastructure CI/CD ont été apportées à plusieurs dépôts, notamment *dialog-integrations* et *dossierfacile-frontend*, pour optimiser le processus de développement et de déploiement.
+*   Des efforts ont été déployés pour améliorer la documentation et la qualité du code sur de nombreux projets.
+*   Des refactorisations importantes ont été réalisées sur [verseau2](/repos/MTES-MCT/verseau2) et [sparte](/repos/MTES-MCT/sparte) pour améliorer la maintenabilité et la performance.
 
 ## Dépôts les plus actifs
-*   **Trackdéchets** : Améliorations majeures de la sécurité avec l'implémentation de l'authentification multi-facteurs et corrections de bugs critiques.
-*   **Partageons l'eau** : Amélioration de la gestion de l'environnement de sandbox et des workflows Git.
-*   **Dossier Facile (frontend et backend)** : Nombreuses améliorations de l'interface utilisateur, de la gestion des données et de la sécurité.
-*   **Envergo** : Ajout de nouvelles fonctionnalités pour la gestion des ICPE et refonte de l'interface utilisateur.
-*   **Acceslibre** : Ajout de la gestion des ERP en RPA et amélioration de la collecte de données.
-*   **Docurba**: Refonte de l'architecture et ajout de nouvelles fonctionnalités.
-*   **Lucca**: Ajout de la gestion des adhérents et amélioration de l'importation des données.
-*   **Aigle (frontend et api)** : Ajout de nouveaux statuts et amélioration de la gestion des données.
-*   **Dahlia**: Intégration du SSO ProConnect et amélioration du scrapping.
+*   [zero-logement-vacant](/repos/MTES-MCT/zero-logement-vacant) : Améliorations de la performance, corrections de bugs et migration technique.
+*   [trackdechets](/repos/MTES-MCT/trackdechets) : Implémentation de l'authentification multi-facteurs et corrections de bugs.
+*   [vizeau](/repos/MTES-MCT/vizeau) : Ajout de nouvelles fonctionnalités pour la gestion de projets et l'affichage des données.
+*   [mobilic](/repos/MTES-MCT/mobilic) : Amélioration de l'interface utilisateur et ajout de nouvelles fonctionnalités pour la gestion des missions.
+*   [dossierfacile-backend](/repos/MTES-MCT/dossierfacile-backend) : Améliorations de la gestion des garanties, des documents et de l'interface d'administration.
+*   [ecobalyse](/repos/MTES-MCT/ecobalyse) : Ajout de nouvelles données et amélioration de la sécurité.
+*   [dialog](/repos/MTES-MCT/dialog) : Ajout de filtres, gestion des restrictions et amélioration de la cartographie.
+*   [Lucca](/repos/MTES-MCT/Lucca) : Ajout de la gestion des adhérents et amélioration de l'importation des données.
