@@ -1,30 +1,33 @@
-## Changelog : agora-back (30 derniers jours, au 26 juin 2026)
+## Changelog : agora-back (30 derniers jours, au 10 juillet 2026)
 
 ### Résumé
-Ce changelog présente les améliorations apportées au backend d'Agora au cours des 30 derniers jours. Les principales évolutions concernent l'algorithme de tendances, la gestion des thèmes libres et l'intégration avec Strapi V5, ainsi que des corrections et optimisations diverses pour améliorer la stabilité et l'expérience utilisateur.
+Les dernières semaines ont été marquées par des améliorations significatives de la gestion du cache, de l'algorithme de tendances, et de l'intégration avec Strapi (migration vers la version 5). Des outils d'administration ont été ajoutés pour faciliter la gestion du contenu et le débogage. L'automatisation du renouvellement des certificats SSL a également été implémentée.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'algorithme de calcul des tendances, basé sur un nombre de "likes" supérieur à 5 sur les dernières 24 heures [#issue à identifier].
-- Introduction d'un indicateur booléen `estThemeLibre` pour mieux identifier les thèmes libres.
-- Affichage de la transcription textuelle des réponses vidéo pour faciliter l'accessibilité et la recherche.
-- Modification de l'heure de sélection des questions gagnantes, désormais fixée à 10h au lieu de 14h.
-- Amélioration de l'affichage des sous-titres pour les thèmes libres.
-- Ajout de la fonction de l'auteur dans les réponses preview.
-- Passage de la limite de caractères pour la synthèse des réponses à 400 caractères.
-- Filtrage des réponses par date minimale via les APIs.
+- Ajout d'une route pour vider le cache REDIS via l'interface Swagger.
+- Possibilité de suspendre le trafic vers Strapi pour investigation en production.
+- Ajout d'une route d'administration pour changer le statut d'une question.
+- Amélioration de l'algorithme de calcul des tendances avec une nouvelle formule (V3 et V4).
+- Introduction d'une nouvelle logique pour l'onglet "Tendances" basée sur le nombre de "likes" reçus dans les dernières 24 heures.
+- Ajout de la fonction de l'auteur dans les previews de réponses.
+- Ajout d'un motif de refus pour la modération, permettant un meilleur suivi et une potentielle utilisation future.
+- Intégration de la transcription vidéo pour afficher un texte court dans les réponses au format vidéo.
+- Suppression des balises HTML et troncature du texte des réponses dans l'API `qags/reponses/pagenumber`.
+- Ajout de clusters de mots pour la semaine libre (gestion via CMS).
+- Automatisation du renouvellement des certificats SSL via ACME [#670](https://github.com/agora-gouv/agora-back/issues/670).
+- Passage de l'heure de sélection des questions gagnantes à 10h.
 
 ### Évolutions techniques
-- Préparation et exécution de la migration vers Strapi V5, incluant des scripts de rollback et des ajustements des migrations.
-- Ajout d'un header de compatibilité pour les clients Strapi V4.
-- Mise en place d'un plan de migration complet vers Strapi V5.
-- Optimisation du cache pour les thèmes hebdomadaires, avec une durée de cache plus courte.
-- Correction de bugs liés à la date de début des thèmes courants pour le filtrage des thèmes hebdomadaires.
-- Ajout de logs pour le remapping des fiches inventaires.
-- Suppression des balises HTML et troncature du texte des réponses dans certaines requêtes.
+- Passage de la méthode PATCH à POST pour le push du certificat sur Cloudflare.
+- Migration de Strapi vers la version 5 et correction des migrations associées.
+- Script de rollback fourni pour les migrations Strapi V5 des IDs de questions et de choix.
+- Amélioration de la gestion du cache : flush du cache de cluster de mots lors du vidage de cache global, ajout de qualificateurs de cache pour les thèmes hebdomadaires.
+- Correction de bugs et améliorations diverses dans l'algorithme de tendances.
+- Refactoring du code pour améliorer la lisibilité et la maintenabilité.
 
 ### Autres changements
-- Correction de coquilles et amélioration du wording dans différentes parties de l'application.
-- Ajout de points de fin de phrase manquants.
-- Correction de tests suite aux modifications de la date de sélection des questions gagnantes.
-- Mise en majuscule de la période des thèmes hebdomadaires.
-- Proposition d'intégration ACME V2.
+- Ajout de logs pour le remapping des fiches inventaires.
+- Correction de wording pour l'heure de sélection des questions (14h -> 10h).
+- Ajout de valeurs par défaut plus spécifiques pour la domaine libre.
+- Correction de petites erreurs typographiques et de formatage.
+- Ajout de valeurs par défaut plus spécifiques pour la domaine libre.

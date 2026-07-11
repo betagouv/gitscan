@@ -16,8 +16,9 @@
 ├── architecture-decisions
 │   ├── 2024-07-22-regenerer-les-ids-de-contenu-strapi.md
 │   ├── 2024-07-29-regenerer-les-ids-de-question-strapi.md
-│   ├── 2026-06-25-acme-v2-implementation-plan.md
-│   ├── 2026-06-25-acme-v2-renouvellement-certificats.md
+│   ├── ACME
+│   │   ├── 2026-06-25-acme-v2-implementation-plan.md
+│   │   └── 2026-06-25-acme-v2-renouvellement-certificats.md
 │   └── migration_strapi_v5
 │       ├── history.md
 │       ├── impact_document_id.md
@@ -27,6 +28,11 @@
 ├── build.gradle.kts
 ├── cron.json
 ├── data
+│   ├── migration_acme
+│   │   ├── add_acme_challenge_and_order_tables.sql
+│   │   ├── add_deployed_at_to_acme_certificate.sql
+│   │   ├── add_status_to_acme_certificate.sql
+│   │   └── create_acme_tables.sql
 │   ├── migration_questions_choice_ids_strapi_V5
 │   │   ├── generate_migration_sql.js
 │   │   ├── generate_rollback_sql.js
@@ -77,6 +83,7 @@
 │   │   │               ├── AgoraCustomCommandHelper.kt
 │   │   │               ├── FirebaseWrapper.kt
 │   │   │               ├── config
+│   │   │               │   ├── AcmeConfig.kt
 │   │   │               │   ├── AuthentificationHelper.kt
 │   │   │               │   ├── CacheConfig.kt
 │   │   │               │   ├── ClockConfig.kt
@@ -87,9 +94,15 @@
 │   │   │               │   ├── HttpClientConfig.kt
 │   │   │               │   ├── ObjectMapperConfig.kt
 │   │   │               │   ├── SchedulerConfig.kt
+│   │   │               │   ├── StrapiTrafficSuspendedException.kt
 │   │   │               │   ├── WebConfig.kt
 │   │   │               │   └── WebSecurityConfig.kt
 │   │   │               ├── domain
+│   │   │               │   ├── AcmeAccount.kt
+│   │   │               │   ├── AcmeCertificate.kt
+│   │   │               │   ├── AcmeCertificateStatus.kt
+│   │   │               │   ├── AcmeOrder.kt
+│   │   │               │   ├── AcmeOrderStatus.kt
 │   │   │               │   ├── AgoraFeature.kt
 │   │   │               │   ├── AppFeedback.kt
 │   │   │               │   ├── AppPlatform.kt
@@ -139,6 +152,7 @@
 │   │   │               │   ├── Territoire.kt
 │   │   │               │   ├── Thematique.kt
 │   │   │               │   ├── ThemeHebdo.kt
+│   │   │               │   ├── TrendingCluster.kt
 │   │   │               │   ├── UserAnsweredConsultation.kt
 │   │   │               │   ├── UserAuthorization.kt
 │   │   │               │   ├── UserInfo.kt
@@ -146,7 +160,28 @@
 │   │   │               │       ├── InvalidNumberOfDepartmentsException.kt
 │   │   │               │       └── InvalidTerritoryException.kt
 │   │   │               ├── infrastructure
+│   │   │               │   ├── acme
+│   │   │               │   │   ├── AcmeAdminController.kt
+│   │   │               │   │   ├── AcmeController.kt
+│   │   │               │   │   └── repository
+│   │   │               │   │       ├── AcmeAccountDAO.kt
+│   │   │               │   │       ├── AcmeAccountJpaRepository.kt
+│   │   │               │   │       ├── AcmeAccountRepositoryImpl.kt
+│   │   │               │   │       ├── AcmeCertificateDAO.kt
+│   │   │               │   │       ├── AcmeCertificateJpaRepository.kt
+│   │   │               │   │       ├── AcmeCertificateRepositoryImpl.kt
+│   │   │               │   │       ├── AcmeChallengeDAO.kt
+│   │   │               │   │       ├── AcmeChallengeJpaRepository.kt
+│   │   │               │   │       ├── AcmeChallengeStoreImpl.kt
+│   │   │               │   │       ├── AcmeCryptoHelper.kt
+│   │   │               │   │       ├── AcmeOrderDAO.kt
+│   │   │               │   │       ├── AcmeOrderJpaRepository.kt
+│   │   │               │   │       ├── AcmeOrderRepositoryImpl.kt
+│   │   │               │   │       ├── AcmeServerCheckerImpl.kt
+│   │   │               │   │       ├── CloudflareCertificateDeployerImpl.kt
+│   │   │               │   │       └── CloudflareZoneCheckerImpl.kt
 │   │   │               │   ├── admin
+│   │   │               │   │   ├── AdminQagController.kt
 │   │   │               │   │   ├── AdminTasksController.kt
 │   │   │               │   │   ├── DeleteUsersJson.kt
 │   │   │               │   │   ├── EditUsersController.kt
@@ -418,6 +453,10 @@
 │   │   │               │   │   ├── QagPaginatedJson.kt
 │   │   │               │   │   ├── QagPaginatedJsonMapper.kt
 │   │   │               │   │   └── repository
+│   │   │               │   │       ├── TrendingClusterCacheRepository.kt
+│   │   │               │   │       ├── TrendingClusterRepositoryImpl.kt
+│   │   │               │   │       ├── TrendingClusterStrapiDTO.kt
+│   │   │               │   │       ├── TrendingClusterStrapiRepository.kt
 │   │   │               │   │       └── TrendingQagCacheRepository.kt
 │   │   │               │   ├── qagUpdates
 │   │   │               │   │   ├── dto
@@ -505,6 +544,7 @@
 │   │   │               │           ├── NewsStrapiDTO.kt
 │   │   │               │           └── NewsStrapiRepository.kt
 │   │   │               ├── oninit
+│   │   │               │   ├── AcmeCertificateRenewalTasksHandler.kt
 │   │   │               │   ├── AgoraCustomCommandHandler.kt
 │   │   │               │   ├── CustomCommandHandler.kt
 │   │   │               │   ├── DailyTasksHandler.kt
@@ -519,6 +559,19 @@
 │   │   │               │       ├── AuthenticationTokenFilter.kt
 │   │   │               │       └── JwtTokenUtils.kt
 │   │   │               └── usecase
+│   │   │                   ├── acme
+│   │   │                   │   ├── AcmeCertificateRenewalUseCase.kt
+│   │   │                   │   ├── AcmeCertificateUploadUseCase.kt
+│   │   │                   │   ├── AcmeServerHealthCheckUseCase.kt
+│   │   │                   │   ├── CloudflareHealthCheckUseCase.kt
+│   │   │                   │   └── repository
+│   │   │                   │       ├── AcmeAccountRepository.kt
+│   │   │                   │       ├── AcmeCertificateRepository.kt
+│   │   │                   │       ├── AcmeChallengeStore.kt
+│   │   │                   │       ├── AcmeOrderRepository.kt
+│   │   │                   │       ├── AcmeServerChecker.kt
+│   │   │                   │       ├── CloudflareCertificateDeployer.kt
+│   │   │                   │       └── CloudflareZoneChecker.kt
 │   │   │                   ├── appFeedback
 │   │   │                   │   ├── InsertAppFeedbackUseCase.kt
 │   │   │                   │   └── repository
@@ -530,6 +583,8 @@
 │   │   │                   │   ├── AppVersionControlUseCase.kt
 │   │   │                   │   └── repository
 │   │   │                   │       └── MinimalAppVersionRepository.kt
+│   │   │                   ├── cache
+│   │   │                   │   └── ClearCacheUseCase.kt
 │   │   │                   ├── changeUserAuthorizationLevel
 │   │   │                   │   ├── DowngradeUsersUseCase.kt
 │   │   │                   │   └── UpgradeUsersToPublisherUseCase.kt
@@ -663,6 +718,7 @@
 │   │   │                   │       ├── DemographicInfoAskDateRepository.kt
 │   │   │                   │       └── ProfileRepository.kt
 │   │   │                   ├── qag
+│   │   │                   │   ├── AdminUpdateQagStatusUseCase.kt
 │   │   │                   │   ├── ContentSanitizer.kt
 │   │   │                   │   ├── DeleteQagUseCase.kt
 │   │   │                   │   ├── GetAskQagStatusUseCase.kt
@@ -688,7 +744,8 @@
 │   │   │                   │   ├── QagPaginatedV2UseCase.kt
 │   │   │                   │   └── repository
 │   │   │                   │       ├── HeaderQagCacheRepository.kt
-│   │   │                   │       └── HeaderQagRepository.kt
+│   │   │                   │       ├── HeaderQagRepository.kt
+│   │   │                   │       └── TrendingClusterRepository.kt
 │   │   │                   ├── qagSelection
 │   │   │                   │   ├── RandomQagSelector.kt
 │   │   │                   │   └── SelectMostPopularQagUseCase.kt
@@ -726,6 +783,7 @@
 │   │   │                   ├── themeHebdo
 │   │   │                   │   ├── GetThemeHebdoUseCase.kt
 │   │   │                   │   └── repository
+│   │   │                   │       ├── CurrentThemeHebdoCacheRepository.kt
 │   │   │                   │       └── ThemeHebdoRepository.kt
 │   │   │                   └── welcomePage
 │   │   │                       ├── GetLastNewsUseCase.kt
@@ -733,13 +791,16 @@
 │   │   └── resources
 │   │       ├── StanfordCoreNLP-french.properties
 │   │       ├── application.properties
-│   │       └── logback.xml
+│   │       ├── logback.xml
+│   │       └── trending_clusters.json
 │   └── test
 │       ├── kotlin
 │       │   └── fr
 │       │       └── gouv
 │       │           └── agora
 │       │               ├── TestUtils.kt
+│       │               ├── config
+│       │               │   └── CmsStrapiHttpClientTest.kt
 │       │               ├── e2e
 │       │               │   ├── StrapiE2ETestBase.kt
 │       │               │   ├── concertations
@@ -763,6 +824,14 @@
 │       │               │   └── welcomePage
 │       │               │       └── NewsStrapiE2ETest.kt
 │       │               ├── infrastructure
+│       │               │   ├── acme
+│       │               │   │   ├── AcmeCertificateRepositoryImplTest.kt
+│       │               │   │   ├── AcmeChallengeStoreImplTest.kt
+│       │               │   │   ├── AcmeCryptoHelperTest.kt
+│       │               │   │   ├── AcmeOrderRepositoryImplTest.kt
+│       │               │   │   ├── AcmeServerCheckerImplTest.kt
+│       │               │   │   ├── CloudflareCertificateDeployerImplTest.kt
+│       │               │   │   └── CloudflareZoneCheckerImplTest.kt
 │       │               │   ├── common
 │       │               │   │   ├── StrapiMediaPictureTest.kt
 │       │               │   │   ├── StrapiRequestBuilderTest.kt
@@ -804,12 +873,16 @@
 │       │               │   ├── qag
 │       │               │   │   └── repository
 │       │               │   │       └── QagInfoRepositoryImplTest.kt
+│       │               │   ├── qagPaginated
+│       │               │   │   └── repository
+│       │               │   │       └── TrendingClusterRepositoryImplTest.kt
 │       │               │   ├── question
 │       │               │   │   ├── QuestionJsonMapperTest.kt
 │       │               │   │   └── repository
 │       │               │   │       └── QuestionsMapperTest.kt
 │       │               │   ├── responseQag
 │       │               │   │   └── repository
+│       │               │   │       ├── ResponseQagMapperTest.kt
 │       │               │   │       └── ResponseQagRepositoryImplTest.kt
 │       │               │   ├── responseQagPaginated
 │       │               │   │   └── ResponseQagPaginatedJsonMapperTest.kt
@@ -828,8 +901,15 @@
 │       │               │       └── repository
 │       │               │           └── UserAnsweredConsultationRepositoryImplTest.kt
 │       │               └── usecase
+│       │                   ├── acme
+│       │                   │   ├── AcmeCertificateRenewalUseCaseTest.kt
+│       │                   │   ├── AcmeCertificateUploadUseCaseTest.kt
+│       │                   │   ├── AcmeServerHealthCheckUseCaseTest.kt
+│       │                   │   └── CloudflareHealthCheckUseCaseTest.kt
 │       │                   ├── appVersionControl
 │       │                   │   └── AppVersionControlUseCaseTest.kt
+│       │                   ├── cache
+│       │                   │   └── ClearCacheUseCaseTest.kt
 │       │                   ├── consultation
 │       │                   │   ├── ConsultationPreviewFinishedMapperTest.kt
 │       │                   │   ├── ConsultationPreviewMapperTest.kt
@@ -857,12 +937,14 @@
 │       │                   ├── profile
 │       │                   │   └── AskForDemographicInfoUseCaseTest.kt
 │       │                   ├── qag
+│       │                   │   ├── AdminUpdateQagStatusUseCaseTest.kt
 │       │                   │   ├── ContentSanitizerTest.kt
 │       │                   │   ├── GetAskQagStatusUseCaseTest.kt
 │       │                   │   ├── GetPublicQagDetailsUseCaseTest.kt
 │       │                   │   ├── GetQagByKeywordsUseCaseTest.kt
 │       │                   │   ├── GetQagDetailsUseCaseTest.kt
-│       │                   │   └── InsertQagUseCaseTest.kt
+│       │                   │   ├── InsertQagUseCaseTest.kt
+│       │                   │   └── QagPreviewMapperTest.kt
 │       │                   ├── qagArchive
 │       │                   │   ├── AnonymizeOldQagUseCaseTest.kt
 │       │                   │   └── ArchiveOldQagUseCaseTest.kt
@@ -886,4 +968,4 @@
 │           └── mockito-extensions
 │               └── org.mockito.plugins.MockMaker
 └── system.properties
-255 directories, 633 files
+268 directories, 702 files
