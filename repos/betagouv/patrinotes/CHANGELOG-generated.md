@@ -1,26 +1,20 @@
-## Changelog : patrinotes (30 derniers jours, au 18 juin 2026)
+## Changelog : patrinotes (30 derniers jours, au 10 juillet 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à la génération de rapports PDF, notamment concernant la mise en page des images et des informations de visite. Des corrections ont également été apportées pour améliorer la stabilité de la réinitialisation du mot de passe et la sauvegarde des détails de visite. Enfin, des ajustements ont été faits à l'interface utilisateur pour une meilleure expérience.
+Cette mise à jour apporte des améliorations significatives à la génération de rapports PDF, notamment la correction de problèmes d'affichage des images et de mise en page.  L'ajout de Sentry permet également une meilleure surveillance et résolution des erreurs. Des corrections de bugs ont été apportées pour améliorer la stabilité de l'application mobile et de l'interface utilisateur.
 
 ### Évolutions fonctionnelles
-- Amélioration de la génération des rapports PDF :
-    - Correction de l'affichage des images dans les rapports PDF [#71](https://github.com/betagouv/patrinotes/issues/71).
-    - Correction de la représentation des informations de visite dans les rapports PDF.
-    - Amélioration de la vitesse de génération des rapports PDF.
-    - Correction de typos dans les emails.
-- Ajout de la sélection de métier et de la liste des personnes dans les comptes rendus [#71](https://github.com/betagouv/patrinotes/issues/71).
-- Correction du lien vers la FAQ [#71](https://github.com/betagouv/patrinotes/issues/71).
-- Correction de la sauvegarde des détails de visite.
-- Correction pour empêcher la soumission du formulaire par la touche Entrée.
+- Amélioration de la génération des rapports PDF : ajout de commentaires et de procédures dans les rapports de visite v1.
+- Correction de l'affichage des images dans les PDF : résolution des problèmes de distorsion, de chevauchement et de positionnement.
+- Amélioration de la réactivité de l'application mobile : fermeture correcte du modal des actions mobiles après exécution.
+- Correction du lien vers la FAQ.
+- Ajout de statistiques d'administration : correction d'une clause `WHERE` manquante dans la route des statistiques d'administration.
 
 ### Évolutions techniques
-- Correction d'une clause `WHERE` manquante dans la route des statistiques d'administration [#71](https://github.com/betagouv/patrinotes/issues/71).
-- Correction d'un problème de réinitialisation du mot de passe [#71](https://github.com/betagouv/patrinotes/issues/71).
-- Suppression des balises `<unbreakable />` inutiles.
+- Intégration de Sentry pour la surveillance des erreurs côté frontend et backend.
+- Mise en place de `networkfirst` pour la récupération de la configuration de l'environnement.
+- Suppression des balises `<unbreakable />` pour améliorer la compatibilité et la mise en page.
 
 ### Autres changements
-- Préparation des sprints 6 et 7 [#75](https://github.com/betagouv/patrinotes/issues/75).
-- Amélioration de l'affichage du nombre de pièces jointes.
-- Correction de l'affichage des labels des images lors du téléchargement.
-- Correction du texte des en-têtes et des listes à puces dans les rapports PDF.
+- Correction de typos diverses.
+- Préparation des sprints 6 et 7. [#75](https://github.com/betagouv/patrinotes/issues/75)
