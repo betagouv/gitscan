@@ -1,45 +1,68 @@
-## Changelog : doctorat-gouv (30 derniers jours, au 01 juillet 2026)
+## Changelog : doctorat-gouv (30 derniers jours, au 10 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'intégration de la recherche vectorielle Scaleway, offrant une nouvelle façon de trouver des sujets de thèse. De nombreuses améliorations ont été apportées à l'interface utilisateur pour rendre cette fonctionnalité plus intuitive et informative, notamment l'ajout de badges de score, de filtres et d'une meilleure présentation des résultats. Des corrections d'accessibilité (RGAA) ont également été implémentées.
+Cette version apporte des améliorations significatives à la recherche, notamment l'intégration de Scaleway pour la recherche vectorielle et l'amélioration de l'accessibilité (RGAA). Des optimisations de l'interface utilisateur et des corrections de bugs ont également été apportées pour une meilleure expérience utilisateur.
 
 ### Évolutions fonctionnelles
-- Intégration de la recherche vectorielle Scaleway, permettant une recherche plus performante et sémantique des sujets de thèse.
-- Ajout de badges de score vectoriel et de niveau de pertinence sur les cartes de résultats Scaleway pour aider les utilisateurs à évaluer rapidement la pertinence des sujets.
-- Implémentation de filtres Scaleway (localisation, financement et autres) pour affiner les résultats de recherche.
-- Affichage des résultats Scaleway en deux sections : "Meilleurs résultats" et "Autres résultats".
-- Amélioration de l'affichage des messages d'aide et d'ambiguïté pour la recherche vectorielle.
-- Ajout d'un badge "En cours d'expérimentation" pour indiquer que la recherche Scaleway est en version bêta.
-- Possibilité de sélectionner plusieurs intentions (localisation et financement) pour la recherche Scaleway.
+- Ajout d'une recherche par localisation via Scaleway et pgvector.
+- Intégration de filtres Scaleway (6 filtres du formulaire).
 - Remplacement d'Albert par un toggle Scaleway avec barre de recherche et aide NLP.
-- Correction de l'affichage des filtres après navigation vers le détail d'un sujet.
-- Amélioration de la distinction visuelle des sections de résultats.
+- Amélioration de l'affichage des résultats de recherche avec un carrousel, des compteurs par section et un tri par pertinence par défaut.
+- Ajout de badges d'intentions (localisation, financement) et de chips pour une meilleure visualisation des critères de recherche.
+- Ajout d'un message d'aide NLP pour guider l'utilisateur dans la formulation de sa recherche.
+- Ajout d'un sitemap XML dynamique et d'un fichier robots.txt pour améliorer le SEO.
+- Ajout de meta descriptions sur les pages de contact, de recherche et de détail d'une thèse pour le SEO.
+- Amélioration de la gestion du focus et de l'accessibilité des filtres (RGAA).
+- Correction de contrastes critiques des couleurs custom (RGAA).
+- Ajout d'aria-label aux boutons de suppression de filtres (RGAA).
+- Amélioration de l'accessibilité de la page détail (alertes dynamiques, liens target=_blank) (RGAA).
+- Ajout de régions live ARIA pour les mises à jour dynamiques (RGAA).
+- Correction de liens "Aller au contenu principal" (RGAA).
+- Ajout de titres et de balises `main` sur les pages détail et contact (RGAA).
+- Correction de l'association des labels aux champs du formulaire de contact (RGAA).
+- Ajout de titres aux messages d'erreur (RGAA).
+- Ajout de l'état actif des boutons switch et tri par aria-pressed (RGAA).
+- Ajout d'un lien d'évitement vers le contenu principal (RGAA).
 
 ### Évolutions techniques
-- Mise à jour des versions pour la release 0.3.6.
-- Correction du mapping Hibernate pour le type vectoriel (3584) avec `@JdbcTypeCode(SqlTypes.VECTOR)`.
-- Ajout d'un log des requêtes vectorielles en base de données (avec flag d'activation).
+- Intégration de Scaleway pour la recherche vectorielle.
+- Amélioration de la détection des intentions de localisation et de financement.
+- Refactor de la logique de scan des intentions.
 - Suppression du cap à 85% du score composite Scaleway.
-- Ajout d'une whitelist `FRENCH_LOCATIONS` pour valider les intentions de localisation.
-- Refactor de la détection des intentions de localisation et de financement.
-- Suppression du scheduler d'indexation Albert via une propriété de configuration.
-- Optimisation de la robustesse du split de la requête de recherche.
+- Mise à jour des versions pour la release 0.3.8 et 0.3.7.
+- Ajout de logs pour les requêtes vectorielles Scaleway.
+- Suppression du scheduler d'indexation Albert via une propriété.
 - Augmentation du budget CSS pour la page de recherche.
-- Modification du tri des résultats Scaleway par score composite.
+- Correction de la robustesse du split de la requête.
+- Ajout de tests et de corrections pour l'accessibilité (RGAA).
 
 ### Autres changements
-- Améliorations de l'accessibilité (RGAA) :
-    - Dynamisation du titre de page selon le contexte.
-    - Signalement de l'état actif des boutons switch et tri par `aria-pressed`.
-    - Correction de la hiérarchie des titres.
-    - Exposition de l'état ouvert/fermé des dropdowns de filtres.
-    - Ajout d'un lien d'évitement vers le contenu principal.
-    - Ajout de labels accessibles aux champs de recherche des dropdowns.
-    - Rendre les liens "Voir le détail" explicites pour les lecteurs d'écran via `aria-label`.
+- Ajout de la documentation MODOP pour la release v0.3.7.
 - Mise à jour de l'exemple NLP pour la recherche vectorielle.
-- Correction de l'affichage des badges de type de bloc matche Scaleway.
+- Correction du suivi git dans un fichier de documentation.
+- Suppression d'un texte d'exemple NLP et de son astérisque.
+- Reformulation des messages d'aide et d'ambiguïté de la recherche vectorielle.
+- Correction de l'attribut `lang` du document lors du changement de langue.
+- Suppression du badge de type de bloc matche Scaleway sur les titres.
+- Amélioration de la détection des localisations insensible à la casse.
+- Correction de la hiérarchie de titres.
+- Ajout de labels accessibles aux champs de recherche des dropdowns.
+- Remplacement des flèches du carrousel par des boutons DSFR tertiaires.
+- Remplacement des points du carrousel par des flèches de navigation en bas.
+- Harmonisation du style du titre de la section 2 avec celui de la section 1.
+- Ajout du compteur de filtres actifs pour activer le bouton reset.
+- Tri par pertinence uniquement en mode IA, date par défaut en recherche standard.
+- Suppression des compteurs sur les chips d'intentions.
+- Ajout de la sélection multiple des intentions Scaleway avec indicateur visuel.
+- Validation de la fiabilité des intentions détectées avant affichage.
 - Amélioration de l'UI de la recherche vectorielle (chargement Scaleway, chips actifs visibles, compteurs, tooltip custom).
-- I18n de divers messages et textes.
-- Nettoyage et refactoring du code.
-- Compactage des cartes de résultat.
-- Suppression des compteurs sur les sections Meilleurs résultats et Autres résultats (puis rétablie sur les chips core des intentions).
+- Correction de l'affichage des badges de score Scaleway.
+- Suppression du cap a 85% du score composite Scaleway.
+- Ajout d'un log des requêtes vectorielles en base avec flag d'activation.
+- Correction de l'affichage des messages ambigus.
+- Ajout de l'attribut `title` aux liens des mentions légales du contact (RGAA).
+- Ajout d'un titre dynamique à la page en fonction du contexte.
+- Ajout d'un badge "En cours d'expérimentation" à la recherche vectorielle.
+- Suppression des compteurs sur les sections "Meilleurs résultats" et "Autres résultats".
+- Correction de l'affichage de la section "Offres qui pourraient également vous intéresser".
+- Suppression du badge de type de bloc matche Scaleway également dans la section carrousel.
