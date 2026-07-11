@@ -95,7 +95,8 @@
 │       ├── moulinette
 │       │   └── form.spec.ts
 │       └── petitions
-│           └── instructor.spec.ts
+│           ├── instructor.spec.ts
+│           └── procedure_modal.spec.ts
 ├── envergo
 │   ├── __init__.py
 │   ├── admin
@@ -821,6 +822,8 @@
 │   │   │   ├── 0049_merge_20260506_1542.py
 │   │   │   ├── 0049_petitionproject_category.py
 │   │   │   ├── 0049_petitionproject_dn_archive.py
+│   │   │   ├── 0049_statuslog_prefectural_order.py
+│   │   │   ├── 0050_merge_20260617_1119.py
 │   │   │   ├── 0050_merge_20260622_1031.py
 │   │   │   ├── 0050_merge_20260623_0916.py
 │   │   │   ├── 0050_petitionproject_original_multi_category_moulinette_url.py
@@ -828,7 +831,9 @@
 │   │   │   ├── 0051_migrate_category_values.py
 │   │   │   ├── 0052_merge_20260618_1147.py
 │   │   │   ├── 0053_merge_20260701_1003.py
+│   │   │   ├── 0054_merge_20260702_1009.py
 │   │   │   ├── 0054_rename_demarches_simplifiees_fields_to_demarche_numerique_and_more.py
+│   │   │   ├── 0055_statuslog_applicant_message_and_more.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── regulations
@@ -840,6 +845,7 @@
 │   │   │   └── sites_proteges_haie.py
 │   │   ├── services.py
 │   │   ├── signals.py
+│   │   ├── tasks.py
 │   │   ├── templatetags
 │   │   │   ├── __init__.py
 │   │   │   └── petitions.py
@@ -851,6 +857,7 @@
 │   │   │   ├── test_middleware.py
 │   │   │   ├── test_models.py
 │   │   │   ├── test_services.py
+│   │   │   ├── test_tasks.py
 │   │   │   ├── test_templatetags.py
 │   │   │   └── test_views.py
 │   │   ├── urls_haie.py
@@ -980,6 +987,7 @@
 │   │   │   │   ├── notes_toggle.js
 │   │   │   │   ├── optional_forms.js
 │   │   │   │   ├── parcel_fieldset.js
+│   │   │   │   ├── procedure_modal.js
 │   │   │   │   ├── share_url_modal.js
 │   │   │   │   ├── shorten_url_for_copy.js
 │   │   │   │   ├── spinner.js
@@ -1104,6 +1112,7 @@
 │   │   │   │   ├── home.html
 │   │   │   │   ├── result.html
 │   │   │   │   ├── result_available_soon.html
+│   │   │   │   ├── result_base.html
 │   │   │   │   ├── result_debug.html
 │   │   │   │   └── result_non_disponible.html
 │   │   │   ├── pages
@@ -1252,6 +1261,7 @@
 │   │   │   │   ├── _actions_banner.html
 │   │   │   │   ├── _category_hedges.html
 │   │   │   │   ├── _city_hall_submission_callout.html
+│   │   │   │   ├── _department_alert.html
 │   │   │   │   ├── _department_doctrine_button.html
 │   │   │   │   ├── _department_doctrine_modal.html
 │   │   │   │   ├── _form_footer.html
@@ -1390,6 +1400,11 @@
 │   │   │   │   │   ├── key_elements.html
 │   │   │   │   │   └── l350_3
 │   │   │   │   │       └── alignement_arbres_plantation_condition_details.html
+│   │   │   │   ├── closing_messages
+│   │   │   │   │   ├── dropped.txt
+│   │   │   │   │   ├── express_agreement.txt
+│   │   │   │   │   ├── opposition.txt
+│   │   │   │   │   └── tacit_agreement.txt
 │   │   │   │   ├── code_rural_haie
 │   │   │   │   │   ├── consultation.html
 │   │   │   │   │   └── instruction_guidelines.html
@@ -1408,6 +1423,9 @@
 │   │   │   │   │   ├── key_elements.html
 │   │   │   │   │   └── ru
 │   │   │   │   │       └── ep_regime_unique_plantation_condition_details.html
+│   │   │   │   ├── forms
+│   │   │   │   │   └── fields
+│   │   │   │   │       └── simulation_check.html
 │   │   │   │   ├── instructor_dossier_list.html
 │   │   │   │   ├── instructor_view.html
 │   │   │   │   ├── instructor_view_alternatives.html
@@ -1543,8 +1561,6 @@
 │   │   │   │   ├── result_non_concerne.html
 │   │   │   │   ├── result_non_disponible.html
 │   │   │   │   └── result_non_soumis.html
-│   │   │   ├── base.html
-│   │   │   ├── base_result.html
 │   │   │   ├── code_rural_haie
 │   │   │   │   ├── hru
 │   │   │   │   │   └── code_rural_a_verifier.html
@@ -1594,7 +1610,6 @@
 │   │   │   │       ├── bcae8_soumis_remplacement.html
 │   │   │   │       └── bcae8_soumis_transfert_parcelles.html
 │   │   │   ├── debug.html
-│   │   │   ├── debug_result.html
 │   │   │   ├── debug_result_non_disponible.html
 │   │   │   ├── ep
 │   │   │   │   ├── _species_cortege_ru.html
@@ -1755,8 +1770,8 @@
 │   │   │   │   ├── result_non_active.html
 │   │   │   │   ├── result_non_concerne.html
 │   │   │   │   └── result_non_disponible.html
-│   │   │   ├── result.html
 │   │   │   ├── result_available_soon.html
+│   │   │   ├── result_layout.html
 │   │   │   ├── result_non_disponible.html
 │   │   │   ├── sage
 │   │   │   │   ├── _one_perimeter_detail.html
@@ -1959,4 +1974,4 @@
                 │   ├── favicon.ico
                 │   └── favicon.svg
                 └── index.html
-249 directories, 1731 files
+252 directories, 1743 files
