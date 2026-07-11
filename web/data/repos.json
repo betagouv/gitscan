@@ -4110,58 +4110,6 @@
       "organization": "betagouv"
     },
     {
-      "url": "https://github.com/MTES-MCT/dossierfacile-backend",
-      "name": "dossierfacile-backend",
-      "description": "Le backend de DossierFacile.fr aide à la réalisation de dossiers de location. Il fournit des API et des services pour la gestion des documents, des utilisateurs et des données.",
-      "language": "Java",
-      "features": [
-        "Gestion documentaire & Fichiers",
-        "API & Intégrations",
-        "Authentification & Accès",
-        "Gestion des utilisateurs & Permissions",
-        "Sécurité & Conformité",
-        "Données & Schémas"
-      ],
-      "audience": "Agents de l'Administration",
-      "dependencies": [
-        "PostgreSQL",
-        "Maven",
-        "Docker",
-        "Keycloak"
-      ],
-      "components": [
-        "API REST & GraphQL",
-        "PostgreSQL & SQL",
-        "Docker & Conteneurs",
-        "Authentification (composant)"
-      ],
-      "auth": {
-        "methods": [
-          "email-password",
-          "oauth2",
-          "sso"
-        ],
-        "providers": []
-      },
-      "tests": null,
-      "workflows": null,
-      "lastActivity": "2026-07-09T16:12:48Z",
-      "status": "active",
-      "license": "MIT",
-      "hasDocumentation": true,
-      "metrics": null,
-      "tags": [
-        "Données & Open Data",
-        "Écosystème beta.gouv / État",
-        "Java",
-        "Bases de données SQL",
-        "Sécurité & Auth"
-      ],
-      "changelog": "## Changelog : dossierfacile-backend (30 derniers jours, au 8 juillet 2026)\n\n### Résumé\nLes dernières mises à jour de dossierfacile-backend améliorent la gestion des garants, l'analyse des documents (notamment les taxes foncières), la robustesse de la création de locataires et la gestion des utilisateurs dans l'interface d'administration. Des corrections de bugs ont également été apportées pour éviter la duplication de documents et permettre la déconnexion de l'interface d'administration.\n\n### Évolutions fonctionnelles\n- Ajout de l'email pour le garant personnel lors de la création d'un locataire. [#1273](https://github.com/MTES-MCT/dossierfacile-backend/issues/1273)\n- Amélioration de la reconnaissance des noms de propriétaires sur les avis de taxe foncière, supportant désormais plusieurs propriétaires. [#1263](https://github.com/MTES-MCT/dossierfacile-backend/issues/1263)\n- Ajout d'un endpoint pour vérifier l'email, supprimer un utilisateur et tester l'opérateur dans le contrôleur de test. [#1260](https://github.com/MTES-MCT/dossierfacile-backend/issues/1260)\n- Ajout de règles Docia pour la taxe foncière concernant les catégories RESIDENCY / OWNER. [#1262](https://github.com/MTES-MCT/dossierfacile-backend/issues/1262)\n- Ajout d'un endpoint E2E pour simuler un rejet par un opérateur. [#1258](https://github.com/MTES-MCT/dossierfacile-backend/issues/1258)\n- Amélioration de la classification de la taxe foncière. [#1269](https://github.com/MTES-MCT/dossierfacile-backend/issues/1269)\n\n### Évolutions techniques\n- Ajout d'un index unique sur la table des documents pour éviter les doublons. [#1261](https://github.com/MTES-MCT/dossierfacile-backend/issues/1261)\n- Optimisation de la requête pour la récupération paginée des locataires à archiver.\n- Correction d'une course conditionnelle pouvant entraîner la création de plusieurs locataires simultanément. [#1257](https://github.com/MTES-MCT/dossierfacile-backend/issues/1257)\n- Correction d'un problème empêchant la déconnexion de l'interface d'administration. [#1256](https://github.com/MTES-MCT/dossierfacile-backend/issues/1256)\n- Refonte de la transaction sur la tâche d'archivage des locataires. [#1255](https://github.com/MTES-MCT/dossierfacile-backend/issues/1255)\n- Ajout de SSL pour Logstash. [#1271](https://github.com/MTES-MCT/dossierfacile-backend/issues/1271)\n\n### Autres changements\n- Mise à jour des dépendances. [#1272](https://github.com/MTES-MCT/dossierfacile-backend/issues/1272)\n- Ajout de logs lors de la suppression d'un fichier dans l'interface d'administration. [#1240](https://github.com/MTES-MCT/dossierfacile-backend/issues/1240)\n- Publication des versions V3.5.11 et V3.5.12.",
-      "changelogGeneratedAt": "2026-07-11T02:46:04Z",
-      "organization": "MTES-MCT"
-    },
-    {
       "url": "https://github.com/betagouv/portail-rse",
       "name": "portail-rse",
       "description": "Le portail RSE permet aux entreprises de connaître et de répondre à leurs obligations en matière de Responsabilité Sociétale des Entreprises (RSE). Il offre des outils pour l'évaluation, le suivi et la publication des données RSE.",
@@ -4237,6 +4185,58 @@
       "changelog": "## Changelog : portail-rse (30 derniers jours, au 09 juillet 2026)\n\n### Résumé\nCe mois-ci, les efforts de développement se sont concentrés sur l'amélioration significative de la fonctionnalité d'exportation des données VSME au format PowerPoint (pptx). De nombreuses corrections et optimisations ont été apportées pour assurer un rendu précis et complet des informations, en tenant compte des différents cas de figure (indicateurs pertinents, non pertinents, non applicables). Des améliorations ont également été apportées à l'administration et à la sécurité.\n\n### Évolutions fonctionnelles\n- Possibilité de réinitialiser un indicateur VSME [#2a12381](https://github.com/betagouv/portail-rse/commit/2a12381).\n- Amélioration de l'exportation au format PPTX pour les indicateurs VSME :\n    - Gestion des indicateurs non pertinents et non applicables.\n    - Export des totaux de l'indicateur C3.\n    - Affichage correct de la couverture.\n    - Gestion des tableaux à lignes variables et fixes.\n    - Ajout d'indicateurs environnementaux.\n    - Centrage du contenu des cellules.\n    - Gestion des nombres entiers et des choix multiples.\n    - Ajout d'informations sur la couverture (nom de l'entreprise).\n    - Amélioration du sommaire.\n    - Correction de l'alignement de l'image de fond sur certaines diapositives.\n- Ajout d'un lien de téléchargement pour le rapport PPTX.\n- Recherche par ensemble d'ID d'utilisateurs dans l'administration [#0b826a1](https://github.com/betagouv/portail-rse/commit/0b826a1).\n- Nettoyage du compte utilisateur de test pour les personnes sans compte Proconnect [#f910a2b](https://github.com/betagouv/portail-rse/commit/f910a2b).\n- Empêchement de la modification du profil et du mot de passe de l'utilisateur test [#4df6290](https://github.com/betagouv/portail-rse/commit/4df6290), [#42bcad5](https://github.com/betagouv/portail-rse/commit/42bcad5).\n- Ajout de logs pour les requêtes d'export xlsx et pptx [#260e6ff](https://github.com/betagouv/portail-rse/commit/260e6ff).\n\n### Évolutions techniques\n- Mise à jour de Django de la version 5.1.15 à la version 5.2.16 [#48eb2fc](https://github.com/betagouv/portail-rse/commit/48eb2fc).\n- Mise à jour de Node.js dans `package.json` et l'intégration continue [#376ab90](https://github.com/betagouv/portail-rse/commit/376ab90).\n- Refactoring de l'administration : suppression d'une définition d'attribut en trop [#8adeba0](https://github.com/betagouv/portail-rse/commit/8adeba0).\n- Refactoring de la commande de renommage pour une action élargie [#b5f630c](https://github.com/betagouv/portail-rse/commit/b5f630c).\n- Simplification et changements de signature des fonctions d'export PPTX.\n- Suppression des éléments liés aux modules complets dans l'export PPTX.\n- Amélioration de la gestion des erreurs lors de la suppression de schémas.\n- Correction d'une erreur d'affichage de la dernière diapo pour C2-48.\n\n### Autres changements\n- Documentation : Complétion du diagramme overview [#46d3b7e](https://github.com/betagouv/portail-rse/commit/46d3b7e).\n- Mise à jour des dépendances : `cryptography`, `aiohttp`, `pyjwt`, `joserfc` (mises à jour automatiques).",
       "changelogGeneratedAt": "2026-07-11T02:45:33Z",
       "organization": "betagouv"
+    },
+    {
+      "url": "https://github.com/MTES-MCT/dossierfacile-backend",
+      "name": "dossierfacile-backend",
+      "description": "Le backend de DossierFacile.fr aide à la réalisation de dossiers de location. Il fournit des API et des services pour la gestion des documents, des utilisateurs et des données.",
+      "language": "Java",
+      "features": [
+        "Gestion documentaire & Fichiers",
+        "API & Intégrations",
+        "Authentification & Accès",
+        "Gestion des utilisateurs & Permissions",
+        "Sécurité & Conformité",
+        "Données & Schémas"
+      ],
+      "audience": "Agents de l'Administration",
+      "dependencies": [
+        "PostgreSQL",
+        "Maven",
+        "Docker",
+        "Keycloak"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "PostgreSQL & SQL",
+        "Docker & Conteneurs",
+        "Authentification (composant)"
+      ],
+      "auth": {
+        "methods": [
+          "email-password",
+          "oauth2",
+          "sso"
+        ],
+        "providers": []
+      },
+      "tests": null,
+      "workflows": null,
+      "lastActivity": "2026-07-09T16:12:48Z",
+      "status": "active",
+      "license": "MIT",
+      "hasDocumentation": true,
+      "metrics": null,
+      "tags": [
+        "Données & Open Data",
+        "Écosystème beta.gouv / État",
+        "Java",
+        "Bases de données SQL",
+        "Sécurité & Auth"
+      ],
+      "changelog": "## Changelog : dossierfacile-backend (30 derniers jours, au 8 juillet 2026)\n\n### Résumé\nLes dernières mises à jour de dossierfacile-backend améliorent la gestion des garants, l'analyse des documents (notamment les taxes foncières), la robustesse de la création de locataires et la gestion des utilisateurs dans l'interface d'administration. Des corrections de bugs ont également été apportées pour éviter la duplication de documents et permettre la déconnexion de l'interface d'administration.\n\n### Évolutions fonctionnelles\n- Ajout de l'email pour le garant personnel lors de la création d'un locataire. [#1273](https://github.com/MTES-MCT/dossierfacile-backend/issues/1273)\n- Amélioration de la reconnaissance des noms de propriétaires sur les avis de taxe foncière, supportant désormais plusieurs propriétaires. [#1263](https://github.com/MTES-MCT/dossierfacile-backend/issues/1263)\n- Ajout d'un endpoint pour vérifier l'email, supprimer un utilisateur et tester l'opérateur dans le contrôleur de test. [#1260](https://github.com/MTES-MCT/dossierfacile-backend/issues/1260)\n- Ajout de règles Docia pour la taxe foncière concernant les catégories RESIDENCY / OWNER. [#1262](https://github.com/MTES-MCT/dossierfacile-backend/issues/1262)\n- Ajout d'un endpoint E2E pour simuler un rejet par un opérateur. [#1258](https://github.com/MTES-MCT/dossierfacile-backend/issues/1258)\n- Amélioration de la classification de la taxe foncière. [#1269](https://github.com/MTES-MCT/dossierfacile-backend/issues/1269)\n\n### Évolutions techniques\n- Ajout d'un index unique sur la table des documents pour éviter les doublons. [#1261](https://github.com/MTES-MCT/dossierfacile-backend/issues/1261)\n- Optimisation de la requête pour la récupération paginée des locataires à archiver.\n- Correction d'une course conditionnelle pouvant entraîner la création de plusieurs locataires simultanément. [#1257](https://github.com/MTES-MCT/dossierfacile-backend/issues/1257)\n- Correction d'un problème empêchant la déconnexion de l'interface d'administration. [#1256](https://github.com/MTES-MCT/dossierfacile-backend/issues/1256)\n- Refonte de la transaction sur la tâche d'archivage des locataires. [#1255](https://github.com/MTES-MCT/dossierfacile-backend/issues/1255)\n- Ajout de SSL pour Logstash. [#1271](https://github.com/MTES-MCT/dossierfacile-backend/issues/1271)\n\n### Autres changements\n- Mise à jour des dépendances. [#1272](https://github.com/MTES-MCT/dossierfacile-backend/issues/1272)\n- Ajout de logs lors de la suppression d'un fichier dans l'interface d'administration. [#1240](https://github.com/MTES-MCT/dossierfacile-backend/issues/1240)\n- Publication des versions V3.5.11 et V3.5.12.",
+      "changelogGeneratedAt": "2026-07-11T02:46:04Z",
+      "organization": "MTES-MCT"
     },
     {
       "url": "https://github.com/betagouv/anssi-portail",
@@ -44072,70 +44072,6 @@
       "organization": "SocialGouv"
     },
     {
-      "url": "https://github.com/socialgouv/e2esdk",
-      "name": "e2esdk",
-      "description": "SDK pour construire des applications web chiffrées de bout en bout.",
-      "language": "TypeScript",
-      "features": [
-        "Authentification & Accès",
-        "Sécurité & Conformité",
-        "Données & Schémas"
-      ],
-      "audience": "Professionnels",
-      "dependencies": [
-        "PostgreSQL",
-        "ioredis",
-        "libsodium-wrappers",
-        "zod",
-        "@47ng/opaque-server",
-        "@47ng/opaque-client"
-      ],
-      "components": [
-        "API REST & GraphQL",
-        "Node.js / NestJS",
-        "PostgreSQL & SQL",
-        "TypeScript / JavaScript",
-        "React / Next.js",
-        "Devtools"
-      ],
-      "auth": {
-        "methods": [
-          "email-password",
-          "oauth2"
-        ],
-        "providers": []
-      },
-      "tests": [
-        "Jest"
-      ],
-      "workflows": [
-        "ci-cd.yml",
-        "deploy-docs-to-github-pages.yml"
-      ],
-      "lastActivity": "2025-11-20T19:09:48Z",
-      "status": "active",
-      "license": "Apache-2.0",
-      "hasDocumentation": true,
-      "metrics": {
-        "stars": 23,
-        "forks": 3,
-        "contributors": null,
-        "openIssues": 24
-      },
-      "tags": [
-        "crypto",
-        "Tests & Qualité",
-        "end-to-end-encryption",
-        "TypeScript",
-        "HTML, CSS & Web",
-        "Sécurité & Auth",
-        "chiffrement"
-      ],
-      "changelog": null,
-      "changelogGeneratedAt": null,
-      "organization": "SocialGouv"
-    },
-    {
       "url": "https://github.com/betagouv/e2esdk",
       "name": "e2esdk",
       "description": "Ce SDK permet de construire des applications web avec un chiffrement de bout en bout. Il gère les identités cryptographiques et les clés de chiffrement pour une communication sécurisée.",
@@ -44200,6 +44136,70 @@
       "changelog": null,
       "changelogGeneratedAt": null,
       "organization": "betagouv"
+    },
+    {
+      "url": "https://github.com/socialgouv/e2esdk",
+      "name": "e2esdk",
+      "description": "SDK pour construire des applications web chiffrées de bout en bout.",
+      "language": "TypeScript",
+      "features": [
+        "Authentification & Accès",
+        "Sécurité & Conformité",
+        "Données & Schémas"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [
+        "PostgreSQL",
+        "ioredis",
+        "libsodium-wrappers",
+        "zod",
+        "@47ng/opaque-server",
+        "@47ng/opaque-client"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "Node.js / NestJS",
+        "PostgreSQL & SQL",
+        "TypeScript / JavaScript",
+        "React / Next.js",
+        "Devtools"
+      ],
+      "auth": {
+        "methods": [
+          "email-password",
+          "oauth2"
+        ],
+        "providers": []
+      },
+      "tests": [
+        "Jest"
+      ],
+      "workflows": [
+        "ci-cd.yml",
+        "deploy-docs-to-github-pages.yml"
+      ],
+      "lastActivity": "2025-11-20T19:09:48Z",
+      "status": "active",
+      "license": "Apache-2.0",
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 23,
+        "forks": 3,
+        "contributors": null,
+        "openIssues": 24
+      },
+      "tags": [
+        "crypto",
+        "Tests & Qualité",
+        "end-to-end-encryption",
+        "TypeScript",
+        "HTML, CSS & Web",
+        "Sécurité & Auth",
+        "chiffrement"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "SocialGouv"
     },
     {
       "url": "https://github.com/socialgouv/test-renovate",
@@ -46137,54 +46137,6 @@
       "organization": "betagouv"
     },
     {
-      "url": "https://github.com/datagouv/datagouv-visualizations",
-      "name": "datagouv-visualizations",
-      "description": "Une bibliothèque de composants de visualisation de données pour Vue 3 et React, conforme au Système de Design de l'État Français (DSFR).",
-      "language": "TypeScript",
-      "features": [
-        "Visualisation de données & Cartographie"
-      ],
-      "audience": "Professionnels",
-      "dependencies": [
-        "React",
-        "Vue",
-        "echarts",
-        "maplibre-gl"
-      ],
-      "components": [
-        "React / Next.js",
-        "Vue.js / Nuxt",
-        "API REST & GraphQL"
-      ],
-      "auth": {
-        "methods": [
-          "none"
-        ]
-      },
-      "tests": null,
-      "workflows": null,
-      "lastActivity": "2025-10-27T13:13:19Z",
-      "status": "active",
-      "license": "MIT",
-      "hasDocumentation": true,
-      "metrics": {
-        "stars": 0,
-        "forks": 1,
-        "contributors": null,
-        "openIssues": 0
-      },
-      "tags": [
-        "Données & Open Data",
-        "React & Next.js",
-        "TypeScript",
-        "Visualisation",
-        "Vue.js"
-      ],
-      "changelog": null,
-      "changelogGeneratedAt": null,
-      "organization": "datagouv"
-    },
-    {
       "url": "https://github.com/betagouv/datagouv-visualizations",
       "name": "datagouv-visualizations",
       "description": "Une bibliothèque de composants de visualisation de données pour Vue 3 et React, conforme au Système de Design de l'État Français (DSFR).",
@@ -46239,6 +46191,54 @@
       "changelog": null,
       "changelogGeneratedAt": null,
       "organization": "betagouv"
+    },
+    {
+      "url": "https://github.com/datagouv/datagouv-visualizations",
+      "name": "datagouv-visualizations",
+      "description": "Une bibliothèque de composants de visualisation de données pour Vue 3 et React, conforme au Système de Design de l'État Français (DSFR).",
+      "language": "TypeScript",
+      "features": [
+        "Visualisation de données & Cartographie"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [
+        "React",
+        "Vue",
+        "echarts",
+        "maplibre-gl"
+      ],
+      "components": [
+        "React / Next.js",
+        "Vue.js / Nuxt",
+        "API REST & GraphQL"
+      ],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": null,
+      "workflows": null,
+      "lastActivity": "2025-10-27T13:13:19Z",
+      "status": "active",
+      "license": "MIT",
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 1,
+        "contributors": null,
+        "openIssues": 0
+      },
+      "tags": [
+        "Données & Open Data",
+        "React & Next.js",
+        "TypeScript",
+        "Visualisation",
+        "Vue.js"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "datagouv"
     },
     {
       "url": "https://github.com/IA-Generative/api-realtime-ai",
@@ -46844,6 +46844,41 @@
       "organization": "proconnect-gouv"
     },
     {
+      "url": "https://github.com/betagouv/reva-metabase-buildpack",
+      "name": "reva-metabase-buildpack",
+      "description": "Ce buildpack permet de déployer Metabase sur la plateforme Heroku. Il simplifie le processus de configuration et d'exécution de Metabase dans un environnement Heroku.",
+      "language": "Shell",
+      "features": [],
+      "audience": "Développeurs",
+      "dependencies": [],
+      "components": [],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": null,
+      "workflows": null,
+      "lastActivity": "2025-10-15T09:06:05Z",
+      "status": "active",
+      "license": "MIT",
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 1,
+        "contributors": null,
+        "openIssues": 0
+      },
+      "tags": [
+        "Heroku",
+        "Metabase",
+        "Buildpack"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "betagouv"
+    },
+    {
       "url": "https://github.com/socialgouv/reva-metabase-buildpack",
       "name": "reva-metabase-buildpack",
       "description": "Ce buildpack permet de déployer Metabase sur la plateforme Heroku. Il simplifie le processus de configuration et d'exécution de Metabase dans un environnement Heroku.",
@@ -46880,41 +46915,6 @@
       "changelog": null,
       "changelogGeneratedAt": null,
       "organization": "SocialGouv"
-    },
-    {
-      "url": "https://github.com/betagouv/reva-metabase-buildpack",
-      "name": "reva-metabase-buildpack",
-      "description": "Ce buildpack permet de déployer Metabase sur la plateforme Heroku. Il simplifie le processus de configuration et d'exécution de Metabase dans un environnement Heroku.",
-      "language": "Shell",
-      "features": [],
-      "audience": "Développeurs",
-      "dependencies": [],
-      "components": [],
-      "auth": {
-        "methods": [
-          "none"
-        ]
-      },
-      "tests": null,
-      "workflows": null,
-      "lastActivity": "2025-10-15T09:06:05Z",
-      "status": "active",
-      "license": "MIT",
-      "hasDocumentation": true,
-      "metrics": {
-        "stars": 0,
-        "forks": 1,
-        "contributors": null,
-        "openIssues": 0
-      },
-      "tags": [
-        "Heroku",
-        "Metabase",
-        "Buildpack"
-      ],
-      "changelog": null,
-      "changelogGeneratedAt": null,
-      "organization": "betagouv"
     },
     {
       "url": "https://github.com/tchapgouv/metabase-scalingo",
@@ -55701,47 +55701,6 @@
       "organization": "dnum-mi"
     },
     {
-      "url": "https://github.com/mtes-mct/dossierfacile-metabase-scalingo",
-      "name": "dossierfacile-metabase-scalingo",
-      "description": "Ce dépôt fournit un moyen simple de déployer Metabase sur Scalingo. Il offre une solution rapide et facile pour mettre en place une instance Metabase fonctionnelle.",
-      "language": "Shell",
-      "features": [],
-      "audience": "Professionnels",
-      "dependencies": [
-        "Metabase",
-        "Scalingo",
-        "PostgreSQL"
-      ],
-      "components": [
-        "CI/CD & Déploiement"
-      ],
-      "auth": {
-        "methods": [
-          "none"
-        ]
-      },
-      "tests": null,
-      "workflows": [],
-      "lastActivity": "2025-03-04T15:33:35Z",
-      "status": "active",
-      "license": null,
-      "hasDocumentation": true,
-      "metrics": {
-        "stars": 0,
-        "forks": 0,
-        "contributors": null,
-        "openIssues": 0
-      },
-      "tags": [
-        "Reporting & BI",
-        "Déploiement & Hosting",
-        "One-click-deploy"
-      ],
-      "changelog": null,
-      "changelogGeneratedAt": null,
-      "organization": "MTES-MCT"
-    },
-    {
       "url": "https://github.com/betagouv/assistant-declaration-metabase-scalingo",
       "name": "assistant-declaration-metabase-scalingo",
       "description": "Ce dépôt permet de déployer facilement Metabase sur la plateforme Scalingo. Il fournit une configuration pré-définie et des instructions pour simplifier le processus de déploiement.",
@@ -55783,6 +55742,47 @@
       "changelog": null,
       "changelogGeneratedAt": null,
       "organization": "betagouv"
+    },
+    {
+      "url": "https://github.com/mtes-mct/dossierfacile-metabase-scalingo",
+      "name": "dossierfacile-metabase-scalingo",
+      "description": "Ce dépôt fournit un moyen simple de déployer Metabase sur Scalingo. Il offre une solution rapide et facile pour mettre en place une instance Metabase fonctionnelle.",
+      "language": "Shell",
+      "features": [],
+      "audience": "Professionnels",
+      "dependencies": [
+        "Metabase",
+        "Scalingo",
+        "PostgreSQL"
+      ],
+      "components": [
+        "CI/CD & Déploiement"
+      ],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": null,
+      "workflows": [],
+      "lastActivity": "2025-03-04T15:33:35Z",
+      "status": "active",
+      "license": null,
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": null,
+        "openIssues": 0
+      },
+      "tags": [
+        "Reporting & BI",
+        "Déploiement & Hosting",
+        "One-click-deploy"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "MTES-MCT"
     },
     {
       "url": "https://github.com/incubateur-ademe/pages-legales-faciles",
@@ -90534,6 +90534,172 @@
       "organization": "entrepreneur-interet-general"
     },
     {
+      "url": "https://github.com/betagouv/tmp-repo",
+      "name": "tmp-repo",
+      "description": "Ce dépôt semble être un dépôt temporaire ou de test, probablement utilisé pour des expérimentations ou des développements rapides.",
+      "language": null,
+      "features": [],
+      "audience": null,
+      "dependencies": [],
+      "components": [],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": null,
+      "workflows": [],
+      "lastActivity": null,
+      "status": "unknown",
+      "license": null,
+      "hasDocumentation": false,
+      "metrics": null,
+      "tags": [],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "betagouv"
+    },
+    {
+      "url": "https://github.com/betagouv/outline-to-delete",
+      "name": "outline-to-delete",
+      "description": "Ce projet permet de supprimer des données selon un planning défini. Il est conçu pour automatiser la suppression d'informations sensibles ou obsolètes.",
+      "language": null,
+      "features": [],
+      "audience": null,
+      "dependencies": [],
+      "components": [],
+      "auth": {
+        "methods": [
+          "none"
+        ],
+        "providers": []
+      },
+      "tests": null,
+      "workflows": null,
+      "lastActivity": null,
+      "status": "unknown",
+      "license": null,
+      "hasDocumentation": false,
+      "metrics": null,
+      "tags": [],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "betagouv"
+    },
+    {
+      "url": "https://github.com/betagouv/mes-aides-data",
+      "name": "mes-aides-data",
+      "description": "Ce dépôt contient les données relatives aux aides sociales en France. Il vise à centraliser et rendre accessibles ces informations pour faciliter l'accès aux droits pour les citoyens.",
+      "language": null,
+      "features": [],
+      "audience": "Grand public",
+      "dependencies": [],
+      "components": [],
+      "auth": {
+        "methods": [
+          "none"
+        ],
+        "providers": []
+      },
+      "tests": null,
+      "workflows": null,
+      "lastActivity": null,
+      "status": "unknown",
+      "license": null,
+      "hasDocumentation": false,
+      "metrics": null,
+      "tags": [
+        "aides sociales",
+        "Données & Open Data",
+        "Écosystème beta.gouv / État"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "betagouv"
+    },
+    {
+      "url": "https://github.com/betagouv/dsfr-feedback",
+      "name": "dsfr-feedback",
+      "description": "Ce projet permet de recueillir les retours des utilisateurs sur le Design System FR (DSFR). Il vise à améliorer l'accessibilité et l'expérience utilisateur du système de conception.",
+      "language": null,
+      "features": [],
+      "audience": "Agents de l'Administration",
+      "dependencies": [],
+      "components": [],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": null,
+      "workflows": null,
+      "lastActivity": null,
+      "status": "unknown",
+      "license": null,
+      "hasDocumentation": false,
+      "metrics": null,
+      "tags": [
+        "Design System & UI",
+        "Communication & Messagerie",
+        "Tests & Qualité"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "betagouv"
+    },
+    {
+      "url": "https://github.com/betagouv/budget",
+      "name": "budget",
+      "description": "Ce projet vise à fournir un outil pour la gestion et la visualisation des budgets. Il permet de suivre les dépenses publiques et de promouvoir la transparence financière. L'objectif est de rendre l'information budgétaire accessible à tous.",
+      "language": null,
+      "features": [],
+      "audience": null,
+      "dependencies": [],
+      "components": [],
+      "auth": {
+        "methods": [
+          "none"
+        ],
+        "providers": []
+      },
+      "tests": null,
+      "workflows": null,
+      "lastActivity": null,
+      "status": "unknown",
+      "license": null,
+      "hasDocumentation": false,
+      "metrics": null,
+      "tags": [],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "betagouv"
+    },
+    {
+      "url": "https://github.com/betagouv/animation-communaute",
+      "name": "animation-communaute",
+      "description": "Ce dépôt contient le code source de l'application Animation Communauté, une plateforme web développée par beta.gouv. Elle vise à faciliter l'animation et la mise en relation des communautés.",
+      "language": null,
+      "features": [],
+      "audience": [],
+      "dependencies": [],
+      "components": [],
+      "auth": {
+        "methods": [],
+        "providers": []
+      },
+      "tests": null,
+      "workflows": [],
+      "lastActivity": null,
+      "status": "unknown",
+      "license": null,
+      "hasDocumentation": false,
+      "metrics": null,
+      "tags": [],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "betagouv"
+    },
+    {
       "url": "https://github.com/SocialGouv/token-bureau-test-outscope",
       "name": "token-bureau-test-outscope",
       "description": "Ce dépôt semble être un environnement de test pour le 'token bureau', probablement lié à la gestion de jetons ou d'identifiants numériques. Il sert probablement à des expérimentations et à des tests en dehors du périmètre principal du projet.",
@@ -90808,172 +90974,6 @@
       "changelog": null,
       "changelogGeneratedAt": null,
       "organization": "MTES-MCT"
-    },
-    {
-      "url": "https://github.com/betagouv/tmp-repo",
-      "name": "tmp-repo",
-      "description": "Ce dépôt semble être un dépôt temporaire ou de test, probablement utilisé pour des expérimentations ou des développements rapides.",
-      "language": null,
-      "features": [],
-      "audience": null,
-      "dependencies": [],
-      "components": [],
-      "auth": {
-        "methods": [
-          "none"
-        ]
-      },
-      "tests": null,
-      "workflows": [],
-      "lastActivity": null,
-      "status": "unknown",
-      "license": null,
-      "hasDocumentation": false,
-      "metrics": null,
-      "tags": [],
-      "changelog": null,
-      "changelogGeneratedAt": null,
-      "organization": "betagouv"
-    },
-    {
-      "url": "https://github.com/betagouv/outline-to-delete",
-      "name": "outline-to-delete",
-      "description": "Ce projet permet de supprimer des données selon un planning défini. Il est conçu pour automatiser la suppression d'informations sensibles ou obsolètes.",
-      "language": null,
-      "features": [],
-      "audience": null,
-      "dependencies": [],
-      "components": [],
-      "auth": {
-        "methods": [
-          "none"
-        ],
-        "providers": []
-      },
-      "tests": null,
-      "workflows": null,
-      "lastActivity": null,
-      "status": "unknown",
-      "license": null,
-      "hasDocumentation": false,
-      "metrics": null,
-      "tags": [],
-      "changelog": null,
-      "changelogGeneratedAt": null,
-      "organization": "betagouv"
-    },
-    {
-      "url": "https://github.com/betagouv/mes-aides-data",
-      "name": "mes-aides-data",
-      "description": "Ce dépôt contient les données relatives aux aides sociales en France. Il vise à centraliser et rendre accessibles ces informations pour faciliter l'accès aux droits pour les citoyens.",
-      "language": null,
-      "features": [],
-      "audience": "Grand public",
-      "dependencies": [],
-      "components": [],
-      "auth": {
-        "methods": [
-          "none"
-        ],
-        "providers": []
-      },
-      "tests": null,
-      "workflows": null,
-      "lastActivity": null,
-      "status": "unknown",
-      "license": null,
-      "hasDocumentation": false,
-      "metrics": null,
-      "tags": [
-        "aides sociales",
-        "Données & Open Data",
-        "Écosystème beta.gouv / État"
-      ],
-      "changelog": null,
-      "changelogGeneratedAt": null,
-      "organization": "betagouv"
-    },
-    {
-      "url": "https://github.com/betagouv/dsfr-feedback",
-      "name": "dsfr-feedback",
-      "description": "Ce projet permet de recueillir les retours des utilisateurs sur le Design System FR (DSFR). Il vise à améliorer l'accessibilité et l'expérience utilisateur du système de conception.",
-      "language": null,
-      "features": [],
-      "audience": "Agents de l'Administration",
-      "dependencies": [],
-      "components": [],
-      "auth": {
-        "methods": [
-          "none"
-        ]
-      },
-      "tests": null,
-      "workflows": null,
-      "lastActivity": null,
-      "status": "unknown",
-      "license": null,
-      "hasDocumentation": false,
-      "metrics": null,
-      "tags": [
-        "Design System & UI",
-        "Communication & Messagerie",
-        "Tests & Qualité"
-      ],
-      "changelog": null,
-      "changelogGeneratedAt": null,
-      "organization": "betagouv"
-    },
-    {
-      "url": "https://github.com/betagouv/budget",
-      "name": "budget",
-      "description": "Ce projet vise à fournir un outil pour la gestion et la visualisation des budgets. Il permet de suivre les dépenses publiques et de promouvoir la transparence financière. L'objectif est de rendre l'information budgétaire accessible à tous.",
-      "language": null,
-      "features": [],
-      "audience": null,
-      "dependencies": [],
-      "components": [],
-      "auth": {
-        "methods": [
-          "none"
-        ],
-        "providers": []
-      },
-      "tests": null,
-      "workflows": null,
-      "lastActivity": null,
-      "status": "unknown",
-      "license": null,
-      "hasDocumentation": false,
-      "metrics": null,
-      "tags": [],
-      "changelog": null,
-      "changelogGeneratedAt": null,
-      "organization": "betagouv"
-    },
-    {
-      "url": "https://github.com/betagouv/animation-communaute",
-      "name": "animation-communaute",
-      "description": "Ce dépôt contient le code source de l'application Animation Communauté, une plateforme web développée par beta.gouv. Elle vise à faciliter l'animation et la mise en relation des communautés.",
-      "language": null,
-      "features": [],
-      "audience": [],
-      "dependencies": [],
-      "components": [],
-      "auth": {
-        "methods": [],
-        "providers": []
-      },
-      "tests": null,
-      "workflows": [],
-      "lastActivity": null,
-      "status": "unknown",
-      "license": null,
-      "hasDocumentation": false,
-      "metrics": null,
-      "tags": [],
-      "changelog": null,
-      "changelogGeneratedAt": null,
-      "organization": "betagouv"
     },
     {
       "url": "https://github.com/IA-Generative/prompt-guard",
@@ -93091,51 +93091,53 @@
   "orgChangelogs": [
     {
       "organization": "agora-gouv",
-      "changelog": "# Synthèse d'activité : agora-gouv (du 22/06 au 02/07)\n\n## Résumé de l'activité\nLa période a été marquée par une migration majeure vers Strapi V5 dans [agora-cms-strapi](/repos/agora-gouv/agora-cms-strapi), améliorant la performance et les fonctionnalités du CMS.  Des améliorations significatives ont également été apportées à l'expérience utilisateur de l'application mobile [agora-app](/repos/agora-gouv/agora-app) avec des corrections de bugs liés au partage de contenu et aux liens profonds. Le backend [agora-back](/repos/agora-gouv/agora-back) a vu l'amélioration de son algorithme de tendances et l'intégration avec Strapi V5, ainsi que des optimisations diverses. L'interface utilisateur d'agora [agora-front](/repos/agora-gouv/agora-front) a été améliorée, notamment pour les réponses du gouvernement et les consultations.\n\n## Sécurité\nDes certificats Sectigo ont été ajoutés pour améliorer la sécurité de l'application mobile [agora-app](/repos/agora-gouv/agora-app).\n\n## Autres changements notables\nLa migration vers Strapi V5 dans [agora-cms-strapi](/repos/agora-gouv/agora-cms-strapi) et [agora-back](/repos/agora-gouv/agora-back) représente un changement technique majeur, nécessitant des scripts de rollback et des ajustements des migrations.  L'algorithme de calcul des tendances a été amélioré dans [agora-back](/repos/agora-gouv/agora-back) pour une meilleure pertinence.\n\n## Dépôts les plus actifs\n- [agora-back](/repos/agora-gouv/agora-back) : Amélioration de l'algorithme de tendances, migration vers Strapi V5 et diverses corrections et optimisations.\n- [agora-app](/repos/agora-gouv/agora-app) : Corrections de bugs liés au partage de contenu, aux liens profonds et à l'affichage, ainsi que des ajustements pour la conformité au Design System FR.\n- [agora-cms-strapi](/repos/agora-gouv/agora-cms-strapi) : Migration complète vers Strapi V5 et ajustements de la gestion des thèmes et des auteurs.\n- [agora-front](/repos/agora-gouv/agora-front) : Amélioration de l'interface utilisateur pour les réponses du gouvernement et les consultations.",
-      "changelogGeneratedAt": "2026-07-03T20:47:28Z"
+      "changelog": "# Synthèse d'activité : agora-gouv (du 26 juin au 10 juillet 2026)\n\n## Résumé de l'activité\nL'activité récente de l'organisation agora-gouv s'est concentrée sur l'amélioration de la plateforme, tant sur le plan fonctionnel qu'en termes de performance et de sécurité. Des efforts importants ont été déployés pour moderniser l'infrastructure avec la migration vers Strapi V5 ([agora-cms-strapi](/repos/agora-gouv/agora-cms-strapi)) et automatiser la gestion des certificats SSL ([agora-back](/repos/agora-gouv/agora-back)). L'expérience utilisateur a également été améliorée, notamment au niveau de l'application mobile ([agora-app](/repos/agora-gouv/agora-app)) et de l'interface web ([agora-front](/repos/agora-gouv/agora-front)), avec des corrections de bugs et des ajustements de design.\n\n## Sécurité\nPlusieurs changements ont été apportés pour renforcer la sécurité :\n- Ajout de certificats Sectigo pour la validation de domaine ([agora-front](/repos/agora-gouv/agora-front), [agora-app](/repos/agora-gouv/agora-app)).\n- Automatisation du renouvellement des certificats SSL via ACME ([agora-back](/repos/agora-gouv/agora-back)).\n\n## Autres changements notables\n- Migration de la plateforme CMS vers Strapi V5 ([agora-cms-strapi](/repos/agora-gouv/agora-cms-strapi)).\n- Amélioration de la gestion du cache et de l'algorithme de tendances ([agora-back](/repos/agora-gouv/agora-back)).\n- Ajustements de la configuration Nginx pour améliorer la stabilité et les performances ([agora-cms-strapi](/repos/agora-gouv/agora-cms-strapi)).\n\n## Dépôts les plus actifs\n- [agora-back](/repos/agora-gouv/agora-back) : Amélioration de la gestion du cache, de l'algorithme de tendances et intégration de Strapi V5.\n- [agora-front](/repos/agora-gouv/agora-front) : Corrections de bugs d'affichage et d'interaction, ajustements de design et gestion des liens profonds.\n- [agora-app](/repos/agora-gouv/agora-app) : Corrections de bugs liés au partage de contenu, aux liens profonds et à l'affichage, alignement avec le Design System FR.\n- [agora-cms-strapi](/repos/agora-gouv/agora-cms-strapi) : Migration vers Strapi V5 et améliorations de la stabilité et des performances.",
+      "changelogGeneratedAt": "2026-07-11T05:58:08Z"
     },
     {
       "organization": "anct-cartographie-nationale",
-      "changelog": "# Synthèse d'activité : anct-cartographie-nationale (du 17/06 au 29/06)\n\n## Résumé de l'activité\nL'activité récente de l'organisation s'est concentrée sur l'amélioration des données utilisées pour la cartographie des lieux d'inclusion numérique et sur la modernisation de l'application web.  [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli) a été mis à jour avec de nouvelles sources de données (Francilin) et des corrections de zonage (remplacement ZRR par FRR, mise à jour QPV). L'application [cartographie](/repos/anct-cartographie-nationale/cartographie) a bénéficié d'un filtre par source de données, d'une meilleure gestion du cache et de l'intégration de Sentry pour le suivi des erreurs. Ces améliorations visent à fournir des données plus précises et une expérience utilisateur plus stable et performante.\n\n## Sécurité\nL'intégration de Sentry dans [cartographie](/repos/anct-cartographie-nationale/cartographie) inclut un filtrage des données sensibles lors de la remontée des erreurs, améliorant ainsi la sécurité des données utilisateurs.\n\n## Autres changements notables\n[cartographie](/repos/anct-cartographie-nationale/cartographie) a entrepris une modernisation technique significative avec l'adoption de nouvelles bibliothèques (@arckit/nextjs, @arckit/form, @arckit/daisyui) et l'émission des logs Nginx au format JSON pour une meilleure intégration avec Grafana. Ces changements visent à améliorer la maintenabilité et l'observabilité de l'application.\n\n## Dépôts les plus actifs\n- [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli) : Mise à jour des sources de données et amélioration de la stabilité de la publication des données nationales.\n- [cartographie](/repos/anct-cartographie-nationale/cartographie) : Amélioration de l'interface utilisateur avec un filtre par source de données, intégration d'un outil de suivi des erreurs et modernisation de la base de code.",
-      "changelogGeneratedAt": "2026-07-03T20:47:28Z"
+      "changelog": "# Synthèse d'activité : anct-cartographie-nationale (du 16/06 au 29/06)\n\n## Résumé de l'activité\nL'activité récente de l'organisation s'est concentrée sur l'amélioration des données utilisées pour la cartographie des lieux d'inclusion numérique et sur la modernisation de l'application web.  [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli) a été mis à jour avec de nouvelles sources de données (Francilin) et des corrections de zonage (remplacement ZRR par FRR, mise à jour QPV).  L'application [cartographie](/repos/anct-cartographie-nationale/cartographie) a bénéficié d'un filtre par source de données, d'une meilleure gestion du cache et d'une intégration de Sentry pour le suivi des erreurs. Ces améliorations se traduisent par une meilleure qualité des données et une expérience utilisateur plus stable et fiable.\n\n## Sécurité\nL'intégration de Sentry dans [cartographie](/repos/anct-cartographie-nationale/cartographie) inclut un filtrage des données sensibles, renforçant ainsi la sécurité des informations remontées en cas d'erreur.\n\n## Autres changements notables\n[cartographie](/repos/anct-cartographie-nationale/cartographie) a entrepris une migration vers des bibliothèques plus modernes (@arckit/nextjs, @arckit/form, @arckit/daisyui) pour standardiser et moderniser sa base de code.  La configuration des logs Nginx a été modifiée pour émettre au format JSON et corrélée avec Sentry via un `request_id`, facilitant ainsi le débogage et la surveillance.\n\n## Dépôts les plus actifs\n- [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli) : Mise à jour des sources de données et amélioration de la publication des données nationales.\n- [cartographie](/repos/anct-cartographie-nationale/cartographie) : Amélioration de la recherche, intégration de Sentry, modernisation du code et amélioration de la journalisation.",
+      "changelogGeneratedAt": "2026-07-11T05:58:08Z"
     },
     {
       "organization": "ARCEP-dev",
-      "changelog": ""
+      "changelog": "# Synthèse d'activité : ARCEP-dev (du 22/06 au 02/07)\n\n## Résumé de l'activité\nL'activité de la semaine s'est concentrée sur la préparation de l'infrastructure de nouveaux outils et l'amélioration de la documentation existante.  Plus précisément, des travaux préliminaires ont été effectués sur la base de données du projet [Mon-Reseau-Mobile-v2](/repos/ARCEP-dev/Mon-Reseau-Mobile-v2), et la documentation a été enrichie et traduite pour une meilleure accessibilité aux utilisateurs. Ces améliorations visent à faciliter l'utilisation et la compréhension des outils mis à disposition.\n\n## Autres changements notables\n- Préparation de la structure initiale de la base de données dans [Mon-Reseau-Mobile-v2](/repos/ARCEP-dev/Mon-Reseau-Mobile-v2).\n\n## Dépôts les plus actifs\n- [Mon-Reseau-Mobile-v2](/repos/ARCEP-dev/Mon-Reseau-Mobile-v2) : Travaux de préparation de la base de données et d'amélioration de la documentation.",
+      "changelogGeneratedAt": "2026-07-11T05:58:08Z"
     },
     {
       "organization": "betagouv",
-      "changelog": "# Synthèse d'activité : betagouv (du 17/05 au 24/06)\n\n## Résumé de l'activité\nL'activité récente de l'organisation betagouv a été marquée par une forte concentration sur l'amélioration de la qualité des données, la sécurité et la maintenance technique de ses nombreux projets. Plusieurs dépôts ont bénéficié de mises à jour de dépendances pour corriger des vulnérabilités et assurer la stabilité. Des efforts importants ont également été déployés pour moderniser l'infrastructure, notamment avec des migrations vers des outils plus récents comme Poetry et Next.js. Plusieurs projets ont vu l'ajout de nouvelles fonctionnalités, comme l'intégration de données de Matomo, l'amélioration des interfaces utilisateur (recherche, gestion des formulaires) et l'ajout de nouveaux simulateurs (transport sanitaire, aides vélo). Enfin, des améliorations significatives ont été apportées à la gestion des données et à la synchronisation entre différents systèmes (Airtable, Brevo, Matomo).\n\n## Sécurité\nPlusieurs dépôts ont bénéficié de mises à jour de dépendances pour corriger des vulnérabilités de sécurité : [mon-suivi-justice](/repos/betagouv/mon-suivi-justice), [mes-aides-analytics](/repos/betagouv/mes-aides-analytics), [infomedicament-dataeng](/repos/betagouv/infomedicament-dataeng), [grist-custom-widgets-fr-admin](/repos/betagouv/grist-custom-widgets-fr-admin).  Des mesures de sécurité ont également été renforcées dans [maestro](/repos/betagouv/maestro) et [mon-entreprise](/repos/betagouv/mon-entreprise).\n\n## Autres changements notables\nPlusieurs projets ont entrepris des refactorings importants pour améliorer la maintenabilité et la performance : [test-sme](/repos/betagouv/test-sme), [transports-sanitaires](/repos/betagouv/transports-sanitaires), [piste-sme](/repos/betagouv/piste-sme), [infomedicament-dataeng](/repos/betagouv/infomedicament-dataeng), [maestro](/repos/betagouv/maestro), [mon-entreprise](/repos/betagouv/mon-entreprise).  Des migrations vers des technologies plus modernes ont été initiées, notamment avec l'utilisation de Next.js dans [mon-entreprise](/repos/betagouv/mon-entreprise) et la mise à jour de Node.js dans plusieurs projets. Des améliorations significatives ont été apportées à l'infrastructure de test et de déploiement, notamment avec l'ajout de tests end-to-end et l'optimisation des workflows CI/CD.\n\n## Dépôts les plus actifs\n*   [zacharie](/repos/betagouv/zacharie) : Amélioration de l'interface utilisateur et ajout de nouvelles fonctionnalités pour la gestion des fiches.\n*   [sylvasan](/repos/betagouv/sylvasan) : Ajout de la géolocalisation mobile et amélioration de la gestion des observations.\n*   [test-sme](/repos/betagouv/test-sme) : Refonte de l'interface utilisateur et maintenance technique.\n*   [maestro](/repos/betagouv/maestro) : Amélioration de la gestion des laboratoires et des prélèvements.\n*   [infomedicament](/repos/betagouv/infomedicament) : Amélioration de la recherche de médicaments et de l'affichage des informations.\n*   [jeveuxaider-back](/repos/betagouv/jeveuxaider-back) : Amélioration de la synchronisation des données et gestion des missions.\n*   [mon-entreprise](/repos/betagouv/mon-entreprise) : Refonte du comparateur de statuts et amélioration de l'expérience utilisateur.\n*   [mission-transition-ecologique-back](/repos/betagouv/mission-transition-ecologique-back) : Amélioration de la qualité du code et de l'infrastructure de test.",
-      "changelogGeneratedAt": "2026-06-27T06:48:19Z"
+      "changelog": "# Synthèse d'activité : betagouv (du 24 mai au 24 juin 2026)\n\n## Résumé de l'activité\nL'activité récente de l'organisation betagouv a été marquée par une forte concentration sur l'amélioration de l'expérience utilisateur et la correction de bugs dans de nombreux projets. Plusieurs projets ont bénéficié de mises à jour significatives, notamment *mon-profil-anssi* avec une amélioration de la recherche, *jeveuxaider-front* avec une refonte des formulaires d'inscription, et *infomedicament* avec une recherche sémantique améliorée.  De nombreux efforts ont également été consacrés à la maintenance technique, à la sécurité et à l'optimisation des performances, notamment dans les projets *nitrates*, *mes-aides-analytics* et *grist-utils*. L'intégration de nouvelles sources de données et l'amélioration de la synchronisation entre différents systèmes ont également été des thèmes récurrents.\n\n## Sécurité\nPlusieurs projets ont bénéficié d'améliorations de sécurité :\n- Correction d'une vulnérabilité critique dans [mon-suivi-justice](/repos/betagouv/mon-suivi-justice) avec une mise à jour de la gem `rack-session`.\n- Renforcement de la sécurité dans [maestro](/repos/betagouv/maestro) avec la correction de failles XSS et la protection contre le détournement de compte.\n- Amélioration de la sécurité du parseur [infomedicament-html-parser](/repos/betagouv/infomedicament-html-parser) avec des mises à jour de dépendances.\n\n## Autres changements notables\n- Migration vers React 19 et Turbopack dans [jeveuxaider-front](/repos/betagouv/jeveuxaider-front) pour améliorer les performances.\n- Refactorisation de l'infrastructure de [infomedicament-dataeng](/repos/betagouv/infomedicament-dataeng) avec le remplacement des bibliothèques de base de données par SQLAlchemy.\n- Passage à Poetry pour la gestion des dépendances dans [infomedicament-dataeng](/repos/betagouv/infomedicament-dataeng) et [grist-utils](/repos/betagouv/grist-utils).\n- Intégration de Matomo pour le suivi des événements dans [odice](/repos/betagouv/odice) et [infomedicament](/repos/betagouv/infomedicament).\n- Mise en place d'un système de publication \"trusted\" pour [lab-anssi-lib](/repos/betagouv/lab-anssi-lib).\n\n## Dépôts les plus actifs\n- [maestro](/repos/betagouv/maestro) : Amélioration significative de l'interface utilisateur et de la gestion des données.\n- [infomedicament](/repos/betagouv/infomedicament) : Amélioration de la recherche sémantique et de l'affichage des informations.\n- [jeveuxaider-front](/repos/betagouv/jeveuxaider-front) : Refonte des formulaires d'inscription et amélioration de l'expérience utilisateur.\n- [mon-profil-anssi](/repos/betagouv/mon-profil-anssi) : Amélioration de la recherche de profils et correction de vulnérabilités.\n- [infomedicament-dataeng](/repos/betagouv/infomedicament-dataeng) : Amélioration de la gestion des données et de la recherche sémantique.\n- [grist-custom-widgets-fr-admin](/repos/betagouv/grist-custom-widgets-fr-admin) : Préparation de la publication du widget \"Tableau de bord cartographique\".",
+      "changelogGeneratedAt": "2026-07-11T05:58:08Z"
     },
     {
       "organization": "betagouv-experimentations",
-      "changelog": "# Synthèse d'activité : betagouv-experimentations (du 13 mai au 26 mai 2026)\n\n## Résumé de l'activité\nL'activité de l'organisation \"betagouv-experimentations\" au cours des deux dernières semaines a été marquée par le lancement de plusieurs nouveaux prototypes et l'avancement de projets existants. Plusieurs dépôts ont été initialisés avec une configuration Coolify et un fichier README, posant les bases pour le développement futur.  Le projet [coolify-logs-proxy](/repos/betagouv-experimentations/coolify-logs-proxy) a connu une progression significative avec l'ajout de fonctionnalités clés pour la gestion et l'analyse des logs, ainsi que l'intégration avec GitHub. Le projet [test-cadrer-20260521](/repos/betagouv-experimentations/test-cadrer-20260521) et [crm-asn](/repos/betagouv-experimentations/crm-asn) ont abouti à la création d'une application de suivi des contacts pour l'équipe ASN de la DINUM.\n\n## Sécurité\nUne correction de vulnérabilité SQL injection de haute sévérité a été appliquée dans le dépôt [test-jb3](/repos/betagouv-experimentations/test-jb3). Des headers de sécurité ont également été ajoutés au projet [crm-asn](/repos/betagouv-experimentations/crm-asn) pour renforcer la protection de l'application.\n\n## Autres changements notables\nLe projet [template-proto](/repos/betagouv-experimentations/template-proto) a intégré l'auto-provisionnement de Coolify et l'utilisation des skills d'IA d'Etalab, marquant une avancée significative dans l'automatisation du déploiement et l'intégration de l'intelligence artificielle.  Une mise à jour vers la version 1.32 du Design System Fr a été effectuée dans ce même dépôt.\n\n## Dépôts les plus actifs\n*   [template-proto](/repos/betagouv-experimentations/template-proto) : Amélioration continue de l'intégration avec Coolify et de l'utilisation de l'IA.\n*   [coolify-logs-proxy](/repos/betagouv-experimentations/coolify-logs-proxy) : Développement de fonctionnalités pour la gestion et l'analyse des logs Coolify.\n*   [test-cadrer-20260521](/repos/betagouv-experimentations/test-cadrer-20260521) et [crm-asn](/repos/betagouv-experimentations/crm-asn) : Création d'une application de suivi des contacts pour l'équipe ASN.\n*   [test-jb2](/repos/betagouv-experimentations/test-jb2) et [test-jb1](/repos/betagouv-experimentations/test-jb1) : Initialisation de nouveaux prototypes avec configuration Coolify.",
-      "changelogGeneratedAt": "2026-07-03T20:47:28Z"
+      "changelog": "# Synthèse d'activité : betagouv-experimentations (du 13 mai au 26 mai 2026)\n\n## Résumé de l'activité\nL'organisation a connu une période d'intense activité de lancement de nouveaux prototypes et d'amélioration de l'infrastructure existante. Plusieurs nouveaux projets ont été initialisés, notamment `test-jb4`, `test-jb2`, `test-benoit`, `simulation-doctorat`, `eval-metier-rag` et `26052026`, qui visent à simplifier la création d'applications web et de services pour l'administration en utilisant des outils modernes et le Design System Français.  Parallèlement, des améliorations significatives ont été apportées à `coolify-logs-proxy` pour une meilleure gestion des logs et de l'intégration avec GitHub. Le projet `test-cadrer-20260521` (renommé en `crm-asn`) a progressé avec le développement d'une application de suivi des contacts pour l'équipe ASN de la DINUM. Enfin, `test-jb3` et `repo-test` ont bénéficié d'améliorations fonctionnelles et techniques, notamment des corrections de sécurité et l'ajout de fonctionnalités CRUD.\n\n## Sécurité\nUne vulnérabilité SQL injection de haute sévérité a été corrigée dans [test-jb3](/repos/betagouv-experimentations/test-jb3) grâce à une mise à jour de `drizzle-orm` et `drizzle-kit`.  Des headers de sécurité ont également été ajoutés à [crm-asn](/repos/betagouv-experimentations/crm-asn) pour renforcer la protection de l'application.\n\n## Autres changements notables\n- Le projet [coolify-logs-proxy](/repos/betagouv-experimentations/coolify-logs-proxy) a vu l'ajout d'un endpoint pour la récupération des logs, l'implémentation de l'authentification via GitHub et l'intégration d'un webhook pour la suppression des dépôts.\n- Le projet [test-cadrer-20260521](/repos/betagouv-experimentations/test-cadrer-20260521) a été renommé en [crm-asn](/repos/betagouv-experimentations/crm-asn).\n- Plusieurs projets ont bénéficié de l'initialisation de l'infrastructure Coolify et de la configuration des workflows CI/CD.\n\n## Dépôts les plus actifs\n- [crm-asn](/repos/betagouv-experimentations/crm-asn) : Développement d'une application de suivi des contacts pour l'équipe ASN de la DINUM.\n- [coolify-logs-proxy](/repos/betagouv-experimentations/coolify-logs-proxy) : Amélioration de la gestion des logs et de l'intégration avec GitHub.\n- [test-jb3](/repos/betagouv-experimentations/test-jb3) : Correction de vulnérabilités et améliorations de la documentation.\n- [repo-test](/repos/betagouv-experimentations/repo-test) : Ajout d'une application de liste de tâches avec fonctionnalités CRUD et persistance des données.\n- [test-cadrer-20260521](/repos/betagouv-experimentations/test-cadrer-20260521) : Initialisation et développement initial d'une application de suivi des contacts.",
+      "changelogGeneratedAt": "2026-07-11T05:58:08Z"
     },
     {
       "organization": "cloud-gouv",
-      "changelog": "# Synthèse d'activité : cloud-gouv (du 19 juin 2026 au 26 juin 2026)\n\n## Résumé de l'activité\nL'activité récente de l'organisation cloud-gouv s'est concentrée sur l'amélioration de la sécurité, de la stabilité et de l'observabilité de ses projets. OpenBao a reçu des corrections de sécurité critiques et des améliorations de la robustesse. Le projet Portail a progressé sur l'observabilité et la flexibilité de la gestion des backends. Des améliorations significatives ont également été apportées aux charts Helm communs, notamment avec l'ajout de tableaux de bord Grafana pour Coturn et le monitoring de machines virtuelles, ainsi que des tests de performance pour PostgreSQL.  Plusieurs dépôts ont bénéficié de mises à jour de dépendances et de corrections de bugs pour assurer une meilleure expérience utilisateur.\n\n## Sécurité\nPlusieurs changements liés à la sécurité ont été déployés :\n\n- Correction de vulnérabilités dans OpenBao ([openbao](/repos/cloud-gouv/openbao)) avec des mises à jour de `go.opentelemetry.io/otel/sdk` et de Go lui-même.\n- Désactivation de KWallet dans Securix ([securix](/repos/cloud-gouv/securix)) pour renforcer la sécurité.\n\n## Autres changements notables\n- Intégration de tests de stress FIO aux benchmarks PostgreSQL dans les charts Helm communs ([common-helm-charts](/repos/cloud-gouv/common-helm-charts)).\n- Refonte de la configuration des règles ACL dans le Portail ([portail](/repos/cloud-gouv/portail)) pour une meilleure flexibilité.\n- Mise à jour de `clusterctl` dans les Dockerfiles ([dockerfiles](/repos/cloud-gouv/dockerfiles)) pour bénéficier des dernières fonctionnalités.\n- Ajout de `golang` à l'image Docker `gitlab-runner` ([dockerfiles](/repos/cloud-gouv/dockerfiles)).\n\n## Dépôts les plus actifs\n- [securix](/repos/cloud-gouv/securix) : Améliorations de la localisation, correction de bugs liés au démarrage sécurisé et à l'installateur.\n- [openbao](/repos/cloud-gouv/openbao) : Corrections de sécurité, améliorations de la stabilité et de la gestion des montages.\n- [portail](/repos/cloud-gouv/portail) : Amélioration de l'observabilité, flexibilité de la gestion des backends et corrections de bugs.\n- [common-helm-charts](/repos/cloud-gouv/common-helm-charts) : Ajout de tableaux de bord Grafana et intégration de tests de performance pour PostgreSQL.\n- [dockerfiles](/repos/cloud-gouv/dockerfiles) : Mises à jour des versions des outils et corrections de sommes SHA.",
-      "changelogGeneratedAt": "2026-07-03T20:47:28Z"
+      "changelog": "# Synthèse d'activité : cloud-gouv (du 24 avril au 09 juillet 2026)\n\n## Résumé de l'activité\nL'organisation cloud-gouv a connu une activité soutenue ces dernières semaines, avec des améliorations significatives apportées à plusieurs projets clés. Les efforts se sont concentrés sur la sécurité, notamment avec des mises à jour de dépendances dans [openbao](/repos/cloud-gouv/openbao) pour corriger des vulnérabilités. Des améliorations ont également été apportées à l'expérience utilisateur et à la gestion des infrastructures, avec des mises à jour de [portail](/repos/cloud-gouv/portail) pour un logging structuré et une gestion dynamique des backends, et des corrections pour assurer la compatibilité de [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts) avec les dernières versions de Cluster API.  [securix](/repos/cloud-gouv/securix) a bénéficié d'améliorations de localisation et de corrections de bugs liés à la sécurité.\n\n## Sécurité\nPlusieurs changements ont été apportés pour renforcer la sécurité :\n\n- Mise à jour de dépendances dans [openbao](/repos/cloud-gouv/openbao) pour corriger des vulnérabilités (CVE-2025-68121, GO-2026-4337, CVE-2026-24051, GO-2026-4394, GHSA-9h8m-3fm2-qjrq).\n- Désactivation de KWallet dans [securix](/repos/cloud-gouv/securix) pour renforcer la sécurité.\n\n## Autres changements notables\n- Implémentation du logging structuré au format JSON dans [portail](/repos/cloud-gouv/portail) pour faciliter le débogage et la surveillance.\n- Mise à jour de `clusterctl` dans [dockerfiles](/repos/cloud-gouv/dockerfiles) vers la version 1.13.1.\n- Ajout de fonctionnalités et d'améliorations à plusieurs charts dans [common-helm-charts](/repos/cloud-gouv/common-helm-charts), notamment pour Matrix, Coturn, pgbench et External Secrets.\n- Correction d'un problème de démarrage sécurisé (Secure Boot) dans [securix](/repos/cloud-gouv/securix) pour l'ANSSI R3.\n\n## Dépôts les plus actifs\n- [portail](/repos/cloud-gouv/portail) : Amélioration du logging et de la gestion des backends dynamiques.\n- [openbao](/repos/cloud-gouv/openbao) : Corrections de bugs et mises à jour de sécurité.\n- [securix](/repos/cloud-gouv/securix) : Améliorations de la localisation, corrections de bugs et renforcement de la sécurité.\n- [common-helm-charts](/repos/cloud-gouv/common-helm-charts) : Ajout de nouvelles fonctionnalités et améliorations à plusieurs charts Helm.\n- [dockerfiles](/repos/cloud-gouv/dockerfiles) : Mise à jour des outils et correction des sommes de contrôle.",
+      "changelogGeneratedAt": "2026-07-11T05:58:08Z"
     },
     {
       "organization": "codegouvfr",
-      "changelog": "# Synthèse d'activité : codegouvfr (du 30 mai au 12 juin 2026)\n\n## Résumé de l'activité\nL'activité de codegouvfr sur les deux dernières semaines a été marquée par des améliorations significatives sur plusieurs de ses projets clés.  [sill-deploy](/repos/codegouvfr/sill-deploy) a reçu des mises à jour importantes pour la gestion des organisations et des sources de données, ainsi que pour l'interface utilisateur, facilitant la sélection et le déploiement de logiciels. [catalogi](/repos/codegouvfr/catalogi) a également bénéficié d'optimisations de performance et d'améliorations de l'interface, notamment pour la recherche et l'affichage des protections logicielles. Enfin, les premiers pas vers la structuration des critères d'évaluation pour les logiciels libres ont été posés avec [floss-criteria](/repos/codegouvfr/floss-criteria), tandis que [cartonum](/repos/codegouvfr/cartonum) a enrichi sa cartographie des informations avec de nouvelles fonctionnalités de gestion documentaire et de sécurité.\n\n## Sécurité\n- Correction d'un bug dans [keycloak-theme-dsfr](/repos/codegouvfr/keycloak-theme-dsfr) qui pouvait entraîner des erreurs de redirection si le client Keycloak spécifié n'existait pas.\n\n## Autres changements notables\n- Refactoring dans [sill-deploy](/repos/codegouvfr/sill-deploy) pour effectuer le filtrage au niveau SQL, améliorant ainsi les performances.\n- Optimisation de la requête SQL pour l'importation de données dans [catalogi](/repos/codegouvfr/catalogi).\n- Mise en cache des navigateurs Playwright en CI dans [catalogi](/repos/codegouvfr/catalogi) pour accélérer les tests.\n\n## Dépôts les plus actifs\n- [sill-deploy](/repos/codegouvfr/sill-deploy) : Ajout de fonctionnalités pour la gestion des organisations, des sources de données et amélioration de l'interface utilisateur.\n- [catalogi](/repos/codegouvfr/catalogi) : Optimisations de performance, améliorations de l'interface et intégration de nouvelles sources de données.\n- [floss-criteria](/repos/codegouvfr/floss-criteria) : Début de la structuration des critères d'évaluation pour les logiciels libres.\n- [cartonum](/repos/codegouvfr/cartonum) : Enrichissement de la cartographie des informations avec de nouvelles fonctionnalités de gestion documentaire et de sécurité.\n- [react-dsfr](/repos/codegouvfr/react-dsfr) : Correction d'un bug concernant l'attribut `role` du composant `Alert` pour une meilleure flexibilité en matière d'accessibilité.",
-      "changelogGeneratedAt": "2026-06-27T06:48:19Z"
+      "changelog": "# Synthèse d'activité : codegouvfr (du 16 mai 2026 au 18 juin 2026)\n\n## Résumé de l'activité\nL'organisation codegouvfr a connu une période d'activité soutenue, principalement axée sur l'amélioration de ses outils de gestion de logiciels et de données. Les efforts se sont concentrés sur [sill-deploy](/repos/codegouvfr/sill-deploy) et [catalogi](/repos/codegouvfr/catalogi) avec l'ajout de fonctionnalités pour la gestion des organisations, la configuration des protections des logiciels et l'amélioration de l'importation de données.  De premiers pas ont également été franchis avec [floss-criteria](/repos/codegouvfr/floss-criteria) pour la structuration des critères d'évaluation des logiciels libres. Ces évolutions visent à faciliter l'adoption de logiciels open source et à améliorer la qualité des données disponibles pour les agents de l'administration.\n\n## Sécurité\nLe thème Keycloak [keycloak-theme-dsfr](/repos/codegouvfr/keycloak-theme-dsfr) a bénéficié d'une correction de bug concernant la redirection vers la page d'autorisation, améliorant ainsi la robustesse du thème.\n\n## Autres changements notables\n[catalogi](/repos/codegouvfr/catalogi) et [sill-deploy](/repos/codegouvfr/sill-deploy) ont bénéficié d'optimisations techniques significatives, notamment le déplacement du filtrage des données au niveau SQL pour améliorer les performances et la stabilité.  [cartonum](/repos/codegouvfr/cartonum) a enrichi sa cartographie des informations avec de nouvelles fonctionnalités liées à la sauvegarde de documents et à la gestion des infrastructures.\n\n## Dépôts les plus actifs\n- [sill-deploy](/repos/codegouvfr/sill-deploy) : Ajout de fonctionnalités pour la gestion des organisations et des sources de données, ainsi que des améliorations de l'interface utilisateur.\n- [catalogi](/repos/codegouvfr/catalogi) : Amélioration de la gestion des données externes et ajout de la configuration des protections des logiciels via l'interface utilisateur.\n- [floss-criteria](/repos/codegouvfr/floss-criteria) : Début de la structuration des critères d'évaluation pour les logiciels libres.\n- [cartonum](/repos/codegouvfr/cartonum) : Enrichissement de la cartographie des informations avec de nouvelles fonctionnalités de gestion documentaire et d'infrastructure.",
+      "changelogGeneratedAt": "2026-07-11T05:58:08Z"
     },
     {
       "organization": "datagouv",
-      "changelog": "# Synthèse d'activité : datagouv (du 13 mai 2026 au 02 juillet 2026)\n\n## Résumé de l'activité\nL'organisation datagouv a connu une période d'activité soutenue, marquée par des mises à jour importantes de plusieurs de ses produits phares. On observe une forte concentration sur l'amélioration de l'infrastructure et de la qualité du code, avec des migrations vers de nouvelles versions de librairies et des refactorings architecturaux majeurs (notamment sur `relais`, `hubee` et `api-tabular`). Des efforts significatifs ont également été déployés pour améliorer la gestion des données géographiques et administratives, avec des mises à jour des données de découpage administratif et des corrections pour assurer la cohérence des informations. Enfin, plusieurs dépôts ont bénéficié d'améliorations de l'expérience utilisateur, comme l'ajout de nouvelles fonctionnalités de recherche et de filtrage sur `passemarche` et `cdata`.\n\n## Sécurité\nDes corrections de vulnérabilités ont été apportées à `apistration` pour corriger des failles liées au tabnapping et au XSS sur les liens DataPass. De plus, `datagouv-mcp` a bénéficié d'une mise à jour de la librairie `urllib3` pour corriger une vulnérabilité de sécurité.\n\n## Autres changements notables\n- Migration vers Rails 8.1 et intégration de GoodJob pour la gestion des tâches asynchrones dans `relais`.\n- Refonte architecturale majeure de `hubee` vers un modèle modulaire.\n- Migration de `api-tabular` vers une configuration plus flexible de l'agrégation des données.\n- Passage à Airflow 3 dans `data-engineering-stack`.\n- Nouvelle version (v2) de l'API géographique dans `api-decoupage-administratif`.\n- Migration de `datagouv-cli` pour une distribution autonome et des builds multi-plateformes.\n\n## Dépôts les plus actifs\n- [relais](/repos/datagouv/relais) : Refonte majeure de l'infrastructure et de l'architecture, avec intégration de CNOUS et gestion des demandes proactives.\n- [passemarche](/repos/datagouv/passemarche) : Amélioration significative de la gestion des lots et de l'expérience utilisateur.\n- [cdata](/repos/datagouv/cdata) : Nombreuses corrections de bugs, améliorations de l'interface et optimisations de performance.\n- [hydra](/repos/datagouv/hydra) : Amélioration de la robustesse, corrections de bugs et intégration de nouvelles fonctionnalités.\n- [datagouvfr_data_pipelines](/repos/datagouv/datagouvfr_data_pipelines) : Migration vers OVH, gestion des données géographiques et corrections de bugs.\n- [datagouv-cli](/repos/datagouv/datagouv-cli) : Migration du code CLI et amélioration du processus de construction.",
-      "changelogGeneratedAt": "2026-07-03T20:47:28Z"
+      "changelog": "# Synthèse d'activité : datagouv (du 22 mai au 10 juillet 2026)\n\n## Résumé de l'activité\nL'organisation datagouv a connu une période d'activité soutenue, marquée par des mises à jour majeures d'infrastructures et d'API, ainsi que par des améliorations continues de ses outils et services.  Plusieurs projets ont bénéficié de refontes architecturales importantes, comme `relais` et `api-tabular`, avec l'adoption de nouvelles technologies (Rails 8.1, GoodJob, PNPM) pour améliorer la performance, la sécurité et la maintenabilité. L'accent a également été mis sur la préparation des données pour les années à venir, notamment avec les mises à jour des découpages administratifs et des données cadastrales.  De nouvelles fonctionnalités ont été ajoutées pour supporter des usages spécifiques, comme l'intégration CNOUS dans `relais` et l'API TVA DGFIP dans `apistration`.\n\n## Sécurité\nPlusieurs dépôts ont bénéficié d'améliorations de sécurité :\n- Correction d'une vulnérabilité CVE dans la librairie Crass dans [hubee](/repos/datagouv/hubee).\n- Correction de problèmes de sécurité liés aux liens externes et à la gestion des jetons dans [apistration](/repos/datagouv/apistration).\n- Mise à jour de la dépendance `urllib3` pour corriger une vulnérabilité de sécurité dans [hydra](/repos/datagouv/hydra).\n\n## Autres changements notables\n- Migration vers PNPM dans [ouverture.data.gouv.fr](/repos/datagouv/ouverture.data.gouv.fr) pour une meilleure gestion des dépendances.\n- Passage à Rails 8.1 et intégration de GoodJob dans [relais](/repos/datagouv/relais) pour une meilleure performance et scalabilité.\n- Mise à jour d'Airflow vers la version 3 dans [data-engineering-stack](/repos/datagouv/data-engineering-stack).\n- Refonte de l'API géographique avec une nouvelle version (v2) dans [api-decoupage-administratif](/repos/datagouv/api-decoupage-administratif).\n- Migration du code de l'interface en ligne de commande vers `datagouv-cli` dans [datagouv-client](/repos/datagouv/datagouv-client).\n\n## Dépôts les plus actifs\n- [relais](/repos/datagouv/relais) : Refonte majeure de l'infrastructure et ajout de nouvelles fonctionnalités d'intégration avec CNOUS et de gestion de demandes proactives.\n- [hubee](/repos/datagouv/hubee) : Modernisation de l'infrastructure et préparation du portail V2 avec l'intégration de Sentry et la mise à jour de PostgreSQL.\n- [hydra](/repos/datagouv/hydra) : Améliorations de la robustesse, corrections de bugs, ajout de fonctionnalités et optimisation des performances.\n- [datagouvfr_data_pipelines](/repos/datagouv/datagouvfr_data_pipelines) : Ajout de la prise en charge de nouveaux packs PNT et amélioration de la gestion des données.\n- [apistration](/repos/datagouv/apistration) : Ajout de l'endpoint TVA DGFIP et refonte de l'interface d'administration des éditeurs.\n- [datagouv-cli](/repos/datagouv/datagouv-cli) : Création d'un nouveau dépôt pour l'interface en ligne de commande et amélioration de la distribution.",
+      "changelogGeneratedAt": "2026-07-11T05:58:08Z"
     },
     {
       "organization": "demarche-numerique",
-      "changelog": "# Synthèse d'activité : demarche-numerique (du 02/06 au 12/06)\n\n## Résumé de l'activité\nL'organisation \"demarche-numerique\" a connu une semaine productive, axée sur l'amélioration de l'expérience utilisateur et la sécurité de la plateforme [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr). Les instructeurs bénéficient désormais de nouvelles fonctionnalités pour la gestion des dossiers, tandis que les utilisateurs finaux profitent d'une meilleure gestion des pièces jointes et d'une authentification renforcée via FranceConnect. Une correction importante a également été apportée au proxy [ds_proxy](/repos/demarche-numerique/ds_proxy) pour garantir l'intégrité des données.\n\n## Sécurité\n- Renforcement de la sécurité de l'authentification et correction de failles potentielles sur [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).\n\n## Autres changements notables\n- Migration de composants HAML vers ERB sur [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) pour une meilleure maintenabilité.\n- Optimisation des requêtes SQL et mise en place d'un système de cache pour améliorer les performances sur [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).\n- Correction d'un bug impactant l'intégrité des fichiers sur [ds_proxy](/repos/demarche-numerique/ds_proxy).\n\n## Dépôts les plus actifs\n- [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) : Amélioration significative de l'interface utilisateur, ajout de nouvelles fonctionnalités pour les instructeurs et les utilisateurs, et renforcement de la sécurité.\n- [ds_proxy](/repos/demarche-numerique/ds_proxy) : Correction d'un bug critique concernant la gestion des en-têtes HTTP et l'intégrité des données.",
-      "changelogGeneratedAt": "2026-07-03T20:47:28Z"
+      "changelog": "# Synthèse d'activité : demarche-numerique (du 27/06 au 10/07)\n\n## Résumé de l'activité\nLa période a été marquée par des améliorations significatives de la plateforme [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr), axées sur la performance, la sécurité et l'expérience utilisateur. Des optimisations ont été apportées à la gestion des pièces jointes, des attestations et des exports de données. Parallèlement, le proxy [ds_proxy](/repos/demarche-numerique/ds_proxy) a été enrichi avec la prise en charge de nouveaux types de stockage (S3 et Swift) et une configuration plus flexible. La migration vers Rails 8 sur la plateforme principale est également un changement majeur pour l'avenir.\n\n## Sécurité\n- Renforcement de la sécurité de la plateforme [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) avec la correction de vulnérabilités potentielles et la migration vers l'authentification à deux facteurs ProConnect.\n- Suppression du header `content-md5` altéré par le proxy [ds_proxy](/repos/demarche-numerique/ds_proxy) pour une meilleure intégrité des données.\n\n## Autres changements notables\n- Migration de la plateforme [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) vers Rails 8, une mise à jour majeure du framework.\n- Configuration du mode proxy S3 sur [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) pour optimiser l'accès au stockage objet.\n- Refactorisation de la configuration S3 dans [ds_proxy](/repos/demarche-numerique/ds_proxy) pour une meilleure organisation.\n\n## Dépôts les plus actifs\n- [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) : Améliorations majeures de la plateforme, incluant la gestion des pièces jointes, des attestations, des exports et la migration vers Rails 8.\n- [ds_proxy](/repos/demarche-numerique/ds_proxy) : Ajout de la prise en charge de S3 et Swift, corrections de bugs et optimisations de la configuration.",
+      "changelogGeneratedAt": "2026-07-11T05:58:08Z"
     },
     {
       "organization": "dnum-mi",
-      "changelog": ""
+      "changelog": "# Synthèse d'activité : dnum-mi (du 22 juin 2026 au 09 juillet 2026)\n\n## Résumé de l'activité\nL'organisation dnum-mi a connu une période d'activité soutenue, marquée par des améliorations significatives sur plusieurs de ses dépôts. Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur et de la qualité des données, notamment avec des mises à jour massives des sources de données pour DashLord ([dashlord](/repos/dnum-mi/dashlord) et [dashlord-extended](/repos/dnum-mi/dashlord-extended)).  Des avancées importantes ont également été réalisées sur la [bibliothèque-numerique](/repos/dnum-mi/bibliotheque-numerique) avec l'ajout d'une gestion robuste des conditions générales d'utilisation. Enfin, des optimisations ont été apportées à [referentiel-applications](/repos/dnum-mi/referentiel-applications) pour améliorer la performance et l'accessibilité, et à [fabnum-cicd](/repos/dnum-mi/fabnum-cicd) pour simplifier les workflows d'attestation d'images Docker.\n\n## Sécurité\nDes corrections de sécurité ont été implémentées dans [referentiel-applications](/repos/dnum-mi/referentiel-applications) pour corriger les alertes de sécurité Dependabot (frontend et backend).\n\n## Autres changements notables\n- Simplification et unification des workflows d'attestation d'images Docker dans [fabnum-cicd](/repos/dnum-mi/fabnum-cicd).\n- Améliorations significatives de l'accessibilité (RGAA) dans [referentiel-applications](/repos/dnum-mi/referentiel-applications).\n- Mise à jour de l'image Docker et corrections d'infrastructure dans [bibliotheque-numerique](/repos/dnum-mi/bibliotheque-numerique).\n- Activation globale des serveurs LSP dans [starter-kit-opencode](/repos/dnum-mi/starter-kit-opencode) pour une meilleure expérience de développement.\n\n## Dépôts les plus actifs\n- [dashlord-extended](/repos/dnum-mi/dashlord-extended) : Ajout et mise à jour massive des sources de données gouvernementales françaises.\n- [bibliotheque-numerique](/repos/dnum-mi/bibliotheque-numerique) : Implémentation d'une gestion complète des conditions générales d'utilisation.\n- [referentiel-applications](/repos/dnum-mi/referentiel-applications) : Amélioration de la performance, de l'accessibilité et ajout de nouvelles fonctionnalités (gestion des licences, recherche full-text, importation d'acteurs, impersonation).\n- [dashlord](/repos/dnum-mi/dashlord) : Mise à jour de la liste des URLs surveillées pour garantir la pertinence des données.\n- [starter-kit-opencode](/repos/dnum-mi/starter-kit-opencode) : Enrichissement de la documentation et amélioration de l'expérience de développement.",
+      "changelogGeneratedAt": "2026-07-11T05:58:08Z"
     },
     {
       "organization": "entrepreneur-interet-general",
@@ -93143,127 +93145,127 @@
     },
     {
       "organization": "etalab",
-      "changelog": "# Synthèse d'activité : etalab (du 27 avril 2026 au 8 juin 2026)\n\n## Résumé de l'activité\nL'activité récente d'etalab s'est concentrée sur l'amélioration et la maintenance de ses outils et données, notamment dans les domaines du transport, du covoiturage, des données d'aide sociale et des API d'administration. Plusieurs dépôts ont bénéficié de corrections de bugs, d'optimisations de performance et de mises à jour de données. L'ajout de nouvelles fonctionnalités, comme l'extension du schéma des dispositifs d'aide via des \"data packages\" ([schema-dispositif-aide](/repos/etalab/schema-dispositif-aide)) et l'intégration de nouvelles API (CNOUS, MSA) dans [admin_api_entreprise](/repos/etalab/admin_api_entreprise), témoignent d'une volonté d'enrichir l'offre de services.  Des améliorations significatives ont également été apportées à [data_pass](/repos/etalab/data_pass) pour la gestion des droits et l'expérience utilisateur.\n\n## Sécurité\n- Migration des scopes des tokens vers les demandes d'autorisation dans [admin_api_entreprise](/repos/etalab/admin_api_entreprise) pour une meilleure gestion des accès.\n- Rotation annuelle du token webhook dans [admin_api_entreprise](/repos/etalab/admin_api_entreprise) pour renforcer la sécurité.\n\n## Autres changements notables\n- Passage à l'allocateur mémoire `jemalloc` dans [transport-validator](/repos/etalab/transport-validator) pour optimiser la consommation mémoire en production.\n- Refactoring important dans [transport-site](/repos/etalab/transport-site) avec suppression de code obsolète et simplification de l'architecture.\n- Mise à jour de Ruby à la dernière version dans [data_pass](/repos/etalab/data_pass).\n- Migration du scope TVA d'API Entreprise de VIES vers la DGFIP dans [data_pass](/repos/etalab/data_pass).\n\n## Dépôts les plus actifs\n- [transport-site](/repos/etalab/transport-site) : Consolidation et gestion des données IRVE, améliorations de la précision des coordonnées et optimisations de l'architecture.\n- [data_pass](/repos/etalab/data_pass) : Amélioration de la gestion des droits d'accès, ajout de nouvelles API et maintenance technique.\n- [admin_api_entreprise](/repos/etalab/admin_api_entreprise) : Intégration de nouvelles API (CNOUS, MSA), amélioration de l'interface d'administration et renforcement de la sécurité.\n- [transport-validator](/repos/etalab/transport-validator) : Optimisation de la performance et de la consommation mémoire.\n- [schema-dispositif-aide](/repos/etalab/schema-dispositif-aide) : Ajout de la prise en charge des extensions de schéma via l'architecture des \"data packages\".",
-      "changelogGeneratedAt": "2026-06-27T06:48:19Z"
+      "changelog": "# Synthèse d'activité : etalab (du 28 avril 2026 au 08 juin 2026)\n\n## Résumé de l'activité\nL'activité récente d'etalab s'est concentrée sur l'amélioration et la maintenance de ses outils et services liés aux données de transport, aux normes, au covoiturage et à l'administration publique. Plusieurs dépôts ont bénéficié de corrections de bugs, d'optimisations de performances et d'ajouts de nouvelles fonctionnalités, notamment concernant l'import de données IRVE, la gestion des lieux de covoiturage et l'API Data Pass. L'accent a également été mis sur la sécurité, avec des mises à jour de dépendances et des améliorations de la gestion des clés API. Les mises à jour du profil France NeTEx et du schéma dispositif d'aide visent à améliorer l'interopérabilité et la flexibilité des données.\n\n## Sécurité\n- Correction de bugs liés à la suppression de fichiers sur S3 dans [flask-storage](/repos/etalab/flask-storage) pour éviter des suppressions accidentelles.\n- Rotation annuelle du token webhook dans [admin_api_entreprise](/repos/etalab/admin_api_entreprise) pour renforcer la sécurité.\n- Migration des scopes des tokens vers les demandes d'autorisation dans [admin_api_entreprise](/repos/etalab/admin_api_entreprise) pour une meilleure gestion des accès.\n\n## Autres changements notables\n- Passage à l'allocateur mémoire `jemalloc` dans [transport-validator](/repos/etalab/transport-validator) pour optimiser la consommation mémoire en production.\n- Suppression du code lié à TimescaleDB dans [transport-site](/repos/etalab/transport-site) suite à sa décommission.\n- Ajout de l'architecture des \"data packages\" dans [schema-dispositif-aide](/repos/etalab/schema-dispositif-aide) pour permettre des extensions de schéma plus flexibles.\n- Migration du scope TVA de VIES vers la DGFIP dans [data_pass](/repos/etalab/data_pass).\n\n## Dépôts les plus actifs\n- [transport-site](/repos/etalab/transport-site) : Amélioration de l'import et de la consolidation des données IRVE, ajout de nouveaux opérateurs de vélos en libre-service et corrections de bugs.\n- [data_pass](/repos/etalab/data_pass) : Amélioration de la recherche d'utilisateurs, de la gestion des droits, ajout de nouvelles APIs et amélioration de la gestion de session.\n- [admin_api_entreprise](/repos/etalab/admin_api_entreprise) : Ajout de nouvelles APIs, amélioration de la gestion des tokens et des performances.\n- [transport-validator](/repos/etalab/transport-validator) : Optimisation de la consommation mémoire en production.\n- [formulaire-qf](/repos/etalab/formulaire-qf) : Correction d'un bug de sélection des collectivités et mise à jour des dépendances.",
+      "changelogGeneratedAt": "2026-07-11T05:58:08Z"
     },
     {
       "organization": "etalab-ia",
-      "changelog": "# Synthèse d'activité : etalab-ia (du 29 avril 2026 au 7 mai 2026)\n\n## Résumé de l'activité\nL'organisation etalab-ia a connu une semaine riche en développement, avec des avancées significatives sur plusieurs fronts. L'accent a été mis sur l'amélioration des outils RAG (Retrieval-Augmented Generation) avec des refactorisations et l'ajout de nouvelles fonctionnalités dans [ragtime](/repos/etalab-ia/ragtime) et [rag-facile](/repos/etalab-ia/rag-facile).  L'intégration de nouveaux jeux de données et l'automatisation de processus sont également notables, notamment avec [mediatech](/repos/etalab-ia/mediatech) et [mediatech-to-albert-api](/repos/etalab-ia/mediatech-to-albert-api), permettant une meilleure accessibilité et exploitation des données publiques. Enfin, des améliorations continues ont été apportées à des outils comme [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) et [BlockNote](/repos/etalab-ia/BlockNote) pour améliorer l'expérience utilisateur et la stabilité.\n\n## Sécurité\n- Ajout d'un hook pre-commit gitleaks pour améliorer la sécurité dans [eval-transcript](/repos/etalab-ia/eval-transcript).\n\n## Autres changements notables\n- Refactorisation importante de l'architecture de plusieurs endpoints dans [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) pour une meilleure maintenabilité.\n- Migration de la base de données de [mediatech-to-albert-api](/repos/etalab-ia/mediatech-to-albert-api) vers une architecture serverless pour une meilleure scalabilité.\n- Refactorisation des skills RAG dans [skills](/repos/etalab-ia/skills) pour une meilleure organisation.\n- Changement de nom du projet [rag-facile](/repos/etalab-ia/rag-facile) en [ragtime](/repos/etalab-ia/ragtime).\n\n## Dépôts les plus actifs\n- [ragtime](/repos/etalab-ia/ragtime) : Ajout d'une interface en ligne de commande pour la gestion des collections et refonte de l'architecture interne.\n- [rag-facile](/repos/etalab-ia/rag-facile) : Amélioration significative de la plateforme avec authentification, intégration d'IA Inspect et système de compétences.\n- [mediatech](/repos/etalab-ia/mediatech) : Ajout de la gestion des statuts DILAS et optimisation du traitement des données.\n- [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) : Amélioration de la compatibilité avec les modèles Mistral et ajout de fonctionnalités de surveillance.\n- [BlockNote](/repos/etalab-ia/BlockNote) : Corrections de bugs et améliorations de l'expérience utilisateur concernant les tableaux, l'IA et les listes de contrôle.",
-      "changelogGeneratedAt": "2026-06-27T06:48:19Z"
+      "changelog": "# Synthèse d'activité : etalab-ia (du 16 mai 2026 au 1er juillet 2026)\n\n## Résumé de l'activité\nL'organisation etalab-ia a connu une période d'activité soutenue, marquée par des avancées significatives sur plusieurs fronts. Le développement de l'API [whisperx-openai-api](/repos/etalab-ia/whisperx-openai-api) a permis de créer une solution performante pour la transcription audio, compatible avec l'API OpenAI.  Des efforts importants ont été consacrés à l'amélioration de la plateforme RAG (Retrieval-Augmented Generation) avec des mises à jour notables sur [ragtime](/repos/etalab-ia/ragtime) et [rag-facile](/repos/etalab-ia/rag-facile), incluant l'ajout de fonctionnalités d'authentification, d'évaluation de la qualité des réponses et d'intégration de l'IA Inspect.  Enfin, les projets [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) et [OpenGateRAG](/repos/etalab-ia/OpenGateRAG) ont progressé en termes de stabilité, de sécurité et d'intégration.\n\n## Sécurité\nPlusieurs dépôts ont bénéficié d'améliorations de sécurité :\n- Correction de vulnérabilités dans [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) (CVE-2026-11940 et CVE-2026-55200).\n- Ajout d'un hook pre-commit gitleaks dans [eval-transcript](/repos/etalab-ia/eval-transcript) pour prévenir les fuites de secrets.\n\n## Autres changements notables\n- Changement de nom du projet [rag-facile](/repos/etalab-ia/rag-facile) vers [ragtime](/repos/etalab-ia/ragtime).\n- Migration de la base de données [mediatech-to-albert-api](/repos/etalab-ia/mediatech-to-albert-api) vers une architecture serverless pour une meilleure scalabilité.\n- Refonte de l'architecture interne de [rag-facile](/repos/etalab-ia/rag-facile) pour une meilleure modularité.\n- Unification de la documentation OpenAPI de [OpenGateRAG](/repos/etalab-ia/OpenGateRAG) avec [OpenGateLLM](/repos/etalab-ia/OpenGateLLM).\n\n## Dépôts les plus actifs\n- [whisperx-openai-api](/repos/etalab-ia/whisperx-openai-api) : Développement initial d'une API de transcription audio compatible avec OpenAI.\n- [rag-facile](/repos/etalab-ia/rag-facile) : Amélioration significative de la plateforme RAG avec ajout d'authentification, d'évaluation de la qualité et d'intégration d'IA.\n- [ragtime](/repos/etalab-ia/ragtime) : Refonte et ajout d'une interface en ligne de commande pour la gestion des collections.\n- [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) : Amélioration de la sécurité, de l'authentification et de l'API.\n- [mediatech](/repos/etalab-ia/mediatech) : Intégration de nouveaux jeux de données et optimisation du traitement des données.\n- [eval-transcript](/repos/etalab-ia/eval-transcript) : Ajout de nouveaux fournisseurs de transcription et d'un moteur de scoring pour l'évaluation de la qualité.",
+      "changelogGeneratedAt": "2026-07-11T05:58:08Z"
     },
     {
       "organization": "france-connect",
-      "changelog": "# Synthèse d'activité : france-connect (du 30/04 au 18/05/2026)\n\n## Résumé de l'activité\nL'activité récente de france-connect s'est concentrée sur l'amélioration de l'expérience utilisateur, notamment sur le tableau de bord utilisateur, et sur le renforcement de la sécurité. Des améliorations ont été apportées pour faciliter le support utilisateur avec l'ajout d'un lien vers un formulaire d'assistance sur les pages d'erreur.  Des évolutions techniques ont également été menées pour optimiser l'infrastructure et la maintenabilité du code, notamment avec une meilleure isolation réseau des bases de données MongoDB et un refactoring de l'architecture React.\n\n## Sécurité\n- Possibilité de connecter des prestataires de services ayant des exigences de sécurité plus faibles via l'eIDASBridge. [sources](/repos/france-connect/sources)\n\n## Autres changements notables\n- Refactorisation de la hiérarchie des dossiers pour améliorer le partage de code entre les applications React. [sources](/repos/france-connect/sources)\n- Séparation des consommateurs MongoDB par plateforme pour une meilleure isolation réseau. [sources](/repos/france-connect/sources)\n- Ajout de logs métier pour faciliter le suivi et le débogage. [sources](/repos/france-connect/sources)\n- Suppression des claims inutilisés \"phone_number\" et \"address\" dans FranceConnect+. [sources](/repos/france-connect/sources)\n\n## Dépôts les plus actifs\n- [sources](/repos/france-connect/sources) : Amélioration de l'expérience utilisateur, refactoring technique et renforcement de la sécurité.",
-      "changelogGeneratedAt": "2026-06-27T06:48:19Z"
+      "changelog": "# Synthèse d'activité : france-connect (du 01/05 au 18/05/2026)\n\n## Résumé de l'activité\nL'activité récente de FranceConnect s'est concentrée sur l'amélioration de l'expérience utilisateur et de la sécurité de la plateforme. Des améliorations ont été apportées au tableau de bord utilisateur, notamment pour une meilleure gestion des sessions et une interface plus claire sur mobile. L'ajout de la possibilité de connecter des prestataires avec des exigences de sécurité plus faibles via l'eIDASBridge élargit les usages de FranceConnect. Des efforts ont également été faits pour améliorer la traçabilité et le débogage grâce à l'ajout de logs métier et de tests BDD. [sources](/repos/france-connect/sources)\n\n## Sécurité\n- Ajout de la possibilité de connecter des prestataires de services ayant des exigences de sécurité plus faibles via l'eIDASBridge. [sources](/repos/france-connect/sources)\n\n## Autres changements notables\n- Refactorisation de la hiérarchie des dossiers pour améliorer le partage de code entre les applications React. [sources](/repos/france-connect/sources)\n- Séparation des consommateurs MongoDB par plateforme pour une meilleure isolation réseau. [sources](/repos/france-connect/sources)\n- Suppression des claims inutilisés \"phone_number\" et \"address\" dans FranceConnect+. [sources](/repos/france-connect/sources)\n\n## Dépôts les plus actifs\n- [sources](/repos/france-connect/sources) : Amélioration continue de l'expérience utilisateur, de la sécurité et de la maintenabilité du code, avec des focus sur le tableau de bord utilisateur et FranceConnect+.",
+      "changelogGeneratedAt": "2026-07-11T05:58:08Z"
     },
     {
       "organization": "gristgouv",
-      "changelog": "# Synthèse d'activité : gristgouv (du 23 mai au 23 juin 2026)\n\n## Résumé de l'activité\nL'organisation gristgouv a connu une période d'activité soutenue, marquée par des améliorations significatives de l'expérience utilisateur et de la sécurité. L'ajout d'un nouveau widget de formulaire intra-administration via [widgets-config](/repos/gristgouv/widgets-config) permet aux agents de l'État de créer des formulaires directement dans Grist. Des efforts importants ont été consacrés à l'amélioration de l'accessibilité et de l'internationalisation de Grist via [grist-core](/repos/gristgouv/grist-core), avec l'ajout de traductions et l'amélioration du support des lecteurs d'écran. La sécurité a également été renforcée avec l'intégration d'un scanner de vulnérabilités dans l'image Docker via [grist-docker-image](/repos/gristgouv/grist-docker-image).\n\n## Sécurité\n- Intégration de Trivy pour l'analyse des vulnérabilités de l'image Docker et génération d'un rapport JSON des vulnérabilités détectées dans [grist-docker-image](/repos/gristgouv/grist-docker-image).\n\n## Autres changements notables\n- Amélioration de la gestion des locales (langues) pour une meilleure internationalisation dans [grist-core](/repos/gristgouv/grist-core).\n- Ajout d'une nouvelle build utilisant une version plus récente de gvisor dans [grist-docker-image](/repos/gristgouv/grist-docker-image).\n- Ajout d'un workflow CI avec des tests \"smoke tests\" utilisant Vitest dans [grist-cw-intra-form](/repos/gristgouv/grist-cw-intra-form).\n\n## Dépôts les plus actifs\n- [grist-core](/repos/gristgouv/grist-core) : Améliorations majeures de l'accessibilité, de l'expérience utilisateur et de l'internationalisation.\n- [grist-docker-image](/repos/gristgouv/grist-docker-image) : Renforcement de la sécurité avec l'intégration d'un scanner de vulnérabilités et mise à jour de Grist.\n- [widgets-config](/repos/gristgouv/widgets-config) : Ajout d'un nouveau widget pour les formulaires intra-administration.\n- [gristlabs-widgets](/repos/gristgouv/gristlabs-widgets) : Amélioration de la lisibilité et de la robustesse des widgets.\n- [grist-mooc](/repos/gristgouv/grist-mooc) : Mise à jour des contenus de formation.",
-      "changelogGeneratedAt": "2026-06-27T06:48:19Z"
+      "changelog": "# Synthèse d'activité : gristgouv (du 23 mai 2026 au 26 juin 2026)\n\n## Résumé de l'activité\nL'organisation gristgouv a connu une activité soutenue ce mois-ci, axée sur l'amélioration de la sécurité, l'expérience utilisateur et l'accessibilité de la plateforme Grist. L'ajout d'un nouveau widget de formulaire intra-administration via [widgets-config](/repos/gristgouv/widgets-config) permet aux agents de l'État de créer des formulaires directement dans Grist. Des améliorations significatives ont été apportées à la sécurité de l'image Docker via [grist-docker-image](/repos/gristgouv/grist-docker-image) avec l'intégration d'un scanner de vulnérabilités. L'offre de formation continue de s'enrichir avec la mise à jour des exercices du MOOC via [grist-mooc](/repos/gristgouv/grist-mooc).\n\n## Sécurité\nL'image Docker de Grist a bénéficié d'une amélioration significative de la sécurité grâce à l'intégration de Trivy pour l'analyse des vulnérabilités et la génération de rapports. [grist-docker-image](/repos/gristgouv/grist-docker-image)\n\n## Autres changements notables\n- L'image Docker a été mise à jour vers la version 1.7.15 via [grist-docker-image](/repos/gristgouv/grist-docker-image).\n- L'intégration du workflow GVISOR a été améliorée pour une construction plus robuste de l'image Docker via [grist-docker-image](/repos/gristgouv/grist-docker-image).\n- Des tests automatisés ont été ajoutés au projet [grist-cw-intra-form](/repos/gristgouv/grist-cw-intra-form) pour améliorer la qualité du code.\n- Des améliorations de la traduction en hongrois et en italien ont été apportées à [grist-core](/repos/gristgouv/grist-core).\n\n## Dépôts les plus actifs\n- [grist-docker-image](/repos/gristgouv/grist-docker-image) : Amélioration significative de la sécurité et de la robustesse de l'image Docker.\n- [gristlabs-widgets](/repos/gristgouv/gristlabs-widgets) : Amélioration de la lisibilité et de la robustesse des widgets.\n- [grist-mooc](/repos/gristgouv/grist-mooc) : Mise à jour du contenu de formation pour faciliter l'apprentissage de Grist.\n- [widgets-config](/repos/gristgouv/widgets-config) : Ajout d'un nouveau widget pour les formulaires intra-administration.",
+      "changelogGeneratedAt": "2026-07-11T05:58:08Z"
     },
     {
       "organization": "IA-Generative",
-      "changelog": "# Synthèse d'activité : IA-Generative (du 22/06 au 29/06)\n\n## Résumé de l'activité\nL'organisation IA-Generative a connu une semaine riche en activités, axée sur l'amélioration de la sécurité, de la robustesse et de l'expérience utilisateur de ses différents projets. Plusieurs dépôts ont bénéficié de correctifs de sécurité importants, notamment [myvault](/repos/IA-Generative/myvault) et [device-management](/repos/IA-Generative/device-management).  Des avancées significatives ont été réalisées dans l'intégration de l'IA, avec l'ajout de fonctionnalités RAG dans [Stirling-PDF](/repos/IA-Generative/Stirling-PDF) et l'amélioration de l'API [mirai-api](/repos/IA-Generative/mirai-api). L'accent a également été mis sur l'automatisation et l'amélioration des processus de développement, avec des mises à jour de CI/CD et l'intégration d'outils d'observabilité.\n\n## Sécurité\nPlusieurs dépôts ont bénéficié d'améliorations significatives en matière de sécurité :\n\n- [myvault](/repos/IA-Generative/myvault) : Ajout de l'authentification à deux facteurs (2FA), limitation du débit, renforcement de la gestion des secrets M2M, et correction de vulnérabilités.\n- [device-management](/repos/IA-Generative/device-management) : Correction de vulnérabilités suite à un audit de sécurité, renforcement de la gestion des secrets et suppression de composants non sécurisés.\n- [abrege](/repos/IA-Generative/abrege) : Correction d'une vulnérabilité de sécurité.\n- [Archives-Mail-Thunderbird-Distribution](/repos/IA-Generative/Archives-Mail-Thunderbird-Distribution) : Renforcement de la sécurité du dépôt avec un `.gitignore` plus restrictif et l'intégration de `gitleaks`.\n- [owuiapps-agents](/repos/IA-Generative/owuiapps-agents) : Implémentation d'une garde anti-prompt-injection et de limitations de débit.\n\n## Autres changements notables\nPlusieurs évolutions techniques majeures ont été apportées :\n\n- **Infrastructure :** Passage à Redis pour la gestion des files d'attente dans [kevent-ai](/repos/IA-Generative/kevent-ai).\n- **Architecture :** Refactorisation de l'architecture de [mcr](/repos/IA-Generative/mcr) vers une approche basée sur les \"use cases\" et migration vers une approche asynchrone pour la diarisation.\n- **Intégration :** Intégration de Grafana avec SSO Keycloak dans [device-management](/repos/IA-Generative/device-management).\n- **Développement :** Amélioration des processus de CI/CD dans [abrege](/repos/IA-Generative/abrege) et [Archives-Mail-Thunderbird-Distribution](/repos/IA-Generative/Archives-Mail-Thunderbird-Distribution).\n\n## Dépôts les plus actifs\n- [myvault](/repos/IA-Generative/myvault) : Améliorations majeures de la sécurité et ajout de l'authentification à deux facteurs.\n- [device-management](/repos/IA-Generative/device-management) : Renforcement de la sécurité et amélioration de l'observabilité.\n- [Stirling-PDF](/repos/IA-Generative/Stirling-PDF) : Intégration de fonctionnalités RAG et optimisation des performances.\n- [mcr](/repos/IA-Generative/mcr) : Refactorisation de l'architecture et amélioration de la gestion de la diarisation.\n- [mirai-mesreunions](/repos/IA-Generative/mirai-mesreunions) : Ajout de l'importation de vidéos YouTube et amélioration de la gestion des fichiers MCR.",
-      "changelogGeneratedAt": "2026-07-03T20:47:28Z"
+      "changelog": "# Synthèse d'activité : IA-Generative (du 24 mai au 10 juillet 2026)\n\n## Résumé de l'activité\nL'organisation IA-Generative a connu une période d'activité intense, marquée par des améliorations significatives en matière de sécurité, de fonctionnalités et d'expérience utilisateur. Plusieurs dépôts ont bénéficié de correctifs de vulnérabilités et de renforcements de la sécurité, notamment [myvault](/repos/IA-Generative/myvault) et [ocr-api](/repos/IA-Generative/ocr-api). Des nouvelles fonctionnalités ont été introduites dans plusieurs projets, comme l'ajout de capacités RAG dans [Stirling-PDF](/repos/IA-Generative/Stirling-PDF) et la gestion des instances Playwright distantes dans [n8n-nodes-playwright-core](/repos/IA-Generative/n8n-nodes-playwright-core). L'accent a également été mis sur l'amélioration de l'intégration et de l'automatisation, avec des avancées dans l'archivage de mails ([Archives-Mail-Thunderbird-Distribution](/repos/IA-Generative/Archives-Mail-Thunderbird-Distribution)) et la gestion des tâches ([mcr](/repos/IA-Generative/mcr)).\n\n## Sécurité\nPlusieurs dépôts ont bénéficié d'améliorations de sécurité :\n\n- [owuiapps-agents](/repos/IA-Generative/owuiapps-agents) : Implémentation d'une garde anti-prompt-injection et détection d'anomalies pour prévenir les abus.\n- [ocr-api](/repos/IA-Generative/ocr-api) : Correction d'une vulnérabilité de sécurité et remontée d'erreurs vers Sentry.\n- [myvault](/repos/IA-Generative/myvault) : Renforcement de la sécurité de l'authentification, limitation des abus, et correction de vulnérabilités identifiées par Dependabot.\n- [device-management](/repos/IA-Generative/device-management) : Validation des chemins de fichiers, suppression de dépendances obsolètes et renforcement de la sécurité des images Docker.\n- [Archives-Mail-Thunderbird-Distribution](/repos/IA-Generative/Archives-Mail-Thunderbird-Distribution) : Renforcement de la sécurité du dépôt avec un `.gitignore` plus restrictif et l'intégration de `gitleaks`.\n\n## Autres changements notables\n- Refactorisation majeure de l'architecture de [mcr](/repos/IA-Generative/mcr) vers une approche basée sur des \"use cases\".\n- Migration de Kafka vers Redis dans [kevent-ai](/repos/IA-Generative/kevent-ai) pour la gestion des files d'attente.\n- Refonte complète du mécanisme de mise à jour dans [AssistantMiraiLibreOffice](/repos/IA-Generative/AssistantMiraiLibreOffice).\n- Amélioration de la gestion de la configuration runtime dans [device-management](/repos/IA-Generative/device-management).\n- Optimisation du chargement de l'interface utilisateur dans [Stirling-PDF](/repos/IA-Generative/Stirling-PDF) pour réduire la taille des \"chunks\" générés par Vite.\n\n## Dépôts les plus actifs\n- [mcr](/repos/IA-Generative/mcr) : Refonte architecturale majeure et ajout de nouvelles fonctionnalités pour la gestion des réunions.\n- [myvault](/repos/IA-Generative/myvault) : Améliorations significatives de la sécurité et ajout de l'authentification à deux facteurs.\n- [ocr-api](/repos/IA-Generative/ocr-api) : Amélioration des fonctionnalités, de la stabilité et de la sécurité de l'API OCR.\n- [Stirling-PDF](/repos/IA-Generative/Stirling-PDF) : Intégration de capacités RAG et optimisation des performances.\n- [device-management](/repos/IA-Generative/device-management) : Introduction de la gestion des configurations runtime et renforcement de la sécurité.",
+      "changelogGeneratedAt": "2026-07-11T05:58:08Z"
     },
     {
       "organization": "incubateur-ademe",
-      "changelog": "# Synthèse d'activité : incubateur-ademe (du 17 mai 2026 au 17 juin 2026)\n\n## Résumé de l'activité\nL'activité récente de l'incubateur-ademe a été marquée par des améliorations significatives sur plusieurs projets. Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment sur [plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site) et [nosgestesclimat-site-nextjs](/repos/incubateur-ademe/nosgestesclimat-site-nextjs), avec l'ajout de nouvelles fonctionnalités et la correction de bugs.  Plusieurs projets ont bénéficié de mises à jour de dépendances et d'améliorations de la sécurité, comme [quefairedemesobjets](/repos/incubateur-ademe/quefairedemesobjets) et [dsfr-override](/repos/incubateur-ademe/dsfr-override).  Des refontes majeures ont été entreprises sur [roadmaps-faciles](/repos/incubateur-ademe/roadmaps-faciles) et [france-chaleur-urbaine-pac](/repos/incubateur-ademe/france-chaleur-urbaine-pac), apportant de nouvelles fonctionnalités et une meilleure maintenabilité.\n\n## Sécurité\nDes améliorations de sécurité ont été apportées à plusieurs dépôts :\n- Correction de vulnérabilités sur [mutafriches](/repos/incubateur-ademe/mutafriches).\n- Ajout d'un système de limitation de débit pour renforcer la sécurité de l'API sur [benefriches](/repos/incubateur-ademe/benefriches).\n- Correction d'une vulnérabilité d'open redirect et d'une vulnérabilité d'erreur verbeuse sur [dashlord](/repos/incubateur-ademe/dashlord).\n\n## Autres changements notables\n- Migration vers TypeScript et refonte de l'architecture sur [dsfr-override](/repos/incubateur-ademe/dsfr-override) pour une meilleure maintenabilité.\n- Mise à niveau de n8n vers la version 2 sur [n8n-scalingo](/repos/incubateur-ademe/n8n-scalingo).\n- Refonte de l'authentification avec FGP sur [grafana](/repos/incubateur-ademe/grafana).\n- Mise en place d'une interface d'administration spécifique pour l'incubateur Ademe sur [cal.com](/repos/incubateur-ademe/cal.com).\n- Migration de l'API vers ESM avec SWC sur [benefriches](/repos/incubateur-ademe/benefriches).\n\n## Dépôts les plus actifs\n- [roadmaps-faciles](/repos/incubateur-ademe/roadmaps-faciles) : Refonte majeure avec de nombreuses nouvelles fonctionnalités et améliorations de l'interface utilisateur.\n- [territoires-en-transitions](/repos/incubateur-ademe/territoires-en-transitions) : Améliorations de l'expérience utilisateur autour des audits et des référentiels, et préparation de l'import de plans d'action via l'IA.\n- [tacct](/repos/incubateur-ademe/tacct) : Ajout de données territoriales et améliorations de l'accessibilité.\n- [nosgestesclimat-site-nextjs](/repos/incubateur-ademe/nosgestesclimat-site-nextjs) : Amélioration de l'UX, ajout de nouvelles fonctionnalités et correction de bugs.\n- [plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site) : Ajout d'une nouvelle page sur les risques sanitaires et amélioration de la gestion des aides.\n- [france-chaleur-urbaine-pac](/repos/incubateur-ademe/france-chaleur-urbaine-pac) : Refonte de l'interface utilisateur et de l'expérience utilisateur du questionnaire et de la page de résultats.",
-      "changelogGeneratedAt": "2026-07-04T10:50:31Z"
+      "changelog": "# Synthèse d'activité : incubateur-ademe (du 16 mai 2026 au 16 juin 2026)\n\n## Résumé de l'activité\nL'activité récente de l'incubateur-ademe s'est concentrée sur l'amélioration et l'extension de ses outils existants, avec un accent particulier sur l'expérience utilisateur et la précision des données. Plusieurs projets ont bénéficié de mises à jour significatives, notamment [plusfraisautravail](/repos/incubateur-ademe/plusfraisautravail) avec l'ajout d'une carte de vigilance canicule, et [nosgestesclimat](/repos/incubateur-ademe/nosgestesclimat) avec des améliorations du référentiel d'actions et l'intégration de nouvelles données.  Des efforts importants ont également été déployés pour moderniser l'infrastructure et les processus de développement, comme avec la migration de [dsfr-override](/repos/incubateur-ademe/dsfr-override) vers TypeScript et l'amélioration du pipeline CI/CD. Enfin, plusieurs projets ont progressé dans leur phase de développement initial, comme [nosgestesclimat-aides](/repos/incubateur-ademe/nosgestesclimat-aides) et [france-chaleur-urbaine-ifpen](/repos/incubateur-ademe/france-chaleur-urbaine-ifpen).\n\n## Sécurité\nPlusieurs dépôts ont bénéficié d'améliorations de sécurité, notamment [plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site) avec l'intégration de PostHog et [bandit-manchot](/repos/incubateur-ademe/bandit-manchot) avec une mise à jour de son fichier index.html. [benefriches](/repos/incubateur-ademe/benefriches) a également mis en place un système de limitation de débit pour renforcer la sécurité de son API.\n\n## Autres changements notables\nPlusieurs projets ont connu des refactorisations importantes ou des migrations technologiques. [dsfr-override](/repos/incubateur-ademe/dsfr-override) a été entièrement migré vers TypeScript, tandis que [impactco2-integrabook](/repos/incubateur-ademe/impactco2-integrabook) a vu son interface utilisateur complètement repensée. [facili-tacct](/repos/incubateur-ademe/facili-tacct) a bénéficié de mises à jour de sa base de données et de son infrastructure.  La migration vers FGP pour l'authentification dans [grafana](/repos/incubateur-ademe/grafana) est également une évolution technique majeure.\n\n## Dépôts les plus actifs\n*   [nosgestesclimat](/repos/incubateur-ademe/nosgestesclimat) : Amélioration continue du modèle de calcul d'empreinte carbone et ajout de nouvelles fonctionnalités.\n*   [plusfraisautravail](/repos/incubateur-ademe/plusfraisautravail) : Ajout d'une carte de vigilance canicule et amélioration de l'auto-diagnostic.\n*   [plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site) : Ajout de nouvelles pages et amélioration de l'accessibilité.\n*   [benefriches](/repos/incubateur-ademe/benefriches) : Amélioration du suivi des projets urbains et ajout de nouvelles fonctionnalités.\n*   [dsfr-override](/repos/incubateur-ademe/dsfr-override) : Refonte complète et migration vers TypeScript pour une meilleure maintenabilité.\n*   [impactco2](/repos/incubateur-ademe/impactco2) : Amélioration de l'outil d'impact carbone et de l'expérience utilisateur.\n*   [tacct](/repos/incubateur-ademe/tacct) : Ajout de données pour de nouveaux territoires et amélioration de l'accessibilité.\n*   [france-chaleur-urbaine-pac](/repos/incubateur-ademe/france-chaleur-urbaine-pac) : Refonte de l'interface utilisateur du comparateur de PAC.",
+      "changelogGeneratedAt": "2026-07-11T05:58:08Z"
     },
     {
       "organization": "mesadsfr",
-      "changelog": "# Synthèse d'activité : mesadsfr (du 02/05 au 12/05)\n\n## Résumé de l'activité\nL'activité de l'organisation s'est concentrée sur l'amélioration de la plateforme [mesads](/repos/mesadsfr/mesads) avec de nouvelles fonctionnalités pour les inspecteurs et administrateurs, ainsi que des corrections d'erreurs et des améliorations de l'expérience utilisateur. L'ajout d'une page d'accessibilité répond aux obligations légales et renforce l'inclusivité de la plateforme. Des améliorations de sécurité ont également été apportées.\n\n## Sécurité\n- Correction d'une vulnérabilité sur l'endpoint d'autocomplete des communes dans [mesads](/repos/mesadsfr/mesads).\n\n## Autres changements notables\n- Mise à jour des données des communes pour l'année 2026 dans [mesads](/repos/mesadsfr/mesads).\n\n## Dépôts les plus actifs\n- [mesads](/repos/mesadsfr/mesads) : Amélioration continue de la plateforme avec de nouvelles fonctionnalités, corrections de bugs et mises à jour de données.",
-      "changelogGeneratedAt": "2026-07-04T10:50:31Z"
+      "changelog": "# Synthèse d'activité : mesadsfr (du 02/05 au 12/05)\n\n## Résumé de l'activité\nL'activité de l'organisation \"mesadsfr\" au cours des derniers jours a été centrée sur l'amélioration de la plateforme [mesads](/repos/mesadsfr/mesads) avec des fonctionnalités dédiées aux inspecteurs et aux administrateurs. L'ajout d'une page d'accessibilité répond aux obligations légales et améliore l'inclusivité de la plateforme. Des corrections de bugs et des mises à jour de données ont également été effectuées, contribuant à une meilleure expérience utilisateur et à la fiabilité des informations.\n\n## Sécurité\n- Correction d'une vulnérabilité sur l'endpoint d'autocomplete des communes dans [mesads](/repos/mesadsfr/mesads).\n\n## Autres changements notables\n- Mise à jour des données des communes pour l'année 2026 dans [mesads](/repos/mesadsfr/mesads).\n\n## Dépôts les plus actifs\n- [mesads](/repos/mesadsfr/mesads) : Amélioration significative de la plateforme avec de nouvelles fonctionnalités, des corrections de bugs et des mises à jour de données.",
+      "changelogGeneratedAt": "2026-07-11T05:58:08Z"
     },
     {
       "organization": "mission-apprentissage",
-      "changelog": "# Synthèse d'activité : mission-apprentissage (du 24/04 au 30/06)\n\n## Résumé de l'activité\nL'organisation \"mission-apprentissage\" a connu une période d'activité soutenue, marquée par des améliorations significatives sur plusieurs de ses projets. Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment sur [labonnealternance]( /repos/mission-apprentissage/labonnealternance) et [tableaudebord-lab](/repos/mission-apprentissage/tableaudebord-lab), avec l'ajout de nouvelles fonctionnalités et la correction de bugs. Des migrations d'infrastructure ont été réalisées sur plusieurs dépôts ([api-apprentissage](/repos/mission-apprentissage/api-apprentissage), [bal](/repos/mission-apprentissage/bal), [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas), [infra](/repos/mission-apprentissage/infra)), améliorant la stabilité et la performance des services. Le développement de nouvelles skills pour l'automatisation des tâches GitHub via [mna-skills](/repos/mission-apprentissage/mna-skills) représente une avancée importante.\n\n## Sécurité\nUne amélioration de la sécurité a été apportée avec la configuration d'une autorité de certification pour l'authentification des membres d'un cluster MongoDB dans [mongodb](/repos/mission-apprentissage/mongodb). De plus, [mna-shared-bin](/repos/mission-apprentissage/mna-shared-bin) a bénéficié d'améliorations concernant la gestion des clés PGP.\n\n## Autres changements notables\nPlusieurs projets ont bénéficié de refactorisations techniques importantes. [catalogue-apprentissage](/repos/mission-apprentissage/catalogue-apprentissage) a mis à jour Mongoose vers la version 9 et réécrit un plugin. [labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab) a migré la gestion des secrets d'Ansible Vault vers SOPS.  Des sous-modules obsolètes ont été supprimés dans plusieurs dépôts ([api-apprentissage](/repos/mission-apprentissage/api-apprentissage), [bal](/repos/mission-apprentissage/bal), [infra](/repos/mission-apprentissage/infra)) pour simplifier l'infrastructure.\n\n## Dépôts les plus actifs\n*   [mna-skills](/repos/mission-apprentissage/mna-skills) : Développement initial des skills pour l'automatisation des tâches GitHub, incluant la gestion des issues et des pull requests.\n*   [labonnealternance](/repos/mission-apprentissage/labonnealternance) : Amélioration des pages d'accueil, intégration des offres France Travail et correction de bugs liés à l'import des offres.\n*   [labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab) : Intégration d'un nouveau modèle d'apprentissage et amélioration du processus de CI/CD.\n*   [infra](/repos/mission-apprentissage/infra) : Migrations de serveurs et réorganisation de l'infrastructure.\n*   [api-apprentissage](/repos/mission-apprentissage/api-apprentissage) : Amélioration de la stabilité et des performances, notamment en limitant le taux de requêtes vers le service LBA et en ajoutant des délais d'attente.\n*   [lba-github-mcp](/repos/mission-apprentissage/lba-github-mcp) : Ajout de la génération dynamique des sprints à partir des projets GitHub et amélioration de l'API pour la gestion des issues.",
-      "changelogGeneratedAt": "2026-07-04T10:50:31Z"
+      "changelog": "# Synthèse d'activité : mission-apprentissage (du 24/04 au 08/07/2026)\n\n## Résumé de l'activité\nL'organisation \"mission-apprentissage\" a connu une période d'activité soutenue, marquée par des améliorations significatives de l'infrastructure, de la sécurité et des fonctionnalités de ses différents services.  Plusieurs migrations de serveurs ont été réalisées pour améliorer la stabilité et la performance. Des efforts importants ont été consacrés à l'automatisation des tâches (skills pour GitHub), à l'amélioration de l'expérience utilisateur (refonte de l'interface de labonnealternance, correction de bugs) et au renforcement de la sécurité (configuration d'une autorité de certification, rotation de secrets). L'ajout de Sentry pour la supervision des erreurs est une avancée notable pour la gestion des incidents.\n\n## Sécurité\nPlusieurs changements ont été apportés pour renforcer la sécurité :\n\n- Configuration d'une autorité de certification pour l'authentification des membres d'un cluster MongoDB [mongodb](/repos/mission-apprentissage/mongodb).\n- Rotation du secret SOPS pour renforcer la sécurité dans [infra](/repos/mission-apprentissage/infra) et [labonnealternance](/repos/mission-apprentissage/labonnealternance).\n- Mise en place d'une auto-révocation des clés API inutilisées dans [bal](/repos/mission-apprentissage/bal).\n\n## Autres changements notables\n- Migrations de serveurs pour plusieurs projets : [labonnealternance](/repos/mission-apprentissage/labonnealternance), [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas), [bal](/repos/mission-apprentissage/bal), [api-apprentissage](/repos/mission-apprentissage/api-apprentissage), [infra](/repos/mission-apprentissage/infra).\n- Suppression de sous-modules obsolètes dans [bal](/repos/mission-apprentissage/bal), [api-apprentissage](/repos/mission-apprentissage/api-apprentissage) et [infra](/repos/mission-apprentissage/infra) pour simplifier l'infrastructure.\n- Intégration de Sentry pour la supervision des erreurs [infra](/repos/mission-apprentissage/infra).\n- Migration de la gestion des secrets d'Ansible Vault vers SOPS dans [labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab).\n- Unification du logging avec Pino dans [labonnealternance](/repos/mission-apprentissage/labonnealternance).\n\n## Dépôts les plus actifs\n- [labonnealternance](/repos/mission-apprentissage/labonnealternance) : Refonte de l'interface utilisateur, correction de bugs et migration des serveurs.\n- [mna-skills](/repos/mission-apprentissage/mna-skills) : Développement initial des skills pour l'automatisation des tâches GitHub.\n- [infra](/repos/mission-apprentissage/infra) : Migrations de serveurs, ajout de Sentry et améliorations de la sécurité.\n- [labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab) : Amélioration du modèle de classification, migration de la gestion des secrets et corrections de bugs.\n- [bal](/repos/mission-apprentissage/bal) : Importation des données Akto, correction de bugs et migration des serveurs.",
+      "changelogGeneratedAt": "2026-07-11T05:58:08Z"
     },
     {
       "organization": "mte-dgpr",
-      "changelog": "# Synthèse d'activité : mte-dgpr (du 19/05 au 19/06)\n\n## Résumé de l'activité\nL'activité récente de l'organisation s'est concentrée sur l'amélioration de la qualité et de la précision des outils de traitement des arrêtés et des permis. [ocapi](/repos/mte-dgpr/ocapi) a bénéficié d'optimisations de son modèle de langage et de corrections pour une meilleure gestion des opérations et des coûts. [arretify](/repos/mte-dgpr/arretify) a quant à lui vu des améliorations significatives dans la détection des éléments structuraux des arrêtés, notamment les tableaux et les prescriptions annexées, ce qui permettra une conversion plus précise en HTML et une meilleure extraction d'informations.\n\n## Sécurité\nAucun changement lié à la sécurité n'a été identifié durant cette période.\n\n## Autres changements notables\n[ocapi](/repos/mte-dgpr/ocapi) a changé de modèle de langage par défaut pour améliorer ses performances et sa précision. [arretify](/repos/mte-dgpr/arretify) a subi un refactoring pour une meilleure cohérence des identifiants et des améliorations de sa configuration CI.\n\n## Dépôts les plus actifs\n- [ocapi](/repos/mte-dgpr/ocapi) : Corrections et améliorations de la gestion des opérations, de la détection des arrêtés et intégration des coûts PIAG.\n- [arretify](/repos/mte-dgpr/arretify) : Amélioration significative de la détection des tableaux et des prescriptions annexées dans les arrêtés.",
-      "changelogGeneratedAt": "2026-07-04T10:50:31Z"
+      "changelog": "# Synthèse d'activité : mte-dgpr (du 19/05 au 19/06)\n\n## Résumé de l'activité\nL'activité récente de l'organisation s'est concentrée sur l'amélioration de la qualité et de la précision des outils de traitement des arrêtés et des permis. [ocapi](/repos/mte-dgpr/ocapi) a bénéficié d'optimisations de son modèle de langage et de corrections pour une meilleure gestion des opérations et des coûts.  [arretify](/repos/mte-dgpr/arretify) a quant à lui progressé dans la reconnaissance de la structure des arrêtés, notamment la détection des tableaux et des prescriptions annexées, ce qui améliorera la conversion des arrêtés en HTML et facilitera l'extraction d'informations structurées.\n\n## Sécurité\nAucun changement lié à la sécurité n'a été identifié durant cette période.\n\n## Autres changements notables\n[ocapi](/repos/mte-dgpr/ocapi) a changé son modèle de langage par défaut pour améliorer la performance et la précision. [arretify](/repos/mte-dgpr/arretify) a subi un refactoring pour une meilleure cohérence des identifiants et des améliorations de sa chaîne d'intégration continue (CI).\n\n## Dépôts les plus actifs\n- [ocapi](/repos/mte-dgpr/ocapi) : Corrections et améliorations de la gestion des opérations, de l'intégration des coûts PIAG et de la précision de la détection des opérations.\n- [arretify](/repos/mte-dgpr/arretify) : Amélioration significative de la détection des tableaux et des prescriptions annexées dans les arrêtés, ainsi que des optimisations et corrections techniques.",
+      "changelogGeneratedAt": "2026-07-11T05:58:08Z"
     },
     {
       "organization": "MTES-MCT",
-      "changelog": "# Synthèse d'activité : MTES-MCT (du 23 mai au 29 juin 2026)\n\n## Résumé de l'activité\nL'activité récente de l'organisation MTES-MCT a été marquée par une forte concentration sur l'amélioration des applications existantes, avec des mises à jour significatives pour des outils clés comme Trackdéchets, Partageons l'eau, et les plateformes autour de l'accès au logement (Dossier Facile, Mon Devis Sans Oublis). Ces mises à jour incluent des améliorations de la sécurité (authentification multi-facteurs sur Trackdéchets, correction de vulnérabilités), de l'expérience utilisateur (nouvelles fonctionnalités, refonte d'interfaces), et de la performance (optimisation des requêtes, migration vers des technologies plus récentes).  Plusieurs dépôts ont bénéficié d'améliorations de la qualité du code et de l'automatisation des tests. L'intégration de nouvelles sources de données et l'ajout de fonctionnalités spécifiques à certains domaines (ICPE pour Envergo, gestion des ERP pour Acceslibre) témoignent d'une volonté de répondre aux besoins spécifiques des utilisateurs.\n\n## Sécurité\nPlusieurs dépôts ont bénéficié d'améliorations de sécurité :\n\n*   **Trackdéchets** : Implémentation de l'authentification multi-facteurs (MFA) avec journalisation des événements, gestion des réinitialisations et codes de récupération.\n*   **Apilos** : Correction d'une vulnérabilité CVE.\n*   **Keycloak-FranceConnect** : Activation de l'authentification à deux facteurs pour ProConnect.\n*   **Docurba**: Mise en place d'un reverse proxy Nginx pour améliorer la sécurité.\n\n## Autres changements notables\nPlusieurs projets ont connu des évolutions techniques majeures :\n\n*   **Zero-logement-vacant** : Migration vers React Router v7 et refonte de l'importation des données LOVAC avec DuckDB et Parquet pour une meilleure performance et scalabilité.\n*   **Vizeau** : Ajout de la gestion des étapes de projet et d'une page \"Mes territoires\".\n*   **Sparte** : Refonte de la page d'accueil et correction de problèmes de cache.\n*   **Partaj** : Migration vers React 18 et mise à jour de plusieurs dépendances.\n*   **Lucca-scripts** : Ajout d'une colonne 'parcelle' dans l'historique des statistiques.\n*   **Docurba**: Intégration de l'authentification Supabase et refactorisation de l'architecture Django.\n\n## Dépôts les plus actifs\n*   **Trackdéchets** : Améliorations majeures de la sécurité avec l'implémentation de l'authentification multi-facteurs et corrections de bugs critiques.\n*   **Partageons l'eau** : Amélioration de la gestion de l'environnement de sandbox et des workflows Git.\n*   **Dossier Facile (frontend et backend)** : Nombreuses améliorations de l'interface utilisateur, de la gestion des données et de la sécurité.\n*   **Envergo** : Ajout de nouvelles fonctionnalités pour la gestion des ICPE et refonte de l'interface utilisateur.\n*   **Acceslibre** : Ajout de la gestion des ERP en RPA et amélioration de la collecte de données.\n*   **Docurba**: Refonte de l'architecture et ajout de nouvelles fonctionnalités.\n*   **Lucca**: Ajout de la gestion des adhérents et amélioration de l'importation des données.\n*   **Aigle (frontend et api)** : Ajout de nouveaux statuts et amélioration de la gestion des données.\n*   **Dahlia**: Intégration du SSO ProConnect et amélioration du scrapping.",
-      "changelogGeneratedAt": "2026-07-03T20:47:28Z"
+      "changelog": "# Synthèse d'activité : MTES-MCT (du 22 mai 2026 au 09 juillet 2026)\n\n## Résumé de l'activité\nL'activité récente de l'organisation MTES-MCT a été marquée par des améliorations significatives sur plusieurs fronts. Un effort important a été consacré à l'amélioration de l'expérience utilisateur, notamment sur les applications web comme *dossierfacile-frontend*, *otelo-front* et *Lucca*, avec des refontes d'interfaces, l'ajout de nouvelles fonctionnalités et la correction de bugs. La sécurité a également été une priorité, avec des mises à jour de dépendances et l'implémentation de l'authentification multi-facteurs sur *trackdechets*. De nombreux dépôts ont bénéficié de corrections de bugs et d'optimisations de performance, et plusieurs projets ont progressé dans l'intégration de nouvelles sources de données et de fonctionnalités clés, comme l'intégration de données de préfectures dans *dialog-integrations* ou l'ajout de la gestion des garanties dans *mobilic*. [zero-logement-vacant](/repos/MTES-MCT/zero-logement-vacant) a connu des améliorations de performance et de gestion des données.\n\n## Sécurité\nPlusieurs dépôts ont bénéficié d'améliorations de sécurité :\n\n*   Implémentation de l'authentification multi-facteurs (MFA) sur [trackdechets](/repos/MTES-MCT/trackdechets).\n*   Correction d'une faille de sécurité sur [ecobalyse](/repos/MTES-MCT/ecobalyse) concernant la falsification du token d'authentification.\n*   Correction d'une vulnérabilité CVE sur [dossierfacile-infra](/repos/MTES-MCT/dossierfacile-infra).\n*   Renforcement de la sécurité des accès aux tables de versements sur [Docurba](/repos/MTES-MCT/Docurba).\n\n## Autres changements notables\n*   Plusieurs dépôts ont été mis à jour avec de nouvelles versions de leurs dépendances, améliorant la stabilité et la sécurité.\n*   Des migrations de bases de données ont été effectuées sur plusieurs projets pour supporter de nouvelles fonctionnalités.\n*   Des améliorations significatives de l'infrastructure CI/CD ont été apportées à plusieurs dépôts, notamment *dialog-integrations* et *dossierfacile-frontend*, pour optimiser le processus de développement et de déploiement.\n*   Des efforts ont été déployés pour améliorer la documentation et la qualité du code sur de nombreux projets.\n*   Des refactorisations importantes ont été réalisées sur [verseau2](/repos/MTES-MCT/verseau2) et [sparte](/repos/MTES-MCT/sparte) pour améliorer la maintenabilité et la performance.\n\n## Dépôts les plus actifs\n*   [zero-logement-vacant](/repos/MTES-MCT/zero-logement-vacant) : Améliorations de la performance, corrections de bugs et migration technique.\n*   [trackdechets](/repos/MTES-MCT/trackdechets) : Implémentation de l'authentification multi-facteurs et corrections de bugs.\n*   [vizeau](/repos/MTES-MCT/vizeau) : Ajout de nouvelles fonctionnalités pour la gestion de projets et l'affichage des données.\n*   [mobilic](/repos/MTES-MCT/mobilic) : Amélioration de l'interface utilisateur et ajout de nouvelles fonctionnalités pour la gestion des missions.\n*   [dossierfacile-backend](/repos/MTES-MCT/dossierfacile-backend) : Améliorations de la gestion des garanties, des documents et de l'interface d'administration.\n*   [ecobalyse](/repos/MTES-MCT/ecobalyse) : Ajout de nouvelles données et amélioration de la sécurité.\n*   [dialog](/repos/MTES-MCT/dialog) : Ajout de filtres, gestion des restrictions et amélioration de la cartographie.\n*   [Lucca](/repos/MTES-MCT/Lucca) : Ajout de la gestion des adhérents et amélioration de l'importation des données.",
+      "changelogGeneratedAt": "2026-07-11T05:58:08Z"
     },
     {
       "organization": "numerique-gouv",
-      "changelog": "# Synthèse d'activité : numerique-gouv (du 2024-05-12 au 2024-06-30)\n\n## Résumé de l'activité\nL'activité récente de l'organisation numerique-gouv s'est concentrée sur l'amélioration de l'expérience utilisateur et la correction de bugs dans plusieurs de ses projets. On note des avancées significatives sur l'internationalisation de [sites-faciles](/repos/numerique-gouv/sites-faciles) et [sites-faciles-fork-1](/repos/numerique-gouv/sites-faciles-fork-1), avec l'ajout de la gestion de plusieurs langues et d'un sélecteur de langue.  Des améliorations ont également été apportées à la gestion des notifications avec [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api) et à l'affichage des bannières dans les applications mobiles [ami-app-ios](/repos/numerique-gouv/ami-app-ios) et [ami-app-android](/repos/numerique-gouv/ami-app-android). Enfin, des efforts ont été déployés pour simplifier le déploiement et améliorer la stabilité de certains services, comme [sites-conformes](/repos/numerique-gouv/sites-conformes) et [francetransfert](/repos/numerique-gouv/francetransfert).\n\n## Sécurité\n- Correction d'une vulnérabilité potentielle en mettant à jour l'image de base Keycloak dans [dockerfiles](/repos/numerique-gouv/dockerfiles).\n\n## Autres changements notables\n- Mise en place d'un déploiement en un clic sur Scalingo pour [sites-faciles](/repos/numerique-gouv/sites-faciles) et [sites-conformes](/repos/numerique-gouv/sites-conformes).\n- Automatisation du versionnement et de la publication sur PyPi pour [sites-conformes](/repos/numerique-gouv/sites-conformes).\n- Refactorisation de la structure du projet et adoption de la couleur d'accent par défaut du DSFR pour [ami-design-system-ios](/repos/numerique-gouv/ami-design-system-ios).\n\n## Dépôts les plus actifs\n- [sites-faciles](/repos/numerique-gouv/sites-faciles) : Amélioration de l'internationalisation et simplification du déploiement.\n- [sites-conformes](/repos/numerique-gouv/sites-conformes) : Amélioration du processus de publication et correction de bugs.\n- [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api) : Amélioration de la gestion des notifications et des préférences de localisation.\n- [django-dsfr](/repos/numerique-gouv/django-dsfr) : Correction de l'affichage des formulaires DSFR et amélioration du processus de release.\n- [b3desk](/repos/numerique-gouv/b3desk) : Amélioration de la gestion des réunions et automatisation de la publication des releases.",
-      "changelogGeneratedAt": "2026-07-04T10:50:31Z"
+      "changelog": "# Synthèse d'activité : numerique-gouv (du 03 mai 2026 au 03 juillet 2026)\n\n## Résumé de l'activité\nL'organisation numerique-gouv a connu une période d'activité soutenue, marquée par des améliorations significatives sur plusieurs de ses projets. Les efforts se sont concentrés sur l'internationalisation des plateformes [sites-faciles](/repos/numerique-gouv/sites-faciles) et [sites-faciles-fork-1](/repos/numerique-gouv/sites-faciles-fork-1), avec l'ajout de la gestion multilingue et de sélecteurs de langue.  Des améliorations importantes ont également été apportées à la publication et au déploiement de certains projets comme [sites-conformes](/repos/numerique-gouv/sites-conformes) et [b3desk](/repos/numerique-gouv/b3desk), avec l'automatisation des releases et l'optimisation des processus. Enfin, des corrections de bugs et des optimisations de performance ont été réalisées sur l'ensemble des projets, améliorant ainsi l'expérience utilisateur et la stabilité des services.\n\n## Sécurité\n- Correction de l'image de base Keycloak dans [dockerfiles](/repos/numerique-gouv/dockerfiles) pour bénéficier des dernières corrections de sécurité.\n- Mise à jour de dépendances de sécurité pour `js-yaml` et `next` dans [lasuite-landingpage](/repos/numerique-gouv/lasuite-landingpage).\n\n## Autres changements notables\n- Refonte du modèle de données dans [statistiques-impact](/repos/numerique-gouv/statistiques-impact) avec l'introduction du modèle \"Record\".\n- Mise en place d'un déploiement en un clic sur Scalingo pour [sites-faciles](/repos/numerique-gouv/sites-faciles).\n- Automatisation du versionnement et de la publication sur PyPi pour [sites-conformes](/repos/numerique-gouv/sites-conformes).\n- Amélioration de l'intégration des claims OIDC dans [b3desk](/repos/numerique-gouv/b3desk).\n- Refactoring de la structure du projet [ami-design-system-ios](/repos/numerique-gouv/ami-design-system-ios) pour une meilleure organisation.\n\n## Dépôts les plus actifs\n- [statistiques-impact](/repos/numerique-gouv/statistiques-impact) : Refonte du modèle de données et amélioration de l'infrastructure.\n- [sites-faciles](/repos/numerique-gouv/sites-faciles) : Internationalisation de la plateforme et simplification du déploiement.\n- [sites-conformes](/repos/numerique-gouv/sites-conformes) : Automatisation de la publication et amélioration de la configuration.\n- [b3desk](/repos/numerique-gouv/b3desk) : Amélioration de la gestion des réunions et intégration OIDC.\n- [lasuite-landingpage](/repos/numerique-gouv/lasuite-landingpage) : Ajout d'informations sur les webinaires et l'intégration de Tchap.",
+      "changelogGeneratedAt": "2026-07-11T05:58:08Z"
     },
     {
       "organization": "openmaraude",
-      "changelog": "# Synthèse d'activité : openmaraude (du 02/06 au 12/06)\n\n## Résumé de l'activité\nL'organisation openmaraude a progressé sur le développement du service de gestion des suspensions. Une première version de l'interface utilisateur permettant de visualiser l'état de suspension des éléments a été implémentée dans [suspension-service](/repos/openmaraude/suspension-service). Parallèlement, des travaux de configuration et de préparation du déploiement de l'API associée [suspension-service-api](/repos/openmaraude/suspension-service-api) ont été réalisés, notamment concernant la configuration DNS et la création d'un point d'entrée pour l'API. Ces évolutions permettront à terme de proposer une fonctionnalité complète de gestion des suspensions aux utilisateurs.\n\n## Sécurité\nAucun changement lié à la sécurité n'a été identifié durant cette période.\n\n## Autres changements notables\nAucun autre changement technique majeur n'a été identifié.\n\n## Dépôts les plus actifs\n- [suspension-service](/repos/openmaraude/suspension-service) : Implémentation d'une page de suspension pour visualiser l'état des éléments suspendus.\n- [suspension-service-api](/repos/openmaraude/suspension-service-api) : Préparation du déploiement de l'API, incluant la configuration DNS et la création d'un fichier `index.html`.",
-      "changelogGeneratedAt": "2026-07-04T10:50:31Z"
+      "changelog": "# Synthèse d'activité : openmaraude (du 02/06 au 12/06)\n\n## Résumé de l'activité\nL'organisation openmaraude a progressé sur le développement du service de gestion des suspensions. Une première version de l'interface utilisateur permettant de visualiser l'état de suspension des éléments a été implémentée dans [suspension-service](/repos/openmaraude/suspension-service). Des travaux de configuration et de déploiement ont également été réalisés sur l'API associée [suspension-service-api](/repos/openmaraude/suspension-service-api) afin de préparer sa mise en production. Ces évolutions permettront aux utilisateurs de mieux gérer et comprendre l'état de suspension des éléments au sein de la plateforme.\n\n## Sécurité\nAucun changement lié à la sécurité n'a été identifié durant cette période.\n\n## Autres changements notables\nAucun autre changement technique majeur n'a été signalé.\n\n## Dépôts les plus actifs\n- [suspension-service](/repos/openmaraude/suspension-service) : Développement de l'interface utilisateur pour la gestion des suspensions.\n- [suspension-service-api](/repos/openmaraude/suspension-service-api) : Préparation du déploiement de l'API de gestion des suspensions.",
+      "changelogGeneratedAt": "2026-07-11T05:58:08Z"
     },
     {
       "organization": "proconnect-gouv",
-      "changelog": "# Synthèse d'activité : proconnect-gouv (du 28 avril 2026 au 2 juillet 2026)\n\n## Résumé de l'activité\nL'activité récente de l'organisation proconnect-gouv s'est concentrée sur l'amélioration de la sécurité, la correction de bugs et l'ajout de nouvelles fonctionnalités, notamment autour de l'authentification et de la gestion des utilisateurs. Plusieurs dépôts ont bénéficié de mises à jour pour supporter de nouveaux standards (eIDAS) et améliorer l'expérience utilisateur. L'équipe a également investi dans la modernisation de l'infrastructure et des dépendances pour assurer la stabilité et la performance des applications. Les dépôts [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) et [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires) ont été particulièrement actifs.\n\n## Sécurité\nPlusieurs améliorations de sécurité ont été apportées :\n- Restriction de l'accès en écriture à la base de données aux administrateurs et modérateurs dans [hyyypertool](/repos/proconnect-gouv/hyyypertool).\n- Correction de vulnérabilités de dépendances dans [class-validator](/repos/proconnect-gouv/class-validator).\n\n## Autres changements notables\n- Migration du runtime vers Bun dans [docteur-proconnect](/repos/proconnect-gouv/docteur-proconnect) pour de meilleures performances.\n- Mise à jour du schéma de la base de données pour la compatibilité avec PostgreSQL 17 dans [proconnect-identite](/repos/proconnect-gouv/proconnect-identite).\n- Suppression de PM2 des images de production pour simplifier le déploiement dans [federation](/repos/proconnect-gouv/federation).\n- Abaissement de la version de PostgreSQL à 16 pour alignement avec la production dans [federation](/repos/proconnect-gouv/federation).\n\n## Dépôts les plus actifs\n- [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) : Amélioration de la gestion des utilisateurs, ajout de nouveaux niveaux d'ACR et correction de bugs.\n- [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires) : Amélioration de la documentation eIDAS et correction de bugs liés à l'authentification.\n- [federation](/repos/proconnect-gouv/federation) : Ajout de la gestion des collaborateurs et amélioration de l'interface d'administration.\n- [class-validator](/repos/proconnect-gouv/class-validator) : Ajout de nouveaux validateurs et correction de vulnérabilités.\n- [docteur-proconnect](/repos/proconnect-gouv/docteur-proconnect) : Correction de bugs d'authentification et migration vers Bun.",
-      "changelogGeneratedAt": "2026-07-04T10:50:31Z"
+      "changelog": "# Synthèse d'activité : proconnect-gouv (du 28 avril 2026 au 9 juillet 2026)\n\n## Résumé de l'activité\nL'organisation proconnect-gouv a connu une période d'activité soutenue, marquée par des améliorations significatives de la sécurité, notamment dans [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) avec la restriction des méthodes d'authentification et la prévention des abus liés à la vérification par email.  Des efforts importants ont été consacrés à l'amélioration de l'expérience utilisateur, en particulier sur [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires) avec une documentation plus claire sur l'authentification forte et l'ajout de la gestion des collaborateurs (temporairement revertée). Plusieurs dépôts ont bénéficié de mises à jour de dépendances pour assurer la stabilité et la sécurité, et de nouvelles fonctionnalités ont été ajoutées, comme la validation de formats de données spécifiques dans [class-validator](/repos/proconnect-gouv/class-validator). L'initialisation de nouveaux projets comme [proconnect-test-idp](/repos/proconnect-gouv/proconnect-test-idp) et [mx-resolver](/repos/proconnect-gouv/mx-resolver) témoigne d'une dynamique de développement active.\n\n## Sécurité\nPlusieurs changements ont été apportés pour renforcer la sécurité :\n\n- Correction de vulnérabilités et amélioration de la sécurité de l'authentification dans [proconnect-identite](/repos/proconnect-gouv/proconnect-identite).\n- Mise à jour de dépendances vulnérables dans [class-validator](/repos/proconnect-gouv/class-validator).\n\n## Autres changements notables\n- Migration de [docteur-proconnect](/repos/proconnect-gouv/docteur-proconnect) vers un runtime Bun pour de meilleures performances.\n- Simplification de l'infrastructure Docker et suppression de PM2 dans [federation](/repos/proconnect-gouv/federation).\n- Ajout d'un indicateur de conformité MFA et de la gestion des collaborateurs dans [federation](/repos/proconnect-gouv/federation).\n- Initialisation du buildpack Bun pour Scalingo dans [bun-buildpack](/repos/proconnect-gouv/bun-buildpack).\n\n## Dépôts les plus actifs\n- [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) : Corrections de bugs, améliorations de la sécurité et ajout de nouvelles catégories juridiques.\n- [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires) : Amélioration de la documentation sur l'authentification forte et gestion des collaborateurs.\n- [federation](/repos/proconnect-gouv/federation) : Ajout de fonctionnalités de gestion des utilisateurs et d'indicateurs de conformité MFA, ainsi que des refactorings d'infrastructure.\n- [class-validator](/repos/proconnect-gouv/class-validator) : Ajout de nouveaux validateurs et amélioration de la validation des données.\n- [docteur-proconnect](/repos/proconnect-gouv/docteur-proconnect) : Migration vers Bun et correction de problèmes d'authentification.",
+      "changelogGeneratedAt": "2026-07-11T05:58:08Z"
     },
     {
       "organization": "refugies-info",
-      "changelog": "# Synthèse d'activité : refugies-info (du 23/10 au 30/10)\n\n## Résumé de l'activité\nL'organisation refugies-info a connu une semaine productive, axée sur l'amélioration de l'expérience utilisateur et la correction de bugs critiques dans ses applications principales. Les efforts se sont concentrés sur [playground](/repos/refugies-info/playground) et [karfur](/repos/refugies-info/karfur), avec des améliorations significatives dans la gestion des documents, l'affichage des informations et la résolution de problèmes de connexion. Ces mises à jour se traduisent par une meilleure efficacité pour les utilisateurs finaux dans la gestion des informations et l'accès aux services.\n\n## Sécurité\nDes corrections de vulnérabilités de sécurité ont été implémentées dans [playground](/repos/refugies-info/playground) et [karfur](/repos/refugies-info/karfur), renforçant la sécurité des plateformes.\n\n## Autres changements notables\n- Intégration de Letta Code dans [karfur](/repos/refugies-info/karfur) pour l'auto-review des pull requests, améliorant la qualité du code.\n- Préparation de l'infrastructure pour l'intégration de nouveaux \"skills\" pour Letta Code dans [karfur](/repos/refugies-info/karfur).\n- Migration de la gestion des utilisateurs dans [playground](/repos/refugies-info/playground) avec le passage de `author_id` à `assignee_id`.\n\n## Dépôts les plus actifs\n- [playground](/repos/refugies-info/playground) : Amélioration significative de la gestion des documents avec l'ajout d'un journal d'activité, l'assignation de tâches et l'archivage des fiches.\n- [karfur](/repos/refugies-info/karfur) : Corrections de bugs d'affichage, de connexion et d'accentuation, ainsi que l'intégration de Letta Code pour l'amélioration continue de la qualité du code.",
-      "changelogGeneratedAt": "2026-07-04T10:50:31Z"
+      "changelog": "# Synthèse d'activité : refugies-info (du 15/05 au 22/05)\n\n## Résumé de l'activité\nL'organisation refugies-info a connu une semaine productive, axée sur l'amélioration de l'expérience utilisateur et la correction de bugs dans ses outils principaux. Le [playground](/repos/refugies-info/playground) a bénéficié de nombreuses améliorations, notamment des filtres de recherche, un système de notes, un journal d'activités et une gestion des utilisateurs plus robuste.  [karfur](/repos/refugies-info/karfur) a quant à lui reçu des corrections de bugs importants concernant l'affichage, la connexion et la recherche, améliorant ainsi la fiabilité et l'accessibilité de la plateforme.\n\n## Sécurité\nDes mises à jour de dépendances et des corrections de vulnérabilités de sécurité ont été appliquées dans [playground](/repos/refugies-info/playground) et [karfur](/repos/refugies-info/karfur), renforçant la sécurité globale des plateformes.\n\n## Autres changements notables\nUne centralisation des données utilisateurs a été effectuée dans le backend de [playground](/repos/refugies-info/playground) pour une meilleure cohérence. L'intégration de Letta Code dans [karfur](/repos/refugies-info/karfur) pour l'auto-review des pull requests est une avancée significative pour la qualité du code.\n\n## Dépôts les plus actifs\n- [playground](/repos/refugies-info/playground) : Ce dépôt a été le plus actif, avec des améliorations majeures de l'interface utilisateur, de la gestion des données et de l'ajout de nouvelles fonctionnalités pour faciliter la collaboration et l'annotation des fiches.\n- [karfur](/repos/refugies-info/karfur) : Ce dépôt a concentré ses efforts sur la correction de bugs et l'amélioration de la stabilité de la plateforme, notamment en corrigeant des problèmes d'affichage et de connexion.",
+      "changelogGeneratedAt": "2026-07-11T05:58:08Z"
     },
     {
       "organization": "signaux-faibles",
-      "changelog": "# Synthèse d'activité : signaux-faibles (du 23/06 au 30/06)\n\n## Résumé de l'activité\nL'activité récente de l'organisation \"signaux-faibles\" s'est concentrée sur l'amélioration de la qualité et de la fiabilité des données, notamment concernant les codes NAF. Les corrections apportées à [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles) visent à garantir une meilleure précision des informations affichées aux utilisateurs et utilisées par la plateforme, en particulier pour le filtrage et l'affichage des données d'effectif. Ces améliorations contribuent à une expérience utilisateur plus fiable et pertinente.\n\n## Sécurité\nAucun changement lié à la sécurité n'a été identifié durant cette période.\n\n## Autres changements notables\nDes améliorations techniques ont été apportées à [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles) pour améliorer la reproductibilité de la génération des fichiers de référence grâce à l'utilisation de Go. Des corrections de migrations de base de données et une simplification du code ont également été réalisées.\n\n## Dépôts les plus actifs\n- [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles) : Ce dépôt a été le plus actif, avec des corrections de bugs, des améliorations de la qualité des données et des optimisations techniques.",
-      "changelogGeneratedAt": "2026-07-04T10:50:31Z"
+      "changelog": "# Synthèse d'activité : signaux-faibles (du 23/06 au 30/06)\n\n## Résumé de l'activité\nL'activité récente de l'organisation \"signaux-faibles\" s'est concentrée sur l'amélioration de la qualité et de la fiabilité des données, notamment concernant les codes NAF. Les corrections apportées à [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles) visent à garantir une meilleure précision des informations affichées aux utilisateurs et utilisées par la plateforme, en particulier au niveau du filtrage et de l'intégration des données d'effectif.\n\n## Sécurité\nAucun changement lié à la sécurité n'a été identifié.\n\n## Autres changements notables\nDes améliorations techniques ont été apportées à [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles) concernant la génération des fichiers de référence (golden files) avec Go, ainsi que des corrections de migrations de base de données et une simplification du code. Ces changements visent à améliorer la reproductibilité et la maintenabilité de la plateforme.\n\n## Dépôts les plus actifs\n- [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles) : Ce dépôt a été le plus actif, avec des corrections de bugs, des améliorations de la qualité des données et des optimisations techniques.",
+      "changelogGeneratedAt": "2026-07-11T05:58:08Z"
     },
     {
       "organization": "SocialGouv",
-      "changelog": "# Synthèse d'activité : SocialGouv (du 15 mai au 15 juin 2026)\n\n## Résumé de l'activité\nL'activité récente de SocialGouv a été marquée par une forte concentration sur l'amélioration de la sécurité, la modernisation des infrastructures et l'enrichissement des fonctionnalités de ses outils. Plusieurs dépôts ont bénéficié de migrations vers des gestionnaires de paquets plus performants comme pnpm, renforçant ainsi la sécurité et la gestion des dépendances. Des efforts importants ont également été déployés pour améliorer l'accessibilité des services, notamment via l'intégration de nouvelles fonctionnalités et la correction de bugs. L'organisation prépare activement l'arrêt de certains services, tout en continuant à développer de nouveaux outils et à améliorer l'expérience utilisateur de ses plateformes existantes. Les dépôts [vao](/repos/SocialGouv/vao), [token-bureau](/repos/SocialGouv/token-bureau), [srdt](/repos/SocialGouv/srdt), [smart-allow](/repos/SocialGouv/smart-allow), [legi-data](/repos/SocialGouv/legi-data) et [cdtn-admin](/repos/SocialGouv/cdtn-admin) ont été particulièrement actifs.\n\n## Sécurité\nPlusieurs dépôts ont bénéficié d'améliorations significatives en matière de sécurité. [smart-allow](/repos/SocialGouv/smart-allow) a ajouté une fonctionnalité bloquant l'envoi de données à des fournisseurs d'IA externes, et [dsfr-mcp](/repos/SocialGouv/dsfr-mcp) a reçu une correction de sécurité importante. [domifa](/repos/SocialGouv/domifa) a également bénéficié de corrections de vulnérabilités. [buildkit-operator](/repos/SocialGouv/buildkit-operator) a renforcé la sécurité de la chaîne d'approvisionnement logicielle avec l'implémentation de la signature cosign et de la génération de SBOM.\n\n## Autres changements notables\nPlusieurs dépôts ont connu des évolutions techniques majeures. [vao](/repos/SocialGouv/vao) a migré vers des routes Typescript et augmenté les ressources de sa base de données. [token-bureau](/repos/SocialGouv/token-bureau) a refactorisé son code en un monorepo et migré vers pnpm. [matomo-postgres](/repos/SocialGouv/matomo-postgres) a mis à jour sa version de Node.js. [infra-apps](/repos/SocialGouv/infra-apps) a migré les datastores d'Iterion vers une infrastructure plus robuste. [cdtn-admin](/repos/SocialGouv/cdtn-admin) a ajouté un script pour le dump de la base de données.\n\n## Dépôts les plus actifs\n*   [vao](/repos/SocialGouv/vao) : Amélioration de l'expérience utilisateur pour le renouvellement d'agrément et implémentation de la validation OTP.\n*   [token-bureau](/repos/SocialGouv/token-bureau) : Corrections de bugs, améliorations de la gestion des permissions et migration vers pnpm.\n*   [srdt](/repos/SocialGouv/srdt) : Améliorations de l'expérience utilisateur, de l'accessibilité et ajout de nouvelles fonctionnalités.\n*   [cdtn-admin](/repos/SocialGouv/cdtn-admin) : Ajout de nouveaux types de contributions et amélioration de la gestion des données.\n*   [matomo-next](/repos/SocialGouv/matomo-next) : Ajout d'un proxy de suivi côté serveur et prise en charge des tests A/B.\n*   [dashlord](/repos/SocialGouv/dashlord) : Amélioration de l'interface utilisateur et ajout de nouvelles fonctionnalités de gestion des données.\n*   [legi-data](/repos/SocialGouv/legi-data) : Mises à jour régulières des données législatives.\n*   [iterion](/repos/SocialGouv/iterion) : Activation de l'inscription ouverte et déploiement d'une marketplace de bots.",
-      "changelogGeneratedAt": "2026-07-03T20:47:28Z"
+      "changelog": "# Synthèse d'activité : SocialGouv (du 27 mai 2026 au 29 juin 2026)\n\n## Résumé de l'activité\nL'activité récente de SocialGouv est marquée par une forte concentration sur la maintenance, la sécurité et l'amélioration de l'expérience utilisateur de ses outils. Plusieurs dépôts ont bénéficié de corrections de bugs, de mises à jour de dépendances et d'ajustements de configuration pour garantir la stabilité et la performance des applications. Des efforts significatifs ont également été déployés pour préparer l'arrêt de certains services, comme Recosanté, en informant les utilisateurs et en assurant une transition en douceur. Plusieurs projets ont progressé dans l'intégration de nouvelles fonctionnalités, notamment l'ajout de support pour des technologies émergentes comme l'IA et l'automatisation, ainsi que l'amélioration de l'accessibilité et de la sécurité des applications. Les dépôts les plus actifs incluent [vao](/repos/SocialGouv/vao), [token-bureau](/repos/SocialGouv/token-bureau), [matomo-next](/repos/SocialGouv/matomo-next) et [cdtn-admin](/repos/SocialGouv/cdtn-admin).\n\n## Sécurité\nPlusieurs dépôts ont bénéficié d'améliorations de sécurité :\n\n*   Correction d'une vulnérabilité dans [archifiltre-mails](/repos/SocialGouv/archifiltre-mails).\n*   Renforcement de la sécurité dans [domifa](/repos/SocialGouv/domifa) avec des corrections et des ajustements.\n*   Amélioration de la sécurité des builds avec l'intégration de Kata Containers dans [buildkit-operator](/repos/SocialGouv/buildkit-operator).\n*   Mise en place d'une gestion des secrets locale scellée dans [iterion](/repos/SocialGouv/iterion).\n\n## Autres changements notables\n*   **Migration vers pnpm:** Plusieurs dépôts, dont [token-bureau](/repos/SocialGouv/token-bureau), [revu](/repos/SocialGouv/revu), [nos1000jours-blues-epds-widget](/repos/SocialGouv/nos1000jours-blues-epds-widget), et [dashlord](/repos/SocialGouv/dashlord) ont migré vers pnpm pour une meilleure gestion des dépendances.\n*   **Intégration de l'IA:** Des avancées ont été réalisées dans l'intégration de l'IA, notamment avec l'ajout de support pour Claude Opus 4.8 dans [claw-code-go](/repos/SocialGouv/claw-code-go) et l'exploration de l'utilisation de l'IA pour la génération de code dans [git-ai-trace](/repos/SocialGouv/git-ai-trace).\n*   **Amélioration de l'infrastructure:** Des améliorations ont été apportées à l'infrastructure, notamment avec la migration des builds vers buildkit-operator dans [cdtn-admin](/repos/SocialGouv/cdtn-admin) et l'optimisation des ressources PostgreSQL dans [vao](/repos/SocialGouv/vao).\n*   **Préparation de l'arrêt de Recosanté:** Une bannière d'information a été ajoutée à [recosante](/repos/SocialGouv/recosante) pour informer les utilisateurs de l'arrêt du service.\n\n## Dépôts les plus actifs\n*   [vao](/repos/SocialGouv/vao) : Amélioration significative du flux de premier agrément et de la gestion des documents.\n*   [token-bureau](/repos/SocialGouv/token-bureau) : Corrections de bugs et amélioration de la gestion des permissions.\n*   [matomo-next](/repos/SocialGouv/matomo-next) : Ajout d'un proxy pour contourner les bloqueurs de publicités et prise en charge des tests A/B.\n*   [cdtn-admin](/repos/SocialGouv/cdtn-admin) : Amélioration du sitemap, ajout de nouvelles fonctionnalités d'analyse et corrections de bugs.\n*   [srdt](/repos/SocialGouv/srdt) : Amélioration de l'interface utilisateur de l'assistant virtuel.\n*   [iterion](/repos/SocialGouv/iterion) : Ajout de l'authentification GitHub SSO et lancement d'un marketplace public.\n*   [legi-data](/repos/SocialGouv/legi-data) : Mises à jour régulières des données légales.\n*   [dashlord](/repos/SocialGouv/dashlord) : Amélioration de l'interface utilisateur et ajout de nouvelles fonctionnalités.",
+      "changelogGeneratedAt": "2026-07-11T05:58:08Z"
     },
     {
       "organization": "suitenumerique",
-      "changelog": "# Synthèse d'activité : suitenumerique (du 15/06 au 15/07)\n\n## Résumé de l'activité\nL'organisation suitenumerique a connu une période d'activité soutenue, marquée par des améliorations significatives en termes de sécurité, d'expérience utilisateur et de performance. Plusieurs projets ont bénéficié de refontes techniques majeures, notamment la migration vers Vite pour les applications `calendars` et `messages`, et l'adoption de Dramatiq pour la gestion des tâches asynchrones dans `st-home`. L'accent a également été mis sur l'amélioration de la sécurité, avec des corrections de vulnérabilités dans `people` et `conversations`, et le renforcement de la sécurité des transferts de fichiers dans `transfers`. De nouvelles fonctionnalités ont été introduites, comme les liens de téléchargement uniques dans `transfers` et `st-transfers`, et l'amélioration du blog dans `st-home`.\n\n## Sécurité\nPlusieurs dépôts ont bénéficié d'améliorations en matière de sécurité :\n\n- Correction de vulnérabilités dans `people` avec la mise à jour de plusieurs dépendances (PyJWT, cryptography, tornado, etc.) et la mise à jour de Python.\n- Renforcement de la sécurité des téléchargements dans [transfers](/repos/suitenumerique/transfers) avec l'ajout d'un scanner de fichiers et la correction de failles identifiées lors d'une revue de code.\n- Correction d'une vulnérabilité OIDC dans [conversations](/repos/suitenumerique/conversations) exposant le port interne.\n\n## Autres changements notables\nPlusieurs évolutions techniques majeures ont été réalisées :\n\n- Migration du frontend de `calendars` vers Vite pour améliorer les performances. [calendars](/repos/suitenumerique/calendars)\n- Migration du frontend de `messages` vers Vite et Tanstack Router pour améliorer les performances et la maintenabilité. [messages](/repos/suitenumerique/messages)\n- Migration du système de tâches asynchrones de Celery vers Dramatiq dans `st-home` pour une meilleure performance et fiabilité. [st-home](/repos/suitenumerique/st-home)\n- Refonte de l'infrastructure CI/CD dans `accounts` pour une meilleure organisation et réutilisation des workflows. [accounts](/repos/suitenumerique/accounts)\n- Intégration de Ruff pour l'analyse statique du code dans `accounts`. [accounts](/repos/suitenumerique/accounts)\n\n## Dépôts les plus actifs\n- [ui-kit](/repos/suitenumerique/ui-kit) : Amélioration de l'accessibilité, ajout de traductions et corrections de bugs.\n- [transfers](/repos/suitenumerique/transfers) : Améliorations de la sécurité, ajout de liens de téléchargement uniques et migration vers Vite et Tanstack Router.\n- [st-home](/repos/suitenumerique/st-home) : Refonte du blog, corrections de la carte de déploiement et migration vers Dramatiq.\n- [messages](/repos/suitenumerique/messages) : Amélioration de l'expérience utilisateur, refonte technique vers Vite et Tanstack Router et renforcement de la sécurité.\n- [calendars](/repos/suitenumerique/calendars) : Refonte des RSVP, migration vers Vite et renforcement de la sécurité du traitement des données ICS.\n- [conversations](/repos/suitenumerique/conversations) : Amélioration de la gestion des erreurs, intégration de Celery et correction de vulnérabilités de sécurité.",
-      "changelogGeneratedAt": "2026-07-04T10:50:31Z"
+      "changelog": "# Synthèse d'activité : suitenumerique (du 22 mai au 11 juillet 2026)\n\n## Résumé de l'activité\nL'organisation suitenumerique a connu une période d'activité soutenue, marquée par des améliorations significatives de l'expérience utilisateur et de la sécurité de ses différentes applications. La migration vers des technologies plus modernes comme Vite et Astro se poursuit, notamment pour les projets `transfers`, `docs` et `calendars`, afin d'améliorer les performances et la maintenabilité. L'intégration de la messagerie Matrix dans `hub` et l'ajout de fonctionnalités de partage de fichiers sécurisé dans `st-transfers` sont des avancées notables pour les utilisateurs finaux.  Des efforts importants ont également été consacrés à la correction de bugs et à l'amélioration de la robustesse des applications, notamment `messages`, `conversations` et `find`.\n\n## Sécurité\nPlusieurs dépôts ont bénéficié d'améliorations de sécurité :\n- Correction de vulnérabilités dans `accounts` et `media-sdk` avec la mise à jour de dépendances critiques (PyJWT, cryptography).\n- Renforcement de la sécurité du flux de téléchargement dans [transfers](/repos/suitenumerique/transfers).\n- Correction de vulnérabilités Dockerfile dans `dictaphone`.\n- Renforcement de la sécurité du traitement des données ICS dans [calendars](/repos/suitenumerique/calendars).\n\n## Autres changements notables\n- Migration de Next.js vers Vite dans [transfers](/repos/suitenumerique/transfers) et de l'architecture frontend de [calendars](/repos/suitenumerique/calendars) pour une meilleure performance.\n- Migration complète du site web [docs](/repos/suitenumerique/docs-website) vers Astro, avec récupération du contenu directement depuis le projet Docs.\n- Migration du système de tâches asynchrones de Celery vers Dramatiq dans [st-home](/repos/suitenumerique/st-home) pour une meilleure performance.\n- Refonte de l'infrastructure CI/CD dans [accounts](/repos/suitenumerique/accounts) pour une meilleure organisation et réutilisation des workflows.\n- Refonte complète du MTA-in en Python pur dans [messages](/repos/suitenumerique/messages), supprimant la dépendance à Postfix.\n\n## Dépôts les plus actifs\n- [ui-kit](/repos/suitenumerique/ui-kit) : Ajout de nouveaux composants et améliorations d'accessibilité.\n- [st-home](/repos/suitenumerique/st-home) : Refonte du blog et migration vers Dramatiq.\n- [messages](/repos/suitenumerique/messages) : Améliorations de l'interface utilisateur, correction de bugs et refonte du MTA-in.\n- [hub](/repos/suitenumerique/hub) : Intégration de la messagerie Matrix et ajout de nouvelles fonctionnalités.\n- [calendars](/repos/suitenumerique/calendars) : Refonte de la gestion des RSVP et migration vers Vite.\n- [docs-website](/repos/suitenumerique/docs-website) : Migration vers Astro et refonte du contenu.\n- [meet](/repos/suitenumerique/meet) : Amélioration de l'affichage des participants et ajout d'un formulaire de feedback.",
+      "changelogGeneratedAt": "2026-07-11T05:58:08Z"
     },
     {
       "organization": "tchapgouv",
-      "changelog": "# Synthèse d'activité : tchapgouv (du 20 mai 2026 au 26 juin 2026)\n\n## Résumé de l'activité\nL'activité récente de tchapgouv s'est concentrée sur l'amélioration de la sécurité, la correction de bugs et l'ajout de nouvelles fonctionnalités pour les applications iOS, Android et web. Des efforts importants ont été déployés pour améliorer l'expérience utilisateur, notamment en simplifiant la création de salles privées chiffrées, en optimisant l'affichage des fichiers et en améliorant la gestion des invitations.  Des mises à jour significatives ont également été apportées à l'infrastructure serveur, notamment au niveau de l'authentification et de la gestion des accès, avec l'introduction de nouvelles fonctionnalités et la correction de vulnérabilités. Les dépôts [tchap-x-ios](/repos/tchapgouv/tchap-x-ios), [tchap-x-android](/repos/tchapgouv/tchap-x-android) et [tchap-web-v4](/repos/tchapgouv/tchap-web-v4) ont été particulièrement actifs.\n\n## Sécurité\nPlusieurs changements ont été apportés pour renforcer la sécurité :\n- Correction de vulnérabilités mineures sur la version desktop de [tchap-web-v4](/repos/tchapgouv/tchap-web-v4).\n- Mise à jour de dépendances critiques dans [matrix-authentication-service](/repos/tchapgouv/matrix-authentication-service) (rustls-webpki, opa-wasm, wasmtime) pour corriger des vulnérabilités.\n- Suppression d'un token npm dans le workflow CI/CD de [element-call](/repos/tchapgouv/element-call) pour renforcer la sécurité.\n\n## Autres changements notables\n- Intégration de nouvelles versions d'EC (Element Client) dans [tchap-web-v4](/repos/tchapgouv/tchap-web-v4) pour bénéficier des dernières améliorations et corrections.\n- Refactorisation de l'authentification OIDC vers OAuth dans [tchap-x-ios](/repos/tchapgouv/tchap-x-ios).\n- Amélioration de la gestion des utilisateurs et des accès avec l'introduction de l'expiration des comptes et des règles d'accès aux salles dans [synapse](/repos/tchapgouv/synapse) et [synapse-room-access-rules](/repos/tchapgouv/synapse-room-access-rules).\n- Mise à jour des SDK Rust Matrix dans [tchap-x-ios](/repos/tchapgouv/tchap-x-ios), [tchap-x-android](/repos/tchapgouv/tchap-x-android) et [matrix-rust-components-kotlin](/repos/tchapgouv/matrix-rust-components-kotlin).\n\n## Dépôts les plus actifs\n- [tchap-x-ios](/repos/tchapgouv/tchap-x-ios) : Amélioration de l'expérience utilisateur avec de nouvelles fonctionnalités et corrections de bugs.\n- [tchap-x-android](/repos/tchapgouv/tchap-x-android) : Ajout de badges pour les salles privées chiffrées et amélioration de l'affichage des fichiers.\n- [tchap-web-v4](/repos/tchapgouv/tchap-web-v4) : Améliorations de la sécurité, corrections de bugs et intégration de la dernière version d'EC.\n- [synapse](/repos/tchapgouv/synapse) : Amélioration de la gestion des accès aux salles et de l'expiration des comptes.\n- [tchap-e2e-playwright](/repos/tchapgouv/tchap-e2e-playwright) : Ajout et amélioration des tests d'intégration et d'authentification.\n- [matrix-authentication-service](/repos/tchapgouv/matrix-authentication-service) : Amélioration de la gestion des utilisateurs et correction de vulnérabilités.",
-      "changelogGeneratedAt": "2026-07-04T10:50:31Z"
+      "changelog": "# Synthèse d'activité : tchapgouv (du 2026-06-20 au 2026-07-08)\n\n## Résumé de l'activité\nLa période récente a été marquée par des améliorations continues de la sécurité, de la stabilité et de l'expérience utilisateur des différentes applications Tchap. Les efforts se sont concentrés sur l'amélioration de l'authentification, la correction de bugs et l'ajout de nouvelles fonctionnalités, notamment dans les applications iOS et Android. L'infrastructure sous-jacente, notamment Synapse et les services associés, a également bénéficié d'améliorations en termes de gestion des accès, de performance et de sécurité. Les dépôts [tchap-x-ios](/repos/tchapgouv/tchap-x-ios) et [tchap-x-android](/repos/tchapgouv/tchap-x-android) ont reçu des mises à jour significatives pour les utilisateurs finaux.\n\n## Sécurité\nPlusieurs changements ont été apportés pour renforcer la sécurité de la plateforme :\n- Mise à jour du certificat de l'application [tchap-ios](/repos/tchapgouv/tchap-ios) pour une meilleure sécurité.\n- Mise à jour des signatures d'applications autorisées pour les variantes Tchap X [tchap-android](/repos/tchapgouv/tchap-android).\n- Mise à jour de `rustls-webpki` et `wasmtime` dans [matrix-authentication-service](/repos/tchapgouv/matrix-authentication-service) pour corriger des vulnérabilités.\n- Ajout de l'autorité de certification Harica [tchap-android](/repos/tchapgouv/tchap-android).\n- Suppression du token npm dans le workflow CI/CD de [element-call](/repos/tchapgouv/element-call).\n\n## Autres changements notables\n- Intégration de nouvelles fonctionnalités liées à l'expiration des comptes et aux règles d'accès aux salles dans [synapse](/repos/tchapgouv/synapse).\n- Refactorisation de la structure des fichiers et ajout de documentation Docker pour [matrix-authentication-service-tchap](/repos/tchapgouv/matrix-authentication-service-tchap).\n- Mise à jour du SDK Rust Matrix dans [tchap-x-ios](/repos/tchapgouv/tchap-x-ios) et [matrix-rust-components-kotlin](/repos/tchapgouv/matrix-rust-components-kotlin).\n- Amélioration de la gestion des tests et de la couverture des tests dans [tchap-e2e-playwright](/repos/tchapgouv/tchap-e2e-playwright).\n\n## Dépôts les plus actifs\n- [tchap-x-ios](/repos/tchapgouv/tchap-x-ios) : Intégration des dernières améliorations d'ElementX, corrections de bugs et ajout de fonctionnalités.\n- [tchap-x-android](/repos/tchapgouv/tchap-x-android) : Améliorations de l'expérience utilisateur, corrections de bugs et ajout de nouvelles fonctionnalités.\n- [synapse](/repos/tchapgouv/synapse) : Améliorations de la gestion des utilisateurs, des accès et de la performance du serveur.\n- [tchap-web-v4](/repos/tchapgouv/tchap-web-v4) : Corrections de bugs et améliorations de la stabilité.\n- [tchap-e2e-playwright](/repos/tchapgouv/tchap-e2e-playwright) : Amélioration de la couverture des tests et refactoring du code.",
+      "changelogGeneratedAt": "2026-07-11T05:58:08Z"
     }
   ],
   "stats": {
     "total": 1773,
     "byOrg": {
       "tchapgouv": 88,
-      "signaux-faibles": 7,
       "suitenumerique": 44,
       "refugies-info": 8,
+      "signaux-faibles": 7,
       "proconnect-gouv": 22,
       "openmaraude": 13,
       "numerique-gouv": 53,
       "mte-dgpr": 2,
       "mission-apprentissage": 23,
       "mesadsfr": 1,
-      "gristgouv": 24,
       "incubateur-ademe": 80,
+      "gristgouv": 24,
       "france-connect": 10,
       "etalab-ia": 69,
       "etalab": 177,
-      "entrepreneur-interet-general": 87,
       "dnum-mi": 35,
       "demarche-numerique": 10,
-      "datagouv": 80,
-      "cloud-gouv": 14,
+      "entrepreneur-interet-general": 87,
       "codegouvfr": 39,
+      "cloud-gouv": 14,
       "betagouv-experimentations": 14,
+      "betagouv": 371,
       "anct-cartographie-nationale": 11,
       "agora-gouv": 11,
       "SocialGouv": 225,
       "MTES-MCT": 188,
+      "IA-Generative": 51,
       "ARCEP-dev": 16,
-      "betagouv": 371,
-      "IA-Generative": 51
+      "datagouv": 80
     },
     "byLanguage": {
       "Python": 396,
@@ -93271,8 +93273,8 @@
       "Shell": 100,
       "Swift": 5,
       "Kotlin": 10,
-      "Dockerfile": 22,
       "TypeScript": 376,
+      "Dockerfile": 22,
       "Smarty": 2,
       "HCL": 7,
       "HTML": 69,
@@ -93281,14 +93283,14 @@
       "Jinja": 8,
       "JavaScript": 249,
       "YAML": 11,
-      "Ruby": 65,
-      "Makefile": 9,
       "Go Template": 6,
       "Jupyter Notebook": 23,
+      "Ruby": 65,
+      "Makefile": 9,
       "Procfile": 2,
       "Java": 17,
-      "CSS": 13,
       "PHP": 21,
+      "CSS": 13,
       "Vue": 18,
       "Elixir": 5,
       "C": 2,
@@ -93300,24 +93302,24 @@
       "Clojure": 6,
       "SCSS": 4,
       "M": 1,
+      "Nunjucks": 3,
       "PowerShell": 1,
       "C#": 2,
-      "Nunjucks": 3,
-      "XSLT": 1,
-      "Nix": 4,
       "ReScript": 1,
       "Scheme": 1,
       "TeX": 3,
+      "Nix": 4,
+      "Scala": 4,
       "Dart": 2,
+      "Elm": 2,
+      "Pug": 1,
+      "Svelte": 1,
       "SAS": 1,
       "PLpgSQL": 4,
       "FreeMarker": 1,
       "SQL": 1,
       "Batchfile": 2,
-      "Scala": 4,
-      "Elm": 2,
-      "Pug": 1,
-      "Svelte": 1
+      "XSLT": 1
     }
   }
 }
