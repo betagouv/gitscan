@@ -1,34 +1,24 @@
-## Changelog : rapportnav2 (30 derniers jours, au 06 juillet 2026)
+## Changelog : rapportnav2 (30 derniers jours, au 7 juillet 2026)
 
 ### Résumé
-Les dernières mises à jour de rapportnav2 se concentrent sur l'amélioration des performances, l'ajout de nouvelles fonctionnalités pour la gestion des missions (notamment l'intégration de données pays via API et la gestion des équipes de mission), et des corrections de bugs pour une meilleure expérience utilisateur. Des améliorations ont également été apportées à l'interface utilisateur, notamment pour les contrôles de navigation et les informations sur les actions.
+Cette mise à jour apporte des améliorations significatives à l'interface de gestion des équipages de mission (PAM), ainsi que des corrections de bugs et des optimisations de performance, notamment concernant l'affichage et la manipulation des données liées aux contrôles et infractions. De plus, l'application intègre désormais la gestion des pays via une API externe et des améliorations ont été apportées au formulaire et à la sauvegarde des données.
 
 ### Évolutions fonctionnelles
-- Intégration des données pays via une API : permet d'enrichir les informations relatives aux missions. [#1441](https://github.com/MTES-MCT/rapportnav2/pull/1441)
-- Refonte de l'interface pour la gestion des équipes de mission (PAM).
-- Amélioration de l'affichage des options dans les champs MultiRadio. [#1033](https://github.com/MTES-MCT/rapportnav2/issues/1033)
-- Ajout de deux attributs à ActionFish.
-- Refonte de l'affichage des contrôles de navigation (action control fish / nav).
-- Ajout de la gestion des ressources et des agents.
-- Ajout de la fonctionnalité "diving" pour les contrôles environnementaux.
-- Ajout de la fonctionnalité "diving" pour les contrôles AEM.
-- Amélioration de la gestion des informations sur les actions (entretien des moyens). [#1390](https://github.com/MTES-MCT/rapportnav2/issues/1390)
-- Intégration d'un iframe Metabase pour l'affichage de tableaux de bord.
+- Refonte de l'interface utilisateur pour la gestion des équipages de mission (PAM).
+- Intégration de données de pays via une API externe, permettant d'enrichir les informations disponibles.
+- Amélioration de l'affichage et de la gestion des contrôles et infractions, avec l'implémentation d'un système d'onglets pour une meilleure organisation.
+- Ajout de deux nouveaux attributs à ActionFish.
+- Amélioration de la gestion des informations générales et des cibles pour éviter les doublons.
 
 ### Évolutions techniques
-- Optimisation des performances :
-    - Calcul du statut des actions en mémoire pour éviter des requêtes répétées à la base de données.
-    - Utilisation de `@BatchSize` pour optimiser les requêtes liées aux infractions, aux contrôles, aux agents, aux rôles d'agents et aux modèles d'agents.
-- Mise à jour de Spring Boot vers la version 4.1.0.
-- Correction de problèmes de mapping de relations dans la base de données.
-- Correction de problèmes de validation des données.
-- Amélioration de la gestion des types de localisation (GPS).
+- Optimisation des performances lors du calcul du statut des actions, en utilisant les données en mémoire plutôt que de requêter la base de données à chaque fois.
+- Amélioration des performances des requêtes liées aux infractions et aux contrôles grâce à l'utilisation de `@BatchSize`.
+- Mise à jour de Spring Boot en version 4.1.0.
+- Correction de bugs liés à la sauvegarde des données et à la gestion des relations en base de données.
 
 ### Autres changements
-- Correction de bugs mineurs et améliorations de l'interface utilisateur.
+- Correction de problèmes de validation des règles.
 - Mise à jour des dépendances (undici).
-- Amélioration des tests unitaires et d'intégration.
-- Correction de problèmes de build et de test.
-- Ajustements de la configuration du projet.
-- Nettoyage du code.
-- Mise à jour de la documentation.
+- Corrections mineures et ajustements de l'interface utilisateur.
+- Ajout d'un environnement pour les actions de patch dans les stubs.
+- Audit de sécurité npm.
