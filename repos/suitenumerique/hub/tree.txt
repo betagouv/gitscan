@@ -45,35 +45,46 @@
 │   ├── postgres_e2e
 │   ├── pylint
 │   ├── pytest
+│   ├── seed-matrix
 │   ├── start-kind.sh
 │   ├── state
 │   ├── terraform
 │   ├── update-git-submodule.sh
 │   ├── update_openapi_schema
 │   └── updatekeys.sh
+├── compose.matrix.yml
 ├── compose.yml
 ├── crowdin
 │   └── config.yml
 ├── docker
 │   ├── auth
 │   │   └── realm.json
-│   └── files
-│       ├── etc
-│       │   └── nginx
-│       │       └── conf.d
-│       │           └── default.conf
-│       ├── production
-│       │   └── etc
-│       │       └── nginx
-│       │           └── conf.d
-│       │               └── default.conf.template
-│       └── usr
-│           └── local
-│               ├── bin
-│               │   └── entrypoint
-│               └── etc
-│                   └── gunicorn
-│                       └── hub.py
+│   ├── files
+│   │   ├── etc
+│   │   │   └── nginx
+│   │   │       └── conf.d
+│   │   │           └── default.conf
+│   │   ├── production
+│   │   │   └── etc
+│   │   │       └── nginx
+│   │   │           └── conf.d
+│   │   │               └── default.conf.template
+│   │   └── usr
+│   │       └── local
+│   │           ├── bin
+│   │           │   └── entrypoint
+│   │           └── etc
+│   │               └── gunicorn
+│   │                   └── hub.py
+│   └── matrix
+│       ├── element
+│       │   └── config.json
+│       ├── mas
+│       │   └── config.yaml
+│       └── synapse
+│           ├── homeserver.yaml
+│           ├── localhost.log.config
+│           └── localhost.signing.key
 ├── docs
 │   ├── adr
 │   │   └── 0001-record-architecture-decisions.md
@@ -87,6 +98,7 @@
 │   │   ├── common.e2e
 │   │   ├── crowdin
 │   │   ├── kc_postgresql
+│   │   ├── matrix
 │   │   ├── postgresql
 │   │   └── postgresql.e2e
 │   └── production.dist
@@ -279,13 +291,16 @@
     │   │       │   │   │   ├── silentLogin.ts
     │   │       │   │   │   └── types.ts
     │   │       │   │   ├── chat
+    │   │       │   │   │   ├── ChatMessageEditContext.tsx
     │   │       │   │   │   ├── ChatPanelContext.tsx
     │   │       │   │   │   ├── __tests__
     │   │       │   │   │   │   ├── chatRefs.test.ts
     │   │       │   │   │   │   ├── fluentEmoji.test.ts
     │   │       │   │   │   │   └── reactions.test.ts
     │   │       │   │   │   ├── chatKeys.ts
+    │   │       │   │   │   ├── chatMembership.ts
     │   │       │   │   │   ├── chatRefs.ts
+    │   │       │   │   │   ├── chatSorting.ts
     │   │       │   │   │   ├── components
     │   │       │   │   │   │   ├── ChatBubble.scss
     │   │       │   │   │   │   ├── ChatBubble.tsx
@@ -295,6 +310,9 @@
     │   │       │   │   │   │   ├── ChatConversation.tsx
     │   │       │   │   │   │   ├── ChatConversationSkeleton.scss
     │   │       │   │   │   │   ├── ChatConversationSkeleton.tsx
+    │   │       │   │   │   │   ├── ChatInvitation.scss
+    │   │       │   │   │   │   ├── ChatInvitation.tsx
+    │   │       │   │   │   │   ├── ChatInvitationView.tsx
     │   │       │   │   │   │   ├── ChatRoute.tsx
     │   │       │   │   │   │   ├── ChatSurface.tsx
     │   │       │   │   │   │   ├── ChatView.scss
@@ -316,12 +334,16 @@
     │   │       │   │   │   │   ├── SelectedUserChip.tsx
     │   │       │   │   │   │   ├── ThreadButton.scss
     │   │       │   │   │   │   ├── ThreadButton.tsx
+    │   │       │   │   │   │   ├── TypingIndicator.scss
+    │   │       │   │   │   │   ├── TypingIndicator.tsx
     │   │       │   │   │   │   ├── UnreadThreadsBanner.scss
     │   │       │   │   │   │   ├── UnreadThreadsBanner.tsx
     │   │       │   │   │   │   ├── UserSearchListBox.tsx
     │   │       │   │   │   │   ├── __tests__
     │   │       │   │   │   │   │   ├── ChatBubble.test.tsx
     │   │       │   │   │   │   │   ├── ChatComposer.test.tsx
+    │   │       │   │   │   │   │   ├── ChatHeader.test.tsx
+    │   │       │   │   │   │   │   ├── ChatMembersModal.test.tsx
     │   │       │   │   │   │   │   ├── ChatViewComposition.test.tsx
     │   │       │   │   │   │   │   ├── FluentEmoji.test.tsx
     │   │       │   │   │   │   │   ├── MessageHoverToolbar.test.tsx
@@ -330,7 +352,8 @@
     │   │       │   │   │   │   │   └── UnreadThreadsBanner.test.tsx
     │   │       │   │   │   │   ├── header
     │   │       │   │   │   │   │   ├── ChatHeader.scss
-    │   │       │   │   │   │   │   └── ChatHeader.tsx
+    │   │       │   │   │   │   │   ├── ChatHeader.tsx
+    │   │       │   │   │   │   │   └── ChatMembersModal.tsx
     │   │       │   │   │   │   └── tools-panel
     │   │       │   │   │   │       ├── ChatToolsPanel.scss
     │   │       │   │   │   │       ├── ChatToolsPanel.tsx
@@ -351,6 +374,7 @@
     │   │       │   │   │   │       │   ├── ThreadDetailComposition.test.tsx
     │   │       │   │   │   │       │   └── ThreadListItem.test.tsx
     │   │       │   │   │   │       └── documentToPreviewFile.ts
+    │   │       │   │   │   ├── copyTextToClipboard.ts
     │   │       │   │   │   ├── fluentEmoji.ts
     │   │       │   │   │   ├── formatTimestamp.ts
     │   │       │   │   │   ├── hooks
@@ -359,6 +383,8 @@
     │   │       │   │   │   │   │   ├── useChatComposition.test.tsx
     │   │       │   │   │   │   │   ├── useChatDocuments.test.tsx
     │   │       │   │   │   │   │   ├── useChatEvents.test.tsx
+    │   │       │   │   │   │   │   ├── useChatFavourite.test.tsx
+    │   │       │   │   │   │   │   ├── useChatMembers.test.tsx
     │   │       │   │   │   │   │   ├── useChatMessages.test.tsx
     │   │       │   │   │   │   │   ├── useChatThread.test.tsx
     │   │       │   │   │   │   │   ├── useChatThreads.test.tsx
@@ -369,15 +395,26 @@
     │   │       │   │   │   │   ├── useChatAccounts.ts
     │   │       │   │   │   │   ├── useChatCompositionSupport.ts
     │   │       │   │   │   │   ├── useChatConnection.ts
+    │   │       │   │   │   │   ├── useChatCreationSupport.ts
     │   │       │   │   │   │   ├── useChatDocuments.ts
     │   │       │   │   │   │   ├── useChatEvents.ts
+    │   │       │   │   │   │   ├── useChatFavourite.ts
     │   │       │   │   │   │   ├── useChatForUsers.ts
+    │   │       │   │   │   │   ├── useChatInvitation.ts
+    │   │       │   │   │   │   ├── useChatMembers.ts
     │   │       │   │   │   │   ├── useChatMessages.ts
     │   │       │   │   │   │   ├── useChatThread.ts
     │   │       │   │   │   │   ├── useChatThreadActions.ts
+    │   │       │   │   │   │   ├── useChatThreadCompositionSupport.ts
     │   │       │   │   │   │   ├── useChatThreads.ts
+    │   │       │   │   │   │   ├── useChatTyping.ts
+    │   │       │   │   │   │   ├── useChatUnread.ts
     │   │       │   │   │   │   ├── useChatUserSearch.ts
     │   │       │   │   │   │   ├── useChats.ts
+    │   │       │   │   │   │   ├── useCreateChatForUsers.ts
+    │   │       │   │   │   │   ├── useDeleteChatMessage.ts
+    │   │       │   │   │   │   ├── useEditChatMessage.ts
+    │   │       │   │   │   │   ├── useMarkChatRead.ts
     │   │       │   │   │   │   ├── useSendChatMessage.ts
     │   │       │   │   │   │   ├── useSendChatThreadReply.ts
     │   │       │   │   │   │   ├── useStartChatThread.ts
@@ -396,11 +433,16 @@
     │   │       │   │   │   ├── __tests__
     │   │       │   │   │   │   └── DriverRegistry.test.ts
     │   │       │   │   │   ├── implementations
+    │   │       │   │   │   │   ├── LazyMatrixDriver.ts
     │   │       │   │   │   │   ├── MatrixDriver.ts
     │   │       │   │   │   │   ├── MockDriver.ts
-    │   │       │   │   │   │   └── __tests__
-    │   │       │   │   │   │       ├── MockDriver.test.ts
-    │   │       │   │   │   │       └── driver-contract.test.ts
+    │   │       │   │   │   │   ├── __tests__
+    │   │       │   │   │   │   │   ├── MatrixDriver.test.ts
+    │   │       │   │   │   │   │   ├── MockDriver.test.ts
+    │   │       │   │   │   │   │   └── driver-contract.test.ts
+    │   │       │   │   │   │   ├── matrixEventMapping.ts
+    │   │       │   │   │   │   ├── matrixIdentity.ts
+    │   │       │   │   │   │   └── matrixRoomMapping.ts
     │   │       │   │   │   ├── mocks
     │   │       │   │   │   │   ├── mockChatUsers.ts
     │   │       │   │   │   │   ├── mockChats.ts
@@ -422,6 +464,9 @@
     │   │       │   │   │           ├── AccountSelector.scss
     │   │       │   │   │           └── AccountSelector.tsx
     │   │       │   │   ├── matrix
+    │   │       │   │   │   ├── __tests__
+    │   │       │   │   │   │   ├── auth.test.ts
+    │   │       │   │   │   │   └── config.test.ts
     │   │       │   │   │   ├── config.ts
     │   │       │   │   │   ├── initMatrix.ts
     │   │       │   │   │   ├── types.ts
@@ -536,4 +581,4 @@
         │   └── template.mjml
         ├── package.json
         └── yarn.lock
-134 directories, 404 files
+139 directories, 444 files
