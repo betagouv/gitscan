@@ -1,4 +1,8 @@
 .
+├── .agents
+│   └── skills
+│       └── sql-helper
+│           └── SKILL.md
 ├── .buildpacks
 ├── .config
 │   └── ImageMagick
@@ -53,6 +57,7 @@
 │           │   └── fr
 │           │       └── dossierfacile
 │           │           └── logging
+│           │               ├── TrustAllStatusListener.java
 │           │               ├── aop
 │           │               │   ├── SensitiveRequest.java
 │           │               │   └── SensitiveRequestAspect.java
@@ -1972,7 +1977,9 @@
 │       │       │       ├── 202605200000-add-document-ia-classify-residency-feature-flag.xml
 │       │       │       ├── 20260602000000-add-indexes-to-optimize-database.xml
 │       │       │       ├── 20260604000000-rework-materialized-view.xml
-│       │       │       └── 202606180000-add-document-ia-property-tax-analysis-flag.xml
+│       │       │       ├── 20260616170500-add-unique-constraint-document-category.xml
+│       │       │       ├── 202606180000-add-document-ia-property-tax-analysis-flag.xml
+│       │       │       └── 202607070000-add-email-to-guarantor.xml
 │       │       └── linux-x86-64
 │       │           └── libzxing_jna.so
 │       └── test
@@ -2087,6 +2094,7 @@
 │       │   │                   │       │       ├── PayslipDate.java
 │       │   │                   │       │       └── PayslipNames.java
 │       │   │                   │       ├── property_tax
+│       │   │                   │       │   ├── PropertyTaxClassificationRuleB.java
 │       │   │                   │       │   ├── PropertyTaxLeafRule.java
 │       │   │                   │       │   ├── PropertyTaxNamesRule.java
 │       │   │                   │       │   ├── PropertyTaxYearRule.java
@@ -2153,6 +2161,7 @@
 │                               │       │   ├── PayslipContinuityRuleTest.java
 │                               │       │   └── PayslipNamesRuleTest.java
 │                               │       ├── property_tax
+│                               │       │   ├── PropertyTaxClassificationRuleBTest.java
 │                               │       │   ├── PropertyTaxLeafRuleTest.java
 │                               │       │   ├── PropertyTaxNamesRuleTest.java
 │                               │       │   └── PropertyTaxYearRuleTest.java
@@ -2412,4 +2421,4 @@
     │   ├── CMakeLists.txt
     │   └── zxing_wrapper.cpp
     └── docker-compose.yml
-595 directories, 1923 files
+598 directories, 1929 files
