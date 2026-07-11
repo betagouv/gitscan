@@ -31,6 +31,12 @@
 │   │   └── tests
 │   │       ├── __init__.py
 │   │       └── test_admin_config.py
+│   ├── backoffice
+│   │   ├── __init__.py
+│   │   ├── apps.py
+│   │   ├── serializers.py
+│   │   ├── test_backoffice.py
+│   │   └── views.py
 │   ├── bypass_auth
 │   │   ├── apps.py
 │   │   ├── auth.py
@@ -111,6 +117,8 @@
 │   │   │   ├── 0003_remove_suiviprocedure_motif_abandon_choisi.py
 │   │   │   ├── 0004_suiviprocedure_constatation_and_more.py
 │   │   │   ├── 0005_remove_suiviprocedure_signalement.py
+│   │   │   ├── 0006_suiviprocedure_assigned_at_and_more.py
+│   │   │   ├── 0007_suiviprocedure_notes_traitement.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── serializers.py
@@ -146,6 +154,7 @@
 │   └── wsgi.py
 ├── docker-compose.yml
 ├── docs
+│   ├── architecture-securite.md
 │   ├── audit-xss-constatation.md
 │   ├── politique-csp-permissions.md
 │   └── testing.md
@@ -153,6 +162,22 @@
 │   ├── app.vue
 │   ├── components
 │   │   ├── StepperProcedure.vue
+│   │   ├── StepperTimeline.vue
+│   │   ├── backoffice
+│   │   │   ├── DashboardTab.vue
+│   │   │   ├── DetailTab.vue
+│   │   │   ├── DetailTabAuthor.vue
+│   │   │   ├── DetailTabDescription.vue
+│   │   │   ├── DetailTabDocuments.vue
+│   │   │   ├── DetailTabGeneral.vue
+│   │   │   ├── DetailTabNotesTraitement.vue
+│   │   │   ├── DetailTabObservations.vue
+│   │   │   ├── DetailTabPilotage.vue
+│   │   │   ├── DetailTabPrejudice.vue
+│   │   │   ├── DetailTabSuiviActions.vue
+│   │   │   ├── DetailTabSuiviActionsAuteurIdentifie.vue
+│   │   │   ├── DetailTabSuiviActionsAuteurNonIdentifie.vue
+│   │   │   └── ProceduresTab.vue
 │   │   ├── faq
 │   │   │   ├── FaqCategoryModal.vue
 │   │   │   ├── FaqItem.vue
@@ -210,6 +235,7 @@
 │   ├── pages
 │   │   ├── a11y.vue
 │   │   ├── accueil.vue
+│   │   ├── backoffice.vue
 │   │   ├── cgu.vue
 │   │   ├── commencer-constatation.vue
 │   │   ├── comprendre-la-procedure.vue
@@ -233,12 +259,14 @@
 │   │   ├── matomo.js
 │   │   └── urls.ts
 │   ├── stores
+│   │   ├── admin-mode.ts
+│   │   ├── backoffice.ts
 │   │   ├── constatation.ts
-│   │   ├── editMode.ts
 │   │   ├── procedure.ts
 │   │   ├── suivi-procedure.ts
 │   │   └── user.ts
 │   ├── styles
+│   │   ├── backoffice.css
 │   │   ├── form-steps.css
 │   │   └── premium-design.css
 │   ├── tests
@@ -254,6 +282,7 @@
 │   ├── types
 │   │   └── constatation.ts
 │   ├── utils
+│   │   ├── backoffice.ts
 │   │   ├── browser.ts
 │   │   ├── date.ts
 │   │   ├── debounce.ts
@@ -263,7 +292,7 @@
 │   │   ├── scroll.ts
 │   │   ├── tally.ts
 │   │   └── validation.ts
-│   └── vue-antoinette
+│   └── vue-guillotine
 │       ├── BlockRenderer.vue
 │       ├── README.md
 │       ├── components
@@ -304,4 +333,4 @@
 ├── vite.config.ts
 ├── vitest.setup.ts
 └── yarn.lock
-60 directories, 246 files
+62 directories, 273 files
