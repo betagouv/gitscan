@@ -95,16 +95,23 @@
 │   ├── .python-version
 │   ├── README.md
 │   ├── notebooks
+│   │   ├── contrib_monthly_views.ipynb
 │   │   └── search_stats.ipynb
 │   ├── pyproject.toml
+│   ├── scripts
+│   │   └── strip_nb_outputs.py
 │   ├── src
 │   │   └── analysis
 │   │       ├── __init__.py
 │   │       ├── config.py
 │   │       ├── connectors
 │   │       │   ├── __init__.py
-│   │       │   └── matomo.py
-│   │       └── py.typed
+│   │       │   ├── matomo.py
+│   │       │   └── matomo_reporting.py
+│   │       ├── py.typed
+│   │       └── reports
+│   │           ├── __init__.py
+│   │           └── contrib_monthly_views.py
 │   └── uv.lock
 ├── docker-compose.yml
 ├── lerna.json
@@ -142,6 +149,7 @@
 │   │       ├── index.d.ts
 │   │       ├── index.js
 │   │       ├── mapping
+│   │       │   ├── accord.mapping.js
 │   │       │   ├── document.mapping.js
 │   │       │   ├── index.js
 │   │       │   └── suggestion.mapping.js
@@ -419,6 +427,8 @@
     │   │   │   │   ├── breadcrumbs.test.ts
     │   │   │   │   ├── cdtnDocuments.test.ts
     │   │   │   │   └── fichesTravailSplitter.test.ts
+    │   │   │   ├── accords.test.ts
+    │   │   │   ├── accords.ts
     │   │   │   ├── agreements
     │   │   │   │   ├── __tests__
     │   │   │   │   │   ├── generate.test.ts
@@ -1303,6 +1313,8 @@
     │   │   │   ├── databases.yaml
     │   │   │   └── default
     │   │   │       └── tables
+    │   │   │           ├── accords_accords.yaml
+    │   │   │           ├── accords_ingested_archives.yaml
     │   │   │           ├── agreement_agreements.yaml
     │   │   │           ├── auth_refresh_tokens.yaml
     │   │   │           ├── auth_user_roles.yaml
@@ -2120,7 +2132,13 @@
     │           ├── 1782950400000_clean_dares_alerts_todo
     │           │   ├── down.sql
     │           │   └── up.sql
-    │           └── 1783069572156_clean_dares_alerts_accords_statuts
+    │           ├── 1783069572156_clean_dares_alerts_accords_statuts
+    │           │   ├── down.sql
+    │           │   └── up.sql
+    │           ├── 1783598367000_create_schema_accords
+    │           │   ├── down.sql
+    │           │   └── up.sql
+    │           └── 1783598367001_create_tables_accords
     │               ├── down.sql
     │               └── up.sql
     └── ingester
@@ -2133,9 +2151,31 @@
         │   └── unist-util-parents.d.ts
         ├── CHANGELOG.md
         ├── Dockerfile
+        ├── README.md
         ├── jest.config.js
         ├── package.json
         ├── src
+        │   ├── accords
+        │   │   ├── __tests__
+        │   │   │   ├── extractAccoArchive.test.ts
+        │   │   │   ├── fetchAccoArchives.test.ts
+        │   │   │   ├── fixtures
+        │   │   │   │   ├── accord-1-theme.xml
+        │   │   │   │   ├── accord-4-themes.xml
+        │   │   │   │   └── liste_suppression_acco.dat
+        │   │   │   ├── parseAccordXml.test.ts
+        │   │   │   ├── readAccordsFromDir.test.ts
+        │   │   │   ├── selectArchivesToIngest.test.ts
+        │   │   │   └── suppressions.test.ts
+        │   │   ├── db.ts
+        │   │   ├── dev-ingest-one.ts
+        │   │   ├── extractAccoArchive.ts
+        │   │   ├── fetchAccoArchives.ts
+        │   │   ├── index.ts
+        │   │   ├── parseAccordXml.ts
+        │   │   ├── readAccordsFromDir.ts
+        │   │   ├── selectArchivesToIngest.ts
+        │   │   └── suppressions.ts
         │   ├── articles
         │   │   ├── index.ts
         │   │   ├── kali
@@ -2190,4 +2230,4 @@
         │           ├── data-loaders.ts
         │           └── index.ts
         └── tsconfig.json
-579 directories, 1653 files
+586 directories, 1686 files

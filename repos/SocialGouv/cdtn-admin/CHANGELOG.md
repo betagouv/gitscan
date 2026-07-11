@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.77.6](https://github.com/SocialGouv/cdtn-admin/compare/v2.77.5...v2.77.6) (2026-07-10)
+
+### Bug Fixes
+
+- **accord:** ajout de l'ingestion des accords d'entreprise ([#1702](https://github.com/SocialGouv/cdtn-admin/issues/1702)) ([19b1ebd](https://github.com/SocialGouv/cdtn-admin/commit/19b1ebd6ca8ef3ac594414f68400a6db19fc0250))
+
+## [2.77.5](https://github.com/SocialGouv/cdtn-admin/compare/v2.77.4...v2.77.5) (2026-07-09)
+
+### Bug Fixes
+
+- **ci:** mise à jour de la version de node ([2a1a180](https://github.com/SocialGouv/cdtn-admin/commit/2a1a180bf151bc688567a31c527e606676d8d2fc))
+- **sitemap:** ajout du slug de la convention collective dans l'URL ([#1701](https://github.com/SocialGouv/cdtn-admin/issues/1701)) ([69e125e](https://github.com/SocialGouv/cdtn-admin/commit/69e125e3f837502d2e4b5bcf0bf5f8349e56cf11))
+
+## [2.77.4](https://github.com/SocialGouv/cdtn-admin/compare/v2.77.3...v2.77.4) (2026-07-07)
+
+### Bug Fixes
+
+- **sitemap:** filtrer que sur les documents de type contribution ([6deb18c](https://github.com/SocialGouv/cdtn-admin/commit/6deb18c5a66ffd05a25d6fe85d99638bebdd99a4))
+
+## [2.77.3](https://github.com/SocialGouv/cdtn-admin/compare/v2.77.2...v2.77.3) (2026-07-07)
+
+### Bug Fixes
+
+- **sitemap:** prise en compte de la nouvelle URL pour la contrib congés pour évènements familiaux ([#1699](https://github.com/SocialGouv/cdtn-admin/issues/1699)) ([3b5ce32](https://github.com/SocialGouv/cdtn-admin/commit/3b5ce320378cbb9f4c844973e650a2f48e8ccd36))
+
+### Features
+
+- **analyse:** ajout du suivi des contributions par vues mensuelles ([#1697](https://github.com/SocialGouv/cdtn-admin/issues/1697)) ([0b6e529](https://github.com/SocialGouv/cdtn-admin/commit/0b6e52971e1096f77ab9f3ee3a067da956d4fe8e))
+- **analysis:** mise à jour de l'analyse sur les contributions suite au changement SEO ([#1698](https://github.com/SocialGouv/cdtn-admin/issues/1698)) ([277ad0c](https://github.com/SocialGouv/cdtn-admin/commit/277ad0cd299d0e45c09b1d2d7867ba34c3baa6d1))
+
 ## [2.77.2](https://github.com/SocialGouv/cdtn-admin/compare/v2.77.1...v2.77.2) (2026-07-03)
 
 ### Bug Fixes

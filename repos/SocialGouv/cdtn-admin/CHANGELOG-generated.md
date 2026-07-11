@@ -1,19 +1,24 @@
-## Changelog : cdtn-admin (30 derniers jours, au 3 juillet 2026)
+## Changelog : cdtn-admin (30 derniers jours, au 10 juillet 2026)
 
 ### Résumé
-Ce mois-ci, l'administration de cdtn-admin a bénéficié d'améliorations concernant la gestion des alertes de suppression des données, la correction de bugs liés au parsing de documents, l'ajout de nouvelles fonctionnalités pour l'analyse des données et la gestion des contributions, ainsi que des outils pour la sauvegarde et la restauration de la base de données. Des améliorations de l'interface utilisateur ont également été apportées.
+Cette version apporte des améliorations au sitemap, notamment la gestion des URLs et le filtrage des types de documents. De nouvelles fonctionnalités d'analyse des contributions ont été ajoutées, permettant un suivi plus précis des vues mensuelles. Des corrections ont également été apportées concernant le parsing des documents et la gestion des alertes de suppression. Enfin, des améliorations techniques ont été réalisées pour le déploiement et la sauvegarde de la base de données.
 
 ### Évolutions fonctionnelles
-- Ajout d'un nouveau type de contribution "bon à savoir" [#1691](https://github.com/SocialGouv/cdtn-admin/issues/1691).
-- Renommage de l'outil "Trouver sa CC" pour plus de clarté [#1669](https://github.com/SocialGouv/cdtn-admin/issues/1669).
-- Les alertes de suppression des accords et statuts ne sont plus déclenchées par erreur [#1696](https://github.com/SocialGouv/cdtn-admin/issues/1696).
-- Détection automatique des salaires exprimés en pourcentage du SMIC dans le challenger [#1689](https://github.com/SocialGouv/cdtn-admin/issues/1689).
+- Le sitemap a été mis à jour pour inclure le slug de la convention collective dans l'URL [#1701](https://github.com/SocialGouv/cdtn-admin/issues/1701).
+- Une nouvelle fonctionnalité permet de suivre les contributions par vues mensuelles [#1697](https://github.com/SocialGouv/cdtn-admin/issues/1697).
+- Ajout du type "bon à savoir" pour les contributions [#1691](https://github.com/SocialGouv/cdtn-admin/issues/1691).
+- Amélioration de l'analyse des contributions suite à des changements SEO [#1698](https://github.com/SocialGouv/cdtn-admin/issues/1698).
+- Les alertes de suppression n'incluent plus les accords et statuts [#1696](https://github.com/SocialGouv/cdtn-admin/issues/1696).
+- Prise en compte de la nouvelle URL pour la contribution "congés pour évènements familiaux" [#1699](https://github.com/SocialGouv/cdtn-admin/issues/1699).
+- Ingestion des accords d'entreprise [#1702](https://github.com/SocialGouv/cdtn-admin/issues/1702).
 
 ### Évolutions techniques
-- Mise en place d'un package Python pour l'analyse des statistiques, permettant une meilleure exploitation des données [#1690](https://github.com/SocialGouv/cdtn-admin/issues/1690).
-- Ajout d'un script permettant de réaliser un dump de la base de données à une date précise, facilitant la restauration en cas de besoin (PITR) [#1687](https://github.com/SocialGouv/cdtn-admin/issues/1687).
-- Correction du parsing des documents IDCC [#1694](https://github.com/SocialGouv/cdtn-admin/issues/1694).
-- Le fichier `next-env.d.ts` généré par Next.js est maintenant ignoré par le système de contrôle de version.
+- Mise à jour de la version de Node dans le CI.
+- Migration des builds d'images de buildkit-service vers buildkit-operator [#1695](https://github.com/SocialGouv/cdtn-admin/issues/1695).
+- Implémentation d'un script pour effectuer des dumps de la base de données à une date précise (PITR) [#1687](https://github.com/SocialGouv/cdtn-admin/issues/1687).
+- Détection automatique des salaires en pourcentage du SMIC dans le challenger [#1689](https://github.com/SocialGouv/cdtn-admin/issues/1689).
 
 ### Autres changements
-- Aucune information supplémentaire.
+- Le fichier `next-env.d.ts` généré par Next.js est maintenant ignoré par le système de contrôle de version.
+- Correction du parsing du document des IDCCs [#1694](https://github.com/SocialGouv/cdtn-admin/issues/1694).
+- Mise en place d'un package Python pour l'analyse des statistiques [#1690](https://github.com/SocialGouv/cdtn-admin/issues/1690).
