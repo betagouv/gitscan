@@ -1,38 +1,33 @@
 ## Changelog : lab-anssi-ui-kit (30 derniers jours, au 8 juillet 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives aux composants existants, notamment pour les champs de saisie (DsfrInput), les alertes (DsfrAlert), les listes déroulantes (DsfrDropdown) et les vignettes (DsfrTile). Des corrections de bugs et des améliorations de l'accessibilité ont également été apportées. La sécurité a été renforcée avec l'ajout d'outils d'analyse de code.
+Cette version apporte des améliorations significatives aux composants DSFR, notamment pour les champs de saisie (DsfrInput) et les alertes (DsfrAlert), avec l'ajout de nouvelles fonctionnalités et variations. Des améliorations de sécurité ont également été intégrées au processus de CI/CD. Enfin, la configuration de l'outil Renovate a été mise à jour et de nouvelles stories d'exemple ont été ajoutées pour faciliter l'utilisation des composants.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de masquer le label du composant `DsfrToggle` grâce à la propriété `hideLabel`.
-- Le composant `DsfrInput` propose désormais des variations 'addon' et 'action' pour associer un bouton submit ou d'action au champ de saisie.
-- Ajout d'une propriété `noIcon` au composant `DsfrTile` pour masquer l'icône associée au lien.
-- Amélioration de l'accessibilité du composant `DsfrDropdown` avec la possibilité de le désactiver via la prop `disabled`.
-- Le composant `DsfrAlert` permet désormais de personnaliser la balise HTML du titre grâce à la propriété `titleTag`.
-- Ajout de la prise en charge des couleurs hover et active pour le composant `DsfrTag` dans le thème MSC.
-- Ajout de stories d'exemples pour le composant `DsfrInput` afin de couvrir l'ensemble des variations du DSFR.
-- Amélioration de l'organisation des stories d'exemples pour une meilleure lisibilité.
+- Ajout de la prop `hideLabel` au composant `DsfrToggle` pour masquer le label. [#issue_lien_si_disponible]
+- Correction de l'alignement à droite du menu déroulant du composant `DsfrDropdown`. [#issue_lien_si_disponible]
+- Ajout de la prop `titleTag` au composant `DsfrAlert` pour personnaliser la balise HTML du titre. [#issue_lien_si_disponible]
+- Ajout de variations 'addon' et 'action' au composant `DsfrInput` pour associer des boutons au champ de saisie. [#issue_lien_si_disponible]
+- Ajout de stories d'exemple pour le composant `DsfrInput` afin de couvrir l'ensemble des variations du DSFR. [#issue_lien_si_disponible]
+- Ajout de la prise en charge de la taille et de la graisse pour les légendes des composants `DsfrCheckboxesGroup` et `DsfrRadiosGroup`. [#issue_lien_si_disponible]
+- Ajout de la prise en charge de la taille et de la graisse pour le composant `DsfrLabel`. [#issue_lien_si_disponible]
+- Remplacement de l'utilisation de la balise `label` par le composant `DsfrLabel` dans divers endroits. [#issue_lien_si_disponible]
+- Ajout de la prop `disabled` au composant `DsfrDropdown` pour désactiver le bouton d'ouverture. [#issue_lien_si_disponible]
+- Ajout de la configuration pour Code Connect dans Figma. [#issue_lien_si_disponible]
+- Amélioration de l'organisation des stories d'exemples. [#issue_lien_si_disponible]
 
 ### Évolutions techniques
-- Mise à jour des dépendances : Svelte, Vite, Storybook, Vitest, PostCSS, Playwright, TypeScript, ESLint, etc.
-- Renforcement de la sécurité : ajout des outils `checkov` et `zizmor` pour la validation de la configuration et correction des vulnérabilités potentielles.
-- Sécurisation du workflow CI : désactivation des identifiants `git` des dépôts clonés et prévention des injections.
-- Amélioration de la configuration du workflow CI pour utiliser la référence du dépôt et un fetch-depth de 0.
-- Refactorisation du code du composant `DsfrInput` pour une meilleure maintenabilité.
-- Optimisation du composant `DsfrSegmented` avec l'utilisation de `requestAnimationFrame` pour améliorer les performances lors du redimensionnement.
-- Ajout de la configuration pour Code Connect (Figma).
-- Ajout d'un fichier `renovate.json` pour la gestion automatisée des dépendances.
+- Mise à jour des dépendances : Svelte, PostCSS, Playwright, Style Dictionary, ESLint, Testing Library, Vitest, Storybook, pnpm, typescript-eslint, globals, @types/node.
+- Optimisation du composant `DsfrSegmented` avec `requestAnimationFrame` pour améliorer la réactivité. [#issue_lien_si_disponible]
+- Ajout de `checkov` et `zizmor` pour valider la configuration de sécurité. [#issue_lien_si_disponible]
+- Désactivation des identifiants `git` des dépôts clonés pour renforcer la sécurité. [#issue_lien_si_disponible]
+- Éviter les injections dans le CI. [#issue_lien_si_disponible]
+- Mise à jour de l'étape de checkout du CI pour utiliser la référence du dépôt et un fetch-depth de 0. [#issue_lien_si_disponible]
+- Ajout et configuration de Renovate pour la gestion des dépendances. [#issue_lien_si_disponible]
+- Uniformisation de la structure et du style du composant `PresentationANSSI` avec les éléments du DSFR. [#issue_lien_si_disponible]
+- Ajout de couleurs hover et active pour le composant `DsfrTag` dans le thème MSC. [#issue_lien_si_disponible]
 
 ### Autres changements
-- Documentation : Amélioration de la documentation et ajout de stories d'exemples.
-- Version du kit mise à jour à la version 1.55.1.
-- Uniformisation de la structure et du style du composant `PresentationANSSI` avec les éléments du DSFR.
-- Correction de l'alignement à droite du menu déroulant du composant `DsfrDropdown`.
-- Correction de l'affichage de l'état checked du composant `DsfrToggle`.
-- Ajout de la gestion du style pour l'état disabled du composant `DsfrCheckbox`.
-- Ajout d'une action pour gérer la propriété `--row-height` du composant `DsfrTable`.
-- Ajout d'une story exemple de tableau avec lignes désactivées pour le composant `DsfrTable`.
-- Ajout de la prise en charge de la taille et de la graisse pour les légendes des composants `DsfrCheckboxesGroup` et `DsfrRadiosGroup`.
-- Ajout de la prise en charge de la taille et de la graisse pour le composant `DsfrLabel`.
-- Remplacement de l'usage de la balise `label` par le composant `DsfrLabel`.
-- Ajout du composant `DsfrLabel`.
+- Passage à la version 1.55.1, 1.55.0 et 1.54.2.
+- Mise à jour du formattage du fichier `renovate.json`.
+- Épingle des versions des dépendances des GitHub Actions.
