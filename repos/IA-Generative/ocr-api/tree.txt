@@ -73,6 +73,7 @@
 │   │   │   │       ├── community.svg
 │   │   │   │       └── pen.svg
 │   │   │   ├── components
+│   │   │   │   ├── AppFooter.vue
 │   │   │   │   ├── AppHeader.vue
 │   │   │   │   ├── AppToaster.vue
 │   │   │   │   ├── CustomCard.vue
@@ -83,9 +84,11 @@
 │   │   │   │   ├── ProgressBar.vue
 │   │   │   │   ├── SideBar.vue
 │   │   │   │   ├── StatModel.vue
-│   │   │   │   └── TasksTab.vue
+│   │   │   │   ├── TasksTab.vue
+│   │   │   │   └── ZoneSelectionModal.vue
 │   │   │   ├── components.d.ts
 │   │   │   ├── composables
+│   │   │   │   ├── use-backend-health.ts
 │   │   │   │   └── use-toaster.ts
 │   │   │   ├── interfaces
 │   │   │   │   └── IUser.ts
@@ -104,7 +107,8 @@
 │   │   │   │   └── uniqueId.ts
 │   │   │   └── views
 │   │   │       ├── AboutUs.vue
-│   │   │       └── AppHome.vue
+│   │   │       ├── AppHome.vue
+│   │   │       └── TaskDetailView.vue
 │   │   ├── tsconfig.app.json
 │   │   ├── tsconfig.json
 │   │   ├── tsconfig.node.json
@@ -161,6 +165,14 @@
 │       │   │       ├── __init__.py
 │       │   │       ├── pdf_worker.py
 │       │   │       └── template.py
+│       │   ├── liteparse
+│       │   │   ├── __init__.py
+│       │   │   ├── models
+│       │   │   │   ├── __init__.py
+│       │   │   │   └── liteparse_model.py
+│       │   │   └── worker
+│       │   │       ├── __init__.py
+│       │   │       └── liteparse_worker.py
 │       │   ├── llm
 │       │   │   ├── __init__.py
 │       │   │   ├── config.py
@@ -258,6 +270,7 @@
 │       │       ├── collections.py
 │       │       ├── health.py
 │       │       ├── jobs.py
+│       │       ├── openwebui.py
 │       │       ├── process.py
 │       │       ├── task.py
 │       │       ├── template.py
@@ -349,6 +362,11 @@
 │       │   │   │   └── worker
 │       │   │   │       ├── test_pdf_worker.py
 │       │   │   │       └── test_template_worker.py
+│       │   │   ├── liteparse
+│       │   │   │   ├── models
+│       │   │   │   │   └── test_liteparse_model.py
+│       │   │   │   └── worker
+│       │   │   │       └── test_liteparse_worker.py
 │       │   │   ├── llm
 │       │   │   │   └── models
 │       │   │   │       ├── test_form_classification.py
@@ -451,6 +469,7 @@
 │       │           └── test_bboxes_utils.py
 │       └── uv.lock
 ├── commitlint.config.js
+├── docker-compose-liteparse-test.override.yaml
 ├── docker-compose-test.yaml
 ├── docker-compose.frontend.yaml
 ├── docker-compose.yaml
@@ -501,4 +520,4 @@
     │       ├── test_client_sync.py
     │       └── test_models.py
     └── uv.lock
-129 directories, 374 files
+135 directories, 387 files

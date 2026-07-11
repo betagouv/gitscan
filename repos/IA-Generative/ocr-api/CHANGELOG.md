@@ -29,6 +29,52 @@
 - code clean
 - :art: change minio vars
 
+## [0.17.0](https://github.com/IA-Generative/ocr-api/compare/v0.16.0...v0.17.0) (2026-07-09)
+
+
+### Features
+
+* add OpenWebUI router and endpoint for document processing ([a60c11b](https://github.com/IA-Generative/ocr-api/commit/a60c11becf3a7321a8a91274d64277c70973db1a))
+
+## [0.16.0](https://github.com/IA-Generative/ocr-api/compare/v0.15.1...v0.16.0) (2026-07-09)
+
+
+### Features
+
+* add ZoneSelectionModal component and integrate with OcrViewer for enhanced zone selection functionality ([25219cb](https://github.com/IA-Generative/ocr-api/commit/25219cb504e4a49dc134431bca712e3759b95aee))
+* enhance OcrViewer with search functionality and zone selection features ([47d400e](https://github.com/IA-Generative/ocr-api/commit/47d400ece50dca24ae4385531d6036e49ee419df))
+
+## [0.15.1](https://github.com/IA-Generative/ocr-api/compare/v0.15.0...v0.15.1) (2026-07-09)
+
+
+### Bug Fixes
+
+* update langfuse dependency handling and versioning in configuration files ([5eaf7d1](https://github.com/IA-Generative/ocr-api/commit/5eaf7d136cfcc208ab44655214b83332558b00df))
+
+## [0.15.0](https://github.com/IA-Generative/ocr-api/compare/v0.14.0...v0.15.0) (2026-07-09)
+
+
+### Features
+
+* add TaskDetail view and routing, enhance TasksTab with detail navigation ([218ac04](https://github.com/IA-Generative/ocr-api/commit/218ac0412d89a608913687a1aef6b3d45363c139))
+* rename S3_BUCKET_NAME to AWS_BUCKET_NAME for consistency and update related documentation ([1c95b85](https://github.com/IA-Generative/ocr-api/commit/1c95b8593e836ddc785f979602d2842561753b22))
+
+## [0.14.0](https://github.com/IA-Generative/ocr-api/compare/v0.13.0...v0.14.0) (2026-07-09)
+
+
+### Features
+
+* enhance Redis configuration with Sentinel support and improve database URL handling ([0c62b4b](https://github.com/IA-Generative/ocr-api/commit/0c62b4b7dac5829112a9ff4572612e85bccac03e))
+
+## [0.13.0](https://github.com/IA-Generative/ocr-api/compare/v0.12.6...v0.13.0) (2026-07-09)
+
+
+### Features
+
+* add support for additional file formats in OCR upload and update hints ([61379a6](https://github.com/IA-Generative/ocr-api/commit/61379a602cfdd2f6ab2ee5c99e39baf8d6c6bd5f))
+* integrate liteparse library and add liteparse worker ([bdc189e](https://github.com/IA-Generative/ocr-api/commit/bdc189e80d67c62b7a5c30a72b4b7446f92d085e))
+* set multiprocessing start method to 'spawn' for PaddleOCR stability and initialize OCR pipeline in worker process ([2276ba3](https://github.com/IA-Generative/ocr-api/commit/2276ba3bf49518859e985d9408c7490795970b7b))
+
 ## [0.12.6](https://github.com/IA-Generative/ocr-api/compare/v0.12.5...v0.12.6) (2026-07-05)
 
 

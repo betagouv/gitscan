@@ -1,7 +1,7 @@
 [project]
 name = "ocr-api"
 
-version = "0.12.6"
+version = "0.17.0"
 
 description = "Add your description here"
 readme = "README.md"
@@ -53,22 +53,25 @@ ocr-backend = [
 ]
 
 ocr-service-paddle = [
+    "liteparse>=2.0.4",
     "opencv-python-headless>=4.13.0.92",
-    "paddleocr==3.7.0",
-    "paddlepaddle==3.3.1",
-    "paddlex[ocr]==3.7.2",
+    "paddleocr>=3.3.0",
+    "paddlepaddle==3.1.1",
     "pdf2image==1.17.0",
-    "pillow>=12.2.0",
+    "pillow==12.2.0",
     "psutil>=7.2.2",
     "pynvml>=13.0.1",
 ]
 
 
 
+liteparse = [
+    "liteparse>=2.5.0",
+]
+
 services = [
     "docx2txt>=0.9",
     "langchain-community>=0.4.2",
-    "langfuse>=4.12.0",
     "odfpy>=1.4.1",
     "opencv-python-headless>=4.13.0.92",
     "pdf2image==1.17.0",
@@ -78,6 +81,10 @@ services = [
     "pypandoc-binary>=1.17",
     "unstructured>=0.23.1",
     "sentry-sdk[celery]>=2.34.1",
+]
+
+langfuse = [
+    "langfuse>=4.12.0",
 ]
 
 migration = [
