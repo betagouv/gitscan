@@ -252,14 +252,16 @@
 │   │   │   │   ├── enrich_acteurs_normalize_codepostal.py
 │   │   │   │   ├── enrich_acteurs_rgpd.py
 │   │   │   │   ├── enrich_acteurs_villes.py
-│   │   │   │   └── enrich_dbt_models_refresh.py
+│   │   │   │   ├── enrich_dbt_models_refresh.py
+│   │   │   │   └── enrich_siret_siren.py
 │   │   │   └── tasks
 │   │   │       ├── airflow_logic
 │   │   │       │   ├── db_read_acteur_cp_task.py
 │   │   │       │   ├── db_write_cp_suggestions_task.py
 │   │   │       │   ├── enrich_config_create_task.py
 │   │   │       │   ├── enrich_dbt_model_suggest_task.py
-│   │   │       │   ├── enrich_dbt_models_refresh_task.py
+│   │   │       │   ├── enrich_dbt_models_task.py
+│   │   │       │   ├── enrich_siret_siren_suggest_task.py
 │   │   │       │   └── normalize_acteur_cp_task.py
 │   │   │       └── business_logic
 │   │   │           ├── db_read_acteur_cp.py
@@ -268,6 +270,7 @@
 │   │   │           ├── enrich_dbt_model_row_to_suggest_data.py
 │   │   │           ├── enrich_dbt_model_suggest.py
 │   │   │           ├── enrich_dbt_model_to_suggestions.py
+│   │   │           ├── enrich_siret_siren_suggest.py
 │   │   │           └── normalize_acteur_cp.py
 │   │   ├── shared
 │   │   │   ├── config
@@ -328,6 +331,7 @@
 │   │   │   └── tasks
 │   │   │       ├── airflow_logic
 │   │   │       │   ├── __init__.py
+│   │   │       │   ├── db_clean_temporary_tables_task.py
 │   │   │       │   ├── db_data_prepare_task.py
 │   │   │       │   ├── db_write_type_action_suggestions_task.py
 │   │   │       │   ├── keep_acteur_changed_task.py
@@ -460,7 +464,8 @@
 │   │   │       ├── test_cmd.py
 │   │   │       ├── test_data_serialize_reconstruct.py
 │   │   │       ├── test_dataframes.py
-│   │   │       └── test_django.py
+│   │   │       ├── test_django.py
+│   │   │       └── test_docs.py
 │   │   ├── tools
 │   │   │   └── dags
 │   │   │       ├── airflow_cleanup_db.py
@@ -474,6 +479,7 @@
 │   │       ├── dataframes.py
 │   │       ├── db_tmp_tables.py
 │   │       ├── django.py
+│   │       ├── docs.py
 │   │       └── logging_utils.py
 │   ├── dbt
 │   │   ├── .gitignore
@@ -621,6 +627,10 @@
 │   │   │   │   ├── ban
 │   │   │   │   │   ├── int_ban_adresses.sql
 │   │   │   │   │   └── int_ban_villes.sql
+│   │   │   │   ├── enrich_siren_siret
+│   │   │   │   │   ├── int_acteur_with_siren_without_siret.sql
+│   │   │   │   │   ├── int_acteur_with_siret_without_siren.sql
+│   │   │   │   │   └── schema.yml
 │   │   │   │   ├── geo
 │   │   │   │   │   ├── int_epci.sql
 │   │   │   │   │   └── schema.yml
@@ -699,6 +709,10 @@
 │   │   │   │   │   ├── marts_enrich_acteurs_villes_candidates.sql
 │   │   │   │   │   ├── marts_enrich_acteurs_villes_suggest_new.sql
 │   │   │   │   │   ├── marts_enrich_acteurs_villes_suggest_typo.sql
+│   │   │   │   │   └── schema.yml
+│   │   │   │   ├── enrich_siren_siret
+│   │   │   │   │   ├── marts_enrich_siren_from_siret.sql
+│   │   │   │   │   ├── marts_enrich_siret_from_siren.sql
 │   │   │   │   │   └── schema.yml
 │   │   │   │   └── stats
 │   │   │   │       ├── marts_acteur_no_siren_actif.sql
@@ -818,6 +832,7 @@
 │   │   │   ├── airflow.md
 │   │   │   ├── clustering-deduplication.md
 │   │   │   ├── dbt.md
+│   │   │   ├── enrich-siret-siren.md
 │   │   │   └── sources.md
 │   │   ├── db
 │   │   │   ├── README.md
@@ -974,9 +989,7 @@
     ├── core
     │   ├── __init__.py
     │   ├── admin.py
-    │   ├── airflow_settings.py
     │   ├── api.py
-    │   ├── asgi.py
     │   ├── constants.py
     │   ├── context_processors.py
     │   ├── exceptions.py
@@ -991,7 +1004,6 @@
     │   │   ├── mixin.py
     │   │   └── tools.py
     │   ├── notion.py
-    │   ├── settings.py
     │   ├── templatetags
     │   │   ├── __init__.py
     │   │   ├── acteur_tags.py
@@ -1007,7 +1019,6 @@
     │   │   ├── share_tags.py
     │   │   └── turbo_tags.py
     │   ├── test_routers.py
-    │   ├── test_settings.py
     │   ├── url_utils.py
     │   ├── urls.py
     │   ├── utils.py
@@ -1050,6 +1061,7 @@
     │   │   ├── 0020_alter_suggestiongroupe_acteur_and_more.py
     │   │   ├── 0021_suggestiongroupe_parent_revision_acteur_and_more.py
     │   │   ├── 0022_suggestionunitaire_data_su_revision_acteur_if_modele_revision_acteur_and_more.py
+    │   │   ├── 0023_alter_suggestioncohorte_type_action.py
     │   │   └── __init__.py
     │   ├── models
     │   │   ├── __init__.py
@@ -1076,6 +1088,7 @@
     │   │   │   ├── source.py
     │   │   │   └── utils.py
     │   │   └── utils.py
+    │   ├── tasks.py
     │   ├── urls.py
     │   └── views.py
     ├── dsfr_hacks
@@ -1128,6 +1141,7 @@
     │   └── views.py
     ├── integration_tests
     │   ├── assistant
+    │   │   ├── test_produit_page.py
     │   │   ├── test_seo_meta_tags.py
     │   │   └── test_synonyme_detail.py
     │   ├── carte
@@ -1185,6 +1199,7 @@
     │   │       ├── import_infos_tris.py
     │   │       ├── import_redirects_from_legacy_website.py
     │   │       ├── migrate_from_sites_faciles_experiment.py
+    │   │       ├── migrate_legacy_produit_index_page.py
     │   │       ├── populate_fake_search_tags.py
     │   │       └── populate_search_terms.py
     │   ├── middleware.py
@@ -1237,7 +1252,11 @@
     │   │   ├── 0083_produitpage_ab_test_carte_default_view.py
     │   │   ├── 0084_merge_20260527_0000.py
     │   │   ├── 0085_add_break_block_to_streamfield.py
-    │   │   └── __init__.py
+    │   │   ├── 0086_rename_produitindexpage_legacyproduitindexpage.py
+    │   │   ├── 0087_produitindexpage.py
+    │   │   ├── __init__.py
+    │   │   └── sql
+    │   │       └── create_wagtail_french_config.sql
     │   ├── models.py
     │   ├── signals.py
     │   ├── templatetags
@@ -1389,6 +1408,12 @@
     │   ├── score_breakdown.py
     │   └── wagtail_hooks.py
     ├── servers.conf.erb
+    ├── settings
+    │   ├── __init__.py
+    │   ├── airflow.py
+    │   ├── base.py
+    │   ├── dev.py
+    │   └── test.py
     ├── static
     │   ├── documentation_files
     │   │   └── qdfmo-db.png
@@ -1954,4 +1979,4 @@
     │   └── stats
     │       └── test_stats_utils.py
     └── uv.lock
-356 directories, 1600 files
+360 directories, 1621 files
