@@ -1,14 +1,15 @@
-## Changelog : upptime (30 derniers jours, au 09 juillet 2026)
+## Changelog : upptime (30 derniers jours, au 11 juillet 2026)
 
 ### Résumé
-Ce changelog résume les activités du projet upptime sur les 30 derniers jours. La majorité des changements concernent les mises à jour régulières de l'état des services surveillés par le bot Upptime, incluant des rapports de disponibilité et de temps de réponse. Des mises à jour de version du bot ont également été effectuées.
+Ce changelog résume les activités récentes du projet upptime sur les 30 derniers jours. Il s'agit principalement de mises à jour automatiques des statuts de surveillance des différents services, signalant leur disponibilité (ou indisponibilité temporaire). Des mises à jour de version d'upptime ont également eu lieu.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle majeure n'a été identifiée dans les commits récents. Le projet se concentre principalement sur la surveillance et le reporting de l'état des services.
+Aucune évolution fonctionnelle majeure n'a été apportée au cours des 30 derniers jours. Les changements concernent principalement la surveillance continue des services.
 
 ### Évolutions techniques
-*   Mise à jour régulière de la version du bot Upptime : v1.42.5, v1.42.6, v1.42.7, v1.43.0, v1.43.1, v1.43.2, v1.43.3, v1.43.4, v1.43.5, v1.43.6, v1.43.7, v1.43.8 et v1.43.9.
-*   Mises à jour automatiques des résumés de l'état des services et du README.
+- Mises à jour régulières de la version d'upptime : 1.42.6, 1.42.7, 1.43.0, 1.43.1, 1.43.2, 1.43.3, 1.43.4, 1.43.5, 1.43.6, 1.43.7, 1.43.8 et 1.43.9.
+- Mises à jour automatiques des rapports de statut de disponibilité des services surveillés.
 
 ### Autres changements
-*   Mise à jour des rapports d'état pour les services suivants : API Apprentissage, Percona, Monitoring, SENTRY, BAL production, API Referentiel, Tableau de bord, La bonne alternance et Laboratoire La bonne alternance. Ces mises à jour incluent des rapports de disponibilité (up/down) et des temps de réponse.
+- Mises à jour de la documentation README et du résumé de statut.
+- Corrections mineures et améliorations continues du système de surveillance.
