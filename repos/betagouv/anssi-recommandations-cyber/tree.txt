@@ -15,6 +15,8 @@
 ├── LICENSE
 ├── README.md
 ├── docker-compose.yml
+├── documentation
+│   └── interactions_albert.md
 ├── donnees
 │   └── faq_reponses_maitrisees.mapping.json
 ├── migrations
@@ -39,6 +41,7 @@
 │   │   ├── adaptateur_base_de_donnees.py
 │   │   ├── adaptateur_base_de_donnees_memoire.py
 │   │   ├── adaptateur_base_de_donnees_postgres.py
+│   │   ├── adaptateur_executeur_de_requetes.py
 │   │   ├── chiffrement.py
 │   │   ├── connecteur.py
 │   │   ├── horloge.py
@@ -49,8 +52,8 @@
 │   │   ├── __init__.py
 │   │   ├── api.py
 │   │   ├── api_avis.py
+│   │   ├── api_conversation.py
 │   │   ├── api_retour.py
-│   │   ├── conversation.py
 │   │   ├── recherche.py
 │   │   └── route_document_source.py
 │   ├── configuration.py
@@ -196,7 +199,8 @@
 │   │   │   ├── loader.svg
 │   │   │   └── pouce-like.svg
 │   │   └── images
-│   │       └── ANSSI.svg
+│   │       ├── ANSSI.svg
+│   │       └── image-generique.avif
 │   ├── src
 │   │   ├── App.svelte
 │   │   ├── Cgu.svelte
@@ -228,6 +232,8 @@
 │   │   ├── fonts.css
 │   │   ├── main.ts
 │   │   ├── modeMaintenance.ts
+│   │   ├── pdf
+│   │   │   └── adaptateurPDF.ts
 │   │   ├── politique-confidentialite.ts
 │   │   └── stores
 │   │       ├── affichage.store.ts
@@ -240,10 +246,13 @@
 │   │   │   └── ValidateurQuestionUtilisateur.spec.ts
 │   │   └── stores
 │   │       ├── avisUtilisateurBis.store.spec.ts
+│   │       ├── constructeurDeParagraphe.ts
 │   │       └── conversation.store.spec.ts
 │   ├── tsconfig.app.json
 │   ├── tsconfig.json
 │   ├── tsconfig.node.json
-│   └── vite.config.ts
+│   ├── vite.config.ts
+│   ├── vitest.config.ts
+│   └── vitest.setup.ts
 └── uv.lock
-46 directories, 202 files
+48 directories, 209 files

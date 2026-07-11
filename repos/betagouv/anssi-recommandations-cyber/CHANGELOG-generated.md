@@ -1,26 +1,37 @@
-## Changelog : anssi-recommandations-cyber (30 derniers jours, au 26 juin 2026)
+## Changelog : anssi-recommandations-cyber (30 derniers jours, au 09 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'ajout d'un système de feedback utilisateur pour améliorer la qualité des réponses fournies par l'IA.  Des corrections et des optimisations ont également été apportées pour améliorer l'expérience utilisateur et la maintenabilité du code.
+Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur, notamment l'affichage des sources, la gestion des PDF et l'ajout d'un nouveau formulaire pour recueillir les avis des utilisateurs. Des corrections de bugs ont également été apportées pour améliorer la navigation et la génération de PDF. Des mises à jour de sécurité ont été intégrées pour certaines dépendances.
 
 ### Évolutions fonctionnelles
-- Ajout d'un formulaire permettant aux utilisateurs de donner leur avis sur les réponses obtenues. [#1](https://github.com/betagouv/anssi-recommandations-cyber/pulls/1 - *lien fictif pour l'exemple*)
-- Possibilité de compléter les avis utilisateurs avec des informations supplémentaires.
-- Affichage des retours utilisateurs dans l'interface.
-- Route API `/api/avis` exposée pour la soumission des avis utilisateurs.
-- Les avis soumis sont maintenant consignés.
-- Amélioration de l'affichage du contenu des paragraphes.
-- Correction d'un bug empêchant l'affichage de la question après sélection d'une suggestion.
-- Déroulement par défaut des sources dans l'interface.
-- Amélioration de l'expérience utilisateur en scrollant vers le dernier message de l'utilisateur.
+- Amélioration de l'affichage des sources : les sources sont maintenant affichées sur toute la largeur de la page.
+- Gestion des PDF :
+  - Affichage des pages PDF dans un carrousel.
+  - Génération de l'image de la page PDF directement dans le navigateur.
+  - Affichage d'une image générique si le document téléchargé n'est pas un PDF.
+  - La génération des pages PDF continue même en cas d'erreur.
+- Nouveau formulaire d'avis utilisateur :
+  - Initialisation et implémentation du formulaire pour recueillir les avis des utilisateurs.
+  - Validation de la longueur des commentaires, de l'exactitude et de la complétude des avis.
+  - Possibilité de compléter les avis utilisateurs.
+  - Affichage des retours utilisateurs.
+- Correction : Le bouton "suivant" est activé lorsque les sources sont chargées [#issue à ajouter si applicable].
+- Correction : Défilement automatique vers la dernière question posée par l'utilisateur [#issue à ajouter si applicable].
+- Correction : Défilement horizontal des sources cible via les boutons "suivant" et "précédent" [#issue à ajouter si applicable].
 
 ### Évolutions techniques
-- Refactorisation du nommage des identifiants de collections et d'interactions pour plus de cohérence.
-- Mise à jour de la version de Starlette pour corriger une vulnérabilité de sécurité.
-- Épingle des versions des dépendances des GitHub Actions pour assurer la reproductibilité des builds.
-- Utilisation d'une variable d'environnement pour la configuration.
+- Modification de l'API pour prendre en compte un nouveau modèle basé sur la pertinence et les sources adaptées.
+- Refactorisation des routes relatives aux avis utilisateurs.
+- Utilisation du store `storeAvisUtilisateurBis` pour gérer le formulaire d'avis utilisateur.
+- Mise en place d'un feature flag pour activer le nouveau formulaire d'avis utilisateur.
+- Validation de la longueur des saisies utilisateur.
+- Renommage de fichiers et de constantes pour une meilleure clarté du code.
 
 ### Autres changements
-- Nettoyage de la configuration de la CI.
-- Suppression d'un log inutile.
-- Mise à jour de plusieurs dépendances pour corriger des failles de sécurité : `dompurify`, `svelte`, `vite`, `cryptography`. (Ces mises à jour sont gérées par Renovate)
+- Ajout de documentation sur les interactions entre MQC et Albert.
+- Ajout des raisons pour lesquelles les sources ne sont pas adaptées dans les journaux.
+- Ajout de la mention "Tous les champs sont obligatoires" dans le formulaire.
+- Mise à jour de la classe des boutons du bandeau utilisateur en `primary`.
+- Suppression d'un `console.log` dans l'adaptateur PDF du front-end.
+- Épinglage des versions des dépendances des GitHub Actions pour plus de stabilité.
+- Mises à jour de sécurité pour les dépendances : `dompurify`, `svelte`, `vite`, `starlette` et `cryptography`.
