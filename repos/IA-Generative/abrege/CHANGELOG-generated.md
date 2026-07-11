@@ -1,18 +1,31 @@
-## Changelog : abrege (30 derniers jours, au 30 juin 2026)
+## Changelog : abrege (30 derniers jours, au 10 juillet 2026)
 
 ### Résumé
-Ce mois-ci, abrege a bénéficié d'améliorations significatives en termes de fonctionnalités et de stabilité. L'ajout de la capacité à scraper du contenu web élargit les sources de documents traitables. Des corrections de sécurité et des optimisations de l'intégration continue (CI) renforcent la fiabilité du projet. De nouvelles fonctionnalités liées à la gestion des tâches et au reporting d'erreurs améliorent l'expérience utilisateur et la maintenabilité.
+Les dernières mises à jour d'abrege se concentrent sur l'ajout de nouvelles fonctionnalités clés, notamment la génération de questions/réponses (QA), l'extraction de contenu web (scraping), et l'amélioration de la gestion des tâches. Des corrections et des améliorations de la configuration ont également été apportées pour une meilleure stabilité et intégration avec divers services.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de scraper du contenu web pour l'analyse et le résumé. [#8f95fab](https://github.com/IA-Generative/abrege/commit/8f95fab)
-- Implémentation de nouvelles fonctionnalités liées à la gestion des tâches. [#48428c3](https://github.com/IA-Generative/abrege/commit/48428c3)
-- Intégration de Sentry pour le reporting des erreurs au niveau de l'API, des workers et de l'interface utilisateur, facilitant ainsi le diagnostic et la résolution des problèmes. [#313](https://github.com/IA-Generative/abrege/issues/313)
+- Ajout de la génération de questions/réponses (QA) avec une interface utilisateur dédiée et une intégration backend. [#313](https://github.com/IA-Generative/abrege/issues/313)
+- Implémentation de la fonctionnalité de scraping web pour extraire du contenu à partir de pages web.
+- Ajout de la possibilité d'annuler les tâches en cours et mise à jour de l'interface utilisateur pour refléter cet état.
+- Ajout d'une vue détaillée des tâches avec un routage approprié.
+- Amélioration du modèle de résultats OCR avec des structures pour pages, boîtes englobantes et cases à cocher.
+- Modification du libellé de l'en-tête des tâches pour afficher "Mes tâches".
+- Ajout d'une fonctionnalité pour signaler les erreurs à Sentry pour l'API, les workers et l'interface utilisateur.
 
 ### Évolutions techniques
-- Correction d'une vulnérabilité de sécurité. [#2122bbb](https://github.com/IA-Generative/abrege/commit/2122bbb)
-- Amélioration du processus de CI/CD pour les releases. [#bf94058](https://github.com/IA-Generative/abrege/commit/bf94058)
-- Mise à jour des packages pour bénéficier des dernières corrections et améliorations. [#4797e3b](https://github.com/IA-Generative/abrege/commit/4797e3b)
-- Corrections diverses du CI. [#52e9082](https://github.com/IA-Generative/abrege/commit/52e9082)
+- Mise à jour des variables d'environnement pour utiliser `AWS_BUCKET_NAME` au lieu de `S3_BUCKET_NAME` dans les configurations et la documentation.
+- Mise à jour de la configuration de Langfuse pour une intégration optionnelle.
+- Mise à jour des variables d'environnement et des configurations pour l'intégration avec Redis, MinIO et OpenAI.
+- Amélioration de la gestion des erreurs et ajout d'erreurs de surcharge pour LLM et OCR.
+- Correction d'un problème d'importation dans les tests.
+- Correction d'un problème de sécurité.
+- Refactorisation de l'architecture pour utiliser des services.
+- Ajout de modèles Pydantic pour les réponses de l'API.
 
 ### Autres changements
-- Publication des versions 2.1.0, 2.0.2, 2.0.1 et 2.0.0. [#e466562](https://github.com/IA-Generative/abrege/commit/e466562), [#dde8f37](https://github.com/IA-Generative/abrege/commit/dde8f37), [#04200b4](https://github.com/IA-Generative/abrege/commit/04200b4), [#553d0b5](https://github.com/IA-Generative/abrege/commit/553d0b5)
+- Publication des versions 3.3.0, 3.2.0, 3.1.2, 3.1.1, 3.1.0, 3.0.0, 2.3.1, 2.3.0, 2.2.0, 2.1.1, 2.1.0, 2.0.2, 2.0.1 et 2.0.0.
+- Mise à jour des paquets.
+- Amélioration des logs.
+- Ajout de migrations pour les images.
+- Ajout de détails de santé.
+- Correction de problèmes liés à la CI/CD.
