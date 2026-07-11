@@ -944,6 +944,7 @@
 │   │   │   │       │   │   │   │   └── index.ts
 │   │   │   │       │   │   │   ├── documentsRaccordement
 │   │   │   │       │   │   │   │   ├── documentRaccordementModifié.projector.ts
+│   │   │   │       │   │   │   │   ├── documentRaccordementSupprimé.projector.ts
 │   │   │   │       │   │   │   │   ├── documentRaccordementTransmis.projector.ts
 │   │   │   │       │   │   │   │   └── index.ts
 │   │   │   │       │   │   │   ├── dossierDuRaccordementSuppriméV1.projector.ts
@@ -1220,6 +1221,8 @@
 │   │   │   │   │   │   │   ├── CorrigerCandidaturesParLot.page.tsx
 │   │   │   │   │   │   │   ├── corrigerCandidaturesParLot.action.ts
 │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   ├── export
+│   │   │   │   │   │   │   └── route.ts
 │   │   │   │   │   │   ├── export-fournisseurs
 │   │   │   │   │   │   │   └── route.ts
 │   │   │   │   │   │   └── importer
@@ -1974,24 +1977,22 @@
 │   │   │   │   │   │   │   │   │   ├── [reference]
 │   │   │   │   │   │   │   │   │   │   ├── (demande-complète-raccordement)
 │   │   │   │   │   │   │   │   │   │   │   ├── InformationDemandeComplèteRaccordement.tsx
-│   │   │   │   │   │   │   │   │   │   │   ├── demande-complete-raccordement:modifier
-│   │   │   │   │   │   │   │   │   │   │   │   ├── ModifierDemandeComplèteRaccordement.form.tsx
-│   │   │   │   │   │   │   │   │   │   │   │   ├── ModifierDemandeComplèteRaccordement.page.tsx
-│   │   │   │   │   │   │   │   │   │   │   │   ├── modifierDemandeComplèteRaccordement.action.ts
-│   │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │   │   │   └── ÉtapeDemandeComplèteRaccordement.tsx
+│   │   │   │   │   │   │   │   │   │   │   └── demande-complete-raccordement:modifier
+│   │   │   │   │   │   │   │   │   │   │       ├── ModifierDemandeComplèteRaccordement.form.tsx
+│   │   │   │   │   │   │   │   │   │   │       ├── ModifierDemandeComplèteRaccordement.page.tsx
+│   │   │   │   │   │   │   │   │   │   │       ├── modifierDemandeComplèteRaccordement.action.ts
+│   │   │   │   │   │   │   │   │   │   │       └── page.tsx
 │   │   │   │   │   │   │   │   │   │   ├── (proposition-technique-et-financière)
 │   │   │   │   │   │   │   │   │   │   │   ├── proposition-technique-et-financiere:modifier
 │   │   │   │   │   │   │   │   │   │   │   │   ├── ModifierPropositionTechniqueEtFinancière.form.tsx
 │   │   │   │   │   │   │   │   │   │   │   │   ├── ModifierPropositionTechniqueEtFinancière.page.tsx
 │   │   │   │   │   │   │   │   │   │   │   │   ├── modifierPropositionTechniqueEtFinancière.action.ts
 │   │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │   │   │   ├── proposition-technique-et-financiere:transmettre
-│   │   │   │   │   │   │   │   │   │   │   │   ├── TransmettrePropositionTechniqueEtFinancière.form.tsx
-│   │   │   │   │   │   │   │   │   │   │   │   ├── TransmettrePropositionTechniqueEtFinancière.page.tsx
-│   │   │   │   │   │   │   │   │   │   │   │   ├── page.tsx
-│   │   │   │   │   │   │   │   │   │   │   │   └── transmettrePropositionTechniqueEtFinancière.action.ts
-│   │   │   │   │   │   │   │   │   │   │   └── ÉtapePropositionTechniqueEtFinancière.tsx
+│   │   │   │   │   │   │   │   │   │   │   └── proposition-technique-et-financiere:transmettre
+│   │   │   │   │   │   │   │   │   │   │       ├── TransmettrePropositionTechniqueEtFinancière.form.tsx
+│   │   │   │   │   │   │   │   │   │   │       ├── TransmettrePropositionTechniqueEtFinancière.page.tsx
+│   │   │   │   │   │   │   │   │   │   │       ├── page.tsx
+│   │   │   │   │   │   │   │   │   │   │       └── transmettrePropositionTechniqueEtFinancière.action.ts
 │   │   │   │   │   │   │   │   │   │   ├── date-mise-en-service
 │   │   │   │   │   │   │   │   │   │   │   ├── DateMiseEnService.form.tsx
 │   │   │   │   │   │   │   │   │   │   │   ├── modifier
@@ -2001,11 +2002,10 @@
 │   │   │   │   │   │   │   │   │   │   │   ├── supprimer-date-mise-en-service
 │   │   │   │   │   │   │   │   │   │   │   │   ├── SupprimerDateMiseEnService.form.tsx
 │   │   │   │   │   │   │   │   │   │   │   │   └── supprimerDateMiseEnService.action.ts
-│   │   │   │   │   │   │   │   │   │   │   ├── transmettre
-│   │   │   │   │   │   │   │   │   │   │   │   ├── TransmettreDateMiseEnService.page.tsx
-│   │   │   │   │   │   │   │   │   │   │   │   ├── page.tsx
-│   │   │   │   │   │   │   │   │   │   │   │   └── transmettreDateMiseEnService.action.ts
-│   │   │   │   │   │   │   │   │   │   │   └── ÉtapeDateMiseEnService.tsx
+│   │   │   │   │   │   │   │   │   │   │   └── transmettre
+│   │   │   │   │   │   │   │   │   │   │       ├── TransmettreDateMiseEnService.page.tsx
+│   │   │   │   │   │   │   │   │   │   │       ├── page.tsx
+│   │   │   │   │   │   │   │   │   │   │       └── transmettreDateMiseEnService.action.ts
 │   │   │   │   │   │   │   │   │   │   └── reference:corriger
 │   │   │   │   │   │   │   │   │   │       ├── CorrigerRéférenceDossier.form.tsx
 │   │   │   │   │   │   │   │   │   │       ├── CorrigerRéférenceDossier.page.tsx
@@ -2015,9 +2015,7 @@
 │   │   │   │   │   │   │   │   │   │   ├── AucunDossierDeRaccordementAlert.tsx
 │   │   │   │   │   │   │   │   │   │   ├── DossierRaccordement.tsx
 │   │   │   │   │   │   │   │   │   │   ├── FormatFichierInvalide.tsx
-│   │   │   │   │   │   │   │   │   │   ├── Separateur.tsx
-│   │   │   │   │   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   │   │   │   │   └── Étape.tsx
+│   │   │   │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   │   │   │   └── demande-complete-raccordement:transmettre
 │   │   │   │   │   │   │   │   │       ├── TransmettreDemandeComplèteRaccordement.form.tsx
 │   │   │   │   │   │   │   │   │       ├── TransmettreDemandeComplèteRaccordement.page.tsx
@@ -2051,12 +2049,15 @@
 │   │   │   │   │   │   │   │   │   └── mapToRaccordementTimelineItemProps.ts
 │   │   │   │   │   │   │   │   ├── (raccordement-du-projet)
 │   │   │   │   │   │   │   │   │   ├── (détails)
-│   │   │   │   │   │   │   │   │   │   ├── DétailsRaccordementDuProjet.page.tsx
+│   │   │   │   │   │   │   │   │   │   ├── DossiersRaccordement.section.tsx
+│   │   │   │   │   │   │   │   │   │   ├── DétailsRaccordementDuProjetPage.tsx
+│   │   │   │   │   │   │   │   │   │   ├── GestionnaireRéseau.section.tsx
 │   │   │   │   │   │   │   │   │   │   ├── ModifierGestionnaireRéseauDuRaccordement.tsx
 │   │   │   │   │   │   │   │   │   │   ├── _helpers
-│   │   │   │   │   │   │   │   │   │   │   ├── getModificationDCRAction.ts
-│   │   │   │   │   │   │   │   │   │   │   ├── getModificationGestionnaireRéseauAction.ts
-│   │   │   │   │   │   │   │   │   │   │   ├── getModificationPTFAction.ts
+│   │   │   │   │   │   │   │   │   │   │   ├── getDemandeComplèteDeRaccordementAction.ts
+│   │   │   │   │   │   │   │   │   │   │   ├── getGestionnaireRéseauAction.ts
+│   │   │   │   │   │   │   │   │   │   │   ├── getMiseEnServiceAction.ts
+│   │   │   │   │   │   │   │   │   │   │   ├── getPropositionTechniqueEtFinancièreAction.ts
 │   │   │   │   │   │   │   │   │   │   │   ├── getSupprimerDossierAction.ts
 │   │   │   │   │   │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   │   │   │   │   │   └── vérifierStatutDuProjetPourModification.ts
@@ -3443,7 +3444,21 @@
 │   │   │   │   │   │   │   ├── consulterGestionnaireRéseauRaccordement.query.ts
 │   │   │   │   │   │   │   ├── consulterNombreRaccordement.ts
 │   │   │   │   │   │   │   └── consulterRaccordement.query.ts
-│   │   │   │   │   │   ├── documentRaccordement.valueType.ts
+│   │   │   │   │   │   ├── document-raccordement
+│   │   │   │   │   │   │   ├── documentRaccordement.valueType.ts
+│   │   │   │   │   │   │   ├── modifier
+│   │   │   │   │   │   │   │   ├── modifierDocumentRaccordement.command.ts
+│   │   │   │   │   │   │   │   ├── modifierDocumentRaccordement.options.ts
+│   │   │   │   │   │   │   │   └── modifierDocumentRaccordement.usecase.ts
+│   │   │   │   │   │   │   ├── supprimer
+│   │   │   │   │   │   │   │   ├── supprimerDocumentRaccordement.command.ts
+│   │   │   │   │   │   │   │   ├── supprimerDocumentRaccordement.options.ts
+│   │   │   │   │   │   │   │   └── supprimerDocumentRaccordement.usecase.ts
+│   │   │   │   │   │   │   ├── transmettre
+│   │   │   │   │   │   │   │   ├── transmettreDocumentRaccordement.command.ts
+│   │   │   │   │   │   │   │   ├── transmettreDocumentRaccordement.options.ts
+│   │   │   │   │   │   │   │   └── transmettreDocumentRaccordement.usecase.ts
+│   │   │   │   │   │   │   └── typeDocumentsRaccordement.valueType.ts
 │   │   │   │   │   │   ├── dossierRaccordement.entity.ts
 │   │   │   │   │   │   ├── errors.ts
 │   │   │   │   │   │   ├── index.ts
@@ -3462,10 +3477,6 @@
 │   │   │   │   │   │   │   │   ├── modifierDemandeComplèteRaccordement.command.ts
 │   │   │   │   │   │   │   │   ├── modifierDemandeComplèteRaccordement.options.ts
 │   │   │   │   │   │   │   │   └── modifierDemandeComplèteRaccordement.usecase.ts
-│   │   │   │   │   │   │   ├── documentsRaccordement
-│   │   │   │   │   │   │   │   ├── modifierDocumentRaccordement.command.ts
-│   │   │   │   │   │   │   │   ├── modifierDocumentRaccordement.options.ts
-│   │   │   │   │   │   │   │   └── modifierDocumentRaccordement.usecase.ts
 │   │   │   │   │   │   │   ├── gestionnaireRéseauDuRaccordement
 │   │   │   │   │   │   │   │   ├── modifierGestionnaireRéseau.options.ts
 │   │   │   │   │   │   │   │   ├── modifierGestionnaireRéseauRaccordement.command.ts
@@ -3509,15 +3520,10 @@
 │   │   │   │   │   │   │   │   ├── transmettreDemandeComplèteRaccordement.command.ts
 │   │   │   │   │   │   │   │   ├── transmettreDemandeComplèteRaccordement.options.ts
 │   │   │   │   │   │   │   │   └── transmettreDemandeComplèteRaccordement.usecase.ts
-│   │   │   │   │   │   │   ├── documentsRaccordement
-│   │   │   │   │   │   │   │   ├── transmettreDocumentRaccordement.command.ts
-│   │   │   │   │   │   │   │   ├── transmettreDocumentRaccordement.options.ts
-│   │   │   │   │   │   │   │   └── transmettreDocumentRaccordement.usecase.ts
 │   │   │   │   │   │   │   └── propositionTechniqueEtFinancière
 │   │   │   │   │   │   │       ├── transmettrePropositionTechniqueEtFinancière.command.ts
 │   │   │   │   │   │   │       ├── transmettrePropositionTechniqueEtFinancière.options.ts
 │   │   │   │   │   │   │       └── transmettrePropositionTechniqueEtFinancière.usecase.ts
-│   │   │   │   │   │   ├── typeDocumentsRaccordement.valueType.ts
 │   │   │   │   │   │   └── typeTâchePlanifiéeRaccordement.valueType.ts
 │   │   │   │   │   ├── représentantLégal
 │   │   │   │   │   │   ├── changement
@@ -4474,12 +4480,14 @@
 │   │   │   │   │   │   │   ├── documentRaccordement.world.ts
 │   │   │   │   │   │   │   ├── fixtures
 │   │   │   │   │   │   │   │   ├── modifierDocumentRaccordement.fixture.ts
+│   │   │   │   │   │   │   │   ├── supprimerDocumentRaccordement.fixture.ts
 │   │   │   │   │   │   │   │   └── transmettreDocumentRaccordement.fixture.ts
 │   │   │   │   │   │   │   ├── modifierUnDocumentRaccordement.feature
 │   │   │   │   │   │   │   ├── stepDefinitions
 │   │   │   │   │   │   │   │   ├── documentRaccordement.given.ts
 │   │   │   │   │   │   │   │   ├── documentRaccordement.then.ts
 │   │   │   │   │   │   │   │   └── documentRaccordement.when.ts
+│   │   │   │   │   │   │   ├── supprimerUnDocumentRaccordement.feature
 │   │   │   │   │   │   │   └── transmettreUnDocumentRaccordement.feature
 │   │   │   │   │   │   ├── dossierRaccordement
 │   │   │   │   │   │   │   ├── fixtures
@@ -4676,4 +4684,4 @@
 ├── scalingo.json
 ├── turbo.json
 └── update-ts-references.yaml
-1133 directories, 3545 files
+1136 directories, 3550 files
