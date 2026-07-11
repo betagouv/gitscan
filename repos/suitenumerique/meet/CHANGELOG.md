@@ -8,6 +8,23 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
+- ✨(backend) allow searching the recording admin table by owner email
+- ✨(frontend) add participant color gradient when camera is off #1490
+- ✨(all) allow forcing SSO display name for authenticated users
+
+### Changed
+
+- 🗑️(settings) deprecate SUMMARY_SERVICE_VERSION=1
+- ⬆️(mail) update mjml to v5 and @html-to/text-cli
+- 🚸(frontend) initialize the join input name with the persisted full name
+
+### Fixed
+
+- 🩹(backend) identify externally provisioned users to PostHog
+- 🐛(backend) fix info panel crash for unregistered rooms
+
 ## [1.23.0] - 2026-07-08
 
 ### Added
@@ -50,6 +67,7 @@ and this project adheres to
 - ✨(backend) add fallback to save recordings without S3/MinIO webhooks
 - 🩹(frontend) enable screen share button in PiP #1458
 - 🐛(backend) support unencoded S3 notification object keys #1455
+- ✨(frontend) prioritize screen share in picture-in-picture layout #1467
 
 ### Changed
 
