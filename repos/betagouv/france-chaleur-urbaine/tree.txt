@@ -1035,6 +1035,8 @@
 │   │       ├── ComboAutoComplete.tsx
 │   │       ├── ComboBox.spec.tsx
 │   │       ├── ComboBox.tsx
+│   │       ├── ConfirmDialog.spec.tsx
+│   │       ├── ConfirmDialog.tsx
 │   │       ├── CrudDropdown.tsx
 │   │       ├── Dialog.tsx
 │   │       ├── Divider.tsx
@@ -1233,6 +1235,7 @@
 │   │   ├── useCookie.ts
 │   │   ├── useCrud.tsx
 │   │   ├── useDevMode.ts
+│   │   ├── useDialogState.ts
 │   │   ├── useDimensions.tsx
 │   │   ├── useEligibilityForm.tsx
 │   │   ├── useHeaderHeightVar.ts
@@ -1334,6 +1337,7 @@
 │   │   ├── conversion-tracking
 │   │   │   ├── AGENTS.md
 │   │   │   ├── client
+│   │   │   │   ├── ConversionAbusePage.tsx
 │   │   │   │   ├── ConversionStatsPage.tsx
 │   │   │   │   ├── trackingContext.spec.ts
 │   │   │   │   ├── trackingContext.ts
@@ -1693,6 +1697,46 @@
 │   │   │   │   ├── image-optimize-last-date.txt
 │   │   │   │   └── image-optimize.sh
 │   │   │   └── commands.ts
+│   │   ├── organizations
+│   │   │   ├── client
+│   │   │   │   ├── OrganizationCredentials.tsx
+│   │   │   │   ├── OrganizationForm.tsx
+│   │   │   │   ├── OrganizationNetworks.tsx
+│   │   │   │   └── admin
+│   │   │   │       ├── AdminOrganizationsPage.tsx
+│   │   │   │       ├── OrganizationCredentialsDialog.tsx
+│   │   │   │       ├── OrganizationFormDialog.tsx
+│   │   │   │       └── OrganizationNetworksDialog.tsx
+│   │   │   ├── constants.ts
+│   │   │   ├── server
+│   │   │   │   ├── credentials.ts
+│   │   │   │   ├── service.ts
+│   │   │   │   └── trpc-routes.ts
+│   │   │   └── types.ts
+│   │   ├── pac
+│   │   │   ├── AGENTS.md
+│   │   │   ├── constants.ts
+│   │   │   └── server
+│   │   │       ├── simulation-service.spec.ts
+│   │   │       └── simulation-service.ts
+│   │   ├── partner-api
+│   │   │   ├── AGENTS.md
+│   │   │   ├── client
+│   │   │   │   └── ApiGestionnairesPage.tsx
+│   │   │   ├── schema.ts
+│   │   │   └── server
+│   │   │       ├── api-v2.integration.spec.ts
+│   │   │       ├── authentication.ts
+│   │   │       ├── dto.spec.ts
+│   │   │       ├── dto.ts
+│   │   │       ├── handlers.ts
+│   │   │       ├── legacy
+│   │   │       │   ├── engie-demands.ts
+│   │   │       │   ├── engie-users-sync.ts
+│   │   │       │   └── engie-users.ts
+│   │   │       ├── openapi.spec.ts
+│   │   │       ├── openapi.ts
+│   │   │       └── yaml.ts
 │   │   ├── permissions
 │   │   │   ├── client
 │   │   │   │   ├── BulkAddNetworksDialog.tsx
@@ -1806,6 +1850,7 @@
 │   │   │   │   ├── context.ts
 │   │   │   │   ├── middlewares
 │   │   │   │   │   ├── auth.ts
+│   │   │   │   │   ├── db-errors.ts
 │   │   │   │   │   ├── logging.ts
 │   │   │   │   │   └── rate-limit.ts
 │   │   │   │   ├── routes.ts
@@ -1830,6 +1875,8 @@
 │   │   │   ├── [slug].tsx
 │   │   │   └── index.tsx
 │   │   ├── admin
+│   │   │   ├── conversion
+│   │   │   │   └── abus.tsx
 │   │   │   ├── conversion.tsx
 │   │   │   ├── data-diagnostic.tsx
 │   │   │   ├── demandes.tsx
@@ -1839,6 +1886,7 @@
 │   │   │   ├── iframes.tsx
 │   │   │   ├── impostures.tsx
 │   │   │   ├── jobs.tsx
+│   │   │   ├── organizations.tsx
 │   │   │   ├── reseaux
 │   │   │   │   └── stats.tsx
 │   │   │   ├── reseaux.tsx
@@ -1875,6 +1923,9 @@
 │   │   │   │   │   └── files
 │   │   │   │   │       └── [fileId].ts
 │   │   │   │   └── search.ts
+│   │   │   ├── pac
+│   │   │   │   ├── income-options.ts
+│   │   │   │   └── simulation.ts
 │   │   │   ├── pro
 │   │   │   │   └── comparateur
 │   │   │   │       └── configurations
@@ -1893,13 +1944,18 @@
 │   │   │   │   ├── email-templates
 │   │   │   │   │   └── [[...slug]].ts
 │   │   │   │   └── preferences.ts
-│   │   │   └── v1
-│   │   │       ├── demands
-│   │   │       │   └── [key].ts
-│   │   │       ├── eligibility.ts
-│   │   │       ├── networks.ts
-│   │   │       └── users
-│   │   │           └── [key].ts
+│   │   │   ├── v1
+│   │   │   │   ├── demands
+│   │   │   │   │   └── [key].ts
+│   │   │   │   ├── eligibility.ts
+│   │   │   │   ├── networks.ts
+│   │   │   │   └── users
+│   │   │   │       └── [key].ts
+│   │   │   └── v2
+│   │   │       └── demands
+│   │   │           ├── [id].ts
+│   │   │           └── index.ts
+│   │   ├── api-gestionnaires.tsx
 │   │   ├── campagnes2024.tsx
 │   │   ├── carte.tsx
 │   │   ├── cgu.tsx
@@ -1984,10 +2040,7 @@
 │   │   └── webinaires.tsx
 │   ├── server
 │   │   ├── api
-│   │   │   ├── crud.ts
-│   │   │   ├── users
-│   │   │   │   └── engie.ts
-│   │   │   └── users.ts
+│   │   │   └── crud.ts
 │   │   ├── authentication.ts
 │   │   ├── config.ts
 │   │   ├── cron
@@ -2019,8 +2072,14 @@
 │   │   │       ├── 20260615120000_drop_legacy_tags_and_assignment_rules.ts
 │   │   │       ├── 20260617000000_conversion_tracking.ts
 │   │   │       ├── 20260624000000_fusion_statuts.ts
+│   │   │       ├── 20260625000000_partner_api_organizations.ts
+│   │   │       ├── 20260702000000_add_maitre_ouvrage_to_reseaux_en_construction.ts
+│   │   │       ├── 20260706000000_cleanup_api_accounts.ts
+│   │   │       ├── 20260707000000_conversion_ip_rules.ts
+│   │   │       ├── 20260709000000_demand_deleted_by_system.ts
 │   │   │       └── migrator.ts
 │   │   ├── helpers
+│   │   │   ├── db-errors.ts
 │   │   │   ├── logger.ts
 │   │   │   ├── request-ip.spec.ts
 │   │   │   ├── request-ip.ts
@@ -2041,7 +2100,6 @@
 │   ├── services
 │   │   ├── airtable.ts
 │   │   ├── api
-│   │   │   ├── authentication.ts
 │   │   │   └── cors.ts
 │   │   └── eligibility.ts
 │   ├── tests
@@ -2130,4 +2188,4 @@
 ├── vendor
 │   └── xlsx-0.20.3.tgz
 └── vitest.config.mts
-292 directories, 2160 files
+305 directories, 2205 files
