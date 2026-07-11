@@ -1,5 +1,6 @@
 .
 ├── .github
+│   ├── dependabot.yml
 │   └── workflows
 │       └── tests.yml
 ├── CHANGELOG.md
@@ -57,6 +58,9 @@
     │   │   ├── 0013_alter_adaptor_product.py
     │   │   ├── 0014_indicator_slug_alter_adaptor_product.py
     │   │   ├── 0015_alter_indicator_unique_together_and_more.py
+    │   │   ├── 0016_record.py
+    │   │   ├── 0017_remove_indicator_unique_username_and_more.py
+    │   │   ├── 0018_deduplicate_indicators.py
     │   │   └── __init__.py
     │   ├── models.py
     │   ├── templates
@@ -67,7 +71,7 @@
     │   │       │   ├── footer.html
     │   │       │   └── header.html
     │   │       ├── index.html
-    │   │       ├── last_indicators.html
+    │   │       ├── last_records.html
     │   │       ├── legal_notice.html
     │   │       └── products_details.html
     │   ├── tests
@@ -84,9 +88,15 @@
     │   │   │   │   └── test_api_indicators.py
     │   │   │   ├── products
     │   │   │   │   └── test_api_products.py
+    │   │   │   ├── records
+    │   │   │   │   ├── test_api_records_create.py
+    │   │   │   │   ├── test_api_records_delete.py
+    │   │   │   │   ├── test_api_records_list.py
+    │   │   │   │   └── test_api_records_retrieve.py
     │   │   │   ├── test_schema.py
     │   │   │   └── test_submissions.py
-    │   │   └── conftest.py
+    │   │   ├── conftest.py
+    │   │   └── swagger.json
     │   ├── urls.py
     │   ├── utils
     │   │   └── utils.py
@@ -98,4 +108,4 @@
     ├── pytest.ini
     ├── requirements.txt
     └── schema.yml
-22 directories, 78 files
+23 directories, 87 files
