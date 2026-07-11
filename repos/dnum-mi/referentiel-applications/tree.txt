@@ -56,6 +56,7 @@
 │   ├── nest-cli.json
 │   ├── package.json
 │   ├── pnpm-lock.yaml
+│   ├── pnpm-workspace.yaml
 │   ├── prisma
 │   │   ├── docs
 │   │   │   └── schema.md
@@ -304,6 +305,12 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260702160951_update_set_data_read_permission_by_true
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260703102433_add_technology_and_license_tables
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260707120000_add_search_perf_indexes
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260707134153_add_permission_write_data
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   ├── schema
 │   │   │   ├── applications.prisma
@@ -313,6 +320,7 @@
 │   │   │   ├── externals.prisma
 │   │   │   ├── hosting.prisma
 │   │   │   ├── labels.prisma
+│   │   │   ├── license.prisma
 │   │   │   ├── mdit-campaign.prisma
 │   │   │   ├── metadata.prisma
 │   │   │   ├── notification-log.prisma
@@ -324,6 +332,7 @@
 │   │   │   ├── stats.prisma
 │   │   │   ├── tag.prisma
 │   │   │   ├── technical-debt-info.prisma
+│   │   │   ├── technology.prisma
 │   │   │   ├── token.prisma
 │   │   │   ├── user-log.prisma
 │   │   │   └── users.prisma
@@ -533,6 +542,14 @@
 │   │   │   ├── labels.controller.ts
 │   │   │   ├── labels.module.ts
 │   │   │   └── labels.service.ts
+│   │   ├── license
+│   │   │   ├── dto
+│   │   │   │   └── license.dto.ts
+│   │   │   ├── entities
+│   │   │   │   └── license.entity.ts
+│   │   │   ├── license.controller.ts
+│   │   │   ├── license.module.ts
+│   │   │   └── license.service.ts
 │   │   ├── links
 │   │   │   ├── dto
 │   │   │   │   └── links.dto.ts
@@ -672,6 +689,17 @@
 │   │   │   ├── technical-debt-info.module.ts
 │   │   │   ├── technical-debt-info.service.ts
 │   │   │   └── technical-debt.controller.ts
+│   │   ├── technology
+│   │   │   ├── dto
+│   │   │   │   └── technology.dto.ts
+│   │   │   ├── entities
+│   │   │   │   └── technology.entity.ts
+│   │   │   ├── technology.controller.ts
+│   │   │   ├── technology.module.ts
+│   │   │   ├── technology.service.ts
+│   │   │   └── utils
+│   │   │       ├── endoflife.utils.spec.ts
+│   │   │       └── endoflife.utils.ts
 │   │   ├── token
 │   │   │   ├── domain
 │   │   │   │   ├── token-status.entity.ts
@@ -750,6 +778,7 @@
 │   │   ├── jest.setup.ts
 │   │   ├── label-source.e2e-spec.ts
 │   │   ├── labels.e2e-spec.ts
+│   │   ├── licenses.e2e-spec.ts
 │   │   ├── links.e2e-spec.ts
 │   │   ├── mdit-campaign.e2e-spec.ts
 │   │   ├── organization.e2e-spec.ts
@@ -761,6 +790,7 @@
 │   │   ├── swagger.e2e-spec.ts
 │   │   ├── tag.e2e-spec.ts
 │   │   ├── technical-debt-info.e2e-spec.ts
+│   │   ├── technologies.e2e-spec.ts
 │   │   ├── test-database.utils.ts
 │   │   └── user.e2e-spec.ts
 │   ├── tsconfig.build.json
@@ -853,6 +883,7 @@
 │   ├── package.json
 │   ├── playwright.config.ts
 │   ├── pnpm-lock.yaml
+│   ├── pnpm-workspace.yaml
 │   ├── public
 │   │   ├── android-chrome-192x192.png
 │   │   ├── android-chrome-512x512.png
@@ -956,6 +987,9 @@
 │   │   │   ├── label
 │   │   │   │   ├── LabelList.vue
 │   │   │   │   └── LabelModal.vue
+│   │   │   ├── license
+│   │   │   │   ├── LicenseForm.vue
+│   │   │   │   └── LicenseTab.vue
 │   │   │   ├── modal
 │   │   │   │   ├── AddRelationModal.vue
 │   │   │   │   ├── DeleteConfirmationModal.vue
@@ -984,6 +1018,9 @@
 │   │   │   │   ├── TechnicalDebtCard.vue
 │   │   │   │   ├── TechnicalDebtChart.vue
 │   │   │   │   └── TechnicalDebtModal.vue
+│   │   │   ├── technology
+│   │   │   │   ├── TechnologyForm.vue
+│   │   │   │   └── TechnologyTab.vue
 │   │   │   └── users
 │   │   │       ├── UserInfoTab.vue
 │   │   │       ├── UserPermissionList.vue
@@ -1125,4 +1162,4 @@
 │       ├── campaign.mjs
 │       └── sync-issue.mjs
 └── release-please-config.json
-303 directories, 824 files
+315 directories, 849 files

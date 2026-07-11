@@ -1,57 +1,49 @@
-## Changelog : referentiel-applications (30 derniers jours, au 04 juillet 2026)
+## Changelog : referentiel-applications (30 derniers jours, au 10 juillet 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives en termes d'accessibilité (RGAA), d'import de données (Excel, MAIA) et de fonctionnalités d'administration (gestion des droits, impersonation). Des corrections de bugs et des optimisations de performance ont également été apportées pour améliorer la stabilité et l'expérience utilisateur.
+Ce mois-ci, les améliorations se concentrent sur l'accessibilité (RGAA), la performance de la recherche d'applications, l'ajout de nouvelles fonctionnalités comme la gestion des licences et des stacks techniques, ainsi que des corrections de bugs et des améliorations de la sécurité. L'importation de données via Excel a également été améliorée.
 
 ### Évolutions fonctionnelles
-- **Import de données :**
-    - Ajout de l'import d'acteurs depuis un fichier Excel [#751](https://github.com/dnum-mi/referentiel-applications/issues/751)
-    - Import Excel des onglets applications et hébergements [#752](https://github.com/dnum-mi/referentiel-applications/issues/752)
-    - Import Excel avec gestion des conformités [#1881](https://github.com/dnum-mi/referentiel-applications/issues/1881)
-- **Administration :**
-    - Possibilité de modifier globalement les applications en tant qu'administrateur [#1888](https://github.com/dnum-mi/referentiel-applications/issues/1888)
-    - Implémentation de l'impersonation d'un utilisateur par un administrateur [#1764](https://github.com/dnum-mi/referentiel-applications/issues/1764)
-- **Recherche :**
-    - Mise en place d'une recherche plein texte des applications [#1753](https://github.com/dnum-mi/referentiel-applications/issues/1753)
-- **MDIT :**
-    - Ajout de la gestion des millésimes MDIT (campagnes dette IT) avec sélecteur de période et accès administrateur [#1848](https://github.com/dnum-mi/referentiel-applications/issues/1848)
-- **MAIA :**
-    - Intégration de l'import MAIA dans le formulaire d'acteur [#1762](https://github.com/dnum-mi/referentiel-applications/issues/1762)
-    - Vérification de l'email MAIA lors de la modification d'un utilisateur [#1818](https://github.com/dnum-mi/referentiel-applications/issues/1818)
-    - Gestion des organisations MAIA lors de la création d'un utilisateur [#1793](https://github.com/dnum-mi/referentiel-applications/issues/1793)
-- **Filtres :**
-    - Ajout de filtres de conformité et mise à jour des composants associés [#1788](https://github.com/dnum-mi/referentiel-applications/issues/1788)
+- Ajout de la gestion des licences et des stacks techniques sur la fiche d'application.
+- Implémentation de filtres de conformité.
+- Possibilité d'importer des acteurs depuis un fichier Excel.
+- Importation Excel des onglets applications et hébergements.
+- Amélioration de l'importation Excel avec la gestion des droits d'accès par application.
+- Ajout de la possibilité de trier les types d'acteur.
+- Implémentation de la recherche full-text des applications.
+- Ajout de la possibilité de s'impersonner en tant qu'un autre utilisateur (pour les administrateurs).
+- Ajout de la gestion des tokens applicatifs pour l'administration.
+- Amélioration de la représentation graphique MDIT.
+- Ajout de la possibilité d'attacher une organisation MAIA lors de la création d'un utilisateur.
 
 ### Évolutions techniques
-- **Accessibilité (RGAA) :**
-    - Amélioration de l'accessibilité de plusieurs composants (combobox, autocomplete, étiquettes de champs, gestion du focus, etc.) pour répondre aux critères RGAA.
-- **Sécurité :**
-    - Résolution des alertes de sécurité détectées par CodeQL [#1846](https://github.com/dnum-mi/referentiel-applications/issues/1846)
-- **Infrastructure :**
-    - Correction pour permettre l'écriture de l'image frontend dans un environnement OpenShift [#1914](https://github.com/dnum-mi/referentiel-applications/issues/1914)
-- **Tests :**
-    - Ajout de tests de non-régression (e2e) pour plusieurs domaines fonctionnels.
-- **Refactoring :**
-    - Correction de code smells TypeScript détectés par SonarQube [#1898](https://github.com/dnum-mi/referentiel-applications/issues/1898)
-    - Amélioration de la gestion des erreurs et des promesses.
-- **CI/CD :**
-    - Publication des versions 1.80.1 et 1.80.0.
+- Optimisation de la performance de la recherche d'applications.
+- Correction des alertes de sécurité Dependabot (frontend et backend).
+- Mise à jour de l'image Docker frontend pour résoudre des problèmes de permissions.
+- Refactoring du code TypeScript pour corriger des anomalies détectées par SonarQube.
+- Activation de la configuration ESLint flat.
+- Amélioration de la gestion des promesses pour éviter des erreurs.
+- Utilisation d'éléments natifs plutôt que de rôles ARIA dans les composants Vue pour améliorer l'accessibilité.
+- Amélioration de la gestion des tests E2E (Playwright) avec l'ajout de protocoles de non-régression.
+- Correction de problèmes de focus et de gestion du clavier pour l'accessibilité (RGAA).
+- Amélioration de la gestion des messages d'état pour l'accessibilité (RGAA).
+- Ajout de la gestion des champs obligatoires et des suggestions pour les formulaires (RGAA).
 
 ### Autres changements
-- Mise à jour de la configuration des tests unitaires frontend.
-- Suppression du plugin vite-plugin-vue-devtools.
-- Correction de la valeur totale pour le MDIT.
-- Amélioration de la représentation graphique du MDIT.
-- Correction de bugs mineurs et améliorations de l'interface utilisateur.
-- Ajout de la validation par défaut dans la page de recherche d'applications.
-- Possibilité de rendre la date de statut optionnelle.
-- Ajout de la gestion des groupes MAIA/MOE lors de la création d'une application.
-- Correction de l'affichage des valeurs dans le graphique iqchart.
-- Mise à jour des URLs Swagger OIDC.
-- Correction d'un bug lié à la gestion des permissions.
-- Ajout d'une fonction de comparaison pour les tris de tableaux.
-- Correction de l'affichage des libellés "Maîtrise des coûts".
-- Suppression des permissions d'écriture globales sur l'image frontend.
-- Correction de l'emplacement du titre "Détails de la modification" dans les tests e2e.
-- Mise à jour de la table refapp avec le tri.
-- Ajout de la possibilité de tracer les modifications de la matrice des droits dans l'historique de refapp.
+- Correction de bugs mineurs dans l'interface utilisateur et les tests E2E.
+- Mise à jour des URLs Swagger pour l'authentification OIDC.
+- Amélioration de la documentation et des commentaires.
+- Correction de problèmes de responsive design pour le graphique TIME.
+- Ajout de tests de non-régression pour plusieurs domaines.
+- Correction de problèmes liés à la validation des filtres d'applications.
+- Correction de bugs liés à l'historique des modifications de la matrice des droits.
+- Correction de problèmes liés à l'affichage du total MDIT.
+- Ajout de la possibilité de rendre le champ "date de statut" optionnel.
+- Ajout de la validation de l'email MAIA lors de la modification d'un utilisateur.
+- Correction de problèmes de localisation des éléments dans les tests E2E.
+- Correction de problèmes de déconnexion automatique.
+- Correction de problèmes liés à l'affichage des étiquettes de champs manquantes (RGAA).
+- Ajout de la gestion des combobox accessibles (RGAA).
+- Correction de problèmes liés aux liens et aux mentions de nouvelles fenêtres (RGAA).
+- Correction de problèmes liés à l'en-tête, au pied de page et aux repères (landmarks) (RGAA).
+- Correction de problèmes liés à la transcription et à l'étiquetage des graphiques (RGAA).
