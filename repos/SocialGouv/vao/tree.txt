@@ -1483,6 +1483,11 @@
 │   │   │   │   ├── attach_file.png
 │   │   │   │   ├── css
 │   │   │   │   │   └── main.css
+│   │   │   │   ├── icones
+│   │   │   │   │   ├── calendar-check-fill.svg
+│   │   │   │   │   ├── file-shield-2-line.svg
+│   │   │   │   │   └── history-line.svg
+│   │   │   │   ├── illustration-travellers.svg
 │   │   │   │   ├── mon-agrement.svg
 │   │   │   │   └── undraw_questions_g2px.svg
 │   │   │   ├── components
@@ -1598,6 +1603,7 @@
 │   │   │   │       ├── multiSelect.vue
 │   │   │   │       └── navigation-buttons.vue
 │   │   │   ├── composables
+│   │   │   │   ├── useAgrementDetection.ts
 │   │   │   │   ├── useFetchBackend.js
 │   │   │   │   ├── useIsDownloading.ts
 │   │   │   │   └── useMenuNavItem.ts
@@ -1612,7 +1618,9 @@
 │   │   │   │   ├── check-demande-sejour-id-param.js
 │   │   │   │   ├── check-eig-id-param.js
 │   │   │   │   ├── check-feature-flags.ts
+│   │   │   │   ├── check-first-agrement.ts
 │   │   │   │   ├── check-hebergement-id-param.js
+│   │   │   │   ├── check-no-agrement-existing.ts
 │   │   │   │   ├── check-organisme-id-param.js
 │   │   │   │   ├── check-organisme-is-complet.js
 │   │   │   │   ├── check-roles.js
@@ -1620,7 +1628,8 @@
 │   │   │   │   └── load-agrement-context.ts
 │   │   │   ├── pages
 │   │   │   │   ├── agrement
-│   │   │   │   │   └── [[agrementId]].vue
+│   │   │   │   │   ├── [[agrementId]].vue
+│   │   │   │   │   └── bienvenue.vue
 │   │   │   │   ├── comptes
 │   │   │   │   │   └── [[userId]].vue
 │   │   │   │   ├── connexion
@@ -1689,6 +1698,8 @@
 │   │   │       ├── agrementFile.spec.ts
 │   │   │       ├── agrementFile.ts
 │   │   │       ├── agrementMenu.ts
+│   │   │       ├── agrementStatus.spec.ts
+│   │   │       ├── agrementStatus.ts
 │   │   │       ├── cssHelper.js
 │   │   │       ├── csv.js
 │   │   │       ├── debounce.js
@@ -2017,6 +2028,7 @@
 │       │   │   ├── useAgrementPageTitle.ts
 │       │   │   ├── useAuthentication.ts
 │       │   │   ├── useLayoutHeader.ts
+│       │   │   ├── useLoginFormFocus.ts
 │       │   │   ├── useLogout.ts
 │       │   │   ├── useQuickLinks.ts
 │       │   │   └── useToaster.ts
@@ -2087,4 +2099,4 @@
 ├── renovate.json
 ├── script.sh
 └── sonar-project.properties
-303 directories, 1791 files
+304 directories, 1802 files
