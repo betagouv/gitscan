@@ -1,10 +1,16 @@
-## Changelog : trackdechets-assistance (derniers 30 jours)
+## Changelog : trackdechets-assistance (30 derniers jours, au 10 juillet 2026)
 
 ### Résumé
-Ce changelog présente les dernières améliorations apportées à l'application Trackdéchets. Les modifications se concentrent sur la résolution d'un problème lié à l'affichage des webinaires passés et l'amélioration de la gestion des dates pour les événements.
+Cette mise à jour améliore l'expérience utilisateur en intégrant directement les mentions légales et la politique de confidentialité sur le site web, au lieu de les proposer en téléchargement PDF. Une fonctionnalité de récupération manuelle de l'assistance Trackdéchets a également été ajoutée.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug empêchant l'affichage correct des webinaires passés. Les dates des webinaires archivés sont maintenant affichées correctement. (#64)
+- Intégration de la politique de confidentialité directement sur la page web correspondante [#18381](https://github.com/MTES-MCT/trackdechets-assistance/issues/18381).
+- Intégration des mentions légales directement sur la page web correspondante [#18381](https://github.com/MTES-MCT/trackdechets-assistance/issues/18381).
+- Ajout d'une fonctionnalité de récupération manuelle de l'assistance Trackdéchets [#17930](https://github.com/MTES-MCT/trackdechets-assistance/issues/17930).
+- Correction de la navigation dans le footer des pages "Mentions Légales" et "Politique de Confidentialité" [#18381](https://github.com/MTES-MCT/trackdechets-assistance/issues/18381).
 
 ### Évolutions techniques
-- Amélioration de la logique de gestion des dates pour les événements afin d'assurer une cohérence et une précision accrues. (#64)
+- Aucune évolution technique significative à signaler.
+
+### Autres changements
+- Aucune autre modification n'a été apportée.
