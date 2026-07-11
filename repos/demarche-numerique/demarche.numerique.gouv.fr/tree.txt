@@ -470,6 +470,9 @@
 │   │   │   ├── geo_areas_component.html.erb
 │   │   │   ├── geo_areas_component.rb
 │   │   │   ├── geo_areas_component.yml
+│   │   │   ├── identite_entreprise_component
+│   │   │   │   ├── identite_entreprise_component.en.yml
+│   │   │   │   └── identite_entreprise_component.fr.yml
 │   │   │   ├── identite_entreprise_component.rb
 │   │   │   ├── identite_entreprise_for_usager_component
 │   │   │   │   ├── identite_entreprise_for_usager_component.en.yml
@@ -630,7 +633,7 @@
 │   │   │   ├── champ_label_content_component
 │   │   │   │   ├── champ_label_content_component.en.yml
 │   │   │   │   ├── champ_label_content_component.fr.yml
-│   │   │   │   └── champ_label_content_component.html.haml
+│   │   │   │   └── champ_label_content_component.html.erb
 │   │   │   ├── champ_label_content_component.rb
 │   │   │   ├── checkbox_component
 │   │   │   │   └── checkbox_component.html.haml
@@ -1259,7 +1262,7 @@
 │   │   ├── select_procedure_drop_down_list_component
 │   │   │   ├── select_procedure_drop_down_list_component.en.yml
 │   │   │   ├── select_procedure_drop_down_list_component.fr.yml
-│   │   │   └── select_procedure_drop_down_list_component.html.haml
+│   │   │   └── select_procedure_drop_down_list_component.html.erb
 │   │   ├── select_procedure_drop_down_list_component.rb
 │   │   ├── simple_format_component
 │   │   │   └── simple_format_component.html.erb
@@ -1275,7 +1278,7 @@
 │   │   ├── tags_button_list_component
 │   │   │   ├── tags_button_list_component.en.yml
 │   │   │   ├── tags_button_list_component.fr.yml
-│   │   │   └── tags_button_list_component.html.haml
+│   │   │   └── tags_button_list_component.html.erb
 │   │   ├── tags_button_list_component.rb
 │   │   ├── tiptap_editor_component.html.erb
 │   │   ├── tiptap_editor_component.rb
@@ -1494,6 +1497,7 @@
 │   │   │   ├── services_controller.rb
 │   │   │   ├── super_admins_controller.rb
 │   │   │   ├── team_accounts_controller.rb
+│   │   │   ├── top_activity_procedures_controller.rb
 │   │   │   ├── users_controller.rb
 │   │   │   └── zones_controller.rb
 │   │   ├── password_complexity_controller.rb
@@ -1552,6 +1556,7 @@
 │   │   ├── service_dashboard.rb
 │   │   ├── super_admin_dashboard.rb
 │   │   ├── team_account_dashboard.rb
+│   │   ├── top_activity_procedure_dashboard.rb
 │   │   ├── user_dashboard.rb
 │   │   └── zone_dashboard.rb
 │   ├── fields
@@ -1806,6 +1811,7 @@
 │   │   │   │   └── index.tsx
 │   │   │   ├── MapReader.tsx
 │   │   │   ├── Select.tsx
+│   │   │   ├── SelectSections.test.tsx
 │   │   │   ├── process-env-shim.ts
 │   │   │   ├── react-aria
 │   │   │   │   ├── components
@@ -1870,6 +1876,7 @@
 │   │   │   ├── enable_submit_if_form_changes_controller.ts
 │   │   │   ├── enable_submit_if_uploaded_controller.tsx
 │   │   │   ├── expand_controller.ts
+│   │   │   ├── external_data_refresh_controller.ts
 │   │   │   ├── file_input_reset_controller.ts
 │   │   │   ├── filter_preview_controller.ts
 │   │   │   ├── fix_table_border_controller.ts
@@ -2446,6 +2453,7 @@
 │   │   ├── targeted_user_link.rb
 │   │   ├── task_log.rb
 │   │   ├── team_account.rb
+│   │   ├── top_activity_procedure.rb
 │   │   ├── traitement.rb
 │   │   ├── trusted_device_token.rb
 │   │   ├── type_de_champ.rb
@@ -2819,10 +2827,10 @@
 │       │   │   ├── autorisations.html.erb
 │       │   │   ├── create.html.erb
 │       │   │   ├── edit.html.erb
-│       │   │   ├── nom.html.haml
-│       │   │   └── securite.html.haml
+│       │   │   ├── nom.html.erb
+│       │   │   └── securite.html.erb
 │       │   ├── archives
-│       │   │   └── index.html.haml
+│       │   │   └── index.html.erb
 │       │   ├── attestation_template_v2s
 │       │   │   ├── _fixed_footer.html.haml
 │       │   │   ├── _form.html.haml
@@ -3027,8 +3035,8 @@
 │       │   ├── notify_brouillon_not_submitted.html.haml
 │       │   ├── notify_en_construction_deletion_to_administration.html.haml
 │       │   ├── notify_groupe_instructeur_changed.html.haml
-│       │   ├── notify_near_deletion_for_tiers.html.haml
-│       │   ├── notify_near_deletion_to_administration.html.haml
+│       │   ├── notify_near_deletion_for_tiers.html.erb
+│       │   ├── notify_near_deletion_to_administration.html.erb
 │       │   ├── notify_near_deletion_to_user.html.erb
 │       │   ├── notify_new_answer.html.haml
 │       │   ├── notify_new_avis_to_instructeur.html.haml
@@ -3182,6 +3190,7 @@
 │       │   │   ├── edit.html.haml
 │       │   │   └── new.html.haml
 │       │   ├── dossiers
+│       │   │   ├── _annotations_error_alert.html.erb
 │       │   │   ├── _archived_block.html.haml
 │       │   │   ├── _dropdown_motivation_form.html.haml
 │       │   │   ├── _envoyer_dossier_block.html.haml
@@ -3190,8 +3199,8 @@
 │       │   │   ├── _header_actions.html.haml
 │       │   │   ├── _header_bottom.html.haml
 │       │   │   ├── _header_top.html.haml
-│       │   │   ├── _instruction_button_motivation.html.haml
 │       │   │   ├── _instruction_modal_content.html.haml
+│       │   │   ├── _instruction_modal_footer.html.erb
 │       │   │   ├── _instruction_motivation_fields.html.haml
 │       │   │   ├── _instruction_selected_form.html.haml
 │       │   │   ├── _instruction_tiles.html.haml
@@ -3360,6 +3369,9 @@
 │       │   ├── super_admins
 │       │   │   ├── reset_otp_edit.html.erb
 │       │   │   └── show.html.erb
+│       │   ├── top_activity_procedures
+│       │   │   ├── _collection.html.erb
+│       │   │   └── _index_header.html.erb
 │       │   └── users
 │       │       ├── emails.html.erb
 │       │       └── show.html.erb
@@ -3670,6 +3682,7 @@
 │   │   ├── date_select.rb
 │   │   ├── delayed_job.rb
 │   │   ├── devise.rb
+│   │   ├── devise_store_location_cap.rb
 │   │   ├── excon_setup.rb
 │   │   ├── filter_parameter_logging.rb
 │   │   ├── flipper.rb
@@ -3687,7 +3700,6 @@
 │   │   ├── mailcatcher.rb
 │   │   ├── mailtrap.rb
 │   │   ├── mime_types.rb
-│   │   ├── new_framework_defaults_8_0.rb
 │   │   ├── omniauth.rb
 │   │   ├── open_id_connect.rb
 │   │   ├── otp.rb
@@ -3938,6 +3950,9 @@
 │   │       │   ├── api_tokens
 │   │       │   │   ├── create.en.yml
 │   │       │   │   └── create.fr.yml
+│   │       │   ├── archives
+│   │       │   │   ├── index.en.yml
+│   │       │   │   └── index.fr.yml
 │   │       │   ├── attestation_template_v2s
 │   │       │   │   └── fr.yml
 │   │       │   ├── experts_procedures
@@ -4798,7 +4813,9 @@
 │   │   └── unscoped.rb
 │   ├── core_ext
 │   │   ├── array.rb
+│   │   ├── ethon.rb
 │   │   ├── phonelib.rb
+│   │   ├── typhoeus.rb
 │   │   └── xlsxtream.rb
 │   ├── data
 │   │   └── api_geo
@@ -4983,6 +5000,7 @@
 │   │   │   ├── clear_filter_buttons_component_spec.rb
 │   │   │   ├── column_filter_value_component_spec.rb
 │   │   │   ├── column_picker_component_spec.rb
+│   │   │   ├── edit_dossier_button_component_spec.rb
 │   │   │   ├── editable_filters_component_spec.rb
 │   │   │   ├── en_contruction_menu_component_spec.rb
 │   │   │   ├── instruction_button_component_spec.rb
@@ -5157,6 +5175,7 @@
 │   │   │   ├── education_controller_spec.rb
 │   │   │   └── referentiel_controller_spec.rb
 │   │   ├── devise
+│   │   │   ├── store_location_cap_spec.rb
 │   │   │   └── store_location_extension_spec.rb
 │   │   ├── email_checker_controller_spec.rb
 │   │   ├── errors_controller_spec.rb
@@ -5480,6 +5499,7 @@
 │   │   ├── dossier_link_helper_spec.rb
 │   │   ├── etablissement_helper_spec.rb
 │   │   ├── gallery_helper_spec.rb
+│   │   ├── instruction_button_helper_spec.rb
 │   │   ├── mailer_helper_spec.rb
 │   │   ├── navigation_helper_spec.rb
 │   │   ├── procedure_helper_spec.rb
@@ -5605,10 +5625,13 @@
 │   │   ├── cops
 │   │   │   └── rspec
 │   │   │       └── consecutive_it_blocks_spec.rb
+│   │   ├── core_ext
+│   │   │   └── typhoeus_spec.rb
 │   │   ├── data_fixer
 │   │   │   └── champs_phone_invalid_spec.rb
 │   │   ├── database
 │   │   │   └── migration_helpers_spec.rb
+│   │   ├── date_detection_utils_spec.rb
 │   │   ├── download_manager
 │   │   │   └── parallel_download_queue_spec.rb
 │   │   ├── email_checker_spec.rb
@@ -5896,6 +5919,7 @@
 │   ├── requests
 │   │   ├── active_storage
 │   │   │   └── direct_uploads_spec.rb
+│   │   ├── cookie_overflow_prevention_spec.rb
 │   │   └── instructeurs
 │   │       └── telecharger_pjs_spec.rb
 │   ├── services
@@ -6302,4 +6326,4 @@
 │           └── leaflet.scss
 ├── vite.config.ts
 └── vitest.config.ts
-1015 directories, 5606 files
+1019 directories, 5626 files
