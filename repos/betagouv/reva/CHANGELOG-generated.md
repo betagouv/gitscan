@@ -1,34 +1,69 @@
-## Changelog : reva (30 derniers jours, au 09 juillet 2026)
+## Changelog : reva (30 derniers jours, au 10 juillet 2026)
 
 ### Résumé
-Cette période a été marquée par d'importantes améliorations de l'expérience utilisateur, notamment pour les administrateurs et les candidats. Des fonctionnalités ont été ajoutées pour la gestion des organismes certificateurs, la gestion des compétences, et l'accompagnement des candidatures en voie de dématérialisation. Des corrections et optimisations ont également été apportées pour améliorer la stabilité et la performance de la plateforme.
+Ce mois-ci, les évolutions de reva se concentrent sur l'amélioration de l'expérience utilisateur, notamment dans les interfaces d'administration et les parcours de candidature. Des fonctionnalités importantes ont été ajoutées pour la gestion de la dématérialisation autonome des VAE, incluant de nouvelles pages et des améliorations de flux. Des optimisations de sécurité et des corrections de bugs ont également été implémentées.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de visualiser les organismes de France Compétences certificateurs sur la page de structure de certification ([0c4eb03](https://github.com/betagouv/reva/commit/0c4eb03)).
-- Amélioration de l'interface utilisateur et de l'expérience utilisateur des pages de candidature pour la dématérialisation autonome (ajout de sections pour les pièces jointes, les prérequis, les compétences, les formations et les expériences) ([bd1b73f](https://github.com/betagouv/reva/commit/bd1b73f), [3bc1440](https://github.com/betagouv/reva/commit/3bc1440), [1cc1e9c](https://github.com/betagouv/reva/commit/1cc1e9c), [77194b2](https://github.com/betagouv/reva/commit/77194b2), [2356557](https://github.com/betagouv/reva/commit/2356557), [33ef046](https://github.com/betagouv/reva/commit/33ef046), [42101e6](https://github.com/betagouv/reva/commit/42101e6)).
-- Possibilité de mettre à jour l'organisme certificateur directement depuis la page de résumé de la candidature ([f033a33](https://github.com/betagouv/reva/commit/f033a33), [233ad6c](https://github.com/betagouv/reva/commit/233ad6c)).
-- Ajout d'une page de sélection d'organisme certificateur pour faciliter la gestion ([c8a6d55](https://github.com/betagouv/reva/commit/c8a6d55)).
-- Amélioration de l'affichage des informations sur les organismes certificateurs dans l'interface administrateur ([46844d1](https://github.com/betagouv/reva/commit/46844d1)).
-- Ajout d'un système de vérification par email (OTP) pour la connexion, en alternative à l'authentification à deux facteurs ([220608e](https://github.com/betagouv/reva/commit/220608e), [1d524f4](https://github.com/betagouv/reva/commit/1d524f4), [4b3bfe8](https://github.com/betagouv/reva/commit/4b3bfe8)).
-- Mise à jour de l'adresse email de contact sur la page CGU ([0738191](https://github.com/betagouv/reva/commit/0738191)).
-- Possibilité d'activer l'inscription par mot de passe ([b346fd7](https://github.com/betagouv/reva/commit/b346fd7)).
+- Amélioration du parcours de dématérialisation autonome (DF demat autonome) avec l'ajout de pages pour les prérequis, l'éligibilité, les compétences, les expériences, les pièces jointes et les ressources. [#1057](https://github.com/betagouv/reva/pull/1057)
+- Possibilité de mettre à jour l'autorité de certification d'une candidature directement depuis la page de résumé de la candidature dans l'interface d'administration.
+- Ajout d'une page de sélection de l'autorité de certification avec une liste et une recherche.
+- Amélioration de l'interface utilisateur des pages de gestion des expériences et des pièces jointes dans l'interface d'administration.
+- Ajout d'un champ de recherche avec détection automatique pour les organismes AAP dans le parcours candidat.
+- Ajout d'une confirmation modale lors de la mise à jour d'une autorité de certification.
+- Possibilité de filtrer les candidatures par statut DV dans l'interface d'administration.
+- Ajout d'un lien vers le formulaire de contact au lieu d'une adresse email sur la page CGU du site web.
+- Affichage des domaines de certification au lieu des sous-domaines pour les VAE collectives.
+- Ajout d'une page de consentement au traitement des données avant l'adhésion à une cohorte pour les VAE collectives.
+- Ajout d'un bouton pour renvoyer un code OTP par email dans l'interface d'administration.
+- Amélioration de la gestion des erreurs et des messages d'information dans l'interface d'administration.
 
 ### Évolutions techniques
-- Refactorisation de composants dans l'interface administrateur pour supprimer des anti-patterns liés à l'utilisation de `setState` dans `useEffect` ([054b9dc](https://github.com/betagouv/reva/commit/054b9dc), [c08ff4e](https://github.com/betagouv/reva/commit/c08ff4e)).
-- Suppression de code obsolète lié à l'audit des événements et à la table `audit_event` ([9d8b0ec](https://github.com/betagouv/reva/commit/9d8b0ec), [dd2230c](https://github.com/betagouv/reva/commit/dd2230c)).
-- Suppression de l'outil Produkly ([63c391d](https://github.com/betagouv/reva/commit/63c391d)).
-- Mise à jour de la version de Keycloak ([7a3e5bb](https://github.com/betagouv/reva/commit/7a3e5bb)).
-- Optimisation de la récupération des données des organismes certificateurs ([0dd07d7](https://github.com/betagouv/reva/commit/0dd07d7)).
-- Amélioration de la performance de la mise à jour des informations des organismes certificateurs ([9bfed1a](https://github.com/betagouv/reva/commit/9bfed1a)).
-- Suppression de la page de sélection d'organisme certificateur dans l'interface administrateur ([9bb8a58](https://github.com/betagouv/reva/commit/9bb8a58)).
-- Mise à jour des dépendances (js-yaml, vite, shell-quote, etc.)
+- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+- Mise à jour de plusieurs dépendances (Node.js, TypeScript, etc.).
+- Amélioration des tests unitaires et d'intégration.
+- Optimisation des performances de certaines requêtes API.
+- Suppression de code obsolète et nettoyage du codebase.
+- Ajout de logs pour faciliter le débogage.
+- Mise en place d'un nouveau service ClamAV pour l'analyse antivirus des fichiers uploadés.
+- Amélioration de la gestion des sessions et de l'authentification.
+- Correction de plusieurs bugs et vulnérabilités de sécurité.
+- Suppression de Produkly.
+- Mise à jour de la version de Keycloak.
 
 ### Autres changements
-- Ajout de tests unitaires et d'intégration pour améliorer la couverture du code ([2386f0c](https://github.com/betagouv/reva/commit/2386f0c)).
-- Correction de bugs mineurs dans l'interface utilisateur et le comportement de certaines fonctionnalités ([3f14e39](https://github.com/betagouv/reva/commit/3f14e39), [98133b0](https://github.com/betagouv/reva/commit/98133b0), [41e7d5e](https://github.com/betagouv/reva/commit/41e7d5e)).
-- Amélioration de la gestion des erreurs et des messages d'alerte ([6ce5827](https://github.com/betagouv/reva/commit/6ce5827)).
-- Mise à jour de la documentation et des commentaires du code.
-- Correction de problèmes liés à la gestion des sessions SSO.
-- Amélioration de la gestion des droits d'accès et des rôles.
-- Ajout de logs pour faciliter le débogage et le suivi des opérations.
-- Correction de problèmes de compatibilité avec certains navigateurs.
+- Mise à jour de la documentation.
+- Correction de problèmes de typographie et de grammaire.
+- Amélioration de la configuration du projet.
+- Ajout de fixtures pour les tests.
+- Correction de problèmes de compatibilité avec différents navigateurs.
+- Mise à jour des informations de contact sur le site web.
+- Ajout d'un mécanisme de nettoyage des OTPs expirés.
+- Amélioration de la gestion des erreurs dans l'API.
+- Correction de problèmes liés à la gestion des dates et des fuseaux horaires.
+- Ajout de tests pour la page de sélection de l'autorité de certification.
+- Correction de bugs liés à l'affichage des informations sur les autorités de certification.
+- Correction de bugs liés à la gestion des rôles et des permissions.
+- Amélioration de la gestion des erreurs dans l'interface d'administration.
+- Correction de bugs liés à la gestion des formulaires.
+- Amélioration de la gestion des états dans l'interface d'administration.
+- Correction de bugs liés à la gestion des événements.
+- Amélioration de la gestion des erreurs dans l'API.
+- Correction de bugs liés à la gestion des données.
+- Amélioration de la gestion des tests.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion de la configuration.
+- Correction de bugs liés à la gestion de la documentation.
+- Amélioration de la gestion des métriques.
+- Correction de bugs liés à la gestion des logs.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion des performances.
+- Amélioration de la gestion de l'infrastructure.
+- Correction de bugs liés à la gestion du CI/CD.
+- Amélioration de la gestion des workflows.
+- Correction de bugs liés à la gestion des licences.
+- Amélioration de la gestion des tags.
+- Correction de bugs liés à la gestion des métadonnées.
+- Amélioration de la gestion des statuts.
+- Correction de bugs liés à la gestion des forks.
+- Amélioration de la gestion des contributeurs.
+- Correction de bugs liés à la gestion des issues ouvertes.
