@@ -5,14 +5,19 @@
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
-    "Authentification & Accès"
+    "Authentification & Accès",
+    "Recherche & Filtres",
+    "Gestion des utilisateurs & Permissions",
+    "Notifications & Alertes"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "@codegouvfr/react-dsfr",
     "@prisma/client",
     "bcrypt",
+    "better-auth",
     "cheerio",
+    "jose",
     "next",
     "pg",
     "prisma"
@@ -22,33 +27,34 @@
     "PostgreSQL & SQL",
     "React / Next.js",
     "TypeScript / JavaScript",
-    "Docker & Conteneurs"
+    "Authentification (composant)"
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "oauth2"
+    ],
+    "providers": [
+      "ProConnect"
     ]
   },
-  "tests": [
-    "Vitest"
-  ],
-  "workflows": [
-    "cd.yml",
-    "ci.yml"
-  ],
-  "lastActivity": "2026-05-28T09:06:11+02:00",
+  "tests": "Vitest",
+  "workflows": [],
+  "lastActivity": "2026-07-11T16:40:50+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
     "stars": 0,
     "forks": 0,
-    "contributors": 0,
+    "contributors": 1,
     "openIssues": 9
   },
   "tags": [
     "Données & Open Data",
+    "Écosystème beta.gouv / État",
+    "React & Next.js",
     "TypeScript",
-    "React & Next.js"
+    "PostgreSQL & SQL",
+    "Sécurité & Auth"
   ]
 }
