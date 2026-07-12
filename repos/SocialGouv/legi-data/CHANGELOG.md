@@ -1,3 +1,17 @@
+# [2.547.0](https://github.com/SocialGouv/legi-data/compare/v2.546.1...v2.547.0) (2026-07-11)
+
+
+### Features
+
+* **data:** 20260711_1559 update ([04a36ae](https://github.com/SocialGouv/legi-data/commit/04a36aea420ee68f84f2ea967fc8559f772bed68))
+
+## [2.546.1](https://github.com/SocialGouv/legi-data/compare/v2.546.0...v2.546.1) (2026-07-10)
+
+
+### Bug Fixes
+
+* bloquer la version de npm en v11 ([#292](https://github.com/SocialGouv/legi-data/issues/292)) ([682d627](https://github.com/SocialGouv/legi-data/commit/682d62755cc5479ef30779a12e74a5841a43ddd6))
+
 # [2.546.0](https://github.com/SocialGouv/legi-data/compare/v2.545.0...v2.546.0) (2026-07-08)
 
 
