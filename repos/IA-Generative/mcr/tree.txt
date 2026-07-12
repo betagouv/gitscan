@@ -12,32 +12,37 @@
 │       │   └── SKILL.md
 │       ├── debug-production-issue
 │       │   └── SKILL.md
-│       └── grafana-sql
-│           ├── SKILL.md
-│           ├── evals
-│           │   └── evals.json
-│           └── scripts
-│               ├── .gitignore
-│               ├── extract_schema.py
-│               └── tests
-│                   ├── __init__.py
-│                   └── test_extract_schema.py
+│       ├── grafana-sql
+│       │   ├── SKILL.md
+│       │   ├── evals
+│       │   │   └── evals.json
+│       │   └── scripts
+│       │       ├── .gitignore
+│       │       ├── extract_schema.py
+│       │       └── tests
+│       │           ├── __init__.py
+│       │           └── test_extract_schema.py
+│       └── testing-standard
+│           ├── README.md
+│           └── SKILL.md
 ├── .env.debug-capture
 ├── .env.local.docker
 ├── .env.local.host
 ├── .env.local.testing
+├── .env.template
 ├── .github
 │   ├── CODEOWNERS
 │   ├── ISSUE_TEMPLATE
 │   │   ├── bug_request.yml
 │   │   ├── feature_request.yml
-│   │   ├── us_request.yml
-│   │   └── user_return_request.yml
+│   │   ├── team_bug_request.yml
+│   │   └── us_request.yml
 │   ├── pull_request_template.md
 │   ├── slack-users.json
 │   └── workflows
 │       ├── mcr-ci.yml
 │       ├── slack-pr-notification.yml
+│       ├── sync-bug-feedback-issue-metadata.yml
 │       └── trigger-dso.yml
 ├── .gitignore
 ├── .gitlab-ci-dso.yml
@@ -168,8 +173,7 @@
 │   │   │   │   │   └── transcription_router.py
 │   │   │   │   └── user_router.py
 │   │   │   ├── client
-│   │   │   │   ├── __init__.py
-│   │   │   │   └── meeting_client.py
+│   │   │   │   └── __init__.py
 │   │   │   ├── configs
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── base.py
@@ -189,6 +193,7 @@
 │   │   │   │   │   ├── env.py
 │   │   │   │   │   ├── script.py.mako
 │   │   │   │   │   └── versions
+│   │   │   │   │       ├── 0781ae1c037a_add_meeting_transition_record_meeting_.py
 │   │   │   │   │       ├── 0e8980438aa9_create_meeting_transition_record_table.py
 │   │   │   │   │       ├── 1b957c30ebe4_add_last_capture_audio_index.py
 │   │   │   │   │       ├── 1dfb13692257_add_vote_field_to_deliverable.py
@@ -220,6 +225,7 @@
 │   │   │   │   │       ├── ac554ef33c48_add_import_pending_status.py
 │   │   │   │   │       ├── ad716383829e_remove_transcription_version.py
 │   │   │   │   │       ├── b0cea6a22be0_add_keycloak_uuid.py
+│   │   │   │   │       ├── b3f9c1a7d5e2_backfill_historical_deliverables.py
 │   │   │   │   │       ├── b6b97a4125c5_add_report_failed_status.py
 │   │   │   │   │       ├── bbf0d24b3bc4_add_cascade_delete.py
 │   │   │   │   │       ├── beec5d6f2075_baseline.py
@@ -236,6 +242,7 @@
 │   │   │   │   └── user_repository.py
 │   │   │   ├── domain
 │   │   │   │   ├── __init__.py
+│   │   │   │   ├── audio.py
 │   │   │   │   ├── authorize_meeting_access.py
 │   │   │   │   ├── deliverable_transitions.py
 │   │   │   │   ├── email
@@ -251,6 +258,14 @@
 │   │   │   │   ├── meeting_state_machine.py
 │   │   │   │   ├── meeting_transitions.py
 │   │   │   │   ├── report_rendering.py
+│   │   │   │   ├── transcription
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── chunking.py
+│   │   │   │   │   ├── participant_reconciliation.py
+│   │   │   │   │   ├── post_process.py
+│   │   │   │   │   ├── speaker_segments.py
+│   │   │   │   │   ├── text_chunking.py
+│   │   │   │   │   └── vad.py
 │   │   │   │   ├── transcription_queue_estimation.py
 │   │   │   │   └── transcription_rendering.py
 │   │   │   ├── exceptions
@@ -263,13 +278,30 @@
 │   │   │   │   ├── celery.py
 │   │   │   │   ├── celery_consumer.py
 │   │   │   │   ├── comu.py
+│   │   │   │   ├── diarization.py
 │   │   │   │   ├── drive.py
 │   │   │   │   ├── email.py
 │   │   │   │   ├── keycloak.py
 │   │   │   │   ├── langfuse.py
+│   │   │   │   ├── llm
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── acronyms.py
+│   │   │   │   │   ├── client.py
+│   │   │   │   │   ├── participants.py
+│   │   │   │   │   ├── prompts
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   ├── acronyms.py
+│   │   │   │   │   │   ├── data
+│   │   │   │   │   │   │   └── glossary.md
+│   │   │   │   │   │   ├── participants.py
+│   │   │   │   │   │   └── spelling.py
+│   │   │   │   │   └── spelling.py
+│   │   │   │   ├── meeting_api_client.py
 │   │   │   │   ├── redis.py
 │   │   │   │   ├── s3.py
 │   │   │   │   ├── sentry.py
+│   │   │   │   ├── speech_to_text_models.py
+│   │   │   │   ├── transcription.py
 │   │   │   │   └── unleash.py
 │   │   │   ├── models
 │   │   │   │   ├── __init__.py
@@ -293,17 +325,6 @@
 │   │   │   │   └── user_schema.py
 │   │   │   ├── services
 │   │   │   │   ├── __init__.py
-│   │   │   │   ├── audio_pre_transcription_processing_service.py
-│   │   │   │   ├── correct_acronyms
-│   │   │   │   │   ├── __init__.py
-│   │   │   │   │   ├── acronym_corrector.py
-│   │   │   │   │   ├── data
-│   │   │   │   │   │   └── glossary.md
-│   │   │   │   │   └── prompt.py
-│   │   │   │   ├── correct_spelling_mistakes
-│   │   │   │   │   ├── __init__.py
-│   │   │   │   │   ├── prompt.py
-│   │   │   │   │   └── spelling_corrector.py
 │   │   │   │   ├── docx_generation
 │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   └── templated_docx_generator.py
@@ -311,32 +332,18 @@
 │   │   │   │   ├── email
 │   │   │   │   │   └── __init__.py
 │   │   │   │   ├── llm_post_processing.py
-│   │   │   │   ├── meeting_to_transcription_service.py
 │   │   │   │   ├── report_content
 │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   ├── markdown_to_docx.py
 │   │   │   │   │   ├── template_renderer.py
 │   │   │   │   │   └── templates
 │   │   │   │   │       └── detailed_synthesis.md.jinja
-│   │   │   │   ├── s3_service.py
 │   │   │   │   └── speech_to_text
 │   │   │   │       ├── __init__.py
-│   │   │   │       ├── diarization_processor.py
 │   │   │   │       ├── participants_naming
 │   │   │   │       │   ├── __init__.py
-│   │   │   │       │   ├── match_speakers_with_participants.py
-│   │   │   │       │   ├── participant_extraction.py
-│   │   │   │       │   └── prompts.py
-│   │   │   │       ├── speech_to_text.py
-│   │   │   │       ├── transcription_post_process.py
-│   │   │   │       ├── transcription_processor.py
-│   │   │   │       └── utils
-│   │   │   │           ├── __init__.py
-│   │   │   │           ├── audio.py
-│   │   │   │           ├── chunking.py
-│   │   │   │           ├── models.py
-│   │   │   │           ├── types.py
-│   │   │   │           └── vad.py
+│   │   │   │       │   └── participant_extraction.py
+│   │   │   │       └── speech_to_text.py
 │   │   │   ├── use_cases
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── _shared
@@ -374,6 +381,13 @@
 │   │   │   │   ├── soft_delete_deliverable.py
 │   │   │   │   ├── start_capture_bot.py
 │   │   │   │   ├── start_transcription.py
+│   │   │   │   ├── transcription
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── _shared
+│   │   │   │   │   │   └── on_pipeline_failure.py
+│   │   │   │   │   ├── run_diarization.py
+│   │   │   │   │   ├── run_finalize_transcription.py
+│   │   │   │   │   └── run_transcribe_chunks.py
 │   │   │   │   └── update_meeting.py
 │   │   │   └── utils
 │   │   │       ├── __init__.py
@@ -383,7 +397,6 @@
 │   │   │       ├── file_validation.py
 │   │   │       ├── filename_header.py
 │   │   │       ├── langfuse_observability.py
-│   │   │       ├── load_speech_to_text_model.py
 │   │   │       ├── s3_client.py
 │   │   │       └── sentry_context.py
 │   │   ├── evaluation
@@ -502,7 +515,9 @@
 │   │   │   ├── test_evaluation_zip.py
 │   │   │   ├── test_feedback.py
 │   │   │   ├── test_meeting_transitions.py
+│   │   │   ├── test_participant_reconciliation.py
 │   │   │   ├── test_report_rendering.py
+│   │   │   ├── test_text_chunking.py
 │   │   │   └── test_transcription_queue_estimation.py
 │   │   ├── factories
 │   │   │   ├── README.md
@@ -516,7 +531,11 @@
 │   │   │   └── user_factory.py
 │   │   ├── infrastructure
 │   │   │   ├── __init__.py
-│   │   │   └── test_s3.py
+│   │   │   ├── test_full_transcript.py
+│   │   │   ├── test_s3.py
+│   │   │   ├── test_s3_extension_extraction.py
+│   │   │   ├── test_s3_multipart.py
+│   │   │   └── test_speech_to_text_models.py
 │   │   ├── integration
 │   │   │   └── __init__.py
 │   │   ├── mocks
@@ -536,16 +555,19 @@
 │   │   │   ├── conftest.py
 │   │   │   ├── speech_to_text_pipeline
 │   │   │   │   ├── conftest.py
+│   │   │   │   ├── seams.py
 │   │   │   │   ├── test_diarization_async.py
+│   │   │   │   ├── test_golden_transcribe_meeting.py
 │   │   │   │   ├── test_integration_center_process.py
 │   │   │   │   ├── test_integration_full_process.py
 │   │   │   │   ├── test_integration_post_process.py
 │   │   │   │   ├── test_integration_pre_process.py
+│   │   │   │   ├── test_parallel_chunk_transcription.py
 │   │   │   │   ├── test_phase_aware_downmix.py
 │   │   │   │   └── test_silent_audio_detection.py
 │   │   │   ├── test_custom_report_generation.py
-│   │   │   ├── test_detailed_synthesis_generation.py
-│   │   │   └── test_s3_multipart.py
+│   │   │   └── test_detailed_synthesis_generation.py
+│   │   ├── test_transcription_worker.py
 │   │   ├── unit
 │   │   │   ├── __init__.py
 │   │   │   ├── evaluation
@@ -559,17 +581,14 @@
 │   │   │   │       ├── test_evaluation_pipeline.py
 │   │   │   │       └── utils
 │   │   │   │           └── test_metrics_calculator.py
-│   │   │   ├── test_acronym_corrector.py
-│   │   │   ├── test_audio_chunk_download.py
 │   │   │   ├── test_compute_transcription_chunks.py
 │   │   │   ├── test_deliverable_filename.py
-│   │   │   ├── test_extract_transcription_task_args.py
 │   │   │   ├── test_match_speakers_with_participants.py
-│   │   │   ├── test_meeting_to_transcription_service.py
 │   │   │   ├── test_noise_detection.py
 │   │   │   ├── test_participant_extraction.py
-│   │   │   ├── test_s3_extension_extraction.py
-│   │   │   └── test_spelling_corrector.py
+│   │   │   ├── test_remove_hallucinations.py
+│   │   │   ├── test_s3_audio.py
+│   │   │   └── test_transcription_confidentiality.py
 │   │   └── use_cases
 │   │       ├── __init__.py
 │   │       ├── test_abort_multipart_upload.py
@@ -591,7 +610,11 @@
 │   │       ├── test_list_meetings.py
 │   │       ├── test_mark_deliverable_failure.py
 │   │       ├── test_mark_deliverable_success.py
+│   │       ├── test_on_pipeline_failure.py
 │   │       ├── test_request_deliverable.py
+│   │       ├── test_run_diarization.py
+│   │       ├── test_run_finalize_transcription.py
+│   │       ├── test_run_transcribe_chunks.py
 │   │       ├── test_sign_multipart_part.py
 │   │       ├── test_soft_delete_deliverable.py
 │   │       ├── test_start_capture_bot.py
@@ -662,6 +685,7 @@
 │   │   │   │   ├── FeedbackModal.vue
 │   │   │   │   └── feedback.schema.ts
 │   │   │   ├── meeting
+│   │   │   │   ├── ActionTile.vue
 │   │   │   │   ├── AddMeetingForm.spec.ts
 │   │   │   │   ├── AddMeetingForm.vue
 │   │   │   │   ├── CreateVisioMeetingForm.vue
@@ -742,6 +766,8 @@
 │   │   │   ├── use-audio-chunk-store.ts
 │   │   │   ├── use-chunk-upload.spec.ts
 │   │   │   ├── use-chunk-upload.ts
+│   │   │   ├── use-confirm-leave.spec.ts
+│   │   │   ├── use-confirm-leave.ts
 │   │   │   ├── use-feature-flag.ts
 │   │   │   ├── use-import-meeting.spec.ts
 │   │   │   ├── use-import-meeting.ts
@@ -762,7 +788,11 @@
 │   │   │   ├── use-session-alert.spec.ts
 │   │   │   ├── use-session-alert.ts
 │   │   │   ├── use-toaster.ts
-│   │   │   └── use-unleash.ts
+│   │   │   ├── use-unleash.ts
+│   │   │   ├── use-unload-warning.spec.ts
+│   │   │   ├── use-unload-warning.ts
+│   │   │   ├── use-upload-status.spec.ts
+│   │   │   └── use-upload-status.ts
 │   │   ├── config
 │   │   │   ├── audioMonitor.ts
 │   │   │   ├── auto-cleanup.test.ts
@@ -779,7 +809,9 @@
 │   │   │   └── vue-query.ts
 │   │   ├── router
 │   │   │   ├── index.ts
-│   │   │   └── routes.ts
+│   │   │   ├── routes.ts
+│   │   │   ├── upload-leave-guard.spec.ts
+│   │   │   └── upload-leave-guard.ts
 │   │   ├── services
 │   │   │   ├── auth
 │   │   │   │   ├── auth.service.ts
@@ -973,7 +1005,8 @@
 │   │   │   │   ├── base.py
 │   │   │   │   ├── celery_types.py
 │   │   │   │   ├── custom_prompt.py
-│   │   │   │   └── meeting_schema.py
+│   │   │   │   ├── meeting_schema.py
+│   │   │   │   └── transcript.py
 │   │   │   ├── services
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── generic_pipeline
@@ -1042,7 +1075,8 @@
 │   │   │   │       ├── __init__.py
 │   │   │   │       ├── input_chunker.py
 │   │   │   │       ├── llm_helpers.py
-│   │   │   │       └── s3_service.py
+│   │   │   │       ├── s3_service.py
+│   │   │   │       └── transcript_loader.py
 │   │   │   └── utils
 │   │   │       ├── __init__.py
 │   │   │       ├── celery_worker.py
@@ -1123,7 +1157,8 @@
 │   │   │   │       ├── __init__.py
 │   │   │   │       ├── test_input_chunker.py
 │   │   │   │       ├── test_llm_helpers.py
-│   │   │   │       └── test_s3_service.py
+│   │   │   │       ├── test_s3_service.py
+│   │   │   │       └── test_transcript_loader.py
 │   │   │   └── test_report_generation_task_service.py
 │   │   ├── conftest.py
 │   │   ├── evaluation
@@ -1142,4 +1177,4 @@
 └── scripts
     ├── check_changed.py
     └── guard_git_commit.py
-216 directories, 928 files
+219 directories, 960 files

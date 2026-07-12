@@ -1,39 +1,30 @@
-## Changelog : mcr (30 derniers jours, au 03 juillet 2026)
+## Changelog : mcr (30 derniers jours, au 2026-07-09)
 
 ### Résumé
-Cette version apporte des améliorations significatives à l'application MCR, notamment en termes d'import de fichiers, de gestion des transcriptions, de robustesse et d'architecture. L'accent a été mis sur la simplification du code, l'amélioration de l'observabilité et l'intégration de nouvelles fonctionnalités pour faciliter l'utilisation quotidienne.
+Ce mois-ci, l'équipe a concentré ses efforts sur l'amélioration de la performance et de la robustesse de la transcription, ainsi que sur la refactorisation de l'architecture pour une meilleure maintenabilité et scalabilité. Des améliorations significatives ont également été apportées à l'interface utilisateur, notamment pour l'importation de fichiers et la gestion des retours utilisateurs.
 
 ### Évolutions fonctionnelles
-- **Import de fichiers :**
-    - Ajout d'une fonctionnalité d'import "one-click" pour une expérience utilisateur simplifiée [#908](https://github.com/IA-Generative/mcr/pull/908).
-    - Validation du format et de la durée des fichiers avant l'import pour éviter les erreurs [#911](https://github.com/IA-Generative/mcr/pull/911).
-    - Détection des échecs d'import bloqués par un proxy et signalement du type d'échec à Sentry [#899](https://github.com/IA-Generative/mcr/pull/899).
-- **Transcription :**
-    - La diarisation est désormais asynchrone, améliorant la réactivité de l'application [#898](https://github.com/IA-Generative/mcr/pull/898).
-    - Création automatique d'un "deliverable" (livrable) de type TRANSCRIPTION à la fin de chaque transcription, avec un lien vers Google Drive [#810](https://github.com/IA-Generative/mcr/pull/810).
-    - Gestion améliorée des tâches de transcription pour les réunions supprimées [#806](https://github.com/IA-Generative/mcr/pull/806).
-- **Téléchargement :**
-    - Ajout d'un script pour télécharger les fichiers d'une réunion depuis S3 [#903](https://github.com/IA-Generative/mcr/pull/903).
-- **Interface utilisateur :**
-    - Amélioration de l'accessibilité du modal de feedback [#831](https://github.com/IA-Generative/mcr/pull/831).
+- Amélioration de la gestion des erreurs lors de l'envoi de retours utilisateurs, avec validation de la longueur des commentaires et gestion des erreurs de base de données. [#831](https://github.com/IA-Generative/mcr/pulls/831)
+- Ajout d'une fonctionnalité d'importation de fichiers en un clic, simplifiant le processus pour les utilisateurs. [#896](https://github.com/IA-Generative/mcr/pulls/896)
+- Possibilité de télécharger les scripts des réunions. [#843](https://github.com/IA-Generative/mcr/pulls/843)
+- Amélioration de la détection des échecs d'upload et signalement à Sentry. [#831](https://github.com/IA-Generative/mcr/pulls/831)
+- Ajout d'une nouvelle compétence "testing-standard" pour faciliter la création et la revue des tests. [#925](https://github.com/IA-Generative/mcr/pulls/925)
+- Amélioration de la gestion des URLs de webinaires. [#863](https://github.com/IA-Generative/mcr/pulls/863)
 
 ### Évolutions techniques
-- **Architecture :**
-    - Refactorisation majeure de l'architecture vers une approche basée sur des "use cases" pour la gestion de la capture, de l'évaluation et du bot [#803](https://github.com/IA-Generative/mcr/pull/803), [#820](https://github.com/IA-Generative/mcr/pull/820), [#822](https://github.com/IA-Generative/mcr/pull/822), [#824](https://github.com/IA-Generative/mcr/pull/824), [#825](https://github.com/IA-Generative/mcr/pull/825), [#828](https://github.com/IA-Generative/mcr/pull/828).
-    - Suppression de la machine d'état (state machine) pour la gestion des réunions, simplifiant le code et améliorant la maintenabilité [#861](https://github.com/IA-Generative/mcr/pull/861).
-    - Refactorisation de l'infrastructure pour une meilleure organisation et une plus grande cohérence.
-- **CI/CD :**
-    - Nettoyage et amélioration des workflows CI/CD [#849](https://github.com/IA-Generative/mcr/pull/849).
-- **Observabilité :**
-    - Intégration de Sentry pour une meilleure surveillance et un signalement des erreurs [#793](https://github.com/IA-Generative/mcr/pull/793).
-    - Amélioration de la gestion des erreurs et ajout de logs plus détaillés.
-- **Développement local :**
-    - Amélioration de la configuration pour le développement local avec Docker, incluant la gestion des réseaux et des images [#811](https://github.com/IA-Generative/mcr/pull/811).
-    - Ajout d'une cible "make install" pour faciliter la mise en place de l'environnement de développement [#834](https://github.com/IA-Generative/mcr/pull/834).
+- Refactorisation majeure de l'architecture de la transcription, avec séparation des préoccupations en use cases et infrastructure. [#901](https://github.com/IA-Generative/mcr/pulls/901), [#866](https://github.com/IA-Generative/mcr/pulls/866), [#870](https://github.com/IA-Generative/mcr/pulls/870), [#822](https://github.com/IA-Generative/mcr/pulls/822), [#824](https://github.com/IA-Generative/mcr/pulls/824), [#825](https://github.com/IA-Generative/mcr/pulls/825)
+- Implémentation de la transcription asynchrone pour améliorer la réactivité. [#866](https://github.com/IA-Generative/mcr/pulls/866)
+- Optimisation du chargement des modèles de reconnaissance vocale (lazy loading) pour réduire le temps de démarrage et la consommation de ressources. [#923](https://github.com/IA-Generative/mcr/pulls/923)
+- Parallélisation du traitement des chunks de transcription pour une meilleure performance. [#919](https://github.com/IA-Generative/mcr/pulls/919)
+- Amélioration de l'observabilité avec l'intégration de Sentry et la gestion des erreurs HTTP. [#837](https://github.com/IA-Generative/mcr/pulls/837)
+- Mise en place de hooks Git pour améliorer la qualité du code (linting, formatage, vérification des secrets). [#911](https://github.com/IA-Generative/mcr/pulls/911), [#844](https://github.com/IA-Generative/mcr/pulls/844)
+- Utilisation de `httpx` au lieu de `fastapi` pour les requêtes HTTP. [#854](https://github.com/IA-Generative/mcr/pulls/854)
+- Amélioration de la configuration de l'environnement local et CI/CD. [#917](https://github.com/IA-Generative/mcr/pulls/917), [#932](https://github.com/IA-Generative/mcr/pulls/932)
 
 ### Autres changements
-- Documentation mise à jour pour la configuration de Sentry avec 1Password [#909](https://github.com/IA-Generative/mcr/pull/909).
-- Documentation mise à jour pour la génération de comptes rendus [#860](https://github.com/IA-Generative/mcr/pull/860).
-- Ajout de pre-commit hooks pour la qualité du code et la sécurité [#834](https://github.com/IA-Generative/mcr/pull/834).
-- Corrections de fautes de frappe et améliorations de la lisibilité du code.
-- Mise à jour des dépendances et corrections de bugs mineurs.
+- Documentation de la configuration de Sentry via 1Password. [#909](https://github.com/IA-Generative/mcr/pulls/909)
+- Mise à jour des templates de rapport de bug et de feedback utilisateur. [#913](https://github.com/IA-Generative/mcr/pulls/913)
+- Ajout d'une commande `make install` pour simplifier l'installation des dépendances locales. [#834](https://github.com/IA-Generative/mcr/pulls/834)
+- Nettoyage du code et suppression de code obsolète.
+- Indexation de nouvelles tables dans la base de données pour améliorer les performances des requêtes. [#918](https://github.com/IA-Generative/mcr/pulls/918)
+- Backfill des données pour les réunions historiques. [#918](https://github.com/IA-Generative/mcr/pulls/918)

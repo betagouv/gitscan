@@ -1,3 +1,80 @@
+2026-07-09T11:32:03+02:00 - 62057df - Thibault Foucart : Merge pull request #923 from IA-Generative/feat/872-lazy-load-models
+2026-07-09T11:21:39+02:00 - f87cc24 - Thibault Foucart : :fire: (872): remove the worker init hook made useless by lazy loading
+2026-07-09T11:21:39+02:00 - eb8c3c2 - Thibault Foucart : :sparkles: (873): make the transcription success payload optional and read full_transcript.json from S3 when absent
+2026-07-09T11:21:39+02:00 - c72a3b5 - Thibault Foucart : :sparkles: (873): add the full transcript JSON schema and chunker to mcr-generation
+2026-07-09T11:21:39+02:00 - a4edaa9 - Thibault Foucart : :sparkles: (873): write full_transcript.json to S3 when finalizing a transcription (dual-write)
+2026-07-09T11:21:39+02:00 - 6027960 - Thibault Foucart : :white_check_mark: (872): test lazy loading and caching of the speech-to-text models
+2026-07-09T11:21:39+02:00 - 4ee8b6f - Thibault Foucart : :fire: (873): remove useless comments
+2026-07-09T11:21:39+02:00 - 4c6e202 - Thibault Foucart : :sparkles: (873): read the transcript from full_transcript.json with DOCX fallback when generating reports
+2026-07-09T11:21:39+02:00 - 48c7574 - Thibault Foucart : :sparkles: (873): add the full_transcript.json S3 contract schema and writer
+2026-07-09T11:21:39+02:00 - 2a648bf - Thibault Foucart : :recycle: (872): lazy-load and cache the speech-to-text models instead of eager-loading them at worker boot
+2026-07-09T11:21:39+02:00 - 19115bd - Thibault Foucart : :recycle: (873): mark transcription success without payload from the split pipeline finalize task
+2026-07-09T11:21:07+02:00 - bd53a25 - Thibault Foucart : Merge pull request #919 from IA-Generative/feat/871-deal-with-transcription-chunks-simultaneously
+2026-07-09T11:13:42+02:00 - fc44f41 - Thibault Foucart : :thread: (871): parallelize chunk transcription with a bounded thread pool
+2026-07-09T11:13:42+02:00 - f5409ef - Thibault Foucart : :thread: (871): cap chunk concurrency to 1 in local transcription mode
+2026-07-09T11:13:42+02:00 - da6d0db - Thibault Foucart : :lock: (871): disable sentry local variables capture in transcription worker
+2026-07-09T11:13:42+02:00 - bcab8cb - Thibault Foucart : :thread: (871): reassemble chunk segments sorted by chunk index
+2026-07-09T11:13:42+02:00 - b371a6f - Thibault Foucart : :lock: (871): mask transcript text in segment repr and str
+2026-07-09T11:13:42+02:00 - b3297ad - Thibault Foucart : :fire: remove overuse of security net
+2026-07-09T11:13:42+02:00 - a709f93 - Thibault Foucart : :white_check_mark: (871): test parallel chunk transcription and sentry anti-leak
+2026-07-09T11:13:42+02:00 - 6ea415d - Thibault Foucart : :recycle: (871): use only one function for same logic
+2026-07-09T11:13:42+02:00 - 494365e - Thibault Foucart : :wrench: (871): add MAX_CONCURRENT_CHUNKS transcription setting
+2026-07-09T11:13:14+02:00 - e853bc6 - Thibault Foucart : Merge pull request #932 from IA-Generative/fix/use-fake-env-value-for-ci
+2026-07-09T10:51:07+02:00 - 41f55f6 - Thibault Foucart : :wrench: use fake env values in .env.local.testing so CI tests need no secrets
+2026-07-08T16:46:29+02:00 - be43a8d - Carl-Adrien Mercey : Merge pull request #920 from IA-Generative/feat/885-navigation-net
+2026-07-08T16:44:46+02:00 - c552b4b - Carl-Adrien Mercey : :art: (885): drop dead defensive catch and make abort test names self-contained
+2026-07-08T16:44:46+02:00 - b92913b - Carl-Adrien Mercey : :lipstick: (885): match action buttons style with the former small tiles
+2026-07-08T16:44:46+02:00 - 81eab21 - Carl-Adrien Mercey : :bug: (885): fix duplicate leave guards on logout and disabled import tile
+2026-07-08T16:44:46+02:00 - 81a7f5a - Carl-Adrien Mercey : :lipstick: (885): restore tile pictogram position and text colors on action buttons
+2026-07-08T16:44:46+02:00 - 707075a - Carl-Adrien Mercey : :recycle: (885): extract reusable ActionTile component styled with tailwind
+2026-07-08T16:44:46+02:00 - 3187787 - Carl-Adrien Mercey : :sparkles: (885): warn and abort before leaving the page during an active import
+2026-07-08T15:16:17+02:00 - c5e5766 - ThomasMetzger : Merge pull request #917 from IA-Generative/feat/avoid-local-env-issues
+2026-07-08T15:15:35+02:00 - ddaf1c9 - Thomas Metzger : :hammer: (environnement): avoid shell export issue by using env_files in compose
+2026-07-08T15:15:35+02:00 - ca7fdac - Thomas Metzger : :hammer: (environnement): export du .env via 1password
+2026-07-08T15:12:46+02:00 - a2a3819 - ThomasMetzger : Merge pull request #918 from IA-Generative/feat/create-metrics-indices
+2026-07-08T14:40:45+02:00 - faa2f30 - Thomas Metzger : :card_file_box: backfill TRANSCRIPTION and report deliverables for all historical meetings
+2026-07-08T14:40:45+02:00 - be1e529 - Thomas Metzger : :card_file_box: index meeting.user_id and meeting_transition_record(meeting_id, timestamp)
+2026-07-08T14:40:45+02:00 - 139cdd4 - Thomas Metzger : :sparkles: mark __table_args__ Index() columns as indexed in schema extraction
+2026-07-08T13:52:24+02:00 - 016753a - ThomasMetzger : Merge pull request #925 from IA-Generative/feat/add-testing-standard-skill
+2026-07-08T13:49:38+02:00 - 362bd72 - Thomas Metzger : :technologist:: add /testing-standard skill for test authoring and reviewing
+2026-07-07T16:16:39+02:00 - add39c2 - Carl-Adrien Mercey : Merge pull request #921 from IA-Generative/chore/more-git-hooks
+2026-07-06T18:28:25+02:00 - 2db8a4d - Carl-Adrien Mercey : :technologist:: run mypy and vue-tsc type checks in pre-commit hooks
+2026-07-06T17:43:45+02:00 - 7ff7197 - ThomasMetzger : Merge pull request #912 from IA-Generative/feat/870-split-transcribe-into-four-tasks
+2026-07-06T17:37:02+02:00 - 62537b7 - Thibault Foucart : :art: rename for better understanding
+2026-07-06T17:31:33+02:00 - 9f316e9 - Thibault Foucart : :truck: (870): move transcription pipeline artifacts out of the audio prefix into a dedicated artifacts/ S3 folder
+2026-07-06T17:31:33+02:00 - 24431a6 - Thibault Foucart : :recycle: (870): own the S3 phase hand-off in the transcription use cases and test the contract there with hard-coded keys
+2026-07-06T17:31:32+02:00 - b55762e - Thibault Foucart : :white_check_mark: (870): test the split transcription pipeline
+2026-07-06T17:31:32+02:00 - 8a1596a - Thibault Foucart : :fire: (870): remove dead signal-args extractor
+2026-07-06T17:31:32+02:00 - 8814933 - Thibault Foucart : :sparkles: (870): add on_pipeline_failure explicit failure helper
+2026-07-06T17:31:32+02:00 - 6f354e6 - Thibault Foucart : :recycle: (870): build the transcription chain core-side at enqueue time
+2026-07-06T17:31:32+02:00 - 41034ba - Thibault Foucart : :sparkles: (870): split transcribe into shim + diarize/transcribe_chunks/finalize
+2026-07-06T17:31:32+02:00 - 0becad2 - Thibault Foucart : :recycle: (870): move pipeline task base plumbing into celery infra
+2026-07-06T17:31:31+02:00 - b2d17f7 - Thibault Foucart : :recycle: (870): fold s3_service into infrastructure/s3 + add inter-task artifact helpers
+2026-07-06T17:31:31+02:00 - 9192ac6 - Thibault Foucart : :sparkles: (870): declare split task names + structural_split flag
+2026-07-06T16:55:31+02:00 - 32e00b5 - ThomasMetzger : Merge pull request #913 from IA-Generative/feat/improve-bug-report-template
+2026-07-06T16:51:49+02:00 - 946d9ec - Jean-Alexis Callies : :wrench:: merge bug and user feedback issue templates, sync issue type
+2026-07-06T16:51:49+02:00 - 7798394 - Jean-Alexis Callies : :sparkles:: add lightweight internal bug template for the tech team
+2026-07-06T16:51:49+02:00 - 06c4c38 - Jean-Alexis Callies : :wrench:: apply PR review feedback on bug/feedback template
+2026-07-06T11:08:56+02:00 - cacf0f6 - Thibault Foucart : Merge pull request #902 from IA-Generative/feat/901-refacto-transcription-use-case
+2026-07-06T08:36:10+02:00 - d615fe4 - Thibault Foucart : :recycle: (901): inject speech-to-text models from the router into the processors
+2026-07-06T08:36:10+02:00 - cf2e907 - Thibault Foucart : :zap: (901): reuse a single llm client across calls (lazy per-process singleton)
+2026-07-06T08:36:10+02:00 - bfc4c09 - Thibault Foucart : :white_check_mark: (901): rewrite s3 audio tests on the in-memory fake
+2026-07-06T08:36:10+02:00 - aa8429e - Thibault Foucart : :mute: (901): drop redundant logger.error before re-raise in fetch_audio_bytes
+2026-07-06T08:36:10+02:00 - 3627475 - Thibault Foucart : :rotating_light: (901): ban relative imports (TID252) and convert existing ones
+2026-07-06T08:36:09+02:00 - eeef3bb - Thibault Foucart : :recycle: (901): move S3 audio fetch into infrastructure/s3.py
+2026-07-06T08:36:09+02:00 - bba4905 - Thibault Foucart : :sparkles: (901): add 3 phase use-cases composing domain + infra
+2026-07-06T08:36:09+02:00 - a59d325 - Thibault Foucart : :white_check_mark: (901): add golden parity test for transcribe_meeting with centralized seams
+2026-07-06T08:36:09+02:00 - a119689 - Thibault Foucart : :recycle: (901): extract pure transforms from god-object into domain/transcription
+2026-07-06T08:36:09+02:00 - 63217b0 - Thibault Foucart : :recycle: (901): move whisper/diarization processors into infrastructure
+2026-07-06T08:36:09+02:00 - 58dd0d6 - Thibault Foucart : :recycle: (901): break load_speech_to_text_model
+2026-07-06T08:36:09+02:00 - 512dfa3 - Thibault Foucart : :fire: (901): delete dead transcription-worker legacy
+2026-07-06T08:36:09+02:00 - 4ca5324 - Thibault Foucart : :truck: (901): move llm prompts from services to infrastructure/llm/prompts
+2026-07-06T08:36:09+02:00 - 4959dba - Thibault Foucart : :recycle: (901): split LLM correctors into infra calls + pure domain
+2026-07-06T08:36:09+02:00 - 446fbb5 - Thibault Foucart : :recycle: (901): move ffmpeg audio processing into domain/audio.py
+2026-07-06T08:36:09+02:00 - 349cbc1 - Thibault Foucart : :recycle: (901): moove artifact into shared
+2026-07-06T08:36:09+02:00 - 1e282b9 - Thibault Foucart : :white_check_mark: update seam for CI
+2026-07-06T08:36:09+02:00 - 1715fb6 - Thibault Foucart : :truck: (901): move split_audio_on_timestamps and convert_to_french_speaker to domain
+2026-07-06T08:36:09+02:00 - 088fb39 - Thibault Foucart : :recycle: (901): make the transcription task a thin router over the use-cases
 2026-07-03T18:00:55+02:00 - c2d17b0 - Carl-Adrien Mercey : Merge pull request #911 from IA-Generative/feat/890-import-validation
 2026-07-03T17:56:21+02:00 - afe92d5 - Carl-Adrien Mercey : :truck: (890): move max import duration next to other import file constraints
 2026-07-03T17:56:21+02:00 - 86491c0 - Carl-Adrien Mercey : :sparkles: (890): validate file format and duration before import
