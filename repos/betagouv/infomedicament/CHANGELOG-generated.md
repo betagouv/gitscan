@@ -1,29 +1,29 @@
-## Changelog : infomedicament (30 derniers jours, au 17 juin 2026)
+## Changelog : infomedicament (30 derniers jours, au 7 juillet 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a travaillé sur l'amélioration significative de la recherche de médicaments, notamment en intégrant des synonymes et en affinant les résultats. Des améliorations ont également été apportées à l'affichage des informations sur les médicaments, en particulier pour les données pédiatriques et les notices. Enfin, des optimisations de performance ont été réalisées pour accélérer le chargement des pages et des données.
+Ce mois-ci, les améliorations se concentrent sur l'enrichissement des données disponibles, notamment avec l'ajout de nouvelles informations sur les médicaments pédiatriques et les données BDPM, ainsi que sur l'amélioration de la recherche et de la navigation sur le site. Des optimisations de performance ont également été apportées pour accélérer le chargement des pages.
 
 ### Évolutions fonctionnelles
-- **Recherche améliorée :** La recherche prend désormais en compte des synonymes pour les termes de recherche [#194](https://github.com/betagouv/infomedicament/pull/194).
-- **Suggestions de recherche :** Des suggestions "Vouliez-vous dire" sont maintenant affichées pour les requêtes avec synonymes.
-- **Affichage des spécialités :** Amélioration du classement et de l'autocomplétion des spécialités dans la recherche.
-- **Informations pédiatriques :** Affichage plus précis des contre-indications pour les données pédiatriques.
-- **Nouvelle page médicament :** Refonte de la page d'information d'un médicament [#222](https://github.com/betagouv/infomedicament/pull/222).
-- **Date de dernière mise à jour :** Ajout d'une indication de la date de dernière mise à jour des données.
-- **Notices :** Intégration d'une recherche sémantique dans les notices, utilisant un modèle de langage pour répondre aux questions et mettre en évidence les informations pertinentes.
-- **Pages de listes :** Redirection des pages racines des listes vers la première lettre.
-- **Cartes spécialités :** Affichage des indications sur les nouvelles cartes spécialités.
+- Ajout de tags "Usage hospitalier" et "Remboursé" pour faciliter le filtrage des médicaments. [#282](https://github.com/betagouv/infomedicament/issues/282)
+- Redirection automatique de la page racine des listes de médicaments vers la première lettre de la liste pour une navigation plus intuitive.
+- Affichage des notices et RCP (Résumé des Caractéristiques du Produit) pour les médicaments centralisés lorsque le contenu est disponible.
+- Amélioration de la recherche avec l'ajout de synonymes pour les termes courants, et suggestion de corrections orthographiques ("Vouliez-vous dire").
+- Classement et autocomplétion des résultats de recherche au niveau de la spécialité.
+- Ajout de pages dédiées aux médicaments pédiatriques.
+- Mise à jour des informations globales de notation.
+- Ajout de nouvelles pages au sitemap pour une meilleure indexation par les moteurs de recherche.
 
 ### Évolutions techniques
-- **Performance :** Pré-rendu des 500 médicaments les plus consultés lors de la construction du site pour améliorer la vitesse de chargement.
-- **Performance :** Déplacement de la récupération des données vers des composants serveur pour optimiser les performances.
-- **Base de données :** Optimisation de la population de la table `specMetadataTable` pour éviter les erreurs de mémoire insuffisante.
-- **Architecture :** Refactorisation du code pour utiliser Matomo en mode sans cookies et suppression du consentement banner.
-- **Tests :** Ajout de tests unitaires et d'intégration pour la recherche et les nouvelles fonctionnalités.
-- **Infrastructure :** Amélioration de la configuration pour les environnements de revue.
+- Refactorisation et consolidation des migrations de la base de données BDPM pour une meilleure organisation et performance.
+- Ajout de nouvelles tables à la base de données pour stocker les données BDPM (bdpm_caracteristique, bdpm_document, bdpm_recipient, bdpm_composant, bdpm_specialite_atc, etc.).
+- Optimisation de la population de la table `spec_metadata` pour éviter les erreurs de mémoire insuffisante (OOM) sur Scalingo.
+- Pré-rendu des 500 médicaments les plus consultés lors de la construction du site pour améliorer la vitesse de chargement.
+- Utilisation de "use client" dans tous les composants client pour éviter les erreurs Next.js.
+- Correction de plusieurs erreurs et réversions de modifications récentes pour assurer la stabilité du site.
 
 ### Autres changements
-- **Documentation :** Ajout de commentaires et de TODOs pour faciliter la maintenance et les futures améliorations.
-- **Nettoyage du code :** Suppression de code obsolète (Hotjar) et simplification de certains composants.
-- **Configuration :** Mise à jour de la configuration pour activer le mode JSX React.
-- **Sitemap :** Ajout des nouvelles pages au sitemap.
+- Clarification de l'utilisation de la clé Albert.
+- Amélioration de la documentation.
+- Correction de la duplication d'un fichier de migration. [#284](https://github.com/betagouv/infomedicament/issues/284)
+- Ajout d'informations sur les indications et les médicaments dans le résumé des données importées.
+- Correction de bugs mineurs liés à la structure des pages et à l'affichage des données.
