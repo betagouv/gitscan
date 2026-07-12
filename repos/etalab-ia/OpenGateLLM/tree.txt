@@ -18,7 +18,8 @@
 │   ├── compose.ci.yml
 │   ├── semgrep-rules.yml
 │   └── workflows
-│       ├── build_and_deploy.yml
+│       ├── build.yml
+│       ├── deploy.yml
 │       ├── deploy_documentation.yml
 │       ├── release_updates.yml
 │       ├── run_tests.yml
@@ -85,19 +86,14 @@
 │   ├── app.py
 │   ├── clients
 │   │   ├── __init__.py
-│   │   ├── model
-│   │   │   ├── __init__.py
-│   │   │   ├── _albertmodelprovider.py
-│   │   │   ├── _basemodelprovider.py
-│   │   │   ├── _mistralmodelprovider.py
-│   │   │   ├── _openaimodelprovider.py
-│   │   │   ├── _teimodelprovider.py
-│   │   │   └── _vllmmodelprovider.py
-│   │   └── parser
+│   │   └── model
 │   │       ├── __init__.py
-│   │       ├── _albertparserclient.py
-│   │       ├── _baseparserclient.py
-│   │       └── _markerparserclient.py
+│   │       ├── _albertmodelprovider.py
+│   │       ├── _basemodelprovider.py
+│   │       ├── _mistralmodelprovider.py
+│   │       ├── _openaimodelprovider.py
+│   │       ├── _teimodelprovider.py
+│   │       └── _vllmmodelprovider.py
 │   ├── dependencies.py
 │   ├── domain
 │   │   ├── __init__.py
@@ -175,32 +171,23 @@
 │   │   │   └── users.py
 │   │   ├── audio.py
 │   │   ├── chat.py
-│   │   ├── chunks.py
-│   │   ├── collections.py
-│   │   ├── documents.py
 │   │   ├── me
 │   │   │   ├── __init__.py
 │   │   │   ├── info.py
 │   │   │   ├── keys.py
 │   │   │   └── usage.py
 │   │   ├── monitoring.py
-│   │   ├── ocr.py
-│   │   ├── parse.py
-│   │   └── search.py
+│   │   └── ocr.py
 │   ├── helpers
 │   │   ├── __init__.py
 │   │   ├── _accesscontroller.py
-│   │   ├── _documentmanager.py
-│   │   ├── _elasticsearchvectorstore.py
 │   │   ├── _identityaccessmanager.py
 │   │   ├── _langfusemanager.py
 │   │   ├── _limiter.py
-│   │   ├── _parsermanager.py
+│   │   ├── _searchtool.py
 │   │   ├── _streamingresponsewithstatuscode.py
 │   │   ├── _usagemanager.py
 │   │   ├── _usagetokenizer.py
-│   │   ├── documents
-│   │   │   └── __init__.py
 │   │   ├── load_balancing
 │   │   │   ├── __init__.py
 │   │   │   ├── _baseloadbalancingstrategy.py
@@ -393,16 +380,11 @@
 │   │   │   └── users.py
 │   │   ├── audio.py
 │   │   ├── chat.py
-│   │   ├── chunks.py
-│   │   ├── collections.py
 │   │   ├── core
 │   │   │   ├── __init__.py
 │   │   │   ├── configuration.py
 │   │   │   ├── context.py
-│   │   │   ├── documents.py
-│   │   │   ├── elasticsearch.py
 │   │   │   └── models.py
-│   │   ├── documents.py
 │   │   ├── exception.py
 │   │   ├── me
 │   │   │   ├── __init__.py
@@ -411,8 +393,6 @@
 │   │   │   └── usage.py
 │   │   ├── models.py
 │   │   ├── ocr.py
-│   │   ├── parse.py
-│   │   ├── search.py
 │   │   └── usage.py
 │   ├── sql
 │   │   └── models.py
@@ -426,34 +406,9 @@
 │   │   ├── integ
 │   │   │   ├── assets
 │   │   │   │   ├── audio.mp3
-│   │   │   │   ├── audio.wav
-│   │   │   │   ├── html.html
-│   │   │   │   ├── markdown.md
-│   │   │   │   ├── pdf.pdf
-│   │   │   │   └── pdf_too_large.pdf
+│   │   │   │   └── audio.wav
 │   │   │   ├── config.test.yml
 │   │   │   ├── conftest.py
-│   │   │   ├── snapshots
-│   │   │   │   ├── test_audio
-│   │   │   │   │   ├── test_audio_transcriptions_invalid_model
-│   │   │   │   │   │   └── audio_transcriptions_invalid_model
-│   │   │   │   │   ├── test_audio_transcriptions_mp3
-│   │   │   │   │   │   └── audio_transcriptions_mp3
-│   │   │   │   │   ├── test_audio_transcriptions_text_output
-│   │   │   │   │   │   └── audio_transcriptions_text_output
-│   │   │   │   │   └── test_audio_transcriptions_wav
-│   │   │   │   │       └── audio_transcriptions_wav
-│   │   │   │   └── test_ocr
-│   │   │   │       ├── test_ocr_custom_dpi
-│   │   │   │       │   └── ocr_custom_dpi
-│   │   │   │       ├── test_ocr_invalid_file_type
-│   │   │   │       │   └── ocr_invalid_file_type
-│   │   │   │       ├── test_ocr_pdf_successful
-│   │   │   │       │   └── ocr_pdf_successful
-│   │   │   │       ├── test_ocr_too_large_file
-│   │   │   │       │   └── ocr_too_large_file
-│   │   │   │       └── test_ocr_without_authentication
-│   │   │   │           └── ocr_without_authentication
 │   │   │   ├── test_admin
 │   │   │   │   ├── test_admin.py
 │   │   │   │   ├── test_admin_providers.py
@@ -461,18 +416,12 @@
 │   │   │   │   └── test_identityaccessmanager.py
 │   │   │   ├── test_audio.py
 │   │   │   ├── test_chat.py
-│   │   │   ├── test_chunks.py
-│   │   │   ├── test_collections.py
-│   │   │   ├── test_documents.py
 │   │   │   ├── test_me.py
 │   │   │   ├── test_models.py
-│   │   │   ├── test_parsing.py
 │   │   │   ├── test_providers
 │   │   │   │   ├── test_mistral_image_to_text.py
 │   │   │   │   ├── test_mistral_speech_automatic_regonition.py
 │   │   │   │   └── test_mistral_text_image_to_text.py
-│   │   │   ├── test_search.py
-│   │   │   ├── test_tools.py
 │   │   │   └── utils.py
 │   │   ├── integration
 │   │   │   ├── __init__.py
@@ -605,8 +554,6 @@
 │   │       ├── test_configuration.py
 │   │       ├── test_helpers
 │   │       │   ├── test_accesscontroller.py
-│   │       │   ├── test_documentmanager.py
-│   │       │   ├── test_elasticsearchvectorstore.py
 │   │       │   ├── test_identityaccessmanager
 │   │       │   │   ├── test_encryption.py
 │   │       │   │   ├── test_login.py
@@ -614,9 +561,7 @@
 │   │       │   │   ├── test_roles.py
 │   │       │   │   ├── test_tokens.py
 │   │       │   │   └── test_users.py
-│   │       │   ├── test_limiter.py
-│   │       │   └── test_parsermanager.py
-│   │       ├── test_legacy.py
+│   │       │   └── test_limiter.py
 │   │       ├── test_utils
 │   │       │   ├── test_carbon.py
 │   │       │   └── test_qos.py
@@ -738,7 +683,6 @@
 │       ├── qos.py
 │       ├── redis.py
 │       ├── routing.py
-│       ├── tools.py
 │       └── variables.py
 ├── cli.py
 ├── compose.example.yml
@@ -780,7 +724,6 @@
 │   │   │       ├── configuration
 │   │   │       │   ├── configuration_file.mdx
 │   │   │       │   ├── dependencies
-│   │   │       │   │   ├── elasticsearch.mdx
 │   │   │       │   │   ├── index.mdx
 │   │   │       │   │   ├── postgres.mdx
 │   │   │       │   │   ├── prometheus.mdx
@@ -976,4 +919,4 @@
     ├── manage_docs_dns.py
     ├── startup_api.sh
     └── startup_worker.sh
-220 directories, 758 files
+206 directories, 715 files
