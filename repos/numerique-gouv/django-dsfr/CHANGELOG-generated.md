@@ -1,16 +1,7 @@
-## Changelog : django-dsfr (30 derniers jours, au 11 juin 2026)
+## Changelog : django-dsfr (30 derniers jours, au 22 juin 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à la gestion des formulaires, notamment la correction de l'affichage des cases à cocher et des champs cachés avec le DSFR. La préparation et le processus de publication des releases ont également été améliorés.
-
-### Évolutions fonctionnelles
-- Correction de l'affichage des cases à cocher dans les formulaires DSFR. [#71fd105](https://github.com/numerique-gouv/django-dsfr/commit/71fd105)
-- Correction de l'affichage des champs cachés lors de l'utilisation de `dsfr_form_field`. [#1b34744](https://github.com/numerique-gouv/django-dsfr/commit/1b34744)
-- Amélioration de l'intégration des formulaires avec l'API de rendu. [#e219f45](https://github.com/numerique-gouv/django-dsfr/commit/e219f45)
+Cette version apporte principalement des corrections de sécurité en mettant à jour une dépendance critique, la bibliothèque `cryptography`.  Il n'y a pas de nouvelles fonctionnalités visibles pour les utilisateurs finaux.
 
 ### Évolutions techniques
-- Préparation de la release 3.5.0, 3.5.1 et 3.5.2. [#c987890](https://github.com/numerique-gouv/django-dsfr/commit/c987890), [#3846d10](https://github.com/numerique-gouv/django-dsfr/commit/3846d10)
-- Amélioration du script de préparation des releases avec la possibilité de spécifier le nom du dépôt distant. [#5a64d3e](https://github.com/numerique-gouv/django-dsfr/commit/5a64d3e)
-
-### Autres changements
-- Clarification du processus de publication dans le fichier `CONTRIBUTING.md`. [#f3ad661](https://github.com/numerique-gouv/django-dsfr/commit/f3ad661)
+- Mise à jour de la dépendance `cryptography` de la version 46.0.7 à la version 48.0.1 pour corriger des vulnérabilités de sécurité.  [#320](https://github.com/numerique-gouv/django-dsfr/pull/320)
