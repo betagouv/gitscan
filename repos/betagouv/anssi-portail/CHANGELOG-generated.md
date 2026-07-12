@@ -1,42 +1,44 @@
-## Changelog : anssi-portail (30 derniers jours, au 09 juillet 2026)
+## Changelog : anssi-portail (30 derniers jours, au 10 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration du parcours sécurisation, notamment l'ajout de fonctionnalités de suivi des mesures, l'amélioration de l'expérience utilisateur et la correction de bugs. Des améliorations SEO ont également été apportées, ainsi que des optimisations techniques et de sécurité.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration du parcours de sécurisation, notamment avec l'ajout de fonctionnalités pour le module Cyberdépart et la gestion des mesures. Des améliorations significatives ont également été apportées à la performance et à la sécurité du site, ainsi qu'à l'optimisation SEO. Une migration vers le rendu côté serveur (SSR) est en cours pour améliorer la vitesse de chargement et l'accessibilité.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de suivre la prise en compte des mesures dans le parcours sécurisation.
-- Affichage d'un badge et d'un message de félicitations à l'utilisateur après avoir complété un module du parcours sécurisation.
-- Amélioration de l'affichage des liens et du contenu des cartes DSFR.
-- Correction de l'affichage des images et des contrôles segmentés.
-- Ajout de la possibilité de hacher l'email.
-- Amélioration de l'affichage des pages "Collectivités" et "Catalogue".
-- Ajout de liens canoniques et d'un fichier sitemap pour améliorer le référencement.
-- Ajout de données structurées pour l'indexation.
-- Ajout de la possibilité de rediriger les URL avec un slash final.
-- Affichage du nombre de mesures sur le parcours sécurisation.
-- Ajout d'une ancre pour afficher la demande de diagnostic sur la page "Collectivités".
+- Ajout du parcours complet de sécurisation avec affichage des modules et des mesures associées.
+- Mise en avant du module Cyberdépart dans le parcours de sécurisation.
+- Affichage du nombre de mesures disponibles.
+- Amélioration de l'affichage du site sur différents écrans (large, tablette).
+- Ajout d'un toast pour afficher des messages à l'utilisateur.
+- Affichage du badge Cyberdépart une fois le module complété.
+- Affichage de la progression de l'utilisateur dans le parcours de sécurisation.
+- Ajout de liens vers des mesures plus avancées.
+- Correction de l'affichage des pages "services".
+- Amélioration de l'affichage des cartes DSFR.
+- Ajout des pages de contacts régionaux et des mesures associées.
+- Mise à jour des liens canoniques et ajout du fichier sitemap.xml pour améliorer le SEO.
+- Ajout des données structurées d'indexation pour le SEO.
+- Correction de l'URL canonique pour inclure le 'site.url'.
 
 ### Évolutions techniques
-- Mise en place du rendu côté serveur (SSR) pour plusieurs pages et composants (guides, collectivités, associations, etc.).
-- Refonte de la configuration et des dépendances avec Nix et Renovate.
-- Amélioration de la gestion des erreurs et de la sécurité (validation des configurations, désactivation des identifiants git, etc.).
-- Optimisation des performances et du code (suppression de CSS inutilisé, mutualisation de code, etc.).
-- Mise à jour de plusieurs dépendances (esbuild, dompurify, @babel/core, vite, form-data, etc.).
-- Amélioration de la gestion du cache Grist.
-- Introduction d'un constructeur de mesures.
-- Utilisation de types plus explicites.
-- Centralisation de la configuration d'Axios.
-- Amélioration de la gestion des secrets dans les workflows.
+- Migration progressive vers le rendu côté serveur (SSR) pour améliorer la performance et le SEO.
+- Utilisation de UUID v7 pour la génération de clés primaires.
+- Refonte de la configuration d'Axios pour une meilleure gestion des requêtes.
+- Amélioration de la gestion des erreurs et des logs.
+- Mise à jour de plusieurs dépendances pour corriger des failles de sécurité et améliorer la stabilité (dompurify, @babel/core, vite, form-data, shell-quote).
+- Ajout d'un Nix Shell pour faciliter le développement en local.
+- Renforcement de la sécurité des workflows CI/CD.
+- Utilisation de nouveaux outils de validation de configuration (zizmor).
+- Centralisation de la gestion de la configuration et des chemins.
+- Amélioration de la structure du code et suppression de code inutile.
+- Ajout de tests Playwright pour l'automatisation des tests d'intégration.
 
 ### Autres changements
-- Ajout de tests Playwright et amélioration de la couverture de tests.
+- Mise à jour de la documentation.
+- Correction de petites erreurs de wording et de style.
+- Ajout de commentaires et de documentation pour améliorer la lisibilité du code.
+- Amélioration de la gestion des secrets dans les workflows CI/CD.
 - Ajout de métadonnées Open Graph et Twitter pour le partage sur les réseaux sociaux.
-- Documentation mise à jour.
-- Corrections de style et d'indentation.
-- Ajout de commentaires et de documentation au code.
-- Amélioration de la structure du projet et de la lisibilité du code.
-- Ajout d'un fichier robots.txt.
-- Ajout d'un outil `zizmor` pour valider la configuration.
-- Suppression de la vidéo sur la page "Collectivités".
-- Mise à jour du nombre d'organisations pour la demande d'aide.
-- Amélioration de la hiérarchie des titres sur certaines pages pour le SEO.
+- Ajout du fichier robots.txt pour le contrôle de l'indexation par les moteurs de recherche.
+- Mise à jour des versions des dépendances de l'UI Kit.
+- Correction de l'indentation des secrets dans les fichiers de déploiement.
+- Ajout d'un rate limit global pour la sécurité.
