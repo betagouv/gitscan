@@ -1,16 +1,18 @@
 ## Changelog : lasuite-landingpage (30 derniers jours, au 03 juillet 2026)
 
 ### Résumé
-Ce mois-ci, la page d'accueil de La Suite a été enrichie de nouvelles informations concernant les webinaires (dates, liens de relecture) et l'intégration de Tchap. Des améliorations d'accessibilité ont également été apportées, notamment pour le service France Transfert. Enfin, des mises à jour de contenu et de pages légales ont été réalisées.
+Les dernières mises à jour de la page d'accueil "La Suite" incluent l'ajout d'une page dédiée à Tchap, des mises à jour concernant les webinaires (dates, liens de relecture) et des améliorations d'accessibilité pour le service France Transfert. La page 404 a également été mise à jour.
 
 ### Évolutions fonctionnelles
-- Ajout d'une page de présentation pour Tchap. [#212](https://github.com/numerique-gouv/lasuite-landingpage/issues/212)
-- Ajout de liens de relecture pour les webinaires passés et mise à jour des dates des webinaires. [#215](https://github.com/numerique-gouv/lasuite-landingpage/issues/215), [#216](https://github.com/numerique-gouv/lasuite-landingpage/issues/216), [#218](https://github.com/numerique-gouv/lasuite-landingpage/issues/218), [#208](https://github.com/numerique-gouv/lasuite-landingpage/issues/208)
-- Mise à jour de la page 404 pour une meilleure expérience utilisateur. [#217](https://github.com/numerique-gouv/lasuite-landingpage/issues/217)
-- Ajout de pages légales pour les services Fichiers et Drive. [#206](https://github.com/numerique-gouv/lasuite-landingpage/issues/206), [#207](https://github.com/numerique-gouv/lasuite-landingpage/issues/207)
+- Ajout d'une section dédiée à Tchap sur la page d'accueil. [#212](https://github.com/numerique-gouv/lasuite-landingpage/issues/212)
+- Mise à jour de la date du webinaire Resana. [#216](https://github.com/numerique-gouv/lasuite-landingpage/issues/216)
+- Ajout de liens de relecture pour les webinaires Resana et un webinaire passé. [#215](https://github.com/numerique-gouv/lasuite-landingpage/issues/215) et [#208](https://github.com/numerique-gouv/lasuite-landingpage/issues/208)
+- Mise à jour des pages légales pour Drive. [#207](https://github.com/numerique-gouv/lasuite-landingpage/issues/207)
+- Amélioration de l'accessibilité du service France Transfert dans l'API (ajout de `accessibleName`). [#214](https://github.com/numerique-gouv/lasuite-landingpage/issues/214)
+- Mise à jour de la page 404. [#217](https://github.com/numerique-gouv/lasuite-landingpage/issues/217)
 
 ### Évolutions techniques
-- Amélioration de l'accessibilité du service France Transfert en ajoutant l'attribut `accessibleName` dans l'endpoint des services. [#214](https://github.com/numerique-gouv/lasuite-landingpage/issues/214)
+- Aucune évolution technique significative à signaler.
 
 ### Autres changements
-- Mises à jour de dépendances de sécurité pour `js-yaml` et `next`. (renovate[bot])
+- Aucune autre modification à signaler.
