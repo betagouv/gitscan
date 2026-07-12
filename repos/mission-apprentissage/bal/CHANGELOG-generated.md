@@ -1,17 +1,18 @@
-## Changelog : bal (30 derniers jours, au 18 juin 2026)
+## Changelog : bal (30 derniers jours, au 10 juillet 2026)
 
 ### Résumé
-Cette version apporte des améliorations à l'importation de données Akto, corrige des erreurs typographiques et des problèmes liés aux listes de diffusion. Des migrations de serveurs ont également été effectuées pour les environnements de production et de recette. Enfin, des sous-modules obsolètes ont été supprimés pour simplifier l'infrastructure.
+Cette mise à jour apporte des améliorations concernant l'ingestion de données DECA, la gestion des identifiants, et la sécurité des secrets. Des migrations d'infrastructure ont également été réalisées pour les environnements de production et de recette.
 
 ### Évolutions fonctionnelles
-- Importation des données Akto : Ajout de la fonctionnalité d'importation des données Akto. [#518](https://github.com/mission-apprentissage/bal/issues/518)
-- Correction des listes de diffusion : Résolution d'un problème empêchant la mise à jour correcte des listes de diffusion LBA. [#520](https://github.com/mission-apprentissage/bal/issues/520)
-- Mise à jour de la clé Akto : La clé Akto a été mise à jour. [#519](https://github.com/mission-apprentissage/bal/issues/519)
+- Mise à jour de l'ingestion des données DECA, dans le cadre de la tâche LBA-4953. [#527](https://github.com/mission-apprentissage/bal/issues/527)
+- Mise à jour des identifiants DECA. [#528](https://github.com/mission-apprentissage/bal/issues/528)
+- Correction de la conversion du code motif de rupture. [#529](https://github.com/mission-apprentissage/bal/issues/529)
 
 ### Évolutions techniques
-- Suppression des sous-modules : Suppression des sous-modules `.infra/authorizations` et `.infra/inventories` pour simplifier l'infrastructure. [#522](https://github.com/mission-apprentissage/bal/issues/522)
-- Migration des serveurs : Migration des serveurs `bal-production` et `bal-recette`. [#525](https://github.com/mission-apprentissage/bal/issues/525) et [#523](https://github.com/mission-apprentissage/bal/issues/523)
-- Ajout de descripteurs de modèles manquants : Correction de l'absence de descripteurs de modèles. [#521](https://github.com/mission-apprentissage/bal/issues/521)
+- Migration du serveur BAL de production. [#525](https://github.com/mission-apprentissage/bal/issues/525)
+- Migration du serveur BAL de recette. [#523](https://github.com/mission-apprentissage/bal/issues/523)
+- Rotation du secret principal SOPS pour renforcer la sécurité. [#526](https://github.com/mission-apprentissage/bal/issues/526)
+- Suppression des sous-modules `.infra/authorizations` et `.infra/inventories`. [#522](https://github.com/mission-apprentissage/bal/issues/522)
 
 ### Autres changements
-- Correction de fautes de frappe : Correction de quelques erreurs typographiques dans le code. [#524](https://github.com/mission-apprentissage/bal/issues/524)
+- Correction de quelques fautes de frappe. [#524](https://github.com/mission-apprentissage/bal/issues/524)
