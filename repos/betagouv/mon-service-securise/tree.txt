@@ -183,10 +183,6 @@
 ├── playwright.config.ts
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
-├── poc-pdf
-│   ├── .gitignore
-│   ├── dossier.typ
-│   └── feedback.ts
 ├── public
 │   ├── accueilInscription.mjs
 │   ├── apresAuthentification.js
@@ -399,6 +395,7 @@
 │   │   │   │   │   ├── moduleRisquesV2.png
 │   │   │   │   │   ├── nouvelleDoctrineHomologation.png
 │   │   │   │   │   ├── prioritePlanAction.png
+│   │   │   │   │   ├── referentielsExternes.png
 │   │   │   │   │   ├── risquesV2.png
 │   │   │   │   │   ├── serviceImpactNational.png
 │   │   │   │   │   ├── tableauDeBordV2.png
@@ -424,7 +421,7 @@
 │   │   │   │   ├── echangeOuReceptionEmails.svg
 │   │   │   │   └── postesDeTravail.svg
 │   │   │   ├── tableauDeBord
-│   │   │   │   ├── image_equipe_webinaire.png
+│   │   │   │   ├── image_formation_mss.png
 │   │   │   │   ├── image_promotion_msc.png
 │   │   │   │   └── image_rejoignez_communaute.png
 │   │   │   ├── tampon_homologation.png
@@ -525,17 +522,8 @@
 │   │   ├── parametresDescriptionService.mjs
 │   │   ├── saisieListeItems.js
 │   │   ├── soumetsHomologation.mjs
-│   │   ├── suggestion
-│   │   │   └── suggestionEntite.mjs
-│   │   └── tableauDeBord
-│   │       ├── actions
-│   │       │   ├── Action.mjs
-│   │       │   ├── ActionExport.mjs
-│   │       │   ├── ActionExportMesures.mjs
-│   │       │   ├── ActionMesure.mjs
-│   │       │   ├── ActionSuppressionDossierCourant.mjs
-│   │       │   └── ActionTelechargement.mjs
-│   │       └── gestionnaireTiroir.mjs
+│   │   └── suggestion
+│   │       └── suggestionEntite.mjs
 │   ├── mssConnecte.mjs
 │   ├── profil.mjs
 │   ├── scripts
@@ -577,6 +565,10 @@
 │   │   ├── transformeCSVPourSelectionObjectifsVises.sh
 │   │   ├── transformeCSVPourSelectionVecteurs.sh
 │   │   └── transformeCSVPourVraisemblance.sh
+│   ├── referentielsMesuresExternes
+│   │   ├── transformeCorrespondanceAEEnTypescript.sh
+│   │   ├── transformeCorrespondanceISOEnTypescript.sh
+│   │   └── transformeCorrespondanceReCyfEnTypescript.sh
 │   ├── start.sh
 │   ├── taches
 │   │   ├── tacheEnvoieMailsNotificationExpiration.js
@@ -610,10 +602,7 @@
 │   │   ├── adaptateurOidc.interface.ts
 │   │   ├── adaptateurOidc.ts
 │   │   ├── adaptateurOidcTestsAccessibilite.ts
-│   │   ├── adaptateurPdf.configurationTamponHomologation.ts
 │   │   ├── adaptateurPdf.interface.ts
-│   │   ├── adaptateurPdf.js
-│   │   ├── adaptateurPdf.puppeteer.ts
 │   │   ├── adaptateurPdf.typst.ts
 │   │   ├── adaptateurPersistance.interface.ts
 │   │   ├── adaptateurPersistanceMemoire.js
@@ -633,6 +622,8 @@
 │   │   ├── adaptateurStatistiquesMetabase.ts
 │   │   ├── adaptateurSupervision.interface.ts
 │   │   ├── adaptateurSupervisionMetabase.ts
+│   │   ├── adaptateurTamponHomologation.configuration.ts
+│   │   ├── adaptateurTamponHomologation.js
 │   │   ├── adaptateurTeleversementModelesMesureSpecifique.xls.js
 │   │   ├── adaptateurTeleversementServices.xls.js
 │   │   ├── adaptateurTrackingMemoire.js
@@ -790,6 +781,14 @@
 │   │   │   ├── suggestionAction.schema.ts
 │   │   │   └── visiteGuidee.schema.ts
 │   │   └── validePayloads.ts
+│   ├── mesures
+│   │   └── referentielsExternes
+│   │       ├── correspondanceMesuresReCyfVersAE2690.ts
+│   │       ├── correspondanceMesuresReCyfVersISO2700X.ts
+│   │       ├── correspondanceMesuresV2VersReCyf.ts
+│   │       ├── donneesReferentielMesuresAE2690.ts
+│   │       ├── donneesReferentielMesuresISO2700X.ts
+│   │       └── donneesReferentielMesuresReCyf.ts
 │   ├── modeles
 │   │   ├── acteurHomologation.js
 │   │   ├── acteursHomologation.js
@@ -993,42 +992,6 @@
 │   ├── oidc
 │   │   ├── cookies.ts
 │   │   └── serviceForceMFA.ts
-│   ├── pdf
-│   │   ├── graphiques
-│   │   │   └── camembert.js
-│   │   └── modeles
-│   │       ├── annexe.piedpage.pug
-│   │       ├── annexeAvis.entete.pug
-│   │       ├── annexeAvis.pug
-│   │       ├── annexeDescription.entete.pug
-│   │       ├── annexeDescription.pug
-│   │       ├── annexeDocuments.entete.pug
-│   │       ├── annexeDocuments.pug
-│   │       ├── annexeMesures.entete.pug
-│   │       ├── annexeMesures.pug
-│   │       ├── annexeRisques.entete.pug
-│   │       ├── annexeRisques.pug
-│   │       ├── annexeRisquesV2.entete.pug
-│   │       ├── annexeRisquesV2.pug
-│   │       ├── base.entete.pug
-│   │       ├── base.pug
-│   │       ├── dossierDecision.entete.pug
-│   │       ├── dossierDecision.pug
-│   │       ├── indiceCyber
-│   │       │   ├── fleche.scoreIndiceCyber.svg.pug
-│   │       │   ├── masqueJauge.scoreIndiceCyber.svg.pug
-│   │       │   └── scoreIndiceCyber.pug
-│   │       ├── indiceCyberPersonnalise
-│   │       │   └── scoreIndiceCyberPersonnalise.pug
-│   │       ├── ressources
-│   │       │   ├── fonts.css
-│   │       │   ├── images.css
-│   │       │   ├── styles.css
-│   │       │   └── tourDePage.css
-│   │       ├── syntheseSecurite.entete.pug
-│   │       ├── syntheseSecurite.pug
-│   │       ├── tamponHomologation.base64.pug
-│   │       └── tamponHomologation.pug
 │   ├── referentiel.interface.ts
 │   ├── referentiel.ts
 │   ├── referentiel.types.ts
@@ -1096,6 +1059,10 @@
 │   │   └── serviceSupervision.ts
 │   ├── taches
 │   │   └── envoieMailsNotificationExpirationHomologation.js
+│   ├── tamponHomologation
+│   │   └── modeles
+│   │       ├── tamponHomologation.base64.pug
+│   │       └── tamponHomologation.typ
 │   ├── tracking
 │   │   └── serviceTracking.js
 │   ├── typesBasiques.ts
@@ -1163,6 +1130,7 @@
 │   │   ├── mssDocumentation.pug
 │   │   ├── parcoursService.pug
 │   │   ├── profil.pug
+│   │   ├── referentielMesures.pug
 │   │   ├── securisezServiceNumerique.pug
 │   │   ├── securite.pug
 │   │   ├── service
@@ -1175,14 +1143,6 @@
 │   │   ├── statistiques.pug
 │   │   ├── supervision.pug
 │   │   ├── tableauDeBord.pug
-│   │   ├── tiroirs
-│   │   │   ├── documentTelechargeable.pug
-│   │   │   ├── tiroir.pug
-│   │   │   ├── tiroirExport.pug
-│   │   │   ├── tiroirExportMesures.pug
-│   │   │   ├── tiroirMesure.pug
-│   │   │   ├── tiroirSuppressionDossierCourant.pug
-│   │   │   └── tiroirTelechargement.pug
 │   │   └── visiteGuidee
 │   │       └── creationService.pug
 │   └── vuesPdf
@@ -1485,6 +1445,7 @@
 │   │   │   │   ├── ContenuOngletMesure.svelte
 │   │   │   │   ├── ContenuOngletMesureSpecifiqueLieeAModele.svelte
 │   │   │   │   ├── ContenuOngletPlanAction.svelte
+│   │   │   │   ├── ContenuOngletReferentielsExternes.svelte
 │   │   │   │   └── activites
 │   │   │   │       ├── Activite.svelte
 │   │   │   │       ├── ActiviteAjoutCommentaire.svelte
@@ -1504,7 +1465,6 @@
 │   │   │   ├── mesure.api.ts
 │   │   │   ├── mesure.d.ts
 │   │   │   ├── mesure.store.ts
-│   │   │   ├── mesure.ts
 │   │   │   ├── modeVisiteGuidee
 │   │   │   │   └── donneesVisiteGuidee.ts
 │   │   │   └── suppression
@@ -1542,6 +1502,7 @@
 │   │   │   │   │       ├── CarteDossier.svelte
 │   │   │   │   │       ├── ModaleEncartHomologation.svelte
 │   │   │   │   │       ├── OngletVide.svelte
+│   │   │   │   │       ├── TiroirSuppressionDossierCourant.svelte
 │   │   │   │   │       └── TiroirTelechargementTamponHomologation.svelte
 │   │   │   │   ├── indiceCyber
 │   │   │   │   │   ├── IndiceCyber.svelte
@@ -1681,7 +1642,6 @@
 │   │   ├── tableauDesMesures
 │   │   │   ├── BandeauActions.svelte
 │   │   │   ├── TableauDesMesures.svelte
-│   │   │   ├── actionsTiroir.ts
 │   │   │   ├── aucunResultat
 │   │   │   │   └── AucunResultat.svelte
 │   │   │   ├── filtres
@@ -1695,6 +1655,7 @@
 │   │   │   │   └── TiroirAssociationModelesMesureSpecifiqueAuService.svelte
 │   │   │   ├── modeVisiteGuidee
 │   │   │   │   └── donneesVisiteGuidee.ts
+│   │   │   ├── referentielsExternes.ts
 │   │   │   ├── stores
 │   │   │   │   ├── contributeurs.store.ts
 │   │   │   │   ├── mesures.store.ts
@@ -1705,6 +1666,7 @@
 │   │   │   │   ├── rechercheParPartieResponsable.store.ts
 │   │   │   │   ├── rechercheParPriorite.store.ts
 │   │   │   │   ├── rechercheParReferentiel.store.ts
+│   │   │   │   ├── rechercheParReferentielExterne.store.ts
 │   │   │   │   ├── rechercheParThematique.store.ts
 │   │   │   │   ├── rechercheTextuelle.store.ts
 │   │   │   │   ├── resultatsDeRecherche.store.ts
@@ -1802,6 +1764,7 @@
 │   │   │   │   ├── ContenuTiroir.svelte
 │   │   │   │   ├── DocumentTelechargeable.svelte
 │   │   │   │   ├── TiroirDuplication.svelte
+│   │   │   │   ├── TiroirExportMesures.svelte
 │   │   │   │   ├── TiroirExportServices.svelte
 │   │   │   │   ├── TiroirGestionContributeurs.svelte
 │   │   │   │   ├── TiroirSuppression.svelte
@@ -1838,6 +1801,7 @@
 │   │   │   ├── VisiteGuideeCreationService.svelte
 │   │   │   └── visiteGuideeCreationService.ts
 │   │   └── vite-env.d.ts
+│   ├── svelte.config.js
 │   ├── test
 │   │   ├── adminUtilisateurs
 │   │   │   └── TiroirNommerAdmin
@@ -2167,9 +2131,6 @@
 │   │   └── centreNotifications.spec.js
 │   ├── oidc
 │   │   └── serviceForceMFA.spec.ts
-│   ├── pdf
-│   │   └── graphiques
-│   │       └── camembert.spec.js
 │   ├── referentiel.spec.js
 │   ├── referentielV2.spec.ts
 │   ├── routes
@@ -2251,4 +2212,4 @@
 │       └── parametres.spec.mjs
 ├── tsconfig.json
 └── vitest.config.ts
-298 directories, 2082 files
+291 directories, 2050 files
