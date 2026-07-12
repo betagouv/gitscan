@@ -1,35 +1,38 @@
-## Changelog : resorption-bidonvilles (30 derniers jours, au 25 juin 2026)
+## Changelog : resorption-bidonvilles (30 derniers jours, au 08 juillet 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives de l'interface utilisateur, notamment au niveau du filtrage et de l'affichage des données, en particulier concernant les actions et les indicateurs scolaires. Des corrections de bugs et des optimisations de performance ont également été apportées, ainsi que des ajustements pour améliorer la qualité des données exportées.
+Cette période a été marquée par une refonte significative du formulaire et de l'affichage des phases préparatoires à la résorption, ainsi que par des améliorations de la validation et de la gestion des indicateurs scolaires. Plusieurs corrections de bugs et optimisations de performance ont également été apportées pour améliorer l'expérience utilisateur et la stabilité de la plateforme.
 
 ### Évolutions fonctionnelles
-- Ajout d'un onglet "Actions de ma structure" pour les opérateurs, permettant de filtrer les actions par organisation. [#2692](https://trello.com/c/wvr2hd4B/2692)
-- Amélioration du filtre "Indicateurs" qui affiche désormais correctement les résultats. [#2701](https://trello.com/c/VuiTrNnL/2701)
-- Ajout de validations de cohérence pour les indicateurs d'action (mineurs, ménages, santé, emploi, logement). [#2560](https://trello.com/c/fvbTRXQz/2560)
-- Possibilité de filtrer les actions par structure côté frontend. [#2692](https://trello.com/c/wvr2hd4B/2692)
-- Statistiques séparées pour les actions en cours et terminées. [#2692](https://trello.com/c/wvr2hd4B/2692)
-- Correction de l'affichage des badges d'indicateurs, qui ne s'affichent désormais que s'il y a des actions. [#2701](https://trello.com/c/VuiTrNnL/2701)
-- Ajout de l'option "Inconnu" au filtre "Type de propriétaire". [#2703](https://trello.com/c/9JS8SJF6/2703)
+- Refonte complète du formulaire et de l'affichage des cartes des phases préparatoires à la résorption.
+- Amélioration de l'affichage des badges de phases sur la carte.
+- Ajout de l'option "Inconnu" au filtre "Type de propriétaire".
+- Affichage plus clair des actions en cours pour chaque structure.
+- Correction de l'affichage de la date de la phase "official_opening".
+- Correction de la synchronisation date/statut des phases préparatoires.
+- Correction de la persistance des phases préparatoires en édition.
+- Correction d'une coquille dans le nom du type de badge de la carte de phase.
+- Correction de l'affichage de la colonne suivant le lancement officiel de la résorption.
 
 ### Évolutions techniques
-- Refactor de l'API pour utiliser des types plus cohérents et améliorer la validation des données. [#2560](https://trello.com/c/fvbTRXQz/2560)
-- Amélioration de la performance du filtrage des données. [#2561](https://trello.com/c/sqy3f0kc/2561)
-- Utilisation de `structuredClone` au lieu de `cloneDeep` pour améliorer la performance et la compatibilité. [#2560](https://trello.com/c/fvbTRXQz/2560)
-- Suppression de code mort et nettoyage général du code. [#2560](https://trello.com/c/fvbTRXQz/2560)
-- Correction de plusieurs erreurs relevées par SonarQube. [#2560](https://trello.com/c/fvbTRXQz/2560)
-- Mise à jour des dépendances et correction de problèmes de linting.
-- Amélioration de la gestion des erreurs et des messages d'erreur.
+- Refactorings importants du code frontend et backend pour améliorer la maintenabilité et la performance.
+- Optimisation de la recherche de la phase associée dans l'item de phase.
+- Utilisation de `structuredClone` au lieu de `cloneDeep` pour améliorer la performance et la compatibilité.
+- Amélioration de la validation des indicateurs scolaires côté frontend et backend.
+- Suppression de contraintes SQL obsolètes pour les indicateurs scolaires.
+- Utilisation de `includes` au lieu de `indexOf` pour une meilleure lisibilité du code.
+- Amélioration des messages d'erreur de validation.
+- Mise en place d'un service centralisé pour la gestion des notifications Mattermost.
+- Correction de linting et amélioration de la qualité du code.
+- Mise à jour des conditions d'utilisation.
 
 ### Autres changements
-- Mise à jour des conditions d'utilisation. [#2712](https://trello.com/c/PXmPMtEe/2712)
-- Ajout de tests unitaires pour l'API. [#2706](https://trello.com/c/17BTTncn/2706)
-- Correction de bugs mineurs et améliorations de l'interface utilisateur.
-- Ajout d'un bandeau d'alerte pour la canicule.
-- Mise à jour du numéro de version à v2.55.0 et v2.54.0.
-- Correction de l'affichage de l'item actif dans le menu.
+- Ajout d'un item dans la popup de la version.
+- Correction de doublons d'ID d'élément.
+- Mise à jour de la date de PROD et de la date limite du questionnaire.
+- Ajout d'un bandeau canicule.
 - Correction de la popup.
-- Correction des coins vides des boutons de zoom.
-- Correction de l'affichage de l'item actif dans le menu.
-- Correction de l'affichage de l'item actif dans le menu.
-- Correction de l'affichage de l'item actif dans le menu.
+- Correction de l'appel à Submit et désactivation du bouton si déjà à jour.
+- Correction de tests unitaires.
+- Amélioration de la documentation.
+- Publication des versions v2.54.0 et v2.55.1.
