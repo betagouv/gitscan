@@ -1,32 +1,44 @@
-## Changelog : infra-apps (30 derniers jours, au 09 juillet 2026)
+## Changelog : infra-apps (30 derniers jours, au 10 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les efforts se sont concentrés sur l'amélioration de l'infrastructure Iterion, notamment le déploiement d'une nouvelle instance de production sur OVH, l'ajout de fonctionnalités d'autoscaling et l'amélioration de la sécurité et de la gestion des secrets. Des améliorations ont également été apportées à Buildkit Operator, notamment l'ajout de la prise en charge de l'authentification OIDC et l'amélioration de la configuration.
+Ce changelog résume les évolutions récentes du projet infra-apps, principalement axées sur l'amélioration et la stabilisation de l'application Iterion, ainsi que sur la mise en place d'une infrastructure plus robuste pour Buildkit. Des améliorations significatives ont été apportées à l'autoscaling, à la sécurité et à la gestion des environnements de production et de pré-production.
 
 ### Évolutions fonctionnelles
-- **Iterion:** Ajout de la prise en charge de GitHub SSO sur preprod, permettant aux utilisateurs de s'authentifier via leur compte GitHub. [#40](https://github.com/SocialGouv/infra-apps/issues/40)
-- **Iterion:** Activation du mode d'inscription public sur la production, permettant aux utilisateurs de s'auto-provisionner via GitHub SSO. [#43](https://github.com/SocialGouv/infra-apps/issues/43)
-- **Iterion:** Ajout d'un marketplace public sur la production. [#41](https://github.com/SocialGouv/infra-apps/issues/41)
-- **Iterion:** Implémentation de l'accès à plusieurs niveaux sur le marketplace GitHub SSO (submitter tier). [#45](https://github.com/SocialGouv/infra-apps/issues/45)
-- **Buildkit Operator:** Ajout de la prise en charge de l'authentification OIDC pour une sécurité renforcée. [#48](https://github.com/SocialGouv/infra-apps/issues/48)
-- **Charon:** Autorisation du redirect_uri pour preprod egapro Atlas v2.
+- **Iterion :**
+    - Activation du single sign-on (SSO) via GitHub sur l'environnement de pré-production. [#40](https://github.com/SocialGouv/infra-apps/issues/40)
+    - Ouverture de l'inscription sur l'environnement de production avec activation du SSO GitHub pour l'auto-provisionnement. [#43](https://github.com/SocialGouv/infra-apps/issues/43)
+    - Ajout d'un accès en lecture seule au marketplace pour les utilisateurs non-soumetteurs. [#45](https://github.com/SocialGouv/infra-apps/issues/45)
+    - Implémentation de Valkey HA (Sentinel) pour une gestion d'état distribuée. [#46](https://github.com/SocialGouv/infra-apps/issues/46)
+    - Renforcement de la sécurité avec l'ajout d'un accès en niveaux (submitter tier) via GitHub SSO.
+- **Buildkit :**
+    - Ajout d'un fournisseur OIDC Forgejo pour l'authentification.
+    - Activation de la vérification d'identité OIDC sur l'environnement ovh-prod. [#48](https://github.com/SocialGouv/infra-apps/issues/48)
+    - Durcissement de l'environnement ovh-prod avec l'ajout d'un Ingress TLS, une épingle stricte et une limitation du nombre de domaines gérés par le gateway. [#47](https://github.com/SocialGouv/infra-apps/issues/47)
+    - Mise en place d'une infrastructure GitOps pour ovh-prod.
 
 ### Évolutions techniques
-- **Iterion:** Déploiement d'une nouvelle instance de production sur OVH avec une architecture haute disponibilité.
-- **Iterion:** Mise en place d'un autoscaling basé sur KEDA pour le runner, améliorant la réactivité et l'efficacité.
-- **Iterion:** Amélioration de la gestion des secrets avec l'utilisation de SealedSecrets et la suppression de clés globales inutilisées.
-- **Iterion:** Utilisation de host_state pour les sandboxes Kubernetes, améliorant la stabilité et la sécurité.
-- **Buildkit Operator:** Mise à jour vers la version v0.12.0, apportant des corrections et des améliorations de performance.
-- **Buildkit Operator:** Ajout d'un provider OIDC Forgejo pour l'authentification.
-- **Buildkit Operator:** Configuration du gateway wildcard pour bkod.fabrique.
-- **Buildkit Operator:** Capture de la configuration live du gateway.
-- **Buildkit Operator:** Renforcement de la sécurité de l'instance OVH avec TLS Ingress et une limitation du nombre de domaines.
-- **Iterion:** Migration des datastores de Bitnami vers Groundhog2k Mongo RS3 et MinIO distribué.
-- **Kata:** Déploiement dans l'espace de noms buildkit-system au lieu de kube-system.
-- **Kata:** Activation de virtiofsd xattr pour résoudre les problèmes de hachage de contenu dans les VMs fork.
+- **Iterion :**
+    - Amélioration de l'autoscaling avec KEDA, basé sur la profondeur de la queue.
+    - Augmentation de la limite de mémoire du runner à 8Gi pour éviter les erreurs OOM.
+    - Mise à jour du chart Iterion vers les versions 0.37.4, 0.37.2, 0.35.0, 0.34.0, 0.33.0 et 0.32.0.
+    - Activation du cache de construction pour les runners.
+    - Correction d'un problème avec l'endpoint NATS de KEDA.
+    - Ajout d'un tmpfs writable pour les secrets en-pod.
+    - Mise en place d'un override de sandbox pour les runners sans sandbox.
+    - Utilisation d'images Devbox pour les runners.
+    - Correction de problèmes liés à la gestion des secrets et à l'accès aux fichiers.
+- **Buildkit :**
+    - Mise à jour de l'opérateur Buildkit vers les versions v0.12.0, v0.10.0 et v0.9.0.
+    - Configuration de l'opérateur Buildkit pour utiliser des certificats TLS gérés par cert-manager pour l'environnement ovh-prod.
+    - Ajout de credentials S3 sealed pour les builds Buildkit sur ovh-prod.
+    - Correction de la capture de la configuration live du gateway.
+- **Général :**
+    - Correction d'un problème de déploiement de Kata dans le namespace buildkit-system.
+    - Activation de virtiofsd xattr pour résoudre les problèmes de hachage de contenu dans les VMs fork.
+    - Suspension temporaire de l'application iterion-preprod pendant une période de pointe de production.
 
 ### Autres changements
-- Mise à jour de la documentation et de la configuration pour refléter les changements apportés.
-- Nettoyage du code et suppression des éléments inutilisés.
-- Correction de bugs mineurs et améliorations de la stabilité.
-- Plusieurs mises à jour de versions (charts Iterion, Buildkit Operator) pour corriger des bugs et améliorer la sécurité.
+- Correction de l'autorisation du redirect_uri pour l'environnement de pré-production Charon egapro Atlas v2.
+- Suppression d'une épingle temporaire d'image E2E.
+- Mise à jour de la documentation et de la configuration.
+- Nettoyage du code et refactoring.
