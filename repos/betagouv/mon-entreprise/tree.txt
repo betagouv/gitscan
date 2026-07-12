@@ -494,8 +494,7 @@
 │   │   ├── SearchParamsAdapter.ts
 │   │   ├── api
 │   │   │   ├── RechercheEntreprise
-│   │   │   │   ├── RechercheEntreprisesGouvFr.ts
-│   │   │   │   └── fabrique-social.ts
+│   │   │   │   └── RechercheEntreprisesGouvFr.ts
 │   │   │   ├── activité-vers-bénéfice
 │   │   │   │   ├── data.json
 │   │   │   │   └── index.tsx
@@ -623,17 +622,20 @@
 │   │   │   │   └── index.tsx
 │   │   │   ├── Simulateur
 │   │   │   │   ├── Actions.tsx
+│   │   │   │   ├── AutoScrollToQuestions.tsx
 │   │   │   │   ├── BlocMontants.tsx
 │   │   │   │   ├── BlocSituation.tsx
-│   │   │   │   ├── BoutonDétail.tsx
-│   │   │   │   ├── BoutonPartage.tsx
-│   │   │   │   ├── BoutonReset.tsx
-│   │   │   │   ├── BoutonRetour.tsx
-│   │   │   │   ├── ComposantQuestionFournie.tsx
-│   │   │   │   ├── ListeQuestions.tsx
-│   │   │   │   ├── QuestionCourante.tsx
-│   │   │   │   ├── QuestionPublicodes.tsx
-│   │   │   │   ├── QuestionsPrincipales.tsx
+│   │   │   │   ├── Boutons
+│   │   │   │   │   ├── BoutonDétail.tsx
+│   │   │   │   │   ├── BoutonPartage.tsx
+│   │   │   │   │   └── BoutonReset.tsx
+│   │   │   │   ├── LienDocumentation.tsx
+│   │   │   │   ├── Questions
+│   │   │   │   │   ├── ComposantQuestionFournie.tsx
+│   │   │   │   │   ├── ListeQuestions.tsx
+│   │   │   │   │   ├── QuestionCourante.tsx
+│   │   │   │   │   ├── QuestionPublicodes.tsx
+│   │   │   │   │   └── QuestionsPrincipales.tsx
 │   │   │   │   ├── Simulateur.tsx
 │   │   │   │   └── ZoneDeSaisie.tsx
 │   │   │   ├── SimulateurCard.tsx
@@ -653,6 +655,7 @@
 │   │   │   │   ├── SimpleField.tsx
 │   │   │   │   ├── SimulationChargéeBanner.tsx
 │   │   │   │   ├── SimulationGoal.tsx
+│   │   │   │   ├── SimulationGoalRadio.tsx
 │   │   │   │   ├── SimulationGoals.tsx
 │   │   │   │   ├── SimulationPréremplieBanner.tsx
 │   │   │   │   ├── SimulationValue.tsx
@@ -853,6 +856,7 @@
 │   │   │   │   ├── Button.tsx
 │   │   │   │   ├── CloseButton.stories.tsx
 │   │   │   │   ├── CloseButton.tsx
+│   │   │   │   ├── ReturnButton.tsx
 │   │   │   │   └── index.ts
 │   │   │   ├── card
 │   │   │   │   ├── Article.tsx
@@ -1050,6 +1054,7 @@
 │   │   │   ├── typography
 │   │   │   │   ├── Ol.stories.tsx
 │   │   │   │   ├── TitreObjectif.tsx
+│   │   │   │   ├── TitreObjectifRadio.tsx
 │   │   │   │   ├── TitreObjectifSaisissable.tsx
 │   │   │   │   ├── Ul.stories.tsx
 │   │   │   │   ├── heading.tsx
@@ -1072,6 +1077,7 @@
 │   │   │   ├── Date.ts
 │   │   │   ├── Entreprise.ts
 │   │   │   ├── EntreprisesRepository.ts
+│   │   │   ├── EnvironnementDeploye.ts
 │   │   │   ├── ExpressionPublicodes.ts
 │   │   │   ├── IndépendantContexte.ts
 │   │   │   ├── Montant.test.ts
@@ -1104,6 +1110,10 @@
 │   │   │   │   ├── Notification.ts
 │   │   │   │   ├── Rules.ts
 │   │   │   │   └── TravailleurIndependantContexteDansPublicodes.ts
+│   │   │   ├── questions
+│   │   │   │   ├── GroupeDeQuestionsPublicodes.ts
+│   │   │   │   ├── QuestionPublicodes.ts
+│   │   │   │   └── index.ts
 │   │   │   ├── relativeDottedName.ts
 │   │   │   ├── searchParams.test.ts
 │   │   │   ├── searchParams.ts
@@ -1427,6 +1437,8 @@
 │   │   │   │   │   ├── EngineComparison.tsx
 │   │   │   │   │   ├── NamedEngine.tsx
 │   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── ChoixImposition.tsx
+│   │   │   │   │   │   ├── ChoixVersementLibératoire.tsx
 │   │   │   │   │   │   ├── Comparaison.tsx
 │   │   │   │   │   │   ├── DetailsRowCards.tsx
 │   │   │   │   │   │   ├── DétailSimulation.tsx
@@ -1439,6 +1451,12 @@
 │   │   │   │   │   │   ├── TableRow.tsx
 │   │   │   │   │   │   └── WarningTooltip.tsx
 │   │   │   │   │   ├── config.ts
+│   │   │   │   │   ├── questions
+│   │   │   │   │   │   ├── questionsPrincipales.ts
+│   │   │   │   │   │   ├── réponseActivité.ts
+│   │   │   │   │   │   ├── réponseFoyerFiscal.ts
+│   │   │   │   │   │   ├── réponseImpôt.ts
+│   │   │   │   │   │   └── utils.ts
 │   │   │   │   │   ├── simulationConfig.ts
 │   │   │   │   │   └── utils.ts
 │   │   │   │   ├── cout-creation-entreprise
@@ -1670,6 +1688,8 @@
 │   │   │   ├── robots.en.txt
 │   │   │   └── robots.fr.txt
 │   │   ├── services
+│   │   │   ├── environnement
+│   │   │   │   └── environnement.ts
 │   │   │   └── plausibleService.ts
 │   │   ├── sitePaths.ts
 │   │   ├── storage
@@ -1765,8 +1785,6 @@
 │   │       └── react-compound-components.ts
 │   ├── test
 │   │   ├── décideActionRègleInvalide.test.ts
-│   │   ├── fabrique-social.fixtures.ts
-│   │   ├── fabrique-social.test.ts
 │   │   ├── matchers
 │   │   │   └── toEvaluate.ts
 │   │   ├── modele-social
@@ -1850,4 +1868,4 @@
 │   ├── vite.config.ts
 │   └── vitest-setup.ts
 └── yarn.lock
-318 directories, 1534 files
+323 directories, 1547 files

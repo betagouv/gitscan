@@ -1,29 +1,39 @@
-## Changelog : mon-entreprise (30 derniers jours, au 30 juin 2026)
+## Changelog : mon-entreprise (30 derniers jours, au 10 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment au niveau du simulateur avec une refonte de l'interface du comparateur, des corrections d'accessibilité et des améliorations de la gestion des dates. Des corrections et mises à jour spécifiques ont également été apportées pour les cas particuliers de Mayotte et des artistes-auteurs. Enfin, une migration technique majeure vers React 19 et Turbopack a été entreprise pour améliorer les performances et la compatibilité.
+Cette mise à jour apporte des améliorations significatives à l'expérience utilisateur, notamment dans le comparateur de statuts et les simulateurs. Des corrections de bugs et des optimisations techniques ont également été apportées pour améliorer la stabilité et la performance de l'application. L'accent a été mis sur l'accessibilité et l'amélioration de la documentation.
 
 ### Évolutions fonctionnelles
-- **Comparateur :** Nouvelle mise en page du comparateur avec regroupement des questions et ajout d'une navigation améliorée entre les sections. Possibilité de réinitialiser les valeurs par défaut.
-- **Simulateur :** Amélioration de l'affichage des objectifs et des avertissements, notamment pour les outils en version bêta.
-- **Cessation d'activité :** Ajout de la gestion de la date de cessation d'activité avec des messages d'erreur et un avertissement en cas de changement d'année de simulation.
-- **Artiste-auteur :** Mise à jour des informations et du guide concernant l'IRCEC.
-- **Mayotte :** Corrections et mises à jour des règles de calcul des cotisations sociales et des exonérations spécifiques à Mayotte, notamment pour les cotisations forfaitaires et les abattements.
-- **Messages :** Les messages d'information sont désormais dismissibles (pouvant être fermés par l'utilisateur).
+- Ajout de la carte du statut AE au choix du statut juridique.
+- Amélioration de l'avertissement du simulateur concernant les dividendes.
+- Ajout d'un bouton "valeurs par défaut" dans le comparateur pour réinitialiser les champs.
+- Amélioration de la navigation dans le comparateur, avec un bouton pour revenir à la liste et un scroll automatique vers la question sélectionnée.
+- Refonte de la mise en page du comparateur pour une meilleure lisibilité.
+- Ajout d'un avertissement pour les auto-entrepreneuses dans le simulateur.
+- Ajout de liens vers la documentation des objectifs de simulation.
+- Correction de l'affichage des réponses dans le comparateur en vue liste.
+- Correction de l'affichage des cotisations RC et ID pour les conjoints collaborateurs PLR Cipav.
+- Correction de l'apparence des boutons radio.
+- Ajout de l'exonération 24 mois à Mayotte dans le modèle TI.
+- Correction de l'imposition de l'EI dans le comparateur.
+- Ajout d'une icône d'information pour les objectifs de simulation.
 
 ### Évolutions techniques
-- **Migration React 19 & Turbopack :** Mise à jour de React en version 19 et adaptation pour l'utilisation de Turbopack, améliorant les performances et la compatibilité.
-- **Refactorisation du code :** Simplification et amélioration de la structure du code, notamment au niveau des composants d'interface utilisateur et de la gestion des données.
-- **Gestion des dépendances :** Mise à jour de plusieurs dépendances, incluant `recharts` et les plugins Vite.
-- **Amélioration du build :** Configuration du build pour forcer l'environnement de production et correction de problèmes liés à la gestion des chemins d'alias TypeScript.
-- **Tests :** Ajout de tests unitaires pour les exonérations à Mayotte et pour les composants de l'interface utilisateur.
-- **Redux :** Intégration du provider Redux dans la structure Next.js.
+- Refactor de l'environnement pour utiliser un adaptateur portable Vite/Next et centraliser la configuration de production.
+- Suppression du client Fabrique Social inutilisé, remplacé par RechercheEntreprisesGouvFr.
+- Amélioration de la gestion des erreurs Redis avec envoi d'alertes à Sentry.
+- Refactor du code pour améliorer la modularité et la réutilisabilité des composants.
+- Ajout de tests unitaires pour les exonérations à Mayotte.
+- Mise à jour des modèles sociaux, TI et AS.
+- Amélioration du tracking avec l'ajout de `trackPage` et `trackClick`.
+- Uniformisation des composants de question.
+- Suppression de code et de props inutilisées.
+- Amélioration de l'accessibilité (a11y) de plusieurs composants (simulateur, comparateur).
 
 ### Autres changements
-- Mise à jour du Smic.
-- Correction de typos et amélioration des traductions.
-- Amélioration des couleurs et du contraste des composants d'interface utilisateur.
-- Ajout d'un role "status" pour améliorer l'accessibilité des avertissements.
+- Mise à jour de la documentation sur le mode d'imposition de l'entreprise.
+- Correction de quelques erreurs de traduction.
+- Ajout de descriptions aux règles PASS métropole.
 - Mise à jour du lien vers le site QPV.
-- Ajout de tracking pour le simulateur et le comparateur.
-- Suppression de code inutile et de dépendances obsolètes.
+- Ajout de variables pour les tailles de police et les hauteurs de ligne dans le design system.
+- Ajout de la mise à jour automatique du fichier base-stats.json tous les 6 mois.
