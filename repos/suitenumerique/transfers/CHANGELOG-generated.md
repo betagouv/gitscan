@@ -1,20 +1,22 @@
-## Changelog : transfers (30 derniers jours, au 24 juin 2026)
+## Changelog : transfers (30 derniers jours, au 10 juillet 2026)
 
 ### Résumé
-Ce mois-ci, le service de transfert de fichiers a bénéficié d'améliorations significatives en termes de sécurité, d'expérience utilisateur et d'architecture. Une nouvelle fonctionnalité de scan de fichiers a été ajoutée pour prévenir le stockage de fichiers dangereux, et l'interface utilisateur a été modernisée avec une migration vers Vite et TanStack Router, améliorant ainsi la performance et la maintenabilité.
+Ce mois-ci, les améliorations se concentrent sur la sécurité, l'expérience utilisateur et la modernisation de l'application. Une nouvelle fonctionnalité de scan antivirus a été ajoutée pour protéger les fichiers stockés, et l'interface utilisateur a été améliorée avec des dates plus conviviales et une meilleure gestion des téléchargements. De plus, une migration technique vers Vite et Tanstack Router a été initiée pour optimiser le frontend.
 
 ### Évolutions fonctionnelles
-- Ajout d'un scan de fichiers pour bloquer le stockage de fichiers potentiellement dangereux. [#9](https://github.com/suitenumerique/transfers/issues/9)
-- Amélioration de l'affichage des dates : affichage relatif intelligent (ex: "il y a 2 jours") avec date complète au survol.
+- Ajout d'un scan antivirus pour les fichiers téléchargés afin d'empêcher le stockage de fichiers dangereux. [#9](https://github.com/suitenumerique/transfers/issues/9)
+- Amélioration de l'affichage des dates : affichage relatif intelligent avec date complète au survol.
 - Renforcement de la sécurité du flux de téléchargement et correction des points soulevés lors de la revue de code. [#11](https://github.com/suitenumerique/transfers/issues/11)
 - Implémentation d'un flux de connexion ProConnect simplifié. [#13](https://github.com/suitenumerique/transfers/issues/13)
-- Autorisation de l'origine S3 dans la directive `connect-src` du CSP pour les uploads.
+- Correction d'un problème empêchant les requêtes vers S3 dans le `connect-src` du CSP pour les uploads.
 
 ### Évolutions techniques
-- Migration de Next.js vers Vite et TanStack Router pour une meilleure performance et une architecture plus moderne.
-- Correction des retours de CodeRabbit sur la PR #10.
-- Déplacement de TanStack Router dans les dépendances de développement.
-- Correction d'un point soulevé par CodeRabbit.
+- Migration du frontend de Next.js vers Vite et Tanstack Router pour une meilleure performance et maintenabilité.
+- Correction des remarques de CodeRabbit concernant la revue de code de la PR #10.
+- Déplacement de Tanstack Router dans les dépendances de développement.
+- Correction d'une anomalie identifiée par CodeRabbit.
+- Amélioration de la robustesse du scan antivirus en cas de scanner indisponible.
+- Correction des points soulevés lors de la revue de code concernant le flux de rescan.
 
 ### Autres changements
-- Aucun changement significatif à signaler.
+- Aucune information supplémentaire.
