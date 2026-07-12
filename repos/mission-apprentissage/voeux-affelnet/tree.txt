@@ -51,7 +51,8 @@
 │   ├── Dockerfile.dev
 │   ├── migrate-mongo-config.js
 │   ├── migrations
-│   │   └── 20250321105512-initialisation-2025.js
+│   │   ├── 20250321105512-initialisation-2025.js
+│   │   └── 20260302154626-initialisation-2026.js
 │   ├── package.json
 │   ├── src
 │   │   ├── actions.js
@@ -181,16 +182,13 @@
 │   │   │   │   ├── confirmation_delegue.mjml.ejs
 │   │   │   │   ├── confirmation_responsable.mjml.ejs
 │   │   │   │   ├── confirmed.mjml.ejs
-│   │   │   │   ├── notification_delegue.mjml.ejs.DEPRECATED
 │   │   │   │   ├── notification_relation_delegue.mjml.ejs
 │   │   │   │   ├── notification_relation_responsable.mjml.ejs
-│   │   │   │   ├── notification_responsable.mjml.ejs.DEPRECATED
 │   │   │   │   ├── reset_password.mjml.ejs
 │   │   │   │   ├── templates.js
-│   │   │   │   ├── update_delegue.mjml.ejs.DEPRECATED
 │   │   │   │   ├── update_relation_delegue.mjml.ejs
 │   │   │   │   ├── update_relation_responsable.mjml.ejs
-│   │   │   │   └── update_responsable.mjml.ejs.DEPRECATED
+│   │   │   │   └── warning_inactive_delegues.mjml.ejs
 │   │   │   ├── logger.js
 │   │   │   ├── mailer.js
 │   │   │   ├── model
@@ -202,12 +200,10 @@
 │   │   │   │   ├── Delegue.js
 │   │   │   │   ├── Dossier.js
 │   │   │   │   ├── Etablissement.js
-│   │   │   │   ├── Formateur.js.DEPRECATED
 │   │   │   │   ├── Formation.js
 │   │   │   │   ├── Log.js
 │   │   │   │   ├── Mef.js
 │   │   │   │   ├── Relation.js
-│   │   │   │   ├── Responsable.js.DEPRECATED
 │   │   │   │   ├── User.js
 │   │   │   │   ├── Voeu.js
 │   │   │   │   ├── events.js
@@ -280,7 +276,7 @@
 │   │       ├── computeStats.js
 │   │       ├── createAcademie.js
 │   │       ├── createAdmin.js
-│   │       ├── createCsaio.js
+│   │       ├── createCsaio.js.DEPRECATED
 │   │       ├── downloadByFormation.js
 │   │       ├── downloadByRelation.js
 │   │       ├── exportEtablissementsInconnus.js
@@ -289,16 +285,17 @@
 │   │       ├── exportVoeuxRecensement.js
 │   │       ├── importDossiers.js.DEPRECATED
 │   │       ├── importEtablissements.js
-│   │       ├── importEtablissementsRelations.js
 │   │       ├── importFormations.js
 │   │       ├── importJeunesUniquementEnApprentissage.js.DEPRECATED
 │   │       ├── importMefs.js
+│   │       ├── importRelations.js
 │   │       ├── importVoeux.js
 │   │       ├── removeAcademie.js
 │   │       ├── sendActivationEmails.js
 │   │       ├── sendConfirmationEmails.js
 │   │       ├── sendNotificationEmails.js
 │   │       ├── sendUpdateEmails.js
+│   │       ├── sendWarningEmails.js
 │   │       └── utils
 │   │           ├── catalogue.js
 │   │           ├── csv.js
@@ -395,7 +392,7 @@
     │   │   │   ├── Breadcrumb.jsx
     │   │   │   ├── Centered.jsx
     │   │   │   ├── ErrorMessage.jsx
-    │   │   │   ├── MiddleCenteredCol.jsx
+    │   │   │   ├── MiddleCenteredCol.jsx.DEPRECATED
     │   │   │   ├── Pagination.jsx
     │   │   │   ├── StatutBadge.jsx
     │   │   │   ├── SuccessMessage.jsx
@@ -531,7 +528,8 @@
     │   │   │   ├── Config.jsx
     │   │   │   ├── Etablissement.jsx
     │   │   │   ├── Etablissements.jsx
-    │   │   │   └── Routes.jsx
+    │   │   │   ├── Routes.jsx
+    │   │   │   └── Users.jsx
     │   │   ├── delegue
     │   │   │   ├── Delegue.jsx
     │   │   │   └── Routes.jsx
@@ -685,4 +683,4 @@
     │       ├── index.js
     │       └── theme-beta.js
     └── yarn.lock
-85 directories, 606 files
+85 directories, 604 files

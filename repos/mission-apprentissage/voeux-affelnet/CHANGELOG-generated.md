@@ -1,7 +1,10 @@
-## Changelog : voeux-affelnet (30 derniers jours)
+## Changelog : voeux-affelnet (30 derniers jours, au 10 juillet 2026)
 
 ### Résumé
-Cette mise à jour améliore l'environnement de développement en remplaçant Mailhog par Mailpit comme serveur SMTP pour les tests. Cela permet une meilleure inspection des emails envoyés pendant le développement et les tests, facilitant ainsi le débogage et la validation des notifications.
+Cette mise à jour améliore la performance de la recherche d'établissements en limitant la quantité de données récupérées. De plus, un espace inutile a été supprimé des identifiants UAI, ce qui peut améliorer la cohérence des données.
+
+### Évolutions fonctionnelles
+- Amélioration de la performance de la recherche d'établissements grâce à une limitation des données récupérées lors de la recherche par lookup. [#issue à identifier si pertinent]
 
 ### Évolutions techniques
-- Remplacement de Mailhog par Mailpit pour les tests SMTP. [#1](https://github.com/mission-apprentissage/voeux-affelnet/commit/f792f29)
+- Suppression des espaces superflus dans les identifiants UAI pour une meilleure cohérence des données. [#issue à identifier si pertinent]
