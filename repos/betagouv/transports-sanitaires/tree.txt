@@ -1,7 +1,7 @@
 .
 ├── .github
 │   └── workflows
-│       └── deploy.yml
+│       └── ci.yml
 ├── .gitignore
 ├── AGENTS.md
 ├── CLAUDE.md
@@ -37,60 +37,76 @@
 │   │   ├── tsconfig.json
 │   │   ├── tsconfig.node.json
 │   │   └── vite.config.ts
-│   ├── identification
-│   │   ├── .env.example
-│   │   ├── README.md
-│   │   ├── index.html
-│   │   ├── package-lock.json
-│   │   ├── package.json
-│   │   ├── src
-│   │   │   ├── App.tsx
-│   │   │   ├── config.ts
-│   │   │   ├── ctx.ts
-│   │   │   ├── main.tsx
-│   │   │   ├── redirect.ts
-│   │   │   └── referentiel.ts
-│   │   ├── tests
-│   │   │   ├── App.test.tsx
-│   │   │   ├── config.test.ts
-│   │   │   ├── ctx.test.ts
-│   │   │   ├── redirect.test.ts
-│   │   │   └── setup.ts
-│   │   ├── tsconfig.app.json
-│   │   ├── tsconfig.json
-│   │   ├── tsconfig.node.json
-│   │   └── vite.config.ts
 │   └── simulateur-eligibilite
-│       ├── SPEC.md
+│       ├── .env.example
+│       ├── Procfile
+│       ├── README.md
+│       ├── front
+│       │   ├── analytics
+│       │   │   └── analytics.ts
+│       │   ├── app
+│       │   │   ├── App.tsx
+│       │   │   └── main.tsx
+│       │   ├── identification
+│       │   │   ├── Identification.tsx
+│       │   │   └── referentiel-http.ts
+│       │   ├── identite
+│       │   │   ├── pseudonymisation-http.ts
+│       │   │   └── session.ts
+│       │   └── simulateur
+│       │       ├── FormField.tsx
+│       │       ├── Resultats.tsx
+│       │       ├── Simulateur.tsx
+│       │       └── engine.ts
 │       ├── index.html
 │       ├── package-lock.json
 │       ├── package.json
 │       ├── regles
 │       │   └── regles.publicodes
-│       ├── src
-│       │   ├── App.tsx
-│       │   ├── FormField.tsx
-│       │   ├── Resultats.tsx
-│       │   ├── ctx.ts
-│       │   ├── engine.ts
-│       │   ├── main.tsx
-│       │   └── session.ts
+│       ├── scripts
+│       │   └── valider-regles.ts
+│       ├── server
+│       │   ├── app.ts
+│       │   ├── identification
+│       │   │   ├── pseudonymisation.ts
+│       │   │   ├── referentiel-grist.ts
+│       │   │   ├── referentiel-source.ts
+│       │   │   └── routes.ts
+│       │   └── server.ts
+│       ├── shared
+│       │   ├── identite-pseudonymisee.ts
+│       │   ├── identite-saisie.ts
+│       │   └── referentiel.ts
 │       ├── tests
-│       │   ├── App.test.tsx
-│       │   ├── checklist-alerte.test.ts
-│       │   ├── dap.test.ts
-│       │   ├── engine.ts
-│       │   ├── helpers.ts
-│       │   ├── resultat.test.ts
-│       │   ├── session.test.ts
-│       │   └── setup.ts
+│       │   ├── analytics
+│       │   │   └── analytics.test.ts
+│       │   ├── app
+│       │   │   └── gate.test.tsx
+│       │   ├── identification
+│       │   │   ├── grist-ecriture.smoke.test.ts
+│       │   │   ├── grist.smoke.test.ts
+│       │   │   ├── identification.test.tsx
+│       │   │   └── server.test.ts
+│       │   ├── identite
+│       │   │   └── session.test.ts
+│       │   ├── setup.ts
+│       │   └── simulateur
+│       │       ├── checklist-alerte.test.ts
+│       │       ├── dap.test.ts
+│       │       ├── engine.ts
+│       │       ├── helpers.ts
+│       │       ├── resultat.test.ts
+│       │       └── simulateur.test.tsx
 │       ├── tsconfig.app.json
 │       ├── tsconfig.json
 │       ├── tsconfig.node.json
+│       ├── tsconfig.server.json
 │       └── vite.config.ts
 ├── docs
-│   └── architecture
-│       ├── analytics.md
-│       └── identification.md
+│   ├── architecture
+│   │   ├── analytics.md
+│   │   └── identification.md
+│   └── specs
+│       └── enrichissement-referentiel-saisies-libres.md
 └── mise.toml
-19 directories, 76 files
+31 directories, 80 files
