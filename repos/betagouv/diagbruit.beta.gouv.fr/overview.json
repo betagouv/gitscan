@@ -1,45 +1,47 @@
 {
   "url": "https://github.com/betagouv/diagbruit.beta.gouv.fr",
   "name": "diagbruit.beta.gouv.fr",
-  "description": "diagBruit permet aux collectivités d’alerter les porteurs de projet sur les risques sonores et de leur proposer des préconisations pour des constructions respectueuses de la santé.",
-  "language": "TypeScript",
+  "description": "diagBruit permet aux instructeurs de permis de construire d’alerter les porteurs de projet sur les risques sonores et de leur proposer des préconisations pour des constructions respectueuses de la santé.",
+  "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
     "Visualisation de données & Cartographie",
     "Authentification & Accès",
     "Statistiques & Rapports",
-    "Recherche & Filtres",
-    "Gestion des utilisateurs & Permissions",
-    "Notifications & Alertes",
-    "Contenu éditorial"
+    "Recherche & Filtres"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "React",
-    "Node.js",
     "PostgreSQL",
-    "Strapi",
-    "Yarn"
+    "Node.js",
+    "Yarn",
+    "Docker",
+    "Strapi"
   ],
   "components": [
     "Frontend React",
     "API REST",
-    "PostgreSQL & SQL",
+    "Base de données PostgreSQL",
+    "Microservices & Architecture",
     "TypeScript / JavaScript",
-    "Strapi CMS"
+    "Python (scripts & backend)"
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "email-password",
+      "oauth2"
     ]
   },
-  "tests": "Pytest, Jest",
-  "workflows": [
-    "ci.yml",
-    "deploy-*.yml"
+  "tests": [
+    "Pytest",
+    "Cypress"
   ],
-  "lastActivity": "2026-06-05T12:09:35+02:00",
+  "workflows": [
+    "ci.yml"
+  ],
+  "lastActivity": "2026-07-10T12:08:46+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,

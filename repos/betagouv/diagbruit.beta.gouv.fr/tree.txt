@@ -4,6 +4,7 @@
 │       ├── ci.yml
 │       ├── deploy-cms-preprod.yml
 │       ├── deploy-cms-prod.yml
+│       ├── deploy-dagster.yml
 │       ├── deploy-fastapi-preprod.yml
 │       ├── deploy-fastapi-prod.yml
 │       ├── deploy-frontend-preprod.yml
@@ -62,6 +63,16 @@
 │   │   │   │   │   └── accessibility.ts
 │   │   │   │   └── services
 │   │   │   │       └── accessibility.ts
+│   │   │   ├── acoustic-certificate
+│   │   │   │   ├── content-types
+│   │   │   │   │   └── acoustic-certificate
+│   │   │   │   │       └── schema.json
+│   │   │   │   ├── controllers
+│   │   │   │   │   └── acoustic-certificate.ts
+│   │   │   │   ├── routes
+│   │   │   │   │   └── acoustic-certificate.ts
+│   │   │   │   └── services
+│   │   │   │       └── acoustic-certificate.ts
 │   │   │   ├── changelog
 │   │   │   │   ├── content-types
 │   │   │   │   │   └── changelog
@@ -134,6 +145,16 @@
 │   │   │   │   │   └── noise-source-category.ts
 │   │   │   │   └── services
 │   │   │   │       └── noise-source-category.ts
+│   │   │   ├── noisezone-alert
+│   │   │   │   ├── content-types
+│   │   │   │   │   └── noisezone-alert
+│   │   │   │   │       └── schema.json
+│   │   │   │   ├── controllers
+│   │   │   │   │   └── noisezone-alert.ts
+│   │   │   │   ├── routes
+│   │   │   │   │   └── noisezone-alert.ts
+│   │   │   │   └── services
+│   │   │   │       └── noisezone-alert.ts
 │   │   │   ├── privacy-policy
 │   │   │   │   ├── content-types
 │   │   │   │   │   └── privacy-policy
@@ -185,117 +206,205 @@
 │   │   ├── middlewares
 │   │   │   └── rate-limit.ts
 │   │   └── seeds
-│   │       └── home-page-content.json
+│   │       ├── acoustic-certificate.json
+│   │       ├── home-page-content.json
+│   │       └── noisezone-alert.json
 │   ├── tsconfig.json
 │   ├── types
 │   │   └── generated
 │   │       ├── components.d.ts
 │   │       └── contentTypes.d.ts
 │   └── yarn.lock
-├── dbt
+├── dagster
+│   ├── .dg
+│   │   └── telemetry.yaml
+│   ├── .env.example
+│   ├── .gitignore
+│   ├── .python-version
 │   ├── CLAUDE.md
+│   ├── Procfile
 │   ├── README.md
-│   ├── analyses
-│   │   └── .gitkeep
-│   ├── dbt_project.yml
-│   ├── macros
-│   │   ├── .gitkeep
-│   │   ├── repair_geometry.sql
-│   │   ├── schema.yml
-│   │   ├── transform_to_epsg_4326.sql
-│   │   └── validate_geometry.sql
-│   ├── models
-│   │   ├── noisemap
-│   │   │   ├── intermediate
-│   │   │   │   ├── int_noisemap_codedept.sql
-│   │   │   │   ├── int_noisemap_exploded.sql
-│   │   │   │   ├── int_noisemap_fixed.sql
-│   │   │   │   ├── int_noisemap_fixed_clean.sql
-│   │   │   │   ├── int_noisemap_projected.sql
-│   │   │   │   ├── int_noisemap_validated.sql
-│   │   │   │   └── schema.yml
-│   │   │   ├── marts
-│   │   │   │   ├── noisemap.sql
-│   │   │   │   └── schema.yml
-│   │   │   └── staging
-│   │   │       ├── schema.yml
-│   │   │       └── stg_noisemap.sql
-│   │   ├── osm
-│   │   │   ├── intermediate
-│   │   │   │   ├── int_foods_filter.sql
-│   │   │   │   ├── int_foods_slug.sql
-│   │   │   │   ├── int_foods_validate.sql
-│   │   │   │   ├── int_schools_dep.sql
-│   │   │   │   ├── int_schools_filter.sql
-│   │   │   │   ├── int_schools_slug.sql
-│   │   │   │   └── schema.yml
-│   │   │   ├── marts
-│   │   │   │   ├── noisesource.sql
-│   │   │   │   └── schema.yml
-│   │   │   └── staging
-│   │   │       ├── schema.yml
-│   │   │       ├── stg_foods.sql
-│   │   │       └── stg_schools.sql
-│   │   ├── peb
-│   │   │   ├── intermediate
-│   │   │   │   ├── int_peb_fixed.sql
-│   │   │   │   ├── int_peb_fixed_clean.sql
-│   │   │   │   ├── int_peb_projected.sql
-│   │   │   │   ├── int_peb_validated.sql
-│   │   │   │   └── schema.yml
-│   │   │   ├── marts
-│   │   │   │   ├── peb.sql
-│   │   │   │   └── schema.yml
-│   │   │   └── staging
-│   │   │       ├── schema.yml
-│   │   │       └── stg_peb.sql
-│   │   ├── soundclassification
-│   │   │   ├── intermediate
-│   │   │   │   ├── int_soundclassification_buffered.sql
-│   │   │   │   ├── int_soundclassification_fixed.sql
-│   │   │   │   ├── int_soundclassification_fixed_clean.sql
-│   │   │   │   ├── int_soundclassification_merge.sql
-│   │   │   │   ├── int_soundclassification_multilines.sql
-│   │   │   │   ├── int_soundclassification_validated.sql
-│   │   │   │   ├── int_soundclassification_with_pk.sql
-│   │   │   │   └── schema.yml
-│   │   │   ├── marts
-│   │   │   │   ├── schema.yml
-│   │   │   │   ├── soundclassification.sql
-│   │   │   │   └── soundclassification_roads.sql
-│   │   │   └── staging
-│   │   │       ├── schema.yml
-│   │   │       └── stg_soundclassification.sql
-│   │   ├── strasbourg
-│   │   │   ├── intermediate
-│   │   │   │   ├── int_stras_slug.sql
-│   │   │   │   └── schema.yml
-│   │   │   ├── marts
-│   │   │   │   ├── noisesource_stras.sql
-│   │   │   │   └── schema.yml
-│   │   │   └── staging
-│   │   │       ├── schema.yml
-│   │   │       └── stg_stras.sql
-│   │   └── topo
-│   │       ├── intermediate
-│   │       │   ├── int_topo_fixed.sql
-│   │       │   ├── int_topo_projected.sql
-│   │       │   ├── int_topo_validated.sql
-│   │       │   └── schema.yml
-│   │       ├── marts
-│   │       │   ├── schema.yml
-│   │       │   └── topo.sql
-│   │       └── staging
-│   │           ├── schema.yml
-│   │           └── stg_topo.sql
-│   ├── profiles.yml.example
-│   ├── requirements.txt
-│   ├── seeds
-│   │   └── .gitkeep
-│   ├── snapshots
-│   │   └── .gitkeep
-│   └── tests
-│       └── .gitkeep
+│   ├── bin
+│   │   └── post_compile
+│   ├── ci_ingest.py
+│   ├── dagster.yaml
+│   ├── dbt
+│   │   ├── CLAUDE.md
+│   │   ├── README.md
+│   │   ├── analyses
+│   │   │   └── .gitkeep
+│   │   ├── dbt_project.yml
+│   │   ├── macros
+│   │   │   ├── .gitkeep
+│   │   │   ├── repair_geometry.sql
+│   │   │   ├── schema.yml
+│   │   │   ├── transform_to_epsg_4326.sql
+│   │   │   └── validate_geometry.sql
+│   │   ├── models
+│   │   │   ├── bdnb
+│   │   │   │   ├── intermediate
+│   │   │   │   │   ├── int_bdnb_fixed.sql
+│   │   │   │   │   ├── int_bdnb_projected.sql
+│   │   │   │   │   ├── int_bdnb_validated.sql
+│   │   │   │   │   └── schema.yml
+│   │   │   │   ├── marts
+│   │   │   │   │   ├── bdnb.sql
+│   │   │   │   │   └── schema.yml
+│   │   │   │   └── staging
+│   │   │   │       ├── schema.yml
+│   │   │   │       └── stg_bdnb.sql
+│   │   │   ├── noisemap
+│   │   │   │   ├── intermediate
+│   │   │   │   │   ├── int_noisemap_exploded.sql
+│   │   │   │   │   ├── int_noisemap_fixed.sql
+│   │   │   │   │   ├── int_noisemap_fixed_clean.sql
+│   │   │   │   │   ├── int_noisemap_projected.sql
+│   │   │   │   │   ├── int_noisemap_validated.sql
+│   │   │   │   │   └── schema.yml
+│   │   │   │   ├── marts
+│   │   │   │   │   ├── noisemap.sql
+│   │   │   │   │   └── schema.yml
+│   │   │   │   └── staging
+│   │   │   │       ├── schema.yml
+│   │   │   │       └── stg_noisemap.sql
+│   │   │   ├── noisezone
+│   │   │   │   ├── intermediate
+│   │   │   │   │   ├── int_noisezone_fixed.sql
+│   │   │   │   │   ├── int_noisezone_projected.sql
+│   │   │   │   │   ├── int_noisezone_validated.sql
+│   │   │   │   │   └── schema.yml
+│   │   │   │   ├── marts
+│   │   │   │   │   ├── noisezone.sql
+│   │   │   │   │   └── schema.yml
+│   │   │   │   └── staging
+│   │   │   │       ├── schema.yml
+│   │   │   │       └── stg_noisezone.sql
+│   │   │   ├── osm
+│   │   │   │   ├── intermediate
+│   │   │   │   │   ├── int_foods_filter.sql
+│   │   │   │   │   ├── int_foods_slug.sql
+│   │   │   │   │   ├── int_foods_validate.sql
+│   │   │   │   │   ├── int_schools_dep.sql
+│   │   │   │   │   ├── int_schools_filter.sql
+│   │   │   │   │   ├── int_schools_slug.sql
+│   │   │   │   │   ├── int_terrasses_slug.sql
+│   │   │   │   │   └── schema.yml
+│   │   │   │   ├── marts
+│   │   │   │   │   ├── noisesource.sql
+│   │   │   │   │   └── schema.yml
+│   │   │   │   └── staging
+│   │   │   │       ├── schema.yml
+│   │   │   │       ├── stg_foods.sql
+│   │   │   │       ├── stg_schools.sql
+│   │   │   │       └── stg_terrasses.sql
+│   │   │   ├── peb
+│   │   │   │   ├── intermediate
+│   │   │   │   │   ├── int_peb_fixed.sql
+│   │   │   │   │   ├── int_peb_fixed_clean.sql
+│   │   │   │   │   ├── int_peb_projected.sql
+│   │   │   │   │   ├── int_peb_validated.sql
+│   │   │   │   │   └── schema.yml
+│   │   │   │   ├── marts
+│   │   │   │   │   ├── peb.sql
+│   │   │   │   │   └── schema.yml
+│   │   │   │   └── staging
+│   │   │   │       ├── schema.yml
+│   │   │   │       └── stg_peb.sql
+│   │   │   └── soundclassification
+│   │   │       ├── intermediate
+│   │   │       │   ├── int_soundclassification_buffered.sql
+│   │   │       │   ├── int_soundclassification_fixed.sql
+│   │   │       │   ├── int_soundclassification_fixed_clean.sql
+│   │   │       │   ├── int_soundclassification_merge.sql
+│   │   │       │   ├── int_soundclassification_multilines.sql
+│   │   │       │   ├── int_soundclassification_validated.sql
+│   │   │       │   ├── int_soundclassification_with_pk.sql
+│   │   │       │   └── schema.yml
+│   │   │       ├── marts
+│   │   │       │   ├── schema.yml
+│   │   │       │   └── soundclassification.sql
+│   │   │       └── staging
+│   │   │           ├── schema.yml
+│   │   │           └── stg_soundclassification.sql
+│   │   ├── profiles.yml
+│   │   ├── profiles.yml.example
+│   │   ├── seeds
+│   │   │   └── .gitkeep
+│   │   ├── snapshots
+│   │   │   └── .gitkeep
+│   │   └── tests
+│   │       ├── .gitkeep
+│   │       └── assert_raw_noisemap_codedept_format.sql
+│   ├── pyproject.toml
+│   ├── run_job.py
+│   ├── run_pipelines.py
+│   ├── src
+│   │   └── dagster_project
+│   │       ├── __init__.py
+│   │       ├── definitions.py
+│   │       ├── defs
+│   │       │   ├── __init__.py
+│   │       │   ├── assets
+│   │       │   │   ├── _partitions.py
+│   │       │   │   ├── bdnb
+│   │       │   │   │   └── defs.py
+│   │       │   │   ├── defs.py
+│   │       │   │   ├── noisemap
+│   │       │   │   │   ├── _io.py
+│   │       │   │   │   ├── _partitions.py
+│   │       │   │   │   ├── agglo
+│   │       │   │   │   │   ├── _factory.py
+│   │       │   │   │   │   ├── _registry.py
+│   │       │   │   │   │   └── defs.py
+│   │       │   │   │   ├── defs.py
+│   │       │   │   │   ├── infra
+│   │       │   │   │   │   ├── _registry.py
+│   │       │   │   │   │   └── defs.py
+│   │       │   │   │   └── infra_fastlines
+│   │       │   │   │       ├── _registry.py
+│   │       │   │   │       └── defs.py
+│   │       │   │   ├── noisezone
+│   │       │   │   │   └── defs.py
+│   │       │   │   ├── osm
+│   │       │   │   │   └── defs.py
+│   │       │   │   ├── peb
+│   │       │   │   │   ├── _registry.py
+│   │       │   │   │   └── defs.py
+│   │       │   │   └── soundclassification
+│   │       │   │       ├── _factory.py
+│   │       │   │       ├── _registry.py
+│   │       │   │       └── defs.py
+│   │       │   ├── dbt_ingest
+│   │       │   │   └── defs.yaml
+│   │       │   ├── dbt_noisemap
+│   │       │   │   └── defs.py
+│   │       │   ├── jobs
+│   │       │   │   └── defs.py
+│   │       │   ├── resources
+│   │       │   │   └── box.py
+│   │       │   └── schedules
+│   │       │       └── box_refresh.py
+│   │       ├── ingestion
+│   │       │   ├── __init__.py
+│   │       │   ├── ingest_geojson.py
+│   │       │   └── ingest_shapefiles.py
+│   │       ├── io
+│   │       │   ├── __init__.py
+│   │       │   ├── db.py
+│   │       │   ├── manifest.py
+│   │       │   └── s3.py
+│   │       └── reference_data
+│   │           └── departments
+│   │               ├── depts.cpg
+│   │               ├── depts.dbf
+│   │               ├── depts.prj
+│   │               ├── depts.qmd
+│   │               ├── depts.shp
+│   │               └── depts.shx
+│   ├── tests
+│   │   └── __init__.py
+│   ├── uv.lock
+│   └── web.py
 ├── docker-compose.yaml
 ├── fastapi
 │   ├── .env.example
@@ -323,14 +432,13 @@
 │   │   │   └── coordinates.json
 │   │   ├── models
 │   │   │   ├── __init__.py
+│   │   │   ├── bdnb.py
 │   │   │   ├── noisemap.py
 │   │   │   ├── noisesource.py
 │   │   │   ├── noisezone.py
 │   │   │   ├── peb.py
 │   │   │   ├── result.py
-│   │   │   ├── soundclassification.py
-│   │   │   ├── soundclassification_roads.py
-│   │   │   └── topo.py
+│   │   │   └── soundclassification.py
 │   │   ├── references
 │   │   │   ├── air_levels.yaml
 │   │   │   ├── equivalent_sound_environments.yaml
@@ -352,6 +460,7 @@
 │   │   │   ├── geometry.py
 │   │   │   ├── risk.py
 │   │   │   ├── sig.py
+│   │   │   ├── strapi.py
 │   │   │   └── whitelist.py
 │   │   └── version.py
 │   ├── pytest.ini
@@ -536,12 +645,14 @@
 │   │   ├── index.html
 │   │   ├── logo192.png
 │   │   ├── logo512.png
-│   │   ├── manifest.json
-│   │   └── robots.txt
+│   │   └── manifest.json
+│   ├── scripts
+│   │   └── generate-sitemap.js
 │   ├── src
 │   │   ├── components
 │   │   │   ├── diagnostic
 │   │   │   │   ├── Diagnostic.tsx
+│   │   │   │   ├── DiagnosticAcousticCertificate.tsx
 │   │   │   │   ├── DiagnosticDecrees.tsx
 │   │   │   │   ├── DiagnosticDocumentation.tsx
 │   │   │   │   ├── DiagnosticEmailForm.tsx
@@ -606,6 +717,8 @@
 │   │   │   └── utils
 │   │   │       ├── CheckTexts.tsx
 │   │   │       └── ScrollToTop.tsx
+│   │   ├── config
+│   │   │   └── seo.js
 │   │   ├── hooks
 │   │   │   ├── previous.ts
 │   │   │   ├── useCmsPage.ts
@@ -651,186 +764,6 @@
 │   │       └── types.ts
 │   ├── tsconfig.json
 │   └── yarn.lock
-├── ingestion
-│   ├── .env.example
-│   ├── CLAUDE.md
-│   ├── ingest_geojson.py
-│   ├── ingest_shapefiles.py
-│   ├── inputs
-│   │   ├── PEB
-│   │   │   ├── peb.cpg
-│   │   │   ├── peb.dbf
-│   │   │   ├── peb.prj
-│   │   │   ├── peb.qmd
-│   │   │   ├── peb.shp
-│   │   │   └── peb.shx
-│   │   ├── departments
-│   │   │   ├── depts.cpg
-│   │   │   ├── depts.dbf
-│   │   │   ├── depts.prj
-│   │   │   ├── depts.qmd
-│   │   │   ├── depts.shp
-│   │   │   └── depts.shx
-│   │   ├── noise
-│   │   │   ├── AGGLO_033
-│   │   │   │   ├── NoiseContours_*.cpg  (8 files)
-│   │   │   │   ├── NoiseContours_*.dbf  (8 files)
-│   │   │   │   ├── NoiseContours_*.prj  (8 files)
-│   │   │   │   ├── NoiseContours_*.shp  (8 files)
-│   │   │   │   ├── NoiseContours_*.shx  (8 files)
-│   │   │   │   ├── fer_depassement_de_seuil_Lden.cpg
-│   │   │   │   ├── fer_depassement_de_seuil_Lden.dbf
-│   │   │   │   ├── fer_depassement_de_seuil_Lden.prj
-│   │   │   │   ├── fer_depassement_de_seuil_Lden.shp
-│   │   │   │   ├── fer_depassement_de_seuil_Lden.shx
-│   │   │   │   ├── fer_depassement_de_seuil_Lnight.cpg
-│   │   │   │   ├── fer_depassement_de_seuil_Lnight.dbf
-│   │   │   │   ├── fer_depassement_de_seuil_Lnight.prj
-│   │   │   │   ├── fer_depassement_de_seuil_Lnight.shp
-│   │   │   │   ├── fer_depassement_de_seuil_Lnight.shx
-│   │   │   │   ├── industrie_depassement_de_seuil_Lden.cpg
-│   │   │   │   ├── industrie_depassement_de_seuil_Lden.dbf
-│   │   │   │   ├── industrie_depassement_de_seuil_Lden.prj
-│   │   │   │   ├── industrie_depassement_de_seuil_Lden.shp
-│   │   │   │   ├── industrie_depassement_de_seuil_Lden.shx
-│   │   │   │   ├── industrie_depassement_de_seuil_Lnight.cpg
-│   │   │   │   ├── industrie_depassement_de_seuil_Lnight.dbf
-│   │   │   │   ├── industrie_depassement_de_seuil_Lnight.prj
-│   │   │   │   ├── industrie_depassement_de_seuil_Lnight.shp
-│   │   │   │   ├── industrie_depassement_de_seuil_Lnight.shx
-│   │   │   │   ├── route_depassement_de_seuil_Lden.cpg
-│   │   │   │   ├── route_depassement_de_seuil_Lden.dbf
-│   │   │   │   ├── route_depassement_de_seuil_Lden.prj
-│   │   │   │   ├── route_depassement_de_seuil_Lden.shp
-│   │   │   │   ├── route_depassement_de_seuil_Lden.shx
-│   │   │   │   ├── route_depassement_de_seuil_Lnight.cpg
-│   │   │   │   ├── route_depassement_de_seuil_Lnight.dbf
-│   │   │   │   ├── route_depassement_de_seuil_Lnight.prj
-│   │   │   │   ├── route_depassement_de_seuil_Lnight.shp
-│   │   │   │   └── route_depassement_de_seuil_Lnight.shx
-│   │   │   ├── INFRA_033
-│   │   │   │   ├── N_BRUIT_ZBRD_INFRA_F_A_LD_S_033
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_F_A_LD_S_033.cpg
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_F_A_LD_S_033.dbf
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_F_A_LD_S_033.prj
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_F_A_LD_S_033.qml
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_F_A_LD_S_033.shp
-│   │   │   │   │   └── N_BRUIT_ZBRD_INFRA_F_A_LD_S_033.shx
-│   │   │   │   ├── N_BRUIT_ZBRD_INFRA_F_A_LN_S_033
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_F_A_LN_S_033.cpg
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_F_A_LN_S_033.dbf
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_F_A_LN_S_033.prj
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_F_A_LN_S_033.qml
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_F_A_LN_S_033.shp
-│   │   │   │   │   └── N_BRUIT_ZBRD_INFRA_F_A_LN_S_033.shx
-│   │   │   │   ├── N_BRUIT_ZBRD_INFRA_F_C_LD_S_033
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_F_C_LD_S_033.cpg
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_F_C_LD_S_033.dbf
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_F_C_LD_S_033.prj
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_F_C_LD_S_033.qml
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_F_C_LD_S_033.shp
-│   │   │   │   │   └── N_BRUIT_ZBRD_INFRA_F_C_LD_S_033.shx
-│   │   │   │   ├── N_BRUIT_ZBRD_INFRA_F_C_LN_S_033
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_F_C_LN_S_033.cpg
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_F_C_LN_S_033.dbf
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_F_C_LN_S_033.prj
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_F_C_LN_S_033.qml
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_F_C_LN_S_033.shp
-│   │   │   │   │   └── N_BRUIT_ZBRD_INFRA_F_C_LN_S_033.shx
-│   │   │   │   ├── N_BRUIT_ZBRD_INFRA_R_A_LD_S_033
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_R_A_LD_S_033.cpg
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_R_A_LD_S_033.dbf
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_R_A_LD_S_033.prj
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_R_A_LD_S_033.qml
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_R_A_LD_S_033.shp
-│   │   │   │   │   └── N_BRUIT_ZBRD_INFRA_R_A_LD_S_033.shx
-│   │   │   │   ├── N_BRUIT_ZBRD_INFRA_R_A_LN_S_033
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_R_A_LN_S_033.cpg
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_R_A_LN_S_033.dbf
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_R_A_LN_S_033.prj
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_R_A_LN_S_033.qml
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_R_A_LN_S_033.shp
-│   │   │   │   │   └── N_BRUIT_ZBRD_INFRA_R_A_LN_S_033.shx
-│   │   │   │   ├── N_BRUIT_ZBRD_INFRA_R_C_LD_S_033
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_R_C_LD_S_033.cpg
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_R_C_LD_S_033.dbf
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_R_C_LD_S_033.prj
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_R_C_LD_S_033.qml
-│   │   │   │   │   ├── N_BRUIT_ZBRD_INFRA_R_C_LD_S_033.shp
-│   │   │   │   │   └── N_BRUIT_ZBRD_INFRA_R_C_LD_S_033.shx
-│   │   │   │   └── N_BRUIT_ZBRD_INFRA_R_C_LN_S_033
-│   │   │   │       ├── N_BRUIT_ZBRD_INFRA_R_C_LN_S_033.cpg
-│   │   │   │       ├── N_BRUIT_ZBRD_INFRA_R_C_LN_S_033.dbf
-│   │   │   │       ├── N_BRUIT_ZBRD_INFRA_R_C_LN_S_033.prj
-│   │   │   │       ├── N_BRUIT_ZBRD_INFRA_R_C_LN_S_033.qml
-│   │   │   │       ├── N_BRUIT_ZBRD_INFRA_R_C_LN_S_033.shp
-│   │   │   │       └── N_BRUIT_ZBRD_INFRA_R_C_LN_S_033.shx
-│   │   │   └── INFRA_FASTLINES_033
-│   │   │       ├── type_a_lden
-│   │   │       │   ├── l_bruit_zbr_infra_r_autoroute_a_ld_d33.cpg
-│   │   │       │   ├── l_bruit_zbr_infra_r_autoroute_a_ld_d33.dbf
-│   │   │       │   ├── l_bruit_zbr_infra_r_autoroute_a_ld_d33.prj
-│   │   │       │   ├── l_bruit_zbr_infra_r_autoroute_a_ld_d33.qix
-│   │   │       │   ├── l_bruit_zbr_infra_r_autoroute_a_ld_d33.qml
-│   │   │       │   ├── l_bruit_zbr_infra_r_autoroute_a_ld_d33.shp
-│   │   │       │   └── l_bruit_zbr_infra_r_autoroute_a_ld_d33.shx
-│   │   │       ├── type_a_ln
-│   │   │       │   ├── l_bruit_zbr_infra_r_autoroute_a_ln_d33.cpg
-│   │   │       │   ├── l_bruit_zbr_infra_r_autoroute_a_ln_d33.dbf
-│   │   │       │   ├── l_bruit_zbr_infra_r_autoroute_a_ln_d33.prj
-│   │   │       │   ├── l_bruit_zbr_infra_r_autoroute_a_ln_d33.qix
-│   │   │       │   ├── l_bruit_zbr_infra_r_autoroute_a_ln_d33.qml
-│   │   │       │   ├── l_bruit_zbr_infra_r_autoroute_a_ln_d33.shp
-│   │   │       │   └── l_bruit_zbr_infra_r_autoroute_a_ln_d33.shx
-│   │   │       ├── type_c_lden
-│   │   │       │   ├── l_bruit_zbr_infra_r_autoroute_c_ld_d33.cpg
-│   │   │       │   ├── l_bruit_zbr_infra_r_autoroute_c_ld_d33.dbf
-│   │   │       │   ├── l_bruit_zbr_infra_r_autoroute_c_ld_d33.prj
-│   │   │       │   ├── l_bruit_zbr_infra_r_autoroute_c_ld_d33.qix
-│   │   │       │   ├── l_bruit_zbr_infra_r_autoroute_c_ld_d33.qml
-│   │   │       │   ├── l_bruit_zbr_infra_r_autoroute_c_ld_d33.shp
-│   │   │       │   └── l_bruit_zbr_infra_r_autoroute_c_ld_d33.shx
-│   │   │       └── type_c_ln
-│   │   │           ├── l_bruit_zbr_infra_r_autoroute_c_ln_d33.cpg
-│   │   │           ├── l_bruit_zbr_infra_r_autoroute_c_ln_d33.dbf
-│   │   │           ├── l_bruit_zbr_infra_r_autoroute_c_ln_d33.prj
-│   │   │           ├── l_bruit_zbr_infra_r_autoroute_c_ln_d33.qix
-│   │   │           ├── l_bruit_zbr_infra_r_autoroute_c_ln_d33.qml
-│   │   │           ├── l_bruit_zbr_infra_r_autoroute_c_ln_d33.shp
-│   │   │           └── l_bruit_zbr_infra_r_autoroute_c_ln_d33.shx
-│   │   ├── osm
-│   │   │   ├── osm_food_service_bordeaux_strasbourg.geojson
-│   │   │   └── osm_schools_bordeaux_strasbourg.geojson
-│   │   ├── soundclassification
-│   │   │   └── AGGLO_033
-│   │   │       ├── FER
-│   │   │       │   ├── Class_sonore_DDTM33_SNCF.cpg
-│   │   │       │   ├── Class_sonore_DDTM33_SNCF.dbf
-│   │   │       │   ├── Class_sonore_DDTM33_SNCF.prj
-│   │   │       │   ├── Class_sonore_DDTM33_SNCF.shp
-│   │   │       │   └── Class_sonore_DDTM33_SNCF.shx
-│   │   │       ├── LGV
-│   │   │       │   ├── Class_sonore_DDTM33_LGV-SEA_LISEA.cpg
-│   │   │       │   ├── Class_sonore_DDTM33_LGV-SEA_LISEA.dbf
-│   │   │       │   ├── Class_sonore_DDTM33_LGV-SEA_LISEA.prj
-│   │   │       │   ├── Class_sonore_DDTM33_LGV-SEA_LISEA.shp
-│   │   │       │   └── Class_sonore_DDTM33_LGV-SEA_LISEA.shx
-│   │   │       ├── ROUTIER
-│   │   │       │   ├── Class_sonore_DDTM33_routier.cpg
-│   │   │       │   ├── Class_sonore_DDTM33_routier.dbf
-│   │   │       │   ├── Class_sonore_DDTM33_routier.prj
-│   │   │       │   ├── Class_sonore_DDTM33_routier.shp
-│   │   │       │   └── Class_sonore_DDTM33_routier.shx
-│   │   │       └── TRAMWAY
-│   │   │           ├── Class_sonore_DDTM33_tramway.cpg
-│   │   │           ├── Class_sonore_DDTM33_tramway.dbf
-│   │   │           ├── Class_sonore_DDTM33_tramway.prj
-│   │   │           ├── Class_sonore_DDTM33_tramway.shp
-│   │   │           └── Class_sonore_DDTM33_tramway.shx
-│   │   └── strasbourg
-│   │       └── strasbourg-terrasses-autorisees-2025.geojson
-│   ├── launch-ingestion.sh
-│   └── requirements.txt
 ├── metabase
 │   ├── .buildpacks
 │   ├── Procfile
@@ -841,6 +774,6 @@
 │   ├── pom.xml
 │   ├── scalingo.json
 │   └── system.properties
-├── setup-dbt.sh
-└── setup-dev.sh
-259 directories, 621 files
+├── setup-dev.sh
+└── setup-ingestion-dev.sh
+271 directories, 507 files
