@@ -93,6 +93,12 @@
 │   │   ├── 0037_budget_previsionnel_bigint.sql
 │   │   ├── 0038_data_mec_schema.sql
 │   │   ├── 0039_aide_feedbacks.sql
+│   │   ├── 0040_decisions_humaines.sql
+│   │   ├── 0041_services_data_scopes.sql
+│   │   ├── 0042_data_mec_llm_leviers.sql
+│   │   ├── 0043_projet_questionnaire_reponses.sql
+│   │   ├── 0044_services_numeriques.sql
+│   │   ├── 0045_services_profil_generaliste.sql
 │   │   └── meta
 │   │       ├── 0000_snapshot.json
 │   │       ├── 0001_snapshot.json
@@ -135,12 +141,110 @@
 │   ├── nest-cli.json
 │   ├── openapi3.yml
 │   ├── package.json
+│   ├── public
+│   │   └── logos
+│   │       └── services
+│   │           ├── agirisk.svg
+│   │           ├── aides-territoire.svg
+│   │           ├── aigle-lucca.png
+│   │           ├── aldo.png
+│   │           ├── appli-sesame.png
+│   │           ├── application-murex.png
+│   │           ├── arboclimat.png
+│   │           ├── benefriches.svg
+│   │           ├── cartobio.svg
+│   │           ├── cartofriches.png
+│   │           ├── climadiag.png
+│   │           ├── climat-hd.svg
+│   │           ├── climessences.jpg
+│   │           ├── climurba.svg
+│   │           ├── copcerema.svg
+│   │           ├── crater-territoires-fertiles.svg
+│   │           ├── dialog.png
+│   │           ├── european-drought-observatory.svg
+│   │           ├── expertises-territoires.png
+│   │           ├── france-chaleur-urbaine.svg
+│   │           ├── france-villes-et-territoires-durables.png
+│   │           ├── geoclip-air.png
+│   │           ├── geodip.png
+│   │           ├── geoportail-de-l-urbanisme.png
+│   │           ├── georisques.png
+│   │           ├── georiviere.svg
+│   │           ├── global-forest-watch.png
+│   │           ├── indicateur-pluviometrique.png
+│   │           ├── j-agis.svg
+│   │           ├── la-boussole-de-la-resilience.svg
+│   │           ├── logiciel-conva.svg
+│   │           ├── logiciel-onde-v.svg
+│   │           ├── ma-cantine.svg
+│   │           ├── meteeau-nappes.png
+│   │           ├── minumeco-mission-interministerielle-numerique-ecoresponsable.webp
+│   │           ├── mission-adaptation.png
+│   │           ├── mon-diagnostic-artificialisation.svg
+│   │           ├── mon-espace-collectivite.png
+│   │           ├── mutafriches.svg
+│   │           ├── nos-gestes-climat.png
+│   │           ├── nos-villes-vertes.png
+│   │           ├── observatoire-de-l-eau-sispea.png
+│   │           ├── observatoire-du-covoiturage.png
+│   │           ├── otelo.svg
+│   │           ├── outil-faveur.svg
+│   │           ├── plus-fraiche-ma-ville.svg
+│   │           ├── portail-inpn.png
+│   │           ├── portail-inpn.webp
+│   │           ├── prioreno.svg
+│   │           ├── que-faire-de-mes-objets-et-dechets.svg
+│   │           ├── recolt-o.png
+│   │           ├── resorption-bidonvilles.png
+│   │           ├── satlcz.svg
+│   │           ├── sirse.png
+│   │           ├── sos-ponts.png
+│   │           ├── tacct.jpg
+│   │           ├── terristory.svg
+│   │           ├── trackdechets.png
+│   │           ├── urbansimul.svg
+│   │           ├── urbanvitaliz.png
+│   │           ├── vigieau.svg
+│   │           ├── vigirisks.svg
+│   │           └── zero-logement-vacant.svg
 │   ├── scripts
 │   │   ├── aides-labels-stats.ts
 │   │   ├── backfill-classification.ts
 │   │   ├── backfill-te.ts
+│   │   ├── classify-dgcl-by-epci
+│   │   │   └── classify-dgcl-by-epci.ts
+│   │   ├── classify-vivier
+│   │   │   └── classify-vivier.ts
+│   │   ├── cluster-perimetre
+│   │   │   ├── export-perimetre.ts
+│   │   │   ├── extract-nom-propre.ts
+│   │   │   ├── fix-geo.ts
+│   │   │   ├── geocode-nominatim.ts
+│   │   │   ├── persist-clusters-merge.ts
+│   │   │   ├── persist-geo.ts
+│   │   │   └── persist-nom-propre.ts
 │   │   ├── diagnose-aides-geo.ts
 │   │   ├── generate-types.sh
+│   │   ├── import-benchmark-dinum
+│   │   │   ├── benchmark-dinum.csv
+│   │   │   ├── classify-services.ts
+│   │   │   ├── describe-services.ts
+│   │   │   ├── fetch-logos.ts
+│   │   │   ├── import-benchmark-dinum.ts
+│   │   │   ├── lire-csv.ts
+│   │   │   ├── logos-sources.json
+│   │   │   ├── parse-benchmark.spec.ts
+│   │   │   └── parse-benchmark.ts
+│   │   ├── import-dgcl-dotations
+│   │   │   ├── data
+│   │   │   │   ├── dgcl-liste-projets-dotations-investissement-local-2018.csv
+│   │   │   │   ├── dgcl-liste-projets-dotations-investissement-local-2019.csv
+│   │   │   │   ├── dgcl-liste-projets-dotations-investissement-local-2020.csv
+│   │   │   │   ├── dgcl-liste-projets-dotations-investissement-local-2021.csv
+│   │   │   │   ├── dgcl-liste-projets-dotations-investissement-local-2022.csv
+│   │   │   │   ├── dgcl-liste-projets-dotations-investissement-local-2023.csv
+│   │   │   │   └── dgcl-liste-projets-dotations-investissement-local-2024.csv
+│   │   │   └── import-dgcl-dotations.ts
 │   │   ├── import-projets-tet
 │   │   │   ├── import-projets-tet-data.csv
 │   │   │   └── import-projets-tet.ts
@@ -154,6 +258,9 @@
 │   │   │   └── import-tc-opendata.ts
 │   │   ├── migrate-projets-to-data-mec-delta.sql
 │   │   ├── migrate-projets-to-data-mec.sql
+│   │   ├── poc-epci
+│   │   │   ├── build-poc-data.ts
+│   │   │   └── export-tet-for-geo.ts
 │   │   ├── requalify-aides.ts
 │   │   ├── seed-communes-and-epci
 │   │   │   └── seed-communes-and-epci.ts
@@ -219,11 +326,24 @@
 │   │   ├── database
 │   │   │   ├── database.module.ts
 │   │   │   ├── database.service.ts
+│   │   │   ├── decisions-schema.ts
 │   │   │   ├── mec-schema.ts
 │   │   │   ├── plans-fiches-schema.ts
 │   │   │   ├── referentiel-schema.ts
 │   │   │   ├── schema.ts
 │   │   │   └── tet-schema.ts
+│   │   ├── decisions
+│   │   │   ├── active-decisions.ts
+│   │   │   ├── decision-contract.spec.ts
+│   │   │   ├── decision-contract.ts
+│   │   │   ├── decisions.controller.spec.ts
+│   │   │   ├── decisions.controller.ts
+│   │   │   ├── decisions.module.ts
+│   │   │   ├── decisions.service.spec.ts
+│   │   │   ├── decisions.service.ts
+│   │   │   └── dto
+│   │   │       ├── create-decision.dto.spec.ts
+│   │   │       └── create-decision.dto.ts
 │   │   ├── exceptions
 │   │   │   ├── global-exception-filter.ts
 │   │   │   └── utils.ts
@@ -260,6 +380,7 @@
 │   │   │   │   └── create-mec-projet.dto.ts
 │   │   │   ├── mec.controller.ts
 │   │   │   ├── mec.module.ts
+│   │   │   ├── mec.service.spec.ts
 │   │   │   └── mec.service.ts
 │   │   ├── middleware
 │   │   │   ├── cors.middleware.spec.ts
@@ -334,6 +455,7 @@
 │   │   │   ├── projet-qualification-rate-limit-guard.ts
 │   │   │   ├── projet-qualification.controller.ts
 │   │   │   ├── projet-qualification.integration.spec.ts
+│   │   │   ├── projet-qualification.leviers-mec.spec.ts
 │   │   │   ├── projet-qualification.module.ts
 │   │   │   ├── projet-qualification.service.spec.ts
 │   │   │   └── projet-qualification.service.ts
@@ -374,6 +496,39 @@
 │   │   ├── projets-v2
 │   │   │   ├── projets-v2.controller.ts
 │   │   │   └── projets-v2.module.ts
+│   │   ├── questionnaires
+│   │   │   ├── content
+│   │   │   │   ├── README.md
+│   │   │   │   ├── classification.ts
+│   │   │   │   ├── content.spec.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── questionnaires
+│   │   │   │   │   ├── atoutbiodiv-piste.json
+│   │   │   │   │   ├── atoutbiodiv-place.json
+│   │   │   │   │   ├── atoutbiodiv-salle.json
+│   │   │   │   │   └── atoutbiodiv-solaire.json
+│   │   │   │   └── recommandations
+│   │   │   │       ├── atoutbiodiv-piste.json
+│   │   │   │       ├── atoutbiodiv-place.json
+│   │   │   │       ├── atoutbiodiv-salle.json
+│   │   │   │       └── atoutbiodiv-solaire.json
+│   │   │   ├── dto
+│   │   │   │   └── questionnaire.dto.ts
+│   │   │   ├── eligibilite.spec.ts
+│   │   │   ├── questionnaire-contract.spec.ts
+│   │   │   ├── questionnaire-contract.ts
+│   │   │   ├── questionnaires.controller.ts
+│   │   │   ├── questionnaires.module.ts
+│   │   │   └── questionnaires.service.ts
+│   │   ├── recommandations
+│   │   │   ├── dto
+│   │   │   │   └── recommandation.dto.ts
+│   │   │   ├── recommandation-source.ts
+│   │   │   ├── recommandations.controller.ts
+│   │   │   ├── recommandations.module.ts
+│   │   │   ├── recommandations.service.ts
+│   │   │   └── sources
+│   │   │       └── questionnaire.source.ts
 │   │   ├── referentiel
 │   │   │   ├── communes
 │   │   │   │   ├── communes.controller.ts
@@ -407,9 +562,12 @@
 │   │   │   └── taxonomies
 │   │   │       └── taxonomies.controller.ts
 │   │   ├── security
+│   │   │   ├── restricted-sources.spec.ts
+│   │   │   ├── restricted-sources.ts
 │   │   │   ├── throttler.config.ts
 │   │   │   └── throttler.provider.ts
 │   │   ├── serve-demo-widget.ts
+│   │   ├── serve-logos.ts
 │   │   ├── serve-ressources.ts
 │   │   ├── serve-statistics-dashboard.ts
 │   │   ├── services
@@ -426,6 +584,14 @@
 │   │   │   ├── services.module.ts
 │   │   │   ├── services.service.spec.ts
 │   │   │   └── services.service.ts
+│   │   ├── services-numeriques
+│   │   │   ├── dto
+│   │   │   │   └── service-numerique.dto.ts
+│   │   │   ├── service-numerique-contract.spec.ts
+│   │   │   ├── service-numerique-contract.ts
+│   │   │   ├── services-numeriques.controller.ts
+│   │   │   ├── services-numeriques.module.ts
+│   │   │   └── services-numeriques.service.ts
 │   │   ├── setup-app.ts
 │   │   ├── shared
 │   │   │   ├── const
@@ -439,18 +605,39 @@
 │   │   │   ├── dto
 │   │   │   │   ├── error.response.ts
 │   │   │   │   └── uuid.ts
+│   │   │   ├── process
+│   │   │   │   ├── uncaught-error-handlers.spec.ts
+│   │   │   │   └── uncaught-error-handlers.ts
 │   │   │   ├── types.ts
 │   │   │   └── utils
 │   │   │       ├── currentEnv.ts
+│   │   │       ├── is-background-assertion-error.spec.ts
+│   │   │       ├── is-background-assertion-error.ts
 │   │   │       └── remove-undefined.ts
-│   │   └── swagger-hub.ts
+│   │   ├── swagger-hub.ts
+│   │   └── territoires
+│   │       ├── dto
+│   │       │   ├── plans-projets-territoire.dto.ts
+│   │       │   ├── plans-territoire.dto.ts
+│   │       │   ├── qualification.dto.ts
+│   │       │   └── territoire-projets.dto.ts
+│   │       ├── leviers-csv.spec.ts
+│   │       ├── leviers-csv.ts
+│   │       ├── territoires.controller.spec.ts
+│   │       ├── territoires.controller.ts
+│   │       ├── territoires.module.ts
+│   │       ├── territoires.service.spec.ts
+│   │       └── territoires.service.ts
 │   ├── test
 │   │   ├── analytics.e2e-spec.ts
 │   │   ├── generated-types.ts
 │   │   ├── helpers
 │   │   │   ├── api-client.ts
+│   │   │   ├── e2e-env.ts
 │   │   │   ├── e2e-global-setup.ts
 │   │   │   ├── e2e-global-teardown.ts
+│   │   │   ├── e2e-port.ts
+│   │   │   ├── e2e-uncaught-guard.ts
 │   │   │   ├── get-formatted-date.ts
 │   │   │   ├── referentiel-test-setup.ts
 │   │   │   ├── referentiel-test-teardown.ts
@@ -470,7 +657,9 @@
 │   │   │   └── mockRequest.ts
 │   │   ├── projets.e2e-spec.ts
 │   │   ├── qualification.e2e-spec.ts
+│   │   ├── questionnaires.e2e-spec.ts
 │   │   ├── ressources.e2e-spec.ts
+│   │   ├── services-numeriques.e2e-spec.ts
 │   │   ├── services.e2e-spec.ts
 │   │   └── setup-tests.ts
 │   ├── tsconfig.build.json
@@ -479,8 +668,14 @@
 ├── commitlint.config.cjs
 ├── docs
 │   ├── api
+│   │   ├── DOCTRINE_ACCES_DONNEES.md
+│   │   ├── GUIDE_DECISIONS.md
+│   │   ├── INTEGRATION_MEC.md
+│   │   ├── INTEGRATION_TET.md
+│   │   ├── README.md
 │   │   ├── classification-et-aides.md
-│   │   └── leviers-endpoint.md
+│   │   ├── leviers-endpoint.md
+│   │   └── openapi-territoires-decisions.yaml
 │   ├── referentiel-api-design.md
 │   ├── referentiel-api-requirements.md
 │   └── referentiel-api-workflow.md
@@ -621,4 +816,4 @@
     ├── tsconfig.json
     ├── tsconfig.vite.json
     └── vite.config.ts
-115 directories, 508 files
+140 directories, 678 files

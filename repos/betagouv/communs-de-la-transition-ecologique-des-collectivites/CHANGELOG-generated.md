@@ -1,34 +1,36 @@
-## Changelog : communs-de-la-transition-ecologique-des-collectivites (30 derniers jours, au 16 juin 2026)
+## Changelog : communs-de-la-transition-ecologique-des-collectivites (30 derniers jours, au 13 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent principalement sur l'amélioration du tableau de bord de la transition écologique (Dashboard TE) avec de nouvelles options de filtrage et d'agrégation des données. Des améliorations significatives ont également été apportées à la fonctionnalité de recherche d'aides, notamment en termes de matching et de pondération des critères. Enfin, des corrections et optimisations diverses ont été réalisées pour améliorer la stabilité et la performance de l'application.
+Les dernières mises à jour se concentrent sur l'enrichissement de l'API avec des informations sur les services numériques de la transition écologique, l'amélioration de l'intégration avec la plateforme "Mon Éco Condition" (MEC) et des corrections de bugs pour stabiliser les tests et les performances. Le tableau de bord de la transition écologique (TE) a également été amélioré avec de nouveaux filtres et des informations plus détaillées sur les projets.
 
 ### Évolutions fonctionnelles
-- **Dashboard TE :** Ajout de filtres multi-valeurs pour les communes, départements et sources de données [#1234](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/issues/1234).
-- **Dashboard TE :** Possibilité de filtrer les projets par EPCI (Établissement Public de Coopération Intercommunale).
-- **Dashboard TE :** Classification scorée des projets pour une meilleure analyse.
-- **Dashboard TE :** Affichage des communes (code INSEE) associées à chaque projet dans le détail.
-- **Dashboard TE :** Ajout d'un paramètre pour inclure ou exclure les projets de la DGCL (Direction Générale des Collectivités Locales).
-- **Dashboard TE :** Affichage des millésimes des projets dans le résumé.
-- **Dashboard TE :** Ajout d'un endpoint `/projets/summary` pour obtenir un résumé des projets.
-- **Dashboard TE :**  Possibilité de trier la liste des projets et de plafonner les montants aberrants à 100 M€.
-- **Recherche d'aides :** Recherche d'aides par classification et par communes.
-- **Recherche d'aides :** Amélioration du matching entre les aides et les projets, avec pondération des axes thématique et textuel.
-- **Recherche d'aides :** Ajout de paramètres `cutoff` et seuils de confiance pour affiner les résultats.
-- **Recherche d'aides :**  Amélioration du matching textuel avec l'utilisation de BM25.
-- **Statistiques nationales :** Ajout d'un flag `inclure_tet` pour agréger les fiches d'action TE.
-- **Probabilité de transition écologique :** Exposition de la probabilité de TE par projet et ajout de filtres et d'une synthèse par probabilité.
+- Ajout de logos pour les services numériques via l'API. [#507](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/issues/507)
+- Génération automatique de descriptions et de classifications pour les services numériques.
+- Intégration des questionnaires, recommandations et catalogue de services numériques dans l'API.
+- Amélioration de la prédiction des leviers pour les projets MEC.
+- Ajout d'endpoints pour exposer les sites, interventions et leviers MEC via l'API de qualification.
+- Ajout de filtres multi-valeurs pour les départements, les sources et les EPCI dans le tableau de bord TE.
+- Classification scorée des projets dans le détail du tableau de bord TE.
+- Possibilité de filtrer les projets par EPCI dans le tableau de bord TE.
+- Ajout d'un verdict "annulé" pour révoquer les décisions dans le contrat de décisions v2.
+- Schéma `decisions_humaines` pour journaliser les décisions humaines.
 
 ### Évolutions techniques
-- **API :** Amélioration du typage OpenAPI pour les endpoints `/aides/feedback`.
-- **CI/CD :** Séparation des jobs de release et de déploiement pour une meilleure résilience.
-- **Classification :** Utilisation d'un prompt system dédié pour la classification des aides.
-- **Financements :** Correction de la liaison entre les financements et les projets via une table de jointure.
-- **Correction de bugs :** Correction de filtres sur les montants et les financements.
+- Refonte de la documentation d'intégration MEC.
+- Implémentation d'une doctrine d'accès aux données (data_scopes) pour une meilleure gestion des permissions.
+- Ajout d'un endpoint miroir pour les plans territoriaux (sens TeT).
+- Amélioration de la gestion des erreurs Undici et stabilisation des tests.
+- Configuration d'un limiteur de débit (throttler) configurable pour la suite de tests e2e.
+- Correction de problèmes liés à la surcharge de l'ingestion de données par les partenaires.
+- Amélioration de la gestion des erreurs d'assertion non rattrapées.
+- Optimisation des tests e2e pour éviter les courses inter-suites.
 
 ### Autres changements
-- **Documentation :** Masquage des détails d'implémentation dans le Swagger de l'API aides.
-- **Scripts :** Ajout de scripts de diagnostic pour la qualité des données des aides (géo, thématique, textuel).
-- **Scripts :** Ajout d'un script de requalification du catalogue d'aides.
-- **Tests :** Alignement des mocks pour les tests de l'API aides.
-- **Correction de bugs :** Correction du fallback pour la récupération des données des aides.
+- Documentation de la provenance des leviers et de la limite v1 pour l'intégration MEC.
+- Signalement de la clé `nom_propre` possible sur `llmSites`.
+- Clarification de la portée des filtres et du sens du total dans la documentation.
+- Suppression de `dataScopes` de l'attente du create de service context.
+- Correction des attentes des specs services après l'ajout de `data_scopes`.
+- Formattage du fichier `dashboard-te.service.ts` avec Prettier.
+- Ajout d'IDs des traces DGCL non contractuels pour l'intégration MEC.
+- Publication des versions 0.1.96 à 0.1.103.
