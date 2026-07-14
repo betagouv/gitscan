@@ -168,9 +168,10 @@
 │   │   │   │   │   ├── SignupForm.tsx
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── common
+│   │   │   │   │   ├── AppPagination.tsx
 │   │   │   │   │   ├── AppSidebar.tsx
-│   │   │   │   │   ├── app-pagination.tsx
-│   │   │   │   │   └── assignee-dropdown.tsx
+│   │   │   │   │   ├── AssigneeDropdown.tsx
+│   │   │   │   │   └── WorkStatusDropdown.tsx
 │   │   │   │   ├── document-editor
 │   │   │   │   │   ├── DocumentContext.tsx
 │   │   │   │   │   ├── actions
@@ -242,8 +243,6 @@
 │   │   │   │   │       ├── ContentContext.tsx
 │   │   │   │   │       ├── DebugPanel.tsx
 │   │   │   │   │       ├── DocumentLayout.tsx
-│   │   │   │   │       ├── DocumentPublicationStatus.tsx
-│   │   │   │   │       ├── DocumentStatus.tsx
 │   │   │   │   │       ├── EditorNavigation.tsx
 │   │   │   │   │       ├── HeaderFicheConnected.tsx
 │   │   │   │   │       ├── MarkdownViewer.inner.tsx
@@ -289,6 +288,7 @@
 │   │   │   │   ├── document-column-factories.tsx
 │   │   │   │   ├── document-labels.ts
 │   │   │   │   ├── errors.ts
+│   │   │   │   ├── format-date.ts
 │   │   │   │   ├── format-ingestion-version.ts
 │   │   │   │   ├── markdown
 │   │   │   │   │   ├── index.ts
@@ -307,6 +307,7 @@
 │   │   │   │   ├── supabase
 │   │   │   │   │   └── client.ts
 │   │   │   │   ├── url-builder.ts
+│   │   │   │   ├── work-status.ts
 │   │   │   │   └── workflow-utils.ts
 │   │   │   ├── proxy.ts
 │   │   │   ├── services
@@ -323,7 +324,8 @@
 │   │   │   │   ├── publication-urls.ts
 │   │   │   │   ├── ri-reference-data.ts
 │   │   │   │   ├── translation-actions.ts
-│   │   │   │   └── translations.ts
+│   │   │   │   ├── translations.ts
+│   │   │   │   └── work-status-actions.ts
 │   │   │   └── types
 │   │   │       └── database.types.ts
 │   │   ├── tests
@@ -549,7 +551,8 @@
 │   │   ├── package.json
 │   │   ├── src
 │   │   │   ├── constants
-│   │   │   │   └── languages.ts
+│   │   │   │   ├── languages.ts
+│   │   │   │   └── model.ts
 │   │   │   ├── index.ts
 │   │   │   ├── lib
 │   │   │   │   ├── markdown.ts
@@ -983,7 +986,9 @@
 │   │   ├── 20260617084727_add_activity_logs.sql
 │   │   ├── 20260617153014_fix_workflows_enriched_versioning_columns.sql
 │   │   ├── 20260623120000_grant_service_role_translation_records.sql
-│   │   └── 20260626150000_rename_activity_log_archivage_to_archive.sql
+│   │   ├── 20260626150000_rename_activity_log_archivage_to_archive.sql
+│   │   ├── 20260703170000_add_to_review_work_status.sql
+│   │   └── 20260707100000_add_archived_at_to_editorial_records.sql
 │   ├── seed
 │   │   ├── 00_auth_users.sql
 │   │   ├── 02_ingestion_runs.sql
@@ -1001,4 +1006,4 @@
 ├── tsconfig.json
 ├── turbo.json
 └── vercel-setup.sh
-224 directories, 779 files
+224 directories, 784 files
