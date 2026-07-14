@@ -1,19 +1,19 @@
 ## Changelog : prestagri (30 derniers jours, au 8 juillet 2026)
 
 ### Résumé
-Les dernières mises à jour de Prest'Agri se concentrent sur le développement et le déploiement de la fonctionnalité "aide scolarite", incluant une calculatrice associée. Des améliorations ont été apportées pour gérer des cas spécifiques comme les couples mariés et les erreurs d'API, ainsi que pour l'intégration de données d'adresses.
+Cette nouvelle version apporte des améliorations significatives au calcul de l'aide scolaire, notamment la prise en compte des couples mariés, des valeurs de points de scolarité et des combinaisons de bonus QF. Une calculette d'aide scolaire a été déployée et des améliorations ont été apportées à la gestion des erreurs API. La documentation a également été enrichie avec des fichiers de démonstration.
 
 ### Évolutions fonctionnelles
-- Ajout d'une calculatrice pour l'aide scolarite. [#1]
-- Prise en charge du calcul de l'aide scolarite sans trajet.
-- Gestion des couples mariés dans le calcul de l'aide scolarite.
-- Amélioration de la gestion des erreurs de l'API.
-- Intégration et test de l'adresse à partir de la Direction Nationale (DN).
-- Déploiement de la calculatrice sur GitHub.
+- Ajout d'une calculette pour l'aide scolaire [#1](https://github.com/betagouv/prestagri/issues/1) (v0.18).
+- Prise en compte des couples mariés dans le calcul de l'aide scolaire (v0.17).
+- Intégration des valeurs de points de scolarité et des combinaisons de bonus QF dans le calcul (v0.20).
+- Déploiement de l'aide scolaire sans trajet (v0.15).
+- Déploiement de la calculatrice sur GitHub (v0.14).
+- Amélioration de la gestion des erreurs API (v0.16).
 
 ### Évolutions techniques
-- Déploiement de la fonctionnalité "aide scolarite" en plusieurs versions (v0.15, v0.15.1, v0.15.2, v0.16, v0.17, v0.18, v0.20, v0.21).
-- Ajout de documentation et de fichiers de démonstration.
+- Ajout de tests pour l'adresse provenant de DN (v0.15.1).
+- Amélioration de la documentation avec l'ajout de fichiers de démonstration (v0.15.2).
 
 ### Autres changements
-- Amélioration des explications et de la clarté générale du projet.
+- Ajout d'explications détaillées (v0.21).
