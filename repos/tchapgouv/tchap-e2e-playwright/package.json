@@ -9,6 +9,7 @@
     "test:debug": "playwright test --debug",
     "test:ui": "playwright test --ui",
     "test:auth:local": "ENV=local playwright test ./tests/auth",
+    "test:minimal:local": "ENV=localdev01 playwright test  ./tests/integration/web/minimal/",
     "test:minimal:dev01": "ENV=dev01 playwright test  ./tests/integration/web/minimal/",
     "test:minimal:int01": "ENV=int01 playwright test  ./tests/integration/web/minimal/",
     "test:api:dev01": "ENV=dev01 playwright test ./tests/integration/api/",
@@ -28,11 +29,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "matrix-js-sdk": "^41.5.0"
+    "matrix-js-sdk": "^41.5.0",
+    "playwright": "1.59.1"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.11",
-    "@playwright/test": "^1.40.0",
+    "@playwright/test": "1.59.1",
     "@types/node": "^20.10.0",
     "dotenv": "^16.3.1",
     "mailpit-api": "^1.5.4",
