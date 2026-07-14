@@ -1,34 +1,34 @@
-## Changelog : conseillers-entreprises (30 derniers jours, au 02 juillet 2026)
+## Changelog : conseillers-entreprises (30 derniers jours, au 08 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur, notamment l'ajout d'informations sur l'historique des besoins des entreprises, l'amélioration de la gestion des emails de sollicitation et l'optimisation des performances. Des efforts ont également été faits pour moderniser la stack technique, notamment en remplaçant Webpack par Esbuild.
+Cette période a été marquée par des améliorations de la performance et de la stabilité de l'application, notamment avec le passage à esbuild pour le build frontend. Des corrections ont été apportées pour améliorer la gestion des données et l'expérience utilisateur, comme l'affichage de l'historique des besoins et la gestion des erreurs lors de la création d'entreprises et d'établissements. Des améliorations de la documentation et de l'architecture ont également été réalisées.
 
 ### Évolutions fonctionnelles
-- Ajout de l'historique des besoins d'une entreprise, incluant les besoins inaccessibles. [#4550](https://github.com/betagouv/conseillers-entreprises/pull/4550)
-- Affichage du nombre de besoins historiques sur la page d'un besoin. [#4550](https://github.com/betagouv/conseillers-entreprises/pull/4550)
-- Amélioration de l'affichage des données d'évolution dans les rapports de coopération, avec un affichage en pourcentage relatif. [#4500](https://github.com/betagouv/conseillers-entreprises/pull/4500)
-- Possibilité de consulter les statistiques directement depuis l'interface d'administration. [#4498](https://github.com/betagouv/conseillers-entreprises/pull/4498)
-- Refonte de la gestion des emails de sollicitation :
-    - Ajout d'un modèle `SolicitationMailTemplate` pour gérer les templates d'emails. [#4485](https://github.com/betagouv/conseillers-entreprises/pull/4485)
-    - Amélioration de l'interface d'administration pour la gestion des templates d'emails.
-    - Possibilité de personnaliser le contenu des emails de sollicitation.
-    - Gestion des cas où l'API ne renvoie pas de données valides.
-- Ajout d'une page "Équipe" avec les témoignages d'experts. [#4506](https://github.com/betagouv/conseillers-entreprises/pull/4506)
-- Correction d'un bug empêchant la réutilisation du SIRET dans les formulaires de sollicitation. [#4524](https://github.com/betagouv/conseillers-entreprises/pull/4524)
+- Affichage de l'historique des besoins d'une entreprise, incluant les besoins inaccessibles [#4550](https://github.com/betagouv/conseillers-entreprises/issues/4550).
+- Amélioration de l'affichage des statistiques d'évolution des besoins.
+- Correction d'un bug empêchant la réutilisation d'un SIRET lors d'une sollicitation [#4524](https://github.com/betagouv/conseillers-entreprises/issues/4524).
+- Ajout de témoignages d'experts sur les pages publiques [#4506](https://github.com/betagouv/conseillers-entreprises/issues/4506).
+- Mise à jour de la page "équipe" avec des ajustements visuels et de contenu [#4513](https://github.com/betagouv/conseillers-entreprises/issues/4513).
+- Amélioration de la gestion des erreurs lors de la création d'entreprises et d'établissements en cas d'échec des appels API [#4509](https://github.com/betagouv/conseillers-entreprises/issues/4509).
+- Correction d'un bug lié à la correspondance des zones territoriales [#4559](https://github.com/betagouv/conseillers-entreprises/issues/4559).
 
 ### Évolutions techniques
-- Remplacement de Webpack par Esbuild pour améliorer les performances de build et réduire la taille des assets. [#4520](https://github.com/betagouv/conseillers-entreprises/pull/4520)
-- Suppression de jQuery et des dépendances associées. [#4526](https://github.com/betagouv/conseillers-entreprises/pull/4526)
-- Refactorisation du code pour utiliser Turbo Frames au lieu de Turbo Streams. [#4544](https://github.com/betagouv/conseillers-entreprises/pull/4544)
-- Simplification de la logique de gestion des périodes de temps (TimeDurationService). [#4519](https://github.com/betagouv/conseillers-entreprises/pull/4519)
-- Mise à jour des dépendances (undici, concurrent-ruby, nokogiri, net-imap).
-- Amélioration de la robustesse de la correspondance des jobs Sidekiq. [#4559](https://github.com/betagouv/conseillers-entreprises/pull/4559)
-- Correction d'une vulnérabilité potentielle liée à l'injection de code. [#4514](https://github.com/betagouv/conseillers-entreprises/pull/4514)
+- Passage du système de build Webpack à esbuild pour améliorer la performance et réduire la complexité [#4520](https://github.com/betagouv/conseillers-entreprises/issues/4520).
+- Suppression de jQuery et remplacement par des alternatives modernes.
+- Augmentation de la taille du pool de connexions à la base de données et du nombre de threads/processus Puma pour améliorer la concurrence.
+- Refactoring du code lié à la gestion des durées (TimeDurationService) pour une meilleure organisation.
+- Mise à jour des dépendances (undici, concurrent-ruby, nokogiri).
+- Amélioration de la robustesse de la gestion des jobs Sidekiq.
+- Suppression de code inutilisé.
+- Mise à jour de la configuration de CircleCI pour améliorer les performances et la fiabilité des tests.
+- Ajout d'un endpoint machine-readable `llms.txt` pour faciliter l'intégration avec des modèles de langage.
 
 ### Autres changements
-- Mise à jour de la documentation de l'architecture du projet. [#4463](https://github.com/betagouv/conseillers-entreprises/pull/4463)
-- Amélioration des tests et correction de bugs mineurs.
-- Nettoyage du code et suppression de code inutilisé.
+- Mise à jour de la documentation de l'architecture du projet, incluant la clarification de la stack de production et des détails du pipeline.
+- Correction de problèmes de style et de conformité avec les linters.
 - Mise à jour des traductions françaises.
-- Configuration de rails-erd pour générer des PDFs. [#4537](https://github.com/betagouv/conseillers-entreprises/pull/4537)
-- Ajustement des valeurs de timeout de la base de données. [#4537](https://github.com/betagouv/conseillers-entreprises/pull/4537)
+- Amélioration de la gestion des événements Matomo.
+- Ajout de tests unitaires et d'intégration.
+- Correction de bugs mineurs et améliorations de la qualité du code.
+- Mise à jour de la configuration de la base de données pour utiliser le fichier `database.yml` en production.
+- Suppression de fichiers inutiles.
