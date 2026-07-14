@@ -1,31 +1,32 @@
-## Changelog : device-management (30 derniers jours, au 05 juillet 2026)
+## Changelog : device-management (30 derniers jours, au 14 juillet 2026)
 
 ### Résumé
-Ce mois-ci, le projet a connu une évolution majeure avec l'introduction de la gestion des configurations runtime, permettant une personnalisation et une adaptation plus fines du système. Des améliorations significatives ont également été apportées à la sécurité, à l'observabilité et à la gestion des dépendances. L'interface d'administration a été enrichie avec de nouvelles fonctionnalités de débogage et de configuration.
+Cette version apporte des améliorations significatives à la gestion des configurations, à la sécurité et à l'observabilité du système. L'introduction de feature flags permet une plus grande flexibilité et un déploiement progressif des nouvelles fonctionnalités. Des améliorations ont également été apportées au dashboard pour une meilleure visualisation de l'adoption et des données d'utilisation.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de rediriger les accès racine (`/`) vers le catalogue (`/catalog/`) et l'administration (`/admin/`) pour une meilleure compatibilité avec les proxys inversés. [#21](https://github.com/IA-Generative/device-management/pull/21)
-- L'interface d'administration permet désormais d'éditer les informations d'identification (Keycloak, relais) et d'importer des surcharges de configuration au démarrage. [#20](https://github.com/IA-Generative/device-management/pull/20)
-- Ajout d'une page de débogage dans l'interface d'administration permettant l'édition, la comparaison, la réinitialisation et le rechargement de la configuration. [#17](https://github.com/IA-Generative/device-management/pull/17)
-- Implémentation d'un système de "reaper" pour la suppression automatique des pods Kubernetes obsolètes et d'un heartbeat résilient.
-- Intégration de l'observabilité avec Tempo et Grafana, avec authentification SSO Keycloak.
-- Ajout d'un script de test pour valider les clés API Scaleway (LLM).
-- Amélioration de la gestion des déconnexions Keycloak dans l'interface d'administration.
+- Ajout d'un toggle sur le dashboard pour basculer entre les vues "Appareils" et "Utilisateurs" pour l'adoption des plugins [#21](https://github.com/IA-Generative/device-management/pull/21).
+- Amélioration du dashboard avec des courbes par plugin et des légendes plus cohérentes [#29](https://github.com/IA-Generative/device-management/pull/29).
+- Possibilité d'éditer les credentials (Keycloak, relais) et de gérer les surcharges de configuration runtime via une nouvelle page d'administration.
+- Ajout d'une page de débogage avec édition inline, diff, reset et rechargement des configurations.
+- Implémentation d'un proxy LLM compatible OpenAI avec un endpoint `/llm/v1` et la possibilité de surcharger l'endpoint LLM.
+- Redirections automatiques de la racine `/` vers `/catalog/` et de `/admin` vers `/admin/`.
+- Amélioration du logout Keycloak pour passer le `client_id` et éviter les erreurs.
 
 ### Évolutions techniques
-- Introduction d'un module de gestion de configuration runtime avec registre, résolution, rechargement et génération de configuration.
-- Implémentation du chiffrement réversible Fernet pour les secrets de surcharge runtime.
-- Refonte de la validation des chemins de fichiers pour une sécurité accrue.
-- Mise à jour des images Docker pour inclure nginx 1.29-alpine (correction d'une vulnérabilité openssl) et les dernières versions des dépendances Python.
-- Amélioration de la robustesse des tests CI/CD et correction de problèmes liés à l'environnement d'exécution.
-- Suppression de dépendances obsolètes (Adminer, filebrowser) et renforcement de la sécurité des images Docker.
-- Utilisation de Ruff pour le linting et Bandit pour l'analyse de sécurité, avec correction des problèmes détectés.
-- Amélioration de la gestion des logs avec filtrage des sondes et des accès Nginx.
+- Implémentation d'un système de feature flags avec catalogue scopé par plugin et réconciliation à l'import [#28](https://github.com/IA-Generative/device-management/pull/28).
+- Refonte de la gestion des configurations runtime avec un module cœur dédié et un chiffrement réversible des secrets.
+- Amélioration de la sécurité avec l'utilisation d'images non-root pour les conteneurs et l'ajout de gardes-fous.
+- Ajout de la vérification de la validité des chemins de fichiers pour renforcer la sécurité.
+- Amélioration de la robustesse du système avec l'ajout de verrous consultatifs pour la gestion du schéma de base de données.
+- Amélioration de la télémétrie avec la préservation du préfixe de chemin `PUBLIC_BASE_URL`.
+- Mise à jour de la version à 0.9.3.
+- Amélioration de la gestion des logs avec filtrage des sondes et des requêtes.
 
 ### Autres changements
-- Documentation mise à jour pour refléter les nouvelles fonctionnalités et les changements de configuration.
-- Amélioration du quickstart Docker local.
-- Suppression des fichiers de sécurité du dépôt.
-- Correction de bugs mineurs et améliorations de la qualité du code.
-- Ajustement du port hôte du DM en développement local pour éviter les conflits.
-- Suppression du relais `/llm` devenu inutile.
+- Documentation de l'embedder RAG et des champs de configuration associés.
+- Ajout de tests unitaires et d'intégration pour les nouveaux features.
+- Amélioration de la qualité du code avec des corrections de linting et de style.
+- Mise à jour des dépendances et des outils de CI/CD.
+- Ajout de documentation sur l'architecture et les principes de conception du système (ADR-0002).
+- Amélioration de l'observabilité avec l'ajout de métriques et de logs.
+- Correction de bugs mineurs et améliorations de la performance.

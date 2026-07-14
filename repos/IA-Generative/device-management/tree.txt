@@ -8,13 +8,15 @@
 ├── .gitignore
 ├── LICENSE
 ├── README.md
+├── VERSION
 ├── alembic
 │   ├── env.py
 │   ├── script.py.mako
 │   └── versions
 │       ├── 001_initial_schema.py
 │       ├── 002_extension_update_metadata.py
-│       └── 003_runtime_config.py
+│       ├── 003_runtime_config.py
+│       └── 004_llm_quota.py
 ├── alembic.ini
 ├── app
 │   ├── __init__.py
@@ -68,6 +70,20 @@
 │   │       ├── catalog_base.html
 │   │       ├── catalog_detail.html
 │   │       └── catalog_index.html
+│   ├── llm
+│   │   ├── __init__.py
+│   │   ├── audit.py
+│   │   ├── auth.py
+│   │   ├── backends.py
+│   │   ├── errors.py
+│   │   ├── guardrails.py
+│   │   ├── http_client.py
+│   │   ├── metrics.py
+│   │   ├── pipeline.py
+│   │   ├── proxy.py
+│   │   ├── router.py
+│   │   ├── throttle.py
+│   │   └── tokens.py
 │   ├── logfilters.py
 │   ├── main.py
 │   ├── pathsafe.py
@@ -92,6 +108,7 @@
 │   │   ├── .env.secrets.example
 │   │   ├── Dockerfile
 │   │   ├── README.md
+│   │   ├── docker-compose.e2e.yml
 │   │   ├── docker-compose.yml
 │   │   ├── local-rcfg
 │   │   │   ├── .env.example
@@ -125,9 +142,12 @@
 │   │   │   │   ├── 29-postgres-pvc.yaml
 │   │   │   │   ├── 30-postgres-deployment.yaml
 │   │   │   │   ├── 31-postgres-service.yaml
+│   │   │   │   ├── 32-llm-proxy-deployment.yaml
+│   │   │   │   ├── 33-llm-proxy-service.yaml
 │   │   │   │   ├── 50-ingress.yaml
 │   │   │   │   ├── 60-device-management-hpa.yaml
-│   │   │   │   └── 61-queue-worker-hpa.yaml
+│   │   │   │   ├── 61-queue-worker-hpa.yaml
+│   │   │   │   └── 62-llm-proxy-hpa.yaml
 │   │   │   └── secrets
 │   │   │       └── all-secrets.yaml
 │   │   └── overlays
@@ -147,6 +167,7 @@
 │   │       │   │   └── 47-grafana-service.yaml
 │   │       │   ├── proxy-patch-device-management-admin.yaml
 │   │       │   ├── proxy-patch-device-management.yaml
+│   │       │   ├── proxy-patch-llm-proxy.yaml
 │   │       │   ├── proxy-patch-queue-worker.yaml
 │   │       │   ├── proxy-patch-relay-assistant.yaml
 │   │       │   └── proxy-patch.yaml
@@ -173,12 +194,14 @@
 │   ├── architecture
 │   │   ├── README.md
 │   │   ├── adr-0001-vue-densemble.md
+│   │   ├── adr-0002-proxy-llm-relais.md
 │   │   ├── adr-dgx-deployment.md
 │   │   └── adr-product-architecture.md
 │   ├── operations
 │   │   ├── README.md
 │   │   ├── debug-campaign-not-serving.md
 │   │   ├── developer-readme.md
+│   │   ├── llm-proxy.md
 │   │   ├── mode-operatoire-campagnes.md
 │   │   └── test-cahier.md
 │   └── plugin-developer
@@ -209,6 +232,7 @@
 │   │   ├── 10-e2e-waf-test.sh
 │   │   └── dumb-deploy.sh
 │   ├── dm4-slug-migration.sql
+│   ├── e2e-feature-flags-matrix.sh
 │   ├── k8s
 │   │   ├── create-registry-secret.sh
 │   │   ├── deploy.sh
@@ -223,17 +247,26 @@
 │   └── test-scaleway-key.py
 └── tests
     ├── conftest.py
+    ├── llm_utils.py
     ├── test_admin_playwright.py
     ├── test_admin_ui.py
     ├── test_bootstrap_urls.py
+    ├── test_dashboard_telemetry.py
     ├── test_e2e_deployment.py
     ├── test_enriched_config.py
     ├── test_enroll.py
+    ├── test_feature_flags_v2.py
+    ├── test_llm_config_override.py
+    ├── test_llm_pipeline.py
+    ├── test_llm_proxy.py
+    ├── test_llm_quota_pg.py
+    ├── test_llm_runtime_mode.py
     ├── test_logfilters.py
     ├── test_observability.py
     ├── test_ops_metrics.py
     ├── test_pathsafe.py
     ├── test_post_deploy.py
+    ├── test_public_base_url_prefix.py
     ├── test_queue_load.py
     ├── test_queue_resilience_distributed.py
     ├── test_queue_security.py
@@ -244,4 +277,4 @@
     ├── test_runtime_config.py
     ├── test_security_suggest.py
     └── test_telemetry.py
-40 directories, 206 files
+41 directories, 238 files
