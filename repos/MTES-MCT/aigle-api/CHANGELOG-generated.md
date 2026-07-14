@@ -1,31 +1,29 @@
-## Changelog : aigle-api (30 derniers jours, au 03 juillet 2026)
+## Changelog : aigle-api (30 derniers jours, au 9 juillet 2026)
 
 ### Résumé
-Les dernières mises à jour de l'API Aigle se concentrent sur l'amélioration des commandes d'administration, l'optimisation des performances, et l'ajout de nouvelles fonctionnalités liées à la gestion des données et des utilisateurs. Plusieurs améliorations ont été apportées aux commandes d'importation de données (Sitadel, parcelles, détections, zones personnalisées) pour une meilleure gestion et une plus grande fiabilité.
+Les dernières mises à jour de l'API Aigle se concentrent sur l'amélioration des outils d'administration, l'optimisation des performances et la correction de bugs liés à l'importation et au traitement des données. Des nouvelles fonctionnalités ont été ajoutées pour faciliter le déploiement et la gestion des données, notamment pour les zones d'activités économiques (ZAE).
 
 ### Évolutions fonctionnelles
+- Amélioration du tableau de bord DDT (Direction Départementale des Territoires et de la Mer).
 - Ajout de nouveaux statuts pour les détections : "illégal" et "à contrôler".
-- Ajout du champ `is_staff` aux utilisateurs.
-- Amélioration du mécanisme de prescription.
-- Ajout d'un paramètre "department" pour la commande `update_detection_parcels`.
-- Ajout de la valeur "JUGEMENT" au statut de contrôle des détections.
-- Contrainte : un super-admin ne peut pas créer/mettre à jour des jeux de tuiles sans collectivité associée.
-- Amélioration de la gestion de l'impersonnation de super-admin.
-- Interdiction des appels DELETE.
+- Possibilité de rechercher des commandes d'exécution dans l'interface d'administration.
+- Amélioration de la gestion des collectivité territoriales dans l'interface d'administration.
+- Correction du flux de prescription [#80](https://github.com/MTES-MCT/aigle-api/pull/80).
+- Correction de l'attribution des détections aux bons ensembles de tuiles [#80](https://github.com/MTES-MCT/aigle-api/pull/80).
 
 ### Évolutions techniques
-- Amélioration de la gestion des groupes d'utilisateurs lors du déploiement.
-- Optimisation des performances de l'endpoint `deployed-data`.
+- Amélioration de la gestion des utilisateurs et des groupes lors du déploiement.
+- Optimisation du déploiement pour ne déployer qu'une seule batch ou une seule ZAE à la fois.
 - Amélioration de la stratégie de déploiement de Celery.
-- Amélioration de la commande `sitadel`.
-- Amélioration des commandes d'importation de données (Sitadel, parcelles, détections).
-- Amélioration de la gestion des arguments des commandes d'administration.
-- Nettoyage de code et suppression de commentaires inutiles.
-- Amélioration de la gestion des commandes d'administration via l'interface utilisateur.
-- Amélioration de la commande `run_command`.
+- Amélioration des performances de l'endpoint `deployed-data`.
+- Refonte et nettoyage des commandes d'importation de données (Sitadel, parcelles, détections).
+- Amélioration de la commande `create_tile` et `import_sitadel`.
+- Ajout d'un paramètre département pour la commande `update_detection_parcels`.
+- Ajout d'une commande `clean_detections`.
+- Amélioration de la gestion des commandes d'administration (ajout d'une barre de progression).
+- Amélioration de la sécurité (corrections et report de tests de sécurité).
 
 ### Autres changements
-- Ajout d'une interface d'administration pour les données déployées (en cours de développement).
 - Suppression des routes liées aux statistiques.
-- Suppression des tests de sécurité (reportés à plus tard).
-- Amélioration de la gestion des erreurs et des logs.
+- Nettoyage de code et suppression de commentaires inutiles.
+- Mise à jour de la documentation et de la configuration pour faciliter le déploiement.
