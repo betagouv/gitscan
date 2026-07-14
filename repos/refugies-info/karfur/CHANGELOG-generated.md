@@ -1,33 +1,36 @@
-## Changelog : karfur (30 derniers jours, au 25 juin 2026)
+## Changelog : karfur (30 derniers jours, au 8 juillet 2026)
 
 ### Résumé
-Cette version apporte des améliorations à l'interface utilisateur, notamment sur les fiches RCO et la compatibilité mobile. Des corrections de bugs ont été implémentées pour résoudre des problèmes d'affichage, de connexion et de gestion des données. Des efforts importants ont été consacrés à l'intégration de Letta Code pour l'analyse et la validation du code, ainsi qu'à la préparation de l'intégration de nouveaux "skills" pour l'outil.
+Les dernières mises à jour de karfur se concentrent sur l'amélioration de l'intégration avec l'outil AGIR, notamment la synchronisation des opérateurs et l'affichage de leurs coordonnées sur la carte. Des corrections de bugs et des améliorations de l'interface utilisateur ont également été apportées, ainsi que des optimisations techniques pour le déploiement et la sécurité.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'affichage des adresses postales sur les fiches RCO, corrigeant un problème de coupure. [#3822](https://github.com/refugies-info/karfur/pull/3822)
-- Correction d'un bug empêchant la prévisualisation des fiches. [#3823](https://github.com/refugies-info/karfur/pull/3823)
-- Mise à jour des coordonnées des opérateurs sur la carte "Agir". [#3817](https://github.com/refugies-info/karfur/pull/3817)
-- Mise à jour du texte sur la page "Mission et Impact". [#3824](https://github.com/refugies-info/karfur/pull/3824)
-- Correction d'un problème de connexion et de réinitialisation de mot de passe. [#3814](https://github.com/refugies-info/karfur/pull/3814)
-- Correction de l'affichage des accents dans le moteur de recherche. [#3769](https://github.com/refugies-info/karfur/pull/3769)
-- Amélioration de la réactivité des écrans de connexion sur mobile. [#3773](https://github.com/refugies-info/karfur/pull/3773)
-- Correction de l'affichage des labels de département qui se superposaient à la pop-up. [#3766](https://github.com/refugies-info/karfur/pull/3766)
-- Correction d'un bug sur iOS lié à l'affichage des images. [#3783](https://github.com/refugies-info/karfur/pull/3783)
+- Amélioration de l'affichage des niveaux de français sur l'interface utilisateur [#3835](https://github.com/refugies-info/karfur/pull/3835).
+- Amélioration du maillage sémantique des mots-clés [#3836](https://github.com/refugies-info/karfur/pull/3836).
+- Surlignage des adresses emails sur les fiches RCO [#3822](https://github.com/refugies-info/karfur/pull/3822).
+- Mise à jour du texte sur la page "Mission et Impact" [#3824](https://github.com/refugies-info/karfur/pull/3824).
+- Correction de l'affichage responsive des wordings statiques sur mobile [#3813](https://github.com/refugies-info/karfur/pull/3813).
+- Mise à jour des coordonnées des opérateurs sur la carte AGIR [#3817](https://github.com/refugies-info/karfur/pull/3817).
+- Ajout d'une icône de lien externe aux adresses mail [#3817](https://github.com/refugies-info/karfur/pull/3817).
 
 ### Évolutions techniques
-- Intégration de Letta Code pour l'auto-review des pull requests, incluant l'installation de l'application GitHub. [#3815](https://github.com/refugies-info/karfur/pull/3815)
-- Mise en place d'un workflow CI/CD pour Letta Code.
-- Préparation de l'infrastructure pour l'intégration de nouveaux "skills" (QMD, audit, rédaction, metadata) pour Letta Code.
-- Suppression de configurations liées à Claude. [#3814](https://github.com/refugies-info/karfur/pull/3814)
-- Mise à jour de la gestion des dépendances et correction de vulnérabilités de sécurité.
-- Amélioration de la robustesse des tests et correction de problèmes liés à l'environnement de test mobile.
-- Ajout de hooks Git pour la détection de secrets et la validation du code.
-- Amélioration de la gestion des erreurs et des valeurs nulles dans le code.
-- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+- Intégration de la synchronisation des opérateurs AGIR depuis Grist, avec gestion des erreurs et mise à jour des messages.
+- Ajout d'un déclenchement admin pour la synchronisation AGIR.
+- Préparation de la synchronisation automatique des opérateurs AGIR (lot 2 à venir).
+- Amélioration de la copie de l'application construite pour inclure les chunks nécessaires au build Docker.
+- Ajout de secrets pour l'API Grist dans la configuration Cloud Build.
+- Mise en place d'un workflow CI/CD avec Letta Code pour l'auto-review des PR.
+- Correction de la configuration de Letta Code pour l'installation de l'application GitHub.
+- Mise à jour de la documentation sur la synchronisation des opérateurs AGIR.
+- Ajout de documents de synchronisation des opérateurs AGIR depuis Grist.
 
 ### Autres changements
-- Mise à jour des mentions légales sur le site et l'application. [#3785](https://github.com/refugies-info/karfur/pull/3785)
-- Suppression d'un libellé "IA" sur les fiches RCO. [#3784](https://github.com/refugies-info/karfur/pull/3784)
-- Suppression de code inutile et de logs de débogage.
-- Correction de typos et amélioration de la documentation.
-- Mise à jour des dépendances et des configurations.
+- Suppression de la configuration Claude.
+- Correction de typos et amélioration de la lisibilité du code.
+- Suppression de div vides.
+- Mise à jour de la documentation.
+- Correction de la syntaxe des diagrammes Mermaid dans la documentation.
+- Suppression de console.log inutiles.
+- Correction de problèmes de traduction et de clés manquantes.
+- Suppression de références obsolètes à lodash.
+- Ajout d'un hook pre-commit GitLeaks pour la détection de secrets.
+- Mise à jour des dépendances de sécurité.
