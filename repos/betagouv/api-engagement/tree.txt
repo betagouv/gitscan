@@ -24,7 +24,6 @@
 │   ├── dependabot.yml
 │   └── workflows
 │       ├── build-check.yml
-│       ├── claude.yml
 │       ├── docker-build-push.yml
 │       ├── docs-sync.yml
 │       ├── lint.yml
@@ -920,12 +919,15 @@
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── parser.ts
 │   │   │   │   ├── prompts
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   └── index.test.ts
 │   │   │   │   │   ├── builder.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── types.ts
 │   │   │   │   │   ├── v1.ts
 │   │   │   │   │   ├── v2.ts
-│   │   │   │   │   └── v3.ts
+│   │   │   │   │   ├── v3.ts
+│   │   │   │   │   └── v4.ts
 │   │   │   │   ├── providers
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   ├── llm.test.ts
@@ -1169,6 +1171,7 @@
 │   │   │   │   │   │   └── mission.test.ts
 │   │   │   │   │   ├── warning.test.ts
 │   │   │   │   │   └── widget.test.ts
+│   │   │   │   ├── mission-match.test.ts
 │   │   │   │   ├── report.test.ts
 │   │   │   │   └── user-scoring.test.ts
 │   │   │   ├── docs
@@ -1544,6 +1547,7 @@
 │   │   │   ├── layout
 │   │   │   │   ├── footer.tsx
 │   │   │   │   ├── header.tsx
+│   │   │   │   ├── internal-user-flag-indicator.tsx
 │   │   │   │   ├── modal.tsx
 │   │   │   │   ├── newsletter.tsx
 │   │   │   │   └── partners.tsx
@@ -1597,6 +1601,7 @@
 │   │   ├── root.tsx
 │   │   ├── routes
 │   │   │   ├── _index.tsx
+│   │   │   ├── accessibilite.tsx
 │   │   │   ├── api.email.mission.ts
 │   │   │   ├── api.missions.browse.$id.ts
 │   │   │   ├── api.missions.browse.ts
@@ -1604,8 +1609,10 @@
 │   │   │   ├── api.newsletter.ts
 │   │   │   ├── api.user-scoring.$id.ts
 │   │   │   ├── api.user-scoring.ts
+│   │   │   ├── mentions-legales.tsx
 │   │   │   ├── mission-detail.tsx
 │   │   │   ├── missions.tsx
+│   │   │   ├── politique-de-confidentialite.tsx
 │   │   │   ├── quiz
 │   │   │   │   ├── _index.tsx
 │   │   │   │   ├── _layout.tsx
@@ -1640,6 +1647,8 @@
 │   │   │   ├── mission-browse.ts
 │   │   │   ├── newsletter.ts
 │   │   │   ├── tracking
+│   │   │   │   ├── __tests__
+│   │   │   │   │   └── utils.test.ts
 │   │   │   │   ├── events.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── providers
@@ -1655,13 +1664,17 @@
 │   │   │   └── quiz.ts
 │   │   └── utils
 │   │       ├── __tests__
+│   │       │   ├── campaign-attribution.test.ts
 │   │       │   ├── conditions.test.ts
 │   │       │   ├── geo.test.ts
+│   │       │   ├── internal-user-flag.test.ts
 │   │       │   ├── mission.test.ts
 │   │       │   ├── quiz.test.ts
 │   │       │   └── string.test.ts
+│   │       ├── campaign-attribution.ts
 │   │       ├── conditions.ts
 │   │       ├── geo.ts
+│   │       ├── internal-user-flag.ts
 │   │       ├── mission.ts
 │   │       ├── quiz.ts
 │   │       └── string.ts
@@ -1833,4 +1846,4 @@
         ├── sentry.ts
         ├── store.ts
         └── utils.ts
-426 directories, 1495 files
+428 directories, 1506 files
