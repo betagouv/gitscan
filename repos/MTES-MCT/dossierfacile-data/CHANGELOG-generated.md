@@ -1,14 +1,15 @@
-## Changelog : dossierfacile-data (30 derniers jours, au 26 juin 2026)
+## Changelog : dossierfacile-data (30 derniers jours, au 10 juillet 2026)
 
 ### Résumé
-Cette mise à jour améliore la gestion des opérations en permettant la recherche d'applications sans locataire associé et ajoute un nouveau type d'action pour une meilleure traçabilité des activités des utilisateurs. Ces changements visent à rendre le système plus flexible et à fournir des données plus complètes pour l'analyse.
+Cette mise à jour améliore la qualité des données et l'analyse des opérations réalisées sur DossierFacile. Elle corrige un problème lié à l'identification des types de logs dans les analyses hebdomadaires et permet de mieux gérer les recherches d'applications sans locataire associé. Une nouvelle action est également ajoutée pour un suivi plus précis des activités.
 
 ### Évolutions fonctionnelles
-- Permet la recherche d'applications sans locataire associé dans les opérations. [#72](https://github.com/MTES-MCT/dossierfacile-data/issues/72)
-- Ajout d'un nouveau type d'action aux modèles d'opérations pour une meilleure granularité du suivi des activités. [#71](https://github.com/MTES-MCT/dossierfacile-data/issues/71)
+- Correction du label `log_type` dans les analyses hebdomadaires des opérations, améliorant la précision des rapports.  [#73](https://github.com/MTES-MCT/dossierfacile-data/issues/73)
+- Permet d'enregistrer les recherches d'applications même sans locataire associé, améliorant la couverture des données. [#72](https://github.com/MTES-MCT/dossierfacile-data/issues/72)
+- Ajout d'un nouveau type d'action pour un suivi plus fin des opérations réalisées sur DossierFacile. [#71](https://github.com/MTES-MCT/dossierfacile-data/issues/71)
 
 ### Évolutions techniques
-- Aucune évolution technique à signaler.
+- Aucune évolution technique majeure à signaler.
 
 ### Autres changements
-- Aucune autre modification à signaler.
+- Aucune autre modification significative.
