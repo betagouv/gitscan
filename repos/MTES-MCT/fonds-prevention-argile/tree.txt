@@ -53,6 +53,7 @@
 │   │   ├── 0014-perimetre-donnees-role-analyste.md
 │   │   ├── 0015-navigation-backoffice-unifiee.md
 │   │   ├── 0016-reouverture-demande-refusee.md
+│   │   ├── 0017-ouverture-stats-nationales-agents.md
 │   │   └── README.md
 │   ├── parcours
 │   │   ├── FLOW-AND-SYNC.md
@@ -171,7 +172,8 @@
 │   │   │   └── debug-matomo-events.ts
 │   │   ├── ds
 │   │   │   ├── check-ds-permissions.ts
-│   │   │   └── fetch-demarche-schema.ts
+│   │   │   ├── fetch-demarche-schema.ts
+│   │   │   └── fetch-pieces-justificatives.ts
 │   │   ├── fix
 │   │   │   ├── detacher-amo.ts
 │   │   │   ├── fix-double-progression-amo.ts
@@ -397,6 +399,7 @@
 │   │   │   │   │   │   ├── DossiersKpiCards.tsx
 │   │   │   │   │   │   ├── DossiersPanel.tsx
 │   │   │   │   │   │   ├── DossiersSuivisHeader.tsx
+│   │   │   │   │   │   ├── DossiersSuivisTable.test.tsx
 │   │   │   │   │   │   ├── DossiersSuivisTable.tsx
 │   │   │   │   │   │   ├── HeaderIconButton.tsx
 │   │   │   │   │   │   ├── dossiers-filters-url.test.ts
@@ -440,22 +443,13 @@
 │   │   │   │   │   │   ├── InfoLogement.tsx
 │   │   │   │   │   │   ├── ParcoursDemandeur.tsx
 │   │   │   │   │   │   ├── QualificationAllersVers.tsx
+│   │   │   │   │   │   ├── RenvoyerInvitationButton.tsx
 │   │   │   │   │   │   ├── ReouvrirDemandeModal.tsx
 │   │   │   │   │   │   ├── RepartitionCardTile.tsx
 │   │   │   │   │   │   ├── StatTile.tsx
 │   │   │   │   │   │   ├── UnarchiveModal.tsx
 │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   └── index.ts
-│   │   │   │   ├── statistiques
-│   │   │   │   │   ├── components
-│   │   │   │   │   │   ├── AmoStatistiquesHeader.tsx
-│   │   │   │   │   │   ├── AmoStatistiquesPanel.tsx
-│   │   │   │   │   │   ├── IndicateursCles.tsx
-│   │   │   │   │   │   ├── RepartitionParEtape.tsx
-│   │   │   │   │   │   ├── RepartitionParRevenu.tsx
-│   │   │   │   │   │   ├── TopCommunes.tsx
-│   │   │   │   │   │   └── index.ts
-│   │   │   │   │   └── page.tsx
 │   │   │   │   └── validation
 │   │   │   │       └── [token]
 │   │   │   │           └── page.tsx
@@ -711,6 +705,10 @@
 │   │   │   ├── cron
 │   │   │   │   └── sync-parcours
 │   │   │   │       └── route.ts
+│   │   │   ├── ds
+│   │   │   │   └── piece-modele
+│   │   │   │       ├── route.test.ts
+│   │   │   │       └── route.ts
 │   │   │   ├── health
 │   │   │   │   └── route.ts
 │   │   │   ├── rga
@@ -962,7 +960,9 @@
 │   │   │   │   │   ├── services
 │   │   │   │   │   │   ├── creation-dossier.service.test.ts
 │   │   │   │   │   │   ├── creation-dossier.service.ts
-│   │   │   │   │   │   └── inviter-name.service.ts
+│   │   │   │   │   │   ├── inviter-name.service.ts
+│   │   │   │   │   │   ├── renvoyer-invitation.service.test.ts
+│   │   │   │   │   │   └── renvoyer-invitation.service.ts
 │   │   │   │   │   └── stores
 │   │   │   │   │       └── creation-dossier.store.ts
 │   │   │   │   ├── demandes
@@ -1013,7 +1013,9 @@
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── prospects
 │   │   │   │   │   ├── actions
-│   │   │   │   │   │   └── qualify-prospect.actions.ts
+│   │   │   │   │   │   ├── qualify-prospect.actions.ts
+│   │   │   │   │   │   ├── renvoyer-invitation.actions.test.ts
+│   │   │   │   │   │   └── renvoyer-invitation.actions.ts
 │   │   │   │   │   ├── domain
 │   │   │   │   │   │   └── types
 │   │   │   │   │   │       ├── index.ts
@@ -1022,44 +1024,30 @@
 │   │   │   │   │   └── services
 │   │   │   │   │       ├── prospect-detail.service.ts
 │   │   │   │   │       └── qualification.service.ts
-│   │   │   │   ├── shared
-│   │   │   │   │   ├── actions
-│   │   │   │   │   │   ├── dossier-actions.actions.test.ts
-│   │   │   │   │   │   ├── dossier-actions.actions.ts
-│   │   │   │   │   │   └── update-simulation-data.action.ts
-│   │   │   │   │   ├── context
-│   │   │   │   │   │   └── AmoContext.tsx
-│   │   │   │   │   ├── domain
-│   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   ├── types
-│   │   │   │   │   │   │   ├── action.types.ts
-│   │   │   │   │   │   │   ├── amo-tab.types.ts
-│   │   │   │   │   │   │   └── index.ts
-│   │   │   │   │   │   └── value-objects
-│   │   │   │   │   │       └── amo-tabs.config.ts
-│   │   │   │   │   ├── index.ts
-│   │   │   │   │   └── services
-│   │   │   │   │       ├── actions.service.test.ts
-│   │   │   │   │       ├── actions.service.ts
-│   │   │   │   │       ├── agent-edit-info.service.ts
-│   │   │   │   │       ├── author-snapshot.ts
-│   │   │   │   │       ├── edition-simulation.service.ts
-│   │   │   │   │       └── parcours-creator.service.ts
-│   │   │   │   └── statistiques
+│   │   │   │   └── shared
 │   │   │   │       ├── actions
-│   │   │   │       │   ├── get-amo-statistiques.action.test.ts
-│   │   │   │       │   ├── get-amo-statistiques.action.ts
-│   │   │   │       │   └── index.ts
+│   │   │   │       │   ├── dossier-actions.actions.test.ts
+│   │   │   │       │   ├── dossier-actions.actions.ts
+│   │   │   │       │   └── update-simulation-data.action.ts
+│   │   │   │       ├── context
+│   │   │   │       │   └── AmoContext.tsx
 │   │   │   │       ├── domain
 │   │   │   │       │   ├── index.ts
-│   │   │   │       │   └── types
-│   │   │   │       │       ├── amo-statistiques.types.ts
-│   │   │   │       │       └── index.ts
+│   │   │   │       │   ├── types
+│   │   │   │       │   │   ├── action.types.ts
+│   │   │   │       │   │   ├── amo-tab.types.ts
+│   │   │   │       │   │   └── index.ts
+│   │   │   │       │   └── value-objects
+│   │   │   │       │       └── amo-tabs.config.ts
 │   │   │   │       ├── index.ts
 │   │   │   │       └── services
-│   │   │   │           ├── amo-statistiques.service.test.ts
-│   │   │   │           ├── amo-statistiques.service.ts
-│   │   │   │           └── index.ts
+│   │   │   │           ├── actions.service.test.ts
+│   │   │   │           ├── actions.service.ts
+│   │   │   │           ├── agent-edit-info.service.ts
+│   │   │   │           ├── author-snapshot.ts
+│   │   │   │           ├── edition-simulation.service.test.ts
+│   │   │   │           ├── edition-simulation.service.ts
+│   │   │   │           └── parcours-creator.service.ts
 │   │   │   ├── index.ts
 │   │   │   └── shared
 │   │   │       ├── actions
@@ -1131,6 +1119,7 @@
 │   │   │   │   ├── actions
 │   │   │   │   │   ├── acteurs-locaux.actions.ts
 │   │   │   │   │   ├── contact-info.actions.ts
+│   │   │   │   │   ├── devis.actions.ts
 │   │   │   │   │   ├── diagnostic.actions.ts
 │   │   │   │   │   ├── eligibilite.actions.ts
 │   │   │   │   │   ├── index.ts
@@ -1145,6 +1134,8 @@
 │   │   │   │   │   ├── MonCompteClient.tsx
 │   │   │   │   │   ├── common
 │   │   │   │   │   │   ├── MaListe.tsx
+│   │   │   │   │   │   ├── PiecesAPrevoir.test.tsx
+│   │   │   │   │   │   ├── PiecesAPrevoir.tsx
 │   │   │   │   │   │   └── StepDetailSection.tsx
 │   │   │   │   │   └── steps
 │   │   │   │   │       ├── devis
@@ -1201,7 +1192,10 @@
 │   │   │   │   │   └── useMigrateRGAToDB.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── services
+│   │   │   │   │   ├── devis.service.test.ts
+│   │   │   │   │   ├── devis.service.ts
 │   │   │   │   │   ├── diagnostic.service.ts
+│   │   │   │   │   ├── eligibilite.service.test.ts
 │   │   │   │   │   ├── eligibilite.service.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── parcours-permissions.service.ts
@@ -1235,6 +1229,12 @@
 │   │   │       │   │   ├── dossier-ds.ts
 │   │   │       │   │   └── index.ts
 │   │   │       │   ├── index.ts
+│   │   │       │   ├── pieces-justificatives
+│   │   │       │   │   ├── index.ts
+│   │   │       │   │   ├── pieces-aide.map.test.ts
+│   │   │       │   │   ├── pieces-aide.map.ts
+│   │   │       │   │   ├── pieces-fallback.const.ts
+│   │   │       │   │   └── pieces-justificatives.types.ts
 │   │   │       │   ├── types
 │   │   │       │   │   ├── ds-field.types.ts
 │   │   │       │   │   └── index.ts
@@ -1258,7 +1258,9 @@
 │   │   │       │   ├── ds-sync.service.ts
 │   │   │       │   ├── index.ts
 │   │   │       │   ├── parcours-sync-batch.service.test.ts
-│   │   │       │   └── parcours-sync-batch.service.ts
+│   │   │       │   ├── parcours-sync-batch.service.ts
+│   │   │       │   ├── pieces-justificatives.service.test.ts
+│   │   │       │   └── pieces-justificatives.service.ts
 │   │   │       └── utils
 │   │   │           ├── dossier-step.utils.test.ts
 │   │   │           ├── dossier-step.utils.ts
@@ -1513,7 +1515,9 @@
 │   │   │   │   └── RgaFooter.tsx
 │   │   │   ├── debug
 │   │   │   │   └── DebugRGA.tsx
-│   │   │   └── index.ts
+│   │   │   ├── index.ts
+│   │   │   └── table
+│   │   │       └── StickyHorizontalScrollbar.tsx
 │   │   ├── config
 │   │   │   ├── env.config.test.ts
 │   │   │   └── env.config.ts
@@ -1750,4 +1754,4 @@
 ├── vitest-env.d.ts
 ├── vitest.config.ts
 └── vitest.setup.ts
-483 directories, 1269 files
+480 directories, 1276 files
