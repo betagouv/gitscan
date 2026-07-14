@@ -1,3 +1,41 @@
+2026-07-13T10:23:14+02:00 - 0faf395 - devthejo : feat(tools): add self-hosted SearXNG backend to web_search
+2026-07-11T13:15:17+02:00 - 6cda56b - devthejo : docs: CLAUDE.md — downstream iterion pin bumps go through scripts/bump-claw.sh
+2026-07-11T08:22:15+02:00 - 70d79d4 - devthejo : feat(api): surface exact billed thinking tokens in usage details
+2026-07-11T07:34:05+02:00 - a27d632 - devthejo : feat(anthropic): request summarized thinking display on adaptive requests
+2026-07-11T06:32:29+02:00 - 270cf74 - devthejo : feat(openai): surface reasoning summaries as thinking content blocks
+2026-07-07T17:16:23+02:00 - 21c4b7d - devthejo : fix(todo): store the todo list out of tree — stop dirtying the workspace
+2026-07-07T16:50:50+02:00 - 6845f7f - devthejo : docs: chantier close-out — parity axes, changelog, README orchestration section
+2026-07-07T16:44:52+02:00 - a55f3c6 - devthejo : feat(search): semantic_search — local relevance-ranked code search
+2026-07-07T16:41:21+02:00 - fe05d8c - devthejo : feat(workflow): JavaScript orchestration engine on goja — agent()/parallel()/pipeline()
+2026-07-07T16:32:34+02:00 - 7612b9b - devthejo : feat(oracle): read-only senior-advisor tool on a configurable stronger model
+2026-07-07T16:25:45+02:00 - 9af2f42 - devthejo : feat(subagents): runtime-defined subagent types + real background spawns + completion notifications
+2026-07-07T16:11:44+02:00 - 5f67a18 - devthejo : feat(tasks): task-graph work items — dependencies, aliases, unified vocabulary
+2026-07-07T14:40:36+02:00 - f2d3d45 - devthejo : chore: tree-wide gofmt pass (pre-existing drift in 8 files)
+2026-07-07T14:40:36+02:00 - 492a5f5 - devthejo : docs: prompt/behavior parity pass — new matrix axes, changelog, README
+2026-07-07T14:35:54+02:00 - f211b8b - devthejo : feat(cli): --system-prompt / --append-system-prompt + live /system-prompt set
+2026-07-07T14:31:58+02:00 - 2289fe7 - devthejo : feat(permissions): built-in read-only bash auto-allow + full-command permission subject
+2026-07-07T14:22:18+02:00 - e38d04b - devthejo : feat(runtime): <system-reminder> injection seam + compaction/plan-mode producers
+2026-07-07T14:16:57+02:00 - b4bfb3f - devthejo : feat(compact): nine-section handoff summary + wire-safe continuation message
+2026-07-07T14:11:53+02:00 - 04558c6 - devthejo : feat(tools): teach usage policy in core tool descriptions
+2026-07-07T14:07:45+02:00 - 15fbb2c - devthejo : chore: devbox dev environment (go 1.26) + direnv activation
+2026-07-07T14:07:32+02:00 - 83e24cc - devthejo : fix(apikit): claude-sonnet-4-6 max output is 128k
+2026-07-07T13:58:15+02:00 - 7b80f9a - devthejo : feat(prompt): behavioral parity sections (communication, tasks, doing-tasks, tool policy, git safety, context management)
+2026-07-07T13:58:15+02:00 - 20b0741 - devthejo : fix(compat): print-system-prompt --cwd now chdirs for real
+2026-07-07T13:58:15+02:00 - 02ffe13 - devthejo : test(runtime): align nil-registry expectations with mcpProvider fallback
+2026-07-02T11:50:19+02:00 - dccf92b - devthejo : chore: untrack the compiled claw-code-go binary + ignore vendor/
+2026-07-02T11:50:07+02:00 - aa87bf1 - devthejo : test(api): cover retryAfterDelay Retry-After parsing (seconds, HTTP-date, garbage)
+2026-07-02T11:40:37+02:00 - dad0827 - devthejo : refactor(api): consolidate client identity into api.Identity + drop dead apikit scaffolding
+2026-07-02T11:24:47+02:00 - 05398ca - devthejo : feat(api): configurable client identity — honest default User-Agent + ANTHROPIC_CUSTOM_HEADERS parity
+2026-07-02T10:49:06+02:00 - 776a069 - devthejo : refactor(prompt): dedup helpers and dead code after simplify review
+2026-07-02T10:38:43+02:00 - e988c1c - devthejo : docs: parity matrix, README, changelog for prompt-section toggles + memory parity
+2026-07-02T10:36:09+02:00 - 93f1b5f - devthejo : feat(prompt): authored operating-posture section + pkg/runtime prompt façade
+2026-07-02T10:33:53+02:00 - aa1e101 - devthejo : feat(memory): persistent auto-memory (MEMORY.md) injection per workspace fingerprint
+2026-07-02T10:30:54+02:00 - 9947944 - devthejo : feat(memory): CLAUDE.md ancestor walk-up and @path imports with depth/cycle/size limits
+2026-07-02T10:26:24+02:00 - 3b4fdda - devthejo : feat(config): optional system-prompt sections — prompt settings block, CLI flags, frontmatter keys, minimal-prompt mode
+2026-06-30T08:54:55+02:00 - 1d45deb - devthejo : feat(commands): load project slash commands from .claude/commands/*.md
+2026-06-17T15:21:26+02:00 - 1b49d47 - devthejo : fix(api): idle watchdog for streaming reads — abort stalled SSE streams
+2026-06-13T18:31:23+02:00 - 248882e - devthejo : fix(api): always emit text-block `text` field (empty tool output → anthropic 400)
+2026-06-08T08:35:24+02:00 - b23879f - devthejo : fix(api/openai): detect clean-EOF truncation (no finish_reason or [DONE])
 2026-05-30T11:20:37+02:00 - 868917a - devthejo : feat(api): surface thinking_delta/signature_delta in streamed SSE
 2026-05-29T15:07:40+02:00 - 64bcb78 - devthejo : feat(api): Claude Opus 4.8 + correct Anthropic effort/thinking wire shape
 2026-05-20T09:55:47+02:00 - dd5ef55 - devthejo : fix(api/openai): preserve tool_use args across response.completed reconciliation

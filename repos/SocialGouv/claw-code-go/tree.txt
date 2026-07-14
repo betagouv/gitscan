@@ -1,5 +1,8 @@
 .
+├── .envrc
+├── .gitignore
 ├── CHANGELOG.md
+├── CLAUDE.md
 ├── LICENSE
 ├── README.md
 ├── assets
@@ -9,12 +12,13 @@
 │   ├── results
 │   │   └── .gitkeep
 │   └── run_benches.sh
-├── claw-code-go
 ├── cmd
 │   ├── claw-code-go
 │   │   └── main.go
 │   └── claw-store-init
 │       └── main.go
+├── devbox.json
+├── devbox.lock
 ├── docs
 │   ├── parity.md
 │   ├── plugin_signing.md
@@ -42,11 +46,14 @@
 │   │   ├── auth_test.go
 │   │   ├── bench_test.go
 │   │   ├── client.go
+│   │   ├── client_retryafter_test.go
 │   │   ├── client_telemetry_test.go
 │   │   ├── errors.go
 │   │   ├── httputil
 │   │   │   ├── httputil.go
 │   │   │   └── httputil_test.go
+│   │   ├── identity.go
+│   │   ├── identity_test.go
 │   │   ├── marshal_test.go
 │   │   ├── provider.go
 │   │   ├── providers
@@ -61,6 +68,7 @@
 │   │   │   │   ├── provider_live_test.go
 │   │   │   │   └── provider_test.go
 │   │   │   ├── openai
+│   │   │   │   ├── identity_test.go
 │   │   │   │   ├── provider.go
 │   │   │   │   ├── provider_chatgpt_test.go
 │   │   │   │   ├── reasoning_test.go
@@ -78,6 +86,8 @@
 │   │   ├── sse.go
 │   │   ├── sse_test.go
 │   │   ├── sseutil
+│   │   │   ├── idlewatchdog.go
+│   │   │   ├── idlewatchdog_test.go
 │   │   │   ├── toolcall.go
 │   │   │   └── toolcall_test.go
 │   │   ├── streamhttp.go
@@ -136,6 +146,8 @@
 │   │   ├── context_cmds_test.go
 │   │   ├── diagnostic_cmds.go
 │   │   ├── diagnostic_cmds_test.go
+│   │   ├── dir_loader.go
+│   │   ├── dir_loader_test.go
 │   │   ├── dispatcher.go
 │   │   ├── git_cmds.go
 │   │   ├── git_cmds_test.go
@@ -175,13 +187,20 @@
 │   │   ├── frontmatter.go
 │   │   ├── frontmatter_test.go
 │   │   ├── loader.go
+│   │   ├── prompt_config_test.go
 │   │   ├── validate.go
 │   │   └── validate_test.go
 │   ├── context
 │   │   ├── assembler.go
+│   │   ├── assembler_test.go
+│   │   ├── automemory.go
+│   │   ├── automemory_test.go
 │   │   ├── git.go
 │   │   ├── git_test.go
 │   │   ├── memory.go
+│   │   ├── memory_test.go
+│   │   ├── posture.go
+│   │   ├── sections.go
 │   │   └── sysinfo.go
 │   ├── hooks
 │   │   ├── hookstesting
@@ -235,6 +254,8 @@
 │   │   ├── policy.go
 │   │   ├── policy_test.go
 │   │   ├── prompter.go
+│   │   ├── readonly.go
+│   │   ├── readonly_test.go
 │   │   ├── rule_parser.go
 │   │   ├── rule_parser_test.go
 │   │   └── rules.go
@@ -279,16 +300,21 @@
 │   │   ├── loop_context.go
 │   │   ├── loop_prompt.go
 │   │   ├── loop_usage.go
+│   │   ├── oracle.go
+│   │   ├── oracle_test.go
 │   │   ├── permissions.go
 │   │   ├── phase0_test.go
 │   │   ├── policy
 │   │   │   ├── policy.go
 │   │   │   └── policy_test.go
+│   │   ├── prompt_config_test.go
 │   │   ├── provider_factory.go
 │   │   ├── provider_factory_test.go
 │   │   ├── recovery
 │   │   │   ├── recovery.go
 │   │   │   └── recovery_test.go
+│   │   ├── reminders.go
+│   │   ├── reminders_test.go
 │   │   ├── remote
 │   │   │   ├── remote.go
 │   │   │   └── remote_test.go
@@ -307,10 +333,13 @@
 │   │   ├── skill_manager.go
 │   │   ├── skill_state.go
 │   │   ├── skill_state_test.go
+│   │   ├── subagent.go
+│   │   ├── subagent_test.go
 │   │   ├── summary_compression.go
 │   │   ├── summary_compression_test.go
 │   │   ├── task
 │   │   │   ├── task.go
+│   │   │   ├── task_graph_test.go
 │   │   │   └── task_test.go
 │   │   ├── team
 │   │   │   ├── registry.go
@@ -319,14 +348,17 @@
 │   │   │   ├── trust_resolver.go
 │   │   │   └── trust_resolver_test.go
 │   │   ├── wiring_test.go
-│   │   └── worker
-│   │       ├── detect.go
-│   │       ├── registry.go
-│   │       ├── worker.go
-│   │       └── worker_test.go
+│   │   ├── worker
+│   │   │   ├── detect.go
+│   │   │   ├── registry.go
+│   │   │   ├── worker.go
+│   │   │   └── worker_test.go
+│   │   ├── workflow.go
+│   │   └── workflow_test.go
 │   ├── strutil
 │   │   ├── ascii.go
-│   │   └── ascii_test.go
+│   │   ├── ascii_test.go
+│   │   └── split.go
 │   ├── testutil
 │   │   ├── mock_anthropic.go
 │   │   └── mock_anthropic_test.go
@@ -543,6 +575,7 @@
 │   │   ├── config_tool_test.go
 │   │   ├── cron_tools.go
 │   │   ├── cron_tools_test.go
+│   │   ├── define_subagent.go
 │   │   ├── file_edit.go
 │   │   ├── files.go
 │   │   ├── glob.go
@@ -553,6 +586,8 @@
 │   │   ├── mcp_resource_tools_test.go
 │   │   ├── notebook_edit.go
 │   │   ├── notebook_edit_test.go
+│   │   ├── oracle.go
+│   │   ├── oracle_test.go
 │   │   ├── pdf.go
 │   │   ├── pdf_test.go
 │   │   ├── plan_mode.go
@@ -560,6 +595,8 @@
 │   │   ├── remote_trigger.go
 │   │   ├── remote_trigger_test.go
 │   │   ├── repl.go
+│   │   ├── semantic_search.go
+│   │   ├── semantic_search_test.go
 │   │   ├── send_message.go
 │   │   ├── send_message_test.go
 │   │   ├── skill.go
@@ -570,17 +607,21 @@
 │   │   ├── sleep_test.go
 │   │   ├── structured_output.go
 │   │   ├── structured_output_test.go
+│   │   ├── task_graph_tools_test.go
 │   │   ├── task_tools.go
 │   │   ├── task_tools_test.go
 │   │   ├── team_tools.go
 │   │   ├── team_tools_test.go
 │   │   ├── todo_write.go
+│   │   ├── todo_write_test.go
 │   │   ├── tool_search.go
 │   │   ├── tool_search_test.go
 │   │   ├── web_fetch.go
 │   │   ├── web_search.go
+│   │   ├── web_search_test.go
 │   │   ├── worker_tools.go
-│   │   └── worker_tools_test.go
+│   │   ├── worker_tools_test.go
+│   │   └── workflow.go
 │   ├── tui
 │   │   ├── history.go
 │   │   ├── logo.go
@@ -662,6 +703,8 @@
 │   └── runtime
 │       ├── compact.go
 │       ├── compact_test.go
+│       ├── prompt.go
+│       ├── prompt_test.go
 │       ├── provider.go
 │       └── provider_test.go
 ├── plugin
@@ -694,4 +737,4 @@
         ├── telemetry_event_http_started.json
         ├── telemetry_event_http_succeeded.json
         └── telemetry_event_session_trace.json
-148 directories, 548 files
+148 directories, 591 files
