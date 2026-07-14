@@ -1,26 +1,26 @@
 ## Changelog : portail (30 derniers jours, au 9 juillet 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives en matière de logging structuré pour faciliter le débogage et la surveillance. De plus, la gestion des backends dynamiques a été revue, permettant des mises à jour plus flexibles et dynamiques de la configuration. Des corrections et améliorations mineures ont également été apportées à la gestion des erreurs et aux tests.
+Cette version apporte des améliorations significatives en matière de journalisation structurée pour faciliter le débogage et le monitoring. De plus, la gestion des backends dynamiques est désormais possible via l'API RPC, permettant une configuration plus flexible et automatisée. Des corrections et améliorations concernant la gestion des erreurs et des timeouts ont également été implémentées.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de mettre à jour dynamiquement les backends via l'API RPC. [#1234](https://github.com/cloud-gouv/portail/issues/1234) (implémenté via les commits : `dac0437`, `b841bdc`, `6f51f9b`, `0f5be6c`, `0423b18`)
-- Amélioration des informations retournées par l'API `ListBackends` pour une meilleure visibilité sur les backends disponibles.
-- Correction d'un problème empêchant l'évaluation des ACLs pour le trafic UDP. [#5678](https://github.com/cloud-gouv/portail/issues/5678) (`0017f76`)
-- Ajout de tests pour vérifier le timeout de connexion HTTP. (`f6e3dd0`, `dd169c1`)
-- Amélioration de la gestion des erreurs côté client pour les requêtes HTTP, avec un retour plus précis des erreurs et une journalisation améliorée. (`9003a58`, `2fc2cf3`)
+- Ajout de la possibilité de mettre à jour dynamiquement les backends via l'API RPC. [#1234](https://github.com/cloud-gouv/portail/issues/1234) (implémentation via `cli/rpc: add update-dynamic-backend`, `rpc/varlink: add UpdateDynamicBackend`, `proxy/*: support dynamic backends`)
+- Amélioration des messages d'erreur pour les requêtes RPC, notamment pour les problèmes de permission.
+- Implémentation d'un timeout pour les connexions HTTP et les tentatives de connexion aux backends. [#5678](https://github.com/cloud-gouv/portail/issues/5678)
+- Revalidation des requêtes `route.local` pour les proxies HTTP et SOCKS5, améliorant la sécurité et la conformité.
+- Retour des erreurs client au client pour le proxy HTTP, avec amélioration de la journalisation.
 
 ### Évolutions techniques
-- Implémentation du logging structuré au format JSON pour le proxy, le serveur RPC et les composants associés. Cela inclut l'ajout d'IDs de trace pour faciliter le suivi des requêtes. (`b0c9b01`, `db7557f`, `7930872`, `f0f6ac1`, `fc152fe`, `859edc3`, `370796d`, `5a2043f`)
-- Refonte de la configuration des règles ACL dans le module Nix pour utiliser une structure basée sur des attributs. (`d9cf054`)
-- Amélioration de la gestion des erreurs et de la journalisation dans le code RPC. (`a0786d2`, `b7d79e7`, `f13f201`, `e6c57eb`)
-- Utilisation de `request-timeout` pour gérer les timeouts de connexion et les tentatives de backend HTTP. (`dd169c1`)
-- Refactorisation du contexte du proxy pour une meilleure gestion des informations de routage. (`29a2e96`, `c7287f5`, `1480347`, `db7557f`)
+- Implémentation de la journalisation structurée (JSON) pour plusieurs composants : proxy, serveur RPC, daemon.
+- Introduction d'IDs de trace dans les contextes pour faciliter le suivi des requêtes.
+- Refactorisation de la gestion des contextes pour une meilleure clarté et maintenabilité.
+- Amélioration de la configuration des règles ACL dans le module Nix.
+- Utilisation de `request-timeout` pour les connexions HTTP, améliorant la robustesse.
+- Mise à jour de la configuration des jobs dans les workflows GitHub Actions pour une exécution plus efficace.
+- Remplacement du socket RPC par un répertoire pour une meilleure organisation.
 
 ### Autres changements
-- Mise à jour de plusieurs dépendances Rust (uuid, anyhow, bytes, regex, rustls-pki-types).
-- Mise à jour des actions GitHub (actions/checkout).
-- Amélioration de la configuration du workflow CI/CD pour exécuter tous les jobs en parallèle. (`c2618a8`)
-- Correction de quelques fautes de frappe dans les messages d'erreur RPC. (`0423b18`)
-- Changement du type de pointeur pour assurer la compatibilité multiplateforme. (`a4e3901`)
-- Déplacement du socket RPC dans un répertoire dédié. (`c30347d`)
+- Amélioration de la documentation et des tests pour la gestion des backends dynamiques.
+- Correction de fautes de frappe dans les messages d'erreur RPC.
+- Correction d'un problème lié au type de pointeur pour une meilleure compatibilité entre les plateformes.
+- Désactivation de UDP ASSOCIATE car les ACL ne sont pas évaluées.
