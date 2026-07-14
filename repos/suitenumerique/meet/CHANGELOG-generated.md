@@ -1,51 +1,48 @@
-## Changelog : meet (30 derniers jours, au 10 juillet 2026)
+## Changelog : meet (30 derniers jours, au 13 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la stabilité, l'expérience utilisateur et l'ajout de fonctionnalités d'analyse. Des corrections de bugs ont été apportées pour améliorer la fiabilité, notamment concernant les enregistrements et l'affichage des informations. L'expérience utilisateur a été améliorée avec des ajustements de l'interface, notamment dans la disposition des vignettes en mode image dans l'image et l'ajout d'indicateurs visuels. Enfin, un système d'analyse a été introduit pour mieux comprendre l'utilisation de la plateforme et optimiser les performances.
+Cette version apporte des améliorations significatives à l'expérience utilisateur, notamment concernant la gestion des participants en grand groupe, l'accessibilité et l'intégration de nouveaux outils d'analyse. Des corrections de bugs et des optimisations techniques ont également été implémentées pour améliorer la stabilité et la performance de la plateforme.
 
 ### Évolutions fonctionnelles
-- Ajout d'un gradient de couleur pour les participants lorsque leur caméra est désactivée [#1490](https://github.com/suitenumerique/meet/issues/1490).
 - Possibilité de forcer l'affichage du nom d'utilisateur SSO pour les utilisateurs authentifiés.
-- Amélioration de la disposition des vignettes en mode image dans l'image, avec priorisation du partage d'écran et pagination.
-- Ajout d'un indicateur visuel pour le partage d'écran en mode image dans l'image.
-- Possibilité de rechercher les enregistrements par adresse email du propriétaire.
-- Ajout d'un formulaire de feedback dans le footer de l'addon.
-- Amélioration de l'accessibilité des effets vidéo.
-- Possibilité de générer un lien de réunion directement depuis l'addon.
+- Amélioration de l'affichage des vignettes en mode Picture-in-Picture (PiP) avec pagination et priorisation du partage d'écran.
+- Ajout d'un indicateur visuel pour les participants avec la caméra désactivée.
+- Possibilité de masquer par défaut les participants lors de l'entrée dans une réunion de grande taille.
+- Amélioration de l'accessibilité des effets vidéo et des contrôles d'arrière-plan personnalisés.
+- Ajout d'une option pour inclure une enquête de satisfaction à la fin des enregistrements.
+- Amélioration de la recherche des enregistrements par adresse email du propriétaire.
 
 ### Évolutions techniques
-- Mise à jour de plusieurs dépendances (LiveKit, PostHog, React Query, etc.) pour bénéficier des dernières corrections et améliorations.
-- Refactor de la gestion du nom d'utilisateur pour une meilleure cohérence.
-- Implémentation d'un système d'analyse configurable basé sur PostHog.
-- Refactor de l'authentification Bearer.
-- Suppression du support de la version 1 du service de résumé.
+- Mise à jour de plusieurs dépendances frontend (React, PostHog, LiveKit, etc.) pour bénéficier des dernières corrections et améliorations.
+- Refactorisation du code frontend pour optimiser la gestion des assets (modèles, WASM) et améliorer la performance.
+- Intégration d'un système d'analyse configurable basé sur PostHog.
 - Amélioration de la gestion des variables d'environnement.
-- Mise à jour de l'image de construction du frontend (Node 22).
-- Mise à jour de l'image Docker pour Nginx.
-- Correction d'un bug empêchant l'affichage correct des styles en ligne (CSP).
+- Mise à jour de l'image Docker frontend avec Node 22.
+- Correction d'un bug empêchant l'affichage correct de l'info panel pour les salles non enregistrées.
 - Correction d'un bug lié à la récupération de l'ID client depuis la requête.
-- Amélioration de la gestion des erreurs et ajout d'instrumentation Sentry pour les agents.
-- Mise à jour de l'image de base Alpine pour le service de résumé.
-- Mise à jour de ffmpeg.
+- Normalisation des clés d'objets S3 pour une meilleure compatibilité.
+- Suppression du support de la version 1 du service de résumé.
+- Amélioration de la gestion des erreurs et de l'instrumentation avec Sentry pour les agents LiveKit.
 
 ### Autres changements
-- Ajout de documentation pour le rebrand du favicon via un volume mount.
-- Ajout de Clever Cloud à la liste des fournisseurs SaaS.
+- Ajout de documentation pour la personnalisation du favicon via un volume mount.
+- Ajout de Clever Cloud à la liste des fournisseurs SaaS supportés.
 - Clarification des directives de contribution.
-- Précision de la traduction française dans la documentation.
-- Mise à jour du changelog.
-- Suppression de la configuration obsolète `SUMMARY_SERVICE_VERSION=1`.
-- Ajout d'une note concernant la suppression de la version v1 du service de résumé.
-- Bump de la version du chart Helm.
-- Correction d'un bug empêchant le bon fonctionnement du build frontend sur Scalingo.
-- Correction d'un bug lié à la déduplication des emails.
-- Correction d'un bug lié au crash du panneau d'informations pour les salles non enregistrées.
-- Correction d'un bug lié à la normalisation des clés S3.
-- Ajout de tests pour la normalisation des clés S3.
-- Correction d'un bug lié à la gestion des utilisateurs provisionnés en externe.
-- Correction d'un bug lié à l'affichage du bouton "Mute Everyone".
-- Mise à jour de la configuration Tilt pour la gestion des noms complets et courts.
-- Correction d'un bug lié à l'affichage du bouton d'arrêt en mode plein écran.
-- Correction d'un bug lié à l'audio mono lors de la réduction du bruit.
-- Correction d'un bug lié à l'affichage du bouton d'ajout de lien dans l'addon.
-- Ajout de commentaires et de documentation pour améliorer la lisibilité du code.
+- Mise à jour de la documentation pour refléter la suppression de la version 1 du service de résumé.
+- Ajout de badges DPG au README.
+- Mise à jour des images de base Alpine et FFMPEG.
+- Correction de problèmes de build sur Scalingo.
+- Suppression de l'appel au flag de fonctionnalité "summary enabled".
+- Mise à jour des images Helm et correction du rendu des hôtes multiples.
+- Amélioration de l'accessibilité du contrôle de pagination.
+- Correction de l'initialisation du nom complet dans le champ de saisie de connexion.
+- Organisation des paquets JavaScript dans `package.json`.
+- Ajout de la prise en charge d'un domaine dédié pour l'API des flags de fonctionnalité.
+- Rejet des tokens d'accès utilisateur sur l'API.
+- Ajout de tests pour la normalisation des clés S3 encodées.
+- Mise à jour des dépendances Python.
+- Correction d'un bug dans le collecteur de métadonnées de l'agent.
+- Ajout d'un modèle d'environnement manquant pour le collecteur de métadonnées.
+- Amélioration de la précision des événements d'analyse.
+- Correction d'un bug empêchant l'activation du bouton "Mute Everyone" dans certains cas.
+- Mise à jour de la documentation pour refléter les changements de nommage ("Premium" -> "Advanced").

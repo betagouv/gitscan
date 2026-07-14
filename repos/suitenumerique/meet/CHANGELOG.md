@@ -13,17 +13,26 @@ and this project adheres to
 - ✨(backend) allow searching the recording admin table by owner email
 - ✨(frontend) add participant color gradient when camera is off #1490
 - ✨(all) allow forcing SSO display name for authenticated users
+- ➕(frontend) install vite-plugin-static-copy for MediaPipe WASM assets
 
 ### Changed
 
 - 🗑️(settings) deprecate SUMMARY_SERVICE_VERSION=1
 - ⬆️(mail) update mjml to v5 and @html-to/text-cli
 - 🚸(frontend) initialize the join input name with the persisted full name
+- ♻️(frontend) refactor background processors to use the new API
+- ♻️(frontend) inline model weights to avoid loading them from remote
+- ♻️(frontend) inline MediaPipe WASM modules to avoid loading from remote
+- ⬆️(frontend) upgrade posthog-js from 1.387.0 to 1.391.2
+- ⬆️(frontend) upgrade react-stately from 3.47.0 to 3.48.0
+- ⬆️(frontend) upgrade react-aria from 3.49.0 to 3.50.0
+- ⬆️(frontend) upgrade react-aria-components from 1.18.0 to 1.19.0
 
 ### Fixed
 
 - 🩹(backend) identify externally provisioned users to PostHog
 - 🐛(backend) fix info panel crash for unregistered rooms
+- ♿️(frontend) focus side panel container on open #1452
 
 ## [1.23.0] - 2026-07-08
 
