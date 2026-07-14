@@ -201,15 +201,17 @@
 ├── uv.lock
 ├── web
 │   ├── Dockerfile
-│   ├── Dockerfile-celery
 │   ├── EUPL-1.2-EN.txt
 │   ├── b3desk
 │   │   ├── __init__.py
+│   │   ├── celery_worker.py
 │   │   ├── cli.py
 │   │   ├── commands.py
 │   │   ├── endpoints
 │   │   │   ├── __init__.py
+│   │   │   ├── admin.py
 │   │   │   ├── api.py
+│   │   │   ├── bbb_callback.py
 │   │   │   ├── captcha.py
 │   │   │   ├── join.py
 │   │   │   ├── meeting_files.py
@@ -220,10 +222,12 @@
 │   │   ├── models
 │   │   │   ├── __init__.py
 │   │   │   ├── bbb.py
+│   │   │   ├── groups.py
 │   │   │   ├── meetings.py
 │   │   │   ├── roles.py
 │   │   │   └── users.py
 │   │   ├── nextcloud.py
+│   │   ├── populate.py
 │   │   ├── session.py
 │   │   ├── settings.py
 │   │   ├── static
@@ -2329,6 +2333,24 @@
 │   │   │           └── all.js
 │   │   ├── tasks.py
 │   │   ├── templates
+│   │   │   ├── admin
+│   │   │   │   ├── add_group_members_page.html
+│   │   │   │   ├── delete_group.html
+│   │   │   │   ├── group_form.html
+│   │   │   │   ├── group_form_content.html
+│   │   │   │   ├── group_infos.html
+│   │   │   │   ├── group_members.html
+│   │   │   │   ├── group_table.html
+│   │   │   │   ├── groups.html
+│   │   │   │   ├── home.html
+│   │   │   │   ├── macros.html
+│   │   │   │   ├── meeting_infos.html
+│   │   │   │   ├── meeting_table.html
+│   │   │   │   ├── meetings.html
+│   │   │   │   ├── paging.html
+│   │   │   │   ├── user_infos.html
+│   │   │   │   ├── user_table.html
+│   │   │   │   └── users.html
 │   │   │   ├── brand.html
 │   │   │   ├── content.py
 │   │   │   ├── errors
@@ -2349,6 +2371,7 @@
 │   │   │   ├── header.html
 │   │   │   ├── index.html
 │   │   │   ├── jumbotron.html
+│   │   │   ├── language-selector.html
 │   │   │   ├── layout.html
 │   │   │   ├── meeting
 │   │   │   │   ├── csrf.html
@@ -2363,9 +2386,13 @@
 │   │   │   │   ├── join.html
 │   │   │   │   ├── list.html
 │   │   │   │   ├── mailto
+│   │   │   │   │   ├── mail_add_delegation_body.html
 │   │   │   │   │   ├── mail_add_delegation_body.txt
+│   │   │   │   │   ├── mail_available_recording_notification_body.html
+│   │   │   │   │   ├── mail_available_recording_notification_body.txt
 │   │   │   │   │   ├── mail_body.txt
 │   │   │   │   │   ├── mail_href.txt
+│   │   │   │   │   ├── mail_remove_delegation_body.html
 │   │   │   │   │   ├── mail_remove_delegation_body.txt
 │   │   │   │   │   └── mail_subject.txt
 │   │   │   │   ├── modals
@@ -2399,6 +2426,7 @@
 │   │       ├── 54f71a7705a8_initial_tables2.py
 │   │       ├── 65acbe9b0646_add_user_nextcloud_connection_info.py
 │   │       ├── 77f91494af65_create_meeting_access_and_favorite_.py
+│   │       ├── 791755877bb1_adds_user_admin_flag.py
 │   │       ├── 7d80b9223a1e_guestpolicy_migration.py
 │   │       ├── 8fe077ecfb10_add_last_connection_utc_datetime.py
 │   │       ├── 9869cacd37a4_removes_meeting_files_external_table.py
@@ -2407,18 +2435,20 @@
 │   │       ├── 9d4ba8cf710a_remove_obsolete_meeting_attributes.py
 │   │       ├── 9dd2b54b4b11_rename_meeting_user_id_to_owner_id.py
 │   │       ├── a1b2c3d4e5f6_remove_is_default_from_meeting_files.py
+│   │       ├── a3a6e932b2ae_add_group_table_and_ai_summary.py
 │   │       ├── c25342fd2428_voicebridge_managed_by_b3desk.py
-│   │       └── f68adee062bf_user_preferred_username.py
+│   │       ├── f68adee062bf_user_preferred_username.py
+│   │       └── fd08854f3582_disable_ai_summary_by_default.py
 │   ├── misc
 │   │   ├── gunicorn.py
 │   │   ├── job.cron
-│   │   ├── run_celery.sh
 │   │   ├── run_webserver.sh
 │   │   └── wsgi.py
 │   ├── tests
 │   │   ├── __init__.py
 │   │   ├── conftest.py
 │   │   ├── meeting
+│   │   │   ├── test_bbb_callback.py
 │   │   │   ├── test_captcha.py
 │   │   │   ├── test_delegated_meetings.py
 │   │   │   ├── test_join.py
@@ -2426,16 +2456,20 @@
 │   │   │   ├── test_meeting_files.py
 │   │   │   ├── test_recordings.py
 │   │   │   └── test_shadow_meeting.py
+│   │   ├── test_admin.py
 │   │   ├── test_api.py
 │   │   ├── test_authentication.py
 │   │   ├── test_bbb_api_caching.py
 │   │   ├── test_cli.py
 │   │   ├── test_default.py
+│   │   ├── test_group.py
 │   │   ├── test_migrations.py
 │   │   ├── test_nextcloud.py
 │   │   ├── test_satisfaction_poll.py
 │   │   ├── test_settings.py
-│   │   └── test_user.py
+│   │   ├── test_tasks.py
+│   │   ├── test_user.py
+│   │   └── test_utils.py
 │   └── translations
 │       ├── en
 │       │   └── LC_MESSAGES
@@ -2450,8 +2484,14 @@
 │       │   └── LC_MESSAGES
 │       │       └── messages.po
 │       ├── messages.pot
+│       ├── ru
+│       │   └── LC_MESSAGES
+│       │       └── messages.po
+│       ├── ta
+│       │   └── LC_MESSAGES
+│       │       └── messages.po
 │       └── uk
 │           └── LC_MESSAGES
 │               └── messages.po
 └── web.env.example
-192 directories, 2308 files
+197 directories, 2343 files

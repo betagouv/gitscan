@@ -1,19 +1,19 @@
-## Changelog : b3desk (30 derniers jours, au 2026-06-12)
+## Changelog : b3desk (30 derniers jours, au 13 juillet 2026)
 
 ### Résumé
-Les dernières mises à jour de b3desk se concentrent sur l'amélioration de la gestion des réunions et des utilisateurs, notamment en introduisant la possibilité de déléguer la gestion de réunions et en limitant les actions de l'owner sur ses propres réunions. Des améliorations techniques ont également été apportées pour automatiser la publication des releases et mapper les informations utilisateur provenant de l'authentification OIDC.
+Cette version apporte des améliorations à l'interface utilisateur, notamment l'affichage du nom de la réunion sur les pages de connexion et d'attente. Des travaux ont également été réalisés sur la configuration de la callback BigBlueButton et l'envoi d'emails pour les enregistrements disponibles. Des corrections et des mises à jour techniques ont été apportées pour améliorer la stabilité et la performance de l'application.
 
 ### Évolutions fonctionnelles
-- Possibilité de déléguer la gestion de réunions via l'API. [#357](https://github.com/numerique-gouv/b3desk/issues/357)
-- Limitation du nombre maximal de délégués à 15 par réunion. [#364](https://github.com/numerique-gouv/b3desk/issues/364)
-- L'owner d'une réunion ne peut plus s'ajouter lui-même comme délégué. [#364](https://github.com/numerique-gouv/b3desk/issues/364)
-- Amélioration de la configuration de l'environnement de développement : redirection automatique vers `b3desk.localhost`.
+- Affichage du nom de la réunion sur les pages de connexion et d'attente. [#374](https://github.com/numerique-gouv/b3desk/pull/374) et [#382](https://github.com/numerique-gouv/b3desk/pull/382)
+- Configuration de la callback BigBlueButton et envoi d'un email lors de la disponibilité d'un enregistrement. [#354](https://github.com/numerique-gouv/b3desk/pull/354)
+- Internationalisation du menu. [#366](https://github.com/numerique-gouv/b3desk/pull/366)
+- Correction d'une faute de frappe dans la documentation. [#377](https://github.com/numerique-gouv/b3desk/pull/377)
 
 ### Évolutions techniques
-- Intégration du mapping des claims OIDC pour une meilleure gestion des informations utilisateur. [#360](https://github.com/numerique-gouv/b3desk/issues/360)
-- Automatisation de la publication des releases GitHub lors de la création de tags.
-- Mise à jour de la version de développement à 1.6.4dev.
-- Amélioration des vérifications de linting.
+- Correction d'un problème de réseau dans l'environnement CI Docker. [#380](https://github.com/numerique-gouv/b3desk/pull/380)
+- Mise à jour des actions GitHub (GHA). [#369](https://github.com/numerique-gouv/b3desk/pull/369)
+- Amélioration de la configuration du réseau local pour BigBlueButton, permettant une configuration persistante. [#362](https://github.com/numerique-gouv/b3desk/pull/362)
 
 ### Autres changements
-- Documentation : ajout d'un exemple de personnalisation du scope. [#355](https://github.com/numerique-gouv/b3desk/issues/355)
+- Mise à jour des traductions via Weblate. [#387](https://github.com/numerique-gouv/b3desk/pull/387)
+- Mise à jour de la documentation. [#374](https://github.com/numerique-gouv/b3desk/pull/374)
