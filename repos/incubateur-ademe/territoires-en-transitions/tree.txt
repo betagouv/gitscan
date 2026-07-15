@@ -216,8 +216,6 @@
 │   │   │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   │   ├── notes
 │   │   │   │   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │   ├── services
-│   │   │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   │   └── sous-actions
 │   │   │   │   │   │   │   │   │       └── page.tsx
 │   │   │   │   │   │   │   │   ├── dans-plan
@@ -349,6 +347,7 @@
 │   │   │   │   │   │   │   │   │   │       │   │   ├── breadcrumb
 │   │   │   │   │   │   │   │   │   │       │   │   │   ├── action.breadcrumb.tsx
 │   │   │   │   │   │   │   │   │   │       │   │   │   └── referentiel-dropdown.navigation.tsx
+│   │   │   │   │   │   │   │   │   │       │   │   ├── current-collectivite.badge.tsx
 │   │   │   │   │   │   │   │   │   │       │   │   ├── display-settings-buttons.tsx
 │   │   │   │   │   │   │   │   │   │       │   │   ├── infos.tsx
 │   │   │   │   │   │   │   │   │   │       │   │   ├── points-potentiels.label.tsx
@@ -1237,8 +1236,6 @@
 │   │   │   │   │   │   │   │   ├── notes.picto.tsx
 │   │   │   │   │   │   │   │   ├── notes.table.tsx
 │   │   │   │   │   │   │   │   └── notes.view.tsx
-│   │   │   │   │   │   │   ├── services-widget
-│   │   │   │   │   │   │   │   └── ServicesWidgetTab.tsx
 │   │   │   │   │   │   │   ├── side-panel.config.tsx
 │   │   │   │   │   │   │   ├── sous-actions
 │   │   │   │   │   │   │   │   └── sous-actions.view.tsx
@@ -1423,6 +1420,7 @@
 │   │   │   │   │   │   │   ├── plan-tree.tsx
 │   │   │   │   │   │   │   ├── use-toggle-axe.test.ts
 │   │   │   │   │   │   │   └── use-toggle-axe.ts
+│   │   │   │   │   │   ├── plan-calendar.inline-editable-field.tsx
 │   │   │   │   │   │   ├── plan-menu.button.tsx
 │   │   │   │   │   │   ├── plan-status.chart.tsx
 │   │   │   │   │   │   ├── plan.header.tsx
@@ -1430,6 +1428,7 @@
 │   │   │   │   │   ├── types
 │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── upsert-plan
+│   │   │   │   │   │   ├── upsert-plan.form.spec.ts
 │   │   │   │   │   │   └── upsert-plan.form.tsx
 │   │   │   │   │   ├── use-list-plan-types.ts
 │   │   │   │   │   └── utils.ts
@@ -1944,6 +1943,9 @@
 │   │   │   │   │   ├── useChartDownloader.ts
 │   │   │   │   │   └── utils.ts
 │   │   │   │   ├── colon.tsx
+│   │   │   │   ├── date-range
+│   │   │   │   │   ├── date-range.inline-editor.spec.tsx
+│   │   │   │   │   └── date-range.inline-editor.tsx
 │   │   │   │   ├── dropdownLists
 │   │   │   │   │   ├── FichesActionsDropdown
 │   │   │   │   │   │   └── FichesActionsDropdown.tsx
@@ -2215,6 +2217,7 @@
 │   │   └── tsconfig.spec.json
 │   ├── backend
 │   │   ├── .env.default
+│   │   ├── .swcrc
 │   │   ├── AGENTS.md
 │   │   ├── CLAUDE.md -> AGENTS.md
 │   │   ├── Earthfile
@@ -2271,6 +2274,7 @@
 │   │   │   │   │   │   ├── discussion.results.ts
 │   │   │   │   │   │   └── discussion.table.ts
 │   │   │   │   │   └── presentation
+│   │   │   │   │       ├── discussion.router.e2e-spec.ts
 │   │   │   │   │       ├── discussion.router.spec.ts
 │   │   │   │   │       ├── discussion.router.ts
 │   │   │   │   │       └── discussion.schemas.ts
@@ -3186,6 +3190,7 @@
 │   │   │   │   │   ├── action-statut-history.service.ts
 │   │   │   │   │   ├── action-statuts-by-action-id.dto.ts
 │   │   │   │   │   ├── score-analysis.dto.ts
+│   │   │   │   │   ├── score-map.rules.ts
 │   │   │   │   │   ├── scores.controller.e2e-spec.ts
 │   │   │   │   │   ├── scores.controller.ts
 │   │   │   │   │   ├── scores.service.spec.ts
@@ -3216,6 +3221,7 @@
 │   │   │   │   │   ├── build-rows.ts
 │   │   │   │   │   ├── export-score-comparison.controller.e2e-spec.ts
 │   │   │   │   │   ├── export-score-comparison.controller.ts
+│   │   │   │   │   ├── export-score-comparison.errors.ts
 │   │   │   │   │   ├── export-score-comparison.service.ts
 │   │   │   │   │   └── load-score-comparison.service.ts
 │   │   │   │   ├── get-action
@@ -3282,6 +3288,7 @@
 │   │   │   │   │   ├── etoile-definition.table.ts
 │   │   │   │   │   ├── get-audit-en-cours
 │   │   │   │   │   │   └── get-audit-en-cours.repository.ts
+│   │   │   │   │   ├── get-labellisation.errors.ts
 │   │   │   │   │   ├── get-labellisation.router.ts
 │   │   │   │   │   ├── get-labellisation.service.ts
 │   │   │   │   │   ├── handle-mesure-audit-statut
@@ -3340,6 +3347,7 @@
 │   │   │   │   ├── list-actions
 │   │   │   │   │   ├── list-action-summaries.request.ts
 │   │   │   │   │   ├── list-actions-grouped-by-id.input.ts
+│   │   │   │   │   ├── list-actions.errors.ts
 │   │   │   │   │   ├── list-actions.router.e2e-spec.ts
 │   │   │   │   │   ├── list-actions.router.ts
 │   │   │   │   │   └── list-actions.service.ts
@@ -3467,11 +3475,40 @@
 │   │   │   │   │   │   ├── list-snapshots.service.e2e-spec.ts
 │   │   │   │   │   │   └── list-snapshots.service.ts
 │   │   │   │   │   ├── snapshot.table.ts
+│   │   │   │   │   ├── snapshots.constants.ts
 │   │   │   │   │   ├── snapshots.errors.ts
 │   │   │   │   │   ├── snapshots.router.e2e-spec.ts
 │   │   │   │   │   ├── snapshots.router.ts
 │   │   │   │   │   ├── snapshots.service.ts
 │   │   │   │   │   └── upsert-snapshot.input.ts
+│   │   │   │   ├── switch-to-te
+│   │   │   │   │   ├── build-switch-to-te-context.service.ts
+│   │   │   │   │   ├── create-pre-switch-snapshots.service.e2e-spec.ts
+│   │   │   │   │   ├── create-pre-switch-snapshots.service.ts
+│   │   │   │   │   ├── merge-commentaires
+│   │   │   │   │   │   ├── merge-commentaires.rules.spec.ts
+│   │   │   │   │   │   ├── merge-commentaires.rules.ts
+│   │   │   │   │   │   ├── merge-commentaires.service.e2e-spec.ts
+│   │   │   │   │   │   └── merge-commentaires.service.ts
+│   │   │   │   │   ├── merge-statuts
+│   │   │   │   │   │   ├── merge-statuts.rules.spec.ts
+│   │   │   │   │   │   ├── merge-statuts.rules.ts
+│   │   │   │   │   │   ├── merge-statuts.service.e2e-spec.ts
+│   │   │   │   │   │   └── merge-statuts.service.ts
+│   │   │   │   │   ├── shared
+│   │   │   │   │   │   ├── action-cible.ts
+│   │   │   │   │   │   ├── origine-resolution.spec.ts
+│   │   │   │   │   │   ├── origine-resolution.ts
+│   │   │   │   │   │   └── switch-to-te-context.ts
+│   │   │   │   │   ├── switch-to-te-context.test-fixture.ts
+│   │   │   │   │   ├── switch-to-te.errors.ts
+│   │   │   │   │   ├── switch-to-te.input.ts
+│   │   │   │   │   ├── switch-to-te.output.ts
+│   │   │   │   │   ├── switch-to-te.router.e2e-spec.ts
+│   │   │   │   │   ├── switch-to-te.router.ts
+│   │   │   │   │   ├── switch-to-te.rules.spec.ts
+│   │   │   │   │   ├── switch-to-te.rules.ts
+│   │   │   │   │   └── switch-to-te.service.ts
 │   │   │   │   ├── update-action-commentaire
 │   │   │   │   │   ├── update-action-commentaire-historique.repository.ts
 │   │   │   │   │   ├── update-action-commentaire.errors.ts
@@ -3656,6 +3693,7 @@
 │   │   │       │   ├── email.service.e2e-spec.ts
 │   │   │       │   └── email.service.ts
 │   │   │       ├── excel
+│   │   │       │   ├── export-excel.utils.spec.ts
 │   │   │       │   └── export-excel.utils.ts
 │   │   │       ├── expression-parser
 │   │   │       │   ├── evaluate-identite.ts
@@ -4905,7 +4943,7 @@
 │   │   │   │   ├── import@v2.57.0.sql
 │   │   │   │   ├── import@v2.64.0.sql
 │   │   │   │   ├── navigation.sql
-│   │   │   │   ├── plan_*.sql  (20 files)
+│   │   │   │   ├── plan_*.sql  (21 files)
 │   │   │   │   ├── remove-default-fiche-title.sql
 │   │   │   │   ├── share_fiche.sql
 │   │   │   │   ├── soft_delete_fiche.sql
@@ -5447,7 +5485,7 @@
 │   │   │   │   ├── import@v2.57.0.sql
 │   │   │   │   ├── import@v2.64.0.sql
 │   │   │   │   ├── navigation.sql
-│   │   │   │   ├── plan_*.sql  (20 files)
+│   │   │   │   ├── plan_*.sql  (21 files)
 │   │   │   │   ├── remove-default-fiche-title.sql
 │   │   │   │   ├── share_fiche.sql
 │   │   │   │   ├── soft_delete_fiche.sql
@@ -5988,7 +6026,7 @@
 │   │       │   ├── import@v2.57.0.sql
 │   │       │   ├── import@v2.64.0.sql
 │   │       │   ├── navigation.sql
-│   │       │   ├── plan_*.sql  (20 files)
+│   │       │   ├── plan_*.sql  (21 files)
 │   │       │   ├── remove-default-fiche-title.sql
 │   │       │   ├── share_fiche.sql
 │   │       │   ├── soft_delete_fiche.sql
@@ -6273,8 +6311,15 @@
 │   │   ├── 2026-06-04-001-feat-condition-referentiel-expr-cible-seuil-prd.md
 │   │   ├── 2026-06-11-001-feat-bascule-referentiel-te-prd.md
 │   │   ├── 2026-06-11-002-feat-bascule-referentiel-te-pr4-plan.md
+│   │   ├── 2026-06-11-003-feat-bascule-referentiel-te-pr8-plan.md
+│   │   ├── 2026-06-11-004-feat-bascule-referentiel-te-pr9-plan.md
+│   │   ├── 2026-06-11-005-feat-bascule-referentiel-te-pr10-plan.md
+│   │   ├── 2026-06-11-006-feat-bascule-referentiel-te-pr11-plan.md
+│   │   ├── 2026-06-11-007-feat-bascule-referentiel-te-pr12-plan.md
+│   │   ├── 2026-06-11-008-feat-bascule-referentiel-te-pr13-plan.md
 │   │   ├── 2026-06-24-001-refactor-auth-into-app-plan.md
-│   │   └── 2026-06-25-001-fix-export-indicateurs-tous-resultats-filtre-plan.md
+│   │   ├── 2026-06-25-001-fix-export-indicateurs-tous-resultats-filtre-plan.md
+│   │   └── 2026-07-13-001-refactor-snapshots-service-result-pattern-plan.md
 │   └── solutions
 │       ├── architecture-patterns
 │       │   ├── extract-history-repository-from-service.md
@@ -6294,7 +6339,7 @@
 │   ├── README.md
 │   ├── eslint.config.mjs
 │   ├── package.json
-│   ├── playwright.config.ts
+│   ├── playwright.config.mjs
 │   ├── run-apps.sh
 │   ├── tests
 │   │   ├── collectivite
@@ -6444,7 +6489,9 @@
 │   │   │   │   │   ├── collectivite-context-store.client.tsx
 │   │   │   │   │   ├── collectivite-context-store.server.tsx
 │   │   │   │   │   ├── collectivite-context.tsx
-│   │   │   │   │   └── collectivite-provider.no-ssr.tsx
+│   │   │   │   │   ├── collectivite-provider.no-ssr.tsx
+│   │   │   │   │   ├── type.ts
+│   │   │   │   │   └── utils.ts
 │   │   │   │   ├── get-collectivite.server.ts
 │   │   │   │   ├── index.server.ts
 │   │   │   │   ├── index.ts
@@ -7520,4 +7567,4 @@
 ├── tsconfig.json
 ├── vitest.config.ts
 └── vitest.workspace.ts
-1291 directories, 6486 files
+1294 directories, 6533 files

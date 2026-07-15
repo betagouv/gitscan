@@ -1,3 +1,34 @@
+2026-07-14T19:24:20+02:00 - c53a98d - Marc Rutkowski : feat(referentiels): ajoute la fusion des explications CAE/ECI vers TE
+2026-07-14T15:30:00+02:00 - f0802e7 - Marc Rutkowski : refactor(referentiels): extrait buildScoreMapByActionId pour réutilisation.
+2026-07-14T15:30:00+02:00 - c4c94e4 - Marc Rutkowski : feat(referentiels): ajoute la fusion des statuts d'origine vers les actions du référentiel CR
+2026-07-14T15:30:00+02:00 - b4b47f6 - Marc Rutkowski : feat(referentiels): prépare le plan pour implémenter la fusion des statuts
+2026-07-14T13:59:28+02:00 - a48ed0e - Marc Rutkowski : feat(referentiels): filtre les snapshots des référentiels archivés
+2026-07-14T12:14:29+02:00 - 9e95daa - Marc Rutkowski : refactor(snapshots): migre get, forceRecompute et updateName vers Result (PR3)
+2026-07-14T12:14:29+02:00 - 9c8f2ef - Marc Rutkowski : refactor(labellisations): adapte les services audit au Result de SnapshotsService
+2026-07-14T12:14:29+02:00 - 4eb439a - Marc Rutkowski : refactor(referentiels): adapte list-actions et update-statut/commentaire au Result snapshot
+2026-07-14T12:14:29+02:00 - 4cb709a - Marc Rutkowski : fix(transaction): préserve la cause des erreurs Result lors des rollbacks
+2026-07-14T12:14:29+02:00 - 1113e62 - Marc Rutkowski : refactor(export-score): migre l'export de comparaison vers le pattern Result
+2026-07-13T19:26:23+02:00 - 01a7836 - Marc Rutkowski : refactor(snapshots): migre computeAndUpsert vers le pattern Result (PR2)
+2026-07-13T18:49:22+02:00 - b6c20b4 - Fred Arnoux : fix(security): bloque l'injection IDOR de relations cross-collectivité dans plans.fiches.update (TET-7358)
+2026-07-13T18:24:01+02:00 - ec18d72 - Marc Rutkowski : refactor(snapshots): migre delete vers le pattern Result (PR1)
+2026-07-13T18:24:01+02:00 - 3c6effe - Marc Rutkowski : docs(referentiels): ajoute le plan de migration SnapshotsService vers Result
+2026-07-13T17:58:10+02:00 - bab247f - Fred Arnoux : fix(security): valide fichierId contre la collectivité dans addAnnexe (TET-7359)
+2026-07-13T17:23:36+02:00 - a2b3510 - Fred Arnoux : fix(security): bloque la création de membre fantôme dans collectivites.membres.update (TET-7360)
+2026-07-13T16:59:30+02:00 - f502abf - Fred Arnoux : test(security): ajoute des tests e2e IDOR pour les discussions (TET-7357)
+2026-07-13T16:15:47+02:00 - 68cf8eb - Fred Arnoux : fix(collectivites): accepte les codes nature INSEE uppercase dans le filtre type collectivité
+2026-07-13T15:05:20+02:00 - 1a13aef - Fred Arnoux : fix(referentiels): neutralise l'injection CSV dans les exports référentiel
+2026-07-13T14:46:01+02:00 - 81bf6e6 - Fred Arnoux : feat(plans): ajoute des dates de début/fin à un plan (TET-7490)
+2026-07-13T14:46:01+02:00 - 7c55050 - Fred Arnoux : refactor(metrics): migrate imports from '@tet/api/plan-actions' to '@tet/domain/metrics'
+2026-07-13T14:42:09+02:00 - 2a40577 - Fred Arnoux : fix(indicateurs): valide le paramètre page >= 1 pour éviter les fuites de stack trace
+2026-07-13T11:41:17+02:00 - 9709519 - Marc Rutkowski : fix(tests): isole les e2e des étapes de fiche pour la parallélisation CI
+2026-07-13T11:41:17+02:00 - 4fc9469 - Marc Rutkowski : feat(referentiels): ajoute la création des snapshots pré-bascule vers le réf. Climat Ressources
+2026-07-13T11:32:43+02:00 - 607de86 - Fred Arnoux : chore(deps): upgrade Next to latest version
+2026-07-13T10:54:37+02:00 - d7b630d - Marc Rutkowski : feat(referentiels): interdit la bascule si  COT actif, ou si une demande d'audit a été envoyée ou un audit est en cours
+2026-07-13T10:06:21+02:00 - fbc1c5c - Gaël Servaud : refactor(referentiel): deplace le badge collectivite a droite du titre en sticky
+2026-07-13T10:06:21+02:00 - f2e8bd6 - Gaël Servaud : fix(referentiel): fiabilise le badge de niveau d'acces (audit/visite)
+2026-07-13T09:53:51+02:00 - de92a34 - Fred Arnoux : chore(typescript): upgrade to TypeScript 6/7
+2026-07-13T09:53:51+02:00 - 88caa5c - Fred Arnoux : chore(typecheck): add typecheck command to apps/app
+2026-07-13T09:43:46+02:00 - 04b479a - Marc Rutkowski : feat(referentiels): ajoute le squelette du service de bascule vers le réf. Climat Ressources
 2026-07-10T16:31:50+02:00 - d960907 - Fred Arnoux : refactor(filters): remove 'modifiedAfter' filter from request and related tests
 2026-07-10T16:31:50+02:00 - cef2bb3 - Fred Arnoux : refactor(date-utils): replace luxon with date-fns for date calculations and add Paris timezone utility functions
 2026-07-10T16:31:50+02:00 - b64e076 - Fred Arnoux : feat(eslint): add frontend Luxon import ban and enforce module boundaries for frontend applications
