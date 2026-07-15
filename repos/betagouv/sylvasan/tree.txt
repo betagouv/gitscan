@@ -102,6 +102,9 @@
 │   │   │   ├── 0004_responseimage.py
 │   │   │   ├── 0005_remove_responseimage_name.py
 │   │   │   ├── 0006_historicalresponse_is_active_response_is_active.py
+│   │   │   ├── 0007_historicalresponse_parent_response.py
+│   │   │   ├── 0008_historicalresponse_survey_follow_up_and_more.py
+│   │   │   ├── 0009_historicalresponse_geolocation_point_and_more.py
 │   │   │   └── __init__.py
 │   │   ├── models
 │   │   │   ├── __init__.py
@@ -109,7 +112,8 @@
 │   │   ├── permissions.py
 │   │   ├── serializers
 │   │   │   ├── __init__.py
-│   │   │   └── response.py
+│   │   │   ├── response.py
+│   │   │   └── response_geo.py
 │   │   ├── tests
 │   │   │   ├── __init__.py
 │   │   │   ├── files
@@ -119,11 +123,14 @@
 │   │   │   ├── test_delete_response.py
 │   │   │   ├── test_export_responses.py
 │   │   │   ├── test_get_responses.py
+│   │   │   ├── test_response_geo.py
+│   │   │   ├── test_responses_geo_data.py
 │   │   │   └── test_retrieve_response.py
 │   │   ├── urls.py
 │   │   └── views
 │   │       ├── __init__.py
-│   │       └── response.py
+│   │       ├── response.py
+│   │       └── response_geo.py
 │   ├── static
 │   │   └── .keep
 │   ├── surveys
@@ -132,6 +139,7 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── campaign.py
 │   │   │   ├── survey.py
+│   │   │   ├── surveyfollowup.py
 │   │   │   ├── vocabularyentry.py
 │   │   │   └── vocabularyset.py
 │   │   ├── apps.py
@@ -139,6 +147,7 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── campaign.py
 │   │   │   ├── survey.py
+│   │   │   ├── surveyfollowup.py
 │   │   │   ├── vocabularyentry.py
 │   │   │   └── vocabularyset.py
 │   │   ├── metaschema.json
@@ -146,30 +155,40 @@
 │   │   │   ├── 0001_initial.py
 │   │   │   ├── 0002_historicalcampaign_historicalsurvey_and_more.py
 │   │   │   ├── 0003_vocabularyentry_is_active.py
+│   │   │   ├── 0004_historicalsurveyfollowup_surveyfollowup.py
+│   │   │   ├── 0005_alter_historicalsurveyfollowup_action_label_and_more.py
 │   │   │   └── __init__.py
 │   │   ├── models
 │   │   │   ├── __init__.py
 │   │   │   ├── campaign.py
 │   │   │   ├── survey.py
+│   │   │   ├── surveyfollowup.py
 │   │   │   ├── vocabularyentry.py
 │   │   │   └── vocabularyset.py
 │   │   ├── permissions.py
 │   │   ├── serializers
 │   │   │   ├── __init__.py
 │   │   │   ├── survey.py
+│   │   │   ├── surveyfollowup.py
 │   │   │   └── vocabularyset.py
 │   │   ├── surveytype.py
 │   │   ├── tests
 │   │   │   ├── __init__.py
+│   │   │   ├── test_create_follow_ups.py
 │   │   │   ├── test_create_survey.py
+│   │   │   ├── test_delete_follow_ups.py
 │   │   │   ├── test_delete_survey.py
+│   │   │   ├── test_list_follow_ups.py
 │   │   │   ├── test_list_survey.py
+│   │   │   ├── test_modify_follow_ups.py
+│   │   │   ├── test_modify_survey.py
 │   │   │   ├── test_retrieve_survey.py
 │   │   │   └── test_vocabulary_set.py
 │   │   ├── urls.py
 │   │   └── views
 │   │       ├── __init__.py
 │   │       ├── survey.py
+│   │       ├── surveyfollowups.py
 │   │       └── vocabularyset.py
 │   ├── sylvasan
 │   │   ├── __init__.py
@@ -240,14 +259,16 @@
 │           ├── account.py
 │           └── authentication.py
 ├── doc
-│   └── adr
-│       ├── 0001-choix-de-vue-capacitor-pour-l-application-mobile.md
-│       ├── 0002-architecture-multi-organisation-avec-extensions-specifiques.md
-│       ├── 0003-partage-de-types-entre-applications-ts.md
-│       ├── 0004-organisation-des-composants-et-des-pages-vue.md
-│       ├── 0005-champ-image-serialisation-stockage.md
-│       ├── 0006-bundler-les-icones-remixicon-dans-l-app-mobile.md
-│       └── 0007-injection-capacites-plateforme-dans-field-renderer.md
+│   ├── adr
+│   │   ├── 0001-choix-de-vue-capacitor-pour-l-application-mobile.md
+│   │   ├── 0002-architecture-multi-organisation-avec-extensions-specifiques.md
+│   │   ├── 0003-partage-de-types-entre-applications-ts.md
+│   │   ├── 0004-organisation-des-composants-et-des-pages-vue.md
+│   │   ├── 0005-champ-image-serialisation-stockage.md
+│   │   ├── 0006-bundler-les-icones-remixicon-dans-l-app-mobile.md
+│   │   └── 0007-injection-capacites-plateforme-dans-field-renderer.md
+│   └── dat
+│       └── permissions.md
 ├── mobile
 │   ├── .gitignore
 │   ├── .vscode
@@ -506,6 +527,8 @@
 │   │   ├── composables
 │   │   │   ├── offlineMapMetadata.ts
 │   │   │   ├── offlineProtocol.ts
+│   │   │   ├── useCanAddFollowUp.ts
+│   │   │   ├── useGeoPins.ts
 │   │   │   ├── useMapPins.ts
 │   │   │   ├── useOfflineMap.ts
 │   │   │   └── useOfflineMaps.ts
@@ -513,6 +536,8 @@
 │   │   ├── main.ts
 │   │   ├── pages
 │   │   │   ├── AppShell.vue
+│   │   │   ├── FollowUpChooserPage.vue
+│   │   │   ├── FollowUpSurveyPage.vue
 │   │   │   ├── LoginPage.vue
 │   │   │   ├── MapDownloadPage.vue
 │   │   │   ├── MapPreviewPage.vue
@@ -577,7 +602,9 @@
 │   │   ├── toast.d.ts
 │   │   └── window.d.ts
 │   └── utils
+│       ├── auth.ts
 │       ├── date.ts
+│       ├── defaultValues.ts
 │       ├── survey.ts
 │       └── validateField.ts
 └── web
@@ -600,6 +627,9 @@
     │   │   └── logo.png
     │   ├── components
     │   │   ├── AppHeader.vue
+    │   │   ├── ColorPicker.vue
+    │   │   ├── FollowUpRow.vue
+    │   │   ├── IconPicker.vue
     │   │   ├── ImageAttribution.vue
     │   │   ├── MapField.vue
     │   │   ├── ProgressSpinner.vue
@@ -607,11 +637,16 @@
     │   │   │   ├── DateRangeFilter.vue
     │   │   │   ├── OrderingFilter.vue
     │   │   │   └── PaginationSizeSelect.vue
+    │   │   ├── ResponsePage
+    │   │   │   ├── FollowUpIconName.vue
+    │   │   │   ├── FollowUpsTable.vue
+    │   │   │   └── ResponseFieldsSection.vue
     │   │   ├── SurveyBuilder
     │   │   │   ├── CheckboxOption.vue
     │   │   │   ├── ChoiceCard.vue
     │   │   │   ├── ConditionModalSegment.vue
     │   │   │   ├── ConfirmDeleteModal.vue
+    │   │   │   ├── EmptyPageTitleModal.vue
     │   │   │   ├── FieldCard.vue
     │   │   │   ├── NewFieldModal.vue
     │   │   │   ├── RadioOption.vue
@@ -621,6 +656,8 @@
     │   │   │   ├── index.vue
     │   │   │   └── mappings.ts
     │   │   └── ToastContainer.vue
+    │   ├── composables
+    │   │   └── useAdminScopeSelection.ts
     │   ├── main.ts
     │   ├── pages
     │   │   ├── A11yPage.vue
@@ -630,6 +667,7 @@
     │   │   ├── DashboardPage.vue
     │   │   ├── DataDeletion.vue
     │   │   ├── EmailConfirmationSentPage.vue
+    │   │   ├── FollowUpCreationModificationPage.vue
     │   │   ├── HomePage.vue
     │   │   ├── LegalNoticesPage.vue
     │   │   ├── LoginPage.vue
@@ -638,7 +676,7 @@
     │   │   ├── ResponseListPage.vue
     │   │   ├── ResponsePage.vue
     │   │   ├── SignUpPage.vue
-    │   │   ├── SurveyCreationPage.vue
+    │   │   ├── SurveyCreationModificationPage.vue
     │   │   ├── SurveyListPage.vue
     │   │   ├── SurveyPage.vue
     │   │   └── index.vue
@@ -659,4 +697,4 @@
     ├── typed-router.d.ts
     ├── vite.config.ts
     └── vitest.config.ts
-164 directories, 497 files
+167 directories, 532 files
