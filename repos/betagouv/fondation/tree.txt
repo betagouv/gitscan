@@ -47,6 +47,8 @@
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260702075118_adds_file_external_id
 │   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260706101345_adds_audition_date
+│   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   ├── schema.prisma
 │   │   │   ├── schemas
@@ -151,6 +153,7 @@
 │   │   │   │   │   │   ├── agenda.spec.ts
 │   │   │   │   │   │   ├── agenda.ts
 │   │   │   │   │   │   ├── doc-file-name.ts
+│   │   │   │   │   │   ├── doc-nomination-file-outcome.spec.ts
 │   │   │   │   │   │   ├── doc-nomination-file-outcome.ts
 │   │   │   │   │   │   ├── justice-presentation-plan.ts
 │   │   │   │   │   │   ├── official-report-file-name.ts
@@ -535,6 +538,8 @@
 │   │   │       ├── is-defined.ts
 │   │   │       ├── iterables.ts
 │   │   │       ├── noop.ts
+│   │   │       ├── paris-wall-clock.spec.ts
+│   │   │       ├── paris-wall-clock.ts
 │   │   │       ├── promises.ts
 │   │   │       ├── result.ts
 │   │   │       ├── time-only.spec.ts
@@ -618,7 +623,8 @@
 │       │   └── adr
 │       │       ├── 2026-06-15-organisation-des-composants-partages.md
 │       │       ├── 2026-06-16-conventions-react.md
-│       │       └── 2026-06-18-architecture-front-feature-first.md
+│       │       ├── 2026-06-18-architecture-front-feature-first.md
+│       │       └── 2026-07-13-libelles-metier-servis-par-l-api.md
 │       ├── index.html
 │       ├── openapi-ts.config.ts
 │       ├── package.json
@@ -652,6 +658,7 @@
 │       │   │   │   │   ├── AgendaFileSearch.tsx
 │       │   │   │   │   ├── AgendaMetadataStep.tsx
 │       │   │   │   │   ├── AgendaNominationFile.css
+│       │   │   │   │   ├── AgendaNominationFile.test.tsx
 │       │   │   │   │   ├── AgendaNominationFile.tsx
 │       │   │   │   │   └── AgendaNominationFilesStep.tsx
 │       │   │   │   ├── context
@@ -735,6 +742,12 @@
 │       │   │   │   │       │   │   │   ├── MagistratAttachments.stories.tsx
 │       │   │   │   │       │   │   │   ├── MagistratAttachments.test.tsx
 │       │   │   │   │       │   │   │   └── MagistratAttachments.tsx
+│       │   │   │   │       │   │   ├── magistrat-audition-date
+│       │   │   │   │       │   │   │   ├── MagistratAuditionDate.stories.tsx
+│       │   │   │   │       │   │   │   ├── MagistratAuditionDate.tsx
+│       │   │   │   │       │   │   │   ├── MagistratAuditionDateForm.test.tsx
+│       │   │   │   │       │   │   │   ├── MagistratAuditionDateForm.tsx
+│       │   │   │   │       │   │   │   └── MagistratAuditionNotice.tsx
 │       │   │   │   │       │   │   ├── magistrat-biography
 │       │   │   │   │       │   │   │   ├── MagistratBiography.stories.tsx
 │       │   │   │   │       │   │   │   └── MagistratBiography.tsx
@@ -750,7 +763,10 @@
 │       │   │   │   │       │   │   ├── magistrat-observations
 │       │   │   │   │       │   │   │   ├── MagistratObservations.stories.tsx
 │       │   │   │   │       │   │   │   ├── MagistratObservations.test.tsx
-│       │   │   │   │       │   │   │   └── MagistratObservations.tsx
+│       │   │   │   │       │   │   │   ├── MagistratObservations.tsx
+│       │   │   │   │       │   │   │   ├── MagistratObservationsInbox.stories.tsx
+│       │   │   │   │       │   │   │   ├── MagistratObservationsInbox.test.tsx
+│       │   │   │   │       │   │   │   └── MagistratObservationsInbox.tsx
 │       │   │   │   │       │   │   ├── magistrat-outcome
 │       │   │   │   │       │   │   │   ├── MagistratOutcome.stories.tsx
 │       │   │   │   │       │   │   │   ├── MagistratOutcome.tsx
@@ -759,7 +775,9 @@
 │       │   │   │   │       │   │   ├── magistrat-summary
 │       │   │   │   │       │   │   │   ├── MagistratSummary.stories.tsx
 │       │   │   │   │       │   │   │   ├── MagistratSummary.tsx
-│       │   │   │   │       │   │   │   └── MagistratSummaryButton.tsx
+│       │   │   │   │       │   │   │   ├── MagistratSummaryButton.tsx
+│       │   │   │   │       │   │   │   ├── summary-text.test.ts
+│       │   │   │   │       │   │   │   └── summary-text.ts
 │       │   │   │   │       │   │   ├── member-memo
 │       │   │   │   │       │   │   │   ├── MemberMemo.stories.tsx
 │       │   │   │   │       │   │   │   ├── MemberMemo.test.tsx
@@ -788,15 +806,20 @@
 │       │   │   │   │       │   ├── NominationFileOutcomeSelector.tsx
 │       │   │   │   │       │   ├── NominationFilesOutcomeCell.tsx
 │       │   │   │   │       │   ├── OutcomeCommentModalContext.ts
-│       │   │   │   │       │   └── nomination-file-outcome-badge.utils.ts
+│       │   │   │   │       │   ├── nomination-file-outcome-badge.utils.ts
+│       │   │   │   │       │   └── nomination-file-outcome.utils.ts
 │       │   │   │   │       ├── observation-follow-up
 │       │   │   │   │       │   ├── ObservationFollowUpReminderContext.ts
 │       │   │   │   │       │   ├── ObservationFollowUpReminderModal.tsx
 │       │   │   │   │       │   ├── ObservationFollowUpReminderProvider.tsx
 │       │   │   │   │       │   └── useObservationFollowUpReminderModal.hook.ts
 │       │   │   │   │       ├── observations
+│       │   │   │   │       │   ├── MagistratCombobox.tsx
 │       │   │   │   │       │   ├── ObservantsCell.tsx
+│       │   │   │   │       │   ├── ObservationExistingFiles.tsx
+│       │   │   │   │       │   ├── ObservationForm.test.tsx
 │       │   │   │   │       │   ├── ObservationForm.tsx
+│       │   │   │   │       │   ├── ObservationLinkableAttachments.tsx
 │       │   │   │   │       │   ├── ObservationsList.tsx
 │       │   │   │   │       │   └── context
 │       │   │   │   │       │       ├── ObservationsModalContext.ts
@@ -1051,6 +1074,10 @@
 │       │   ├── shared
 │       │   │   ├── components
 │       │   │   │   ├── LolfiMagistratLink.tsx
+│       │   │   │   ├── audition-banner
+│       │   │   │   │   ├── AuditionBanner.stories.tsx
+│       │   │   │   │   ├── AuditionBanner.tsx
+│       │   │   │   │   └── index.ts
 │       │   │   │   ├── banners
 │       │   │   │   │   ├── BanneredLayout.tsx
 │       │   │   │   │   ├── PermanentBanner.tsx
@@ -1216,7 +1243,8 @@
 │       │   ├── tanstack-react-table.d.ts
 │       │   ├── test-utils
 │       │   │   └── factories
-│       │   │       └── session-nomination-file.factory.ts
+│       │   │       ├── session-nomination-file.factory.ts
+│       │   │       └── session-outcomes.factory.ts
 │       │   ├── types
 │       │   │   ├── enums.types.ts
 │       │   │   ├── icons.types.ts
@@ -1330,4 +1358,4 @@
 │   └── sheetjs.sh
 └── vendor
     └── .gitkeep
-282 directories, 1050 files
+285 directories, 1075 files
