@@ -1,44 +1,27 @@
-## Changelog : infra-apps (30 derniers jours, au 10 juillet 2026)
+## Changelog : infra-apps (30 derniers jours, au 2026-07-13)
 
 ### Résumé
-Ce changelog résume les évolutions récentes du projet infra-apps, principalement axées sur l'amélioration et la stabilisation de l'application Iterion, ainsi que sur la mise en place d'une infrastructure plus robuste pour Buildkit. Des améliorations significatives ont été apportées à l'autoscaling, à la sécurité et à la gestion des environnements de production et de pré-production.
+Ce changelog couvre les 30 derniers jours et met en évidence des améliorations significatives apportées à l'infrastructure, notamment autour de l'outil Iterion (amélioration des performances, ajout de fonctionnalités d'autoscaling et de sécurité) et de l'intégration de Buildkit (renforcement de la sécurité et amélioration de la gestion des environnements de production). Des corrections et des mises à jour ont également été apportées à divers composants pour améliorer la stabilité et la fonctionnalité globale.
 
 ### Évolutions fonctionnelles
-- **Iterion :**
-    - Activation du single sign-on (SSO) via GitHub sur l'environnement de pré-production. [#40](https://github.com/SocialGouv/infra-apps/issues/40)
-    - Ouverture de l'inscription sur l'environnement de production avec activation du SSO GitHub pour l'auto-provisionnement. [#43](https://github.com/SocialGouv/infra-apps/issues/43)
-    - Ajout d'un accès en lecture seule au marketplace pour les utilisateurs non-soumetteurs. [#45](https://github.com/SocialGouv/infra-apps/issues/45)
-    - Implémentation de Valkey HA (Sentinel) pour une gestion d'état distribuée. [#46](https://github.com/SocialGouv/infra-apps/issues/46)
-    - Renforcement de la sécurité avec l'ajout d'un accès en niveaux (submitter tier) via GitHub SSO.
-- **Buildkit :**
-    - Ajout d'un fournisseur OIDC Forgejo pour l'authentification.
-    - Activation de la vérification d'identité OIDC sur l'environnement ovh-prod. [#48](https://github.com/SocialGouv/infra-apps/issues/48)
-    - Durcissement de l'environnement ovh-prod avec l'ajout d'un Ingress TLS, une épingle stricte et une limitation du nombre de domaines gérés par le gateway. [#47](https://github.com/SocialGouv/infra-apps/issues/47)
-    - Mise en place d'une infrastructure GitOps pour ovh-prod.
+- **Iterion:** Activation du mode "sandbox" pour les runners Kubernetes, renforçant ainsi la sécurité et l'isolation des exécutions. [#40, #41, #42, #43, #45]
+- **Iterion:** Ajout de l'authentification via GitHub SSO sur les environnements preprod et prod, permettant une gestion des accès plus sécurisée et simplifiée. [#40, #41, #43]
+- **Buildkit:** Ajout d'un fournisseur OIDC Forgejo pour l'authentification, améliorant la sécurité d'accès. [#48]
+- **Buildkit:** Configuration de l'environnement de production (ovh-prod) avec des mesures de sécurité renforcées (TLS Ingress, hard-pin, limitation du gateway). [#47]
+- **Charon:** Autorisation du `redirect_uri` pour l'environnement preprod egapro Atlas v2.
 
 ### Évolutions techniques
-- **Iterion :**
-    - Amélioration de l'autoscaling avec KEDA, basé sur la profondeur de la queue.
-    - Augmentation de la limite de mémoire du runner à 8Gi pour éviter les erreurs OOM.
-    - Mise à jour du chart Iterion vers les versions 0.37.4, 0.37.2, 0.35.0, 0.34.0, 0.33.0 et 0.32.0.
-    - Activation du cache de construction pour les runners.
-    - Correction d'un problème avec l'endpoint NATS de KEDA.
-    - Ajout d'un tmpfs writable pour les secrets en-pod.
-    - Mise en place d'un override de sandbox pour les runners sans sandbox.
-    - Utilisation d'images Devbox pour les runners.
-    - Correction de problèmes liés à la gestion des secrets et à l'accès aux fichiers.
-- **Buildkit :**
-    - Mise à jour de l'opérateur Buildkit vers les versions v0.12.0, v0.10.0 et v0.9.0.
-    - Configuration de l'opérateur Buildkit pour utiliser des certificats TLS gérés par cert-manager pour l'environnement ovh-prod.
-    - Ajout de credentials S3 sealed pour les builds Buildkit sur ovh-prod.
-    - Correction de la capture de la configuration live du gateway.
-- **Général :**
-    - Correction d'un problème de déploiement de Kata dans le namespace buildkit-system.
-    - Activation de virtiofsd xattr pour résoudre les problèmes de hachage de contenu dans les VMs fork.
-    - Suspension temporaire de l'application iterion-preprod pendant une période de pointe de production.
+- **Iterion:** Amélioration des performances et de la stabilité en augmentant les limites de mémoire pour les runners et en ajustant la concurrence.
+- **Iterion:** Implémentation de l'autoscaling KEDA pour les runners, permettant une gestion dynamique des ressources en fonction de la charge.
+- **Iterion:** Mise à jour du chart Iterion vers les versions 0.37.2, 0.35.0, 0.34.0, 0.33.0, 0.32.0, 0.23.2, 0.23.0, 0.22.0, 0.21.0, 0.17.2, 0.17.1 et 0.16.1 avec diverses corrections et améliorations.
+- **Buildkit:** Mise à jour de l'opérateur Buildkit vers les versions v0.12.0, v0.10.0 et v0.9.0.
+- **Buildkit:** Configuration de l'accès S3 pour le cache "cold" en production.
+- **Buildkit:** Correction de la capture de la configuration du gateway en production.
+- **Kata:** Déploiement de Kata dans l'espace de noms `buildkit-system` et activation de `virtiofsd xattr` pour améliorer la compatibilité avec Buildkit.
+- Suppression d'une configuration temporaire pour les tests E2E.
 
 ### Autres changements
-- Correction de l'autorisation du redirect_uri pour l'environnement de pré-production Charon egapro Atlas v2.
-- Suppression d'une épingle temporaire d'image E2E.
-- Mise à jour de la documentation et de la configuration.
-- Nettoyage du code et refactoring.
+- Documentation mise à jour et configurations ajustées pour améliorer la gestion des environnements de production et de preproduction.
+- Nettoyage et refactoring du code pour améliorer la lisibilité et la maintenabilité.
+- Ajustements de configuration pour améliorer la surveillance et la gestion des ressources.
+- Correction de bugs mineurs et améliorations de la stabilité générale.
