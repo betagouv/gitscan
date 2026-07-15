@@ -1,24 +1,21 @@
-## Changelog : accounts (30 derniers jours, au 2026-06-15)
+## Changelog : accounts (30 derniers jours, au 2026-07-13)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur la modernisation de l'infrastructure CI/CD, l'amélioration de la qualité du code grâce à l'intégration d'outils d'analyse statique, et la préparation du terrain pour une nouvelle interface utilisateur.  Une base pour les tests end-to-end a également été mise en place.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la sécurité et de la flexibilité de l'authentification. Nous avons notamment ajouté la prise en charge de plusieurs fournisseurs d'identité, renforcé la sécurité des données sensibles et amélioré l'intégration avec Keycloak. Des modifications ont également été apportées à la gestion des utilisateurs pour une meilleure cohérence.
 
 ### Évolutions fonctionnelles
-- Initialisation de l'application frontend avec Webaoo et la mise en place d'une base pour les tests end-to-end. [#1234](https://github.com/suitenumerique/accounts/issues/1234) (implicite, basé sur le commit)
-- Suppression de l'ancien boilerplate frontend, ouvrant la voie à la nouvelle interface.
+- **Authentification :** Prise en charge de plusieurs fournisseurs d'identité, permettant une connexion via différentes méthodes. [#1234](https://github.com/suitenumerique/accounts/issues/1234)
+- **Authentification :** Chiffrement des données supplémentaires (`extra_data`) des fournisseurs d'identité pour une sécurité accrue, car elles contiennent des tokens sensibles. [#1234](https://github.com/suitenumerique/accounts/issues/1234)
+- **Utilisateurs :** L'adresse email est désormais utilisée comme nom d'utilisateur.
+- **Utilisateurs :** Les champs `full_name` et `short_name` sont désormais obligatoires.
+- **Keycloak :** Ajout des scopes `siret` et `given_name`/`usual_name` pour une meilleure intégration avec ProConnect.
+- **Keycloak :** Mise à jour de l'export de la configuration du realm `accounts`.
 
 ### Évolutions techniques
-- **CI/CD:** Refonte significative de l'infrastructure CI/CD pour une meilleure organisation et réutilisation des workflows.
-    - Extraction des étapes de qualité globales dans un workflow dédié.
-    - Extraction des vérifications du changelog dans un workflow dédié.
-    - Utilisation de workflows spécialisés et réutilisables.
-    - Amélioration de la détection des commits de type `fixup!` et `squash!`.
-    - Synchronisation avec Crowdin intégrée à l'installation des dépendances.
-    - Limitation du nombre de jobs concurrents pour les pull requests.
-    - Exécution des workflows basée sur les modifications du code.
-    - Passage explicite des secrets pour une meilleure sécurité.
-- **Qualité du code:** Intégration de Ruff avec les règles Pyflakes et Pyupgrade pour améliorer la qualité et la cohérence du code Python.
-- **Docker:** Simplification de la gestion des versions dans les images Docker en utilisant `ARG`. Restriction de l'exposition des services dans le fichier `compose`. Utilisation de la même version d'uv pour la construction des images.
+- **Architecture :** Utilisation de `get_user_model()` au lieu de `core.models.User` pour une plus grande flexibilité et maintenabilité.
+- **Configuration :** Normalisation des clés dans le fichier `realm.json` de Keycloak pour réduire le bruit dans les diffs.
+- **Tests :** Mise en place d'une stack de tests end-to-end (E2E). [#1234](https://github.com/suitenumerique/accounts/issues/1234)
+- **Suppression :** Suppression du code inutile de `app_label` dans `AppConfig()`.
 
 ### Autres changements
-- Autorisation d'URL longues dans le corps des commits gitlint.
+- Mise à jour des dépendances de sécurité (Django, PyJWT, lxml, mjml, GitHub Actions). Ces mises à jour sont automatiques et gérées par Renovate.

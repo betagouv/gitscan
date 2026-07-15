@@ -6,7 +6,15 @@ and this project adheres to
 
 ## [Unreleased]
 
-- ✨(frontend) init the frontend app (webaoo + e2e)
+### Added
 
+- ✨(frontend) init the frontend app (webapp + e2e)
+
+### Changed
+
+- ✨(users) make `email` our username
+- ✨(authentication) Support multiple identity providers
+- ✨(authentication) Encrypt identity providers' `extra_data`
+- ✨(OIDC Provider) Configure and customize the Authorization Server
 
 [unreleased]: https://github.com/suitenumerique/docs/compare/main
