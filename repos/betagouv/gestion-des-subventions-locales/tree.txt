@@ -88,7 +88,12 @@
 │   │       ├── controllers
 │   │       │   ├── commentArbitrage.js
 │   │       │   ├── doubleDotation.js
-│   │       │   └── formUtils.js
+│   │       │   ├── formUtils.js
+│   │       │   ├── formatMontant.js
+│   │       │   ├── projetForm.js
+│   │       │   ├── projetNoteCard.js
+│   │       │   ├── projetNotes.js
+│   │       │   └── radioNavigate.js
 │   │       ├── gsl.js
 │   │       ├── matomo.js
 │   │       └── sticky_table_headers.js
@@ -647,6 +652,7 @@
 │   │   └── projet_services.py
 │   ├── static
 │   │   ├── css
+│   │   │   ├── notes.css
 │   │   │   ├── projet_detail.css
 │   │   │   ├── projet_list.css
 │   │   │   └── projet_list_filters.css
@@ -658,15 +664,21 @@
 │   ├── templates
 │   │   ├── gsl_projet
 │   │   │   ├── projet
+│   │   │   │   ├── includes
+│   │   │   │   │   └── _simulation_card.html
 │   │   │   │   ├── tab_historique.html
 │   │   │   │   ├── tab_notes.html
 │   │   │   │   ├── tab_projet.html
+│   │   │   │   ├── tab_simulations.html
 │   │   │   │   └── tabs.html
 │   │   │   ├── projet.html
 │   │   │   ├── projet_list.html
 │   │   │   ├── projet_missing_annotations_list.html
 │   │   │   └── table_cells
 │   │   │       └── _projet_row.html
+│   │   ├── htmx
+│   │   │   ├── projet_note_update_form.html
+│   │   │   └── revert_to_processing_modal.html
 │   │   └── includes
 │   │       ├── _comment_arbitrage_card.html
 │   │       ├── _filter_amount_range.html
@@ -678,11 +690,20 @@
 │   │       ├── _filter_territoire.html
 │   │       ├── _notes_detail.html
 │   │       ├── _projet_list_filters.html
+│   │       ├── _projet_note_card.html
 │   │       ├── _projets_table.html
+│   │       ├── forms
+│   │       │   ├── _assiette_dotation_projet_form.html
+│   │       │   ├── _boolean_field.html
+│   │       │   ├── _boolean_fields_projet_form.html
+│   │       │   ├── _detr_avis_commission_form.html
+│   │       │   ├── _dotations_form.html
+│   │       │   └── _is_budget_vert_form.html
 │   │       └── projet_detail
 │   │           ├── _dotation_projet_financial_informations.html
+│   │           ├── _dotation_projet_readonly_block.html
+│   │           ├── _dotation_status_card.html
 │   │           ├── _projet_financial_informations.html
-│   │           ├── _status_and_notification_status_card.html
 │   │           └── dotation_montant_info.html
 │   ├── templatetags
 │   │   └── __init__.py
@@ -718,7 +739,10 @@
 │   │   │   ├── __init__.py
 │   │   │   └── test_utils.py
 │   │   └── views
-│   │       └── test_projet_detail.py
+│   │       ├── test_dotation_projet_views.py
+│   │       ├── test_projet_detail.py
+│   │       ├── test_projet_notes_views.py
+│   │       └── test_revert_to_processing.py
 │   ├── urls.py
 │   ├── utils
 │   │   ├── django_filters_custom_widget.py
@@ -767,19 +791,12 @@
 │   │   └── simulation_projet_service.py
 │   ├── static
 │   │   ├── css
-│   │   │   ├── notes.css
 │   │   │   ├── simulation_detail.css
-│   │   │   ├── simulation_list.css
-│   │   │   └── simulation_projet_detail.css
+│   │   │   └── simulation_list.css
 │   │   └── js
 │   │       ├── controllers
-│   │       │   ├── bindAmountTields.js
+│   │       │   ├── bindAmountFields.js
 │   │       │   └── dotationDropdown.js
-│   │       ├── handleInteractionInSimulationProjet.js
-│   │       ├── handleInteractionInSimulationProjetAnnotations.js
-│   │       ├── modules
-│   │       │   ├── handleDotationUpdate.js
-│   │       │   └── utils.js
 │   │       └── tableEditForms.js
 │   ├── table_columns.py
 │   ├── tasks.py
@@ -788,13 +805,7 @@
 │   │   │   ├── simulation_detail.html
 │   │   │   ├── simulation_form.html
 │   │   │   ├── simulation_list.html
-│   │   │   ├── simulation_projet_detail.html
 │   │   │   ├── simulation_rename.html
-│   │   │   ├── tab_simulation_projet
-│   │   │   │   ├── tab_historique.html
-│   │   │   │   ├── tab_notes.html
-│   │   │   │   ├── tab_projet.html
-│   │   │   │   └── tabs.html
 │   │   │   └── table_cells
 │   │   │       ├── _other_dotation_row.html
 │   │   │       ├── assiette.html
@@ -812,6 +823,7 @@
 │   │   │   ├── _base_htmx_modal.html
 │   │   │   ├── _bulk_status_progress_partial.html
 │   │   │   ├── acceptance_errors_modal.html
+│   │   │   ├── amount_update_confirm_modal.html
 │   │   │   ├── bulk_status_already_running_modal.html
 │   │   │   ├── bulk_status_confirm_modal.html
 │   │   │   ├── bulk_status_missing_ds_profile_modal.html
@@ -820,22 +832,12 @@
 │   │   │   ├── go_back_to_simulation_state_modal.html
 │   │   │   ├── not_instructeur_error.html
 │   │   │   ├── programmation_status_change_modal.html
-│   │   │   ├── projet_note_update_form.html
 │   │   │   └── projet_update.html
 │   │   └── includes
-│   │       ├── _note_card.html
 │   │       ├── _simulation_bulk_actions_toolbar.html
 │   │       ├── _simulation_detail_row.html
-│   │       ├── _status_and_notification_status_card.html
 │   │       ├── _status_dropdown_buttons.html
 │   │       ├── _status_summary.html
-│   │       ├── forms
-│   │       │   ├── _boolean_field.html
-│   │       │   ├── _boolean_fields_projet_form.html
-│   │       │   ├── _detr_avis_commission_form.html
-│   │       │   ├── _dotations_form.html
-│   │       │   ├── _is_budget_vert_form.html
-│   │       │   └── _montants_form.html
 │   │       ├── modals
 │   │       │   ├── _dotation_update_confirmation_modal.html
 │   │       │   ├── _simulation_actions_menu.html
@@ -871,15 +873,10 @@
 │   │       ├── test_double_dotation_view_form_selection.py
 │   │       ├── test_filters.py
 │   │       ├── test_get_success_message.py
-│   │       ├── test_notification_tab_display.py
-│   │       ├── test_patch_projet.py
 │   │       ├── test_patch_simulation_projet.py
-│   │       ├── test_revert_notified_projet.py
 │   │       ├── test_simulation_create_view.py
 │   │       ├── test_simulation_delete_view.py
 │   │       ├── test_simulation_detail_view.py
-│   │       ├── test_simulation_projet_notes_view.py
-│   │       ├── test_simulation_projet_view.py
 │   │       ├── test_simulation_rename_view.py
 │   │       ├── test_simulation_updated_at_and_downloaded_at.py
 │   │       └── test_status_modal_view.py
@@ -887,8 +884,6 @@
 │   └── views
 │       ├── bulk_status_job_views.py
 │       ├── decorators.py
-│       ├── simulation_projet_historique_views.py
-│       ├── simulation_projet_notes_views.py
 │       ├── simulation_projet_views.py
 │       └── simulation_views.py
 ├── justfile
@@ -923,9 +918,10 @@
 │   │       └── components
 │   │           ├── confirmation_modal.html
 │   │           ├── multiselect.html
+│   │           ├── status_badge.html
 │   │           └── tiptap_editor.html
 │   └── templatetags
 │       ├── __init__.py
 │       └── ui_tags.py
 └── vendorize.txt
-160 directories, 770 files
+160 directories, 766 files
