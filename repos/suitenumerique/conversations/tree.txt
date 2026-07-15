@@ -81,8 +81,10 @@
 │   ├── file-upload-modes.md
 │   ├── history-processor.md
 │   ├── installation.md
+│   ├── interoperabilities.md
 │   ├── llm-configuration.md
 │   ├── model-fallback.md
+│   ├── project-file-indexing.md
 │   ├── release.md
 │   ├── service_status.md
 │   ├── system-requirements.md
@@ -95,13 +97,14 @@
 │   ├── tools.md
 │   └── troubleshoot.md
 ├── env.d
-│   └── development
-│       ├── common.dist
-│       ├── common.e2e.dist
-│       ├── crowdin.dist
-│       ├── kc_postgresql.dist
-│       ├── kube-secret.dist
-│       └── postgresql.dist
+│   ├── development
+│   │   ├── common.dist
+│   │   ├── common.e2e.dist
+│   │   ├── crowdin.dist
+│   │   ├── kc_postgresql.dist
+│   │   ├── kube-secret.dist
+│   │   └── postgresql.dist
+│   └── test
 ├── gitlint
 │   └── gitlint_emoji.py
 ├── package.json
@@ -179,6 +182,7 @@
 │   │   │   │   ├── pydantic_ui_message_converter.py
 │   │   │   │   └── schema.py
 │   │   │   ├── constants.py
+│   │   │   ├── docs_client.py
 │   │   │   ├── document_context_builder.py
 │   │   │   ├── enums.py
 │   │   │   ├── factories.py
@@ -204,6 +208,7 @@
 │   │   │   │   ├── 0009_chatconversation_index_state_and_more.py
 │   │   │   │   ├── 0010_alter_modelhealth_status.py
 │   │   │   │   ├── 0011_chatconversation_model_hrid.py
+│   │   │   │   ├── 0012_chatconversationattachment_index_state_and_more.py
 │   │   │   │   └── __init__.py
 │   │   │   ├── model_health.py
 │   │   │   ├── model_routing.py
@@ -213,6 +218,7 @@
 │   │   │   │   └── albert_models.py
 │   │   │   ├── rate_limiting.py
 │   │   │   ├── serializers.py
+│   │   │   ├── tasks.py
 │   │   │   ├── tests
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── agent_rag
@@ -288,6 +294,7 @@
 │   │   │   │   ├── test_admin.py
 │   │   │   │   ├── test_ai_agent_service_co2.py
 │   │   │   │   ├── test_assistant_health.py
+│   │   │   │   ├── test_docs_client.py
 │   │   │   │   ├── test_document_context_builder.py
 │   │   │   │   ├── test_llm_configuration.py
 │   │   │   │   ├── test_local_media_url_processors.py
@@ -295,6 +302,8 @@
 │   │   │   │   ├── test_model_health.py
 │   │   │   │   ├── test_model_routing.py
 │   │   │   │   ├── test_rate_limiting.py
+│   │   │   │   ├── test_settings_isolation.py
+│   │   │   │   ├── test_tasks.py
 │   │   │   │   ├── tools
 │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   ├── test_document_generic_search_rag.py
@@ -330,6 +339,7 @@
 │   │   │   │       │   │   ├── test_conversation_with_project.py
 │   │   │   │       │   │   ├── test_conversation_with_project_files.py
 │   │   │   │       │   │   ├── test_conversations_with_co2_impact.py
+│   │   │   │       │   │   ├── test_edit_in_docs.py
 │   │   │   │       │   │   ├── test_score_message.py
 │   │   │   │       │   │   └── test_stop_streaming.py
 │   │   │   │       │   ├── test_create.py
@@ -380,6 +390,7 @@
 │   │   │       ├── __init__.py
 │   │   │       ├── attachments.py
 │   │   │       ├── conversations.py
+│   │   │       ├── edit_in_docs.py
 │   │   │       ├── files.py
 │   │   │       ├── filters.py
 │   │   │       ├── health.py
@@ -401,7 +412,9 @@
 │   │   │   ├── settings.py
 │   │   │   ├── tests
 │   │   │   │   ├── __init__.py
-│   │   │   │   └── test_settings_llm_configurations.py
+│   │   │   │   ├── test_settings_docs.py
+│   │   │   │   ├── test_settings_llm_configurations.py
+│   │   │   │   └── test_settings_oidc_refresh_token_key.py
 │   │   │   ├── urls.py
 │   │   │   └── wsgi.py
 │   │   ├── core
@@ -436,7 +449,8 @@
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── commands
 │   │   │   │       ├── __init__.py
-│   │   │   │       └── bucket_cors.py
+│   │   │   │       ├── bucket_cors.py
+│   │   │   │       └── celery_check.py
 │   │   │   ├── middleware.py
 │   │   │   ├── migrations
 │   │   │   │   ├── 0001_initial.py
@@ -699,7 +713,8 @@
 │   │   │   │   │   │   │   │   ├── uploadProjectFiles.ts
 │   │   │   │   │   │   │   │   ├── useCreateConversationAttachment.tsx
 │   │   │   │   │   │   │   │   ├── useDeleteProjectAttachment.tsx
-│   │   │   │   │   │   │   │   └── useProjectAttachments.tsx
+│   │   │   │   │   │   │   │   ├── useProjectAttachments.tsx
+│   │   │   │   │   │   │   │   └── useReindexProjectAttachment.tsx
 │   │   │   │   │   │   │   ├── hooks
 │   │   │   │   │   │   │   │   └── useUploadFile.tsx
 │   │   │   │   │   │   │   └── types.tsx
@@ -756,6 +771,7 @@
 │   │   │   │   │   │   │   │   ├── useConversations.tsx
 │   │   │   │   │   │   │   │   ├── useCreateConversation.tsx
 │   │   │   │   │   │   │   │   ├── useCreateProject.tsx
+│   │   │   │   │   │   │   │   ├── useEditInDocs.tsx
 │   │   │   │   │   │   │   │   ├── useLLMConfiguration.tsx
 │   │   │   │   │   │   │   │   ├── useProjects.tsx
 │   │   │   │   │   │   │   │   ├── useRemoveConversation.tsx
@@ -780,6 +796,7 @@
 │   │   │   │   │   │   │   │   ├── MessageBlock.tsx
 │   │   │   │   │   │   │   │   ├── MessageItem.tsx
 │   │   │   │   │   │   │   │   ├── ModelSelector.tsx
+│   │   │   │   │   │   │   │   ├── MoreActionsButton.tsx
 │   │   │   │   │   │   │   │   ├── ProjectWelcomeMessage.tsx
 │   │   │   │   │   │   │   │   ├── ScrollDown.tsx
 │   │   │   │   │   │   │   │   ├── SendButton.tsx
@@ -1083,7 +1100,7 @@
 │   │   │   │   └── theme_customization_file_cm.yaml
 │   │   │   └── values.yaml
 │   │   ├── env.d
-│   │   │   ├── dev
+│   │   │   ├── common
 │   │   │   │   ├── configuration
 │   │   │   │   │   ├── llm
 │   │   │   │   │   │   └── demo.json
@@ -1091,6 +1108,10 @@
 │   │   │   │   │       └── demo.json
 │   │   │   │   ├── values.conversations.yaml.gotmpl
 │   │   │   │   └── values.dev-backend.yaml.gotmpl
+│   │   │   ├── dev
+│   │   │   │   └── values.oidc.yaml.gotmpl
+│   │   │   ├── dev-proconnect
+│   │   │   │   └── values.oidc.yaml.gotmpl
 │   │   │   └── dev-staging
 │   │   │       └── values.conversations.yaml.gotmpl
 │   │   └── helmfile.yaml.gotmpl
@@ -1107,4 +1128,4 @@
 │       ├── package.json
 │       └── yarn.lock
 └── yarn.lock
-229 directories, 880 files
+231 directories, 899 files

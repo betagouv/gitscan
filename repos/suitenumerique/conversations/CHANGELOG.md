@@ -13,6 +13,8 @@ and this project adheres to
 - ✨(back) add model fallback mechanism
 - ✨(back) add celery for running background tasks
 - 🧱(helm) add celery worker and beat deployments
+- ✨(front) add "Edit in Docs" action to export a message to Docs
+
 
 ### Changed
 
@@ -22,6 +24,7 @@ and this project adheres to
 ### Fixed
 
 - 🐛(front) prevent app crash for users without a full name or email
+- ✨(back) process project files asynchronously with indexing state
 
 ## [0.0.19] - 2026-06-24
 
