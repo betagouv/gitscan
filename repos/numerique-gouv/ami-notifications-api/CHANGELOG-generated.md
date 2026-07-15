@@ -1,30 +1,41 @@
-## Changelog : ami-notifications-api (30 derniers jours, au 02 juillet 2026)
+## Changelog : ami-notifications-api (30 derniers jours, au 13 juillet 2026)
 
 ### Résumé
-Cette mise à jour apporte des améliorations significatives à l'interface utilisateur, notamment une refonte de la gestion des suivis et des requêtes, ainsi que l'implémentation d'une authentification via FranceConnect pour un nouveau cas d'usage (ami-fi). Des corrections d'accessibilité (RGAA) et des optimisations de performance ont également été réalisées.
+Les dernières mises à jour apportent des améliorations significatives à l'interface utilisateur, notamment concernant la gestion des suivis (followup) et des requêtes, avec l'ajout de fonctionnalités d'archivage et une refonte de l'affichage. Des améliorations de sécurité et d'authentification, notamment avec l'intégration de FranceConnect, ont également été implémentées. Enfin, des corrections d'accessibilité (RGAA) et des optimisations de performance ont été réalisées.
 
 ### Évolutions fonctionnelles
-- **Gestion des suivis et requêtes :** Refonte complète de l'interface utilisateur pour la gestion des suivis (anciennement "inventory") et des requêtes (anciennement "requests"). Cela inclut l'ajout d'une page d'archivage, la possibilité d'archiver des éléments, et une simplification de l'affichage. [#776]
-- **Authentification FranceConnect (ami-fi) :** Implémentation d'un nouveau flux d'authentification via FranceConnect pour le cas d'usage "ami-fi", incluant la gestion des providers, des tokens et la redirection après authentification. [#907, #917]
-- **Icônes de notifications :** Amélioration de la gestion des icônes de notifications, avec la possibilité de déduire l'icône à partir de l'état de l'élément associé ou du partenaire. [#952]
-- **API Événements v2 :** Implémentation d'un nouvel endpoint PUT pour les événements v2, avec des validations renforcées sur les champs parent. [#940]
-- **Page d'accueil après login :** Amélioration de l'expérience utilisateur après la connexion, avec un chargement plus fluide de la page d'accueil. [#1014]
+- **Gestion des suivis (followup) :**
+    - Ajout de la possibilité d'archiver les suivis.
+    - Refonte de l'affichage des suivis, simplification de l'interface et suppression des onglets.
+    - Ajout d'une page dédiée aux suivis archivés.
+    - Ajout d'un bouton "procédure" pour les suivis.
+- **Authentification :**
+    - Intégration d'un nouveau processus de connexion via FranceConnect, incluant une page dédiée et une gestion des providers.
+    - Amélioration de la gestion des sessions et de la déconnexion pour éviter les erreurs d'intégrité.
+- **Notifications :**
+    - Amélioration de l'affichage des icônes de notification, avec une déduction automatique à partir des informations de l'élément associé.
+    - Ajout du champ `item_is_archived` aux notifications.
+- **API :**
+    - Ajout d'un endpoint PUT pour les événements v2.
+    - Expose les champs `external_item_type` et `external_item_id` dans l'API followup.
+    - Modification de l'API pour gérer l'archivage des éléments.
 
 ### Évolutions techniques
-- **Refactoring du code front-end :** Renommage de plusieurs librairies et routes front-end pour une meilleure cohérence (agenda, followup, requests). [#1018]
-- **Optimisation des performances :** Ajout de `select_related` dans l'API de listage des notifications pour améliorer les performances. [#952]
-- **Utilisation de django-tasks-db :** Intégration de `django-tasks-db` pour la gestion des tâches asynchrones. [#956]
-- **Mises à jour de dépendances :** Mises à jour de plusieurs dépendances, notamment `ujson`, `msgpack`, `pyjwt`, `webob`, et des dépendances de développement.
-- **Configuration Vite :** Configuration de Vite pour LightningCSS.
+- **Infrastructure :**
+    - Mise à jour de plusieurs dépendances (ujson, msgpack, pyjwt, webob, etc.).
+    - Utilisation de `django-tasks-db` par défaut pour la gestion des tâches asynchrones.
+    - Configuration de Vite pour LightningCSS.
+- **Code :**
+    - Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+    - Renommage de certaines librairies et routes pour une meilleure cohérence (catalog -> agenda, inventory -> followup, requests -> followup).
+    - Suppression de code obsolète.
+    - Ajout de tests unitaires pour certaines fonctionnalités.
+- **Sécurité :**
+    - Amélioration de la gestion des cookies pour la connexion via FranceConnect.
 
 ### Autres changements
-- **Accessibilité (RGAA) :** Corrections d'accessibilité pour améliorer la conformité aux normes RGAA (titres, boutons, attributs alt des images). [#924, #926, #927, #929]
-- **Documentation :** Amélioration de la documentation et du code.
-- **Nettoyage de code :** Suppression de code obsolète et amélioration de la lisibilité du code.
-- **Tests :** Amélioration des tests unitaires, notamment pour la page de préférences de zone. [#789]
-- **Gestion des logs :** Amélioration de la gestion des logs pour les tâches d'envoi de notifications.
-- **Suppression de messages de succès inutiles :** Suppression des messages de succès affichés en cas d'erreur lors des appels API. [#940]
-- **Exclusion des notifications expirées :** Exclusion des notifications avec une date de validité dépassée lors de la récupération en liste. [#674]
-- **Amélioration du traitement des erreurs :** Amélioration de la gestion des erreurs lors de la déconnexion. [#971]
-- **Suppression des cookies inutiles :** Suppression des cookies inutiles lors de la connexion ami-fi. [#907]
-- **Amélioration des descriptions des PR :** Exclusion des descriptions des PR Dependabot dans les logs. [#981]
+- Corrections d'accessibilité (RGAA) concernant les boutons, les titres et les champs de formulaire.
+- Amélioration de la gestion des logs et des erreurs.
+- Mise à jour de la documentation.
+- Correction de bugs mineurs et amélioration de la stabilité de l'application.
+- Suppression de l'affichage de la description des pull requests de Dependabot dans les logs.
