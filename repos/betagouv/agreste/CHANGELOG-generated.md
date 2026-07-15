@@ -1,34 +1,33 @@
-## Changelog : agreste (30 derniers jours, au 02 juillet 2026)
+## Changelog : agreste (30 derniers jours, au 13 juillet 2026)
 
 ### Résumé
-Ce mois-ci, le projet agreste a connu des avancées significatives dans la gestion et l'affichage des publications, des thèmes et des collections. Des améliorations ont été apportées à la migration des données, à l'interface utilisateur (notamment les filtres et les résultats de recherche), et à l'infrastructure de déploiement. Des corrections de bugs et des optimisations de performance ont également été réalisées.
+Cette période a été marquée par des améliorations significatives de la recherche, avec l'ajout de filtres et la correction de problèmes de doublons. Des efforts ont également été déployés pour améliorer la gestion des médias, l'automatisation des déploiements et la robustesse de l'application, notamment via des scripts de diagnostic et des corrections de bugs. Enfin, des améliorations ont été apportées à l'interface utilisateur et à la gestion des traductions.
 
 ### Évolutions fonctionnelles
-- Ajout de la gestion des Publications, des Thèmes et des Collections.
-- Amélioration du filtre des publications : les thèmes sont maintenant affichés au-dessus des collections dans la barre de recherche [#24](https://github.com/betagouv/agreste/pull/24).
-- Possibilité de personnaliser le libellé du bouton "Voir toutes les publications".
-- Le bouton "Voir toutes les publications" filtre désormais correctement les résultats.
-- Correction d'une erreur 500 lors du changement de type d'en-tête avec une image d'arrière-plan [#512](https://github.com/betagouv/agreste/pull/512).
-- Correction d'une erreur 500 liée à l'absence d'image [#90da814](https://github.com/betagouv/agreste/commit/90da814).
-- Suppression des thèmes des cartes de résultats dans la page d'index des publications et dans le bloc "Publications récentes".
-- Ajout d'un nouveau bloc "Publications récentes" et enregistrement de ce bloc à différents endroits de l'arborescence des blocs.
+- **Recherche :** Ajout de filtres de recherche avancés (facettes) permettant un affinement plus précis des résultats. Les thèmes sont désormais affichés au-dessus des collections dans les filtres. [#32](https://github.com/betagouv/agreste/pull/32), [#33](https://github.com/betagouv/agreste/pull/33)
+- **Publications :** Amélioration du bloc "Publications récentes" avec des options de personnalisation (libellé du bouton, filtrage des résultats). [#21](https://github.com/betagouv/agreste/pull/21)
+- **Interface utilisateur :**
+    - Ajout de la possibilité de choisir le type de balise (heading) dans le stepper.
+    - Amélioration de l'affichage des tags sélectionnés.
+    - Correction d'un bug d'alignement de div dans l'éditeur de texte riche.
+- **Médias :** Scripts améliorés pour la sauvegarde et la restauration des médias.
 
 ### Évolutions techniques
-- Mise en place d'un workflow de publication via GitHub Actions et publication sur PyPi [#515](https://github.com/betagouv/agreste/pull/515).
-- Amélioration de la recette de mise à jour pour gérer le projet de démonstration [#527](https://github.com/betagouv/agreste/pull/527).
-- Mise en place du déploiement en un clic sur Scalingo [#487](https://github.com/betagouv/agreste/pull/487).
-- Correction d'erreurs de validation dans le fichier `publiccode.yml` [#496](https://github.com/betagouv/agreste/pull/496).
-- Correction du setup Docker [#519](https://github.com/betagouv/agreste/pull/519).
-- Refactorisation du code pour utiliser un code commun pour les taxonomies.
-- Ajout de tests unitaires et d'intégration pour les nouvelles fonctionnalités.
-- Migration des données de publications : plusieurs phases de migration ont été implémentées et testées.
-- Amélioration de la gestion des URL pour les filtres.
-- Suppression de la gestion des thèmes dans le menu (simplification).
+- **CI/CD :**
+    - Mise en place d'un workflow GitHub Actions pour la création et la publication des releases sur PyPi. [#18](https://github.com/betagouv/agreste/pull/18)
+    - Amélioration du workflow de déploiement sur Scalingo.
+    - Correction de bugs dans le workflow de publication.
+- **Monitoring :** Ajout de scripts pour surveiller l'utilisation de la mémoire et la latence de Gunicorn. [#31](https://github.com/betagouv/agreste/pull/31)
+- **Refactoring :**
+    - Refactorisation du code pour maximiser la réutilisation et simplifier la maintenance.
+    - Suppression de code redondant dans le module "publications".
+- **Tests :** Ajout et amélioration des tests unitaires et d'intégration, notamment pour les templates et les blocs de contenu.
+- **Internationalisation (i18n) :** Indépendance des traductions par rapport à `sites_conformes`, correction des outils de traduction. [#34](https://github.com/betagouv/agreste/pull/34), [#35](https://github.com/betagouv/agreste/pull/35)
 
 ### Autres changements
-- Mise à jour de la documentation et du fichier README.
-- Correction de plusieurs erreurs de linting.
-- Mise à jour des dépendances (requests, sqlparse, urllib3, python-dotenv, idna, cryptography, pillow) dans le projet de démonstration.
-- Ajout de commentaires pour faciliter la maintenance et la compréhension du code.
-- Suppression d'un script de gestion des traductions devenu inutile.
-- Bump de version : 2.4.0-4.0.1, 3.1.1-4.0.1, 4.0.0-rc1-2.3.0, 4.0.0-rc1-2.2.0, 4.0.0-rc1-2.1.0.
+- Mise à jour de la documentation pour refléter les changements apportés à ProConnect. [#547](https://github.com/betagouv/agreste/pull/547)
+- Amélioration de la recette de mise à niveau pour gérer le projet de démonstration. [#527](https://github.com/betagouv/agreste/pull/527)
+- Correction d'une erreur 500 lors du changement de type d'en-tête avec une image d'arrière-plan. [#512](https://github.com/betagouv/agreste/pull/512)
+- Correction d'une erreur 500 liée à l'absence d'image.
+- Diverses corrections de bugs et améliorations de la qualité du code.
+- Bump de version : 2.4.0-4.0.1, 2.4.1-4.0.2, 3.1.1-4.0.1.

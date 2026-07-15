@@ -38,6 +38,11 @@
 │   ├── settings_test.py
 │   ├── urls.py
 │   └── wsgi.py
+├── content_manager
+│   └── locale
+│       └── fr
+│           └── LC_MESSAGES
+│               └── django.mo
 ├── cron.json.example
 ├── demo
 │   ├── README.md
@@ -115,6 +120,27 @@
 │   ├── index.md
 │   └── requirements.txt
 ├── entrypoint.sh
+├── faceted_search
+│   ├── __init__.py
+│   ├── apps.py
+│   ├── filters.py
+│   ├── locale
+│   │   └── fr
+│   │       └── LC_MESSAGES
+│   │           ├── django.mo
+│   │           └── django.po
+│   ├── templates
+│   │   └── faceted_search
+│   │       ├── blocks
+│   │       │   └── search_filters.html
+│   │       └── search_results.html
+│   ├── templatetags
+│   │   ├── __init__.py
+│   │   └── faceted_search_tags.py
+│   ├── tests
+│   │   ├── __init__.py
+│   │   └── test_filters.py
+│   └── views.py
 ├── justfile
 ├── manage.py
 ├── package-lock.json
@@ -138,6 +164,7 @@
 │   │       └── migrate_blog_to_publications.py
 │   ├── migrations
 │   │   ├── 0001_initial.py
+│   │   ├── 0002_alter_collection_colophon_alter_theme_colophon.py
 │   │   ├── __init__.py
 │   │   └── data_migrations
 │   │       ├── __init__.py
@@ -174,13 +201,15 @@
 │   ├── clear_local_db.sh
 │   ├── descend_prod_db.sh
 │   ├── descend_prod_medias.sh
+│   ├── fetch_scalingo_metrics.py
 │   ├── nginx_generate_config_file.sh
 │   ├── restore_local_db.sh
 │   ├── restore_local_medias.sh
 │   ├── restore_prod_db.sh
 │   ├── restore_prod_medias.sh
-│   └── sample_conf_files
-│       └── nginx.conf.template
+│   ├── sample_conf_files
+│   │   └── nginx.conf.template
+│   └── track_requests_latency.py
 ├── sites_conformes
 │   ├── __init__.py
 │   ├── _version.py
@@ -258,6 +287,7 @@
 │   │   │   ├── 0058_invert_hero_text_position.py
 │   │   │   ├── 0059_blogentrypage_exclude_from_sitemap_and_more.py
 │   │   │   ├── 0060_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
+│   │   │   ├── 0061_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── templates
@@ -272,6 +302,7 @@
 │   │   │       └── tags_list_page.html
 │   │   ├── tests
 │   │   │   ├── __init__.py
+│   │   │   ├── test_blog_index_page.py
 │   │   │   ├── test_search.py
 │   │   │   └── test_views.py
 │   │   └── views.py
@@ -395,6 +426,7 @@
 │   │   │   ├── 0075_catalogindexpage_exclude_from_sitemap_and_more.py
 │   │   │   ├── 0076_cmsdsfrconfig_language_selector_mode_and_more.py
 │   │   │   ├── 0077_alter_catalogindexpage_body_alter_contentpage_body.py
+│   │   │   ├── 0078_alter_catalogindexpage_body_alter_contentpage_body.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── page_templates
@@ -411,6 +443,7 @@
 │   │   │   │   ├── undraw_female_avatar_efig.svg
 │   │   │   │   └── undraw_male_avatar_g98d.svg
 │   │   │   └── pages_data.json
+│   │   ├── search_registry.py
 │   │   ├── services
 │   │   │   ├── __init__.py
 │   │   │   ├── accessors.py
@@ -511,6 +544,7 @@
 │   │   │   ├── test_force_script_name.py
 │   │   │   ├── test_managers.py
 │   │   │   ├── test_search.py
+│   │   │   ├── test_search_registry.py
 │   │   │   ├── test_services_accessors.py
 │   │   │   ├── test_services_import_export.py
 │   │   │   ├── test_utils.py
@@ -627,6 +661,7 @@
 │   │   │   ├── 0030_invert_hero_text_position.py
 │   │   │   ├── 0031_evententrypage_exclude_from_sitemap_and_more.py
 │   │   │   ├── 0032_alter_evententrypage_body_alter_eventsindexpage_body.py
+│   │   │   ├── 0033_alter_evententrypage_body_alter_eventsindexpage_body.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── static
@@ -883,4 +918,4 @@
 │   └── utils
 │       └── __init__.py
 └── uv.lock
-152 directories, 733 files
+165 directories, 755 files
