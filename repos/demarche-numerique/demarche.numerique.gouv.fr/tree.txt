@@ -2041,6 +2041,7 @@
 │   │   │   ├── purge_old_brevo_mails_job.rb
 │   │   │   ├── purge_old_email_event_job.rb
 │   │   │   ├── purge_orphan_referentiels_job.rb
+│   │   │   ├── purge_soft_deleted_blobs_job.rb
 │   │   │   ├── purge_stale_archives_job.rb
 │   │   │   ├── purge_stale_batch_operation_job.rb
 │   │   │   ├── purge_stale_exports_job.rb
@@ -2292,6 +2293,7 @@
 │   │   │   ├── champ_conditional_concern.rb
 │   │   │   ├── champ_external_data_concern.rb
 │   │   │   ├── champ_revision_concern.rb
+│   │   │   ├── champ_stream_concern.rb
 │   │   │   ├── champ_validate_concern.rb
 │   │   │   ├── columns_concern.rb
 │   │   │   ├── domain_migratable_concern.rb
@@ -2307,6 +2309,7 @@
 │   │   │   ├── dossier_searchable_concern.rb
 │   │   │   ├── dossier_sections_concern.rb
 │   │   │   ├── dossier_state_concern.rb
+│   │   │   ├── dossier_stream_concern.rb
 │   │   │   ├── dossier_validate_concern.rb
 │   │   │   ├── email_sanitizable_concern.rb
 │   │   │   ├── initiation_procedure_concern.rb
@@ -2558,6 +2561,7 @@
 │   │   │   ├── piece_justificative_service.rb
 │   │   │   └── validation.rb
 │   │   ├── bill_signature_service.rb
+│   │   ├── blob_service.rb
 │   │   ├── browser_support.rb
 │   │   ├── clamav_service.rb
 │   │   ├── clone_pieces_justificatives_service.rb
@@ -4726,7 +4730,9 @@
 │   │   ├── 20260618000000_add_instructeurs_can_edit_dossiers_to_procedures.rb
 │   │   ├── 20260622131426_add_estimated_processing_duration_visible_to_procedures.rb
 │   │   ├── 20260625153605_add_requires_ip_filtering_to_api_tokens.rb
-│   │   └── 20260625153641_change_requires_ip_filtering_default.rb
+│   │   ├── 20260625153641_change_requires_ip_filtering_default.rb
+│   │   ├── 20260703000000_add_soft_delete_at_to_active_storage_blobs.rb
+│   │   └── 20260713000000_rename_soft_delete_at_to_soft_deleted_at_on_active_storage_blobs.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── doc
@@ -5566,6 +5572,8 @@
 │   │   │   ├── purge_manager_administrateur_sessions_job_spec.rb
 │   │   │   ├── purge_old_email_event_job_spec.rb
 │   │   │   ├── purge_orphan_referentiels_job_spec.rb
+│   │   │   ├── purge_soft_deleted_blobs_job_spec.rb
+│   │   │   ├── purge_unattached_blobs_job_spec.rb
 │   │   │   ├── release_crashed_export_job_spec.rb
 │   │   │   ├── send_api_entreprise_token_expiration_notice_job_spec.rb
 │   │   │   ├── send_api_token_expiration_notice_job_spec.rb
@@ -5592,7 +5600,8 @@
 │   │   └── web_hook_job_spec.rb
 │   ├── lib
 │   │   ├── active_storage
-│   │   │   └── downloadable_file_spec.rb
+│   │   │   ├── downloadable_file_spec.rb
+│   │   │   └── fog_openstack_bulk_delete_spec.rb
 │   │   ├── api
 │   │   │   └── client_spec.rb
 │   │   ├── api_datagouv
@@ -5937,6 +5946,7 @@
 │   │   │   ├── piece_justificative_service_spec.rb
 │   │   │   └── validation_spec.rb
 │   │   ├── bill_signature_service_spec.rb
+│   │   ├── blob_service_spec.rb
 │   │   ├── clamav_service_spec.rb
 │   │   ├── commentaire_service_spec.rb
 │   │   ├── create_avis_service_spec.rb
@@ -6326,4 +6336,4 @@
 │           └── leaflet.scss
 ├── vite.config.ts
 └── vitest.config.ts
-1019 directories, 5626 files
+1019 directories, 5636 files
