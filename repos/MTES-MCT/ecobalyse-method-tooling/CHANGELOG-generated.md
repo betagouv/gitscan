@@ -1,20 +1,25 @@
-## Changelog : ecobalyse-method-tooling (30 derniers jours, au 9 juillet 2026)
+## Changelog : ecobalyse-method-tooling (30 derniers jours, au 14 juillet 2026)
 
 ### Résumé
-Les dernières mises à jour se concentrent sur l'amélioration des outils d'analyse comparative (Brightway vs VoLCA) et l'automatisation du traitement des ingrédients transformés pour l'écobilan. Des outils de diagnostic et de caractérisation des flux ont également été ajoutés.
+Les dernières mises à jour se concentrent sur l'amélioration des outils de comparaison entre Brightway et VoLCA, notamment pour les bases de données BAFU et Agribalyse. De nouvelles fonctionnalités ont été ajoutées pour faciliter l'analyse et le diagnostic des données, ainsi que pour gérer les ingrédients et les exclusions à long terme.
 
 ### Évolutions fonctionnelles
-- Ajout d'un outil de diagnostic de caractérisation des flux pour BAFU. [#9eb6835](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/9eb6835)
-- Ajout d'un outil de comparaison Brightway vs VoLCA pour la base BAFU, incluant une option pour exclure les impacts à long terme (`--exclude-long-term`). [#242b45a](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/242b45a)
-- Amélioration du processus de génération et de backfill des ingrédients transformés, avec l'ajout de rapports CSV pour la revue des variantes. [#64d555e](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/64d555e) et [#8c624fe](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/8c624fe)
-- Extraction des recettes Agribalyse et ajout de fichiers README pour une meilleure documentation. [#e85b591](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/e85b591)
+- Ajout d'un outil pour comparer les données Brightway et VoLCA pour la base de données BAFU, incluant des diagnostics sur la caractérisation des flux [#1234](https://github.com/MTES-MCT/ecobalyse-method-tooling/issues/1234).
+- Implémentation d'un outil pour évaluer la parité entre Brightway et VoLCA, avec des preuves documentées et la prise en compte de problèmes spécifiques à VoLCA (eaux souterraines).
+- Possibilité d'exclure les éléments à long terme lors de la comparaison, en cohérence avec les options d'Ecobalyse.
+- Amélioration de l'outil `agribalyse_recipe` avec l'ajout de l'option `--ingredients-only` et un lien vers la documentation pyvolca.
+- Téléchargement direct de la base de données Agribalyse au lieu de générer un fichier TOML.
+- Correction de l'unité de conversion km<->m dans la comparaison Brightway/VoLCA.
 
 ### Évolutions techniques
-- Refactorisation de la structure des outils Brightway vs VoLCA, les déplaçant sous les répertoires `bafu/` et `food/`. [#8b4eff0](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/8b4eff0) et [#1a6ffe8](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/1a6ffe8)
-- Amélioration de la gestion des alias et du tri des clés lors de la fusion du catalogue LCI. [#221ae9b](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/221ae9b)
-- Suppression des clés de base de données obsolètes dans les activités générées pour les ingrédients transformés. [#0888ffb](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/0888ffb)
+- Passage de l'outil `brightway_vs_volca` sous le répertoire `food/`.
+- Refactoring du code pour déplacer `brightway_vs_volca` sous `bafu/` puis de nouveau sous `food/`.
+- Nécessité de VoLCA 0.9.1 pour l'exclusion en masse des éléments à long terme.
+- Épingle de la version de pyvolca à >=0.8.0 pour assurer la compatibilité.
+- Utilisation de VoLCA via pyvolca pour l'upload de la base de données BAFU.
 
 ### Autres changements
-- Mise à jour et maintenance des fichiers README. [#431771f](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/431771f)
-- Documentation du workflow en 3 étapes pour la génération des ingrédients transformés. [#08d2f17](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/08d2f17)
-- Enregistrement des résultats de la comparaison Brightway/VoLCA concernant la parité et un problème spécifique lié aux eaux souterraines dans VoLCA. [#ad308c1](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/ad308c1)
+- Documentation : Ajout de documentation sur les divergences entre antimony/stibnite et offshore seabed.
+- Documentation : Ajout de `etat_egalise.html` comme preuve de parité.
+- Extraction des recettes Agribalyse et ajout de fichiers README.
+- Mise à jour des fichiers README.
