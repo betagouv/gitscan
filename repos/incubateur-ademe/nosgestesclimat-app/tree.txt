@@ -119,6 +119,7 @@
 │   │   │   ├── core
 │   │   │   │   ├── __tests__
 │   │   │   │   │   ├── fixtures
+│   │   │   │   │   │   ├── authentication.fixture.ts
 │   │   │   │   │   │   └── server.fixture.ts
 │   │   │   │   │   └── is-safe-redirect-url.spec.ts
 │   │   │   │   ├── allowed-urls.ts
@@ -146,11 +147,13 @@
 │   │   │   │   ├── pagination.ts
 │   │   │   │   ├── publish-api-event.ts
 │   │   │   │   ├── ts-rest.ts
-│   │   │   │   └── typeguards
-│   │   │   │       ├── isAuthenticated.ts
-│   │   │   │       ├── isPromiseAllSettled.ts
-│   │   │   │       ├── isRetryableAxiosError.ts
-│   │   │   │       └── isScalewayError.ts
+│   │   │   │   ├── typeguards
+│   │   │   │   │   ├── isPromiseAllSettled.ts
+│   │   │   │   │   ├── isRetryableAxiosError.ts
+│   │   │   │   │   ├── isScalewayError.ts
+│   │   │   │   │   └── isVerifiedUser.ts
+│   │   │   │   └── types
+│   │   │   │       └── user.ts
 │   │   │   ├── features
 │   │   │   │   ├── authentication
 │   │   │   │   │   ├── __tests__
@@ -160,7 +163,6 @@
 │   │   │   │   │   │   │   └── verification-codes.fixture.ts
 │   │   │   │   │   │   ├── login.spec.ts
 │   │   │   │   │   │   ├── logout.spec.ts
-│   │   │   │   │   │   ├── multi-device-sync.spec.ts
 │   │   │   │   │   │   └── reconcile-simulations-after-login.spec.ts
 │   │   │   │   │   ├── authentication.controller.ts
 │   │   │   │   │   ├── authentication.service.ts
@@ -288,7 +290,6 @@
 │   │   │   │   │   │   ├── download-organisation-poll-simulations-result.spec.ts
 │   │   │   │   │   │   ├── fetch-organisation-poll.spec.ts
 │   │   │   │   │   │   ├── fetch-organisation-polls.spec.ts
-│   │   │   │   │   │   ├── fetch-organisation-public-poll-simulations.spec.ts
 │   │   │   │   │   │   ├── fetch-organisation-public-poll.spec.ts
 │   │   │   │   │   │   ├── fetch-organisation.spec.ts
 │   │   │   │   │   │   ├── fetch-organisations.spec.ts
@@ -353,7 +354,6 @@
 │   │   │   │   │   └── stats.validator.ts
 │   │   │   │   └── users
 │   │   │   │       ├── __tests__
-│   │   │   │       │   ├── fetch-me.spec.ts
 │   │   │   │       │   ├── fetch-user-brevo-contact.spec.ts
 │   │   │   │       │   ├── fixtures
 │   │   │   │       │   │   └── users.fixture.ts
@@ -1509,6 +1509,7 @@
 │       │   │   │   ├── categoriesAccordion
 │       │   │   │   │   ├── SubcategoriesList.tsx
 │       │   │   │   │   ├── _client
+│       │   │   │   │   │   ├── AccordionItemWrapper.tsx
 │       │   │   │   │   │   ├── AnimatedAccordionItem.tsx
 │       │   │   │   │   │   └── ServicesDescription.tsx
 │       │   │   │   │   └── subcategoriesList
@@ -1837,15 +1838,15 @@
 │       │   │   │   └── getFormattedDate.ts
 │       │   │   ├── foldEveryQuestionsUntil.ts
 │       │   │   ├── formatters
-│       │   │   │   ├── formatFootprint.ts
-│       │   │   │   └── getCategoryTitle.ts
+│       │   │   │   └── formatFootprint.ts
 │       │   │   ├── getCategoriesDisplayData.tsx
 │       │   │   ├── getCategoryColorClass.ts
 │       │   │   ├── getLocalisedMDX.ts
 │       │   │   ├── getServerTranslation.ts
 │       │   │   ├── groups
 │       │   │   │   ├── getTopThreeAndRestMembers.ts
-│       │   │   │   └── getUserCategoryFootprintsSortedByDifference.ts
+│       │   │   │   ├── getUserCategoryFootprintsSortedByDifference.ts
+│       │   │   │   └── isFullSimulation.ts
 │       │   │   ├── iframe
 │       │   │   │   ├── postMessageToIntegrator.test.ts
 │       │   │   │   ├── postMessageToIntegrator.ts
@@ -2199,7 +2200,7 @@
 │       │   │   │   ├── login.ts
 │       │   │   │   ├── logout.ts
 │       │   │   │   ├── require-auth-user.ts
-│       │   │   │   └── with-user-id.ts
+│       │   │   │   └── with-user-session.ts
 │       │   │   ├── cms
 │       │   │   │   ├── fetchAllArticleTitlesAndSlugs.ts
 │       │   │   │   ├── fetchArticlePageContent.ts
@@ -2526,4 +2527,4 @@
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 └── tsconfig.json
-647 directories, 1926 files
+648 directories, 1926 files
