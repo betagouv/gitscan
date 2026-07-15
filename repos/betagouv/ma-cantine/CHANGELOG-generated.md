@@ -1,33 +1,41 @@
-## Changelog : ma-cantine (30 derniers jours, au 6 juillet 2026)
+## Changelog : ma-cantine (30 derniers jours, au 13 juillet 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives sur la gestion des achats, notamment l'ajout de nouvelles informations liées à l'origine des produits (circuit court, local) et la refonte de l'API pour faciliter leur intégration. Des améliorations ont également été apportées à l'historisation des données et à la gestion des diagnostics.
+Les dernières mises à jour de ma-cantine améliorent l'expérience utilisateur pour les achats, notamment avec une meilleure présentation des informations et la correction de bugs liés aux imports et à l'envoi de formulaires. Des améliorations techniques ont été apportées à l'API et à l'historisation des données, ainsi qu'à la gestion des commandes et des logs.
 
 ### Évolutions fonctionnelles
-- Ajout d'un bandeau de service réduit sur la page Contact.
-- Amélioration de la distinction visuelle des libellés et valeurs dans les formulaires d'achats.
-- Remontée du bloc de facture dans les achats.
-- Possibilité de dupliquer un achat en sélectionnant une autre cantine.
-- Ajout de nouveaux guides du CNRC dans la section Ressources.
-- Correction du lien vers l'ancienne page d'import des achats SIRET.
-- Renommage de la catégorie 'Boulangerie / Pâtisserie fraîches' (suppression de 'et surgelées').
+- Ajout d'un bandeau de service réduit pour le contact ([#6889](https://github.com/betagouv/ma-cantine/issues/6889)).
+- Amélioration de la présentation des libellés et des valeurs dans les formulaires d'achats ([#6885](https://github.com/betagouv/ma-cantine/issues/6885)).
+- Remontée du bloc de facture dans les achats ([#6888](https://github.com/betagouv/ma-cantine/issues/6888)).
+- Correction du bug d'envoi du formulaire "Acteurs de l'écosystème" ([#6895](https://github.com/betagouv/ma-cantine/issues/6895)).
+- Correction de la colonne "definition_local_km" dans les nouveaux imports d'achats ([#6896](https://github.com/betagouv/ma-cantine/issues/6896)).
+- Correction du lien vers l'ancienne page d'import des achats SIRET ([#6884](https://github.com/betagouv/ma-cantine/issues/6884)).
+- Renommage de la catégorie 'Boulangerie / Pâtisserie fraîches' pour enlever 'et surgelées' ([#6890](https://github.com/betagouv/ma-cantine/issues/6890)).
+- Ajout des nouveaux guides du CNRC dans la section "Ressources" ([#6835](https://github.com/betagouv/ma-cantine/issues/6835)).
+- Ajout d'un sélecteur de cantine lors de la duplication d'un achat ([#6823](https://github.com/betagouv/ma-cantine/issues/6823)).
 
 ### Évolutions techniques
-- Refonte de l'API des achats : nouveaux endpoints pour la création, la lecture, la modification et la suppression des achats, ainsi que pour la gestion des factures.
-- Ajout de champs pour l'origine des produits (categories_egalim, origine, est_local, est_circuit_court) et de la définition du local avec un champ pour la distance en km.
-- Amélioration de l'historisation des données : ajout d'un champ `history_source` pour identifier l'application ayant modifié un objet, et propagation de ce champ à plusieurs modèles (Canteen, Diagnostic, WasteMeasurement, ResourceAction).
-- Remplacement de `authentication_method` par `history_source` dans l'historisation.
-- Déplacement des signaux d'historisation dans les modèles.
-- Amélioration de la gestion des logs pour les commandes de gestion.
-- Ajout de champs `creation_user` et `creation_source` pour suivre l'origine de la création des données.
-- Correction de bugs dans le script de remplissage des champs `invalid_reason_list` et `warning_reason_list` pour les diagnostics.
-- Marquage des TD avec un coût repas inférieur à 0.1 comme aberrantes.
-- Regroupement des endpoints API par lot fonctionnel.
-- Amélioration de l'affichage des champs "EGalim" et "Origine" dans les achats.
+- Amélioration de l'API : regroupement des endpoints par lot fonctionnel ([#6886](https://github.com/betagouv/ma-cantine/issues/6886)).
+- Correction des warnings affichés dans la console Swagger de l'API ([#6891](https://github.com/betagouv/ma-cantine/issues/6891)).
+- Ajout de champs `creation_user` et `creation_source` pour suivre l'origine de la création des données (cantines, bilans, achats, évaluations de gaspillage) ([#6831](https://github.com/betagouv/ma-cantine/issues/6831)).
+- Refactor de l'historisation des données : ajout d'un nouveau champ `history_source_api_oauth2_application` pour identifier l'application OAuth2 ayant modifié un objet ([#6869](https://github.com/betagouv/ma-cantine/issues/6869)).
+- Refactor de l'historisation : déplacement des signals dans le modèle ([#6865](https://github.com/betagouv/ma-cantine/issues/6865)).
+- Ajout d'une nouvelle classe `MaCantineBaseCommand` pour gérer le loggage des résultats des commandes de gestion ([#6838](https://github.com/betagouv/ma-cantine/issues/6838)).
+- Ajout d'une table `CommandLog` pour stocker les résultats des commandes de gestion ([#6837](https://github.com/betagouv/ma-cantine/issues/6837)).
+- Restriction de l'accès aux achats via l'API pour les éditeurs à leurs propres achats ([#6858](https://github.com/betagouv/ma-cantine/issues/6858)).
+- Ouverture de l'accès aux achats via l'API pour les éditeurs (OAuth2) ([#6857](https://github.com/betagouv/ma-cantine/issues/6857)).
+- Nouvel endpoint API pour la création d'achats avec des caractéristiques divisées en 4 parties ([#6855](https://github.com/betagouv/ma-cantine/issues/6855)).
+- Nouvel endpoint API pour la récupération, la modification et la suppression d'achats avec des caractéristiques divisées en 4 parties ([#6810](https://github.com/betagouv/ma-cantine/issues/6810)).
+- Nouvel endpoint API dédié à l'upload et la suppression de factures ([#6840](https://github.com/betagouv/ma-cantine/issues/6840)).
 
 ### Autres changements
-- Documentation de l'API : masquage du champ `creation_source` dans Swagger et remplissage du `help_text` des champs avec leur `verbose_name`.
-- Correction de warnings affichés dans la console Swagger.
-- Ajustements sur le formulaire d'achats.
-- Mise à jour des valeurs dans `definition_local` et ajout de `definition_local_km` pour les imports.
-- Suppression de la dépendance à un fichier `achats.json` obsolète.
+- Documentation de l'API : masquage du champ `creation_source` dans Swagger ([#6864](https://github.com/betagouv/ma-cantine/issues/6864), [#6863](https://github.com/betagouv/ma-cantine/issues/6863)).
+- Documentation de l'API : remplissage du `help_text` des champs avec leur `verbose_name` ([#6862](https://github.com/betagouv/ma-cantine/issues/6862)).
+- Refactor : remplacement de `authentication_method` par `history_source` dans l'historisation ([#6866](https://github.com/betagouv/ma-cantine/issues/6866)).
+- Refactor : ajout de `history_source` à d'autres modèles (Canteen, Diagnostic, WasteMeasurement, ResourceAction) ([#6868](https://github.com/betagouv/ma-cantine/issues/6868)).
+- Ajout des nouvelles propriétés `categories_egalim`, `origine`, `est_local` et `est_circuit_court` aux achats ([#6807](https://github.com/betagouv/ma-cantine/issues/6807)).
+- Refonte de la définition de "local" avec l'ajout d'un nouveau champ `definition_local_km` et des modifications des choix ([#6845](https://github.com/betagouv/ma-cantine/issues/6845)).
+- Amélioration de l'organisation de la page d'imports ([#6846](https://github.com/betagouv/ma-cantine/issues/6846)).
+- Correction d'un revert sur le fichier achats.json (fix du pre-commit) ([#6848](https://github.com/betagouv/ma-cantine/issues/6848)).
+- Ajout du champ `groupe_snapshot` au modèle `Diagnostic` et affichage dans l'admin ([#6799](https://github.com/betagouv/ma-cantine/issues/6799)).
+- Remplissage du champ `groupe_snapshot` pour les TD générées ([#6818](https://github.com/betagouv/ma-cantine/issues/6818)).
