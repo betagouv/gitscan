@@ -189,7 +189,10 @@
 │   │   │   │                   │   │   ├── themes
 │   │   │   │                   │   │   │   └── ThemeEntity.kt
 │   │   │   │                   │   │   ├── vessels
-│   │   │   │                   │   │   │   └── VesselEntity.kt
+│   │   │   │                   │   │   │   ├── VesselAdditionalInformationEntity.kt
+│   │   │   │                   │   │   │   ├── VesselEntity.kt
+│   │   │   │                   │   │   │   ├── VesselFileEntity.kt
+│   │   │   │                   │   │   │   └── VesselIdEntity.kt
 │   │   │   │                   │   │   └── vigilanceArea
 │   │   │   │                   │   │       ├── EndingConditionEnum.kt
 │   │   │   │                   │   │       ├── FrequencyEnum.kt
@@ -390,6 +393,8 @@
 │   │   │   │                   │   │   │   └── GetThemesByRegulatoryAreas.kt
 │   │   │   │                   │   │   ├── vessels
 │   │   │   │                   │   │   │   ├── GetVesselByShipId.kt
+│   │   │   │                   │   │   │   ├── SaveVesselAdditionalInformation.kt
+│   │   │   │                   │   │   │   ├── SaveVesselFiles.kt
 │   │   │   │                   │   │   │   └── SearchVessels.kt
 │   │   │   │                   │   │   └── vigilanceArea
 │   │   │   │                   │   │       ├── CreateOrUpdateVigilanceArea.kt
@@ -446,6 +451,9 @@
 │   │   │   │                   │   │   │   │   │   │   └── TagInput.kt
 │   │   │   │                   │   │   │   │   │   ├── themes
 │   │   │   │                   │   │   │   │   │   │   └── ThemeInput.kt
+│   │   │   │                   │   │   │   │   │   ├── vessel
+│   │   │   │                   │   │   │   │   │   │   ├── VesselAdditionalInformationDataInput.kt
+│   │   │   │                   │   │   │   │   │   │   └── VesselFileDataInput.kt
 │   │   │   │                   │   │   │   │   │   └── vigilanceArea
 │   │   │   │                   │   │   │   │   │       ├── ImageDataInput.kt
 │   │   │   │                   │   │   │   │   │       ├── VigilanceAreaByIdsDataInput.kt
@@ -510,7 +518,9 @@
 │   │   │   │                   │   │   │   │       ├── themes
 │   │   │   │                   │   │   │   │       │   └── ThemeOutput.kt
 │   │   │   │                   │   │   │   │       ├── vessels
+│   │   │   │                   │   │   │   │       │   ├── VesselAdditionalInformationDataOutput.kt
 │   │   │   │                   │   │   │   │       │   ├── VesselDataOutput.kt
+│   │   │   │                   │   │   │   │       │   ├── VesselFileDataOutput.kt
 │   │   │   │                   │   │   │   │       │   └── VesselIdentityDataOutput.kt
 │   │   │   │                   │   │   │   │       └── vigilanceArea
 │   │   │   │                   │   │   │   │           ├── VigilanceAreaDataOutput.kt
@@ -677,6 +687,8 @@
 │   │   │   │                   │   │   │   ├── ThemeReportingModel.kt
 │   │   │   │                   │   │   │   ├── ThemeVigilanceAreaModel.kt
 │   │   │   │                   │   │   │   ├── UserAuthorizationModel.kt
+│   │   │   │                   │   │   │   ├── VesselFileModel.kt
+│   │   │   │                   │   │   │   ├── VesselInformationModel.kt
 │   │   │   │                   │   │   │   ├── VesselModel.kt
 │   │   │   │                   │   │   │   ├── VigilanceAreaImageModel.kt
 │   │   │   │                   │   │   │   ├── VigilanceAreaModel.kt
@@ -756,6 +768,8 @@
 │   │   │   │                   │   │       │   ├── IDBThemeVigilanceAreaRepository.kt
 │   │   │   │                   │   │       │   ├── IDBThemesNatinfRepository.kt
 │   │   │   │                   │   │       │   ├── IDBUserAuthorizationRepository.kt
+│   │   │   │                   │   │       │   ├── IDBVesselAdditionalInformationRepository.kt
+│   │   │   │                   │   │       │   ├── IDBVesselFilesRepository.kt
 │   │   │   │                   │   │       │   ├── IDBVesselRepository.kt
 │   │   │   │                   │   │       │   ├── IDBVigilanceAreaImageRepository.kt
 │   │   │   │                   │   │       │   ├── IDBVigilanceAreaPeriodRepository.kt
@@ -984,7 +998,8 @@
 │   │   │       │   │   │   ├── V0.221__add_tags.sql
 │   │   │       │   │   │   ├── V0.222__delete_create_row_hash_function.sql
 │   │   │       │   │   │   ├── V0.224__create_table_mission_tags.sql
-│   │   │       │   │   │   └── V0.225__add_column_notable_operation.sql
+│   │   │       │   │   │   ├── V0.225__add_column_notable_operation.sql
+│   │   │       │   │   │   └── V0.226__add_table_vessel_additional_informations_and_vessel_files.sql
 │   │   │       │   │   └── layers
 │   │   │       │   │       ├── V0.001__create_fao_areas.sql
 │   │   │       │   │       ├── V0.002__create_eez_areas.sql
@@ -1218,6 +1233,8 @@
 │   │       │                   │   │   │       └── ThemeFixture.kt
 │   │       │                   │   │   ├── vessels
 │   │       │                   │   │   │   ├── GetVesselByShipIdUTest.kt
+│   │       │                   │   │   │   ├── SaveVesselAdditionalInformationUTest.kt
+│   │       │                   │   │   │   ├── SaveVesselFilesUTest.kt
 │   │       │                   │   │   │   ├── SearchVesselsUTest.kt
 │   │       │                   │   │   │   └── fixtures
 │   │       │                   │   │   │       ├── AisPositionFixture.kt
@@ -1846,12 +1863,6 @@
 │   │   │   ├── EnvironmentBox.tsx
 │   │   │   ├── ErrorBoundary.tsx
 │   │   │   ├── Form
-│   │   │   │   ├── Images
-│   │   │   │   │   ├── ImageUploader.tsx
-│   │   │   │   │   ├── ImageViewer.tsx
-│   │   │   │   │   ├── hook
-│   │   │   │   │   │   └── useImageConverter.ts
-│   │   │   │   │   └── utils.ts
 │   │   │   │   ├── Links
 │   │   │   │   │   └── Links.tsx
 │   │   │   │   └── types.ts
@@ -2717,6 +2728,8 @@
 │   │   │   │   │   │   ├── VesselSearchForm.tsx
 │   │   │   │   │   │   └── index.tsx
 │   │   │   │   │   ├── VesselResume
+│   │   │   │   │   │   ├── AdditionalInformation
+│   │   │   │   │   │   │   └── AdditionalInformation.tsx
 │   │   │   │   │   │   ├── History
 │   │   │   │   │   │   │   ├── History.tsx
 │   │   │   │   │   │   │   ├── HistoryTimeline.tsx
@@ -2730,7 +2743,9 @@
 │   │   │   │   │   │   │   └── VesselSettings.tsx
 │   │   │   │   │   │   ├── Resume
 │   │   │   │   │   │   │   ├── LastPosition.tsx
+│   │   │   │   │   │   │   ├── Observations.tsx
 │   │   │   │   │   │   │   └── Summary.tsx
+│   │   │   │   │   │   ├── Tab.tsx
 │   │   │   │   │   │   ├── Tabs.tsx
 │   │   │   │   │   │   ├── constants.tsx
 │   │   │   │   │   │   ├── index.tsx
@@ -2750,7 +2765,9 @@
 │   │   │   │   ├── slice.ts
 │   │   │   │   ├── types.ts
 │   │   │   │   ├── useCases
-│   │   │   │   │   └── closeVesselResume.ts
+│   │   │   │   │   ├── closeVesselResume.ts
+│   │   │   │   │   ├── saveVesselAdditionalInformation.ts
+│   │   │   │   │   └── saveVesselFiles.ts
 │   │   │   │   └── utils.ts
 │   │   │   ├── VigilanceArea
 │   │   │   │   ├── components
@@ -3358,4 +3375,4 @@
 │       │   └── test_update_queries.py
 │       └── test_utils.py
 └── sonar-project.properties
-614 directories, 2746 files
+614 directories, 2763 files

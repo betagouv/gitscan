@@ -1,26 +1,24 @@
-## Changelog : monitorenv (30 derniers jours, au 25 juin 2026)
+## Changelog : monitorenv (30 derniers jours, au 13 juillet 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à la gestion des missions, notamment avec l'ajout de tags pour une meilleure organisation et un filtrage plus précis. L'interface utilisateur a également été améliorée avec des corrections de bugs et des refactorisations pour une expérience plus fluide. Des corrections ont été apportées aux tests et aux données réglementaires.
+Cette mise à jour apporte des améliorations significatives à la gestion des missions, notamment l'ajout de fonctionnalités pour les tags de mission, la gestion des informations et des fichiers associés aux navires, ainsi que des corrections pour améliorer la stabilité et l'expérience utilisateur. Des améliorations de l'interface utilisateur et des corrections de bugs ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Ajout de tags aux missions pour une meilleure catégorisation et organisation [#b26e8b7](https://github.com/MTES-MCT/monitorenv/commit/b26e8b7).
-- Possibilité de filtrer les missions par tags, avec prise en compte de la date de début de la mission ou de l'action [#0c611a1](https://github.com/MTES-MCT/monitorenv/commit/0c611a1).
-- Amélioration du filtrage des missions avec un "debounce" pour optimiser la performance [#7eb7928](https://github.com/MTES-MCT/monitorenv/commit/7eb7928).
-- Augmentation de la taille estimée des missions [#a497eec](https://github.com/MTES-MCT/monitorenv/commit/a497eec).
-- Ajout d'un focus sur la ligne de position lors d'un clic [#4df3916](https://github.com/MTES-MCT/monitorenv/commit/4df3916).
-- Correction du filtrage des ressources `controlUnit` par `missionsControlResources` [#f23bc46](https://github.com/MTES-MCT/monitorenv/commit/f23bc46).
+- Ajout de la gestion des tags de mission dans l'interface back-office, permettant de catégoriser et filtrer les missions plus efficacement. [#b5d88fe](https://github.com/MTES-MCT/monitorenv/commit/b5d88fe)
+- Possibilité d'ajouter des informations et des fichiers supplémentaires aux navires. [#030f5c2](https://github.com/MTES-MCT/monitorenv/commit/030f5c2)
+- Les agents du CACEM peuvent désormais mettre à jour les missions directement depuis les rapports NAV. [#40bbc44](https://github.com/MTES-MCT/monitorenv/commit/40bbc44)
+- Amélioration de la taille estimée des missions. [#a497eec](https://github.com/MTES-MCT/monitorenv/commit/a497eec)
+- Ajout d'un défilement (debounce) au filtre de recherche des missions pour une meilleure performance. [#7eb7928](https://github.com/MTES-MCT/monitorenv/commit/7eb7928)
 
 ### Évolutions techniques
-- Refactorisation de composants UI (renommage) [#cdc3ca5](https://github.com/MTES-MCT/monitorenv/commit/cdc3ca5) et [#0ae95aa](https://github.com/MTES-MCT/monitorenv/commit/0ae95aa).
-- Création et refactorisation de boîtes de dialogue (dialogs) : `CantDoDialog`, `DeleteDialog`, `ArchiveModal` [#c8dc840](https://github.com/MTES-MCT/monitorenv/commit/c8dc840), [#bb05e5b](https://github.com/MTES-MCT/monitorenv/commit/bb05e5b), [#b9586e2](https://github.com/MTES-MCT/monitorenv/commit/b9586e2), [#6a5fab6](https://github.com/MTES-MCT/monitorenv/commit/6a5fab6), [#5480919](https://github.com/MTES-MCT/monitorenv/commit/5480919).
-- Correction de bugs et amélioration des tests E2E [#514d0b3](https://github.com/MTES-MCT/monitorenv/commit/514d0b3).
-- Ajout de `latest` lors d'une release [#334c957](https://github.com/MTES-MCT/monitorenv/commit/334c957).
-- Correction d'un problème de rechargement de la table lors du changement d'onglet [#dde0e1b](https://github.com/MTES-MCT/monitorenv/commit/dde0e1b).
+- Utilisation du composant `FileUploader` de `monitor-ui` pour la gestion des fichiers. [#6ad6960](https://github.com/MTES-MCT/monitorenv/commit/6ad6960)
+- Correction pour assurer la conservation des données externes modifiées lors de la sauvegarde d'une mission. [#d658689](https://github.com/MTES-MCT/monitorenv/commit/d658689)
+- Ajout d'un rechargement des données lors du changement d'onglet pour garantir l'affichage des informations les plus récentes. [#dde0e1b](https://github.com/MTES-MCT/monitorenv/commit/dde0e1b)
+- Correction d'un bug lié à la création de tags fantômes lors de la mise à jour. [#852b591](https://github.com/MTES-MCT/monitorenv/commit/852b591)
 
 ### Autres changements
-- Correction d'un bug empêchant le filtrage des nouveaux tags [#5ca7cd9](https://github.com/MTES-MCT/monitorenv/commit/5ca7cd9).
-- Correction d'un bug lié à la création de tags fantômes [#852b591](https://github.com/MTES-MCT/monitorenv/commit/852b591).
-- Correction du flux `regulatory_areas_open_data` [#54092ee](https://github.com/MTES-MCT/monitorenv/commit/54092ee).
-- Corrections de typos et revue de code [#fad7461](https://github.com/MTES-MCT/monitorenv/commit/fad7461).
-- Améliorations de l'UX et corrections de bugs d'interface [#4be2665](https://github.com/MTES-MCT/monitorenv/commit/4be2665).
+- Corrections de bugs et améliorations de l'expérience utilisateur (UX). [#4be2665](https://github.com/MTES-MCT/monitorenv/commit/4be2665)
+- Corrections de tests E2E. [#514d0b3](https://github.com/MTES-MCT/monitorenv/commit/514d0b3) et [#ef6baef](https://github.com/MTES-MCT/monitorenv/commit/ef6baef)
+- Correction pour ne pas filtrer les nouveaux tags. [#5ca7cd9](https://github.com/MTES-MCT/monitorenv/commit/5ca7cd9)
+- Correction du filtre de tags de mission en fonction de la date de début de la mission ou de l'action. [#0c611a1](https://github.com/MTES-MCT/monitorenv/commit/0c611a1)
+- Ajout des champs `isNoteworthy` et tags de mission à la liste et au formulaire des missions. [#03cea13](https://github.com/MTES-MCT/monitorenv/commit/03cea13)
