@@ -1,14 +1,25 @@
-## Changelog : dashlord (30 derniers jours, au 2026-07-11)
+## Changelog : dashlord (30 derniers jours, au 2026-07-15)
 
 ### Résumé
-Ce changelog couvre une période d'activité intense, principalement axée sur la mise à jour de la liste des URLs surveillées par Dashlord.  De nombreuses adresses de sites gouvernementaux français ont été ajoutées ou mises à jour, améliorant ainsi la couverture et la pertinence des analyses de l'outil.
+Ce changelog couvre une période d'activité intense, principalement axée sur la mise à jour régulière d'une liste importante d'URLs de sources de données gouvernementales françaises. Ces mises à jour garantissent que DashLord continue de fonctionner correctement et de fournir des informations à jour.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle majeure n'a été apportée durant cette période. Les changements se concentrent sur la maintenance et l'actualisation des sources de données.
+Aucune évolution fonctionnelle n'a été identifiée dans les commits analysés.
 
 ### Évolutions techniques
-- Mise à jour régulière de la liste des URLs surveillées, incluant des sites du gouvernement français (deces.matchid.io, iaflash.fr, basegun.interieur.gouv.fr, etc.).
-- Automatisation des mises à jour de la liste des URLs via des actions GitHub.
+Aucune évolution technique significative n'a été identifiée dans les commits analysés, hormis les mises à jour automatiques de dépendances.
 
 ### Autres changements
-- Aucune documentation, configuration ou nettoyage de code significatif n'a été effectué durant cette période.
+La majorité des changements concernent des mises à jour des URLs de sources de données.  Ces mises à jour affectent un grand nombre de préfectures et services gouvernementaux français, incluant :
+
+*   Déces (matchid.io)
+*   IA Flash
+*   Base Gun
+*   Sécurité Intérieure
+*   Histovec
+*   SIV
+*   ANTS (Permis de conduire, carte grise)
+*   Service Public
+*   Et de nombreuses préfectures départementales et régionales.
+
+Ces mises à jour sont essentielles pour maintenir la pertinence et la fiabilité des données collectées par DashLord.
