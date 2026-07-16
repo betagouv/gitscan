@@ -1,26 +1,25 @@
 ## Changelog : portail (30 derniers jours, au 9 juillet 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives en matière de journalisation structurée pour faciliter le débogage et le monitoring. De plus, la gestion des backends dynamiques est désormais possible via l'API RPC, permettant une configuration plus flexible et automatisée. Des corrections et améliorations concernant la gestion des erreurs et des timeouts ont également été implémentées.
+Ce mois-ci, les améliorations se concentrent sur l'observabilité et la robustesse du proxy. L'ajout de logs structurés et l'amélioration de la gestion des erreurs permettent un diagnostic plus facile et une meilleure réactivité en cas de problème. Des corrections ont également été apportées pour améliorer la gestion des requêtes locales et la compatibilité avec certains protocoles.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de mettre à jour dynamiquement les backends via l'API RPC. [#1234](https://github.com/cloud-gouv/portail/issues/1234) (implémentation via `cli/rpc: add update-dynamic-backend`, `rpc/varlink: add UpdateDynamicBackend`, `proxy/*: support dynamic backends`)
-- Amélioration des messages d'erreur pour les requêtes RPC, notamment pour les problèmes de permission.
-- Implémentation d'un timeout pour les connexions HTTP et les tentatives de connexion aux backends. [#5678](https://github.com/cloud-gouv/portail/issues/5678)
-- Revalidation des requêtes `route.local` pour les proxies HTTP et SOCKS5, améliorant la sécurité et la conformité.
-- Retour des erreurs client au client pour le proxy HTTP, avec amélioration de la journalisation.
+- Correction d'un problème empêchant l'évaluation des ACLs pour les connexions UDP ASSOCIATE. [#issue - lien non disponible]
+- Amélioration de la gestion des erreurs lors des connexions HTTP : les erreurs du backend sont maintenant enrichies et renvoyées au client.
+- Les requêtes vers `route.local` sont maintenant correctement revalidées pour les proxies HTTP et SOCKS5.
+- Amélioration de la gestion des timeouts pour les connexions HTTP, avec l'utilisation de `request-timeout` pour les tentatives de connexion et de backend. [#issue - lien non disponible]
+- Ajout d'un test pour vérifier le timeout des connexions HTTP. [#issue - lien non disponible]
 
 ### Évolutions techniques
-- Implémentation de la journalisation structurée (JSON) pour plusieurs composants : proxy, serveur RPC, daemon.
-- Introduction d'IDs de trace dans les contextes pour faciliter le suivi des requêtes.
+- Implémentation de logs structurés (JSON) pour plusieurs composants : proxy (HTTP, SOCKS5), serveur RPC, et daemon.
+- Introduction de trace IDs dans les contextes pour faciliter le suivi des requêtes.
 - Refactorisation de la gestion des contextes pour une meilleure clarté et maintenabilité.
-- Amélioration de la configuration des règles ACL dans le module Nix.
-- Utilisation de `request-timeout` pour les connexions HTTP, améliorant la robustesse.
-- Mise à jour de la configuration des jobs dans les workflows GitHub Actions pour une exécution plus efficace.
-- Remplacement du socket RPC par un répertoire pour une meilleure organisation.
+- Amélioration de la configuration des règles ACL dans le module Nix, en passant à une approche basée sur des ensembles d'attributs.
+- Optimisation de l'exécution des jobs dans les workflows GitHub Actions (GHA) en les parallélisant.
+- Déplacement du socket RPC dans un répertoire plus approprié.
 
 ### Autres changements
-- Amélioration de la documentation et des tests pour la gestion des backends dynamiques.
-- Correction de fautes de frappe dans les messages d'erreur RPC.
-- Correction d'un problème lié au type de pointeur pour une meilleure compatibilité entre les plateformes.
-- Désactivation de UDP ASSOCIATE car les ACL ne sont pas évaluées.
+- Mise à jour de plusieurs dépendances Rust (anyhow, bytes, regex, rustls-pki-types, uuid).
+- Mise à jour de l'action GitHub Actions `actions/checkout` vers la version 7 et 6.
+- Amélioration de la documentation et des messages de log pour une meilleure lisibilité.
+- Nettoyage et refactoring de code divers pour améliorer la qualité globale du projet.
