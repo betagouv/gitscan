@@ -1,36 +1,46 @@
 {
   "url": "https://github.com/betagouv/ComparIA",
   "name": "ComparIA",
-  "description": "ComparIA est une plateforme open source pour collecter des données de préférence humaine pour les modèles de langage, en particulier pour les langues moins représentées et les secteurs spécifiques. Elle vise à sensibiliser aux biais et à l'impact environnemental des modèles.",
+  "description": "ComparIA est une arène open-source pour les grands modèles de langage. Elle permet de collecter des préférences humaines, de comparer les modèles et de créer des ensembles de données ouverts dans n'importe quelle langue.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
-    "Authentification & Accès",
-    "Recherche & Filtres",
-    "Notifications & Alertes",
     "Visualisation de données & Cartographie",
-    "Intelligence Artificielle & NLP"
+    "Authentification & Accès",
+    "Statistiques & Rapports",
+    "Recherche & Filtres",
+    "Gestion des utilisateurs & Permissions",
+    "Notifications & Alertes",
+    "Contenu éditorial",
+    "Sécurité & Conformité",
+    "Données & Schémas"
   ],
-  "audience": [
-    "Grand public",
-    "Professionnels",
-    "Agents de l'Administration",
-    "Associations"
-  ],
+  "audience": "Professionnels",
   "dependencies": [
     "ecologits",
     "fastapi",
+    "json5",
     "litellm",
+    "google-auth",
+    "markdown",
+    "numpy",
+    "prometheus-fastapi-instrumentator",
     "psycopg2-binary",
     "pydantic",
     "sqlalchemy",
+    "pydantic-settings",
+    "python-logging-loki",
     "redis",
     "requests",
-    "numpy",
-    "pandas",
-    "polars",
-    "huggingface_hub"
+    "rich",
+    "sentry-sdk",
+    "uvicorn",
+    "altcha",
+    "sqlmodel",
+    "psycopg",
+    "alembic",
+    "linkup-sdk"
   ],
   "components": [
     "API REST & GraphQL",
@@ -38,18 +48,21 @@
     "Python (scripts & backend)",
     "Docker & Conteneurs",
     "Frontend React",
-    "TypeScript / JavaScript"
+    "Tests"
   ],
   "auth": {
     "methods": [
+      "email-password",
       "oauth2"
     ]
   },
-  "tests": null,
-  "workflows": null,
-  "lastActivity": "2026-07-09T16:57:35+02:00",
+  "tests": "Pytest",
+  "workflows": [
+    "CI/CD & GitHub Actions"
+  ],
+  "lastActivity": "2026-07-15T12:29:54+02:00",
   "status": "active",
-  "license": null,
+  "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
     "stars": null,
@@ -61,6 +74,7 @@
     "Données & Open Data",
     "Écosystème beta.gouv / État",
     "Python",
+    "Bases de données SQL",
     "Intelligence Artificielle & LLM",
     "Sécurité & Auth"
   ]

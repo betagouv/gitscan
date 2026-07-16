@@ -1,29 +1,29 @@
-## Changelog : ComparIA (30 derniers jours, au 9 juillet 2026)
+## Changelog : ComparIA (30 derniers jours, au 15 juillet 2026)
 
 ### Résumé
-Ce mois-ci, ComparIA a bénéficié d'améliorations significatives en termes de fonctionnalités et de stabilité. L'ajout d'un mode maintenance permet de réaliser des opérations techniques sans perturber les utilisateurs. De nouvelles fonctionnalités ont été implémentées pour la gestion des modèles de langage, notamment l'ajout de GLM 5.2 et MiniMax M3, ainsi que des améliorations de l'interface utilisateur pour le classement des modèles. Des corrections de bugs et des refactorings ont également été réalisés pour améliorer la qualité du code et l'expérience utilisateur.
+Ce mois-ci, ComparIA a bénéficié d'améliorations significatives en termes de fonctionnalités et de stabilité. L'ajout d'un mode maintenance permet des opérations de maintenance sans interruption de service pour les utilisateurs. Des améliorations ont été apportées à l'interface utilisateur, notamment pour la visualisation des classements et la gestion des datasets. La sécurité a également été renforcée avec l'ajout d'un système de modération du contenu.
 
 ### Évolutions fonctionnelles
-- Ajout d'un mode maintenance permettant de mettre la plateforme hors ligne pour des opérations techniques [#570](https://github.com/betagouv/ComparIA/pull/570).
-- Possibilité de créer une sauvegarde de la base de données via la ligne de commande `compara-cli` [#572](https://github.com/betagouv/ComparIA/pull/572).
-- Ajout de GLM 5.2 au catalogue de modèles [#540](https://github.com/betagouv/ComparIA/pull/540).
-- Ajout de MiniMax M3 au catalogue de modèles [#531](https://github.com/betagouv/ComparIA/pull/531) et [#538](https://github.com/betagouv/ComparIA/pull/538).
-- Ajout d'un contrôle de style pour le classement des modèles, permettant de filtrer les résultats en fonction de critères spécifiques [#532](https://github.com/betagouv/ComparIA/pull/532).
-- Ajout du support LaTeX pour la saisie de texte [#549](https://github.com/betagouv/ComparIA/pull/549).
-- Consolidation de la page des datasets en une seule page [#539](https://github.com/betagouv/ComparIA/pull/539).
+- Ajout d'un mode maintenance pour permettre des opérations de maintenance sans affecter l'expérience utilisateur. [#572](https://github.com/betagouv/ComparIA/issues/572)
+- Possibilité de basculer entre un classement standard et un classement contrôlé par un style, offrant plus de flexibilité dans l'analyse des résultats. [#532](https://github.com/betagouv/ComparIA/issues/532)
+- Ajout du modèle GLM 5.2 au catalogue de modèles disponibles. [#540](https://github.com/betagouv/ComparIA/issues/540)
+- Support du format LaTeX pour une meilleure présentation des contenus. [#549](https://github.com/betagouv/ComparIA/issues/549)
+- Amélioration de la page des datasets, consolidée en une seule vue. [#578](https://github.com/betagouv/ComparIA/issues/578)
+- Ajout d'une fonctionnalité permettant de créer une copie de sauvegarde de la base de données via la ligne de commande. [#570](https://github.com/betagouv/ComparIA/issues/570)
+- Ajout d'une commande pour déconnecter les connexions à la base de données pendant la maintenance. [#570](https://github.com/betagouv/ComparIA/issues/570)
+- Correction de l'affichage du lien vers le dataset Hugging Face sur la page Datasets. [#555](https://github.com/betagouv/ComparIA/issues/555)
 
 ### Évolutions techniques
-- Refactor de la gestion des messages système pour simplifier le code et améliorer la performance [#555](https://github.com/betagouv/ComparIA/pull/555).
-- Refactor des relations en base de données pour améliorer l'intégrité des données et simplifier les suppressions [#95d4a539](https://github.com/betagouv/ComparIA/commit/95d4a539).
-- Mise en place d'un guardrail de sécurité de contenu pour les prompts utilisateurs afin de limiter les réponses inappropriées [#542](https://github.com/betagouv/ComparIA/pull/542).
-- Correction de bugs liés à la validation des IDs des modèles de langage [#391](https://github.com/betagouv/ComparIA/pull/391).
-- Correction de bugs liés au rafraîchissement des tokens Altcha [#463](https://github.com/betagouv/ComparIA/pull/463).
-- Correction d'un bug lié à la sélection de la locale sur le frontend [#533](https://github.com/betagouv/ComparIA/pull/533).
-- Amélioration de la réactivité de l'interface de l'arène et correction de bugs d'affichage [#545](https://github.com/betagouv/ComparIA/pull/545).
+- Refactorisation de la gestion des messages système pour une meilleure maintenabilité. [#555](https://github.com/betagouv/ComparIA/issues/555)
+- Amélioration de la gestion des relations en base de données avec l'ajout de suppressions en cascade. [#556](https://github.com/betagouv/ComparIA/issues/556)
+- Mise en place d'un système de modération du contenu pour les prompts utilisateurs. [#542](https://github.com/betagouv/ComparIA/issues/542)
+- Correction de la validation des identifiants des LLM. [#391](https://github.com/betagouv/ComparIA/issues/391)
+- Correction du rafraîchissement du token Altcha. [#463](https://github.com/betagouv/ComparIA/issues/463)
+- Refactorisation du code pour améliorer la réactivité de l'arène sur mobile. [#545](https://github.com/betagouv/ComparIA/issues/545)
+- Mise à jour des dépendances et des configurations.
 
 ### Autres changements
-- Mise à jour des traductions italiennes via Weblate [#552](https://github.com/betagouv/ComparIA/pull/552), [#546](https://github.com/betagouv/ComparIA/pull/546), [#490](https://github.com/betagouv/ComparIA/pull/490).
-- Ajout de la traduction danoise pour MiniMax M3 [#538](https://github.com/betagouv/ComparIA/pull/538).
-- Suppression de code inutilisé.
-- Corrections mineures et améliorations de la documentation.
-- Limitation temporaire des limites de débit par IP pour résoudre un problème de performance [#45f5b018](https://github.com/betagouv/ComparIA/commit/45f5b018).
+- Mise à jour des traductions italiennes via Weblate.
+- Corrections mineures de l'interface utilisateur.
+- Amélioration de la documentation et des commentaires dans le code.
+- Corrections de bugs et améliorations de la stabilité générale.
