@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/etalab/data_pass",
   "name": "data_pass",
-  "description": "DataPass est un outil de gestion des habilitations juridiques pour les données à accès restreint. Il permet de gérer les accès et les droits des utilisateurs aux données sensibles.",
+  "description": "DataPass est un outil de gestion des habilitations juridiques pour les données à accès restreint. Il permet de gérer les accès et les droits des utilisateurs sur les données sensibles.",
   "language": "Ruby",
   "features": [
     "Authentification & Accès",
@@ -15,8 +15,8 @@
     "Ruby",
     "PostgreSQL",
     "Redis",
-    "Docker",
-    "Rails"
+    "Rails",
+    "Docker"
   ],
   "components": [
     "API REST & GraphQL",
@@ -27,8 +27,9 @@
   ],
   "auth": {
     "methods": [
+      "email-password",
       "oauth2",
-      "email-password"
+      "sso"
     ],
     "providers": [
       "ProConnect"
@@ -42,7 +43,7 @@
     "Continuous Integration",
     "Continuous Deployment"
   ],
-  "lastActivity": "2026-07-10T17:51:44+02:00",
+  "lastActivity": "2026-07-13T15:50:05+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -55,7 +56,8 @@
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "Sécurité & Conformité",
-    "API & Intégrations"
+    "Ruby",
+    "Bases de données SQL",
+    "Sécurité & Auth"
   ]
 }

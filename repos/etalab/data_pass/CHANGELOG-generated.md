@@ -1,34 +1,36 @@
-## Changelog : data_pass (30 derniers jours, au 10 juillet 2026)
+## Changelog : data_pass (30 derniers jours, au 2026-07-13)
 
 ### Résumé
-Cette période a été marquée par des améliorations de la sécurité (durcissement des sessions, gestion des clés API), de l'expérience utilisateur (recherche d'utilisateurs, gestion des droits, désinscription simplifiée) et de l'intégration avec d'autres services (HubEE, CNOUS). Des corrections et des optimisations ont également été apportées, notamment concernant la gestion des erreurs et la performance du tableau de bord.
+Les dernières mises à jour de data_pass se concentrent sur l'amélioration de l'expérience utilisateur, notamment pour les formulaires API Particulier et les aides de rentrée scolaire. Des corrections de sécurité ont été apportées, ainsi que des améliorations de la gestion des sessions et des clés API. Des travaux ont également été réalisés sur l'intégration avec des services externes comme HubEE et ProConnect.
 
 ### Évolutions fonctionnelles
-- Amélioration de la recherche d'utilisateurs et de la gestion des droits ([#1610](https://github.com/etalab/data_pass/pull/1610)).
-- Simplification de la désinscription depuis l'email via un token chiffré ([#1606](https://github.com/etalab/data_pass/pull/1606)).
-- Durcissement de la sécurité des sessions, réduisant leur durée à 12 heures avec un maximum de 24 heures ([#1789](https://github.com/etalab/data_pass/pull/1625)).
-- Possibilité pour les développeurs de créer et supprimer leurs propres clés API.
-- Ajout de la démarche DDMariage au formulaire HubEE DILA (puis révertée temporairement et réintégrée).
-- Amélioration de l'intégration avec le service CNOUS, incluant la validation du format des communes et la gestion des erreurs.
-- Introduction de la gestion de plusieurs templates de cas d'usage pour un même formulaire ([#1718](https://github.com/etalab/data_pass/pull/1564)).
-- Amélioration de l'intégration avec le service HubEE pour la proactivité.
-- Ajout d'une fonctionnalité permettant de lister les cas d'usages.
-- Possibilité d'éditer une définition d'autorisation.
+- Ajout de la gestion des éditeurs pour les formulaires API Particulier EAJE [#1690](https://github.com/etalab/data_pass/issues/1690).
+- Refonte des cadres juridiques de l'API Particulier pour une meilleure factorisation et uniformisation [#1605](https://github.com/etalab/data_pass/issues/1605).
+- Ajout du scope `cnav_allocation_rentree_scolaire` pour les aides facultatives et pour la rentrée scolaire [#1676](https://github.com/etalab/data_pass/pulls/1676).
+- Mise à jour de l'introduction des services CISIRH [#1685](https://github.com/etalab/data_pass/pulls/1685), [#1684](https://github.com/etalab/data_pass/pulls/1684).
+- Amélioration du libellé du champ de date de transmission pour l'extraction CNOUS [#1679](https://github.com/etalab/data_pass/pulls/1679).
+- Ajout de la démarche DDMariage au formulaire HubEE DILA (puis revert suite à des problèmes) [#1667](https://github.com/etalab/data_pass/pulls/1667), [#1646](https://github.com/etalab/data_pass/pulls/1646).
+- Amélioration de la gestion des droits utilisateurs et de la recherche [#1610](https://github.com/etalab/data_pass/pulls/1610).
+- Ajout d'une fonctionnalité de désinscription en un clic depuis un email avec token chiffré [#1606](https://github.com/etalab/data_pass/pulls/1606).
+- Possibilité pour les développeurs de créer et supprimer leurs propres clés API [#1618](https://github.com/etalab/data_pass/pulls/1618).
+- Amélioration de la validation et de l'affichage des erreurs pour les communes CNOUS [#1633](https://github.com/etalab/data_pass/pulls/1633), [#1626](https://github.com/etalab/data_pass/pulls/1626).
+- Mise à jour des valeurs MFA_ACR_VALUES dans OmniAuth Proconnect [#1636](https://github.com/etalab/data_pass/pulls/1636).
 
 ### Évolutions techniques
-- Migration du scope TVA d'API Entreprise de VIES vers la DGFIP.
-- Introduction d'un module de gestion des Feature Flags centralisé.
-- Refonte des cadres juridiques de l'API Particulier pour une meilleure uniformisation ([#1605](https://github.com/etalab/data_pass/pull/1605)).
-- Correction d'un problème de N+1 dans le tableau de bord et réduction du bruit dans Sentry ([#1604](https://github.com/etalab/data_pass/pull/1622)).
-- Amélioration de la gestion des erreurs et de la validation des données.
-- Mise à jour de plusieurs dépendances (Faraday, Rubocop, actions GitHub).
+- Durcissement de la session à 12 heures fixes au lieu d'un glissement 12h/24h, alignement avec ProConnect [#1657](https://github.com/etalab/data_pass/pulls/1657).
+- Réduction de la durée de vie de la session à 12h idle glissant, plafonnée à 24h.
+- Mise en place d'un module FeatureFlag centralisé et de sa documentation [#1625](https://github.com/etalab/data_pass/pulls/1625).
+- Correction d'un bug empêchant la suppression correcte des lignes de droit utilisateur [#1634](https://github.com/etalab/data_pass/pulls/1634).
+- Migration du scope TVA de VIES vers la DGFIP.
+- Amélioration de la gestion des bridges HubEE.
+- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
 
 ### Autres changements
-- Documentation de la gestion de session Proconnect.
-- Amélioration des wordings pour les cas d'usage EAJE.
-- Correction de l'apostrophe dans un step DILA.
-- Ajout de tests et amélioration de la couverture de code.
-- Nettoyage et refactoring du code.
-- Mise à jour de la documentation.
-- Correction de la suppression sans effet d’une ligne de droit utilisateur.
-- Correction d'un bug lié à la restauration d'une autorisation.
+- Ajout de documentation sur la gestion de session ProConnect.
+- Mise à jour de la documentation pour l'authentification Proconnect.
+- Correction de l'apostrophe dans un message DILA.
+- Amélioration des tests et de la configuration.
+- Mises à jour de dépendances (css_parser, rubocop, yard, actions/cache, actions/checkout, docker/setup-buildx-action).
+- Ajout de la possibilité d'afficher une liste de toutes les définitions d'autorisation avec une fonction de recherche.
+- Amélioration des wordings des cas d'usage EAJE pour l'API particulier.
+- Ajout d'un message flash informant de l'expiration de la session lors de la déconnexion forcée.
