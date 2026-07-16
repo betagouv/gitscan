@@ -1,31 +1,28 @@
 ## Changelog : nosgestesclimat (30 derniers jours, au 03 juillet 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives du référentiel d'actions, des mises à jour des données de consommation (transports, énergie, etc.) et l'ajout de nouvelles fonctionnalités, notamment concernant les PAC collectives et la description des repas. Des corrections de bugs et des ajustements ont également été apportés pour améliorer la précision des calculs et l'expérience utilisateur.
+Cette période a été marquée par d'importantes améliorations du modèle de calcul d'empreinte carbone, notamment l'ajout de nouvelles actions sociétales, la prise en compte des PAC collectives, et la mise à jour des données de référence pour divers modes de transport et sources d'énergie. Des corrections et des ajustements ont également été apportés pour améliorer la précision et l'expérience utilisateur. Plusieurs mises à jour de données (DLUO) ont été intégrées.
 
 ### Évolutions fonctionnelles
-- Ajout de la prise en compte des PAC (Pompes à Chaleur) pour les chauffages collectifs [#2781](https://github.com/incubateur-ademe/nosgestesclimat/pull/2781).
-- Amélioration de la description des repas avec l'ajout de la portion consommée [#2785](https://github.com/incubateur-ademe/nosgestesclimat/pull/2785).
-- Ajout de nouvelles actions sociétales [#2790](https://github.com/incubateur-ademe/nosgestesclimat/pull/2790).
-- Nouveau parcours climatisation implémenté [#2786](https://github.com/incubateur-ademe/nosgestesclimat/pull/2786).
-- Mise à jour des données pour les transports (train, avion, transports en commun, ferry) et l'énergie (gaz, fioul, pellets, réseau chaleur, photovoltaïque).
-- Correction de l'affichage de la question réversible.
-- Correction de l'inversion entre TER et Intercités.
-- Correction pour que la PAC ne soit applicable qu'aux maisons.
+- Ajout de nouvelles actions sociétales pour une évaluation plus complète de l'impact individuel. [#2790](https://github.com/incubateur-ademe/nosgestesclimat/pull/2790)
+- Prise en compte des pompes à chaleur (PAC) collectives dans le calcul de l'empreinte carbone. [#2781](https://github.com/incubateur-ademe/nosgestesclimat/pull/2781)
+- Amélioration du parcours climat avec de nouvelles traductions et relectures. [#2786](https://github.com/incubateur-ademe/nosgestesclimat/pull/2786)
+- Ajout de la possibilité de spécifier la portion de repas pour une estimation plus précise. [#2785](https://github.com/incubateur-ademe/nosgestesclimat/pull/2785)
+- Mise à jour des données de référence pour les transports en commun, le train, l'avion, le ferry, et les véhicules personnels.
+- Mise à jour des données de référence pour les sources d'énergie (gaz, fioul, pellets, bois, réseau chaleur, photovoltaïque).
+- Renommage de la catégorie "divers" en "consommation" pour une meilleure clarté. [#2788](https://github.com/incubateur-ademe/nosgestesclimat/pull/2788)
+- Amélioration de la gestion des actions désactivées pour le mode "jeune". [#2762](https://github.com/incubateur-ademe/nosgestesclimat/pull/2762)
 
 ### Évolutions techniques
-- Refonte du référentiel d'actions [#2762](https://github.com/incubateur-ademe/nosgestesclimat/pull/2762).
-- Mise à jour des dépendances et du package manager (pnpm).
-- Désactivation des actions pour le mode "jeune".
-- Corrections et ajustements liés aux retours du MEP (Minimum Viable Product).
-- Amélioration de la gestion des unités.
-- Mise à jour des calculs d'émissions climatiques et des PAC.
-- Repousse de la date de validité (DLUO) de certaines données.
+- Mises à jour du référentiel des actions pour une meilleure maintenance et extensibilité. [#2762](https://github.com/incubateur-ademe/nosgestesclimat/pull/2762)
+- Corrections et ajustements du code pour améliorer la précision des calculs d'émissions climatiques et de l'impact des PAC. [#2782](https://github.com/incubateur-ademe/nosgestesclimat/pull/2782)
+- Mise à jour des dépendances et des outils de développement (pnpm, packages).
+- Corrections de bugs et améliorations de la stabilité.
 
 ### Autres changements
-- Ajout de sources pour certaines données.
-- Traductions mises à jour.
-- Renommage de la catégorie "divers" en "consommation".
-- Suppression de règles intensité carbone selon zone.
-- Correction de bugs et améliorations diverses de l'interface utilisateur.
+- Mise à jour des traductions pour une meilleure expérience utilisateur.
+- Correction de plusieurs bugs mineurs et améliorations de l'interface utilisateur.
+- Ajustements de la configuration et du déploiement.
+- Suppression de règles intensité carbone obsolètes.
+- Ajout de sources pour les données utilisées.
 - Publication des versions 4.13.0, 4.13.1 et 4.13.2.
