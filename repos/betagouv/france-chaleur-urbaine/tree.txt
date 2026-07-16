@@ -87,6 +87,7 @@
 │   ├── .gitignore
 │   └── pre-commit
 ├── .lintstagedrc
+├── .mcp.json
 ├── .slugignore
 ├── .talismanrc
 ├── .vscode
@@ -1860,10 +1861,19 @@
 │   │   │   └── types.ts
 │   │   └── users
 │   │       ├── AGENTS.md
+│   │       ├── client
+│   │       │   └── admin
+│   │       │       ├── BulkTagDialog.tsx
+│   │       │       ├── TagChip.tsx
+│   │       │       ├── TagColorPicker.tsx
+│   │       │       ├── TagsCombobox.tsx
+│   │       │       ├── TagsEditor.tsx
+│   │       │       └── UserTagBadge.tsx
 │   │       ├── constants.ts
 │   │       ├── role-colors.ts
 │   │       └── server
 │   │           ├── service.ts
+│   │           ├── tags-service.ts
 │   │           ├── trpc-routes.integration.spec.ts
 │   │           └── trpc-routes.ts
 │   ├── pages
@@ -2077,6 +2087,7 @@
 │   │   │       ├── 20260706000000_cleanup_api_accounts.ts
 │   │   │       ├── 20260707000000_conversion_ip_rules.ts
 │   │   │       ├── 20260709000000_demand_deleted_by_system.ts
+│   │   │       ├── 20260713000001_user_tags.ts
 │   │   │       └── migrator.ts
 │   │   ├── helpers
 │   │   │   ├── db-errors.ts
@@ -2105,6 +2116,8 @@
 │   ├── tests
 │   │   ├── a11y
 │   │   │   ├── axe-test.ts
+│   │   │   ├── consent-state.ts
+│   │   │   ├── consent.setup.ts
 │   │   │   └── homepage.spec.ts
 │   │   ├── api
 │   │   │   └── admin
@@ -2188,4 +2201,4 @@
 ├── vendor
 │   └── xlsx-0.20.3.tgz
 └── vitest.config.mts
-305 directories, 2205 files
+307 directories, 2216 files

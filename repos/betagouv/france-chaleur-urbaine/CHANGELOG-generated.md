@@ -1,38 +1,40 @@
-## Changelog : france-chaleur-urbaine (30 derniers jours, au 09 juillet 2026)
+## Changelog : france-chaleur-urbaine (30 derniers jours, au 15 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'administration du site, la gestion des données et des réseaux de chaleur, ainsi que des corrections de bugs et des optimisations de performance. Des améliorations significatives ont été apportées à l'interface d'administration, notamment avec un nouveau méga-menu et une réorganisation du dashboard. Des corrections ont également été apportées pour améliorer la gestion des utilisateurs et des données en base de données.
+Ce mois-ci, les améliorations se concentrent sur l'expérience administrateur, avec une refonte du dashboard, une meilleure gestion des utilisateurs et des demandes, ainsi que des corrections de bugs pour optimiser les performances et la fiabilité de la plateforme. Des améliorations ont également été apportées à l'API et à l'intégration avec des services externes.
 
 ### Évolutions fonctionnelles
-- Ajout de la gestion du maître d'ouvrage pour les réseaux en construction. [#1260](https://github.com/betagouv/france-chaleur-urbaine/pull/1260)
-- Amélioration de la gestion des statuts des demandes, avec une simplification autour du statut "recontacté". [#1257](https://github.com/betagouv/france-chaleur-urbaine/pull/1257)
-- Ajout d'une modale de confirmation avant l'envoi d'emails depuis l'administration. [#1244](https://github.com/betagouv/france-chaleur-urbaine/pull/1244)
+- Amélioration de la gestion des étiquettes utilisateurs : possibilité d'étiqueter en masse des utilisateurs [#1265](https://github.com/betagouv/france-chaleur-urbaine/pull/1265).
+- Ajout de filtres globaux sur les colonnes du tableau de données [#1265](https://github.com/betagouv/france-chaleur-urbaine/pull/1265).
 - Les administrateurs peuvent désormais mettre à jour le statut des demandes.
-- Les boutons de modification/suppression sont maintenant affichés pour toutes les relances.
-- Possibilité de lister les organisations dans la gestion des réseaux. [#1259](https://github.com/betagouv/france-chaleur-urbaine/pull/1259)
-- Affichage de l'éligibilité sur les iframes legacy restauré.
-- Amélioration de la performance du tableau des demandes. [#1256](https://github.com/betagouv/france-chaleur-urbaine/pull/1256)
-- Amélioration de l'affichage des accès aux demandes dans l'administration.
-- Ajout du tracking custom des événements iframes et formulaires. [#1254](https://github.com/betagouv/france-chaleur-urbaine/pull/1254)
+- Ajout du maître d'ouvrage aux réseaux en construction [#1260](https://github.com/betagouv/france-chaleur-urbaine/pull/1260).
+- Amélioration de l'affichage des accès aux demandes dans l'interface administrateur.
+- Refonte du méga-menu et réorganisation du dashboard administrateur pour une meilleure navigation.
+- Suppression des notifications emails de l'équipe FCU et de l'intégration Pipedrive.
+- Amélioration de la gestion des erreurs et des cookies de grande taille.
+- Rétrocompatibilité améliorée pour l'iframe de la carte.
+- Correction de l'affichage de l'éligibilité dans les iframes legacy.
+- Tracking amélioré des événements dans les iframes et formulaires.
 
 ### Évolutions techniques
-- Refactorisation de l'API PAC et initialisation de l'API IFPEN (renommée PAC).
-- Mise à jour du package `publicodes`.
-- Amélioration de la gestion des limites de `MapConfiguration` pour éviter les surcharges.
-- Simplification de la mise à jour en masse des géométries. [#1252](https://github.com/betagouv/france-chaleur-urbaine/pull/1252)
-- Correction d'un problème de duplication d'utilisateurs administrateurs. [#1251](https://github.com/betagouv/france-chaleur-urbaine/pull/1251)
-- Nettoyage du code legacy lié aux tags. [#1242](https://github.com/betagouv/france-chaleur-urbaine/pull/1242)
-- Déplacement de la page `api-gestionnaire` dans le module `partner-api`. [#1258](https://github.com/betagouv/france-chaleur-urbaine/pull/1258)
-- Suppression de l'intégration Pipedrive et des notifications emails de l'équipe FCU.
-- Correction d'un test unitaire lié au coup de pouce chauffage.
-- Correction de bugs et améliorations diverses de l'API.
-- Amélioration de la gestion des cookies de grande taille (> 4096kb).
+- Refactorisation de l'API PAC et mise à jour de la version du package `publicodes`.
+- Initialisation de l'API pour IFPEN (renommée PAC).
+- Amélioration des performances du tableau des demandes [#1256](https://github.com/betagouv/france-chaleur-urbaine/pull/1256).
+- Correction de la duplication des utilisateurs administrateurs [#1251](https://github.com/betagouv/france-chaleur-urbaine/pull/1251).
+- Configuration des outils MCP (Playwright et PostgreSQL) pour les tests.
+- Simplification et nettoyage du code de la page `api-gestionnaires`.
+- Mise à jour de la CLI pour la mise à jour en masse des géométries.
+- Correction des filtres de la carte et de la configuration.
+- Amélioration de la gestion des données des demandes en base de données.
+- Suppression des suppressions automatiques de demandes dans les événements.
 
 ### Autres changements
-- Ajout de tracking pour les host des demandes.
-- Ajout de la distinction des suppressions automatiques de demandes dans les événements. [#1255](https://github.com/betagouv/france-chaleur-urbaine/pull/1255)
-- Correction de données de demandes corrompues en base de données.
-- Ajout d'une commande CLI pour identifier les fichiers tracés.
-- Mise à jour de la documentation et des tests.
+- Documentation mise à jour.
+- Correction de tests unitaires.
 - Diverses corrections de bugs et améliorations de la qualité du code.
-- Ajout du logo ADEME et FCU sur la carte.
+- Ajout de tests Playwright.
+- Gestion des abus pour les statistiques.
+- Simplification des statuts autour de "recontacté".
+- Amélioration de la gestion des erreurs et des logs.
+- Mise à jour des libellés pour la catégorie "Très modeste".
+- Suppression du code obsolète et nettoyage général du code.

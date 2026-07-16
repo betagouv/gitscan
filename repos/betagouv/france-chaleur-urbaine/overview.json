@@ -1,15 +1,14 @@
 {
   "url": "https://github.com/betagouv/france-chaleur-urbaine",
   "name": "france-chaleur-urbaine",
-  "description": "Le site france-chaleur-urbaine.beta.gouv.fr permet de faciliter et d'accélérer les raccordements aux réseaux de chaleur. Il fournit une interface pour les utilisateurs et les administrateurs pour gérer les demandes et les réseaux de chaleur.",
+  "description": "Le site officiel de france-chaleur-urbaine.beta.gouv.fr. Il permet de faciliter et d'accélérer les raccordements aux réseaux de chaleur.",
   "language": "TypeScript",
   "features": [
-    "Visualisation de données & Cartographie",
     "Gestion des utilisateurs & Permissions",
     "Recherche & Filtres",
-    "Notifications & Alertes",
+    "Visualisation de données & Cartographie",
     "API & Intégrations",
-    "Gestion des établissements & Structures"
+    "Notifications & Alertes"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -19,8 +18,8 @@
     "MapLibre",
     "Node.js",
     "TypeScript",
-    "PostgreSQL",
-    "Kysely"
+    "Posthog",
+    "Sentry"
   ],
   "components": [
     "Frontend React",
@@ -31,15 +30,18 @@
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "email-password",
+      "oauth2"
     ]
   },
   "tests": [
     "Vitest",
     "Playwright"
   ],
-  "workflows": [],
-  "lastActivity": "2026-07-09T11:56:12+02:00",
+  "workflows": [
+    "CI/CD & GitHub Actions"
+  ],
+  "lastActivity": "2026-07-15T18:06:12+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -57,6 +59,7 @@
     "Déploiement & Hosting",
     "Python",
     "Bases de données SQL",
+    "Sécurité & Auth",
     "Environnement & Énergie"
   ]
 }
