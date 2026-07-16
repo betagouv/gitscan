@@ -62,7 +62,8 @@
 │   │   ├── ADR-002-testing-strategy-and-repository-mocking.md
 │   │   ├── ADR-003-ddd-aggregate-root-pattern.md
 │   │   ├── ADR-004-cross-bounded-context-foreign-keys-and-domain-error-mapping.md
-│   │   └── ADR-005-business-rule-ownership-entity-vs-orm-model.md
+│   │   ├── ADR-005-business-rule-ownership-entity-vs-orm-model.md
+│   │   └── ADR-006-cqrs-query-use-cases-read-models.md
 │   ├── accessibility_testing.md
 │   ├── browser_auto_reload.md
 │   ├── direnv_dotenv_usage.md
@@ -362,6 +363,7 @@
     │   ├── legifrance.md
     │   ├── matcher.md
     │   ├── ocr_cv_open_router.md
+    │   ├── offres.md
     │   ├── pipelines_cv.md
     │   ├── pyproject.toml
     │   ├── rome_4.md
@@ -529,7 +531,6 @@
         │   │   │   └── cv_metadata_repository_interface.py
         │   │   ├── services
         │   │   │   ├── __init__.py
-        │   │   │   ├── candidature_actors_validator.py
         │   │   │   ├── ocr_interface.py
         │   │   │   ├── query_builder_interface.py
         │   │   │   └── text_formatter_interface.py
@@ -629,7 +630,8 @@
         │       │   ├── __init__.py
         │       │   ├── candidature_errors.py
         │       │   ├── erreur_recrutement.py
-        │       │   └── note_errors.py
+        │       │   ├── note_errors.py
+        │       │   └── recrutement_errors.py
         │       ├── events
         │       │   ├── __init__.py
         │       │   ├── note_events.py
@@ -637,7 +639,8 @@
         │       ├── repositories
         │       │   ├── __init__.py
         │       │   ├── note_repository_interface.py
-        │       │   └── organisme_repository_interface.py
+        │       │   ├── organisme_repository_interface.py
+        │       │   └── recrutement_repository_interface.py
         │       ├── services
         │       │   ├── __init__.py
         │       │   └── note_query_service_interface.py
@@ -684,6 +687,7 @@
         │   │   │   │   ├── 0003_alter_cvmetadatamodel_created_at_and_more.py
         │   │   │   │   ├── 0004_candidaturemodel.py
         │   │   │   │   ├── 0005_fix_cv_metadata_id_index.py
+        │   │   │   │   ├── 0006_remove_candidaturemodel_unique_candidature_candidat_offre_and_more.py
         │   │   │   │   └── __init__.py
         │   │   │   └── models
         │   │   │       ├── __init__.py
@@ -872,11 +876,13 @@
         │   │       └── logger.py
         │   ├── mappers
         │   │   ├── __init__.py
+        │   │   ├── candidature_mapper.py
         │   │   ├── note_mapper.py
         │   │   ├── organisme_identite_mapper.py
         │   │   ├── organisme_recruteur_mapper.py
         │   │   ├── qdrant_filters_mapper.py
         │   │   ├── queryset_page.py
+        │   │   ├── recrutement_mapper.py
         │   │   └── stat_snapshot_mapper.py
         │   └── repositories
         │       ├── __init__.py
@@ -905,7 +911,8 @@
         │       │   ├── __init__.py
         │       │   ├── postgres_note_query_service.py
         │       │   ├── postgres_note_repository.py
-        │       │   └── postgres_organisme_repository.py
+        │       │   ├── postgres_organisme_repository.py
+        │       │   └── postgres_recrutement_repository.py
         │       ├── repository_factory.py
         │       └── shared
         │           ├── __init__.py
@@ -1092,6 +1099,9 @@
         │   │   │   │   │   ├── CspSelect
         │   │   │   │   │   │   ├── CspSelect.stories.ts
         │   │   │   │   │   │   └── CspSelect.vue
+        │   │   │   │   │   ├── CspSeparator
+        │   │   │   │   │   │   ├── CspSeparator.stories.ts
+        │   │   │   │   │   │   └── CspSeparator.vue
         │   │   │   │   │   ├── CspSortableList
         │   │   │   │   │   │   ├── CspSortableList.stories.ts
         │   │   │   │   │   │   ├── CspSortableList.vue
@@ -1503,7 +1513,6 @@
         │   │   │   └── test_api_key_authentication.py
         │   │   ├── candidate
         │   │   │   ├── __init__.py
-        │   │   │   ├── test_candidature_admin.py
         │   │   │   ├── test_get_opportunity_details.py
         │   │   │   ├── test_initialize_cv_metadata.py
         │   │   │   ├── test_match_cv_to_opportunities.py
@@ -1588,6 +1597,9 @@
         │   │   │       ├── test_drawer_views.py
         │   │   │       ├── test_error_views.py
         │   │   │       └── test_static_pages_view.py
+        │   │   ├── commons
+        │   │   │   ├── __init__.py
+        │   │   │   └── test_pagination.py
         │   │   ├── identite
         │   │   │   └── views
         │   │   │       ├── __init__.py
@@ -1644,4 +1656,4 @@
         │       ├── test_api_request_logger_middleware.py
         │       └── test_interface_aware_mock.py
         └── uv.lock
-337 directories, 1309 files
+339 directories, 1319 files
