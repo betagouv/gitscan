@@ -25,6 +25,7 @@ ex: KEYCLOAK_PRIVATE_PROVIDER=MTES-MCT/Dossier-Facile-Keycloak||$GITHUBID:$GITHU
 | < 17   (wildfly)  | 0.1.0     |
 | >= 17  (quarkus)  | 0.2.0     |
 | >= 23  (quarkus)  | 1.0.0     |
+| >= 26  (quarkus)  | 2.0.0     |
 
 ## Usage
 
@@ -37,7 +38,7 @@ BUILDPACK_URL=https://github.com/MTES-MCT/keycloak-buildpack
 Default version Keycloak is `latest` found in github releases, but you can choose another one:
 
 ```shell
-scalingo env-set KEYCLOAK_VERSION=23.0.4
+scalingo env-set KEYCLOAK_VERSION=26.7.0
 ```
 
 See [Keycloak latest docs](https://www.keycloak.org/server/containers) to use keycloak quarkus image server.
@@ -78,7 +79,7 @@ cp .env.sample .env
 Run an interactive docker scalingo stack [2]:
 
 ```shell
-docker run --name keycloak -it -p 8443:8443 -v "$(pwd)"/.env:/env/.env -v "$(pwd)":/buildpack scalingo/scalingo-22:latest bash
+docker run --name keycloak -it -p 8443:8443 -v "$(pwd)"/.env:/env/.env -v "$(pwd)":/buildpack scalingo/scalingo-24:latest bash
 ```
 
 And test in it:
