@@ -1,10 +1,10 @@
-## Changelog : dockerfiles (30 derniers jours, au 26 juin 2026)
+## Changelog : dockerfiles (30 derniers jours, au 25 juin 2026)
 
 ### Résumé
-Ce dépôt a été mis à jour pour améliorer la gestion des versions des outils qu'il fournit. Plus précisément, la version de `clusterctl` a été mise à jour, et les sommes de contrôle (shasum) des actions utilisées dans les Dockerfiles ont été corrigées pour garantir l'intégrité des builds.
+Ce dépôt a été mis à jour pour améliorer la gestion des versions des outils inclus, notamment `clusterctl`. Ces mises à jour permettent de bénéficier des dernières fonctionnalités et corrections de ces outils, tout en assurant la compatibilité et la stabilité des images Docker fournies.
 
 ### Évolutions fonctionnelles
-- Mise à jour de `clusterctl` de la version 1.8.10 vers la version 1.13.1 [#35](https://github.com/cloud-gouv/dockerfiles/pull/35).
+- Mise à jour de `clusterctl` de la version 1.8.10 à la version 1.13.1 [#35](https://github.com/cloud-gouv/dockerfiles/pull/35).
 
 ### Évolutions techniques
-- Correction des sommes de contrôle (shasum) des actions utilisées dans les Dockerfiles [#36](https://github.com/cloud-gouv/dockerfiles/pull/36). Cette correction assure la cohérence et la sécurité des builds.
+- Correction des sommes SHA des actions utilisées dans les Dockerfiles [#36](https://github.com/cloud-gouv/dockerfiles/pull/36). Ceci assure l'intégrité et la reproductibilité des builds.
