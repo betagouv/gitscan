@@ -1,17 +1,16 @@
-## Changelog : oidc2fer (30 derniers jours, au 18 juin 2026)
+## Changelog : oidc2fer (30 derniers jours, au 13 juillet 2026)
 
 ### Résumé
-Cette nouvelle version apporte des améliorations à la gestion des erreurs d'affiliation lors de l'authentification OIDC, ainsi que des mises à jour pour les tests d'intégration et la gestion des identifiants SIRET. Une nouvelle version (v1.0.15) a été publiée en production.
+Cette mise à jour apporte des corrections concernant la gestion des identifiants SIRET pour les établissements CNAM et PSL, améliorant ainsi la précision de l'identification des utilisateurs et des organisations. Une nouvelle version (v1.0.15) a été déployée en production.
 
 ### Évolutions fonctionnelles
-- Amélioration du message d'erreur renvoyé en cas d'échec de la vérification de l'affiliation `eduPersonAffiliation` pour fournir plus de détails. [#42](https://github.com/proconnect-gouv/oidc2fer/pull/42)
-- Mise à jour du client de test ProConnect utilisé pour les tests d'intégration.
-- Ajout de nouvelles entités à la correspondance SIRET, incluant EURECOM.
-- Ajout de nouvelles entités à la correspondance SIRET.
+- Correction de l'identifiant SIRET pour l'établissement CNAM. [#27b79f8](https://github.com/proconnect-gouv/oidc2fer/commit/27b79f8)
+- Correction de l'identifiant SIRET pour l'établissement PSL. [#626380c](https://github.com/proconnect-gouv/oidc2fer/commit/626380c)
+- Amélioration de la gestion des erreurs d'affiliation `eduPersonAffiliation` en renvoyant une erreur OIDC détaillée. [#42](https://github.com/proconnect-gouv/oidc2fer/pull/42)
 
 ### Évolutions techniques
-- Exclusion du répertoire de construction (build) de l'analyse Pylint pour améliorer la performance et réduire les faux positifs.
+- Exclusion du répertoire `build` de l'analyse Pylint pour optimiser le processus de linting. [#9d3a43c](https://github.com/proconnect-gouv/oidc2fer/commit/9d3a43c)
+- Déploiement de la version v1.0.15 en production. [#4f1e941](https://github.com/proconnect-gouv/oidc2fer/commit/4f1e941)
 
 ### Autres changements
-- Publication de la version v1.0.15 en production.
-- Publication de la version v1.0.15.
+- Publication de la version v1.0.15. [#7f62737](https://github.com/proconnect-gouv/oidc2fer/commit/7f62737)
