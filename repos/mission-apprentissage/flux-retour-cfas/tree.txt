@@ -164,6 +164,7 @@
 │   │   ├── commands.ts
 │   │   ├── common
 │   │   │   ├── actions
+│   │   │   │   ├── account.actions.test.ts
 │   │   │   │   ├── account.actions.ts
 │   │   │   │   ├── admin
 │   │   │   │   │   ├── collaborations
@@ -176,29 +177,43 @@
 │   │   │   │   ├── affelnet.actions.ts
 │   │   │   │   ├── brevo
 │   │   │   │   │   ├── brevo.actions.ts
-│   │   │   │   │   └── contacts
-│   │   │   │   │       ├── connexion-invitation-info.actions.test.ts
-│   │   │   │   │       ├── connexion-invitation-info.actions.ts
-│   │   │   │   │       ├── connexion-invitations.actions.test.ts
-│   │   │   │   │       ├── connexion-invitations.actions.ts
-│   │   │   │   │       ├── fixtures.ts
-│   │   │   │   │       ├── formatters.test.ts
-│   │   │   │   │       ├── formatters.ts
-│   │   │   │   │       ├── list.actions.test.ts
-│   │   │   │   │       ├── list.actions.ts
+│   │   │   │   │   ├── contacts
+│   │   │   │   │   │   ├── connexion-invitation-info.actions.test.ts
+│   │   │   │   │   │   ├── connexion-invitation-info.actions.ts
+│   │   │   │   │   │   ├── connexion-invitations.actions.test.ts
+│   │   │   │   │   │   ├── connexion-invitations.actions.ts
+│   │   │   │   │   │   ├── enqueue-sync.test.ts
+│   │   │   │   │   │   ├── enqueue-sync.ts
+│   │   │   │   │   │   ├── fixtures.ts
+│   │   │   │   │   │   ├── formatters.test.ts
+│   │   │   │   │   │   ├── formatters.ts
+│   │   │   │   │   │   ├── list.actions.test.ts
+│   │   │   │   │   │   ├── list.actions.ts
+│   │   │   │   │   │   ├── registry.ts
+│   │   │   │   │   │   ├── sync-settings.actions.test.ts
+│   │   │   │   │   │   ├── sync-settings.actions.ts
+│   │   │   │   │   │   ├── sync.test.ts
+│   │   │   │   │   │   ├── sync.ts
+│   │   │   │   │   │   ├── tba-contacts.test.ts
+│   │   │   │   │   │   ├── tba-contacts.ts
+│   │   │   │   │   │   ├── types.ts
+│   │   │   │   │   │   ├── utm.test.ts
+│   │   │   │   │   │   └── utm.ts
+│   │   │   │   │   └── events
+│   │   │   │   │       ├── account-confirmed.event.ts
+│   │   │   │   │       ├── enqueue-event.test.ts
+│   │   │   │   │       ├── enqueue-event.ts
 │   │   │   │   │       ├── registry.ts
-│   │   │   │   │       ├── sync.ts
-│   │   │   │   │       ├── tba-contacts.test.ts
-│   │   │   │   │       ├── tba-contacts.ts
-│   │   │   │   │       ├── types.ts
-│   │   │   │   │       ├── utm.test.ts
-│   │   │   │   │       └── utm.ts
+│   │   │   │   │       ├── track.test.ts
+│   │   │   │   │       ├── track.ts
+│   │   │   │   │       └── types.ts
 │   │   │   │   ├── campagnes
 │   │   │   │   │   └── campagnes.actions.ts
 │   │   │   │   ├── cfa
 │   │   │   │   │   ├── cfa-daily-recap.actions.ts
 │   │   │   │   │   ├── cfa-effectifs-ruptures.actions.ts
-│   │   │   │   │   └── cfa-effectifs.actions.ts
+│   │   │   │   │   ├── cfa-effectifs.actions.ts
+│   │   │   │   │   └── cfa-suivi-mission-locale.actions.ts
 │   │   │   │   ├── effectif.legacy_schema.ts
 │   │   │   │   ├── effectifs
 │   │   │   │   │   ├── __obsolete__
@@ -249,6 +264,7 @@
 │   │   │   │   │   └── mission-locale.constants.ts
 │   │   │   │   ├── opcos
 │   │   │   │   │   └── opcos.actions.ts
+│   │   │   │   ├── organisations.actions.test.ts
 │   │   │   │   ├── organisations.actions.ts
 │   │   │   │   ├── organismes
 │   │   │   │   │   ├── collab-v2-eligibility.ts
@@ -463,6 +479,8 @@
 │   │   │   │   ├── errorMiddleware.ts
 │   │   │   │   ├── helpers.ts
 │   │   │   │   ├── logMiddleware.ts
+│   │   │   │   ├── proxyIpVerification.ts
+│   │   │   │   ├── rateLimit.ts
 │   │   │   │   ├── requireApiKeyAuthentication.ts
 │   │   │   │   ├── requireBearerAuthentication.ts
 │   │   │   │   ├── requireMissionLocaleTokenAuthentication.ts
@@ -728,6 +746,7 @@
 │   │   │   │   ├── actions
 │   │   │   │   │   ├── cfa-effectifs-ruptures.actions.test.ts
 │   │   │   │   │   ├── cfa-effectifs.actions.test.ts
+│   │   │   │   │   ├── cfa-suivi-mission-locale.actions.test.ts
 │   │   │   │   │   ├── collab-v2-eligibility.test.ts
 │   │   │   │   │   ├── deca-cfa-eligibility.test.ts
 │   │   │   │   │   ├── effectifs.duplicates.actions.test.ts
@@ -765,6 +784,7 @@
 │   │   │   │   ├── admin-organismes-deca-cfa-pilot.routes.test.ts
 │   │   │   │   ├── admin.routes.test.ts
 │   │   │   │   ├── authentication.routes.test.ts
+│   │   │   │   ├── brevo-contacts.routes.test.ts
 │   │   │   │   ├── brevo-whatsapp.routes.test.ts
 │   │   │   │   ├── cfd.routes.test.ts
 │   │   │   │   ├── dossierApprenantsV3.route.test.ts
@@ -780,6 +800,7 @@
 │   │   │   │   ├── organisme.routes.test.ts
 │   │   │   │   ├── organismes.routes.test.ts
 │   │   │   │   ├── password.route.test.ts
+│   │   │   │   ├── rateLimit.test.ts
 │   │   │   │   ├── redirect.routes.test.ts
 │   │   │   │   ├── rncp.routes.test.ts
 │   │   │   │   ├── sipa-auth.routes.test.ts
@@ -895,6 +916,7 @@
 │   │   │   ├── brevoContactList.model.ts
 │   │   │   ├── brevoMissionLocaleList.model.ts
 │   │   │   ├── brevoMissionLocaleTemplate.model.ts
+│   │   │   ├── brevoSyncSettings.model.ts
 │   │   │   ├── common.ts
 │   │   │   ├── connexionInvitations.model.ts
 │   │   │   ├── effectifs
@@ -1319,12 +1341,16 @@
 │   │   │   │   │   ├── CfaInviteBanner.tsx
 │   │   │   │   │   ├── CfaRuptureInfoModal.tsx
 │   │   │   │   │   ├── CfaRuptureSegment.module.css
-│   │   │   │   │   ├── CfaRuptureSegment.tsx
+│   │   │   │   │   ├── CfaRuptureTable.tsx
 │   │   │   │   │   ├── CfaRupturesList.module.css
 │   │   │   │   │   ├── CfaRupturesList.tsx
 │   │   │   │   │   ├── CfaSearchResults.module.css
 │   │   │   │   │   ├── CfaSearchResults.tsx
+│   │   │   │   │   ├── CfaSuiviEmptyState.tsx
+│   │   │   │   │   ├── CfaSuiviExportButton.tsx
+│   │   │   │   │   ├── CfaSuiviMissionLocale.module.css
 │   │   │   │   │   ├── EffectifParcoursCfa.tsx
+│   │   │   │   │   ├── collabFilterLabel.tsx
 │   │   │   │   │   ├── collaboration
 │   │   │   │   │   │   ├── CfaCollaborationColumn.tsx
 │   │   │   │   │   │   ├── CfaCollaborationDetail.module.css
@@ -1351,7 +1377,9 @@
 │   │   │   │   │   ├── hooks
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   ├── useCfaMutations.ts
-│   │   │   │   │   │   └── useCfaQueries.ts
+│   │   │   │   │   │   ├── useCfaQueries.ts
+│   │   │   │   │   │   ├── useCfaUrlParams.ts
+│   │   │   │   │   │   └── useSortablePagination.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── mission-locale
 │   │   │   │   │   ├── DownloadSection.tsx
@@ -1403,6 +1431,8 @@
 │   │   │   │       ├── index.ts
 │   │   │   │       ├── types.ts
 │   │   │   │       ├── ui
+│   │   │   │       │   ├── CommuneCell.module.css
+│   │   │   │       │   ├── CommuneCell.tsx
 │   │   │   │       │   ├── ConfirmReset.module.css
 │   │   │   │       │   ├── ConfirmReset.tsx
 │   │   │   │       │   ├── EffectifDetail.tsx
@@ -1429,6 +1459,8 @@
 │   │   │   │       │   ├── RightColumnSkeleton.tsx
 │   │   │   │       │   ├── SortableTable.module.css
 │   │   │   │       │   ├── SortableTableParts.tsx
+│   │   │   │       │   ├── VillesFilter.module.css
+│   │   │   │       │   ├── VillesFilter.tsx
 │   │   │   │       │   └── WhatsAppBadge.module.css
 │   │   │   │       ├── utils
 │   │   │   │       │   └── searchUtils.ts
@@ -1570,6 +1602,7 @@
 │   │   │   ├── hooks.utils.ts
 │   │   │   ├── phone.utils.ts
 │   │   │   ├── routes.utils.ts
+│   │   │   ├── ruptures.utils.test.ts
 │   │   │   ├── ruptures.utils.ts
 │   │   │   ├── session.utils.ts
 │   │   │   ├── user.utils.test.ts
@@ -1579,12 +1612,14 @@
 │   │   │   │   ├── BrevoContactListCard.tsx
 │   │   │   │   ├── BrevoContactListsClient.tsx
 │   │   │   │   ├── BrevoHealthBanner.tsx
+│   │   │   │   ├── BrevoSyncSettingsPanel.tsx
 │   │   │   │   ├── brevo-contacts.module.scss
 │   │   │   │   ├── hooks
 │   │   │   │   │   ├── useBrevoContactListExisting.ts
 │   │   │   │   │   ├── useBrevoContactListSync.ts
 │   │   │   │   │   ├── useBrevoContactLists.ts
 │   │   │   │   │   ├── useBrevoHealth.ts
+│   │   │   │   │   ├── useBrevoSyncSettings.ts
 │   │   │   │   │   └── useTbaContactsExport.ts
 │   │   │   │   ├── layout.tsx
 │   │   │   │   └── page.tsx
@@ -1661,6 +1696,7 @@
 │   │   │   ├── Organisme.ts
 │   │   │   └── User.ts
 │   │   ├── queryClient.ts
+│   │   ├── rateLimit.ts
 │   │   ├── types
 │   │   │   ├── cfaRuptures.ts
 │   │   │   ├── infoSiret.ts
@@ -1731,6 +1767,7 @@
 │   │   │       ├── Header.tsx
 │   │   │       ├── LoaderFullScreen.tsx
 │   │   │       └── NavigationMenu.tsx
+│   │   ├── RateLimitBanner.tsx
 │   │   ├── Ribbons
 │   │   │   └── Ribbons.tsx
 │   │   ├── ScrollShadowBox
@@ -2437,4 +2474,4 @@
 │   └── types.d.ts
 ├── vitest.workspace.ts
 └── yarn.lock
-478 directories, 1961 files
+479 directories, 1997 files
