@@ -1,4 +1,8 @@
 .
+├── .claude
+│   └── skills
+│       └── add-analysis-report
+│           └── SKILL.md
 ├── .dockerignore
 ├── .editorconfig
 ├── .env.example
@@ -27,6 +31,8 @@
 │   │   │   ├── templates
 │   │   │   │   ├── alert.configmap.yaml
 │   │   │   │   ├── alert.sealed-secret.yaml
+│   │   │   │   ├── analysis.configmap.yaml
+│   │   │   │   ├── analysis.sealed-secret.yaml
 │   │   │   │   ├── cdtn-prod-backups-access-key.sealed-secret.yaml
 │   │   │   │   ├── export.configmap.yaml
 │   │   │   │   ├── export.sealed-secret.yaml
@@ -44,6 +50,8 @@
 │   │   │   ├── templates
 │   │   │   │   ├── alert.configmap.yaml
 │   │   │   │   ├── alert.sealed-secret.yaml
+│   │   │   │   ├── analysis.configmap.yaml
+│   │   │   │   ├── analysis.sealed-secret.yaml
 │   │   │   │   ├── cdtn-prod-backups-access-key.sealed-secret.yaml
 │   │   │   │   ├── export.configmap.yaml
 │   │   │   │   ├── export.sealed-secret.yaml
@@ -61,6 +69,8 @@
 │   │       ├── templates
 │   │       │   ├── alert.configmap.yaml
 │   │       │   ├── alert.sealed-secret.yaml
+│   │       │   ├── analysis.configmap.yaml
+│   │       │   ├── analysis.sealed-secret.yaml
 │   │       │   ├── export.configmap.yaml
 │   │       │   ├── export.sealed-secret.yaml
 │   │       │   ├── hasura.configmap.yaml
@@ -78,6 +88,8 @@
 │   ├── templates
 │   │   ├── alert.cronjob.yaml
 │   │   ├── alert.job.tpl
+│   │   ├── analysis.cronjob.yaml
+│   │   ├── analysis.job.tpl
 │   │   ├── cleanup.cronjob.yaml
 │   │   ├── cleanup.job.tpl
 │   │   ├── ingester.cronjob.yaml
@@ -91,11 +103,17 @@
 ├── CHANGELOG.md
 ├── README.md
 ├── analysis
+│   ├── .dockerignore
 │   ├── .env.example
 │   ├── .python-version
+│   ├── Dockerfile
 │   ├── README.md
 │   ├── notebooks
+│   │   ├── ABTesting-contribution.ipynb
+│   │   ├── KPI_completion_API.ipynb
+│   │   ├── KPI_completion_BDD.ipynb
 │   │   ├── contrib_monthly_views.ipynb
+│   │   ├── impact-kpis.ipynb
 │   │   └── search_stats.ipynb
 │   ├── pyproject.toml
 │   ├── scripts
@@ -103,14 +121,24 @@
 │   ├── src
 │   │   └── analysis
 │   │       ├── __init__.py
+│   │       ├── commands
+│   │       │   ├── __init__.py
+│   │       │   ├── _runner.py
+│   │       │   ├── ingest_all.py
+│   │       │   ├── ingest_completion_contributions.py
+│   │       │   └── ingest_simulateurs.py
 │   │       ├── config.py
 │   │       ├── connectors
 │   │       │   ├── __init__.py
 │   │       │   ├── matomo.py
-│   │       │   └── matomo_reporting.py
+│   │       │   ├── matomo_reporting.py
+│   │       │   └── metabase_db.py
+│   │       ├── matomo_segments.py
 │   │       ├── py.typed
 │   │       └── reports
 │   │           ├── __init__.py
+│   │           ├── completion_contributions.py
+│   │           ├── completion_simulateurs.py
 │   │           └── contrib_monthly_views.py
 │   └── uv.lock
 ├── docker-compose.yml
@@ -2230,4 +2258,4 @@
         │           ├── data-loaders.ts
         │           └── index.ts
         └── tsconfig.json
-586 directories, 1686 files
+590 directories, 1710 files
