@@ -6,6 +6,7 @@
 │   └── workflows
 │       └── ci.yml
 ├── .gitignore
+├── FIX-telemetry-endpoint-double-bootstrap.md
 ├── LICENSE
 ├── README.md
 ├── VERSION
@@ -36,11 +37,14 @@
 │   │   │   ├── devices.py
 │   │   │   ├── flags.py
 │   │   │   ├── keycloak.py
+│   │   │   ├── llm_traffic.py
 │   │   │   └── runtime_config.py
 │   │   ├── static
 │   │   │   └── dm-admin.css
 │   │   ├── suggest_utils.py
 │   │   └── templates
+│   │       ├── _audit_rows.html
+│   │       ├── _audit_table.html
 │   │       ├── artifacts.html
 │   │       ├── audit_log.html
 │   │       ├── base.html
@@ -83,11 +87,14 @@
 │   │   ├── proxy.py
 │   │   ├── router.py
 │   │   ├── throttle.py
-│   │   └── tokens.py
+│   │   ├── tokens.py
+│   │   └── traffic.py
 │   ├── logfilters.py
 │   ├── main.py
+│   ├── observability.py
 │   ├── pathsafe.py
 │   ├── postgres_queue.py
+│   ├── resilience.py
 │   ├── runtime_config.py
 │   ├── s3.py
 │   ├── services
@@ -118,6 +125,33 @@
 │   │   │   │   └── datasource.yml
 │   │   │   └── tempo.yaml
 │   │   └── relay-assistant.conf.template
+│   ├── helm
+│   │   ├── device-management
+│   │   │   ├── Chart.yaml
+│   │   │   ├── README.md
+│   │   │   ├── templates
+│   │   │   │   ├── NOTES.txt
+│   │   │   │   ├── _helpers.tpl
+│   │   │   │   ├── configmap.yaml
+│   │   │   │   ├── deployment-admin.yaml
+│   │   │   │   ├── deployment-api.yaml
+│   │   │   │   ├── deployment-telemetry-relay.yaml
+│   │   │   │   ├── deployment-worker.yaml
+│   │   │   │   ├── hpa-api.yaml
+│   │   │   │   ├── hpa-worker.yaml
+│   │   │   │   ├── ingress.yaml
+│   │   │   │   ├── job-migrate.yaml
+│   │   │   │   ├── postgres-internal.yaml
+│   │   │   │   ├── pvc-admin.yaml
+│   │   │   │   ├── secret.yaml
+│   │   │   │   ├── service-admin.yaml
+│   │   │   │   ├── service-api.yaml
+│   │   │   │   ├── service-telemetry-relay.yaml
+│   │   │   │   └── serviceaccount.yaml
+│   │   │   ├── values.schema.json
+│   │   │   └── values.yaml
+│   │   └── examples
+│   │       └── values-prod-example.yaml
 │   ├── k8s
 │   │   ├── NORMALIZATION-secrets.md
 │   │   ├── README.md
@@ -195,12 +229,14 @@
 │   │   ├── README.md
 │   │   ├── adr-0001-vue-densemble.md
 │   │   ├── adr-0002-proxy-llm-relais.md
+│   │   ├── adr-0003-modele-embedding.md
 │   │   ├── adr-dgx-deployment.md
 │   │   └── adr-product-architecture.md
 │   ├── operations
 │   │   ├── README.md
 │   │   ├── debug-campaign-not-serving.md
 │   │   ├── developer-readme.md
+│   │   ├── feature-flags.md
 │   │   ├── llm-proxy.md
 │   │   ├── mode-operatoire-campagnes.md
 │   │   └── test-cahier.md
@@ -250,8 +286,11 @@
     ├── llm_utils.py
     ├── test_admin_playwright.py
     ├── test_admin_ui.py
+    ├── test_audit_plugin.py
+    ├── test_binaries_storage.py
     ├── test_bootstrap_urls.py
     ├── test_dashboard_telemetry.py
+    ├── test_dashboard_version.py
     ├── test_e2e_deployment.py
     ├── test_enriched_config.py
     ├── test_enroll.py
@@ -261,10 +300,13 @@
     ├── test_llm_proxy.py
     ├── test_llm_quota_pg.py
     ├── test_llm_runtime_mode.py
+    ├── test_llm_traffic.py
     ├── test_logfilters.py
     ├── test_observability.py
+    ├── test_observability_request_id.py
     ├── test_ops_metrics.py
     ├── test_pathsafe.py
+    ├── test_plugin_installations_fk.py
     ├── test_post_deploy.py
     ├── test_public_base_url_prefix.py
     ├── test_queue_load.py
@@ -273,8 +315,10 @@
     ├── test_queue_validation.py
     ├── test_readiness_gate.py
     ├── test_relay.py
+    ├── test_resilience.py
     ├── test_root_admin_redirects.py
     ├── test_runtime_config.py
     ├── test_security_suggest.py
-    └── test_telemetry.py
-41 directories, 238 files
+    ├── test_telemetry.py
+    └── test_worker_heartbeat.py
+45 directories, 278 files
