@@ -99,6 +99,7 @@
 │   │   ├── 0043_projet_questionnaire_reponses.sql
 │   │   ├── 0044_services_numeriques.sql
 │   │   ├── 0045_services_profil_generaliste.sql
+│   │   ├── 0046_questionnaires.sql
 │   │   └── meta
 │   │       ├── 0000_snapshot.json
 │   │       ├── 0001_snapshot.json
@@ -211,18 +212,6 @@
 │   │   ├── aides-labels-stats.ts
 │   │   ├── backfill-classification.ts
 │   │   ├── backfill-te.ts
-│   │   ├── classify-dgcl-by-epci
-│   │   │   └── classify-dgcl-by-epci.ts
-│   │   ├── classify-vivier
-│   │   │   └── classify-vivier.ts
-│   │   ├── cluster-perimetre
-│   │   │   ├── export-perimetre.ts
-│   │   │   ├── extract-nom-propre.ts
-│   │   │   ├── fix-geo.ts
-│   │   │   ├── geocode-nominatim.ts
-│   │   │   ├── persist-clusters-merge.ts
-│   │   │   ├── persist-geo.ts
-│   │   │   └── persist-nom-propre.ts
 │   │   ├── diagnose-aides-geo.ts
 │   │   ├── generate-types.sh
 │   │   ├── import-benchmark-dinum
@@ -235,16 +224,6 @@
 │   │   │   ├── logos-sources.json
 │   │   │   ├── parse-benchmark.spec.ts
 │   │   │   └── parse-benchmark.ts
-│   │   ├── import-dgcl-dotations
-│   │   │   ├── data
-│   │   │   │   ├── dgcl-liste-projets-dotations-investissement-local-2018.csv
-│   │   │   │   ├── dgcl-liste-projets-dotations-investissement-local-2019.csv
-│   │   │   │   ├── dgcl-liste-projets-dotations-investissement-local-2020.csv
-│   │   │   │   ├── dgcl-liste-projets-dotations-investissement-local-2021.csv
-│   │   │   │   ├── dgcl-liste-projets-dotations-investissement-local-2022.csv
-│   │   │   │   ├── dgcl-liste-projets-dotations-investissement-local-2023.csv
-│   │   │   │   └── dgcl-liste-projets-dotations-investissement-local-2024.csv
-│   │   │   └── import-dgcl-dotations.ts
 │   │   ├── import-projets-tet
 │   │   │   ├── import-projets-tet-data.csv
 │   │   │   └── import-projets-tet.ts
@@ -258,12 +237,11 @@
 │   │   │   └── import-tc-opendata.ts
 │   │   ├── migrate-projets-to-data-mec-delta.sql
 │   │   ├── migrate-projets-to-data-mec.sql
-│   │   ├── poc-epci
-│   │   │   ├── build-poc-data.ts
-│   │   │   └── export-tet-for-geo.ts
 │   │   ├── requalify-aides.ts
 │   │   ├── seed-communes-and-epci
 │   │   │   └── seed-communes-and-epci.ts
+│   │   ├── seed-questionnaires
+│   │   │   └── seed-questionnaires.ts
 │   │   ├── seed-referentiel
 │   │   │   ├── data
 │   │   │   │   ├── banatic-categorie-competences.csv
@@ -277,6 +255,14 @@
 │   │   │       └── zlv.source.ts
 │   │   └── utils.ts
 │   ├── src
+│   │   ├── admin
+│   │   │   ├── admin-ajouts.controller.ts
+│   │   │   ├── admin.controller.ts
+│   │   │   ├── admin.module.ts
+│   │   │   ├── admin.service.ts
+│   │   │   └── dto
+│   │   │       ├── admin-ajouts.dto.ts
+│   │   │       └── admin.dto.ts
 │   │   ├── aides
 │   │   │   ├── aide-classification.service.ts
 │   │   │   ├── aides-cache.service.spec.ts
@@ -284,6 +270,10 @@
 │   │   │   ├── aides-feedback.service.ts
 │   │   │   ├── aides-matching.service.spec.ts
 │   │   │   ├── aides-matching.service.ts
+│   │   │   ├── aides-moteur.service.ts
+│   │   │   ├── aides-perimetre.module.ts
+│   │   │   ├── aides-perimetre.service.ts
+│   │   │   ├── aides-projet.service.ts
 │   │   │   ├── aides-sync.processor.ts
 │   │   │   ├── aides-territoires.service.ts
 │   │   │   ├── aides-textual-matching.service.spec.ts
@@ -299,6 +289,15 @@
 │   │   │   │   ├── aide-feedback.dto.ts
 │   │   │   │   └── aides.dto.ts
 │   │   │   └── textual-matching.bm25.ts
+│   │   ├── ajouts-manuels
+│   │   │   ├── ajout-manuel-contract.ts
+│   │   │   ├── ajouts-manuels.controller.ts
+│   │   │   ├── ajouts-manuels.module.ts
+│   │   │   ├── ajouts-manuels.service.spec.ts
+│   │   │   ├── ajouts-manuels.service.ts
+│   │   │   ├── dto
+│   │   │   │   └── ajout-manuel.dto.ts
+│   │   │   └── fondre-ajouts.ts
 │   │   ├── analytics
 │   │   │   ├── analytics.controller.ts
 │   │   │   ├── analytics.dto.ts
@@ -513,12 +512,17 @@
 │   │   │   │       ├── atoutbiodiv-salle.json
 │   │   │   │       └── atoutbiodiv-solaire.json
 │   │   │   ├── dto
+│   │   │   │   ├── questionnaire-edition.dto.ts
 │   │   │   │   └── questionnaire.dto.ts
 │   │   │   ├── eligibilite.spec.ts
 │   │   │   ├── questionnaire-contract.spec.ts
 │   │   │   ├── questionnaire-contract.ts
+│   │   │   ├── questionnaire-validation.spec.ts
+│   │   │   ├── questionnaire-validation.ts
+│   │   │   ├── questionnaires-admin.controller.ts
 │   │   │   ├── questionnaires.controller.ts
 │   │   │   ├── questionnaires.module.ts
+│   │   │   ├── questionnaires.repository.ts
 │   │   │   └── questionnaires.service.ts
 │   │   ├── recommandations
 │   │   │   ├── dto
@@ -629,6 +633,8 @@
 │   │       ├── territoires.service.spec.ts
 │   │       └── territoires.service.ts
 │   ├── test
+│   │   ├── admin.e2e-spec.ts
+│   │   ├── ajouts-manuels.e2e-spec.ts
 │   │   ├── analytics.e2e-spec.ts
 │   │   ├── generated-types.ts
 │   │   ├── helpers
@@ -665,11 +671,41 @@
 │   ├── tsconfig.build.json
 │   └── tsconfig.json
 ├── archi-macro.png
+├── back-office
+│   ├── .env.template
+│   ├── .gitignore
+│   ├── .npmrc
+│   ├── README.md
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── package.json
+│   ├── src
+│   │   ├── App.tsx
+│   │   ├── api.ts
+│   │   ├── components
+│   │   │   ├── AjoutManuel.tsx
+│   │   │   ├── Apercu.tsx
+│   │   │   ├── Catalogue.tsx
+│   │   │   ├── CatalogueQuestionnaires.tsx
+│   │   │   ├── ChoixEtiquettes.tsx
+│   │   │   ├── Editeur.tsx
+│   │   │   ├── Etiquettes.tsx
+│   │   │   ├── PorteCle.tsx
+│   │   │   ├── QuestionnairesSimules.tsx
+│   │   │   └── Services.tsx
+│   │   ├── main.tsx
+│   │   ├── types.ts
+│   │   └── vite-env.d.ts
+│   ├── tsconfig.app.json
+│   ├── tsconfig.json
+│   ├── tsconfig.vite.json
+│   └── vite.config.ts
 ├── commitlint.config.cjs
 ├── docs
 │   ├── api
 │   │   ├── DOCTRINE_ACCES_DONNEES.md
 │   │   ├── GUIDE_DECISIONS.md
+│   │   ├── GUIDE_QUESTIONNAIRES.md
 │   │   ├── INTEGRATION_MEC.md
 │   │   ├── INTEGRATION_TET.md
 │   │   ├── README.md
@@ -816,4 +852,4 @@
     ├── tsconfig.json
     ├── tsconfig.vite.json
     └── vite.config.ts
-140 directories, 678 files
+142 directories, 712 files

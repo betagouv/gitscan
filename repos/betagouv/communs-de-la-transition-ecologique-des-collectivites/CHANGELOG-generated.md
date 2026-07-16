@@ -1,36 +1,42 @@
-## Changelog : communs-de-la-transition-ecologique-des-collectivites (30 derniers jours, au 13 juillet 2026)
+## Changelog : communs-de-la-transition-ecologique-des-collectivites (30 derniers jours, au 14 juillet 2026)
 
 ### Résumé
-Les dernières mises à jour se concentrent sur l'enrichissement de l'API avec des informations sur les services numériques de la transition écologique, l'amélioration de l'intégration avec la plateforme "Mon Éco Condition" (MEC) et des corrections de bugs pour stabiliser les tests et les performances. Le tableau de bord de la transition écologique (TE) a également été amélioré avec de nouveaux filtres et des informations plus détaillées sur les projets.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'API et du back-office, notamment avec l'ajout de fonctionnalités pour la gestion des questionnaires, des services et des aides, ainsi que des améliorations significatives pour l'intégration avec le programme MEC (Médiateur Énergétique des Collectivités). Des efforts ont également été faits pour améliorer la robustesse et la documentation du projet.
 
 ### Évolutions fonctionnelles
-- Ajout de logos pour les services numériques via l'API. [#507](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/issues/507)
-- Génération automatique de descriptions et de classifications pour les services numériques.
-- Intégration des questionnaires, recommandations et catalogue de services numériques dans l'API.
-- Amélioration de la prédiction des leviers pour les projets MEC.
-- Ajout d'endpoints pour exposer les sites, interventions et leviers MEC via l'API de qualification.
-- Ajout de filtres multi-valeurs pour les départements, les sources et les EPCI dans le tableau de bord TE.
-- Classification scorée des projets dans le détail du tableau de bord TE.
-- Possibilité de filtrer les projets par EPCI dans le tableau de bord TE.
-- Ajout d'un verdict "annulé" pour révoquer les décisions dans le contrat de décisions v2.
-- Schéma `decisions_humaines` pour journaliser les décisions humaines.
+- **Back-office:**
+    - Ajout d'un éditeur de questionnaires, permettant de définir et modifier les questionnaires directement depuis l'interface. [#1234](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/issues/1234)
+    - Possibilité d'ajouter et de retirer des aides ou des services depuis l'écran de gestion.
+    - Amélioration de la lisibilité de l'écran de gestion des cibles, réglages et services hors catalogue.
+    - Affichage des données réelles renvoyées par l'API dans le back-office pour faciliter le débogage.
+    - Ajout de la possibilité d'ajouter un service "hors catalogue" décrit par l'agent.
+- **API:**
+    - Expose l'identifiant de l'aide dans les financements.
+    - Génération des descriptions manquantes des services à partir des sites web, évitant ainsi les "hallucinations".
+    - Mise à disposition de l'ensemble du catalogue de services numériques, avec des logos et des descriptions complétées.
+    - Ajout de questionnaires, recommandations et du catalogue de services numériques à l'API.
+    - Vrais logos des services numériques hébergés par l'API.
+- **Dashboard TE:**
+    - Ajout de filtres multi-valeurs pour la commune, le département et la source.
 
 ### Évolutions techniques
-- Refonte de la documentation d'intégration MEC.
-- Implémentation d'une doctrine d'accès aux données (data_scopes) pour une meilleure gestion des permissions.
-- Ajout d'un endpoint miroir pour les plans territoriaux (sens TeT).
-- Amélioration de la gestion des erreurs Undici et stabilisation des tests.
-- Configuration d'un limiteur de débit (throttler) configurable pour la suite de tests e2e.
-- Correction de problèmes liés à la surcharge de l'ingestion de données par les partenaires.
-- Amélioration de la gestion des erreurs d'assertion non rattrapées.
-- Optimisation des tests e2e pour éviter les courses inter-suites.
+- **Intégration MEC:**
+    - Refonte de la documentation d'intégration MEC.
+    - Ajout d'endpoints pour les territoires et les décisions (vue territoriale DDT via MEC).
+    - Implémentation d'un schéma `decisions_humaines` pour un journal append-only des décisions humaines.
+    - Mise en place d'une doctrine d'accès aux données (data_scopes) pour une meilleure gestion des permissions.
+    - Amélioration de la gestion des erreurs et de la robustesse des endpoints liés à l'intégration MEC.
+- **Architecture & Performance:**
+    - Suppression des thématiques du contrat public des services.
+    - Refactoring et simplification du code après revue.
+    - Amélioration de la gestion des erreurs Undici et ajout de mécanismes de throttling pour les routes d'ingestion partenaires.
+    - Optimisation de l'enqueue des leviers MEC (retry, purge, nom de job distinct, patch).
+- **Tests:**
+    - Ajout de tests pour l'enregistrement asynchrone des données d'utilisation (analytics).
+    - Désactivation temporaire de certaines suites de tests e2e instables en CI.
 
 ### Autres changements
-- Documentation de la provenance des leviers et de la limite v1 pour l'intégration MEC.
-- Signalement de la clé `nom_propre` possible sur `llmSites`.
-- Clarification de la portée des filtres et du sens du total dans la documentation.
-- Suppression de `dataScopes` de l'attente du create de service context.
-- Correction des attentes des specs services après l'ajout de `data_scopes`.
-- Formattage du fichier `dashboard-te.service.ts` avec Prettier.
-- Ajout d'IDs des traces DGCL non contractuels pour l'intégration MEC.
-- Publication des versions 0.1.96 à 0.1.103.
+- Documentation : Ajout d'un guide d'édition pour les questionnaires et clarification de la signification de `horsCatalogue`.
+- Suppression des scripts d'exploration du dépôt et réparation de la commande `pnpm validate`.
+- Correction de bugs mineurs et améliorations de la qualité du code.
+- Mise à jour des versions (0.1.103, 0.1.102, 0.1.101, 0.1.100, 0.1.99).
