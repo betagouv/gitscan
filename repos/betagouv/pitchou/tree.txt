@@ -261,6 +261,7 @@
 │       │       │       │   │   ├── FormulaireContrôle.svelte
 │       │       │       │   │   ├── Prescription.svelte
 │       │       │       │   │   ├── Prescriptions.svelte
+│       │       │       │   │   ├── Prescriptions.svelte.test.ts
 │       │       │       │   │   ├── contrôle.ts
 │       │       │       │   │   ├── décisionAdministrative.ts
 │       │       │       │   │   └── prescriptions.ts
@@ -286,6 +287,7 @@
 │       │       │       ├── TagRésultatContrôle.svelte
 │       │       │       └── messages
 │       │       │           └── +server.ts
+│       │       ├── dossierDataAfterDNSync.svelte.test.ts
 │       │       ├── dossiers
 │       │       │   ├── +server.ts
 │       │       │   ├── evenements-phases
@@ -1237,7 +1239,9 @@
 │   │   │   ├── 20260701120000_porteur-de-projet.ts
 │   │   │   ├── 20260702120000_cartographie-projet.ts
 │   │   │   ├── 20260706150000_add-attachment-autre.ts
-│   │   │   └── 20260707120000_ajout-document-bdc-statut.ts
+│   │   │   ├── 20260707120000_ajout-document-bdc-statut.ts
+│   │   │   ├── 20260713000000_drop-fichier-table.ts
+│   │   │   └── 20260715120000_identites-porteur-de-projet.ts
 │   │   ├── package.json
 │   │   ├── scripts
 │   │   │   └── wipe-schema.ts
@@ -1294,6 +1298,7 @@
 │   │   │   │   ├── geomce.test.ts
 │   │   │   │   ├── geomce.ts
 │   │   │   │   ├── groupe_instructeurs.ts
+│   │   │   │   ├── identite_dossier.ts
 │   │   │   │   ├── notification.ts
 │   │   │   │   ├── personne.test.ts
 │   │   │   │   ├── personne.ts
@@ -1346,6 +1351,7 @@
 │   │   │   │       ├── ArêteGroupeInstructeursDossier.ts
 │   │   │   │       ├── ArêtePersonneCapÉcritureAnnotation.ts
 │   │   │   │       ├── ArêtePersonneSuitDossier.ts
+│   │   │   │       ├── AttachmentAutre.ts
 │   │   │   │       ├── AvisExpert.ts
 │   │   │   │       ├── CapDossier.ts
 │   │   │   │       ├── CapabilityGeomce.ts
@@ -1360,9 +1366,9 @@
 │   │   │   │       ├── EspeceProtegeeModification.ts
 │   │   │   │       ├── EspeceProtegeeReference.ts
 │   │   │   │       ├── EspeceTaxref.ts
-│   │   │   │       ├── Fichier.ts
 │   │   │   │       ├── File.ts
 │   │   │   │       ├── GroupeInstructeurs.ts
+│   │   │   │       ├── IdentiteDossier.ts
 │   │   │   │       ├── KnexMigrations.ts
 │   │   │   │       ├── KnexMigrationsLock.ts
 │   │   │   │       ├── Message.ts
@@ -1432,4 +1438,4 @@
 │   └── tsconfig.json
 ├── tsconfig.base.json
 └── tsconfig.json
-191 directories, 1284 files
+191 directories, 1290 files
