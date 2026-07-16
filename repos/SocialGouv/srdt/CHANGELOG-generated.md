@@ -1,18 +1,20 @@
-## Changelog : srdt (30 derniers jours, au 9 juillet 2026)
+## Changelog : srdt (30 derniers jours, au 13 juillet 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à l'interface utilisateur de l'assistant virtuel SRDT, notamment une nouvelle section "Nouveautés", des corrections d'affichage, l'ajout d'un footer et de barres de défilement, ainsi qu'une amélioration de la continuité des conversations.
+Les dernières mises à jour de l'assistant virtuel SRDT améliorent l'expérience utilisateur avec l'ajout d'une section FAQ, d'une section "Nouveautés", d'une introduction plus claire, et des améliorations visuelles et de correction de bugs. L'application continue d'évoluer avec de nouvelles fonctionnalités comme la possibilité de continuer une conversation.
 
 ### Évolutions fonctionnelles
-- Ajout d'une section "Nouveautés" pour informer les utilisateurs des dernières mises à jour et fonctionnalités. [#396](https://github.com/SocialGouv/srdt/issues/396)
-- Amélioration de l'expérience utilisateur de la barre latérale avec une correction d'affichage. [#385](https://github.com/SocialGouv/srdt/issues/385)
-- Correction de divers problèmes d'affichage de l'interface. [#384](https://github.com/SocialGouv/srdt/issues/384)
-- Ajout d'un footer et de barres de défilement pour une meilleure navigation. [#383](https://github.com/SocialGouv/srdt/issues/383)
-- Possibilité de continuer une conversation sans interruption. [#382](https://github.com/SocialGouv/srdt/issues/382)
+- Ajout d'une section FAQ pour répondre aux questions fréquentes des utilisateurs ([#397](https://github.com/SocialGouv/srdt/issues/397)).
+- Ajout d'une section "Nouveautés" pour informer les utilisateurs des dernières améliorations ([#396](https://github.com/SocialGouv/srdt/issues/396)).
 - Nouvelle page d'introduction pour une meilleure expérience utilisateur initiale.
+- Possibilité de continuer une conversation dans la boîte de chat ([#382](https://github.com/SocialGouv/srdt/issues/382)).
+- Ajout d'un footer et de barres de défilement pour une meilleure navigation ([#383](https://github.com/SocialGouv/srdt/issues/383)).
+- Correction de l'envoi d'emails suite à une réponse ([#398](https://github.com/SocialGouv/srdt/issues/398)).
+- Amélioration de l'interface utilisateur de la barre latérale ([#385](https://github.com/SocialGouv/srdt/issues/385)).
+- Correction de divers problèmes d'affichage ([#384](https://github.com/SocialGouv/srdt/issues/384)).
 
 ### Évolutions techniques
-- Aucune évolution technique majeure n'a été identifiée dans les commits récents.
+Aucune évolution technique significative n'a été identifiée dans les commits récents.
 
 ### Autres changements
-- Publication des versions 1.47.0, 1.46.2, 1.46.1, 1.46.0, 1.45.0 et 1.44.0.
+Aucun autre changement significatif n'a été identifié.
