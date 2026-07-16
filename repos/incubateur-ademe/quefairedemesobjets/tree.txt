@@ -27,10 +27,15 @@
 │       ├── _deploy-webapp.yml
 │       ├── _e2e.yml
 │       ├── _scaleway-container-deploy.yml
+│       ├── _terragrunt-apply.yml
+│       ├── _webapp-build-and-push-docker.yml
 │       ├── cd.yml
 │       ├── ci.yml
 │       ├── deploy.yml
 │       ├── e2e.yml
+│       ├── preview-cleanup.yml
+│       ├── preview-down.yml
+│       ├── preview-up.yml
 │       ├── publish-docs.yml
 │       ├── review.yml
 │       ├── scaleway_container_registry_delete_old_tags.yml
@@ -842,6 +847,7 @@
 │   │   │   ├── README.md
 │   │   │   ├── ci-cd.md
 │   │   │   ├── monitoring.md
+│   │   │   ├── preview-environments.md
 │   │   │   └── provisioning.md
 │   │   ├── opendata
 │   │   │   ├── README.md
@@ -872,6 +878,7 @@
 │   └── uv.lock
 ├── infrastructure
 │   ├── .gitignore
+│   ├── Makefile
 │   ├── environments
 │   │   ├── preprod
 │   │   │   ├── airflow_containers
@@ -891,9 +898,15 @@
 │   │   │       ├── terraform.tfvars.example
 │   │   │       └── terragrunt.hcl
 │   │   ├── preview
-│   │   │   └── database
+│   │   │   ├── _template
+│   │   │   │   ├── container
+│   │   │   │   │   └── terragrunt.hcl
+│   │   │   │   ├── database
+│   │   │   │   │   └── terragrunt.hcl
+│   │   │   │   └── object_storage
+│   │   │   │       └── terragrunt.hcl
+│   │   │   └── namespace
 │   │   │       ├── .terraform.lock.hcl
-│   │   │       ├── terraform.tfvars.example
 │   │   │       └── terragrunt.hcl
 │   │   ├── prod
 │   │   │   ├── airflow_containers
@@ -941,8 +954,24 @@
 │       │   ├── main.tf
 │       │   ├── outputs.tf
 │       │   └── variables.tf
-│       └── object_storage
-│           ├── airflow.tf
+│       ├── object_storage
+│       │   ├── airflow.tf
+│       │   └── variables.tf
+│       ├── preview_database
+│       │   ├── main.tf
+│       │   ├── outputs.tf
+│       │   └── variables.tf
+│       ├── preview_namespace
+│       │   ├── main.tf
+│       │   ├── outputs.tf
+│       │   └── variables.tf
+│       ├── preview_object_storage
+│       │   ├── main.tf
+│       │   ├── outputs.tf
+│       │   └── variables.tf
+│       └── webapp_container
+│           ├── main.tf
+│           ├── outputs.tf
 │           └── variables.tf
 ├── scripts
 │   ├── db_restore.sh
@@ -970,6 +999,7 @@
 │       └── drop_all_tables.sql
 └── webapp
     ├── .buildpacks
+    ├── .dockerignore
     ├── .env.template
     ├── .eslintrc.js
     ├── .git-blame-ignore-revs
@@ -980,9 +1010,11 @@
     ├── .python-version
     ├── .slugignore
     ├── Aptfile
+    ├── Dockerfile
     ├── Makefile
     ├── Procfile
     ├── bin
+    │   ├── entrypoint.sh
     │   ├── post_compile
     │   ├── post_deploy
     │   └── start
@@ -1199,9 +1231,7 @@
     │   │       ├── import_infos_tris.py
     │   │       ├── import_redirects_from_legacy_website.py
     │   │       ├── migrate_from_sites_faciles_experiment.py
-    │   │       ├── migrate_legacy_produit_index_page.py
-    │   │       ├── populate_fake_search_tags.py
-    │   │       └── populate_search_terms.py
+    │   │       └── migrate_legacy_produit_index_page.py
     │   ├── middleware.py
     │   ├── migrations
     │   │   ├── 0001_initial_squashed_0036_delete_cmspage_alter_produit_id.py
@@ -1361,6 +1391,7 @@
     │   │   ├── 0188_carteconfig_cacher_filtre_objet_carteconfig_test.py
     │   │   ├── 0189_alter_carteconfig_slug.py
     │   │   ├── 0190_alter_carteconfig_supprimer_branding.py
+    │   │   ├── 0191_rebuild_remote_server_fix_port.py
     │   │   ├── __init__.py
     │   │   └── fixtures
     │   │       ├── categorieobjets.json
@@ -1904,6 +1935,7 @@
     │   │   │   └── test_qfdmo_tags.py
     │   │   ├── test_accessibilite_mineurs_previews.py
     │   │   ├── test_accessibilite_previews.py
+    │   │   ├── test_healthz.py
     │   │   ├── test_robots.py
     │   │   ├── test_url_utils.py
     │   │   └── test_utils.py
@@ -1979,4 +2011,4 @@
     │   └── stats
     │       └── test_stats_utils.py
     └── uv.lock
-360 directories, 1621 files
+368 directories, 1645 files
