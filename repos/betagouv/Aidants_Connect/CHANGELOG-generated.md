@@ -1,23 +1,17 @@
-## Changelog : Aidants_Connect (30 derniers jours, au 15 juin 2026)
+## Changelog : Aidants_Connect (30 derniers jours, au 15 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration significative de l'accessibilité de l'application, notamment en corrigeant des problèmes identifiés lors d'un pré-audit. Des améliorations ont également été apportées à la structure sémantique du code et des templates, ainsi qu'à l'export des données pour les Organismes de Formation (OF). Une préparation à la mise à jour vers Django 5.2 a été initiée avec la mise à jour des dépendances.
+Ce mois-ci, les améliorations se concentrent sur l'intégration d'un nouveau tunnel d'intégration pour les référents utilisant l'authentification par OTP (One-Time Password), permettant une meilleure expérience pour la connexion via application mobile. Des corrections de tests et des ajustements d'interface ont également été réalisés.
 
 ### Évolutions fonctionnelles
-- Suppression de la rubrique "à distance" dans le formulaire de nouveau mandat, rendant ce dernier plus accessible. [#1780](https://github.com/betagouv/Aidants_Connect/issues/1780)
-- Amélioration de l'export des inscrits pour les Organismes de Formation (OF). [#1778](https://github.com/betagouv/Aidants_Connect/issues/1778)
-- Ajout d'un score Pix pour évaluer la qualité des données. [#1782](https://github.com/betagouv/Aidants_Connect/issues/1782)
-- Les emails de formation ne sont plus envoyés aux référents inactifs. [#1784](https://github.com/betagouv/Aidants_Connect/issues/1784)
+- Implémentation d'un tunnel d'intégration OTP pour les référents, incluant les pages de bienvenue, de téléchargement de l'application, de scan du QR code et de félicitations. [#1785](https://github.com/betagouv/Aidants_Connect/issues/1785)
+- Ajout d'un bouton de fermeture sur toutes les pages du tunnel OTP.
+- Possibilité de renvoyer le texte sur les pages du tunnel OTP.
+- Implémentation de la méthode POST pour la fermeture du tunnel OTP, avec protection CSRF et gestion appropriée des sessions.
+- Introduction d'une nouvelle clé de session pour le dispositif TOTP afin d'éviter les conflits avec d'autres flux.
 
 ### Évolutions techniques
-- Refactor important de nombreux templates HTML pour améliorer la structure sémantique et l'accessibilité, notamment en utilisant des listes et des balises HTML appropriées (h1, h2, h3, etc.).
-- Ajout d'attributs ARIA pour améliorer l'accessibilité pour les utilisateurs de technologies d'assistance.
-- Mise à jour des dépendances pour préparer la migration vers Django 5.2.
-- Suppression de code HTML obsolète et non utilisé.
-- Amélioration de la gestion du focus pour le cookie banner afin d'améliorer l'accessibilité.
-
-### Autres changements
-- Ajout de templates d'erreur DSFR (400, 403, 404, 408, 500) pour une meilleure expérience utilisateur en cas d'erreur.
-- Correction de la visibilité des tuiles de formation pour les aidants et responsables en fonction de leurs droits de mandat.
-- Amélioration de la structure des accordéons dans les templates.
-- Suppression de balises meta inutilisées.
+- Refactorisation de la page de félicitations du tunnel OTP pour supprimer les espaces blancs inutiles et mettre à jour les assertions des tests.
+- Correction des tests France Connect. [#1783](https://github.com/betagouv/Aidants_Connect/issues/1783)
+- Correction de la largeur des panneaux sur les différentes pages du tunnel.
+- Suppression du texte "prochaines étapes" sur les pages du tunnel.
