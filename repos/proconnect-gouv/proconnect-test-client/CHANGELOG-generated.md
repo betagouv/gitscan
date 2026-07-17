@@ -1,20 +1,20 @@
-## Changelog : proconnect-test-client (30 derniers jours, au 22 juin 2026)
+## Changelog : proconnect-test-client (30 derniers jours, au 26 juillet 2026)
 
 ### Résumé
-Ce client de test ProConnect a bénéficié d'améliorations significatives concernant la gestion des niveaux d'authentification (ACR), notamment pour l'authentification multifacteur (MFA). Des corrections ont également été apportées pour assurer la cohérence de la configuration et la gestion des variables d'environnement. Des mises à jour de dépendances ont été effectuées pour maintenir la sécurité et la stabilité du projet.
+Les récentes mises à jour de proconnect-test-client se concentrent sur l'amélioration de la flexibilité du flux d'authentification, notamment avec l'ajout de la fonctionnalité "full acr" et la mise à jour des valeurs d'ACR par défaut pour l'authentification multi-facteurs (MFA). Des mises à jour de dépendances ont également été effectuées pour maintenir la sécurité et la stabilité du projet.
 
 ### Évolutions fonctionnelles
-- Ajout de la fonctionnalité de connexion avec un ACR complet ([#207](https://github.com/proconnect-gouv/proconnect-test-client/pull/207)).
-- Mise à jour des valeurs par défaut des ACR pour l'authentification multifacteur (MFA) ([#202](https://github.com/proconnect-gouv/proconnect-test-client/pull/202)).
-- Amélioration de la structure des valeurs ACR pour le déclenchement de la MFA ([#193](https://github.com/proconnect-gouv/proconnect-test-client/pull/193)).
+- Ajout de la fonctionnalité de connexion avec "full acr" permettant une configuration plus précise du flux d'authentification. [#207](https://github.com/proconnect-gouv/proconnect-test-client/pull/207)
+- Mise à jour des valeurs d'ACR par défaut pour l'authentification multi-facteurs (MFA) afin de refléter les nouvelles configurations. [#202](https://github.com/proconnect-gouv/proconnect-test-client/pull/202)
 
 ### Évolutions techniques
-- Uniformisation des noms de variables d'environnement pour une meilleure cohérence ([#194](https://github.com/proconnect-gouv/proconnect-test-client/pull/194)).
-- Nettoyage de la configuration dans le fichier `.env` ([#193](https://github.com/proconnect-gouv/proconnect-test-client/pull/193)).
-- Correction d'une erreur liée au nom d'une variable et à la gestion des chaînes de caractères vides ([#194](https://github.com/proconnect-gouv/proconnect-test-client/pull/194)).
+- Mise à jour de TypeScript vers la version 7.0.2 dans le répertoire `/e2e`. [#216](https://github.com/proconnect-gouv/proconnect-test-client/pull/216)
+- Mise à jour de l'action Docker metadata vers la version 6. [#170](https://github.com/proconnect-gouv/proconnect-test-client/pull/170)
+- Mise à jour de plusieurs dépendances de développement (js-yaml, prettier, cypress, @badeball/cypress-cucumber-preprocessor) dans le répertoire `/e2e`. [#211](https://github.com/proconnect-gouv/proconnect-test-client/pull/211), [#214](https://github.com/proconnect-gouv/proconnect-test-client/pull/214), [#215](https://github.com/proconnect-gouv/proconnect-test-client/pull/215), [#213](https://github.com/proconnect-gouv/proconnect-test-client/pull/213)
+- Mise à jour de Cypress vers la version 15.18.0 dans le répertoire `/e2e`. [#209](https://github.com/proconnect-gouv/proconnect-test-client/pull/209)
+- Mise à jour de form-data vers la version 4.0.6 et body-parser vers la version 2.3.0. [#203](https://github.com/proconnect-gouv/proconnect-test-client/pull/203), [#205](https://github.com/proconnect-gouv/proconnect-test-client/pull/205)
+- Mise à jour de l'action actions/checkout vers la version 7. [#204](https://github.com/proconnect-gouv/proconnect-test-client/pull/204)
 
 ### Autres changements
-- Mise à jour de la dépendance `form-data` de la version 4.0.5 à la version 4.0.6 dans le répertoire `/e2e` ([#203](https://github.com/proconnect-gouv/proconnect-test-client/pull/203)).
-- Mise à jour de l'action `actions/checkout` de la version 6 à la version 7 ([#204](https://github.com/proconnect-gouv/proconnect-test-client/pull/204)).
-- Mise à jour de la dépendance `body-parser` de la version 2.2.2 à la version 2.3.0 ([#205](https://github.com/proconnect-gouv/proconnect-test-client/pull/205)).
-- Mises à jour de plusieurs dépendances de développement (Cypress, prettier, esbuild, tsx, morgan, ejs, qs, @cypress/request, tmp) via Dependabot.
+- Mise à jour du fichier `index.ejs`. [#207](https://github.com/proconnect-gouv/proconnect-test-client/pull/207)
+- Amélioration de la configuration du linter et déplacement des fonctionnalités bêta dans une section dédiée. [#207](https://github.com/proconnect-gouv/proconnect-test-client/pull/207)
