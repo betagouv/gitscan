@@ -1,46 +1,46 @@
-## Changelog : territoires-en-transitions (30 derniers jours, au 14 juillet 2026)
+## Changelog : territoires-en-transitions (30 derniers jours, au 16 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment au niveau des indicateurs, des audits et des référentiels. Des corrections de sécurité importantes ont été apportées, ainsi que des optimisations de performance et des refactorings techniques pour préparer les futures évolutions de la plateforme. L'importation de plans par IA est en cours de développement.
+Cette période a été marquée par d'importantes améliorations sur la gestion des référentiels, notamment en préparation de la bascule vers le référentiel "Territoires en Transitions" (TE).  De nouvelles fonctionnalités ont été ajoutées pour la gestion des preuves, des indicateurs et des audits, avec une attention particulière portée à la sécurité et à l'expérience utilisateur. Des optimisations de performance et des refactorings techniques ont également été réalisés.
 
 ### Évolutions fonctionnelles
+- **Gestion des référentiels :** Préparation de la bascule vers le référentiel TE avec ajout de jalons et de règles de migration.
+- **Audits et labellisations :**
+    - Amélioration de l'interface et du workflow d'audit, avec une nouvelle checklist et une gestion des documents simplifiée.
+    - Possibilité pour l'auditeur de remplacer le rapport d'audit.
+    - Gestion des permissions et des rôles affinée pour les différentes actions (lecture, modification, etc.).
+    - Ajout d'un badge de statut d'audit sur l'onglet.
 - **Indicateurs :**
-    - Ajout d'une grille de saisie tabulaire pour une édition plus efficace des données.
-    - Possibilité de copier-coller des données dans la grille.
-    - Ajout d'une indication visuelle de la couverture des données open data.
-    - Amélioration de la navigation et de l'édition des données.
-- **Audits & Labellisations :**
-    - Refonte de l'interface d'audit avec une nouvelle checklist et une gestion améliorée des documents.
-    - Possibilité de remplacer le rapport d'audit.
-    - Amélioration de la gestion des droits d'accès aux documents.
-    - Ajout d'un bandeau d'information pour les audits clôturés.
-- **Référentiels :**
-    - Ajout d'un panneau d'archives pour les preuves.
-    - Amélioration de la gestion des statuts et des actions.
-    - Préparation de la bascule vers le nouveau référentiel TE.
-- **Plans :**
-    - Ajout de dates de début et de fin aux plans.
+    - Nouvelle grille de saisie tabulaire pour les indicateurs, avec édition en ligne et possibilité de collage de données.
+    - Amélioration de la gestion des données open data et de leur affichage.
+    - Possibilité de réordonner les colonnes et les lignes de la grille.
 - **Sécurité :**
-    - Correction de failles de sécurité potentielles (injection IDOR) dans les plans et les annexes.
-    - Validation des fichiers et des identités pour prévenir les accès non autorisés.
+    - Correction de failles potentielles d'injection IDOR (Insecure Direct Object Reference) dans les plans et les discussions.
+    - Validation des fichiers et des identifiants pour éviter les accès non autorisés.
+- **Import IA :** Ajout de la fonctionnalité d'import de plans via l'IA, avec suivi de progression et reprise.
+- **Plans :** Ajout de dates de début et de fin aux plans.
 
 ### Évolutions techniques
 - **Refactoring :**
-    - Refactorings importants du code pour améliorer la maintenabilité et la performance.
-    - Migration vers TypeScript 6/7.
-    - Utilisation de `Result` pour une meilleure gestion des erreurs.
-    - Suppression de code obsolète et simplification de l'architecture.
+    - Migration vers le pattern `Result` pour une meilleure gestion des erreurs et des succès.
+    - Refactorings importants du code lié aux indicateurs, aux audits et aux référentiels pour améliorer la maintenabilité et la performance.
+    - Suppression de code obsolète et simplification de certaines structures de données.
+- **Dépendances :**
+    - Mise à jour de Next.js, TypeScript et d'autres dépendances.
+- **CI/CD :**
+    - Amélioration du pipeline CI/CD pour accélérer les tests et les déploiements.
+    - Parallélisation des tests e2e.
 - **Infrastructure :**
-    - Mise à jour des dépendances (Next.js, swc).
-    - Amélioration de la configuration de la sécurité (CSP).
-    - Optimisation des tests CI/CD (parallélisation, timeouts).
-- **Autres :**
-    - Migration vers un nouveau SDK Notion pour la gestion des tickets.
-    - Amélioration de la gestion des dates et des fuseaux horaires.
-    - Utilisation de `date-fns` au lieu de `luxon`.
+    - Mise à jour de la configuration de Content Security Policy (CSP).
+    - Optimisation de la gestion des caches.
+- **Base de données :** Suppression de l'implémentation RLS (Row-Level Security) de DatabaseService.
 
 ### Autres changements
-- Documentation mise à jour pour les nouvelles fonctionnalités et les changements d'architecture.
-- Corrections de bugs mineurs et améliorations de l'interface utilisateur.
-- Ajout de tests unitaires et d'intégration pour garantir la qualité du code.
-- Amélioration de la gestion des logs et du monitoring.
+- **Documentation :** Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les changements techniques.
+- **Tests :** Ajout de nouveaux tests unitaires et e2e pour garantir la qualité du code.
+- **Divers :**
+    - Amélioration de l'expérience utilisateur avec des corrections de bugs et des améliorations de l'interface.
+    - Mise à jour des libellés et des textes pour une meilleure clarté.
+    - Migration du système de création de tickets bugs/supports vers le SDK Notion 5.
+    - Suppression de dépendances inutilisées.
+    - Amélioration des performances générales de l'application.

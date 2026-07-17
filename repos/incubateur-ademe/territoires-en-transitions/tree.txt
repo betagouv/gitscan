@@ -3190,6 +3190,8 @@
 │   │   │   │   │   ├── action-statut-history.service.ts
 │   │   │   │   │   ├── action-statuts-by-action-id.dto.ts
 │   │   │   │   │   ├── score-analysis.dto.ts
+│   │   │   │   │   ├── score-from-origines.rules.spec.ts
+│   │   │   │   │   ├── score-from-origines.rules.ts
 │   │   │   │   │   ├── score-map.rules.ts
 │   │   │   │   │   ├── scores.controller.e2e-spec.ts
 │   │   │   │   │   ├── scores.controller.ts
@@ -3482,24 +3484,44 @@
 │   │   │   │   │   ├── snapshots.service.ts
 │   │   │   │   │   └── upsert-snapshot.input.ts
 │   │   │   │   ├── switch-to-te
+│   │   │   │   │   ├── build-switch-to-te-context.service.e2e-spec.ts
 │   │   │   │   │   ├── build-switch-to-te-context.service.ts
 │   │   │   │   │   ├── create-pre-switch-snapshots.service.e2e-spec.ts
 │   │   │   │   │   ├── create-pre-switch-snapshots.service.ts
 │   │   │   │   │   ├── merge-commentaires
+│   │   │   │   │   │   ├── merge-commentaires.rules.e2e-spec.ts
 │   │   │   │   │   │   ├── merge-commentaires.rules.spec.ts
-│   │   │   │   │   │   ├── merge-commentaires.rules.ts
-│   │   │   │   │   │   ├── merge-commentaires.service.e2e-spec.ts
-│   │   │   │   │   │   └── merge-commentaires.service.ts
+│   │   │   │   │   │   └── merge-commentaires.rules.ts
+│   │   │   │   │   ├── merge-fiche-action-links
+│   │   │   │   │   │   ├── merge-fiche-action-links.rules.e2e-spec.ts
+│   │   │   │   │   │   ├── merge-fiche-action-links.rules.spec.ts
+│   │   │   │   │   │   └── merge-fiche-action-links.rules.ts
+│   │   │   │   │   ├── merge-pilotes
+│   │   │   │   │   │   ├── merge-pilotes.rules.e2e-spec.ts
+│   │   │   │   │   │   ├── merge-pilotes.rules.spec.ts
+│   │   │   │   │   │   └── merge-pilotes.rules.ts
+│   │   │   │   │   ├── merge-services
+│   │   │   │   │   │   ├── merge-services.rules.e2e-spec.ts
+│   │   │   │   │   │   ├── merge-services.rules.spec.ts
+│   │   │   │   │   │   └── merge-services.rules.ts
 │   │   │   │   │   ├── merge-statuts
+│   │   │   │   │   │   ├── merge-statuts.rules.e2e-spec.ts
 │   │   │   │   │   │   ├── merge-statuts.rules.spec.ts
-│   │   │   │   │   │   ├── merge-statuts.rules.ts
-│   │   │   │   │   │   ├── merge-statuts.service.e2e-spec.ts
-│   │   │   │   │   │   └── merge-statuts.service.ts
+│   │   │   │   │   │   └── merge-statuts.rules.ts
+│   │   │   │   │   ├── migrate-collectivite-data
+│   │   │   │   │   │   ├── migrate-collectivite-data.repository.ts
+│   │   │   │   │   │   ├── migrate-collectivite-data.service.e2e-spec.ts
+│   │   │   │   │   │   └── migrate-collectivite-data.service.ts
 │   │   │   │   │   ├── shared
+│   │   │   │   │   │   ├── action-cible.spec.ts
 │   │   │   │   │   │   ├── action-cible.ts
-│   │   │   │   │   │   ├── origine-resolution.spec.ts
-│   │   │   │   │   │   ├── origine-resolution.ts
-│   │   │   │   │   │   └── switch-to-te-context.ts
+│   │   │   │   │   │   ├── action-origine.spec.ts
+│   │   │   │   │   │   ├── action-origine.ts
+│   │   │   │   │   │   ├── correspondance-origine-cible.spec.ts
+│   │   │   │   │   │   ├── correspondance-origine-cible.ts
+│   │   │   │   │   │   ├── referentiel-hierarchies.test-fixture.ts
+│   │   │   │   │   │   ├── switch-to-te-context.ts
+│   │   │   │   │   │   └── switch-to-te-correspondances.fixture.ts
 │   │   │   │   │   ├── switch-to-te-context.test-fixture.ts
 │   │   │   │   │   ├── switch-to-te.errors.ts
 │   │   │   │   │   ├── switch-to-te.input.ts
@@ -6317,6 +6339,11 @@
 │   │   ├── 2026-06-11-006-feat-bascule-referentiel-te-pr11-plan.md
 │   │   ├── 2026-06-11-007-feat-bascule-referentiel-te-pr12-plan.md
 │   │   ├── 2026-06-11-008-feat-bascule-referentiel-te-pr13-plan.md
+│   │   ├── 2026-06-11-009-feat-bascule-referentiel-te-pr14-plan.md
+│   │   ├── 2026-06-11-010-feat-bascule-referentiel-te-pr15-plan.md
+│   │   ├── 2026-06-11-011-feat-bascule-referentiel-te-pr16-plan.md
+│   │   ├── 2026-06-11-012-feat-bascule-referentiel-te-pr17a-plan.md
+│   │   ├── 2026-06-11-012-feat-bascule-referentiel-te-pr17b-plan.md
 │   │   ├── 2026-06-24-001-refactor-auth-into-app-plan.md
 │   │   ├── 2026-06-25-001-fix-export-indicateurs-tous-resultats-filtre-plan.md
 │   │   └── 2026-07-13-001-refactor-snapshots-service-result-pattern-plan.md
@@ -7567,4 +7594,4 @@
 ├── tsconfig.json
 ├── vitest.config.ts
 └── vitest.workspace.ts
-1294 directories, 6533 files
+1298 directories, 6556 files
