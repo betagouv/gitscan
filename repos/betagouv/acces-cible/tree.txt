@@ -88,7 +88,6 @@
 │   │   ├── process_batch_sites_creation_job.rb
 │   │   ├── process_site_upload_job.rb
 │   │   ├── remove_inactive_sessions_job.rb
-│   │   ├── remove_orphan_tags_job.rb
 │   │   └── run_check_job.rb
 │   ├── libs
 │   │   └── string_comparison.rb
@@ -113,7 +112,8 @@
 │   │   │   ├── reachable.rb
 │   │   │   └── run_axe_on_homepage.rb
 │   │   ├── concerns
-│   │   │   └── accessibility_document_analyzer.rb
+│   │   │   ├── accessibility_document_analyzer.rb
+│   │   │   └── privileged.rb
 │   │   ├── crawler.rb
 │   │   ├── current.rb
 │   │   ├── link
@@ -445,7 +445,8 @@
 │       ├── auth_helpers.rb
 │       ├── factory_bot.rb
 │       ├── shared_examples
-│       │   └── accessibility_document_analyzer.rb
+│       │   ├── accessibility_document_analyzer.rb
+│       │   └── privileged_rspec.rb
 │       └── shoulda_matcher.rb
 ├── storage
 │   └── .keep
@@ -462,4 +463,4 @@
         ├── axe.fr.json
         ├── axe.min.js
         └── stealth.min.js
-78 directories, 386 files
+78 directories, 387 files
