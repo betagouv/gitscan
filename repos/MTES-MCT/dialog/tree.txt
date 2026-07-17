@@ -48,6 +48,7 @@
 │   │   ├── form_upload_controller.js
 │   │   ├── hidden_select_controller.js
 │   │   ├── location_preview_map_controller.js
+│   │   ├── mirror_value_controller.js
 │   │   ├── modal_close_controller.js
 │   │   ├── notice_controller.js
 │   │   ├── polygon_map_controller.js
@@ -106,7 +107,8 @@
 │       │   │   ├── index.scss
 │       │   │   ├── table.css
 │       │   │   ├── timeslot.css
-│       │   │   └── vehicles.css
+│       │   │   ├── vehicles.css
+│       │   │   └── whole-city.scss
 │       │   └── stats-map.css
 │       ├── customElements
 │       │   ├── auto_form.css
@@ -708,6 +710,7 @@
 │   │   │   │   │   ├── SaveRawGeoJSONCommand.php
 │   │   │   │   │   ├── SaveRawGeoJSONCommandHandler.php
 │   │   │   │   │   ├── SaveWholeCityCommand.php
+│   │   │   │   │   ├── SaveWholeCityExceptionCommand.php
 │   │   │   │   │   └── UpdateNamedStreetsWithoutRoadBanIdsCommandResult.php
 │   │   │   │   ├── MapImage
 │   │   │   │   │   ├── WarmRegulationMapImageCacheCommand.php
@@ -819,6 +822,7 @@
 │   │   │       │   ├── NumberedRoadView.php
 │   │   │       │   ├── RawGeoJSONView.php
 │   │   │       │   ├── StorageAreaView.php
+│   │   │       │   ├── WholeCityExceptionView.php
 │   │   │       │   └── WholeCityView.php
 │   │   │       ├── NamedStreetView.php
 │   │   │       ├── NumberedRoadView.php
@@ -995,7 +999,8 @@
 │   │   │   │   ├── NamedStreet.php
 │   │   │   │   ├── NumberedRoad.php
 │   │   │   │   ├── RawGeoJSON.php
-│   │   │   │   └── StorageArea.php
+│   │   │   │   ├── StorageArea.php
+│   │   │   │   └── WholeCityException.php
 │   │   │   ├── Measure.php
 │   │   │   ├── RegulationLocationsInterface.php
 │   │   │   ├── RegulationMapImage.php
@@ -1304,6 +1309,7 @@
 │   │   │   │   ├── StorageRegulationOrderFormType.php
 │   │   │   │   ├── TimeSlotFormType.php
 │   │   │   │   ├── VehicleSetFormType.php
+│   │   │   │   ├── WholeCityExceptionFormType.php
 │   │   │   │   └── WholeCityFormType.php
 │   │   │   └── User
 │   │   │       ├── CreateAccountFromInvitationFormType.php
@@ -1412,6 +1418,7 @@
 │   │   │       │   ├── Regulation.Location.NumberedRoad.orm.xml
 │   │   │       │   ├── Regulation.Location.RawGeoJSON.orm.xml
 │   │   │       │   ├── Regulation.Location.StorageArea.orm.xml
+│   │   │       │   ├── Regulation.Location.WholeCityException.orm.xml
 │   │   │       │   ├── Regulation.Measure.orm.xml
 │   │   │       │   ├── Regulation.RegulationOrder.orm.xml
 │   │   │       │   ├── Regulation.RegulationOrderHistory.orm.xml
@@ -1437,7 +1444,7 @@
 │   │   │       │   ├── Version20260129110000.php
 │   │   │       │   └── Version20260312100001.php
 │   │   │       ├── Migrations
-│   │   │       │   └── Version*.php  (158 files)
+│   │   │       │   └── Version*.php  (159 files)
 │   │   │       ├── PostGIS
 │   │   │       │   ├── Event
 │   │   │       │   │   └── ORMSchemaEventListener.php
@@ -1664,6 +1671,7 @@
 │   │   ├── _vehicle_set.html.twig
 │   │   ├── _vehicle_set_form.html.twig
 │   │   ├── _visa_models_management_notice.html.twig
+│   │   ├── _whole_city_exceptions.html.twig
 │   │   ├── create.html.twig
 │   │   ├── detail.html.twig
 │   │   ├── export.html.twig
@@ -1951,7 +1959,9 @@
 │   │   │   │   │   │   ├── SaveNamedStreetCommandHandlerTest.php
 │   │   │   │   │   │   ├── SaveNumberedRoadCommandHandlerTest.php
 │   │   │   │   │   │   ├── SaveNumberedRoadCommandTest.php
-│   │   │   │   │   │   └── SaveRawGeoJSONCommandHandlerTest.php
+│   │   │   │   │   │   ├── SaveRawGeoJSONCommandHandlerTest.php
+│   │   │   │   │   │   ├── SaveWholeCityCommandTest.php
+│   │   │   │   │   │   └── SaveWholeCityExceptionCommandTest.php
 │   │   │   │   │   ├── MapImage
 │   │   │   │   │   │   └── WarmRegulationMapImageCacheCommandHandlerTest.php
 │   │   │   │   │   ├── Period
@@ -2075,7 +2085,8 @@
 │   │   │   │   │   ├── NamedStreetTest.php
 │   │   │   │   │   ├── NumberedRoadTest.php
 │   │   │   │   │   ├── RawGeoJSONTest.php
-│   │   │   │   │   └── StorageAreaTest.php
+│   │   │   │   │   ├── StorageAreaTest.php
+│   │   │   │   │   └── WholeCityExceptionTest.php
 │   │   │   │   ├── MeasureTest.php
 │   │   │   │   ├── RegulationOrderHistoryTest.php
 │   │   │   │   ├── RegulationOrderRecordTest.php
@@ -2250,4 +2261,4 @@
 │   └── validators.fr.xlf
 ├── vitest.config.js
 └── webpack.config.js
-439 directories, 1970 files
+439 directories, 1982 files
