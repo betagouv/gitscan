@@ -1,24 +1,31 @@
-## Changelog : hubee (30 derniers jours, au 13 juillet 2026)
+## Changelog : hubee (30 derniers jours, au 2026-07-15)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la sécurité, la modernisation de l'infrastructure et la préparation du portail V2. Des refactorings architecturaux ont été entrepris pour une meilleure modularité du code, et l'intégration de Sentry permettra un suivi plus précis des erreurs en production.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la sécurité, la modernisation de l'infrastructure et la préparation du portail V2. Des améliorations ont également été apportées à la CI/CD et au monitoring pour une meilleure qualité et stabilité de la plateforme.
 
 ### Évolutions fonctionnelles
-- **Sécurité:** Gestion améliorée de la configuration `force_ssl` et ajout d'une politique de sécurité de contenu (CSP) minimale pour renforcer la sécurité de l'application. [#87](https://github.com/datagouv/hubee/issues/87)
-- **Portail V2:** Début de la mise en place du socle DSFR (Design System for French administration) pour le nouveau portail. [#73](https://github.com/datagouv/hubee/issues/73)
+- Amélioration de la sécurité avec la gestion de `force_ssl` côté application et l'activation d'une Content Security Policy (CSP) minimale. [#87](https://github.com/datagouv/hubee/pull/87)
+- Début de la construction du socle DSFR pour le portail V2, posant les bases de la nouvelle interface utilisateur. [#73](https://github.com/datagouv/hubee/pull/73)
+- Ajout d'un client API Hubee V1 (gem `hub-api-v1`) pour faciliter l'intégration avec d'autres services. [#84](https://github.com/datagouv/hubee/pull/84)
 
 ### Évolutions techniques
-- **Infrastructure:** Mise à jour de Ruby en version 4.0.5 et de PostgreSQL en version 18.
-- **CI/CD:** Restriction de la CI GitHub à l'analyse statique et à la sécurité, et ajout d'une exécution nocturne pour les tests. [#85](https://github.com/datagouv/hubee/issues/85)
-- **Refactoring:** Refactorisation de l'architecture pour une meilleure modularité avec l'introduction de namespaces (`::API`, `::Portail`, `::Hubee`). [#69](https://github.com/datagouv/hubee/issues/69)
-- **Monitoring:** Intégration de Sentry pour le suivi des erreurs et l'amélioration de la qualité de l'application. [#81](https://github.com/datagouv/hubee/issues/81)
-- **Renovate:** Adoption de Renovate comme outil unique de mise à jour des dépendances. [#88](https://github.com/datagouv/hubee/issues/88) et [#72](https://github.com/datagouv/hubee/issues/72)
+- Refactorisation de l'architecture en namespaces (`::API`, `::Portail`, `::Hubee`) pour une meilleure organisation du code. [#69](https://github.com/datagouv/hubee/pull/69)
+- Mise en place de Renovate comme seul robot de mise à jour des dépendances. [#88](https://github.com/datagouv/hubee/pull/88)
+- Intégration de Sentry pour le suivi des erreurs et l'amélioration de la qualité du code. [#81](https://github.com/datagouv/hubee/pull/81)
+- Migration de la configuration de la connexion PostgreSQL vers des variables d'environnement en production pour une meilleure sécurité. [#94](https://github.com/datagouv/hubee/pull/94)
+- Passage des logs au format `logfmt` recommandé par le CSIRT pour une meilleure lisibilité et analyse. [#90](https://github.com/datagouv/hubee/pull/90)
+- Mise à jour de l'image Docker Ruby vers la version 4.0.5-slim. [#79](https://github.com/datagouv/hubee/pull/79)
+- Mise à jour de PostgreSQL dans l'environnement de développement vers la version 18. [#78](https://github.com/datagouv/hubee/pull/78)
+- Ajout d'une CI GitHub Actions et d'un hook pre-commit pour automatiser les tests et la validation du code. [#70](https://github.com/datagouv/hubee/pull/70)
+- Restriction de la CI GitHub à l'analyse statique et à la sécurité. [#92](https://github.com/datagouv/hubee/pull/92)
 
 ### Autres changements
-- Ajout d'une gem client API Hubee V1. [#84](https://github.com/datagouv/hubee/issues/84)
-- Documentation : Interdiction des références confidentielles dans le dépôt public. [#68](https://github.com/datagouv/hubee/issues/68)
-- Suppression du devcontainer, jugé non utilisé. [#82](https://github.com/datagouv/hubee/issues/82)
-- Mise à jour des gems et suppression des contraintes de version. [#66](https://github.com/datagouv/hubee/issues/66)
-- Correction d'une vulnérabilité CVE dans la gem `crass`. [#80](https://github.com/datagouv/hubee/issues/80)
-- Adoption du plugin `hubee-claude-plugin` comme source de vérité pour les aspects liés à l'IA. [#67](https://github.com/datagouv/hubee/issues/67)
-- Gel de l'API V2, de PostgreSQL 18 et de Ruby 4.0.5 pour stabiliser l'environnement de développement. [#65](https://github.com/datagouv/hubee/issues/65)
+- Suppression du devcontainer, jugé non utilisé sur le projet. [#82](https://github.com/datagouv/hubee/pull/82)
+- Documentation : interdiction des références confidentielles dans le dépôt public. [#68](https://github.com/datagouv/hubee/pull/68)
+- Correction d'une vulnérabilité CVE dans la gem `crass`. [#80](https://github.com/datagouv/hubee/pull/80)
+- Mise à jour de l'action `actions/checkout` vers la version v7. [#76](https://github.com/datagouv/hubee/pull/76)
+- Mise en place de Renovate sur le portail V2. [#72](https://github.com/datagouv/hubee/pull/72)
+- Déclenchement de la CI chaque nuit à 5h UTC. [#85](https://github.com/datagouv/hubee/pull/85)
+- Chargement de la gem `strong_migrations` dans tous les environnements. [#91](https://github.com/datagouv/hubee/pull/91)
+- Ajout de la gem cucumber-rails en version 4.1.0 [#84](https://github.com/datagouv/hubee/pull/84)
+- Mise à jour de la gem aasm en version 6.0.0 [#83](https://github.com/datagouv/hubee/pull/83)
