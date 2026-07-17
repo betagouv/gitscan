@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/rdv-service-public",
   "name": "rdv-service-public",
-  "description": "Ce service numérique public vise à faciliter la gestion et la prise de rendez-vous dans les administrations. Il s'adresse aux organisations publiques comme les administrations de l'État, les opérateurs de services publics et les collectivités territoriales.",
+  "description": "Ce service numérique public a pour objectif de faciliter la gestion et la prise de rendez-vous dans les administrations. Il s'adresse aux organisations publiques comme les administrations de l'État, les opérateurs de services publics et les collectivités territoriales.",
   "language": "Ruby",
   "features": [
     "Gestion des utilisateurs & Permissions",
@@ -9,20 +9,20 @@
     "Notifications & Alertes",
     "Formulaires & Démarches",
     "Authentification & Accès",
-    "Calendrier & Planification",
-    "Gestion des organisations",
-    "Gestion des signalements"
+    "API & Intégrations"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": [
+    "Agents de l'Administration",
+    "Professionnels",
+    "Associations"
+  ],
   "dependencies": [
     "Rails",
-    "Puma",
     "PostgreSQL",
     "Redis",
     "Devise",
     "Hotwire",
     "Sentry",
-    "GoodJob",
     "Chart.js",
     "Bootstrap",
     "DSFR"
@@ -32,16 +32,17 @@
     "PostgreSQL & SQL",
     "React / Next.js",
     "Python (scripts & backend)",
-    "Docker & Conteneurs",
     "TypeScript / JavaScript",
-    "Django",
-    "Tests"
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
       "email-password",
       "oauth2",
-      "sso"
+      "saml",
+      "api-key",
+      "jwt",
+      "session"
     ],
     "providers": [
       "Microsoft Graph"
@@ -50,10 +51,12 @@
   "tests": [
     "RSpec",
     "Capybara",
-    "Playwright"
+    "FactoryBot"
   ],
-  "workflows": [],
-  "lastActivity": "2026-07-10T16:49:50+02:00",
+  "workflows": [
+    "CI/CD & GitHub Actions"
+  ],
+  "lastActivity": "2026-07-16T09:45:17+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -67,8 +70,8 @@
     "Données & Open Data",
     "Écosystème beta.gouv / État",
     "JavaScript",
-    "Sécurité & Auth",
-    "Environnement & Énergie",
-    "Design System & UI"
+    "API & Intégrations",
+    "Sécurité & Conformité",
+    "Déploiement & Hosting"
   ]
 }
