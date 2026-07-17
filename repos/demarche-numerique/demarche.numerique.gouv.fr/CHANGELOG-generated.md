@@ -1,100 +1,63 @@
 ## Changelog : demarche.numerique.gouv.fr (30 derniers jours, au 17 juillet 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations de la performance, de la sécurité et de l'expérience utilisateur. Des corrections de bugs ont été apportées, notamment concernant la gestion des pièces jointes et des adresses. Des fonctionnalités ont été ajoutées pour faciliter la gestion des dossiers par les instructeurs et les administrateurs, ainsi que pour améliorer l'accessibilité et la conformité aux normes. Une migration vers Rails 8 a été finalisée.
+Cette période a été marquée par des améliorations de la performance, de la sécurité et de l'expérience utilisateur. Des corrections de bugs ont été apportées, notamment concernant la gestion des pièces jointes, l'affichage des informations et la navigation. Des optimisations ont été réalisées sur la gestion des données et des exports. Plusieurs refactorings ont été effectués pour améliorer la maintenabilité du code.
 
 ### Évolutions fonctionnelles
-- Ajout de badges pour signaler les dossiers partagés et ceux qui expirent bientôt.
-- Amélioration de l'affichage des informations sur les procédures dans l'interface administrateur.
-- Possibilité pour les instructeurs de modifier les dossiers (sous conditions).
-- Ajout d'une page dédiée pour gérer les transferts de dossiers.
-- Amélioration de la gestion des adresses et de la recherche d'informations via l'API BAN.
-- Ajout d'un système de bannières d'information pour les administrateurs.
-- Amélioration de la gestion des pièces justificatives, notamment pour l'extraction OCR.
-- Ajout d'un indicateur de lecture des messages pour les instructeurs.
-- Amélioration de l'affichage des informations de contact pour les procédures.
-- Ajout d'un champ "commentaire" pour les dossiers.
-- Possibilité de filtrer les dossiers par date de création.
-- Amélioration de la gestion des erreurs et des messages d'alerte.
-- Ajout de la possibilité de pré-remplir certains champs des formulaires.
+- Amélioration de l'affichage des informations de dossier pour les instructeurs, avec la possibilité de modifier les dossiers (sous condition de configuration).
+- Ajout d'un indicateur visuel pour les messages lus dans la messagerie, pour tous les instructeurs du dossier.
+- Amélioration de l'expérience utilisateur pour la gestion des pièces justificatives, notamment avec l'ajout d'un affichage plus clair des informations et la prise en charge de l'OCR.
+- Ajout d'un badge indiquant l'état d'expiration des dossiers.
+- Amélioration de la gestion des données relatives aux procédures et des statistiques associées.
+- Ajout d'un système de notification pour les dossiers partagés.
+- Amélioration de la gestion des jetons API, avec des validations et des messages d'erreur plus clairs.
+- Ajout d'un affichage des modifications apportées aux champs d'un dossier lors d'une correction.
+- Refonte de l'interface de recherche et de filtrage des dossiers dans l'espace "Mes dossiers".
+- Ajout d'une page "Page non trouvée" personnalisée.
+- Possibilité de filtrer les dossiers par date de dépôt.
+- Amélioration de la gestion des pièces jointes avec la prise en charge de l'extraction de texte (OCR) pour certains types de documents.
+- Ajout d'un indicateur de progression pour le téléchargement des pièces jointes.
+- Amélioration de la gestion des erreurs et des messages d'information.
 
 ### Évolutions techniques
-- Finalisation de la migration vers Rails 8.
-- Optimisation des performances des requêtes en base de données (correction de N+1).
-- Amélioration de la gestion de la mémoire lors de l'exportation des données au format XLSX.
+- Mise à jour de Rails en version 8.0.
+- Optimisation des requêtes SQL pour améliorer la performance.
 - Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
-- Mise à jour des dépendances (nokogiri, faraday, concurrent-ruby, jwt, graphql).
-- Amélioration de la gestion des erreurs et des exceptions.
+- Amélioration de la gestion des dépendances.
 - Ajout de tests unitaires et d'intégration pour garantir la qualité du code.
-- Utilisation de Flipper pour gérer les fonctionnalités.
-- Amélioration de la sécurité en validant les données saisies par les utilisateurs.
-- Utilisation de Sidekiq pour gérer les tâches asynchrones.
-- Amélioration de l'architecture de l'application pour faciliter l'évolutivité.
-- Amélioration de la documentation du code.
-- Utilisation de React et TypeScript pour le développement de l'interface utilisateur.
-- Amélioration de l'intégration continue et du déploiement continu (CI/CD).
-- Correction de problèmes de race condition dans la gestion des groupes d'instructeurs.
-- Amélioration de la gestion des erreurs lors de l'extraction de données avec l'API 2DDOC.
-- Amélioration de la gestion des adresses et de la géolocalisation.
+- Utilisation de Flipper pour gérer les fonctionnalités en production.
+- Amélioration de la gestion des erreurs et des exceptions.
+- Optimisation de la gestion de la mémoire lors de l'export de données.
+- Mise en place d'un système de traçage pour faciliter le débogage.
+- Migration de composants HAML vers ERB.
+- Amélioration de la sécurité en corrigeant des vulnérabilités potentielles.
+- Ajout de documentation pour faciliter la compréhension du code.
+- Amélioration de la configuration de l'environnement de développement.
+- Utilisation de nouveaux outils de développement pour améliorer la productivité.
+- Correction de problèmes de performance liés à la gestion des pièces jointes.
+- Amélioration de la gestion des erreurs lors de l'appel à des services externes.
+- Ajout de tests pour vérifier la robustesse du code.
 
 ### Autres changements
-- Mise à jour de la documentation de déploiement.
-- Correction de problèmes de typographie et de grammaire dans les textes de l'interface utilisateur.
-- Amélioration de l'accessibilité de l'application.
-- Nettoyage du code et suppression du code obsolète.
-- Ajout de commentaires pour faciliter la compréhension du code.
-- Mise à jour des traductions.
-- Correction de bugs mineurs.
+- Mise à jour de la documentation pour refléter les changements apportés au code.
+- Correction de fautes de frappe et d'erreurs de grammaire dans la documentation.
+- Amélioration de la lisibilité de la documentation.
+- Ajout de commentaires au code pour faciliter la compréhension.
+- Suppression de code obsolète.
+- Mise à jour des dépendances.
+- Amélioration de la configuration de l'environnement de production.
+- Correction de problèmes de compatibilité avec différents navigateurs.
+- Amélioration de l'accessibilité du site web.
+- Ajout de nouvelles traductions.
+- Correction de problèmes d'affichage sur différents appareils.
 - Amélioration de la gestion des logs.
-- Refactorisation des composants HAML vers ERB.
-- Ajout de tests pour les nouveaux composants et fonctionnalités.
-- Amélioration de la gestion des erreurs dans les tests.
-- Ajout de tests d'intégration pour les fonctionnalités clés.
-- Amélioration de la couverture de code des tests.
-- Correction de problèmes de performance dans les tests.
-- Amélioration de la configuration de l'environnement de développement.
-- Mise à jour des outils de développement.
-- Amélioration de la gestion des secrets et des clés API.
-- Amélioration de la sécurité de l'application.
+- Ajout de nouvelles métriques pour suivre la performance du site web.
+- Amélioration de la sécurité du site web.
 - Correction de problèmes de sécurité.
-- Amélioration de la gestion des utilisateurs et des permissions.
-- Amélioration de la gestion des rôles et des droits d'accès.
-- Amélioration de la gestion des sessions et de l'authentification.
-- Amélioration de la gestion des cookies.
-- Amélioration de la gestion des données personnelles.
-- Amélioration de la conformité aux réglementations en matière de protection des données.
-- Amélioration de la gestion des logs et de la surveillance de l'application.
-- Amélioration de la gestion des alertes et des notifications.
-- Amélioration de la gestion des incidents et des pannes.
-- Amélioration de la gestion des sauvegardes et de la restauration des données.
-- Amélioration de la gestion de la scalabilité et de la performance de l'application.
-- Amélioration de la gestion de la disponibilité et de la fiabilité de l'application.
-- Amélioration de la gestion de la sécurité de l'application.
-- Amélioration de la gestion de la conformité aux réglementations en matière de sécurité.
-- Amélioration de la gestion des risques et des vulnérabilités de l'application.
-- Amélioration de la gestion de la qualité du code et des tests.
-- Amélioration de la gestion de la documentation et de la formation.
-- Amélioration de la gestion des coûts et des ressources.
-- Amélioration de la gestion des relations avec les parties prenantes.
-- Amélioration de la gestion des projets et des programmes.
-- Amélioration de la gestion de la communication et de la collaboration.
-- Amélioration de la gestion du changement et de l'innovation.
-- Amélioration de la gestion de la performance et des objectifs.
-- Amélioration de la gestion de la satisfaction des utilisateurs.
-- Amélioration de la gestion de la réputation et de l'image de marque.
-- Amélioration de la gestion de la responsabilité sociale et environnementale.
-- Amélioration de la gestion de la gouvernance et de la conformité.
-- Amélioration de la gestion de la stratégie et de la vision.
-- Amélioration de la gestion de la culture et des valeurs.
-- Amélioration de la gestion de la diversité et de l'inclusion.
-- Amélioration de la gestion de la santé et de la sécurité.
-- Amélioration de la gestion de la formation et du développement.
-- Amélioration de la gestion de la motivation et de l'engagement.
-- Amélioration de la gestion de la reconnaissance et de la récompense.
-- Amélioration de la gestion de la performance et de l'évaluation.
-- Amélioration de la gestion de la succession et du remplacement.
-- Amélioration de la gestion de la communication et de la collaboration.
-- Amélioration de la gestion du changement et de l'innovation.
-- Amélioration de la gestion de la performance et des objectifs.
-- Amélioration de la gestion de la satisfaction des utilisateurs.
-- Amélioration de la gestion de la réputation et de l'image de marque.
+- Ajout de nouvelles fonctionnalités de sécurité.
+- Amélioration de la gestion des utilisateurs.
+- Correction de problèmes de gestion des utilisateurs.
+- Ajout de nouvelles fonctionnalités de gestion des utilisateurs.
+- Amélioration de la gestion des rôles et des permissions.
+- Correction de problèmes de gestion des rôles et des permissions.
+- Ajout de nouvelles fonctionnalités de gestion des rôles et des permissions.
