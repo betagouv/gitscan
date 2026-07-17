@@ -49,6 +49,7 @@
 │   │   ├── git-artefact-hygiene.md
 │   │   ├── github-board.md
 │   │   ├── react-components.md
+│   │   ├── rgaa.md
 │   │   ├── styling-dsfr.md
 │   │   ├── testing.md
 │   │   ├── ticket-spec-format.md
@@ -71,6 +72,31 @@
 │       │   └── SKILL.md
 │       ├── review
 │       │   └── SKILL.md
+│       ├── ultra11y
+│       │   ├── SKILL.md
+│       │   ├── references
+│       │   │   ├── audit.md
+│       │   │   ├── authoring.md
+│       │   │   ├── automation.md
+│       │   │   ├── correction.md
+│       │   │   ├── criteria.md
+│       │   │   ├── cross-file.md
+│       │   │   ├── dynamic.md
+│       │   │   ├── false-positives.md
+│       │   │   ├── fix.md
+│       │   │   ├── focus-and-logic.md
+│       │   │   ├── forbidden-patterns.md
+│       │   │   ├── guidance.md
+│       │   │   ├── judgment.md
+│       │   │   ├── methodology.md
+│       │   │   ├── packs.md
+│       │   │   ├── prd.md
+│       │   │   ├── rendered.md
+│       │   │   ├── scale.md
+│       │   │   ├── standards.md
+│       │   │   └── verify.md
+│       │   └── scripts
+│       │       └── ultra11y.mjs
 │       └── velocity
 │           └── SKILL.md
 ├── .dockerignore
@@ -78,19 +104,19 @@
 │   ├── CODEOWNERS
 │   ├── dependabot.yml
 │   └── workflows
+│       ├── a11y.yaml
 │       ├── ci.yaml
 │       ├── claude-question.yml
-│       ├── claude-revue-rgaa.yml
 │       ├── db-schema.yaml
 │       ├── deactivate.yaml
 │       ├── e2e.yaml
 │       ├── lighthouse.yaml
 │       ├── preproduction.yaml
 │       ├── production.yaml
+│       ├── promote-test-env.yaml
 │       ├── release.yml
 │       ├── review-auto.yaml
 │       ├── review.yaml
-│       ├── rgaa-audit.yaml
 │       └── sync-docs-to-wiki.yaml
 ├── .gitignore
 ├── .kontinuous
@@ -165,7 +191,7 @@
 │   └── values.yaml
 ├── .mcp.json
 ├── .nvmrc
-├── .releaserc.json
+├── .releaserc.cjs
 ├── CHANGELOG.md
 ├── CLAUDE.md
 ├── LICENSE
@@ -200,6 +226,7 @@
 │   │   ├── .env.example
 │   │   ├── .gitignore
 │   │   ├── .lighthouserc.json
+│   │   ├── .ultra11yrc.json
 │   │   ├── CLAUDE.md
 │   │   ├── Dockerfile
 │   │   ├── biome.jsonc
@@ -291,7 +318,6 @@
 │   │   ├── next.config.js
 │   │   ├── package.json
 │   │   ├── playwright.config.ts
-│   │   ├── playwright.rgaa.config.ts
 │   │   ├── public
 │   │   │   └── assets
 │   │   │       ├── declaration-remuneration
@@ -525,7 +551,6 @@
 │   │   │   │   │   └── dummy.pdf
 │   │   │   │   ├── global-setup.ts
 │   │   │   │   ├── helpers
-│   │   │   │   │   ├── axe-scan.ts
 │   │   │   │   │   ├── compliance-flows.ts
 │   │   │   │   │   ├── db-campaign.ts
 │   │   │   │   │   ├── db-funnel.ts
@@ -546,7 +571,6 @@
 │   │   │   │   ├── public-referents.e2e.ts
 │   │   │   │   ├── public-stats.e2e.ts
 │   │   │   │   ├── recapitulatif.e2e.ts
-│   │   │   │   ├── rgaa-audit.spec.ts
 │   │   │   │   └── step1-workforce-validation.e2e.ts
 │   │   │   ├── env.js
 │   │   │   ├── instrumentation-client.ts
@@ -611,6 +635,7 @@
 │   │   │   │   │   │   │   ├── AdminReferentsPage.test.tsx
 │   │   │   │   │   │   │   ├── DeleteConfirmationModal.test.tsx
 │   │   │   │   │   │   │   ├── ImportReferentsModal.test.tsx
+│   │   │   │   │   │   │   ├── ReferentFormFields.test.tsx
 │   │   │   │   │   │   │   ├── ReferentTable.test.tsx
 │   │   │   │   │   │   │   ├── SearchForm.test.tsx
 │   │   │   │   │   │   │   ├── constants.test.ts
@@ -1177,6 +1202,7 @@
 │   │   │   │   │   │   ├── UserAccountMenu.module.scss
 │   │   │   │   │   │   ├── UserAccountMenu.tsx
 │   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   ├── HeaderQuickAccess.test.tsx
 │   │   │   │   │   │   │   ├── HeaderQuickAccessLinks.test.tsx
 │   │   │   │   │   │   │   ├── MobileMenu.test.tsx
 │   │   │   │   │   │   │   ├── MobileUserBlock.test.tsx
@@ -1198,10 +1224,11 @@
 │   │   │   │   │       ├── NavLink.tsx
 │   │   │   │   │       ├── NewTabNotice.tsx
 │   │   │   │   │       ├── SkipLinks.tsx
-│   │   │   │   │       └── __tests__
-│   │   │   │   │           ├── NavLink.test.tsx
-│   │   │   │   │           ├── NewTabNotice.test.tsx
-│   │   │   │   │           └── SkipLinks.test.tsx
+│   │   │   │   │       ├── __tests__
+│   │   │   │   │       │   ├── NavLink.test.tsx
+│   │   │   │   │       │   ├── NewTabNotice.test.tsx
+│   │   │   │   │       │   └── SkipLinks.test.tsx
+│   │   │   │   │       └── routeUtils.ts
 │   │   │   │   ├── legal
 │   │   │   │   │   ├── AccessibilityPage
 │   │   │   │   │   │   ├── AccessibilityCompliance.tsx
@@ -1493,7 +1520,6 @@
 │   │   │   │   ├── auth
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   ├── companyAccess.test.ts
-│   │   │   │   │   │   ├── config.providers.test.ts
 │   │   │   │   │   │   ├── config.test.ts
 │   │   │   │   │   │   ├── impersonation.test.ts
 │   │   │   │   │   │   ├── logout-route.test.ts
@@ -1693,4 +1719,4 @@
 │   ├── setup-worktree.sh
 │   └── teardown-worktree.sh
 └── sonar-project.properties
-289 directories, 1406 files
+292 directories, 1429 files
