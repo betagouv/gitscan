@@ -1,41 +1,28 @@
-## Changelog : ami-notifications-api (30 derniers jours, au 13 juillet 2026)
+## Changelog : ami-notifications-api (30 derniers jours, au 16 juillet 2026)
 
 ### Résumé
-Les dernières mises à jour apportent des améliorations significatives à l'interface utilisateur, notamment concernant la gestion des suivis (followup) et des requêtes, avec l'ajout de fonctionnalités d'archivage et une refonte de l'affichage. Des améliorations de sécurité et d'authentification, notamment avec l'intégration de FranceConnect, ont également été implémentées. Enfin, des corrections d'accessibilité (RGAA) et des optimisations de performance ont été réalisées.
+Les dernières mises à jour de l'API de notifications se concentrent sur l'amélioration de l'expérience utilisateur de l'interface web "17cyber", l'ajout de fonctionnalités pour la gestion des événements (v2), l'amélioration de l'affichage des icônes de notifications et la correction de problèmes liés à l'authentification et à la gestion des données. Des améliorations de conformité RGAA ont également été apportées.
 
 ### Évolutions fonctionnelles
-- **Gestion des suivis (followup) :**
-    - Ajout de la possibilité d'archiver les suivis.
-    - Refonte de l'affichage des suivis, simplification de l'interface et suppression des onglets.
-    - Ajout d'une page dédiée aux suivis archivés.
-    - Ajout d'un bouton "procédure" pour les suivis.
-- **Authentification :**
-    - Intégration d'un nouveau processus de connexion via FranceConnect, incluant une page dédiée et une gestion des providers.
-    - Amélioration de la gestion des sessions et de la déconnexion pour éviter les erreurs d'intégrité.
-- **Notifications :**
-    - Amélioration de l'affichage des icônes de notification, avec une déduction automatique à partir des informations de l'élément associé.
-    - Ajout du champ `item_is_archived` aux notifications.
-- **API :**
-    - Ajout d'un endpoint PUT pour les événements v2.
-    - Expose les champs `external_item_type` et `external_item_id` dans l'API followup.
-    - Modification de l'API pour gérer l'archivage des éléments.
+- **Notifications :** Amélioration de l'affichage des icônes de notifications en utilisant l'icône de l'élément si disponible, ou une icône par défaut en cas d'inconnu. [#952]
+- **API Événements :** Implémentation d'un point de terminaison PUT pour la gestion des événements v2, incluant la validation des champs parent. [#940]
+- **Interface 17cyber :**
+    - Correction de problèmes d'affichage de la hauteur de la page sur certains appareils Android. [#1013]
+    - Ajout d'une meta tag pour le referrer. [#942]
+    - Amélioration de la navigation après la connexion, en attendant l'initialisation de l'utilisateur. [#1014]
+- **Suivi (Follow-up) :** Ajout de la possibilité d'identifier de manière unique un suivi via son type et son ID externe. [#690]
+- **Réplication :** Ajout de l'ID utilisateur dans les données de réplication des enregistrements et des notifications. [#964]
 
 ### Évolutions techniques
-- **Infrastructure :**
-    - Mise à jour de plusieurs dépendances (ujson, msgpack, pyjwt, webob, etc.).
-    - Utilisation de `django-tasks-db` par défaut pour la gestion des tâches asynchrones.
-    - Configuration de Vite pour LightningCSS.
-- **Code :**
-    - Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
-    - Renommage de certaines librairies et routes pour une meilleure cohérence (catalog -> agenda, inventory -> followup, requests -> followup).
-    - Suppression de code obsolète.
-    - Ajout de tests unitaires pour certaines fonctionnalités.
-- **Sécurité :**
-    - Amélioration de la gestion des cookies pour la connexion via FranceConnect.
+- **Refactoring :** Renommage des librairies et routes liées aux agendas et aux suivis pour une meilleure cohérence. [#1018]
+- **Authentification :** Amélioration de la gestion de la déconnexion pour éviter les erreurs d'intégrité. [#971]
+- **Tests :** Correction d'un timeout dans les tests unitaires des préférences de zone. [#789]
+- **Performances :** Optimisation de la récupération des notifications en utilisant `select_related`. [#952]
+- **Infrastructure :** Mise à jour de plusieurs dépendances (esbuild, @sveltejs/vite-plugin-svelte, vite, @vitejs/plugin-basic-ssl, webob, pyjwt, ujson, msgpack, brace-expansion, undici, dompurify, js-yaml, cryptography).
 
 ### Autres changements
-- Corrections d'accessibilité (RGAA) concernant les boutons, les titres et les champs de formulaire.
-- Amélioration de la gestion des logs et des erreurs.
-- Mise à jour de la documentation.
-- Correction de bugs mineurs et amélioration de la stabilité de l'application.
-- Suppression de l'affichage de la description des pull requests de Dependabot dans les logs.
+- **Documentation :** Mise à jour de la documentation pour refléter les changements de l'API.
+- **RGAA :** Corrections pour améliorer l'accessibilité de l'interface utilisateur (balises `alt` et `aria-label` pour les images, wording). [#924, #926, #929]
+- **Outils :** Configuration de Vite pour LightningCSS.
+- **Tâches asynchrones :** Utilisation de `django-tasks-db` pour la gestion des tâches asynchrones. [#956]
+- **Logs :** Amélioration des logs pour les tâches d'envoi de notifications.

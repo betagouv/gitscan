@@ -1,11 +1,11 @@
 {
   "url": "https://github.com/numerique-gouv/ami-notifications-api",
   "name": "ami-notifications-api",
-  "description": "L'API AMI (Application Mobile Interministérielle) de notifications permet de créer et de lister des notifications, et de stocker les URL push enregistrées à partir des clients (web ou mobile) entre autres choses. Elle gère les notifications pour diverses applications gouvernementales.",
+  "description": "Cette API permet de gérer les notifications de l'application mobile interministérielle (AMI), notamment la création, la liste et le stockage des URL push pour les clients web ou mobiles. Elle fournit des points d'entrée pour la gestion des notifications et des abonnements.",
   "language": "Python",
   "features": [
-    "Notifications & Alertes",
-    "Authentification & Accès",
+    "Notifications",
+    "Authentification",
     "API & Intégrations"
   ],
   "audience": "Agents de l'Administration",
@@ -13,11 +13,13 @@
     "Django",
     "postgresql",
     "asyncpg",
+    "httpx",
     "webpush",
     "mozilla-django-oidc",
-    "djangorestframework",
-    "uvicorn",
-    "gunicorn"
+    "django-dsfr",
+    "uv",
+    "ruff",
+    "Biome"
   ],
   "components": [
     "API REST & GraphQL",
@@ -36,10 +38,8 @@
     ]
   },
   "tests": "Pytest",
-  "workflows": [
-    "CI/CD & GitHub Actions"
-  ],
-  "lastActivity": "2026-07-13T14:48:01+02:00",
+  "workflows": [],
+  "lastActivity": "2026-07-16T16:13:16+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
