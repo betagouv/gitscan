@@ -87,7 +87,8 @@
 │   │   ├── backend-conventions.md
 │   │   ├── figma-design-system.md
 │   │   ├── frontend-conventions.md
-│   │   └── packages-conventions.md
+│   │   ├── packages-conventions.md
+│   │   └── rgaa-accessibility.md
 │   ├── settings.json
 │   └── skills
 │       ├── ask-matt -> ../../.agents/skills/ask-matt
@@ -988,6 +989,8 @@
 │   │       └── troubleshooting.md
 │   ├── performance-improvements.md
 │   ├── portail-df-decision-tree.md
+│   ├── rgaa
+│   │   └── methodologie-tests.md
 │   ├── superpowers
 │   │   ├── plans
 │   │   │   ├── 2026-01-26-agents-md-configuration-design.md
@@ -1028,7 +1031,8 @@
 │   │   │   ├── 2026-06-11-factories-campaign-slice-plan.md
 │   │   │   ├── 2026-06-11-migrate-validator-next.md
 │   │   │   ├── 2026-06-11-remove-old-dsfr.md
-│   │   │   └── 2026-06-13-reference-data-cache.md
+│   │   │   ├── 2026-06-13-reference-data-cache.md
+│   │   │   └── 2026-07-08-zlv-repair-harness.md
 │   │   └── specs
 │   │       ├── 2026-04-07-groups-precomputed-counts-design.md
 │   │       ├── 2026-04-13-factories-design.md
@@ -2011,6 +2015,8 @@
 │   │   ├── start-clamav.sh
 │   │   └── stop-clamav.sh
 │   ├── src
+│   │   ├── bin
+│   │   │   └── zlv.ts
 │   │   ├── controllers
 │   │   │   ├── auth-controller.ts
 │   │   │   ├── buildingController.ts
@@ -2690,6 +2696,22 @@
 │   │   │   │       ├── establishments-sync.py
 │   │   │   │       ├── export-missing-users.py
 │   │   │   │       └── export-structures-sans-acces-lovac.py
+│   │   │   ├── repairs
+│   │   │   │   ├── README.md
+│   │   │   │   ├── cli.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── lib
+│   │   │   │   │   ├── apply.ts
+│   │   │   │   │   ├── plan.ts
+│   │   │   │   │   ├── read-plan.ts
+│   │   │   │   │   ├── row-stream.ts
+│   │   │   │   │   ├── stats.ts
+│   │   │   │   │   ├── test
+│   │   │   │   │   │   ├── apply.test.ts
+│   │   │   │   │   │   └── plan.test.ts
+│   │   │   │   │   └── types.ts
+│   │   │   │   └── test
+│   │   │   │       └── cli.test.ts
 │   │   │   ├── shared
 │   │   │   │   ├── elapsed.ts
 │   │   │   │   ├── index.ts
@@ -2837,4 +2859,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── yarn.lock
-442 directories, 2397 files
+448 directories, 2413 files
