@@ -27,6 +27,7 @@
 │       ├── score_history.yml
 │       └── semantic-pr.yml
 ├── .gitignore
+├── .justfile
 ├── .npmrc
 ├── .pre-commit-config.yaml
 ├── .prettierignore
@@ -185,18 +186,7 @@
 ├── check-db.js
 ├── cliff.toml
 ├── data
-│   ├── .env.sample
-│   ├── .gitignore
-│   ├── .pre-commit-config.yaml
-│   ├── LICENSE
 │   ├── README.md
-│   ├── archive
-│   │   ├── .dockerignore
-│   │   ├── Makefile
-│   │   └── bwapi
-│   │       ├── README.txt
-│   │       ├── __init__.py
-│   │       └── server.py
 │   ├── bin
 │   │   ├── export.py
 │   │   ├── export_bw_db.py
@@ -263,6 +253,9 @@
 │   │   ├── s3.py
 │   │   ├── tests.py
 │   │   └── typer.py
+│   ├── export
+│   │   ├── processes_generic.json
+│   │   └── processes_legacy.json
 │   ├── food
 │   │   ├── __init__.py
 │   │   ├── base_ingredients.json
@@ -292,7 +285,6 @@
 │   ├── import_ecoinvent.py
 │   ├── import_food.py
 │   ├── import_method.py
-│   ├── justfile
 │   ├── lci_catalog
 │   │   ├── agribalyse-3-2
 │   │   │   ├── agave-default.json
@@ -1255,30 +1247,10 @@
 │   │   └── 2026-06-22-use-kwh-instead-of-mj.py
 │   ├── models
 │   │   └── process.py
-│   ├── notebooks
-│   │   ├── bw2.svg
-│   │   ├── explore.py
-│   │   └── textile_processes.py
-│   ├── object
-│   │   └── __init__.py
-│   ├── public
-│   │   └── data
-│   │       ├── export
-│   │       │   └── .gitignore
-│   │       ├── food
-│   │       │   └── ingredients.json
-│   │       ├── processes_generic.json
-│   │       ├── processes_legacy.json
-│   │       └── textile
-│   │           └── materials.json
-│   ├── pyproject.toml
 │   ├── schemas
 │   │   └── lci-schema.json
 │   ├── settings.toml
 │   ├── simapro-biosphere.json
-│   ├── spapi
-│   │   ├── README.txt
-│   │   └── simapro.py
 │   ├── tests
 │   │   ├── conftest.py
 │   │   ├── custom_lci.json
@@ -1327,11 +1299,9 @@
 │   │   ├── test_json_format_encoder.py
 │   │   ├── test_process_relationships.py
 │   │   └── test_raw_to_transformed_ratios.py
-│   ├── textile
-│   │   ├── README.md
-│   │   ├── __init__.py
-│   │   └── codes.json
-│   └── uv.lock
+│   └── textile
+│       ├── README.md
+│       └── __init__.py
 ├── docker
 │   ├── .dockerignore
 │   ├── Dockerfile
@@ -1352,7 +1322,6 @@
 ├── elm.json
 ├── index.html
 ├── index.js
-├── justfile
 ├── lib
 │   ├── charts
 │   │   ├── base.js
@@ -1705,4 +1674,4 @@
 │   ├── rate-limiting.spec.js
 │   └── server.spec.js
 └── uv.lock
-144 directories, 1923 files
+135 directories, 1901 files
