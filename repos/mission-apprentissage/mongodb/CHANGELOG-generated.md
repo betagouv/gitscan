@@ -1,13 +1,15 @@
-## Changelog : mongodb (30 derniers jours, au 2026-04-24)
+## Changelog : mongodb (30 derniers jours, au 08 juillet 2026)
 
 ### Résumé
-Ce changelog présente l'ajout d'une fonctionnalité importante pour la sécurité des données : la configuration d'une autorité de certification permettant une authentification plus robuste des membres d'un cluster MongoDB. Cette évolution renforce la protection des bases de données et améliore la gestion des accès.
+Ce changelog présente les récentes modifications apportées à l'infrastructure MongoDB de la Mission Apprentissage. Les changements incluent une rotation de secret pour une sécurité accrue, la correction d'un problème lié à un token, et une simplification de la structure du dépôt en supprimant des sous-modules obsolètes.
 
 ### Évolutions fonctionnelles
-- Ajout de la configuration d'une autorité de certification pour l'authentification des membres d'une même grappe MongoDB. [#62](https://github.com/mission-apprentissage/mongodb/issues/62)
+- Correction du token `TOKEN_MNA_SHARED` [#issue à investiguer]
 
 ### Évolutions techniques
-- Implémentation de la configuration de l'autorité de certification via des scripts et configurations adaptés à l'infrastructure existante.
+- Suppression des sous-modules `.infra/authorizations` et `.infra/inventories` pour simplifier la gestion du dépôt et réduire sa complexité. [#issue à investiguer]
+- Mise à jour du sous-module `.bin/shared`.
+- Rotation du secret principal SOPS pour renforcer la sécurité de l'infrastructure.
 
 ### Autres changements
-- Aucun autre changement significatif à signaler.
+- Aucun changement significatif à signaler.
