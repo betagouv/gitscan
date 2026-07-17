@@ -1,18 +1,18 @@
 {
   "url": "https://github.com/betagouv/maestro",
   "name": "maestro",
-  "description": "Maestro est une application web permettant de gérer les analyses, les prélèvements et les documents associés. Elle facilite le suivi des contaminations et la gestion des données environnementales.",
+  "description": "Maestro est une application web permettant la gestion des analyses, des prélèvements et des documents, notamment dans le domaine de la sécurité sanitaire des aliments. Elle facilite le suivi et la gestion des données liées aux contrôles officiels.",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
     "Authentification & Accès",
-    "Notifications & Alertes",
+    "Statistiques & Rapports",
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
+    "Notifications & Alertes",
     "Sécurité & Conformité",
-    "Données & Schémas",
-    "Administration & Backoffice"
+    "Données & Schémas"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -20,7 +20,8 @@
     "Node.js",
     "PostgreSQL",
     "S3",
-    "Browserless"
+    "Browserless",
+    "Dex"
   ],
   "components": [
     "API REST & GraphQL",
@@ -31,20 +32,19 @@
   ],
   "auth": {
     "methods": [
-      "email-password",
       "oauth2",
-      "sso"
-    ],
-    "providers": []
+      "saml"
+    ]
   },
   "tests": [
     "Jest",
-    "Vitest"
+    "Pytest",
+    "Cypress"
   ],
   "workflows": [
-    "CI/CD & GitHub Actions"
+    "CI/CD"
   ],
-  "lastActivity": "2026-07-13T14:31:06+02:00",
+  "lastActivity": "2026-07-16T16:53:37+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -61,6 +61,7 @@
     "TypeScript",
     "Déploiement & Hosting",
     "Python",
-    "Bases de données SQL"
+    "Bases de données SQL",
+    "Sécurité & Auth"
   ]
 }

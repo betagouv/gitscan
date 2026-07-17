@@ -1,42 +1,58 @@
-## Changelog : maestro (30 derniers jours, au 2026-07-13)
+## Changelog : maestro (30 derniers jours, au 2026-07-16)
 
 ### Résumé
-Cette version apporte des améliorations significatives à la gestion des analyses, des prélèvements et des documents, notamment dans les domaines de la gestion des laboratoires, des analyses DAOA, et de l'export des données. Des corrections de bugs et des optimisations ont également été apportées pour améliorer la stabilité et l'expérience utilisateur.
+Cette version apporte des améliorations significatives à l'interface utilisateur, notamment au niveau des tableaux de bord et de la gestion des laboratoires. Des corrections ont été apportées pour améliorer la précision des données affichées et la gestion des documents. Plusieurs optimisations et corrections de bugs ont été implémentées pour améliorer la stabilité et la fiabilité de l'application.
 
 ### Évolutions fonctionnelles
-- Gestion des laboratoires :
-    - Amélioration de l'autocomplete pour la sélection du laboratoire lors de la création d'un prélèvement [#1196](https://github.com/betagouv/maestro/issues/1196).
-    - Correction de l'affichage des laboratoires pour les coordinateurs régionaux [#1184](https://github.com/betagouv/maestro/issues/1184).
-    - Correction du menu déroulant des laboratoires agréés qui sortait de l'écran [#1145](https://github.com/betagouv/maestro/issues/1145).
-- Analyse et données :
-    - Gestion de la réception des analyses DAOA [#1149](https://github.com/betagouv/maestro/issues/1149).
-    - Stockage de tous les résidus inconnus dès la réception de l'analyse [#1169](https://github.com/betagouv/maestro/issues/1169).
-    - Amélioration de l'affichage des cartes du dashboard [#1179](https://github.com/betagouv/maestro/issues/1179).
-    - Correction du calcul des pourcentages sur le dashboard [#1188](https://github.com/betagouv/maestro/issues/1188) et [#1189](https://github.com/betagouv/maestro/issues/1189).
-    - Ajout d'un bandeau d'alerte pour les dépassements de LMR (Limites Maximales de Résidus) dans le cadre du programme SEVES [#1074](https://github.com/betagouv/maestro/issues/1074).
-    - Possibilité de repasser des DAI (Demandes d'Analyse Initiale) en erreur pour les relancer [#1063](https://github.com/betagouv/maestro/issues/1063).
-- Documents :
-    - Les utilisateurs avec le rôle "Suivi national" peuvent supprimer des documents [#1114](https://github.com/betagouv/maestro/issues/1114).
-    - Correction de l'affichage des erreurs liées à la taille maximale des documents [#1122](https://github.com/betagouv/maestro/issues/1122).
-- Divers :
-    - Amélioration des libellés dans l'administration [#1165](https://github.com/betagouv/maestro/issues/1165).
-    - Correction de l'ajout d'options pour les descripteurs [#1180](https://github.com/betagouv/maestro/issues/1180).
-    - Correction de l'ordre de l'onglet agréments laboratoire [#1145](https://github.com/betagouv/maestro/issues/1145).
-    - Correction de l'affichage des informations de conformité dans l'export [#1078](https://github.com/betagouv/maestro/issues/1078).
+- Ajout de statistiques sur le tableau de bord [#949].
+- Amélioration de l'affichage et de la navigation dans le tableau de programmation (vue nationale) [#1126, #1155].
+- Implémentation d'un autocomplete pour la sélection du laboratoire lors de la création d'un prélèvement [#1196].
+- Gestion de la réception des RAI DAOA [#1149].
+- Possibilité de supprimer des documents pour les utilisateurs "Suivi national" [#1114].
+- Ajout d'un bandeau d'alerte pour les cas SEVES [#1074].
+- Amélioration des libellés dans l'administration [#1165].
+- Repositionnement de l'écran après l'interprétation d'une analyse [#1164].
+- Correction de l'affichage des cartes sur le tableau de bord [#1179].
+- Correction de l'affichage des pourcentages sur le tableau de bord [#1189, #1177].
+- Correction de l'affichage des prélèvements par région pour les coordinateurs régionaux [#1184].
+- Correction de l'ajout d'options pour les descripteurs [#1180].
+- Correction des codes matrices dans LabCam [#1213].
+- Correction des droits d'accès aux données LabCam pour le bureau des laboratoires [#1145].
+- Correction de l'emplacement de l'adresse des laboratoires sur les étiquettes [#1093].
+- Correction de l'export des informations de conformité [#1152].
+- Correction de l'affichage des informations de conformité [#1078].
+- Possibilité de modifier un prélèvement même si l'utilisateur n'est pas le préleveur (action volontaire) [#1090].
 
 ### Évolutions techniques
-- Refactor de l'implémentation du header avec un nouveau design [#1127](https://github.com/betagouv/maestro/issues/1127).
-- Séparation des routes des documents de prélèvements et des ressources [#1123](https://github.com/betagouv/maestro/issues/1123).
-- Utilisation d'un outil de génération d'URL pour l'export des données du labcam [#1128](https://github.com/betagouv/maestro/issues/1128).
-- Mise à jour de plusieurs dépendances (voir section "Autres changements").
-- Correction de l'implémentation de la CSP (Content Security Policy) pour Sentry [#1176](https://github.com/betagouv/maestro/issues/1176).
+- Refactorisation de la gestion des routes des documents pour une meilleure organisation [#1123].
+- Utilisation d'un outil de génération d'URL pour l'export dans LabCam [#1128].
+- Mise à jour de plusieurs dépendances (nodemailer, puppeteer-core, @sentry/node, etc.).
+- Amélioration de la gestion des backups Restic [#1156].
+- Correction de la configuration DEX [#1163].
+- Ajout de la Content Security Policy (CSP) pour Sentry [#1176].
+- Mise à jour de la gestion des LMR (Limites Maximales de Résidus) pour plus de flexibilité [#1085].
+- Correction de la gestion des erreurs et des avertissements dans divers modules.
 
 ### Autres changements
-- Mises à jour de dépendances : de nombreuses dépendances ont été mises à jour pour bénéficier des dernières corrections de bugs et améliorations de sécurité. Ces mises à jour sont gérées par Dependabot et ne sont pas listées individuellement ici.
-- Nettoyage du code et corrections de tests.
-- Correction de la configuration du backup Restic [#1155](https://github.com/betagouv/maestro/issues/1155).
-- Correction d'un warning lors du déploiement sur Scalingo [#1178](https://github.com/betagouv/maestro/issues/1178).
-- Suppression d'une erreur dans la console liée à l'évaluation d'un "eval" [#1177](https://github.com/betagouv/maestro/issues/1177).
-- Suppression d'un décalage sur la ligne "Total" de l'export de la programmation [#1185](https://github.com/betagouv/maestro/issues/1185).
-- Correction d'un test qui clignotait [#1172](https://github.com/betagouv/maestro/issues/1172).
-- Revert d'une fonctionnalité Sacha [#1154](https://github.com/betagouv/maestro/issues/1154).
+- Correction de tests unitaires pour éviter les faux positifs [#1153, #1157].
+- Nettoyage de code et suppression de warnings [#1178, #1175].
+- Amélioration de la documentation interne.
+- Correction de la gestion des millisecondes dans les noms de fichiers pour éviter les conflits [#1075].
+- Suppression d'un revert précédent [#1054].
+- Correction de l'affichage de la conclusion du laboratoire Cereco [#1183].
+- Correction de la gestion des résidus complexes dans les analyses [#1113].
+- Correction de la gestion des analyses PPV (Pollution Potentielle des Volailles) [#1073].
+- Correction de la gestion des 0 dans les résultats d'analyse [#1180].
+- Correction de l'affichage des informations de conformité dans l'export [#1152].
+- Correction de la gestion des utilisateurs désactivés pour les notifications [#1144].
+- Correction de la contrainte sur le mode de communication des laboratoires [#1130].
+- Correction de l'affichage des cartes sur le tableau de bord [#1179].
+- Correction de l'affichage des pourcentages sur le tableau de bord [#1189, #1177].
+- Correction de l'affichage des prélèvements par région pour les coordinateurs régionaux [#1184].
+- Correction de l'ajout d'options pour les descripteurs [#1180].
+- Correction des codes matrices dans LabCam [#1213].
+- Correction des droits d'accès aux données LabCam pour le bureau des laboratoires [#1145].
+- Correction de l'emplacement de l'adresse des laboratoires sur les étiquettes [#1093].
+- Correction de l'export des informations de conformité [#1152].
+- Correction de l'affichage des informations de conformité [#1078].
+- Possibilité de modifier un prélèvement même si l'utilisateur n'est pas le préleveur (action volontaire) [#1090].
