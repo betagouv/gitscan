@@ -151,9 +151,11 @@
 │   │   │   │   │   └── item_1.jpg
 │   │   │   │   ├── 2.5.0
 │   │   │   │   │   └── item_1.png
-│   │   │   │   └── 2.54.0
-│   │   │   │       ├── item_1.jpg
-│   │   │   │       └── item_2.jpg
+│   │   │   │   ├── 2.54.0
+│   │   │   │   │   ├── item_1.jpg
+│   │   │   │   │   └── item_2.jpg
+│   │   │   │   └── 2.56.0
+│   │   │   │       └── item_1.jpg
 │   │   │   ├── chartes_engagement
 │   │   │   │   ├── Charte-d-engagement-resorption-bidonvilles-2020-04-10.pdf
 │   │   │   │   ├── charte-d-engagement-resorption-bidonvilles_v2.pdf
@@ -517,6 +519,7 @@
 │   │   │   │   ├── 30000010-create-organization-insee.js
 │   │   │   │   ├── 300000105-01-alter-table-actions-add-action_ref-col.js
 │   │   │   │   ├── 30000011-create-organization-caf.js
+│   │   │   │   ├── 300000110-01-create-user-favorite-shantytowns.js
 │   │   │   │   ├── 300000111-01-alter-table-action_operators-add-is_principal-col.js
 │   │   │   │   ├── 300000111-02-populate-is_principal.js
 │   │   │   │   ├── 30000012-create-organization-cpam.js
@@ -731,6 +734,8 @@
 │   │   │   │   ├── 30000109-01-create-table-action_metrics_history.js
 │   │   │   │   ├── 30000110-01-alter-table-action_metrics_history-sync-scolaire-columns.js
 │   │   │   │   ├── 30000112-01-update-table-preparatory_phases_toward_resorption-date_label.js
+│   │   │   │   ├── 30000113-01-add-technical-diagnosis-phase.js
+│   │   │   │   ├── 30000113-02-initialize-technical-diagnosis-phase-for-existing-sites.js
 │   │   │   │   └── common
 │   │   │   │       ├── create_covid_comment_permissions.js
 │   │   │   │       ├── create_plan_finances_permissions.js
@@ -834,6 +839,7 @@
 │   │   │   │   ├── 000000-changelog-2.49.1.js
 │   │   │   │   ├── 000000-changelog-2.5.0.js
 │   │   │   │   ├── 000000-changelog-2.54.0.js
+│   │   │   │   ├── 000000-changelog-2.56.0.js
 │   │   │   │   ├── 000000-changelogs.js.sample
 │   │   │   │   ├── 000001-users.js
 │   │   │   │   ├── 000002-soliguide.js.sample
@@ -850,6 +856,7 @@
 │   │   │   │   │   └── changelogs
 │   │   │   │   │       ├── 2.49.1.json
 │   │   │   │   │       ├── 2.54.0.json
+│   │   │   │   │       ├── 2.56.0.json
 │   │   │   │   │       ├── README.md
 │   │   │   │   │       └── template.json
 │   │   │   │   ├── helpers
@@ -871,6 +878,7 @@
 │   │   │   ├── config
 │   │   │   │   ├── contact_request_types.ts
 │   │   │   │   ├── email_subscriptions.ts
+│   │   │   │   ├── preparatory_phases_toward_resorption.ts
 │   │   │   │   └── shantytown_actor_themes.ts
 │   │   │   ├── config.ts
 │   │   │   ├── controllers
@@ -1122,6 +1130,10 @@
 │   │   │   │   │   │   ├── shantytown.addActor.route.ts
 │   │   │   │   │   │   ├── shantytown.addActor.ts
 │   │   │   │   │   │   └── shantytown.addActor.validator.ts
+│   │   │   │   │   ├── addFavorite
+│   │   │   │   │   │   ├── shantytown.addFavorite.route.ts
+│   │   │   │   │   │   ├── shantytown.addFavorite.ts
+│   │   │   │   │   │   └── shantytown.addFavorite.validator.ts
 │   │   │   │   │   ├── close
 │   │   │   │   │   │   ├── shantytown.close.route.ts
 │   │   │   │   │   │   ├── shantytown.close.spec.ts
@@ -1184,6 +1196,10 @@
 │   │   │   │   │   │   ├── shantytown.removeActorTheme.route.ts
 │   │   │   │   │   │   ├── shantytown.removeActorTheme.ts
 │   │   │   │   │   │   └── shantytown.removeActorTheme.validator.ts
+│   │   │   │   │   ├── removeFavorite
+│   │   │   │   │   │   ├── shantytown.removeFavorite.route.ts
+│   │   │   │   │   │   ├── shantytown.removeFavorite.ts
+│   │   │   │   │   │   └── shantytown.removeFavorite.validator.ts
 │   │   │   │   │   ├── report
 │   │   │   │   │   │   ├── shantytown.report.route.ts
 │   │   │   │   │   │   ├── shantytown.report.ts
@@ -1290,6 +1306,9 @@
 │   │   │   │   │   ├── list
 │   │   │   │   │   │   ├── user.list.route.ts
 │   │   │   │   │   │   └── user.list.ts
+│   │   │   │   │   ├── listFavorites
+│   │   │   │   │   │   ├── user.listFavorites.route.ts
+│   │   │   │   │   │   └── user.listFavorites.ts
 │   │   │   │   │   ├── reactivate
 │   │   │   │   │   │   ├── user.reactivate.route.ts
 │   │   │   │   │   │   ├── user.reactivate.spec.ts
@@ -1344,6 +1363,7 @@
 │   │   │   │           ├── userWithPrivilege.list.route.ts
 │   │   │   │           └── userWithPrivilege.list.ts
 │   │   │   ├── errors
+│   │   │   │   ├── ControllerErrors.ts
 │   │   │   │   └── ServiceError.ts
 │   │   │   ├── index.ts
 │   │   │   ├── loaders
@@ -2023,6 +2043,12 @@
 │   │   │   │   │   ├── findLatestUserAccess.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   └── update.ts
+│   │   │   │   ├── userFavoriteShantytownModel
+│   │   │   │   │   ├── addFavorite.ts
+│   │   │   │   │   ├── findByUser.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── isFavorite.ts
+│   │   │   │   │   └── removeFavorite.ts
 │   │   │   │   ├── userModel
 │   │   │   │   │   ├── _common
 │   │   │   │   │   │   ├── formatName.ts
@@ -2170,6 +2196,10 @@
 │   │   │   │   │   └── types
 │   │   │   │   │       ├── TownReport.d.ts
 │   │   │   │   │       └── TownReportFigures.d.ts
+│   │   │   │   ├── directoryView
+│   │   │   │   │   ├── create
+│   │   │   │   │   │   └── create.ts
+│   │   │   │   │   └── directoryViewService.ts
 │   │   │   │   ├── heatwave
 │   │   │   │   │   ├── get.spec.ts
 │   │   │   │   │   ├── get.ts
@@ -2203,6 +2233,8 @@
 │   │   │   │   │   ├── create.ts
 │   │   │   │   │   ├── findJusticeReadersByLocation
 │   │   │   │   │   │   └── findJusticeReadersByLocation.ts
+│   │   │   │   │   ├── getDirectory
+│   │   │   │   │   │   └── getDirectory.ts
 │   │   │   │   │   ├── listAll
 │   │   │   │   │   │   └── listAll.ts
 │   │   │   │   │   ├── organizationService.ts
@@ -2393,6 +2425,11 @@
 │   │   │   │   ├── userActivity
 │   │   │   │   │   ├── getHistory.spec.ts
 │   │   │   │   │   └── getHistory.ts
+│   │   │   │   ├── userFavoriteShantytown
+│   │   │   │   │   ├── add.ts
+│   │   │   │   │   ├── fetch.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── remove.ts
 │   │   │   │   └── userNavigationLogs
 │   │   │   │       ├── exportWebappSessions.ts
 │   │   │   │       ├── index.ts
@@ -2497,6 +2534,7 @@
 │   │       │   ├── ExpertiseTopic.d.ts
 │   │       │   ├── FieldType.d.ts
 │   │       │   ├── Heatwave.d.ts
+│   │       │   ├── ManageFavoriteRequestInterface.d.ts
 │   │       │   ├── NationMetrics.d.ts
 │   │       │   ├── NationalMetricsEvolution.d.ts
 │   │       │   ├── Organization.d.ts
@@ -2837,6 +2875,7 @@
 │       │   │   │   ├── contact_form_referrals.api.js
 │       │   │   │   ├── datagouv.api.js
 │       │   │   │   ├── directory_views.api.js
+│       │   │   │   ├── favorites.api.js
 │       │   │   │   ├── geo.api.js
 │       │   │   │   ├── geojson.api.js
 │       │   │   │   ├── ign.api.js
@@ -2981,6 +3020,8 @@
 │       │   │   │   │   └── BandeauNotice.vue
 │       │   │   │   ├── BandeauPromotionVisualisationDonnees
 │       │   │   │   │   └── BandeauPromotionVisualisationDonnees.vue
+│       │   │   │   ├── BoutonFavori
+│       │   │   │   │   └── BoutonFavori.vue
 │       │   │   │   ├── ButtonContact
 │       │   │   │   │   └── ButtonContact.vue
 │       │   │   │   ├── ButtonCopy
@@ -3982,7 +4023,8 @@
 │       │   │   │   ├── BadgeSiteOjectifResorption.vue
 │       │   │   │   ├── useBadgeType.js
 │       │   │   │   ├── useClosureYears.js
-│       │   │   │   └── useLastUpdated.js
+│       │   │   │   ├── useLastUpdated.js
+│       │   │   │   └── usePhoneVisibility.js
 │       │   │   ├── helpers
 │       │   │   │   ├── axios.js
 │       │   │   │   ├── datepicker.js
@@ -4004,6 +4046,7 @@
 │       │   │   │   ├── dashboard.activities.store.js
 │       │   │   │   ├── dashboard.store.js
 │       │   │   │   ├── directory.store.js
+│       │   │   │   ├── favorites.store.js
 │       │   │   │   ├── geojson.store.js
 │       │   │   │   ├── inputs.store.js
 │       │   │   │   ├── location.store.js
@@ -4033,6 +4076,7 @@
 │       │   │   │   ├── compareLocations.js
 │       │   │   │   ├── computeLocationSearchTitle.js
 │       │   │   │   ├── computeOrganizationLocation.js
+│       │   │   │   ├── computeSiteName.js
 │       │   │   │   ├── contact_referrals.js
 │       │   │   │   ├── copyToClipboard.js
 │       │   │   │   ├── departements_in_resorption_phases.js
@@ -4044,6 +4088,7 @@
 │       │   │   │   ├── enrichUserWithLocationName.js
 │       │   │   │   ├── environment.js
 │       │   │   │   ├── escapeRegExp.js
+│       │   │   │   ├── excluded_roles.js
 │       │   │   │   ├── filterActions.js
 │       │   │   │   ├── filterMetrics.js
 │       │   │   │   ├── filterQuestions.js
@@ -4251,4 +4296,4 @@
 ├── scripts
 │   └── checkout.sh
 └── yarn.lock
-740 directories, 3863 files
+750 directories, 3898 files
