@@ -5,9 +5,11 @@
 │   └── workflows
 │       ├── build-api.yml
 │       ├── build-client.yml
+│       ├── deploy-storybook.yml
 │       ├── deploy-to-scalingo.yml
 │       ├── integration-checks.yml
 │       ├── migrate.yml
+│       ├── openapi.yml
 │       ├── release-production.yml
 │       ├── release-staging.yml
 │       ├── release.yml
@@ -461,16 +463,24 @@
 │   │   │   │   ├── shared
 │   │   │   │   │   ├── formation-to-member-role.ts
 │   │   │   │   │   ├── formation-to-user-title.ts
-│   │   │   │   │   └── mappers
-│   │   │   │   │       ├── formation.mapper.ts
-│   │   │   │   │       ├── gender-enum.mapper.ts
-│   │   │   │   │       ├── grade.mapper.ts
-│   │   │   │   │       ├── priorite.mapper.ts
-│   │   │   │   │       ├── rapport-statut.mapper.ts
-│   │   │   │   │       ├── report-file-usage.mapper.ts
-│   │   │   │   │       ├── role-enum.mapper.ts
-│   │   │   │   │       ├── statut-affectation.mapper.ts
-│   │   │   │   │       └── type-de-saisine-enum.mapper.ts
+│   │   │   │   │   ├── formation.enum.ts
+│   │   │   │   │   ├── gender.enum.ts
+│   │   │   │   │   ├── grade.enum.ts
+│   │   │   │   │   ├── mappers
+│   │   │   │   │   │   ├── formation.mapper.ts
+│   │   │   │   │   │   ├── gender-enum.mapper.ts
+│   │   │   │   │   │   ├── grade.mapper.ts
+│   │   │   │   │   │   ├── priorite.mapper.ts
+│   │   │   │   │   │   ├── rapport-statut.mapper.ts
+│   │   │   │   │   │   ├── report-file-usage.mapper.ts
+│   │   │   │   │   │   ├── role-enum.mapper.ts
+│   │   │   │   │   │   ├── statut-affectation.mapper.ts
+│   │   │   │   │   │   └── type-de-saisine-enum.mapper.ts
+│   │   │   │   │   ├── priority.enum.ts
+│   │   │   │   │   ├── report-file-usage.enum.ts
+│   │   │   │   │   ├── report-state.enum.ts
+│   │   │   │   │   ├── role.enum.ts
+│   │   │   │   │   └── type-de-saisine.enum.ts
 │   │   │   │   └── simple-auth
 │   │   │   │       ├── domain
 │   │   │   │       │   ├── auth-impersonation.ts
@@ -615,7 +625,11 @@
 │       ├── .oxlintrc.json
 │       ├── .storybook
 │       │   ├── main.ts
-│       │   └── preview.tsx
+│       │   ├── preview.tsx
+│       │   └── scalingo
+│       │       ├── .buildpacks
+│       │       ├── Procfile
+│       │       └── nginx.conf.erb
 │       ├── .vscode
 │       │   └── settings.json
 │       ├── README.md
@@ -763,10 +777,7 @@
 │       │   │   │   │       │   │   ├── magistrat-observations
 │       │   │   │   │       │   │   │   ├── MagistratObservations.stories.tsx
 │       │   │   │   │       │   │   │   ├── MagistratObservations.test.tsx
-│       │   │   │   │       │   │   │   ├── MagistratObservations.tsx
-│       │   │   │   │       │   │   │   ├── MagistratObservationsInbox.stories.tsx
-│       │   │   │   │       │   │   │   ├── MagistratObservationsInbox.test.tsx
-│       │   │   │   │       │   │   │   └── MagistratObservationsInbox.tsx
+│       │   │   │   │       │   │   │   └── MagistratObservations.tsx
 │       │   │   │   │       │   │   ├── magistrat-outcome
 │       │   │   │   │       │   │   │   ├── MagistratOutcome.stories.tsx
 │       │   │   │   │       │   │   │   ├── MagistratOutcome.tsx
@@ -808,11 +819,6 @@
 │       │   │   │   │       │   ├── OutcomeCommentModalContext.ts
 │       │   │   │   │       │   ├── nomination-file-outcome-badge.utils.ts
 │       │   │   │   │       │   └── nomination-file-outcome.utils.ts
-│       │   │   │   │       ├── observation-follow-up
-│       │   │   │   │       │   ├── ObservationFollowUpReminderContext.ts
-│       │   │   │   │       │   ├── ObservationFollowUpReminderModal.tsx
-│       │   │   │   │       │   ├── ObservationFollowUpReminderProvider.tsx
-│       │   │   │   │       │   └── useObservationFollowUpReminderModal.hook.ts
 │       │   │   │   │       ├── observations
 │       │   │   │   │       │   ├── MagistratCombobox.tsx
 │       │   │   │   │       │   ├── ObservantsCell.tsx
@@ -820,6 +826,7 @@
 │       │   │   │   │       │   ├── ObservationForm.test.tsx
 │       │   │   │   │       │   ├── ObservationForm.tsx
 │       │   │   │   │       │   ├── ObservationLinkableAttachments.tsx
+│       │   │   │   │       │   ├── ObservationsList.test.tsx
 │       │   │   │   │       │   ├── ObservationsList.tsx
 │       │   │   │   │       │   └── context
 │       │   │   │   │       │       ├── ObservationsModalContext.ts
@@ -1180,6 +1187,10 @@
 │       │   │       │   ├── Dropdown.test.tsx
 │       │   │       │   ├── Dropdown.tsx
 │       │   │       │   └── index.ts
+│       │   │       ├── expandable-text
+│       │   │       │   ├── ExpandableText.stories.tsx
+│       │   │       │   ├── ExpandableText.tsx
+│       │   │       │   └── index.ts
 │       │   │       ├── indeterminate-checkbox
 │       │   │       │   ├── IndeterminateCheckbox.css
 │       │   │       │   ├── IndeterminateCheckbox.tsx
@@ -1316,46 +1327,27 @@
 │       └── 2026-06-emploi-de-l-anglais.md
 ├── package.json
 ├── packages
-│   ├── lolfi
-│   │   ├── .gitignore
-│   │   ├── .oxlintrc.json
-│   │   ├── package.json
-│   │   ├── src
-│   │   │   ├── generate-lolfi-archive.ts
-│   │   │   ├── generate-lolfi-files.ts
-│   │   │   ├── grade-to-number.ts
-│   │   │   ├── index.ts
-│   │   │   └── types.ts
-│   │   ├── test
-│   │   │   ├── lolfi.test.ts
-│   │   │   └── lolfi.test.ts.snapshot
-│   │   ├── tsconfig.build.json
-│   │   └── tsconfig.json
-│   └── shared-models
+│   └── lolfi
 │       ├── .gitignore
 │       ├── .oxlintrc.json
-│       ├── .vscode
-│       │   └── settings.json
-│       ├── models
-│       │   ├── date.ts
-│       │   ├── gender.ts
-│       │   ├── index.ts
-│       │   ├── magistrat.namespace.ts
-│       │   ├── nomination-file.namespace.ts
-│       │   ├── nomination-file.ts
-│       │   ├── priorite.enum.ts
-│       │   ├── report-file-usage.enum.ts
-│       │   ├── role.ts
-│       │   ├── transparency.enum.ts
-│       │   └── type-de-saisine.enum.ts
 │       ├── package.json
+│       ├── src
+│       │   ├── generate-lolfi-archive.ts
+│       │   ├── generate-lolfi-files.ts
+│       │   ├── grade-to-number.ts
+│       │   ├── index.ts
+│       │   └── types.ts
+│       ├── test
+│       │   ├── lolfi.test.ts
+│       │   └── lolfi.test.ts.snapshot
+│       ├── tsconfig.build.json
 │       └── tsconfig.json
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 ├── renovate.json
 ├── scripts
-│   ├── changelog.js
-│   └── sheetjs.sh
+│   └── changelog.js
 └── vendor
-    └── .gitkeep
-285 directories, 1075 files
+    ├── .gitkeep
+    └── xlsx-0.20.3.tgz
+283 directories, 1069 files
