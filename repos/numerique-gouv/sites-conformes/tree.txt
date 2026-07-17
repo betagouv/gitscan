@@ -6,16 +6,22 @@
 ├── .git-blame-ignore-revs
 ├── .github
 │   ├── PULL_REQUEST_TEMPLATE
+│   ├── actions
+│   │   └── setup-e2e
+│   │       └── action.yml
 │   └── workflows
+│       ├── _e2e.yml
 │       ├── cd-docker.yml
 │       ├── ci-check-i18n.yml
 │       ├── ci-check-migrations.yml
+│       ├── ci-e2e.yml
 │       ├── ci-main.yml
 │       ├── ci-quality.yml
 │       ├── docs.yml
 │       ├── publiccode-yml-validation.yml
 │       ├── publiccodeyml-check.yml
-│       └── publish.yml
+│       ├── publish.yml
+│       └── validate-notifications.yml
 ├── .gitignore
 ├── .locales
 ├── .pre-commit-config.yaml
@@ -26,6 +32,7 @@
 ├── DOD.md
 ├── Dockerfile
 ├── LICENSE
+├── NOTIFICATIONS.md
 ├── ONBOARDING.md
 ├── Procfile
 ├── README.md
@@ -117,11 +124,17 @@
 │   │   └── installation.md
 │   ├── index.md
 │   └── requirements.txt
+├── e2e
+│   ├── fixtures.ts
+│   └── homepage.spec.ts
 ├── entrypoint.sh
 ├── justfile
 ├── manage.py
+├── notifications.json
+├── notifications.schema.json
 ├── package-lock.json
 ├── package.json
+├── playwright.config.ts
 ├── publiccode.yml
 ├── pyproject.toml
 ├── scalingo.json
@@ -216,6 +229,7 @@
 │   │   │   ├── 0059_blogentrypage_exclude_from_sitemap_and_more.py
 │   │   │   ├── 0060_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
 │   │   │   ├── 0061_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
+│   │   │   ├── 0062_alter_blogentrypage_body_alter_blogindexpage_body.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── templates
@@ -354,8 +368,10 @@
 │   │   │   ├── 0076_cmsdsfrconfig_language_selector_mode_and_more.py
 │   │   │   ├── 0077_alter_catalogindexpage_body_alter_contentpage_body.py
 │   │   │   ├── 0078_alter_catalogindexpage_body_alter_contentpage_body.py
+│   │   │   ├── 0079_alter_catalogindexpage_body_alter_contentpage_body.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
+│   │   ├── monkey_patches.py
 │   │   ├── page_templates
 │   │   │   ├── img
 │   │   │   │   ├── Design_sans_titre.png
@@ -472,6 +488,7 @@
 │   │   │   ├── test_search.py
 │   │   │   ├── test_services_accessors.py
 │   │   │   ├── test_services_import_export.py
+│   │   │   ├── test_translation.py
 │   │   │   ├── test_utils.py
 │   │   │   ├── test_views.py
 │   │   │   └── test_wagtail_dsfr_tags.py
@@ -491,9 +508,13 @@
 │   │   │           └── django.po
 │   │   ├── migrations
 │   │   │   └── __init__.py
+│   │   ├── notifications.py
 │   │   ├── templates
 │   │   │   ├── admin_icons
 │   │   │   │   └── anchor.svg
+│   │   │   ├── sites_conformes_admin
+│   │   │   │   └── panels
+│   │   │   │       └── _notifications.html
 │   │   │   └── wagtailadmin
 │   │   │       ├── account
 │   │   │       │   └── password_reset
@@ -513,6 +534,7 @@
 │   │   │           └── base.html
 │   │   ├── tests
 │   │   │   ├── __init__.py
+│   │   │   ├── test_notifications.py
 │   │   │   └── test_views.py
 │   │   ├── views.py
 │   │   └── wagtail_hooks.py
@@ -587,6 +609,7 @@
 │   │   │   ├── 0031_evententrypage_exclude_from_sitemap_and_more.py
 │   │   │   ├── 0032_alter_evententrypage_body_alter_eventsindexpage_body.py
 │   │   │   ├── 0033_alter_evententrypage_body_alter_eventsindexpage_body.py
+│   │   │   ├── 0034_alter_evententrypage_body_alter_eventsindexpage_body.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── static
@@ -843,4 +866,4 @@
 │   └── utils
 │       └── __init__.py
 └── uv.lock
-142 directories, 703 files
+147 directories, 721 files
