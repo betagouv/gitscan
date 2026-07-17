@@ -1,22 +1,24 @@
-## Changelog : rapportnav2 (30 derniers jours, au 09 juillet 2026)
+## Changelog : rapportnav2 (30 derniers jours, au 2026-07-16)
 
 ### Résumé
-Cette version apporte des améliorations significatives à l'interface de gestion des équipages de mission (PAM), notamment une refonte de l'interface utilisateur. De plus, la gestion des pays a été améliorée avec l'intégration d'une source de données via API. Plusieurs corrections de bugs et optimisations de performance ont également été implémentées, notamment concernant l'affichage et la gestion des infractions et des contrôles.
+Les dernières mises à jour de rapportnav2 améliorent significativement la gestion des missions, notamment au niveau de l'interface utilisateur pour les équipages et les contrôles "Fish". Des optimisations de performance ont été apportées pour accélérer le traitement des données, et la gestion des pays a été revue pour s'appuyer sur une source de données externe. Plusieurs corrections de bugs ont également été implémentées pour améliorer la stabilité et la fiabilité de l'application.
 
 ### Évolutions fonctionnelles
-- Refonte de l'interface utilisateur pour la gestion des équipages de mission (PAM) [#1436](https://github.com/MTES-MCT/rapportnav2/issues/1436).
-- Intégration d'une source de données pays via API, permettant une gestion plus dynamique et à jour des pays [#1441](https://github.com/MTES-MCT/rapportnav2/issues/1441).
-- Amélioration de l'affichage des contrôles et infractions, avec l'implémentation d'un système d'onglets pour une meilleure organisation [#1343](https://github.com/MTES-MCT/rapportnav2/issues/1343).
-- Ajout de deux nouveaux attributs à ActionFish.
-- Correction de l'ordre des options dans les MultiRadio de Fish [#1033](https://github.com/MTES-MCT/rapportnav2/issues/1033).
+- Refonte de l'interface utilisateur pour la gestion des équipages de mission (PAM).
+- Intégration d'une source de données externe pour la gestion des pays.
+- Ajout de deux attributs à ActionFish pour une meilleure gestion des actions.
+- Implémentation d'onglets pour les contrôles "Fish", améliorant l'organisation et l'accessibilité.
+- Harmonisation de l'affichage des infractions.
+- Amélioration de l'affichage des cibles (targets) pour Sati.
+- Correction de l'ordre des options dans les radios multiples (MultiRadio) pour Fish [#1033](https://github.com/MTES-MCT/rapportnav2/issues/1033).
 
 ### Évolutions techniques
-- Optimisation des performances lors du calcul du statut des actions, en utilisant les données en mémoire plutôt que de requêter la base de données à chaque fois.
-- Amélioration des performances des requêtes sur les infractions et les contrôles grâce à l'utilisation de `@BatchSize`.
+- Optimisation des performances en réduisant les requêtes à la base de données pour le calcul du statut des actions et en utilisant le batch processing pour les infractions et les contrôles.
 - Mise à jour de Spring Boot vers la version 4.1.0.
+- Correction de bugs liés à la suppression d'infractions sur les contrôles Fish [#1461](https://github.com/MTES-MCT/rapportnav2/issues/1461).
+- Correction de bugs liés à la duplication d'informations générales et de cibles.
+- Correction de problèmes de validation des règles.
 
 ### Autres changements
-- Correction de règles de validation.
-- Prévention de la duplication d'informations générales et de cibles.
-- Correction de bugs mineurs et ajustements de l'interface utilisateur.
-- Suppression d'une dépendance obsolète (npm audit).
+- Mise à jour des dépendances (npm audit).
+- Préparation de la publication des versions v2.86.0, v2.86.1 et v2.86.2.
