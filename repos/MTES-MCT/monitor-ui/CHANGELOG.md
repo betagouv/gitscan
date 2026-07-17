@@ -1,3 +1,48 @@
+## [24.55.6](https://github.com/MTES-MCT/monitor-ui/compare/v24.55.5...v24.55.6) (2026-07-08)
+
+### Bug Fixes
+
+* **components:** modify internal padding ([2ba134b](https://github.com/MTES-MCT/monitor-ui/commit/2ba134bf27379d6168171037432baf7c60354398))
+
+## [24.55.5](https://github.com/MTES-MCT/monitor-ui/compare/v24.55.4...v24.55.5) (2026-07-06)
+
+### Bug Fixes
+
+* **components:** do not upload if mode != mime type ([a335ecf](https://github.com/MTES-MCT/monitor-ui/commit/a335ecfc76bc7296cc791707b2f19706625de247))
+
+## [24.55.4](https://github.com/MTES-MCT/monitor-ui/compare/v24.55.3...v24.55.4) (2026-07-02)
+
+### Bug Fixes
+
+* **components:** export types ([de4c952](https://github.com/MTES-MCT/monitor-ui/commit/de4c95252f19893030a1a6ce4923121f1c4ec8ea))
+
+## [24.55.3](https://github.com/MTES-MCT/monitor-ui/compare/v24.55.2...v24.55.3) (2026-07-01)
+
+### Bug Fixes
+
+* **components:** export convertImagesToThumbnails ([bf1519d](https://github.com/MTES-MCT/monitor-ui/commit/bf1519db24be1f58d15750c7830b19926ace06c3))
+
+## [24.55.2](https://github.com/MTES-MCT/monitor-ui/compare/v24.55.1...v24.55.2) (2026-07-01)
+
+### Bug Fixes
+
+* **components:** remove wrapper padding and export hook ([9796ab6](https://github.com/MTES-MCT/monitor-ui/commit/9796ab60f61ff0ca1252d088fc911ffc0b55b037))
+
+## [24.55.1](https://github.com/MTES-MCT/monitor-ui/compare/v24.55.0...v24.55.1) (2026-07-01)
+
+### Bug Fixes
+
+* **components:** change padding and add classname to overrided default style ([5a4ac95](https://github.com/MTES-MCT/monitor-ui/commit/5a4ac95638994adc995d7a06cd52a838822741cc))
+
+## [24.55.0](https://github.com/MTES-MCT/monitor-ui/compare/v24.54.0...v24.55.0) (2026-07-01)
+
+### Features
+
+* **components:** add ellipsis to file name and clean up ([2c6559f](https://github.com/MTES-MCT/monitor-ui/commit/2c6559f268705aa126a4e34a31a92ec44a3d246c))
+* **components:** create FileUploader component ([61865ba](https://github.com/MTES-MCT/monitor-ui/commit/61865ba91afb4e4559bd2c01264e37b8e8947853))
+* **components:** fix delete by index. clean Thumbnail type ([3b36bd5](https://github.com/MTES-MCT/monitor-ui/commit/3b36bd53e79af1b7b61e57307339a5651834a52e))
+* **icons:** add Attachment.svg ([2a11112](https://github.com/MTES-MCT/monitor-ui/commit/2a111124d00120436ff18521ce4e711ff7bde63a))
+
 ## [24.54.0](https://github.com/MTES-MCT/monitor-ui/compare/v24.53.0...v24.54.0) (2026-06-23)
 
 ### Features
