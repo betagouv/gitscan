@@ -1,4 +1,19 @@
 .
+├── .adonisjs
+│   ├── client
+│   │   ├── data.d.ts
+│   │   ├── manifest.d.ts
+│   │   └── registry
+│   │       ├── index.ts
+│   │       ├── schema.d.ts
+│   │       └── tree.d.ts
+│   └── server
+│       ├── controllers.ts
+│       ├── events.ts
+│       ├── listeners.ts
+│       ├── pages.d.ts
+│       ├── policies.ts
+│       └── routes.d.ts
 ├── .editorconfig
 ├── .env.example
 ├── .env.test
@@ -9,6 +24,7 @@
 ├── .husky
 │   ├── pre-commit
 │   └── pre-push
+├── .prettierignore
 ├── .storybook
 │   ├── decorators.tsx
 │   ├── inertia-mock.tsx
@@ -51,6 +67,7 @@
 │   │   ├── auth_middleware.ts
 │   │   ├── container_bindings_middleware.ts
 │   │   ├── guest_middleware.ts
+│   │   ├── inertia_middleware.ts
 │   │   ├── initialize_bouncer_middleware.ts
 │   │   ├── silent_auth_middleware.ts
 │   │   └── territoire_assignation_middleware.ts
@@ -66,6 +83,7 @@
 │   │   ├── log_entry_document.ts
 │   │   ├── log_entry_tag.ts
 │   │   ├── parcelle.ts
+│   │   ├── parcelle_comment.ts
 │   │   ├── project.ts
 │   │   ├── project_step.ts
 │   │   ├── project_step_document.ts
@@ -88,6 +106,7 @@
 │   │   ├── log_entry_document_service.ts
 │   │   ├── log_entry_service.ts
 │   │   ├── log_entry_tag_service.ts
+│   │   ├── parcelle_comment_service.ts
 │   │   ├── parcelle_csv_service.ts
 │   │   ├── parcelle_service.ts
 │   │   ├── project_service.ts
@@ -96,6 +115,8 @@
 │   │   ├── project_step_tag_service.ts
 │   │   ├── territoire_service.ts
 │   │   └── user_service.ts
+│   ├── transformers
+│   │   └── user_transformer.ts
 │   └── validators
 │       ├── aac.ts
 │       ├── create_exploitation.ts
@@ -121,6 +142,7 @@
 │   ├── cors.ts
 │   ├── database.ts
 │   ├── drive.ts
+│   ├── encryption.ts
 │   ├── hash.ts
 │   ├── inertia.ts
 │   ├── logger.ts
@@ -129,9 +151,6 @@
 │   ├── static.ts
 │   └── vite.ts
 ├── database
-│   ├── data
-│   │   ├── codes_NAF.json
-│   │   └── cultures.json
 │   ├── factories
 │   │   ├── captage_factory.ts
 │   │   ├── contact_factory.ts
@@ -139,6 +158,7 @@
 │   │   ├── exploitation_tag_factory.ts
 │   │   ├── log_entry_factory.ts
 │   │   ├── log_entry_tag_factory.ts
+│   │   ├── parcelle_comment_factory.ts
 │   │   ├── parcelle_factory.ts
 │   │   ├── project_factory.ts
 │   │   ├── project_step_factory.ts
@@ -194,7 +214,11 @@
 │   │   ├── 1775000000005_create_project_step_tags_table.ts
 │   │   ├── 1775000000006_create_project_steps_table.ts
 │   │   ├── 1775000000007_create_project_step_documents_table.ts
-│   │   └── 1775000000008_create_project_step_tag_relations_table.ts
+│   │   ├── 1775000000008_create_project_step_tag_relations_table.ts
+│   │   ├── 1784134967638_create_parcelle_comments_table.ts
+│   │   ├── 1784134967639_backfill_parcelle_comments_data.ts
+│   │   └── 1784134967640_alter_parcelles_drop_comment.ts
+│   ├── schema.ts
 │   └── seeders
 │       ├── 1_user_seeder.ts
 │       ├── 2_exploitation_seeder.ts
@@ -209,9 +233,8 @@
 │   └── scripts.md
 ├── eslint.config.js
 ├── inertia
-│   ├── app
-│   │   ├── app.tsx
-│   │   └── ssr.tsx
+│   ├── app.tsx
+│   ├── client.ts
 │   ├── components
 │   │   ├── aac-id
 │   │   │   ├── AacActionCard.tsx
@@ -227,7 +250,6 @@
 │   │   │   ├── aac-left-sidebar.tsx
 │   │   │   ├── aacs-left-sidebar.tsx
 │   │   │   └── aacs-search.tsx
-│   │   ├── analyses-section.tsx
 │   │   ├── authentification-bloc.tsx
 │   │   ├── captage
 │   │   │   ├── captage-analyses-header.tsx
@@ -314,17 +336,22 @@
 │   │   ├── search-adresse.tsx
 │   │   ├── search-autocomplete.tsx
 │   │   ├── search-raison-sociale.tsx
+│   │   ├── signal-error-contact.tsx
 │   │   ├── visualisation-exploitation-general.tsx
 │   │   ├── visualisation-exploitation-infos.tsx
 │   │   ├── visualisation-left-side-bar.tsx
 │   │   └── visualisation-right-side-bar.tsx
 │   ├── css
 │   │   └── app.css
+│   ├── data
+│   │   ├── codes_NAF.json
+│   │   └── cultures.json
 │   ├── functions
 │   │   ├── colors.ts
 │   │   ├── contacts.ts
 │   │   ├── cultures-group.tsx
 │   │   ├── date.ts
+│   │   ├── flash_messages.tsx
 │   │   ├── log_entries.ts
 │   │   ├── map.ts
 │   │   ├── project_steps.ts
@@ -370,6 +397,7 @@
 │   │   ├── territoires
 │   │   │   └── index.tsx
 │   │   └── visualisation.tsx
+│   ├── ssr.tsx
 │   ├── tsconfig.json
 │   ├── ui
 │   │   ├── AlertDrawer
@@ -575,8 +603,6 @@
 │   └── unit
 │       ├── aac
 │       │   └── aac_csv_service.spec.ts
-│       ├── contact
-│       │   └── contact.spec.ts
 │       ├── exploitation
 │       │   ├── exploitation.spec.ts
 │       │   ├── exploitation_csv_service.spec.ts
@@ -596,6 +622,7 @@
 │       │   └── project_step_tag_service.spec.ts
 │       └── territoire
 │           └── territoire_service.spec.ts
+├── tsconfig.inertia.json
 ├── tsconfig.json
 ├── types
 │   ├── aac.ts
@@ -605,4 +632,4 @@
 ├── vite.config.ts
 ├── vitest.config.ts
 └── vitest.shims.d.ts
-116 directories, 491 files
+119 directories, 515 files
