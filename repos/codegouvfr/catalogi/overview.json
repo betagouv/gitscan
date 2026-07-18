@@ -1,22 +1,22 @@
 {
   "url": "https://github.com/codegouvfr/catalogi",
   "name": "catalogi",
-  "description": "Application de catalogue logiciel. Permet de gérer et de consulter des informations sur différents logiciels, notamment pour l'administration française.",
+  "description": "Application de catalogue logiciel. Permet de gérer des catalogues de logiciels, notamment pour l'administration française.",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
+    "Authentification & Accès",
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
-    "Sécurité & Conformité",
-    "Données & Schémas"
+    "Visualisation de données & Cartographie",
+    "Notifications & Alertes"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "React",
-    "Express",
     "PostgreSQL",
-    "Docker"
+    "Docker",
+    "Keycloak"
   ],
   "components": [
     "API REST & GraphQL",
@@ -27,26 +27,29 @@
   ],
   "auth": {
     "methods": [
-      "oauth2"
+      "oauth2",
+      "saml"
+    ],
+    "providers": [
+      "Keycloak"
     ]
   },
   "tests": [
-    "Jest",
     "Playwright",
-    "Cypress"
+    "Jest"
   ],
   "workflows": [
     "CI/CD"
   ],
-  "lastActivity": "2026-06-18T14:51:26+02:00",
+  "lastActivity": "2026-06-18T12:51:31+02:00",
   "status": "active",
-  "license": "MIT",
+  "license": null,
   "hasDocumentation": true,
   "metrics": {
-    "stars": null,
-    "forks": null,
+    "stars": 40,
+    "forks": 11,
     "contributors": null,
-    "openIssues": null
+    "openIssues": 86
   },
   "tags": [
     "Données & Open Data",
