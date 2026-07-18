@@ -173,6 +173,7 @@
 │   │   │   │   └── setupUtilisateur.ts
 │   │   │   └── tsconfig.json
 │   │   ├── cli
+│   │   │   ├── .gitignore
 │   │   │   ├── bin
 │   │   │   │   ├── dev.js
 │   │   │   │   └── run.js
@@ -183,6 +184,7 @@
 │   │   │   │   │   │   └── relancer-abandon-sans-preuve.ts
 │   │   │   │   │   ├── achèvement
 │   │   │   │   │   │   ├── rendre-stream-cohérent.ts
+│   │   │   │   │   │   ├── transmission-date-achevement-reel-edf-oa.ts
 │   │   │   │   │   │   └── vérifier-données.ts
 │   │   │   │   │   ├── candidature
 │   │   │   │   │   │   ├── importer-dossier.ts
@@ -813,6 +815,7 @@
 │   │   │   │       │   │   │   ├── attestationConformitéEnregistrée.projector.ts
 │   │   │   │       │   │   │   ├── attestationConformitéModifiée.projector.ts
 │   │   │   │       │   │   │   └── attestationConformitéTransmise.projector.ts
+│   │   │   │       │   │   ├── dateAchèvementCorrigée.projector.ts
 │   │   │   │       │   │   ├── dateAchèvementPrévisionnelCalculéeProjector.ts
 │   │   │   │       │   │   ├── dateAchèvementTransmise.projector.ts
 │   │   │   │       │   │   └── index.ts
@@ -1519,6 +1522,7 @@
 │   │   │   │   │   │   │   │   │   │   ├── mapToAttestationConformitéEnregistréeTimelineItemProps.tsx
 │   │   │   │   │   │   │   │   │   │   ├── mapToAttestationConformitéModifiéeTimelineItemProps.tsx
 │   │   │   │   │   │   │   │   │   │   ├── mapToAttestationConformitéTransmiseTimelineItemProps.tsx
+│   │   │   │   │   │   │   │   │   │   ├── mapToDateAchèvementCorrigéeTimelineItemProps.tsx
 │   │   │   │   │   │   │   │   │   │   ├── mapToDateAchèvementPrévisionnelCalculéeProps.tsx
 │   │   │   │   │   │   │   │   │   │   └── mapToDateAchèvementTransmiseTimelineItemProps.tsx
 │   │   │   │   │   │   │   │   │   └── mapToAchèvementTimelineItemProps.tsx
@@ -1982,17 +1986,6 @@
 │   │   │   │   │   │   │   │   │   │   │       ├── ModifierDemandeComplèteRaccordement.page.tsx
 │   │   │   │   │   │   │   │   │   │   │       ├── modifierDemandeComplèteRaccordement.action.ts
 │   │   │   │   │   │   │   │   │   │   │       └── page.tsx
-│   │   │   │   │   │   │   │   │   │   ├── (proposition-technique-et-financière)
-│   │   │   │   │   │   │   │   │   │   │   ├── proposition-technique-et-financiere:modifier
-│   │   │   │   │   │   │   │   │   │   │   │   ├── ModifierPropositionTechniqueEtFinancière.form.tsx
-│   │   │   │   │   │   │   │   │   │   │   │   ├── ModifierPropositionTechniqueEtFinancière.page.tsx
-│   │   │   │   │   │   │   │   │   │   │   │   ├── modifierPropositionTechniqueEtFinancière.action.ts
-│   │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │   │   │   └── proposition-technique-et-financiere:transmettre
-│   │   │   │   │   │   │   │   │   │   │       ├── TransmettrePropositionTechniqueEtFinancière.form.tsx
-│   │   │   │   │   │   │   │   │   │   │       ├── TransmettrePropositionTechniqueEtFinancière.page.tsx
-│   │   │   │   │   │   │   │   │   │   │       ├── page.tsx
-│   │   │   │   │   │   │   │   │   │   │       └── transmettrePropositionTechniqueEtFinancière.action.ts
 │   │   │   │   │   │   │   │   │   │   ├── date-mise-en-service
 │   │   │   │   │   │   │   │   │   │   │   ├── DateMiseEnService.form.tsx
 │   │   │   │   │   │   │   │   │   │   │   ├── modifier
@@ -2006,6 +1999,21 @@
 │   │   │   │   │   │   │   │   │   │   │       ├── TransmettreDateMiseEnService.page.tsx
 │   │   │   │   │   │   │   │   │   │   │       ├── page.tsx
 │   │   │   │   │   │   │   │   │   │   │       └── transmettreDateMiseEnService.action.ts
+│   │   │   │   │   │   │   │   │   │   ├── document
+│   │   │   │   │   │   │   │   │   │   │   ├── [type]
+│   │   │   │   │   │   │   │   │   │   │   │   ├── modifier
+│   │   │   │   │   │   │   │   │   │   │   │   │   ├── ModifierDocument.form.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   │   ├── ModifierDocument.page.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   │   ├── modifierDocument.action.ts
+│   │   │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   └── supprimer
+│   │   │   │   │   │   │   │   │   │   │   │       ├── SupprimerDocument.form.tsx
+│   │   │   │   │   │   │   │   │   │   │   │       └── supprimerDocument.action.ts
+│   │   │   │   │   │   │   │   │   │   │   └── transmettre
+│   │   │   │   │   │   │   │   │   │   │       ├── TransmettreDocument.form.tsx
+│   │   │   │   │   │   │   │   │   │   │       ├── TransmettreDocument.page.tsx
+│   │   │   │   │   │   │   │   │   │   │       ├── page.tsx
+│   │   │   │   │   │   │   │   │   │   │       └── transmettreDocument.action.ts
 │   │   │   │   │   │   │   │   │   │   └── reference:corriger
 │   │   │   │   │   │   │   │   │   │       ├── CorrigerRéférenceDossier.form.tsx
 │   │   │   │   │   │   │   │   │   │       ├── CorrigerRéférenceDossier.page.tsx
@@ -2015,6 +2023,7 @@
 │   │   │   │   │   │   │   │   │   │   ├── AucunDossierDeRaccordementAlert.tsx
 │   │   │   │   │   │   │   │   │   │   ├── DossierRaccordement.tsx
 │   │   │   │   │   │   │   │   │   │   ├── FormatFichierInvalide.tsx
+│   │   │   │   │   │   │   │   │   │   ├── TransmettreModifierDocumentAlert.tsx
 │   │   │   │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   │   │   │   └── demande-complete-raccordement:transmettre
 │   │   │   │   │   │   │   │   │       ├── TransmettreDemandeComplèteRaccordement.form.tsx
@@ -2029,15 +2038,20 @@
 │   │   │   │   │   │   │   │   │   │   │   │   ├── mapToDateMiseEnServiceModifiéeTimelineItemProps.tsx
 │   │   │   │   │   │   │   │   │   │   │   │   ├── mapToDateMiseEnServiceSuppriméeTimelineItemProps.tsx
 │   │   │   │   │   │   │   │   │   │   │   │   └── mapToDateMiseEnServiceTransmiseTimelineItemProps.tsx
-│   │   │   │   │   │   │   │   │   │   │   ├── dcr
+│   │   │   │   │   │   │   │   │   │   │   ├── demande-complète-de-raccordement
 │   │   │   │   │   │   │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   │   │   │   │   │   │   ├── mapToAccuséRéceptionDemandeComplèteRaccordementTransmisTimelineItemProps.tsx
 │   │   │   │   │   │   │   │   │   │   │   │   ├── mapToDemandeComplèteDeRaccordementTransmiseTimelineItemProps.tsx
 │   │   │   │   │   │   │   │   │   │   │   │   └── mapToDemandeComplèteRaccordementModifiéeTimelineItemProps.tsx
+│   │   │   │   │   │   │   │   │   │   │   ├── document
+│   │   │   │   │   │   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   │   │   │   │   │   ├── mapToDocumentModifiéTimelineItemProps.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   ├── mapToDocumentSuppriméTimelineItemProps.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   └── mapToDocumentTransmisTimelineItemProps.tsx
 │   │   │   │   │   │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   │   │   │   │   │   ├── mapToDossierRaccordementSuppriméTimelineItemProps.tsx
 │   │   │   │   │   │   │   │   │   │   │   ├── mapToRéférenceDossierRacordementModifiéeTimelineItemProps.tsx
-│   │   │   │   │   │   │   │   │   │   │   └── ptf
+│   │   │   │   │   │   │   │   │   │   │   └── proposition-technique-et-financière
 │   │   │   │   │   │   │   │   │   │   │       ├── index.ts
 │   │   │   │   │   │   │   │   │   │   │       ├── mapToPropositionTechniqueEtFinancièreModifiéeTimelineItemProps.tsx
 │   │   │   │   │   │   │   │   │   │   │       └── mapToPropositionTechniqueEtFinancièreTransmiseTimelineItemProps.tsx
@@ -2054,10 +2068,10 @@
 │   │   │   │   │   │   │   │   │   │   ├── GestionnaireRéseau.section.tsx
 │   │   │   │   │   │   │   │   │   │   ├── ModifierGestionnaireRéseauDuRaccordement.tsx
 │   │   │   │   │   │   │   │   │   │   ├── _helpers
-│   │   │   │   │   │   │   │   │   │   │   ├── getDemandeComplèteDeRaccordementAction.ts
+│   │   │   │   │   │   │   │   │   │   │   ├── getDemandeComplèteDeRaccordementActions.ts
+│   │   │   │   │   │   │   │   │   │   │   ├── getDocumentActions.ts
 │   │   │   │   │   │   │   │   │   │   │   ├── getGestionnaireRéseauAction.ts
 │   │   │   │   │   │   │   │   │   │   │   ├── getMiseEnServiceAction.ts
-│   │   │   │   │   │   │   │   │   │   │   ├── getPropositionTechniqueEtFinancièreAction.ts
 │   │   │   │   │   │   │   │   │   │   │   ├── getSupprimerDossierAction.ts
 │   │   │   │   │   │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   │   │   │   │   │   └── vérifierStatutDuProjetPourModification.ts
@@ -2866,6 +2880,11 @@
 │   │   │   │   │   │   │   └── calculerDateAchèvementPrévisionnel.option.ts
 │   │   │   │   │   │   ├── consulter
 │   │   │   │   │   │   │   └── consulterAchèvement.query.ts
+│   │   │   │   │   │   ├── corriger
+│   │   │   │   │   │   │   ├── corrigerDateAchèvement.command.ts
+│   │   │   │   │   │   │   ├── corrigerDateAchèvement.event.ts
+│   │   │   │   │   │   │   ├── corrigerDateAchèvement.option.ts
+│   │   │   │   │   │   │   └── corrigerDateAchèvement.usecase.ts
 │   │   │   │   │   │   ├── dateAchèvementPrévisionnel.valueType.ts
 │   │   │   │   │   │   ├── documentAchèvement.valueType.ts
 │   │   │   │   │   │   ├── enregistrer
@@ -3444,7 +3463,9 @@
 │   │   │   │   │   │   │   ├── consulterGestionnaireRéseauRaccordement.query.ts
 │   │   │   │   │   │   │   ├── consulterNombreRaccordement.ts
 │   │   │   │   │   │   │   └── consulterRaccordement.query.ts
-│   │   │   │   │   │   ├── document-raccordement
+│   │   │   │   │   │   ├── document
+│   │   │   │   │   │   │   ├── consulter
+│   │   │   │   │   │   │   │   └── consulterDocument.query.ts
 │   │   │   │   │   │   │   ├── documentRaccordement.valueType.ts
 │   │   │   │   │   │   │   ├── modifier
 │   │   │   │   │   │   │   │   ├── modifierDocumentRaccordement.command.ts
@@ -3481,10 +3502,6 @@
 │   │   │   │   │   │   │   │   ├── modifierGestionnaireRéseau.options.ts
 │   │   │   │   │   │   │   │   ├── modifierGestionnaireRéseauRaccordement.command.ts
 │   │   │   │   │   │   │   │   └── modifierGestionnaireRéseauRaccordement.usecase.ts
-│   │   │   │   │   │   │   ├── propositionTechniqueEtFinancière
-│   │   │   │   │   │   │   │   ├── modifierPropositionTechniqueEtFinancière.command.ts
-│   │   │   │   │   │   │   │   ├── modifierPropositionTechniqueEtFinancière.options.ts
-│   │   │   │   │   │   │   │   └── modifierPropositionTechniqueEtFinancière.usecase.ts
 │   │   │   │   │   │   │   └── référenceDossierRaccordement
 │   │   │   │   │   │   │       ├── modifierRéférenceDossierRaccordement.command.ts
 │   │   │   │   │   │   │       ├── modifierRéférenceDossierRaccordement.options.ts
@@ -3516,14 +3533,10 @@
 │   │   │   │   │   │   │   │   ├── transmettreDateMiseEnService.command.ts
 │   │   │   │   │   │   │   │   ├── transmettreDateMiseEnService.options.ts
 │   │   │   │   │   │   │   │   └── transmettreDateMiseEnService.usecase.ts
-│   │   │   │   │   │   │   ├── demandeComplèteDeRaccordement
-│   │   │   │   │   │   │   │   ├── transmettreDemandeComplèteRaccordement.command.ts
-│   │   │   │   │   │   │   │   ├── transmettreDemandeComplèteRaccordement.options.ts
-│   │   │   │   │   │   │   │   └── transmettreDemandeComplèteRaccordement.usecase.ts
-│   │   │   │   │   │   │   └── propositionTechniqueEtFinancière
-│   │   │   │   │   │   │       ├── transmettrePropositionTechniqueEtFinancière.command.ts
-│   │   │   │   │   │   │       ├── transmettrePropositionTechniqueEtFinancière.options.ts
-│   │   │   │   │   │   │       └── transmettrePropositionTechniqueEtFinancière.usecase.ts
+│   │   │   │   │   │   │   └── demandeComplèteDeRaccordement
+│   │   │   │   │   │   │       ├── transmettreDemandeComplèteRaccordement.command.ts
+│   │   │   │   │   │   │       ├── transmettreDemandeComplèteRaccordement.options.ts
+│   │   │   │   │   │   │       └── transmettreDemandeComplèteRaccordement.usecase.ts
 │   │   │   │   │   │   └── typeTâchePlanifiéeRaccordement.valueType.ts
 │   │   │   │   │   ├── représentantLégal
 │   │   │   │   │   │   ├── changement
@@ -4243,9 +4256,11 @@
 │   │   │   │   │   ├── achèvement
 │   │   │   │   │   │   ├── achèvement.world.ts
 │   │   │   │   │   │   ├── calculerDateAchèvementPrévisionnel.feature
+│   │   │   │   │   │   ├── corrigerDateAchèvement.feature
 │   │   │   │   │   │   ├── enregistrerAttestationConformité.feature
 │   │   │   │   │   │   ├── fixture
 │   │   │   │   │   │   │   ├── calculerDateAchèvementPrévisionnel.fixture.ts
+│   │   │   │   │   │   │   ├── corrigerDateAchèvement.fixture.ts
 │   │   │   │   │   │   │   ├── enregistrerAttestationConformité.fixture.ts
 │   │   │   │   │   │   │   ├── modifierAchèvement.fixture.ts
 │   │   │   │   │   │   │   ├── modifierAttestationConformité.fixture.ts
@@ -4684,4 +4699,4 @@
 ├── scalingo.json
 ├── turbo.json
 └── update-ts-references.yaml
-1136 directories, 3550 files
+1139 directories, 3562 files
