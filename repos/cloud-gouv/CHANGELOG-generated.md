@@ -1,23 +1,22 @@
 # Synthèse d'activité : cloud-gouv (du 24 avril au 09 juillet 2026)
 
 ## Résumé de l'activité
-L'organisation cloud-gouv a connu une activité soutenue ces dernières semaines, avec des améliorations significatives apportées à plusieurs projets clés. Les efforts se sont concentrés sur la sécurité, notamment avec des mises à jour de dépendances dans [openbao](/repos/cloud-gouv/openbao) pour corriger des vulnérabilités. Des améliorations ont également été apportées à l'expérience utilisateur et à la gestion des infrastructures, avec des mises à jour de [portail](/repos/cloud-gouv/portail) pour un logging structuré et une gestion dynamique des backends, et des corrections pour assurer la compatibilité de [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts) avec les dernières versions de Cluster API.  [securix](/repos/cloud-gouv/securix) a bénéficié d'améliorations de localisation et de corrections de bugs liés à la sécurité.
+L'activité récente de l'organisation cloud-gouv s'est concentrée sur l'amélioration de la sécurité, de l'observabilité et de la stabilité de ses différents projets. Des corrections de vulnérabilités ont été apportées à [openbao](/repos/cloud-gouv/openbao) et des améliorations significatives ont été faites au logging du [portail](/repos/cloud-gouv/portail).  Plusieurs dépôts ont également bénéficié de mises à jour de dépendances et de corrections de bugs pour améliorer leur fonctionnement et leur compatibilité, notamment [securix](/repos/cloud-gouv/securix), [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts) et [dockerfiles](/repos/cloud-gouv/dockerfiles). Les charts Helm de [common-helm-charts](/repos/cloud-gouv/common-helm-charts) ont été enrichis de nouvelles fonctionnalités et améliorations.
 
 ## Sécurité
-Plusieurs changements ont été apportés pour renforcer la sécurité :
-
-- Mise à jour de dépendances dans [openbao](/repos/cloud-gouv/openbao) pour corriger des vulnérabilités (CVE-2025-68121, GO-2026-4337, CVE-2026-24051, GO-2026-4394, GHSA-9h8m-3fm2-qjrq).
+Plusieurs correctifs de sécurité ont été déployés :
+- Mise à jour de `go.opentelemetry.io/otel/sdk` dans [openbao](/repos/cloud-gouv/openbao) pour corriger des vulnérabilités (CVE-2026-24051, GO-2026-4394, GHSA-9h8m-3fm2-qjrq).
+- Mise à jour de Go vers la version 1.25.7 dans [openbao](/repos/cloud-gouv/openbao) pour corriger une vulnérabilité (CVE-2025-68121 / GO-2026-4337).
 - Désactivation de KWallet dans [securix](/repos/cloud-gouv/securix) pour renforcer la sécurité.
 
 ## Autres changements notables
-- Implémentation du logging structuré au format JSON dans [portail](/repos/cloud-gouv/portail) pour faciliter le débogage et la surveillance.
+- Introduction de logs structurés au format JSON dans [portail](/repos/cloud-gouv/portail) pour faciliter le débogage et le monitoring.
 - Mise à jour de `clusterctl` dans [dockerfiles](/repos/cloud-gouv/dockerfiles) vers la version 1.13.1.
-- Ajout de fonctionnalités et d'améliorations à plusieurs charts dans [common-helm-charts](/repos/cloud-gouv/common-helm-charts), notamment pour Matrix, Coturn, pgbench et External Secrets.
-- Correction d'un problème de démarrage sécurisé (Secure Boot) dans [securix](/repos/cloud-gouv/securix) pour l'ANSSI R3.
+- Suppression de la branche `disko-fork` dans [bureautix-example](/repos/cloud-gouv/bureautix-example) pour simplifier la gestion du code.
 
 ## Dépôts les plus actifs
-- [portail](/repos/cloud-gouv/portail) : Amélioration du logging et de la gestion des backends dynamiques.
-- [openbao](/repos/cloud-gouv/openbao) : Corrections de bugs et mises à jour de sécurité.
-- [securix](/repos/cloud-gouv/securix) : Améliorations de la localisation, corrections de bugs et renforcement de la sécurité.
-- [common-helm-charts](/repos/cloud-gouv/common-helm-charts) : Ajout de nouvelles fonctionnalités et améliorations à plusieurs charts Helm.
-- [dockerfiles](/repos/cloud-gouv/dockerfiles) : Mise à jour des outils et correction des sommes de contrôle.
+- [openbao](/repos/cloud-gouv/openbao) : Correction de bugs, mises à jour de sécurité et améliorations de la robustesse.
+- [portail](/repos/cloud-gouv/portail) : Amélioration de l'observabilité avec l'introduction de logs structurés.
+- [common-helm-charts](/repos/cloud-gouv/common-helm-charts) : Ajout de nouvelles fonctionnalités et améliorations aux charts Helm.
+- [securix](/repos/cloud-gouv/securix) : Améliorations de la localisation, corrections de bugs liés au démarrage sécurisé et à l'installateur.
+- [dockerfiles](/repos/cloud-gouv/dockerfiles) : Mise à jour des outils inclus pour bénéficier des dernières fonctionnalités.

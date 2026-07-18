@@ -1,23 +1,18 @@
-# Synthèse d'activité : etalab-ia (du 16 mai 2026 au 1er juillet 2026)
+# Synthèse d'activité : etalab-ia (du 16 mai au 16 juin 2026)
 
 ## Résumé de l'activité
-L'organisation etalab-ia a connu une période d'activité soutenue, marquée par des avancées significatives sur plusieurs fronts. Le développement de l'API [whisperx-openai-api](/repos/etalab-ia/whisperx-openai-api) a permis de créer une solution performante pour la transcription audio, compatible avec l'API OpenAI.  Des efforts importants ont été consacrés à l'amélioration de la plateforme RAG (Retrieval-Augmented Generation) avec des mises à jour notables sur [ragtime](/repos/etalab-ia/ragtime) et [rag-facile](/repos/etalab-ia/rag-facile), incluant l'ajout de fonctionnalités d'authentification, d'évaluation de la qualité des réponses et d'intégration de l'IA Inspect.  Enfin, les projets [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) et [OpenGateRAG](/repos/etalab-ia/OpenGateRAG) ont progressé en termes de stabilité, de sécurité et d'intégration.
+L'activité récente d'etalab-ia s'est concentrée sur l'amélioration et la stabilisation de ses projets d'IA, notamment autour de la génération de langage, de la recherche d'informations et de la gestion de données. Plusieurs dépôts ont bénéficié de corrections de bugs, d'optimisations de performances et de l'ajout de nouvelles fonctionnalités. On observe une progression significative sur les projets OpenGateLLM et rag-facile, avec des refactorings importants et l'intégration de nouvelles capacités. L'accent est mis sur la préparation de ces outils pour une utilisation en production et une meilleure expérience utilisateur.
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
-- Correction de vulnérabilités dans [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) (CVE-2026-11940 et CVE-2026-55200).
-- Ajout d'un hook pre-commit gitleaks dans [eval-transcript](/repos/etalab-ia/eval-transcript) pour prévenir les fuites de secrets.
+Plusieurs corrections de sécurité ont été apportées à OpenGateLLM, notamment la correction de vulnérabilités et le renforcement de la sécurité des endpoints d'authentification. Certaines vulnérabilités ont été ignorées, justifiées par le contexte du projet.
 
 ## Autres changements notables
-- Changement de nom du projet [rag-facile](/repos/etalab-ia/rag-facile) vers [ragtime](/repos/etalab-ia/ragtime).
-- Migration de la base de données [mediatech-to-albert-api](/repos/etalab-ia/mediatech-to-albert-api) vers une architecture serverless pour une meilleure scalabilité.
-- Refonte de l'architecture interne de [rag-facile](/repos/etalab-ia/rag-facile) pour une meilleure modularité.
-- Unification de la documentation OpenAPI de [OpenGateRAG](/repos/etalab-ia/OpenGateRAG) avec [OpenGateLLM](/repos/etalab-ia/OpenGateLLM).
+Plusieurs projets ont subi des refactorings importants, notamment OpenGateLLM et rag-facile, pour améliorer leur architecture interne et leur maintenabilité. La migration de la base de données de mediatech-to-albert-api vers une architecture serverless est également une évolution technique notable. Le projet rag-facile a changé de nom pour devenir ragtime.
 
 ## Dépôts les plus actifs
-- [whisperx-openai-api](/repos/etalab-ia/whisperx-openai-api) : Développement initial d'une API de transcription audio compatible avec OpenAI.
-- [rag-facile](/repos/etalab-ia/rag-facile) : Amélioration significative de la plateforme RAG avec ajout d'authentification, d'évaluation de la qualité et d'intégration d'IA.
-- [ragtime](/repos/etalab-ia/ragtime) : Refonte et ajout d'une interface en ligne de commande pour la gestion des collections.
-- [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) : Amélioration de la sécurité, de l'authentification et de l'API.
-- [mediatech](/repos/etalab-ia/mediatech) : Intégration de nouveaux jeux de données et optimisation du traitement des données.
-- [eval-transcript](/repos/etalab-ia/eval-transcript) : Ajout de nouveaux fournisseurs de transcription et d'un moteur de scoring pour l'évaluation de la qualité.
+*   [whisperx-openai-api](/repos/etalab-ia/whisperx-openai-api) : Développement initial rapide d'une API pour la transcription audio, compatible avec OpenAI.
+*   [ragtime](/repos/etalab-ia/ragtime) : Refonte et ajout de fonctionnalités pour la gestion de collections de documents.
+*   [rag-facile](/repos/etalab-ia/rag-facile) : Améliorations majeures de la plateforme, incluant l'authentification, l'intégration d'IA Inspect et un système de compétences.
+*   [mediatech](/repos/etalab-ia/mediatech) : Intégration de nouveaux jeux de données et optimisation du traitement des données.
+*   [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) : Refactoring de l'architecture, corrections de bugs et améliorations de la sécurité.
+*   [BlockNote](/repos/etalab-ia/BlockNote) : Corrections de bugs et améliorations de l'expérience utilisateur, notamment pour les tableaux et l'IA.

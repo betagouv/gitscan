@@ -1,20 +1,25 @@
 # Synthèse d'activité : incubateur-ademe (du 16 mai 2026 au 16 juin 2026)
 
 ## Résumé de l'activité
-L'activité récente de l'incubateur-ademe s'est concentrée sur l'amélioration et l'extension de ses outils existants, avec un accent particulier sur l'expérience utilisateur et la précision des données. Plusieurs projets ont bénéficié de mises à jour significatives, notamment [plusfraisautravail](/repos/incubateur-ademe/plusfraisautravail) avec l'ajout d'une carte de vigilance canicule, et [nosgestesclimat](/repos/incubateur-ademe/nosgestesclimat) avec des améliorations du référentiel d'actions et l'intégration de nouvelles données.  Des efforts importants ont également été déployés pour moderniser l'infrastructure et les processus de développement, comme avec la migration de [dsfr-override](/repos/incubateur-ademe/dsfr-override) vers TypeScript et l'amélioration du pipeline CI/CD. Enfin, plusieurs projets ont progressé dans leur phase de développement initial, comme [nosgestesclimat-aides](/repos/incubateur-ademe/nosgestesclimat-aides) et [france-chaleur-urbaine-ifpen](/repos/incubateur-ademe/france-chaleur-urbaine-ifpen).
+L'activité récente de l'incubateur-ademe a été marquée par des améliorations significatives sur plusieurs projets.  Un effort important a été consacré à la modernisation technique, notamment avec la migration vers TypeScript et l'adoption de nouveaux outils de build et de test.  Plusieurs applications ont bénéficié de mises à jour de données et d'améliorations de l'expérience utilisateur, comme l'ajout de nouvelles fonctionnalités et la correction de bugs.  Des projets comme [tacct-legacy-nextjs](/repos/incubateur-ademe/tacct-legacy-nextjs) et [nosgestesclimat-site-nextjs](/repos/incubateur-ademe/nosgestesclimat-site-nextjs) ont connu des avancées majeures en termes de développement et de sécurité. L'accent a également été mis sur l'amélioration de l'accessibilité et de l'intégration des données, avec des projets comme [plusfraisautravail](/repos/incubateur-ademe/plusfraisautravail) et [benefriches](/repos/incubateur-ademe/benefriches).
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié d'améliorations de sécurité, notamment [plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site) avec l'intégration de PostHog et [bandit-manchot](/repos/incubateur-ademe/bandit-manchot) avec une mise à jour de son fichier index.html. [benefriches](/repos/incubateur-ademe/benefriches) a également mis en place un système de limitation de débit pour renforcer la sécurité de son API.
+Plusieurs projets ont bénéficié d'améliorations de sécurité :
+- Correction de vulnérabilités identifiées par Dependabot dans [roadmaps-faciles](/repos/incubateur-ademe/roadmaps-faciles).
+- Refonte de la sécurité avec l'implémentation de sessions JOSE et Server Actions dans [nosgestesclimat-site-nextjs](/repos/incubateur-ademe/nosgestesclimat-site-nextjs), corrigeant des failles d'autorisation, de fuites de données et un open redirect.
+- Correction de vulnérabilités dans [dsfr-override](/repos/incubateur-ademe/dsfr-override).
 
 ## Autres changements notables
-Plusieurs projets ont connu des refactorisations importantes ou des migrations technologiques. [dsfr-override](/repos/incubateur-ademe/dsfr-override) a été entièrement migré vers TypeScript, tandis que [impactco2-integrabook](/repos/incubateur-ademe/impactco2-integrabook) a vu son interface utilisateur complètement repensée. [facili-tacct](/repos/incubateur-ademe/facili-tacct) a bénéficié de mises à jour de sa base de données et de son infrastructure.  La migration vers FGP pour l'authentification dans [grafana](/repos/incubateur-ademe/grafana) est également une évolution technique majeure.
+- Migration vers l'authentification FGP (Federated Grafana Proxy) dans [grafana](/repos/incubateur-ademe/grafana) pour une gestion centralisée et sécurisée des accès.
+- Refonte complète de l'interface utilisateur et de l'expérience utilisateur du comparateur de PAC dans [france-chaleur-urbaine-pac](/repos/incubateur-ademe/france-chaleur-urbaine-pac).
+- Migration complète vers TypeScript dans [dsfr-override](/repos/incubateur-ademe/dsfr-override) pour une meilleure maintenabilité.
+- Mise à niveau de n8n vers la version 2 dans [n8n-scalingo](/repos/incubateur-ademe/n8n-scalingo).
+- Passage à un système de build natif ESM avec SWC dans [benefriches](/repos/incubateur-ademe/benefriches).
 
 ## Dépôts les plus actifs
-*   [nosgestesclimat](/repos/incubateur-ademe/nosgestesclimat) : Amélioration continue du modèle de calcul d'empreinte carbone et ajout de nouvelles fonctionnalités.
-*   [plusfraisautravail](/repos/incubateur-ademe/plusfraisautravail) : Ajout d'une carte de vigilance canicule et amélioration de l'auto-diagnostic.
-*   [plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site) : Ajout de nouvelles pages et amélioration de l'accessibilité.
-*   [benefriches](/repos/incubateur-ademe/benefriches) : Amélioration du suivi des projets urbains et ajout de nouvelles fonctionnalités.
-*   [dsfr-override](/repos/incubateur-ademe/dsfr-override) : Refonte complète et migration vers TypeScript pour une meilleure maintenabilité.
-*   [impactco2](/repos/incubateur-ademe/impactco2) : Amélioration de l'outil d'impact carbone et de l'expérience utilisateur.
-*   [tacct](/repos/incubateur-ademe/tacct) : Ajout de données pour de nouveaux territoires et amélioration de l'accessibilité.
-*   [france-chaleur-urbaine-pac](/repos/incubateur-ademe/france-chaleur-urbaine-pac) : Refonte de l'interface utilisateur du comparateur de PAC.
+- [tacct-legacy-nextjs](/repos/incubateur-ademe/tacct-legacy-nextjs) : Développement initial de l'application avec authentification, gestion des stratégies et chiffrement des données.
+- [nosgestesclimat-site-nextjs](/repos/incubateur-ademe/nosgestesclimat-site-nextjs) : Améliorations de l'interface utilisateur, ajout de nouvelles fonctionnalités et renforcement de la sécurité.
+- [benefriches](/repos/incubateur-ademe/benefriches) : Refactorisation technique, amélioration de l'interface utilisateur et enrichissement des données.
+- [nosgestesclimat-app](/repos/incubateur-ademe/nosgestesclimat-app) : Ajout d'un kit de communication et d'une page d'événements, avec des améliorations de sécurité significatives.
+- [publicodes-commun](/repos/incubateur-ademe/publicodes-commun) : Mise à jour des données du mix électrique et stabilisation du workflow de publication.
+- [france-chaleur-urbaine-pac](/repos/incubateur-ademe/france-chaleur-urbaine-pac) : Refonte de l'interface utilisateur du comparateur de PAC.

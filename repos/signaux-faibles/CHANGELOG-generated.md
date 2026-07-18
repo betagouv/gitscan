@@ -1,13 +1,11 @@
 # Synthèse d'activité : signaux-faibles (du 23/06 au 30/06)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation "signaux-faibles" s'est concentrée sur l'amélioration de la qualité et de la fiabilité des données, notamment concernant les codes NAF. Les corrections apportées à [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles) visent à garantir une meilleure précision des informations affichées aux utilisateurs et utilisées par la plateforme, en particulier au niveau du filtrage et de l'intégration des données d'effectif.
-
-## Sécurité
-Aucun changement lié à la sécurité n'a été identifié.
+L'activité récente de l'organisation "signaux-faibles" s'est concentrée sur l'amélioration de la qualité et de la fiabilité des données, particulièrement concernant les codes NAF. Des corrections de bugs et des ajustements ont été apportés pour assurer une meilleure précision des informations affichées et utilisées par la plateforme [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles). Ces améliorations impactent directement les utilisateurs en leur fournissant des données plus fiables pour leurs analyses.
 
 ## Autres changements notables
-Des améliorations techniques ont été apportées à [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles) concernant la génération des fichiers de référence (golden files) avec Go, ainsi que des corrections de migrations de base de données et une simplification du code. Ces changements visent à améliorer la reproductibilité et la maintenabilité de la plateforme.
+- Amélioration de la reproductibilité de la génération des fichiers de référence grâce à l'utilisation de Go dans [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles).
+- Corrections de plusieurs erreurs dans les migrations de la base de données, simplifiant le code et améliorant la cohérence des données dans [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles).
 
 ## Dépôts les plus actifs
-- [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles) : Ce dépôt a été le plus actif, avec des corrections de bugs, des améliorations de la qualité des données et des optimisations techniques.
+- [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles) : Correction de bugs et amélioration de la qualité des données, notamment concernant les codes NAF et les effectifs.

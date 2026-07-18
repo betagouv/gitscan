@@ -1,28 +1,29 @@
-# Synthèse d'activité : SocialGouv (du 27 mai 2026 au 29 juin 2026)
+# Synthèse d'activité : SocialGouv (du 13/06 au 13/07)
 
 ## Résumé de l'activité
-L'activité récente de SocialGouv est marquée par une forte concentration sur la maintenance, la sécurité et l'amélioration de l'expérience utilisateur de ses outils. Plusieurs dépôts ont bénéficié de corrections de bugs, de mises à jour de dépendances et d'ajustements de configuration pour garantir la stabilité et la performance des applications. Des efforts significatifs ont également été déployés pour préparer l'arrêt de certains services, comme Recosanté, en informant les utilisateurs et en assurant une transition en douceur. Plusieurs projets ont progressé dans l'intégration de nouvelles fonctionnalités, notamment l'ajout de support pour des technologies émergentes comme l'IA et l'automatisation, ainsi que l'amélioration de l'accessibilité et de la sécurité des applications. Les dépôts les plus actifs incluent [vao](/repos/SocialGouv/vao), [token-bureau](/repos/SocialGouv/token-bureau), [matomo-next](/repos/SocialGouv/matomo-next) et [cdtn-admin](/repos/SocialGouv/cdtn-admin).
+Au cours des dernières semaines, l'organisation SocialGouv a connu une activité soutenue, marquée par des améliorations significatives en matière de sécurité, de stabilité et d'expérience utilisateur. Plusieurs dépôts ont bénéficié de corrections de bugs, de mises à jour de dépendances et d'ajouts de nouvelles fonctionnalités. L'accent a été mis sur la préparation de l'arrêt de certains services ([recosante]), la modernisation de l'infrastructure (migration vers pnpm, buildkit-operator) et l'amélioration de l'accessibilité des outils ([dashlord], [egapro]).  Des efforts importants ont également été déployés pour faciliter l'intégration et l'utilisation des outils par les développeurs, notamment avec l'ajout de documentation et de guides d'utilisation ([dsfr-mcp], [JIA-atelier]). Les dépôts [vao] et [srdt] ont connu des évolutions produit notables, améliorant le flux d'agrément et l'expérience utilisateur de l'assistant virtuel.
 
 ## Sécurité
 Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
 
-*   Correction d'une vulnérabilité dans [archifiltre-mails](/repos/SocialGouv/archifiltre-mails).
-*   Renforcement de la sécurité dans [domifa](/repos/SocialGouv/domifa) avec des corrections et des ajustements.
-*   Amélioration de la sécurité des builds avec l'intégration de Kata Containers dans [buildkit-operator](/repos/SocialGouv/buildkit-operator).
-*   Mise en place d'une gestion des secrets locale scellée dans [iterion](/repos/SocialGouv/iterion).
+*   Correction d'une vulnérabilité dans [archifiltre-mails].
+*   Renforcement de la sécurité de l'authentification dans [egapro] avec l'ajout de l'authentification via GitHub SSO.
+*   Amélioration de la sécurité des builds avec l'intégration de Kata Containers dans [buildkit-operator].
+*   Correction de vulnérabilités de sécurité dans [nos1000jours-blues-epds-widget].
 
 ## Autres changements notables
-*   **Migration vers pnpm:** Plusieurs dépôts, dont [token-bureau](/repos/SocialGouv/token-bureau), [revu](/repos/SocialGouv/revu), [nos1000jours-blues-epds-widget](/repos/SocialGouv/nos1000jours-blues-epds-widget), et [dashlord](/repos/SocialGouv/dashlord) ont migré vers pnpm pour une meilleure gestion des dépendances.
-*   **Intégration de l'IA:** Des avancées ont été réalisées dans l'intégration de l'IA, notamment avec l'ajout de support pour Claude Opus 4.8 dans [claw-code-go](/repos/SocialGouv/claw-code-go) et l'exploration de l'utilisation de l'IA pour la génération de code dans [git-ai-trace](/repos/SocialGouv/git-ai-trace).
-*   **Amélioration de l'infrastructure:** Des améliorations ont été apportées à l'infrastructure, notamment avec la migration des builds vers buildkit-operator dans [cdtn-admin](/repos/SocialGouv/cdtn-admin) et l'optimisation des ressources PostgreSQL dans [vao](/repos/SocialGouv/vao).
-*   **Préparation de l'arrêt de Recosanté:** Une bannière d'information a été ajoutée à [recosante](/repos/SocialGouv/recosante) pour informer les utilisateurs de l'arrêt du service.
+*   Migration vers pnpm dans plusieurs dépôts ([token-bureau], [revu], [matomo-next], [nos1000jours-blues-epds-widget], [cdtn-admin]) pour une meilleure gestion des dépendances.
+*   Migration des builds d'images vers buildkit-operator dans [cdtn-admin] et [egapro].
+*   Intégration de Matomo pour le suivi analytique dans [egapro].
+*   Début du développement de nouveaux outils pour la migration Harbor ([migration-harbor], [migration-harbor2]).
+*   Amélioration de l'infrastructure de build et de déploiement dans plusieurs dépôts.
 
 ## Dépôts les plus actifs
-*   [vao](/repos/SocialGouv/vao) : Amélioration significative du flux de premier agrément et de la gestion des documents.
-*   [token-bureau](/repos/SocialGouv/token-bureau) : Corrections de bugs et amélioration de la gestion des permissions.
-*   [matomo-next](/repos/SocialGouv/matomo-next) : Ajout d'un proxy pour contourner les bloqueurs de publicités et prise en charge des tests A/B.
-*   [cdtn-admin](/repos/SocialGouv/cdtn-admin) : Amélioration du sitemap, ajout de nouvelles fonctionnalités d'analyse et corrections de bugs.
-*   [srdt](/repos/SocialGouv/srdt) : Amélioration de l'interface utilisateur de l'assistant virtuel.
-*   [iterion](/repos/SocialGouv/iterion) : Ajout de l'authentification GitHub SSO et lancement d'un marketplace public.
-*   [legi-data](/repos/SocialGouv/legi-data) : Mises à jour régulières des données légales.
-*   [dashlord](/repos/SocialGouv/dashlord) : Amélioration de l'interface utilisateur et ajout de nouvelles fonctionnalités.
+*   [vao] : Amélioration significative du flux de premier agrément et de la gestion des documents.
+*   [egapro] : Ajout de fonctionnalités d'API publique, amélioration de l'accessibilité et renforcement de la sécurité.
+*   [cdtn-admin] : Amélioration de l'ingestion et de l'analyse des données, correction de bugs et modernisation de l'infrastructure de build.
+*   [matomo-next] : Ajout d'un proxy de suivi côté serveur et prise en charge des tests A/B.
+*   [srdt] : Ajout de nouvelles sections (FAQ, nouveautés) et amélioration de l'interface utilisateur de l'assistant virtuel.
+*   [dashlord] : Amélioration de l'interface utilisateur et ajout d'un widget de notation des contributions.
+*   [buildkit-operator] : Ajout du support de variables d'environnement et d'authentification OIDC.
+*   [JIA-atelier] : Préparation et adaptation du contenu de l'atelier sur l'Intelligence Artificielle.

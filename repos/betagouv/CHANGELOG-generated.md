@@ -1,25 +1,34 @@
-# Synthèse d'activité : betagouv (du 24 mai au 24 juin 2026)
+# Synthèse d'activité : betagouv (du 23/06 au 23/07)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation betagouv a été marquée par une forte concentration sur l'amélioration de l'expérience utilisateur et la correction de bugs dans de nombreux projets. Plusieurs projets ont bénéficié de mises à jour significatives, notamment *mon-profil-anssi* avec une amélioration de la recherche, *jeveuxaider-front* avec une refonte des formulaires d'inscription, et *infomedicament* avec une recherche sémantique améliorée.  De nombreux efforts ont également été consacrés à la maintenance technique, à la sécurité et à l'optimisation des performances, notamment dans les projets *nitrates*, *mes-aides-analytics* et *grist-utils*. L'intégration de nouvelles sources de données et l'amélioration de la synchronisation entre différents systèmes ont également été des thèmes récurrents.
+L'organisation betagouv a connu une période d'activité soutenue, marquée par des améliorations significatives sur plusieurs projets. Un effort important a été consenti pour renforcer la sécurité, notamment avec des mises à jour de dépendances et l'implémentation de TLS. De nombreux projets ont bénéficié d'améliorations de l'expérience utilisateur, avec des refontes d'interfaces, l'ajout de nouvelles fonctionnalités et des corrections de bugs. L'intégration de données externes et l'automatisation de processus (synchronisation, CI/CD) ont également été des thèmes récurrents. Plusieurs projets ont progressé dans la préparation de nouvelles fonctionnalités, comme l'ajout de simulateurs et de systèmes d'alerte. Les projets `zacharie`, `transports-sanitaires`, `sante-psy`, `reva`, `mon-aide-cyber` et `infomedicament` ont été particulièrement actifs.
 
 ## Sécurité
-Plusieurs projets ont bénéficié d'améliorations de sécurité :
-- Correction d'une vulnérabilité critique dans [mon-suivi-justice](/repos/betagouv/mon-suivi-justice) avec une mise à jour de la gem `rack-session`.
-- Renforcement de la sécurité dans [maestro](/repos/betagouv/maestro) avec la correction de failles XSS et la protection contre le détournement de compte.
-- Amélioration de la sécurité du parseur [infomedicament-html-parser](/repos/betagouv/infomedicament-html-parser) avec des mises à jour de dépendances.
+Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
+
+*   Correction d'une vulnérabilité XSS dans [portail-rse](/repos/betagouv/portail-rse).
+*   Mise à jour de la gem `rack-session` dans [mon-suivi-justice](/repos/betagouv/mon-suivi-justice) pour corriger une vulnérabilité.
+*   Implémentation de TLS et d'authentification par certificat dans [lab-anssi-antivirus](/repos/betagouv/lab-anssi-antivirus).
+*   Ajout d'une vérification du certificat MQC dans [lab-anssi-admin](/repos/betagouv/lab-anssi-admin).
+*   Correction d'une validation de date de naissance non sécurisée dans [jeveuxaider-front](/repos/betagouv/jeveuxaider-front).
 
 ## Autres changements notables
-- Migration vers React 19 et Turbopack dans [jeveuxaider-front](/repos/betagouv/jeveuxaider-front) pour améliorer les performances.
-- Refactorisation de l'infrastructure de [infomedicament-dataeng](/repos/betagouv/infomedicament-dataeng) avec le remplacement des bibliothèques de base de données par SQLAlchemy.
-- Passage à Poetry pour la gestion des dépendances dans [infomedicament-dataeng](/repos/betagouv/infomedicament-dataeng) et [grist-utils](/repos/betagouv/grist-utils).
-- Intégration de Matomo pour le suivi des événements dans [odice](/repos/betagouv/odice) et [infomedicament](/repos/betagouv/infomedicament).
-- Mise en place d'un système de publication "trusted" pour [lab-anssi-lib](/repos/betagouv/lab-anssi-lib).
+Plusieurs projets ont connu des évolutions techniques majeures :
+
+*   Refonte de l'architecture du simulateur de transport sanitaire dans [transports-sanitaires](/repos/betagouv/transports-sanitaires).
+*   Migration vers pnpm dans [test-sme](/repos/betagouv/test-sme) et [oauth2-deploy-demo](/repos/betagouv/oauth2-deploy-demo).
+*   Refactorisation de l'infrastructure CI/CD dans [mission-transition-ecologique-back](/repos/betagouv/mission-transition-ecologique-back).
+*   Passage à Poetry pour la gestion des dépendances dans [infomedicament_data](/repos/betagouv/infomedicament_data).
+*   Refactorisation du code et ajout de tests dans [lab-anssi-antivirus](/repos/betagouv/lab-anssi-antivirus).
 
 ## Dépôts les plus actifs
-- [maestro](/repos/betagouv/maestro) : Amélioration significative de l'interface utilisateur et de la gestion des données.
-- [infomedicament](/repos/betagouv/infomedicament) : Amélioration de la recherche sémantique et de l'affichage des informations.
-- [jeveuxaider-front](/repos/betagouv/jeveuxaider-front) : Refonte des formulaires d'inscription et amélioration de l'expérience utilisateur.
-- [mon-profil-anssi](/repos/betagouv/mon-profil-anssi) : Amélioration de la recherche de profils et correction de vulnérabilités.
-- [infomedicament-dataeng](/repos/betagouv/infomedicament-dataeng) : Amélioration de la gestion des données et de la recherche sémantique.
-- [grist-custom-widgets-fr-admin](/repos/betagouv/grist-custom-widgets-fr-admin) : Préparation de la publication du widget "Tableau de bord cartographique".
+*   [zacharie](/repos/betagouv/zacharie) : Ajout de nombreuses fonctionnalités pour améliorer la gestion des fiches et carcasses, notamment un tableau de bord SVI et une meilleure gestion des utilisateurs.
+*   [transports-sanitaires](/repos/betagouv/transports-sanitaires) : Refonte majeure de l'application avec fusion de l'identification et du simulateur, ajout de nouvelles fonctionnalités et amélioration de l'architecture.
+*   [sante-psy](/repos/betagouv/sante-psy) : Amélioration de l'annuaire des psychologues, de la gestion des rendez-vous et de l'expérience utilisateur globale.
+*   [reva](/repos/betagouv/reva) : Amélioration du parcours de dématérialisation autonome des VAE et renforcement de la sécurité.
+*   [mon-aide-cyber](/repos/betagouv/mon-aide-cyber) : Suppression de l'envoi en copie des demandes de devenir aidant et mise à jour des dépendances.
+*   [jeveuxaider-front](/repos/betagouv/jeveuxaider-front) et [jeveuxaider-back](/repos/betagouv/jeveuxaider-back) : Améliorations significatives des formulaires, de la gestion des missions et de la synchronisation avec Airtable.
+*   [infomedicament](/repos/betagouv/infomedicament) : Enrichissement des données disponibles et amélioration de la recherche et de la navigation.
+*   [lab-anssi-antivirus](/repos/betagouv/lab-anssi-antivirus) : Sécurisation des communications et amélioration de la testabilité.
+*   [mission-transition-ecologique-back](/repos/betagouv/mission-transition-ecologique-back) : Amélioration de la gestion des données canoniques et optimisation de la chaîne CI/CD.
+*   [test-sme](/repos/betagouv/test-sme) : Améliorations de l'interface utilisateur et de la gestion des pages.
