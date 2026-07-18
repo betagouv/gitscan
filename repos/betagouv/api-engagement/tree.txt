@@ -1,8 +1,21 @@
 .
-├── .agents
+├── .claude
+│   ├── HANDOFF.md
+│   ├── settings.json
 │   └── skills
+│       ├── README.md
+│       ├── branch
+│       │   └── SKILL.md
+│       ├── changelog
+│       │   └── SKILL.md
+│       ├── commit
+│       │   └── SKILL.md
 │       ├── datagouv-apis
 │       │   ├── README.md
+│       │   └── SKILL.md
+│       ├── lint
+│       │   └── SKILL.md
+│       ├── pr
 │       │   └── SKILL.md
 │       ├── react-dsfr
 │       │   ├── README.md
@@ -19,6 +32,8 @@
 │       │       ├── criteres-multimedia-tableaux-liens-scripts.md
 │       │       ├── criteres-navigation-consultation.md
 │       │       └── criteres-structure-presentation.md
+│       ├── safety-check
+│       │   └── SKILL.md
 │       └── securite-developpement
 │           ├── README.md
 │           ├── SKILL.md
@@ -26,23 +41,6 @@
 │               ├── checklist.md
 │               ├── findings-schema.json
 │               └── rapport.md
-├── .claude
-│   ├── HANDOFF.md
-│   ├── settings.json
-│   └── skills
-│       ├── README.md
-│       ├── branch
-│       │   └── SKILL.md
-│       ├── changelog
-│       │   └── SKILL.md
-│       ├── commit
-│       │   └── SKILL.md
-│       ├── lint
-│       │   └── SKILL.md
-│       ├── pr
-│       │   └── SKILL.md
-│       └── safety-check
-│           └── SKILL.md
 ├── .cz-config.js
 ├── .dockerignore
 ├── .eslintignore
@@ -602,6 +600,8 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260701120000_add_mission_org_and_org_client_id_indexes
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260715120000_add_mission_remote_local
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
 │   ├── prisma.config.ts
@@ -622,6 +622,7 @@
 │   │   ├── fixtures
 │   │   │   ├── README.md
 │   │   │   └── populate-stat-events-from-missions.ts
+│   │   ├── generate-rome-macro-competences.ts
 │   │   ├── inspect-mission-scoring.ts
 │   │   ├── letudiant
 │   │   │   ├── README.md
@@ -632,23 +633,30 @@
 │   │   ├── mission-enrichment
 │   │   │   ├── export-dataset.ts
 │   │   │   └── judge-enrichments.ts
-│   │   ├── missions-sdis
-│   │   │   ├── addresses.csv
-│   │   │   ├── create-spv-missions.ts
-│   │   │   ├── data.ts
-│   │   │   ├── fetch-addresses.ts
-│   │   │   ├── logos
-│   │   │   │   ├── SDIS_*.jpg  (25 files)
-│   │   │   │   ├── SDIS_*.png  (52 files)
-│   │   │   │   ├── SDIS_*.svg  (5 files)
-│   │   │   │   ├── SDIS_*.jpeg  (8 files)
-│   │   │   │   ├── SDIS_13.webp
-│   │   │   │   ├── SDIS_25.webp
-│   │   │   │   ├── SDIS_33.webp
-│   │   │   │   ├── SDIS_82.webp
-│   │   │   │   └── sdis_80.jpeg
-│   │   │   ├── publisher.ts
-│   │   │   └── update-sdis-publishers.ts
+│   │   ├── missions
+│   │   │   ├── gendarmerie
+│   │   │   │   ├── create-gendarmerie-missions.ts
+│   │   │   │   └── data.ts
+│   │   │   ├── police
+│   │   │   │   ├── create-police-missions.ts
+│   │   │   │   └── data.ts
+│   │   │   └── pompiers
+│   │   │       ├── addresses.csv
+│   │   │       ├── create-spv-missions.ts
+│   │   │       ├── data.ts
+│   │   │       ├── fetch-addresses.ts
+│   │   │       ├── logos
+│   │   │       │   ├── SDIS_*.jpg  (25 files)
+│   │   │       │   ├── SDIS_*.png  (52 files)
+│   │   │       │   ├── SDIS_*.svg  (5 files)
+│   │   │       │   ├── SDIS_*.jpeg  (8 files)
+│   │   │       │   ├── SDIS_13.webp
+│   │   │       │   ├── SDIS_25.webp
+│   │   │       │   ├── SDIS_33.webp
+│   │   │       │   ├── SDIS_82.webp
+│   │   │       │   └── sdis_80.jpeg
+│   │   │       ├── publisher.ts
+│   │   │       └── update-sdis-publishers.ts
 │   │   ├── mongo-backfill
 │   │   │   ├── README.md
 │   │   │   ├── backfill-campaign.ts
@@ -688,7 +696,8 @@
 │   │   │   ├── domains.ts
 │   │   │   ├── metabase.ts
 │   │   │   ├── moderation.ts
-│   │   │   └── organization-verification.ts
+│   │   │   ├── organization-verification.ts
+│   │   │   └── rome-macro-competences.ts
 │   │   ├── controllers
 │   │   │   ├── admin-report.ts
 │   │   │   ├── brevo-webhook
@@ -968,7 +977,8 @@
 │   │   │   │   ├── __tests__
 │   │   │   │   │   ├── builder.test.ts
 │   │   │   │   │   ├── index.test.ts
-│   │   │   │   │   └── parser.test.ts
+│   │   │   │   │   ├── parser.test.ts
+│   │   │   │   │   └── triggers.test.ts
 │   │   │   │   ├── config.ts
 │   │   │   │   ├── errors.ts
 │   │   │   │   ├── index.ts
@@ -1114,6 +1124,7 @@
 │   │   │   │   ├── organization.test.ts
 │   │   │   │   ├── parser.test.ts
 │   │   │   │   ├── publisher-diffusion-rule-query.test.ts
+│   │   │   │   ├── rome.test.ts
 │   │   │   │   ├── string.test.ts
 │   │   │   │   └── widget.test.ts
 │   │   │   ├── activity.ts
@@ -1126,6 +1137,7 @@
 │   │   │   ├── llm.ts
 │   │   │   ├── mission-moderation-status.ts
 │   │   │   ├── mission-moderation.ts
+│   │   │   ├── mission-remote.ts
 │   │   │   ├── mission-rule.ts
 │   │   │   ├── mission.ts
 │   │   │   ├── normalize.ts
@@ -1137,6 +1149,7 @@
 │   │   │   ├── redirect.ts
 │   │   │   ├── request-id.ts
 │   │   │   ├── request.ts
+│   │   │   ├── rome.ts
 │   │   │   ├── string.ts
 │   │   │   ├── url.ts
 │   │   │   └── widget.ts
@@ -1605,7 +1618,8 @@
 │   │   │   │   ├── internal-user-flag-indicator.tsx
 │   │   │   │   ├── modal.tsx
 │   │   │   │   ├── newsletter.tsx
-│   │   │   │   └── partners.tsx
+│   │   │   │   ├── partners.tsx
+│   │   │   │   └── skip-links.tsx
 │   │   │   ├── mission-detail
 │   │   │   │   ├── cta-panel.tsx
 │   │   │   │   ├── description-card.tsx
@@ -1723,6 +1737,7 @@
 │   │       │   ├── conditions.test.ts
 │   │       │   ├── geo.test.ts
 │   │       │   ├── internal-user-flag.test.ts
+│   │       │   ├── layout.test.ts
 │   │       │   ├── mission.test.ts
 │   │       │   ├── quiz.test.ts
 │   │       │   └── string.test.ts
@@ -1730,7 +1745,9 @@
 │   │       ├── conditions.ts
 │   │       ├── geo.ts
 │   │       ├── internal-user-flag.ts
+│   │       ├── layout.ts
 │   │       ├── mission.ts
+│   │       ├── motion.ts
 │   │       ├── quiz.ts
 │   │       └── string.ts
 │   ├── eslint.config.cjs
@@ -1896,10 +1913,11 @@
         ├── fetchLocation.ts
         ├── fetchWithTimeout.ts
         ├── fonts.ts
+        ├── missionAddress.ts
         ├── requestId.ts
         ├── resizeHelper.ts
         ├── routerQuery.ts
         ├── sentry.ts
         ├── store.ts
         └── utils.ts
-440 directories, 1550 files
+442 directories, 1566 files
