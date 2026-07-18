@@ -249,7 +249,11 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260701125625_add_rmus
 │   │   │   └── migration.sql
+│   │   ├── 20260703112840_add_campaign_definition
+│   │   │   └── migration.sql
 │   │   ├── 20260707130000_move_type_to_structure_and_svt
+│   │   │   └── migration.sql
+│   │   ├── 20260708150443_add_campaign_definition_deadline
 │   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   ├── schema
@@ -347,10 +351,13 @@
 │   │   ├── 20260617-create-transformation-form-definitions.ts
 │   │   ├── 20260622-fill-departement-population.ts
 │   │   ├── 20260626-backfill-structure-dates.ts
+│   │   ├── 20260703-create-initialisation-campaign-definition.ts
 │   │   ├── 20260708-move-ofii-activite-to-end-of-month.ts
 │   │   └── 20260709-realign-rmu-dates-to-month-end.ts
 │   ├── recurring-scripts
 │   │   ├── clean-old-user-actions.ts
+│   │   ├── create-actualisation-campaign-definition.ts
+│   │   ├── create-actualisation-campaigns.ts
 │   │   ├── eig-fetch.ts
 │   │   ├── empty-bucket.ts
 │   │   ├── fill-cpoms.ts
@@ -362,6 +369,7 @@
 │   ├── run-one-off.sh
 │   ├── utils
 │   │   ├── csv-loader.ts
+│   │   ├── demarches-numeriques.util.ts
 │   │   ├── departement-name.ts
 │   │   ├── ensure-operateurs-exist.ts
 │   │   ├── ofii-fill-activity.ts
@@ -394,6 +402,15 @@
 │   ├── app
 │   │   ├── (authenticated)
 │   │   │   ├── (with-menu)
+│   │   │   │   ├── _components
+│   │   │   │   │   ├── ActualisationsPagination.tsx
+│   │   │   │   │   ├── BlockSkeleton.tsx
+│   │   │   │   │   ├── BlockTitle.tsx
+│   │   │   │   │   ├── DashboardHeader.tsx
+│   │   │   │   │   ├── InitialisationActualisationRow.tsx
+│   │   │   │   │   ├── InitialisationsActualisationsBlock.tsx
+│   │   │   │   │   ├── TransformationRow.tsx
+│   │   │   │   │   └── TransformationsBlock.tsx
 │   │   │   │   ├── cpoms
 │   │   │   │   │   ├── [id]
 │   │   │   │   │   │   ├── _components
@@ -461,19 +478,23 @@
 │   │   │   │   │   │   │       └── page.tsx
 │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   └── page.tsx
+│   │   │   │   ├── page.tsx
 │   │   │   │   ├── statistiques
 │   │   │   │   │   └── page.tsx
 │   │   │   │   ├── stats
 │   │   │   │   │   ├── _components
+│   │   │   │   │   │   ├── StatistiquesCartographie.tsx
+│   │   │   │   │   │   ├── StatistiquesContent.tsx
 │   │   │   │   │   │   ├── StatistiquesHeader.tsx
 │   │   │   │   │   │   ├── activite
-│   │   │   │   │   │   │   └── ActiviteBlock.tsx
+│   │   │   │   │   │   │   ├── ActiviteBlock.tsx
+│   │   │   │   │   │   │   ├── ActiviteStatsChart.tsx
+│   │   │   │   │   │   │   └── activite.constants.ts
 │   │   │   │   │   │   ├── controle-qualite
 │   │   │   │   │   │   │   ├── ControleQualiteBlock.tsx
 │   │   │   │   │   │   │   ├── ControleQualiteStatsTable.tsx
 │   │   │   │   │   │   │   ├── EIGChart.tsx
-│   │   │   │   │   │   │   ├── EvaluationChart.tsx
-│   │   │   │   │   │   │   └── TimePeriodSelector.tsx
+│   │   │   │   │   │   │   └── EvaluationChart.tsx
 │   │   │   │   │   │   ├── finances
 │   │   │   │   │   │   │   ├── BalanceChart.tsx
 │   │   │   │   │   │   │   ├── FinanceCards.tsx
@@ -481,7 +502,9 @@
 │   │   │   │   │   │   │   ├── FinancesBlock.tsx
 │   │   │   │   │   │   │   └── FinancesStatsTable.tsx
 │   │   │   │   │   │   ├── rmu
-│   │   │   │   │   │   │   └── RMUBlock.tsx
+│   │   │   │   │   │   │   ├── RMUBlock.tsx
+│   │   │   │   │   │   │   ├── RMUChart.tsx
+│   │   │   │   │   │   │   └── RMUStatsTable.tsx
 │   │   │   │   │   │   ├── structures
 │   │   │   │   │   │   │   ├── GenericTypeChart.tsx
 │   │   │   │   │   │   │   ├── StructuresBlock.tsx
@@ -509,9 +532,6 @@
 │   │   │   │       │   │   │   ├── ActiviteDurations.tsx
 │   │   │   │       │   │   │   ├── ActiviteHistorique.tsx
 │   │   │   │       │   │   │   ├── ActiviteHistoriqueChart.tsx
-│   │   │   │       │   │   │   ├── ActiviteHistoriqueTable.tsx
-│   │   │   │       │   │   │   ├── ActiviteMotifsIndisponibilite.tsx
-│   │   │   │       │   │   │   ├── ActivitePlaces.tsx
 │   │   │   │       │   │   │   ├── ActiviteTypes.tsx
 │   │   │   │       │   │   │   └── activite.constants.ts
 │   │   │   │       │   │   ├── _calendrier
@@ -553,9 +573,13 @@
 │   │   │   │       │   │   │   ├── getBudgetStaticTableLines.tsx
 │   │   │   │       │   │   │   └── getIndicateurFinancierStaticTableHeading.tsx
 │   │   │   │       │   │   ├── _header
+│   │   │   │       │   │   │   ├── ActualisationHeader.tsx
 │   │   │   │       │   │   │   ├── AutoSaveStatus.tsx
 │   │   │   │       │   │   │   ├── FinalisationHeader.tsx
+│   │   │   │       │   │   │   ├── StructureCallToActionHeader.tsx
 │   │   │   │       │   │   │   ├── StructureHeader.tsx
+│   │   │   │       │   │   │   ├── StructureHeaderActions.tsx
+│   │   │   │       │   │   │   ├── StructureHeaderModals.tsx
 │   │   │   │       │   │   │   └── StructureMenu.tsx
 │   │   │   │       │   │   ├── _notes
 │   │   │   │       │   │   │   └── NotesBlock.tsx
@@ -568,6 +592,19 @@
 │   │   │   │       │   ├── _context
 │   │   │   │       │   │   ├── StructureClientContext.tsx
 │   │   │   │       │   │   └── StructureContext.tsx
+│   │   │   │       │   ├── actualisation
+│   │   │   │       │   │   └── [year]
+│   │   │   │       │   │       ├── 01-places
+│   │   │   │       │   │       │   └── page.tsx
+│   │   │   │       │   │       ├── 02-documents-financiers
+│   │   │   │       │   │       │   └── page.tsx
+│   │   │   │       │   │       ├── 03-analyse-financiere
+│   │   │   │       │   │       │   └── page.tsx
+│   │   │   │       │   │       ├── 04-actes-administratifs
+│   │   │   │       │   │       │   └── page.tsx
+│   │   │   │       │   │       ├── _components
+│   │   │   │       │   │       │   └── ActualisationTabs.tsx
+│   │   │   │       │   │       └── layout.tsx
 │   │   │   │       │   ├── finalisation
 │   │   │   │       │   │   ├── 01-identification
 │   │   │   │       │   │   │   └── page.tsx
@@ -613,7 +650,6 @@
 │   │   │   │       │   └── TypeBatiBadge.tsx
 │   │   │   │       └── page.tsx
 │   │   │   ├── layout.tsx
-│   │   │   ├── page.tsx
 │   │   │   └── structures
 │   │   │       └── transformation
 │   │   │           ├── [transformationId]
@@ -741,7 +777,6 @@
 │   │   │       ├── actions.ts
 │   │   │       └── page.tsx
 │   │   ├── Providers.tsx
-│   │   ├── actions.ts
 │   │   ├── api
 │   │   │   ├── actes-administratifs
 │   │   │   │   ├── acte-administratif.repository.ts
@@ -765,6 +800,12 @@
 │   │   │   │       └── route.ts
 │   │   │   ├── budgets
 │   │   │   │   └── budget.repository.ts
+│   │   │   ├── campaigns
+│   │   │   │   ├── campaign.constants.ts
+│   │   │   │   ├── campaign.repository.ts
+│   │   │   │   ├── campaign.service.ts
+│   │   │   │   ├── campaign.util.ts
+│   │   │   │   └── route.ts
 │   │   │   ├── contacts
 │   │   │   │   ├── contact.repository.ts
 │   │   │   │   └── contact.util.ts
@@ -779,6 +820,16 @@
 │   │   │   │   ├── cpom.service.ts
 │   │   │   │   ├── cpom.util.ts
 │   │   │   │   └── route.ts
+│   │   │   ├── dashboard
+│   │   │   │   ├── initialisations-actualisations
+│   │   │   │   │   ├── initialisations-actualisations.db.type.ts
+│   │   │   │   │   ├── initialisations-actualisations.repository.ts
+│   │   │   │   │   ├── initialisations-actualisations.service.ts
+│   │   │   │   │   ├── initialisations-actualisations.type.ts
+│   │   │   │   │   └── initialisations-actualisations.util.ts
+│   │   │   │   └── transformations
+│   │   │   │       ├── transformations.service.ts
+│   │   │   │       └── transformations.util.ts
 │   │   │   ├── dna-codes
 │   │   │   │   ├── dna-codes.repository.ts
 │   │   │   │   ├── dna-codes.service.ts
@@ -827,6 +878,13 @@
 │   │   │   │   ├── activite
 │   │   │   │   │   ├── README.md
 │   │   │   │   │   └── activite.util.ts
+│   │   │   │   ├── cartographie
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   ├── cartographie.db.type.ts
+│   │   │   │   │   ├── cartographie.repository.ts
+│   │   │   │   │   ├── cartographie.service.ts
+│   │   │   │   │   ├── cartographie.util.ts
+│   │   │   │   │   └── route.ts
 │   │   │   │   ├── controle-qualite
 │   │   │   │   │   ├── README.md
 │   │   │   │   │   ├── controle-qualite-eig.util.ts
@@ -899,14 +957,16 @@
 │   │   │   ├── Menu.tsx
 │   │   │   ├── MenuFooter.tsx
 │   │   │   ├── MultiInformationCard.tsx
-│   │   │   ├── NameChangeNotice.tsx
-│   │   │   ├── NameChangeNoticeClient.tsx
 │   │   │   ├── NoDataAccordion.tsx
 │   │   │   ├── SearchBar.tsx
 │   │   │   ├── StructureCard.tsx
 │   │   │   ├── Tracking.tsx
 │   │   │   ├── User.tsx
 │   │   │   ├── WorkInProgress.tsx
+│   │   │   ├── activites
+│   │   │   │   ├── ActiviteHistoriqueTable.tsx
+│   │   │   │   ├── ActiviteMotifsIndisponibilite.tsx
+│   │   │   │   └── ActivitePlaces.tsx
 │   │   │   ├── blocks
 │   │   │   │   └── actesAdministratifs
 │   │   │   │       ├── ActesAdministratifsBlock.tsx
@@ -936,7 +996,8 @@
 │   │   │   │   ├── SimplePagination.tsx
 │   │   │   │   ├── StackedBarChart.tsx
 │   │   │   │   ├── StackedBarLineChart.tsx
-│   │   │   │   └── Table.tsx
+│   │   │   │   ├── Table.tsx
+│   │   │   │   └── TimePeriodSelector.tsx
 │   │   │   ├── filters
 │   │   │   │   ├── Filters.tsx
 │   │   │   │   ├── FiltersBatis.tsx
@@ -1070,6 +1131,8 @@
 │   │   │   │   │   ├── FieldSetDescription.tsx
 │   │   │   │   │   ├── FieldSetDirectionGenerale.tsx
 │   │   │   │   │   └── FieldSetSiegeSocial.tsx
+│   │   │   │   ├── stepper
+│   │   │   │   │   └── FormStepTab.tsx
 │   │   │   │   ├── transformation-types
 │   │   │   │   │   ├── CreationTransformationForm.tsx
 │   │   │   │   │   ├── FromStructureCard.tsx
@@ -1078,7 +1141,7 @@
 │   │   │   │   │   ├── StructureSelections.tsx
 │   │   │   │   │   └── TransformationTypeForms.tsx
 │   │   │   │   └── typePlace
-│   │   │   │       ├── FieldSetTransformationPlaces.tsx
+│   │   │   │       ├── CurrentYearPlaces.tsx
 │   │   │   │       ├── FieldSetTypePlaces.tsx
 │   │   │   │       └── YearlyTypePlace.tsx
 │   │   │   ├── header-filters
@@ -1110,8 +1173,6 @@
 │   │   │   │   ├── TransformationMarkers.tsx
 │   │   │   │   └── getTransformationMarkers.ts
 │   │   │   ├── transformations
-│   │   │   │   ├── OngoingTransformation.tsx
-│   │   │   │   ├── OngoingTransformationsBanner.tsx
 │   │   │   │   └── TransformationStructureHeader.tsx
 │   │   │   └── ui
 │   │   │       ├── InformationBar.tsx
@@ -1133,12 +1194,14 @@
 │   │   ├── hooks
 │   │   │   ├── useActeAdministratifRadios.ts
 │   │   │   ├── useActiviteStats.ts
+│   │   │   ├── useActualisationFormHandling.ts
 │   │   │   ├── useAddressInteraction.ts
 │   │   │   ├── useAddressSuggestion.ts
 │   │   │   ├── useAgentFormHandling.ts
 │   │   │   ├── useAutocomplete.ts
 │   │   │   ├── useAutocompleteFieldUi.ts
 │   │   │   ├── useButtonsPanel.ts
+│   │   │   ├── useCampaigns.ts
 │   │   │   ├── useCanUpdateStructure.ts
 │   │   │   ├── useCpom.ts
 │   │   │   ├── useCpomFormHandling.ts
@@ -1153,7 +1216,6 @@
 │   │   │   ├── useHeaderHeight.ts
 │   │   │   ├── useHideOnScroll.ts
 │   │   │   ├── useLocalStorage.ts
-│   │   │   ├── useOngoingTransformations.ts
 │   │   │   ├── useOperateur.ts
 │   │   │   ├── useOperateurFormHandling.ts
 │   │   │   ├── useOperateurSearch.ts
@@ -1174,9 +1236,9 @@
 │   │   │   └── useTransformations.ts
 │   │   ├── layout.tsx
 │   │   ├── not-found.tsx
-│   │   ├── page.tsx
 │   │   └── utils
 │   │       ├── acteAdministratif.util.ts
+│   │       ├── actualisationForm.util.ts
 │   │       ├── adresse.util.ts
 │   │       ├── apiDomainError.util.ts
 │   │       ├── apiError.util.ts
@@ -1204,6 +1266,7 @@
 │   │       ├── operateur.util.ts
 │   │       ├── phone.util.ts
 │   │       ├── refresh.util.ts
+│   │       ├── searchParams.util.ts
 │   │       ├── statistiques-format.util.ts
 │   │       ├── string.util.ts
 │   │       ├── structure.util.ts
@@ -1241,6 +1304,7 @@
 │   │   │   ├── adresse.schema.ts
 │   │   │   ├── antenne.schema.ts
 │   │   │   ├── budget.schema.ts
+│   │   │   ├── campaign.schema.ts
 │   │   │   ├── contact.schema.ts
 │   │   │   ├── controle.schema.ts
 │   │   │   ├── cpom.schema.ts
@@ -1255,6 +1319,7 @@
 │   │   │   ├── indicateurFinancier.schema.ts
 │   │   │   ├── operateur.schema.ts
 │   │   │   ├── region.schema.ts
+│   │   │   ├── statistique-cartographie.schema.ts
 │   │   │   ├── statistique.schema.ts
 │   │   │   ├── structure-millesime.schema.ts
 │   │   │   ├── structure-typologie.schema.ts
@@ -1306,9 +1371,11 @@
 │       ├── adresse.type.ts
 │       ├── controle.type.ts
 │       ├── cpom.type.ts
+│       ├── dashboard.type.ts
 │       ├── departement.type.ts
 │       ├── document-financier.type.ts
 │       ├── fetch-state.type.ts
+│       ├── filters.type.ts
 │       ├── form.type.ts
 │       ├── global.ts
 │       ├── indicateur-financier.type.ts
@@ -1335,6 +1402,16 @@
 │   │   └── structures
 │   │       ├── StructuresTable.test.tsx
 │   │       ├── [id]
+│   │       │   ├── actualisation
+│   │       │   │   └── [year]
+│   │       │   │       ├── 01-places
+│   │       │   │       │   └── page.test.tsx
+│   │       │   │       ├── 02-documents-financiers
+│   │       │   │       │   └── page.test.tsx
+│   │       │   │       ├── 03-analyse-financiere
+│   │       │   │       │   └── page.test.tsx
+│   │       │   │       └── 04-actes-administratifs
+│   │       │   │           └── page.test.tsx
 │   │       │   ├── finalisation
 │   │       │   │   ├── 01-identification
 │   │       │   │   │   └── page.test.tsx
@@ -1396,12 +1473,22 @@
 │   │   │   ├── activite.util.test.ts
 │   │   │   └── stats
 │   │   │       └── route.test.ts
+│   │   ├── campaigns
+│   │   │   ├── campaign.repository.test.ts
+│   │   │   ├── campaign.util.test.ts
+│   │   │   └── route.test.ts
 │   │   ├── cpoms
 │   │   │   ├── [id]
 │   │   │   │   └── route.test.ts
 │   │   │   ├── cpom.repository.test.ts
 │   │   │   ├── cpom.util.test.ts
 │   │   │   └── route.test.ts
+│   │   ├── dashboard
+│   │   │   ├── initialisations-actualisations
+│   │   │   │   ├── initialisations-actualisations.repository.test.ts
+│   │   │   │   └── initialisations-actualisations.util.test.ts
+│   │   │   └── transformations
+│   │   │       └── transformations.util.test.ts
 │   │   ├── dna-codes
 │   │   │   ├── dna-codes.repository.test.ts
 │   │   │   └── route.test.ts
@@ -1420,6 +1507,9 @@
 │   │   │       └── route.test.ts
 │   │   ├── statistiques
 │   │   │   ├── activite.util.test.ts
+│   │   │   ├── cartographie
+│   │   │   │   ├── cartographie.service.test.ts
+│   │   │   │   └── cartographie.util.test.ts
 │   │   │   ├── controle-qualite.util.test.ts
 │   │   │   ├── finance.util.test.ts
 │   │   │   ├── places.util.test.ts
@@ -1448,12 +1538,17 @@
 │   │       ├── route.test.ts
 │   │       ├── transformation.repository.test.ts
 │   │       └── transformation.util.test.ts
+│   ├── app
+│   │   └── components
+│   │       └── header-filters
+│   │           └── FilterDropdown.test.tsx
 │   ├── components
 │   │   ├── ErrorToast.test.tsx
 │   │   ├── Menu.test.tsx
 │   │   ├── StructureCard.test.tsx
 │   │   ├── forms
 │   │   │   ├── AdresseAdministrativeAndAntennes.test.tsx
+│   │   │   ├── CurrentYearPlaces.test.tsx
 │   │   │   ├── DnaAndFiness.test.tsx
 │   │   │   ├── FieldSetAdresseAdministrative.test.tsx
 │   │   │   ├── FieldSetAntennes.test.tsx
@@ -1461,7 +1556,6 @@
 │   │   │   ├── FieldSetDescription.test.tsx
 │   │   │   ├── FieldSetHebergement.test.tsx
 │   │   │   ├── FieldSetNotes.test.tsx
-│   │   │   ├── FieldSetTransformationPlaces.test.tsx
 │   │   │   ├── FieldSetTypeBati.test.tsx
 │   │   │   ├── FieldSetTypePlaces.test.tsx
 │   │   │   ├── InputWithValidation.test.tsx
@@ -1469,11 +1563,10 @@
 │   │   │   ├── TransformationAntennesSection.test.tsx
 │   │   │   ├── TransformationDnaAndFiness.test.tsx
 │   │   │   └── TransformationFormController.test.tsx
-│   │   ├── transformation-markers
-│   │   │   └── getTransformationMarkers.test.ts
-│   │   └── transformations
-│   │       └── OngoingTransformationsBanner.test.tsx
+│   │   └── transformation-markers
+│   │       └── getTransformationMarkers.test.ts
 │   ├── config
+│   │   ├── structure.config.test.ts
 │   │   └── transformation.config.test.ts
 │   ├── e2e
 │   │   ├── README.md
@@ -1489,6 +1582,7 @@
 │   │   │   └── test.ts
 │   │   ├── global-setup.ts
 │   │   ├── pages
+│   │   │   ├── actualisation.page.ts
 │   │   │   ├── cpom-creation.page.ts
 │   │   │   ├── cpom-modification.page.ts
 │   │   │   ├── shared
@@ -1510,6 +1604,8 @@
 │   │   ├── playwright.config.ts
 │   │   ├── proconnect-login.ts
 │   │   ├── seed
+│   │   │   ├── actualisation-assert.ts
+│   │   │   ├── actualisation.seed.ts
 │   │   │   ├── cleanup.ts
 │   │   │   ├── cpom.seed.ts
 │   │   │   ├── orphan-cleanup.ts
@@ -1518,6 +1614,7 @@
 │   │   │   ├── transformation-assert.ts
 │   │   │   └── transformation-source.seed.ts
 │   │   └── specs
+│   │       ├── actualisation.spec.ts
 │   │       ├── cpom-creation.spec.ts
 │   │       ├── cpom-modification.spec.ts
 │   │       ├── structure-modification.spec.ts
@@ -1608,6 +1705,8 @@
 │   │   ├── structures-filters-ordering.spec.ts
 │   │   └── validation-error.spec.ts
 │   ├── hooks
+│   │   ├── useActualisationFormHandling.test.ts
+│   │   ├── useCampaigns.test.ts
 │   │   ├── useFieldValidator.test.ts
 │   │   ├── useFileUpload.test.ts
 │   │   ├── useLocalStorage.test.ts
@@ -1619,10 +1718,13 @@
 │   │   └── casl
 │   │       └── abilities.test.ts
 │   ├── schemas
+│   │   ├── api
+│   │   │   └── campaign.schema.test.ts
 │   │   └── forms
 │   │       ├── base
 │   │       │   ├── dna.schema.test.ts
-│   │       │   └── finess.schema.test.ts
+│   │       │   ├── finess.schema.test.ts
+│   │       │   └── indicateurFinancier.schema.test.ts
 │   │       └── transformation
 │   │           └── creationPlacesEtHebergement.test.ts
 │   ├── scripts
@@ -1651,19 +1753,23 @@
 │   │   └── transformationForm.tsx
 │   ├── utils
 │   │   ├── acteAdministratif.util.test.ts
+│   │   ├── actualisationForm.util.test.ts
 │   │   ├── adresse.util.test.ts
 │   │   ├── budget.util.test.ts
 │   │   ├── classname.util.test.ts
 │   │   ├── common.util.test.ts
 │   │   ├── date.util.test.ts
 │   │   ├── decimal.util.test.ts
+│   │   ├── defaultValues.util.test.ts
 │   │   ├── eig.util.test.ts
 │   │   ├── getErrorMessages.util.test.ts
 │   │   ├── getInitialAntennes.test.ts
+│   │   ├── indicateurFinancier.util.test.ts
 │   │   ├── list.util.test.ts
 │   │   ├── math.util.test.ts
 │   │   ├── number.util.test.ts
 │   │   ├── phone.util.test.ts
+│   │   ├── searchParams.util.test.ts
 │   │   ├── string.util.test.ts
 │   │   ├── structure.util.test.ts
 │   │   └── transformation.util.test.ts
@@ -1672,4 +1778,4 @@
 ├── tsconfig.json
 ├── vitest.config.mts
 └── yarn.lock
-433 directories, 1241 files
+464 directories, 1316 files
