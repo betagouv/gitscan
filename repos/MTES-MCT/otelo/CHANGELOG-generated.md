@@ -5,12 +5,8 @@ Cette mise à jour apporte des corrections concernant le calcul de la disponibil
 
 ### Évolutions fonctionnelles
 - Correction du calcul de la disponibilité des logements, qui prend désormais en compte l'intersection de tous les EPCI d'un bassin d'habitat.
-- Correction de l'export PowerPoint.
-- Correction de l'affichage des données démographiques en gérant correctement les valeurs nulles [#51](https://github.com/MTES-MCT/otelo/pull/51).
-- Résolution d'un problème d'erreur "pas de données".
+- Correction de l'export PowerPoint [#51](https://github.com/MTES-MCT/otelo/pull/51).
+- Résolution d'un problème d'erreur "pas de données" lors de l'utilisation de l'application.
 
 ### Évolutions techniques
-- Aucune évolution technique majeure à signaler durant cette période.
-
-### Autres changements
-- Aucune autre modification significative à signaler.
+- Correction de la gestion des valeurs nulles dans les données démographiques [#51](https://github.com/MTES-MCT/otelo/pull/51).
