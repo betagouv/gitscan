@@ -78,6 +78,7 @@
 │   │   ├── 20260615124825_initialiseMesuresModulePerteMaitriseEntite.ts
 │   │   ├── 20260615132920_initialiseMesuresModuleExpositionAccrue.ts
 │   │   ├── 20260615133725_initialiseMesuresModuleGestionComptes.ts
+│   │   ├── 20260716095237_ajouteColonneParcours.ts
 │   │   └── README.md
 │   ├── package.json
 │   ├── src
@@ -113,6 +114,8 @@
 │   │   │   │   ├── ressourceAvisMesure.ts
 │   │   │   │   ├── ressourceMesure.ts
 │   │   │   │   ├── ressourceModule.ts
+│   │   │   │   ├── ressourceParcours.schema.ts
+│   │   │   │   ├── ressourceParcours.ts
 │   │   │   │   ├── ressourceParcoursComplet.ts
 │   │   │   │   ├── ressourcePriseEnCompte.ts
 │   │   │   │   └── schemaRessourceModule.schema.ts
@@ -236,8 +239,22 @@
 │   │   │   ├── clientHttp.ts
 │   │   │   ├── donneesEvenement.ts
 │   │   │   ├── enrichissement
+│   │   │   │   ├── adaptateurDom
+│   │   │   │   │   ├── adaptateurDom.ts
+│   │   │   │   │   ├── adaptateurLienCanonique.ts
+│   │   │   │   │   ├── adaptateurLiensSeo.ts
+│   │   │   │   │   └── adaptateurTitre.ts
 │   │   │   │   ├── adaptateurEnrichissement.ts
-│   │   │   │   └── composantsAutorises.genere.ts
+│   │   │   │   ├── chargementProprietes
+│   │   │   │   │   ├── chargeurCrisp.ts
+│   │   │   │   │   ├── chargeurDeProps.ts
+│   │   │   │   │   ├── chargeurExigences.ts
+│   │   │   │   │   ├── chargeurFilAriane.ts
+│   │   │   │   │   ├── chargeurFinancements.ts
+│   │   │   │   │   ├── chargeurGuides.ts
+│   │   │   │   │   └── chargeurRessourcesCyber.ts
+│   │   │   │   ├── composantsAutorises.genere.ts
+│   │   │   │   └── résolveurDePage.ts
 │   │   │   ├── entrepotFavoriPostgres.ts
 │   │   │   ├── entrepotFinancementGrist.ts
 │   │   │   ├── entrepotGrist.ts
@@ -365,6 +382,7 @@
 │   │   │   │   ├── ressourceAvisMesure.spec.ts
 │   │   │   │   ├── ressourceMesure.spec.ts
 │   │   │   │   ├── ressourceModule.spec.ts
+│   │   │   │   ├── ressourceParcours.spec.ts
 │   │   │   │   ├── ressourceParcoursComplet.spec.ts
 │   │   │   │   └── ressourcePriseEnCompte.spec.ts
 │   │   │   ├── middleware.spec.ts
@@ -439,6 +457,10 @@
 │   │   │   ├── adaptateurEnvironnement.spec.ts
 │   │   │   ├── adaptateurHachage.spec.ts
 │   │   │   ├── cache.spec.ts
+│   │   │   ├── enrichissement
+│   │   │   │   ├── adaptateurEnrichissement.spec.ts
+│   │   │   │   └── chargementProprietes
+│   │   │   │       └── ChargeurFilAriane.spec.ts
 │   │   │   ├── entrepotFinancementGrist.spec.ts
 │   │   │   ├── entrepotGrist.spec.ts
 │   │   │   ├── entrepotGuideGrist.spec.ts
@@ -453,6 +475,7 @@
 │   │   │   ├── ResultatTestMaturiteCreateur.ts
 │   │   │   ├── generateurCodeSessionDeGroupe.spec.ts
 │   │   │   ├── guide.spec.ts
+│   │   │   ├── module.spec.ts
 │   │   │   ├── nis2-simulateur
 │   │   │   │   └── questionnaire
 │   │   │   │       ├── EnsembleDeSpecifications.spec.ts
@@ -1078,6 +1101,7 @@
 │   │   │   ├── main-maturite-utilisateur.ts
 │   │   │   ├── main-mesure.ts
 │   │   │   ├── main-module-cyberdepart.ts
+│   │   │   ├── main-module.ts
 │   │   │   ├── main-navigation.ts
 │   │   │   ├── main-niveaux-maturite.ts
 │   │   │   ├── main-page-crisp.ts
@@ -1188,11 +1212,14 @@
 │   │   │   │   └── itemDuParcours.ts
 │   │   │   ├── parcours-securisation
 │   │   │   │   ├── BadgeCyberdepart.svelte
-│   │   │   │   ├── BasculeParcoursAvance.svelte
+│   │   │   │   ├── BasculeParcoursComplet.svelte
 │   │   │   │   ├── BoutonPartageBadgeCyberdepart.svelte
 │   │   │   │   ├── CarteMesure.svelte
 │   │   │   │   ├── GrilleCartesMesures.svelte
+│   │   │   │   ├── InterlocuteursParcoursSecurisation.svelte
 │   │   │   │   ├── Mesure.svelte
+│   │   │   │   ├── MesuresDeModule.svelte
+│   │   │   │   ├── Module.svelte
 │   │   │   │   ├── ModuleCyberdepart.svelte
 │   │   │   │   ├── ParcoursComplet.svelte
 │   │   │   │   ├── PriseEnCompteMesure.svelte
@@ -1201,7 +1228,7 @@
 │   │   │   │   ├── mesure.ts
 │   │   │   │   └── modales
 │   │   │   │       ├── ModaleBadgeCyberdepartDebloque.svelte
-│   │   │   │       └── ModaleModuleTermine.svelte
+│   │   │   │       └── ModaleModuleCyberdepartTermine.svelte
 │   │   │   ├── plateforme
 │   │   │   │   ├── aseptisationDuHtml.client.ts
 │   │   │   │   ├── aseptisationDuHtml.serveur.ts
@@ -1293,7 +1320,9 @@
 │   │   │   │   ├── Lien.svelte
 │   │   │   │   ├── MenuFlottant.svelte
 │   │   │   │   ├── Modale.svelte
+│   │   │   │   ├── Notice.svelte
 │   │   │   │   ├── Separateur.svelte
+│   │   │   │   ├── Tuile.svelte
 │   │   │   │   ├── ZoneTexte.svelte
 │   │   │   │   ├── badge.type.ts
 │   │   │   │   ├── filAriane.ts
@@ -1372,6 +1401,7 @@
 │   ├── mentions-legales.html
 │   ├── mesure.html
 │   ├── module-cyberdepart.html
+│   ├── module.html
 │   ├── nis2.html
 │   ├── niveaux-maturite.html
 │   ├── package.json
@@ -1448,4 +1478,4 @@
 ├── scripts
 │   └── get-node-version.sh
 └── shell.nix
-206 directories, 1287 files
+210 directories, 1313 files

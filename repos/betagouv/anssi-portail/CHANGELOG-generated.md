@@ -1,44 +1,27 @@
-## Changelog : anssi-portail (30 derniers jours, au 10 juillet 2026)
+## Changelog : anssi-portail (30 derniers jours, au 17 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration du parcours de sécurisation, notamment avec l'ajout de fonctionnalités pour le module Cyberdépart et la gestion des mesures. Des améliorations significatives ont également été apportées à la performance et à la sécurité du site, ainsi qu'à l'optimisation SEO. Une migration vers le rendu côté serveur (SSR) est en cours pour améliorer la vitesse de chargement et l'accessibilité.
+Ce mois-ci, les efforts de développement se sont concentrés sur la migration vers le rendu côté serveur (SSR) pour améliorer la performance et l'accessibilité du portail. De nombreuses pages ont été rendues côté serveur, incluant les pages NIS2, financements, guides, et le catalogue. Des améliorations SEO ont également été apportées, notamment l'ajout de balises canoniques, de sitemaps et de robots.txt. Des corrections et améliorations ont été apportées au parcours de sécurisation, notamment l'affichage des modules et le suivi de la progression.
 
 ### Évolutions fonctionnelles
-- Ajout du parcours complet de sécurisation avec affichage des modules et des mesures associées.
-- Mise en avant du module Cyberdépart dans le parcours de sécurisation.
-- Affichage du nombre de mesures disponibles.
-- Amélioration de l'affichage du site sur différents écrans (large, tablette).
-- Ajout d'un toast pour afficher des messages à l'utilisateur.
-- Affichage du badge Cyberdépart une fois le module complété.
-- Affichage de la progression de l'utilisateur dans le parcours de sécurisation.
-- Ajout de liens vers des mesures plus avancées.
-- Correction de l'affichage des pages "services".
-- Amélioration de l'affichage des cartes DSFR.
-- Ajout des pages de contacts régionaux et des mesures associées.
-- Mise à jour des liens canoniques et ajout du fichier sitemap.xml pour améliorer le SEO.
-- Ajout des données structurées d'indexation pour le SEO.
-- Correction de l'URL canonique pour inclure le 'site.url'.
+- **Parcours de sécurisation :** Amélioration de l'affichage des modules, affichage de la progression, et gestion du parcours complet pour les utilisateurs connectés.
+- **Pages NIS2, Financements, Guides et Catalogue :** Ces pages sont désormais rendues côté serveur, améliorant ainsi la performance et l'accessibilité.
+- **Amélioration de l'affichage des mesures :** Affichage du nombre de mesures par module et de la progression globale.
+- **Page d'aide :** Ajout d'un lien vers la campagne Matomo pour l'origine des demandes d'aide.
+- **Associations :** Page des associations rendue côté serveur.
 
 ### Évolutions techniques
-- Migration progressive vers le rendu côté serveur (SSR) pour améliorer la performance et le SEO.
-- Utilisation de UUID v7 pour la génération de clés primaires.
-- Refonte de la configuration d'Axios pour une meilleure gestion des requêtes.
-- Amélioration de la gestion des erreurs et des logs.
-- Mise à jour de plusieurs dépendances pour corriger des failles de sécurité et améliorer la stabilité (dompurify, @babel/core, vite, form-data, shell-quote).
-- Ajout d'un Nix Shell pour faciliter le développement en local.
-- Renforcement de la sécurité des workflows CI/CD.
-- Utilisation de nouveaux outils de validation de configuration (zizmor).
-- Centralisation de la gestion de la configuration et des chemins.
-- Amélioration de la structure du code et suppression de code inutile.
-- Ajout de tests Playwright pour l'automatisation des tests d'intégration.
+- **Migration vers SSR :**  Implémentation du rendu côté serveur pour de nombreuses pages, incluant l'utilisation de composants Svelte et l'optimisation de l'enrichissement des données.
+- **Refonte de l'architecture :**  Abstraction de la logique d'enrichissement, séparation des composants client et serveur, et mutualisation des composants.
+- **Optimisations de performance :** Préchargement des données et des assets pour améliorer la vitesse de chargement des pages.
+- **Sécurité :** Mise à jour de plusieurs dépendances pour corriger des vulnérabilités (uuid, DomPurify, Multer). Ajout d'outils de validation de la configuration (zizmor).
+- **CI/CD :** Amélioration de la configuration du CI/CD, notamment avec l'ajout de secrets explicites et la configuration de Renovate.
+- **Dépendances :** Mise à jour de plusieurs dépendances (vitest, papaparse, prettier-plugin-svelte, etc.).
+- **Configuration :** Ajout d'un Nix Shell pour faciliter le développement en local.
 
 ### Autres changements
-- Mise à jour de la documentation.
-- Correction de petites erreurs de wording et de style.
-- Ajout de commentaires et de documentation pour améliorer la lisibilité du code.
-- Amélioration de la gestion des secrets dans les workflows CI/CD.
-- Ajout de métadonnées Open Graph et Twitter pour le partage sur les réseaux sociaux.
-- Ajout du fichier robots.txt pour le contrôle de l'indexation par les moteurs de recherche.
-- Mise à jour des versions des dépendances de l'UI Kit.
-- Correction de l'indentation des secrets dans les fichiers de déploiement.
-- Ajout d'un rate limit global pour la sécurité.
+- **SEO :** Ajout de balises canoniques, de sitemaps et de robots.txt pour améliorer le référencement.
+- **Documentation :** Mise à jour du README.
+- **Nettoyage de code :** Suppression de code inutile et amélioration de la lisibilité du code.
+- **Correction de bugs :** Correction de plusieurs bugs mineurs, notamment liés à l'affichage des liens et des titres.
+- **Amélioration de l'UI :** Utilisation des composants DSFR pour une meilleure cohérence visuelle.
