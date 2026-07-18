@@ -1,17 +1,15 @@
 {
   "url": "https://github.com/MTES-MCT/fonds-prevention-argile",
   "name": "fonds-prevention-argile",
-  "description": "Application web pour le Fonds de Prévention des Risques liés au Retrait-Gonflement des Argiles (RGA). Elle permet de gérer les dossiers et d'accompagner les utilisateurs dans leur démarche.",
+  "description": "Application web pour le Fonds de Prévention des Risques liés au Retrait-Gonflement des Argiles (RGA). Elle vise à accompagner les propriétaires de logements dans la prévention des risques liés à ce phénomène.",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
     "Authentification & Accès",
-    "Statistiques & Rapports",
-    "Recherche & Filtres",
-    "Gestion des utilisateurs & Permissions",
+    "Visualisation de données & Cartographie",
     "Formulaires & Démarches",
     "Notifications & Alertes",
-    "Sécurité & Conformité"
+    "Gestion des utilisateurs & Permissions"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -20,11 +18,10 @@
     "TypeScript",
     "Tailwind CSS",
     "DSFR",
-    "Vitest",
     "PostgreSQL",
     "drizzle-orm",
     "nodemailer",
-    "@getbrevo/brevo"
+    "vitest"
   ],
   "components": [
     "API REST & GraphQL",
@@ -35,18 +32,26 @@
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "email-password",
+      "oauth2"
     ]
   },
   "tests": [
     "Vitest"
   ],
-  "workflows": [],
-  "lastActivity": "2024-06-29T00:00:00Z",
+  "workflows": [
+    "CI/CD"
+  ],
+  "lastActivity": "2024-07-13T00:00:00Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
-  "metrics": null,
+  "metrics": {
+    "stars": null,
+    "forks": null,
+    "contributors": null,
+    "openIssues": null
+  },
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
