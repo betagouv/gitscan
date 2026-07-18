@@ -1,13 +1,14 @@
-## Changelog : sensibilisation-securite-vulnerabilites (30 derniers jours, au 26 juillet 2026)
+## Changelog : sensibilisation-securite-vulnerabilites (30 derniers jours, au 16 juillet 2026)
 
 ### Résumé
-Ce changelog fait état du premier commit du projet. Il marque le début du développement de la plateforme de sensibilisation aux vulnérabilités de sécurité web. L'objectif est de fournir un outil interactif pour aider les équipes de développement à mieux comprendre et prévenir les failles de sécurité courantes.
-
-### Évolutions fonctionnelles
-Aucune évolution fonctionnelle pour le moment, il s'agit du premier commit.
+Ce mois-ci, les efforts se sont concentrés sur la préparation du déploiement sur GitHub Pages et l'amélioration de la configuration du workflow de déploiement. Des corrections ont été apportées pour assurer le bon fonctionnement du site avec une base de chemin spécifique à GitHub Pages.
 
 ### Évolutions techniques
-- Initialisation du dépôt avec le premier commit : [#1](https://github.com/betagouv/sensibilisation-securite-vulnerabilites/commit/06e96fb)
+- Mise à jour des permissions et des versions des actions dans le workflow de déploiement. [#2](https://github.com/betagouv/sensibilisation-securite-vulnerabilites/pull/2)
+- Utilisation de `npm ci` au lieu de `bun` pour l'installation des dépendances.
+- Refactor du workflow de déploiement.
 
 ### Autres changements
-Aucun autre changement à signaler pour le moment.
+- Correction du logo et des liens racine pour la base de chemin GitHub Pages.
+- Correction d'un problème de page blanche sur GitHub Pages en ajustant la base path.
+- Initialisation du dépôt avec le premier commit.
