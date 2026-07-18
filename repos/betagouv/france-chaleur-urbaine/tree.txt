@@ -581,6 +581,7 @@
 │   │   ├── enjeu-de-societe-particulier.svg
 │   │   ├── enquete.jpg
 │   │   ├── equipe-fcu.jpg
+│   │   ├── france-renov-logo.svg
 │   │   ├── gaz_campaign_1.svg
 │   │   ├── gaz_campaign_2.svg
 │   │   ├── gaz_campaign_3.svg
@@ -591,6 +592,8 @@
 │   │   ├── head-*.png  (5 files)
 │   │   ├── home-footer-bg.jpg
 │   │   ├── home-testimony.jpg
+│   │   ├── icon-*.webp  (5 files)
+│   │   ├── icon-*.svg  (5 files)
 │   │   ├── icon-france.png
 │   │   ├── iframe-carte.png
 │   │   ├── iframe.png
@@ -637,8 +640,6 @@
 │   │   ├── rcu-comparatif-tertiaire.svg
 │   │   ├── rcu-illustation.svg
 │   │   ├── reponses_tests_information.webp
-│   │   ├── reponses_tests_pouce_bas.webp
-│   │   ├── reponses_tests_pouce_haut.webp
 │   │   ├── reponses_tests_réseau_classé.webp
 │   │   ├── reseau_froid_annecy.jpeg
 │   │   ├── ressources
@@ -1314,23 +1315,59 @@
 │   │   │       ├── service.ts
 │   │   │       └── trpc-routes.ts
 │   │   ├── chaleur-renouvelable
+│   │   │   ├── bat-enr.ts
 │   │   │   ├── client
-│   │   │   │   ├── AdemeHelp.tsx
+│   │   │   │   ├── BatEnrBatimentSelection.tsx
+│   │   │   │   ├── BatEnrBatimentSelector.tsx
+│   │   │   │   ├── BatEnrBatimentsMap.tsx
 │   │   │   │   ├── ChoixChauffageForm.tsx
 │   │   │   │   ├── ChoixChauffageResults.tsx
+│   │   │   │   ├── DemandFCRForm.tsx
+│   │   │   │   ├── DemandesChaleurRenouvelableAdminPage.tsx
+│   │   │   │   ├── FranceRenovAdvisorCallout.tsx
 │   │   │   │   ├── FranceRenovHelp.tsx
+│   │   │   │   ├── OutdoorSpaceSelect.tsx
 │   │   │   │   ├── ParamsForm.tsx
-│   │   │   │   ├── ResultRowAccordion.tsx
 │   │   │   │   ├── SettingsTopFields.tsx
+│   │   │   │   ├── heating-mode-rules.ts
+│   │   │   │   ├── heating-modes
+│   │   │   │   │   ├── catalog.tsx
+│   │   │   │   │   └── selectors.ts
+│   │   │   │   ├── heatingModeCosts.ts
 │   │   │   │   ├── hooks
 │   │   │   │   │   ├── useAddressEligibility.ts
+│   │   │   │   │   ├── useChoixChauffageQueryParams.spec.ts
 │   │   │   │   │   ├── useChoixChauffageQueryParams.ts
+│   │   │   │   │   ├── useChoixChauffageResults.ts
 │   │   │   │   │   └── useRemoveHashOnScroll.ts
-│   │   │   │   └── modesChauffageData.tsx
+│   │   │   │   ├── modesChauffageData.spec.ts
+│   │   │   │   ├── modesChauffageData.ts
+│   │   │   │   ├── params-form-draft.spec.ts
+│   │   │   │   ├── params-form-draft.ts
+│   │   │   │   ├── results
+│   │   │   │   │   └── ui
+│   │   │   │   │       ├── DpeProgression.tsx
+│   │   │   │   │       ├── DpeTag.tsx
+│   │   │   │   │       ├── GainVsGazBadge.tsx
+│   │   │   │   │       ├── HeatNetworkContactSteps.tsx
+│   │   │   │   │       ├── IncompatibleSolutionsSection.tsx
+│   │   │   │   │       ├── NoResultSection.tsx
+│   │   │   │   │       ├── PrerequisiteStatusBadge.tsx
+│   │   │   │   │       ├── PrerequisitesList.tsx
+│   │   │   │   │       ├── ProsConsLists.tsx
+│   │   │   │   │       ├── RecommendedSolutionCard.tsx
+│   │   │   │   │       ├── ResultsSection.tsx
+│   │   │   │   │       ├── SolutionConsumptionPanel.tsx
+│   │   │   │   │       ├── SolutionCta.tsx
+│   │   │   │   │       └── UsageTags.tsx
+│   │   │   │   ├── simulation-situation.spec.ts
+│   │   │   │   └── simulation-situation.ts
 │   │   │   ├── constants.ts
-│   │   │   └── server
-│   │   │       ├── service.ts
-│   │   │       └── trpc-routes.ts
+│   │   │   ├── server
+│   │   │   │   ├── service.ts
+│   │   │   │   ├── trpc-routes.integration.spec.ts
+│   │   │   │   └── trpc-routes.ts
+│   │   │   └── simulation-prefill.ts
 │   │   ├── config
 │   │   │   ├── AGENTS.md
 │   │   │   └── server
@@ -1359,8 +1396,6 @@
 │   │   │       ├── import.ts
 │   │   │       ├── imports
 │   │   │       │   ├── consommations-gaz.ts
-│   │   │       │   ├── data
-│   │   │       │   │   └── etudes-en-cours-sample.csv
 │   │   │       │   ├── donnees-reseaux-bibliotheque-fedene.ts
 │   │   │       │   ├── donnees-reseaux-sdes.ts
 │   │   │       │   ├── etudes-en-cours.ts
@@ -1388,12 +1423,14 @@
 │   │   │   │   ├── AffectedNetworkCell.tsx
 │   │   │   │   ├── Comment.tsx
 │   │   │   │   ├── Contact.tsx
-│   │   │   │   ├── DemandSondageForm.tsx
 │   │   │   │   ├── DemandStatusBadge.tsx
 │   │   │   │   ├── EmailHistory.tsx
 │   │   │   │   ├── NetworkSelectorDialog.tsx
 │   │   │   │   ├── ReseauxStatsPage.tsx
-│   │   │   │   └── Status.tsx
+│   │   │   │   ├── Status.tsx
+│   │   │   │   └── public-forms
+│   │   │   │       ├── DemandSubmittedPanel.e2e.spec.ts
+│   │   │   │       └── DemandSubmittedPanel.tsx
 │   │   │   ├── constants.spec.ts
 │   │   │   ├── constants.ts
 │   │   │   ├── constants.validation.spec.ts
@@ -1454,6 +1491,8 @@
 │   │   │           │   ├── confirmation-demande.tsx
 │   │   │           │   ├── enquete-satisfaction.tsx
 │   │   │           │   └── message-gestionnaire.tsx
+│   │   │           ├── equipe-fcu
+│   │   │           │   └── nouvelle-demande-chaleur-renouvelable.tsx
 │   │   │           └── gestionnaire
 │   │   │               ├── nouvelles-demandes-a-traiter.tsx
 │   │   │               └── rappel-demandes-en-attente.tsx
@@ -1889,6 +1928,7 @@
 │   │   │   │   └── abus.tsx
 │   │   │   ├── conversion.tsx
 │   │   │   ├── data-diagnostic.tsx
+│   │   │   ├── demandes-chaleur-renouvelable.tsx
 │   │   │   ├── demandes.tsx
 │   │   │   ├── diagnostic.tsx
 │   │   │   ├── emails.tsx
@@ -2078,7 +2118,11 @@
 │   │   │       ├── 20260505120000_normalize_network_entity_types.ts
 │   │   │       ├── 20260512000000_rename_demand_assigned_to_demand_validated.ts
 │   │   │       ├── 20260512000001_split_demand_updated_events.ts
+│   │   │       ├── 20260513120000_create_demands_chaleur_renouvelable.ts
+│   │   │       ├── 20260515120000_add_admin_fields_to_demands_chaleur_renouvelable.ts
 │   │   │       ├── 20260515120000_tiles_metadata.ts
+│   │   │       ├── 20260520120000_add_batenr_extra_columns.ts
+│   │   │       ├── 20260528120000_add_details_to_demands_chaleur_renouvelable.ts
 │   │   │       ├── 20260615120000_drop_legacy_tags_and_assignment_rules.ts
 │   │   │       ├── 20260617000000_conversion_tracking.ts
 │   │   │       ├── 20260624000000_fusion_statuts.ts
@@ -2087,7 +2131,10 @@
 │   │   │       ├── 20260706000000_cleanup_api_accounts.ts
 │   │   │       ├── 20260707000000_conversion_ip_rules.ts
 │   │   │       ├── 20260709000000_demand_deleted_by_system.ts
+│   │   │       ├── 20260709120000_add_unique_batenr_construction_id.ts
 │   │   │       ├── 20260713000001_user_tags.ts
+│   │   │       ├── 20260714000000_trim_demand_mail_adresse.ts
+│   │   │       ├── 20260716000000_simplify_etudes_en_cours.ts
 │   │   │       └── migrator.ts
 │   │   ├── helpers
 │   │   │   ├── db-errors.ts
@@ -2201,4 +2248,4 @@
 ├── vendor
 │   └── xlsx-0.20.3.tgz
 └── vitest.config.mts
-307 directories, 2216 files
+311 directories, 2267 files

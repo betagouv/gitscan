@@ -1,40 +1,44 @@
-## Changelog : france-chaleur-urbaine (30 derniers jours, au 15 juillet 2026)
+## Changelog : france-chaleur-urbaine (30 derniers jours, au 17 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'expérience administrateur, avec une refonte du dashboard, une meilleure gestion des utilisateurs et des demandes, ainsi que des corrections de bugs pour optimiser les performances et la fiabilité de la plateforme. Des améliorations ont également été apportées à l'API et à l'intégration avec des services externes.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment sur la page de résultat et le formulaire de demande, avec un focus particulier sur l'intégration de nouvelles sources de données (BRGM, BDNB, RNB) et l'optimisation du parcours pour les demandes de chaleur renouvelable. Des améliorations techniques ont également été apportées pour la gestion des données, la performance et la maintenance du code.
 
 ### Évolutions fonctionnelles
-- Amélioration de la gestion des étiquettes utilisateurs : possibilité d'étiqueter en masse des utilisateurs [#1265](https://github.com/betagouv/france-chaleur-urbaine/pull/1265).
-- Ajout de filtres globaux sur les colonnes du tableau de données [#1265](https://github.com/betagouv/france-chaleur-urbaine/pull/1265).
-- Les administrateurs peuvent désormais mettre à jour le statut des demandes.
-- Ajout du maître d'ouvrage aux réseaux en construction [#1260](https://github.com/betagouv/france-chaleur-urbaine/pull/1260).
-- Amélioration de l'affichage des accès aux demandes dans l'interface administrateur.
-- Refonte du méga-menu et réorganisation du dashboard administrateur pour une meilleure navigation.
-- Suppression des notifications emails de l'équipe FCU et de l'intégration Pipedrive.
-- Amélioration de la gestion des erreurs et des cookies de grande taille.
-- Rétrocompatibilité améliorée pour l'iframe de la carte.
-- Correction de l'affichage de l'éligibilité dans les iframes legacy.
-- Tracking amélioré des événements dans les iframes et formulaires.
+- **Chaleur Renouvelable :** Amélioration du parcours utilisateur pour les demandes de chaleur renouvelable, incluant la pré-sélection de bâtiments via le RNB, l'ajout de commentaires, et la gestion des statuts de demande.
+- **Formulaire de contact :** Personnalisation du formulaire de contact en fonction du profil de l'utilisateur et alternative proposée en cas d'inéligibilité au réseau de chaleur.
+- **Comparateur PAC :** Intégration et refactorisation de l'API du comparateur de pompes à chaleur.
+- **Interface utilisateur :**
+    - Redesign du bloc FranceRenov.
+    - Amélioration de l'affichage mobile de diverses sections.
+    - Ajout d'effets visuels (survol) sur les bâtiments et les éléments interactifs.
+    - Amélioration de la qualité des images et de l'affichage des tooltips.
+    - Ajout d'icônes et d'améliorations graphiques diverses.
+- **Tableau de bord administrateur :**
+    - Ajout d'un méga-menu pour une meilleure organisation.
+    - Réorganisation du dashboard avec toutes les pages administratives.
+    - Possibilité de filtrer et trier les données dans les tableaux.
+    - Gestion des étiquettes utilisateurs (tags) pour faciliter l'organisation et la recherche.
+    - Ajout de la gestion des organisations et de l'API v2 associée.
+- **Autres :**
+    - Ajout de la gestion du maitre d'ouvrage pour les réseaux en construction.
+    - Amélioration de la gestion des accès aux demandes pour les administrateurs.
 
 ### Évolutions techniques
-- Refactorisation de l'API PAC et mise à jour de la version du package `publicodes`.
-- Initialisation de l'API pour IFPEN (renommée PAC).
-- Amélioration des performances du tableau des demandes [#1256](https://github.com/betagouv/france-chaleur-urbaine/pull/1256).
-- Correction de la duplication des utilisateurs administrateurs [#1251](https://github.com/betagouv/france-chaleur-urbaine/pull/1251).
-- Configuration des outils MCP (Playwright et PostgreSQL) pour les tests.
-- Simplification et nettoyage du code de la page `api-gestionnaires`.
-- Mise à jour de la CLI pour la mise à jour en masse des géométries.
-- Correction des filtres de la carte et de la configuration.
-- Amélioration de la gestion des données des demandes en base de données.
-- Suppression des suppressions automatiques de demandes dans les événements.
+- **API :** Refactorisation de l'API PAC et initialisation de l'API IFPEN (maintenant PAC).
+- **Base de données :** Ajout de nouvelles colonnes dans les tables `batenr` et `demands_chaleur_renouvelable` pour supporter les nouvelles fonctionnalités.
+- **Tests :** Ajout et mise à jour de tests unitaires et d'intégration, incluant l'utilisation de Playwright et Cypress.
+- **Performance :** Amélioration des performances du tableau des demandes.
+- **Dépendances :** Mise à jour du package `publicodes`.
+- **Architecture :**
+    - Utilisation de Dialog au lieu de Modal.
+    - Refactoring du code pour une meilleure séparation des responsabilités.
+    - Utilisation de composants UI réutilisables.
+- **CI/CD :** Configuration des MCP (machines configurées pour les tests) pour Playwright et PostgreSQL.
 
 ### Autres changements
-- Documentation mise à jour.
-- Correction de tests unitaires.
-- Diverses corrections de bugs et améliorations de la qualité du code.
-- Ajout de tests Playwright.
-- Gestion des abus pour les statistiques.
-- Simplification des statuts autour de "recontacté".
-- Amélioration de la gestion des erreurs et des logs.
-- Mise à jour des libellés pour la catégorie "Très modeste".
-- Suppression du code obsolète et nettoyage général du code.
+- Nettoyage du code et suppression de code obsolète.
+- Mise à jour de la documentation.
+- Correction de bugs mineurs et amélioration de la qualité du code.
+- Suppression de l'intégration Pipedrive et des notifications emails pour l'équipe FCU.
+- Gestion améliorée des cookies et des erreurs.
+- Suppression de l'AB test pour la collecte de contacts utilisateurs.
