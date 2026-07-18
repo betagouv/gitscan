@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/agreste",
   "name": "agreste",
-  "description": "Agreste est une fork de Sites Conformes permettant la création simplifiée de sites internet conformes aux normes numériques en vigueur, basé sur Wagtail et le Système de design de l’État (DSFR).",
+  "description": "Agreste est une fork de Sites Conformes permettant la création simplifiée de sites internet pour l'administration française, basée sur Wagtail et le Système de design de l’État (DSFR).",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -9,8 +9,9 @@
     "Authentification & Accès",
     "Visualisation de données & Cartographie",
     "Contenu éditorial",
+    "Sécurité & Conformité",
     "Gestion des utilisateurs & Permissions",
-    "Sécurité & Conformité"
+    "Formulaires & Démarches"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -18,6 +19,15 @@
     "Wagtail",
     "PostgreSQL",
     "django-dsfr",
+    "python-dotenv",
+    "dj-database-url",
+    "gunicorn",
+    "dj-static",
+    "whitenoise",
+    "wagtailmenus",
+    "wagtail-modeladmin",
+    "wagtail-markdown",
+    "icalendar",
     "mozilla-django-oidc"
   ],
   "components": [
@@ -26,21 +36,23 @@
     "Python (scripts & backend)",
     "Django",
     "Wagtail",
-    "Docker & Conteneurs"
+    "HTML / CSS / Templates visuels"
   ],
   "auth": {
     "methods": [
+      "saml",
       "oauth2"
     ],
     "providers": [
       "ProConnect"
     ]
   },
-  "tests": "Tests unitaires et d'intégration",
+  "tests": "Tests unitaires et d'intégration avec pytest et coverage",
   "workflows": [
-    "GitHub Actions"
+    "CI/CD avec GitHub Actions",
+    "Déploiement sur Scalingo"
   ],
-  "lastActivity": "2026-07-13T18:07:31+02:00",
+  "lastActivity": "2026-07-15T17:04:48+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -56,7 +68,8 @@
     "Python",
     "Bases de données SQL",
     "Sécurité & Auth",
-    "Django",
-    "Wagtail"
+    "Environnement & Énergie",
+    "Intelligence Artificielle & LLM",
+    "Design System & UI"
   ]
 }
