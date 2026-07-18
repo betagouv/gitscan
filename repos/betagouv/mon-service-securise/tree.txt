@@ -1,4 +1,8 @@
 .
+├── .claude
+│   └── skills
+│       └── migration-javascript-vers-typescript
+│           └── SKILL.md
 ├── .dockerignore
 ├── .env.template
 ├── .github
@@ -177,6 +181,7 @@
 │   ├── 20260507135337_ajouteContraintesSuperviseurs.js
 │   ├── 20260608151615_creationTableAuditAdminsOrganisations.js
 │   ├── 20260702121910_migreDonneesRisquesSpecifiquesV2AvecIdentifiantNumerique.js
+│   ├── 20260717130839_ajoutePixelDeSuiviDansTableUtilisateurs.js
 │   └── utilitaires
 │       └── pourChaqueLigne.js
 ├── package.json
@@ -790,8 +795,8 @@
 │   │       ├── donneesReferentielMesuresISO2700X.ts
 │   │       └── donneesReferentielMesuresReCyf.ts
 │   ├── modeles
-│   │   ├── acteurHomologation.js
-│   │   ├── acteursHomologation.js
+│   │   ├── acteurHomologation.ts
+│   │   ├── acteursHomologation.ts
 │   │   ├── actionsRecommandees.ts
 │   │   ├── activiteMesure.ts
 │   │   ├── autorisations
@@ -814,7 +819,7 @@
 │   │   ├── dossier.ts
 │   │   ├── dossiers.ts
 │   │   ├── elementsConstructibles.ts
-│   │   ├── elementsFabricables.js
+│   │   ├── elementsFabricables.ts
 │   │   ├── entite.ts
 │   │   ├── entiteExterne.js
 │   │   ├── entitesExternes.js
@@ -838,8 +843,8 @@
 │   │   ├── informationsService.ts
 │   │   ├── inscriptionUtilisateur.interface.ts
 │   │   ├── inscriptionUtilisateur.js
-│   │   ├── itemAvecDescription.js
-│   │   ├── itemsAvecDescription.js
+│   │   ├── itemAvecDescription.ts
+│   │   ├── itemsAvecDescription.ts
 │   │   ├── journalMSS
 │   │   │   ├── erreurs.js
 │   │   │   ├── evenement.js
@@ -898,14 +903,14 @@
 │   │   ├── parcoursUtilisateur.ts
 │   │   ├── parrainage.js
 │   │   ├── partiesPrenantes
-│   │   │   ├── developpementFourniture.js
-│   │   │   ├── fabriquePartiePrenante.js
-│   │   │   ├── hebergement.js
-│   │   │   ├── maintenanceService.js
-│   │   │   ├── partiePrenante.js
-│   │   │   ├── partiePrenanteSpecifique.js
-│   │   │   ├── partiesPrenantes.js
-│   │   │   └── securiteService.js
+│   │   │   ├── developpementFourniture.ts
+│   │   │   ├── fabriquePartiePrenante.ts
+│   │   │   ├── hebergement.ts
+│   │   │   ├── maintenanceService.ts
+│   │   │   ├── partiePrenante.ts
+│   │   │   ├── partiePrenanteSpecifique.ts
+│   │   │   ├── partiesPrenantes.ts
+│   │   │   └── securiteService.ts
 │   │   ├── pointsAcces.js
 │   │   ├── profils
 │   │   │   ├── mesures.js
@@ -918,7 +923,7 @@
 │   │   ├── risques.ts
 │   │   ├── risquesGeneraux.ts
 │   │   ├── risquesSpecifiques.ts
-│   │   ├── rolesResponsabilites.js
+│   │   ├── rolesResponsabilites.ts
 │   │   ├── service.js
 │   │   ├── sourceAuthentification.ts
 │   │   ├── statistiquesMesures.js
@@ -1046,7 +1051,9 @@
 │   │   │   ├── routesNonConnecteApiBibliotheques.js
 │   │   │   ├── routesNonConnecteApiStyles.js
 │   │   │   ├── routesNonConnecteOidc.ts
-│   │   │   └── routesNonConnectePage.js
+│   │   │   ├── routesNonConnectePage.js
+│   │   │   ├── routesNonConnecteWebhooks.schema.ts
+│   │   │   └── routesNonConnecteWebhooks.ts
 │   │   └── procedures.js
 │   ├── sel
 │   │   └── serviceVerificationCoherenceSels.js
@@ -1382,6 +1389,7 @@
 │   │   │   ├── inscription.d.ts
 │   │   │   └── inscription.ts
 │   │   ├── listeMesures
+│   │   │   ├── ActionsComplementaires.svelte
 │   │   │   ├── FiltreSurV1V2.svelte
 │   │   │   ├── ListeMesures.svelte
 │   │   │   ├── kit
@@ -1548,6 +1556,9 @@
 │   │   │   │   └── TooltipErreursMultiple.svelte
 │   │   │   ├── rapportTeleversementGenerique.types.d.ts
 │   │   │   └── tri.ts
+│   │   ├── referentielsExternesDeMesures
+│   │   │   ├── EncartReferentielsExternes.svelte
+│   │   │   └── referentielsExternes.ts
 │   │   ├── risques
 │   │   │   ├── IdentifiantRisque.svelte
 │   │   │   ├── LegendeMatriceRisques.svelte
@@ -1655,7 +1666,6 @@
 │   │   │   │   └── TiroirAssociationModelesMesureSpecifiqueAuService.svelte
 │   │   │   ├── modeVisiteGuidee
 │   │   │   │   └── donneesVisiteGuidee.ts
-│   │   │   ├── referentielsExternes.ts
 │   │   │   ├── stores
 │   │   │   │   ├── contributeurs.store.ts
 │   │   │   │   ├── mesures.store.ts
@@ -1974,8 +1984,8 @@
 │   │   ├── logo_mss.png
 │   │   └── middleware.js
 │   ├── modeles
-│   │   ├── acteurHomologation.spec.js
-│   │   ├── acteursHomologation.spec.js
+│   │   ├── acteurHomologation.spec.ts
+│   │   ├── acteursHomologation.spec.ts
 │   │   ├── autorisations
 │   │   │   ├── ajoutContributeurSurServices.spec.js
 │   │   │   ├── autorisation.spec.ts
@@ -2011,8 +2021,8 @@
 │   │   ├── identite.spec.ts
 │   │   ├── indiceCyber.spec.js
 │   │   ├── informationsHomologation.spec.js
-│   │   ├── itemAvecDescription.spec.js
-│   │   ├── itemsAvecDescriptions.spec.js
+│   │   ├── itemAvecDescription.spec.ts
+│   │   ├── itemsAvecDescriptions.spec.ts
 │   │   ├── journalMSS
 │   │   │   ├── constructeurEvenementCompletudeServiceModifiee.js
 │   │   │   ├── evenementAccesUtilisateurAdministreRetires.spec.ts
@@ -2061,14 +2071,14 @@
 │   │   │   └── objetPersistanceService.spec.js
 │   │   ├── parcoursUtilisateur.spec.ts
 │   │   ├── partiesPrenantes
-│   │   │   ├── developpementFourniture.spec.js
-│   │   │   ├── fabriquePartiePrenante.spec.js
-│   │   │   ├── hebergement.spec.js
-│   │   │   ├── maintenanceService.spec.js
-│   │   │   ├── partiePrenante.spec.js
-│   │   │   ├── partiePrenanteSpecifique.spec.js
-│   │   │   ├── partiesPrenantes.spec.js
-│   │   │   └── securiteService.spec.js
+│   │   │   ├── developpementFourniture.spec.ts
+│   │   │   ├── fabriquePartiePrenante.spec.ts
+│   │   │   ├── hebergement.spec.ts
+│   │   │   ├── maintenanceService.spec.ts
+│   │   │   ├── partiePrenante.spec.ts
+│   │   │   ├── partiePrenanteSpecifique.spec.ts
+│   │   │   ├── partiesPrenantes.spec.ts
+│   │   │   └── securiteService.spec.ts
 │   │   ├── pointsAcces.spec.js
 │   │   ├── profils
 │   │   │   ├── profil.spec.js
@@ -2078,7 +2088,7 @@
 │   │   ├── risqueSpecifique.spec.ts
 │   │   ├── risques.spec.ts
 │   │   ├── risquesSpecifiques.spec.ts
-│   │   ├── rolesResponsabilites.spec.js
+│   │   ├── rolesResponsabilites.spec.ts
 │   │   ├── service.spec.js
 │   │   ├── statistiquesMesuresGenerales.spec.js
 │   │   ├── suggestionAction.spec.ts
@@ -2168,7 +2178,8 @@
 │   │   │   ├── routesNonConnecteApiBibliotheques.spec.js
 │   │   │   ├── routesNonConnecteApiStyles.spec.js
 │   │   │   ├── routesNonConnecteOidc.spec.ts
-│   │   │   └── routesNonConnectePage.spec.js
+│   │   │   ├── routesNonConnectePage.spec.js
+│   │   │   └── routesNonConnecteWebhooks.spec.ts
 │   │   └── testeurMSS.js
 │   ├── sel
 │   │   └── serviceVerificationCoherenceSels.spec.js
@@ -2212,4 +2223,4 @@
 │       └── parametres.spec.mjs
 ├── tsconfig.json
 └── vitest.config.ts
-291 directories, 2050 files
+295 directories, 2057 files
