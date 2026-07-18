@@ -173,6 +173,7 @@
 │           ├── source_type.py
 │           ├── type_competence.py
 │           └── verse.py
+├── package.json
 └── src
     ├── ingestion
     │   ├── .envrc.sample
@@ -482,11 +483,18 @@
         │   │       └── vectorize_documents.py
         │   └── recruteur
         │       ├── __init__.py
+        │       ├── dtos
+        │       │   ├── __init__.py
+        │       │   └── recrutement_read_models.py
+        │       ├── services
+        │       │   ├── __init__.py
+        │       │   └── recrutement_query_service_interface.py
         │       └── usecases
         │           ├── creer_note.py
         │           ├── editer_note.py
         │           ├── get_organisme_recruteur.py
         │           ├── initialize_organisme_steps.py
+        │           ├── lister_mes_recrutements.py
         │           ├── lister_notes_candidature.py
         │           ├── supprimer_note.py
         │           └── update_organisme_steps.py
@@ -500,6 +508,7 @@
         │   ├── __init__.py
         │   ├── app_config.py
         │   ├── exception_handler.py
+        │   ├── logger_names.py
         │   ├── settings
         │   │   ├── __init__.py
         │   │   ├── _sentry.py
@@ -634,10 +643,12 @@
         │       │   └── recrutement_errors.py
         │       ├── events
         │       │   ├── __init__.py
+        │       │   ├── candidature_events.py
         │       │   ├── note_events.py
         │       │   └── organisme_events.py
         │       ├── repositories
         │       │   ├── __init__.py
+        │       │   ├── candidature_recruteur_repository_interface.py
         │       │   ├── note_repository_interface.py
         │       │   ├── organisme_repository_interface.py
         │       │   └── recrutement_repository_interface.py
@@ -759,6 +770,7 @@
         │   │   │   │   ├── 0001_initial.py
         │   │   │   │   ├── 0002_notemodel.py
         │   │   │   │   ├── 0003_recrutement_etapes.py
+        │   │   │   │   ├── 0004_alter_recrutementagentmodel_recrutement.py
         │   │   │   │   └── __init__.py
         │   │   │   └── models
         │   │   │       ├── __init__.py
@@ -854,6 +866,50 @@
         │   │   ├── ocr_extractor.py
         │   │   ├── piste_client.py
         │   │   └── talentsoft_client.py
+        │   ├── factories
+        │   │   ├── __init__.py
+        │   │   ├── api_log_factory.py
+        │   │   ├── candidate
+        │   │   │   ├── __init__.py
+        │   │   │   ├── candidature_factory.py
+        │   │   │   └── cv_metadata_factory.py
+        │   │   ├── commons
+        │   │   │   ├── __init__.py
+        │   │   │   ├── audit_log_factory.py
+        │   │   │   └── stat_snapshot_factory.py
+        │   │   ├── datetime_utils.py
+        │   │   ├── identite
+        │   │   │   ├── __init__.py
+        │   │   │   ├── agent_factory.py
+        │   │   │   ├── candidat_factory.py
+        │   │   │   ├── organisme_factory.py
+        │   │   │   └── utilisateur_factory.py
+        │   │   ├── ingestion
+        │   │   │   ├── __init__.py
+        │   │   │   ├── api_log_daily_agg_model_factory.py
+        │   │   │   ├── api_log_model_factory.py
+        │   │   │   ├── document_factory.py
+        │   │   │   ├── ingres_corps_factories.py
+        │   │   │   ├── ingres_metiers_factories.py
+        │   │   │   ├── offer_payload_factory.py
+        │   │   │   ├── source_factory.py
+        │   │   │   ├── talentsoft_factories.py
+        │   │   │   └── vectorized_document_factory.py
+        │   │   ├── recruteur
+        │   │   │   ├── __init__.py
+        │   │   │   ├── candidature_recruteur_factory.py
+        │   │   │   ├── etapes_recrutement_factory.py
+        │   │   │   ├── note_factory.py
+        │   │   │   ├── organisme_factory.py
+        │   │   │   └── recrutement_factory.py
+        │   │   ├── referentiel
+        │   │   │   ├── __init__.py
+        │   │   │   ├── concours_factory.py
+        │   │   │   ├── concours_row_factory.py
+        │   │   │   ├── corps_factory.py
+        │   │   │   ├── metier_factory.py
+        │   │   │   └── offer_factory.py
+        │   │   └── seed_recruteur_datas.py
         │   ├── gateways
         │   │   ├── __init__.py
         │   │   ├── candidate
@@ -877,11 +933,14 @@
         │   ├── mappers
         │   │   ├── __init__.py
         │   │   ├── candidature_mapper.py
+        │   │   ├── metier_mapper.py
         │   │   ├── note_mapper.py
+        │   │   ├── offer_mapper.py
         │   │   ├── organisme_identite_mapper.py
         │   │   ├── organisme_recruteur_mapper.py
         │   │   ├── qdrant_filters_mapper.py
         │   │   ├── queryset_page.py
+        │   │   ├── queryset_page_mapper.py
         │   │   ├── recrutement_mapper.py
         │   │   └── stat_snapshot_mapper.py
         │   └── repositories
@@ -912,6 +971,7 @@
         │       │   ├── postgres_note_query_service.py
         │       │   ├── postgres_note_repository.py
         │       │   ├── postgres_organisme_repository.py
+        │       │   ├── postgres_recrutement_query_service.py
         │       │   └── postgres_recrutement_repository.py
         │       ├── repository_factory.py
         │       └── shared
@@ -1138,6 +1198,8 @@
         │   │   │   │       ├── AppShell.vue
         │   │   │   │       ├── CspAppLayout
         │   │   │   │       │   └── CspAppLayout.vue
+        │   │   │   │       ├── CspPageContainer
+        │   │   │   │       │   └── CspPageContainer.vue
         │   │   │   │       ├── CspPageHeader
         │   │   │   │       │   ├── CspPageHeader.stories.ts
         │   │   │   │       │   └── CspPageHeader.vue
@@ -1158,7 +1220,8 @@
         │   │   │   │   │   └── useDebounce.ts
         │   │   │   │   ├── dnd
         │   │   │   │   │   ├── useDraggableElement.ts
-        │   │   │   │   │   └── useDropTargetElement.ts
+        │   │   │   │   │   ├── useDropTargetElement.ts
+        │   │   │   │   │   └── useKanbanDnd.ts
         │   │   │   │   ├── storage
         │   │   │   │   │   ├── useDraft.test.ts
         │   │   │   │   │   └── useDraft.ts
@@ -1175,6 +1238,33 @@
         │   │   │   │   └── organisme.ts
         │   │   │   ├── env.d.ts
         │   │   │   ├── features
+        │   │   │   │   ├── candidatures
+        │   │   │   │   │   ├── api.ts
+        │   │   │   │   │   ├── columns.ts
+        │   │   │   │   │   ├── components
+        │   │   │   │   │   │   ├── CandidatureKanbanCard.vue
+        │   │   │   │   │   │   ├── CandidatureKanbanColumn.vue
+        │   │   │   │   │   │   ├── CandidaturesFiltersDrawer.vue
+        │   │   │   │   │   │   ├── CandidaturesKanbanBoard.vue
+        │   │   │   │   │   │   ├── CandidaturesViewSwitch.vue
+        │   │   │   │   │   │   └── cells
+        │   │   │   │   │   │       └── EtapeRecrutementCell.vue
+        │   │   │   │   │   ├── composables
+        │   │   │   │   │   │   ├── useCandidatures.test.ts
+        │   │   │   │   │   │   ├── useCandidatures.ts
+        │   │   │   │   │   │   └── useCandidaturesFilters.ts
+        │   │   │   │   │   ├── format.ts
+        │   │   │   │   │   ├── routes.ts
+        │   │   │   │   │   ├── types.ts
+        │   │   │   │   │   ├── utils
+        │   │   │   │   │   │   ├── candidat.test.ts
+        │   │   │   │   │   │   ├── candidat.ts
+        │   │   │   │   │   │   ├── filters.test.ts
+        │   │   │   │   │   │   └── filters.ts
+        │   │   │   │   │   └── views
+        │   │   │   │   │       ├── CandidaturesKanbanView.vue
+        │   │   │   │   │       ├── CandidaturesListeView.vue
+        │   │   │   │   │       └── CandidaturesView.vue
         │   │   │   │   ├── etapes-recrutement
         │   │   │   │   │   ├── api.ts
         │   │   │   │   │   ├── components
@@ -1194,11 +1284,9 @@
         │   │   │   │       │   └── cells
         │   │   │   │       │       ├── CandidaturesCell.vue
         │   │   │   │       │       ├── ElapsedDaysCell.vue
-        │   │   │   │       │       ├── EtapeRecrutementCell.vue
         │   │   │   │       │       ├── OffreActionsCell.vue
         │   │   │   │       │       └── OffreIntituleCell.vue
         │   │   │   │       ├── composables
-        │   │   │   │       │   ├── useRecrutementCandidatures.ts
         │   │   │   │       │   ├── useRecrutements.test.ts
         │   │   │   │       │   ├── useRecrutements.ts
         │   │   │   │       │   ├── useRecrutementsFilters.test.ts
@@ -1211,8 +1299,7 @@
         │   │   │   │       │   ├── filters.test.ts
         │   │   │   │       │   └── filters.ts
         │   │   │   │       └── views
-        │   │   │   │           ├── MesRecrutementsView.vue
-        │   │   │   │           └── RecrutementCandidaturesView.vue
+        │   │   │   │           └── MesRecrutementsView.vue
         │   │   │   ├── router
         │   │   │   │   └── index.ts
         │   │   │   ├── stores
@@ -1243,7 +1330,9 @@
         │   │   │   │   ├── date.test.ts
         │   │   │   │   ├── date.ts
         │   │   │   │   ├── format.test.ts
-        │   │   │   │   └── format.ts
+        │   │   │   │   ├── format.ts
+        │   │   │   │   ├── search.test.ts
+        │   │   │   │   └── search.ts
         │   │   │   └── views
         │   │   │       ├── HomeView.vue
         │   │   │       └── ParametresView.vue
@@ -1441,6 +1530,7 @@
         │   │   │   └── test_vectorize_documents.py
         │   │   └── recruteur
         │   │       ├── __init__.py
+        │   │       ├── test_lister_mes_recrutements.py
         │   │       ├── test_lister_note_usecases.py
         │   │       ├── test_note_usecases.py
         │   │       └── test_organisme_steps.py
@@ -1463,49 +1553,6 @@
         │   │       ├── test_note.py
         │   │       ├── test_organisme.py
         │   │       └── test_recrutement.py
-        │   ├── factories
-        │   │   ├── __init__.py
-        │   │   ├── api_log_factory.py
-        │   │   ├── candidate
-        │   │   │   ├── __init__.py
-        │   │   │   ├── candidature_factory.py
-        │   │   │   └── cv_metadata_factory.py
-        │   │   ├── commons
-        │   │   │   ├── __init__.py
-        │   │   │   ├── audit_log_factory.py
-        │   │   │   └── stat_snapshot_factory.py
-        │   │   ├── datetime_utils.py
-        │   │   ├── identite
-        │   │   │   ├── __init__.py
-        │   │   │   ├── agent_factory.py
-        │   │   │   ├── candidat_factory.py
-        │   │   │   ├── organisme_factory.py
-        │   │   │   └── utilisateur_factory.py
-        │   │   ├── ingestion
-        │   │   │   ├── __init__.py
-        │   │   │   ├── api_log_daily_agg_model_factory.py
-        │   │   │   ├── api_log_model_factory.py
-        │   │   │   ├── document_factory.py
-        │   │   │   ├── ingres_corps_factories.py
-        │   │   │   ├── ingres_metiers_factories.py
-        │   │   │   ├── offer_payload_factory.py
-        │   │   │   ├── source_factory.py
-        │   │   │   ├── talentsoft_factories.py
-        │   │   │   └── vectorized_document_factory.py
-        │   │   ├── recruteur
-        │   │   │   ├── __init__.py
-        │   │   │   ├── candidature_recruteur_factory.py
-        │   │   │   ├── etapes_recrutement_factory.py
-        │   │   │   ├── note_factory.py
-        │   │   │   ├── organisme_factory.py
-        │   │   │   └── recrutement_factory.py
-        │   │   └── referentiel
-        │   │       ├── __init__.py
-        │   │       ├── concours_factory.py
-        │   │       ├── concours_row_factory.py
-        │   │       ├── corps_factory.py
-        │   │       ├── metier_factory.py
-        │   │       └── offer_factory.py
         │   ├── infrastructure
         │   │   ├── __init__.py
         │   │   ├── authentification
@@ -1555,6 +1602,7 @@
         │   │   │   └── test_vectorize_documents.py
         │   │   ├── recruteur
         │   │   │   ├── __init__.py
+        │   │   │   ├── test_lister_mes_recrutements.py
         │   │   │   ├── test_note_query_service.py
         │   │   │   ├── test_note_repository.py
         │   │   │   ├── test_notes_usecases.py
@@ -1651,9 +1699,8 @@
         │       ├── mock_api_response_factory.py
         │       ├── mock_embedding_generator.py
         │       ├── pdf_test_utils.py
-        │       ├── seed_recruteur_datas.py
         │       ├── shared_fixtures.py
         │       ├── test_api_request_logger_middleware.py
         │       └── test_interface_aware_mock.py
         └── uv.lock
-339 directories, 1319 files
+348 directories, 1357 files
