@@ -1,15 +1,14 @@
-## Changelog : upptime (30 derniers jours, au 17 juillet 2026)
+## Changelog : upptime (30 derniers jours, au 18 juillet 2026)
 
 ### Résumé
-Ce changelog récapitule les mises à jour récentes d'upptime, principalement des vérifications de disponibilité automatiques des différents services surveillés. Les mises à jour consistent en des rapports réguliers sur l'état de santé des services, avec des notifications en cas de succès ou d'échec des vérifications.  Plusieurs mises à jour de la librairie upptime ont également été effectuées.
+Ce changelog récapitule les mises à jour d'upptime sur les 30 derniers jours. Il s'agit principalement de mises à jour automatiques de l'état des différents services surveillés par le projet, avec quelques mises à jour de la librairie upptime elle-même. Les services surveillés semblent globalement stables.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle majeure n'a été apportée durant cette période. Le projet se concentre sur la surveillance continue et la stabilité des services existants.
+Aucune évolution fonctionnelle majeure n'a été apportée au cours des 30 derniers jours. Les mises à jour concernent principalement la surveillance continue et la mise à jour de l'état des services.
 
 ### Évolutions techniques
-*   Mise à jour régulière de la librairie `@upptime` vers les versions 1.43.0, 1.43.1, 1.43.2, 1.43.3, 1.43.4, 1.43.5, 1.43.6, 1.43.7, 1.43.8 et 1.43.9.
-*   Mises à jour automatiques des rapports d'état des différents services surveillés (API Apprentissage, Percona, SENTRY, Monitoring, BAL production, API Referentiel, Tableau de bord, La bonne alternance, Laboratoire La bonne alternance).
+- Mises à jour régulières de la librairie `@upptime` vers les versions 1.43.0, 1.43.1, 1.43.2, 1.43.3, 1.43.4, 1.43.5, 1.43.6, 1.43.7, 1.43.8 et 1.43.9.
 
 ### Autres changements
-*   Mise à jour régulière du fichier `README.md` et du résumé de l'état des services.
-*   Corrections mineures et améliorations continues du bot de surveillance.
+- Mises à jour régulières des fichiers `README.md` et du résumé d'état.
+- Corrections ponctuelles d'erreurs de surveillance (services passant de "up" à "down" puis de nouveau "up").
