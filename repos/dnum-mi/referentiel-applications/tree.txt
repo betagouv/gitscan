@@ -311,6 +311,12 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260707134153_add_permission_write_data
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260715120000_add_simple_prefix_search_index
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260716120000_add_actortype_is_admin
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260717120000_remove_license_tables
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   ├── schema
 │   │   │   ├── applications.prisma
@@ -320,7 +326,6 @@
 │   │   │   ├── externals.prisma
 │   │   │   ├── hosting.prisma
 │   │   │   ├── labels.prisma
-│   │   │   ├── license.prisma
 │   │   │   ├── mdit-campaign.prisma
 │   │   │   ├── metadata.prisma
 │   │   │   ├── notification-log.prisma
@@ -419,6 +424,7 @@
 │   │   │   ├── guards
 │   │   │   │   └── permission.guard.ts
 │   │   │   ├── service
+│   │   │   │   ├── check-permissions.service.spec.ts
 │   │   │   │   ├── check-permissions.service.ts
 │   │   │   │   ├── excel-builder.service.ts
 │   │   │   │   └── prisma-query-builder.service.ts
@@ -542,14 +548,6 @@
 │   │   │   ├── labels.controller.ts
 │   │   │   ├── labels.module.ts
 │   │   │   └── labels.service.ts
-│   │   ├── license
-│   │   │   ├── dto
-│   │   │   │   └── license.dto.ts
-│   │   │   ├── entities
-│   │   │   │   └── license.entity.ts
-│   │   │   ├── license.controller.ts
-│   │   │   ├── license.module.ts
-│   │   │   └── license.service.ts
 │   │   ├── links
 │   │   │   ├── dto
 │   │   │   │   └── links.dto.ts
@@ -778,7 +776,6 @@
 │   │   ├── jest.setup.ts
 │   │   ├── label-source.e2e-spec.ts
 │   │   ├── labels.e2e-spec.ts
-│   │   ├── licenses.e2e-spec.ts
 │   │   ├── links.e2e-spec.ts
 │   │   ├── mdit-campaign.e2e-spec.ts
 │   │   ├── organization.e2e-spec.ts
@@ -799,6 +796,8 @@
 ├── commitlint.config.mjs
 ├── doc
 │   └── adr
+│       ├── 0001-record-architecture-decisions.md
+│       ├── 0002-dataviz-superset.md
 │       ├── 0003-monorepo-nestjs-vue.md
 │       ├── 0004-migrations-prisma-sql-manuel.md
 │       ├── 0005-authentification-oidc.md
@@ -1012,9 +1011,6 @@
 │   │   │   ├── label
 │   │   │   │   ├── LabelList.vue
 │   │   │   │   └── LabelModal.vue
-│   │   │   ├── license
-│   │   │   │   ├── LicenseForm.vue
-│   │   │   │   └── LicenseTab.vue
 │   │   │   ├── modal
 │   │   │   │   ├── AddRelationModal.vue
 │   │   │   │   ├── DeleteConfirmationModal.vue
@@ -1187,4 +1183,4 @@
 │       ├── campaign.mjs
 │       └── sync-issue.mjs
 └── release-please-config.json
-319 directories, 870 files
+318 directories, 867 files

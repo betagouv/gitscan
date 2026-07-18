@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/dnum-mi/referentiel-applications",
   "name": "referentiel-applications",
-  "description": "Ce projet catalogue et gère les informations sur les applications utilisées au sein du ministère de l'Intérieur. Son objectif est de fournir un point de vérité unique pour répertorier et gouverner les métadonnées de ces applications (statut, acteurs, conformité, hébergement, données, dette technique…).",
+  "description": "Ce projet est un catalogue et un gestionnaire d'informations sur les applications utilisées au sein du ministère de l'Intérieur. Il fournit un point de vérité unique pour répertorier et gouverner les métadonnées de ces applications (statut, acteurs, conformité, hébergement, données, dette technique…).",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -10,12 +10,11 @@
     "Statistiques & Rapports",
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
+    "Notifications & Alertes",
     "Sécurité & Conformité",
     "Données & Schémas",
     "Administration & Backoffice",
-    "Interface utilisateur & Design",
-    "Suivi & Traçabilité",
-    "Accessibilité & i18n"
+    "Interface utilisateur & Design"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -38,13 +37,15 @@
       "jwt",
       "session"
     ],
-    "providers": []
+    "providers": [
+      "Keycloak"
+    ]
   },
-  "tests": "Tests unitaires et E2E (Playwright)",
+  "tests": "Tests unitaires et E2E (Cypress)",
   "workflows": [
-    "CI/CD"
+    "CI/CD avec GitHub Actions"
   ],
-  "lastActivity": "2026-07-10T00:00:00Z",
+  "lastActivity": "2026-07-16T00:00:00Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
