@@ -1,48 +1,40 @@
-## Changelog : iterion (30 derniers jours, au 2026-07-05)
+## Changelog : iterion (30 derniers jours, au 2026-07-19)
 
 ### Résumé
-Ce mois-ci, iterion a connu des améliorations significatives en termes de gestion des secrets, d'intégration de l'écosystème de développement (Forge, GitHub), d'expérience utilisateur dans l'interface studio, et de robustesse générale du système. Des efforts importants ont été consacrés à l'amélioration de la sécurité, notamment avec l'introduction de nouvelles fonctionnalités de gestion des secrets et d'audit de sécurité. L'interface utilisateur a été modernisée et rendue plus intuitive, et des corrections de bugs ont été apportées pour améliorer la stabilité et la fiabilité.
+Ce mois-ci, iterion a connu une évolution majeure avec l'introduction de fonctionnalités de gestion de workflows plus puissantes, notamment des améliorations significatives dans la gestion des exécutions, l'intégration de nouveaux outils et une refonte de l'interface utilisateur pour une meilleure expérience. L'accent a été mis sur l'amélioration de la flexibilité, de la robustesse et de la facilité d'utilisation de la plateforme.
 
 ### Évolutions fonctionnelles
-*   **Gestion des secrets:** Introduction d'une gestion des secrets locale scellée pour l'environnement de bureau/CLI, améliorant la sécurité et la gestion des informations sensibles.
-*   **Intégration Forge:** Amélioration de l'intégration avec GitHub et Forgejo, incluant la gestion des applications OAuth, la connexion aux dépôts et la possibilité de créer des applications GitHub directement depuis l'interface.
-*   **Interface Studio:**
-    *   Refonte de l'interface utilisateur avec de nouveaux composants (boutons, champs de formulaire, etc.) pour une expérience plus cohérente et moderne.
-    *   Amélioration de la navigation et de l'organisation des menus.
-    *   Ajout d'un éditeur de métadonnées pour les bots, permettant de gérer plus facilement les informations associées à chaque bot.
-    *   Affichage amélioré des journaux de run et des informations de débogage.
-    *   Possibilité de filtrer et de trier les runs par bot et par dépôt.
-*   **Webhooks:** Ajout de la prise en charge des webhooks pour déclencher des actions en réponse à des événements sur les plateformes Forge (GitHub, GitLab, Forgejo).
-*   **Board:** Amélioration du tableau de bord avec la possibilité de créer des vues personnalisées et de regrouper les tâches par différents critères.
-*   **Amélioration de l'exécution des bots:** Possibilité de configurer des budgets et des limites de temps pour l'exécution des bots.
-*   **Nouvelles fonctionnalités de débogage:** Ajout d'outils de débogage pour faciliter l'identification et la résolution des problèmes.
-*   **Amélioration de la sécurité:** Ajout de mesures de sécurité pour protéger contre les attaques potentielles, telles que l'injection de code et les vulnérabilités de sécurité.
+*   **Intégration Forge (GitHub, GitLab, Forgejo):** Ajout de la connexion à des dépôts via des applications GitHub, OAuth et PAT, permettant une intégration plus fluide avec les outils de développement existants.
+*   **Gestion des Runs:** Possibilité de supprimer des runs, de visualiser l'historique des exécutions et de les gérer plus efficacement.
+*   **Amélioration de l'interface utilisateur:** Refonte de l'interface utilisateur avec de nouveaux composants (boutons, champs de saisie, etc.) pour une expérience plus cohérente et intuitive.
+*   **Nouvelles fonctionnalités de débogage:** Ajout de fonctionnalités pour faciliter le débogage des workflows, notamment la visualisation des logs et des variables.
+*   **Gestion des secrets:** Amélioration de la gestion des secrets, avec la possibilité de les stocker et de les utiliser de manière sécurisée.
+*   **Planification des tâches:** Introduction de la planification des tâches avec des options de configuration avancées.
+*   **Nouvelles commandes CLI:** Ajout de nouvelles commandes CLI pour faciliter l'automatisation des tâches.
+*   **Amélioration de la gestion des erreurs:** Amélioration de la gestion des erreurs et des messages d'erreur plus clairs.
+*   **Support des plugins:** Possibilité d'installer et de gérer des plugins pour étendre les fonctionnalités de la plateforme.
+*   **Nouvelles capacités de modélisation:** Ajout de nouvelles capacités de modélisation pour définir des workflows plus complexes.
+*   **Amélioration de la performance:** Optimisations de la performance pour une exécution plus rapide des workflows.
+*   **Intégration de nouveaux outils:** Ajout de l'intégration avec de nouveaux outils, tels que des modèles de langage et des services d'analyse de données.
 
 ### Évolutions techniques
-*   **Refactoring:** Refactorisation importante du code pour améliorer la lisibilité, la maintenabilité et la performance.
-*   **Amélioration de la gestion des erreurs:** Amélioration de la gestion des erreurs pour fournir des messages d'erreur plus informatifs et faciliter le débogage.
-*   **Optimisation des performances:** Optimisation des performances pour réduire la consommation de ressources et améliorer la réactivité de l'application.
+*   **Refactorisation du code:** Refactorisation importante du code pour améliorer la maintenabilité et la lisibilité.
+*   **Amélioration de la sécurité:** Amélioration de la sécurité de la plateforme, notamment en corrigeant des vulnérabilités potentielles.
 *   **Mise à jour des dépendances:** Mise à jour des dépendances pour bénéficier des dernières corrections de bugs et améliorations de sécurité.
-*   **Infrastructure:** Amélioration de l'infrastructure pour améliorer la scalabilité et la fiabilité de l'application.
-*   **Tests:** Ajout de nouveaux tests unitaires et d'intégration pour améliorer la couverture des tests et garantir la qualité du code.
-*   **Sécurité:**
-    *   Implémentation d'un système de gestion des secrets plus robuste.
-    *   Amélioration de la sécurité des webhooks.
-    *   Correction de plusieurs vulnérabilités de sécurité.
-*   **Architecture:**
-    *   Refonte de l'architecture de certains composants pour améliorer la modularité et la flexibilité.
-    *   Utilisation de nouvelles technologies et de nouveaux frameworks pour améliorer la performance et la scalabilité.
-*   **CI/CD:** Amélioration du pipeline CI/CD pour automatiser le processus de construction, de test et de déploiement.
+*   **Amélioration de l'architecture:** Amélioration de l'architecture de la plateforme pour une meilleure évolutivité et une meilleure performance.
+*   **Intégration continue/Déploiement continu (CI/CD):** Amélioration du pipeline CI/CD pour une livraison plus rapide et plus fiable des nouvelles fonctionnalités.
+*   **Utilisation de nouveaux outils de développement:** Adoption de nouveaux outils de développement pour améliorer la productivité et la qualité du code.
+*   **Amélioration des tests:** Ajout de nouveaux tests pour améliorer la couverture de code et la fiabilité de la plateforme.
+*   **Optimisation des performances:** Optimisation des performances de la plateforme, notamment en réduisant la consommation de mémoire et en améliorant la vitesse d'exécution.
+*   **Amélioration de la scalabilité:** Amélioration de la scalabilité de la plateforme pour pouvoir gérer un nombre croissant d'utilisateurs et de workflows.
+*   **Implémentation de nouvelles fonctionnalités de surveillance:** Ajout de nouvelles fonctionnalités de surveillance pour suivre l'état de la plateforme et détecter les problèmes potentiels.
+*   **Amélioration de la gestion des logs:** Amélioration de la gestion des logs pour faciliter le débogage et l'analyse des problèmes.
 
 ### Autres changements
-*   **Documentation:** Mise à jour de la documentation pour refléter les dernières modifications et améliorations.
-*   **Configuration:** Ajout de nouvelles options de configuration pour personnaliser le comportement de l'application.
-*   **Nettoyage du code:** Nettoyage du code pour supprimer le code obsolète et améliorer la lisibilité.
-*   **Corrections de bugs:** Correction de nombreux bugs pour améliorer la stabilité et la fiabilité de l'application.
-*   **Amélioration des logs:** Amélioration des logs pour faciliter le débogage et le suivi des événements.
-*   **Ajout de nouvelles métriques:** Ajout de nouvelles métriques pour surveiller les performances et l'utilisation de l'application.
-*   **Amélioration de l'accessibilité:** Amélioration de l'accessibilité de l'application pour les utilisateurs handicapés.
-
-[#49](https://github.com/SocialGouv/iterion/issues/49)
-[#64](https://github.com/SocialGouv/iterion/issues/64)
-[#78](https://github.com/SocialGouv/iterion/issues/78)
+*   **Documentation:** Mise à jour de la documentation pour refléter les dernières modifications de la plateforme.
+*   **Corrections de bugs:** Correction de nombreux bugs et améliorations de la stabilité de la plateforme.
+*   **Amélioration de la configuration:** Amélioration de la configuration de la plateforme pour une installation et une maintenance plus faciles.
+*   **Mise à jour des dépendances:** Mise à jour des dépendances pour bénéficier des dernières corrections de bugs et améliorations de sécurité.
+*   **Amélioration de la gestion des erreurs:** Amélioration de la gestion des erreurs et des messages d'erreur plus clairs.
+*   **Ajout de nouveaux tests:** Ajout de nouveaux tests pour améliorer la couverture de code et la fiabilité de la plateforme.
+*   **Refactorisation du code:** Refactorisation du code pour améliorer la maintenabilité et la lisibilité.

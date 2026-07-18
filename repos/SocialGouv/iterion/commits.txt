@@ -1,3 +1,347 @@
+2026-07-17T21:04:41+02:00 - 85d4004 - devthejo : fix(server): graceful GitHub App callback on setup_action=update
+2026-07-17T20:25:40+02:00 - 2168303 - devthejo : feat(server,studio): studio import route — .js workflow script → draft bot
+2026-07-17T20:08:33+02:00 - 381278a - devthejo : feat(studio): tick-policy editor on the Scheduled bots surface
+2026-07-17T20:04:47+02:00 - efb70cb - devthejo : refactor(schedgate): unify the overlap→guard gate sequence behind Apply
+2026-07-17T19:46:01+02:00 - ef9b825 - devthejo : feat(cli): iterion import — lossy Claude-Code workflow-script (.js) → draft .bot
+2026-07-17T19:46:01+02:00 - 8db1483 - devthejo : chore(openapi): regenerate spec + studio types for steering/shell/triggers-health routes
+2026-07-17T19:46:00+02:00 - 895702c - devthejo : feat(server,studio): settings-provenance captions on the Launch dialog
+2026-07-17T19:44:54+02:00 - eebf619 - devthejo : feat(store): ListRunsBySchedule reverse query + schedule run provenance
+2026-07-17T19:44:54+02:00 - cd918ab - devthejo : feat(cloudsched): schedgate gate between CAS win and launch + tenant tick audit
+2026-07-17T19:44:54+02:00 - a7413fe - devthejo : feat(runview): live-steering service commands with truthful contract
+2026-07-17T19:44:54+02:00 - a599f24 - devthejo : feat(runtime): live override channel — resume-safe loop bumps and budget raises
+2026-07-17T19:44:54+02:00 - 99e12fa - devthejo : feat(observability): background-loop liveness + panic isolation
+2026-07-17T19:44:54+02:00 - 8c38166 - devthejo : feat(trigger): schedule-gate on the spine scheduler + typed run provenance
+2026-07-17T19:44:54+02:00 - 8b9b296 - devthejo : feat(store): durable deletion tombstones — late writers can't resurrect runs
+2026-07-17T19:44:54+02:00 - 878c6da - devthejo : feat(server): HTTP + WS routes for live-run steering
+2026-07-17T19:44:54+02:00 - 77cf020 - devthejo : feat(studio): live steering affordances on the Overview meters
+2026-07-17T19:44:54+02:00 - 75f6375 - devthejo : feat(runtime): distinct classification for provider usage-window blocks
+2026-07-17T19:44:54+02:00 - 626cff9 - devthejo : feat(alert): persist stall episodes as run_health events
+2026-07-17T19:44:54+02:00 - 625f3e3 - devthejo : feat(server,studio): post-mortem shell in the preserved run worktree
+2026-07-17T19:44:54+02:00 - 5b65698 - devthejo : feat(queue,runner,cloudpublisher): cross-process run steering over NATS
+2026-07-17T19:44:54+02:00 - 59c6a1e - devthejo : feat(dsl): explicit else fallback edge — `src -> dst else`
+2026-07-17T19:44:54+02:00 - 54e7a87 - devthejo : feat(cli): host-cron schedule gate — overlap skip, guard command, tick audit
+2026-07-17T19:44:54+02:00 - 4c27e40 - devthejo : feat(schedgate): shared overlap policy + guard exec + tick record
+2026-07-17T19:44:54+02:00 - 1e39888 - devthejo : feat(git,server,studio): lines-changed stat on finalized worktree runs
+2026-07-17T19:29:11+02:00 - cf47255 - devthejo : fix(runtime): cloud resume routes queued runs by checkpoint evidence
+2026-07-17T19:29:11+02:00 - 07f0e9b - devthejo : feat(studio): launch page leads with target+inputs; scheduled bots get a management surface
+2026-07-17T18:44:15+02:00 - a6b5cc8 - devthejo : docs: studio UX audit 2026-07 — shipped themes + ranked backlog
+2026-07-17T18:40:11+02:00 - b24361e - devthejo : feat(studio): humanize node ids in the run console
+2026-07-17T18:40:01+02:00 - 005722f - devthejo : feat(studio+server): repo-first everywhere — Nexie targets the active repo, pipelines scope, repo pickers
+2026-07-17T18:04:29+02:00 - b67e5d1 - devthejo : feat(studio+server): people flows work without email — invite links, token redemption, admin password reset
+2026-07-17T18:04:16+02:00 - 4514adf - devthejo : feat(studio): cloud Home golden path + repo-first shell polish
+2026-07-17T18:04:07+02:00 - 048c8e8 - devthejo : fix(studio): cloud mode tells the truth — no dead ends, no local-only affordances
+2026-07-17T17:18:40Z - 410cd1d - Jo : fix(bots): harden feed-watch against editorial prompt-injection & feed SSRF (#225)
+2026-07-17T17:08:11+02:00 - 75e7bdd - devthejo : fix(studio): whats-next pre-flight surfaces terminal outcome instead of infinite loader
+2026-07-17T16:46:28+02:00 - 2552793 - devthejo : docs(diag): GitHub installation-widening token matrix (gho/fine-grained rejected, ghp+repo works)
+2026-07-17T14:43:39+02:00 - 47f667d - devthejo : fix(studio): board hidden-count hint + single wizard disclosure; e2e bilan
+2026-07-17T14:23:15+02:00 - edda807 - devthejo : fix(studio): create-repo connection picker unions the full connection list
+2026-07-17T14:15:51+02:00 - 3f2b44e - devthejo : fix(bots): repo: block serializes snake_case on the wire
+2026-07-17T13:53:37+02:00 - f95e1cd - devthejo : feat(studio): guided connect-repo wizard + repo-centric integrations
+2026-07-17T13:53:37+02:00 - cacb752 - devthejo : feat(studio): Launch 'Target repository' section from the bot's repo: block
+2026-07-17T13:53:37+02:00 - b89c47c - devthejo : fix(runtime): worktree:auto degrades in-place on an empty repo (unborn HEAD)
+2026-07-17T13:53:37+02:00 - 3b9ed9e - devthejo : feat(bots): Appy declares its repo need + fresh-repo publication path
+2026-07-17T13:53:37+02:00 - 0d92804 - devthejo : feat(runs): repo-targeted launches — repo_url + connection_id on POST /api/runs
+2026-07-17T13:20:02+02:00 - e7ccff9 - devthejo : feat(studio): repo-first shell — RepoSwitcher, scoped views, team escamotée
+2026-07-17T13:20:02+02:00 - d05c2a2 - devthejo : feat(forge): RepoCreator capability — create repositories on github/gitlab/forgejo
+2026-07-17T13:20:02+02:00 - a0712be - devthejo : feat(bots): manifest repo: block — a bot's runtime repository need
+2026-07-17T13:20:02+02:00 - 7e4e424 - devthejo : feat(forge): wizard-resumable callbacks + connection health + opt-in create-repo grant
+2026-07-17T13:20:02+02:00 - 53756a7 - devthejo : feat(board): external repo link writable on native cards
+2026-07-17T13:20:01+02:00 - e08871d - devthejo : feat(forge): team-wide connected-repo aggregator GET /api/teams/{id}/forge/repos
+2026-07-17T12:52:52+02:00 - 2b8b72c - devthejo : fix(studio): replay pace was halved by a stale-ref re-schedule
+2026-07-17T12:39:25Z - f3749f1 - Victor Zeinstra : feat(board): render image-path inputs as a carousel on the /pipelines card sidebar (#224)
+2026-07-17T12:37:27+02:00 - d987654 - devthejo : fix(studio): timestamp-true run replay with idle-gap compression
+2026-07-17T12:37:27+02:00 - 4395318 - devthejo : fix(studio): dedicated /login route, landing Sign-in buttons navigate to it
+2026-07-17T12:37:27+02:00 - 0dcb244 - devthejo : docs(diag): connect-repo diagnostic checklist + 2026-07-17 prod findings
+2026-07-17T10:11:34Z - a221e1e - Jo : docs(bot-runs): feed-watch cloud rollout — native scheduler on prod, veille live on ephemeral runners (#223)
+2026-07-17T09:40:00Z - 33f6f42 - Jo : fix(bots): feed-watch synthesize pins backend claude_code (forfait-compatible) (#222)
+2026-07-17T08:57:04Z - 30ef868 - Jo : fix(bots): feed-watch drops board capability — unblocks cloud digest (#221)
+2026-07-17T05:59:14Z - 575c204 - Jo : fix(bots): feed-watch git-push state is rebase-retry safe for concurrent cloud runs (#220)
+2026-07-17T05:32:47Z - 7aa80aa - Jo : feat(cloud): native recurring schedules can run stateful repo-bound bots (#219)
+2026-07-16T20:03:34Z - 685fec9 - Jo : docs(bot-runs): feed-watch production rollout — 2 Huginn scenarios, 9 categories, schedules wired (#218)
+2026-07-16T16:41:39Z - 59b8f73 - Jo : fix(secrets): materialize as:file secrets on host (non-sandbox) runs (#217)
+2026-07-16T15:35:23Z - d14fd0a - Jo : docs(bot-runs): whats-next post-merge threads — claw roadmap + wave-2 C1 slicing (#216)
+2026-07-16T15:12:59Z - d28898a - Jo : fix(cli): runs prune survives unreadable run dirs — surface, never delete (#215)
+2026-07-16T14:47:45Z - 9cc0358 - Jo : feat(whats-next): Nexie v3 — roadmap-study cycle as skill-level behavior (ADR-075) (#214)
+2026-07-16T14:40:32Z - e5b0ef5 - Jo : feat(bots,cli): feed-watch (Vigie) veille bot + iterion runs prune (#213)
+2026-07-16T14:30:39+02:00 - f7589d6 - devthejo : feat(bots): app-dev (Appy) — complete application from a prompt
+2026-07-16T14:30:39+02:00 - 9e8231b - devthejo : docs(bot-runs): app-dev maiden dogfood bilan — 3 validated runs
+2026-07-16T14:30:39+02:00 - 9d74c1e - devthejo : feat(studio+bots): one-click action-gate verdicts + fingerprint verify_probe
+2026-07-16T13:03:35Z - da8b68e - Victor Zeinstra : fix(delegate/codex): survive multi-MB image events — vendored SDK fork with 64MB scanner cap and surfaced transport errors (#212)
+2026-07-16T07:30:45Z - d346b6e - Jo : feat(eventbus): implement NATSBus for cross-replica trigger fan-out (#201)
+2026-07-16T07:04:33Z - cd333b3 - Jo : feat(store,runner,cloudpublisher): T-42 IRRef fallback for oversized compiled IR at NATS enqueue (#211)
+2026-07-16T06:36:35Z - 38799ea - Jo : feat(runview,dispatcher): ADR-046 LaunchSpec convergence — route EngineRunner.Dispatch through the launch authority (#210)
+2026-07-16T05:29:24Z - d6596d2 - Jo : fix(bots/billy): push-back recovers from a branch that advanced on the remote (#209)
+2026-07-15T20:55:38Z - 525ebee - Victor Zeinstra : feat(studio): produced elements list the files written by the pipeline's nodes, not a raw git status (#208)
+2026-07-15T19:31:49Z - dcaea1a - Victor Zeinstra : fix(dsl): expose subbot output schemas (#207)
+2026-07-15T16:26:09Z - 65bbd28 - Victor Zeinstra : feat(studio): inline subbot flow display — child pipeline in the parent's editor & run canvas (#206)
+2026-07-15T15:57:39Z - 5897ed1 - Victor Zeinstra : feat(studio): global pipeline board — execution projection, details sidebar, human gates, priority-driven launch (#193)
+2026-07-15T13:38:54Z - 551ea06 - Jo : fix(ci): pass a clean semver to the image build — no more vv0.32.0 / vmain (#84)
+2026-07-15T13:12:21Z - 50267cf - Jo : feat(config): expose the NATS work-queue tuning knobs via env + YAML (#200)
+2026-07-15T13:03:55Z - 28b7772 - Jo : docs: align stale engine docs with shipped reality (kimi, C082 HTTP path, MaxAckPending, ADR hygiene) (#199)
+2026-07-15T12:50:04Z - c640b39 - Jo : fix(runner): close the clone SSRF TOCTOU with a pinned-dial clone-guard proxy (#198)
+2026-07-15T10:13:37Z - cd64ed8 - Victor Zeinstra : feat(dsl): parallel fan-out of isolated subbots (+ nested & resume SubbotRunner fixes) (#197)
+2026-07-15T08:17:06Z - 869bebc - Jo : fix(webhooks): never auto-launch a bot on draft PRs/MRs (GitHub, GitLab, Forgejo) (#196)
+2026-07-15T07:00:06Z - 58f9012 - Jo : chore(bots/vetty): drop the dead feedback_system/feedback_user prompts (#195)
+2026-07-14T22:38:45Z - c0bb43a - Jo : fix(bots/vetty): make post_feedback deterministic (tool, not an LLM turn) (#194)
+2026-07-14T16:32:16Z - 2236f33 - Victor Zeinstra : fix(codex): use localImage app-server input variant (#192)
+2026-07-14T15:24:01Z - cd6e28f - Victor Zeinstra : fix(codex): make delegated writes reliable (#191)
+2026-07-14T15:22:39Z - 0490eaa - Victor Zeinstra : fix(kimi): support current stream-json protocol (#188)
+2026-07-14T14:43:07Z - 5489c07 - Jo : docs(bot-runs/vetty): bilan 2026-07-14 — cloud run on Dependabot #182 + 4 findings (#190)
+2026-07-14T14:38:30Z - 063c111 - Jo : fix(webhooks): never auto-launch on fork PRs; keep dep-bot PRs off the improve loop (#189)
+2026-07-14T14:00:02Z - 7ce6398 - Jo : fix(runtime/skills): mirror a flat <name>.md alias next to the SKILL.md dir (#187)
+2026-07-14T13:15:40Z - 1a768dc - dependabot[bot] : chore(deps): bump golang from `b305420` to `18aedc1` (#163)
+2026-07-14T13:15:38Z - c189113 - Jo : chore(deps): update dependency vite to v6.4.3 [security] (#53)
+2026-07-14T12:31:04Z - 927b534 - Jo : fix(claude_code): export CLAUDE_CODE_OAUTH_TOKEN for the forfait (headless auth) (#185)
+2026-07-14T11:16:11Z - f3e6814 - Jo : fix(claude_code): forfait OAuth must suppress an inherited ANTHROPIC_API_KEY (#184)
+2026-07-14T09:56:15Z - edf659a - Jo : test(dispatcher): deterministicize the two -race CI flakes (read-once → wait-for-condition) (#183)
+2026-07-14T09:47:40Z - b66a101 - Jo : fix(server,boardmongo): cloud parity for the awaiting-input lifecycle (#125) (#181)
+2026-07-14T09:02:16Z - 202e7c7 - Jo : chore(vendor): bump claw-code-go — fix(openai): omit null `required` in /responses tool schemas (#180)
+2026-07-14T08:37:12Z - ce39344 - Jo : fix(dispatcher,bots): close the two #125 réserves — awaiting-input lifecycle + deterministic drift gate (#179)
+2026-07-14T06:28:36Z - 39c3612 - Jo : fix(runner): resolve plugin MCP servers for cloud runs (0-tools bug) (#178)
+2026-07-13T23:15:01Z - cf7b764 - Jo : fix(mcp): retry tool discovery on an empty result (startup race) (#177)
+2026-07-13T22:49:23Z - d0c6154 - Jo : fix(skills/verify-build): put the codegen-drift gate in the copyable example (#167) (#174)
+2026-07-13T22:38:45Z - ca51b44 - Jo : fix(runner): bake pinned firecrawl-mcp into runner image (+ renovate auto-bump) (#176)
+2026-07-13T22:15:16Z - 63b1972 - Jo : docs(bot-runs): bilan — #125 board-as-pipeline delivered by Featurly dogfood (#175)
+2026-07-13T22:02:49Z - c15059b - Jo : feat(board): move a paused dispatched run's card into an 'Awaiting input' column (#125) (#173)
+2026-07-13T21:45:38Z - 42dbfd8 - Jo : fix(mcp): never cache an empty tool-discovery result (cold-start poisoning) (#172)
+2026-07-13T21:01:45Z - c199c35 - Jo : fix(model): consume tenant codex ChatGPT-forfait in cloud runs (#171)
+2026-07-13T20:51:14Z - de24277 - Victor Zeinstra : fix(delegate): let text-output backends satisfy single-string-field schemas (#170)
+2026-07-13T19:52:57Z - 42d3d2b - iterion-forge-61934180[bot] : feat(studio): render run tree (shard/fork children) in run console + card (#125 T4b) (#169)
+2026-07-13T18:41:16Z - 185caeb - iterion-forge-61934180[bot] : feat(store,server,studio): run-tree reverse queries + shard-tuple projection (#125 T4b) (#162)
+2026-07-13T18:23:17Z - ebd1a15 - iterion-forge-61934180[bot] : feat(board): per-card ⏸ Awaiting input badge (denormalized signal) (#161)
+2026-07-13T18:18:32Z - 979c01c - iterion-forge-61934180[bot] : feat(board): persisted bot filter in the pipeline view (View.Bot) (#125) (#160)
+2026-07-13T18:15:13Z - f676794 - iterion-forge-61934180[bot] : fix(forge): mark GitHub-App connection degraded on 422 permissions-not-granted (stop re-mint loop) (#159)
+2026-07-13T15:48:49Z - 1b87361 - Jo : fix(queue): raise consumer MaxAckPending from 1 (fleet serialised to 1 run) (#158)
+2026-07-13T14:28:52Z - 9f5c0f8 - iterion-forge-61934180[bot] : feat(cli): iterion issue import — self-hosted forge→board sync (#125 T6) (#152)
+2026-07-13T14:28:06Z - c01a820 - iterion-forge-61934180[bot] : feat(board): card run history — Issue.Runs[] run-history list (refs #125) (#154)
+2026-07-13T14:28:04Z - 0a8c9ca - iterion-forge-61934180[bot] : feat(studio): add bot group dimension to board pipeline lens (#125) (#153)
+2026-07-13T12:30:16Z - 9af99ab - Jo : feat(plugin): env-based enablement + config for cloud/headless (#146)
+2026-07-13T11:53:43Z - e484097 - Jo : fix(runner): skip k8s sandbox reaper when runner is the isolation boundary (#147)
+2026-07-13T11:06:04Z - 881234a - iterion-forge-61934180[bot] : feat(runner): wire k8s sandbox reaper into the runner claim-loop (closes managed-cloud OOM credential leak) (#145)
+2026-07-13T11:06:00Z - faf385f - iterion-forge-61934180[bot] : fix(runner): demote non-root SSRF IP-pin skip to info-once (#141) (#143)
+2026-07-13T10:37:34Z - f476cab - Jo : fix(studio): suppress the WS "stale" banner on paused/terminal runs (#144)
+2026-07-13T09:58:38Z - 5a3fbea - Jo : contrib(web-search): docker-compose for sovereign SearXNG + Firecrawl (#140)
+2026-07-13T09:23:22Z - b2432de - iterion-forge-61934180[bot] : feat(secrets): log when generic-secret resolution silently drops a credential (#139)
+2026-07-13T09:09:09Z - 59c08fb - Jo : fix(studio): guard undefined preset.values in BotHome PresetsCard (#138)
+2026-07-13T09:05:48Z - fd39c5f - Jo : feat(claude_code): forward user/plugin MCP servers via --mcp-config (#137)
+2026-07-13T08:46:51Z - c95ac55 - Jo : feat(web-search): sovereign web search tiers (SearXNG → Firecrawl) (#135)
+2026-07-13T08:40:09+02:00 - 140d3b4 - devthejo : test: raise remaining 2-3s timing ceilings to 10s across the suite (flaky race gate)
+2026-07-13T07:46:02+02:00 - 885bf33 - devthejo : docs: merge policy — main is protected by a merge queue (admin bypass)
+2026-07-13T07:12:43Z - a8b9cbc - Jo : fix(studio): board answer affordance must render the paused node's schema (#134)
+2026-07-13T06:48:58Z - 8cfcd0a - Jo : docs(CLAUDE): note main is merge-queue protected (see docs/merge-policy.md) (#131)
+2026-07-13T06:11:34Z - e0732e9 - Jo : feat(webhooks): auto-heal PRs ejected from the merge queue via Billy (#133)
+2026-07-13T06:00:32Z - f12c5aa - Jo : feat(board): board-as-pipeline-projection slice + ADR-071 (refs #125) (#132)
+2026-07-12T23:19:31Z - 26ff5b0 - github-actions[bot] : chore(brew): update tap to v0.49.1 [skip ci]
+2026-07-12T23:15:17Z - d75127a - github-actions[bot] : chore: release v0.49.1
+2026-07-12T22:45:10+02:00 - 5368500 - devthejo : test(dispatcher): raise timing-ceiling deadlines to 10s (flaky race job)
+2026-07-12T21:54:46+02:00 - a25b79c - iterion-forge-61934180[bot] : feat(store): per-run tags — label runs with short tags for filtering/grouping (#129) (#130)
+2026-07-12T20:53:14+02:00 - 9efc3eb - iterion-forge-61934180[bot] : feat: per-run operator notes shown in the run header (#128)
+2026-07-12T20:03:58Z - b82ee50 - github-actions[bot] : chore(brew): update tap to v0.49.0 [skip ci]
+2026-07-12T19:58:11+02:00 - 07d960c - devthejo : test(e2e): stub the review node in the bot-graph tests + pin the review-block loop
+2026-07-12T19:57:42Z - 987dedc - github-actions[bot] : chore: release v0.49.0
+2026-07-12T19:52:31+02:00 - 6a08550 - devthejo : chore(scripts): merge-guard — rebuild the combined tree before merge (anti #120x#121)
+2026-07-12T19:50:55+02:00 - bf58575 - devthejo : feat(skills/verify-build): mirror CI's codegen-freshness/drift gates in-loop
+2026-07-12T19:03:10Z - f28a01f - github-actions[bot] : chore(brew): update tap to v0.48.0 [skip ci]
+2026-07-12T18:56:19Z - b97bc9f - github-actions[bot] : chore: release v0.48.0
+2026-07-12T17:52:46+02:00 - c1fef12 - devthejo : feat(branch-improve-loop): in-loop adversarial review stage (parity with feature-dev)
+2026-07-12T17:50:54+02:00 - 45811e7 - devthejo : feat(feature-dev): in-loop adversarial review stage — ship PRs pre-refined
+2026-07-12T17:49:21+02:00 - 34af88a - devthejo : fix(sandbox/k8s): preserve ownerReference on mid-run secret refresh (main red)
+2026-07-12T17:41:50+02:00 - b00db38 - devthejo : test(store/mongo): deterministic gate — DeleteRun must sweep every per-run collection
+2026-07-12T17:37:54+02:00 - c85199f - iterion-forge-61934180[bot] : feat(sandbox/k8s): self-terminating manifests + orphan reconcile for leaked sandboxes (#120)
+2026-07-12T17:34:39+02:00 - a16ac51 - iterion-forge-61934180[bot] : feat(store): cloud twins for the three fs-only run-detail seams (fork, tool-I/O, artifact-files) (#123)
+2026-07-12T17:27:30+02:00 - c3bc777 - iterion-forge-61934180[bot] : feat(sandbox): extend mid-run file-secret refresh to sandboxed runs (#116) (#121)
+2026-07-12T17:14:45+02:00 - 70c3fe3 - iterion-forge-61934180[bot] : feat(cloud): persist per-file diff content so cloud run panels render diffs (#122)
+2026-07-12T17:14:13+02:00 - d5880f0 - devthejo : fix(runview): emit `terminated` when cloud/external run event stream ends
+2026-07-12T17:08:49+02:00 - 6619956 - iterion-forge-61934180[bot] : feat(studio): hide cloud-unavailable run affordances instead of erroring (#124)
+2026-07-12T15:41:08Z - 0ba27dc - github-actions[bot] : chore(brew): update tap to v0.47.0 [skip ci]
+2026-07-12T15:36:53Z - d01ba6a - github-actions[bot] : chore(brew): update tap to v0.46.0 [skip ci]
+2026-07-12T15:30:23Z - 7347231 - github-actions[bot] : chore: release v0.47.0
+2026-07-12T15:21:54Z - c742288 - github-actions[bot] : chore(brew): update tap to v0.45.0 [skip ci]
+2026-07-12T15:17:51Z - f187633 - github-actions[bot] : chore: release v0.46.0
+2026-07-12T15:11:42Z - 018dc16 - github-actions[bot] : chore: release v0.45.0
+2026-07-12T09:48:18+02:00 - 2793f90 - devthejo : fix(runview): detect dead run-console WebSocket and auto-recover
+2026-07-12T05:24:02+02:00 - c1324a1 - devthejo : fix(cloud): DeleteRun cleans run_logs + gate sibling reapers on lock authority
+2026-07-11T23:22:47Z - 42f231a - github-actions[bot] : chore(brew): update tap to v0.44.1 [skip ci]
+2026-07-11T23:17:03Z - 46ec6c7 - github-actions[bot] : chore: release v0.44.1
+2026-07-11T18:40:53+02:00 - 9ff3acb - iterion-forge-61934180[bot] : feat(runview): surface resolved backend + model on the run header (#114)
+2026-07-11T17:59:01+02:00 - b7b63f7 - devthejo : fix(runview): don't reap runner-owned runs from the lock-less cloud server
+2026-07-11T16:49:37+02:00 - 2a10b1d - iterion-forge-83fde406[bot] : fix(store/mongo): TTL + counter-seq parity for run_plans (#111)
+2026-07-11T16:49:02Z - f1dd9b5 - github-actions[bot] : chore(brew): update tap to v0.44.0 [skip ci]
+2026-07-11T16:44:15+02:00 - 27f6887 - iterion-forge-83fde406[bot] : feat(secrets): fail launch on unresolved required secret (#110)
+2026-07-11T16:43:45Z - a976e3c - github-actions[bot] : chore: release v0.44.0
+2026-07-11T16:34:15+02:00 - 6114bad - devthejo : test(botscaffold): mirror the C018 skip in TestScaffold_SpecMatrix
+2026-07-11T15:39:32+02:00 - fa9e409 - devthejo : fix(botscaffold): don't fail scaffolding on the credential-detection C018
+2026-07-11T15:00:18Z - 83d2fc7 - github-actions[bot] : chore(brew): update tap to v0.43.1 [skip ci]
+2026-07-11T14:52:46Z - 2c54cf4 - github-actions[bot] : chore(brew): update tap to v0.43.0 [skip ci]
+2026-07-11T14:52:31Z - 38e0f6d - github-actions[bot] : chore: release v0.43.1
+2026-07-11T14:47:05Z - b98629a - github-actions[bot] : chore: release v0.43.0
+2026-07-11T14:46:39+02:00 - 6fd1adc - devthejo : fix(openapi): regenerate spec + studio types to clear drift on main
+2026-07-11T14:36:21+02:00 - ea39fa6 - devthejo : refactor(studio/runs): MergeConflictView raw buttons → ui primitives
+2026-07-11T14:36:21+02:00 - e011677 - devthejo : refactor(studio/runs): FilesPanel raw buttons → ui primitives
+2026-07-11T14:36:21+02:00 - d5065b3 - devthejo : refactor(studio/runs): ArtifactFilesPanel raw buttons → ui primitives
+2026-07-11T14:36:21+02:00 - c67fa20 - devthejo : refactor(studio/runs): canvas + left-panel raw buttons → ui primitives
+2026-07-11T14:36:21+02:00 - 76f9cc4 - devthejo : fix(studio/runs): drop the 'Unsaved workflow' header subtitle when nothing is loaded
+2026-07-11T14:36:21+02:00 - 63cab44 - devthejo : refactor(studio/runs): detail-panel toggles carry explicit state semantics
+2026-07-11T14:36:21+02:00 - 51b3756 - devthejo : fix(studio/runs): files-panel copy for a removed worktree + docked conversation on narrow viewports
+2026-07-11T14:36:21+02:00 - 4ce93b6 - devthejo : refactor(studio/runs): CommitsPanel raw buttons → ui primitives
+2026-07-11T14:36:21+02:00 - 4947920 - devthejo : refactor: /simplify pass over the UI/UX branch
+2026-07-11T14:36:21+02:00 - 05c8162 - devthejo : refactor(studio/runs): LogLinesView raw buttons → ui primitives
+2026-07-11T14:36:20+02:00 - ee0809b - devthejo : fix(server): pruned run history renders as an empty state, not a 500
+2026-07-11T14:36:20+02:00 - d841052 - devthejo : fix(studio/whats-next): dedupe narration/question twin + copyable run id
+2026-07-11T14:36:20+02:00 - d255abd - devthejo : refactor(studio/board): extract BoardSkeleton leaf from index
+2026-07-11T14:36:20+02:00 - c6f1af8 - devthejo : fix(studio/board): audit findings — drag placeholder, body size, delete affordance, priority hint
+2026-07-11T14:36:20+02:00 - 949d229 - devthejo : fix(studio): hide the contextual header bar when it has nothing to show
+2026-07-11T14:36:20+02:00 - 7dfa510 - devthejo : refactor(studio/board): IssueModal on ui primitives — local Field caption → FieldLabel
+2026-07-11T14:36:20+02:00 - 779114b - devthejo : feat(studio): complete the command palette's navigate group
+2026-07-11T14:36:20+02:00 - 6794bff - devthejo : refactor(studio/board): split IssueModal into issueModal/* (move-only)
+2026-07-11T14:36:20+02:00 - 420ca94 - devthejo : fix(studio): distinct persona identities for the 12 fallback-robot bots
+2026-07-11T14:36:20+02:00 - 2779809 - devthejo : fix(studio/runs): full retry error on hover in the banner progress line
+2026-07-11T14:36:20+02:00 - 243d82f - devthejo : fix(studio/runs): compact long workflow file paths in the run list
+2026-07-11T14:36:20+02:00 - 0f0eea5 - devthejo : refactor(studio/board): IssueCard status chips on the Badge primitive
+2026-07-11T14:36:16+02:00 - 9947b8d - devthejo : refactor(studio/board): extract IssueCard, PushToForge, labelPalette from Column (move-only)
+2026-07-11T14:33:59+02:00 - a8f9a63 - devthejo : refactor(studio/forms): align EdgeForm fully on ui primitives
+2026-07-11T14:33:59+02:00 - 947dec9 - devthejo : refactor(studio): harmonize loading states on BootLoading/Spinner/Skeleton
+2026-07-11T14:33:59+02:00 - 7a0a8cb - devthejo : test(studio): source-discipline trap for raw Loading… literals
+2026-07-11T14:33:59+02:00 - 4e01055 - devthejo : fix(studio): show a reconnect screen when the server is unreachable, not the sign-in form
+2026-07-11T14:33:59+02:00 - 16c8ae8 - devthejo : fix(studio): surface recovery pauses as answerable questions in the run conversation
+2026-07-11T14:33:58+02:00 - eb3f30e - devthejo : refactor(studio/forms): RouterForm on ui primitives
+2026-07-11T14:33:58+02:00 - c737b35 - devthejo : chore(studio): env-overridable vite dev proxy target (ITERION_STUDIO_BACKEND)
+2026-07-11T14:33:58+02:00 - a37aa67 - devthejo : chore(studio): add studio:lint/typecheck/test/check targets, wire into check
+2026-07-11T14:33:58+02:00 - 90d5f83 - devthejo : refactor(studio/forms): ToolForm + MCP/Compaction/Cursors fields on ui primitives
+2026-07-11T14:33:58+02:00 - 67318c2 - devthejo : refactor(studio/forms): AgentForm on ui primitives
+2026-07-11T14:33:58+02:00 - 605a2b5 - devthejo : fix(studio): resolve latent eslint errors (prefer-const, useless assignment)
+2026-07-11T14:33:58+02:00 - 34dc0fa - devthejo : refactor(studio/forms): HumanForm + ComputeForm on ui primitives
+2026-07-11T14:33:58+02:00 - 1308d7e - devthejo : refactor(studio/forms): FormField on ui primitives — buttons, TagInput, export FieldRow
+2026-07-11T14:14:45+02:00 - 4224f0f - devthejo : feat(studio): humanizeCron renders weekday ranges (0 7 * * 1-5)
+2026-07-11T14:04:29+02:00 - 0c44e16 - devthejo : style: gofmt queue types
+2026-07-11T14:00:47+02:00 - 8c74de4 - devthejo : feat(plugins): stream lifecycle command output live
+2026-07-11T13:55:09+02:00 - d3b9e35 - devthejo : feat(marketplace): plugin entries download as a source zip
+2026-07-11T13:47:48+02:00 - b8cb4ae - devthejo : feat(cloud): launch-time budget overrides ride the RunMessage to the runner
+2026-07-11T13:37:21+02:00 - 9813ddf - devthejo : feat(studio): debounced auto-save on the bot metadata form
+2026-07-11T13:33:53+02:00 - 7c44143 - devthejo : feat(bots): manifest icon for all 21 catalog bots
+2026-07-11T13:31:46+02:00 - 431399f - devthejo : feat(studio): humanized cron preview in the bot builder
+2026-07-11T13:16:19+02:00 - 9796705 - devthejo : chore(vendor): bump claw-code-go — CLAUDE.md (downstream bump contract)
+2026-07-11T13:15:27+02:00 - 2352f3a - devthejo : chore(scripts): bump-claw.sh — the only supported claw pin bump
+2026-07-11T13:11:52+02:00 - 03da548 - devthejo : docs: marketplace kind-aware CLI + studio bot journey in CLAUDE.md
+2026-07-11T13:11:51+02:00 - d25e317 - devthejo : feat(studio): /bots gallery + per-bot home page
+2026-07-11T13:11:51+02:00 - b112350 - devthejo : feat(marketplace): kind-aware submit/install/uninstall across server and CLI
+2026-07-11T13:11:51+02:00 - ab6e1c7 - devthejo : feat(studio): plugins view as connector-style card gallery with detail drawer
+2026-07-11T13:11:51+02:00 - 8ea2b4c - devthejo : feat(studio): guided bot builder with template gallery + embedded live test pane
+2026-07-11T13:11:51+02:00 - 7317ae2 - devthejo : style: gofmt botscaffold + manifest_write
+2026-07-11T13:11:51+02:00 - 4c29d8a - devthejo : style: gofmt test files
+2026-07-11T13:11:51+02:00 - 3d3e540 - devthejo : feat(studio): budget overrides + review-mode in the launch modal
+2026-07-11T13:11:51+02:00 - 2dcadf6 - devthejo : feat(studio): marketplace kind pills, sort, featured strip, plugin install-state, reject dialog
+2026-07-11T13:11:51+02:00 - 13c0ef5 - devthejo : feat(runview): launch budget overrides on the HTTP API + runs ?bot= filter
+2026-07-11T13:11:51+02:00 - 0c869a7 - devthejo : feat(server): bot creation endpoint + builder template gallery
+2026-07-11T13:11:50+02:00 - fa1e924 - devthejo : feat(plugin): Inspect, ReadReadme, RunLifecycle, InstallWith(ref/subpath), Detail projection
+2026-07-11T13:11:50+02:00 - aeb06fd - devthejo : feat(botscaffold): single-agent bundle scaffolder with parse+compile validation and template gallery
+2026-07-11T13:11:50+02:00 - 788ea33 - devthejo : feat(server): plugin detail + lifecycle run endpoints; studio API client
+2026-07-11T13:11:50+02:00 - 7348ada - devthejo : feat(server): one-click trigger enablement from a bot's manifest invocations
+2026-07-11T13:11:50+02:00 - 189ac27 - devthejo : feat(bundle): manifest icon field surfaced through discovery and bot metadata API
+2026-07-11T13:11:50+02:00 - 0c40f94 - devthejo : feat(marketplace): kind-aware InspectSource, plugin entries, Icon field, list sort
+2026-07-11T13:11:50+02:00 - 0310032 - devthejo : feat(studio): bot emoji identity — botVisual precedence, EmojiPicker, metadata icon field
+2026-07-11T12:48:24+02:00 - 5a0e083 - Victor Zeinstra : Merge pull request #112 from SocialGouv/feat/codex-node-image-inputs
+2026-07-11T12:34:32+02:00 - 461da8e - Victor : feat(codex): forward node image inputs (`images:`) for image-to-image
+2026-07-11T10:56:05Z - 6213062 - github-actions[bot] : chore(brew): update tap to v0.42.0 [skip ci]
+2026-07-11T10:51:14Z - 6391e04 - github-actions[bot] : chore: release v0.42.0
+2026-07-11T09:17:34+02:00 - d2169cf - devthejo : fix(vendor): claw-code-go pseudo-version timestamp back to UTC (third occurrence)
+2026-07-11T08:47:14+02:00 - 98f296c - devthejo : feat(claude_code): pass --thinking-display summarized + exact thinking tokens
+2026-07-11T08:45:38+02:00 - 7e5ef2e - iterion-forge-83fde406[bot] : fix(cloud): capture plan snapshots for cloud runs (Mongo run_plans) (#106)
+2026-07-11T08:37:39+02:00 - b67131d - iterion-forge-83fde406[bot] : feat: board card UX for triggered runs — carry issue link/mission + live run link (#107)
+2026-07-11T08:31:13+02:00 - b63cf72 - devthejo : chore(vendor): bump claw-code-go — exact billed thinking tokens in usage details
+2026-07-11T08:26:36+02:00 - 79fd4ad - devthejo : fix(vendor): correct claw-code-go pseudo-version timestamp to UTC
+2026-07-11T08:10:08+02:00 - 0624aee - devthejo : chore(vendor): bump claw-code-go — summarized thinking display on Anthropic adaptive requests
+2026-07-11T07:53:49+02:00 - 71fe971 - Victor Zeinstra : Merge pull request #103 from SocialGouv/feat/codex-node-full-access
+2026-07-11T07:22:24+02:00 - 490b89d - devthejo : fix(claude_code): surface redacted thinking + accept canonical model specs
+2026-07-11T06:57:49+02:00 - a91936b - devthejo : test(botreplay): golden fixtures for the five uncovered v2 campaign termination contracts
+2026-07-11T06:54:16+02:00 - 4c0e80c - devthejo : test: environment-gated skips fail in CI instead of silently nulling coverage
+2026-07-11T06:52:41+02:00 - 3708a2f - devthejo : fix(runtime,store): retry the failure-status flip and surface quota-compensation failures
+2026-07-11T06:46:57+02:00 - 4f6ac71 - devthejo : fix(delegate): classify DNS failures and two missing errnos structurally, not by message
+2026-07-11T06:46:38Z - d6db6b4 - github-actions[bot] : chore(brew): update tap to v0.41.0 [skip ci]
+2026-07-11T06:44:54+02:00 - d91fcc4 - devthejo : fix(store): write-ahead barrier — re-sync events.jsonl before a checkpoint write after a failed event fsync
+2026-07-11T06:41:12+02:00 - 1dfe867 - devthejo : fix(runner): bound each git subprocess with a wall-clock timeout
+2026-07-11T06:40:39Z - 2fc91f7 - github-actions[bot] : chore: release v0.41.0
+2026-07-11T06:40:27+02:00 - c75c6b3 - devthejo : test(logs): lock the foldable 🧠 thinking LogBlock shape at both seams
+2026-07-11T06:40:27+02:00 - 6d5e899 - devthejo : feat(logs): surface extended-thinking content as foldable log blocks
+2026-07-11T06:40:27+02:00 - 281bad7 - devthejo : chore(vendor): bump claw-code-go — OpenAI reasoning summaries as thinking blocks
+2026-07-11T06:38:52+02:00 - e3b60f6 - devthejo : fix(runner): bound each git subprocess with a wall-clock timeout
+2026-07-11T06:32:13+02:00 - fec19f1 - devthejo : fix(cloud): charge LLM spend to the org usage key so the monthly cost cap works across teams
+2026-07-11T06:32:13+02:00 - e702f93 - devthejo : feat(runtime): persist branch_abandoned events when a cancelled fan-out outlives its grace period
+2026-07-11T06:32:13+02:00 - db32957 - devthejo : test(runtime): document the runState single-writer contract and race the abandoned-branch window
+2026-07-11T06:32:13+02:00 - ce8affb - devthejo : fix(server): release the metered quota unit when a concurrent duplicate webhook loses the idempotency insert
+2026-07-11T06:32:13+02:00 - be091cc - devthejo : fix(bots): make sec-audit-source deepsec opt-in (default false)
+2026-07-11T06:32:13+02:00 - b9f1fcb - devthejo : feat(runview): reconcile orphaned runs periodically, not only at boot
+2026-07-11T06:32:13+02:00 - b281c04 - devthejo : fix(ci): align e2e test timeout with the Taskfile (120s -> 240s)
+2026-07-11T06:32:13+02:00 - 97565bf - devthejo : test(delegate): record all sandbox Command opts so the cleanup call can't mask the agent's
+2026-07-11T06:32:13+02:00 - 75c3d9c - devthejo : fix(bots): give devbox-setup a deterministic entry checkpoint
+2026-07-11T06:32:13+02:00 - 67e1190 - devthejo : fix(server): derive the queued-orphan sweep cutoff from the real redelivery window
+2026-07-11T06:32:13+02:00 - 67d3799 - devthejo : fix(delegate): kill the in-container process when a sandboxed CLI agent is cancelled
+2026-07-11T06:32:13+02:00 - 66837e6 - devthejo : fix(dispatcher): recover external-tracker claims stranded by a crashed daemon
+2026-07-11T06:32:13+02:00 - 55d7170 - devthejo : fix(bots): drop unsafe raw template interpolation in tool/script bodies
+2026-07-11T06:32:13+02:00 - 4ae1e93 - devthejo : style: gofmt event.go const alignment
+2026-07-11T06:01:06Z - f70418a - github-actions[bot] : chore(brew): update tap to v0.40.0 [skip ci]
+2026-07-11T05:56:34Z - 9e07b0f - github-actions[bot] : chore: release v0.40.0
+2026-07-10T23:48:14+02:00 - c434aa4 - iterion-forge-83fde406[bot] : feat: persist run git metadata for cloud Commits/Files panels (#102)
+2026-07-10T23:47:03+02:00 - ee832fb - devthejo : test(studio): source-discipline trap banning raw <table> outside ui/Table
+2026-07-10T23:47:03+02:00 - c2793b7 - devthejo : fix(runview): persist run.json before Launch returns, keep WS subscribers across a pause
+2026-07-10T23:47:03+02:00 - b5c67da - devthejo : fix(dsl): loop clause unbounded/fuel_cap survive the AST JSON round-trip
+2026-07-10T23:47:03+02:00 - 60984de - devthejo : refactor: /simplify pass over the UX/UI branch
+2026-07-10T23:47:03+02:00 - 1ebb8d1 - devthejo : fix(studio): run console polish — commits errors, terminal-state copy, launch deep-link
+2026-07-10T23:47:03+02:00 - 0951e89 - devthejo : fix(studio): editor tab restore, loop-bound labels, canvas theming
+2026-07-10T23:47:02+02:00 - e75c0b9 - devthejo : fix(studio): dialogs without description opt out of aria-describedby
+2026-07-10T23:47:02+02:00 - b5cd0db - devthejo : fix(studio): whats-next console frictions + dark-mode affordances
+2026-07-10T23:47:02+02:00 - b10ae76 - devthejo : refactor(studio): migrate settings/teams/orgs list views to the Table primitive
+2026-07-10T23:47:02+02:00 - 82a2c66 - devthejo : fix(studio): consistent cloud-only degradation in local mode
+2026-07-10T23:47:02+02:00 - 31c95d5 - devthejo : refactor(studio): dispatcher/board/triggers tables on the primitive + empty-state fixes
+2026-07-10T23:47:02+02:00 - 2f5a3dd - devthejo : refactor(studio): ConfirmDialog + marketplace detail on Radix primitives, modal scrim fixes
+2026-07-10T23:47:02+02:00 - 08ac5ea - devthejo : refactor(studio): insights + report tab on Table primitive, tokenised inline styles
+2026-07-10T23:33:40Z - cd599bf - github-actions[bot] : chore(brew): update tap to v0.39.1 [skip ci]
+2026-07-10T23:28:48Z - 828494c - github-actions[bot] : chore: release v0.39.1
+2026-07-10T21:57:13Z - b8d33b1 - github-actions[bot] : chore(brew): update tap to v0.39.0 [skip ci]
+2026-07-10T21:51:12Z - e2357c9 - github-actions[bot] : chore: release v0.39.0
+2026-07-10T21:23:48+02:00 - 7bed767 - Victor : feat(codex): add per-node full_access opt-in for network egress
+2026-07-10T20:45:49+02:00 - eccbde5 - devthejo : docs(bot-runs): bilans — Vetty + Billy cloud dogfood on Dependabot PR #80
+2026-07-10T17:49:37+02:00 - 6dd452c - devthejo : fix(runner): refresh materialised file secrets mid-run from the store
+2026-07-10T17:33:54+02:00 - 32bac8c - devthejo : feat(chart): config.extraEnv passthrough + embed tzdata in the binary
+2026-07-10T16:37:35+02:00 - 6031a35 - devthejo : fix(runner): persist executor agent-stream lines into the run log
+2026-07-10T15:43:18Z - f5a5046 - github-actions[bot] : chore(brew): update tap to v0.37.4 [skip ci]
+2026-07-10T15:37:05Z - 6fa632b - github-actions[bot] : chore: release v0.37.4
+2026-07-10T15:32:43+02:00 - bc29180 - devthejo : fix(webhooks): carry resolved PR context into board-mode command cards
+2026-07-10T14:40:10+02:00 - 642b1ba - devthejo : fix(webhooks): stamp Billy push-back vars on PR/MR command comments
+2026-07-10T13:18:53+02:00 - 499957c - devthejo : fix(webhooks): resolve PR head/base for PR-surface command comments
+2026-07-10T12:32:55+02:00 - a9178f0 - iterion-forge-83fde406[bot] : refactor(improve): migrate interface{} to any across the tree (#98)
+2026-07-10T11:24:16+02:00 - a65d64a - devthejo : fix(forge): scope refresh worker ctx to the connection tenant
+2026-07-10T10:43:07Z - 4eebcf2 - github-actions[bot] : chore(brew): update tap to v0.37.3 [skip ci]
+2026-07-10T10:35:46Z - 678bb5b - github-actions[bot] : chore: release v0.37.3
+2026-07-10T09:45:08+02:00 - 2157c0f - devthejo : feat(runner): attribute github-app commits to the App bot
+2026-07-10T08:15:20+02:00 - 67e5540 - devthejo : feat(chart): optional shared RWX build-cache PVC for runner pods
+2026-07-10T08:15:20+02:00 - 273b0d1 - devthejo : docs(adr): ADR-066 runner build-cache architecture (Go RWX cache now, Nix substituter next)
+2026-07-10T08:11:54Z - 51c2d1a - github-actions[bot] : chore(brew): update tap to v0.37.2 [skip ci]
+2026-07-10T07:57:52Z - 22697b0 - github-actions[bot] : chore: release v0.37.2
+2026-07-09T23:43:37Z - 84a1c6b - github-actions[bot] : chore: release v0.37.1
+2026-07-09T18:51:18+02:00 - 24fd5ac - Jo : feat(report): surface resolved verify command in report header (#89)
+2026-07-09T18:47:11+02:00 - 3002d1c - Jo : feat(delegate): dedicated CLI-agent backend for non-claude-code argv (kimi-code) (#90)
+2026-07-09T18:47:03+02:00 - 941ba77 - Victor Zeinstra : feat(dsl): per-node command: override for a claude-code-compatible CLI on claude_code (#76)
+2026-07-09T18:46:57+02:00 - b335b29 - Victor Zeinstra : feat(dsl): inline external file into prompt via {{include "..."}} (#73)
+2026-07-09T18:46:50+02:00 - c06f64d - Victor Zeinstra : feat(dsl): per-node timeout on LLM nodes (agent/judge) (#72)
+2026-07-09T18:46:14+02:00 - 38ec711 - Victor Zeinstra : feat(model): inject schema-validation error into structured-output retry prompt (#71)
+2026-07-09T17:47:09+02:00 - 2775797 - devthejo : test(webhooks): fix stale billy-routing assertion after pr_url addition
+2026-07-09T17:06:22Z - f91056b - github-actions[bot] : chore(brew): update tap to v0.37.0 [skip ci]
+2026-07-09T17:04:28Z - c470872 - github-actions[bot] : chore(brew): update tap to v0.36.0 [skip ci]
+2026-07-09T16:56:25Z - 51683d3 - github-actions[bot] : chore: release v0.37.0
+2026-07-09T16:51:31+02:00 - 5795b09 - devthejo : feat(billy): post the review verdict as a comment on the PR
+2026-07-09T16:50:04Z - 556aafa - github-actions[bot] : chore: release v0.36.0
+2026-07-09T16:01:06+02:00 - 46af8b4 - devthejo : fix(runner): attribute bot commits to the push-token owner, not a stray account
+2026-07-09T15:12:44+02:00 - 85e7574 - devthejo : fix(chart): supply the required JetStream account to the KEDA runner scaler
+2026-07-09T14:46:35+02:00 - ef8131e - devthejo : feat(webhooks): branch_improve_as_pr — Billy opens a PR onto the contributor's branch
+2026-07-09T14:43:59+02:00 - 2f68417 - devthejo : perf(queue): raise redelivery budget (MaxDeliver 3→8, AckWait 5→10min) for burst resilience
+2026-07-09T13:22:07Z - 840dee8 - github-actions[bot] : chore: release v0.35.0
+2026-07-09T13:05:38+02:00 - dcd006a - devthejo : fix(forge): grant issues:write to the App installation token for the MR back-link
+2026-07-09T12:43:48+02:00 - 20f2533 - devthejo : fix(server): fall back to the caller's team when resuming a run with no TenantID
+2026-07-09T12:25:53+02:00 - a171804 - devthejo : fix(server): scope cloud run resume to the run's tenant (was panicking)
+2026-07-09T11:30:10+02:00 - 4387cc1 - devthejo : feat(webhooks): zero-touch issue lane — AutoImplementOnOpen dispatches on issue open
+2026-07-09T11:23:07+02:00 - d0dad39 - devthejo : perf(runner): warm the Nix store with the Go toolchain in the devbox runner image
+2026-07-09T11:20:33+02:00 - 2350109 - devthejo : feat(board): carry the webhook's key/secret overrides onto the launched card
 2026-07-05T23:40:41Z - 775ad5e - github-actions[bot] : chore(brew): update tap to v0.31.0 [skip ci]
 2026-07-05T23:35:26Z - f828403 - github-actions[bot] : chore: release v0.31.0
 2026-07-05T17:56:21+02:00 - 50a258e - devthejo : feat(runview): persist bot plans as artifacts + studio Plans panel
