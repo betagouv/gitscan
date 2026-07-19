@@ -1,21 +1,23 @@
-## Changelog : hyyypertool (30 derniers jours, au 9 juillet 2026)
+## Changelog : hyyypertool (30 derniers jours, au 2026-07-17)
 
 ### Résumé
-Cette version apporte des améliorations à l'interface utilisateur de la page utilisateur, notamment en rendant les informations plus compactes et en ajoutant des indicateurs visuels. Des restrictions d'accès ont été mises en place pour protéger les données sensibles. Plusieurs mises à jour de dépendances ont également été effectuées pour assurer la sécurité et la stabilité de l'application.
+Les dernières mises à jour de Hyyypertool améliorent l'expérience utilisateur en ajoutant des informations plus claires sur les organisations et les modérations, notamment avec des badges de comptage et des colonnes dédiées. Des restrictions d'accès ont également été mises en place pour renforcer la sécurité et adapter l'interface aux différents rôles utilisateurs. Enfin, des améliorations techniques et des mises à jour de dépendances ont été effectuées pour assurer la stabilité et la performance de l'outil.
 
 ### Évolutions fonctionnelles
-- Ajout d'une colonne "Externe" avec un indicateur visuel (✅/❌) dans le tableau des organisations de la page utilisateur.
-- Les sections d'organisations, de modérations et d'historique OIDC de la page utilisateur sont désormais repliables pour une meilleure lisibilité.
-- Ajout de badges avec des émojis indiquant le nombre d'éléments dans chaque section de la page utilisateur.
+- Ajout d'une colonne "Interne" avec un indicateur ✅/❌ dans le tableau des organisations de la page utilisateur.
+- Ajout de badges avec des émojis affichant le nombre d'éléments (organisations, modérations, connexions) dans les sections de la page utilisateur.
 - Ajout d'une colonne "Type de vérification" dans le tableau des organisations.
-- Le champ "motif de modération" est de nouveau éditable dans le modal de refus.
-- Restriction de l'accès aux actions de modification et de traitement pour les utilisateurs non administrateurs ou modérateurs.
-- Masquage de la section des commentaires si aucun commentaire n'est présent.
+- Possibilité d'éditer le motif de refus dans la modale de refus.
+- Masquage du bouton de retraitement pour les utilisateurs visiteurs.
+- Masquage des actions d'édition pour les utilisateurs visiteurs.
+- Masquage de la section commentaires si aucun commentaire n'est présent.
+- Restriction des écritures en base de données aux rôles administrateur et modérateur.
 
 ### Évolutions techniques
-- Extraction du composant d'actions des membres de la table d'une organisation vers un composant réutilisable.
-- Mise à jour de plusieurs dépendances : `tailwindcss`, `@csmith/release-it-calver-plugin`, `@types/node`, `oxc-parser`, `sentry`, `release-it`, `pg`, `docker/setup-compose-action`, `cypress-io/github-action`, `hono`, `@electric-sql/pglite`, `cypress`, `@preact/signals-core`, `@proconnect-gouv/proconnect.identite.database`, `rate-limiter-flexible`, `actions/checkout`.
+- Mise à jour de plusieurs dépendances : `tailwindcss`, `@preact/signals`, `typescript`, `cypress`, `hono`, `oxc-parser`, `sentry`, `release-it`, `@types/node`, `rate-limiter-flexible`, `actions/checkout`, `@proconnect-gouv/proconnect.identite.database`.
+- Extraction du composant `MemberRowActions` pour une meilleure réutilisabilité.
+- Amélioration de la structure de la page utilisateur avec des sections repliables via `<details>` et `<summary>`.
 
 ### Autres changements
+- Publication des versions 2026.7.2, 2026.7.1 et 2026.7.0.
 - Documentation mise à jour.
-- Corrections mineures et améliorations de la maintenance du code.
