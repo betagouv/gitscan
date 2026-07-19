@@ -282,8 +282,9 @@
 │       │   │                   │   ├── ApartmentSharingNotFoundException.java
 │       │   │                   │   ├── ApartmentSharingUnexpectedException.java
 │       │   │                   │   ├── ApplicationLinkBlockedException.java
+│       │   │                   │   ├── ApplicationTypeDeniedForJoinException.java
 │       │   │                   │   ├── ClientNotFoundException.java
-│       │   │                   │   ├── CoTenantEmailAlreadyExists.java
+│       │   │                   │   ├── CoTenantEmailAlreadyExistsException.java
 │       │   │                   │   ├── DocumentNotFoundException.java
 │       │   │                   │   ├── FileNotFoundException.java
 │       │   │                   │   ├── GuarantorNotFoundException.java
@@ -517,8 +518,7 @@
 │       │   │                       │       │   └── v2
 │       │   │                       │       │       ├── CheckCoTenantCount.java
 │       │   │                       │       │       ├── CheckTenantTypeAcceptAccess.java
-│       │   │                       │       │       ├── CoTenantsEmailRequiredForGroup.java
-│       │   │                       │       │       ├── DeniedJoinTenant.java
+│       │   │                       │       │       ├── CoTenantsEmailRequired.java
 │       │   │                       │       │       ├── DistinctCoTenantEmailList.java
 │       │   │                       │       │       └── DistinctCoTenantFullNameList.java
 │       │   │                       │       ├── financial
@@ -529,6 +529,7 @@
 │       │   │                       │       ├── identification
 │       │   │                       │       │   └── NumberOfDocumentIdentification.java
 │       │   │                       │       ├── name
+│       │   │                       │       │   ├── CheckBeneficiaryEmail.java
 │       │   │                       │       │   └── CheckFranceConnect.java
 │       │   │                       │       ├── profesional
 │       │   │                       │       │   └── NumberOfDocumentProfesional.java
@@ -570,10 +571,10 @@
 │       │   │                           ├── account
 │       │   │                           │   └── UniqueEmailActiveAccountValidator.java
 │       │   │                           ├── application
+│       │   │                           │   ├── ApplicationRegistrationValidator.java
 │       │   │                           │   ├── CheckCoTenantCountValidator.java
 │       │   │                           │   ├── CheckTenantTypeAcceptAccessValidator.java
-│       │   │                           │   ├── CoTenantsEmailRequiredForGroupValidator.java
-│       │   │                           │   ├── DeniedJoinTenantValidator.java
+│       │   │                           │   ├── CoTenantsEmailRequiredValidator.java
 │       │   │                           │   ├── DistinctCoTenantEmailListValidator.java
 │       │   │                           │   └── DistinctCoTenantFullNameValidator.java
 │       │   │                           ├── financial
@@ -584,6 +585,7 @@
 │       │   │                           ├── identification
 │       │   │                           │   └── NumberOfDocumentIdentificationValidator.java
 │       │   │                           ├── name
+│       │   │                           │   ├── CheckBeneficiaryEmailValidator.java
 │       │   │                           │   └── CheckFranceConnectValidator.java
 │       │   │                           ├── profesional
 │       │   │                           │   └── NumberOfDocumentProfesionalValidator.java
@@ -633,6 +635,7 @@
 │           │                   │   ├── ApartmentSharingLinkControllerTest.java
 │           │                   │   ├── ApplicationControllerIntegrationTest.java
 │           │                   │   ├── ApplicationControllerTest.java
+│           │                   │   ├── ApplicationV2ControllerTest.java
 │           │                   │   ├── DocumentControllerTest.java
 │           │                   │   ├── FileControllerTest.java
 │           │                   │   ├── GuarantorControllerTest.java
@@ -702,7 +705,13 @@
 │           │                       ├── CheckFranceConnectValidatorTest.java
 │           │                       ├── FinancialDocumentCategoriesValidatorTest.java
 │           │                       ├── NumberOfDocumentTaxValidatorTest.java
-│           │                       └── ResidencyDocumentCategoriesValidatorTest.java
+│           │                       ├── ResidencyDocumentCategoriesValidatorTest.java
+│           │                       └── tenant
+│           │                           ├── application
+│           │                           │   ├── ApplicationRegistrationValidatorTest.java
+│           │                           │   └── CoTenantsEmailRequiredValidatorTest.java
+│           │                           └── name
+│           │                               └── CheckBeneficiaryEmailValidatorTest.java
 │           └── resources
 │               ├── application.properties
 │               ├── junit-platform.properties
@@ -1979,7 +1988,8 @@
 │       │       │       ├── 20260604000000-rework-materialized-view.xml
 │       │       │       ├── 20260616170500-add-unique-constraint-document-category.xml
 │       │       │       ├── 202606180000-add-document-ia-property-tax-analysis-flag.xml
-│       │       │       └── 202607070000-add-email-to-guarantor.xml
+│       │       │       ├── 202607070000-add-email-to-guarantor.xml
+│       │       │       └── 202607150000-add-beneficiary-email-to-tenant.xml
 │       │       └── linux-x86-64
 │       │           └── libzxing_jna.so
 │       └── test
@@ -2421,4 +2431,4 @@
     │   ├── CMakeLists.txt
     │   └── zxing_wrapper.cpp
     └── docker-compose.yml
-598 directories, 1929 files
+601 directories, 1936 files
