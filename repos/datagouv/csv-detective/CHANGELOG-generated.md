@@ -1,18 +1,20 @@
-## Changelog : csv-detective (30 derniers jours, au 24 juin 2026)
+## Changelog : csv-detective (30 derniers jours, au 17 juillet 2026)
 
 ### Résumé
-Les récentes mises à jour de csv-detective améliorent la capacité du logiciel à analyser différents types de fichiers, notamment les fichiers Parquet, et à détecter plus précisément les types de données dans les colonnes. Des améliorations ont également été apportées à la gestion des valeurs manquantes et à la correction de certains formats de données. Enfin, des corrections mineures ont été effectuées pour améliorer la qualité du code et le processus de CI/CD.
+Cette mise à jour apporte des améliorations à la détection de formats de données, notamment pour les numéros SIREN et SIRET, et corrige des erreurs liées à la détection de nombres entiers. Des corrections de documentation et des ajustements pour le CI/CD complètent cette version.
 
 ### Évolutions fonctionnelles
-- Ajout de la prise en charge de l'analyse des fichiers Parquet [#253](https://github.com/datagouv/csv-detective/pull/253).
-- Possibilité de spécifier des valeurs NaN supplémentaires pour une meilleure détection des données manquantes [#255](https://github.com/datagouv/csv-detective/pull/255).
-- Ajout de la liste des valeurs uniques pour les colonnes catégorielles (simples et multiples) [#250](https://github.com/datagouv/csv-detective/pull/250).
-- Renommage du format `booleen` en `bool` pour une meilleure cohérence [#252](https://github.com/datagouv/csv-detective/pull/252).
+- Possibilité de passer des valeurs NaN supplémentaires pour une meilleure détection des données manquantes [#255](https://github.com/datagouv/csv-detective/pull/255).
+- Amélioration de la détection des formats numériques, notamment pour les numéros SIREN et SIRET, avec des tests supplémentaires pour garantir la précision.
+- Correction d'un bug empêchant la détection correcte des valeurs uniques dans les colonnes complexes [#257](https://github.com/datagouv/csv-detective/pull/257).
 
 ### Évolutions techniques
-- Correction d'un problème de détection des valeurs uniques dans les colonnes trop complexes [#257](https://github.com/datagouv/csv-detective/pull/257).
-- Correction des erreurs de linting et amélioration du processus de vérification du lint dans le CI [#254](https://github.com/datagouv/csv-detective/pull/254).
-- Utilisation d'un token UV pour la publication, améliorant la sécurité et l'automatisation du processus de publication [#256](https://github.com/datagouv/csv-detective/pull/256).
+- Ajout de tests pour Python 3.14 [#262](https://github.com/datagouv/csv-detective/pull/262).
+- Corrections de format dans la documentation.
+- Correction des tags.
+- Utilisation d'un token pour la publication sur PyPI [#256](https://github.com/datagouv/csv-detective/pull/256).
 
 ### Autres changements
-- Aucune documentation ou configuration n'a été modifiée dans cette version.
+- Mise à jour de la version à 0.12.0.
+- Amélioration de la robustesse de la détection des entiers.
+- Ajout de valeurs de test pour améliorer la couverture.
