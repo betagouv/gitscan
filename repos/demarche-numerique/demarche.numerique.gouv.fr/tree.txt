@@ -228,6 +228,7 @@
 │   │       ├── landing.scss
 │   │       ├── layouts.scss
 │   │       ├── llm.scss
+│   │       ├── mail_template_edit.scss
 │   │       ├── manager.scss
 │   │       ├── map_info.scss
 │   │       ├── markdown-content.scss
@@ -391,6 +392,11 @@
 │   │   │   │   ├── batch_select_more_component.fr.yml
 │   │   │   │   └── batch_select_more_component.html.haml
 │   │   │   ├── batch_select_more_component.rb
+│   │   │   ├── champ_prefilled_badge_component
+│   │   │   │   ├── champ_prefilled_badge_component.en.yml
+│   │   │   │   ├── champ_prefilled_badge_component.fr.yml
+│   │   │   │   └── champ_prefilled_badge_component.html.erb
+│   │   │   ├── champ_prefilled_badge_component.rb
 │   │   │   ├── champ_updated_component
 │   │   │   │   ├── champ_updated_component.en.yml
 │   │   │   │   ├── champ_updated_component.fr.yml
@@ -754,6 +760,11 @@
 │   │   │   │   ├── repetition_row_component.fr.yml
 │   │   │   │   └── repetition_row_component.html.erb
 │   │   │   ├── repetition_row_component.rb
+│   │   │   ├── revert_prefilled_button_component
+│   │   │   │   ├── revert_prefilled_button_component.en.yml
+│   │   │   │   ├── revert_prefilled_button_component.fr.yml
+│   │   │   │   └── revert_prefilled_button_component.html.erb
+│   │   │   ├── revert_prefilled_button_component.rb
 │   │   │   ├── rna_component
 │   │   │   │   └── rna_component.html.haml
 │   │   │   ├── rna_component.rb
@@ -1892,6 +1903,7 @@
 │   │   │   │   └── trix_controller.ts
 │   │   │   ├── lazy_frame_controller.ts
 │   │   │   ├── lazy_modal_controller.ts
+│   │   │   ├── mail_preview_controller.ts
 │   │   │   ├── map_info_controller.ts
 │   │   │   ├── menu_button_controller.ts
 │   │   │   ├── modal_redirect_controller.ts
@@ -1908,6 +1920,7 @@
 │   │   │   ├── select_champ_position_template_controller.ts
 │   │   │   ├── sticky_top_controller.ts
 │   │   │   ├── stream_loader_controller.ts
+│   │   │   ├── tags_button_list_controller.ts
 │   │   │   ├── textarea_controller.ts
 │   │   │   ├── tiptap_to_template_controller.ts
 │   │   │   ├── truncate_notifications_controller.ts
@@ -2292,6 +2305,7 @@
 │   │   │   ├── blob_virus_scanner_concern.rb
 │   │   │   ├── champ_conditional_concern.rb
 │   │   │   ├── champ_external_data_concern.rb
+│   │   │   ├── champ_prefill_tracking_concern.rb
 │   │   │   ├── champ_revision_concern.rb
 │   │   │   ├── champ_stream_concern.rb
 │   │   │   ├── champ_validate_concern.rb
@@ -2489,7 +2503,7 @@
 │   │   │   ├── phone_type_de_champ.rb
 │   │   │   ├── piece_justificative_type_de_champ.rb
 │   │   │   ├── pre_rempli_type_de_champ.rb
-│   │   │   ├── prefill_*.rb  (14 files)
+│   │   │   ├── prefill_*.rb  (19 files)
 │   │   │   ├── quotient_familial_type_de_champ.rb
 │   │   │   ├── referentiel_type_de_champ.rb
 │   │   │   ├── region_type_de_champ.rb
@@ -2624,6 +2638,7 @@
 │   │   ├── staging_auth_service.rb
 │   │   ├── sva_svr_decision_date_calculator_service.rb
 │   │   ├── tiptap_service.rb
+│   │   ├── trix_to_tiptap_service.rb
 │   │   ├── users
 │   │   │   └── dossier_filter_service.rb
 │   │   ├── value_normalizer.rb
@@ -2782,6 +2797,8 @@
 │   │   └── sorted_column_type.rb
 │   ├── validators
 │   │   ├── date_limit_validator.rb
+│   │   ├── dossier_link_validator.rb
+│   │   ├── drop_down_options_validator.rb
 │   │   ├── export_template_validator.rb
 │   │   ├── expression_reguliere_validator.rb
 │   │   ├── external_data_champ_validator.rb
@@ -2791,6 +2808,7 @@
 │   │   ├── jwt_token_validator.rb
 │   │   ├── mon_avis_embed_validator.rb
 │   │   ├── no_private_ip_url_validator.rb
+│   │   ├── number_format_validator.rb
 │   │   ├── number_limit_validator.rb
 │   │   ├── password_complexity_validator.rb
 │   │   ├── simple_formatted_champ_validator.rb
@@ -2901,10 +2919,9 @@
 │       │   │   ├── new.html.haml
 │       │   │   └── order_positions.html.erb
 │       │   ├── mail_templates
-│       │   │   ├── _apercu.html.haml
-│       │   │   ├── _form.html.haml
-│       │   │   ├── edit.html.haml
-│       │   │   └── index.html.haml
+│       │   │   ├── edit.html.erb
+│       │   │   ├── index.html.haml
+│       │   │   └── preview.turbo_stream.erb
 │       │   ├── procedure_administrateurs
 │       │   │   ├── _add_admin_form.html.haml
 │       │   │   ├── create.turbo_stream.haml
@@ -3012,8 +3029,8 @@
 │       ├── commencer
 │       │   └── show.html.erb
 │       ├── contact
-│       │   ├── _form.html.haml
-│       │   ├── admin.html.haml
+│       │   ├── _form.html.erb
+│       │   ├── admin.html.erb
 │       │   └── index.html.haml
 │       ├── devise
 │       │   └── passwords
@@ -3382,7 +3399,7 @@
 │       ├── notification_mailer
 │       │   ├── _actions.html.haml
 │       │   ├── default_templates
-│       │   │   ├── _signature.html.haml
+│       │   │   ├── _signature.html.erb
 │       │   │   ├── closed_mail.html.haml
 │       │   │   ├── closed_mail_with_attestation.html.haml
 │       │   │   ├── initiated_mail.html.haml
@@ -4721,6 +4738,7 @@
 │   │   ├── 20260520122559_add_naf2025_to_etablissements.rb
 │   │   ├── 20260521105001_add_uuid_to_geo_area.rb
 │   │   ├── 20260601101322_drop_en_construction_close_to_expiration_notice_sent_at_from_dossiers.rb
+│   │   ├── 20260601152426_add_prefilled_original_value_to_champs.rb
 │   │   ├── 20260602100001_create_banners.rb
 │   │   ├── 20260602100002_add_unique_index_to_banners_target.rb
 │   │   ├── 20260602100003_seed_banners.rb
@@ -4731,6 +4749,7 @@
 │   │   ├── 20260622131426_add_estimated_processing_duration_visible_to_procedures.rb
 │   │   ├── 20260625153605_add_requires_ip_filtering_to_api_tokens.rb
 │   │   ├── 20260625153641_change_requires_ip_filtering_default.rb
+│   │   ├── 20260701140241_add_json_columns_to_mail_templates.rb
 │   │   ├── 20260703000000_add_soft_delete_at_to_active_storage_blobs.rb
 │   │   └── 20260713000000_rename_soft_delete_at_to_soft_deleted_at_on_active_storage_blobs.rb
 │   ├── schema.rb
@@ -4939,6 +4958,7 @@
 │   │   │   └── thumbnail_component_spec.rb
 │   │   ├── bottom_right_actions_component_spec.rb
 │   │   ├── champ_header_sections_summary_component_spec.rb
+│   │   ├── champ_prefilled_badge_component_spec.rb
 │   │   ├── conditions
 │   │   │   ├── champs_conditions_component_spec.rb
 │   │   │   ├── ineligibilite_rules_component_spec.rb
@@ -5078,6 +5098,7 @@
 │   │   │   │   ├── experts_component_spec.rb
 │   │   │   │   ├── pro_connect_restricted_component_spec.rb
 │   │   │   │   └── rdv_component_spec.rb
+│   │   │   ├── email_template_card_component_spec.rb
 │   │   │   ├── estimated_delay_component_spec.rb
 │   │   │   ├── revision_changes_component_spec.rb
 │   │   │   └── service_list_contact_component_spec.rb
@@ -5101,6 +5122,7 @@
 │   │   │   └── stepper_component_spec.rb
 │   │   ├── release_note
 │   │   │   └── form_component_spec.rb
+│   │   ├── revert_prefilled_button_component_spec.rb
 │   │   ├── select_procedure_drop_down_list_component_spec.rb
 │   │   ├── simple_format_component_spec.rb
 │   │   ├── switch_domain_banner_component_spec.rb
@@ -5510,6 +5532,8 @@
 │   │   ├── navigation_helper_spec.rb
 │   │   ├── procedure_helper_spec.rb
 │   │   └── release_notes_helper_spec.rb
+│   ├── initializers
+│   │   └── active_storage_spec.rb
 │   ├── jobs
 │   │   ├── admin_update_default_zones_job_spec.rb
 │   │   ├── ami
@@ -5778,6 +5802,7 @@
 │   │   │   ├── blob_processor_concern_spec.rb
 │   │   │   ├── champ_conditional_concern_spec.rb
 │   │   │   ├── champ_external_data_concern_spec.rb
+│   │   │   ├── champ_prefill_tracking_concern_spec.rb
 │   │   │   ├── champ_validate_concern_spec.rb
 │   │   │   ├── columns_concern_spec.rb
 │   │   │   ├── dossier_champs_concern_spec.rb
@@ -5897,12 +5922,17 @@
 │   │   │   ├── piece_justificative_type_de_champ_spec.rb
 │   │   │   ├── pre_rempli_type_de_champ_spec.rb
 │   │   │   ├── prefill_address_type_de_champ_spec.rb
+│   │   │   ├── prefill_boolean_type_de_champ_spec.rb
+│   │   │   ├── prefill_civilite_type_de_champ_spec.rb
 │   │   │   ├── prefill_commune_type_de_champ_spec.rb
+│   │   │   ├── prefill_date_type_de_champ_spec.rb
 │   │   │   ├── prefill_departement_type_de_champ_spec.rb
+│   │   │   ├── prefill_dossier_link_type_de_champ_spec.rb
 │   │   │   ├── prefill_drop_down_list_type_de_champ_spec.rb
 │   │   │   ├── prefill_epci_type_de_champ_spec.rb
 │   │   │   ├── prefill_formatted_type_de_champ_spec.rb
 │   │   │   ├── prefill_multiple_drop_down_list_type_de_champ_spec.rb
+│   │   │   ├── prefill_number_type_de_champ_spec.rb
 │   │   │   ├── prefill_pays_type_de_champ_spec.rb
 │   │   │   ├── prefill_region_type_de_champ_spec.rb
 │   │   │   ├── prefill_repetition_type_de_champ_spec.rb
@@ -5996,6 +6026,7 @@
 │   │   ├── serializer_service_spec.rb
 │   │   ├── sva_svr_decision_date_calculator_service_spec.rb
 │   │   ├── tiptap_service_spec.rb
+│   │   ├── trix_to_tiptap_service_spec.rb
 │   │   ├── users
 │   │   │   └── dossier_filter_service_spec.rb
 │   │   ├── value_normalizer_spec.rb
@@ -6034,6 +6065,7 @@
 │   │   │   ├── condition_spec.rb
 │   │   │   ├── dossier_submitted_message_spec.rb
 │   │   │   ├── groupe_instructeur_signature_spec.rb
+│   │   │   ├── mail_template_tiptap_spec.rb
 │   │   │   ├── procedure_administrateurs_spec.rb
 │   │   │   ├── procedure_archive_and_export_spec.rb
 │   │   │   ├── procedure_attestation_template_spec.rb
@@ -6070,7 +6102,8 @@
 │   │   │   ├── procedure_export_template_tabular_spec.rb
 │   │   │   ├── procedure_export_template_zip_spec.rb
 │   │   │   ├── procedure_filters_spec.rb
-│   │   │   └── procedure_sort_spec.rb
+│   │   │   ├── procedure_sort_spec.rb
+│   │   │   └── referentiel_prefilled_badge_spec.rb
 │   │   ├── integrateurs
 │   │   │   └── procedure_prefilling_spec.rb
 │   │   ├── manager
@@ -6105,6 +6138,7 @@
 │   │       ├── piece_justificative_drag_drop_spec.rb
 │   │       ├── pre_rempli_spec.rb
 │   │       ├── quotient_familial_upload_spec.rb
+│   │       ├── referentiel_prefill_revert_spec.rb
 │   │       ├── sign_in_spec.rb
 │   │       ├── sign_out_spec.rb
 │   │       ├── sign_up_spec.rb
@@ -6248,8 +6282,6 @@
 │       │   ├── _mail_template_attestation_inconsistency_alert.html.haml_spec.rb
 │       │   ├── experts_procedures
 │       │   │   └── index.html.haml_spec.rb
-│       │   ├── mail_templates
-│       │   │   └── edit.html.haml.spec.rb
 │       │   ├── procedures
 │       │   │   ├── _api_entreprise_token_expiration_alert.html.haml_spec.rb
 │       │   │   ├── edit.html.haml_spec.rb
@@ -6336,4 +6368,4 @@
 │           └── leaflet.scss
 ├── vite.config.ts
 └── vitest.config.ts
-1019 directories, 5636 files
+1021 directories, 5671 files
