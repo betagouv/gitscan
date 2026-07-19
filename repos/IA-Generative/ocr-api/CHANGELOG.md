@@ -29,6 +29,61 @@
 - code clean
 - :art: change minio vars
 
+## [0.19.5](https://github.com/IA-Generative/ocr-api/compare/v0.19.4...v0.19.5) (2026-07-17)
+
+
+### Bug Fixes
+
+* kwargs add sentinel ([ef37e1b](https://github.com/IA-Generative/ocr-api/commit/ef37e1bbcd604505663c9d7e663200ef926c7310))
+
+## [0.19.4](https://github.com/IA-Generative/ocr-api/compare/v0.19.3...v0.19.4) (2026-07-17)
+
+
+### Bug Fixes
+
+* **redis:** log redis pwd ([3d3aa65](https://github.com/IA-Generative/ocr-api/commit/3d3aa6518878a2387a25ab8e86e3647a5b9638a9))
+
+## [0.19.3](https://github.com/IA-Generative/ocr-api/compare/v0.19.2...v0.19.3) (2026-07-17)
+
+
+### Bug Fixes
+
+* **logs:** add logs ([11b7c45](https://github.com/IA-Generative/ocr-api/commit/11b7c4533761c62922655cd840a2a6c409aec016))
+
+## [0.19.2](https://github.com/IA-Generative/ocr-api/compare/v0.19.1...v0.19.2) (2026-07-17)
+
+
+### Bug Fixes
+
+* sentinel password ([84ea469](https://github.com/IA-Generative/ocr-api/commit/84ea469db132c663ea432349c82ac612005f4bb6))
+
+## [0.19.1](https://github.com/IA-Generative/ocr-api/compare/v0.19.0...v0.19.1) (2026-07-17)
+
+
+### Bug Fixes
+
+* sentinel scheme ([4c4175f](https://github.com/IA-Generative/ocr-api/commit/4c4175fc3e05dd382c9ce0820f2ada92244f0c69))
+
+## [0.19.0](https://github.com/IA-Generative/ocr-api/compare/v0.18.0...v0.19.0) (2026-07-15)
+
+
+### Features
+
+* **yt:** add youtube transcription ([940c57c](https://github.com/IA-Generative/ocr-api/commit/940c57ccd4c1c0d2e619ba88c0cb03d61c20b11c))
+
+## [0.18.0](https://github.com/IA-Generative/ocr-api/compare/v0.17.0...v0.18.0) (2026-07-15)
+
+
+### Features
+
+* **eml+zip:** add eml and zip consideration ([92b20a3](https://github.com/IA-Generative/ocr-api/commit/92b20a334abe389f1b530bc228bf5d2173aca447))
+
+
+### Bug Fixes
+
+* **openwebui:** delete task and associated file after processing ([580ec7f](https://github.com/IA-Generative/ocr-api/commit/580ec7fee6132b37953b13fcc49615a93d1e50f0))
+* url presigned ([8f4b45c](https://github.com/IA-Generative/ocr-api/commit/8f4b45cbf509bad5972d5254d50b5d8e4b1ec233))
+
 ## [0.17.0](https://github.com/IA-Generative/ocr-api/compare/v0.16.0...v0.17.0) (2026-07-09)
 
 

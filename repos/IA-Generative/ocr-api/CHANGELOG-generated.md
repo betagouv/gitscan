@@ -1,29 +1,25 @@
-## Changelog : ocr-api (30 derniers jours, au 09 juillet 2026)
+## Changelog : ocr-api (30 derniers jours, au 17 juillet 2026)
 
 ### Résumé
-Ce mois-ci, l'API OCR a bénéficié d'améliorations significatives en termes de fonctionnalités et de stabilité. Les utilisateurs peuvent désormais profiter d'une interface améliorée pour la visualisation et la sélection de zones dans les documents, ainsi que d'une prise en charge de nouveaux formats de fichiers. Des corrections et optimisations ont également été apportées pour améliorer la robustesse et la performance du système.
+Les dernières mises à jour de l'API OCR se concentrent sur l'ajout de nouvelles fonctionnalités, notamment la transcription de vidéos YouTube, la prise en charge de nouveaux formats de fichiers (EML et ZIP), et l'intégration d'une interface utilisateur web (OpenWebUI) pour le traitement de documents. Des corrections de bugs et des améliorations de la sécurité ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Ajout d'une interface OpenWebUI avec un point d'accès pour le traitement des documents.
-- Amélioration de l'OcrViewer avec des fonctionnalités de recherche et de sélection de zones.
-- Prise en charge de formats de fichiers supplémentaires pour l'upload OCR.
-- Ajout d'une vue détaillée des tâches et navigation améliorée dans l'onglet "Tasks".
-- Possibilité de supprimer une tâche et le fichier associé après traitement.
+*   Ajout de la transcription de vidéos YouTube.
+*   Prise en charge des fichiers EML et ZIP pour l'OCR.
+*   Intégration d'une interface OpenWebUI pour le traitement des documents, incluant des fonctionnalités de recherche et de sélection de zones.
+*   Amélioration de la gestion des tâches dans l'interface OpenWebUI avec l'ajout d'une vue de détail.
 
 ### Évolutions techniques
-- Amélioration de la configuration Redis avec support Sentinel.
-- Initialisation du pipeline OCR dans le processus worker pour une meilleure stabilité.
-- Utilisation de la méthode de démarrage multiprocessing 'spawn' pour PaddleOCR.
-- Mise à jour de la gestion des dépendances Langfuse.
-- Correction de problèmes liés à l'initialisation du modèle PaddleOCR et aux tests d'inférence.
-- Ajout de la variable d'environnement `TORCHINDUCTOR_CACHE_DIR` aux Dockerfiles.
-- Intégration de la librairie liteparse et ajout d'un worker associé.
-- Correction d'une vulnérabilité de sécurité.
-- Mise en place de la remontée d'erreurs vers Sentry pour l'API, le worker et le frontend ([#398](https://github.com/IA-Generative/ocr-api/issues/398)).
-- Correction d'une assertion dans les tests de tracing et stabilisation des tests SDK ([#399](https://github.com/IA-Generative/ocr-api/issues/399)).
+*   Implémentation du support Redis Sentinel pour une meilleure résilience de la connexion à Redis.
+*   Utilisation de `spawn` comme méthode de démarrage pour les processus multiprocessing afin d'améliorer la stabilité de PaddleOCR.
+*   Intégration de la librairie `liteparse` pour le traitement de certains formats de fichiers.
+*   Amélioration de la configuration de Docker avec l'ajout de la variable d'environnement `TORCHINDUCTOR_CACHE_DIR`.
+*   Mise à jour de la gestion des dépendances Langfuse.
+*   Refactoring du code pour améliorer la lisibilité et la maintenance, notamment dans la méthode `batch_predict` de PaddleOCR.
 
 ### Autres changements
-- Renommage de la variable d'environnement `S3_BUCKET_NAME` en `AWS_BUCKET_NAME` pour plus de cohérence.
-- Amélioration de la lisibilité du code dans la méthode `batch_predict` de PaddleOCR.
-- Ajout de documentation Markdown.
-- Plusieurs corrections et améliorations liées au processus de release.
+*   Correction de plusieurs vulnérabilités de sécurité.
+*   Amélioration des logs et ajout de logs supplémentaires.
+*   Mise à jour de la documentation et des noms de variables pour plus de cohérence (ex: `S3_BUCKET_NAME` renommé en `AWS_BUCKET_NAME`).
+*   Corrections mineures et ajustements de configuration pour améliorer la stabilité et la fiabilité de l'API.
+*   Plusieurs releases de versions (0.19.5, 0.19.4, 0.19.3, 0.19.2, 0.19.1, 0.19.0, 0.18.0, 0.17.0, 0.16.0, 0.15.1, 0.15.0, 0.14.0, 0.13.0, 0.12.6, 0.12.5, 0.12.4, 0.12.3, 0.12.2, 0.12.1, 0.12.0, 0.11.2, 0.11.1, 0.11.0) avec des corrections de bugs et des améliorations mineures.

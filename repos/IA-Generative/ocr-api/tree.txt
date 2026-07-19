@@ -80,6 +80,8 @@
 │   │   │   │   ├── CustomTabs.vue
 │   │   │   │   ├── DsfrDropdown.vue
 │   │   │   │   ├── InfoBulle.vue
+│   │   │   │   ├── MediaResultViewer.vue
+│   │   │   │   ├── MediaViewer.vue
 │   │   │   │   ├── OcrViewer.vue
 │   │   │   │   ├── ProgressBar.vue
 │   │   │   │   ├── SideBar.vue
@@ -185,6 +187,14 @@
 │       │   │   └── workers
 │       │   │       ├── __init__.py
 │       │   │       └── llm_worker.py
+│       │   ├── media
+│       │   │   ├── __init__.py
+│       │   │   ├── models
+│       │   │   │   ├── __init__.py
+│       │   │   │   └── youtube_transcript.py
+│       │   │   └── worker
+│       │   │       ├── __init__.py
+│       │   │       └── youtube_worker.py
 │       │   └── paddleocr2
 │       │       ├── Dockerfile
 │       │       ├── Dockerfile.gpu
@@ -295,7 +305,10 @@
 │       │   ├── main.py
 │       │   └── utils
 │       │       ├── __init__.py
-│       │       └── lazy_pdf.py
+│       │       ├── lazy_email.py
+│       │       ├── lazy_file.py
+│       │       ├── lazy_pdf.py
+│       │       └── lazy_zip.py
 │       ├── src
 │       │   ├── __init__.py
 │       │   ├── config
@@ -317,6 +330,7 @@
 │       │   ├── logger.py
 │       │   ├── schemas
 │       │   │   ├── __init__.py
+│       │   │   ├── audio.py
 │       │   │   ├── box.py
 │       │   │   ├── health.py
 │       │   │   ├── input.py
@@ -327,7 +341,8 @@
 │       │   │   ├── task.py
 │       │   │   ├── template.py
 │       │   │   ├── templates.py
-│       │   │   └── vector.py
+│       │   │   ├── vector.py
+│       │   │   └── video.py
 │       │   └── utils
 │       │       ├── __init__.py
 │       │       ├── bboxes.py
@@ -374,6 +389,11 @@
 │       │   │   │       ├── test_llm_vision.py
 │       │   │   │       ├── test_llm_vision_models.py
 │       │   │   │       └── test_template_model.py
+│       │   │   ├── media
+│       │   │   │   ├── models
+│       │   │   │   │   └── test_youtube_transcript.py
+│       │   │   │   └── worker
+│       │   │   │       └── test_youtube_worker.py
 │       │   │   └── paddleocr2
 │       │   │       └── test_models_paddle2.py
 │       │   ├── conftest.py
@@ -390,6 +410,8 @@
 │       │   │   ├── file_example_XLSX_10.xlsx
 │       │   │   ├── invalid
 │       │   │   │   └── cerfa_13750-05-rempli-page-001-724x1024.jpg.webp
+│       │   │   ├── media
+│       │   │   │   └── sample.vtt
 │       │   │   ├── predictions
 │       │   │   │   └── valid
 │       │   │   │       ├── Exo7-algebre-page40
@@ -407,6 +429,7 @@
 │       │   │   │           ├── copie-bac-2021-2.jpg
 │       │   │   │           ├── general_formula_rec_001_res_paddleocr3.png
 │       │   │   │           └── identite.jpg
+│       │   │   ├── test-integration.eml
 │       │   │   └── valid
 │       │   │       ├── Exo7-algebre-page40.jpg
 │       │   │       ├── cerfa_11573-09-filled.pdf
@@ -452,7 +475,11 @@
 │       │   │   │   ├── test_base_worker.py
 │       │   │   │   └── test_tracing.py
 │       │   │   ├── test_main.py
-│       │   │   └── test_pipeline_factory_integration.py
+│       │   │   ├── test_pipeline_factory_integration.py
+│       │   │   └── utils
+│       │   │       ├── test_lazy_email.py
+│       │   │       ├── test_lazy_file.py
+│       │   │       └── test_lazy_zip.py
 │       │   └── src
 │       │       ├── connector
 │       │       │   ├── _collection_manager.py
@@ -520,4 +547,4 @@
     │       ├── test_client_sync.py
     │       └── test_models.py
     └── uv.lock
-135 directories, 387 files
+143 directories, 406 files
