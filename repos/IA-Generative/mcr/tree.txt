@@ -1,6 +1,7 @@
 .
 ├── .claude
 │   ├── rules
+│   │   ├── infrastructure-resilience.md
 │   │   └── repository-flush.md
 │   ├── settings.json
 │   └── skills
@@ -172,8 +173,6 @@
 │   │   │   │   │   ├── meeting_router.py
 │   │   │   │   │   └── transcription_router.py
 │   │   │   │   └── user_router.py
-│   │   │   ├── client
-│   │   │   │   └── __init__.py
 │   │   │   ├── configs
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── base.py
@@ -329,26 +328,18 @@
 │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   └── templated_docx_generator.py
 │   │   │   │   ├── docx_report_generation_service.py
-│   │   │   │   ├── email
-│   │   │   │   │   └── __init__.py
-│   │   │   │   ├── llm_post_processing.py
-│   │   │   │   ├── report_content
-│   │   │   │   │   ├── __init__.py
-│   │   │   │   │   ├── markdown_to_docx.py
-│   │   │   │   │   ├── template_renderer.py
-│   │   │   │   │   └── templates
-│   │   │   │   │       └── detailed_synthesis.md.jinja
-│   │   │   │   └── speech_to_text
+│   │   │   │   └── report_content
 │   │   │   │       ├── __init__.py
-│   │   │   │       ├── participants_naming
-│   │   │   │       │   ├── __init__.py
-│   │   │   │       │   └── participant_extraction.py
-│   │   │   │       └── speech_to_text.py
+│   │   │   │       ├── markdown_to_docx.py
+│   │   │   │       ├── template_renderer.py
+│   │   │   │       └── templates
+│   │   │   │           └── detailed_synthesis.md.jinja
 │   │   │   ├── use_cases
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── _shared
 │   │   │   │   │   ├── __init__.py
-│   │   │   │   │   └── drive_upload.py
+│   │   │   │   │   ├── drive_upload.py
+│   │   │   │   │   └── transcription_deliverable.py
 │   │   │   │   ├── abort_multipart_upload.py
 │   │   │   │   ├── complete_capture.py
 │   │   │   │   ├── complete_multipart_upload.py
@@ -377,6 +368,7 @@
 │   │   │   │   ├── mark_deliverable_failure.py
 │   │   │   │   ├── mark_deliverable_success.py
 │   │   │   │   ├── request_deliverable.py
+│   │   │   │   ├── run_evaluation_from_zip.py
 │   │   │   │   ├── sign_multipart_part.py
 │   │   │   │   ├── soft_delete_deliverable.py
 │   │   │   │   ├── start_capture_bot.py
@@ -384,9 +376,14 @@
 │   │   │   │   ├── transcription
 │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   ├── _shared
-│   │   │   │   │   │   └── on_pipeline_failure.py
+│   │   │   │   │   │   ├── extract_participants.py
+│   │   │   │   │   │   ├── post_process_segments.py
+│   │   │   │   │   │   ├── preprocess_audio.py
+│   │   │   │   │   │   └── transcribe_diarized_audio.py
 │   │   │   │   │   ├── run_diarization.py
 │   │   │   │   │   ├── run_finalize_transcription.py
+│   │   │   │   │   ├── run_mark_transcription_failed.py
+│   │   │   │   │   ├── run_speech_to_text.py
 │   │   │   │   │   └── run_transcribe_chunks.py
 │   │   │   │   └── update_meeting.py
 │   │   │   └── utils
@@ -397,6 +394,7 @@
 │   │   │       ├── file_validation.py
 │   │   │       ├── filename_header.py
 │   │   │       ├── langfuse_observability.py
+│   │   │       ├── retry.py
 │   │   │       ├── s3_client.py
 │   │   │       └── sentry_context.py
 │   │   ├── evaluation
@@ -533,7 +531,6 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── test_full_transcript.py
 │   │   │   ├── test_s3.py
-│   │   │   ├── test_s3_extension_extraction.py
 │   │   │   ├── test_s3_multipart.py
 │   │   │   └── test_speech_to_text_models.py
 │   │   ├── integration
@@ -557,9 +554,9 @@
 │   │   │   │   ├── conftest.py
 │   │   │   │   ├── seams.py
 │   │   │   │   ├── test_diarization_async.py
+│   │   │   │   ├── test_golden_speech_to_text.py
 │   │   │   │   ├── test_golden_transcribe_meeting.py
 │   │   │   │   ├── test_integration_center_process.py
-│   │   │   │   ├── test_integration_full_process.py
 │   │   │   │   ├── test_integration_post_process.py
 │   │   │   │   ├── test_integration_pre_process.py
 │   │   │   │   ├── test_parallel_chunk_transcription.py
@@ -585,7 +582,6 @@
 │   │   │   ├── test_deliverable_filename.py
 │   │   │   ├── test_match_speakers_with_participants.py
 │   │   │   ├── test_noise_detection.py
-│   │   │   ├── test_participant_extraction.py
 │   │   │   ├── test_remove_hallucinations.py
 │   │   │   ├── test_s3_audio.py
 │   │   │   └── test_transcription_confidentiality.py
@@ -610,10 +606,11 @@
 │   │       ├── test_list_meetings.py
 │   │       ├── test_mark_deliverable_failure.py
 │   │       ├── test_mark_deliverable_success.py
-│   │       ├── test_on_pipeline_failure.py
 │   │       ├── test_request_deliverable.py
 │   │       ├── test_run_diarization.py
+│   │       ├── test_run_evaluation_from_zip.py
 │   │       ├── test_run_finalize_transcription.py
+│   │       ├── test_run_mark_transcription_failed.py
 │   │       ├── test_run_transcribe_chunks.py
 │   │       ├── test_sign_multipart_part.py
 │   │       ├── test_soft_delete_deliverable.py
@@ -822,6 +819,7 @@
 │   │   │   │   ├── deliverables.service.spec.ts
 │   │   │   │   ├── deliverables.service.ts
 │   │   │   │   ├── deliverables.types.ts
+│   │   │   │   ├── use-deliverables.spec.ts
 │   │   │   │   └── use-deliverables.ts
 │   │   │   ├── feedback
 │   │   │   │   ├── feedback.service.ts
@@ -1177,4 +1175,4 @@
 └── scripts
     ├── check_changed.py
     └── guard_git_commit.py
-219 directories, 960 files
+215 directories, 962 files

@@ -1,3 +1,41 @@
+2026-07-16T10:42:31+02:00 - d9eccfc - Jean-Alexis-callies : Merge pull request #938 from IA-Generative/feat/glossary-header
+2026-07-16T10:39:26+02:00 - f8b7403 - Jean-Alexis-callies : Merge branch 'main' into feat/glossary-header
+2026-07-16T09:49:28+02:00 - d22b04d - ThomasMetzger : Merge pull request #943 from IA-Generative/feat/add-retry-s3
+2026-07-15T17:55:05+02:00 - db124d1 - Thomas Metzger : :fire: remove dead code (unused package inits, obsolete extension-extraction test)
+2026-07-15T17:55:05+02:00 - 9571adc - Thomas Metzger : :sparkles: add transient-retry primitives (settings, exceptions, tenacity wrapper, boto timeouts)
+2026-07-15T17:55:05+02:00 - 8a197f9 - Thomas Metzger : :technologist: add claude infra level rule on mcr-core
+2026-07-15T17:55:05+02:00 - 5c8b9ec - Thomas Metzger : :recycle: rework the InMemoryS3 fake into a fault-injection double
+2026-07-15T17:55:05+02:00 - 588ce95 - Thomas Metzger : :heavy_plus_sign: add retry dependencies (tenacity, botocore, urllib3)
+2026-07-15T17:55:05+02:00 - 18ab5ff - Thomas Metzger : :goal_net: retry transient S3 failures and re-queue the pipeline task
+2026-07-15T17:55:05+02:00 - 088235e - Thomas Metzger : :white_check_mark: migrate the S3 and pipeline tests onto the fake
+2026-07-15T16:39:59+02:00 - ed38820 - ThomasMetzger : Merge pull request #952 from IA-Generative/fix/instructor-retry-error
+2026-07-15T16:28:28+02:00 - 8e48597 - Thomas Metzger : :goal_net:: keep uncorrected chunks when correction fails instead of aborting the transcription
+2026-07-15T16:22:24+02:00 - a4a7e00 - Thomas Metzger : :recycle:: route correction and participant extraction through complete()
+2026-07-15T16:22:24+02:00 - 0a100af - Thomas Metzger : :bug:: pin LLM temperature and unify retries via a central complete() helper
+2026-07-15T15:59:46+02:00 - 6249618 - Thibault Foucart : Merge pull request #933 from IA-Generative/feat/download-meeting-artifacts
+2026-07-15T15:47:17+02:00 - c403319 - Thibault Foucart : :hammer:: support downloading pipeline artifacts and preselect single available file in download_meeting.sh
+2026-07-15T15:45:16+02:00 - 8714967 - Thibault Foucart : Merge pull request #934 from IA-Generative/feat/916-eliminate-speech-to-text-god-object
+2026-07-15T14:58:56+02:00 - 529eb99 - Thibault Foucart : :recycle: (916): move the evaluation zip logic from the worker into a run_evaluation_from_zip use-case
+2026-07-15T14:57:54+02:00 - 7f76c1a - Thibault Foucart : :recycle: (916): extract extract_participants into _shared and measure it in the participant-naming evaluation
+2026-07-15T14:57:54+02:00 - 3142129 - Thibault Foucart : :fire: (916): delete the SpeechToTextPipeline god-object and its legacy participant extraction chain
+2026-07-15T14:57:54+02:00 - 2a7e8ca - Thibault Foucart : :white_check_mark: (916): retarget the pipeline integration tests onto the shared use-case bricks
+2026-07-15T14:57:54+02:00 - 1a430ab - Thibault Foucart : :recycle: (916): inject a transcribe_audio callable into the ASR and acronym evaluations
+2026-07-15T14:56:48+02:00 - 855d212 - Thibault Foucart : :recycle: (916): extract transcribe_diarized_audio into use-case _shared
+2026-07-15T14:56:48+02:00 - 7438909 - Thibault Foucart : :sparkles: (916): add run_speech_to_text use-case composing the shared in-memory phases
+2026-07-15T14:56:48+02:00 - 0fd5178 - Thibault Foucart : :recycle: (916): extract preprocess_audio and post_process_segments into use-case _shared
+2026-07-15T14:55:13+02:00 - 5329d79 - Thibault Foucart : :white_check_mark: (916): add a golden test freezing the evaluation speech-to-text output
+2026-07-15T11:09:05+02:00 - 82d8979 - Thibault Foucart : Merge pull request #942 from IA-Generative/fix/937-avoid-worker-crash-on-sucess-timeout
+2026-07-13T14:40:52+02:00 - aff0586 - Thibault Foucart : :bug: (937): give the core client a 30s timeout so slow success responses stop failing finalize
+2026-07-13T14:40:52+02:00 - 6fe69e7 - Thibault Foucart : :bug: (937): return 409 instead of 500 when a transcription transition is not allowed
+2026-07-13T14:40:52+02:00 - 5808bb2 - Thibault Foucart : :recycle: (937): mark transcription failure through a best-effort link_error errback instead of the on_failure override
+2026-07-13T14:40:52+02:00 - 0dafdf2 - Thibault Foucart : :recycle: (937): move the core client timeout into ServiceSettings so it's env-configurable
+2026-07-13T13:59:40+02:00 - 7a7ebcc - Thibault Foucart : Merge pull request #935 from IA-Generative/feat/trigger-service-ci-on-shared-env-files
+2026-07-13T13:52:13+02:00 - ad43052 - Thibault Foucart : :construction_worker: run each service CI when shared env files or the workflow change
+2026-07-13T12:07:14+02:00 - 628e92f - Carl-Adrien Mercey : Merge pull request #939 from IA-Generative/fix/886-early-transcription-deliverable
+2026-07-12T14:30:37+02:00 - 6934092 - Carl-Adrien Mercey : :wrench: (886): point stale local frontend URLs at the ingress port
+2026-07-12T14:30:30+02:00 - 6583418 - Carl-Adrien Mercey : :bug: (886): drop synthetic transcription deliverable and poll the real one
+2026-07-12T14:30:24+02:00 - 815864d - Carl-Adrien Mercey : :sparkles: (886): create transcription deliverable at init and track it through the pipeline
+2026-07-10T14:57:00+02:00 - c730567 - Jean-Alexis Callies : :speech_balloon:: udpate glossary header
 2026-07-09T11:32:03+02:00 - 62057df - Thibault Foucart : Merge pull request #923 from IA-Generative/feat/872-lazy-load-models
 2026-07-09T11:21:39+02:00 - f87cc24 - Thibault Foucart : :fire: (872): remove the worker init hook made useless by lazy loading
 2026-07-09T11:21:39+02:00 - eb8c3c2 - Thibault Foucart : :sparkles: (873): make the transcription success payload optional and read full_transcript.json from S3 when absent
