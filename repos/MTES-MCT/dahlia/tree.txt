@@ -79,6 +79,8 @@
 │       ├── ci.yml
 │       └── deploy.yml
 ├── .gitignore
+├── .husky
+│   └── pre-commit
 ├── .pnpm-store
 │   └── v11
 │       └── index.db
@@ -97,14 +99,17 @@
 │   ├── (protected)
 │   │   ├── case_files
 │   │   │   ├── [caseFileNumber]
+│   │   │   │   ├── actions.integration.test.ts
 │   │   │   │   ├── actions.ts
 │   │   │   │   ├── page.tsx
 │   │   │   │   └── pieces
-│   │   │   │       └── [encodedFileId]
-│   │   │   │           ├── actions.ts
-│   │   │   │           ├── data
-│   │   │   │           │   └── route.ts
-│   │   │   │           └── page.tsx
+│   │   │   │       ├── [encodedFileId]
+│   │   │   │       │   ├── actions.ts
+│   │   │   │       │   └── data
+│   │   │   │       │       └── route.ts
+│   │   │   │       └── download
+│   │   │   │           ├── route.ts
+│   │   │   │           └── route.unit.test.ts
 │   │   │   ├── export
 │   │   │   │   └── route.ts
 │   │   │   └── page.tsx
@@ -128,11 +133,16 @@
 │   │   ├── auth.ts
 │   │   ├── auth.unit.test.ts
 │   │   ├── carried-search-params.ts
+│   │   ├── case-file-actors.ts
+│   │   ├── case-file-enums.ts
 │   │   ├── case-file-format.ts
+│   │   ├── case-file-format.unit.test.ts
 │   │   ├── case-file-search.ts
 │   │   ├── case-file-search.unit.test.ts
 │   │   ├── case-file-tabs.ts
+│   │   ├── case-file-tabs.unit.test.ts
 │   │   ├── case-files-dashboard-columns.ts
+│   │   ├── case-files-dashboard-columns.unit.test.ts
 │   │   ├── dashboard-filter.ts
 │   │   ├── data
 │   │   │   ├── attached-files.ts
@@ -140,7 +150,9 @@
 │   │   │   ├── case-file-events.ts
 │   │   │   ├── case-file-pieces.integration.test.tsx
 │   │   │   ├── case-files.ts
-│   │   │   └── case-files.unit.test.ts
+│   │   │   ├── case-files.unit.test.ts
+│   │   │   ├── piece-content.ts
+│   │   │   └── piece-content.unit.test.ts
 │   │   ├── fetch-paginated-table-data.ts
 │   │   ├── historique-table.ts
 │   │   ├── mocked-pieces.ts
@@ -159,13 +171,12 @@
 │   │   ├── table-search-context.unit.test.ts
 │   │   ├── table-sort.ts
 │   │   └── telerecours.ts
+│   ├── page.integration.test.tsx
 │   ├── page.tsx
 │   └── ui
 │       ├── breadcrumb
 │       │   ├── case-file-breadcrumb.tsx
-│       │   ├── case-file-breadcrumb.unit.test.tsx
-│       │   ├── piece-case-file-breadcrumb.tsx
-│       │   └── piece-case-file-breadcrumb.unit.test.tsx
+│       │   └── case-file-breadcrumb.unit.test.tsx
 │       ├── button
 │       │   ├── column-filter-button.tsx
 │       │   ├── column-filter-button.unit.test.tsx
@@ -179,13 +190,13 @@
 │       │   ├── case-file-details-card.tsx
 │       │   └── case-file-details-card.unit.test.tsx
 │       ├── form
+│       │   ├── case-file-details-editor.tsx
 │       │   ├── case-files-search-by-status.tsx
 │       │   ├── case-files-search-by-status.unit.test.tsx
 │       │   ├── case-files-search.tsx
 │       │   ├── case-files-search.unit.test.tsx
 │       │   ├── hidden-field.tsx
 │       │   ├── hidden-field.unit.test.tsx
-│       │   ├── piece-metadata-form.tsx
 │       │   ├── search-bar.tsx
 │       │   ├── search-bar.unit.test.tsx
 │       │   ├── table-search-bar.tsx
@@ -199,9 +210,11 @@
 │       │   └── header-dahlia.unit.test.tsx
 │       ├── pending-validation.tsx
 │       ├── pending-validation.unit.test.tsx
-│       ├── piece-metadata.tsx
-│       ├── piece-navigator.tsx
 │       ├── piece-viewer.tsx
+│       ├── piece-viewer.unit.test.tsx
+│       ├── pieces
+│       │   ├── pieces-workspace.tsx
+│       │   └── pieces-workspace.unit.test.tsx
 │       ├── table
 │       │   ├── column-header.tsx
 │       │   ├── column-header.unit.test.tsx
@@ -211,13 +224,16 @@
 │       │   ├── data-table.unit.test.tsx
 │       │   ├── memory-deadline-cell.tsx
 │       │   ├── memory-deadline-cell.unit.test.tsx
-│       │   ├── piece-table-cells.tsx
-│       │   ├── piece-table-cells.unit.test.tsx
+│       │   ├── row-selection.tsx
+│       │   ├── row-selection.unit.test.tsx
 │       │   ├── sortable-column-header.tsx
 │       │   ├── sortable-column-header.unit.test.tsx
 │       │   ├── table-page-size-select.tsx
+│       │   ├── table-page-size-select.unit.test.tsx
 │       │   ├── table-pagination-footer.tsx
-│       │   └── use-table-page-size.ts
+│       │   ├── table-pagination-footer.unit.test.tsx
+│       │   ├── use-table-page-size.ts
+│       │   └── use-table-page-size.unit.test.ts
 │       └── tabs
 │           ├── case-file-tab-nav.tsx
 │           ├── case-file-tab-nav.unit.test.tsx
@@ -230,6 +246,7 @@
 │   ├── cli
 │   │   ├── parse-args.ts
 │   │   ├── parse-args.unit.test.ts
+│   │   ├── reschedule-deliberation-case-files.ts
 │   │   └── scrape-telerecours.ts
 │   ├── persistence
 │   │   ├── content-hash.ts
@@ -237,6 +254,7 @@
 │   │   ├── enrich-case-file.ts
 │   │   ├── enrich-case-file.unit.test.ts
 │   │   ├── paginate.ts
+│   │   ├── upsert-case-file-actors.ts
 │   │   └── upsert-case-file.ts
 │   ├── scrape
 │   │   ├── phase-a-list.ts
@@ -267,6 +285,47 @@
 ├── eslint.config.mjs
 ├── files
 │   └── mocked_pdfs
+│       ├── 1-Requete_2405328_IIL_1144107799-1-1.pdf
+│       ├── 1136075500_Requete_TA.pdf
+│       ├── 1136075503_Inventaire_des_pieces.pdf
+│       ├── 1136075532_1_Decision_de_la_Commission_de_mediation_du_14_fevrier_2023.pdf
+│       ├── 1136075536_2_Ordonnance_du_15_decembre_2023.pdf
+│       ├── 1136075539_3_Compte_rendu_d_hospitalisation_du_Docteur__du_09.02.2024.pdf
+│       ├── 1136210751_comrdal.pdf
+│       ├── 1137746597_ORD_CLOT_blablabla_cm.pdf
+│       ├── 1137780804_notorins.pdf
+│       ├── 1142338213_aviaudal.pdf
+│       ├── 1142534179_Memoire.pdf
+│       ├── 1142534183_Inventaire_des_pieces_2.pdf
+│       ├── 1142534186_4_Demande_de_logement_social.pdf
+│       ├── 1142534189_5_Certificat_medical_du_Docteurdu_9_juin_2022.pdf
+│       ├── 1142534191_6_Courrier_du_Docteur_du_26.09.2022.pdf
+│       ├── 1142534196_7_Certificat_medical_du_Docteur_du_26.09.2022.pdf
+│       ├── 1142534198_8_Courrier_du_Docteur_du_16.11.2022.pdf
+│       ├── 1142534200_9_IRM_du_pied_droit_du_17.01.2023.pdf
+│       ├── 1142534202_10_Radiographie_du_rachis_dorsolombaire_et_du_bassin_du_17.01.2023.pdf
+│       ├── 1142534203_11_Courrier_du_Docteur_du_15.05.2023.pdf
+│       ├── 1142534204_12_Courrier_du_Docteur_du_05.06.2023.pdf
+│       ├── 1142534206_13_Courrier_du_Docteur_du_04.09.2023.pdf
+│       ├── 1142534210_14_Decision_de_la_CDAPH_du_18.11.2020.pdf
+│       ├── 1142534216_15_Carte_mobilite_inclusion.pdf
+│       ├── 1142534220_16_Attestation_CAF_du_20.09.2023.pdf
+│       ├── 1142534225_17_Attestation_de_Mme_la_cousine_du_28.11.2022.pdf
+│       ├── 1142534230_18_Recours_amiable_devant_la_Commission_DALO_du_18.10.2022.pdf
+│       ├── 1142540512_notmem.pdf
+│       ├── 1142971678_Inventaire_des_pieces.pdf
+│       ├── 1142971698_19_Courrier_du_Docteur_Imen_D_du_4_septembre_2024.pdf
+│       ├── 1142971732_20_Certificat_medical_du_Docteur_du_27_septembre_2024.pdf
+│       ├── 1_Proposition_DALO_24.05.24.pdf
+│       ├── 1_bis_Decision_20-08-2024-2.pdf
+│       ├── 2-pieces_compl_REQ_2410482_1147556249.pdf
+│       ├── 2402785_1143629463.pdf
+│       ├── 2410482_J_ok_1167865431.pdf
+│       ├── 2411158_20022025_1147930341-1.pdf
+│       ├── 2_Refus_proposition_DALO.pdf
+│       ├── 3_Courriel_sortie_DALO_24.06.24.pdf
+│       ├── 4-Decision_23-04-2024-1.pdf
+│       ├── 4-Decision_23-04-2024-2.pdf
 │       ├── Accuse_de_reception_de_la_requete.pdf
 │       ├── Accuse_de_reception_de_la_requete_-_DALO_1.pdf
 │       ├── Accuse_de_reception_de_la_requete_-_DALO_2.pdf
@@ -274,8 +333,14 @@
 │       ├── Autre(s)_piece(s).pdf
 │       ├── Autre.pdf
 │       ├── Avis_*.pdf  (6 files)
+│       ├── C_2402785_RP_repport_CI.pdf
 │       ├── Communication_*.pdf  (12 files)
+│       ├── DDETS_ecritures_en_reponse_A_2402785.pdf
+│       ├── DDETS_ecritures_en_reponse_A__2402785.pdf
+│       ├── DDETS_ecritures_en_reponse_A__2402785_1142997044.pdf
+│       ├── DOSSIER_*.pdf  (27 files)
 │       ├── Decision_attaquee.pdf
+│       ├── Decision_de_la_Commission_de_mediation_du_14_fevrier_2023.pdf
 │       ├── Decision_de_la_juridiction.pdf
 │       ├── Demande_d_execution_du_jugement.pdf
 │       ├── Demande_de_delai_supplementaire.pdf
@@ -285,22 +350,41 @@
 │       ├── EXE_-_Notif._ordonnance_-_ouverture_proc._juridictionnelle.pdf
 │       ├── Inventaire_document.pdf
 │       ├── Inventaire_requete.pdf
+│       ├── J_1143412492.pdf
 │       ├── Lettre.pdf
 │       ├── Lettre_d_information_-_R._611-11-1.pdf
 │       ├── Lettre_du_greffier.pdf
+│       ├── MD_2402785_RP_localisation.pdf
+│       ├── MD_2402885_L_PP.pdf
+│       ├── MD_IIA_2411158_H_PP-1-1.pdf
+│       ├── MD_J_2410482.pdf
 │       ├── Memoire.pdf
 │       ├── Memoire_en_defense.pdf
 │       ├── Memoire_en_defense_-_refere.pdf
 │       ├── Mise_en_demeure_defendeur.pdf
 │       ├── Note_en_delibere.pdf
+│       ├── Note_en_delibere_2410482.pdf
 │       ├── Notification_*.pdf  (6 files)
+│       ├── OCI_au_12-12-24_1144174211-1.pdf
 │       ├── Piece_jointe_document.pdf
 │       ├── Piece_jointe_requete.pdf
 │       ├── Pieces.pdf
 │       ├── Pieces_complementaires.pdf
 │       ├── Pieces_demandees.pdf
+│       ├── Preuve_DDETS_ecritures_en_reponse_A_2402785.pdf.pdf
 │       ├── Reponse_sur_l_etat_de_l_instruction.pdf
-│       └── Requete.pdf
+│       ├── Requete.pdf
+│       ├── Requete_A.pdf
+│       ├── comrdal_1144181451-1.pdf
+│       ├── comrqsoc_1143417502.pdf
+│       ├── getdoc.pdf
+│       ├── inventaireAutomatique_806073205_1142998355.pdf
+│       ├── notdeci_1143635358.pdf
+│       ├── notdeci_1147950896-1.pdf
+│       ├── notjuge_1167876171.pdf
+│       ├── notmem_1147609984.pdf
+│       ├── notorins_1144181466-1.pdf
+│       └── notpcc_1143047033.pdf
 ├── next.config.ts
 ├── package.json
 ├── pnpm-lock.yaml
@@ -350,15 +434,28 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260629120000_table_search_normalized
 │   │   │   └── migration.sql
+│   │   ├── 20260706133857_case_file_litigation_right_summary
+│   │   │   └── migration.sql
 │   │   ├── 20260708093811_directory_complementary_emails_string
 │   │   │   └── migration.sql
 │   │   ├── 20260708102504_case_file_telerecours_sync
+│   │   │   └── migration.sql
+│   │   ├── 20260710151609_case_file_production_deadline
+│   │   │   └── migration.sql
+│   │   ├── 20260710155307_case_file_memory_deadline_date
+│   │   │   └── migration.sql
+│   │   ├── 20260710160000_attached_file_file_name_normalized
+│   │   │   └── migration.sql
+│   │   ├── 20260710170000_litigation_type_liquidation_astreinte
+│   │   │   └── migration.sql
+│   │   ├── 20260717110000_case_file_actors
 │   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   └── schema
 │       ├── actor.prisma
 │       ├── attached_file.prisma
 │       ├── case_file.prisma
+│       ├── case_file_actor.prisma
 │       ├── chamber.prisma
 │       ├── conclusion.prisma
 │       ├── hearing.prisma
@@ -383,4 +480,4 @@
 ├── vitest.config.mts
 ├── vitest.integration.config.mts
 └── vitest.unit.config.mts
-75 directories, 331 files
+84 directories, 445 files
