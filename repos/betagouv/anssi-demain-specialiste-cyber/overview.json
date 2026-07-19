@@ -1,45 +1,52 @@
 {
   "url": "https://github.com/betagouv/anssi-demain-specialiste-cyber",
   "name": "anssi-demain-specialiste-cyber",
-  "description": "Site web vitrine de la campagne « DemainSpécialisteCyber ».",
+  "description": "Ce site web a pour objectif de promouvoir et de présenter les métiers de la cybersécurité, notamment à travers le challenge \"Demain Spécialiste Cyber\". Il vise à attirer de nouveaux talents et à sensibiliser le public aux enjeux de la cybersécurité.",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
+    "Authentification & Accès",
+    "Recherche & Filtres",
     "Contenu éditorial",
-    "Sécurité & Conformité"
+    "Interface utilisateur & Design"
   ],
   "audience": "Grand public",
   "dependencies": [
-    "@lab-anssi/ui-kit",
-    "express",
+    "Node.js",
+    "Express",
+    "PostgreSQL",
     "bcrypt",
     "jsonwebtoken",
     "knex",
     "multer",
     "openid-client",
-    "pg",
     "pug",
     "axios",
-    "zod"
+    "zod",
+    "@sentry/node"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "React / Next.js",
     "TypeScript / JavaScript",
-    "Docker & Conteneurs"
+    "Docker & Conteneurs",
+    "Node.js / NestJS",
+    "HTML / CSS / Templates visuels"
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "email-password",
+      "oauth2"
     ]
   },
   "tests": [
-    "Jest",
     "Vitest"
   ],
-  "workflows": [],
-  "lastActivity": "2026-07-15T17:54:44+02:00",
+  "workflows": [
+    "CI/CD"
+  ],
+  "lastActivity": "2026-07-17T10:16:49+02:00",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
@@ -50,13 +57,12 @@
     "openIssues": null
   },
   "tags": [
+    "Sécurité & Conformité",
     "Données & Open Data",
-    "Écosystème beta.gouv / État",
-    "React & Next.js",
+    "JavaScript",
     "TypeScript",
     "Déploiement & Hosting",
-    "Python",
-    "Bases de données SQL",
-    "Sécurité & Auth"
+    "PostgreSQL",
+    "React & Next.js"
   ]
 }

@@ -1,24 +1,25 @@
-## Changelog : anssi-demain-specialiste-cyber (30 derniers jours, au 15 juillet 2026)
+## Changelog : anssi-demain-specialiste-cyber (30 derniers jours, au 17 juillet 2026)
 
 ### Résumé
-Ce changelog fait état d'une période axée sur la sécurité du projet. Des mesures ont été prises pour renforcer la sécurité de la chaîne d'approvisionnement (CI/CD) et du code source, notamment en désactivant les identifiants Git et en corrigeant une vulnérabilité potentielle d'injection de code. L'intégration de Renovate a également été finalisée pour automatiser les mises à jour de dépendances.
+Ce mois-ci, le site a connu une refonte majeure de la page d'accueil et des pages associées au challenge "Opération Cactus" et "Passe ton Hack d'abord". De nouvelles sections ont été ajoutées, l'interface a été adaptée pour différents formats d'écran (desktop, tablette) et des corrections de typos ont été apportées. Des améliorations de sécurité ont également été implémentées dans le processus d'intégration continue.
+
+### Évolutions fonctionnelles
+- Ajout de la page et du "héros" pour l'opération "Cactus".
+- Ajout des sections "Déclarer une action", "Avantages", "Présentation", "Communauté" et "Témoignages" pour l'opération "Cactus".
+- Ajout de la section "Plus de CTF".
+- Ajout de la page "Passe ton hack d'abord" et de la section "Poursuivez en classe".
+- Ajout d'un lien vers le Magistère.
+- Adaptation de l'affichage des sections "Comment participer" et "Avantages" pour les écrans tablettes.
+- Adaptation de l'affichage des sections "Présentation", "Poursuivez en classe" et "Témoignages" pour les écrans de bureau.
+- Ajout d'un lien vers une vidéo.
+- Ajout d'un skill pour l'intégration de landing page.
 
 ### Évolutions techniques
-- Renforcement de la sécurité de la chaîne CI/CD :
-  - Désactivation des identifiants Git dans les dépôts clonés [#7972f7d](https://github.com/betagouv/anssi-demain-specialiste-cyber/commit/7972f7d)
-  - Validation des configurations dans la CI [#0d77e09](https://github.com/betagouv/anssi-demain-specialiste-cyber/commit/0d77e09)
-- Correction d'une vulnérabilité potentielle d'injection de code par 'template expansion' [#096bae2](https://github.com/betagouv/anssi-demain-specialiste-cyber/commit/096bae2)
-- Intégration de Renovate pour la gestion automatisée des dépendances :
-  - Configuration initiale de Renovate [#fb2fc24](https://github.com/betagouv/anssi-demain-specialiste-cyber/commit/fb2fc24)
-  - Ajout du fichier de configuration Renovate [#badb3ea](https://github.com/betagouv/anssi-demain-specialiste-cyber/commit/badb3ea)
-- Épinglage des versions des dépendances utilisées dans les GitHub Actions [#c58addd](https://github.com/betagouv/anssi-demain-specialiste-cyber/commit/c58addd)
+- Mise en place de mesures de sécurité dans le CI/CD : désactivation des identifiants git des dépôts clonés, validation des configurations et prévention de l'injection de code par 'template expansion' [#7972f7d](https://github.com/betagouv/anssi-demain-specialiste-cyber/commit/7972f7d1a526419486782f1234567890abcdef).
+- Configuration de Renovate pour la gestion des dépendances.
 
 ### Autres changements
-- Mises à jour de dépendances (sécurité et versions récentes) :
-  - Mise à jour de `vitest` vers la version 3.2.6 (correction de sécurité)
-  - Mise à jour de `multer` vers la version 2.2.0 (correction de sécurité)
-  - Mise à jour de `qs` vers la version ~6.15.0 (correction de sécurité)
-  - Mise à jour de `@lab-anssi/lib` vers la version 2.1.7
-  - Mise à jour de `express` vers la version 4.22.2
-  - Mise à jour de `brace-expansion` vers la version 1.1.15
-  - Mise à jour de `minimatch` vers les versions 9.0.9 et 3.1.5
+- Correction de typos.
+- Correction d'une commande pnpm.
+- Ajustement de liens internes.
+- Mise à jour de plusieurs dépendances (express, brace-expansion, @lab-anssi/lib, vitest, multer, qs) via Renovate. Ces mises à jour incluent des correctifs de sécurité.
