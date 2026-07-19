@@ -1,17 +1,15 @@
-## Changelog : boris (30 derniers jours, au 25 juin 2026)
+## Changelog : boris (30 derniers jours, au 17 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur le portail OFS, le profil commercialisateur et l'optimisation du référencement (SEO) du site. Des ajustements et corrections ont également été apportés pour améliorer l'expérience utilisateur et la qualité du code.
+Cette mise à jour apporte des améliorations à l'expérience utilisateur du portail OFS, notamment des notifications et des corrections pour une meilleure stabilité. Des améliorations de la journalisation des erreurs côté serveur ont également été implémentées pour faciliter le diagnostic et la résolution des problèmes.
 
 ### Évolutions fonctionnelles
-- Améliorations apportées au portail OFS. [#518](https://github.com/MTES-MCT/boris/issues/518)
-- Ajout du profil commercialisateur. [#516](https://github.com/MTES-MCT/boris/issues/516)
-- Ajout d'une matrice d'impact. [#513](https://github.com/MTES-MCT/boris/issues/513)
-- Corrections du SEO, incluant l'ajout de balises canoniques. [#514](https://github.com/MTES-MCT/boris/issues/514)
+- Ajout de notifications pour le portail OFS. [#520](https://github.com/MTES-MCT/boris/issues/520)
+- Améliorations générales du portail OFS. [#518](https://github.com/MTES-MCT/boris/issues/518)
 
 ### Évolutions techniques
-- Ajustements et modifications diverses. [#515](https://github.com/MTES-MCT/boris/issues/515)
-- Ajout de logs côté serveur pour faciliter le débogage et le suivi des erreurs.
+- Ajout de logs d'erreur côté serveur pour faciliter le débogage.
+- Ajout de logs supplémentaires pour une meilleure traçabilité.
 
 ### Autres changements
-- Amélioration du SEO.
+- Aucun changement significatif à signaler.

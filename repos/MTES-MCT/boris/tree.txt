@@ -457,7 +457,10 @@
 │   │   │   │   │   │   └── api
 │   │   │   │   │   │       ├── find-my-ofs.controller.ts
 │   │   │   │   │   │       ├── get-ofss.controller.ts
+│   │   │   │   │   │       ├── portal-lead-notifications.controller.ts
 │   │   │   │   │   │       └── portal-ofss.controller.ts
+│   │   │   │   │   ├── cron
+│   │   │   │   │   │   └── send-portal-lead-notifications.ts
 │   │   │   │   │   ├── distributor-eligibility-simulation.entity.ts
 │   │   │   │   │   ├── dtos
 │   │   │   │   │   │   ├── create.dto.ts
@@ -469,7 +472,8 @@
 │   │   │   │   │   ├── ofs-eligibility-simulation.entity.ts
 │   │   │   │   │   ├── ofs.entity.ts
 │   │   │   │   │   ├── ofs.module.ts
-│   │   │   │   │   └── ofs.repository.ts
+│   │   │   │   │   ├── ofs.repository.ts
+│   │   │   │   │   └── portal-lead-notification-preference.entity.ts
 │   │   │   │   ├── persistence
 │   │   │   │   │   ├── migrations
 │   │   │   │   │   │   ├── 1740654749195-create_region_departement_tables.ts
@@ -500,7 +504,8 @@
 │   │   │   │   │   │   ├── 1774100000000-add_ofs_fk_to_brs_diffusion_website.ts
 │   │   │   │   │   │   ├── 1775000000000-add_user_last_login_at.ts
 │   │   │   │   │   │   ├── 1775000000000-create_ofs_eligibility_simulation_table.ts
-│   │   │   │   │   │   └── 1776000000000-add_commercialisateur_transmissions.ts
+│   │   │   │   │   │   ├── 1776000000000-add_commercialisateur_transmissions.ts
+│   │   │   │   │   │   └── 1777000000000-create_portal_lead_notification_preference.ts
 │   │   │   │   │   ├── seeds
 │   │   │   │   │   │   ├── brs-diffusion-website
 │   │   │   │   │   │   │   ├── data.ts
@@ -1305,13 +1310,16 @@
 │       └── vite.config.ts
 ├── docker-compose.yml
 ├── docs
+│   ├── metabase-eligibility-dashboard.md
 │   └── prd
 │       └── commercialisateur-transmissions.md
 ├── mise.toml
 ├── package-lock.json
 ├── package.json
 ├── renovate.json
-└── scalingo
-    ├── build.sh
-    └── start.sh
-387 directories, 929 files
+├── scalingo
+│   ├── build.sh
+│   └── start.sh
+└── scripts
+    └── create-metabase-eligibility-dashboard.mjs
+389 directories, 935 files
