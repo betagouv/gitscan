@@ -1,30 +1,34 @@
-## Changelog : apistration (30 derniers jours, au 15 juillet 2026)
+## Changelog : apistration (30 derniers jours, au 2026-07-17)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives en matière d'accessibilité, avec de nombreuses corrections pour se conformer aux normes RGAA. Des nouvelles fonctionnalités ont été ajoutées pour l'API Particulier, notamment l'intégration d'un webhook pour la démarche numérique DataPass et l'ajout de l'endpoint CNAV Allocation Rentrée Scolaire. Des corrections et améliorations ont également été apportées à la gestion des erreurs et à la documentation.
+Cette période a été marquée par des améliorations significatives de l'accessibilité, notamment la correction de nombreux problèmes identifiés par des audits RGAA. Des fonctionnalités ont été ajoutées pour faciliter l'intégration des éditeurs et améliorer la gestion des tokens. Plusieurs corrections et améliorations ont également été apportées aux API, notamment concernant les données TVA et les informations sur les établissements scolaires.
 
 ### Évolutions fonctionnelles
-- Ajout d'un webhook pour l'API Particulier, lié à la démarche numérique DataPass [#266](https://github.com/datagouv/apistration/pull/266).
-- Intégration de l'endpoint CNAV Allocation Rentrée Scolaire (ARS) à l'API Particulier, incluant la gestion des erreurs et la documentation associée [#164](https://github.com/datagouv/apistration/pull/164), [#239](https://github.com/datagouv/apistration/pull/239), [#248](https://github.com/datagouv/apistration/pull/248), [#251](https://github.com/datagouv/apistration/pull/251).
-- Possibilité de filtrer les statuts des demandes d'habilitation dans l'API [#241](https://github.com/datagouv/apistration/pull/241).
+- Ajout de la gestion des tokens éditeur en self-service (création, prolongation, révocation) [#252](https://github.com/datagouv/apistration/pull/252).
+- Implémentation d'un webhook pour l'API Particulier, permettant la gestion des démarches numériques [#266](https://github.com/datagouv/apistration/pull/266).
 - Amélioration de la documentation pour les intégrations éditeur et les tokens éditeur [#178](https://github.com/datagouv/apistration/pull/178).
-- Ajout de l'ID interne de l'utilisateur sur la page de compte [#217](https://github.com/datagouv/apistration/pull/217).
-- Ajout d'un cas d'usage TVA [#207](https://github.com/datagouv/apistration/pull/207).
-- Suppression de l'annonce concernant l'intégration éditeur dans la documentation.
+- Ajout d'un filtre de statut pour les habilitations dans le tableau de bord des fournisseurs.
+- Affichage de l'ID interne de l'utilisateur sur la page de son compte.
+- Ajout de l'endpoint CNAV ARS (Allocation Rentrée Scolaire) [#164](https://github.com/datagouv/apistration/pull/164).
+- Refonte de l'intégration des données Simplifions avec l'ajout de nouvelles fonctionnalités et corrections.
+- Mise en place d'un système de création automatique de délégations pour les éditeurs via un formulaire Typeform [#249](https://github.com/datagouv/apistration/pull/249).
 
 ### Évolutions techniques
-- Correction d'un problème de gestion des erreurs lors des requêtes à l'API DJEPVA, en forçant la réponse en JSON [#254](https://github.com/datagouv/apistration/pull/254).
-- Amélioration de la gestion des tokens, notamment lors de la régénération d'un token banni [#248](https://github.com/datagouv/apistration/pull/248).
-- Refactor de la gestion du cache tabular TVA pour éviter les problèmes de cache obsolète [#233](https://github.com/datagouv/apistration/pull/233).
-- Mise à jour des dépendances : Ruby, Rubocop, Rails, etc. (plusieurs commits dependabot).
-- Amélioration de la robustesse des tests, notamment pour l'endpoint TVA [#236](https://github.com/datagouv/apistration/pull/236).
-- Ajout de la possibilité de passer un `delegation_id` optionnel aux endpoints de l'API Entreprise [#178](https://github.com/datagouv/apistration/pull/178).
-- Amélioration de la gestion des erreurs liées aux délégations (ajout de l'erreur 00212) [#178](https://github.com/datagouv/apistration/pull/178).
+- Corrections de sécurité concernant le tabnapping et les XSS sur les liens DataPass [#240](https://github.com/datagouv/apistration/pull/240).
+- Amélioration de la robustesse des tests et correction de tests aléatoires.
+- Refactoring du code pour améliorer la lisibilité et la maintenabilité.
+- Mise à jour des dépendances (Rubocop, Ruby, etc.).
+- Amélioration de la gestion des erreurs et des réponses HTTP pour l'API DJEPVA.
+- Optimisation de la gestion du cache pour l'API TVA.
+- Mise en place d'un système de gestion des incidents via Hyperping.
+- Amélioration de la gestion des erreurs et des validations pour les tokens éditeur.
 
 ### Autres changements
-- Améliorations significatives de l'accessibilité du site web, avec de nombreuses corrections pour se conformer aux normes RGAA (titres, liens, images, etc.) [#237](https://github.com/datagouv/apistration/pull/237), [#240](https://github.com/datagouv/apistration/pull/240).
-- Ajout d'un plugin d'accessibilité et configuration pour son exécution automatique [#205](https://github.com/datagouv/apistration/pull/205).
-- Ajout de jeux de données de test pour le CNous avec des scénarios INE [#218](https://github.com/datagouv/apistration/pull/218).
-- Corrections de linting et amélioration de la qualité du code.
-- Mise à jour de la documentation et des exemples.
-- Amélioration de la gestion des logs et de l'instrumentation.
+- Amélioration significative de l'accessibilité du site web, avec correction de nombreux problèmes identifiés par des audits RGAA.
+- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et corrections.
+- Corrections de bugs mineurs et améliorations de l'interface utilisateur.
+- Ajout de jeux de données de test pour le service CNous.
+- Nettoyage du code et suppression de code obsolète.
+- Amélioration des messages d'erreur et des logs.
+- Correction de problèmes de linting.
+- Ajout de tests unitaires et d'intégration.

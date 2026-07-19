@@ -1,3 +1,12 @@
+2026-07-17T14:28:41+02:00 - d612e22e - Samuel-Zacharie FAURE : Merge pull request #275 from Destinyyyy/chore/pass-sport-cnous-v3-to-v4
+2026-07-17T14:22:14+02:00 - 8ea7de37 - Patrick Nguyen : fix: pass Sport - moved cnous from v3 to v4
+2026-07-17T13:35:28+02:00 - 37f1d87d - Thomas Comes : Merge pull request #252 from datagouv/feature/api-6625-t6-crud-des-tokens-editeur-en-self-service-prolongation
+2026-07-17T11:46:22+02:00 - d93eb963 - Samuel-Zacharie FAURE : Merge pull request #274 from Destinyyyy/fix/pass-sport-cnous-aah-readme-curls-fixes
+2026-07-17T11:39:37+02:00 - 82367b55 - Patrick Nguyen : fix: pass Sport - corrections readme for cnous and aah curls
+2026-07-17T06:52:09+02:00 - 81eec2ae - Samuel-Zacharie FAURE : Merge pull request #272 from Destinyyyy/feat/pass-sport-corrections-and-aah-cnous
+2026-07-16T21:49:26+02:00 - f76288a2 - Patrick Nguyen : feat: pass Sport - corrections aeeh,ars et ajouts cnous et aah
+2026-07-16T11:54:17+02:00 - 59412175 - Samuel-Zacharie FAURE : Merge pull request #269 from Destinyyyy/feat/pass-sport-new-identite-pivots
+2026-07-16T11:09:32+02:00 - ba887b72 - Patrick Nguyen : feat: pass Sport - identite pivot AEEH, ARS, quotient familial for nom_dusage
 2026-07-15T10:52:38+02:00 - 3b9d6570 - Delmaire Loïc : Merge pull request #266 from datagouv/feat/api_particulier_demarche_numerique_webhook
 2026-07-15T08:37:53+02:00 - 4e8a8ffd - Delmaire Loïc : Add API Particulier Démarche numérique DataPass webhook
 2026-07-13T14:32:13+02:00 - 6b7d7b6c - Samuel-Zacharie FAURE : Fix: invalid INE number
@@ -7,6 +16,9 @@
 2026-07-13T11:57:28+02:00 - 8d752ea9 - Delmaire Loïc : Merge pull request #260 from datagouv/dependabot/bundler/siade/rubocop-70f6678d3e
 2026-07-13T11:56:15+02:00 - 3b4335d2 - Delmaire Loïc : Merge pull request #259 from datagouv/dependabot/bundler/site/production-dependencies-70fb40aea8
 2026-07-13T11:55:03+02:00 - 3407dcd2 - Delmaire Loïc : Merge pull request #258 from datagouv/dependabot/github_actions/ruby/setup-ruby-1.316.0
+2026-07-13T11:08:04+02:00 - 8f86094e - Thomas COMES : Rename reserved? to forbidden? in AllowedIpsValidator
+2026-07-13T10:49:38+02:00 - a74f9f9e - Thomas COMES : Ask for confirmation before rotating a token
+2026-07-13T10:05:04+02:00 - 51dcbf08 - Thomas COMES : Give the editor space a real nav sub-menu like the admin
 2026-07-13T09:58:45Z - 213e7c9a - dependabot[bot] : build(deps-dev): bump rubocop
 2026-07-13T05:10:20Z - 6b765d80 - dependabot[bot] : build(deps-dev): bump rubocop in /siade in the rubocop group
 2026-07-13T05:10:13Z - fb353545 - dependabot[bot] : build(deps): bump sitemap_generator
@@ -23,8 +35,17 @@
 2026-07-09T20:05:50+02:00 - 1eab2116 - Delmaire Loïc : Parse DJEPVA/MI api-association payloads as JSON instead of XML
 2026-07-09T16:53:35+02:00 - 604bb96c - Delmaire Loïc : Show endpoint version in admin api_requests selector
 2026-07-09T16:46:01+02:00 - 786df063 - Delmaire Loïc : Merge pull request #250 from datagouv/features/access-logs-token-type
+2026-07-09T15:57:38+02:00 - 2fd1974d - Thomas COMES : Disable Turbo on the create and rotate token forms
 2026-07-09T12:53:40+02:00 - d83306d2 - Samuel-Zacharie FAURE : Merge pull request #251 from datagouv/feature/api-7061-suppression-du-formulaire-editeurs-datapass-au-profit-dun
+2026-07-09T10:27:05+02:00 - 026ee451 - Thomas COMES : Simplify editor token creation and IP round-trip
+2026-07-09T10:14:59+02:00 - aaf8f9a8 - Thomas COMES : Let editors edit token IPs, rotate and revoke
+2026-07-09T10:11:01+02:00 - 2e2c9a8a - Thomas COMES : One-shot editor token creation from /editeur/tokens
+2026-07-09T10:07:35+02:00 - f85fc3d7 - Thomas COMES : List editor tokens at /editeur/tokens
 2026-07-08T19:50:58+02:00 - 4af32e47 - Delmaire Loïc : Replace éditeur datapass form with a Typeform questionnaire
+2026-07-08T17:43:08+02:00 - 245fa5a4 - Thomas COMES : Add EditorTokenPolicy for self-service token management
+2026-07-08T17:42:01+02:00 - 8b2a939d - Thomas COMES : Add EditorToken#revoke! and #rotate!
+2026-07-08T17:40:16+02:00 - 8791591a - Thomas COMES : Add optional allowed_ips whitelist to editor tokens
+2026-07-08T17:37:28+02:00 - 3a5e86f4 - Thomas COMES : Add reusable AllowedIpsValidator
 2026-07-08T16:02:11+02:00 - 4f669777 - Delmaire Loïc : Emit token_type on user_access instrumentation
 2026-07-08T15:15:32+02:00 - 3838af68 - Thomas Comes : Merge pull request #249 from datagouv/feature/api-6615-s3-enforcement-par-siret-dans-les-controleurs
 2026-07-08T09:58:19+02:00 - d104c4df - Thomas COMES : Render 00213 when the recipient has no active delegation
