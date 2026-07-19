@@ -1,14 +1,13 @@
-## Changelog : kali-data (30 derniers jours, au 11 juillet 2026)
+## Changelog : kali-data (30 derniers jours, au 18 juillet 2026)
 
 ### Résumé
-Ce changelog détaille les mises à jour des données des conventions collectives fournies par l'API DILA. Les modifications consistent principalement en des mises à jour régulières des données, ainsi qu'une correction concernant la version de Node utilisée par le projet.
+Ce projet a connu une série de mises à jour régulières des données des conventions collectives, ainsi qu'une correction concernant la version de Node utilisée. Ces mises à jour permettent de maintenir les données à jour et d'assurer la compatibilité de l'environnement de développement.
 
 ### Évolutions fonctionnelles
-- Mise à jour régulière des données des conventions collectives : de nouvelles versions de données ont été intégrées les 1er, 2, 3, 4, 6, 7, 8, 9, 10 et 11 juillet 2026, ainsi que les 16, 17, 18, 19, 20, 25, 26 et 27 juin 2026.
-- Correction d'un problème lié à la version de Node utilisée par le projet. [#320](https://github.com/SocialGouv/kali-data/issues/320)
+- Mise à jour régulière des données des conventions collectives avec les versions suivantes : 20260718_1343, 20260717_1408, 20260716_1420, 20260715_1411, 20260711_1349, 20260708_1442, 20260704_1400, 20260703_1434, 20260702_1430, 20260701_1503, 20260627_1409, 20260626_1459, 20260625_1501, 20260620_1430, 20260619_1553.
 
 ### Évolutions techniques
-- Mise à jour de la version de Node.js pour assurer la compatibilité et la stabilité du projet.
+- Mise à jour de la version de Node pour corriger un problème de compatibilité. [#320](https://github.com/SocialGouv/kali-data/issues/320)
 
 ### Autres changements
-- Aucun autre changement significatif à signaler.
+- Aucune information supplémentaire.
