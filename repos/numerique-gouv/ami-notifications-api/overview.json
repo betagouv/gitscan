@@ -1,12 +1,14 @@
 {
   "url": "https://github.com/numerique-gouv/ami-notifications-api",
   "name": "ami-notifications-api",
-  "description": "Cette API permet de gérer les notifications de l'application mobile interministérielle (AMI), notamment la création, la liste et le stockage des URL push pour les clients web ou mobiles. Elle fournit des points d'entrée pour la gestion des notifications et des abonnements.",
+  "description": "Cette API permet de gérer les notifications de l'application mobile interministérielle (AMI), notamment la création, la liste et le stockage des URL push. Elle fournit des points d'entrée pour ces opérations.",
   "language": "Python",
   "features": [
     "Notifications",
+    "Gestion des utilisateurs",
     "Authentification",
-    "API & Intégrations"
+    "API",
+    "Intégrations services externes"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -16,17 +18,16 @@
     "httpx",
     "webpush",
     "mozilla-django-oidc",
-    "django-dsfr",
     "uv",
     "ruff",
     "Biome"
   ],
   "components": [
-    "API REST & GraphQL",
-    "PostgreSQL & SQL",
-    "Python (scripts & backend)",
+    "API REST",
+    "PostgreSQL",
+    "Python",
     "Django",
-    "Docker & Conteneurs"
+    "TypeScript"
   ],
   "auth": {
     "methods": [
@@ -37,9 +38,11 @@
       "FranceConnect"
     ]
   },
-  "tests": "Pytest",
+  "tests": [
+    "Pytest"
+  ],
   "workflows": [],
-  "lastActivity": "2026-07-16T16:13:16+02:00",
+  "lastActivity": "2026-07-17T15:32:43+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -50,10 +53,13 @@
     "openIssues": null
   },
   "tags": [
-    "Données & Open Data",
-    "Écosystème beta.gouv / État",
+    "Notifications",
+    "API",
     "Python",
-    "Bases de données SQL",
-    "Sécurité & Auth"
+    "Django",
+    "Sécurité",
+    "Authentification",
+    "Données & Open Data",
+    "Écosystème beta.gouv / État"
   ]
 }
