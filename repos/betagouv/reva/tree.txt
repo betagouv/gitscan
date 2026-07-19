@@ -2208,6 +2208,7 @@
     │   │   │       ├── getAAPLogs.ts
     │   │   │       └── logAAPAuditEvent.ts
     │   │   ├── account
+    │   │   │   ├── account.authorization.test.ts
     │   │   │   ├── account.graphql
     │   │   │   ├── account.loaders.ts
     │   │   │   ├── account.resolvers.ts
@@ -2717,6 +2718,7 @@
     │   │   ├── finance
     │   │   │   ├── finance-unifvae.graphql
     │   │   │   ├── finance-unireva.graphql
+    │   │   │   ├── finance.authorization.test.ts
     │   │   │   ├── shared
     │   │   │   │   └── ftp.ts
     │   │   │   ├── unifvae
@@ -2731,7 +2733,6 @@
     │   │   │   │   ├── finance.routes.ts
     │   │   │   │   ├── finance.unifvae.resolvers.ts
     │   │   │   │   ├── module.d.ts
-    │   │   │   │   ├── security.ts
     │   │   │   │   └── validation
     │   │   │   │       ├── accompagnement.test.ts
     │   │   │   │       ├── accompagnement.ts
@@ -2771,8 +2772,7 @@
     │   │   │       │   └── isPaymentRequestSent.ts
     │   │   │       ├── finance.resolvers.ts
     │   │   │       ├── finance.routes.ts
-    │   │   │       ├── finance.types.ts
-    │   │   │       └── security.ts
+    │   │   │       └── finance.types.ts
     │   │   ├── generate-graphql-schema.ts
     │   │   ├── index.ts
     │   │   ├── jury
@@ -2840,7 +2840,6 @@
     │   │   │   │   ├── disableCompteCollaborateur.ts
     │   │   │   │   ├── findOrganismOnDegreeByOrganismId.ts
     │   │   │   │   ├── getAccountsByOrganismId.ts
-    │   │   │   │   ├── getAgencesByGestionnaireAccountId.ts
     │   │   │   │   ├── getCompteCollaborateurById.ts
     │   │   │   │   ├── getComptesCollaborateursByMaisonMereAAPId.ts
     │   │   │   │   ├── getLLToEarthFromZip.ts
@@ -2891,16 +2890,20 @@
     │   │   │   │   ├── updateOrganismLLToEarth.ts
     │   │   │   │   ├── updateOrganismOnAccountAssociation.ts
     │   │   │   │   └── updatePositionnementCollaborateur.ts
+    │   │   │   ├── organism.authorization.test.ts
     │   │   │   ├── organism.graphql
     │   │   │   ├── organism.resolvers.ts
     │   │   │   ├── organism.routes.ts
-    │   │   │   ├── organism.security.ts
     │   │   │   ├── organism.test.ts
     │   │   │   ├── organism.types.ts
     │   │   │   └── security
     │   │   │       ├── isGestionnaireOfMaisonMereAAP.security.ts
+    │   │   │       ├── isGestionnaireOfMaisonMereAAPOfOrganismByIdArg.ts
     │   │   │       ├── isOwnerOfOrganism.ts
-    │   │   │       └── isOwnerOrCanManageOrganism.security.ts
+    │   │   │       ├── isOwnerOfOrganismByIdArg.ts
+    │   │   │       ├── isOwnerOrCanManageOrganism.security.ts
+    │   │   │       ├── organismByIdArg.security.ts
+    │   │   │       └── presets.ts
     │   │   ├── referential
     │   │   │   ├── emails
     │   │   │   │   └── sendNewCertificationAvailableToCertificationRegistryManagerEmail.ts
@@ -2997,6 +3000,8 @@
     │   │   │   │   └── sendEmailUsingTemplate.ts
     │   │   │   ├── error
     │   │   │   │   └── functionalError.ts
+    │   │   │   ├── errors
+    │   │   │   │   └── messages.ts
     │   │   │   ├── file
     │   │   │   │   ├── allowFileTypes.ts
     │   │   │   │   ├── file.interface.ts
@@ -3018,6 +3023,9 @@
     │   │   │   ├── search
     │   │   │   │   └── search.ts
     │   │   │   └── security
+    │   │   │       ├── accessBy.test.ts
+    │   │   │       ├── accessBy.ts
+    │   │   │       ├── messages.ts
     │   │   │       ├── middlewares
     │   │   │       │   ├── allowed.ts
     │   │   │       │   ├── forbidden.ts
@@ -3042,7 +3050,9 @@
     │   │   │       │   ├── isUserOwnerOfCandidate.ts
     │   │   │       │   ├── whenHasRole.ts
     │   │   │       │   └── whenHasRoleButNotOthers.ts
-    │   │   │       └── presets.ts
+    │   │   │       ├── presets.ts
+    │   │   │       ├── withPolicies.test.ts
+    │   │   │       └── withPolicies.ts
     │   │   ├── strapi
     │   │   │   └── strapi.routes.ts
     │   │   ├── subscription
@@ -3059,7 +3069,7 @@
     │   │   │   │   ├── validateSubscriptionRequest.test.ts
     │   │   │   │   └── validateSubscriptionRequest.ts
     │   │   │   ├── module.d.ts
-    │   │   │   ├── security.ts
+    │   │   │   ├── subscription.authorization.test.ts
     │   │   │   ├── subscription.graphql
     │   │   │   └── subscription.resolvers.ts
     │   │   └── vae-collective
@@ -4522,6 +4532,8 @@
     │   │   │   │   └── migration.sql
     │   │   │   ├── 20260706140948_remove_audit_log_table
     │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260716120000_weight_certification_searchable_text_for_exact_objectifs_contexte_match
+    │   │   │   │   └── migration.sql
     │   │   │   └── migration_lock.toml
     │   │   ├── schema.prisma
     │   │   └── seed
@@ -4570,6 +4582,7 @@
     │   │   ├── migrateOrganismOnFormacodeFromDomainToSubDomain.ts
     │   │   ├── migrateOrganismOnFormacodeFromV13ToV14.ts
     │   │   ├── overwriteOutscaleBackupBucket.ts
+    │   │   ├── refreshCandidacyCertificationAuthorityId.ts
     │   │   ├── resetOrganismAndCertificationForCandidacies.ts
     │   │   ├── resetSandboxDb.sh
     │   │   ├── seedFeasibilities.ts
@@ -4853,6 +4866,8 @@
     │   │   │   │   │       │   │   ├── AapContactTile.tsx
     │   │   │   │   │       │   │   ├── CertificationAuthorityContactTile.tsx
     │   │   │   │   │       │   │   ├── ContactTiles.tsx
+    │   │   │   │   │       │   │   ├── MultipleCertificationAuthorityAvailableContactTile.tsx
+    │   │   │   │   │       │   │   ├── NoCertificationAuthorityAvailableContactTile.tsx
     │   │   │   │   │       │   │   └── NoContactTile.tsx
     │   │   │   │   │       │   └── next-actions
     │   │   │   │   │       │       ├── NextActionTiles.tsx
@@ -5007,6 +5022,8 @@
     │   │   │   │   │   │   │   │   │   │   ├── competencies-blocks
     │   │   │   │   │   │   │   │   │   │   │   └── [blocDeCompetencesId]
     │   │   │   │   │   │   │   │   │   │   │       └── page.tsx
+    │   │   │   │   │   │   │   │   │   │   ├── complement-experience-parcours-vise
+    │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   │   │   ├── eligibility
     │   │   │   │   │   │   │   │   │   │   │   ├── _components
     │   │   │   │   │   │   │   │   │   │   │   │   └── eligibility.hook.ts
@@ -5342,6 +5359,9 @@
     │   │   │   │   │   ├── dossier-de-validation.handler.ts
     │   │   │   │   │   └── upload.ts
     │   │   │   │   ├── end-accompagnement.handler.ts
+    │   │   │   │   ├── feasibility
+    │   │   │   │   │   └── dematerialized-feasibility-file
+    │   │   │   │   │       └── dematerialized-feasibility-file.handler.ts
     │   │   │   │   ├── jury-results
     │   │   │   │   │   └── jury-results.handler.ts
     │   │   │   │   ├── set-organism
@@ -5411,6 +5431,16 @@
     │   │       │       └── validate-training.spec.ts
     │   │       ├── experiences
     │   │       │   └── delete-experience.spec.ts
+    │   │       ├── feasibility
+    │   │       │   └── dematerialized-feasibility-file
+    │   │       │       ├── dematerialized-feasibility-file-attachments.spec.ts
+    │   │       │       ├── dematerialized-feasibility-file-certification.spec.ts
+    │   │       │       ├── dematerialized-feasibility-file-competencies-blocks.spec.ts
+    │   │       │       ├── dematerialized-feasibility-file-eligibility.spec.ts
+    │   │       │       ├── dematerialized-feasibility-file-prerequisites.spec.ts
+    │   │       │       ├── dematerialized-feasibility-file-sworn-statement.spec.ts
+    │   │       │       ├── dematerialized-feasibility-file.spec.ts
+    │   │       │       └── dff-mocks.ts
     │   │       ├── first-connexion
     │   │       │   └── first-connexion.spec.ts
     │   │       └── profile
@@ -5420,6 +5450,7 @@
     │   └── tsconfig.json
     ├── reva-interop
     │   ├── .env.example
+    │   ├── .env.test
     │   ├── .eslintrc.json
     │   ├── .graphqlrc.js
     │   ├── .prettierrc.json
@@ -5474,9 +5505,12 @@
     │   │   └── schema.prisma
     │   ├── routes
     │   │   └── v1
+    │   │       ├── __tests__
+    │   │       │   └── enumConsistency.test.ts
     │   │       ├── auth
     │   │       │   ├── README.md
     │   │       │   └── routes.ts
+    │   │       ├── authMiddleware.test.ts
     │   │       ├── authMiddleware.ts
     │   │       ├── candidacy
     │   │       │   └── routes.ts
@@ -5485,12 +5519,15 @@
     │   │       ├── feasibility
     │   │       │   └── routes.ts
     │   │       ├── features
+    │   │       │   ├── __testUtils
+    │   │       │   │   └── fixtures.ts
     │   │       │   ├── accounts
     │   │       │   │   └── createAccount.ts
     │   │       │   ├── auth
     │   │       │   │   ├── generateJwt.ts
     │   │       │   │   └── invalideJwt.ts
     │   │       │   ├── candidacies
+    │   │       │   │   ├── getCandidacyById.mapper.test.ts
     │   │       │   │   ├── getCandidacyById.mapper.ts
     │   │       │   │   └── getCandidacyById.ts
     │   │       │   ├── dossiersDeValidation
@@ -5500,6 +5537,7 @@
     │   │       │   │   ├── getDossierDeValidationByCandidacyId.ts
     │   │       │   │   ├── getDossierDeValidationHistoryByCandidacyId.mapper.ts
     │   │       │   │   ├── getDossierDeValidationHistoryByCandidacyId.ts
+    │   │       │   │   ├── getDossiersDeValidation.mapper.test.ts
     │   │       │   │   ├── getDossiersDeValidation.mapper.ts
     │   │       │   │   └── getDossiersDeValidation.ts
     │   │       │   ├── feasibilities
@@ -5507,6 +5545,7 @@
     │   │       │   │   ├── createFeasibilityDecisionByCandidacyId.ts
     │   │       │   │   ├── getFeasibilities.mapper.ts
     │   │       │   │   ├── getFeasibilities.ts
+    │   │       │   │   ├── getFeasibilityByCandidacyId.mapper.test.ts
     │   │       │   │   ├── getFeasibilityByCandidacyId.mapper.ts
     │   │       │   │   ├── getFeasibilityByCandidacyId.ts
     │   │       │   │   ├── getFeasibilityHistoryByCandidacyId.mapper.ts
@@ -5514,14 +5553,17 @@
     │   │       │   ├── juries
     │   │       │   │   ├── getJuries.mapper.ts
     │   │       │   │   ├── getJuries.ts
+    │   │       │   │   ├── getJuryByCandidacyId.mapper.test.ts
     │   │       │   │   ├── getJuryByCandidacyId.mapper.ts
     │   │       │   │   ├── getJuryByCandidacyId.ts
     │   │       │   │   ├── getJuryResultByCandidacyId.mapper.ts
     │   │       │   │   ├── getJuryResultByCandidacyId.ts
     │   │       │   │   ├── getJurySessionByCandidacyId.mapper.ts
     │   │       │   │   ├── getJurySessionByCandidacyId.ts
+    │   │       │   │   ├── scheduleJurySessionByCandidacyId.mapper.test.ts
     │   │       │   │   ├── scheduleJurySessionByCandidacyId.mapper.ts
     │   │       │   │   ├── scheduleJurySessionByCandidacyId.ts
+    │   │       │   │   ├── updateJuryResultByCandidacyId.mapper.test.ts
     │   │       │   │   ├── updateJuryResultByCandidacyId.mapper.ts
     │   │       │   │   └── updateJuryResultByCandidacyId.ts
     │   │       │   └── session
@@ -5537,16 +5579,19 @@
     │   ├── static
     │   │   └── fvae_logo.svg
     │   ├── tsconfig.json
-    │   └── utils
-    │       ├── errors.ts
-    │       ├── graphqlClient.ts
-    │       ├── jwt.test.ts
-    │       ├── jwt.ts
-    │       ├── keycloak.ts
-    │       ├── mappers
-    │       │   └── pageInfo.ts
-    │       ├── secureApiKeyCheck.ts
-    │       └── types.ts
+    │   ├── utils
+    │   │   ├── errors.ts
+    │   │   ├── graphqlClient.ts
+    │   │   ├── jwt.test.ts
+    │   │   ├── jwt.ts
+    │   │   ├── keycloak.ts
+    │   │   ├── mappers
+    │   │   │   └── pageInfo.ts
+    │   │   ├── secureApiKeyCheck.test.ts
+    │   │   ├── secureApiKeyCheck.ts
+    │   │   └── types.ts
+    │   ├── vitest.config.ts
+    │   └── vitest.setup.ts
     ├── reva-vae-collective
     │   ├── .env.example
     │   ├── .eslintrc.json
@@ -6174,4 +6219,4 @@
         ├── tsconfig.json
         └── types
             └── primitives.d.ts
-2078 directories, 4098 files
+2087 directories, 4134 files
