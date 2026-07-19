@@ -1,32 +1,28 @@
-## Changelog : datagouvfr_data_pipelines (30 derniers jours, au 10 juillet 2026)
+## Changelog : datagouvfr_data_pipelines (30 derniers jours, au 17 juillet 2026)
 
 ### Résumé
-Ce changelog présente les améliorations apportées aux pipelines de données de data.gouv.fr au cours du dernier mois. Les modifications incluent des corrections de bugs pour améliorer la fiabilité des pipelines, des optimisations de performance, et des mises à jour de l'infrastructure pour supporter de nouveaux jeux de données et des fonctionnalités améliorées. Des efforts ont également été faits pour améliorer la gestion des erreurs et le monitoring des pipelines.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la robustesse et de la fiabilité des pipelines de données existants, notamment ceux liés à la météo, aux données de santé (déces, contrôles sanitaires de l'eau) et aux zones géographiques. Des corrections de bugs ont été apportées pour gérer les erreurs de connexion, les timeouts et les problèmes de stockage. L'infrastructure a également été mise à jour avec l'ajout de pre-commit et la migration vers OVH pour le stockage objet.
 
 ### Évolutions fonctionnelles
-- Ajout de la prise en charge de nouveaux packs PNT [#669](https://github.com/datagouv/datagouvfr_data_pipelines/issues/669).
-- Amélioration de la gestion des fichiers de schémas sur S3 pour une meilleure fiabilité des uploads.
-- Publication des fichiers pour la pétition du Sénat [#699](https://github.com/datagouv/datagouvfr_data_pipelines/issues/699).
-- Ajout d'un déclencheur manuel pour reconstruire les données Finess [#685](https://github.com/datagouv/datagouvfr_data_pipelines/issues/685).
+- Ajout d'un déclencheur de reconstruction manuelle pour le pipeline Finess [#685](https://github.com/datagouv/datagouvfr_data_pipelines/issues/685).
+- Amélioration du pipeline geozones avec la reconstruction de la hiérarchie parents/ancêtres à partir des relations INSEE [#678](https://github.com/datagouv/datagouvfr_data_pipelines/issues/678) et l'ajout de données de population et de géométries [#682](https://github.com/datagouv/datagouvfr_data_pipelines/issues/682).
+- Ajout d'insights pour les DAG de traitement de données [#679](https://github.com/datagouv/datagouvfr_data_pipelines/issues/679).
 - Suppression du DAG de formation [#703](https://github.com/datagouv/datagouvfr_data_pipelines/issues/703).
-- Ajout de la gestion des populations et des géométries pour les données Géozones [#678](https://github.com/datagouv/datagouvfr_data_pipelines/issues/678).
+- Correction de la publication des fichiers pour le pipeline des pétitions du Sénat [#699](https://github.com/datagouv/datagouvfr_data_pipelines/issues/699).
 
 ### Évolutions techniques
-- Mise à jour de Python à la même version que l'environnement de production [#688](https://github.com/datagouv/datagouvfr_data_pipelines/issues/688).
-- Ajout de `pre-commit` pour améliorer la qualité du code [#687](https://github.com/datagouv/datagouvfr_data_pipelines/issues/687).
+- Ajout de pre-commit pour améliorer la qualité du code [#687](https://github.com/datagouv/datagouvfr_data_pipelines/issues/687).
+- Migration du stockage objet vers OVH [#670](https://github.com/datagouv/datagouvfr_data_pipelines/issues/670) et [#675](https://github.com/datagouv/datagouvfr_data_pipelines/issues/675).
+- Mise à jour de la version de Python pour correspondre à l'environnement de production [#688](https://github.com/datagouv/datagouvfr_data_pipelines/issues/688).
 - Utilisation de l'Airflow SDK pour les imports [#674](https://github.com/datagouv/datagouvfr_data_pipelines/issues/674).
-- Migration vers les buckets OVH pour le stockage des données [#670](https://github.com/datagouv/datagouvfr_data_pipelines/issues/670).
-- Amélioration de la gestion des erreurs et ajout de mécanismes de retry avec backoff pour les requêtes vers les services externes [#707](https://github.com/datagouv/datagouvfr_data_pipelines/issues/707), [#708](https://github.com/datagouv/datagouvfr_data_pipelines/issues/708).
-- Augmentation du timeout pour les DAGs `controle eau` et `carburants` pour éviter les échecs [#697](https://github.com/datagouv/datagouvfr_data_pipelines/issues/697), [#698](https://github.com/datagouv/datagouvfr_data_pipelines/issues/698).
-- Augmentation du nombre maximal de runs actifs de 2 à 6 [#702](https://github.com/datagouv/datagouvfr_data_pipelines/issues/702).
-- Optimisation de l'instanciation des clients S3 pour éviter les redondances [#694](https://github.com/datagouv/datagouvfr_data_pipelines/issues/694).
+- Amélioration de la gestion des erreurs et des timeouts pour les connexions FTP et les requêtes HTTP (pipelines météo, contrôles sanitaires de l'eau).
+- Optimisation de l'instanciation des clients S3 et de la gestion des fichiers temporaires.
+- Correction d'un problème de fuite de mémoire dans le pipeline de contrôle sanitaire de l'eau [#691](https://github.com/datagouv/datagouvfr_data_pipelines/issues/691).
 
 ### Autres changements
-- Mise à jour des propriétaires par défaut des DAGs [#690](https://github.com/datagouv/datagouvfr_data_pipelines/issues/690).
-- Correction de problèmes de timeout de connexion FTP [#689](https://github.com/datagouv/datagouvfr_data_pipelines/issues/689).
-- Amélioration de la gestion des notifications et suppression des notifications potentiellement spammantes [#691](https://github.com/datagouv/datagouvfr_data_pipelines/issues/691), [#667](https://github.com/datagouv/datagouvfr_data_pipelines/issues/667).
-- Corrections diverses pour les pipelines météo [#700](https://github.com/datagouv/datagouvfr_data_pipelines/issues/700), [#701](https://github.com/datagouv/datagouvfr_data_pipelines/issues/701), [#704](https://github.com/datagouv/datagouvfr_data_pipelines/issues/704), [#705](https://github.com/datagouv/datagouvfr_data_pipelines/issues/705), [#709](https://github.com/datagouv/datagouvfr_data_pipelines/issues/709), [#710](https://github.com/datagouv/datagouvfr_data_pipelines/issues/710), [#711](https://github.com/datagouv/datagouvfr_data_pipelines/issues/711), [#712](https://github.com/datagouv/datagouvfr_data_pipelines/issues/712).
-- Corrections pour le pipeline metric-api [#673](https://github.com/datagouv/datagouvfr_data_pipelines/issues/673).
-- Correction pour le pipeline décès [#686](https://github.com/datagouv/datagouvfr_data_pipelines/issues/686).
-- Suppression de digests anciens [#672](https://github.com/datagouv/datagouvfr_data_pipelines/issues/672).
-- Amélioration de la gestion des erreurs pour les données géozones [#683](https://github.com/datagouv/datagouvfr_data_pipelines/issues/683), [#684](https://github.com/datagouv/datagouvfr_data_pipelines/issues/684).
+- Augmentation du nombre maximal de runs actifs pour certains DAGs (de 2 à 6) [#702](https://github.com/datagouv/datagouvfr_data_pipelines/issues/702).
+- Correction de problèmes de linting [#719](https://github.com/datagouv/datagouvfr_data_pipelines/issues/719).
+- Diverses corrections et améliorations de la documentation et de la configuration.
+- Suppression de code obsolète et nettoyage du code.
+- Ajout de logs et de messages d'erreur pour faciliter le débogage.
+- Correction de la gestion des noms de fichiers pour le pipeline DVF [#715](https://github.com/datagouv/datagouvfr_data_pipelines/issues/715), [#714](https://github.com/datagouv/datagouvfr_data_pipelines/issues/714) et [#713](https://github.com/datagouv/datagouvfr_data_pipelines/issues/713).
