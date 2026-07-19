@@ -1,24 +1,18 @@
-## Changelog : hydra (30 derniers jours, au 22 juin 2026)
+## Changelog : hydra (30 derniers jours, au 8 juillet 2026)
 
 ### Résumé
-Les dernières mises à jour de Hydra apportent des améliorations à la robustesse du système, notamment des corrections de bugs et des ajustements de configuration. Une nouvelle fonctionnalité permet d'inclure la version de Python dans l'endpoint de santé, facilitant le monitoring. Des optimisations de performance ont été réalisées avec le passage à Python 3.14. Des modifications importantes ont été apportées à la gestion des formats de données, avec une introduction puis une réversion temporaire de nouvelles fonctionnalités.
+Cette version apporte des améliorations à la robustesse du système, notamment dans la gestion des requêtes HTTP et des erreurs.  Elle inclut également une mise à jour de la librairie `csv-detective` et des ajustements pour aligner le comportement de l'outil en ligne de commande avec l'API. Enfin, des refactorings internes ont été effectués pour améliorer la structure du code.
 
 ### Évolutions fonctionnelles
-- L'endpoint de santé inclut désormais la version de Python utilisée, facilitant le diagnostic des problèmes liés à l'environnement d'exécution. [#433](https://github.com/datagouv/hydra/pull/433)
-- Ajout d'un champ `header` lors de l'analyse des fichiers Parquet. [#431](https://github.com/datagouv/hydra/pull/431)
-- Amélioration du silence des logs avec l'option `--quiet` dans l'interface en ligne de commande (CLI), qui s'applique désormais à tous les loggers. [#432](https://github.com/datagouv/hydra/pull/432)
-- Introduction puis suppression temporaire de la gestion des formats de données. [#430](https://github.com/datagouv/hydra/pull/430)
+- Amélioration de la commande `check resource` en ligne de commande pour l'aligner avec le comportement de l'API. [#459](https://github.com/datagouv/hydra/pull/459)
+- Correction d'un problème lié à la gestion des requêtes HEAD, améliorant la fiabilité de la vérification des ressources. [#460](https://github.com/datagouv/hydra/pull/460)
 
 ### Évolutions techniques
-- Passage à Python 3.14 pour des gains de performance. [#378](https://github.com/datagouv/hydra/pull/378)
-- Refactorisation de l'interface en ligne de commande (CLI). [#437](https://github.com/datagouv/hydra/pull/437)
-- Mise à jour de la dépendance `urllib3` pour corriger une vulnérabilité de sécurité (GHSA-mf9v-mfxr-j63j). [#420](https://github.com/datagouv/hydra/pull/420)
-- Amélioration de la couverture des tests avec l'ajout de nouveaux tests unitaires. [#434](https://github.com/datagouv/hydra/pull/434)
-- Refactorisation des tests existants. [#435](https://github.com/datagouv/hydra/pull/435)
-- Utilisation du jeton UV recommandé pour la publication sur PyPI. [#451](https://github.com/datagouv/hydra/pull/451)
+- Mise à jour de la librairie `csv-detective` vers la version 0.12.0. [#463](https://github.com/datagouv/hydra/pull/463)
+- Refactorisation des utilitaires de base de données pour une meilleure organisation du code. (Annulé par la suite) [#452](https://github.com/datagouv/hydra/pull/452)
+- Utilisation du token UV recommandé pour les publications CI/CD. [#451](https://github.com/datagouv/hydra/pull/451)
 
 ### Autres changements
-- Mise à jour de la documentation README pour refléter le comportement actuel de l'API, de la CLI et des workers. [#439](https://github.com/datagouv/hydra/pull/439)
-- Suppression des cibles `storage_path` obsolètes. [#450](https://github.com/datagouv/hydra/pull/450)
-- Correction d'une erreur dans la documentation des queues RQ.
-- Correction d'une erreur dans la gestion des couches OGC. [#440](https://github.com/datagouv/hydra/pull/440)
+- Documentation mise à jour pour refléter le comportement actuel de l'API, de la ligne de commande et des workers.
+- Suppression de cibles obsolètes liées au chemin de stockage.
+- Ajout de tests unitaires pour le module `file.py`.
