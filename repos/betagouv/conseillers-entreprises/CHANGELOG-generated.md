@@ -1,33 +1,28 @@
 ## Changelog : conseillers-entreprises (30 derniers jours, au 16 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'accessibilité, la performance et la qualité du code. Des corrections ont été apportées pour améliorer l'expérience utilisateur, notamment dans la gestion des besoins et des entreprises. L'architecture a été revue avec le passage à esbuild pour remplacer webpack, améliorant ainsi les performances de build. Des améliorations de la documentation et des corrections de bugs ont également été implémentées.
+Ce mois-ci, les améliorations se concentrent sur l'accessibilité, la performance et la maintenance technique de la plateforme. Des corrections de texte et des ajustements d'affichage ont été apportés pour améliorer l'expérience utilisateur, notamment dans les rapports et l'historique des besoins. L'application a également bénéficié d'une migration technique vers esbuild pour optimiser la compilation des assets JavaScript et d'améliorations de la gestion des emails.
 
 ### Évolutions fonctionnelles
-
-*   **Historique des besoins :** Affichage des besoins inaccessibles dans l'historique d'une entreprise [#4550](https://github.com/betagouv/conseillers-entreprises/issues/4550).
-*   **Rapports :** Ajustement de la formulation dans les rapports [#4597](https://github.com/betagouv/conseillers-entreprises/issues/4597).
-*   **Évolution des statistiques :** Affichage de l'évolution des statistiques en pourcentage relatif [#4518](https://github.com/betagouv/conseillers-entreprises/issues/4518).
-*   **Formulaires :** Autofocus sur les champs de localisation et de SIRET en cas d'erreur, améliorant l'accessibilité [#4569](https://github.com/betagouv/conseillers-entreprises/issues/4569).
-*   **Sollicitations :** Correction pour éviter de passer des SIRETs vides dans les champs cachés des formulaires [#4524](https://github.com/betagouv/conseillers-entreprises/issues/4524).
-*   **Email :** Amélioration de l'affichage du corps des emails de sollicitation dans l'interface d'administration.
+- Amélioration de l'accessibilité des champs de formulaire avec des messages d'erreur plus clairs et une navigation au clavier optimisée. [#4569](https://github.com/betagouv/conseillers-entreprises/pull/4569)
+- Affichage du pourcentage d'évolution des données dans les tableaux de bord. [#4518](https://github.com/betagouv/conseillers-entreprises/pull/4518)
+- Correction de l'affichage des besoins inaccessibles dans l'historique d'une entreprise. [#4550](https://github.com/betagouv/conseillers-entreprises/pull/4550)
+- Amélioration de la formulation de certains textes dans les rapports. [#4597](https://github.com/betagouv/conseillers-entreprises/pull/4597)
+- Affichage de la date d'envoi des propositions de mise en relation. [#4548](https://github.com/betagouv/conseillers-entreprises/pull/4548)
+- Refonte du système d'envoi d'emails avec une gestion des templates plus flexible et une meilleure organisation des traductions. [#4485](https://github.com/betagouv/conseillers-entreprises/pull/4485)
 
 ### Évolutions techniques
-
-*   **Migration vers esbuild :** Remplacement de webpack par esbuild pour améliorer les performances de build et simplifier la configuration [#4520](https://github.com/betagouv/conseillers-entreprises/issues/4520).
-*   **Concurrence :** Augmentation du nombre de threads Rails et de processus Puma pour améliorer la concurrence et la réactivité de l'application [#4546](https://github.com/betagouv/conseillers-entreprises/issues/4546).
-*   **Base de données :** Augmentation de la taille du pool de connexions à la base de données pour gérer une charge plus importante.
-*   **Suppression de jQuery :** Suppression de l'utilisation de jQuery au profit de code JavaScript moderne [#4542](https://github.com/betagouv/conseillers-entreprises/issues/4542).
-*   **Refactoring :** Simplification et nettoyage du code, notamment dans les contrôleurs et les services liés à la gestion du temps.
-*   **Documentation :** Mise à jour de la documentation de l'architecture, incluant des informations sur la pile technologique et le pipeline de déploiement [#4463](https://github.com/betagouv/conseillers-entreprises/issues/4463).
+- Migration de Webpack vers esbuild pour une compilation plus rapide et efficace des assets JavaScript. [#4520](https://github.com/betagouv/conseillers-entreprises/pull/4520)
+- Suppression de jQuery et remplacement par des alternatives modernes. [#4542](https://github.com/betagouv/conseillers-entreprises/pull/4542)
+- Optimisation de la configuration de la base de données (augmentation du pool de connexions, correction des timeouts). [#4545](https://github.com/betagouv/conseillers-entreprises/pull/4545)
+- Amélioration de la gestion de la concurrence avec l'augmentation du nombre de threads Rails et de processus Puma. [#4546](https://github.com/betagouv/conseillers-entreprises/pull/4546)
+- Refactorisation du code pour supprimer des scopes inutilisés et simplifier certaines classes. [#4561](https://github.com/betagouv/conseillers-entreprises/pull/4561)
+- Amélioration de la robustesse de la gestion des jobs Sidekiq. [#4559](https://github.com/betagouv/conseillers-entreprises/pull/4559)
+- Suppression de code JavaScript inutilisé. [#4520](https://github.com/betagouv/conseillers-entreprises/pull/4520)
 
 ### Autres changements
-
-*   **LLM :** Ajout d'un endpoint machine-readable `llms.txt` pour faciliter l'intégration avec des modèles de langage.
-*   **Tests :** Ajout de tests unitaires et d'intégration pour améliorer la couverture et la fiabilité du code.
-*   **Dépendances :** Mise à jour de certaines dépendances (undici, concurrent-ruby, nokogiri).
-*   **Configuration :** Correction de la configuration de la base de données pour la production.
-*   **Accessibilité :** Améliorations de l'accessibilité des formulaires avec l'utilisation d'attributs ARIA.
-*   **Corrections :** Correction de bugs mineurs et améliorations de la qualité du code.
-*   **Matomo :** Réintégration des événements Matomo.
-*   **Locales :** Mise à jour des traductions françaises.
+- Mise à jour de plusieurs dépendances (undici, concurrent-ruby, nokogiri).
+- Amélioration de la documentation et des tests.
+- Correction de bugs mineurs et amélioration de la qualité du code.
+- Ajout d'un endpoint pour l'accès aux données LLM au format machine-readable. [#4543](https://github.com/betagouv/conseillers-entreprises/pull/4543)
+- Correction d'un problème de correspondance des zones territoriales. [#4559](https://github.com/betagouv/conseillers-entreprises/pull/4559)
