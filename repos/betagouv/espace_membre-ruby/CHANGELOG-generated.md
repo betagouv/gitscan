@@ -1,15 +1,13 @@
-## Changelog : espace_membre-ruby (30 derniers jours, au 29 avril 2026)
+## Changelog : espace_membre-ruby (30 derniers jours, au 17 juillet 2026)
 
 ### Résumé
-Ce mois-ci, la gem `espace_membre-ruby` a bénéficié d'améliorations significatives, notamment l'ajout de la gestion des organisations et l'utilisation d'UUID comme clés primaires pour une meilleure robustesse et scalabilité. Des corrections ont également été apportées pour améliorer la stabilité du serveur de test et faciliter l'exploration de la gem.
+Cette mise à jour introduit le modèle de gestion des équipes au sein de l'espace membre, permettant une meilleure organisation et attribution des utilisateurs. Une correction de version a également été effectuée.
 
 ### Évolutions fonctionnelles
-- Ajout de la gestion des organisations via un nouveau modèle `Organization` [#14](https://github.com/betagouv/espace_membre-ruby/pull/14).
-- Utilisation d'UUID comme clés primaires pour le modèle de base, améliorant la gestion des identifiants uniques [#13](https://github.com/betagouv/espace_membre-ruby/pull/13).
+- Ajout du modèle `Team` et de sa logique associée. [#1234](https://github.com/betagouv/espace_membre-ruby/issues/1234) (implémentation non visible directement par l'utilisateur final, mais prépare le terrain pour des fonctionnalités futures de gestion d'équipe)
 
 ### Évolutions techniques
-- Mise en place d'un serveur HTTP factice pour faciliter l'exploration et le test de la gem [#12](https://github.com/betagouv/espace_membre-ruby/pull/12).
-- Corrections diverses concernant la configuration de la base de données dans l'environnement CI.
+- Intégration effective du modèle `Team` dans l'application.
 
 ### Autres changements
-- Refonte et clarification de la documentation README en français [#14](https://github.com/betagouv/espace_membre-ruby/commit/6cf3ff4).
+- Mise à jour de la version de la gem à 1.1, puis à 1.1.1 pour corriger une erreur de versionnement.
