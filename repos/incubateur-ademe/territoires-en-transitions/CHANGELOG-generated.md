@@ -1,46 +1,39 @@
 ## Changelog : territoires-en-transitions (30 derniers jours, au 16 juillet 2026)
 
 ### Résumé
-Cette période a été marquée par d'importantes améliorations sur la gestion des référentiels, notamment en préparation de la bascule vers le référentiel "Territoires en Transitions" (TE).  De nouvelles fonctionnalités ont été ajoutées pour la gestion des preuves, des indicateurs et des audits, avec une attention particulière portée à la sécurité et à l'expérience utilisateur. Des optimisations de performance et des refactorings techniques ont également été réalisés.
+Cette période a été marquée par d'importantes améliorations concernant la gestion des référentiels, notamment en préparation de la bascule vers le référentiel "Territoires en Transitions" (TE). Des efforts considérables ont été déployés pour améliorer la sécurité, la robustesse et l'expérience utilisateur, en particulier dans les fonctionnalités d'audit et de labellisation. L'intégration d'IA pour l'import de plans est également en cours de développement.
 
 ### Évolutions fonctionnelles
-- **Gestion des référentiels :** Préparation de la bascule vers le référentiel TE avec ajout de jalons et de règles de migration.
-- **Audits et labellisations :**
-    - Amélioration de l'interface et du workflow d'audit, avec une nouvelle checklist et une gestion des documents simplifiée.
-    - Possibilité pour l'auditeur de remplacer le rapport d'audit.
-    - Gestion des permissions et des rôles affinée pour les différentes actions (lecture, modification, etc.).
-    - Ajout d'un badge de statut d'audit sur l'onglet.
-- **Indicateurs :**
-    - Nouvelle grille de saisie tabulaire pour les indicateurs, avec édition en ligne et possibilité de collage de données.
-    - Amélioration de la gestion des données open data et de leur affichage.
-    - Possibilité de réordonner les colonnes et les lignes de la grille.
-- **Sécurité :**
-    - Correction de failles potentielles d'injection IDOR (Insecure Direct Object Reference) dans les plans et les discussions.
-    - Validation des fichiers et des identifiants pour éviter les accès non autorisés.
-- **Import IA :** Ajout de la fonctionnalité d'import de plans via l'IA, avec suivi de progression et reprise.
-- **Plans :** Ajout de dates de début et de fin aux plans.
+- Ajout de la fusion des services, pilotes, explications et statuts CAE/ECI vers les mesures TE. [#16](https://github.com/incubateur-ademe/territoires-en-transitions/issues/16)
+- Implémentation de la fusion des liens fiches CAE/ECI vers TE. [#16](https://github.com/incubateur-ademe/territoires-en-transitions/issues/16)
+- Possibilité de filtrer les snapshots des référentiels archivés.
+- Ajout de la gestion des dates de début et de fin pour les plans. (TET-7490)
+- Amélioration de la sécurité : blocage de l'injection IDOR de relations cross-collectivité dans les plans et fichiers. (TET-7358, TET-7359, TET-7360)
+- Ajout de la fonctionnalité d'import de plans via IA, incluant l'extraction, la création et le suivi de progression.
+- Amélioration de l'interface d'audit et de labellisation avec une nouvelle checklist, la gestion des documents de candidature et un affichage plus clair des statuts.
+- Ajout de la possibilité de télécharger les preuves d'un audit.
+- Ajout d'un bandeau d'alerte pour les référentiels archivés ou en lecture seule.
+- Amélioration de l'export Excel des indicateurs. (TET-7414)
 
 ### Évolutions techniques
-- **Refactoring :**
-    - Migration vers le pattern `Result` pour une meilleure gestion des erreurs et des succès.
-    - Refactorings importants du code lié aux indicateurs, aux audits et aux référentiels pour améliorer la maintenabilité et la performance.
-    - Suppression de code obsolète et simplification de certaines structures de données.
-- **Dépendances :**
-    - Mise à jour de Next.js, TypeScript et d'autres dépendances.
-- **CI/CD :**
-    - Amélioration du pipeline CI/CD pour accélérer les tests et les déploiements.
-    - Parallélisation des tests e2e.
-- **Infrastructure :**
-    - Mise à jour de la configuration de Content Security Policy (CSP).
-    - Optimisation de la gestion des caches.
-- **Base de données :** Suppression de l'implémentation RLS (Row-Level Security) de DatabaseService.
+- Refactorings importants dans la gestion des snapshots, avec migration vers le pattern `Result` pour une meilleure gestion des erreurs.
+- Amélioration de la robustesse des tests E2E et parallélisation pour une exécution plus rapide.
+- Mise à jour de TypeScript vers la version 6/7.
+- Suppression de code obsolète et simplification de certaines structures de données.
+- Migration de certains composants vers le nouveau layout.
+- Mise à jour des dépendances (Next.js, swc, posthog-js).
+- Amélioration de la sécurité avec la mise en place d'une Content Security Policy (CSP) globale.
+- Refactor de la gestion des dates avec remplacement de Luxon par date-fns.
+- Migration de certains modules vers le backend tRPC.
 
 ### Autres changements
-- **Documentation :** Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les changements techniques.
-- **Tests :** Ajout de nouveaux tests unitaires et e2e pour garantir la qualité du code.
-- **Divers :**
-    - Amélioration de l'expérience utilisateur avec des corrections de bugs et des améliorations de l'interface.
-    - Mise à jour des libellés et des textes pour une meilleure clarté.
-    - Migration du système de création de tickets bugs/supports vers le SDK Notion 5.
-    - Suppression de dépendances inutilisées.
-    - Amélioration des performances générales de l'application.
+- Documentation mise à jour pour les agents IA et le plan de migration des applications.
+- Amélioration de la gestion des libellés et des messages d'erreur.
+- Corrections de bugs mineurs et améliorations de la performance.
+- Ajout de tests unitaires et E2E pour couvrir les nouvelles fonctionnalités et les corrections de bugs.
+- Mise à jour du schéma des préférences de la collectivité.
+- Ajout de la gestion des thématiques SGPE dans le référentiel TE.
+- Suppression de l'edge function `import_statut_emt`.
+- Ajout d'un script d'import des statuts EMT.
+- Amélioration de la gestion des erreurs et des logs.
+- Optimisation de la configuration CI/CD.
