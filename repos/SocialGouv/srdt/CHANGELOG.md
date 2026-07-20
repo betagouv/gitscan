@@ -1,3 +1,17 @@
+# [1.49.0](https://github.com/SocialGouv/srdt/compare/v1.48.2...v1.49.0) (2026-07-16)
+
+
+### Features
+
+* new prompt 07 26 ([#402](https://github.com/SocialGouv/srdt/issues/402)) ([6e0088b](https://github.com/SocialGouv/srdt/commit/6e0088b86a04ab4fede28bb377eb4b39a4dd3dda))
+
+## [1.48.2](https://github.com/SocialGouv/srdt/compare/v1.48.1...v1.48.2) (2026-07-16)
+
+
+### Bug Fixes
+
+* scroll and size of screen ([#401](https://github.com/SocialGouv/srdt/issues/401)) ([4b720fb](https://github.com/SocialGouv/srdt/commit/4b720fb7f2f3188365e200a23b2a9b2ab5d2517c))
+
 ## [1.48.1](https://github.com/SocialGouv/srdt/compare/v1.48.0...v1.48.1) (2026-07-13)
 
 
