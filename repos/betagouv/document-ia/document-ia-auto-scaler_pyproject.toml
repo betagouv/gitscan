@@ -1,24 +1,28 @@
 [tool.poetry]
-name = "document-ia-schemas"
-version = "1.0.7"
-description = "Projet pour stocker les schémas de documents de Document IA"
+name = "document-ia-auto-scaler"
+version = "1.0.0"
+description = "Auto-scaler daemon for Scalingo workers based on queue lag"
 authors = ["Nicolas Sagon <nicolas.sagon@beta.gouv.fr>"]
 readme = "README.md"
-license = "MIT"
 packages = [
-    { include = "document_ia_schemas", from = "src" }
+    { include = "document_ia_auto_scaler", from = "src" },
 ]
 
 [tool.poetry.dependencies]
 python = "^3.13"
+document-ia-infra = { path = "../document-ia-infra", develop = false }
+python-dotenv = "^1.0.0"
+pydantic-settings = "^2.1.0"
 pydantic = "^2.11.9"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.12.11"
 pytest = "^8.4.1"
+pytest-asyncio = "^0.23.0"
+pre-commit = "^3.6.0"
 
 [build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
+requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
@@ -30,3 +34,6 @@ quote-style = "double"
 indent-style = "space"
 skip-magic-trailing-comma = false
 line-ending = "auto"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
