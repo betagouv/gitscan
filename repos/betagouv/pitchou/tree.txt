@@ -67,42 +67,43 @@
 │       │   │   ├── components
 │       │   │   │   ├── CartographieProjet.svelte
 │       │   │   │   ├── DSFR
-│       │   │   │   │   ├── BoutonModale.svelte
+│       │   │   │   │   ├── ModalButton.svelte
 │       │   │   │   │   └── Pagination.svelte
 │       │   │   │   ├── DatePicker.svelte
 │       │   │   │   ├── DownloadButton.svelte
-│       │   │   │   ├── EspècesProtégéesGroupéesParImpact.svelte
-│       │   │   │   ├── ListeDossiers
+│       │   │   │   ├── EspecesProtegeesGroupedByImpact.svelte
+│       │   │   │   ├── ListDossiers
 │       │   │   │   │   ├── BadgePhase.svelte
-│       │   │   │   │   ├── CarteDossier.svelte
-│       │   │   │   │   └── ListeDossiers.svelte
+│       │   │   │   │   ├── CardDossier.svelte
+│       │   │   │   │   └── ListDossiers.svelte
 │       │   │   │   ├── Loader.svelte
 │       │   │   │   ├── TagPhase.svelte
 │       │   │   │   ├── TagPhase.svelte.test.ts
 │       │   │   │   └── common
-│       │   │   │       └── DéplierReplier.svelte
+│       │   │   │       └── ExpandCollapse.svelte
 │       │   │   ├── dossier
-│       │   │   │   ├── affichageDossier.ts
+│       │   │   │   ├── displayDossier.ts
 │       │   │   │   ├── dossier.ts
-│       │   │   │   ├── filtresTexte.ts
-│       │   │   │   ├── getDébutPhaseActuelle.ts
+│       │   │   │   ├── getCurrentPhaseStart.ts
 │       │   │   │   ├── lunr-languages.d.ts
 │       │   │   │   ├── notification.ts
-│       │   │   │   ├── rechercherDansDossier.ts
-│       │   │   │   └── suiviDossier.ts
+│       │   │   │   ├── searchInDossier.ts
+│       │   │   │   ├── suiviDossier.ts
+│       │   │   │   └── textFilters.ts
 │       │   │   ├── especes
-│       │   │   │   ├── activitésMéthodesMoyensDePoursuite.ts
-│       │   │   │   ├── créerEspècesGroupéesParImpact.ts
-│       │   │   │   └── créerEspècesGroupéesParImpact.xlsx.test.ts
+│       │   │   │   ├── activitesMethodesMoyensDePoursuite.ts
+│       │   │   │   ├── createEspecesGroupedByImpact.ts
+│       │   │   │   └── createEspecesGroupedByImpact.xlsx.test.ts
 │       │   │   ├── server
 │       │   │   │   ├── auth.ts
 │       │   │   │   ├── fichier.test.ts
 │       │   │   │   ├── fichier.ts
+│       │   │   │   ├── requestValidation.ts
 │       │   │   │   ├── uploadLimit.test.ts
 │       │   │   │   └── uploadLimit.ts
 │       │   │   ├── shared
 │       │   │   │   ├── aarri.ts
-│       │   │   │   ├── créerObjetCapDepuisURLs.ts
+│       │   │   │   ├── createCapObjectFromURLs.ts
 │       │   │   │   ├── dataPaths.ts
 │       │   │   │   └── main.ts
 │       │   │   ├── state
@@ -129,13 +130,13 @@
 │       │       │   ├── LoginViaEmail.svelte
 │       │       │   └── serveur.ts
 │       │       ├── SuiviInstruction
-│       │       │   ├── BarreRecherche.svelte
-│       │       │   ├── FiltreParmiOptions.svelte
-│       │       │   ├── IndicateurDélai.svelte
-│       │       │   ├── IndicateurDélaiPhase.svelte
+│       │       │   ├── DelayIndicator.svelte
+│       │       │   ├── FilterAmongOptions.svelte
+│       │       │   ├── PhaseDelayIndicator.svelte
+│       │       │   ├── SearchBar.svelte
 │       │       │   ├── SuiviInstruction.svelte
-│       │       │   ├── TrisDeTh.svelte
-│       │       │   └── triDossiers.ts
+│       │       │   ├── ThSorts.svelte
+│       │       │   └── sortDossiers.ts
 │       │       ├── accessibilite
 │       │       │   ├── +page.svelte
 │       │       │   ├── +page.ts
@@ -143,27 +144,27 @@
 │       │       ├── admin
 │       │       │   ├── especes-protegees
 │       │       │   │   ├── +page.svelte
-│       │       │   │   ├── ChampClassification.svelte
-│       │       │   │   ├── ChampModifiable.svelte
-│       │       │   │   ├── ChampNoms.svelte
-│       │       │   │   ├── ChampOuiNon.svelte
-│       │       │   │   ├── ChampStatuts.svelte
-│       │       │   │   ├── HeritageCheckbox.svelte
-│       │       │   │   ├── ListeModifications.svelte
-│       │       │   │   ├── Modale.svelte
-│       │       │   │   ├── ModaleAjout.svelte
-│       │       │   │   ├── ModaleEditionModification.svelte
+│       │       │   │   ├── FieldClassification.svelte
+│       │       │   │   ├── FieldModifiable.svelte
+│       │       │   │   ├── FieldNoms.svelte
+│       │       │   │   ├── FieldStatuts.svelte
+│       │       │   │   ├── FieldYesNo.svelte
+│       │       │   │   ├── InheritanceCheckbox.svelte
+│       │       │   │   ├── ListModifications.svelte
+│       │       │   │   ├── Modal.svelte
+│       │       │   │   ├── ModalAdd.svelte
+│       │       │   │   ├── ModalEditModification.svelte
 │       │       │   │   ├── ModificationsFilterPanel.svelte
 │       │       │   │   ├── ModificationsSortPanel.svelte
-│       │       │   │   ├── OuiNonToggle.svelte
-│       │       │   │   ├── SelecteurEspece.svelte
-│       │       │   │   ├── SelecteurTaxref.svelte
+│       │       │   │   ├── SelectorEspece.svelte
+│       │       │   │   ├── SelectorTaxref.svelte
 │       │       │   │   ├── TableModifications.svelte
+│       │       │   │   ├── YesNoToggle.svelte
 │       │       │   │   └── adminModificationsList.ts
 │       │       │   └── utilisateurs
 │       │       │       ├── +page.svelte
 │       │       │       ├── BadgeNiveauAARRI.svelte
-│       │       │       ├── NiveauxAARRIModale.svelte
+│       │       │       ├── LevelsAARRIModal.svelte
 │       │       │       ├── RepartitionNiveaux.svelte
 │       │       │       ├── UtilisateursFilterPanel.svelte
 │       │       │       ├── UtilisateursList.svelte
@@ -215,7 +216,7 @@
 │       │       ├── bdc-statuts
 │       │       │   ├── +page.svelte
 │       │       │   ├── BdcStatutsFilterPanel.svelte
-│       │       │   ├── BdcStatutsListe.svelte
+│       │       │   ├── BdcStatutsList.svelte
 │       │       │   ├── BdcStatutsSortPanel.svelte
 │       │       │   ├── BdcStatutsTable.svelte
 │       │       │   └── bdcStatutsList.ts
@@ -244,8 +245,7 @@
 │       │       │       └── +server.ts
 │       │       ├── donnees-personnelles
 │       │       │   ├── +page.svelte
-│       │       │   ├── +page.ts
-│       │       │   └── DonnéesPersonnelles.svelte
+│       │       │   └── DonneesPersonnelles.svelte
 │       │       ├── dossier
 │       │       │   └── [dossierId]
 │       │       │       ├── +page.svelte
@@ -255,40 +255,40 @@
 │       │       │       ├── Dossier
 │       │       │       │   ├── Avis
 │       │       │       │   │   ├── AvisExpert.svelte
-│       │       │       │   │   └── FormulaireAvisExpert.svelte
-│       │       │       │   ├── Contrôles
+│       │       │       │   │   └── FormAvisExpert.svelte
+│       │       │       │   ├── Controles
 │       │       │       │   │   ├── CardDecisionAdministrative.svelte
 │       │       │       │   │   ├── DecisionAdministrative.svelte
 │       │       │       │   │   ├── DecisionAdministrative.svelte.test.ts
+│       │       │       │   │   ├── FormControle.svelte
 │       │       │       │   │   ├── FormDecisionAdministrative.svelte
 │       │       │       │   │   ├── FormDecisionAdministrative.svelte.test.ts
-│       │       │       │   │   ├── FormulaireContrôle.svelte
 │       │       │       │   │   ├── Prescription.svelte
 │       │       │       │   │   ├── Prescriptions.svelte
 │       │       │       │   │   ├── Prescriptions.svelte.test.ts
-│       │       │       │   │   ├── contrôle.ts
-│       │       │       │   │   ├── décisionAdministrative.ts
+│       │       │       │   │   ├── controle.ts
+│       │       │       │   │   ├── decisionAdministrative.ts
 │       │       │       │   │   └── prescriptions.ts
 │       │       │       │   ├── CopyIconButton.svelte
 │       │       │       │   ├── DossierAvis.svelte
-│       │       │       │   ├── DossierContrôles.svelte
-│       │       │       │   ├── DossierContrôles.svelte.test.ts
-│       │       │       │   ├── DossierGénérationDocuments.svelte
+│       │       │       │   ├── DossierControles.svelte
+│       │       │       │   ├── DossierControles.svelte.test.ts
+│       │       │       │   ├── DossierGenerationDocuments.svelte
 │       │       │       │   ├── DossierInstruction.svelte
 │       │       │       │   ├── DossierMessagerie.svelte
 │       │       │       │   ├── DossierPiecesJointes.svelte
 │       │       │       │   ├── DossierPiecesJointes.svelte.test.ts
 │       │       │       │   ├── DossierPorteurDeProjet.svelte
 │       │       │       │   ├── DossierProjet.svelte
-│       │       │       │   ├── EnteteDossier.svelte
-│       │       │       │   ├── ModaleAjouterPièceJointe.svelte
-│       │       │       │   ├── affichageValeurs.ts
-│       │       │       │   ├── attachmentAutre.ts
+│       │       │       │   ├── HeaderDossier.svelte
+│       │       │       │   ├── ModalAddPieceJointe.svelte
 │       │       │       │   ├── avisExpert.ts
-│       │       │       │   ├── générerDocument.ts
+│       │       │       │   ├── displayValues.ts
+│       │       │       │   ├── generateDocument.ts
+│       │       │       │   ├── otherAttachment.ts
 │       │       │       │   └── ouvrirModaleAjouterPieceJointe.svelte.test.ts
 │       │       │       ├── Dossier.svelte
-│       │       │       ├── TagRésultatContrôle.svelte
+│       │       │       ├── TagResultatControle.svelte
 │       │       │       └── messages
 │       │       │           └── +server.ts
 │       │       ├── dossierDataAfterDNSync.svelte.test.ts
@@ -308,11 +308,11 @@
 │       │       ├── especes-protegees
 │       │       │   ├── +page.svelte
 │       │       │   ├── EspecesFilterPanel.svelte
-│       │       │   ├── EspecesGenerationModale.svelte
+│       │       │   ├── EspecesGenerationModal.svelte
 │       │       │   ├── EspecesSortPanel.svelte
-│       │       │   ├── EspecesSynonymesModale.svelte
+│       │       │   ├── EspecesSynonymesModal.svelte
 │       │       │   ├── EspecesTable.svelte
-│       │       │   ├── ListeEspecesProtegees.svelte
+│       │       │   ├── ListEspecesProtegees.svelte
 │       │       │   ├── especesList.test.ts
 │       │       │   └── especesList.ts
 │       │       ├── import-dossier-historique
@@ -327,6 +327,8 @@
 │       │       │   └── importDossierUtils.ts
 │       │       ├── lien-preremplissage
 │       │       │   └── +server.ts
+│       │       ├── mentions-legales
+│       │       │   └── +page.svelte
 │       │       ├── mes-dossiers
 │       │       │   ├── +page.svelte
 │       │       │   └── MesDossiers.svelte
@@ -351,29 +353,29 @@
 │       │       ├── saisie-especes
 │       │       │   ├── +page.svelte
 │       │       │   ├── +page.ts
-│       │       │   ├── NomEspèce.svelte
-│       │       │   ├── SaisieEspèces
-│       │       │   │   ├── AutocompleteEspèces.svelte
-│       │       │   │   ├── FormulaireSaisieEspèce.svelte
-│       │       │   │   ├── ImpactEspèce.svelte
-│       │       │   │   ├── ModalePréremplirDepuisTexte
-│       │       │   │   │   ├── EcranChampTexte.svelte
-│       │       │   │   │   └── EcranPréciserImpact.svelte
-│       │       │   │   ├── ModalePréremplirDepuisTexte.svelte
-│       │       │   │   ├── TuileSaisieEspèce.svelte
-│       │       │   │   └── espèceFieldset.ts
-│       │       │   └── SaisieEspèces.svelte
+│       │       │   ├── NomEspece.svelte
+│       │       │   ├── SaisieEspeces
+│       │       │   │   ├── AutocompleteEspeces.svelte
+│       │       │   │   ├── FormSaisieEspece.svelte
+│       │       │   │   ├── ImpactEspece.svelte
+│       │       │   │   ├── ModalPrefillFromText
+│       │       │   │   │   ├── ScreenFieldText.svelte
+│       │       │   │   │   └── ScreenSpecifyImpact.svelte
+│       │       │   │   ├── ModalPrefillFromText.svelte
+│       │       │   │   ├── TileSaisieEspece.svelte
+│       │       │   │   └── especeFieldset.ts
+│       │       │   └── SaisieEspeces.svelte
 │       │       ├── stats
 │       │       │   ├── +page.svelte
 │       │       │   ├── AARRIEvolutionChart.svelte
-│       │       │   ├── IndicateursAARRI.svelte
-│       │       │   ├── MatriceImpact.svelte
-│       │       │   ├── StatistiquesConformites.svelte
-│       │       │   └── StatsContenu.svelte
+│       │       │   ├── ConformiteStats.svelte
+│       │       │   ├── IndicatorsAARRI.svelte
+│       │       │   ├── MatrixImpact.svelte
+│       │       │   └── StatsContent.svelte
 │       │       ├── taxref
 │       │       │   ├── +page.svelte
 │       │       │   ├── TaxrefFilterPanel.svelte
-│       │       │   ├── TaxrefListe.svelte
+│       │       │   ├── TaxrefList.svelte
 │       │       │   ├── TaxrefSortPanel.svelte
 │       │       │   ├── TaxrefTable.svelte
 │       │       │   └── taxrefList.ts
@@ -427,12 +429,16 @@
 │       │   │   ├── admin-utilisateurs-aarri.test.ts
 │       │   │   ├── api-especes-protegees.test.ts
 │       │   │   ├── caps.test.ts
+│       │   │   ├── controle-notification-http.test.ts
 │       │   │   ├── declaration-accessibilite.test.ts
 │       │   │   ├── dossier-especes-impactees.test.ts
+│       │   │   ├── dossier-http.test.ts
 │       │   │   ├── espece-protegee.test.ts
 │       │   │   ├── geomce.test.ts
 │       │   │   ├── groupe_instructeurs.ts
 │       │   │   ├── load-fichier-content.test.ts
+│       │   │   ├── prescription-http.test.ts
+│       │   │   ├── stats-publiques.test.ts
 │       │   │   ├── stocker-nouveau-fichier.test.ts
 │       │   │   ├── supprimer-fichiers.test.ts
 │       │   │   ├── telechargement-fichier-s3.test.ts
@@ -443,7 +449,7 @@
 │       │   │   ├── aide-pitchou.md
 │       │   │   ├── dossier.md
 │       │   │   ├── login.md
-│       │   │   ├── saisie-espèces.md
+│       │   │   ├── saisie-especes.md
 │       │   │   └── tableau-suivi.md
 │       │   ├── playwright.config.ts
 │       │   ├── setup
@@ -464,7 +470,7 @@
 ├── cron.json
 ├── data
 │   ├── activites-methodes-moyens-de-poursuite.ods
-│   ├── démarche-numérique
+│   ├── demarche-numerique
 │   │   ├── graphql-api-DS-schema.json
 │   │   └── schema-DS
 │   │       ├── 7f52a348-fd16-4fcd-8a6f-2e78ddafaee4.json
@@ -1144,20 +1150,20 @@
 │   │   ├── package.json
 │   │   ├── src
 │   │   │   ├── DateToJSON.ts
-│   │   │   ├── constantes.ts
-│   │   │   ├── décision-administrative.ts
+│   │   │   ├── constants.ts
+│   │   │   ├── decisionAdministrative.ts
+│   │   │   ├── dossiersUtils.ts
 │   │   │   ├── errors.ts
+│   │   │   ├── especesUtils.test.ts
+│   │   │   ├── especesUtils.ts
+│   │   │   ├── findCandidateFichiersToDownload.ts
 │   │   │   ├── formatDate.ts
 │   │   │   ├── index.ts
-│   │   │   ├── manipulationStrings.test.ts
-│   │   │   ├── manipulationStrings.ts
 │   │   │   ├── odfjs.d.ts
-│   │   │   ├── outils-dossiers.ts
-│   │   │   ├── outils-espèces.test.ts
-│   │   │   ├── outils-espèces.ts
 │   │   │   ├── phases.ts
-│   │   │   ├── préremplissageDémarcheNumérique.ts
-│   │   │   ├── trouverCandidatsFichiersÀTélécharger.ts
+│   │   │   ├── preremplissageDemarcheNumerique.ts
+│   │   │   ├── stringManipulation.test.ts
+│   │   │   ├── stringManipulation.ts
 │   │   │   ├── typeFormat.ts
 │   │   │   └── typeguards.ts
 │   │   └── tsconfig.json
@@ -1245,7 +1251,8 @@
 │   │   │   ├── 20260706150000_add-attachment-autre.ts
 │   │   │   ├── 20260707120000_ajout-document-bdc-statut.ts
 │   │   │   ├── 20260713000000_drop-fichier-table.ts
-│   │   │   └── 20260715120000_identites-porteur-de-projet.ts
+│   │   │   ├── 20260715120000_identites-porteur-de-projet.ts
+│   │   │   └── 20260718120000_translate-database-schema.ts
 │   │   ├── package.json
 │   │   ├── scripts
 │   │   │   └── wipe-schema.ts
@@ -1260,7 +1267,7 @@
 │   │   │   │   ├── 07_evenements_metriques.ts
 │   │   │   │   ├── 08_utilisateurs_aarri.ts
 │   │   │   │   ├── 09_dossier.ts
-│   │   │   │   └── 10_pièces-jointes-pétitionnaire.ts
+│   │   │   │   └── 10_pieces-jointes-petitionnaire.ts
 │   │   │   └── fixtures
 │   │   │       ├── demarche_numerique.ts
 │   │   │       ├── dossiers.ts
@@ -1278,23 +1285,22 @@
 │   │   │   ├── bdcStatut.ts
 │   │   │   ├── database
 │   │   │   │   ├── aarri
-│   │   │   │   │   ├── constantes.ts
+│   │   │   │   │   ├── constants.ts
 │   │   │   │   │   ├── niveau.test.ts
 │   │   │   │   │   ├── niveau.ts
 │   │   │   │   │   └── utils.ts
 │   │   │   │   ├── aarri.ts
-│   │   │   │   ├── analyse_utilisation.ts
-│   │   │   │   ├── arête_dossier__fichier_pièces_jointes_pétitionnaire.ts
-│   │   │   │   ├── attachmentAutre.ts
 │   │   │   │   ├── avis_expert.test.ts
 │   │   │   │   ├── avis_expert.ts
-│   │   │   │   ├── capability-geomce.ts
+│   │   │   │   ├── capability_geomce.ts
 │   │   │   │   ├── controle.test.ts
 │   │   │   │   ├── controle.ts
+│   │   │   │   ├── decision_administrative.test.ts
+│   │   │   │   ├── decision_administrative.ts
 │   │   │   │   ├── dossier.ts
-│   │   │   │   ├── décision_administrative.test.ts
-│   │   │   │   ├── décision_administrative.ts
-│   │   │   │   ├── espèces_impactées.ts
+│   │   │   │   ├── edge_dossier__fichier_pieces_jointes_petitionnaire.ts
+│   │   │   │   ├── especes_impactees.ts
+│   │   │   │   ├── evenements_metriques.ts
 │   │   │   │   ├── fakeDatabase.ts
 │   │   │   │   ├── fichier.test.ts
 │   │   │   │   ├── fichier.ts
@@ -1304,6 +1310,7 @@
 │   │   │   │   ├── groupe_instructeurs.ts
 │   │   │   │   ├── identite_dossier.ts
 │   │   │   │   ├── notification.ts
+│   │   │   │   ├── other_attachment.ts
 │   │   │   │   ├── personne.test.ts
 │   │   │   │   ├── personne.ts
 │   │   │   │   ├── pgErrors.ts
@@ -1311,28 +1318,28 @@
 │   │   │   │   ├── prescription.ts
 │   │   │   │   ├── relation_suivi.ts
 │   │   │   │   ├── stats.ts
-│   │   │   │   ├── utilisateursAARRI.ts
-│   │   │   │   └── évènements_métriques.ts
+│   │   │   │   ├── usage_analysis.ts
+│   │   │   │   └── utilisateursAARRI.ts
 │   │   │   ├── database.ts
-│   │   │   ├── démarche-numérique
-│   │   │   │   ├── chiffrerDéchiffrerDonnéesSupplémentaires.test.ts
-│   │   │   │   ├── chiffrerDéchiffrerDonnéesSupplémentaires.ts
-│   │   │   │   ├── demanderLienPréremplissage.ts
+│   │   │   ├── demarche-numerique
+│   │   │   │   ├── encryptDecryptDossiersAdditionalData.test.ts
+│   │   │   │   ├── encryptDecryptDossiersAdditionalData.ts
+│   │   │   │   ├── getAllDeletedDossiers.ts
+│   │   │   │   ├── getGroupesInstructeurs.ts
+│   │   │   │   ├── getRecentlyUpdatedDossiers.ts
 │   │   │   │   ├── graphQLqueries.ts
 │   │   │   │   ├── queryGraphQL.ts
-│   │   │   │   ├── recupérerDossiersRécemmentModifiés.ts
-│   │   │   │   ├── recupérerGroupesInstructeurs.ts
-│   │   │   │   └── recupérerListeDossiersSupprimés.ts
+│   │   │   │   └── requestPrefillingLink.ts
 │   │   │   ├── emails.ts
 │   │   │   ├── especeProtegee.ts
 │   │   │   ├── especeProtegeeReference.test.ts
 │   │   │   ├── especeProtegeeReference.ts
+│   │   │   ├── evenements_metriques.test.ts
+│   │   │   ├── evenements_metriques.ts
 │   │   │   ├── index.ts
-│   │   │   ├── object-storage.test.ts
-│   │   │   ├── object-storage.ts
-│   │   │   ├── taxref.ts
-│   │   │   ├── évènements_métriques.test.ts
-│   │   │   └── évènements_métriques.ts
+│   │   │   ├── objectStorage.test.ts
+│   │   │   ├── objectStorage.ts
+│   │   │   └── taxref.ts
 │   │   └── tsconfig.json
 │   ├── server-utils
 │   │   ├── package.json
@@ -1346,30 +1353,32 @@
 │   │   ├── src
 │   │   │   ├── API_Pitchou.ts
 │   │   │   ├── GeoAPI.ts
-│   │   │   ├── balisesGénérationDocument.d.ts
+│   │   │   ├── balisesGenerationDocument.d.ts
 │   │   │   ├── capabilities.ts
 │   │   │   ├── database
 │   │   │   │   └── public
-│   │   │   │       ├── ArêteCapDossierGroupeInstructeurs.ts
-│   │   │   │       ├── ArêteDossierFichierPiècesJointesPétitionnaire.ts
-│   │   │   │       ├── ArêteGroupeInstructeursDossier.ts
-│   │   │   │       ├── ArêtePersonneCapÉcritureAnnotation.ts
-│   │   │   │       ├── ArêtePersonneSuitDossier.ts
-│   │   │   │       ├── AttachmentAutre.ts
 │   │   │   │       ├── AvisExpert.ts
+│   │   │   │       ├── CapAnnotationWrite.ts
 │   │   │   │       ├── CapDossier.ts
+│   │   │   │       ├── CapEvenementMetrique.ts
 │   │   │   │       ├── CapabilityGeomce.ts
-│   │   │   │       ├── CapÉcritureAnnotation.ts
-│   │   │   │       ├── CapÉvènementMétrique.ts
-│   │   │   │       ├── Contrôle.ts
+│   │   │   │       ├── Controle.ts
+│   │   │   │       ├── DecisionAdministrative.ts
+│   │   │   │       ├── DemarcheNumerique88444SynchronizationResult.ts
 │   │   │   │       ├── Dossier.ts
-│   │   │   │       ├── DécisionAdministrative.ts
+│   │   │   │       ├── EdgeCapDossierGroupeInstructeurs.ts
+│   │   │   │       ├── EdgeDossierFichierPiecesJointesPetitionnaire.ts
+│   │   │   │       ├── EdgeGroupeInstructeursDossier.ts
+│   │   │   │       ├── EdgePersonneCapAnnotationWrite.ts
+│   │   │   │       ├── EdgePersonneFollowsDossier.ts
 │   │   │   │       ├── Entreprise.ts
 │   │   │   │       ├── EspeceBdcStatut.ts
 │   │   │   │       ├── EspeceProtegee.ts
 │   │   │   │       ├── EspeceProtegeeModification.ts
 │   │   │   │       ├── EspeceProtegeeReference.ts
 │   │   │   │       ├── EspeceTaxref.ts
+│   │   │   │       ├── EvenementMetrique.ts
+│   │   │   │       ├── EvenementPhaseDossier.ts
 │   │   │   │       ├── File.ts
 │   │   │   │       ├── GroupeInstructeurs.ts
 │   │   │   │       ├── IdentiteDossier.ts
@@ -1377,27 +1386,25 @@
 │   │   │   │       ├── KnexMigrationsLock.ts
 │   │   │   │       ├── Message.ts
 │   │   │   │       ├── Notification.ts
+│   │   │   │       ├── OtherAttachment.ts
 │   │   │   │       ├── Personne.ts
 │   │   │   │       ├── Prescription.ts
-│   │   │   │       ├── RésultatSynchronisationDS88444.ts
-│   │   │   │       ├── TypeDossier.ts
-│   │   │   │       ├── ÉvènementMétrique.ts
-│   │   │   │       └── ÉvènementPhaseDossier.ts
-│   │   │   ├── démarche-numérique
-│   │   │   │   ├── DossierPourSynchronisation.ts
-│   │   │   │   ├── Démarche128114.ts
-│   │   │   │   ├── Démarche88444.ts
+│   │   │   │       └── TypeDossier.ts
+│   │   │   ├── demarche-numerique
+│   │   │   │   ├── Demarche128114.ts
+│   │   │   │   ├── Demarche88444.ts
+│   │   │   │   ├── DossierForSynchronization.ts
 │   │   │   │   ├── api.ts
 │   │   │   │   ├── apiSchema.ts
 │   │   │   │   └── schema.ts
 │   │   │   ├── especes.d.ts
-│   │   │   ├── espècesFichierOds.d.ts
+│   │   │   ├── especesFichierOds.d.ts
+│   │   │   ├── evenement.d.ts
 │   │   │   ├── geomce.ts
 │   │   │   ├── index.ts
 │   │   │   ├── interfaceUtilisateur.ts
-│   │   │   ├── pitchou-state.ts
-│   │   │   ├── tools.d.ts
-│   │   │   └── évènement.d.ts
+│   │   │   ├── pitchouState.ts
+│   │   │   └── tools.d.ts
 │   │   └── tsconfig.json
 │   ├── ui
 │   │   ├── package.json
@@ -1409,22 +1416,23 @@
 │   │   └── tsconfig.json
 │   └── worker
 │       ├── aarri
-│       │   └── supprimer-evenements.ts
-│       ├── importer-bdc.ts
-│       ├── importer-modifications-especes.ts
-│       ├── importer-taxref.ts
+│       │   └── delete-evenements.ts
+│       ├── import-bdc.ts
+│       ├── import-modifications-especes.ts
+│       ├── import-taxref.ts
 │       ├── package.json
-│       ├── rafraichir-reference-especes.ts
-│       ├── sync-démarche-numérique.ts
-│       ├── synchronisation-ds
+│       ├── refresh-reference-especes.ts
+│       ├── sync-demarche-numerique.ts
+│       ├── synchronization-ds
+│       │   ├── downloadFichierDS.ts
+│       │   ├── downloadNewFichiers.ts
+│       │   ├── downloadNewFichiersByType.ts
 │       │   ├── inseeHeadcountRange.ts
-│       │   ├── makeColonnesCommunesDossierPourSynchro88444.ts
-│       │   ├── makeDossiersPourSynchronisation.ts
-│       │   ├── synchronisation-dossier-88444.ts
-│       │   ├── synchronisation-notification.ts
-│       │   ├── téléchargerFichierDS.ts
-│       │   ├── téléchargerNouveauxFichiers.ts
-│       │   └── téléchargerNouveauxFichiersParType.ts
+│       │   ├── makeCommonDossierColumnsForSync88444.ts
+│       │   ├── makeDossiersForSynchronization.test.ts
+│       │   ├── makeDossiersForSynchronization.ts
+│       │   ├── synchronization-dossier-88444.ts
+│       │   └── synchronization-notification.ts
 │       └── tsconfig.json
 ├── package.json
 ├── pnpm-lock.yaml
@@ -1442,4 +1450,4 @@
 │   └── tsconfig.json
 ├── tsconfig.base.json
 └── tsconfig.json
-191 directories, 1294 files
+192 directories, 1301 files
