@@ -1,13 +1,13 @@
-## Changelog : projects (30 derniers jours, au 4 juillet 2026)
+## Changelog : projects (30 derniers jours, au 18 juillet 2026)
 
 ### Résumé
-Les récentes améliorations se concentrent sur la correction de bugs et l'amélioration de la stabilité, notamment concernant le partage de tableaux de bord. Une correction importante a été apportée pour résoudre un problème de dépendance lors de l'utilisation de tableaux de bord partagés.
+Les récentes mises à jour se concentrent sur l'amélioration de la documentation, notamment pour l'auto-hébergement de l'application. Cela permet aux utilisateurs souhaitant déployer l'application sur leur propre infrastructure de bénéficier d'un guide plus clair et complet.
 
 ### Évolutions fonctionnelles
-- Correction d'un problème de dépendance affectant les tableaux de bord partagés. [#807aba6](https://github.com/suitenumerique/projects/commit/807aba6)
+Aucune évolution fonctionnelle majeure n'a été déployée durant cette période.
 
 ### Évolutions techniques
-- Aucune évolution technique majeure n'a été apportée durant cette période.
+Aucune évolution technique significative n'a été déployée durant cette période.
 
 ### Autres changements
-- Aucune autre modification significative n'a été effectuée.
+- Mise à jour de la documentation d'auto-hébergement : la documentation concernant l'auto-hébergement de l'application a été actualisée. [#68ae28d](https://github.com/suitenumerique/projects/commit/68ae28d)
