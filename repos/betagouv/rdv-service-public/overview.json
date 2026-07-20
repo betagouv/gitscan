@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/rdv-service-public",
   "name": "rdv-service-public",
-  "description": "Ce service numérique public a pour objectif de faciliter la gestion et la prise de rendez-vous dans les administrations. Il s'adresse aux organisations publiques comme les administrations de l'État, les opérateurs de services publics et les collectivités territoriales.",
+  "description": "Ce service numérique public a pour objectif de faciliter la gestion et la prise de rendez-vous dans les administrations. Il s’adresse aux organisations publiques comme les administrations de l’État, les opérateurs de services publics et les collectivités territoriales.",
   "language": "Ruby",
   "features": [
     "Gestion des utilisateurs & Permissions",
@@ -11,18 +11,18 @@
     "Authentification & Accès",
     "API & Intégrations"
   ],
-  "audience": [
-    "Agents de l'Administration",
-    "Professionnels",
-    "Associations"
-  ],
+  "audience": "Agents de l'Administration",
   "dependencies": [
     "Rails",
+    "Devise",
     "PostgreSQL",
     "Redis",
-    "Devise",
     "Hotwire",
-    "Sentry",
+    "Devise",
+    "omniauth-microsoft_graph",
+    "Doorkeeper",
+    "PaperTrail",
+    "Kaminari",
     "Chart.js",
     "Bootstrap",
     "DSFR"
@@ -39,13 +39,10 @@
     "methods": [
       "email-password",
       "oauth2",
-      "saml",
-      "api-key",
-      "jwt",
-      "session"
+      "sso"
     ],
     "providers": [
-      "Microsoft Graph"
+      "Microsoft"
     ]
   },
   "tests": [
@@ -53,9 +50,7 @@
     "Capybara",
     "FactoryBot"
   ],
-  "workflows": [
-    "CI/CD & GitHub Actions"
-  ],
+  "workflows": [],
   "lastActivity": "2026-07-16T09:45:17+02:00",
   "status": "active",
   "license": "AGPL-3.0",
@@ -70,8 +65,8 @@
     "Données & Open Data",
     "Écosystème beta.gouv / État",
     "JavaScript",
-    "API & Intégrations",
-    "Sécurité & Conformité",
-    "Déploiement & Hosting"
+    "Ruby",
+    "Bases de données SQL",
+    "Sécurité & Auth"
   ]
 }
