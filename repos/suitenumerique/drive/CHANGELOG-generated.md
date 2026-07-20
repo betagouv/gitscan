@@ -1,32 +1,30 @@
-## Changelog : drive (30 derniers jours, au 8 juillet 2026)
+## Changelog : drive (30 derniers jours, au 15 juillet 2026)
 
 ### Résumé
-Les dernières mises à jour de Drive se concentrent sur l'amélioration de la recherche de fichiers, avec l'ajout de filtres par type de fichier, contact, date de modification et localisation. Des corrections de bugs ont également été apportées pour améliorer la stabilité et la performance, notamment concernant l'analyse des fichiers et le streaming d'exportations depuis S3. Une attention particulière a été portée à la sécurité avec la mise à jour de certaines dépendances.
+Cette version apporte des améliorations significatives à la recherche de fichiers, avec l'ajout de filtres par type de fichier, contact, date de modification et emplacement. Des corrections de bugs ont également été implémentées pour améliorer la stabilité et la performance, notamment concernant l'indexation des fichiers et le streaming des exports. La sécurité a été renforcée avec la mise à jour de dépendances critiques.
 
 ### Évolutions fonctionnelles
-- Ajout d'un menu d'aide dans le panneau latéral gauche.
-- Possibilité de filtrer les résultats de recherche par :
-    - Type de fichier
-    - Contact partageant le fichier
-    - Date de modification (avec des options prédéfinies comme "plus d'un an")
-    - Localisation du fichier
+- Ajout de filtres de recherche avancés : type de fichier, contact, date de modification et emplacement. [#issue à retrouver]
 - Amélioration de la recherche dans la corbeille pour inclure les éléments racine supprimés.
-- Possibilité de convertir un fichier pendant son analyse.
-- Amélioration de la gestion des fichiers lors de l'analyse antivirus.
-- Amélioration de l'expérience d'upload avec une barre de progression et la possibilité d'annuler.
+- Correction d'un bug empêchant l'exclusion des dossiers des résultats de recherche par type de fichier.
+- Possibilité de convertir un fichier pendant son analyse anti-malware.
+- Amélioration de la gestion des exports de fichiers depuis S3, avec un streaming plus efficace.
+- Ajout d'un menu d'aide dans le panneau latéral gauche.
+- Possibilité d'utiliser une plage de dates personnalisée pour filtrer les fichiers par date de modification.
 
 ### Évolutions techniques
 - Mise à jour de la dépendance `PyJWT` et `cryptography` pour corriger des failles de sécurité.
 - Contrainte de version de `joserfc` à >=1.6.8 pour corriger une vulnérabilité (CVE-2026-49852).
-- Optimisation du streaming d'exportations depuis S3 pour éviter la mise en mémoire tampon.
 - Refactorisation des filtres d'explorateur pour les rendre contrôlés et séparés.
-- Utilisation de composants `ui-kit` pour les icônes et prévisualisations de fichiers.
 - Amélioration de la gestion des requêtes de conversion de fichiers.
+- Optimisation du streaming des fichiers exportés depuis S3.
+- Utilisation de la bibliothèque `ui-kit` pour les icônes de fichiers et les prévisualisations.
 
 ### Autres changements
-- Amélioration de la documentation README pour plus de clarté.
+- Amélioration de la documentation README pour plus de clarté et de cohérence.
 - Enrichissement des guidelines de contribution.
-- Corrections de tests E2E et ajustements des baselines.
-- Suppression de filtres de recherche inutilisés dans le modal de recherche.
-- Mise à jour de la version de `ui-kit` à 0.24.0.
-- Correction d'erreurs liées à la gestion des chemins d'exportation et des cibles pseudo dans les tests.
+- Correction d'erreurs mineures dans les tests E2E.
+- Suppression de filtres de recherche inutilisés dans le frontend.
+- Amélioration des tests E2E pour la conversion de fichiers WOPI.
+- Correction d'un bug lié à l'affichage des icônes de coche dans les dropdowns.
+- Correction d'un bug lié au comportement du filtre "modifié" lors de sa désélection.
