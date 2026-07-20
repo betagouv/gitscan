@@ -131,7 +131,8 @@
 │   │   ├── Version20260515101417.php
 │   │   ├── Version20260610080243.php
 │   │   ├── Version20260610131925.php
-│   │   └── Version20260702144847.php
+│   │   ├── Version20260702144847.php
+│   │   └── Version20260708210430.php
 │   ├── package.json
 │   ├── phpcs.xml.dist
 │   ├── phpunit.xml.dist
@@ -232,8 +233,10 @@
 │   │   │   │       │       ├── ListerDossierPropositionASignerEndpoint.php
 │   │   │   │       │       ├── ListerDossierRejetASignerEndpoint.php
 │   │   │   │       │       ├── ListerDossierUsagerEndpoint.php
+│   │   │   │       │       ├── MarquerDossierIndemniseEndpoint.php
 │   │   │   │       │       ├── RechercherDossiersEndpoint.php
-│   │   │   │       │       └── RechercherDossiersInput.php
+│   │   │   │       │       ├── RechercherDossiersInput.php
+│   │   │   │       │       └── TransmettreAFIP3Endpoint.php
 │   │   │   │       ├── Output
 │   │   │   │       │   ├── AdresseOutput.php
 │   │   │   │       │   ├── AgentOutput.php
@@ -357,6 +360,9 @@
 │   │   │               ├── photo-porte-2.jpg
 │   │   │               ├── photo-porte-3.png
 │   │   │               └── pv_1.pdf
+│   │   ├── Doctrine
+│   │   │   └── Functions
+│   │   │       └── RandomFunction.php
 │   │   ├── Dto
 │   │   │   ├── Inscription.php
 │   │   │   ├── ModificationMotDePasse.php
@@ -391,6 +397,7 @@
 │   │   │   │   ├── AbstractMetadonnees.php
 │   │   │   │   ├── MetadonneesAttestation.php
 │   │   │   │   └── NavigationRequerant.php
+│   │   │   ├── MotifRejetBrisPorte.php
 │   │   │   ├── Personne.php
 │   │   │   ├── PersonneMorale.php
 │   │   │   ├── PersonneMoraleType.php
@@ -520,23 +527,27 @@
 │   │   ├── cgu.html.twig
 │   │   ├── courrier
 │   │   │   ├── _base_courrier.html.twig
-│   │   │   ├── _corps_introduction.html.twig
 │   │   │   ├── _pied_de_page.html.twig
 │   │   │   ├── arretePaiement
 │   │   │   │   └── _corps_arrete_paiement.html.twig
 │   │   │   ├── arretePaiement.html.twig
 │   │   │   ├── decision
 │   │   │   │   ├── _corps_decision.html.twig
+│   │   │   │   ├── _corps_formule_cloture.html.twig
+│   │   │   │   ├── _corps_introduction.html.twig
 │   │   │   │   ├── propositionIndemnisation
 │   │   │   │   │   ├── _pi_corps.html.twig
 │   │   │   │   │   ├── _pi_corps_personne_morale.html.twig
 │   │   │   │   │   └── _pi_corps_personne_physique.html.twig
 │   │   │   │   └── rejet
 │   │   │   │       ├── _rejet_corps.html.twig
-│   │   │   │       ├── _rejet_corps_autre.html.twig
-│   │   │   │       ├── _rejet_corps_est_bailleur.html.twig
-│   │   │   │       ├── _rejet_corps_est_hebergeant.html.twig
-│   │   │   │       └── _rejet_corps_est_vise.html.twig
+│   │   │   │       ├── _rejet_corps_locataire.html.twig
+│   │   │   │       ├── _rejet_corps_locataire_airbnb.html.twig
+│   │   │   │       ├── _rejet_corps_locataire_chien.html.twig
+│   │   │   │       ├── _rejet_corps_locataire_hebergeant.html.twig
+│   │   │   │       ├── _rejet_corps_locataire_parties_communes.html.twig
+│   │   │   │       ├── _rejet_corps_mis_en_cause.html.twig
+│   │   │   │       └── _rejet_corps_mis_en_cause_chien.html.twig
 │   │   │   ├── decision.html.twig
 │   │   │   ├── declarationAcceptation
 │   │   │   │   └── _corps_declaration_acceptation.html.twig
@@ -623,7 +634,9 @@
 │   │   │   │               ├── ListerDossierEnAttenteIndemnisationEndpointTest.php
 │   │   │   │               ├── ListerDossierEnInstructionEndpointTest.php
 │   │   │   │               ├── ListerDossierUsagerEndpointTest.php
-│   │   │   │               └── RechercherDossierEndpointTest.php
+│   │   │   │               ├── MarquerDossierIndemniseEndpointTest.php
+│   │   │   │               ├── RechercherDossierEndpointTest.php
+│   │   │   │               └── TransmettreAFIP3EndpointTest.php
 │   │   │   └── Requerant
 │   │   │       ├── Dossier
 │   │   │       │   ├── AmenderDossierEndpointTest.php
@@ -640,6 +653,8 @@
 │   │   │   ├── Requerant
 │   │   │   │   └── HomeControllerTest.php
 │   │   │   └── SecurityControllerTest.php
+│   │   ├── Entity
+│   │   │   └── PersonneMoraleTest.php
 │   │   ├── Repository
 │   │   │   └── BrisPorteRepositoryTest.php
 │   │   ├── Service
@@ -1042,7 +1057,8 @@
     │   │   │   ├── TypeAttestation.ts
     │   │   │   ├── TypePersonneMorale.ts
     │   │   │   ├── Usager.ts
-    │   │   │   └── index.ts
+    │   │   │   ├── index.ts
+    │   │   │   └── rejet.ts
     │   │   ├── normalisation
     │   │   │   └── transformers
     │   │   │       ├── DateTransform.ts
@@ -1098,4 +1114,4 @@
     ├── vite.config.ts
     ├── vitest.config.ts
     └── yarn.lock
-245 directories, 855 files
+248 directories, 868 files
