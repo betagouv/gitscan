@@ -1,47 +1,33 @@
 ## Changelog : doctorat-gouv (30 derniers jours, au 10 juillet 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives en matière d'accessibilité (RGAA) et de fonctionnalités de recherche, notamment avec l'intégration de la recherche vectorielle via Scaleway. Des optimisations d'interface et de l'expérience utilisateur ont également été réalisées, ainsi que des corrections de bugs et des améliorations de la documentation.
+Ce mois-ci, les améliorations se concentrent sur l'accessibilité (RGAA) et l'intégration de la recherche vectorielle Scaleway. De nombreuses corrections ont été apportées pour améliorer l'expérience utilisateur, notamment en matière de navigation au clavier, de contraste des couleurs et de lisibilité pour les lecteurs d'écran. La recherche vectorielle Scaleway a été enrichie avec la détection d'intentions (localisation et financement) et une interface utilisateur améliorée.
 
 ### Évolutions fonctionnelles
-- Ajout d'une recherche par localisation via Scaleway et pgvector.
-- Intégration de la détection d'intentions (localisation et financement) dans la recherche vectorielle, avec affichage de badges et de chips correspondants.
-- Amélioration de l'affichage des résultats de recherche avec un compactage des cartes.
-- Ajout de filtres Scaleway (6 filtres du formulaire) à la recherche vectorielle.
-- Ajout d'un badge indiquant "En cours d'expérimentation" pour la recherche vectorielle Scaleway.
-- Ajout d'un sitemap XML dynamique et d'un fichier robots.txt pour l'optimisation SEO.
+- Ajout d'un sitemap XML dynamique et d'un fichier robots.txt pour améliorer le référencement SEO.
+- Amélioration de la recherche avec l'intégration de la détection d'intentions (localisation et financement) via Scaleway, affichées sous forme de badges et de chips.
+- Ajout d'un badge "En cours d'expérimentation" pour la recherche vectorielle Scaleway.
+- Possibilité de sélectionner plusieurs intentions Scaleway avec un indicateur visuel.
 - Ajout de meta descriptions sur les pages de contact, de recherche et de détail d'une thèse pour améliorer le SEO.
-- Amélioration de la gestion du focus et de l'accessibilité des filtres (RGAA).
-- Ajout d'aria-label aux boutons de suppression de filtres (RGAA).
-- Ajout de titres de page dynamiques selon le contexte (RGAA).
-- Ajout de régions live ARIA pour les mises à jour dynamiques (RGAA).
-- Correction de l'accessibilité de la page détail (alertes dynamiques, liens target=_blank) (RGAA).
-- Amélioration de l'accessibilité du formulaire de contact (RGAA).
+- Amélioration de l'affichage des offres similaires.
 
 ### Évolutions techniques
-- Intégration de Scaleway pour la recherche vectorielle.
-- Mise à jour des versions pour la release 0.3.8 et 0.3.7.
-- Suppression du scheduler d'indexation Albert via une propriété de configuration.
+- Désactivation possible du scheduler d'indexation Albert via une propriété.
 - Amélioration de la robustesse du split de la requête pour la recherche vectorielle.
 - Refactor de la détection des intentions de localisation et de financement.
-- Optimisation du code et de la structure pour l'accessibilité (RGAA).
 - Augmentation du budget CSS pour la page de recherche.
-- Ajout de logs pour les requêtes vectorielles Scaleway.
+- Suppression du suivi git d'un fichier de release.
+- Mise à jour des versions pour les releases 0.3.7 et 0.3.8.
+- Intégration de logs pour les requêtes vectorielles Scaleway.
 
 ### Autres changements
-- Ajout de documentation pour la release v0.3.7 (MODOP).
-- Correction de bugs mineurs et améliorations de l'interface utilisateur.
-- Mise à jour de l'exemple NLP pour la recherche vectorielle.
-- Correction de liens et de titres pour l'accessibilité (RGAA).
-- Suppression du suivi git d'un fichier de livraison.
-- Amélioration de la reformulation des messages d'aide et d'ambiguïté de la recherche vectorielle.
-- Correction de l'attribut `lang` du document lors du changement de langue.
-- Restauration des compteurs sur les sections "Meilleurs résultats" et "Autres résultats".
+- Nombreuses corrections d'accessibilité (RGAA) : amélioration du focus management, ajout d'attributs ARIA, correction des contrastes de couleurs, amélioration de la navigation au clavier, ajout de labels accessibles, etc.
+- Correction de liens et de titres pour améliorer l'accessibilité.
+- Amélioration de la formulation des messages d'aide et d'ambiguïté de la recherche vectorielle.
 - Correction de l'affichage des badges de type de bloc matche Scaleway.
-- Correction du lien "Aller au contenu principal".
-- Ajout d'un titre sur les pages détail et contact.
-- Correction de la hiérarchie de titres (RGAA).
-- Ajout d'un lien d'évitement vers le contenu principal (RGAA).
-- Ajout de labels accessibles aux champs de recherche des dropdowns (RGAA).
-- Remplacement des flèches du carrousel par des boutons DSFR tertiaires.
-- Remplacement des points du carrousel par des flèches de navigation.
+- Mise à jour de l'exemple NLP pour la recherche vectorielle.
+- Correction de l'attribut `lang` du document lors du changement de langue.
+- Amélioration de l'affichage des messages d'erreur avec `aria-invalid` et `aria-describedby`.
+- Suppression du texte d'exemple NLP et de l'astérisque.
+- Ajout d'un lien d'évitement vers le contenu principal.
+- Correction de l'affichage des compteurs sur les sections "Meilleurs résultats" et "Autres résultats".
