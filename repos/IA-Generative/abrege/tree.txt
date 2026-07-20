@@ -120,8 +120,6 @@
 │       ├── abrege_service
 │       │   ├── Dockerfile
 │       │   ├── __init__.py
-│       │   ├── clients
-│       │   │   └── ocr_client.py
 │       │   ├── config
 │       │   │   ├── __init__.py
 │       │   │   └── openai.py
@@ -226,7 +224,8 @@
 │       ├── src
 │       │   ├── __init__.py
 │       │   ├── clients
-│       │   │   └── __init__.py
+│       │   │   ├── __init__.py
+│       │   │   └── ocr_client.py
 │       │   ├── config
 │       │   │   ├── __init__.py
 │       │   │   ├── celery.py
@@ -238,6 +237,7 @@
 │       │   ├── connector
 │       │   │   ├── __init__.py
 │       │   │   ├── base.py
+│       │   │   ├── redis_connector.py
 │       │   │   └── s3_connector.py
 │       │   ├── internal
 │       │   │   ├── __init__.py
@@ -258,8 +258,6 @@
 │       ├── tests
 │       │   ├── .env.testing
 │       │   ├── abrege_service
-│       │   │   ├── clients
-│       │   │   │   └── test_ocr_client.py
 │       │   │   ├── models
 │       │   │   │   ├── summary
 │       │   │   │   │   └── test_async_map_reduce.py
@@ -305,6 +303,8 @@
 │       │   │   └── video
 │       │   │       └── bonjour.mp4
 │       │   ├── src
+│       │   │   ├── clients
+│       │   │   │   └── test_ocr_client.py
 │       │   │   ├── schemas
 │       │   │   │   ├── connector
 │       │   │   │   │   └── test_s3_connector.py
@@ -377,4 +377,4 @@
     │   └── abrege_sdk
     │       └── test_sync_clinet.py
     └── uv.lock
-91 directories, 288 files
+90 directories, 289 files
