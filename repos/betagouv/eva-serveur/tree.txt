@@ -33,6 +33,7 @@
 │   │   ├── comptes.rb
 │   │   ├── dashboard.rb
 │   │   ├── evaluation.rb
+│   │   ├── evaluation_evapro.rb
 │   │   ├── evenements.rb
 │   │   ├── footer.rb
 │   │   ├── header.rb
@@ -974,8 +975,6 @@
 │       │   ├── controle_syntheses_restitutions
 │       │   │   └── index.html.erb
 │       │   ├── dashboard
-│       │   │   ├── _bloc_resultats_entreprise.html.erb
-│       │   │   ├── _dashboard.html.arb
 │       │   │   ├── _modal_confirmation_cgu.html.erb
 │       │   │   ├── _modal_validation_comptes_en_attente.html.erb
 │       │   │   ├── _tableau_de_bord_eva.html.arb
@@ -991,7 +990,6 @@
 │       │   │   │   ├── _bienvenue_entreprise.html.erb
 │       │   │   │   ├── _bloc_actualites_entreprise.html.erb
 │       │   │   │   ├── _bloc_questionnaires_entreprise.html.erb
-│       │   │   │   ├── _bloc_resultats_entreprise.html.erb
 │       │   │   │   ├── _cinq_dernieres_evaluations.html.erb
 │       │   │   │   ├── _derniere_evaluation_complete.html.erb
 │       │   │   │   ├── _message_incitation_premier_questionnaire.html.erb
@@ -1006,6 +1004,7 @@
 │       │   │   ├── _form.html.arb
 │       │   │   ├── _index.html.arb
 │       │   │   ├── _informations_complementaires.arb
+│       │   │   ├── _lien.html.erb
 │       │   │   ├── _panel_administration.html.arb
 │       │   │   ├── _show.html.arb
 │       │   │   ├── eva
@@ -1035,28 +1034,27 @@
 │       │   │   │   ├── _telechargement_reponses.erb
 │       │   │   │   └── positionnement
 │       │   │   │       └── _sous_competences.erb
-│       │   │   ├── evapro
-│       │   │   │   ├── _aller_plus_loin.erb
-│       │   │   │   ├── _beneficiaire.erb
-│       │   │   │   ├── _bilan_evapro.erb
-│       │   │   │   ├── _continuer_evaluation_evapro.erb
-│       │   │   │   ├── _definitions_des_impacts.erb
-│       │   │   │   ├── _evaluation_evapro.html.arb
-│       │   │   │   ├── _impact_couts.erb
-│       │   │   │   ├── _impact_couts_indicateur.erb
-│       │   │   │   ├── _les_incontournables.erb
-│       │   │   │   ├── _les_incontournables_etapes.erb
-│       │   │   │   ├── _les_incontournables_intro.erb
-│       │   │   │   ├── _mesure_des_impacts.erb
-│       │   │   │   ├── _mesure_des_impacts_chart.erb
-│       │   │   │   ├── _mesure_des_impacts_definitions.erb
-│       │   │   │   ├── _mesure_des_risques.erb
-│       │   │   │   ├── _opco_financeur.html.erb
-│       │   │   │   ├── _restitution_globale_evapro.arb
-│       │   │   │   └── index_evapro
-│       │   │   │       ├── _lien.html.erb
-│       │   │   │       ├── _sidebar_opco.html.erb
-│       │   │   │       └── _tableau.arb
+│       │   │   └── show.pdf.erb
+│       │   ├── evaluations_evapro
+│       │   │   ├── _aller_plus_loin.erb
+│       │   │   ├── _beneficiaire.erb
+│       │   │   ├── _bilan_evapro.erb
+│       │   │   ├── _continuer_evaluation_evapro.erb
+│       │   │   ├── _definitions_des_impacts.erb
+│       │   │   ├── _impact_couts.erb
+│       │   │   ├── _impact_couts_indicateur.erb
+│       │   │   ├── _index.html.arb
+│       │   │   ├── _les_incontournables.erb
+│       │   │   ├── _les_incontournables_etapes.erb
+│       │   │   ├── _les_incontournables_intro.erb
+│       │   │   ├── _mesure_des_impacts.erb
+│       │   │   ├── _mesure_des_impacts_chart.erb
+│       │   │   ├── _mesure_des_impacts_definitions.erb
+│       │   │   ├── _mesure_des_risques.erb
+│       │   │   ├── _restitution_globale.arb
+│       │   │   ├── _show.html.arb
+│       │   │   ├── _sidebar_evaluation.html.erb
+│       │   │   ├── _sidebar_structure.html.erb
 │       │   │   └── show.pdf.erb
 │       │   ├── import_xls
 │       │   │   └── _form.html.erb
@@ -1350,6 +1348,7 @@
 │   │   │   ├── choix.yml
 │   │   │   ├── compte.yml
 │   │   │   ├── evaluation.yml
+│   │   │   ├── evaluation_evapro.yml
 │   │   │   ├── evenement.yml
 │   │   │   ├── import_export
 │   │   │   │   └── import_xls.yml
@@ -1381,6 +1380,7 @@
 │   │       ├── demo.yml
 │   │       ├── erreurs.yml
 │   │       ├── evaluations.yml
+│   │       ├── evaluations_evapro.yml
 │   │       ├── import_xls.yml
 │   │       ├── informations_complementaires.yml
 │   │       ├── informations_compte.yml
@@ -1938,6 +1938,7 @@
 │   │   │   ├── compte_spec.rb
 │   │   │   ├── controle_syntheses_restitutions_spec.rb
 │   │   │   ├── dashboard_spec.rb
+│   │   │   ├── evaluation_evapro_spec.rb
 │   │   │   ├── evaluation_pdf_spec.rb
 │   │   │   ├── evaluation_spec.rb
 │   │   │   ├── evenement_spec.rb
@@ -2237,6 +2238,8 @@
 │   │   └── evenement_params_spec.rb
 │   ├── rails_helper.rb
 │   ├── requests
+│   │   ├── admin
+│   │   │   └── evaluation_evapro_spec.rb
 │   │   ├── beneficiaire_spec.rb
 │   │   ├── beneficiaires_spec.rb
 │   │   ├── campagnes_spec.rb
@@ -2305,7 +2308,7 @@
 │       └── admin
 │           ├── campagnes
 │           │   └── parcours.html.arb_spec.rb
-│           └── evaluations
+│           └── evaluations_evapro
 │               └── _aller_plus_loin.html.erb_spec.rb
 ├── storage
 │   └── .keep
@@ -2313,4 +2316,4 @@
 │   └── .keep
 └── vendor
     └── .keep
-335 directories, 2034 files
+335 directories, 2037 files
