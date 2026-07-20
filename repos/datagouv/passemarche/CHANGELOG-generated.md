@@ -1,40 +1,27 @@
-## Changelog : passemarche (30 derniers jours, au 02 juillet 2026)
+## Changelog : passemarche (30 derniers jours, au 2026-07-16)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la gestion des lots dans les marchés publics, avec notamment la possibilité de gérer des listes de lots plus longues, de modifier le type de lots et de configurer les pièces justificatives associées. Des corrections et améliorations de l'expérience utilisateur ont également été apportées, ainsi que des optimisations techniques et des mises à jour de dépendances.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur pour les acheteurs et les candidats, notamment en matière de configuration des marchés, de gestion des lots et de re-candidature. Des améliorations techniques ont également été apportées pour la stabilité et la performance de l'application.
 
 ### Évolutions fonctionnelles
-- **Gestion des lots :**
-    - Possibilité de gérer des listes de lots plus longues grâce à un affichage "collapsible" (plié/déplié). [#419](https://github.com/datagouv/passemarche/pull/419)
-    - Possibilité de modifier le type de lots existants. [#416](https://github.com/datagouv/passemarche/pull/416)
-    - Configuration des pièces justificatives requises pour un marché. [#404](https://github.com/datagouv/passemarche/pull/404) et [#413](https://github.com/datagouv/passemarche/pull/413)
-    - Affichage du type de chaque lot dans l'annexe PDF générée. [#420](https://github.com/datagouv/passemarche/pull/420)
-- **Candidature :**
-    - Possibilité de re-candidater à un marché avant la date limite. [#438](https://github.com/datagouv/passemarche/pull/438)
-    - Amélioration de l'expérience utilisateur lors de la candidature à des lots de types différents. [#405](https://github.com/datagouv/passemarche/pull/405)
-- **Interface utilisateur :**
-    - Ajout d'icônes pour les différents types de marchés (travaux, services, fournitures). [#415](https://github.com/datagouv/passemarche/pull/415) et [#420](https://github.com/datagouv/passemarche/pull/420)
-    - Amélioration de l'affichage des noms des lots. [#434](https://github.com/datagouv/passemarche/pull/434)
-    - Correction de l'affichage des badges de type de marché. [#418](https://github.com/datagouv/passemarche/pull/418)
-- **Administration :**
-    - Possibilité de modifier la date limite de dépôt des offres (DLRO) via l'API. [#426](https://github.com/datagouv/passemarche/pull/426)
+- Possibilité pour les acheteurs de modifier la configuration d'un marché après sa création [#439](https://github.com/datagouv/passemarche/pull/439).
+- Ajout d'icônes pour identifier le type de lot (travaux, services, fournitures) dans l'interface et les documents PDF [#450](https://github.com/datagouv/passemarche/pull/450), [#448](https://github.com/datagouv/passemarche/pull/448), [#447](https://github.com/datagouv/passemarche/pull/447).
+- Amélioration de l'affichage des noms des lots pour une meilleure clarté [#434](https://github.com/datagouv/passemarche/pull/434).
+- Gestion des listes de lots volumineuses avec un affichage "collapsible" pour une meilleure ergonomie [#419](https://github.com/datagouv/passemarche/pull/419).
+- Possibilité pour un candidat de re-candidater à un marché avant la date limite, avec gestion des données pré-remplies et des blocages liés à la date limite [#438](https://github.com/datagouv/passemarche/pull/438).
+- Génération d'un PDF de synthèse de la configuration acheteur, accessible via l'API et incluse dans les webhooks [#452](https://github.com/datagouv/passemarche/pull/452).
+- Correction de l'affichage des badges de type de lot dans la configuration acheteur [#459](https://github.com/datagouv/passemarche/pull/459).
 
 ### Évolutions techniques
-- **Infrastructure :**
-    - Ajout de la gem `aws-sdk-s3` pour l'utilisation de S3 Active Storage en environnement sandbox. [#444](https://github.com/datagouv/passemarche/pull/444)
-- **Architecture :**
-    - Refonte de la gestion des étapes du wizard candidat pour les acheteurs. [#407](https://github.com/datagouv/passemarche/pull/407)
-    - Extraction de helpers pour centraliser la création de marchés et de candidatures. [#407](https://github.com/datagouv/passemarche/pull/407)
-    - Utilisation de Stimulus pour le comportement "collapsible" des listes de lots. [#419](https://github.com/datagouv/passemarche/pull/419)
-- **Tests :**
-    - Ajout de tests RSpec et Cucumber pour les nouvelles fonctionnalités.
-    - Ajout de tests pour la modification du type de lots. [#416](https://github.com/datagouv/passemarche/pull/416)
-    - Ajout de tests pour la mise à jour de la DLRO via l'API. [#426](https://github.com/datagouv/passemarche/pull/426)
+- Refactorisation de la logique de gestion des scopes pour une meilleure organisation du code [#450](https://github.com/datagouv/passemarche/pull/450).
+- Amélioration de la robustesse de la suppression des données `deleted_at` sur les candidatures [#457](https://github.com/datagouv/passemarche/pull/457).
+- Mise à jour de plusieurs dépendances : `pagy`, `aws-sdk-s3`, `selenium-webdriver`, `simplecov`, `thruster`, `cucumber-rails`, `faraday`, `doorkeeper`, `rubyzip`, `shoulda-matchers`, `actions/checkout`.
+- Correction d'un problème de race condition lors de la publication d'un marché [#439](https://github.com/datagouv/passemarche/pull/439).
+- Ajout de `aws-sdk-s3` pour le support de l'environnement sandbox.
 
 ### Autres changements
-- Documentation du script de seed pour créer un marché de test avec 1000 lots. [#423](https://github.com/datagouv/passemarche/pull/423)
-- Documentation de la re-candidature et du blocage de la deadline. [#426](https://github.com/datagouv/passemarche/pull/426)
-- Correction de l'affichage d'un message d'information dans Lookbook. [#435](https://github.com/datagouv/passemarche/pull/435)
-- Correction de l'ordre des sous-catégories dans le wizard candidat pour les marchés hétérogènes. [#405](https://github.com/datagouv/passemarche/pull/405)
-- Correction d'un problème de chargement de l'API lors du seed de 1000 lots. [#441](https://github.com/datagouv/passemarche/pull/441)
-- Mise à jour de plusieurs dépendances (rubyzip, selenium-webdriver, doorkeeper, faraday, bootsnap, view_component, sentry-rails, shoulda-matchers, pagy).
+- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les changements d'interface [#437](https://github.com/datagouv/passemarche/pull/437).
+- Suppression de fichiers de documentation obsolètes.
+- Correction de bugs mineurs et améliorations de la stabilité.
+- Ajout d'un script pour générer 1000 lots pour les tests [#421](https://github.com/datagouv/passemarche/pull/421).
+- Correction d'un problème d'affichage dans Lookbook [#435](https://github.com/datagouv/passemarche/pull/435).
