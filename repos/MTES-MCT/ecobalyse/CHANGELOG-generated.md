@@ -1,37 +1,41 @@
-## Changelog : ecobalyse (30 derniers jours, au 2026-07-16)
+## Changelog : ecobalyse (30 derniers jours, au 2026-07-17)
 
 ### Résumé
-Cette version apporte des améliorations significatives aux données, notamment pour les véhicules (VELI) et l'alimentation, avec l'ajout de nouveaux processus et la mise à jour des données existantes. L'interface utilisateur a également été améliorée, avec des corrections et l'ajout de fonctionnalités comme la résolution du nom complet des régions et l'accès à des commandes API authentifiées. Des optimisations techniques ont été réalisées pour améliorer la performance et la sécurité.
+Les dernières mises à jour d'ecobalyse se concentrent sur l'enrichissement des données (notamment pour les véhicules et l'alimentation), l'amélioration de l'expérience utilisateur (notamment dans l'explorateur et les détails des processus) et des corrections de bugs pour assurer la stabilité et la fiabilité de la plateforme. Des améliorations techniques ont également été apportées, notamment en matière de sécurité et de gestion des dépendances.
 
 ### Évolutions fonctionnelles
-- **Explorateur:** Résolution du nom complet de la région lorsque possible. [#2658](https://github.com/MTES-MCT/ecobalyse/issues/2658)
-- **API:** Ajout de commandes API authentifiées. [#2653](https://github.com/MTES-MCT/ecobalyse/issues/2653)
-- **Données (VELI):** Ajout de processus pour la modélisation selon la réglementation EV. [#2622](https://github.com/MTES-MCT/ecobalyse/issues/2622)
-- **Données (VELI):** Ajout de processus intégrant le kilométrage pour la phase d'utilisation des véhicules. [#2619](https://github.com/MTES-MCT/ecobalyse/issues/2619)
-- **Données (VELI):** Mise à jour des exemples de véhicules. [#2629](https://github.com/MTES-MCT/ecobalyse/issues/2629) et [#2641](https://github.com/MTES-MCT/ecobalyse/issues/2641)
-- **Données (Général):** Importation de données BAFU à partir d'un export CSV Simapro. [#2626](https://github.com/MTES-MCT/ecobalyse/issues/2626)
-- **Données (Alimentation):** Ajout d'un exemple de "Pizza bolognese Bio (350g)". [#2553](https://github.com/MTES-MCT/ecobalyse/issues/2553)
-- **Données (Général):** Ajout de matériaux d'emballage pour les objets et les véhicules. [#2555](https://github.com/MTES-MCT/ecobalyse/issues/2555)
-- **Interface Utilisateur:** Ajout d'un lien de feedback. [#2612](https://github.com/MTES-MCT/ecobalyse/issues/2612)
-- **Interface Utilisateur:** Implémentation d'étiquettes avec portée (scoped labels). [#2632](https://github.com/MTES-MCT/ecobalyse/issues/2632)
-- **Interface Utilisateur:** Localisation des nouvelles transformations avec des valeurs par défaut pertinentes. [#2636](https://github.com/MTES-MCT/ecobalyse/issues/2636)
+- L'explorateur affiche désormais le nom complet de la région lorsque possible. [#2658](https://github.com/MTES-MCT/ecobalyse/issues/2658)
+- Ajout de commandes API authentifiées pour une intégration plus sécurisée. [#2653](https://github.com/MTES-MCT/ecobalyse/issues/2653)
+- Amélioration du calcul du score total pour les données "food1". [#2655](https://github.com/MTES-MCT/ecobalyse/issues/2655)
+- Ajout de la possibilité d'importer des données BAFU à partir d'un export CSV Simapro. [#2626](https://github.com/MTES-MCT/ecobalyse/issues/2626)
+- Ajout de processus pour la modélisation selon la réglementation EV (véhicules électriques). [#2622](https://github.com/MTES-MCT/ecobalyse/issues/2622)
+- Ajout de processus intégrant le kilométrage pour la phase d'utilisation des véhicules. [#2619](https://github.com/MTES-MCT/ecobalyse/issues/2619)
+- Ajout d'un lien de feedback pour les utilisateurs. [#2612](https://github.com/MTES-MCT/ecobalyse/issues/2612)
+- Ajout d'une politique de sécurité. [#2608](https://github.com/MTES-MCT/ecobalyse/issues/2608)
+- Ajout de plusieurs exemples d'articles alimentaires. [#2553](https://github.com/MTES-MCT/ecobalyse/issues/2553)
+- Amélioration de l'affichage des impacts dans les détails des objets/véhicules. [#2567](https://github.com/MTES-MCT/ecobalyse/issues/2567)
+- Ajout de matériaux d'emballage pour les objets et les véhicules. [#2555](https://github.com/MTES-MCT/ecobalyse/issues/2555)
+- Ajout de la possibilité de filtrer les processus invisibles dans le calculateur générique. [#2537](https://github.com/MTES-MCT/ecobalyse/issues/2537)
 
 ### Évolutions techniques
-- **Architecture:** Activation des transports "cooled" lorsque disponibles pour la portée. [#2654](https://github.com/MTES-MCT/ecobalyse/issues/2654)
-- **Tests:** Déplacement de la suite de tests E2E vers un job planifié. [#2633](https://github.com/MTES-MCT/ecobalyse/issues/2633)
-- **CI/CD:** Finalisation de la fusion des dépôts de données et de front-end. [#2614](https://github.com/MTES-MCT/ecobalyse/issues/2614)
-- **Sécurité:** Prévention de la falsification du jeton d'authentification. [#2600](https://github.com/MTES-MCT/ecobalyse/issues/2600)
-- **Refactoring:** Refactorisation du pipeline de données pour la fusion des fichiers de processus. [#2437](https://github.com/MTES-MCT/ecobalyse/issues/2437)
-- **Mises à jour:** Mise à jour des dépendances Litestar, Sentry-SDK et des dépendances de développement.
-- **Elm:** Mises à jour Elm. [#2638](https://github.com/MTES-MCT/ecobalyse/issues/2638)
+- Finalisation de la fusion des dépôts de données et de frontend. [#2614](https://github.com/MTES-MCT/ecobalyse/issues/2614)
+- Mise à jour des dépendances Litestar, sentry-sdk et des dépendances de développement.
+- Déplacement de la suite de tests E2E vers une tâche planifiée. [#2633](https://github.com/MTES-MCT/ecobalyse/issues/2633)
+- Amélioration de la gestion de la configuration et rechargement après réception des processus détaillés. [#2627](https://github.com/MTES-MCT/ecobalyse/issues/2627)
+- Refactorisation du fichier de transport et génération hors ligne. [#2535](https://github.com/MTES-MCT/ecobalyse/issues/2535)
+- Utilisation de HTTP pour le chargement des données. [#2416](https://github.com/MTES-MCT/ecobalyse/issues/2416)
+- Correction d'une faille de sécurité empêchant la falsification du token d'authentification. [#2600](https://github.com/MTES-MCT/ecobalyse/issues/2600)
+- Mise à jour des dépendances Elm. [#2638](https://github.com/MTES-MCT/ecobalyse/issues/2638)
 
 ### Autres changements
-- **Documentation:** Ajout d'une politique de sécurité. [#2608](https://github.com/MTES-MCT/ecobalyse/issues/2608)
-- **Données:** Nettoyage des ingrédients de base et des alias. [#2604](https://github.com/MTES-MCT/ecobalyse/issues/2604)
-- **Données:** Renommage des activités à créer et de "Custom". [#2601](https://github.com/MTES-MCT/ecobalyse/issues/2601)
-- **Données:** Ajout d'une région Maghreb. [#2568](https://github.com/MTES-MCT/ecobalyse/issues/2568)
-- **Données:** Remplacement de "elecMJ" par "elecKwh". [#2561](https://github.com/MTES-MCT/ecobalyse/issues/2561)
-- **Données:** Diverses mises à jour et corrections de données (sorgho, seigle, lin, haricot lima, amarante, tournesol, tomate, café, orange, etc.). [#2457](https://github.com/MTES-MCT/ecobalyse/issues/2457) à [#2514](https://github.com/MTES-MCT/ecobalyse/issues/2514) et autres.
-- Correction du calcul du score total dans food1. [#2655](https://github.com/MTES-MCT/ecobalyse/issues/2655)
-- Correction d'un bug empêchant le rechargement de la configuration après réception des processus détaillés. [#2627](https://github.com/MTES-MCT/ecobalyse/issues/2627)
-- Suppression de processus obsolètes ou hors portée VELI. [#2472](https://github.com/MTES-MCT/ecobalyse/issues/2472)
+- Nettoyage du code des données (base_ingredients et alias). [#2604](https://github.com/MTES-MCT/ecobalyse/issues/2604)
+- Renommage des activités et de la classe Custom. [#2601](https://github.com/MTES-MCT/ecobalyse/issues/2601)
+- Déplacement de l'historique des scores vers une tâche cron GitHub. [#2609](https://github.com/MTES-MCT/ecobalyse/issues/2609)
+- Définition d'un seuil minimal de différence de 0.1% pour la table des différences. [#2607](https://github.com/MTES-MCT/ecobalyse/issues/2607)
+- Mise à jour des exemples de véhicules. [#2457](https://github.com/MTES-MCT/ecobalyse/issues/2457)
+- Ajout d'une région "Maghreb". [#2568](https://github.com/MTES-MCT/ecobalyse/issues/2568)
+- Mise à jour des ratios de transport routier/maritime. [#2575](https://github.com/MTES-MCT/ecobalyse/issues/2575)
+- Ajout de liens de documentation configurables. [#2577](https://github.com/MTES-MCT/ecobalyse/issues/2577)
+- Diverses mises à jour de données et corrections de LCI (Life Cycle Inventory).
+- Correction de noms de composants. [#2587](https://github.com/MTES-MCT/ecobalyse/issues/2587)
+- Suppression de processus obsolètes. [#2472](https://github.com/MTES-MCT/ecobalyse/issues/2472)
