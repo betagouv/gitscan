@@ -1,8 +1,12 @@
-## Changelog : anssi-demain-specialiste-cyber-journal (30 derniers jours, au 26 juin 2026)
+## Changelog : anssi-demain-specialiste-cyber-journal (30 derniers jours, au 18 juillet 2026)
 
 ### Résumé
-Ce changelog fait état de la configuration initiale de Renovate pour la gestion des dépendances et de l'épinglage des versions des dépendances utilisées dans les GitHub Actions. Ces changements visent à améliorer la stabilité et la maintenabilité du projet en automatisant les mises à jour de dépendances et en assurant la reproductibilité des builds.
+Ce journal des événements métiers pour DemainSpécialisteCyber a bénéficié d'améliorations de sécurité au niveau de l'intégration continue (CI). Les configurations sont maintenant validées et les identifiants Git sont désactivés lors du clonage des dépôts, renforçant ainsi la protection des informations sensibles. La configuration de Renovate a également été initialisée pour la gestion des dépendances.
 
 ### Évolutions techniques
-- Configuration de Renovate pour la gestion automatisée des dépendances [#785b75c](https://github.com/betagouv/anssi-demain-specialiste-cyber-journal/commit/785b75c49641778b610a917326c06482f179056f).
-- Épinglage des versions des dépendances utilisées dans les GitHub Actions pour garantir la reproductibilité des builds [#a684aca](https://github.com/betagouv/anssi-demain-specialiste-cyber-journal/commit/a684acab63307497999321716b19582117a9348e).
+- Sécurité : Désactivation des identifiants Git lors du clonage des dépôts dans les workflows CI. [#SECURITE][CI] ea74175
+- Sécurité : Validation des configurations dans les workflows CI. [#SECURITE][CI] 87bcd76
+- Intégration Continue : Configuration initiale de Renovate pour la gestion automatisée des dépendances. 785b75c
+
+### Autres changements
+- Ajout du fichier de configuration Renovate (`renovate.json`). d23eaaa
