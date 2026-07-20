@@ -57,6 +57,7 @@
 │   │   │   ├── app_settings_controller.rb
 │   │   │   ├── application_controller.rb
 │   │   │   ├── imports_controller.rb
+│   │   │   ├── lists_controller.rb
 │   │   │   ├── notifications_controller.rb
 │   │   │   ├── users_controller.rb
 │   │   │   └── zones_controller.rb
@@ -100,6 +101,7 @@
 │   │   ├── companies_helper.rb
 │   │   ├── establishment_trackings_helper.rb
 │   │   ├── lists_helper.rb
+│   │   ├── summary_markdown_renderer.rb
 │   │   └── titles_helper.rb
 │   ├── javascript
 │   │   ├── application.js
@@ -107,11 +109,14 @@
 │   │   │   ├── auto_resize_controller.js
 │   │   │   ├── confidentiality_modal_controller.js
 │   │   │   ├── download_controller.js
+│   │   │   ├── email_field_controller.js
 │   │   │   ├── feedback_detection_controller.js
 │   │   │   ├── filters_toggle_controller.js
 │   │   │   ├── financial_chart_widget_controller.js
 │   │   │   ├── geo_search_controller.js
 │   │   │   ├── index.js
+│   │   │   ├── initial_focus_controller.js
+│   │   │   ├── load_more_controller.js
 │   │   │   ├── multiselect_controller.js
 │   │   │   ├── orthogonal_chart_widget_controller.js
 │   │   │   ├── ransack_sort_controller.js
@@ -160,6 +165,7 @@
 │   │   ├── establishment_tracking_snapshot.rb
 │   │   ├── geo_access.rb
 │   │   ├── import.rb
+│   │   ├── inpi_bce_ratio.rb
 │   │   ├── list.rb
 │   │   ├── list_export_log.rb
 │   │   ├── network.rb
@@ -223,6 +229,8 @@
 │   │   │   ├── periods_builder.rb
 │   │   │   ├── urssaf_series_builder.rb
 │   │   │   └── waterfall_chart_builder.rb
+│   │   ├── company_lists
+│   │   │   └── first_alert_computer.rb
 │   │   ├── establishment_tracking_snapshot_service.rb
 │   │   ├── establishments
 │   │   │   ├── effectif_ap_series_builder.rb
@@ -257,6 +265,10 @@
 │       │   │   ├── edit.html.erb
 │       │   │   ├── index.html.erb
 │       │   │   └── new.html.erb
+│       │   ├── lists
+│       │   │   ├── _form.html.erb
+│       │   │   ├── edit.html.erb
+│       │   │   └── index.html.erb
 │       │   ├── notifications
 │       │   │   ├── _form.html.erb
 │       │   │   ├── edit.html.erb
@@ -272,6 +284,7 @@
 │       │   │   └── show.html.erb
 │       │   └── zones
 │       │       ├── _form.html.erb
+│       │       ├── _known_zones_reference.html.erb
 │       │       ├── edit.html.erb
 │       │       ├── index.html.erb
 │       │       └── new.html.erb
@@ -300,6 +313,7 @@
 │       │   ├── _info_panel.html.erb
 │       │   ├── _info_panel_with_widgets.html.erb
 │       │   ├── _insee_widget.html.erb
+│       │   ├── _waterfall_detection_motifs.html.erb
 │       │   ├── _waterfall_detection_widget.html.erb
 │       │   ├── index.html.erb
 │       │   └── show.html.erb
@@ -331,7 +345,9 @@
 │       │       └── new.html.erb
 │       ├── establishment_tracking_mailer
 │       │   ├── contributor_added.html.erb
-│       │   └── contributor_added.text.erb
+│       │   ├── contributor_added.text.erb
+│       │   ├── tracking_updated.html.erb
+│       │   └── tracking_updated.text.erb
 │       ├── establishment_trackings
 │       │   ├── _establishment_trackings_table.html.erb
 │       │   ├── _filters.html.erb
@@ -370,6 +386,8 @@
 │       │   ├── _paginator.html.erb
 │       │   └── _prev_page.html.erb
 │       ├── layouts
+│       │   ├── _confidentiality_modal.html.erb
+│       │   ├── _flash_messages.html.erb
 │       │   ├── _footer.html.erb
 │       │   ├── _header.html.erb
 │       │   ├── _main_navigation.html.erb
@@ -401,9 +419,14 @@
 │       │   ├── support.html.erb
 │       │   └── unauthorized.html.erb
 │       ├── shared
+│       │   ├── _accessible_email_field.html.erb
+│       │   ├── _accessible_password_field.html.erb
 │       │   ├── _data_state.html.erb
+│       │   ├── _effectif_ap_source.html.erb
 │       │   ├── _error.html.erb
-│       │   └── _flash.html.erb
+│       │   ├── _flash.html.erb
+│       │   ├── _loading_ellipsis.html.erb
+│       │   └── _urssaf_source.html.erb
 │       ├── statistics
 │       │   └── index.html.erb
 │       └── summaries
@@ -439,6 +462,7 @@
 │   │   ├── assets.rb
 │   │   ├── content_security_policy.rb
 │   │   ├── devise.rb
+│   │   ├── field_error_proc.rb
 │   │   ├── filter_parameter_logging.rb
 │   │   ├── fix_hidden_field_autocomplete.rb
 │   │   ├── inflections.rb
@@ -643,7 +667,12 @@
 │   │   ├── 20260401200000_add_covering_index_to_company_lists.rb
 │   │   ├── 20260423100000_create_zones.rb
 │   │   ├── 20260507144800_add_partial_index_to_osf_effectifs_latest.rb
-│   │   └── 20260518180000_add_index_to_osf_procols_for_procol_status_distinct_on.rb
+│   │   ├── 20260511134000_create_inpi_bce_ratios.rb
+│   │   ├── 20260518180000_add_index_to_osf_procols_for_procol_status_distinct_on.rb
+│   │   ├── 20260528120000_add_defaults_to_inpi_bce_ratios_timestamps.rb
+│   │   ├── 20260618140000_add_is_first_alert_to_company_lists.rb
+│   │   ├── 20260622120000_add_precision_alertes_to_lists.rb
+│   │   └── 20260706120000_add_department_to_company_lists.rb
 │   ├── queue_schema.rb
 │   ├── schema.rb
 │   ├── seeds
@@ -651,6 +680,7 @@
 │   │   ├── activity_sectors_seeds.rb
 │   │   ├── departments_seeds.rb
 │   │   ├── establishments_seeds.rb
+│   │   ├── first_alert_scenarios_seeds.rb
 │   │   ├── geo_accesses_seed.rb
 │   │   ├── labels_and_tracking_metadata_seeds.rb
 │   │   ├── naf_codes.csv
@@ -673,6 +703,7 @@
 │       ├── companies_social_debt.rake
 │       ├── companies_tracking_status.rake
 │       ├── company_lists_rebuild.rake
+│       ├── denormalize_all.rake
 │       ├── osf_ap_sync.rake
 │       ├── osf_cotisation_sync.rake
 │       ├── osf_debit_sync.rake
@@ -1570,17 +1601,24 @@
 │   │       └── connection_test.rb
 │   ├── controllers
 │   │   ├── admin
+│   │   │   ├── lists_controller_test.rb
 │   │   │   ├── users_controller_test.rb
 │   │   │   └── zones_controller_test.rb
 │   │   ├── comments_controller_test.rb
 │   │   ├── companies_controller_test.rb
+│   │   ├── concerns
+│   │   │   └── detection_widgetable_test.rb
 │   │   ├── contacts_controller_test.rb
+│   │   ├── devise
+│   │   │   ├── passwords_controller_test.rb
+│   │   │   └── sessions_controller_test.rb
 │   │   ├── establishment_trackings_controller_create_test.rb
 │   │   ├── establishment_trackings_controller_test.rb
 │   │   ├── establishments_controller_test.rb
 │   │   ├── lists_controller_test.rb
 │   │   ├── notifications_controller_test.rb
-│   │   └── summaries_controller_test.rb
+│   │   ├── summaries_controller_test.rb
+│   │   └── users_controller_test.rb
 │   ├── fixtures
 │   │   ├── codefi_redirects.yml
 │   │   ├── comments.yml
@@ -1618,22 +1656,35 @@
 │   │   ├── users.yml
 │   │   └── zones.yml
 │   ├── helpers
-│   │   └── .keep
+│   │   ├── .keep
+│   │   ├── application_helper_test.rb
+│   │   └── establishment_trackings_helper_test.rb
 │   ├── integration
 │   │   ├── .keep
 │   │   ├── establishment_tracking_edit_test.rb
 │   │   ├── establishment_tracking_show_test.rb
+│   │   ├── first_alert_badge_test.rb
 │   │   └── user_authentication_test.rb
 │   ├── mailers
 │   │   └── .keep
 │   ├── models
 │   │   ├── .keep
 │   │   ├── codefi_redirect_test.rb
+│   │   ├── company_list_test.rb
+│   │   ├── contact_test.rb
 │   │   ├── difficulty_test.rb
 │   │   ├── establishment_tracking_test.rb
 │   │   ├── user_test.rb
 │   │   └── zone_test.rb
+│   ├── services
+│   │   ├── companies
+│   │   │   └── waterfall_chart_builder_test.rb
+│   │   └── excel
+│   │       ├── establishment_tracking_generator_test.rb
+│   │       └── list_generator_test.rb
 │   ├── support
+│   │   ├── first_alert_backfill.rb
+│   │   ├── first_alert_scenario_fixtures.rb
 │   │   └── integration_test_helpers.rb
 │   ├── system
 │   │   └── .keep
@@ -1653,4 +1704,4 @@
         ├── dsfr.nomodule.min.js
         ├── os.js
         └── tom-select.js
-117 directories, 1750 files
+124 directories, 1794 files

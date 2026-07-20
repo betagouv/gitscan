@@ -129,6 +129,17 @@ OSF_DATABASE_PASSWORD=osf_database_password
 OSF_DATABASE_POOL=5
 ```
 
+## Sentry Configuration
+
+Sentry uses `SENTRY_ENV` to separate deployed environments such as `preprod` and `production`.
+Errors are also tagged with `container_role` so the Rails web container (`web`) can be filtered separately from the Solid Queue container (`worker`).
+
+Set the container role at deployment time:
+
+```bash
+SENTRY_CONTAINER_ROLE=web # or worker
+```
+
 ## Synchronization Commands
 
 ### Sync Individual Data Types
@@ -367,35 +378,43 @@ bin/rails osf:sync_sirene                     # Sync establishments from SIRENE 
 bin/rails osf:sync_sirene_ul                  # Sync companies from SIRENE_UL clean view ~ 1 hour
 ```
 
+> After OSF sync and score import, run all denormalization updates with `bin/rails denormalize:all` (see below). Or run individually:
+
 > Then update the freshly created companies table with the consolidated social debt :
 ```
-bin/rails companies:update_social_debt_total ~ 10mins
+bin/rails companies:update_social_debt_total ~ 10 mins
 ```
 
 > And update the denormalized latest effectif :
 ```
-bin/rails companies:update_latest_effectif ~ 5mins
+bin/rails companies:update_latest_effectif ~ 2 mins
 ```
 
 > And update the denormalized procol status :
 ```
-bin/rails companies:update_procol_status ~ quelques secondes
+bin/rails companies:update_procol_status ~ 32 mins
 ```
 
-> After importing a new JSON score file, rebuild the company_lists join table :
+> Update the denormalized URSSAF delay column:
 ```
-bin/rails lists:rebuild_company_lists               # all lists
-bin/rails "lists:rebuild_company_lists[Janvier 2026]" # one list
-```
-
-> After running `osf:sync_delai`, update the denormalized URSSAF delay column:
-```
-bin/rails companies:update_delai_urssaf_until ~ 6mins
+bin/rails companies:update_delai_urssaf_until ~ 6 mins
 ```
 
 > One-time backfill for the tracking status column (afterwards kept current via callbacks):
 ```
-bin/rails companies:update_tracking_status ~ 4mins
+bin/rails companies:update_tracking_status ~ 4 mins
+```
+
+> After importing a new JSON score file, rebuild the `company_lists` join table (copies score, alert, score breakdown, `department` from `companies`, and backfills `is_first_alert`) :
+```
+bin/rails lists:rebuild_company_lists               # all lists ~ 13 mins
+bin/rails "lists:rebuild_company_lists[Janvier 2026]" # one list (~ 9 s for Janvier 2026, up to ~ 72 s for large lists)
+```
+
+> To run all denormalization updates at once (companies columns + `company_lists` rebuild):
+```
+bin/rails denormalize:all                              # all lists ~ 68 mins (~ 55 mins companies + ~ 13 mins list rebuild)
+bin/rails "denormalize:all[Janvier 2026]"              # one list only
 ```
 
 > For `osf_effectif` don't forget to update the `data_freshness` attribute of the corresponding line of the `import.rb` model. You can do this using the app admin panel. You can get the value by doing `select Max(oe.periode) from osf_effectifs oe` . This will be hopefully automaticaly done at import time one day.
@@ -573,3 +592,31 @@ This pattern is used widely in the app (search filters, multiselect value fields
 **Do not remove this file** unless Rails stops adding `autocomplete` on hidden inputs upstream, or you replace it with an equivalent fix. After upgrading Rails, re-check generated HTML for hidden inputs and confirm the initializer still matches the framework’s helpers.
 
 **Note:** Rails may still add `autocomplete="off"` on other hidden inputs it generates directly (for example the CSRF token, checkbox “unchecked” companions, or `_method` spoofing). Those are separate code paths. If an audit reports remaining violations on those tags, extend the fix in the same spirit (strip `autocomplete` only, keep Rails’ naming and behaviour) rather than duplicating helper logic by hand.
+
+## Form field errors and `field_error_proc`
+
+By default, when a form field has a validation error, Rails wraps its HTML in a `<div class="field_with_errors">` container. That wrapper is not part of the DSFR design system and conflicts with the accessible field partials used in this application.
+
+**File:** [`config/initializers/field_error_proc.rb`](config/initializers/field_error_proc.rb)
+
+The initializer replaces Rails’ default behaviour with a **proc** (a reusable anonymous block of Ruby code) assigned to `ActionView::Base.field_error_proc`. Rails calls this proc for every field in error, passing:
+
+| Argument | Role |
+|----------|------|
+| `html_tag` | The rendered HTML of the field (`<input>`, `<label>`, etc.) |
+| `_instance` | The form object (e.g. `User`) — unused here |
+
+Our proc simply returns `html_tag` unchanged, which disables the `field_with_errors` wrapper.
+
+**Why:** accessible field partials (`app/views/shared/_accessible_email_field.html.erb`, `_accessible_password_field.html.erb`, etc.) already handle error display explicitly:
+
+- DSFR classes (`fr-input-group--error`, `fr-input--error`)
+- inline error message with a stable `id` (e.g. `user_email-error`)
+- `aria-describedby` linking the input to the hint and error
+- `aria-invalid="true"` when the field is invalid
+
+Without this initializer, Rails would add an extra wrapper around inputs, producing invalid DSFR markup and redundant error signalling.
+
+**Convention:** when adding a new form field that can fail validation, handle errors in the view (or a shared partial) — do not rely on Rails to style or wrap invalid fields automatically.
+
+**Do not remove this file** unless every form in the application handles field errors explicitly. Removing it would silently reintroduce `field_with_errors` wrappers across the app.
