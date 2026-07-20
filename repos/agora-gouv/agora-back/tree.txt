@@ -17,8 +17,8 @@
 │   ├── 2024-07-22-regenerer-les-ids-de-contenu-strapi.md
 │   ├── 2024-07-29-regenerer-les-ids-de-question-strapi.md
 │   ├── ACME
-│   │   ├── 2026-06-25-acme-v2-implementation-plan.md
-│   │   └── 2026-06-25-acme-v2-renouvellement-certificats.md
+│   │   ├── 2026-06-25-acme-v2-renouvellement-certificats.md
+│   │   └── workflow_cert_complet.md
 │   └── migration_strapi_v5
 │       ├── history.md
 │       ├── impact_document_id.md
@@ -782,6 +782,7 @@
 │   │   │                   │       └── ThematiqueRepository.kt
 │   │   │                   ├── themeHebdo
 │   │   │                   │   ├── GetThemeHebdoUseCase.kt
+│   │   │                   │   ├── IsThemeHebdoTransitionUseCase.kt
 │   │   │                   │   └── repository
 │   │   │                   │       ├── CurrentThemeHebdoCacheRepository.kt
 │   │   │                   │       └── ThemeHebdoRepository.kt
@@ -900,6 +901,8 @@
 │       │               │   └── userAnsweredConsultation
 │       │               │       └── repository
 │       │               │           └── UserAnsweredConsultationRepositoryImplTest.kt
+│       │               ├── oninit
+│       │               │   └── WeeklyTasksHandlerTest.kt
 │       │               └── usecase
 │       │                   ├── acme
 │       │                   │   ├── AcmeCertificateRenewalUseCaseTest.kt
@@ -961,11 +964,12 @@
 │       │                   ├── suspiciousUser
 │       │                   │   └── IsSuspiciousUserUseCaseTest.kt
 │       │                   ├── themeHebdo
-│       │                   │   └── GetThemeHebdoUseCaseTest.kt
+│       │                   │   ├── GetThemeHebdoUseCaseTest.kt
+│       │                   │   └── IsThemeHebdoTransitionUseCaseTest.kt
 │       │                   └── welcomePage
 │       │                       └── GetLastNewsUseCaseTest.kt
 │       └── resources
 │           └── mockito-extensions
 │               └── org.mockito.plugins.MockMaker
 └── system.properties
-268 directories, 702 files
+269 directories, 705 files
