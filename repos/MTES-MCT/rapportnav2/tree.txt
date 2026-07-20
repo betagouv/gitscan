@@ -404,6 +404,7 @@
 │   │   │   │                   │   │   │       ├── DeleteMissionCrew2.kt
 │   │   │   │                   │   │   │       ├── DeleteNavMission.kt
 │   │   │   │                   │   │   │       ├── GetAllGeneralInfos.kt
+│   │   │   │                   │   │   │       ├── GetAllMissions.kt
 │   │   │   │                   │   │   │       ├── GetComputeEnvMission.kt
 │   │   │   │                   │   │   │       ├── GetComputeNavMission.kt
 │   │   │   │                   │   │   │       ├── GetCountries.kt
@@ -421,6 +422,7 @@
 │   │   │   │                   │   │   │       ├── ProcessMissionActionTarget.kt
 │   │   │   │                   │   │   │       ├── ProcessMissionCrew.kt
 │   │   │   │                   │   │   │       ├── ProcessSati.kt
+│   │   │   │                   │   │   │       ├── SoftDeleteMission.kt
 │   │   │   │                   │   │   │       ├── UpdateGeneralInfo.kt
 │   │   │   │                   │   │   │       ├── UpdateGeneralInfoAdmin.kt
 │   │   │   │                   │   │   │       ├── administrations
@@ -498,6 +500,7 @@
 │   │   │   │                       │   │   ├── ApiKeysAdminController.kt
 │   │   │   │                       │   │   ├── FishAuctionAdminController.kt
 │   │   │   │                       │   │   ├── GeneralInfosAdminController.kt
+│   │   │   │                       │   │   ├── MissionAdminController.kt
 │   │   │   │                       │   │   ├── ServiceAdminController.kt
 │   │   │   │                       │   │   ├── ServiceManageController.kt
 │   │   │   │                       │   │   ├── UserAdminController.kt
@@ -508,9 +511,11 @@
 │   │   │   │                       │   │   │       ├── AdminApiKeyAuditOutput.kt
 │   │   │   │                       │   │   │       ├── AdminAuthenticationAuditOutput.kt
 │   │   │   │                       │   │   │       ├── AdminGeneralInfosOutput.kt
+│   │   │   │                       │   │   │       ├── AdminMissionOutput.kt
 │   │   │   │                       │   │   │       ├── AdminPaginatedApiKeyAuditOutput.kt
 │   │   │   │                       │   │   │       ├── AdminPaginatedAuthenticationAuditOutput.kt
-│   │   │   │                       │   │   │       └── AdminPaginatedGeneralInfosOutput.kt
+│   │   │   │                       │   │   │       ├── AdminPaginatedGeneralInfosOutput.kt
+│   │   │   │                       │   │   │       └── AdminPaginatedMissionOutput.kt
 │   │   │   │                       │   │   └── models
 │   │   │   │                       │   │       ├── AdminApiKey.kt
 │   │   │   │                       │   │       └── AdminFishAuction.kt
@@ -1181,6 +1186,7 @@
 │   │       │                   │   │   │       ├── DeleteMissionCrew2Test.kt
 │   │       │                   │   │   │       ├── DeleteNavMissionTest.kt
 │   │       │                   │   │   │       ├── GetAllGeneralInfosTest.kt
+│   │       │                   │   │   │       ├── GetAllMissionsTest.kt
 │   │       │                   │   │   │       ├── GetComputeEnvMissionTest.kt
 │   │       │                   │   │   │       ├── GetComputeNavMissionTest.kt
 │   │       │                   │   │   │       ├── GetEnvMissionById2Test.kt
@@ -1197,6 +1203,7 @@
 │   │       │                   │   │   │       ├── PatchMissionEnvTest.kt
 │   │       │                   │   │   │       ├── PatchNavMissionTest.kt
 │   │       │                   │   │   │       ├── ProcessMissionActionTargetTest.kt
+│   │       │                   │   │   │       ├── SoftDeleteMissionTest.kt
 │   │       │                   │   │   │       ├── UpdateGeneralInfoAdminTest.kt
 │   │       │                   │   │   │       ├── UpdateGeneralInfoTest.kt
 │   │       │                   │   │   │       ├── administrations
@@ -1256,6 +1263,7 @@
 │   │       │                   │   │   │   ├── ApiAdminControllerITest.kt
 │   │       │                   │   │   │   ├── FishAuctionAdminControllerTest.kt
 │   │       │                   │   │   │   ├── GeneralInfosAdminControllerTest.kt
+│   │       │                   │   │   │   ├── MissionAdminControllerTest.kt
 │   │       │                   │   │   │   ├── ServiceAdminControllerTest.kt
 │   │       │                   │   │   │   ├── ServiceManageControllerTest.kt
 │   │       │                   │   │   │   ├── UserAdminControllerTest.kt
@@ -1662,6 +1670,7 @@
 │   │   │   │   │   │   │   ├── admin-basic-item-generic.tsx
 │   │   │   │   │   │   │   ├── admin-fish-auction-item.tsx
 │   │   │   │   │   │   │   ├── admin-general-infos-item.tsx
+│   │   │   │   │   │   │   ├── admin-mission-item.tsx
 │   │   │   │   │   │   │   ├── admin-service-item.tsx
 │   │   │   │   │   │   │   ├── admin-user-apikey-logging-item.tsx
 │   │   │   │   │   │   │   ├── admin-user-auth-logging-item.tsx
@@ -1688,6 +1697,7 @@
 │   │   │   │   │   │   ├── use-admin-create-update-user-service.tsx
 │   │   │   │   │   │   ├── use-admin-delete-agents-service.tsx
 │   │   │   │   │   │   ├── use-admin-delete-general-infos.tsx
+│   │   │   │   │   │   ├── use-admin-delete-mission.tsx
 │   │   │   │   │   │   ├── use-admin-delete-roles-service.tsx
 │   │   │   │   │   │   ├── use-admin-delete-services-service.tsx
 │   │   │   │   │   │   ├── use-admin-disable-agent-service.tsx
@@ -1697,6 +1707,7 @@
 │   │   │   │   │   │   ├── use-admin-fish-auctions-service.tsx
 │   │   │   │   │   │   ├── use-admin-general-infos.tsx
 │   │   │   │   │   │   ├── use-admin-migrate-agents-service.tsx
+│   │   │   │   │   │   ├── use-admin-missions.tsx
 │   │   │   │   │   │   ├── use-admin-rorate-apikey-service.tsx
 │   │   │   │   │   │   ├── use-admin-services-service.tsx
 │   │   │   │   │   │   ├── use-admin-update-general-infos.tsx
@@ -1709,6 +1720,7 @@
 │   │   │   │   │       ├── admin-apikey-types.ts
 │   │   │   │   │       ├── admin-fish-auction-types.ts
 │   │   │   │   │       ├── admin-general-infos-types.ts
+│   │   │   │   │       ├── admin-mission-types.ts
 │   │   │   │   │       ├── admin-services-type.ts
 │   │   │   │   │       ├── admin-user-auth-logging-types.ts
 │   │   │   │   │       └── pagination-types.ts
@@ -2545,4 +2557,4 @@
 │   └── docker-compose.yml
 ├── release-please-config.json
 └── sonar-project.properties
-501 directories, 2082 files
+501 directories, 2094 files
