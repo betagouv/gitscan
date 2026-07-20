@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Qualicharge dataviz is a Next.js application for exploring consolidated IRVE charging-station data on a map.
 
 ## Getting Started
 
@@ -16,21 +16,38 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The map data is served by the Next.js API route at `/api/irve/points`. The first request warms an in-memory server cache by fetching and consolidating the static and dynamic Parquet sources; later requests reuse that cached payload while the backend refreshes it periodically. This endpoint returns compact map features only, and full station details are loaded on demand through `/api/irve/stations/[stationKey]`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Data Environment
 
-## Learn More
+The backend accepts these optional environment variables:
 
-To learn more about Next.js, take a look at the following resources:
+Static IRVE Parquet and dynamic IRVE CSV URLs are resolved from the stable data.gouv.fr resource metadata.
+- `TARIFF_SOURCE_MODE`: tariff loading strategy. Defaults to `local-files`. Use `consolidated` to load the legacy single parquet URL.
+- `TARIFF_PARQUET_DIR`: local tariff parquet root directory. Defaults to `data/tariffs`.
+  Each direct child folder is parsed as one provider and must contain `qualicharge_tariff.parquet` and `qualicharge_tariffpdc.parquet`, for example `data/tariffs/tesla/qualicharge_tariff.parquet`.
+- `TARIFFS_PARQUET_URL`: legacy consolidated tariff parquet URL used when `TARIFF_SOURCE_MODE=consolidated`. Defaults to `http://localhost:8020/d/tariffs.parquet`.
+- `PARQUET_REFRESH_INTERVAL_SECONDS`: cache refresh interval in seconds. Defaults to `300`.
+- `TARIFF_MARKER_SESSION_DURATION_MINUTES`: session duration used to evaluate tariff restrictions for map markers. Defaults to `30`.
+- `TARIFF_MARKER_SESSION_KWH`: session energy used to evaluate tariff restrictions for map markers. Defaults to `51`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Map Embedding
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Set `NEXT_PUBLIC_HOST_WEBSITE_URL` to display a floating link back to the website that embeds the map, for example:
 
-## Deploy on Vercel
+```bash
+NEXT_PUBLIC_HOST_WEBSITE_URL=https://www.qualicharge.beta.gouv.fr/cartographie/
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+When this variable is not set, the link is hidden. Because this value is exposed to the browser by Next.js, set it before building the app.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Production
+
+Build and start the server with:
+
+```bash
+npm run build
+npm run start
+```
+
+This app now requires a Node.js Next server for the API route and cache; it is not a static export.

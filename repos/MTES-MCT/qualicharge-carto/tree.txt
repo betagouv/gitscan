@@ -8,7 +8,64 @@
 │   └── settings.json
 ├── AGENTS.md
 ├── CLAUDE.md
+├── Procfile
 ├── README.md
+├── data
+│   └── tariffs
+│       ├── BP
+│       │   ├── qualicharge_tariff.parquet
+│       │   └── qualicharge_tariffpdc.parquet
+│       ├── R3
+│       │   ├── qualicharge_tariff.parquet
+│       │   └── qualicharge_tariffpdc.parquet
+│       ├── atlante
+│       │   ├── qualicharge_tariff.parquet
+│       │   └── qualicharge_tariffpdc.parquet
+│       ├── driveco
+│       │   ├── qualicharge_tariff.parquet
+│       │   └── qualicharge_tariffpdc.parquet
+│       ├── easycharge
+│       │   ├── qualicharge_tariff.parquet
+│       │   └── qualicharge_tariffpdc.parquet
+│       ├── electra
+│       │   ├── qualicharge_tariff.parquet
+│       │   └── qualicharge_tariffpdc.parquet
+│       ├── evzen
+│       │   ├── qualicharge_tariff.parquet
+│       │   └── qualicharge_tariffpdc.parquet
+│       ├── fastned
+│       │   ├── qualicharge_tariff.parquet
+│       │   └── qualicharge_tariffpdc.parquet
+│       ├── iecharge
+│       │   ├── qualicharge_tariff.parquet
+│       │   └── qualicharge_tariffpdc.parquet
+│       ├── ionity
+│       │   ├── qualicharge_tariff.parquet
+│       │   └── qualicharge_tariffpdc.parquet
+│       ├── izivia
+│       │   ├── qualicharge_tariff.parquet
+│       │   └── qualicharge_tariffpdc.parquet
+│       ├── lidl
+│       │   ├── qualicharge_tariff.parquet
+│       │   └── qualicharge_tariffpdc.parquet
+│       ├── milence
+│       │   ├── qualicharge_tariff.parquet
+│       │   └── qualicharge_tariffpdc.parquet
+│       ├── monta
+│       │   ├── qualicharge_tariff.parquet
+│       │   └── qualicharge_tariffpdc.parquet
+│       ├── plenitude
+│       │   ├── qualicharge_tariff.parquet
+│       │   └── qualicharge_tariffpdc.parquet
+│       ├── shell
+│       │   ├── qualicharge_tariff.parquet
+│       │   └── qualicharge_tariffpdc.parquet
+│       ├── tesla
+│       │   ├── qualicharge_tariff.parquet
+│       │   └── qualicharge_tariffpdc.parquet
+│       └── total
+│           ├── qualicharge_tariff.parquet
+│           └── qualicharge_tariffpdc.parquet
 ├── eslint.config.mjs
 ├── next.config.ts
 ├── notebooks
@@ -17,7 +74,6 @@
 │   └── statique.parquet
 ├── package-lock.json
 ├── package.json
-├── pnpm-lock.yaml
 ├── postcss.config.mjs
 ├── public
 │   ├── images
@@ -28,18 +84,28 @@
 │   │       ├── prise_type_chademo.svg
 │   │       ├── prise_type_combo_ccs.svg
 │   │       └── prise_type_ef.svg
-│   ├── vercel.svg
-│   └── worker
-│       └── dataset-parser.worker.js
+│   └── vercel.svg
 ├── scripts
-│   └── build-worker.mjs
+│   ├── __pycache__
+│   │   └── copy_tariff_parquets.cpython-310.pyc
+│   └── copy_tariff_parquets.py
 ├── src
 │   ├── app
+│   │   ├── api
+│   │   │   └── irve
+│   │   │       ├── points
+│   │   │       │   └── route.ts
+│   │   │       └── stations
+│   │   │           └── [stationKey]
+│   │   │               └── route.ts
 │   │   ├── favicon.ico
 │   │   ├── globals.css
 │   │   ├── layout.tsx
 │   │   └── page.tsx
 │   ├── components
+│   │   ├── LaunchInfoModal.tsx
+│   │   ├── MultiSelectCheckbox.tsx
+│   │   ├── PricingModal.tsx
 │   │   ├── irve
 │   │   │   ├── CopyableValue.tsx
 │   │   │   └── ScheduleTable.tsx
@@ -48,10 +114,12 @@
 │   │       ├── HeatmapLayer.tsx
 │   │       ├── IRVEMap.tsx
 │   │       ├── LoadingOverlay.tsx
+│   │       ├── MapAddressSearch.tsx
 │   │       ├── MapAnalysisPanel.tsx
 │   │       ├── MapEvents.tsx
 │   │       ├── MapFiltersPanel.tsx
 │   │       ├── MapSidePanel.tsx
+│   │       ├── MapViewport.tsx
 │   │       ├── StationDetailsPanel.tsx
 │   │       └── tabs
 │   │           ├── StationAccessTab.tsx
@@ -59,6 +127,9 @@
 │   │           ├── StationDetailsTab.tsx
 │   │           ├── StationEssentialTab.tsx
 │   │           ├── StationPricingTab.tsx
+│   │           ├── pricing
+│   │           │   ├── tariffText.test.ts
+│   │           │   └── tariffText.ts
 │   │           └── shared.ts
 │   ├── dsfr-bootstrap
 │   │   ├── defaultColorScheme.ts
@@ -66,28 +137,74 @@
 │   │   └── server-only-index.tsx
 │   ├── hooks
 │   │   ├── useCopyToClipboard.ts
+│   │   ├── useDebouncedValue.ts
 │   │   ├── useIRVEData.ts
 │   │   ├── useMapClusters.ts
-│   │   └── usePanoramaPicture.ts
+│   │   ├── useMapFiltersState.ts
+│   │   ├── usePanoramaPicture.ts
+│   │   └── useStationDetails.ts
 │   ├── lib
 │   │   ├── base-path.ts
-│   │   └── irve
-│   │       ├── formatters.ts
-│   │       ├── heatmaps.ts
-│   │       ├── mapFilters.ts
-│   │       ├── mapModes.ts
-│   │       ├── panoramax
-│   │       │   └── fetch-panoramax-image.ts
-│   │       ├── pricing.ts
-│   │       ├── schedules.ts
-│   │       └── sections.ts
-│   ├── types
-│   │   ├── irve-runtime.ts
-│   │   ├── irve.ts
-│   │   └── panoramax.ts
-│   └── workers
-│       ├── dataset-parser.worker.ts
-│       └── tsconfig.json
+│   │   ├── irve
+│   │   │   ├── dynamic-status.test.ts
+│   │   │   ├── dynamic-status.ts
+│   │   │   ├── formatters.test.ts
+│   │   │   ├── formatters.ts
+│   │   │   ├── heatmaps.ts
+│   │   │   ├── mapFilters.ts
+│   │   │   ├── mapModes.ts
+│   │   │   ├── mapViewportHash.test.ts
+│   │   │   ├── mapViewportHash.ts
+│   │   │   ├── markerOrder.test.ts
+│   │   │   ├── markerOrder.ts
+│   │   │   ├── panoramax
+│   │   │   │   └── fetch-panoramax-image.ts
+│   │   │   ├── schedules.ts
+│   │   │   ├── sections.ts
+│   │   │   ├── server
+│   │   │   │   ├── coerce.ts
+│   │   │   │   ├── config.test.ts
+│   │   │   │   ├── config.ts
+│   │   │   │   ├── csv.test.ts
+│   │   │   │   ├── csv.ts
+│   │   │   │   ├── data-gouv.test.ts
+│   │   │   │   ├── data-gouv.ts
+│   │   │   │   ├── dataset.ts
+│   │   │   │   ├── parquet.ts
+│   │   │   │   ├── points-cache.ts
+│   │   │   │   ├── stations
+│   │   │   │   │   ├── activity.test.ts
+│   │   │   │   │   ├── activity.ts
+│   │   │   │   │   ├── consolidate.ts
+│   │   │   │   │   ├── dynamic-rows.ts
+│   │   │   │   │   └── static-row.ts
+│   │   │   │   └── tariffs
+│   │   │   │       ├── applicable.ts
+│   │   │   │       ├── index.ts
+│   │   │   │       ├── load-consolidated.ts
+│   │   │   │       ├── load-local-files.test.ts
+│   │   │   │       ├── load-local-files.ts
+│   │   │   │       ├── tariff-raw.ts
+│   │   │   │       └── types.ts
+│   │   │   ├── tariff
+│   │   │   │   ├── constants.ts
+│   │   │   │   ├── formatting.test.ts
+│   │   │   │   ├── formatting.ts
+│   │   │   │   ├── presentation.test.ts
+│   │   │   │   ├── presentation.ts
+│   │   │   │   ├── restrictions.test.ts
+│   │   │   │   ├── restrictions.ts
+│   │   │   │   ├── selection.test.ts
+│   │   │   │   ├── selection.ts
+│   │   │   │   └── types.ts
+│   │   │   └── tariffs.ts
+│   │   ├── json.ts
+│   │   ├── modal-preferences.test.ts
+│   │   └── modal-preferences.ts
+│   └── types
+│       ├── irve-runtime.ts
+│       ├── irve.ts
+│       └── panoramax.ts
 ├── tsconfig.json
-└── yarn.lock
-23 directories, 69 files
+└── vitest.config.ts
+52 directories, 157 files
