@@ -2,6 +2,10 @@
 ├── .envrc
 ├── .envrc.license
 ├── .github
+│   ├── CODEOWNERS
+│   ├── ISSUE_TEMPLATE
+│   │   ├── bug_report.yml
+│   │   └── feature_request.yml
 │   └── workflows
 │       ├── securix-cd-docs.yaml
 │       ├── securix-check-formatting.yaml
@@ -10,8 +14,10 @@
 │       ├── securix-cleanup-docs.yaml
 │       └── securix-testsuite.yaml
 ├── .gitignore
+├── CHANGELOG.md
 ├── LICENSES
 │   ├── CC-BY-SA-4.0.txt
+│   ├── LGPL-2.1-or-later.txt
 │   └── MIT.txt
 ├── README.md
 ├── REUSE.toml
@@ -24,6 +30,7 @@
 │       ├── inventory-generator.css
 │       ├── inventory-generator.html
 │       └── inventory-generator.js
+├── config.yml
 ├── default.nix
 ├── docs
 │   └── manual
@@ -54,6 +61,7 @@
 │   ├── t14g6.nix
 │   ├── x13-20ug.nix
 │   ├── x280.nix
+│   ├── x390.nix
 │   └── x9-15.nix
 ├── lib
 │   ├── default.nix
@@ -100,10 +108,15 @@
 │   │       └── sway-config.nix
 │   ├── http-proxy
 │   │   ├── automatic.nix
-│   │   ├── current-proxy.sh
 │   │   ├── default.nix
-│   │   ├── http-proxy.nix
-│   │   ├── proxy-switcher.sh
+│   │   ├── g3proxy
+│   │   │   ├── current-proxy.sh
+│   │   │   ├── default.nix
+│   │   │   └── proxy-switcher.sh
+│   │   ├── low-level-options.nix
+│   │   ├── portail
+│   │   │   ├── default.nix
+│   │   │   └── tray.nix
 │   │   └── ssh-forward.nix
 │   ├── i18n
 │   │   ├── default.nix
@@ -111,6 +124,7 @@
 │   ├── journal.nix
 │   ├── known-hosts.nix
 │   ├── networking.nix
+│   ├── networkmanager-events.nix
 │   ├── o11y
 │   │   ├── default.nix
 │   │   ├── logs.nix
@@ -160,14 +174,20 @@
 │   ├── overlay.nix
 │   └── plasma
 │       ├── lib.nix
-│       └── mk-look-and-feel-package.nix
+│       ├── mk-look-and-feel-package.nix
+│       └── portail-tray-icon
+│           ├── default.nix
+│           └── src
+│               ├── pyproject.toml
+│               └── tray.py
 ├── shell.nix
 ├── statix.toml
 ├── tests
 │   ├── anssi-minimal.nix
 │   ├── default.nix
 │   ├── idempotent-autoinstall.nix
-│   └── minimal.nix
+│   ├── minimal.nix
+│   └── portail.nix
 └── workflows
     └── check-licensing.nix
-42 directories, 130 files
+47 directories, 145 files

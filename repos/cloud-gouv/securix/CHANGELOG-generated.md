@@ -1,24 +1,24 @@
-## Changelog : securix (30 derniers jours, au 25 juin 2026)
+## Changelog : securix (30 derniers jours, au 16 juillet 2026)
 
 ### Résumé
-Cette version apporte des améliorations à la localisation en français, corrige des problèmes liés à la vérification du démarrage sécurisé (Secure Boot) et à l'idempotence de l'installateur. Des ajustements ont également été effectués concernant l'intégration de Qemu/KVM et l'URL de l'enregistrement Grist.
+Les dernières mises à jour de Securix se concentrent sur l'intégration du Portail, l'amélioration de la gestion des réseaux et la préparation du support pour de nouvelles architectures matérielles. Des corrections et des ajustements ont également été apportés pour améliorer la stabilité et la configuration du système.
 
 ### Évolutions fonctionnelles
-- Ajout d'une initialisation de la localisation française (#182).
-- Désactivation de KWallet pour renforcer la sécurité (#93).
-- Correction de l'idempotence de l'installateur, assurant un comportement prévisible lors de réinstallations (#193, #2bce6c3).
-- Correction d'un problème dans la vérification du démarrage sécurisé (Secure Boot) pour l'ANSSI R3 (#187).
-- Mise à jour de l'URL/chemin pour l'enregistrement Grist (#192).
+- Intégration du Portail pour une gestion centralisée des configurations et des mises à jour. [#181](https://github.com/cloud-gouv/securix/issues/181)
+- Ajout d'une prise en charge préliminaire de l'architecture x390. [#190](https://github.com/cloud-gouv/securix/issues/190)
+- Initialisation de la localisation en français pour l'interface utilisateur. [#182](https://github.com/cloud-gouv/securix/issues/182)
 
 ### Évolutions techniques
-- Mise à jour de `nixpkgs` vers la version 26.05 (#174).
-- Mise à jour de `disko` (#186).
-- Ajout d'un test pour vérifier l'idempotence de l'installateur (#193).
-- Correction d'une comparaison incorrecte dans la fonction `mkSysctlChecker` pour l'ANSSI (#11c84dd).
-- Initialisation des modules Plymouth pour l'affichage du démarrage (#184).
-- Intégration initiale du support matériel Qemu/KVM (réverté ultérieurement, #193).
+- Généralisation de l'API de réaction de NetworkManager pour une meilleure flexibilité et maintenabilité. [#198](https://github.com/cloud-gouv/securix/issues/198)
+- Correction d'un problème de dépendance dynamique dans le portail. [#215](https://github.com/cloud-gouv/securix/issues/215)
+- Correction de l'emplacement des répertoires d'infrastructure. [#183](https://github.com/cloud-gouv/securix/issues/183)
+- Amélioration de la gestion des erreurs et des redémarrages automatiques dans certains scripts. [#177](https://github.com/cloud-gouv/securix/issues/177)
+- Suppression de l'utilisation de `sudo` avec un utilisateur vide. [#176](https://github.com/cloud-gouv/securix/issues/176)
+- Correction de tests liés à la présence de la clé `ruleId`. [#178](https://github.com/cloud-gouv/securix/issues/178)
+- Correction de l'importation de la localisation i18n. [#199](https://github.com/cloud-gouv/securix/issues/199)
 
 ### Autres changements
-- Mise à jour de la documentation README (#191).
-- Correction de l'importation de la localisation i18n (#199).
-- Améliorations mineures diverses (#185).
+- Initialisation du fichier `CODEOWNERS` pour une meilleure gestion des contributions. [#216](https://github.com/cloud-gouv/securix/issues/216)
+- Ajout d'un modèle de demande de fonctionnalité (feature request) dans les issues. [#203](https://github.com/cloud-gouv/securix/issues/203)
+- Reformatage du code source pour une meilleure lisibilité. [#211](https://github.com/cloud-gouv/securix/issues/211)
+- Rétractation de l'intégration initiale de Qemu/KVM. [#193](https://github.com/cloud-gouv/securix/issues/193)
