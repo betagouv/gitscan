@@ -1,27 +1,29 @@
-## Changelog : infra-apps (30 derniers jours, au 2026-07-13)
+## Changelog : infra-apps (30 derniers jours, au 2026-07-19)
 
 ### Résumé
-Ce changelog couvre les 30 derniers jours et met en évidence des améliorations significatives apportées à l'infrastructure, notamment autour de l'outil Iterion (amélioration des performances, ajout de fonctionnalités d'autoscaling et de sécurité) et de l'intégration de Buildkit (renforcement de la sécurité et amélioration de la gestion des environnements de production). Des corrections et des mises à jour ont également été apportées à divers composants pour améliorer la stabilité et la fonctionnalité globale.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la plateforme Iterion, avec des optimisations de performance, l'ajout de nouvelles fonctionnalités comme l'authentification via GitHub SSO et l'intégration de KEDA pour l'autoscaling. Des améliorations ont également été apportées à l'infrastructure Buildkit, notamment en matière de sécurité et de gestion des accès.
 
 ### Évolutions fonctionnelles
-- **Iterion:** Activation du mode "sandbox" pour les runners Kubernetes, renforçant ainsi la sécurité et l'isolation des exécutions. [#40, #41, #42, #43, #45]
-- **Iterion:** Ajout de l'authentification via GitHub SSO sur les environnements preprod et prod, permettant une gestion des accès plus sécurisée et simplifiée. [#40, #41, #43]
-- **Buildkit:** Ajout d'un fournisseur OIDC Forgejo pour l'authentification, améliorant la sécurité d'accès. [#48]
-- **Buildkit:** Configuration de l'environnement de production (ovh-prod) avec des mesures de sécurité renforcées (TLS Ingress, hard-pin, limitation du gateway). [#47]
-- **Charon:** Autorisation du `redirect_uri` pour l'environnement preprod egapro Atlas v2.
+- **Iterion :** Ajout de l'authentification via GitHub SSO sur preprod et en production, permettant aux utilisateurs de s'inscrire et de se connecter plus facilement. [#40, #41, #42, #43, #45]
+- **Iterion :** Activation du marketplace public en production. [#41]
+- **Iterion :** Amélioration de la gestion des secrets avec l'utilisation de Valkey HA pour une meilleure disponibilité et sécurité. [#46]
+- **Buildkit :** Ajout d'un fournisseur OIDC Forgejo pour l'authentification. [#48]
+- **Buildkit :** Renforcement de la sécurité en production avec l'ajout d'un Ingress TLS et la limitation des accès. [#47]
+- **Charon-egapro :** Ajout d'une whitelist pour les hôtes review-alpha et -staging.
 
 ### Évolutions techniques
-- **Iterion:** Amélioration des performances et de la stabilité en augmentant les limites de mémoire pour les runners et en ajustant la concurrence.
-- **Iterion:** Implémentation de l'autoscaling KEDA pour les runners, permettant une gestion dynamique des ressources en fonction de la charge.
-- **Iterion:** Mise à jour du chart Iterion vers les versions 0.37.2, 0.35.0, 0.34.0, 0.33.0, 0.32.0, 0.23.2, 0.23.0, 0.22.0, 0.21.0, 0.17.2, 0.17.1 et 0.16.1 avec diverses corrections et améliorations.
-- **Buildkit:** Mise à jour de l'opérateur Buildkit vers les versions v0.12.0, v0.10.0 et v0.9.0.
-- **Buildkit:** Configuration de l'accès S3 pour le cache "cold" en production.
-- **Buildkit:** Correction de la capture de la configuration du gateway en production.
-- **Kata:** Déploiement de Kata dans l'espace de noms `buildkit-system` et activation de `virtiofsd xattr` pour améliorer la compatibilité avec Buildkit.
-- Suppression d'une configuration temporaire pour les tests E2E.
+- **Iterion :** Mise à jour du chart Iterion vers les versions 0.37.2, 0.35.0, 0.34.0, 0.33.0, 0.32.0, 0.23.2, 0.23.0, 0.22.0, 0.21.0, 0.17.2, 0.17.1, 0.16.1 et 0.15.0, apportant des corrections de bugs, des améliorations de performance et de nouvelles fonctionnalités.
+- **Iterion :** Implémentation de KEDA pour l'autoscaling du runner, améliorant la réactivité et l'efficacité de la plateforme.
+- **Iterion :** Optimisation de l'utilisation des ressources (mémoire, CPU) pour les runners et firecrawl.
+- **Iterion :** Désactivation du cache de build NFS sur le runner de production pour résoudre des problèmes de blocage.
+- **Iterion :** Utilisation de OAuth pour l'accès à Claude Code et ChatGPT, remplaçant les clés API obsolètes.
+- **Buildkit :** Mise à jour de l'opérateur Buildkit vers les versions v0.12.0, v0.10.0 et v0.9.0.
+- **Buildkit :** Configuration de l'accès S3 pour le cache cold-cache en production.
+- **Kata :** Déploiement sur `buildkit-system` et activation de virtiofsd xattr pour améliorer la compatibilité avec Buildkit.
 
 ### Autres changements
-- Documentation mise à jour et configurations ajustées pour améliorer la gestion des environnements de production et de preproduction.
-- Nettoyage et refactoring du code pour améliorer la lisibilité et la maintenabilité.
-- Ajustements de configuration pour améliorer la surveillance et la gestion des ressources.
-- Correction de bugs mineurs et améliorations de la stabilité générale.
+- Correction de bugs mineurs et améliorations de la configuration pour plusieurs composants.
+- Mise à jour de la documentation et du code pour améliorer la lisibilité et la maintenabilité.
+- Suppression de clés API obsolètes.
+- Ajustements de la configuration pour améliorer la stabilité et la performance.
+- Suppression de configurations inutilisées.
