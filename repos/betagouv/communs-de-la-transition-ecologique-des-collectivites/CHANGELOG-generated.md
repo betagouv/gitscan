@@ -1,42 +1,24 @@
-## Changelog : communs-de-la-transition-ecologique-des-collectivites (30 derniers jours, au 14 juillet 2026)
+## Changelog : communs-de-la-transition-ecologique-des-collectivites (30 derniers jours, au 16 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'API et du back-office, notamment avec l'ajout de fonctionnalités pour la gestion des questionnaires, des services et des aides, ainsi que des améliorations significatives pour l'intégration avec le programme MEC (Médiateur Énergétique des Collectivités). Des efforts ont également été faits pour améliorer la robustesse et la documentation du projet.
+Cette période a été marquée par d'importantes améliorations de l'API, notamment l'ajout de fonctionnalités liées aux services numériques, aux questionnaires et aux recommandations. Des efforts significatifs ont également été consacrés à l'intégration avec le programme MEC (Maîtrise d'Enœuvre des Collectivités) et à l'amélioration de la robustesse et de la documentation du projet. Enfin, des corrections et des optimisations ont été apportées pour améliorer la stabilité et la performance de l'application.
 
 ### Évolutions fonctionnelles
-- **Back-office:**
-    - Ajout d'un éditeur de questionnaires, permettant de définir et modifier les questionnaires directement depuis l'interface. [#1234](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/issues/1234)
-    - Possibilité d'ajouter et de retirer des aides ou des services depuis l'écran de gestion.
-    - Amélioration de la lisibilité de l'écran de gestion des cibles, réglages et services hors catalogue.
-    - Affichage des données réelles renvoyées par l'API dans le back-office pour faciliter le débogage.
-    - Ajout de la possibilité d'ajouter un service "hors catalogue" décrit par l'agent.
-- **API:**
-    - Expose l'identifiant de l'aide dans les financements.
-    - Génération des descriptions manquantes des services à partir des sites web, évitant ainsi les "hallucinations".
-    - Mise à disposition de l'ensemble du catalogue de services numériques, avec des logos et des descriptions complétées.
-    - Ajout de questionnaires, recommandations et du catalogue de services numériques à l'API.
-    - Vrais logos des services numériques hébergés par l'API.
-- **Dashboard TE:**
-    - Ajout de filtres multi-valeurs pour la commune, le département et la source.
+- **API Services:** Ajout de logos pour les services numériques et génération automatique de descriptions pour compléter le catalogue. L'API expose désormais l'ensemble du catalogue de services, filtrable et avec des logos. [#2f489ae](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/2f489ae)
+- **Questionnaires:** Possibilité de définir et d'éditer des questionnaires directement depuis le back-office. Les questionnaires permettent désormais de déterminer l'éligibilité basée sur des étiquettes plutôt que sur un score. [#1ad5dfe](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/1ad5dfe), [#12a3614](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/12a3614)
+- **Recommandations:** L'identifiant de l'aide est désormais exposé dans les recommandations de financements. [#ad8c98d](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/ad8c98d)
+- **Ajouts manuels:** Possibilité d'ajouter manuellement des services ou des aides qui ne sont pas présents dans le catalogue standard, en précisant leur provenance. [#6be236b](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/6be236b), [#bf0a399](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/bf0a399)
+- **Back-office:** Amélioration de la lisibilité de l'écran de gestion des cibles, réglages et services hors catalogue. Affichage des données réelles renvoyées par l'API pour faciliter le débogage. Possibilité d'ajouter ou de retirer des aides et des services depuis l'interface. [#5c46e78](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/5c46e78), [#e41cac4](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/e41cac4), [#2487ba4](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/2487ba4)
+- **Intégration MEC:** Amélioration de la gestion des leviers MEC, avec des corrections pour éviter les fuites en CI et une meilleure gestion des limites de corps de requête. Ajout d'endpoints pour exposer les sites, interventions et leviers LLM pour l'intégration MEC. [#f0c1842](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/f0c1842), [#37cd176](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/37cd176)
 
 ### Évolutions techniques
-- **Intégration MEC:**
-    - Refonte de la documentation d'intégration MEC.
-    - Ajout d'endpoints pour les territoires et les décisions (vue territoriale DDT via MEC).
-    - Implémentation d'un schéma `decisions_humaines` pour un journal append-only des décisions humaines.
-    - Mise en place d'une doctrine d'accès aux données (data_scopes) pour une meilleure gestion des permissions.
-    - Amélioration de la gestion des erreurs et de la robustesse des endpoints liés à l'intégration MEC.
-- **Architecture & Performance:**
-    - Suppression des thématiques du contrat public des services.
-    - Refactoring et simplification du code après revue.
-    - Amélioration de la gestion des erreurs Undici et ajout de mécanismes de throttling pour les routes d'ingestion partenaires.
-    - Optimisation de l'enqueue des leviers MEC (retry, purge, nom de job distinct, patch).
-- **Tests:**
-    - Ajout de tests pour l'enregistrement asynchrone des données d'utilisation (analytics).
-    - Désactivation temporaire de certaines suites de tests e2e instables en CI.
+- **API:** Refonte de l'API pour inclure les questionnaires, les recommandations et le catalogue de services numériques. [#2f489ae](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/2f489ae)
+- **Architecture:** Introduction d'une doctrine d'accès aux données (data_scopes) pour améliorer la sécurité et le contrôle d'accès. [#9d0a225](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/9d0a225)
+- **Tests:** Amélioration de la suite de tests E2E, avec des corrections pour les tests cassés et l'ajout d'attentes pour l'enregistrement asynchrone. [#ebefcd7](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/ebefcd7)
+- **Performance:** Ajout d'un système de limitation de débit (throttler) configurable pour protéger l'API contre les surcharges. [#429c49d](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/429c49d)
+- **Contrats de décisions:** Mise en place d'une nouvelle version des contrats de décisions avec une taxonomie fermée et des effets référentiels. [#e5401b7](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/e5401b7)
 
 ### Autres changements
-- Documentation : Ajout d'un guide d'édition pour les questionnaires et clarification de la signification de `horsCatalogue`.
-- Suppression des scripts d'exploration du dépôt et réparation de la commande `pnpm validate`.
-- Correction de bugs mineurs et améliorations de la qualité du code.
-- Mise à jour des versions (0.1.103, 0.1.102, 0.1.101, 0.1.100, 0.1.99).
+- **Documentation:** Mise à jour de la documentation pour l'intégration MEC, avec des explications sur la provenance des leviers et les clés d'identification des traces DGCL.  Ajout d'un guide d'édition pour les questionnaires et clarification de la signification de `horsCatalogue`. [#da8753f](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/da8753f), [#ac74b4e](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/ac74b4e), [#1fef424](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/1fef424)
+- **Nettoyage de code:** Suppression des scripts d'exploration du dépôt et simplification du code après revue. [#016a107](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/016a107), [#04641e0](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/04641e0)
+- **Versionning:** Publication des versions 0.2.0, 0.1.103 et 0.1.102. [#9357736](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/9357736), [#516f1f4](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/516f1f4), [#541a527](https://github.com/betagouv/communs-de-la-transition-ecologique-des-collectivites/commit/541a527)
