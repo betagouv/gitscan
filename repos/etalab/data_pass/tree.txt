@@ -885,7 +885,9 @@
 │   │   │   ├── edit_definition_block_component.html.erb
 │   │   │   ├── edit_definition_block_component.rb
 │   │   │   ├── form_buttons_component.html.erb
-│   │   │   └── form_buttons_component.rb
+│   │   │   ├── form_buttons_component.rb
+│   │   │   ├── under_development_alert_component.html.erb
+│   │   │   └── under_development_alert_component.rb
 │   │   ├── authorization_header_component.html.erb
 │   │   ├── authorization_header_component.rb
 │   │   ├── dashboard
@@ -929,12 +931,13 @@
 │   │   │   │   │   ├── card_component.html.erb
 │   │   │   │   │   ├── card_component.rb
 │   │   │   │   │   ├── config_block_component.rb
-│   │   │   │   │   ├── edit_header_component.html.erb
-│   │   │   │   │   ├── edit_header_component.rb
 │   │   │   │   │   ├── forms_header_component.html.erb
 │   │   │   │   │   ├── forms_header_component.rb
 │   │   │   │   │   ├── show_header_component.html.erb
-│   │   │   │   │   └── show_header_component.rb
+│   │   │   │   │   ├── show_header_component.rb
+│   │   │   │   │   ├── titled_header_component.html.erb
+│   │   │   │   │   └── titled_header_component.rb
+│   │   │   │   ├── breadcrumb.rb
 │   │   │   │   ├── form
 │   │   │   │   │   ├── card_component.html.erb
 │   │   │   │   │   ├── card_component.rb
@@ -1051,6 +1054,7 @@
 │   │   │   ├── abstract_authorization_requests_controller.rb
 │   │   │   ├── approve_authorization_requests_controller.rb
 │   │   │   ├── archive_authorization_requests_controller.rb
+│   │   │   ├── authorization_definition_emails_controller.rb
 │   │   │   ├── authorization_definitions_controller.rb
 │   │   │   ├── authorization_request_events_controller.rb
 │   │   │   ├── authorization_requests_controller.rb
@@ -2150,6 +2154,8 @@
 │       ├── instruction
 │       │   ├── approve_authorization_requests
 │       │   │   └── new.html.erb
+│       │   ├── authorization_definition_emails
+│       │   │   └── index.html.erb
 │       │   ├── authorization_definitions
 │       │   │   ├── _counts.html.erb
 │       │   │   ├── edit.html.erb
@@ -2771,6 +2777,7 @@
 │   │   ├── gestion_des_formulaires
 │   │   │   ├── detail_formulaire.feature
 │   │   │   ├── edition_formulaire.feature
+│   │   │   ├── gestion_des_emails.feature
 │   │   │   ├── liste_cas_dusages.feature
 │   │   │   └── liste_formulaires.feature
 │   │   ├── habilitations_france_connectees.feature
@@ -3012,7 +3019,8 @@
 │   │       │   ├── config_block_component_preview.rb
 │   │       │   ├── copy_button_component_preview.rb
 │   │       │   ├── edit_definition_block_component_preview.rb
-│   │       │   └── form_buttons_component_preview.rb
+│   │       │   ├── form_buttons_component_preview.rb
+│   │       │   └── under_development_alert_component_preview.rb
 │   │       ├── authorization_header_component_preview.rb
 │   │       ├── dashboard
 │   │       │   └── blank_state_component_preview.rb
@@ -3035,9 +3043,9 @@
 │   │       │   │   ├── authorization_definition
 │   │       │   │   │   ├── card_component_preview.rb
 │   │       │   │   │   ├── config_block_component_preview.rb
-│   │       │   │   │   ├── edit_header_component_preview.rb
 │   │       │   │   │   ├── forms_header_component_preview.rb
-│   │       │   │   │   └── show_header_component_preview.rb
+│   │       │   │   │   ├── show_header_component_preview.rb
+│   │       │   │   │   └── titled_header_component_preview.rb
 │   │       │   │   ├── form
 │   │       │   │   │   ├── card_component_preview.rb
 │   │       │   │   │   ├── config_block_component_preview.rb
@@ -3538,4 +3546,4 @@
     ├── .keep
     └── javascript
         └── .keep
-496 directories, 3182 files
+497 directories, 3189 files
