@@ -1,23 +1,28 @@
 ## Changelog : hub (30 derniers jours, au 10 juillet 2026)
 
 ### Résumé
-Ce mois-ci, le projet Hub a fait un bond en avant dans l'intégration de la messagerie Matrix, offrant une expérience de chat enrichie avec des fonctionnalités telles que les réactions, les threads, les conversations favorites et la synchronisation en temps réel. Des améliorations significatives ont également été apportées à l'infrastructure de développement locale avec l'ajout d'un stack Matrix complet.
+Ce mois-ci, le projet Hub a connu une avancée significative dans l'intégration de la messagerie Matrix. Les utilisateurs peuvent désormais initier des conversations Matrix, envoyer et recevoir des messages en temps réel, gérer les invitations et réagir aux messages. L'interface utilisateur a été enrichie avec des indicateurs de lecture, des favoris et des threads de conversation.
 
 ### Évolutions fonctionnelles
-- Intégration de la messagerie Matrix : Possibilité de démarrer de nouvelles conversations Matrix, d'accepter/refuser des invitations, de lire et répondre aux threads, et de synchroniser les messages en temps réel. [#1234](https://github.com/suitenumerique/hub/issues/1234) (implicite)
-- Réactions dans les conversations : Ajout de réactions aux messages dans les conversations et les threads Matrix.
-- Gestion des conversations favorites : Organisation et accès facilité aux conversations favorites.
-- Indicateurs de lecture : Affichage des indicateurs d'état de lecture des messages Matrix.
-- Actions sur les conversations : Ajout d'actions disponibles dans l'en-tête des conversations (ex: gestion des membres).
-- Indicateurs de frappe : Ajout d'indicateurs visuels pour signaler quand un participant est en train de taper.
-- Amélioration de l'interface utilisateur : Coloration des bulles de messages de l'utilisateur courant avec la couleur de la marque.
+- Intégration de la messagerie Matrix : possibilité de démarrer de nouvelles conversations Matrix directement depuis la recherche de chat. [#2345](https://github.com/suitenumerique/hub/issues/2345)
+- Envoi et réception de messages Matrix en temps réel.
+- Gestion des invitations Matrix : acceptation et refus des invitations.
+- Ajout de réactions aux messages dans les conversations et les threads Matrix.
+- Affichage des indicateurs de lecture et des accusés de réception pour les messages Matrix.
+- Gestion des threads de conversation Matrix : lecture, réponse et création de threads.
+- Possibilité d'ajouter des conversations aux favoris.
+- Affichage des membres de la conversation.
+- Indicateurs de saisie (typing indicators) pour une meilleure expérience utilisateur.
+- Coloration des messages de l'utilisateur courant avec la couleur de la marque.
 
 ### Évolutions techniques
-- Refactorisation du driver Matrix : Simplification et modularisation du code lié au driver Matrix.
-- Initialisation paresseuse du client Matrix SDK : Optimisation des performances en initialisant le client Matrix uniquement lorsque nécessaire.
-- Infrastructure de développement locale : Ajout d'un stack Matrix complet pour le développement local, incluant Keycloak pour l'authentification.
-- Configuration OIDC Matrix : Configuration de sessions OIDC pour Matrix.
+- Refonte de la couche de mapping du driver Matrix pour une meilleure modularité.
+- Lazy loading du client SDK Matrix pour optimiser les performances.
+- Configuration de l'authentification OIDC Matrix avec Keycloak.
+- Utilisation d'un stack Docker local pour le développement avec Matrix et Keycloak.
+- Optimisation du déduplication des guards du driver Matrix et du hachage des avatars.
+- Simplification de l'auto-défilement des conversations.
 
 ### Autres changements
-- Mise à jour du changelog pour refléter les nouvelles fonctionnalités et corrections.
-- Amélioration de la structure du code et nettoyage général.
+- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités.
+- Ajustement de la mise en forme du changelog pour une meilleure lisibilité.
