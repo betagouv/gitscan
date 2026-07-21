@@ -1,27 +1,27 @@
-## Changelog : anssi-portail (30 derniers jours, au 17 juillet 2026)
+## Changelog : anssi-portail (30 derniers jours, au 20 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur la migration vers le rendu côté serveur (SSR) pour améliorer la performance et l'accessibilité du portail. De nombreuses pages ont été rendues côté serveur, incluant les pages NIS2, financements, guides, et le catalogue. Des améliorations SEO ont également été apportées, notamment l'ajout de balises canoniques, de sitemaps et de robots.txt. Des corrections et améliorations ont été apportées au parcours de sécurisation, notamment l'affichage des modules et le suivi de la progression.
+Cette période a été marquée par d'importantes améliorations techniques, notamment la migration vers le rendu côté serveur (SSR) pour de nombreuses pages, améliorant ainsi la performance et le SEO. Des corrections et des améliorations ont également été apportées à l'expérience utilisateur, en particulier concernant le parcours de sécurisation et la gestion des financements. Des efforts ont été faits pour renforcer la sécurité et la conformité du site.
 
 ### Évolutions fonctionnelles
-- **Parcours de sécurisation :** Amélioration de l'affichage des modules, affichage de la progression, et gestion du parcours complet pour les utilisateurs connectés.
-- **Pages NIS2, Financements, Guides et Catalogue :** Ces pages sont désormais rendues côté serveur, améliorant ainsi la performance et l'accessibilité.
-- **Amélioration de l'affichage des mesures :** Affichage du nombre de mesures par module et de la progression globale.
-- **Page d'aide :** Ajout d'un lien vers la campagne Matomo pour l'origine des demandes d'aide.
-- **Associations :** Page des associations rendue côté serveur.
+- Implémentation du suivi du consentement aux données via un pixel ([c172c26](https://github.com/betagouv/anssi-portail/commit/c172c26)).
+- Amélioration de l'affichage et de la navigation dans le parcours de sécurisation, avec notamment l'ajout de barres de progression et de badges de complétion ([b4b4b57](https://github.com/betagouv/anssi-portail/commit/b4b4b57), [e7ebce3](https://github.com/betagouv/anssi-portail/commit/e7ebce3), [a910ee4](https://github.com/betagouv/anssi-portail/commit/a910ee4)).
+- Correction de bugs et amélioration de l'affichage des pages "Financements" et "Collectivités" ([82d2d08](https://github.com/betagouv/anssi-portail/commit/82d2d08), [87e8e87](https://github.com/betagouv/anssi-portail/commit/87e8e87)).
+- Ajout de données structurées pour améliorer l'indexation SEO ([9abfb44](https://github.com/betagouv/anssi-portail/commit/9abfb44)).
+- Amélioration de l'affichage des cartes et des composants DSFR ([711808f](https://github.com/betagouv/anssi-portail/commit/711808f), [ee27bfc](https://github.com/betagouv/anssi-portail/commit/ee27bfc)).
 
 ### Évolutions techniques
-- **Migration vers SSR :**  Implémentation du rendu côté serveur pour de nombreuses pages, incluant l'utilisation de composants Svelte et l'optimisation de l'enrichissement des données.
-- **Refonte de l'architecture :**  Abstraction de la logique d'enrichissement, séparation des composants client et serveur, et mutualisation des composants.
-- **Optimisations de performance :** Préchargement des données et des assets pour améliorer la vitesse de chargement des pages.
-- **Sécurité :** Mise à jour de plusieurs dépendances pour corriger des vulnérabilités (uuid, DomPurify, Multer). Ajout d'outils de validation de la configuration (zizmor).
-- **CI/CD :** Amélioration de la configuration du CI/CD, notamment avec l'ajout de secrets explicites et la configuration de Renovate.
-- **Dépendances :** Mise à jour de plusieurs dépendances (vitest, papaparse, prettier-plugin-svelte, etc.).
-- **Configuration :** Ajout d'un Nix Shell pour faciliter le développement en local.
+- Migration de nombreuses pages vers le rendu côté serveur (SSR) pour améliorer la performance et le SEO (pages des associations, financements, NIS2, guides, etc.) ([d5dbe38](https://github.com/betagouv/anssi-portail/commit/d5dbe38), [77ba019](https://github.com/betagouv/anssi-portail/commit/77ba019), [26d4020](https://github.com/betagouv/anssi-portail/commit/26d4020)).
+- Refonte de l'architecture pour faciliter l'enrichissement des composants Svelte ([7c026c5](https://github.com/betagouv/anssi-portail/commit/7c026c5), [3f1f40c](https://github.com/betagouv/anssi-portail/commit/3f1f40c)).
+- Mise à jour de nombreuses dépendances (Vitest, Prettier, CSSNano, etc.).
+- Amélioration de la configuration CI/CD et des secrets.
+- Ajout d'un shell Nix pour faciliter le développement en local ([a02ad43](https://github.com/betagouv/anssi-portail/commit/a02ad43)).
+- Renforcement de la sécurité avec l'ajout d'outils d'analyse (zizmor) et la correction de vulnérabilités potentielles ([9d3965f](https://github.com/betagouv/anssi-portail/commit/9d3965f)).
 
 ### Autres changements
-- **SEO :** Ajout de balises canoniques, de sitemaps et de robots.txt pour améliorer le référencement.
-- **Documentation :** Mise à jour du README.
-- **Nettoyage de code :** Suppression de code inutile et amélioration de la lisibilité du code.
-- **Correction de bugs :** Correction de plusieurs bugs mineurs, notamment liés à l'affichage des liens et des titres.
-- **Amélioration de l'UI :** Utilisation des composants DSFR pour une meilleure cohérence visuelle.
+- Ajout de tests et amélioration de la couverture de tests.
+- Documentation mise à jour.
+- Nettoyage du code et refactoring de certains composants.
+- Ajout de métadonnées Open Graph et Twitter pour améliorer le partage sur les réseaux sociaux ([1718051](https://github.com/betagouv/anssi-portail/commit/1718051)).
+- Correction de styles et d'éléments d'interface utilisateur mineurs.
+- Ajout d'un composant "Tuile" en Svelte ([38e0c2a](https://github.com/betagouv/anssi-portail/commit/38e0c2a)).

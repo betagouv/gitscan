@@ -1,14 +1,14 @@
 {
   "url": "https://github.com/betagouv/anssi-portail",
   "name": "anssi-portail",
-  "description": "Ce site est construit avec Jekyll et vise à fournir un portail d'informations et de services de l'ANSSI. Il est en cours de migration vers le rendu côté serveur (SSR) pour améliorer la performance et l'accessibilité.",
+  "description": "Ce site est construit avec Jekyll et permet de présenter le portail de l'ANSSI. Il vise à améliorer la performance, l'accessibilité et le référencement du site.",
   "language": "TypeScript",
   "features": [
-    "Gestion documentaire & Fichiers",
     "Authentification & Accès",
     "Recherche & Filtres",
-    "Contenu éditorial",
+    "Gestion documentaire & Fichiers",
     "Sécurité & Conformité",
+    "Contenu éditorial",
     "Notifications & Alertes"
   ],
   "audience": "Professionnels",
@@ -17,8 +17,7 @@
     "Express",
     "PostgreSQL",
     "Nix",
-    "Jest",
-    "Playwright",
+    "Docker",
     "Svelte"
   ],
   "components": [
@@ -32,17 +31,16 @@
   "auth": {
     "methods": [
       "email-password",
-      "oauth2"
+      "oauth2",
+      "sso"
     ]
   },
-  "tests": [
-    "Jest",
-    "Playwright"
-  ],
+  "tests": "Jest, Vitest, Cypress",
   "workflows": [
-    "CI/CD"
+    "CI/CD",
+    "Renovate"
   ],
-  "lastActivity": "2026-07-17T16:45:47+02:00",
+  "lastActivity": "2026-07-20T17:05:51+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -54,10 +52,13 @@
   },
   "tags": [
     "Données & Open Data",
-    "Sécurité & Conformité",
-    "JavaScript",
+    "Écosystème beta.gouv / État",
+    "React & Next.js",
     "TypeScript",
     "Déploiement & Hosting",
+    "Python",
+    "Bases de données SQL",
+    "Sécurité & Auth",
     "SEO"
   ]
 }
