@@ -632,6 +632,7 @@
 │   │   │   │   ├── LienDocumentation.tsx
 │   │   │   │   ├── Questions
 │   │   │   │   │   ├── ComposantQuestionFournie.tsx
+│   │   │   │   │   ├── ListeQuestions.test.tsx
 │   │   │   │   │   ├── ListeQuestions.tsx
 │   │   │   │   │   ├── QuestionCourante.tsx
 │   │   │   │   │   ├── QuestionPublicodes.tsx
@@ -646,6 +647,8 @@
 │   │   │   │   ├── ComposantQuestion.ts
 │   │   │   │   ├── EntrepriseSelection.tsx
 │   │   │   │   ├── Objectif.ts
+│   │   │   │   ├── ObjectifDeSimulation.stories.tsx
+│   │   │   │   ├── ObjectifDeSimulation.test.tsx
 │   │   │   │   ├── ObjectifDeSimulation.tsx
 │   │   │   │   ├── ObjectifSaisissableDeSimulation.tsx
 │   │   │   │   ├── PreviousSimulationBanner.tsx
@@ -657,6 +660,7 @@
 │   │   │   │   ├── SimulationGoal.tsx
 │   │   │   │   ├── SimulationGoalRadio.tsx
 │   │   │   │   ├── SimulationGoals.tsx
+│   │   │   │   ├── SimulationGoalsContainer.tsx
 │   │   │   │   ├── SimulationPréremplieBanner.tsx
 │   │   │   │   ├── SimulationValue.tsx
 │   │   │   │   ├── YearSelectionBanner.tsx
@@ -803,6 +807,22 @@
 │   │   │   │   ├── hooks
 │   │   │   │   │   ├── CMGContext.tsx
 │   │   │   │   │   └── useCMG.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── frontalier-suisse
+│   │   │   │   ├── domaine
+│   │   │   │   │   ├── annee-de-simulation.test.ts
+│   │   │   │   │   ├── annee-de-simulation.ts
+│   │   │   │   │   ├── cotisation.test.ts
+│   │   │   │   │   ├── cotisation.ts
+│   │   │   │   │   ├── jours-affiliation.test.ts
+│   │   │   │   │   ├── jours-affiliation.ts
+│   │   │   │   │   ├── situation-query-string.test.ts
+│   │   │   │   │   ├── situation-query-string.ts
+│   │   │   │   │   ├── situation.test.ts
+│   │   │   │   │   └── situation.ts
+│   │   │   │   ├── hooks
+│   │   │   │   │   ├── FrontalierSuisseContext.tsx
+│   │   │   │   │   └── useFrontalierSuisse.ts
 │   │   │   │   └── index.ts
 │   │   │   └── économie-collaborative
 │   │   │       ├── domaine
@@ -960,6 +980,7 @@
 │   │   │   │   │   │   ├── ToggleChoiceGroup.tsx
 │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── DateField.stories.tsx
+│   │   │   │   │   ├── DateField.test.tsx
 │   │   │   │   │   ├── DateField.tsx
 │   │   │   │   │   ├── MontantField.stories.tsx
 │   │   │   │   │   ├── MontantField.tsx
@@ -1057,6 +1078,7 @@
 │   │   │   │   ├── TitreObjectifRadio.tsx
 │   │   │   │   ├── TitreObjectifSaisissable.tsx
 │   │   │   │   ├── Ul.stories.tsx
+│   │   │   │   ├── ValeurDate.tsx
 │   │   │   │   ├── heading.tsx
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── link.tsx
@@ -1103,6 +1125,7 @@
 │   │   │   │   ├── engineSingleton.ts
 │   │   │   │   └── listeLesVariablesManquantes.ts
 │   │   │   ├── estPasQuestionEnListeNoire.ts
+│   │   │   ├── parametre-situation.ts
 │   │   │   ├── publicodes
 │   │   │   │   ├── AutoEntrepreneurContexteDansPublicodes.ts
 │   │   │   │   ├── DottedName.ts
@@ -1133,6 +1156,9 @@
 │   │   │   ├── entry-sw.ts
 │   │   │   └── template.html
 │   │   ├── external-links
+│   │   │   ├── docCotisationFrontalierSuisse.ts
+│   │   │   ├── docDeclarerRevenusFrontalierSuisse.ts
+│   │   │   ├── docFrontalierSuisse.ts
 │   │   │   ├── embaucherGérerSalariés.ts
 │   │   │   ├── nouvelEmployeur.ts
 │   │   │   ├── premiersMoisUrssaf.ts
@@ -1175,7 +1201,7 @@
 │   │   │   ├── useQuestionsEditorialisees.test.tsx
 │   │   │   ├── useQuestionsEditorialisees.ts
 │   │   │   ├── useQuestionsPublicodes.ts
-│   │   │   ├── useQuestionsPublicodesEditorialisees.ts
+│   │   │   ├── useQuestionsPublicodesEditorialisees.tsx
 │   │   │   ├── useRepositories.ts
 │   │   │   ├── useSaveAndRestoreScrollPosition.ts
 │   │   │   ├── useSearchCompany.ts
@@ -1194,7 +1220,6 @@
 │   │   │   ├── useSiteUrl.tsx
 │   │   │   ├── useStatefulRulesEdit.ts
 │   │   │   ├── useTracking.ts
-│   │   │   ├── useUrl.test.ts
 │   │   │   ├── useUrl.tsx
 │   │   │   ├── useYear.ts
 │   │   │   └── useZoneLodeom.ts
@@ -1218,6 +1243,7 @@
 │   │   │   ├── i18n-server.ts
 │   │   │   ├── i18n.ts
 │   │   │   ├── i18nResources.ts
+│   │   │   ├── langue.ts
 │   │   │   ├── rules-as-en.yaml
 │   │   │   ├── rules-en.yaml
 │   │   │   ├── rules-ti-en.yaml
@@ -1419,6 +1445,7 @@
 │   │   │   │   │   ├── Goals.tsx
 │   │   │   │   │   ├── components
 │   │   │   │   │   │   ├── AvertissementAnnéeDeSimulationModifiée.tsx
+│   │   │   │   │   │   ├── DateCessationQuestion.test.tsx
 │   │   │   │   │   │   ├── DateCessationQuestion.tsx
 │   │   │   │   │   │   └── RégimeImpositionQuestion.tsx
 │   │   │   │   │   ├── config.ts
@@ -1444,7 +1471,7 @@
 │   │   │   │   │   │   ├── DétailSimulation.tsx
 │   │   │   │   │   │   ├── ItemTitle.tsx
 │   │   │   │   │   │   ├── ModifierOptions.tsx
-│   │   │   │   │   │   ├── MontantsÀSaisir.tsx
+│   │   │   │   │   │   ├── MontantsASaisir.tsx
 │   │   │   │   │   │   ├── RevenuEstimé.tsx
 │   │   │   │   │   │   ├── RevenuTable.tsx
 │   │   │   │   │   │   ├── StatutChoice.tsx
@@ -1459,6 +1486,24 @@
 │   │   │   │   │   │   └── utils.ts
 │   │   │   │   │   ├── simulationConfig.ts
 │   │   │   │   │   └── utils.ts
+│   │   │   │   ├── cotisation-maladie-frontalier-suisse
+│   │   │   │   │   ├── CotisationMaladieFrontalierSuisse.test.tsx
+│   │   │   │   │   ├── CotisationMaladieFrontalierSuisse.tsx
+│   │   │   │   │   ├── config.ts
+│   │   │   │   │   ├── documentation
+│   │   │   │   │   │   ├── Décomposition.tsx
+│   │   │   │   │   │   ├── index.en.mdx
+│   │   │   │   │   │   ├── index.fr.mdx
+│   │   │   │   │   │   └── index.tsx
+│   │   │   │   │   ├── objectifs
+│   │   │   │   │   │   ├── ObjectifAutresRevenus.tsx
+│   │   │   │   │   │   ├── ObjectifSalaires.tsx
+│   │   │   │   │   │   └── RésultatCotisation.tsx
+│   │   │   │   │   └── questions
+│   │   │   │   │       ├── DateAffiliationQuestion.tsx
+│   │   │   │   │       ├── DateFinAffiliationQuestion.tsx
+│   │   │   │   │       ├── RéponseAffiliation.tsx
+│   │   │   │   │       └── index.ts
 │   │   │   │   ├── cout-creation-entreprise
 │   │   │   │   │   ├── config.ts
 │   │   │   │   │   ├── index.tsx
@@ -1530,9 +1575,14 @@
 │   │   │   │   │   │   └── TypeHébergementSwitch.tsx
 │   │   │   │   │   ├── config.ts
 │   │   │   │   │   ├── documentation
-│   │   │   │   │   │   ├── index.mdx
+│   │   │   │   │   │   ├── ExempleCalcul.tsx
+│   │   │   │   │   │   ├── RecettesDéclarées.tsx
+│   │   │   │   │   │   ├── TableauSeuils.tsx
+│   │   │   │   │   │   ├── index.en.mdx
+│   │   │   │   │   │   ├── index.fr.mdx
 │   │   │   │   │   │   ├── index.tsx
-│   │   │   │   │   │   └── micro-bic.mdx
+│   │   │   │   │   │   ├── micro-bic.en.mdx
+│   │   │   │   │   │   └── micro-bic.fr.mdx
 │   │   │   │   │   ├── getLibelléInfoManquante.ts
 │   │   │   │   │   ├── objectifs
 │   │   │   │   │   │   ├── ObjectifAutresRevenus.tsx
@@ -1550,7 +1600,6 @@
 │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   └── test
 │   │   │   │   │       └── helpers
-│   │   │   │   │           ├── TestProvider.tsx
 │   │   │   │   │           └── locationDeMeubléHelpers.tsx
 │   │   │   │   ├── lodeom
 │   │   │   │   │   ├── Goals.tsx
@@ -1751,6 +1800,9 @@
 │   │   │   │   ├── simulationSource.slice.test.ts
 │   │   │   │   └── simulationSource.slice.ts
 │   │   │   └── store.ts
+│   │   ├── test
+│   │   │   ├── TestProvider.tsx
+│   │   │   └── testerEn.ts
 │   │   ├── types
 │   │   │   ├── app-env.d.ts
 │   │   │   ├── iframe-messages.d.ts
@@ -1868,4 +1920,4 @@
 │   ├── vite.config.ts
 │   └── vitest-setup.ts
 └── yarn.lock
-323 directories, 1547 files
+331 directories, 1591 files

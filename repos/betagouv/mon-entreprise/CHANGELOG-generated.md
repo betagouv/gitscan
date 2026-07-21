@@ -1,39 +1,44 @@
-## Changelog : mon-entreprise (30 derniers jours, au 10 juillet 2026)
+## Changelog : mon-entreprise (30 derniers jours, au 2026-07-16)
 
 ### Résumé
-Cette mise à jour apporte des améliorations significatives à l'expérience utilisateur, notamment dans le comparateur de statuts et les simulateurs. Des corrections de bugs et des optimisations techniques ont également été apportées pour améliorer la stabilité et la performance de l'application. L'accent a été mis sur l'accessibilité et l'amélioration de la documentation.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment au niveau du comparateur et des simulateurs. Des corrections ont été apportées pour affiner les calculs et l'affichage des informations, en particulier pour Mayotte et les travailleurs frontaliers suisses. Des efforts ont également été faits pour améliorer la documentation et la maintenabilité du code.
 
 ### Évolutions fonctionnelles
-- Ajout de la carte du statut AE au choix du statut juridique.
-- Amélioration de l'avertissement du simulateur concernant les dividendes.
-- Ajout d'un bouton "valeurs par défaut" dans le comparateur pour réinitialiser les champs.
-- Amélioration de la navigation dans le comparateur, avec un bouton pour revenir à la liste et un scroll automatique vers la question sélectionnée.
-- Refonte de la mise en page du comparateur pour une meilleure lisibilité.
-- Ajout d'un avertissement pour les auto-entrepreneuses dans le simulateur.
-- Ajout de liens vers la documentation des objectifs de simulation.
-- Correction de l'affichage des réponses dans le comparateur en vue liste.
-- Correction de l'affichage des cotisations RC et ID pour les conjoints collaborateurs PLR Cipav.
-- Correction de l'apparence des boutons radio.
-- Ajout de l'exonération 24 mois à Mayotte dans le modèle TI.
-- Correction de l'imposition de l'EI dans le comparateur.
-- Ajout d'une icône d'information pour les objectifs de simulation.
+- Ajout du statut AE au simulateur de choix de statut.
+- Amélioration de l'affichage des réponses dans le comparateur, avec une meilleure organisation et des liens vers la documentation.
+- Ajout d'un avertissement pour les auto-entrepreneureuses dans le simulateur indépendant.
+- Amélioration de l'avertissement du simulateur de dividendes.
+- Le simulateur de cotisation maladie des travailleurs frontaliers suisses est maintenant disponible.
+- Possibilité de préciser la situation des travailleurs frontaliers suisses dès que les questions principales sont répondues.
+- Ajout d'un lien de partage pour le simulateur frontalier suisse.
+- Correction de l'affichage des exonérations à Mayotte.
+- Correction de l'arrondi des cotisations RC et ID pour les conjoints collaborateurs PLR Cipav.
+- Correction de l'application de la réforme de l'acre (critère = date de création de l'entreprise).
+- Correction de l'Acre non applicable en outre-mer.
+- Correction de l'affichage des dates dans le simulateur frontalier suisse.
+- Amélioration de l'accessibilité de certains éléments (Switch, icônes).
+- Correction de la position de l'infobulle par rapport au choix de période de calcul.
 
 ### Évolutions techniques
-- Refactor de l'environnement pour utiliser un adaptateur portable Vite/Next et centraliser la configuration de production.
-- Suppression du client Fabrique Social inutilisé, remplacé par RechercheEntreprisesGouvFr.
-- Amélioration de la gestion des erreurs Redis avec envoi d'alertes à Sentry.
-- Refactor du code pour améliorer la modularité et la réutilisabilité des composants.
-- Ajout de tests unitaires pour les exonérations à Mayotte.
-- Mise à jour des modèles sociaux, TI et AS.
-- Amélioration du tracking avec l'ajout de `trackPage` et `trackClick`.
-- Uniformisation des composants de question.
-- Suppression de code et de props inutilisées.
-- Amélioration de l'accessibilité (a11y) de plusieurs composants (simulateur, comparateur).
+- Refactor de la gestion des questions et des groupes de questions dans le comparateur.
+- Amélioration de l'architecture du frontend avec l'ajout d'un adaptateur d'environnement portable Vite/Next.
+- Suppression du client Fabrique Social inutilisé.
+- Amélioration de la gestion des erreurs Redis avec l'ajout de remontées à Sentry.
+- Refactor de la gestion des langues et des traductions, avec une meilleure organisation des fichiers et des constantes.
+- Simplification de certains composants et suppression de code inutile.
+- Amélioration de la documentation et ajout de tests unitaires.
+- Mise à jour des paquets `modele-xx`.
+- Correction d'un problème d'affichage sur Chrome et Edge pour les légendes des champs.
 
 ### Autres changements
-- Mise à jour de la documentation sur le mode d'imposition de l'entreprise.
+- Mise à jour de la documentation sur la librairie de calcul.
+- Mise à jour de la date dans le footer.
+- Amélioration de la documentation du simulateur de location de meublé.
+- Correction de la documentation sur le mode d'imposition de l'entreprise.
+- Ajout de descriptions aux paquets `modele-as` et `modele-ti`.
+- Masquage du simulateur TFS du menu et de la liste des outils.
 - Correction de quelques erreurs de traduction.
-- Ajout de descriptions aux règles PASS métropole.
-- Mise à jour du lien vers le site QPV.
-- Ajout de variables pour les tailles de police et les hauteurs de ligne dans le design system.
-- Ajout de la mise à jour automatique du fichier base-stats.json tous les 6 mois.
+- Suppression d'un appel de hook non importé dans la documentation micro-BIC.
+- Correction d'un problème de formatage des dates.
+- Amélioration de la lisibilité du code.
+- Ajout de commentaires et de documentation.
