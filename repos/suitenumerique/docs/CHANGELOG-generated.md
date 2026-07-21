@@ -1,30 +1,31 @@
-## Changelog : docs (30 derniers jours, au 13 juillet 2026)
+## Changelog : docs (30 derniers jours, au 20 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur avec une refonte de l'en-tête, l'ajout d'un menu utilisateur, et des corrections de bugs pour une meilleure stabilité. Des améliorations de l'accessibilité ont également été apportées, ainsi que des optimisations de la recherche et de la gestion des documents.
+Les 30 derniers jours ont été marqués par des améliorations significatives de l'interface utilisateur, notamment une refonte de l'en-tête avec une barre flottante, l'ajout d'un menu utilisateur et des corrections d'accessibilité. Des améliorations ont également été apportées au backend, notamment la gestion des connexions de collaboration et la documentation sur la configuration de l'environnement.
 
 ### Évolutions fonctionnelles
-- Ajout d'un menu utilisateur pour une meilleure gestion du profil et des paramètres [#2463](https://github.com/suitenumerique/docs/issues/2463).
-- Refonte de l'en-tête avec une barre flottante pour une navigation plus intuitive [#2471](https://github.com/suitenumerique/docs/issues/2471).
-- Possibilité de créer des sous-documents directement depuis l'interface [#2423](https://github.com/suitenumerique/docs/issues/2423).
-- Amélioration de la recherche de documents en utilisant l'ID du document au lieu du chemin [#2501](https://github.com/suitenumerique/docs/issues/2501).
-- Ajout d'une commande de gestion pour réinitialiser un document [#1882](https://github.com/suitenumerique/docs/issues/1882).
-- Possibilité de quitter un document [#2410](https://github.com/suitenumerique/docs/issues/2410).
-- Amélioration de la recherche pour les utilisateurs non authentifiés [#2407](https://github.com/suitenumerique/docs/issues/2407).
+- Ajout d'un menu utilisateur pour une meilleure gestion du profil et des paramètres [#2463].
+- Refonte de l'en-tête avec une barre flottante pour une navigation plus intuitive [#2471].
+- Possibilité de réinitialiser un document via une commande de gestion dédiée [#1882].
+- Amélioration de la recherche de documents en utilisant l'ID plutôt que le chemin [#2501].
+- Ajout d'un bouton pour créer des sous-documents [#2423].
+- Ajout de liens "mailto" dans le menu d'aide pour faciliter le contact [#2416].
+- Restauration du lien "skip to content" après la refonte de l'en-tête [#2510].
+- Ajout d'un badge DPG au README pour une meilleure visibilité [#2450].
 
 ### Évolutions techniques
-- Mise à jour de la bibliothèque PyJWT pour corriger une vulnérabilité de sécurité [#2480](https://github.com/suitenumerique/docs/issues/2480).
-- Refactorisation de la suppression d'utilisateurs pour une meilleure gestion des relations [#2480](https://github.com/suitenumerique/docs/issues/2480).
-- Amélioration de la gestion des connexions de collaboration pour une meilleure cascade de suppression [#2507](https://github.com/suitenumerique/docs/issues/2507).
-- Configuration de la journalisation avec la propagation activée pour une meilleure traçabilité [#2481](https://github.com/suitenumerique/docs/issues/2481).
-- Capture des erreurs de gestionnaire de conversion Yjs dans Sentry pour une meilleure surveillance [#2516](https://github.com/suitenumerique/docs/issues/2516).
-- Utilisation de l'ID utilisateur au lieu de la relation utilisateur dans le module de partage [#2437](https://github.com/suitenumerique/docs/issues/2437).
+- Refactorisation du composant de présentation des diapositives pour une meilleure réutilisabilité.
+- Optimisation de la gestion des connexions de collaboration pour une meilleure performance.
+- Mise à jour de la documentation pour expliquer la configuration de l'utilisation de S3 et des mécanismes de sécurité de la collaboration [#2481].
+- Amélioration de la performance de l'arbre de navigation [#2498].
+- Suppression d'un backend d'authentification inutilisé [#2480].
+- Amélioration de la gestion des erreurs dans le fournisseur Yjs, avec envoi des erreurs à Sentry [#2456].
+- Correction de problèmes de performance liés aux requêtes N+1 lors de la sérialisation des commentaires [#2415].
 
 ### Autres changements
-- Mise à jour de la documentation pour expliquer la configuration du format de conversion et l'utilisation de S3 [#2481](https://github.com/suitenumerique/docs/issues/2481).
-- Ajout d'un badge DPG au fichier README [#2459](https://github.com/suitenumerique/docs/issues/2459).
-- Mise à jour des modèles de formulaires pour les issues [#2207](https://github.com/suitenumerique/docs/issues/2207).
-- Correction de typos dans le guide de contribution [#2459](https://github.com/suitenumerique/docs/issues/2459).
-- Mise à jour des chaînes de caractères traduites [#2510](https://github.com/suitenumerique/docs/issues/2510).
-- Ajout d'un mécanisme de protection pour la collaboration [#2481](https://github.com/suitenumerique/docs/issues/2481).
-- Renommage du dossier "docs" dans la documentation.
+- Mise à jour des chaînes de traduction [#2420].
+- Correction de typos dans le guide de contribution [#2459].
+- Mise à jour des dépendances JavaScript [#2454].
+- Amélioration de l'accessibilité de divers éléments de l'interface utilisateur, notamment les liens dans la table des matières, les titres, les champs de formulaire et les menus [#2449, #2421, #2450, #2380, #2390, #2383].
+- Ajout d'un badge Snyk au README pour la sécurité [#2406].
+- Suppression de Crisp du projet [#2416].
