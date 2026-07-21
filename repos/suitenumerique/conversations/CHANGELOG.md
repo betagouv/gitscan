@@ -15,6 +15,7 @@ and this project adheres to
 - ✨(back) add celery for running background tasks
 - 🧱(helm) add celery worker and beat deployments
 - ✨(front) add "Edit in Docs" action to export a message to Docs
+- 🔒(back) guard parsing against decompression bombs and oversized PDFs
 
 
 ### Changed
@@ -24,6 +25,10 @@ and this project adheres to
 - ✨(back) process project files asynchronously with indexing state
 - ⚡️(back) process conversation files asynchronously off the request worker
 - ⬆️(dependencies) update dependencies and pin CVE-affected packages
+
+### Removed
+
+- 🔥(back) remove the Find RAG backend and its FIND_API_* settings
 
 ### Fixed
 
