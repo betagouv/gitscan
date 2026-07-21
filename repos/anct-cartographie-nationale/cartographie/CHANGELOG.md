@@ -1,3 +1,25 @@
+## [6.27.1](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.27.0...v6.27.1) (2026-07-10)
+
+
+### Bug Fixes
+
+* **lieux-cache:** share store across bundle layers via globalThis singleton ([5053aac](https://github.com/anct-cartographie-nationale/cartographie/commit/5053aacfe4acb5f8a33a877b0770e09f1eb10f0f))
+
+# [6.27.0](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.26.1...v6.27.0) (2026-07-10)
+
+
+### Features
+
+* **lieux-cache:** instrument store instances to diagnose stale fiches ([052847a](https://github.com/anct-cartographie-nationale/cartographie/commit/052847a3c47a96a4b40bc93fef7a57426026576d))
+
+## [6.26.1](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.26.0...v6.26.1) (2026-07-07)
+
+
+### Bug Fixes
+
+* **contact:** keep toasts visible above the contact modal backdrop ([d3dbb1d](https://github.com/anct-cartographie-nationale/cartographie/commit/d3dbb1d1d3a1a2aaf85c2a97c0b8e006d307b3ea))
+* **contact:** translate server action error codes instead of rendering raw errors ([94c0c6b](https://github.com/anct-cartographie-nationale/cartographie/commit/94c0c6b13b0c9618de7ce7822b3d16c9219737b0))
+
 # [6.26.0](https://github.com/anct-cartographie-nationale/cartographie/compare/v6.25.0...v6.26.0) (2026-06-26)
 
 
