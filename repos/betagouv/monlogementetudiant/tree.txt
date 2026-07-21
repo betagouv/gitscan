@@ -126,6 +126,8 @@
 │   ├── 0043_add_api_key_usage_daily.sql
 │   ├── 0044_notification_and_profile_fields.sql
 │   ├── 0045_schema_naming_refactor.sql
+│   ├── 0046_student_scholarship_type.sql
+│   ├── 0047_housing_aid_simulation.sql
 │   └── meta
 │       ├── 0000_snapshot.json
 │       ├── 0001_snapshot.json
@@ -173,6 +175,8 @@
 │       ├── 0043_snapshot.json
 │       ├── 0044_snapshot.json
 │       ├── 0045_snapshot.json
+│       ├── 0046_snapshot.json
+│       ├── 0047_snapshot.json
 │       └── _journal.json
 ├── drizzle.config.ts
 ├── messages
@@ -275,6 +279,7 @@
 │   │   │   ├── test-db-module.ts
 │   │   │   ├── test-db.ts
 │   │   │   └── typologies.ts
+│   │   ├── housing-aid-simulation.integration.test.ts
 │   │   ├── multi-address.integration.test.ts
 │   │   ├── owner-statistics.integration.test.ts
 │   │   ├── password-verify.integration.test.ts
@@ -287,6 +292,8 @@
 │   │   ├── (authenticated)
 │   │   │   ├── (espace-etudiant)
 │   │   │   │   └── mon-espace
+│   │   │   │       ├── aides-au-logement
+│   │   │   │       │   └── page.tsx
 │   │   │   │       ├── alertes
 │   │   │   │       │   └── page.tsx
 │   │   │   │       ├── favoris
@@ -738,9 +745,13 @@
 │   │   │   │   ├── aid-calculator.ts
 │   │   │   │   ├── aid-card.module.css
 │   │   │   │   ├── aid-card.tsx
+│   │   │   │   ├── aids-localisation-info.tsx
+│   │   │   │   ├── aids-results-view.tsx
 │   │   │   │   ├── help-simulator-header-results.module.css
 │   │   │   │   ├── help-simulator-results-header.tsx
 │   │   │   │   ├── help-simulator-results.tsx
+│   │   │   │   ├── save-simulation-banner.module.css
+│   │   │   │   ├── save-simulation-banner.tsx
 │   │   │   │   └── zone-utils.ts
 │   │   │   ├── steps
 │   │   │   │   ├── help-simulator-step-1.tsx
@@ -845,12 +856,15 @@
 │   │   │   │   ├── student-accommodation-favorite.tsx
 │   │   │   │   ├── student-favorites.module.css
 │   │   │   │   └── student-favorites.tsx
+│   │   │   ├── housing-aid
+│   │   │   │   └── saved-simulation-results.tsx
 │   │   │   ├── informations
 │   │   │   │   ├── notification-settings.tsx
 │   │   │   │   └── student-profile-form.tsx
 │   │   │   ├── navigation
 │   │   │   │   ├── student-space-navigation.tsx
 │   │   │   │   └── student-space-todo-navigation-button.tsx
+│   │   │   ├── pending-simulation-saver.tsx
 │   │   │   ├── student-breadcrumb.tsx
 │   │   │   └── todo
 │   │   │       ├── student-todo-list.module.css
@@ -922,7 +936,7 @@
 │   │   ├── skeleton.css
 │   │   └── text.css
 │   ├── hooks
-│   │   └── use-*.ts  (53 files)
+│   │   └── use-*.ts  (54 files)
 │   ├── i18n
 │   │   ├── locales.ts
 │   │   └── request.ts
@@ -1031,6 +1045,7 @@
 │   │   │       ├── event-stats.ts
 │   │   │       ├── external-sources.ts
 │   │   │       ├── favorite-accommodations.ts
+│   │   │       ├── housing-aid-simulations.ts
 │   │   │       ├── import-blocklist.ts
 │   │   │       ├── import-jobs.ts
 │   │   │       ├── index.ts
@@ -1081,6 +1096,7 @@
 │   │   ├── student
 │   │   │   ├── get-alerts.ts
 │   │   │   ├── get-favorites.ts
+│   │   │   ├── get-housing-aid-simulation.ts
 │   │   │   ├── get-notification-preferences.ts
 │   │   │   └── get-profile.ts
 │   │   ├── territories
@@ -1101,6 +1117,7 @@
 │   │   │   │   ├── bailleur.ts
 │   │   │   │   ├── dossier-facile.ts
 │   │   │   │   ├── favorites.ts
+│   │   │   │   ├── housing-aid-simulation.ts
 │   │   │   │   ├── owner-feedback.ts
 │   │   │   │   ├── owner-statistics.ts
 │   │   │   │   ├── questions-answers.ts
@@ -1146,6 +1163,7 @@
 │       ├── normalize-accommodation-name.test.ts
 │       ├── normalize-accommodation-name.ts
 │       ├── normalize-text.ts
+│       ├── pending-aid-simulation.ts
 │       ├── preserve-query-params.test.ts
 │       ├── preserve-query-params.ts
 │       ├── sPluriel.ts
@@ -1157,4 +1175,4 @@
 │       └── wp-proxy.ts
 ├── tsconfig.json
 └── vitest.config.ts
-254 directories, 957 files
+256 directories, 974 files
