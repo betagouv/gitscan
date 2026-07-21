@@ -1,29 +1,28 @@
-## Changelog : benefriches (30 derniers jours, au 13 juillet 2026)
+## Changelog : benefriches (30 derniers jours, au 20 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la refactorisation technique du code pour une meilleure maintenabilité et performance, notamment avec le passage à un nouveau système de tests et l'optimisation de la gestion des variables d'environnement. Des améliorations fonctionnelles ont été apportées à l'interface utilisateur pour les projets urbains, avec l'ajout de nouvelles sections et informations dans le résumé du projet. L'outil a également été enrichi avec de nouvelles données sur la ruralité des villes pour affiner les calculs d'impact.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de l'architecture du projet, notamment au niveau de l'API et du formulaire de création de projet. Des refactorings importants ont été effectués pour une meilleure maintenabilité et extensibilité. Des corrections et améliorations ont également été apportées à l'expérience utilisateur, notamment dans le processus de création de projets photovoltaïques et urbains, ainsi qu'à la gestion des impacts.
 
 ### Évolutions fonctionnelles
-- Ajout d'une section "Avancement" au résumé des projets urbains.
-- Ajout de la possibilité de renseigner si un projet implique une réhabilitation.
-- Affichage des empreintes des bâtiments dans le résumé des projets urbains.
-- Ajout de la section "Acteurs" avec la possibilité de renseigner les entreprises en charge des bâtiments.
-- Amélioration de l'affichage des informations sur les dépenses.
-- Affichage de la surface contaminée et de la surface du site dans les exports CSV des projets de reconversion.
-- Amélioration des messages d'erreur liés à l'authentification.
+- Ajout d'une étape "implique-t-il une remise en culture" au formulaire de création de projet urbain. [#40c312a](https://github.com/incubateur-ademe/benefriches/commit/40c312a)
+- Amélioration de l'accessibilité du formulaire d'édition de projet photovoltaïque. [#8adcbca](https://github.com/incubateur-ademe/benefriches/commit/8adcbca)
+- Affichage de la surface contaminée et de la surface du site dans les exports CSV des projets de reconversion. [#e2fb0a6](https://github.com/incubateur-ademe/benefriches/commit/e2fb0a6)
+- Amélioration des messages d'erreur lors de l'authentification avec un token. [#8d7bd5c](https://github.com/incubateur-ademe/benefriches/commit/8d7bd5c)
+- Suppression de la vue graphique des impacts et réorganisation des sélecteurs. [#1e50680](https://github.com/incubateur-ademe/benefriches/commit/1e50680)
+- Calcul des impacts avec un niveau de seuil de rentabilité et utilisation dans l'onglet "évaluation des impacts". [#4374377](https://github.com/incubateur-ademe/benefriches/commit/4374377)
 
 ### Évolutions techniques
-- Migration des tests unitaires et d'intégration vers le framework `node:test` et `node:assert`.
-- Refactorisation importante du code, notamment dans les modules `api` et `shared`, avec application de règles de qualité de code plus strictes (oxlint).
-- Passage à un système de build natif ESM avec SWC pour l'API.
-- Amélioration du système de gestion des variables d'environnement pour les builds.
-- Extraction et généralisation du moteur de formulaire "wizard-form".
-- Optimisation de la gestion des données de ruralité des villes avec l'ajout de la base de données "France Ruralités".
-- Amélioration du caching des builds E2E.
+- Migration de l'API vers ESM natif avec SWC pour la construction et un chargeur de tests ESM. [#3bbffae](https://github.com/incubateur-ademe/benefriches/commit/3bbffae)
+- Remplacement des tests Vitest par node:test pour l'API et les intégrations. [#b60acd5](https://github.com/incubateur-ademe/benefriches/commit/b60acd5)
+- Refactorings importants du code web pour une meilleure architecture et une plus grande modularité, notamment autour du formulaire de création de projet (wizard-form). [#ba05d43](https://github.com/incubateur-ademe/benefriches/commit/ba05d43), [#8cd5b96](https://github.com/incubateur-ademe/benefriches/commit/8cd5b96), [#57d0001](https://github.com/incubateur-ademe/benefriches/commit/57d0001)
+- Ajout de règles oxlint pour renforcer la qualité du code et l'application de l'architecture propre. [#0964159](https://github.com/incubateur-ademe/benefriches/commit/0964159)
+- Déplacement des interfaces `DateProvider` et `UidGenerator` hors des adaptateurs. [#7571e70](https://github.com/incubateur-ademe/benefriches/commit/7571e70)
+- Amélioration de la configuration de l'environnement de développement avec un Makefile et une mise à jour des noms de fichiers docker-compose. [#f0a0514](https://github.com/incubateur-ademe/benefriches/commit/f0a0514)
+- Refactor des tests E2E pour améliorer la robustesse et la clarté. [#dcf15f7](https://github.com/incubateur-ademe/benefriches/commit/dcf15f7)
 
 ### Autres changements
-- Documentation mise à jour pour refléter les changements techniques et l'utilisation de nouveaux outils.
-- Clarification des règles de test et ajout de documentation pour l'utilisation de l'outil CLAUDE.
-- Mise à jour des dépendances.
-- Ajout d'un Makefile pour simplifier les tâches de build et de déploiement.
-- Amélioration des logs pour les erreurs d'authentification.
+- Ajout d'un outil `fix-ci` pour diagnostiquer et corriger les échecs de CI. [#c676548](https://github.com/incubateur-ademe/benefriches/commit/c676548)
+- Mise à jour des dépendances. [#ea8412e](https://github.com/incubateur-ademe/benefriches/commit/ea8412e), [#0b77993](https://github.com/incubateur-ademe/benefriches/commit/0b77993)
+- Ajout de documentation et de tests unitaires.
+- Amélioration de la documentation et des commentaires.
+- Correction de divers bugs et améliorations de la performance.
