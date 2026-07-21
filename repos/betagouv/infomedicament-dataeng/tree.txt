@@ -23,6 +23,12 @@
 ├── src
 │   └── infomedicament_dataeng
 │       ├── __init__.py
+│       ├── centralise
+│       │   ├── __init__.py
+│       │   ├── acquire.py
+│       │   ├── extract.py
+│       │   ├── match.py
+│       │   └── parser.py
 │       ├── cli.py
 │       ├── config.py
 │       ├── convert
@@ -31,6 +37,7 @@
 │       ├── datagouv
 │       │   ├── __init__.py
 │       │   └── importer.py
+│       ├── datapackage_importer.py
 │       ├── db.py
 │       ├── io.py
 │       ├── opensearch
@@ -53,7 +60,10 @@
     ├── fixtures
     │   ├── ClasseATC_sample.sql
     │   ├── N0314839.htm
+    │   ├── abasaglar-epar-product-information_fr.pdf
     │   └── test_datagouv.yml
+    ├── test_centralise.py
+    ├── test_centralise_parser.py
     ├── test_datagouv.py
     ├── test_db_import.py
     ├── test_notice_chunks.py
@@ -61,4 +71,4 @@
     ├── test_parser.py
     ├── test_pediatric.py
     └── test_sql_to_csv.py
-16 directories, 47 files
+17 directories, 56 files

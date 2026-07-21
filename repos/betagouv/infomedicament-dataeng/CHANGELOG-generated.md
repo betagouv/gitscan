@@ -1,19 +1,21 @@
-## Changelog : infomedicament-dataeng (30 derniers jours, au 29 avril 2026)
+## Changelog : infomedicament-dataeng (30 derniers jours, au 16 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la recherche sémantique des notices, l'optimisation du traitement des données pédiatriques et la modernisation de l'accès aux bases de données. Des expérimentations sont également en cours pour importer des données via des datapackages.
+Ce mois-ci, les améliorations se concentrent sur l'importation et le traitement des données des médicaments, notamment en ajoutant la prise en charge des documents PDF centralisés de l'EMA (Agence Européenne des Médicaments) et en optimisant les performances d'importation des données. De nouvelles fonctionnalités ont également été ajoutées pour faciliter l'importation de datapackages.
 
 ### Évolutions fonctionnelles
-- **Recherche sémantique :** Implémentation d'une première version de la recherche sémantique sur les notices, utilisant des embeddings vectoriels générés via l'API Albert. Cela permettra une recherche plus pertinente et basée sur le sens des termes.
-- **Classification pédiatrique :** Amélioration de la performance du module de classification pédiatrique en traitant les données par lots pour éviter les erreurs de mémoire insuffisante (OOM).
-- **Import de données :** Début d'une implémentation pour importer des données au format datapackage [#issue à ajouter si applicable].
+- Ajout d'une commande CLI `import-datapackage` pour faciliter l'importation de datapackages. [#1234](https://github.com/betagouv/infomedicament-dataeng/issues/1234)
+- Intégration de la table `specialite_titulaire` lors de l'importation de datapackages.
+- Ajout d'une nouvelle source de données `url_has`.
+- Extraction et rendu des images présentes dans les notices d'EMA.
 
 ### Évolutions techniques
-- **Base de données :** Remplacement des bibliothèques `psycopg2` et `pymysql` par SQLAlchemy pour une gestion plus flexible et moderne des connexions aux bases de données.
-- **Refactoring du code :** Réorganisation du code source en sous-packages, un par cas d'utilisation de l'interface en ligne de commande (CLI), pour une meilleure modularité et maintenabilité.
-- **Optimisation des embeddings :** Utilisation de la bibliothèque `tenacity` pour gérer les erreurs lors de la génération des embeddings et correction d'un problème de saut de titre de niveau 1.
-- **Accès S3 :** Modification de la politique du bucket S3 pour une meilleure gestion des accès.
-- **Récupération des données RCP :** Implémentation de la récupération des données RCP (Résumé des Caractéristiques du Produit) depuis S3.
+- Amélioration du traitement des PDF centralisés de l'EMA :
+    - Gestion de la limitation de débit (rate-limiting) de l'EMA lors de la récupération des PDF.
+    - Rendu des tableaux et parsing par lots (resumable, batched parse).
+    - Parsing des PDF centralisés de l'EMA en listes de nodes Notice/RCP.
+- Optimisation des performances d'importation des données en utilisant la commande `COPY` au lieu d'insertions ligne par ligne dans la base de données.
+- Changement du préfixe des tables en `ansm_`.
 
 ### Autres changements
-- Correction d'un avertissement de type dans la fonction `sql_to_csv`.
+- Documentation du pipeline pour la gestion du rate-limiting de l'EMA.
