@@ -1,27 +1,30 @@
-## Changelog : proconnect-espace-partenaires (30 derniers jours, au 17 juillet 2026)
+## Changelog : proconnect-espace-partenaires (30 derniers jours, au 20 juillet 2026)
 
 ### Résumé
-Ce mois-ci, l'espace partenaires a bénéficié d'améliorations significatives en matière de documentation, notamment concernant l'authentification multifacteur (MFA) et le fonctionnement de ProConnect. Une nouvelle fonctionnalité permettant aux partenaires d'ajouter des collaborateurs a été introduite, puis temporairement revertée pour correction. Des corrections de typos et de dépendances ont également été apportées pour améliorer la stabilité et la qualité du code.
+Les dernières mises à jour de l'Espace Partenaires ProConnect se concentrent sur l'amélioration de la documentation, la préparation à la migration vers ProConnect, et l'ajout de fonctionnalités pour faciliter la gestion des accès. Des corrections de bugs et des améliorations techniques ont également été apportées pour une meilleure stabilité et expérience utilisateur.
 
 ### Évolutions fonctionnelles
-- Les partenaires peuvent maintenant ajouter des collaborateurs à leur espace, bien que cette fonctionnalité ait été temporairement désactivée pour correction. [#386](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/386)
-- Amélioration de la documentation concernant l'authentification multifacteur (MFA) : schémas de flux, calendrier de déploiement et contexte ACR pour les Fournisseurs d'Identité (FI). [#390](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/390) et [#375](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/375)
-- Classification de l'authentification par email OTP comme MFA faible (eidas1). [#388](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/388)
-- Annonce de la migration ProConnect dans l'espace partenaire. [#408](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/408)
+
+- Ajout d'un bouton ProConnect pour faciliter l'accès à la nouvelle plateforme. [#361](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/361)
+- Annonce de la migration vers ProConnect dans l'interface Partenaire. [#408](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/408)
+- Possibilité pour les partenaires d'ajouter des collaborateurs à leur compte. [#386](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/386) (temporairement reverté puis réintroduit)
+- Prévention de la suppression de son propre compte par les utilisateurs. [#403](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/403)
+- Amélioration de la documentation concernant l'authentification multi-facteurs (MFA) avec schémas de flux et contexte pour les FIs. [#390](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/390) et [#375](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/375)
+- Classification de l'authentification par email OTP comme MFA faible (eidas1-mfa). [#388](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/388)
 
 ### Évolutions techniques
-- Correction d'une dépendance conflictuelle avec `nodemailer`. [#409](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/409)
-- Mise à jour de plusieurs dépendances de développement : `@uuv/playwright`, `@playwright/test`, `js-yaml`, `@babel/core`, `form-data`, `nodemailer`, `stefanzweifel/git-auto-commit-action`, `actions/cache`, `actions/checkout`.
-- Suppression d'une note de prudence concernant la définition des niveaux ACR. [#367](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/367)
-- Utilisation de valeurs standard pour le TOTP dans l'AMR. [#385](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/385)
-- Ajout du dossier de configuration IntelliJ IDEA au `.gitignore`. [#391](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/391)
-- Validation de la compatibilité `npm prune` dans la CI. [#407](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/407)
-- Application de Prettier sur l'ensemble du projet. [#402](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/402)
-- Correction pour empêcher les utilisateurs de s'auto-supprimer. [#403](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/403)
+
+- Amélioration de la robustesse des tests en réduisant leur dépendance à l'environnement ProConnect sandbox. [#370](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/370)
+- Correction d'un conflit de dépendance avec `nodemailer`. [#409](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/409)
+- Mise à jour des dépendances de développement : TypeScript, Playwright, tsx, @babel/core, js-yaml, form-data, actions/checkout, actions/cache, stefanzweifel/git-auto-commit-action.
+- Utilisation de valeurs AMR standard pour le TOTP. [#385](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/385)
 
 ### Autres changements
-- Ajout d'une checklist de conformité MFA pour les FI.
-- Documentation : schéma explicatif du fonctionnement de ProConnect. [#400](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/400)
-- Ajout d'un exemple de mot de passe et d'email OTP dans le tableau AMR.
+
+- Application de Prettier pour formater le code. [#402](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/402)
+- Ajout d'une checklist de conformité MFA pour les FIs. [#400](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/400)
+- Ajout d'exemples de mots de passe et d'emails OTP dans le tableau AMR.
 - Numérotation des sections de la note de conformité MFA.
-- Corrections de typos diverses. [#399](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/399), [#401](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/401), [#393](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/393), [#9ad5321](https://github.com/proconnect-gouv/proconnect-espace-partenaires/commit/9ad5321c11120285459935c83582786391135927)
+- Correction de typos dans la documentation. [#399](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/399) et [#413](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/413)
+- Ajout du dossier de configuration IntelliJ IDEA au `.gitignore`. [#391](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/391)
+- Mise à jour du lien vers le code de calcul du service public. [#384](https://github.com/proconnect-gouv/proconnect-espace-partenaires/pull/384)
