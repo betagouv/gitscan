@@ -1,14 +1,26 @@
-## Changelog : dashlord (30 derniers jours, au 05 Juillet 2026)
+## Changelog : dashlord (30 derniers jours, au 19 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les mises à jour de DashLord se sont principalement concentrées sur la maintenance et l'actualisation des sources de données surveillées. Les sites web suivis ont été régulièrement mis à jour pour assurer la pertinence des informations affichées dans le tableau de bord. Une mise à jour de l'action GitHub `dashlord-actions` a également été effectuée.
+Ce mois-ci, les mises à jour de DashLord se sont concentrées sur le maintien à jour des sources de données surveillées. Les URL des sites web suivis ont été régulièrement mises à jour pour assurer la continuité de l'acquisition de données et la fiabilité des rapports générés.
 
 ### Évolutions fonctionnelles
-- Mise à jour régulière des URLs surveillées pour garantir la fraîcheur des données (plusieurs mises à jour pour chaque site).
-- Mise à jour de la configuration pour le site tacct [#1234](https://github.com/incubateur-ademe/dashlord/issues/1234)
+Aucune nouvelle fonctionnalité ou amélioration visible pour l'utilisateur n'a été implémentée durant cette période.
 
 ### Évolutions techniques
-- Mise à jour de l'action GitHub `dashlord-actions` vers la version v1.46.1 pour bénéficier des dernières corrections et améliorations.
+Aucun changement technique majeur n'a été effectué. Les modifications consistent uniquement en mises à jour de configuration.
 
 ### Autres changements
-- Mises à jour régulières du rapport de DashLord.
+- Mise à jour régulière des URLs des sites web surveillés :
+    - [https://tacct.ademe.fr](https://tacct.ademe.fr)
+    - [https://benefriches.ademe.fr](https://benefriches.ademe.fr)
+    - [https://france-chaleur-urbaine.beta.gouv.fr](https://france-chaleur-urbaine.beta.gouv.fr)
+    - [https://aldo.territoiresentransitions.fr](https://aldo.territoiresentransitions.fr)
+    - [https://app.territoiresentransitions.fr](https://app.territoiresentransitions.fr)
+    - [https://www.territoiresentransitions.fr](https://www.territoiresentransitions.fr)
+    - [https://mission-transition-ecologique.beta.gouv.fr](https://mission-transition-ecologique.beta.gouv.fr)
+    - [https://mission-transition-ecologique.beta.gouv.fr/api/health](https://mission-transition-ecologique.beta.gouv.fr/api/health)
+    - [https://plusfraichemaville.fr](https://plusfraichemaville.fr)
+    - [https://impactco2.fr](https://impactco2.fr)
+    - [https://nosgestesclimat.fr](https://nosgestesclimat.fr)
+    - [https://quefairedemesdechets.ademe.fr](https://quefairedemesdechets.ademe.fr)
+- Mises à jour régulières du rapport.
