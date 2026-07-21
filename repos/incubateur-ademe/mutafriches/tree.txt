@@ -330,6 +330,14 @@
 │   │   │   │   └── repositories
 │   │   │   │       └── partenaire.repository.ts
 │   │   │   ├── scripts
+│   │   │   │   ├── coord-to-idu
+│   │   │   │   │   ├── apicarto.client.ts
+│   │   │   │   │   ├── data
+│   │   │   │   │   │   ├── scet.input.json
+│   │   │   │   │   │   └── scet.resolved.json
+│   │   │   │   │   ├── lambert.spec.ts
+│   │   │   │   │   ├── lambert.ts
+│   │   │   │   │   └── resolve.ts
 │   │   │   │   ├── data
 │   │   │   │   │   ├── base-ite-3000.geojson
 │   │   │   │   │   ├── donnees-ademe-sites-pollues.geojson
@@ -346,8 +354,10 @@
 │   │   │   │   │   ├── cci92.ts
 │   │   │   │   │   ├── ddt-vosges.ts
 │   │   │   │   │   ├── registry.ts
+│   │   │   │   │   ├── scet.ts
 │   │   │   │   │   └── types.ts
 │   │   │   │   ├── prefetch-partenaires.ts
+│   │   │   │   ├── resolve-idu-scet.ts
 │   │   │   │   └── seed-partenaires.ts
 │   │   │   ├── shared
 │   │   │   │   ├── __test-helpers__
@@ -643,7 +653,10 @@
 │       │   │   │   │   ├── cci92
 │       │   │   │   │   │   ├── index.ts
 │       │   │   │   │   │   └── parcelles.ts
-│       │   │   │   │   └── ddt-vosges
+│       │   │   │   │   ├── ddt-vosges
+│       │   │   │   │   │   ├── index.ts
+│       │   │   │   │   │   └── parcelles.ts
+│       │   │   │   │   └── scet
 │       │   │   │   │       ├── index.ts
 │       │   │   │   │       └── parcelles.ts
 │       │   │   │   └── registry.ts
@@ -718,15 +731,24 @@
 │       │   │       │   ├── geoportail.ts
 │       │   │       │   └── pages
 │       │   │       │       └── DiagnosticParcellePage.tsx
-│       │   │       └── test-iframe
+│       │   │       ├── test-iframe
+│       │   │       │   ├── components
+│       │   │       │   │   ├── ConfigPanel.tsx
+│       │   │       │   │   ├── IframeViewer.tsx
+│       │   │       │   │   ├── MessageConsole.tsx
+│       │   │       │   │   └── index.ts
+│       │   │       │   └── pages
+│       │   │       │       ├── TestCallback.tsx
+│       │   │       │       └── TestIframe.tsx
+│       │   │       └── test-resolution-idu
+│       │   │           ├── api
+│       │   │           │   └── cadastre.client.ts
 │       │   │           ├── components
-│       │   │           │   ├── ConfigPanel.tsx
-│       │   │           │   ├── IframeViewer.tsx
-│       │   │           │   ├── MessageConsole.tsx
-│       │   │           │   └── index.ts
+│       │   │           │   ├── CoordonneesTab.tsx
+│       │   │           │   ├── NumeroParcelleTab.tsx
+│       │   │           │   └── ResultatTable.tsx
 │       │   │           └── pages
-│       │   │               ├── TestCallback.tsx
-│       │   │               └── TestIframe.tsx
+│       │   │               └── ResolutionIduPage.tsx
 │       │   ├── main.tsx
 │       │   ├── shared
 │       │   │   ├── components
@@ -850,7 +872,8 @@
 │   │   ├── 0026-source-verite-unique-documentation-sources.md
 │   │   ├── 0027-unite-distances-metres-conversion-km-frontiere-algo.md
 │   │   ├── 0028-filtrage-serveur-wfs-voies-grande-circulation.md
-│   │   └── 0028-tag-version-algorithme-reflete-version-utilisee.md
+│   │   ├── 0028-tag-version-algorithme-reflete-version-utilisee.md
+│   │   └── 0029-resolution-idu-coordonnees-onboarding-partenaire.md
 │   ├── ajout-partenaire.md
 │   ├── analytics-tracking.md
 │   ├── enrichissement.md
@@ -965,6 +988,9 @@
 │       │   │   ├── recapitulatif.types.ts
 │       │   │   └── valeurs.labels.ts
 │       │   ├── shared
+│       │   │   ├── cadastre
+│       │   │   │   ├── apicarto-cadastre.spec.ts
+│       │   │   │   └── apicarto-cadastre.ts
 │       │   │   ├── index.ts
 │       │   │   ├── types
 │       │   │   │   ├── common.types.ts
@@ -972,6 +998,10 @@
 │       │   │   └── utils
 │       │   │       ├── arrondissement.utils.spec.ts
 │       │   │       ├── arrondissement.utils.ts
+│       │   │       ├── cadastre-ref.utils.spec.ts
+│       │   │       ├── cadastre-ref.utils.ts
+│       │   │       ├── commune.utils.spec.ts
+│       │   │       ├── commune.utils.ts
 │       │   │       ├── email.utils.spec.ts
 │       │   │       ├── email.utils.ts
 │       │   │       ├── index.ts
@@ -989,4 +1019,4 @@
 │   ├── generate-sources-doc.cjs
 │   └── setup.sh
 └── tsconfig.json
-223 directories, 768 files
+231 directories, 790 files
