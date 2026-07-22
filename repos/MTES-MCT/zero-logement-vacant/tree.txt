@@ -913,25 +913,40 @@
 │   ├── test.json
 │   └── uv.lock
 ├── apps
-│   └── front-e2e
+│   ├── front-e2e
+│   │   ├── .env.example
+│   │   ├── README.md
+│   │   ├── config.ts
+│   │   ├── cypress
+│   │   │   ├── e2e
+│   │   │   │   ├── accessibility.cy.ts
+│   │   │   │   ├── campaign.cy.ts
+│   │   │   │   ├── group.cy.ts
+│   │   │   │   ├── log-in.cy.ts
+│   │   │   │   └── sign-up.cy.ts
+│   │   │   ├── fixtures
+│   │   │   │   └── logo.png
+│   │   │   └── support
+│   │   │       ├── commands.ts
+│   │   │       └── e2e.ts
+│   │   ├── cypress.config.ts
+│   │   ├── package.json
+│   │   └── tsconfig.json
+│   └── front-e2e-pw
 │       ├── .env.example
 │       ├── README.md
 │       ├── config.ts
-│       ├── cypress
-│       │   ├── e2e
-│       │   │   ├── accessibility.cy.ts
-│       │   │   ├── campaign.cy.ts
-│       │   │   ├── group.cy.ts
-│       │   │   ├── log-in.cy.ts
-│       │   │   ├── sign-up.cy.ts
-│       │   │   └── two-factor-auth.cy.ts
-│       │   ├── fixtures
-│       │   │   └── logo.png
-│       │   └── support
-│       │       ├── commands.ts
-│       │       └── e2e.ts
-│       ├── cypress.config.ts
+│       ├── fixtures
+│       │   └── auth.ts
 │       ├── package.json
+│       ├── playwright.config.ts
+│       ├── tests
+│       │   ├── auth-transition.spec.ts
+│       │   ├── change-establishment.spec.ts
+│       │   ├── protected-route.spec.ts
+│       │   ├── sign-in.spec.ts
+│       │   ├── sign-out.spec.ts
+│       │   └── suspended-user.spec.ts
 │       └── tsconfig.json
 ├── clevercloud
 │   ├── README.md
@@ -1031,6 +1046,8 @@
 │   │   │   ├── 2026-06-11-factories-campaign-slice-plan.md
 │   │   │   ├── 2026-06-11-migrate-validator-next.md
 │   │   │   ├── 2026-06-11-remove-old-dsfr.md
+│   │   │   ├── 2026-06-13-auth-hardening-backend.md
+│   │   │   ├── 2026-06-13-auth-hardening-frontend.md
 │   │   │   ├── 2026-06-13-reference-data-cache.md
 │   │   │   └── 2026-07-08-zlv-repair-harness.md
 │   │   └── specs
@@ -1052,6 +1069,7 @@
 │   │       ├── 2026-06-11-factories-campaign-slice-design.md
 │   │       ├── 2026-06-11-migrate-validator-next-design.md
 │   │       ├── 2026-06-11-remove-old-dsfr-design.md
+│   │       ├── 2026-06-13-auth-hardening-design.md
 │   │       ├── 2026-06-13-reference-data-cache-design.md
 │   │       └── 2026-07-08-zlv-repair-harness-design.md
 │   └── technical
@@ -1483,20 +1501,29 @@
 │   │   │       │   └── select.module.scss
 │   │   │       └── Tooltip
 │   │   │           └── Tooltip.tsx
+│   │   ├── contexts
+│   │   │   ├── AuthContext.tsx
+│   │   │   └── test
+│   │   │       └── AuthContext.test.tsx
 │   │   ├── dsfr-fix.scss
 │   │   ├── focus-visible.scss
 │   │   ├── hooks
 │   │   │   ├── HousingFiltersContext.tsx
 │   │   │   ├── test
 │   │   │   │   ├── HousingFiltersContext.test.tsx
+│   │   │   │   ├── useAsyncSubmission.test.tsx
+│   │   │   │   ├── useAuth.test.tsx
 │   │   │   │   ├── useForm.test.ts
-│   │   │   │   └── useSelection.test.tsx
+│   │   │   │   ├── useMapImage.test.tsx
+│   │   │   │   ├── useSelection.test.tsx
+│   │   │   │   └── useUser.test.tsx
 │   │   │   ├── useActivationEmail.tsx
+│   │   │   ├── useAsyncSubmission.ts
+│   │   │   ├── useAuth.ts
 │   │   │   ├── useAvailableEstablishments.tsx
 │   │   │   ├── useCampaignList.tsx
 │   │   │   ├── useDocumentTitle.tsx
 │   │   │   ├── useEmailLink.tsx
-│   │   │   ├── useFetchInterceptor.ts
 │   │   │   ├── useForm.tsx
 │   │   │   ├── useGetCampaignDraftQuery.tsx
 │   │   │   ├── useHide.tsx
@@ -1523,9 +1550,10 @@
 │   │   │   ├── AuthenticatedLayout.tsx
 │   │   │   ├── FeatureFlagLayout.tsx
 │   │   │   └── GuestLayout.tsx
+│   │   ├── lib
+│   │   │   └── auth-client.ts
 │   │   ├── mocks
 │   │   │   ├── handlers
-│   │   │   │   ├── auth-handlers.ts
 │   │   │   │   ├── auth-helpers.ts
 │   │   │   │   ├── ban-handlers.ts
 │   │   │   │   ├── campaign-handlers.ts
@@ -1548,6 +1576,8 @@
 │   │   │   │   ├── precision-handlers.ts
 │   │   │   │   ├── prospect-handlers.ts
 │   │   │   │   ├── signup-links-handlers.ts
+│   │   │   │   ├── test
+│   │   │   │   │   └── auth-helpers.test.ts
 │   │   │   │   └── user-handlers.ts
 │   │   │   └── mock-api.ts
 │   │   ├── models
@@ -1599,7 +1629,6 @@
 │   │   ├── services
 │   │   │   ├── address.service.ts
 │   │   │   ├── api.service.ts
-│   │   │   ├── auth.service.ts
 │   │   │   ├── building.service.ts
 │   │   │   ├── campaign.service.ts
 │   │   │   ├── dashboard.service.ts
@@ -1620,23 +1649,22 @@
 │   │   │   ├── precision.service.ts
 │   │   │   ├── prospect.service.ts
 │   │   │   ├── reset-link.service.ts
+│   │   │   ├── session-aware-base-query.ts
 │   │   │   ├── signup-link.service.ts
 │   │   │   ├── test
 │   │   │   │   ├── draft.service.test.ts
-│   │   │   │   └── owner.service.test.ts
+│   │   │   │   ├── owner.service.test.ts
+│   │   │   │   ├── reset-link.service.test.ts
+│   │   │   │   └── session-aware-base-query.test.ts
 │   │   │   ├── user-account.service.ts
 │   │   │   └── user.service.ts
 │   │   ├── store
-│   │   │   ├── actions
-│   │   │   │   └── authenticationAction.tsx
 │   │   │   ├── reducers
 │   │   │   │   ├── appReducer.tsx
-│   │   │   │   ├── authenticationReducer.tsx
 │   │   │   │   └── housingReducer.tsx
-│   │   │   ├── store.tsx
-│   │   │   └── thunks
-│   │   │       └── auth-thunks.ts
+│   │   │   └── store.tsx
 │   │   ├── test
+│   │   │   ├── auth.tsx
 │   │   │   ├── event-source-mock.ts
 │   │   │   ├── factories.ts
 │   │   │   ├── fixtures.ts
@@ -1651,6 +1679,8 @@
 │   │   │   ├── config.ts
 │   │   │   ├── dateUtils.ts
 │   │   │   ├── elementUtils.ts
+│   │   │   ├── featureFlags.test.ts
+│   │   │   ├── featureFlags.ts
 │   │   │   ├── fetchUtils.ts
 │   │   │   ├── fileUploadErrors.ts
 │   │   │   ├── jsonUtils.ts
@@ -1721,6 +1751,7 @@
 │   │   │   ├── Login
 │   │   │   │   ├── LoginView.test.tsx
 │   │   │   │   ├── LoginView.tsx
+│   │   │   │   ├── TwoFactorView.test.tsx
 │   │   │   │   └── TwoFactorView.tsx
 │   │   │   ├── NotFoundView.tsx
 │   │   │   ├── Owner
@@ -1847,6 +1878,7 @@
 │   │   │   ├── ResetLinkDTO.ts
 │   │   │   ├── RoomCount.ts
 │   │   │   ├── SenderDTO.ts
+│   │   │   ├── SessionDTO.ts
 │   │   │   ├── SignupLinkDTO.ts
 │   │   │   ├── TimePerWeek.ts
 │   │   │   ├── UserDTO.ts
@@ -2046,6 +2078,7 @@
 │   │   │   ├── signupLinkController.ts
 │   │   │   ├── test
 │   │   │   │   ├── auth-controller.test.ts
+│   │   │   │   ├── auth-integration.test.ts
 │   │   │   │   ├── buildingController.test.ts
 │   │   │   │   ├── campaign-api.test.ts
 │   │   │   │   ├── dashboard-api.test.ts
@@ -2080,6 +2113,7 @@
 │   │   │   ├── documentMissingError.ts
 │   │   │   ├── draftMissingError.ts
 │   │   │   ├── establishmentMissingError.ts
+│   │   │   ├── externalServiceUnavailableError.ts
 │   │   │   ├── fileMissingError.ts
 │   │   │   ├── fileUploadError.ts
 │   │   │   ├── fileValidationError.ts
@@ -2109,9 +2143,12 @@
 │   │   │   └── virusDetectedError.ts
 │   │   ├── index.ts
 │   │   ├── infra
+│   │   │   ├── auth-admin-two-factor.ts
+│   │   │   ├── auth-cookie.ts
+│   │   │   ├── auth-password.ts
+│   │   │   ├── auth.ts
 │   │   │   ├── clamav.test.ts
 │   │   │   ├── clamav.ts
-│   │   │   ├── config.test.ts
 │   │   │   ├── config.ts
 │   │   │   ├── database
 │   │   │   │   ├── data
@@ -2344,6 +2381,7 @@
 │   │   │   │   │   ├── 20260506221142_drop-owner-matches.ts
 │   │   │   │   │   ├── 20260506221143_drop-owners-dept.ts
 │   │   │   │   │   ├── 20260506221144_drop-owners-duplicates.ts
+│   │   │   │   │   ├── 20260613120000_better_auth_tables.ts
 │   │   │   │   │   └── 20260623000000_user-perimeters-add-establishment-id.ts
 │   │   │   │   ├── procedures
 │   │   │   │   │   ├── 001-load-housing.sql
@@ -2396,7 +2434,16 @@
 │   │   │   ├── openapi.ts
 │   │   │   ├── openapi.yaml
 │   │   │   ├── sentry.ts
-│   │   │   └── server.ts
+│   │   │   ├── server.ts
+│   │   │   ├── session-policy.ts
+│   │   │   └── test
+│   │   │       ├── auth-admin-two-factor.test.ts
+│   │   │       ├── auth-cookie.test.ts
+│   │   │       ├── auth-password.test.ts
+│   │   │       ├── config.test.ts
+│   │   │       ├── server-cors.test.ts
+│   │   │       ├── session-lifetime-auth.test.ts
+│   │   │       └── session-policy.test.ts
 │   │   ├── middlewares
 │   │   │   ├── antivirus.ts
 │   │   │   ├── auth.ts
@@ -2404,13 +2451,16 @@
 │   │   │   ├── fileTypeMiddleware.ts
 │   │   │   ├── noop.ts
 │   │   │   ├── responseCache.ts
+│   │   │   ├── session.ts
 │   │   │   ├── shapefileValidation.test.ts
 │   │   │   ├── shapefileValidation.ts
 │   │   │   ├── test
 │   │   │   │   ├── auth.test.ts
 │   │   │   │   ├── error-handler.test.ts
 │   │   │   │   ├── responseCache.test.ts
+│   │   │   │   ├── session.test.ts
 │   │   │   │   └── validator.test.ts
+│   │   │   ├── test-authentication.ts
 │   │   │   ├── upload.ts
 │   │   │   ├── validator.ts
 │   │   │   └── zipValidation.ts
@@ -2440,7 +2490,6 @@
 │   │   │   ├── ProspectApi.ts
 │   │   │   ├── ResetLinkApi.ts
 │   │   │   ├── SenderApi.ts
-│   │   │   ├── SignInPayload.ts
 │   │   │   ├── SignupLinkApi.ts
 │   │   │   ├── SortApi.ts
 │   │   │   ├── UserApi.ts
@@ -2505,9 +2554,17 @@
 │   │   │   └── userRepository.ts
 │   │   ├── routers
 │   │   │   ├── protected.ts
+│   │   │   ├── test
+│   │   │   │   ├── auth-cutover-routing.test.ts
+│   │   │   │   └── protected-auth-api.test.ts
 │   │   │   └── unprotected.ts
 │   │   ├── scripts
 │   │   │   ├── README.md
+│   │   │   ├── backfill-auth-users
+│   │   │   │   ├── README.md
+│   │   │   │   ├── index.ts
+│   │   │   │   └── test
+│   │   │   │       └── index.test.ts
 │   │   │   ├── fix-campaign-housing-status
 │   │   │   │   ├── .gitignore
 │   │   │   │   └── index.ts
@@ -2728,6 +2785,7 @@
 │   │   │   │   ├── administrative-division-service.ts
 │   │   │   │   ├── geo-api.test.ts
 │   │   │   │   └── geo-api.ts
+│   │   │   ├── authIdentityService.ts
 │   │   │   ├── ban
 │   │   │   │   ├── ban-api.ts
 │   │   │   │   └── ban.ts
@@ -2742,8 +2800,10 @@
 │   │   │   │   ├── mockCeremaService.ts
 │   │   │   │   ├── perimeterService.test.ts
 │   │   │   │   ├── perimeterService.ts
+│   │   │   │   ├── suspensionService.ts
 │   │   │   │   └── userKindService.ts
 │   │   │   ├── document-upload.ts
+│   │   │   ├── establishmentAuthService.ts
 │   │   │   ├── file-validation.ts
 │   │   │   ├── mailService
 │   │   │   │   ├── brevoService.ts
@@ -2760,6 +2820,7 @@
 │   │   │   ├── ownerDistanceService.ts
 │   │   │   ├── posthogService.ts
 │   │   │   ├── test
+│   │   │   │   ├── establishmentAuthService.test.ts
 │   │   │   │   ├── file-validation.test.ts
 │   │   │   │   └── ownerDistanceService.test.ts
 │   │   │   └── twoFactorService.ts
@@ -2859,4 +2920,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── yarn.lock
-448 directories, 2413 files
+457 directories, 2465 files

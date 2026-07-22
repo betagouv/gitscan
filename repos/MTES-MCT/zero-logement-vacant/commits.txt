@@ -1,3 +1,20 @@
+2026-07-21T15:39:55-03:00 - 894eece0 - Raphaël Courivaud : fix(metabase): pin Metabase 0.62.5 and DuckDB driver 1.5.4.0
+2026-07-21T14:56:52+02:00 - 79446180 - Guillaume Claverie : Merge pull request #1921 from MTES-MCT/fix/map-building-square-images
+2026-07-21T12:54:29+02:00 - 20ffe88b - Guillaume Claverie : fix(frontend): restore building square markers
+2026-07-21T11:36:58+02:00 - f479b09a - Guillaume Claverie : Merge pull request #1873 from MTES-MCT/fix/sync-cerema-suspension-causes
+2026-07-21T11:26:08+02:00 - 4faeaaa8 - Guillaume Claverie : fix(auth): adapt Cerema sync to Better Auth
+2026-07-21T11:25:35+02:00 - 01c6e8b6 - Guillaume Claverie : refactor: simplify Cerema suspension timestamp
+2026-07-21T11:25:30+02:00 - 867bf13e - Guillaume Claverie : refactor: reduce Cerema auth sync complexity
+2026-07-21T11:25:03+02:00 - 0da0c9c0 - Guillaume Claverie : fix: handle partial Cerema synchronization per establishment
+2026-07-21T11:24:17+02:00 - bae220c2 - Guillaume Claverie : fix: scope Cerema access errors to selected establishment
+2026-07-21T11:23:29+02:00 - 2a0b3c27 - Guillaume Claverie : docs: update Clever Cloud cron documentation
+2026-07-21T11:23:23+02:00 - 28a232ef - Guillaume Claverie : style(cerema): format suspension sync guard
+2026-07-21T11:22:54+02:00 - d2f2b842 - Guillaume Claverie : fix(cerema): skip sync when details are incomplete
+2026-07-21T11:22:26+02:00 - c1fcfe61 - Guillaume Claverie : refactor(auth): isolate Cerema suspension sync
+2026-07-21T11:21:56+02:00 - b6d6829a - Guillaume Claverie : fix(auth): sync Cerema suspension causes
+2026-07-21T11:21:22+02:00 - 4c11c9f7 - Guillaume Claverie : fix(cerema): expose suspension state fields
+2026-07-20T08:35:20+02:00 - 39b3e150 - Guillaume Claverie : Merge pull request #1896 from MTES-MCT/feat/auth-hardening-guillaume
+2026-07-20T08:24:59+02:00 - d3f020af - Guillaume Claverie : Merge origin/main into feat/auth-hardening-guillaume
 2026-07-17T09:50:25+02:00 - 63c60478 - Andrea Gueugnaut : Merge pull request #1916 from MTES-MCT/chore/terraform-db-flavor
 2026-07-17T09:50:07+02:00 - 0d489fd7 - Falinor : chore(terraform): add a parameter for DB flavor and default to xxs_sml
 2026-07-16T17:48:42+02:00 - 75b279d0 - Andrea Gueugnaut : Merge pull request #1893 from MTES-MCT/claude/rgaa-accessibility-requirements-4ba391
@@ -35,6 +52,125 @@
 2026-07-16T16:51:33+02:00 - d5e496fb - Jouin : feat(map): render perimeters as outlines and keep included ones visible
 2026-07-16T16:51:33+02:00 - 654d2d6d - Jouin : feat(map): reword perimeters toggle to "Afficher tous vos périmètres"
 2026-07-16T16:51:33+02:00 - 1e6ad3cd - Jouin : feat(map): keep excluded perimeters visible (in red) when toggle off
+2026-07-15T12:51:48+02:00 - 5ddbf893 - Guillaume Claverie : docs(auth): correct cutover runbook
+2026-07-15T12:41:18+02:00 - f03cce2f - Guillaume Claverie : docs(auth): require admin establishment in OpenAPI
+2026-07-15T12:40:59+02:00 - 10fdfa2e - Guillaume Claverie : refactor(frontend): remove legacy auth service
+2026-07-13T16:27:36+02:00 - d4810667 - Guillaume Claverie : style(server): use node protocol for http2
+2026-07-13T16:27:14+02:00 - 564aaf08 - Guillaume Claverie : refactor(auth): make domain role mapping explicit
+2026-07-13T16:25:56+02:00 - 2a091264 - Guillaume Claverie : fix(frontend): simplify auth session error type
+2026-07-13T16:13:16+02:00 - 9a09f8a6 - Guillaume Claverie : test(auth): seed better auth credentials in user updates
+2026-07-13T15:58:41+02:00 - 90c9cc4a - Guillaume Claverie : fix(auth): preserve unauthorized API responses
+2026-07-13T15:50:49+02:00 - eafd3b0f - Guillaume Claverie : refactor(auth): validate sessions at the API boundary
+2026-07-13T15:46:05+02:00 - 1c52ab43 - Guillaume Claverie : test(server): organize auth tests by module
+2026-07-13T15:44:18+02:00 - 21dea89a - Guillaume Claverie : fix(auth): normalize allowed origins
+2026-07-13T15:42:01+02:00 - ed2f0984 - Guillaume Claverie : refactor(e2e): rely on Nx environment loading
+2026-07-13T15:41:06+02:00 - 77b4755a - Guillaume Claverie : test(auth): track the active mock session
+2026-07-13T15:36:13+02:00 - e7fa6808 - Guillaume Claverie : fix(auth): synchronize Sentry user context
+2026-07-13T15:34:44+02:00 - 4e6d1ec3 - Guillaume Claverie : fix(auth): redirect incomplete two-factor challenges safely
+2026-07-13T15:33:41+02:00 - 2367a34f - Guillaume Claverie : refactor(auth): share async submission state
+2026-07-13T15:31:31+02:00 - 8d61f271 - Guillaume Claverie : refactor(auth): remove v2 state names
+2026-07-13T15:28:21+02:00 - fdd05d1b - Guillaume Claverie : docs(auth): explain credential timing equalization
+2026-07-13T15:27:55+02:00 - 18b851d6 - Guillaume Claverie : refactor(auth): type the admin session context
+2026-07-13T15:27:22+02:00 - 0d0118be - Guillaume Claverie : fix(auth): require an admin establishment
+2026-07-13T15:22:47+02:00 - d42401ed - Guillaume Claverie : refactor(auth): separate identity from domain users
+2026-07-13T15:00:32+02:00 - 1cb8c1dd - Guillaume Claverie : fix(auth): persist the selected establishment
+2026-07-13T14:58:50+02:00 - a7622651 - Guillaume Claverie : fix(auth): revalidate establishment switches
+2026-07-13T14:55:03+02:00 - b311520e - Guillaume Claverie : fix(auth): await establishment session refresh
+2026-07-13T14:53:27+02:00 - cfe967b9 - Guillaume Claverie : fix(auth): revoke sessions after password reset
+2026-07-13T14:49:32+02:00 - 1678f2b4 - Guillaume Claverie : test(auth): cover admin two-factor lockout threshold
+2026-07-13T14:48:08+02:00 - 7ee1350d - Guillaume Claverie : fix(auth): count concurrent two-factor failures atomically
+2026-07-13T14:45:43+02:00 - 35cdff36 - Guillaume Claverie : fix(auth): preserve admin two-factor lockout
+2026-07-13T14:42:02+02:00 - 822c3410 - Guillaume Claverie : fix(auth): verify admin credential with better auth
+2026-07-10T21:20:42+02:00 - 94469ade - Guillaume Claverie : test(auth): stabilize establishment switch rights
+2026-07-10T21:04:25+02:00 - 6ae99163 - Guillaume Claverie : fix(auth): reuse middleware session context
+2026-07-10T20:45:13+02:00 - d59fb3e2 - Guillaume Claverie : test(auth): assert normalized credential emails
+2026-07-10T20:10:11+02:00 - a0dd221f - Guillaume Claverie : fix(frontend): satisfy Sonar async handling rule
+2026-07-10T19:53:10+02:00 - f0d91467 - Guillaume Claverie : fix(auth): forward refreshed session cookies
+2026-07-10T19:53:10+02:00 - dc893562 - Guillaume Claverie : docs(auth): document the manual cutover runbook
+2026-07-10T19:53:10+02:00 - 63943c1a - Guillaume Claverie : fix(auth): support partitioned review app sessions
+2026-07-10T19:53:09+02:00 - 92af7029 - Guillaume Claverie : fix(server): allow tracing headers through CORS
+2026-07-10T19:53:09+02:00 - 0e959719 - Guillaume Claverie : fix(frontend): isolate authenticated establishment state
+2026-07-10T15:43:34+02:00 - d1837ef0 - Guillaume Claverie : fix(frontend): isolate authenticated session state
+2026-07-10T15:43:25+02:00 - eb875c62 - Guillaume Claverie : fix(auth): normalize auth emails
+2026-07-10T15:43:15+02:00 - 1e5bd9cc - Guillaume Claverie : fix(auth): persist establishment-scoped perimeters
+2026-07-10T15:43:07+02:00 - ba8da45f - Guillaume Claverie : fix(auth): protect server-managed auth state
+2026-07-10T14:51:48+02:00 - fab8dafe - Guillaume Claverie : style(auth): format synthetic password fixture
+2026-07-10T14:47:33+02:00 - 8e92fef5 - Guillaume Claverie : fix(auth): preserve establishment-scoped perimeter lookup
+2026-07-10T14:44:24+02:00 - 3113e5cd - Guillaume Claverie : fix(auth): resolve static analysis findings
+2026-07-10T14:44:11+02:00 - 72f8aa95 - Guillaume Claverie : revert(deploy): keep auth backfill manual
+2026-07-10T14:44:10+02:00 - e9d5d39c - Guillaume Claverie : refactor(auth): complete backend session cutover
+2026-07-10T14:44:10+02:00 - c96af824 - Guillaume Claverie : test(e2e): use cookie auth in staging suite
+2026-07-10T14:44:10+02:00 - c01e84b0 - Guillaume Claverie : fix(deploy): sequence staging auth cutover
+2026-07-10T14:44:10+02:00 - 53542f4e - Guillaume Claverie : docs(auth): update deployment configuration
+2026-07-10T14:44:10+02:00 - 3a68ce7b - Guillaume Claverie : refactor(frontend): remove legacy auth compatibility
+2026-07-10T14:43:56+02:00 - 7374ad3b - Guillaume Claverie : Merge remote-tracking branch 'origin/main' into feat/auth-hardening-guillaume
+2026-07-10T14:43:30+02:00 - cb101173 - Guillaume Claverie : fix(auth): fail partial user backfills
+2026-07-10T14:43:30+02:00 - ab41921b - Guillaume Claverie : fix(auth): rate limit admin authentication
+2026-07-10T14:43:30+02:00 - 415dd30c - Guillaume Claverie : fix(review-app): configure frontend auth origin
+2026-07-10T14:43:30+02:00 - 25be6e0c - Guillaume Claverie : fix(auth): restrict legacy GET mutation to JWT
+2026-07-10T14:43:29+02:00 - 94027100 - Guillaume C : style: format auth changes
+2026-07-10T14:43:29+02:00 - 84330590 - Guillaume Claverie : fix(auth): enforce bounded session lifetime
+2026-07-10T14:43:29+02:00 - 2e310295 - Guillaume Claverie : fix(frontend): clear auth session on unauthorized responses
+2026-07-10T14:43:29+02:00 - 2af59031 - Guillaume C : test(auth): wrap auth-dependent tests
+2026-07-10T14:43:28+02:00 - fa4c668a - Guillaume C : refactor(auth): remove unused legacy frontend auth flow
+2026-07-10T14:43:28+02:00 - c2689f29 - Guillaume C : chore(auth): fix lint issue
+2026-07-10T14:43:28+02:00 - 7c087a59 - Guillaume C : fix(auth): sync account updates to better-auth
+2026-07-10T14:43:27+02:00 - 9155438a - Guillaume C : fix(auth): prevent duplicate v2 login submissions
+2026-07-10T14:43:27+02:00 - 69c556cb - Guillaume C : feat(auth): cut over frontend to better-auth
+2026-07-10T14:43:27+02:00 - 691e62f8 - Guillaume C : fix(auth): avoid admin endpoint enumeration
+2026-07-10T14:43:26+02:00 - c2a74d2d - Guillaume C : fix(auth): revoke better-auth state on user deletion
+2026-07-10T14:43:26+02:00 - 3ede6d28 - Guillaume C : fix(auth): hide admin emails on v2 sign-in
+2026-07-10T14:43:26+02:00 - 38ca67d8 - Guillaume C : fix(auth): wait for auth-v2 flag resolution
+2026-07-10T14:43:26+02:00 - 26f8fdab - Guillaume C : fix(frontend): hydrate filters from auth session
+2026-07-10T14:43:26+02:00 - 2078ec9d - Guillaume C : feat(auth): add better-auth admin 2fa
+2026-07-10T14:43:25+02:00 - db989d62 - Guillaume C : fix(auth): persist v2 sign-in metadata
+2026-07-10T14:43:24+02:00 - dfa216ad - Guillaume C : test: seed auth e2e establishment memberships
+2026-07-10T14:43:24+02:00 - c20599dd - Guillaume C : fix(server): sync legacy users with better-auth accounts
+2026-07-10T14:43:24+02:00 - ba91cefe - Guillaume C : test: cover auth transition flows with Playwright
+2026-07-10T14:43:24+02:00 - 7ed9fcbf - Guillaume C : fix(auth): reject mixed jwt and session switch
+2026-07-10T14:43:24+02:00 - 47140e91 - Guillaume C : fix(auth): refresh session cookie on establishment switch
+2026-07-10T14:43:24+02:00 - 04330869 - Guillaume C : fix(server): preserve auth transition backfill behavior
+2026-07-10T14:43:23+02:00 - e830854b - Falinor : fix(front): fix auth-v2 dual-path regressions
+2026-07-10T14:43:23+02:00 - e2390d54 - Falinor : chore(server): add ALLOWED_ORIGINS to .env.example
+2026-07-10T14:43:23+02:00 - d81fd9b6 - Falinor : feat(models): add suspension fields to the session user DTO
+2026-07-10T14:43:23+02:00 - 7d4a7f98 - Guillaume C : fix(frontend): harden auth-v2 transition
+2026-07-10T14:43:23+02:00 - 4ab04a8a - Falinor : fix(server): harden auth-v2 session handling
+2026-07-10T14:43:22+02:00 - c69cf48e - Falinor : style: format files
+2026-07-10T14:43:22+02:00 - aba7867b - Falinor : fix(server): forward async userCheck rejection in protected router
+2026-07-10T14:43:22+02:00 - 4d37f231 - Falinor : test(front): wrap view tests in MockAuthProvider for useAuth
+2026-07-10T14:43:22+02:00 - 2f7f28ca - Falinor : feat(e2e): sign-out via account dropdown + add .env.example
+2026-07-10T14:43:22+02:00 - 14a04ef7 - Falinor : fix: align rebased branch with current main
+2026-07-10T14:43:22+02:00 - 02638609 - Falinor : style: format files
+2026-07-10T14:43:21+02:00 - f1322878 - Falinor : feat(front): loading spinner during PostHog flag bootstrap
+2026-07-10T14:43:21+02:00 - a37dd9a8 - Falinor : fix(server): align better-auth mount on /auth/* + docs/tests
+2026-07-10T14:43:21+02:00 - 7c16556b - Falinor : fix(server): accept multiple CORS origins via ALLOWED_ORIGINS
+2026-07-10T14:43:21+02:00 - 5b7123a1 - Falinor : refactor(e2e): swap convict for zod + ignore Playwright artifacts
+2026-07-10T14:43:21+02:00 - 3f98bbb4 - Falinor : feat(e2e): add Playwright pilot for auth-v2 + @nx/playwright plugin
+2026-07-10T14:43:21+02:00 - 1e3b9f3d - Falinor : feat(server): seed auth_users + account alongside legacy users
+2026-07-10T14:43:20+02:00 - d7f84b15 - Falinor : feat(server): add backfill-auth-users script
+2026-07-10T14:43:20+02:00 - d4587ea2 - Falinor : feat(front): source auth state from useSession via AuthContext + useUser adapter
+2026-07-10T14:43:20+02:00 - 8ae4400b - Falinor : feat(server): harden better-auth pipeline for backfilled users
+2026-07-10T14:43:20+02:00 - 3b062467 - Falinor : feat(server): augment session via customSession plugin + share SessionDTO
+2026-07-10T14:43:20+02:00 - 0fc606a1 - Falinor : feat(front): wrap app with AuthProvider when auth-v2 flag is on
+2026-07-10T14:43:19+02:00 - 71238af2 - Falinor : feat(front): RequireAuth and RequireGuest support both auth paths during transition
+2026-07-10T14:43:19+02:00 - 5fca16b0 - Falinor : feat(front): LoginView dual-path with authClient when AuthProvider is mounted
+2026-07-10T14:43:18+02:00 - c437b8b1 - Falinor : feat(front): RTK Query sends credentials for cookie auth alongside legacy JWT header
+2026-07-10T14:43:18+02:00 - 921b554f - Falinor : feat(front): add useAuth hook
+2026-07-10T14:43:18+02:00 - 6a1d31fb - Falinor : chore(front): add better-auth client, register auth-v2 feature flag
+2026-07-10T14:43:18+02:00 - 17b10759 - Falinor : feat(front): add AuthContext and AuthProvider
+2026-07-10T14:43:18+02:00 - 150e726a - Falinor : chore(server): pin kysely as explicit dependency for better-auth integration
+2026-07-10T14:43:18+02:00 - 027ea188 - Falinor : feat(front): create better-auth React client
+2026-07-10T14:43:17+02:00 - 8e1fb06c - Falinor : feat(server): add session-based POST /account/establishments/:id alongside legacy GET
+2026-07-10T14:43:17+02:00 - 5f05a7ad - Falinor : test(server): integration tests for better-auth sign-in flow
+2026-07-10T14:43:17+02:00 - 327b5441 - Falinor : feat(server): gate legacy signIn behind auth-v2 PostHog flag
+2026-07-10T14:43:17+02:00 - 2755d24e - Falinor : feat(server): add sessionCheck middleware backed by better-auth
+2026-07-10T14:43:17+02:00 - 1cce6286 - Falinor : feat(server): wire sessionCheck with jwtCheck fallback on protected routes
+2026-07-10T14:43:17+02:00 - 152e63eb - Falinor : feat(server): mount better-auth handler and enable CORS credentials
+2026-07-10T14:43:16+02:00 - eec1c7ef - Falinor : feat(server): add better-auth database tables migration
+2026-07-10T14:43:16+02:00 - ba135b10 - Falinor : chore(server): add better-auth dependency
+2026-07-10T14:43:16+02:00 - 64e8245b - Falinor : feat(server): add better-auth configuration and extract refreshAuthorizedEstablishments
+2026-07-10T14:43:16+02:00 - 2da131bd - Falinor : docs: add auth hardening frontend implementation plan
+2026-07-10T14:43:16+02:00 - 2334de76 - Falinor : docs: add auth hardening backend implementation plan
 2026-07-08T16:55:21+02:00 - eab519a3 - Andrea Gueugnaut : Merge pull request #1891 from MTES-MCT/fix/housing-batch-substatus-reset
 2026-07-08T15:56:36+02:00 - eb7fad2f - Falinor : docs: add design spec for ZLV repair harness
 2026-07-08T15:56:36+02:00 - e4509000 - Falinor : docs(repair-harness): log skipped housings to skipped.jsonl
@@ -54,6 +190,8 @@
 2026-07-01T10:30:20+02:00 - d24473c4 - Guillaume Claverie : test(frontend): cover intercommunality filter selection
 2026-07-01T10:30:05+02:00 - 4b941389 - Guillaume Claverie : fix(frontend): ignore empty locality filters
 2026-06-29T17:13:50+02:00 - 09b9c29e - Guillaume Claverie : Merge pull request #1870 from MTES-MCT/fix/multi-structure-user-perimeters
+2026-06-25T18:38:20+02:00 - 784fac9a - Falinor : docs: add auth hardening design spec
+2026-06-25T18:38:20+02:00 - 7705e6aa - Falinor : docs(auth): refine auth hardening spec
 2026-06-25T18:34:07+02:00 - ea41af1c - Andrea Gueugnaut : Merge pull request #1846 from MTES-MCT/feat/list-unregistered-lovac-consumers
 2026-06-25T18:22:24+02:00 - c400ed26 - Falinor : feat(analytics): sync CEREMA Portail DF LOVAC users monthly and surface unregistered ones
 2026-06-25T18:22:24+02:00 - 3f2716a7 - Falinor : fix(analytics): register CEREMA LOVAC users asset, mart, and stop schedule by default
