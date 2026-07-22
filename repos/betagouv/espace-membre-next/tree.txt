@@ -40,10 +40,8 @@
 │   ├── test-create-member-validation.ts
 │   ├── test-create-member.ts
 │   ├── test-event.ts
-│   ├── test-service-account.ts
 │   ├── test-setup.ts
 │   ├── test-startups.ts
-│   ├── test-worker.ts
 │   ├── users.json
 │   └── utils
 │       ├── fakeData.ts
@@ -278,21 +276,9 @@
 │   │   │       │   │   └── page.tsx
 │   │   │       │   └── page.tsx
 │   │   │       ├── services
-│   │   │       │   ├── matomo
-│   │   │       │   │   ├── page.tsx
-│   │   │       │   │   └── request
-│   │   │       │   │       ├── new
-│   │   │       │   │       │   └── page.tsx
-│   │   │       │   │       └── page.tsx
 │   │   │       │   ├── ops
 │   │   │       │   │   └── page.tsx
-│   │   │       │   ├── page.tsx
-│   │   │       │   └── sentry
-│   │   │       │       ├── page.tsx
-│   │   │       │       └── request
-│   │   │       │           ├── new
-│   │   │       │           │   └── page.tsx
-│   │   │       │           └── page.tsx
+│   │   │       │   └── page.tsx
 │   │   │       ├── startups
 │   │   │       │   ├── SearchFiles.tsx
 │   │   │       │   ├── [id]
@@ -390,7 +376,6 @@
 │   │   │   │       │   └── route.ts
 │   │   │   │       └── route.ts
 │   │   │   ├── services
-│   │   │   │   ├── actions.ts
 │   │   │   │   └── ops
 │   │   │   │       └── actions.ts
 │   │   │   ├── startups
@@ -472,7 +457,6 @@
 │   │   │   ├── styles-marker-cluster.css
 │   │   │   ├── styles.module.css
 │   │   │   └── useLeafletAccessibility.ts
-│   │   ├── MatomoSiteSelect.tsx
 │   │   ├── MemberPage
 │   │   │   ├── AdminPanel.tsx
 │   │   │   ├── CheckListTabPanel.tsx
@@ -504,11 +488,7 @@
 │   │   ├── SESponsorSelect.tsx
 │   │   ├── Service
 │   │   │   ├── AccountDetails.tsx
-│   │   │   ├── CreateMatomoServiceForm.tsx
-│   │   │   ├── CreateSentryServiceForm.tsx
-│   │   │   ├── MatomoServiceForm.tsx
-│   │   │   ├── OpsRequestForm.tsx
-│   │   │   └── SentryServiceForm.tsx
+│   │   │   └── OpsRequestForm.tsx
 │   │   ├── Skiplinks.tsx
 │   │   ├── SponsorForm
 │   │   │   ├── SponsorDomainSelect.tsx
@@ -547,7 +527,6 @@
 │   │   │   ├── StartupHistory.tsx
 │   │   │   ├── StartupMembers.tsx
 │   │   │   ├── StartupPage.tsx
-│   │   │   ├── StartupTools.tsx
 │   │   │   ├── standards.css
 │   │   │   └── timeline.css
 │   │   ├── SurveyBox.tsx
@@ -632,7 +611,6 @@
 │   │   │   │   ├── userEvents.ts
 │   │   │   │   └── users.ts
 │   │   │   └── queries.ts
-│   │   ├── matomo.ts
 │   │   ├── matrix
 │   │   │   ├── client.spec.ts
 │   │   │   └── client.ts
@@ -644,15 +622,13 @@
 │   ├── models
 │   │   ├── actionEvent
 │   │   │   ├── actionEvent.ts
-│   │   │   ├── index.ts
-│   │   │   └── serviceActionEvent.ts
+│   │   │   └── index.ts
 │   │   ├── actions
 │   │   │   ├── image.ts
 │   │   │   ├── incubator.ts
 │   │   │   ├── member.ts
 │   │   │   ├── opsRequest.ts
 │   │   │   ├── organization.ts
-│   │   │   ├── service.ts
 │   │   │   ├── startup.ts
 │   │   │   └── team.ts
 │   │   ├── brevoEvent.ts
@@ -668,8 +644,6 @@
 │   │   │   └── services.ts
 │   │   ├── mapper
 │   │   │   ├── index.ts
-│   │   │   ├── matomoMapper.ts
-│   │   │   ├── sentryMapper.ts
 │   │   │   ├── startupMapper.ts
 │   │   │   └── userEventMapper.ts
 │   │   ├── matomo.ts
@@ -710,7 +684,6 @@
 │   │   │   ├── admin.config.ts
 │   │   │   ├── email.config.ts
 │   │   │   ├── index.ts
-│   │   │   ├── matomo.config.ts
 │   │   │   └── sentry.config.ts
 │   │   ├── controllers
 │   │   │   ├── utils.spec.ts
@@ -738,9 +711,6 @@
 │   │   │       ├── clean-teams-members.ts
 │   │   │       ├── create-dimail-mailbox.spec.ts
 │   │   │       ├── create-dimail-mailbox.ts
-│   │   │       ├── create-sentry-account.ts
-│   │   │       ├── create-sentry-team.ts
-│   │   │       ├── create-update-matomo-account.ts
 │   │   │       ├── send-email-to-incubator.spec.ts
 │   │   │       ├── send-email-to-incubator.ts
 │   │   │       ├── send-email-to-team-when-new-member.spec.ts
@@ -753,7 +723,6 @@
 │   │   │       ├── sync-dinum-emails.ts
 │   │   │       ├── sync-matrix-accounts.spec.ts
 │   │   │       ├── sync-matrix-accounts.ts
-│   │   │       ├── update-sentry-account.ts
 │   │   │       └── utils.ts
 │   │   ├── schedulers
 │   │   │   ├── cron.ts
@@ -761,11 +730,6 @@
 │   │   │   ├── recreateEmailIfUserActive.ts
 │   │   │   ├── scheduleCronJobs.ts
 │   │   │   ├── schedulePgBossJobs.ts
-│   │   │   ├── serviceScheduler
-│   │   │   │   ├── syncMatomoAccounts.ts
-│   │   │   │   ├── syncMatomoSites.ts
-│   │   │   │   ├── syncSentryAccounts.ts
-│   │   │   │   └── syncSentryTeams.ts
 │   │   │   └── startups
 │   │   │       ├── index.ts
 │   │   │       └── sendEmailToStartupToUpdatePhase.ts
@@ -778,10 +742,6 @@
 │   │       │       │   └── EmailCreatedDimail.tsx
 │   │       │       ├── LoginEmail
 │   │       │       │   └── LoginEmail.tsx
-│   │       │       ├── MatomoAccountCreatedEmail
-│   │       │       │   └── MatomoAccountCreatedEmail.tsx
-│   │       │       ├── MatomoAccountUpdatedEmail
-│   │       │       │   └── MatomoAccountUpdatedEmail.tsx
 │   │       │       ├── StartupNewMemberArrivalEmail
 │   │       │       │   └── StartupNewMemberArrivalEmail.tsx
 │   │       │       ├── VerificationWaitingEmail
@@ -825,4 +785,4 @@
 ├── storybook
 ├── tsconfig.json
 └── tsconfig.server.json
-188 directories, 639 files
+179 directories, 608 files
