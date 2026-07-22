@@ -8,12 +8,27 @@ and this project adheres to
 
 ## [Unreleased]
 
+## Fixed
+
+- 🐛(transcription) fix silent bug in speaker assignment
+
+### Changed
+
+- ⬆️(frontend) upgrade @mediapipe/tasks-vision from 0.10.14 to 0.10.35
+- ⬆️(frontend) upgrade i18next from 26.3.1 to 26.3.2
+- ⬆️(frontend) upgrade posthog-js from 1.391.2 to 1.395.0
+- ⬆️(frontend) upgrade @tanstack/react-query from 5.101.0 to 5.101.1
+- ⬆️(frontend) upgrade livekit-client from 2.19.2 to 2.20.0
+
+## [1.24.0] - 2026-07-21
+
 ### Added
 
 - ✨(backend) allow searching the recording admin table by owner email
 - ✨(frontend) add participant color gradient when camera is off #1490
 - ✨(all) allow forcing SSO display name for authenticated users
 - ➕(frontend) install vite-plugin-static-copy for MediaPipe WASM assets
+- ✨(addon) show add-in tools when creating meetings in shared calendars
 
 ### Changed
 
@@ -33,6 +48,7 @@ and this project adheres to
 - 🩹(backend) identify externally provisioned users to PostHog
 - 🐛(backend) fix info panel crash for unregistered rooms
 - ♿️(frontend) focus side panel container on open #1452
+- 🐛(summary) whisper call error handling
 
 ## [1.23.0] - 2026-07-08
 
