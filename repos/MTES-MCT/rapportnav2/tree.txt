@@ -331,6 +331,7 @@
 │   │   │   │                   │   │   │   └── UpdateInquiry.kt
 │   │   │   │                   │   │   ├── mission
 │   │   │   │                   │   │   │   ├── CreateEnvMission.kt
+│   │   │   │                   │   │   │   ├── GetEnvMissionById.kt
 │   │   │   │                   │   │   │   ├── GetEnvMissions.kt
 │   │   │   │                   │   │   │   ├── PatchEnvMission.kt
 │   │   │   │                   │   │   │   ├── action
@@ -338,6 +339,7 @@
 │   │   │   │                   │   │   │   │   ├── GroupActionByDate.kt
 │   │   │   │                   │   │   │   │   ├── PatchEnvAction.kt
 │   │   │   │                   │   │   │   │   ├── PatchFishAction.kt
+│   │   │   │                   │   │   │   │   ├── ResolveActionOwnerId.kt
 │   │   │   │                   │   │   │   │   └── v2
 │   │   │   │                   │   │   │   │       ├── AbstractGetMissionAction.kt
 │   │   │   │                   │   │   │   │       ├── CreateNavAction.kt
@@ -351,7 +353,6 @@
 │   │   │   │                   │   │   │   │       ├── GetComputeSati.kt
 │   │   │   │                   │   │   │   │       ├── GetComputeTarget.kt
 │   │   │   │                   │   │   │   │       ├── GetEnvActionById.kt
-│   │   │   │                   │   │   │   │       ├── GetEnvMissionById2.kt
 │   │   │   │                   │   │   │   │       ├── GetFishActionById.kt
 │   │   │   │                   │   │   │   │       ├── GetFishActionListByMissionId.kt
 │   │   │   │                   │   │   │   │       ├── GetMissionAction.kt
@@ -385,7 +386,6 @@
 │   │   │   │                   │   │   │   │   ├── DeleteFishAuction.kt
 │   │   │   │                   │   │   │   │   └── GetFishAuctions.kt
 │   │   │   │                   │   │   │   ├── generalInfo
-│   │   │   │                   │   │   │   │   ├── AddOrUpdateMissionGeneralInfo.kt
 │   │   │   │                   │   │   │   │   └── GetMissionGeneralInfoByMissionId.kt
 │   │   │   │                   │   │   │   ├── infraction
 │   │   │   │                   │   │   │   │   └── GetNatinfs.kt
@@ -401,19 +401,22 @@
 │   │   │   │                   │   │   │       ├── CreateMissionNav.kt
 │   │   │   │                   │   │   │       ├── DeleteEnvMission.kt
 │   │   │   │                   │   │   │       ├── DeleteGeneralInfos.kt
-│   │   │   │                   │   │   │       ├── DeleteMissionCrew2.kt
+│   │   │   │                   │   │   │       ├── DeleteMission.kt
 │   │   │   │                   │   │   │       ├── DeleteNavMission.kt
 │   │   │   │                   │   │   │       ├── GetAllGeneralInfos.kt
+│   │   │   │                   │   │   │       ├── GetAllMissionActions.kt
 │   │   │   │                   │   │   │       ├── GetAllMissions.kt
 │   │   │   │                   │   │   │       ├── GetComputeEnvMission.kt
 │   │   │   │                   │   │   │       ├── GetComputeNavMission.kt
 │   │   │   │                   │   │   │       ├── GetCountries.kt
-│   │   │   │                   │   │   │       ├── GetGeneralInfo2.kt
+│   │   │   │                   │   │   │       ├── GetGeneralInfo.kt
 │   │   │   │                   │   │   │       ├── GetMissionActionControls.kt
+│   │   │   │                   │   │   │       ├── GetMissionByExternalId.kt
 │   │   │   │                   │   │   │       ├── GetMissionCrew.kt
 │   │   │   │                   │   │   │       ├── GetMissionDates.kt
+│   │   │   │                   │   │   │       ├── GetMissionExternalId.kt
 │   │   │   │                   │   │   │       ├── GetMissions.kt
-│   │   │   │                   │   │   │       ├── GetNavMissionById2.kt
+│   │   │   │                   │   │   │       ├── GetNavMissionById.kt
 │   │   │   │                   │   │   │       ├── GetNavMissions.kt
 │   │   │   │                   │   │   │       ├── GetPorts.kt
 │   │   │   │                   │   │   │       ├── GetVessels.kt
@@ -500,6 +503,7 @@
 │   │   │   │                       │   │   ├── ApiKeysAdminController.kt
 │   │   │   │                       │   │   ├── FishAuctionAdminController.kt
 │   │   │   │                       │   │   ├── GeneralInfosAdminController.kt
+│   │   │   │                       │   │   ├── MissionActionAdminController.kt
 │   │   │   │                       │   │   ├── MissionAdminController.kt
 │   │   │   │                       │   │   ├── ServiceAdminController.kt
 │   │   │   │                       │   │   ├── ServiceManageController.kt
@@ -511,10 +515,12 @@
 │   │   │   │                       │   │   │       ├── AdminApiKeyAuditOutput.kt
 │   │   │   │                       │   │   │       ├── AdminAuthenticationAuditOutput.kt
 │   │   │   │                       │   │   │       ├── AdminGeneralInfosOutput.kt
+│   │   │   │                       │   │   │       ├── AdminMissionActionOutput.kt
 │   │   │   │                       │   │   │       ├── AdminMissionOutput.kt
 │   │   │   │                       │   │   │       ├── AdminPaginatedApiKeyAuditOutput.kt
 │   │   │   │                       │   │   │       ├── AdminPaginatedAuthenticationAuditOutput.kt
 │   │   │   │                       │   │   │       ├── AdminPaginatedGeneralInfosOutput.kt
+│   │   │   │                       │   │   │       ├── AdminPaginatedMissionActionOutput.kt
 │   │   │   │                       │   │   │       └── AdminPaginatedMissionOutput.kt
 │   │   │   │                       │   │   └── models
 │   │   │   │                       │   │       ├── AdminApiKey.kt
@@ -981,6 +987,8 @@
 │   │   │       │       ├── V1.2026.06.22.15.55__update_sati_table_and_correspondance.sql
 │   │   │       │       ├── V1.2026.06.30.10.00__delete_duplicate_target2_external_id.sql
 │   │   │       │       ├── V1.2026.07.01.10.00__unique_constraint_general_info_mission_id.sql
+│   │   │       │       ├── V1.2026.07.16.10.00__prepopulate_mission_and_external_mission_id.sql
+│   │   │       │       ├── V1.2026.07.20.10.00__backfill_mission_action_owner_id.sql
 │   │   │       │       └── V1.2026.25.03.17.00__control_admin_new_field.sql
 │   │   │       ├── global
 │   │   │       │   └── migration
@@ -1131,6 +1139,7 @@
 │   │       │                   │   │   │   │   ├── GetFishActionByIdTest.kt
 │   │       │                   │   │   │   │   ├── GetNavActionByIdTest.kt
 │   │       │                   │   │   │   │   ├── ProcessMissionActionTargetTest.kt
+│   │       │                   │   │   │   │   ├── ResolveActionOwnerIdTest.kt
 │   │       │                   │   │   │   │   ├── UpdateEnvActionTest.kt
 │   │       │                   │   │   │   │   ├── UpdateFishActionTest.kt
 │   │       │                   │   │   │   │   ├── UpdateNavActionTest.kt
@@ -1166,7 +1175,6 @@
 │   │       │                   │   │   │   ├── fish
 │   │       │                   │   │   │   │   └── GetFishAuctionsTest.kt
 │   │       │                   │   │   │   ├── generalInfo
-│   │       │                   │   │   │   │   ├── AddOrUpdateMissionGeneralInfoTest.kt
 │   │       │                   │   │   │   │   └── GetMissionGeneralInfoByMissionIdTest.kt
 │   │       │                   │   │   │   ├── sati
 │   │       │                   │   │   │   │   ├── GetComputeSatiTest.kt
@@ -1183,20 +1191,24 @@
 │   │       │                   │   │   │       ├── CreateMissionTest.kt
 │   │       │                   │   │   │       ├── DeleteEnvMissionTest.kt
 │   │       │                   │   │   │       ├── DeleteGeneralInfoTest.kt
-│   │       │                   │   │   │       ├── DeleteMissionCrew2Test.kt
+│   │       │                   │   │   │       ├── DeleteMissionCrewTest.kt
+│   │       │                   │   │   │       ├── DeleteMissionTest.kt
 │   │       │                   │   │   │       ├── DeleteNavMissionTest.kt
 │   │       │                   │   │   │       ├── GetAllGeneralInfosTest.kt
+│   │       │                   │   │   │       ├── GetAllMissionActionsTest.kt
 │   │       │                   │   │   │       ├── GetAllMissionsTest.kt
 │   │       │                   │   │   │       ├── GetComputeEnvMissionTest.kt
 │   │       │                   │   │   │       ├── GetComputeNavMissionTest.kt
-│   │       │                   │   │   │       ├── GetEnvMissionById2Test.kt
-│   │       │                   │   │   │       ├── GetGeneralInfo2Test.kt
+│   │       │                   │   │   │       ├── GetEnvMissionByIdTest.kt
+│   │       │                   │   │   │       ├── GetGeneralInfoTest.kt
 │   │       │                   │   │   │       ├── GetMissionActionControlsTest.kt
+│   │       │                   │   │   │       ├── GetMissionByExternalIdTest.kt
 │   │       │                   │   │   │       ├── GetMissionCrewTest.kt
 │   │       │                   │   │   │       ├── GetMissionDatesTest.kt
+│   │       │                   │   │   │       ├── GetMissionExternalIdTest.kt
 │   │       │                   │   │   │       ├── GetMissionGeneralInfoByMissionIdTest.kt
 │   │       │                   │   │   │       ├── GetMissionsTest.kt
-│   │       │                   │   │   │       ├── GetNavMissionById2Test.kt
+│   │       │                   │   │   │       ├── GetNavMissionByIdTest.kt
 │   │       │                   │   │   │       ├── GetNavMissionsTest.kt
 │   │       │                   │   │   │       ├── GetPortsTest.kt
 │   │       │                   │   │   │       ├── GetVesselsTest.kt
@@ -1263,6 +1275,7 @@
 │   │       │                   │   │   │   ├── ApiAdminControllerITest.kt
 │   │       │                   │   │   │   ├── FishAuctionAdminControllerTest.kt
 │   │       │                   │   │   │   ├── GeneralInfosAdminControllerTest.kt
+│   │       │                   │   │   │   ├── MissionActionAdminControllerTest.kt
 │   │       │                   │   │   │   ├── MissionAdminControllerTest.kt
 │   │       │                   │   │   │   ├── ServiceAdminControllerTest.kt
 │   │       │                   │   │   │   ├── ServiceManageControllerTest.kt
@@ -1664,12 +1677,15 @@
 │   │   │   │   ├── admin
 │   │   │   │   │   ├── components
 │   │   │   │   │   │   ├── elements
+│   │   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   │   └── admin-mission-action-item.test.tsx
 │   │   │   │   │   │   │   ├── admin-agent-item.tsx
 │   │   │   │   │   │   │   ├── admin-agent-role-item.tsx
 │   │   │   │   │   │   │   ├── admin-apikey-item.tsx
 │   │   │   │   │   │   │   ├── admin-basic-item-generic.tsx
 │   │   │   │   │   │   │   ├── admin-fish-auction-item.tsx
 │   │   │   │   │   │   │   ├── admin-general-infos-item.tsx
+│   │   │   │   │   │   │   ├── admin-mission-action-item.tsx
 │   │   │   │   │   │   │   ├── admin-mission-item.tsx
 │   │   │   │   │   │   │   ├── admin-service-item.tsx
 │   │   │   │   │   │   │   ├── admin-user-apikey-logging-item.tsx
@@ -1686,6 +1702,8 @@
 │   │   │   │   │   │       ├── admin-user-form.tsx
 │   │   │   │   │   │       └── admin-user-password-form.tsx
 │   │   │   │   │   ├── services
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   └── use-admin-mission-actions.test.tsx
 │   │   │   │   │   │   ├── use-admin-agents-service.tsx
 │   │   │   │   │   │   ├── use-admin-apikey-logging-service.tsx
 │   │   │   │   │   │   ├── use-admin-apikeys-service.tsx
@@ -1707,6 +1725,7 @@
 │   │   │   │   │   │   ├── use-admin-fish-auctions-service.tsx
 │   │   │   │   │   │   ├── use-admin-general-infos.tsx
 │   │   │   │   │   │   ├── use-admin-migrate-agents-service.tsx
+│   │   │   │   │   │   ├── use-admin-mission-actions.tsx
 │   │   │   │   │   │   ├── use-admin-missions.tsx
 │   │   │   │   │   │   ├── use-admin-rorate-apikey-service.tsx
 │   │   │   │   │   │   ├── use-admin-services-service.tsx
@@ -1720,6 +1739,7 @@
 │   │   │   │   │       ├── admin-apikey-types.ts
 │   │   │   │   │       ├── admin-fish-auction-types.ts
 │   │   │   │   │       ├── admin-general-infos-types.ts
+│   │   │   │   │       ├── admin-mission-action-types.ts
 │   │   │   │   │       ├── admin-mission-types.ts
 │   │   │   │   │       ├── admin-services-type.ts
 │   │   │   │   │       ├── admin-user-auth-logging-types.ts
@@ -2557,4 +2577,4 @@
 │   └── docker-compose.yml
 ├── release-please-config.json
 └── sonar-project.properties
-501 directories, 2094 files
+503 directories, 2112 files

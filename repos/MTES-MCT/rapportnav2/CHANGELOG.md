@@ -1,5 +1,28 @@
 # Changelog
 
+## [2.90.0](https://github.com/MTES-MCT/rapportnav2/compare/v2.89.0...v2.90.0) (2026-07-21)
+
+
+### Features
+
+* **actions:** nake sure to write ownerId ([45b2757](https://github.com/MTES-MCT/rapportnav2/commit/45b27570d58d382fa8594ff33f656316f3d6c544))
+
+## [2.89.0](https://github.com/MTES-MCT/rapportnav2/compare/v2.88.0...v2.89.0) (2026-07-20)
+
+
+### Features
+
+* **actions:** backfill ownerId ([9bf853d](https://github.com/MTES-MCT/rapportnav2/commit/9bf853d1264790fc89017453e64897cbde804b2b))
+* **admin:** add actions to admin panel ([e17e324](https://github.com/MTES-MCT/rapportnav2/commit/e17e32479b42974caafa8b7fb58cb6eb47b6fb88))
+
+## [2.88.0](https://github.com/MTES-MCT/rapportnav2/compare/v2.87.0...v2.88.0) (2026-07-20)
+
+
+### Features
+
+* **admin:** search by id and internalId ([89fe42e](https://github.com/MTES-MCT/rapportnav2/commit/89fe42e49aac48d2be6bc20c5e08b5e3e5c9e3ea))
+* **ID:** prefill mission table and sync with Env data ([5c898f0](https://github.com/MTES-MCT/rapportnav2/commit/5c898f0f80fc648427dc4aeb7f23f9584cfb7712))
+
 ## [2.87.0](https://github.com/MTES-MCT/rapportnav2/compare/v2.86.2...v2.87.0) (2026-07-17)
 
 
