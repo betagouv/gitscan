@@ -1,21 +1,20 @@
-## Changelog : monitor-ui (30 derniers jours, au 8 juillet 2026)
+## Changelog : monitor-ui (30 derniers jours, au 20 juillet 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a principalement travaillé sur l'amélioration et l'ajout de fonctionnalités au composant de gestion de fichiers, notamment un nouveau composant `FileUploader` et des corrections pour la gestion des miniatures et des types de fichiers. De nouvelles icônes ont également été ajoutées pour enrichir l'interface utilisateur.
+Ce mois-ci, l'équipe a principalement travaillé sur l'amélioration et l'ajout de fonctionnalités au composant de gestion de fichiers, notamment un nouveau composant de téléversement de fichiers et des corrections pour une meilleure expérience utilisateur. De nouvelles icônes ont également été ajoutées.
 
 ### Évolutions fonctionnelles
-- Ajout d'un nouveau composant `FileUploader` pour faciliter le chargement de fichiers.
+- Ajout d'un nouveau composant `FileUploader` pour faciliter le téléversement de fichiers.
 - Amélioration de l'affichage des noms de fichiers longs avec l'ajout d'une ellipse.
-- Correction d'un bug empêchant le téléchargement de fichiers lorsque le type MIME ne correspondait pas au mode.
-- Correction d'un bug lié à la suppression d'éléments par index.
-- Ajout de l'icône "Attachment" pour une meilleure représentation des pièces jointes.
-- Ajout de nouvelles icônes pour divers besoins.
+- Ajout d'une nouvelle icône "Attachment" pour les pièces jointes.
+- Ajout de nouvelles icônes diverses.
+- Le bouton de suppression dans les composants a été modifié pour être un bouton standard.
 
 ### Évolutions techniques
-- Exportation de types pour une meilleure utilisation des composants.
-- Exportation du hook `convertImagesToThumbnails` pour une réutilisation facilitée.
-- Suppression du padding inutile dans certains composants pour un meilleur contrôle du style.
-- Modification du padding interne de certains composants pour améliorer l'apparence.
+- Export de types pour une meilleure utilisation des composants.
+- Export de la fonction `convertImagesToThumbnails` pour une utilisation externe.
+- Suppression du padding inutile dans certains composants et ajout de classnames pour une meilleure personnalisation des styles.
+- Correction d'un problème empêchant le téléversement de fichiers lorsque le type MIME ne correspondait pas.
 
 ### Autres changements
-- Correction d'un bug lié à l'accessibilité du bouton de fermeture dans la composante Dialog (non visible dans les commits récents mais présent dans l'historique).
+- Correction de plusieurs bugs mineurs liés au padding interne et à l'exportation de fonctions et de types.
