@@ -1954,7 +1954,8 @@
     │   │   ├── config
     │   │   │   └── config.ts
     │   │   ├── constants
-    │   │   │   └── genders.constant.ts
+    │   │   │   ├── genders.constant.ts
+    │   │   │   └── previewUrl.constant.ts
     │   │   ├── graphql
     │   │   │   └── strapi.ts
     │   │   ├── helpers
@@ -2022,6 +2023,7 @@
     │   │   │   │       │       ├── dematerialized-feasibility-file-complement-experience-parcours-vise.spec.ts
     │   │   │   │       │       ├── dematerialized-feasibility-file-eligibility.spec.ts
     │   │   │   │       │       ├── dematerialized-feasibility-file-prerequisites.spec.ts
+    │   │   │   │       │       ├── dematerialized-feasibility-file-sworn-statement.spec.ts
     │   │   │   │       │       ├── dematerialized-feasibility-file.spec.ts
     │   │   │   │       │       └── dff-mocks.ts
     │   │   │   │       ├── feasibility-aap
@@ -2390,6 +2392,7 @@
     │   │   │   ├── security
     │   │   │   │   ├── canAccessCandidacy.security.ts
     │   │   │   │   ├── candidacy.security.test.ts
+    │   │   │   │   ├── candidacyUpdateCertificationAuthority.security.test.ts
     │   │   │   │   └── security.ts
     │   │   │   ├── training
     │   │   │   │   ├── emails
@@ -4588,7 +4591,9 @@
     │   │   ├── seedFeasibilities.ts
     │   │   ├── seedSandboxDb.ts
     │   │   ├── sendEmailPaymentRequestBefore2025ToAAP.ts
+    │   │   ├── sendUniformationPaymentReminderToAAP.ts
     │   │   ├── syncOutcsaleBucketToBackup.ts
+    │   │   ├── uniformation_num_actions.json
     │   │   ├── updateAllCertificationsWithPrerequisitesFromFC.ts
     │   │   ├── updateAvailableCertificationsWithRncpFields.ts
     │   │   ├── updateAvailableCertificationsWithRncpFieldsAndSubDomains.ts
@@ -4669,6 +4674,7 @@
     │   │   ├── bg-candidate.svg
     │   │   ├── components
     │   │   │   ├── document.svg
+    │   │   │   ├── student.svg
     │   │   │   └── verified-badge.svg
     │   │   ├── files
     │   │   │   ├── Dossier_faisabilité_candidat_autonome.pdf
@@ -5053,11 +5059,11 @@
     │   │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   │   ├── candidacy-deleted
     │   │   │   │   │   │   │   │   │   │   └── page.tsx
-    │   │   │   │   │   │   │   │   │   ├── certification-authority-contact-info
+    │   │   │   │   │   │   │   │   │   ├── certification-authority-details
     │   │   │   │   │   │   │   │   │   │   ├── _components
     │   │   │   │   │   │   │   │   │   │   │   ├── CertificationAuthorityCard.tsx
     │   │   │   │   │   │   │   │   │   │   │   └── CertificationAuthorityLocalAccountCard.tsx
-    │   │   │   │   │   │   │   │   │   │   ├── certificationAuthorityContactInfo.hook.ts
+    │   │   │   │   │   │   │   │   │   │   ├── certificationAuthorityDetailsPage.hook.ts
     │   │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   │   ├── dossier-de-validation
     │   │   │   │   │   │   │   │   │   │   ├── _components
@@ -5087,9 +5093,17 @@
     │   │   │   │   │   │   │   │   │   │   │   └── ResultatCardWithBlocks.tsx
     │   │   │   │   │   │   │   │   │   │   ├── jury-results.hook.ts
     │   │   │   │   │   │   │   │   │   │   └── page.tsx
-    │   │   │   │   │   │   │   │   │   └── jury-session
-    │   │   │   │   │   │   │   │   │       ├── jury-session.hook.ts
-    │   │   │   │   │   │   │   │   │       └── page.tsx
+    │   │   │   │   │   │   │   │   │   ├── jury-session
+    │   │   │   │   │   │   │   │   │   │   ├── jury-session.hook.ts
+    │   │   │   │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   │   │   └── multiple-certification-authorities-selection
+    │   │   │   │   │   │   │   │   │       ├── certification-authorities-list
+    │   │   │   │   │   │   │   │   │       │   ├── _components
+    │   │   │   │   │   │   │   │   │       │   │   └── CertificationAuthorityCard.tsx
+    │   │   │   │   │   │   │   │   │       │   ├── multipleCertificationAuthoritiesList.hooks.ts
+    │   │   │   │   │   │   │   │   │       │   └── page.tsx
+    │   │   │   │   │   │   │   │   │       └── disclaimer
+    │   │   │   │   │   │   │   │   │           └── page.tsx
     │   │   │   │   │   │   │   │   ├── certification
     │   │   │   │   │   │   │   │   │   └── [certificationId]
     │   │   │   │   │   │   │   │   │       ├── _components
@@ -5364,6 +5378,8 @@
     │   │   │   │   │       └── dematerialized-feasibility-file.handler.ts
     │   │   │   │   ├── jury-results
     │   │   │   │   │   └── jury-results.handler.ts
+    │   │   │   │   ├── multiple-certification-authorities-selection
+    │   │   │   │   │   └── certification-authorities-list.handler.ts
     │   │   │   │   ├── set-organism
     │   │   │   │   │   └── set-organism.handler.ts
     │   │   │   │   ├── type-accompagnement
@@ -5387,12 +5403,17 @@
     │   │       ├── candidacies
     │   │       │   ├── archive-candidacy.spec.ts
     │   │       │   ├── candidacies.spec.ts
-    │   │       │   ├── certification-authority-contact-info.spec.ts
+    │   │       │   ├── certification-authority-details.spec.ts
     │   │       │   ├── create-candidacy-accompagne.spec.ts
     │   │       │   ├── create-candidacy-autonome.spec.ts
     │   │       │   ├── create-candidacy-vae.spec.ts
     │   │       │   ├── create-certification-page.spec.ts
     │   │       │   ├── dropout-candidacy.spec.ts
+    │   │       │   ├── multiple-certification-authorities-selection
+    │   │       │   │   ├── certification-authorities-list
+    │   │       │   │   │   └── certification-authorities-list.spec.ts
+    │   │       │   │   └── disclaimer
+    │   │       │   │       └── multiple-certification-authorities-selection-disclaimer.spec.ts
     │   │       │   ├── project-certification-page.spec.ts
     │   │       │   └── select-candidacy.spec.ts
     │   │       ├── dashboard
@@ -5440,7 +5461,8 @@
     │   │       │       ├── dematerialized-feasibility-file-prerequisites.spec.ts
     │   │       │       ├── dematerialized-feasibility-file-sworn-statement.spec.ts
     │   │       │       ├── dematerialized-feasibility-file.spec.ts
-    │   │       │       └── dff-mocks.ts
+    │   │       │       ├── dff-mocks.ts
+    │   │       │       └── send-file-certification-authority.spec.ts
     │   │       ├── first-connexion
     │   │       │   └── first-connexion.spec.ts
     │   │       └── profile
@@ -6219,4 +6241,4 @@
         ├── tsconfig.json
         └── types
             └── primitives.d.ts
-2087 directories, 4134 files
+2095 directories, 4148 files
