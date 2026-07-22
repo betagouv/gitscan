@@ -1,11 +1,29 @@
+2026-07-22T01:07:26+02:00 - 8d8561a - MrJimmyChevallier : Merge pull request #743 from MTES-MCT/fix/detachment-emails-content-and-link
+2026-07-22T01:04:32+02:00 - e3ef904 - MrJimmyChevallier : fix(employment): update detachment email content, bold styling, link and signature
+2026-07-20T18:04:35+02:00 - e789524 - Redwane Zafari : Merge pull request #736 from MTES-MCT/fix/export-employee-break-time
+2026-07-20T16:33:11+02:00 - ab864c3 - MrJimmyChevallier : Merge pull request #738 from MTES-MCT/fix/detachment-email-templates-and-commit
+2026-07-20T16:31:55+02:00 - 6754916 - MrJimmyChevallier : fix(employment): fix email commit in atomic transaction and align bold labels
+2026-07-20T15:04:16+02:00 - dbb4b3d - MrJimmyChevallier : chore(db): merge detachment, dispute and impersonation migration branches
+2026-07-20T10:50:08+02:00 - 039b557 - Redwane : fix(pdf): exclude transfer duration from break time in work days PDF
+2026-07-20T09:51:24+02:00 - bdb0604 - MrJimmyChevallier : Merge pull request #731 from MTES-MCT/feat/employee-detachment-request
+2026-07-20T09:50:25+02:00 - 1abdffd - MrJimmyChevallier : Merge pull request #722 from MTES-MCT/feat/contestation-from-employee
+2026-07-20T09:49:01+02:00 - 9d46c42 - MrJimmyChevallier : Merge pull request #732 from MTES-MCT/fix/impersonation-mission-creation-and-tracing
+2026-07-17T10:16:06+02:00 - 07259f6 - MrJimmyChevallier : test(impersonation): add scope guard tests for vehicle, location and auto-validation tables
+2026-07-17T09:26:58+02:00 - ea242d9 - MrJimmyChevallier : fix(employment): type detachment_request GraphQL output, address PR review
+2026-07-16T20:35:43+02:00 - be4ab0e - Redwane : fix(pdf): add break time column and totals to employee work days export
 2026-07-16T18:17:44+02:00 - b0aa292 - Gaspard "Sarp" Lonchampt : Merge pull request #724 from MTES-MCT/fix/sentry_error_noise_filtering
 2026-07-16T16:54:04+02:00 - 32ee220 - Gaspard Lonchampt : fix(sentry): filter recurring backend noise flooding shared instance
 2026-07-15T18:19:31+02:00 - deaff4f - Gaspard "Sarp" Lonchampt : Merge pull request #735 from MTES-MCT/prod
+2026-07-15T18:15:36+02:00 - 7670c27 - MrJimmyChevallier : chore: trigger CI
 2026-07-15T18:03:06+02:00 - 493fc3c - Gaspard Lonchampt : fix(cron): nest webinars refresh into process_auto_validations
 2026-07-15T17:39:34+02:00 - b019578 - Gaspard "Sarp" Lonchampt : Merge pull request #734 from MTES-MCT/hotfix/livestorm_spam_web_worker
 2026-07-15T17:25:28+02:00 - fc34a78 - Gaspard Lonchampt : perf(dashboard): bound pending validations to missions with recent activity
 2026-07-15T17:25:28+02:00 - c910ffa - Gaspard Lonchampt : refactor(webinars): serve Livestorm webinars from a scheduled cache
 2026-07-15T16:56:21+02:00 - c02d302 - Gaspard Lonchampt : fix(dashboard): correct correlated subquery in pending validations count
+2026-07-15T15:31:55+02:00 - e59ea13 - MrJimmyChevallier : feat(impersonation): expose validation context and fix PDF support author display
+2026-07-15T12:05:07+02:00 - a215072 - MrJimmyChevallier : feat(impersonation): allow mission creation and trace support actions in exports
+2026-07-13T12:23:41+02:00 - 3463456 - MrJimmyChevallier : feat(employment): add detachment request mutation with emails and tests
+2026-07-10T12:35:36+02:00 - 9ebbfa1 - MrJimmyChevallier : fix(activity): address dispute PR review with tests, user_id filter, UTC alignment
 2026-07-09T16:58:54+02:00 - bcdd515 - Doniaab : Merge pull request #730 from MTES-MCT/hotfix/timeout-livestorm
 2026-07-09T16:57:52+02:00 - ffc5b79 - donia benharara : hotfix(webinars): add redis timeout and remove duplication
 2026-07-09T16:34:43+02:00 - edb2c70 - Doniaab : Merge pull request #728 from MTES-MCT/hotfix/timeout-livestorm
@@ -20,6 +38,9 @@
 2026-07-06T15:04:32+02:00 - 8486e88 - Doniaab : Merge pull request #715 from MTES-MCT/feat/add-contact-to-deal
 2026-07-06T15:03:52+02:00 - 80a370f - Doniaab : Merge pull request #707 from MTES-MCT/feat/control-add-edited-workdays
 2026-07-02T19:08:38+02:00 - 4c961ef - Gaspard "Sarp" Lonchampt : Merge pull request #723 from MTES-MCT/master
+2026-06-30T17:27:00+02:00 - 4593e2e - MrJimmyChevallier : refactor(activity): address sonarcloud code smells in dispute history and export
+2026-06-30T16:36:17+02:00 - e09de97 - MrJimmyChevallier : Merge branch 'master' into feat/contestation-from-employee
+2026-06-30T16:33:38+02:00 - 0ab64b9 - MrJimmyChevallier : feat(activity): add dispute and cancel dispute mutations with history support
 2026-06-26T08:47:02+02:00 - d634775 - donia benharara : Merge branch 'prod' of github.com:MTES-MCT/mobilic-api into prod
 2026-06-25T16:54:50+02:00 - cf3c1ef - donia benharara : fix(brevo): sync existing deals and add dry-run option, removed dead code
 2026-06-25T16:38:14+02:00 - 9f20a16 - donia benharara : fix(control): add tests to ensure non regression for activities data
