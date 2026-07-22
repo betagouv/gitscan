@@ -5,11 +5,11 @@
 ├── .github
 │   ├── renovate.json
 │   └── workflows
-│       ├── checkov.yml
 │       ├── ci.yml
 │       ├── codeql-analysis.yml
 │       ├── deploiement.yml
-│       └── renovate.yaml
+│       ├── renovate.yaml
+│       └── securite-ci.yml
 ├── .gitignore
 ├── Dockerfile
 ├── LICENSE
@@ -92,10 +92,12 @@
 │       ├── client_albert.py
 │       ├── exceptions.py
 │       ├── fabrique_service_albert.py
+│       ├── reclasseur.py
 │       └── service_albert.py
 ├── templates
 │   ├── prompt_assistant_cyber.txt
 │   ├── prompt_reclassement.txt
+│   ├── prompt_reclassement_llm.txt
 │   └── prompt_reformulation.txt
 ├── tests
 │   ├── adaptateurs
@@ -142,6 +144,9 @@
 │   │   ├── conftest.py
 │   │   ├── test_fabrique_service_albert.py
 │   │   ├── test_filtre_reponses_maitrisees.py
+│   │   ├── test_reclasseur_bge.py
+│   │   ├── test_reclasseur_llm.py
+│   │   ├── test_reclasseurs.py
 │   │   ├── test_service_albert.py
 │   │   ├── test_service_albert_chunk_api.py
 │   │   └── test_service_albert_jeopardy.py
@@ -255,4 +260,4 @@
 │   ├── vitest.config.ts
 │   └── vitest.setup.ts
 └── uv.lock
-48 directories, 209 files
+48 directories, 214 files
