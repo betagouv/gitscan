@@ -180,6 +180,8 @@
 │   │   │   │                   │   │   │   ├── SuspicionOfInfractions.kt
 │   │   │   │                   │   │   │   ├── TargetDetailsEntity.kt
 │   │   │   │                   │   │   │   └── TargetTypeEnum.kt
+│   │   │   │                   │   │   ├── seafront
+│   │   │   │                   │   │   │   └── SeaFrontEntity.kt
 │   │   │   │                   │   │   ├── semaphore
 │   │   │   │                   │   │   │   └── SemaphoreEntity.kt
 │   │   │   │                   │   │   ├── station
@@ -225,7 +227,6 @@
 │   │   │   │                   │   │   ├── IDashboardRepository.kt
 │   │   │   │                   │   │   ├── IDepartmentAreaRepository.kt
 │   │   │   │                   │   │   ├── IEnvActionRepository.kt
-│   │   │   │                   │   │   ├── IFacadeAreasRepository.kt
 │   │   │   │                   │   │   ├── ILastPositionRepository.kt
 │   │   │   │                   │   │   ├── ILocalizedAreasRepository.kt
 │   │   │   │                   │   │   ├── IMissionRepository.kt
@@ -238,6 +239,7 @@
 │   │   │   │                   │   │   ├── IRegulatoryAreaRepository.kt
 │   │   │   │                   │   │   ├── IReportingRepository.kt
 │   │   │   │                   │   │   ├── IReportingSourceRepository.kt
+│   │   │   │                   │   │   ├── ISeaFrontRepository.kt
 │   │   │   │                   │   │   ├── ISemaphoreRepository.kt
 │   │   │   │                   │   │   ├── IStationRepository.kt
 │   │   │   │                   │   │   ├── ITagRepository.kt
@@ -305,6 +307,8 @@
 │   │   │   │                   │   │   ├── departmentArea
 │   │   │   │                   │   │   │   ├── GetDepartmentAreaByInseeCode.kt
 │   │   │   │                   │   │   │   └── GetDepartmentAreas.kt
+│   │   │   │                   │   │   ├── facade
+│   │   │   │                   │   │   │   └── GetSeaFronts.kt
 │   │   │   │                   │   │   ├── healthcheck
 │   │   │   │                   │   │   │   └── GetHealthcheck.kt
 │   │   │   │                   │   │   ├── lastPositions
@@ -490,6 +494,8 @@
 │   │   │   │                   │   │   │   │       │   ├── DashboardImageDataOutput.kt
 │   │   │   │                   │   │   │   │       │   ├── DashboardsDataOutput.kt
 │   │   │   │                   │   │   │   │       │   └── ExtractedAreaDataOutput.kt
+│   │   │   │                   │   │   │   │       ├── facades
+│   │   │   │                   │   │   │   │       │   └── SeaFrontDataOutput.kt
 │   │   │   │                   │   │   │   │       ├── missions
 │   │   │   │                   │   │   │   │       │   ├── MissionAttachedReportingDataOutput.kt
 │   │   │   │                   │   │   │   │       │   ├── MissionDataOutput.kt
@@ -593,6 +599,7 @@
 │   │   │   │                   │   │   │   │       ├── Positions.kt
 │   │   │   │                   │   │   │   │       ├── RecentActivity.kt
 │   │   │   │                   │   │   │   │       ├── RegulatoryAreas.kt
+│   │   │   │                   │   │   │   │       ├── SeaFront.kt
 │   │   │   │                   │   │   │   │       ├── Semaphores.kt
 │   │   │   │                   │   │   │   │       ├── Tags.kt
 │   │   │   │                   │   │   │   │       ├── Vessels.kt
@@ -707,7 +714,6 @@
 │   │   │   │                   │   │       ├── JpaDashboardRepository.kt
 │   │   │   │                   │   │       ├── JpaDepartmentAreaRepository.kt
 │   │   │   │                   │   │       ├── JpaEnvActionRepository.kt
-│   │   │   │                   │   │       ├── JpaFacadeAreasRepository.kt
 │   │   │   │                   │   │       ├── JpaLastPositionRepository.kt
 │   │   │   │                   │   │       ├── JpaLocalizedAreaRepository.kt
 │   │   │   │                   │   │       ├── JpaMissionRepository.kt
@@ -717,6 +723,7 @@
 │   │   │   │                   │   │       ├── JpaRegulatoryAreaRepository.kt
 │   │   │   │                   │   │       ├── JpaReportingRepository.kt
 │   │   │   │                   │   │       ├── JpaReportingSourceRepository.kt
+│   │   │   │                   │   │       ├── JpaSeaFrontRepository.kt
 │   │   │   │                   │   │       ├── JpaSemaphoreRepository.kt
 │   │   │   │                   │   │       ├── JpaStationRepository.kt
 │   │   │   │                   │   │       ├── JpaTagRepository.kt
@@ -999,7 +1006,8 @@
 │   │   │       │   │   │   ├── V0.222__delete_create_row_hash_function.sql
 │   │   │       │   │   │   ├── V0.224__create_table_mission_tags.sql
 │   │   │       │   │   │   ├── V0.225__add_column_notable_operation.sql
-│   │   │       │   │   │   └── V0.226__add_table_vessel_additional_informations_and_vessel_files.sql
+│   │   │       │   │   │   ├── V0.226__add_table_vessel_additional_informations_and_vessel_files.sql
+│   │   │       │   │   │   └── V0.227__compute_new_facade.sql
 │   │   │       │   │   └── layers
 │   │   │       │   │       ├── V0.001__create_fao_areas.sql
 │   │   │       │   │       ├── V0.002__create_eez_areas.sql
@@ -1154,6 +1162,8 @@
 │   │       │                   │   │   ├── departmentArea
 │   │       │                   │   │   │   ├── GetDepartmentAreaByInseeCodeUTests.kt
 │   │       │                   │   │   │   └── GetDepartmentAreasUTests.kt
+│   │       │                   │   │   ├── facade
+│   │       │                   │   │   │   └── GetSeaFrontUTest.kt
 │   │       │                   │   │   ├── localizedArea
 │   │       │                   │   │   │   └── GetAllLocalizedAreasUTests.kt
 │   │       │                   │   │   ├── missionTag
@@ -1280,6 +1290,7 @@
 │   │       │                       │       │   │   ├── NatinfsITests.kt
 │   │       │                       │       │   │   ├── RecentActivityITests.kt
 │   │       │                       │       │   │   ├── ReportingsITests.kt
+│   │       │                       │       │   │   ├── SeaFrontITest.kt
 │   │       │                       │       │   │   ├── SemaphoresITests.kt
 │   │       │                       │       │   │   ├── TagsITest.kt
 │   │       │                       │       │   │   ├── TestUtils.kt
@@ -1325,7 +1336,6 @@
 │   │       │                       │       ├── JpaDashboardRepositoryITests.kt
 │   │       │                       │       ├── JpaDepartmentAreasRepositoryTests.kt
 │   │       │                       │       ├── JpaEnvActionRepositoryITests.kt
-│   │       │                       │       ├── JpaFacadeAreasRepositoryTests.kt
 │   │       │                       │       ├── JpaLastPositionRepositoryTest.kt
 │   │       │                       │       ├── JpaMissionRepositoryITests.kt
 │   │       │                       │       ├── JpaMissionTagsRepositoryITest.kt
@@ -1334,6 +1344,7 @@
 │   │       │                       │       ├── JpaRegulatoryAreaRepositoryITests.kt
 │   │       │                       │       ├── JpaReportingRepositoryITests.kt
 │   │       │                       │       ├── JpaReportingSourceRepositoryITest.kt
+│   │       │                       │       ├── JpaSeaFrontRepositoryITests.kt
 │   │       │                       │       ├── JpaSemaphoreRepositoryITests.kt
 │   │       │                       │       ├── JpaStationRepositoryITests.kt
 │   │       │                       │       ├── JpaTagRepositoryITest.kt
@@ -1840,6 +1851,7 @@
 │   │   │   ├── recentActivity.ts
 │   │   │   ├── regulatoryAreasAPI.ts
 │   │   │   ├── reportingsAPI.ts
+│   │   │   ├── seaFrontsAPI.ts
 │   │   │   ├── semaphoresAPI.ts
 │   │   │   ├── stationsAPI.ts
 │   │   │   ├── tagsAPI.ts
@@ -1912,6 +1924,7 @@
 │   │   │   │   ├── dateRange.ts
 │   │   │   │   ├── departmentArea.ts
 │   │   │   │   ├── errors.ts
+│   │   │   │   ├── facades.ts
 │   │   │   │   ├── interestPointLine.ts
 │   │   │   │   ├── interestPoints.ts
 │   │   │   │   ├── layers
@@ -1930,7 +1943,6 @@
 │   │   │   │   ├── missions.ts
 │   │   │   │   ├── natinfs.ts
 │   │   │   │   ├── reporting.ts
-│   │   │   │   ├── seaFrontType.ts
 │   │   │   │   ├── semaphore.ts
 │   │   │   │   ├── sideWindow.ts
 │   │   │   │   ├── station.ts
@@ -2417,6 +2429,7 @@
 │   │   │   │   │   │   │   ├── MissionTypeCell.tsx
 │   │   │   │   │   │   │   ├── NumberOfControlsCell.tsx
 │   │   │   │   │   │   │   ├── ResourcesCell.tsx
+│   │   │   │   │   │   │   ├── SeaFrontCell.tsx
 │   │   │   │   │   │   │   ├── StatusCell.tsx
 │   │   │   │   │   │   │   ├── ThemesCell.tsx
 │   │   │   │   │   │   │   └── UnitCell.tsx
@@ -3172,7 +3185,6 @@
 │   └── scripts
 │       ├── backup_dev_db.sh
 │       └── restore_dev_db.sh
-├── package-lock.json
 ├── pipeline
 │   ├── .env.template
 │   ├── .env.test
@@ -3375,4 +3387,4 @@
 │       │   └── test_update_queries.py
 │       └── test_utils.py
 └── sonar-project.properties
-614 directories, 2763 files
+618 directories, 2771 files
