@@ -1,48 +1,37 @@
-## Changelog : monitorfish (30 derniers jours, au 17 juillet 2026)
+## Changelog : monitorfish (30 derniers jours, au 21 juillet 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives sur le formulaire de contrôle, notamment pour l'intégration de la version 1.3 de l'e-ISR, avec des ajustements des champs affichés et de la logique de remplissage. Des efforts ont également été déployés pour améliorer la gestion des groupes de navires prioritaires, tant au niveau de l'interface utilisateur que de l'API. Enfin, des corrections de bugs et des optimisations techniques ont été apportées pour améliorer la stabilité et la performance de l'application.
+Cette version apporte des améliorations significatives à la performance de l'application, notamment pour l'affichage des positions AIS. Des corrections ont été apportées au scraper Legipeche et à la gestion des groupes prioritaires de navires. L'interface utilisateur a été améliorée avec des corrections et des ajustements pour les formulaires de contrôle (e-ISR) et l'affichage des informations sur les navires.
 
 ### Évolutions fonctionnelles
-- **Formulaire de contrôle (CR de contrôle) :**
-    - Correction de l'affichage du champ INN dans le formulaire de contrôle, notamment pour les contrôles en Outre-Mer. [#5289](https://github.com/MTES-MCT/monitorfish/issues/5289)
-    - Correction du troncage du calendrier de fin de mission. [#5269](https://github.com/MTES-MCT/monitorfish/issues/5269)
-    - Amélioration de l'affichage des groupes de navires et des signalements associés dans le formulaire de contrôle. [#5270](https://github.com/MTES-MCT/monitorfish/issues/5270)
-    - Possibilité de sauvegarder une infraction en attente.
-    - Correction de la logique d'affichage des zones FAO lors de l'ajout d'une espèce.
-- **e-ISR :**
-    - Mise à jour des champs facultatifs et de la logique d'application pour la version 1.3. [#5257](https://github.com/MTES-MCT/monitorfish/issues/5257)
-    - Adaptation des APIs publiques pour l'intégration de l'e-ISR v1.3. [#5170](https://github.com/MTES-MCT/monitorfish/issues/5170)
-    - Modifications des contrôles en mer et à la débarque pour l'e-ISR v1.2. [#5175](https://github.com/MTES-MCT/monitorfish/issues/5175)
-- **Groupes de navires prioritaires :**
-    - Ajout de la description des groupes prioritaires dans les nouvelles fonctionnalités. [#5231](https://github.com/MTES-MCT/monitorfish/issues/5231)
-    - Affichage des groupes prioritaires avec des icônes de ciblage et réorganisation de l'affichage.
-    - Ajout de données codées en dur pour les groupes prioritaires.
-    - Amélioration de l'API pour récupérer les groupes de navires avec leurs vaisseaux associés.
-- **Préavis :** Affichage des messages manuels dans la marée du navire. [#5222](https://github.com/MTES-MCT/monitorfish/issues/5222)
-- **Propriétaire du navire :** Récupération des données du propriétaire du navire depuis Navpro.
+- Correction d'un problème de performance lors de la requête des dernières positions AIS [#5300](https://github.com/MTES-MCT/monitorfish/issues/5300).
+- Amélioration de la gestion des groupes prioritaires : inclusion des navires sous charte, exclusion des segments habituels et correction de bugs [#5293](https://github.com/MTES-MCT/monitorfish/issues/5293).
+- Correction du scraper Legipeche pour traiter les pages non visitées [#5268](https://github.com/MTES-MCT/monitorfish/issues/5268).
+- Affichage du filtre "navire sans fiche" dans la liste des signalements INN pour les outre-mers [#5289](https://github.com/MTES-MCT/monitorfish/issues/5289).
+- Correction du troncage de la date de fin de mission dans les signalements INN [#5269](https://github.com/MTES-MCT/monitorfish/issues/5269).
+- Améliorations des formulaires M1 et M3 (e-ISR) suite aux retours du CNSP [#5283](https://github.com/MTES-MCT/monitorfish/issues/5283) et [#5268](https://github.com/MTES-MCT/monitorfish/issues/5268).
+- Ajout de la description des groupes prioritaires.
+- Affichage des groupes partagés et des signalements de la marée sous la recherche navire.
+- Possibilité de sauvegarder une infraction en attente dans le rapport de contrôle.
+- Amélioration de l'affichage des informations sur les groupes prioritaires dans la carte et la liste des navires.
+- Affichage des messages manuels des préavis (PNO) dans le journal de bord du voyage [#5222](https://github.com/MTES-MCT/monitorfish/issues/5222).
 
 ### Évolutions techniques
-- **Linting :**
-    - Migration du linter frontend vers OxLint (hybride avec ESLint). [#5258](https://github.com/MTES-MCT/monitorfish/issues/5258)
-    - Passage à ESLint 9 avec suppressions natives. [#5259](https://github.com/MTES-MCT/monitorfish/issues/5259)
-    - Restauration de la parité Airbnb et accélération des hooks commit/push.
-    - Correction des violations de linting.
-    - Mise en place de hooks Git pour le linting backend via ktlint.
-- **Backend :**
-    - Amélioration de la performance de la fonction `GetAllVesselGroupsWithVessels`.
-    - Correction de la logique `effectiveControlPriorityLevel`.
-    - Ajout de tests backend pour les groupes de navires prioritaires.
-    - Utilisation de `updateMany` au lieu de spread-mapping pour optimiser les performances.
-- **Tests :**
-    - Amélioration de la stabilité des tests Cypress (correction de flakiness).
-    - Ajout de tests Cypress sur des données réelles pour l'affichage des groupes de navires.
-    - Ajout de tests pour les nouveaux champs et fonctionnalités.
-- **Dépendances :** Mise à jour de certaines dépendances. [#5255](https://github.com/MTES-MCT/monitorfish/issues/5255)
+- Mise à jour des dépendances Python (non-majeures) [#5277](https://github.com/MTES-MCT/monitorfish/issues/5277).
+- Refonte du linter frontend avec l'intégration d'OxLint (hybride ESLint) [#5259](https://github.com/MTES-MCT/monitorfish/issues/5259) et [#5233](https://github.com/MTES-MCT/monitorfish/issues/5233).
+- Amélioration des tests Cypress et Jest.
+- Ajout de tests backend pour les groupes prioritaires.
+- Optimisation de la requête SQL pour les positions AIS.
+- Correction de violations de linting et amélioration de la qualité du code.
+- Mise à jour des règles de linting et ajout de nouvelles règles.
+- Amélioration des performances du backend avec l'utilisation de `updateMany`.
 
 ### Autres changements
-- Correction du bug sur le champ `position_type` de la table `last_positions`. [#5229](https://github.com/MTES-MCT/monitorfish/issues/5229)
-- Mise à jour de la REG UE pour les avaries VMS. [#5241](https://github.com/MTES-MCT/monitorfish/issues/5241)
-- Ajout de l'opérateur à l'API publique. [#5259](https://github.com/MTES-MCT/monitorfish/issues/5259)
-- Suppression de la baseline ktlint. [#5261](https://github.com/MTES-MCT/monitorfish/issues/5261)
-- Amélioration de la documentation et des commentaires.
+- Correction de la logique de niveau de priorité de contrôle effectif.
+- Suppression de règles de linting obsolètes.
+- Mise à jour de la documentation.
+- Corrections de typographie et d'affichage.
+- Suppression de l'affichage de certains champs dans les formulaires e-ISR.
+- Mise à jour de la REG UE pour les dysfonctionnements des balises.
+- Ajout de l'opérateur à l'API publique.
+- Corrections diverses et amélioration de la maintenance du code.

@@ -254,6 +254,7 @@
 │   │   │   │                   │   │   │       ├── PatchableMissionAction.kt
 │   │   │   │                   │   │   │       ├── SpeciesControlPrefill.kt
 │   │   │   │                   │   │   │       ├── SpeciesOnboardControl.kt
+│   │   │   │                   │   │   │       ├── WeightControlMethod.kt
 │   │   │   │                   │   │   │       ├── WireType.kt
 │   │   │   │                   │   │   │       └── actrep
 │   │   │   │                   │   │   │           ├── ActivityCode.kt
@@ -1254,7 +1255,9 @@
 │   │   │       │   │   │   ├── V0.386__Update_manual_prior_notifications_table.sql
 │   │   │       │   │   │   ├── V0.387__Create_last_positions_vms_table.sql
 │   │   │       │   │   │   ├── V0.388__Update_vessels_table.sql
+│   │   │       │   │   │   ├── V0.389__Update_mission_actions_table.sql
 │   │   │       │   │   │   ├── V0.38__Update_last_positions_table.sql
+│   │   │       │   │   │   ├── V0.390__Drop_minimum_conservation_reference_size_controlled_column.sql
 │   │   │       │   │   │   ├── V0.39__Update_last_positions_table.sql
 │   │   │       │   │   │   ├── V0.40__Update_control_anteriority_table.sql
 │   │   │       │   │   │   ├── V0.41__Update_segments_tables.sql
@@ -3320,12 +3323,10 @@
 │   │   │   │   │   │   │   │   ├── __mocks__
 │   │   │   │   │   │   │   │   │   └── dummyAction.ts
 │   │   │   │   │   │   │   │   ├── mergeSpeciesOnboardWithPrefill.test.ts
-│   │   │   │   │   │   │   │   ├── updateActionLogbookFilledPriorToControl.test.ts
 │   │   │   │   │   │   │   │   └── updateMissionLocation.test.ts
 │   │   │   │   │   │   │   ├── initMissionGeometry.ts
 │   │   │   │   │   │   │   ├── updateActionFAOAreas.ts
 │   │   │   │   │   │   │   ├── updateActionGearsOnboard.ts
-│   │   │   │   │   │   │   ├── updateActionLogbookFilledPriorToControl.ts
 │   │   │   │   │   │   │   ├── updateActionSegments.ts
 │   │   │   │   │   │   │   ├── updateActionSpeciesOnboard.ts
 │   │   │   │   │   │   │   ├── updateMissionGeometry.ts
@@ -5925,4 +5926,4 @@
 ├── pull_request_template.md
 ├── settings.gradle.kts
 └── sonar-project.properties
-799 directories, 5442 files
+799 directories, 5443 files
