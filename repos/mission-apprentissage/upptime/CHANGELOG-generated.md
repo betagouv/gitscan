@@ -1,15 +1,14 @@
-## Changelog : upptime (30 derniers jours, au 20 juillet 2026)
+## Changelog : upptime (30 derniers jours, au 22 juillet 2026)
 
 ### Résumé
-Ce changelog résume les activités récentes du projet upptime sur les 30 derniers jours. Il s'agit principalement de mises à jour automatiques des statuts de disponibilité des différents services surveillés par upptime. Plusieurs mises à jour de la version d'upptime ont également été déployées.
+Ce changelog résume les activités récentes du projet upptime, principalement des mises à jour automatiques de l'état des services surveillés. Le bot Upptime a effectué des vérifications régulières et a mis à jour les statuts des différentes applications et APIs, signalant les incidents et rétablissements. Des mises à jour de la version du package `@upptime` ont également été effectuées.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle majeure n'a été apportée durant cette période. Les changements concernent principalement la surveillance continue des services et la mise à jour de leur statut de disponibilité.
+Aucune évolution fonctionnelle majeure n'a été apportée durant cette période. Les changements concernent principalement la surveillance et le reporting de l'état des services.
 
 ### Évolutions techniques
-- Mises à jour régulières de la version d'upptime : v1.43.10, v1.43.9, v1.43.8, v1.43.7, v1.43.6, v1.43.5, v1.43.4, v1.43.3, v1.43.2, v1.43.1.
-- Mises à jour automatiques des statuts de disponibilité de plusieurs services : API Apprentissage, Percona, Monitoring, SENTRY, BAL production, API Referentiel, Tableau de bord, La bonne alternance, Laboratoire La bonne alternance.
+*   Mise à jour de la version du package `@upptime` vers les versions 1.43.2, 1.43.3, 1.43.4, 1.43.5, 1.43.6, 1.43.7, 1.43.8, 1.43.9 et 1.43.10.
+*   Mises à jour régulières du résumé de l'état des services et du fichier README.
 
 ### Autres changements
-- Mises à jour régulières du fichier README et du résumé du statut.
-- Les graphs de monitoring sont régulièrement mis à jour.
+Aucun autre changement significatif n'a été identifié. Les commits sont principalement des mises à jour automatisées par le bot Upptime pour le monitoring des services.
