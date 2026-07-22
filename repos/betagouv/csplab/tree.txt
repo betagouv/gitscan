@@ -658,6 +658,7 @@
         │       └── value_objects
         │           ├── __init__.py
         │           ├── categorie_etapes_recrutement.py
+        │           ├── roles.py
         │           └── statut_recrutement.py
         ├── eslint.config.mjs
         ├── infrastructure
@@ -771,6 +772,7 @@
         │   │   │   │   ├── 0002_notemodel.py
         │   │   │   │   ├── 0003_recrutement_etapes.py
         │   │   │   │   ├── 0004_alter_recrutementagentmodel_recrutement.py
+        │   │   │   │   ├── 0005_recrutementagentmodel_role_organismeagentmodel.py
         │   │   │   │   └── __init__.py
         │   │   │   └── models
         │   │   │       ├── __init__.py
@@ -1162,6 +1164,15 @@
         │   │   │   │   │   ├── CspSeparator
         │   │   │   │   │   │   ├── CspSeparator.stories.ts
         │   │   │   │   │   │   └── CspSeparator.vue
+        │   │   │   │   │   ├── CspSkeleton
+        │   │   │   │   │   │   ├── CspSkeleton.stories.ts
+        │   │   │   │   │   │   ├── CspSkeleton.vue
+        │   │   │   │   │   │   ├── CspSkeletonKanban.stories.ts
+        │   │   │   │   │   │   ├── CspSkeletonKanban.vue
+        │   │   │   │   │   │   ├── CspSkeletonSortableList.stories.ts
+        │   │   │   │   │   │   ├── CspSkeletonSortableList.vue
+        │   │   │   │   │   │   ├── CspSkeletonTable.stories.ts
+        │   │   │   │   │   │   └── CspSkeletonTable.vue
         │   │   │   │   │   ├── CspSortableList
         │   │   │   │   │   │   ├── CspSortableList.stories.ts
         │   │   │   │   │   │   ├── CspSortableList.vue
@@ -1214,10 +1225,10 @@
         │   │   │   │           └── CspSidebarUser.vue
         │   │   │   ├── composables
         │   │   │   │   ├── async
-        │   │   │   │   │   ├── useAsyncState.test.ts
-        │   │   │   │   │   ├── useAsyncState.ts
         │   │   │   │   │   ├── useDebounce.test.ts
-        │   │   │   │   │   └── useDebounce.ts
+        │   │   │   │   │   ├── useDebounce.ts
+        │   │   │   │   │   ├── useMinimumPending.test.ts
+        │   │   │   │   │   └── useMinimumPending.ts
         │   │   │   │   ├── dnd
         │   │   │   │   │   ├── useDraggableElement.ts
         │   │   │   │   │   ├── useDropTargetElement.ts
@@ -1246,14 +1257,21 @@
         │   │   │   │   │   │   ├── CandidatureKanbanColumn.vue
         │   │   │   │   │   │   ├── CandidaturesFiltersDrawer.vue
         │   │   │   │   │   │   ├── CandidaturesKanbanBoard.vue
+        │   │   │   │   │   │   ├── CandidaturesLayout.vue
         │   │   │   │   │   │   ├── CandidaturesViewSwitch.vue
+        │   │   │   │   │   │   ├── ChangerEtapeDrawer.vue
+        │   │   │   │   │   │   ├── SelectionActionBar.vue
         │   │   │   │   │   │   └── cells
         │   │   │   │   │   │       └── EtapeRecrutementCell.vue
         │   │   │   │   │   ├── composables
         │   │   │   │   │   │   ├── useCandidatures.test.ts
         │   │   │   │   │   │   ├── useCandidatures.ts
-        │   │   │   │   │   │   └── useCandidaturesFilters.ts
+        │   │   │   │   │   │   ├── useCandidaturesFilters.test.ts
+        │   │   │   │   │   │   ├── useCandidaturesFilters.ts
+        │   │   │   │   │   │   ├── useKanbanSelection.test.ts
+        │   │   │   │   │   │   └── useKanbanSelection.ts
         │   │   │   │   │   ├── format.ts
+        │   │   │   │   │   ├── queries.ts
         │   │   │   │   │   ├── routes.ts
         │   │   │   │   │   ├── types.ts
         │   │   │   │   │   ├── utils
@@ -1274,6 +1292,7 @@
         │   │   │   │   │   │   └── useEtapesRecrutement.ts
         │   │   │   │   │   ├── constants
         │   │   │   │   │   │   └── etape-recrutement.ts
+        │   │   │   │   │   ├── queries.ts
         │   │   │   │   │   └── types.ts
         │   │   │   │   └── recrutements
         │   │   │   │       ├── api.ts
@@ -1293,6 +1312,7 @@
         │   │   │   │       │   └── useRecrutementsFilters.ts
         │   │   │   │       ├── format.ts
         │   │   │   │       ├── mock.ts
+        │   │   │   │       ├── queries.ts
         │   │   │   │       ├── routes.ts
         │   │   │   │       ├── types.ts
         │   │   │   │       ├── utils
@@ -1703,4 +1723,4 @@
         │       ├── test_api_request_logger_middleware.py
         │       └── test_interface_aware_mock.py
         └── uv.lock
-348 directories, 1357 files
+349 directories, 1376 files
