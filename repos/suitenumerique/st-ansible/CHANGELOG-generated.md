@@ -1,17 +1,20 @@
-## Changelog : st-ansible (30 derniers jours, au 8 juillet 2026)
+## Changelog : st-ansible (30 derniers jours, au 21 juillet 2026)
 
 ### Résumé
-Cette mise à jour apporte des améliorations à la configuration de l'application Drive, notamment au niveau des routes Nginx, et des ajustements fins à la configuration de l'antispam RSPAMD. De nouvelles variables de configuration sont également introduites pour personnaliser davantage le comportement de RSPAMD et de l'application Messages.
+Cette nouvelle version apporte des améliorations significatives pour faciliter le déploiement de La Suite Territoriale, notamment en permettant des installations sur des serveurs uniques. Une interface en ligne de commande (CLI) a été ajoutée pour simplifier la gestion des environnements. Des ajustements ont également été faits aux rôles existants pour une meilleure configuration et des options plus flexibles.
 
 ### Évolutions fonctionnelles
-- Amélioration de la configuration de l'application Drive avec des routes Nginx mises à jour et des valeurs par défaut corrigées.
-- Ajout de variables pour configurer le nombre de lignes d'historique et le nombre de redirecteurs pour l'application Messages (RSPAMD) : `st_messages_mpa_rspamd_history_nrows` et `st_messages_mpa_rspamd_redirectors`.
-- Possibilité de désactiver la signature DKIM dans RSPAMD via la variable `st_messages_mpa_rspamd_reject_score`.
-- Ajout de variables pour configurer les scores d'en-tête et de réécriture de sujet dans RSPAMD.
-- Désactivation du greylisting dans RSPAMD.
+- Ajout de l'interface en ligne de commande `st-cli` pour la gestion des environnements LST. [#27](https://github.com/suitenumerique/st-ansible/issues/27)
+- Possibilité de configurer le nombre de lignes conservées pour l'historique de RSPAMD via la variable `st_messages_mpa_rspamd_history_nrows`.
+- Possibilité de configurer le nombre de redirecteurs RSPAMD via la variable `st_messages_mpa_rspamd_redirectors`.
+- Configuration améliorée de Nginx dans le rôle `drive` avec des valeurs par défaut ajustées.
+- Ajout de la variable `st_messages_mpa_rspamd_reject_score` pour contrôler le score de rejet de RSPAMD.
+- Désactivation du module `dkim_signing` dans RSPAMD.
 
 ### Évolutions techniques
-- Ajustements de la configuration Nginx pour l'application Drive pour une meilleure stabilité et performance.
-
-### Autres changements
-- Aucun changement significatif à signaler.
+- Refactorisation des rôles pour permettre des déploiements sur des serveurs uniques en ajustant les UID, GID et ports. [#26](https://github.com/suitenumerique/st-ansible/issues/26)
+- Correction du port par défaut du contrôleur RSPAMD dans le rôle `rspamd`. [#92f8aea](https://github.com/suitenumerique/st-ansible/commit/92f8aea)
+- Correction des noms de composition pour les configurations mono-hôte. [#504dbb0](https://github.com/suitenumerique/st-ansible/commit/504dbb0)
+- Ajout de la configuration d'antsibull-changelog, Makefile et job CI pour la génération automatique du changelog. [#13](https://github.com/suitenumerique/st-ansible/issues/13)
+- Ajout de la possibilité de configurer des en-têtes et de réécrire l'objet des emails dans RSPAMD. [#3ee8c3e](https://github.com/suitenumerique/st-ansible/commit/3ee8c3e)
+- Désactivation du greylisting dans RSPAMD. [#3ee8c3e](https://github.com/suitenumerique/st-ansible/commit/3ee8c3e)

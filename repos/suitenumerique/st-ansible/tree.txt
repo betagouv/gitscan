@@ -2,16 +2,124 @@
 ├── .ansible-lint
 ├── .github
 │   └── workflows
-│       └── ci.yml
+│       ├── ansible.yml
+│       ├── changelog.yml
+│       ├── cli-docker.yml
+│       └── cli-tests.yml
 ├── .gitignore
 ├── .markdownlint.json
+├── CHANGELOG.md
 ├── CONTRIBUTING.md
 ├── LICENSE
 ├── Makefile
 ├── README.md
 ├── SECURITY.md
+├── changelogs
+│   ├── changelog.yaml
+│   ├── config.yaml
+│   └── fragments
+│       └── .gitkeep
+├── cli
+│   ├── .dockerignore
+│   ├── CLAUDE.md
+│   ├── DEVELOPMENT.md
+│   ├── Dockerfile
+│   ├── README.md
+│   ├── entrypoint.sh
+│   ├── pyproject.toml
+│   ├── st_cli
+│   │   ├── __init__.py
+│   │   ├── cmd
+│   │   │   ├── __init__.py
+│   │   │   ├── bootstrap.py
+│   │   │   ├── deploy.py
+│   │   │   ├── remote.py
+│   │   │   ├── secrets.py
+│   │   │   ├── upgrade.py
+│   │   │   └── version.py
+│   │   ├── core
+│   │   │   ├── __init__.py
+│   │   │   ├── appmeta.py
+│   │   │   ├── drift.py
+│   │   │   ├── envrender.py
+│   │   │   ├── errors.py
+│   │   │   ├── generate.py
+│   │   │   ├── manifest.py
+│   │   │   ├── models.py
+│   │   │   ├── paths.py
+│   │   │   ├── prompts.py
+│   │   │   ├── resources
+│   │   │   │   ├── apps
+│   │   │   │   │   ├── drive.yml
+│   │   │   │   │   ├── keycloak.yml
+│   │   │   │   │   ├── meet.yml
+│   │   │   │   │   └── messages.yml
+│   │   │   │   └── templates
+│   │   │   │       ├── env
+│   │   │   │       │   ├── base.django.env.j2
+│   │   │   │       │   ├── drive.backend.env.j2
+│   │   │   │       │   ├── keycloak.env.j2
+│   │   │   │       │   ├── meet.backend.env.j2
+│   │   │   │       │   ├── messages.backend.env.j2
+│   │   │   │       │   └── messages.frontend.env.j2
+│   │   │   │       └── scaffold
+│   │   │   │           ├── ansible.cfg.j2
+│   │   │   │           ├── galaxy-requirements.yml.j2
+│   │   │   │           └── playbook.yml.j2
+│   │   │   ├── runner.py
+│   │   │   ├── secretbackend.py
+│   │   │   ├── secrets.py
+│   │   │   ├── sshuser.py
+│   │   │   ├── tree.py
+│   │   │   ├── ui.py
+│   │   │   ├── upstream.py
+│   │   │   ├── vault.py
+│   │   │   └── writer.py
+│   │   └── main.py
+│   └── tests
+│       ├── conftest.py
+│       ├── helpers.py
+│       ├── test_appmeta.py
+│       ├── test_bootstrap.py
+│       ├── test_deploy.py
+│       ├── test_drift.py
+│       ├── test_envrender.py
+│       ├── test_generate.py
+│       ├── test_manifest.py
+│       ├── test_packaging.py
+│       ├── test_remote.py
+│       ├── test_runner.py
+│       ├── test_secretbackend.py
+│       ├── test_secrets.py
+│       ├── test_sshuser.py
+│       ├── test_tree.py
+│       ├── test_ui.py
+│       ├── test_upgrade.py
+│       ├── test_upstream.py
+│       ├── test_vault.py
+│       └── test_writer.py
 ├── docs
-│   ├── 00-examples
+│   ├── 00-getting-started
+│   │   ├── 01-st-cli.md
+│   │   ├── 02-ansible-galaxy.md
+│   │   ├── 03-architecture.md
+│   │   └── 04-podman-role.md
+│   ├── 01-drive
+│   │   ├── 01-drive.md
+│   │   ├── 02-workers.md
+│   │   └── 03-collabora.md
+│   ├── 02-keycloak
+│   │   └── 01-keycloak.md
+│   ├── 03-meet
+│   │   ├── 01-meet.md
+│   │   └── 02-livekit.md
+│   ├── 04-messages
+│   │   ├── 01-messages.md
+│   │   ├── 02-workers.md
+│   │   ├── 03-mta-in.md
+│   │   ├── 04-socks-proxy.md
+│   │   └── 05-mpa.md
+│   ├── 99-examples
 │   │   ├── full-high-availability
 │   │   │   ├── README.md
 │   │   │   ├── galaxy-requirements.yml
@@ -27,52 +135,12 @@
 │   │   │   ├── playbook_mpa.yml
 │   │   │   ├── playbook_mtain.yml
 │   │   │   └── playbook_socks_proxy.yml
-│   │   ├── meet
-│   │   │   ├── multi-host
-│   │   │   │   ├── README.md
-│   │   │   │   ├── galaxy-requirements.yml
-│   │   │   │   ├── hosts
-│   │   │   │   ├── playbook_livekit_egress.yml
-│   │   │   │   ├── playbook_livekit_multi.yml
-│   │   │   │   ├── playbook_meet.yml
-│   │   │   │   └── templates
-│   │   │   │       ├── Dockerfile.caddy.j2
-│   │   │   │       ├── caddy.json.j2
-│   │   │   │       ├── compose.egress.yaml.j2
-│   │   │   │       ├── compose.yaml.j2
-│   │   │   │       ├── egress.yaml.j2
-│   │   │   │       └── livekit.yaml.j2
-│   │   │   └── single-host
-│   │   │       ├── README.md
-│   │   │       ├── galaxy-requirements.yml
-│   │   │       ├── hosts
-│   │   │       └── playbook_livekit_single.yml
 │   │   └── monitoring
 │   │       ├── drive.config.alloy.j2
 │   │       └── messages.config.alloy.j2
-│   ├── 01-fundamentals
-│   │   ├── 01-architecture.md
-│   │   ├── 02-deployment.md
-│   │   ├── 03-upgrade.md
-│   │   └── 04-podman-role.md
-│   ├── 02-messages
-│   │   ├── 01-messages.md
-│   │   ├── 02-workers.md
-│   │   ├── 03-mta-in.md
-│   │   ├── 04-socks-proxy.md
-│   │   └── 05-mpa.md
-│   ├── 03-drive
-│   │   ├── 01-drive.md
-│   │   ├── 02-workers.md
-│   │   └── 03-collabora.md
-│   ├── 04-keycloak
-│   │   └── 01-keycloak.md
-│   ├── 05-meet
-│   │   ├── 01-meet.md
-│   │   └── 02-livekit.md
-│   ├── 06-monitoring.md
-│   ├── 07-backup.md
-│   └── 08-troubleshooting.md
+│   ├── backup.md
+│   ├── monitoring.md
+│   └── troubleshooting.md
 ├── extensions
 │   ├── lima-driver
 │   │   ├── .gitignore
@@ -313,4 +381,4 @@
             ├── files.j2
             ├── forget.service.j2
             └── forget.timer.j2
-90 directories, 225 files
+98 directories, 285 files
