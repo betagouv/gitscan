@@ -1,26 +1,25 @@
 ## Changelog : eva-serveur (30 derniers jours, au 15 juillet 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à la gestion des évaluations, notamment avec la création d'un nouveau menu dédié et la séparation des modèles d'évaluation "eva" et "evapro". Des corrections de bugs ont également été apportées pour améliorer la stabilité et l'expérience utilisateur, en particulier lors de l'importation et de la modification des évaluations.
+Cette mise à jour majeure introduit une nouvelle section dédiée aux évaluations "evaPro" dans l'interface d'administration, offrant une gestion distincte pour ces types d'évaluations. Des corrections de bugs ont également été apportées, notamment concernant l'importation de questions, la modification d'évaluations et la gestion des structures administratives lors de l'inscription.
 
 ### Évolutions fonctionnelles
-- Ajout d'un menu "Evaluation" avec deux pages distinctes pour les évaluations "eva" et "evapro" pour les super-administrateurs.
-- Création des pages d'administration pour les évaluations "evapro".
-- Export PDF possible pour les évaluations "evapro".
-- Correction du formulaire de modification d'une évaluation.
-- Correction d'un bug empêchant l'inscription sans proposition de rejoindre des structures administratives.
-- Amélioration du message affiché pour la durée estimée d'une évaluation "evapro" [#bf30d45](https://github.com/betagouv/eva-serveur/commit/bf30d45).
+- Ajout d'un menu "Evaluation" avec deux pages distinctes : "eva" et "evaPro" pour les super-administrateurs.
+- Création de la page "EvaluationEvapro" pour la gestion des évaluations de type "evaPro".
+- Export PDF des évaluations "evaPro".
+- Correction du formulaire de modification d'une évaluation [#39044c4](https://github.com/betagouv/eva-serveur/commit/39044c4).
+- Lors de l'inscription, les utilisateurs ne sont plus invités à rejoindre des structures administratives [#b123c23](https://github.com/betagouv/eva-serveur/commit/b123c23).
+- Correction de l'affichage de la durée estimée d'une évaluation "evaPro" [#bf30d45](https://github.com/betagouv/eva-serveur/commit/bf30d45).
 
 ### Évolutions techniques
-- Séparation des modèles d'évaluation en `EvaluationEva` et `EvaluationEvapro` [#3bbc730](https://github.com/betagouv/eva-serveur/commit/3bbc730).
-- Refactorisation des partials et des traductions liés aux évaluations "evapro".
-- Ajout d'inflexions pour les modèles `EvaluationEva` et `EvaluationEvapro`.
+- Création des modèles `EvaluationEva` et `EvaluationEvapro` pour distinguer les types d'évaluations [#3bbc730](https://github.com/betagouv/eva-serveur/commit/3bbc730).
+- Refactoring du code lié aux évaluations "evaPro" : déplacement de partials et de traductions.
+- Ajout d'une inflexion pour le modèle `EvaluationEvapro` pour une meilleure gestion des routes.
 - Suppression de méthodes et partials inutilisés.
-- Correction d'un crash lors de l'importation avec de nombreuses erreurs.
-- Permet l'import de questions avec des `nom_technique` de choix existants.
+- Correction suite à la mise à jour de `view-component`.
 
 ### Autres changements
-- Correction de la redirection après suppression ou erreur lors de la génération d'un PDF [#d682da6](https://github.com/betagouv/eva-serveur/commit/d682da6).
+- Correction d'un crash lors de l'importation de questions avec trop d'erreurs [#b18d7a8](https://github.com/betagouv/eva-serveur/commit/b18d7a8).
+- Permet d'importer des questions avec des `nom_technique` de choix existant sur d'autres questions [#5aeb734](https://github.com/betagouv/eva-serveur/commit/5aeb734).
+- Correction d'une redirection après suppression ou erreur lors de la génération d'un PDF [#d682da6](https://github.com/betagouv/eva-serveur/commit/d682da6).
 - Suppression d'un warning concernant un nom de vue sans extension `.html.erb` [#0a3563e](https://github.com/betagouv/eva-serveur/commit/0a3563e).
-- Mise à jour des dépendances view_component et dsfr-view-components.
-- Correction suite à la mise à jour de view-component.
