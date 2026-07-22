@@ -6,8 +6,15 @@
 ├── .gitattributes
 ├── .github
 │   ├── dependabot.yml
+│   ├── scripts
+│   │   ├── _scalingo_oneoff.sh
+│   │   ├── deploy_dev_code.sh
+│   │   ├── deploy_dev_reload.sh
+│   │   ├── deploy_dev_smoke.sh
+│   │   └── deploy_dev_snapshot.sh
 │   └── workflows
 │       ├── ci.yml
+│       ├── deploy-dev.yml
 │       └── s3_backup.yml
 ├── .gitignore
 ├── .npmrc
@@ -114,6 +121,7 @@
 │       ├── capture_zar.spec.ts
 │       ├── debug_view.spec.ts
 │       ├── map_overlays.spec.ts
+│       ├── reset_form.spec.ts
 │       └── simulateur.spec.ts
 ├── envergo
 │   ├── __init__.py
@@ -690,6 +698,9 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── compilateur.py
 │   │   │   └── loader.py
+│   │   ├── fixtures
+│   │   │   └── initial_referentiels.json
+│   │   ├── form_backfill.py
 │   │   ├── forms.py
 │   │   ├── management
 │   │   │   ├── __init__.py
@@ -697,6 +708,9 @@
 │   │   │       ├── __init__.py
 │   │   │       ├── attach_couvert_screenshots.py
 │   │   │       ├── attach_validation_screenshot.py
+│   │   │       ├── audit_residus_texte_condition.py
+│   │   │       ├── dump_active_trees.py
+│   │   │       ├── dump_referentiels.py
 │   │   │       ├── export_manifeste_capture_couvert.py
 │   │   │       ├── export_manifeste_capture_par_ge.py
 │   │   │       ├── export_manifeste_capture_zar.py
@@ -713,6 +727,8 @@
 │   │   │       ├── ingest_miro_widget_ids.py
 │   │   │       ├── ingest_miro_widget_ids_par_ge.py
 │   │   │       ├── ingest_miro_widget_ids_zar.py
+│   │   │       ├── load_arbres_actifs.py
+│   │   │       ├── nettoyer_residus_calculatrice.py
 │   │   │       ├── provision_admin.py
 │   │   │       ├── provision_carte_98.py
 │   │   │       ├── provision_zones_est.py
@@ -721,7 +737,8 @@
 │   │   │       ├── seed_branches_validation_par_ge.py
 │   │   │       ├── seed_branches_validation_zar_ge.py
 │   │   │       ├── seed_contenus_rich.py
-│   │   │       └── seed_referentiels.py
+│   │   │       ├── seed_referentiels.py
+│   │   │       └── validate_arbres_actifs.py
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
 │   │   │   ├── 0002_setup_moulinette_pattern.py
@@ -749,6 +766,7 @@
 │   │   │   ├── 0024_branchevalidation_scope.py
 │   │   │   ├── 0025_branchevalidation_nature.py
 │   │   │   ├── 0026_code_pc_miro_max_300.py
+│   │   │   ├── 0027_alter_branchevalidation_scope.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── models_contenu_rich.py
@@ -761,6 +779,8 @@
 │   │   │   ├── arbre_decision.py
 │   │   │   └── directive_nitrates.py
 │   │   ├── scripts
+│   │   │   ├── generate_region_points.py
+│   │   │   ├── region_points.json
 │   │   │   └── validation
 │   │   │       ├── README.md
 │   │   │       ├── branches_full.json
@@ -771,17 +791,16 @@
 │   │   ├── specs
 │   │   │   ├── .gitkeep
 │   │   │   ├── arbre_decision_national.yaml
-│   │   │   ├── arbre_decision_national_db-active-snapshot_2026-06-02.yaml
-│   │   │   ├── arbre_decision_national_db-active-snapshot_2026-06-15.yaml
-│   │   │   ├── arbre_decision_national_staging-snapshot_25-05-26_09H27.yaml
 │   │   │   ├── arbre_decision_par_grand_est.yaml
-│   │   │   ├── arbre_decision_par_grand_est_db-active-snapshot_2026-06-18.yaml
 │   │   │   ├── arbre_decision_zar_grand_est.yaml
-│   │   │   ├── arbre_decision_zar_grand_est_db-active-snapshot_2026-06-18.yaml
+│   │   │   ├── arbres_actifs
+│   │   │   │   ├── national.yaml
+│   │   │   │   ├── region_32.yaml
+│   │   │   │   ├── region_44.yaml
+│   │   │   │   └── zar_44.yaml
 │   │   │   ├── contenus_rich.yaml
 │   │   │   ├── grammaire.yaml
 │   │   │   ├── pc_blocs.yaml
-│   │   │   ├── referentiels.yaml
 │   │   │   ├── snapshot_miro
 │   │   │   │   ├── README.md
 │   │   │   │   ├── arbre_complet
@@ -844,7 +863,7 @@
 │   │   ├── tests
 │   │   │   ├── __init__.py
 │   │   │   ├── conftest.py
-│   │   │   └── test_*.py  (84 files)
+│   │   │   └── test_*.py  (90 files)
 │   │   ├── urls.py
 │   │   ├── views.py
 │   │   ├── views_admin_ouverture.py
@@ -1151,6 +1170,7 @@
 │   │   │       └── geojson-rewind.js
 │   │   ├── nitrates
 │   │   │   ├── calculatrice-calendrier.js
+│   │   │   ├── calculatrice-calendrier.test.js
 │   │   │   ├── calendrier.css
 │   │   │   ├── cascade.js
 │   │   │   ├── construction.css
@@ -1160,6 +1180,12 @@
 │   │   │   ├── home.css
 │   │   │   ├── home.js
 │   │   │   ├── illu_nitrates.png
+│   │   │   ├── illu_nitrates_dark.svg
+│   │   │   ├── progress.js
+│   │   │   ├── question_reformat.js
+│   │   │   ├── question_reformat.test.js
+│   │   │   ├── reset_form.js
+│   │   │   ├── reset_form.test.js
 │   │   │   ├── scroll_resultat.js
 │   │   │   ├── simulateur.css
 │   │   │   ├── simulator.js
@@ -1949,6 +1975,13 @@
 │   │   │   │   ├── _item.html
 │   │   │   │   └── index.html
 │   │   │   ├── validation
+│   │   │   │   ├── _col_form.html
+│   │   │   │   ├── _col_miro.html
+│   │   │   │   ├── _col_playwright.html
+│   │   │   │   ├── _col_simulateur.html
+│   │   │   │   ├── _col_viewer.html
+│   │   │   │   ├── _col_yaml.html
+│   │   │   │   ├── _hidden_filtres.html
 │   │   │   │   ├── _lightbox.html
 │   │   │   │   ├── create.html
 │   │   │   │   ├── detail.html
@@ -2121,4 +2154,4 @@
                 │   ├── favicon.ico
                 │   └── favicon.svg
                 └── index.html
-274 directories, 1932 files
+277 directories, 1968 files

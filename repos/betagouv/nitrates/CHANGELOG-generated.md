@@ -1,46 +1,51 @@
-## Changelog : nitrates (30 derniers jours, au 26 juin 2026)
+## Changelog : nitrates (30 derniers jours, au 21 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration significative de la validation des données, notamment via l'intégration de références Miro et l'ajout de fonctionnalités de filtrage et de tri.  Des améliorations ont également été apportées au simulateur, avec une meilleure gestion des règles, des dates et de l'affichage des résultats. Enfin, des optimisations de performance et des corrections de bugs ont été réalisées.
+Cette période a été marquée par une refonte significative de l'administration et de l'interface utilisateur, notamment pour la validation des données et le simulateur. Des améliorations de sécurité importantes ont également été apportées, avec une attention particulière à la protection contre les vulnérabilités et à la gestion des accès. Enfin, plusieurs corrections de bugs et améliorations de la qualité de vie ont été implémentées.
 
 ### Évolutions fonctionnelles
-- **Validation des données :**
-    - Intégration de références Miro pour les validations, incluant l'affichage des widget IDs et la possibilité de naviguer vers les boards Miro correspondants [#140](https://github.com/betagouv/nitrates/issues/140).
-    - Ajout de filtres et de tris sur les données de validation (scope, nature, ordre Miro).
-    - Amélioration de l'interface utilisateur pour la validation, avec un auto-scroll vers la première feuille non validée et la préservation des filtres lors de la navigation.
-    - Possibilité de visualiser les captures d'écran des validations couvertes.
-- **Simulateur :**
-    - Correction de l'affichage des règles partagées (plafond et ASC).
-    - Amélioration de la gestion des dates et des bornes dans le calendrier, avec une absorption des bornes adjacentes à une date saisie.
-    - Ajout de la possibilité de saisir des dates directement via l'URL.
-    - Affichage des ZAR (Zones d'Action Renforcée) sur la carte du simulateur.
-- **Résultats :**
-    - Amélioration de l'affichage des résultats, avec une période d'autorisation plus claire et un format de date unifié.
-    - Ajout d'un panneau de débogage pour afficher les règles appliquées et les informations de la parcelle.
 - **Administration :**
-    - Amélioration de l'interface d'administration pour l'édition des règles et des arbres de décision.
-    - Ajout d'icônes et d'une meilleure organisation des éléments dans l'interface d'administration.
+    - Ajout d'un filtre pour les données Hauts-de-France au dashboard de validation.
+    - Amélioration de la recherche et de l'édition des textes conditionnels dans l'administration.
+    - Ajout d'un lien d'accès rapide vers la validation des feuilles.
+    - Possibilité d'éditer les libellés publics simplifiés pour les vergers et les vignes.
+- **Simulateur :**
+    - Amélioration de la gestion des champs de cascade et des liens directs.
+    - Correction d'un bug empêchant le relancement du simulateur après une réponse.
+    - Amélioration de la navigation et de l'expérience utilisateur, notamment sur mobile.
+    - Suppression des éléments orphelins dans l'interface du simulateur.
+- **Validation :**
+    - Ajout d'un comparateur d'images empilées avec galerie de captures.
+    - Amélioration du panel de détail avec auto-save htmx (plus de boutons Enregistrer).
+    - Préservation du scope et de la nature lors des overrides du détail.
+    - Ajout d'un lien vers le viewer YAML pour les arbres PAR et ZAR.
+- **Calendrier :**
+    - Amélioration de l'affichage et de la justification des périodes.
+    - Correction de l'overflow des dates sur le calendrier.
+    - Affichage des mois en abrégé sur mobile.
 
 ### Évolutions techniques
-- **Performance :**
-    - Optimisation de la fonction `get_criteria` pour réduire les requêtes inutiles.
-    - Mise en cache des référentiels pour améliorer les performances.
-    - Scission des effluents peu chargés pour une meilleure organisation des données.
+- **Sécurité :**
+    - Correction d'une vulnérabilité de type reflected-XSS dans l'administration.
+    - Mise à jour des dépendances pour corriger des vulnérabilités (high, critical, medium).
+    - Renforcement de la sécurité de la page de login admin, désactivation du mot de passe par défaut et utilisation de ProConnect.
+    - Protection contre le contournement de ProConnect via le fallback mot de passe admin.
+- **Infrastructure & CI/CD :**
+    - Mise en place d'un workflow CI/CD pour l'environnement de développement.
+    - Exclusions des applications Envergo non-nitrates de la couverture de code.
+    - Migration et seeding de la base de données avant les garde-fous GitOps.
+    - Déclenchement du CI également sur la branche `develop`.
 - **Tests :**
-    - Augmentation de la couverture de tests du cœur moteur à 98-100%.
-    - Ajout de tests Playwright pour valider le fonctionnement de l'interface utilisateur.
-    - Exclusion des tests et des migrations du rapport de couverture pour ne mesurer que le code fonctionnel.
-- **Infrastructure :**
-    - Mise à jour des arbres de décision actifs Grand Est (PAN, PAR, ZAR).
-    - Refonte du système d'ouverture géographique pour permettre l'activation/désactivation par région.
-- **Code :**
-    - Refactoring du code pour améliorer la lisibilité et la maintenabilité.
-    - Utilisation de Python sandboxé pour l'évaluation des expressions dans les catalogues paramétrés.
-    - Migration des arbres de décision pour aligner les numéros de version.
+    - Réalignement des tests Playwright sur l'état actuel du simulateur.
+    - Mise à jour des tests pour refléter les changements dans les données.
+- **Architecture :**
+    - Suppression du fichier `referentiels.yaml` et utilisation d'un seeding natif de la base de données.
+    - Amélioration de la gestion des arbres actifs et des snapshots.
 
 ### Autres changements
-- Mise à jour de la documentation.
-- Correction de bugs mineurs et améliorations de l'expérience utilisateur.
-- Ajout de nouvelles règles et de digestats dans les référentiels.
-- Amélioration de la grammaire et de la logique du calculateur.
-- Corrections de style et d'alignement dans l'interface utilisateur.
+- Documentation : Mise à jour des textes de contenu avec la nouvelle version.
+- Correction de problèmes de style et de grammaire dans le code.
+- Amélioration de l'accessibilité du simulateur.
+- Ajustements de l'interface utilisateur pour le thème sombre.
+- Diverses corrections de bugs et améliorations de la qualité du code.
+- Mise à jour des dépendances de développement (actions/setup-python).

@@ -36,6 +36,9 @@
     "stylelint": "^16.14.1",
     "stylelint-config-standard-scss": "^14.0.0"
   },
+  "overrides": {
+    "ws": "^8.21.0"
+  },
   "browserslist": [
     "last 2 versions"
   ],
@@ -48,6 +51,7 @@
     "e2e-amenagement:ui": "TEST_DIR='./e2e/amenagement' playwright test --ui",
     "e2e-nitrates": "playwright test --config playwright.config.nitrates.ts",
     "e2e-nitrates:ui": "playwright test --config playwright.config.nitrates.ts --ui",
+    "test-nitrates-js": "node --test envergo/static/nitrates/*.test.js",
     "playwright:install": "playwright install --with-deps"
   }
 }
