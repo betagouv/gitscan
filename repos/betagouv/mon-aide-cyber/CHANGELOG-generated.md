@@ -1,15 +1,15 @@
-## Changelog : mon-aide-cyber (30 derniers jours, au 22 juin 2026)
+## Changelog : mon-aide-cyber (30 derniers jours, au 21 juillet 2026)
 
 ### Résumé
-Cette mise à jour apporte une amélioration de la confidentialité pour les utilisateurs en supprimant l'envoi en copie des demandes de devenir aidant à l'équipe MonAideCyber.  De plus, les versions des dépendances utilisées dans les GitHub Actions ont été épinglées pour une meilleure stabilité.
+Ce mois-ci, les efforts se sont concentrés sur l'amélioration de la sécurité du projet, notamment en renforçant la validation de la configuration et en sécurisant les processus de CI/CD. Une modification a également été apportée à la gestion des notifications pour les demandes de devenir aidant.
 
 ### Évolutions fonctionnelles
-- Suppression de l'envoi en copie à l'équipe MonAideCyber lors des demandes de devenir aidant. [#989c84f](https://github.com/betagouv/mon-aide-cyber/commit/989c84f)
+- Suppression de l'envoi en copie à l'équipe MAC lors de la demande de devenir aidant. [#989c84f](https://github.com/betagouv/mon-aide-cyber/commit/989c84f)
 
 ### Évolutions techniques
-- Épinglage des versions des dépendances utilisées dans les GitHub Actions pour garantir la reproductibilité et la stabilité des builds. [#2745c4d](https://github.com/betagouv/mon-aide-cyber/commit/2745c4d)
+- Ajout de l'outil `zizmor` pour valider la configuration et renforcer la sécurité. [#d8bd578](https://github.com/betagouv/mon-aide-cyber/commit/d8bd578)
+- Désactivation des identifiants `git` pour les dépôts clonés dans le pipeline CI, améliorant ainsi la sécurité des builds. [#b801100](https://github.com/betagouv/mon-aide-cyber/commit/b801100)
+- Préparation de l'environnement pour l'intégration de nouveaux outils de sécurité. [#4284400](https://github.com/betagouv/mon-aide-cyber/commit/4284400)
 
 ### Autres changements
-- Mise à jour de Vitest vers la version 3.2.6.
-- Mise à jour de Vite vers la version 7.3.5.
-- Mise à jour de DomPurify vers la version 3.4.11.
+- Aucune information significative à signaler.
