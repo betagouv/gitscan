@@ -602,6 +602,8 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260715120000_add_mission_remote_local
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260717123043_add_mission_diffusion_table
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
 │   ├── prisma.config.ts
@@ -804,6 +806,10 @@
 │   │   │   ├── linkedin-stats
 │   │   │   │   ├── add-stats.ts
 │   │   │   │   └── handler.ts
+│   │   │   ├── mission-diffusion-rebuild
+│   │   │   │   ├── __tests__
+│   │   │   │   │   └── handler.test.ts
+│   │   │   │   └── handler.ts
 │   │   │   ├── moderation
 │   │   │   │   ├── handler.ts
 │   │   │   │   ├── types.ts
@@ -883,6 +889,7 @@
 │   │   │   ├── login-history.ts
 │   │   │   ├── mission-activity.ts
 │   │   │   ├── mission-address.ts
+│   │   │   ├── mission-diffusion.ts
 │   │   │   ├── mission-enrichment.ts
 │   │   │   ├── mission-event.ts
 │   │   │   ├── mission-job-board.ts
@@ -971,6 +978,10 @@
 │   │   │   │   │   └── index.test.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   └── transformers.ts
+│   │   │   ├── mission-diffusion
+│   │   │   │   ├── __tests__
+│   │   │   │   │   └── index.test.ts
+│   │   │   │   └── index.ts
 │   │   │   ├── mission-email
 │   │   │   │   └── index.ts
 │   │   │   ├── mission-enrichment
@@ -1125,6 +1136,7 @@
 │   │   │   │   ├── parser.test.ts
 │   │   │   │   ├── publisher-diffusion-rule-query.test.ts
 │   │   │   │   ├── rome.test.ts
+│   │   │   │   ├── safe-fetch.test.ts
 │   │   │   │   ├── string.test.ts
 │   │   │   │   └── widget.test.ts
 │   │   │   ├── activity.ts
@@ -1150,6 +1162,7 @@
 │   │   │   ├── request-id.ts
 │   │   │   ├── request.ts
 │   │   │   ├── rome.ts
+│   │   │   ├── safe-fetch.ts
 │   │   │   ├── string.ts
 │   │   │   ├── url.ts
 │   │   │   └── widget.ts
@@ -1257,6 +1270,8 @@
 │   │   │   │   │   └── import-missions.handler.test.ts
 │   │   │   │   ├── letudiant
 │   │   │   │   │   └── letudiant.handler.test.ts
+│   │   │   │   ├── mission-diffusion
+│   │   │   │   │   └── rebuild.handler.test.ts
 │   │   │   │   ├── moderation
 │   │   │   │   │   └── moderation.handler.test.ts
 │   │   │   │   └── report
@@ -1592,7 +1607,6 @@
 │   │   ├── assets
 │   │   │   ├── images
 │   │   │   │   ├── asc-logo.png
-│   │   │   │   ├── humanitaire-02.jpeg
 │   │   │   │   ├── jva-logo.png
 │   │   │   │   ├── people-landing.png
 │   │   │   │   ├── roc-logo.png
@@ -1637,10 +1651,7 @@
 │   │   │   │   ├── exit-modal.tsx
 │   │   │   │   ├── header.tsx
 │   │   │   │   ├── label.tsx
-│   │   │   │   ├── loading-recap.tsx
-│   │   │   │   ├── mission-card.tsx
 │   │   │   │   ├── next-button.tsx
-│   │   │   │   ├── quiz-transition.tsx
 │   │   │   │   ├── radio-group-rich.tsx
 │   │   │   │   └── radio-group.tsx
 │   │   │   ├── results
@@ -1664,6 +1675,7 @@
 │   │   ├── entry.client.tsx
 │   │   ├── entry.server.tsx
 │   │   ├── hooks
+│   │   │   ├── useFocusTrap.ts
 │   │   │   ├── useIsMobile.ts
 │   │   │   └── useMissionResults.ts
 │   │   ├── main.css
@@ -1681,6 +1693,7 @@
 │   │   │   ├── mentions-legales.tsx
 │   │   │   ├── mission-detail.tsx
 │   │   │   ├── missions.tsx
+│   │   │   ├── plan-du-site.tsx
 │   │   │   ├── politique-de-confidentialite.tsx
 │   │   │   ├── quiz
 │   │   │   │   ├── _index.tsx
@@ -1705,9 +1718,11 @@
 │   │   ├── services
 │   │   │   ├── api
 │   │   │   │   ├── __tests__
-│   │   │   │   │   └── index.test.ts
+│   │   │   │   │   ├── index.test.ts
+│   │   │   │   │   └── sanitize.test.ts
 │   │   │   │   ├── index.ts
-│   │   │   │   └── missions.ts
+│   │   │   │   ├── missions.ts
+│   │   │   │   └── sanitize.ts
 │   │   │   ├── client.ts
 │   │   │   ├── config.ts
 │   │   │   ├── email.ts
@@ -1920,4 +1935,4 @@
         ├── sentry.ts
         ├── store.ts
         └── utils.ts
-442 directories, 1566 files
+448 directories, 1575 files

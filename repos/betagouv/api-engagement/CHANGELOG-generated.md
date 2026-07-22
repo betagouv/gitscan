@@ -1,31 +1,29 @@
-## Changelog : api-engagement (30 derniers jours, au 17 juillet 2026)
+## Changelog : api-engagement (30 derniers jours, au 21 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'accessibilité de la plateforme (conformité RGAA), la correction de bugs et l'ajout de nouvelles fonctionnalités pour l'enrichissement des missions et le suivi des actions des utilisateurs. Des optimisations de performance et des corrections de sécurité ont également été apportées.
+Cette version apporte des améliorations significatives à l'accessibilité de la plateforme, notamment en corrigeant des problèmes de conformité avec le référentiel général d'accessibilité (RGAA). Des optimisations de performance ont été apportées à la recherche de missions et à la gestion des règles de diffusion. De nouvelles fonctionnalités ont été ajoutées pour l'intégration avec des partenaires et le suivi des événements.
 
 ### Évolutions fonctionnelles
-- Ajout de la prise en charge des missions locales et distantes avec un poids géographique pour l'algorithme de matching. [#1269](https://github.com/betagouv/api-engagement/issues/1269)
-- Intégration des compétences de la gendarmerie et de la police pour l'enrichissement des missions. [#1270](https://github.com/betagouv/api-engagement/issues/1270)
-- Ajout d'un filtre "dispositif" pour les missions sur la plateforme. [#1211](https://github.com/betagouv/api-engagement/issues/1211)
-- Ajout de liens vers les pages légales et les mentions d'information dans le footer de la plateforme. [#1246](https://github.com/betagouv/api-engagement/issues/1246)
-- Amélioration du suivi des actions des utilisateurs avec l'ajout d'événements de vue de page et de propriétés UTM. [#1255](https://github.com/betagouv/api-engagement/issues/1255)
-- Ajout d'une fonctionnalité permettant de lier les clics sur les missions au classement backend pour l'analyse. [#1272](https://github.com/betagouv/api-engagement/issues/1272)
-- Intégration de Demarches Simplifiées pour l'enrichissement des missions. [#1154](https://github.com/betagouv/api-engagement/issues/1154)
-- Ajout de la possibilité de synchroniser les règles de diffusion avec l'ID de l'organisation publiant la mission. [#1183](https://github.com/betagouv/api-engagement/issues/1183)
+- Ajout de l'intégration avec Demarches Simplifiées pour la diffusion des missions [#1154](https://github.com/betagouv/api-engagement/commit/6fe3a22).
+- Amélioration de la recherche de missions avec une optimisation de la requête de correspondance [#1322](https://github.com/betagouv/api-engagement/commit/485d2d1).
+- Ajout de la prise en charge des missions locales et distantes [#1269](https://github.com/betagouv/api-engagement/commit/6e41464).
+- Ajout de la possibilité de filtrer les missions par dispositif [#1255](https://github.com/betagouv/api-engagement/commit/7f21c95).
+- Ajout d'un support pour les compétences ROME dans l'enrichissement des missions [#1262](https://github.com/betagouv/api-engagement/commit/c793b0f).
+- Ajout de pages légales et de liens dans le pied de page [#1246](https://github.com/betagouv/api-engagement/commit/28eb1a8).
+- Ajout d'un lien vers la politique de confidentialité dans les emails de diffusion de missions [#1208](https://github.com/betagouv/api-engagement/commit/b9a8dbe).
+- Mise en place d'un service de tracking avec JSTag pour le suivi des diffusions [#1174](https://github.com/betagouv/api-engagement/commit/cc2e3af).
+- Ajout d'une extension Chrome pour faciliter l'utilisation de la plateforme [#1278](https://github.com/betagouv/api-engagement/commit/0894e0c).
 
 ### Évolutions techniques
-- Amélioration de la performance de l'API `/v0/mission` grâce à une optimisation de la requête. [#1281](https://github.com/betagouv/api-engagement/issues/1281)
-- Correction d'un problème de "fail-open" du secret JWT. [#1301](https://github.com/betagouv/api-engagement/issues/1301)
-- Désactivation de JIT pour la requête de matching afin d'améliorer les performances. [#1275](https://github.com/betagouv/api-engagement/issues/1275)
-- Restriction de la création de règles de diffusion aux opérateurs supportés. [#1264](https://github.com/betagouv/api-engagement/issues/1264)
-- Suppression des tables de diffusion du publisher pour simplifier la gestion. [#1206](https://github.com/betagouv/api-engagement/issues/1206)
-- Mise à jour de la version de l'enrichment prompt à v3. [#1248](https://github.com/betagouv/api-engagement/issues/1248)
-- Ajout de quotas de limitation de débit pour l'enrichissement afin d'éviter les erreurs. [#1259](https://github.com/betagouv/api-engagement/issues/1259)
-- Suppression des identifiants de l'utilisateur et des tokens des réponses de l'API pour des raisons de sécurité. [#1266](https://github.com/betagouv/api-engagement/issues/1266)
-- Suppression des secrets du diffuseur en dehors des accès directs. [#1265](https://github.com/betagouv/api-engagement/issues/1265)
+- Refactorisation de la gestion des règles de diffusion des missions [#1264](https://github.com/betagouv/api-engagement/commit/e12fd96).
+- Optimisation de la requête de correspondance des missions pour améliorer les performances [#1322](https://github.com/betagouv/api-engagement/commit/485d2d1).
+- Mise en place d'un nouveau service de diffusion des missions [#1297](https://github.com/betagouv/api-engagement/commit/9e79b0a).
+- Amélioration de la sécurité en limitant l'accès aux secrets de l'API [#1307](https://github.com/betagouv/api-engagement/commit/da6bf9c).
+- Correction d'une vulnérabilité potentielle de type SSRF lors de l'importation de fichiers XML [#1303](https://github.com/betagouv/api-engagement/commit/698e43d).
+- Mise à jour des dépendances Docker et des actions GitHub [#1304](https://github.com/betagouv/api-engagement/commit/7febd38), [#1305](https://github.com/betagouv/api-engagement/commit/ea8f6c2).
+- Suppression de l'utilisation de JIT pour la requête de correspondance, suite à une régression [#1306](https://github.com/betagouv/api-engagement/commit/9547e38).
 
 ### Autres changements
-- Améliorations significatives de l'accessibilité de la plateforme (conformité RGAA) : titres, tableaux, images, messages d'erreur, navigation au clavier, etc. (plusieurs correctifs : [#1286](https://github.com/betagouv/api-engagement/issues/1286), [#1287](https://github.com/betagouv/api-engagement/issues/1287), [#1288](https://github.com/betagouv/api-engagement/issues/1288), [#1289](https://github.com/betagouv/api-engagement/issues/1289), [#1290](https://github.com/betagouv/api-engagement/issues/1290), [#1291](https://github.com/betagouv/api-engagement/issues/1291), [#1292](https://github.com/betagouv/api-engagement/issues/1292), [#1293](https://github.com/betagouv/api-engagement/issues/1293), [#1294](https://github.com/betagouv/api-engagement/issues/1294), [#1295](https://github.com/betagouv/api-engagement/issues/1295), [#1298](https://github.com/betagouv/api-engagement/issues/1298)).
-- Correction de plusieurs bugs mineurs et améliorations de la qualité du code.
-- Mise à jour des dépendances.
-- Ajout d'un script pour générer automatiquement le changelog. [#1202](https://github.com/betagouv/api-engagement/issues/1202)
+- Nombreuses corrections pour améliorer la conformité de la plateforme avec le RGAA (Référentiel Général d'Accessibilité) [#1327](https://github.com/betagouv/api-engagement/commit/ed5499c), [#1328](https://github.com/betagouv/api-engagement/commit/3f5b921), [#1326](https://github.com/betagouv/api-engagement/commit/4f05be6), [#1325](https://github.com/betagouv/api-engagement/commit/1d415d0), [#1324](https://github.com/betagouv/api-engagement/commit/c445033), [#1323](https://github.com/betagouv/api-engagement/commit/8e3bb01), [#1321](https://github.com/betagouv/api-engagement/commit/167862a), [#1317](https://github.com/betagouv/api-engagement/commit/0871ad0), [#1316](https://github.com/betagouv/api-engagement/commit/a90085f), [#1315](https://github.com/betagouv/api-engagement/commit/467a96f), [#1314](https://github.com/betagouv/api-engagement/commit/e1fb6fb), [#1313](https://github.com/betagouv/api-engagement/commit/ca0a6c5), [#1312](https://github.com/betagouv/api-engagement/commit/0f46c02), [#1311](https://github.com/betagouv/api-engagement/commit/7365912), [#1310](https://github.com/betagouv/api-engagement/commit/529283d), [#1309](https://github.com/betagouv/api-engagement/commit/aeed849), [#1308](https://github.com/betagouv/api-engagement/commit/c59eac7), [#1296](https://github.com/betagouv/api-engagement/commit/5a3af4d), [#1295](https://github.com/betagouv/api-engagement/commit/33d856e), [#1294](https://github.com/betagouv/api-engagement/commit/5e36d64), [#1293](https://github.com/betagouv/api-engagement/commit/e3f7ee5), [#1292](https://github.com/betagouv/api-engagement/commit/aa30429), [#1291](https://github.com/betagouv/api-engagement/commit/b59c9de), [#1290](https://github.com/betagouv/api-engagement/commit/d31c59f), [#1289](https://github.com/betagouv/api-engagement/commit/dad3fdb), [#1288](https://github.com/betagouv/api-engagement/commit/1049c4d), [#1287](https://github.com/betagouv/api-engagement/commit/a6661b8), [#1286](https://github.com/betagouv/api-engagement/commit/f4690c4), [#1285](https://github.com/betagouv/api-engagement/commit/8734472), [#1284](https://github.com/betagouv/api-engagement/commit/fb58eca), [#1283](https://github.com/betagouv/api-engagement/commit/759e717), [#1282](https://github.com/betagouv/api-engagement/commit/08ddf85), [#1281](https://github.com/betagouv/api-engagement/commit/d8ac1c1), [#1280](https://github.com/betagouv/api-engagement/commit/cccfc46), [#1279](https://github.com/betagouv/api-engagement/commit/53ca10a), [#1278](https://github.com/betagouv/api-engagement/commit/a01a938), [#1277](https://github.com/betagouv/api-engagement/commit/9efb748), [#1276](https://github.com/betagouv/api-engagement/commit/6ac8652).
+- Correction de bugs mineurs et améliorations de la qualité du code.
+- Mise à jour de la documentation.
