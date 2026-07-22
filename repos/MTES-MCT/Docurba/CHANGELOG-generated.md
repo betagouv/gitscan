@@ -1,35 +1,30 @@
-## Changelog : Docurba (30 derniers jours, au 17 juillet 2026)
+## Changelog : Docurba (30 derniers jours, au 21 juillet 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations de la qualité du code et des tests, des corrections de bugs sur l'interface utilisateur et l'API, ainsi que par des évolutions de la gestion des événements et des types de documents. Des optimisations de performance ont également été apportées à l'API.
+Cette version apporte des améliorations significatives à la gestion des événements et des collectivités, notamment l'ajout de nouveaux types d'événements, une meilleure gestion des dates et des liens entre les procédures et les collectivités. Des corrections de bugs et des optimisations de performance ont également été apportées, ainsi que des suppressions de composants inutilisés pour alléger le code.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug empêchant la gestion correcte des emails en minuscules lors du partage de procédures [#385056d](https://github.com/MTES-MCT/Docurba/commit/385056d).
-- Amélioration de l'affichage des dates de procédures sur les pages "Procédures" et "Collectivités" [#0954b31](https://github.com/MTES-MCT/Docurba/commit/0954b31).
-- Ajout de l'ID de la procédure dans l'onglet "Procédures et Validations" [#53de844](https://github.com/MTES-MCT/Docurba/commit/53de844).
-- Correction de l'affichage des images en ligne dans les PACs [#4a63a08](https://github.com/MTES-MCT/Docurba/commit/4a63a08).
-- Adaptation du lien vers les collectivités en fonction des droits de l'utilisateur [#4790c2c](https://github.com/MTES-MCT/Docurba/commit/4790c2c).
-- Ajout des types d'événements à la détection d'événements [#e0a4a68](https://github.com/MTES-MCT/Docurba/commit/e0a4a68).
-- Application de la loi Huwart à toutes les procédures [#bcac074](https://github.com/MTES-MCT/Docurba/commit/bcac074).
+- Ajout des types d'événements PPLH et PPILH. [#5917f55](https://github.com/MTES-MCT/Docurba/commit/5917f55)
+- Ajout d'une clé étrangère `event_type` au modèle `event`. [#33e86ac](https://github.com/MTES-MCT/Docurba/commit/33e86ac)
+- Amélioration de l'affichage des dates des procédures et des collectivités sur l'interface utilisateur. [#0954b31](https://github.com/MTES-MCT/Docurba/commit/0954b31)
+- Correction de la gestion des emails en minuscules lors du partage de procédures. [#385056d](https://github.com/MTES-MCT/Docurba/commit/385056d)
+- Correction de la reconstruction du code de la collectivité depuis le frontend. [#9ad356d](https://github.com/MTES-MCT/Docurba/commit/9ad356d)
+- Ajout de l'ID de la procédure dans l'onglet Procédures et Validations. [#53de844](https://github.com/MTES-MCT/Docurba/commit/53de844)
+- Application de la loi Huwart à toutes les procédures. [#bcac074](https://github.com/MTES-MCT/Docurba/commit/bcac074)
+- Gestion des images en ligne dans les PACS. [#4a63a08](https://github.com/MTES-MCT/Docurba/commit/4a63a08)
 
 ### Évolutions techniques
-- Refactorisation et renforcement de la suite de tests de l'API Django [#8828b9d](https://github.com/MTES-MCT/Docurba/commit/8828b9d).
-- Ajout de `freezegun` pour figer le temps dans les tests Django [#20df824](https://github.com/MTES-MCT/Docurba/commit/20df824).
-- Amélioration des performances de l'API Django [#b941aca](https://github.com/MTES-MCT/Docurba/commit/b941aca).
-- Ajout de relations manquantes entre les événements et leurs snapshots dans l'historique PostgreSQL [#1b86501](https://github.com/MTES-MCT/Docurba/commit/1b86501).
-- Ajout de RLS (Row Level Security) sur plusieurs tables pour améliorer la sécurité [#0d549a8](https://github.com/MTES-MCT/Docurba/commit/0d549a8).
-- Ajout de champs `archived_at` et `archived_by` à la table des événements [#b1613bc](https://github.com/MTES-MCT/Docurba/commit/b1613bc).
-- Mise à jour de Node.js en version 26 [#0f3d354](https://github.com/MTES-MCT/Docurba/commit/0f3d354).
-- Suppression d'une vue matérialisée obsolète et d'un test inutile [#cca93c3](https://github.com/MTES-MCT/Docurba/commit/cca93c3).
-- Suppression de nombreux composants et assets inutilisés dans l'interface utilisateur Nuxt.js [#ea814f5](https://github.com/MTES-MCT/Docurba/commit/ea814f5) et suivants.
-- Ajout de la gestion des événements via l'API interne [#f1044dd](https://github.com/MTES-MCT/Docurba/commit/f1044dd) et suivants.
+- Refonte de l'API interne Django pour améliorer les performances et la cohérence. [#b941aca](https://github.com/MTES-MCT/Docurba/commit/b941aca)
+- Ajout de RLS (Row Level Security) sur les tables `core_eventtype`, `history_eventsnapshot` et `pghistory_context`. [#0d549a8](https://github.com/MTES-MCT/Docurba/commit/0d549a8)
+- Suppression de nombreux composants React inutilisés pour alléger le code et améliorer la maintenabilité. [#ea814f5](https://github.com/MTES-MCT/Docurba/commit/ea814f5) et suivants.
+- Mise à jour de plusieurs dépendances : Django, pytest, ruff, syrupy, django-filter, django-datadog-logger, django-debug-toolbar, django-environ.
+- Amélioration des tests unitaires avec l'ajout de traits spécifiques et l'utilisation de `freezegun` pour figer le temps. [#d45c4a6](https://github.com/MTES-MCT/Docurba/commit/d45c4a6) et [#20df824](https://github.com/MTES-MCT/Docurba/commit/20df824)
+- Ajout de la gestion de l'environnement pour les paramètres Django. [#b3a4d64](https://github.com/MTES-MCT/Docurba/commit/b3a4d64)
 
 ### Autres changements
-- Ajout de `Collectivite.siren` et refactorisation de `Collectivite.code_insee` [#d947e06](https://github.com/MTES-MCT/Docurba/commit/d947e06) et suivants.
-- Ajout d'un gestionnaire "Adhesion" [#ab5add6](https://github.com/MTES-MCT/Docurba/commit/ab5add6).
-- Ajout de la possibilité d'exposer les groupes et membres de la collectivité via l'API interne [#91ee156](https://github.com/MTES-MCT/Docurba/commit/91ee156).
-- Mise à jour des dépendances : `syrupy`, `django-datadog-logger`, `django`, `pytest`, `ruff`, `django-debug-toolbar`, `django-environ`.
-- Ajout de la configuration DEBUG_SQL pour faciliter le débogage des requêtes SQL [#9a1f36a](https://github.com/MTES-MCT/Docurba/commit/9a1f36a).
-- Ajout de Traits spécifiques pour les snapshots dans les tests Django [#d45c4a6](https://github.com/MTES-MCT/Docurba/commit/d45c4a6).
-- Correction de l'utilisation d'une variable incorrecte dans une boucle Django API [#1a57d0f](https://github.com/MTES-MCT/Docurba/commit/1a57d0f).
-- Amélioration de la gestion des paramètres de requête dupliqués dans l'API interne [#d9e61fe](https://github.com/MTES-MCT/Docurba/commit/d9e61fe).
+- Mise à jour des types de documents sectoriels. [#50c58d5](https://github.com/MTES-MCT/Docurba/commit/50c58d5)
+- Ajout d'un gestionnaire "Adhesion". [#ab5add6](https://github.com/MTES-MCT/Docurba/commit/ab5add6)
+- Correction d'un bug empêchant l'accès aux tables de versements pour les utilisateurs non vérifiés. [#8eef40c](https://github.com/MTES-MCT/Docurba/commit/8eef40c)
+- Ajout de la possibilité d'utiliser DEBUG_SQL pour le débogage. [#9a1f36a](https://github.com/MTES-MCT/Docurba/commit/9a1f36a)
+- Suppression de fichiers de configuration Django du dépôt. [#58ede61](https://github.com/MTES-MCT/Docurba/commit/58ede61)
+- Upgrade de Node.js à la version 26. [#0f3d354](https://github.com/MTES-MCT/Docurba/commit/0f3d354)

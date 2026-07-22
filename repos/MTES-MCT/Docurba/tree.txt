@@ -50,6 +50,7 @@
 │   │   │   │       ├── __init__.py
 │   │   │   │       ├── collectivites_en_base.py
 │   │   │   │       ├── import_dgaln_zan_objects.py
+│   │   │   │       ├── link_events_with_event_types.py
 │   │   │   │       └── update_nuxt3_trigger.py
 │   │   │   ├── migrations
 │   │   │   │   ├── 0001_initial.py
@@ -99,6 +100,8 @@
 │   │   │   │   ├── 0045_event_types_rls.py
 │   │   │   │   ├── 0046_collectivite_code_insee.py
 │   │   │   │   ├── 0047_alter_communeprocedure_collectivite_type.py
+│   │   │   │   ├── 0048_event_add_event_type.py
+│   │   │   │   ├── 0049_alter_eventtype_scope_list_and_more.py
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── sql_statements
 │   │   │   │       ├── create_table_doc_frise_events.sql
@@ -123,6 +126,7 @@
 │   │   │   │   ├── 0004_historyeventsnapshot_rls.py
 │   │   │   │   ├── 0005_eventsnapshot_add_insert_policy.py
 │   │   │   │   ├── 0006_alter_eventsnapshot_pgh_obj.py
+│   │   │   │   ├── 0007_event_add_event_type.py
 │   │   │   │   └── __init__.py
 │   │   │   └── models.py
 │   │   ├── internal_api
@@ -199,7 +203,8 @@
 │   │   │   │   └── regions.json
 │   │   │   ├── management
 │   │   │   │   └── commands
-│   │   │   │       └── __init__.py
+│   │   │   │       ├── __init__.py
+│   │   │   │       └── test_link_events_with_event_types.py
 │   │   │   ├── test_admin.py
 │   │   │   ├── test_models.py
 │   │   │   └── test_views.py
@@ -1060,4 +1065,4 @@
 └── tests_e2e
     ├── .gitignore
     └── test_titre_procedure.py
-209 directories, 895 files
+209 directories, 900 files
