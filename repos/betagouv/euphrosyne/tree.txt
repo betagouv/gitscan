@@ -963,11 +963,31 @@
 │   │       │   ├── AddMeasuringPointToImage.tsx
 │   │       │   ├── AddObjectGroupModal.tsx
 │   │       │   ├── CroppedImageDisplay.tsx
+│   │       │   ├── HDF5DataLoadingIndicator.tsx
+│   │       │   ├── HDF5MetadataPanel.tsx
+│   │       │   ├── HDF5NotebookGenerationModal.tsx
+│   │       │   ├── HDF5NotebookGenerationPreparationPanel.tsx
+│   │       │   ├── HDF5NotebookGenerationProgressPanel.tsx
+│   │       │   ├── HDF5RunDataSection.tsx
+│   │       │   ├── HDF5SpectrumPlot.tsx
+│   │       │   ├── HDF5Visualization
+│   │       │   │   ├── ChannelRangeControls.tsx
+│   │       │   │   ├── HDF5MapContent.tsx
+│   │       │   │   ├── HDF5MapVisualization.tsx
+│   │       │   │   ├── HDF5SpectrumContent.tsx
+│   │       │   │   ├── HDF5SpectrumVisualization.tsx
+│   │       │   │   ├── HDF5VisualizationContent.tsx
+│   │       │   │   ├── HDF5VisualizationErrorBoundary.tsx
+│   │       │   │   ├── MapSummaryFooter.tsx
+│   │       │   │   ├── index.tsx
+│   │       │   │   ├── metadata.ts
+│   │       │   │   └── styles.ts
 │   │       │   ├── ImageCropper.tsx
 │   │       │   ├── ImageMeasuringPointer.tsx
 │   │       │   ├── ImageWithMeasuringPoints.tsx
 │   │       │   ├── MeasuringPoint.tsx
 │   │       │   ├── MeasuringPointComments.tsx
+│   │       │   ├── MeasuringPointHDF5Entries.tsx
 │   │       │   ├── MeasuringPointImageGallery.tsx
 │   │       │   ├── MeasuringPointObjectGroup.tsx
 │   │       │   ├── MeasuringPointSegmentedControl.tsx
@@ -978,8 +998,27 @@
 │   │       │   ├── SegmentedSelectMode.tsx
 │   │       │   └── UploadObjectImage.tsx
 │   │       ├── crop.ts
+│   │       ├── hdf5
+│   │       │   ├── NotebookHDF5.context.ts
+│   │       │   ├── README.md
+│   │       │   ├── hdf5-service.ts
+│   │       │   ├── index.ts
+│   │       │   ├── map-computation.ts
+│   │       │   ├── notebook-generation
+│   │       │   │   ├── candidates.ts
+│   │       │   │   ├── discovery.ts
+│   │       │   │   ├── index.ts
+│   │       │   │   ├── preview.ts
+│   │       │   │   ├── runner.ts
+│   │       │   │   ├── shared.ts
+│   │       │   │   └── types.ts
+│   │       │   ├── notebook-hdf5.ts
+│   │       │   ├── scientific-metadata.ts
+│   │       │   └── types.ts
 │   │       ├── hooks
-│   │       │   └── useImageStorage.tsx
+│   │       │   ├── useHDF5NotebookGenerationWorkflow.ts
+│   │       │   ├── useImageStorage.tsx
+│   │       │   └── useNotebookHDF5Data.ts
 │   │       ├── notebook-image.services.ts
 │   │       ├── notebook.services.ts
 │   │       ├── pages
@@ -987,6 +1026,9 @@
 │   │       ├── utils.ts
 │   │       └── web-components
 │   │           └── notebook-run-comments.ts
+│   ├── js_tests
+│   │   ├── hdf5.spec.ts
+│   │   └── notebook-generation.spec.ts
 │   ├── migrations
 │   │   ├── 0001_initial.py
 │   │   └── __init__.py
@@ -1009,12 +1051,13 @@
 │   │       └── notebook.html
 │   ├── tests
 │   │   ├── __init__.py
-│   │   └── pdf_export
-│   │       ├── __init__.py
-│   │       ├── test_image_utils.py
-│   │       ├── test_pdf.py
-│   │       ├── test_text_utils.py
-│   │       └── test_views.py
+│   │   ├── pdf_export
+│   │   │   ├── __init__.py
+│   │   │   ├── test_image_utils.py
+│   │   │   ├── test_pdf.py
+│   │   │   ├── test_text_utils.py
+│   │   │   └── test_views.py
+│   │   └── test_views.py
 │   ├── urls.py
 │   └── views.py
 ├── locale
@@ -1183,6 +1226,7 @@
 │   ├── migrations
 │   │   ├── 0001_initial.py
 │   │   ├── 0002_alter_measuringpointstandard_options_and_more.py
+│   │   ├── 0003_alter_measuringpointstandard_measuring_point.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── templates
@@ -1220,4 +1264,4 @@
 │   └── global.d.ts
 ├── vite.config.ts
 └── webpack.config.js
-266 directories, 956 files
+270 directories, 996 files

@@ -1,16 +1,14 @@
-## Changelog : euphrosyne (30 derniers jours, au 16 juillet 2026)
+## Changelog : euphrosyne (30 derniers jours, au 21 juillet 2026)
 
 ### Résumé
-Les récentes mises à jour d'Euphrosyne concernent principalement la maintenance et la sécurité du projet. Plusieurs dépendances ont été mises à jour vers leurs dernières versions, assurant ainsi la stabilité et la compatibilité de la plateforme.
+Ce mois-ci, les améliorations se concentrent sur l'ajout de la visualisation et de la génération de notebooks HDF5, permettant une meilleure manipulation et exploration des données scientifiques. De nombreuses dépendances ont également été mises à jour pour bénéficier des dernières corrections et améliorations de sécurité.
+
+### Évolutions fonctionnelles
+- Ajout de la visualisation et de la génération de notebooks HDF5 [#1920](https://github.com/betagouv/euphrosyne/pull/1920).
 
 ### Évolutions techniques
-- Mise à jour de Django de la version 6.0.6 à 6.0.7.
-- Mise à jour de pytest de la version 9.0.3 à 9.1.1.
-- Mise à jour de pylint de la version 4.0.5 à 4.0.6.
-- Mise à jour de sentry-sdk de la version 2.62.0 à 2.64.0.
-- Mise à jour de pillow de la version 12.2.0 à 12.3.0.
-- Mise à jour de django-stubs de la version 6.0.5 à 6.0.6.
-- Mise à jour de ipython de la version 9.14.1 à 9.15.0.
+- Mise à jour de plusieurs dépendances Python (Django, pytest, pylint, sentry-sdk, pillow, reportlab, social-auth-app-django, ipython, django-stubs) vers leurs dernières versions stables.
+- Mise à jour des dépendances JavaScript (form-data, js-yaml, axios) vers leurs dernières versions stables.
 
 ### Autres changements
-- Aucune information significative à signaler.
+- Aucune information supplémentaire à signaler.
