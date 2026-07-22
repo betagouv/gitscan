@@ -1,14 +1,15 @@
 # Synthèse d'activité : mesadsfr (du 02/05 au 12/05)
 
 ## Résumé de l'activité
-L'organisation "mesadsfr" a connu une semaine productive, principalement axée sur l'amélioration de la plateforme [mesads](/repos/mesadsfr/mesads). Les développements se sont concentrés sur l'ajout de fonctionnalités pour les inspecteurs et les administrateurs, notamment un parcours dédié aux inspecteurs et la possibilité d'exporter les emails des taxis relais. Une attention particulière a été portée à la sécurité avec la correction d'une vulnérabilité critique. Enfin, une page d'accessibilité a été implémentée pour assurer la conformité légale.
+L'activité récente de l'organisation s'est concentrée sur l'amélioration de la plateforme [mesads](/repos/mesadsfr/mesads) avec de nouvelles fonctionnalités pour les inspecteurs et administrateurs, ainsi que des corrections d'erreurs et des améliorations de l'expérience utilisateur. L'ajout d'une page d'accessibilité répond aux obligations légales et renforce l'engagement envers l'inclusion. Les mises à jour des données communales pour 2026 garantissent la pertinence des informations disponibles.
 
 ## Sécurité
 - Correction d'une vulnérabilité sur l'endpoint d'autocomplete des communes dans [mesads](/repos/mesadsfr/mesads).
 
 ## Autres changements notables
+- Amélioration des statistiques disponibles dans [mesads](/repos/mesadsfr/mesads).
 - Mise à jour des données des communes pour l'année 2026 dans [mesads](/repos/mesadsfr/mesads).
-- Ajout d'une page de déclaration d'accessibilité pour répondre aux obligations légales dans [mesads](/repos/mesadsfr/mesads).
+- Corrections de tests et application de règles de linting avec Ruff dans [mesads](/repos/mesadsfr/mesads).
 
 ## Dépôts les plus actifs
-- [mesads](/repos/mesadsfr/mesads) : Amélioration continue de la plateforme avec de nouvelles fonctionnalités, corrections de bugs et améliorations de sécurité.
+- [mesads](/repos/mesadsfr/mesads) : Amélioration continue de la plateforme avec de nouvelles fonctionnalités, des corrections de bugs et des améliorations de sécurité.

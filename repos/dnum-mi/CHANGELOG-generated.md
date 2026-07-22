@@ -1,18 +1,20 @@
-# Synthèse d'activité : dnum-mi (du 18 juin 2026 au 24 juillet 2026)
+# Synthèse d'activité : dnum-mi (du 15/06 au 15/07)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation dnum-mi s'est concentrée sur l'amélioration de ses applications existantes, notamment [referentiel-applications](/repos/dnum-mi/referentiel-applications) et [dashlord-extended](/repos/dnum-mi/dashlord-extended), avec des mises à jour significatives des sources de données et des fonctionnalités. L'accent a également été mis sur l'amélioration de l'accessibilité et de la sécurité, ainsi que sur l'optimisation des processus de CI/CD via [fabnum-cicd](/repos/dnum-mi/fabnum-cicd).  Enfin, la [bibliotheque-numerique](/repos/dnum-mi/bibliotheque-numerique) a vu l'ajout d'une gestion des CGU pour une meilleure conformité.
+L'organisation dnum-mi a connu une période d'activité soutenue, marquée par des améliorations significatives sur plusieurs de ses dépôts. L'accent a été mis sur la maintenance et l'actualisation des sources de données pour DashLord et Dashlord-Extended, assurant ainsi la pertinence des informations fournies.  Des avancées notables ont également été réalisées sur le [referentiel-applications](/repos/dnum-mi/referentiel-applications) avec l'ajout de nouvelles fonctionnalités d'import et d'amélioration de l'accessibilité. Enfin, la [bibliotheque-numerique](/repos/dnum-mi/bibliotheque-numerique) a renforcé son aspect légal avec l'implémentation d'un système d'acceptation des conditions générales d'utilisation.
 
 ## Sécurité
-- Correction des alertes de sécurité Dependabot pour le backend et le frontend de [referentiel-applications](/repos/dnum-mi/referentiel-applications).
+Des corrections de vulnérabilités de sécurité ont été apportées au [referentiel-applications](/repos/dnum-mi/referentiel-applications).
 
 ## Autres changements notables
-- Suppression de la fonctionnalité de gestion des licences dans [referentiel-applications](/repos/dnum-mi/referentiel-applications).
-- Refactoring et simplification du processus d'attestation d'images Docker dans [fabnum-cicd](/repos/dnum-mi/fabnum-cicd).
-- Mise à jour de l'image Docker et correction de problèmes d'infrastructure dans [bibliotheque-numerique](/repos/dnum-mi/bibliotheque-numerique).
+- Refonte de la gestion des technologies utilisées (EOL, documentation) dans le [referentiel-applications](/repos/dnum-mi/referentiel-applications).
+- Simplification et unification des workflows d'attestation d'images Docker dans [fabnum-cicd](/repos/dnum-mi/fabnum-cicd).
+- Mise en place d'un système d'acceptation des conditions générales d'utilisation (CGU) dans la [bibliotheque-numerique](/repos/dnum-mi/bibliotheque-numerique).
+- Amélioration significative de l'accessibilité (RGAA) dans le [referentiel-applications](/repos/dnum-mi/referentiel-applications).
 
 ## Dépôts les plus actifs
-- [referentiel-applications](/repos/dnum-mi/referentiel-applications) : Améliorations majeures en termes d'accessibilité, de recherche, de gestion des droits et d'importation de données.
-- [dashlord-extended](/repos/dnum-mi/dashlord-extended) : Enrichissement significatif des sources de données analysées, augmentant la couverture et la pertinence des informations.
-- [starter-kit-opencode](/repos/dnum-mi/starter-kit-opencode) : Ajout de documentation sur les compétences des agents d'IA et amélioration de l'expérience de développement.
-- [dashlord](/repos/dnum-mi/dashlord) : Mise à jour régulière d'une liste importante d'URLs de sources de données gouvernementales françaises.
+- [referentiel-applications](/repos/dnum-mi/referentiel-applications) : Ajout de nouvelles fonctionnalités d'import, amélioration de la recherche et de l'accessibilité, et correction de vulnérabilités.
+- [dashlord](/repos/dnum-mi/dashlord) et [dashlord-extended](/repos/dnum-mi/dashlord-extended) : Mise à jour massive des URLs de sources de données gouvernementales françaises pour maintenir la pertinence des informations.
+- [bibliotheque-numerique](/repos/dnum-mi/bibliotheque-numerique) : Implémentation d'un système d'acceptation des conditions générales d'utilisation et améliorations techniques de l'infrastructure.
+- [starter-kit-opencode](/repos/dnum-mi/starter-kit-opencode) : Enrichissement de la documentation et amélioration de l'expérience de développement.
+- [fabnum-cicd](/repos/dnum-mi/fabnum-cicd) : Simplification des workflows d'attestation d'images Docker et mise à jour des actions GitHub.

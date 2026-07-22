@@ -1,11 +1,16 @@
-# Synthèse d'activité : signaux-faibles (du 23/06 au 30/06)
+# Synthèse d'activité : signaux-faibles (du 30 juin 2026 au 07 juillet 2026)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation "signaux-faibles" s'est concentrée sur l'amélioration de la qualité et de la fiabilité des données, particulièrement concernant les codes NAF. Des corrections de bugs et des ajustements ont été apportés pour assurer une meilleure précision des informations affichées et utilisées par la plateforme [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles). Ces améliorations impactent directement les utilisateurs en leur fournissant des données plus fiables pour leurs analyses.
+L'activité récente de l'organisation "signaux-faibles" s'est concentrée sur l'amélioration de la qualité des données et de l'expérience utilisateur. [sfor](/repos/signaux-faibles/sfor) a reçu des mises à jour significatives pour la gestion des alertes, l'affichage des données et la performance globale.  [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles) a quant à lui bénéficié d'améliorations concernant la précision des données NAF et la correction de bugs dans les tests et les migrations de la base de données. Ces évolutions visent à fournir des informations plus fiables et pertinentes aux utilisateurs.
+
+## Sécurité
+Aucun changement lié à la sécurité n'a été signalé durant cette période.
 
 ## Autres changements notables
-- Amélioration de la reproductibilité de la génération des fichiers de référence grâce à l'utilisation de Go dans [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles).
-- Corrections de plusieurs erreurs dans les migrations de la base de données, simplifiant le code et améliorant la cohérence des données dans [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles).
+- Une tâche de dénormalisation a été ajoutée à [sfor](/repos/signaux-faibles/sfor) pour optimiser les performances.
+- L'algorithme de contribution de Shapley a été ajouté (et temporairement désactivé en production) à [sfor](/repos/signaux-faibles/sfor) pour le graphique en cascade.
+- La génération des fichiers de référence a été améliorée avec Go dans [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles) pour une meilleure reproductibilité.
 
 ## Dépôts les plus actifs
-- [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles) : Correction de bugs et amélioration de la qualité des données, notamment concernant les codes NAF et les effectifs.
+- [sfor](/repos/signaux-faibles/sfor) : Amélioration de l'expérience utilisateur et de la performance de l'application, avec de nouvelles fonctionnalités pour la gestion des alertes et des listes d'entreprises.
+- [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles) : Correction de bugs et amélioration de la qualité des données, notamment concernant les codes NAF et les migrations de la base de données.

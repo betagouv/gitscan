@@ -1,25 +1,20 @@
-# Synthèse d'activité : incubateur-ademe (du 16 mai 2026 au 16 juin 2026)
+# Synthèse d'activité : incubateur-ademe (du 16/07 au 16/08)
 
 ## Résumé de l'activité
-L'activité récente de l'incubateur-ademe a été marquée par des améliorations significatives sur plusieurs projets.  Un effort important a été consacré à la modernisation technique, notamment avec la migration vers TypeScript et l'adoption de nouveaux outils de build et de test.  Plusieurs applications ont bénéficié de mises à jour de données et d'améliorations de l'expérience utilisateur, comme l'ajout de nouvelles fonctionnalités et la correction de bugs.  Des projets comme [tacct-legacy-nextjs](/repos/incubateur-ademe/tacct-legacy-nextjs) et [nosgestesclimat-site-nextjs](/repos/incubateur-ademe/nosgestesclimat-site-nextjs) ont connu des avancées majeures en termes de développement et de sécurité. L'accent a également été mis sur l'amélioration de l'accessibilité et de l'intégration des données, avec des projets comme [plusfraisautravail](/repos/incubateur-ademe/plusfraisautravail) et [benefriches](/repos/incubateur-ademe/benefriches).
+L'activité récente de l'organisation incubateur-ademe a été marquée par des améliorations significatives sur plusieurs fronts. Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment sur les sites [plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site) et [impactco2](/repos/incubateur-ademe/impactco2), avec l'ajout de nouvelles fonctionnalités et l'optimisation de l'affichage.  Des mises à jour importantes ont également été apportées aux modèles de calcul, notamment avec [nosgestesclimat](/repos/incubateur-ademe/nosgestesclimat) et [publicodes-commun](/repos/incubateur-ademe/publicodes-commun), pour une plus grande précision et fiabilité des données.  Enfin, des travaux de refactoring et de modernisation ont été entrepris sur plusieurs dépôts, comme [tacct-legacy-nextjs](/repos/incubateur-ademe/tacct-legacy-nextjs) et [benefriches](/repos/incubateur-ademe/benefriches), pour améliorer la maintenabilité et la performance des applications.
 
 ## Sécurité
-Plusieurs projets ont bénéficié d'améliorations de sécurité :
-- Correction de vulnérabilités identifiées par Dependabot dans [roadmaps-faciles](/repos/incubateur-ademe/roadmaps-faciles).
-- Refonte de la sécurité avec l'implémentation de sessions JOSE et Server Actions dans [nosgestesclimat-site-nextjs](/repos/incubateur-ademe/nosgestesclimat-site-nextjs), corrigeant des failles d'autorisation, de fuites de données et un open redirect.
-- Correction de vulnérabilités dans [dsfr-override](/repos/incubateur-ademe/dsfr-override).
+Des améliorations significatives de la sécurité ont été apportées à [territoires-en-transitions](/repos/incubateur-ademe/territoires-en-transitions) avec le blocage de l'injection IDOR dans les plans et fichiers.  [tacct-legacy-nextjs](/repos/incubateur-ademe/tacct-legacy-nextjs) a également bénéficié d'une authentification via ProConnect, améliorant la sécurité des comptes utilisateurs. [dsfr-override](/repos/incubateur-ademe/dsfr-override) a également intégré des règles oxlint pour renforcer la qualité du code.
 
 ## Autres changements notables
-- Migration vers l'authentification FGP (Federated Grafana Proxy) dans [grafana](/repos/incubateur-ademe/grafana) pour une gestion centralisée et sécurisée des accès.
-- Refonte complète de l'interface utilisateur et de l'expérience utilisateur du comparateur de PAC dans [france-chaleur-urbaine-pac](/repos/incubateur-ademe/france-chaleur-urbaine-pac).
-- Migration complète vers TypeScript dans [dsfr-override](/repos/incubateur-ademe/dsfr-override) pour une meilleure maintenabilité.
-- Mise à niveau de n8n vers la version 2 dans [n8n-scalingo](/repos/incubateur-ademe/n8n-scalingo).
-- Passage à un système de build natif ESM avec SWC dans [benefriches](/repos/incubateur-ademe/benefriches).
+Plusieurs projets ont connu des refactorings importants. [tacct-legacy-nextjs](/repos/incubateur-ademe/tacct-legacy-nextjs) a entamé une migration vers Next.js et Prisma. [benefriches](/repos/incubateur-ademe/benefriches) a migré son API vers ESM natif avec SWC.  [dsfr-override](/repos/incubateur-ademe/dsfr-override) a été entièrement migré vers TypeScript.  [n8n-scalingo](/repos/incubateur-ademe/n8n-scalingo) a été mis à jour vers la version 2 de n8n.  [france-chaleur-urbaine-pac](/repos/incubateur-ademe/france-chaleur-urbaine-pac) a connu une refonte majeure de son interface utilisateur.
 
 ## Dépôts les plus actifs
-- [tacct-legacy-nextjs](/repos/incubateur-ademe/tacct-legacy-nextjs) : Développement initial de l'application avec authentification, gestion des stratégies et chiffrement des données.
-- [nosgestesclimat-site-nextjs](/repos/incubateur-ademe/nosgestesclimat-site-nextjs) : Améliorations de l'interface utilisateur, ajout de nouvelles fonctionnalités et renforcement de la sécurité.
-- [benefriches](/repos/incubateur-ademe/benefriches) : Refactorisation technique, amélioration de l'interface utilisateur et enrichissement des données.
-- [nosgestesclimat-app](/repos/incubateur-ademe/nosgestesclimat-app) : Ajout d'un kit de communication et d'une page d'événements, avec des améliorations de sécurité significatives.
-- [publicodes-commun](/repos/incubateur-ademe/publicodes-commun) : Mise à jour des données du mix électrique et stabilisation du workflow de publication.
-- [france-chaleur-urbaine-pac](/repos/incubateur-ademe/france-chaleur-urbaine-pac) : Refonte de l'interface utilisateur du comparateur de PAC.
+*   [plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site) : Ajout de nouvelles pages et améliorations SEO pour une meilleure visibilité et expérience utilisateur.
+*   [nosgestesclimat](/repos/incubateur-ademe/nosgestesclimat) : Mise à jour des données de calcul d'empreinte carbone et amélioration de l'expérience utilisateur.
+*   [benefriches](/repos/incubateur-ademe/benefriches) : Refactoring majeur du code et ajout de nouvelles fonctionnalités pour la gestion des projets urbains.
+*   [tacct-legacy-nextjs](/repos/incubateur-ademe/tacct-legacy-nextjs) : Migration vers une nouvelle architecture avec Next.js et Prisma.
+*   [publicodes-commun](/repos/incubateur-ademe/publicodes-commun) : Mise à jour des données du mix électrique et stabilisation du workflow de publication.
+*   [territoires-en-transitions](/repos/incubateur-ademe/territoires-en-transitions) : Amélioration significative de la sécurité et ajout de nouvelles fonctionnalités de gestion des plans.
+*   [impactco2](/repos/incubateur-ademe/impactco2) : Amélioration de l'outil et ajout de nouvelles fonctionnalités.
+*   [dsfr-override](/repos/incubateur-ademe/dsfr-override) : Migration vers TypeScript et développement d'une interface utilisateur pour la personnalisation du DSFR.

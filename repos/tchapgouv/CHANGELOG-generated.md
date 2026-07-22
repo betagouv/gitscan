@@ -1,28 +1,24 @@
-# Synthèse d'activité : tchapgouv (du 04/04 au 20/07/2026)
+# Synthèse d'activité : tchapgouv (du 04/07 au 18/07/2026)
 
 ## Résumé de l'activité
-L'activité récente de tchapgouv s'est concentrée sur l'amélioration de la sécurité, de la stabilité et de l'expérience utilisateur de ses applications. Des mises à jour de certificats et des corrections de vulnérabilités ont été déployées sur plusieurs dépôts, notamment [tchap-x-ios](/repos/tchapgouv/tchap-x-ios) et [tchap-android](/repos/tchapgouv/tchap-android).  Des améliorations significatives ont également été apportées à la gestion des accès et des utilisateurs, en particulier via les dépôts [synapse](/repos/tchapgouv/synapse) et [matrix-authentication-service](/repos/tchapgouv/matrix-authentication-service).  Plusieurs dépôts ont bénéficié de mises à jour de dépendances et de refactorisations pour améliorer la performance et la maintenabilité du code.
+L'activité récente de tchapgouv s'est concentrée sur l'amélioration de la sécurité, la correction de bugs et l'ajout de nouvelles fonctionnalités, notamment sur les applications mobiles (Tchap X iOS et Android) et les services de base (Synapse). Des efforts importants ont été déployés pour faciliter l'intégration et le déploiement des différents composants, ainsi que pour améliorer l'expérience utilisateur, en particulier concernant la gestion des salles et des comptes. L'organisation a également continué à travailler sur la modernisation de l'infrastructure et des outils de développement.
 
 ## Sécurité
-Plusieurs changements liés à la sécurité ont été implémentés :
-
-- Mise à jour des certificats Let's Encrypt et ajout d'un nouveau certificat Harica sur [tchap-x-ios](/repos/tchapgouv/tchap-x-ios).
-- Mise à jour des certificats de juillet 2026 sur [tchap-x-android](/repos/tchapgouv/tchap-x-android).
-- Correction du fingerprint du certificat SHA256 pour Tchap X sur [tchap-android](/repos/tchapgouv/tchap-android) pour une meilleure compatibilité avec F-Droid.
-- Mise à jour de `rustls-webpki` et `wasmtime` sur [matrix-authentication-service](/repos/tchapgouv/matrix-authentication-service) pour corriger des vulnérabilités.
-- Suppression d'un token npm dans le workflow CI/CD de [element-call](/repos/tchapgouv/element-call).
+Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
+- [tchap-x-ios](/repos/tchapgouv/tchap-x-ios) a renouvelé ses certificats Let's Encrypt et ajouté un nouveau certificat Harica.
+- [tchap-android](/repos/tchapgouv/tchap-android) a corrigé un problème de fingerprint de certificat pour F-Droid et mis à jour les certificats de juillet 2026.
+- [matrix-authentication-service](/repos/tchapgouv/matrix-authentication-service) a mis à jour des dépendances (rustls-webpki, opa-wasm, wasmtime) pour corriger des vulnérabilités.
 
 ## Autres changements notables
-- Refactorisation et optimisation du code sur [tchap-e2e-playwright](/repos/tchapgouv/tchap-e2e-playwright).
-- Mise à jour de la version d'Element sur [tchap-web-v4](/repos/tchapgouv/tchap-web-v4).
-- Mise à jour de Gradle et des dépendances sur [matrix-rust-components-kotlin](/repos/tchapgouv/matrix-rust-components-kotlin).
-- Amélioration de la gestion des utilisateurs et des accès sur [synapse](/repos/tchapgouv/synapse) avec l'intégration de nouvelles fonctionnalités liées à l'expiration des comptes et aux règles d'accès aux salles.
-- Ajout de la gestion de la visibilité des salles sur [synapse-room-access-rules](/repos/tchapgouv/synapse-room-access-rules).
+- **Synapse:** Amélioration de la gestion des comptes utilisateurs, notamment la réactivation correcte des profils.
+- **tchap-web-v4:** Correction d'une régression concernant l'intégration de l'appel embarqué et suppression de fonctionnalités expérimentales.
+- **tchap-desktop:** Ajout de la possibilité d'installer l'application dans le contexte utilisateur et d'effectuer des mises à jour automatiques.
+- **matrix-authentication-service:** Refonte de la construction de la configuration et ajout de tests pour la réactivation silencieuse de compte.
+- **matrix-admin-bot:** Ajout de commandes pour gérer les utilisateurs (informations, remplacement d'email et de nom d'affichage) et envoyer des notifications à tous les utilisateurs.
 
 ## Dépôts les plus actifs
-- [tchap-x-ios](/repos/tchapgouv/tchap-x-ios) : Amélioration de l'expérience utilisateur avec des corrections et des nouvelles fonctionnalités pour les salles privées chiffrées.
-- [tchap-x-android](/repos/tchapgouv/tchap-x-android) : Corrections de compatibilité, améliorations de la connexion et activation des salons privés non-chiffrés.
-- [tchap-web-v4](/repos/tchapgouv/tchap-web-v4) : Corrections de bugs et améliorations de la stabilité, notamment concernant les appels et l'intégration avec Scalingo.
-- [synapse](/repos/tchapgouv/synapse) : Améliorations de la gestion des utilisateurs, des accès et de la performance du serveur.
-- [matrix-authentication-service](/repos/tchapgouv/matrix-authentication-service) : Amélioration de l'expérience administrateur et corrections de bugs liés à l'authentification.
-- [tchap-android](/repos/tchapgouv/tchap-android) : Ajout de la certification Harica et correction du fingerprint du certificat pour F-Droid.
+- [tchap-x-ios](/repos/tchapgouv/tchap-x-ios) : Amélioration de l'expérience utilisateur, corrections de bugs et mises à jour de sécurité.
+- [tchap-x-android](/repos/tchapgouv/tchap-x-android) : Corrections de compatibilité, amélioration de la connexion avec Tchap Classique et ajout de fonctionnalités.
+- [tchap-web-v4](/repos/tchapgouv/tchap-web-v4) : Corrections de bugs, amélioration de la stabilité et de l'intégration avec les nouvelles versions d'Element Call.
+- [synapse](/repos/tchapgouv/synapse) : Amélioration de la gestion des comptes utilisateurs et correction de bugs.
+- [matrix-authentication-service](/repos/tchapgouv/matrix-authentication-service) : Amélioration de l'expérience administrateur, correction de bugs et mise à jour des dépendances.

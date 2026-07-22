@@ -1,23 +1,22 @@
-# Synthèse d'activité : proconnect-gouv (du 28 avril 2026 au 26 juillet 2026)
+# Synthèse d'activité : proconnect-gouv (du 13 juillet 2026 au 28 juillet 2026)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation proconnect-gouv s'est concentrée sur l'amélioration de la sécurité, l'expérience utilisateur et la maintenance des applications existantes. Des efforts importants ont été déployés pour renforcer la sécurité des applications [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) et [federation](/repos/proconnect-gouv/federation), notamment en limitant les méthodes d'authentification et en supprimant des configurations potentiellement vulnérables. L'authentification multifacteur (MFA) est améliorée avec une nouvelle interface utilisateur dans [proconnect-identite](/repos/proconnect-gouv/proconnect-identite). Plusieurs projets ont bénéficié de mises à jour de dépendances pour assurer la stabilité et la sécurité, et de nouvelles fonctionnalités ont été ajoutées pour faciliter l'administration et la gestion des utilisateurs, comme la recherche d'utilisateurs fédérés dans [federation](/repos/proconnect-gouv/federation). Le projet [class-validator](/repos/proconnect-gouv/class-validator) a vu l'ajout de nouveaux validateurs pour des formats de données spécifiques.
+L'activité récente de l'organisation proconnect-gouv s'est concentrée sur l'amélioration de la sécurité, l'enrichissement des fonctionnalités des outils existants et la mise en place de nouveaux services. Des avancées significatives ont été réalisées sur l'API Partenaires, qui est désormais opérationnelle avec une infrastructure CI/CD complète. L'authentification multi-facteurs (MFA) est également un axe majeur d'amélioration, avec des interfaces utilisateur modernisées et une meilleure gestion des méthodes d'authentification. Plusieurs dépôts ont bénéficié de mises à jour de dépendances pour assurer la stabilité et la sécurité des applications.
 
 ## Sécurité
-Plusieurs changements ont été apportés pour améliorer la sécurité :
-
-- Suppression de `unsafe-inline` de la Content Security Policy dans [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) et [federation](/repos/proconnect-gouv/federation) pour prévenir les attaques XSS.
-- Restriction des méthodes d'authentification autorisées au niveau du token dans [proconnect-identite](/repos/proconnect-gouv/proconnect-identite).
-- Correction de vulnérabilités de dépendances dans [class-validator](/repos/proconnect-gouv/class-validator).
+Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
+- [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) : Restriction des méthodes d'authentification au niveau du point d'accès au token, suppression de `unsafe-inline` de la CSP, correction d'une copie anonymisée incorrecte.
+- [federation](/repos/proconnect-gouv/federation) : Suppression des configurations TLS obsolètes et des certificats orphelins, suppression de `unsafe-inline` dans la CSP.
+- [class-validator](/repos/proconnect-gouv/class-validator) : Mise à jour des dépendances vulnérables.
 
 ## Autres changements notables
-- Migration du runtime de [docteur-proconnect](/repos/proconnect-gouv/docteur-proconnect) vers Bun pour de meilleures performances.
-- Ajout de healthchecks pour le broker dans [federation](/repos/proconnect-gouv/federation).
-- Initialisation du buildpack [bun-buildpack](/repos/proconnect-gouv/bun-buildpack) pour permettre le déploiement d'applications Bun sur Scalingo.
+- [api-partenaires](/repos/proconnect-gouv/api-partenaires) : Migration vers Bun et mise en place d'une infrastructure CI/CD complète.
+- [class-validator](/repos/proconnect-gouv/class-validator) : Ajout de nouveaux validateurs (IBAN, ISO 639-1, ISO 3166-1 numérique, UUID) et introduction de l'option `validateIf`.
+- [hyyypertool](/repos/proconnect-gouv/hyyypertool) : Refactorisation et amélioration de l'interface utilisateur pour la gestion des utilisateurs et des organisations.
 
 ## Dépôts les plus actifs
-- [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) : Amélioration de la sécurité, de l'expérience utilisateur de l'authentification multifacteur et maintenance technique.
-- [federation](/repos/proconnect-gouv/federation) : Ajout de nouvelles fonctionnalités d'administration et amélioration de la sécurité.
-- [proconnect-test-client](/repos/proconnect-gouv/proconnect-test-client) : Amélioration de la flexibilité du flux d'authentification et mises à jour de dépendances.
-- [class-validator](/repos/proconnect-gouv/class-validator) : Ajout de nouveaux validateurs et correction de vulnérabilités.
-- [docteur-proconnect](/repos/proconnect-gouv/docteur-proconnect) : Correction de bugs d'authentification et migration vers Bun.
+- [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) : Amélioration de la sécurité, modernisation de l'interface MFA et amélioration des tests d'intégration.
+- [federation](/repos/proconnect-gouv/federation) : Ajout de fonctionnalités d'administration (blocage d'utilisateurs, recherche par email, gestion des collaborateurs) et renforcement de la sécurité.
+- [api-partenaires](/repos/proconnect-gouv/api-partenaires) : Mise en place complète de l'API de configuration des partenaires avec une infrastructure CI/CD.
+- [class-validator](/repos/proconnect-gouv/class-validator) : Ajout de nouveaux validateurs et amélioration de la flexibilité de la validation.
+- [hyyypertool](/repos/proconnect-gouv/hyyypertool) : Amélioration de l'interface utilisateur et de la gestion des utilisateurs.
