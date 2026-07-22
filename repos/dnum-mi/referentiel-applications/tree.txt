@@ -317,6 +317,14 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260717120000_remove_license_tables
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260717130000_rework_technology_stack
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260717135837_add_applicationsource
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260717140000_add_technology_permissions
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260717171935_data_description_multiple_families
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   ├── schema
 │   │   │   ├── applications.prisma
@@ -466,6 +474,18 @@
 │   │   │   ├── data-catalog.controller.ts
 │   │   │   ├── data-catalog.service.ts
 │   │   │   ├── data-catalogue.module.ts
+│   │   │   ├── data-family
+│   │   │   │   ├── data-family.controller.ts
+│   │   │   │   ├── data-family.module.ts
+│   │   │   │   ├── data-family.service.ts
+│   │   │   │   └── dto
+│   │   │   │       └── data-family.dto.ts
+│   │   │   ├── data-sensibility
+│   │   │   │   ├── data-sensibility.controller.ts
+│   │   │   │   ├── data-sensibility.module.ts
+│   │   │   │   ├── data-sensibility.service.ts
+│   │   │   │   └── dto
+│   │   │   │       └── data-sensibility.dto.ts
 │   │   │   ├── dto
 │   │   │   │   ├── create-data-application.dto.ts
 │   │   │   │   └── create-data-description.dto.ts
@@ -747,6 +767,8 @@
 │   │   ├── compliances.e2e-spec.ts
 │   │   ├── config.e2e-spec.ts
 │   │   ├── data-catalog.e2e-spec.ts
+│   │   ├── data-family.e2e-spec.ts
+│   │   ├── data-sensibility.e2e-spec.ts
 │   │   ├── fakers
 │   │   │   ├── actor-type.faker.ts
 │   │   │   ├── actor.faker.ts
@@ -823,9 +845,10 @@
 │   ├── 11-contribution.md
 │   ├── 12-exploitation-deploiement.md
 │   ├── README.md
-│   └── assets
-│       ├── database-erd-full.svg
-│       └── database-erd-overview.svg
+│   ├── assets
+│   │   ├── database-erd-full.svg
+│   │   └── database-erd-overview.svg
+│   └── catalogue-donnees.md
 ├── e2e
 │   ├── .gitignore
 │   ├── fixtures
@@ -1000,7 +1023,9 @@
 │   │   │   │   └── RgaaComplianceSection.vue
 │   │   │   ├── data-application
 │   │   │   │   ├── DataApplicationDetail.vue
-│   │   │   │   └── DataApplicationTab.vue
+│   │   │   │   ├── DataApplicationModal.vue
+│   │   │   │   ├── DataApplicationTab.vue
+│   │   │   │   └── DataExposureModal.vue
 │   │   │   ├── form
 │   │   │   │   ├── ApplicationForm.vue
 │   │   │   │   ├── LinkForm.vue
@@ -1183,4 +1208,4 @@
 │       ├── campaign.mjs
 │       └── sync-issue.mjs
 └── release-please-config.json
-318 directories, 867 files
+326 directories, 884 files
