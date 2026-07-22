@@ -1,10 +1,10 @@
-## Changelog : portail (30 derniers jours, au 09 juillet 2026)
+## Changelog : portail (30 derniers jours, au 9 juillet 2026)
 
 ### Résumé
-Cette mise à jour corrige un problème empêchant l'évaluation des règles d'accès pour le protocole UDP, désactivant ainsi temporairement cette fonctionnalité. Plusieurs dépendances Rust ont également été mises à jour pour bénéficier des dernières corrections et améliorations de sécurité.
+Cette mise à jour corrige un problème empêchant l'évaluation des règles d'accès pour le protocole UDP, désactivant ainsi temporairement cette fonctionnalité. Des mises à jour de dépendances ont également été effectuées pour maintenir la sécurité et la stabilité du projet.
 
 ### Évolutions fonctionnelles
-- Correction : Désactivation du protocole UDP ASSOCIATE car les règles d'accès (ACL) ne sont pas évaluées correctement. [#issue à investiguer](https://github.com/cloud-gouv/portail/issues)
+- Correction d'un bug empêchant l'évaluation des ACLs pour le trafic UDP, ce qui désactive temporairement le protocole UDP ASSOCIATE. [#issue à investiguer](https://github.com/cloud-gouv/portail/issues)
 
 ### Évolutions techniques
 - Mise à jour de la crate Rust `uuid` vers la version 1.23.4.
