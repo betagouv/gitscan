@@ -1,27 +1,23 @@
 ## Changelog : tchap-x-ios (30 derniers jours, au 17 juillet 2026)
 
 ### Résumé
-Cette version apporte des améliorations à l'expérience utilisateur, notamment concernant la création de salles privées chiffrées et la gestion des mentions. Des corrections ont également été apportées pour améliorer la stabilité et la compatibilité de l'application, ainsi que des mises à jour de sécurité avec le renouvellement des certificats.
+Cette version apporte des améliorations à l'expérience utilisateur, notamment concernant la gestion des clés de chiffrement, l'identification des utilisateurs et la création de salles privées. Des corrections de texte et de terminologie ont également été effectuées. Des mises à jour de certificats de sécurité ont été appliquées pour assurer la continuité du service.
 
 ### Évolutions fonctionnelles
-- Ajout d'un badge suggéré lors de la création d'une salle privée chiffrée.
-- Réactivation du flux d'enregistrement MAS.
-- Correction de la couleur des mentions "autres" pour une meilleure lisibilité en mode sombre.
-- Suppression de l'effet de verre sur l'en-tête des salles.
-- Modification du nom de l'application dans certains écrans et permissions pour refléter la marque Tchap.
-- Conversion de l'identifiant utilisateur de l'application classique au format email.
+- Amélioration de l'écran d'instruction concernant la clé de sauvegarde et la restauration.
+- Réactivation du flux d'enregistrement MAS (Matrix Account Service).
+- Ajout d'un badge suggéré lors de la création d'une salle privée chiffrée. [#51c4a3a1e](https://github.com/tchapgouv/tchap-x-ios/commit/51c4a3a1e)
+- Correction de la couleur d'affichage des mentions d'autres utilisateurs en mode sombre. [#d4314613c](https://github.com/tchapgouv/tchap-x-ios/commit/d4314613c)
+- Conversion de l'identifiant utilisateur du format classique de l'application au format email. [#a166cc61b](https://github.com/tchapgouv/tchap-x-ios/commit/a166cc61b)
 
 ### Évolutions techniques
-- Mise à jour du SDK Rust Matrix.
-- Mise à jour de la librairie `compound-design-tokens` (version 10.2.1).
-- Remplacement des certificats Let's Encrypt expirés en pré-production et ajout d'un nouveau certificat Harica en production.
-- Suppression de la fonctionnalité expérimentale pour les salles privées non chiffrées.
-- Désactivation de l'abonnement aux threads qui causait une boucle de tentatives infinies.
-- Renommage de l'environnement "staging" en "preprod".
-- Suppression du "X" dans les noms de certains environnements.
+- Mise à jour des certificats SSL/TLS en production et pré-production pour garantir la sécurité des communications. [#098c1382c](https://github.com/tchapgouv/tchap-x-ios/commit/098c1382c), [#4c16563c6](https://github.com/tchapgouv/tchap-x-ios/commit/4c16563c6)
+- Restriction des domaines suffixés autorisés pour une meilleure sécurité. [#963b75f6e](https://github.com/tchapgouv/tchap-x-ios/commit/963b75f6e)
+- Suppression de l'effet de verre sur l'en-tête des salles. [#c3226c3de](https://github.com/tchapgouv/tchap-x-ios/commit/c3226c3de)
+- Renommage de l'environnement "staging" en "preprod". [#074e5d22a](https://github.com/tchapgouv/tchap-x-ios/commit/074e5d22a)
+- Suppression du "X" dans les noms d'environnement de production et de développement. [#def7c30bd](https://github.com/tchapgouv/tchap-x-ios/commit/def7c30bd)
 
 ### Autres changements
-- Correction de typos et amélioration de la formulation dans l'application.
-- Restrictions sur l'écran des espaces pour éviter les vues vides.
-- Montée de version de l'application.
-- Correction de problèmes de build Xcode après un rebase.
+- Corrections de typographie et de terminologie dans l'application. [#15e236a6d](https://github.com/tchapgouv/tchap-x-ios/commit/15e236a6d), [#0bd048328](https://github.com/tchapgouv/tchap-x-ios/commit/0bd048328), [#9b4a7b064](https://github.com/tchapgouv/tchap-x-ios/commit/9b4a7b064)
+- Restrictions sur l'écran des espaces pour améliorer l'expérience utilisateur. [#3319f0966](https://github.com/tchapgouv/tchap-x-ios/commit/3319f0966), [#0ce67b8fc](https://github.com/tchapgouv/tchap-x-ios/commit/0ce67b8fc)
+- Montée de version de l'application. [#53d0e74b2](https://github.com/tchapgouv/tchap-x-ios/commit/53d0e74b2), [#7fe26d9b7](https://github.com/tchapgouv/tchap-x-ios/commit/7fe26d9b7)
