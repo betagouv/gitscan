@@ -1,35 +1,36 @@
-## Changelog : mutafriches (30 derniers jours, au 16 juillet 2026)
+## Changelog : mutafriches (30 derniers jours, au 22 juillet 2026)
 
 ### Résumé
-Les dernières mises à jour de mutafriches se concentrent sur l'amélioration de l'expérience utilisateur, notamment avec l'ajout de nouvelles pages d'information (partenaires, données utilisées, résolution IDU) et l'intégration de services externes comme Zcal. Des corrections et améliorations ont également été apportées à l'affichage des données et à la documentation.
+Ce mois-ci, l'application mutafriches a connu des améliorations significatives en termes de fonctionnalités et d'expérience utilisateur. Les principales évolutions concernent l'ajout de nouvelles pages (partenaires, résultats, données utilisées), l'intégration de services tiers (Zcal), et des corrections pour améliorer la précision des données et l'interface utilisateur.
 
 ### Évolutions fonctionnelles
-- Ajout d'une page dédiée aux partenaires SCET et à la résolution IDU [#157](https://github.com/incubateur-ademe/mutafriches/issues/157).
-- Intégration de Zcal et suppression des références aux adresses mail de contact [#140](https://github.com/incubateur-ademe/mutafriches/issues/140).
-- Nouvelle page "Données utilisées" pour plus de transparence sur les sources de données [#137](https://github.com/incubateur-ademe/mutafriches/issues/137).
-- Nouvelle page "Résultats" pour une présentation plus claire des analyses [#138](https://github.com/incubateur-ademe/mutafriches/issues/138).
+- Ajout d'une page dédiée aux partenaires SCET et à la résolution d'IDU [#157](https://github.com/incubateur-ademe/mutafriches/issues/157).
+- Réactivation de la fonctionnalité fret et de la comparaison avec Cartofriches [#159](https://github.com/incubateur-ademe/mutafriches/issues/159).
+- Nouvelle page "Résultats" avec intégration de Zcal et suppression des références aux adresses mail de contact [#140](https://github.com/incubateur-ademe/mutafriches/issues/140), [#144](https://github.com/incubateur-ademe/mutafriches/issues/144).
+- Ajout d'une page "Données utilisées" pour la transparence sur les sources de données [#137](https://github.com/incubateur-ademe/mutafriches/issues/137).
 - Mise à jour de la page partenaires [#146](https://github.com/incubateur-ademe/mutafriches/issues/146).
-- Ajout d'un numéro de version en bas de page [#142](https://github.com/incubateur-ademe/mutafriches/issues/142).
-- Amélioration de l'affichage de la page de résultats et intégration avec zCal [#144](https://github.com/incubateur-ademe/mutafriches/issues/144).
-- Raccourcissement des libellés "Paysage" et "Voie de desserte" pour une meilleure lisibilité [#158](https://github.com/incubateur-ademe/mutafriches/issues/158).
+- Amélioration du wording de la qualification manuelle [#151](https://github.com/incubateur-ademe/mutafriches/issues/151).
+- Ajout d'un suivi du canal partenaire [#162](https://github.com/incubateur-ademe/mutafriches/issues/162).
+- Correction de l'affichage des dates dans les statistiques [#161](https://github.com/incubateur-ademe/mutafriches/issues/161).
+- Correction des statistiques de l'incubateur [#160](https://github.com/incubateur-ademe/mutafriches/issues/160).
+- Ajout de la version de l'algorithme de provenance [#154](https://github.com/incubateur-ademe/mutafriches/issues/154).
+- Correction de l'unité de distance (mètres/kilomètres) [#153](https://github.com/incubateur-ademe/mutafriches/issues/153).
+- Ajout d'une documentation sur la source des données et possibilité de télécharger un PDF [#152](https://github.com/incubateur-ademe/mutafriches/issues/152).
+- Ajout d'une version en label non cliquable dans le footer [#143](https://github.com/incubateur-ademe/mutafriches/issues/143) et ajout de la version dans le footer [#142](https://github.com/incubateur-ademe/mutafriches/issues/142).
+- Raccourcissement des libellés "Paysage" et "Voie de desserte" dans l'interface utilisateur [#158](https://github.com/incubateur-ademe/mutafriches/issues/158).
 
 ### Évolutions techniques
 - Refactoring de la page multisites et de la page diagnostic [#132](https://github.com/incubateur-ademe/mutafriches/issues/132).
-- Mise à jour de la documentation pour la synchroniser avec le code [#145](https://github.com/incubateur-ademe/mutafriches/issues/145).
-- Utilisation d'imports locaux pour la librairie lovac [#149](https://github.com/incubateur-ademe/mutafriches/issues/149).
-- Correction de la version de l'algorithme de provenance [#154](https://github.com/incubateur-ademe/mutafriches/issues/154).
-- Correction de l'unité de distance (mètres / kilomètres) [#153](https://github.com/incubateur-ademe/mutafriches/issues/153).
-- Correction du schéma WFS pour la ZAER [#150](https://github.com/incubateur-ademe/mutafriches/issues/150).
-- Suppression des fixtures Excel [#141](https://github.com/incubateur-ademe/mutafriches/issues/141).
-- Préchargement du script via l'API [#147](https://github.com/incubateur-ademe/mutafriches/issues/147).
-- Correction de l'intégration de l'intégrateur origin guard [#156](https://github.com/incubateur-ademe/mutafriches/issues/156).
-- Amélioration du wording de la qualification manuelle [#151](https://github.com/incubateur-ademe/mutafriches/issues/151).
-- Correction des exemples dans les listes [#155](https://github.com/incubateur-ademe/mutafriches/issues/155).
+- Mise en place d'un identifiant visiteur anonyme persistant pour la récurrence, ajout des pages juridiques et configuration du storage [#134](https://github.com/incubateur-ademe/mutafriches/issues/134).
+- Utilisation d'imports locaux pour lovac [#149](https://github.com/incubateur-ademe/mutafriches/issues/149).
+- Suppression des fixtures [#148](https://github.com/incubateur-ademe/mutafriches/issues/148).
+- Préchargement des scripts via l'API [#147](https://github.com/incubateur-ademe/mutafriches/issues/147).
+- Synchronisation de la documentation avec le code [#145](https://github.com/incubateur-ademe/mutafriches/issues/145).
+- Correction d'un problème avec le "integrateur origin guard" [#156](https://github.com/incubateur-ademe/mutafriches/issues/156).
+- Correction du schéma WFS de ZAER [#150](https://github.com/incubateur-ademe/mutafriches/issues/150).
 
 ### Autres changements
-- Ajout d'un identifiant visiteur anonyme persistant pour améliorer le suivi des visites [#134](https://github.com/incubateur-ademe/mutafriches/issues/134).
-- Ajout des pages juridiques et configuration du stockage [#134](https://github.com/incubateur-ademe/mutafriches/issues/134).
-- Suppression des vulnérabilités signalées par Dependabot [#141](https://github.com/incubateur-ademe/mutafriches/issues/141).
-- Mise à jour de la librairie TypeScript (de 5.9.3 à 6.0.3) [#90](https://github.com/incubateur-ademe/mutafriches/issues/90).
-- Mise à jour de la librairie Nodemailer (de 8.0.10 à 9.0.1) [#135](https://github.com/incubateur-ademe/mutafriches/issues/135).
+- Mise à jour de la dépendance TypeScript vers la version 6.0.3 [#90](https://github.com/incubateur-ademe/mutafriches/issues/90).
+- Mise à jour de la dépendance Nodemailer vers la version 9.0.1 [#135](https://github.com/incubateur-ademe/mutafriches/issues/135).
+- Correction des vulnérabilités identifiées par Dependabot et suppression des fixtures Excel [#141](https://github.com/incubateur-ademe/mutafriches/issues/141).
 - Mise à jour des dépendances de sécurité [#136](https://github.com/incubateur-ademe/mutafriches/issues/136).

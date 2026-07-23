@@ -43,6 +43,17 @@
 │   │   │   ├── app.controller.spec.ts
 │   │   │   ├── app.controller.ts
 │   │   │   ├── app.module.ts
+│   │   │   ├── cartofriches
+│   │   │   │   ├── cartofriches.adapter.ts
+│   │   │   │   ├── cartofriches.constants.ts
+│   │   │   │   ├── cartofriches.controller.ts
+│   │   │   │   ├── cartofriches.module.ts
+│   │   │   │   ├── cartofriches.service.spec.ts
+│   │   │   │   ├── cartofriches.service.ts
+│   │   │   │   ├── cartofriches.utils.ts
+│   │   │   │   └── dto
+│   │   │   │       ├── commune-cartofriches.query.dto.ts
+│   │   │   │       └── recherche-cartofriches.query.dto.ts
 │   │   │   ├── config
 │   │   │   │   ├── app.config.spec.ts
 │   │   │   │   ├── app.config.ts
@@ -275,6 +286,7 @@
 │   │   │   │   │   │       ├── index.ts
 │   │   │   │   │   │       ├── v1.1.ts
 │   │   │   │   │   │       ├── v1.10.ts
+│   │   │   │   │   │       ├── v1.11.ts
 │   │   │   │   │   │       ├── v1.2.ts
 │   │   │   │   │   │       ├── v1.3.ts
 │   │   │   │   │   │       ├── v1.4.ts
@@ -330,6 +342,7 @@
 │   │   │   │   └── repositories
 │   │   │   │       └── partenaire.repository.ts
 │   │   │   ├── scripts
+│   │   │   │   ├── backfill-canal-partenaire.ts
 │   │   │   │   ├── coord-to-idu
 │   │   │   │   │   ├── apicarto.client.ts
 │   │   │   │   │   ├── data
@@ -446,6 +459,8 @@
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── integrateur-origin.guard.spec.ts
 │   │   │   │   │   └── integrateur-origin.guard.ts
+│   │   │   │   ├── logger
+│   │   │   │   │   └── safe-console-logger.ts
 │   │   │   │   ├── services
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── origine-detection.service.spec.ts
@@ -465,6 +480,8 @@
 │   │   │   │   ├── utils
 │   │   │   │   │   ├── environment.utils.ts
 │   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── safe-error.spec.ts
+│   │   │   │   │   ├── safe-error.ts
 │   │   │   │   │   └── version.utils.ts
 │   │   │   │   └── validators
 │   │   │   │       ├── index.ts
@@ -719,6 +736,30 @@
 │       │   │   └── tests
 │       │   │       ├── pages
 │       │   │       │   └── TestsPage.tsx
+│       │   │       ├── test-comparaison-cartofriches
+│       │   │       │   ├── components
+│       │   │       │   │   ├── CartofrichesFrichesMap.tsx
+│       │   │       │   │   ├── CartofrichesSelectionPanel.tsx
+│       │   │       │   │   ├── CollageIdentifiantsPanel.tsx
+│       │   │       │   │   ├── CommuneSearchInput.tsx
+│       │   │       │   │   ├── EcartsDetail.tsx
+│       │   │       │   │   ├── SiteComparaisonDetail.tsx
+│       │   │       │   │   ├── SitesReferencePanel.tsx
+│       │   │       │   │   ├── comparaison-cartofriches.css
+│       │   │       │   │   └── fricheMarkerIcon.ts
+│       │   │       │   ├── config
+│       │   │       │   │   └── sites-reference.ts
+│       │   │       │   ├── hooks
+│       │   │       │   │   └── useComparaisonCartofriches.ts
+│       │   │       │   ├── pages
+│       │   │       │   │   └── ComparaisonCartofrichesPage.tsx
+│       │   │       │   └── utils
+│       │   │       │       ├── comparaison.spec.ts
+│       │   │       │       ├── comparaison.ts
+│       │   │       │       ├── export-csv.spec.ts
+│       │   │       │       ├── export-csv.ts
+│       │   │       │       ├── parse-identifiants.spec.ts
+│       │   │       │       └── parse-identifiants.ts
 │       │   │       ├── test-idu-diagnostic
 │       │   │       │   ├── README.md
 │       │   │       │   ├── components
@@ -777,6 +818,7 @@
 │       │   │   │       ├── UsageRatioBar.tsx
 │       │   │   │       └── index.ts
 │       │   │   ├── config
+│       │   │   │   ├── feature-flags.config.ts
 │       │   │   │   ├── map-layers.config.ts
 │       │   │   │   ├── routes.config.ts
 │       │   │   │   ├── storage-keys.config.ts
@@ -804,6 +846,7 @@
 │       │   │   │   └── useIframe.ts
 │       │   │   ├── services
 │       │   │   │   ├── api
+│       │   │   │   │   ├── api.cartofriches.service.ts
 │       │   │   │   │   ├── api.client.ts
 │       │   │   │   │   ├── api.config.ts
 │       │   │   │   │   ├── api.donnees-externes.service.ts
@@ -817,6 +860,8 @@
 │       │   │   │   ├── cadastre
 │       │   │   │   │   ├── api.cadastre.service.ts
 │       │   │   │   │   └── api.cadastre.types.ts
+│       │   │   │   ├── geo
+│       │   │   │   │   └── api.commune.service.ts
 │       │   │   │   └── geocoding
 │       │   │   │       ├── api.geocoding.service.ts
 │       │   │   │       └── api.geocoding.types.ts
@@ -865,6 +910,7 @@
 │   │   ├── 0019-derivation-automatique-raccordement-eau.md
 │   │   ├── 0020-contact-multisites-calendrier-zcal.md
 │   │   ├── 0021-persistance-base-partenaires-sites.md
+│   │   ├── 0021-proxy-backend-cartofriches-comparaison.md
 │   │   ├── 0022-migration-typescript-6.md
 │   │   ├── 0023-export-pdf-react-pdf-renderer.md
 │   │   ├── 0024-lovac-referentiel-local.md
@@ -873,7 +919,8 @@
 │   │   ├── 0027-unite-distances-metres-conversion-km-frontiere-algo.md
 │   │   ├── 0028-filtrage-serveur-wfs-voies-grande-circulation.md
 │   │   ├── 0028-tag-version-algorithme-reflete-version-utilisee.md
-│   │   └── 0029-resolution-idu-coordonnees-onboarding-partenaire.md
+│   │   ├── 0029-resolution-idu-coordonnees-onboarding-partenaire.md
+│   │   └── 0030-canal-page-partenaire-integrateur-tague.md
 │   ├── ajout-partenaire.md
 │   ├── analytics-tracking.md
 │   ├── enrichissement.md
@@ -895,6 +942,9 @@
 │   └── shared-types
 │       ├── package.json
 │       ├── src
+│       │   ├── cartofriches
+│       │   │   ├── friches-cerema.dto.ts
+│       │   │   └── index.ts
 │       │   ├── documentation
 │       │   │   ├── index.ts
 │       │   │   ├── sources-donnees.data.spec.ts
@@ -1019,4 +1069,4 @@
 │   ├── generate-sources-doc.cjs
 │   └── setup.sh
 └── tsconfig.json
-231 directories, 790 files
+242 directories, 829 files
