@@ -352,6 +352,7 @@
 │   │   ├── controllers
 │   │   │   ├── a11y_date_input_controller.js
 │   │   │   ├── broadcast_coordinates_changed_controller.js
+│   │   │   ├── carousel_controller.js
 │   │   │   ├── char_counter_controller.js
 │   │   │   ├── character_count_controller.js
 │   │   │   ├── chart_controller.js
@@ -394,7 +395,6 @@
 │   │   │   ├── preview_image_controller.js
 │   │   │   ├── profile_controller.js
 │   │   │   ├── progress_controller.js
-│   │   │   ├── quote_carousel_controller.js
 │   │   │   ├── resources_controller.js
 │   │   │   ├── rg2a_controller.js
 │   │   │   ├── search_form_controller.js
@@ -1628,6 +1628,7 @@
 │       │   │   ├── _livestorm.html.slim
 │       │   │   ├── _metrics.html.slim
 │       │   │   ├── _newsletter.html.slim
+│       │   │   ├── _partners_carousel.html.slim
 │       │   │   ├── _people_card.html.slim
 │       │   │   ├── _resource_card.html.slim
 │       │   │   ├── _search_top_nav.html.slim
@@ -1647,15 +1648,10 @@
 │       │   │   │   ├── _contact_form.html.slim
 │       │   │   │   └── _hero.html.slim
 │       │   │   ├── pros
-│       │   │   │   ├── _api_section.html.slim
 │       │   │   │   ├── _faq.html.slim
 │       │   │   │   ├── _hero_pro.html.slim
-│       │   │   │   ├── _involved_partners_logos.html.slim
 │       │   │   │   ├── _login.html.slim
 │       │   │   │   ├── _partners_header.html.slim
-│       │   │   │   ├── _partners_logos.html.slim
-│       │   │   │   ├── _partners_quote.html.slim
-│       │   │   │   ├── _partners_resources.html.slim
 │       │   │   │   ├── _pro_events.html.slim
 │       │   │   │   ├── _sub_hero_pro.html.slim
 │       │   │   │   └── _videos.html.slim
@@ -1677,7 +1673,9 @@
 │       │   │       ├── _hero_student.html.slim
 │       │   │       ├── _howitworks.html.slim
 │       │   │       ├── _last_offers.html.slim
-│       │   │       └── _login.html.slim
+│       │   │       ├── _login.html.slim
+│       │   │       ├── _resource_faq_card.html.slim
+│       │   │       └── _resources.html.slim
 │       │   ├── home.html.slim
 │       │   ├── javascript_required.html.slim
 │       │   ├── les_10_commandements_d_une_bonne_offre.html.slim
@@ -2929,6 +2927,7 @@
 │   │   ├── cancel_validated_internship_application_job_test.rb
 │   │   ├── rebuild_review_job_test.rb
 │   │   ├── send_sms_job_test.rb
+│   │   ├── students_anonymize_job_test.rb
 │   │   ├── sync_internship_offer_keywords_job_test.rb
 │   │   └── triggered
 │   │       ├── internship_applications_reminder_job_test.rb
@@ -2982,7 +2981,8 @@
 │   │   │   │   ├── update_internship_agreements_school_representative_test.rb
 │   │   │   │   └── update_internship_agreements_school_representative_with_user_data_test.rb
 │   │   │   ├── sygne_import_test.rb
-│   │   │   └── update_internship_offers_addresses_test.rb
+│   │   │   ├── update_internship_offers_addresses_test.rb
+│   │   │   └── year_end_cleaning_test.rb
 │   │   └── triggers
 │   │       ├── single_application_reminder_test.rb
 │   │       └── student_accepted_internship_application_reminder_test.rb
