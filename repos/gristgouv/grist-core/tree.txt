@@ -129,6 +129,7 @@
 │   │   │   ├── LayoutTray.ts
 │   │   │   ├── LinkingState.ts
 │   │   │   ├── Login.css
+│   │   │   ├── McpConnectBanner.ts
 │   │   │   ├── ParseOptions.ts
 │   │   │   ├── PluginScreen.ts
 │   │   │   ├── Printing.css
@@ -240,6 +241,7 @@
 │   │   │   ├── log.ts
 │   │   │   ├── markdown.ts
 │   │   │   ├── nameUtils.ts
+│   │   │   ├── obsPropWithSaveOnWrite.ts
 │   │   │   ├── pausableObs.ts
 │   │   │   ├── popupControl.ts
 │   │   │   ├── popupUtils.ts
@@ -284,7 +286,6 @@
 │   │   │   ├── RuleOwner.ts
 │   │   │   ├── SearchModel.ts
 │   │   │   ├── SectionFilter.ts
-│   │   │   ├── Styles.ts
 │   │   │   ├── TableData.ts
 │   │   │   ├── TableModel.js
 │   │   │   ├── TelemetryModel.ts
@@ -337,6 +338,7 @@
 │   │   │   ├── AdminPanel.ts
 │   │   │   ├── AdminPanelCss.ts
 │   │   │   ├── AdminPanelName.ts
+│   │   │   ├── AdminSetupRequests.ts
 │   │   │   ├── AdminTogglesCss.ts
 │   │   │   ├── ApiKey.ts
 │   │   │   ├── App.css
@@ -423,6 +425,7 @@
 │   │   │   ├── MenuToggle.ts
 │   │   │   ├── MultiSelector.ts
 │   │   │   ├── NewRecordButton.ts
+│   │   │   ├── NotificationsAndAutomationsNudge.ts
 │   │   │   ├── NotifyUI.ts
 │   │   │   ├── OAuthAppsCore.ts
 │   │   │   ├── OAuthFlowCore.ts
@@ -431,6 +434,7 @@
 │   │   │   ├── OpenAccessibilityModal.ts
 │   │   │   ├── OpenUserManager.ts
 │   │   │   ├── OpenVideoTour.ts
+│   │   │   ├── OutgoingRequestsStatus.ts
 │   │   │   ├── PagePanels.ts
 │   │   │   ├── PageWidgetPicker.ts
 │   │   │   ├── Pages.ts
@@ -457,6 +461,7 @@
 │   │   │   ├── ServiceStatus.ts
 │   │   │   ├── SettingsLayout.ts
 │   │   │   ├── SetupCard.ts
+│   │   │   ├── SetupSteps.ts
 │   │   │   ├── ShareMenu.ts
 │   │   │   ├── ShortcutKey.ts
 │   │   │   ├── SiteSwitcher.ts
@@ -690,11 +695,14 @@
 │   │   ├── SandboxInfo.ts
 │   │   ├── ServiceAccountTypes-ti.ts
 │   │   ├── ServiceAccountTypes.ts
+│   │   ├── SetupRequests.ts
+│   │   ├── SetupRequestsAPI.ts
 │   │   ├── ShareAnnotator.ts
 │   │   ├── ShareOptions.ts
 │   │   ├── SortFunc.ts
 │   │   ├── SortSpec.ts
 │   │   ├── StringUnion.ts
+│   │   ├── Styles.ts
 │   │   ├── TableData.ts
 │   │   ├── TabularDiff.ts
 │   │   ├── Telemetry.ts
@@ -785,7 +793,7 @@
 │   │   │   └── Workspace.ts
 │   │   ├── lib
 │   │   │   ├── ActivationsManager.ts
-│   │   │   ├── DocApiForwarder.ts
+│   │   │   ├── DocApiProxy.ts
 │   │   │   ├── DocWorkerMap.ts
 │   │   │   ├── Doom.ts
 │   │   │   ├── Housekeeper.ts
@@ -854,6 +862,8 @@
 │   │   │   ├── 1759434763338-DocDisabledAt.ts
 │   │   │   ├── 1764872085347-OAuthClientsAndGrants.ts
 │   │   │   ├── 1777897588904-OAuthGrantSettingsAndLastUsedAt.ts
+│   │   │   ├── 1779801632607-OAuthGrantClientIdNullable.ts
+│   │   │   ├── 1782000000000-OAuthClientOrgIdNullable.ts
 │   │   │   └── README.md
 │   │   └── sqlUtils.ts
 │   ├── plugin
@@ -897,6 +907,7 @@
 │   │   ├── generateCheckpoint.ts
 │   │   ├── generateInitialDocSql.ts
 │   │   ├── lib
+│   │   │   ├── AccessTokenCredential.ts
 │   │   │   ├── AccessTokens.ts
 │   │   │   ├── ActionHistory.ts
 │   │   │   ├── ActionHistoryImpl.ts
@@ -912,6 +923,7 @@
 │   │   │   ├── AttachmentStore.ts
 │   │   │   ├── AttachmentStoreProvider.ts
 │   │   │   ├── AuditEvent.ts
+│   │   │   ├── AuthCredential.ts
 │   │   │   ├── AuthSession.ts
 │   │   │   ├── Authorizer.ts
 │   │   │   ├── Boot.ts
@@ -971,10 +983,12 @@
 │   │   │   ├── IDocStorageManager.ts
 │   │   │   ├── IElectionStore.ts
 │   │   │   ├── INotifier.ts
+│   │   │   ├── IOAuthValidator.ts
 │   │   │   ├── ISandbox.ts
 │   │   │   ├── IShell.ts
 │   │   │   ├── ITestingHooks-ti.ts
 │   │   │   ├── ITestingHooks.ts
+│   │   │   ├── IWebSocketProxy.ts
 │   │   │   ├── InsightLog.ts
 │   │   │   ├── InstallAdmin.ts
 │   │   │   ├── LogMethods.ts
@@ -1009,6 +1023,7 @@
 │   │   │   ├── ServerColumnGetters.ts
 │   │   │   ├── ServerLocale.ts
 │   │   │   ├── Sessions.ts
+│   │   │   ├── SetupRequestsEndpoints.ts
 │   │   │   ├── Sharing.ts
 │   │   │   ├── SqliteCommon.ts
 │   │   │   ├── SqliteNode.ts
@@ -1062,6 +1077,7 @@
 │   │   │   ├── middleware.ts
 │   │   │   ├── oidc
 │   │   │   │   └── Protections.ts
+│   │   │   ├── outgoingRequests.ts
 │   │   │   ├── places.ts
 │   │   │   ├── reportTimeTaken.ts
 │   │   │   ├── requestUtils.ts
@@ -1086,6 +1102,7 @@
 │   │   │   ├── sessionUtils.ts
 │   │   │   ├── shortDesc.ts
 │   │   │   ├── shutdown.js
+│   │   │   ├── storageDurability.ts
 │   │   │   ├── updateChecker.ts
 │   │   │   ├── uploads.ts
 │   │   │   └── workerExporter.ts
@@ -1109,6 +1126,7 @@
 │   ├── build.sh
 │   ├── check_test_groups.js
 │   ├── checkout-ext-directory.sh
+│   ├── dedupe-ext-types.sh
 │   ├── fly-deploy.js
 │   ├── fly-template.env
 │   ├── fly-template.toml
@@ -1116,6 +1134,7 @@
 │   ├── generate_locale_list.js
 │   ├── generate_translation_keys.js
 │   ├── install_chrome_for_tests.sh
+│   ├── install_edition.sh
 │   ├── prepare_ee.sh
 │   ├── prepare_python.sh
 │   ├── sanitize_translations.js
@@ -1126,7 +1145,6 @@
 │   ├── webpack.api.config.js
 │   ├── webpack.check.js
 │   └── webpack.config.js
-├── crowdin.yml
 ├── docker-compose-examples
 │   ├── grist-local-testing
 │   │   ├── README.md
@@ -1187,6 +1205,7 @@
 ├── eslint-rules
 │   └── local-rules.js
 ├── eslint.config.js
+├── eslint.config.shared.js
 ├── package.json
 ├── plugins
 │   └── core
@@ -1283,7 +1302,7 @@
 │   │   ├── summary.py
 │   │   ├── table.py
 │   │   ├── table_data_set.py
-│   │   ├── test_*.py  (64 files)
+│   │   ├── test_*.py  (65 files)
 │   │   ├── testsamples.py
 │   │   ├── testscript.json
 │   │   ├── testutil.py
@@ -1649,6 +1668,7 @@
 │           ├── UseSales.svg
 │           └── UseScience.svg
 ├── storybook
+│   ├── adminSetupRequests.stories.ts
 │   ├── authenticationSection.stories.ts
 │   ├── baseUrlSection.stories.ts
 │   ├── buttons.stories.ts
@@ -1658,6 +1678,8 @@
 │   ├── links.stories.ts
 │   ├── menus.stories.ts
 │   ├── modals.stories.ts
+│   ├── notificationsNudge.stories.ts
+│   ├── outgoingRequests.stories.ts
 │   ├── settings-layout.stories.ts
 │   └── tsconfig.json
 ├── stubs
@@ -1781,6 +1803,7 @@
 │   │   ├── RecentItems.js
 │   │   ├── RefCountMap.ts
 │   │   ├── RelativeDates.ts
+│   │   ├── SetupRequests.ts
 │   │   ├── SortFunc.ts
 │   │   ├── StringUnion.ts
 │   │   ├── TableData.ts
@@ -2047,6 +2070,7 @@
 │   │   │   ├── Importer.ts
 │   │   │   ├── Mentions.ts
 │   │   │   ├── MultiSelector.ts
+│   │   │   ├── NotificationsNudge.ts
 │   │   │   ├── OnBoardingPopups.ts
 │   │   │   ├── PagePanels.ts
 │   │   │   ├── PageWidgetPicker.ts
@@ -2067,6 +2091,7 @@
 │   │   │   │   ├── ParseOptionsData.ts
 │   │   │   │   ├── States.ts
 │   │   │   │   ├── gristStyles.ts
+│   │   │   │   ├── notificationsNudgePanels.ts
 │   │   │   │   ├── widgetPicker.ts
 │   │   │   │   └── withLocale.ts
 │   │   │   ├── icons.css -> ../../../static/icons/icons.css
@@ -2183,7 +2208,7 @@
 │   │   ├── UpdateChecks.ts
 │   │   ├── apiUtils.ts
 │   │   ├── lib
-│   │   │   ├── DocApiForwarder.ts
+│   │   │   ├── DocApiProxy.ts
 │   │   │   ├── DocPrefs.ts
 │   │   │   ├── DocWorkerMap.ts
 │   │   │   ├── HealthCheck.ts
@@ -2315,6 +2340,7 @@
 │   │   ├── MultiColumn2.ts
 │   │   ├── MultiColumn3.ts
 │   │   ├── NewDocument.ntest.js
+│   │   ├── NotificationsNudge.ts
 │   │   ├── NumericEditor.ts
 │   │   ├── OnDemand.ts
 │   │   ├── Pages.ts
@@ -2337,6 +2363,7 @@
 │   │   ├── RightPanelSelectBy.ts
 │   │   ├── RowHeights.ts
 │   │   ├── RowMenu.ts
+│   │   ├── RowNumbers.ts
 │   │   ├── SavePosition.ntest.js
 │   │   ├── ScreenReader.ts
 │   │   ├── Search.ts
@@ -2381,6 +2408,7 @@
 │   │   ├── VisibleFieldsConfig.ts
 │   │   ├── WebhookOverflow.ts
 │   │   ├── WebhookPage.ts
+│   │   ├── WelcomePage.ts
 │   │   ├── aclTestUtils.ts
 │   │   ├── chartViewTestUtils.ts
 │   │   ├── customUtil.ts
@@ -2419,6 +2447,7 @@
 │   │   ├── Icons.ts
 │   │   ├── Mentions.ts
 │   │   ├── MultiSelector.ts
+│   │   ├── NotificationsNudge.ts
 │   │   ├── NotifyBar.ts
 │   │   ├── OnBoardingPopups.ts
 │   │   ├── PagePanels.ts
@@ -2466,6 +2495,7 @@
 │   │   │   ├── AttachmentFileManager.ts
 │   │   │   ├── AttachmentStoreProvider.ts
 │   │   │   ├── Authorizer.ts
+│   │   │   ├── BootProbes.ts
 │   │   │   ├── BundleActions.ts
 │   │   │   ├── CommentAccess.ts
 │   │   │   ├── CommentAccess2.ts
@@ -2489,6 +2519,7 @@
 │   │   │   ├── ManyFetches.ts
 │   │   │   ├── MemoryPool.ts
 │   │   │   ├── MinIOExternalStorage.ts
+│   │   │   ├── OAuth2Clients.ts
 │   │   │   ├── OIDCConfig.ts
 │   │   │   ├── OnDemandActions.ts
 │   │   │   ├── OpenAIAssistantV1.ts
@@ -2496,12 +2527,14 @@
 │   │   │   ├── ProxyAgent.ts
 │   │   │   ├── PubSubCache.ts
 │   │   │   ├── PubSubManager.ts
+│   │   │   ├── RedirectToOrg.ts
 │   │   │   ├── RestartShell.ts
 │   │   │   ├── RowAccess.ts
 │   │   │   ├── SQLiteDB.ts
 │   │   │   ├── SamlConfig.ts
 │   │   │   ├── Scim.ts
 │   │   │   ├── ServerLocale.ts
+│   │   │   ├── SetupRequests.ts
 │   │   │   ├── TableMetadataLoader.ts
 │   │   │   ├── Telemetry.ts
 │   │   │   ├── TestingHooks.ts
@@ -2524,6 +2557,7 @@
 │   │   │   │   ├── DocApiCreation.ts
 │   │   │   │   ├── DocApiDocuments.ts
 │   │   │   │   ├── DocApiDownloads.ts
+│   │   │   │   ├── DocApiForms.ts
 │   │   │   │   ├── DocApiMisc.ts
 │   │   │   │   ├── DocApiOrgLimitFlags.ts
 │   │   │   │   ├── DocApiPermissions.ts
@@ -2534,6 +2568,8 @@
 │   │   │   │   ├── DocApiTables.ts
 │   │   │   │   ├── DocApiTriggers.ts
 │   │   │   │   ├── DocApiWebhooks.ts
+│   │   │   │   ├── extraScenarios.ts
+│   │   │   │   ├── extraServerModes.ts
 │   │   │   │   └── helpers.ts
 │   │   │   ├── extractOrg.ts
 │   │   │   ├── helpers
@@ -2546,6 +2582,7 @@
 │   │   │   ├── requestUtils.ts
 │   │   │   ├── resolveIdentity.ts
 │   │   │   ├── sandboxUtil.ts
+│   │   │   ├── sendAppPage.ts
 │   │   │   ├── serverUtils.js
 │   │   │   ├── serverUtils2.ts
 │   │   │   ├── shortDesc.js
@@ -2577,4 +2614,4 @@
 ├── tsconfig.eslint.json
 ├── tsconfig.json
 └── yarn.lock
-181 directories, 2490 files
+181 directories, 2528 files
