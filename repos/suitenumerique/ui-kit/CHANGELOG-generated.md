@@ -1,36 +1,33 @@
 ## Changelog : ui-kit (30 derniers jours, au 8 juillet 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à plusieurs composants, notamment le filtre, le menu utilisateur, et introduit de nouveaux composants comme le SmartScroller et le StorageGauge. L'accessibilité a été améliorée sur plusieurs éléments, et des corrections de bugs ont été apportées pour une meilleure expérience utilisateur.
+Cette version apporte des améliorations significatives à plusieurs composants clés, notamment le filtre, le menu utilisateur et l'affichage de l'espace de stockage. De nouveaux composants comme le SmartScroller et le HelpMenu ont été ajoutés, enrichissant la bibliothèque d'outils disponibles pour les développeurs. L'accessibilité a également été améliorée sur plusieurs éléments.
 
 ### Évolutions fonctionnelles
-- Ajout du composant `StorageGauge` pour afficher l'utilisation du stockage, avec des stories et des tests associés.
-- Amélioration du composant `SearchFilter` avec l'ajout d'une ligne de réinitialisation et la possibilité d'ajouter des sous-éléments personnalisés.
-- Ajout d'une option pour masquer la vue mobile du menu utilisateur via la prop `withMobileView`.
-- Ajout du composant `HelpMenu` avec des options pour les liens légaux, les options personnalisées et les liens `mailto`.
-- Ajout du composant `SmartScroller` pour un défilement fluide.
-- Centrage des boutons du modal sur mobile pour une meilleure lisibilité.
-- Amélioration de l'accessibilité du menu utilisateur.
-- Ajout d'un indicateur visuel pour le focus clavier dans les options du filtre.
+- Ajout d'un composant "SmartScroller" pour un défilement amélioré.
+- Ajout d'un composant "HelpMenu" permettant d'intégrer des liens d'aide légaux, personnalisés et des liens par email.
+- Amélioration du filtre : ajout d'une option de réinitialisation et support de sous-éléments personnalisés.
+- Amélioration du menu utilisateur : ajout d'une prop pour masquer la vue mobile et amélioration de l'accessibilité.
+- Amélioration de l'accessibilité du composant "StorageGauge" (indicateur d'espace de stockage).
+- Centrage des boutons dans les modales sur mobile.
+- Ajout de catégories de documents pour "lasuite/docs".
+- Rafraîchissement des icônes de fichiers miniatures.
+- Ajout de traductions allemandes et espagnoles pour le menu "Ouvrir dans une nouvelle fenêtre".
 
 ### Évolutions techniques
-- Refactorisation du composant `MenuItemBody` pour le réutiliser dans différents menus (dropdown, menu contextuel, filtre).
-- Suppression du code inutilisé `lockedContent` du composant `StorageGaugeInformation`.
-- Amélioration de la gestion des couleurs du `StorageGauge` via des classes de modificateurs.
-- Extraction de la ligne de réinitialisation du filtre dans un composant partagé.
-- Mise à jour des icônes depuis Figma.
-- Amélioration de la performance du `SmartScroller` en maintenant les flèches montées pour des transitions fluides.
-- Correction d'un problème de comportement du panneau de filtre qui se fermait au survol au lieu d'un clic.
-- Correction d'un bug empêchant le drag-and-drop dans l'arborescence (tree-view).
-- Amélioration de la gestion des événements pour le menu contextuel afin d'éviter des sélections fantômes.
+- Refactorisation du composant "MenuItem" avec l'extraction d'un composant "MenuItemBody" partagé.
+- Suppression du code inutilisé "lockedContent" du composant "StorageGaugeInformation".
+- Utilisation de classes de modificateurs pour contrôler la couleur de remplissage du "StorageGauge".
+- Mise à jour de la bibliothèque d'icônes à partir de la source Figma.
+- Amélioration de la gestion des événements pour le composant "ContextMenu" afin d'éviter des comportements inattendus.
+- Correction d'un problème empêchant le drag-and-drop dans la vue arborescente.
+- Amélioration de la performance du "SmartScroller" en maintenant les flèches montées.
 
 ### Autres changements
-- Ajout de documentation pour le composant `HelpMenu`.
-- Ajout de tests E2E pour le `StorageGauge` et le `HelpMenu`.
-- Traduction du placeholder par défaut du `UserSearchFilter` en allemand et espagnol.
-- Ajout de catégories de documentation pour `lasuite/docs`.
+- Ajout de tests E2E pour le "StorageGauge", le "HelpMenu" et le comportement de fermeture du sous-panneau de filtre.
+- Ajout de stories et de documentation pour le "StorageGauge", le "SmartScroller" et le "HelpMenu".
+- Correction de problèmes de focus clavier dans les options du filtre.
+- Correction de bugs mineurs liés à l'affichage et au style de certains composants.
 - Augmentation du timeout sur un test spécifique.
-- Ajout de traductions allemandes et espagnoles pour le composant `LaGaufreV2`.
-- Ajout de tests pour couvrir le comportement de fermeture du sous-panneau du filtre.
-- Correction de l'export des fichiers d'icônes.
-- Ajout de tests Playwright pour les composants.
+- Ajout de tests Playwright pour la couverture des composants.
+- Mise à jour des dépendances.
