@@ -272,6 +272,8 @@
 │   │   │       ├── grist-record.interface.ts
 │   │   │       ├── identity-provider-grist-record.interface.ts
 │   │   │       └── service-provider-grist-record.interface.ts
+│   │   ├── health.controller.spec.ts
+│   │   ├── health.controller.ts
 │   │   ├── identity-provider
 │   │   │   ├── dto
 │   │   │   │   ├── identity-provider.dto.spec.ts
@@ -445,6 +447,7 @@
 │   │   │   │   │   ├── identity-provider-adapter-mongo.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── logger.ts
+│   │   │   │   │   ├── mailer.ts
 │   │   │   │   │   ├── mongoose.ts
 │   │   │   │   │   ├── oidc-client.ts
 │   │   │   │   │   ├── oidc-provider.ts
@@ -546,6 +549,7 @@
 │   │   │   │   │   ├── js
 │   │   │   │   │   │   ├── email-fca.js
 │   │   │   │   │   │   ├── email-suggestion.js
+│   │   │   │   │   │   ├── end-session-confirm.js
 │   │   │   │   │   │   ├── form-validation.js
 │   │   │   │   │   │   ├── matomo.js
 │   │   │   │   │   │   └── unshow-notice.js
@@ -953,6 +957,34 @@
 │   │   │   │       ├── logger-request.service.ts
 │   │   │   │       ├── logger-session.service.spec.ts
 │   │   │   │       └── logger-session.service.ts
+│   │   │   └── tsconfig.lib.json
+│   │   ├── mailer
+│   │   │   ├── .mocks
+│   │   │   │   ├── index.ts
+│   │   │   │   └── mailer.service.mock.ts
+│   │   │   ├── src
+│   │   │   │   ├── adapters
+│   │   │   │   │   ├── brevo.adapter.spec.ts
+│   │   │   │   │   ├── brevo.adapter.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── none.adapter.spec.ts
+│   │   │   │   │   ├── none.adapter.ts
+│   │   │   │   │   ├── smtp.adapter.spec.ts
+│   │   │   │   │   └── smtp.adapter.ts
+│   │   │   │   ├── dto
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── mailer-config.dto.spec.ts
+│   │   │   │   │   └── mailer-config.dto.ts
+│   │   │   │   ├── enums
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── transport-type.enum.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── interfaces
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── mailer-options.interface.ts
+│   │   │   │   ├── mailer.module.spec.ts
+│   │   │   │   ├── mailer.module.ts
+│   │   │   │   └── mailer.service.ts
 │   │   │   └── tsconfig.lib.json
 │   │   ├── microservices
 │   │   │   ├── src
@@ -1537,4 +1569,4 @@
     │   └── parse-business-log.ts
     ├── tsconfig.json
     └── yarn.lock
-354 directories, 1185 files
+361 directories, 1210 files
