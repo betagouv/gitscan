@@ -1,29 +1,33 @@
-## Changelog : mobilic (30 derniers jours, au 16 juillet 2026)
+## Changelog : mobilic (30 derniers jours, au 2026-07-23)
 
 ### Résumé
-Les dernières mises à jour de mobilic se concentrent sur l'amélioration de l'interface utilisateur, notamment la refonte de l'en-tête avec le design systeme DSFR, l'optimisation des performances et la correction de bugs. Des améliorations ont également été apportées à la gestion des missions et des activités, ainsi qu'à l'expérience administrateur.
+Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur, notamment dans les vues administrateur et employé, avec l'ajout de nouvelles fonctionnalités comme la contestation de recettes et la demande de détachement. Des corrections de bugs et des optimisations de performance ont également été apportées, ainsi que des améliorations d'accessibilité et de conformité avec le DSFR.
 
 ### Évolutions fonctionnelles
-- L'en-tête a été mis à jour avec le design système DSFR, incluant un menu mobile plus accessible et une meilleure gestion des logos des partenaires [#869](https://github.com/MTES-MCT/mobilic/pull/869), [#892](https://github.com/MTES-MCT/mobilic/pull/892).
-- Ajout de la possibilité d'annuler une mission en cours [#889](https://github.com/MTES-MCT/mobilic/pull/889).
-- Modification du libellé pour les camions lourds dans la gestion des congés [#878](https://github.com/MTES-MCT/mobilic/pull/878).
-- Amélioration de la vue des activités pour les administrateurs, avec notamment un affichage plus clair des informations et une meilleure gestion des filtres [#878](https://github.com/MTES-MCT/mobilic/pull/878), [#885](https://github.com/MTES-MCT/mobilic/pull/885).
-- Modification du format d'affichage de l'heure des activités pour une meilleure lisibilité [#880](https://github.com/MTES-MCT/mobilic/pull/880).
-- Changement du type de bouton "Modifier" pour les activités (utilisation d'un composant DSFR) [#879](https://github.com/MTES-MCT/mobilic/pull/879).
-- Ajout du logo Perff sur la page des partenaires [#892](https://github.com/MTES-MCT/mobilic/pull/892).
-- Suppression de l'option FranceConnect lors de l'inscription d'un employé [#890](https://github.com/MTES-MCT/mobilic/pull/890).
+- Ajout de la possibilité pour les employés de contester une recette. [#884](https://github.com/MTES-MCT/mobilic/pulls/884)
+- Implémentation de la demande de détachement pour les employés avec une interface dédiée et un système de relance. [#898](https://github.com/MTES-MCT/mobilic/pulls/898)
+- Ajout de la possibilité d'abandonner une mission en cours. [#889](https://github.com/MTES-MCT/mobilic/pulls/889)
+- Amélioration de la vue des activités pour les administrateurs, avec des informations supplémentaires et une meilleure organisation. [#885](https://github.com/MTES-MCT/mobilic/pulls/885)
+- Modification du libellé pour le transport de marchandises lourdes dans les congés. [#878](https://github.com/MTES-MCT/mobilic/pulls/878)
+- Ajout de la possibilité pour les administrateurs de voir l'auteur du support lors de la validation d'une activité.
+- Ajout de la possibilité de voir le temps de validation par mission pour les employés sur plusieurs jours.
+- Ajout de la possibilité de filtrer les utilisateurs et équipes sur la page de validation des missions.
 
 ### Évolutions techniques
-- Optimisation des appels API pour la récupération des webinaires afin d'améliorer les performances [#894](https://github.com/MTES-MCT/mobilic/pull/894).
-- Refactoring de l'en-tête pour une meilleure lisibilité et maintenabilité du code, incluant la centralisation de constantes et la simplification de la logique de rendu [#892](https://github.com/MTES-MCT/mobilic/pull/892).
-- Amélioration de la gestion des filtres après validation d'une mission ou d'un congé [#893](https://github.com/MTES-MCT/mobilic/pull/893), [#883](https://github.com/MTES-MCT/mobilic/pull/883).
-- Correction de problèmes de performance liés à des requêtes dupliquées dans l'historique des activités [#886](https://github.com/MTES-MCT/mobilic/pull/886).
-- Mise en place de filtres pour ignorer les erreurs réseau récurrentes dans Sentry, réduisant le bruit et facilitant l'identification des problèmes réels [#891](https://github.com/MTES-MCT/mobilic/pull/891).
-- Correction de plusieurs avertissements SonarQube et amélioration de la qualité du code.
+- Refactorisation du code pour améliorer la performance et la lisibilité, notamment dans les composants liés aux activités et à l'interface utilisateur.
+- Mise à jour de l'infrastructure pour améliorer la gestion des erreurs et la surveillance des performances (Sentry).
+- Amélioration de l'intégration avec le Design System de la République Française (DSFR) pour l'en-tête et le pied de page, améliorant l'accessibilité et la cohérence visuelle.
+- Optimisation des requêtes GraphQL pour réduire les temps de chargement et améliorer la réactivité de l'application.
+- Correction de problèmes de performance liés aux requêtes dupliquées.
+- Amélioration de la gestion des états et des données dans l'application.
 
 ### Autres changements
-- Correction de divers problèmes d'accessibilité dans l'en-tête.
-- Amélioration de la gestion des états visuels (hover, actif) des éléments de navigation.
-- Ajustements de style et de mise en page pour améliorer l'apparence générale de l'application.
-- Correction de bugs mineurs et améliorations de la stabilité.
-- Mise à jour de la documentation.
+- Correction de plusieurs problèmes d'accessibilité, notamment dans l'en-tête et le menu mobile.
+- Mise à jour de la documentation et des commentaires dans le code.
+- Corrections de style et de mise en page pour améliorer l'apparence de l'application.
+- Suppression de l'option FranceConnect pour l'inscription des employés.
+- Ajout de logos de partenaires sur la page dédiée.
+- Correction de bugs mineurs et améliorations de la stabilité générale de l'application.
+- Amélioration de la gestion des erreurs et des messages d'erreur.
+- Corrections de linting et de code smells détectés par SonarCloud.
+- Ajout de tests unitaires et d'intégration pour améliorer la couverture de test.

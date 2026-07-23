@@ -1,11 +1,33 @@
+2026-07-23T00:02:56+02:00 - e53d4e25 - Gaspard "Sarp" Lonchampt : Merge pull request #877 from MTES-MCT/fix/revert_to_ogo_waf
+2026-07-22T15:52:15+02:00 - e592ecf7 - MrJimmyChevallier : Merge pull request #905 from MTES-MCT/fix/contestation-recette-feedback
+2026-07-22T14:39:46+02:00 - f69f954e - MrJimmyChevallier : fix(pwa): guard isConnectionError against null in NoContradictory
+2026-07-22T12:14:09+02:00 - 74e3aa95 - MrJimmyChevallier : fix(pwa): address PR review with contradictory gate, dead branch, event order, dead param
+2026-07-22T11:04:30+02:00 - a85c9a0b - MrJimmyChevallier : fix(pwa): add spacing between history events and remove stacking paddings
+2026-07-22T10:24:53+02:00 - 56ee7d54 - MrJimmyChevallier : fix(pwa): remove activity type from delete and create text in employee history
+2026-07-21T19:55:19+02:00 - 8bbdabae - MrJimmyChevallier : refactor(pwa): extract DurationDisplay component to reduce cognitive complexit
+2026-07-21T18:50:09+02:00 - 3b50fa4e - MrJimmyChevallier : fix(pwa): remove TODO comment and reduce cognitive complexity in notifications
+2026-07-21T17:20:35+02:00 - 307d466c - MrJimmyChevallier : fix(pwa): silent fail on notification read to avoid 403 error on first call
+2026-07-21T16:30:21+02:00 - f2f90afe - MrJimmyChevallier : fix(pwa): resolve employee validation time per mission for multi-mission days
+2026-07-21T15:29:01+02:00 - d88e2cfd - MrJimmyChevallier : fix(pwa): address contestation recette feedback, badges, modal, history display
+2026-07-20T17:23:01+02:00 - f3189817 - MrJimmyChevallier : fix(pwa): display ongoing activity start time with css
+2026-07-20T15:35:46+02:00 - 116855ec - MrJimmyChevallier : Merge pull request #884 from MTES-MCT/feat/contestation-from-employee
+2026-07-20T15:30:59+02:00 - 2fcbd1e6 - MrJimmyChevallier : Merge branch 'master' into feat/contestation-from-employee
+2026-07-20T09:52:08+02:00 - 6290a88c - MrJimmyChevallier : Merge pull request #901 from MTES-MCT/fix/impersonation-mission-creation-and-tracing
+2026-07-20T09:51:30+02:00 - 8b14ccd5 - MrJimmyChevallier : Merge pull request #898 from MTES-MCT/feat/employee-detachment-request
+2026-07-17T10:01:07+02:00 - a3d4f8d4 - MrJimmyChevallier : fix(pwa): gate cancel dispute button on dispute time instead of admin validation time
+2026-07-17T09:27:10+02:00 - d71a1d7d - MrJimmyChevallier : fix(pwa): use typed detachmentRequest fields in camelCase
+2026-07-17T08:57:58+02:00 - cf160032 - MrJimmyChevallier : fix(pwa): address detachment PR review with scroll target, useEffect, sx extraction
 2026-07-16T14:58:07+02:00 - 04f0dcc5 - Gaspard "Sarp" Lonchampt : Merge pull request #891 from MTES-MCT/fix/sentry_error_noise_filtering
 2026-07-15T18:21:00+02:00 - 164cb3d8 - Redwane Zafari : Merge pull request #902 from MTES-MCT/feat/homepage-dsfr-header-footer
 2026-07-15T18:17:37+02:00 - 0e70c32c - Redwane : fix(header): adjust nav list item padding and remove duplicate padding in nav button
 2026-07-15T18:11:20+02:00 - 96915c74 - Redwane : fix(header): improve navigation menu item hover style and active state
+2026-07-15T15:32:10+02:00 - cbe05ddd - MrJimmyChevallier : feat(impersonation): display support author in activity and validation history
 2026-07-13T17:45:45+02:00 - a6bcde6f - Redwane Zafari : Merge pull request #900 from MTES-MCT/feat/homepage-dsfr-header-footer
 2026-07-13T17:36:46+02:00 - b4e1c4b0 - Redwane : fix(certificate): add container padding and isolate page title from content stack
 2026-07-13T16:32:48+02:00 - a1b59ef3 - Redwane Zafari : Merge pull request #899 from MTES-MCT/feat/homepage-dsfr-header-footer
 2026-07-13T16:29:03+02:00 - 85baf6ef - Redwane : fix(ui): fix header dropdown width, certificate title style and card image layout
+2026-07-13T12:23:49+02:00 - 0b2dc2a6 - MrJimmyChevallier : feat(pwa): add detachment request UI with cooldown and relance
+2026-07-09T18:13:43+02:00 - fa1ff5bb - MrJimmyChevallier : fix(pwa): address PR review, dispute author, React keys, async modal, cross-ref comment
 2026-07-09T15:35:11+02:00 - 3c6eff32 - Doniaab : Merge pull request #896 from MTES-MCT/prod
 2026-07-09T14:45:45+02:00 - 3d78ca5d - Doniaab : Merge pull request #894 from MTES-MCT/fix/optimize-fetch-webinars
 2026-07-09T14:35:44+02:00 - 9b9057cb - MrJimmyChevallier : Merge pull request #889 from MTES-MCT/feat/cancel-current-mission
@@ -55,6 +77,9 @@
 2026-07-01T14:35:15+02:00 - cd21bd4e - MrJimmyChevallier : fix(admin): fix chevron click, tag column layout and dismissed activity sort order
 2026-07-01T11:49:41+02:00 - 71b2c82d - Redwane : fix(header): resolve SonarCloud negated condition warning in ListRouteItem and remove unused import
 2026-07-01T11:28:21+02:00 - 6de381ee - Redwane : feat(header): replace native DSFR header with custom mobile header
+2026-06-30T17:24:13+02:00 - b20483f1 - MrJimmyChevallier : refactor(activity): address sonarcloud code smells in dispute components
+2026-06-30T16:48:12+02:00 - 81db39ac - MrJimmyChevallier : Merge branch 'master' into feat/contestation-from-employee
+2026-06-30T16:33:43+02:00 - d6138ff3 - MrJimmyChevallier : feat(activity): add dispute UI for employee and admin mission view
 2026-06-25T20:12:33+02:00 - 9e0e290e - Redwane : fix(admin): preserve employee filter selection on mission validation refresh
 2026-06-25T16:39:10+02:00 - 2a41da9e - donia benharara : fix(control): extract imbricated code to a function for sonarcloud
 2026-06-25T16:28:09+02:00 - f3b11360 - donia benharara : fix(control): remove unecessary diff on index.html
@@ -78,6 +103,7 @@
 2026-06-24T12:42:07+02:00 - ad56b729 - Redwane : fix(header): avoid nesting company dropdown inside button
 2026-06-24T09:23:56+02:00 - 553c1089 - donia benharara : fix(control): fix lint
 2026-06-24T07:54:10+02:00 - aaeb76fc - donia benharara : fix(control): fix inconsistencies and duplications
+2026-06-23T15:57:04+02:00 - 003d19fb - MrJimmyChevallier : apply dsfr to activity list - employee view
 2026-06-22T20:17:14+02:00 - 56d01d2e - Gaspard "Sarp" Lonchampt : Merge pull request #881 from MTES-MCT/master
 2026-06-22T17:00:11+02:00 - 5ac2a5fb - MrJimmyChevallier : Merge pull request #880 from MTES-MCT/feat/change-time-format-for-activities-employe-view
 2026-06-22T16:15:05+02:00 - 8fe2badb - MrJimmyChevallier : fix sonarQube Math.truc
@@ -93,6 +119,7 @@
 2026-06-19T11:21:54+02:00 - 2af242bb - MrJimmyChevallier : fix reload
 2026-06-18T16:53:52+02:00 - 18f9b75f - MrJimmyChevallier : update front - structure of a mission admin view
 2026-06-18T14:46:40+02:00 - 9b24fa62 - MrJimmyChevallier : update styl of tags and header labels
+2026-06-18T11:53:55+02:00 - ef32378a - Gaspard Lonchampt : fix(nginx): switch WAF handling back from Ubika to OGO Security
 2026-06-18T10:31:16+02:00 - 33a24d73 - MrJimmyChevallier : wip add activity edition
 2026-06-16T19:24:48+02:00 - e41646f9 - Gaspard "Sarp" Lonchampt : Merge pull request #876 from MTES-MCT/master
 2026-06-16T13:32:52+02:00 - 08da94ad - Gaspard "Sarp" Lonchampt : Merge pull request #875 from MTES-MCT/fix/hide_driver_selection_for_drive_support
