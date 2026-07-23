@@ -1,15 +1,16 @@
 {
   "url": "https://github.com/betagouv/anssi-portail",
   "name": "anssi-portail",
-  "description": "Ce site est construit avec Jekyll et permet de présenter le portail de l'ANSSI. Il vise à améliorer la performance, l'accessibilité et le référencement du site.",
+  "description": "Ce site est construit avec Jekyll et vise à fournir un portail pour l'ANSSI, offrant des guides, des informations sur la sécurité et des services associés.",
   "language": "TypeScript",
   "features": [
     "Authentification & Accès",
-    "Recherche & Filtres",
     "Gestion documentaire & Fichiers",
-    "Sécurité & Conformité",
+    "Recherche & Filtres",
     "Contenu éditorial",
-    "Notifications & Alertes"
+    "Sécurité & Conformité",
+    "Notifications & Alertes",
+    "Gestion des utilisateurs & Permissions"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -18,12 +19,14 @@
     "PostgreSQL",
     "Nix",
     "Docker",
+    "Jest",
+    "Playwright",
     "Svelte"
   ],
   "components": [
     "Frontend React",
     "API REST & GraphQL",
-    "PostgreSQL & SQL",
+    "Base de données PostgreSQL",
     "TypeScript / JavaScript",
     "Docker & Conteneurs",
     "CI/CD & Déploiement"
@@ -32,15 +35,18 @@
     "methods": [
       "email-password",
       "oauth2",
-      "sso"
+      "saml"
     ]
   },
-  "tests": "Jest, Vitest, Cypress",
-  "workflows": [
-    "CI/CD",
-    "Renovate"
+  "tests": [
+    "Jest",
+    "Cypress",
+    "Playwright"
   ],
-  "lastActivity": "2026-07-20T17:05:51+02:00",
+  "workflows": [
+    "CI/CD"
+  ],
+  "lastActivity": "2026-07-22T17:13:26+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -51,14 +57,13 @@
     "openIssues": null
   },
   "tags": [
+    "Sécurité & Conformité",
     "Données & Open Data",
-    "Écosystème beta.gouv / État",
-    "React & Next.js",
+    "JavaScript",
     "TypeScript",
     "Déploiement & Hosting",
-    "Python",
-    "Bases de données SQL",
-    "Sécurité & Auth",
-    "SEO"
+    "React & Next.js",
+    "PostgreSQL",
+    "CI/CD & GitHub Actions"
   ]
 }
