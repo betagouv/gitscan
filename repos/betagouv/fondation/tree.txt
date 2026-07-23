@@ -51,6 +51,8 @@
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260706101345_adds_audition_date
 │   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260708120000_official_report_editable_blocks
+│   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   ├── schema.prisma
 │   │   │   ├── schemas
@@ -148,78 +150,132 @@
 │   │   │   │   │       └── queries
 │   │   │   │   │           └── list-archived-nomination-sessions.query.ts
 │   │   │   │   ├── docs
+│   │   │   │   │   ├── agenda
+│   │   │   │   │   │   ├── agendas.controller.ts
+│   │   │   │   │   │   ├── agendas.service.ts
+│   │   │   │   │   │   ├── domain
+│   │   │   │   │   │   │   ├── agenda-nomination-file.ts
+│   │   │   │   │   │   │   ├── agenda.spec.ts
+│   │   │   │   │   │   │   └── agenda.ts
+│   │   │   │   │   │   └── infrastructure
+│   │   │   │   │   │       ├── agendas.dto.ts
+│   │   │   │   │   │       ├── agendas.filter.ts
+│   │   │   │   │   │       ├── queries
+│   │   │   │   │   │       │   ├── details-agenda-files.query.ts
+│   │   │   │   │   │       │   ├── details-agenda-metadata.query.ts
+│   │   │   │   │   │       │   ├── details-session-agenda.query.ts
+│   │   │   │   │   │       │   ├── find-agenda-document-pdf.query.ts
+│   │   │   │   │   │       │   └── find-agenda-document.query.ts
+│   │   │   │   │   │       ├── repositories
+│   │   │   │   │   │       │   └── agenda.repository.ts
+│   │   │   │   │   │       └── services
+│   │   │   │   │   │           └── renderers
+│   │   │   │   │   │               ├── __snapshots__
+│   │   │   │   │   │               │   └── agenda.html.spec.ts.snap
+│   │   │   │   │   │               ├── agenda.html.spec.ts
+│   │   │   │   │   │               ├── agenda.html.ts
+│   │   │   │   │   │               └── agenda.renderer.ts
 │   │   │   │   │   ├── docs.module.ts
 │   │   │   │   │   ├── docs.service.ts
-│   │   │   │   │   ├── domain
-│   │   │   │   │   │   ├── agenda-nomination-file.ts
-│   │   │   │   │   │   ├── agenda.spec.ts
-│   │   │   │   │   │   ├── agenda.ts
-│   │   │   │   │   │   ├── doc-file-name.ts
-│   │   │   │   │   │   ├── doc-nomination-file-outcome.spec.ts
-│   │   │   │   │   │   ├── doc-nomination-file-outcome.ts
-│   │   │   │   │   │   ├── justice-presentation-plan.ts
-│   │   │   │   │   │   ├── official-report-file-name.ts
-│   │   │   │   │   │   ├── official-report.spec.ts
-│   │   │   │   │   │   ├── official-report.ts
-│   │   │   │   │   │   ├── reported-nomination-file-collection.spec.ts
-│   │   │   │   │   │   └── reported-nomination-file-collection.ts
-│   │   │   │   │   └── infrastructure
-│   │   │   │   │       ├── docs.controller.ts
-│   │   │   │   │       ├── docs.dto.ts
-│   │   │   │   │       ├── docs.filter.ts
-│   │   │   │   │       ├── finders
-│   │   │   │   │       │   ├── agenda.finder.ts
-│   │   │   │   │       │   ├── docs-nomination-files.finder.ts
-│   │   │   │   │       │   └── reported-nomination-files.finder.ts
-│   │   │   │   │       ├── queries
-│   │   │   │   │       │   ├── details-agenda-files.query.ts
-│   │   │   │   │       │   ├── details-agenda-metadata.query.ts
-│   │   │   │   │       │   ├── details-official-report.query.ts
-│   │   │   │   │       │   ├── details-presentation-plan-metadata.query.ts
-│   │   │   │   │       │   ├── details-presentation-plan-pdf-document.query.ts
-│   │   │   │   │       │   ├── details-session-agenda.query.ts
-│   │   │   │   │       │   ├── details-session-official-report.query.ts
-│   │   │   │   │       │   ├── find-agenda-document-pdf.query.ts
-│   │   │   │   │       │   ├── find-agenda-document.query.ts
-│   │   │   │   │       │   ├── find-chairmen.query.ts
-│   │   │   │   │       │   ├── find-justice-contacts.query.ts
-│   │   │   │   │       │   ├── find-members-for-new-official-report.query.ts
-│   │   │   │   │       │   ├── find-official-report-document-pdf.query.ts
-│   │   │   │   │       │   ├── find-official-report-document.query.ts
-│   │   │   │   │       │   ├── find-presentation-plan-document-pdf.query.ts
-│   │   │   │   │       │   ├── find-presentation-plan-document.query.ts
-│   │   │   │   │       │   ├── find-session-docs.query.ts
-│   │   │   │   │       │   ├── internal-find-nomination-files-linked-docs.query.ts
-│   │   │   │   │       │   ├── is-session-ready-for-doc-generation.query.ts
-│   │   │   │   │       │   ├── list-non-presented-plans.query.ts
-│   │   │   │   │       │   ├── list-presented-plans.query.ts
-│   │   │   │   │       │   └── list-secretaries-general.query.ts
-│   │   │   │   │       ├── repositories
-│   │   │   │   │       │   ├── agenda.repository.ts
-│   │   │   │   │       │   ├── justice-presentation-plan.repository.ts
-│   │   │   │   │       │   └── official-report.repository.ts
-│   │   │   │   │       └── services
-│   │   │   │   │           └── renderers
-│   │   │   │   │               ├── agenda.renderer.ts
-│   │   │   │   │               ├── helpers.spec.ts
-│   │   │   │   │               ├── helpers.ts
-│   │   │   │   │               ├── official-report.renderer.ts
-│   │   │   │   │               ├── pdf
-│   │   │   │   │               │   ├── pdf-renderer.service.ts
-│   │   │   │   │               │   └── pdf-worker.ts
-│   │   │   │   │               ├── presentation-plan.renderer.ts
-│   │   │   │   │               └── templates
-│   │   │   │   │                   ├── __snapshots__
-│   │   │   │   │                   │   ├── agenda.html.spec.ts.snap
-│   │   │   │   │                   │   ├── official-report.html.spec.ts.snap
-│   │   │   │   │                   │   └── presentation-plan.html.spec.ts.snap
-│   │   │   │   │                   ├── agenda.html.spec.ts
-│   │   │   │   │                   ├── agenda.html.ts
+│   │   │   │   │   ├── official-report
+│   │   │   │   │   │   ├── domain
+│   │   │   │   │   │   │   ├── official-report-agenda.spec.ts
+│   │   │   │   │   │   │   ├── official-report-agenda.ts
+│   │   │   │   │   │   │   ├── official-report-chairman.spec.ts
+│   │   │   │   │   │   │   ├── official-report-chairman.ts
+│   │   │   │   │   │   │   ├── official-report-doc-block.ts
+│   │   │   │   │   │   │   ├── official-report-member-list.spec.ts
+│   │   │   │   │   │   │   ├── official-report-member-list.ts
+│   │   │   │   │   │   │   ├── official-report-member.spec.ts
+│   │   │   │   │   │   │   ├── official-report-member.ts
+│   │   │   │   │   │   │   ├── official-report-secretary.spec.ts
+│   │   │   │   │   │   │   ├── official-report-secretary.ts
+│   │   │   │   │   │   │   ├── official-report-session-meeting.spec.ts
+│   │   │   │   │   │   │   ├── official-report-session-meeting.ts
+│   │   │   │   │   │   │   ├── official-report-test-utils.ts
+│   │   │   │   │   │   │   ├── official-report-types.ts
+│   │   │   │   │   │   │   ├── official-report.ts
+│   │   │   │   │   │   │   └── snapshot
+│   │   │   │   │   │   │       ├── official-report-snapshot-file.ts
+│   │   │   │   │   │   │       ├── official-report-snapshot-meta.ts
+│   │   │   │   │   │   │       ├── official-report-snapshot.spec.ts
+│   │   │   │   │   │   │       └── official-report-snapshot.ts
+│   │   │   │   │   │   ├── infrastructure
+│   │   │   │   │   │   │   ├── events
+│   │   │   │   │   │   │   │   └── on-official-report-invalidated.event-handler.ts
+│   │   │   │   │   │   │   ├── finders
+│   │   │   │   │   │   │   │   └── official-report-render-context.finder.ts
+│   │   │   │   │   │   │   ├── official-reports.dto.ts
+│   │   │   │   │   │   │   ├── official-reports.filter.ts
+│   │   │   │   │   │   │   ├── queries
+│   │   │   │   │   │   │   │   ├── details-official-report-document.query.ts
+│   │   │   │   │   │   │   │   ├── details-official-report.query.ts
+│   │   │   │   │   │   │   │   ├── details-session-official-report.query.ts
+│   │   │   │   │   │   │   │   ├── find-official-report-document-pdf.query.ts
+│   │   │   │   │   │   │   │   └── find-official-report-document.query.ts
+│   │   │   │   │   │   │   ├── repositories
+│   │   │   │   │   │   │   │   └── official-report.repository.ts
+│   │   │   │   │   │   │   ├── services
+│   │   │   │   │   │   │   │   └── renderers
+│   │   │   │   │   │   │   │       ├── __snapshots__
+│   │   │   │   │   │   │   │       │   └── official-report.html.spec.ts.snap
+│   │   │   │   │   │   │   │       ├── official-report.html.spec.ts
+│   │   │   │   │   │   │   │       ├── official-report.html.ts
+│   │   │   │   │   │   │   │       └── official-report.renderer.ts
+│   │   │   │   │   │   │   └── use-cases
+│   │   │   │   │   │   │       └── invalidate-official-report.use-case.ts
+│   │   │   │   │   │   ├── official-reports.controller.ts
+│   │   │   │   │   │   └── official-reports.service.ts
+│   │   │   │   │   ├── presentation-plan
+│   │   │   │   │   │   ├── domain
+│   │   │   │   │   │   │   └── justice-presentation-plan.ts
+│   │   │   │   │   │   ├── infrastructure
+│   │   │   │   │   │   │   ├── presentation-plans.dto.ts
+│   │   │   │   │   │   │   ├── presentation-plans.filter.ts
+│   │   │   │   │   │   │   ├── queries
+│   │   │   │   │   │   │   │   ├── details-presentation-plan-metadata.query.ts
+│   │   │   │   │   │   │   │   ├── details-presentation-plan-pdf-document.query.ts
+│   │   │   │   │   │   │   │   ├── find-presentation-plan-document-pdf.query.ts
+│   │   │   │   │   │   │   │   ├── find-presentation-plan-document.query.ts
+│   │   │   │   │   │   │   │   ├── list-non-presented-plans.query.ts
+│   │   │   │   │   │   │   │   └── list-presented-plans.query.ts
+│   │   │   │   │   │   │   ├── repositories
+│   │   │   │   │   │   │   │   └── justice-presentation-plan.repository.ts
+│   │   │   │   │   │   │   └── services
+│   │   │   │   │   │   │       └── renderers
+│   │   │   │   │   │   │           ├── __snapshots__
+│   │   │   │   │   │   │           │   └── presentation-plan.html.spec.ts.snap
+│   │   │   │   │   │   │           ├── presentation-plan.html.spec.ts
+│   │   │   │   │   │   │           ├── presentation-plan.html.ts
+│   │   │   │   │   │   │           └── presentation-plan.renderer.ts
+│   │   │   │   │   │   ├── presentation-plans.controller.ts
+│   │   │   │   │   │   └── presentation-plans.service.ts
+│   │   │   │   │   └── shared
+│   │   │   │   │       ├── domain
+│   │   │   │   │       │   ├── doc-file-name.ts
+│   │   │   │   │       │   ├── doc-nomination-file-outcome.ts
+│   │   │   │   │       │   ├── invalidation
+│   │   │   │   │       │   │   └── official-report-invalidated.integration-event.ts
+│   │   │   │   │       │   ├── reported-nomination-file-collection.spec.ts
+│   │   │   │   │       │   └── reported-nomination-file-collection.ts
+│   │   │   │   │       └── infrastructure
+│   │   │   │   │           ├── docs.controller.ts
+│   │   │   │   │           ├── docs.dto.ts
+│   │   │   │   │           ├── finders
+│   │   │   │   │           │   ├── agenda.finder.ts
+│   │   │   │   │           │   ├── docs-nomination-files.finder.ts
+│   │   │   │   │           │   └── reported-nomination-files.finder.ts
+│   │   │   │   │           ├── queries
+│   │   │   │   │           │   ├── find-justice-contacts.query.ts
+│   │   │   │   │           │   ├── find-session-docs.query.ts
+│   │   │   │   │           │   ├── internal-find-nomination-files-linked-docs.query.ts
+│   │   │   │   │           │   ├── is-session-ready-for-doc-generation.query.ts
+│   │   │   │   │           │   └── list-secretaries-general.query.ts
+│   │   │   │   │           └── services
+│   │   │   │   │               └── renderers
 │   │   │   │   │                   ├── common.html.ts
-│   │   │   │   │                   ├── official-report.html.spec.ts
-│   │   │   │   │                   ├── official-report.html.ts
-│   │   │   │   │                   ├── presentation-plan.html.spec.ts
-│   │   │   │   │                   ├── presentation-plan.html.ts
+│   │   │   │   │                   ├── helpers.spec.ts
+│   │   │   │   │                   ├── helpers.ts
 │   │   │   │   │                   └── templates.types.ts
 │   │   │   │   ├── framework
 │   │   │   │   │   ├── clock.ts
@@ -262,6 +318,11 @@
 │   │   │   │   │   ├── observability.ts
 │   │   │   │   │   ├── openapi.ts
 │   │   │   │   │   ├── pagination.ts
+│   │   │   │   │   ├── pdf
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── pdf-renderer.service.ts
+│   │   │   │   │   │   ├── pdf-worker.ts
+│   │   │   │   │   │   └── pdf.module.ts
 │   │   │   │   │   └── sorting.ts
 │   │   │   │   ├── ingest
 │   │   │   │   │   ├── domain
@@ -390,79 +451,90 @@
 │   │   │   │   │   └── report.service.ts
 │   │   │   │   ├── root.module.ts
 │   │   │   │   ├── session
-│   │   │   │   │   ├── domain
-│   │   │   │   │   │   ├── auto-affectation
-│   │   │   │   │   │   │   ├── auto-affectation-file-workload.spec.ts
-│   │   │   │   │   │   │   ├── auto-affectation-file-workload.ts
-│   │   │   │   │   │   │   ├── auto-affectation-member-collection.ts
-│   │   │   │   │   │   │   ├── auto-affectation-member.spec.ts
-│   │   │   │   │   │   │   ├── auto-affectation-member.ts
-│   │   │   │   │   │   │   ├── auto-affectation-nomination-file.ts
-│   │   │   │   │   │   │   ├── auto-affectations.spec.ts
-│   │   │   │   │   │   │   ├── auto-affectations.ts
-│   │   │   │   │   │   │   └── index.ts
-│   │   │   │   │   │   ├── lodam-xlsx-to-nomination-session.spec.ts
-│   │   │   │   │   │   ├── lodam-xlsx-to-nomination-session.ts
-│   │   │   │   │   │   ├── nomination-file-outcome.spec.ts
-│   │   │   │   │   │   ├── nomination-file-outcome.ts
-│   │   │   │   │   │   ├── nomination-file.spec.ts
-│   │   │   │   │   │   ├── nomination-file.ts
-│   │   │   │   │   │   ├── session-transparence.spec.ts
-│   │   │   │   │   │   ├── session-transparence.ts
-│   │   │   │   │   │   ├── statut-affectation.enum.ts
-│   │   │   │   │   │   └── summary.ts
-│   │   │   │   │   ├── infrastructure
-│   │   │   │   │   │   ├── dtos
-│   │   │   │   │   │   │   ├── auto-affectation.dto.ts
-│   │   │   │   │   │   │   ├── nomination-file.dto.ts
-│   │   │   │   │   │   │   ├── nomination-session.dto.ts
-│   │   │   │   │   │   │   └── summary.dto.ts
-│   │   │   │   │   │   ├── finders
-│   │   │   │   │   │   │   ├── affectation-version.finder.ts
-│   │   │   │   │   │   │   ├── auto-affectations.finder.ts
-│   │   │   │   │   │   │   ├── count-unreported-files.finder.ts
-│   │   │   │   │   │   │   ├── lolfi-nomination-files.finder.ts
-│   │   │   │   │   │   │   ├── lolfi-nomination-session.finder.ts
-│   │   │   │   │   │   │   ├── nomination-session-file.finder.ts
-│   │   │   │   │   │   │   ├── nomination-session.finder.ts
-│   │   │   │   │   │   │   └── unaffected-files.finder.ts
-│   │   │   │   │   │   ├── helpers
-│   │   │   │   │   │   │   ├── magistrat.helper.spec.ts
-│   │   │   │   │   │   │   └── magistrat.helper.ts
-│   │   │   │   │   │   ├── lodam-xlsx.pipe.ts
-│   │   │   │   │   │   ├── queries
-│   │   │   │   │   │   │   ├── count-nomination-files-by-status.query.ts
-│   │   │   │   │   │   │   ├── count-unaffected-files.query.ts
-│   │   │   │   │   │   │   ├── count-users-new-sessions.query.ts
-│   │   │   │   │   │   │   ├── detail-nomination-file-attachment.query.ts
-│   │   │   │   │   │   │   ├── detail-nomination-session-affectation-version.query.ts
-│   │   │   │   │   │   │   ├── detail-nomination-session-attachment.query.ts
-│   │   │   │   │   │   │   ├── detail-nomination-session.query.ts
-│   │   │   │   │   │   │   ├── detail-summary.query.ts
-│   │   │   │   │   │   │   ├── get-lolfi-magistrat-url.query.ts
-│   │   │   │   │   │   │   ├── get-summary-attachment-url.query.ts
-│   │   │   │   │   │   │   ├── internal-detail-member-session.query.ts
-│   │   │   │   │   │   │   ├── internal-find-docs-nomination-files.query.ts
-│   │   │   │   │   │   │   ├── internal-list-member-sessions.query.ts
-│   │   │   │   │   │   │   ├── list-currently-affected-reporters.query.ts
-│   │   │   │   │   │   │   ├── list-nomination-file-attachments.query.ts
-│   │   │   │   │   │   │   ├── list-nomination-files-as-excel.query.ts
-│   │   │   │   │   │   │   ├── list-nomination-files.query.ts
-│   │   │   │   │   │   │   ├── list-nomination-session-attachments.query.ts
-│   │   │   │   │   │   │   └── list-nomination-sessions.query.ts
-│   │   │   │   │   │   ├── repositories
-│   │   │   │   │   │   │   ├── nomination-session-report-rules.ts
-│   │   │   │   │   │   │   ├── nomination-session.repository.ts
-│   │   │   │   │   │   │   ├── sortable-targeted-grade.ts
-│   │   │   │   │   │   │   └── summary.repository.ts
-│   │   │   │   │   │   ├── session.filter.ts
-│   │   │   │   │   │   ├── sessions.service.ts
+│   │   │   │   │   ├── shared
+│   │   │   │   │   │   ├── policies
+│   │   │   │   │   │   │   ├── nomination-file.policies.spec.ts
+│   │   │   │   │   │   │   └── nomination-file.policies.ts
+│   │   │   │   │   │   └── types
+│   │   │   │   │   │       ├── nomination-file-outcome.spec.ts
+│   │   │   │   │   │       ├── nomination-file-outcome.ts
+│   │   │   │   │   │       ├── nomination-file.ts
+│   │   │   │   │   │       └── statut-affectation.enum.ts
+│   │   │   │   │   ├── summaries
+│   │   │   │   │   │   ├── domain
+│   │   │   │   │   │   │   └── summary.ts
+│   │   │   │   │   │   ├── infrastructure
+│   │   │   │   │   │   │   ├── queries
+│   │   │   │   │   │   │   │   ├── detail-summary.query.ts
+│   │   │   │   │   │   │   │   └── get-summary-attachment-url.query.ts
+│   │   │   │   │   │   │   ├── summary.dto.ts
+│   │   │   │   │   │   │   ├── summary.repository.ts
+│   │   │   │   │   │   │   └── summary.service.ts
+│   │   │   │   │   │   ├── summary.controller.ts
 │   │   │   │   │   │   ├── summary.filter.ts
-│   │   │   │   │   │   └── summary.service.ts
-│   │   │   │   │   ├── session.controller.ts
-│   │   │   │   │   ├── session.module.ts
-│   │   │   │   │   ├── summary.controller.ts
-│   │   │   │   │   └── summary.module.ts
+│   │   │   │   │   │   └── summary.module.ts
+│   │   │   │   │   └── transparence
+│   │   │   │   │       ├── domain
+│   │   │   │   │       │   ├── auto-affectation
+│   │   │   │   │       │   │   ├── auto-affectation-file-workload.spec.ts
+│   │   │   │   │       │   │   ├── auto-affectation-file-workload.ts
+│   │   │   │   │       │   │   ├── auto-affectation-member-collection.ts
+│   │   │   │   │       │   │   ├── auto-affectation-member.spec.ts
+│   │   │   │   │       │   │   ├── auto-affectation-member.ts
+│   │   │   │   │       │   │   ├── auto-affectation-nomination-file.ts
+│   │   │   │   │       │   │   ├── auto-affectations.spec.ts
+│   │   │   │   │       │   │   ├── auto-affectations.ts
+│   │   │   │   │       │   │   └── index.ts
+│   │   │   │   │       │   ├── lodam-xlsx-to-nomination-session.spec.ts
+│   │   │   │   │       │   ├── lodam-xlsx-to-nomination-session.ts
+│   │   │   │   │       │   ├── session-transparence-file-status.ts
+│   │   │   │   │       │   ├── session-transparence.spec.ts
+│   │   │   │   │       │   ├── session-transparence.ts
+│   │   │   │   │       │   └── transparence-file.ts
+│   │   │   │   │       ├── infrastructure
+│   │   │   │   │       │   ├── dtos
+│   │   │   │   │       │   │   ├── auto-affectation.dto.ts
+│   │   │   │   │       │   │   ├── nomination-file.dto.ts
+│   │   │   │   │       │   │   └── transparence-session.dto.ts
+│   │   │   │   │       │   ├── finders
+│   │   │   │   │       │   │   ├── affectation-version.finder.ts
+│   │   │   │   │       │   │   ├── auto-affectations.finder.ts
+│   │   │   │   │       │   │   ├── lolfi-nomination-files.finder.ts
+│   │   │   │   │       │   │   ├── lolfi-nomination-session.finder.ts
+│   │   │   │   │       │   │   ├── transparence-files.finder.ts
+│   │   │   │   │       │   │   ├── transparence-session.finder.ts
+│   │   │   │   │       │   │   ├── unaffected-files.finder.ts
+│   │   │   │   │       │   │   └── unreported-transparence-files-count.finder.ts
+│   │   │   │   │       │   ├── helpers
+│   │   │   │   │       │   │   ├── magistrat.helper.spec.ts
+│   │   │   │   │       │   │   └── magistrat.helper.ts
+│   │   │   │   │       │   ├── lodam-xlsx.pipe.ts
+│   │   │   │   │       │   ├── queries
+│   │   │   │   │       │   │   ├── count-nomination-files-by-status.query.ts
+│   │   │   │   │       │   │   ├── count-unaffected-files.query.ts
+│   │   │   │   │       │   │   ├── count-users-new-sessions.query.ts
+│   │   │   │   │       │   │   ├── detail-nomination-file-attachment.query.ts
+│   │   │   │   │       │   │   ├── detail-nomination-session-affectation-version.query.ts
+│   │   │   │   │       │   │   ├── detail-nomination-session-attachment.query.ts
+│   │   │   │   │       │   │   ├── detail-nomination-session.query.ts
+│   │   │   │   │       │   │   ├── get-lolfi-magistrat-url.query.ts
+│   │   │   │   │       │   │   ├── internal-detail-member-session.query.ts
+│   │   │   │   │       │   │   ├── internal-find-docs-nomination-files.query.ts
+│   │   │   │   │       │   │   ├── internal-list-member-sessions.query.ts
+│   │   │   │   │       │   │   ├── list-currently-affected-reporters.query.ts
+│   │   │   │   │       │   │   ├── list-nomination-file-attachments.query.ts
+│   │   │   │   │       │   │   ├── list-nomination-files-as-excel.query.ts
+│   │   │   │   │       │   │   ├── list-nomination-files.query.ts
+│   │   │   │   │       │   │   ├── list-nomination-session-attachments.query.ts
+│   │   │   │   │       │   │   └── list-nomination-sessions.query.ts
+│   │   │   │   │       │   ├── repositories
+│   │   │   │   │       │   │   ├── nomination-session-report-rules.ts
+│   │   │   │   │       │   │   ├── session-transparence.repository.ts
+│   │   │   │   │       │   │   └── sortable-targeted-grade.ts
+│   │   │   │   │       │   ├── transparence.filter.ts
+│   │   │   │   │       │   └── transparence.service.ts
+│   │   │   │   │       ├── transparence.controller.ts
+│   │   │   │   │       └── transparence.module.ts
 │   │   │   │   ├── shared
 │   │   │   │   │   ├── formation-to-member-role.ts
 │   │   │   │   │   ├── formation-to-user-title.ts
@@ -1018,7 +1090,8 @@
 │       │   │   │   │   └── AgendaPreviewPage.tsx
 │       │   │   │   ├── official-report
 │       │   │   │   │   ├── OfficialReportPage.tsx
-│       │   │   │   │   └── OfficialReportPreviewPage.tsx
+│       │   │   │   │   ├── OfficialReportPreviewPage.tsx
+│       │   │   │   │   └── OfficialReportRenderPage.tsx
 │       │   │   │   └── presentations
 │       │   │   │       ├── PresentationUpsertPage.tsx
 │       │   │   │       ├── PresentationsLayout.tsx
@@ -1183,7 +1256,21 @@
 │       │   │       │   ├── DocumentIframe.tsx
 │       │   │       │   ├── DocumentPreview.tsx
 │       │   │       │   ├── document-fonts.css
-│       │   │       │   └── index.ts
+│       │   │       │   ├── index.ts
+│       │   │       │   └── official-report
+│       │   │       │       ├── OfficialReportDocumentEditor.tsx
+│       │   │       │       ├── OfficialReportDriftBanner.tsx
+│       │   │       │       ├── blocks
+│       │   │       │       │   ├── OfficialReportConclusionBlock.tsx
+│       │   │       │       │   ├── OfficialReportFileBlock.tsx
+│       │   │       │       │   ├── OfficialReportIntroBlock.tsx
+│       │   │       │       │   ├── OfficialReportSectionIntroBlock.tsx
+│       │   │       │       │   └── OfficialReportSectionTitleBlock.tsx
+│       │   │       │       ├── blocks.css
+│       │   │       │       ├── blocks.tsx
+│       │   │       │       ├── official-report.model.ts
+│       │   │       │       ├── official-report.view-model.ts
+│       │   │       │       └── utils.ts
 │       │   │       ├── dropdown
 │       │   │       │   ├── Dropdown.stories.tsx
 │       │   │       │   ├── Dropdown.test.tsx
@@ -1352,4 +1439,4 @@
 └── vendor
     ├── .gitkeep
     └── xlsx-0.20.3.tgz
-283 directories, 1071 files
+321 directories, 1120 files
