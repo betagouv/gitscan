@@ -1,10 +1,11 @@
-## Changelog : mon-aide-cyber-journal (30 derniers jours, au 7 mai 2026)
+## Changelog : mon-aide-cyber-journal (30 derniers jours, au 21 juillet 2026)
 
 ### Résumé
-Ce changelog fait état d'améliorations techniques visant à renforcer la robustesse et la portabilité de l'infrastructure du projet. Les modifications concernent principalement la gestion des versions de Node.js et de PostgreSQL, ainsi que l'amélioration de la configuration des scripts de déploiement et de développement. Ces changements n'impactent pas directement l'expérience utilisateur.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la sécurité du projet. Des outils d'analyse de sécurité ont été intégrés au processus de CI/CD pour identifier et prévenir les vulnérabilités potentielles dans la configuration.
 
 ### Évolutions techniques
-- Paramétrisation de la version de Node.js utilisée pour le projet, permettant une meilleure gestion des dépendances et une plus grande flexibilité. [#SOIN](https://github.com/betagouv/mon-aide-cyber-journal/commit/d3d82e7)
-- Explicitation du registre utilisé pour récupérer les images de conteneur, améliorant la reproductibilité des déploiements. [#SOIN](https://github.com/betagouv/mon-aide-cyber-journal/commit/6cfea8d)
-- Amélioration de la portabilité des scripts en explicitant les versions de `postgres` utilisées en développement. [#SOIN](https://github.com/betagouv/mon-aide-cyber-journal/commit/1e2cad6) et [#SOIN](https://github.com/betagouv/mon-aide-cyber-journal/commit/43a2a67)
-- Mise à jour de la version de Node.js. [#SOIN](https://github.com/betagouv/mon-aide-cyber-journal/commit/e14a3ae)
+- Intégration des outils d'analyse de sécurité `checkov` et `zizmor` pour la validation de la configuration [#issue à créer].
+- Désactivation des identifiants `git` des dépôts clônés dans le pipeline CI/CD pour renforcer la sécurité [#issue à créer].
+
+### Autres changements
+- Aucun autre changement significatif à signaler.
