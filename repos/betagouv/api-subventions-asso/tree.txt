@@ -216,6 +216,8 @@
 │   │   │   │   │   │   │   ├── osiris.cli.ts
 │   │   │   │   │   │   │   ├── osiris.parser.test.ts
 │   │   │   │   │   │   │   └── osiris.parser.ts
+│   │   │   │   │   │   ├── rna.cli.test.ts
+│   │   │   │   │   │   ├── rna.cli.ts
 │   │   │   │   │   │   ├── scdl-batch.cli.test.ts
 │   │   │   │   │   │   ├── scdl-batch.cli.ts
 │   │   │   │   │   │   ├── scdl-deposit.cli.ts
@@ -280,6 +282,7 @@
 │   │   │   │   │   │   ├── tools.http.test.ts
 │   │   │   │   │   │   ├── tools.http.ts
 │   │   │   │   │   │   └── user.http.ts
+│   │   │   │   │   ├── hyparquet.loader.ts
 │   │   │   │   │   └── pipeline
 │   │   │   │   │       └── import
 │   │   │   │   │           ├── README.md
@@ -289,6 +292,17 @@
 │   │   │   │   │           │   ├── chorus.mapper.ts
 │   │   │   │   │           │   ├── chorus.parser.ts
 │   │   │   │   │           │   └── chorus.validator.ts
+│   │   │   │   │           ├── rna
+│   │   │   │   │           │   ├── __snapshots__
+│   │   │   │   │           │   │   └── rna.mapper.test.ts.snap
+│   │   │   │   │           │   ├── rna.dto.fixture.ts
+│   │   │   │   │           │   ├── rna.dto.ts
+│   │   │   │   │           │   ├── rna.mapper.test.ts
+│   │   │   │   │           │   ├── rna.mapper.ts
+│   │   │   │   │           │   ├── rna.parser.test.ts
+│   │   │   │   │           │   ├── rna.parser.ts
+│   │   │   │   │           │   ├── rna.pipeline.test.ts
+│   │   │   │   │           │   └── rna.pipeline.ts
 │   │   │   │   │           └── sirene-establishment
 │   │   │   │   │               ├── sirene-establishment.dto.ts
 │   │   │   │   │               ├── sirene-establishment.fixture.ts
@@ -454,6 +468,11 @@
 │   │   │   │       │   │       ├── subventia.adapter.test.ts
 │   │   │   │       │   │       ├── subventia.adapter.ts
 │   │   │   │       │   │       └── subventia.port.ts
+│   │   │   │       │   ├── rna
+│   │   │   │       │   │   ├── rna.adapter.ts
+│   │   │   │       │   │   ├── rna.dbo.fixture.ts
+│   │   │   │       │   │   ├── rna.dbo.ts
+│   │   │   │       │   │   └── rna.port.ts
 │   │   │   │       │   ├── rna-siren
 │   │   │   │       │   │   ├── @types
 │   │   │   │       │   │   │   └── RnaSirenDbo.ts
@@ -1361,12 +1380,15 @@
 │   │   │   ├── adapters
 │   │   │   │   ├── inputs
 │   │   │   │   │   ├── __fixtures__
-│   │   │   │   │   │   └── chorus.xlsx
+│   │   │   │   │   │   ├── chorus.xlsx
+│   │   │   │   │   │   └── rna-waldec.parquet
 │   │   │   │   │   ├── cli
 │   │   │   │   │   │   ├── __snapshots__
-│   │   │   │   │   │   │   └── helios.cli.spec.ts.snap
+│   │   │   │   │   │   │   ├── helios.cli.spec.ts.snap
+│   │   │   │   │   │   │   └── rna.cli.spec.ts.snap
 │   │   │   │   │   │   ├── helios.cli.spec.ts
-│   │   │   │   │   │   └── helios.fixture.ods
+│   │   │   │   │   │   ├── helios.fixture.ods
+│   │   │   │   │   │   └── rna.cli.spec.ts
 │   │   │   │   │   └── cron
 │   │   │   │   │       ├── __snapshots__
 │   │   │   │   │       │   └── chorus.cron.spec.ts.snap
@@ -2276,11 +2298,13 @@
 │       │   │   └── signalR
 │       │   │       └── jquery.signalR.js
 │       │   └── index.js
-│       └── package.json
+│       ├── package.json
+│       └── parquet-files
+│           └── create-fixture-from-file.mjs
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 ├── post-install.bash
 └── vendor
     ├── README.md
     └── xlsx-0.20.3.tgz
-522 directories, 1763 files
+526 directories, 1783 files
