@@ -1,11 +1,10 @@
-## Changelog : anssi-mes-questions-cyber-journal (30 derniers jours, au 01 mai 2026)
+## Changelog : anssi-mes-questions-cyber-journal (30 derniers jours, au 21 juillet 2026)
 
 ### Résumé
-Ce changelog fait état d'améliorations de la configuration et de la portabilité du projet. Les modifications concernent principalement l'environnement de développement et visent à assurer une meilleure reproductibilité et compatibilité des déploiements.
+Ce changelog présente des améliorations de sécurité au niveau de l'intégration continue (CI). Les modifications renforcent la protection des informations sensibles en limitant les permissions et en désactivant les identifiants Git lors des processus de construction et de déploiement. Une validation de la configuration a également été ajoutée.
 
 ### Évolutions techniques
-- Paramétrisation de la version de Node.js utilisée par le projet.
-- Spécification explicite de la version de PostgreSQL pour l'environnement de développement.
-- Définition du registre à utiliser pour récupérer les images de conteneur.
-- Amélioration de la portabilité des scripts.
-- Mise à jour de la version de Node.js.
+- Renforcement de la sécurité de la chaîne CI/CD :
+  - Limitation des permissions dans les actions CI [#issue à investiguer]
+  - Désactivation des identifiants `git` des dépôts clônés lors des actions CI [#issue à investiguer]
+  - Ajout d'une validation de la configuration CI [#issue à investiguer]
