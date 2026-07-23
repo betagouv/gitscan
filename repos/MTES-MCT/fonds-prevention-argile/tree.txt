@@ -54,7 +54,13 @@
 │   │   ├── 0015-navigation-backoffice-unifiee.md
 │   │   ├── 0016-reouverture-demande-refusee.md
 │   │   ├── 0017-ouverture-stats-nationales-agents.md
+│   │   ├── 0018-arret-accompagnement-amo.md
+│   │   ├── 0019-early-exit-simulateur-agent.md
+│   │   ├── 0020-correction-simulation-agent-post-eligibilite.md
+│   │   ├── 0021-synchro-contacts-brevo-cycle-de-vie.md
 │   │   └── README.md
+│   ├── emails
+│   │   └── BREVO-LIFECYCLE.md
 │   ├── parcours
 │   │   ├── FLOW-AND-SYNC.md
 │   │   ├── INCIDENT-double-progression-amo.md
@@ -171,6 +177,7 @@
 │   │   ├── debug
 │   │   │   └── debug-matomo-events.ts
 │   │   ├── ds
+│   │   │   ├── backfill-processed-at.ts
 │   │   │   ├── check-ds-permissions.ts
 │   │   │   ├── fetch-demarche-schema.ts
 │   │   │   └── fetch-pieces-justificatives.ts
@@ -178,6 +185,8 @@
 │   │   │   ├── detacher-amo.ts
 │   │   │   ├── fix-double-progression-amo.ts
 │   │   │   ├── fix-missing-epci.ts
+│   │   │   ├── lier-amo-oblig.ts
+│   │   │   ├── reclasser-source-autre.ts
 │   │   │   └── reouvrir-demande.ts
 │   │   ├── lib
 │   │   │   ├── anonymize.ts
@@ -318,6 +327,8 @@
 │   │   │   │   │   │       ├── NombreDemandesParEtape.tsx
 │   │   │   │   │   │       ├── RepartitionAmoCards.tsx
 │   │   │   │   │   │       ├── RepartitionDossiersCards.tsx
+│   │   │   │   │   │       ├── SourceDetailCard.tsx
+│   │   │   │   │   │       ├── SourceDetailDrawer.tsx
 │   │   │   │   │   │       ├── SourcesAcquisitionTable.tsx
 │   │   │   │   │   │       ├── StatistiquesDemandesTab.tsx
 │   │   │   │   │   │       └── StepStatCard.tsx
@@ -384,11 +395,11 @@
 │   │   │   │   ├── dossiers
 │   │   │   │   │   ├── [id]
 │   │   │   │   │   │   ├── components
-│   │   │   │   │   │   │   ├── ArchiveDossierButton.tsx
+│   │   │   │   │   │   │   ├── DemandeArretAlert.tsx
 │   │   │   │   │   │   │   ├── DossierStatusBadge.tsx
 │   │   │   │   │   │   │   ├── GagnezDuTempsTravaux.tsx
+│   │   │   │   │   │   │   ├── GererDossierMenu.tsx
 │   │   │   │   │   │   │   ├── InfoDossierCallout.tsx
-│   │   │   │   │   │   │   ├── PiecesJustificatives.tsx
 │   │   │   │   │   │   │   ├── ReouvrirDemandeButton.tsx
 │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   └── page.tsx
@@ -438,7 +449,7 @@
 │   │   │   │   │   │   │   ├── ActionsRealisees.tsx
 │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   ├── ArchiveModal.tsx
-│   │   │   │   │   │   ├── GagnezDuTemps.tsx
+│   │   │   │   │   │   ├── ArretAccompagnementModal.tsx
 │   │   │   │   │   │   ├── InfoDemandeur.tsx
 │   │   │   │   │   │   ├── InfoLogement.tsx
 │   │   │   │   │   │   ├── ParcoursDemandeur.tsx
@@ -830,6 +841,7 @@
 │   │   │   │   │   └── services
 │   │   │   │   │       ├── index.ts
 │   │   │   │   │       ├── matomo-funnel.service.ts
+│   │   │   │   │       ├── matomo.service.test.ts
 │   │   │   │   │       ├── matomo.service.ts
 │   │   │   │   │       ├── statistiques-departement.service.ts
 │   │   │   │   │       ├── statistiques.service.test.ts
@@ -937,6 +949,8 @@
 │   │   │   │       │       ├── eligibilite-stats.types.ts
 │   │   │   │       │       └── tableau-de-bord.types.ts
 │   │   │   │       └── services
+│   │   │   │           ├── tableau-de-bord.counters.service.test.ts
+│   │   │   │           ├── tableau-de-bord.matomo.service.test.ts
 │   │   │   │           └── tableau-de-bord.service.ts
 │   │   │   ├── espace-agent
 │   │   │   │   ├── creation-dossier
@@ -987,6 +1001,8 @@
 │   │   │   │   ├── dossiers
 │   │   │   │   │   ├── actions
 │   │   │   │   │   │   ├── archive-dossier.actions.ts
+│   │   │   │   │   │   ├── arret-accompagnement.actions.test.ts
+│   │   │   │   │   │   ├── arret-accompagnement.actions.ts
 │   │   │   │   │   │   ├── get-dossiers-territoire-data.action.ts
 │   │   │   │   │   │   ├── get-nombre-dossiers.action.test.ts
 │   │   │   │   │   │   ├── get-nombre-dossiers.action.ts
@@ -994,6 +1010,7 @@
 │   │   │   │   │   │   ├── reouvrir-demande.actions.test.ts
 │   │   │   │   │   │   └── reouvrir-demande.actions.ts
 │   │   │   │   │   ├── domain
+│   │   │   │   │   │   ├── arret-accompagnement.ts
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   ├── reouverture.ts
 │   │   │   │   │   │   ├── responsable-presentation.test.ts
@@ -1023,11 +1040,13 @@
 │   │   │   │   │   │       └── qualification.types.ts
 │   │   │   │   │   └── services
 │   │   │   │   │       ├── prospect-detail.service.ts
+│   │   │   │   │       ├── qualification.service.test.ts
 │   │   │   │   │       └── qualification.service.ts
 │   │   │   │   └── shared
 │   │   │   │       ├── actions
 │   │   │   │       │   ├── dossier-actions.actions.test.ts
 │   │   │   │       │   ├── dossier-actions.actions.ts
+│   │   │   │       │   ├── update-simulation-data.action.test.ts
 │   │   │   │       │   └── update-simulation-data.action.ts
 │   │   │   │       ├── context
 │   │   │   │       │   └── AmoContext.tsx
@@ -1043,10 +1062,13 @@
 │   │   │   │       └── services
 │   │   │   │           ├── actions.service.test.ts
 │   │   │   │           ├── actions.service.ts
+│   │   │   │           ├── agent-edit-info.service.test.ts
 │   │   │   │           ├── agent-edit-info.service.ts
 │   │   │   │           ├── author-snapshot.ts
 │   │   │   │           ├── edition-simulation.service.test.ts
 │   │   │   │           ├── edition-simulation.service.ts
+│   │   │   │           ├── eligibilite-agent.service.test.ts
+│   │   │   │           ├── eligibilite-agent.service.ts
 │   │   │   │           └── parcours-creator.service.ts
 │   │   │   ├── index.ts
 │   │   │   └── shared
@@ -1068,9 +1090,11 @@
 │   │   │   │   │   ├── amo-validation-query.actions.ts
 │   │   │   │   │   ├── amo-validation.actions.test.ts
 │   │   │   │   │   ├── amo-validation.actions.ts
+│   │   │   │   │   ├── arret-accompagnement.actions.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── components
 │   │   │   │   │   └── steps
+│   │   │   │   │       ├── AnnulerAccompagnementModal.tsx
 │   │   │   │   │       ├── CalloutAmoEnAttente.tsx
 │   │   │   │   │       ├── CalloutAmoLogementNonEligible.tsx
 │   │   │   │   │       ├── CalloutAmoTodo.test.tsx
@@ -1088,6 +1112,8 @@
 │   │   │   │   │   │   ├── amo-query.types.ts
 │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   └── value-objects
+│   │   │   │   │       ├── arretAccompagnement.test.ts
+│   │   │   │   │       ├── arretAccompagnement.ts
 │   │   │   │   │       ├── constants.ts
 │   │   │   │   │       ├── departements-amo.test.ts
 │   │   │   │   │       ├── departements-amo.ts
@@ -1108,8 +1134,12 @@
 │   │   │   │   │   ├── amo-selection.service.ts
 │   │   │   │   │   ├── amo-validation.service.test.ts
 │   │   │   │   │   ├── amo-validation.service.ts
+│   │   │   │   │   ├── arret-accompagnement.service.test.ts
+│   │   │   │   │   ├── arret-accompagnement.service.ts
 │   │   │   │   │   ├── brevo-webhook.service.test.ts
 │   │   │   │   │   ├── brevo-webhook.service.ts
+│   │   │   │   │   ├── detachement-amo.service.test.ts
+│   │   │   │   │   ├── detachement-amo.service.ts
 │   │   │   │   │   ├── reouverture-demande.service.test.ts
 │   │   │   │   │   └── reouverture-demande.service.ts
 │   │   │   │   └── utils
@@ -1126,6 +1156,7 @@
 │   │   │   │   │   ├── parcours-init.actions.ts
 │   │   │   │   │   ├── parcours-progression.actions.ts
 │   │   │   │   │   ├── parcours-query.actions.ts
+│   │   │   │   │   ├── parcours-simulateur-rga-migration.actions.test.ts
 │   │   │   │   │   ├── parcours-simulateur-rga-migration.actions.ts
 │   │   │   │   │   └── qualification-query.actions.ts
 │   │   │   │   ├── components
@@ -1224,6 +1255,11 @@
 │   │   │       │       ├── client.ts
 │   │   │       │       ├── index.ts
 │   │   │       │       └── types.ts
+│   │   │       ├── components
+│   │   │       │   ├── DossierTimeline.tsx
+│   │   │       │   ├── PiecesJustificatives.test.tsx
+│   │   │       │   ├── PiecesJustificatives.tsx
+│   │   │       │   └── index.ts
 │   │   │       ├── domain
 │   │   │       │   ├── entities
 │   │   │       │   │   ├── dossier-ds.ts
@@ -1255,6 +1291,7 @@
 │   │   │       ├── services
 │   │   │       │   ├── dossier-ds.service.ts
 │   │   │       │   ├── ds-prefill.service.ts
+│   │   │       │   ├── ds-sync.service.test.ts
 │   │   │       │   ├── ds-sync.service.ts
 │   │   │       │   ├── index.ts
 │   │   │       │   ├── parcours-sync-batch.service.test.ts
@@ -1457,6 +1494,7 @@
 │   │       └── stores
 │   │           ├── index.ts
 │   │           ├── rga.store.ts
+│   │           ├── simulateur.store.test.ts
 │   │           └── simulateur.store.ts
 │   ├── middleware.test.ts
 │   ├── middleware.ts
@@ -1571,6 +1609,11 @@
 │   │   │   │   ├── 0034_nullable_ds_status.sql
 │   │   │   │   ├── 0035_puzzling_nomad.sql
 │   │   │   │   ├── 0036_even_hercules.sql
+│   │   │   │   ├── 0037_gray_tusk.sql
+│   │   │   │   ├── 0038_fat_spacker_dave.sql
+│   │   │   │   ├── 0039_stiff_makkari.sql
+│   │   │   │   ├── 0040_messy_firedrake.sql
+│   │   │   │   ├── 0041_source_acquisition_new_values.sql
 │   │   │   │   └── meta
 │   │   │   │       ├── 0000_snapshot.json
 │   │   │   │       ├── 0001_snapshot.json
@@ -1609,6 +1652,10 @@
 │   │   │   │       ├── 0034_snapshot.json
 │   │   │   │       ├── 0035_snapshot.json
 │   │   │   │       ├── 0036_snapshot.json
+│   │   │   │       ├── 0037_snapshot.json
+│   │   │   │       ├── 0038_snapshot.json
+│   │   │   │       ├── 0039_snapshot.json
+│   │   │   │       ├── 0040_snapshot.json
 │   │   │   │       └── _journal.json
 │   │   │   ├── repositories
 │   │   │   │   ├── agent-permissions.repository.ts
@@ -1677,8 +1724,18 @@
 │   │   ├── email
 │   │   │   ├── actions
 │   │   │   │   ├── index.ts
+│   │   │   │   ├── send-arret-accompagnement.actions.ts
 │   │   │   │   ├── send-claim-dossier.actions.ts
 │   │   │   │   └── send-email.actions.ts
+│   │   │   ├── brevo
+│   │   │   │   ├── brevo-contacts.adapter.ts
+│   │   │   │   ├── brevo-contacts.config.test.ts
+│   │   │   │   ├── brevo-contacts.config.ts
+│   │   │   │   ├── brevo-contacts.service.test.ts
+│   │   │   │   ├── brevo-contacts.service.ts
+│   │   │   │   ├── contact-mapping.test.ts
+│   │   │   │   ├── contact-mapping.ts
+│   │   │   │   └── index.ts
 │   │   │   ├── config
 │   │   │   │   ├── email.config.ts
 │   │   │   │   └── index.ts
@@ -1688,6 +1745,8 @@
 │   │   │   │   └── index.ts
 │   │   │   ├── templates
 │   │   │   │   ├── EmailLayout.tsx
+│   │   │   │   ├── arret-accompagnement-info.template.tsx
+│   │   │   │   ├── arret-accompagnement-validation.template.tsx
 │   │   │   │   ├── claim-dossier.template.tsx
 │   │   │   │   ├── index.ts
 │   │   │   │   └── validation-amo.template.tsx
@@ -1754,4 +1813,4 @@
 ├── vitest-env.d.ts
 ├── vitest.config.ts
 └── vitest.setup.ts
-480 directories, 1276 files
+483 directories, 1332 files
