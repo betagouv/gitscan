@@ -28,6 +28,7 @@
 │   └── update_openapi_schema
 ├── compose.yaml
 ├── docs
+│   ├── ENCRYPTION.md
 │   ├── S3.md
 │   └── authentication.md
 ├── env.d
@@ -61,7 +62,6 @@
     │   │   ├── authentication
     │   │   │   ├── __init__.py
     │   │   │   ├── backends.py
-    │   │   │   ├── dev_bypass.py
     │   │   │   └── urls.py
     │   │   ├── enums.py
     │   │   ├── factories.py
@@ -82,13 +82,16 @@
     │   │   │   ├── 0003_transfer_auto_archive_on_download_and_more.py
     │   │   │   ├── 0004_alter_user_sub.py
     │   │   │   ├── 0005_transferfile_scan_fields.py
+    │   │   │   ├── 0006_transfer_confidential_transfer_encryption_chunk_size_and_more.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── services
     │   │   │   ├── __init__.py
     │   │   │   ├── email.py
+    │   │   │   ├── encryption.py
     │   │   │   ├── s3.py
-    │   │   │   └── s3_sweep.py
+    │   │   │   ├── s3_sweep.py
+    │   │   │   └── scan_auth.py
     │   │   ├── tasks.py
     │   │   ├── templates
     │   │   │   └── core
@@ -109,6 +112,7 @@
     │   │   │   ├── test_api_transfers.py
     │   │   │   ├── test_api_webhook.py
     │   │   │   ├── test_clean_orphan_s3_command.py
+    │   │   │   ├── test_encryption.py
     │   │   │   ├── test_middlewares.py
     │   │   │   ├── test_models.py
     │   │   │   ├── test_s3_cleanup_drafts.py
@@ -116,7 +120,8 @@
     │   │   │   ├── test_s3_cleanup_tasks.py
     │   │   │   ├── test_s3_cleanup_transfer.py
     │   │   │   ├── test_s3_content_disposition.py
-    │   │   │   └── test_s3_live_smoke.py
+    │   │   │   ├── test_s3_live_smoke.py
+    │   │   │   └── test_scan_auth.py
     │   │   └── urls.py
     │   ├── entrypoint
     │   ├── gunicorn.conf.py
@@ -156,7 +161,8 @@
     │   │   │   └── common
     │   │   │       ├── en-US.json
     │   │   │       └── fr-FR.json
-    │   │   └── manifest.json
+    │   │   ├── manifest.json
+    │   │   └── sw.js
     │   ├── scripts
     │   │   └── print-bundle-stats.mjs
     │   ├── src
@@ -199,6 +205,7 @@
     │   │   │   │   │   ├── useTransferEvents.ts
     │   │   │   │   │   └── useTransfers.ts
     │   │   │   │   ├── components
+    │   │   │   │   │   ├── ButtonSpinner.tsx
     │   │   │   │   │   ├── DownloadView.tsx
     │   │   │   │   │   ├── DriveAttachButton.tsx
     │   │   │   │   │   ├── FileDropZone.tsx
@@ -211,9 +218,15 @@
     │   │   │   │   │   ├── TransferStatusBadge.tsx
     │   │   │   │   │   ├── TransferSuccess.tsx
     │   │   │   │   │   └── _transfers.scss
-    │   │   │   │   └── upload
-    │   │   │   │       ├── MultipartUploader.ts
-    │   │   │   │       └── uploadPart.ts
+    │   │   │   │   ├── upload
+    │   │   │   │   │   ├── MultipartUploader.ts
+    │   │   │   │   │   ├── encryption.test.ts
+    │   │   │   │   │   ├── encryption.ts
+    │   │   │   │   │   ├── encryptionServiceWorker.ts
+    │   │   │   │   │   └── uploadPart.ts
+    │   │   │   │   └── utils
+    │   │   │   │       ├── scanStatus.ts
+    │   │   │   │       └── useDeadlineFlag.ts
     │   │   │   ├── ui
     │   │   │   │   └── components
     │   │   │   │       ├── badge
@@ -266,4 +279,4 @@
     │   └── vitest.config.ts
     └── keycloak
         └── realm.json
-69 directories, 199 files
+70 directories, 211 files
