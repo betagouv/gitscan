@@ -25,15 +25,18 @@ and this project adheres to
 - ✨(back) process project files asynchronously with indexing state
 - ⚡️(back) process conversation files asynchronously off the request worker
 - ⬆️(dependencies) update dependencies and pin CVE-affected packages
-
-### Removed
-
-- 🔥(back) remove the Find RAG backend and its FIND_API_* settings
+- ♻️(front) consolidate input chat banners into a reusable component
+- ⬆️(dependencies) drop unused pydantic-ai extras
+- 💬(back) use a generic localised timestamped title for Docs exports
 
 ### Fixed
 
 - 🐛(front) prevent app crash for users without a full name or email
 - 🐛(front) refresh the conversation title in the collapsed left panel
+
+### Removed
+
+- 🔥(back) remove the Find RAG backend and its FIND_API_* settings
 
 ## [0.0.19] - 2026-06-24
 
