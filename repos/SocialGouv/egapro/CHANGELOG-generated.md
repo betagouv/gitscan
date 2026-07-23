@@ -1,39 +1,34 @@
-## Changelog : egapro (30 derniers jours, au 2026-07-16)
+## Changelog : egapro (30 derniers jours, au 22 juillet 2026)
 
 ### Résumé
-Les dernières mises à jour d'EgaPro se concentrent sur l'amélioration de l'accessibilité, la correction de bugs et l'ajout de nouvelles fonctionnalités pour faciliter la déclaration de l'index de l'égalité professionnelle. Des améliorations ont également été apportées à la sécurité, à la gestion des données et aux outils de suivi analytique.
+Les dernières mises à jour d'EgaPro se concentrent sur l'amélioration de l'expérience utilisateur, notamment la refonte de la déclaration de rémunération et l'ajout de fonctionnalités d'accessibilité. Des corrections ont également été apportées pour assurer la conformité et la stabilité de la plateforme, ainsi que des améliorations techniques pour faciliter le développement et le déploiement.
 
 ### Évolutions fonctionnelles
-- Implémentation d'un système d'accessibilité (ultra11y) pour améliorer l'expérience utilisateur pour tous, notamment les personnes handicapées. [#3817](https://github.com/SocialGouv/egapro/issues/3817)
-- Amélioration de l'affichage de la proportion de bénéficiaires dans l'étape 6 du parcours de déclaration et dans le PDF exporté. [#3869](https://github.com/SocialGouv/egapro/issues/3869)
-- Ajout de contenu et de règles d'envoi pour les notifications par email de rappel. [#3671](https://github.com/SocialGouv/egapro/issues/3671)
-- Mise en place d'un canal de prépublication alpha avec déclenchement automatique des releases. [#3736](https://github.com/SocialGouv/egapro/issues/3736)
-- Possibilité de purger les données des déclarations. [#3134](https://github.com/SocialGouv/egapro/issues/3134)
-- Intégration des contenus et des règles d'envoi des emails de confirmation. [#3670](https://github.com/SocialGouv/egapro/issues/3670)
-- Ajout d'une API publique pour la déclaration de rémunération. [#3172](https://github.com/SocialGouv/egapro/issues/3172)
-- Demande du niveau Eidas2 (authentification forte) sur ProConnect. (Annulé suite à un problème, réactivation à venir) [#3829](https://github.com/SocialGouv/egapro/issues/3829)
-- Amélioration de la gestion du verrouillage du parcours de déclaration pour la collaboration. [#3556](https://github.com/SocialGouv/egapro/issues/3556)
-- Lecture seule du parcours de conformité après la date limite de modification. [#3494](https://github.com/SocialGouv/egapro/issues/3494)
-- Amélioration des libellés et de l'affichage dans l'espace personnel (My Space). [#3761](https://github.com/SocialGouv/egapro/issues/3761)
-- Implémentation de règles de conformité GIP pour les écarts de rémunération. [#3868](https://github.com/SocialGouv/egapro/issues/3868)
+- Le bouton d'export est de nouveau disponible dans l'étape 5 du parcours de déclaration de rémunération ([#3968](https://github.com/SocialGouv/egapro/issues/3968)).
+- Un bouton "Je donne mon avis" a été intégré à la fin du parcours de déclaration ([#3966](https://github.com/SocialGouv/egapro/issues/3966)).
+- Refonte du design de la déclaration de rémunération (pages 1 à 5) ([#3935](https://github.com/SocialGouv/egapro/issues/3935)).
+- Refonte multi-pages du template PDF de la déclaration de rémunération (basé sur les maquettes) ([#3973](https://github.com/SocialGouv/egapro/issues/2914)).
+- Implémentation de règles pour l'envoi de notifications par email et contenu des emails de rappel ([#3857](https://github.com/SocialGouv/egapro/issues/3857), [#3671](https://github.com/SocialGouv/egapro/issues/3671)).
+- Implémentation d'un système de purge des données des déclarations ([#3828](https://github.com/SocialGouv/egapro/issues/3828)).
+- Amélioration de l'affichage de la proportion de bénéficiaires dans l'étape 6 et le PDF de la déclaration de rémunération ([#3869](https://github.com/SocialGouv/egapro/issues/3869)).
+- Implémentation de règles de conformité pour les écarts salariaux par GIP ([#3868](https://github.com/SocialGouv/egapro/issues/3868)).
 
 ### Évolutions techniques
-- Correction des permissions OIDC sur le workflow de promotion des environnements de test. [#3908](https://github.com/SocialGouv/egapro/issues/3908)
-- Correction d'un problème de création de tag GPG lors des releases. [#3906](https://github.com/SocialGouv/egapro/issues/3906)
-- Mise en place d'environnements de test persistants déployables uniquement depuis des releases (pour les tests RGAA et de performance). [#3904](https://github.com/SocialGouv/egapro/issues/3904)
-- Correction d'un problème de protection de branche sur le canal de prépublication alpha. [#3905](https://github.com/SocialGouv/egapro/issues/3905)
-- Rétrogradation d'une fonctionnalité d'authentification (demande Eidas2) suite à un problème. [#3907](https://github.com/SocialGouv/egapro/issues/3907)
-- Migration des builds d'images de buildkit-service vers buildkit-operator. [#3844](https://github.com/SocialGouv/egapro/issues/3844)
-- Ajout d'un check de fidélité visuelle (design-validator) dans le pipeline CI. [#3749](https://github.com/SocialGouv/egapro/issues/3749)
-- Ajout d'un agent e2e-dev en fin de pipeline. [#3654](https://github.com/SocialGouv/egapro/issues/3654)
-- Ajout d'un check pour éviter le skip silencieux des migrations de base de données. [#3557](https://github.com/SocialGouv/egapro/issues/3557)
-- Refactoring de la gestion de l'impersonation et du verrou collaboratif dans le contexte de déclaration. [#3794](https://github.com/SocialGouv/egapro/issues/3794)
-- Implémentation de Matomo pour le suivi analytique (avec exemption de consentement CNIL). [#3655](https://github.com/SocialGouv/egapro/issues/3655)
+- Verrouillage du compilateur du moteur d'étapes FSM pour plus de stabilité ([#3979](https://github.com/SocialGouv/egapro/issues/3979)).
+- Dérivation du vocabulaire de statut admin à partir de `DECLARATION_FSM_STATUSES` pour une meilleure cohérence ([#3983](https://github.com/SocialGouv/egapro/issues/3980)).
+- Rationalisation de la suite de tests E2E, en se concentrant sur les parcours critiques et en remplaçant les tests détaillés par des tests unitaires ([#3928](https://github.com/SocialGouv/egapro/issues/3928)).
+- Amélioration de l'accessibilité (RGAA) avec l'implémentation d'ultra11y et la correction de plusieurs problèmes d'accessibilité ([#3889](https://github.com/SocialGouv/egapro/issues/3800), [#3887](https://github.com/SocialGouv/egapro/issues/3817)).
+- Mise en place d'un lock pour le parcours de déclaration afin d'éviter les conflits ([#3753](https://github.com/SocialGouv/egapro/issues/3556)).
+- Mise en place d'un canal de prépublication alpha avec déclenchement automatique des releases ([#3858](https://github.com/SocialGouv/egapro/issues/3736)).
+- Correction de problèmes liés aux permissions OIDC et à la signature GPG lors des releases ([#3908](https://github.com/SocialGouv/egapro/issues/3908), [#3906](https://github.com/SocialGouv/egapro/issues/3906)).
+- Amélioration de la configuration des environnements de test persistants pour les tests RGAA et de performance ([#3904](https://github.com/SocialGouv/egapro/issues/3904)).
+- Migration des builds d'images vers buildkit-operator ([#3844](https://github.com/SocialGouv/egapro/issues/3844)).
+- Ajout d'un seed pour les données de démonstration des graphiques statistiques ([#3758](https://github.com/SocialGouv/egapro/issues/3569)).
 
 ### Autres changements
-- Réalignement du workflow Figma sur le serveur MCP officiel. [#3848](https://github.com/SocialGouv/egapro/issues/3848)
-- Correction du seed des données Matomo en local. [#3787](https://github.com/SocialGouv/egapro/issues/3787)
-- Ajout de seed pour les stats en local pour les tests. [#3569](https://github.com/SocialGouv/egapro/issues/3569)
-- Ajout de diagrammes de parcours pour le CSE. [#3433](https://github.com/SocialGouv/egapro/issues/3433)
-- Amélioration de la documentation.
-- Corrections de contraste et d'accessibilité (RGAA). [#3800](https://github.com/SocialGouv/egapro/issues/3800) et [#3720](https://github.com/SocialGouv/egapro/issues/3720)
+- Documentation du moteur d'étapes (FSM) et ajout d'un pointeur vers le document CLAUDE.md ([#3982](https://github.com/SocialGouv/egapro/issues/3976)).
+- Ajout d'un changelog pour les releases alpha ([#3965](https://github.com/SocialGouv/egapro/issues/3853)).
+- Discipline de fidélité Figma (mesure, thème clair, états, tableaux, espaces verticaux) documentée ([#3961](https://github.com/SocialGouv/egapro/issues/3861)).
+- Correction du seed des données Matomo en local ([#3787](https://github.com/SocialGouv/egapro/issues/3787)).
+- Mise à jour de la documentation pour refléter le workflow Figma sur le serveur MCP officiel ([#3881](https://github.com/SocialGouv/egapro/issues/3848)).
+- Correction d'un revert de la demande du niveau Eidas2 sur ProConnect ([#3907](https://github.com/SocialGouv/egapro/issues/3907)).

@@ -44,6 +44,7 @@
 │   │   ├── code-quality.md
 │   │   ├── complexity-estimation.md
 │   │   ├── database-drizzle.md
+│   │   ├── demarche-state-machine.md
 │   │   ├── e2e.md
 │   │   ├── figma-workflow.md
 │   │   ├── git-artefact-hygiene.md
@@ -114,6 +115,9 @@
 │       ├── preproduction.yaml
 │       ├── production.yaml
 │       ├── promote-test-env.yaml
+│       ├── release-alpha-reminder.yaml
+│       ├── release-alpha.yaml
+│       ├── release-changelog.yaml
 │       ├── release.yml
 │       ├── review-auto.yaml
 │       ├── review.yaml
@@ -219,6 +223,7 @@
 │   ├── matomo-cnil-exemption.md
 │   ├── parcours-utilisateurs.md
 │   ├── plan-de-tracking.md
+│   ├── release.md
 │   └── strategie-tracking.md
 ├── package.json
 ├── packages
@@ -321,7 +326,10 @@
 │   │   ├── public
 │   │   │   └── assets
 │   │   │       ├── declaration-remuneration
-│   │   │       │   └── cloud-check.svg
+│   │   │       │   ├── cloud-check.svg
+│   │   │       │   └── pdf
+│   │   │       │       ├── document-icon.png
+│   │   │       │       └── ministere-travail.png
 │   │   │       └── images
 │   │   │           ├── aide
 │   │   │           │   ├── indicateurs-remuneration.png
@@ -330,6 +338,7 @@
 │   │   │           ├── home
 │   │   │           │   ├── help-illustration.svg
 │   │   │           │   └── search-illustration.svg
+│   │   │           ├── je-donne-mon-avis.svg
 │   │   │           ├── login-illustration.svg
 │   │   │           ├── mails
 │   │   │           │   ├── icon@2x.png
@@ -529,11 +538,9 @@
 │   │   │   │   └── test-panel
 │   │   │   │       └── page.tsx
 │   │   │   ├── e2e
-│   │   │   │   ├── admin-declarations.e2e.ts
+│   │   │   │   ├── admin-access.e2e.ts
 │   │   │   │   ├── admin-impersonation-read-only.e2e.ts
-│   │   │   │   ├── admin-referents.e2e.ts
 │   │   │   │   ├── admin-stats.e2e.ts
-│   │   │   │   ├── admin.e2e.ts
 │   │   │   │   ├── auth.setup.ts
 │   │   │   │   ├── campaign-deadlines-gating.e2e.ts
 │   │   │   │   ├── compliance-path-change.e2e.ts
@@ -542,7 +549,6 @@
 │   │   │   │   ├── declaration-cancellation.e2e.ts
 │   │   │   │   ├── declaration-history.e2e.ts
 │   │   │   │   ├── declaration-process-panel.e2e.ts
-│   │   │   │   ├── declaration-step5-remuneration.e2e.ts
 │   │   │   │   ├── declaration.e2e.ts
 │   │   │   │   ├── declarationDraft.e2e.ts
 │   │   │   │   ├── error-pages.e2e.ts
@@ -553,7 +559,6 @@
 │   │   │   │   ├── helpers
 │   │   │   │   │   ├── compliance-flows.ts
 │   │   │   │   │   ├── db-campaign.ts
-│   │   │   │   │   ├── db-funnel.ts
 │   │   │   │   │   ├── db.ts
 │   │   │   │   │   ├── declaration-flows.ts
 │   │   │   │   │   ├── declaration-history.ts
@@ -567,11 +572,9 @@
 │   │   │   │   ├── logout.e2e.ts
 │   │   │   │   ├── missing-info-modal.e2e.ts
 │   │   │   │   ├── notifications-email-flow.e2e.ts
-│   │   │   │   ├── previous-year-categories.e2e.ts
 │   │   │   │   ├── public-referents.e2e.ts
 │   │   │   │   ├── public-stats.e2e.ts
-│   │   │   │   ├── recapitulatif.e2e.ts
-│   │   │   │   └── step1-workforce-validation.e2e.ts
+│   │   │   │   └── recapitulatif.e2e.ts
 │   │   │   ├── env.js
 │   │   │   ├── instrumentation-client.ts
 │   │   │   ├── instrumentation.ts
@@ -849,6 +852,7 @@
 │   │   │   │   │   │   ├── PrefillSource.tsx
 │   │   │   │   │   │   ├── SavedIndicator.module.scss
 │   │   │   │   │   │   ├── SavedIndicator.tsx
+│   │   │   │   │   │   ├── StepIndicator.module.scss
 │   │   │   │   │   │   ├── StepIndicator.tsx
 │   │   │   │   │   │   ├── StepTitleRow.tsx
 │   │   │   │   │   │   ├── SubmitDeclarationModal.tsx
@@ -868,6 +872,7 @@
 │   │   │   │   │   │   │   ├── StepIndicator.test.tsx
 │   │   │   │   │   │   │   ├── complianceNavigation.test.ts
 │   │   │   │   │   │   │   ├── devFillData.test.ts
+│   │   │   │   │   │   │   ├── funnelSteps.test.ts
 │   │   │   │   │   │   │   ├── gapBadge.test.ts
 │   │   │   │   │   │   │   ├── gipMdsMapping.test.ts
 │   │   │   │   │   │   │   └── gipMdsMappingCsv.test.ts
@@ -892,6 +897,7 @@
 │   │   │   │   │   │   │   ├── useDraftAutoSave.ts
 │   │   │   │   │   │   │   └── useDraftHydration.ts
 │   │   │   │   │   │   ├── funnelConfig.ts
+│   │   │   │   │   │   ├── funnelSteps.ts
 │   │   │   │   │   │   ├── gapBadge.ts
 │   │   │   │   │   │   ├── gipMdsMapping.ts
 │   │   │   │   │   │   ├── gipToStepData.ts
@@ -987,6 +993,7 @@
 │   │   │   │   │   │   ├── step5
 │   │   │   │   │   │   │   ├── CategoryDataTable.tsx
 │   │   │   │   │   │   │   ├── CategoryForm.tsx
+│   │   │   │   │   │   │   ├── CategoryImportExport.module.scss
 │   │   │   │   │   │   │   ├── CategoryImportExport.tsx
 │   │   │   │   │   │   │   ├── DeleteCategoryDialog.tsx
 │   │   │   │   │   │   │   ├── __tests__
@@ -1038,15 +1045,30 @@
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── pdfFonts.ts
 │   │   │   │   │   ├── pdfStyles.ts
+│   │   │   │   │   ├── recapPdfStyles.ts
 │   │   │   │   │   ├── sections
 │   │   │   │   │   │   ├── CategorySection.tsx
+│   │   │   │   │   │   ├── EgaproBanner.tsx
 │   │   │   │   │   │   ├── GapCell.tsx
+│   │   │   │   │   │   ├── InfoSection.tsx
 │   │   │   │   │   │   ├── PayGapTable.tsx
+│   │   │   │   │   │   ├── PdfPageFooter.tsx
+│   │   │   │   │   │   ├── PdfPageHeader.tsx
 │   │   │   │   │   │   ├── QuartileSection.tsx
 │   │   │   │   │   │   ├── VariablePaySection.tsx
 │   │   │   │   │   │   ├── WorkforceSection.tsx
-│   │   │   │   │   │   └── __tests__
-│   │   │   │   │   │       └── VariablePaySection.test.tsx
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   ├── CategorySection.test.tsx
+│   │   │   │   │   │   │   ├── GapCell.test.tsx
+│   │   │   │   │   │   │   ├── PayGapTable.test.tsx
+│   │   │   │   │   │   │   ├── QuartileSection.test.tsx
+│   │   │   │   │   │   │   ├── VariablePaySection.test.tsx
+│   │   │   │   │   │   │   ├── WorkforceSection.test.tsx
+│   │   │   │   │   │   │   ├── pageChrome.test.tsx
+│   │   │   │   │   │   │   └── tableParts.test.tsx
+│   │   │   │   │   │   ├── headings.tsx
+│   │   │   │   │   │   ├── tableParts.tsx
+│   │   │   │   │   │   └── tableWidths.ts
 │   │   │   │   │   └── types.ts
 │   │   │   │   ├── domain
 │   │   │   │   │   ├── __tests__
@@ -1063,9 +1085,12 @@
 │   │   │   │   │   │   ├── declarationStatus.test.ts
 │   │   │   │   │   │   ├── declarationSteps.test.ts
 │   │   │   │   │   │   ├── declarationTrajectory.test.ts
+│   │   │   │   │   │   ├── demarcheDecisionTable.test.ts
+│   │   │   │   │   │   ├── demarcheRevisionAndStatus.test.ts
 │   │   │   │   │   │   ├── format.test.ts
 │   │   │   │   │   │   ├── formatLongDate.test.ts
 │   │   │   │   │   │   ├── gap.test.ts
+│   │   │   │   │   │   ├── gipWorkforce.test.ts
 │   │   │   │   │   │   ├── indicatorG.test.ts
 │   │   │   │   │   │   ├── number.test.ts
 │   │   │   │   │   │   ├── percentage.test.ts
@@ -1093,6 +1118,7 @@
 │   │   │   │   │   │   ├── declarationTrajectory.ts
 │   │   │   │   │   │   ├── format.ts
 │   │   │   │   │   │   ├── gap.ts
+│   │   │   │   │   │   ├── gipWorkforce.ts
 │   │   │   │   │   │   ├── indicatorG.ts
 │   │   │   │   │   │   ├── number.ts
 │   │   │   │   │   │   ├── percentage.ts
@@ -1129,6 +1155,7 @@
 │   │   │   │   │   │   ├── filesApi.test.ts
 │   │   │   │   │   │   ├── generateXlsx.test.ts
 │   │   │   │   │   │   ├── generateYearlyExport.test.ts
+│   │   │   │   │   │   ├── gipWorkforceExport.integration.test.ts
 │   │   │   │   │   │   ├── mapIndicators.test.ts
 │   │   │   │   │   │   ├── openapi.test.ts
 │   │   │   │   │   │   ├── openapiRoute.test.ts
@@ -1408,6 +1435,8 @@
 │   │   │   │   │   ├── CampaignRateTileStates.tsx
 │   │   │   │   │   ├── CompanySizeFilter.tsx
 │   │   │   │   │   ├── DsfrTable.tsx
+│   │   │   │   │   ├── FeedbackBanner.module.scss
+│   │   │   │   │   ├── FeedbackBanner.tsx
 │   │   │   │   │   ├── FileUpload.module.scss
 │   │   │   │   │   ├── FileUpload.tsx
 │   │   │   │   │   ├── KpiBadge.tsx
@@ -1417,6 +1446,7 @@
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   ├── CompanySizeFilter.test.tsx
 │   │   │   │   │   │   ├── DsfrTable.test.tsx
+│   │   │   │   │   │   ├── FeedbackBanner.test.tsx
 │   │   │   │   │   │   ├── FileUpload.test.tsx
 │   │   │   │   │   │   ├── KpiBadge.test.tsx
 │   │   │   │   │   │   ├── Pagination.test.tsx
@@ -1546,6 +1576,7 @@
 │   │   │   │   ├── rules
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   ├── consistency.test.ts
+│   │   │   │   │   │   ├── fsmMirrors.conformance.test.ts
 │   │   │   │   │   │   ├── matrix.v2027.1.test.ts
 │   │   │   │   │   │   └── schema.test.ts
 │   │   │   │   │   ├── engine.ts
@@ -1716,7 +1747,11 @@
 │   │   ├── set_ticket_size.sh
 │   │   ├── set_ticket_status.sh
 │   │   └── sprint_velocity.sh
+│   ├── release
+│   │   ├── collect_release_issues.sh
+│   │   ├── publish_release_summary.sh
+│   │   └── release-scripts.test.sh
 │   ├── setup-worktree.sh
 │   └── teardown-worktree.sh
 └── sonar-project.properties
-292 directories, 1429 files
+294 directories, 1462 files
