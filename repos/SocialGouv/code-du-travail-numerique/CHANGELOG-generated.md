@@ -1,31 +1,25 @@
-## Changelog : code-du-travail-numerique (30 derniers jours, au 2026-07-16)
+## Changelog : code-du-travail-numerique (30 derniers jours, au 21 juillet 2026)
 
 ### Résumé
-Les dernières mises à jour apportent des corrections de bugs, des améliorations de l'expérience utilisateur, notamment concernant la recherche d'entreprises et la notation des contributions, ainsi que des optimisations techniques pour la gestion des accords et le processus de release. Un nouveau système d'extraction d'événements pour le suivi analytique a également été implémenté.
+Les dernières mises à jour apportent des améliorations à l'expérience utilisateur, notamment l'ajout d'un score NPS pour évaluer la satisfaction, la suppression du bloc de partage sur certaines pages, et des corrections de bugs concernant la notation des contributions et le comportement de la recherche. Des améliorations techniques ont également été apportées pour la gestion des builds et l'utilisation des accords.
 
 ### Évolutions fonctionnelles
-- Ajout d'un widget de notation pour les contributions, permettant aux utilisateurs de donner leur avis. [#7344](https://github.com/SocialGouv/code-du-travail-numerique/issues/7344)
-- Amélioration de la recherche d'entreprise : découplage de l'affichage des accords de la recherche. [#7324](https://github.com/SocialGouv/code-du-travail-numerique/issues/7324)
-- Correction d'un bug empêchant l'affichage correct des entêtes de tableaux dans les contributions. [#7325](https://github.com/SocialGouv/code-du-travail-numerique/issues/7325)
-- Suppression de la sélection de convention collective dans l'en-tête. [#7388](https://github.com/SocialGouv/code-du-travail-numerique/issues/7388)
-- Correction de l'affichage du code IDCC 9999 pour une normalisation. [#7303](https://github.com/SocialGouv/code-du-travail-numerique/issues/7303)
-- Redirection de l'ancienne fiche canicule vers la nouvelle page d'information. [#7318](https://github.com/SocialGouv/code-du-travail-numerique/issues/7318)
+- Ajout d'un score NPS (Net Promoter Score) sur le site pour mesurer la satisfaction des utilisateurs. [#7382](https://github.com/SocialGouv/code-du-travail-numerique/issues/7382)
+- Suppression du bloc de partage sur toutes les pages, sauf sur les actualités. [#7392](https://github.com/SocialGouv/code-du-travail-numerique/issues/7392)
+- Ajout d'un widget de notation pour les contributions. [#7344](https://github.com/SocialGouv/code-du-travail-numerique/issues/7344)
 - Ajout du type "bon à savoir" pour les contributions. [#7326](https://github.com/SocialGouv/code-du-travail-numerique/issues/7326)
+- Correction pour ne pas déplacer le focus sur les résultats lors de la recherche automatique. [#7391](https://github.com/SocialGouv/code-du-travail-numerique/issues/7391)
+- Correction pour la gestion des anciens accords (utilisation des accords dans l'ES au lieu de l'API Legifrance). [#7381](https://github.com/SocialGouv/code-du-travail-numerique/issues/7381)
 
 ### Évolutions techniques
-- Utilisation des accords dans l'ES (Elasticsearch) au lieu de l'API Legifrance pour améliorer les performances et la fiabilité. [#7381](https://github.com/SocialGouv/code-du-travail-numerique/issues/7381)
-- Mise en place d'un système d'extraction d'événements statiques et de vérification de la dérive pour le suivi analytique. [#7300](https://github.com/SocialGouv/code-du-travail-numerique/issues/7300)
 - Migration des builds d'images de buildkit-service vers buildkit-operator. [#7354](https://github.com/SocialGouv/code-du-travail-numerique/issues/7354)
-- Désactivation de Husky lors d'une release pour éviter des problèmes de build.
-- Mise à jour de pnpm vers la version 11.
-- Correction de bugs liés au passage à pnpm 11.
+- Mise à jour de pnpm vers la version 11 et corrections associées.
+- Ajout d'un système d'extraction d'événements statiques et de vérification de la dérive. [#7300](https://github.com/SocialGouv/code-du-travail-numerique/issues/7300)
+- Génération de la documentation du plan de suivi (tracking plan) à partir des événements. [#7343](https://github.com/SocialGouv/code-du-travail-numerique/issues/7343)
+- Désactivation de Husky lors d'une release pour améliorer le processus.
 
 ### Autres changements
-- Ajout du `user-agent` pour que les données de notation soient correctement remontées dans Matomo. [#7390](https://github.com/SocialGouv/code-du-travail-numerique/issues/7390)
-- Correction du focus sur les résultats lors de la recherche automatique. [#7391](https://github.com/SocialGouv/code-du-travail-numerique/issues/7391)
-- Fin de l'A/B test concernant les contributions (CC) et conservation de la version 3 avec boutons radio. [#7379](https://github.com/SocialGouv/code-du-travail-numerique/issues/7379)
-- Correction de niveaux de titres incorrects dans la section actualités.
-- Ajout de logs pour la recherche DILA afin de faciliter le débogage.
-- Mise à jour des secrets pour l'environnement de préproduction.
-- Suppression de la balise canonical sur la page générique des contributions. [#7316](https://github.com/SocialGouv/code-du-travail-numerique/issues/7316)
-- Correction des tests E2E pour le glossaire, la recherche dans l'en-tête et les conventions collectives. [#7319](https://github.com/SocialGouv/code-du-travail-numerique/issues/7319)
+- Correction de bugs mineurs liés aux en-têtes d'actualités et aux ancres des accordéons.
+- Mise à jour des secrets pour l'environnement de pré-production.
+- Ajout de logs pour la recherche DILA.
+- Correction d'un problème lié au minimum d'ancienneté pour les particuliers employeurs. [#7314](https://github.com/SocialGouv/code-du-travail-numerique/issues/7314)
