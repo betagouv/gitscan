@@ -81,6 +81,7 @@
 │       └── vercel-react-best-practices -> ../../.agents/skills/vercel-react-best-practices
 ├── .earthlyignore
 ├── .editorconfig
+├── .env
 ├── .github
 │   ├── README.md
 │   ├── actions
@@ -147,6 +148,7 @@
 │       ├── dev.yml
 │       ├── init-db.yml
 │       ├── keep-alive-streamlit.yml
+│       ├── retry-e2e.yml
 │       ├── scripts
 │       │   └── keep-alive-streamlit.ts
 │       ├── test-app.yml
@@ -171,11 +173,12 @@
 ├── DISCOVERED.md
 ├── Earthfile
 ├── LICENSE
+├── Makefile
 ├── README.md
 ├── SECURITY.md
 ├── apps
 │   ├── app
-│   │   ├── .env.sample
+│   │   ├── .env
 │   │   ├── .storybook
 │   │   │   ├── README.md
 │   │   │   ├── main.ts
@@ -2125,7 +2128,7 @@
 │   │   ├── tsconfig.storybook.json
 │   │   └── vitest.config.mts
 │   ├── auth
-│   │   ├── .env.sample
+│   │   ├── .env
 │   │   ├── .storybook
 │   │   │   ├── main.ts
 │   │   │   ├── preview.css
@@ -2216,7 +2219,7 @@
 │   │   ├── tsconfig.json
 │   │   └── tsconfig.spec.json
 │   ├── backend
-│   │   ├── .env.default
+│   │   ├── .env
 │   │   ├── .swcrc
 │   │   ├── AGENTS.md
 │   │   ├── CLAUDE.md -> AGENTS.md
@@ -3835,7 +3838,7 @@
 │   │   ├── tsconfig.spec.json
 │   │   └── vitest.config.mts
 │   ├── panier
-│   │   ├── .env.sample
+│   │   ├── .env
 │   │   ├── Earthfile
 │   │   ├── README.md
 │   │   ├── app
@@ -3932,7 +3935,7 @@
 │   │   ├── tailwind.config.ts
 │   │   └── tsconfig.json
 │   ├── site
-│   │   ├── .env.sample
+│   │   ├── .env
 │   │   ├── Earthfile
 │   │   ├── README.md
 │   │   ├── app
@@ -4412,7 +4415,7 @@
 │   │   ├── tailwind.config.ts
 │   │   └── tsconfig.json
 │   └── tools
-│       ├── .env.default
+│       ├── .env
 │       ├── Earthfile
 │       ├── eslint.config.mjs
 │       ├── nest-cli.json
@@ -6362,7 +6365,6 @@
 │       └── test-failures
 │           └── parallel-e2e-test-isolation.md
 ├── e2e
-│   ├── .env.default
 │   ├── README.md
 │   ├── eslint.config.mjs
 │   ├── package.json
@@ -7328,6 +7330,8 @@
 │       └── vitest.storybook.config.mts
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
+├── scripts
+│   └── pick-env-file.mjs
 ├── skills-lock.json
 ├── sqitch.conf
 ├── strapi
@@ -7594,4 +7598,4 @@
 ├── tsconfig.json
 ├── vitest.config.ts
 └── vitest.workspace.ts
-1298 directories, 6556 files
+1299 directories, 6559 files

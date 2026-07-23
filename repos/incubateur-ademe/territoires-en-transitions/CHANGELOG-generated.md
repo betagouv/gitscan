@@ -1,39 +1,42 @@
-## Changelog : territoires-en-transitions (30 derniers jours, au 16 juillet 2026)
+## Changelog : territoires-en-transitions (30 derniers jours, au 21 juillet 2026)
 
 ### Résumé
-Cette période a été marquée par d'importantes améliorations concernant la gestion des référentiels, notamment en préparation de la bascule vers le référentiel "Territoires en Transitions" (TE). Des efforts considérables ont été déployés pour améliorer la sécurité, la robustesse et l'expérience utilisateur, en particulier dans les fonctionnalités d'audit et de labellisation. L'intégration d'IA pour l'import de plans est également en cours de développement.
+Cette période a été marquée par des améliorations significatives de la sécurité, notamment la correction de failles potentielles d'injection IDOR et de création de membres non autorisés.  De plus, des fonctionnalités importantes ont été ajoutées pour la gestion des référentiels, en particulier pour la migration vers le nouveau référentiel TE (Territoires en Transition), avec des outils de fusion de données et de gestion des statuts. L'interface utilisateur a également été améliorée, notamment avec l'introduction d'une nouvelle grille d'indicateurs et des améliorations de l'expérience utilisateur pour les audits et labellisations.
 
 ### Évolutions fonctionnelles
-- Ajout de la fusion des services, pilotes, explications et statuts CAE/ECI vers les mesures TE. [#16](https://github.com/incubateur-ademe/territoires-en-transitions/issues/16)
-- Implémentation de la fusion des liens fiches CAE/ECI vers TE. [#16](https://github.com/incubateur-ademe/territoires-en-transitions/issues/16)
-- Possibilité de filtrer les snapshots des référentiels archivés.
-- Ajout de la gestion des dates de début et de fin pour les plans. (TET-7490)
-- Amélioration de la sécurité : blocage de l'injection IDOR de relations cross-collectivité dans les plans et fichiers. (TET-7358, TET-7359, TET-7360)
-- Ajout de la fonctionnalité d'import de plans via IA, incluant l'extraction, la création et le suivi de progression.
-- Amélioration de l'interface d'audit et de labellisation avec une nouvelle checklist, la gestion des documents de candidature et un affichage plus clair des statuts.
-- Ajout de la possibilité de télécharger les preuves d'un audit.
-- Ajout d'un bandeau d'alerte pour les référentiels archivés ou en lecture seule.
-- Amélioration de l'export Excel des indicateurs. (TET-7414)
+- Amélioration de la sécurité : blocage de l'injection IDOR dans les relations cross-collectivité pour les plans et les discussions [#7358](https://github.com/incubateur-ademe/territoires-en-transitions/issues/7358).
+- Amélioration de la sécurité : blocage de la création de membres fantômes dans les collectivités [#7360](https://github.com/incubateur-ademe/territoires-en-transitions/issues/7360).
+- Ajout de dates de début/fin pour les plans [#7490](https://github.com/incubateur-ademe/territoires-en-transitions/issues/7490).
+- Possibilité d'importer des données via l'IA pour un plan.
+- Nouvelle grille d'indicateurs avec édition en ligne, réordonnancement, et possibilité de collage de données.
+- Amélioration de l'interface pour les audits et labellisations, avec une nouvelle checklist et une gestion améliorée des documents.
+- Ajout de la possibilité d'archiver les preuves d'audit.
+- Ajout d'un bandeau d'information pour les référentiels archivés ou en lecture seule.
+- Ajout de la fusion des services, pilotes et explications CAE/ECI vers les mesures TE.
+- Ajout de la fusion des liens fiches CAE/ECI vers TE.
+- Ajout de la fusion des statuts d'origine vers les actions du référentiel CR.
 
 ### Évolutions techniques
-- Refactorings importants dans la gestion des snapshots, avec migration vers le pattern `Result` pour une meilleure gestion des erreurs.
-- Amélioration de la robustesse des tests E2E et parallélisation pour une exécution plus rapide.
-- Mise à jour de TypeScript vers la version 6/7.
+- Refactor de l'authentification et migration vers une application Next.js unique.
+- Mise à jour de Nx et des dépendances.
+- Migration de certains composants vers TypeScript 6/7.
+- Amélioration du pipeline CI/CD avec parallélisation des tests et optimisation des temps d'exécution.
 - Suppression de code obsolète et simplification de certaines structures de données.
-- Migration de certains composants vers le nouveau layout.
-- Mise à jour des dépendances (Next.js, swc, posthog-js).
-- Amélioration de la sécurité avec la mise en place d'une Content Security Policy (CSP) globale.
-- Refactor de la gestion des dates avec remplacement de Luxon par date-fns.
-- Migration de certains modules vers le backend tRPC.
+- Utilisation de `date-fns` au lieu de `luxon` pour les manipulations de dates.
+- Mise en place d'un système de gestion des variables d'environnement plus robuste avec `dotenvx`.
+- Refonte de l'architecture des tests E2E pour une meilleure fiabilité et parallélisation.
+- Migration vers le pattern Result pour la gestion des erreurs dans certains modules.
+- Amélioration de la gestion des erreurs et des transactions.
+- Suppression de dépendances inutiles.
 
 ### Autres changements
-- Documentation mise à jour pour les agents IA et le plan de migration des applications.
-- Amélioration de la gestion des libellés et des messages d'erreur.
-- Corrections de bugs mineurs et améliorations de la performance.
+- Amélioration de la documentation pour les agents IA.
+- Mise à jour des labels et des textes de l'interface utilisateur.
+- Correction de bugs mineurs et améliorations de la performance.
 - Ajout de tests unitaires et E2E pour couvrir les nouvelles fonctionnalités et les corrections de bugs.
+- Amélioration de la configuration de Storybook.
+- Ajout de scripts pour faciliter le développement et le déploiement.
 - Mise à jour du schéma des préférences de la collectivité.
-- Ajout de la gestion des thématiques SGPE dans le référentiel TE.
-- Suppression de l'edge function `import_statut_emt`.
 - Ajout d'un script d'import des statuts EMT.
-- Amélioration de la gestion des erreurs et des logs.
-- Optimisation de la configuration CI/CD.
+- Suppression de configurations npm obsolètes.
+- Nettoyage du code et amélioration de la lisibilité.
