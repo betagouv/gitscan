@@ -490,6 +490,8 @@
 │   │   │   ├── identite_entreprise_for_usager_component
 │   │   │   │   ├── identite_entreprise_for_usager_component.en.yml
 │   │   │   │   └── identite_entreprise_for_usager_component.fr.yml
+│   │   │   ├── identite_entreprise_for_usager_component.en.yml
+│   │   │   ├── identite_entreprise_for_usager_component.fr.yml
 │   │   │   ├── identite_entreprise_for_usager_component.rb
 │   │   │   ├── individual_form_component
 │   │   │   │   ├── individual_form_component.en.yml
@@ -530,8 +532,14 @@
 │   │   │   │   └── pending_transfers_banner_component.html.erb
 │   │   │   ├── pending_transfers_banner_component.rb
 │   │   │   ├── referentiel_component.rb
+│   │   │   ├── region_component.en.yml
+│   │   │   ├── region_component.fr.yml
 │   │   │   ├── region_component.rb
+│   │   │   ├── rna_component.en.yml
+│   │   │   ├── rna_component.fr.yml
 │   │   │   ├── rna_component.rb
+│   │   │   ├── rnf_component.en.yml
+│   │   │   ├── rnf_component.fr.yml
 │   │   │   ├── rnf_component.rb
 │   │   │   ├── row_component.html.erb
 │   │   │   ├── row_component.rb
@@ -1144,7 +1152,9 @@
 │   │   │   │   └── chorus_form_component.html.haml
 │   │   │   ├── chorus_form_component.rb
 │   │   │   ├── email_template_card_component
-│   │   │   │   └── email_template_card_component.html.haml
+│   │   │   │   ├── email_template_card_component.en.yml
+│   │   │   │   ├── email_template_card_component.fr.yml
+│   │   │   │   └── email_template_card_component.html.erb
 │   │   │   ├── email_template_card_component.rb
 │   │   │   ├── errors_summary
 │   │   │   │   └── errors_summary.html.haml
@@ -1268,6 +1278,7 @@
 │   │   │   │   └── referentiel_display_component.html.erb
 │   │   │   ├── referentiel_display_component.rb
 │   │   │   ├── referentiel_prefill_component
+│   │   │   │   ├── referentiel_prefill_component.en.yml
 │   │   │   │   ├── referentiel_prefill_component.fr.yml
 │   │   │   │   └── referentiel_prefill_component.html.erb
 │   │   │   ├── referentiel_prefill_component.rb
@@ -1301,6 +1312,9 @@
 │   │   │   ├── tags_button_list_component.fr.yml
 │   │   │   └── tags_button_list_component.html.erb
 │   │   ├── tags_button_list_component.rb
+│   │   ├── tags_legend_modal_component
+│   │   │   └── tags_legend_modal_component.html.erb
+│   │   ├── tags_legend_modal_component.rb
 │   │   ├── tiptap_editor_component.html.erb
 │   │   ├── tiptap_editor_component.rb
 │   │   ├── types_de_champ_editor
@@ -1847,6 +1861,8 @@
 │   │   │   │   │   ├── SearchField.css
 │   │   │   │   │   ├── SearchField.tsx
 │   │   │   │   │   ├── Select.css
+│   │   │   │   │   ├── Slider.css
+│   │   │   │   │   ├── Slider.tsx
 │   │   │   │   │   ├── TagGroup.tsx
 │   │   │   │   │   └── theme.css
 │   │   │   │   ├── hooks.ts
@@ -1870,6 +1886,7 @@
 │   │   ├── controllers
 │   │   │   ├── api_token_autorisation_controller.ts
 │   │   │   ├── api_token_securite_controller.ts
+│   │   │   ├── application_controller.test.ts
 │   │   │   ├── application_controller.ts
 │   │   │   ├── attestation_controller.ts
 │   │   │   ├── auto_open_modal_controller.ts
@@ -1983,6 +2000,7 @@
 │   │   │   │   ├── actions.ts
 │   │   │   │   ├── editor.ts
 │   │   │   │   ├── nodes.ts
+│   │   │   │   ├── tags.test.ts
 │   │   │   │   └── tags.ts
 │   │   │   ├── toggle-target.js
 │   │   │   ├── track
@@ -2502,7 +2520,7 @@
 │   │   │   ├── phone_type_de_champ.rb
 │   │   │   ├── piece_justificative_type_de_champ.rb
 │   │   │   ├── pre_rempli_type_de_champ.rb
-│   │   │   ├── prefill_*.rb  (19 files)
+│   │   │   ├── prefill_*.rb  (17 files)
 │   │   │   ├── quotient_familial_type_de_champ.rb
 │   │   │   ├── referentiel_type_de_champ.rb
 │   │   │   ├── region_type_de_champ.rb
@@ -2928,7 +2946,7 @@
 │       │   │   └── order_positions.html.erb
 │       │   ├── mail_templates
 │       │   │   ├── edit.html.erb
-│       │   │   ├── index.html.haml
+│       │   │   ├── index.html.erb
 │       │   │   └── preview.turbo_stream.erb
 │       │   ├── procedure_administrateurs
 │       │   │   ├── _add_admin_form.html.haml
@@ -3106,7 +3124,7 @@
 │       ├── faq
 │       │   ├── _breadcrumb.html.haml
 │       │   ├── _sidebar.html.haml
-│       │   ├── index.html.haml
+│       │   ├── index.html.erb
 │       │   └── show.html.haml
 │       ├── fields
 │       │   ├── api_entreprise_token_field
@@ -4763,18 +4781,20 @@
 │   │   └── 20260713000000_rename_soft_delete_at_to_soft_deleted_at_on_active_storage_blobs.rb
 │   ├── schema.rb
 │   ├── seeds
+│   │   ├── avis.rb
 │   │   ├── cases
-│   │   │   ├── avis.rb
 │   │   │   ├── champs.rb
-│   │   │   ├── entreprise.rb
-│   │   │   ├── messagerie.rb
 │   │   │   └── sva.rb
 │   │   ├── development
 │   │   │   └── users.rb
 │   │   ├── dossiers.rb
+│   │   ├── entreprise.rb
+│   │   ├── messagerie.rb
 │   │   ├── procedures.rb
+│   │   ├── services.rb
 │   │   ├── setup.rb
-│   │   └── users.rb
+│   │   ├── users.rb
+│   │   └── zones.rb
 │   └── seeds.rb
 ├── doc
 │   ├── Contributions
@@ -5536,7 +5556,9 @@
 │   │   ├── demarche_spec.rb
 │   │   ├── dossier_spec.rb
 │   │   └── types
-│   │       └── geo_area_type_spec.rb
+│   │       ├── file_spec.rb
+│   │       ├── geo_area_type_spec.rb
+│   │       └── url_spec.rb
 │   ├── helpers
 │   │   ├── administrateurs
 │   │   │   └── procedures_helper_spec.rb
@@ -5950,15 +5972,13 @@
 │   │   │   ├── prefill_civilite_type_de_champ_spec.rb
 │   │   │   ├── prefill_commune_type_de_champ_spec.rb
 │   │   │   ├── prefill_date_type_de_champ_spec.rb
-│   │   │   ├── prefill_departement_type_de_champ_spec.rb
 │   │   │   ├── prefill_dossier_link_type_de_champ_spec.rb
 │   │   │   ├── prefill_drop_down_list_type_de_champ_spec.rb
 │   │   │   ├── prefill_epci_type_de_champ_spec.rb
 │   │   │   ├── prefill_formatted_type_de_champ_spec.rb
+│   │   │   ├── prefill_geo_type_de_champ_spec.rb
 │   │   │   ├── prefill_multiple_drop_down_list_type_de_champ_spec.rb
 │   │   │   ├── prefill_number_type_de_champ_spec.rb
-│   │   │   ├── prefill_pays_type_de_champ_spec.rb
-│   │   │   ├── prefill_region_type_de_champ_spec.rb
 │   │   │   ├── prefill_repetition_type_de_champ_spec.rb
 │   │   │   ├── prefill_type_de_champ_spec.rb
 │   │   │   ├── region_type_de_champ_spec.rb
@@ -6001,6 +6021,7 @@
 │   │   ├── bill_signature_service_spec.rb
 │   │   ├── blob_service_spec.rb
 │   │   ├── clamav_service_spec.rb
+│   │   ├── clone_pieces_justificatives_service_spec.rb
 │   │   ├── commentaire_service_spec.rb
 │   │   ├── create_avis_service_spec.rb
 │   │   ├── crisp
@@ -6061,6 +6082,7 @@
 │   ├── spec_helper.rb
 │   ├── support
 │   │   ├── active_job.rb
+│   │   ├── axe_playwright.rb
 │   │   ├── caching.rb
 │   │   ├── capybara.rb
 │   │   ├── controller_helpers.rb
@@ -6108,6 +6130,7 @@
 │   │   │   ├── simpliscore_spec.rb
 │   │   │   ├── sticky_procedure_title_spec.rb
 │   │   │   └── types_de_champ_spec.rb
+│   │   ├── axe_playwright_matcher_spec.rb
 │   │   ├── breadcrumbs_spec.rb
 │   │   ├── errors_spec.rb
 │   │   ├── experts
@@ -6394,4 +6417,4 @@
 │           └── leaflet.scss
 ├── vite.config.ts
 └── vitest.config.ts
-1029 directories, 5714 files
+1030 directories, 5734 files

@@ -1,100 +1,40 @@
-## Changelog : demarche.numerique.gouv.fr (30 derniers jours, au 20 juillet 2026)
+## Changelog : demarche.numerique.gouv.fr (30 derniers jours, au 2026-07-23)
 
 ### Résumé
-Cette période a été marquée par des améliorations de la performance, de la sécurité et de l'expérience utilisateur. Des corrections ont été apportées pour optimiser les requêtes en base de données, renforcer la sécurité des jetons API et améliorer l'accessibilité. Des fonctionnalités ont été ajoutées pour faciliter l'édition de dossiers par les instructeurs et la gestion des pièces justificatives. Une migration vers Rails 8 a été initiée.
+Les dernières semaines ont été marquées par des améliorations de la performance, de la sécurité et de l'expérience utilisateur. Des corrections de bugs ont été apportées, notamment concernant l'affichage des informations et la gestion des pièces jointes. Des refactorings importants ont été réalisés pour préparer la plateforme à de futures évolutions, notamment en vue de l'intégration de nouvelles fonctionnalités et de l'amélioration de la gestion des données. L'accessibilité a également été améliorée.
 
 ### Évolutions fonctionnelles
-
-*   **Gestion des pièces justificatives :** Amélioration de la gestion des pièces justificatives avec l'ajout de l'extraction OCR pour les avis d'imposition et la prise en charge de différents types de documents.
-*   **Edition des dossiers par les instructeurs :** Possibilité pour les instructeurs de modifier les dossiers, avec notification à l'usager.
-*   **Notifications :** Ajout de badges pour les dossiers partagés et en attente d'expiration, améliorant la visibilité des tâches importantes.
-*   **Interface utilisateur :** Refonte de l'interface de recherche et de filtrage des dossiers, avec une nouvelle présentation sur mobile.
-*   **API Particulier :** Ajout d'une validation pour la présence d'un jeton API Particulier.
-*   **Amélioration de l'expérience administrateur :** Ajout d'un indicateur pour les comptes d'équipe manager.
-*   **Export :** Optimisation de l'export des données pour réduire la consommation de mémoire.
-*   **Amélioration de l'accessibilité :** Amélioration de l'accessibilité des champs et des composants d'interface.
+*   **Gestion des pièces jointes :** Amélioration de la gestion des pièces jointes, notamment pour l'avis d'imposition avec extraction OCR.
+*   **Interface utilisateur :**
+    *   Amélioration de l'interface pour la gestion des dossiers, notamment avec l'ajout d'un panneau de filtre et d'une recherche.
+    *   Refonte de l'affichage des informations sur les procédures.
+    *   Amélioration de l'affichage des informations relatives à l'expiration des dossiers.
+    *   Amélioration de l'affichage des informations sur les transferts de dossiers.
+*   **Notifications :** Ajout d'une notification pour les dossiers soumis via ProConnect.
+*   **Sécurité :** Renforcement de la sécurité avec l'ajout d'une validation de la présence d'un token API.
+*   **API :** Ajout de la possibilité de cloner une démarche via l'API.
+*   **Gestion des utilisateurs :** Possibilité pour un administrateur de réinitialiser le mot de passe d'un autre super-administrateur.
+*   **Amélioration de l'accessibilité :** Amélioration de l'accessibilité pour les champs et les formulaires.
 
 ### Évolutions techniques
-
-*   **Rails 8 :** Début de la migration vers Rails 8, avec mise à jour des dépendances et configuration de l'environnement.
-*   **Performance :** Optimisation des requêtes en base de données pour réduire les temps de chargement et améliorer la réactivité de l'application. Correction de N+1 queries dans plusieurs composants.
-*   **Sécurité :** Renforcement de la sécurité des jetons API et correction de vulnérabilités potentielles.
-*   **Tests :** Ajout et amélioration des tests unitaires et d'intégration pour garantir la qualité du code.
-*   **Refactoring :** Refactorisation du code pour améliorer la lisibilité, la maintenabilité et la performance.
-*   **Architecture :** Utilisation de DataLoaders pour optimiser les requêtes GraphQL.
-*   **Infrastructure :** Amélioration de la gestion des fichiers avec l'ajout d'un mécanisme de purge des fichiers orphelins.
-*   **Documentation :** Mise à jour de la documentation pour refléter les changements apportés à l'application.
+*   **Refactoring :**
+    *   Migration de nombreux composants HAML vers ERB pour une meilleure maintenabilité.
+    *   Refactorisation du code pour améliorer la performance et la lisibilité.
+    *   Refactorisation de la gestion des champs et des types de champs.
+*   **Performance :** Optimisation des requêtes SQL pour améliorer la performance de l'application.
+*   **Tests :** Ajout de tests unitaires et d'intégration pour garantir la qualité du code.
 *   **Déploiement :** Amélioration du processus de déploiement.
+*   **Dépendances :** Mise à jour des dépendances pour bénéficier des dernières corrections de bugs et améliorations de sécurité.
+*   **Infrastructure :** Amélioration de l'infrastructure pour garantir la disponibilité et la scalabilité de l'application.
+*   **Oaken Seeds:** Utilisation de Oaken seeds pour les données de test, améliorant la cohérence et la reproductibilité des tests.
+*   **GraphQL:** Utilisation de dataloader pour optimiser les requêtes GraphQL.
+*   **S3:** Ajout d'un feature flag pour l'utilisation de S3.
 
 ### Autres changements
-
-*   Mise à jour des dépendances (nokogiri, faraday, concurrent-ruby).
-*   Correction de typos et amélioration de la qualité du code.
-*   Suppression de code obsolète.
-*   Amélioration des messages d'erreur et des notifications.
-*   Ajout de commentaires et de documentation pour faciliter la compréhension du code.
-*   Amélioration de la configuration de l'application.
-*   Correction de bugs mineurs.
-*   Ajout de tests pour couvrir les nouvelles fonctionnalités et les corrections de bugs.
-*   Mise à jour des traductions.
-*   Amélioration de la gestion des erreurs.
-*   Ajout de logs pour faciliter le débogage.
-*   Amélioration de la sécurité de l'application.
-*   Amélioration de la performance de l'application.
-*   Amélioration de l'accessibilité de l'application.
-*   Amélioration de la documentation de l'application.
-*   Amélioration du processus de déploiement.
-*   Ajout de nouvelles fonctionnalités.
-*   Correction de bugs.
-*   Amélioration de la qualité du code.
-*   Mise à jour des dépendances.
-*   Amélioration de la configuration de l'application.
-*   Ajout de tests.
-*   Amélioration de la gestion des erreurs.
-*   Amélioration de la sécurité.
-*   Amélioration de la performance.
-*   Amélioration de l'accessibilité.
-*   Amélioration de la documentation.
-*   Amélioration du processus de déploiement.
-*   Ajout de nouvelles fonctionnalités.
-*   Correction de bugs.
-*   Amélioration de la qualité du code.
-*   Mise à jour des dépendances.
-*   Amélioration de la configuration de l'application.
-*   Ajout de tests.
-*   Amélioration de la gestion des erreurs.
-*   Amélioration de la sécurité.
-*   Amélioration de la performance.
-*   Amélioration de l'accessibilité.
-*   Amélioration de la documentation.
-*   Amélioration du processus de déploiement.
-*   Ajout de nouvelles fonctionnalités.
-*   Correction de bugs.
-*   Amélioration de la qualité du code.
-*   Mise à jour des dépendances.
-*   Amélioration de la configuration de l'application.
-*   Ajout de tests.
-*   Amélioration de la gestion des erreurs.
-*   Amélioration de la sécurité.
-*   Amélioration de la performance.
-*   Amélioration de l'accessibilité.
-*   Amélioration de la documentation.
-*   Amélioration du processus de déploiement.
-*   Ajout de nouvelles fonctionnalités.
-*   Correction de bugs.
-*   Amélioration de la qualité du code.
-*   Mise à jour des dépendances.
-*   Amélioration de la configuration de l'application.
-*   Ajout de tests.
-*   Amélioration de la gestion des erreurs.
-*   Amélioration de la sécurité.
-*   Amélioration de la performance.
-*   Amélioration de l'accessibilité.
-*   Amélioration de la documentation.
-*   Amélioration du processus de déploiement.
-*   Ajout de nouvelles fonctionnalités.
-*   Correction de bugs.
-*   Amélioration de la qualité du code.
-*   Mise à jour des dépendances.
-*   Amélioration de la configuration de l'application.
-*   Ajout de tests.
+*   **Documentation :** Mise à jour de la documentation pour refléter les dernières modifications.
+*   **i18n :** Ajout de traductions pour les nouvelles fonctionnalités.
+*   **Nettoyage du code :** Suppression du code obsolète et amélioration de la qualité du code.
+*   **Skylight:** Instrumentation de la liste des dossiers pour le suivi des performances avec Skylight.
+*   **Suppression de fonctionnalités obsolètes:** Suppression de fonctionnalités et de code inutilisés.
+*   **Amélioration des logs:** Ajout de logs plus informatifs pour faciliter le débogage.
+*   **Correction de bugs mineurs:** Correction de divers bugs mineurs.
