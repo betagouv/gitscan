@@ -160,6 +160,10 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── api
 │   │   │   │   ├── __init__.py
+│   │   │   │   ├── _shared
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── request_id_middleware.py
+│   │   │   │   │   └── response_headers.py
 │   │   │   │   ├── evaluation_router.py
 │   │   │   │   ├── feature_flag_router.py
 │   │   │   │   ├── feedback_router.py
@@ -182,6 +186,7 @@
 │   │   │   │   └── detailed_synthesis_template.docx
 │   │   │   ├── db
 │   │   │   │   ├── __init__.py
+│   │   │   │   ├── apply_dto.py
 │   │   │   │   ├── db.py
 │   │   │   │   ├── db_errors.py
 │   │   │   │   ├── deliverable_repository.py
@@ -243,6 +248,7 @@
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── audio.py
 │   │   │   │   ├── authorize_meeting_access.py
+│   │   │   │   ├── deliverable_filename.py
 │   │   │   │   ├── deliverable_transitions.py
 │   │   │   │   ├── email
 │   │   │   │   │   ├── __init__.py
@@ -254,9 +260,13 @@
 │   │   │   │   │       └── transcription_generation_success.html
 │   │   │   │   ├── evaluation_zip.py
 │   │   │   │   ├── feedback.py
+│   │   │   │   ├── markdown_to_docx.py
 │   │   │   │   ├── meeting_state_machine.py
 │   │   │   │   ├── meeting_transitions.py
+│   │   │   │   ├── mime_types.py
 │   │   │   │   ├── report_rendering.py
+│   │   │   │   ├── report_templates
+│   │   │   │   │   └── detailed_synthesis.md.jinja
 │   │   │   │   ├── transcription
 │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   ├── chunking.py
@@ -276,6 +286,7 @@
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── celery.py
 │   │   │   │   ├── celery_consumer.py
+│   │   │   │   ├── compute_devices.py
 │   │   │   │   ├── comu.py
 │   │   │   │   ├── diarization.py
 │   │   │   │   ├── drive.py
@@ -295,8 +306,10 @@
 │   │   │   │   │   │   ├── participants.py
 │   │   │   │   │   │   └── spelling.py
 │   │   │   │   │   └── spelling.py
+│   │   │   │   ├── logger.py
 │   │   │   │   ├── meeting_api_client.py
 │   │   │   │   ├── redis.py
+│   │   │   │   ├── retry.py
 │   │   │   │   ├── s3.py
 │   │   │   │   ├── sentry.py
 │   │   │   │   ├── speech_to_text_models.py
@@ -322,81 +335,59 @@
 │   │   │   │   ├── report_generation.py
 │   │   │   │   ├── transcription_schema.py
 │   │   │   │   └── user_schema.py
-│   │   │   ├── services
-│   │   │   │   ├── __init__.py
-│   │   │   │   ├── docx_generation
-│   │   │   │   │   ├── __init__.py
-│   │   │   │   │   └── templated_docx_generator.py
-│   │   │   │   ├── docx_report_generation_service.py
-│   │   │   │   └── report_content
-│   │   │   │       ├── __init__.py
-│   │   │   │       ├── markdown_to_docx.py
-│   │   │   │       ├── template_renderer.py
-│   │   │   │       └── templates
-│   │   │   │           └── detailed_synthesis.md.jinja
-│   │   │   ├── use_cases
-│   │   │   │   ├── __init__.py
-│   │   │   │   ├── _shared
-│   │   │   │   │   ├── __init__.py
-│   │   │   │   │   ├── drive_upload.py
-│   │   │   │   │   └── transcription_deliverable.py
-│   │   │   │   ├── abort_multipart_upload.py
-│   │   │   │   ├── complete_capture.py
-│   │   │   │   ├── complete_multipart_upload.py
-│   │   │   │   ├── complete_transcription.py
-│   │   │   │   ├── create_feedback.py
-│   │   │   │   ├── create_meeting.py
-│   │   │   │   ├── delete_meeting.py
-│   │   │   │   ├── ensure_offline_token.py
-│   │   │   │   ├── evaluate_transcription_from_s3.py
-│   │   │   │   ├── evaluate_transcription_from_zip.py
-│   │   │   │   ├── fail_capture_bot.py
-│   │   │   │   ├── fail_transcription.py
-│   │   │   │   ├── generate_presigned_audio_upload_url.py
-│   │   │   │   ├── get_deliverable_file.py
-│   │   │   │   ├── get_feature_flag_status.py
-│   │   │   │   ├── get_meeting.py
-│   │   │   │   ├── get_meeting_audio.py
-│   │   │   │   ├── get_or_create_transcription_docx.py
-│   │   │   │   ├── get_or_create_user_by_keycloak.py
-│   │   │   │   ├── init_capture.py
-│   │   │   │   ├── init_multipart_upload.py
-│   │   │   │   ├── init_transcription.py
-│   │   │   │   ├── list_deliverables_for_meeting.py
-│   │   │   │   ├── list_meetings.py
-│   │   │   │   ├── lookup_comu_meeting.py
-│   │   │   │   ├── mark_deliverable_failure.py
-│   │   │   │   ├── mark_deliverable_success.py
-│   │   │   │   ├── request_deliverable.py
-│   │   │   │   ├── run_evaluation_from_zip.py
-│   │   │   │   ├── sign_multipart_part.py
-│   │   │   │   ├── soft_delete_deliverable.py
-│   │   │   │   ├── start_capture_bot.py
-│   │   │   │   ├── start_transcription.py
-│   │   │   │   ├── transcription
-│   │   │   │   │   ├── __init__.py
-│   │   │   │   │   ├── _shared
-│   │   │   │   │   │   ├── extract_participants.py
-│   │   │   │   │   │   ├── post_process_segments.py
-│   │   │   │   │   │   ├── preprocess_audio.py
-│   │   │   │   │   │   └── transcribe_diarized_audio.py
-│   │   │   │   │   ├── run_diarization.py
-│   │   │   │   │   ├── run_finalize_transcription.py
-│   │   │   │   │   ├── run_mark_transcription_failed.py
-│   │   │   │   │   ├── run_speech_to_text.py
-│   │   │   │   │   └── run_transcribe_chunks.py
-│   │   │   │   └── update_meeting.py
-│   │   │   └── utils
+│   │   │   └── use_cases
 │   │   │       ├── __init__.py
-│   │   │       ├── compute_devices.py
-│   │   │       ├── db_utils.py
-│   │   │       ├── deliverable_filename.py
-│   │   │       ├── file_validation.py
-│   │   │       ├── filename_header.py
-│   │   │       ├── langfuse_observability.py
-│   │   │       ├── retry.py
-│   │   │       ├── s3_client.py
-│   │   │       └── sentry_context.py
+│   │   │       ├── _shared
+│   │   │       │   ├── __init__.py
+│   │   │       │   ├── drive_upload.py
+│   │   │       │   └── transcription_deliverable.py
+│   │   │       ├── abort_multipart_upload.py
+│   │   │       ├── complete_capture.py
+│   │   │       ├── complete_multipart_upload.py
+│   │   │       ├── complete_transcription.py
+│   │   │       ├── create_feedback.py
+│   │   │       ├── create_meeting.py
+│   │   │       ├── delete_meeting.py
+│   │   │       ├── ensure_offline_token.py
+│   │   │       ├── evaluate_transcription_from_s3.py
+│   │   │       ├── evaluate_transcription_from_zip.py
+│   │   │       ├── fail_capture_bot.py
+│   │   │       ├── fail_transcription.py
+│   │   │       ├── generate_presigned_audio_upload_url.py
+│   │   │       ├── get_deliverable_file.py
+│   │   │       ├── get_feature_flag_status.py
+│   │   │       ├── get_meeting.py
+│   │   │       ├── get_meeting_audio.py
+│   │   │       ├── get_or_create_transcription_docx.py
+│   │   │       ├── get_or_create_user_by_keycloak.py
+│   │   │       ├── init_capture.py
+│   │   │       ├── init_multipart_upload.py
+│   │   │       ├── init_transcription.py
+│   │   │       ├── list_deliverables_for_meeting.py
+│   │   │       ├── list_meetings.py
+│   │   │       ├── lookup_comu_meeting.py
+│   │   │       ├── mark_deliverable_failure.py
+│   │   │       ├── mark_deliverable_in_progress.py
+│   │   │       ├── mark_deliverable_success.py
+│   │   │       ├── request_deliverable.py
+│   │   │       ├── run_evaluation_from_zip.py
+│   │   │       ├── sign_multipart_part.py
+│   │   │       ├── soft_delete_deliverable.py
+│   │   │       ├── start_capture_bot.py
+│   │   │       ├── start_transcription.py
+│   │   │       ├── transcription
+│   │   │       │   ├── __init__.py
+│   │   │       │   ├── _shared
+│   │   │       │   │   ├── extract_participants.py
+│   │   │       │   │   ├── post_process_segments.py
+│   │   │       │   │   ├── preprocess_audio.py
+│   │   │       │   │   └── transcribe_diarized_audio.py
+│   │   │       │   ├── run_diarization.py
+│   │   │       │   ├── run_finalize_transcription.py
+│   │   │       │   ├── run_mark_transcription_failed.py
+│   │   │       │   ├── run_speech_to_text.py
+│   │   │       │   └── run_transcribe_chunks.py
+│   │   │       └── update_meeting.py
 │   │   ├── evaluation
 │   │   │   ├── __init__.py
 │   │   │   ├── acronyms
@@ -458,9 +449,6 @@
 │   │   │       ├── math_utils.py
 │   │   │       └── text_normalization.py
 │   │   ├── main.py
-│   │   ├── setup
-│   │   │   ├── logger.py
-│   │   │   └── request_id_middleware.py
 │   │   └── transcription_worker.py
 │   ├── mcr_meeting.egg-info
 │   │   ├── PKG-INFO
@@ -509,7 +497,9 @@
 │   │   ├── conftest.py
 │   │   ├── domain
 │   │   │   ├── __init__.py
+│   │   │   ├── test_custom_report_generation.py
 │   │   │   ├── test_deliverable_transitions.py
+│   │   │   ├── test_detailed_synthesis_generation.py
 │   │   │   ├── test_evaluation_zip.py
 │   │   │   ├── test_feedback.py
 │   │   │   ├── test_meeting_transitions.py
@@ -550,20 +540,18 @@
 │   │   │   └── test_meeting_schema.py
 │   │   ├── services
 │   │   │   ├── conftest.py
-│   │   │   ├── speech_to_text_pipeline
-│   │   │   │   ├── conftest.py
-│   │   │   │   ├── seams.py
-│   │   │   │   ├── test_diarization_async.py
-│   │   │   │   ├── test_golden_speech_to_text.py
-│   │   │   │   ├── test_golden_transcribe_meeting.py
-│   │   │   │   ├── test_integration_center_process.py
-│   │   │   │   ├── test_integration_post_process.py
-│   │   │   │   ├── test_integration_pre_process.py
-│   │   │   │   ├── test_parallel_chunk_transcription.py
-│   │   │   │   ├── test_phase_aware_downmix.py
-│   │   │   │   └── test_silent_audio_detection.py
-│   │   │   ├── test_custom_report_generation.py
-│   │   │   └── test_detailed_synthesis_generation.py
+│   │   │   └── speech_to_text_pipeline
+│   │   │       ├── conftest.py
+│   │   │       ├── seams.py
+│   │   │       ├── test_diarization_async.py
+│   │   │       ├── test_golden_speech_to_text.py
+│   │   │       ├── test_golden_transcribe_meeting.py
+│   │   │       ├── test_integration_center_process.py
+│   │   │       ├── test_integration_post_process.py
+│   │   │       ├── test_integration_pre_process.py
+│   │   │       ├── test_parallel_chunk_transcription.py
+│   │   │       ├── test_phase_aware_downmix.py
+│   │   │       └── test_silent_audio_detection.py
 │   │   ├── test_transcription_worker.py
 │   │   ├── unit
 │   │   │   ├── __init__.py
@@ -605,6 +593,7 @@
 │   │       ├── test_list_deliverables_for_meeting.py
 │   │       ├── test_list_meetings.py
 │   │       ├── test_mark_deliverable_failure.py
+│   │       ├── test_mark_deliverable_in_progress.py
 │   │       ├── test_mark_deliverable_success.py
 │   │       ├── test_request_deliverable.py
 │   │       ├── test_run_diarization.py
@@ -677,10 +666,17 @@
 │   │   │   │   ├── SkeletonLoader.vue
 │   │   │   │   └── TipTapEditor.vue
 │   │   │   ├── feedback
+│   │   │   │   ├── FeedbackButton.spec.ts
 │   │   │   │   ├── FeedbackButton.vue
 │   │   │   │   ├── FeedbackModal.spec.ts
 │   │   │   │   ├── FeedbackModal.vue
 │   │   │   │   └── feedback.schema.ts
+│   │   │   ├── import
+│   │   │   │   ├── ImportProgressRing.vue
+│   │   │   │   ├── ImportStatusIndicator.vue
+│   │   │   │   ├── ImportSticky.spec.ts
+│   │   │   │   ├── ImportSticky.vue
+│   │   │   │   └── ImportStickyRow.vue
 │   │   │   ├── meeting
 │   │   │   │   ├── ActionTile.vue
 │   │   │   │   ├── AddMeetingForm.spec.ts
@@ -768,6 +764,8 @@
 │   │   │   ├── use-feature-flag.ts
 │   │   │   ├── use-import-meeting.spec.ts
 │   │   │   ├── use-import-meeting.ts
+│   │   │   ├── use-import-sticky-close.spec.ts
+│   │   │   ├── use-import-sticky-close.ts
 │   │   │   ├── use-leave-guard.ts
 │   │   │   ├── use-meeting-peremption.spec.ts
 │   │   │   ├── use-meeting-peremption.ts
@@ -788,6 +786,11 @@
 │   │   │   ├── use-unleash.ts
 │   │   │   ├── use-unload-warning.spec.ts
 │   │   │   ├── use-unload-warning.ts
+│   │   │   ├── use-upload-batch
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── selectors.ts
+│   │   │   │   ├── store.spec.ts
+│   │   │   │   └── store.ts
 │   │   │   ├── use-upload-status.spec.ts
 │   │   │   └── use-upload-status.ts
 │   │   ├── config
@@ -806,9 +809,7 @@
 │   │   │   └── vue-query.ts
 │   │   ├── router
 │   │   │   ├── index.ts
-│   │   │   ├── routes.ts
-│   │   │   ├── upload-leave-guard.spec.ts
-│   │   │   └── upload-leave-guard.ts
+│   │   │   └── routes.ts
 │   │   ├── services
 │   │   │   ├── auth
 │   │   │   │   ├── auth.service.ts
@@ -1080,6 +1081,7 @@
 │   │   │       ├── celery_worker.py
 │   │   │       ├── function_execution_timer.py
 │   │   │       ├── langfuse_observability.py
+│   │   │       ├── retry.py
 │   │   │       ├── s3_client.py
 │   │   │       └── sentry_context.py
 │   │   ├── docs
@@ -1175,4 +1177,4 @@
 └── scripts
     ├── check_changed.py
     └── guard_git_commit.py
-215 directories, 962 files
+213 directories, 966 files
