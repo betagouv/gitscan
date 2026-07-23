@@ -177,6 +177,7 @@
 │   ├── run-transcrypt.sh
 │   ├── scalingo_api.py
 │   ├── score_history
+│   │   ├── README.md
 │   │   ├── create_table_score_history.sql
 │   │   └── score_history.py
 │   ├── sort_generic_examples.py
@@ -213,9 +214,6 @@
 │   │   ├── impacts.py
 │   │   ├── import_.py
 │   │   ├── infer_metadata.py
-│   │   ├── score_history
-│   │   │   ├── create_table_score_history.sql
-│   │   │   └── score_history.py
 │   │   └── sync_datapackages.py
 │   ├── compose.yaml
 │   ├── config.py
@@ -228,6 +226,7 @@
 │   │   ├── bw
 │   │   │   ├── agribalyse.py
 │   │   │   ├── analyzer.py
+│   │   │   ├── ecospold_export.py
 │   │   │   ├── migration.py
 │   │   │   ├── search.py
 │   │   │   ├── simapro_export.py
@@ -1244,7 +1243,8 @@
 │   │       └── ei-laine-par-defaut.json
 │   ├── migrations
 │   │   ├── 2026-06-03-add-food-type-cereals-legumes.py
-│   │   └── 2026-06-22-use-kwh-instead-of-mj.py
+│   │   ├── 2026-06-22-use-kwh-instead-of-mj.py
+│   │   └── 2026-07-15-infer-raw-to-cooked-ratio.py
 │   ├── models
 │   │   └── process.py
 │   ├── schemas
@@ -1295,6 +1295,7 @@
 │   │   ├── test_dynaconf.py
 │   │   ├── test_ecosystemic_services.py
 │   │   ├── test_export.py
+│   │   ├── test_infer_metadata.py
 │   │   ├── test_json_consistency.py
 │   │   ├── test_json_format_encoder.py
 │   │   ├── test_process_relationships.py
@@ -1674,4 +1675,4 @@
 │   ├── rate-limiting.spec.js
 │   └── server.spec.js
 └── uv.lock
-135 directories, 1901 files
+134 directories, 1903 files
