@@ -102,6 +102,7 @@
 │   │       │   ├── reset_dictionary.py
 │   │       │   ├── reset_proxy_pg_database.py
 │   │       │   ├── rtps.py
+│   │       │   ├── sales_notes.py
 │   │       │   ├── sync_geo_table_to_h3_table.py
 │   │       │   ├── sync_table_from_db_connection.py
 │   │       │   ├── sync_table_with_pandas.py
@@ -144,7 +145,9 @@
 │   │       │   │   ├── ports.sql
 │   │       │   │   ├── rectangles_stat_areas.sql
 │   │       │   │   ├── regulations.sql
-│   │       │   │   └── rtps.sql
+│   │       │   │   ├── rtps.sql
+│   │       │   │   ├── sales_notes.sql
+│   │       │   │   └── vessel_profiles.sql
 │   │       │   └── rapportnav_remote
 │   │       │       └── analytics_missions_full_data.sql
 │   │       ├── shared_tasks
@@ -206,6 +209,8 @@
 │   │       │       │   ├── create_regulations_h3.sql
 │   │       │       │   ├── create_regulations_tmp.sql
 │   │       │       │   ├── create_rtps_if_not_exists.sql
+│   │       │       │   ├── create_sales_notes_if_not_exists.sql
+│   │       │       │   ├── create_vessel_profiles_if_not_exists.sql
 │   │       │       │   ├── create_vms_h3_if_not_exists.sql
 │   │       │       │   └── create_vms_if_not_exists.sql
 │   │       │       ├── rapportnav
@@ -253,7 +258,10 @@
 │       │   │       ├── V777.06__dummy_land_areas_subdivided.sql
 │       │   │       ├── V777.07__dummy_regulations.sql
 │       │   │       ├── V777.08__dummy_producer_organization_memberships.sql
-│       │   │       └── V777.09__dummy_facade_areas_subdivided.sql
+│       │   │       ├── V777.09__dummy_facade_areas_subdivided.sql
+│       │   │       ├── V777.10__dummy_species_groups.sql
+│       │   │       ├── V777.11__dummy_species_codes_groups.sql
+│       │   │       └── V777.12__dummy_sales_notes.sql
 │       │   └── rapportnav
 │       │       └── remote_database
 │       │           ├── V777.05__dummy_mission_actions.sql
@@ -278,6 +286,7 @@
 │           │   ├── test_rapportnav.py
 │           │   ├── test_reset_proxy_pg_database.py
 │           │   ├── test_rtps.py
+│           │   ├── test_sales_notes.py
 │           │   ├── test_sync_geo_table_to_h3_table.py
 │           │   ├── test_sync_table_from_db_connection.py
 │           │   ├── test_sync_table_with_pandas.py
@@ -307,4 +316,4 @@
 │       ├── docker-compose-dev-metabase.yml
 │       └── docker-compose-test-data.yml
 └── sonar-project.properties
-69 directories, 240 files
+69 directories, 249 files
