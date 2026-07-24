@@ -1035,6 +1035,7 @@
 │       │   │   │   │   │   ├── __tests__
 │       │   │   │   │   │   │   ├── _testStoreHelpers.ts
 │       │   │   │   │   │   │   ├── expectedPhotovoltaicPerformance.spec.ts
+│       │   │   │   │   │   │   ├── photovoltaicBusinessMath.characterization.spec.ts
 │       │   │   │   │   │   │   ├── photovoltaicCreation.behaviour-net.spec.ts
 │       │   │   │   │   │   │   ├── photovoltaicViewData.selectors.spec.ts
 │       │   │   │   │   │   │   ├── projectData.mock.ts
@@ -1044,9 +1045,7 @@
 │       │   │   │   │   │   │       └── soils-decontamination
 │       │   │   │   │   │   │           └── involvesReinstatement.step.spec.ts
 │       │   │   │   │   │   ├── actions
-│       │   │   │   │   │   │   ├── customProjectSaved.action.ts
-│       │   │   │   │   │   │   ├── getPhotovoltaicExpectedPerformance.action.ts
-│       │   │   │   │   │   │   └── soilsCarbonStorage.actions.ts
+│       │   │   │   │   │   │   └── customProjectSaved.action.ts
 │       │   │   │   │   │   ├── helpers
 │       │   │   │   │   │   │   ├── readState.ts
 │       │   │   │   │   │   │   └── readers
@@ -1055,12 +1054,15 @@
 │       │   │   │   │   │   ├── renewableEnergy.actions.ts
 │       │   │   │   │   │   ├── renewableEnergy.reducer.ts
 │       │   │   │   │   │   ├── renewableEnergyForm.reducer.ts
+│       │   │   │   │   │   ├── renewableEnergyForm.selectors.ts
+│       │   │   │   │   │   ├── renewableEnergyProject.selectors.ts
 │       │   │   │   │   │   ├── renewableEnergySteps.ts
 │       │   │   │   │   │   ├── selectors
 │       │   │   │   │   │   │   ├── renewableEnergy.selector.ts
 │       │   │   │   │   │   │   ├── soilsTransformation.selectors.ts
 │       │   │   │   │   │   │   ├── stakeholders.selectors.ts
-│       │   │   │   │   │   │   └── stepper.selector.ts
+│       │   │   │   │   │   │   ├── stepper.selector.ts
+│       │   │   │   │   │   │   └── stepperNavigation.ts
 │       │   │   │   │   │   └── step-handlers
 │       │   │   │   │   │       ├── expenses
 │       │   │   │   │   │       │   ├── expenses-installation
@@ -1294,7 +1296,6 @@
 │       │   │   │   │   │   │   ├── _testStoreHelpers.ts
 │       │   │   │   │   │   │   ├── previousStepRequested.action.spec.ts
 │       │   │   │   │   │   │   ├── stepCompletionCancelled.reducer.spec.ts
-│       │   │   │   │   │   │   ├── stepCompletionRequested.action.spec.ts
 │       │   │   │   │   │   │   ├── stepNavigationRequested.action.spec.ts
 │       │   │   │   │   │   │   ├── steps
 │       │   │   │   │   │   │   │   ├── buildings
@@ -1344,7 +1345,8 @@
 │       │   │   │   │   │   │   │       ├── usesPublicGreenSpacesSoilsDistribution.step.spec.ts
 │       │   │   │   │   │   │   │       ├── usesPublicGreenSpacesSurfaceArea.step.spec.ts
 │       │   │   │   │   │   │   │       └── usesSelection.step.spec.ts
-│       │   │   │   │   │   │   └── urbanProject.selectors.spec.ts
+│       │   │   │   │   │   │   ├── urbanProject.selectors.spec.ts
+│       │   │   │   │   │   │   └── urbanProjectCreation.behaviour-net.spec.ts
 │       │   │   │   │   │   ├── fetchEstimatedSiteResalePrice.action.ts
 │       │   │   │   │   │   ├── helpers
 │       │   │   │   │   │   │   ├── projectSummary.spec.ts
@@ -1585,12 +1587,12 @@
 │       │   │   │   │   │   ├── urbanProject.actions.ts
 │       │   │   │   │   │   ├── urbanProject.reducer.ts
 │       │   │   │   │   │   ├── urbanProject.selectors.ts
+│       │   │   │   │   │   ├── urbanProject.state.ts
 │       │   │   │   │   │   ├── urbanProject.ts
 │       │   │   │   │   │   ├── urbanProjectCustomSaved.action.ts
 │       │   │   │   │   │   ├── urbanProjectForm.actions.ts
 │       │   │   │   │   │   ├── urbanProjectForm.reducer.ts
 │       │   │   │   │   │   ├── urbanProjectForm.selectors.ts
-│       │   │   │   │   │   ├── urbanProjectForm.state.ts
 │       │   │   │   │   │   └── urbanProjectSteps.ts
 │       │   │   │   │   └── usecase-selection
 │       │   │   │   │       ├── useCaseSelection.actions.ts
@@ -1674,6 +1676,10 @@
 │       │   │   │       │   │       ├── SurfaceForm.tsx
 │       │   │   │       │   │       ├── SurfaceFromPowerForm.tsx
 │       │   │   │       │   │       └── index.tsx
+│       │   │   │       │   ├── renewable-energy-form
+│       │   │   │       │   │   ├── RenewableEnergyFormContext.tsx
+│       │   │   │       │   │   ├── RenewableEnergyFormProvider.tsx
+│       │   │   │       │   │   └── useRenewableEnergyForm.tsx
 │       │   │   │       │   ├── result
 │       │   │   │       │   │   └── index.tsx
 │       │   │   │       │   ├── revenue
@@ -1750,13 +1756,207 @@
 │       │   │   │       │   └── summary
 │       │   │   │       │       ├── ProjectCreationDataSummary.tsx
 │       │   │   │       │       └── index.tsx
+│       │   │   │       ├── project-form
+│       │   │   │       │   ├── AnswerCascadingUpdateDialog.tsx
+│       │   │   │       │   ├── ProjectFormContext.tsx
+│       │   │   │       │   ├── ProjectFormProvider.tsx
+│       │   │   │       │   ├── common
+│       │   │   │       │   │   ├── expenses
+│       │   │   │       │   │   │   ├── installation-expenses
+│       │   │   │       │   │   │   │   └── InstallationExpensesForm.tsx
+│       │   │   │       │   │   │   ├── reinstatement
+│       │   │   │       │   │   │   │   ├── ReinstatementExpensesForm.tsx
+│       │   │   │       │   │   │   │   ├── SustainableSoilsReinstatementInfoButton.tsx
+│       │   │   │       │   │   │   │   ├── mappers.spec.ts
+│       │   │   │       │   │   │   │   └── mappers.ts
+│       │   │   │       │   │   │   ├── site-purchase-amounts
+│       │   │   │       │   │   │   │   └── SitePurchaseAmountsForm.tsx
+│       │   │   │       │   │   │   └── yearly-projected-expenses
+│       │   │   │       │   │   │       ├── YearlyProjectedExpensesForm.tsx
+│       │   │   │       │   │   │       └── index.tsx
+│       │   │   │       │   │   ├── name-and-description
+│       │   │   │       │   │   │   └── ProjectNameAndDescriptionForm.tsx
+│       │   │   │       │   │   ├── revenues
+│       │   │   │       │   │   │   ├── financial-assistance
+│       │   │   │       │   │   │   │   ├── ProjectFinancialAssistanceRevenueForm.tsx
+│       │   │   │       │   │   │   │   └── index.tsx
+│       │   │   │       │   │   │   └── yearly-projected-revenue
+│       │   │   │       │   │   │       └── ProjectYearlyRevenueForm.tsx
+│       │   │   │       │   │   ├── schedule
+│       │   │   │       │   │   │   └── projection
+│       │   │   │       │   │   │       ├── ScheduleField.tsx
+│       │   │   │       │   │   │       ├── ScheduleProjectionForm.spec.tsx
+│       │   │   │       │   │   │       └── ScheduleProjectionForm.tsx
+│       │   │   │       │   │   ├── soils-carbon-storage-comparison
+│       │   │   │       │   │   │   ├── CarbonStorageDifferenceSection.tsx
+│       │   │   │       │   │   │   ├── SoilsCarbonStorageComparison.tsx
+│       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   ├── soils-decontamination
+│       │   │   │       │   │   │   ├── introduction
+│       │   │   │       │   │   │   │   └── SoilsDecontaminationIntroduction.tsx
+│       │   │   │       │   │   │   ├── selection
+│       │   │   │       │   │   │   │   └── SoilsDecontaminationSelection.tsx
+│       │   │   │       │   │   │   └── surface-area
+│       │   │   │       │   │   │       ├── SoilsDecontaminationSurfaceArea.spec.tsx
+│       │   │   │       │   │   │       └── SoilsDecontaminationSurfaceArea.tsx
+│       │   │   │       │   │   ├── stakeholder-form
+│       │   │   │       │   │   │   ├── StakeholderForm.tsx
+│       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   └── stakeholder-introduction
+│       │   │   │       │   │       └── StakeholdersIntroduction.tsx
+│       │   │   │       │   ├── stepper
+│       │   │   │       │   │   ├── StepperItem.tsx
+│       │   │   │       │   │   ├── stepperConfig.ts
+│       │   │   │       │   │   └── useBuildStepperNavigationItems.tsx
+│       │   │   │       │   └── useProjectForm.tsx
 │       │   │   │       ├── projectTypeLabelMapping.ts
 │       │   │   │       ├── urban-project
 │       │   │   │       │   ├── UrbanProjectCreationStepperSteps.tsx
 │       │   │   │       │   ├── UrbanProjectCreationWizard.tsx
+│       │   │   │       │   ├── buildings
+│       │   │   │       │   │   ├── components
+│       │   │   │       │   │   │   ├── BuildingsFloorSurfaceAreaAllocation.spec.tsx
+│       │   │   │       │   │   │   └── BuildingsFloorSurfaceAreaAllocation.tsx
+│       │   │   │       │   │   ├── demolition-info
+│       │   │   │       │   │   │   ├── BuildingsDemolitionInfo.tsx
+│       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   ├── existing-buildings-uses-floor-surface-area
+│       │   │   │       │   │   │   ├── ExistingBuildingsUsesFloorSurfaceArea.spec.tsx
+│       │   │   │       │   │   │   ├── ExistingBuildingsUsesFloorSurfaceArea.tsx
+│       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   ├── footprint-to-reuse
+│       │   │   │       │   │   │   ├── BuildingsFootprintToReuse.spec.tsx
+│       │   │   │       │   │   │   ├── BuildingsFootprintToReuse.tsx
+│       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   ├── introduction
+│       │   │   │       │   │   │   ├── BuildingsIntroduction.tsx
+│       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   ├── new-buildings-uses-floor-surface-area
+│       │   │   │       │   │   │   ├── NewBuildingsUsesFloorSurfaceArea.spec.tsx
+│       │   │   │       │   │   │   ├── NewBuildingsUsesFloorSurfaceArea.tsx
+│       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   ├── new-construction-info
+│       │   │   │       │   │   │   ├── BuildingsNewConstructionInfo.tsx
+│       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   ├── new-construction-introduction
+│       │   │   │       │   │   │   ├── BuildingsNewConstructionIntroduction.tsx
+│       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   ├── reuse-introduction
+│       │   │   │       │   │   │   ├── BuildingsReuseIntroduction.tsx
+│       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   └── uses-floor-surface-area
+│       │   │   │       │   │       ├── UsesFloorSurfaceArea.spec.tsx
+│       │   │   │       │   │       ├── UsesFloorSurfaceArea.tsx
+│       │   │   │       │   │       └── index.tsx
 │       │   │   │       │   ├── creation-result
 │       │   │   │       │   │   └── index.tsx
-│       │   │   │       │   └── creationStepQueryStringMap.ts
+│       │   │   │       │   ├── creationStepQueryStringMap.ts
+│       │   │   │       │   ├── expenses
+│       │   │   │       │   │   ├── buildings-construction-and-rehabilitation
+│       │   │   │       │   │   │   ├── BuildingsConstructionAndRehabilitationExpensesForm.spec.tsx
+│       │   │   │       │   │   │   ├── BuildingsConstructionAndRehabilitationExpensesForm.tsx
+│       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   ├── installation
+│       │   │   │       │   │   │   ├── index.tsx
+│       │   │   │       │   │   │   ├── mappers.spec.ts
+│       │   │   │       │   │   │   └── mappers.ts
+│       │   │   │       │   │   ├── introduction
+│       │   │   │       │   │   │   ├── ProjectExpensesIntroduction.tsx
+│       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   ├── projected-buildings-operating-expenses
+│       │   │   │       │   │   │   ├── BuildingsOperationsExpensesForm.tsx
+│       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   ├── reinstatement
+│       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   └── site-purchase-amounts
+│       │   │   │       │   │       └── index.tsx
+│       │   │   │       │   ├── naming
+│       │   │   │       │   │   └── index.tsx
+│       │   │   │       │   ├── revenues
+│       │   │   │       │   │   ├── buildings-operations-yearly-revenues
+│       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   ├── buildings-resale
+│       │   │   │       │   │   │   ├── BuildingsResaleRevenueForm.tsx
+│       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   ├── expected-site-resale
+│       │   │   │       │   │   │   ├── SiteResaleRevenueForm.tsx
+│       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   ├── financial-assistance
+│       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   └── introduction
+│       │   │   │       │   │       ├── ProjectRevenueIntroduction.tsx
+│       │   │   │       │   │       └── index.tsx
+│       │   │   │       │   ├── schedule
+│       │   │   │       │   │   └── projection
+│       │   │   │       │   │       └── index.tsx
+│       │   │   │       │   ├── site-and-buildings-resale
+│       │   │   │       │   │   ├── buildings-resale
+│       │   │   │       │   │   │   ├── BuildingsResaleForm.tsx
+│       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   ├── introduction
+│       │   │   │       │   │   │   ├── SiteResaleIntroduction.tsx
+│       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   └── selection
+│       │   │   │       │   │       ├── SiteResaleForm.tsx
+│       │   │   │       │   │       └── index.tsx
+│       │   │   │       │   ├── soils
+│       │   │   │       │   │   ├── carbon-summary
+│       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   ├── decontamination-introduction
+│       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   ├── decontamination-selection
+│       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   ├── decontamination-surface-area
+│       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   ├── involves-reinstatement
+│       │   │   │       │   │   │   ├── InvolvesReinstatementForm.tsx
+│       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   └── summary
+│       │   │   │       │   │       ├── UrbanProjectSoilsSummary.tsx
+│       │   │   │       │   │       └── index.tsx
+│       │   │   │       │   ├── spaces
+│       │   │   │       │   │   ├── introduction
+│       │   │   │       │   │   │   ├── SpacesIntroduction.tsx
+│       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   ├── public-green-spaces-introduction
+│       │   │   │       │   │   │   ├── PublicGreenSpacesIntroduction.tsx
+│       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   ├── public-green-spaces-soils-distribution
+│       │   │   │       │   │   │   ├── PublicGreenSpacesSoilsDistribution.tsx
+│       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   ├── selection
+│       │   │   │       │   │   │   ├── SpacesSelectionForm.spec.tsx
+│       │   │   │       │   │   │   ├── SpacesSelectionForm.tsx
+│       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   └── surface-area
+│       │   │   │       │   │       ├── SpacesSurfaceAreaForm.tsx
+│       │   │   │       │   │       └── index.tsx
+│       │   │   │       │   ├── stakeholders
+│       │   │   │       │   │   ├── buildings-developer
+│       │   │   │       │   │   │   ├── StakeholdersBuildingsDeveloper.tsx
+│       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   ├── introduction
+│       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   ├── project-developer
+│       │   │   │       │   │   │   └── index.tsx
+│       │   │   │       │   │   └── reinstatement-contract-owner
+│       │   │   │       │   │       └── index.tsx
+│       │   │   │       │   ├── summary
+│       │   │   │       │   │   ├── UrbanProjectExpensesSection.spec.tsx
+│       │   │   │       │   │   ├── UrbanProjectExpensesSection.tsx
+│       │   │   │       │   │   ├── UrbanProjectFormSummary.tsx
+│       │   │   │       │   │   ├── UrbanProjectRevenuesSection.tsx
+│       │   │   │       │   │   └── index.tsx
+│       │   │   │       │   └── uses
+│       │   │   │       │       ├── introduction
+│       │   │   │       │       │   ├── UsesIntroduction.tsx
+│       │   │   │       │       │   └── index.tsx
+│       │   │   │       │       ├── public-green-spaces-surface-area
+│       │   │   │       │       │   ├── PublicGreenSpacesSurfaceArea.tsx
+│       │   │   │       │       │   └── index.tsx
+│       │   │   │       │       └── selection
+│       │   │   │       │           ├── UsesSelection.tsx
+│       │   │   │       │           └── index.tsx
 │       │   │   │       ├── useSurfaceAreaInputMode.ts
 │       │   │   │       ├── useSyncCreationStepWithRouteQuery.ts
 │       │   │   │       └── usecase-selection
@@ -2429,8 +2629,7 @@
 │       │   │   │       │       ├── ComparisonGrid.tsx
 │       │   │   │       │       ├── ComparisonMonetaryRow.tsx
 │       │   │   │       │       ├── ScenarioHeader.tsx
-│       │   │   │       │       ├── SectionHeader.tsx
-│       │   │   │       │       └── byBearer.helper.ts
+│       │   │   │       │       └── SectionHeader.tsx
 │       │   │   │       ├── project-break-even-level
 │       │   │   │       │   ├── ProjectBreakEvenLevelActionBar.tsx
 │       │   │   │       │   ├── ProjectBreakEvenLevelSection.tsx
@@ -2499,7 +2698,6 @@
 │       │   │   │       │   │   ├── ProjectImpactsView.tsx
 │       │   │   │       │   │   ├── about-impacts-modal
 │       │   │   │       │   │   │   └── AboutImpactsModalButton.tsx
-│       │   │   │       │   │   ├── getImpactColor.ts
 │       │   │   │       │   │   ├── getImpactLabel.ts
 │       │   │   │       │   │   ├── impact-description-modals
 │       │   │   │       │   │   │   ├── ImpactModalDescription.tsx
@@ -2507,12 +2705,28 @@
 │       │   │   │       │   │   │   │   └── CostBenefitAnalysisDescription.tsx
 │       │   │   │       │   │   │   ├── economic-balance
 │       │   │   │       │   │   │   │   ├── EconomicBalanceDescription.tsx
+│       │   │   │       │   │   │   │   ├── EconomicBalanceModalSiteOrProjectFeature.tsx
 │       │   │   │       │   │   │   │   ├── EconomicBalanceModalWizard.tsx
-│       │   │   │       │   │   │   │   ├── breadcrumbSection.ts
-│       │   │   │       │   │   │   │   ├── real-estate-acquisition
-│       │   │   │       │   │   │   │   │   └── RealEstateAcquisition.tsx
-│       │   │   │       │   │   │   │   └── site-reinstatement
-│       │   │   │       │   │   │   │       └── SiteReinstatementDescription.tsx
+│       │   │   │       │   │   │   │   ├── financial_assistance-local_or_regional_authority_participation.mdx
+│       │   │   │       │   │   │   │   ├── financial_assistance-public_subsidies.mdx
+│       │   │   │       │   │   │   │   ├── financial_assistance.mdx
+│       │   │   │       │   │   │   │   ├── photovoltaic_development_plan_installation.mdx
+│       │   │   │       │   │   │   │   ├── photovoltaic_other.mdx
+│       │   │   │       │   │   │   │   ├── photovoltaic_technical_studies.mdx
+│       │   │   │       │   │   │   │   ├── photovoltaic_works.mdx
+│       │   │   │       │   │   │   │   ├── site_purchase.mdx
+│       │   │   │       │   │   │   │   ├── site_reinstatement-deimpermeabilization.mdx
+│       │   │   │       │   │   │   │   ├── site_reinstatement-demolition.mdx
+│       │   │   │       │   │   │   │   ├── site_reinstatement-other_reinstatement.mdx
+│       │   │   │       │   │   │   │   ├── site_reinstatement-remediation.mdx
+│       │   │   │       │   │   │   │   ├── site_reinstatement-sustainable_soils_reinstatement.mdx
+│       │   │   │       │   │   │   │   ├── site_reinstatement-waste_collection.mdx
+│       │   │   │       │   │   │   │   ├── site_reinstatement.mdx
+│       │   │   │       │   │   │   │   ├── site_resale.mdx
+│       │   │   │       │   │   │   │   ├── urban_project_development_plan_installation.mdx
+│       │   │   │       │   │   │   │   ├── urban_project_other.mdx
+│       │   │   │       │   │   │   │   ├── urban_project_technical_studies.mdx
+│       │   │   │       │   │   │   │   └── urban_project_works.mdx
 │       │   │   │       │   │   │   ├── environmental
 │       │   │   │       │   │   │   │   ├── Co2SubSectionDescription.tsx
 │       │   │   │       │   │   │   │   ├── EnvironmentalMainDescription.tsx
@@ -2534,6 +2748,7 @@
 │       │   │   │       │   │   │   │       ├── PermeableSurface.tsx
 │       │   │   │       │   │   │   │       └── breadcrumbSegments.ts
 │       │   │   │       │   │   │   ├── shared
+│       │   │   │       │   │   │   │   ├── ModalGroupTable.tsx
 │       │   │   │       │   │   │   │   ├── ModalTable.css
 │       │   │   │       │   │   │   │   ├── ModalTable.tsx
 │       │   │   │       │   │   │   │   ├── avoided-kilometers-social-impact-link
@@ -2583,12 +2798,10 @@
 │       │   │   │       │   │   │   │   └── time-travel-saved
 │       │   │   │       │   │   │   │       └── TimeTravelSavedDescription.tsx
 │       │   │   │       │   │   │   └── socio-economic
-│       │   │   │       │   │   │       ├── EconomicDirectDescription.tsx
-│       │   │   │       │   │   │       ├── EconomicIndirectDescription.tsx
-│       │   │   │       │   │   │       ├── EnvironmentalMonetaryDescription.tsx
-│       │   │   │       │   │   │       ├── SocialMonetaryDescription.tsx
+│       │   │   │       │   │   │       ├── HumanityDescription.tsx
+│       │   │   │       │   │   │       ├── LocalAuthorityDescription.tsx
+│       │   │   │       │   │   │       ├── LocalPeopleOrCompanyDescription.tsx
 │       │   │   │       │   │   │       ├── SocioEconomicDescription.tsx
-│       │   │   │       │   │   │       ├── SocioEconomicModalWizard.tsx
 │       │   │   │       │   │   │       ├── SocioEconomicSubSectionDescription.tsx
 │       │   │   │       │   │   │       ├── avoided-air-conditionning-expenses
 │       │   │   │       │   │   │       │   └── AvoidedAirConditionningExpensesDescription.tsx
@@ -2628,6 +2841,7 @@
 │       │   │   │       │   │   │       │   ├── SoilsStorageRelatedCo2MonetaryValueDescription.tsx
 │       │   │   │       │   │   │       │   ├── WaterCycle.tsx
 │       │   │   │       │   │   │       │   └── breadcrumbSegments.ts
+│       │   │   │       │   │   │       ├── getSocioEconomicImpactColor.ts
 │       │   │   │       │   │   │       ├── property-value-increase
 │       │   │   │       │   │   │       │   ├── PropertyTransferDutiesIncreaseDescription.tsx
 │       │   │   │       │   │   │       │   └── PropertyValueIncreaseDescription.tsx
@@ -2639,8 +2853,13 @@
 │       │   │   │       │   │   │       │   └── TaxesIncomeDescription.tsx
 │       │   │   │       │   │   │       ├── time-travel-saved
 │       │   │   │       │   │   │       │   └── TimeTravelSavedMonetaryValueDescription.tsx
-│       │   │   │       │   │   │       └── water-regulation
-│       │   │   │       │   │   │           └── WaterRegulationDescription.tsx
+│       │   │   │       │   │   │       ├── water-regulation
+│       │   │   │       │   │   │       │   └── WaterRegulationDescription.tsx
+│       │   │   │       │   │   │       └── wizards
+│       │   │   │       │   │   │           ├── HumanityModalWizard.tsx
+│       │   │   │       │   │   │           ├── LocalAuthorityWizard.tsx
+│       │   │   │       │   │   │           ├── LocalPeopleOrCompanyWizard.tsx
+│       │   │   │       │   │   │           └── SocioEconomicModalWizard.tsx
 │       │   │   │       │   │   ├── index.tsx
 │       │   │   │       │   │   ├── list-view
 │       │   │   │       │   │   │   ├── ImpactActorsItem.tsx
@@ -2745,6 +2964,7 @@
 │       │   │   │           │   ├── aboutBenefrichesContent.ts
 │       │   │   │           │   ├── documentation
 │       │   │   │           │   │   └── ImpactDocumentation.tsx
+│       │   │   │           │   ├── impactGroupCategory.ts
 │       │   │   │           │   ├── modals
 │       │   │   │           │   │   ├── ImpactInProgressDescriptionModal.tsx
 │       │   │   │           │   │   ├── ImpactModalDescriptionContext.tsx
@@ -2759,7 +2979,6 @@
 │       │   │   │           │   │   └── summary
 │       │   │   │           │   │       ├── AvoidedCo2eqEmissions.tsx
 │       │   │   │           │   │       ├── AvoidedFricheCostsForLocalAuthority.tsx
-│       │   │   │           │   │       ├── AvoidedMaintenanceCostsForLocalAuthority.tsx
 │       │   │   │           │   │       ├── FullTimeJobs.tsx
 │       │   │   │           │   │       ├── HouseholdsPoweredByRenewableEnergy.tsx
 │       │   │   │           │   │       ├── LocalPropertyValueIncrease.tsx
@@ -2907,9 +3126,8 @@
 │       │   │   │           └── NoopSupportChatService.ts
 │       │   │   ├── update-project
 │       │   │   │   ├── core
-│       │   │   │   │   ├── actions
-│       │   │   │   │   │   ├── fetchCurrentAndProjectedSoilsCarbonStorage.action.ts
-│       │   │   │   │   │   └── fetchPhotovoltaicExpectedAnnualPowerPerformanceForLocation.action.ts
+│       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   └── photovoltaicBusinessMath.characterization.spec.ts
 │       │   │   │   │   ├── helpers
 │       │   │   │   │   │   ├── convertPhotovoltaicProjectDataToSteps.spec.ts
 │       │   │   │   │   │   ├── convertPhotovoltaicProjectDataToSteps.ts
@@ -2920,8 +3138,7 @@
 │       │   │   │   │   ├── updateProject.reducer.spec.ts
 │       │   │   │   │   ├── updateProject.reducer.ts
 │       │   │   │   │   ├── updateProject.selectors.ts
-│       │   │   │   │   ├── updateProject.types.ts
-│       │   │   │   │   └── updateProjectRenewableEnergy.selectors.ts
+│       │   │   │   │   └── updateProject.types.ts
 │       │   │   │   ├── infrastructure
 │       │   │   │   │   └── update-project-service
 │       │   │   │   │       ├── HttpUpdateReconversionProjectService.ts
@@ -2937,88 +3154,7 @@
 │       │   │   │       ├── photovoltaic-power-station
 │       │   │   │       │   ├── PhotovoltaicPowerStationUpdateNavigationBlockerDialog.tsx
 │       │   │   │       │   ├── PhotovoltaicPowerStationUpdateStepper.tsx
-│       │   │   │       │   ├── PhotovoltaicPowerStationUpdateWizard.tsx
-│       │   │   │       │   ├── expenses
-│       │   │   │       │   │   ├── installation
-│       │   │   │       │   │   │   └── index.tsx
-│       │   │   │       │   │   ├── introduction
-│       │   │   │       │   │   │   └── index.tsx
-│       │   │   │       │   │   ├── reinstatement
-│       │   │   │       │   │   │   └── index.tsx
-│       │   │   │       │   │   ├── site-purchase-amounts
-│       │   │   │       │   │   │   └── index.tsx
-│       │   │   │       │   │   └── yearly-projected-costs
-│       │   │   │       │   │       └── index.tsx
-│       │   │   │       │   ├── name-and-description
-│       │   │   │       │   │   └── index.tsx
-│       │   │   │       │   ├── photovoltaic
-│       │   │   │       │   │   ├── contract-duration
-│       │   │   │       │   │   │   └── index.tsx
-│       │   │   │       │   │   ├── expected-annual-production
-│       │   │   │       │   │   │   └── index.tsx
-│       │   │   │       │   │   ├── key-parameter
-│       │   │   │       │   │   │   └── index.tsx
-│       │   │   │       │   │   ├── power
-│       │   │   │       │   │   │   └── index.tsx
-│       │   │   │       │   │   └── surface
-│       │   │   │       │   │       └── index.tsx
-│       │   │   │       │   ├── revenue
-│       │   │   │       │   │   ├── financial-assistance
-│       │   │   │       │   │   │   └── index.tsx
-│       │   │   │       │   │   ├── introduction
-│       │   │   │       │   │   │   └── index.tsx
-│       │   │   │       │   │   └── yearly-projected-revenue
-│       │   │   │       │   │       └── index.tsx
-│       │   │   │       │   ├── schedule
-│       │   │   │       │   │   └── projection
-│       │   │   │       │   │       └── index.tsx
-│       │   │   │       │   ├── soils
-│       │   │   │       │   │   ├── soils-carbon-storage
-│       │   │   │       │   │   │   └── index.tsx
-│       │   │   │       │   │   ├── soils-summary
-│       │   │   │       │   │   │   └── index.tsx
-│       │   │   │       │   │   └── soils-transformation
-│       │   │   │       │   │       ├── climate-and-biodiversity-impact-notice
-│       │   │   │       │   │       │   └── index.tsx
-│       │   │   │       │   │       ├── future-soils-selection
-│       │   │   │       │   │       │   └── index.tsx
-│       │   │   │       │   │       ├── future-soils-surface-area
-│       │   │   │       │   │       │   └── index.tsx
-│       │   │   │       │   │       ├── introduction
-│       │   │   │       │   │       │   └── index.tsx
-│       │   │   │       │   │       ├── non-suitable-soils-notice
-│       │   │   │       │   │       │   └── index.tsx
-│       │   │   │       │   │       ├── non-suitable-soils-selection
-│       │   │   │       │   │       │   └── index.tsx
-│       │   │   │       │   │       ├── non-suitable-soils-surface-to-transform
-│       │   │   │       │   │       │   └── index.tsx
-│       │   │   │       │   │       └── transformation-project-selection
-│       │   │   │       │   │           └── index.tsx
-│       │   │   │       │   ├── soils-decontamination
-│       │   │   │       │   │   ├── introduction
-│       │   │   │       │   │   │   └── index.tsx
-│       │   │   │       │   │   ├── involves-reinstatement
-│       │   │   │       │   │   │   └── index.tsx
-│       │   │   │       │   │   ├── selection
-│       │   │   │       │   │   │   └── index.tsx
-│       │   │   │       │   │   └── surface-area
-│       │   │   │       │   │       └── index.tsx
-│       │   │   │       │   ├── stakeholders
-│       │   │   │       │   │   ├── developer
-│       │   │   │       │   │   │   └── index.tsx
-│       │   │   │       │   │   ├── future-site-owner
-│       │   │   │       │   │   │   └── index.tsx
-│       │   │   │       │   │   ├── introduction
-│       │   │   │       │   │   │   └── index.tsx
-│       │   │   │       │   │   ├── operator
-│       │   │   │       │   │   │   └── index.tsx
-│       │   │   │       │   │   ├── reinstatement-contract-owner
-│       │   │   │       │   │   │   └── index.tsx
-│       │   │   │       │   │   └── site-purchased
-│       │   │   │       │   │       └── index.tsx
-│       │   │   │       │   ├── summary
-│       │   │   │       │   │   └── index.tsx
-│       │   │   │       │   └── useSurfaceAreaInputMode.ts
+│       │   │   │       │   └── PhotovoltaicPowerStationUpdateWizard.tsx
 │       │   │   │       ├── useSidebarActions.ts
 │       │   │   │       └── useSyncUpdateStepWithRouteQuery.ts
 │       │   │   └── user-feature-alerts
@@ -3033,9 +3169,10 @@
 │       │   │               ├── CreateFeatureAlertService.ts
 │       │   │               └── InMemoryCreateFeatureAlertService.ts
 │       │   ├── libs
-│       │   │   └── highcharts
-│       │   │       ├── highcharts-extensions.d.ts
-│       │   │       └── index.ts
+│       │   │   ├── highcharts
+│       │   │   │   ├── highcharts-extensions.d.ts
+│       │   │   │   └── index.ts
+│       │   │   └── mdx.d.ts
 │       │   ├── main.css
 │       │   ├── main.tsx
 │       │   ├── shared
@@ -3043,6 +3180,8 @@
 │       │   │   │   ├── carbonEmissions.ts
 │       │   │   │   ├── dates
 │       │   │   │   │   └── index.ts
+│       │   │   │   ├── filter-by-name
+│       │   │   │   │   └── filterByName.ts
 │       │   │   │   ├── format-number
 │       │   │   │   │   ├── formatCarbonStorage.ts
 │       │   │   │   │   ├── formatNumber.spec.ts
@@ -3262,201 +3401,6 @@
 │       │   │       │       └── WizardFormLayout.tsx
 │       │   │       ├── project
 │       │   │       │   └── useDuplicateProject.ts
-│       │   │       ├── project-form
-│       │   │       │   ├── AnswerCascadingUpdateDialog.tsx
-│       │   │       │   ├── ProjectFormContext.tsx
-│       │   │       │   ├── ProjectFormProvider.tsx
-│       │   │       │   ├── common
-│       │   │       │   │   ├── expenses
-│       │   │       │   │   │   ├── installation-expenses
-│       │   │       │   │   │   │   └── InstallationExpensesForm.tsx
-│       │   │       │   │   │   ├── reinstatement
-│       │   │       │   │   │   │   ├── ReinstatementExpensesForm.tsx
-│       │   │       │   │   │   │   ├── SustainableSoilsReinstatementInfoButton.tsx
-│       │   │       │   │   │   │   ├── mappers.spec.ts
-│       │   │       │   │   │   │   └── mappers.ts
-│       │   │       │   │   │   ├── site-purchase-amounts
-│       │   │       │   │   │   │   └── SitePurchaseAmountsForm.tsx
-│       │   │       │   │   │   └── yearly-projected-expenses
-│       │   │       │   │   │       ├── YearlyProjectedExpensesForm.tsx
-│       │   │       │   │   │       └── index.tsx
-│       │   │       │   │   ├── name-and-description
-│       │   │       │   │   │   └── ProjectNameAndDescriptionForm.tsx
-│       │   │       │   │   ├── revenues
-│       │   │       │   │   │   ├── financial-assistance
-│       │   │       │   │   │   │   ├── ProjectFinancialAssistanceRevenueForm.tsx
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   └── yearly-projected-revenue
-│       │   │       │   │   │       └── ProjectYearlyRevenueForm.tsx
-│       │   │       │   │   ├── schedule
-│       │   │       │   │   │   └── projection
-│       │   │       │   │   │       ├── ScheduleField.tsx
-│       │   │       │   │   │       ├── ScheduleProjectionForm.spec.tsx
-│       │   │       │   │   │       └── ScheduleProjectionForm.tsx
-│       │   │       │   │   ├── soils-carbon-storage-comparison
-│       │   │       │   │   │   ├── CarbonStorageDifferenceSection.tsx
-│       │   │       │   │   │   ├── SoilsCarbonStorageComparison.tsx
-│       │   │       │   │   │   └── index.tsx
-│       │   │       │   │   ├── soils-decontamination
-│       │   │       │   │   │   ├── introduction
-│       │   │       │   │   │   │   └── SoilsDecontaminationIntroduction.tsx
-│       │   │       │   │   │   ├── selection
-│       │   │       │   │   │   │   └── SoilsDecontaminationSelection.tsx
-│       │   │       │   │   │   └── surface-area
-│       │   │       │   │   │       ├── SoilsDecontaminationSurfaceArea.spec.tsx
-│       │   │       │   │   │       └── SoilsDecontaminationSurfaceArea.tsx
-│       │   │       │   │   ├── stakeholder-form
-│       │   │       │   │   │   ├── StakeholderForm.tsx
-│       │   │       │   │   │   └── index.tsx
-│       │   │       │   │   └── stakeholder-introduction
-│       │   │       │   │       └── StakeholdersIntroduction.tsx
-│       │   │       │   ├── stepper
-│       │   │       │   │   ├── StepperItem.tsx
-│       │   │       │   │   ├── stepperConfig.ts
-│       │   │       │   │   └── useBuildStepperNavigationItems.tsx
-│       │   │       │   ├── urban-project
-│       │   │       │   │   ├── buildings
-│       │   │       │   │   │   ├── components
-│       │   │       │   │   │   │   ├── BuildingsFloorSurfaceAreaAllocation.spec.tsx
-│       │   │       │   │   │   │   └── BuildingsFloorSurfaceAreaAllocation.tsx
-│       │   │       │   │   │   ├── demolition-info
-│       │   │       │   │   │   │   ├── BuildingsDemolitionInfo.tsx
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   ├── existing-buildings-uses-floor-surface-area
-│       │   │       │   │   │   │   ├── ExistingBuildingsUsesFloorSurfaceArea.spec.tsx
-│       │   │       │   │   │   │   ├── ExistingBuildingsUsesFloorSurfaceArea.tsx
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   ├── footprint-to-reuse
-│       │   │       │   │   │   │   ├── BuildingsFootprintToReuse.spec.tsx
-│       │   │       │   │   │   │   ├── BuildingsFootprintToReuse.tsx
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   ├── introduction
-│       │   │       │   │   │   │   ├── BuildingsIntroduction.tsx
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   ├── new-buildings-uses-floor-surface-area
-│       │   │       │   │   │   │   ├── NewBuildingsUsesFloorSurfaceArea.spec.tsx
-│       │   │       │   │   │   │   ├── NewBuildingsUsesFloorSurfaceArea.tsx
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   ├── new-construction-info
-│       │   │       │   │   │   │   ├── BuildingsNewConstructionInfo.tsx
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   ├── new-construction-introduction
-│       │   │       │   │   │   │   ├── BuildingsNewConstructionIntroduction.tsx
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   ├── reuse-introduction
-│       │   │       │   │   │   │   ├── BuildingsReuseIntroduction.tsx
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   └── uses-floor-surface-area
-│       │   │       │   │   │       ├── UsesFloorSurfaceArea.spec.tsx
-│       │   │       │   │   │       ├── UsesFloorSurfaceArea.tsx
-│       │   │       │   │   │       └── index.tsx
-│       │   │       │   │   ├── expenses
-│       │   │       │   │   │   ├── buildings-construction-and-rehabilitation
-│       │   │       │   │   │   │   ├── BuildingsConstructionAndRehabilitationExpensesForm.spec.tsx
-│       │   │       │   │   │   │   ├── BuildingsConstructionAndRehabilitationExpensesForm.tsx
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   ├── installation
-│       │   │       │   │   │   │   ├── index.tsx
-│       │   │       │   │   │   │   ├── mappers.spec.ts
-│       │   │       │   │   │   │   └── mappers.ts
-│       │   │       │   │   │   ├── introduction
-│       │   │       │   │   │   │   ├── ProjectExpensesIntroduction.tsx
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   ├── projected-buildings-operating-expenses
-│       │   │       │   │   │   │   ├── BuildingsOperationsExpensesForm.tsx
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   ├── reinstatement
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   └── site-purchase-amounts
-│       │   │       │   │   │       └── index.tsx
-│       │   │       │   │   ├── naming
-│       │   │       │   │   │   └── index.tsx
-│       │   │       │   │   ├── revenues
-│       │   │       │   │   │   ├── buildings-operations-yearly-revenues
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   ├── buildings-resale
-│       │   │       │   │   │   │   ├── BuildingsResaleRevenueForm.tsx
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   ├── expected-site-resale
-│       │   │       │   │   │   │   ├── SiteResaleRevenueForm.tsx
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   ├── financial-assistance
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   └── introduction
-│       │   │       │   │   │       ├── ProjectRevenueIntroduction.tsx
-│       │   │       │   │   │       └── index.tsx
-│       │   │       │   │   ├── schedule
-│       │   │       │   │   │   └── projection
-│       │   │       │   │   │       └── index.tsx
-│       │   │       │   │   ├── site-and-buildings-resale
-│       │   │       │   │   │   ├── buildings-resale
-│       │   │       │   │   │   │   ├── BuildingsResaleForm.tsx
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   ├── introduction
-│       │   │       │   │   │   │   ├── SiteResaleIntroduction.tsx
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   └── selection
-│       │   │       │   │   │       ├── SiteResaleForm.tsx
-│       │   │       │   │   │       └── index.tsx
-│       │   │       │   │   ├── soils
-│       │   │       │   │   │   ├── carbon-summary
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   ├── decontamination-introduction
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   ├── decontamination-selection
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   ├── decontamination-surface-area
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   ├── involves-reinstatement
-│       │   │       │   │   │   │   ├── InvolvesReinstatementForm.tsx
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   └── summary
-│       │   │       │   │   │       ├── UrbanProjectSoilsSummary.tsx
-│       │   │       │   │   │       └── index.tsx
-│       │   │       │   │   ├── spaces
-│       │   │       │   │   │   ├── introduction
-│       │   │       │   │   │   │   ├── SpacesIntroduction.tsx
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   ├── public-green-spaces-introduction
-│       │   │       │   │   │   │   ├── PublicGreenSpacesIntroduction.tsx
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   ├── public-green-spaces-soils-distribution
-│       │   │       │   │   │   │   ├── PublicGreenSpacesSoilsDistribution.tsx
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   ├── selection
-│       │   │       │   │   │   │   ├── SpacesSelectionForm.spec.tsx
-│       │   │       │   │   │   │   ├── SpacesSelectionForm.tsx
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   └── surface-area
-│       │   │       │   │   │       ├── SpacesSurfaceAreaForm.tsx
-│       │   │       │   │   │       └── index.tsx
-│       │   │       │   │   ├── stakeholders
-│       │   │       │   │   │   ├── buildings-developer
-│       │   │       │   │   │   │   ├── StakeholdersBuildingsDeveloper.tsx
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   ├── introduction
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   ├── project-developer
-│       │   │       │   │   │   │   └── index.tsx
-│       │   │       │   │   │   └── reinstatement-contract-owner
-│       │   │       │   │   │       └── index.tsx
-│       │   │       │   │   ├── summary
-│       │   │       │   │   │   ├── UrbanProjectExpensesSection.spec.tsx
-│       │   │       │   │   │   ├── UrbanProjectExpensesSection.tsx
-│       │   │       │   │   │   ├── UrbanProjectFormSummary.tsx
-│       │   │       │   │   │   ├── UrbanProjectRevenuesSection.tsx
-│       │   │       │   │   │   └── index.tsx
-│       │   │       │   │   └── uses
-│       │   │       │   │       ├── introduction
-│       │   │       │   │       │   ├── UsesIntroduction.tsx
-│       │   │       │   │       │   └── index.tsx
-│       │   │       │   │       ├── public-green-spaces-surface-area
-│       │   │       │   │       │   ├── PublicGreenSpacesSurfaceArea.tsx
-│       │   │       │   │       │   └── index.tsx
-│       │   │       │   │       └── selection
-│       │   │       │   │           ├── UsesSelection.tsx
-│       │   │       │   │           └── index.tsx
-│       │   │       │   └── useProjectForm.tsx
 │       │   │       └── siteNature.ts
 │       │   ├── test
 │       │   │   ├── setupTestEnv.ts
@@ -3765,4 +3709,4 @@
     ├── create-worktree.sh
     ├── prime-worktree.sh
     └── remove-worktree.sh
-1040 directories, 2727 files
+996 directories, 2715 files
