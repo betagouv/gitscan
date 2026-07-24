@@ -152,12 +152,12 @@
 │   │   │   │   ├── clone_ca_region.py
 │   │   │   │   ├── clone_insee_commune.py
 │   │   │   │   ├── clone_koumoul_epci.py
-│   │   │   │   ├── clone_laposte_code_postal.py
-│   │   │   │   └── refresh_geo_models.py
+│   │   │   │   └── clone_laposte_code_postal.py
 │   │   │   └── tasks
 │   │   │       ├── airflow_logic
 │   │   │       │   ├── chain_tasks.py
 │   │   │       │   ├── clone_config_create_task.py
+│   │   │       │   ├── clone_dbt_task.py
 │   │   │       │   ├── clone_old_tables_remove_task.py
 │   │   │       │   ├── clone_table_create_task.py
 │   │   │       │   ├── clone_table_validate_task.py
@@ -167,7 +167,8 @@
 │   │   │           ├── clone_old_tables_remove.py
 │   │   │           ├── clone_table_create.py
 │   │   │           ├── clone_table_validate.py
-│   │   │           └── clone_view_in_use_switch.py
+│   │   │           ├── clone_view_in_use_switch.py
+│   │   │           └── fix_corrupted_utf8.py
 │   │   ├── cluster
 │   │   │   ├── config
 │   │   │   │   ├── __init__.py
@@ -257,8 +258,8 @@
 │   │   │   │   ├── enrich_acteurs_normalize_codepostal.py
 │   │   │   │   ├── enrich_acteurs_rgpd.py
 │   │   │   │   ├── enrich_acteurs_villes.py
-│   │   │   │   ├── enrich_dbt_models_refresh.py
-│   │   │   │   └── enrich_siret_siren.py
+│   │   │   │   ├── enrich_siret_siren.py
+│   │   │   │   └── enrich_siret_siren_lien_succession.py
 │   │   │   └── tasks
 │   │   │       ├── airflow_logic
 │   │   │       │   ├── db_read_acteur_cp_task.py
@@ -266,6 +267,7 @@
 │   │   │       │   ├── enrich_config_create_task.py
 │   │   │       │   ├── enrich_dbt_model_suggest_task.py
 │   │   │       │   ├── enrich_dbt_models_task.py
+│   │   │       │   ├── enrich_lien_succession_suggest_task.py
 │   │   │       │   ├── enrich_siret_siren_suggest_task.py
 │   │   │       │   └── normalize_acteur_cp_task.py
 │   │   │       └── business_logic
@@ -275,6 +277,7 @@
 │   │   │           ├── enrich_dbt_model_row_to_suggest_data.py
 │   │   │           ├── enrich_dbt_model_suggest.py
 │   │   │           ├── enrich_dbt_model_to_suggestions.py
+│   │   │           ├── enrich_lien_succession_suggest.py
 │   │   │           ├── enrich_siret_siren_suggest.py
 │   │   │           └── normalize_acteur_cp.py
 │   │   ├── shared
@@ -388,9 +391,13 @@
 │   │   │   │           └── test_copy_displayed_data_from_warehouse.py
 │   │   │   ├── clone
 │   │   │   │   ├── tasks
+│   │   │   │   │   ├── airflow_logic
+│   │   │   │   │   │   ├── test_chain_tasks.py
+│   │   │   │   │   │   └── test_clone_dbt_task.py
 │   │   │   │   │   └── business_logic
 │   │   │   │   │       ├── test_clone_table_create.py
-│   │   │   │   │       └── test_clone_view_in_use_switch.py
+│   │   │   │   │       ├── test_clone_view_in_use_switch.py
+│   │   │   │   │       └── test_fix_corrupted_utf8.py
 │   │   │   │   └── test_config_model.py
 │   │   │   ├── cluster
 │   │   │   │   ├── config
@@ -437,6 +444,7 @@
 │   │   │   │   └── tasks
 │   │   │   │       ├── test_db_read_acteur_cp.py
 │   │   │   │       ├── test_enrich_dbt_model_row_to_data.py
+│   │   │   │       ├── test_enrich_lien_succession_suggest.py
 │   │   │   │       ├── test_enrich_suggestions_cities.py
 │   │   │   │       ├── test_enrich_suggestions_closed.py
 │   │   │   │       ├── test_enrich_suggestions_rgpd.py
@@ -550,7 +558,7 @@
 │   │   │   │   │   ├── base_source.sql
 │   │   │   │   │   ├── base_souscategorieobjet.sql
 │   │   │   │   │   └── schema.yml
-│   │   │   │   ├── ae_annuaire_entreprises
+│   │   │   │   ├── ae
 │   │   │   │   │   ├── base_ae_etablissement.sql
 │   │   │   │   │   ├── base_ae_lien_succession.sql
 │   │   │   │   │   ├── base_ae_unite_legale.sql
@@ -558,6 +566,9 @@
 │   │   │   │   ├── ban
 │   │   │   │   │   ├── base_ban_adresses.sql
 │   │   │   │   │   ├── base_ban_lieux_dits.sql
+│   │   │   │   │   └── schema.yml
+│   │   │   │   ├── geo
+│   │   │   │   │   ├── base_koumoul_epci.sql
 │   │   │   │   │   └── schema.yml
 │   │   │   │   └── stats
 │   │   │   │       ├── base_action.sql
@@ -599,8 +610,8 @@
 │   │   │   │   │       ├── exposure_sample_displayedpropositionservice.sql
 │   │   │   │   │       ├── exposure_sample_displayedpropositionservice_sous_categories.sql
 │   │   │   │   │       └── schema.yml
-│   │   │   │   ├── geo
-│   │   │   │   │   ├── exposure_epci.sql
+│   │   │   │   ├── ae
+│   │   │   │   │   ├── exposure_ae_acteur_siret_successeur.sql
 │   │   │   │   │   └── schema.yml
 │   │   │   │   └── stats
 │   │   │   │       ├── exposure_stats_acteur_no_siren_actif.sql
@@ -609,7 +620,6 @@
 │   │   │   │       ├── exposure_stats_acteur_revision_siret.sql
 │   │   │   │       ├── exposure_stats_acteur_revision_statut.sql
 │   │   │   │       ├── exposure_stats_acteur_siren_siret_history.sql
-│   │   │   │       ├── exposure_stats_acteur_siret_successeur.sql
 │   │   │   │       ├── exposure_stats_acteur_stacked_history.sql
 │   │   │   │       ├── exposure_stats_distance_nb_acteur_by_action.sql
 │   │   │   │       ├── exposure_stats_proposionservice_only_on_acteur.sql
@@ -624,14 +634,14 @@
 │   │   │   │   │   ├── int_propositionservice.sql
 │   │   │   │   │   ├── int_propositionservice_sous_categories.sql
 │   │   │   │   │   └── schema.yml
-│   │   │   │   ├── ae_annuaire_entreprises
+│   │   │   │   ├── ae
 │   │   │   │   │   ├── int_ae_etablissement.sql
 │   │   │   │   │   ├── int_ae_lien_succession_resolved.sql
 │   │   │   │   │   ├── int_ae_unite_legale.sql
 │   │   │   │   │   └── schema.yml
 │   │   │   │   ├── ban
 │   │   │   │   │   ├── int_ban_adresses.sql
-│   │   │   │   │   └── int_ban_villes.sql
+│   │   │   │   │   └── schema.yml
 │   │   │   │   ├── enrich_siren_siret
 │   │   │   │   │   ├── int_acteur_with_siren_without_siret.sql
 │   │   │   │   │   ├── int_acteur_with_siret_without_siren.sql
@@ -703,6 +713,13 @@
 │   │   │   │   │       ├── marts_sample_displayedpropositionservice.sql
 │   │   │   │   │       ├── marts_sample_displayedpropositionservice_sous_categories.sql
 │   │   │   │   │       └── schema.yml
+│   │   │   │   ├── ae
+│   │   │   │   │   ├── marts_ae_lien_succession_resolved_vueacteur.sql
+│   │   │   │   │   └── schema.yml
+│   │   │   │   ├── ban
+│   │   │   │   │   ├── marts_ban_adresses.sql
+│   │   │   │   │   ├── marts_ban_villes.sql
+│   │   │   │   │   └── schema.yml
 │   │   │   │   ├── enrich
 │   │   │   │   │   ├── marts_enrich_acteurs_closed_candidates.sql
 │   │   │   │   │   ├── marts_enrich_acteurs_closed_replaced.sql
@@ -729,7 +746,6 @@
 │   │   │   │       ├── marts_acteur_stacked.sql
 │   │   │   │       ├── marts_acteur_stacked_rounded.sql
 │   │   │   │       ├── marts_acteur_vs_revision_propositon_services.sql
-│   │   │   │       ├── marts_ae_lien_succession_resolved_vueacteur.sql
 │   │   │   │       ├── marts_distance_first_action.sql
 │   │   │   │       └── schema.yml
 │   │   │   └── source
@@ -760,11 +776,10 @@
 │   ├── plugins
 │   │   └── .gitkeep
 │   ├── pyproject.toml
-│   ├── scripts
-│   │   ├── db_cleanup.sh
-│   │   └── infrastructure
-│   │       └── purge_db_logs.sh
-│   └── uv.lock
+│   └── scripts
+│       ├── db_cleanup.sh
+│       └── infrastructure
+│           └── purge_db_logs.sh
 ├── docker-compose.yml
 ├── docs
 │   ├── Makefile
@@ -835,8 +850,11 @@
 │   │   ├── data-platform
 │   │   │   ├── README.md
 │   │   │   ├── airflow.md
+│   │   │   ├── clone-referentials.md
 │   │   │   ├── clustering-deduplication.md
 │   │   │   ├── dbt.md
+│   │   │   ├── enrich-acteurs-closed.md
+│   │   │   ├── enrich-siret-siren-lien-succession.md
 │   │   │   ├── enrich-siret-siren.md
 │   │   │   └── sources.md
 │   │   ├── db
@@ -973,6 +991,7 @@
 │           ├── main.tf
 │           ├── outputs.tf
 │           └── variables.tf
+├── pyproject.toml
 ├── scripts
 │   ├── db_restore.sh
 │   ├── db_schema_create_from_csv.py
@@ -997,6 +1016,7 @@
 │       ├── create_schema.sql
 │       ├── create_webapp_sample_db.sql
 │       └── drop_all_tables.sql
+├── uv.lock
 └── webapp
     ├── .buildpacks
     ├── .dockerignore
@@ -1094,6 +1114,7 @@
     │   │   ├── 0021_suggestiongroupe_parent_revision_acteur_and_more.py
     │   │   ├── 0022_suggestionunitaire_data_su_revision_acteur_if_modele_revision_acteur_and_more.py
     │   │   ├── 0023_alter_suggestioncohorte_type_action.py
+    │   │   ├── 0024_alter_suggestioncohorte_type_action.py
     │   │   └── __init__.py
     │   ├── models
     │   │   ├── __init__.py
@@ -1230,7 +1251,6 @@
     │   │       ├── import_data_ademe.py
     │   │       ├── import_infos_tris.py
     │   │       ├── import_redirects_from_legacy_website.py
-    │   │       ├── migrate_from_sites_faciles_experiment.py
     │   │       └── migrate_legacy_produit_index_page.py
     │   ├── middleware.py
     │   ├── migrations
@@ -2011,4 +2031,4 @@
     │   └── stats
     │       └── test_stats_utils.py
     └── uv.lock
-368 directories, 1645 files
+372 directories, 1661 files
