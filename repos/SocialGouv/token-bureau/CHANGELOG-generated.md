@@ -1,22 +1,14 @@
-## Changelog : token-bureau (derniers 30 jours)
+## Changelog : token-bureau (30 derniers jours, au 22 juillet 2026)
 
 ### Résumé
-Les récentes mises à jour de token-bureau incluent des corrections de bugs liées à la migration vers pnpm, des améliorations de la gestion des permissions configurables, et des corrections concernant l'action GitHub (logs, support de Node 20). Une nouvelle version (0.0.7) a été publiée.
+Les récentes mises à jour de token-bureau améliorent la flexibilité en permettant l'accès aux projets V2 et corrigent des problèmes liés à la configuration des permissions et au processus de publication. Ces changements permettent une meilleure gestion des droits d'accès et une intégration plus fluide avec GitHub.
 
 ### Évolutions fonctionnelles
-- Ajout de la configuration des permissions pour une gestion plus fine des accès (#5aec18b, #e879f95).
-- Amélioration des logs de l'action GitHub pour faciliter le débogage (#cc7d4d3).
+- Ajout de la permission `organization_projects` pour les opérations d'écriture sur les projets V2. [#7](https://github.com/SocialGouv/token-bureau/issues/7)
+- Correction de la lecture de la configuration des permissions à partir du fichier `PERMISSIONS_CONFIG_PATH`. [#ad1a07e](https://github.com/SocialGouv/token-bureau/commit/ad1a07eb53262dabe94200eebcce003365c232fa)
 
 ### Évolutions techniques
-- Migration vers pnpm pour la gestion des dépendances (#cf06c37, #b959cea).
-- Passage à Node 20 pour l'action GitHub et le chart Helm (#16f9c36).
-- Refactorisation pour découpler le projet en un monorepo (#9e1141b).
-- Amélioration du workflow de release (#aee02ba).
-- Mise à jour pour utiliser la nouvelle API `GITHUB_CLIENT_ID` (#3def986).
+- Correction du workflow de publication pour utiliser un token d'application lors de la publication sur la branche `main`. [#7](https://github.com/SocialGouv/token-bureau/issues/7)
 
 ### Autres changements
-- Correction de bugs mineurs concernant l'action GitHub (#68daaf4, #57f761e, #f5057fa).
-- Amélioration du chart Helm pour une meilleure intégration (#b1c9e6f).
-- Nettoyage des logs et du code (#6d80f72, #d2dbae6, #46ab261).
-- Corrections liées aux déploiements de permissions (#e4c9bb2).
-- Correction d'un bug lié au serveur (#8b4f7dd).
+- Publication des versions 0.0.8 et 0.0.9.
