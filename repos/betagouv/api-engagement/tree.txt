@@ -125,7 +125,7 @@
 │   │       │   └── .gitkeep
 │   │       ├── dbt_project.yml
 │   │       ├── macros
-│   │       │   ├── exclude_internal_users.sql
+│   │       │   ├── exclude_internal_distinct_ids.sql
 │   │       │   ├── generate_schema_name.sql
 │   │       │   └── slugify.sql
 │   │       ├── models
@@ -150,6 +150,7 @@
 │   │       │   │   │   └── int_stat_event_global.sql
 │   │       │   │   ├── tracking
 │   │       │   │   │   ├── __models.yml
+│   │       │   │   │   ├── int_internal_distinct_ids.sql
 │   │       │   │   │   ├── int_tracking_mission_click.sql
 │   │       │   │   │   ├── int_tracking_page_view.sql
 │   │       │   │   │   ├── int_tracking_quiz_backend.sql
@@ -325,7 +326,8 @@
 │   │       │   └── .gitkeep
 │   │       └── tests
 │   │           ├── .gitkeep
-│   │           └── assert_mission_click_matched_has_backend_rank.sql
+│   │           ├── assert_mission_click_matched_has_backend_rank.sql
+│   │           └── assert_results_click_implies_has_click.sql
 │   ├── docker-entrypoint.sh
 │   ├── eslint.config.cjs
 │   ├── package.json
@@ -603,6 +605,8 @@
 │   │   │   ├── 20260715120000_add_mission_remote_local
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260717123043_add_mission_diffusion_table
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260722120000_add_mission_diffusion_created_at
 │   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
@@ -1069,7 +1073,8 @@
 │   │   │   │   │       ├── schemas
 │   │   │   │   │       │   ├── v1.ts
 │   │   │   │   │       │   ├── v2.ts
-│   │   │   │   │       │   └── v3.ts
+│   │   │   │   │       │   ├── v3.ts
+│   │   │   │   │       │   └── v4.ts
 │   │   │   │   │       └── types.ts
 │   │   │   │   ├── collections.ts
 │   │   │   │   ├── filter.ts
@@ -1627,6 +1632,7 @@
 │   │   │   │   ├── pro-space.tsx
 │   │   │   │   └── testimonials.tsx
 │   │   │   ├── layout
+│   │   │   │   ├── cookie-consent-manager.tsx
 │   │   │   │   ├── footer.tsx
 │   │   │   │   ├── header.tsx
 │   │   │   │   ├── internal-user-flag-indicator.tsx
@@ -1716,6 +1722,8 @@
 │   │   │   └── results.tsx
 │   │   ├── routes.ts
 │   │   ├── services
+│   │   │   ├── __tests__
+│   │   │   │   └── cookie-consent.test.ts
 │   │   │   ├── api
 │   │   │   │   ├── __tests__
 │   │   │   │   │   ├── index.test.ts
@@ -1725,6 +1733,8 @@
 │   │   │   │   └── sanitize.ts
 │   │   │   ├── client.ts
 │   │   │   ├── config.ts
+│   │   │   ├── consent-services.ts
+│   │   │   ├── cookie-consent.ts
 │   │   │   ├── email.ts
 │   │   │   ├── geolocation.ts
 │   │   │   ├── matching.ts
@@ -1732,7 +1742,11 @@
 │   │   │   ├── newsletter.ts
 │   │   │   ├── tracking
 │   │   │   │   ├── __tests__
+│   │   │   │   │   ├── consent.test.ts
+│   │   │   │   │   ├── index-consent.test.ts
+│   │   │   │   │   ├── posthog.test.ts
 │   │   │   │   │   └── utils.test.ts
+│   │   │   │   ├── consent.ts
 │   │   │   │   ├── events.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── providers
@@ -1935,4 +1949,4 @@
         ├── sentry.ts
         ├── store.ts
         └── utils.ts
-448 directories, 1575 files
+450 directories, 1587 files
