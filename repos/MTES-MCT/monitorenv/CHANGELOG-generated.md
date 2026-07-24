@@ -1,31 +1,29 @@
-## Changelog : monitorenv (30 derniers jours, au 21 juillet 2026)
+## Changelog : monitorenv (30 derniers jours, au 22 juillet 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à la gestion des missions, notamment au niveau de la sélection des unités de contrôle, de la gestion des dates et de l'ajout d'informations complémentaires aux navires. Des corrections ont également été apportées pour améliorer la fiabilité des données affichées dans les rapports et les visualisations, ainsi que pour optimiser l'expérience utilisateur globale.
+Cette version apporte des améliorations significatives à la gestion des missions, des données réglementaires et des cartes, ainsi que des corrections de bugs pour une meilleure expérience utilisateur. Des optimisations ont également été apportées à l'API et à l'interface utilisateur.
 
 ### Évolutions fonctionnelles
-- Possibilité d'ajouter des informations et des fichiers supplémentaires aux navires.
-- Amélioration de la gestion des dates dans la liste des missions et les rapports.
-- Correction d'un bug empêchant la sélection de la même unité de contrôle plusieurs fois dans une mission.
-- Ajout de tags aux missions pour une meilleure organisation et filtrage.
-- Les missions peuvent être mises à jour à partir des données de rapportnav [#40bbc44](https://github.com/MTES-MCT/monitorenv/commit/40bbc44).
-- Amélioration de l'affichage des noms de façade (maintenant appelés "zone maritime") dans les panneaux.
-- Correction du retour des noms de façade distincts via l'API seafront [#5440c30](https://github.com/MTES-MCT/monitorenv/commit/5440c30).
-- Ajout de la validation du nom complet des tags de mission.
-- Amélioration de la gestion des tags de mission, notamment lors de la création et de la mise à jour.
+- **Cartographie :** Correction du calcul des coordonnées lors du clic sur la carte pour créer un point.
+- **Missions :**
+    - Correction de l'affichage des dates des missions dans la liste et dans les rapports.
+    - Impossible de sélectionner la même unité de contrôle plusieurs fois dans une mission.
+    - Empêche la mise à jour du nombre de personnes concernées lors de la modification de la valeur.
+    - Possibilité pour le CACEM de mettre à jour les missions à partir de rapportnav [#40bbc44](https://github.com/MTES-MCT/monitorenv/commit/40bbc44).
+- **Données réglementaires :** Correction du flux de mise à jour des zones réglementaires du CACEM et de `regulatory_areas_open_data`.
+- **Vaisseaux :** Ajout d'informations supplémentaires et de fichiers aux vaisseaux [#030f5c2](https://github.com/MTES-MCT/monitorenv/commit/030f5c2).
+- **Facades maritimes :** L'API des facades maritimes renvoie maintenant le nom distinct de la facade [#5440c30](https://github.com/MTES-MCT/monitorenv/commit/5440c30).
+- **Tags de mission :** Correction du filtrage des tags de mission en fonction de la date de début de la mission ou de l'action [#5ca7cd9](https://github.com/MTES-MCT/monitorenv/commit/5ca7cd9).
 
 ### Évolutions techniques
-- Refactorisation du code lié aux façades (renommées en "zone maritime") pour utiliser l'API dédiée.
-- Utilisation du composant FileUploader de monitor-ui pour la gestion des fichiers.
-- Correction de l'utilisation de `ST_MakeValid` pour le calcul des zones maritimes [#89726c5](https://github.com/MTES-MCT/monitorenv/commit/89726c5).
-- Amélioration de la gestion des données externes modifiées lors de la sauvegarde d'une mission [#d658689](https://github.com/MTES-MCT/monitorenv/commit/d658689).
-- Ajout d'un debounce pour le filtre de recherche des missions afin d'optimiser les performances.
-- Correction de l'actualisation des données des tableaux lors du changement d'onglet.
+- **API :** Utilisation de l'API des facades maritimes au lieu d'un enum pour récupérer les facades [#09be83a](https://github.com/MTES-MCT/monitorenv/commit/09be83a).
+- **Refactoring :** Renommage de "facade" en "seafront" pour plus de clarté [#3037a3a](https://github.com/MTES-MCT/monitorenv/commit/3037a3a).
+- **Géospatial :** Ajout de `ST_MakeValid` pour les facades maritimes calculées [#89726c5](https://github.com/MTES-MCT/monitorenv/commit/89726c5).
+- **Composants UI :** Utilisation du composant `FileUploader` de `monitor-ui` [#6ad6960](https://github.com/MTES-MCT/monitorenv/commit/6ad6960).
+- **Gestion des données :** Utilisation de `savedMission` pour conserver les données externes modifiées (ex: calcul de la facade d'action environnementale) [#d658689](https://github.com/MTES-MCT/monitorenv/commit/d658689).
 
 ### Autres changements
-- Corrections de divers bugs et améliorations de l'expérience utilisateur (UX).
-- Corrections de tests unitaires et d'intégration (Cypress, Pytest).
-- Correction de bugs liés à la mise à jour des zones réglementaires CACEM.
-- Correction de l'affichage des dates dans les rapports.
-- Correction de l'affichage du nombre de personnes concernées dans les missions.
-- Correction de l'affichage des tags de mission en fonction de la date de début de la mission ou de l'action.
+- Correction de typos [#e8155bb](https://github.com/MTES-MCT/monitorenv/commit/e8155bb).
+- Améliorations et corrections de tests (Cypress, Pytest) [#67b51dc](https://github.com/MTES-MCT/monitorenv/commit/67b51dc), [#3e49492](https://github.com/MTES-MCT/monitorenv/commit/3e49492), [#514d0b3](https://github.com/MTES-MCT/monitorenv/commit/514d0b3), [#ef6baef](https://github.com/MTES-MCT/monitorenv/commit/ef6baef).
+- Corrections de bugs UX mineurs [#4be2665](https://github.com/MTES-MCT/monitorenv/commit/4be2665).
+- Corrections suite aux revues de code [#458d8a5](https://github.com/MTES-MCT/monitorenv/commit/458d8a5), [#96011bb](https://github.com/MTES-MCT/monitorenv/commit/96011bb), [#653e528](https://github.com/MTES-MCT/monitorenv/commit/653e528).
