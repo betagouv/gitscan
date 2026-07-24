@@ -1,12 +1,13 @@
-## Changelog : mna-shared-bin (30 derniers jours, au 4 juin 2026)
+## Changelog : mna-shared-bin (30 derniers jours, au 22 juillet 2026)
 
 ### Résumé
-Cette mise à jour apporte des améliorations significatives à la gestion des fonctions partagées et de la configuration des dépôts consommateurs.  Les changements permettent une plus grande flexibilité dans la déclaration des fonctions et une meilleure gestion des clés PGP pour une sécurité accrue.
+Cette mise à jour introduit un nouveau pilote SOPS pour la gestion des secrets, ainsi que des outils pour la configuration initiale de Git et la rotation des clés. Ces améliorations visent à renforcer la sécurité et à simplifier l'administration de l'infrastructure.
 
 ### Évolutions fonctionnelles
-- Modification du paradigme de déclaration des fonctions partagées, offrant une nouvelle approche pour définir et utiliser les fonctions communes. [#265dec1](https://github.com/mission-apprentissage/mna-shared-bin/commit/265dec1)
-- Ajout d'une condition permettant à un dépôt consommateur de ne pas enregistrer de fonction partagée, offrant plus de contrôle sur le comportement des dépôts. [#72b3009](https://github.com/mission-apprentissage/mna-shared-bin/commit/72b3009)
-- Amélioration de la découverte du fichier `.openpgp-keyid` avec l'ajout d'une condition. [#fcdd148](https://github.com/mission-apprentissage/mna-shared-bin/commit/fcdd148)
+- Ajout d'un pilote SOPS pour la gestion des secrets, permettant un chiffrement et un contrôle d'accès améliorés.  [#2](https://github.com/mission-apprentissage/mna-shared-bin/issues/2)
+- Intégration d'outils pour la configuration initiale de Git, facilitant la mise en place de nouveaux environnements de développement. [#2](https://github.com/mission-apprentissage/mna-shared-bin/issues/2)
+- Implémentation d'un outil de rotation des clés pour renforcer la sécurité des accès. [#2](https://github.com/mission-apprentissage/mna-shared-bin/issues/2)
 
 ### Évolutions techniques
-- Correction de typos et de mineurs problèmes. [#4fecf2b](https://github.com/mission-apprentissage/mna-shared-bin/commit/4fecf2b) et [#334a60e](https://github.com/mission-apprentissage/mna-shared-bin/commit/334a60e)
+- Intégration complète des nouveaux outils et pilotes dans le dépôt `mna-shared-bin`.
+- Amélioration de la documentation pour faciliter l'utilisation des nouvelles fonctionnalités.
