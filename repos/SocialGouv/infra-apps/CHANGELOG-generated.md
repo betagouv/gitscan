@@ -1,29 +1,50 @@
-## Changelog : infra-apps (30 derniers jours, au 2026-07-19)
+## Changelog : infra-apps (30 derniers jours, au 23 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la plateforme Iterion, avec des optimisations de performance, l'ajout de nouvelles fonctionnalités comme l'authentification via GitHub SSO et l'intégration de KEDA pour l'autoscaling. Des améliorations ont également été apportées à l'infrastructure Buildkit, notamment en matière de sécurité et de gestion des accès.
+Ce changelog résume les améliorations apportées à l'infrastructure au cours du dernier mois. Les principaux changements concernent l'amélioration de la plateforme Iterion (gestion des runners, sandboxing, authentification) et du Buildkit Operator (gestion des builds, cache, sécurité). Des corrections et optimisations ont également été apportées à d'autres composants comme Metabase, Huginn et Kata.
 
 ### Évolutions fonctionnelles
-- **Iterion :** Ajout de l'authentification via GitHub SSO sur preprod et en production, permettant aux utilisateurs de s'inscrire et de se connecter plus facilement. [#40, #41, #42, #43, #45]
-- **Iterion :** Activation du marketplace public en production. [#41]
-- **Iterion :** Amélioration de la gestion des secrets avec l'utilisation de Valkey HA pour une meilleure disponibilité et sécurité. [#46]
-- **Buildkit :** Ajout d'un fournisseur OIDC Forgejo pour l'authentification. [#48]
-- **Buildkit :** Renforcement de la sécurité en production avec l'ajout d'un Ingress TLS et la limitation des accès. [#47]
-- **Charon-egapro :** Ajout d'une whitelist pour les hôtes review-alpha et -staging.
+- **Iterion :**
+    - Activation de l'authentification via GitHub SSO sur preprod et ouverture des inscriptions en production. [#40](https://github.com/SocialGouv/infra-apps/issues/40) [#41](https://github.com/SocialGouv/infra-apps/issues/41) [#42](https://github.com/SocialGouv/infra-apps/issues/42) [#43](https://github.com/SocialGouv/infra-apps/issues/43) [#45](https://github.com/SocialGouv/infra-apps/issues/45)
+    - Ajout d'un marketplace public pour Iterion en production. [#41](https://github.com/SocialGouv/infra-apps/issues/41)
+    - Amélioration de la gestion des bots et du marketplace. [#42](https://github.com/SocialGouv/infra-apps/issues/42)
+    - Intégration de Valkey HA pour une gestion d'état distribuée. [#46](https://github.com/SocialGouv/infra-apps/issues/46)
+- **Buildkit Operator :**
+    - Ajout d'un provider OIDC Forgejo pour l'authentification. [#47](https://github.com/SocialGouv/infra-apps/issues/47) [#48](https://github.com/SocialGouv/infra-apps/issues/48)
+    - Mise en place d'une infrastructure GitOps pour ovh-prod.
+- **Token Bureau :**
+    - Configuration du serveur pour pointer vers la configuration des permissions montées.
 
 ### Évolutions techniques
-- **Iterion :** Mise à jour du chart Iterion vers les versions 0.37.2, 0.35.0, 0.34.0, 0.33.0, 0.32.0, 0.23.2, 0.23.0, 0.22.0, 0.21.0, 0.17.2, 0.17.1, 0.16.1 et 0.15.0, apportant des corrections de bugs, des améliorations de performance et de nouvelles fonctionnalités.
-- **Iterion :** Implémentation de KEDA pour l'autoscaling du runner, améliorant la réactivité et l'efficacité de la plateforme.
-- **Iterion :** Optimisation de l'utilisation des ressources (mémoire, CPU) pour les runners et firecrawl.
-- **Iterion :** Désactivation du cache de build NFS sur le runner de production pour résoudre des problèmes de blocage.
-- **Iterion :** Utilisation de OAuth pour l'accès à Claude Code et ChatGPT, remplaçant les clés API obsolètes.
-- **Buildkit :** Mise à jour de l'opérateur Buildkit vers les versions v0.12.0, v0.10.0 et v0.9.0.
-- **Buildkit :** Configuration de l'accès S3 pour le cache cold-cache en production.
-- **Kata :** Déploiement sur `buildkit-system` et activation de virtiofsd xattr pour améliorer la compatibilité avec Buildkit.
+- **Iterion :**
+    - Amélioration de la gestion du sandbox pour les runners, incluant l'activation du sandbox K8s sur preprod et la configuration de l'utilisation automatique du sandbox.
+    - Mise à jour de la version du chart Iterion (0.16.1 -> 0.17.1 -> 0.17.2 -> 0.21.0 -> 0.22.0 -> 0.23.0 -> 0.23.2).
+    - Intégration de l'authentification OAuth pour Claude Code.
+    - Ajout de KEDA pour l'autoscaling du runner en fonction de la profondeur de la queue.
+    - Utilisation de l'API OAuth pour ChatGPT.
+- **Buildkit Operator :**
+    - Mises à jour de version (v0.9.0, v0.10.0, v0.12.0, v0.13.0, v0.14.2, v0.15.0).
+    - Amélioration de la gestion du cache S3 (cadence, lifecycle, project defaults).
+    - Amélioration de la configuration du gateway (wildcard, TLS, hard-pin).
+    - Configuration du cache S3 pour ovh-prod.
+- **Autres :**
+    - Correction d'un problème de mount NFS sur Iterion (ovh-prod).
+    - Augmentation des ressources allouées à Metabase après une panne.
+    - Correction d'un problème de virtiofsd xattr sur Kata.
+    - Correction d'un problème de KEDA NATS endpoint.
+    - Autorisation de resync sur les namespaces adoptés par Rancher.
 
 ### Autres changements
-- Correction de bugs mineurs et améliorations de la configuration pour plusieurs composants.
-- Mise à jour de la documentation et du code pour améliorer la lisibilité et la maintenabilité.
-- Suppression de clés API obsolètes.
-- Ajustements de la configuration pour améliorer la stabilité et la performance.
-- Suppression de configurations inutilisées.
+- Mise à jour de la documentation et de la configuration.
+- Nettoyage du code et suppression de configurations obsolètes.
+- Ajustements de la configuration pour les environnements de test (E2E).
+- Suppression d'une clé API Anthropic obsolète.
+- Correction de l'ordre de tri des événements RSS dans Huginn.
+- Suppression de la configuration de concurrence du runner Iterion (ovh-prod).
+- Correction de l'OOMKilled sur le web-scrape de Firecrawl.
+- Déplacement de SearXNG SealedSecret dans les templates.
+- Ajout d'un backend de recherche web souverain SearXNG.
+- Configuration de TZ=Europe/Paris via config.extraEnv pour Iterion.
+- Augmentation de la limite de mémoire du runner Iterion.
+- Mise à jour du chart Iterion (0.33.0, 0.34.0, 0.35.0, 0.37.2).
+- Whitelisting des hôtes review-alpha/-staging pour Charon-Egapro.
