@@ -1,61 +1,57 @@
-## Changelog : meet (30 derniers jours, au 21 juillet 2026)
+## Changelog : meet (30 derniers jours, au 22 juillet 2026)
 
 ### Résumé
-Ce mois-ci, la Suite Meet a bénéficié d'améliorations significatives en termes de fonctionnalités, notamment l'intégration d'outils additionnels lors de la création de réunions, l'amélioration de la gestion des noms d'utilisateurs SSO, et des corrections de bugs pour une meilleure stabilité. Des mises à jour de sécurité et des optimisations de performance ont également été apportées.
+Cette version apporte des améliorations significatives à la transcription, à la gestion des enregistrements, à l'intégration SSO, et à l'expérience utilisateur globale. Des corrections de bugs et des mises à jour de dépendances ont également été intégrées pour améliorer la stabilité et la sécurité de la plateforme. L'ajout de la prise en charge des add-ins pour les calendriers partagés est également une nouveauté notable.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité d'afficher des outils additionnels lors de la création de réunions dans les calendriers partagés.
-- Amélioration de la gestion des noms d'utilisateurs SSO : possibilité de forcer l'affichage du nom complet pour les utilisateurs authentifiés.
-- Correction d'un bug empêchant l'affichage correct des informations dans le panneau d'informations pour les salles non enregistrées.
-- Amélioration de l'accessibilité : focus du conteneur du panneau latéral lors de son ouverture et restauration du focus lors du changement de panneau.
-- Correction d'un bug empêchant l'assignation correcte des locuteurs lors de la transcription.
-- Ajout d'un gradient de couleur pour les participants lorsque leur caméra est désactivée.
-- Priorisation de l'affichage du partage d'écran en mode Picture-in-Picture.
-- Utilisation du layout "focus" pour le partage d'écran en Picture-in-Picture.
-- Correction d'un bug empêchant l'activation du bouton de partage d'écran en mode Picture-in-Picture.
+- Ajout d'un gradient de couleur pour les participants lorsque leur caméra est désactivée. [#1490](https://github.com/suitenumerique/meet/issues/1490)
+- Possibilité de forcer l'affichage du nom SSO pour les utilisateurs authentifiés.
+- Intégration d'outils d'add-in lors de la création de réunions dans les calendriers partagés.
+- Amélioration de la gestion des enregistrements avec un fallback LiveKit pour l'événement `egress_ended`.
+- Prise en charge de la recherche par email du propriétaire dans la table d'administration des enregistrements.
+- Amélioration de l'accessibilité du panneau latéral avec un focus correct sur l'ouverture et la commutation des panneaux.
+- Correction d'un bug qui empêchait l'interaction avec l'avertissement de partage d'écran en mode image dans l'image (PiP).
+- Correction d'un crash du panneau d'informations pour les salles non enregistrées.
+- Amélioration de la gestion des erreurs lors de l'utilisation de Whisper pour la transcription.
 
 ### Évolutions techniques
-- Mise à jour de plusieurs dépendances frontend (livekit-client, @tanstack/react-query, posthog-js, i18next, @mediapipe/tasks-vision).
-- Refactorisation de l'organisation des packages JavaScript frontend.
-- Intégration des poids des modèles MediaPipe directement dans le code pour éviter les chargements distants.
-- Installation de `vite-plugin-static-copy` pour les assets WASM de MediaPipe.
+- Refactorisation de la gestion des variables d'environnement.
 - Refactorisation des processeurs de fond pour utiliser la nouvelle API.
-- Mise à jour de la base d'image Alpine pour le service de résumé.
-- Mise à jour de la version de ffmpeg.
-- Mise à jour de la version de joserfc pour corriger une vulnérabilité CVE-2026-49852.
+- Intégration de modules MediaPipe WASM en ligne pour éviter les chargements distants.
+- Refactorisation du stockage du nom d'utilisateur.
 - Mise en place d'un système d'analyse configurable avec PostHog.
-- Ajout de la traçabilité des événements de génération de liens de réunion.
-- Amélioration de la gestion des variables d'environnement.
+- Mise à jour de l'image de base Alpine pour le service de résumé.
+- Mise à jour de ffmpeg vers la version 8.1.2.
+- Mise à jour de la version de Node.js pour la construction du frontend (Node 22).
 - Mise à jour de l'image Docker pour nginx.
-- Mise à jour de la version de Node.js utilisée pour la construction du frontend.
-- Correction d'un bug dans le script de construction des emails.
-- Normalisation des clés d'objets S3 pour la compatibilité avec les notifications.
+- Normalisation des clés d'objets S3 pour la compatibilité des notifications.
+- Amélioration de la gestion des jetons LiveKit pour utiliser le nom complet comme nom d'affichage.
+- Correction de la construction de l'application sur Scalingo.
 
 ### Autres changements
-- Documentation : correction du nom de la variable d'environnement CSS dans la documentation.
-- Documentation : ajout de Clever Cloud comme fournisseur SaaS pour La Suite Meet.
-- Documentation : clarification des directives de contribution.
-- Documentation : ajout d'une note concernant la suppression de la version v1 du résumé.
+- Documentation : Correction du nom de la variable d'environnement CSS dans la documentation.
+- Documentation : Ajout de Clever Cloud comme fournisseur SaaS de La Suite Meet.
+- Documentation : Clarification des directives de contribution.
+- Documentation : Précision de la généralisation française par le chef de produit.
+- Suppression du code lié à la version 1 du service de résumé.
+- Mise à jour des dépendances : `@mediapipe/tasks-vision`, `i18next`, `posthog-js`, `@tanstack/react-query`, `livekit-client`, `@pandacss/preset-panda`, `react-aria`, `react-aria-components`, `react-stately`.
+- Publication de la version 1.24.0.
+- Publication du chart Helm 0.0.27.
 - Suppression du tag "beta" pour les add-ons.
-- Ajout du badge DPG au README.
-- Mise à jour du fichier `CHANGELOG.md`.
-- Correction de la gestion des emails nuls dans les analyses.
-- Mise à jour du fichier Helm chart.
-- Correction de la configuration de Tilt pour le mapping des noms complets et courts.
-- Ajout de l'instrumentation Sentry pour les agents LiveKit.
-- Suppression du code lié à la version v1 du résumé.
-- Correction de la déduplication des emails (insensible à la casse) dans la commande de fusion.
-- Ajout de la prise en charge des cas d'utilisation Visio pour les routes v2 du résumé.
-- Refactorisation de l'authentification basée sur les tokens Bearer.
-- Ajout de la possibilité de rechercher les enregistrements par email du propriétaire.
-- Amélioration de l'espacement des vignettes en Picture-in-Picture.
-- Amélioration de l'accessibilité du contrôle de pagination.
-- Utilisation de "Avancé" au lieu de "Premium" dans le panneau latéral.
-- Ajout de la prise en charge d'un domaine dédié pour l'API des feature flags.
-- Rejet des tokens d'accès utilisateur sur l'API.
+- Correction d'un bug dans les tests d'attribution des intervenants pour la transcription.
+- Mise à jour de la version du lockfile UV via le script de préparation de la release.
+- Ajout d'instrumentation Sentry pour les agents LiveKit.
+- Mise à jour de joserfc à la version 1.6.8 pour corriger une CVE.
+- Mise à jour de mjml et @html-to/text-cli.
+- Ajout de la prise en charge de la recherche des utilisateurs provisionnés en externe dans PostHog.
+- Mise à jour de la documentation pour refléter les changements apportés à la compatibilité des clés S3.
+- Mise à jour des dépendances Python.
+- Correction de la déduplication des emails insensible à la casse dans la commande de fusion.
+- Ajout de la prise en charge d'un domaine dédié pour l'API des flags de fonctionnalité PostHog.
+- Rejet des jetons d'accès utilisateur sur l'API.
 - Mise à jour de la documentation pour la personnalisation du favicon via un volume mount.
-- Ajout de la compatibilité avec les clés S3 encodées avec des signes plus.
-- Ajout de docstrings pour les tests de parser.
+- Suppression de l'appel au flag de fonctionnalité `summary_enabled`.
+- Mise à jour de l'image de base pour le service de résumé.
+- Ajout de documentation pour les tests de l'analyseur S3.
 - Ajout de tests pour couvrir les clés S3 encodées avec des signes plus.
-- Mise à jour de l'image de base Alpine.
-- Mise à jour de la version de cryptography.
+- Mise à jour de la documentation du changelog.
