@@ -11,23 +11,38 @@
 ├── LICENSE
 ├── README.md
 ├── bun.lock
+├── config
+│   └── anct
+│       └── oidc_providers.yaml
 ├── examples
-│   └── edit_provider_fqdns
+│   ├── edit_provider_fqdns
+│   │   ├── README.md
+│   │   ├── compose.yaml
+│   │   ├── initdb.d
+│   │   │   └── provider.js
+│   │   ├── integration.test.ts
+│   │   └── oidc_providers.yaml
+│   └── oidc_clients
 │       ├── README.md
 │       ├── compose.yaml
 │       ├── initdb.d
-│       │   └── provider.js
-│       ├── integration.test.ts
-│       └── partners.yaml
+│       │   └── client.js
+│       └── integration.test.ts
 ├── package.json
-├── partners.yaml
 ├── src
 │   ├── app.test.ts
 │   ├── app.ts
 │   ├── config.test.ts
 │   ├── config.ts
+│   ├── crypt.test.ts
+│   ├── crypt.ts
 │   ├── index.ts
-│   ├── partners_config.test.ts
-│   └── partners_config.ts
+│   ├── oidc_clients.test.ts
+│   ├── oidc_clients.ts
+│   ├── oidc_providers.test.ts
+│   ├── oidc_providers.ts
+│   ├── oidc_providers_config.test.ts
+│   ├── oidc_providers_config.ts
+│   └── signature_middleware.ts
 └── tsconfig.json
-7 directories, 25 files
+11 directories, 36 files
