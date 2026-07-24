@@ -1,3 +1,28 @@
+2026-07-23T16:57:40+02:00 - 82f5526 - Florian Bonniec : fix(admin): fixed min length on competencies-blocks commentaire
+2026-07-23T16:29:54+02:00 - c10a444 - ThomasDos : ci(interop): add smoke job to reva-interop workflow
+2026-07-23T16:29:53+02:00 - 9970b25 - ThomasDos : refactor(interop): extract buildApp() factory from index entrypoint
+2026-07-23T16:29:53+02:00 - 2d81a9c - ThomasDos : test(interop): add hermetic HTTP smoke test for the REST API
+2026-07-23T16:08:14+02:00 - b48689f - Florian Bonniec : feat(admin): added formacode selection v2 for an AAP
+2026-07-23T14:20:43+02:00 - ed00dae - ThomasDos : fix(candidate): add certification id to query for feasibility-demat certification link
+2026-07-23T11:40:31+02:00 - a24a19e - ThomasDos : fix(admin): guard optional CERTIFICATEURS to avoid render crash when absent
+2026-07-23T11:26:56+02:00 - 458a2b3 - ThomasDos : feat(admin): show France Compétences certificateur(s) on add-certification description step
+2026-07-23T09:39:39+02:00 - 30f61af - fbonniec : Merge pull request #1064 from betagouv/dependabot/npm_and_yarn/packages/reva-website/immutable-5.1.9
+2026-07-22T21:35:46Z - 3d68fec - dependabot[bot] : chore(deps): bump immutable in /packages/reva-website
+2026-07-22T18:48:11+02:00 - ce9159f - fbonniec : Merge pull request #1063 from betagouv/dependabot/npm_and_yarn/packages/reva-api/axios-1.18.1
+2026-07-22T18:26:44+02:00 - 62389ef - Florian Bonniec : test(admin): added and updated tests for dematerialized-feasibility-file autonome
+2026-07-22T17:46:59+02:00 - 8dc6953 - Florian Bonniec : feat(api,admin,candidate): added df demat autonome feedbacks
+2026-07-22T17:46:59+02:00 - 0abbe5b - Florian Bonniec : fix(admin): fixed download link of attestation_sur_l_honneur_modele for feasibility-aap/sworn-statement page
+2026-07-22T14:59:18+02:00 - cf820ce - ThomasDos : feat(vae-collective): point footer contact link to Crisp help center
+2026-07-22T14:59:18+02:00 - 6d6bab2 - ThomasDos : feat(keycloak): point contact links to Crisp help center
+2026-07-22T14:59:17+02:00 - 513c03b - ThomasDos : feat(candidate): point contact links to Crisp help center
+2026-07-22T14:59:17+02:00 - 10d671e - ThomasDos : feat(admin): point contact links to Crisp help center
+2026-07-22T14:59:16+02:00 - add59b5 - ThomasDos : feat(website): redirect nous-contacter page to Crisp contact form
+2026-07-22T14:32:16+02:00 - 0cdbb3e - Alexandre Garbe : feat(api): added a migration to delete gestionnaire maison mere account from aap local accounts list
+2026-07-22T11:11:05+02:00 - 9bda22e - Florian Bonniec : fix(api): clean data if endAccompagnement is cancelled by candidate in updateCandidacyEndAccompagnementDecision feature
+2026-07-22T11:11:04+02:00 - 22eb00f - Florian Bonniec : fix(api): fixed updateCandidacyEndAccompagnementDecision feature
+2026-07-22T09:42:54+02:00 - 206d01b - ThomasDos : refactor(admin): extract shared certification-list side-menu helper
+2026-07-22T09:42:39+02:00 - bd1f47b - ThomasDos : refactor(admin): rename private CandidacyLayoutSideMenu to CandidaciesListSideMenu
+2026-07-22T09:42:28+02:00 - 6165e82 - ThomasDos : refactor(admin): remove dead status === "LOADING" branch in LayoutNotice
 2026-07-21T17:03:19+02:00 - fd7e61a - Alexandre Garbe : feat(candidate): renamed CertificationAuthorityContactInfoPage to CertificationAuthorityDetailsPage
 2026-07-21T17:03:19+02:00 - c58ef61 - Alexandre Garbe : feat(candidate): added a button to update the candidacy certification authority from the certification authority details page
 2026-07-21T17:03:19+02:00 - 661f179 - Alexandre Garbe : chore(candidate): moved multiple-certification-authorities-selection page to the (project) folder
@@ -10,6 +35,7 @@
 2026-07-21T13:35:34+02:00 - 9dce884 - Alexandre Garbe : feat(candidate): added mutltiple certification authorities selection list
 2026-07-21T13:35:34+02:00 - 89a0cb7 - Alexandre Garbe : feat(api): updated candidacy_updateCertificationAuthority security rules to allow a candidate to update its candidacies certification authorities
 2026-07-20T18:42:57+02:00 - 9948920 - Pierre A : feat(keycloak):add access protection disclaimer and minor changes to account activation emails
+2026-07-20T17:59:20Z - dea25e1 - dependabot[bot] : chore(deps): bump axios from 1.16.0 to 1.18.1 in /packages/reva-api
 2026-07-20T17:47:26+02:00 - 268a981 - ThomasDos : fix(api): remove archive condition in sendUniformationPaymentReminderToAAP script
 2026-07-20T16:52:33+02:00 - 8264da3 - Alexandre Garbe : Revert "fix(api): fixed a bug when a user want to change his password while having a database  account email address different than the one of his keycloak account"
 2026-07-20T16:49:12+02:00 - 7065496 - Alexandre Garbe : fix(candidate): fixed url of the multiple certification authority disclaimer page

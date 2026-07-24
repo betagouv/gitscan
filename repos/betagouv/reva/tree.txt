@@ -967,7 +967,9 @@
     │   │   │   │   │   │   │   │   │   │   ├── information
     │   │   │   │   │   │   │   │   │   │   │   ├── organismInformationOnSite.hook.ts
     │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
-    │   │   │   │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   │   │   │   ├── page.tsx
+    │   │   │   │   │   │   │   │   │   │   └── perimetre-accompagnement
+    │   │   │   │   │   │   │   │   │   │       └── page.tsx
     │   │   │   │   │   │   │   │   │   └── remote
     │   │   │   │   │   │   │   │   │       ├── formacodes-ccns-degrees
     │   │   │   │   │   │   │   │   │       │   └── page.tsx
@@ -975,7 +977,9 @@
     │   │   │   │   │   │   │   │   │       │   ├── informationRemote.hook.ts
     │   │   │   │   │   │   │   │   │       │   ├── informationRemoteFormSchema.ts
     │   │   │   │   │   │   │   │   │       │   └── page.tsx
-    │   │   │   │   │   │   │   │   │       └── page.tsx
+    │   │   │   │   │   │   │   │   │       ├── page.tsx
+    │   │   │   │   │   │   │   │   │       └── perimetre-accompagnement
+    │   │   │   │   │   │   │   │   │           └── page.tsx
     │   │   │   │   │   │   │   │   ├── _components
     │   │   │   │   │   │   │   │   │   ├── OrganismInformationForm.tsx
     │   │   │   │   │   │   │   │   │   ├── organismInformationForm.hook.ts
@@ -1787,6 +1791,8 @@
     │   │   │   │       │   └── GeneralInformationCard.tsx
     │   │   │   │       └── intervention-area-summary-card
     │   │   │   │           └── InterventionAreaSummaryCard.tsx
+    │   │   │   ├── certification-list-layout
+    │   │   │   │   └── certificationListSideMenu.ts
     │   │   │   ├── certifications
     │   │   │   │   ├── certification-additional-info-summary-card
     │   │   │   │   │   └── CertificationAdditionalInfoSummaryCard.tsx
@@ -2080,6 +2086,9 @@
     │   │   │       ├── [certificationId]
     │   │   │       │   └── structure
     │   │   │       │       └── update-certification-structure.spec.ts
+    │   │   │       ├── add-certification
+    │   │   │       │   └── description
+    │   │   │       │       └── add-certification-description.spec.ts
     │   │   │       └── certification-details.spec.ts
     │   │   ├── (certificateur)
     │   │   │   ├── candidacies
@@ -4537,6 +4546,10 @@
     │   │   │   │   └── migration.sql
     │   │   │   ├── 20260716120000_weight_certification_searchable_text_for_exact_objectifs_contexte_match
     │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260722121117_remove_gestionnaire_maison_mere_aap_accounts_from_maison_mere_aap_on_account_table
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260723131604_add_aap_formacode_selection_v2_feature_flag
+    │   │   │   │   └── migration.sql
     │   │   │   └── migration_lock.toml
     │   │   ├── schema.prisma
     │   │   └── seed
@@ -5476,6 +5489,7 @@
     │   ├── .eslintrc.json
     │   ├── .graphqlrc.js
     │   ├── .prettierrc.json
+    │   ├── app.ts
     │   ├── bruno
     │   │   ├── Authentification
     │   │   │   ├── Crée un compte d'utilisateur rattaché au gestionnaire de candidature passé en paramètre.bru
@@ -5528,7 +5542,8 @@
     │   ├── routes
     │   │   └── v1
     │   │       ├── __tests__
-    │   │       │   └── enumConsistency.test.ts
+    │   │       │   ├── enumConsistency.test.ts
+    │   │       │   └── smoke.test.ts
     │   │       ├── auth
     │   │       │   ├── README.md
     │   │       │   └── routes.ts
@@ -6241,4 +6256,4 @@
         ├── tsconfig.json
         └── types
             └── primitives.d.ts
-2095 directories, 4148 files
+2102 directories, 4156 files
