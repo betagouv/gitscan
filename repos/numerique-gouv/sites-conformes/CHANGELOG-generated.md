@@ -1,30 +1,30 @@
-## Changelog : sites-conformes (30 derniers jours, au 16 juillet 2026)
+## Changelog : sites-conformes (30 derniers jours, au 23 juillet 2026)
 
 ### Résumé
-Cette période a été marquée par d'importantes améliorations concernant la gestion des notifications, avec l'ajout d'un panneau d'information et la refactorisation du code existant. Des tests automatisés (E2E) ont également été implémentés pour améliorer la qualité et la stabilité du site. Des corrections de traductions et des ajustements mineurs ont été apportés pour améliorer l'expérience utilisateur et la maintenabilité du code.
+Cette période a été marquée par des améliorations significatives de l'expérience utilisateur, notamment l'ajout d'un système de notifications et l'amélioration de la gestion des traductions. Des efforts importants ont également été consacrés à l'amélioration de la qualité du code et à la mise en place de tests automatisés, en particulier des tests E2E avec Playwright.
 
 ### Évolutions fonctionnelles
-- Ajout d'un panneau d'information pour afficher des notifications aux utilisateurs. Ce panneau inclut une date de début, une date de fin et un lien vers plus d'informations. [#555](https://github.com/numerique-gouv/sites-conformes/issues/555)
-- Amélioration de la gestion des traductions, notamment pour les blocs d'images imbriqués, corrigeant ainsi une erreur 500 lors de la traduction de pages.
-- Ajout de la possibilité de choisir la balise de titre (heading) dans les blocs "stepper".
-- Ajout de tags avec un titre.
-- Amélioration de l'affichage des dates dans les entrées du bloc "événements récents".
+- Ajout d'un panneau de notifications pour informer les utilisateurs des événements importants. Ce panneau inclut une date de début, un lien vers plus d'informations et est internationalisé. [#555](https://github.com/numerique-gouv/sites-conformes/issues/555)
+- Amélioration de la gestion des traductions, notamment la correction d'erreurs et l'ajout de fichiers de traduction manquants.
+- Ajout de la possibilité de choisir la balise de titre (heading) sur les composants stepper.
+- Ajout d'une liste non ordonnée pour les tags.
+- Amélioration de l'affichage des dates dans les entrées récentes d'événements.
+- Ajout de la possibilité de choisir un titre pour les tags sélectionnés.
 
 ### Évolutions techniques
-- Implémentation de tests E2E (End-to-End) avec Playwright, incluant des tests visuels et une intégration continue (CI) pour détecter les régressions.
-- Refactorisation du code des notifications, améliorant la logique, ajoutant de la journalisation et configurant les forks.
-- Mise à jour de la version de tarteaucitronjs.
-- Utilisation de `manage.py` pour les commandes `makemessages` et `compilemessages` pour une meilleure cohérence.
-- Amélioration du script de restauration des médias locaux pour une meilleure gestion des erreurs et une sortie plus concise.
-- Dérivation de la version du projet à partir des métadonnées du package pour garantir une source unique de vérité.
-- Utilisation du composant de notification DSFR au lieu du CSS personnalisé.
+- Mise à jour des dépendances du projet. [#554](https://github.com/numerique-gouv/sites-conformes/issues/554)
+- Refonte de l'implémentation des notifications, incluant une meilleure organisation du code, l'ajout de logs et une configuration pour les différentes branches.
+- Utilisation de la version du package pour déterminer la version du site.
+- Mise en place de tests E2E avec Playwright, incluant des tests de régression visuelle et une configuration pour l'environnement CI.
+- Amélioration de la configuration et de l'exécution des tests Playwright pour éviter les blocages en CI.
+- Utilisation de `manage.py` pour les commandes de traduction.
+- Restructuration des scripts de gestion des médias locaux.
+- Simplification de la gestion des migrations.
 
 ### Autres changements
-- Ajout de traductions manquantes.
-- Mise à jour de la documentation pour proconnect après la packagification.
+- Ajout de traductions manquantes. [#553](https://github.com/numerique-gouv/sites-conformes/issues/553)
+- Mise à jour de la documentation pour le projet Proconnect. [#547](https://github.com/numerique-gouv/sites-conformes/issues/547)
 - Nettoyage du code et suppression de commentaires inutiles.
-- Correction de divers problèmes mineurs liés aux migrations et aux traductions.
+- Correction de problèmes de style CSS.
 - Ajout de commentaires et de documentation pour faciliter la maintenance du code.
-- Amélioration de la gestion des migrations.
-- Suppression de listes ordonnées inutiles dans les champs de flux.
-- Correction de l'alignement des divs dans les champs rich text.
+- Correction de bugs mineurs et améliorations de la performance.

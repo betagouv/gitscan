@@ -1,29 +1,39 @@
 {
   "url": "https://github.com/numerique-gouv/sites-conformes",
   "name": "sites-conformes",
-  "description": "Ce projet permet de créer et gérer des sites internet conformes aux normes numériques en vigueur, en utilisant Wagtail CMS et le Système de design de l’État.",
+  "description": "Ce projet est un gestionnaire de contenu permettant de créer et gérer des sites internet conformes aux normes numériques en vigueur, basé sur Wagtail CMS.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
-    "Authentification & Accès",
-    "Sécurité & Conformité",
     "Contenu éditorial",
-    "Interface utilisateur & Design"
+    "Sécurité & Conformité",
+    "Gestion des utilisateurs & Permissions"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
     "Wagtail",
     "django-dsfr",
-    "PostgreSQL"
+    "PostgreSQL",
+    "python-dotenv",
+    "dj-database-url",
+    "gunicorn",
+    "dj-static",
+    "whitenoise",
+    "wagtailmenus",
+    "wagtail-modeladmin",
+    "wagtail-markdown",
+    "psycopg2-binary",
+    "boto3"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "React / Next.js",
-    "TypeScript / JavaScript",
     "Python (scripts & backend)",
-    "Design System (DSFR)"
+    "Django",
+    "Wagtail",
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
@@ -31,10 +41,13 @@
     ]
   },
   "tests": [
-    "Playwright"
+    "Playwright",
+    "Tests E2E"
   ],
-  "workflows": [],
-  "lastActivity": "2026-07-16T15:20:10+02:00",
+  "workflows": [
+    "GitHub Actions"
+  ],
+  "lastActivity": "2026-07-23T15:06:47+00:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -45,13 +58,10 @@
     "openIssues": 50
   },
   "tags": [
-    "Données & Open Data",
-    "Écosystème beta.gouv / État",
-    "React & Next.js",
-    "TypeScript",
-    "Python",
-    "Bases de données SQL",
-    "Sécurité & Auth",
-    "Design System & UI"
+    "CMS",
+    "Django",
+    "DSFR",
+    "Gouvernement",
+    "Wagtail"
   ]
 }
