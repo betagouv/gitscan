@@ -745,8 +745,10 @@
 │   │   │   ├── 20260612162005-fill-empty-level-lba-jobs.ts
 │   │   │   ├── 20260618102545-cancel-jobs-partners-with-invalid-computed.ts
 │   │   │   ├── 20260626000000-update-diploma-labels-jobs-partners.ts
+│   │   │   ├── 20260702000000-remove-origin-from-cfas.ts
 │   │   │   ├── 20260716120000-remove-origin-from-rolemanagements.ts
-│   │   │   └── 20260717120000-normalize-userswithaccounts-origin.ts
+│   │   │   ├── 20260717120000-normalize-userswithaccounts-origin.ts
+│   │   │   └── 20260720104100-remove-opco-short-name.ts
 │   │   ├── security
 │   │   │   ├── accessLog.service.ts
 │   │   │   ├── accessLog.types.ts
@@ -1365,9 +1367,11 @@
 │   │   │   │   └── se-faire-accompagner
 │   │   │   │       └── page.tsx
 │   │   │   ├── guide-cfa
+│   │   │   │   ├── BandeauAuthentificationCfa.tsx
+│   │   │   │   ├── accompagner-vos-alternants
+│   │   │   │   │   └── page.tsx
 │   │   │   │   ├── const.ts
 │   │   │   │   ├── la-carte-etudiant-des-metiers
-│   │   │   │   │   ├── BandeauAuthentificationCfa.tsx
 │   │   │   │   │   └── page.tsx
 │   │   │   │   └── page.tsx
 │   │   │   ├── guide-recruteur
@@ -1438,6 +1442,8 @@
 │   │   │       │   │   ├── ConnectedHeaderNavigation.tsx
 │   │   │       │   │   ├── DetailEntreprise.tsx
 │   │   │       │   │   ├── DropdownCombobox.tsx
+│   │   │       │   │   ├── EntreprisesGereesParCfa.tsx
+│   │   │       │   │   ├── EntreprisesGereesParCfaMenu.tsx
 │   │   │       │   │   ├── FormulaireEditionOffre.tsx
 │   │   │       │   │   ├── FormulaireEditionOffreButtons.tsx
 │   │   │       │   │   ├── FormulaireEditionOffreFields.tsx
@@ -1507,6 +1513,10 @@
 │   │   │       │   │       ├── UsersList.tsx
 │   │   │       │   │       ├── [userId]
 │   │   │       │   │       │   ├── User.tsx
+│   │   │       │   │       │   ├── cfa
+│   │   │       │   │       │   │   └── [establishment_id]
+│   │   │       │   │       │   │       ├── AdminUserCfaEntreprisePage.tsx
+│   │   │       │   │       │   │       └── page.tsx
 │   │   │       │   │       │   ├── entreprise
 │   │   │       │   │       │   │   └── [establishment_id]
 │   │   │       │   │       │   │       └── offre
@@ -2140,7 +2150,9 @@
 │   │   │   │   │   ├── simulateur.svg
 │   │   │   │   │   └── tableau-de-suivi.svg
 │   │   │   │   ├── guide-cfa
-│   │   │   │   │   └── la-carte-etudiant-des-metiers.svg
+│   │   │   │   │   ├── accompagner-vos-alternants.svg
+│   │   │   │   │   ├── la-carte-etudiant-des-metiers.svg
+│   │   │   │   │   └── telechargement_affiche.png
 │   │   │   │   ├── guide-recruteur
 │   │   │   │   │   ├── aides-a-l-embauche-en-alternance.svg
 │   │   │   │   │   ├── cerfa-apprentissage-et-professionnalisation.svg
@@ -2490,6 +2502,7 @@
 │   │   │   ├── Tableau-de-suivi-des-candidatures_La-bonne-alternance_Excel.xlsx
 │   │   │   ├── Tableau-de-suivi-des-candidatures_La-bonne-alternance_LibreOffice.ods
 │   │   │   ├── Tableau-de-suivi-des-candidatures_La-bonne-alternance_Numbers.numbers
+│   │   │   ├── affiche-cfa-avril-2026.pdf
 │   │   │   └── carte-d-etudiant-des-metiers.zip
 │   │   └── styles
 │   │       ├── application.css
@@ -2575,4 +2588,4 @@
 │       └── useSearchParamsRecord.ts
 ├── vitest.config.ts
 └── yarn.lock
-487 directories, 2658 files
+490 directories, 2668 files

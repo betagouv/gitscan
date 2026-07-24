@@ -1,34 +1,52 @@
-## Changelog : labonnealternance (30 derniers jours, au 20 juillet 2026)
+## Changelog : labonnealternance (30 derniers jours, au 23 juillet 2026)
 
 ### Résumé
-Cette mise à jour apporte des améliorations significatives à l'expérience utilisateur, notamment sur les pages d'erreur, la gestion des comptes utilisateurs et le partage d'offres. Des corrections ont également été apportées pour améliorer la stabilité et la fiabilité de la plateforme, ainsi que des optimisations techniques pour la gestion des secrets et l'export des données.
+Cette version apporte des améliorations significatives à l'administration des entreprises de type CFA, à la gestion des notifications et des erreurs, ainsi qu'à l'expérience utilisateur globale. Des corrections ont été apportées pour améliorer la fiabilité et la performance de la plateforme, notamment concernant l'intégration avec des partenaires externes comme Hellowork et France Travail.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'affichage des erreurs, avec une refonte de la page d'erreur globale et de la page RDVA ([#4916](https://github.com/mission-apprentissage/labonnealternance/issues/4916)).
-- Clarification des libellés des actions de partage d'offre pour une meilleure compréhension des utilisateurs ([#4943](https://github.com/mission-apprentissage/labonnealternance/issues/4943)).
-- Blocage de la réactivation d'un compte utilisateur s'il est déjà actif sur une autre organisation ([#4890](https://github.com/mission-apprentissage/labonnealternance/issues/4890)).
-- Exclusion des offres GEIQ du rendu détaillé des offres partenaires ([#4930](https://github.com/mission-apprentissage/labonnealternance/issues/4930)).
-- Amélioration de l'affichage des informations relatives aux offres de GEIQ (emploi et formation) ([#4801](https://github.com/mission-apprentissage/labonnealternance/issues/4801)).
-- Mise à jour des visuels et des contenus de la page d'accueil candidat, de la landing page recruteurs, de la landing page CFA et de la page À propos ([#4824](https://github.com/mission-apprentissage/labonnealternance/issues/4824)).
-- Standardisation des modales pour une expérience utilisateur plus cohérente ([#4851](https://github.com/mission-apprentissage/labonnealternance/issues/4851)).
-- Activation de l'export des offres d'emploi ([#4920](https://github.com/mission-apprentissage/labonnealternance/issues/4920)).
-- Correction de l'écran de récapitulatif des intentions envoyées ([#4935](https://github.com/mission-apprentissage/labonnealternance/issues/4935)).
-- Amélioration du wording des niveaux d'étude ([#4869](https://github.com/mission-apprentissage/labonnealternance/issues/4869)).
+- Ajout d'un écran d'administration pour les entreprises de type CFA, permettant une gestion plus fine de ces entités. [#4974](https://github.com/mission-apprentissage/labonnealternance/issues/4974)
+- Publication d'un nouvel article guide pour les CFA. [#5026](https://github.com/mission-apprentissage/labonnealternance/issues/5026)
+- Adaptation du canevas des articles aux nouvelles recommandations du DSFR (Design System Fr). [#4995](https://github.com/mission-apprentissage/labonnealternance/issues/4995)
+- Suppression du champ "origin" des informations des CFA. [#4899](https://github.com/mission-apprentissage/labonnealternance/issues/4899)
+- Suppression du champ "origin" des rôles et normalisation des informations dans les comptes utilisateurs. [#4983](https://github.com/mission-apprentissage/labonnealternance/issues/4983)
+- Refonte de la page d'erreur globale et affichage des informations emploi et formation pour les offres de GEIQ. [#4916](https://github.com/mission-apprentissage/labonnealternance/issues/4916) et [#4801](https://github.com/mission-apprentissage/labonnealternance/issues/4801)
+- Refonte des intentions recruteurs (UI, jobs, emails). [#4866](https://github.com/mission-apprentissage/labonnealternance/issues/4866)
+- Amélioration du wording des niveaux d'étude. [#4869](https://github.com/mission-apprentissage/labonnealternance/issues/4869)
+- Possibilité de demander aux recruteurs s'ils souhaitent être accompagnés par un conseiller France Travail. [#4714](https://github.com/mission-apprentissage/labonnealternance/issues/4714)
+- Amélioration de la recherche ciblée des entreprises dans l'administration. [#4875](https://github.com/mission-apprentissage/labonnealternance/issues/4875)
+- Standardisation des modales. [#4851](https://github.com/mission-apprentissage/labonnealternance/issues/4851)
+- Blocage de la réinscription des recruteurs ayant un accès actif sur une autre organisation. [#4885](https://github.com/mission-apprentissage/labonnealternance/issues/4885)
+- Possibilité de mentionner des membres de l'équipe dans les notifications Slack. [#4967](https://github.com/mission-apprentissage/labonnealternance/issues/4967)
+- Correction de l'envoi des emails de rendez-vous. [#580](https://github.com/mission-apprentissage/labonnealternance/issues/580)
 
 ### Évolutions techniques
-- Suppression de l'origine du rôle "rolemanagements" et normalisation dans les comptes utilisateurs ([#4983](https://github.com/mission-apprentissage/labonnealternance/issues/4983)).
-- Correction du point de montage du volume Metabase pour l'environnement de prévisualisation ([#4981](https://github.com/mission-apprentissage/labonnealternance/issues/4981)).
-- Rotation du secret principal SOPS pour renforcer la sécurité ([#4939](https://github.com/mission-apprentissage/labonnealternance/issues/4939)).
-- Correction de l'utilisation de Sentry (type d'options et format extra) ([#4937](https://github.com/mission-apprentissage/labonnealternance/issues/4937)).
-- Correction de l'hydratation React sur les pages ville ([#4884](https://github.com/mission-apprentissage/labonnealternance/issues/4884)).
-- Masquage de la navigation LBA en mode widget et fluidification de l'animation du header au scroll ([#4891](https://github.com/mission-apprentissage/labonnealternance/issues/4891)).
-- Mise en place d'un flux dédié pour les offres confiées à France Travail ([#4831](https://github.com/mission-apprentissage/labonnealternance/issues/4831)).
-- Correction des tests Hellowork pour les aligner sur le caller hellowork-api ([#4927](https://github.com/mission-apprentissage/labonnealternance/issues/4927)).
-- Ajout de Maazi à la liste blanche ([#4863](https://github.com/mission-apprentissage/labonnealternance/issues/4863)).
+- Mise à jour de Metabase. [#5031](https://github.com/mission-apprentissage/labonnealternance/issues/5031)
+- Rotation du secret principal SOPS pour renforcer la sécurité. [#4939](https://github.com/mission-apprentissage/labonnealternance/issues/4939)
+- Correction du point de montage du volume Metabase pour l'environnement de prévisualisation. [#4981](https://github.com/mission-apprentissage/labonnealternance/issues/4981)
+- Suivi des actions des recruteurs sur les offres avec Matomo. [#4987](https://github.com/mission-apprentissage/labonnealternance/issues/4987)
+- Suppression du champ `opco_short_name` de la collection Opcos. [#4989](https://github.com/mission-apprentissage/labonnealternance/issues/4989)
+- Correction de l'utilisation de Sentry (type options et format extra). [#4937](https://github.com/mission-apprentissage/labonnealternance/issues/4937)
+- Activation de l'export des offres d'emploi XP FT. [#4920](https://github.com/mission-apprentissage/labonnealternance/issues/4920)
+- Correction de l'hydratation React sur les pages ville. [#4884](https://github.com/mission-apprentissage/labonnealternance/issues/4884)
 
 ### Autres changements
-- Renommage du fichier epic en epic.yml ([#4886](https://github.com/mission-apprentissage/labonnealternance/issues/4886)).
-- Création d'un template Epic pour le roadmap du projet GitHub ([#4878](https://github.com/mission-apprentissage/labonnealternance/issues/4878)).
-- Correction du texte de la page Espace développeur ([#4873](https://github.com/mission-apprentissage/labonnealternance/issues/4873)).
-- Désactivation temporaire de Sentry côté serveur pendant la migration ([#4871](https://github.com/mission-apprentissage/labonnealternance/issues/4871)).
-- Correction de l'envoi des emails RDV bloqués ([#580](https://github.com/mission-apprentissage/labonnealternance/issues/580)).
+- Mise à jour de la liste des CFA en blacklist. [#5030](https://github.com/mission-apprentissage/labonnealternance/issues/5030)
+- Correction de l'affichage des liens externes et des délimitations pour les comptes CFA. [#4926](https://github.com/mission-apprentissage/labonnealternance/issues/4926)
+- Correction de la déduplication Hellowork avec l'opérateur `substrCP`. [#4925](https://github.com/mission-apprentissage/labonnealternance/issues/4925)
+- Correction des tests Hellowork pour correspondre au caller hellowork-api. [#4927](https://github.com/mission-apprentissage/labonnealternance/issues/4927)
+- Mise à jour du texte de la page Espace développeur. [#4873](https://github.com/mission-apprentissage/labonnealternance/issues/4873)
+- Clarification des libellés des actions de partage d'offre. [#4943](https://github.com/mission-apprentissage/labonnealternance/issues/4943)
+- Correction de l'écran récapitulatif de l'intention envoyée. [#4935](https://github.com/mission-apprentissage/labonnealternance/issues/4935)
+- Blocage des AURLOM BTS+ Paris dans le filtre des employeurs CFA. [#5028](https://github.com/mission-apprentissage/labonnealternance/issues/5028)
+- Suppression des offres GEIQ du rendu PartnerJobDetail. [#4930](https://github.com/mission-apprentissage/labonnealternance/issues/4930)
+- Correction du nom du caller Hellowork API. [#4918](https://github.com/mission-apprentissage/labonnealternance/issues/4918)
+- Masquage de la navigation LBA en mode widget et fluidification de l'animation du header au scroll. [#4891](https://github.com/mission-apprentissage/labonnealternance/issues/4891)
+- Ajout de Maazi à la white list. [#4863](https://github.com/mission-apprentissage/labonnealternance/issues/4863)
+- Création d'un template Epic pour le roadmap GitHub. [#4878](https://github.com/mission-apprentissage/labonnealternance/issues/4878)
+- Renommage de `epic` en `epic.yml`. [#4886](https://github.com/mission-apprentissage/labonnealternance/issues/4886)
+- Transmission des offres confiées en flux dédié à France Travail. [#4831](https://github.com/mission-apprentissage/labonnealternance/issues/4831)
+- Correction du flux confié export France Travail (filtre expiration, plafond J+30, correspondant). [#4882](https://github.com/mission-apprentissage/labonnealternance/issues/4882)
+- Réactivation de Sentry après migration du serveur. [#4892](https://github.com/mission-apprentissage/labonnealternance/issues/4892)
+- Désactivation temporaire de Sentry côté serveur pendant la migration. [#4871](https://github.com/mission-apprentissage/labonnealternance/issues/4871)
+- Jobs déclenchables par un admin. [#4868](https://github.com/mission-apprentissage/labonnealternance/issues/4868)
+- cli fillComputed sur flux seulement. [#4854](https://github.com/mission-apprentissage/labonnealternance/issues/4854)
