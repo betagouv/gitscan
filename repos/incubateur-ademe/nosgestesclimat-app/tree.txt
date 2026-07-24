@@ -1224,15 +1224,6 @@
 │       │   │   ├── global-error.tsx
 │       │   │   └── not-found.tsx
 │       │   ├── components
-│       │   │   ├── AuthenticateUserForm
-│       │   │   │   ├── SendVerificationCodeForm.tsx
-│       │   │   │   ├── VerifyCodeForm
-│       │   │   │   │   ├── NotReceived
-│       │   │   │   │   │   ├── ResendButton.tsx
-│       │   │   │   │   │   └── index.tsx
-│       │   │   │   │   ├── VerificationContent.tsx
-│       │   │   │   │   └── index.tsx
-│       │   │   │   └── index.tsx
 │       │   │   ├── Link.tsx
 │       │   │   ├── actions
 │       │   │   │   ├── ActionCard
@@ -1252,6 +1243,35 @@
 │       │   │   │       └── ActionsPage.tsx
 │       │   │   ├── animations
 │       │   │   │   └── StaggeredCards.tsx
+│       │   │   ├── authentication
+│       │   │   │   ├── AuthProvider.tsx
+│       │   │   │   ├── AuthenticateUserForm.tsx
+│       │   │   │   ├── __tests__
+│       │   │   │   │   └── authMachine.test.ts
+│       │   │   │   ├── _hooks
+│       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   └── useLogin.test.ts
+│       │   │   │   │   ├── useAuthActions.ts
+│       │   │   │   │   ├── useAuthCodeCreation.ts
+│       │   │   │   │   ├── useAuthEffects.ts
+│       │   │   │   │   ├── useLogin.ts
+│       │   │   │   │   ├── usePersistentAuthPhase.ts
+│       │   │   │   │   └── useSecondsLeft.ts
+│       │   │   │   ├── authMachine.ts
+│       │   │   │   ├── authenticateUserForm
+│       │   │   │   │   ├── SendVerificationCodeForm.tsx
+│       │   │   │   │   ├── VerifyCodeForm.tsx
+│       │   │   │   │   └── verifyCodeForm
+│       │   │   │   │       ├── NotReceived.tsx
+│       │   │   │   │       ├── VerificationCodeForm.tsx
+│       │   │   │   │       ├── __tests__
+│       │   │   │   │       │   └── NotReceived.test.tsx
+│       │   │   │   │       └── notReceived
+│       │   │   │   │           ├── ResendButton.tsx
+│       │   │   │   │           └── __tests__
+│       │   │   │   │               └── ResendButton.test.tsx
+│       │   │   │   ├── errors.ts
+│       │   │   │   └── types.ts
 │       │   │   ├── charts
 │       │   │   │   ├── BilanChart.tsx
 │       │   │   │   ├── HorizontalBarChartItem.tsx
@@ -1457,7 +1477,6 @@
 │       │   │   │   ├── ExportDataButton.tsx
 │       │   │   │   ├── PollLoader.tsx
 │       │   │   │   ├── PollStatistics.tsx
-│       │   │   │   ├── VerificationCodeInput.tsx
 │       │   │   │   └── orgaStatistics
 │       │   │   │       ├── DetailedStatistics.tsx
 │       │   │   │       ├── FunFactsBlock.tsx
@@ -1600,7 +1619,6 @@
 │       │   │   │   └── Trackers.tsx
 │       │   │   ├── translation
 │       │   │   │   ├── LanguageSwitchButton.tsx
-│       │   │   │   ├── LanguageSwitchButtonClient.tsx
 │       │   │   │   ├── LocalisationBanner.tsx
 │       │   │   │   └── trans
 │       │   │   │       ├── TransClient.tsx
@@ -1724,7 +1742,6 @@
 │       │   │   │   │   ├── Pagination.stories.tsx
 │       │   │   │   │   └── Pagination.tsx
 │       │   │   │   └── banner
-│       │   │   │       ├── BannerLink.stories.tsx
 │       │   │   │       └── BannerLink.tsx
 │       │   │   ├── docs
 │       │   │   │   ├── Palette.stories.tsx
@@ -1854,7 +1871,8 @@
 │       │   │   │   ├── shareDataWithIntegrator.ts
 │       │   │   │   └── storageAccess.ts
 │       │   │   ├── language
-│       │   │   │   ├── getShouldBeLocalised.ts
+│       │   │   │   ├── getLocalePrefix.ts
+│       │   │   │   ├── getLocalizedPath.ts
 │       │   │   │   └── updateLangCookie.ts
 │       │   │   ├── localisation
 │       │   │   │   └── sortSupportedRegions.ts
@@ -1862,6 +1880,8 @@
 │       │   │   │   ├── getPost.ts
 │       │   │   │   └── getPosts.ts
 │       │   │   ├── metadata
+│       │   │   │   ├── __tests__
+│       │   │   │   │   └── getMetadataObject.test.ts
 │       │   │   │   ├── fakeMetadataT.ts
 │       │   │   │   ├── getCommonMetadata.ts
 │       │   │   │   └── getMetadataObject.ts
@@ -1929,10 +1949,6 @@
 │       │   │       ├── reconcileOnAuth.ts
 │       │   │       └── resetLocalState.ts
 │       │   ├── hooks
-│       │   │   ├── authentication
-│       │   │   │   ├── useCreateVerificationCode.ts
-│       │   │   │   ├── useLogin.ts
-│       │   │   │   └── usePendingVerification.ts
 │       │   │   ├── groups
 │       │   │   │   ├── __tests__
 │       │   │   │   │   ├── fixtures
@@ -1979,6 +1995,7 @@
 │       │   │   │   ├── useTrackPageview.ts
 │       │   │   │   ├── useTrackSimulator.ts
 │       │   │   │   └── useTrackTimeOnSimulation.ts
+│       │   │   ├── useAlternateLanguagePaths.ts
 │       │   │   ├── useClientTranslation.ts
 │       │   │   ├── useDebug.ts
 │       │   │   ├── useFeatureFlag.ts
@@ -2181,7 +2198,6 @@
 │       │   │   │   └── userProvider
 │       │   │   │       ├── context.ts
 │       │   │   │       ├── hooks
-│       │   │   │       │   ├── usePersistentPendingVerification.ts
 │       │   │   │       │   ├── usePersistentTutorials.ts
 │       │   │   │       │   └── usePersistentUser.ts
 │       │   │   │       └── provider.tsx
@@ -2190,6 +2206,8 @@
 │       │   │   ├── actions
 │       │   │   │   ├── __tests__
 │       │   │   │   │   └── themes.dto.test.ts
+│       │   │   │   ├── get-action-alternate-locales.ts
+│       │   │   │   ├── get-personalized-action-details.ts
 │       │   │   │   ├── get-personalized-actions-catalogue.ts
 │       │   │   │   ├── get-public-actions-catalogue.ts
 │       │   │   │   ├── get-themes.ts
@@ -2309,7 +2327,8 @@
 │       │       ├── getIsIframe.ts
 │       │       ├── isEmailValid.ts
 │       │       ├── nextjs
-│       │       │   └── isServerSide.ts
+│       │       │   ├── isServerSide.ts
+│       │       │   └── toSearchParams.ts
 │       │       ├── publicodes
 │       │       │   └── encodeRuleName.ts
 │       │       ├── removePercentageFromString.ts
@@ -2373,6 +2392,10 @@
 │       │   │   │   └── migration.sql
 │       │   │   ├── 20260622120000_anon_user_remove_name_add_simulations
 │       │   │   │   └── migration.sql
+│       │   │   ├── 20260716120000_add_action_translation
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20260723093738_add_action_translation_slug_index
+│       │   │   │   └── migration.sql
 │       │   │   └── migration_lock.toml
 │       │   ├── schema
 │       │   │   ├── ngc.prisma
@@ -2392,6 +2415,7 @@
 │       │   │   │   │   └── action-assessment.exception.ts
 │       │   │   │   ├── factories
 │       │   │   │   │   ├── action-assessment.factory.ts
+│       │   │   │   │   ├── action-translation.factory.ts
 │       │   │   │   │   ├── action.factory.ts
 │       │   │   │   │   ├── index.ts
 │       │   │   │   │   ├── seo-metadata.factory.ts
@@ -2403,6 +2427,7 @@
 │       │   │   │   ├── repositories
 │       │   │   │   │   ├── action-assessment.mapper.ts
 │       │   │   │   │   ├── action-assessments.repository.ts
+│       │   │   │   │   ├── action-translation.mapper.ts
 │       │   │   │   │   ├── action.mapper.ts
 │       │   │   │   │   ├── actions.repository.ts
 │       │   │   │   │   ├── seo-metadata.mapper.ts
@@ -2410,12 +2435,14 @@
 │       │   │   │   ├── services
 │       │   │   │   │   ├── __tests__
 │       │   │   │   │   │   ├── assess-actions.service.spec.ts
+│       │   │   │   │   │   ├── get-action-alternate-locales.service.spec.ts
 │       │   │   │   │   │   ├── get-action.service.spec.ts
 │       │   │   │   │   │   ├── get-personalized-action-details.service.spec.ts
 │       │   │   │   │   │   ├── get-personalized-actions-catalogue.service.spec.ts
 │       │   │   │   │   │   ├── get-public-actions-catalogue.service.spec.ts
 │       │   │   │   │   │   └── get-themes.service.spec.ts
 │       │   │   │   │   ├── assess-actions.service.ts
+│       │   │   │   │   ├── get-action-alternate-locales.service.ts
 │       │   │   │   │   ├── get-action.service.ts
 │       │   │   │   │   ├── get-personalized-action-details.service.ts
 │       │   │   │   │   ├── get-personalized-actions-catalogue.service.ts
@@ -2531,4 +2558,4 @@
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 └── tsconfig.json
-648 directories, 1930 files
+656 directories, 1949 files
