@@ -32,7 +32,7 @@
 │   │   ├── comparaison.rb
 │   │   ├── comptes.rb
 │   │   ├── dashboard.rb
-│   │   ├── evaluation.rb
+│   │   ├── evaluation_eva.rb
 │   │   ├── evaluation_evapro.rb
 │   │   ├── evenements.rb
 │   │   ├── footer.rb
@@ -231,7 +231,8 @@
 │   │   │   ├── cgu.js
 │   │   │   ├── code_postal_input.js
 │   │   │   ├── comparer_evaluations_positionnement.js
-│   │   │   ├── evaluation.js.erb
+│   │   │   ├── deplace_modales_dsfr.js
+│   │   │   ├── evaluation_eva.js.erb
 │   │   │   ├── filtres_dates.js
 │   │   │   ├── form_toggle_submit.js
 │   │   │   ├── hotjar.js.erb
@@ -276,6 +277,8 @@
 │   │       │   │   ├── _badge_acquisition.scss
 │   │       │   │   ├── _barre_segmentee.scss
 │   │       │   │   ├── _bilan_evapro.scss
+│   │       │   │   ├── _bloc_opco_partenaire.scss
+│   │       │   │   ├── _bloc_structure_invitation.scss
 │   │       │   │   ├── _bouton_menu_action.scss
 │   │       │   │   ├── _card.scss
 │   │       │   │   ├── _card_component.scss
@@ -429,6 +432,8 @@
 │   │   │   └── profil_component.rb
 │   │   ├── badge_component.html.erb
 │   │   ├── badge_component.rb
+│   │   ├── banniere_solutions_illettrisme_component.html.erb
+│   │   ├── banniere_solutions_illettrisme_component.rb
 │   │   ├── barre_segmentee_component.html.erb
 │   │   ├── barre_segmentee_component.rb
 │   │   ├── base_input_component.rb
@@ -565,6 +570,7 @@
 │   ├── controllers
 │   │   ├── admin
 │   │   │   ├── controle_syntheses_restitutions_controller.rb
+│   │   │   ├── evaluations_controller.rb
 │   │   │   ├── positionnement
 │   │   │   │   └── reponses_controller.rb
 │   │   │   └── ui_kit_controller.rb
@@ -977,6 +983,7 @@
 │       │   ├── dashboard
 │       │   │   ├── _modal_confirmation_cgu.html.erb
 │       │   │   ├── _modal_validation_comptes_en_attente.html.erb
+│       │   │   ├── _sidebar_structure.html.erb
 │       │   │   ├── _tableau_de_bord_eva.html.arb
 │       │   │   ├── _tableau_de_bord_eva_pro.html.arb
 │       │   │   ├── _tableau_de_bord_opco.html.arb
@@ -992,52 +999,48 @@
 │       │   │   │   ├── _bloc_questionnaires_entreprise.html.erb
 │       │   │   │   ├── _cinq_dernieres_evaluations.html.erb
 │       │   │   │   ├── _derniere_evaluation_complete.html.erb
-│       │   │   │   ├── _message_incitation_premier_questionnaire.html.erb
-│       │   │   │   └── _sidebar_opco.html.erb
-│       │   │   ├── mise_en_action
-│       │   │   │   ├── _avec_evaluations.html.erb
-│       │   │   │   ├── _bloc_evaluations_sans_mise_en_action.arb
-│       │   │   │   └── _sans_evaluations.arb
-│       │   │   └── opco
-│       │   │       └── _sidebar_opco.html.erb
+│       │   │   │   └── _message_incitation_premier_questionnaire.html.erb
+│       │   │   └── mise_en_action
+│       │   │       ├── _avec_evaluations.html.erb
+│       │   │       ├── _bloc_evaluations_sans_mise_en_action.arb
+│       │   │       └── _sans_evaluations.arb
 │       │   ├── evaluations
-│       │   │   ├── _form.html.arb
-│       │   │   ├── _index.html.arb
 │       │   │   ├── _informations_complementaires.arb
 │       │   │   ├── _lien.html.erb
-│       │   │   ├── _panel_administration.html.arb
+│       │   │   └── _panel_administration.html.arb
+│       │   ├── evaluations_eva
+│       │   │   ├── _beneficiaire.erb
+│       │   │   ├── _communication_ecrite.arb
+│       │   │   ├── _competence_niveau1.arb
+│       │   │   ├── _correspondance_anlci.arb
+│       │   │   ├── _deroulement_passation.arb
+│       │   │   ├── _details_evaluation.html.arb
+│       │   │   ├── _donnees_sociodemographiques.arb
+│       │   │   ├── _entete_page.erb
+│       │   │   ├── _form.html.arb
+│       │   │   ├── _index.html.arb
+│       │   │   ├── _litteratie.erb
+│       │   │   ├── _litteratie_numeratie_niveau1.arb
+│       │   │   ├── _litteratie_numeratie_synthese.arb
+│       │   │   ├── _menu_sidebar.html.arb
+│       │   │   ├── _metacompetences.arb
+│       │   │   ├── _pied_page.arb
+│       │   │   ├── _prise_en_main.arb
+│       │   │   ├── _questionnaire_autopositionnement.arb
+│       │   │   ├── _questions.arb
+│       │   │   ├── _questions_reponses_autopositionnement.arb
+│       │   │   ├── _recherche_responsable_suivi.html.erb
+│       │   │   ├── _referentiel_europeen.arb
+│       │   │   ├── _restitution_globale.arb
+│       │   │   ├── _sante.arb
 │       │   │   ├── _show.html.arb
-│       │   │   ├── eva
-│       │   │   │   ├── _communication_ecrite.arb
-│       │   │   │   ├── _competence_niveau1.arb
-│       │   │   │   ├── _correspondance_anlci.arb
-│       │   │   │   ├── _deroulement_passation.arb
-│       │   │   │   ├── _details_evaluation.html.arb
-│       │   │   │   ├── _donnees_sociodemographiques.arb
-│       │   │   │   ├── _entete_page.erb
-│       │   │   │   ├── _evaluation_eva.html.arb
-│       │   │   │   ├── _litteratie.erb
-│       │   │   │   ├── _litteratie_numeratie_niveau1.arb
-│       │   │   │   ├── _litteratie_numeratie_synthese.arb
-│       │   │   │   ├── _menu_sidebar.html.arb
-│       │   │   │   ├── _metacompetences.arb
-│       │   │   │   ├── _pied_page.arb
-│       │   │   │   ├── _prise_en_main.arb
-│       │   │   │   ├── _questionnaire_autopositionnement.arb
-│       │   │   │   ├── _questions.arb
-│       │   │   │   ├── _questions_reponses_autopositionnement.arb
-│       │   │   │   ├── _recherche_responsable_suivi.html.erb
-│       │   │   │   ├── _referentiel_europeen.arb
-│       │   │   │   ├── _restitution_globale.arb
-│       │   │   │   ├── _sante.arb
-│       │   │   │   ├── _suivi_accompagnement_illettrisme.erb
-│       │   │   │   ├── _telechargement_reponses.erb
-│       │   │   │   └── positionnement
-│       │   │   │       └── _sous_competences.erb
+│       │   │   ├── _suivi_accompagnement_illettrisme.erb
+│       │   │   ├── _telechargement_reponses.erb
+│       │   │   ├── positionnement
+│       │   │   │   └── _sous_competences.erb
 │       │   │   └── show.pdf.erb
 │       │   ├── evaluations_evapro
 │       │   │   ├── _aller_plus_loin.erb
-│       │   │   ├── _beneficiaire.erb
 │       │   │   ├── _bilan_evapro.erb
 │       │   │   ├── _continuer_evaluation_evapro.erb
 │       │   │   ├── _definitions_des_impacts.erb
@@ -1059,6 +1062,7 @@
 │       │   ├── import_xls
 │       │   │   └── _form.html.erb
 │       │   ├── opcos
+│       │   │   ├── _bloc_opco_partenaire.html.erb
 │       │   │   ├── _form.html.arb
 │       │   │   ├── _form_visuel_offre_services.html.arb
 │       │   │   └── _show.html.arb
@@ -1108,6 +1112,7 @@
 │       │   │   ├── _input_situations_configurations.html.arb
 │       │   │   └── _liste_situations_configurations.html.arb
 │       │   ├── structures
+│       │   │   ├── _bloc_structure_invitation.html.erb
 │       │   │   ├── _card_validation.html.erb
 │       │   │   ├── _cards_validation.html.erb
 │       │   │   ├── _membres.html.erb
@@ -1129,6 +1134,7 @@
 │       │   └── ui_kit
 │       │       ├── _entete_ui_kit.html.erb
 │       │       ├── badge.html.erb
+│       │       ├── banniere_solutions_illettrisme.html.erb
 │       │       ├── barre_segmentee.html.erb
 │       │       ├── bilan_eva_pro.html.erb
 │       │       ├── bouton_copier.html.erb
@@ -1180,7 +1186,6 @@
 │       │       └── _situation_configuration.json.jbuilder
 │       ├── components
 │       │   ├── _banniere_confirmation_email.html.arb
-│       │   ├── _banniere_solutions_illettrisme.html.erb
 │       │   ├── _bouton_menu_actions.html.arb
 │       │   ├── _card_parcours_type.html.arb
 │       │   ├── _footer.html.erb
@@ -1314,6 +1319,7 @@
 │   │   ├── ancestry.yml
 │   │   ├── components
 │   │   │   ├── badge_acquisition.yml
+│   │   │   ├── banniere_solutions_illettrisme.yml
 │   │   │   ├── barre_segmentee.yml
 │   │   │   ├── bilan_eva_pro.yml
 │   │   │   ├── evaluation
@@ -1348,6 +1354,7 @@
 │   │   │   ├── choix.yml
 │   │   │   ├── compte.yml
 │   │   │   ├── evaluation.yml
+│   │   │   ├── evaluation_eva.yml
 │   │   │   ├── evaluation_evapro.yml
 │   │   │   ├── evenement.yml
 │   │   │   ├── import_export
@@ -1371,6 +1378,8 @@
 │   │       ├── actualites.yml
 │   │       ├── aide.yml
 │   │       ├── beneficiaire.yml
+│   │       ├── bloc_opco_partenaire.yml
+│   │       ├── bloc_structure_invitation.yml
 │   │       ├── campagnes.yml
 │   │       ├── comparaison.yml
 │   │       ├── components.yml
@@ -1380,6 +1389,7 @@
 │   │       ├── demo.yml
 │   │       ├── erreurs.yml
 │   │       ├── evaluations.yml
+│   │       ├── evaluations_eva.yml
 │   │       ├── evaluations_evapro.yml
 │   │       ├── import_xls.yml
 │   │       ├── informations_complementaires.yml
@@ -1388,6 +1398,7 @@
 │   │       │   └── inscription_v2.yml
 │   │       ├── litteratie.yml
 │   │       ├── mailer.yml
+│   │       ├── modal_invitation.yml
 │   │       ├── nouveaux_comptes.yml
 │   │       ├── numeratie.yml
 │   │       ├── parcours_type.yml
@@ -1859,6 +1870,7 @@
 ├── spec
 │   ├── components
 │   │   ├── badge_component_spec.rb
+│   │   ├── banniere_solutions_illettrisme_component_spec.rb
 │   │   ├── barre_segmentee_component_spec.rb
 │   │   ├── bouton_copier_component_spec.rb
 │   │   ├── card_diagnostique_component_spec.rb
@@ -1885,8 +1897,9 @@
 │   │   │   ├── campagnes_controller_json_spec.rb
 │   │   │   ├── campagnes_controller_spec.rb
 │   │   │   ├── comptes_controller_spec.rb
-│   │   │   ├── evaluations_controller_spec.rb
-│   │   │   ├── evaluations_controller_xls_spec.rb
+│   │   │   ├── evaluations_eva_controller_spec.rb
+│   │   │   ├── evaluations_evapro_controller_spec.rb
+│   │   │   ├── evaluations_evapro_controller_xls_spec.rb
 │   │   │   ├── positionnement
 │   │   │   │   └── reponses_controller_spec.rb
 │   │   │   ├── structures_controller_spec.rb
@@ -1895,12 +1908,11 @@
 │   │   │   ├── evaluations
 │   │   │   │   ├── collections_evenements_controller_spec.rb
 │   │   │   │   └── fins_controller_spec.rb
-│   │   │   └── evaluations_controller_spec.rb
+│   │   │   ├── evaluations_controller_spec.rb
+│   │   │   └── evenements_controller_spec.rb
 │   │   ├── eva
 │   │   │   └── devise
-│   │   │       └── session_controller_spec.rb
-│   │   ├── evaluations_controller_spec.rb
-│   │   ├── evenements_controller_spec.rb
+│   │   │       └── sessions_controller_spec.rb
 │   │   └── inscription
 │   │       ├── nouveaux_comptes_controller_spec.rb
 │   │       ├── recherche_structures_controller_spec.rb
@@ -1938,9 +1950,10 @@
 │   │   │   ├── compte_spec.rb
 │   │   │   ├── controle_syntheses_restitutions_spec.rb
 │   │   │   ├── dashboard_spec.rb
+│   │   │   ├── evaluation_eva_pdf_spec.rb
+│   │   │   ├── evaluation_eva_spec.rb
+│   │   │   ├── evaluation_evapro_pdf_spec.rb
 │   │   │   ├── evaluation_evapro_spec.rb
-│   │   │   ├── evaluation_pdf_spec.rb
-│   │   │   ├── evaluation_spec.rb
 │   │   │   ├── evenement_spec.rb
 │   │   │   ├── import_xls_spec.rb
 │   │   │   ├── index_spec.rb
@@ -1955,7 +1968,7 @@
 │   │   │   ├── question_sous_consigne_spec.rb
 │   │   │   ├── questionnaire_spec.rb
 │   │   │   ├── reset_mot_de_passe_spec.rb
-│   │   │   ├── restitution_spec.rb
+│   │   │   ├── restitution_eva_spec.rb
 │   │   │   ├── session_spec.rb
 │   │   │   ├── situation_spec.rb
 │   │   │   ├── structure_administrative_spec.rb
@@ -2001,9 +2014,9 @@
 │   │   ├── restitution
 │   │   │   ├── globale_spec.rb
 │   │   │   ├── livraison_spec.rb
-│   │   │   └── maintenance_spec.rb
+│   │   │   ├── maintenance_spec.rb
+│   │   │   └── standardisateur_spec.rb
 │   │   ├── situation_configuration_spec.rb
-│   │   ├── standardisateur_spec.rb
 │   │   └── structure_spec.rb
 │   ├── jobs
 │   │   ├── anonymisation_beneficiaires_job_spec.rb
@@ -2016,7 +2029,7 @@
 │   │   ├── relance_structure_sans_campagne_job_spec.rb
 │   │   ├── relance_utilisateur_pour_non_activation_job_spec.rb
 │   │   └── structure
-│   │       └── assigne_job_spec.rb
+│   │       └── assigne_region_job_spec.rb
 │   ├── lib
 │   │   ├── active_admin
 │   │   │   └── actions_items_sidebar
@@ -2031,7 +2044,7 @@
 │   │   ├── previews
 │   │   │   ├── compte_mailer_preview.rb
 │   │   │   └── structure_preview.rb
-│   │   └── structure_spec.rb
+│   │   └── structure_mailer_spec.rb
 │   ├── models
 │   │   ├── ability_opco_restrictions_spec.rb
 │   │   ├── actualite_spec.rb
@@ -2052,7 +2065,7 @@
 │   │   │   ├── etape_inscription_spec.rb
 │   │   │   └── fichier_spec.rb
 │   │   ├── conditions_passation_spec.rb
-│   │   ├── donnees_sociodemographique_spec.rb
+│   │   ├── donnee_sociodemographique_spec.rb
 │   │   ├── envoi_invitation_service_spec.rb
 │   │   ├── evaluation
 │   │   │   └── context_spec.rb
@@ -2187,7 +2200,7 @@
 │   │   │   │   ├── moyenne_spec.rb
 │   │   │   │   ├── temps_normalises_spec.rb
 │   │   │   │   └── temps_passe_par_question_spec.rb
-│   │   │   ├── objet_trouves_spec.rb
+│   │   │   ├── objets_trouves_spec.rb
 │   │   │   ├── place_du_marche_spec.rb
 │   │   │   ├── positionnement
 │   │   │   │   ├── export_litteratie_spec.rb
@@ -2201,7 +2214,7 @@
 │   │   │   │   ├── attention_concentration_spec.rb
 │   │   │   │   ├── attention_visuo_spaciale_spec.rb
 │   │   │   │   ├── delai_ouvertures_zones_dangers_spec.rb
-│   │   │   │   ├── nombre_dangers_bien_identifies_avant_aide_1_spec.rb
+│   │   │   │   ├── nombre_dangers_bien_identifies_avant_aide1_spec.rb
 │   │   │   │   ├── nombre_dangers_bien_identifies_spec.rb
 │   │   │   │   ├── nombre_dangers_bien_qualifies_spec.rb
 │   │   │   │   ├── nombre_dangers_mal_identifies_spec.rb
@@ -2239,7 +2252,8 @@
 │   ├── rails_helper.rb
 │   ├── requests
 │   │   ├── admin
-│   │   │   └── evaluation_evapro_spec.rb
+│   │   │   ├── evaluation_evapro_spec.rb
+│   │   │   └── evaluations_spec.rb
 │   │   ├── beneficiaire_spec.rb
 │   │   ├── beneficiaires_spec.rb
 │   │   ├── campagnes_spec.rb
@@ -2250,6 +2264,7 @@
 │   │   ├── evaluations
 │   │   │   ├── collections_evenements_spec.rb
 │   │   │   └── fin_evaluations_spec.rb
+│   │   ├── evaluations_eva_spec.rb
 │   │   ├── evaluations_spec.rb
 │   │   ├── evenements_spec.rb
 │   │   ├── inscription_informations_compte_spec.rb
@@ -2316,4 +2331,4 @@
 │   └── .keep
 └── vendor
     └── .keep
-335 directories, 2037 files
+334 directories, 2053 files
