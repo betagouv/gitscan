@@ -1,0 +1,537 @@
+.
+├── .dockerignore
+├── .github
+│   ├── ISSUE_TEMPLATE
+│   │   ├── Bug_report.md
+│   │   ├── Feature_request.md
+│   │   └── Support_question.md
+│   ├── ISSUE_TEMPLATE.md
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   ├── actions
+│   │   └── yarn-setup
+│   │       └── action.yml
+│   └── workflows
+│       ├── _docker-publish.yml
+│       ├── backend.yml
+│       ├── docker-hub.yml
+│       ├── frontend.yml
+│       └── security.yml
+├── .gitignore
+├── .gitlint
+├── CHANGELOG.md
+├── CONTRIBUTING.md
+├── Dockerfile
+├── LICENSE
+├── Makefile
+├── README.md
+├── UPGRADE.md
+├── bin
+│   ├── Tiltfile
+│   ├── _config.sh
+│   ├── compose
+│   ├── manage
+│   ├── pylint
+│   ├── pytest
+│   ├── start-kind.sh
+│   ├── state
+│   ├── terraform
+│   └── update_openapi_schema
+├── docker
+│   ├── auth
+│   │   └── realm.json
+│   └── files
+│       ├── etc
+│       │   └── nginx
+│       │       └── conf.d
+│       │           └── default.conf
+│       └── usr
+│           └── local
+│               ├── bin
+│               │   └── entrypoint
+│               └── etc
+│                   └── gunicorn
+│                       └── main.py
+├── docker-compose.yml
+├── docs
+│   ├── drive-migrator-schema.png
+│   └── tsclient.md
+├── env.d
+│   └── development
+│       ├── common.dist
+│       ├── common.e2e.dist
+│       ├── kc_postgresql.dist
+│       └── postgresql.dist
+├── gitlint
+│   └── gitlint_emoji.py
+├── renovate.json
+├── scripts
+│   └── install-hooks.sh
+└── src
+    ├── backend
+    │   ├── .gitignore
+    │   ├── .pylintrc
+    │   ├── MANIFEST.in
+    │   ├── __init__.py
+    │   ├── core
+    │   │   ├── __init__.py
+    │   │   ├── admin.py
+    │   │   ├── api
+    │   │   │   ├── __init__.py
+    │   │   │   ├── fields.py
+    │   │   │   ├── filters.py
+    │   │   │   ├── permissions.py
+    │   │   │   ├── serializers.py
+    │   │   │   ├── views
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── available_destinations.py
+    │   │   │   │   ├── dev.py
+    │   │   │   │   ├── error.py
+    │   │   │   │   ├── feature_flags.py
+    │   │   │   │   ├── migration_config.py
+    │   │   │   │   ├── resana_auth.py
+    │   │   │   │   ├── resana_email_mapping.py
+    │   │   │   │   ├── synchronize.py
+    │   │   │   │   ├── workspaces.py
+    │   │   │   │   └── workspaces_process.py
+    │   │   │   └── viewsets.py
+    │   │   ├── apps.py
+    │   │   ├── authentication
+    │   │   │   ├── __init__.py
+    │   │   │   ├── backends.py
+    │   │   │   ├── urls.py
+    │   │   │   └── views.py
+    │   │   ├── backends
+    │   │   │   ├── __init__.py
+    │   │   │   ├── destination.py
+    │   │   │   └── source.py
+    │   │   ├── destinations
+    │   │   │   ├── __init__.py
+    │   │   │   ├── archive
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   └── backend.py
+    │   │   │   ├── drive
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── backend.py
+    │   │   │   │   └── drive_backend.py
+    │   │   │   └── resana
+    │   │   │       ├── __init__.py
+    │   │   │       ├── backend.py
+    │   │   │       ├── resana_backend.py
+    │   │   │       └── s3_resana_manager.py
+    │   │   ├── encryption.py
+    │   │   ├── enums.py
+    │   │   ├── factories.py
+    │   │   ├── mails_manager.py
+    │   │   ├── management
+    │   │   │   ├── __init__.py
+    │   │   │   └── commands
+    │   │   │       ├── __init__.py
+    │   │   │       ├── celery_liveness.py
+    │   │   │       ├── celery_readiness.py
+    │   │   │       ├── dev_compare_logs.py
+    │   │   │       ├── dev_format_resana_csv.py
+    │   │   │       ├── dev_mount_resana_csv.py
+    │   │   │       ├── mappings_resana_nv.csv
+    │   │   │       ├── mappings_resana_nv.new.csv
+    │   │   │       ├── refresh_resana_jobs.py
+    │   │   │       └── set_workspaces_status_none.py
+    │   │   ├── migrations
+    │   │   │   ├── 0001_initial.py
+    │   │   │   ├── 0002_alter_user_language_extrataskinfo.py
+    │   │   │   ├── 0003_workspace_alter_user_language.py
+    │   │   │   ├── 0004_user_workspaces_alter_user_language.py
+    │   │   │   ├── 0005_remove_extrataskinfo_workspace_id_and_more.py
+    │   │   │   ├── 0006_workspace_status_archive_workspace_status_resana_and_more.py
+    │   │   │   ├── 0007_workspace_resana_id_alter_user_language.py
+    │   │   │   ├── 0008_workspace_job_id_alter_user_language_and_more.py
+    │   │   │   ├── 0009_rename_job_id_workspace_resana_job_id_and_more.py
+    │   │   │   ├── 0010_workspace_migration_user_alter_user_language.py
+    │   │   │   ├── 0011_extrataskinfo_user_alter_user_language.py
+    │   │   │   ├── 0012_workspace_archive_path_alter_user_language.py
+    │   │   │   ├── 0013_featureflag_alter_user_language.py
+    │   │   │   ├── 0014_alter_featureflag_name_alter_user_language.py
+    │   │   │   ├── 0015_resanaemailmapping_alter_user_language.py
+    │   │   │   ├── 0016_alter_resanaemailmapping_domain_alter_user_language.py
+    │   │   │   ├── 0017_workspace_resana_files_error_and_more.py
+    │   │   │   ├── 0018_remove_workspace_archive_path_and_more.py
+    │   │   │   ├── 0019_alter_user_language.py
+    │   │   │   ├── 0020_workspace_members_alter_user_language_and_more.py
+    │   │   │   ├── 0021_user_oidc_tokens.py
+    │   │   │   ├── 0022_user_resana_access_token_user_resana_refresh_token_and_more.py
+    │   │   │   ├── 0023_add_auto_validate_new_users_feature_flag.py
+    │   │   │   ├── 0024_workspace_is_truncated_alter_user_language.py
+    │   │   │   └── __init__.py
+    │   │   ├── models.py
+    │   │   ├── osmose
+    │   │   │   └── __init__.py
+    │   │   ├── permissions
+    │   │   │   ├── __init__.py
+    │   │   │   ├── base.py
+    │   │   │   ├── models.py
+    │   │   │   ├── policy.py
+    │   │   │   └── user_resolver.py
+    │   │   ├── processing
+    │   │   │   ├── __init__.py
+    │   │   │   ├── folder_creator.py
+    │   │   │   ├── folder_helper.py
+    │   │   │   └── tasks.py
+    │   │   ├── sources
+    │   │   │   ├── __init__.py
+    │   │   │   ├── filesystem.py
+    │   │   │   ├── osmose
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── backend.py
+    │   │   │   │   ├── osmose_backend.py
+    │   │   │   │   ├── osmose_dummy_backend.py
+    │   │   │   │   ├── osmose_real_backend.py
+    │   │   │   │   └── serializers.py
+    │   │   │   └── resana
+    │   │   │       ├── __init__.py
+    │   │   │       ├── backend.py
+    │   │   │       ├── interstis_client.py
+    │   │   │       ├── resana_members_client.py
+    │   │   │       ├── token_manager.py
+    │   │   │       └── urls.py
+    │   │   ├── static
+    │   │   │   └── images
+    │   │   │       ├── logo-suite-numerique.png
+    │   │   │       └── mail-header-background.png
+    │   │   ├── templates
+    │   │   │   └── admin
+    │   │   │       └── workspace_retry_failed.html
+    │   │   ├── templatetags
+    │   │   │   ├── __init__.py
+    │   │   │   └── extra_tags.py
+    │   │   ├── tests
+    │   │   │   ├── __init__.py
+    │   │   │   ├── authentication
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── test_backends.py
+    │   │   │   │   ├── test_urls.py
+    │   │   │   │   └── test_views.py
+    │   │   │   ├── backends
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── test_destination_contract.py
+    │   │   │   │   ├── test_destination_registry.py
+    │   │   │   │   ├── test_source.py
+    │   │   │   │   ├── test_source_contract.py
+    │   │   │   │   └── test_source_manager.py
+    │   │   │   ├── destinations
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── drive
+    │   │   │   │   │   ├── __init__.py
+    │   │   │   │   │   ├── test_drive_backend.py
+    │   │   │   │   │   └── test_drive_destination.py
+    │   │   │   │   ├── test_archive.py
+    │   │   │   │   ├── test_resana.py
+    │   │   │   │   └── test_resana_refresh_job.py
+    │   │   │   ├── models
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   └── test_workspace.py
+    │   │   │   ├── osmose
+    │   │   │   │   ├── test_osmose_file.py
+    │   │   │   │   └── test_osmose_page_walker.py
+    │   │   │   ├── permissions
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── test_base.py
+    │   │   │   │   ├── test_models.py
+    │   │   │   │   ├── test_policy.py
+    │   │   │   │   └── test_user_resolver.py
+    │   │   │   ├── processing
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── test_export_task.py
+    │   │   │   │   ├── test_folder_creator.py
+    │   │   │   │   └── test_folder_helper.py
+    │   │   │   ├── sources
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── osmose
+    │   │   │   │   │   ├── __init__.py
+    │   │   │   │   │   └── test_osmose_backend.py
+    │   │   │   │   ├── resana
+    │   │   │   │   │   ├── __init__.py
+    │   │   │   │   │   ├── test_interstis_client.py
+    │   │   │   │   │   ├── test_resana_backend.py
+    │   │   │   │   │   ├── test_resana_members_client.py
+    │   │   │   │   │   └── test_token_manager.py
+    │   │   │   │   └── test_filesystem.py
+    │   │   │   ├── swagger
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   └── test_openapi_schema.py
+    │   │   │   ├── test_api_available_destinations.py
+    │   │   │   ├── test_api_migration_config.py
+    │   │   │   ├── test_api_resana_auth.py
+    │   │   │   ├── test_api_users.py
+    │   │   │   ├── test_api_workspaces.py
+    │   │   │   ├── test_api_workspaces_process.py
+    │   │   │   ├── test_encryption.py
+    │   │   │   ├── test_mails_manager.py
+    │   │   │   └── test_models_user.py
+    │   │   ├── urls.py
+    │   │   └── utils.py
+    │   ├── demo
+    │   │   ├── __init__.py
+    │   │   ├── data
+    │   │   │   └── template
+    │   │   │       ├── code.txt
+    │   │   │       └── css.txt
+    │   │   ├── defaults.py
+    │   │   ├── generate_demo_data.py
+    │   │   ├── management
+    │   │   │   ├── __init__.py
+    │   │   │   └── commands
+    │   │   │       ├── __init__.py
+    │   │   │       ├── create_demo.py
+    │   │   │       └── createsuperuser.py
+    │   │   └── tests
+    │   │       └── __init__.py
+    │   ├── locale
+    │   │   └── .gitkeep
+    │   ├── main
+    │   │   ├── __init__.py
+    │   │   ├── bootstraps.py
+    │   │   ├── celery_app.py
+    │   │   ├── settings.py
+    │   │   ├── urls.py
+    │   │   └── wsgi.py
+    │   ├── manage.py
+    │   ├── pyproject.toml
+    │   └── setup.py
+    ├── frontend
+    │   ├── .prettierrc.js
+    │   ├── Dockerfile
+    │   ├── apps
+    │   │   └── main
+    │   │       ├── .env.development
+    │   │       ├── .env.test
+    │   │       ├── .eslintrc.js
+    │   │       ├── .gitignore
+    │   │       ├── .prettierignore
+    │   │       ├── .storybook
+    │   │       │   ├── main.ts
+    │   │       │   └── preview.tsx
+    │   │       ├── README.md
+    │   │       ├── conf
+    │   │       │   └── default.conf
+    │   │       ├── cunningham.ts
+    │   │       ├── jest.config.ts
+    │   │       ├── jest.setup.ts
+    │   │       ├── next-env.d.ts
+    │   │       ├── next.config.js
+    │   │       ├── package.json
+    │   │       ├── public
+    │   │       │   ├── assets
+    │   │       │   │   ├── img-not-found.svg
+    │   │       │   │   └── logo-pdf.svg
+    │   │       │   └── favicon.ico
+    │   │       ├── src
+    │   │       │   ├── __tests__
+    │   │       │   │   └── index.tsx
+    │   │       │   ├── api
+    │   │       │   │   ├── APIError.ts
+    │   │       │   │   ├── fetchApi.ts
+    │   │       │   │   ├── types.ts
+    │   │       │   │   └── utils.ts
+    │   │       │   ├── app
+    │   │       │   │   ├── accessibility
+    │   │       │   │   │   └── page.tsx
+    │   │       │   │   ├── account-pending
+    │   │       │   │   │   └── page.tsx
+    │   │       │   │   ├── connect
+    │   │       │   │   │   ├── page.scss
+    │   │       │   │   │   └── page.tsx
+    │   │       │   │   ├── connect-resana
+    │   │       │   │   │   ├── page.scss
+    │   │       │   │   │   └── page.tsx
+    │   │       │   │   ├── dashboard
+    │   │       │   │   │   ├── _components
+    │   │       │   │   │   │   ├── MigrationConfirmModal.scss
+    │   │       │   │   │   │   ├── MigrationConfirmModal.tsx
+    │   │       │   │   │   │   ├── SharedAccessModal.scss
+    │   │       │   │   │   │   ├── SharedAccessModal.tsx
+    │   │       │   │   │   │   ├── WorkspaceSelectCard.scss
+    │   │       │   │   │   │   ├── WorkspaceSelectCard.tsx
+    │   │       │   │   │   │   ├── WorkspaceToMigrate.scss
+    │   │       │   │   │   │   └── WorkspaceToMigrate.tsx
+    │   │       │   │   │   └── page.tsx
+    │   │       │   │   ├── download-archive
+    │   │       │   │   │   └── page.tsx
+    │   │       │   │   ├── finish
+    │   │       │   │   │   ├── page.scss
+    │   │       │   │   │   └── page.tsx
+    │   │       │   │   ├── global.scss
+    │   │       │   │   ├── layout.tsx
+    │   │       │   │   ├── legal-notice
+    │   │       │   │   │   └── page.tsx
+    │   │       │   │   ├── not-found.tsx
+    │   │       │   │   ├── page.scss
+    │   │       │   │   ├── page.tsx
+    │   │       │   │   ├── personal-data-cookies
+    │   │       │   │   │   └── page.tsx
+    │   │       │   │   ├── prepare
+    │   │       │   │   │   └── page.tsx
+    │   │       │   │   └── sub-layout.tsx
+    │   │       │   ├── assets
+    │   │       │   │   ├── fonts
+    │   │       │   │   │   └── Marianne
+    │   │       │   │   │       ├── Marianne-Bold.woff
+    │   │       │   │   │       ├── Marianne-Bold_Italic.woff
+    │   │       │   │   │       ├── Marianne-ExtraBold.woff
+    │   │       │   │   │       ├── Marianne-ExtraBold_Italic.woff
+    │   │       │   │   │       ├── Marianne-Light.woff
+    │   │       │   │   │       ├── Marianne-Light_Italic.woff
+    │   │       │   │   │       ├── Marianne-Medium.woff
+    │   │       │   │   │       ├── Marianne-Medium_Italic.woff
+    │   │       │   │   │       ├── Marianne-Regular.woff
+    │   │       │   │   │       ├── Marianne-Regular_Italic.woff
+    │   │       │   │   │       ├── Marianne-Thin.woff
+    │   │       │   │   │       ├── Marianne-Thin_Italic.woff
+    │   │       │   │   │       └── Marianne-font.css
+    │   │       │   │   ├── icons
+    │   │       │   │   │   ├── chevron-down.svg
+    │   │       │   │   │   ├── fichier-mono.svg
+    │   │       │   │   │   ├── icon-404.svg
+    │   │       │   │   │   ├── icon-devise.svg
+    │   │       │   │   │   ├── icon-marianne.svg
+    │   │       │   │   │   ├── icon-user.svg
+    │   │       │   │   │   ├── icon-zip.svg
+    │   │       │   │   │   ├── logo-resana-full.svg
+    │   │       │   │   │   ├── proconnect-logo.svg
+    │   │       │   │   │   ├── resana-logo.svg
+    │   │       │   │   │   └── resana-mono.svg
+    │   │       │   │   └── images
+    │   │       │   │       ├── empty-spaces-illustration.svg
+    │   │       │   │       ├── error.svg
+    │   │       │   │       ├── logo-header.svg
+    │   │       │   │       ├── logo.svg
+    │   │       │   │       ├── migration-resana.svg
+    │   │       │   │       ├── migration.png
+    │   │       │   │       ├── migrator-illustration.svg
+    │   │       │   │       └── system.svg
+    │   │       │   ├── components
+    │   │       │   │   ├── AppHelpMenu
+    │   │       │   │   │   ├── AppHelpMenu.scss
+    │   │       │   │   │   └── AppHelpMenu.tsx
+    │   │       │   │   ├── Badge
+    │   │       │   │   │   ├── Badge.scss
+    │   │       │   │   │   ├── Badge.stories.ts
+    │   │       │   │   │   └── Badge.tsx
+    │   │       │   │   ├── Button
+    │   │       │   │   │   └── Button.tsx
+    │   │       │   │   ├── DropButton
+    │   │       │   │   │   ├── DropButton.scss
+    │   │       │   │   │   └── DropButton.tsx
+    │   │       │   │   ├── Footer
+    │   │       │   │   │   ├── Footer.scss
+    │   │       │   │   │   ├── Footer.tsx
+    │   │       │   │   │   └── assets
+    │   │       │   │   │       └── external-link.svg
+    │   │       │   │   ├── Header
+    │   │       │   │   │   ├── Header.scss
+    │   │       │   │   │   ├── Header.tsx
+    │   │       │   │   │   ├── LaGaufre.tsx
+    │   │       │   │   │   └── assets
+    │   │       │   │   │       ├── icon-cells.svg
+    │   │       │   │   │       └── icon-docs.svg
+    │   │       │   │   ├── LogoGouv
+    │   │       │   │   │   ├── LogoGouv.scss
+    │   │       │   │   │   └── LogoGouv.tsx
+    │   │       │   │   ├── ResanaConnect
+    │   │       │   │   │   ├── ResanaConnectSection.scss
+    │   │       │   │   │   └── ResanaConnectSection.tsx
+    │   │       │   │   ├── Workspace
+    │   │       │   │   │   ├── Workspace.scss
+    │   │       │   │   │   └── Workspace.tsx
+    │   │       │   │   └── icons
+    │   │       │   │       ├── ArrowLeftIcon.tsx
+    │   │       │   │       └── ArrowRightIcon.tsx
+    │   │       │   ├── core
+    │   │       │   │   ├── AppProvider.tsx
+    │   │       │   │   ├── auth
+    │   │       │   │   │   ├── Auth.tsx
+    │   │       │   │   │   ├── publicRoutes.ts
+    │   │       │   │   │   └── types.ts
+    │   │       │   │   ├── conf.ts
+    │   │       │   │   └── migrationTarget.ts
+    │   │       │   ├── cunningham
+    │   │       │   │   ├── cunningham-custom-tokens.css
+    │   │       │   │   ├── cunningham-style.scss
+    │   │       │   │   ├── cunningham-tokens-sass.scss
+    │   │       │   │   ├── cunningham-tokens.css
+    │   │       │   │   ├── cunningham-tokens.ts
+    │   │       │   │   ├── index.ts
+    │   │       │   │   └── useCunninghamTheme.tsx
+    │   │       │   ├── custom-next.d.ts
+    │   │       │   ├── hooks
+    │   │       │   │   ├── useApi.tsx
+    │   │       │   │   ├── useAvailableDestinations.tsx
+    │   │       │   │   ├── useFeatureFlags.tsx
+    │   │       │   │   ├── useMigrationConfig.tsx
+    │   │       │   │   ├── useResanaAuthStatus.ts
+    │   │       │   │   └── useWorkspaces.ts
+    │   │       │   ├── i18n
+    │   │       │   │   ├── conf.ts
+    │   │       │   │   ├── initI18n.ts
+    │   │       │   │   ├── translations.json
+    │   │       │   │   └── utils.ts
+    │   │       │   └── types
+    │   │       │       ├── components.ts
+    │   │       │       └── next.ts
+    │   │       ├── stylelint.config.js
+    │   │       └── tsconfig.json
+    │   ├── package.json
+    │   ├── packages
+    │   │   └── eslint-config-main
+    │   │       ├── .eslintrc.js
+    │   │       ├── common.js
+    │   │       ├── jest.js
+    │   │       ├── next.js
+    │   │       ├── package.json
+    │   │       └── playwright.js
+    │   └── yarn.lock
+    ├── helm
+    │   ├── chart
+    │   │   ├── Chart.yaml
+    │   │   ├── generate-readme.sh
+    │   │   ├── templates
+    │   │   │   ├── _helpers.tpl
+    │   │   │   ├── backend_deployment.yaml
+    │   │   │   ├── backend_job.yaml
+    │   │   │   ├── backend_job_createsuperuser.yaml
+    │   │   │   ├── backend_refresh_resana_job.yaml
+    │   │   │   ├── backend_svc.yaml
+    │   │   │   ├── celery_deployment.yaml
+    │   │   │   ├── frontend_deployment.yaml
+    │   │   │   ├── frontend_svc.yaml
+    │   │   │   ├── ingress.yaml
+    │   │   │   └── ingress_admin.yaml
+    │   │   └── values.yaml
+    │   ├── env.d
+    │   │   └── dev
+    │   │       ├── values.dev-backend.yaml.gotmpl
+    │   │       └── values.yaml.gotmpl
+    │   └── helmfile.yaml.gotmpl
+    ├── mail
+    │   ├── bin
+    │   │   ├── html-to-plain-text
+    │   │   └── mjml-to-html
+    │   ├── html-to-text.config.json
+    │   ├── mjml
+    │   │   ├── archive_download.mjml
+    │   │   ├── drive_ready.mjml
+    │   │   ├── fail.mjml
+    │   │   ├── partial
+    │   │   │   ├── banner.mjml
+    │   │   │   ├── footer.mjml
+    │   │   │   ├── header.mjml
+    │   │   │   └── support.mjml
+    │   │   ├── resana_ready.mjml
+    │   │   └── resana_ready_errors.mjml
+    │   ├── package.json
+    │   └── yarn.lock
+    └── tsclient
+        ├── package.json
+        ├── scripts
+        │   └── openapi-typescript-codegen
+        │       └── generate_api_client_local.sh
+        └── yarn.lock
+129 directories, 407 files

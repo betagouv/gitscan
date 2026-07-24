@@ -1,0 +1,33 @@
+{
+  "name": "main",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "packages/*"
+    ]
+  },
+  "scripts": {
+    "APP_MAIN": "yarn workspace app-main",
+    "I18N": "yarn workspace packages-i18n",
+    "app:dev": "yarn APP_MAIN run dev",
+    "app:start": "yarn APP_MAIN run start",
+    "app:build": "yarn APP_MAIN run build",
+    "app:test": "yarn APP_MAIN run test",
+    "ci:build": "yarn APP_MAIN run build:ci",
+    "lint": "yarn APP_MAIN run lint && yarn workspace eslint-config-main run lint"
+  },
+  "resolutions": {
+    "@types/node": "20.14.2",
+    "@types/react": "19.1.8",
+    "@types/react-dom": "19.1.6",
+    "@gouvfr-lasuite/cunningham-react": "4.3.0",
+    "cross-env": "7.0.3",
+    "react": "19.1.2",
+    "react-dom": "19.1.2",
+    "react-aria-components": "1.16.0",
+    "typescript": "5.4.5",
+    "yjs": "13.6.16"
+  }
+}
