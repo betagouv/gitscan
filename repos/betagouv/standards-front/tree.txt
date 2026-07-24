@@ -32,12 +32,19 @@
 │   │   └── stylesheets
 │   │       ├── application.css
 │   │       └── dsfr-overrides.css
+│   ├── components
+│   │   ├── dsfr
+│   │   │   ├── table_component.html.haml
+│   │   │   └── table_component.rb
+│   │   ├── summary_list_component.html.haml
+│   │   └── summary_list_component.rb
 │   ├── controllers
 │   │   ├── application_controller.rb
 │   │   ├── concerns
 │   │   │   └── .keep
 │   │   ├── evaluations_controller.rb
 │   │   ├── home_controller.rb
+│   │   ├── incubators_controller.rb
 │   │   ├── sessions_controller.rb
 │   │   ├── startups_controller.rb
 │   │   └── stats_controller.rb
@@ -48,7 +55,8 @@
 │   │   ├── home_helper.rb
 │   │   ├── language_helper.rb
 │   │   ├── startups_helper.rb
-│   │   └── stats_helper.rb
+│   │   ├── stats_helper.rb
+│   │   └── web_helper.rb
 │   ├── javascript
 │   │   ├── application.js
 │   │   └── controllers
@@ -80,12 +88,16 @@
 │       │   ├── category.html.haml
 │       │   ├── question.html.haml
 │       │   ├── show.html.haml
+│       │   ├── summary.html.haml
 │       │   └── upgrade_preview.html.haml
 │       ├── home
 │       │   ├── _card.html.haml
 │       │   ├── faq.html.haml
 │       │   ├── index.html.haml
 │       │   └── standards.html.haml
+│       ├── incubators
+│       │   ├── index.html.haml
+│       │   └── show.html.haml
 │       ├── layouts
 │       │   ├── application.html.haml
 │       │   ├── mailer.html.erb
@@ -139,13 +151,17 @@
 │   │   ├── beta_standards.rb
 │   │   ├── chartkick.rb
 │   │   ├── content_security_policy.rb
+│   │   ├── espace_membre.rb
 │   │   ├── filter_parameter_logging.rb
 │   │   ├── inflections.rb
 │   │   ├── omniauth.rb
 │   │   └── types.rb
 │   ├── locales
 │   │   ├── en.yml
+│   │   ├── evaluations.yml
 │   │   ├── fr.yml
+│   │   ├── home.yml
+│   │   ├── phases.yml
 │   │   └── rails-i18n-fr.yml
 │   ├── puma.rb
 │   ├── queue.yml
@@ -173,12 +189,16 @@
 │   ├── remplissage_evaluation.feature
 │   ├── step_definitions
 │   │   ├── .keep
-│   │   ├── evaluation_steps.rb
-│   │   └── web_steps.rb
-│   └── support
-│       ├── env.rb
-│       └── omniauth.rb
+│   │   └── evaluation_steps.rb
+│   ├── support
+│   │   ├── beta_steps.rb
+│   │   ├── env.rb
+│   │   └── omniauth.rb
+│   └── vue_transverse.feature
 ├── lib
+│   ├── models
+│   │   └── espace_membre
+│   │       └── startup.rb
 │   ├── tasks
 │   │   ├── .keep
 │   │   └── cucumber.rake
@@ -199,6 +219,10 @@
 │   ├── .keep
 │   └── import_emdb_backup.sh
 ├── spec
+│   ├── components
+│   │   ├── dsfr
+│   │   │   └── table_component_spec.rb
+│   │   └── summary_list_component_spec.rb
 │   ├── factories
 │   │   ├── evaluations.rb
 │   │   └── questions.rb
@@ -241,4 +265,4 @@
     ├── .keep
     └── javascript
         └── .keep
-63 directories, 180 files
+70 directories, 197 files
