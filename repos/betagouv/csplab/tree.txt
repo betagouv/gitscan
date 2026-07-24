@@ -493,9 +493,12 @@
         │           ├── creer_note.py
         │           ├── editer_note.py
         │           ├── get_organisme_recruteur.py
+        │           ├── get_recrutement_kanban.py
+        │           ├── get_recrutement_liste.py
         │           ├── initialize_organisme_steps.py
         │           ├── lister_mes_recrutements.py
         │           ├── lister_notes_candidature.py
+        │           ├── recrutement_detail_static_data.py
         │           ├── supprimer_note.py
         │           └── update_organisme_steps.py
         ├── bin
@@ -517,6 +520,7 @@
         │   │   ├── schema_internal.py
         │   │   └── test.py
         │   ├── setup-qdrant.py
+        │   ├── storages.py
         │   ├── urls.py
         │   └── wsgi.py
         ├── cron.json
@@ -577,7 +581,8 @@
         │   │   │   ├── agent_errors.py
         │   │   │   ├── candidat_errors.py
         │   │   │   ├── identite_errors.py
-        │   │   │   └── organisme_errors.py
+        │   │   │   ├── organisme_errors.py
+        │   │   │   └── organisme_permission_errors.py
         │   │   ├── events
         │   │   │   ├── __init__.py
         │   │   │   ├── agent_events.py
@@ -592,6 +597,9 @@
         │   │   │   ├── candidat_repository_interface.py
         │   │   │   ├── organisme_repository_interface.py
         │   │   │   └── utilisateur_repository_interface.py
+        │   │   ├── services
+        │   │   │   ├── __init__.py
+        │   │   │   └── identite_permission_service.py
         │   │   └── value_objects
         │   │       ├── __init__.py
         │   │       └── siret.py
@@ -640,6 +648,7 @@
         │       │   ├── candidature_errors.py
         │       │   ├── erreur_recrutement.py
         │       │   ├── note_errors.py
+        │       │   ├── organisme_permission_errors.py
         │       │   └── recrutement_errors.py
         │       ├── events
         │       │   ├── __init__.py
@@ -650,14 +659,17 @@
         │       │   ├── __init__.py
         │       │   ├── candidature_recruteur_repository_interface.py
         │       │   ├── note_repository_interface.py
+        │       │   ├── organisme_agent_repository_interface.py
         │       │   ├── organisme_repository_interface.py
         │       │   └── recrutement_repository_interface.py
         │       ├── services
         │       │   ├── __init__.py
-        │       │   └── note_query_service_interface.py
+        │       │   ├── note_query_service_interface.py
+        │       │   └── organisme_permission_service.py
         │       └── value_objects
         │           ├── __init__.py
         │           ├── categorie_etapes_recrutement.py
+        │           ├── organisme_action.py
         │           ├── roles.py
         │           └── statut_recrutement.py
         ├── eslint.config.mjs
@@ -972,6 +984,7 @@
         │       │   ├── __init__.py
         │       │   ├── postgres_note_query_service.py
         │       │   ├── postgres_note_repository.py
+        │       │   ├── postgres_organisme_agent_repository.py
         │       │   ├── postgres_organisme_repository.py
         │       │   ├── postgres_recrutement_query_service.py
         │       │   └── postgres_recrutement_repository.py
@@ -1205,10 +1218,9 @@
         │   │   │   │   │       ├── CspTooltip.stories.ts
         │   │   │   │   │       └── CspTooltip.vue
         │   │   │   │   └── layout
-        │   │   │   │       ├── AppShell.types.ts
-        │   │   │   │       ├── AppShell.vue
-        │   │   │   │       ├── CspAppLayout
-        │   │   │   │       │   └── CspAppLayout.vue
+        │   │   │   │       ├── CspAppShell
+        │   │   │   │       │   ├── CspAppShell.types.ts
+        │   │   │   │       │   └── CspAppShell.vue
         │   │   │   │       ├── CspPageContainer
         │   │   │   │       │   └── CspPageContainer.vue
         │   │   │   │       ├── CspPageHeader
@@ -1333,9 +1345,15 @@
         │   │   │   │   ├── ddr
         │   │   │   │   │   ├── DDR-000.mdx
         │   │   │   │   │   ├── DDR-001.mdx
+        │   │   │   │   │   ├── DDR-002.mdx
+        │   │   │   │   │   ├── DDR-003.mdx
+        │   │   │   │   │   ├── DDR-004.mdx
         │   │   │   │   │   └── content
         │   │   │   │   │       ├── ddr-000-pourquoi-des-ddr.md
-        │   │   │   │   │       └── ddr-001-couches-design.md
+        │   │   │   │   │       ├── ddr-001-couches-design.md
+        │   │   │   │   │       ├── ddr-002-ossature-configuree.md
+        │   │   │   │   │       ├── ddr-003-stabilite-au-chargement.md
+        │   │   │   │   │       └── ddr-004-transitions.md
         │   │   │   │   └── useStoryOpenState.ts
         │   │   │   ├── styles
         │   │   │   │   ├── csp-variables.css
@@ -1550,6 +1568,8 @@
         │   │   │   └── test_vectorize_documents.py
         │   │   └── recruteur
         │   │       ├── __init__.py
+        │   │       ├── test_get_recrutement_kanban.py
+        │   │       ├── test_get_recrutement_liste.py
         │   │       ├── test_lister_mes_recrutements.py
         │   │       ├── test_lister_note_usecases.py
         │   │       ├── test_note_usecases.py
@@ -1572,6 +1592,7 @@
         │   │       ├── test_candidature_recruteur.py
         │   │       ├── test_note.py
         │   │       ├── test_organisme.py
+        │   │       ├── test_organisme_permission_service.py
         │   │       └── test_recrutement.py
         │   ├── infrastructure
         │   │   ├── __init__.py
@@ -1622,11 +1643,14 @@
         │   │   │   └── test_vectorize_documents.py
         │   │   ├── recruteur
         │   │   │   ├── __init__.py
+        │   │   │   ├── test_get_recrutement_kanban.py
+        │   │   │   ├── test_get_recrutement_liste.py
         │   │   │   ├── test_lister_mes_recrutements.py
         │   │   │   ├── test_note_query_service.py
         │   │   │   ├── test_note_repository.py
         │   │   │   ├── test_notes_usecases.py
         │   │   │   ├── test_organisme_admin.py
+        │   │   │   ├── test_organisme_agent_repository.py
         │   │   │   └── test_organisme_steps.py
         │   │   ├── referentiel
         │   │   │   ├── __init__.py
@@ -1721,6 +1745,7 @@
         │       ├── pdf_test_utils.py
         │       ├── shared_fixtures.py
         │       ├── test_api_request_logger_middleware.py
-        │       └── test_interface_aware_mock.py
+        │       ├── test_interface_aware_mock.py
+        │       └── test_storages.py
         └── uv.lock
-349 directories, 1376 files
+350 directories, 1400 files
