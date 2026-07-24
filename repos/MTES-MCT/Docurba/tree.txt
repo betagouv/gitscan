@@ -102,6 +102,8 @@
 │   │   │   │   ├── 0047_alter_communeprocedure_collectivite_type.py
 │   │   │   │   ├── 0048_event_add_event_type.py
 │   │   │   │   ├── 0049_alter_eventtype_scope_list_and_more.py
+│   │   │   │   ├── 0050_remove_event_unused_fields.py
+│   │   │   │   ├── 0051_alter_event_procedure.py
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── sql_statements
 │   │   │   │       ├── create_table_doc_frise_events.sql
@@ -127,6 +129,7 @@
 │   │   │   │   ├── 0005_eventsnapshot_add_insert_policy.py
 │   │   │   │   ├── 0006_alter_eventsnapshot_pgh_obj.py
 │   │   │   │   ├── 0007_event_add_event_type.py
+│   │   │   │   ├── 0008_alter_eventsnapshot_procedure.py
 │   │   │   │   └── __init__.py
 │   │   │   └── models.py
 │   │   ├── internal_api
@@ -746,7 +749,6 @@
 │   │   ├── documents
 │   │   │   └── _githubRef
 │   │   │       └── pac.vue
-│   │   ├── exports.vue
 │   │   ├── frise
 │   │   │   └── _procedureId
 │   │   │       ├── _eventId.vue
@@ -779,6 +781,7 @@
 │   │   ├── README.md
 │   │   ├── analytics.js
 │   │   ├── auth.js
+│   │   ├── collectivite.js
 │   │   ├── composition.js
 │   │   ├── daturba.js
 │   │   ├── dayjs.js
@@ -815,7 +818,6 @@
 │   │   │   ├── INSEE
 │   │   │   │   ├── departements.json
 │   │   │   │   └── regions.json
-│   │   │   ├── communes-france.json
 │   │   │   ├── departements-france.json
 │   │   │   ├── geojson
 │   │   │   │   ├── communes-geo.json
@@ -825,26 +827,23 @@
 │   │   │   │   └── regions-geo.json
 │   │   │   └── referentiels
 │   │   │       ├── communes.json
-│   │   │       ├── communesNouvelles.json
 │   │   │       ├── groupements.json
 │   │   │       └── groupements_2024.json
 │   │   ├── admin.js
 │   │   ├── auth.js
-│   │   ├── communes.js
 │   │   ├── data.js
 │   │   ├── geo.js
 │   │   ├── geoide.js
 │   │   ├── georisques.js
 │   │   ├── modules
 │   │   │   ├── Data
-│   │   │   │   ├── BCSI.json
 │   │   │   │   └── pipedriveFields.json
 │   │   │   ├── admin.js
 │   │   │   ├── csw-filters.js
 │   │   │   ├── csw.js
+│   │   │   ├── django-api.js
 │   │   │   ├── exportMaps
-│   │   │   │   ├── prescriptions.js
-│   │   │   │   └── sudocuhCommunes.js
+│   │   │   │   └── prescriptions.js
 │   │   │   ├── geo.js
 │   │   │   ├── github
 │   │   │   │   ├── files.js
@@ -853,13 +852,11 @@
 │   │   │   │   ├── issues.js
 │   │   │   │   └── tree.js
 │   │   │   ├── pipedrive.js
-│   │   │   ├── procedures.js
 │   │   │   ├── sendgrid.js
 │   │   │   ├── sharing.js
 │   │   │   ├── sibApi.js
 │   │   │   ├── sido.js
 │   │   │   ├── slack.js
-│   │   │   ├── sudocuhCodes.js
 │   │   │   └── supabase.js
 │   │   ├── pdf.js
 │   │   ├── pipedrive.js
@@ -1065,4 +1062,4 @@
 └── tests_e2e
     ├── .gitignore
     └── test_titre_procedure.py
-209 directories, 900 files
+209 directories, 897 files
