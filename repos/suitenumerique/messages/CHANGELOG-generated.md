@@ -1,31 +1,42 @@
-## Changelog : messages (30 derniers jours, au 20 juillet 2026)
+## Changelog : messages (30 derniers jours, au 24 juillet 2026)
 
 ### Résumé
-Les dernières mises à jour de Messages se concentrent sur l'amélioration de la sécurité, la correction de bugs et l'optimisation de l'expérience utilisateur, notamment dans la gestion des emails et l'interface utilisateur. Une refonte majeure du MTA-in a été effectuée pour éliminer une dépendance à Postfix.
+Les dernières semaines ont été marquées par d'importantes améliorations de la plateforme, notamment l'ajout de notifications push pour iOS, Android et le web, ainsi que la préparation du support mobile avec des applications Capacitor. Des améliorations significatives ont également été apportées à la gestion des emails entrants et sortants, et à la sécurité globale de la plateforme.
 
 ### Évolutions fonctionnelles
-- Détection des liens hypertextes dans le corps des emails HTML : un avertissement est affiché à l'utilisateur avant la redirection. [#744](https://github.com/suitenumerique/messages/issues/744)
+- Ajout de notifications push pour iOS, Android et le web.
+- Possibilité de se connecter en spécifiant un paramètre `next` pour être redirigé vers une page spécifique après l'authentification.
 - Affichage du nombre de messages non lus dans le menu déroulant des boîtes de réception.
-- Correction de problèmes d'affichage des sauts de ligne dans le compositeur d'emails sur Chrome Android. [#725](https://github.com/suitenumerique/messages/issues/725)
-- Correction du problème de pré-rupture de ligne dans le compositeur. [#740](https://github.com/suitenumerique/messages/issues/740)
-- Amélioration du re-traitement des messages entrants depuis l'administration.
-- Sauvegarde de l'adresse IP d'origine lors des redémarrages STARTTLS.
-- Ajout de webhooks, de balises de message et de corrections anti-spam.
-- Correction du nom de fichier des pièces jointes.
-- Correction de l'indentation du bloc relay dans main.cf. [#733](https://github.com/suitenumerique/messages/issues/733)
-- Réinitialisation de la recherche lors du changement de boîte de réception. [#743](https://github.com/suitenumerique/messages/issues/743)
+- Détection des liens texte dans le corps des emails HTML avec un avertissement avant redirection [#744](https://github.com/suitenumerique/messages/issues/744).
+- Amélioration de l'interface utilisateur pour l'absence de boîte de réception.
+- Amélioration du re-traitement des messages entrants depuis l'interface d'administration.
 
 ### Évolutions techniques
-- Refonte complète du MTA-in en Python pur pour supprimer la dépendance à Postfix. [#692](https://github.com/suitenumerique/messages/issues/692)
-- Configuration du frontend à partir du backend. [#734](https://github.com/suitenumerique/messages/issues/734)
-- Utilisation de la méthode intégrée pour générer l'ID des messages. [#730](https://github.com/suitenumerique/messages/issues/730)
-- Ajout d'une liste blanche d'hôtes pour contourner les problèmes SSRF dans les réseaux internes.
-- Ajout de l'en-tête X-Mailer aux emails sortants.
-- Mise à jour de la bibliothèque django-lasuite vers la version 0.0.27.
-- Mise à jour de la bibliothèque Keycloak vers les versions 26.6.3 et 26.6.4. [#718](https://github.com/suitenumerique/messages/issues/718), [#729](https://github.com/suitenumerique/messages/issues/729), [#732](https://github.com/suitenumerique/messages/issues/732)
-- Suppression du composant react-email.
-- Linting des sous-projets.
+- Refonte de l'implémentation MTA-in en Python pur, supprimant la dépendance à Postfix [#692](https://github.com/suitenumerique/messages/issues/692).
+- Mise en place d'un système de cache-busting pour les fichiers sources lors de la construction.
+- Utilisation de la session pour la transmission du token CSRF au lieu des cookies.
+- Configuration du frontend à partir du backend [#734](https://github.com/suitenumerique/messages/issues/734).
+- Intégration de la gestion des sessions OIDC pour les applications mobiles.
+- Mise en place d'une liste blanche d'hôtes pour contourner les problèmes de SSRF dans les réseaux internes.
+- Bootstrap des applications mobiles Capacitor (iOS/Android) partageant la même SPA.
+- Mise en place d'une chaîne de mise à jour OTA auto-hébergée pour les applications mobiles.
+- Refactorisation des imports pour les retries, le mode continu et l'interface utilisateur de liste [#742](https://github.com/suitenumerique/messages/issues/742).
+- Mise à jour de la bibliothèque Keycloak vers la version 26.6.4 (correction de sécurité CERTFR-2026-AVI-0815) [#729](https://github.com/suitenumerique/messages/issues/729).
+- Mise à jour du thème Keycloak vers la version 2.3.4 [#732](https://github.com/suitenumerique/messages/issues/732).
 
 ### Autres changements
-- Configuration du navigateur pour supporter Chrome >= 109. [#750](https://github.com/suitenumerique/messages/issues/750)
-- Correction d'un problème de gestion du handler Outlook Web dans la logique d'extraction des URL. [#754](https://github.com/suitenumerique/messages/issues/754)
+- Amélioration du temps de démarrage de l'environnement de développement avec `make bootstrap`.
+- Documentation complète du processus de traitement du spam.
+- Suppression de la fonctionnalité `TESTDOMAIN`.
+- Correction de l'indentation du bloc relay dans `main.cf` pour résoudre un problème d'authentification SASL.
+- Correction d'un problème de saut de ligne dans le compositeur sur Chrome pour Android [#725](https://github.com/suitenumerique/messages/issues/725).
+- Correction d'un problème de saut de ligne dans le compositeur sur Safari [#740](https://github.com/suitenumerique/messages/issues/740).
+- Correction d'un problème de gestion du nom de fichier des pièces jointes.
+- Correction d'un problème de traduction automatique potentielle due à `lang=en` en dur.
+- Amélioration de la gestion des erreurs lors du traitement des messages entrants.
+- Sauvegarde de l'adresse IP d'origine lors des redémarrages STARTTLS (pymta).
+- Ajout d'un en-tête `X-Mailer` aux messages sortants.
+- Mise à jour de la configuration du navigateur pour supporter Chrome >= 109 [#750](https://github.com/suitenumerique/messages/issues/750).
+- Correction du gestionnaire Outlook Web dans la logique d'extraction de caractères [#754](https://github.com/suitenumerique/messages/issues/754).
+- Linting des sous-projets.
+- Suppression du composant `react-email`.

@@ -4,7 +4,7 @@
 
 [project]
 name = "messages-backend"
-version = "0.8.0"
+version = "0.9.0"
 authors = [{ "name" = "ANCT", "email" = "contact@suite.anct.gouv.fr" }]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
@@ -20,17 +20,17 @@ description = "A Django MDA"
 keywords = ["Django", "Contacts", "Templates", "RBAC"]
 license = "MIT"
 readme = "README.md"
-requires-python = ">=3.14.5,<4.0"
+requires-python = ">=3.14.6,<4.0"
 
 # Note: after changing this list you must re-run `make deps-lock-back`
 dependencies = [
     "boto3==1.42.53",
     "botocore==1.42.53",
     "celery[redis]==5.6.2",
-    "cryptography==46.0.5",
+    "cryptography==48.0.1",
     "defusedxml==0.7.1",
     "dj-database-url==3.1.2",
-    "django==5.2.11",
+    "django==5.2.15",
     "django-celery-beat==2.8.1",
     "django-celery-results==2.6.0",
     "django-configurations==2.5.1",
@@ -47,6 +47,8 @@ dependencies = [
     "dkimpy==1.1.8",
     "dnspython==2.8.0",
     "drf_spectacular==0.29.0",
+    "google-auth==2.41.1",
+    "httpx[http2]==0.28.1",
     "opensearch-py==2.8.0",
     "factory_boy==3.3.3",
     "gunicorn==25.1.0",
@@ -56,18 +58,20 @@ dependencies = [
     "nested-multipart-parser==1.6.0",
     "openai==2.21.0",
     "psycopg[binary]==3.3.3",
-    "PyJWT==2.11.0",
+    "PyJWT==2.13.0",
     "PySocks==1.7.1",
     "python-keycloak==5.5.1",
     "python-magic==0.4.27",
     "pyzstd==0.19.1",
     "redis==6.4.0",
-    "requests==2.32.5",
+    "requests==2.34.2",
     "sentry-sdk[django]==2.53.0",
     "libpff-python==20231205",
     "url-normalize==2.2.1",
     "whitenoise==6.11.0",
     "prometheus-client==0.24.1",
+    "py-vapid==1.9.4",
+    "http-ece==1.2.1",
 ]
 
 [project.urls]
@@ -88,7 +92,7 @@ dev = [
     "pylint==4.0.4",
     "pytest-cov==7.0.0",
     "pytest-django==4.12.0",
-    "pytest==9.0.2",
+    "pytest==9.0.3",
     "pytest-icdiff==0.9",
     "pytest-repeat==0.9.4",
     "pytest-xdist==3.8.0",
@@ -140,6 +144,7 @@ select = [
     "S", # flake8-bandit
     "SLF", # flake8-self
     "T20", # flake8-print
+    "TID251", # flake8-tidy-imports: banned-api only (not TID252 relative-imports)
     "F"  # pyflakes
 ]
 
@@ -148,6 +153,16 @@ section-order = ["future","standard-library","django","third-party","messages","
 sections = { messages=["core"], django=["django"] }
 known-third-party = ["dns"]
 extra-standard-library = ["tomllib"]
+
+[tool.ruff.lint.flake8-tidy-imports.banned-api]
+# jmap-email's public API is the top-level `jmap_email` package; the
+# TypedDict shapes live in `jmap_email.types`. Everything else is private
+# implementation — reaching into it couples us to internal layout.
+"jmap_email.parser".msg = "Import from the top-level `jmap_email` package (shapes: `jmap_email.types`)."
+"jmap_email.helpers".msg = "Import from the top-level `jmap_email` package (shapes: `jmap_email.types`)."
+"jmap_email.composer".msg = "Import from the top-level `jmap_email` package (shapes: `jmap_email.types`)."
+"jmap_email.options".msg = "Import from the top-level `jmap_email` package (shapes: `jmap_email.types`)."
+"jmap_email.preview".msg = "Import from the top-level `jmap_email` package (shapes: `jmap_email.types`)."
 
 [tool.ruff.lint.per-file-ignores]
 "**/tests/*" = ["S", "SLF"]
