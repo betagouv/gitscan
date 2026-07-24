@@ -1,32 +1,42 @@
-## Changelog : anssi-recommandations-cyber (30 derniers jours, au 21 juillet 2026)
+## Changelog : anssi-recommandations-cyber (30 derniers jours, au 23 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur, notamment l'affichage des sources, la gestion des avis utilisateurs et la correction de bugs liés à la navigation et à l'affichage des résultats. Des améliorations de sécurité ont également été apportées avec la mise à jour de plusieurs dépendances. Enfin, un nouveau système de reclassement des réponses basé sur un LLM a été intégré.
+Ce mois-ci, l'application a bénéficié d'améliorations significatives de l'expérience utilisateur, notamment dans l'affichage des sources et des réponses, ainsi que l'ajout d'un système de feedback utilisateur. Des corrections de bugs et des optimisations techniques ont également été apportées pour améliorer la stabilité et la performance. La sécurité a été renforcée avec des mises à jour de dépendances.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'affichage des sources : affichage sur toute la largeur de la page, carrousel pour les pages PDF, et génération d'images des pages PDF côté navigateur.
-- Nouveau formulaire d'avis utilisateur : permet de soumettre des avis sur la complétude et l'exactitude des réponses, avec validation des saisies.
-- Intégration d'un reclassement des réponses par LLM pour améliorer la pertinence des résultats.
-- Correction du défilement : amélioration du défilement vers la question posée par l'utilisateur et navigation horizontale des sources.
-- Harmonisation du nombre de résultats retournés par la recherche.
-- Ajout d'une documentation sur les interactions entre MQC et Albert.
+- Ajout d'un bouton pour copier les sources de la réponse.
+- Amélioration de l'affichage des réponses détaillées pour une meilleure lisibilité.
+- Affichage du titre du document au lieu du nom du fichier.
+- Ajout de la date de mise à jour du document.
+- Possibilité de soumettre un avis utilisateur sur la qualité des réponses (exactitude et complétude).
+- Affichage des sources dans un carrousel avec des boutons de navigation.
+- Génération d'images des pages PDF pour les sources.
+- Correction du comportement de défilement lors de l'utilisation de la recherche.
+- Amélioration de la gestion des erreurs lors de la génération de pages PDF.
+- Ajout d'une image générique pour les documents non-PDF.
 - Affichage du contenu des paragraphes.
 
 ### Évolutions techniques
-- Ajout de l'outil `zizmor` pour valider la configuration de sécurité.
-- Désactivation des identifiants `git` dans les workflows CI/CD pour renforcer la sécurité.
-- Refactorisation du code et suppression d'éléments inutiles dans plusieurs composants.
-- Mise à jour de plusieurs dépendances pour corriger des failles de sécurité et améliorer la stabilité (dompurify, svelte, vite, starlette, cryptography).
-- Injection du reclasseur dans le service Albert.
-- Modification de l'API pour prendre en compte le nouveau modèle de pertinence et les sources adaptées.
+- Intégration de `zizmor` pour la validation de la configuration et renforcement de la sécurité.
+- Désactivation des identifiants `git` dans les workflows CI/CD pour améliorer la sécurité.
+- Refactorisation du code pour séparer la logique de réponse de l'API du traitement métier.
+- Ajout du reclassement par LLM et injection du reclasseur dans le service Albert.
+- Suppression des champs obsolètes.
+- Amélioration de la gestion des erreurs lors de l'appel au reclassement.
+- Mise à jour de plusieurs dépendances pour corriger des failles de sécurité et bénéficier des dernières améliorations (dompurify, svelte, vite, starlette, cryptography).
 - Utilisation du store `storeAvisUtilisateurBis` pour gérer le formulaire d'avis utilisateur.
 
 ### Autres changements
-- Suppression du feature flag `reclassement`.
-- Suppression de champs obsolètes.
-- Ajout de raisons pour lesquelles les sources ne sont pas adaptées, affichées dans les journaux et dans l'interface utilisateur.
-- Reformattage du code pour améliorer la lisibilité.
-- Ajout de tests et suppression de tests inutiles.
-- Mise à jour de la documentation.
-- Correction de bugs mineurs liés à l'affichage et au comportement de l'interface utilisateur.
-- Ajout de logs pour faciliter le débogage.
+- Ajout d'icônes DSFR aux boutons du carrousel.
+- Passage du bouton de copie en style tertiaire.
+- Sécurisation du vocabulaire utilisé dans le prompt pour une portée juridique précise.
+- Ajout de wording spécifique pour les tests internes de l'ANSSI.
+- Nettoyage du code et des tests.
+- Mise à jour de la documentation sur les interactions entre MQC et Albert.
+- Correction de liens et de redirections.
+- Amélioration de la gestion des logs.
+- Modification du message d'accueil et de retour.
+- Renforcement du prompt pour améliorer la citation des recommandations.
+- Tri des sources du reclasseur LLM.
+- Canonisation des questions reformulées.
+- Suppression d'un feature flag obsolète.
