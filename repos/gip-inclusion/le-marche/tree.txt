@@ -1,0 +1,1341 @@
+.
+├── .claude
+│   └── commands
+│       ├── speckit.analyze.md
+│       ├── speckit.checklist.md
+│       ├── speckit.clarify.md
+│       ├── speckit.constitution.md
+│       ├── speckit.implement.md
+│       ├── speckit.plan.md
+│       ├── speckit.specify.md
+│       ├── speckit.tasks.md
+│       └── speckit.taskstoissues.md
+├── .dockerignore
+├── .github
+│   ├── dependabot.yml
+│   ├── pull_request_template.md
+│   └── workflows
+│       ├── linting_testing.yml
+│       ├── release-please.yml
+│       ├── review-app-creation.yml
+│       ├── review-app-removal.yml
+│       └── semantic-pr.yml
+├── .gitignore
+├── .pre-commit-config.yaml
+├── .specify
+│   ├── init-options.json
+│   ├── memory
+│   │   └── constitution.md
+│   ├── scripts
+│   │   └── bash
+│   │       ├── check-prerequisites.sh
+│   │       ├── common.sh
+│   │       ├── create-new-feature.sh
+│   │       ├── setup-plan.sh
+│   │       └── update-agent-context.sh
+│   └── templates
+│       ├── agent-file-template.md
+│       ├── checklist-template.md
+│       ├── constitution-template.md
+│       ├── overrides
+│       │   └── spec-template.md
+│       ├── plan-template.md
+│       ├── spec-template.md
+│       └── tasks-template.md
+├── CHANGELOG.md
+├── Makefile
+├── README.md
+├── blog
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── blocks.py
+│   ├── locale
+│   │   └── fr
+│   │       └── LC_MESSAGES
+│   │           └── django.po
+│   ├── managers.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   ├── 0002_alter_blogentrypage_body_alter_blogindexpage_body.py
+│   │   ├── 0003_blogentrypage_header_color_class_and_more.py
+│   │   ├── 0004_alter_blogentrypage_body_alter_blogindexpage_body.py
+│   │   ├── 0005_delete_tag_blogentrypage_header_cta_text_and_more.py
+│   │   ├── 0006_category_colophon_alter_blogentrypage_body_and_more.py
+│   │   ├── 0007_alter_blogentrypage_body_and_more.py
+│   │   ├── 0008_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
+│   │   ├── 0009_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
+│   │   ├── 0010_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
+│   │   ├── 0011_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
+│   │   ├── 0012_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
+│   │   ├── 0013_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
+│   │   ├── 0014_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
+│   │   ├── 0015_alter_blogentrypage_body_alter_blogindexpage_body.py
+│   │   ├── 0016_alter_blogentrypage_body_alter_blogindexpage_body.py
+│   │   ├── 0017_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
+│   │   ├── 0018_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
+│   │   ├── 0019_merge_20240618_1446.py
+│   │   ├── 0020_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
+│   │   ├── 0021_blogentrypage_header_cta_buttons_and_more.py
+│   │   ├── 0022_blogindexpage_filter_by_author_and_more.py
+│   │   ├── 0023_organization_person_organization_item.py
+│   │   ├── 0024_transfer_organizations.py
+│   │   ├── 0025_remove_person_organization.py
+│   │   ├── 0026_alter_organization_options.py
+│   │   ├── 0027_rename_organization_item_person_organization.py
+│   │   ├── 0028_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
+│   │   ├── 0029_alter_category_locale.py
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── templates
+│   │   └── blog
+│   │       ├── blocks
+│   │       │   ├── blog_index_posts_list.html
+│   │       │   └── contact_card.html
+│   │       ├── blog_entry_page.html
+│   │       ├── blog_index_page.html
+│   │       ├── categories_list_page.html
+│   │       └── tags_list_page.html
+│   ├── tests.py
+│   ├── urls.py
+│   ├── utils.py
+│   └── views.py
+├── clevercloud
+│   ├── companies_update_users_and_count_fields.sh
+│   ├── conversations_anonymize_outdated.sh
+│   ├── crm_brevo_sync_companies.sh
+│   ├── crm_brevo_sync_contacts.sh
+│   ├── cron.json
+│   ├── delete_old_data.sh
+│   ├── pre_build.sh
+│   ├── python.json
+│   ├── review-app-after-success.sh
+│   ├── run_management_command.sh
+│   ├── siaes_send_completion_reminder_emails.sh
+│   ├── siaes_send_user_request_reminder_emails.sh
+│   ├── siaes_sync_with_emplois_inclusion.sh
+│   ├── siaes_update_api_entreprise_fields.sh
+│   ├── siaes_update_api_qpv_fields.sh
+│   ├── siaes_update_api_zrr_fields.sh
+│   ├── siaes_update_count_fields.sh
+│   ├── siaes_update_super_badge_field.sh
+│   ├── tenders_send_author_list_of_super_siaes_emails.sh
+│   ├── tenders_send_author_transactioned_question_emails.sh
+│   ├── tenders_send_siae_contacted_reminder_emails.sh
+│   ├── tenders_send_siae_interested_reminder_emails.sh
+│   ├── tenders_send_siae_transactioned_question_emails.sh
+│   ├── tenders_send_validated.sh
+│   ├── tenders_update_count_fields.sh
+│   ├── tenders_update_status_to_rejected.sh
+│   ├── utils_antivirus_scan.sh
+│   └── utils_antivirus_scan_all.sh
+├── config
+│   ├── __init__.py
+│   ├── sentry.py
+│   ├── settings
+│   │   ├── __init__.py
+│   │   ├── base.py
+│   │   ├── dev.py
+│   │   ├── prod.py
+│   │   ├── staging.py
+│   │   └── test.py
+│   ├── stats_router.py
+│   ├── urls.py
+│   └── wsgi.py
+├── content_manager
+│   ├── __init__.py
+│   ├── abstract.py
+│   ├── apps.py
+│   ├── blocks.py
+│   ├── constants.py
+│   ├── context_processors.py
+│   ├── locale
+│   │   └── fr
+│   │       └── LC_MESSAGES
+│   │           └── django.po
+│   ├── management
+│   │   ├── __init__.py
+│   │   └── commands
+│   │       ├── __init__.py
+│   │       ├── create_demo_pages.py
+│   │       ├── create_starter_pages.py
+│   │       ├── import_dsfr_pictograms.py
+│   │       └── set_config.py
+│   ├── managers.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   ├── 0002_alter_contentpage_body.py
+│   │   ├── 0003_alter_contentpage_body.py
+│   │   ├── 0004_alter_contentpage_body.py
+│   │   ├── 0005_alter_contentpage_body.py
+│   │   ├── 0006_analyticssettings.py
+│   │   ├── 0007_cmsdsfrconfig.py
+│   │   ├── 0008_cmsdsfrconfig_theme_modale_button_and_more.py
+│   │   ├── 0009_alter_contentpage_body.py
+│   │   ├── 0010_alter_contentpage_body.py
+│   │   ├── 0011_cmsdsfrconfig_search_bar.py
+│   │   ├── 0012_alter_contentpage_body.py
+│   │   ├── 0013_alter_contentpage_body.py
+│   │   ├── 0014_alter_contentpage_body.py
+│   │   ├── 0015_alter_contentpage_options_and_more.py
+│   │   ├── 0016_auto_20240305_1611.py
+│   │   ├── 0017_tag_contentpage_header_cta_text_and_more.py
+│   │   ├── 0018_megamenu_megamenucategory.py
+│   │   ├── 0019_alter_contentpage_body.py
+│   │   ├── 0020_alter_contentpage_body_and_more.py
+│   │   ├── 0021_alter_contentpage_body.py
+│   │   ├── 0022_alter_cmsdsfrconfig_options_cmsdsfrconfig_beta_tag_and_more.py
+│   │   ├── 0023_alter_cmsdsfrconfig_footer_description_and_more.py
+│   │   ├── 0024_alter_socialmediaitem_options.py
+│   │   ├── 0025_alter_contentpage_body.py
+│   │   ├── 0026_alter_contentpage_body.py
+│   │   ├── 0027_alter_contentpage_body.py
+│   │   ├── 0028_alter_contentpage_body.py
+│   │   ├── 0029_alter_contentpage_body.py
+│   │   ├── 0030_alter_contentpage_body.py
+│   │   ├── 0031_alter_contentpage_body.py
+│   │   ├── 0032_alter_contentpage_body.py
+│   │   ├── 0033_alter_contentpage_body.py
+│   │   ├── 0034_alter_contentpage_body.py
+│   │   ├── 0035_alter_contentpage_body.py
+│   │   ├── 0036_contentpage_header_cta_buttons_and_more.py
+│   │   ├── 0037_alter_tag_options_alter_contentpage_body.py
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── templates
+│   │   └── content_manager
+│   │       ├── blocks
+│   │       │   ├── accordions.html
+│   │       │   ├── alert.html
+│   │       │   ├── badge.html
+│   │       │   ├── badges_list.html
+│   │       │   ├── blocks_stream.html
+│   │       │   ├── blog_recent_entries.html
+│   │       │   ├── breadcrumbs.html
+│   │       │   ├── button.html
+│   │       │   ├── buttons_horizontal_list.html
+│   │       │   ├── buttons_vertical_list.html
+│   │       │   ├── callout.html
+│   │       │   ├── card_horizontal.html
+│   │       │   ├── card_vertical.html
+│   │       │   ├── download_info.html
+│   │       │   ├── full_width_background.html
+│   │       │   ├── heading.html
+│   │       │   ├── highlight.html
+│   │       │   ├── iframe.html
+│   │       │   ├── image.html
+│   │       │   ├── image_and_text.html
+│   │       │   ├── link.html
+│   │       │   ├── links_vertical_list.html
+│   │       │   ├── messages.html
+│   │       │   ├── multicolumns.html
+│   │       │   ├── quote.html
+│   │       │   ├── stepper.html
+│   │       │   ├── subpages_list.html
+│   │       │   ├── tag.html
+│   │       │   ├── tags_list.html
+│   │       │   ├── text_and_cta.html
+│   │       │   ├── tile.html
+│   │       │   ├── transcription.html
+│   │       │   └── video.html
+│   │       ├── content_page.html
+│   │       ├── menus
+│   │       │   ├── mega_menu.html
+│   │       │   └── mega_menu_category.html
+│   │       ├── search_results.html
+│   │       ├── tag_page.html
+│   │       ├── tags_list_page.html
+│   │       └── widgets
+│   │           └── dsfr-icon-picker-widget.html
+│   ├── templatetags
+│   │   ├── __init__.py
+│   │   └── wagtail_dsfr_tags.py
+│   ├── urls.py
+│   ├── utils.py
+│   ├── views.py
+│   └── widgets.py
+├── docker
+│   └── dev
+│       ├── django
+│       │   ├── Dockerfile
+│       │   └── entrypoint.sh
+│       ├── minio
+│       │   └── create_bucket.sh
+│       └── postgres
+│           ├── Dockerfile
+│           └── create_extension.sql
+├── docker-compose.yml
+├── env.default.sh
+├── env.docker_default.local
+├── install-packages.sh
+├── lemarche
+│   ├── __init__.py
+│   ├── api
+│   │   ├── __init__.py
+│   │   ├── authentication.py
+│   │   ├── emails
+│   │   │   ├── __init__.py
+│   │   │   ├── serializers.py
+│   │   │   └── views.py
+│   │   ├── inclusive_potential
+│   │   │   ├── __init__.py
+│   │   │   ├── constants.py
+│   │   │   ├── serializers.py
+│   │   │   ├── utils.py
+│   │   │   └── views.py
+│   │   ├── networks
+│   │   │   ├── __init__.py
+│   │   │   ├── serializers.py
+│   │   │   └── views.py
+│   │   ├── perimeters
+│   │   │   ├── __init__.py
+│   │   │   ├── filters.py
+│   │   │   ├── serializers.py
+│   │   │   └── views.py
+│   │   ├── sectors
+│   │   │   ├── __init__.py
+│   │   │   ├── serializers.py
+│   │   │   └── views.py
+│   │   ├── siaes
+│   │   │   ├── __init__.py
+│   │   │   ├── filters.py
+│   │   │   ├── serializers.py
+│   │   │   └── views.py
+│   │   ├── tenders
+│   │   │   ├── __init__.py
+│   │   │   ├── serializers.py
+│   │   │   └── views.py
+│   │   ├── urls.py
+│   │   └── utils.py
+│   ├── cms
+│   │   ├── __init__.py
+│   │   ├── apps.py
+│   │   ├── management
+│   │   │   └── commands
+│   │   │       ├── create_content_pages.py
+│   │   │       └── populate_demo_images.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_add_paragraphs.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── snippets.py
+│   │   └── templatetags
+│   │       └── inclusion_cms.py
+│   ├── companies
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── management
+│   │   │   └── commands
+│   │   │       ├── create_companies.py
+│   │   │       ├── find_company_siae_client_reference_matches.py
+│   │   │       ├── set_company_users.py
+│   │   │       └── update_company_count_fields.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_companysiaeclientreferencematch.py
+│   │   │   └── __init__.py
+│   │   └── models.py
+│   ├── conversations
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── constants.py
+│   │   ├── management
+│   │   │   └── commands
+│   │   │       └── anonymize_outdated_conversations.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_populate.py
+│   │   │   ├── 0003_add_user_deletion_warning_template.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── tasks.py
+│   │   └── utils.py
+│   ├── cpv
+│   │   ├── README.md
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── management
+│   │   │   └── commands
+│   │   │       └── import_cpv.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   └── models.py
+│   ├── crm
+│   │   ├── __init__.py
+│   │   └── management
+│   │       ├── __init__.py
+│   │       └── commands
+│   │           ├── __init__.py
+│   │           ├── brevo_check_attributes.py
+│   │           ├── crm_brevo_sync_companies.py
+│   │           └── crm_brevo_sync_contacts.py
+│   ├── django_shepherd
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── context_processor.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── static
+│   │   │   └── django_shepherd
+│   │   │       └── user_guide.js
+│   │   ├── urls.py
+│   │   └── views.py
+│   ├── favorites
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   └── models.py
+│   ├── fixtures
+│   │   ├── __init__.py
+│   │   ├── cms_content_pages.json
+│   │   └── django
+│   │       ├── 01_siaegroup_sectors.json
+│   │       ├── 01_siaegroups.json
+│   │       ├── 01_siaes.json
+│   │       ├── 02_users.json
+│   │       ├── 03_siae_users.json
+│   │       ├── 04_siae_siaegroups.json
+│   │       ├── 08_siae_networks.json
+│   │       ├── 09_siaeclientreferences.json
+│   │       ├── 09_siaelabels_old.json
+│   │       ├── 09_siaeoffers.json
+│   │       ├── 0a_networks.json
+│   │       ├── 0b_sectorgroups.json
+│   │       ├── 0c_sectors.json
+│   │       ├── 0d_labels.json
+│   │       ├── 0e_companies.json
+│   │       ├── 10_tenders.json
+│   │       ├── 11_tender_questions.json
+│   │       ├── 11_tender_sectors.json
+│   │       ├── 11_tender_siaes.json
+│   │       ├── 12_favorite_lists.json
+│   │       ├── 13_favorite_list_items.json
+│   │       ├── 14_siae_labels.json
+│   │       ├── 15_siae_activities.json
+│   │       ├── 20_cms.json
+│   │       ├── 21_suggested_questions.json
+│   │       ├── 22_tender_instructions.json
+│   │       ├── 23_purchases.json
+│   │       └── 24_company_clientreference_match.json
+│   ├── labels
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── management
+│   │   │   └── commands
+│   │   │       ├── api_ademe_rge.py
+│   │   │       ├── import_esus.py
+│   │   │       └── import_rsei.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   └── models.py
+│   ├── media
+│   │   └── original_images
+│   │       └── fakeit.png
+│   ├── networks
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── management
+│   │   │   └── commands
+│   │   │       └── link_siae_to_network.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   └── models.py
+│   ├── nexus
+│   │   ├── __init__.py
+│   │   ├── management
+│   │   │   ├── __init__.py
+│   │   │   └── commands
+│   │   │       ├── __init__.py
+│   │   │       ├── nexus_full_sync.py
+│   │   │       └── populate_metabase_nexus.py
+│   │   ├── sync.py
+│   │   └── tasks.py
+│   ├── notes
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   └── models.py
+│   ├── perimeters
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── management
+│   │   │   └── commands
+│   │   │       ├── README.md
+│   │   │       ├── data
+│   │   │       │   ├── communes.json
+│   │   │       │   ├── departements.json
+│   │   │       │   ├── perimeters_20220104.sql
+│   │   │       │   └── regions.json
+│   │   │       ├── generate_communes.py
+│   │   │       ├── generate_departements.py
+│   │   │       ├── generate_regions.py
+│   │   │       ├── import_communes.py
+│   │   │       ├── import_departements.py
+│   │   │       └── import_regions.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   └── models.py
+│   ├── purchases
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── constants.py
+│   │   ├── management
+│   │   │   └── commands
+│   │   │       └── import_purchases.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_slugmappingcache.py
+│   │   │   └── __init__.py
+│   │   └── models.py
+│   ├── sectors
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   └── models.py
+│   ├── siaes
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── constants.py
+│   │   ├── management
+│   │   │   ├── base_update_api.py
+│   │   │   └── commands
+│   │   │       ├── .gitignore
+│   │   │       ├── data
+│   │   │       │   └── mapping_api_entreprise_forme_juridique.csv
+│   │   │       ├── import_esat_from_csv.py
+│   │   │       ├── import_esat_gesat.py
+│   │   │       ├── import_esat_handeco.py
+│   │   │       ├── import_esus_data.py
+│   │   │       ├── import_new_sep.py
+│   │   │       ├── import_sep.py
+│   │   │       ├── import_siae_groups.py
+│   │   │       ├── seed_decp_test_siaes.py
+│   │   │       ├── send_completion_reminder_emails.py
+│   │   │       ├── send_siae_user_request_reminder_emails.py
+│   │   │       ├── set_legal_form_field.py
+│   │   │       ├── sync_siaes_decp.py
+│   │   │       ├── sync_siaes_decp_details.py
+│   │   │       ├── sync_with_emplois_inclusion.py
+│   │   │       ├── update_api_entreprise_fields.py
+│   │   │       ├── update_api_qpv_fields.py
+│   │   │       ├── update_api_zrr_fields.py
+│   │   │       ├── update_hosmoz.py
+│   │   │       ├── update_siae_count_fields.py
+│   │   │       └── update_siae_super_badge_field.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_alter_historicalsiae_name_alter_siae_name.py
+│   │   │   ├── 0003_siae_decp_fields.py
+│   │   │   ├── 0004_siae_decp_contracts_count.py
+│   │   │   ├── 0005_siaepublicmarket.py
+│   │   │   ├── 0006_siae_decp_details_last_sync_date.py
+│   │   │   ├── 0007_siae_tender_detail_not_interested_count.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── tasks.py
+│   │   └── utils.py
+│   ├── static
+│   │   ├── css
+│   │   │   └── dsfr-theme-tac.min.css
+│   │   ├── django-dsfr
+│   │   │   └── icon-picker
+│   │   │       └── assets
+│   │   │           ├── css
+│   │   │           │   └── icon-picker.css
+│   │   │           └── js
+│   │   │               └── universal-icon-picker-fix.js
+│   │   ├── images
+│   │   │   ├── Illu_LTE.png
+│   │   │   ├── arrow-left.png
+│   │   │   ├── arrow-right.png
+│   │   │   ├── arrow.png
+│   │   │   ├── arrows.png
+│   │   │   ├── bg-section.png
+│   │   │   ├── bizdev-icon.jpg
+│   │   │   ├── cal-evt-una-left.png
+│   │   │   ├── cal-evt-una-right.png
+│   │   │   ├── cal-evt-una.png
+│   │   │   ├── card-cb.png
+│   │   │   ├── card-master.png
+│   │   │   ├── card-visa.png
+│   │   │   ├── check.svg
+│   │   │   ├── chk-logo.png
+│   │   │   ├── common-ico-user.svg
+│   │   │   ├── default-100x60.png
+│   │   │   ├── dir_form_ico_map.png
+│   │   │   ├── dir_form_ico_shape.png
+│   │   │   ├── done.svg
+│   │   │   ├── feed-default.png
+│   │   │   ├── filiere_map.png
+│   │   │   ├── flag-en.png
+│   │   │   ├── flag-fr.png
+│   │   │   ├── help_arrow_blue.png
+│   │   │   ├── home-page-studie-cases.png
+│   │   │   ├── home_*.png  (9 files)
+│   │   │   ├── hosmoz.min.jpg
+│   │   │   ├── hp-02-illustration-01.png
+│   │   │   ├── hp-02-photo-01.jpg
+│   │   │   ├── hp-02-photo-02.jpg
+│   │   │   ├── hp-02-photo-03.jpg
+│   │   │   ├── hp-logos-labels.min.png
+│   │   │   ├── hp-logos-labels.png
+│   │   │   ├── icon-eye.png
+│   │   │   ├── icon-eye2.png
+│   │   │   ├── icon-pdf.png
+│   │   │   ├── icon1.png
+│   │   │   ├── icon2.png
+│   │   │   ├── icon3.png
+│   │   │   ├── icon_error.png
+│   │   │   ├── icon_info.png
+│   │   │   ├── icon_success.png
+│   │   │   ├── icon_warning.png
+│   │   │   ├── icons.png
+│   │   │   ├── illu-augmentation.svg
+│   │   │   ├── illu-local.svg
+│   │   │   ├── illu-ouvrier.svg
+│   │   │   ├── illu-recyclage.svg
+│   │   │   ├── illustration-*.svg  (13 files)
+│   │   │   ├── img.png
+│   │   │   ├── img*.png  (15 files)
+│   │   │   ├── inclusion-*.svg  (14 files)
+│   │   │   ├── inclusion-02-illu-01.png
+│   │   │   ├── inclusion-02-visuel-01.jpg
+│   │   │   ├── inclusion-08-visuel-01.jpg
+│   │   │   ├── inclusion-08-visuel-02.jpg
+│   │   │   ├── inclusion-08-visuel-03.jpg
+│   │   │   ├── inclusion-logo-campus-inclusion.png
+│   │   │   ├── inclusion-logo-france-chance.png
+│   │   │   ├── info_banner_illustration.jpg
+│   │   │   ├── info_directory.png
+│   │   │   ├── info_shape.png
+│   │   │   ├── info_sourcing.jpg
+│   │   │   ├── info_sourcing.png
+│   │   │   ├── itou_curves.jpg
+│   │   │   ├── itou_curves.png
+│   │   │   ├── itou_curves.svg
+│   │   │   ├── itou_curves2.png
+│   │   │   ├── loader.gif
+│   │   │   ├── loading.gif
+│   │   │   ├── logo-*.svg  (11 files)
+│   │   │   ├── logo-*.jpg  (15 files)
+│   │   │   ├── logo-*.png  (24 files)
+│   │   │   ├── logo.png
+│   │   │   ├── logo2.gif
+│   │   │   ├── logo_dgefp.png
+│   │   │   ├── logo_inclusion.png
+│   │   │   ├── logo_ministere_du_travail.svg
+│   │   │   ├── mango-pay.png
+│   │   │   ├── marianne_2.png
+│   │   │   ├── marker*.png  (5 files)
+│   │   │   ├── marketplace-solutions.png
+│   │   │   ├── none.gif
+│   │   │   ├── oeil-ouvert.svg
+│   │   │   ├── partenaires-illu-01.png
+│   │   │   ├── paypal.png
+│   │   │   ├── picto-burger.svg
+│   │   │   ├── picto-close.svg
+│   │   │   ├── picto-rond.svg
+│   │   │   ├── pin.png
+│   │   │   ├── prof_*.png  (8 files)
+│   │   │   ├── recy_angle_rond.png
+│   │   │   ├── recyclage_back_1.png
+│   │   │   ├── recyclage_home.png
+│   │   │   ├── reparation-velo.jpg
+│   │   │   ├── reparation-velo.min.jpg
+│   │   │   ├── sc-fav-star-active.svg
+│   │   │   ├── sc-fav-star.svg
+│   │   │   ├── shape_horaire.png
+│   │   │   ├── shape_perimeter.png
+│   │   │   ├── shape_prestatype.png
+│   │   │   ├── shape_site.png
+│   │   │   ├── siae_*.svg  (5 files)
+│   │   │   ├── sprite-icons.png
+│   │   │   ├── stars.png
+│   │   │   ├── step_arrow.png
+│   │   │   └── ui-bg_flat_0_aaaaaa_40x100.png
+│   │   ├── img
+│   │   │   ├── check.svg
+│   │   │   ├── crayon_appel.png
+│   │   │   ├── default-listing.png
+│   │   │   ├── dir_form_ico_map.png
+│   │   │   ├── dir_form_ico_shape.png
+│   │   │   ├── favicon-*.png  (5 files)
+│   │   │   ├── favicon.ico
+│   │   │   ├── favicon.png
+│   │   │   ├── filiere_map.min.png
+│   │   │   ├── filiere_map.png
+│   │   │   ├── home_help_icon_white.png
+│   │   │   ├── hp-*.png  (5 files)
+│   │   │   ├── hp-*.jpg  (12 files)
+│   │   │   ├── icon_map.png
+│   │   │   ├── icon_map_shadow.png
+│   │   │   ├── inclusion-*.svg  (13 files)
+│   │   │   ├── inclusion-02-illu-01.png
+│   │   │   ├── inclusion-*.jpg  (8 files)
+│   │   │   ├── inclusion-logo-campus-inclusion.png
+│   │   │   ├── logo-elise-recyclage.png
+│   │   │   ├── logo-envie-recyclage.png
+│   │   │   ├── logo-ministere-emploi.svg
+│   │   │   ├── logo-recylliance-recyclage.png
+│   │   │   ├── logo_ESS.png
+│   │   │   ├── logo_ESUS.png
+│   │   │   ├── logo_PDI.png
+│   │   │   ├── logo_metatags_marche.png
+│   │   │   ├── mea-envoi-groupe.png
+│   │   │   ├── out-arrow.svg
+│   │   │   ├── prof_*.svg  (12 files)
+│   │   │   ├── prof_dot.png
+│   │   │   ├── profile-*.svg  (7 files)
+│   │   │   ├── recyclage_1.min.png
+│   │   │   ├── recyclage_1.png
+│   │   │   ├── recyclage_angle_rond.png
+│   │   │   ├── recyclage_back_1.png
+│   │   │   ├── ressources-bg-01.svg
+│   │   │   ├── restauration_1.min.png
+│   │   │   ├── restauration_1.png
+│   │   │   ├── ronds_rose.svg
+│   │   │   ├── sc-fav-star-active.svg
+│   │   │   ├── sc-fav-star.svg
+│   │   │   ├── siae_*.svg  (5 files)
+│   │   │   └── spinner-bars.svg
+│   │   ├── itou_marche
+│   │   │   ├── admin.css
+│   │   │   ├── components
+│   │   │   │   └── _dropdown_menu.scss
+│   │   │   └── itou_marche.scss
+│   │   ├── js
+│   │   │   ├── admin_tender_confirmation.js
+│   │   │   ├── dropdown_menu.js
+│   │   │   ├── dsfr
+│   │   │   │   └── utils.js
+│   │   │   ├── envoi_groupe_modal_video.js
+│   │   │   ├── favorite_item.js
+│   │   │   ├── filter_data_message.js
+│   │   │   ├── invite_colleagues_modal.js
+│   │   │   ├── mtcaptcha.js
+│   │   │   ├── multiselect.js
+│   │   │   ├── perimeter_autocomplete_field.js
+│   │   │   ├── s3_upload.js
+│   │   │   ├── search_form.js
+│   │   │   ├── siae_activity_delete.js
+│   │   │   ├── siae_user_modals.js
+│   │   │   ├── signup_form.js
+│   │   │   └── utils.js
+│   │   └── vendor
+│   │       ├── alphagov-accessible-autocomplete-3.0.1
+│   │       │   ├── accessible-autocomplete.min.css
+│   │       │   ├── accessible-autocomplete.min.css.map
+│   │       │   ├── accessible-autocomplete.min.js
+│   │       │   └── accessible-autocomplete.min.js.map
+│   │       ├── alpinejs@3.15.0.min.js
+│   │       ├── chart.umd.js.map
+│   │       ├── chart.umd@4.5.0.min.js
+│   │       ├── chartjs-plugin-datalabels@2.2.0.min.js
+│   │       ├── dropzone-5.9.3
+│   │       │   ├── dropzone.min.css
+│   │       │   └── dropzone.min.js
+│   │       ├── htmx-2.0.7
+│   │       │   └── htmx.min.js
+│   │       ├── jquery-3.7.1.min.js
+│   │       ├── leaflet-1.9.4
+│   │       │   ├── images
+│   │       │   │   ├── layers-2x.png
+│   │       │   │   ├── layers.png
+│   │       │   │   ├── marker-icon-2x.png
+│   │       │   │   ├── marker-icon.png
+│   │       │   │   └── marker-shadow.png
+│   │       │   ├── leaflet.css
+│   │       │   ├── leaflet.js
+│   │       │   └── leaflet.js.map
+│   │       ├── masonry.pkgd@4.2.2.min.js
+│   │       ├── remixicon-4.7.0
+│   │       │   ├── remixicon.css
+│   │       │   ├── remixicon.eot
+│   │       │   ├── remixicon.svg
+│   │       │   ├── remixicon.ttf
+│   │       │   ├── remixicon.woff
+│   │       │   └── remixicon.woff2
+│   │       ├── shepherd-14.5.1
+│   │       │   ├── css
+│   │       │   │   └── shepherd.css
+│   │       │   └── esm
+│   │       │       ├── shepherd.mjs
+│   │       │       └── shepherd.mjs.map
+│   │       └── theme-inclusion
+│   │           └── images
+│   │               ├── favico.ico
+│   │               ├── favicon.ico
+│   │               ├── ico-*.svg  (72 files)
+│   │               ├── logo-*.svg  (39 files)
+│   │               └── logo-meta-base.png
+│   ├── stats
+│   │   ├── __init__.py
+│   │   ├── management
+│   │   │   └── commands
+│   │   │       └── delete_old_trackers.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_delete_statsuser.py
+│   │   │   ├── 0003_drop_statsuser_table.py
+│   │   │   └── __init__.py
+│   │   └── models.py
+│   ├── templates
+│   │   ├── 403.html
+│   │   ├── 403_csrf.html
+│   │   ├── 404.html
+│   │   ├── 429.html
+│   │   ├── 500.html
+│   │   ├── account
+│   │   │   ├── email
+│   │   │   │   ├── email_confirmation_message.txt
+│   │   │   │   └── email_confirmation_subject.txt
+│   │   │   ├── email_confirm.html
+│   │   │   ├── login.html
+│   │   │   └── signup.html
+│   │   ├── admin
+│   │   │   ├── anonymize_confirmation.html
+│   │   │   ├── base.html
+│   │   │   ├── includes
+│   │   │   │   └── fieldset.html
+│   │   │   ├── index_with_export.html
+│   │   │   └── inlines_change_form.html
+│   │   ├── api
+│   │   │   └── home.html
+│   │   ├── auth
+│   │   │   ├── _login_or_signup_contact_modal.html
+│   │   │   ├── _login_or_signup_download_modal.html
+│   │   │   ├── _login_or_signup_modal.html
+│   │   │   ├── _login_or_signup_search_advanced_modal.html
+│   │   │   ├── _login_or_signup_siae_tender_modal.html
+│   │   │   ├── password_reset.html
+│   │   │   ├── password_reset_complete.html
+│   │   │   ├── password_reset_confirm.html
+│   │   │   ├── password_reset_email_body.html
+│   │   │   ├── password_reset_email_subject.txt
+│   │   │   ├── password_reset_sent.html
+│   │   │   └── signup_notification_email_body.txt
+│   │   ├── cms
+│   │   │   ├── article_item.html
+│   │   │   ├── article_list.html
+│   │   │   └── show_article_categories_badges.html
+│   │   ├── content_manager
+│   │   │   ├── blocks
+│   │   │   │   ├── button.html
+│   │   │   │   └── multicolumns.html
+│   │   │   ├── content_page.html
+│   │   │   └── full_width_background.html
+│   │   ├── conversations
+│   │   │   ├── _form_contact_modal.html
+│   │   │   └── admin_change_form.html
+│   │   ├── dashboard
+│   │   │   ├── _add_siae_card.html
+│   │   │   ├── _add_tender_card.html
+│   │   │   ├── _aides_territoires_section.html
+│   │   │   ├── _api_key_card.html
+│   │   │   ├── _facilitator_list_card.html
+│   │   │   ├── _favorites_card.html
+│   │   │   ├── _inspirational_tenders_card.html
+│   │   │   ├── _network_card.html
+│   │   │   ├── _ressource_card.html
+│   │   │   ├── _siae_activity_delete_modal.html
+│   │   │   ├── _siae_edit_activities_create_sector_form.html
+│   │   │   ├── _siae_tab_content.html
+│   │   │   ├── _stats_card.html
+│   │   │   ├── disabled_email_edit.html
+│   │   │   ├── home_buyer.html
+│   │   │   ├── home_siae.html
+│   │   │   ├── inclusive_potential_analysis.html
+│   │   │   ├── inclusive_potential_mapping_validation.html
+│   │   │   ├── inclusive_purchase_stats.html
+│   │   │   ├── partial_activity_alpine_component.html
+│   │   │   ├── partial_activity_create_form.html
+│   │   │   ├── partial_activity_detail.html
+│   │   │   ├── partial_activity_edit_form.html
+│   │   │   ├── profile_edit.html
+│   │   │   ├── siae_edit_activities.html
+│   │   │   ├── siae_edit_activities_create.html
+│   │   │   ├── siae_edit_base.html
+│   │   │   ├── siae_edit_contact.html
+│   │   │   ├── siae_edit_info.html
+│   │   │   ├── siae_edit_offer.html
+│   │   │   ├── siae_search_adopt_confirm.html
+│   │   │   ├── siae_search_by_siret.html
+│   │   │   └── siae_users.html
+│   │   ├── django
+│   │   │   └── forms
+│   │   │       └── widgets
+│   │   │           ├── checkbox_option.html
+│   │   │           └── multiple_input.html
+│   │   ├── dsfr
+│   │   │   ├── breadcrumb.html
+│   │   │   └── global_css.html
+│   │   ├── favorites
+│   │   │   ├── _favorite_item_add_modal.html
+│   │   │   ├── _favorite_item_remove_modal.html
+│   │   │   ├── _favorite_list_delete_modal.html
+│   │   │   ├── _favorite_list_edit_modal.html
+│   │   │   ├── dashboard_favorite_list.html
+│   │   │   └── dashboard_favorite_list_detail.html
+│   │   ├── includes
+│   │   │   ├── _completion_progress_bar.html
+│   │   │   ├── _dropdown_menu.html
+│   │   │   ├── _header_env_notice.html
+│   │   │   ├── _header_for_buyers.html
+│   │   │   ├── _header_for_siaes.html
+│   │   │   ├── _pagination.html
+│   │   │   ├── _super_badge.html
+│   │   │   ├── _super_siae_arguments_badge.html
+│   │   │   ├── _tracker_itou.html
+│   │   │   ├── _tracker_tarteaucitron.html
+│   │   │   ├── _traiteurs_engages_promo.html
+│   │   │   ├── _widget_custom_multiselect.html
+│   │   │   └── forms
+│   │   │       └── _dsfr_formset.html
+│   │   ├── labels
+│   │   │   └── admin_change_form.html
+│   │   ├── layouts
+│   │   │   ├── _footer.html
+│   │   │   ├── _header.html
+│   │   │   ├── _header_nav_primary_items.html
+│   │   │   ├── _header_nav_secondary_items.html
+│   │   │   ├── base.html
+│   │   │   └── base_htmx.html
+│   │   ├── networks
+│   │   │   ├── dashboard_network_detail.html
+│   │   │   ├── dashboard_network_siae_list.html
+│   │   │   ├── dashboard_network_siae_tender_list.html
+│   │   │   ├── dashboard_network_tender_detail.html
+│   │   │   ├── dashboard_network_tender_list.html
+│   │   │   └── dashboard_network_tender_siae_list.html
+│   │   ├── pages
+│   │   │   ├── company-reference-calculator.html
+│   │   │   ├── contact.html
+│   │   │   ├── contact_form_email_body.txt
+│   │   │   ├── contact_form_receipt_email_body.txt
+│   │   │   ├── decouvrir-inclusion.html
+│   │   │   ├── filiere_recyclage.html
+│   │   │   ├── filiere_restauration.html
+│   │   │   ├── groupements.html
+│   │   │   ├── partenaires.html
+│   │   │   ├── plan_du_site.html
+│   │   │   ├── social-impact-for-buyers.html
+│   │   │   └── stats.html
+│   │   ├── siaes
+│   │   │   ├── _annuaire_entreprises_button.html
+│   │   │   ├── _card_detail.html
+│   │   │   ├── _card_search_result.html
+│   │   │   ├── _card_suggest_tender.html
+│   │   │   ├── _card_tender.html
+│   │   │   ├── _client_reference.html
+│   │   │   ├── _contact_details_buyer_modal.html
+│   │   │   ├── _contact_details_cta.html
+│   │   │   ├── _contact_details_not_buyer_modal.html
+│   │   │   ├── _detail_admin_extra_info.html
+│   │   │   ├── _detail_cta.html
+│   │   │   ├── _detail_cta_v2.html
+│   │   │   ├── _detail_partner_cta.html
+│   │   │   ├── _invite_colleagues_form.html
+│   │   │   ├── _invite_colleagues_modal.html
+│   │   │   ├── _invite_colleagues_success.html
+│   │   │   ├── _share_search_results.html
+│   │   │   ├── _si_ideas_search_result.html
+│   │   │   ├── _siae_activity_card.html
+│   │   │   ├── _siae_activity_content.html
+│   │   │   ├── _siae_user_delete_modal.html
+│   │   │   ├── _siae_user_request_cancel_modal.html
+│   │   │   ├── _siae_user_request_confirm_modal.html
+│   │   │   ├── _useful_infos.html
+│   │   │   ├── detail.html
+│   │   │   ├── search_results.html
+│   │   │   ├── siret_search_results.html
+│   │   │   └── widgets
+│   │   │       └── location_widget.html
+│   │   ├── storage
+│   │   │   └── s3_upload_form.html
+│   │   ├── tenders
+│   │   │   ├── _card_list_item.html
+│   │   │   ├── _closed_badge.html
+│   │   │   ├── _detail_admin_extra_info.html
+│   │   │   ├── _detail_card.html
+│   │   │   ├── _detail_contact.html
+│   │   │   ├── _detail_contact_click_confirm_modal.html
+│   │   │   ├── _detail_contact_click_confirm_tender_response_is_anonymous.html
+│   │   │   ├── _detail_cta.html
+│   │   │   ├── _detail_cta_groupement.html
+│   │   │   ├── _detail_cta_not_interested.html
+│   │   │   ├── _detail_not_interested_click_confirm.html
+│   │   │   ├── _detail_not_interested_click_confirm_modal.html
+│   │   │   ├── _detail_siae_user_without_siae.html
+│   │   │   ├── _detail_side_infos_author.html
+│   │   │   ├── _detail_sidebar.html
+│   │   │   ├── _groupement_siae_card.html
+│   │   │   ├── _list_item_buyer.html
+│   │   │   ├── _list_item_detail_row.html
+│   │   │   ├── _list_item_network.html
+│   │   │   ├── _list_item_siae.html
+│   │   │   ├── _status_badge.html
+│   │   │   ├── admin_change_form.html
+│   │   │   ├── create_base.html
+│   │   │   ├── create_notification_email_admin_body.txt
+│   │   │   ├── create_step_confirmation.html
+│   │   │   ├── create_step_contact.html
+│   │   │   ├── create_step_detail.html
+│   │   │   ├── create_step_general.html
+│   │   │   ├── create_step_survey.html
+│   │   │   ├── detail.html
+│   │   │   ├── groupement_reply.html
+│   │   │   ├── inspirational_detail.html
+│   │   │   ├── inspirational_list.html
+│   │   │   ├── list.html
+│   │   │   ├── partial_reminder_form.html
+│   │   │   ├── siae_interested_list.html
+│   │   │   └── survey_transactioned_detail.html
+│   │   └── utils
+│   │       └── templatetags
+│   │           └── siae_sectors_display.html
+│   ├── tenders
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── constants.py
+│   │   ├── enums.py
+│   │   ├── forms.py
+│   │   ├── management
+│   │   │   └── commands
+│   │   │       ├── .gitignore
+│   │   │       ├── delete_old_draft_tenders.py
+│   │   │       ├── delete_old_tenders.py
+│   │   │       ├── import_partners_tender.py
+│   │   │       ├── send_author_list_of_super_siaes_emails.py
+│   │   │       ├── send_author_transactioned_question_emails.py
+│   │   │       ├── send_siae_contacted_reminder_emails.py
+│   │   │       ├── send_siae_interested_reminder_emails.py
+│   │   │       ├── send_siae_transactioned_question_emails.py
+│   │   │       ├── send_validated_tenders.py
+│   │   │       ├── tenders_update_status_to_rejected.py
+│   │   │       └── update_tender_count_fields.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_alter_tender_sectors.py
+│   │   │   ├── 0003_tender_siae_groupement_and_referent_regional.py
+│   │   │   ├── 0004_referentregional_logo.py
+│   │   │   ├── 0005_sanitize_tenders_html.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   └── utils.py
+│   ├── users
+│   │   ├── __init__.py
+│   │   ├── adapter.py
+│   │   ├── admin.py
+│   │   ├── constants.py
+│   │   ├── forms.py
+│   │   ├── management
+│   │   │   └── commands
+│   │   │       ├── README.md
+│   │   │       ├── base_import_users.py
+│   │   │       ├── delete_old_users.py
+│   │   │       ├── import_buyers.py
+│   │   │       └── import_partners.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_remove_user_is_anonymized.py
+│   │   │   ├── 0003_user_pending_deletion_notice_date.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── tasks.py
+│   │   └── validators.py
+│   ├── utils
+│   │   ├── __init__.py
+│   │   ├── admin
+│   │   │   ├── actions.py
+│   │   │   ├── admin_site.py
+│   │   │   ├── export_excel.py
+│   │   │   └── inline_fieldset.py
+│   │   ├── apis
+│   │   │   ├── __init__.py
+│   │   │   ├── api_brevo.py
+│   │   │   ├── api_decp.py
+│   │   │   ├── api_emplois_inclusion.py
+│   │   │   ├── api_entreprise.py
+│   │   │   ├── api_qpv.py
+│   │   │   ├── api_recherche_entreprises.py
+│   │   │   ├── api_slack.py
+│   │   │   ├── api_zrr.py
+│   │   │   ├── brevo_attributes.py
+│   │   │   └── geocoding.py
+│   │   ├── commands.py
+│   │   ├── constants.py
+│   │   ├── context_processors.py
+│   │   ├── data.py
+│   │   ├── db.py
+│   │   ├── emails.py
+│   │   ├── export.py
+│   │   ├── fields.py
+│   │   ├── history.py
+│   │   ├── logging.py
+│   │   ├── management
+│   │   │   └── commands
+│   │   │       ├── antivirus_scan.py
+│   │   │       ├── cleanup_phone_field.py
+│   │   │       └── upload_to_s3.py
+│   │   ├── mixins.py
+│   │   ├── mtcaptcha.py
+│   │   ├── password_validation.py
+│   │   ├── remove_beta_redirect_middleware.py
+│   │   ├── s3.py
+│   │   ├── sanitize.py
+│   │   ├── settings_context_processors.py
+│   │   ├── slug_matching.py
+│   │   ├── templatetags
+│   │   │   ├── addstr.py
+│   │   │   ├── array_choices_display.py
+│   │   │   ├── fr_number.py
+│   │   │   ├── get_form_field.py
+│   │   │   ├── get_verbose_name.py
+│   │   │   ├── process_dict.py
+│   │   │   ├── siae_sectors_display.py
+│   │   │   └── url_add_query.py
+│   │   ├── time.py
+│   │   ├── tracker.py
+│   │   ├── urls.py
+│   │   ├── validators.py
+│   │   └── widgets.py
+│   └── www
+│       ├── __init__.py
+│       ├── auth
+│       │   ├── __init__.py
+│       │   ├── forms.py
+│       │   ├── tasks.py
+│       │   ├── urls.py
+│       │   └── views.py
+│       ├── conversations
+│       │   ├── __init__.py
+│       │   ├── forms.py
+│       │   └── tasks.py
+│       ├── dashboard
+│       │   ├── __init__.py
+│       │   ├── filters.py
+│       │   ├── forms.py
+│       │   ├── urls.py
+│       │   └── views.py
+│       ├── dashboard_favorites
+│       │   ├── __init__.py
+│       │   ├── forms.py
+│       │   ├── urls.py
+│       │   └── views.py
+│       ├── dashboard_networks
+│       │   ├── __init__.py
+│       │   ├── urls.py
+│       │   └── views.py
+│       ├── dashboard_siaes
+│       │   ├── __init__.py
+│       │   ├── forms.py
+│       │   ├── tasks.py
+│       │   ├── urls.py
+│       │   └── views.py
+│       ├── pages
+│       │   ├── __init__.py
+│       │   ├── forms.py
+│       │   ├── tasks.py
+│       │   ├── urls.py
+│       │   └── views.py
+│       ├── siaes
+│       │   ├── __init__.py
+│       │   ├── forms.py
+│       │   ├── tasks.py
+│       │   ├── urls.py
+│       │   ├── views.py
+│       │   └── widgets.py
+│       └── tenders
+│           ├── __init__.py
+│           ├── forms.py
+│           ├── tasks.py
+│           ├── urls.py
+│           ├── utils.py
+│           └── views.py
+├── manage.py
+├── pyproject.toml
+├── scripts
+│   ├── check_nh3_sanitization.py
+│   ├── clever-deploy
+│   ├── create_wagtail_homepage.py
+│   ├── list_non_remove_users_RGPD.py
+│   └── update_changelog.sh
+├── tests
+│   ├── __init__.py
+│   ├── api
+│   │   ├── __init__.py
+│   │   ├── emails
+│   │   │   ├── __init__.py
+│   │   │   ├── data_inbound_tests.json
+│   │   │   └── tests.py
+│   │   ├── inclusive_potential
+│   │   │   ├── __init__.py
+│   │   │   └── tests.py
+│   │   ├── networks
+│   │   │   ├── __init__.py
+│   │   │   └── tests.py
+│   │   ├── perimeters
+│   │   │   ├── __init__.py
+│   │   │   └── tests.py
+│   │   ├── sectors
+│   │   │   ├── __init__.py
+│   │   │   └── tests.py
+│   │   ├── siaes
+│   │   │   ├── __init__.py
+│   │   │   └── tests.py
+│   │   ├── tenders
+│   │   │   ├── __init__.py
+│   │   │   └── tests.py
+│   │   └── test_authentication.py
+│   ├── cms
+│   │   ├── __init__.py
+│   │   └── test_commands.py
+│   ├── companies
+│   │   ├── __init__.py
+│   │   ├── factories.py
+│   │   └── tests.py
+│   ├── conftest.py
+│   ├── conversations
+│   │   ├── __init__.py
+│   │   ├── factories.py
+│   │   └── tests.py
+│   ├── cpv
+│   │   ├── __init__.py
+│   │   ├── factories.py
+│   │   └── tests.py
+│   ├── crm
+│   │   ├── __init__.py
+│   │   ├── management
+│   │   │   ├── __init__.py
+│   │   │   ├── test_brevo_check_attributes.py
+│   │   │   ├── test_crm_brevo_sync_companies.py
+│   │   │   └── test_crm_brevo_sync_contacts.py
+│   │   └── tests.py
+│   ├── django_shepherd
+│   │   ├── __init__.py
+│   │   └── tests.py
+│   ├── favorites
+│   │   ├── __init__.py
+│   │   ├── factories.py
+│   │   └── tests.py
+│   ├── labels
+│   │   ├── __init__.py
+│   │   ├── factories.py
+│   │   └── tests.py
+│   ├── networks
+│   │   ├── __init__.py
+│   │   ├── factories.py
+│   │   └── tests.py
+│   ├── nexus
+│   │   ├── __init__.py
+│   │   ├── __snapshots__
+│   │   │   └── tests_management_commands.ambr
+│   │   ├── test_sync.py
+│   │   └── tests_management_commands.py
+│   ├── notes
+│   │   ├── __init__.py
+│   │   ├── factories.py
+│   │   └── tests.py
+│   ├── perimeters
+│   │   ├── __init__.py
+│   │   ├── factories.py
+│   │   └── tests.py
+│   ├── purchases
+│   │   ├── __init__.py
+│   │   ├── factories.py
+│   │   ├── sample_purchases.csv
+│   │   ├── test_import_purchases.py
+│   │   ├── test_models.py
+│   │   └── test_slug_matching.py
+│   ├── samples
+│   │   ├── acheteurs_import.csv
+│   │   ├── hosmoz_import.csv
+│   │   └── partners_import.csv
+│   ├── sectors
+│   │   ├── __init__.py
+│   │   ├── factories.py
+│   │   └── tests.py
+│   ├── siaes
+│   │   ├── __init__.py
+│   │   ├── factories.py
+│   │   ├── test_commands.py
+│   │   ├── test_decp.py
+│   │   ├── test_models.py
+│   │   └── test_siae_user_request.py
+│   ├── stats
+│   │   ├── __init__.py
+│   │   ├── factories.py
+│   │   └── tests.py
+│   ├── tenders
+│   │   ├── __init__.py
+│   │   ├── factories.py
+│   │   ├── test_admin.py
+│   │   ├── test_commands.py
+│   │   ├── test_matching.py
+│   │   └── test_models.py
+│   ├── users
+│   │   ├── __init__.py
+│   │   ├── factories.py
+│   │   ├── test_commands.py
+│   │   └── test_models.py
+│   ├── utils
+│   │   ├── __init__.py
+│   │   ├── factory_boy.py
+│   │   ├── test_api_brevo.py
+│   │   ├── test_commands.py
+│   │   ├── test_context_processors.py
+│   │   ├── test_data.py
+│   │   ├── test_db.py
+│   │   ├── test_emails.py
+│   │   ├── test_remove_beta_redirect_middleware.py
+│   │   ├── test_sanitize.py
+│   │   ├── test_templatetags.py
+│   │   ├── test_tracker.py
+│   │   └── test_validators.py
+│   └── www
+│       ├── __init__.py
+│       ├── auth
+│       │   ├── __init__.py
+│       │   └── tests.py
+│       ├── conversations
+│       │   ├── __init__.py
+│       │   └── tests.py
+│       ├── dashboard
+│       │   ├── __init__.py
+│       │   ├── test_inclusive_potential_analysis.py
+│       │   └── tests.py
+│       ├── dashboard_favorites
+│       │   ├── __init__.py
+│       │   └── tests.py
+│       ├── dashboard_networks
+│       │   ├── __init__.py
+│       │   └── tests.py
+│       ├── dashboard_siaes
+│       │   ├── __init__.py
+│       │   └── tests.py
+│       ├── pages
+│       │   ├── __init__.py
+│       │   └── tests.py
+│       ├── siaes
+│       │   ├── __init__.py
+│       │   └── tests.py
+│       └── tenders
+│           ├── __init__.py
+│           ├── test_forms.py
+│           ├── test_tasks.py
+│           └── tests.py
+└── uv.lock
+232 directories, 1385 files
