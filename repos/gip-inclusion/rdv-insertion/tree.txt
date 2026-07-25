@@ -1,0 +1,2340 @@
+.
+├── .browserslistrc
+├── .buildpacks
+├── .env.example
+├── .env.test
+├── .erdconfig
+├── .eslintignore
+├── .eslintrc.json
+├── .github
+│   ├── ISSUE_TEMPLATE
+│   │   ├── bug.md
+│   │   ├── epic.md
+│   │   ├── new_motif_category.md
+│   │   ├── param-trage-cd-avant-embarquement.md
+│   │   └── task.md
+│   ├── dependabot.yml
+│   └── workflows
+│       ├── ci.yml
+│       └── security.yml
+├── .gitignore
+├── .gitleaks.toml
+├── .node-version
+├── .pre-commit-config.yaml
+├── .prettierignore
+├── .prettierrc
+├── .rspec
+├── .rubocop.yml
+├── .rubocop_todo.yml
+├── .ruby-version
+├── .slugignore
+├── .well-known
+│   └── security.txt
+├── .yarnrc
+├── CLAUDE.md
+├── Gemfile
+├── Gemfile.lock
+├── Makefile
+├── Procfile
+├── Procfile.dev
+├── README.md
+├── Rakefile
+├── app
+│   ├── assets
+│   │   ├── builds
+│   │   │   └── .keep
+│   │   ├── config
+│   │   │   └── manifest.js
+│   │   └── images
+│   │       ├── illustrations
+│   │       │   ├── accompagnement-step-1.png
+│   │       │   ├── accompagnement-step-2.png
+│   │       │   ├── accompagnement-step-3.png
+│   │       │   ├── accompagnement-step-4.png
+│   │       │   ├── alert.svg
+│   │       │   ├── arrow.svg
+│   │       │   ├── calendar.svg
+│   │       │   ├── choice.svg
+│   │       │   ├── computer.svg
+│   │       │   ├── contact_us.svg
+│   │       │   ├── empty-results.png
+│   │       │   ├── error-line.svg
+│   │       │   ├── error-warning-line.svg
+│   │       │   ├── error.svg
+│   │       │   ├── happy-agent.png
+│   │       │   ├── home-trust-why-1.png
+│   │       │   ├── home-trust-why-2.png
+│   │       │   ├── home-trust-why-3.png
+│   │       │   ├── home-trust-why-4.png
+│   │       │   ├── home-wish.png
+│   │       │   ├── letter.svg
+│   │       │   ├── logiciel-metier.png
+│   │       │   ├── not_found.png
+│   │       │   ├── parcours-drome-convocations-courriers.png
+│   │       │   ├── parcours-drome-courriers-footer.png
+│   │       │   ├── parcours-drome-courriers.png
+│   │       │   ├── success.svg
+│   │       │   ├── upload.png
+│   │       │   ├── welcome-illustration.png
+│   │       │   ├── welcome-illustration.svg
+│   │       │   ├── why-rdvi-1.png
+│   │       │   ├── why-rdvi-2.png
+│   │       │   ├── why-rdvi-3.png
+│   │       │   └── why-rdvi-4.png
+│   │       ├── logo-inclusion-connect-bg.svg
+│   │       ├── logo-inclusion-connect-one-line.svg
+│   │       ├── logos
+│   │       │   ├── betagouv-disque.png
+│   │       │   ├── direction-interministerielle-du-numerique.svg
+│   │       │   ├── europe-logos.jpg
+│   │       │   ├── footer-plateforme-inclusion.svg
+│   │       │   ├── france-travail-io.svg
+│   │       │   ├── france-travail.png
+│   │       │   ├── france-travail.svg
+│   │       │   ├── home_bouches-du-rhone.png
+│   │       │   ├── home_drome.png
+│   │       │   ├── home_la_manche.png
+│   │       │   ├── home_moselle.png
+│   │       │   ├── home_vaucluse.png
+│   │       │   ├── home_yvelines.png
+│   │       │   ├── les-emplois.svg
+│   │       │   ├── logo_website_moselle.png
+│   │       │   ├── logo_website_moselle.svg
+│   │       │   ├── plateforme-inclusion.svg
+│   │       │   ├── pole-emploi.png
+│   │       │   ├── rdv-insertion-dsfr.svg
+│   │       │   ├── rdv-insertion.png
+│   │       │   ├── rdv-insertion.svg
+│   │       │   ├── rdv-solidarites.png
+│   │       │   ├── rdvi-favicon.png
+│   │       │   ├── republique-francaise-logo.svg
+│   │       │   ├── rf-pole-emploi.png
+│   │       │   ├── solis.png
+│   │       │   └── suivi-de-parcours.png
+│   │       └── maps
+│   │           ├── ain.png
+│   │           ├── aisne.png
+│   │           ├── allier.png
+│   │           ├── alpes-de-haute-provence.png
+│   │           ├── alpes-maritimes.png
+│   │           ├── ardeche.png
+│   │           ├── ardennes.png
+│   │           ├── ariege.png
+│   │           ├── aube.png
+│   │           ├── aude.png
+│   │           ├── aveyron.png
+│   │           ├── bas-rhin.png
+│   │           ├── bouches-du-rhone.png
+│   │           ├── calvados.png
+│   │           ├── cantal.png
+│   │           ├── charente-maritime.png
+│   │           ├── charente.png
+│   │           ├── cher.png
+│   │           ├── correze.png
+│   │           ├── corse-du-sud.png
+│   │           ├── cote-d-or.png
+│   │           ├── cotes-d-armor.png
+│   │           ├── creuse.png
+│   │           ├── demo-france-travail.svg
+│   │           ├── demo-generique-rdv-i.svg
+│   │           ├── deux-sevres.png
+│   │           ├── dordogne.png
+│   │           ├── doubs.png
+│   │           ├── drome.png
+│   │           ├── essonne.png
+│   │           ├── eure-et-loir.png
+│   │           ├── eure.png
+│   │           ├── finistere.png
+│   │           ├── gard.png
+│   │           ├── gers.png
+│   │           ├── gironde.png
+│   │           ├── guadeloupe.png
+│   │           ├── guyane.png
+│   │           ├── haut-rhin.png
+│   │           ├── haute-*.png  (7 files)
+│   │           ├── hautes-alpes.png
+│   │           ├── hautes-pyrenees.png
+│   │           ├── hauts-de-seine.png
+│   │           ├── herault.png
+│   │           ├── ile-et-vilaine.png
+│   │           ├── indre-et-loire.png
+│   │           ├── indre.png
+│   │           ├── isere.png
+│   │           ├── jura.png
+│   │           ├── landes.png
+│   │           ├── loir-et-cher.png
+│   │           ├── loire-atlantique.png
+│   │           ├── loire.png
+│   │           ├── loiret.png
+│   │           ├── lot-et-garonne.png
+│   │           ├── lot.png
+│   │           ├── lozere.png
+│   │           ├── maine-et-loire.png
+│   │           ├── manche.png
+│   │           ├── marne.png
+│   │           ├── martinique.png
+│   │           ├── mayenne.png
+│   │           ├── mayotte.png
+│   │           ├── meurthe-et-moselle.png
+│   │           ├── meuse.png
+│   │           ├── morbihan.png
+│   │           ├── moselle.png
+│   │           ├── nievre.png
+│   │           ├── nord.png
+│   │           ├── oise.png
+│   │           ├── orne.png
+│   │           ├── paris.png
+│   │           ├── pas-de-calais.png
+│   │           ├── puy-de-dome.png
+│   │           ├── pyrenees-atlantique.png
+│   │           ├── pyrenees-orientales.png
+│   │           ├── reunion.png
+│   │           ├── rhone.png
+│   │           ├── saone-et-loire.png
+│   │           ├── sarthe.png
+│   │           ├── savoie.png
+│   │           ├── seine-et-marne.png
+│   │           ├── seine-maritime.png
+│   │           ├── seine-saint-denis.png
+│   │           ├── somme.png
+│   │           ├── tarn-et-garonne.png
+│   │           ├── tarn.png
+│   │           ├── territoire-de-belfort.png
+│   │           ├── val-d-oise.png
+│   │           ├── val-de-marne.png
+│   │           ├── var.png
+│   │           ├── vaucluse.png
+│   │           ├── vendee.png
+│   │           ├── vienne.png
+│   │           ├── vosges.png
+│   │           ├── yonne.png
+│   │           └── yvelines.png
+│   ├── blueprints
+│   │   ├── address_geocoding_blueprint.rb
+│   │   ├── agent_blueprint.rb
+│   │   ├── application_blueprint.rb
+│   │   ├── archive_blueprint.rb
+│   │   ├── department_blueprint.rb
+│   │   ├── follow_up_blueprint.rb
+│   │   ├── invitation_blueprint.rb
+│   │   ├── lieu_blueprint.rb
+│   │   ├── motif_blueprint.rb
+│   │   ├── motif_category_blueprint.rb
+│   │   ├── organisation_blueprint.rb
+│   │   ├── participation_blueprint.rb
+│   │   ├── rdv_blueprint.rb
+│   │   ├── tag_blueprint.rb
+│   │   └── user_blueprint.rb
+│   ├── channels
+│   │   └── application_cable
+│   │       ├── channel.rb
+│   │       └── connection.rb
+│   ├── clients
+│   │   ├── api_adresse_client.rb
+│   │   ├── france_travail_client.rb
+│   │   ├── pdf_generator_client.rb
+│   │   ├── primotexto_client.rb
+│   │   ├── rdv_solidarites_client.rb
+│   │   └── slack_client.rb
+│   ├── controllers
+│   │   ├── accept_cgus_controller.rb
+│   │   ├── api
+│   │   │   └── v1
+│   │   │       ├── application_controller.rb
+│   │   │       ├── departments_controller.rb
+│   │   │       ├── rdvs_controller.rb
+│   │   │       └── users_controller.rb
+│   │   ├── application_controller.rb
+│   │   ├── archives_controller.rb
+│   │   ├── brevo
+│   │   │   ├── ip_whitelist_concern.rb
+│   │   │   ├── mail_webhooks_controller.rb
+│   │   │   └── sms_webhooks_controller.rb
+│   │   ├── category_configurations_positions_controller.rb
+│   │   ├── concerns
+│   │   │   ├── agent_logging_concern.rb
+│   │   │   ├── agent_roles
+│   │   │   │   └── csv_export_authorizations_controller.rb
+│   │   │   ├── api
+│   │   │   │   └── v1
+│   │   │   │       ├── paper_trail_concern.rb
+│   │   │   │       └── params_validation_concern.rb
+│   │   │   ├── authenticated_controller_concern.rb
+│   │   │   ├── authorization_concern.rb
+│   │   │   ├── back_to_list_concern.rb
+│   │   │   ├── before_action_override.rb
+│   │   │   ├── cgu_concern.rb
+│   │   │   ├── cookies_consent_concern.rb
+│   │   │   ├── crisp_concern.rb
+│   │   │   ├── current_structure.rb
+│   │   │   ├── dpa_concern.rb
+│   │   │   ├── filter_rdv_solidarites_webhooks_concern.rb
+│   │   │   ├── malicious_agent_blocking_concern.rb
+│   │   │   ├── matomo_concern.rb
+│   │   │   ├── notification_center_concern.rb
+│   │   │   ├── paper_trail_concern.rb
+│   │   │   ├── rate_limiting_concern.rb
+│   │   │   ├── sort_params.rb
+│   │   │   ├── super_admins
+│   │   │   │   ├── impersonate.rb
+│   │   │   │   ├── paper_trail_concern.rb
+│   │   │   │   └── redirect_and_render_concern.rb
+│   │   │   ├── turbo_stream_concern.rb
+│   │   │   └── users
+│   │   │       ├── archived_list.rb
+│   │   │       ├── filterable.rb
+│   │   │       ├── sortable.rb
+│   │   │       └── taggable.rb
+│   │   ├── content_security_policy_controller.rb
+│   │   ├── convocations_controller.rb
+│   │   ├── cookies_consents_controller.rb
+│   │   ├── creneau_opening_requests_controller.rb
+│   │   ├── csv_exports_controller.rb
+│   │   ├── dates_filterings
+│   │   │   ├── choose_date_kind_controller.rb
+│   │   │   ├── convocation_dates_filterings_controller.rb
+│   │   │   ├── creation_dates_filterings_controller.rb
+│   │   │   └── invitation_dates_filterings_controller.rb
+│   │   ├── department_organisations_controller.rb
+│   │   ├── errors_controller.rb
+│   │   ├── file_configurations_controller.rb
+│   │   ├── follow_ups
+│   │   │   └── closings_controller.rb
+│   │   ├── follow_ups_controller.rb
+│   │   ├── inbound_emails_controller.rb
+│   │   ├── invitations_controller.rb
+│   │   ├── notification_center_controller.rb
+│   │   ├── notifications_controller.rb
+│   │   ├── organisations
+│   │   │   ├── category_configurations
+│   │   │   │   ├── alertings_controller.rb
+│   │   │   │   ├── base_controller.rb
+│   │   │   │   ├── file_configuration_selections_controller.rb
+│   │   │   │   ├── invitation_settings_controller.rb
+│   │   │   │   ├── rdv_preferences_controller.rb
+│   │   │   │   └── template_overrides_controller.rb
+│   │   │   ├── category_configurations_controller.rb
+│   │   │   ├── configuration
+│   │   │   │   ├── agents_controller.rb
+│   │   │   │   ├── base_controller.rb
+│   │   │   │   ├── categories_controller.rb
+│   │   │   │   ├── informations_controller.rb
+│   │   │   │   ├── messages_controller.rb
+│   │   │   │   └── tags_controller.rb
+│   │   │   ├── data_retentions_controller.rb
+│   │   │   ├── dpa_agreements_controller.rb
+│   │   │   ├── general_informations_controller.rb
+│   │   │   ├── messages_configurations_controller.rb
+│   │   │   ├── tags_controller.rb
+│   │   │   └── user_added_notifications_controller.rb
+│   │   ├── organisations_controller.rb
+│   │   ├── participations_controller.rb
+│   │   ├── post_rdv_orientations_controller.rb
+│   │   ├── previews
+│   │   │   ├── base_controller.rb
+│   │   │   ├── invitations_controller.rb
+│   │   │   ├── notifications_controller.rb
+│   │   │   └── signature_images_controller.rb
+│   │   ├── rdv_solidarites_webhooks_controller.rb
+│   │   ├── sessions_controller.rb
+│   │   ├── super_admin_authentication_request_verifications_controller.rb
+│   │   ├── super_admin_authentication_requests_controller.rb
+│   │   ├── super_admins
+│   │   │   ├── agents_controller.rb
+│   │   │   ├── application_controller.rb
+│   │   │   ├── blocked_invitations_counters_controller.rb
+│   │   │   ├── blocked_users_controller.rb
+│   │   │   ├── departments_controller.rb
+│   │   │   ├── impersonations_controller.rb
+│   │   │   ├── motif_categories_controller.rb
+│   │   │   ├── organisations_controller.rb
+│   │   │   ├── orientation_types_controller.rb
+│   │   │   ├── templates_controller.rb
+│   │   │   ├── users_controller.rb
+│   │   │   └── webhook_endpoints_controller.rb
+│   │   ├── user_list_uploads
+│   │   │   ├── base_controller.rb
+│   │   │   ├── category_selections_controller.rb
+│   │   │   ├── creneau_opening_requests_controller.rb
+│   │   │   ├── invitation_attempts
+│   │   │   │   └── retries_controller.rb
+│   │   │   ├── invitation_attempts_controller.rb
+│   │   │   ├── organisation_assignations_controller.rb
+│   │   │   ├── user_list_uploads_controller.rb
+│   │   │   ├── user_row_cells_controller.rb
+│   │   │   ├── user_rows_controller.rb
+│   │   │   ├── user_save_attempts
+│   │   │   │   └── retries_controller.rb
+│   │   │   └── user_save_attempts_controller.rb
+│   │   ├── users
+│   │   │   ├── follow_ups_controller.rb
+│   │   │   ├── orientations_controller.rb
+│   │   │   ├── parcours_controller.rb
+│   │   │   ├── parcours_documents_controller.rb
+│   │   │   ├── rdvs_controller.rb
+│   │   │   ├── referent_assignations_controller.rb
+│   │   │   └── tag_assignations_controller.rb
+│   │   ├── users_controller.rb
+│   │   ├── users_organisations_controller.rb
+│   │   └── website
+│   │       ├── base_controller.rb
+│   │       ├── static_pages_controller.rb
+│   │       ├── stats_controller.rb
+│   │       └── teleprocedure_landings_controller.rb
+│   ├── dashboards
+│   │   ├── agent_dashboard.rb
+│   │   ├── agent_role_dashboard.rb
+│   │   ├── blocked_invitations_counter_dashboard.rb
+│   │   ├── blocked_user_dashboard.rb
+│   │   ├── department_dashboard.rb
+│   │   ├── lieu_dashboard.rb
+│   │   ├── motif_category_dashboard.rb
+│   │   ├── motif_dashboard.rb
+│   │   ├── organisation_dashboard.rb
+│   │   ├── orientation_type_dashboard.rb
+│   │   ├── tag_dashboard.rb
+│   │   ├── template_dashboard.rb
+│   │   ├── user_dashboard.rb
+│   │   └── webhook_endpoint_dashboard.rb
+│   ├── helpers
+│   │   ├── agent_roles_helper.rb
+│   │   ├── agents_helper.rb
+│   │   ├── application_helper.rb
+│   │   ├── archives_helper.rb
+│   │   ├── cgu_helper.rb
+│   │   ├── follow_ups_helper.rb
+│   │   ├── impersonation_helper.rb
+│   │   ├── invitations_helper.rb
+│   │   ├── matomo_helper.rb
+│   │   ├── motifs_helper.rb
+│   │   ├── navigation_helper.rb
+│   │   ├── organisations
+│   │   │   ├── category_configurations_helper.rb
+│   │   │   ├── messages_configurations_helper.rb
+│   │   │   └── user_added_notifications_helper.rb
+│   │   ├── organisations_badges_helper.rb
+│   │   ├── participations_helper.rb
+│   │   ├── pdf_icons_helper.rb
+│   │   ├── policy_helper.rb
+│   │   ├── rdv_insertion_instance_name_helper.rb
+│   │   ├── stats_helper.rb
+│   │   ├── super_admin_header_helper.rb
+│   │   ├── tags_helper.rb
+│   │   ├── tooltip_helper.rb
+│   │   ├── user_list_upload
+│   │   │   ├── creneaux_snapshots_helper.rb
+│   │   │   ├── invitation_attempts_helper.rb
+│   │   │   ├── user_list_upload_helper.rb
+│   │   │   └── user_save_attempts_helper.rb
+│   │   ├── users_filters_helper.rb
+│   │   ├── users_helper.rb
+│   │   └── users_list_indicators_helper.rb
+│   ├── javascript
+│   │   ├── actions
+│   │   │   ├── inviteUser.js
+│   │   │   └── retrieveGeolocatedOrganisations.js
+│   │   ├── application.js
+│   │   ├── components
+│   │   │   ├── choose-organisation-modal.js
+│   │   │   ├── department-selector.js
+│   │   │   └── organisation-selector.js
+│   │   ├── controllers
+│   │   │   ├── accordion_controller.js
+│   │   │   ├── announcement_banner_controller.js
+│   │   │   ├── array_fields_input_controller.js
+│   │   │   ├── autocomplete_controller.js
+│   │   │   ├── click_on_render_controller.js
+│   │   │   ├── confirm_button_controller.js
+│   │   │   ├── confirmation_modal_controller.js
+│   │   │   ├── convocable_participation_dates_controller.js
+│   │   │   ├── crisp_controller.js
+│   │   │   ├── csp_test_controller.js
+│   │   │   ├── data_retention_form_controller.js
+│   │   │   ├── dates_filtering_controller.js
+│   │   │   ├── drag_controller.js
+│   │   │   ├── dropdown
+│   │   │   │   ├── filter_options_controller.js
+│   │   │   │   ├── select_option_controller.js
+│   │   │   │   └── show_options_controller.js
+│   │   │   ├── email_attachments_controller.js
+│   │   │   ├── flash_controller.js
+│   │   │   ├── flatpickr_controller.js
+│   │   │   ├── home_carrousel_controller.js
+│   │   │   ├── home_department_logos_controller.js
+│   │   │   ├── home_questions_controller.js
+│   │   │   ├── home_subtitle_controller.js
+│   │   │   ├── image_upload_controller.js
+│   │   │   ├── invitation_button_controller.js
+│   │   │   ├── invitation_dates_controller.js
+│   │   │   ├── matomo_script_tag_controller.js
+│   │   │   ├── new_department_archive_form_controller.js
+│   │   │   ├── new_user_form_controller.js
+│   │   │   ├── notification_center_controller.js
+│   │   │   ├── orientation_form_controller.js
+│   │   │   ├── parcours_documents_controller.js
+│   │   │   ├── postal_invitation_controller.js
+│   │   │   ├── qr_code_scanner_controller.js
+│   │   │   ├── radio_submit_controller.js
+│   │   │   ├── refresh_page_after_controller.js
+│   │   │   ├── refresh_page_periodically_controller.js
+│   │   │   ├── remote_modal_controller.js
+│   │   │   ├── search_controller.js
+│   │   │   ├── signature_upload_controller.js
+│   │   │   ├── sort_list_controller.js
+│   │   │   ├── super_admin_header_controller.js
+│   │   │   ├── super_admins
+│   │   │   │   ├── token_verification_controller.js
+│   │   │   │   └── webhook_endpoints_controller.js
+│   │   │   ├── tags_controller.js
+│   │   │   ├── tally_controller.js
+│   │   │   ├── tooltip_controller.js
+│   │   │   ├── user_link_controller.js
+│   │   │   ├── user_list_upload
+│   │   │   │   ├── enrich_with_cnaf_file_controller.js
+│   │   │   │   ├── file_upload_controller.js
+│   │   │   │   ├── invite_all_uninvited_controller.js
+│   │   │   │   ├── select_user_rows_controller.js
+│   │   │   │   └── user_row_cell_controller.js
+│   │   │   └── users_list_filter_controller.js
+│   │   ├── eslint-rules
+│   │   │   ├── enforce-safe-swal.js
+│   │   │   ├── enforce-safe-tippy.js
+│   │   │   ├── index.js
+│   │   │   └── package.json
+│   │   ├── fonts
+│   │   │   └── Marianne
+│   │   │       ├── Marianne-Bold.woff
+│   │   │       └── Marianne-Regular.woff
+│   │   ├── lib
+│   │   │   ├── createInvitationLetter.js
+│   │   │   ├── datesHelper.js
+│   │   │   ├── fetchApp.js
+│   │   │   ├── fileParser.js
+│   │   │   ├── inputFormatters.js
+│   │   │   ├── parameterize.js
+│   │   │   ├── parseContactsData.js
+│   │   │   ├── retrieveLastInvitationDate.js
+│   │   │   ├── retrieveRelevantOrganisation.js
+│   │   │   ├── safeSwal.js
+│   │   │   ├── safeTippy.js
+│   │   │   └── signOutOnReauthRequired.js
+│   │   ├── mail.js
+│   │   ├── pdf.js
+│   │   ├── stylesheets
+│   │   │   ├── _text.scss
+│   │   │   ├── _variables.scss
+│   │   │   ├── application.scss
+│   │   │   ├── components
+│   │   │   │   ├── _agreement_modal.scss
+│   │   │   │   ├── _autocomplete.scss
+│   │   │   │   ├── _border.scss
+│   │   │   │   ├── _button.scss
+│   │   │   │   ├── _card.scss
+│   │   │   │   ├── _color.scss
+│   │   │   │   ├── _cookies_consent_modal.scss
+│   │   │   │   ├── _creneau_opening_request_modal.scss
+│   │   │   │   ├── _dropdown.scss
+│   │   │   │   ├── _flash.scss
+│   │   │   │   ├── _footer.scss
+│   │   │   │   ├── _form.scss
+│   │   │   │   ├── _form_group_toggle.scss
+│   │   │   │   ├── _icon.scss
+│   │   │   │   ├── _image.scss
+│   │   │   │   ├── _navbar.scss
+│   │   │   │   ├── _notification_center.scss
+│   │   │   │   ├── _pagination.scss
+│   │   │   │   ├── _qr_code_scanner.scss
+│   │   │   │   ├── _rdv_insertion_instance_name.scss
+│   │   │   │   ├── _stat.scss
+│   │   │   │   ├── _stepper.scss
+│   │   │   │   ├── _table.scss
+│   │   │   │   ├── _title.scss
+│   │   │   │   ├── _token_input.scss
+│   │   │   │   ├── _users_list_filters.scss
+│   │   │   │   └── _users_list_indicators.scss
+│   │   │   ├── mail.scss
+│   │   │   ├── override_dsfr_defaults.scss
+│   │   │   ├── pages
+│   │   │   │   ├── _home.scss
+│   │   │   │   ├── _organisation.scss
+│   │   │   │   ├── _upload.scss
+│   │   │   │   ├── _user.scss
+│   │   │   │   └── _users.scss
+│   │   │   ├── pdf.scss
+│   │   │   └── super_admin.scss
+│   │   └── super_admin.js
+│   ├── jobs
+│   │   ├── alert_motif_category_has_changed_job.rb
+│   │   ├── alert_user_added_to_another_department_job.rb
+│   │   ├── application_job.rb
+│   │   ├── clean_unused_follow_ups_job.rb
+│   │   ├── concerns
+│   │   │   ├── locked_and_ordered_jobs.rb
+│   │   │   └── locked_jobs.rb
+│   │   ├── create_and_invite_user_job.rb
+│   │   ├── creneau_opening_requests
+│   │   │   └── send_email_job.rb
+│   │   ├── creneaux
+│   │   │   ├── retrieve_and_notify_all_unavailable_creneaux_job.rb
+│   │   │   ├── retrieve_and_notify_unavailable_creneaux_job.rb
+│   │   │   ├── store_all_number_of_creneaux_available_job.rb
+│   │   │   └── store_number_of_creneaux_available_job.rb
+│   │   ├── deduplicate_rdv_solidarites_webhooks_from_retry_set_job.rb
+│   │   ├── delete_archive_job.rb
+│   │   ├── delete_rdv_job.rb
+│   │   ├── expire_invitation_job.rb
+│   │   ├── exporters
+│   │   │   ├── create_users_csv_export_job.rb
+│   │   │   ├── create_users_participations_csv_export_job.rb
+│   │   │   └── expire_attachment_job.rb
+│   │   ├── file_configurations
+│   │   │   └── delete_unused_job.rb
+│   │   ├── follow_ups
+│   │   │   ├── plan_status_refresh_job.rb
+│   │   │   ├── refresh_out_of_date_statuses_job.rb
+│   │   │   └── refresh_statuses_job.rb
+│   │   ├── import_user_associations_from_rdv_solidarites_job.rb
+│   │   ├── inbound_webhooks
+│   │   │   ├── brevo
+│   │   │   │   ├── process_delivery_status_job_base.rb
+│   │   │   │   ├── process_mail_delivery_status_job.rb
+│   │   │   │   └── process_sms_delivery_status_job.rb
+│   │   │   └── rdv_solidarites
+│   │   │       ├── locked_and_ordered_job_base.rb
+│   │   │       ├── process_agent_job.rb
+│   │   │       ├── process_agent_role_job.rb
+│   │   │       ├── process_lieu_job.rb
+│   │   │       ├── process_motif_job.rb
+│   │   │       ├── process_organisation_job.rb
+│   │   │       ├── process_rdv_job.rb
+│   │   │       ├── process_referent_assignation_job.rb
+│   │   │       ├── process_user_job.rb
+│   │   │       └── process_user_profile_job.rb
+│   │   ├── invalidate_invitations_after_archiving_job.rb
+│   │   ├── invite_user_job.rb
+│   │   ├── monitor_inbound_emails_activity_job.rb
+│   │   ├── monitor_webhook_activity_job.rb
+│   │   ├── notify_jobs_to_retry_on_slack_job.rb
+│   │   ├── notify_participation_to_user_job.rb
+│   │   ├── notify_participations_to_users_job.rb
+│   │   ├── notify_rdv_changes_to_external_organisation_email_job.rb
+│   │   ├── nullify_rdv_solidarites_id_job.rb
+│   │   ├── organisations
+│   │   │   └── destroy_job.rb
+│   │   ├── outgoing_webhooks
+│   │   │   ├── france_travail
+│   │   │   │   ├── base_job.rb
+│   │   │   │   ├── cancel_participation_job.rb
+│   │   │   │   ├── send_pending_participations_job.rb
+│   │   │   │   └── upsert_participation_job.rb
+│   │   │   └── send_webhook_job.rb
+│   │   ├── purge_api_calls_job.rb
+│   │   ├── retrieve_and_assign_user_address_geocoding_job.rb
+│   │   ├── rgpd_cleanup_job.rb
+│   │   ├── rgpd_cleanup_organisation_job.rb
+│   │   ├── send_convocation_reminders_job.rb
+│   │   ├── send_invitation_reminder_job.rb
+│   │   ├── send_invitation_reminders_job.rb
+│   │   ├── soft_delete_user_job.rb
+│   │   ├── stats
+│   │   │   ├── base_job.rb
+│   │   │   ├── global_stats
+│   │   │   │   ├── upsert_stat_job.rb
+│   │   │   │   └── upsert_stats_job.rb
+│   │   │   └── monthly_stats
+│   │   │       ├── compute_and_save_single_stat_job.rb
+│   │   │       ├── upsert_stat_job.rb
+│   │   │       └── upsert_stats_job.rb
+│   │   ├── transfer_email_reply_job.rb
+│   │   ├── trigger_rdv_solidarites_webhooks_job.rb
+│   │   ├── upsert_record_job.rb
+│   │   └── user_list_upload
+│   │       ├── capture_processing_timestamp_job.rb
+│   │       ├── create_creneaux_snapshot_job.rb
+│   │       ├── invite_users_job.rb
+│   │       ├── save_user_job.rb
+│   │       └── save_users_job.rb
+│   ├── lib
+│   │   ├── asset_helper.rb
+│   │   ├── environments_helper.rb
+│   │   ├── nir_helper.rb
+│   │   ├── phone_number_helper.rb
+│   │   ├── redis_connection.rb
+│   │   └── sidekiq
+│   │       ├── arguments_filter.rb
+│   │       ├── logger
+│   │       │   └── formatters
+│   │       │       └── custom_log_formatter.rb
+│   │       └── middleware
+│   │           ├── capture_current_agent.rb
+│   │           └── set_current_agent.rb
+│   ├── mailers
+│   │   ├── application_mailer.rb
+│   │   ├── concerns
+│   │   │   ├── active_storage_current.rb
+│   │   │   └── acts_as_rdv_solidarites_concern.rb
+│   │   ├── creneau_opening_request_mailer.rb
+│   │   ├── csv_export_mailer.rb
+│   │   ├── department_mailer.rb
+│   │   ├── invitation_mailer.rb
+│   │   ├── notification_mailer.rb
+│   │   ├── organisation_mailer.rb
+│   │   ├── reply_transfer_mailer.rb
+│   │   └── super_admin_mailer.rb
+│   ├── models
+│   │   ├── address
+│   │   │   ├── normalizer.rb
+│   │   │   └── parser.rb
+│   │   ├── address_geocoding.rb
+│   │   ├── agent.rb
+│   │   ├── agent_role.rb
+│   │   ├── agent_session
+│   │   │   ├── base.rb
+│   │   │   ├── through_impersonate.rb
+│   │   │   └── through_sign_in_form.rb
+│   │   ├── agent_session_factory.rb
+│   │   ├── agents_rdv.rb
+│   │   ├── api_call.rb
+│   │   ├── application_record.rb
+│   │   ├── archive.rb
+│   │   ├── blocked_invitations_counter.rb
+│   │   ├── blocked_user.rb
+│   │   ├── category_configuration
+│   │   │   └── creneau_availability.rb
+│   │   ├── category_configuration.rb
+│   │   ├── concerns
+│   │   │   ├── agent
+│   │   │   │   ├── cookies_consentable.rb
+│   │   │   │   ├── rdv_solidarites_client.rb
+│   │   │   │   ├── session_key.rb
+│   │   │   │   ├── session_signing.rb
+│   │   │   │   └── super_admin_authentication.rb
+│   │   │   ├── category_configuration
+│   │   │   │   └── template_override.rb
+│   │   │   ├── creneaux
+│   │   │   │   └── availability_period.rb
+│   │   │   ├── deliverable.rb
+│   │   │   ├── follow_up_status.rb
+│   │   │   ├── has_attached_image.rb
+│   │   │   ├── has_current_category_configuration.rb
+│   │   │   ├── has_participations_to_rdvs.rb
+│   │   │   ├── has_sms_provider.rb
+│   │   │   ├── invitable.rb
+│   │   │   ├── invitation
+│   │   │   │   └── creation_origin.rb
+│   │   │   ├── notificable.rb
+│   │   │   ├── organisation
+│   │   │   │   └── archivable.rb
+│   │   │   ├── participation
+│   │   │   │   ├── france_travail_payload.rb
+│   │   │   │   └── france_travail_webhooks.rb
+│   │   │   ├── rdv_participation_status.rb
+│   │   │   ├── rgpd_destroyable.rb
+│   │   │   ├── sanitizeable.rb
+│   │   │   ├── searchable.rb
+│   │   │   ├── sendable.rb
+│   │   │   ├── serializable.rb
+│   │   │   ├── templatable.rb
+│   │   │   ├── user
+│   │   │   │   ├── address.rb
+│   │   │   │   ├── affiliation_number.rb
+│   │   │   │   ├── birth_date_validation.rb
+│   │   │   │   ├── creation_origin.rb
+│   │   │   │   ├── france_travail_webhooks.rb
+│   │   │   │   ├── geocodable.rb
+│   │   │   │   ├── nir_validation.rb
+│   │   │   │   ├── referents.rb
+│   │   │   │   └── text_helper.rb
+│   │   │   ├── user_list_upload
+│   │   │   │   ├── creneaux_snapshot_retrievable.rb
+│   │   │   │   ├── metrics.rb
+│   │   │   │   ├── navigation.rb
+│   │   │   │   └── user_row
+│   │   │   │       ├── invitable.rb
+│   │   │   │       ├── matching_user.rb
+│   │   │   │       ├── selectable.rb
+│   │   │   │       ├── status.rb
+│   │   │   │       └── user_saveable.rb
+│   │   │   ├── validators
+│   │   │   │   ├── accepted_formats_validator.rb
+│   │   │   │   ├── max_size_validator.rb
+│   │   │   │   └── phone_number_validator.rb
+│   │   │   └── webhook_deliverable.rb
+│   │   ├── contract.rb
+│   │   ├── cookies_consent.rb
+│   │   ├── creneau_opening_request.rb
+│   │   ├── csv_export.rb
+│   │   ├── current.rb
+│   │   ├── department.rb
+│   │   ├── diagnostic.rb
+│   │   ├── dpa_agreement.rb
+│   │   ├── file_configuration.rb
+│   │   ├── flash_message.rb
+│   │   ├── follow_up.rb
+│   │   ├── geo_json
+│   │   │   ├── feature.rb
+│   │   │   └── feature_collection.rb
+│   │   ├── invitation.rb
+│   │   ├── lieu.rb
+│   │   ├── messages_configuration.rb
+│   │   ├── motif.rb
+│   │   ├── motif_category.rb
+│   │   ├── notification.rb
+│   │   ├── notification_center
+│   │   │   └── creneaux_availability_notification.rb
+│   │   ├── organisation
+│   │   │   ├── rdv_solidarites_urls.rb
+│   │   │   └── users_retriever.rb
+│   │   ├── organisation.rb
+│   │   ├── orientation.rb
+│   │   ├── orientation_type.rb
+│   │   ├── parcours_document.rb
+│   │   ├── participation.rb
+│   │   ├── post_rdv_orientation.rb
+│   │   ├── rdv.rb
+│   │   ├── rdv_solidarites
+│   │   │   ├── agent.rb
+│   │   │   ├── base.rb
+│   │   │   ├── lieu.rb
+│   │   │   ├── motif.rb
+│   │   │   ├── motif_category.rb
+│   │   │   ├── organisation.rb
+│   │   │   ├── participation.rb
+│   │   │   ├── rdv.rb
+│   │   │   ├── referent_assignation.rb
+│   │   │   ├── user.rb
+│   │   │   └── webhook_endpoint.rb
+│   │   ├── rdv_solidarites_credentials.rb
+│   │   ├── rdv_solidarites_webhook_job_wrapper.rb
+│   │   ├── referent_assignation.rb
+│   │   ├── sidekiq
+│   │   │   └── scheduler.rb
+│   │   ├── stat.rb
+│   │   ├── super_admin_authentication_request.rb
+│   │   ├── tag.rb
+│   │   ├── tag_organisation.rb
+│   │   ├── tag_user.rb
+│   │   ├── template.rb
+│   │   ├── templated_error_presenter.rb
+│   │   ├── uploaded_file_sanitizer.rb
+│   │   ├── user.rb
+│   │   ├── user_archived_status.rb
+│   │   ├── user_list_upload
+│   │   │   ├── collection.rb
+│   │   │   ├── creneaux_snapshot.rb
+│   │   │   ├── invitation_attempt.rb
+│   │   │   ├── metrics_calculator.rb
+│   │   │   ├── processing_log.rb
+│   │   │   ├── sorter.rb
+│   │   │   ├── user_row.rb
+│   │   │   └── user_save_attempt.rb
+│   │   ├── user_list_upload.rb
+│   │   ├── users_organisation.rb
+│   │   ├── webhook_endpoint.rb
+│   │   └── webhook_receipt.rb
+│   ├── policies
+│   │   ├── agent_policy.rb
+│   │   ├── application_policy.rb
+│   │   ├── archive_policy.rb
+│   │   ├── category_configuration_policy.rb
+│   │   ├── contract_policy.rb
+│   │   ├── csv_export_policy.rb
+│   │   ├── department_policy.rb
+│   │   ├── diagnostic_policy.rb
+│   │   ├── file_configuration_policy.rb
+│   │   ├── follow_up_policy.rb
+│   │   ├── invitation_policy.rb
+│   │   ├── messages_configuration_policy.rb
+│   │   ├── motif_category_policy.rb
+│   │   ├── organisation_policy.rb
+│   │   ├── orientation_policy.rb
+│   │   ├── parcours_document_policy.rb
+│   │   ├── participation_policy.rb
+│   │   ├── post_rdv_orientation_policy.rb
+│   │   ├── rdv_policy.rb
+│   │   ├── tag_policy.rb
+│   │   ├── user_list_upload_policy.rb
+│   │   └── user_policy.rb
+│   ├── services
+│   │   ├── agent_roles
+│   │   │   └── manage_export_authorizations_for_an_organisation.rb
+│   │   ├── base_service.rb
+│   │   ├── category_configurations
+│   │   │   └── create.rb
+│   │   ├── concerns
+│   │   │   ├── invitations
+│   │   │   │   └── sms_content.rb
+│   │   │   ├── messengers
+│   │   │   │   ├── generate_letter.rb
+│   │   │   │   ├── send_email.rb
+│   │   │   │   └── send_sms.rb
+│   │   │   ├── notifications
+│   │   │   │   ├── sender_phone_number_validation.rb
+│   │   │   │   └── sms_content.rb
+│   │   │   └── webhooks
+│   │   │       └── receipt_handler.rb
+│   │   ├── creneau_opening_requests
+│   │   │   └── create_many.rb
+│   │   ├── creneaux
+│   │   │   └── store_number_of_creneaux_available.rb
+│   │   ├── exporters
+│   │   │   ├── csv.rb
+│   │   │   ├── generate_users_csv.rb
+│   │   │   └── generate_users_participations_csv.rb
+│   │   ├── follow_ups
+│   │   │   ├── clean_unused.rb
+│   │   │   ├── close.rb
+│   │   │   └── save.rb
+│   │   ├── france_travail_api
+│   │   │   ├── build_user_authenticated_headers.rb
+│   │   │   ├── cancel_participation.rb
+│   │   │   ├── create_participation.rb
+│   │   │   ├── retrieve_access_token.rb
+│   │   │   ├── retrieve_user_token.rb
+│   │   │   └── update_participation.rb
+│   │   ├── inbound_webhooks
+│   │   │   └── brevo
+│   │   │       ├── assign_delivery_status_and_date_base.rb
+│   │   │       ├── assign_mail_delivery_status_and_date.rb
+│   │   │       └── assign_sms_delivery_status_and_date.rb
+│   │   ├── invitations
+│   │   │   ├── aggregate_invitation_without_creneaux.rb
+│   │   │   ├── assign_link_and_token.rb
+│   │   │   ├── compute_link.rb
+│   │   │   ├── generate_letter.rb
+│   │   │   ├── save_and_send.rb
+│   │   │   ├── send_email.rb
+│   │   │   ├── send_sms.rb
+│   │   │   └── validate.rb
+│   │   ├── invite_user.rb
+│   │   ├── motif_categories
+│   │   │   └── create.rb
+│   │   ├── notifications
+│   │   │   ├── generate_letter.rb
+│   │   │   ├── save_and_send.rb
+│   │   │   ├── send_email.rb
+│   │   │   └── send_sms.rb
+│   │   ├── organisations
+│   │   │   ├── create.rb
+│   │   │   ├── rgpd_cleanup.rb
+│   │   │   └── update.rb
+│   │   ├── orientations
+│   │   │   └── save.rb
+│   │   ├── outgoing_webhooks
+│   │   │   └── send_webhook.rb
+│   │   ├── participations
+│   │   │   └── update.rb
+│   │   ├── pdf_generation
+│   │   │   └── generate.rb
+│   │   ├── rdv_solidarites_api
+│   │   │   ├── base.rb
+│   │   │   ├── create_motif_category.rb
+│   │   │   ├── create_motif_category_territory.rb
+│   │   │   ├── create_or_retrieve_invitation_token.rb
+│   │   │   ├── create_referent_assignation.rb
+│   │   │   ├── create_referent_assignations.rb
+│   │   │   ├── create_user.rb
+│   │   │   ├── create_user_profiles.rb
+│   │   │   ├── create_webhook_endpoint.rb
+│   │   │   ├── delete_referent_assignation.rb
+│   │   │   ├── delete_user_profile.rb
+│   │   │   ├── retrieve_creneau_availability.rb
+│   │   │   ├── retrieve_organisation.rb
+│   │   │   ├── retrieve_organisations.rb
+│   │   │   ├── retrieve_user.rb
+│   │   │   ├── retrieve_user_referent_assignations.rb
+│   │   │   ├── retrieve_webhook_endpoint.rb
+│   │   │   ├── update_organisation.rb
+│   │   │   ├── update_participation.rb
+│   │   │   ├── update_user.rb
+│   │   │   └── update_webhook_endpoint.rb
+│   │   ├── retrieve_address_geocoding_params.rb
+│   │   ├── retrieve_organisations_from_address.rb
+│   │   ├── sms
+│   │   │   ├── send_with_brevo.rb
+│   │   │   └── send_with_primotexto.rb
+│   │   ├── stats
+│   │   │   ├── compute_average_time_between_invitation_and_rdv_in_days.rb
+│   │   │   ├── compute_follow_up_seen_rate_within_delays.rb
+│   │   │   ├── compute_rate_of_autonomous_users.rb
+│   │   │   ├── compute_rate_of_no_show.rb
+│   │   │   ├── compute_rate_of_users_with_rdv_seen.rb
+│   │   │   ├── global_stats
+│   │   │   │   └── compute.rb
+│   │   │   └── monthly_stats
+│   │   │       └── compute_for_focused_month.rb
+│   │   ├── upsert_record.rb
+│   │   ├── user_list_upload
+│   │   │   ├── create_creneaux_snapshot.rb
+│   │   │   ├── retrieve_organisation_to_assign.rb
+│   │   │   └── save_user.rb
+│   │   └── users
+│   │       ├── add_to_organisations.rb
+│   │       ├── assign_referent.rb
+│   │       ├── find.rb
+│   │       ├── find_or_initialize.rb
+│   │       ├── import_associations_from_rdv_solidarites.rb
+│   │       ├── push_to_rdv_solidarites.rb
+│   │       ├── remove_from_organisation.rb
+│   │       ├── remove_referent.rb
+│   │       ├── save.rb
+│   │       ├── upsert.rb
+│   │       └── validate.rb
+│   └── views
+│       ├── administrate
+│       │   └── application
+│       │       └── _form.html.erb
+│       ├── agent_roles
+│       │   └── csv_export_authorizations
+│       │       ├── _form.html.erb
+│       │       └── index.html.erb
+│       ├── archives
+│       │   ├── _new_batch_form.html.erb
+│       │   ├── _new_form.html.erb
+│       │   ├── new.html.erb
+│       │   └── new_batch.html.erb
+│       ├── common
+│       │   ├── _accept_cgu_modal.html.erb
+│       │   ├── _accept_dpa_modal.html.erb
+│       │   ├── _attribute_display.html.erb
+│       │   ├── _attribute_display_inline.html.erb
+│       │   ├── _attribute_input.html.erb
+│       │   ├── _attribute_input_inline.html.erb
+│       │   ├── _confirmation_modal.html.erb
+│       │   ├── _crisp.html.erb
+│       │   ├── _custom_confirmation_modal.html.erb
+│       │   ├── _custom_errors_modal.html.erb
+│       │   ├── _dpa_content.html.erb
+│       │   ├── _error_list.html.erb
+│       │   ├── _error_modal.html.erb
+│       │   ├── _flash_banner.html.erb
+│       │   ├── _flash_content.html.erb
+│       │   ├── _flashes.html.erb
+│       │   ├── _footer.html.erb
+│       │   ├── _footer_website.html.erb
+│       │   ├── _header.html.erb
+│       │   ├── _header_help_menu.html.erb
+│       │   ├── _header_invitation.html.erb
+│       │   ├── _header_notification_center.html.erb
+│       │   ├── _header_organisation_navigation_button.html.erb
+│       │   ├── _header_super_admin_bar.html.erb
+│       │   ├── _header_super_admin_bar_impersonated.html.erb
+│       │   ├── _header_website.html.erb
+│       │   ├── _image_upload_zone.html.erb
+│       │   ├── _matomo_script_tag.html.erb
+│       │   ├── _organisation_signature.html.erb
+│       │   ├── _rdvs_impersonation_warning.html.erb
+│       │   ├── _remote_modal.html.erb
+│       │   ├── _sign_out_button.html.erb
+│       │   ├── _success_modal.html.erb
+│       │   ├── _turbo_progress_bar_disabled.html.erb
+│       │   ├── _url_query_params_as_form_inputs.html.erb
+│       │   └── array_fields
+│       │       └── _input.html.erb
+│       ├── content_security_policy
+│       │   └── test.html.erb
+│       ├── convocations
+│       │   └── new.html.erb
+│       ├── cookies_consents
+│       │   ├── _cookies_consent.html.erb
+│       │   ├── _cookies_consent_form.html.erb
+│       │   ├── edit.html.erb
+│       │   └── new.html.erb
+│       ├── custom_errors
+│       │   ├── _no_creneau_available.html.erb
+│       │   └── _no_follow_up_category.html.erb
+│       ├── dates_filterings
+│       │   ├── choose_date_kind
+│       │   │   └── new.html.erb
+│       │   ├── convocation_dates_filterings
+│       │   │   └── new.html.erb
+│       │   ├── creation_dates_filterings
+│       │   │   └── new.html.erb
+│       │   └── invitation_dates_filterings
+│       │       └── new.html.erb
+│       ├── department_organisations
+│       │   └── index.html.erb
+│       ├── errors
+│       │   ├── _forbidden_modal.html.erb
+│       │   ├── internal_server_error.html.erb
+│       │   ├── internal_server_error.turbo_stream.erb
+│       │   ├── not_found.html.erb
+│       │   ├── not_found.turbo_stream.erb
+│       │   ├── unprocessable_entity.html.erb
+│       │   └── unprocessable_entity.turbo_stream.erb
+│       ├── file_configurations
+│       │   ├── _file_configuration.html.erb
+│       │   ├── _file_configuration_form.html.erb
+│       │   ├── edit.html.erb
+│       │   ├── new.html.erb
+│       │   └── show.html.erb
+│       ├── follow_ups
+│       │   ├── _close_follow_up_button.html.erb
+│       │   ├── _convocation_block.html.erb
+│       │   ├── _convocation_button.html.erb
+│       │   ├── _convocation_dates_rows.html.erb
+│       │   ├── _convocation_postal_link.html.erb
+│       │   ├── _delivery_status.html.erb
+│       │   ├── _follow_up.html.erb
+│       │   ├── _follow_up_status_badge.html.erb
+│       │   ├── _follow_up_status_cell.html.erb
+│       │   ├── _invitation_block.html.erb
+│       │   ├── _invitation_button.html.erb
+│       │   ├── _invitation_dates_rows.html.erb
+│       │   ├── _new_button.html.erb
+│       │   ├── _participation_row.html.erb
+│       │   ├── _postal_invitation_button.html.erb
+│       │   └── _reopen_follow_up_button.html.erb
+│       ├── invitations
+│       │   ├── _email_or_sms_invitation.html.erb
+│       │   ├── _invitation_submit.html.erb
+│       │   ├── _organisation_contact_card.html.erb
+│       │   ├── _postal_invitation.html.erb
+│       │   ├── invalid.html.erb
+│       │   └── invitation_code.html.erb
+│       ├── kaminari
+│       │   ├── _first_page.html.erb
+│       │   ├── _gap.html.erb
+│       │   ├── _last_page.html.erb
+│       │   ├── _next_page.html.erb
+│       │   ├── _page.html.erb
+│       │   ├── _paginator.html.erb
+│       │   └── _prev_page.html.erb
+│       ├── layouts
+│       │   ├── _application_base.html.erb
+│       │   ├── _head.html.erb
+│       │   ├── _rdv_insertion_instance_name.html.erb
+│       │   ├── application.html.erb
+│       │   ├── invited_user.html.erb
+│       │   ├── mailer.html.erb
+│       │   ├── mailer.text.erb
+│       │   ├── no_footer_white_bg.html.erb
+│       │   ├── organisation_configuration.html.erb
+│       │   ├── pdf.html.erb
+│       │   ├── rdv_solidarites.html.erb
+│       │   ├── super_admins
+│       │   │   └── application.html.erb
+│       │   ├── unauthorized.html.erb
+│       │   └── website.html.erb
+│       ├── letters
+│       │   ├── _footer.html.erb
+│       │   ├── _header.html.erb
+│       │   ├── _salutation.html.erb
+│       │   ├── invitations
+│       │   │   ├── _help_message.html.erb
+│       │   │   ├── _invitation_choices.html.erb
+│       │   │   ├── atelier.html.erb
+│       │   │   ├── atelier_enfants_ados.html.erb
+│       │   │   ├── phone_platform.html.erb
+│       │   │   └── standard.html.erb
+│       │   └── notifications
+│       │       ├── by_phone_participation_created.html.erb
+│       │       ├── participation_cancelled.html.erb
+│       │       ├── presential_participation_created.html.erb
+│       │       └── visio_participation_created.html.erb
+│       ├── mailers
+│       │   ├── _contact_infos.html.erb
+│       │   ├── _logos.html.erb
+│       │   ├── creneau_opening_request_mailer
+│       │   │   └── request_more_creneaux.html.erb
+│       │   ├── csv_export_mailer
+│       │   │   ├── notify_csv_export.html.erb
+│       │   │   └── notify_export_failure.html.erb
+│       │   ├── department_mailer
+│       │   │   └── create_user_error.html.erb
+│       │   ├── invitation_mailer
+│       │   │   ├── atelier_enfants_ados_invitation.html.erb
+│       │   │   ├── atelier_enfants_ados_invitation_reminder.html.erb
+│       │   │   ├── atelier_invitation.html.erb
+│       │   │   ├── atelier_invitation_reminder.html.erb
+│       │   │   ├── phone_platform_invitation.erb
+│       │   │   ├── phone_platform_invitation_reminder.html.erb
+│       │   │   ├── standard_invitation.html.erb
+│       │   │   └── standard_invitation_reminder.html.erb
+│       │   ├── notification_mailer
+│       │   │   ├── _by_phone_rdv_infos.html.erb
+│       │   │   ├── _cancelled_rdv_infos.html.erb
+│       │   │   ├── _presential_rdv_infos.html.erb
+│       │   │   ├── _visio_rdv_infos.html.erb
+│       │   │   ├── by_phone_participation_created.html.erb
+│       │   │   ├── by_phone_participation_reminder.html.erb
+│       │   │   ├── by_phone_participation_updated.html.erb
+│       │   │   ├── participation_cancelled.html.erb
+│       │   │   ├── presential_participation_created.html.erb
+│       │   │   ├── presential_participation_reminder.html.erb
+│       │   │   ├── presential_participation_updated.html.erb
+│       │   │   ├── visio_participation_created.html.erb
+│       │   │   ├── visio_participation_reminder.html.erb
+│       │   │   └── visio_participation_updated.html.erb
+│       │   ├── organisation_mailer
+│       │   │   ├── creneau_unavailable.html.erb
+│       │   │   ├── notify_no_available_slots.html.erb
+│       │   │   ├── notify_rdv_changes.html.erb
+│       │   │   └── user_added.html.erb
+│       │   ├── reply_transfer_mailer
+│       │   │   ├── _link_to_user_page.html.erb
+│       │   │   ├── _organisation_email_not_found.html.erb
+│       │   │   ├── _quote_original_mail.html.erb
+│       │   │   ├── forward_invitation_reply_to_organisation.html.erb
+│       │   │   ├── forward_notification_reply_to_organisation.html.erb
+│       │   │   └── forward_to_default_mailbox.html.erb
+│       │   └── super_admin_mailer
+│       │       └── send_authentication_token.html.erb
+│       ├── notification_center
+│       │   ├── _list.html.erb
+│       │   ├── _pagination.html.erb
+│       │   └── index.html.erb
+│       ├── organisations
+│       │   ├── category_configurations
+│       │   │   ├── _accordion_content.html.erb
+│       │   │   ├── _accordion_item.html.erb
+│       │   │   ├── _category_configuration_form.html.erb
+│       │   │   ├── _list.html.erb
+│       │   │   ├── _motif_category_select.html.erb
+│       │   │   ├── _suggest_motifs_modal.html.erb
+│       │   │   ├── alertings
+│       │   │   │   ├── _alerting.html.erb
+│       │   │   │   ├── _alerting_fields.html.erb
+│       │   │   │   ├── _alerting_form.html.erb
+│       │   │   │   ├── edit.html.erb
+│       │   │   │   ├── show.html.erb
+│       │   │   │   └── update.turbo_stream.erb
+│       │   │   ├── file_configuration_selections
+│       │   │   │   ├── _file_configuration_selection_form.html.erb
+│       │   │   │   ├── _file_configuration_selection_form_input.html.erb
+│       │   │   │   ├── _selected_file_configuration.html.erb
+│       │   │   │   ├── create.turbo_stream.erb
+│       │   │   │   ├── edit.html.erb
+│       │   │   │   ├── new.html.erb
+│       │   │   │   └── update.turbo_stream.erb
+│       │   │   ├── file_configurations
+│       │   │   │   └── _file_configuration.html.erb
+│       │   │   ├── invitation_settings
+│       │   │   │   ├── _invitation_setting.html.erb
+│       │   │   │   ├── _invitation_setting_fields.html.erb
+│       │   │   │   ├── _invitation_setting_form.html.erb
+│       │   │   │   ├── edit.html.erb
+│       │   │   │   ├── show.html.erb
+│       │   │   │   └── update.turbo_stream.erb
+│       │   │   ├── motifs
+│       │   │   │   └── _motifs.html.erb
+│       │   │   ├── new.html.erb
+│       │   │   ├── rdv_preferences
+│       │   │   │   ├── _rdv_preference.html.erb
+│       │   │   │   ├── _rdv_preference_fields.html.erb
+│       │   │   │   ├── _rdv_preference_form.html.erb
+│       │   │   │   ├── edit.html.erb
+│       │   │   │   ├── show.html.erb
+│       │   │   │   └── update.turbo_stream.erb
+│       │   │   └── template_overrides
+│       │   │       ├── _template_override.html.erb
+│       │   │       ├── _template_override_form.html.erb
+│       │   │       ├── edit.html.erb
+│       │   │       └── show.html.erb
+│       │   ├── configuration
+│       │   │   ├── _header.html.erb
+│       │   │   ├── _tabs_navigation.html.erb
+│       │   │   ├── agents
+│       │   │   │   └── show.html.erb
+│       │   │   ├── categories
+│       │   │   │   └── show.html.erb
+│       │   │   ├── informations
+│       │   │   │   └── show.html.erb
+│       │   │   ├── messages
+│       │   │   │   └── show.html.erb
+│       │   │   └── tags
+│       │   │       └── show.html.erb
+│       │   ├── data_retentions
+│       │   │   ├── _data_retention.html.erb
+│       │   │   ├── _data_retention_form.html.erb
+│       │   │   ├── edit.html.erb
+│       │   │   └── show.html.erb
+│       │   ├── general_informations
+│       │   │   ├── _general_information.html.erb
+│       │   │   ├── _general_information_form.html.erb
+│       │   │   ├── edit.html.erb
+│       │   │   └── show.html.erb
+│       │   ├── index.html.erb
+│       │   ├── messages_configurations
+│       │   │   ├── _messages_configuration.html.erb
+│       │   │   ├── _messages_configuration_form.html.erb
+│       │   │   ├── edit.html.erb
+│       │   │   └── show.html.erb
+│       │   ├── tags
+│       │   │   ├── _tag.erb
+│       │   │   ├── _tag_form.html.erb
+│       │   │   └── _tag_remove_confirm.html.erb
+│       │   └── user_added_notifications
+│       │       ├── _form.html.erb
+│       │       ├── _no_email.html.erb
+│       │       └── create.turbo_stream.erb
+│       ├── orientations
+│       │   ├── _orientation.html.erb
+│       │   ├── _orientation_form.html.erb
+│       │   └── _orientations_list.html.erb
+│       ├── parcours_documents
+│       │   ├── _document.html.erb
+│       │   ├── _document_date_form.html.erb
+│       │   ├── _document_form.html.erb
+│       │   └── _documents_list.html.erb
+│       ├── participations
+│       │   ├── _participation_status.html.erb
+│       │   ├── _participation_status_dropdown.html.erb
+│       │   └── _participation_status_dropdown_item.html.erb
+│       ├── post_rdv_orientations
+│       │   └── _form.html.erb
+│       ├── previews
+│       │   ├── invitations
+│       │   │   └── index.html.erb
+│       │   ├── notifications
+│       │   │   └── index.html.erb
+│       │   └── signature_images
+│       │       └── show.html.erb
+│       ├── sessions
+│       │   └── unauthorized.html.erb
+│       ├── super_admin_authentication_request_verifications
+│       │   └── new.html.erb
+│       ├── super_admins
+│       │   ├── agents
+│       │   │   └── show.html.erb
+│       │   ├── application
+│       │   │   ├── _changes_history.html.erb
+│       │   │   ├── _navigation.html.erb
+│       │   │   └── show.html.erb
+│       │   ├── blocked_invitations_counters
+│       │   │   ├── _chart.html.erb
+│       │   │   └── index.html.erb
+│       │   ├── blocked_users
+│       │   │   ├── _chart.html.erb
+│       │   │   └── index.html.erb
+│       │   ├── organisations
+│       │   │   ├── new.html.erb
+│       │   │   └── show.html.erb
+│       │   ├── users
+│       │   │   └── show.html.erb
+│       │   └── webhook_endpoints
+│       │       └── _collection_item_actions.html.erb
+│       ├── templates
+│       │   └── _template.html.erb
+│       ├── user_list_uploads
+│       │   ├── _edit_row_attribute.html.erb
+│       │   ├── _no_errors_user_rows.erb
+│       │   ├── _search_form.html.erb
+│       │   ├── _sectorisation_disabled_info.html.erb
+│       │   ├── _user_count_badge.html.erb
+│       │   ├── category_selections
+│       │   │   └── new.html.erb
+│       │   ├── creneau_opening_requests
+│       │   │   └── new_batch.html.erb
+│       │   ├── creneaux_snapshots
+│       │   │   ├── _enough_creneaux.html.erb
+│       │   │   ├── _error.html.erb
+│       │   │   ├── _loading.html.erb
+│       │   │   ├── _no_creneaux_available.html.erb
+│       │   │   └── _not_enough_creneaux.html.erb
+│       │   ├── invitation_attempts
+│       │   │   ├── _all_invitations_sent_status.html.erb
+│       │   │   ├── _creneaux_snapshot.html.erb
+│       │   │   ├── _invitations_in_progress_status.html.erb
+│       │   │   ├── _user_row_after_invitation.html.erb
+│       │   │   ├── _user_row_before_invitation.html.erb
+│       │   │   ├── _user_rows_after_invitation.html.erb
+│       │   │   ├── _user_rows_before_invitation.html.erb
+│       │   │   ├── index.html.erb
+│       │   │   ├── retries
+│       │   │   │   ├── _invitation_succeeded.html.erb
+│       │   │   │   └── new.html.erb
+│       │   │   └── select_rows.html.erb
+│       │   ├── organisation_assignations
+│       │   │   ├── _organisation_has_been_assigned.html.erb
+│       │   │   └── new.html.erb
+│       │   ├── user_list_uploads
+│       │   │   ├── _back_to_file_upload_warning_modal.html.erb
+│       │   │   ├── _enrich_with_cnaf_button.html.erb
+│       │   │   ├── _user_row.html.erb
+│       │   │   ├── _user_row_details.html.erb
+│       │   │   ├── _user_rows.html.erb
+│       │   │   ├── new.html.erb
+│       │   │   └── show.html.erb
+│       │   ├── user_rows
+│       │   │   ├── hide_details.turbo_stream.erb
+│       │   │   ├── show_details.turbo_stream.erb
+│       │   │   └── update_error.turbo_stream.erb
+│       │   └── user_save_attempts
+│       │       ├── _all_saves_attempted_status.html.erb
+│       │       ├── _saves_in_progress_status.html.erb
+│       │       ├── _user_row.html.erb
+│       │       ├── _user_rows.html.erb
+│       │       ├── index.html.erb
+│       │       └── retries
+│       │           ├── _user_save_suceeded.html.erb
+│       │           └── new.html.erb
+│       ├── users
+│       │   ├── _all_users_table.html.erb
+│       │   ├── _archived_banner.html.erb
+│       │   ├── _archived_users_table.html.erb
+│       │   ├── _archiving_button.html.erb
+│       │   ├── _csv_export_button.html.erb
+│       │   ├── _empty_state.html.erb
+│       │   ├── _find_rdv_button.html.erb
+│       │   ├── _no_category_configuration.html.erb
+│       │   ├── _no_users.html.erb
+│       │   ├── _page_title.html.erb
+│       │   ├── _referent_badge.html.erb
+│       │   ├── _search_form_dsfr.html.erb
+│       │   ├── _user_form.html.erb
+│       │   ├── _user_organisations_list.html.erb
+│       │   ├── _user_page_header.html.erb
+│       │   ├── _user_referents_list.html.erb
+│       │   ├── _user_remove_from_last_organisation_confirm.html.erb
+│       │   ├── _user_tabs.html.erb
+│       │   ├── _user_tag.html.erb
+│       │   ├── _user_tags.html.erb
+│       │   ├── _users_count.html.erb
+│       │   ├── _users_list_filters.html.erb
+│       │   ├── _users_list_header.html.erb
+│       │   ├── _users_list_indicators.html.erb
+│       │   ├── _users_list_pagination.html.erb
+│       │   ├── _users_list_recap.html.erb
+│       │   ├── _users_list_table.html.erb
+│       │   ├── _users_list_tabs.html.erb
+│       │   ├── _users_table_for_motif_category.html.erb
+│       │   ├── active_filters_recap
+│       │   │   ├── _action_required.html.erb
+│       │   │   ├── _convocation_date.html.erb
+│       │   │   ├── _creation_date.html.erb
+│       │   │   ├── _first_invitation_date.html.erb
+│       │   │   ├── _follow_up_statuses.html.erb
+│       │   │   ├── _last_invitation_date.html.erb
+│       │   │   ├── _orientation_types.html.erb
+│       │   │   ├── _referents.html.erb
+│       │   │   └── _tag_ids.html.erb
+│       │   ├── batch_actions
+│       │   │   └── new.html.erb
+│       │   ├── edit.html.erb
+│       │   ├── filters
+│       │   │   ├── _by_action_required_checkbox.html.erb
+│       │   │   ├── _by_creation_dates_button.html.erb
+│       │   │   ├── _by_follow_up_statuses_button.html.erb
+│       │   │   ├── _by_invitation_or_convocation_dates_button.html.erb
+│       │   │   ├── _by_orientation_type_button.html.erb
+│       │   │   ├── _by_referents_button.html.erb
+│       │   │   └── _by_tags_button.html.erb
+│       │   ├── follow_ups
+│       │   │   └── index.html.erb
+│       │   ├── index.html.erb
+│       │   ├── new.html.erb
+│       │   ├── orientations
+│       │   │   ├── _confirm_update_anterior_ends_at.html.erb
+│       │   │   ├── after_save.turbo_stream.erb
+│       │   │   ├── edit.html.erb
+│       │   │   └── new.html.erb
+│       │   ├── parcours
+│       │   │   └── show.html.erb
+│       │   ├── referent_assignations
+│       │   │   ├── _agent_input.html.erb
+│       │   │   ├── _form.html.erb
+│       │   │   └── index.html.erb
+│       │   ├── show.html.erb
+│       │   ├── tabs
+│       │   │   ├── _category_configurations.html.erb
+│       │   │   └── _no_category_configuration.html.erb
+│       │   ├── tag_assignations
+│       │   │   ├── _form.html.erb
+│       │   │   ├── _tag_input.html.erb
+│       │   │   └── index.html.erb
+│       │   └── users_list_indicators
+│       │       ├── _creneaux_count.html.erb
+│       │       └── _follow_up_status_filter_shortcut.html.erb
+│       ├── users_organisations
+│       │   ├── _user_organisation_badge.html.erb
+│       │   ├── create.turbo_stream.erb
+│       │   ├── index.html.erb
+│       │   └── new.html.erb
+│       └── website
+│           ├── static_pages
+│           │   ├── accessibility.html.erb
+│           │   ├── cgu.html.erb
+│           │   ├── cgus_versions
+│           │   │   ├── _2023_02_01.html.erb
+│           │   │   ├── _2023_02_09.html.erb
+│           │   │   ├── _2024_09_24.html.erb
+│           │   │   ├── _2024_09_26.html.erb
+│           │   │   └── _2025_03_12.html.erb
+│           │   ├── legal_notice.html.erb
+│           │   ├── privacy_policy.html.erb
+│           │   └── welcome.html.erb
+│           ├── stats
+│           │   ├── _header.html.erb
+│           │   ├── _stat_graphs.html.erb
+│           │   ├── deployment_map.html.erb
+│           │   ├── index.html.erb
+│           │   └── show.html.erb
+│           └── teleprocedure_landings
+│               ├── _13.html.erb
+│               ├── _50.html.erb
+│               ├── _74.html.erb
+│               └── show.html.erb
+├── babel.config.js
+├── bin
+│   ├── bundle
+│   ├── rails
+│   ├── rake
+│   ├── setup
+│   ├── spring
+│   └── yarn
+├── config
+│   ├── anonymizer.yml
+│   ├── application.rb
+│   ├── boot.rb
+│   ├── brakeman.ignore
+│   ├── cable.yml
+│   ├── credentials.yml.enc
+│   ├── database.yml
+│   ├── environment.rb
+│   ├── environments
+│   │   ├── development.rb
+│   │   ├── production.rb
+│   │   └── test.rb
+│   ├── initializers
+│   │   ├── active_job_log_filtering.rb
+│   │   ├── active_storage_administrate_field.rb
+│   │   ├── application_controller_renderer.rb
+│   │   ├── assets.rb
+│   │   ├── backtrace_silencers.rb
+│   │   ├── blueprinter.rb
+│   │   ├── brevo.rb
+│   │   ├── content_security_policy.rb
+│   │   ├── cookies_serializer.rb
+│   │   ├── cors.rb
+│   │   ├── faraday.rb
+│   │   ├── filter_parameters.rb
+│   │   ├── inflections.rb
+│   │   ├── mime_types.rb
+│   │   ├── omniauth.rb
+│   │   ├── phonelib.rb
+│   │   ├── prosopite.rb
+│   │   ├── rswag_api.rb
+│   │   ├── rswag_ui.rb
+│   │   ├── safe_migration.rb
+│   │   ├── sentry.rb
+│   │   ├── session_store.rb
+│   │   ├── sidekiq.rb
+│   │   └── wrap_parameters.rb
+│   ├── locales
+│   │   ├── administrate.fr.yml
+│   │   ├── en.yml
+│   │   ├── fr.yml
+│   │   ├── models
+│   │   │   ├── archive.fr.yml
+│   │   │   ├── blocked_invitations_counter.fr.yml
+│   │   │   ├── blocked_user.fr.yml
+│   │   │   ├── category_configuration.fr.yml
+│   │   │   ├── creneau_opening_request.fr.yml
+│   │   │   ├── department.fr.yml
+│   │   │   ├── file_configuration.fr.yml
+│   │   │   ├── follow_up.fr.yml
+│   │   │   ├── invitation.fr.yml
+│   │   │   ├── messages_configuration.yml
+│   │   │   ├── motif.fr.yml
+│   │   │   ├── motif_category.fr.yml
+│   │   │   ├── organisation.fr.yml
+│   │   │   ├── orientation.fr.yml
+│   │   │   ├── orientation_type.fr.yml
+│   │   │   ├── parcours_document.yml
+│   │   │   ├── post_rdv_orientation.fr.yml
+│   │   │   ├── rdv.fr.yml
+│   │   │   ├── super_admin_authentication_request.fr.yml
+│   │   │   ├── template.fr.yml
+│   │   │   ├── user.fr.yml
+│   │   │   └── webhook_endpoint.fr.yml
+│   │   └── views
+│   │       ├── kaminari-fr.yml
+│   │       ├── organisation_mailer
+│   │       │   └── notify_rdv_changes.fr.yml
+│   │       └── user.fr.yml
+│   ├── puma.rb
+│   ├── routes.rb
+│   ├── schedule.yml
+│   ├── sidekiq.yml
+│   ├── skylight.yml
+│   ├── spring.rb
+│   ├── storage.yml
+│   └── webpack
+│       └── webpack.config.js
+├── config.ru
+├── cron.json
+├── db
+│   ├── migrate
+│   │   ├── 20210608160009_create_departments.rb
+│   │   ├── 20210614225114_create_agents.rb
+│   │   ├── 20210622130808_create_applicants.rb
+│   │   ├── 20210713084017_create_invitations.rb
+│   │   ├── 20210713095157_add_region_and_phone_number_to_department.rb
+│   │   ├── 20210716143900_create_configuration.rb
+│   │   ├── 20210902084652_add_department_agents.rb
+│   │   ├── 20210902122939_add_column_names_to_configuration.rb
+│   │   ├── 20210902131848_add_custom_id_to_applicants.rb
+│   │   ├── 20210907140605_add_notify_applicant_to_configuration.rb
+│   │   ├── 20210907172021_add_seen_to_invitations.rb
+│   │   ├── 20210908130901_add_attributes_to_applicants.rb
+│   │   ├── 20210908142124_create_notifications.rb
+│   │   ├── 20210927094231_add_invitation_accepted_at_to_applicants.rb
+│   │   ├── 20210927152632_create_rdvs.rb
+│   │   ├── 20210927155646_create_rdvs_applicants.rb
+│   │   ├── 20210929204738_add_rdv_solidarites_rdv_id_to_notifications.rb
+│   │   ├── 20210930151602_add_status_to_applicants.rb
+│   │   ├── 20211006072539_change_invitation_seen_to_clicked.rb
+│   │   ├── 20211013143756_add_index_on_status.rb
+│   │   ├── 20211020141004_add_department_applicants.rb
+│   │   ├── 20211020145820_add_department_to_invitation.rb
+│   │   ├── 20211021190749_create_organisations.rb
+│   │   ├── 20211102161424_change_department_table.rb
+│   │   ├── 20211102171611_change_organisations.rb
+│   │   ├── 20211108193320_add_rsa_agents_service_id_to_organisations.rb
+│   │   ├── 20211202111858_rename_phone_number_formatted_to_phone_number.rb
+│   │   ├── 20211213175536_add_pronoun_to_departments.rb
+│   │   ├── 20211214113405_add_rights_opening_date_to_applicants.rb
+│   │   ├── 20220103132647_add_birth_name_to_applicant.rb
+│   │   ├── 20220111152434_add_department_to_applicants.rb
+│   │   ├── 20220111162622_rename_custom_id_to_department_internal_id.rb
+│   │   ├── 20220117163650_create_organisations_invitations_join_table.rb
+│   │   ├── 20220120203747_change_configuration_organisation_association.rb
+│   │   ├── 20220125154225_add_rdv_solidarites_lieu_id_to_invitation.rb
+│   │   ├── 20220126170508_add_email_and_phone_number_to_departments.rb
+│   │   ├── 20220204162710_change_invitation_format_in_config.rb
+│   │   ├── 20220303154747_create_responsibles.rb
+│   │   ├── 20220310085941_add_role_to_responsibles.rb
+│   │   ├── 20220321113650_remove_rsa_agents_service_id_from_organisations.rb
+│   │   ├── 20220323164708_add_archiving_reason_to_applicants.rb
+│   │   ├── 20220328173945_create_letter_configurations.rb
+│   │   ├── 20220329112332_add_is_archived_to_applicants.rb
+│   │   ├── 20220329130836_create_organisations_configurations.rb
+│   │   ├── 20220329141306_add_context_to_configurations.rb
+│   │   ├── 20220331093352_create_rdv_contexts.rb
+│   │   ├── 20220331104257_remove_contexts_from_invitations.rb
+│   │   ├── 20220412150442_add_days_to_accept_invitations_to_configuations_and_invitations.rb
+│   │   ├── 20220412151557_remove_motif_from_letter_configurations.rb
+│   │   ├── 20220425164025_create_webhook_endpoints.rb
+│   │   ├── 20220506110145_add_sms_sender_name_to_configuration.rb
+│   │   ├── 20220506130132_add_sender_name_and_address_to_letter_configuration.rb
+│   │   ├── 20220523193038_add_deleted_at_to_applicant.rb
+│   │   ├── 20220523193814_remove_status_and_invitation_accepted_at_from_applicants.rb
+│   │   ├── 20220530135315_add_webhook_time_stamp.rb
+│   │   ├── 20220531121857_create_webhook_receipts.rb
+│   │   ├── 20220607105632_rename_letter_configuration_table_in_invitation_parameters.rb
+│   │   ├── 20220607160302_add_help_address_to_invitation_parameters.rb
+│   │   ├── 20220608090654_rename_context_to_motif_category.rb
+│   │   ├── 20220613120827_add_valid_until_to_invitations.rb
+│   │   ├── 20220614084655_create_stats.rb
+│   │   ├── 20220621131006_add_reminder_to_invitations.rb
+│   │   ├── 20220629121431_add_display_europe_logos_to_invitation_parameters.rb
+│   │   ├── 20220629133900_add_slug_to_organisations.rb
+│   │   ├── 20220629134039_remove_responsibles.rb
+│   │   ├── 20220630110610_add_autonomy_rate_to_stats.rb
+│   │   ├── 20220701155832_change_autonomy_stat_name.rb
+│   │   ├── 20220907135612_add_uuid_to_invitations.rb
+│   │   ├── 20220907144848_add_display_stats_to_departments.rb
+│   │   ├── 20220914162719_add_archived_at_to_applicants.rb
+│   │   ├── 20220922135546_create_motifs.rb
+│   │   ├── 20220926133354_add_motif_to_rdvs.rb
+│   │   ├── 20220927150453_add_attributes_to_notifications.rb
+│   │   ├── 20220928122023_add_convocable_to_rdvs.rb
+│   │   ├── 20220928153808_rename_notify_applicant_to_convene_applicants.rb
+│   │   ├── 20221003170642_create_lieux.rb
+│   │   ├── 20221003200541_add_lieu_to_rdvs.rb
+│   │   ├── 20221004194204_rename_invitation_parameters_to_messages_configurations.rb
+│   │   ├── 20221013134556_rename_token_to_rdv_solidarites_token.rb
+│   │   ├── 20221017152036_add_invitations_fallbacks_set_to_applicants_organisations_to_configurations.rb
+│   │   ├── 20221025080503_add_status_and_id_to_applicants_rdvs.rb
+│   │   ├── 20221114174617_add_attributes_to_agents.rb
+│   │   ├── 20221116163348_create_applicants_agents_table.rb
+│   │   ├── 20221201093927_add_with_referents_to_configurations_and_invitations.rb
+│   │   ├── 20221205153103_add_follow_up_to_motifs.rb
+│   │   ├── 20221209103823_rename_applicants_rdvs_to_participations.rb
+│   │   ├── 20221214091609_add_rdv_context_to_participations.rb
+│   │   ├── 20230116162219_link_notifications_to_participations.rb
+│   │   ├── 20230117094244_add_independent_from_cd_to_organisations.rb
+│   │   ├── 20230117114011_add_display_department_logo_to_messages_configurations.rb
+│   │   ├── 20230130124527_create_motif_categories.rb
+│   │   ├── 20230201161121_create_templates.rb
+│   │   ├── 20230207094221_create_file_configurations.rb
+│   │   ├── 20230208134639_add_participation_optional_to_motif_categories.rb
+│   │   ├── 20230208154729_create_agent_roles_table.rb
+│   │   ├── 20230213152346_rename_invitation_fallbacks_set_to_applicants_organisation_to_invite_to_applicant_organisations_only.rb
+│   │   ├── 20230216152810_add_last_webhook_update_received_at_for_agent_roles.rb
+│   │   ├── 20230314165229_add_nir_and_pole_emploi_id_to_applicants.rb
+│   │   ├── 20230316101833_add_logo_name_to_organisation.rb
+│   │   ├── 20230316111741_add_super_admins.rb
+│   │   ├── 20230322133604_add_short_template.rb
+│   │   ├── 20230328075606_add_siae_motif_category.rb
+│   │   ├── 20230328124553_add_orientations_motif_categories.rb
+│   │   ├── 20230329102020_change_column_names_format_for_file_configurations.rb
+│   │   ├── 20230404134841_add_atelier_enfants_ados_template.rb
+│   │   ├── 20230404230608_remove_department_from_applicants.rb
+│   │   ├── 20230405143015_remove_number_of_days_to_accept_invitation.rb
+│   │   ├── 20230405204042_change_applicants_indices.rb
+│   │   ├── 20230411153039_add_custom_sentence_to_templates.rb
+│   │   ├── 20230411153056_add_france_travail_orientation_template.rb
+│   │   ├── 20230419144405_add_warnings_texts_to_templates.rb
+│   │   ├── 20230425121956_add_instruction_for_rdv_to_motif.rb
+│   │   ├── 20230427122751_change_default_values_for_configurations.rb
+│   │   ├── 20230504081121_add_closed_at_to_rdv_context.rb
+│   │   ├── 20230504100614_change_organisation_message_configuration_relation.rb
+│   │   ├── 20230504105520_change_organisation_configuration_relation.rb
+│   │   ├── 20230509100502_add_created_by_to_participations.rb
+│   │   ├── 20230509205431_create_archives.rb
+│   │   ├── 20230517100211_change_addresses_columns_names_in_file_configuration.rb
+│   │   ├── 20230606084749_rename_agents_applicants_to_referent_assignations.rb
+│   │   ├── 20230613095607_rename_agent_role_level_to_access_level.rb
+│   │   ├── 20230613163040_add_id_to_referent_assignations.rb
+│   │   ├── 20230621134416_add_convocable_to_participations.rb
+│   │   ├── 20230625132307_add_motif_categories_and_templates_for_siae.rb
+│   │   ├── 20230625190907_add_display_pe_logos_to_messages_configurations.rb
+│   │   ├── 20230626131432_add_cdb_ids_to_departments_and_applicants.rb
+│   │   ├── 20230626165441_add_max_participants_count_and_users_count_to_rdvs.rb
+│   │   ├── 20230628210851_change_carnet_de_bord_column_types.rb
+│   │   ├── 20230728123850_add_override_template_attributes_to_configurations.rb
+│   │   ├── 20230807090112_create_tags.rb
+│   │   ├── 20230807110405_create_tag_applicants.rb
+│   │   ├── 20230807110429_create_tag_organisations.rb
+│   │   ├── 20230808084135_add_tags_column_to_file_configurations.rb
+│   │   ├── 20230822125225_add_number_of_days_before_next_invite_to_configurations.rb
+│   │   ├── 20230829105540_remove_average_time_between_rdv_creation_and_start_from_stats.rb
+│   │   ├── 20230829162511_add_organisation_id_to_stats.rb
+│   │   ├── 20230830141708_add_timestamps_to_applicants_organisation.rb
+│   │   ├── 20230830142108_add_created_through_to_applicants.rb
+│   │   ├── 20230831090625_add_motif_category_for_var.rb
+│   │   ├── 20230904144823_split_percentage_of_no_show_in_two_stats.rb
+│   │   ├── 20230915080347_add_periodic_invites_columns_to_configurations.rb
+│   │   ├── 20230919135952_create_agents_rdvs.rb
+│   │   ├── 20230920140928_rename_applicants_to_users.rb
+│   │   ├── 20230921160915_add_leads_to_orientation_to_motif_categories.rb
+│   │   ├── 20230925155039_add_and_rename_columns_in_stat.rb
+│   │   ├── 20230926145507_change_webhook_receipts.rb
+│   │   ├── 20230926150031_add_signature_type_and_subscriptions_to_webhook_endpoints.rb
+│   │   ├── 20231004140750_add_index_to_webhook_receipts.rb
+│   │   ├── 20231013132233_add_position_to_configuration.rb
+│   │   ├── 20231109092923_add_messages_configurations_to_all_organisations.rb
+│   │   ├── 20231121133009_fill_null_users_organisations_created_at.rb
+│   │   ├── 20231212173606_create_orientations.rb
+│   │   ├── 20240104105413_add_phone_number_to_configuration.rb
+│   │   ├── 20240115163424_add_code_safir_to_organisations.rb
+│   │   ├── 20240116093639_create_active_storage_tables.active_storage.rb
+│   │   ├── 20240116133624_create_parcours_documents.rb
+│   │   ├── 20240122104935_rename_participation_optional.rb
+│   │   ├── 20240124101508_add_columns_to_stats.rb
+│   │   ├── 20240124174406_change_has_logged_in_to_last_sign_in_at_for_agents.rb
+│   │   ├── 20240129172812_remove_not_null_constraint_from_agents_in_orientations.rb
+│   │   ├── 20240202132147_rename_pole_emploi_columns_to_france_travail.rb
+│   │   ├── 20240208163202_add_rdv_solidarites_agent_prescripteur_id_to_participations.rb
+│   │   ├── 20240214161238_remove_sent_at_timestamps.rb
+│   │   ├── 20240219102532_add_encryption_to_users.rb
+│   │   ├── 20240220123509_add_rate_of_users_oriented_in_less_than_15_days_to_stats.rb
+│   │   ├── 20240226140143_add_old_rdv_solidarites_user_id_to_users.rb
+│   │   ├── 20240305094354_create_csv_exports.rb
+│   │   ├── 20240312170449_add_agents_inclusion_connect_open_id_sub.rb
+│   │   ├── 20240313154309_add_document_date_to_parcours_document.rb
+│   │   ├── 20240320170445_remove_not_null_constraint_from_webhook_endpoints_in_webhook_receipts.rb
+│   │   ├── 20240320195747_rename_rdv_contexts_to_follow_ups.rb
+│   │   ├── 20240320221821_rename_configurations_to_category_configurations.rb
+│   │   ├── 20240403125856_change_enum_to_strings.rb
+│   │   ├── 20240412105200_remove_motif_cateogry_id_to_csv_export_and_add_request_params.rb
+│   │   ├── 20240430143646_add_organisation_type_to_organisation.rb
+│   │   ├── 20240502092936_remove_independant_from_cd_from_organisations.rb
+│   │   ├── 20240523142208_add_trigger_to_invitations.rb
+│   │   ├── 20240531140628_add_delivery_status_and_delivered_at_to_invitations.rb
+│   │   ├── 20240605090758_create_orientation_types.rb
+│   │   ├── 20240605090957_add_orientation_type_to_orientation.rb
+│   │   ├── 20240605094033_clean_up_old_orientation_types.rb
+│   │   ├── 20240611225639_add_index_to_triggers.rb
+│   │   ├── 20240618091652_create_address_geocodings.rb
+│   │   ├── 20240620085209_add_delivery_status_and_delivered_at_to_notifications.rb
+│   │   ├── 20240620124203_add_external_notifications_to_category_configuration.rb
+│   │   ├── 20240622164616_add_export_authorization_to_agent_roles.rb
+│   │   ├── 20240627145505_update_follow_up_statuses.rb
+│   │   ├── 20240628171109_archive_users_by_organisation_rather_than_by_department.rb
+│   │   ├── 20240705140428_rename_delivered_at_to_last_brevo_webhook_received_at.rb
+│   │   ├── 20240710165307_add_creation_source_fields.rb
+│   │   ├── 20240711083143_change_participation_rdv_solidarites_agent_prescripteur_id_type.rb
+│   │   ├── 20240723171205_add_organisation_reference_to_webhook_endpoints.rb
+│   │   ├── 20240723232305_drop_webhook_endpoint_organisations_join_table.rb
+│   │   ├── 20240905161813_remove_logo_filename_from_organisations.rb
+│   │   ├── 20240910084610_add_connected_with_agent_connect_to_agents.rb
+│   │   ├── 20240910154029_change_invitations_validity_names.rb
+│   │   ├── 20241001131337_add_motif_category_type_to_motif_category.rb
+│   │   ├── 20241001133756_remove_leads_to_orienation_from_motif_category.rb
+│   │   ├── 20241007132950_migrate_optional_rdv_subscription_to_invitations.rb
+│   │   ├── 20241031161416_add_deleted_at_to_organisations.rb
+│   │   ├── 20241115141115_add_rate_of_no_show_to_stats.rb
+│   │   ├── 20241119145500_change_delay_stats.rb
+│   │   ├── 20241120092726_add_cgu_accepted_at_to_agents.rb
+│   │   ├── 20241120140423_add_indexes_on_orientations.rb
+│   │   ├── 20241121170810_add_france_travail_id_to_participation.rb
+│   │   ├── 20241127103601_create_unavailable_creneau_logs.rb
+│   │   ├── 20241202165719_create_user_list_uploads.rb
+│   │   ├── 20241209100354_create_dpa_agreements.rb
+│   │   ├── 20241216135605_add_unique_constraint_to_tag_users.rb
+│   │   ├── 20250113213749_create_user_list_upload_user_rows.rb
+│   │   ├── 20250113215003_create_user_list_upload_user_save_attempts.rb
+│   │   ├── 20250113215536_create_user_list_upload_invitation_attempts.rb
+│   │   ├── 20250120125249_change_agent_id_null_constraint_on_parcours_documents.rb
+│   │   ├── 20250122135459_add_crisp_token_to_agents.rb
+│   │   ├── 20250205140717_remove_useless_columns_from_agents.rb
+│   │   ├── 20250224134608_rename_unavailable_creneau_logs_to_blocked_invitations_counters.rb
+│   │   ├── 20250224143039_create_blocked_users.rb
+│   │   ├── 20250225134047_create_creneau_availabilities.rb
+│   │   ├── 20250227134523_add_dpa_identity_to_dpa_agreement.rb
+│   │   ├── 20250320105629_rename_user_rows_selection_columns.rb
+│   │   ├── 20250409101245_add_number_of_pending_invitations_to_creneau_availability.rb
+│   │   ├── 20250409132000_add_index_to_creneau_availabilities.rb
+│   │   ├── 20250414140419_create_versions.rb
+│   │   ├── 20250415134038_add_missing_indices_on_users.rb
+│   │   ├── 20250425122635_add_disable_ft_webhooks_to_department.rb
+│   │   ├── 20250505143805_remove_carnet_de_bord_columns.rb
+│   │   ├── 20250512140245_add_department_id_to_users.rb
+│   │   ├── 20250512150409_add_sms_providers_to_sendables.rb
+│   │   ├── 20250527121958_change_accompaniment_delay_from15_to30_days.rb
+│   │   ├── 20250528133003_add_display_in_stats_to_organisations.rb
+│   │   ├── 20250602140205_add_parcours_enabled_to_departments.rb
+│   │   ├── 20250617131753_remove_department_id_from_users.rb
+│   │   ├── 20250701140708_add_columns_to_participations.rb
+│   │   ├── 20250708120935_add_data_retention_duration_to_organisations.rb
+│   │   ├── 20250709093142_add_timestamp_to_referent_assignation.rb
+│   │   ├── 20250709135458_create_super_admin_authentication_requests.rb
+│   │   ├── 20250716125833_create_cookies_consents.rb
+│   │   ├── 20250717214918_allow_null_for_created_by_in_participations.rb
+│   │   ├── 20250722122431_remove_created_by_and_rdv_solidarites_prescripteur_id_from_participations.rb
+│   │   ├── 20250723143614_remove_periodic_invites_columns_from_category_configurations.rb
+│   │   ├── 20250804164240_add_created_by_agent_id_to_file_configurations.rb
+│   │   ├── 20251008150443_add_origin_on_user_list_uploads.rb
+│   │   ├── 20251022084319_remove_total_count_columns_from_stats.rb
+│   │   ├── 20251022095144_change_json_default_values_in_stats.rb
+│   │   ├── 20251023102544_create_user_list_upload_processing_logs.rb
+│   │   ├── 20251112162527_add_website_to_organisations.rb
+│   │   ├── 20251126090324_enable_unaccent_extension.rb
+│   │   ├── 20251126113455_create_api_calls.rb
+│   │   ├── 20251210152820_replace_messages_configurations_display_logo_columns_with_logos_to_display_array.rb
+│   │   ├── 20251215224154_remove_unecessary_category_configuration_attributes.rb
+│   │   ├── 20260106134456_add_default_duration_in_min_to_motif.rb
+│   │   ├── 20260106142253_rename_reservable_online_to_bookable_publicly_for_motifs.rb
+│   │   ├── 20260115162204_add_bookable_by_to_motifs.rb
+│   │   ├── 20260129084925_add_unique_index_on_address_geocodings_user_id.rb
+│   │   ├── 20260211105902_add_visio_url_to_rdvs.rb
+│   │   ├── 20260318000000_add_performance_indexes.rb
+│   │   ├── 20260323161235_remove_uid_from_users.rb
+│   │   ├── 20260420154821_add_time_zone_to_rdvs.rb
+│   │   ├── 20260423144730_create_post_rdv_orientations.rb
+│   │   ├── 20260512151155_add_session_key_to_agents.rb
+│   │   ├── 20260520140000_create_creneau_opening_requests.rb
+│   │   ├── 20260527115512_create_user_list_upload_creneaux_snapshots.rb
+│   │   ├── 20260603091945_rename_creneau_availabilities_to_category_configuration_creneau_availabilities.rb
+│   │   ├── 20260610150237_add_created_by_agent_to_invitations.rb
+│   │   ├── 20260611090000_add_booking_delays_to_motifs.rb
+│   │   ├── 20260611120000_add_null_constraint_on_motif_booking_delays.rb
+│   │   ├── 20260618110000_add_unique_index_to_creneau_opening_requests.rb
+│   │   └── 20260619131224_replace_invitations_trigger_with_origin.rb
+│   ├── schema.rb
+│   └── seeds.rb
+├── deploy.sh
+├── docs
+│   ├── CONTRIBUTE.md
+│   ├── INSTALL.md
+│   ├── SCHEMA_DATA.md
+│   ├── api
+│   │   └── description.md
+│   ├── architecture_rdv-insertion.png
+│   ├── domain_model.png
+│   └── resources
+│       ├── Fichier_allocataires_test_-_Drôme.xlsx
+│       └── Fichier_de_contacts_test_-_Drôme.csv
+├── lib
+│   ├── chores
+│   │   └── replace_string_in_file_names.rb
+│   ├── mailer_previews
+│   │   ├── invitation_preview.rb
+│   │   └── notification_preview.rb
+│   ├── tasks
+│   │   ├── .keep
+│   │   ├── chores
+│   │   │   └── replace_string_in_file_names.rake
+│   │   ├── make_logos_public.rake
+│   │   └── users
+│   │       ├── transfer_organisation.rake
+│   │       └── transfer_referent.rake
+│   └── users
+│       ├── transfer_organisation.rb
+│       └── transfer_referent.rb
+├── package.json
+├── postcss.config.js
+├── public
+│   ├── api_doc
+│   │   ├── mail-notification.png
+│   │   └── webhook-signature-check-example.png
+│   ├── apple-touch-icon-precomposed.png
+│   ├── apple-touch-icon.png
+│   ├── favicon.ico
+│   └── robots.txt
+├── spec
+│   ├── anonymizer_spec.rb
+│   ├── clients
+│   │   ├── france_travail_client_spec.rb
+│   │   └── rdv_solidarites_client_spec.rb
+│   ├── controllers
+│   │   ├── agent_roles
+│   │   │   └── csv_export_authorizations_controller_spec.rb
+│   │   ├── brevo
+│   │   │   ├── mail_webhooks_controller_spec.rb
+│   │   │   └── sms_webhooks_controller_spec.rb
+│   │   ├── concerns
+│   │   │   ├── agent_logging_concern_spec.rb
+│   │   │   ├── malicious_agent_blocking_concern_spec.rb
+│   │   │   └── rate_limiting_concern_spec.rb
+│   │   ├── creneau_opening_requests_controller_spec.rb
+│   │   ├── department_organisations_controller_spec.rb
+│   │   ├── file_configurations_controller_spec.rb
+│   │   ├── follow_ups
+│   │   │   └── closings_controller_spec.rb
+│   │   ├── follow_ups_controller_spec.rb
+│   │   ├── inbound_emails_controller_spec.rb
+│   │   ├── invitations_controller_spec.rb
+│   │   ├── organisations
+│   │   │   └── tags_controller_spec.rb
+│   │   ├── organisations_controller_spec.rb
+│   │   ├── rdv_solidarites_webhooks_controller_spec.rb
+│   │   ├── sessions_controller_spec.rb
+│   │   ├── user_list_uploads
+│   │   │   └── user_row_cells_controller_spec.rb
+│   │   ├── users
+│   │   │   ├── follow_ups_controller_spec.rb
+│   │   │   └── parcours_controller_spec.rb
+│   │   ├── users_controller_spec.rb
+│   │   ├── users_organisations_controller_spec.rb
+│   │   └── website
+│   │       ├── static_pages_controller_spec.rb
+│   │       ├── stats_controller_spec.rb
+│   │       └── teleprocedure_landings_controller_spec.rb
+│   ├── factories
+│   │   ├── address_geocoding.rb
+│   │   ├── agent.rb
+│   │   ├── agent_role.rb
+│   │   ├── api_call.rb
+│   │   ├── archive.rb
+│   │   ├── blocked_user.rb
+│   │   ├── category_configuration
+│   │   │   └── creneau_availability.rb
+│   │   ├── category_configuration.rb
+│   │   ├── cookies_consent.rb
+│   │   ├── creneau_opening_request.rb
+│   │   ├── csv_export.rb
+│   │   ├── department.rb
+│   │   ├── dpa_agreement.rb
+│   │   ├── file_configuration.rb
+│   │   ├── follow_up.rb
+│   │   ├── invitation.rb
+│   │   ├── lieu.rb
+│   │   ├── messages_configuration.rb
+│   │   ├── motif.rb
+│   │   ├── motif_category.rb
+│   │   ├── notification.rb
+│   │   ├── organisation.rb
+│   │   ├── orientation.rb
+│   │   ├── orientation_type.rb
+│   │   ├── parcours_document.rb
+│   │   ├── participation.rb
+│   │   ├── post_rdv_orientation.rb
+│   │   ├── rdv.rb
+│   │   ├── referent_assignation.rb
+│   │   ├── stat.rb
+│   │   ├── super_admin_authentication_request.rb
+│   │   ├── tag_organisation.rb
+│   │   ├── tag_users.rb
+│   │   ├── tags.rb
+│   │   ├── template.rb
+│   │   ├── user.rb
+│   │   ├── user_list_upload
+│   │   │   ├── creneaux_snapshot.rb
+│   │   │   ├── invitation_attempt.rb
+│   │   │   ├── processing_log.rb
+│   │   │   ├── user_row.rb
+│   │   │   └── user_save_attempt.rb
+│   │   ├── user_list_upload.rb
+│   │   ├── users_organisation.rb
+│   │   ├── webhook_endpoint.rb
+│   │   └── webhook_receipt.rb
+│   ├── features
+│   │   ├── admin_can_accept_dpa_spec.rb
+│   │   ├── admin_can_authorize_basic_agents_to_export_csvs_spec.rb
+│   │   ├── admin_can_create_category_configuration_spec.rb
+│   │   ├── admin_can_delete_category_configuration_spec.rb
+│   │   ├── admin_can_edit_category_configuration_spec.rb
+│   │   ├── admin_can_edit_messages_configuration_spec.rb
+│   │   ├── admin_can_edit_organisation_configuration_spec.rb
+│   │   ├── admin_can_edit_organisation_tags_spec.rb
+│   │   ├── admin_can_preview_and_edit_messages_contents_spec.rb
+│   │   ├── administrate
+│   │   │   ├── super_admin_can_log_in_as_another_agent_spec.rb
+│   │   │   ├── super_admin_can_manage_departments_spec.rb
+│   │   │   ├── super_admin_can_manage_motif_categories_spec.rb
+│   │   │   ├── super_admin_can_manage_organisations_spec.rb
+│   │   │   ├── super_admin_can_manage_templates_spec.rb
+│   │   │   └── super_admin_can_manage_users_spec.rb
+│   │   ├── agent_can_accept_cgus_spec.rb
+│   │   ├── agent_can_access_follow_up_pages_quickly_spec.rb
+│   │   ├── agent_can_add_or_remove_user_from_organisations_spec.rb
+│   │   ├── agent_can_add_user_orientations_spec.rb
+│   │   ├── agent_can_archive_and_unarchive_user_spec.rb
+│   │   ├── agent_can_assign_referents_spec.rb
+│   │   ├── agent_can_change_navigation_level_spec.rb
+│   │   ├── agent_can_close_or_reopen_follow_up_spec.rb
+│   │   ├── agent_can_consent_to_cookies_spec.rb
+│   │   ├── agent_can_convene_user_spec.rb
+│   │   ├── agent_can_create_a_follow_up_spec.rb
+│   │   ├── agent_can_create_user_through_form_spec.rb
+│   │   ├── agent_can_download_csv_from_index_page_spec.rb
+│   │   ├── agent_can_edit_user_tags_spec.rb
+│   │   ├── agent_can_fill_post_rdv_orientation_spec.rb
+│   │   ├── agent_can_filter_user_by_convocation_or_invitation_spec.rb
+│   │   ├── agent_can_filter_users_by_orientation_type_spec.rb
+│   │   ├── agent_can_filter_users_with_multiselect_spec.rb
+│   │   ├── agent_can_find_rdv_for_user_spec.rb
+│   │   ├── agent_can_generate_convocation_pdf_spec.rb
+│   │   ├── agent_can_invite_all_the_uninvited_spec.rb
+│   │   ├── agent_can_invite_user_from_user_follow_up_page_spec.rb
+│   │   ├── agent_can_invite_users_from_index_page_spec.rb
+│   │   ├── agent_can_navigate_to_partner_page_spec.rb
+│   │   ├── agent_can_read_notifications_spec.rb
+│   │   ├── agent_can_reorder_categories_from_index_page_spec.rb
+│   │   ├── agent_can_request_more_creneaux_spec.rb
+│   │   ├── agent_can_see_convocation_history_spec.rb
+│   │   ├── agent_can_see_creneaux_availability_before_inviting_spec.rb
+│   │   ├── agent_can_see_rdv_dates_on_users_index_spec.rb
+│   │   ├── agent_can_see_rdv_details_on_follow_up_page_spec.rb
+│   │   ├── agent_can_see_users_index_without_category_configuration_spec.rb
+│   │   ├── agent_can_sort_users_on_index_page_spec.rb
+│   │   ├── agent_can_update_a_participation_status_spec.rb
+│   │   ├── agent_can_update_user_through_form_spec.rb
+│   │   ├── agent_can_upload_documents_for_users_spec.rb
+│   │   ├── agent_can_upload_user_list_and_nullify_attributes_of_existing_user_spec.rb
+│   │   ├── agent_can_upload_user_list_spec.rb
+│   │   ├── agent_can_visualize_active_filters_on_index_page_spec.rb
+│   │   ├── agent_cannot_use_stored_xss_to_execute_scripts_spec.rb
+│   │   ├── agent_single_session_enforcement_spec.rb
+│   │   ├── crisp_chatbox_visibility_spec.rb
+│   │   ├── matomo_url_rewriting_spec.rb
+│   │   ├── super_admin_can_authenticate_spec.rb
+│   │   └── user_can_see_invalid_invitation_informations_spec.rb
+│   ├── fixtures
+│   │   ├── dummy.pdf
+│   │   ├── fichier_contact_test.csv
+│   │   ├── fichier_contact_test_priorite_nir.csv
+│   │   ├── fichier_usager_600_lignes.csv
+│   │   ├── fichier_usager_sans_civilite.xlsx
+│   │   ├── fichier_usager_test.xlsx
+│   │   ├── fichier_usager_test_invalid.xlsx
+│   │   ├── logo.png
+│   │   ├── new_fichier_usager_test.xlsx
+│   │   └── ~$fichier_usager_test.xlsx
+│   ├── helpers
+│   │   └── matomo_helper_spec.rb
+│   ├── jobs
+│   │   ├── alert_motif_category_has_changed_job_spec.rb
+│   │   ├── alert_user_added_to_another_department_job_spec.rb
+│   │   ├── concerns
+│   │   │   ├── locked_and_ordered_jobs_spec.rb
+│   │   │   └── locked_jobs_spec.rb
+│   │   ├── create_and_invite_user_job_spec.rb
+│   │   ├── creneau_opening_requests
+│   │   │   └── send_email_job_spec.rb
+│   │   ├── creneaux
+│   │   │   ├── retrieve_and_notify_all_unavailable_creneaux_job_spec.rb
+│   │   │   └── retrieve_and_notify_unavailable_creneaux_job_spec.rb
+│   │   ├── deduplicate_rdv_solidarites_webhooks_from_retry_set_job_spec.rb
+│   │   ├── delete_rdv_job_spec.rb
+│   │   ├── expire_invitation_job_spec.rb
+│   │   ├── exporters
+│   │   │   └── expire_attachment_job_spec.rb
+│   │   ├── follow_ups
+│   │   │   ├── plan_status_refresh_job_spec.rb
+│   │   │   ├── refresh_out_of_date_statuses_job_spec.rb
+│   │   │   └── refresh_statuses_job_spec.rb
+│   │   ├── inbound_webhooks
+│   │   │   ├── brevo
+│   │   │   │   ├── process_mail_delivery_status_job_spec.rb
+│   │   │   │   └── process_sms_delivery_status_job_spec.rb
+│   │   │   └── rdv_solidarites
+│   │   │       ├── process_agent_job_spec.rb
+│   │   │       ├── process_agent_role_job_spec.rb
+│   │   │       ├── process_lieu_job_spec.rb
+│   │   │       ├── process_motif_job_spec.rb
+│   │   │       ├── process_organisation_job_spec.rb
+│   │   │       ├── process_rdv_job_spec.rb
+│   │   │       ├── process_referent_assignation_job_spec.rb
+│   │   │       ├── process_user_job_spec.rb
+│   │   │       └── process_user_profile_job_spec.rb
+│   │   ├── invalidate_invitations_after_archiving_job_spec.rb
+│   │   ├── invite_user_job_spec.rb
+│   │   ├── monitor_inbound_emails_activity_job_spec.rb
+│   │   ├── monitor_webhook_activity_job_spec.rb
+│   │   ├── notify_participation_to_user_job_spec.rb
+│   │   ├── notify_participations_to_users_job_spec.rb
+│   │   ├── notify_rdv_changes_to_external_organisation_email_job_spec.rb
+│   │   ├── nullify_rdv_solidarites_id_job_spec.rb
+│   │   ├── organisations
+│   │   │   └── destroy_job_spec.rb
+│   │   ├── outgoing_webhooks
+│   │   │   ├── france_travail
+│   │   │   │   ├── cancel_participation_job_spec.rb
+│   │   │   │   ├── send_pending_participations_job_spec.rb
+│   │   │   │   └── upsert_participation_job_spec.rb
+│   │   │   └── send_webhook_job_spec.rb
+│   │   ├── purge_api_calls_job_spec.rb
+│   │   ├── retrieve_and_assign_user_address_geocoding_job_spec.rb
+│   │   ├── rgpd_cleanup_job_spec.rb
+│   │   ├── rgpd_cleanup_organisation_job_spec.rb
+│   │   ├── send_convocation_reminders_job_spec.rb
+│   │   ├── send_invitation_reminder_job_spec.rb
+│   │   ├── send_invitation_reminders_job_spec.rb
+│   │   ├── soft_delete_user_job_spec.rb
+│   │   ├── stats
+│   │   │   ├── global_stats
+│   │   │   │   ├── upsert_stat_job_spec.rb
+│   │   │   │   └── upsert_stats_job_spec.rb
+│   │   │   └── monthly_stats
+│   │   │       ├── compute_and_save_single_stat_job_spec.rb
+│   │   │       ├── upsert_stat_job_spec.rb
+│   │   │       └── upsert_stats_job_spec.rb
+│   │   ├── transfer_email_reply_job_spec.rb
+│   │   ├── trigger_rdv_solidarites_webhooks_job_spec.rb
+│   │   ├── upsert_record_job_spec.rb
+│   │   └── user_list_upload
+│   │       ├── capture_processing_timestamp_job_spec.rb
+│   │       └── create_creneaux_snapshot_job_spec.rb
+│   ├── lib
+│   │   ├── phone_number_helper_spec.rb
+│   │   ├── sidekiq
+│   │   │   ├── arguments_filter_spec.rb
+│   │   │   ├── logger
+│   │   │   │   └── formatters
+│   │   │   │       └── custom_log_formatter_spec.rb
+│   │   │   └── middleware
+│   │   │       ├── capture_current_agent_spec.rb
+│   │   │       └── set_current_agent_spec.rb
+│   │   └── users
+│   │       ├── transfer_organisation_spec.rb
+│   │       └── transfer_referent_spec.rb
+│   ├── mailers
+│   │   ├── creneau_opening_request_mailer_spec.rb
+│   │   ├── csv_export_mailer_spec.rb
+│   │   ├── invitation_mailer_spec.rb
+│   │   ├── notification_mailer_spec.rb
+│   │   ├── organisation_mailer_spec.rb
+│   │   └── reply_transfer_mailer_spec.rb
+│   ├── models
+│   │   ├── address
+│   │   │   ├── normalizer_spec.rb
+│   │   │   └── parser_spec.rb
+│   │   ├── agent_role_spec.rb
+│   │   ├── agent_session
+│   │   │   ├── through_impersonate_spec.rb
+│   │   │   └── through_sign_in_form_spec.rb
+│   │   ├── agent_session_factory_spec.rb
+│   │   ├── agent_spec.rb
+│   │   ├── archive_spec.rb
+│   │   ├── category_configuration
+│   │   │   └── creneau_availability_spec.rb
+│   │   ├── category_configuration_spec.rb
+│   │   ├── concerns
+│   │   │   ├── agent
+│   │   │   │   └── super_admin_authentication_spec.rb
+│   │   │   ├── has_attached_image_spec.rb
+│   │   │   ├── participation
+│   │   │   │   └── france_travail_payload_spec.rb
+│   │   │   ├── user
+│   │   │   │   ├── france_travail_webhooks_spec.rb
+│   │   │   │   └── geocodable_spec.rb
+│   │   │   ├── user_list_upload
+│   │   │   │   └── user_row
+│   │   │   │       └── matching_user_spec.rb
+│   │   │   └── webhook_deliverable_spec.rb
+│   │   ├── csv_export_spec.rb
+│   │   ├── dpa_agreement_spec.rb
+│   │   ├── file_configuration_spec.rb
+│   │   ├── follow_up_spec.rb
+│   │   ├── invitation_spec.rb
+│   │   ├── messages_configuration_spec.rb
+│   │   ├── motif_spec.rb
+│   │   ├── notification_spec.rb
+│   │   ├── organisation
+│   │   │   └── users_retriever_spec.rb
+│   │   ├── organisation_spec.rb
+│   │   ├── orientation_spec.rb
+│   │   ├── orientation_type_spec.rb
+│   │   ├── participation_spec.rb
+│   │   ├── rdv_solidarites_credentials_spec.rb
+│   │   ├── rdv_spec.rb
+│   │   ├── sidekiq
+│   │   │   └── scheduler_spec.rb
+│   │   ├── stat_spec.rb
+│   │   ├── super_admin_authentication_request_spec.rb
+│   │   ├── templated_error_presenter_spec.rb
+│   │   ├── uploaded_file_sanitizer_spec.rb
+│   │   ├── user_archived_status_spec.rb
+│   │   ├── user_list_upload
+│   │   │   ├── collection_spec.rb
+│   │   │   ├── metrics_calculator_spec.rb
+│   │   │   ├── sorter_spec.rb
+│   │   │   └── user_row_spec.rb
+│   │   ├── user_list_upload_spec.rb
+│   │   ├── user_spec.rb
+│   │   └── users_organisation_spec.rb
+│   ├── policies
+│   │   ├── department_policy_spec.rb
+│   │   ├── invitation_policy_spec.rb
+│   │   ├── organisation_policy_spec.rb
+│   │   └── user_policy_spec.rb
+│   ├── rails_helper.rb
+│   ├── requests
+│   │   ├── api
+│   │   │   └── v1
+│   │   │       ├── departments_request_spec.rb
+│   │   │       ├── rdvs_request_spec.rb
+│   │   │       └── users_request_spec.rb
+│   │   ├── brevo_mail_webhooks_spec.rb
+│   │   └── brevo_sms_webhooks_spec.rb
+│   ├── seed_spec.rb
+│   ├── services
+│   │   ├── base_service_spec.rb
+│   │   ├── category_configurations
+│   │   │   └── create_spec.rb
+│   │   ├── concerns
+│   │   │   └── webhooks
+│   │   │       └── receipt_handler_spec.rb
+│   │   ├── creneau_opening_requests
+│   │   │   └── create_many_spec.rb
+│   │   ├── creneaux
+│   │   │   └── store_number_of_creneaux_available_spec.rb
+│   │   ├── exporters
+│   │   │   ├── generate_users_csv_spec.rb
+│   │   │   └── generate_users_participations_csv_spec.rb
+│   │   ├── follow_ups
+│   │   │   ├── clean_unused_spec.rb
+│   │   │   ├── close_spec.rb
+│   │   │   └── save_spec.rb
+│   │   ├── france_travail_api
+│   │   │   ├── build_user_authenticated_headers_spec.rb
+│   │   │   ├── cancel_participation_spec.rb
+│   │   │   ├── create_participation_spec.rb
+│   │   │   ├── retrieve_access_token_spec.rb
+│   │   │   ├── retrieve_user_token_spec.rb
+│   │   │   └── update_participation_spec.rb
+│   │   ├── inbound_webhooks
+│   │   │   └── brevo
+│   │   │       ├── assign_mail_delivery_status_and_date_spec.rb
+│   │   │       └── assign_sms_delivery_status_and_date_spec.rb
+│   │   ├── invitations
+│   │   │   ├── aggregate_invitation_without_creneaux_spec.rb
+│   │   │   ├── assign_link_and_token_spec.rb
+│   │   │   ├── compute_link_spec.rb
+│   │   │   ├── generate_letter_spec.rb
+│   │   │   ├── save_and_send_spec.rb
+│   │   │   ├── send_email_spec.rb
+│   │   │   ├── send_sms_spec.rb
+│   │   │   └── validate_spec.rb
+│   │   ├── invite_user_spec.rb
+│   │   ├── motif_categories
+│   │   │   └── create_spec.rb
+│   │   ├── notifications
+│   │   │   ├── generate_letter_spec.rb
+│   │   │   ├── save_and_send_spec.rb
+│   │   │   ├── send_email_spec.rb
+│   │   │   └── send_sms_spec.rb
+│   │   ├── organisations
+│   │   │   ├── create_spec.rb
+│   │   │   ├── rgpd_cleanup_spec.rb
+│   │   │   └── update_spec.rb
+│   │   ├── orientations
+│   │   │   └── save_spec.rb
+│   │   ├── outgoing_webhooks
+│   │   │   └── send_webhook_spec.rb
+│   │   ├── participations
+│   │   │   └── update_spec.rb
+│   │   ├── pdf_generation
+│   │   │   └── generate_spec.rb
+│   │   ├── rdv_solidarites_api
+│   │   │   ├── create_motif_category_spec.rb
+│   │   │   ├── create_motif_category_territory_spec.rb
+│   │   │   ├── create_or_retrieve_invitation_token_spec.rb
+│   │   │   ├── create_referent_assignation_spec.rb
+│   │   │   ├── create_referent_assignations_spec.rb
+│   │   │   ├── create_user_profiles_spec.rb
+│   │   │   ├── create_user_spec.rb
+│   │   │   ├── create_webhook_endpoint_spec.rb
+│   │   │   ├── delete_referent_assignation_spec.rb
+│   │   │   ├── retrieve_organisation_spec.rb
+│   │   │   ├── retrieve_organisations_spec.rb
+│   │   │   ├── retrieve_user_referent_assignations_spec.rb
+│   │   │   ├── retrieve_user_spec.rb
+│   │   │   ├── retrieve_webhook_endpoint_spec.rb
+│   │   │   ├── update_organisation_spec.rb
+│   │   │   ├── update_user_spec.rb
+│   │   │   └── update_webhook_endpoint_spec.rb
+│   │   ├── retrieve_address_geocoding_params_spec.rb
+│   │   ├── retrieve_organisations_from_address_spec.rb
+│   │   ├── sms
+│   │   │   ├── send_with_brevo_spec.rb
+│   │   │   └── send_with_primotexto_spec.rb
+│   │   ├── stats
+│   │   │   ├── compute_average_time_between_invitation_and_rdv_in_days_spec.rb
+│   │   │   ├── compute_follow_up_seen_rate_within_delays_spec.rb
+│   │   │   ├── compute_rate_of_autonomous_users_spec.rb
+│   │   │   ├── compute_rate_of_no_show_spec.rb
+│   │   │   ├── compute_rate_of_users_with_rdv_seen_spec.rb
+│   │   │   ├── global_stats
+│   │   │   │   └── compute_spec.rb
+│   │   │   └── monthly_stats
+│   │   │       └── compute_for_focused_month_spec.rb
+│   │   ├── upsert_record_spec.rb
+│   │   ├── user_list_upload
+│   │   │   ├── create_creneaux_snapshot_spec.rb
+│   │   │   ├── retrieve_organisation_to_assign_spec.rb
+│   │   │   └── save_user_spec.rb
+│   │   └── users
+│   │       ├── add_to_organisations_spec.rb
+│   │       ├── assign_referent_spec.rb
+│   │       ├── find_or_initialize_spec.rb
+│   │       ├── find_spec.rb
+│   │       ├── import_associations_from_rdv_solidarites_spec.rb
+│   │       ├── push_to_rdv_solidarites_spec.rb
+│   │       ├── remove_from_organisation_spec.rb
+│   │       ├── remove_referent_spec.rb
+│   │       ├── save_spec.rb
+│   │       ├── upsert_spec.rb
+│   │       └── validate_spec.rb
+│   ├── spec_helper.rb
+│   ├── support
+│   │   ├── api_shared_examples.rb
+│   │   ├── api_spec_helper.rb
+│   │   ├── assets_build.rb
+│   │   ├── authentication_spec_helper.rb
+│   │   ├── brevo_ip_helper.rb
+│   │   ├── capybara_config.rb
+│   │   ├── confirm_modal_helper.rb
+│   │   ├── download_helper.rb
+│   │   ├── factory_bot.rb
+│   │   ├── json_request_helper.rb
+│   │   ├── motif_categories_helper.rb
+│   │   ├── nir_helper.rb
+│   │   ├── pdf_helper.rb
+│   │   ├── service_spec_helper.rb
+│   │   ├── sidekiq_helper.rb
+│   │   ├── sorting_helper.rb
+│   │   ├── stub_helper.rb
+│   │   ├── unescape_html_spec_helper.rb
+│   │   └── upload_helper.rb
+│   └── swagger_helper.rb
+├── swagger
+│   └── v1
+│       └── api.json
+└── yarn.lock
+348 directories, 1997 files
