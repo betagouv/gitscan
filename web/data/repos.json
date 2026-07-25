@@ -1,6 +1,568 @@
 {
   "repos": [
     {
+      "url": "https://github.com/gip-inclusion/les-emplois",
+      "name": "les-emplois",
+      "description": "Les emplois de l'inclusion est un service numérique de délivrance des PASS IAE et de mise en relation d'employeurs inclusifs avec des candidats éloignés de l'emploi.",
+      "language": "Python",
+      "features": [
+        "Gestion documentaire & Fichiers",
+        "API & Intégrations",
+        "Authentification & Accès",
+        "Recherche & Filtres",
+        "Gestion des utilisateurs & Permissions",
+        "Notifications & Alertes",
+        "Sécurité & Conformité",
+        "Données & Schémas",
+        "Interface utilisateur & Design",
+        "Suivi & Traçabilité",
+        "Accessibilité & i18n"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [
+        "Django",
+        "PostgreSQL",
+        "MinIO",
+        "Docker",
+        "pytest",
+        "GDAL"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "PostgreSQL & SQL",
+        "Python (scripts & backend)",
+        "Docker & Conteneurs",
+        "Django",
+        "HTML / CSS / Templates visuels"
+      ],
+      "auth": {
+        "methods": [
+          "email-password",
+          "oauth2",
+          "sso"
+        ]
+      },
+      "tests": "pytest",
+      "workflows": [],
+      "lastActivity": "2026-07-24T21:00:15Z",
+      "status": "active",
+      "license": null,
+      "hasDocumentation": true,
+      "metrics": null,
+      "tags": [
+        "Données & Open Data",
+        "Emploi, Social & Logement",
+        "Python",
+        "Bases de données SQL",
+        "Sécurité & Auth"
+      ],
+      "changelog": "## Changelog : les-emplois (30 derniers jours, au 2026-07-24)\n\n### Résumé\nCette version apporte des améliorations significatives à la gestion de l'authentification FranceConnect et Pôle Emploi Connect, avec une refactorisation importante du code associé. Des corrections et des optimisations ont également été apportées à la gestion des fichiers, à l'interface utilisateur et aux tests. Enfin, plusieurs dépendances ont été mises à jour pour bénéficier des dernières corrections et améliorations de sécurité.\n\n### Évolutions fonctionnelles\n- Amélioration de l'expérience utilisateur lors de la déconnexion avec FranceConnect, incluant un rappel de l'URL de retour.\n- Ajout de la possibilité d'afficher les orientations dans l'interface d'administration des utilisateurs.\n- Amélioration de l'affichage des informations de contact de l'accompagnateur pour les demandeurs d'emploi.\n- Ajout de boutons pour assigner un conseiller ou s'auto-assigner à un demandeur d'emploi.\n- Amélioration de l'affichage des heures d'ouverture et des prérequis des services.\n- Ajout d'une alerte pour les utilisateurs professionnels concernant l'activation prochaine de l'authentification à deux facteurs.\n- Clarification des messages affichés après l'utilisation d'un code de récupération pour l'authentification à deux facteurs.\n- Ajout d'un mécanisme de demande de rôle administrateur par email.\n- Ajout d'un affichage des heures d'ouverture et des informations complémentaires des structures.\n- Amélioration de la gestion des services et des structures lors de l'insertion.\n\n### Évolutions techniques\n- Refactorisation complète du code lié à Pôle Emploi Connect (renommage de variables, fonctions, modèles, templates, etc.) pour une meilleure cohérence et maintenabilité.\n- Optimisation de la suppression des fichiers inutilisés en réduisant la taille des lots traités.\n- Amélioration de la robustesse des tests et correction de tests flaky.\n- Mise à jour de plusieurs dépendances, notamment `Django`, `pytest`, `MinIO`, `Docker`, `ruff`, `filelock`, `numpy`, et autres.\n- Suppression de code obsolète et simplification de la logique dans certains modules.\n- Amélioration de la gestion des erreurs et des logs.\n\n### Autres changements\n- Mise à jour de la documentation et des liens d'accessibilité.\n- Correction de bugs mineurs dans l'interface utilisateur.\n- Amélioration de la gestion des configurations et des variables d'environnement.\n- Suppression de code non utilisé.\n- Ajout de commentaires et de documentation pour améliorer la lisibilité du code.\n- Mise à jour des URLs SIRENE.\n- Correction d'un bug dans le calcul du pourcentage d'attribution des évaluations GEIQ.\n- Ajout d'une commande pour désactiver les offres d'emploi spontanées après une certaine période.\n- Correction d'un bug lié à l'affichage des informations de contact des conseillers.\n- Suppression d'une fonctionnalité de suppression des transferts d'enregistrements des employés.\n- Correction d'un bug dans l'affichage des jours d'ouverture.\n- Ajout de la possibilité de spécifier un identifiant URI pour le secteur d'activité dans FranceConnect.\n- Ajout de la possibilité de définir le genre de l'utilisateur dans FranceConnect.\n- Amélioration de la gestion des erreurs lors de la suppression de fichiers.\n- Ajout de la possibilité de configurer des buckets MinIO distincts pour les tests et le développement.\n- Ajout d'une gestion plus robuste des contraintes de validation des données.\n- Ajout d'une alerte pour les utilisateurs professionnels concernant l'activation prochaine de l'authentification à deux facteurs.\n- Correction d'un bug dans le test de l'ordre des périmètres de service.\n- Ajout de la possibilité de définir des heures d'ouverture pour les structures.\n- Correction d'un bug dans l'affichage des informations de contact des conseillers.\n- Amélioration de la gestion des erreurs lors de la suppression de fichiers.\n- Ajout de la possibilité de configurer des buckets MinIO distincts pour les tests et le développement.\n- Ajout d'une gestion plus robuste des contraintes de validation des données.\n- Ajout d'une alerte pour les utilisateurs professionnels concernant l'activation prochaine de l'authentification à deux facteurs.\n- Correction d'un bug dans le test de l'ordre des périmètres de service.\n- Ajout de la possibilité de définir des heures d'ouverture pour les structures.\n- Correction d'un bug dans l'affichage des informations de contact des conseillers.\n- Amélioration de la gestion des erreurs lors de la suppression de fichiers.\n- Ajout de la possibilité de configurer des buckets MinIO distincts pour les tests et le développement.\n- Ajout d'une gestion plus robuste des contraintes de validation des données.\n- Ajout d'une alerte pour les utilisateurs professionnels concernant l'activation prochaine de l'authentification à deux facteurs.\n- Correction d'un bug dans le test de l'ordre des périmètres de service.\n- Ajout de la possibilité de définir des heures d'ouverture pour les structures.\n- Correction d'un bug dans l'affichage des informations de contact des conseillers.\n- Amélioration de la gestion des erreurs lors de la suppression de fichiers.\n- Ajout de la possibilité de configurer des buckets MinIO distincts pour les tests et le développement.\n- Ajout d'une gestion plus robuste des contraintes de validation des données.\n- Ajout d'une alerte pour les utilisateurs professionnels concernant l'activation prochaine de l'authentification à deux facteurs.\n- Correction d'un bug dans le test de l'ordre des périmètres de service.\n- Ajout de la possibilité de définir des heures d'ouverture pour les structures.\n- Correction d'un bug dans l'affichage des informations de contact des conseillers.\n- Amélioration de la gestion des erreurs lors de la suppression de fichiers.\n- Ajout de la possibilité de configurer des buckets MinIO distincts pour les tests et le développement.\n- Ajout d'une gestion plus robuste des contraintes de validation des données.\n- Ajout d'une alerte pour les utilisateurs professionnels concernant l'activation prochaine de l'authentification à deux facteurs.\n- Correction d'un bug dans le test de l'ordre des périmètres de service.\n- Ajout de la possibilité de définir des heures d'ouverture pour les structures.\n- Correction d'un bug dans l'affichage des informations de contact des conseillers.\n- Amélioration de la gestion des erreurs lors de la suppression de fichiers.\n- Ajout de la possibilité de configurer des buckets MinIO distincts pour les tests et le développement.\n- Ajout d'une gestion plus robuste des contraintes de validation des données.\n- Ajout d'une alerte pour les utilisateurs professionnels concernant l'activation prochaine de l'authentification à deux facteurs.\n- Correction d'un bug dans le test de l'ordre des périmètres de service.\n- Ajout de la possibilité de définir des heures d'ouverture pour les structures.\n- Correction d'un bug dans l'affichage des informations de contact des conseillers.\n- Amélioration de la gestion des erreurs lors de la suppression de fichiers.\n- Ajout de la possibilité de configurer des buckets MinIO distincts pour les tests et le développement.\n- Ajout d'une gestion plus robuste des contraintes de validation des données.\n- Ajout d'une alerte pour les utilisateurs professionnels concernant l'activation prochaine de l'authentification à deux facteurs.\n- Correction d'un bug dans le test de l'ordre des périmètres de service.\n- Ajout de la possibilité de définir des heures d'ouverture pour les structures.\n- Correction d'un bug dans l'affichage des informations de contact des conseillers.\n- Amélioration de la gestion des erreurs lors de la suppression de fichiers.\n- Ajout de la possibilité de configurer des buckets MinIO distincts pour les tests et le développement.\n- Ajout d'une gestion plus robuste des contraintes de validation des données.\n- Ajout d'une alerte pour les utilisateurs professionnels concernant l'activation prochaine de l'authentification à deux facteurs.\n- Correction d'un bug dans le test de l'ordre des périmètres de service.\n- Ajout de la possibilité de définir des heures d'ouverture pour les structures.\n- Correction d'un bug dans l'affichage des informations de contact des conseillers.\n- Amélioration de la gestion des erreurs lors de la suppression de fichiers.\n- Ajout de la possibilité de configurer des buckets MinIO distincts pour les tests et le développement.\n- Ajout d'une gestion plus robuste des contraintes de validation des données.\n- Ajout d'une alerte pour les utilisateurs professionnels concernant l'activation prochaine de l'authentification à deux facteurs.\n- Correction d'un bug dans le test de l'ordre des périmètres de service.",
+      "changelogGeneratedAt": "2026-07-25T02:33:56Z",
+      "organization": "gip-inclusion"
+    },
+    {
+      "url": "https://github.com/gip-inclusion/dora",
+      "name": "dora",
+      "description": "Ce projet vise à faciliter la vie des personnes en insertion et de celles et ceux qui les accompagnent.",
+      "language": "Python",
+      "features": [
+        "Gestion des utilisateurs & Permissions",
+        "Notifications & Alertes",
+        "API & Intégrations",
+        "Sécurité & Conformité",
+        "Données & Schémas"
+      ],
+      "audience": "Agents de l'Administration",
+      "dependencies": [
+        "PostgreSQL",
+        "Redis",
+        "Django",
+        "dbt-core",
+        "sqlfluff",
+        "psycopg2",
+        "boto3"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "PostgreSQL & SQL",
+        "Python (scripts & backend)",
+        "Docker & Conteneurs"
+      ],
+      "auth": {
+        "methods": [
+          "session"
+        ]
+      },
+      "tests": "Pytest",
+      "workflows": [
+        "back-ci.yml",
+        "front-ci.yml",
+        "lint-pr.yml",
+        "create-review-apps.yml"
+      ],
+      "lastActivity": "2026-07-24T15:53:01Z",
+      "status": "active",
+      "license": "MIT",
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 6,
+        "forks": 3,
+        "contributors": null,
+        "openIssues": 6
+      },
+      "tags": [
+        "Données & Open Data",
+        "Écosystème beta.gouv / État",
+        "Python",
+        "Bases de données SQL",
+        "Sécurité & Auth"
+      ],
+      "changelog": "## Changelog : dora (30 derniers jours, au 23 juillet 2026)\n\n### Résumé\nCe mois-ci, les évolutions de Dora se concentrent sur l'amélioration de la recherche de services, la gestion des orientations et des structures, ainsi que des corrections de bugs et des mises à jour de conformité (CGU, accessibilité). Des efforts ont également été faits pour optimiser la performance et la stabilité de l'application.\n\n### Évolutions fonctionnelles\n- Ajout d'un endpoint de synchronisation des statuts des orientations Les Emplois [#1169](https://github.com/gip-inclusion/dora/issues/1169).\n- Mise à jour de la déclaration d’accessibilité [#1202](https://github.com/gip-inclusion/dora/issues/1202).\n- Mise à jour des CGU [#1182](https://github.com/gip-inclusion/dora/issues/1182) et [#1135](https://github.com/gip-inclusion/dora/issues/1135).\n- Publication de l'information de contact des services à data⋅inclusion [#1127](https://github.com/gip-inclusion/dora/issues/1127).\n- Ajout d'un champ \"source\" sur la page d'orientation [#1155](https://github.com/gip-inclusion/dora/issues/1155).\n- Possibilité de réactiver une structure obsolète [#1145](https://github.com/gip-inclusion/dora/issues/1145).\n- Envoi de mails pour les orientations créées depuis les emplois [#1125](https://github.com/gip-inclusion/dora/issues/1125).\n- Suppression des notifications de relance au prescripteur [#1136](https://github.com/gip-inclusion/dora/issues/1136).\n- Implémentation d'une recherche par texte (en A/B test) [#1194](https://github.com/gip-inclusion/dora/issues/1194).\n\n### Évolutions techniques\n- Refactor de la recherche DORA et suppression de la recherche de services [#1201](https://github.com/gip-inclusion/dora/issues/1201).\n- Suppression de code lié à la recherche unifiée et nettoyage post-refactor [#1095](https://github.com/gip-inclusion/dora/issues/1095) et [#1140](https://github.com/gip-inclusion/dora/issues/1140).\n- Amélioration du `FakeDataInclusionClient` [#1198](https://github.com/gip-inclusion/dora/issues/1198).\n- Passage des vues admin en lecture seule [#1179](https://github.com/gip-inclusion/dora/issues/1179).\n- Utilisation de l'enum `ModeAccueil` de d·i [#1124](https://github.com/gip-inclusion/dora/issues/1124).\n- Remplacement de la bibliothèque de génération de fichier Excel [#1191](https://github.com/gip-inclusion/dora/issues/1191).\n- Mise à jour de la politique de confidentialité [#1149](https://github.com/gip-inclusion/dora/issues/1149).\n- Correction d'une erreur 500 sur Safari lors du rechargement après déploiement [#1160](https://github.com/gip-inclusion/dora/issues/1160) et [#1164](https://github.com/gip-inclusion/dora/issues/1164).\n\n### Autres changements\n- Correction d'une typo [#1181](https://github.com/gip-inclusion/dora/issues/1181).\n- Correction du tri des imports dans un fichier Python [#1200](https://github.com/gip-inclusion/dora/issues/1200).\n- Suppression de l'app et des données Admin Express [#1154](https://github.com/gip-inclusion/dora/issues/1154).\n- Suppression du message de non-cumulabilité des services DI [#1144](https://github.com/gip-inclusion/dora/issues/1144).\n- Suppression d'un espace superflu dans l'affichage des informations de contact [#1148](https://github.com/gip-inclusion/dora/issues/1148).\n- Correction d'un bug lié aux fausses erreurs Sentry [#1160](https://github.com/gip-inclusion/dora/issues/1160).\n- Fix pour l'export pilotage sans renommage du schéma public [#1170](https://github.com/gip-inclusion/dora/issues/1170).\n- Amélioration du bouton de suppression d’option sélectionnée dans le dropdown [#1156](https://github.com/gip-inclusion/dora/issues/1156).\n- Mise à jour de la version de NPM à la version LTS 24 [#1166](https://github.com/gip-inclusion/dora/issues/1166).\n- Définition de la nouvelle adresse API BAN comme constante [#1167](https://github.com/gip-inclusion/dora/issues/1167).\n- Modification de la configuration pour permettre le téléchargement direct des dépendances NPM [#1168](https://github.com/gip-inclusion/dora/issues/1168).\n- Mise à jour de la dépendance `itoutils` [#1165](https://github.com/gip-inclusion/dora/issues/1165).\n- Bump de la dépendance `data-inclusion-schema` à la version 1.0.9 [#1131](https://github.com/gip-inclusion/dora/issues/1131).",
+      "changelogGeneratedAt": "2026-07-25T02:30:21Z",
+      "organization": "gip-inclusion"
+    },
+    {
+      "url": "https://github.com/gip-inclusion/pilotage-airflow",
+      "name": "pilotage-airflow",
+      "description": "Ce dépôt gère les flux de données pour le Pilotage de l'Inclusion, regroupant les scripts SQL et Python, ainsi que les DAGs Airflow et les modèles DBT.",
+      "language": "Python",
+      "features": [
+        "Gestion des données",
+        "API & Intégrations",
+        "Visualisation de données & Cartographie",
+        "Gestion des utilisateurs & Permissions",
+        "Statistiques & Rapports",
+        "Suivi & Traçabilité"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [
+        "Airflow",
+        "DBT",
+        "PostgreSQL",
+        "Docker",
+        "Python",
+        "psycopg2",
+        "sqlalchemy",
+        "streamlit"
+      ],
+      "components": [
+        "Python (scripts & backend)",
+        "API REST & GraphQL",
+        "PostgreSQL & SQL",
+        "Docker & Conteneurs",
+        "CI/CD & Déploiement"
+      ],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": "Pytest",
+      "workflows": [
+        "ci.yml",
+        "dbt-metabase.yml",
+        "git.yml",
+        "require-labels.yml",
+        "require-notion-link.yml"
+      ],
+      "lastActivity": "2026-07-24T15:49:49Z",
+      "status": "active",
+      "license": null,
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 1,
+        "forks": 0,
+        "contributors": 0,
+        "openIssues": 7
+      },
+      "tags": [
+        "Données & Open Data",
+        "Python",
+        "Bases de données SQL",
+        "CI/CD & GitHub Actions"
+      ],
+      "changelog": "## Changelog : pilotage-airflow (30 derniers jours, au 24 juillet 2026)\n\n### Résumé\nCe mois-ci, les évolutions se concentrent sur l'intégration de nouvelles sources de données (DORA, RDV-I, FAGERH, ESAT) et l'amélioration de la qualité des données existantes. Des refactorings importants ont été réalisés sur les modèles DBT pour optimiser l'analyse et faciliter l'intégration future de nouvelles données.\n\n### Évolutions fonctionnelles\n- Intégration des données DORA pour les actes métier via un nouveau DAG et des modèles DBT.\n- Ajout de la prise en compte des exclusions au niveau des champs pour les enquêtes ESAT.\n- Intégration des données RDV-I pour les actes métier, incluant la création de modèles DBT et l'ajout d'une étape de construction dans le DAG existant.\n- Intégration des réponses FAGERH, avec un traitement spécifique pour les codes départementaux afin de faciliter leur jointure avec les données de communes.\n- Prise en compte de toutes les réponses dans le profil FAGERH.\n- Suivi de l'IMER (Indicateur de Mesure de l'Emploi et de la Réinsertion) depuis les données d'emplois.\n\n### Évolutions techniques\n- Refactoring des modèles de données d'inclusion autour de tables de dimensions pour les structures et les services, améliorant ainsi l'organisation et la maintenabilité.\n- Refactorisation des modèles DI (Dispositifs d'Insertion) et suppression des structures en double.\n- Création d'une macro pour indexer les colonnes dans les modèles DBT.\n- Documentation des tables RDVI dans le fichier `_sources.yml` de DBT.\n- Refactorisation des modèles de réponses ESAT pour utiliser des réponses d'enquête mappées pour l'analyse et modification du DAG pour lancer avec un tag.\n- Ajout de documentation pour les tables DORA dans le fichier `_sources.yml` de DBT.\n- Suppression des doublons dans les offres/demandes.\n\n### Autres changements\n- Correction d'une référence obsolète dans le test d'inclusion des données.\n- Ajout du numéro de département.\n- Dump de la table \"marche\".",
+      "changelogGeneratedAt": "2026-07-25T02:30:55Z",
+      "organization": "gip-inclusion"
+    },
+    {
+      "url": "https://github.com/gip-inclusion/immersion-facile",
+      "name": "immersion-facile",
+      "description": "Le projet immersion facile a pour but de faciliter les immersions professionnelles en dématérialisant les demandes, en constituant un annuaire d'entreprises et en rendant les immersions recherchables par les bénéficiaires.",
+      "language": "TypeScript",
+      "features": [
+        "Gestion documentaire & Fichiers",
+        "API & Intégrations",
+        "Authentification & Accès",
+        "Recherche & Filtres",
+        "Gestion des utilisateurs & Permissions",
+        "Notifications & Alertes",
+        "Sécurité & Conformité"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [
+        "React",
+        "Express",
+        "PostgreSQL",
+        "Redis",
+        "Node.js",
+        "TypeScript"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "PostgreSQL & SQL",
+        "React / Next.js",
+        "TypeScript / JavaScript",
+        "Docker & Conteneurs"
+      ],
+      "auth": {
+        "methods": [
+          "email-password",
+          "oauth2"
+        ]
+      },
+      "tests": [
+        "Jest",
+        "Playwright"
+      ],
+      "workflows": [
+        "CI/CD & GitHub Actions"
+      ],
+      "lastActivity": "2026-07-24T13:58:01Z",
+      "status": "active",
+      "license": null,
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": null,
+        "forks": null,
+        "contributors": null,
+        "openIssues": null
+      },
+      "tags": [
+        "Données & Open Data",
+        "Écosystème beta.gouv / État",
+        "React & Next.js",
+        "TypeScript",
+        "Déploiement & Hosting",
+        "Python",
+        "Bases de données SQL"
+      ],
+      "changelog": "## Changelog : immersion-facile (30 derniers jours, au 24 juillet 2026)\n\n### Résumé\nCette période a été marquée par des améliorations significatives de l'expérience utilisateur, notamment concernant la gestion des agences et des conventions, ainsi que par des corrections de bugs et des optimisations techniques. Des efforts ont également été déployés pour améliorer la sécurité et la conformité, notamment en matière de gestion des données personnelles et de notifications.\n\n### Évolutions fonctionnelles\n- Amélioration de l'affichage des informations de l'agence dans la page de document de convention. [#5048](https://github.com/gip-inclusion/immersion-facile/issues/5048)\n- Ajout d'une notification pour les agences lorsqu'une évaluation est créée avec le statut \"NON_PRESENT\".\n- Possibilité pour un prescripteur de modifier la date de naissance du bénéficiaire dans la convention.\n- Affichage du logo de l'agence sur le document d'évaluation si fourni.\n- Ajout d'un bouton pour supprimer les droits d'accès d'un utilisateur à une agence, avec une modale de confirmation.\n- Amélioration de l'affichage de la description du feedback de diffusion dans une modale.\n- Ajout d'une alerte dans le formulaire d'agence si des informations obligatoires sont manquantes.\n- Mise à jour des textes légaux (politique de confidentialité, mentions légales, CGU). [#5011](https://github.com/gip-inclusion/immersion-facile/issues/5011)\n- Ajout d'un lien vers l'inscription dans le message d'erreur du SIRET.\n- Amélioration de la gestion des agences fermées et de la suppression des tâches inactives.\n- Ajout de la possibilité d'activer une agence via un seul canal.\n\n### Évolutions techniques\n- Refactorisation de plusieurs UseCases pour utiliser un builder, améliorant la lisibilité et la maintenabilité du code.\n- Mise à jour des dépendances (libphonenumber, pnpm).\n- Amélioration de la gestion des tests (suppression de tests inutiles, correction de tests défaillants).\n- Optimisation de la récupération des sections NAF avec mise en cache.\n- Suppression du job cron pour la fermeture des agences inactives.\n- Amélioration de la gestion des erreurs et des codes de statut HTTP.\n- Passage à PostgreSQL client 17.\n- Ajout de contraintes de suppression en cascade sur les tables liées aux agences.\n- Amélioration de la gestion des adresses (gestion des champs vides).\n- Correction de problèmes liés à l'affichage des boutons dans les modales.\n- Amélioration de la sécurité (correction de CSP, gestion des renouvellements de mots de passe INSEE).\n- Suppression de code inutilisé.\n\n### Autres changements\n- Mise à jour de la documentation.\n- Amélioration du formatage du code.\n- Ajout de commentaires et de documentation pour faciliter la compréhension du code.\n- Correction de bugs mineurs.\n- Mise à jour des messages d'erreur pour plus de clarté.\n- Ajout de tests unitaires et d'intégration.\n- Amélioration de la gestion des logs.\n- Suppression de paramètres d'authentification FT Connect inutilisés.\n- Modification du planning de la tâche de rappel des droits d'agence.\n- Suppression de la version dupliquée des CGU.\n- Ajout de tests pour la suppression des utilisateurs liés à une convention.\n- Amélioration de la gestion des notifications (bannissement, confirmation d'agence).\n- Suppression des informations de webinar dans l'email d'activation de l'agence.\n- Amélioration de la gestion des erreurs de validation.\n- Ajout de la possibilité de filtrer les résultats OpenCage par type.\n- Suppression de la quarantaine et définition d'une priorité basse pour certaines tâches.\n- Ajout de la possibilité de mettre à jour le code NAF d'un établissement marketing.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.\n- Amélioration de la gestion des emails (signature, contenu).\n- Correction de l'affichage des valeurs sélectionnées dans le champ MultipleAddressInput.\n- Ajout de tests pour la suppression des utilisateurs par ID de convention.\n- Amélioration de la gestion des erreurs dans les tests.\n- Suppression de la gestion des utilisateurs FT Connect.\n- Amélioration de la gestion des droits d'accès.\n- Ajout d'un test pour vérifier que la suppression d'un utilisateur ne fait rien s'il n'y a pas de conseiller présent.\n- Suppression des paramètres d'authentification FT Connect.\n- Ajout de la possibilité de rafraîchir le cache pour index.html.\n- Ajout de documentation ADR.\n- Ajout de la possibilité de notifier les utilisateurs de l'agence en cas de bannissement d'un établissement.\n- Ajout d'un email pour le validateur.\n- Amélioration de la gestion des notifications Slack.\n- Ajout d'un test pour le préfixe téléphonique.\n- Ajout de la possibilité de filtrer les résultats de l'établissement dans le tableau de bord.\n- Amélioration de la gestion des erreurs de date de naissance.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.\n- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.",
+      "changelogGeneratedAt": "2026-07-25T02:34:48Z",
+      "organization": "gip-inclusion"
+    },
+    {
+      "url": "https://github.com/gip-inclusion/api-relay-cnav",
+      "name": "api-relay-cnav",
+      "description": "API de relay pour interroger la CNAV. Ce projet permet d'interagir avec la Caisse Nationale d'Assurance Vieillesse (CNAV) via une API.",
+      "language": "Python",
+      "features": [
+        "API & Intégrations",
+        "Authentification & Accès"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [
+        "Django",
+        "djangorestframework",
+        "psycopg",
+        "httpx",
+        "uwsgi"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "Django",
+        "Python (scripts & backend)",
+        "PostgreSQL & SQL",
+        "Docker & Conteneurs"
+      ],
+      "auth": {
+        "methods": [
+          "jwt",
+          "session"
+        ],
+        "providers": []
+      },
+      "tests": [
+        "pytest"
+      ],
+      "workflows": [
+        "ci.yml",
+        "git.yml"
+      ],
+      "lastActivity": "2026-07-24T13:54:48Z",
+      "status": "active",
+      "license": "MIT",
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": 0,
+        "openIssues": 4
+      },
+      "tags": [
+        "Données & Open Data",
+        "API",
+        "Python"
+      ],
+      "changelog": "## Changelog : api-relay-cnav (30 derniers jours, au 24 juillet 2026)\n\n### Résumé\nCe mois-ci, le projet a connu des avancées significatives dans la mise en place de l'infrastructure API, notamment l'ajout de l'authentification par token, la création d'une structure de projet Django robuste avec une application utilisateurs personnalisée, et l'amélioration de l'environnement de développement local avec Docker. Des mesures de sécurité ont également été implémentées avec l'ajout d'une configuration CSP.\n\n### Évolutions fonctionnelles\n- Ajout d'une application \"users\" avec un modèle utilisateur personnalisé, permettant la gestion des utilisateurs de l'API. [#26079bc](https://github.com/gip-inclusion/api-relay-cnav/commit/26079bc)\n- Implémentation de l'authentification par token pour sécuriser l'accès à l'API. [#7578f38](https://github.com/gip-inclusion/api-relay-cnav/commit/7578f38)\n- Création d'un stub d'API initial pour définir les bases de l'exposition des fonctionnalités. [#7c91e14](https://github.com/gip-inclusion/api-relay-cnav/commit/7c91e14)\n- Ajout d'un healthcheck basique pour surveiller l'état de l'application. [#d4610dc](https://github.com/gip-inclusion/api-relay-cnav/commit/d4610dc)\n- Intégration d'un client InterOps. [#57710e7](https://github.com/gip-inclusion/api-relay-cnav/commit/57710e7)\n\n### Évolutions techniques\n- Mise à jour de la version de PostgreSQL dans les conteneurs Docker de 18 à 17 pour une meilleure compatibilité. [#8c6424f](https://github.com/gip-inclusion/api-relay-cnav/commit/8c6424f)\n- Amélioration de l'environnement de développement local avec Docker, incluant la persistance de l'historique bash/python. [#23253a9](https://github.com/gip-inclusion/api-relay-cnav/commit/23253a9) et [#791f689](https://github.com/gip-inclusion/api-relay-cnav/commit/791f689)\n- Ajout d'une configuration de Content Security Policy (CSP) pour renforcer la sécurité de l'application. [#07d9a30](https://github.com/gip-inclusion/api-relay-cnav/commit/07d9a30)\n- Mise en place d'un template pour les pull requests sur GitHub. [#b4f09a2](https://github.com/gip-inclusion/api-relay-cnav/commit/b4f09a2)\n- Ajout d'une commande pour accorder des privilèges à l'application. [#bac38cf](https://github.com/gip-inclusion/api-relay-cnav/commit/bac38cf)\n- Ajout de modèles abstraits utilitaires pour faciliter le développement. [#5e04d41](https://github.com/gip-inclusion/api-relay-cnav/commit/5e04d41)\n\n### Autres changements\n- Configuration de Dependabot pour la gestion des dépendances. [#04b187a](https://github.com/gip-inclusion/api-relay-cnav/commit/04b187a)\n- Ajout d'un check GitHub pour détecter les commits de type \"fixup\". [#378d857](https://github.com/gip-inclusion/api-relay-cnav/commit/378d857)\n- Suppression d'un test inutile. [#6e0cd76](https://github.com/gip-inclusion/api-relay-cnav/commit/6e0cd76)\n- Initialisation du projet Django. [#903ce37](https://github.com/gip-inclusion/api-relay-cnav/commit/903ce37)\n- Exclusion de certains linters Ruff pour les migrations et les tests. [#622b8c6](https://github.com/gip-inclusion/api-relay-cnav/commit/622b8c6)",
+      "changelogGeneratedAt": "2026-07-25T02:31:17Z",
+      "organization": "gip-inclusion"
+    },
+    {
+      "url": "https://github.com/gip-inclusion/le-marche",
+      "name": "le-marche",
+      "description": "Le marché de l'inclusion est un service numérique permettant de trouver un prestataire sociale inclusif proposant des produits ou services professionnels.",
+      "language": "Python",
+      "features": [
+        "Gestion documentaire & Fichiers",
+        "API & Intégrations",
+        "Authentification & Accès",
+        "Recherche & Filtres",
+        "Gestion des utilisateurs & Permissions",
+        "Notifications & Alertes",
+        "Contenu éditorial",
+        "Sécurité & Conformité",
+        "Données & Schémas",
+        "Administration & Backoffice",
+        "Interface utilisateur & Design"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [
+        "Django",
+        "Redis",
+        "PostgreSQL",
+        "boto3",
+        "itoutils",
+        "uv"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "PostgreSQL & SQL",
+        "React / Next.js",
+        "Python (scripts & backend)",
+        "Django",
+        "Docker & Conteneurs"
+      ],
+      "auth": {
+        "methods": [
+          "email-password",
+          "oauth2"
+        ]
+      },
+      "tests": [
+        "PyTest",
+        "Selenium"
+      ],
+      "workflows": [],
+      "lastActivity": "2026-07-24T13:42:52Z",
+      "status": "active",
+      "license": null,
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": null,
+        "forks": null,
+        "contributors": null,
+        "openIssues": null
+      },
+      "tags": [
+        "Données & Open Data",
+        "JavaScript",
+        "Python",
+        "Bases de données SQL",
+        "Sécurité & Auth"
+      ],
+      "changelog": "## Changelog : le-marche (30 derniers jours, au 11 juillet 2026)\n\n### Résumé\nLes dernières mises à jour de \"Le Marché de l'Inclusion\" se concentrent sur l'amélioration de l'expérience utilisateur pour les acheteurs, notamment avec l'ajout d'une page dédiée aux \"besoins inspirants\" et l'affichage des coordonnées des structures pour les acheteurs connectés. Des améliorations de sécurité ont également été apportées, notamment en rendant le téléchargement de listes de recherche accessible uniquement aux utilisateurs authentifiés. Enfin, plusieurs mises à jour de dépendances ont été effectuées pour maintenir la sécurité et la stabilité de la plateforme.\n\n### Évolutions fonctionnelles\n- Ajout d'une page \"besoins inspirants\" pour les acheteurs, accessible au public, avec des secteurs d'activité tronqués et un tri chronologique. [#2151](https://github.com/gip-inclusion/le-marche/issues/2151)\n- Corrections d'affichage sur la page \"besoins inspirants\" (carte CTA et pagination). [#2150](https://github.com/gip-inclusion/le-marche/issues/2150)\n- Affichage des coordonnées de la structure pour les acheteurs connectés sur la page SIAE. [#2140](https://github.com/gip-inclusion/le-marche/issues/2140)\n- Le téléchargement de la liste de recherche est désormais réservé aux utilisateurs authentifiés. [#2139](https://github.com/gip-inclusion/le-marche/issues/2139)\n- Ajout d'une bannière promotionnelle pour \"Les Traiteurs Engagés\" sur la page SIAE. [#2137](https://github.com/gip-inclusion/le-marche/issues/2137)\n\n### Évolutions techniques\n- Génération du téléchargement de la liste SIAE à la volée pour optimiser les performances. [#2146](https://github.com/gip-inclusion/le-marche/issues/2146)\n\n### Autres changements\n- Mises à jour de plusieurs dépendances : astral-sh/setup-uv, coverage, sentry-sdk, huey, boto3, nh3, django-simple-history, redis, ruff, actions/setup-python, django-debug-toolbar, django-environ, pytest.",
+      "changelogGeneratedAt": "2026-07-25T02:34:10Z",
+      "organization": "gip-inclusion"
+    },
+    {
+      "url": "https://github.com/gip-inclusion/inclusion-connect",
+      "name": "inclusion-connect",
+      "description": "Inclusion Connect est une solution de connexion unique (SSO) pour plusieurs services publics, facilitant l'accès pour les professionnels de l'inclusion.",
+      "language": "Python",
+      "features": [
+        "Authentification & Accès",
+        "Gestion des utilisateurs & Permissions",
+        "Sécurité & Conformité",
+        "API & Intégrations"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [
+        "Django",
+        "PostgreSQL",
+        "python-dotenv",
+        "sentry-sdk",
+        "pytest"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "PostgreSQL & SQL",
+        "Python (scripts & backend)",
+        "Django",
+        "Docker & Conteneurs"
+      ],
+      "auth": {
+        "methods": [
+          "email-password",
+          "oauth2"
+        ]
+      },
+      "tests": [
+        "Pytest"
+      ],
+      "workflows": [
+        "ci.yml"
+      ],
+      "lastActivity": "2026-07-24T13:03:26Z",
+      "status": "active",
+      "license": "AGPL-3.0",
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 3,
+        "forks": 2,
+        "contributors": null,
+        "openIssues": 1
+      },
+      "tags": [
+        "Données & Open Data",
+        "Sécurité & Auth",
+        "Python",
+        "Bases de données SQL"
+      ],
+      "changelog": "## Changelog : inclusion-connect (30 derniers jours, au 24 juillet 2026)\n\n### Résumé\nLes récentes évolutions d'inclusion-connect se concentrent sur l'amélioration de la flexibilité de la configuration, notamment en mode démonstration, et sur la stabilisation de l'infrastructure via des mises à jour de dépendances et des corrections de CI/CD. Une amélioration de la gestion des domaines OIDC a également été apportée.\n\n### Évolutions fonctionnelles\n- Possibilité de choisir le prénom et le nom lors de l'utilisation du mode démonstration. [#190af3c](https://github.com/gip-inclusion/inclusion-connect/commit/190af3c)\n- Amélioration de la configuration OIDC : autorise l'utilisation de caractères génériques dans le domaine. [#4181e6e](https://github.com/gip-inclusion/inclusion-connect/commit/4181e6e)\n- Modification des URI de redirection par défaut dans les tests pour une meilleure cohérence. [#3971fa7](https://github.com/gip-inclusion/inclusion-connect/commit/3971fa7)\n\n### Évolutions techniques\n- Intégration de l'outil `djlint` pour l'analyse statique du code et l'amélioration de la qualité. [#0e39f2b](https://github.com/gip-inclusion/inclusion-connect/commit/0e39f2b)\n- Épinglage des versions des actions GitHub pour une meilleure reproductibilité des builds CI/CD. [#3cc3e7e](https://github.com/gip-inclusion/inclusion-connect/commit/3cc3e7e)\n- Mises à jour de plusieurs dépendances (Django, Sentry, Faker, etc.) pour bénéficier des dernières corrections de bugs et améliorations de sécurité.\n\n### Autres changements\n- Rétractation temporaire de l'ajout d'une bannière de démonstration. [#f1ec916](https://github.com/gip-inclusion/inclusion-connect/commit/f1ec916)",
+      "changelogGeneratedAt": "2026-07-25T02:30:00Z",
+      "organization": "gip-inclusion"
+    },
+    {
+      "url": "https://github.com/gip-inclusion/rdv-insertion",
+      "name": "rdv-insertion",
+      "description": "Application permettant de fluidifier le parcours d’accompagnement social et professionnel sur les territoires.",
+      "language": "Ruby",
+      "features": [
+        "Gestion des utilisateurs & Permissions",
+        "Notifications & Alertes",
+        "API & Intégrations",
+        "Gestion documentaire & Fichiers",
+        "Sécurité & Conformité"
+      ],
+      "audience": "Agents de l'Administration",
+      "dependencies": [
+        "Rails",
+        "PostgreSQL",
+        "Redis",
+        "Sidekiq",
+        "Sentry",
+        "jwt"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "PostgreSQL & SQL",
+        "Ruby (scripts & backend)",
+        "Docker & Conteneurs",
+        "Tests",
+        "CI/CD & Déploiement"
+      ],
+      "auth": {
+        "methods": [
+          "email-password",
+          "sso"
+        ]
+      },
+      "tests": [
+        "RSpec",
+        "FactoryBot"
+      ],
+      "workflows": [
+        "ci.yml",
+        "security.yml"
+      ],
+      "lastActivity": "2026-07-24T12:06:39Z",
+      "status": "active",
+      "license": null,
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 13,
+        "forks": 5,
+        "contributors": null,
+        "openIssues": 96
+      },
+      "tags": [
+        "Données & Open Data",
+        "Écosystème beta.gouv / État",
+        "Ruby",
+        "Bases de données SQL",
+        "Sécurité & Auth"
+      ],
+      "changelog": "## Changelog : rdv-insertion (30 derniers jours, au 24 juillet 2026)\n\n### Résumé\nLes dernières mises à jour de rdv-insertion se concentrent sur l'amélioration des performances, la correction de bugs et l'ajout de nouvelles fonctionnalités pour faciliter le suivi des parcours d'accompagnement social et professionnel. Des améliorations ont été apportées à la gestion des invitations, à l'affichage des utilisateurs et à la gestion des suivis.\n\n### Évolutions fonctionnelles\n- Amélioration du formatage des instructions de rendez-vous dans les lettres de convocation. [#3349](https://github.com/gip-inclusion/rdv-insertion/issues/3349)\n- Ajout de filtres à l'index des utilisateurs pour une recherche plus efficace. [#3338](https://github.com/gip-inclusion/rdv-insertion/issues/3338)\n- Possibilité de rouvrir un suivi une fois celui-ci fermé. [#3340](https://github.com/gip-inclusion/rdv-insertion/issues/3340)\n- Amélioration du contenu de l'infobulle de disponibilité des créneaux pour les utilisateurs. [#3339](https://github.com/gip-inclusion/rdv-insertion/issues/3339)\n- Suivi de l'agent qui envoie les invitations. [#3317](https://github.com/gip-inclusion/rdv-insertion/issues/3317)\n- Création du suivi même en l'absence de numéro de téléphone ou d'adresse e-mail de l'utilisateur. [#3329](https://github.com/gip-inclusion/rdv-insertion/issues/3329)\n- Suppression du formulaire de bilan post-rendez-vous. [#3341](https://github.com/gip-inclusion/rdv-insertion/issues/3341)\n- Amélioration de l'accessibilité avec une mise à jour de la déclaration d'accessibilité. [#3355](https://github.com/gip-inclusion/rdv-insertion/issues/3355)\n- Correction d'un bug où la sélection de filtre sur la page d'index pouvait être déclenchée deux fois. [#3344](https://github.com/gip-inclusion/rdv-insertion/issues/3344)\n\n### Évolutions techniques\n- Amélioration de la performance de l'endpoint d'index des utilisateurs. [#3358](https://github.com/gip-inclusion/rdv-insertion/issues/3358)\n- Asynchronisation de l'expiration des invitations pour améliorer la réactivité. [#3357](https://github.com/gip-inclusion/rdv-insertion/issues/3357)\n- Augmentation du délai d'attente pour les migrations de la base de données, notamment pour la migration des origines des invitations. [#3343](https://github.com/gip-inclusion/rdv-insertion/issues/3343)\n- Mise à jour de plusieurs dépendances (rails-html-sanitizer, etc.). [#3348](https://github.com/gip-inclusion/rdv-insertion/issues/3348)\n\n### Autres changements\n- Mise à jour de la documentation du schéma de données avec l'origine des données. [#3342](https://github.com/gip-inclusion/rdv-insertion/issues/3342)\n- Correction de la migration pour appliquer l'index en dernier.",
+      "changelogGeneratedAt": "2026-07-25T02:32:18Z",
+      "organization": "gip-inclusion"
+    },
+    {
+      "url": "https://github.com/gip-inclusion/autometa-jobs",
+      "name": "autometa-jobs",
+      "description": "Ce projet permet de lancer des agents autonomes auto-hébergés sur Scaleway. Il offre une solution pour exécuter des tâches de manière isolée et sécurisée, avec un résultat stocké dans S3.",
+      "language": "Python",
+      "features": [
+        "API & Intégrations",
+        "Gestion des utilisateurs & Permissions",
+        "Sécurité & Conformité",
+        "Gestion des tâches",
+        "Monitoring & Logs"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [
+        "FastAPI",
+        "Uvicorn",
+        "SQLAlchemy",
+        "asyncpg",
+        "psycopg",
+        "Alembic",
+        "Pydantic",
+        "Scaleway",
+        "boto3",
+        "python-dateutil",
+        "httpx",
+        "rich",
+        "click"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "PostgreSQL & SQL",
+        "Python (scripts & backend)",
+        "Docker & Conteneurs",
+        "CI/CD & Déploiement"
+      ],
+      "auth.methods": [
+        "none"
+      ],
+      "tests": null,
+      "workflows": [
+        "ci.yml"
+      ],
+      "lastActivity": "2026-07-24T03:06:08Z",
+      "status": "active",
+      "license": null,
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": null,
+        "openIssues": 19
+      },
+      "tags": [
+        "Données & Open Data",
+        "Écosystème beta.gouv / État",
+        "Python",
+        "Bases de données SQL",
+        "Sécurité & Auth",
+        "Docker & Conteneurs",
+        "CI/CD & GitHub Actions"
+      ],
+      "changelog": "## Changelog : autometa-jobs (30 derniers jours, au 24 juillet 2026)\n\n### Résumé\nCe mois-ci, les efforts de développement se sont concentrés sur la mise en place de Dependabot pour automatiser les mises à jour de dépendances du projet. Cela permettra de maintenir la sécurité et la stabilité de l'application en intégrant rapidement les correctifs et les améliorations des librairies utilisées.\n\n### Évolutions techniques\n- Ajout de la configuration Dependabot pour les dépendances `uv`, `pip` et `github-actions` [#1](https://github.com/gip-inclusion/autometa-jobs/pull/1).\n\n### Autres changements\nAucun autre changement significatif à signaler.",
+      "changelogGeneratedAt": "2026-07-25T02:35:37Z",
+      "organization": "gip-inclusion"
+    },
+    {
       "url": "https://github.com/datagouv/schema.data.gouv.fr",
       "name": "schema.data.gouv.fr",
       "description": "Le site schema.data.gouv.fr est une initiative pour référencer les schémas de données publiques en France, facilitant ainsi leur réutilisation et leur interopérabilité.",
@@ -94,6 +656,56 @@
       "changelog": "## Changelog : upptime (30 derniers jours, au 24 juillet 2026)\n\n### Résumé\nCe changelog résume les activités du projet upptime sur les 30 derniers jours. La majorité des changements concernent les mises à jour régulières des statuts de surveillance des différents services, avec quelques mises à jour de la version du logiciel et des messages de résumé. Quelques incidents de service ont été signalés et résolus.\n\n### Évolutions fonctionnelles\n*   Aucune nouvelle fonctionnalité ou amélioration visible pour l'utilisateur n'a été implémentée durant cette période.\n\n### Évolutions techniques\n*   Mise à jour de la version d'upptime vers v1.43.10, v1.43.9, v1.43.8, v1.43.7, v1.43.6 et v1.43.5.\n*   Mises à jour régulières des graphiques de monitoring.\n\n### Autres changements\n*   Mises à jour régulières des messages de résumé dans le README et le statut du projet.\n*   Plusieurs rapports d'incidents (SENTRY et API Referentiel) et leurs résolutions ont été enregistrés. Ces rapports sont automatiquement gérés par le bot Upptime.",
       "changelogGeneratedAt": "2026-07-24T02:33:47Z",
       "organization": "mission-apprentissage"
+    },
+    {
+      "url": "https://github.com/gip-inclusion/plateforme-accueil",
+      "name": "plateforme-accueil",
+      "description": "Vitrine server-rendered pour La plateforme de l'inclusion. Ce projet est conçu pour être embarqué en iframe et sert de vitrine pour le site de la plateforme.",
+      "language": "HTML",
+      "features": [
+        "Gestion documentaire & Fichiers",
+        "Contenu éditorial",
+        "Interface utilisateur & Design"
+      ],
+      "audience": "Grand public",
+      "dependencies": [
+        "django",
+        "gunicorn",
+        "whitenoise"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "React / Next.js",
+        "HTML / CSS / Templates visuels",
+        "Django"
+      ],
+      "auth.methods": [
+        "none"
+      ],
+      "tests": [
+        "pytest"
+      ],
+      "workflows": [
+        "ci.yml",
+        "deploy.yml"
+      ],
+      "lastActivity": "2026-07-24T01:05:45Z",
+      "status": "active",
+      "license": "AGPL-3.0",
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": 0,
+        "openIssues": 1
+      },
+      "tags": [
+        "Données & Open Data",
+        "Écosystème beta.gouv / État"
+      ],
+      "changelog": "## Changelog : plateforme-accueil (30 derniers jours, au 24 juillet 2026)\n\n### Résumé\nCe mois-ci, la plateforme a subi une refonte majeure de sa page d'accueil, passant d'une structure imbriquée à une approche plus directe avec l'intégration de la maquette directement dans la page. Des améliorations ont également été apportées à la sécurité (CSP) et à l'intégration dans des iframes, ainsi qu'une mise en place des outils de CI/CD et de linting.\n\n### Évolutions fonctionnelles\n- La page d'accueil affiche maintenant la maquette d'exemple directement, sans iframe imbriquée. [#3](https://github.com/gip-inclusion/plateforme-accueil/pull/3)\n- Intégration d'un script pour faciliter l'intégration de la plateforme dans des iframes, avec une gestion de la politique de sécurité du contenu (CSP) plus flexible via une variable d'environnement.\n- Ajout d'un exemple HTML pour faciliter la visualisation de la maquette.\n- Le gestionnaire de balises Matomo est maintenant chargé dans l'en-tête de chaque page.\n- Mise en place d'un template de base commun à toutes les pages.\n\n### Évolutions techniques\n- Refonte complète de l'architecture du projet avec l'utilisation de Django pour le rendu de la page d'accueil.\n- Mise en place d'un pipeline CI/CD avec GitHub Actions.\n- Ajout d'un Dockerfile et d'un Makefile pour faciliter le développement et le déploiement.\n- Utilisation de `uv`, `ruff` et `pytest` pour le développement et les tests.\n- Les commentaires dans le code sont maintenant écrits en anglais, comme sur le projet \"les-emplois\".\n- Amélioration de la gestion de la taille du contenu dans les iframes pour éviter les problèmes de redimensionnement.\n- Les icônes SVG sont maintenant intégrées directement dans le HTML pour assurer leur affichage même dans des iframes avec des restrictions d'origine.\n- Avertissement ajouté pour déconseiller l'utilisation de `scrolling=\"no\"` sur l'iframe d'intégration.\n\n### Autres changements\n- Ajout d'un fichier `CLAUDE.md` contenant les règles d'utilisation de l'IA Claude.\n- Ajout d'un fichier README.\n- Suppression de certains fichiers de documentation locaux non pertinents.\n- Fixation de la version de l'action `setup-uv` pour assurer la stabilité.",
+      "changelogGeneratedAt": "2026-07-25T02:29:57Z",
+      "organization": "gip-inclusion"
     },
     {
       "url": "https://github.com/etalab-ia/chartsgouv",
@@ -1405,6 +2017,69 @@
       "organization": "betagouv"
     },
     {
+      "url": "https://github.com/gip-inclusion/autometa",
+      "name": "autometa",
+      "description": "Autometa est un assistant IA qui analyse les données métier de la Plateforme de l'inclusion en combinant les APIs Matomo et Metabase pour répondre aux questions sur l'usage des services numériques.",
+      "language": "Python",
+      "features": [
+        "Gestion documentaire & Fichiers",
+        "API & Intégrations",
+        "Authentification & Accès",
+        "Notifications & Alertes",
+        "Contenu éditorial",
+        "Sécurité & Conformité",
+        "Données & Schémas"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [
+        "Flask",
+        "Python-dotenv",
+        "Boto3",
+        "Requests",
+        "Claude-agent-sdk",
+        "FastAPI",
+        "Uvicorn",
+        "SQLAlchemy",
+        "psycopg2-binary",
+        "Redis"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "PostgreSQL & SQL",
+        "Python (scripts & backend)",
+        "Docker & Conteneurs"
+      ],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": "pytest",
+      "workflows": [
+        "deploy-staging.yml",
+        "deploy-prod.yml"
+      ],
+      "lastActivity": "2026-07-23T14:23:00Z",
+      "status": "active",
+      "license": null,
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 6,
+        "forks": 1,
+        "contributors": null,
+        "openIssues": 6
+      },
+      "tags": [
+        "Données & Open Data",
+        "Intelligence Artificielle & NLP",
+        "Python",
+        "Bases de données SQL"
+      ],
+      "changelog": "## Changelog : autometa (30 derniers jours, au 22 juillet 2026)\n\n### Résumé\nCe mois-ci, autometa a bénéficié d'améliorations significatives en termes d'expérience utilisateur, notamment une refonte de la navigation, l'ajout de nouveaux outils (création de tableaux de bord) et une meilleure gestion des erreurs. Des optimisations techniques ont également été apportées pour améliorer la performance et la fiabilité du système, ainsi que des améliorations concernant les tests et la sécurité.\n\n### Évolutions fonctionnelles\n- Refonte complète de la navigation principale (sidebar et page d'accueil) pour une meilleure expérience utilisateur. [#178]\n- Ajout d'un bouton \"Créer un tableau de bord\" pour faciliter la création de visualisations. [#178]\n- Rafraîchissement des conversations récentes dans la sidebar via htmx pour une expérience plus fluide. [#172]\n- Intégration du site \"Accueil Plateforme preprod\" (site 226) au Tag Manager. [#179]\n- Ajout d'une nouvelle compétence `zendesk_query` permettant d'interagir avec Zendesk en lecture seule. [#174]\n- Les erreurs détectées sont désormais enregistrées en base de données au lieu d'être envoyées sur Slack. [#170]\n- Amélioration des tooltips avec l'utilisation de tooltips Bootstrap natifs. [#174]\n- Ajout de tooltips sur les sections Jobs, Cron et Tag Manager pour une meilleure compréhension. [#174]\n- Création d'un glossaire métier (bizdev). [#169]\n\n### Évolutions techniques\n- Ajout d'embeddings de messages initiaux avec le modèle `model2vec` pour améliorer la recherche sémantique. [#164]\n- Optimisation de la récupération de session S3 pour éviter les re-téléchargements redondants. [#161]\n- Amélioration du selftest pour une meilleure vérification de l'état du système. [#165]\n- Correction d'un problème empêchant le démarrage de l'application sur une base de données fraîche. [#166]\n- Gestion améliorée des erreurs transitoires lors de la sauvegarde S3. [#160]\n- Mise en place d'une configuration Dependabot pour la gestion des mises à jour de dépendances (uv et github-actions). [#163]\n- Amélioration de la gestion des tests avec l'ajout de phases pour renforcer la couverture et la qualité du code. [#177, #176, #175, #174]\n- Anonymisation par défaut des NIR français dans les tickets Zendesk.\n- Simplification de la gestion de l'environnement avec un objet `Environment`. [#158, #156]\n- Correction d'un bug lié à la ré-architecture de la RPE du TDB. [#150]\n\n### Autres changements\n- Mise à jour de la librairie Pillow à la version 12.3.0 pour corriger des vulnérabilités identifiées par pip-audit. [#174]\n- Diverses corrections et améliorations suite aux revues de code.",
+      "changelogGeneratedAt": "2026-07-25T02:33:16Z",
+      "organization": "gip-inclusion"
+    },
+    {
       "url": "https://github.com/betagouv/rdv-service-public",
       "name": "rdv-service-public",
       "description": "Ce service numérique public a pour objectif de faciliter la gestion et la prise de rendez-vous dans les administrations. Il s’adresse aux organisations publiques comme les administrations de l’État, les opérateurs de services publics et les collectivités territoriales.",
@@ -1739,6 +2414,50 @@
       "organization": "suitenumerique"
     },
     {
+      "url": "https://github.com/cloud-gouv/playground-public",
+      "name": "playground-public",
+      "description": "Ce dépôt sert de terrain de jeu pour des expérimentations et des démonstrations, probablement dans le contexte de l'infrastructure cloud et de l'automatisation.",
+      "language": "HCL",
+      "features": [
+        "Gestion métier générale"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [
+        "Terraform"
+      ],
+      "components": [
+        "Infrastructure & Stockage",
+        "Scripts & Utilitaires",
+        "Docker & Conteneurs"
+      ],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": [],
+      "workflows": [],
+      "lastActivity": "2026-07-23T11:25:46Z",
+      "status": "active",
+      "license": "MIT",
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": 2,
+        "openIssues": 0
+      },
+      "tags": [
+        "Infrastructure",
+        "Terraform",
+        "Cloud",
+        "OpenStack"
+      ],
+      "changelog": "## Changelog : playground-public (30 derniers jours, au 23 juillet 2026)\n\n### Résumé\nLe projet a été initialisé avec les premiers commits. Il s'agit d'un terrain de jeu pour des expérimentations, probablement liées à l'infrastructure cloud et à l'automatisation via Terraform. Le dépôt est maintenant prêt à accueillir des contributions et des expérimentations.\n\n### Évolutions fonctionnelles\nAucune évolution fonctionnelle pour le moment, le projet étant en phase d'initialisation.\n\n### Évolutions techniques\n- Initialisation du dépôt avec un premier commit par kmasseix-dinum [#18d3734](https://github.com/cloud-gouv/playground-public/commit/18d3734).\n- Ajout d'un commit initial par Florian [#59319f7](https://github.com/cloud-gouv/playground-public/commit/59319f7).\n\n### Autres changements\nAucun autre changement à signaler.",
+      "changelogGeneratedAt": "2026-07-25T02:34:29Z",
+      "organization": "cloud-gouv"
+    },
+    {
       "url": "https://github.com/MTES-MCT/rapportnav2",
       "name": "rapportnav2",
       "description": "RapportNav est un outil de reporting de missions développé par l'administration française. Il permet de gérer et de suivre les missions, les actions et les données associées.",
@@ -1922,6 +2641,66 @@
       "changelog": "## Changelog : OTP-DS-to-Grist (30 derniers jours, au 23 juillet 2026)\n\n### Résumé\nCette mise à jour apporte des améliorations significatives à la synchronisation des données entre Démarches Simplifiées et Grist, notamment la gestion de configurations multiples, la détection des dossiers supprimés et l'affichage d'informations de statut plus claires. Des corrections ont également été apportées pour améliorer la stabilité et l'expérience utilisateur.\n\n### Évolutions fonctionnelles\n- Ajout de la possibilité de synchroniser plusieurs configurations de données. [#375](https://github.com/betagouv/OTP-DS-to-Grist/issues/375)\n- Ajout d'une nouvelle section \"DN\" pour la gestion des démarches. [#394](https://github.com/betagouv/OTP-DS-to-Grist/issues/394)\n- Affichage d'une bannière indiquant le statut de la synchronisation, même en l'absence de configuration. [#403](https://github.com/betagouv/OTP-DS-to-Grist/issues/403) et [#324](https://github.com/betagouv/OTP-DS-to-Grist/issues/324)\n- Détection des dossiers supprimés dans l'API DN pour une synchronisation plus précise. [#397](https://github.com/betagouv/OTP-DS-to-Grist/issues/397)\n- Ajout de la date de dernière correction en attente. [#411](https://github.com/betagouv/OTP-DS-to-Grist/issues/411)\n- Mise à jour des liens d'aide. [#423](https://github.com/betagouv/OTP-DS-to-Grist/issues/423)\n- Possibilité de supprimer une configuration. [#373](https://github.com/betagouv/OTP-DS-to-Grist/issues/373)\n- Possibilité de charger une configuration existante. [#372](https://github.com/betagouv/OTP-DS-to-Grist/issues/372)\n- Possibilité de sauvegarder une configuration unique. [#371](https://github.com/betagouv/OTP-DS-to-Grist/issues/371)\n\n### Évolutions techniques\n- Masquage automatique des colonnes `_id` dans Grist pour une meilleure organisation des données. [#386](https://github.com/betagouv/OTP-DS-to-Grist/issues/386)\n- Regroupement des logs `hide_id` sur une seule ligne pour une meilleure lisibilité. [#395](https://github.com/betagouv/OTP-DS-to-Grist/issues/395)\n- Suppression de la logique de troncature des valeurs textuelles pour éviter la perte d'informations. [#383](https://github.com/betagouv/OTP-DS-to-Grist/issues/383) et [#381](https://github.com/betagouv/OTP-DS-to-Grist/issues/381)\n- Publication de la version 0.8.0. [#274](https://github.com/betagouv/OTP-DS-to-Grist/issues/274)\n\n### Autres changements\n- Correction d'un bug empêchant le formulaire de configuration de se charger lorsque le DN était renseigné. [#388](https://github.com/betagouv/OTP-DS-to-Grist/issues/388)\n- Correction d'un bug lié à l'affichage du message d'erreur persistant. [#315](https://github.com/betagouv/OTP-DS-to-Grist/issues/315)\n- Correction d'un test de connexion DN sur une configuration déjà sauvegardée. [#391](https://github.com/betagouv/OTP-DS-to-Grist/issues/391)\n- Correction de l'affichage du statut de synchronisation même si la configuration n'existe plus.",
       "changelogGeneratedAt": "2026-07-24T02:40:42Z",
       "organization": "betagouv"
+    },
+    {
+      "url": "https://github.com/gip-inclusion/la-communaute",
+      "name": "la-communaute",
+      "description": "La communauté de l'inclusion est un projet visant à créer une plateforme collaborative pour l'inclusion, offrant des ressources, des forums de discussion et des outils pour faciliter l'accès aux droits et services.",
+      "language": "Python",
+      "features": [
+        "Gestion documentaire & Fichiers",
+        "API & Intégrations",
+        "Authentification & Accès",
+        "Recherche & Filtres",
+        "Gestion des utilisateurs & Permissions",
+        "Notifications & Alertes",
+        "Contenu éditorial",
+        "Collaboration & Workflow",
+        "Commentaires & Discussions"
+      ],
+      "audience": "Grand public",
+      "dependencies": [
+        "Django",
+        "psycopg",
+        "python-dotenv",
+        "sentry-sdk",
+        "django-compressor",
+        "django-libsass"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "PostgreSQL & SQL",
+        "Python (scripts & backend)",
+        "Django",
+        "Docker & Conteneurs"
+      ],
+      "auth": {
+        "methods": [
+          "email-password",
+          "oauth2"
+        ]
+      },
+      "tests": [
+        "pytest"
+      ],
+      "workflows": [
+        "CI/CD & Déploiement"
+      ],
+      "lastActivity": "2026-07-23T07:52:56Z",
+      "status": "active",
+      "license": "ETALAB 2.0",
+      "hasDocumentation": true,
+      "metrics": null,
+      "tags": [
+        "Données & Open Data",
+        "Écosystème beta.gouv / État",
+        "Python",
+        "Bases de données SQL",
+        "Sécurité & Auth"
+      ],
+      "changelog": "## Changelog : la-communaute (30 derniers jours, au 23 juillet 2026)\n\n### Résumé\nCette version apporte principalement des améliorations techniques et de maintenance, notamment la simplification de la configuration du projet et la suppression de code obsolète. Une correction a également été apportée pour mettre à jour les liens vers la déclaration d'accessibilité.\n\n### Évolutions fonctionnelles\n- Mise à jour des liens vers la déclaration d'accessibilité. [#277d3f8](https://github.com/gip-inclusion/la-communaute/commit/277d3f8)\n\n### Évolutions techniques\n- Simplification de la configuration de Dependabot.\n- Suppression de la configuration release-please.\n- Suppression de code ancien et obsolète.\n- Remplacement des données des documents et partenaires par des données statiques pour améliorer la performance et la maintenance.\n- Simplification de la page d'accueil.\n\n### Autres changements\n- Correction des templates pour être compatibles avec la nouvelle version de `djlint`. [#bfe8a16](https://github.com/gip-inclusion/la-communaute/commit/bfe8a16)",
+      "changelogGeneratedAt": "2026-07-25T02:34:56Z",
+      "organization": "gip-inclusion"
     },
     {
       "url": "https://github.com/etalab/transport-site",
@@ -4062,6 +4841,74 @@
       "organization": "incubateur-ademe"
     },
     {
+      "url": "https://github.com/gip-inclusion/pilotage",
+      "name": "pilotage",
+      "description": "Ce projet permet le pilotage de l'inclusion. Il offre des tableaux de bord et des outils pour suivre et analyser des données relatives à l'inclusion.",
+      "language": "Python",
+      "features": [
+        "Gestion documentaire & Fichiers",
+        "API & Intégrations",
+        "Visualisation de données & Cartographie",
+        "Authentification & Accès",
+        "Statistiques & Rapports",
+        "Recherche & Filtres",
+        "Gestion des utilisateurs & Permissions",
+        "Formulaires & Démarches",
+        "Notifications & Alertes",
+        "Sécurité & Conformité",
+        "Données & Schémas"
+      ],
+      "audience": "Agents de l'Administration",
+      "dependencies": [
+        "Django",
+        "PostgreSQL",
+        "pytest",
+        "ruff",
+        "djlint"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "PostgreSQL & SQL",
+        "Python (scripts & backend)",
+        "Django",
+        "Docker & Conteneurs"
+      ],
+      "auth": {
+        "methods": [
+          "email-password"
+        ]
+      },
+      "tests": [
+        "pytest"
+      ],
+      "workflows": [
+        "ci.yml",
+        "git.yml",
+        "notify-slack.yml",
+        "require-labels.yml"
+      ],
+      "lastActivity": "2026-07-22T14:52:35Z",
+      "status": "active",
+      "license": null,
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 3,
+        "forks": 1,
+        "contributors": null,
+        "openIssues": 0
+      },
+      "tags": [
+        "Données & Open Data",
+        "Écosystème beta.gouv / État",
+        "Python",
+        "Bases de données SQL",
+        "Sécurité & Auth"
+      ],
+      "changelog": "## Changelog : pilotage (30 derniers jours, au 22 juillet 2026)\n\n### Résumé\nCe mois-ci, les mises à jour du projet pilotage se sont principalement concentrées sur la maintenance et la sécurité, avec une mise à niveau importante de nombreuses dépendances. Une correction a également été apportée pour mettre à jour les liens vers la déclaration d'accessibilité.\n\n### Évolutions fonctionnelles\n- Mise à jour des liens vers la déclaration d'accessibilité. [#0658703](https://github.com/gip-inclusion/pilotage/commit/0658703)\n\n### Évolutions techniques\n- Mise à niveau de nombreuses dépendances, incluant Django (6.0.6 -> 6.0.7), pytest (9.0.3 -> 9.1.1), ruff (0.15.14 -> 0.15.18, puis 0.15.18 -> 0.15.22), sentry-sdk (2.60.0 -> 2.63.0, puis 2.63.0 -> 2.66.0) et d'autres librairies Python.\n- Mise à jour des actions GitHub : `actions/checkout` (6.0.2 -> 7.0.0), `slackapi/slack-github-action` (3.0.3 -> 4.0.0), `astral-sh/setup-uv` (8.1.0 -> 8.2.0, puis 8.2.0 -> 8.3.2).\n- Mise à jour de `djlint` (1.36.4 -> 1.39.4, puis 1.39.4 -> 1.42.1) et `django-debug-toolbar` (6.3.0 -> 7.0.0).\n\n### Autres changements\n- Aucune information supplémentaire.",
+      "changelogGeneratedAt": "2026-07-25T02:35:20Z",
+      "organization": "gip-inclusion"
+    },
+    {
       "url": "https://github.com/datagouv/passemarche",
       "name": "passemarche",
       "description": "Passe Marché est une application Rails qui simplifie les candidatures aux marchés publics pour les PME en réduisant les formalités administratives et en automatisant l'identification des entreprises.",
@@ -4616,6 +5463,63 @@
       "organization": "proconnect-gouv"
     },
     {
+      "url": "https://github.com/gip-inclusion/fluo-proto",
+      "name": "fluo-proto",
+      "description": "Ce monorepo produit des prototypes jetables pour la conception de produits, les tests utilisateurs et l'itération rapide au sein de la Plateforme de l'inclusion. Chaque prototype est identique à les-emplois mais implémente une logique métier différente.",
+      "language": "Python",
+      "features": [
+        "Gestion des utilisateurs & Permissions",
+        "API & Intégrations",
+        "Données & Schémas"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [
+        "FastAPI",
+        "Jinja2",
+        "psycopg",
+        "Uvicorn",
+        "PostgreSQL"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "PostgreSQL & SQL",
+        "Python (scripts & backend)"
+      ],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": null,
+      "workflows": [
+        "ci.yml",
+        "deploy-rea.yml",
+        "deploy-recos-intensif.yml",
+        "deploy-sps.yml",
+        "deploy.yml",
+        "reseed.yml"
+      ],
+      "lastActivity": "2026-07-22T12:35:36Z",
+      "status": "active",
+      "license": null,
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 1,
+        "contributors": null,
+        "openIssues": 2
+      },
+      "tags": [
+        "Données & Open Data",
+        "Écosystème beta.gouv / État",
+        "Python",
+        "Bases de données SQL"
+      ],
+      "changelog": "## Changelog : fluo-proto (30 derniers jours, au 22 juillet 2026)\n\n### Résumé\nCe mois-ci, les évolutions se concentrent sur la modernisation de l'infrastructure de déploiement des prototypes, en particulier pour l'annuaire et les prototypes REA/SPS.  Les prototypes sont désormais déployés comme des conteneurs serverless, ce qui améliore la scalabilité et la maintenance. Des améliorations de sécurité ont également été apportées en supprimant les mots de passe PostgreSQL codés en dur.\n\n### Évolutions fonctionnelles\n- L'annuaire a été amélioré avec l'ajout de filtres côté client et la possibilité d'exporter les données statiquement pour GitHub Pages [#1](https://github.com/gip-inclusion/fluo-proto/pull/1), [#2](https://github.com/gip-inclusion/fluo-proto/pull/2), [#3](https://github.com/gip-inclusion/fluo-proto/pull/3), [#4](https://github.com/gip-inclusion/fluo-proto/pull/4).\n- Correction des URLs et de la provision pour l'API SCW, qui utilisait des noms de domaine incorrects [#12](https://github.com/gip-inclusion/fluo-proto/pull/12).\n\n### Évolutions techniques\n- Les prototypes sont désormais déployés en tant que conteneurs serverless, abandonnant l'export statique via GitHub Pages pour l'annuaire [#6](https://github.com/gip-inclusion/fluo-proto/pull/6).\n- Suppression des mots de passe PostgreSQL codés en dur, en utilisant désormais la variable d'environnement `DATABASE_URL` pour la connexion à la base de données.\n- Mise à jour de la signature des appels `TemplateResponse` pour la compatibilité avec Starlette 1.x.\n- Correction des scripts de déploiement SPS/REA pour utiliser la commande `redeploy` de l'API SCW et une sélection plus précise des noms de conteneurs.\n- Mises à jour de la CLI SCW pour la création de conteneurs (arguments `image`, `memory-limit-bytes`, `mvcpu-limit`).\n- Suppression du prototype `/prototypes/flux`.\n\n### Autres changements\n- Configuration de Dependabot pour la gestion des dépendances (uv, docker, github-actions) [#1](https://github.com/gip-inclusion/fluo-proto/pull/1).\n- Formatage du code Python dans le répertoire `annuaire` avec Ruff.\n- Mises à jour de dépendances (Starlette, FastAPI, idna, astral-sh/setup-uv, actions) via Dependabot (non listées individuellement pour concision).",
+      "changelogGeneratedAt": "2026-07-25T02:35:41Z",
+      "organization": "gip-inclusion"
+    },
+    {
       "url": "https://github.com/suitenumerique/st-home",
       "name": "st-home",
       "description": "Cette application implémente la page d'accueil de la Suite territoriale et le chemin de raccordement pour les collectivités. Elle fournit une interface web pour explorer et interagir avec les données de la suite territoriale.",
@@ -5073,6 +5977,61 @@
       "organization": "betagouv"
     },
     {
+      "url": "https://github.com/gip-inclusion/itou-theme",
+      "name": "itou-theme",
+      "description": "Ce thème est destiné aux emplois, à la communauté et au pilotage de l'inclusion. Il fournit une base de conception pour les interfaces utilisateur, en utilisant Bootstrap 5.3.",
+      "language": "HTML",
+      "features": [
+        "Gestion des utilisateurs & Permissions",
+        "Interface utilisateur & Design",
+        "Accessibilité & i18n",
+        "Personnalisation & Thèmes"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [
+        "Bootstrap",
+        "sass",
+        "vite"
+      ],
+      "components": [
+        "HTML / CSS / Templates visuels",
+        "TypeScript / JavaScript",
+        "Design System (DSFR & UI libs)"
+      ],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": [
+        "Vitest"
+      ],
+      "workflows": [
+        "CI/CD & GitHub Actions"
+      ],
+      "lastActivity": "2026-07-22T02:22:55Z",
+      "status": "active",
+      "license": null,
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 1,
+        "forks": 1,
+        "contributors": 1,
+        "openIssues": 6
+      },
+      "tags": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Bootstrap",
+        "Design System",
+        "Accessibilité"
+      ],
+      "changelog": "## Changelog : itou-theme (30 derniers jours, au 26 juin 2026)\n\n### Résumé\nCe mois-ci, les efforts de développement se sont concentrés sur la mise à jour des dépendances du projet afin de maintenir la sécurité et la stabilité du thème. Aucune nouvelle fonctionnalité ou correction visible pour l'utilisateur n'a été implémentée durant cette période.\n\n### Évolutions techniques\n- Mise à jour de `js-yaml` de la version 4.1.1 à la version 4.2.0.\n- Mise à jour de `vitest` de la version 4.0.18 à la version 4.1.0.\n- Mise à jour de `fast-uri` de la version 3.1.0 à la version 3.1.2.\n- Mise à jour de `flatted` de la version 3.3.3 à la version 3.4.2.\n- Mise à jour de `picomatch` de la version 2.3.1 à la version 2.3.2.\n- Mise à jour de `vite` et `vite-plugin-handlebars`.",
+      "changelogGeneratedAt": "2026-07-25T02:36:07Z",
+      "organization": "gip-inclusion"
+    },
+    {
       "url": "https://github.com/cloud-gouv/portail",
       "name": "portail",
       "description": "Portail est un proxy d'accès pour les terminaux utilisateurs. Il vise à fournir une solution sécurisée et flexible, inspirée des travaux BeyondCorp, pour contrôler l'accès aux ressources.",
@@ -5382,6 +6341,68 @@
       "changelog": "## Changelog : qualicharge-carto (30 derniers jours, au 21 juillet 2026)\n\n### Résumé\nLes dernières mises à jour de qualicharge-carto améliorent significativement l'expérience utilisateur en matière de visualisation des données de bornes de recharge. Les améliorations incluent l'ajout de nombreux tarifs de différents opérateurs, des corrections de bugs concernant l'affichage des informations et des optimisations de l'interface utilisateur pour une meilleure clarté et performance.\n\n### Évolutions fonctionnelles\n- Ajout des tarifs des stations EVzen [#f58ff52](https://github.com/MTES-MCT/qualicharge-carto/commit/f58ff52).\n- Ajout des tarifs de Milence, Monta, Plenitude et Shell [#33ccae2](https://github.com/MTES-MCT/qualicharge-carto/commit/33ccae2).\n- Ajout des tarifs de BP [#4cf3132](https://github.com/MTES-MCT/qualicharge-carto/commit/4cf3132).\n- Ajout des tarifs de R3 [#63cef03](https://github.com/MTES-MCT/qualicharge-carto/commit/63cef03).\n- Correction du statut tarifaire des stations [#2bc3590](https://github.com/MTES-MCT/qualicharge-carto/commit/2bc3590).\n- Possibilité de masquer les modales [#ce0bd7a](https://github.com/MTES-MCT/qualicharge-carto/commit/ce0bd7a).\n- Affichage de la fraîcheur des données dynamiques [#9e3f7c7](https://github.com/MTES-MCT/qualicharge-carto/commit/9e3f7c7).\n- Affichage de l'état du point de charge même sans statut de prise [#8f6e0d3](https://github.com/MTES-MCT/qualicharge-carto/commit/8f6e0d3).\n- Restriction de la carte aux stations actives [#eb044e6](https://github.com/MTES-MCT/qualicharge-carto/commit/eb044e6).\n- Superposition des stations les plus récentes [#ad679f3](https://github.com/MTES-MCT/qualicharge-carto/commit/ad679f3).\n- Simplification du titre des tarifs multi-PDC [#1be5c71](https://github.com/MTES-MCT/qualicharge-carto/commit/1be5c71).\n\n### Évolutions techniques\n- Fusion du contexte tarifaire par point de charge [#6b350d4](https://github.com/MTES-MCT/qualicharge-carto/commit/6b350d4).\n- Regroupement davantage des stations sur la carte pour une meilleure performance [#1126471](https://github.com/MTES-MCT/qualicharge-carto/commit/1126471).\n- Correction de l'ancrage des marqueurs sur la carte [#f08659b](https://github.com/MTES-MCT/qualicharge-carto/commit/f08659b).\n- Exclusion des statuts périmés des compteurs temps réel [#7321de8](https://github.com/MTES-MCT/qualicharge-carto/commit/7321de8).\n- Capture des changements d'URL hash pour une meilleure gestion de l'état de l'application [#5ebf435](https://github.com/MTES-MCT/qualicharge-carto/commit/5ebf435).\n\n### Autres changements\n- Mise à jour des tarifs Tesla [#88a4267](https://github.com/MTES-MCT/qualicharge-carto/commit/88a4267).\n- Actualisation de la liste des points de charge et copie du script [#71316c5](https://github.com/MTES-MCT/qualicharge-carto/commit/71316c5).\n- Masquage des restrictions tarifaires valables tous les jours [#2bea658](https://github.com/MTES-MCT/qualicharge-carto/commit/2bea658).\n- Modification du badge de puissance maximale pour une meilleure lisibilité [#a19a80a](https://github.com/MTES-MCT/qualicharge-carto/commit/a19a80a).\n- Contextualisation des tarifs par point de charge [#43c350c](https://github.com/MTES-MCT/qualicharge-carto/commit/43c350c).\n- Ajout et actualisation des tarifs des stations [#ee7f35c](https://github.com/MTES-MCT/qualicharge-carto/commit/ee7f35c).",
       "changelogGeneratedAt": "2026-07-23T02:37:22Z",
       "organization": "MTES-MCT"
+    },
+    {
+      "url": "https://github.com/gip-inclusion/data-inclusion",
+      "name": "data-inclusion",
+      "description": "data·inclusion agrège les données de l'insertion sociale et professionnelle. Ce projet collecte, enrichit et publie des données sur l'insertion sociale et professionnelle en open data.",
+      "language": "Python",
+      "features": [
+        "Gestion documentaire & Fichiers",
+        "API & Intégrations",
+        "Visualisation de données & Cartographie",
+        "Authentification & Accès",
+        "Statistiques & Rapports",
+        "Recherche & Filtres",
+        "Données & Schémas"
+      ],
+      "audience": "Associations",
+      "dependencies": [
+        "PostgreSQL",
+        "Python",
+        "pandas",
+        "fastapi",
+        "scikit-learn",
+        "geopandas",
+        "s3fs"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "PostgreSQL & SQL",
+        "Python (scripts & backend)",
+        "Docker & Conteneurs",
+        "CI/CD & Déploiement"
+      ],
+      "auth": {
+        "methods": [
+          "jwt"
+        ]
+      },
+      "tests": "pytest",
+      "workflows": [
+        "CI/CD"
+      ],
+      "lastActivity": "2026-07-21T21:06:05Z",
+      "status": "active",
+      "license": "MIT",
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 9,
+        "forks": 2,
+        "contributors": null,
+        "openIssues": 23
+      },
+      "tags": [
+        "Données & Open Data",
+        "Écosystème beta.gouv / État",
+        "Python",
+        "Bases de données SQL",
+        "API",
+        "Intelligence Artificielle & NLP"
+      ],
+      "changelog": "## Changelog : data-inclusion (30 derniers jours, au 21 juillet 2026)\n\n### Résumé\nCette mise à jour améliore la qualité et la fiabilité des données traitées par la plateforme, notamment en corrigeant des erreurs dans le pipeline de traitement et en rendant certains processus plus prévisibles. Des ajustements ont été apportés pour mieux intégrer de nouvelles catégories de données et des sources spécifiques.\n\n### Évolutions fonctionnelles\n- Correction de l'émission des données publiques Carif-Oref.\n- Ajustement du pipeline pour prendre en compte la nouvelle catégorie \"cooling_space\".\n- Correction des âges minimum (ageMin) flottants dans les données MBA.\n- Adaptation du pipeline pour intégrer le nouveau type d'\"Orienteur\" dans les données \"les-emplois\".\n- Correction des modes \"courriel\" pour la médiation numérique.\n- Retardement de la publication des informations de contact dans le pipeline pour une meilleure cohérence.\n\n### Évolutions techniques\n- Amélioration de la déterminisme du contenu \"reaseau-alpha\" et des services Carif-Oref.\n- Correction du canal Slack utilisé pour les résumés (summarize).\n\n### Autres changements\n- Aucun changement significatif à signaler.",
+      "changelogGeneratedAt": "2026-07-25T02:36:25Z",
+      "organization": "gip-inclusion"
     },
     {
       "url": "https://github.com/betagouv/api-subventions-asso",
@@ -6525,6 +7546,63 @@
       "organization": "betagouv"
     },
     {
+      "url": "https://github.com/gip-inclusion/eures-beta",
+      "name": "eures-beta",
+      "description": "Application dédiée au déploiement de `eures-beta` sur Scalingo. Elle fournit des APIs pour la gestion des formulaires EURES beta et une interface d'administration.",
+      "language": "Python",
+      "features": [
+        "Gestion des utilisateurs & Permissions",
+        "API & Intégrations",
+        "Statistiques & Rapports",
+        "Formulaires & Démarches"
+      ],
+      "audience": "Agents de l'Administration",
+      "dependencies": [
+        "Flask",
+        "Flask-CORS",
+        "Gunicorn",
+        "Requests",
+        "python-dotenv",
+        "Openpyxl"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "Python (scripts & backend)",
+        "Flask",
+        "HTML / CSS / Templates visuels"
+      ],
+      "auth": {
+        "methods": [
+          "email-password",
+          "magic-link"
+        ]
+      },
+      "tests": [
+        "unittest"
+      ],
+      "workflows": [],
+      "lastActivity": "2026-07-21T16:12:28Z",
+      "status": "active",
+      "license": null,
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": 1,
+        "openIssues": 10
+      },
+      "tags": [
+        "Données & Open Data",
+        "Écosystème beta.gouv / État",
+        "Python",
+        "API & Intégrations",
+        "Sécurité & Auth"
+      ],
+      "changelog": "## Changelog : eures-beta (30 derniers jours, au 21 juillet 2026)\n\n### Résumé\nCette version apporte des améliorations significatives au suivi des projets EURES, avec une nouvelle interface d'administration dédiée, des fonctionnalités d'archivage et d'ajout de pièces jointes. L'expérience utilisateur a été améliorée grâce à des corrections de layout, des traductions complétées et des optimisations de l'interface. Des améliorations ont également été apportées à l'affichage des informations publiques et au journal des projets.\n\n### Évolutions fonctionnelles\n- Ajout d'une interface d'administration pour le suivi des projets EURES [#9d87f34](https://github.com/gip-inclusion/eures-beta/issues/9d87f34).\n- Possibilité d'archiver les cartes de suivi EURES. [#289bbf0](https://github.com/gip-inclusion/eures-beta/issues/289bbf0)\n- Ajout de la possibilité de joindre des images aux cartes de suivi EURES [#f8faa57](https://github.com/gip-inclusion/eures-beta/issues/f8faa57).\n- Amélioration de l'UX de l'en-tête de la page de suivi EURES [#3d9d07b](https://github.com/gip-inclusion/eures-beta/issues/3d9d07b).\n- Correction du layout de la barre d'outils de filtre du suivi EURES [#bf41809](https://github.com/gip-inclusion/eures-beta/issues/bf41809).\n- Amélioration de l'affichage des logos des partenaires sur les pages publiques [#a7f0712](https://github.com/gip-inclusion/eures-beta/issues/a7f0712).\n- Enrichissement du journal des projets (timeline) [#ada34ec](https://github.com/gip-inclusion/eures-beta/issues/ada34ec).\n- Ajout de pages institutionnelles et actualisation du contenu public [#40a0b66](https://github.com/gip-inclusion/eures-beta/issues/40a0b66).\n- Correction de problèmes liés à la sauvegarde et à la persistance des brouillons locaux dans le suivi EURES [#f44f6ef](https://github.com/gip-inclusion/eures-beta/issues/f44f6ef).\n- Correction pour éviter la réouverture des cartes après des déplacements dans le kanban [#9254bb4](https://github.com/gip-inclusion/eures-beta/issues/9254bb4).\n- Simplification des champs du formulaire de suivi EURES [#cad90c5](https://github.com/gip-inclusion/eures-beta/issues/cad90c5).\n- Compactage des cartes de suivi et des zones de texte [#c52d9a2](https://github.com/gip-inclusion/eures-beta/issues/c52d9a2).\n- Amélioration des messages de repli de traduction du suivi [#049533c](https://github.com/gip-inclusion/eures-beta/issues/049533c).\n- Correction de la charge utile de suppression des cartes de suivi [#910b86c](https://github.com/gip-inclusion/eures-beta/issues/910b86c).\n\n### Évolutions techniques\n- Restauration de l'administration EURES originale [#3050ce1](https://github.com/gip-inclusion/eures-beta/issues/3050ce1).\n- Suppression d'un écran d'administration EURES incorrect [#35772cc](https://github.com/gip-inclusion/eures-beta/issues/35772cc).\n- Restauration de l'accès magic-link à l'administration [#ff2dd1a](https://github.com/gip-inclusion/eures-beta/issues/ff2dd1a).\n- Suppression d'un lien public incorrect vers l'administration [#a02db30](https://github.com/gip-inclusion/eures-beta/issues/a02db30).\n- Ajout d'un lien public direct vers l'administration [#ed38dfe](https://github.com/gip-inclusion/eures-beta/issues/ed38dfe).\n- Correction de l'état de navigation actif [#8ac95db](https://github.com/gip-inclusion/eures-beta/issues/8ac95db).\n\n### Autres changements\n- Complétion des traductions de la page de suivi [#7b6f814](https://github.com/gip-inclusion/eures-beta/issues/7b6f814).",
+      "changelogGeneratedAt": "2026-07-25T02:36:46Z",
+      "organization": "gip-inclusion"
+    },
+    {
       "url": "https://github.com/betagouv/a-just",
       "name": "a-just",
       "description": "Dépôt de code du projet A-JUST du Ministère de la Justice. Ce projet vise à fournir une solution logicielle pour les besoins du ministère, avec des fonctionnalités de gestion et de suivi.",
@@ -6896,6 +7974,62 @@
       "changelog": "## Changelog : monitorfish (30 derniers jours, au 21 juillet 2026)\n\n### Résumé\nCette version apporte des améliorations significatives à la performance de l'application, notamment pour l'affichage des positions AIS. Des corrections ont été apportées au scraper Legipeche et à la gestion des groupes prioritaires de navires. L'interface utilisateur a été améliorée avec des corrections et des ajustements pour les formulaires de contrôle (e-ISR) et l'affichage des informations sur les navires.\n\n### Évolutions fonctionnelles\n- Correction d'un problème de performance lors de la requête des dernières positions AIS [#5300](https://github.com/MTES-MCT/monitorfish/issues/5300).\n- Amélioration de la gestion des groupes prioritaires : inclusion des navires sous charte, exclusion des segments habituels et correction de bugs [#5293](https://github.com/MTES-MCT/monitorfish/issues/5293).\n- Correction du scraper Legipeche pour traiter les pages non visitées [#5268](https://github.com/MTES-MCT/monitorfish/issues/5268).\n- Affichage du filtre \"navire sans fiche\" dans la liste des signalements INN pour les outre-mers [#5289](https://github.com/MTES-MCT/monitorfish/issues/5289).\n- Correction du troncage de la date de fin de mission dans les signalements INN [#5269](https://github.com/MTES-MCT/monitorfish/issues/5269).\n- Améliorations des formulaires M1 et M3 (e-ISR) suite aux retours du CNSP [#5283](https://github.com/MTES-MCT/monitorfish/issues/5283) et [#5268](https://github.com/MTES-MCT/monitorfish/issues/5268).\n- Ajout de la description des groupes prioritaires.\n- Affichage des groupes partagés et des signalements de la marée sous la recherche navire.\n- Possibilité de sauvegarder une infraction en attente dans le rapport de contrôle.\n- Amélioration de l'affichage des informations sur les groupes prioritaires dans la carte et la liste des navires.\n- Affichage des messages manuels des préavis (PNO) dans le journal de bord du voyage [#5222](https://github.com/MTES-MCT/monitorfish/issues/5222).\n\n### Évolutions techniques\n- Mise à jour des dépendances Python (non-majeures) [#5277](https://github.com/MTES-MCT/monitorfish/issues/5277).\n- Refonte du linter frontend avec l'intégration d'OxLint (hybride ESLint) [#5259](https://github.com/MTES-MCT/monitorfish/issues/5259) et [#5233](https://github.com/MTES-MCT/monitorfish/issues/5233).\n- Amélioration des tests Cypress et Jest.\n- Ajout de tests backend pour les groupes prioritaires.\n- Optimisation de la requête SQL pour les positions AIS.\n- Correction de violations de linting et amélioration de la qualité du code.\n- Mise à jour des règles de linting et ajout de nouvelles règles.\n- Amélioration des performances du backend avec l'utilisation de `updateMany`.\n\n### Autres changements\n- Correction de la logique de niveau de priorité de contrôle effectif.\n- Suppression de règles de linting obsolètes.\n- Mise à jour de la documentation.\n- Corrections de typographie et d'affichage.\n- Suppression de l'affichage de certains champs dans les formulaires e-ISR.\n- Mise à jour de la REG UE pour les dysfonctionnements des balises.\n- Ajout de l'opérateur à l'API publique.\n- Corrections diverses et amélioration de la maintenance du code.",
       "changelogGeneratedAt": "2026-07-22T02:33:59Z",
       "organization": "MTES-MCT"
+    },
+    {
+      "url": "https://github.com/gip-inclusion/itoutils",
+      "name": "itoutils",
+      "description": "Bibliothèque d'utilitaire utilisée au sein des différents projets Python du GIP Plateforme de l'inclusion.",
+      "language": "Python",
+      "features": [
+        "API & Intégrations",
+        "Gestion des utilisateurs & Permissions"
+      ],
+      "audience": "Développeurs",
+      "dependencies": [
+        "Django",
+        "httpx",
+        "jwcrypto",
+        "psycopg",
+        "pytest",
+        "ruff"
+      ],
+      "components": [
+        "Python (scripts & backend)",
+        "API REST & GraphQL",
+        "Django",
+        "PostgreSQL & SQL"
+      ],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": [
+        "pytest"
+      ],
+      "workflows": [
+        "ci.yml",
+        "release.yml"
+      ],
+      "lastActivity": "2026-07-21T07:55:50Z",
+      "status": "active",
+      "license": "MIT",
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 1,
+        "contributors": 0,
+        "openIssues": 0
+      },
+      "tags": [
+        "Python",
+        "Django",
+        "API",
+        "Bases de données SQL"
+      ],
+      "changelog": "## Changelog : itoutils (30 derniers jours, au 21 juillet 2026)\n\n### Résumé\nLes récentes mises à jour d'itoutils se concentrent principalement sur la maintenance et la correction de bugs. Une amélioration notable concerne la gestion des erreurs dans l'intégration avec Nexus, permettant une meilleure traçabilité des problèmes. De nombreuses dépendances ont également été mises à jour pour bénéficier des dernières corrections et améliorations de sécurité.\n\n### Évolutions fonctionnelles\n- Correction d'un bug dans l'intégration avec Nexus : l'exception originale `httpx` est maintenant préservée lors de la journalisation des erreurs d'API, facilitant le débogage. [#5d5b571](https://github.com/gip-inclusion/itoutils/commit/5d5b571)\n\n### Évolutions techniques\n- Mise à jour de plusieurs dépendances :\n    - `Django` : passage de la version 6.0.6 à 6.0.7\n    - `jwcrypto` : passage de la version 1.5.7 à 1.5.8\n    - `syrupy` : passage de la version 5.3.2 à 5.5.3\n    - `django-datadog-logger` : passage de la version 0.9.0 à 0.9.1\n    - `ruff` : mises à jour de la version 0.15.18 à 0.15.21 puis à 0.15.22\n    - `setup-uv` : passage de la version 8.2.0 à 8.3.2\n    - `gh-action-pypi-publish` : passage de la version 1.14.0 à 1.14.1",
+      "changelogGeneratedAt": "2026-07-25T02:36:50Z",
+      "organization": "gip-inclusion"
     },
     {
       "url": "https://github.com/MTES-MCT/dahlia",
@@ -7324,6 +8458,49 @@
       "changelog": "## Changelog : appy-quotes-live (30 derniers jours, au 2026-08-19)\n\n### Résumé\nCe changelog fait état du tout premier commit du projet appy-quotes-live. Il s'agit de l'initialisation du dépôt, marquant le début du développement de l'application de gestion et d'affichage de citations.\n\n### Évolutions fonctionnelles\nAucune évolution fonctionnelle pour le moment, le projet étant à ses débuts.\n\n### Évolutions techniques\n- Initialisation du dépôt avec le premier commit : [4a531b8](https://github.com/SocialGouv/appy-quotes-live/commit/4a531b8)\n\n### Autres changements\nAucun autre changement à signaler.",
       "changelogGeneratedAt": "2026-07-22T02:29:44Z",
       "organization": "SocialGouv"
+    },
+    {
+      "url": "https://github.com/gip-inclusion/authentik-sso",
+      "name": "authentik-sso",
+      "description": "Ce projet est une solution d'authentification unique (SSO). Il permet de centraliser la gestion des identités et des accès pour différentes applications et services.",
+      "language": "Dockerfile",
+      "features": [],
+      "audience": "Professionnels",
+      "dependencies": [],
+      "components": [],
+      "auth": {
+        "methods": [
+          "email-password",
+          "oauth2",
+          "saml",
+          "ldap",
+          "api-key",
+          "jwt",
+          "session",
+          "magic-link",
+          "passkey",
+          "mfa",
+          "sso",
+          "none"
+        ],
+        "providers": []
+      },
+      "tests": null,
+      "workflows": null,
+      "lastActivity": "2026-07-20T18:50:27Z",
+      "status": "active",
+      "license": null,
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": null,
+        "openIssues": 0
+      },
+      "tags": [],
+      "changelog": "## Changelog : authentik-sso (30 derniers jours, au 20 juillet 2026)\n\n### Résumé\nCe mois-ci, les efforts se sont concentrés sur la mise en place de l'infrastructure initiale du projet, incluant l'initialisation du dépôt et la création des fichiers Docker nécessaires au déploiement de l'application. Ces fondations permettront de faciliter le développement et le déploiement futurs d'authentik-sso.\n\n### Évolutions techniques\n- Initialisation du dépôt GitHub. [#1](https://github.com/gip-inclusion/authentik-sso/pull/1)\n- Création des fichiers Docker pour la containerisation de l'application. [#2](https://github.com/gip-inclusion/authentik-sso/pull/2)",
+      "changelogGeneratedAt": "2026-07-25T02:37:03Z",
+      "organization": "gip-inclusion"
     },
     {
       "url": "https://github.com/betagouv/sylvasan",
@@ -8821,6 +9998,90 @@
       "changelog": "## Changelog : anssi-demain-specialiste-cyber-journal (30 derniers jours, au 18 juillet 2026)\n\n### Résumé\nCe journal des événements métiers pour DemainSpécialisteCyber a bénéficié d'améliorations de sécurité au niveau de l'intégration continue (CI). Les configurations sont maintenant validées et les identifiants Git sont désactivés lors du clonage des dépôts, renforçant ainsi la protection des informations sensibles. La configuration de Renovate a également été initialisée pour la gestion des dépendances.\n\n### Évolutions techniques\n- Sécurité : Désactivation des identifiants Git lors du clonage des dépôts dans les workflows CI. [#SECURITE][CI] ea74175\n- Sécurité : Validation des configurations dans les workflows CI. [#SECURITE][CI] 87bcd76\n- Intégration Continue : Configuration initiale de Renovate pour la gestion automatisée des dépendances. 785b75c\n\n### Autres changements\n- Ajout du fichier de configuration Renovate (`renovate.json`). d23eaaa",
       "changelogGeneratedAt": "2026-07-20T02:51:50Z",
       "organization": "betagouv"
+    },
+    {
+      "url": "https://github.com/gip-inclusion/emplois-cnav-ops",
+      "name": "emplois-cnav-ops",
+      "description": "Ce projet a pour but de fournir des outils et des opérations liés aux emplois de la CNAV. Il s'agit d'un nouveau projet en phase initiale de développement.",
+      "language": null,
+      "features": [],
+      "audience": "Agents de l'Administration",
+      "dependencies": [],
+      "components": [],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": null,
+      "workflows": [],
+      "lastActivity": "2026-07-18T05:01:58Z",
+      "status": "active",
+      "license": "MIT",
+      "hasDocumentation": false,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": null,
+        "openIssues": 1
+      },
+      "tags": [
+        "État",
+        "Administration"
+      ],
+      "changelog": "## Changelog : emplois-cnav-ops (30 derniers jours, au 18 juillet 2026)\n\n### Résumé\nCe changelog fait état du premier commit du projet emplois-cnav-ops. Il marque le début du développement des outils et opérations liés aux emplois de la CNAV.\n\n### Évolutions fonctionnelles\nAucune évolution fonctionnelle pour le moment, il s'agit du commit initial.\n\n### Évolutions techniques\n- Initialisation du dépôt avec le premier commit : [7594e64](https://github.com/gip-inclusion/emplois-cnav-ops/commit/7594e64)\n\n### Autres changements\nAucun autre changement à signaler.",
+      "changelogGeneratedAt": "2026-07-25T02:37:21Z",
+      "organization": "gip-inclusion"
+    },
+    {
+      "url": "https://github.com/gip-inclusion/infrastructure",
+      "name": "infrastructure",
+      "description": "Ce dépôt contient le code Terraform pour déployer l'infrastructure GIP Inclusion sur Scaleway. Il permet de gérer l'infrastructure en tant que code, assurant ainsi la reproductibilité et l'automatisation des déploiements.",
+      "language": "HCL",
+      "features": [
+        "Gestion des utilisateurs & Permissions",
+        "Sécurité & Conformité",
+        "Infrastructure & Stockage"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [
+        "Terraform",
+        "Scaleway"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "PostgreSQL & SQL",
+        "Docker & Conteneurs",
+        "CI/CD & Déploiement"
+      ],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": null,
+      "workflows": [
+        "_terraform-module.yml",
+        "dependabot-autofix.yml",
+        "terraform-orchestrator.yml"
+      ],
+      "lastActivity": "2026-07-18T04:57:48Z",
+      "status": "active",
+      "license": "MIT",
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 5,
+        "contributors": null,
+        "openIssues": 12
+      },
+      "tags": [
+        "Données & Open Data",
+        "Infrastructure & Stockage"
+      ],
+      "changelog": "## Changelog : infrastructure (30 derniers jours, au 18 juillet 2026)\n\n### Résumé\nCe mois-ci, l'infrastructure a été mise à jour pour permettre la vérification du domaine `inclusion.gouv.fr` par Attio, un service externe. Cette modification est nécessaire pour assurer le bon fonctionnement de certains services liés au domaine.\n\n### Évolutions fonctionnelles\n- Ajout d'un enregistrement TXT de vérification de domaine pour Attio sur `inclusion.gouv.fr` [#368e79f](https://github.com/gip-inclusion/infrastructure/commit/368e79f).\n\n### Évolutions techniques\nAucune évolution technique significative à signaler.\n\n### Autres changements\n- Mise à jour automatique de la dépendance `actions/checkout` de la version 6.0.3 à la version 7.0.0 (mise à jour de routine).",
+      "changelogGeneratedAt": "2026-07-25T02:37:32Z",
+      "organization": "gip-inclusion"
     },
     {
       "url": "https://github.com/betagouv/betamap",
@@ -15844,6 +17105,65 @@
       "organization": "incubateur-ademe"
     },
     {
+      "url": "https://github.com/gip-inclusion/site-institutionnel-2025",
+      "name": "site-institutionnel-2025",
+      "description": "Ce projet permet la création simplifiée de sites web conformes aux normes numériques en vigueur, en particulier pour les domaines .gouv.fr, en utilisant Wagtail et le Système de design de l’État (DSFR).",
+      "language": "Python",
+      "features": [
+        "Gestion documentaire & Fichiers",
+        "Contenu éditorial",
+        "Authentification & Accès",
+        "Accessibilité & i18n"
+      ],
+      "audience": "Agents de l'Administration",
+      "dependencies": [
+        "Django",
+        "Wagtail",
+        "django-dsfr",
+        "PostgreSQL",
+        "S3",
+        "mozilla-django-oidc"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "PostgreSQL & SQL",
+        "React / Next.js",
+        "Python (scripts & backend)",
+        "Design System (DSFR & UI libs)",
+        "Docker & Conteneurs"
+      ],
+      "auth": {
+        "methods": [
+          "oauth2"
+        ],
+        "providers": [
+          "ProConnect"
+        ]
+      },
+      "tests": "Tests automatisés couvrant Python 3.12 à 3.14 et PostgreSQL 14 à 17.",
+      "workflows": [],
+      "lastActivity": "2026-07-06T15:36:21Z",
+      "status": "active",
+      "license": "AGPL-3.0",
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": null,
+        "openIssues": 0
+      },
+      "tags": [
+        "Données & Open Data",
+        "Python",
+        "Bases de données SQL",
+        "Sécurité & Auth",
+        "Design System & UI"
+      ],
+      "changelog": "## Changelog : site-institutionnel-2025 (30 derniers jours, au 2026-07-06)\n\n### Résumé\nCe mois-ci, les améliorations se concentrent sur l'internationalisation (i18n) du site, notamment l'ajout de la gestion des traductions et des migrations associées. Des corrections et améliorations ont également été apportées à l'interface utilisateur, en particulier concernant la gestion des tags et du rich text, ainsi qu'à la gestion des médias.\n\n### Évolutions fonctionnelles\n- Ajout de la gestion de l'internationalisation (i18n) pour supporter plusieurs langues.\n- Amélioration de l'affichage des tags : ajout d'un titre pour les tags sélectionnés et suppression de l'ordre imposé dans la liste des tags.\n- Correction d'un problème d'alignement dans l'éditeur de texte riche (rich text).\n- Ajout de la possibilité de choisir le niveau de titre (heading tag) dans le stepper.\n\n### Évolutions techniques\n- Amélioration des scripts de sauvegarde et restauration des médias, avec un nom de dossier spécifique et une gestion des erreurs plus robuste.\n- Optimisation de la commande `tar` utilisée dans le script de restauration des médias.\n- Ajout de vérifications pour éviter de relancer des migrations déjà exécutées.\n- Correction d'une erreur dans le script de migration.\n\n### Autres changements\n- Ajout de commentaires dans le code pour une meilleure compréhension.\n- Regénération des migrations et des traductions.",
+      "changelogGeneratedAt": "2026-07-25T02:37:50Z",
+      "organization": "gip-inclusion"
+    },
+    {
       "url": "https://github.com/tchapgouv/tchap-ios",
       "name": "tchap-ios",
       "description": "Tchap iOS est un client Matrix pour iOS. Il permet une communication sécurisée et est basé sur MatrixSDK.",
@@ -16860,6 +18180,58 @@
       "organization": "tchapgouv"
     },
     {
+      "url": "https://github.com/gip-inclusion/traiteurs-engages-app",
+      "name": "traiteurs-engages-app",
+      "description": "Plateforme web de mise en relation entre entreprises et traiteurs de l'économie sociale et solidaire. Permet de gérer les devis, les commandes et les paiements.",
+      "language": "Python",
+      "features": [
+        "Gestion des utilisateurs & Permissions",
+        "Recherche & Filtres",
+        "Authentification & Accès",
+        "Gestion des établissements & Structures",
+        "Gestion métier générale",
+        "Paiement & Facturation"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [
+        "Flask",
+        "PostgreSQL",
+        "Docker",
+        "Stripe",
+        "Redis"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "PostgreSQL & SQL",
+        "Python (scripts & backend)",
+        "Docker & Conteneurs"
+      ],
+      "auth": {
+        "methods": [
+          "email-password"
+        ]
+      },
+      "tests": "Pytest",
+      "workflows": [],
+      "lastActivity": "2026-07-01T13:54:18Z",
+      "status": "active",
+      "license": null,
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": 0,
+        "openIssues": 0
+      },
+      "tags": [
+        "Données & Open Data",
+        "Écosystème beta.gouv / État"
+      ],
+      "changelog": "## Changelog : traiteurs-engages-app (30 derniers jours, au 01 juillet 2026)\n\n### Résumé\nLes dernières mises à jour améliorent significativement la gestion des demandes de devis pour les administrateurs, avec la possibilité de les modifier ou d'annuler même après leur envoi aux traiteurs. La messagerie a été enrichie avec la possibilité d'ajouter des pièces jointes sécurisées. Des améliorations SEO ont également été apportées avec la publication de nouvelles pages d'articles.\n\n### Évolutions fonctionnelles\n- **Messagerie :** Ajout de la possibilité de joindre des images et des fichiers PDF aux messages, avec un téléchargement sécurisé. [#101](https://github.com/gip-inclusion/traiteurs-engages-app/issues/101)\n- **Gestion des devis (Admin) :** Les administrateurs peuvent désormais modifier une demande de devis même après son envoi aux traiteurs. [#119](https://github.com/gip-inclusion/traiteurs-engages-app/issues/119)\n- **Gestion des devis (Admin) :** Les administrateurs peuvent désormais annuler une demande de devis même après son envoi aux traiteurs, notifiant ainsi l'équipe cliente (créateur et administrateurs). [#120](https://github.com/gip-inclusion/traiteurs-engages-app/issues/120), [#121](https://github.com/gip-inclusion/traiteurs-engages-app/issues/121)\n- **Formulaire de demande de devis (Client) :** Amélioration de l'affichage des erreurs spécifiques du formulaire de demande de devis et ajout de logs pour faciliter le débogage. [#125](https://github.com/gip-inclusion/traiteurs-engages-app/issues/125)\n- **SEO :** Publication de 4 nouvelles pages d'articles avec un header et footer publics partagés. [#123](https://github.com/gip-inclusion/traiteurs-engages-app/issues/123)\n- **SEO :** Ajustements de contenu pour améliorer le référencement de 3 articles. [#124](https://github.com/gip-inclusion/traiteurs-engages-app/issues/124)\n\n### Évolutions techniques\n- **Alembic :** Fusion des branches `message-attachments` et `cancellation-reason` pour la gestion des migrations de base de données. [#122](https://github.com/gip-inclusion/traiteurs-engages-app/issues/122)",
+      "changelogGeneratedAt": "2026-07-25T02:38:13Z",
+      "organization": "gip-inclusion"
+    },
+    {
       "url": "https://github.com/gristgouv/drane-orleans-tours-grist-widgets",
       "name": "drane-orleans-tours-grist-widgets",
       "description": "Ce projet fournit des widgets Grist pour la DRANE d'Orléans. Il permet d'intégrer des fonctionnalités spécifiques à Grist pour répondre aux besoins de cette administration.",
@@ -16892,6 +18264,59 @@
       "changelog": null,
       "changelogGeneratedAt": null,
       "organization": "gristgouv"
+    },
+    {
+      "url": "https://github.com/gip-inclusion/grist-custom-forms",
+      "name": "grist-custom-forms",
+      "description": "Ce projet permet de créer des formulaires HTML personnalisés qui enregistrent les données dans des documents Grist. Il offre une solution pour des interfaces utilisateurs plus adaptées que celles proposées nativement par Grist.",
+      "language": "Python",
+      "features": [
+        "Formulaires & Démarches",
+        "Gestion des utilisateurs & Permissions",
+        "Authentification & Accès"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [
+        "Flask",
+        "Grist",
+        "Requests",
+        "Python-dotenv"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "Python (scripts & backend)",
+        "HTML / CSS / Templates visuels"
+      ],
+      "auth": {
+        "methods": [
+          "email-password",
+          "magic-link"
+        ],
+        "providers": []
+      },
+      "tests": [
+        "Pytest"
+      ],
+      "workflows": [],
+      "lastActivity": "2026-07-01T08:34:45Z",
+      "status": "active",
+      "license": null,
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": 0,
+        "openIssues": 0
+      },
+      "tags": [
+        "Données & Open Data",
+        "Python",
+        "API & Intégrations",
+        "Formulaires & Démarches"
+      ],
+      "changelog": "## Changelog : grist-custom-forms (30 derniers jours, au 01 juillet 2026)\n\n### Résumé\nLes dernières mises à jour se concentrent principalement sur l'amélioration et l'extension des formulaires EURES (portail européen de la mobilité professionnelle). Cela inclut des ajustements de scoring, l'ajout de nouvelles fonctionnalités comme la transparence du matching, la personnalisation des invitations et l'intégration de champs relatifs aux conditions de travail et aux permis. Des corrections de bugs ont également été apportées pour assurer la persistance des données et le bon fonctionnement des emails.\n\n### Évolutions fonctionnelles\n- Amélioration du scoring du matching EURES.\n- Ajout d'une page de transparence du matching EURES pour le public. [#1]\n- Personnalisation des invitations aux candidats EURES en fonction des offres d'emploi ciblées. [#2]\n- Affichage de l'offre d'emploi sélectionnée dans les emails de candidature EURES (fallback).\n- Ajout de champs relatifs aux conditions de travail et aux permis dans les formulaires EURES (version bêta). [#3]\n- Correction de la persistance du résumé linguistique dans les formulaires EURES. [#4]\n- Le formulaire FAGERH est désormais en lecture seule. [#5]\n- Renommage des libellés relatifs à la production industrielle. [#6]\n\n### Évolutions techniques\n- Refactorisation des emails d'invitation des candidats EURES pour une meilleure maintenabilité.\n- Correction de la sérialisation de l'offre d'emploi cible dans les invitations EURES.\n- Assouplissement des conditions de correspondance pour le travail partiel.\n- Préservation des valeurs de disponibilité des contrats uniques.\n\n### Autres changements\n- Ajout de la marque EURES sur les pages du portail.\n- Ajout du secteur d'activité \"production industrielle\" aux formulaires EURES.\n- Amélioration de la formulation des emails aux candidats EURES.",
+      "changelogGeneratedAt": "2026-07-25T02:38:19Z",
+      "organization": "gip-inclusion"
     },
     {
       "url": "https://github.com/betagouv/collectif-objets",
@@ -17070,6 +18495,53 @@
       "organization": "betagouv"
     },
     {
+      "url": "https://github.com/gip-inclusion/n8n-prod-gip-inclusion",
+      "name": "n8n-prod-gip-inclusion",
+      "description": "Ce projet permet de déployer et de configurer n8n sur la plateforme Scalingo, facilitant ainsi l'automatisation des workflows.",
+      "language": "JavaScript",
+      "features": [
+        "API & Intégrations"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [
+        "n8n",
+        "NodeJS"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "TypeScript / JavaScript",
+        "Docker & Conteneurs",
+        "Node.js / NestJS"
+      ],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": null,
+      "workflows": [
+        "dependabot.yml"
+      ],
+      "lastActivity": "2026-06-30T14:45:57Z",
+      "status": "active",
+      "license": "MIT",
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": null,
+        "openIssues": 0
+      },
+      "tags": [
+        "JavaScript",
+        "API & Intégrations",
+        "Docker & Conteneurs"
+      ],
+      "changelog": "## Changelog : n8n-prod-gip-inclusion (30 derniers jours, au 30 juin 2026)\n\n### Résumé\nCe projet a été mis à jour pour utiliser une version plus récente de n8n (2.28.3). Cette mise à jour apporte des corrections de bugs et des améliorations de performance à la plateforme d'automatisation. Des ajustements ont également été effectués pour assurer la cohérence des dépendances du projet.\n\n### Évolutions fonctionnelles\n- Mise à jour de n8n vers la version 2.28.3, intégrant les dernières améliorations et corrections de bugs de la plateforme d'automatisation.\n\n### Évolutions techniques\n- Mise à jour de n8n de la version 2.11.0 à la version 2.27.5 puis à la version 2.28.3.\n- Synchronisation du fichier `package-lock` après une installation complète avec `npm install` pour garantir la cohérence des dépendances.\n- Ajustements pour l'utilisation de `npm ci` pour une installation plus rapide et reproductible des dépendances.\n\n### Autres changements\n- Aucun autre changement significatif à signaler.",
+      "changelogGeneratedAt": "2026-07-25T02:38:31Z",
+      "organization": "gip-inclusion"
+    },
+    {
       "url": "https://github.com/signaux-faibles/opensignauxfaibles",
       "name": "opensignauxfaibles",
       "description": "Le projet fournit une plateforme technique de détection anticipée d'entreprises en difficulté, en s'appuyant sur l'exploitation des signaux faibles.",
@@ -17226,6 +18698,114 @@
       "changelog": "## Changelog : mednum-cli (30 derniers jours, au 29 juin 2026)\n\n### Résumé\nCette version apporte des mises à jour importantes des sources de données utilisées par `mednum-cli`. Les zones \"ZRR\" ont été remplacées par les zones \"France Ruralités Revitalisation (FRR)\", la source QPV a été migrée vers le jeu de données des quartiers prioritaires ANCT 2024, et une nouvelle source, \"francilin\", a été ajoutée. Des améliorations de la stabilité et de la publication des données ont également été implémentées.\n\n### Évolutions fonctionnelles\n- Ajout de la source de données \"francilin\" [#357](https://github.com/anct-cartographie-nationale/mednum-cli/issues/357).\n- Remplacement des zones \"ZRR\" par les zones \"France Ruralités Revitalisation (FRR)\" [#360](https://github.com/anct-cartographie-nationale/mednum-cli/issues/360).\n- Migration de la source QPV vers le jeu de données des quartiers prioritaires ANCT 2024 [#359](https://github.com/anct-cartographie-nationale/mednum-cli/issues/359).\n- Publication du jeu de données national à partir des données dédupliquées [#354](https://github.com/anct-cartographie-nationale/mednum-cli/issues/354).\n- Suppression des ressources DI et renommage en \"national\" [#355](https://github.com/anct-cartographie-nationale/mednum-cli/issues/355).\n\n### Évolutions techniques\n- Amélioration de la stabilité de l'ordre de fusion des doublons internes avec une règle de départage par ID [#358](https://github.com/anct-cartographie-nationale/mednum-cli/issues/358).\n- Modification du planning de la publication nocturne pour éviter la congestion des Actions (passage à 22h48 UTC) [#356](https://github.com/anct-cartographie-nationale/mednum-cli/issues/356).",
       "changelogGeneratedAt": "2026-06-30T03:45:45Z",
       "organization": "anct-cartographie-nationale"
+    },
+    {
+      "url": "https://github.com/gip-inclusion/data-inclusion-schema",
+      "name": "data-inclusion-schema",
+      "description": "Ce dépôt contient le schéma de l’offre d’insertion. Il a été créé avec la collaboration des acteurs de l’insertion afin d’harmoniser les données et de permettre l’interopérabilité entre les différents acteurs et leurs outils.",
+      "language": "Python",
+      "features": [
+        "Gestion des données & Schémas",
+        "Documentation"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [
+        "pydantic",
+        "pendulum",
+        "flit_core",
+        "pytest",
+        "freezegun",
+        "jinja2",
+        "mkdocs",
+        "mkdocs-material",
+        "mike"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "Python (scripts & backend)",
+        "Documentation & Schémas"
+      ],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": [
+        "pytest"
+      ],
+      "workflows": [
+        "docs.yml",
+        "pypi.yml"
+      ],
+      "lastActivity": "2026-06-29T08:48:59Z",
+      "status": "active",
+      "license": "Other",
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 3,
+        "forks": 2,
+        "contributors": null,
+        "openIssues": 1
+      },
+      "tags": [
+        "Données & Open Data",
+        "Écosystème beta.gouv / État",
+        "Python",
+        "Bases de données SQL",
+        "Documentation"
+      ],
+      "changelog": "## Changelog : data-inclusion-schema (30 derniers jours, au 29 juin 2026)\n\n### Résumé\nCette nouvelle version apporte une amélioration significative à l'utilisation des énumérations (enums) dans le schéma, en permettant un accès direct à leurs valeurs via le nom de l'énumération. Cela simplifie l'intégration et l'utilisation du schéma dans les applications.\n\n### Évolutions fonctionnelles\n- Les valeurs des énumérations sont désormais accessibles via `MonEnum.NOM` [#78](https://github.com/gip-inclusion/data-inclusion-schema/issues/78).\n\n### Évolutions techniques\n- Mise à jour de la version du schéma à v1.0.9.\n\n### Autres changements\n- Aucun autre changement significatif à signaler.",
+      "changelogGeneratedAt": "2026-07-25T02:38:49Z",
+      "organization": "gip-inclusion"
+    },
+    {
+      "url": "https://github.com/gip-inclusion/slash-visio",
+      "name": "slash-visio",
+      "description": "Ce projet est une commande slash Slack (/visio) qui publie un lien vers visio.numerique.gouv.fr avec un slug spécifique au canal ou à la conversation. Il permet de partager facilement des liens vers la plateforme visio avec un identifiant unique.",
+      "language": "TypeScript",
+      "features": [
+        "Gestion des utilisateurs & Permissions"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [
+        "esbuild",
+        "vitest",
+        "eslint",
+        "@typescript-eslint/parser",
+        "@typescript-eslint/eslint-plugin"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "TypeScript / JavaScript",
+        "Scaleway function"
+      ],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": [
+        "Vitest"
+      ],
+      "workflows": [],
+      "lastActivity": "2026-06-29T01:36:32Z",
+      "status": "active",
+      "license": null,
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": 1,
+        "openIssues": 1
+      },
+      "tags": [
+        "Données & Open Data",
+        "TypeScript",
+        "Déploiement & Hosting"
+      ],
+      "changelog": "## Changelog : slash-visio (30 derniers jours, au 26 juin 2026)\n\n### Résumé\nCe mois-ci, le projet slash-visio a principalement bénéficié de la mise en place d'un système d'automatisation pour la gestion des dépendances du projet, assurant ainsi une meilleure sécurité et une maintenance plus facile.\n\n### Évolutions techniques\n- Mise en place de Dependabot pour la gestion automatisée des dépendances npm. [#1](https://github.com/gip-inclusion/slash-visio/pull/1)\n\n### Autres changements\n- Configuration initiale de Dependabot.",
+      "changelogGeneratedAt": "2026-07-25T02:39:00Z",
+      "organization": "gip-inclusion"
     },
     {
       "url": "https://github.com/MTES-MCT/fonds-vert-espace-laureat",
@@ -17897,6 +19477,50 @@
       "changelog": "## Changelog : buildkit-operator-example (30 derniers jours, au 27 juin 2026)\n\n### Résumé\nCe dépôt a connu des améliorations significatives concernant la sécurité de la chaîne d'approvisionnement logicielle (supply chain security) et la flexibilité de l'intégration continue (CI). L'ajout de la signature cosign, de la génération de SBOM et de provenance, ainsi que l'utilisation d'une action réutilisable, renforcent la confiance dans les images construites. De plus, la configuration CI a été simplifiée et rendue plus portable.\n\n### Évolutions fonctionnelles\n- **Sécurité de la chaîne d'approvisionnement :** Implémentation de la signature cosign, de la génération de SBOM (Software Bill of Materials) et de provenance pour renforcer la sécurité et la traçabilité des images Docker construites.\n- **Cache S3 optionnel :** Ajout de la possibilité d'utiliser un cache S3 distant pour accélérer les builds via les variables d'environnement `BUILDCAT_S3_*` [#8a10c13](https://github.com/SocialGouv/buildkit-operator-example/commit/8a10c13).\n- **Authentification OIDC :** Amélioration de l'authentification OIDC avec l'utilisation du SHA complet de la référence de l'action et la validation de l'authentification sur `/route` [#97a4dee](https://github.com/SocialGouv/buildkit-operator-example/commit/97a4dee).\n\n### Évolutions techniques\n- **Action réutilisable :** Remplacement du script `build.sh` local par l'action réutilisable `socialgouv/buildkit-operator@v1` pour simplifier et standardiser le processus de build [#4f539b3](https://github.com/SocialGouv/buildkit-operator-example/commit/4f539b3).\n- **CI portable :** Refonte du script `build.sh` pour le rendre portable et compatible avec différents systèmes CI, notamment GitLab [#02be867](https://github.com/SocialGouv/buildkit-operator-example/commit/02be867).\n- **Utilisation de runners GitHub par défaut :** Configuration du workflow CI pour utiliser les runners GitHub hébergés par défaut (ubuntu-latest) [#11a4441](https://github.com/SocialGouv/buildkit-operator-example/commit/11a4441).\n- **Amélioration de la gestion des certificats :** Utilisation de chemins absolus pour les certificats dans le script `build.sh` et affichage des erreurs lors de la création de `buildx` [#e14e185](https://github.com/SocialGouv/buildkit-operator-example/commit/e14e185).\n- **Passage du token bearer :** Transmission du token bearer au buildkit-operator exposé sur internet [#0d43a08](https://github.com/SocialGouv/buildkit-operator-example/commit/0d43a08).\n- **Expression régulière insensible à la casse :** Modification de l'expression régulière pour l'identité cosign afin de prendre en compte les organisations en majuscules (SocialGouv) [#eb1f573](https://github.com/SocialGouv/buildkit-operator-example/commit/eb1f573).\n\n### Autres changements\n- **Tests :** Utilisation de `gateway-host` pour les tests avec un DNS réel et configuration de l'action avec l'entrée `gateway-host` [#7d1585b](https://github.com/SocialGouv/buildkit-operator-example/commit/7d1585b).\n- **Pinning des actions :** Épinglage des actions utilisées dans le workflow CI à des versions spécifiques pour garantir la reproductibilité des builds [#3ff40e7](https://github.com/SocialGouv/buildkit-operator-example/commit/3ff40e7) et [#e83d67f](https://github.com/SocialGouv/buildkit-operator-example/commit/e83d67f).\n- **Suppression du script local :** Suppression du script `build.sh` local car il est maintenant remplacé par l'action réutilisable [#80dd4a7](https://github.com/SocialGouv/buildkit-operator-example/commit/80dd4a7).",
       "changelogGeneratedAt": "2026-06-27T02:56:01Z",
       "organization": "SocialGouv"
+    },
+    {
+      "url": "https://github.com/gip-inclusion/sps-emailer",
+      "name": "sps-emailer",
+      "description": "Ce projet permet la génération et l'envoi d'e-mails de recommandations « solutions structurées » (SPS) aux conseillers en insertion socio-professionnelle. Il automatise le processus de création et d'envoi d'e-mails personnalisés basés sur des données JSON.",
+      "language": "Python",
+      "features": [
+        "Notifications & Alertes"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [
+        "httpx",
+        "markdown",
+        "jsonschema"
+      ],
+      "components": [
+        "Python (scripts & backend)",
+        "API REST & GraphQL"
+      ],
+      "auth.methods": [
+        "none"
+      ],
+      "tests": [
+        "Pytest"
+      ],
+      "workflows": [],
+      "lastActivity": "2026-06-26T18:08:20Z",
+      "status": "active",
+      "license": null,
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": 0,
+        "openIssues": 0
+      },
+      "tags": [
+        "Données & Open Data",
+        "Écosystème beta.gouv / État",
+        "Python"
+      ],
+      "changelog": "## Changelog : sps-emailer (30 derniers jours, au 26 juin 2026)\n\n### Résumé\nLes récentes mises à jour de sps-emailer améliorent significativement le processus de gestion et d'envoi des recommandations SPS. Une nouvelle commande permet de purger les anciennes sorties nominatives, et la documentation a été enrichie pour faciliter l'utilisation et la configuration du projet.  L'implémentation d'un pipeline complet pour les emails SPS, incluant la conversion, l'anonymisation, le rendu et l'envoi via Brevo, est désormais disponible.\n\n### Évolutions fonctionnelles\n- Ajout d'une commande `sps purge` pour supprimer les anciennes sorties nominatives, avec une confirmation et une durée par défaut de 7 jours. [#1](https://github.com/gip-inclusion/sps-emailer/pull/1)\n- Implémentation d'un pipeline complet pour les emails SPS : conversion, anonymisation, rendu et envoi via Brevo (avec tunnel SOCKS). [#1](https://github.com/gip-inclusion/sps-emailer/pull/1)\n\n### Évolutions techniques\n- Configuration de Dependabot pour la gestion des dépendances avec `uv`. [#2](https://github.com/gip-inclusion/sps-emailer/pull/2)\n- Suppression des artefacts de session `superpowers/` et `upstream-agent-prompt` du dépôt.\n\n### Autres changements\n- Amélioration de la documentation README avec un guide pas-à-pas pour l'entrée JSON et la documentation des variables d'environnement requises.\n- Simplification du README.\n- Suppression de la conversion Markdown vers JSON du chemin nominal.",
+      "changelogGeneratedAt": "2026-07-25T02:39:13Z",
+      "organization": "gip-inclusion"
     },
     {
       "url": "https://github.com/mte-dgpr/arretify",
@@ -21676,6 +23300,44 @@
       "changelog": "## Changelog : bun-buildpack (30 derniers jours, au 11 juin 2026)\n\n### Résumé\nCe buildpack pour Bun est désormais initialisé et prêt à être utilisé sur Scalingo. Cette première version permet de déployer des applications développées avec Bun en détectant automatiquement la présence des fichiers de verrouillage `bun.lockb` ou `bun.lock`.\n\n### Évolutions fonctionnelles\n- Initialisation du buildpack pour Scalingo, permettant le déploiement d'applications Bun.\n\n### Évolutions techniques\n- Initialisation du dépôt et du buildpack.\n- Détection automatique des projets Bun via les fichiers `bun.lockb` ou `bun.lock`.",
       "changelogGeneratedAt": "2026-06-13T03:33:49Z",
       "organization": "proconnect-gouv"
+    },
+    {
+      "url": "https://github.com/gip-inclusion/mta-sts",
+      "name": "mta-sts",
+      "description": "Ce dépôt contient la politique MTA-STS pour le domaine inclusion.gouv.fr, assurant une communication sécurisée par email.",
+      "language": null,
+      "features": [],
+      "audience": "Professionnels",
+      "dependencies": [
+        "nginx"
+      ],
+      "components": [
+        "Serveurs web & Proxy"
+      ],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": null,
+      "workflows": null,
+      "lastActivity": "2026-06-11T07:44:20Z",
+      "status": "active",
+      "license": "AGPL-3.0",
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": null,
+        "openIssues": 0
+      },
+      "tags": [
+        "Sécurité & Conformité",
+        "Standards & Schémas"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "gip-inclusion"
     },
     {
       "url": "https://github.com/dnum-mi/basegun",
@@ -31554,6 +33216,56 @@
       "organization": "datagouv"
     },
     {
+      "url": "https://github.com/gip-inclusion/matomo-scalingo-deploy",
+      "name": "matomo-scalingo-deploy",
+      "description": "Ce projet permet de déployer facilement Matomo, une alternative open source à Google Analytics, sur la plateforme Scalingo. Il simplifie l'installation et la configuration de Matomo dans un environnement PaaS.",
+      "language": "Go Template",
+      "features": [
+        "Gestion des utilisateurs & Permissions",
+        "Notifications & Alertes",
+        "Sécurité & Conformité",
+        "Statistiques & Rapports"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [
+        "Matomo",
+        "Scalingo"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "TypeScript / JavaScript",
+        "Docker & Conteneurs",
+        "PHP (scripts & backend)"
+      ],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": null,
+      "workflows": [
+        "CI/CD & Déploiement"
+      ],
+      "lastActivity": "2026-03-17T10:26:36Z",
+      "status": "active",
+      "license": "AGPL-3.0",
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 2,
+        "contributors": null,
+        "openIssues": 0
+      },
+      "tags": [
+        "Données & Open Data",
+        "Déploiement & Hosting",
+        "Sécurité & Auth"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "gip-inclusion"
+    },
+    {
       "url": "https://github.com/betagouv/mle-back",
       "name": "mle-back",
       "description": "Ce projet est le backend de \"Mon Logement Étudiant\", une application visant à faciliter la recherche de logements pour les étudiants. Il gère les données des logements, les sources, les utilisateurs et les alertes.",
@@ -32837,6 +34549,43 @@
       "organization": "SocialGouv"
     },
     {
+      "url": "https://github.com/gip-inclusion/site-institutionnel-2025-proxy",
+      "name": "site-institutionnel-2025-proxy",
+      "description": "Ce dépôt contient un proxy NGINX pour servir les fichiers statiques et rediriger les autres requêtes vers le CMS site-institutionnel-2025. Il permet de gérer les fichiers de politique du domaine inclusion.gouv.fr.",
+      "language": null,
+      "features": [],
+      "audience": "Agents de l'Administration",
+      "dependencies": [
+        "NGINX"
+      ],
+      "components": [
+        "Serveurs web & Proxy"
+      ],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": null,
+      "workflows": null,
+      "lastActivity": "2026-03-09T19:06:17Z",
+      "status": "active",
+      "license": "AGPL-3.0",
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": null,
+        "openIssues": 0
+      },
+      "tags": [
+        "Sécurité & Conformité"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "gip-inclusion"
+    },
+    {
       "url": "https://github.com/etalab/schema-impact-service-public-numerique",
       "name": "schema-impact-service-public-numerique",
       "description": "Ce projet définit un schéma de données pour assurer une publication harmonieuse des statistiques d'impact des services publics numériques, permettant ainsi leur comparaison et centralisation.",
@@ -33664,6 +35413,44 @@
       "organization": "SocialGouv"
     },
     {
+      "url": "https://github.com/gip-inclusion/mdbook-buildpack",
+      "name": "mdbook-buildpack",
+      "description": "Ce buildpack Scalingo permet de générer des sites statiques avec mdBook. Il détecte les projets avec un fichier `book.toml`, compile le livre et génère la sortie dans `dist/`.",
+      "language": "Shell",
+      "features": [
+        "Gestion documentaire & Fichiers"
+      ],
+      "audience": "Développeurs",
+      "dependencies": [],
+      "components": [
+        "Scripts & Utilitaires"
+      ],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": null,
+      "workflows": null,
+      "lastActivity": "2026-03-03T13:31:41Z",
+      "status": "active",
+      "license": null,
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": 0,
+        "openIssues": 0
+      },
+      "tags": [
+        "Documentation",
+        "Déploiement & Hosting"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "gip-inclusion"
+    },
+    {
       "url": "https://github.com/etalab-ia/letta",
       "name": "letta",
       "description": "Letta est une plateforme pour construire des agents avec une mémoire avancée, capables d'apprendre et de s'améliorer avec le temps. Elle permet de créer des agents autonomes et intelligents.",
@@ -34480,6 +36267,45 @@
       "organization": "datagouv"
     },
     {
+      "url": "https://github.com/gip-inclusion/traiteurs-engages",
+      "name": "traiteurs-engages",
+      "description": "Ce projet est une plateforme connectant les entreprises avec des services traiteurs inclusifs. Il s'agit d'une landing page pour le service Les Traiteurs Engagés, porté par la Plateforme de l'inclusion.",
+      "language": "HTML",
+      "features": [
+        "Contenu éditorial"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [],
+      "components": [
+        "HTML / CSS / Templates visuels",
+        "Sites statiques & SSG"
+      ],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": null,
+      "workflows": [],
+      "lastActivity": "2026-02-24T09:13:25Z",
+      "status": "active",
+      "license": "MIT",
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": null,
+        "openIssues": 0
+      },
+      "tags": [
+        "Données & Open Data",
+        "Écosystème beta.gouv / État"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "gip-inclusion"
+    },
+    {
       "url": "https://github.com/IA-Generative/PIP-Organization-Chart-From-Grist",
       "name": "PIP-Organization-Chart-From-Grist",
       "description": "Ce projet génère automatiquement des visualisations, des analyses et des rapports à partir de données Grist, facilitant la planification et le suivi des PI (Planning Incremental). Il permet de créer des diagrammes d'organisation, d'identifier les chevauchements d'affectation et de synthétiser les informations clés pour les équipes.",
@@ -35159,6 +36985,47 @@
       "changelog": "## Changelog : helm-dev-backend (30 derniers jours)\n\n### Résumé\nCe backend de développement Helm a été mis à jour pour offrir plus de flexibilité lors du déploiement d'applications sur Kubernetes. Les utilisateurs peuvent désormais configurer plus finement les ressources allouées et le nombre de réplicas pour le composant `dsproxy`, permettant une meilleure adaptation aux besoins spécifiques de leurs environnements. Une nouvelle version du chart Helm a également été publiée.\n\n### Évolutions fonctionnelles\n- Possibilité de configurer les ressources (CPU, mémoire) allouées au déploiement `dsproxy` (#cb9b129).\n- Possibilité de configurer le nombre de réplicas pour le déploiement `dsproxy` (#db68879).\n\n### Évolutions techniques\n- Publication de la version 0.0.8 du chart Helm (#52b02b6).\n- Publication de la version 0.0.7 du chart Helm (#6c0791e).",
       "changelogGeneratedAt": "2026-02-19T12:39:17Z",
       "organization": "suitenumerique"
+    },
+    {
+      "url": "https://github.com/gip-inclusion/widgets-budget",
+      "name": "widgets-budget",
+      "description": "Ce dépôt contient des widgets Grist mobilisés par nos outils internes.",
+      "language": "JavaScript",
+      "features": [
+        "Visualisation de données & Cartographie"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [
+        "Grist"
+      ],
+      "components": [
+        "JavaScript",
+        "HTML / CSS / Templates visuels"
+      ],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": null,
+      "workflows": null,
+      "lastActivity": "2026-02-18T10:21:55Z",
+      "status": "active",
+      "license": "AGPL-3.0",
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": null,
+        "openIssues": 0
+      },
+      "tags": [
+        "Données & Open Data",
+        "JavaScript"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "gip-inclusion"
     },
     {
       "url": "https://github.com/betagouv/aplypro-mock-data",
@@ -36010,6 +37877,62 @@
       "changelog": "## Changelog : seves-documentation (30 derniers jours)\n\n### Résumé\nCette mise à jour apporte des améliorations significatives à la recherche sur le site, avec un filtrage plus précis des résultats.  La sécurité a également été renforcée avec la mise à jour du honeypot Wagtail.  Des mises à jour de traduction et de maintenance ont également été effectuées.\n\n### Évolutions fonctionnelles\n- Amélioration des filtres de recherche, permettant un affinement plus précis des résultats (maj version 2.5.0) (#427)\n- Ajout d'un sélecteur de type de filtres et filtrage des étiquettes (#417)\n\n### Évolutions techniques\n- Mise à jour du honeypot Wagtail pour renforcer la sécurité (#433)\n- Mise à jour des maintainers du projet (#425)\n\n### Autres changements\n- Mise à jour des traductions du site (#430)\n- Mise à jour du numéro de version dans le fichier `pyproject.toml` (#438)\n- Mise à jour des dépendances du projet (#437)",
       "changelogGeneratedAt": "2026-02-21T17:06:59Z",
       "organization": "betagouv"
+    },
+    {
+      "url": "https://github.com/gip-inclusion/pdf-generator",
+      "name": "pdf-generator",
+      "description": "Ce service Node.js simple génère un PDF à partir d'une URL via Puppeteer. Il permet également de générer un PDF à partir d'une chaîne HTML.",
+      "language": "JavaScript",
+      "features": [
+        "Gestion documentaire & Fichiers",
+        "API & Intégrations"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [
+        "express",
+        "puppeteer",
+        "dotenv",
+        "pino",
+        "pino-http",
+        "bottleneck",
+        "tmp",
+        "body-parser",
+        "helmet"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "Node.js / NestJS",
+        "TypeScript / JavaScript"
+      ],
+      "auth": {
+        "methods": [
+          "api-key"
+        ],
+        "providers": []
+      },
+      "tests": null,
+      "workflows": [
+        "codeql-analysis.yml",
+        "deploy-to-scalingo.yml"
+      ],
+      "lastActivity": "2026-02-12T19:12:59Z",
+      "status": "active",
+      "license": "MIT",
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 12,
+        "forks": 1,
+        "contributors": null,
+        "openIssues": 10
+      },
+      "tags": [
+        "Données & Open Data",
+        "JavaScript",
+        "API & Intégrations"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "gip-inclusion"
     },
     {
       "url": "https://github.com/betagouv/annuaire-api",
@@ -41886,6 +43809,72 @@
       "organization": "MTES-MCT"
     },
     {
+      "url": "https://github.com/gip-inclusion/data-inclusion-site",
+      "name": "data-inclusion-site",
+      "description": "Ce site permet la création simplifiée de sites internet pour le domaine .gouv.fr, basé sur Wagtail et le Système de design de l’État (DSFR). Il facilite la conception rapide de sites conformes aux normes numériques.",
+      "language": "Python",
+      "features": [
+        "Gestion documentaire & Fichiers",
+        "Contenu éditorial",
+        "Authentification & Accès",
+        "Sécurité & Conformité",
+        "Interface utilisateur & Design"
+      ],
+      "audience": "Agents de l'Administration",
+      "dependencies": [
+        "Django",
+        "Wagtail",
+        "django-dsfr",
+        "PostgreSQL",
+        "tarteaucitronjs"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "PostgreSQL & SQL",
+        "React / Next.js",
+        "TypeScript / JavaScript",
+        "Python (scripts & backend)",
+        "Design System (DSFR & UI libs)",
+        "Docker & Conteneurs"
+      ],
+      "auth": {
+        "methods": [
+          "email-password"
+        ],
+        "providers": []
+      },
+      "tests": "Tests automatisés couvrant Python 3.10 à 3.14 et PostgreSQL 14 à 17",
+      "workflows": [
+        "cd-docker.yml",
+        "ci-check-migrations.yml",
+        "ci-main.yml",
+        "issues-notion-sync.yml"
+      ],
+      "lastActivity": "2025-12-03T07:37:19Z",
+      "status": "active",
+      "license": "AGPL-3.0",
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": null,
+        "openIssues": 0
+      },
+      "tags": [
+        "Données & Open Data",
+        "Écosystème beta.gouv / État",
+        "React & Next.js",
+        "TypeScript",
+        "Déploiement & Hosting",
+        "Python",
+        "Bases de données SQL",
+        "Sécurité & Auth"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "gip-inclusion"
+    },
+    {
       "url": "https://github.com/betagouv/agir-voiture",
       "name": "agir-voiture",
       "description": "Ce simulateur permet de calculer les coûts et l'empreinte carbone d'une voiture et de les comparer à d'autres alternatives. Il a été développé dans le cadre du projet J'agis.",
@@ -45385,6 +47374,47 @@
       "organization": "SocialGouv"
     },
     {
+      "url": "https://github.com/gip-inclusion/TCD-widget",
+      "name": "TCD-widget",
+      "description": "Ce widget permet de créer un tableau croisé dynamique à partir des données sources de Grist, basé sur pivottable.js. Il offre une interface traduite en français et des améliorations de lisibilité.",
+      "language": "JavaScript",
+      "features": [
+        "Visualisation de données & Cartographie"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [
+        "pivottable.js"
+      ],
+      "components": [
+        "JavaScript",
+        "HTML / CSS / Templates visuels"
+      ],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": null,
+      "workflows": null,
+      "lastActivity": "2025-11-14T18:09:12Z",
+      "status": "active",
+      "license": null,
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": null,
+        "openIssues": 0
+      },
+      "tags": [
+        "Données & Open Data",
+        "JavaScript"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "gip-inclusion"
+    },
+    {
       "url": "https://github.com/IA-Generative/callico-arkindex",
       "name": "callico-arkindex",
       "description": "Callico est une plateforme pour l'annotation et l'enrichissement de données textuelles et visuelles. Elle permet de gérer des projets d'annotation, d'assigner des tâches à des contributeurs et de suivre l'avancement du travail.",
@@ -45442,6 +47472,63 @@
       "changelog": null,
       "changelogGeneratedAt": null,
       "organization": "IA-Generative"
+    },
+    {
+      "url": "https://github.com/gip-inclusion/pilotage-offre-insertion",
+      "name": "pilotage-offre-insertion",
+      "description": "Ce projet permet de visualiser les données de l'offre d'insertion par territoire. Il offre une interface pour explorer et analyser ces données géographiquement.",
+      "language": "Vue",
+      "features": [
+        "Visualisation de données & Cartographie",
+        "Statistiques & Rapports",
+        "Recherche & Filtres",
+        "Gestion des utilisateurs & Permissions"
+      ],
+      "audience": "Agents de l'Administration",
+      "dependencies": [
+        "Vue",
+        "Vuex",
+        "Axios",
+        "Chart.js",
+        "Leaflet",
+        "vue-chartjs"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "React / Next.js",
+        "TypeScript / JavaScript",
+        "HTML / CSS / Templates visuels"
+      ],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": null,
+      "workflows": null,
+      "lastActivity": "2025-11-14T14:00:13Z",
+      "status": "active",
+      "license": null,
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": null,
+        "openIssues": 0
+      },
+      "tags": [
+        "Données & Open Data",
+        "Écosystème beta.gouv / État",
+        "React & Next.js",
+        "TypeScript",
+        "Déploiement & Hosting",
+        "Python",
+        "Bases de données SQL",
+        "Sécurité & Auth"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "gip-inclusion"
     },
     {
       "url": "https://github.com/incubateur-ademe/publicodes-acv-numerique",
@@ -46811,6 +48898,54 @@
       "organization": "betagouv"
     },
     {
+      "url": "https://github.com/datagouv/datagouv-visualizations",
+      "name": "datagouv-visualizations",
+      "description": "Une bibliothèque de composants de visualisation de données pour Vue 3 et React, conforme au Système de Design de l'État Français (DSFR).",
+      "language": "TypeScript",
+      "features": [
+        "Visualisation de données & Cartographie"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [
+        "React",
+        "Vue",
+        "echarts",
+        "maplibre-gl"
+      ],
+      "components": [
+        "React / Next.js",
+        "Vue.js / Nuxt",
+        "API REST & GraphQL"
+      ],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": null,
+      "workflows": null,
+      "lastActivity": "2025-10-27T13:13:19Z",
+      "status": "active",
+      "license": "MIT",
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 1,
+        "contributors": null,
+        "openIssues": 0
+      },
+      "tags": [
+        "Données & Open Data",
+        "React & Next.js",
+        "TypeScript",
+        "Visualisation",
+        "Vue.js"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "datagouv"
+    },
+    {
       "url": "https://github.com/betagouv/datagouv-visualizations",
       "name": "datagouv-visualizations",
       "description": "Une bibliothèque de composants de visualisation de données pour Vue 3 et React, conforme au Système de Design de l'État Français (DSFR).",
@@ -46865,54 +49000,6 @@
       "changelog": null,
       "changelogGeneratedAt": null,
       "organization": "betagouv"
-    },
-    {
-      "url": "https://github.com/datagouv/datagouv-visualizations",
-      "name": "datagouv-visualizations",
-      "description": "Une bibliothèque de composants de visualisation de données pour Vue 3 et React, conforme au Système de Design de l'État Français (DSFR).",
-      "language": "TypeScript",
-      "features": [
-        "Visualisation de données & Cartographie"
-      ],
-      "audience": "Professionnels",
-      "dependencies": [
-        "React",
-        "Vue",
-        "echarts",
-        "maplibre-gl"
-      ],
-      "components": [
-        "React / Next.js",
-        "Vue.js / Nuxt",
-        "API REST & GraphQL"
-      ],
-      "auth": {
-        "methods": [
-          "none"
-        ]
-      },
-      "tests": null,
-      "workflows": null,
-      "lastActivity": "2025-10-27T13:13:19Z",
-      "status": "active",
-      "license": "MIT",
-      "hasDocumentation": true,
-      "metrics": {
-        "stars": 0,
-        "forks": 1,
-        "contributors": null,
-        "openIssues": 0
-      },
-      "tags": [
-        "Données & Open Data",
-        "React & Next.js",
-        "TypeScript",
-        "Visualisation",
-        "Vue.js"
-      ],
-      "changelog": null,
-      "changelogGeneratedAt": null,
-      "organization": "datagouv"
     },
     {
       "url": "https://github.com/IA-Generative/api-realtime-ai",
@@ -48269,6 +50356,85 @@
       "changelog": null,
       "changelogGeneratedAt": null,
       "organization": "etalab-ia"
+    },
+    {
+      "url": "https://github.com/gip-inclusion/mon-recap-sites-faciles",
+      "name": "mon-recap-sites-faciles",
+      "description": "Ce projet est un gestionnaire de contenu permettant de créer et gérer un site internet basé sur le Système de design de l'État, accessible et responsive. Il simplifie la création et la mise à jour du contenu pour les sites .gouv.fr.",
+      "language": "Python",
+      "features": [
+        "Gestion documentaire & Fichiers",
+        "Contenu éditorial",
+        "Accessibilité & i18n",
+        "Sécurité & Conformité"
+      ],
+      "audience": "Agents de l'Administration",
+      "dependencies": [
+        "Django",
+        "Wagtail",
+        "psycopg2",
+        "python-dotenv",
+        "dj-database-url",
+        "gunicorn",
+        "django-sass-processor",
+        "libsass",
+        "dj-static",
+        "wagtailmenus",
+        "wagtail-modeladmin",
+        "wagtail-markdown",
+        "unidecode",
+        "django-storages",
+        "boto3",
+        "beautifulsoup4",
+        "django-taggit",
+        "wagtail-localize",
+        "icalendar",
+        "faker",
+        "mozilla-django-oidc"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "PostgreSQL & SQL",
+        "Python (scripts & backend)",
+        "Django",
+        "Wagtail",
+        "DSFR",
+        "HTML / CSS / Templates visuels"
+      ],
+      "auth": {
+        "methods": [
+          "session"
+        ]
+      },
+      "tests": [
+        "pytest"
+      ],
+      "workflows": [
+        "ci-check-migrations.yml",
+        "ci-main.yml",
+        "cd-docker.yml"
+      ],
+      "lastActivity": "2025-10-02T12:52:35Z",
+      "status": "active",
+      "license": "AGPL-3.0",
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": null,
+        "openIssues": 0
+      },
+      "tags": [
+        "Données & Open Data",
+        "Écosystème beta.gouv / État",
+        "Python",
+        "Bases de données SQL",
+        "Sécurité & Auth",
+        "CMS"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "gip-inclusion"
     },
     {
       "url": "https://github.com/betagouv/a11y-generateur-declaration",
@@ -49895,6 +52061,60 @@
       "organization": "IA-Generative"
     },
     {
+      "url": "https://github.com/gip-inclusion/gh-backups",
+      "name": "gh-backups",
+      "description": "Ce projet permet de sauvegarder l'historique git et les métadonnées des dépôts GitHub vers un bucket S3. Il sauvegarde les issues, pull requests et commentaires associés.",
+      "language": "Ruby",
+      "features": [
+        "Gestion documentaire & Fichiers",
+        "API & Intégrations",
+        "Notifications & Alertes"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [
+        "octokit",
+        "aws-sdk-s3",
+        "faraday",
+        "activesupport",
+        "nokogiri",
+        "dotenv"
+      ],
+      "components": [
+        "Scripts & Utilitaires",
+        "API REST & GraphQL",
+        "S3 & Stockage objet"
+      ],
+      "auth": {
+        "methods": [
+          "api-key"
+        ]
+      },
+      "tests": null,
+      "workflows": [
+        "daily-backup.yml"
+      ],
+      "lastActivity": "2025-08-12T11:49:07Z",
+      "status": "active",
+      "license": null,
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 1,
+        "forks": 0,
+        "contributors": null,
+        "openIssues": 0
+      },
+      "tags": [
+        "Données & Open Data",
+        "Sauvegarde",
+        "GitHub",
+        "S3",
+        "Automatisation"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "gip-inclusion"
+    },
+    {
       "url": "https://github.com/datagouv/tuto-minio-producteurs-donnees",
       "name": "tuto-minio-producteurs-donnees",
       "description": "Ce dépôt a pour objectif de donner les éléments aux producteurs de données devant publier les données via un cluster Minio. Il permet d'uploader un fichier sur Minio et de le référencer sur data.gouv.fr.",
@@ -49937,6 +52157,51 @@
       "changelog": null,
       "changelogGeneratedAt": null,
       "organization": "datagouv"
+    },
+    {
+      "url": "https://github.com/gip-inclusion/n8n-workflows",
+      "name": "n8n-workflows",
+      "description": "Ce projet est un site public permettant d'agréger et de rechercher des workflows n8n. Il vise à faciliter la découverte et l'utilisation de workflows préconstruits.",
+      "language": "MDX",
+      "features": [
+        "Recherche & Filtres",
+        "Gestion documentaire & Fichiers"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [
+        "@astrojs/starlight",
+        "astro",
+        "sharp"
+      ],
+      "components": [
+        "React / Next.js",
+        "TypeScript / JavaScript",
+        "Sites statiques & SSG"
+      ],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": [],
+      "workflows": [],
+      "lastActivity": "2025-08-07T19:15:29Z",
+      "status": "active",
+      "license": null,
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": 0,
+        "openIssues": 0
+      },
+      "tags": [
+        "Données & Open Data",
+        "JavaScript"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "gip-inclusion"
     },
     {
       "url": "https://github.com/etalab-ia/franceservices-backend",
@@ -51532,6 +53797,54 @@
       "changelog": null,
       "changelogGeneratedAt": null,
       "organization": "etalab-ia"
+    },
+    {
+      "url": "https://github.com/gip-inclusion/if-metabase",
+      "name": "if-metabase",
+      "description": "Ce projet est une adaptation de metabase-scalingo pour répondre aux besoins d'immersion facilités. Il permet de déployer facilement Metabase sur Scalingo.",
+      "language": "Shell",
+      "features": [
+        "Authentification & Accès",
+        "Gestion des utilisateurs & Permissions"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [
+        "Metabase",
+        "Scalingo"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "Docker & Conteneurs",
+        "CI/CD & Déploiement"
+      ],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": null,
+      "workflows": [
+        "deploy-to-scalingo.yml"
+      ],
+      "lastActivity": "2025-06-10T14:09:07Z",
+      "status": "active",
+      "license": null,
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": null,
+        "openIssues": 0
+      },
+      "tags": [
+        "Déploiement & Hosting",
+        "Docker & Conteneurs",
+        "CI/CD & GitHub Actions",
+        "Scalingo"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "gip-inclusion"
     },
     {
       "url": "https://github.com/betagouv/poc-communs-projets-levier",
@@ -53188,6 +55501,56 @@
       "organization": "tchapgouv"
     },
     {
+      "url": "https://github.com/gip-inclusion/offre-inclusion",
+      "name": "offre-inclusion",
+      "description": "Ce projet permet de visualiser les données de l'offre d'inclusion par territoire. Il offre une interface pour explorer et comprendre la répartition des services et structures liés à l'inclusion.",
+      "language": "Vue",
+      "features": [
+        "Visualisation de données & Cartographie",
+        "Recherche & Filtres",
+        "Gestion des utilisateurs & Permissions"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [
+        "axios",
+        "chartjs-plugin-annotation",
+        "leaflet",
+        "vue",
+        "vue-chartjs",
+        "vuex"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "React / Next.js",
+        "TypeScript / JavaScript",
+        "HTML / CSS / Templates visuels"
+      ],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": null,
+      "workflows": null,
+      "lastActivity": "2025-04-23T16:13:04Z",
+      "status": "active",
+      "license": null,
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 1,
+        "contributors": null,
+        "openIssues": 0
+      },
+      "tags": [
+        "Données & Open Data",
+        "Écosystème beta.gouv / État"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "gip-inclusion"
+    },
+    {
       "url": "https://github.com/betagouv/SCDL-subventions-DataSubvention",
       "name": "SCDL-subventions-DataSubvention",
       "description": "Ce projet spécifie le modèle de données pour les subventions attribuées par les collectivités, dans le but de renforcer la transparence financière. Il s'appuie sur des documents juridiques et techniques pour définir les données essentielles des conventions de subvention.",
@@ -54342,6 +56705,40 @@
       "organization": "betagouv"
     },
     {
+      "url": "https://github.com/gip-inclusion/calcul-nir",
+      "name": "calcul-nir",
+      "description": "Ce projet permet de calculer la clé d'un numéro de sécurité sociale (NIR) en JavaScript, sans transmission de données.",
+      "language": "HTML",
+      "features": [],
+      "audience": "Professionnels",
+      "dependencies": [],
+      "components": [],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": null,
+      "workflows": null,
+      "lastActivity": "2025-04-03T14:27:02Z",
+      "status": "active",
+      "license": "AGPL-3.0",
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": null,
+        "openIssues": 0
+      },
+      "tags": [
+        "Données & Open Data",
+        "Sécurité & Auth"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "gip-inclusion"
+    },
+    {
       "url": "https://github.com/codegouvfr/guide-ospo",
       "name": "guide-ospo",
       "description": "Ce guide interactif a pour objectif d'aider à démarrer un OSPO (Office of Open Source Program) dans le secteur public en France.",
@@ -54777,6 +57174,86 @@
       "changelog": null,
       "changelogGeneratedAt": null,
       "organization": "etalab"
+    },
+    {
+      "url": "https://github.com/gip-inclusion/if-website",
+      "name": "if-website",
+      "description": "Ce gestionnaire de contenu permet de créer et gérer un site internet basé sur le Système de design de l'État, accessible et responsive. Il est basé sur la solution open source Wagtail.",
+      "language": "Python",
+      "features": [
+        "Gestion documentaire & Fichiers",
+        "Authentification & Accès",
+        "Contenu éditorial",
+        "Accessibilité & i18n",
+        "Gestion des utilisateurs & Permissions"
+      ],
+      "audience": "Agents de l'Administration",
+      "dependencies": [
+        "Django",
+        "Wagtail",
+        "django-dsfr",
+        "psycopg2-binary",
+        "python-dotenv",
+        "dj-database-url",
+        "gunicorn",
+        "django-sass-processor",
+        "libsass",
+        "dj-static",
+        "wagtailmenus",
+        "wagtail-modeladmin",
+        "wagtail-markdown",
+        "unidecode",
+        "django-storages",
+        "boto3",
+        "beautifulsoup4",
+        "django-taggit",
+        "wagtail-localize",
+        "icalendar",
+        "faker",
+        "mozilla-django-oidc"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "PostgreSQL & SQL",
+        "Python (scripts & backend)",
+        "Django",
+        "Wagtail",
+        "HTML / CSS / Templates visuels"
+      ],
+      "auth": {
+        "methods": [
+          "email-password"
+        ]
+      },
+      "tests": [
+        "pytest"
+      ],
+      "workflows": [
+        "ci-check-migrations.yml",
+        "ci-main.yml",
+        "deploy-to-scalingo.yml"
+      ],
+      "lastActivity": "2025-04-01T12:36:53Z",
+      "status": "active",
+      "license": "AGPL-3.0",
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": null,
+        "openIssues": 3
+      },
+      "tags": [
+        "Données & Open Data",
+        "Python",
+        "Django",
+        "Wagtail",
+        "DSFR",
+        "Accessibilité"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "gip-inclusion"
     },
     {
       "url": "https://github.com/numerique-gouv/action-argocd-webhook-notification",
@@ -56232,6 +58709,47 @@
       "organization": "dnum-mi"
     },
     {
+      "url": "https://github.com/mtes-mct/dossierfacile-metabase-scalingo",
+      "name": "dossierfacile-metabase-scalingo",
+      "description": "Ce dépôt fournit un moyen simple de déployer Metabase sur Scalingo. Il offre une solution rapide et facile pour mettre en place une instance Metabase fonctionnelle.",
+      "language": "Shell",
+      "features": [],
+      "audience": "Professionnels",
+      "dependencies": [
+        "Metabase",
+        "Scalingo",
+        "PostgreSQL"
+      ],
+      "components": [
+        "CI/CD & Déploiement"
+      ],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": null,
+      "workflows": [],
+      "lastActivity": "2025-03-04T15:33:35Z",
+      "status": "active",
+      "license": null,
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": null,
+        "openIssues": 0
+      },
+      "tags": [
+        "Reporting & BI",
+        "Déploiement & Hosting",
+        "One-click-deploy"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "MTES-MCT"
+    },
+    {
       "url": "https://github.com/betagouv/assistant-declaration-metabase-scalingo",
       "name": "assistant-declaration-metabase-scalingo",
       "description": "Ce dépôt permet de déployer facilement Metabase sur la plateforme Scalingo. Il fournit une configuration pré-définie et des instructions pour simplifier le processus de déploiement.",
@@ -56273,47 +58791,6 @@
       "changelog": null,
       "changelogGeneratedAt": null,
       "organization": "betagouv"
-    },
-    {
-      "url": "https://github.com/mtes-mct/dossierfacile-metabase-scalingo",
-      "name": "dossierfacile-metabase-scalingo",
-      "description": "Ce dépôt fournit un moyen simple de déployer Metabase sur Scalingo. Il offre une solution rapide et facile pour mettre en place une instance Metabase fonctionnelle.",
-      "language": "Shell",
-      "features": [],
-      "audience": "Professionnels",
-      "dependencies": [
-        "Metabase",
-        "Scalingo",
-        "PostgreSQL"
-      ],
-      "components": [
-        "CI/CD & Déploiement"
-      ],
-      "auth": {
-        "methods": [
-          "none"
-        ]
-      },
-      "tests": null,
-      "workflows": [],
-      "lastActivity": "2025-03-04T15:33:35Z",
-      "status": "active",
-      "license": null,
-      "hasDocumentation": true,
-      "metrics": {
-        "stars": 0,
-        "forks": 0,
-        "contributors": null,
-        "openIssues": 0
-      },
-      "tags": [
-        "Reporting & BI",
-        "Déploiement & Hosting",
-        "One-click-deploy"
-      ],
-      "changelog": null,
-      "changelogGeneratedAt": null,
-      "organization": "MTES-MCT"
     },
     {
       "url": "https://github.com/incubateur-ademe/pages-legales-faciles",
@@ -66147,6 +68624,52 @@
       "organization": "demarche-numerique"
     },
     {
+      "url": "https://github.com/gip-inclusion/if-adminer",
+      "name": "if-adminer",
+      "description": "Ce projet est une instance d'Adminer avec une authentification basique, destinée à faciliter l'accès et la gestion des bases de données. Il s'agit d'une adaptation pour l'environnement d'Immersion Facilitée.",
+      "language": "PHP",
+      "features": [
+        "Authentification & Accès"
+      ],
+      "audience": "Agents de l'Administration",
+      "dependencies": [
+        "PHP",
+        "Apache"
+      ],
+      "components": [
+        "PHP",
+        "API REST & GraphQL",
+        "HTML / CSS / Templates visuels"
+      ],
+      "auth": {
+        "methods": [
+          "email-password"
+        ]
+      },
+      "tests": null,
+      "workflows": [
+        "deploy-to-scalingo.yml"
+      ],
+      "lastActivity": "2024-04-09T12:50:12Z",
+      "status": "active",
+      "license": null,
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": null,
+        "openIssues": 0
+      },
+      "tags": [
+        "PHP",
+        "Bases de données SQL",
+        "Sécurité & Auth"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "gip-inclusion"
+    },
+    {
       "url": "https://github.com/incubateur-ademe/impactco2-redirect",
       "name": "impactco2-redirect",
       "description": "Ce projet gère des redirections héritées. Il redirige les anciens domaines vers impactco2.fr, assurant une transition transparente pour les utilisateurs.",
@@ -70457,6 +72980,51 @@
       "organization": "codegouvfr"
     },
     {
+      "url": "https://github.com/gip-inclusion/metabase-scalingo",
+      "name": "metabase-scalingo",
+      "description": "Ce projet permet de déployer facilement Metabase sur la plateforme Scalingo. Il fournit une configuration pré-établie et des instructions pour simplifier le processus de déploiement.",
+      "language": "Shell",
+      "features": [
+        "Déploiement & Hosting"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [
+        "Metabase",
+        "Scalingo",
+        "PostgreSQL"
+      ],
+      "components": [
+        "Docker & Conteneurs",
+        "API REST & GraphQL",
+        "PostgreSQL & SQL"
+      ],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": null,
+      "workflows": null,
+      "lastActivity": "2023-09-29T20:33:32Z",
+      "status": "active",
+      "license": null,
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": null,
+        "openIssues": 0
+      },
+      "tags": [
+        "Déploiement & Hosting",
+        "Scalingo",
+        "Metabase"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "gip-inclusion"
+    },
+    {
       "url": "https://github.com/dnum-mi/bouchon-demo",
       "name": "bouchon-demo",
       "description": "Ce projet est une démonstration d'une application, probablement développée pour tester ou illustrer des concepts. Il semble s'agir d'une application Java avec une configuration pour Docker et Kubernetes.",
@@ -71821,6 +74389,53 @@
       "organization": "etalab"
     },
     {
+      "url": "https://github.com/gip-inclusion/if-logstash",
+      "name": "if-logstash",
+      "description": "Ce dépôt est utilisé pour collecter les métriques et les logs des environnements d'immersion facilitée. Il fournit une base pour déployer Logstash sur Scalingo.",
+      "language": "Procfile",
+      "features": [
+        "Gestion documentaire & Fichiers",
+        "API & Intégrations"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [
+        "Logstash",
+        "Elasticsearch"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "Scripts & Utilitaires",
+        "Docker & Conteneurs"
+      ],
+      "auth": {
+        "methods": [
+          "api-key"
+        ]
+      },
+      "tests": null,
+      "workflows": [
+        "deploy-to-scalingo.yml"
+      ],
+      "lastActivity": "2023-07-24T11:26:14Z",
+      "status": "active",
+      "license": null,
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": null,
+        "openIssues": 1
+      },
+      "tags": [
+        "Données & Open Data",
+        "Déploiement & Hosting",
+        "Sécurité & Auth"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "gip-inclusion"
+    },
+    {
       "url": "https://github.com/betagouv/domibus-buildpack",
       "name": "domibus-buildpack",
       "description": "Ce buildpack est conçu pour Domibus, facilitant son assemblage et son déploiement.",
@@ -72426,6 +75041,33 @@
       "changelog": null,
       "changelogGeneratedAt": null,
       "organization": "SocialGouv"
+    },
+    {
+      "url": "https://github.com/gip-inclusion/pilotage-superset",
+      "name": "pilotage-superset",
+      "description": "Ce dépôt héberge la configuration et le code source liés au déploiement de Superset pour le Pilotage de l'Inclusion.",
+      "language": "Python",
+      "features": [],
+      "audience": null,
+      "dependencies": [],
+      "components": [],
+      "auth": null,
+      "tests": null,
+      "workflows": null,
+      "lastActivity": "2023-06-29T10:33:11Z",
+      "status": "active",
+      "license": null,
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": null,
+        "openIssues": 0
+      },
+      "tags": [],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "gip-inclusion"
     },
     {
       "url": "https://github.com/agora-gouv/agora-proxy",
@@ -90752,6 +93394,28 @@
       "organization": "etalab"
     },
     {
+      "url": "https://github.com/tchapgouv/posthog-scalingo",
+      "name": "posthog-scalingo",
+      "description": "Ce projet permet de déployer et de gérer PostHog sur la plateforme Scalingo. Il facilite l'utilisation de PostHog pour l'analyse de données dans un environnement Scalingo.",
+      "language": null,
+      "features": [],
+      "audience": null,
+      "dependencies": [],
+      "components": [],
+      "auth": null,
+      "tests": null,
+      "workflows": null,
+      "lastActivity": null,
+      "status": "unknown",
+      "license": null,
+      "hasDocumentation": false,
+      "metrics": null,
+      "tags": [],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "tchapgouv"
+    },
+    {
       "url": "https://github.com/numerique-gouv/helm-repo",
       "name": "helm-repo",
       "description": "Ce dépôt contient des charts Helm pour déployer des applications sur Kubernetes. Il vise à faciliter le déploiement et la gestion d'applications au sein de l'administration numérique française.",
@@ -90843,28 +93507,6 @@
       "organization": "numerique-gouv"
     },
     {
-      "url": "https://github.com/tchapgouv/posthog-scalingo",
-      "name": "posthog-scalingo",
-      "description": "Ce projet permet de déployer et de gérer PostHog sur la plateforme Scalingo. Il facilite l'utilisation de PostHog pour l'analyse de données dans un environnement Scalingo.",
-      "language": null,
-      "features": [],
-      "audience": null,
-      "dependencies": [],
-      "components": [],
-      "auth": null,
-      "tests": null,
-      "workflows": null,
-      "lastActivity": null,
-      "status": "unknown",
-      "license": null,
-      "hasDocumentation": false,
-      "metrics": null,
-      "tags": [],
-      "changelog": null,
-      "changelogGeneratedAt": null,
-      "organization": "tchapgouv"
-    },
-    {
       "url": "https://github.com/incubateur-ademe/mutafriches-qgis",
       "name": "mutafriches-qgis",
       "description": "Ce projet vise à fournir un plugin QGIS pour l'analyse et la visualisation de données relatives aux mutualisations de friches. Il permet d'identifier les opportunités de réutilisation des terrains et de soutenir les projets de revitalisation urbaine.",
@@ -90902,65 +93544,6 @@
       "changelog": null,
       "changelogGeneratedAt": null,
       "organization": "incubateur-ademe"
-    },
-    {
-      "url": "https://github.com/etalab/transport-dev-services",
-      "name": "transport-dev-services",
-      "description": "Ce projet fournit des services de développement liés au transport. Il vise à faciliter la création et l'intégration d'applications dans le domaine des transports. Il offre des outils et des API pour les développeurs.",
-      "language": null,
-      "features": [],
-      "audience": null,
-      "dependencies": [],
-      "components": [],
-      "auth": {},
-      "tests": null,
-      "workflows": [],
-      "lastActivity": null,
-      "status": "unknown",
-      "license": null,
-      "hasDocumentation": false,
-      "metrics": null,
-      "tags": [
-        "Transport & Mobilité"
-      ],
-      "changelog": null,
-      "changelogGeneratedAt": null,
-      "organization": "etalab"
-    },
-    {
-      "url": "https://github.com/etalab/mastodon-stats",
-      "name": "mastodon-stats",
-      "description": "Ce projet vise à collecter et analyser des statistiques sur les instances Mastodon. Il permet de suivre l'évolution de l'utilisation du réseau et d'identifier les tendances émergentes.",
-      "language": "Python",
-      "features": [
-        "Statistiques & Rapports",
-        "Visualisation de données & Cartographie",
-        "Recherche & Filtres"
-      ],
-      "audience": "Professionnels",
-      "dependencies": [],
-      "components": [
-        "Python (scripts & backend)",
-        "Bases de données SQL"
-      ],
-      "auth": {
-        "methods": [
-          "none"
-        ]
-      },
-      "tests": [],
-      "workflows": [],
-      "lastActivity": null,
-      "status": "unknown",
-      "license": null,
-      "hasDocumentation": false,
-      "metrics": null,
-      "tags": [
-        "Données & Open Data"
-      ],
-      "changelog": null,
-      "changelogGeneratedAt": null,
-      "organization": "etalab"
     },
     {
       "url": "https://github.com/entrepreneur-interet-general/matchID-search",
@@ -91022,6 +93605,165 @@
       "changelog": null,
       "changelogGeneratedAt": null,
       "organization": "entrepreneur-interet-general"
+    },
+    {
+      "url": "https://github.com/etalab/transport-dev-services",
+      "name": "transport-dev-services",
+      "description": "Ce projet fournit des services de développement liés au transport. Il vise à faciliter la création et l'intégration d'applications dans le domaine des transports. Il offre des outils et des API pour les développeurs.",
+      "language": null,
+      "features": [],
+      "audience": null,
+      "dependencies": [],
+      "components": [],
+      "auth": {},
+      "tests": null,
+      "workflows": [],
+      "lastActivity": null,
+      "status": "unknown",
+      "license": null,
+      "hasDocumentation": false,
+      "metrics": null,
+      "tags": [
+        "Transport & Mobilité"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "etalab"
+    },
+    {
+      "url": "https://github.com/etalab/mastodon-stats",
+      "name": "mastodon-stats",
+      "description": "Ce projet vise à collecter et analyser des statistiques sur les instances Mastodon. Il permet de suivre l'évolution de l'utilisation du réseau et d'identifier les tendances émergentes.",
+      "language": "Python",
+      "features": [
+        "Statistiques & Rapports",
+        "Visualisation de données & Cartographie",
+        "Recherche & Filtres"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [],
+      "components": [
+        "Python (scripts & backend)",
+        "Bases de données SQL"
+      ],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": [],
+      "workflows": [],
+      "lastActivity": null,
+      "status": "unknown",
+      "license": null,
+      "hasDocumentation": false,
+      "metrics": null,
+      "tags": [
+        "Données & Open Data"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "etalab"
+    },
+    {
+      "url": "https://github.com/MTES-MCT/test_nicolas",
+      "name": "test_nicolas",
+      "description": "Ce dépôt semble être un projet de test, probablement pour des expérimentations ou des validations de concepts. Il est actuellement vide, sans fichiers ni répertoires définis.",
+      "language": null,
+      "features": [],
+      "audience": null,
+      "dependencies": [],
+      "components": [],
+      "auth": {
+        "methods": [
+          "none"
+        ],
+        "providers": []
+      },
+      "tests": null,
+      "workflows": [],
+      "lastActivity": null,
+      "status": "unknown",
+      "license": null,
+      "hasDocumentation": false,
+      "metrics": null,
+      "tags": [],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "MTES-MCT"
+    },
+    {
+      "url": "https://github.com/MTES-MCT/parcours_r_module_big_data",
+      "name": "parcours_r_module_big_data",
+      "description": "Ce dépôt semble être un module d'apprentissage ou un parcours pédagogique axé sur le Big Data, probablement utilisant le langage R. Il vise à fournir des ressources et des outils pour comprendre et manipuler de grands ensembles de données.",
+      "language": "R",
+      "features": [],
+      "audience": "Professionnels",
+      "dependencies": [],
+      "components": [],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": null,
+      "workflows": null,
+      "lastActivity": null,
+      "status": "unknown",
+      "license": null,
+      "hasDocumentation": false,
+      "metrics": null,
+      "tags": [
+        "Données & Open Data",
+        "R & Data Science"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "MTES-MCT"
+    },
+    {
+      "url": "https://github.com/MTES-MCT/dialog-roadmap",
+      "name": "dialog-roadmap",
+      "description": "Ce dépôt semble être un squelette de projet, sans contenu visible. Il est donc difficile de déterminer sa fonction précise sans plus d'informations.",
+      "language": null,
+      "features": [],
+      "audience": null,
+      "dependencies": [],
+      "components": [],
+      "auth": null,
+      "tests": null,
+      "workflows": [],
+      "lastActivity": null,
+      "status": "unknown",
+      "license": null,
+      "hasDocumentation": false,
+      "metrics": null,
+      "tags": [],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "MTES-MCT"
+    },
+    {
+      "url": "https://github.com/MTES-MCT/dataqual",
+      "name": "dataqual",
+      "description": "Ce projet vise à améliorer la qualité des données. Il fournit des outils et des méthodes pour valider, nettoyer et enrichir les données.",
+      "language": null,
+      "features": [],
+      "audience": null,
+      "dependencies": [],
+      "components": [],
+      "auth": {},
+      "tests": null,
+      "workflows": [],
+      "lastActivity": null,
+      "status": "unknown",
+      "license": null,
+      "hasDocumentation": false,
+      "metrics": null,
+      "tags": [],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "MTES-MCT"
     },
     {
       "url": "https://github.com/SocialGouv/token-bureau-test-outscope",
@@ -91200,6 +93942,36 @@
       "organization": "SocialGouv"
     },
     {
+      "url": "https://github.com/IA-Generative/prompt-guard",
+      "name": "prompt-guard",
+      "description": "Ce projet vise à protéger les applications d'IA générative contre les attaques par injection de prompt. Il offre une couche de sécurité pour garantir la robustesse et la fiabilité des modèles de langage.",
+      "language": null,
+      "features": [],
+      "audience": null,
+      "dependencies": [],
+      "components": [],
+      "auth": {
+        "methods": [
+          "none"
+        ],
+        "providers": []
+      },
+      "tests": null,
+      "workflows": [],
+      "lastActivity": null,
+      "status": "unknown",
+      "license": null,
+      "hasDocumentation": false,
+      "metrics": null,
+      "tags": [
+        "Intelligence Artificielle & LLM",
+        "Sécurité & Auth"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "IA-Generative"
+    },
+    {
       "url": "https://github.com/betagouv/tmp-repo",
       "name": "tmp-repo",
       "description": "Ce dépôt semble être un dépôt temporaire ou de test, probablement utilisé pour des expérimentations ou des développements rapides.",
@@ -91364,136 +94136,6 @@
       "changelog": null,
       "changelogGeneratedAt": null,
       "organization": "betagouv"
-    },
-    {
-      "url": "https://github.com/IA-Generative/prompt-guard",
-      "name": "prompt-guard",
-      "description": "Ce projet vise à protéger les applications d'IA générative contre les attaques par injection de prompt. Il offre une couche de sécurité pour garantir la robustesse et la fiabilité des modèles de langage.",
-      "language": null,
-      "features": [],
-      "audience": null,
-      "dependencies": [],
-      "components": [],
-      "auth": {
-        "methods": [
-          "none"
-        ],
-        "providers": []
-      },
-      "tests": null,
-      "workflows": [],
-      "lastActivity": null,
-      "status": "unknown",
-      "license": null,
-      "hasDocumentation": false,
-      "metrics": null,
-      "tags": [
-        "Intelligence Artificielle & LLM",
-        "Sécurité & Auth"
-      ],
-      "changelog": null,
-      "changelogGeneratedAt": null,
-      "organization": "IA-Generative"
-    },
-    {
-      "url": "https://github.com/MTES-MCT/test_nicolas",
-      "name": "test_nicolas",
-      "description": "Ce dépôt semble être un projet de test, probablement pour des expérimentations ou des validations de concepts. Il est actuellement vide, sans fichiers ni répertoires définis.",
-      "language": null,
-      "features": [],
-      "audience": null,
-      "dependencies": [],
-      "components": [],
-      "auth": {
-        "methods": [
-          "none"
-        ],
-        "providers": []
-      },
-      "tests": null,
-      "workflows": [],
-      "lastActivity": null,
-      "status": "unknown",
-      "license": null,
-      "hasDocumentation": false,
-      "metrics": null,
-      "tags": [],
-      "changelog": null,
-      "changelogGeneratedAt": null,
-      "organization": "MTES-MCT"
-    },
-    {
-      "url": "https://github.com/MTES-MCT/parcours_r_module_big_data",
-      "name": "parcours_r_module_big_data",
-      "description": "Ce dépôt semble être un module d'apprentissage ou un parcours pédagogique axé sur le Big Data, probablement utilisant le langage R. Il vise à fournir des ressources et des outils pour comprendre et manipuler de grands ensembles de données.",
-      "language": "R",
-      "features": [],
-      "audience": "Professionnels",
-      "dependencies": [],
-      "components": [],
-      "auth": {
-        "methods": [
-          "none"
-        ]
-      },
-      "tests": null,
-      "workflows": null,
-      "lastActivity": null,
-      "status": "unknown",
-      "license": null,
-      "hasDocumentation": false,
-      "metrics": null,
-      "tags": [
-        "Données & Open Data",
-        "R & Data Science"
-      ],
-      "changelog": null,
-      "changelogGeneratedAt": null,
-      "organization": "MTES-MCT"
-    },
-    {
-      "url": "https://github.com/MTES-MCT/dialog-roadmap",
-      "name": "dialog-roadmap",
-      "description": "Ce dépôt semble être un squelette de projet, sans contenu visible. Il est donc difficile de déterminer sa fonction précise sans plus d'informations.",
-      "language": null,
-      "features": [],
-      "audience": null,
-      "dependencies": [],
-      "components": [],
-      "auth": null,
-      "tests": null,
-      "workflows": [],
-      "lastActivity": null,
-      "status": "unknown",
-      "license": null,
-      "hasDocumentation": false,
-      "metrics": null,
-      "tags": [],
-      "changelog": null,
-      "changelogGeneratedAt": null,
-      "organization": "MTES-MCT"
-    },
-    {
-      "url": "https://github.com/MTES-MCT/dataqual",
-      "name": "dataqual",
-      "description": "Ce projet vise à améliorer la qualité des données. Il fournit des outils et des méthodes pour valider, nettoyer et enrichir les données.",
-      "language": null,
-      "features": [],
-      "audience": null,
-      "dependencies": [],
-      "components": [],
-      "auth": {},
-      "tests": null,
-      "workflows": [],
-      "lastActivity": null,
-      "status": "unknown",
-      "license": null,
-      "hasDocumentation": false,
-      "metrics": null,
-      "tags": [],
-      "changelog": null,
-      "changelogGeneratedAt": null,
-      "organization": "MTES-MCT"
     }
   ],
   "organizations": [
@@ -91514,6 +94156,7 @@
     "etalab",
     "etalab-ia",
     "france-connect",
+    "gip-inclusion",
     "gristgouv",
     "incubateur-ademe",
     "mesadsfr",
@@ -91550,6 +94193,7 @@
     "Jupyter Notebook",
     "Kotlin",
     "M",
+    "MDX",
     "Makefile",
     "Mustache",
     "Nix",
@@ -91599,6 +94243,7 @@
     "CECILL-B",
     "EPL-1.0",
     "EPL-2.0",
+    "ETALAB 2.0",
     "EUPL-1.2",
     "Etalab-2.0",
     "FSL-1.0-Apache-2.0",
@@ -91667,6 +94312,7 @@
     "Account Number",
     "Actions",
     "ActiveRecord",
+    "Administration",
     "Administration & Backoffice",
     "Administration publique",
     "Adresse",
@@ -91727,6 +94373,7 @@
     "Bike Share",
     "Bitwarden",
     "Boilerplate",
+    "Bootstrap",
     "Bordeaux",
     "Bot",
     "Brevo",
@@ -91786,6 +94433,7 @@
     "CleverCloud",
     "Client",
     "Client Policy Executor",
+    "Cloud",
     "Cocoapods",
     "Codage",
     "Code du travail",
@@ -92285,6 +94933,7 @@
     "Réseau",
     "Réseaux neuronaux",
     "Rôles",
+    "S3",
     "SCDL",
     "SDES",
     "SDK",
@@ -93635,6 +96284,10 @@
       "changelogGeneratedAt": "2026-07-22T17:23:46Z"
     },
     {
+      "organization": "gip-inclusion",
+      "changelog": ""
+    },
+    {
       "organization": "gristgouv",
       "changelog": "# Synthèse d'activité : gristgouv (du 23 mai au 23 juin 2026)\n\n## Résumé de l'activité\nL'activité récente de l'organisation gristgouv s'est concentrée sur l'amélioration de la sécurité, de la qualité et de l'accessibilité de la plateforme Grist. L'ajout de nouveaux widgets via [widgets-config](/repos/gristgouv/widgets-config) enrichit les capacités de visualisation des données, tandis que des améliorations de l'image Docker via [grist-docker-image](/repos/gristgouv/grist-docker-image) renforcent la sécurité et la robustesse de l'environnement de déploiement. Des efforts significatifs ont également été déployés pour améliorer l'expérience d'apprentissage via [grist-mooc](/repos/gristgouv/grist-mooc) et la qualité du code via l'ajout de tests automatisés dans [grist-cw-intra-form](/repos/gristgouv/grist-cw-intra-form). Enfin, l'internationalisation de Grist progresse avec des améliorations de la traduction en hongrois et en italien via [grist-core](/repos/gristgouv/grist-core).\n\n## Sécurité\nL'image Docker Grist a bénéficié d'améliorations significatives en matière de sécurité grâce à l'intégration d'un scanner de vulnérabilités (Trivy) et une meilleure gestion de l'environnement de construction avec GVISOR ([grist-docker-image](/repos/gristgouv/grist-docker-image)).\n\n## Autres changements notables\n- Refactorisation et amélioration de l'intégration du workflow GVISOR dans l'image Docker ([grist-docker-image](/repos/gristgouv/grist-docker-image)).\n- Ajout d'une première suite de tests automatisés pour le formulaire intra ([grist-cw-intra-form](/repos/gristgouv/grist-cw-intra-form)).\n- Amélioration de la gestion des erreurs et de l'affichage des données dans les widgets ([gristlabs-widgets](/repos/gristgouv/gristlabs-widgets)).\n\n## Dépôts les plus actifs\n- [grist-docker-image](/repos/gristgouv/grist-docker-image) : Amélioration significative de la sécurité et de la robustesse de l'image Docker.\n- [widgets-config](/repos/gristgouv/widgets-config) : Ajout de nouveaux widgets D3.js pour enrichir les visualisations de données.\n- [gristlabs-widgets](/repos/gristgouv/gristlabs-widgets) : Amélioration de la lisibilité et de la robustesse des widgets existants.\n- [grist-mooc](/repos/gristgouv/grist-mooc) : Mise à jour du contenu de formation pour faciliter l'apprentissage de Grist.",
       "changelogGeneratedAt": "2026-07-22T17:23:46Z"
@@ -93711,91 +96364,93 @@
     }
   ],
   "stats": {
-    "total": 1785,
+    "total": 1835,
     "byOrg": {
-      "signaux-faibles": 7,
+      "tchapgouv": 88,
       "suitenumerique": 46,
+      "signaux-faibles": 7,
       "refugies-info": 8,
       "proconnect-gouv": 23,
       "openmaraude": 13,
       "numerique-gouv": 53,
-      "tchapgouv": 88,
       "mte-dgpr": 2,
       "mesadsfr": 1,
       "mission-apprentissage": 23,
       "gristgouv": 24,
       "incubateur-ademe": 81,
-      "etalab-ia": 69,
+      "gip-inclusion": 49,
       "france-connect": 10,
+      "etalab-ia": 69,
       "dnum-mi": 35,
-      "etalab": 177,
       "entrepreneur-interet-general": 87,
+      "etalab": 177,
       "demarche-numerique": 10,
       "codegouvfr": 39,
-      "cloud-gouv": 14,
+      "cloud-gouv": 15,
+      "datagouv": 80,
       "betagouv-experimentations": 14,
-      "anct-cartographie-nationale": 11,
       "agora-gouv": 11,
-      "SocialGouv": 227,
-      "betagouv": 374,
-      "IA-Generative": 52,
-      "ARCEP-dev": 16,
+      "anct-cartographie-nationale": 11,
       "MTES-MCT": 190,
-      "datagouv": 80
+      "SocialGouv": 227,
+      "ARCEP-dev": 16,
+      "IA-Generative": 52,
+      "betagouv": 374
     },
     "byLanguage": {
-      "Ruby": 65,
-      "Python": 397,
-      "Go": 33,
-      "Makefile": 9,
-      "Dockerfile": 22,
-      "TypeScript": 379,
-      "Jinja": 8,
-      "JavaScript": 250,
-      "Go Template": 6,
-      "Shell": 101,
-      "Jupyter Notebook": 23,
-      "HTML": 68,
-      "HCL": 7,
-      "Procfile": 2,
-      "Smarty": 2,
-      "Java": 19,
-      "Swift": 5,
-      "YAML": 13,
-      "Kotlin": 10,
+      "Python": 420,
       "Rust": 19,
+      "Shell": 104,
+      "Swift": 5,
+      "Kotlin": 10,
+      "Dockerfile": 23,
+      "TypeScript": 381,
+      "Smarty": 2,
+      "HCL": 9,
+      "HTML": 72,
+      "Go": 33,
       "Objective-C": 1,
+      "Jinja": 8,
+      "JavaScript": 254,
+      "YAML": 13,
+      "Go Template": 7,
+      "Jupyter Notebook": 23,
+      "Ruby": 67,
+      "Makefile": 9,
+      "Procfile": 3,
+      "Java": 19,
       "CSS": 13,
-      "PHP": 20,
-      "Vue": 18,
+      "PHP": 21,
+      "Vue": 20,
+      "MDX": 1,
       "Mustache": 4,
       "Nunjucks": 3,
-      "Elixir": 5,
-      "COBOL": 1,
-      "C": 2,
-      "null": 2,
-      "R": 15,
-      "CartoCSS": 2,
+      "PowerShell": 1,
       "Clojure": 6,
+      "R": 15,
+      "C#": 2,
+      "Elixir": 5,
+      "C": 2,
+      "COBOL": 1,
+      "null": 2,
+      "CartoCSS": 2,
       "SCSS": 4,
       "M": 1,
-      "PowerShell": 1,
-      "C#": 2,
       "ReScript": 1,
       "Scheme": 1,
       "TeX": 3,
       "Nix": 5,
+      "XSLT": 1,
       "Dart": 2,
+      "SAS": 1,
+      "PLpgSQL": 4,
+      "FreeMarker": 1,
+      "SQL": 1,
+      "Batchfile": 2,
       "Scala": 4,
       "Elm": 2,
       "Pug": 1,
-      "Svelte": 1,
-      "Batchfile": 2,
-      "PLpgSQL": 4,
-      "SAS": 1,
-      "FreeMarker": 1,
-      "SQL": 1,
-      "XSLT": 1
+      "Svelte": 1
     }
   }
 }
