@@ -1,0 +1,91 @@
+services:
+  minio:
+    image: minio/minio
+    container_name: itou_minio
+    restart: unless-stopped
+    environment:
+      - MINIO_ROOT_USER=minioadmin
+      - MINIO_ROOT_PASSWORD=minioadmin
+    command: server /data --console-address ":9001"
+    ports:
+      - "127.0.0.1:${MINIO_PORT_ON_DOCKER_HOST:-9000}:9000"
+      - "127.0.0.1:${MINIO_ADMIN_PORT_ON_DOCKER_HOST:-9001}:9001"
+    volumes:
+      - itou_minio:/data
+
+  # https://github.com/appropriate/docker-postgis
+  # https://hub.docker.com/r/mdillon/postgis/tags
+  postgres:
+    container_name: itou_postgres
+    image: postgis/postgis:17-master
+    # Disable some safety switches for a faster postgres: https://www.postgresql.org/docs/current/non-durability.html
+    command: -c fsync=off -c full_page_writes=off -c synchronous_commit=off
+    environment:
+      # Required by the "_/postgres" image used by "postgis/postgis"
+      # https://registry.hub.docker.com/_/postgres/
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=${PGDATABASE:-itou}
+      # Avoid a log error when starting the itou_postgres container:
+      # > Role "root" does not exist.
+      # Without this variable, the default Unix account ('root')
+      # is used automatically when starting postgres.
+      # https://www.postgresql.org/docs/current/libpq-envars.html
+      - PGUSER=postgres
+      - PGPASSWORD=password
+    # The default memory setting (64M) is not enough anymore due to the size of the database we import
+    # https://stackoverflow.com/questions/56839975/docker-shm-size-dev-shm-resizing-shared-memory
+    shm_size: 1g
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - type: bind
+        source: ${PWD}/docker/dev/postgres
+        target: /var/run/postgresql/
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT_ON_DOCKER_HOST:-5432}:5432"
+
+  redis:
+    image: redis
+    container_name: itou_redis
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:6379:6379"
+
+  django:
+    profiles: ["django"]
+    container_name: itou_django
+    environment:
+      - PGHOST=postgres
+      - PGUSER=postgres
+      - PGPASSWORD=password
+      - PYTHONPATH=.
+      - ITOU_LOG_LEVEL=DEBUG
+      - CELLAR_ADDON_HOST=minio:${MINIO_PORT_ON_DOCKER_HOST:-9000}
+      - VIRTUAL_ENV=/app/.venv-docker
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - postgres
+    build:
+      context: .
+      dockerfile: ./docker/dev/django/Dockerfile
+      args:
+        APP_USER: app
+        APP_DIR: /app
+        PYTHON_VERSION: 3.13
+        PG_MAJOR: 17
+    volumes:
+      # Mount the current directory into `/app` inside the running container.
+      - .:/app
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${DJANGO_PORT_ON_DOCKER_HOST:-8000}:8000"
+    # Make interactive debugging possible.
+    # Source: https://stackoverflow.com/questions/36249744/interactive-shell-using-docker-compose
+    # Run the usual `make run` (`docker-compose up`) and then in a second terminal run `docker attach itou_django`.
+    # You should now be able to access the usual interactive debugger on that second terminal.
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+
+volumes:
+  postgres_data:
+  itou_minio:

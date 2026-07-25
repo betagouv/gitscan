@@ -1,0 +1,3030 @@
+.
+├── .coveragerc
+├── .dockerignore
+├── .editorconfig
+├── .gitattributes
+├── .github
+│   ├── CODEOWNERS
+│   ├── ISSUE_TEMPLATE
+│   │   ├── bug_report.md
+│   │   └── feature_request.md
+│   ├── actions
+│   │   └── setup
+│   │       └── action.yml
+│   ├── dependabot.yml
+│   ├── pull_request_template.md
+│   └── workflows
+│       ├── ci.yml
+│       ├── clean-clevercloud-buckets.yml
+│       ├── demo-reset.yml
+│       ├── git.yml
+│       ├── mkchangelog.yml
+│       ├── notify-slack.yml
+│       ├── require-labels.yml
+│       ├── review-app-creation.yml
+│       └── review-app-removal.yml
+├── .gitignore
+├── .pre-commit-config.yaml
+├── .python-version
+├── .vscode
+│   ├── extensions.json
+│   ├── launch.json
+│   └── settings.json
+├── CHANGELOG.md
+├── CHANGELOG_breaking_changes.md
+├── LICENSE
+├── Makefile
+├── README.md
+├── clevercloud
+│   ├── cron.json
+│   ├── http.json
+│   ├── pre_build.sh
+│   ├── pre_run.sh
+│   ├── review-app-after-success.sh
+│   ├── run_management_command.sh
+│   ├── send_approvals_to_pe.sh
+│   └── transfer_employee_records.sh
+├── config
+│   ├── __init__.py
+│   ├── sentry.py
+│   ├── settings
+│   │   ├── __init__.py
+│   │   ├── base.py
+│   │   ├── dev.py
+│   │   └── test.py
+│   ├── urls.py
+│   └── wsgi.py
+├── docker
+│   └── dev
+│       └── django
+│           ├── Dockerfile
+│           └── entrypoint.sh
+├── docker-compose.yml
+├── docs
+│   ├── Docker.md
+│   ├── backup.md
+│   ├── coding-style.md
+│   ├── developing.md
+│   ├── environment.md
+│   └── javascript.md
+├── exports
+│   └── readme.md
+├── imports
+│   └── README.md
+├── itou
+│   ├── __init__.py
+│   ├── allauth_adapters
+│   │   ├── __init__.py
+│   │   ├── apps.py
+│   │   └── migrations
+│   │       ├── 0001_initial.py
+│   │       └── __init__.py
+│   ├── analytics
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── api_usage.py
+│   │   ├── approvals.py
+│   │   ├── apps.py
+│   │   ├── archive.py
+│   │   ├── employee_record.py
+│   │   ├── management
+│   │   │   ├── __init__.py
+│   │   │   └── commands
+│   │   │       ├── __init__.py
+│   │   │       └── collect_analytics_data.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_alter_datum_code.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── tech.py
+│   │   └── users.py
+│   ├── antivirus
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── management
+│   │   │   ├── __init__.py
+│   │   │   └── commands
+│   │   │       ├── __init__.py
+│   │   │       └── scan_s3_files.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   └── models.py
+│   ├── api
+│   │   ├── README-FS-SSII.md
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── applicants_api
+│   │   │   ├── __init__.py
+│   │   │   ├── perms.py
+│   │   │   ├── serializers.py
+│   │   │   └── views.py
+│   │   ├── auth.py
+│   │   ├── changelog.py
+│   │   ├── data_inclusion_api
+│   │   │   ├── __init__.py
+│   │   │   ├── enums.py
+│   │   │   ├── serializers.py
+│   │   │   └── views.py
+│   │   ├── employee_record_api
+│   │   │   ├── __init__.py
+│   │   │   ├── apps.py
+│   │   │   ├── perms.py
+│   │   │   ├── serializers.py
+│   │   │   └── viewsets.py
+│   │   ├── errors.py
+│   │   ├── geiq
+│   │   │   ├── __init__.py
+│   │   │   ├── serializers.py
+│   │   │   └── views.py
+│   │   ├── job_application_api
+│   │   │   ├── __init__.py
+│   │   │   ├── perms.py
+│   │   │   ├── schema.py
+│   │   │   ├── serializers.py
+│   │   │   ├── throttling.py
+│   │   │   └── views.py
+│   │   ├── marche_api
+│   │   │   ├── __init__.py
+│   │   │   ├── serializers.py
+│   │   │   └── views.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_servicetoken.py
+│   │   │   ├── 0003_create_existing_tokens.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── nexus
+│   │   │   ├── __init__.py
+│   │   │   ├── serializers.py
+│   │   │   └── views.py
+│   │   ├── pagination.py
+│   │   ├── redoc_views.py
+│   │   ├── siae_api
+│   │   │   ├── __init__.py
+│   │   │   ├── serializers.py
+│   │   │   └── viewsets.py
+│   │   ├── throttling.py
+│   │   ├── token_auth
+│   │   │   ├── __init__.py
+│   │   │   └── views.py
+│   │   └── urls.py
+│   ├── approvals
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── admin_forms.py
+│   │   ├── admin_views.py
+│   │   ├── constants.py
+│   │   ├── enums.py
+│   │   ├── management
+│   │   │   ├── __init__.py
+│   │   │   └── commands
+│   │   │       ├── __init__.py
+│   │   │       ├── prolongation_requests_chores.py
+│   │   │       └── send_approvals_to_pe.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_rename_prolongationrequest_validated_by.py
+│   │   │   ├── 0003_make_prolongationrequest_assigned_to_non_nullable.py
+│   │   │   ├── 0004_delete_originalpoleemploiapproval.py
+│   │   │   ├── 0005_delete_poleemploiapproval.py
+│   │   │   ├── 0006_remove_poleemploiapproval.py
+│   │   │   ├── 0007_approval_approval_origin_siae_siret_regex.py
+│   │   │   ├── 0008_cancelledapproval_cancelledapproval_origin_siae_siret_regex.py
+│   │   │   ├── 0009_alter_approval_origin_sender_kind_and_more.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── notifications.py
+│   │   ├── perms.py
+│   │   └── utils.py
+│   ├── archive
+│   │   ├── __init__.py
+│   │   ├── anonymize.py
+│   │   ├── apps.py
+│   │   ├── constants.py
+│   │   ├── management
+│   │   │   ├── __init__.py
+│   │   │   └── commands
+│   │   │       ├── __init__.py
+│   │   │       ├── anonymize_cancelled_approvals.py
+│   │   │       ├── anonymize_jobseekers.py
+│   │   │       ├── anonymize_professionals.py
+│   │   │       ├── notify_inactive_jobseekers.py
+│   │   │       ├── notify_inactive_professionals.py
+│   │   │       └── remove_unknown_emails_from_brevo.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_archivedjobseeker_counts.py
+│   │   │   ├── 0003_archivedapplication.py
+│   │   │   ├── 0004_rename_archivedapplication_anonymizedapplication_and_more.py
+│   │   │   ├── 0005_alter_anonymizedapplication_options_and_more.py
+│   │   │   ├── 0006_anonymizedprofessional.py
+│   │   │   ├── 0007_remove_anonymizedapplication_hiring_without_approval.py
+│   │   │   ├── 0008_rename_anonymizedapplication_has_been_transferred_and_more.py
+│   │   │   ├── 0009_remove_anonymizedapplication_hiring_contract_nature.py
+│   │   │   ├── 0010_alter_anonymizedapplication_options_and_more.py
+│   │   │   ├── 0011_anonymizedapproval_and_more.py
+│   │   │   ├── 0012_anonymizedcancelledapproval.py
+│   │   │   ├── 0013_remove_evaluated_jobseekers.py
+│   │   │   ├── 0014_delete_emailadress_of_anonymized_professionals.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── services
+│   │   │   └── __init__.py
+│   │   ├── tasks.py
+│   │   └── utils.py
+│   ├── asp
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── constants.py
+│   │   ├── fixtures
+│   │   │   ├── asp_INSEE_communes.json
+│   │   │   ├── asp_INSEE_countries.json
+│   │   │   ├── asp_INSEE_departments.json
+│   │   │   ├── asp_siae_kinds.json
+│   │   │   ├── test_asp_INSEE_communes_factory.json
+│   │   │   └── test_asp_INSEE_countries_factory.json
+│   │   ├── forms.py
+│   │   ├── management
+│   │   │   ├── __init__.py
+│   │   │   └── commands
+│   │   │       ├── __init__.py
+│   │   │       ├── check_asp_ref.py
+│   │   │       ├── gen_asp_ref_fixtures.py
+│   │   │       └── sync_communes.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_update_pierrefite-sur-seine.py
+│   │   │   └── __init__.py
+│   │   ├── mocks
+│   │   │   └── providers.py
+│   │   ├── models.py
+│   │   ├── reference
+│   │   │   ├── ref_duree_allocation_emploi_v2.csv
+│   │   │   ├── ref_extension_voie_v1.csv
+│   │   │   ├── ref_grp_pays_v1.csv
+│   │   │   ├── ref_insee_com_v2.csv
+│   │   │   ├── ref_insee_com_v3.csv
+│   │   │   ├── ref_insee_com_v4.csv
+│   │   │   ├── ref_insee_dpt_v2.csv
+│   │   │   ├── ref_insee_pays_v4.csv
+│   │   │   ├── ref_mesure_v2.csv
+│   │   │   ├── ref_niveau_formation_v3.csv
+│   │   │   ├── ref_orienteur_v5.csv
+│   │   │   ├── ref_type_employeur_v3.csv
+│   │   │   └── ref_type_voie_v3.csv
+│   │   ├── typing.py
+│   │   └── utils.py
+│   ├── cities
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── management
+│   │   │   ├── __init__.py
+│   │   │   └── commands
+│   │   │       ├── __init__.py
+│   │   │       ├── resolve_insee_cities.py
+│   │   │       └── sync_cities.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_city_last_synced_at.py
+│   │   │   ├── 0003_city_siren_epci.py
+│   │   │   └── __init__.py
+│   │   └── models.py
+│   ├── common_apps
+│   │   ├── __init__.py
+│   │   ├── address
+│   │   │   ├── __init__.py
+│   │   │   ├── departments.py
+│   │   │   ├── format.py
+│   │   │   ├── forms.py
+│   │   │   └── models.py
+│   │   ├── nir
+│   │   │   ├── __init__.py
+│   │   │   └── forms.py
+│   │   ├── organizations
+│   │   │   ├── admin.py
+│   │   │   ├── models.py
+│   │   │   └── views.py
+│   │   └── resume
+│   │       └── __init__.py
+│   ├── communications
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── cache.py
+│   │   ├── dispatch
+│   │   │   ├── __init__.py
+│   │   │   ├── base.py
+│   │   │   ├── email.py
+│   │   │   └── utils.py
+│   │   ├── forms.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   └── models.py
+│   ├── companies
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── admin_forms.py
+│   │   ├── apps.py
+│   │   ├── enums.py
+│   │   ├── fixtures
+│   │   │   ├── fluxIAE_AnnexeFinanciere_22022022_112211.csv.gz
+│   │   │   └── fluxIAE_Structure_22022022_112211.csv.gz
+│   │   ├── management
+│   │   │   ├── __init__.py
+│   │   │   └── commands
+│   │   │       ├── __init__.py
+│   │   │       ├── _import_siae
+│   │   │       │   ├── __init__.py
+│   │   │       │   ├── convention.py
+│   │   │       │   ├── financial_annex.py
+│   │   │       │   ├── siae.py
+│   │   │       │   ├── utils.py
+│   │   │       │   ├── vue_af.py
+│   │   │       │   └── vue_structure.py
+│   │   │       ├── deactivate_old_job_descriptions.py
+│   │   │       ├── deactivate_spontaneous_jobapps.py
+│   │   │       ├── import_ea_eatt.py
+│   │   │       ├── import_geiq.py
+│   │   │       ├── import_siae.py
+│   │   │       ├── move_company_data.py
+│   │   │       ├── sync_ft_offers.py
+│   │   │       ├── update_companies_coords.py
+│   │   │       └── update_companies_job_app_score.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_alter_company_job_app_score.py
+│   │   │   ├── 0003_jobdescription_source_tags.py
+│   │   │   ├── 0004_fill_job_description_source_tags.py
+│   │   │   ├── 0005_remove_jobdescription_contract_nature.py
+│   │   │   ├── 0006_really_drop_companies_jobdescription_contract_nature.py
+│   │   │   ├── 0007_auto_20250807_1719.py
+│   │   │   ├── 0008_contract.py
+│   │   │   ├── 0009_siaeaciconvergencephc.py
+│   │   │   ├── 0010_populate_aci_convergence_phc.py
+│   │   │   ├── 0011_company_unique_convention_per_siae_from_asp.py
+│   │   │   ├── 0012_company_company_siret_regex.py
+│   │   │   ├── 0013_siaeconvention_convention_siret_signature_regex.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── notifications.py
+│   │   ├── perms.py
+│   │   └── transfer.py
+│   ├── eligibility
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── admin_form.py
+│   │   ├── apps.py
+│   │   ├── data
+│   │   │   ├── __init__.py
+│   │   │   ├── administrative_criteria.json
+│   │   │   └── administrative_criteria_geiq.json
+│   │   ├── enums.py
+│   │   ├── management
+│   │   │   ├── __init__.py
+│   │   │   └── commands
+│   │   │       ├── __init__.py
+│   │   │       └── retry_certify_criteria.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_update_certification_periods_from_certified.py
+│   │   │   ├── 0003_selectedadministrativecriteria_last_certification_attempt_at.py
+│   │   │   ├── 0004_geiqselectedadministrativecriteria_last_certification_attempt_at.py
+│   │   │   ├── 0005_remove_selectedadministrativecriteria_certified.py
+│   │   │   ├── 0006_remove_abstractselectedadministrativecriteria_certified.py
+│   │   │   ├── 0007_rename_zrr.py
+│   │   │   └── __init__.py
+│   │   ├── models
+│   │   │   ├── __init__.py
+│   │   │   ├── common.py
+│   │   │   ├── geiq.py
+│   │   │   └── iae.py
+│   │   ├── tasks.py
+│   │   └── utils.py
+│   ├── emails
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── management
+│   │   │   ├── __init__.py
+│   │   │   └── commands
+│   │   │       ├── __init__.py
+│   │   │       └── delete_old_emails.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   └── tasks.py
+│   ├── employee_record
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── common_management.py
+│   │   ├── constants.py
+│   │   ├── enums.py
+│   │   ├── exceptions.py
+│   │   ├── management
+│   │   │   └── commands
+│   │   │       ├── __init__.py
+│   │   │       ├── archive_employee_records.py
+│   │   │       ├── employee_record.py
+│   │   │       ├── employee_records_status.py
+│   │   │       ├── resend_employee_records.py
+│   │   │       ├── sanitize_employee_records.py
+│   │   │       ├── transfer_employee_records.py
+│   │   │       └── transfer_employee_records_updates.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_employeerecord_ntt_and_more.py
+│   │   │   └── __init__.py
+│   │   ├── mocks
+│   │   │   ├── __init__.py
+│   │   │   ├── asp_test_siaes.py
+│   │   │   └── fake_serializers.py
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   └── utils.py
+│   ├── external_data
+│   │   ├── __init__.py
+│   │   ├── apis
+│   │   │   ├── __init__.py
+│   │   │   └── ft_connect.py
+│   │   ├── apps.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_remove_jobseekerexternaldata_data_import_and_more.py
+│   │   │   └── __init__.py
+│   │   └── tasks.py
+│   ├── files
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── forms.py
+│   │   ├── management
+│   │   │   ├── __init__.py
+│   │   │   └── commands
+│   │   │       ├── __init__.py
+│   │   │       ├── configure_buckets.py
+│   │   │       ├── delete_unused_files.py
+│   │   │       └── migrate_resume_to_private.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   └── models.py
+│   ├── fixtures
+│   │   ├── django
+│   │   │   ├── account__email_address.json
+│   │   │   ├── approvals__approval.json
+│   │   │   ├── companies__company.json
+│   │   │   ├── companies__company_membership.json
+│   │   │   ├── companies__contract.json
+│   │   │   ├── companies__job_description.json
+│   │   │   ├── companies__siae_convention.json
+│   │   │   ├── companies__siae_financial_annexe.json
+│   │   │   ├── dumpdata.sh
+│   │   │   ├── dynamic.py
+│   │   │   ├── eligibility__eligibility_diagnosis.json
+│   │   │   ├── eligibility__geiq_eligibility_diagnosis.json
+│   │   │   ├── eligibility__geiq_selected_administrative_criteria.json
+│   │   │   ├── employee_record__employee_record.json
+│   │   │   ├── geiq_assessments__assessment_campaign.json
+│   │   │   ├── geiq_assessments__label_infos.json
+│   │   │   ├── gps__follow_up_group.json
+│   │   │   ├── gps__follow_up_group_membership.json
+│   │   │   ├── insertion__genericreferenceitem.json
+│   │   │   ├── insertion__service.json
+│   │   │   ├── insertion__structure.json
+│   │   │   ├── institutions__institution.json
+│   │   │   ├── institutions__institution_membership.json
+│   │   │   ├── job_applications__jobapplication.json
+│   │   │   ├── prescribers__organization.json
+│   │   │   ├── prescribers_prescriber_membership.json
+│   │   │   ├── rdv_insertion__appointment.json
+│   │   │   ├── rdv_insertion__invitation.json
+│   │   │   ├── rdv_insertion__invitation_request.json
+│   │   │   ├── rdv_insertion__location.json
+│   │   │   ├── rdv_insertion__participation.json
+│   │   │   ├── recommendations__beneficiary.json
+│   │   │   ├── users__job_seeker_assignment.json
+│   │   │   ├── users__jobseeker_profile.json
+│   │   │   └── users__user.json
+│   │   └── postgres
+│   │       ├── asp_commune.sql
+│   │       ├── asp_country.sql
+│   │       ├── asp_department.sql
+│   │       ├── cities_city.sql
+│   │       ├── dumpdata.sh
+│   │       ├── jobs_appellation.sql
+│   │       └── jobs_rome.sql
+│   ├── geiq_assessments
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── enums.py
+│   │   ├── fixtures.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_assessment_label_geiq_post_code.py
+│   │   │   ├── 0003_fill_label_geiq_post_code.py
+│   │   │   ├── 0004_fill_label_antennas_post_code.py
+│   │   │   ├── 0005_assessment_state_assessmenttransitionlog.py
+│   │   │   ├── 0006_assessment_state_constraints.py
+│   │   │   ├── 0007_assessmentcampaign_opening_date_and_more.py
+│   │   │   ├── 0008_assessmenttransitionlog_comment_and_more.py
+│   │   │   ├── 0009_employeecontract_allowance_refusal_details_and_more.py
+│   │   │   ├── 0010_remove_assessmenttransitionlog_ask_for_geiq_fix_transition_with_comment_and_more.py
+│   │   │   ├── 0011_employee_allowance_granted_previous_year.py
+│   │   │   ├── 0012_employeecontract_allowance_request_justification_details_and_more.py
+│   │   │   ├── 0013_remove_assessment_geiq_assessment_unique_label_geiq_id_with_main_geiq.py
+│   │   │   ├── 0014_assessment_legal_commitment_number_and_more.py
+│   │   │   ├── 0015_alter_assessment_advance_amount_and_more.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── notifications.py
+│   │   ├── sync.py
+│   │   └── tasks.py
+│   ├── geo
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── enums.py
+│   │   ├── fixtures
+│   │   │   ├── QPV_2024.json
+│   │   │   └── ZRR_20221109.json
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_switch_QPV_to_2024.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   └── utils.py
+│   ├── gps
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── management
+│   │   │   ├── __init__.py
+│   │   │   └── commands
+│   │   │       ├── __init__.py
+│   │   │       ├── archive_old_gps_memberships.py
+│   │   │       ├── export_beneficiaries_for_advisor.py
+│   │   │       └── import_advisor_information.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   └── models.py
+│   ├── insertion
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── division_labels.py
+│   │   ├── enums.py
+│   │   ├── management
+│   │   │   ├── __init__.py
+│   │   │   └── commands
+│   │   │       ├── __init__.py
+│   │   │       └── import_structures_and_services.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_structure_opening_hours.py
+│   │   │   ├── 0003_service_eligibility_zones.py
+│   │   │   ├── 0004_alter_service_mobilization_modes_beneficiaries_external_form_link_and_more.py
+│   │   │   ├── 0005_structure_reseaux_porteurs.py
+│   │   │   ├── 0006_alter_service_insee_city_alter_structure_insee_city.py
+│   │   │   ├── 0007_mobilizationevent.py
+│   │   │   ├── 0008_orientation.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── opening_hours.py
+│   │   └── utils.py
+│   ├── institutions
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── enums.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_enforce_unicity_on_national_kinds.py
+│   │   │   └── __init__.py
+│   │   └── models.py
+│   ├── invitations
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   └── notifications.py
+│   ├── job_applications
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── admin_forms.py
+│   │   ├── apps.py
+│   │   ├── enums.py
+│   │   ├── export.py
+│   │   ├── management
+│   │   │   └── commands
+│   │   │       ├── archive_job_applications.py
+│   │   │       └── reject_job_applications_after_delay.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_more_job_application_sender_coherence_checks.py
+│   │   │   ├── 0003_jobapplicationcomment.py
+│   │   │   ├── 0004_jobapplication_job_applica_to_comp_592f4f_idx.py
+│   │   │   ├── 0005_alter_jobapplication_hiring_start_at.py
+│   │   │   ├── 0006_soft_remove_jobapplication_prehiring_guidance_days.py
+│   │   │   ├── 0007_cleanup_non_accepted_accepted_only_fields.py
+│   │   │   ├── 0008_jobapplication_accepted_only_fields.py
+│   │   │   ├── 0009_alter_jobapplicationcomment_created_by.py
+│   │   │   ├── 0010_hard_remove_jobapplication_prehiring_guidance_days.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── notifications.py
+│   │   └── utils.py
+│   ├── jobs
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── management
+│   │   │   ├── __init__.py
+│   │   │   └── commands
+│   │   │       ├── __init__.py
+│   │   │       └── sync_romes_and_appellations.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   └── models.py
+│   ├── metabase
+│   │   ├── __init__.py
+│   │   ├── dataframes.py
+│   │   ├── db.py
+│   │   ├── management
+│   │   │   ├── __init__.py
+│   │   │   └── commands
+│   │   │       ├── __init__.py
+│   │   │       ├── fetch_riae_contracts.py
+│   │   │       ├── metabase_data.py
+│   │   │       ├── populate_metabase_emplois.py
+│   │   │       ├── populate_metabase_matomo.py
+│   │   │       └── upload_data_to_pilotage.py
+│   │   ├── models.py
+│   │   ├── tables
+│   │   │   ├── __init__.py
+│   │   │   ├── analytics.py
+│   │   │   ├── approvals.py
+│   │   │   ├── companies.py
+│   │   │   ├── criteria.py
+│   │   │   ├── evaluated_criteria.py
+│   │   │   ├── evaluated_job_applications.py
+│   │   │   ├── evaluated_siaes.py
+│   │   │   ├── evaluation_campaigns.py
+│   │   │   ├── gps.py
+│   │   │   ├── insee_codes.py
+│   │   │   ├── institutions.py
+│   │   │   ├── job_applications.py
+│   │   │   ├── job_descriptions.py
+│   │   │   ├── job_seekers.py
+│   │   │   ├── memberships.py
+│   │   │   ├── mobilization_events.py
+│   │   │   ├── organizations.py
+│   │   │   ├── prolongation_requests.py
+│   │   │   ├── prolongations.py
+│   │   │   ├── rome_codes.py
+│   │   │   ├── selected_jobs.py
+│   │   │   ├── suspensions.py
+│   │   │   ├── users.py
+│   │   │   └── utils.py
+│   │   └── utils.py
+│   ├── nexus
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── enums.py
+│   │   ├── management
+│   │   │   ├── __init__.py
+│   │   │   └── commands
+│   │   │       ├── __init__.py
+│   │   │       └── populate_metabase_nexus.py
+│   │   ├── middleware.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_activatedservice.py
+│   │   │   ├── 0003_nexusmembership_source_id_alter_nexusmembership_id.py
+│   │   │   ├── 0004_activatedservice_user_service_unique.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   └── utils.py
+│   ├── openid_connect
+│   │   ├── __init__.py
+│   │   ├── apps.py
+│   │   ├── constants.py
+│   │   ├── errors.py
+│   │   ├── france_connect
+│   │   │   ├── __init__.py
+│   │   │   ├── apps.py
+│   │   │   ├── constants.py
+│   │   │   ├── migrations
+│   │   │   │   ├── 0001_initial.py
+│   │   │   │   ├── 0002_franceconnectstate_nonce.py
+│   │   │   │   └── __init__.py
+│   │   │   ├── models.py
+│   │   │   ├── urls.py
+│   │   │   └── views.py
+│   │   ├── ft_connect
+│   │   │   ├── __init__.py
+│   │   │   ├── apps.py
+│   │   │   ├── constants.py
+│   │   │   ├── migrations
+│   │   │   │   ├── 0001_initial.py
+│   │   │   │   ├── 0002_francetravailconnectstate.py
+│   │   │   │   ├── 0003_rename_poleemploiconnectstate_francetravailconnectstate.py
+│   │   │   │   └── __init__.py
+│   │   │   ├── models.py
+│   │   │   ├── urls.py
+│   │   │   └── views.py
+│   │   ├── management
+│   │   │   ├── __init__.py
+│   │   │   └── commands
+│   │   │       ├── __init__.py
+│   │   │       └── cleanup_oidc_states.py
+│   │   ├── models.py
+│   │   ├── pro_connect
+│   │   │   ├── __init__.py
+│   │   │   ├── apps.py
+│   │   │   ├── constants.py
+│   │   │   ├── enums.py
+│   │   │   ├── migrations
+│   │   │   │   ├── 0001_initial.py
+│   │   │   │   ├── 0002_proconnectstate_nonce.py
+│   │   │   │   ├── 0003_proconnectauthentication.py
+│   │   │   │   └── __init__.py
+│   │   │   ├── models.py
+│   │   │   ├── urls.py
+│   │   │   └── views.py
+│   │   └── utils.py
+│   ├── otp
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── data
+│   │   │   ├── mfa_required_companies.csv
+│   │   │   └── mfa_required_organizations.csv
+│   │   ├── management
+│   │   │   └── commands
+│   │   │       ├── __init__.py
+│   │   │       └── purge_disabled_otp_devices.py
+│   │   ├── middleware.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_itoutotpdevice.py
+│   │   │   ├── 0003_migrate_to_itou_totp_device.py
+│   │   │   ├── 0004_remove_itoutotpdevice_unique_name_per_user_and_more.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   └── utils.py
+│   ├── prescribers
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── admin_forms.py
+│   │   ├── apps.py
+│   │   ├── enums.py
+│   │   ├── management
+│   │   │   ├── __init__.py
+│   │   │   └── commands
+│   │   │       ├── __init__.py
+│   │   │       ├── merge_organizations.py
+│   │   │       └── sync_ft_organizations.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_prescriberorganization_prevent_not_required_authorization_unless_other.py
+│   │   │   ├── 0003_prescriberorganization_prescriber_organization_siret_regex.py
+│   │   │   └── __init__.py
+│   │   └── models.py
+│   ├── rdv_insertion
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── api.py
+│   │   ├── apps.py
+│   │   ├── enums.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   └── models.py
+│   ├── recommendations
+│   │   ├── __init__.py
+│   │   ├── _mock_data.py
+│   │   ├── apps.py
+│   │   ├── enums.py
+│   │   ├── helpers.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   └── services.py
+│   ├── scripts
+│   │   ├── __init__.py
+│   │   ├── management
+│   │   │   └── commands
+│   │   │       ├── add_admin_for_company_group.py
+│   │   │       ├── create_asp_employee_records.py
+│   │   │       ├── export_auto_prescriptions.py
+│   │   │       ├── fill_employee_record_logs_history.py
+│   │   │       ├── fill_job_seeker_profile_asp_uid_changes.py
+│   │   │       ├── geolocate_jobseeker_addresses.py
+│   │   │       ├── move_job_applications.py
+│   │   │       └── redact_zendesk_attachments.py
+│   │   └── sample_user_geoloc.csv
+│   ├── search
+│   │   ├── __init__.py
+│   │   ├── apps.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_fix_savedsearch_queryparams_20251022_1512.py
+│   │   │   └── __init__.py
+│   │   └── models.py
+│   ├── siae_evaluations
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── constants.py
+│   │   ├── emails.py
+│   │   ├── enums.py
+│   │   ├── fixtures.py
+│   │   ├── management
+│   │   │   ├── __init__.py
+│   │   │   └── commands
+│   │   │       ├── __init__.py
+│   │   │       ├── archive_accepted_evaluated_siae.py
+│   │   │       └── evaluation_campaign_notify.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_evaluatedadministrativecriteria_criteria_certified.py
+│   │   │   ├── 0003_evaluatedsiae_final_state.py
+│   │   │   ├── 0004_evaluatedsiae_archive_accepted_job_applications_nb.py
+│   │   │   ├── 0005_remove_sanctions_deactivation_reason.py
+│   │   │   ├── 0006_evaluatedjobapplicationsanction_and_more.py
+│   │   │   ├── 0007_alter_evaluatedsiae_notification_text.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   └── templatetags
+│   │       ├── __init__.py
+│   │       └── siae_evaluations_tags.py
+│   ├── static
+│   │   ├── .gitattributes
+│   │   ├── css
+│   │   │   ├── itou-admin.css
+│   │   │   └── itou.css
+│   │   ├── favicon.ico
+│   │   ├── img
+│   │   │   ├── content
+│   │   │   │   ├── 5engagements.png
+│   │   │   │   ├── agrement.png
+│   │   │   │   ├── avant_apres.png
+│   │   │   │   └── parcours.png
+│   │   │   ├── dashboard
+│   │   │   │   ├── banner-statistiques-pilotage-bg.jpg
+│   │   │   │   ├── card-header-bg-diagoriente.png
+│   │   │   │   ├── card-header-bg-dora.png
+│   │   │   │   ├── card-header-bg-gps.png
+│   │   │   │   └── card-header-bg-immersion-facile.png
+│   │   │   ├── edit_siae_header.svg
+│   │   │   ├── employee_record
+│   │   │   │   └── asp_upload.svg
+│   │   │   ├── employee_records
+│   │   │   ├── franceconnect-bouton-hover.svg
+│   │   │   ├── franceconnect-bouton.svg
+│   │   │   ├── ft_connect_btn.svg
+│   │   │   ├── home
+│   │   │   │   ├── bg-communaute-mobile.png
+│   │   │   │   ├── bg-communaute.png
+│   │   │   │   ├── illustration-01.png
+│   │   │   │   ├── illustration-02.png
+│   │   │   │   ├── illustration-03.png
+│   │   │   │   ├── illustration-04.png
+│   │   │   │   └── illustration-05.png
+│   │   │   ├── illustration-card-no-result.png
+│   │   │   ├── illustration-error.png
+│   │   │   ├── illustration-mon-recap.png
+│   │   │   ├── illustration-pc.svg
+│   │   │   ├── je-donne-mon-avis.svg
+│   │   │   ├── job_seeker_criteria.png
+│   │   │   ├── job_seeker_signup.png
+│   │   │   ├── job_seeker_situation.png
+│   │   │   ├── job_seeker_start.png
+│   │   │   ├── login.svg
+│   │   │   ├── logo-france-travail.svg
+│   │   │   ├── logo_dora.svg
+│   │   │   ├── logo_header.svg
+│   │   │   ├── logo_metatags.png
+│   │   │   ├── logo_ministere_du_travail.svg
+│   │   │   ├── logo_rdv_insertion.svg
+│   │   │   ├── nexus
+│   │   │   │   ├── presentation_communaute.png
+│   │   │   │   ├── presentation_dora.png
+│   │   │   │   ├── presentation_infos_structure.png
+│   │   │   │   ├── presentation_marche.png
+│   │   │   │   ├── presentation_monrecap.png
+│   │   │   │   └── presentation_pilotage.png
+│   │   │   ├── no_email.svg
+│   │   │   ├── pass_iae
+│   │   │   │   ├── logo_pass_iae.svg
+│   │   │   │   └── logo_pass_iae_suspended.svg
+│   │   │   ├── pdf
+│   │   │   │   └── logoMinTravail.png
+│   │   │   ├── pro_connect_bouton.svg
+│   │   │   ├── pro_connect_bouton_hover.svg
+│   │   │   ├── search-bg-left.png
+│   │   │   ├── search-bg-right.png
+│   │   │   ├── stats
+│   │   │   │   ├── metabase-department-filter.png
+│   │   │   │   └── metabase-download-icon.png
+│   │   │   └── welcoming_tour
+│   │   │       ├── candidat_1.svg
+│   │   │       ├── candidat_2.svg
+│   │   │       ├── employeur_1.svg
+│   │   │       ├── employeur_2.svg
+│   │   │       ├── employeur_3.svg
+│   │   │       ├── prescripteur_1.svg
+│   │   │       ├── prescripteur_2.svg
+│   │   │       └── prescripteur_3.svg
+│   │   ├── js
+│   │   │   ├── address_autocomplete_fields.js
+│   │   │   ├── admin.js
+│   │   │   ├── demo_accounts.js
+│   │   │   ├── duet_date_picker_widget.js
+│   │   │   ├── easymde_config.js
+│   │   │   ├── formset_add_remove_row.js
+│   │   │   ├── gps.js
+│   │   │   ├── hijack_hide.js
+│   │   │   ├── htmx_compat.js
+│   │   │   ├── htmx_dropdown_filter.js
+│   │   │   ├── htmx_handlers.js
+│   │   │   ├── matomo.js
+│   │   │   ├── modal_control.js
+│   │   │   ├── notifications_center.js
+│   │   │   ├── nps_popup.js
+│   │   │   ├── recommendations_map.js
+│   │   │   ├── siae_evaluations_sample_selection.js
+│   │   │   ├── sliding_search.js
+│   │   │   ├── sliding_tabs.js
+│   │   │   └── utils.js
+│   │   ├── pdf
+│   │   │   ├── cerfa_15059-02.pdf
+│   │   │   ├── pacte_dambition_iae.pdf
+│   │   │   └── syntheseSecurite.pdf
+│   │   ├── photos
+│   │   │   ├── employer.jpg
+│   │   │   ├── job_seeker.jpg
+│   │   │   └── prescriber.jpg
+│   │   ├── templates
+│   │   │   ├── modele_bilan_prolongation_PASS_IAE.xlsx
+│   │   │   └── modele_decision_sanction_controle_a_posteriori.docx
+│   │   └── vendor
+│   │       └── README.md
+│   ├── tasks
+│   │   ├── __init__.py
+│   │   ├── apps.py
+│   │   ├── huey.py
+│   │   ├── management
+│   │   │   ├── __init__.py
+│   │   │   └── commands
+│   │   │       ├── __init__.py
+│   │   │       └── requeue_tasks.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   └── models.py
+│   ├── templates
+│   │   ├── 403.html
+│   │   ├── 404.html
+│   │   ├── 429.html
+│   │   ├── 500.html
+│   │   ├── account
+│   │   │   ├── account_inactive.html
+│   │   │   ├── activate_pro_connect_account.html
+│   │   │   ├── email
+│   │   │   │   ├── email_archive_user_body.txt
+│   │   │   │   ├── email_archive_user_subject.txt
+│   │   │   │   ├── email_confirmation_message.txt
+│   │   │   │   ├── email_confirmation_signup_message.txt
+│   │   │   │   ├── email_confirmation_subject.txt
+│   │   │   │   ├── email_disable_password_auth_body.txt
+│   │   │   │   ├── email_disable_password_auth_subject.txt
+│   │   │   │   ├── email_inactive_user_body.txt
+│   │   │   │   ├── email_inactive_user_subject.txt
+│   │   │   │   ├── email_jobseeker_created_by_third_party_body.txt
+│   │   │   │   ├── email_jobseeker_created_by_third_party_for_gps_body.txt
+│   │   │   │   ├── email_jobseeker_created_by_third_party_for_gps_subject.txt
+│   │   │   │   ├── email_jobseeker_created_by_third_party_subject.txt
+│   │   │   │   ├── email_jobseeker_email_edited_body.txt
+│   │   │   │   ├── email_jobseeker_email_edited_subject.txt
+│   │   │   │   ├── email_jobseeker_personal_info_edited_body.txt
+│   │   │   │   ├── email_jobseeker_personal_info_edited_subject.txt
+│   │   │   │   ├── email_new_API_token_body.txt
+│   │   │   │   ├── email_new_API_token_subject.txt
+│   │   │   │   ├── password_reset_key_message.txt
+│   │   │   │   ├── password_reset_key_subject.txt
+│   │   │   │   ├── unknown_account_message.txt
+│   │   │   │   └── unknown_account_subject.txt
+│   │   │   ├── email_confirm.html
+│   │   │   ├── ft_connect_no_email.html
+│   │   │   ├── includes
+│   │   │   │   ├── login_form.html
+│   │   │   │   └── login_generic.html
+│   │   │   ├── login_existing_user.html
+│   │   │   ├── logout.html
+│   │   │   ├── messages
+│   │   │   │   ├── email_confirmation_sent.txt
+│   │   │   │   └── logged_in.txt
+│   │   │   ├── password_change.html
+│   │   │   ├── password_reset.html
+│   │   │   ├── password_reset_done.html
+│   │   │   ├── password_reset_from_key.html
+│   │   │   ├── password_reset_from_key_done.html
+│   │   │   ├── pre_login.html
+│   │   │   ├── snippets
+│   │   │   │   └── already_logged_in.html
+│   │   │   └── verification_sent.html
+│   │   ├── admin
+│   │   │   ├── approvals
+│   │   │   │   ├── change_approval_form.html
+│   │   │   │   ├── change_list_with_stats.html
+│   │   │   │   ├── includes
+│   │   │   │   │   └── job_application_details.html
+│   │   │   │   ├── manually_add_approval.html
+│   │   │   │   ├── manually_refuse_approval.html
+│   │   │   │   └── send_approvals_to_pe_stats.html
+│   │   │   ├── base_site.html
+│   │   │   ├── companies
+│   │   │   │   ├── change_company_form.html
+│   │   │   │   └── transfer_company.html
+│   │   │   ├── emails
+│   │   │   │   └── mailjet_status.html
+│   │   │   ├── employee_records
+│   │   │   │   └── employeerecord_change_form.html
+│   │   │   ├── job_applications
+│   │   │   │   └── jobapplication_change_form.html
+│   │   │   ├── prescribers
+│   │   │   │   └── change_form.html
+│   │   │   └── users
+│   │   │       ├── change_user_form.html
+│   │   │       └── transfer_user.html
+│   │   ├── announcements
+│   │   │   └── news.html
+│   │   ├── api
+│   │   │   └── index.html
+│   │   ├── apply
+│   │   │   ├── edit_contract_start_date.html
+│   │   │   ├── email
+│   │   │   │   ├── accept_for_job_seeker_body.txt
+│   │   │   │   ├── accept_for_job_seeker_subject.txt
+│   │   │   │   ├── accept_for_proxy_body.txt
+│   │   │   │   ├── accept_for_proxy_subject.txt
+│   │   │   │   ├── add_to_pool_for_job_seeker_body.txt
+│   │   │   │   ├── add_to_pool_for_job_seeker_subject.txt
+│   │   │   │   ├── add_to_pool_for_proxy_body.txt
+│   │   │   │   ├── add_to_pool_for_proxy_subject.txt
+│   │   │   │   ├── cancel_body.txt
+│   │   │   │   ├── cancel_subject.txt
+│   │   │   │   ├── diagoriente_job_seeker_invite_body.txt
+│   │   │   │   ├── diagoriente_job_seeker_invite_subject.txt
+│   │   │   │   ├── diagoriente_prescriber_invite_body.txt
+│   │   │   │   ├── diagoriente_prescriber_invite_subject.txt
+│   │   │   │   ├── new_for_employer_body.txt
+│   │   │   │   ├── new_for_employer_subject.txt
+│   │   │   │   ├── new_for_job_seeker_body.txt
+│   │   │   │   ├── new_for_job_seeker_subject.txt
+│   │   │   │   ├── new_for_prescriber_body.txt
+│   │   │   │   ├── new_for_prescriber_subject.txt
+│   │   │   │   ├── postpone_for_job_seeker_body.txt
+│   │   │   │   ├── postpone_for_job_seeker_subject.txt
+│   │   │   │   ├── postpone_for_proxy_body.txt
+│   │   │   │   ├── postpone_for_proxy_subject.txt
+│   │   │   │   ├── refuse_body_for_job_seeker.txt
+│   │   │   │   ├── refuse_body_for_proxy.txt
+│   │   │   │   ├── refuse_subject.txt
+│   │   │   │   ├── transfer_job_seeker_body.txt
+│   │   │   │   ├── transfer_job_seeker_subject.txt
+│   │   │   │   ├── transfer_prescriber_body.txt
+│   │   │   │   ├── transfer_prescriber_subject.txt
+│   │   │   │   ├── transfer_source_employer_body.txt
+│   │   │   │   └── transfer_source_employer_subject.txt
+│   │   │   ├── hire_step_check_prev_applications.html
+│   │   │   ├── includes
+│   │   │   │   ├── _submit_title.html
+│   │   │   │   ├── accept_confirmation.html
+│   │   │   │   ├── applying_for_banner.html
+│   │   │   │   ├── appointments.html
+│   │   │   │   ├── buttons
+│   │   │   │   │   └── rdv_insertion_invite.html
+│   │   │   │   ├── geiq
+│   │   │   │   │   ├── check_geiq_eligibility_form.html
+│   │   │   │   │   ├── continue_without_geiq_diagnosis_form.html
+│   │   │   │   │   ├── geiq_administrative_criteria_form.html
+│   │   │   │   │   ├── geiq_contract_type_and_options.html
+│   │   │   │   │   ├── geiq_qualification_fields.html
+│   │   │   │   │   ├── legislative_text_link.html
+│   │   │   │   │   ├── no_allowance_modal.html
+│   │   │   │   │   └── progress_bar.html
+│   │   │   │   ├── invitation_requests.html
+│   │   │   │   ├── job_application_accept_form.html
+│   │   │   │   ├── job_application_add_comment.html
+│   │   │   │   ├── job_application_answers.html
+│   │   │   │   ├── job_application_box_for_user.html
+│   │   │   │   ├── job_application_comments_counter.html
+│   │   │   │   ├── job_application_comments_list.html
+│   │   │   │   ├── job_application_creation_info.html
+│   │   │   │   ├── job_application_delete_comment.html
+│   │   │   │   ├── job_application_diagoriente_invite.html
+│   │   │   │   ├── job_application_external_transfer_progress.html
+│   │   │   │   ├── job_application_fill_user_infos_form.html
+│   │   │   │   ├── job_application_info.html
+│   │   │   │   ├── job_application_prior_action.html
+│   │   │   │   ├── job_application_prior_action_form.html
+│   │   │   │   ├── job_application_sender_info.html
+│   │   │   │   ├── job_applications_export_button.html
+│   │   │   │   ├── job_applications_filters
+│   │   │   │   │   ├── dates.html
+│   │   │   │   │   ├── departments.html
+│   │   │   │   │   ├── eligibility.html
+│   │   │   │   │   ├── field_collapse.html
+│   │   │   │   │   ├── field_collapse_checkbox.html
+│   │   │   │   │   ├── offcanvas.html
+│   │   │   │   │   ├── offcanvas_body.html
+│   │   │   │   │   ├── offcanvas_footer.html
+│   │   │   │   │   ├── pass.html
+│   │   │   │   │   ├── selected_jobs.html
+│   │   │   │   │   ├── sender.html
+│   │   │   │   │   ├── status.html
+│   │   │   │   │   ├── to_companies.html
+│   │   │   │   │   └── top_filters.html
+│   │   │   │   ├── job_description_fields.html
+│   │   │   │   ├── job_seeker_info.html
+│   │   │   │   ├── known_criteria.html
+│   │   │   │   ├── list_card_body.html
+│   │   │   │   ├── list_counter.html
+│   │   │   │   ├── list_job_applications.html
+│   │   │   │   ├── list_job_applications_title.html
+│   │   │   │   ├── list_reset_filters.html
+│   │   │   │   ├── list_table.html
+│   │   │   │   ├── list_tr.html
+│   │   │   │   ├── next_appointment.html
+│   │   │   │   ├── out_of_band_changes_on_job_application_state_update_siae.html
+│   │   │   │   ├── profile_infos.html
+│   │   │   │   ├── selected_job_applications.html
+│   │   │   │   ├── selected_jobs_list.html
+│   │   │   │   ├── siae_actions.html
+│   │   │   │   ├── siae_batch_actions.html
+│   │   │   │   ├── siae_batch_actions_modals.html
+│   │   │   │   ├── siae_hiring_details.html
+│   │   │   │   └── transition_logs.html
+│   │   │   ├── list_for_job_seeker.html
+│   │   │   ├── list_for_siae.html
+│   │   │   ├── list_of_available_exports.html
+│   │   │   ├── list_prescriptions.html
+│   │   │   ├── process_accept_base.html
+│   │   │   ├── process_accept_confirmation_step.html
+│   │   │   ├── process_accept_contract_infos_step.html
+│   │   │   ├── process_accept_fill_job_seeker_infos_step.html
+│   │   │   ├── process_add_to_pool.html
+│   │   │   ├── process_base.html
+│   │   │   ├── process_details.html
+│   │   │   ├── process_details_company.html
+│   │   │   ├── process_eligibility.html
+│   │   │   ├── process_geiq_eligibility.html
+│   │   │   ├── process_postpone.html
+│   │   │   ├── process_refuse.html
+│   │   │   ├── refusal_messages
+│   │   │   │   ├── auto.txt
+│   │   │   │   ├── did_not_come.txt
+│   │   │   │   ├── did_not_come_to_interview.txt
+│   │   │   │   ├── duplicate.txt
+│   │   │   │   ├── hired_elsewhere.txt
+│   │   │   │   ├── incompatible.txt
+│   │   │   │   ├── lacking_skills.txt
+│   │   │   │   ├── no_position.txt
+│   │   │   │   ├── non_eligible.txt
+│   │   │   │   ├── not_interested.txt
+│   │   │   │   ├── not_mobile.txt
+│   │   │   │   ├── other.txt
+│   │   │   │   ├── prevent_objectives.txt
+│   │   │   │   └── training.txt
+│   │   │   ├── submit
+│   │   │   │   ├── application
+│   │   │   │   │   ├── base.html
+│   │   │   │   │   ├── eligibility.html
+│   │   │   │   │   ├── end.html
+│   │   │   │   │   ├── geiq_eligibility.html
+│   │   │   │   │   ├── jobs.html
+│   │   │   │   │   └── resume.html
+│   │   │   │   ├── eligibility_for_hire.html
+│   │   │   │   ├── geiq_eligibility_for_hire.html
+│   │   │   │   ├── hire_confirmation_step.html
+│   │   │   │   ├── hire_contract_infos_step.html
+│   │   │   │   └── hire_fill_job_seeker_infos_step.html
+│   │   │   ├── submit_base.html
+│   │   │   ├── submit_step_check_prev_applications.html
+│   │   │   ├── submit_step_pending_authorization.html
+│   │   │   └── transfer
+│   │   │       ├── external_transfer_resume.html
+│   │   │       ├── external_transfer_siaes_search_results.html
+│   │   │       └── internal_transfer.html
+│   │   ├── approvals
+│   │   │   ├── base_details.html
+│   │   │   ├── contracts.html
+│   │   │   ├── declare_prolongation.html
+│   │   │   ├── details.html
+│   │   │   ├── email
+│   │   │   │   ├── deliver_body.txt
+│   │   │   │   ├── deliver_subject.txt
+│   │   │   │   ├── manual_delivery_required_notification_body.txt
+│   │   │   │   ├── manual_delivery_required_notification_subject.txt
+│   │   │   │   ├── prolongation_request
+│   │   │   │   │   ├── created_body.txt
+│   │   │   │   │   ├── created_reminder_body.txt
+│   │   │   │   │   ├── created_reminder_subject.txt
+│   │   │   │   │   ├── created_subject.txt
+│   │   │   │   │   ├── denied
+│   │   │   │   │   │   ├── employer_body.txt
+│   │   │   │   │   │   ├── employer_subject.txt
+│   │   │   │   │   │   ├── jobseeker_body.txt
+│   │   │   │   │   │   └── jobseeker_subject.txt
+│   │   │   │   │   └── granted
+│   │   │   │   │       ├── employer_body.txt
+│   │   │   │   │       ├── employer_subject.txt
+│   │   │   │   │       ├── jobseeker_body.txt
+│   │   │   │   │       └── jobseeker_subject.txt
+│   │   │   │   ├── refuse_manually_body.txt
+│   │   │   │   └── refuse_manually_subject.txt
+│   │   │   ├── includes
+│   │   │   │   ├── approvals_filters
+│   │   │   │   │   └── status.html
+│   │   │   │   ├── contract_status_filter.html
+│   │   │   │   ├── declaration_contact_details.html
+│   │   │   │   ├── declaration_prescriber_email.html
+│   │   │   │   ├── declaration_upload_panel.html
+│   │   │   │   ├── list_card.html
+│   │   │   │   ├── list_counter.html
+│   │   │   │   ├── list_reset_filters.html
+│   │   │   │   ├── list_results.html
+│   │   │   │   ├── list_table.html
+│   │   │   │   ├── progress_bar.html
+│   │   │   │   ├── prolongation_declaration_form.html
+│   │   │   │   └── suspended_pass_info_alert.html
+│   │   │   ├── list.html
+│   │   │   ├── printable_approval.html
+│   │   │   ├── prolongation_requests
+│   │   │   │   ├── _deny_information_card.html
+│   │   │   │   ├── _status_badge.html
+│   │   │   │   ├── deny.html
+│   │   │   │   ├── list.html
+│   │   │   │   └── show.html
+│   │   │   ├── suspend.html
+│   │   │   ├── suspension_action_choice.html
+│   │   │   ├── suspension_delete.html
+│   │   │   ├── suspension_update.html
+│   │   │   └── suspension_update_enddate.html
+│   │   ├── common
+│   │   │   ├── emails
+│   │   │   │   ├── add_admin_email_body.txt
+│   │   │   │   ├── add_admin_email_subject.txt
+│   │   │   │   ├── auto_admin_attribution_email_body.txt
+│   │   │   │   ├── auto_admin_attribution_email_subject.txt
+│   │   │   │   ├── member_deactivation_email_body.txt
+│   │   │   │   ├── member_deactivation_email_subject.txt
+│   │   │   │   ├── remove_admin_email_body.txt
+│   │   │   │   ├── remove_admin_email_subject.txt
+│   │   │   │   ├── request_for_invitation_body.txt
+│   │   │   │   ├── request_for_invitation_subject.txt
+│   │   │   │   ├── used_otp_backup_code_body.txt
+│   │   │   │   └── used_otp_backup_code_subject.txt
+│   │   │   ├── list_view_switcher.html
+│   │   │   └── tables
+│   │   │       └── th_with_sort.html
+│   │   ├── companies
+│   │   │   ├── card.html
+│   │   │   ├── create_siae.html
+│   │   │   ├── deactivate_member.html
+│   │   │   ├── di_widget.html
+│   │   │   ├── edit_job_description.html
+│   │   │   ├── edit_job_description_base.html
+│   │   │   ├── edit_job_description_details.html
+│   │   │   ├── edit_job_description_preview.html
+│   │   │   ├── edit_siae.html
+│   │   │   ├── edit_siae_base.html
+│   │   │   ├── edit_siae_description.html
+│   │   │   ├── edit_siae_preview.html
+│   │   │   ├── email
+│   │   │   │   ├── activate_your_account_body.txt
+│   │   │   │   ├── activate_your_account_subject.txt
+│   │   │   │   ├── admin_request_email_body.txt
+│   │   │   │   ├── admin_request_email_subject.txt
+│   │   │   │   ├── new_signup_activation_email_to_official_contact_body.txt
+│   │   │   │   ├── new_signup_activation_email_to_official_contact_subject.txt
+│   │   │   │   ├── old_job_description_deactivated_body.txt
+│   │   │   │   ├── old_job_description_deactivated_subject.txt
+│   │   │   │   ├── spontaneous_jobapps_deactivated_body.txt
+│   │   │   │   └── spontaneous_jobapps_deactivated_subject.txt
+│   │   │   ├── includes
+│   │   │   │   ├── _card_jobdescription.html
+│   │   │   │   ├── _card_siae.html
+│   │   │   │   ├── _job_description_details.html
+│   │   │   │   ├── _list_siae_actives_jobs_row.html
+│   │   │   │   ├── _siae_jobdescription.html
+│   │   │   │   └── buttons
+│   │   │   │       ├── job_description_refresh.html
+│   │   │   │       ├── spontaneous_applications_refresh.html
+│   │   │   │       └── spontaneous_applications_toggle.html
+│   │   │   ├── job_description_card.html
+│   │   │   ├── job_description_list.html
+│   │   │   ├── members.html
+│   │   │   ├── overview.html
+│   │   │   ├── select_financial_annex.html
+│   │   │   ├── show_financial_annexes.html
+│   │   │   └── update_admins.html
+│   │   ├── components
+│   │   │   ├── alerts
+│   │   │   │   ├── alert.html
+│   │   │   │   └── alert_global.html
+│   │   │   ├── boxes
+│   │   │   │   ├── c-box--dashboard.html
+│   │   │   │   └── c-box_nexus_activated_service.html
+│   │   │   ├── c-info.html
+│   │   │   ├── c-navinfo.html
+│   │   │   ├── c-title.html
+│   │   │   ├── demo_buttons_form.html
+│   │   │   └── index.html
+│   │   ├── dashboard
+│   │   │   ├── api_token.html
+│   │   │   ├── dashboard.html
+│   │   │   ├── dashboard_stats.html
+│   │   │   ├── edit_job_seeker_info.html
+│   │   │   ├── edit_user_email.html
+│   │   │   ├── edit_user_info.html
+│   │   │   ├── edit_user_notifications.html
+│   │   │   └── includes
+│   │   │       ├── admin_card.html
+│   │   │       ├── dashboard_title_content.html
+│   │   │       ├── dora_card.html
+│   │   │       ├── edit_job_seeker_info_form.html
+│   │   │       ├── employer_company_card.html
+│   │   │       ├── employer_employees_card.html
+│   │   │       ├── employer_evaluation_campaigns_card.html
+│   │   │       ├── employer_job_applications_card.html
+│   │   │       ├── employer_prescription_card.html
+│   │   │       ├── job_seeker_approval_card.html
+│   │   │       ├── job_seeker_eligibility_card.html
+│   │   │       ├── job_seeker_job_applications_card.html
+│   │   │       ├── labor_inspector_evaluation_campains_card.html
+│   │   │       ├── labor_inspector_organization_card.html
+│   │   │       ├── prescriber_job_applications_card.html
+│   │   │       ├── prescriber_job_seekers_card.html
+│   │   │       ├── prescriber_organisation_card.html
+│   │   │       ├── staff_actions_card.html
+│   │   │       ├── staff_export_card.html
+│   │   │       ├── staff_stats_card.html
+│   │   │       ├── stats
+│   │   │       │   ├── _institution_kpi.html
+│   │   │       │   ├── _institution_public_links.html
+│   │   │       │   ├── _prescriber_public_links.html
+│   │   │       │   ├── dgefp.html
+│   │   │       │   ├── employer.html
+│   │   │       │   ├── prescriber.html
+│   │   │       │   ├── prescriber_dept.html
+│   │   │       │   ├── prescriber_ft.html
+│   │   │       │   └── sd_iae.html
+│   │   │       └── stats.html
+│   │   ├── django
+│   │   │   └── forms
+│   │   │       └── widgets
+│   │   │           └── password.html
+│   │   ├── django_bootstrap5
+│   │   │   ├── form_errors.html
+│   │   │   ├── messages.html
+│   │   │   └── widgets
+│   │   │       └── radio_select.html
+│   │   ├── eligibility
+│   │   │   ├── includes
+│   │   │   │   ├── badge_certification_error.html
+│   │   │   │   ├── badge_certification_expired.html
+│   │   │   │   ├── badge_certification_future.html
+│   │   │   │   ├── badge_certification_in_progress.html
+│   │   │   │   ├── badge_certified.html
+│   │   │   │   ├── badge_not_certified.html
+│   │   │   │   ├── badge_temporarily_certified.html
+│   │   │   │   ├── certification_info_box.html
+│   │   │   │   ├── geiq
+│   │   │   │   │   ├── diagnosis_allowance_alert.html
+│   │   │   │   │   ├── diagnosis_details.html
+│   │   │   │   │   ├── eligibility_badge.html
+│   │   │   │   │   └── eligibility_section.html
+│   │   │   │   ├── iae
+│   │   │   │   │   ├── criteria_filled_from_job_seeker.html
+│   │   │   │   │   ├── criteria_input.html
+│   │   │   │   │   ├── diagnosis_details.html
+│   │   │   │   │   ├── eligibility_badge.html
+│   │   │   │   │   ├── eligibility_section.html
+│   │   │   │   │   ├── form.html
+│   │   │   │   │   ├── form_content_for_prescriber.html
+│   │   │   │   │   ├── help_for_prescriber.html
+│   │   │   │   │   └── valid_eligibility_diagnosis_and_criteria.html
+│   │   │   │   ├── selected_administrative_criteria_display.html
+│   │   │   │   └── situation_criteria_tooltip.html
+│   │   │   └── update_iae.html
+│   │   ├── employee_record
+│   │   │   ├── add.html
+│   │   │   ├── base_add.html
+│   │   │   ├── create.html
+│   │   │   ├── disable.html
+│   │   │   ├── includes
+│   │   │   │   ├── _regularize_nir_button.html
+│   │   │   │   ├── _status.html
+│   │   │   │   ├── create_step_1.html
+│   │   │   │   ├── create_step_2.html
+│   │   │   │   ├── create_step_3.html
+│   │   │   │   ├── create_step_4.html
+│   │   │   │   ├── create_step_5.html
+│   │   │   │   ├── employee_record_filters
+│   │   │   │   │   └── status.html
+│   │   │   │   ├── employee_record_summary.html
+│   │   │   │   ├── list_counter.html
+│   │   │   │   ├── list_header.html
+│   │   │   │   ├── list_item.html
+│   │   │   │   ├── list_order.html
+│   │   │   │   ├── list_results.html
+│   │   │   │   └── send_back_dropdown.html
+│   │   │   ├── list.html
+│   │   │   ├── missing_employee.html
+│   │   │   ├── nir_already_used.html
+│   │   │   ├── reactivate.html
+│   │   │   └── summary.html
+│   │   ├── employees
+│   │   │   └── detail.html
+│   │   ├── geiq_assessments
+│   │   │   └── email
+│   │   │       ├── assessment_fix_requested_for_geiq_body.txt
+│   │   │       ├── assessment_fix_requested_for_geiq_subject.txt
+│   │   │       ├── assessment_fix_requested_for_institution_body.txt
+│   │   │       ├── assessment_fix_requested_for_institution_subject.txt
+│   │   │       ├── assessment_review_for_dreets_body.txt
+│   │   │       ├── assessment_review_for_dreets_subject.txt
+│   │   │       ├── assessment_review_for_geiq_body.txt
+│   │   │       ├── assessment_review_for_geiq_subject.txt
+│   │   │       ├── assessment_submission_body.txt
+│   │   │       └── assessment_submission_subject.txt
+│   │   ├── geiq_assessments_views
+│   │   │   ├── _assessment_base_for_geiq.html
+│   │   │   ├── action_financial_assessment_upload.html
+│   │   │   ├── assessment_comment.html
+│   │   │   ├── assessment_contracts_details.html
+│   │   │   ├── assessment_contracts_list.html
+│   │   │   ├── assessment_details_for_geiq.html
+│   │   │   ├── assessment_details_for_institution.html
+│   │   │   ├── assessment_kpi.html
+│   │   │   ├── assessment_print.html
+│   │   │   ├── assessment_result.html
+│   │   │   ├── assessment_review.html
+│   │   │   ├── create.html
+│   │   │   ├── includes
+│   │   │   │   ├── _document_with_sync_box.html
+│   │   │   │   ├── action_financial_assessment_box.html
+│   │   │   │   ├── allowance_refusal_justification_form.html
+│   │   │   │   ├── allowance_request_justification_form.html
+│   │   │   │   ├── allowance_request_justified_box.html
+│   │   │   │   ├── assessment_contracts_filters
+│   │   │   │   │   ├── allowance_eligibility.html
+│   │   │   │   │   ├── allowance_requested.html
+│   │   │   │   │   ├── duration.html
+│   │   │   │   │   ├── filter_button.html
+│   │   │   │   │   ├── filter_reset.html
+│   │   │   │   │   ├── offcanvas.html
+│   │   │   │   │   ├── offcanvas_footer.html
+│   │   │   │   │   ├── potential_allowance.html
+│   │   │   │   │   └── start_date.html
+│   │   │   │   ├── assessment_kpi_tab.html
+│   │   │   │   ├── assessment_status_box_for_geiq.html
+│   │   │   │   ├── assessment_status_box_for_institution.html
+│   │   │   │   ├── assessments_list_filters_for_institutions.html
+│   │   │   │   ├── assessments_list_results_for_institutions.html
+│   │   │   │   ├── badge_checked.html
+│   │   │   │   ├── badge_completed.html
+│   │   │   │   ├── badge_to_check.html
+│   │   │   │   ├── badge_to_complete.html
+│   │   │   │   ├── contracts_box.html
+│   │   │   │   ├── contracts_grant_allowance_box_for_institution.html
+│   │   │   │   ├── contracts_list_justification_alert.html
+│   │   │   │   ├── contracts_list_stats.html
+│   │   │   │   ├── contracts_list_validate_button_form.html
+│   │   │   │   ├── contracts_request_allowance_box_for_geiq.html
+│   │   │   │   ├── contracts_switch.html
+│   │   │   │   ├── geiq_comment_box.html
+│   │   │   │   ├── list_counter.html
+│   │   │   │   ├── structure_financial_assessment_box.html
+│   │   │   │   └── summary_document_box.html
+│   │   │   ├── list_for_geiq.html
+│   │   │   └── list_for_institution.html
+│   │   ├── gps
+│   │   │   ├── group_beneficiary.html
+│   │   │   ├── group_contribution.html
+│   │   │   ├── group_details_base.html
+│   │   │   ├── group_edition.html
+│   │   │   ├── group_list.html
+│   │   │   ├── group_memberships.html
+│   │   │   ├── includes
+│   │   │   │   ├── badge_ended_membership.html
+│   │   │   │   ├── badge_is_referent_certified_membership.html
+│   │   │   │   ├── badge_ongoing_membership.html
+│   │   │   │   ├── member_email.html
+│   │   │   │   ├── member_phone.html
+│   │   │   │   └── memberships_results.html
+│   │   │   ├── join_group.html
+│   │   │   ├── join_group_from_coworker.html
+│   │   │   ├── join_group_from_name_and_email.html
+│   │   │   └── join_group_from_nir.html
+│   │   ├── hijack
+│   │   │   └── notification.html
+│   │   ├── includes
+│   │   │   ├── btn_dropdown_filter
+│   │   │   │   ├── checkboxes.html
+│   │   │   │   └── radio.html
+│   │   │   ├── copy_to_clipboard.html
+│   │   │   ├── deactivate_member.html
+│   │   │   ├── demo_accounts.html
+│   │   │   ├── gip_address.html
+│   │   │   ├── job_seekers
+│   │   │   │   ├── copy_public_id.html
+│   │   │   │   └── readonly_form.html
+│   │   │   ├── members.html
+│   │   │   ├── members_list.html
+│   │   │   ├── mon_recap_banner.html
+│   │   │   ├── organizations
+│   │   │   │   ├── _organization_details.html
+│   │   │   │   ├── _organization_info.html
+│   │   │   │   ├── email_li.html
+│   │   │   │   ├── phone_li.html
+│   │   │   │   └── website_li.html
+│   │   │   ├── pagination.html
+│   │   │   ├── pagination_for_title.html
+│   │   │   ├── tarteaucitron_matomo.html
+│   │   │   └── update_admin.html
+│   │   ├── insertion
+│   │   │   ├── includes
+│   │   │   │   ├── orientation_beneficiary_contact.html
+│   │   │   │   ├── orientation_credentials_list.html
+│   │   │   │   ├── orientation_disclaimer_alert.html
+│   │   │   │   ├── orientation_service_info.html
+│   │   │   │   ├── orientation_wizard_form_buttons.html
+│   │   │   │   ├── orientation_wizard_stepper.html
+│   │   │   │   ├── register_mobilization_event.html
+│   │   │   │   ├── structure_card_tab_description.html
+│   │   │   │   ├── structure_card_tab_services.html
+│   │   │   │   └── structure_card_tabs.html
+│   │   │   ├── orientation_confirmation.html
+│   │   │   ├── orientation_select_job_seeker.html
+│   │   │   ├── orientation_wizard.html
+│   │   │   ├── service_card.html
+│   │   │   ├── service_response_time.html
+│   │   │   └── structure_card.html
+│   │   ├── institutions
+│   │   │   ├── deactivate_member.html
+│   │   │   ├── members.html
+│   │   │   └── update_admins.html
+│   │   ├── invitations_views
+│   │   │   ├── create.html
+│   │   │   ├── email
+│   │   │   │   ├── accepted_notif_establishment_sender_body.txt
+│   │   │   │   ├── accepted_notif_sender_subject.txt
+│   │   │   │   ├── invitation_establishment_body.txt
+│   │   │   │   └── invitation_establishment_subject.txt
+│   │   │   ├── includes
+│   │   │   │   └── pending_invitations.html
+│   │   │   ├── invitation_errors.html
+│   │   │   ├── new_pro_connect_user.html
+│   │   │   └── new_user.html
+│   │   ├── itou_staff_views
+│   │   │   ├── export_job_applications_unknown_to_ft.html
+│   │   │   ├── import_aci_convergence_phc.html
+│   │   │   ├── import_fs_3437_from_asp.html
+│   │   │   ├── merge_users.html
+│   │   │   └── merge_users_confirm.html
+│   │   ├── job_seekers_views
+│   │   │   ├── check_job_seeker_info.html
+│   │   │   ├── check_job_seeker_info_for_hire.html
+│   │   │   ├── contracts.html
+│   │   │   ├── create_or_update_job_seeker
+│   │   │   │   ├── step_1.html
+│   │   │   │   ├── step_2.html
+│   │   │   │   ├── step_3.html
+│   │   │   │   ├── step_base.html
+│   │   │   │   └── step_end.html
+│   │   │   ├── details.html
+│   │   │   ├── includes
+│   │   │   │   ├── detail_title_content.html
+│   │   │   │   ├── eligibility_diagnosis.html
+│   │   │   │   ├── job_seekers_filters
+│   │   │   │   │   ├── approval_state.html
+│   │   │   │   │   ├── offcanvas.html
+│   │   │   │   │   ├── offcanvas_body.html
+│   │   │   │   │   ├── offcanvas_footer.html
+│   │   │   │   │   ├── organization_members.html
+│   │   │   │   │   ├── single_checkbox.html
+│   │   │   │   │   └── top_filters.html
+│   │   │   │   ├── last_known_advisor.html
+│   │   │   │   ├── list_counter.html
+│   │   │   │   ├── list_job_applications.html
+│   │   │   │   ├── list_reset_filters.html
+│   │   │   │   ├── list_results.html
+│   │   │   │   └── nav_tabs.html
+│   │   │   ├── job_applications.html
+│   │   │   ├── list.html
+│   │   │   ├── nir_modification_request.html
+│   │   │   ├── nir_modification_success.html
+│   │   │   ├── step_check_job_seeker_nir.html
+│   │   │   ├── step_search_job_seeker_by_email.html
+│   │   │   └── submit_base_two_columns.html
+│   │   ├── layout
+│   │   │   ├── _footer.html
+│   │   │   ├── _footer_legal_content.html
+│   │   │   ├── _header.html
+│   │   │   ├── _header_authenticated.html
+│   │   │   ├── _header_help_dropdown_content.html
+│   │   │   ├── _header_print.html
+│   │   │   ├── _header_user_dropdown_menu.html
+│   │   │   ├── _news_modal.html
+│   │   │   ├── _organization_switcher_dropdown_menu.html
+│   │   │   ├── _organization_switcher_nav.html
+│   │   │   ├── _organization_switcher_nexus.html
+│   │   │   ├── _organization_switcher_offcanvas.html
+│   │   │   ├── base.html
+│   │   │   ├── base_email_signature.txt
+│   │   │   ├── base_email_text_body.txt
+│   │   │   ├── base_email_text_subject.txt
+│   │   │   ├── base_printable.html
+│   │   │   └── previous_step.html
+│   │   ├── logout
+│   │   │   └── warning.html
+│   │   ├── nexus
+│   │   │   ├── base_service.html
+│   │   │   ├── components
+│   │   │   │   ├── dropdown.html
+│   │   │   │   ├── dropdown_no_proconnect.html
+│   │   │   │   └── new_service.html
+│   │   │   ├── contact.html
+│   │   │   ├── dora.html
+│   │   │   ├── emplois_inactive.html
+│   │   │   ├── emplois_job_descriptions.html
+│   │   │   ├── emplois_no_companies.html
+│   │   │   ├── homepage.html
+│   │   │   ├── layout
+│   │   │   │   ├── base.html
+│   │   │   │   └── header.html
+│   │   │   ├── login.html
+│   │   │   ├── marche.html
+│   │   │   ├── mon_recap.html
+│   │   │   ├── pilotage.html
+│   │   │   └── structures.html
+│   │   ├── otp_views
+│   │   │   ├── enrollment_step_0_intro.html
+│   │   │   ├── enrollment_step_1_choose_device_type.html
+│   │   │   ├── enrollment_step_2_and_3_confirm_device.html
+│   │   │   ├── login_with_backup_code.html
+│   │   │   ├── otp_devices.html
+│   │   │   └── verify_otp.html
+│   │   ├── prescribers
+│   │   │   ├── card.html
+│   │   │   ├── deactivate_member.html
+│   │   │   ├── edit_organization.html
+│   │   │   ├── email
+│   │   │   │   ├── must_validate_prescriber_organization_email_body.txt
+│   │   │   │   ├── must_validate_prescriber_organization_email_subject.txt
+│   │   │   │   ├── refused_prescriber_organization_email_body.txt
+│   │   │   │   ├── refused_prescriber_organization_email_subject.txt
+│   │   │   │   ├── validated_prescriber_organization_email_body.txt
+│   │   │   │   └── validated_prescriber_organization_email_subject.txt
+│   │   │   ├── list_accredited_organizations.html
+│   │   │   ├── members.html
+│   │   │   ├── overview.html
+│   │   │   └── update_admins.html
+│   │   ├── pro_connect
+│   │   │   └── includes
+│   │   │       ├── button.html
+│   │   │       └── description.html
+│   │   ├── recommendations
+│   │   │   ├── beneficiary_actions.html
+│   │   │   ├── beneficiary_base.html
+│   │   │   ├── beneficiary_profile.html
+│   │   │   ├── includes
+│   │   │   │   ├── list_reset_filters.html
+│   │   │   │   ├── list_results.html
+│   │   │   │   ├── nav_tabs.html
+│   │   │   │   ├── recommendation_card.html
+│   │   │   │   ├── recommendation_filters
+│   │   │   │   │   ├── field_collapse_checkbox.html
+│   │   │   │   │   └── offcanvas.html
+│   │   │   │   └── top_filters.html
+│   │   │   └── list.html
+│   │   ├── releases
+│   │   │   └── list.html
+│   │   ├── search
+│   │   │   ├── includes
+│   │   │   │   ├── generic_search_home.html
+│   │   │   │   ├── new_saved_search_modal_content.html
+│   │   │   │   ├── prescribers_search_form.html
+│   │   │   │   ├── prescribers_search_results.html
+│   │   │   │   ├── prescribers_search_summary.html
+│   │   │   │   ├── prescribers_search_title.html
+│   │   │   │   ├── save_search_button.html
+│   │   │   │   ├── saved_searches.html
+│   │   │   │   ├── saved_searches_settings_modal_content.html
+│   │   │   │   ├── services_orientation_banner.html
+│   │   │   │   ├── siaes_search_content.html
+│   │   │   │   ├── siaes_search_filters_departments.html
+│   │   │   │   ├── siaes_search_form.html
+│   │   │   │   ├── siaes_search_results.html
+│   │   │   │   ├── siaes_search_subtitle.html
+│   │   │   │   ├── siaes_search_tabs.html
+│   │   │   │   ├── siaes_search_title.html
+│   │   │   │   └── siaes_search_top.html
+│   │   │   ├── prescribers_search_home.html
+│   │   │   ├── prescribers_search_results.html
+│   │   │   ├── services
+│   │   │   │   ├── home.html
+│   │   │   │   ├── includes
+│   │   │   │   │   ├── form.html
+│   │   │   │   │   ├── results.html
+│   │   │   │   │   └── summary.html
+│   │   │   │   └── results.html
+│   │   │   ├── siaes_search_home.html
+│   │   │   └── siaes_search_results.html
+│   │   ├── siae_evaluations
+│   │   │   ├── campaign_calendar.html
+│   │   │   ├── default_calendar_html.html
+│   │   │   ├── email
+│   │   │   │   ├── to_institution_campaign_close_body.txt
+│   │   │   │   ├── to_institution_campaign_close_subject.txt
+│   │   │   │   ├── to_institution_ratio_to_select_body.txt
+│   │   │   │   ├── to_institution_ratio_to_select_subject.txt
+│   │   │   │   ├── to_institution_selected_siae_body.txt
+│   │   │   │   ├── to_institution_selected_siae_subject.txt
+│   │   │   │   ├── to_institution_siaes_submission_frozen_body.txt
+│   │   │   │   ├── to_institution_siaes_submission_frozen_reminder_body.txt
+│   │   │   │   ├── to_institution_siaes_submission_frozen_reminder_subject.txt
+│   │   │   │   ├── to_institution_siaes_submission_frozen_subject.txt
+│   │   │   │   ├── to_institution_siaes_transition_to_adversarial_stage_body.txt
+│   │   │   │   ├── to_institution_siaes_transition_to_adversarial_stage_subject.txt
+│   │   │   │   ├── to_institution_submitted_by_siae_body.txt
+│   │   │   │   ├── to_institution_submitted_by_siae_subject.txt
+│   │   │   │   ├── to_siae_accepted_body.txt
+│   │   │   │   ├── to_siae_accepted_from_certified_criteria_body.txt
+│   │   │   │   ├── to_siae_accepted_from_certified_criteria_subject.txt
+│   │   │   │   ├── to_siae_accepted_subject.txt
+│   │   │   │   ├── to_siae_adversarial_stage_body.txt
+│   │   │   │   ├── to_siae_adversarial_stage_subject.txt
+│   │   │   │   ├── to_siae_force_accepted_body.txt
+│   │   │   │   ├── to_siae_force_accepted_subject.txt
+│   │   │   │   ├── to_siae_forced_to_adversarial_stage_body.txt
+│   │   │   │   ├── to_siae_forced_to_adversarial_stage_subject.txt
+│   │   │   │   ├── to_siae_not_sanctioned_body.txt
+│   │   │   │   ├── to_siae_not_sanctioned_subject.txt
+│   │   │   │   ├── to_siae_notify_before_adversarial_stage_body.txt
+│   │   │   │   ├── to_siae_notify_before_adversarial_stage_subject.txt
+│   │   │   │   ├── to_siae_notify_before_campaign_close_body.txt
+│   │   │   │   ├── to_siae_notify_before_campaign_close_subject.txt
+│   │   │   │   ├── to_siae_refused_body.txt
+│   │   │   │   ├── to_siae_refused_no_proofs_body.txt
+│   │   │   │   ├── to_siae_refused_no_proofs_subject.txt
+│   │   │   │   ├── to_siae_refused_subject.txt
+│   │   │   │   ├── to_siae_sanctioned_with_training_session_body.txt
+│   │   │   │   ├── to_siae_sanctioned_with_training_session_subject.txt
+│   │   │   │   ├── to_siae_selected_body.txt
+│   │   │   │   └── to_siae_selected_subject.txt
+│   │   │   ├── evaluated_job_application.html
+│   │   │   ├── evaluated_siae_detail.html
+│   │   │   ├── evaluated_siae_sanction.html
+│   │   │   ├── includes
+│   │   │   │   ├── criteria_form.html
+│   │   │   │   ├── criterion_infos.html
+│   │   │   │   ├── criterion_validation.html
+│   │   │   │   ├── evaluation_data.html
+│   │   │   │   ├── job_seeker_infos.html
+│   │   │   │   ├── list_item.html
+│   │   │   │   ├── recommendations_box.html
+│   │   │   │   ├── recommendations_modal.html
+│   │   │   │   └── siae_infos.html
+│   │   │   ├── institution_evaluated_siae_list.html
+│   │   │   ├── institution_evaluated_siae_notify_step1.html
+│   │   │   ├── institution_evaluated_siae_notify_step2.html
+│   │   │   ├── institution_evaluated_siae_notify_step3.html
+│   │   │   ├── samples_selection.html
+│   │   │   ├── sanctions_helper.html
+│   │   │   ├── siae_job_applications_list.html
+│   │   │   ├── siae_select_criteria.html
+│   │   │   └── siae_upload_doc.html
+│   │   ├── signup
+│   │   │   ├── choose_membership_kind.html
+│   │   │   ├── choose_user_kind.html
+│   │   │   ├── company_select.html
+│   │   │   ├── employer.html
+│   │   │   ├── facilitator_join.html
+│   │   │   ├── facilitator_search.html
+│   │   │   ├── includes
+│   │   │   │   ├── france_connect_button.html
+│   │   │   │   ├── ft_connect_button.html
+│   │   │   │   ├── login_reminder.html
+│   │   │   │   ├── no_email_link.html
+│   │   │   │   ├── prescriber_card.html
+│   │   │   │   ├── submit_rgpd.html
+│   │   │   │   └── user_kind_radio.html
+│   │   │   ├── job_seeker_criteria.html
+│   │   │   ├── job_seeker_signup.html
+│   │   │   ├── job_seeker_signup_base.html
+│   │   │   ├── job_seeker_signup_credentials.html
+│   │   │   ├── job_seeker_situation.html
+│   │   │   ├── job_seeker_start.html
+│   │   │   ├── prescriber_check_already_exists.html
+│   │   │   ├── prescriber_choose_kind.html
+│   │   │   ├── prescriber_choose_org.html
+│   │   │   ├── prescriber_confirm_authorization.html
+│   │   │   ├── prescriber_join_ft_org.html
+│   │   │   ├── prescriber_search_ft_org.html
+│   │   │   └── professional_user.html
+│   │   ├── static
+│   │   │   ├── accessibility.html
+│   │   │   ├── legal
+│   │   │   │   ├── notice.html
+│   │   │   │   ├── privacy.html
+│   │   │   │   └── terms
+│   │   │   │       ├── all_versions.html
+│   │   │   │       ├── base.html
+│   │   │   │       └── versions
+│   │   │   │           ├── 2022-10-14.html
+│   │   │   │           ├── 2024-02-05.html
+│   │   │   │           ├── 2025-10-15.html
+│   │   │   │           ├── 2026-03-16.html
+│   │   │   │           └── mise-a-jour-des-CGU.md
+│   │   │   └── maintenance.html
+│   │   ├── stats
+│   │   │   └── stats.html
+│   │   ├── users
+│   │   │   └── emails
+│   │   │       ├── check_authorized_members_email_body.txt
+│   │   │       ├── check_authorized_members_email_subject.txt
+│   │   │       ├── nir_modification_request_body.txt
+│   │   │       └── nir_modification_request_subject.txt
+│   │   ├── utils
+│   │   │   ├── modal_includes
+│   │   │   │   ├── login_failure.html
+│   │   │   │   ├── registration_failure.html
+│   │   │   │   └── sso_email_conflict_registration_failure.html
+│   │   │   ├── modals.html
+│   │   │   ├── templatetags
+│   │   │   │   ├── approval_box.html
+│   │   │   │   ├── buttons_form.html
+│   │   │   │   ├── nav.html
+│   │   │   │   └── nav_anonymous.html
+│   │   │   ├── toasts.html
+│   │   │   └── widgets
+│   │   │       ├── duet_date_picker_widget.html
+│   │   │       ├── file_input.html
+│   │   │       ├── file_input_constraints.html
+│   │   │       ├── multi_file_input.html
+│   │   │       └── news_image_input.html
+│   │   └── welcoming_tour
+│   │       ├── employer.html
+│   │       ├── job_seeker.html
+│   │       └── prescriber.html
+│   ├── users
+│   │   ├── __init__.py
+│   │   ├── adapter.py
+│   │   ├── admin.py
+│   │   ├── admin_forms.py
+│   │   ├── apps.py
+│   │   ├── enums.py
+│   │   ├── forms.py
+│   │   ├── management
+│   │   │   ├── __init__.py
+│   │   │   └── commands
+│   │   │       ├── __init__.py
+│   │   │       ├── auto_attribute_company_admins.py
+│   │   │       ├── deduplicate_job_seekers.py
+│   │   │       ├── delete_old_nir_modification_requests.py
+│   │   │       ├── pe_certify_users.py
+│   │   │       ├── send_check_authorized_members_email.py
+│   │   │       ├── send_users_to_brevo.py
+│   │   │       ├── shorten_active_sessions.py
+│   │   │       └── sync_group_and_perms.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_jobseekerprofile_created_by_prescriber_organization.py
+│   │   │   ├── 0036_jobseekerprofile_ft_gps_id.py
+│   │   │   ├── 0037_nirmodificationrequest.py
+│   │   │   ├── 0038_fix_job_seeker_profile_birthdate.py
+│   │   │   ├── 0039_jobseekerprofile_jobseekerprofile_birth_country_and_place.py
+│   │   │   ├── 0040_migrate_temporary_number_to_no_nir.py
+│   │   │   ├── 0041_jobseekerprofile_jobseekerprofile_rsa_allocation_and_since.py
+│   │   │   ├── 0042_jobseekerprofile_ase_exit_and_more.py
+│   │   │   ├── 0043_jobseekerassignment.py
+│   │   │   ├── 0044_nirmodificationrequest_rationale.py
+│   │   │   ├── 0045_user_terms_accepted_at.py
+│   │   │   ├── 0046_jobseekerassignment_rename_prescriber_professional.py
+│   │   │   ├── 0047_jobseekerassignment_add_company.py
+│   │   │   ├── 0048_jobseekerassignment_assigned_to_unknown_advisor.py
+│   │   │   ├── 0049_remove_jobseekerprofile_job_seeker_profile_fields_history_and_more.py
+│   │   │   ├── 0050_user_fields_history_user_user_fields_history.py
+│   │   │   ├── 0051_user_identity_provider_kind.py
+│   │   │   ├── 0052_remove_user_identity_provider_kind_and_more.py
+│   │   │   ├── 0053_remove_user_has_kind_alter_user_kind_user_has_kind.py
+│   │   │   ├── 0054_remove_user_identity_provider_kind_and_more.py
+│   │   │   ├── 0055_jobseekerprofile_jobseekerprofile_asp_uid_format.py
+│   │   │   ├── 0056_identity_provider.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── notifications.py
+│   │   ├── perms.py
+│   │   └── utils.py
+│   ├── utils
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apis
+│   │   │   ├── __init__.py
+│   │   │   ├── api_entreprise.py
+│   │   │   ├── api_particulier.py
+│   │   │   ├── data_inclusion.py
+│   │   │   ├── datadog.py
+│   │   │   ├── dora.py
+│   │   │   ├── enums.py
+│   │   │   ├── exceptions.py
+│   │   │   ├── geiq_label.py
+│   │   │   ├── geocoding.py
+│   │   │   ├── github.py
+│   │   │   ├── metabase.py
+│   │   │   ├── pe_api_enums.py
+│   │   │   ├── pole_emploi.py
+│   │   │   ├── sentry.py
+│   │   │   └── updown.py
+│   │   ├── apps.py
+│   │   ├── asp.py
+│   │   ├── auth.py
+│   │   ├── brevo.py
+│   │   ├── cache.py
+│   │   ├── choices.py
+│   │   ├── command.py
+│   │   ├── constants.py
+│   │   ├── context_processors.py
+│   │   ├── date.py
+│   │   ├── db.py
+│   │   ├── diff.py
+│   │   ├── emails.py
+│   │   ├── enums.py
+│   │   ├── errors.py
+│   │   ├── export.py
+│   │   ├── faker_providers.py
+│   │   ├── france_standards.py
+│   │   ├── hijack
+│   │   │   ├── __init__.py
+│   │   │   ├── urls.py
+│   │   │   └── views.py
+│   │   ├── htmx
+│   │   │   └── __init__.py
+│   │   ├── immersion_facile.py
+│   │   ├── iso_standards.py
+│   │   ├── iterators.py
+│   │   ├── json.py
+│   │   ├── json_no_auto_fields_serializer.py
+│   │   ├── legal_terms.py
+│   │   ├── logging.py
+│   │   ├── management
+│   │   │   └── commands
+│   │   │       ├── check_inconsistencies.py
+│   │   │       ├── loaddata_bulk.py
+│   │   │       ├── migrate.py
+│   │   │       ├── purge_orphaned_support_remarks.py
+│   │   │       └── shell.py
+│   │   ├── management_commands.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_pksupportremark_updated_at.py
+│   │   │   ├── 0003_uuidsupportremark_updated_at.py
+│   │   │   └── __init__.py
+│   │   ├── mocks
+│   │   │   ├── __init__.py
+│   │   │   ├── address_format.py
+│   │   │   ├── api_entreprise.py
+│   │   │   ├── api_particulier.py
+│   │   │   ├── geocoding.py
+│   │   │   ├── pole_emploi.py
+│   │   │   └── rdv_insertion.py
+│   │   ├── models.py
+│   │   ├── nav_history.py
+│   │   ├── numbers.py
+│   │   ├── ordering.py
+│   │   ├── pagination.py
+│   │   ├── password_validation.py
+│   │   ├── perms
+│   │   │   ├── __init__.py
+│   │   │   ├── company.py
+│   │   │   ├── employee_record.py
+│   │   │   ├── institution.py
+│   │   │   ├── middleware.py
+│   │   │   ├── prescriber.py
+│   │   │   ├── user.py
+│   │   │   └── utils.py
+│   │   ├── phone.py
+│   │   ├── python.py
+│   │   ├── readonly.py
+│   │   ├── redirect_legacy_views.py
+│   │   ├── serializers.py
+│   │   ├── session.py
+│   │   ├── settings_context_processors.py
+│   │   ├── slack.py
+│   │   ├── staticfiles.py
+│   │   ├── storage
+│   │   │   ├── __init__.py
+│   │   │   └── s3.py
+│   │   ├── sync.py
+│   │   ├── templatetags
+│   │   │   ├── __init__.py
+│   │   │   ├── approvals.py
+│   │   │   ├── badges.py
+│   │   │   ├── buttons_form.py
+│   │   │   ├── components.py
+│   │   │   ├── datetime_filters.py
+│   │   │   ├── default_if_invalid.py
+│   │   │   ├── demo_accounts.py
+│   │   │   ├── dict_filters.py
+│   │   │   ├── dora.py
+│   │   │   ├── enums.py
+│   │   │   ├── format_filters.py
+│   │   │   ├── job_application_actions.py
+│   │   │   ├── job_seekers.py
+│   │   │   ├── list_filters.py
+│   │   │   ├── matomo.py
+│   │   │   ├── nav.py
+│   │   │   ├── nexus.py
+│   │   │   ├── organization_switcher.py
+│   │   │   ├── pilotage.py
+│   │   │   ├── previous_step.py
+│   │   │   ├── redirection_fields.py
+│   │   │   ├── should_not_happen.py
+│   │   │   ├── str_filters.py
+│   │   │   ├── support.py
+│   │   │   ├── theme_inclusion.py
+│   │   │   ├── url_add_query.py
+│   │   │   └── wording.py
+│   │   ├── throttling.py
+│   │   ├── tokens.py
+│   │   ├── triggers
+│   │   │   ├── __init__.py
+│   │   │   └── middleware.py
+│   │   ├── types.py
+│   │   ├── urls.py
+│   │   ├── validators.py
+│   │   ├── views.py
+│   │   ├── widgets.py
+│   │   └── zendesk.py
+│   └── www
+│       ├── __init__.py
+│       ├── announcements
+│       │   ├── __init__.py
+│       │   ├── urls.py
+│       │   └── views.py
+│       ├── api
+│       │   ├── __init__.py
+│       │   └── urls.py
+│       ├── apply
+│       │   ├── __init__.py
+│       │   ├── forms.py
+│       │   ├── urls.py
+│       │   └── views
+│       │       ├── __init__.py
+│       │       ├── accept_views.py
+│       │       ├── batch_views.py
+│       │       ├── common.py
+│       │       ├── constants.py
+│       │       ├── edit_views.py
+│       │       ├── hire_views.py
+│       │       ├── list_views.py
+│       │       ├── process_views.py
+│       │       ├── submit_views.py
+│       │       └── transfer_views.py
+│       ├── approvals_views
+│       │   ├── __init__.py
+│       │   ├── forms.py
+│       │   ├── urls.py
+│       │   └── views.py
+│       ├── autocomplete
+│       │   ├── __init__.py
+│       │   ├── urls.py
+│       │   └── views.py
+│       ├── companies_views
+│       │   ├── __init__.py
+│       │   ├── forms.py
+│       │   ├── urls.py
+│       │   └── views.py
+│       ├── components
+│       │   ├── __init__.py
+│       │   ├── urls.py
+│       │   └── views.py
+│       ├── dashboard
+│       │   ├── __init__.py
+│       │   ├── forms.py
+│       │   ├── urls.py
+│       │   └── views.py
+│       ├── eligibility_views
+│       │   ├── __init__.py
+│       │   ├── forms.py
+│       │   ├── urls.py
+│       │   └── views.py
+│       ├── employee_record_views
+│       │   ├── __init__.py
+│       │   ├── enums.py
+│       │   ├── forms.py
+│       │   ├── urls.py
+│       │   └── views.py
+│       ├── employees_views
+│       │   ├── __init__.py
+│       │   ├── urls.py
+│       │   └── views.py
+│       ├── error.py
+│       ├── geiq_assessments_views
+│       │   ├── __init__.py
+│       │   ├── export.py
+│       │   ├── forms.py
+│       │   ├── templatetags
+│       │   │   ├── __init__.py
+│       │   │   └── geiq_assessments_badges.py
+│       │   ├── urls.py
+│       │   └── views.py
+│       ├── geiq_eligibility_views
+│       │   ├── __init__.py
+│       │   └── forms.py
+│       ├── gps
+│       │   ├── __init__.py
+│       │   ├── enums.py
+│       │   ├── forms.py
+│       │   ├── urls.py
+│       │   ├── utils.py
+│       │   └── views.py
+│       ├── home
+│       │   ├── __init__.py
+│       │   ├── urls.py
+│       │   └── views.py
+│       ├── insertion_views
+│       │   ├── __init__.py
+│       │   ├── forms.py
+│       │   ├── urls.py
+│       │   └── views.py
+│       ├── institutions_views
+│       │   ├── __init__.py
+│       │   ├── urls.py
+│       │   └── views.py
+│       ├── invitations_views
+│       │   ├── __init__.py
+│       │   ├── forms.py
+│       │   ├── helpers.py
+│       │   ├── urls.py
+│       │   └── views.py
+│       ├── itou_staff_views
+│       │   ├── __init__.py
+│       │   ├── export_utils.py
+│       │   ├── forms.py
+│       │   ├── merge_utils.py
+│       │   ├── urls.py
+│       │   └── views.py
+│       ├── job_seekers_views
+│       │   ├── __init__.py
+│       │   ├── enums.py
+│       │   ├── forms.py
+│       │   ├── urls.py
+│       │   └── views.py
+│       ├── legal_views
+│       │   ├── __init__.py
+│       │   └── views.py
+│       ├── login
+│       │   ├── __init__.py
+│       │   ├── constants.py
+│       │   ├── forms.py
+│       │   ├── urls.py
+│       │   └── views.py
+│       ├── logout
+│       │   ├── __init__.py
+│       │   ├── enums.py
+│       │   ├── urls.py
+│       │   └── views.py
+│       ├── middleware.py
+│       ├── nexus
+│       │   ├── __init__.py
+│       │   ├── urls.py
+│       │   └── views.py
+│       ├── otp_views
+│       │   ├── __init__.py
+│       │   ├── enums.py
+│       │   ├── forms.py
+│       │   ├── urls.py
+│       │   └── views.py
+│       ├── prescribers_views
+│       │   ├── __init__.py
+│       │   ├── forms.py
+│       │   ├── urls.py
+│       │   └── views.py
+│       ├── rdv_insertion
+│       │   ├── __init__.py
+│       │   ├── urls.py
+│       │   └── views.py
+│       ├── recommendations
+│       │   ├── __init__.py
+│       │   ├── enums.py
+│       │   ├── forms.py
+│       │   ├── urls.py
+│       │   └── views
+│       │       ├── __init__.py
+│       │       ├── beneficiary_views.py
+│       │       ├── common.py
+│       │       └── list_views.py
+│       ├── releases
+│       │   ├── __init__.py
+│       │   ├── urls.py
+│       │   └── views.py
+│       ├── search_views
+│       │   ├── __init__.py
+│       │   ├── forms.py
+│       │   ├── urls.py
+│       │   └── views.py
+│       ├── security
+│       │   ├── __init__.py
+│       │   ├── urls.py
+│       │   └── views.py
+│       ├── siae_evaluations_views
+│       │   ├── __init__.py
+│       │   ├── forms.py
+│       │   ├── urls.py
+│       │   └── views.py
+│       ├── signup
+│       │   ├── __init__.py
+│       │   ├── errors.py
+│       │   ├── forms.py
+│       │   ├── urls.py
+│       │   └── views.py
+│       ├── stats
+│       │   ├── __init__.py
+│       │   ├── urls.py
+│       │   ├── utils.py
+│       │   └── views.py
+│       ├── utils
+│       │   ├── __init__.py
+│       │   └── wizard.py
+│       └── welcoming_tour
+│           ├── __init__.py
+│           ├── urls.py
+│           └── views.py
+├── manage.py
+├── migrations.md
+├── pyproject.toml
+├── requirements
+│   ├── base.in
+│   ├── base.txt
+│   ├── dev.in
+│   ├── dev.txt
+│   ├── test.in
+│   └── test.txt
+├── scripts
+│   ├── clever-deploy
+│   ├── create-sidecar-instance.sh
+│   ├── delete-buckets
+│   ├── import-iae.sh
+│   ├── mkchangelog
+│   └── reset
+└── tests
+    ├── __init__.py
+    ├── allauth_adapters
+    │   └── __init__.py
+    ├── analytics
+    │   ├── __init__.py
+    │   ├── conftest.py
+    │   ├── factories.py
+    │   ├── test_api_usage.py
+    │   ├── test_approvals.py
+    │   ├── test_archive.py
+    │   ├── test_collect_analytics_data_management_command.py
+    │   ├── test_employee_record.py
+    │   ├── test_models.py
+    │   ├── test_tech_metrics.py
+    │   └── test_users.py
+    ├── antivirus
+    │   ├── factories.py
+    │   └── test_scan_s3_files.py
+    ├── api
+    │   ├── __init__.py
+    │   ├── __snapshots__
+    │   │   ├── test_geiq.ambr
+    │   │   └── test_marche_api.ambr
+    │   ├── applicants_api
+    │   │   ├── __init__.py
+    │   │   ├── __snapshots__
+    │   │   │   └── tests.ambr
+    │   │   └── tests.py
+    │   ├── data_inclusion_api
+    │   │   ├── __init__.py
+    │   │   ├── __snapshots__
+    │   │   │   └── tests.ambr
+    │   │   └── tests.py
+    │   ├── employee_record_api
+    │   │   ├── __init__.py
+    │   │   ├── __snapshots__
+    │   │   │   └── tests.ambr
+    │   │   ├── test_serializers.py
+    │   │   ├── test_throttling.py
+    │   │   └── tests.py
+    │   ├── job_applications_api
+    │   │   ├── __init__.py
+    │   │   ├── __snapshots__
+    │   │   │   └── test_search.ambr
+    │   │   ├── test_schemas.py
+    │   │   └── test_search.py
+    │   ├── siae_api
+    │   │   ├── __init__.py
+    │   │   ├── __snapshots__
+    │   │   │   └── tests.ambr
+    │   │   └── tests.py
+    │   ├── test_error.py
+    │   ├── test_geiq.py
+    │   ├── test_marche_api.py
+    │   ├── test_nexus.py
+    │   ├── test_spectacular.py
+    │   ├── token_auth
+    │   │   ├── __init__.py
+    │   │   └── tests.py
+    │   └── utils.py
+    ├── approvals
+    │   ├── __init__.py
+    │   ├── __snapshots__
+    │   │   ├── test_admin.ambr
+    │   │   ├── test_notifications.ambr
+    │   │   └── test_prolongation_requests.ambr
+    │   ├── factories.py
+    │   ├── test_admin.py
+    │   ├── test_notifications.py
+    │   ├── test_notify_pole_emploi.py
+    │   ├── test_perms.py
+    │   ├── test_prolongation_requests.py
+    │   └── tests.py
+    ├── archive
+    │   ├── __init__.py
+    │   ├── __snapshots__
+    │   │   ├── tests_management_command.ambr
+    │   │   ├── tests_tasks.ambr
+    │   │   └── tests_utils.ambr
+    │   ├── factories.py
+    │   ├── tests_management_command.py
+    │   ├── tests_tasks.py
+    │   └── tests_utils.py
+    ├── asp
+    │   ├── __init__.py
+    │   ├── __snapshots__
+    │   │   └── test_sync_communes.ambr
+    │   ├── fake_ref_insee_com_v1.csv
+    │   ├── fake_ref_insee_com_v2.csv
+    │   ├── test_communes.py
+    │   ├── test_countries.py
+    │   ├── test_models.py
+    │   ├── test_sync_communes.py
+    │   └── test_utils.py
+    ├── cities
+    │   ├── __init__.py
+    │   ├── __snapshots__
+    │   │   └── tests.ambr
+    │   ├── factories.py
+    │   ├── sample-cities.csv
+    │   └── tests.py
+    ├── common_apps
+    │   ├── __init__.py
+    │   ├── address
+    │   │   ├── __init__.py
+    │   │   ├── test_qpv_zrr_fields.py
+    │   │   └── tests.py
+    │   └── organizations
+    │       ├── __init__.py
+    │       └── tests.py
+    ├── communications
+    │   ├── __init__.py
+    │   ├── __snapshots__
+    │   │   └── test_campaigns.ambr
+    │   ├── factories.py
+    │   ├── test_admin.py
+    │   ├── test_cache.py
+    │   ├── test_campaigns.py
+    │   ├── test_dispatch.py
+    │   ├── test_models.py
+    │   └── test_registry.py
+    ├── companies
+    │   ├── __init__.py
+    │   ├── __snapshots__
+    │   │   ├── test_admin.ambr
+    │   │   ├── test_import_ea_eatt.ambr
+    │   │   ├── test_import_siae_command.ambr
+    │   │   └── test_management_commands.ambr
+    │   ├── factories.py
+    │   ├── test_admin.py
+    │   ├── test_enums.py
+    │   ├── test_import_ea_eatt.py
+    │   ├── test_import_siae_command.py
+    │   ├── test_management_command_import_geiq.py
+    │   ├── test_management_commands.py
+    │   ├── test_models.py
+    │   └── test_sync_ft_offers.py
+    ├── conftest.py
+    ├── data
+    │   ├── empty.pdf
+    │   ├── empty.xlsx
+    │   └── github.json
+    ├── eligibility
+    │   ├── __init__.py
+    │   ├── admin_utils.py
+    │   ├── factories.py
+    │   ├── test_admin.py
+    │   ├── test_commands.py
+    │   ├── test_common.py
+    │   ├── test_geiq.py
+    │   ├── test_iae.py
+    │   └── test_tasks.py
+    ├── emails
+    │   ├── conftest.py
+    │   ├── test_admin.py
+    │   ├── test_commands.py
+    │   └── test_tasks.py
+    ├── employee_record
+    │   ├── __init__.py
+    │   ├── __snapshots__
+    │   │   ├── test_admin.ambr
+    │   │   ├── test_archive_employee_records.ambr
+    │   │   ├── test_sanitize_employee_records.ambr
+    │   │   ├── test_serializers.ambr
+    │   │   ├── test_transfer_employee_records.ambr
+    │   │   └── test_transfer_employee_records_updates.ambr
+    │   ├── factories.py
+    │   ├── test_admin.py
+    │   ├── test_archive_employee_records.py
+    │   ├── test_employee_record_command.py
+    │   ├── test_mocks.py
+    │   ├── test_models.py
+    │   ├── test_notifications.py
+    │   ├── test_sanitize_employee_records.py
+    │   ├── test_serializers.py
+    │   ├── test_transfer_employee_records.py
+    │   └── test_transfer_employee_records_updates.py
+    ├── external_data
+    │   ├── __init__.py
+    │   └── tests.py
+    ├── files
+    │   ├── __init__.py
+    │   ├── factories.py
+    │   ├── test_forms.py
+    │   ├── test_migrate_resume.py
+    │   └── tests.py
+    ├── geiq
+    │   ├── __init__.py
+    │   ├── factories.py
+    │   └── test_sync.py
+    ├── geiq_assessments
+    │   ├── __init__.py
+    │   ├── factories.py
+    │   ├── test_admin.py
+    │   ├── test_models.py
+    │   └── test_tasks.py
+    ├── geo
+    │   ├── __init__.py
+    │   ├── factories.py
+    │   ├── test_admin.py
+    │   ├── test_qpv.py
+    │   └── test_zrr.py
+    ├── gps
+    │   ├── __init__.py
+    │   ├── __snapshots__
+    │   │   └── test_views.ambr
+    │   ├── factories.py
+    │   ├── test_admin.py
+    │   ├── test_management_commands.py
+    │   ├── test_models.py
+    │   └── test_views.py
+    ├── insertion
+    │   ├── __init__.py
+    │   ├── __snapshots__
+    │   │   └── test_import_structures_and_services.ambr
+    │   ├── api_mocks
+    │   │   ├── data_inclusion
+    │   │   │   ├── doc
+    │   │   │   │   ├── frais.json
+    │   │   │   │   ├── modes-accueil.json
+    │   │   │   │   ├── modes-mobilisation.json
+    │   │   │   │   ├── personnes-mobilisatrices.json
+    │   │   │   │   ├── publics.json
+    │   │   │   │   ├── reseaux-porteurs.json
+    │   │   │   │   ├── thematiques.json
+    │   │   │   │   └── types-services.json
+    │   │   │   ├── services.json
+    │   │   │   ├── sources.json
+    │   │   │   └── structures.json
+    │   │   └── dora
+    │   │       ├── disabled-dora-form-di-structures.json
+    │   │       ├── reference-data.json
+    │   │       └── services.json
+    │   ├── factories.py
+    │   ├── test_import_structures_and_services.py
+    │   ├── test_models.py
+    │   ├── test_opening_hours.py
+    │   └── test_orientation.py
+    ├── institutions
+    │   ├── __init__.py
+    │   ├── factories.py
+    │   └── tests.py
+    ├── invitations
+    │   ├── __init__.py
+    │   ├── factories.py
+    │   └── tests.py
+    ├── job_applications
+    │   ├── __init__.py
+    │   ├── __snapshots__
+    │   │   ├── test_admin.ambr
+    │   │   ├── test_reject_job_applications_after_delay.ambr
+    │   │   ├── test_transfer.ambr
+    │   │   └── tests.ambr
+    │   ├── factories.py
+    │   ├── test_admin.py
+    │   ├── test_archive_job_applications.py
+    │   ├── test_reject_job_applications_after_delay.py
+    │   ├── test_transfer.py
+    │   └── tests.py
+    ├── jobs
+    │   ├── __init__.py
+    │   ├── data
+    │   │   └── appellations_test_fixture.csv
+    │   ├── factories.py
+    │   ├── management
+    │   │   ├── __init__.py
+    │   │   ├── __snapshots__
+    │   │   │   └── test_sync_romes_and_appellations.ambr
+    │   │   └── test_sync_romes_and_appellations.py
+    │   └── tests.py
+    ├── logout
+    │   ├── __init__.py
+    │   ├── __snapshots__
+    │   │   └── tests.ambr
+    │   └── tests.py
+    ├── metabase
+    │   ├── __init__.py
+    │   ├── conftest.py
+    │   ├── management
+    │   │   ├── __init__.py
+    │   │   ├── __snapshots__
+    │   │   │   ├── test_metabase_data.ambr
+    │   │   │   ├── test_populate_metabase_emplois.ambr
+    │   │   │   ├── test_populate_metabase_matomo.ambr
+    │   │   │   └── test_upload_data_to_pilotage.ambr
+    │   │   ├── test_fetch_riae_contracts.py
+    │   │   ├── test_metabase_data.py
+    │   │   ├── test_populate_metabase_emplois.py
+    │   │   ├── test_populate_metabase_matomo.py
+    │   │   └── test_upload_data_to_pilotage.py
+    │   ├── test_approvals.py
+    │   ├── test_job_applications.py
+    │   ├── test_job_descriptions.py
+    │   ├── test_siaes.py
+    │   └── test_utils.py
+    ├── middleware
+    │   └── test_terms_acceptance.py
+    ├── nexus
+    │   ├── __init__.py
+    │   ├── __snapshots__
+    │   │   └── tests_management_commands.ambr
+    │   ├── factories.py
+    │   ├── test_admin.py
+    │   ├── test_middleware.py
+    │   ├── test_models.py
+    │   ├── test_utils.py
+    │   └── tests_management_commands.py
+    ├── openid_connect
+    │   ├── __init__.py
+    │   ├── france_connect
+    │   │   ├── __init__.py
+    │   │   ├── __snapshots__
+    │   │   │   └── tests.ambr
+    │   │   └── tests.py
+    │   ├── ft_connect
+    │   │   ├── __init__.py
+    │   │   ├── __snapshots__
+    │   │   │   └── tests.ambr
+    │   │   └── tests.py
+    │   ├── pro_connect
+    │   │   ├── __init__.py
+    │   │   ├── testing.py
+    │   │   └── tests.py
+    │   └── test_cleanup_oidc_states.py
+    ├── otp
+    │   ├── __init__.py
+    │   ├── factories.py
+    │   ├── test_admin.py
+    │   ├── test_purge_disabled_otp_devices.py
+    │   └── test_utils.py
+    ├── prescribers
+    │   ├── __init__.py
+    │   ├── factories.py
+    │   └── tests.py
+    ├── rdv_insertion
+    │   ├── __init__.py
+    │   ├── factories.py
+    │   └── tests.py
+    ├── recommendations
+    │   ├── __init__.py
+    │   ├── factories.py
+    │   └── test_helpers.py
+    ├── scripts
+    │   ├── __init__.py
+    │   ├── test_move_job_applications.py
+    │   ├── test_redact_zendesk_attachments.py
+    │   └── test_users_geolocation.py
+    ├── search
+    │   ├── __init__.py
+    │   ├── factories.py
+    │   └── test_models.py
+    ├── settings_viewer
+    │   └── __init__.py
+    ├── siae_evaluations
+    │   ├── __init__.py
+    │   ├── __snapshots__
+    │   │   ├── test_emails.ambr
+    │   │   ├── test_management_commands.ambr
+    │   │   └── test_models.ambr
+    │   ├── factories.py
+    │   ├── test_admin.py
+    │   ├── test_emails.py
+    │   ├── test_management_commands.py
+    │   └── test_models.py
+    ├── tasks
+    │   └── test_fallback_to_postgres.py
+    ├── test_consistency.py
+    ├── test_sentry.py
+    ├── users
+    │   ├── __init__.py
+    │   ├── __snapshots__
+    │   │   ├── test_admin_views.ambr
+    │   │   ├── test_management_commands.ambr
+    │   │   ├── test_models.ambr
+    │   │   └── test_sync_group_and_perms.ambr
+    │   ├── constants.py
+    │   ├── factories.py
+    │   ├── test_admin.py
+    │   ├── test_admin_forms.py
+    │   ├── test_admin_views.py
+    │   ├── test_enums.py
+    │   ├── test_management_commands.py
+    │   ├── test_models.py
+    │   ├── test_perms.py
+    │   ├── test_sync_group_and_perms.py
+    │   └── test_terms_acceptance.py
+    ├── utils
+    │   ├── __init__.py
+    │   ├── __snapshots__
+    │   │   ├── test_brevo.ambr
+    │   │   ├── test_diff.ambr
+    │   │   ├── test_templatetags.ambr
+    │   │   ├── test_urls.ambr
+    │   │   └── tests.ambr
+    │   ├── apis
+    │   │   ├── __init__.py
+    │   │   ├── __snapshots__
+    │   │   │   ├── test_api_particulier.ambr
+    │   │   │   ├── test_geocoding_api.ambr
+    │   │   │   └── test_metabase.ambr
+    │   │   ├── test_api_particulier.py
+    │   │   ├── test_datadog_api.py
+    │   │   ├── test_dora.py
+    │   │   ├── test_entreprise_api.py
+    │   │   ├── test_geiq_label.py
+    │   │   ├── test_geocoding_api.py
+    │   │   ├── test_github.py
+    │   │   ├── test_metabase.py
+    │   │   ├── test_pole_emploi_api.py
+    │   │   ├── test_sentry_api.py
+    │   │   └── test_updown.py
+    │   ├── factory_boy.py
+    │   ├── htmx
+    │   │   ├── __init__.py
+    │   │   ├── testing.py
+    │   │   └── tests.py
+    │   ├── new_dns
+    │   │   └── __init__.py
+    │   ├── perms
+    │   │   ├── __init__.py
+    │   │   └── tests.py
+    │   ├── storage
+    │   │   └── __init__.py
+    │   ├── test_admin.py
+    │   ├── test_brevo.py
+    │   ├── test_cache.py
+    │   ├── test_check_inconsistencies.py
+    │   ├── test_date.py
+    │   ├── test_diff.py
+    │   ├── test_hijack.py
+    │   ├── test_immersion_facile.py
+    │   ├── test_iterators.py
+    │   ├── test_legal_terms.py
+    │   ├── test_loaddata_bulk.py
+    │   ├── test_logger.py
+    │   ├── test_logs.py
+    │   ├── test_models.py
+    │   ├── test_numbers.py
+    │   ├── test_phone.py
+    │   ├── test_purge_obsolete_support_remarks.py
+    │   ├── test_python.py
+    │   ├── test_readonly.py
+    │   ├── test_redirect_legacy_views.py
+    │   ├── test_reload_module.py
+    │   ├── test_s3.py
+    │   ├── test_templatetags.py
+    │   ├── test_triggers.py
+    │   ├── test_urls.py
+    │   ├── test_widgets.py
+    │   ├── testing.py
+    │   └── tests.py
+    └── www
+        ├── __init__.py
+        ├── __snapshots__
+        │   ├── test_layout.ambr
+        │   └── test_maintenance.ambr
+        ├── announcements
+        │   ├── __init__.py
+        │   ├── __snapshots__
+        │   │   └── test_views.ambr
+        │   └── test_views.py
+        ├── api
+        │   ├── __init__.py
+        │   └── tests.py
+        ├── apply
+        │   ├── __init__.py
+        │   ├── __snapshots__
+        │   │   ├── test_accept_views.ambr
+        │   │   ├── test_detail_rdv_insertion.ambr
+        │   │   ├── test_hire_views.ambr
+        │   │   ├── test_list.ambr
+        │   │   ├── test_list_for_job_seeker.ambr
+        │   │   ├── test_list_for_siae.ambr
+        │   │   ├── test_list_prescriptions.ambr
+        │   │   ├── test_list_rdv_insertion.ambr
+        │   │   ├── test_process.ambr
+        │   │   ├── test_process_comments.ambr
+        │   │   ├── test_submit.ambr
+        │   │   ├── test_submit_from_job_seekers_list.ambr
+        │   │   └── test_transfer.ambr
+        │   ├── test_accept_views.py
+        │   ├── test_batch_views.py
+        │   ├── test_detail_rdv_insertion.py
+        │   ├── test_details.py
+        │   ├── test_edit.py
+        │   ├── test_forms.py
+        │   ├── test_geiq.py
+        │   ├── test_hire_views.py
+        │   ├── test_list.py
+        │   ├── test_list_for_job_seeker.py
+        │   ├── test_list_for_siae.py
+        │   ├── test_list_prescriptions.py
+        │   ├── test_list_rdv_insertion.py
+        │   ├── test_process.py
+        │   ├── test_process_comments.py
+        │   ├── test_submit.py
+        │   ├── test_submit_from_job_seekers_list.py
+        │   ├── test_templates.py
+        │   └── test_transfer.py
+        ├── approvals_views
+        │   ├── __init__.py
+        │   ├── __snapshots__
+        │   │   ├── test_approval_box.ambr
+        │   │   ├── test_detail.ambr
+        │   │   ├── test_list.ambr
+        │   │   ├── test_prolongation.ambr
+        │   │   ├── test_prolongation_requests.ambr
+        │   │   └── test_suspend.ambr
+        │   ├── test_approval_box.py
+        │   ├── test_detail.py
+        │   ├── test_display.py
+        │   ├── test_list.py
+        │   ├── test_prolongation.py
+        │   ├── test_prolongation_requests.py
+        │   └── test_suspend.py
+        ├── autocomplete
+        │   ├── __init__.py
+        │   ├── __snapshots__
+        │   │   └── tests.ambr
+        │   └── tests.py
+        ├── companies_views
+        │   ├── __init__.py
+        │   ├── __snapshots__
+        │   │   ├── test_card_views.ambr
+        │   │   ├── test_job_description_views.ambr
+        │   │   └── test_members_views.ambr
+        │   ├── test_card_views.py
+        │   ├── test_create_company_views.py
+        │   ├── test_dora_views.py
+        │   ├── test_edit_company_views.py
+        │   ├── test_financial_annex_views.py
+        │   ├── test_forms.py
+        │   ├── test_job_description_views.py
+        │   ├── test_members_views.py
+        │   └── test_overview.py
+        ├── components
+        │   ├── __init__.py
+        │   ├── __snapshots__
+        │   │   └── test_views.ambr
+        │   └── test_views.py
+        ├── dashboard
+        │   ├── __init__.py
+        │   ├── __snapshots__
+        │   │   ├── test_api_token.ambr
+        │   │   ├── test_dashboard.ambr
+        │   │   ├── test_dashboard_stats.ambr
+        │   │   ├── test_edit_job_seeker_info.ambr
+        │   │   ├── test_edit_user_info.ambr
+        │   │   └── test_edit_user_notifications.ambr
+        │   ├── test_activate_sso_account.py
+        │   ├── test_api_token.py
+        │   ├── test_dashboard.py
+        │   ├── test_dashboard_stats.py
+        │   ├── test_edit_job_seeker_info.py
+        │   ├── test_edit_user_email.py
+        │   ├── test_edit_user_info.py
+        │   ├── test_edit_user_notifications.py
+        │   └── test_switch_organization.py
+        ├── eligibility_views
+        │   ├── __init__.py
+        │   ├── __snapshots__
+        │   │   └── test_views.ambr
+        │   ├── test_forms.py
+        │   ├── test_views.py
+        │   └── utils.py
+        ├── employee_record_views
+        │   ├── __init__.py
+        │   ├── __snapshots__
+        │   │   ├── test_add.ambr
+        │   │   ├── test_create.ambr
+        │   │   ├── test_list.ambr
+        │   │   ├── test_missing_employee.ambr
+        │   │   ├── test_summary.ambr
+        │   │   └── test_template.ambr
+        │   ├── test_add.py
+        │   ├── test_create.py
+        │   ├── test_disable.py
+        │   ├── test_list.py
+        │   ├── test_missing_employee.py
+        │   ├── test_reactivate.py
+        │   ├── test_summary.py
+        │   └── test_template.py
+        ├── employees_views
+        │   ├── __init__.py
+        │   ├── __snapshots__
+        │   │   └── test_detail.ambr
+        │   └── test_detail.py
+        ├── geiq_assessments_views
+        │   ├── __init__.py
+        │   ├── __snapshots__
+        │   │   ├── test_views_for_both.ambr
+        │   │   ├── test_views_for_geiq.ambr
+        │   │   └── test_views_for_institution.ambr
+        │   ├── test_templatetags.py
+        │   ├── test_views_for_both.py
+        │   ├── test_views_for_geiq.py
+        │   └── test_views_for_institution.py
+        ├── geiq_eligibility_views
+        │   ├── __init__.py
+        │   └── test_forms.py
+        ├── home
+        │   ├── __init__.py
+        │   └── tests.py
+        ├── insertion_views
+        │   ├── __init__.py
+        │   ├── __snapshots__
+        │   │   ├── test_views.ambr
+        │   │   └── test_wizard.ambr
+        │   ├── test_views.py
+        │   └── test_wizard.py
+        ├── institutions_views
+        │   ├── __init__.py
+        │   ├── __snapshots__
+        │   │   └── test_views.ambr
+        │   └── test_views.py
+        ├── invitations_views
+        │   ├── __init__.py
+        │   ├── test_ft_organization.py
+        │   ├── test_generic.py
+        │   ├── test_helpers.py
+        │   └── test_new_user.py
+        ├── itou_staff_views
+        │   ├── __init__.py
+        │   ├── __snapshots__
+        │   │   └── tests.ambr
+        │   └── tests.py
+        ├── job_seekers_views
+        │   ├── __init_.py
+        │   ├── __snapshots__
+        │   │   ├── test_create_or_update.ambr
+        │   │   ├── test_details.ambr
+        │   │   └── test_list.ambr
+        │   ├── test_assign_oneself_as_advisor.py
+        │   ├── test_create_or_update.py
+        │   ├── test_details.py
+        │   ├── test_enums.py
+        │   ├── test_forms.py
+        │   ├── test_list.py
+        │   ├── test_nir_modification_request.py
+        │   ├── test_search_services.py
+        │   └── test_switch_stalled_status.py
+        ├── legal_views
+        │   └── test_legal_terms.py
+        ├── login
+        │   ├── __init__.py
+        │   ├── __snapshots__
+        │   │   └── tests.ambr
+        │   └── tests.py
+        ├── nexus
+        │   ├── __init__.py
+        │   ├── __snapshots__
+        │   │   └── test_views.ambr
+        │   └── test_views.py
+        ├── otp_views
+        │   ├── __init__.py
+        │   ├── __snapshots__
+        │   │   └── tests.ambr
+        │   └── tests.py
+        ├── prescribers_views
+        │   ├── __init__.py
+        │   ├── __snapshots__
+        │   │   ├── test_edit.ambr
+        │   │   └── test_members.ambr
+        │   ├── test_admins.py
+        │   ├── test_edit.py
+        │   ├── test_list.py
+        │   ├── test_members.py
+        │   └── test_overview.py
+        ├── rdv_insertion
+        │   ├── __init__.py
+        │   └── tests.py
+        ├── recommendations
+        │   ├── __init__.py
+        │   ├── __snapshots__
+        │   │   └── test_views.ambr
+        │   ├── conftest.py
+        │   ├── test_models.py
+        │   ├── test_nav.py
+        │   ├── test_services.py
+        │   └── test_views.py
+        ├── releases
+        │   ├── __init__.py
+        │   └── tests.py
+        ├── search_views
+        │   ├── __init__.py
+        │   ├── __snapshots__
+        │   │   ├── test_saved_searches.ambr
+        │   │   ├── test_services.ambr
+        │   │   └── tests.ambr
+        │   ├── test_saved_searches.py
+        │   ├── test_services.py
+        │   └── tests.py
+        ├── security
+        │   ├── __init__.py
+        │   └── tests.py
+        ├── siae_evaluations_views
+        │   ├── __init__.py
+        │   ├── __snapshots__
+        │   │   ├── test_institutions_views.ambr
+        │   │   ├── test_siaes_views.ambr
+        │   │   └── test_views.ambr
+        │   ├── test_forms.py
+        │   ├── test_institutions_views.py
+        │   ├── test_siaes_views.py
+        │   └── test_views.py
+        ├── signup
+        │   ├── __init__.py
+        │   ├── __snapshots__
+        │   │   ├── test_employer.ambr
+        │   │   ├── test_job_seeker.ambr
+        │   │   ├── test_password.ambr
+        │   │   ├── test_prescriber.ambr
+        │   │   └── test_professionals.ambr
+        │   ├── test_allauth.py
+        │   ├── test_employer.py
+        │   ├── test_job_seeker.py
+        │   ├── test_password.py
+        │   ├── test_prescriber.py
+        │   └── test_professionals.py
+        ├── stats
+        │   ├── __init__.py
+        │   ├── test_utils.py
+        │   └── test_views.py
+        ├── test_check_health.py
+        ├── test_error.py
+        ├── test_layout.py
+        ├── test_maintenance.py
+        ├── test_static_views.py
+        ├── test_throttling.py
+        └── welcoming_tour
+            ├── __init__.py
+            └── tests.py
+510 directories, 2519 files
