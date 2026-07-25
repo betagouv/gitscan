@@ -1,0 +1,432 @@
+.
+├── .buildpacks
+├── .claude
+│   ├── ARCHITECTURE.md
+│   ├── MAINTENANCE.md
+│   ├── agents
+│   │   └── tech-debt.md
+│   ├── commands
+│   │   ├── speckit.analyze.md
+│   │   ├── speckit.checklist.md
+│   │   ├── speckit.clarify.md
+│   │   ├── speckit.constitution.md
+│   │   ├── speckit.implement.md
+│   │   ├── speckit.plan.md
+│   │   ├── speckit.specify.md
+│   │   ├── speckit.tasks.md
+│   │   └── speckit.taskstoissues.md
+│   ├── hooks
+│   │   ├── check_env_on_tag.py
+│   │   ├── check_python.py
+│   │   ├── guard_write_paths.py
+│   │   ├── hook_env.py
+│   │   ├── ruff_edited.py
+│   │   └── stop_lint_gate.py
+│   ├── rules
+│   │   ├── api.md
+│   │   ├── code.md
+│   │   ├── review.md
+│   │   ├── sql.md
+│   │   ├── tests.md
+│   │   └── zones-critiques.md
+│   ├── settings.json
+│   └── skills -> ../skills
+├── .dockerignore
+├── .env.example
+├── .github
+│   ├── codeql-config.yml
+│   ├── dependabot.yml
+│   ├── pull_request_template.md
+│   └── workflows
+│       ├── _deploy.yml
+│       ├── ci.yml
+│       ├── deploy-prod.yml
+│       └── deploy-staging.yml
+├── .gitignore
+├── .gitleaks.toml
+├── .gitleaksignore
+├── .pre-commit-config.yaml
+├── .python-version
+├── .specify
+│   ├── init-options.json
+│   ├── memory
+│   │   └── constitution.md
+│   ├── scripts
+│   │   └── bash
+│   │       ├── check-prerequisites.sh
+│   │       ├── common.sh
+│   │       ├── create-new-feature.sh
+│   │       ├── setup-plan.sh
+│   │       └── update-agent-context.sh
+│   └── templates
+│       ├── agent-file-template.md
+│       ├── checklist-template.md
+│       ├── constitution-template.md
+│       ├── overrides
+│       │   └── spec-template.md
+│       ├── plan-template.md
+│       ├── spec-template.md
+│       └── tasks-template.md
+├── AGENT.md
+├── CLAUDE.md
+├── CONTRIBUTING.md
+├── Dockerfile
+├── Dockerfile.db
+├── Makefile
+├── Procfile
+├── README.md
+├── alembic
+│   ├── README
+│   ├── env.py
+│   ├── script.py.mako
+│   └── versions
+│       ├── 0d4871663bfd_initial_schema.py
+│       ├── 1ab3818607f7_add_dashboard_cron_columns.py
+│       ├── 1eec43dc9e46_add_conversation_message_embeddings.py
+│       ├── 5759bd430b2e_add_conversation_flag_columns.py
+│       ├── 7397f669848c_drop_unused_schema_version_table.py
+│       ├── 7946c9c555a4_dashboards_schema.py
+│       ├── 7b7df556b6d0_publication_refresh_columns.py
+│       ├── 87e9b1ca66b8_dashboard_publications.py
+│       ├── a1b2c3d4e5f6_text_to_datetime.py
+│       ├── b12cbac64ff9_enforce_not_null_on_default_backed_.py
+│       ├── c4d72e1f9a8b_usage_events.py
+│       ├── c89f7601677b_cron_schedule_default_to_crontab.py
+│       ├── df20b48b49c5_drop_wishlist_table.py
+│       └── e3f1a9c27b54_drop_pm_tables.py
+├── alembic.ini
+├── auth
+│   └── allowed_emails.txt.example
+├── benchmarks
+│   ├── README.md
+│   ├── card_retrieval.py
+│   └── card_retrieval_results.json
+├── bin
+│   └── post_compile
+├── config
+│   ├── sources.yaml
+│   └── sources.yaml.example
+├── cron
+│   ├── check-s3-backups
+│   │   ├── CRON.md
+│   │   └── cron.py
+│   ├── cleanup-dashboards
+│   │   ├── CRON.md
+│   │   └── cron.py
+│   ├── index-autometa-tables
+│   │   ├── CRON.md
+│   │   └── cron.py
+│   └── refresh-rpe
+│       ├── CRON.md
+│       └── cron.py
+├── cron.json
+├── docker-compose.yml
+├── docs
+│   ├── dashboard-template
+│   │   ├── APP.md
+│   │   ├── app.js
+│   │   ├── cron.py
+│   │   ├── index.html
+│   │   └── style.css
+│   ├── database-analysis-2026-01-27.md
+│   ├── deploiement.md
+│   ├── interactive-dashboards.md
+│   ├── plans
+│   │   ├── 2026-01-10-architecture-audit.md
+│   │   ├── 2026-01-11-gemini-backend.md
+│   │   ├── 2026-01-11-github-pr-persistence-design.md
+│   │   ├── 2026-01-11-pubsub-streaming.md
+│   │   ├── 2026-01-25-actions-sidebar-design.md
+│   │   ├── 2026-02-11-ollama-backend.md
+│   │   ├── 2026-02-21-fastapi-and-process-manager.md
+│   │   ├── 2026-03-02-chat-velocity-signals.md
+│   │   └── 2026-03-20-autometa-rebrand-infrastructure.md
+│   ├── remarques-victor-2026-03-19.md
+│   └── scaling-recommendations.md
+├── evals
+│   ├── .gitignore
+│   ├── blind_eval.py
+│   ├── compare.py
+│   ├── questions.py
+│   └── run_eval.py
+├── infra
+│   └── scaleway
+│       └── s3_backup
+│           ├── config.py
+│           ├── handler.py
+│           ├── requirements.txt
+│           ├── ruff.toml
+│           ├── setup.sh
+│           └── test_handler.py
+├── knowledge
+│   ├── README.md
+│   ├── bizdev
+│   │   └── glossaire.md
+│   ├── data_inclusion
+│   │   └── README.md
+│   ├── datalake
+│   │   ├── README.md
+│   │   ├── cards
+│   │   │   └── .gitkeep
+│   │   └── dashboards
+│   │       └── .gitkeep
+│   ├── dora
+│   │   ├── .gitkeep
+│   │   └── README.md
+│   ├── matomo
+│   │   ├── README.md
+│   │   ├── cohorts.md
+│   │   ├── core-modules.md
+│   │   ├── funnels.md
+│   │   ├── heatmaps.md
+│   │   └── tag-manager.md
+│   ├── metabase
+│   │   └── README.md
+│   ├── notion
+│   │   └── _index.md
+│   ├── rdvi
+│   │   └── README.md
+│   ├── sites
+│   │   ├── communaute.md
+│   │   ├── dora.md
+│   │   ├── emplois.md
+│   │   ├── marche.md
+│   │   ├── mon-recap.md
+│   │   ├── pilotage.md
+│   │   ├── plateforme.md
+│   │   └── rdv-insertion.md
+│   ├── stats
+│   │   ├── actes-metier.md
+│   │   ├── candidats.md
+│   │   ├── candidatures.md
+│   │   ├── clpe.md
+│   │   ├── communes-pop-aav.txt
+│   │   ├── nexus.md
+│   │   ├── pass-iae.md
+│   │   ├── prescribers.md
+│   │   ├── structures.md
+│   │   ├── support-emplois.md
+│   │   └── users.md
+│   └── webinaires
+│       └── _index.md
+├── lib
+│   ├── __init__.py
+│   ├── api_signals.py
+│   ├── autometa_tables_db.py
+│   ├── certs
+│   │   └── rpe_ca.pem
+│   ├── dashboard_storage.py
+│   ├── dashboards.py
+│   ├── data_inclusion.py
+│   ├── failure_detection.py
+│   ├── job_inputs.py
+│   ├── jobs.py
+│   ├── matomo.py
+│   ├── matomo_ui.py
+│   ├── metabase.py
+│   ├── migrate.py
+│   ├── notion.py
+│   ├── pg.py
+│   ├── pii.py
+│   ├── query.py
+│   ├── rpe.py
+│   ├── rpe_gwt.py
+│   ├── slack.py
+│   ├── sources.py
+│   ├── tool_taxonomy.py
+│   ├── webinaires.py
+│   └── zendesk.py
+├── postdeploy.sh
+├── pyproject.toml
+├── pytest.ini
+├── scalingo.json
+├── scripts
+│   └── check_test_quality.py
+├── skills
+│   ├── autometa_tables_db
+│   │   └── SKILL.md
+│   ├── compose_and_launch_job
+│   │   ├── SKILL.md
+│   │   └── scripts
+│   │       └── launch_job.py
+│   ├── create_dashboard
+│   │   ├── SKILL.md
+│   │   └── scripts
+│   │       └── create_dashboard.py
+│   ├── data_inclusion
+│   │   └── SKILL.md
+│   ├── debug_matomo_ui
+│   │   ├── SKILL.md
+│   │   └── scripts
+│   │       ├── __init__.py
+│   │       └── ui_tester.py
+│   ├── list_dashboards.py
+│   ├── matomo_query
+│   │   ├── SKILL.md
+│   │   └── scripts
+│   │       └── __init__.py
+│   ├── metabase_query
+│   │   ├── SKILL.md
+│   │   └── scripts
+│   │       ├── __init__.py
+│   │       ├── cards_db.py
+│   │       └── metabase.py
+│   ├── notion
+│   │   └── SKILL.md
+│   ├── pdf
+│   │   ├── LICENSE.txt
+│   │   ├── SKILL.md
+│   │   ├── forms.md
+│   │   ├── reference.md
+│   │   └── scripts
+│   │       ├── check_bounding_boxes.py
+│   │       ├── check_fillable_fields.py
+│   │       ├── convert_pdf_to_images.py
+│   │       ├── create_validation_image.py
+│   │       ├── extract_form_field_info.py
+│   │       ├── extract_form_structure.py
+│   │       ├── fill_fillable_fields.py
+│   │       └── fill_pdf_form_with_annotations.py
+│   ├── publish_dashboard
+│   │   ├── SKILL.md
+│   │   └── scripts
+│   │       └── publish_dashboard.py
+│   ├── publish_dataset
+│   │   ├── SKILL.md
+│   │   └── scripts
+│   │       └── publish_dataset.py
+│   ├── rpe
+│   │   ├── SKILL.md
+│   │   └── scripts
+│   │       └── query.py
+│   ├── save_report
+│   │   ├── SKILL.md
+│   │   └── scripts
+│   │       └── save_report.py
+│   ├── sync_events
+│   │   └── SKILL.md
+│   ├── sync_metabase
+│   │   ├── SKILL.md
+│   │   └── scripts
+│   │       ├── __init__.py
+│   │       ├── sync_dashboards.py
+│   │       └── sync_inventory.py
+│   ├── sync_sites
+│   │   ├── SKILL.md
+│   │   └── scripts
+│   │       ├── __init__.py
+│   │       └── sync_sites.py
+│   ├── tag_manager
+│   │   ├── SKILL.md
+│   │   └── scripts
+│   │       └── __init__.py
+│   ├── update_dashboard
+│   │   ├── SKILL.md
+│   │   └── scripts
+│   │       └── update_dashboard.py
+│   └── zendesk_query
+│       ├── SKILL.md
+│       └── scripts
+│           └── __init__.py
+├── specs
+│   └── 002-fix-deps-security
+│       └── spec.md
+├── tests
+│   ├── __init__.py
+│   ├── conftest.py
+│   └── test_*.py  (93 files)
+├── uv.lock
+└── web
+    ├── __init__.py
+    ├── agents
+    │   ├── __init__.py
+    │   ├── base.py
+    │   ├── cli.py
+    │   └── cli_ollama.py
+    ├── alerts.py
+    ├── app.py
+    ├── benchmark.py
+    ├── complexity.py
+    ├── concurrency.py
+    ├── config.py
+    ├── conversation_embeddings
+    │   ├── __init__.py
+    │   └── generate_conversation_embeddings.py
+    ├── cron.py
+    ├── database.py
+    ├── db.py
+    ├── deps.py
+    ├── environment.py
+    ├── helpers.py
+    ├── llm.py
+    ├── llm_call.py
+    ├── llm_errors.py
+    ├── log.py
+    ├── memory_introspect.py
+    ├── models.py
+    ├── otel.py
+    ├── publications.py
+    ├── redis_conn.py
+    ├── request_context.py
+    ├── requirements.txt
+    ├── routes
+    │   ├── __init__.py
+    │   ├── auth.py
+    │   ├── conversations.py
+    │   ├── cron.py
+    │   ├── dashboards.py
+    │   ├── html.py
+    │   ├── jobs.py
+    │   ├── knowledge.py
+    │   ├── query.py
+    │   ├── reports.py
+    │   └── tag_manager.py
+    ├── runner.py
+    ├── s3.py
+    ├── schema.py
+    ├── selftest.py
+    ├── sentry.py
+    ├── session_sync.py
+    ├── slack_feedback.py
+    ├── static
+    │   ├── css
+    │   │   └── style.css
+    │   ├── favicon.png
+    │   ├── favicon.svg
+    │   ├── js
+    │   │   ├── actions.js
+    │   │   ├── chat.js
+    │   │   ├── render.js
+    │   │   ├── stream.js
+    │   │   └── utils.js
+    │   └── robots.txt
+    ├── stores
+    │   ├── __init__.py
+    │   ├── conversations.py
+    │   ├── dashboards.py
+    │   ├── files.py
+    │   ├── pins.py
+    │   ├── records.py
+    │   ├── reports.py
+    │   └── tags.py
+    ├── sync_to_s3.py
+    ├── templates
+    │   ├── _flag_button.html
+    │   ├── _sidebar_tools.html
+    │   ├── _tag_manager_tags.html
+    │   ├── _tag_manager_triggers.html
+    │   ├── accueil.html
+    │   ├── base.html
+    │   ├── connaissances.html
+    │   ├── conversations.html
+    │   ├── cron.html
+    │   ├── dashboard_detail.html
+    │   ├── dashboards.html
+    │   ├── explorations.html
+    │   ├── job_run.html
+    │   ├── jobs.html
+    │   ├── rapports.html
+    │   └── tag_manager.html
+    ├── uploads.py
+    └── warmup.py
+97 directories, 426 files

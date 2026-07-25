@@ -1,0 +1,127 @@
+[project]
+name = "autometa"
+version = "0.1.0"
+requires-python = ">=3.14"
+dependencies = [
+    # Web framework
+    "fastapi>=0.135.2",
+    "uvicorn[standard]>=0.42.0",
+    "python-multipart>=0.0.31",
+    # Templating
+    "jinja2>=3.1.6",
+    "markupsafe>=3.0.3",
+    "markdown>=3.10",
+    "nh3>=0.2.18",
+    # Utils
+    "python-dotenv>=1.2.2",
+    "pyyaml>=6.0.3",
+    # Database
+    "psycopg2-binary>=2.9.11",
+    # S3-compatible object storage
+    "boto3>=1.42.78",
+    "sqlalchemy>=2.0.48",
+    "alembic>=1.18.4",
+    "redis[hiredis]>=5.0.0",
+    "httpx>=0.28.1",
+    "sshtunnel>=0.4.0",
+    "paramiko>=5.0.0",
+    "sentry-sdk[fastapi,sqlalchemy,httpx,opentelemetry,pure_eval]>=2.29.0",
+    "idna>=3.15",
+    # OpenTelemetry — tracing primitive, Sentry is the backend.
+    "opentelemetry-api>=1.30.0",
+    "opentelemetry-sdk>=1.30.0",
+    "opentelemetry-instrumentation-fastapi>=0.51b0",
+    "opentelemetry-instrumentation-httpx>=0.51b0",
+    "opentelemetry-instrumentation-sqlalchemy>=0.51b0",
+    # Data analysis & file formats — used by agent crons/scripts (separate processes),
+    # never imported by the web app, so they cost no RAM in the web workers.
+    "pandas>=2.2.0",
+    "openpyxl>=3.1.0",
+    "reportlab>=4.2.0",
+    "xlrd>=2.0.1",
+    "pdfplumber>=0.11.0",
+    "pillow>=12.3.0",
+    "model2vec>=0.8.2",
+]
+
+[project.scripts]
+autometa = "web.app:main"
+generate-conversation-embeddings = "web.conversation_embeddings.generate_conversation_embeddings:main"
+sync-sites = "skills.sync_sites.scripts.sync_sites:main"
+sync-inventory = "skills.sync_metabase.scripts.sync_inventory:main"
+sync-webinaires = "lib.webinaires:main"
+slack-feedback = "web.slack_feedback:main"
+
+[tool.uv]
+constraint-dependencies = ["urllib3>=2.7.0"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["web", "lib", "skills"]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "pytest>=9.0.3",
+    "pytest-mock>=3.15.1",
+    "ruff>=0.15.8",
+    "bandit>=1.9.4",
+    "pip-audit>=2.10.0",
+    "fakeredis>=2.34.1",
+    "pytest-cov>=7",
+    "diff-cover>=9",
+]
+
+# =============================================================================
+# Ruff — linting & formatting
+# =============================================================================
+
+[tool.ruff]
+target-version = "py314"
+line-length = 120
+# evals/: experimental evaluation scripts, intentionally loose style
+# skills/pdf/: vendored Anthropic skill (proprietary upstream) — don't reformat
+exclude = ["data/", ".venv/", "evals/", "skills/pdf/"]
+
+[tool.ruff.lint]
+preview = true
+# Anti-slop : tests creux/fragiles (PT0xx/B011) + assertions tautologiques (PLR0124 self-compare, PLW0129 str)
+select = ["E", "F", "W", "I", "G", "B011", "PT010", "PT012", "PT015", "PT017", "PT027", "PLR0124", "PLW0129"]
+ignore = [
+    "E501",   # line length — enforce progressively, not retroactively
+    "G001",   # logging-string-format — `.format()` is acceptable in this codebase
+    "G002",   # logging-percent-format — same
+]
+
+[tool.ruff.lint.per-file-ignores]
+"web/app.py" = ["E402"]              # imports after logging setup
+"tests/test_knowledge_sync.py" = ["E402"]  # sys.path setup before imports
+"tests/test_uploads.py" = ["E402"]         # env config before imports
+"tests/conftest.py" = ["E402"]             # DATABASE_URL override before imports
+
+[tool.coverage.run]
+branch = true
+source = ["web", "lib", "scripts"]
+
+[tool.coverage.report]
+precision = 2
+fail_under = 74.90
+
+[tool.diff_cover]
+fail_under = 90
+
+# =============================================================================
+# Bandit — SAST
+# =============================================================================
+
+[tool.bandit]
+exclude_dirs = ["tests", "evals", "data", "skills"]
+skips = [
+    "B704",  # markupsafe.Markup — used intentionally to render agent-generated markdown
+]
+
+[tool.ruff.format]
+preview = true
