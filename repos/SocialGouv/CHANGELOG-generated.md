@@ -1,27 +1,30 @@
-# Synthèse d'activité : SocialGouv (du 29 juin au 26 juillet 2026)
+# Synthèse d'activité : SocialGouv (du 22/06 au 22/07)
 
 ## Résumé de l'activité
-L'activité récente de SocialGouv a été marquée par une forte concentration sur la maintenance, la sécurité et la préparation de nouvelles fonctionnalités. Plusieurs dépôts ont bénéficié de corrections de bugs et de mises à jour de dépendances, notamment pour assurer la compatibilité avec les dernières versions de Node.js et Python. Des efforts importants ont également été déployés pour améliorer l'accessibilité de certains services, notamment via l'intégration de l'outil ultra11y et des corrections RGAA. Plusieurs projets ont également progressé dans l'intégration d'outils d'IA pour l'analyse de code et l'automatisation de tâches, comme repo-falcon et git-ai-trace. Enfin, plusieurs projets ont débuté ou ont été initialisés, comme appy-quotes-live et appy-demo-quotes, témoignant d'une dynamique de création continue.
+L'activité récente de SocialGouv a été marquée par une forte concentration sur l'amélioration de la qualité du code, la sécurité et l'expérience utilisateur. Plusieurs dépôts ont bénéficié de corrections de bugs, de mises à jour de dépendances et d'améliorations de la documentation. Des efforts importants ont été déployés pour préparer l'arrêt de certains services comme Recosanté, tout en lançant de nouveaux projets comme `migration-harbor2` et `appy-quotes-live`. L'intégration de l'IA et l'automatisation des tâches continuent d'être des axes majeurs, avec des avancées notables dans les projets `git-ai-trace`, `repo-falcon` et `dashlord`.  Des améliorations significatives ont été apportées à l'accessibilité de plusieurs applications, notamment `vao` et `dashlord`.
 
 ## Sécurité
-Plusieurs dépôts ont reçu des corrections de sécurité :
+Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
 
-*   [dsfr-mcp](/repos/SocialGouv/dsfr-mcp) a bénéficié d'une correction de vulnérabilité.
-*   [domifa](/repos/SocialGouv/domifa) a reçu des corrections pour renforcer la sécurité, notamment concernant l'authentification et la gestion des accès.
-*   [buildkit-operator-example](/repos/SocialGouv/buildkit-operator-example) a mis en place des mesures pour renforcer la sécurité de la chaîne d'approvisionnement logicielle.
+*   Correction d'une vulnérabilité dans [archifiltre-mails](/repos/SocialGouv/archifiltre-mails).
+*   Migration vers pnpm dans [nos1000jours-blues-epds-widget](/repos/SocialGouv/nos1000jours-blues-epds-widget) pour une meilleure gestion des dépendances et réduction des risques de sécurité.
+*   Amélioration de la sécurité de la chaîne d'approvisionnement logicielle dans [buildkit-operator-example](/repos/SocialGouv/buildkit-operator-example) avec l'implémentation de la signature cosign et de la génération de SBOM.
+*   Correction de vulnérabilités potentielles dans [domifa](/repos/SocialGouv/domifa).
 
 ## Autres changements notables
-*   **Infrastructure et outils :** Migration vers pnpm dans plusieurs dépôts ([token-bureau](/repos/SocialGouv/token-bureau), [revu](/repos/SocialGouv/revu), [nos1000jours-blues-epds-widget](/repos/SocialGouv/nos1000jours-blues-epds-widget), [dashlord-actions](/repos/SocialGouv/dashlord-actions), [cdtn-admin](/repos/SocialGouv/cdtn-admin)) pour une meilleure gestion des dépendances. Adoption de buildkit-operator dans plusieurs projets ([buildkit-operator](/repos/SocialGouv/buildkit-operator), [cdtn-admin](/repos/SocialGouv/cdtn-admin)).
-*   **IA et automatisation :** Progrès significatifs dans l'intégration d'outils d'IA pour l'analyse de code et l'automatisation de tâches dans [repo-falcon](/repos/SocialGouv/repo-falcon), [git-ai-trace](/repos/SocialGouv/git-ai-trace) et [claw-code-go](/repos/SocialGouv/claw-code-go).
-*   **Accessibilité :** Amélioration de l'accessibilité de [vao](/repos/SocialGouv/vao) et [egapro](/repos/SocialGouv/egapro).
-*   **Préparation à l'arrêt :** Préparation à l'arrêt du service [recosante](/repos/SocialGouv/recosante) avec l'ajout d'une bannière d'information.
+*   **Infrastructure :** Migration vers buildkit-operator dans plusieurs dépôts ([cdtn-admin](/repos/SocialGouv/cdtn-admin), [buildkit-operator-example](/repos/SocialGouv/buildkit-operator-example)) pour améliorer la gestion des builds.
+*   **Migration :** Préparation à l'arrêt du service Recosanté ([recosante](/repos/SocialGouv/recosante)) avec l'ajout d'une bannière d'information.
+*   **IA :** Intégration de l'IA dans plusieurs projets, notamment `git-ai-trace` pour le suivi des contributions IA/humain et `repo-falcon` pour l'analyse de code et la génération de graphes de connaissances.
+*   **Accessibilité :** Amélioration de l'accessibilité (RGAA) dans [vao](/repos/SocialGouv/vao) et [dashlord](/repos/SocialGouv/dashlord).
+*   **Modernisation :** Migration vers pnpm dans plusieurs projets ([dashlord-actions](/repos/SocialGouv/dashlord-actions), [cdtn-admin](/repos/SocialGouv/cdtn-admin), [collecte-pro](/repos/SocialGouv/collecte-pro), [nos1000jours-blues-epds-widget](/repos/SocialGouv/nos1000jours-blues-epds-widget)).
 
 ## Dépôts les plus actifs
-*   [vao](/repos/SocialGouv/vao) : Amélioration significative de l'accessibilité et implémentation de la gestion des agréments dans le back-office.
-*   [egapro](/repos/SocialGouv/egapro) : Ajout d'une API publique et amélioration de l'accessibilité.
-*   [cdtn-admin](/repos/SocialGouv/cdtn-admin) : Ajout de l'ingestion des accords d'entreprise et amélioration de l'analyse des contributions.
-*   [dashlord-actions](/repos/SocialGouv/dashlord-actions) : Amélioration des rapports et intégration de tests E2E.
-*   [buildkit-operator](/repos/SocialGouv/buildkit-operator) : Amélioration de la sécurité et de la flexibilité de l'opérateur.
-*   [legi-data](/repos/SocialGouv/legi-data) : Mises à jour régulières des données de législation.
+*   [vao](/repos/SocialGouv/vao) : Amélioration significative de l'accessibilité et ajout de la gestion des premiers agréments dans le back-office.
+*   [srdt](/repos/SocialGouv/srdt) : Ajout de nouvelles fonctionnalités à l'assistant virtuel, comme une section FAQ et une page "Nouveautés".
+*   [smart-allow](/repos/SocialGouv/smart-allow) : Ajout d'une fonctionnalité bloquant l'envoi de données à des fournisseurs d'IA externes.
+*   [dashlord](/repos/SocialGouv/dashlord) : Amélioration de l'interface utilisateur et ajout de nouvelles fonctionnalités de gestion des utilisateurs.
+*   [code-du-travail-numerique](/repos/SocialGouv/code-du-travail-numerique) : Ajout d'un score NPS et correction de plusieurs bugs.
+*   [buildkit-operator](/repos/SocialGouv/buildkit-operator) : Amélioration de l'infrastructure de build et de l'authentification.
+*   [legi-data](/repos/SocialGouv/legi-data) : Mises à jour régulières des données de législation française.
 *   [matomo-next](/repos/SocialGouv/matomo-next) : Ajout d'un proxy de suivi côté serveur et prise en charge des tests A/B.
-*   [klaude-code-go](/repos/SocialGouv/klaude-code-go) : Ajout d'un outil "oracle" et implémentation de sous-agents dynamiques.
+*   [cdtn-admin](/repos/SocialGouv/cdtn-admin) : Ajout d'une table pour le calcul du NPS et intégration de l'ingestion des accords d'entreprise.

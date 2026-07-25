@@ -1,22 +1,27 @@
-# Synthèse d'activité : mission-apprentissage (du 22 juin au 22 juillet 2026)
+# Synthèse d'activité : mission-apprentissage (du 22 juin 2026 au 25 juillet 2026)
 
 ## Résumé de l'activité
-La période a été marquée par des améliorations significatives de l'infrastructure, avec des migrations de serveurs et une rotation des secrets SOPS pour renforcer la sécurité. Plusieurs dépôts ont bénéficié d'évolutions fonctionnelles, notamment [labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab) avec l'intégration d'un nouveau modèle d'apprentissage, [tableaudebord-lab](/repos/mission-apprentissage/tableaudebord-lab) avec l'ajout d'un classificateur de contacts, et [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas) avec l'ajout de filtres et l'intégration de nouvelles données. Des améliorations de l'API et de la gestion des données ont également été apportées à [lba-github-mcp](/repos/mission-apprentissage/lba-github-mcp) et [api-apprentissage](/repos/mission-apprentissage/api-apprentissage).
+La période a été marquée par des améliorations significatives de l'infrastructure, avec des migrations de serveurs et une rotation des secrets SOPS pour renforcer la sécurité.  Plusieurs projets ont bénéficié de nouvelles fonctionnalités, notamment [labonnealternance]( /repos/mission-apprentissage/labonnealternance) avec une administration dédiée aux CFA et des améliorations pour les recruteurs, et [lba-github-mcp](/repos/mission-apprentissage/lba-github-mcp) avec la génération dynamique de sprints.  Des efforts importants ont été consacrés à l'amélioration de l'ingestion et de la synchronisation des données, ainsi qu'à la correction de bugs et à l'optimisation des performances.
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié d'améliorations de la sécurité :
-- Rotation des secrets SOPS dans [mongodb](/repos/mission-apprentissage/mongodb), [labonnealternance](/repos/mission-apprentissage/labonnealternance), [bal](/repos/mission-apprentissage/bal) et [api-apprentissage](/repos/mission-apprentissage/api-apprentissage).
-- Suppression des sous-modules `.infra/authorizations` et `.infra/inventories` dans [mongodb](/repos/mission-apprentissage/mongodb), [bal](/repos/mission-apprentissage/bal) et [api-apprentissage](/repos/mission-apprentissage/api-apprentissage) pour simplifier la gestion et renforcer la sécurité.
+Plusieurs dépôts ont bénéficié d'une rotation des secrets SOPS pour renforcer la sécurité de l'infrastructure :
+- [mongodb](/repos/mission-apprentissage/mongodb)
+- [mna-shared-bin](/repos/mission-apprentissage/mna-shared-bin)
+- [bal](/repos/mission-apprentissage/bal)
+- [api-apprentissage](/repos/mission-apprentissage/api-apprentissage)
+- [infra](/repos/mission-apprentissage/infra)
 
 ## Autres changements notables
-- Migration de nombreux serveurs de production et de recette dans plusieurs dépôts ([bal](/repos/mission-apprentissage/bal), [api-apprentissage](/repos/mission-apprentissage/api-apprentissage), [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas), [infra](/repos/mission-apprentissage/infra)).
-- Migration de la gestion des secrets d'Ansible Vault vers SOPS dans [labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab).
+- Suppression des sous-modules `.infra/authorizations` et `.infra/inventories` dans plusieurs dépôts ([mongodb](/repos/mission-apprentissage/mongodb), [bal](/repos/mission-apprentissage/bal), [api-apprentissage](/repos/mission-apprentissage/api-apprentissage), [infra](/repos/mission-apprentissage/infra)) pour simplifier la gestion des dépôts.
+- Migration de nombreux serveurs vers de nouvelles instances dans [infra](/repos/mission-apprentissage/infra), [bal](/repos/mission-apprentissage/bal), [api-apprentissage](/repos/mission-apprentissage/api-apprentissage) et [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas).
 - Mise à jour de Mongoose vers la version 9 et réécriture du plugin `diffHistory` dans [catalogue-apprentissage](/repos/mission-apprentissage/catalogue-apprentissage).
-- Ajout de Sentry pour la surveillance des erreurs dans [infra](/repos/mission-apprentissage/infra).
+- Migration de la gestion des secrets d'Ansible Vault vers SOPS dans [labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab).
 
 ## Dépôts les plus actifs
-- [labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab) : Amélioration du modèle de classification et refonte de la gestion des secrets.
-- [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas) : Ajout de nouvelles fonctionnalités d'intégration de données et d'amélioration de l'outil de Machine Learning.
-- [bal](/repos/mission-apprentissage/bal) : Amélioration de l'ingestion de données DECA, gestion des identifiants et migrations d'infrastructure.
-- [labonnealternance](/repos/mission-apprentissage/labonnealternance) : Refonte de l'affichage des erreurs, ajout de l'export des offres d'emploi et rotation des secrets.
-- [api-apprentissage](/repos/mission-apprentissage/api-apprentissage) : Amélioration de la stabilité, de la performance et de la documentation de l'API.
+- [labonnealternance](/repos/mission-apprentissage/labonnealternance) : Amélioration de l'administration pour les CFA et des fonctionnalités pour les recruteurs.
+- [labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab) : Intégration d'un nouveau modèle d'apprentissage et amélioration du processus de CI/CD.
+- [lba-github-mcp](/repos/mission-apprentissage/lba-github-mcp) : Ajout de la génération dynamique de sprints et améliorations de l'API.
+- [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas) : Ajout de filtres et d'intégrations de données pour améliorer le suivi des jeunes.
+- [catalogue-apprentissage](/repos/mission-apprentissage/catalogue-apprentissage) : Corrections et améliorations de la synchronisation avec Elasticsearch.
+- [api-apprentissage](/repos/mission-apprentissage/api-apprentissage) : Améliorations de la stabilité et de la performance, notamment avec la limitation du taux de requêtes vers LBA.
+- [mna-skills](/repos/mission-apprentissage/mna-skills) : Développement initial des skills pour l'automatisation des tâches GitHub.
