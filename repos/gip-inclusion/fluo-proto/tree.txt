@@ -1,0 +1,506 @@
+.
+├── .env.example
+├── .githooks
+│   └── pre-commit
+├── .github
+│   ├── dependabot.yml
+│   └── workflows
+│       ├── ci.yml
+│       ├── deploy-rea.yml
+│       ├── deploy-recos-intensif.yml
+│       ├── deploy-sps.yml
+│       ├── deploy.yml
+│       └── reseed.yml
+├── .gitignore
+├── CLAUDE.md
+├── Makefile
+├── PROTOTYPE.md
+├── README.md
+├── _template
+│   ├── .dockerignore
+│   ├── Dockerfile
+│   ├── README.md.jinja
+│   ├── docker-compose.yml.jinja
+│   ├── pyproject.toml.jinja
+│   ├── uv.lock.jinja
+│   └── web
+│       ├── __init__.py
+│       ├── app.py
+│       ├── config.py.jinja
+│       ├── database.py
+│       ├── models.py
+│       ├── routes
+│       │   ├── __init__.py
+│       │   └── hello.py
+│       ├── seed.py
+│       ├── static
+│       │   ├── css
+│       │   │   ├── itou.css
+│       │   │   └── overrides.css
+│       │   └── vendor
+│       │       ├── bootstrap
+│       │       │   ├── bootstrap.min.js
+│       │       │   ├── bootstrap.min.js.map
+│       │       │   ├── popper.min.js
+│       │       │   └── popper.min.js.map
+│       │       ├── jquery
+│       │       │   ├── LICENSE.txt
+│       │       │   └── jquery.min.js
+│       │       └── theme-inclusion
+│       │           ├── fonts
+│       │           │   ├── coveredbyyourgrace
+│       │           │   │   ├── coveredbyyourgrace.woff
+│       │           │   │   └── coveredbyyourgrace.woff2
+│       │           │   ├── marianne
+│       │           │   │   ├── Marianne-Bold.woff
+│       │           │   │   ├── Marianne-Bold.woff2
+│       │           │   │   ├── Marianne-Bold_Italic.woff
+│       │           │   │   ├── Marianne-Bold_Italic.woff2
+│       │           │   │   ├── Marianne-ExtraBold.woff
+│       │           │   │   ├── Marianne-ExtraBold.woff2
+│       │           │   │   ├── Marianne-Light.woff
+│       │           │   │   ├── Marianne-Light.woff2
+│       │           │   │   ├── Marianne-Light_Italic.woff
+│       │           │   │   ├── Marianne-Light_Italic.woff2
+│       │           │   │   ├── Marianne-Medium.woff
+│       │           │   │   ├── Marianne-Medium.woff2
+│       │           │   │   ├── Marianne-Medium_Italic.woff
+│       │           │   │   ├── Marianne-Medium_Italic.woff2
+│       │           │   │   ├── Marianne-Regular.woff
+│       │           │   │   ├── Marianne-Regular.woff2
+│       │           │   │   ├── Marianne-Regular_Italic.woff
+│       │           │   │   └── Marianne-Regular_Italic.woff2
+│       │           │   └── remixicon
+│       │           │       ├── remixicon.woff
+│       │           │       └── remixicon.woff2
+│       │           ├── images
+│       │           │   ├── ajax-loader.gif
+│       │           │   ├── banner-01-illu.png
+│       │           │   ├── card-header-bg-dora.png
+│       │           │   ├── favico.ico
+│       │           │   ├── favicon.ico
+│       │           │   ├── home-title-01-illu-card-01.png
+│       │           │   ├── home-title-01-illu-card-02.png
+│       │           │   ├── home-title-01-illu-card-03.png
+│       │           │   ├── ico-*.svg  (74 files)
+│       │           │   ├── illustration-bg-01.png
+│       │           │   ├── illustration-mon-recap.png
+│       │           │   ├── logo-Dora-Horizontal-Couleur.png
+│       │           │   ├── logo-*.svg  (45 files)
+│       │           │   ├── logo-meta-base.png
+│       │           │   ├── logo-nexus.png
+│       │           │   ├── metabase
+│       │           │   │   └── ico-download-cloud-fill.svg
+│       │           │   ├── picto-arrow-right.svg
+│       │           │   ├── picto-burger.svg
+│       │           │   ├── picto-close.svg
+│       │           │   ├── picto-demo-01.svg
+│       │           │   ├── picto-external-link.svg
+│       │           │   ├── picto-facebook.svg
+│       │           │   ├── picto-instagram.svg
+│       │           │   ├── picto-linkedin.svg
+│       │           │   ├── picto-rond.svg
+│       │           │   ├── picto-twitter.svg
+│       │           │   └── picto-youtube.svg
+│       │           ├── javascripts
+│       │           │   └── app.js
+│       │           └── stylesheets
+│       │               └── app.css
+│       └── templates
+│           ├── base.html
+│           └── hello.html
+├── copier.yml
+├── docs
+│   ├── prototypes
+│   │   ├── recos-data-model.md
+│   │   ├── recs.fr.md
+│   │   └── recs.md
+│   └── superpowers
+│       ├── plans
+│       │   ├── 2026-03-20-orientation-detail-page.md
+│       │   ├── 2026-04-05-proto-factory.md
+│       │   └── 2026-04-06-recos.md
+│       └── specs
+│           ├── 2026-03-20-orientation-detail-page-design.md
+│           ├── 2026-04-05-proto-factory-design.md
+│           └── 2026-04-06-recos-design.md
+├── prototypes
+│   ├── annuaire
+│   │   ├── .dockerignore
+│   │   ├── Dockerfile
+│   │   ├── README.md
+│   │   ├── docker-compose.yml
+│   │   ├── pyproject.toml
+│   │   ├── uv.lock
+│   │   └── web
+│   │       ├── __init__.py
+│   │       ├── app.py
+│   │       ├── config.py
+│   │       ├── database.py
+│   │       ├── models.py
+│   │       ├── routes
+│   │       │   ├── __init__.py
+│   │       │   ├── directory.py
+│   │       │   └── profile.py
+│   │       ├── seed.py
+│   │       ├── static
+│   │       │   ├── css
+│   │       │   │   ├── itou.css
+│   │       │   │   └── overrides.css
+│   │       │   └── vendor
+│   │       │       ├── bootstrap
+│   │       │       │   ├── bootstrap.min.js
+│   │       │       │   ├── bootstrap.min.js.map
+│   │       │       │   ├── popper.min.js
+│   │       │       │   └── popper.min.js.map
+│   │       │       ├── jquery
+│   │       │       │   ├── LICENSE.txt
+│   │       │       │   └── jquery.min.js
+│   │       │       └── theme-inclusion
+│   │       │           ├── fonts
+│   │       │           │   ├── coveredbyyourgrace
+│   │       │           │   │   ├── coveredbyyourgrace.woff
+│   │       │           │   │   └── coveredbyyourgrace.woff2
+│   │       │           │   ├── marianne
+│   │       │           │   │   ├── Marianne-Bold.woff
+│   │       │           │   │   ├── Marianne-Bold.woff2
+│   │       │           │   │   ├── Marianne-Bold_Italic.woff
+│   │       │           │   │   ├── Marianne-Bold_Italic.woff2
+│   │       │           │   │   ├── Marianne-ExtraBold.woff
+│   │       │           │   │   ├── Marianne-ExtraBold.woff2
+│   │       │           │   │   ├── Marianne-Light.woff
+│   │       │           │   │   ├── Marianne-Light.woff2
+│   │       │           │   │   ├── Marianne-Light_Italic.woff
+│   │       │           │   │   ├── Marianne-Light_Italic.woff2
+│   │       │           │   │   ├── Marianne-Medium.woff
+│   │       │           │   │   ├── Marianne-Medium.woff2
+│   │       │           │   │   ├── Marianne-Medium_Italic.woff
+│   │       │           │   │   ├── Marianne-Medium_Italic.woff2
+│   │       │           │   │   ├── Marianne-Regular.woff
+│   │       │           │   │   ├── Marianne-Regular.woff2
+│   │       │           │   │   ├── Marianne-Regular_Italic.woff
+│   │       │           │   │   └── Marianne-Regular_Italic.woff2
+│   │       │           │   └── remixicon
+│   │       │           │       ├── remixicon.woff
+│   │       │           │       └── remixicon.woff2
+│   │       │           ├── images
+│   │       │           │   ├── ajax-loader.gif
+│   │       │           │   ├── banner-01-illu.png
+│   │       │           │   ├── card-header-bg-dora.png
+│   │       │           │   ├── favico.ico
+│   │       │           │   ├── favicon.ico
+│   │       │           │   ├── home-title-01-illu-card-01.png
+│   │       │           │   ├── home-title-01-illu-card-02.png
+│   │       │           │   ├── home-title-01-illu-card-03.png
+│   │       │           │   ├── ico-*.svg  (74 files)
+│   │       │           │   ├── illustration-bg-01.png
+│   │       │           │   ├── illustration-mon-recap.png
+│   │       │           │   ├── logo-Dora-Horizontal-Couleur.png
+│   │       │           │   ├── logo-*.svg  (45 files)
+│   │       │           │   ├── logo-meta-base.png
+│   │       │           │   ├── logo-nexus.png
+│   │       │           │   ├── metabase
+│   │       │           │   │   └── ico-download-cloud-fill.svg
+│   │       │           │   ├── picto-arrow-right.svg
+│   │       │           │   ├── picto-burger.svg
+│   │       │           │   ├── picto-close.svg
+│   │       │           │   ├── picto-demo-01.svg
+│   │       │           │   ├── picto-external-link.svg
+│   │       │           │   ├── picto-facebook.svg
+│   │       │           │   ├── picto-instagram.svg
+│   │       │           │   ├── picto-linkedin.svg
+│   │       │           │   ├── picto-rond.svg
+│   │       │           │   ├── picto-twitter.svg
+│   │       │           │   └── picto-youtube.svg
+│   │       │           ├── javascripts
+│   │       │           │   └── app.js
+│   │       │           └── stylesheets
+│   │       │               └── app.css
+│   │       └── templates
+│   │           ├── base.html
+│   │           ├── directory.html
+│   │           ├── includes
+│   │           │   └── macros.html
+│   │           └── profile.html
+│   ├── demandes
+│   │   ├── .dockerignore
+│   │   ├── Dockerfile
+│   │   ├── README.md
+│   │   ├── docker-compose.yml
+│   │   ├── pyproject.toml
+│   │   ├── uv.lock
+│   │   └── web
+│   │       ├── __init__.py
+│   │       ├── app.py
+│   │       ├── config.py
+│   │       ├── database.py
+│   │       ├── models.py
+│   │       ├── routes
+│   │       │   ├── __init__.py
+│   │       │   ├── orientations.py
+│   │       │   └── prescripteur.py
+│   │       ├── seed.py
+│   │       ├── solutions.py
+│   │       ├── static
+│   │       │   ├── css
+│   │       │   │   ├── itou.css
+│   │       │   │   └── overrides.css
+│   │       │   └── vendor
+│   │       │       ├── bootstrap
+│   │       │       │   ├── bootstrap.min.js
+│   │       │       │   ├── bootstrap.min.js.map
+│   │       │       │   ├── popper.min.js
+│   │       │       │   └── popper.min.js.map
+│   │       │       ├── jquery
+│   │       │       │   ├── LICENSE.txt
+│   │       │       │   └── jquery.min.js
+│   │       │       └── theme-inclusion
+│   │       │           ├── fonts
+│   │       │           │   ├── coveredbyyourgrace
+│   │       │           │   │   ├── coveredbyyourgrace.woff
+│   │       │           │   │   └── coveredbyyourgrace.woff2
+│   │       │           │   ├── marianne
+│   │       │           │   │   ├── Marianne-Bold.woff
+│   │       │           │   │   ├── Marianne-Bold.woff2
+│   │       │           │   │   ├── Marianne-Bold_Italic.woff
+│   │       │           │   │   ├── Marianne-Bold_Italic.woff2
+│   │       │           │   │   ├── Marianne-ExtraBold.woff
+│   │       │           │   │   ├── Marianne-ExtraBold.woff2
+│   │       │           │   │   ├── Marianne-Light.woff
+│   │       │           │   │   ├── Marianne-Light.woff2
+│   │       │           │   │   ├── Marianne-Light_Italic.woff
+│   │       │           │   │   ├── Marianne-Light_Italic.woff2
+│   │       │           │   │   ├── Marianne-Medium.woff
+│   │       │           │   │   ├── Marianne-Medium.woff2
+│   │       │           │   │   ├── Marianne-Medium_Italic.woff
+│   │       │           │   │   ├── Marianne-Medium_Italic.woff2
+│   │       │           │   │   ├── Marianne-Regular.woff
+│   │       │           │   │   ├── Marianne-Regular.woff2
+│   │       │           │   │   ├── Marianne-Regular_Italic.woff
+│   │       │           │   │   └── Marianne-Regular_Italic.woff2
+│   │       │           │   └── remixicon
+│   │       │           │       ├── remixicon.woff
+│   │       │           │       └── remixicon.woff2
+│   │       │           ├── images
+│   │       │           │   ├── ajax-loader.gif
+│   │       │           │   ├── banner-01-illu.png
+│   │       │           │   ├── card-header-bg-dora.png
+│   │       │           │   ├── favico.ico
+│   │       │           │   ├── favicon.ico
+│   │       │           │   ├── home-title-01-illu-card-01.png
+│   │       │           │   ├── home-title-01-illu-card-02.png
+│   │       │           │   ├── home-title-01-illu-card-03.png
+│   │       │           │   ├── ico-*.svg  (74 files)
+│   │       │           │   ├── illustration-bg-01.png
+│   │       │           │   ├── illustration-mon-recap.png
+│   │       │           │   ├── logo-Dora-Horizontal-Couleur.png
+│   │       │           │   ├── logo-*.svg  (45 files)
+│   │       │           │   ├── logo-meta-base.png
+│   │       │           │   ├── logo-nexus.png
+│   │       │           │   ├── metabase
+│   │       │           │   │   └── ico-download-cloud-fill.svg
+│   │       │           │   ├── picto-arrow-right.svg
+│   │       │           │   ├── picto-burger.svg
+│   │       │           │   ├── picto-close.svg
+│   │       │           │   ├── picto-demo-01.svg
+│   │       │           │   ├── picto-external-link.svg
+│   │       │           │   ├── picto-facebook.svg
+│   │       │           │   ├── picto-instagram.svg
+│   │       │           │   ├── picto-linkedin.svg
+│   │       │           │   ├── picto-rond.svg
+│   │       │           │   ├── picto-twitter.svg
+│   │       │           │   └── picto-youtube.svg
+│   │       │           ├── javascripts
+│   │       │           │   └── app.js
+│   │       │           └── stylesheets
+│   │       │               └── app.css
+│   │       └── templates
+│   │           ├── base.html
+│   │           ├── beneficiaire_detail.html
+│   │           ├── beneficiaire_list.html
+│   │           ├── includes
+│   │           │   ├── diagnostic.html
+│   │           │   ├── history.html
+│   │           │   ├── messages_sidebar.html
+│   │           │   ├── messages_tab.html
+│   │           │   ├── modalite.html
+│   │           │   ├── personal_info.html
+│   │           │   └── sender_info.html
+│   │           ├── orientation_detail.html
+│   │           ├── orientation_list.html
+│   │           ├── orienteur_reply.html
+│   │           └── prescripteur
+│   │               ├── beneficiaire_detail.html
+│   │               ├── beneficiaires.html
+│   │               ├── orientation_detail.html
+│   │               ├── orientations_envoyees.html
+│   │               └── orienter.html
+│   └── recos
+│       ├── .dockerignore
+│       ├── Dockerfile
+│       ├── README.md
+│       ├── data
+│       │   ├── brsa.json
+│       │   ├── data_inclusion_services.json
+│       │   ├── detld-glo.json
+│       │   ├── fle-qpv-brsa.json
+│       │   ├── jeune-sans-diagnostic.json
+│       │   └── qpv.json
+│       ├── docker-compose.yml
+│       ├── pyproject.toml
+│       ├── uv.lock
+│       └── web
+│           ├── __init__.py
+│           ├── app.py
+│           ├── config.py
+│           ├── database.py
+│           ├── matching.py
+│           ├── models.py
+│           ├── routes
+│           │   ├── __init__.py
+│           │   ├── beneficiaries.py
+│           │   └── placeholders.py
+│           ├── seed.py
+│           ├── static
+│           │   ├── css
+│           │   │   ├── itou.css
+│           │   │   └── overrides.css
+│           │   └── vendor
+│           │       ├── bootstrap
+│           │       │   ├── bootstrap.min.js
+│           │       │   ├── bootstrap.min.js.map
+│           │       │   ├── popper.min.js
+│           │       │   └── popper.min.js.map
+│           │       ├── jquery
+│           │       │   ├── LICENSE.txt
+│           │       │   └── jquery.min.js
+│           │       └── theme-inclusion
+│           │           ├── fonts
+│           │           │   ├── coveredbyyourgrace
+│           │           │   │   ├── coveredbyyourgrace.woff
+│           │           │   │   └── coveredbyyourgrace.woff2
+│           │           │   ├── marianne
+│           │           │   │   ├── Marianne-Bold.woff
+│           │           │   │   ├── Marianne-Bold.woff2
+│           │           │   │   ├── Marianne-Bold_Italic.woff
+│           │           │   │   ├── Marianne-Bold_Italic.woff2
+│           │           │   │   ├── Marianne-ExtraBold.woff
+│           │           │   │   ├── Marianne-ExtraBold.woff2
+│           │           │   │   ├── Marianne-Light.woff
+│           │           │   │   ├── Marianne-Light.woff2
+│           │           │   │   ├── Marianne-Light_Italic.woff
+│           │           │   │   ├── Marianne-Light_Italic.woff2
+│           │           │   │   ├── Marianne-Medium.woff
+│           │           │   │   ├── Marianne-Medium.woff2
+│           │           │   │   ├── Marianne-Medium_Italic.woff
+│           │           │   │   ├── Marianne-Medium_Italic.woff2
+│           │           │   │   ├── Marianne-Regular.woff
+│           │           │   │   ├── Marianne-Regular.woff2
+│           │           │   │   ├── Marianne-Regular_Italic.woff
+│           │           │   │   └── Marianne-Regular_Italic.woff2
+│           │           │   └── remixicon
+│           │           │       ├── remixicon.woff
+│           │           │       └── remixicon.woff2
+│           │           ├── images
+│           │           │   ├── ajax-loader.gif
+│           │           │   ├── banner-01-illu.png
+│           │           │   ├── card-header-bg-dora.png
+│           │           │   ├── favico.ico
+│           │           │   ├── favicon.ico
+│           │           │   ├── home-title-01-illu-card-01.png
+│           │           │   ├── home-title-01-illu-card-02.png
+│           │           │   ├── home-title-01-illu-card-03.png
+│           │           │   ├── ico-*.svg  (74 files)
+│           │           │   ├── illustration-bg-01.png
+│           │           │   ├── illustration-mon-recap.png
+│           │           │   ├── logo-Dora-Horizontal-Couleur.png
+│           │           │   ├── logo-*.svg  (45 files)
+│           │           │   ├── logo-meta-base.png
+│           │           │   ├── logo-nexus.png
+│           │           │   ├── metabase
+│           │           │   │   └── ico-download-cloud-fill.svg
+│           │           │   ├── picto-arrow-right.svg
+│           │           │   ├── picto-burger.svg
+│           │           │   ├── picto-close.svg
+│           │           │   ├── picto-demo-01.svg
+│           │           │   ├── picto-external-link.svg
+│           │           │   ├── picto-facebook.svg
+│           │           │   ├── picto-instagram.svg
+│           │           │   ├── picto-linkedin.svg
+│           │           │   ├── picto-rond.svg
+│           │           │   ├── picto-twitter.svg
+│           │           │   └── picto-youtube.svg
+│           │           ├── javascripts
+│           │           │   └── app.js
+│           │           └── stylesheets
+│           │               └── app.css
+│           ├── templates
+│           │   ├── base.html
+│           │   ├── beneficiary_detail.html
+│           │   ├── beneficiary_list.html
+│           │   ├── beneficiary_profil.html
+│           │   ├── dashboard.html
+│           │   ├── includes
+│           │   │   ├── diagnostic.html
+│           │   │   ├── diagnostic_profil.html
+│           │   │   ├── diagnostic_summary.html
+│           │   │   └── general_info.html
+│           │   ├── placeholder.html
+│           │   ├── prescription_detail.html
+│           │   ├── prescriptions_sent.html
+│           │   ├── search.html
+│           │   └── solution_detail.html
+│           ├── templates_rea
+│           │   ├── base.html
+│           │   ├── beneficiary_detail.html
+│           │   ├── beneficiary_list.html
+│           │   ├── beneficiary_profil.html
+│           │   ├── dashboard.html
+│           │   ├── flux_entrant.html
+│           │   ├── includes
+│           │   │   ├── diagnostic.html
+│           │   │   ├── diagnostic_profil.html
+│           │   │   ├── diagnostic_summary.html
+│           │   │   └── general_info.html
+│           │   ├── placeholder.html
+│           │   ├── prescription_detail.html
+│           │   ├── prescriptions_sent.html
+│           │   ├── search.html
+│           │   └── solution_detail.html
+│           ├── templates_recos-intensif
+│           │   ├── base.html
+│           │   ├── beneficiary_detail.html
+│           │   ├── beneficiary_list.html
+│           │   ├── beneficiary_profil.html
+│           │   ├── dashboard.html
+│           │   ├── includes
+│           │   │   ├── diagnostic.html
+│           │   │   ├── diagnostic_profil.html
+│           │   │   ├── diagnostic_summary.html
+│           │   │   └── general_info.html
+│           │   ├── placeholder.html
+│           │   ├── prescription_detail.html
+│           │   ├── prescriptions_sent.html
+│           │   ├── search.html
+│           │   └── solution_detail.html
+│           └── templates_sps
+│               ├── base.html
+│               ├── beneficiary_detail.html
+│               ├── beneficiary_list.html
+│               ├── beneficiary_profil.html
+│               ├── dashboard.html
+│               ├── includes
+│               │   ├── diagnostic.html
+│               │   ├── diagnostic_profil.html
+│               │   ├── diagnostic_summary.html
+│               │   └── general_info.html
+│               ├── placeholder.html
+│               ├── prescription_detail.html
+│               ├── prescriptions_sent.html
+│               ├── search.html
+│               └── solution_detail.html
+├── ruff.toml
+└── scripts
+    ├── fetch-assets.sh
+    └── provision.sh
+94 directories, 879 files
