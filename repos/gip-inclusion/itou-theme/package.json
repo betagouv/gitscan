@@ -1,0 +1,49 @@
+{
+  "name": "itoutheme",
+  "version": "3.4.8",
+  "main": "app.js",
+  "scripts": {
+    "dev": "vite",
+    "doc": "npm run build && storybook dev -p 6006",
+    "build": "vite build --emptyOutDir && storybook build --output-dir dist/doc",
+    "postbuild": "node ensure-nojekyll.mjs",
+    "deploy": "gh-pages -d dist --dotfiles"
+  },
+  "keywords": [],
+  "author": "David Deloo <hello@hellodeloo.com>",
+  "license": "ISC",
+  "description": "",
+  "type": "module",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@storybook/addon-a11y": "^10.3.5",
+    "@storybook/addon-docs": "^10.3.5",
+    "@storybook/addon-vitest": "^10.3.5",
+    "@storybook/html-vite": "^10.3.5",
+    "@vitest/browser-playwright": "^4.0.18",
+    "@vitest/coverage-v8": "^4.0.18",
+    "eslint": "^10.0.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-storybook": "^10.3.5",
+    "gh-pages": "^6.3.0",
+    "globals": "^17.3.0",
+    "playwright": "^1.58.2",
+    "prettier": "^3.8.1",
+    "sass": "1.97.3",
+    "sharp": "^0.34.5",
+    "storybook": "^10.3.5",
+    "stylelint-config-standard-scss": "^17.0.0",
+    "stylelint-prettier": "^5.0.3",
+    "svgo": "^4.0.1",
+    "vite": "^8.0.16",
+    "vite-plugin-commonjs": "^0.10.4",
+    "vite-plugin-eslint": "^1.8.1",
+    "vite-plugin-handlebars": "^2.0.3",
+    "vite-plugin-image-optimizer": "^2.0.3",
+    "vitest": "^4.1.0"
+  },
+  "dependencies": {
+    "@popperjs/core": "2.11.8",
+    "bootstrap": "5.3.8"
+  }
+}
