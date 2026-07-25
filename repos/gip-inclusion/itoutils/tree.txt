@@ -1,0 +1,107 @@
+.
+├── .github
+│   ├── dependabot.yml
+│   └── workflows
+│       ├── ci.yml
+│       └── release.yml
+├── .gitignore
+├── LICENSE
+├── Makefile
+├── README.md
+├── manage.py
+├── pyproject.toml
+├── src
+│   └── itoutils
+│       ├── __init__.py
+│       ├── django
+│       │   ├── __init__.py
+│       │   ├── apps.py
+│       │   ├── commands.py
+│       │   ├── decoupage_administratif
+│       │   │   ├── __init__.py
+│       │   │   ├── admin_division_parsing.py
+│       │   │   ├── api_client.py
+│       │   │   ├── apps.py
+│       │   │   ├── importer.py
+│       │   │   ├── management
+│       │   │   │   ├── __init__.py
+│       │   │   │   └── commands
+│       │   │   │       ├── __init__.py
+│       │   │   │       └── import_decoupage_administratif.py
+│       │   │   ├── migrations
+│       │   │   │   ├── 0001_initial.py
+│       │   │   │   └── __init__.py
+│       │   │   └── models.py
+│       │   ├── logging.py
+│       │   ├── models.py
+│       │   ├── nexus
+│       │   │   ├── __init__.py
+│       │   │   ├── api.py
+│       │   │   ├── management
+│       │   │   │   ├── __init__.py
+│       │   │   │   └── base_full_sync.py
+│       │   │   ├── middleware.py
+│       │   │   ├── models.py
+│       │   │   ├── token.py
+│       │   │   ├── urls.py
+│       │   │   └── views.py
+│       │   └── testing.py
+│       ├── pytest.py
+│       └── urls.py
+├── testproject
+│   ├── __init__.py
+│   ├── config
+│   │   ├── __init__.py
+│   │   ├── settings.py
+│   │   └── urls.py
+│   └── testapp
+│       ├── __init__.py
+│       ├── apps.py
+│       ├── management
+│       │   ├── __init__.py
+│       │   └── commands
+│       │       ├── __init__.py
+│       │       ├── broken_dry_runnable_command.py
+│       │       ├── echo.py
+│       │       ├── item.py
+│       │       └── nexus_full_sync.py
+│       ├── migrations
+│       │   ├── 0001_initial.py
+│       │   ├── 0002_item_category.py
+│       │   ├── 0003_synceditem.py
+│       │   └── __init__.py
+│       ├── models.py
+│       └── nexus
+│           ├── __init__.py
+│           └── middleware.py
+├── tests
+│   ├── __init__.py
+│   ├── conftest.py
+│   ├── django
+│   │   ├── __init__.py
+│   │   ├── __snapshots__
+│   │   │   └── test_testing.ambr
+│   │   ├── conftest.py
+│   │   ├── decoupage_administratif
+│   │   │   ├── __init__.py
+│   │   │   ├── test_admin_division_parsing.py
+│   │   │   ├── test_api_client.py
+│   │   │   ├── test_importer.py
+│   │   │   └── test_management_commands.py
+│   │   ├── factories.py
+│   │   ├── nexus
+│   │   │   ├── __init__.py
+│   │   │   ├── test_api.py
+│   │   │   ├── test_full_sync_command.py
+│   │   │   ├── test_middleware.py
+│   │   │   ├── test_sync.py
+│   │   │   ├── test_token.py
+│   │   │   └── test_views.py
+│   │   ├── test_apps.py
+│   │   ├── test_commands.py
+│   │   ├── test_models.py
+│   │   └── test_testing.py
+│   ├── test_module.py
+│   └── test_urls.py
+└── uv.lock
+24 directories, 82 files
