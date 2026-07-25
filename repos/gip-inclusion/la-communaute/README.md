@@ -1,0 +1,189 @@
+# La communauté de l'inclusion
+
+## Initial dev setup
+
+### Environnement virtuel
+
+Installer l'environnement virtuel et les dépendances :
+
+```bash
+$ uv sync
+```
+
+## direnv
+
+Nous conseillons d'installer le minuscule utilitaire `direnv` pour charger et
+décharger automatiquement des variables d'environnement à l'entrée dans un
+répertoire.
+
+Une fois muni de cet outil (avec `apt`, `brew` ou autre, et sans oublier de
+[mettre le hook](https://direnv.net/#basic-installation)) il suffit de créer un
+fichier de variables d'environnement local:
+
+```sh
+cat <<EOF >.envrc
+# Activate the virtual environment
+source .venv/bin/activate
+# Setting environment variables for the application
+export DJANGO_DEBUG=True
+export DJANGO_LOG_LEVEL=WARNING
+export SQL_LOG_LEVEL=INFO
+export DJANGO_SECRET_KEY=foobar
+# For psql
+export PGDATABASE=communaute
+export PGHOST=localhost
+export PGUSER=communaute
+export PGPASSWORD=password
+EOF
+```
+
+Une fois le fichier `.envrc` saisit, il suffit de l'autoriser dans `direnv`:
+
+```sh
+direnv allow
+```
+
+Et c’est bon, vos variables seront chargées à chaque entrée dans le dossier et
+retirées en sortant.
+
+```sh
+psql  # connects directly to the communaute database
+./manage.py xxxx  # any commands work immediately
+```
+
+Accéder à l'environnement virtuel :
+
+```bash
+$ source .venv/bin/activate
+```
+
+## Démarrer les instances
+
+Démarer la base de données et le bucket S3
+
+```bash
+$ docker-compose up -d
+```
+
+Démarrer le service web
+
+```bash
+$ python manage.py runserver
+```
+
+## Préparer l'environnement de données
+
+```bash
+$ python manage.py createcachetable
+$ python manage.py migrate
+$ python manage.py rebuild_index
+```
+
+### restaurer une base de données
+
+* le client postgresql doit être installé sur la machine hôte
+* le script `./scripts/scripts/import-latest-db-backup.sh` doit être exécuté
+
+
+## Mises à jour
+
+Ajouter d'une dépendance :
+
+```bash
+$ uv add django-anymail
+```
+
+Ajouter d'une dépendance de développement :
+
+```bash
+$ uv add --dev beautifulsoup4
+```
+
+Mettre à jour les dépendances ([dependabot](https://github.com/dependabot) s’en
+occupe) :
+
+```bash
+$ uv sync --upgrade
+```
+
+Mettre à jour son environnement virtuel :
+
+```bash
+$ uv sync
+```
+
+## Développement
+
+### Lancer les tests en distribué
+
+```bash
+pytest --numprocesses=logical --create-db
+```
+
+## Déploiement sur Clever Cloud
+
+### Premier déploiement
+Ajouter les secrets suivants dans le repo git
+
+- CLEVER_SECRET
+- CLEVER_TOKEN
+
+Créer et lier les addons
+
+- postgresql
+- configuration provider
+
+Créer les variables d'environnement suivantes dans le configuration provider
+
+- CC_PIP_REQUIREMENTS_FILE
+- CC_PRE_BUILD_HOOK
+- CC_PRE_RUN_HOOK
+- CC_PYTHON_BACKEND
+- CC_PYTHON_MANAGE_TASKS
+- CC_PYTHON_MODULE
+- CC_PYTHON_VERSION
+- CC_UWSGI_DISABLE_FILE_WRAPPER
+- DJANGO_SETTINGS_MODULE
+- PORT
+- PYTHONPATH
+- STATIC_FILES_PATH
+- STATIC_URL_PREFIX
+- UV_PROJECT_ENVIRONMENT
+
+### Variables d'environnement
+Dans votre environnement de développement, l’utilisation de
+direnv est recommandée.
+
+En production, un fichier `.env` est généré au déploiement et chargé avec
+l’utilitaire [`dotenv`](https://pypi.org/project/python-dotenv/). Cette
+configuration est moins flexible que direnv, car les variables d’environnement
+ne sont pas disponibles pour votre shell, ce qui empêche le chargement
+automatique de l’environnement virtuel, ou de lancer `psql` sans spécifier les
+arguments pour se connecter à la base de données.
+
+### pour le déploiment des recettes jetables
+
+Créer et lier les addons (différents de ceux de production ^^)
+
+- postgresql
+- configuration provider
+
+Ajouter les secrets suivants dans le repo git
+
+- CLEVER_REVIEW_APPS_CONFIGURATION_ADDON
+- CLEVER_REVIEW_APPS_ORG
+
+## Recettes jetables
+
+Les recettes jetables sont créées lorsque l'étiquette « recette-jetable » est ajoutée.
+Lorsque l'étiquette est supprimée, la recette jetable l'est aussi.
+Voir les GitHub actions `.github/workflows/review_app_creation.yml` et `.github/workflow/review_app_removal.yml`.
+
+### Comptes de test
+
+Des données fictives sont créées pour les recettes jetables. Voir `scripts/populate.py`.
+- Compte superadministrateur : login `admin`, mot de passe `supercalifragilisticexpialidocious`.
+- Compte équipe : `staff` et `supercalifragilisticexpialidocious`.
+
+Vous pouvez utiliser l'interface d'administration de Django avec le compte super-administrateur
+pour changer les adresses email.

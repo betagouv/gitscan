@@ -1,0 +1,525 @@
+.
+├── .coveragerc
+├── .github
+│   ├── dependabot.yml
+│   ├── pull_request_template.md
+│   └── workflows
+│       ├── ci.yml
+│       ├── review-app-creation.yml
+│       └── review-app-removal.yml
+├── .gitignore
+├── .pre-commit-config.yaml
+├── .python-version
+├── .vscode
+│   ├── extensions.json
+│   └── settings.json
+├── CHANGELOG.md
+├── LICENSE
+├── Makefile
+├── README.md
+├── clevercloud
+│   ├── cron.json
+│   ├── http.json
+│   ├── pre_build.sh
+│   ├── pre_run.sh
+│   └── run_management_command.sh
+├── config
+│   ├── __init__.py
+│   ├── settings
+│   │   ├── __init__.py
+│   │   ├── _sentry.py
+│   │   ├── base.py
+│   │   ├── dev.py
+│   │   └── test.py
+│   ├── urls.py
+│   └── wsgi.py
+├── docker-compose.yml
+├── lacommunaute
+│   ├── __init__.py
+│   ├── documentation
+│   │   ├── __init__.py
+│   │   ├── data
+│   │   │   ├── evaluer-et-développer-les-compétences
+│   │   │   │   ├── la-validation-des-acquis-de-lexpérience.md
+│   │   │   │   ├── les-certificats-cléa.md
+│   │   │   │   └── poe-une-formation-avant-lembauche-pour-sécuriser-le-retour-à-lemploi.md
+│   │   │   ├── handicap-et-emploi-ressources-pour-linsertion-professionnelle
+│   │   │   │   ├── accessibilité-pas-besoin-dêtre-expert-pour-être-utile.md
+│   │   │   │   ├── aides-handicap-caf-guide-pratique-aah-aeeh-ajpp-ajpa-régime-général.md
+│   │   │   │   ├── comprendre-le-handicap-et-ses-implications.md
+│   │   │   │   ├── handicap-femmes-et-emploi-quand-les-barrières-se-multiplient.md
+│   │   │   │   ├── handicap-psychique-et-emploi-2025-lannée-pour-agir.md
+│   │   │   │   ├── i20-ans-de-la-loi-handicap-quel-bilan-et-quelles-perspectives-pour-linsertion-professionnelle.md
+│   │   │   │   ├── mdph-lessentiel-pour-les-professionnels-de-linsertion.md
+│   │   │   │   ├── seeph-2025-1723-novembre-handicaps-et-emploi-légalité-pour-toutes-et-tous.md
+│   │   │   │   └── soutenir-accompagner-inclure-un-regard-sur-lautisme.md
+│   │   │   ├── la-boîte-à-outils-des-cip
+│   │   │   │   ├── 8-étapes-clés-pour-réussir-le-dossier-mdph-de-vos-publics.md
+│   │   │   │   ├── académie-france-travail.md
+│   │   │   │   ├── animer-un-atelier-par-le-jeu.md
+│   │   │   │   ├── application-pédagogique.md
+│   │   │   │   ├── atelier-de-sensibilisation.md
+│   │   │   │   ├── atelier-sociolinguistique-accès-à-la-santé.md
+│   │   │   │   ├── circuits-courts-vers-lemploi.md
+│   │   │   │   ├── comment-aborder-les-logiques-émotionnelles-dans-linsertion-socio-professionnelle.md
+│   │   │   │   ├── des-outils-pour-entamer-la-conversation-en-santé-mentale.md
+│   │   │   │   ├── dora-orientez-vos-bénéficiaires-vers-des-solutions-adaptées-à-leurs-besoins.md
+│   │   │   │   ├── encourager-les-jeunes-à-prendre-soin-de-leur-santé.md
+│   │   │   │   ├── epcr-entretien-de-partage-collaboratif-des-résultats.md
+│   │   │   │   ├── femmes-monoparentalité-le-choix-de-lemploi.md
+│   │   │   │   ├── fiche-pratique-accompagnement-par-les-équipes-sociales-grande-précarité-et-troubles-psychiques.md
+│   │   │   │   ├── fiche-pratique-cellule-alerte-inclusion.md
+│   │   │   │   ├── formation-gratuite-jeune-aidant-santé-mentale.md
+│   │   │   │   ├── guide-daccompagnement-insertion-et-santé-mentale.md
+│   │   │   │   ├── guide-des-aides-financières-de-lagefiph-en-matière-dinsertion-socioprofessionnelle-aout-2024.md
+│   │   │   │   ├── guide-insertion-socioprofessionnelle-et-prostitution.md
+│   │   │   │   ├── guide-pratique-sur-le-recours-préalable-administratif-obligatoire-en-réponse-aux-refus-de-la-mdph.md
+│   │   │   │   ├── guide-pédagogique-santé-mentale.md
+│   │   │   │   ├── guide-retour-et-maintien-en-emploi-suite-à-une-absence-liée-à-un-problème-de-santé-psychologique.md
+│   │   │   │   ├── gérez-un-budget-facilement-et-détectez-les-aides-sociales-associées.md
+│   │   │   │   ├── la-roue-des-drogues.md
+│   │   │   │   ├── le-guide-référence-justice-en-mission-locale.md
+│   │   │   │   ├── le-lexique-administratif.md
+│   │   │   │   ├── le-test-des-16-personnalités-un-outil-danalyse-et-développement-personnel.md
+│   │   │   │   ├── livret-dinformation-sur-les-dispositifs-dinclusion-financière-personnes-prévenues-ou-détenues.md
+│   │   │   │   ├── mallette-pédagogique-sur-linfojeunesprostitution-fédération-nationale-des-cidff.md
+│   │   │   │   ├── mes-ressources-formation-donner-aux-usagers-eloignés-de-lemploi-les-moyens-dagir.md
+│   │   │   │   ├── mémo-de-vie-protéger-vos-documents-et-vos-témoignages.md
+│   │   │   │   ├── outils-de-prévention-prostitution-jeunes.md
+│   │   │   │   ├── prenez-votre-cyberdépart.md
+│   │   │   │   ├── rapport-avoir-18-ans-en-prison-devenir-adulte-derrière-les-barreaux.md
+│   │   │   │   ├── simple-comme-bonjour-petit-guide-pour-aller-à-la-rencontre-des-personnes-sans-abri.md
+│   │   │   │   ├── sinformer-sur-les-événements-et-accompagner-le-retour-à-lemploi-mes-evénements-emploi.md
+│   │   │   │   ├── soutenir-la-santé-mentale-des-personnes-migrantes.md
+│   │   │   │   ├── travailleurs-sociaux-et-conseillers-en-insertion-prenez-soin-de-vous-pour-mieux-aider-les-autres.md
+│   │   │   │   └── violences-conjugales-et-addictologie-décloisonner-les-pratiques.md
+│   │   │   ├── le-coin-du-règlementaire
+│   │   │   │   ├── etre-parent-ou-devenir-parent-régime-général.md
+│   │   │   │   ├── la-loi-plein-emploi-en-quelques-mots.md
+│   │   │   │   ├── la-nouvelle-convention-dassurance-chômage-allocation-are-au-01042025-en-8-points-clés.md
+│   │   │   │   ├── la-reprise-de-droits-à-lassurance-chômage-et-le-droit-doption.md
+│   │   │   │   ├── lallocation-de-solidarité-spécifique-ass-pratique.md
+│   │   │   │   ├── le-contrat-demploi-pénitentiaire-le-cpen-et-louverture-de-droits-à-lassurance-chômage.md
+│   │   │   │   ├── le-rechargement-de-droits-à-lallocation-daide-au-retour-à-lemploi.md
+│   │   │   │   ├── les-enfants-grandissent-régime-général.md
+│   │   │   │   ├── linscription-avec-la-lpe-une-inscription-facile-pour-un-accompagnement-sur-mesure.md
+│   │   │   │   ├── prime-dactivité-rsa-et-aide-durgence-lessentiel-pour-les-pros-régime-général.md
+│   │   │   │   └── tout-comprendre-sur-lallocation-daide-au-retour-à-lemploi-are.md
+│   │   │   ├── les-bases-de-liae
+│   │   │   │   ├── cdi-inclusion-tout-ce-que-vous-devez-savoir.md
+│   │   │   │   ├── comprendre-et-mobiliser-la-motivation-des-salariés-de-liae-dans-leur-parcours-dinsertion.md
+│   │   │   │   ├── glossaire-de-liae.md
+│   │   │   │   ├── le-pass-iae.md
+│   │   │   │   ├── les-critères-déligibilité-de-liae.md
+│   │   │   │   ├── les-différents-types-de-siae.md
+│   │   │   │   ├── les-dérogations-au-délai-de-carence-dun-parcours-iae.md
+│   │   │   │   ├── les-dérogations-aux-critères-administratifs-iae.md
+│   │   │   │   ├── les-prescripteurs-habilités.md
+│   │   │   │   ├── les-sorties-dynamiques-dans-liae.md
+│   │   │   │   ├── liste-des-prescripteurs-habilités.md
+│   │   │   │   └── rédiger-efficacement-un-contrat-cddi-ou-cdii.md
+│   │   │   ├── lever-les-freins-périphériques-bloquant-le-retour-à-lemploi
+│   │   │   │   ├── aide-à-la-garde-denfant.md
+│   │   │   │   ├── aides-personnelles-au-logement-apl-alf-als-conditions-montants-démarches-régime-général.md
+│   │   │   │   ├── favoriser-laccès-à-la-formation-linguistique-pour-une-intégration-socioprofessionnelle.md
+│   │   │   │   ├── illettrisme-comment-détecter-lillettrisme-dans-vos-publics-et-quelles-solutions-existent.md
+│   │   │   │   ├── laccès-au-logement-est-un-droit-des-personnes-un-levier-dinclusion-et-dinsertion.md
+│   │   │   │   ├── le-diagnostic-et-accompagnement-budgétaire-dans-linsertion-professionnnelle.md
+│   │   │   │   ├── le-parcours-emploi-santé-l-accompagnement-santé-vers-emploi.md
+│   │   │   │   ├── les-aides-financières-à-la-mobilité-et-solutions-de-transport.md
+│   │   │   │   ├── lillectronisme-comment-accompagner-vos-publics-dans-une-démarche-numérique.md
+│   │   │   │   ├── rupture-familiale-et-les-situations-daidance-chez-les-jeunes.md
+│   │   │   │   └── zoom-sur-le-covoiturage-quotidien.md
+│   │   │   ├── linclusion-aujourdhui-les-défis-de-demain
+│   │   │   │   ├── table-ronde-avec-t-guilluy-et-d-linhart.md
+│   │   │   │   ├── table-ronde-réussir-ses-sorties-positives.md
+│   │   │   │   └── table-ronde-travailler-en-réseau.md
+│   │   │   ├── mon-parcours-cip-des-ressources-pour-réussir-son-avenir-dans-laccompagnement-professionnel
+│   │   │   │   ├── conception-dun-atelier-favorisant-linsertion-professionnelle-des-publics.md
+│   │   │   │   ├── construire-une-veille-dinsertion.md
+│   │   │   │   ├── coup-de-boost-pour-vos-bénéficiaires-ou-comment-accompagner-le-renforcement-de-lestime-de-soi.md
+│   │   │   │   ├── de-laccompagnement-à-lémergence-du-projet-professionnel.md
+│   │   │   │   ├── déontologie-posture-les-vrais-repères-pour-accompagner-juste.md
+│   │   │   │   ├── faire-émerger-les-besoins-de-la-personne-pour-poser-les-bases-dun-diagnostic-partagé.md
+│   │   │   │   ├── la-courbe-du-deuil-et-le-changement-dans-laccompagnement-chez-les-jeunes.md
+│   │   │   │   ├── la-remobilisation-après-un-échec.md
+│   │   │   │   ├── lapproche-systémique-une-lecture-globale-pour-mieux-accompagner.md
+│   │   │   │   ├── le-diagnoskit.md
+│   │   │   │   ├── le-diagnostic-de-territoire-dans-linsertion-professionnelle.md
+│   │   │   │   ├── le-questionnement-dans-le-diagnostic-socio-professionnel-dsp.md
+│   │   │   │   ├── les-entretiens-clés-pour-réussir-linsertion-professionnelle.md
+│   │   │   │   ├── les-postures-de-laccompagnement.md
+│   │   │   │   ├── les-savoir-faire-comportementaux.md
+│   │   │   │   ├── lexpérience-accompagnée-des-publics-éloignés-de-lemploi.md
+│   │   │   │   ├── liens-utiles-pour-les-diagnostics-de-territoire.md
+│   │   │   │   ├── livret-de-diagnostic-des-salariés-en-insertion.md
+│   │   │   │   ├── mobilisation-et-remobilisation-des-publics-éloignés-de-lemploi.md
+│   │   │   │   ├── mon-kit-cip-tout-pour-réussir-sa-certification.md
+│   │   │   │   ├── motivation-et-remotivation-comprendre-la-motivation-pour-mieux-accompagner.md
+│   │   │   │   ├── motivation-et-remotivation-les-biais-cognitifs-et-lapproche-comportementale.md
+│   │   │   │   └── recherche-de-stage-alternance-cip-où-chercher-où-demander-bonus-des-stratégies.md
+│   │   │   ├── on-a-besoin-de-vous-de-votre-avis
+│   │   │   │   ├── construisons-ensemble-les-formations-de-demain.md
+│   │   │   │   └── donnons-de-la-voix-aux-managers-de-linsertion-clôturé-dans-lattente-de-létude-des-résultats.md
+│   │   │   └── tout-savoir-sur-les-aides-et-contrats-vers-lemploi
+│   │   │       ├── aide-individuelle-régionale-à-la-formation-air.md
+│   │   │       ├── comprendre-et-activer-une-clause-sociale-dans-un-marché-public.md
+│   │   │       ├── contrat-adultes-relais.md
+│   │   │       ├── contrat-de-transition-professionnelle-au-sein-des-entreprises-adaptées-cdd-tremplin.md
+│   │   │       ├── dénicher-les-emplois-de-la-prospection-au-premier-rdv-avec-lemployeur.md
+│   │   │       ├── le-contrat-de-professionnalisation-dinclusion.md
+│   │   │       ├── le-contrat-de-professionnalisation.md
+│   │   │       ├── le-contrat-demploi-pénitentiaire-opportunité-dinsertion-professionnelle-et-sociale-en-détention.md
+│   │   │       ├── le-contrat-dinsertion-professionnelle-intérimaire.md
+│   │   │       ├── les-aides-et-contrats-vers-lemploi.md
+│   │   │       ├── les-clés-de-la-rémunération-en-formation-pour-les-personnes-deboe.md
+│   │   │       ├── les-emplois-francs.md
+│   │   │       ├── limmersion-professionnelle.md
+│   │   │       ├── service-civique-et-volontariat-associatif.md
+│   │   │       └── territoire-zéro-chômeur-de-longue-durée-tzcld.md
+│   │   ├── helpers.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   ├── pages
+│   │   ├── __init__.py
+│   │   ├── sitemaps.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   ├── partner
+│   │   ├── __init__.py
+│   │   ├── apps.py
+│   │   ├── data
+│   │   │   ├── 1-jeune-1-solution.md
+│   │   │   ├── academie-france-travail.md
+│   │   │   ├── diagoriente.md
+│   │   │   ├── info-droit-handicap.md
+│   │   │   ├── la-mednum.md
+│   │   │   ├── la-pause-brindille.md
+│   │   │   ├── le-reseau-des-cap-emploi.md
+│   │   │   ├── le-réseau-des-carif-oref.md
+│   │   │   ├── les-cidff-centres-dinformation-sur-les-droits-des-femmes-et-des-familles.md
+│   │   │   ├── mes-ressources-formation-booster-laccompagnemenet-de-vos-publics.md
+│   │   │   ├── mon-aide-cyber.md
+│   │   │   └── seve-emploi.md
+│   │   ├── helpers.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   ├── search
+│   │   ├── __init__.py
+│   │   ├── apps.py
+│   │   ├── forms.py
+│   │   ├── management
+│   │   │   ├── __init__.py
+│   │   │   └── commands
+│   │   │       ├── __init__.py
+│   │   │       └── rebuild_index.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_remove_kind_in_materialized_view.py
+│   │   │   ├── 0003_reboot.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   ├── static
+│   │   ├── images
+│   │   │   ├── commu-home-illu-02b-light.png
+│   │   │   ├── documentation
+│   │   │   │   ├── fiche_*.jpg  (41 files)
+│   │   │   │   ├── fiche_*.png  (94 files)
+│   │   │   │   ├── partenaire_1.jpg
+│   │   │   │   ├── partenaire_*.png  (7 files)
+│   │   │   │   ├── partenaire_11.jpg
+│   │   │   │   ├── partenaire_12.JPG
+│   │   │   │   ├── partenaire_7.jpg
+│   │   │   │   └── partenaire_8.jpeg
+│   │   │   ├── home-banner-02-illu-dora.png
+│   │   │   ├── home-illu-01.png
+│   │   │   ├── home-title-01-illu-card-03.png
+│   │   │   └── logo-og-communaute.png
+│   │   ├── javascripts
+│   │   │   ├── jquery.min.js
+│   │   │   ├── matomo.js
+│   │   │   └── select2.min.js
+│   │   ├── stylesheets
+│   │   │   └── itou_communaute.scss
+│   │   └── vendor
+│   │       ├── htmx-1.9.5
+│   │       │   └── htmx.min.js
+│   │       ├── tarteaucitron.js-1.19.0
+│   │       │   ├── .github
+│   │       │   │   ├── FUNDING.yml
+│   │       │   │   ├── stale.yml
+│   │       │   │   └── workflows
+│   │       │   │       └── codeql-analysis.yml
+│   │       │   ├── .gitignore
+│   │       │   ├── LICENSE
+│   │       │   ├── README.md
+│   │       │   ├── SECURITY.md
+│   │       │   ├── advertising.js
+│   │       │   ├── advertising.min.js
+│   │       │   ├── css
+│   │       │   │   ├── tarteaucitron.css
+│   │       │   │   └── tarteaucitron.min.css
+│   │       │   ├── lang
+│   │       │   │   ├── tarteaucitron.ar.js
+│   │       │   │   ├── tarteaucitron.ar.min.js
+│   │       │   │   ├── tarteaucitron.bg.js
+│   │       │   │   ├── tarteaucitron.bg.min.js
+│   │       │   │   ├── tarteaucitron.ca.js
+│   │       │   │   ├── tarteaucitron.ca.min.js
+│   │       │   │   ├── tarteaucitron.cn.js
+│   │       │   │   ├── tarteaucitron.cn.min.js
+│   │       │   │   ├── tarteaucitron.cs.js
+│   │       │   │   ├── tarteaucitron.cs.min.js
+│   │       │   │   ├── tarteaucitron.da.js
+│   │       │   │   ├── tarteaucitron.da.min.js
+│   │       │   │   ├── tarteaucitron.de.js
+│   │       │   │   ├── tarteaucitron.de.min.js
+│   │       │   │   ├── tarteaucitron.el.js
+│   │       │   │   ├── tarteaucitron.el.min.js
+│   │       │   │   ├── tarteaucitron.en.js
+│   │       │   │   ├── tarteaucitron.en.min.js
+│   │       │   │   ├── tarteaucitron.es.js
+│   │       │   │   ├── tarteaucitron.es.min.js
+│   │       │   │   ├── tarteaucitron.et.js
+│   │       │   │   ├── tarteaucitron.et.min.js
+│   │       │   │   ├── tarteaucitron.fi.js
+│   │       │   │   ├── tarteaucitron.fi.min.js
+│   │       │   │   ├── tarteaucitron.fr.js
+│   │       │   │   ├── tarteaucitron.fr.min.js
+│   │       │   │   ├── tarteaucitron.hr.js
+│   │       │   │   ├── tarteaucitron.hr.min.js
+│   │       │   │   ├── tarteaucitron.hu.js
+│   │       │   │   ├── tarteaucitron.hu.min.js
+│   │       │   │   ├── tarteaucitron.it.js
+│   │       │   │   ├── tarteaucitron.it.min.js
+│   │       │   │   ├── tarteaucitron.ja.js
+│   │       │   │   ├── tarteaucitron.ja.min.js
+│   │       │   │   ├── tarteaucitron.kr.js
+│   │       │   │   ├── tarteaucitron.kr.min.js
+│   │       │   │   ├── tarteaucitron.lb.js
+│   │       │   │   ├── tarteaucitron.lb.min.js
+│   │       │   │   ├── tarteaucitron.lt.js
+│   │       │   │   ├── tarteaucitron.lt.min.js
+│   │       │   │   ├── tarteaucitron.lv.js
+│   │       │   │   ├── tarteaucitron.lv.min.js
+│   │       │   │   ├── tarteaucitron.nl.js
+│   │       │   │   ├── tarteaucitron.nl.min.js
+│   │       │   │   ├── tarteaucitron.no.js
+│   │       │   │   ├── tarteaucitron.no.min.js
+│   │       │   │   ├── tarteaucitron.oc.js
+│   │       │   │   ├── tarteaucitron.oc.min.js
+│   │       │   │   ├── tarteaucitron.pl.js
+│   │       │   │   ├── tarteaucitron.pl.min.js
+│   │       │   │   ├── tarteaucitron.pt.js
+│   │       │   │   ├── tarteaucitron.pt.min.js
+│   │       │   │   ├── tarteaucitron.ro.js
+│   │       │   │   ├── tarteaucitron.ro.min.js
+│   │       │   │   ├── tarteaucitron.ru.js
+│   │       │   │   ├── tarteaucitron.ru.min.js
+│   │       │   │   ├── tarteaucitron.se.js
+│   │       │   │   ├── tarteaucitron.se.min.js
+│   │       │   │   ├── tarteaucitron.sk.js
+│   │       │   │   ├── tarteaucitron.sk.min.js
+│   │       │   │   ├── tarteaucitron.sv.js
+│   │       │   │   ├── tarteaucitron.sv.min.js
+│   │       │   │   ├── tarteaucitron.tr.js
+│   │       │   │   ├── tarteaucitron.tr.min.js
+│   │       │   │   ├── tarteaucitron.uk.js
+│   │       │   │   ├── tarteaucitron.uk.min.js
+│   │       │   │   ├── tarteaucitron.vi.js
+│   │       │   │   ├── tarteaucitron.vi.min.js
+│   │       │   │   ├── tarteaucitron.zh.js
+│   │       │   │   └── tarteaucitron.zh.min.js
+│   │       │   ├── package.json
+│   │       │   ├── tarteaucitron.js
+│   │       │   ├── tarteaucitron.min.js
+│   │       │   ├── tarteaucitron.services.js
+│   │       │   └── tarteaucitron.services.min.js
+│   │       └── theme-inclusion
+│   │           ├── files
+│   │           │   └── animation-1701341946475.json
+│   │           ├── fonts
+│   │           │   ├── coveredbyyourgrace
+│   │           │   │   ├── coveredbyyourgrace.woff
+│   │           │   │   └── coveredbyyourgrace.woff2
+│   │           │   ├── marianne
+│   │           │   │   ├── Marianne-Bold.woff
+│   │           │   │   ├── Marianne-Bold.woff2
+│   │           │   │   ├── Marianne-Bold_Italic.woff
+│   │           │   │   ├── Marianne-Bold_Italic.woff2
+│   │           │   │   ├── Marianne-ExtraBold.woff
+│   │           │   │   ├── Marianne-ExtraBold.woff2
+│   │           │   │   ├── Marianne-Light.woff
+│   │           │   │   ├── Marianne-Light.woff2
+│   │           │   │   ├── Marianne-Light_Italic.woff
+│   │           │   │   ├── Marianne-Light_Italic.woff2
+│   │           │   │   ├── Marianne-Medium.woff
+│   │           │   │   ├── Marianne-Medium.woff2
+│   │           │   │   ├── Marianne-Medium_Italic.woff
+│   │           │   │   ├── Marianne-Medium_Italic.woff2
+│   │           │   │   ├── Marianne-Regular.woff
+│   │           │   │   ├── Marianne-Regular.woff2
+│   │           │   │   ├── Marianne-Regular_Italic.woff
+│   │           │   │   └── Marianne-Regular_Italic.woff2
+│   │           │   └── remixicon
+│   │           │       ├── remixicon.eot
+│   │           │       ├── remixicon.glyph.json
+│   │           │       ├── remixicon.svg
+│   │           │       ├── remixicon.symbol.svg
+│   │           │       ├── remixicon.ttf
+│   │           │       ├── remixicon.woff
+│   │           │       └── remixicon.woff2
+│   │           ├── images
+│   │           │   ├── ajax-loader.gif
+│   │           │   ├── banner-01-illu.png
+│   │           │   ├── card-header-bg-dora.png
+│   │           │   ├── favico.ico
+│   │           │   ├── favicon.ico
+│   │           │   ├── home
+│   │           │   │   ├── bg-communaute-mobile.png
+│   │           │   │   ├── bg-communaute.png
+│   │           │   │   ├── commu-home-illu-01.png
+│   │           │   │   ├── commu-home-illu-02.png
+│   │           │   │   ├── illustration-01.png
+│   │           │   │   ├── illustration-02.png
+│   │           │   │   ├── search-bg-left.png
+│   │           │   │   └── search-bg-right.png
+│   │           │   ├── home-title-01-illu-card-01.png
+│   │           │   ├── home-title-01-illu-card-02.png
+│   │           │   ├── home-title-01-illu-card-03.png
+│   │           │   ├── ico-*.svg  (74 files)
+│   │           │   ├── illustration-bg-01.png
+│   │           │   ├── logo-Dora-Horizontal-Couleur.png
+│   │           │   ├── logo-*.svg  (40 files)
+│   │           │   ├── logo-meta-base.png
+│   │           │   ├── metabase
+│   │           │   │   └── ico-download-cloud-fill.svg
+│   │           │   ├── picto-arrow-right.svg
+│   │           │   ├── picto-burger.svg
+│   │           │   ├── picto-close.svg
+│   │           │   ├── picto-demo-01.svg
+│   │           │   ├── picto-external-link.svg
+│   │           │   ├── picto-facebook.svg
+│   │           │   ├── picto-instagram.svg
+│   │           │   ├── picto-linkedin.svg
+│   │           │   ├── picto-rond.svg
+│   │           │   ├── picto-twitter.svg
+│   │           │   ├── picto-youtube.svg
+│   │           │   └── remixicon.symbol.svg
+│   │           ├── javascripts
+│   │           │   └── app.js
+│   │           └── stylesheets
+│   │               └── app.css
+│   ├── templates
+│   │   ├── 400.html
+│   │   ├── 403.html
+│   │   ├── 404.html
+│   │   ├── 500.html
+│   │   ├── django_social_share
+│   │   │   └── templatetags
+│   │   │       ├── post_to_facebook.html
+│   │   │       ├── post_to_linkedin.html
+│   │   │       ├── post_to_twitter.html
+│   │   │       ├── post_to_whatsapp.html
+│   │   │       └── send_email.html
+│   │   ├── documentation
+│   │   │   ├── card.html
+│   │   │   ├── category.html
+│   │   │   ├── index.html
+│   │   │   └── partials
+│   │   │       ├── breadcrumb.html
+│   │   │       ├── cards_list.html
+│   │   │       ├── partner.html
+│   │   │       └── tags.html
+│   │   ├── flatpages
+│   │   │   └── default.html
+│   │   ├── layouts
+│   │   │   ├── base.html
+│   │   │   └── base_htmx.html
+│   │   ├── middleware
+│   │   │   └── parking.html
+│   │   ├── pages
+│   │   │   ├── accessibilite.html
+│   │   │   ├── banners
+│   │   │   │   └── collab_dora.html
+│   │   │   ├── home.html
+│   │   │   ├── landing_pages.html
+│   │   │   ├── mentions_legales.html
+│   │   │   └── politique_de_confidentialite.html
+│   │   ├── partials
+│   │   │   ├── footer.html
+│   │   │   ├── form_field.html
+│   │   │   ├── header.html
+│   │   │   ├── pagination.html
+│   │   │   ├── rendered_md.html
+│   │   │   └── social_share_buttons.html
+│   │   ├── partner
+│   │   │   ├── detail.html
+│   │   │   ├── list.html
+│   │   │   └── partials
+│   │   │       └── breadcrumb.html
+│   │   ├── robots.txt
+│   │   └── search
+│   │       ├── results.html
+│   │       └── search_form.html
+│   └── utils
+│       ├── __init__.py
+│       ├── context_processors.py
+│       ├── enums.py
+│       ├── factory_boy.py
+│       ├── middleware.py
+│       ├── templatetags
+│       │   ├── __init__.py
+│       │   ├── date_filters.py
+│       │   ├── str_filters.py
+│       │   ├── theme_inclusion.py
+│       │   └── url_query_tags.py
+│       └── urls.py
+├── manage.py
+├── pyproject.toml
+├── scripts
+│   ├── changelog.py
+│   └── update_dependencies.sh
+├── setup.cfg
+├── tests
+│   ├── __snapshots__
+│   │   └── test_documentation.ambr
+│   ├── conftest.py
+│   ├── documentation
+│   │   ├── __init__.py
+│   │   ├── __snapshots__
+│   │   │   └── tests.ambr
+│   │   └── tests.py
+│   ├── pages
+│   │   ├── __init__.py
+│   │   ├── __snapshots__
+│   │   │   ├── test_homepage.ambr
+│   │   │   └── test_sitemap.ambr
+│   │   ├── test_homepage.py
+│   │   ├── test_mentions_legales.py
+│   │   ├── test_politique_confidentialite.py
+│   │   ├── test_robots.py
+│   │   └── test_sitemap.py
+│   ├── partner
+│   │   ├── __init__.py
+│   │   ├── __snapshots__
+│   │   │   └── tests.ambr
+│   │   └── tests.py
+│   ├── search
+│   │   ├── __init__.py
+│   │   ├── __snapshots__
+│   │   │   └── tests.ambr
+│   │   └── tests.py
+│   ├── testing.py
+│   └── utils
+│       ├── __init__.py
+│       ├── __snapshots__
+│       │   └── test_context_processor.ambr
+│       ├── test_context_processor.py
+│       ├── test_middleware.py
+│       ├── test_urls.py
+│       └── test_utils.py
+└── uv.lock
+79 directories, 696 files
