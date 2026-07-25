@@ -1,0 +1,42 @@
+[project]
+requires-python = ">=3.13"
+
+[tool.ruff]
+line-length = 119
+
+[tool.ruff.lint]
+ignore = [
+    # Checks for comparisons to empty strings.
+    # Being falsey is not as precise as == "".
+    "PLC1901",
+    # Use a constant over magic numbers
+    # Too much of a hassle for HTTP status code.
+    "PLR2004",
+]
+# see prefixes in https://beta.ruff.rs/docs/rules/
+select = [
+    "F",  # pyflakes
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "I",  # isort
+    "B",  # bugbear
+    "PL",  # pylint
+]
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+known-first-party = ["inclusion_connect"]
+lines-after-imports = 2
+
+[tool.djlint]
+profile="django"
+ignore="H006,H014,H017,H023,H030,H031,T002,T003"
+custom_blocks="buttons,endbuttons"
+max_attribute_length=200
+preserve_blank_lines=true
+
+[tool.ruff.lint.extend-per-file-ignores]
+"tests/*" = [
+  "PLR0915", # pylint too-many-statements
+  "PLR0913" # pylint too-many-arguments
+]

@@ -1,0 +1,264 @@
+.
+├── .coveragerc
+├── .dockerignore
+├── .editorconfig
+├── .gitattributes
+├── .github
+│   ├── dependabot.yml
+│   ├── pull_request_template.md
+│   └── workflows
+│       └── ci.yml
+├── .gitignore
+├── .pre-commit-config.yaml
+├── .pylintrc
+├── .python-version
+├── .vscode
+│   ├── extensions.json
+│   ├── launch.json
+│   └── settings.json
+├── CHANGELOG.md
+├── LICENSE
+├── Makefile
+├── README.md
+├── clevercloud
+│   ├── cron.json
+│   ├── http.json
+│   ├── pre_build.sh
+│   ├── pre_run.sh
+│   └── run_management_command.sh
+├── docker-compose.yml
+├── docs
+│   ├── development.md
+│   ├── img
+│   │   ├── activate-1.jpg
+│   │   ├── edit-user-info.jpg
+│   │   ├── login-1.jpg
+│   │   ├── logout-prompt.jpg
+│   │   ├── register-1.jpg
+│   │   ├── register-2.jpg
+│   │   ├── register-3.jpg
+│   │   └── register-4.jpg
+│   ├── inclusion_connect.md
+│   ├── index.md
+│   ├── openid_connect.md
+│   └── user_journey.md
+├── inclusion_connect
+│   ├── __init__.py
+│   ├── accounts
+│   │   ├── __init__.py
+│   │   ├── forms.py
+│   │   ├── helpers.py
+│   │   ├── middleware.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   ├── admin
+│   │   ├── __init__.py
+│   │   ├── apps.py
+│   │   └── sites.py
+│   ├── auth
+│   │   ├── __init__.py
+│   │   └── backends.py
+│   ├── fixtures
+│   │   └── django
+│   │       ├── 01_test_user.json
+│   │       └── 02_oauth_overrides_application.json
+│   ├── logging.py
+│   ├── middleware.py
+│   ├── oidc_overrides
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_application_post_logout_redirect_uris.py
+│   │   │   ├── 0003_application_allowed_origins_and_more.py
+│   │   │   ├── 0004_alter_application_authorization_grant_type.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── urls.py
+│   │   ├── validators.py
+│   │   └── views.py
+│   ├── settings
+│   │   ├── __init__.py
+│   │   ├── _sentry.py
+│   │   ├── base.py
+│   │   ├── dev.py
+│   │   └── test.py
+│   ├── static
+│   │   ├── css
+│   │   │   ├── inclusion_connect.css
+│   │   │   └── inclusion_connect_admin.css
+│   │   ├── img
+│   │   │   ├── favicon.ico
+│   │   │   ├── illustration-bg-ic.svg
+│   │   │   ├── illustration-ic.svg
+│   │   │   └── logo_ft.svg
+│   │   ├── js
+│   │   │   ├── admin_clipboard.js
+│   │   │   └── index.js
+│   │   ├── terms
+│   │   │   ├── CGU_v5.pdf
+│   │   │   ├── Mentions légales_20230302.pdf
+│   │   │   └── Politique_de_confidentialite_v7.pdf
+│   │   └── vendor
+│   │       ├── bootstrap-5.3.1
+│   │       │   ├── bootstrap.min.js
+│   │       │   ├── bootstrap.min.js.map
+│   │       │   ├── popper.min.js
+│   │       │   └── popper.min.js.map
+│   │       └── theme-inclusion
+│   │           ├── fonts
+│   │           │   ├── coveredbyyourgrace
+│   │           │   │   ├── coveredbyyourgrace.woff
+│   │           │   │   └── coveredbyyourgrace.woff2
+│   │           │   ├── marianne
+│   │           │   │   ├── Marianne-Bold.woff
+│   │           │   │   ├── Marianne-Bold.woff2
+│   │           │   │   ├── Marianne-Bold_Italic.woff
+│   │           │   │   ├── Marianne-Bold_Italic.woff2
+│   │           │   │   ├── Marianne-ExtraBold.woff
+│   │           │   │   ├── Marianne-ExtraBold.woff2
+│   │           │   │   ├── Marianne-Light.woff
+│   │           │   │   ├── Marianne-Light.woff2
+│   │           │   │   ├── Marianne-Light_Italic.woff
+│   │           │   │   ├── Marianne-Light_Italic.woff2
+│   │           │   │   ├── Marianne-Medium.woff
+│   │           │   │   ├── Marianne-Medium.woff2
+│   │           │   │   ├── Marianne-Medium_Italic.woff
+│   │           │   │   ├── Marianne-Medium_Italic.woff2
+│   │           │   │   ├── Marianne-Regular.woff
+│   │           │   │   ├── Marianne-Regular.woff2
+│   │           │   │   ├── Marianne-Regular_Italic.woff
+│   │           │   │   └── Marianne-Regular_Italic.woff2
+│   │           │   └── remixicon
+│   │           │       ├── remixicon.eot
+│   │           │       ├── remixicon.svg
+│   │           │       ├── remixicon.symbol.svg
+│   │           │       ├── remixicon.ttf
+│   │           │       ├── remixicon.woff
+│   │           │       └── remixicon.woff2
+│   │           ├── images
+│   │           │   ├── ajax-loader.gif
+│   │           │   ├── favico.ico
+│   │           │   ├── favicon.ico
+│   │           │   ├── ico-*.svg  (72 files)
+│   │           │   ├── illustration-bg-01.png
+│   │           │   ├── logo-*.svg  (38 files)
+│   │           │   ├── logo-meta-base.png
+│   │           │   ├── metabase
+│   │           │   │   └── ico-download-cloud-fill.svg
+│   │           │   ├── picto-arrow-right.svg
+│   │           │   ├── picto-burger.svg
+│   │           │   ├── picto-close.svg
+│   │           │   ├── picto-demo-01.svg
+│   │           │   ├── picto-external-link.svg
+│   │           │   ├── picto-facebook.svg
+│   │           │   ├── picto-instagram.svg
+│   │           │   ├── picto-linkedin.svg
+│   │           │   ├── picto-rond.svg
+│   │           │   ├── picto-twitter.svg
+│   │           │   ├── picto-youtube.svg
+│   │           │   └── remixicon.symbol.svg
+│   │           ├── javascripts
+│   │           │   └── app.js
+│   │           └── stylesheets
+│   │               └── app.css
+│   ├── templates
+│   │   ├── 403.html
+│   │   ├── 403_csrf.html
+│   │   ├── account_home.html
+│   │   ├── admin
+│   │   │   ├── users
+│   │   │   │   └── user
+│   │   │   │       └── invalidate_password_confirm.html
+│   │   │   └── widgets
+│   │   │       └── temporary_password.html
+│   │   ├── change_password.html
+│   │   ├── django_bootstrap5
+│   │   │   └── form_errors.html
+│   │   ├── email_confirmation.html
+│   │   ├── includes
+│   │   │   └── new_password.html
+│   │   ├── layout
+│   │   │   ├── _header.html
+│   │   │   ├── account.html
+│   │   │   ├── base.html
+│   │   │   ├── base_email_body.html
+│   │   │   ├── base_email_body.txt
+│   │   │   └── left_content.html
+│   │   ├── login.html
+│   │   ├── oauth2_provider
+│   │   │   └── logout_confirm.html
+│   │   ├── oidc_authorize.html
+│   │   ├── otp_confirm_device.html
+│   │   ├── otp_devices.html
+│   │   ├── password_reset.html
+│   │   ├── password_reset_confirm.html
+│   │   └── verify_otp.html
+│   ├── urls.py
+│   ├── users
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_userapplicationlink.py
+│   │   │   └── __init__.py
+│   │   └── models.py
+│   ├── utils
+│   │   ├── oidc.py
+│   │   ├── password_validation.py
+│   │   ├── templatetags
+│   │   │   ├── inclusionconnect_fields.py
+│   │   │   └── theme_inclusion.py
+│   │   └── urls.py
+│   ├── views.py
+│   └── wsgi.py
+├── manage.py
+├── pyproject.toml
+├── pytest.ini
+├── requirements
+│   ├── base.in
+│   ├── base.txt
+│   ├── dev-mac.txt
+│   ├── dev.in
+│   └── dev.txt
+└── tests
+    ├── __init__.py
+    ├── __snapshots__
+    │   ├── test_builtin_views.ambr
+    │   ├── test_functional.ambr
+    │   ├── test_logging.ambr
+    │   └── test_template_tags.ambr
+    ├── accounts
+    │   ├── __init__.py
+    │   ├── __snapshots__
+    │   │   └── tests.ambr
+    │   └── tests.py
+    ├── asserts.py
+    ├── auth
+    │   ├── __init__.py
+    │   └── tests.py
+    ├── conftest.py
+    ├── helpers.py
+    ├── oidc_overrides
+    │   ├── __init__.py
+    │   ├── __snapshots__
+    │   │   └── tests.ambr
+    │   ├── factories.py
+    │   └── tests.py
+    ├── test_builtin_views.py
+    ├── test_functional.py
+    ├── test_logging.py
+    ├── test_security.py
+    ├── test_template_tags.py
+    ├── users
+    │   ├── __init__.py
+    │   ├── __snapshots__
+    │   │   └── test_admin.ambr
+    │   ├── factories.py
+    │   ├── test_admin.py
+    │   └── test_models.py
+    └── utils
+        ├── __init__.py
+        └── tests.py
+56 directories, 315 files

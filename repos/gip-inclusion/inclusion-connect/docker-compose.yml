@@ -1,0 +1,21 @@
+version: "3.7"
+
+services:
+
+  postgres:
+    image: postgres:14
+    container_name: inclusion_connect_postgres
+    # Disable some safety switches for a faster postgres: https://www.postgresql.org/docs/current/non-durability.html
+    command: -c fsync=off -c full_page_writes=off -c synchronous_commit=off
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=inclusion_connect
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: always
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT_ON_DOCKER_HOST:-5433}:5432"
+
+volumes:
+  postgres_data:
