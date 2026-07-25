@@ -1,0 +1,1437 @@
+.
+├── .editorconfig
+├── .github
+│   ├── dependabot.yml
+│   └── workflows
+│       ├── back-ci.yml
+│       ├── create-review-apps.yml
+│       ├── front-ci.yml
+│       └── lint-pr.yml
+├── .gitignore
+├── .talismanrc
+├── LICENSE
+├── README.md
+├── analytics
+│   ├── .env.example
+│   ├── .gitignore
+│   ├── .pre-commit-config.yaml
+│   ├── .user.yml
+│   ├── Makefile
+│   ├── README.md
+│   ├── analyses
+│   │   └── .gitkeep
+│   ├── cron.json
+│   ├── dbt_project.yml
+│   ├── macros
+│   │   └── .gitkeep
+│   ├── metabase_scanner
+│   │   ├── .gitignore
+│   │   ├── README.md
+│   │   ├── metabase_scan.py
+│   │   └── pyproject.toml
+│   ├── models
+│   │   ├── _sources.yml
+│   │   ├── intermediate
+│   │   │   ├── _intermediate_models.yml
+│   │   │   ├── int_accompagnateurs_1_orientation_max.sql
+│   │   │   ├── int_iMER.sql
+│   │   │   ├── int_mobilisation_to_orientation.sql
+│   │   │   ├── int_mobilisationevent_user.sql
+│   │   │   ├── int_monthly_user_iMER.sql
+│   │   │   ├── int_monthly_user_mobilisations.sql
+│   │   │   ├── int_monthly_user_orientations.sql
+│   │   │   ├── int_monthly_user_service_views.sql
+│   │   │   ├── int_orientation_user_service.sql
+│   │   │   ├── int_orientations_following_mobilisation.sql
+│   │   │   ├── int_pilotage_bizdev.sql
+│   │   │   ├── int_prescribers.sql
+│   │   │   ├── int_service_categories.sql
+│   │   │   ├── int_service_funding_labels.sql
+│   │   │   ├── int_service_structure.sql
+│   │   │   ├── int_service_structure_labels.sql
+│   │   │   ├── int_services_models.sql
+│   │   │   ├── int_serviceview_user_service.sql
+│   │   │   ├── int_structure_members.sql
+│   │   │   ├── int_structure_national_labels.sql
+│   │   │   ├── int_structure_without_service.sql
+│   │   │   ├── int_user_departments.sql
+│   │   │   ├── int_user_page_views.sql
+│   │   │   ├── int_user_search_views.sql
+│   │   │   ├── int_users.sql
+│   │   │   └── int_users_with_iMer.sql
+│   │   ├── marts
+│   │   │   ├── _marts_properties.yml
+│   │   │   ├── dim_users.sql
+│   │   │   └── fact_iMer.sql
+│   │   ├── reporting
+│   │   │   ├── _reporting_properties.yml
+│   │   │   ├── number_of_views_by_funded_service.sql
+│   │   │   └── views_from_funded_services.sql
+│   │   └── staging
+│   │       ├── _staging_models.yml
+│   │       ├── stg_accompagnateurs.sql
+│   │       ├── stg_mobilisationevent.sql
+│   │       ├── stg_nb_orientations_per_user.sql
+│   │       ├── stg_orientation.sql
+│   │       ├── stg_pageview.sql
+│   │       ├── stg_searchview.sql
+│   │       ├── stg_service.sql
+│   │       ├── stg_services_models.sql
+│   │       ├── stg_serviceview.sql
+│   │       ├── stg_structure.sql
+│   │       └── stg_user.sql
+│   ├── package-lock.yml
+│   ├── packages.yml
+│   ├── profiles.yml
+│   ├── pyproject.toml
+│   ├── requirements.txt
+│   ├── seeds
+│   │   ├── .gitkeep
+│   │   ├── _seeds.yml
+│   │   ├── les_emplois
+│   │   │   ├── properties.yml
+│   │   │   └── settings.csv
+│   │   └── stats_insertion.csv
+│   ├── snapshots
+│   │   └── .gitkeep
+│   ├── sync-analytics.sh
+│   ├── sync-matomo.py
+│   └── tests
+│       └── .gitkeep
+├── back
+│   ├── .buildpacks
+│   ├── .git-blame-ignore-revs
+│   ├── .gitignore
+│   ├── .pre-commit-config.yaml
+│   ├── .python-version
+│   ├── Aptfile
+│   ├── LICENSE
+│   ├── Makefile
+│   ├── Procfile
+│   ├── README.md
+│   ├── bin
+│   │   └── post_compile
+│   ├── config
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── asgi.py
+│   │   ├── settings
+│   │   │   ├── __init__.py
+│   │   │   ├── base.py
+│   │   │   ├── dev.py
+│   │   │   ├── prod.py
+│   │   │   ├── sentry.py
+│   │   │   └── test.py
+│   │   ├── url_converters.py
+│   │   ├── urls.py
+│   │   └── wsgi.py
+│   ├── cron.json
+│   ├── docker-compose.yml
+│   ├── dora
+│   │   ├── __init__.py
+│   │   ├── api
+│   │   │   ├── __init__.py
+│   │   │   ├── exceptions.py
+│   │   │   ├── serializers.py
+│   │   │   ├── test_api.py
+│   │   │   ├── urls.py
+│   │   │   └── views.py
+│   │   ├── auth_links
+│   │   │   ├── __init__.py
+│   │   │   ├── emails.py
+│   │   │   ├── enums.py
+│   │   │   ├── templates
+│   │   │   │   └── send_link.mjml
+│   │   │   ├── tests
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── test_auth_views.py
+│   │   │   ├── urls.py
+│   │   │   ├── utils.py
+│   │   │   └── views.py
+│   │   ├── conftest.py
+│   │   ├── core
+│   │   │   ├── __init__.py
+│   │   │   ├── admin.py
+│   │   │   ├── commands.py
+│   │   │   ├── constants.py
+│   │   │   ├── csv_user_import.py
+│   │   │   ├── emails.py
+│   │   │   ├── exceptions_handler.py
+│   │   │   ├── file_upload_validators.py
+│   │   │   ├── management
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── commands
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── delete_orphaned_uploads.py
+│   │   │   │       ├── generate_security_report.py
+│   │   │   │       ├── import_data_inclusion.py
+│   │   │   │       ├── import_ft_users.py
+│   │   │   │       ├── import_mednum.py
+│   │   │   │       ├── import_users.py
+│   │   │   │       └── sync_migration_history.py
+│   │   │   ├── migrations
+│   │   │   │   ├── 0001_initial.py
+│   │   │   │   ├── 0002_initial.py
+│   │   │   │   └── __init__.py
+│   │   │   ├── mixins.py
+│   │   │   ├── models.py
+│   │   │   ├── notify.py
+│   │   │   ├── pagination.py
+│   │   │   ├── templates
+│   │   │   │   ├── admin
+│   │   │   │   │   └── import_csv_form.html
+│   │   │   │   ├── email-base.mjml
+│   │   │   │   ├── email_base.html
+│   │   │   │   ├── email_cta.html
+│   │   │   │   ├── email_notif.html
+│   │   │   │   └── email_services_check.html
+│   │   │   ├── templatetags
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── globals.py
+│   │   │   ├── test_utils.py
+│   │   │   ├── tests
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── test_csv_user_import.py
+│   │   │   │   ├── test_datanymizer_config.py
+│   │   │   │   ├── test_delete_orphaned_uploads.py
+│   │   │   │   ├── test_emails.py
+│   │   │   │   ├── test_file_upload_validators.py
+│   │   │   │   ├── test_mixins.py
+│   │   │   │   ├── test_throttling.py
+│   │   │   │   ├── test_utils.py
+│   │   │   │   ├── test_validators.py
+│   │   │   │   └── test_views.py
+│   │   │   ├── throttling.py
+│   │   │   ├── uploads.py
+│   │   │   ├── utils.py
+│   │   │   ├── validators.py
+│   │   │   └── views.py
+│   │   ├── data_inclusion
+│   │   │   ├── __init__.py
+│   │   │   ├── client.py
+│   │   │   ├── constants.py
+│   │   │   ├── diffusion_zone_info.py
+│   │   │   ├── enums.py
+│   │   │   ├── mappings.py
+│   │   │   ├── test_diffusion_zone_info.py
+│   │   │   ├── test_utils.py
+│   │   │   └── tests.py
+│   │   ├── decoupage_administratif
+│   │   │   ├── __init__.py
+│   │   │   ├── admin.py
+│   │   │   ├── api_client.py
+│   │   │   ├── apps.py
+│   │   │   ├── importer.py
+│   │   │   ├── management
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── commands
+│   │   │   │       ├── __init__.py
+│   │   │   │       └── import_decoupage_administratif.py
+│   │   │   ├── migrations
+│   │   │   │   ├── 0001_initial.py
+│   │   │   │   ├── 0002_add_overseas_departments.py
+│   │   │   │   ├── 0003_drop_admin_express_tables.py
+│   │   │   │   └── __init__.py
+│   │   │   ├── models.py
+│   │   │   ├── serializers.py
+│   │   │   ├── tests
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── conftest.py
+│   │   │   │   ├── test_api_client.py
+│   │   │   │   ├── test_get_city_label.py
+│   │   │   │   ├── test_get_departments.py
+│   │   │   │   ├── test_importer.py
+│   │   │   │   ├── test_management_commands.py
+│   │   │   │   ├── test_reverse_search.py
+│   │   │   │   └── test_search.py
+│   │   │   ├── utils.py
+│   │   │   └── views.py
+│   │   ├── emplois
+│   │   │   ├── __init__.py
+│   │   │   ├── serializers.py
+│   │   │   ├── tests
+│   │   │   │   ├── __snapshots__
+│   │   │   │   │   └── test_emplois_views.ambr
+│   │   │   │   ├── conftest.py
+│   │   │   │   ├── test_emplois_mobilisation_event.py
+│   │   │   │   ├── test_emplois_orientations.py
+│   │   │   │   ├── test_emplois_serializers.py
+│   │   │   │   └── test_emplois_views.py
+│   │   │   ├── urls.py
+│   │   │   └── views.py
+│   │   ├── logs
+│   │   │   ├── __init__.py
+│   │   │   ├── admin.py
+│   │   │   ├── apps.py
+│   │   │   ├── core.py
+│   │   │   ├── migrations
+│   │   │   │   ├── 0001_initial.py
+│   │   │   │   └── __init__.py
+│   │   │   ├── models.py
+│   │   │   └── tests.py
+│   │   ├── nexus
+│   │   │   ├── __init__.py
+│   │   │   ├── management
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── commands
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── nexus_full_sync.py
+│   │   │   │       └── populate_metabase_nexus.py
+│   │   │   ├── sync.py
+│   │   │   ├── tests
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── __snapshots__
+│   │   │   │   │   └── tests_management_commands.ambr
+│   │   │   │   ├── test_sync.py
+│   │   │   │   ├── test_views.py
+│   │   │   │   └── tests_management_commands.py
+│   │   │   ├── urls.py
+│   │   │   └── views.py
+│   │   ├── notifications
+│   │   │   ├── __init__.py
+│   │   │   ├── admin.py
+│   │   │   ├── enums.py
+│   │   │   ├── management
+│   │   │   │   └── commands
+│   │   │   │       ├── __init__.py
+│   │   │   │       └── process_notification_tasks.py
+│   │   │   ├── migrations
+│   │   │   │   ├── 0001_initial.py
+│   │   │   │   ├── 0002_initial.py
+│   │   │   │   └── __init__.py
+│   │   │   ├── models.py
+│   │   │   ├── tasks
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── core.py
+│   │   │   │   ├── invitations.py
+│   │   │   │   ├── structures.py
+│   │   │   │   ├── tests
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── conftest.py
+│   │   │   │   │   ├── tests.py
+│   │   │   │   │   ├── tests_invitations.py
+│   │   │   │   │   ├── tests_structures.py
+│   │   │   │   │   └── tests_users.py
+│   │   │   │   └── users.py
+│   │   │   └── tests
+│   │   │       ├── __init__.py
+│   │   │       ├── __snapshots__
+│   │   │       │   └── tests_management_command.ambr
+│   │   │       ├── tests.py
+│   │   │       └── tests_management_command.py
+│   │   ├── oidc
+│   │   │   ├── __init__.py
+│   │   │   ├── admin.py
+│   │   │   ├── apps.py
+│   │   │   ├── backends.py
+│   │   │   ├── management
+│   │   │   │   └── commands
+│   │   │   │       ├── __init__.py
+│   │   │   │       └── force_users_logout.py
+│   │   │   ├── migrations
+│   │   │   │   ├── 0001_initial.py
+│   │   │   │   ├── 0002_initial.py
+│   │   │   │   └── __init__.py
+│   │   │   ├── models.py
+│   │   │   ├── tests
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── test_oidc.py
+│   │   │   │   ├── test_sessions.py
+│   │   │   │   └── test_views.py
+│   │   │   ├── urls.py
+│   │   │   └── views.py
+│   │   ├── onboarding
+│   │   │   ├── __init__.py
+│   │   │   └── test.py
+│   │   ├── orientations
+│   │   │   ├── __init__.py
+│   │   │   ├── admin.py
+│   │   │   ├── checks.py
+│   │   │   ├── emails
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── base.py
+│   │   │   │   ├── dora.py
+│   │   │   │   └── emplois.py
+│   │   │   ├── management
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── commands
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── anonymize_orientations.py
+│   │   │   │       ├── close_expired_orientations.py
+│   │   │   │       ├── delete_old_closed_orientation_attachments.py
+│   │   │   │       ├── delete_orientation_attachments.py
+│   │   │   │       └── send_orientations_reminders.py
+│   │   │   ├── migrations
+│   │   │   │   ├── 0001_initial.py
+│   │   │   │   ├── 0002_initial.py
+│   │   │   │   ├── 0003_orientation_les_emplois_beneficiary_uid_and_more.py
+│   │   │   │   ├── 0004_add_service_orientations_related_name.py
+│   │   │   │   ├── 0005_emploisorientationdata_and_more.py
+│   │   │   │   ├── 0006_emploisorientationdata_emplois_sync_uid.py
+│   │   │   │   └── __init__.py
+│   │   │   ├── models.py
+│   │   │   ├── serializers.py
+│   │   │   ├── templates
+│   │   │   │   ├── contact-beneficiary.mjml
+│   │   │   │   ├── contact-prescriber.mjml
+│   │   │   │   ├── emplois
+│   │   │   │   │   ├── orientation-accepted-beneficiary.mjml
+│   │   │   │   │   ├── orientation-accepted-prescriber.mjml
+│   │   │   │   │   ├── orientation-accepted-referent.mjml
+│   │   │   │   │   ├── orientation-contact-beneficiary.mjml
+│   │   │   │   │   ├── orientation-contact-prescriber.mjml
+│   │   │   │   │   ├── orientation-creation-beneficiary.mjml
+│   │   │   │   │   ├── orientation-creation-prescriber.mjml
+│   │   │   │   │   ├── orientation-creation-referent.mjml
+│   │   │   │   │   ├── orientation-emplois-email-base.mjml
+│   │   │   │   │   ├── orientation-expired-beneficiary.mjml
+│   │   │   │   │   ├── orientation-expired-prescriber.mjml
+│   │   │   │   │   ├── orientation-rejected-beneficiary.mjml
+│   │   │   │   │   └── orientation-rejected-prescriber.mjml
+│   │   │   │   ├── notification-structure.mjml
+│   │   │   │   ├── orientation-accepted-beneficiary.mjml
+│   │   │   │   ├── orientation-accepted-prescriber.mjml
+│   │   │   │   ├── orientation-accepted-referent.mjml
+│   │   │   │   ├── orientation-accepted-structure.mjml
+│   │   │   │   ├── orientation-created-beneficiary.mjml
+│   │   │   │   ├── orientation-created-prescriber.mjml
+│   │   │   │   ├── orientation-created-referent.mjml
+│   │   │   │   ├── orientation-created-structure.mjml
+│   │   │   │   ├── orientation-email-base.mjml
+│   │   │   │   ├── orientation-expired-beneficiary.mjml
+│   │   │   │   ├── orientation-expired-prescriber.mjml
+│   │   │   │   ├── orientation-expired-service.mjml
+│   │   │   │   ├── orientation-rejected-beneficiary.mjml
+│   │   │   │   ├── orientation-rejected-prescriber.mjml
+│   │   │   │   ├── orientation-rejected-structure.mjml
+│   │   │   │   └── partials
+│   │   │   │       ├── block-attachments.html
+│   │   │   │       ├── block-beneficiary.html
+│   │   │   │       ├── block-information-notice.html
+│   │   │   │       ├── block-orientation.html
+│   │   │   │       ├── block-prescriber.html
+│   │   │   │       ├── block-requirements.html
+│   │   │   │       ├── block-service-contact.html
+│   │   │   │       ├── block-situation.html
+│   │   │   │       ├── prescriber-structure-name.html
+│   │   │   │       ├── service-link.html
+│   │   │   │       └── structure-link.html
+│   │   │   ├── templatetags
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── orientation_extras.py
+│   │   │   ├── tests
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── __snapshots__
+│   │   │   │   │   ├── test_emplois_emails.ambr
+│   │   │   │   │   └── test_send_orientations_reminders.ambr
+│   │   │   │   ├── conftest.py
+│   │   │   │   ├── test_anonymize_orientations.py
+│   │   │   │   ├── test_close_expired_orientations.py
+│   │   │   │   ├── test_delete_old_closed_orientation_attachments.py
+│   │   │   │   ├── test_emplois_emails.py
+│   │   │   │   ├── test_emplois_orientation_data.py
+│   │   │   │   ├── test_emplois_orientation_handler.py
+│   │   │   │   ├── test_orientation.py
+│   │   │   │   ├── test_orientation_admin.py
+│   │   │   │   ├── test_orientation_attachments.py
+│   │   │   │   ├── test_orientation_beneficiary_info.py
+│   │   │   │   ├── test_orientation_emails.py
+│   │   │   │   ├── test_orientation_endpoints.py
+│   │   │   │   ├── test_orientation_france_travail_number.py
+│   │   │   │   ├── test_orientation_serializer_prefill_from_op_jwt.py
+│   │   │   │   ├── test_orientation_serializer_prescriber.py
+│   │   │   │   ├── test_orientations_reminders.py
+│   │   │   │   ├── test_prescriber_info.py
+│   │   │   │   ├── test_query_refresh.py
+│   │   │   │   └── test_send_orientations_reminders.py
+│   │   │   └── views.py
+│   │   ├── rest_auth
+│   │   │   ├── __init__.py
+│   │   │   ├── migrations
+│   │   │   │   └── __init__.py
+│   │   │   ├── serializers.py
+│   │   │   ├── tests
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── test_auth.py
+│   │   │   │   ├── test_cgu.py
+│   │   │   │   └── test_invite_admin.py
+│   │   │   ├── urls.py
+│   │   │   └── views.py
+│   │   ├── services
+│   │   │   ├── __init__.py
+│   │   │   ├── admin.py
+│   │   │   ├── csv_import.py
+│   │   │   ├── emails.py
+│   │   │   ├── enums.py
+│   │   │   ├── label_services.py
+│   │   │   ├── management
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── commands
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── export_service_data_for_classification.py
+│   │   │   │       ├── fix_missing_geom.py
+│   │   │   │       ├── import_services.py
+│   │   │   │       ├── label_services.py
+│   │   │   │       └── send_saved_searches_notifications.py
+│   │   │   ├── migration_utils.py
+│   │   │   ├── migrations
+│   │   │   │   ├── 0001_initial.py
+│   │   │   │   ├── 0002_initial.py
+│   │   │   │   ├── 0003_seed_data.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── data
+│   │   │   │       └── assignation-thematiques.csv
+│   │   │   ├── models.py
+│   │   │   ├── search.py
+│   │   │   ├── serializers.py
+│   │   │   ├── templates
+│   │   │   │   ├── admin
+│   │   │   │   │   └── services
+│   │   │   │   │       └── service
+│   │   │   │   │           └── change_list.html
+│   │   │   │   ├── notification-services.mjml
+│   │   │   │   ├── saved-search-notification.mjml
+│   │   │   │   └── service-feedback-email.mjml
+│   │   │   ├── tests
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── __snapshots__
+│   │   │   │   │   └── test_import_services.ambr
+│   │   │   │   ├── test_admin_import_view.py
+│   │   │   │   ├── test_bookmarks.py
+│   │   │   │   ├── test_categories_subcategories.py
+│   │   │   │   ├── test_emails.py
+│   │   │   │   ├── test_filtter_di_results.py
+│   │   │   │   ├── test_import_services.py
+│   │   │   │   ├── test_label_services.py
+│   │   │   │   ├── test_logs.py
+│   │   │   │   ├── test_models.py
+│   │   │   │   ├── test_profiles.py
+│   │   │   │   ├── test_search.py
+│   │   │   │   ├── test_serializers.py
+│   │   │   │   ├── test_services.py
+│   │   │   │   └── test_services_saved_searchs.py
+│   │   │   ├── utils.py
+│   │   │   └── views.py
+│   │   ├── sirene
+│   │   │   ├── __init__.py
+│   │   │   ├── admin.py
+│   │   │   ├── management
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── commands
+│   │   │   │       ├── __init__.py
+│   │   │   │       ├── _backup.py
+│   │   │   │       └── import_sirene.py
+│   │   │   ├── migrations
+│   │   │   │   ├── 0001_initial.py
+│   │   │   │   └── __init__.py
+│   │   │   ├── models.py
+│   │   │   ├── serializers.py
+│   │   │   ├── tests
+│   │   │   │   └── test_views.py
+│   │   │   └── views.py
+│   │   ├── static
+│   │   │   ├── admin
+│   │   │   │   └── css
+│   │   │   │       ├── import_form.css
+│   │   │   │       └── moderation_change_form.css
+│   │   │   └── favicon.v2.ico
+│   │   ├── stats
+│   │   │   ├── __init__.py
+│   │   │   ├── admin.py
+│   │   │   ├── enums.py
+│   │   │   ├── migrations
+│   │   │   │   ├── 0001_initial.py
+│   │   │   │   ├── 0002_searchview_keyword_searchview_search_type.py
+│   │   │   │   ├── 0003_structureview_search_view.py
+│   │   │   │   └── __init__.py
+│   │   │   ├── models.py
+│   │   │   └── views.py
+│   │   ├── structures
+│   │   │   ├── __init__.py
+│   │   │   ├── admin.py
+│   │   │   ├── constants.py
+│   │   │   ├── csv_import.py
+│   │   │   ├── data
+│   │   │   │   └── drdt.csv
+│   │   │   ├── emails.py
+│   │   │   ├── fixtures
+│   │   │   │   └── 01_structure_national_labels.json.gz
+│   │   │   ├── management
+│   │   │   │   └── commands
+│   │   │   │       ├── clean_mobin_label.py
+│   │   │   │       ├── import_dr_dt_ft.py
+│   │   │   │       ├── import_ft_agencies.py
+│   │   │   │       └── import_structures.py
+│   │   │   ├── migrations
+│   │   │   │   ├── 0001_initial.py
+│   │   │   │   ├── 0002_seed_data.py
+│   │   │   │   └── __init__.py
+│   │   │   ├── models.py
+│   │   │   ├── permissions.py
+│   │   │   ├── serializers.py
+│   │   │   ├── templates
+│   │   │   │   ├── admin
+│   │   │   │   │   └── structures
+│   │   │   │   │       └── structure
+│   │   │   │   │           └── change_list.html
+│   │   │   │   ├── invitation.mjml
+│   │   │   │   ├── invitation_pe.mjml
+│   │   │   │   ├── notification-access-granted.html
+│   │   │   │   ├── notification-access-rejected.html
+│   │   │   │   ├── notification-access-request.html
+│   │   │   │   ├── notification-branch-created.html
+│   │   │   │   ├── notification-invitation-accepted.html
+│   │   │   │   ├── notification-invitation-stalled-20.mjml
+│   │   │   │   ├── notification-invitation-stalled-90.mjml
+│   │   │   │   ├── notification-member-fast-tracked.html
+│   │   │   │   ├── notification-moderation-rejected.mjml
+│   │   │   │   ├── notification-orphan-structure.mjml
+│   │   │   │   ├── notification-self-invited-users.mjml
+│   │   │   │   └── notification-service-activation.mjml
+│   │   │   ├── tests
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── __snapshots__
+│   │   │   │   │   └── test_import_structures.ambr
+│   │   │   │   ├── conftest.py
+│   │   │   │   ├── test_admin_import_view.py
+│   │   │   │   ├── test_clean_mobin_label.py
+│   │   │   │   ├── test_emails.py
+│   │   │   │   ├── test_import_structures.py
+│   │   │   │   ├── test_querysets.py
+│   │   │   │   ├── test_structures.py
+│   │   │   │   └── test_structures_admin.py
+│   │   │   └── views.py
+│   │   ├── support
+│   │   │   ├── __init__.py
+│   │   │   ├── serializers.py
+│   │   │   ├── test_support.py
+│   │   │   └── views.py
+│   │   └── users
+│   │       ├── __init__.py
+│   │       ├── admin.py
+│   │       ├── apps.py
+│   │       ├── emails.py
+│   │       ├── enums.py
+│   │       ├── management
+│   │       │   └── commands
+│   │       │       ├── __init__.py
+│   │       │       └── merge_users.py
+│   │       ├── migrations
+│   │       │   ├── 0001_initial.py
+│   │       │   ├── 0002_create_dora_bot.py
+│   │       │   ├── 0003_alter_user_discovery_method.py
+│   │       │   └── __init__.py
+│   │       ├── models.py
+│   │       ├── serializers.py
+│   │       ├── templates
+│   │       │   ├── invitation_reminder.mjml
+│   │       │   ├── notification_account_deletion.mjml
+│   │       │   ├── notification_department_manager_structures_requiring_action.mjml
+│   │       │   ├── notification_user_without_structure.mjml
+│   │       │   └── notification_user_without_structure_deletion.mjml
+│   │       ├── tests
+│   │       │   ├── test_emails.py
+│   │       │   ├── test_merge_users.py
+│   │       │   ├── test_models.py
+│   │       │   ├── test_user_manager.py
+│   │       │   └── test_users_views.py
+│   │       └── views.py
+│   ├── envs-example
+│   │   ├── dev.env
+│   │   └── secrets.env
+│   ├── manage.py
+│   ├── pyproject.toml
+│   ├── requirements
+│   │   ├── base.in
+│   │   ├── base.txt
+│   │   ├── dev.in
+│   │   ├── dev.txt
+│   │   ├── prod.in
+│   │   ├── prod.txt
+│   │   ├── test.in
+│   │   └── test.txt
+│   ├── requirements.txt -> requirements/prod.txt
+│   ├── scalingo.json
+│   ├── scripts
+│   │   ├── email_service_brouillon_mednum.py
+│   │   └── import_siaes.py
+│   ├── templates
+│   │   └── admin
+│   │       ├── base.html
+│   │       └── structures
+│   │           └── structure
+│   │               └── change_form.html
+│   └── tools
+│       ├── anonymize-orientations.sh
+│       ├── clock.sh
+│       ├── close-expired-orientations.sh
+│       ├── datanymizer-config.yml
+│       ├── delete-old-closed-orientation-attachments.sh
+│       ├── delete-orphaned-uploads.sh
+│       ├── import-decoupage-administratif.sh
+│       ├── reset-database.sh
+│       ├── run-notification-tasks.sh
+│       ├── send-orientations-reminders-emails.sh
+│       ├── send-saved-searches-notifications.sh
+│       ├── send-services-reminders-emails.sh
+│       └── sync-nexus.sh
+├── docs
+│   ├── adr
+│   │   ├── 001-migrer-le-code-vers-un-monorepo.md
+│   │   └── 002-architecture-label-financement.md
+│   └── models
+│       ├── README.md
+│       └── dora_model.png
+├── front
+│   ├── .env-example
+│   ├── .gitignore
+│   ├── .husky
+│   │   ├── .gitignore
+│   │   └── pre-commit
+│   ├── .npmrc
+│   ├── .prettierignore
+│   ├── .prettierrc
+│   ├── LICENSE
+│   ├── README.md
+│   ├── eslint.config.mjs
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── scalingo.json
+│   ├── src
+│   │   ├── app.css
+│   │   ├── app.d.ts
+│   │   ├── app.html
+│   │   ├── global.d.ts
+│   │   ├── hooks.client.ts
+│   │   ├── hooks.server.ts
+│   │   ├── lib
+│   │   │   ├── assets
+│   │   │   │   ├── fonts
+│   │   │   │   │   └── marianne
+│   │   │   │   │       ├── Marianne-Bold.woff
+│   │   │   │   │       ├── Marianne-Bold.woff2
+│   │   │   │   │       ├── Marianne-Bold_Italic.woff
+│   │   │   │   │       ├── Marianne-Bold_Italic.woff2
+│   │   │   │   │       ├── Marianne-Regular.woff
+│   │   │   │   │       ├── Marianne-Regular.woff2
+│   │   │   │   │       ├── Marianne-Regular_Italic.woff
+│   │   │   │   │       └── Marianne-Regular_Italic.woff2
+│   │   │   │   ├── icons
+│   │   │   │   │   ├── circle.png
+│   │   │   │   │   ├── ico-sync.svelte
+│   │   │   │   │   └── loop.svg
+│   │   │   │   ├── illustrations
+│   │   │   │   │   ├── Referencer_Vos_Services.webp
+│   │   │   │   │   ├── Validation_Orientation_Envoyee.webp
+│   │   │   │   │   ├── collaborateurs.svg
+│   │   │   │   │   ├── illu-accompagner.svg
+│   │   │   │   │   ├── illu-connexion.svg
+│   │   │   │   │   ├── illu-contribution.svg
+│   │   │   │   │   ├── illu-favoris.svg
+│   │   │   │   │   ├── illu-favs-moderation.svg
+│   │   │   │   │   ├── illu-favs.svg
+│   │   │   │   │   ├── illu-mobiliser.svg
+│   │   │   │   │   ├── illu-modeemploi.svg
+│   │   │   │   │   ├── illu-recenser-black-and-white.svg
+│   │   │   │   │   ├── illu-recenser.svg
+│   │   │   │   │   ├── illu-structures-orphelines.svg
+│   │   │   │   │   ├── illu-suggerer.svg
+│   │   │   │   │   ├── inclusion-connect.png
+│   │   │   │   │   ├── map-view.jpg
+│   │   │   │   │   ├── modeles.svg
+│   │   │   │   │   └── services.svg
+│   │   │   │   ├── logos
+│   │   │   │   │   ├── logo-communaute-inclusion.svg
+│   │   │   │   │   ├── logo-data-inclusion.svg
+│   │   │   │   │   ├── logo-dora.svg
+│   │   │   │   │   ├── logo-emploi-inclusion.svg
+│   │   │   │   │   ├── logo-marche-inclusion.svg
+│   │   │   │   │   ├── logo-monrecap.svg
+│   │   │   │   │   ├── logo-pilotage-inclusion.svg
+│   │   │   │   │   ├── logo-plateforme-inclusion-mono.svg
+│   │   │   │   │   ├── logo-plateforme-inclusion.svg
+│   │   │   │   │   ├── logo-rf.svg
+│   │   │   │   │   └── partners
+│   │   │   │   │       ├── logo_actionlogement.png
+│   │   │   │   │       ├── logo_afpa.png
+│   │   │   │   │       ├── logo_anlci.png
+│   │   │   │   │       ├── logo_apprentisauteuils.png
+│   │   │   │   │       ├── logo_ardennes.png
+│   │   │   │   │       ├── logo_bge.png
+│   │   │   │   │       ├── logo_bonsclics.png
+│   │   │   │   │       ├── logo_bpi.png
+│   │   │   │   │       ├── logo_caf.png
+│   │   │   │   │       ├── logo_cheops.png
+│   │   │   │   │       ├── logo_collectifemploi.png
+│   │   │   │   │       ├── logo_cravatesolidaire.png
+│   │   │   │   │       ├── logo_cresus.png
+│   │   │   │   │       ├── logo_e2c.png
+│   │   │   │   │       ├── logo_epide.png
+│   │   │   │   │       ├── logo_face.webp
+│   │   │   │   │       ├── logo_financespedagogie.png
+│   │   │   │   │       ├── logo_finistere.png
+│   │   │   │   │       ├── logo_forcefemmes.png
+│   │   │   │   │       ├── logo_francetravail.png
+│   │   │   │   │       ├── logo_google.png
+│   │   │   │   │       ├── logo_jeveuxaider.png
+│   │   │   │   │       ├── logo_konexio.png
+│   │   │   │   │       ├── logo_lareunion.png
+│   │   │   │   │       ├── logo_lesemplois.png
+│   │   │   │   │       ├── logo_ligueenseignement.png
+│   │   │   │   │       ├── logo_mednum.png
+│   │   │   │   │       ├── logo_mobin.png
+│   │   │   │   │       ├── logo_monenfantfr.png
+│   │   │   │   │       ├── logo_nqt.png
+│   │   │   │   │       ├── logo_orange.png
+│   │   │   │   │       ├── logo_posplanet.png
+│   │   │   │   │       ├── logo_renault.png
+│   │   │   │   │       ├── logo_servicecivique.png
+│   │   │   │   │       ├── logo_simplon.png
+│   │   │   │   │       ├── logo_snc.png
+│   │   │   │   │       ├── logo_socialbuilder.png
+│   │   │   │   │       ├── logo_uniopss.png
+│   │   │   │   │       └── logo_wimoov.png
+│   │   │   │   └── proconnect
+│   │   │   │       ├── bouton_proconnect.svg
+│   │   │   │       └── logo_proconnect.svg
+│   │   │   ├── cache
+│   │   │   │   └── services-options.ts
+│   │   │   ├── components
+│   │   │   │   ├── display
+│   │   │   │   │   ├── accordion.svelte
+│   │   │   │   │   ├── alert.svelte
+│   │   │   │   │   ├── breadcrumb.svelte
+│   │   │   │   │   ├── button-menu.svelte
+│   │   │   │   │   ├── button.svelte
+│   │   │   │   │   ├── centered-grid.svelte
+│   │   │   │   │   ├── checkbox-mark.svelte
+│   │   │   │   │   ├── date-label.svelte
+│   │   │   │   │   ├── dropdown-menu.svelte
+│   │   │   │   │   ├── external-link-icon.svelte
+│   │   │   │   │   ├── fieldset.svelte
+│   │   │   │   │   ├── hamburger.svelte
+│   │   │   │   │   ├── info.svelte
+│   │   │   │   │   ├── label.svelte
+│   │   │   │   │   ├── link-button.svelte
+│   │   │   │   │   ├── linkify.svelte
+│   │   │   │   │   ├── map-style.json
+│   │   │   │   │   ├── map.svelte
+│   │   │   │   │   ├── markdown-renderer.svelte
+│   │   │   │   │   ├── nav-item.svelte
+│   │   │   │   │   ├── notice.svelte
+│   │   │   │   │   ├── pagination.svelte
+│   │   │   │   │   ├── relative-date-label.svelte
+│   │   │   │   │   ├── spinner.svelte
+│   │   │   │   │   ├── static-markdown.svelte
+│   │   │   │   │   ├── tabs.svelte
+│   │   │   │   │   ├── tag.svelte
+│   │   │   │   │   └── text-clamp.svelte
+│   │   │   │   ├── forms
+│   │   │   │   │   ├── field-wrapper.svelte
+│   │   │   │   │   ├── fields
+│   │   │   │   │   │   ├── addable-multiselect-field.svelte
+│   │   │   │   │   │   ├── address-search-field.svelte
+│   │   │   │   │   │   ├── admin-division-search-field.svelte
+│   │   │   │   │   │   ├── basic-input-field.svelte
+│   │   │   │   │   │   ├── boolean-checkbox-field.svelte
+│   │   │   │   │   │   ├── boolean-radio-buttons-field.svelte
+│   │   │   │   │   │   ├── checkboxes-field.svelte
+│   │   │   │   │   │   ├── city-search-field.svelte
+│   │   │   │   │   │   ├── hidden-field.svelte
+│   │   │   │   │   │   ├── multi-select-field.svelte
+│   │   │   │   │   │   ├── opening-hours-field.svelte
+│   │   │   │   │   │   ├── radio-buttons-field.svelte
+│   │   │   │   │   │   ├── rich-text-field.svelte
+│   │   │   │   │   │   ├── select-field.svelte
+│   │   │   │   │   │   ├── textarea-field.svelte
+│   │   │   │   │   │   └── upload-field.svelte
+│   │   │   │   │   ├── form-errors.svelte
+│   │   │   │   │   ├── form.svelte
+│   │   │   │   │   └── sticky-form-submission-row.svelte
+│   │   │   │   ├── hoc
+│   │   │   │   │   ├── bookmarkable.svelte
+│   │   │   │   │   ├── dialog.svelte
+│   │   │   │   │   ├── ensure-logged-in.svelte
+│   │   │   │   │   └── modal.svelte
+│   │   │   │   ├── inputs
+│   │   │   │   │   ├── checkbox.svelte
+│   │   │   │   │   ├── checkboxes.svelte
+│   │   │   │   │   ├── geo
+│   │   │   │   │   │   ├── admin-division-search.svelte
+│   │   │   │   │   │   ├── city-search.svelte
+│   │   │   │   │   │   └── street-search.svelte
+│   │   │   │   │   ├── obsolete
+│   │   │   │   │   │   ├── select-field.svelte
+│   │   │   │   │   │   ├── select-label.svelte
+│   │   │   │   │   │   └── select-options.svelte
+│   │   │   │   │   ├── opening-hours
+│   │   │   │   │   │   ├── day-field.svelte
+│   │   │   │   │   │   ├── days-grid.svelte
+│   │   │   │   │   │   └── toggle.svelte
+│   │   │   │   │   ├── radio-buttons.svelte
+│   │   │   │   │   ├── rich-text
+│   │   │   │   │   │   ├── button.svelte
+│   │   │   │   │   │   ├── editor.svelte
+│   │   │   │   │   │   └── separator.svelte
+│   │   │   │   │   ├── select
+│   │   │   │   │   │   ├── select.svelte
+│   │   │   │   │   │   └── simple-autocomplete.svelte
+│   │   │   │   │   └── uploader.svelte
+│   │   │   │   ├── specialized
+│   │   │   │   │   ├── cookie-banner
+│   │   │   │   │   │   ├── cookie-banner.svelte
+│   │   │   │   │   │   ├── detail-card.svelte
+│   │   │   │   │   │   ├── detail-panel.svelte
+│   │   │   │   │   │   └── general-panel.svelte
+│   │   │   │   │   ├── establishment-search
+│   │   │   │   │   │   ├── search-by-commune.svelte
+│   │   │   │   │   │   ├── search-by-safir.svelte
+│   │   │   │   │   │   ├── search-by-siret.svelte
+│   │   │   │   │   │   └── search.svelte
+│   │   │   │   │   ├── favorite-icon.svelte
+│   │   │   │   │   ├── invite-structure-link.svelte
+│   │   │   │   │   ├── membership-pending-warning.svelte
+│   │   │   │   │   ├── mon-recap-popup.svelte
+│   │   │   │   │   ├── orientation-video.svelte
+│   │   │   │   │   ├── osm-hours.svelte
+│   │   │   │   │   ├── partner-list.svelte
+│   │   │   │   │   ├── pc-button.svelte
+│   │   │   │   │   ├── service-search-keyword.svelte
+│   │   │   │   │   ├── service-search.svelte
+│   │   │   │   │   ├── services
+│   │   │   │   │   │   ├── contact-email.svelte
+│   │   │   │   │   │   ├── contact-phone.svelte
+│   │   │   │   │   │   ├── display
+│   │   │   │   │   │   │   ├── extended-service-key-informations.svelte
+│   │   │   │   │   │   │   └── service-contact.svelte
+│   │   │   │   │   │   ├── field-category.svelte
+│   │   │   │   │   │   ├── field-model.svelte
+│   │   │   │   │   │   ├── field-subcategory.svelte
+│   │   │   │   │   │   ├── fields-address.svelte
+│   │   │   │   │   │   ├── fields-contact.svelte
+│   │   │   │   │   │   ├── fields-duration.svelte
+│   │   │   │   │   │   ├── fields-place.svelte
+│   │   │   │   │   │   ├── fields-presentation.svelte
+│   │   │   │   │   │   ├── fields-publics.svelte
+│   │   │   │   │   │   ├── fields-typology.svelte
+│   │   │   │   │   │   ├── inclusion-num-switch.svelte
+│   │   │   │   │   │   ├── model-menu.svelte
+│   │   │   │   │   │   ├── service-state-update-select.svelte
+│   │   │   │   │   │   ├── set-as-updated-modal.svelte
+│   │   │   │   │   │   ├── synchronized-icon.svelte
+│   │   │   │   │   │   └── update-needed-icon.svelte
+│   │   │   │   │   ├── structure-card.svelte
+│   │   │   │   │   └── tally-popup.svelte
+│   │   │   │   ├── ui
+│   │   │   │   │   └── tooltip.svelte
+│   │   │   │   └── user
+│   │   │   │       ├── user-onboarding-form.svelte
+│   │   │   │       └── user-onboarding-modal.svelte
+│   │   │   ├── consts.ts
+│   │   │   ├── data
+│   │   │   │   ├── departments.json
+│   │   │   │   └── regions.json
+│   │   │   ├── env.ts
+│   │   │   ├── requests
+│   │   │   │   ├── admin.ts
+│   │   │   │   ├── ban.ts
+│   │   │   │   ├── consent.ts
+│   │   │   │   ├── emplois-orientation.ts
+│   │   │   │   ├── geo.ts
+│   │   │   │   ├── nexus.ts
+│   │   │   │   ├── saved-search.ts
+│   │   │   │   ├── services.ts
+│   │   │   │   ├── structures.ts
+│   │   │   │   └── upload.ts
+│   │   │   ├── types.ts
+│   │   │   ├── utils
+│   │   │   │   ├── api.ts
+│   │   │   │   ├── array.ts
+│   │   │   │   ├── auth.ts
+│   │   │   │   ├── cgu.ts
+│   │   │   │   ├── choice.ts
+│   │   │   │   ├── consent.svelte.ts
+│   │   │   │   ├── cookie.ts
+│   │   │   │   ├── current-structure.ts
+│   │   │   │   ├── date.ts
+│   │   │   │   ├── fetch-interceptor.ts
+│   │   │   │   ├── fetch-retry.ts
+│   │   │   │   ├── file.ts
+│   │   │   │   ├── forms.ts
+│   │   │   │   ├── logger.ts
+│   │   │   │   ├── matomo.ts
+│   │   │   │   ├── misc.ts
+│   │   │   │   ├── moderation.ts
+│   │   │   │   ├── nexus.ts
+│   │   │   │   ├── opening-hours
+│   │   │   │   │   ├── constants.ts
+│   │   │   │   │   ├── format.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── parse.ts
+│   │   │   │   │   └── serialize.ts
+│   │   │   │   ├── orientation-templates.ts
+│   │   │   │   ├── orientation.ts
+│   │   │   │   ├── partners.ts
+│   │   │   │   ├── preferences.ts
+│   │   │   │   ├── random.ts
+│   │   │   │   ├── search-area.ts
+│   │   │   │   ├── service-search-keyword.ts
+│   │   │   │   ├── service-search.ts
+│   │   │   │   ├── service-share-mailto.ts
+│   │   │   │   ├── service-update-notices.ts
+│   │   │   │   ├── service.ts
+│   │   │   │   ├── spreadsheet.ts
+│   │   │   │   ├── stats.ts
+│   │   │   │   ├── typeguards.ts
+│   │   │   │   └── user.ts
+│   │   │   └── validation
+│   │   │       ├── schema-utils.ts
+│   │   │       ├── schemas
+│   │   │       │   ├── dashboard.ts
+│   │   │       │   ├── service.ts
+│   │   │       │   └── structure.ts
+│   │   │       └── validation.ts
+│   │   ├── routes
+│   │   │   ├── (endpoints)
+│   │   │   │   ├── .well-known
+│   │   │   │   │   └── security.txt
+│   │   │   │   │       └── +server.ts
+│   │   │   │   ├── heap-snapshot
+│   │   │   │   │   └── +server.ts
+│   │   │   │   ├── ping
+│   │   │   │   │   └── +server.ts
+│   │   │   │   ├── robots.txt
+│   │   │   │   │   └── +server.ts
+│   │   │   │   ├── sitemap-services-[page].xml
+│   │   │   │   │   └── +server.ts
+│   │   │   │   ├── sitemap-structures-[page].xml
+│   │   │   │   │   └── +server.ts
+│   │   │   │   └── sitemap.xml
+│   │   │   │       └── +server.ts
+│   │   │   ├── (modeles-services)
+│   │   │   │   ├── _common
+│   │   │   │   │   ├── fields-documents.svelte
+│   │   │   │   │   ├── fields-inclusion-numerique.svelte
+│   │   │   │   │   ├── fields-modalities-beneficiary.svelte
+│   │   │   │   │   ├── fields-modalities-coach.svelte
+│   │   │   │   │   ├── fields-modalities.svelte
+│   │   │   │   │   ├── fields-perimeter.svelte
+│   │   │   │   │   ├── fields-periodicity.svelte
+│   │   │   │   │   ├── fields-structure.svelte
+│   │   │   │   │   └── modalities-order.ts
+│   │   │   │   ├── components
+│   │   │   │   │   └── service-body
+│   │   │   │   │       ├── prevent-fake-orientation-modal.svelte
+│   │   │   │   │       ├── service-body.svelte
+│   │   │   │   │       ├── service-individual.svelte
+│   │   │   │   │       ├── service-mobilisation.svelte
+│   │   │   │   │       └── service-presentation
+│   │   │   │   │           ├── components
+│   │   │   │   │           │   ├── service-list.svelte
+│   │   │   │   │           │   ├── service-section.svelte
+│   │   │   │   │           │   └── service-subsection.svelte
+│   │   │   │   │           ├── service-description.svelte
+│   │   │   │   │           ├── service-di-identification.svelte
+│   │   │   │   │           ├── service-documents.svelte
+│   │   │   │   │           ├── service-key-informations
+│   │   │   │   │           │   ├── service-duration.svelte
+│   │   │   │   │           │   ├── service-key-information-label.svelte
+│   │   │   │   │           │   ├── service-key-information-section.svelte
+│   │   │   │   │           │   └── service-key-informations.svelte
+│   │   │   │   │           ├── service-other-informations.svelte
+│   │   │   │   │           ├── service-presentation.svelte
+│   │   │   │   │           └── service-steps.svelte
+│   │   │   │   ├── modeles
+│   │   │   │   │   ├── [slug]
+│   │   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   │   ├── +page.ts
+│   │   │   │   │   │   ├── editer
+│   │   │   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   │   │   └── +page.ts
+│   │   │   │   │   │   └── model-header.svelte
+│   │   │   │   │   ├── creer
+│   │   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   │   └── +page.ts
+│   │   │   │   │   └── model-edition-form.svelte
+│   │   │   │   └── services
+│   │   │   │       ├── [slug]
+│   │   │   │       │   ├── +page.server.ts
+│   │   │   │       │   ├── +page.svelte
+│   │   │   │       │   ├── +page.ts
+│   │   │   │       │   ├── components
+│   │   │   │       │   │   └── service-structure-label.svelte
+│   │   │   │       │   ├── editer
+│   │   │   │       │   │   ├── +page.svelte
+│   │   │   │       │   │   ├── +page.ts
+│   │   │   │       │   │   └── notice-publication.svelte
+│   │   │   │       │   ├── orienter
+│   │   │   │       │   │   ├── +layout.ts
+│   │   │   │       │   │   ├── +page.svelte
+│   │   │   │       │   │   ├── +page.ts
+│   │   │   │       │   │   ├── contact-box.svelte
+│   │   │   │       │   │   ├── contact-info.svelte
+│   │   │   │       │   │   ├── demande
+│   │   │   │       │   │   │   ├── +page.svelte
+│   │   │   │       │   │   │   ├── +page.ts
+│   │   │   │       │   │   │   └── orientation-form.svelte
+│   │   │   │       │   │   ├── merci
+│   │   │   │       │   │   │   └── +page.svelte
+│   │   │   │       │   │   ├── moderation
+│   │   │   │       │   │   │   └── +page.svelte
+│   │   │   │       │   │   ├── orientation-layout.svelte
+│   │   │   │       │   │   ├── schema.ts
+│   │   │   │       │   │   ├── store.ts
+│   │   │   │       │   │   ├── teaser.svelte
+│   │   │   │       │   │   └── validation-form.svelte
+│   │   │   │       │   ├── service-action-button.svelte
+│   │   │   │       │   ├── service-action-buttons.svelte
+│   │   │   │       │   ├── service-feedback-button.svelte
+│   │   │   │       │   ├── service-feedback-modal.svelte
+│   │   │   │       │   ├── service-header.svelte
+│   │   │   │       │   ├── service-toolbar.svelte
+│   │   │   │       │   ├── service-update-buttons.svelte
+│   │   │   │       │   └── service-update-date.svelte
+│   │   │   │       ├── creer
+│   │   │   │       │   ├── +page.svelte
+│   │   │   │       │   └── +page.ts
+│   │   │   │       ├── document-upload-notice-modal.svelte
+│   │   │   │       └── service-edition-form.svelte
+│   │   │   ├── (static)
+│   │   │   │   ├── accessibilite
+│   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   └── +page.ts
+│   │   │   │   ├── cgu
+│   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   ├── +page.ts
+│   │   │   │   │   ├── cgu-20221213
+│   │   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   │   ├── +page.ts
+│   │   │   │   │   │   ├── content.md
+│   │   │   │   │   │   └── md
+│   │   │   │   │   │       └── +server.ts
+│   │   │   │   │   ├── cgu-20230515
+│   │   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   │   ├── +page.ts
+│   │   │   │   │   │   ├── content.md
+│   │   │   │   │   │   └── md
+│   │   │   │   │   │       └── +server.ts
+│   │   │   │   │   ├── cgu-20230720
+│   │   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   │   ├── +page.ts
+│   │   │   │   │   │   ├── content.md
+│   │   │   │   │   │   └── md
+│   │   │   │   │   │       └── +server.ts
+│   │   │   │   │   ├── cgu-20240506
+│   │   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   │   ├── +page.ts
+│   │   │   │   │   │   ├── content.md
+│   │   │   │   │   │   └── md
+│   │   │   │   │   │       └── +server.ts
+│   │   │   │   │   ├── cgu-20241212
+│   │   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   │   ├── +page.ts
+│   │   │   │   │   │   ├── content.md
+│   │   │   │   │   │   └── md
+│   │   │   │   │   │       └── +server.ts
+│   │   │   │   │   ├── cgu-20251103
+│   │   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   │   ├── +page.ts
+│   │   │   │   │   │   ├── content.md
+│   │   │   │   │   │   └── md
+│   │   │   │   │   │       └── +server.ts
+│   │   │   │   │   ├── cgu-20260701
+│   │   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   │   ├── +page.ts
+│   │   │   │   │   │   ├── content.md
+│   │   │   │   │   │   └── md
+│   │   │   │   │   │       └── +server.ts
+│   │   │   │   │   ├── content.md
+│   │   │   │   │   ├── md
+│   │   │   │   │   │   └── +server.ts
+│   │   │   │   │   ├── validation
+│   │   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   │   └── +page.ts
+│   │   │   │   │   └── version.ts
+│   │   │   │   ├── mentions-legales
+│   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   ├── +page.ts
+│   │   │   │   │   ├── content.md
+│   │   │   │   │   └── md
+│   │   │   │   │       └── +server.ts
+│   │   │   │   ├── nos-partenaires
+│   │   │   │   │   ├── +page.server.ts
+│   │   │   │   │   └── +page.svelte
+│   │   │   │   └── politique-de-confidentialite
+│   │   │   │       ├── +page.svelte
+│   │   │   │       ├── +page.ts
+│   │   │   │       ├── content.md
+│   │   │   │       └── md
+│   │   │   │           └── +server.ts
+│   │   │   ├── +error.svelte
+│   │   │   ├── +layout.svelte
+│   │   │   ├── +layout.ts
+│   │   │   ├── +page.server.ts
+│   │   │   ├── +page.svelte
+│   │   │   ├── +page.ts
+│   │   │   ├── _index
+│   │   │   │   ├── footer.svelte
+│   │   │   │   ├── header.svelte
+│   │   │   │   ├── menu-aide.svelte
+│   │   │   │   ├── menu-mes-structures.svelte
+│   │   │   │   ├── menu-mon-compte.svelte
+│   │   │   │   ├── menu-nexus
+│   │   │   │   │   ├── consts.ts
+│   │   │   │   │   ├── menu-inscription-base.svelte
+│   │   │   │   │   ├── menu-inscription-emplois.svelte
+│   │   │   │   │   ├── menu-inscription-proconnect.svelte
+│   │   │   │   │   ├── menu-mon-portail-service-item.svelte
+│   │   │   │   │   ├── menu-mon-portail.svelte
+│   │   │   │   │   └── menu-nexus.svelte
+│   │   │   │   ├── menu.svelte
+│   │   │   │   ├── skip-link.svelte
+│   │   │   │   ├── sub-menu-dropdown.svelte
+│   │   │   │   └── sub-menu.svelte
+│   │   │   ├── admin
+│   │   │   │   ├── +layout.ts
+│   │   │   │   ├── +page.svelte
+│   │   │   │   ├── +page.ts
+│   │   │   │   ├── copyable-text.svelte
+│   │   │   │   ├── email-line.svelte
+│   │   │   │   ├── google-search-link.svelte
+│   │   │   │   ├── history.svelte
+│   │   │   │   ├── info-line.svelte
+│   │   │   │   ├── linkedin-search-link.svelte
+│   │   │   │   ├── moderation
+│   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   └── +page.ts
+│   │   │   │   ├── moderation-button-menu.svelte
+│   │   │   │   ├── moderation-label.svelte
+│   │   │   │   ├── moderation-menu.svelte
+│   │   │   │   ├── services
+│   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   ├── +page.ts
+│   │   │   │   │   └── [slug]
+│   │   │   │   │       ├── +page.svelte
+│   │   │   │   │       └── +page.ts
+│   │   │   │   ├── small-link.svelte
+│   │   │   │   ├── structure-contacts.svelte
+│   │   │   │   ├── structures
+│   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   ├── +page.ts
+│   │   │   │   │   ├── [slug]
+│   │   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   │   └── +page.ts
+│   │   │   │   │   ├── creer
+│   │   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   │   └── +page.ts
+│   │   │   │   │   ├── department-list.svelte
+│   │   │   │   │   ├── filters.svelte
+│   │   │   │   │   ├── structure-modal.svelte
+│   │   │   │   │   ├── structures-filters.ts
+│   │   │   │   │   ├── structures-map.svelte
+│   │   │   │   │   ├── structures-table.svelte
+│   │   │   │   │   └── types.ts
+│   │   │   │   └── user-info.svelte
+│   │   │   ├── annuaire-collectivite
+│   │   │   │   └── +page.ts
+│   │   │   ├── api
+│   │   │   │   └── [...path]
+│   │   │   │       └── +server.ts
+│   │   │   ├── auth
+│   │   │   │   ├── +layout.ts
+│   │   │   │   ├── auth-layout.svelte
+│   │   │   │   ├── callback
+│   │   │   │   │   └── +server.ts
+│   │   │   │   ├── cgu-checkboxes.svelte
+│   │   │   │   ├── connexion
+│   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   ├── +page.ts
+│   │   │   │   │   └── send-magic-link.svelte
+│   │   │   │   ├── invitation
+│   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   └── +page.ts
+│   │   │   │   ├── logout
+│   │   │   │   │   └── +server.ts
+│   │   │   │   ├── pc-logout
+│   │   │   │   │   └── +page.ts
+│   │   │   │   ├── rattachement
+│   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   └── +page.ts
+│   │   │   │   └── utils.ts
+│   │   │   ├── favoris
+│   │   │   │   ├── +page.svelte
+│   │   │   │   ├── +page.ts
+│   │   │   │   └── bookmark-card.svelte
+│   │   │   ├── mes-alertes
+│   │   │   │   ├── +page.svelte
+│   │   │   │   ├── +page.ts
+│   │   │   │   ├── [searchId]
+│   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   └── +page.ts
+│   │   │   │   ├── description.svelte
+│   │   │   │   ├── saved-search-card.svelte
+│   │   │   │   └── title.svelte
+│   │   │   ├── mon-compte
+│   │   │   │   ├── +layout.svelte
+│   │   │   │   ├── +layout.ts
+│   │   │   │   ├── +page.svelte
+│   │   │   │   ├── +page.ts
+│   │   │   │   ├── header.svelte
+│   │   │   │   └── notif-improve.svelte
+│   │   │   ├── nexus
+│   │   │   │   └── auto-login
+│   │   │   │       └── +page.server.ts
+│   │   │   ├── orientations
+│   │   │   │   ├── +page.svelte
+│   │   │   │   ├── +page.ts
+│   │   │   │   ├── accept-orientation-modal.svelte
+│   │   │   │   ├── confirmation-bloc.svelte
+│   │   │   │   ├── contact-beneficiary-modal.svelte
+│   │   │   │   ├── contact-list-item.svelte
+│   │   │   │   ├── contact-prescriber-modal.svelte
+│   │   │   │   ├── deny-orientation-modal.svelte
+│   │   │   │   ├── handle-orientation.svelte
+│   │   │   │   ├── link-expired.svelte
+│   │   │   │   ├── sub-title.svelte
+│   │   │   │   └── suivi
+│   │   │   │       ├── +layout.svelte
+│   │   │   │       ├── +layout.ts
+│   │   │   │       ├── +page.svelte
+│   │   │   │       ├── export-warning-modal.svelte
+│   │   │   │       ├── orientation-export.ts
+│   │   │   │       ├── orientations-export-card.svelte
+│   │   │   │       ├── orientations-stats-display.svelte
+│   │   │   │       └── state.svelte.ts
+│   │   │   ├── recherche
+│   │   │   │   ├── +page.svelte
+│   │   │   │   ├── +page.ts
+│   │   │   │   ├── collectivity-directory-banner.svelte
+│   │   │   │   ├── dora-deployment-notice.svelte
+│   │   │   │   ├── map-view-button.svelte
+│   │   │   │   ├── mes-aides-dialog.svelte
+│   │   │   │   ├── result-count.svelte
+│   │   │   │   ├── result-filter.svelte
+│   │   │   │   ├── result-filters.svelte
+│   │   │   │   ├── result-map.svelte
+│   │   │   │   ├── search-result.svelte
+│   │   │   │   └── search-results.svelte
+│   │   │   ├── recherche-mots-cles
+│   │   │   │   ├── +page.svelte
+│   │   │   │   ├── +page.ts
+│   │   │   │   ├── add-service.svelte
+│   │   │   │   ├── map-view-button.svelte
+│   │   │   │   ├── result-filters.svelte
+│   │   │   │   ├── result-map.svelte
+│   │   │   │   ├── search-result-card.svelte
+│   │   │   │   └── search-results.svelte
+│   │   │   ├── recherche-textuelle
+│   │   │   │   ├── +page.svelte
+│   │   │   │   └── +page.ts
+│   │   │   ├── stats
+│   │   │   │   ├── +page.svelte
+│   │   │   │   └── +page.ts
+│   │   │   └── structures
+│   │   │       └── [slug]
+│   │   │           ├── +layout.svelte
+│   │   │           ├── +layout.ts
+│   │   │           ├── +page.svelte
+│   │   │           ├── +page.ts
+│   │   │           ├── admin-notice.svelte
+│   │   │           ├── antennes
+│   │   │           │   ├── +page.svelte
+│   │   │           │   ├── +page.ts
+│   │   │           │   ├── list.svelte
+│   │   │           │   └── new-branch-modal.svelte
+│   │   │           ├── collaborateurs
+│   │   │           │   ├── +page.svelte
+│   │   │           │   ├── +page.ts
+│   │   │           │   ├── member-invited.svelte
+│   │   │           │   ├── member-standard.svelte
+│   │   │           │   ├── member-to-confirm.svelte
+│   │   │           │   ├── member.svelte
+│   │   │           │   ├── modal-add-user.svelte
+│   │   │           │   ├── modal-change-user.svelte
+│   │   │           │   ├── modal-confirmation.svelte
+│   │   │           │   └── no-member-notice.svelte
+│   │   │           ├── count.svelte
+│   │   │           ├── data-inclusion-notice.svelte
+│   │   │           ├── editer
+│   │   │           │   ├── +page.svelte
+│   │   │           │   ├── +page.ts
+│   │   │           │   ├── structure-edition-fields.svelte
+│   │   │           │   └── structure-edition-form.svelte
+│   │   │           ├── empty-notice.svelte
+│   │   │           ├── header.svelte
+│   │   │           ├── informations.svelte
+│   │   │           ├── modeles
+│   │   │           │   ├── +page.svelte
+│   │   │           │   ├── +page.ts
+│   │   │           │   ├── list.svelte
+│   │   │           │   ├── model-button-menu.svelte
+│   │   │           │   ├── model-card.svelte
+│   │   │           │   └── no-model-notice.svelte
+│   │   │           ├── pending-notice.svelte
+│   │   │           ├── quick-start.svelte
+│   │   │           ├── quick-start.ts
+│   │   │           ├── services
+│   │   │           │   ├── +page.svelte
+│   │   │           │   ├── +page.ts
+│   │   │           │   ├── list.svelte
+│   │   │           │   ├── no-service-notice.svelte
+│   │   │           │   ├── publication
+│   │   │           │   │   └── +page.svelte
+│   │   │           │   ├── service-button-menu.svelte
+│   │   │           │   ├── service-card.svelte
+│   │   │           │   ├── service-menu.svelte
+│   │   │           │   ├── services-to-sync-with-model-notice.svelte
+│   │   │           │   └── services-to-update-notice.svelte
+│   │   │           ├── store.ts
+│   │   │           └── tabs-links.svelte
+│   │   └── tests
+│   │       ├── markdownToHTML.test.ts
+│   │       ├── routes
+│   │       │   └── api
+│   │       │       └── proxy.test.ts
+│   │       └── utils
+│   │           ├── date
+│   │           │   └── computeRelativeDateLabel.test.ts
+│   │           ├── fetch
+│   │           │   └── fetchWithRetry.test.ts
+│   │           ├── misc
+│   │           │   └── formatPhoneNumber.test.ts
+│   │           ├── opening-hours
+│   │           │   ├── format.test.ts
+│   │           │   ├── parse.test.ts
+│   │           │   └── serialize.test.ts
+│   │           ├── orientation
+│   │           │   └── orientationContainsTestWords.test.ts
+│   │           ├── random
+│   │           │   └── getRandomIntBetween.test.ts
+│   │           └── search-area
+│   │               └── search.test.js
+│   ├── static
+│   │   ├── emails
+│   │   │   ├── illu-maj.png
+│   │   │   ├── illu-orientation.png
+│   │   │   ├── illu-saisir.png
+│   │   │   ├── illu-saved-search-notification.png
+│   │   │   ├── logo-dora-email-new.png
+│   │   │   └── logo-dora-mini.png
+│   │   ├── favicon.v2.ico
+│   │   ├── favicon.v2.png
+│   │   ├── favicon.v2.svg
+│   │   └── og-banner-v1.png
+│   ├── svelte.config.js
+│   ├── tsconfig.json
+│   └── vite.config.ts
+├── mailpit
+│   ├── .python-version
+│   ├── Procfile
+│   ├── bin
+│   │   └── post_compile
+│   └── requirements.txt
+└── tools
+    ├── create-review-apps.sh
+    └── release.sh
+274 directories, 1162 files

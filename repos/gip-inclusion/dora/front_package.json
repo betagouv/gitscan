@@ -1,0 +1,101 @@
+{
+  "name": "dora-front",
+  "version": "0.0.20",
+  "engines": {
+    "npm": ">=11.6.2",
+    "node": "24.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/betagouv/dora-front"
+  },
+  "scripts": {
+    "dev": "vite dev --port 3000 --strictPort",
+    "build": "vite build",
+    "start": "node build",
+    "preview": "vite preview --port 3000 --strictPort",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --output human-verbose --threshold error",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "format": "prettier --write . && svgo --pretty --recursive --folder src/lib/assets",
+    "format:check": "prettier --check .",
+    "svg-optimize": "svgo --pretty -r -f ./src/lib/assets",
+    "prepare": "husky",
+    "security-scan": "ggshield secret scan path -r . -y"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.6",
+    "@eslint/js": "^10.0.1",
+    "@iframe-resizer/parent": "^5.5.9",
+    "@nazka/map-gl-js-spiderfy": "^2.0.0",
+    "@sveltejs/adapter-node": "^5.5.7",
+    "@sveltejs/kit": "^2.70.0",
+    "@sveltejs/vite-plugin-svelte": "^7.2.0",
+    "@tailwindcss/typography": "^0.5.20",
+    "@tailwindcss/vite": "^4.3.3",
+    "@tiptap/core": "3.28.0",
+    "@tiptap/extension-link": "3.28.0",
+    "@tiptap/extension-placeholder": "3.28.0",
+    "@tiptap/starter-kit": "3.28.0",
+    "@types/iframe-resizer": "^4.0.0",
+    "@types/insane": "^1.0.0",
+    "@types/js-cookie": "^3.0.6",
+    "@types/showdown": "^2.0.6",
+    "@typescript-eslint/eslint-plugin": "^8.64.0",
+    "@typescript-eslint/parser": "^8.56.1",
+    "@zerodevx/svelte-toast": "^0.9.6",
+    "bits-ui": "^2.18.1",
+    "dayjs": "^1.11.21",
+    "eslint": "^10.7.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-svelte": "^3.20.0",
+    "globals": "^17.7.0",
+    "hexoid": "^2.0.0",
+    "husky": "^9.1.7",
+    "insane": "^2.6.2",
+    "js-cookie": "^3.0.8",
+    "lint-staged": "^17.0.8",
+    "maplibre-gl": "^5.24.0",
+    "opening_hours": "^3.14.0",
+    "prettier": "^3.9.5",
+    "prettier-plugin-svelte": "^4.1.1",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "remixicon": "^4.9.1",
+    "showdown": "^2.1.0",
+    "svelte": "^5.55.4",
+    "svelte-check": "^4.7.3",
+    "svelte-portal": "^2.2.1",
+    "svelte-remix": "^3.0.1",
+    "sveltekit-rate-limiter": "^0.7.0",
+    "svgo": "^4.0.2",
+    "tailwindcss": "^4.2.1",
+    "tslib": "^2.8.1",
+    "typescript": "^6.0.3",
+    "vite": "^8.1.5",
+    "vitest": "^4.1.10",
+    "wicg-inert": "^3.1.3",
+    "write-excel-file": "^4.1.1"
+  },
+  "overrides": {
+    "cookie": "0.7.2"
+  },
+  "type": "module",
+  "lint-staged": {
+    "*.{js,ts,svelte}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{json,css,html,md}": [
+      "prettier --write"
+    ],
+    "*": [
+      "ggshield secret scan pre-commit"
+    ]
+  },
+  "dependencies": {
+    "@sentry/sveltekit": "^10.66.0"
+  }
+}
