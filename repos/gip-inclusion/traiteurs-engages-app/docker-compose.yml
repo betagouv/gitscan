@@ -1,0 +1,124 @@
+services:
+  app:
+    build: .
+    # HOST_BIND defaults to 0.0.0.0 so the app is reachable from phones on
+    # the same wifi during local dev. Override via env if needed.
+    ports:
+      - "${HOST_BIND:-0.0.0.0}:${HOST_PORT:-8000}:8000"
+    environment:
+      - DATABASE_URL=postgresql://traiteurs:traiteurs@db:5432/traiteurs
+      # SECRET_KEY must be set via .env or shell env. App fails to boot if missing or <32 chars.
+      - SECRET_KEY=${SECRET_KEY:-}
+      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY:-}
+      - STRIPE_PUBLISHABLE_KEY=${STRIPE_PUBLISHABLE_KEY:-}
+      - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET:-}
+      - ADMIN_EMAIL=${ADMIN_EMAIL:-}
+      - ADMIN_INITIAL_PASSWORD=${ADMIN_INITIAL_PASSWORD:-}
+      - ENABLE_DEMO_SEED=${ENABLE_DEMO_SEED:-}
+      - TRUST_PROXY_HEADERS=${TRUST_PROXY_HEADERS:-}
+      - SECURE_COOKIES=${SECURE_COOKIES:-}
+      - REDIS_URL=redis://redis:6379/0
+      - BREVO_API_KEY=${BREVO_API_KEY:-}
+      - MAIL_FROM_EMAIL=${MAIL_FROM_EMAIL:-}
+      - MAIL_FROM_NAME=${MAIL_FROM_NAME:-}
+      - BASE_URL=${BASE_URL:-}
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    # Resource caps and process hardening (P3.1):
+    # - mem_limit prevents a runaway worker (or DoS) from OOM-killing the
+    #   host or starving Postgres in the same compose project.
+    # - cpus throttles the same worker before it monopolises every core.
+    # - no-new-privileges blocks setuid/setgid escalation inside the
+    #   container even if a CVE in a Python C-extension lets attackers
+    #   exec a binary.
+    mem_limit: 1g
+    mem_reservation: 256m
+    cpus: 2.0
+    pids_limit: 200
+    security_opt:
+      - no-new-privileges:true
+    # Runtime uploads (logos, profile pictures, attachments) live on a
+    # named volume so they survive container rebuilds during local dev.
+    # Without this, files written to /app/static/uploads are stranded in
+    # the container's writable layer and lost on every rebuild. (Prod runs
+    # on Scalingo and writes uploads to S3 instead — see services/uploads.py.)
+    volumes:
+      - app_uploads:/app/static/uploads
+
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: traiteurs
+      POSTGRES_PASSWORD: traiteurs
+      POSTGRES_DB: traiteurs
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U traiteurs"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    # Same hardening on Postgres: caps + no privilege escalation.
+    # 2 GB / 2 CPUs is generous for the dataset size we expect; adjust if
+    # the dashboard reports memory pressure under real production load.
+    mem_limit: 2g
+    mem_reservation: 512m
+    cpus: 2.0
+    security_opt:
+      - no-new-privileges:true
+
+  # Dramatiq broker. Persistence disabled (--save "") because every queued
+  # job is also reflected as Order.status == invoicing in Postgres — Redis
+  # losing state on restart only means the retry CLI picks up unfinished
+  # phase-2 work. AOF would just duplicate that source of truth.
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    mem_limit: 256m
+    cpus: 0.5
+    security_opt:
+      - no-new-privileges:true
+
+  # Background worker that consumes the dramatiq queues. Same image as the
+  # web app so they share code and dependencies; only the entrypoint differs.
+  worker:
+    build: .
+    # Disable the inherited HEALTHCHECK (defined in the Dockerfile for the
+    # web service): it hits /health on localhost:8000 which the worker
+    # doesn't serve, leaving the container forever in `health: starting`.
+    healthcheck:
+      disable: true
+    command: ["dramatiq", "services.billing_tasks", "services.email", "--processes", "1", "--threads", "4"]
+    environment:
+      - DATABASE_URL=postgresql://traiteurs:traiteurs@db:5432/traiteurs
+      - SECRET_KEY=${SECRET_KEY:-}
+      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY:-}
+      - STRIPE_PUBLISHABLE_KEY=${STRIPE_PUBLISHABLE_KEY:-}
+      - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET:-}
+      - REDIS_URL=redis://redis:6379/0
+      - BREVO_API_KEY=${BREVO_API_KEY:-}
+      - MAIL_FROM_EMAIL=${MAIL_FROM_EMAIL:-}
+      - MAIL_FROM_NAME=${MAIL_FROM_NAME:-}
+      - BASE_URL=${BASE_URL:-}
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    mem_limit: 512m
+    mem_reservation: 128m
+    cpus: 1.0
+    security_opt:
+      - no-new-privileges:true
+
+volumes:
+  pgdata:
+  app_uploads:

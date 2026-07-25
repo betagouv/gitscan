@@ -1,0 +1,370 @@
+.
+├── .dockerignore
+├── .env.example
+├── .gitattributes
+├── .github
+│   └── workflows
+│       └── ci.yml
+├── .gitignore
+├── .gitleaksignore
+├── .specify
+│   ├── memory
+│   │   └── constitution.md
+│   └── templates
+│       ├── plan-template.md
+│       ├── spec-template.md
+│       └── tasks-template.md
+├── .trivyignore
+├── CLAUDE.md
+├── Dockerfile
+├── Procfile
+├── README.md
+├── SCALINGO.md
+├── alembic
+│   ├── README
+│   ├── env.py
+│   ├── script.py.mako
+│   └── versions
+│       ├── 11a3c9fbf7ee_add_caterer_reviews.py
+│       ├── 1e6220186827_quote_lines_table.py
+│       ├── 233107e88e63_baseline_schema.py
+│       ├── 8b9c44e016c3_commission_invoice_number_sequence.py
+│       ├── a1e3c9f2d7b8_stripe_events_dedup_table.py
+│       ├── a1f3e9c2b4d6_users_password_changed_at.py
+│       ├── a4d62b15c899_drop_casher_columns.py
+│       ├── a6f3b8e2d4c7_align_meal_types_with_offerings.py
+│       ├── a7b3c1d2e4f5_add_fk_indexes.py
+│       ├── a92e1c5d4f8b_add_password_reset_tokens.py
+│       ├── b1d4f7e9a3c2_drop_oeth_and_budget_annual.py
+│       ├── b2f7d4a9c1e3_payments_stripe_invoice_id_unique.py
+│       ├── b3e84f217a5d_company_employee_invite_token.py
+│       ├── b7a4d2e6c1f9_rename_password_changed_at_to_.py
+│       ├── b8f1c3d6e9a2_quote_versioning.py
+│       ├── c0ffee_merge_heads.py
+│       ├── c1ab2d3e4f56_caterer_catalog_fields.py
+│       ├── c4d2e8f7a1b9_hash_tokens_at_rest.py
+│       ├── c5a8f3b2e1d7_caterer_dietary_bio_drop_vegan.py
+│       ├── c9e8d7a4f1b2_drop_valorisable_agefiph.py
+│       ├── d28a1b4e5f3c_terms_versions_and_acceptance.py
+│       ├── d3a9f1b7c2e8_message_attachments.py
+│       ├── d4a3f2e1c5b9_audit_logs_table.py
+│       ├── d6b9e4c3a2f8_drop_quote_requests_vegan.py
+│       ├── dbba95b663c0_drop_quote_details_json_column.py
+│       ├── e2c7a9b4f1d3_quote_request_cancellation_reason.py
+│       ├── e5b1c2a4d8f9_add_service_setup_time_and_details.py
+│       ├── e7c8a2f4b6d1_quote_requests_drinks_column.py
+│       ├── e7d9c4a1b203_caterer_service_offering_specs.py
+│       ├── f3a7b2c1d9e4_add_order_invoice_attempt.py
+│       ├── f4c8b9a3d7e5_quote_request_submission_token.py
+│       ├── f4e5d6c7b8a9_merge_attachments_and_cancellation.py
+│       ├── f9c8e2b53741_drop_caterers_specialties.py
+│       └── ff23d8dac807_add_event_start_end_time_to_quote_.py
+├── alembic.ini
+├── app.py
+├── blueprints
+│   ├── __init__.py
+│   ├── _messages.py
+│   ├── _notifications.py
+│   ├── admin.py
+│   ├── api.py
+│   ├── auth.py
+│   ├── caterer
+│   │   ├── __init__.py
+│   │   ├── dashboard.py
+│   │   ├── orders.py
+│   │   ├── profile.py
+│   │   ├── requests.py
+│   │   └── stripe_routes.py
+│   ├── client
+│   │   ├── __init__.py
+│   │   ├── _helpers.py
+│   │   ├── dashboard.py
+│   │   ├── orders.py
+│   │   ├── profile.py
+│   │   ├── requests.py
+│   │   └── team.py
+│   ├── content.py
+│   ├── devtools.py
+│   ├── legal.py
+│   ├── middleware.py
+│   ├── scoping.py
+│   └── uploads.py
+├── cli.py
+├── config.py
+├── database.py
+├── docker-compose.dev.yml
+├── docker-compose.yml
+├── docs
+│   ├── frontend-rules.md
+│   ├── observability.md
+│   └── superpowers
+│       ├── plans
+│       │   └── 2026-04-27-style-tag-removal.md
+│       └── specs
+│           └── 2026-04-27-style-tag-removal-design.md
+├── entrypoint.sh
+├── extensions.py
+├── forms
+│   ├── __init__.py
+│   ├── caterer.py
+│   └── client.py
+├── gunicorn.conf.py
+├── init_db.py
+├── logging_config.py
+├── models.py
+├── pytest.ini
+├── requirements.txt
+├── ruff.toml
+├── runtime.txt
+├── scalingo.json
+├── scripts
+│   ├── check_seed_residue.py
+│   └── demo_caterer_statuses.py
+├── seed_data.py
+├── services
+│   ├── __init__.py
+│   ├── account.py
+│   ├── audit.py
+│   ├── billing_tasks.py
+│   ├── email.py
+│   ├── email_triggers.py
+│   ├── geocoding.py
+│   ├── impact.py
+│   ├── json_schemas.py
+│   ├── matching.py
+│   ├── messagerie.py
+│   ├── notifications.py
+│   ├── password_reset.py
+│   ├── quote_pdf.py
+│   ├── quotes.py
+│   ├── reviews.py
+│   ├── slugs.py
+│   ├── stripe_service.py
+│   ├── terms.py
+│   ├── uploads.py
+│   ├── user_admin.py
+│   └── workflow.py
+├── static
+│   ├── css
+│   │   ├── app.css
+│   │   └── tailwind.css
+│   ├── fonts
+│   │   └── Marianne
+│   │       ├── Marianne-Bold.woff2
+│   │       ├── Marianne-Light.woff2
+│   │       ├── Marianne-Medium.woff2
+│   │       └── Marianne-Regular.woff2
+│   ├── img
+│   │   ├── favicon.ico
+│   │   ├── favicon.svg
+│   │   ├── landing
+│   │   │   ├── Hero_image.png
+│   │   │   ├── arrow-1.png
+│   │   │   ├── arrow-2.png
+│   │   │   ├── chemin-desktop.svg
+│   │   │   ├── deco-brush-strokes.png
+│   │   │   ├── logo-plateforme-inclusion.png
+│   │   │   ├── logo-republique.png
+│   │   │   ├── logo-traiteurs-engages-white.png
+│   │   │   ├── logo-traiteurs-engages-white.svg
+│   │   │   ├── logo-traiteurs-engages.png
+│   │   │   ├── logo-traiteurs-engages.svg
+│   │   │   ├── screenshots
+│   │   │   │   ├── screenshot-catalogue.png
+│   │   │   │   ├── screenshot-demande.png
+│   │   │   │   └── screenshot-messagerie.png
+│   │   │   ├── shape-butterfly.png
+│   │   │   ├── shape-mushroom.png
+│   │   │   ├── shape-scallop-pink.png
+│   │   │   └── shape-star-pink.png
+│   │   └── logo.svg
+│   └── js
+│       ├── address-autocomplete.js
+│       ├── admin-request-budget.js
+│       ├── app.js
+│       ├── caterer-profile.js
+│       ├── client-quote-pdf-modal.js
+│       ├── history-back.js
+│       ├── login.js
+│       ├── matomo-tag-manager.js
+│       ├── messages.js
+│       ├── new-request-modal.js
+│       ├── pdf-preview-modal.js
+│       ├── photo-lightbox.js
+│       ├── quote-editor.js
+│       ├── review-stars-input.js
+│       ├── send-message-modal.js
+│       ├── signup-invite.js
+│       ├── signup.js
+│       ├── stats.js
+│       ├── vendor
+│       │   ├── chart.umd.min.js
+│       │   └── lucide.min.js
+│       └── wizard.js
+├── templates
+│   ├── admin
+│   │   ├── caterers
+│   │   │   ├── detail.html
+│   │   │   ├── edit.html
+│   │   │   └── list.html
+│   │   ├── companies
+│   │   │   ├── detail.html
+│   │   │   ├── edit.html
+│   │   │   └── list.html
+│   │   ├── dashboard.html
+│   │   ├── orders
+│   │   │   ├── detail.html
+│   │   │   └── list.html
+│   │   ├── payments.html
+│   │   ├── profile.html
+│   │   ├── qualification
+│   │   │   ├── detail.html
+│   │   │   ├── edit.html
+│   │   │   └── list.html
+│   │   ├── requests
+│   │   │   └── list.html
+│   │   ├── stats.html
+│   │   └── users
+│   │       └── list.html
+│   ├── auth
+│   │   ├── change_password.html
+│   │   ├── forgot_password.html
+│   │   ├── forgot_password_sent.html
+│   │   ├── login.html
+│   │   ├── reset_password.html
+│   │   ├── signup.html
+│   │   ├── signup_invite.html
+│   │   └── signup_invite_invalid.html
+│   ├── base.html
+│   ├── caterer
+│   │   ├── account.html
+│   │   ├── dashboard.html
+│   │   ├── orders
+│   │   │   ├── detail.html
+│   │   │   └── list.html
+│   │   ├── pending.html
+│   │   ├── profile.html
+│   │   ├── quotes
+│   │   │   ├── _pdf_preview.html
+│   │   │   ├── editor.html
+│   │   │   └── pdf_document.html
+│   │   ├── requests
+│   │   │   ├── detail.html
+│   │   │   └── list.html
+│   │   └── stripe.html
+│   ├── client
+│   │   ├── _new_request_modal.html
+│   │   ├── caterer_detail.html
+│   │   ├── dashboard.html
+│   │   ├── orders
+│   │   │   ├── detail.html
+│   │   │   └── list.html
+│   │   ├── profile.html
+│   │   ├── requests
+│   │   │   ├── detail.html
+│   │   │   ├── edit.html
+│   │   │   ├── list.html
+│   │   │   └── new.html
+│   │   ├── search.html
+│   │   ├── settings.html
+│   │   └── team.html
+│   ├── components
+│   │   ├── _order_quote_preview_modal.html
+│   │   ├── confirm_dialog.html
+│   │   ├── dev_account_switcher.html
+│   │   ├── flash_messages.html
+│   │   ├── list_header.html
+│   │   ├── notifications_modal.html
+│   │   ├── public_footer.html
+│   │   ├── public_header.html
+│   │   ├── rating_stars.html
+│   │   ├── send_message_modal.html
+│   │   ├── status_badge.html
+│   │   ├── structure_type_badge.html
+│   │   └── ui.html
+│   ├── content
+│   │   ├── _base.html
+│   │   ├── traiteur_cocktail_soiree_entreprise_paris.html
+│   │   ├── traiteur_handicap_entreprise_paris.html
+│   │   ├── traiteur_seminaire_entreprise_paris.html
+│   │   └── traiteur_solidaire_paris.html
+│   ├── emails
+│   │   ├── message_received.html
+│   │   ├── message_received.txt
+│   │   ├── order_confirmed.html
+│   │   ├── order_confirmed.txt
+│   │   ├── password_reset.html
+│   │   ├── password_reset.txt
+│   │   ├── quote_received.html
+│   │   ├── quote_received.txt
+│   │   ├── quote_request_cancelled.html
+│   │   ├── quote_request_cancelled.txt
+│   │   ├── quote_request_received.html
+│   │   ├── quote_request_received.txt
+│   │   ├── quote_request_updated.html
+│   │   ├── quote_request_updated.txt
+│   │   ├── welcome.html
+│   │   └── welcome.txt
+│   ├── errors
+│   │   ├── 400.html
+│   │   ├── 404.html
+│   │   ├── 429.html
+│   │   └── 500.html
+│   ├── landing.html
+│   ├── legal
+│   │   └── cgs_v1.html
+│   ├── messagerie
+│   │   ├── _panes.html
+│   │   └── page.html
+│   └── notifications
+│       └── list.html
+└── tests
+    ├── __init__.py
+    ├── conftest.py
+    ├── test_accept_quote_guards.py
+    ├── test_account_profile.py
+    ├── test_admin_account_edit.py
+    ├── test_admin_messagerie.py
+    ├── test_admin_quote_request_cancel.py
+    ├── test_admin_quote_request_edit.py
+    ├── test_admin_quote_request_views.py
+    ├── test_admin_requests_list.py
+    ├── test_admin_user_management.py
+    ├── test_auth_lifecycle_security.py
+    ├── test_caterer_requests.py
+    ├── test_change_password.py
+    ├── test_content_articles.py
+    ├── test_devtools.py
+    ├── test_drinks_persistence.py
+    ├── test_email_triggers.py
+    ├── test_fk_scope.py
+    ├── test_impact.py
+    ├── test_infra_headers_security.py
+    ├── test_limiter_storage.py
+    ├── test_login_timing.py
+    ├── test_matching.py
+    ├── test_matomo.py
+    ├── test_membership_gate.py
+    ├── test_message_attachments.py
+    ├── test_notifications.py
+    ├── test_observability.py
+    ├── test_password_reset.py
+    ├── test_payment_math.py
+    ├── test_payment_unique.py
+    ├── test_quote_calculations.py
+    ├── test_quote_edit_guards.py
+    ├── test_quote_line_bounds.py
+    ├── test_quote_pdf.py
+    ├── test_quote_request_double_submit.py
+    ├── test_quote_request_form_errors.py
+    ├── test_quote_revision.py
+    ├── test_reviews.py
+    ├── test_seed_data_guard.py
+    ├── test_signup_terms.py
+    ├── test_smoke.py
+    ├── test_stripe_webhook.py
+    ├── test_team_invite_flow.py
+    ├── test_ui_macros.py
+    ├── test_uploads.py
+    └── test_workflow.py
+51 directories, 318 files
