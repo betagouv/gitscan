@@ -1,0 +1,311 @@
+.
+├── .dockerignore
+├── .editorconfig
+├── .envrc
+├── .github
+│   ├── dependabot.yml
+│   ├── pull_request_template.md
+│   └── workflows
+│       ├── ci.yml
+│       ├── git.yml
+│       ├── notify-slack.yml
+│       └── require-labels.yml
+├── .gitignore
+├── Makefile
+├── README.md
+├── config
+│   ├── __init__.py
+│   ├── settings
+│   │   ├── __init__.py
+│   │   ├── base.py
+│   │   ├── dev.py
+│   │   └── test.py
+│   ├── urls.py
+│   └── wsgi.py
+├── docker-compose.yml
+├── manage.py
+├── pilotage
+│   ├── __init__.py
+│   ├── api
+│   │   ├── __init__.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   ├── dashboards
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_dashboard_new.py
+│   │   │   ├── 0003_alter_dashboard_new.py
+│   │   │   ├── 0004_remove_charfield_max_length.py
+│   │   │   ├── 0005_make_slug_unique.py
+│   │   │   ├── 0006_category_display_order_dashboard_embed_url.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── tests.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   ├── fixtures
+│   │   ├── dashboard.json
+│   │   └── group.json
+│   ├── itoutils
+│   │   ├── __init__.py
+│   │   ├── algorithms.py
+│   │   ├── departments.py
+│   │   ├── forms.py
+│   │   ├── logging.py
+│   │   ├── metabase.py
+│   │   ├── tests.py
+│   │   └── validators.py
+│   ├── pilotage
+│   │   ├── __init__.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   ├── static
+│   │   ├── files
+│   │   │   └── aide-comment-utiliser-les-filtres.gif
+│   │   ├── images
+│   │   │   ├── favicon.ico
+│   │   │   ├── logo-meta-pilotage.png
+│   │   │   ├── metabase
+│   │   │   │   ├── explication_onglets.png
+│   │   │   │   └── ico-download-cloud-fill.svg
+│   │   │   └── pilotage
+│   │   │       ├── home
+│   │   │       │   ├── accompagne-01.png
+│   │   │       │   ├── accompagne-02.png
+│   │   │       │   ├── accompagne-03.png
+│   │   │       │   ├── accompagne-04.png
+│   │   │       │   ├── comment-01.jpg
+│   │   │       │   ├── comment-02.jpg
+│   │   │       │   ├── comment-03.jpg
+│   │   │       │   ├── illustration-01.png
+│   │   │       │   ├── illustration-02.png
+│   │   │       │   ├── missions-1.png
+│   │   │       │   ├── missions-2.png
+│   │   │       │   ├── missions-3.png
+│   │   │       │   ├── outils-1-reunion.png
+│   │   │       │   ├── outils-2-human-cooperation.png
+│   │   │       │   ├── outils-3-data-visualization.png
+│   │   │       │   ├── outils-4-document-download.png
+│   │   │       │   ├── outils-5-parcours.png
+│   │   │       │   └── outils-6-rapport-IAE.png
+│   │   │       └── tableaux-visuel-01.svg
+│   │   ├── javascripts
+│   │   │   └── admin.js
+│   │   ├── stylesheets
+│   │   │   ├── admin.css
+│   │   │   ├── itou_pilotage.scss
+│   │   │   ├── layouts
+│   │   │   │   └── _page.scss
+│   │   │   └── sections
+│   │   │       ├── _embed.scss
+│   │   │       ├── _main.scss
+│   │   │       └── _tableaux.scss
+│   │   └── vendor
+│   │       ├── easymde
+│   │       │   ├── easymde.min.css
+│   │       │   └── easymde.min.js
+│   │       ├── iframe-resizer
+│   │       │   ├── LICENSE
+│   │       │   ├── iframeResizer.contentWindow.map
+│   │       │   └── iframeResizer.contentWindow.min.js
+│   │       └── theme-inclusion
+│   │           ├── files
+│   │           │   └── animation-1701341946475.json
+│   │           ├── fonts
+│   │           │   ├── coveredbyyourgrace
+│   │           │   │   ├── coveredbyyourgrace.woff
+│   │           │   │   └── coveredbyyourgrace.woff2
+│   │           │   ├── marianne
+│   │           │   │   ├── Marianne-Bold.woff
+│   │           │   │   ├── Marianne-Bold.woff2
+│   │           │   │   ├── Marianne-Bold_Italic.woff
+│   │           │   │   ├── Marianne-Bold_Italic.woff2
+│   │           │   │   ├── Marianne-ExtraBold.woff
+│   │           │   │   ├── Marianne-ExtraBold.woff2
+│   │           │   │   ├── Marianne-Light.woff
+│   │           │   │   ├── Marianne-Light.woff2
+│   │           │   │   ├── Marianne-Light_Italic.woff
+│   │           │   │   ├── Marianne-Light_Italic.woff2
+│   │           │   │   ├── Marianne-Medium.woff
+│   │           │   │   ├── Marianne-Medium.woff2
+│   │           │   │   ├── Marianne-Medium_Italic.woff
+│   │           │   │   ├── Marianne-Medium_Italic.woff2
+│   │           │   │   ├── Marianne-Regular.woff
+│   │           │   │   ├── Marianne-Regular.woff2
+│   │           │   │   ├── Marianne-Regular_Italic.woff
+│   │           │   │   └── Marianne-Regular_Italic.woff2
+│   │           │   └── remixicon
+│   │           │       ├── remixicon.eot
+│   │           │       ├── remixicon.glyph.json
+│   │           │       ├── remixicon.svg
+│   │           │       ├── remixicon.symbol.svg
+│   │           │       ├── remixicon.ttf
+│   │           │       ├── remixicon.woff
+│   │           │       └── remixicon.woff2
+│   │           ├── images
+│   │           │   ├── ajax-loader.gif
+│   │           │   ├── banner-01-illu.png
+│   │           │   ├── card-header-bg-dora.png
+│   │           │   ├── favico.ico
+│   │           │   ├── favicon.ico
+│   │           │   ├── home
+│   │           │   │   ├── bg-communaute-mobile.png
+│   │           │   │   ├── bg-communaute.png
+│   │           │   │   ├── commu-home-illu-01.png
+│   │           │   │   ├── commu-home-illu-02.png
+│   │           │   │   ├── illustration-01.png
+│   │           │   │   ├── illustration-02.png
+│   │           │   │   ├── search-bg-left.png
+│   │           │   │   └── search-bg-right.png
+│   │           │   ├── home-title-01-illu-card-01.png
+│   │           │   ├── home-title-01-illu-card-02.png
+│   │           │   ├── home-title-01-illu-card-03.png
+│   │           │   ├── ico-*.svg  (74 files)
+│   │           │   ├── illustration-bg-01.png
+│   │           │   ├── illustration-mon-recap.png
+│   │           │   ├── logo-Dora-Horizontal-Couleur.png
+│   │           │   ├── logo-*.svg  (45 files)
+│   │           │   ├── logo-meta-base.png
+│   │           │   ├── logo-nexus.png
+│   │           │   ├── metabase
+│   │           │   │   └── ico-download-cloud-fill.svg
+│   │           │   ├── nexus
+│   │           │   │   ├── logo-pdi-mini.svg
+│   │           │   │   ├── logo-pdi.svg
+│   │           │   │   ├── nx-bg-connect.jpg
+│   │           │   │   ├── nx-forme-commune-01.png
+│   │           │   │   ├── nx-forme-commune-02.png
+│   │           │   │   ├── nx-forme-etoile-dora.png
+│   │           │   │   ├── nx-forme-etoile-emplois.png
+│   │           │   │   ├── nx-forme-etoile-marche.png
+│   │           │   │   ├── nx-forme-etoile-monrecap.png
+│   │           │   │   ├── nx-forme-etoile-pilotage.png
+│   │           │   │   ├── nx-header-logo-communaute.svg
+│   │           │   │   ├── nx-header-logo-dora.svg
+│   │           │   │   ├── nx-header-logo-emplois.svg
+│   │           │   │   ├── nx-header-logo-marche.svg
+│   │           │   │   ├── nx-header-logo-monrecap.svg
+│   │           │   │   ├── nx-header-logo-nexus-mini.svg
+│   │           │   │   ├── nx-header-logo-nexus.svg
+│   │           │   │   ├── nx-header-logo-pilotage.svg
+│   │           │   │   ├── nx-illustration-communaute.png
+│   │           │   │   ├── nx-illustration-dora-2.png
+│   │           │   │   ├── nx-illustration-dora.png
+│   │           │   │   ├── nx-illustration-emplois-2.png
+│   │           │   │   ├── nx-illustration-emplois.png
+│   │           │   │   ├── nx-illustration-marche.png
+│   │           │   │   ├── nx-illustration-monrecap.png
+│   │           │   │   └── nx-illustration-pilotage.png
+│   │           │   ├── picto-arrow-right.svg
+│   │           │   ├── picto-burger.svg
+│   │           │   ├── picto-close.svg
+│   │           │   ├── picto-demo-01.svg
+│   │           │   ├── picto-external-link.svg
+│   │           │   ├── picto-facebook.svg
+│   │           │   ├── picto-instagram.svg
+│   │           │   ├── picto-linkedin.svg
+│   │           │   ├── picto-rond.svg
+│   │           │   ├── picto-twitter.svg
+│   │           │   ├── picto-youtube.svg
+│   │           │   └── remixicon.symbol.svg
+│   │           ├── javascripts
+│   │           │   └── app.js
+│   │           └── stylesheets
+│   │               └── app.css
+│   ├── surveys
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── data
+│   │   │   └── export_finess.csv
+│   │   ├── forms.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_increase_budget_fields_max_value.py
+│   │   │   ├── 0003_rename_nb_worker_cpf_unused_esatanswer_nb_worker_cpf_used.py
+│   │   │   ├── 0004_more_help_texts.py
+│   │   │   ├── 0005_help_texts_for_inverted_questions.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── specs
+│   │   │   └── esat-2025.csv
+│   │   ├── templatetags
+│   │   │   ├── __init__.py
+│   │   │   └── surveys.py
+│   │   ├── urls.py
+│   │   ├── utils.py
+│   │   └── views.py
+│   ├── templates
+│   │   ├── 403.html
+│   │   ├── 404.html
+│   │   ├── 500.html
+│   │   ├── admin
+│   │   │   ├── base_site.html
+│   │   │   └── surveys
+│   │   │       └── change_list.html
+│   │   ├── dashboards
+│   │   │   ├── tableau_de_bord_public.html
+│   │   │   └── tableaux_de_bord_publics.html
+│   │   ├── layouts
+│   │   │   └── base.html
+│   │   ├── partials
+│   │   │   ├── footer-scripts.html
+│   │   │   ├── footer.html
+│   │   │   ├── header.html
+│   │   │   ├── home_section_accompagne.html
+│   │   │   ├── home_section_apercu.html
+│   │   │   ├── home_section_comment.html
+│   │   │   └── home_section_suggestion.html
+│   │   ├── pilotage
+│   │   │   ├── accessibilite.html
+│   │   │   ├── home.html
+│   │   │   ├── inscription_lettre_information.html
+│   │   │   ├── mentions_legales.html
+│   │   │   ├── politique_de_confidentialite.html
+│   │   │   ├── statistiques.html
+│   │   │   └── tableaux_de_bord_prives.html
+│   │   ├── sections
+│   │   │   └── testimonial.html
+│   │   └── surveys
+│   │       ├── summary.html
+│   │       └── survey.html
+│   └── utils
+│       ├── __init__.py
+│       ├── context_processors.py
+│       └── templatetags
+│           ├── __init__.py
+│           ├── markdown_extras.py
+│           ├── metabase_extras.py
+│           └── theme_inclusion.py
+├── pyproject.toml
+├── requirements
+│   ├── base.in
+│   ├── base.txt
+│   ├── dev.in
+│   ├── dev.txt
+│   ├── test.in
+│   └── test.txt
+├── requirements.txt -> requirements/base.txt
+└── tests
+    ├── __init__.py
+    ├── api
+    │   ├── __snapshots__
+    │   │   └── test_views.ambr
+    │   └── test_views.py
+    ├── conftest.py
+    ├── dashboards
+    │   ├── __init__.py
+    │   ├── __snapshots__
+    │   │   └── test_views.ambr
+    │   ├── factories.py
+    │   └── test_views.py
+    ├── pilotage
+    │   ├── __init__.py
+    │   ├── __snapshots__
+    │   │   └── test_views.ambr
+    │   └── test_views.py
+    └── test_consistency.py
+61 directories, 366 files

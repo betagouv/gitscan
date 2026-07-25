@@ -1,0 +1,48 @@
+[project]
+name = "pilotage"
+dynamic = ["version"]
+requires-python = "==3.13.*"
+
+[tool.ruff]
+line-length = 119
+
+[tool.ruff.lint]
+# see prefixes in https://docs.astral.sh/ruff/rules/
+select = [
+    "F",  # pyflakes
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "UP",  # pyupgrade
+    "I",  # isort
+    "TID",  # flake8-tidy-imports
+    "N",  # pep8-naming
+]
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+known-first-party = ["pilotage"]
+lines-after-imports = 2
+
+[tool.ruff.lint.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+[tool.djlint]
+profile="django"
+ignore="H006,H014,H017,H021,H023,H030,H031,T002,T003"
+max_attribute_length=200
+max_line_length=1000
+preserve_blank_lines=true
+no_function_formatting=true
+format_css=true
+format_js=true
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "config.settings.test"
+python_files = ["test_*.py"]
+addopts = [
+    "--reuse-db",
+    "--strict-markers",
+]
+markers = [
+    "no_django_db: mark tests that should not be marked with django_db."
+]
