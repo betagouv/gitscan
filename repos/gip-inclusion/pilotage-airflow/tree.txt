@@ -1,0 +1,609 @@
+.
+├── .dockerignore
+├── .editorconfig
+├── .env-base
+├── .envrc
+├── .github
+│   ├── dependabot.yml
+│   ├── pull_request_template.md
+│   └── workflows
+│       ├── ci.yml
+│       ├── dbt-metabase.yml
+│       ├── git.yml
+│       ├── require-labels.yml
+│       └── require-notion-link.yml
+├── .gitignore
+├── .sqlfluffignore
+├── .vscode
+│   ├── extensions.json
+│   └── settings.json
+├── Dockerfile
+├── Makefile
+├── README.md
+├── custom-dev-entrypoint.sh
+├── custom-prod-entrypoint.sh
+├── dag-variables.json
+├── dags
+│   ├── __init__.py
+│   ├── actes_metier_matomo.py
+│   ├── asp_processed_data.py
+│   ├── common
+│   │   ├── __init__.py
+│   │   ├── airtable.py
+│   │   ├── anonymize_sensible_data.py
+│   │   ├── dataframes.py
+│   │   ├── dates.py
+│   │   ├── db.py
+│   │   ├── dbt.py
+│   │   ├── departments.py
+│   │   ├── esat
+│   │   │   └── ESAT_variables_questionnaire2025.csv
+│   │   ├── flux_iae.py
+│   │   ├── france_travail
+│   │   │   ├── __init__.py
+│   │   │   ├── api.py
+│   │   │   ├── enums.py
+│   │   │   └── models.py
+│   │   ├── ftp.py
+│   │   ├── gsheet.py
+│   │   ├── immersion_facilitee
+│   │   │   ├── __init__.py
+│   │   │   ├── helpers.py
+│   │   │   └── models.py
+│   │   ├── matomo.py
+│   │   ├── monrecap
+│   │   │   ├── __init__.py
+│   │   │   ├── helpers.py
+│   │   │   ├── variables_barometre.csv
+│   │   │   └── variables_mailing.csv
+│   │   ├── s3.py
+│   │   ├── slack.py
+│   │   ├── stats_dsn
+│   │   │   └── raw_data_query.sql
+│   │   └── tasks.py
+│   ├── data_consistency.py
+│   ├── data_inclusion.py
+│   ├── dbt_daily.py
+│   ├── dbt_dora.py
+│   ├── dbt_dsn.py
+│   ├── dbt_france_travail.py
+│   ├── dbt_imer.py
+│   ├── dbt_manual.py
+│   ├── dbt_offre_insertion.py
+│   ├── dbt_oneshot.py
+│   ├── dbt_snapshot.py
+│   ├── dbt_weekly.py
+│   ├── dgefp_get_etp.py
+│   ├── dsn_data_ingest.py
+│   ├── emplois_users_to_dora.py
+│   ├── esat.py
+│   ├── fagerh_ingestion_questionnaire.py
+│   ├── ft_diag_data.py
+│   ├── ft_donnees_brutes.py
+│   ├── ft_information_territoire.py
+│   ├── ft_iop_data.py
+│   ├── generate_docs.py
+│   ├── immersions_facilitee.py
+│   ├── monrecap.py
+│   ├── monrecap_mailing_list.py
+│   ├── nps_gip.py
+│   ├── nps_pilotage.py
+│   ├── populate_autometa_docs.py
+│   ├── populate_esat_database.py
+│   ├── populate_matometa_database.py
+│   ├── populate_metabase_fluxiae.py
+│   ├── properties.yml
+│   ├── reseau_iae_adherents.py
+│   ├── stats_dsn.py
+│   ├── suivi_visites_campagnes_c0.py
+│   ├── sync_marche_db.py
+│   └── sync_rdvi_db.py
+├── dbt
+│   ├── .gitignore
+│   ├── analyses
+│   │   └── .gitkeep
+│   ├── macros
+│   │   ├── .gitkeep
+│   │   ├── clean_boolean.sql
+│   │   ├── clean_integer.sql
+│   │   ├── clean_numeric.sql
+│   │   ├── clean_text.sql
+│   │   ├── columns_null_check.sql
+│   │   ├── completeness_score.sql
+│   │   ├── convert_duration.sql
+│   │   ├── count_intensite_frein.sql
+│   │   ├── couverture_terrain.sql
+│   │   ├── generate_schema_name.sql
+│   │   ├── index_join_keys.sql
+│   │   ├── interval_30_days.sql
+│   │   ├── mois_apres_sortie.sql
+│   │   ├── nullify_excluded_esat_survey_answer_fields.sql
+│   │   ├── pilo_star.sql
+│   │   ├── safe_divide.sql
+│   │   └── to_timestamp.sql
+│   ├── models
+│   │   ├── _sources.yml
+│   │   ├── ephemeral
+│   │   │   ├── eph_accompagnement_freins.sql
+│   │   │   ├── eph_accompagnement_pro.sql
+│   │   │   ├── eph_candidats_sans_contrat_pass_valide.sql
+│   │   │   ├── eph_caracteristiques_beneficiaires_per_hash_nir.sql
+│   │   │   ├── eph_dates_etat_mensuel_individualise.sql
+│   │   │   ├── eph_heures_travail_contrat.sql
+│   │   │   ├── eph_nbr_candidatures.sql
+│   │   │   ├── eph_nbr_cddr_prescripteurs.sql
+│   │   │   ├── eph_nbr_cddr_structures.sql
+│   │   │   ├── eph_periodes_retention.sql
+│   │   │   ├── eph_prop_cddr.sql
+│   │   │   ├── eph_series_mois.sql
+│   │   │   ├── eph_suspensions_pass_en_cours.sql
+│   │   │   ├── eph_visites_periodes_retention.sql
+│   │   │   ├── properties.yml
+│   │   │   └── stg_dates_annexe_financiere.sql
+│   │   ├── indexed
+│   │   │   ├── contrats_sorties.sql
+│   │   │   ├── corresp_af_contrats.sql
+│   │   │   ├── etat_mensuel_heures_travaillees_sorties.sql
+│   │   │   ├── fluxIAE_ContratMission_v2.sql
+│   │   │   ├── fluxIAE_EtatMensuelIndiv_v2.sql
+│   │   │   ├── fluxIAE_MarchesPublics_v2.sql
+│   │   │   ├── fluxIAE_RefCategorieSort_v2.sql
+│   │   │   ├── fluxIAE_RefMotifSort_v2.sql
+│   │   │   ├── fluxIAE_Salarie_v2.sql
+│   │   │   ├── fluxIAE_Structure_v2.sql
+│   │   │   ├── heures_ai_etti.sql
+│   │   │   ├── motif_sorties_salaries.sql
+│   │   │   ├── properties.yml
+│   │   │   └── sorties_v2.sql
+│   │   ├── intermediate
+│   │   │   ├── data_inclusion
+│   │   │   │   ├── _models.yml
+│   │   │   │   ├── int_di__structure_source_mapping.sql
+│   │   │   │   └── int_thematiques_clpe.sql
+│   │   │   ├── dora
+│   │   │   │   ├── int_dora__actes_metier.sql
+│   │   │   │   ├── int_dora__imer.sql
+│   │   │   │   ├── int_dora__mobilisation_to_orientation.sql
+│   │   │   │   ├── int_dora__mobilisationevent_user.sql
+│   │   │   │   ├── int_dora__orientation_user_service.sql
+│   │   │   │   ├── int_dora__service_structure.sql
+│   │   │   │   ├── int_dora__structure_members.sql
+│   │   │   │   └── properties.yml
+│   │   │   ├── esat
+│   │   │   │   ├── int_esat__completed_answers.sql
+│   │   │   │   ├── int_esat__legal_entities.sql
+│   │   │   │   ├── int_esat__surveys_esat_answers_cleaned.sql
+│   │   │   │   ├── int_esat__surveys_esat_answers_deduplicated.sql
+│   │   │   │   └── properties.yml
+│   │   │   ├── fagerh
+│   │   │   │   ├── int_fagerh__etablissements.sql
+│   │   │   │   ├── int_fagerh__metiers.sql
+│   │   │   │   ├── int_fagerh__prestations.sql
+│   │   │   │   ├── int_fagerh__prestations_publics.sql
+│   │   │   │   └── properties.yml
+│   │   │   ├── int_communes_base.sql
+│   │   │   ├── int_communes_code_postal.sql
+│   │   │   ├── int_matomo__actes_metier.sql
+│   │   │   ├── int_metiers_derniere_candidature_fdp_par_candidat.sql
+│   │   │   ├── int_origine_derniere_candidature_par_candidat.sql
+│   │   │   ├── oneshot
+│   │   │   │   ├── france_travail
+│   │   │   │   │   ├── int_nombre_freins_agg.sql
+│   │   │   │   │   └── int_nombre_freins_par_groupe.sql
+│   │   │   │   └── offre_insertion
+│   │   │   │       ├── int_metriques_offre_insertion.sql
+│   │   │   │       └── int_offre_insertion.sql
+│   │   │   ├── properties.yml
+│   │   │   └── rdvi
+│   │   │       ├── int_rdvi__actes_metiers.sql
+│   │   │       └── properties.yml
+│   │   ├── legacy
+│   │   │   ├── daily
+│   │   │   │   ├── c1_analytics.sql
+│   │   │   │   ├── candidats_sans_solution.sql
+│   │   │   │   ├── delai_recrutement.sql
+│   │   │   │   ├── metier_candidatures.sql
+│   │   │   │   ├── siae_pratiquant_autoprescription.sql
+│   │   │   │   └── tx_candidats_acceptes_par_prescripteurs.sql
+│   │   │   ├── oneshot
+│   │   │   │   ├── nombre_etp_conventionnes.sql
+│   │   │   │   ├── suivi_consommation_etp.sql
+│   │   │   │   └── suivi_saisies_dans_asp.sql
+│   │   │   └── weekly
+│   │   │       ├── fluxIAE_AnnexeFinanciere_v2.sql
+│   │   │       └── fluxIAE_DateDerniereMiseAJour.sql
+│   │   ├── marts
+│   │   │   ├── daily
+│   │   │   │   ├── candidats.sql
+│   │   │   │   ├── candidats_*.sql  (5 files)
+│   │   │   │   ├── candidatures_*.sql  (10 files)
+│   │   │   │   ├── delai_1ere_candidature_embauche.sql
+│   │   │   │   ├── fdp_tension.sql
+│   │   │   │   ├── fdp_tension_12.sql
+│   │   │   │   ├── fdp_tension_34.sql
+│   │   │   │   ├── fdp_tension_56.sql
+│   │   │   │   ├── fiches_deposte_en_tension_recrutement.sql
+│   │   │   │   ├── gps_logs_users.sql
+│   │   │   │   ├── lemarche_candidats_potentiels_clause_sociale.sql
+│   │   │   │   ├── nb_utilisateurs_potentiels.sql
+│   │   │   │   ├── nombre_candidatures_par_structure.sql
+│   │   │   │   ├── organisations.sql
+│   │   │   │   ├── organisations_dihal.sql
+│   │   │   │   ├── parcours_salarie.sql
+│   │   │   │   ├── pass_agrements_valides.sql
+│   │   │   │   ├── pass_iae_et_demandes.sql
+│   │   │   │   ├── prescripteurs_habilites_odc.sql
+│   │   │   │   ├── properties.yml
+│   │   │   │   ├── questionnaire_2025.sql
+│   │   │   │   ├── reseaux.sql
+│   │   │   │   ├── structures.sql
+│   │   │   │   ├── suivi_*.sql  (8 files)
+│   │   │   │   ├── suspensions_pass.sql
+│   │   │   │   ├── taux_couverture_semaine.sql
+│   │   │   │   ├── taux_refus_siae.sql
+│   │   │   │   ├── taux_refus_structures.sql
+│   │   │   │   ├── taux_transformation_prescripteurs.sql
+│   │   │   │   ├── utilisateurs.sql
+│   │   │   │   ├── utilisateurs_jamais_venus.sql
+│   │   │   │   └── visites_ft.sql
+│   │   │   ├── data_inclusion__structures_sans_dedupliquer.sql
+│   │   │   ├── esat
+│   │   │   │   ├── esat__answer_documents_falclist.sql
+│   │   │   │   ├── esat__answer_insertion_staff_funding.sql
+│   │   │   │   ├── esat__answer_retirement_preparation_actions.sql
+│   │   │   │   ├── esat__answer_skills_validation_type.sql
+│   │   │   │   ├── esat__answer_software_financial_help.sql
+│   │   │   │   ├── esat__answer_support_themes.sql
+│   │   │   │   ├── fct_esat__survey_answers.sql
+│   │   │   │   ├── fct_esat__survey_answers_mapping.sql
+│   │   │   │   └── properties.yml
+│   │   │   ├── fagerh
+│   │   │   │   ├── fagerh__activite_prestations.sql
+│   │   │   │   ├── fagerh__profil_etablissements.sql
+│   │   │   │   ├── fagerh__publics_prestations.sql
+│   │   │   │   ├── fagerh__rh_etp_dispositif_etablissement.sql
+│   │   │   │   ├── fagerh__rh_metiers.sql
+│   │   │   │   └── properties.yml
+│   │   │   ├── marts_core
+│   │   │   │   ├── bridge_commune_code_postal.sql
+│   │   │   │   ├── daily
+│   │   │   │   │   ├── fct_imer.sql
+│   │   │   │   │   └── fct_logins_utilisateurs_emplois.sql
+│   │   │   │   ├── data_inclusion
+│   │   │   │   │   ├── dim_data_inclusion__services.sql
+│   │   │   │   │   ├── dim_data_inclusion__structures.sql
+│   │   │   │   │   ├── dim_thematiques_clpe.sql
+│   │   │   │   │   └── properties.yml
+│   │   │   │   ├── dim_commune.sql
+│   │   │   │   ├── dim_esat.sql
+│   │   │   │   ├── france_travail
+│   │   │   │   │   └── fct_nombre_freins_agg.sql
+│   │   │   │   ├── offre_insertion
+│   │   │   │   │   ├── dim_clpe_ft.sql
+│   │   │   │   │   └── fct_offre_insertion.sql
+│   │   │   │   └── properties.yml
+│   │   │   ├── matomo__actes_metier.sql
+│   │   │   ├── oneshot
+│   │   │   │   ├── atigip.sql
+│   │   │   │   ├── candidats_decrochage.sql
+│   │   │   │   ├── candidatures_ddets50.sql
+│   │   │   │   ├── dim_insee_zones_emploi.sql
+│   │   │   │   ├── dim_secteur_activite_naf.sql
+│   │   │   │   ├── fluxIAE_BenefSorties_ASP_v2.sql
+│   │   │   │   ├── offre_insertion
+│   │   │   │   │   ├── offre_insertion_couverture.sql
+│   │   │   │   │   └── offre_insertion_nombre_freins_de.sql
+│   │   │   │   ├── properties.yml
+│   │   │   │   └── sorties_en_emploi
+│   │   │   │       ├── fct_sorties_emploi_geographie_nature_contrat.sql
+│   │   │   │       ├── fct_sorties_emploi_geographie_secteur_activite.sql
+│   │   │   │       ├── fct_sorties_emploi_geographie_sexe.sql
+│   │   │   │       ├── fct_sorties_emploi_siae_geographie.sql
+│   │   │   │       ├── fct_sorties_emploi_siae_nature_contrat.sql
+│   │   │   │       ├── fct_sorties_emploi_siae_secteur_activite.sql
+│   │   │   │       ├── fct_sorties_emploi_siae_sexe.sql
+│   │   │   │       └── properties.yml
+│   │   │   ├── properties.yml
+│   │   │   └── weekly
+│   │   │       ├── accompagnement_freins.sql
+│   │   │       ├── accompagnement_pro.sql
+│   │   │       ├── beneficiaires_sorties.sql
+│   │   │       ├── caracteristiques_beneficiaires.sql
+│   │   │       ├── contrats.sql
+│   │   │       ├── contrats_aci.sql
+│   │   │       ├── contrats_cvg_phc.sql
+│   │   │       ├── contrats_parent_agregated.sql
+│   │   │       ├── dgefp_etp_etat_cd.sql
+│   │   │       ├── etp_par_salarie.sql
+│   │   │       ├── formations.sql
+│   │   │       ├── int_beneficiaires_sorties.sql
+│   │   │       ├── les_emplois_contrats.sql
+│   │   │       ├── marche_suivi_structure.sql
+│   │   │       ├── properties.yml
+│   │   │       ├── recrutements.sql
+│   │   │       ├── retention.sql
+│   │   │       ├── sorties_toutes_structures.sql
+│   │   │       ├── suivi_complet_etps_conventionnes.sql
+│   │   │       ├── suivi_consommation_etp_V2.sql
+│   │   │       ├── suivi_consommation_mensuelle_etp_V2.sql
+│   │   │       ├── suivi_etp_conventionnes_v2.sql
+│   │   │       ├── suivi_etp_realises_par_structure.sql
+│   │   │       ├── suivi_etp_realises_par_structure_brsa.sql
+│   │   │       ├── suivi_etp_realises_v2.sql
+│   │   │       ├── suivi_realisation_convention_mensuelle.sql
+│   │   │       ├── suivi_realisation_convention_par_structure.sql
+│   │   │       ├── suivi_visites_tb_prive_mois.sql
+│   │   │       ├── suivi_visites_tb_prive_semaine.sql
+│   │   │       ├── suivi_visites_tb_prive_trimestre.sql
+│   │   │       ├── suivi_visites_tous_tb_prive_mensuel.sql
+│   │   │       ├── suivi_visites_tous_tb_prive_trimestre.sql
+│   │   │       ├── taux_couverture_global_mensuel.sql
+│   │   │       ├── taux_couverture_global_trimestre.sql
+│   │   │       ├── taux_couverture_mensuel.sql
+│   │   │       └── taux_couverture_trimestre.sql
+│   │   ├── monrecap
+│   │   │   ├── marts
+│   │   │   │   ├── Commandes.sql
+│   │   │   │   ├── Contacts.sql
+│   │   │   │   ├── barometre.sql
+│   │   │   │   ├── monrecap_starmetric.sql
+│   │   │   │   └── properties.yml
+│   │   │   └── staging
+│   │   │       ├── properties.yml
+│   │   │       ├── stg_baro_commandes_starmetric.sql
+│   │   │       ├── stg_barometre_starmetric.sql
+│   │   │       ├── stg_commandes_max.sql
+│   │   │       ├── stg_commandes_starmetric.sql
+│   │   │       ├── stg_contacts_commandeurs.sql
+│   │   │       ├── stg_contacts_non_commandeurs.sql
+│   │   │       ├── stg_departement_derniere_commandes.sql
+│   │   │       ├── stg_derniere_commandes.sql
+│   │   │       ├── stg_starmetric.sql
+│   │   │       └── stg_total_reponses.sql
+│   │   ├── reporting
+│   │   │   ├── data_inclusion
+│   │   │   │   ├── properties.yml
+│   │   │   │   ├── services_thematiques_public_accueil_v1.sql
+│   │   │   │   ├── services_v1.sql
+│   │   │   │   ├── services_v1_dpt.sql
+│   │   │   │   ├── structures_thematiques_public_accueil_v1.sql
+│   │   │   │   ├── structures_v1.sql
+│   │   │   │   └── structures_v1_dpt.sql
+│   │   │   ├── properties.yml
+│   │   │   ├── rpt_esat__answer_coverage_by_region.sql
+│   │   │   ├── rpt_esat__low_confidence_potential_answers.sql
+│   │   │   ├── rpt_esat__survey_answers.sql
+│   │   │   └── rpt_imer.sql
+│   │   └── staging
+│   │       ├── data_inclusion
+│   │       │   ├── _models.yml
+│   │       │   ├── stg_di__services.sql
+│   │       │   ├── stg_di__structures.sql
+│   │       │   └── stg_di__structures_deduplicated.sql
+│   │       ├── dora
+│   │       │   ├── properties.yml
+│   │       │   ├── stg_dora__mobilisationevent.sql
+│   │       │   ├── stg_dora__orientation.sql
+│   │       │   ├── stg_dora__service.sql
+│   │       │   ├── stg_dora__structure.sql
+│   │       │   └── stg_dora__user.sql
+│   │       ├── dsn
+│   │       │   ├── stg_dsn_geographie_nature_contrat.sql
+│   │       │   ├── stg_dsn_geographie_secteur_activite.sql
+│   │       │   ├── stg_dsn_geographie_sexe.sql
+│   │       │   ├── stg_dsn_siae_geographie.sql
+│   │       │   ├── stg_dsn_siae_nature_contrat.sql
+│   │       │   ├── stg_dsn_siae_secteur_activite.sql
+│   │       │   └── stg_dsn_siae_sexe.sql
+│   │       ├── emplois
+│   │       │   ├── _properties.yml
+│   │       │   └── stg_emplois__imer.sql
+│   │       ├── esat
+│   │       │   ├── properties.yml
+│   │       │   ├── stg_esat__answer_field_exclusions.sql
+│   │       │   ├── stg_esat__liste_officielle.sql
+│   │       │   ├── stg_esat__mapped_answers.sql
+│   │       │   └── stg_esat__surveys_esat_answers.sql
+│   │       ├── france_travail
+│   │       │   ├── properties.yml
+│   │       │   ├── stg_ft_clpe_commune.sql
+│   │       │   └── stg_ft_data_diag.sql
+│   │       ├── insee
+│   │       │   ├── properties.yml
+│   │       │   ├── stg_insee_arrondissements.sql
+│   │       │   ├── stg_insee_codes_postaux_commune.sql
+│   │       │   ├── stg_insee_communes.sql
+│   │       │   ├── stg_insee_departements.sql
+│   │       │   ├── stg_insee_epci.sql
+│   │       │   ├── stg_insee_epci_commune.sql
+│   │       │   ├── stg_insee_regions.sql
+│   │       │   ├── stg_insee_secteur_activite_naf.sql
+│   │       │   ├── stg_insee_zone_emploi.sql
+│   │       │   ├── stg_insee_zone_emploi_commune.sql
+│   │       │   └── stg_insee_zones_emploi.sql
+│   │       ├── matomo
+│   │       │   ├── stg_matomo__monthly_department_visits.sql
+│   │       │   ├── stg_matomo__monthly_visits.sql
+│   │       │   └── stg_matomo__properties.yml
+│   │       ├── properties.yml
+│   │       ├── rdvi
+│   │       │   ├── properties.yml
+│   │       │   ├── stg_rdvi__departments.sql
+│   │       │   ├── stg_rdvi__follow_ups.sql
+│   │       │   ├── stg_rdvi__invitations.sql
+│   │       │   ├── stg_rdvi__invitations_organisations.sql
+│   │       │   ├── stg_rdvi__motif_categories.sql
+│   │       │   ├── stg_rdvi__organisations.sql
+│   │       │   ├── stg_rdvi__participations.sql
+│   │       │   └── stg_rdvi__rdvs.sql
+│   │       └── stg_*.sql  (66 files)
+│   ├── seeds
+│   │   ├── acc_freins_libelle.csv
+│   │   ├── acc_pro_libelle.csv
+│   │   ├── code_rome_domaine_professionnel.csv
+│   │   ├── dep_reg_ref_emplois.csv
+│   │   ├── department_asp.csv
+│   │   ├── evolution_rsa.csv
+│   │   ├── france_travail
+│   │   │   ├── departements_xp_ft.csv
+│   │   │   ├── formation_xp_ft.csv
+│   │   │   ├── sexe_xp_ft.csv
+│   │   │   ├── situation_familiale_xp_ft.csv
+│   │   │   ├── stock_xp_ft.csv
+│   │   │   └── type_parcours_xp_ft.csv
+│   │   ├── groupes_structures.csv
+│   │   ├── insee_geo
+│   │   │   ├── insee_arrondissements.csv
+│   │   │   ├── insee_communes.csv
+│   │   │   ├── insee_departements.csv
+│   │   │   ├── insee_epci_libelles.csv
+│   │   │   ├── insee_epcis.csv
+│   │   │   ├── insee_regions.csv
+│   │   │   └── insee_zones_emploi.csv
+│   │   ├── monrecap
+│   │   │   ├── properties.yml
+│   │   │   └── settings.csv
+│   │   ├── months.csv
+│   │   ├── new_seeds
+│   │   │   ├── esat
+│   │   │   │   ├── seed_esat__answer_field_exclusions.csv
+│   │   │   │   ├── seed_esat__liste_officielle.csv
+│   │   │   │   └── seed_esat__mapping_reponses_manuelles.csv
+│   │   │   ├── fagerh
+│   │   │   │   ├── properties.yml
+│   │   │   │   ├── seed_fagerh__metier_family_mapping.csv
+│   │   │   │   ├── seed_fagerh__prestation_mapping.csv
+│   │   │   │   └── seed_fagerh__prestations_public_category_mapping.csv
+│   │   │   ├── france_travail
+│   │   │   │   └── seed_ft_clpe.csv
+│   │   │   └── insee
+│   │   │       ├── seed_insee_arrondissements.csv
+│   │   │       ├── seed_insee_code_postaux.csv
+│   │   │       ├── seed_insee_communes.csv
+│   │   │       ├── seed_insee_departements.csv
+│   │   │       ├── seed_insee_epci.csv
+│   │   │       ├── seed_insee_epci_commune.csv
+│   │   │       ├── seed_insee_regions.csv
+│   │   │       ├── seed_insee_secteur_activite_naf.csv
+│   │   │       ├── seed_insee_zone_emploi_commune.csv
+│   │   │       └── seed_insee_zones_emploi.csv
+│   │   ├── pilotage_interne
+│   │   │   ├── metabase_dashboards.csv
+│   │   │   └── pilotage_c1_users.csv
+│   │   ├── properties.yml
+│   │   ├── ref_clpe_ft.csv
+│   │   ├── ref_mesure_dispositif_asp.csv
+│   │   ├── region_asp.csv
+│   │   ├── reseau_iae_ids.csv
+│   │   ├── sa_ept.csv
+│   │   └── sa_zones_infradepartementales.csv
+│   ├── snapshots
+│   │   ├── .gitkeep
+│   │   ├── candidats_recherche_active_snapshot.sql
+│   │   ├── etp_conventionne_snapshot.sql
+│   │   ├── offre_insertion_couverture_snapshot.sql
+│   │   └── properties.yml
+│   └── tests
+│       ├── .gitkeep
+│       ├── assert_handicap_has_public_subdimension.sql
+│       ├── properties.yml
+│       ├── test_actes_metier_matomo_employers_total.sql
+│       ├── test_actes_metier_matomo_services_total.sql
+│       ├── test_candidats_recherche_active.sql
+│       ├── test_candidatures_candidats_recherche_active.sql
+│       ├── test_dim_data_inclusion__structures_row_count.sql
+│       ├── test_doublons_structures_fluxIAE.sql
+│       ├── test_etp_conventionnes.sql
+│       ├── test_etp_realises.sql
+│       ├── test_fdp_tension.sql
+│       ├── test_fluxIAE_EtatMensuelIndiv_v2_sum_etp.sql
+│       ├── test_fluxIAE_salarie.sql
+│       ├── test_int_di__structure_mapping_source_structure_count.sql.sql
+│       ├── test_logins_utilisatateurs_count_match.sql
+│       ├── test_marche_structures.sql
+│       ├── test_nombre_freins.sql
+│       ├── test_potentiel_structures.sql
+│       ├── test_source_opcs.sql
+│       ├── test_stg_accompagnement_freins.sql
+│       ├── test_stg_accompagnement_pro.sql
+│       ├── test_stg_candidats_candidature.sql
+│       ├── test_stg_contrats.sql
+│       ├── test_suivi_etp_realises_v2_sum_etp.sql
+│       ├── test_sum_etp.sql
+│       ├── test_suspensions_pass.sql
+│       └── test_utilisateurs.sql
+├── dbt_project.yml
+├── docker
+│   └── postgres
+│       └── initdb.d
+│           └── create-db.sh
+├── docker-compose.yml
+├── env.example
+├── package-lock.yml
+├── packages.yml
+├── profiles.yml
+├── pyproject.toml
+├── requirements
+│   ├── base.in
+│   ├── base.txt
+│   ├── dev.in
+│   └── dev.txt
+├── scripts
+│   ├── deprecated
+│   │   ├── france_travail_donnees_prod.sql
+│   │   ├── france_travail_donnees_recette.sql
+│   │   ├── properties.yml
+│   │   └── stg_france_travail.sql
+│   ├── notebooks
+│   │   └── import_esat_2024.ipynb
+│   ├── python
+│   │   ├── check_nir.py
+│   │   ├── check_stats_dsn_cohorts.py
+│   │   ├── csv_to_metabase.py
+│   │   ├── stub_sftp.py
+│   │   └── suivi_hebdo_nps.py
+│   └── sql
+│       ├── igas_accompagnement_par_eiti.sql
+│       ├── igas_contrat_par_eiti.sql
+│       ├── igas_eiti_salarie.sql
+│       ├── igas_eiti_structure.sql
+│       ├── igas_etp_cons_par_eiti.sql
+│       ├── igas_etp_consommes_par_eiti_par_annee.sql
+│       ├── igas_etp_conv_par_eiti.sql
+│       ├── igas_etp_conventionnes_par_eiti_par_annee.sql
+│       ├── igas_sorties_par_eiti.sql
+│       ├── igas_suivi_contrat_par_annee.sql
+│       ├── igas_suivi_salarie_par_annee.sql
+│       └── unai_demande_ai.sql
+├── streamlit_apps
+│   ├── __init__.py
+│   └── lemarche_mie
+│       ├── .env.example
+│       ├── Dockerfile
+│       ├── __init__.py
+│       ├── app.py
+│       ├── pyproject.toml
+│       ├── src
+│       │   └── lemarche_mie
+│       │       ├── __init__.py
+│       │       ├── calculs.py
+│       │       ├── db.py
+│       │       └── load.py
+│       └── tests
+│           ├── __init__.py
+│           ├── integration
+│           │   ├── __init__.py
+│           │   ├── snapshots
+│           │   │   └── snapshot_table_etp_financed.csv
+│           │   └── test_calculs_pipeline.py
+│           └── unit
+│               ├── __init__.py
+│               └── test_calculs.py
+└── tests
+    ├── __init__.py
+    ├── conftest.py
+    ├── test_common_anonymize_sensible_data.py
+    ├── test_common_dates.py
+    ├── test_common_db.py
+    └── test_dags.py
+88 directories, 605 files

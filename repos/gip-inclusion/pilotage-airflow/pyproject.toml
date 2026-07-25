@@ -1,0 +1,88 @@
+[project]
+name = "pilotage-airflow"
+dynamic = ["version"]
+requires-python = "==3.12.*"
+
+[tool.sqlfluff.core]
+dialect = "postgres"
+# FIXME: In the long run we should include "references.consistent,references.from,references.qualification" rules.
+exclude_rules = "ambiguous.distinct,layout.long_lines,references.special_chars,convention.left_join,references.consistent,references.from,references.qualification"
+templater = "dbt"
+max_line_length = 119
+
+[tool.sqlfluff.layout.type.alias_expression]
+# https://docs.sqlfluff.com/en/stable/layout.html#aligned-elements
+# We want non-default spacing _before_ the alias expressions.
+spacing_before = "align"
+# We want to align them within the next outer select clause.
+# This means for example that alias expressions within the FROM
+# or JOIN clause would _not_ be aligned with them.
+align_within = "select_clause"
+# The point at which to stop searching outward for siblings, which
+# in this example would likely be the boundary of a CTE. Stopping
+# when we hit brackets is usually a good rule of thumb for this
+# configuration.
+align_scope = "bracketed"
+
+
+[tool.sqlfluff.rules.capitalisation.keywords]
+capitalisation_policy = "lower"
+
+[tool.sqlfluff.rules.capitalisation.functions]
+extended_capitalisation_policy = "lower"
+
+[tool.sqlfluff.rules.capitalisation.literals]
+capitalisation_policy = "lower"
+
+[tool.sqlfluff.rules.references.special_chars]
+additional_allowed_characters = "àéè '-"
+
+[tool.ruff]
+line-length = 119
+
+[tool.ruff.lint]
+ignore = [
+    "AIR301",  # Reactivate on 3.0+ migration https://docs.astral.sh/ruff/rules/airflow3-removal/
+    "AIR302",  # Reactivate on 3.0+ migration https://docs.astral.sh/ruff/rules/airflow3-moved-to-provider/
+    "AIR311",  # Reactivate on 3.0+ migration https://docs.astral.sh/ruff/rules/airflow3-suggested-update/
+    "AIR312",  # Reactivate on 3.0+ migration https://docs.astral.sh/ruff/rules/airflow3-suggested-to-move-to-provider/
+]
+# see prefixes in https://docs.astral.sh/ruff/rules/
+select = [
+    "F",  # pyflakes
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "I",  # isort
+    "UP",  # pyupgrade
+    "TID",  # flake8-tidy-imports
+    "LOG",  # flake8-logging
+    "G",  # flake8-logging-format
+    "B",  # flak8-bugbear
+    "A",  # flake8-builtins
+    "INP",  # flake8-no-pep420
+    "SIM",  # flake8-simplify
+    "AIR",  # Airflow
+    "PD",  # pandas-vet
+    "NPY",  # NumPy-specific rules
+    "N",  # pep8-naming
+    "PERF",  # perflint
+    "RUF",  # Ruff-specific rules
+    "FURB",  # refurb
+]
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+lines-after-imports = 2
+
+[tool.ruff.lint.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+[tool.pytest.ini_options]
+testpaths = ["dags", "tests"]
+python_files = ["test_*.py"]
+filterwarnings = [
+    "error",
+]
+addopts = [
+    "--strict-markers",
+]

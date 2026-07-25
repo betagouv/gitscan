@@ -1,0 +1,43 @@
+2026-07-22T10:09:38Z - c534002 - Diego Felices : add dag and dbt models to get dora data for actes metier
+2026-07-22T07:17:51Z - a3cc427 - Diego Felices : Add ESAT survey field-level exclusions
+2026-07-21T09:25:51Z - e61d488 - Yannick : track imer from emplois
+2026-07-20T12:53:20Z - 68cdceb - Yannick : airflow bump
+2026-07-16T07:34:43Z - 7ed7c92 - Diego Felices : Add RDV-I dbt models for actes metier dashboard and build step in DAG
+2026-07-15T07:25:27Z - 787785a - Yannick : macro to index columns
+2026-07-14T09:07:57Z - 379f31a - Diego Felices : Fix stale data inclusion test ref
+2026-07-14T09:07:57Z - 43ecc6b - Diego Felices : add dag and dbt models to get matomo data for actes metiers dashboard
+2026-07-13T13:39:04Z - c79c42a - Yannick : add dpt number
+2026-07-13T10:35:50Z - 3f03ff9 - Diego Felices : inclure toutes les réponses dans le profil FAGERH
+2026-07-06T16:54:55Z - e324274 - Diego Felices : pad departments in fagerh answers to easier join with dim_commune
+2026-07-06T15:00:15Z - fd5da07 - Yannick : remove duplicates from offer/demand
+2026-07-06T09:23:20Z - 178c574 - Diego Felices : feat: refactor data inclusion models around dimension tables for structures and services
+2026-07-06T09:23:20Z - d950006 - Yannick : feat:refacto of the di's models + deduplicated structures removed
+2026-07-06T07:36:18Z - 7a7b434 - Yannick : dump marche
+2026-07-02T09:48:30Z - afb0eb2 - Diego Felices : add documentation for rdvi tables in dbt _sources.yml
+2026-07-02T09:19:16Z - f225c7e - Diego Felices : Refactor ESAT answer models to use mapped survey answers for analysis and modify DAG to launch with tag
+2026-07-01T16:51:15Z - 46c0ea3 - Diego Felices : add dag and dbt models to download fagerh answers and process them for analytics
+2026-07-01T15:39:29Z - c9590f8 - Diego Felices : add dora documentation to sources in dbt
+2026-06-26T14:11:15Z - 1dd1218 - dependabot[bot] : build(deps): bump actions/checkout from 6.0.1 to 7.0.0
+2026-06-26T14:11:12Z - e166bf8 - dependabot[bot] : build(deps): bump astral-sh/setup-uv from 8.1.0 to 8.2.0
+2026-06-24T09:14:13Z - 1ae8d90 - Diego Felices : determine what answers correspond to an esat official list and study the answer rates
+2026-06-18T08:22:52Z - 4edc848 - Diego Felices : Clarify geographic columns in candidatures_echelle_locale
+2026-06-10T15:19:36Z - dec2418 - Yannick : accept notion.com links
+2026-06-03T14:40:23Z - 450896b - Yannick : improvements following Annaelle feedback
+2026-06-03T14:40:23Z - 80c364c - Yannick : removing bad columns
+2026-06-03T14:40:23Z - 5f48477 - Yannick : exclude staging from sync dbt/mb
+2026-06-03T14:40:23Z - 44dd51e - Yannick : chore:improve dbt docs for the tables synced with autometa's db
+2026-06-03T10:05:22Z - d364514 - Diego Felices : create DAG to sync rdvi data every morning
+2026-06-01T15:44:52Z - 35ecd30 - dependabot[bot] : build(deps): bump mheap/github-action-required-labels
+2026-06-01T15:44:24Z - ee9f740 - dependabot[bot] : build(deps): bump astral-sh/setup-uv from 7.2.0 to 8.1.0
+2026-06-01T15:42:27Z - 8ba8571 - dependabot[bot] : build(deps): bump actions/checkout from 6.0.1 to 6.0.2
+2026-05-20T10:51:56Z - 3b31ab6 - Diego Felices : replace stg_insee_appartenance_geo_communes with centralized dim commune
+2026-05-20T10:22:01Z - 9731dfb - Diego Felices : place marts_core folder inside public schema
+2026-05-20T09:29:00Z - d3d4e59 - Yannick : feat: dag to synchronize and create an autometa doc
+2026-05-20T08:30:31Z - bfaf94c - Yannick : add a drop...Cascade to esat populate database
+2026-05-19T14:59:55Z - 4d4e76a - Yannick : feat:update clpe's referential
+2026-05-18T10:12:03Z - ef63f60 - Diego Felices : increase deduplication cases: also by same siret or same lower cased name
+2026-05-18T10:12:03Z - 8725e53 - Diego Felices : complete esat dag + all dbt models required for the analysis of the survey
+2026-05-18T10:12:03Z - 6671c11 - Yannick : dag ingestion esat data
+2026-05-07T15:45:11Z - 6d05dca - Yannick : chore:fix bug with duplicated NIR in fluxIAE
+2026-05-06T07:40:26Z - 9607004 - Yannick : use chunks and pyscopg2 to sync autometa tables
+2026-05-04T13:17:20Z - 065b3ee - Yannick : chore:add a new CI rule:notion links are needed
