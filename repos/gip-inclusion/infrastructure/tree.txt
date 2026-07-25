@@ -1,0 +1,220 @@
+.
+├── .editorconfig
+├── .github
+│   ├── dependabot.yml
+│   ├── pull_request_template.md
+│   ├── scripts
+│   │   └── build_matrix.py
+│   └── workflows
+│       ├── _terraform-module.yml
+│       ├── dependabot-autofix.yml
+│       └── terraform-orchestrator.yml
+├── .gitignore
+├── .pre-commit-config.yaml
+├── CONTRIBUTING.md
+├── LICENSE
+├── Makefile
+├── README.md
+├── infrastructure
+│   ├── _modules
+│   │   └── dns
+│   │       └── records
+│   │           └── terraform
+│   │               ├── README.md
+│   │               ├── data.tf
+│   │               ├── main.tf
+│   │               ├── providers.tf
+│   │               └── variables.tf
+│   ├── iac-gip-inclusion
+│   │   ├── buckets
+│   │   │   └── iac-gip-inclusion-tfstate
+│   │   │       └── terraform
+│   │   │           ├── .terraform.lock.hcl
+│   │   │           ├── README.md
+│   │   │           ├── backend.tf
+│   │   │           ├── data.tf
+│   │   │           ├── main.tf
+│   │   │           ├── provider.tf
+│   │   │           ├── terraform.tfvars
+│   │   │           └── variables.tf
+│   │   ├── dns
+│   │   │   ├── communaute
+│   │   │   │   └── terraform
+│   │   │   │       ├── .terraform.lock.hcl
+│   │   │   │       ├── README.md
+│   │   │   │       ├── backend.tf
+│   │   │   │       ├── data.tf
+│   │   │   │       ├── main.tf
+│   │   │   │       ├── providers.tf
+│   │   │   │       ├── terraform.tfvars
+│   │   │   │       └── variables.tf
+│   │   │   ├── data-inclusion
+│   │   │   │   └── terraform
+│   │   │   │       ├── .terraform.lock.hcl
+│   │   │   │       ├── README.md
+│   │   │   │       ├── backend.tf
+│   │   │   │       ├── data.tf
+│   │   │   │       ├── main.tf
+│   │   │   │       ├── providers.tf
+│   │   │   │       ├── terraform.tfvars
+│   │   │   │       └── variables.tf
+│   │   │   ├── dora
+│   │   │   │   └── terraform
+│   │   │   │       ├── .terraform.lock.hcl
+│   │   │   │       ├── README.md
+│   │   │   │       ├── backend.tf
+│   │   │   │       ├── data.tf
+│   │   │   │       ├── main.tf
+│   │   │   │       ├── providers.tf
+│   │   │   │       ├── terraform.tfvars
+│   │   │   │       └── variables.tf
+│   │   │   ├── email
+│   │   │   │   └── terraform
+│   │   │   │       ├── .terraform.lock.hcl
+│   │   │   │       ├── README.md
+│   │   │   │       ├── backend.tf
+│   │   │   │       ├── data.tf
+│   │   │   │       ├── main.tf
+│   │   │   │       ├── providers.tf
+│   │   │   │       ├── terraform.tfvars
+│   │   │   │       └── variables.tf
+│   │   │   ├── emplois
+│   │   │   │   └── terraform
+│   │   │   │       ├── .terraform.lock.hcl
+│   │   │   │       ├── README.md
+│   │   │   │       ├── backend.tf
+│   │   │   │       ├── data.tf
+│   │   │   │       ├── main.tf
+│   │   │   │       ├── providers.tf
+│   │   │   │       ├── terraform.tfvars
+│   │   │   │       └── variables.tf
+│   │   │   ├── gip-inclusion
+│   │   │   │   └── terraform
+│   │   │   │       ├── .terraform.lock.hcl
+│   │   │   │       ├── README.md
+│   │   │   │       ├── backend.tf
+│   │   │   │       ├── data.tf
+│   │   │   │       ├── main.tf
+│   │   │   │       ├── providers.tf
+│   │   │   │       ├── terraform.tfvars
+│   │   │   │       └── variables.tf
+│   │   │   ├── gps
+│   │   │   │   └── terraform
+│   │   │   │       ├── .terraform.lock.hcl
+│   │   │   │       ├── README.md
+│   │   │   │       ├── backend.tf
+│   │   │   │       ├── data.tf
+│   │   │   │       ├── main.tf
+│   │   │   │       ├── providers.tf
+│   │   │   │       ├── terraform.tfvars
+│   │   │   │       └── variables.tf
+│   │   │   ├── marche
+│   │   │   │   └── terraform
+│   │   │   │       ├── .terraform.lock.hcl
+│   │   │   │       ├── README.md
+│   │   │   │       ├── backend.tf
+│   │   │   │       ├── data.tf
+│   │   │   │       ├── main.tf
+│   │   │   │       ├── providers.tf
+│   │   │   │       ├── terraform.tfvars
+│   │   │   │       └── variables.tf
+│   │   │   ├── rdv-insertion
+│   │   │   │   └── terraform
+│   │   │   │       ├── .terraform.lock.hcl
+│   │   │   │       ├── README.md
+│   │   │   │       ├── backend.tf
+│   │   │   │       ├── data.tf
+│   │   │   │       ├── main.tf
+│   │   │   │       ├── providers.tf
+│   │   │   │       ├── terraform.tfvars
+│   │   │   │       └── variables.tf
+│   │   │   ├── traiteurs-engages
+│   │   │   │   └── terraform
+│   │   │   │       ├── .terraform.lock.hcl
+│   │   │   │       ├── README.md
+│   │   │   │       ├── backend.tf
+│   │   │   │       ├── data.tf
+│   │   │   │       ├── main.tf
+│   │   │   │       ├── providers.tf
+│   │   │   │       ├── terraform.tfvars
+│   │   │   │       └── variables.tf
+│   │   │   └── zones
+│   │   │       └── terraform
+│   │   │           ├── .terraform.lock.hcl
+│   │   │           ├── README.md
+│   │   │           ├── backend.tf
+│   │   │           ├── data.tf
+│   │   │           ├── main.tf
+│   │   │           ├── outputs.tf
+│   │   │           ├── providers.tf
+│   │   │           ├── terraform.tfvars
+│   │   │           └── variables.tf
+│   │   └── iam
+│   │       └── terraform
+│   │           ├── .terraform.lock.hcl
+│   │           ├── README.md
+│   │           ├── backend.tf
+│   │           ├── data.tf
+│   │           ├── main.tf
+│   │           ├── output.tf
+│   │           ├── provider.tf
+│   │           ├── terraform.tfvars
+│   │           └── variables.tf
+│   ├── organization
+│   │   ├── README.md
+│   │   └── projects
+│   │       └── terraform
+│   │           ├── .terraform.lock.hcl
+│   │           ├── README.md
+│   │           ├── backend.tf
+│   │           ├── main.tf
+│   │           ├── providers.tf
+│   │           ├── terraform.tfvars
+│   │           └── variables.tf
+│   ├── site-institutionnel-2025
+│   │   ├── buckets
+│   │   │   └── terraform
+│   │   │       ├── .terraform.lock.hcl
+│   │   │       ├── README.md
+│   │   │       ├── backend.tf
+│   │   │       ├── data.tf
+│   │   │       ├── main.tf
+│   │   │       ├── provider.tf
+│   │   │       ├── terraform.tfvars
+│   │   │       └── variables.tf
+│   │   └── iam
+│   │       └── terraform
+│   │           ├── .terraform.lock.hcl
+│   │           ├── README.md
+│   │           ├── backend.tf
+│   │           ├── data.tf
+│   │           ├── main.tf
+│   │           ├── provider.tf
+│   │           ├── terraform.tfvars
+│   │           └── variables.tf
+│   └── traiteurs-engages
+│       ├── buckets
+│       │   └── terraform
+│       │       ├── .terraform.lock.hcl
+│       │       ├── README.md
+│       │       ├── backend.tf
+│       │       ├── data.tf
+│       │       ├── main.tf
+│       │       ├── provider.tf
+│       │       ├── terraform.tfvars
+│       │       └── variables.tf
+│       └── iam
+│           └── terraform
+│               ├── .terraform.lock.hcl
+│               ├── README.md
+│               ├── backend.tf
+│               ├── data.tf
+│               ├── main.tf
+│               ├── provider.tf
+│               ├── terraform.tfvars
+│               └── variables.tf
+├── makefiles
+│   ├── base.mk
+│   └── terraform.mk
+└── pyproject.toml
+52 directories, 167 files
