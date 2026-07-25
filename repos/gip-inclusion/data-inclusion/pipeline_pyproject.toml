@@ -1,0 +1,90 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = ["setuptools", "wheel"]
+
+[project]
+requires-python = ">=3.13"
+name = "data-inclusion-pipeline"
+version = "0.1.0"
+
+[tool.setuptools.packages.find]
+where = ["dags"]
+namespaces = true
+
+[tool.ruff.lint]
+# see prefixes in https://beta.ruff.rs/docs/rules/
+select = [
+    "PD",  # pandas-vet
+    "F",  # pyflakes
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "I",  # isort
+    "UP",  # pyupgrade
+    # Do not enable bandit yet as too many violations are reported.
+    # "S",  # bandit
+]
+
+[tool.ruff.lint.isort]
+section-order = ["future","standard-library","third-party","airflow","first-party","local-folder"]
+combine-as-imports = true
+known-first-party = ["data_inclusion"]
+
+[tool.ruff.lint.isort.sections]
+airflow = ["airflow"]
+
+[tool.pytest.ini_options]
+testpaths = [
+    "dags",
+    "tests",
+    "dbt/macros/udfs",
+]
+markers = '''
+    integration: mark test as requiring external ressources (like an api)
+'''
+
+[tool.sqlfluff.core]
+dialect = "postgres"
+exclude_rules = [
+    "layout.long_lines",
+    "structure.column_order",
+    # TODO: cleanup and enable the `references.quoting` rule.
+    # It was re-enabled by default for postgresql in sqlfluff 3.2.0.
+    # There is many violations currently in our project. In addition,
+    # removing double quoting raises `aliasing.self_alias.column`
+    # violations that were concealed by the double quoting.
+    "references.quoting",
+]
+templater = "dbt"
+
+[tool.sqlfluff.layout.type.alias_expression]
+# https://docs.sqlfluff.com/en/stable/layout.html#aligned-elements
+# We want non-default spacing _before_ the alias expressions.
+spacing_before = "align"
+# We want to align them within the next outer select clause.
+# This means for example that alias expressions within the FROM
+# or JOIN clause would _not_ be aligned with them.
+align_within = "select_clause"
+# The point at which to stop searching outward for siblings, which
+# in this example would likely be the boundary of a CTE. Stopping
+# when we hit brackets is usually a good rule of thumb for this
+# configuration.
+align_scope = "bracketed"
+
+
+[tool.sqlfluff.rules.capitalisation.keywords]
+capitalisation_policy = "upper"
+
+[tool.sqlfluff.rules.capitalisation.functions]
+extended_capitalisation_policy = "upper"
+
+[tool.sqlfluff.rules.capitalisation.literals]
+# Null & Boolean Literals
+capitalisation_policy = "upper"
+
+[tool.sqlfluff.rules.convention.casting_style]
+# SQL type casting
+preferred_type_casting_style = "cast"
+
+[tool.sqlfluff.templater.dbt]
+project_dir = "./pipeline/dbt"
+profiles_dir = "./pipeline/dbt"

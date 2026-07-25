@@ -1,0 +1,222 @@
+x-airflow-common:
+  &airflow-common
+
+  image: data-inclusion/airflow
+  build:
+    context: pipeline
+
+  environment:
+    &airflow-common-environment
+    AIRFLOW__API_AUTH__JWT_SECRET: USE_IN_DEVELOPMENT_ONLY
+    AIRFLOW__API__SECRET_KEY: USE_IN_DEVELOPMENT_ONLY
+    AIRFLOW__API__WORKERS:
+    AIRFLOW__CORE__DEFAULT_POOL_TASK_SLOT_COUNT: 24
+    AIRFLOW__CORE__DEFAULT_TIMEZONE: ${AIRFLOW__CORE__DEFAULT_TIMEZONE}
+    AIRFLOW__CORE__EXECUTION_API_SERVER_URL: http://airflow-api-server:8080/execution/
+    AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+    AIRFLOW__CORE__MAX_MAP_LENGTH: 2048
+    AIRFLOW__CORE__PARALLELISM: 4
+    AIRFLOW__CORE__SIMPLE_AUTH_MANAGER_ALL_ADMINS: 'true'
+    AIRFLOW__DAG_PROCESSOR__MIN_FILE_PROCESS_INTERVAL: 60
+    AIRFLOW__DAG_PROCESSOR__PARSING_PROCESSES: 4
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql://airflow:airflow@airflow-db:5432/airflow
+    AIRFLOW__SCHEDULER__MAX_TIS_PER_QUERY: 0
+    # Connections
+    AIRFLOW_CONN_PG: postgresql://data-inclusion:data-inclusion@datawarehouse:5432/data-inclusion
+    AIRFLOW_CONN_S3: '{"conn_type": "aws", "extra": {"endpoint_url": "http://minio:9000", "aws_access_key_id": "minioadmin", "aws_secret_access_key": "minioadmin", "service_config": {"s3": {"bucket_name": "data-inclusion-lake"}}}}'
+
+    # Variables
+    AIRFLOW_VAR_ANTHROPIC_API_KEY: ${AIRFLOW_VAR_ANTHROPIC_API_KEY}
+    AIRFLOW_VAR_BREVO_API_KEY: ${AIRFLOW_VAR_BREVO_API_KEY}
+    AIRFLOW_VAR_CARIF_OREF_URL: ${AIRFLOW_VAR_CARIF_OREF_URL}
+    AIRFLOW_VAR_DATAGOUV_API_KEY: ${AIRFLOW_VAR_DATAGOUV_API_KEY}
+    AIRFLOW_VAR_DORA_API_TOKEN: ${AIRFLOW_VAR_DORA_API_TOKEN}
+    AIRFLOW_VAR_FREDO_API_TOKEN: ${AIRFLOW_VAR_FREDO_API_TOKEN}
+    AIRFLOW_VAR_FT_API_TOKEN: ${AIRFLOW_VAR_FT_API_TOKEN}
+    AIRFLOW_VAR_GRIST_API_TOKEN: ${AIRFLOW_VAR_GRIST_API_TOKEN}
+    AIRFLOW_VAR_MISSION_LOCALE_API_SECRET: ${AIRFLOW_VAR_MISSION_LOCALE_API_SECRET}
+    AIRFLOW_VAR_MLFLOW_TRACKING_URI: http://mlflow:5000
+    AIRFLOW_VAR_DORA_PREPROD_API_TOKEN: ${AIRFLOW_VAR_DORA_PREPROD_API_TOKEN}
+    AIRFLOW_VAR_EMPLOIS_API_TOKEN: ${AIRFLOW_VAR_EMPLOIS_API_TOKEN}
+    AIRFLOW_VAR_MEDIATION_NUMERIQUE_API_TOKEN: ${AIRFLOW_VAR_MEDIATION_NUMERIQUE_API_TOKEN}
+    AIRFLOW_VAR_SOLIGUIDE_API_TOKEN: ${AIRFLOW_VAR_SOLIGUIDE_API_TOKEN}
+    AIRFLOW_VAR_TWOCAPTCHA_API_KEY: ${AIRFLOW_VAR_TWOCAPTCHA_API_KEY}
+    AIRFLOW_VAR_MA_BOUSSOLE_AIDANTS_API_KEY: ${AIRFLOW_VAR_MA_BOUSSOLE_AIDANTS_API_KEY}
+    AIRFLOW_VAR_ENVIRONMENT: test
+
+  volumes:
+    - ./pipeline/dbt:/opt/airflow/dbt
+    - ./pipeline/dags:/opt/airflow/dags
+
+  user: ${AIRFLOW_UID:-50000}:0
+
+  depends_on:
+    &airflow-common-depends-on
+    airflow-db:
+      condition: service_healthy
+    airflow-init:
+      condition: service_completed_successfully
+
+services:
+  airflow-db:
+    image: postgres:18
+    restart: no
+    healthcheck:
+      test: pg_isready
+      interval: 5s
+      retries: 5
+    ports:
+      - ${AIRFLOW_DB_PORT:-5454}:5432
+    environment:
+      - PGUSER=airflow
+      - POSTGRES_DB=airflow
+      - POSTGRES_USER=airflow
+      - POSTGRES_PASSWORD=airflow
+
+  airflow-api-server:
+    <<: *airflow-common
+    command: api-server
+    restart: no
+    ports:
+      - ${AIRFLOW_UI_PORT:-8080}:8080
+
+  airflow-dag-processor:
+    <<: *airflow-common
+    command: dag-processor
+    restart: no
+    healthcheck:
+      test: airflow jobs check --job-type DagFileProcessorJob --local
+      interval: 10s
+      timeout: 20s
+      retries: 5
+      start_period: 30s
+
+  airflow-scheduler:
+    <<: *airflow-common
+    command: scheduler
+    restart: no
+    healthcheck:
+      test: airflow jobs check --job-type SchedulerJob --local
+      interval: 10s
+      timeout: 20s
+      retries: 5
+      start_period: 30s
+
+  airflow-init:
+    <<: *airflow-common
+    command: version
+    restart: no
+    environment:
+      <<: *airflow-common-environment
+      _AIRFLOW_DB_MIGRATE: 'true'
+    depends_on:
+      airflow-db:
+        condition: service_healthy
+
+  playwright:
+    # the version should match the tasks requirements
+    image: mcr.microsoft.com/playwright:v1.55.0-noble
+    command: npx -y playwright@1.55.0 run-server --port 3000 --host 0.0.0.0
+    user: pwuser
+    init: true
+    ipc: host
+
+  minio:
+    image: minio/minio:RELEASE.2025-07-23T15-54-02Z
+    command: server /data
+    restart: no
+    ports:
+      - 9000:9000
+      - 9001:9001
+    environment:
+      - MINIO_CONSOLE_ADDRESS=:9001
+      - MINIO_ROOT_USER=minioadmin
+      - MINIO_ROOT_PASSWORD=minioadmin
+    volumes:
+      - minio-data:/data
+
+  minio-init:
+    image: minio/mc:RELEASE.2025-07-21T05-28-08Z
+    entrypoint: /bin/bash -c
+    command:
+      - |
+        mc alias set tmp http://minio:9000 minioadmin minioadmin
+        mc admin update --yes tmp
+        mc mb --ignore-existing tmp/data-inclusion-lake
+    depends_on:
+      - minio
+
+  datawarehouse:
+    image: data-inclusion/datawarehouse
+    build: datawarehouse
+    restart: no
+    command: -c fsync=off -c full_page_writes=off -c synchronous_commit=off -c log_statement=all
+    healthcheck:
+      test: pg_isready
+      interval: 5s
+      retries: 5
+    ports:
+      - ${TARGET_POSTGRES_PORT:-5433}:5432
+    environment:
+      - PGUSER=data-inclusion
+      - POSTGRES_DB=data-inclusion
+      - POSTGRES_USER=data-inclusion
+      - POSTGRES_PASSWORD=data-inclusion
+      - BREVO_API_KEY=${AIRFLOW_VAR_BREVO_API_KEY}
+    volumes:
+      - pg-data:/var/lib/postgresql
+
+  api:
+    image: data-inclusion/api
+    build: api
+    depends_on:
+      datawarehouse:
+        condition: service_healthy
+    restart: no
+    ports:
+      - ${API_PORT:-8000}:8000
+    environment:
+      - ENV=${API_ENV:-dev}
+      - DEBUG=${API_DEBUG:-False}
+      - DATABASE_URL=postgresql://data-inclusion:data-inclusion@datawarehouse:5432/diapi
+      - BASE_URL=http://127.0.0.1:8000
+      - SECRET_KEY=USE_IN_DEVELOPMENT_ONLY
+      - AWS_ENDPOINT_URL=http://minio:9000
+      - DATALAKE_BUCKET_NAME=data-inclusion-lake
+      - AWS_SECRET_ACCESS_KEY=minioadmin
+      - AWS_ACCESS_KEY_ID=minioadmin
+
+  mlflow-db:
+    image: postgres:18
+    restart: no
+    healthcheck:
+      test: pg_isready
+      interval: 5s
+      retries: 5
+    environment:
+      - PGUSER=mlflow
+      - POSTGRES_DB=mlflow
+      - POSTGRES_USER=mlflow
+      - POSTGRES_PASSWORD=mlflow
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v3.12.0-full
+    depends_on:
+      mlflow-db:
+        condition: service_healthy
+    command: mlflow server
+    environment:
+      - MLFLOW_HOST=0.0.0.0
+      - MLFLOW_BACKEND_STORE_URI=postgresql://mlflow:mlflow@mlflow-db:5432/mlflow
+      - MLFLOW_DISABLE_TELEMETRY=True
+      - MLFLOW_SERVER_ALLOWED_HOSTS=localhost:5000,mlflow:5000
+    ports:
+      - 5000:5000
+
+volumes:
+  pg-data:
+  minio-data:
+
+networks:
+  default:
+    name: data-inclusion

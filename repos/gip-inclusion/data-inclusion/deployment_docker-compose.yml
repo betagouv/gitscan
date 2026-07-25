@@ -1,0 +1,244 @@
+# See https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html#fetching-docker-compose-yaml
+
+name: "data-inclusion"
+
+x-airflow-common:
+  &airflow-common
+
+  image: ghcr.io/gip-inclusion/data-inclusion-pipeline:${STACK_VERSION}
+
+  environment:
+    &airflow-common-environment
+    AIRFLOW__API_AUTH__JWT_SECRET: ${AIRFLOW__API_AUTH__JWT_SECRET}
+    AIRFLOW__API__BASE_URL: https://${AIRFLOW_HOSTNAME}
+    AIRFLOW__CORE__AUTH_MANAGER: airflow.providers.fab.auth_manager.fab_auth_manager.FabAuthManager
+    AIRFLOW__CORE__DEFAULT_TIMEZONE: Europe/Paris
+    AIRFLOW__CORE__EXECUTION_API_SERVER_URL: http://airflow-api-server:8080/execution/
+    AIRFLOW__CORE__FERNET_KEY: ${AIRFLOW__CORE__FERNET_KEY}
+    AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+    AIRFLOW__CORE__MAX_MAP_LENGTH: 2048
+    AIRFLOW__CORE__PARALLELISM: 4
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql://airflow:airflow@airflow-db:5432/airflow
+    AIRFLOW__SCHEDULER__MAX_TIS_PER_QUERY: 0
+    AIRFLOW__SENTRY__RELEASE: ${AIRFLOW__SENTRY__RELEASE}
+    AIRFLOW__SENTRY__SENTRY_DSN: ${AIRFLOW__SENTRY__SENTRY_DSN}
+    AIRFLOW__SENTRY__TRACES_SAMPLE_RATE: 0.1
+    # Connections
+    AIRFLOW_CONN_PG: ${AIRFLOW_CONN_PG}
+    AIRFLOW_CONN_S3: ${AIRFLOW_CONN_S3}
+    AIRFLOW_CONN_SLACK: ${AIRFLOW_CONN_SLACK}
+
+    # Variables
+    AIRFLOW_VAR_ANTHROPIC_API_KEY: ${AIRFLOW_VAR_ANTHROPIC_API_KEY}
+    AIRFLOW_VAR_BREVO_API_KEY: ${AIRFLOW_VAR_BREVO_API_KEY}
+    AIRFLOW_VAR_CARIF_OREF_URL: ${AIRFLOW_VAR_CARIF_OREF_URL}
+    AIRFLOW_VAR_DATAGOUV_API_KEY: ${AIRFLOW_VAR_DATAGOUV_API_KEY}
+    AIRFLOW_VAR_DORA_API_TOKEN: ${AIRFLOW_VAR_DORA_API_TOKEN}
+    AIRFLOW_VAR_DORA_API_URL: ${AIRFLOW_VAR_DORA_API_URL}
+    AIRFLOW_VAR_EMPLOIS_API_TOKEN: ${AIRFLOW_VAR_EMPLOIS_API_TOKEN}
+    AIRFLOW_VAR_ENVIRONMENT: ${AIRFLOW_VAR_ENVIRONMENT}
+    AIRFLOW_VAR_FREDO_API_TOKEN: ${AIRFLOW_VAR_FREDO_API_TOKEN}
+    AIRFLOW_VAR_MISSION_LOCALE_API_SECRET: ${AIRFLOW_VAR_MISSION_LOCALE_API_SECRET}
+    AIRFLOW_VAR_MLFLOW_TRACKING_URI: http://mlflow:5000
+    AIRFLOW_VAR_MLFLOW_TRACKING_PASSWORD: ${MLFLOW_TRACKING_PASSWORD}
+    AIRFLOW_VAR_OPENAI_API_KEY: ${AIRFLOW_VAR_OPENAI_API_KEY}
+    AIRFLOW_VAR_OPENAI_BASE_URL: ${AIRFLOW_VAR_OPENAI_BASE_URL}
+    AIRFLOW_VAR_FT_API_TOKEN: ${AIRFLOW_VAR_FT_API_TOKEN}
+    AIRFLOW_VAR_GRIST_API_TOKEN: ${AIRFLOW_VAR_GRIST_API_TOKEN}
+    AIRFLOW_VAR_MEDIATION_NUMERIQUE_API_TOKEN: ${AIRFLOW_VAR_MEDIATION_NUMERIQUE_API_TOKEN}
+    AIRFLOW_VAR_SOLIGUIDE_API_TOKEN: ${AIRFLOW_VAR_SOLIGUIDE_API_TOKEN}
+    AIRFLOW_VAR_TWOCAPTCHA_API_KEY: ${AIRFLOW_VAR_TWOCAPTCHA_API_KEY}
+    AIRFLOW_VAR_MA_BOUSSOLE_AIDANTS_API_KEY: ${AIRFLOW_VAR_MA_BOUSSOLE_AIDANTS_API_KEY}
+
+  volumes:
+    - airflow-logs:/opt/airflow/logs
+
+  depends_on:
+    &airflow-common-depends-on
+    airflow-db:
+      condition: service_healthy
+    airflow-init:
+      condition: service_completed_successfully
+
+services:
+  airflow-db:
+    image: postgres:18
+    restart: always
+    healthcheck:
+      test: pg_isready
+      interval: 5s
+      retries: 5
+    environment:
+      - PGUSER=airflow
+      - POSTGRES_DB=airflow
+      - POSTGRES_USER=airflow
+      - POSTGRES_PASSWORD=airflow
+
+  airflow-init:
+    <<: *airflow-common
+    command: version
+    environment:
+      <<: *airflow-common-environment
+      _AIRFLOW_DB_MIGRATE: 'true'
+      _AIRFLOW_WWW_USER_CREATE: 'true'
+      _AIRFLOW_WWW_USER_USERNAME: airflow
+      _AIRFLOW_WWW_USER_PASSWORD: ${AIRFLOW_WWW_USER_PASSWORD}
+    depends_on:
+      airflow-db:
+        condition: service_healthy
+
+  airflow-api-server:
+    <<: *airflow-common
+    command: api-server
+    restart: always
+    healthcheck:
+      test: curl --fail http://localhost:8080/api/v2/version
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    ports:
+      - 8080:8080
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.airflow.rule=Host(`${AIRFLOW_HOSTNAME}`)"
+      - "traefik.http.routers.airflow.entrypoints=websecure"
+      - "traefik.http.routers.airflow.tls.certresolver=main"
+
+  airflow-dag-processor:
+    <<: *airflow-common
+    command: dag-processor
+    restart: always
+    healthcheck:
+      test: airflow jobs check --job-type DagProcessorJob --local
+      interval: 10s
+      timeout: 20s
+      retries: 5
+      start_period: 30s
+
+  airflow-scheduler:
+    <<: *airflow-common
+    command: scheduler
+    restart: always
+    mem_limit: 16g
+    memswap_limit: 20g
+    healthcheck:
+      test: airflow jobs check --job-type SchedulerJob --local
+      interval: 10s
+      timeout: 20s
+      retries: 5
+      start_period: 30s
+
+  playwright:
+    # the version should match the tasks requirements
+    image: mcr.microsoft.com/playwright:v1.55.0-noble
+    command: npx -y playwright@1.55.0 run-server --port 3000 --host 0.0.0.0
+    user: pwuser
+    init: true
+    ipc: host
+    depends_on:
+      - airflow-scheduler
+
+  datawarehouse:
+    image: ghcr.io/gip-inclusion/data-inclusion-datawarehouse:${STACK_VERSION}
+    shm_size: '128mb'
+    restart: always
+    healthcheck:
+      test: pg_isready
+      interval: 5s
+      retries: 5
+    ports:
+      - 5432:5432
+    environment:
+      - PGUSER=${DATAWAREHOUSE_DI_USERNAME}
+      - POSTGRES_DB=${DATAWAREHOUSE_DI_DATABASE}
+      - POSTGRES_USER=${DATAWAREHOUSE_DI_USERNAME}
+      - POSTGRES_PASSWORD=${DATAWAREHOUSE_DI_PASSWORD}
+      - BREVO_API_KEY=${AIRFLOW_VAR_BREVO_API_KEY}
+    volumes:
+      - datawarehouse-data:/var/lib/postgresql
+
+  reverse-proxy:
+    image: traefik:v3.6
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    environment:
+      - TRAEFIK_PROVIDERS_DOCKER=true
+      - TRAEFIK_PROVIDERS_DOCKER_EXPOSEDBYDEFAULT=false
+      - TRAEFIK_ENTRYPOINTS_WEB_ADDRESS=:80
+      - TRAEFIK_ENTRYPOINTS_WEB_HTTP_REDIRECTIONS_ENTRYPOINT_TO=websecure
+      - TRAEFIK_ENTRYPOINTS_WEBSECURE_ADDRESS=:443
+      - TRAEFIK_CERTIFICATESRESOLVERS_MAIN_ACME_TLSCHALLENGE=true
+      - TRAEFIK_CERTIFICATESRESOLVERS_MAIN_ACME_EMAIL=tech@data.inclusion.beta.gouv.fr
+      - TRAEFIK_CERTIFICATESRESOLVERS_MAIN_ACME_STORAGE=/letsencrypt/acme.json
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - letsencrypt-data:/letsencrypt
+
+  mlflow-db:
+    image: postgres:18
+    restart: no
+    healthcheck:
+      test: pg_isready
+      interval: 5s
+      retries: 5
+    environment:
+      - PGUSER=mlflow
+      - POSTGRES_DB=mlflow
+      - POSTGRES_USER=mlflow
+      - POSTGRES_PASSWORD=mlflow
+    volumes:
+      - mlflow-data:/var/lib/postgresql
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v3.12.0-full
+    depends_on:
+      mlflow-db:
+        condition: service_healthy
+    entrypoint: /bin/bash -c
+    command:
+      - |
+        # install extra depencencies for auth
+        pip install mlflow[auth]
+
+        # create config for basic auth
+        mkdir -p /etc/mlflow/server/auth
+        cat > /etc/mlflow/server/auth/config.ini <<-EOF
+        [mlflow]
+        default_permission = READ
+        database_uri = $${MLFLOW_BACKEND_STORE_URI}
+        admin_username = admin
+        admin_password = $${MLFLOW_TRACKING_PASSWORD}
+        authorization_function = mlflow.server.auth:authenticate_request_basic_auth
+        EOF
+
+        # start mlflow server
+        mlflow server --app-name basic-auth
+    environment:
+      - MLFLOW_TRACKING_PASSWORD=${MLFLOW_TRACKING_PASSWORD}
+      - MLFLOW_AUTH_CONFIG_PATH=/etc/mlflow/server/auth/config.ini
+      - MLFLOW_HOST=0.0.0.0
+      - MLFLOW_BACKEND_STORE_URI=postgresql://mlflow:mlflow@mlflow-db:5432/mlflow
+      - MLFLOW_DISABLE_TELEMETRY=True
+      - MLFLOW_SERVER_ALLOWED_HOSTS=${MLFLOW_HOSTNAME},mlflow:5000
+      - MLFLOW_SERVER_CORS_ALLOWED_ORIGINS=https://${MLFLOW_HOSTNAME}
+      - MLFLOW_FLASK_SERVER_SECRET_KEY=${MLFLOW_FLASK_SERVER_SECRET_KEY}
+    ports:
+      - 5000:5000
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.mlflow.rule=Host(`${MLFLOW_HOSTNAME}`)"
+      - "traefik.http.routers.mlflow.entrypoints=websecure"
+      - "traefik.http.routers.mlflow.tls.certresolver=main"
+
+volumes:
+  airflow-logs:
+  datawarehouse-data:
+  letsencrypt-data:
+  mlflow-data:
+
+networks:
+  default:
+    name: data-inclusion

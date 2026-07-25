@@ -1,0 +1,858 @@
+.
+├── .github
+│   ├── pull_request_template.md
+│   └── workflows
+│       ├── README.md
+│       ├── _build_images.yml
+│       ├── _terraform_deploy.yml
+│       ├── _test.yml
+│       ├── deploy_prod.yml
+│       └── deploy_staging.yml
+├── .gitignore
+├── .pre-commit-config.yaml
+├── .template.env
+├── .vscode
+│   ├── data-inclusion.code-workspace
+│   └── extensions.json
+├── CODEOWNERS
+├── CONTRIBUTING.md
+├── DEPLOYMENT.md
+├── LICENSE
+├── README.md
+├── api
+│   ├── .dockerignore
+│   ├── .python-version
+│   ├── .template.env
+│   ├── .vscode
+│   │   └── settings.json
+│   ├── CONTRIBUTING.md
+│   ├── Dockerfile
+│   ├── Procfile
+│   ├── README.md
+│   ├── USAGE.md
+│   ├── alembic.ini
+│   ├── cron.json
+│   ├── docker-entrypoint.sh
+│   ├── entrypoint.sh
+│   ├── locustfile.py
+│   ├── pyproject.toml
+│   ├── src
+│   │   ├── alembic
+│   │   │   ├── env.py
+│   │   │   ├── script.py.mako
+│   │   │   └── versions
+│   │   │       ├── 20240101_000000_init.py
+│   │   │       ├── 20260310_145938_all.py
+│   │   │       ├── 20260409_123543_drop_first_services_search_events.py
+│   │   │       ├── 20260420_175715_drop_v0.py
+│   │   │       ├── 20260423_081126_add_origin_to_search_events.py
+│   │   │       ├── 20260423_101515_seed_schema.py
+│   │   │       └── 20260423_170325_search_index.py
+│   │   └── data_inclusion
+│   │       └── api
+│   │           ├── __init__.py
+│   │           ├── analytics
+│   │           │   ├── __init__.py
+│   │           │   ├── helpers.py
+│   │           │   ├── models.py
+│   │           │   └── services.py
+│   │           ├── api_description.md
+│   │           ├── app.py
+│   │           ├── auth
+│   │           │   ├── __init__.py
+│   │           │   ├── dependencies.py
+│   │           │   ├── routes.py
+│   │           │   └── services.py
+│   │           ├── cli.py
+│   │           ├── config.py
+│   │           ├── core
+│   │           │   ├── __init__.py
+│   │           │   └── db.py
+│   │           ├── decoupage_administratif
+│   │           │   ├── __init__.py
+│   │           │   ├── commands.py
+│   │           │   ├── constants.py
+│   │           │   ├── models.py
+│   │           │   └── utils.py
+│   │           ├── inclusion_data
+│   │           │   ├── __init__.py
+│   │           │   ├── commands.py
+│   │           │   ├── models.py
+│   │           │   ├── parameters.py
+│   │           │   ├── routes.py
+│   │           │   ├── schemas.py
+│   │           │   ├── services.py
+│   │           │   └── sources.json
+│   │           ├── inclusion_schema
+│   │           │   ├── __init__.py
+│   │           │   ├── commands.py
+│   │           │   ├── models.py
+│   │           │   ├── routes.py
+│   │           │   └── schemas.py
+│   │           ├── utils
+│   │           │   ├── __init__.py
+│   │           │   ├── cursor_pagination.py
+│   │           │   ├── pagination.py
+│   │           │   ├── soliguide.py
+│   │           │   └── timezone.py
+│   │           ├── valideur
+│   │           │   ├── __init__.py
+│   │           │   ├── readers.py
+│   │           │   ├── routes.py
+│   │           │   ├── schemas.py
+│   │           │   ├── services.py
+│   │           │   ├── templates
+│   │           │   │   ├── base.html
+│   │           │   │   ├── fragments
+│   │           │   │   │   └── results.html
+│   │           │   │   └── valideur.html
+│   │           │   ├── translations.py
+│   │           │   └── utils.py
+│   │           └── widget
+│   │               ├── __init__.py
+│   │               ├── routes.py
+│   │               ├── static
+│   │               │   ├── icon-arrow-right-up-line.svg
+│   │               │   ├── icon-community-line.svg
+│   │               │   ├── icons
+│   │               │   │   ├── global-line.svg
+│   │               │   │   ├── map-pin-line.svg
+│   │               │   │   ├── route-line.svg
+│   │               │   │   └── search-line.svg
+│   │               │   ├── logo-di.svg
+│   │               │   ├── marianne
+│   │               │   │   ├── Marianne-Bold.woff2
+│   │               │   │   ├── Marianne-Bold_Italic.woff2
+│   │               │   │   ├── Marianne-Medium.woff2
+│   │               │   │   ├── Marianne-Medium_Italic.woff2
+│   │               │   │   ├── Marianne-Regular.woff2
+│   │               │   │   └── Marianne-Regular_Italic.woff2
+│   │               │   ├── reset.css
+│   │               │   └── styles.css
+│   │               └── templates
+│   │                   ├── base.html
+│   │                   ├── components
+│   │                   │   ├── card.html
+│   │                   │   ├── combobox.html
+│   │                   │   ├── pagination.html
+│   │                   │   └── select.html
+│   │                   ├── example.html
+│   │                   ├── fragments
+│   │                   │   └── results.html
+│   │                   └── widget.html
+│   ├── tests
+│   │   ├── __init__.py
+│   │   ├── communes.json
+│   │   ├── conftest.py
+│   │   ├── e2e
+│   │   │   ├── __init__.py
+│   │   │   ├── api
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── __snapshots__
+│   │   │   │   │   ├── test_inclusion_data.ambr
+│   │   │   │   │   └── test_openapi.ambr
+│   │   │   │   ├── conftest.py
+│   │   │   │   ├── test_analytics.py
+│   │   │   │   ├── test_auth.py
+│   │   │   │   ├── test_inclusion_data.py
+│   │   │   │   ├── test_inclusion_schema.py
+│   │   │   │   └── test_openapi.py
+│   │   │   ├── conftest.py
+│   │   │   ├── valideur
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── test_valideur.py
+│   │   │   └── widget
+│   │   │       ├── __init__.py
+│   │   │       └── test_widget.py
+│   │   ├── factories.py
+│   │   ├── fixtures
+│   │   │   └── dataset.xlsx
+│   │   └── unit
+│   │       ├── __init__.py
+│   │       ├── __snapshots__
+│   │       │   └── test_widget.ambr
+│   │       ├── conftest.py
+│   │       ├── test_analytics.py
+│   │       ├── test_commands.py
+│   │       ├── test_pagination.py
+│   │       ├── test_valideur.py
+│   │       └── test_widget.py
+│   └── uv.lock
+├── datawarehouse
+│   ├── .dockerignore
+│   ├── Dockerfile
+│   ├── README.md
+│   ├── deduplicate-model.bin
+│   ├── docker-entrypoint-initdb.d
+│   │   ├── 10_pg_trgm.sh
+│   │   ├── 10_plpython3u.sh
+│   │   ├── 10_postgis.sh
+│   │   └── 10_unaccent.sh
+│   ├── requirements.in
+│   └── requirements.txt
+├── deduplication
+│   ├── .gitignore
+│   ├── README.md
+│   ├── labels.json
+│   ├── main.ipynb
+│   ├── metadata.json
+│   ├── model.bin
+│   └── pyproject.toml
+├── deployment
+│   ├── .gitignore
+│   ├── .terraform.lock.hcl
+│   ├── .tool-versions
+│   ├── MIGRATION.md
+│   ├── README.md
+│   ├── backend.tf
+│   ├── docker-compose.yml
+│   ├── main.tf
+│   ├── outputs.tf
+│   ├── provider.tf
+│   ├── systemd
+│   │   └── system
+│   │       ├── cleanup.service
+│   │       └── cleanup.timer
+│   ├── template.terraform.tfvars.json
+│   └── variables.tf
+├── docker-compose.yml
+├── docs
+│   └── img
+│       ├── data-inclusion-archi-detailed.jpg
+│       ├── data-inclusion-archi-overview.jpg
+│       ├── data-inclusion-architecture.drawio.png
+│       ├── data-inclusion-data.drawio.png
+│       └── data-inclusion.drawio
+└── pipeline
+    ├── .dockerignore
+    ├── .gitignore
+    ├── .python-version
+    ├── .sqlfluffignore
+    ├── .vscode
+    │   └── settings.json
+    ├── CONTRIBUTING.md
+    ├── Dockerfile
+    ├── README.md
+    ├── RGPD.md
+    ├── dags
+    │   ├── .airflowignore
+    │   └── data_inclusion
+    │       └── pipeline
+    │           ├── __init__.py
+    │           ├── common
+    │           │   ├── __init__.py
+    │           │   ├── dags.py
+    │           │   ├── dbt.py
+    │           │   ├── grist.py
+    │           │   ├── pg.py
+    │           │   ├── s3.py
+    │           │   ├── sentry.py
+    │           │   ├── tasks.py
+    │           │   └── utils.py
+    │           ├── dags
+    │           │   ├── __init__.py
+    │           │   ├── extract_publics
+    │           │   │   ├── constants.py
+    │           │   │   ├── dags.py
+    │           │   │   ├── evaluation.py
+    │           │   │   ├── extraction.py
+    │           │   │   ├── model.py
+    │           │   │   ├── tasks.py
+    │           │   │   ├── test_extraction.py
+    │           │   │   └── test_model.py
+    │           │   ├── import_agefiph
+    │           │   │   ├── __init__.py
+    │           │   │   └── utils.py
+    │           │   ├── import_annuaire_du_service_public
+    │           │   │   ├── __init__.py
+    │           │   │   ├── constants.py
+    │           │   │   ├── dag.py
+    │           │   │   └── utils.py
+    │           │   ├── import_api_analytics
+    │           │   │   ├── __init__.py
+    │           │   │   └── dag.py
+    │           │   ├── import_carif_oref
+    │           │   │   ├── __init__.py
+    │           │   │   ├── lheo.xsd
+    │           │   │   └── utils.py
+    │           │   ├── import_cd35
+    │           │   │   ├── __init__.py
+    │           │   │   └── utils.py
+    │           │   ├── import_decoupage_administratif
+    │           │   │   ├── __init__.py
+    │           │   │   ├── constants.py
+    │           │   │   ├── dag.py
+    │           │   │   ├── geoapi.py
+    │           │   │   └── test_geoapi.py
+    │           │   ├── import_dora
+    │           │   │   ├── __init__.py
+    │           │   │   └── utils.py
+    │           │   ├── import_emplois_de_linclusion
+    │           │   │   ├── __init__.py
+    │           │   │   └── utils.py
+    │           │   ├── import_etat_civil
+    │           │   │   ├── __init__.py
+    │           │   │   ├── constants.py
+    │           │   │   └── dag.py
+    │           │   ├── import_finess
+    │           │   │   ├── __init__.py
+    │           │   │   ├── constants.py
+    │           │   │   ├── dag.py
+    │           │   │   └── utils.py
+    │           │   ├── import_france_travail
+    │           │   │   ├── __init__.py
+    │           │   │   └── utils.py
+    │           │   ├── import_fredo
+    │           │   │   ├── __init__.py
+    │           │   │   └── utils.py
+    │           │   ├── import_ma_boussole_aidants
+    │           │   │   ├── __init__.py
+    │           │   │   └── utils.py
+    │           │   ├── import_mediation_numerique
+    │           │   │   ├── __init__.py
+    │           │   │   └── utils.py
+    │           │   ├── import_mes_aides
+    │           │   │   ├── __init__.py
+    │           │   │   ├── constants.py
+    │           │   │   └── dag.py
+    │           │   ├── import_mission_locale
+    │           │   │   ├── __init__.py
+    │           │   │   └── utils.py
+    │           │   ├── import_monenfant
+    │           │   │   ├── __init__.py
+    │           │   │   ├── constants.py
+    │           │   │   ├── dag.py
+    │           │   │   └── utils.py
+    │           │   ├── import_reseau_alpha
+    │           │   │   ├── __init__.py
+    │           │   │   ├── dag.py
+    │           │   │   ├── fixtures
+    │           │   │   │   └── structures
+    │           │   │   │       ├── abc-formation.html
+    │           │   │   │       └── alpha-iv.html
+    │           │   │   ├── scraping.py
+    │           │   │   └── test_scraping.py
+    │           │   ├── import_sirene
+    │           │   │   ├── __init__.py
+    │           │   │   ├── constants.py
+    │           │   │   └── dag.py
+    │           │   ├── import_soliguide
+    │           │   │   ├── __init__.py
+    │           │   │   └── utils.py
+    │           │   ├── import_sources
+    │           │   │   ├── __init__.py
+    │           │   │   ├── dags.py
+    │           │   │   └── sources.py
+    │           │   ├── import_un_jeune_une_solution
+    │           │   │   ├── __init__.py
+    │           │   │   └── utils.py
+    │           │   ├── notify_rgpd_contacts
+    │           │   │   ├── __init__.py
+    │           │   │   ├── brevo.py
+    │           │   │   └── dag.py
+    │           │   ├── publish_opendata
+    │           │   │   ├── __init__.py
+    │           │   │   ├── constants.py
+    │           │   │   ├── dag.py
+    │           │   │   ├── datagouv.py
+    │           │   │   ├── helpers.py
+    │           │   │   ├── test_datagouv.py
+    │           │   │   └── test_helpers.py
+    │           │   ├── rename_services
+    │           │   │   ├── __init__.py
+    │           │   │   ├── constants.py
+    │           │   │   ├── dags.py
+    │           │   │   ├── evaluation.py
+    │           │   │   ├── model.py
+    │           │   │   ├── renommage.py
+    │           │   │   ├── tasks.py
+    │           │   │   └── test_model.py
+    │           │   ├── run_main_pipeline
+    │           │   │   ├── __init__.py
+    │           │   │   └── dag.py
+    │           │   └── summarize_changes
+    │           │       ├── __init__.py
+    │           │       └── dag.py
+    │           └── scripts
+    │               └── compare
+    │                   ├── USAGE.md
+    │                   ├── compare.py
+    │                   ├── instructions.md
+    │                   └── test_compare.py
+    ├── dbt
+    │   ├── .gitignore
+    │   ├── CONTRIBUTING.md
+    │   ├── dbt_project.yml
+    │   ├── macros
+    │   │   ├── create_udfs.sql
+    │   │   ├── generic_tests
+    │   │   │   └── tests__model_validate.sql
+    │   │   ├── stg_source_header.sql
+    │   │   ├── udfs
+    │   │   │   ├── brevo
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── brevo_import_contacts.py
+    │   │   │   │   ├── udf__brevo_import_contacts.sql
+    │   │   │   │   └── udf__brevo_import_contacts.sql.template
+    │   │   │   ├── build_udfs.py
+    │   │   │   ├── check_urls
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── check_urls.py
+    │   │   │   │   ├── udf__check_urls.sql
+    │   │   │   │   └── udf__check_urls.sql.template
+    │   │   │   ├── deduplicate
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── deduplicate.py
+    │   │   │   │   ├── test_deduplicate.py
+    │   │   │   │   ├── udf__deduplicate.sql
+    │   │   │   │   └── udf__deduplicate.sql.template
+    │   │   │   ├── france_travail
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── opening_hours.py
+    │   │   │   │   ├── test_opening_hours.py
+    │   │   │   │   ├── udf__france_travail_opening_hours.sql
+    │   │   │   │   └── udf__france_travail_opening_hours.sql.template
+    │   │   │   ├── geocode
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── geocode.py
+    │   │   │   │   ├── test_geocode.py
+    │   │   │   │   ├── udf__geocode.sql
+    │   │   │   │   └── udf__geocode.sql.template
+    │   │   │   ├── html_to_markdown
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── html_to_markdown.py
+    │   │   │   │   ├── test_html_to_markdown.py
+    │   │   │   │   ├── udf__html_to_markdown.sql
+    │   │   │   │   └── udf__html_to_markdown.sql.template
+    │   │   │   ├── phonenumbers
+    │   │   │   │   ├── format_phone_number.py
+    │   │   │   │   ├── test_format_phone_number.py
+    │   │   │   │   ├── udf__phonenumbers.sql
+    │   │   │   │   └── udf__phonenumbers.sql.template
+    │   │   │   ├── reseau_alpha
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── opening_hours.py
+    │   │   │   │   ├── test_opening_hours.py
+    │   │   │   │   ├── udf__reseau_alpha_opening_hours.sql
+    │   │   │   │   └── udf__reseau_alpha_opening_hours.sql.template
+    │   │   │   ├── schema
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── model_validate.py
+    │   │   │   │   ├── udf__model_validate.sql
+    │   │   │   │   └── udf__model_validate.sql.template
+    │   │   │   ├── soliguide
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── opening_hours.py
+    │   │   │   │   ├── test_opening_hours.py
+    │   │   │   │   ├── udf__soliguide_opening_hours.sql
+    │   │   │   │   └── udf__soliguide_opening_hours.sql.template
+    │   │   │   ├── udf__monenfant_opening_hours.sql
+    │   │   │   ├── udf__score.sql
+    │   │   │   └── udf__slugify.sql
+    │   │   └── unnest.sql
+    │   ├── models
+    │   │   ├── intermediate
+    │   │   │   └── v1
+    │   │   │       ├── 001_mappings
+    │   │   │       │   ├── action_logement
+    │   │   │       │   │   ├── _action_logement__models.yml
+    │   │   │       │   │   ├── int_action_logement__adresses_v1.sql
+    │   │   │       │   │   ├── int_action_logement__services_v1.sql
+    │   │   │       │   │   └── int_action_logement__structures_v1.sql
+    │   │   │       │   ├── agefiph
+    │   │   │       │   │   ├── _agefiph__models.yml
+    │   │   │       │   │   ├── _map_agefiph_thematiques_v1.sql
+    │   │   │       │   │   ├── int_agefiph__adresses_v1.sql
+    │   │   │       │   │   ├── int_agefiph__services_v1.sql
+    │   │   │       │   │   └── int_agefiph__structures_v1.sql
+    │   │   │       │   ├── carif_oref
+    │   │   │       │   │   ├── _carif_oref__models.yml
+    │   │   │       │   │   ├── _map_carif_oref__publics.sql
+    │   │   │       │   │   ├── _map_carif_oref__thematiques.sql
+    │   │   │       │   │   ├── int_carif_oref__adresses_v1.sql
+    │   │   │       │   │   ├── int_carif_oref__services_v1.sql
+    │   │   │       │   │   └── int_carif_oref__structures_v1.sql
+    │   │   │       │   ├── cd35
+    │   │   │       │   │   ├── _cd35__models.yml
+    │   │   │       │   │   ├── _map_cd35__publics.sql
+    │   │   │       │   │   ├── _map_cd35__thematiques.sql
+    │   │   │       │   │   ├── _map_cd35__types.sql
+    │   │   │       │   │   ├── int_cd35__adresses_v1.sql
+    │   │   │       │   │   ├── int_cd35__services_v1.sql
+    │   │   │       │   │   └── int_cd35__structures_v1.sql
+    │   │   │       │   ├── dora
+    │   │   │       │   │   ├── _dora__models.yml
+    │   │   │       │   │   ├── _map_dora__modes_mobilisation.sql
+    │   │   │       │   │   ├── _map_dora__reseaux_porteurs__labels_nationaux.sql
+    │   │   │       │   │   ├── _map_dora__reseaux_porteurs__typologie.sql
+    │   │   │       │   │   ├── int_dora__adresses_v1.sql
+    │   │   │       │   │   ├── int_dora__services_v1.sql
+    │   │   │       │   │   └── int_dora__structures_v1.sql
+    │   │   │       │   ├── emplois_de_linclusion
+    │   │   │       │   │   ├── _emplois_de_linclusion__models.yml
+    │   │   │       │   │   ├── _map_emplois__reseaux_porteurs_v1.sql
+    │   │   │       │   │   ├── int_emplois_de_linclusion__adresses_v1.sql
+    │   │   │       │   │   └── int_emplois_de_linclusion__structures_v1.sql
+    │   │   │       │   ├── finess
+    │   │   │       │   │   ├── _finess__models.yml
+    │   │   │       │   │   ├── int_finess__adresses_v1.sql
+    │   │   │       │   │   ├── int_finess__services_v1.sql
+    │   │   │       │   │   └── int_finess__structures_v1.sql
+    │   │   │       │   ├── france_travail
+    │   │   │       │   │   ├── _france_travail__models.yml
+    │   │   │       │   │   ├── int_france_travail__adresses_v1.sql
+    │   │   │       │   │   ├── int_france_travail__services_v1.sql
+    │   │   │       │   │   └── int_france_travail__structures_v1.sql
+    │   │   │       │   ├── fredo
+    │   │   │       │   │   ├── _fredo__models.yml
+    │   │   │       │   │   ├── _map_fredo__publics.sql
+    │   │   │       │   │   ├── _map_fredo__reseaux_porteurs.sql
+    │   │   │       │   │   ├── _map_fredo__thematiques.sql
+    │   │   │       │   │   ├── _map_fredo__types.sql
+    │   │   │       │   │   ├── int_fredo__adresses_v1.sql
+    │   │   │       │   │   ├── int_fredo__services_v1.sql
+    │   │   │       │   │   └── int_fredo__structures_v1.sql
+    │   │   │       │   ├── ma_boussole_aidants
+    │   │   │       │   │   ├── _ma_boussole_aidants__models.yml
+    │   │   │       │   │   ├── _map_ma_boussole_aidants__publics.sql
+    │   │   │       │   │   ├── _map_ma_boussole_aidants__thematiques.sql
+    │   │   │       │   │   ├── _map_ma_boussole_aidants__types.sql
+    │   │   │       │   │   ├── int_ma_boussole_aidants__adresses_v1.sql
+    │   │   │       │   │   ├── int_ma_boussole_aidants__services_v1.sql
+    │   │   │       │   │   └── int_ma_boussole_aidants__structures_v1.sql
+    │   │   │       │   ├── mediation_numerique
+    │   │   │       │   │   ├── _map_mediation_numerique__modes_mobilisation.sql
+    │   │   │       │   │   ├── _map_mediation_numerique__publics.sql
+    │   │   │       │   │   ├── _map_mediation_numerique__publics__prise_en_charge.sql
+    │   │   │       │   │   ├── _map_mediation_numerique__reseaux_porteurs.sql
+    │   │   │       │   │   ├── _map_mediation_numerique__thematiques.sql
+    │   │   │       │   │   ├── _map_mediation_numerique__types.sql
+    │   │   │       │   │   ├── _mediation_numerique__models.yml
+    │   │   │       │   │   ├── int_mediation_numerique__adresses_v1.sql
+    │   │   │       │   │   ├── int_mediation_numerique__services_v1.sql
+    │   │   │       │   │   └── int_mediation_numerique__structures_v1.sql
+    │   │   │       │   ├── mes_aides
+    │   │   │       │   │   ├── _mes_aides__models.yml
+    │   │   │       │   │   ├── aides
+    │   │   │       │   │   │   ├── _map_mes_aides__frais_v1.sql
+    │   │   │       │   │   │   ├── _map_mes_aides__thematiques_v1.sql
+    │   │   │       │   │   │   ├── _map_mes_aides__types_v1.sql
+    │   │   │       │   │   │   ├── _mes_aides_aides__models.yml
+    │   │   │       │   │   │   ├── int_mes_aides__aides__services_v1.sql
+    │   │   │       │   │   │   └── int_mes_aides__aides__structures_v1.sql
+    │   │   │       │   │   ├── garages
+    │   │   │       │   │   │   ├── _mes_aides_garages__models.yml
+    │   │   │       │   │   │   ├── int_mes_aides__garages__adresses_v1.sql
+    │   │   │       │   │   │   ├── int_mes_aides__garages__services_v1.sql
+    │   │   │       │   │   │   └── int_mes_aides__garages__structures_v1.sql
+    │   │   │       │   │   ├── int_mes_aides__adresses_v1.sql
+    │   │   │       │   │   ├── int_mes_aides__services_v1.sql
+    │   │   │       │   │   └── int_mes_aides__structures_v1.sql
+    │   │   │       │   ├── monenfant
+    │   │   │       │   │   ├── _monenfant__models.yml
+    │   │   │       │   │   ├── int_monenfant__adresses_v1.sql
+    │   │   │       │   │   ├── int_monenfant__services_v1.sql
+    │   │   │       │   │   └── int_monenfant__structures_v1.sql
+    │   │   │       │   ├── reseau_alpha
+    │   │   │       │   │   ├── _map_reseau_alpha__publics_v1.sql
+    │   │   │       │   │   ├── _reseau_alpha__models.yml
+    │   │   │       │   │   ├── int_reseau_alpha__adresses_v1.sql
+    │   │   │       │   │   ├── int_reseau_alpha__services_v1.sql
+    │   │   │       │   │   └── int_reseau_alpha__structures_v1.sql
+    │   │   │       │   └── soliguide
+    │   │   │       │       ├── _map_soliguide__publics_v1.sql
+    │   │   │       │       ├── _map_soliguide__reseaux_porteurs_v1.sql
+    │   │   │       │       ├── _map_soliguide__thematiques_v1.sql
+    │   │   │       │       ├── _map_soliguide__types_v1.sql
+    │   │   │       │       ├── _soliguide__models.yml
+    │   │   │       │       ├── int_soliguide__adresses_v1.sql
+    │   │   │       │       ├── int_soliguide__services_v1.sql
+    │   │   │       │       └── int_soliguide__structures_v1.sql
+    │   │   │       ├── 002_unions
+    │   │   │       │   ├── _models.yml
+    │   │   │       │   ├── int__union_adresses_v1.sql
+    │   │   │       │   ├── int__union_contacts_v1.sql
+    │   │   │       │   ├── int__union_services_v1.sql
+    │   │   │       │   ├── int__union_structures_v1.sql
+    │   │   │       │   └── int__union_urls_v1.sql
+    │   │   │       ├── 003_enrichments
+    │   │   │       │   ├── _models.yml
+    │   │   │       │   ├── _sources.yml
+    │   │   │       │   ├── int__adresses_v1.sql
+    │   │   │       │   ├── int__contacts_v1.sql
+    │   │   │       │   ├── int__courriels_personnels_v1.sql
+    │   │   │       │   ├── int__courriels_verifies_v1.sql
+    │   │   │       │   ├── int__geocodages_v1.sql
+    │   │   │       │   ├── int__sirets_v1.sql
+    │   │   │       │   └── int__urls_v1.sql
+    │   │   │       ├── 004_finals
+    │   │   │       │   ├── _models.yml
+    │   │   │       │   ├── int__criteres_qualite_v1.sql
+    │   │   │       │   ├── int__erreurs_validation_v1.sql
+    │   │   │       │   ├── int__services_v1.sql
+    │   │   │       │   └── int__structures_v1.sql
+    │   │   │       └── 005_deduplicate
+    │   │   │           ├── _doublons_models.yml
+    │   │   │           ├── int__doublons_nb_cross_source_v1.sql
+    │   │   │           ├── int__doublons_nb_mono_source_v1.sql
+    │   │   │           ├── int__doublons_paires_structures_v1.sql
+    │   │   │           └── int__doublons_structures_v1.sql
+    │   │   ├── marts
+    │   │   │   └── v1
+    │   │   │       ├── _models.yml
+    │   │   │       ├── marts__services_mobilisable_par_v1.sql
+    │   │   │       ├── marts__services_modes_accueil_v1.sql
+    │   │   │       ├── marts__services_modes_mobilisation_v1.sql
+    │   │   │       ├── marts__services_publics_v1.sql
+    │   │   │       ├── marts__services_thematiques_v1.sql
+    │   │   │       ├── marts__services_v1.sql
+    │   │   │       ├── marts__structures_reseaux_porteurs_v1.sql
+    │   │   │       └── marts__structures_v1.sql
+    │   │   └── staging
+    │   │       ├── decoupage_administratif
+    │   │       │   ├── _decoupage_administratif__models.yml
+    │   │       │   ├── _decoupage_administratif__sources.yml
+    │   │       │   ├── stg_decoupage_administratif__arrondissements.sql
+    │   │       │   ├── stg_decoupage_administratif__communes.sql
+    │   │       │   ├── stg_decoupage_administratif__communes_associees_deleguees.sql
+    │   │       │   ├── stg_decoupage_administratif__departements.sql
+    │   │       │   ├── stg_decoupage_administratif__epcis.sql
+    │   │       │   └── stg_decoupage_administratif__regions.sql
+    │   │       ├── etat_civil
+    │   │       │   ├── _etat_civil_models.yml
+    │   │       │   ├── _etat_civil_sources.yml
+    │   │       │   └── stg_etat_civil__prenoms.sql
+    │   │       ├── sirene
+    │   │       │   ├── _sirene_models.yml
+    │   │       │   ├── _sirene_sources.yml
+    │   │       │   ├── stg_sirene__etablissement_historique.sql
+    │   │       │   ├── stg_sirene__etablissement_succession.sql
+    │   │       │   └── stg_sirene__stock_etablissement.sql
+    │   │       └── sources
+    │   │           ├── action_logement
+    │   │           │   ├── _action_logement__models.yml
+    │   │           │   ├── _action_logement__sources.yml
+    │   │           │   ├── stg_action_logement__services.sql
+    │   │           │   ├── stg_action_logement__services__frais.sql
+    │   │           │   ├── stg_action_logement__services__mobilisable_par.sql
+    │   │           │   ├── stg_action_logement__services__modes_accueil.sql
+    │   │           │   ├── stg_action_logement__services__modes_mobilisation.sql
+    │   │           │   ├── stg_action_logement__services__publics.sql
+    │   │           │   ├── stg_action_logement__services__thematiques.sql
+    │   │           │   ├── stg_action_logement__structures.sql
+    │   │           │   └── stg_action_logement__structures__reseaux_porteurs.sql
+    │   │           ├── agefiph
+    │   │           │   ├── _agefiph__models.yml
+    │   │           │   ├── _agefiph__sources.yml
+    │   │           │   ├── stg_agefiph__profils.sql
+    │   │           │   ├── stg_agefiph__services.sql
+    │   │           │   ├── stg_agefiph__services_thematiques.sql
+    │   │           │   ├── stg_agefiph__structures.sql
+    │   │           │   ├── stg_agefiph__thematiques.sql
+    │   │           │   └── stg_agefiph__types_de_solution.sql
+    │   │           ├── annuaire_du_service_public
+    │   │           │   ├── _annuaire_du_service_public__models.yml
+    │   │           │   ├── _annuaire_du_service_public__sources.yml
+    │   │           │   ├── stg_annuaire_du_service_public__adresses.sql
+    │   │           │   ├── stg_annuaire_du_service_public__etablissements.sql
+    │   │           │   ├── stg_annuaire_du_service_public__pivots.sql
+    │   │           │   ├── stg_annuaire_du_service_public__site_internets.sql
+    │   │           │   └── stg_annuaire_du_service_public__telephones.sql
+    │   │           ├── carif_oref
+    │   │           │   ├── _carif_oref__models.yml
+    │   │           │   ├── _carif_oref__sources.yml
+    │   │           │   ├── _stg_carif_oref__actions_filtered.sql
+    │   │           │   ├── _stg_carif_oref__source_filtered.sql
+    │   │           │   ├── stg_carif_oref__actions.sql
+    │   │           │   ├── stg_carif_oref__actions__publics.sql
+    │   │           │   ├── stg_carif_oref__adresses.sql
+    │   │           │   ├── stg_carif_oref__coordonnees.sql
+    │   │           │   ├── stg_carif_oref__formacode_v14__domaines.sql
+    │   │           │   ├── stg_carif_oref__formacode_v14__publics.sql
+    │   │           │   ├── stg_carif_oref__formations.sql
+    │   │           │   ├── stg_carif_oref__formations__contacts.sql
+    │   │           │   ├── stg_carif_oref__organismes_formateurs.sql
+    │   │           │   └── stg_carif_oref__organismes_formateurs__contacts.sql
+    │   │           ├── cd35
+    │   │           │   ├── _cd35__models.yml
+    │   │           │   ├── _cd35__sources.yml
+    │   │           │   ├── stg_cd35__organisations.sql
+    │   │           │   ├── stg_cd35__organisations__profils.sql
+    │   │           │   ├── stg_cd35__organisations__thematiques.sql
+    │   │           │   ├── stg_cd35__profils.sql
+    │   │           │   └── stg_cd35__thematiques.sql
+    │   │           ├── dora
+    │   │           │   ├── _dora__models.yml
+    │   │           │   ├── _dora__sources.yml
+    │   │           │   ├── stg_dora__services.sql
+    │   │           │   ├── stg_dora__services__justificatifs.sql
+    │   │           │   ├── stg_dora__services__modes_accueil.sql
+    │   │           │   ├── stg_dora__services__modes_orientation_accompagnateur.sql
+    │   │           │   ├── stg_dora__services__modes_orientation_beneficiaire.sql
+    │   │           │   ├── stg_dora__services__pre_requis.sql
+    │   │           │   ├── stg_dora__services__profils.sql
+    │   │           │   ├── stg_dora__services__publics.sql
+    │   │           │   ├── stg_dora__services__thematiques.sql
+    │   │           │   ├── stg_dora__services__types.sql
+    │   │           │   ├── stg_dora__structures.sql
+    │   │           │   ├── stg_dora__structures__labels_autres.sql
+    │   │           │   └── stg_dora__structures__labels_nationaux.sql
+    │   │           ├── emplois_de_linclusion
+    │   │           │   ├── _emplois_de_linclusion__models.yml
+    │   │           │   ├── _emplois_de_linclusion__sources.yml
+    │   │           │   ├── stg_emplois_de_linclusion__organisations.sql
+    │   │           │   └── stg_emplois_de_linclusion__siaes.sql
+    │   │           ├── finess
+    │   │           │   ├── _finess__models.yml
+    │   │           │   ├── _finess__sources.yml
+    │   │           │   └── stg_finess__etablissements.sql
+    │   │           ├── france_travail
+    │   │           │   ├── _france_travail__models.yml
+    │   │           │   ├── _france_travail__sources.yml
+    │   │           │   ├── stg_france_travail__agences.sql
+    │   │           │   ├── stg_france_travail__services.sql
+    │   │           │   ├── stg_france_travail__services__frais.sql
+    │   │           │   ├── stg_france_travail__services__mobilisable_par.sql
+    │   │           │   ├── stg_france_travail__services__modes_accueil.sql
+    │   │           │   ├── stg_france_travail__services__modes_mobilisation.sql
+    │   │           │   ├── stg_france_travail__services__publics.sql
+    │   │           │   └── stg_france_travail__services__thematiques.sql
+    │   │           ├── fredo
+    │   │           │   ├── _fredo__models.yml
+    │   │           │   ├── _fredo__sources.yml
+    │   │           │   ├── stg_fredo__categories.sql
+    │   │           │   ├── stg_fredo__emails.sql
+    │   │           │   ├── stg_fredo__frais.sql
+    │   │           │   ├── stg_fredo__publics.sql
+    │   │           │   ├── stg_fredo__services.sql
+    │   │           │   ├── stg_fredo__structures.sql
+    │   │           │   ├── stg_fredo__telephones.sql
+    │   │           │   └── stg_fredo__types.sql
+    │   │           ├── ma_boussole_aidants
+    │   │           │   ├── _ma_boussole_aidants__models.yml
+    │   │           │   ├── _ma_boussole_aidants__sources.yml
+    │   │           │   ├── stg_ma_boussole_aidants__solutions.sql
+    │   │           │   ├── stg_ma_boussole_aidants__structures.sql
+    │   │           │   ├── stg_ma_boussole_aidants__structures__services.sql
+    │   │           │   └── stg_ma_boussole_aidants__structures__situations.sql
+    │   │           ├── mediation_numerique
+    │   │           │   ├── _mediation_numerique_models.yml
+    │   │           │   ├── _mediation_numerique_sources.yml
+    │   │           │   ├── stg_mediation_numerique__structures.sql
+    │   │           │   ├── stg_mediation_numerique__structures__dispositifs.sql
+    │   │           │   ├── stg_mediation_numerique__structures__frais.sql
+    │   │           │   ├── stg_mediation_numerique__structures__mediateurs.sql
+    │   │           │   ├── stg_mediation_numerique__structures__modalites_acces.sql
+    │   │           │   ├── stg_mediation_numerique__structures__modalites_accompagnement.sql
+    │   │           │   ├── stg_mediation_numerique__structures__prises_en_charge.sql
+    │   │           │   ├── stg_mediation_numerique__structures__publics.sql
+    │   │           │   └── stg_mediation_numerique__structures__services.sql
+    │   │           ├── mes_aides
+    │   │           │   ├── _mes_aides__models.yml
+    │   │           │   ├── _mes_aides__sources.yml
+    │   │           │   ├── stg_mes_aides__aides.sql
+    │   │           │   ├── stg_mes_aides__aides__besoins.sql
+    │   │           │   ├── stg_mes_aides__aides__conditions.sql
+    │   │           │   ├── stg_mes_aides__aides__departements.sql
+    │   │           │   ├── stg_mes_aides__aides__emails.sql
+    │   │           │   ├── stg_mes_aides__aides__epcis.sql
+    │   │           │   ├── stg_mes_aides__aides__justificatifs.sql
+    │   │           │   ├── stg_mes_aides__aides__methodes.sql
+    │   │           │   ├── stg_mes_aides__aides__natures.sql
+    │   │           │   ├── stg_mes_aides__aides__regions.sql
+    │   │           │   ├── stg_mes_aides__aides__telephones.sql
+    │   │           │   ├── stg_mes_aides__aides__thematiques.sql
+    │   │           │   ├── stg_mes_aides__aides__types_aides.sql
+    │   │           │   ├── stg_mes_aides__aides__villes.sql
+    │   │           │   ├── stg_mes_aides__garages.sql
+    │   │           │   ├── stg_mes_aides__garages__besoins.sql
+    │   │           │   ├── stg_mes_aides__garages__services.sql
+    │   │           │   └── stg_mes_aides__garages__types_de_vehicule.sql
+    │   │           ├── mission_locale
+    │   │           │   ├── _mission_locale__models.yml
+    │   │           │   ├── _mission_locale__sources.yml
+    │   │           │   ├── stg_mission_locale__offres.sql
+    │   │           │   ├── stg_mission_locale__offres__liste_des_profils.sql
+    │   │           │   ├── stg_mission_locale__structures.sql
+    │   │           │   └── stg_mission_locale__structures_offres.sql
+    │   │           ├── monenfant
+    │   │           │   ├── _monenfant__models.yml
+    │   │           │   ├── _monenfant__sources.yml
+    │   │           │   ├── stg_monenfant__communes_desservies.sql
+    │   │           │   └── stg_monenfant__creches.sql
+    │   │           ├── reseau_alpha
+    │   │           │   ├── _reseau_alpha__models.yml
+    │   │           │   ├── _reseau_alpha__sources.yml
+    │   │           │   ├── stg_reseau_alpha__formations.sql
+    │   │           │   ├── stg_reseau_alpha__formations__adresses.sql
+    │   │           │   ├── stg_reseau_alpha__formations__competences_linguistiques.sql
+    │   │           │   ├── stg_reseau_alpha__formations__criteres_scolarisation.sql
+    │   │           │   ├── stg_reseau_alpha__formations__horaires.sql
+    │   │           │   ├── stg_reseau_alpha__formations__objectifs.sql
+    │   │           │   ├── stg_reseau_alpha__formations__publics.sql
+    │   │           │   ├── stg_reseau_alpha__pages.sql
+    │   │           │   ├── stg_reseau_alpha__publics.sql
+    │   │           │   ├── stg_reseau_alpha__structures.sql
+    │   │           │   ├── stg_reseau_alpha__structures__adresses.sql
+    │   │           │   └── stg_reseau_alpha__structures__contacts.sql
+    │   │           ├── soliguide
+    │   │           │   ├── _soliguide__models.yml
+    │   │           │   ├── _soliguide__sources.yml
+    │   │           │   ├── stg_soliguide__categories.sql
+    │   │           │   ├── stg_soliguide__lieux.sql
+    │   │           │   ├── stg_soliguide__lieux__publics.sql
+    │   │           │   ├── stg_soliguide__phones.sql
+    │   │           │   ├── stg_soliguide__publics.sql
+    │   │           │   ├── stg_soliguide__services.sql
+    │   │           │   ├── stg_soliguide__services__publics.sql
+    │   │           │   └── stg_soliguide__sources.sql
+    │   │           └── un_jeune_une_solution
+    │   │               ├── _un_jeune_une_solution__models.yml
+    │   │               ├── _un_jeune_une_solution__sources.yml
+    │   │               ├── stg_un_jeune_une_solution__benefits.sql
+    │   │               └── stg_un_jeune_une_solution__institutions.sql
+    │   ├── package-lock.yml
+    │   ├── packages.yml
+    │   ├── profiles.yml
+    │   └── seeds
+    │       └── schema
+    │           ├── v0
+    │           │   ├── frais.csv
+    │           │   ├── labels_nationaux.csv
+    │           │   ├── modes_accueil.csv
+    │           │   ├── modes_orientation_accompagnateur.csv
+    │           │   ├── modes_orientation_beneficiaire.csv
+    │           │   ├── profils.csv
+    │           │   ├── thematiques.csv
+    │           │   ├── typologies_de_services.csv
+    │           │   ├── typologies_de_structures.csv
+    │           │   └── zones_de_diffusion_types.csv
+    │           └── v1
+    │               ├── frais_v1.csv
+    │               ├── modes_accueil_v1.csv
+    │               ├── modes_mobilisation_v1.csv
+    │               ├── personne_mobilisatrice_v1.csv
+    │               ├── publics_v1.csv
+    │               ├── reseaux_porteurs_v1.csv
+    │               ├── thematiques_v1.csv
+    │               └── types_de_services_v1.csv
+    ├── pyproject.toml
+    ├── requirements
+    │   ├── Makefile
+    │   ├── airflow
+    │   │   ├── constraints.txt
+    │   │   ├── requirements.in
+    │   │   └── requirements.txt
+    │   ├── dev
+    │   │   ├── requirements.in
+    │   │   └── requirements.txt
+    │   └── tasks
+    │       ├── requirements.in
+    │       └── requirements.txt
+    ├── scripts
+    │   └── update_schema_seeds.py
+    └── tests
+        ├── __init__.py
+        └── unit
+            └── __init__.py
+159 directories, 698 files
