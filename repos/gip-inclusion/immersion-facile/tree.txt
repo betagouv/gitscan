@@ -1,0 +1,3139 @@
+.
+├── .claude
+│   └── commands
+│       ├── create-pr.md
+│       ├── document-issue.md
+│       └── initiate-issue-and-pr.md
+├── .cursor
+│   └── commands
+│       ├── create-pr.md -> ../../.claude/commands/create-pr.md
+│       ├── document-issue.md -> ../../.claude/commands/document-issue.md
+│       └── initiate-issue-and-pr.md -> ../../.claude/commands/initiate-issue-and-pr.md
+├── .devcontainer
+│   ├── .env.sample
+│   ├── Dockerfile
+│   ├── devcontainer.json
+│   ├── docker-compose.devcontainer.yml
+│   └── post-create.sh
+├── .dockerignore
+├── .env.sample
+├── .github
+│   ├── ISSUE_TEMPLATE
+│   │   ├── 1-bug_report.md
+│   │   ├── 2-feature_request.md
+│   │   ├── 3-security.md
+│   │   ├── 4-suggestion.md
+│   │   └── 5-epic.md
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   ├── actions
+│   │   └── install-scalingo-cli
+│   │       └── action.yml
+│   ├── unused_workflows
+│   │   ├── create-s3-bucket.cellar.yml
+│   │   ├── replicate-db-PE-to-secnum-prod.yml
+│   │   ├── setup-s3-cellar.clevercloud.yml
+│   │   └── setup-secrets.clevercloud.setup.yml
+│   └── workflows
+│       ├── build-back-artefact.yml
+│       ├── build-front-artefact.yml
+│       ├── ci-add-tag.yml
+│       ├── continous-delivery.yml
+│       ├── database-backup.yml
+│       ├── deploy-dbt.yml
+│       ├── deploy-to-scalingo.yml
+│       ├── fullcheck.yml
+│       ├── generate-release.yml
+│       ├── pr-checklist.yml
+│       ├── pull-request-analytics.yml
+│       ├── renew-insee-password.yml
+│       ├── replicate-prod-to-nightly.yml
+│       ├── review-app-deploy.yml
+│       ├── review-app-destroy.yml
+│       ├── review-app-trigger.yml
+│       └── validation-pr.yml
+├── .gitignore
+├── .husky
+│   ├── husky.md
+│   ├── pre-commit
+│   └── pre-push
+├── .nvmrc
+├── .opencode
+│   └── commands
+│       ├── create-pr.md -> ../../.claude/commands/create-pr.md
+│       ├── document-issue.md -> ../../.claude/commands/document-issue.md
+│       └── initiate-issue-and-pr.md -> ../../.claude/commands/initiate-issue-and-pr.md
+├── .tooling
+│   └── .lintstaged
+│       └── .lintstagedrc
+├── .vscode
+│   ├── extensions.json
+│   └── settings.json
+├── AGENTS.md
+├── CLAUDE.md -> AGENTS.md
+├── LICENSE
+├── README.md
+├── back
+│   ├── .dockerignore
+│   ├── .gitignore
+│   ├── .prettierignore
+│   ├── .swcrc
+│   ├── README.md
+│   ├── biome.json
+│   ├── fix-post-codes.sql
+│   ├── jest.config.js
+│   ├── package.json
+│   ├── scalingo
+│   │   ├── .buildpacks
+│   │   ├── Procfile
+│   │   └── cron.json
+│   ├── src
+│   │   ├── adapters
+│   │   │   └── primary
+│   │   │       └── routers
+│   │   │           ├── DtoAndSchemas
+│   │   │           │   ├── v2
+│   │   │           │   │   └── input
+│   │   │           │   │       ├── ConventionReadPublicV2.dto.ts
+│   │   │           │   │       ├── ConventionReadPublicV2.schema.ts
+│   │   │           │   │       └── GetConventionByFiltersQueriesV2.schema.ts
+│   │   │           │   └── v3
+│   │   │           │       ├── input
+│   │   │           │       │   ├── ContactEstablishmentPublicV3.dto.ts
+│   │   │           │       │   ├── ContactEstablishmentPublicV3.schema.ts
+│   │   │           │       │   ├── GetOffersPublicV3.dto.ts
+│   │   │           │       │   └── GetOffersPublicV3.schema.ts
+│   │   │           │       └── output
+│   │   │           │           ├── SearchImmersionResultPublicV3.dto.ts
+│   │   │           │           └── SearchImmersionResultPublicV3.schema.ts
+│   │   │           ├── address
+│   │   │           │   ├── addressRouter.e2e.test.ts
+│   │   │           │   └── createAddressRouter.ts
+│   │   │           ├── admin
+│   │   │           │   ├── addFormEstablishmentsByBatch.e2e.test.ts
+│   │   │           │   ├── adminRouter.e2e.test.ts
+│   │   │           │   ├── banEstablishment.e2e.test.ts
+│   │   │           │   ├── createAdminRouter.ts
+│   │   │           │   └── getLastNotifications.e2e.test.ts
+│   │   │           ├── agencies
+│   │   │           │   ├── agencies.e2e.test.ts
+│   │   │           │   └── createAgenciesRouter.ts
+│   │   │           ├── apiKeyAuthRouter
+│   │   │           │   ├── contactEstablishmentPublicV3.e2e.test.ts
+│   │   │           │   ├── conventionPublicV2.e2e.test.ts
+│   │   │           │   ├── createApiKeyAuthRouter.v2.ts
+│   │   │           │   ├── createApiKeyAuthRouter.v3.ts
+│   │   │           │   ├── createOpenApiV2.ts
+│   │   │           │   ├── createOpenApiV2.unit.test.ts
+│   │   │           │   ├── createOpenApiV3.ts
+│   │   │           │   ├── createOpenApiV3.unit.test.ts
+│   │   │           │   ├── getOfferV3.e2e.test.ts
+│   │   │           │   ├── getOffersV3.e2e.test.ts
+│   │   │           │   ├── publicApiV2.routes.ts
+│   │   │           │   ├── publicApiV2Bottleneck.e2e.test.ts
+│   │   │           │   ├── publicApiV3.routes.ts
+│   │   │           │   ├── statisticsPublicV2.e2e.test.ts
+│   │   │           │   └── webhookPublicV2.e2e.test.ts
+│   │   │           ├── auth
+│   │   │           │   ├── auth.e2e.test.ts
+│   │   │           │   └── createAuthRouter.ts
+│   │   │           ├── convention
+│   │   │           │   ├── addConventionAndSendMails.e2e.test.ts
+│   │   │           │   ├── authenticatedConventionRoutes.e2e.test.ts
+│   │   │           │   ├── convention.e2e.test.ts
+│   │   │           │   └── createConventionRouter.ts
+│   │   │           ├── establishment
+│   │   │           │   ├── addFormEstablishment.e2e.test.ts
+│   │   │           │   ├── contactEstablishment.e2e.test.ts
+│   │   │           │   ├── createEstablishmentRouter.ts
+│   │   │           │   ├── deleteEstablishment.e2e.test.ts
+│   │   │           │   ├── discussion.e2e.test.ts
+│   │   │           │   ├── editFormEstablishment.e2e.test.ts
+│   │   │           │   ├── formAlreadyExistsRoute.e2e.test.ts
+│   │   │           │   ├── getEstablishmentPublicOptionsByFilters.e2e.test.ts
+│   │   │           │   ├── registerUserOnEstablishment.e2e.test.ts
+│   │   │           │   └── retrieveFormEstablishmentFromAggregate.e2e.test.ts
+│   │   │           ├── establishmentLead
+│   │   │           │   ├── createEstablishmentLeadRouter.ts
+│   │   │           │   └── unregisterEstablishmentLead.e2e.test.ts
+│   │   │           ├── formCompletion
+│   │   │           │   ├── FormCompletionRouter.e2e.test.ts
+│   │   │           │   └── createFormCompletionRouter.ts
+│   │   │           ├── magicLink
+│   │   │           │   ├── assessment.e2e.test.ts
+│   │   │           │   ├── conventionMagicLink.e2e.test.ts
+│   │   │           │   ├── createMagicLinkRouter.ts
+│   │   │           │   └── getConventionStatusDashboardUrl.e2e.test.ts
+│   │   │           ├── naf
+│   │   │           │   ├── createNafRouter.ts
+│   │   │           │   └── nafRouter.e2e.test.ts
+│   │   │           ├── rootApi
+│   │   │           │   ├── createRootApiRouter.e2e.test.ts
+│   │   │           │   └── createRootApiRouter.ts
+│   │   │           ├── search
+│   │   │           │   ├── createSearchRouter.e2e.test.ts
+│   │   │           │   └── createSearchRouter.ts
+│   │   │           ├── security.e2e.test.ts
+│   │   │           └── technical
+│   │   │               ├── createTechnicalRouter.ts
+│   │   │               └── technicalRouter.e2e.test.ts
+│   │   ├── config
+│   │   │   ├── bootstrap
+│   │   │   │   ├── appConfig.ts
+│   │   │   │   ├── appConfig.unit.test.ts
+│   │   │   │   ├── authMiddleware.ts
+│   │   │   │   ├── cache.ts
+│   │   │   │   ├── connectedUserAuthMiddleware.ts
+│   │   │   │   ├── corsPolicy.ts
+│   │   │   │   ├── createAppDependencies.ts
+│   │   │   │   ├── createEventCrawler.ts
+│   │   │   │   ├── createGateways.ts
+│   │   │   │   ├── createUseCases.ts
+│   │   │   │   ├── detectHtmlInParamsMiddleware.ts
+│   │   │   │   ├── logPartnerResponses.ts
+│   │   │   │   ├── magicLinkUrl.ts
+│   │   │   │   ├── partnerNames.ts
+│   │   │   │   ├── server.ts
+│   │   │   │   └── startCrawler.ts
+│   │   │   ├── helpers
+│   │   │   │   ├── createFetchSharedClients.ts
+│   │   │   │   ├── createFtAxiosHttpClientForTest.ts
+│   │   │   │   ├── handleHttpJsonResponseError.ts
+│   │   │   │   ├── handleRedirectResponseError.ts
+│   │   │   │   ├── sendHttpResponse.ts
+│   │   │   │   ├── sendRedirectResponse.ts
+│   │   │   │   └── validateAndParseZodSchema.ts
+│   │   │   └── pg
+│   │   │       ├── README.md
+│   │   │       ├── kysely
+│   │   │       │   ├── kyselyUtils.ts
+│   │   │       │   └── model
+│   │   │       │       └── database.ts
+│   │   │       ├── migrations
+│   │   │       │   ├── 1643123763000_create-stand-alone-tables-matching-old-migration-mechanism.ts
+│   │   │       │   ├── 1643123763001_fill-appelation-rome-and-naf-tables.ts
+│   │   │       │   ├── 1643123763002_create-immersion-application-table-matching-old-migration-mechanism.ts
+│   │   │       │   ├── 1643123763003_create-searches-and-lbb-requests-tables-matching-old-migration-mechanism.ts
+│   │   │       │   ├── 1643123763004_create-naf-table-matching-old-migration-mechanism.ts
+│   │   │       │   ├── 1643123763005_create-form-establishment-table-matching-old-migration-mechanism.ts
+│   │   │       │   ├── 1643123763006_create-establishment-related-tables-matching-old-migration-mechanism.ts
+│   │   │       │   ├── 1644232828856_alter-naf-type-in-immersion-offers-table.ts
+│   │   │       │   ├── 1644234092094_add-special-conditions-column-to-immersion-applications-table.ts
+│   │   │       │   ├── 1644837003783_immersion-applications-timestamps-to-timestamp-with-timezone.ts
+│   │   │       │   ├── 1644852109465_add-status-to-agency-table.ts.ts
+│   │   │       │   ├── 1644853188660_make-agency-id-foreign-key-in-immersion-applications-table.ts
+│   │   │       │   ├── 1644928851644_add-kind-to-agency-table.ts
+│   │   │       │   ├── 1645092743264_create-api-consumer-table.ts
+│   │   │       │   ├── 1645092744000_create-feature-flags-table.ts
+│   │   │       │   ├── 1645098877244_remove-duplicated-fields-from-immersion-offers.ts
+│   │   │       │   ├── 1645098896853_add-foreign-key-between-immersion-offer-rome-field-and-public-rome-table.ts
+│   │   │       │   ├── 1645098926044_rename-immersion-contact-column-name-to-lastname.ts
+│   │   │       │   ├── 1645098933392_dont-allow-contact-data-to-be-null.ts
+│   │   │       │   ├── 1645098963617_move-contact-mode-from-establishments-table-to-immersion-contacts-table.ts
+│   │   │       │   ├── 1645109608608_alter-siret-type-to-char14-everywhere.ts
+│   │   │       │   ├── 1645110046239_make-uuid-primary-key-in-table-immersion-offers.ts
+│   │   │       │   ├── 1645111958322_make-establishments-contact-jointure-table.ts
+│   │   │       │   ├── 1645428388791_immersion-applications-add-pole-emploi-external-id.ts
+│   │   │       │   ├── 1646401651966_rename-public-tables.ts
+│   │   │       │   ├── 1646402400105_remove-id-from-form-establishment-and-make-siret-primary-key.ts
+│   │   │       │   ├── 1646735895804_add-source-to-form-establishment-table.ts
+│   │   │       │   ├── 1646751255587_create-and-fill-postal-code-department-region-table.ts
+│   │   │       │   ├── 1646814722707_add-missing-fields-to-establishment-agregates-from-form.ts
+│   │   │       │   ├── 1647522751791_increase-some-immersion-applicaiton-fields-size.ts
+│   │   │       │   ├── 1647614320433_add-missing-postal-code-department-region.ts
+│   │   │       │   ├── 1647638192315_add-outbox-publications.ts
+│   │   │       │   ├── 1648155639288_refacto-business-contacts-and-preferred-contact-methods-into-business-contact-from-table-form-establishment.ts
+│   │   │       │   ├── 1648560137852_make-rome-appellation-text-search-accent-insensitive.ts
+│   │   │       │   ├── 1648566904450_add-source-provider-to-establishment.ts
+│   │   │       │   ├── 1648738867575_add-remaining-source-provider-to-establishments.ts
+│   │   │       │   ├── 1649077638911_create-establishment-indexes-to-optimize-perf.ts
+│   │   │       │   ├── 1649077718131_update-table-immersion-applications-change-immersion-profession-to-immersion-appellation.ts
+│   │   │       │   ├── 1649077818131_create-view-public-appellation-dto.ts
+│   │   │       │   ├── 1649176448716_add-is-searchable-to-establishments.ts
+│   │   │       │   ├── 1649247741855_add-view-immersion-application-avancement.ts
+│   │   │       │   ├── 1649367313488_add-column-voluntary-to-immersion-to-table-searches-made.ts
+│   │   │       │   ├── 1649412439384_update-and-create-some-monitoring-views.ts
+│   │   │       │   ├── 1650019331640_immersion-application-set-immersion-appelation-not-null.ts
+│   │   │       │   ├── 1650042551463_create-views-for-grafana-by-department.ts
+│   │   │       │   ├── 1650043471872_add-field-copy-email-to-table-immersion-contacts.ts
+│   │   │       │   ├── 1650639443888_create-view-immersion-offers-from-form-establishment.ts
+│   │   │       │   ├── 1651063597033_nb-of-employee-as-string-instead-of-tefen-code.ts
+│   │   │       │   ├── 1651069843601_add-columns-lon-lat-to-establishments.ts
+│   │   │       │   ├── 1651071264309_synchronize-contact-method-to-domain.ts
+│   │   │       │   ├── 1651159068028_add-field-emergency-contact-and-phone-to-table-immersion-applications.ts
+│   │   │       │   ├── 1651748901075_create-index-establishments-gps.ts
+│   │   │       │   ├── 1652716509653_add-siret-and-code-to-agency-table.ts
+│   │   │       │   ├── 1652854672020_add-column-sorted-by-to-table-searches-made.ts
+│   │   │       │   ├── 1653035561949_rename-creation-date-created-at-in-table-estalishments-and-immersion-offers.ts
+│   │   │       │   ├── 1653041589957_add-immersion-assessments-table.ts
+│   │   │       │   ├── 1653315514762_add-logo-url-to-agencies.ts
+│   │   │       │   ├── 1653320000000_create-partners-pe-connect-table.ts
+│   │   │       │   ├── 1653665391384_delete-assessment-on-cascade.ts
+│   │   │       │   ├── 1654612062405_rename-code-to-code-safir-in-agency-table.ts
+│   │   │       │   ├── 1654789690577_remove-column-uuid-from-immersion-offers.ts
+│   │   │       │   ├── 1654792934922_rename-column-role-to-job-in-table-immersion-contacts.ts
+│   │   │       │   ├── 1655045378481_create-table-convention-external-id.ts
+│   │   │       │   ├── 1655045456845_add-not-null-constraint-to-immersion-applications-columns.ts
+│   │   │       │   ├── 1656074540585_generate-external-id-for-old-conventions.ts
+│   │   │       │   ├── 1656407900732_schedule-complex-only.ts
+│   │   │       │   ├── 1657211803675_add-validation-date-in-table-conventions.ts
+│   │   │       │   ├── 1657287477830_add-fields-website-and-additionnal-information-to-establishments.ts
+│   │   │       │   ├── 1657558552905_convert-validated-conventions-to-accepted-by-validator.ts
+│   │   │       │   ├── 1658301932483_change-address-in-agencies-to-use-address-dto.ts
+│   │   │       │   ├── 1659079978220_public-department-region.ts
+│   │   │       │   ├── 1659249424022_change-address-in-establishments-to-use-address-dto.ts
+│   │   │       │   ├── 1659588875166_create-views-for-export.ts
+│   │   │       │   ├── 1660210439552_add-outbox-views.ts
+│   │   │       │   ├── 1660229895074_add-internship-kind-to-conventions.ts
+│   │   │       │   ├── 1662650745354_create-signatory-table-and-split-from-convention.ts
+│   │   │       │   ├── 1662733090068_create-function-date-to-iso.ts
+│   │   │       │   ├── 1663248695984_make-export-views-materializedt.ts
+│   │   │       │   ├── 1663851447509_make-establishments-additionnal-info-not-nullable.ts
+│   │   │       │   ├── 1663851450000_make-immersion-offers-appellation-rome-siret-uniques.ts
+│   │   │       │   ├── 1664543855689_refacto-signatories-to-actors-and-move-foreign-key-to-convention.ts
+│   │   │       │   ├── 1665146131124_convention-view-with-establishment-representative.ts
+│   │   │       │   ├── 1665160097267_add-address-to-search-requests.ts
+│   │   │       │   ├── 1665473480461_convention-with-establishment-tutor.ts
+│   │   │       │   ├── 1665951299320_searches-made-sorted-by-nullable.ts
+│   │   │       │   ├── 1666259148282_change-contact-requested-payload-format.ts
+│   │   │       │   ├── 1666285700781_create-discussion-aggregate-repo.ts
+│   │   │       │   ├── 1666781399989_unlimited-establishment-additionnal-information.ts
+│   │   │       │   ├── 1666944351008_alter-form-establishment.ts
+│   │   │       │   ├── 1666944351009_beneficiary-current-employer-on-convention.ts
+│   │   │       │   ├── 1667906933334_rename-view-convention-id-column.ts
+│   │   │       │   ├── 1668174039075_add-agency-id-to-view-convention.ts
+│   │   │       │   ├── 1670505928561_add-beneficiary-current-employer-to-view-convention.ts
+│   │   │       │   ├── 1670505928600_optionalAdvisor.ts
+│   │   │       │   ├── 1670923301193_add-birthdate-to-view-convention.ts
+│   │   │       │   ├── 1671095515942_fix-view-establishments-linked-validated-convention.ts
+│   │   │       │   ├── 1671116065986_viewsWithAppelationLabelInsteadOfRomeLabels.ts
+│   │   │       │   ├── 1672922730234_add-fit-for-disabled-workers-to-establishment.ts
+│   │   │       │   ├── 1673280827243_calculate-work-days-and-total-hours-for-past-conventions.ts
+│   │   │       │   ├── 1673356634035_workedDaysAndTotalHoursOnViewConventionAsCol.ts
+│   │   │       │   ├── 1673358490628_viewConventionWithDates.ts
+│   │   │       │   ├── 1673627918327_create-authenticated-users-table.ts
+│   │   │       │   ├── 1673630185999_create-ongoing-oauths-table.ts
+│   │   │       │   ├── 1674746390605_add-business-advantage-convention-field.ts
+│   │   │       │   ├── 1674751897782_create-establishment-group-related-tables.ts
+│   │   │       │   ├── 1675331839955_add-naf-classes-to-views-establishments.ts
+│   │   │       │   ├── 1675696456791_emails-as-text-in-agencies-views.ts
+│   │   │       │   ├── 1675780891284_view-agency-email-for-sib-import.ts
+│   │   │       │   ├── 1676390801711_create-users-agencies-table.ts
+│   │   │       │   ├── 1676646578401_add-appellation-code-to-searches-made.ts
+│   │   │       │   ├── 1676903627474_add-max-contact-per-week-column-to-table-immersion-contacts.ts
+│   │   │       │   ├── 1677492719994_move-max-contact-per-week-from-contact-table-to-establisment-table.ts
+│   │   │       │   ├── 1677671097373_establishement-view-remove-duplicates-and-base-on-discussions.ts
+│   │   │       │   ├── 1677672000000_add-slug-to-establishement-group-table.ts
+│   │   │       │   ├── 1678721859361_add-status-justification-on-convention.ts
+│   │   │       │   ├── 1678721900000_add-role-to-users-agencies-table.ts
+│   │   │       │   ├── 1682598134712_create-shortLink-repository.ts
+│   │   │       │   ├── 1683709661344_add-maintenance-feature-flags.ts
+│   │   │       │   ├── 1683710000000_drop-lbb-resquests-table-and-drop-lbb-establishments-and-offers.ts
+│   │   │       │   ├── 1683711812047_drop-data-source-from-establishments.ts
+│   │   │       │   ├── 1684502907424_create-saved-errors-table.ts
+│   │   │       │   ├── 1685097027202_drop-http-status-from-saved-errors.ts
+│   │   │       │   ├── 1685097030000_remove-postal-code-in-convention.ts
+│   │   │       │   ├── 1685349716252_create-notifications-tables.ts
+│   │   │       │   ├── 1685539588419_generate-business-adress-extrafields-for-old-curents-employer-in-convention.ts
+│   │   │       │   ├── 1685715986275_remove-department-code-table.ts
+│   │   │       │   ├── 1686299027505_add-column-potential-beneficiary-phone-immersion-obect-and-link-to-discussion-table.ts
+│   │   │       │   ├── 1686926528540_add-column-last-insee-check-date-to-establishments-table.ts
+│   │   │       │   ├── 1687429119935_replace-rome-code-column-to-appellation-code-in-discussions.ts
+│   │   │       │   ├── 1687438863529_rename-column-rome-appellation-to-appellation-code-in-immersion-offers-and-make-it-mandatory.ts
+│   │   │       │   ├── 1687438863530_create-conventions-to-sync-repository.ts
+│   │   │       │   ├── 1687438999995_add-establishment-contact-data-to-discussions-table.ts
+│   │   │       │   ├── 1687961609685_add-unicity-on-exchanges-table-and-update-view-contact-requests.ts
+│   │   │       │   ├── 1688033943818_add-business-name-column-to-discussions-table.ts
+│   │   │       │   ├── 1688050550992_add-reply-to-to-notifications-email-table.ts
+│   │   │       │   ├── 1688559120763_add-column-contact-email-to-api-consumer-table.ts
+│   │   │       │   ├── 1688998172946_discussion-change-contract-mode-name.ts
+│   │   │       │   ├── 1689259081984_add-notification-email-attachements-table.ts
+│   │   │       │   ├── 1689261641194_add-column-sender-to-notifications-email-table.ts
+│   │   │       │   ├── 1689774021587_replace-rejected-notification-value-in-subscription-id-in-outbox-failure-table.ts
+│   │   │       │   ├── 1689774100000_add-additional-columns-to-feature-flags.ts
+│   │   │       │   ├── 1689934859535_create-convention-status-translations-table.ts
+│   │   │       │   ├── 1690365887734_replace-is-active-column-by-is-open-in-establishment-table.ts
+│   │   │       │   ├── 1691140057293_remove-selected-index-on-schedule.ts
+│   │   │       │   ├── 1691572402300_establishments-created-at-from-dto.ts
+│   │   │       │   ├── 1691572402301_establishments-delete-table.ts
+│   │   │       │   ├── 1691669503221_replace-modification-requested-notification-value-in-subscription-id-in-outbox-failure-table.ts
+│   │   │       │   ├── 1692346551882_add-validators-in-convention-table.ts
+│   │   │       │   ├── 1692860556863_api-consumer-with-contact.ts
+│   │   │       │   ├── 1693558809972_add-api-consumers-rights.ts
+│   │   │       │   ├── 1693581341030_add-status-column-to-outbox.ts
+│   │   │       │   ├── 1694089930949_update-api-consumers-rights.ts
+│   │   │       │   ├── 1694529570707_add-renewed-columns-in-conventions-table.ts
+│   │   │       │   ├── 1695286321973_add-serial-id-to-exchanges-and-remove-constrain-on-sent-at.ts
+│   │   │       │   ├── 1695741941206_add-number-of-search-results-to-searches-made-table.ts
+│   │   │       │   ├── 1695885238870_add-department-shape.ts
+│   │   │       │   ├── 1696002226845_add-api-consumer-subscriptions.ts
+│   │   │       │   ├── 1696240967824_add-pe-errored-convention-view.ts
+│   │   │       │   ├── 1696338260794_rename-short-link-repository-table-in-short-links.ts
+│   │   │       │   ├── 1696421525659_add-agency-id-column-in-view-conventions-errored.ts
+│   │   │       │   ├── 1696857570080_add-agency-departement-handled-occured-at-columns-in-view-conventions-errored.ts
+│   │   │       │   ├── 1696857570081_add-columns-hero-headers-columns-to-groups-and-rename-establishment-goups-to-groups.ts
+│   │   │       │   ├── 1696857570081_create-table-searches-made-appellation-code.ts
+│   │   │       │   ├── 1697053265903_add-refers-to-agency-id-to-agency-table.ts
+│   │   │       │   ├── 1698922693705_add-index-on-outbox-created-at.ts
+│   │   │       │   ├── 1699264669326_add-feature-flags-enableApiV0-enableApiV1.ts
+│   │   │       │   ├── 1699369942707_rename-immersion-application-to-convention-in-events.ts
+│   │   │       │   ├── 1699373751639_rename-subscription-id-to-use-convention-instead-of-application.ts
+│   │   │       │   ├── 1699626628645_set-default-values-to-school-name-and-postcode.ts
+│   │   │       │   ├── 1700139443935_modify-view-conventions-table-to-have-convention-status-in-french.ts
+│   │   │       │   ├── 1700139444000_add-pg-type-to-convention-status.ts
+│   │   │       │   ├── 1700734823565_add-tech-status-to-view-conventions.ts
+│   │   │       │   ├── 1700753017060_update-table-notifications-email-rename-email-kind.ts
+│   │   │       │   ├── 1700820449804_add-index-to-notification-tables.ts
+│   │   │       │   ├── 1700825003262_add-index-to-notification-emails-joined-tables.ts
+│   │   │       │   ├── 1701091120541_modify-view-agencies-created-at-as-date.ts
+│   │   │       │   ├── 1701957299681_add-non-empty-default-value-establishment-tutor-job.ts
+│   │   │       │   ├── 1702040870380_replace-empty-value-in-columns-business-name-customized-and-customized-name-by-null.ts
+│   │   │       │   ├── 1702369631190_add-review-date-column-in-conventions-table.ts
+│   │   │       │   ├── 1702377621120_add-job-prop-on-tutor-that-have-no-job-prop-with-default-value.ts
+│   │   │       │   ├── 1702377621121_add-job-default-value-when-tutor-job-is-spaces-only.ts
+│   │   │       │   ├── 1702909680958_fix-view-conventions-errored.ts
+│   │   │       │   ├── 1703692494741_add-agency-rejection-justification.ts
+│   │   │       │   ├── 1704362718175_remove-feature-flags-enableApiV0-enableApiV1.ts
+│   │   │       │   ├── 1704384789159_change-questionnaire-url-length-in-agencies-to-600.ts
+│   │   │       │   ├── 1704384789160_add-next-availability-date-in-establishments.ts
+│   │   │       │   ├── 1705424391084_remove-outdated-feature-flags.ts
+│   │   │       │   ├── 1705588321195_create-establishment-lead-events-table.ts
+│   │   │       │   ├── 1705588321196_agency-siret-mandatory.ts
+│   │   │       │   ├── 1706012434627_remove-wrong-questionnaire-url-values-and-make-column-nullable.ts
+│   │   │       │   ├── 1706019726488_nullish-agencies-code-safir-to-null.ts
+│   │   │       │   ├── 1706203244996_update-convention-id-type-in-establishment-lead-table.ts
+│   │   │       │   ├── 1706203244997_update-temporary-operation-feature-flag.ts
+│   │   │       │   ├── 1706537232301_add-searchable-by-columns.ts
+│   │   │       │   ├── 1707226340043_create-agency-groups-tables.ts
+│   │   │       │   ├── 1708338341444_delete-ongoing-users-without-authenticated-users.ts
+│   │   │       │   ├── 1708418255937_add-authenticated-users-external-id.ts
+│   │   │       │   ├── 1708507984370_make-external-id-column-not-null-in-authenticated-users.ts
+│   │   │       │   ├── 1708614263639_delete-all-from-establishment-lead-events-table.ts
+│   │   │       │   ├── 1708954107350_add-in-process-to-type-event-status.ts
+│   │   │       │   ├── 1708954107352_add-form-establishments-business-addresses.ts
+│   │   │       │   ├── 1708954107353_add-establishments-locations.ts
+│   │   │       │   ├── 1709552928953_add-covered-departments-column-to-agencies.ts
+│   │   │       │   ├── 1709567327747_add-consumer-id-in-saved-errors.ts
+│   │   │       │   ├── 1709888015455_update-establishment-view-naf-code.ts
+│   │   │       │   ├── 1709899836293_create-nps-table.ts
+│   │   │       │   ├── 1710248347259_remove-establishments-immersion-contacts-table.ts
+│   │   │       │   ├── 1710926061001_update-role-of-ic-users-link-to-two-step-validation-agencies.ts
+│   │   │       │   ├── 1710931087875_change-name-of-pe-agencies-to-france-travail.ts
+│   │   │       │   ├── 1711119518134_add-acquisition-columns-on-convention-establishments-agencies-and-searches.ts
+│   │   │       │   ├── 1711379976051_update-column-view-convention.ts
+│   │   │       │   ├── 1711379976100_rename-users-tables.ts
+│   │   │       │   ├── 1711552327440_add-acquisition-params-to-discussions.ts
+│   │   │       │   ├── 1712236423427_update-form-establishments-business-contact.ts
+│   │   │       │   ├── 1712238124292_update-form-establishments-profession.ts
+│   │   │       │   ├── 1712569941143_modify-sortedby-type.ts
+│   │   │       │   ├── 1712737182683_fix-establishment-aggregate.ts
+│   │   │       │   ├── 1712836954831_add-index-on-search-related-tables.ts
+│   │   │       │   ├── 1713191666920_add-index-on-convention-id-in-notif-email-table.ts
+│   │   │       │   ├── 1713191667000_remove-duplicated-contact-in-establishments-contact.ts
+│   │   │       │   ├── 1713265088865_add-unique-constraint-on-siret-in-establishment-contact-table.ts
+│   │   │       │   ├── 1713443328116_add-table-delegation-contacts.ts
+│   │   │       │   ├── 1713963714770_search-made-index.ts
+│   │   │       │   ├── 1714381144194_add-number-employees-column-in-convention-table.ts
+│   │   │       │   ├── 1714381145000_create-table-users-admins.ts
+│   │   │       │   ├── 1714642132287_make-users-table-support-non-ic-users.ts
+│   │   │       │   ├── 1716555884637_change-role-columns-to-roles-in-users-agencies-table.ts
+│   │   │       │   ├── 1716909699202_replace-message-in-view-conventions-errored.ts
+│   │   │       │   ├── 1717012051680_validate-all-phone-number-from-past.ts
+│   │   │       │   ├── 1717066330932_add-index-in-outbox-table.ts
+│   │   │       │   ├── 1717072048544_rename-saved-errors-message-prop.ts
+│   │   │       │   ├── 1717077855666_format-phone-number-in-establishment-contact.ts
+│   │   │       │   ├── 1717403429363_format-phone-number-in-actors-table-for-emergency-contact.ts
+│   │   │       │   ├── 1717403430000_add-missing-rome-code-and-appellations.ts
+│   │   │       │   ├── 1718979941114_appellation-code-and-region-shape-index.ts
+│   │   │       │   ├── 1718979942000_add-column-convention-id-to-discussions-table.ts
+│   │   │       │   ├── 1718979942001_update-search-mades-geo-params-nullable.ts
+│   │   │       │   ├── 1720691057384_add-exchanges-attachments-json-column.ts
+│   │   │       │   ├── 1720702704939_add-index-search-made-id.ts
+│   │   │       │   ├── 1720707446472_update-api-consumers-with-statistics-rights.ts
+│   │   │       │   ├── 1721116094406_add-discussion-status-and-rejection-informations.ts
+│   │   │       │   ├── 1721116094407_add-index-on-date-end-in-convention-table-and-on-email-kind-in-notifications-email-table.ts
+│   │   │       │   ├── 1721116094500_add-marketting-establishment-list-table.ts
+│   │   │       │   ├── 1721639634134_add-convention-indexes.ts
+│   │   │       │   ├── 1721646173134_add-convention-actors-indexes.ts
+│   │   │       │   ├── 1721646173134_add-experience-columns-to-discussion-beneficiary.ts
+│   │   │       │   ├── 1721813251861_add-discussion-indexes.ts
+│   │   │       │   ├── 1721813251862_rename-saved-errors-table-to-partner-broadcasts.ts
+│   │   │       │   ├── 1721908039463_all-emails-to-lower-case.ts
+│   │   │       │   ├── 1721994651652_add-index-on-discussions.ts
+│   │   │       │   ├── 1721994651700_rename-max-contacts-per-week.ts
+│   │   │       │   ├── 1722002306970_remove-empty-custom-business-name.ts
+│   │   │       │   ├── 1722502484299_add-text-with-options-feature-flag.ts
+│   │   │       │   ├── 1722591559364_trim-email-adresses.ts
+│   │   │       │   ├── 1722867072954_add-index-on-update-date-on-convention-table.ts
+│   │   │       │   ├── 1722954848190_fix-notifications-and-discussions-emails.ts
+│   │   │       │   ├── 1723102390031_remove-wrong-customized-names-in-establishments.ts
+│   │   │       │   ├── 1723102390032_trim-and-remove-last-line-breaks-in-conventions.ts
+│   │   │       │   ├── 1723126978255_remove-counsellor-rights-on-users.ts
+│   │   │       │   ├── 1724065715074_change-pe-email-to-francetravail.ts
+│   │   │       │   ├── 1724233123941_add-index-on-establishment-update-date.ts
+│   │   │       │   ├── 1724773322988_remove-counsellor-and-validator-emails-backup-in-agencies.ts
+│   │   │       │   ├── 1724854197570_delete-invalid-form-establishments.ts
+│   │   │       │   ├── 1725895161568_update-discussion-status-to-accepted-if-linked-convention.ts
+│   │   │       │   ├── 1726826257133_add-searchable-by-column-in-searches-made.ts
+│   │   │       │   ├── 1726828434357_move-score-from-offers-to-establishments.ts
+│   │   │       │   ├── 1727084870912_drop-outbox-views.ts
+│   │   │       │   ├── 1727092463608_rename-agencyOwner-and-toReview-roles.ts
+│   │   │       │   ├── 1727168535167_add-index-on-convention-id-on-table-partner-pe-connect.ts
+│   │   │       │   ├── 1727168535200_split-establishment-locations-in-2-for-performances-improvements.ts
+│   │   │       │   ├── 1727168535201_add-pro-connect-feature-flags.ts
+│   │   │       │   ├── 1727168535202_pro-connect-external-id.ts
+│   │   │       │   ├── 1729516729333_add-individual-protection-description-column-to-convention-table.ts
+│   │   │       │   ├── 1731527655725_add-feature-flag-for-convention-broadcast-to-france-travail.ts
+│   │   │       │   ├── 1732192784072_fit-for-disabled-worker-mandatory.ts
+│   │   │       │   ├── 1732192784073_establishment-contacts-to-establishment-rights.ts
+│   │   │       │   ├── 1732525511440_is-searchable-renamed-to-is-max-discussions-for-period-reached.ts
+│   │   │       │   ├── 1733307795659_search-made-add-department-column.ts
+│   │   │       │   ├── 1733326609561_is-open-in-view-establishment.ts
+│   │   │       │   ├── 1733409633403_remove-unnecessary-rome-columns.ts
+│   │   │       │   ├── 1734079303517_drop-old-searches-made.ts
+│   │   │       │   ├── 1734100052764_old-discussion-add-default-immersion-objective.ts
+│   │   │       │   ├── 1734441356379_add_status_to_establishments.ts
+│   │   │       │   ├── 1734538415748_add-columns-in-immersion-assessments.ts
+│   │   │       │   ├── 1736356255184_add-legacy-rome-3-column-to-public-appellation-table.ts
+│   │   │       │   ├── 1736507222905_update-immersion-assessments-number-of-missed-hours-type.ts
+│   │   │       │   ├── 1736507222906_sanitize-establishment-website-urls.ts
+│   │   │       │   ├── 1736937109801_rename-assessment-notification-kinds.ts
+│   │   │       │   ├── 1737646984090_searchmade-nafcodes.ts
+│   │   │       │   ├── 1737646984091_add-number-of-hours-actually-made-in-assessment-table.ts
+│   │   │       │   ├── 1739367396471_archive-form-establishments.ts
+│   │   │       │   ├── 1740647858355_remove-inclusion-connect-sub-column-from-users.ts
+│   │   │       │   ├── 1741172920696_add-last-insee-check-date-index-to-establishments.ts
+│   │   │       │   ├── 1742468849412_add-index-in-discussion-for-preformances.ts
+│   │   │       │   ├── 1742469808774_add-index-on-actors-email.ts
+│   │   │       │   ├── 1743433154716_add-phone-number-to-agencies.ts
+│   │   │       │   ├── 1743436804445_add-state-to-notifications.ts
+│   │   │       │   ├── 1744289903627_user-repository-pro-connect-siret.ts
+│   │   │       │   ├── 1745336151992_fix-outbox-status-type.ts
+│   │   │       │   ├── 1745336151992_mark-old-event-as-failed.ts
+│   │   │       │   ├── 1745503851341_discussion-add-discussion-kind.ts
+│   │   │       │   ├── 1746800577450_discussion-add-discussion-phone.ts
+│   │   │       │   ├── 1747142591503_discussion-add-date-preferences.ts
+│   │   │       │   ├── 1747405630029_add-default-date-preferences-on-discussion-when-empty.ts
+│   │   │       │   ├── 1747405631000_add-feature-flag-to-activate-broadcast-to-FT-in-new-format.ts
+│   │   │       │   ├── 1747645672971_update-convention-with-status-draft-to-ready-to-sign.ts
+│   │   │       │   ├── 1748344826066_add-agency-refent-firstname-and-lastname-column-in-convention-table.ts
+│   │   │       │   ├── 1748353835185_add-columns-email-and-used-at-to-ongoing-oauth.ts
+│   │   │       │   ├── 1748527211195_add-column-candidate-warned-method-to-discussion-table.ts
+│   │   │       │   ├── 1749631565175_add-highlight-feature-flags.ts
+│   │   │       │   ├── 1750772714987_add-priority-column-to-outbox.ts
+│   │   │       │   ├── 1750866140682_ongoingauth-with-from-uri.ts
+│   │   │       │   ├── 1752051434312_add-discussion-rejection-kind-deprecated.ts
+│   │   │       │   ├── 1752051434313_add-discussion-notification-flag-to-establishment-rights-and-rework-discussion-datas.ts
+│   │   │       │   ├── 1753706130178_add-user-rights-is-main-contact-by-phone.ts
+│   │   │       │   ├── 1753774915436_add-establishment-welcome-address.ts
+│   │   │       │   ├── 1754985207401_add-default-value-for-establishment-admin-user-right-is-main-contact-by-phone.ts
+│   │   │       │   ├── 1756892831173_refactor-ft-connect-tables-remove-default-uuid.ts
+│   │   │       │   ├── 1757431594917_add-missing-past-values-for-discussions.ts
+│   │   │       │   ├── 1758031506053_update-discussion-resumelink-type.ts
+│   │   │       │   ├── 1758556819831_add-missing-departments.ts
+│   │   │       │   ├── 1758892463309_deprecated-has-working-experience.ts
+│   │   │       │   ├── 1759241391201_add-indexes-to-access-sirets-in-outbox.ts
+│   │   │       │   ├── 1760104306704_drop-old-tables-and-columns.ts
+│   │   │       │   ├── 1761650855371_make-fit-for-disabled-worker-literal.ts
+│   │   │       │   ├── 1761835721484_add-index-for-users-ongoing-oauths-and-column-for-users.ts
+│   │   │       │   ├── 1761836000000_discussion-update-date-and-discussion-stats.ts
+│   │   │       │   ├── 1763741780147_table-agencies-rename-column-rejection-justification.ts
+│   │   │       │   ├── 1764708582369_create-most-frequent-searches-materialized-view.ts
+│   │   │       │   ├── 1764792808047_convert-most-frequent-searches-to-stats-table.ts
+│   │   │       │   ├── 1765187800523_closed-agency-default-justification.ts
+│   │   │       │   ├── 1765453910491_update-ft-user-role-to-validator-if-counsellor.ts
+│   │   │       │   ├── 1765798358894_add-index-on-convention-id-in-conventionfor-external-and-on-renewed-from-in-conventions.ts
+│   │   │       │   ├── 1765878519149_delete-users-agencies-without-roles.ts
+│   │   │       │   ├── 1765889717015_offers-with-remote-work-mode.ts
+│   │   │       │   ├── 1767794292312_add-agency-contact-email-column-in-agency-table.ts
+│   │   │       │   ├── 1768394406958_add-delegation-info-column-in-agency-table.ts
+│   │   │       │   ├── 1769080456000_add-revocation-to-api-consumers.ts
+│   │   │       │   ├── 1769191180830_create-convention-draft-table.ts
+│   │   │       │   ├── 1769702638918_rename-no-remote-work-mode.ts
+│   │   │       │   ├── 1769702638919_create-phone-numbers-table-and-migrate-data.ts
+│   │   │       │   ├── 1771275715629_add-index-broadcast-feedbacks-convention-id.ts
+│   │   │       │   ├── 1771329690955_create-convention-template-table.ts
+│   │   │       │   ├── 1771845357660_add-missing-indexes-on-phone-number-fk-columns.ts
+│   │   │       │   ├── 1771845357661_add-to-short-link-table-single-use-and-last-used-at-column.ts
+│   │   │       │   ├── 1772128458162_remove-shortlinks-single-use.ts
+│   │   │       │   ├── 1772198966778_add-search-filters-columns-to-searches-made.ts
+│   │   │       │   ├── 1772557039404_add-avg-number-of-results-to-stats-most-frequent-searches.ts
+│   │   │       │   ├── 1772557039405_add-assessment-signature-columns.ts
+│   │   │       │   ├── 1773054724542_add-partial-index-broadcast-feedbacks-unhandled-errors.ts
+│   │   │       │   ├── 1773149632831_drop-unused-searches-made-indexes.ts
+│   │   │       │   ├── 1773248889911_immersion-assessments-created-at-not-null-no-default.ts
+│   │   │       │   ├── 1773670524842_alter-beneficiary-feedback-and-establishment-name.ts
+│   │   │       │   ├── 1773670524843_add-establishment-users-status.ts
+│   │   │       │   ├── 1773681000000_remove-standard-format-ft-broadcast-feature-flag.ts
+│   │   │       │   ├── 1773829974729_add_phone_numbers_status_fields.ts
+│   │   │       │   ├── 1776070438549_add-emergency-contact-phone-id-column-in-actors-table.ts
+│   │   │       │   ├── 1776172467473_add-mantory-priority-to-events.ts
+│   │   │       │   ├── 1776240419307_add-convention-remote-work-mode.ts
+│   │   │       │   ├── 1776855312363_add-userid-in-notifications-table.ts
+│   │   │       │   ├── 1776855375794_fix-unsupported-dates.ts
+│   │   │       │   ├── 1777034819504_add-location-id-on-discussion.ts
+│   │   │       │   ├── 1777034819505_add-inactive-users-cleanup-flags.ts
+│   │   │       │   ├── 1777034819506_add-exchanges-indexes.ts
+│   │   │       │   ├── 1777034819507_add-banned-establishment-table.ts
+│   │   │       │   ├── 1781000986402_add-unique-constraint-on-groups-sirets.ts
+│   │   │       │   ├── 1781000986403_marketing-establishment-contacts-add-naf-code.ts
+│   │   │       │   ├── 1781000986500_add-convention-agency-ids-to-broadcast-feedbacks.ts
+│   │   │       │   ├── 1781623185163_add-prevent-to-delete-to-users.ts
+│   │   │       │   ├── 1781790712181_add-cascade-delete-on-agency-convention-drafts-and-templates.ts
+│   │   │       │   ├── 1782811954472_rename-convention-draft-to-delete.ts
+│   │   │       │   └── 1783678432358_ongoingauth-with-id-token.ts
+│   │   │       ├── pgPool.ts
+│   │   │       └── static-data
+│   │   │           ├── appellations_public.csv
+│   │   │           ├── count_discussion_before_having_reply.sql
+│   │   │           ├── departements-avec-outre-mer.json
+│   │   │           ├── departements-outre-mer-manquants.json
+│   │   │           ├── more_postal_code_department_region.sql
+│   │   │           ├── postal_code_department_region.sql
+│   │   │           └── romes_public.csv
+│   │   ├── domains
+│   │   │   ├── agency
+│   │   │   │   ├── adapters
+│   │   │   │   │   ├── InMemoryAgencyGroupRepository.ts
+│   │   │   │   │   ├── InMemoryAgencyRepository.ts
+│   │   │   │   │   ├── InMemoryDelegationContactRepository.ts
+│   │   │   │   │   ├── PgAgencyGroupRepository.integration.test.ts
+│   │   │   │   │   ├── PgAgencyGroupRepository.ts
+│   │   │   │   │   ├── PgAgencyRepository.integration.test.ts
+│   │   │   │   │   ├── PgAgencyRepository.ts
+│   │   │   │   │   ├── PgDelegationContactRepository.integration.test.ts
+│   │   │   │   │   ├── PgDelegationContactRepository.ts
+│   │   │   │   │   └── ft-agencies-referential
+│   │   │   │   │       ├── HttpFtAgenciesReferential.manual.test.ts
+│   │   │   │   │       ├── HttpFtAgenciesReferential.ts
+│   │   │   │   │       ├── HttpRome3Gateway.manual.test.ts
+│   │   │   │   │       ├── HttpRome3Gateway.ts
+│   │   │   │   │       ├── HttpRome4Gateway.manual.test.ts
+│   │   │   │   │       └── HttpRome4Gateway.ts
+│   │   │   │   ├── entities
+│   │   │   │   │   └── Agency.ts
+│   │   │   │   ├── ports
+│   │   │   │   │   ├── AgencyGroupRepository.ts
+│   │   │   │   │   ├── AgencyRepository.ts
+│   │   │   │   │   └── DelegationContactRepository.ts
+│   │   │   │   └── use-cases
+│   │   │   │       ├── AddAgenciesAndUsers.ts
+│   │   │   │       ├── AddAgenciesAndUsers.unit.test.ts
+│   │   │   │       ├── AddAgency.ts
+│   │   │   │       ├── AddAgency.unit.test.ts
+│   │   │   │       ├── AssignAgencyViewerRoleToUsers.ts
+│   │   │   │       ├── AssignAgencyViewerRoleToUsers.unit.test.ts
+│   │   │   │       ├── CloseAgencyAndTransferConventions.ts
+│   │   │   │       ├── CloseAgencyAndTransferConventions.unit.test.ts
+│   │   │   │       ├── CloseInactiveAgenciesWithoutRecentConventions.ts
+│   │   │   │       ├── CloseInactiveAgenciesWithoutRecentConventions.unit.test.ts
+│   │   │   │       ├── DelegationConventionReminder.ts
+│   │   │   │       ├── DelegationConventionReminder.unit.test.ts
+│   │   │   │       ├── GetAgencyById.ts
+│   │   │   │       ├── GetAgencyById.unit.test.ts
+│   │   │   │       ├── ListAgenciesByFilter.ts
+│   │   │   │       ├── ListAgenciesByFilter.unit.test.ts
+│   │   │   │       ├── NotifyAgencyHasBeenPutOnHold.ts
+│   │   │   │       ├── NotifyAgencyHasBeenPutOnHold.unit.test.ts
+│   │   │   │       ├── RegisterAgencyToConnectedUser.ts
+│   │   │   │       ├── RegisterAgencyToConnectedUser.unit.test.ts
+│   │   │   │       ├── RemoveUserFromAgency.ts
+│   │   │   │       ├── RemoveUserFromAgency.unit.test.ts
+│   │   │   │       ├── UpdateAgency.ts
+│   │   │   │       ├── UpdateAgency.unit.test.ts
+│   │   │   │       ├── UpdateAgencyReferringToUpdatedAgency.ts
+│   │   │   │       ├── UpdateAgencyReferringToUpdatedAgency.unit.test.ts
+│   │   │   │       └── notifications
+│   │   │   │           ├── NotifyDelegationConventionReminder.ts
+│   │   │   │           └── NotifyDelegationConventionReminder.unit.test.ts
+│   │   │   ├── connected-users
+│   │   │   │   ├── helpers
+│   │   │   │   │   ├── agencyRights.helper.ts
+│   │   │   │   │   ├── authorization.helper.ts
+│   │   │   │   │   ├── connectedUser.helper.ts
+│   │   │   │   │   └── userRights.helper.ts
+│   │   │   │   └── use-cases
+│   │   │   │       ├── CreateUserForAgency.ts
+│   │   │   │       ├── CreateUserForAgency.unit.test.ts
+│   │   │   │       ├── DeleteUser.ts
+│   │   │   │       ├── DeleteUser.unit.test.ts
+│   │   │   │       ├── GetConnectedUser.ts
+│   │   │   │       ├── GetConnectedUser.unit.test.ts
+│   │   │   │       ├── GetConnectedUsers.ts
+│   │   │   │       ├── GetConnectedUsers.unit.test.ts
+│   │   │   │       ├── GetUsers.ts
+│   │   │   │       ├── GetUsers.unit.test.ts
+│   │   │   │       ├── LinkFranceTravailUsersToTheirAgencies.ts
+│   │   │   │       ├── LinkFranceTravailUsersToTheirAgencies.unit.test.ts
+│   │   │   │       ├── RejectUserForAgency.ts
+│   │   │   │       ├── RejectUserForAgency.unit.test.ts
+│   │   │   │       ├── UpdateUserForAgency.ts
+│   │   │   │       └── UpdateUserForAgency.unit.test.ts
+│   │   │   ├── convention
+│   │   │   │   ├── MarkOldConventionAsDeprecated.test.ts
+│   │   │   │   ├── MarkOldConventionAsDeprecated.ts
+│   │   │   │   ├── adapters
+│   │   │   │   │   ├── InMemoryAssessmentRepository.ts
+│   │   │   │   │   ├── InMemoryConventionDraftRepository.ts
+│   │   │   │   │   ├── InMemoryConventionExternalIdRepository.ts
+│   │   │   │   │   ├── InMemoryConventionQueries.ts
+│   │   │   │   │   ├── InMemoryConventionRepository.ts
+│   │   │   │   │   ├── InMemoryConventionTemplateQueries.ts
+│   │   │   │   │   ├── InMemoryConventionsToSyncRepository.ts
+│   │   │   │   │   ├── InMemoryNpsRepository.ts
+│   │   │   │   │   ├── PgAssessmentRepository.integration.test.ts
+│   │   │   │   │   ├── PgAssessmentRepository.ts
+│   │   │   │   │   ├── PgConventionDraftRepository.integration.test.ts
+│   │   │   │   │   ├── PgConventionDraftRepository.ts
+│   │   │   │   │   ├── PgConventionExternalIdRepository.integration.test.ts
+│   │   │   │   │   ├── PgConventionExternalIdRepository.ts
+│   │   │   │   │   ├── PgConventionQueries.integration.test.ts
+│   │   │   │   │   ├── PgConventionQueries.ts
+│   │   │   │   │   ├── PgConventionRepository.integration.test.ts
+│   │   │   │   │   ├── PgConventionRepository.ts
+│   │   │   │   │   ├── PgConventionTemplateQueries.integration.test.ts
+│   │   │   │   │   ├── PgConventionTemplateQueries.ts
+│   │   │   │   │   ├── PgConventionsToSyncRepository.integration.test.ts
+│   │   │   │   │   ├── PgConventionsToSyncRepository.ts
+│   │   │   │   │   ├── PgNpsRepository.integration.test.ts
+│   │   │   │   │   ├── PgNpsRepository.ts
+│   │   │   │   │   ├── france-travail-gateway
+│   │   │   │   │   │   ├── FranceTravailRoutes.ts
+│   │   │   │   │   │   ├── HttpFranceTravailGateway.manual.test.ts
+│   │   │   │   │   │   ├── HttpFranceTravailGateway.ts
+│   │   │   │   │   │   └── InMemoryFranceTravailGateway.ts
+│   │   │   │   │   └── pgConventionSql.ts
+│   │   │   │   ├── entities
+│   │   │   │   │   ├── AssessmentEntity.ts
+│   │   │   │   │   ├── Convention.ts
+│   │   │   │   │   └── ValidatedConventionNps.ts
+│   │   │   │   ├── ports
+│   │   │   │   │   ├── AssessmentRepository.ts
+│   │   │   │   │   ├── ConventionDraftRepository.ts
+│   │   │   │   │   ├── ConventionExternalIdRepository.ts
+│   │   │   │   │   ├── ConventionQueries.ts
+│   │   │   │   │   ├── ConventionRepository.ts
+│   │   │   │   │   ├── ConventionTemplateQueries.ts
+│   │   │   │   │   ├── ConventionsToSyncRepository.ts
+│   │   │   │   │   ├── FranceTravailGateway.ts
+│   │   │   │   │   └── NpsRepository.ts
+│   │   │   │   └── use-cases
+│   │   │   │       ├── AddConvention.ts
+│   │   │   │       ├── AddConvention.unit.test.ts
+│   │   │   │       ├── AddValidatedConventionNps.ts
+│   │   │   │       ├── AddValidatedConventionNps.unit.test.ts
+│   │   │   │       ├── ConventionsReminder.ts
+│   │   │   │       ├── ConventionsReminder.unit.test.ts
+│   │   │   │       ├── CreateAssessment.ts
+│   │   │   │       ├── CreateAssessment.unit.test.ts
+│   │   │   │       ├── CreateOrUpdateConventionTemplate.ts
+│   │   │   │       ├── CreateOrUpdateConventionTemplate.unit.test.ts
+│   │   │   │       ├── DeleteAssessment.ts
+│   │   │   │       ├── DeleteAssessment.unit.test.ts
+│   │   │   │       ├── DeleteConventionDraft.ts
+│   │   │   │       ├── DeleteConventionDraft.unit.test.ts
+│   │   │   │       ├── DeleteConventionTemplate.ts
+│   │   │   │       ├── DeleteConventionTemplate.unit.test.ts
+│   │   │   │       ├── EditConventionCounsellorName.ts
+│   │   │   │       ├── EditConventionCounsellorName.unit.test.ts
+│   │   │   │       ├── EditConventionWithFinalStatus.ts
+│   │   │   │       ├── EditConventionWithFinalStatus.unit.test.ts
+│   │   │   │       ├── GetAgencyPublicInfoById.ts
+│   │   │   │       ├── GetAgencyPublicInfoById.unit.test.ts
+│   │   │   │       ├── GetApiConsumersByConvention.ts
+│   │   │   │       ├── GetApiConsumersByConvention.unit.test.ts
+│   │   │   │       ├── GetAssessmentByConventionId.ts
+│   │   │   │       ├── GetAssessmentByConventionId.unit.test.ts
+│   │   │   │       ├── GetConvention.ts
+│   │   │   │       ├── GetConvention.unit.test.ts
+│   │   │   │       ├── GetConventionDraftById.ts
+│   │   │   │       ├── GetConventionDraftById.unit.test.ts
+│   │   │   │       ├── GetConventionTemplatesForCurrentUser.ts
+│   │   │   │       ├── GetConventionTemplatesForCurrentUser.unit.test.ts
+│   │   │   │       ├── GetConventionsForAgencyUser.ts
+│   │   │   │       ├── GetConventionsForAgencyUser.unit.test.ts
+│   │   │   │       ├── GetConventionsForApiConsumer.ts
+│   │   │   │       ├── GetConventionsForApiConsumer.unit.test.ts
+│   │   │   │       ├── GetConventionsWithUnfinalizedAssessment.ts
+│   │   │   │       ├── GetConventionsWithUnfinalizedAssessment.unit.test.ts
+│   │   │   │       ├── GetLastBroadcastFeedback.ts
+│   │   │   │       ├── GetLastBroadcastFeedback.unit.test.ts
+│   │   │   │       ├── RemindAgencyAdminThatNewUserRequestAgencyRight.ts
+│   │   │   │       ├── RemindAgencyAdminThatNewUserRequestAgencyRight.unit.test.ts
+│   │   │   │       ├── RemoveConventionFTAdvisorIfAgencyIsNotFranceTravail.ts
+│   │   │   │       ├── RemoveConventionFTAdvisorIfAgencyIsNotFranceTravail.unit.test.ts
+│   │   │   │       ├── RenewConvention.ts
+│   │   │   │       ├── RenewConvention.unit.test.ts
+│   │   │   │       ├── RequestOldConventionDraftsDeletion.ts
+│   │   │   │       ├── RequestOldConventionDraftsDeletion.unit.test.ts
+│   │   │   │       ├── ResyncOldConventionsToFt.ts
+│   │   │   │       ├── ResyncOldConventionsToFt.unit.test.ts
+│   │   │   │       ├── SaveConventionDraft.ts
+│   │   │   │       ├── SaveConventionDraft.unit.test.ts
+│   │   │   │       ├── SendAssessmentLink.ts
+│   │   │   │       ├── SendAssessmentLink.unit.test.ts
+│   │   │   │       ├── SendAssessmentSignatureReminder.ts
+│   │   │   │       ├── SendAssessmentSignatureReminder.unit.test.ts
+│   │   │   │       ├── SendEmailWhenAgencyIsRejected.ts
+│   │   │   │       ├── SendEmailWhenAgencyIsRejected.unit.test.ts
+│   │   │   │       ├── SendEmailWhenNewAgencyOfTypeOtherAdded.ts
+│   │   │   │       ├── SendEmailWhenNewAgencyOfTypeOtherAdded.unit.test.ts
+│   │   │   │       ├── SendEmailsWhenAgencyIsActivated.ts
+│   │   │   │       ├── SendEmailsWhenAgencyIsActivated.unit.test.ts
+│   │   │   │       ├── SendSignatureLink.ts
+│   │   │   │       ├── SendSignatureLink.unit.test.ts
+│   │   │   │       ├── SignAssessment.ts
+│   │   │   │       ├── SignAssessment.unit.test.ts
+│   │   │   │       ├── SignConvention.ts
+│   │   │   │       ├── SignConvention.unit.test.ts
+│   │   │   │       ├── TransferConventionToAgency.ts
+│   │   │   │       ├── TransferConventionToAgency.unit.test.ts
+│   │   │   │       ├── UpdateConvention.ts
+│   │   │   │       ├── UpdateConvention.unit.test.ts
+│   │   │   │       ├── UpdateConventionStatus.testHelpers.ts
+│   │   │   │       ├── UpdateConventionStatus.ts
+│   │   │   │       ├── UpdateConventionStatus.unit.test.ts
+│   │   │   │       ├── broadcast
+│   │   │   │       │   ├── BroadcastConventionAgain.ts
+│   │   │   │       │   ├── BroadcastConventionAgain.unit.test.ts
+│   │   │   │       │   ├── BroadcastToFranceTravailOnConventionUpdates.ts
+│   │   │   │       │   ├── BroadcastToFranceTravailOnConventionUpdates.unit.test.ts
+│   │   │   │       │   ├── BroadcastToFranceTravailOrchestrator.ts
+│   │   │   │       │   ├── BroadcastToFranceTravailOrchestrator.unit.test.ts
+│   │   │   │       │   ├── GetConventionsWithErroredBroadcastFeedback.ts
+│   │   │   │       │   ├── GetConventionsWithErroredBroadcastFeedback.unit.test.ts
+│   │   │   │       │   └── broadcastConventionParams.ts
+│   │   │   │       ├── notifications
+│   │   │   │       │   ├── NotifyActorsThatAssessmentDeleted.ts
+│   │   │   │       │   ├── NotifyActorsThatAssessmentDeleted.unit.test.ts
+│   │   │   │       │   ├── NotifyAgencyDelegationContact.ts
+│   │   │   │       │   ├── NotifyAgencyDelegationContact.unit.test.ts
+│   │   │   │       │   ├── NotifyAgencyThatAssessmentIsCreatedWithStatusCompletedOrPartiallyCompleted.ts
+│   │   │   │       │   ├── NotifyAgencyThatAssessmentIsCreatedWithStatusCompletedOrPartiallyCompleted.unit.test.ts
+│   │   │   │       │   ├── NotifyAgencyThatAssessmentIsCreatedWithStatusDidNotShow.ts
+│   │   │   │       │   ├── NotifyAgencyThatAssessmentIsCreatedWithStatusDidNotShow.unit.test.ts
+│   │   │   │       │   ├── NotifyAllActorsOfFinalConventionValidation.ts
+│   │   │   │       │   ├── NotifyAllActorsOfFinalConventionValidation.unit.test.ts
+│   │   │   │       │   ├── NotifyAllActorsThatConventionIsCancelled.ts
+│   │   │   │       │   ├── NotifyAllActorsThatConventionIsCancelled.unit.test.ts
+│   │   │   │       │   ├── NotifyAllActorsThatConventionIsDeprecated.ts
+│   │   │   │       │   ├── NotifyAllActorsThatConventionIsDeprecated.unit.test.ts
+│   │   │   │       │   ├── NotifyAllActorsThatConventionIsRejected.ts
+│   │   │   │       │   ├── NotifyAllActorsThatConventionIsRejected.unit.test.ts
+│   │   │   │       │   ├── NotifyAllActorsThatConventionTransferred.ts
+│   │   │   │       │   ├── NotifyAllActorsThatConventionTransferred.unit.test.ts
+│   │   │   │       │   ├── NotifyBeneficiaryThatAssessmentIsCreated.ts
+│   │   │   │       │   ├── NotifyBeneficiaryThatAssessmentIsCreated.unit.test.ts
+│   │   │   │       │   ├── NotifyBeneficiaryThatAssessmentNeedsSignature.ts
+│   │   │   │       │   ├── NotifyBeneficiaryThatAssessmentNeedsSignature.unit.test.ts
+│   │   │   │       │   ├── NotifyConventionDraftSaved.ts
+│   │   │   │       │   ├── NotifyConventionDraftSaved.unit.test.ts
+│   │   │   │       │   ├── NotifyConventionReminder.ts
+│   │   │   │       │   ├── NotifyConventionReminder.unit.test.ts
+│   │   │   │       │   ├── NotifyEstablishmentThatAssessmentWasCreated.ts
+│   │   │   │       │   ├── NotifyEstablishmentThatAssessmentWasCreated.unit.test.ts
+│   │   │   │       │   ├── NotifyLastSigneeThatConventionHasBeenSigned.ts
+│   │   │   │       │   ├── NotifyLastSigneeThatConventionHasBeenSigned.unit.test.ts
+│   │   │   │       │   ├── NotifyNewConventionNeedsReview.ts
+│   │   │   │       │   ├── NotifyNewConventionNeedsReview.unit.test.ts
+│   │   │   │       │   ├── NotifySignatoriesThatConventionSubmittedNeedsSignature.ts
+│   │   │   │       │   ├── NotifySignatoriesThatConventionSubmittedNeedsSignature.unit.test.ts
+│   │   │   │       │   ├── NotifySignatoriesThatConventionSubmittedNeedsSignatureAfterModification.ts
+│   │   │   │       │   ├── NotifySignatoriesThatConventionSubmittedNeedsSignatureAfterModification.unit.test.ts
+│   │   │   │       │   ├── NotifyToAgencyConventionSubmitted.ts
+│   │   │   │       │   ├── NotifyToAgencyConventionSubmitted.unit.test.ts
+│   │   │   │       │   ├── NotifyUserAgencyRightChanged.ts
+│   │   │   │       │   ├── NotifyUserAgencyRightChanged.unit.test.ts
+│   │   │   │       │   ├── NotifyUserAgencyRightRejected.ts
+│   │   │   │       │   ├── NotifyUserAgencyRightRejected.unit.test.ts
+│   │   │   │       │   ├── NotifyUserThatAgencyRegistrationRequestWasReceived.ts
+│   │   │   │       │   └── NotifyUserThatAgencyRegistrationRequestWasReceived.unit.test.ts
+│   │   │   │       └── partners-errored-convention
+│   │   │   │           ├── MarkPartnersErroredConventionAsHandled.ts
+│   │   │   │           └── MarkPartnersErroredConventionAsHandled.unit.test.ts
+│   │   │   ├── core
+│   │   │   │   ├── address
+│   │   │   │   │   ├── adapters
+│   │   │   │   │   │   ├── HttpAddressGateway.dto.ts
+│   │   │   │   │   │   ├── HttpAddressGateway.manual.test.ts
+│   │   │   │   │   │   ├── HttpAddressGateway.routes.ts
+│   │   │   │   │   │   ├── HttpAddressGateway.schemas.ts
+│   │   │   │   │   │   ├── HttpAddressGateway.ts
+│   │   │   │   │   │   ├── InMemoryAddressGateway.ts
+│   │   │   │   │   │   └── testUtils.ts
+│   │   │   │   │   ├── ports
+│   │   │   │   │   │   └── AddressGateway.ts
+│   │   │   │   │   └── use-cases
+│   │   │   │   │       ├── LookupLocation.ts
+│   │   │   │   │       ├── LookupLocation.unit.test.ts
+│   │   │   │   │       ├── LookupStreetAddress.ts
+│   │   │   │   │       └── LookupStreetAddress.unit.test.ts
+│   │   │   │   ├── api-consumer
+│   │   │   │   │   ├── adapters
+│   │   │   │   │   │   ├── HttpSubscribersGateway.manual.test.ts
+│   │   │   │   │   │   ├── HttpSubscribersGateway.ts
+│   │   │   │   │   │   ├── InMemoryApiConsumerRepository.ts
+│   │   │   │   │   │   ├── InMemorySubscribersGateway.ts
+│   │   │   │   │   │   ├── PgApiConsumerRepository.integration.test.ts
+│   │   │   │   │   │   └── PgApiConsumerRepository.ts
+│   │   │   │   │   ├── helpers
+│   │   │   │   │   │   └── agency.ts
+│   │   │   │   │   ├── ports
+│   │   │   │   │   │   ├── ApiConsumerRepository.ts
+│   │   │   │   │   │   └── SubscribersGateway.ts
+│   │   │   │   │   └── use-cases
+│   │   │   │   │       ├── BroadcastToPartnersOnConventionUpdates.ts
+│   │   │   │   │       ├── BroadcastToPartnersOnConventionUpdates.unit.test.ts
+│   │   │   │   │       ├── DeleteSubscription.ts
+│   │   │   │   │       ├── DeleteSubscription.unit.test.ts
+│   │   │   │   │       ├── ListActiveSubscriptions.ts
+│   │   │   │   │       ├── ListActiveSubscriptions.unit.test.ts
+│   │   │   │   │       ├── RenewApiConsumerKey.ts
+│   │   │   │   │       ├── RenewApiConsumerKey.unit.test.ts
+│   │   │   │   │       ├── RevokeApiConsumer.ts
+│   │   │   │   │       ├── RevokeApiConsumer.unit.test.ts
+│   │   │   │   │       ├── SaveApiConsumer.ts
+│   │   │   │   │       ├── SaveApiConsumer.unit.test.ts
+│   │   │   │   │       ├── SubscribeToWebhook.ts
+│   │   │   │   │       └── SubscribeToWebhook.unit.test.ts
+│   │   │   │   ├── app-logger
+│   │   │   │   │   └── ports
+│   │   │   │   │       └── AppLogger.ts
+│   │   │   │   ├── authentication
+│   │   │   │   │   ├── connected-user
+│   │   │   │   │   │   ├── adapters
+│   │   │   │   │   │   │   ├── InMemoryOngoingOAuthRepository.ts
+│   │   │   │   │   │   │   ├── InMemoryUserRepository.ts
+│   │   │   │   │   │   │   ├── PgOngoingOAuthRepository.integration.test.ts
+│   │   │   │   │   │   │   ├── PgOngoingOAuthRepository.ts
+│   │   │   │   │   │   │   ├── PgUserRepository.integration.test.ts
+│   │   │   │   │   │   │   ├── PgUserRepository.ts
+│   │   │   │   │   │   │   └── oauth-gateway
+│   │   │   │   │   │   │       ├── InMemoryOAuthGateway.ts
+│   │   │   │   │   │   │       ├── ProConnectOAuthGateway.ts
+│   │   │   │   │   │   │       └── proConnect.routes.ts
+│   │   │   │   │   │   ├── entities
+│   │   │   │   │   │   │   ├── OAuthIdTokenPayload.ts
+│   │   │   │   │   │   │   ├── OngoingOAuth.ts
+│   │   │   │   │   │   │   └── user.helper.ts
+│   │   │   │   │   │   ├── port
+│   │   │   │   │   │   │   ├── OAuthGateway.ts
+│   │   │   │   │   │   │   ├── OngoingOAuthRepositiory.ts
+│   │   │   │   │   │   │   └── UserRepository.ts
+│   │   │   │   │   │   └── use-cases
+│   │   │   │   │   │       ├── AfterOAuthSuccess.integration.test.ts
+│   │   │   │   │   │       ├── AfterOAuthSuccess.ts
+│   │   │   │   │   │       ├── AfterOAuthSuccess.unit.test.ts
+│   │   │   │   │   │       ├── GetOAuthLogoutUrl.ts
+│   │   │   │   │   │       ├── GetOAuthLogoutUrl.unit.test.ts
+│   │   │   │   │   │       ├── InitiateLoginByEmail.ts
+│   │   │   │   │   │       ├── InitiateLoginByEmail.unit.test.ts
+│   │   │   │   │   │       ├── InitiateLoginByOAuth.ts
+│   │   │   │   │   │       ├── InitiateLoginByOAuth.unit.test.ts
+│   │   │   │   │   │       ├── RenewExpiredJwt.ts
+│   │   │   │   │   │       ├── RenewExpiredJwt.unit.test.ts
+│   │   │   │   │   │       ├── TriggerEventsToDeleteInactiveUsers.ts
+│   │   │   │   │   │       ├── TriggerEventsToDeleteInactiveUsers.unit.test.ts
+│   │   │   │   │   │       ├── WarnInactiveUsers.ts
+│   │   │   │   │   │       ├── WarnInactiveUsers.unit.test.ts
+│   │   │   │   │   │       ├── inactiveUserConstants.ts
+│   │   │   │   │   │       └── inactiveUsersTest.helpers.ts
+│   │   │   │   │   └── ft-connect
+│   │   │   │   │       ├── adapters
+│   │   │   │   │       │   ├── InMemoryConventionFranceTravailAdvisorRepository.ts
+│   │   │   │   │       │   ├── PgConventionFranceTravailAdvisorRepository.integration.test.ts
+│   │   │   │   │       │   ├── PgConventionFranceTravailAdvisorRepository.ts
+│   │   │   │   │       │   └── ft-connect-gateway
+│   │   │   │   │       │       ├── HttpFtConnectGateway.manual.test.ts
+│   │   │   │   │       │       ├── HttpFtConnectGateway.ts
+│   │   │   │   │       │       ├── InMemoryFtConnectGateway.ts
+│   │   │   │   │       │       ├── ftConnectApi.dto.ts
+│   │   │   │   │       │       ├── ftConnectApi.error.ts
+│   │   │   │   │       │       ├── ftConnectApi.routes.ts
+│   │   │   │   │       │       └── ftConnectApi.schema.ts
+│   │   │   │   │       ├── dto
+│   │   │   │   │       │   ├── AccessToken.dto.ts
+│   │   │   │   │       │   ├── BearerToken.ts
+│   │   │   │   │       │   ├── FtConnect.dto.ts
+│   │   │   │   │       │   ├── FtConnect.unit.test.ts
+│   │   │   │   │       │   ├── FtConnectAdvisor.dto.ts
+│   │   │   │   │       │   └── FtConnectUserDto.ts
+│   │   │   │   │       ├── entities
+│   │   │   │   │       │   └── ConventionFranceTravailAdvisorEntity.ts
+│   │   │   │   │       ├── port
+│   │   │   │   │       │   ├── AccessToken.schema.ts
+│   │   │   │   │       │   ├── ConventionFranceTravailAdvisorRepository.ts
+│   │   │   │   │       │   ├── FtConnect.schema.ts
+│   │   │   │   │       │   └── FtConnectGateway.ts
+│   │   │   │   │       └── use-cases
+│   │   │   │   │           ├── BindConventionToFederatedIdentity.ts
+│   │   │   │   │           ├── BindConventionToFederatedIdentity.unit.test.ts
+│   │   │   │   │           ├── NotifyFranceTravailUserAdvisorOnConventionFullySigned.ts
+│   │   │   │   │           └── NotifyFranceTravailUserAdvisorOnConventionFullySigned.unit.test.ts
+│   │   │   │   ├── caching-gateway
+│   │   │   │   │   ├── adapters
+│   │   │   │   │   │   ├── makeRedisWithCache.integration.test.ts
+│   │   │   │   │   │   ├── makeRedisWithCache.ts
+│   │   │   │   │   │   └── withNoCache.ts
+│   │   │   │   │   └── port
+│   │   │   │   │       └── WithCache.ts
+│   │   │   │   ├── dashboard
+│   │   │   │   │   ├── adapters
+│   │   │   │   │   │   ├── MetabaseDashboardGateway.ts
+│   │   │   │   │   │   └── StubDashboardGateway.ts
+│   │   │   │   │   ├── port
+│   │   │   │   │   │   └── DashboardGateway.ts
+│   │   │   │   │   └── useCases
+│   │   │   │   │       └── GetDashboardUrl.ts
+│   │   │   │   ├── email-validation
+│   │   │   │   │   ├── adapters
+│   │   │   │   │   │   ├── EmailableEmailValidationGateway.dto.ts
+│   │   │   │   │   │   ├── EmailableEmailValidationGateway.manual.test.ts
+│   │   │   │   │   │   ├── EmailableEmailValidationGateway.routes.ts
+│   │   │   │   │   │   ├── EmailableEmailValidationGateway.schemas.ts
+│   │   │   │   │   │   ├── EmailableEmailValidationGateway.ts
+│   │   │   │   │   │   └── InMemoryEmailValidationGateway.ts
+│   │   │   │   │   ├── ports
+│   │   │   │   │   │   └── EmailValidationGateway.ts
+│   │   │   │   │   └── use-cases
+│   │   │   │   │       ├── ValidateEmail.ts
+│   │   │   │   │       └── ValidateEmail.unit.test.ts
+│   │   │   │   ├── events
+│   │   │   │   │   ├── adapters
+│   │   │   │   │   │   ├── EventCrawlerImplementations.ts
+│   │   │   │   │   │   ├── InMemoryEventBus.integration.test.ts
+│   │   │   │   │   │   ├── InMemoryEventBus.ts
+│   │   │   │   │   │   ├── InMemoryEventBus.unit.test.ts
+│   │   │   │   │   │   ├── InMemoryOutboxQueries.ts
+│   │   │   │   │   │   ├── InMemoryOutboxRepository.ts
+│   │   │   │   │   │   ├── PgOutboxQueries.crawling.integration.test.ts
+│   │   │   │   │   │   ├── PgOutboxQueries.ts
+│   │   │   │   │   │   ├── PgOutboxRepository.integration.test.ts
+│   │   │   │   │   │   └── PgOutboxRepository.ts
+│   │   │   │   │   ├── eventPayload.dto.ts
+│   │   │   │   │   ├── eventPayload.schema.ts
+│   │   │   │   │   ├── events.ts
+│   │   │   │   │   ├── ports
+│   │   │   │   │   │   ├── EventBus.ts
+│   │   │   │   │   │   ├── EventCrawler.ts
+│   │   │   │   │   │   ├── OutboxQueries.ts
+│   │   │   │   │   │   └── OutboxRepository.ts
+│   │   │   │   │   ├── subscribeToEvents.ts
+│   │   │   │   │   └── usecase
+│   │   │   │   │       ├── DeleteEvents.ts
+│   │   │   │   │       └── DeleteEvents.unit.test.ts
+│   │   │   │   ├── feature-flags
+│   │   │   │   │   ├── adapters
+│   │   │   │   │   │   ├── InMemoryFeatureFlagQueries.ts
+│   │   │   │   │   │   ├── InMemoryFeatureFlagRepository.ts
+│   │   │   │   │   │   ├── PgFeatureFlagQueries.ts
+│   │   │   │   │   │   ├── PgFeatureFlagRepository.ts
+│   │   │   │   │   │   └── PgFeatureFlagRepositoryAndQueries.integration.test.ts
+│   │   │   │   │   ├── ports
+│   │   │   │   │   │   ├── FeatureFlagQueries.ts
+│   │   │   │   │   │   └── FeatureFlagRepository.ts
+│   │   │   │   │   └── use-cases
+│   │   │   │   │       ├── SetFeatureFlag.ts
+│   │   │   │   │       └── SetFeatureFlag.unit.test.ts
+│   │   │   │   ├── file-storage
+│   │   │   │   │   ├── adapters
+│   │   │   │   │   │   ├── InMemoryDocumentGateway.ts
+│   │   │   │   │   │   ├── S3DocumentGateway.manual.test.ts
+│   │   │   │   │   │   └── S3DocumentGateway.ts
+│   │   │   │   │   ├── entity
+│   │   │   │   │   │   └── StoredFile.ts
+│   │   │   │   │   ├── port
+│   │   │   │   │   │   └── DocumentGateway.ts
+│   │   │   │   │   └── useCases
+│   │   │   │   │       ├── UploadFile.ts
+│   │   │   │   │       └── UploadFile.unit.test.ts
+│   │   │   │   ├── jwt.ts
+│   │   │   │   ├── naf
+│   │   │   │   │   ├── adapters
+│   │   │   │   │   │   ├── InMemoryNafRepository.ts
+│   │   │   │   │   │   ├── PgNafRepository.integration.test.ts
+│   │   │   │   │   │   ├── PgNafRepository.ts
+│   │   │   │   │   │   └── expectedAllNafSections.ts
+│   │   │   │   │   ├── port
+│   │   │   │   │   │   └── NafRepository.ts
+│   │   │   │   │   └── use-cases
+│   │   │   │   │       ├── GetAllNafSections.ts
+│   │   │   │   │       └── GetAllNafSections.unit.test.ts
+│   │   │   │   ├── notifications
+│   │   │   │   │   ├── adapters
+│   │   │   │   │   │   ├── BrevoNotificationGateway.manual.test.ts
+│   │   │   │   │   │   ├── BrevoNotificationGateway.routes.ts
+│   │   │   │   │   │   ├── BrevoNotificationGateway.schemas.ts
+│   │   │   │   │   │   ├── BrevoNotificationGateway.ts
+│   │   │   │   │   │   ├── BrevoNotificationGateway.unit.test.ts
+│   │   │   │   │   │   ├── InMemoryNotificationGateway.ts
+│   │   │   │   │   │   ├── InMemoryNotificationRepository.ts
+│   │   │   │   │   │   ├── PgNotificationRepository.integration.test.ts
+│   │   │   │   │   │   └── PgNotificationRepository.ts
+│   │   │   │   │   ├── helpers
+│   │   │   │   │   │   └── Notification.ts
+│   │   │   │   │   ├── ports
+│   │   │   │   │   │   ├── NotificationGateway.ts
+│   │   │   │   │   │   └── NotificationRepository.ts
+│   │   │   │   │   └── useCases
+│   │   │   │   │       ├── DeleteNotifications.ts
+│   │   │   │   │       ├── DeleteNotifications.unit.test.ts
+│   │   │   │   │       ├── SendNotification.ts
+│   │   │   │   │       ├── SendNotification.unit.test.ts
+│   │   │   │   │       ├── SendNotificationInBatch.ts
+│   │   │   │   │       └── SendNotificationInBatch.unit.test.ts
+│   │   │   │   ├── pdf-generation
+│   │   │   │   │   ├── adapters
+│   │   │   │   │   │   ├── InMemoryPdfGeneratorGateway.ts
+│   │   │   │   │   │   ├── ScalingoPdfGeneratorGateway.manual.test.ts
+│   │   │   │   │   │   └── ScalingoPdfGeneratorGateway.ts
+│   │   │   │   │   ├── ports
+│   │   │   │   │   │   └── PdfGeneratorGateway.ts
+│   │   │   │   │   └── use-cases
+│   │   │   │   │       ├── HtmlToPdf.ts
+│   │   │   │   │       └── HtmlToPdf.unit.test.ts
+│   │   │   │   ├── phone-number
+│   │   │   │   │   ├── adapters
+│   │   │   │   │   │   ├── InMemoryPhoneRepository.ts
+│   │   │   │   │   │   ├── PgPhoneRepository.integration.test.ts
+│   │   │   │   │   │   ├── PgPhoneRepository.ts
+│   │   │   │   │   │   └── pgPhoneHelper.ts
+│   │   │   │   │   ├── ports
+│   │   │   │   │   │   └── PhoneRepository.ts
+│   │   │   │   │   └── use-cases
+│   │   │   │   │       ├── UpdateInvalidPhone.ts
+│   │   │   │   │       ├── UpdateInvalidPhone.unit.test.ts
+│   │   │   │   │       ├── VerifyAndRequestInvalidPhonesUpdate.ts
+│   │   │   │   │       └── VerifyAndRequestInvalidPhonesUpdate.unit.test.ts
+│   │   │   │   ├── retry-strategy
+│   │   │   │   │   ├── adapters
+│   │   │   │   │   │   ├── ExponentialBackoffRetryStrategy.ts
+│   │   │   │   │   │   └── ExponentialBackoffRetryStrategy.unit.test.ts
+│   │   │   │   │   └── ports
+│   │   │   │   │       └── RetryStrategy.ts
+│   │   │   │   ├── rome
+│   │   │   │   │   ├── adapters
+│   │   │   │   │   │   ├── DiagorienteAppellationsGateway.manual.test.ts
+│   │   │   │   │   │   ├── DiagorienteAppellationsGateway.routes.ts
+│   │   │   │   │   │   ├── DiagorienteAppellationsGateway.schemas.ts
+│   │   │   │   │   │   ├── DiagorienteAppellationsGateway.ts
+│   │   │   │   │   │   ├── InMemoryAppellationsGateway.ts
+│   │   │   │   │   │   ├── InMemoryRomeRepository.ts
+│   │   │   │   │   │   ├── PgRomeRepository.integration.test.ts
+│   │   │   │   │   │   └── PgRomeRepository.ts
+│   │   │   │   │   ├── ports
+│   │   │   │   │   │   ├── AppellationsGateway.ts
+│   │   │   │   │   │   └── RomeRepository.ts
+│   │   │   │   │   └── use-cases
+│   │   │   │   │       ├── AppellationSearch.ts
+│   │   │   │   │       ├── AppellationSearch.unit.test.ts
+│   │   │   │   │       ├── RomeSearch.ts
+│   │   │   │   │       └── RomeSearch.unit.test.ts
+│   │   │   │   ├── saved-errors
+│   │   │   │   │   ├── adapters
+│   │   │   │   │   │   ├── InMemoryBroadcastFeedbacksRepository.ts
+│   │   │   │   │   │   ├── PgBroadcastFeedbacksRepository.integration.test.ts
+│   │   │   │   │   │   └── PgBroadcastFeedbacksRepository.ts
+│   │   │   │   │   └── ports
+│   │   │   │   │       └── BroadcastFeedbacksRepository.ts
+│   │   │   │   ├── short-link
+│   │   │   │   │   ├── ShortLink.ts
+│   │   │   │   │   ├── adapters
+│   │   │   │   │   │   ├── PgShortLinkHelpers.ts
+│   │   │   │   │   │   ├── short-link-generator-gateway
+│   │   │   │   │   │   │   ├── DeterministShortLinkIdGeneratorGateway.ts
+│   │   │   │   │   │   │   ├── NanoIdShortLinkGenerator.manual.test.ts
+│   │   │   │   │   │   │   └── NanoIdShortLinkIdGeneratorGateway.ts
+│   │   │   │   │   │   ├── short-link-query
+│   │   │   │   │   │   │   ├── InMemoryShortLinkQuery.ts
+│   │   │   │   │   │   │   ├── PgShortLinkQuery.integration.test.ts
+│   │   │   │   │   │   │   └── PgShortLinkQuery.ts
+│   │   │   │   │   │   └── short-link-repository
+│   │   │   │   │   │       ├── InMemoryShortLinkRepository.ts
+│   │   │   │   │   │       ├── PgShortLinkRepository.integration.test.ts
+│   │   │   │   │   │       └── PgShortLinkRepository.ts
+│   │   │   │   │   ├── ports
+│   │   │   │   │   │   ├── ShortLinkIdGeneratorGateway.ts
+│   │   │   │   │   │   ├── ShortLinkQuery.ts
+│   │   │   │   │   │   └── ShortLinkRepository.ts
+│   │   │   │   │   └── use-cases
+│   │   │   │   │       ├── GetLink.ts
+│   │   │   │   │       └── GetLink.unit.test.ts
+│   │   │   │   ├── sirene
+│   │   │   │   │   ├── adapters
+│   │   │   │   │   │   ├── AnnuaireDesEntreprisesSiretGateway.manual.test.ts
+│   │   │   │   │   │   ├── AnnuaireDesEntreprisesSiretGateway.routes.ts
+│   │   │   │   │   │   ├── AnnuaireDesEntreprisesSiretGateway.ts
+│   │   │   │   │   │   ├── AnnuaireDesEntreprisesSiretGateway.unit.test.ts
+│   │   │   │   │   │   ├── InMemorySiretGateway.ts
+│   │   │   │   │   │   ├── InseeSiretGateway.manual.test.ts
+│   │   │   │   │   │   ├── InseeSiretGateway.routes.ts
+│   │   │   │   │   │   ├── InseeSiretGateway.ts
+│   │   │   │   │   │   ├── InseeSiretGateway.unit.test.ts
+│   │   │   │   │   │   └── SiretGateway.common.ts
+│   │   │   │   │   ├── helpers
+│   │   │   │   │   │   ├── getSirenEstablishmentFromApi.ts
+│   │   │   │   │   │   └── rejectsSiretIfNotAnOpenCompany.ts
+│   │   │   │   │   ├── ports
+│   │   │   │   │   │   └── SiretGateway.ts
+│   │   │   │   │   └── use-cases
+│   │   │   │   │       ├── GetSiret.ts
+│   │   │   │   │       ├── GetSiret.unit.test.ts
+│   │   │   │   │       ├── GetSiretIfNotAlreadySaved.ts
+│   │   │   │   │       └── GetSiretIfNotAlreadySaved.unit.test.ts
+│   │   │   │   ├── statistics
+│   │   │   │   │   ├── adapters
+│   │   │   │   │   │   ├── InMemoryStatisticQueries.ts
+│   │   │   │   │   │   ├── PgStatisticQueries.integration.test.ts
+│   │   │   │   │   │   └── PgStatisticQueries.ts
+│   │   │   │   │   ├── ports
+│   │   │   │   │   │   └── StatisticQueries.ts
+│   │   │   │   │   └── use-cases
+│   │   │   │   │       ├── GetEstablishmentStats.ts
+│   │   │   │   │       └── GetEstablishmentStats.unit.test.ts
+│   │   │   │   ├── support
+│   │   │   │   │   ├── adapters
+│   │   │   │   │   │   ├── HttpCrispGateway.manual.test.ts
+│   │   │   │   │   │   ├── HttpCrispGateway.ts
+│   │   │   │   │   │   ├── InMemoryCrispApi.ts
+│   │   │   │   │   │   └── crispRoutes.ts
+│   │   │   │   │   ├── ports
+│   │   │   │   │   │   └── CrispGateway.ts
+│   │   │   │   │   └── use-cases
+│   │   │   │   │       ├── SendSupportTicketToCrisp.testData.ts
+│   │   │   │   │       ├── SendSupportTicketToCrisp.ts
+│   │   │   │   │       └── SendSupportTicketToCrisp.unit.test.ts
+│   │   │   │   ├── time-gateway
+│   │   │   │   │   ├── adapters
+│   │   │   │   │   │   ├── CustomTimeGateway.ts
+│   │   │   │   │   │   └── RealTimeGateway.ts
+│   │   │   │   │   └── ports
+│   │   │   │   │       └── TimeGateway.ts
+│   │   │   │   ├── unit-of-work
+│   │   │   │   │   ├── adapters
+│   │   │   │   │   │   ├── InMemoryUowPerformer.ts
+│   │   │   │   │   │   ├── PgUowPerformer.integration.test.ts
+│   │   │   │   │   │   ├── PgUowPerformer.manual.test.ts
+│   │   │   │   │   │   ├── PgUowPerformer.test.helpers.ts
+│   │   │   │   │   │   ├── PgUowPerformer.ts
+│   │   │   │   │   │   ├── createDbRelatedSystems.ts
+│   │   │   │   │   │   ├── createInMemoryUow.ts
+│   │   │   │   │   │   └── createPgUow.ts
+│   │   │   │   │   └── ports
+│   │   │   │   │       ├── UnitOfWork.ts
+│   │   │   │   │       └── UnitOfWorkPerformer.ts
+│   │   │   │   ├── useCase.helpers.ts
+│   │   │   │   ├── useCaseBuilder.ts
+│   │   │   │   ├── useCaseBuilder.unit.test.ts
+│   │   │   │   └── uuid-generator
+│   │   │   │       ├── adapters
+│   │   │   │       │   └── UuidGeneratorImplementations.ts
+│   │   │   │       └── ports
+│   │   │   │           └── UuidGenerator.ts
+│   │   │   ├── establishment
+│   │   │   │   ├── adapters
+│   │   │   │   │   ├── InMemoryBannedEstablishmentRepository.ts
+│   │   │   │   │   ├── InMemoryDeletedEstablishmentRepository.ts
+│   │   │   │   │   ├── InMemoryDiscussionRepository.ts
+│   │   │   │   │   ├── InMemoryEstablishmentAggregateRepository.ts
+│   │   │   │   │   ├── InMemoryEstablishmentLeadQueries.ts
+│   │   │   │   │   ├── InMemoryEstablishmentLeadRepository.ts
+│   │   │   │   │   ├── InMemoryGroupRepository.ts
+│   │   │   │   │   ├── InMemorySearchMadeRepository.ts
+│   │   │   │   │   ├── PgBannedEstablishmentRepository.integration.test.ts
+│   │   │   │   │   ├── PgBannedEstablishmentRepository.ts
+│   │   │   │   │   ├── PgDeletedEstablishmentRepository.integration.test.ts
+│   │   │   │   │   ├── PgDeletedEstablishmentRepository.ts
+│   │   │   │   │   ├── PgDiscussionRepository.integration.test.ts
+│   │   │   │   │   ├── PgDiscussionRepository.ts
+│   │   │   │   │   ├── PgEstablishmentAggregateRepository.getSiretOfEstablishmentsToSuggestUpdate.integration.test.ts
+│   │   │   │   │   ├── PgEstablishmentAggregateRepository.integration.test.ts
+│   │   │   │   │   ├── PgEstablishmentAggregateRepository.sql.integration.test.ts
+│   │   │   │   │   ├── PgEstablishmentAggregateRepository.sql.ts
+│   │   │   │   │   ├── PgEstablishmentAggregateRepository.test.helpers.ts
+│   │   │   │   │   ├── PgEstablishmentAggregateRepository.ts
+│   │   │   │   │   ├── PgEstablishmentLeadQueries.integration.test.ts
+│   │   │   │   │   ├── PgEstablishmentLeadQueries.ts
+│   │   │   │   │   ├── PgEstablishmentLeadRepository.integration.test.ts
+│   │   │   │   │   ├── PgEstablishmentLeadRepository.ts
+│   │   │   │   │   ├── PgGroupRepository.integration.test.ts
+│   │   │   │   │   ├── PgGroupRepository.ts
+│   │   │   │   │   ├── PgSearchMadeRepository.integration.test.ts
+│   │   │   │   │   ├── PgSearchMadeRepository.ts
+│   │   │   │   │   ├── la-bonne-boite
+│   │   │   │   │   │   ├── HttpLaBonneBoiteGateway.manual.test.ts
+│   │   │   │   │   │   ├── HttpLaBonneBoiteGateway.ts
+│   │   │   │   │   │   ├── InMemoryLaBonneBoiteGateway.ts
+│   │   │   │   │   │   ├── LaBonneBoite.routes.ts
+│   │   │   │   │   │   ├── LaBonneBoiteCompanyDto.ts
+│   │   │   │   │   │   └── LaBonneBoiteCompanyDtoBuilder.ts
+│   │   │   │   │   ├── pass-emploi
+│   │   │   │   │   │   ├── HttpPassEmploiGateway.manual.test.ts
+│   │   │   │   │   │   ├── HttpPassEmploiGateway.ts
+│   │   │   │   │   │   └── InMemoryPassEmploiGateway.ts
+│   │   │   │   │   ├── updateStatsMostFrequentSearchesSql.integration.test.ts
+│   │   │   │   │   └── updateStatsMostFrequentSearchesSql.ts
+│   │   │   │   ├── entities
+│   │   │   │   │   ├── EstablishmentAggregate.ts
+│   │   │   │   │   ├── EstablishmentEntity.ts
+│   │   │   │   │   ├── EstablishmentLeadEntity.ts
+│   │   │   │   │   ├── GroupEntity.ts
+│   │   │   │   │   ├── OfferEntity.ts
+│   │   │   │   │   └── SearchMadeEntity.ts
+│   │   │   │   ├── helpers
+│   │   │   │   │   ├── EstablishmentBuilders.ts
+│   │   │   │   │   ├── businessContact.helpers.ts
+│   │   │   │   │   ├── contactRequest.ts
+│   │   │   │   │   ├── discussion.utils.ts
+│   │   │   │   │   ├── discussion.utils.unit.test.ts
+│   │   │   │   │   └── makeEstablishmentAggregate.ts
+│   │   │   │   ├── ports
+│   │   │   │   │   ├── BannedEstablishmentRepository.ts
+│   │   │   │   │   ├── DeletedEstablishmentRepository.ts
+│   │   │   │   │   ├── DiscussionRepository.ts
+│   │   │   │   │   ├── EstablishmentAggregateRepository.ts
+│   │   │   │   │   ├── EstablishmentLeadQueries.ts
+│   │   │   │   │   ├── EstablishmentLeadRepository.ts
+│   │   │   │   │   ├── FtAgenciesReferential.ts
+│   │   │   │   │   ├── GroupRepository.ts
+│   │   │   │   │   ├── LaBonneBoiteGateway.ts
+│   │   │   │   │   ├── PassEmploiGateway.ts
+│   │   │   │   │   └── SearchMadeRepository.ts
+│   │   │   │   └── use-cases
+│   │   │   │       ├── AddEstablishmentLead.ts
+│   │   │   │       ├── AddEstablishmentLead.unit.test.ts
+│   │   │   │       ├── AddFormEstablismentsBatch.ts
+│   │   │   │       ├── AddFormEstablismentsBatch.unit.test.ts
+│   │   │   │       ├── AssessmentReminder.ts
+│   │   │   │       ├── AssessmentReminder.unit.test.ts
+│   │   │   │       ├── BanEstablishment.ts
+│   │   │   │       ├── BanEstablishment.unit.test.ts
+│   │   │   │       ├── ContactEstablishment.ts
+│   │   │   │       ├── ContactEstablishment.unit.test.ts
+│   │   │   │       ├── ContactRequestReminder.ts
+│   │   │   │       ├── ContactRequestReminder.unit.test.ts
+│   │   │   │       ├── DeleteEstablishment.ts
+│   │   │   │       ├── DeleteEstablishment.unit.test.ts
+│   │   │   │       ├── GetEstablishmentNameAndAdmins.ts
+│   │   │   │       ├── GetEstablishmentNameAndAdmins.unit.test.ts
+│   │   │   │       ├── GetEstablishmentPublicOptionsByFilters.ts
+│   │   │   │       ├── GetEstablishmentPublicOptionsByFilters.unit.test.ts
+│   │   │   │       ├── GetExternalOffers.ts
+│   │   │   │       ├── GetExternalOffers.unit.test.ts
+│   │   │   │       ├── GetExternalSearchResult.ts
+│   │   │   │       ├── GetExternalSearchResult.unit.test.ts
+│   │   │   │       ├── GetGroupBySlug.ts
+│   │   │   │       ├── GetGroupBySlug.unit.test.ts
+│   │   │   │       ├── GetOffers.ts
+│   │   │   │       ├── GetOffers.unit.test.ts
+│   │   │   │       ├── GetSearchResultBySearchQuery.ts
+│   │   │   │       ├── InsertEstablishmentAggregateFromFormEstablishement.ts
+│   │   │   │       ├── InsertEstablishmentAggregateFromFormEstablishement.unit.test.ts
+│   │   │   │       ├── MarkEstablishmentLeadAsRegistrationAccepted.ts
+│   │   │   │       ├── MarkEstablishmentLeadAsRegistrationAccepted.unit.test.ts
+│   │   │   │       ├── MarkEstablishmentLeadAsRegistrationRejected.ts
+│   │   │   │       ├── MarkEstablishmentLeadAsRegistrationRejected.unit.test.ts
+│   │   │   │       ├── MarkEstablishmentsAsSearchableScript.ts
+│   │   │   │       ├── RegisterUserOnEstablishment.ts
+│   │   │   │       ├── RegisterUserOnEstablishment.unit.test.ts
+│   │   │   │       ├── RetrieveFormEstablishmentFromAggregates.ts
+│   │   │   │       ├── RetrieveFormEstablishmentFromAggregates.unit.test.ts
+│   │   │   │       ├── SendAssessmentNeededNotifications.ts
+│   │   │   │       ├── SendAssessmentNeededNotifications.unit.test.ts
+│   │   │   │       ├── SendEstablishmentLeadReminderScript.ts
+│   │   │   │       ├── SendEstablishmentLeadReminderScript.unit.test.ts
+│   │   │   │       ├── SuggestEstablishmentReengagement.ts
+│   │   │   │       ├── SuggestEstablishmentReengagement.unit.test.ts
+│   │   │   │       ├── SuggestEstablishmentReengagementsScript.ts
+│   │   │   │       ├── UpdateEstablishmentAggregateFromFormEstablishement.ts
+│   │   │   │       ├── UpdateEstablishmentAggregateFromFormEstablishement.unit.test.ts
+│   │   │   │       ├── UpdateEstablishmentsFromSirenApiScript.ts
+│   │   │   │       ├── UpdateEstablishmentsFromSireneApiScript.unit.test.ts
+│   │   │   │       ├── discussions
+│   │   │   │       │   ├── AddExchangeToDiscussion.ts
+│   │   │   │       │   ├── AddExchangeToDiscussion.unit.test.ts
+│   │   │   │       │   ├── ArchiveDiscussions.ts
+│   │   │   │       │   ├── ArchiveDiscussions.unit.test.ts
+│   │   │   │       │   ├── GetDiscussionById.ts
+│   │   │   │       │   ├── GetDiscussionById.unit.test.ts
+│   │   │   │       │   ├── GetDiscussionsForUser.ts
+│   │   │   │       │   ├── GetDiscussionsForUser.unit.test.ts
+│   │   │   │       │   ├── GetObsoleteDiscussionsAndEmitDeprecatedEvents.ts
+│   │   │   │       │   ├── GetObsoleteDiscussionsAndEmitDeprecatedEvents.unit.test.ts
+│   │   │   │       │   ├── MarkDiscussionDeprecatedAndNotify.ts
+│   │   │   │       │   ├── MarkDiscussionDeprecatedAndNotify.unit.test.ts
+│   │   │   │       │   ├── MarkDiscussionLinkedToConvention.ts
+│   │   │   │       │   ├── MarkDiscussionLinkedToConvention.unit.test.ts
+│   │   │   │       │   ├── NotifyBeneficiaryToFollowUpContactRequest.ts
+│   │   │   │       │   ├── NotifyBeneficiaryToFollowUpContactRequest.unit.test.ts
+│   │   │   │       │   ├── SendExchangeToRecipient.ts
+│   │   │   │       │   ├── SendExchangeToRecipient.unit.test.ts
+│   │   │   │       │   ├── UpdateDiscussionStatus.ts
+│   │   │   │       │   ├── UpdateDiscussionStatus.unit.test.ts
+│   │   │   │       │   ├── WarnSenderThatMessageCouldNotBeDelivered.ts
+│   │   │   │       │   └── WarnSenderThatMessageCouldNotBeDelivered.unit.test.ts
+│   │   │   │       └── notifications
+│   │   │   │           ├── NotifyCandidateThatContactRequestHasBeenSent.ts
+│   │   │   │           ├── NotifyCandidateThatContactRequestHasBeenSent.unit.test.ts
+│   │   │   │           ├── NotifyConfirmationEstablishmentCreated.ts
+│   │   │   │           ├── NotifyConfirmationEstablishmentCreated.unit.test.ts
+│   │   │   │           ├── NotifyContactRequest.ts
+│   │   │   │           ├── NotifyContactRequest.unit.test.ts
+│   │   │   │           ├── NotifyEstablishmentAdminsThatUserRightIsPending.ts
+│   │   │   │           ├── NotifyEstablishmentAdminsThatUserRightIsPending.unit.test.ts
+│   │   │   │           ├── NotifyEstablishmentUsersAndBeneficiariesThatEstablishmentIsBanned.unit.test.ts
+│   │   │   │           ├── NotifyPassEmploiOnNewEstablishmentAggregateInsertedFromForm.ts
+│   │   │   │           ├── NotifyPassEmploiOnNewEstablishmentAggregateInsertedFromForm.unit.test.ts
+│   │   │   │           └── NotifyThatEstablishmentIsBanned.ts
+│   │   │   └── marketing
+│   │   │       ├── adapters
+│   │   │       │   ├── InMemoryEstablishmentMarketingRepository.ts
+│   │   │       │   ├── PgEstablishmentMarketingRepository.integration.test.ts
+│   │   │       │   ├── PgEstablishmentMarketingRepository.ts
+│   │   │       │   └── establishmentMarketingGateway
+│   │   │       │       ├── BrevoContact.dto.ts
+│   │   │       │       ├── BrevoContact.routes.ts
+│   │   │       │       ├── BrevoContact.schema.ts
+│   │   │       │       ├── BrevoEstablishmentMarketingGateway.manual.test.ts
+│   │   │       │       ├── BrevoEstablishmentMarketingGateway.ts
+│   │   │       │       └── InMemoryEstablishmentMarketingGateway.ts
+│   │   │       ├── entities
+│   │   │       │   └── MarketingContact.ts
+│   │   │       ├── ports
+│   │   │       │   ├── EstablishmentMarketingGateway.ts
+│   │   │       │   └── EstablishmentMarketingRepository.ts
+│   │   │       └── use-cases
+│   │   │           ├── UpdateMarketingEstablishmentContactsList.ts
+│   │   │           └── UpdateMarketingEstablishmentContactsList.unit.test.ts
+│   │   ├── scripts
+│   │   │   ├── backfillBroadcastFeedbackIds.integration.test.ts
+│   │   │   ├── backfillBroadcastFeedbackIds.ts
+│   │   │   ├── check_includes.sh
+│   │   │   ├── configureSentry.ts
+│   │   │   ├── generateApiKey.ts
+│   │   │   ├── handleCRONScript.ts
+│   │   │   ├── instrumentSentryCron.ts
+│   │   │   ├── scheduledScripts
+│   │   │   │   ├── assessmentReminder.ts
+│   │   │   │   ├── closeInactiveAgenciesWithoutRecentConventions.ts
+│   │   │   │   ├── contactRequestReminder3Days.ts
+│   │   │   │   ├── contactRequestReminder7Days.ts
+│   │   │   │   ├── conventionReminder.ts
+│   │   │   │   ├── deactivateUnresponsiveEstablishments.ts
+│   │   │   │   ├── delegationConventionReminder.ts
+│   │   │   │   ├── deleteEmailAttachements.ts
+│   │   │   │   ├── deleteInactiveUsers.ts
+│   │   │   │   ├── deleteOldClosedAgenciesWithoutConventions.ts
+│   │   │   │   ├── deleteOldConventionDrafts.ts
+│   │   │   │   ├── deleteOldConventions.ts
+│   │   │   │   ├── deleteOldDiscussionMessages.ts
+│   │   │   │   ├── deleteOldUsersOngoingOauths.ts
+│   │   │   │   ├── markEstablishmentsAsSearchableWhenMaxContactsAllows.ts
+│   │   │   │   ├── markObsoleteDiscussionsAsDeprecated.ts
+│   │   │   │   ├── markOldConventionAsDeprecated.ts
+│   │   │   │   ├── remindAgencyAdminThatNewUserRequestAgencyRight.ts
+│   │   │   │   ├── sendAssessmentNeededNotifications.ts
+│   │   │   │   ├── triggerSuggestEstablishmentReengagementEvery6Months.ts
+│   │   │   │   ├── updateAllEstablishmentsScores.ts
+│   │   │   │   ├── updateEstablishmentsFromSireneApiScript.ts
+│   │   │   │   └── warnInactiveUsers.ts
+│   │   │   ├── search_failed_conventions_sent_to_PE.sh
+│   │   │   ├── seed
+│   │   │   │   ├── agencySeed.ts
+│   │   │   │   ├── conventionDraftSeed.ts
+│   │   │   │   ├── conventionSeed.ts
+│   │   │   │   ├── establishmentSeed.ts
+│   │   │   │   ├── featureFlagSeed.ts
+│   │   │   │   ├── seed.helpers.ts
+│   │   │   │   ├── seedAddresses.ts
+│   │   │   │   └── userSeed.ts
+│   │   │   ├── seed.ts
+│   │   │   ├── startCrawlerScript.ts
+│   │   │   ├── startServer.ts
+│   │   │   ├── triggerAddAgenciesAndUsers.ts
+│   │   │   ├── triggerArchiveDiscussions.ts
+│   │   │   ├── triggerAssessmentReminder.ts
+│   │   │   ├── triggerAssignAgencyViewerRoleToUsers.ts
+│   │   │   ├── triggerCloseInactiveAgenciesWithoutRecentConventions.ts
+│   │   │   ├── triggerContactRequestReminder3Days.ts
+│   │   │   ├── triggerContactRequestReminder7Days.ts
+│   │   │   ├── triggerConventionReminder.ts
+│   │   │   ├── triggerDeactivateUnresponsiveEstablishments.ts
+│   │   │   ├── triggerDelegationConventionReminder.ts
+│   │   │   ├── triggerDeleteEmailAttachements.ts
+│   │   │   ├── triggerDeleteInactiveUsers.ts
+│   │   │   ├── triggerDeleteOldClosedAgenciesWithoutConventions.ts
+│   │   │   ├── triggerDeleteOldConventions.ts
+│   │   │   ├── triggerDeleteOldDiscussionMessages.ts
+│   │   │   ├── triggerDeleteOldEvents.ts
+│   │   │   ├── triggerDeleteOldNotifications.ts
+│   │   │   ├── triggerDeleteOldUsersOngoingOauths.ts
+│   │   │   ├── triggerEarlyMorningJobs.ts
+│   │   │   ├── triggerEstablishmentLeadReminders.ts
+│   │   │   ├── triggerEveningJobs.ts
+│   │   │   ├── triggerMarkEstablishmentsAsSearchableWhenMaxContactsAllows.ts
+│   │   │   ├── triggerMarkObsoleteDiscussionsAsDeprecated.ts
+│   │   │   ├── triggerMarkOldConventionAsDeprecated.ts
+│   │   │   ├── triggerMorningJobs.ts
+│   │   │   ├── triggerRefreshMaterializedViews.ts
+│   │   │   ├── triggerRefreshMostFrequentSearchesMaterializedView.ts
+│   │   │   ├── triggerRemindAgencyAdminThatNewUserRequestAgencyRight.ts
+│   │   │   ├── triggerResyncOldConventionsToPe.ts
+│   │   │   ├── triggerSendAssessmentNeededNotifications.ts
+│   │   │   ├── triggerSuggestEstablishmentReengagementEvery6Months.ts
+│   │   │   ├── triggerUpdateAllEstablishmentsScores.ts
+│   │   │   ├── triggerUpdateEstablishmentMarketingNafCode.ts
+│   │   │   ├── triggerUpdateEstablishmentsFromSireneApiScript.ts
+│   │   │   ├── triggerUpdateLegacyRomeV3.ts
+│   │   │   ├── triggerUpdateRomeData.ts
+│   │   │   ├── triggerVerifyAndFixPhones.ts
+│   │   │   ├── triggerWarnInactiveUsers.ts
+│   │   │   ├── utils.ts
+│   │   │   ├── verifyDatabaseMigrationsOrder.sh
+│   │   │   └── version.ts
+│   │   ├── types
+│   │   │   └── express
+│   │   │       └── index.d.ts
+│   │   └── utils
+│   │       ├── AppConfigBuilder.ts
+│   │       ├── EntityFromDto.ts
+│   │       ├── address.ts
+│   │       ├── agency.ts
+│   │       ├── apiBrevoUrl.ts
+│   │       ├── assessment.ts
+│   │       ├── axiosUtils.ts
+│   │       ├── buildTestApp.ts
+│   │       ├── convention.ts
+│   │       ├── distanceBetweenCoordinatesInMeters.ts
+│   │       ├── e2eTestHelpers.ts
+│   │       ├── emailHash.ts
+│   │       ├── jwt.ts
+│   │       ├── jwt.unit.test.ts
+│   │       ├── jwtTestHelper.ts
+│   │       ├── logger.test.ts
+│   │       ├── logger.ts
+│   │       ├── makeExpectSavedNotificationAndEvent.helpers.ts
+│   │       ├── nodeProcessReport.ts
+│   │       ├── notifyTeam.manual.test.ts
+│   │       ├── notifyTeam.ts
+│   │       ├── processEventsForEmailToBeSent.ts
+│   │       ├── query.ts
+│   │       ├── scheduleWithBackpressure.ts
+│   │       ├── siret.ts
+│   │       ├── textSearch.ts
+│   │       ├── textSearch.unit.test.ts
+│   │       └── user.ts
+│   ├── transpile-back-and-prepare-for-prod.js
+│   ├── tsconfig.json
+│   └── tsconfig.prod.json
+├── bi
+│   ├── .buildpacks
+│   ├── .env.sample
+│   ├── .python-version
+│   ├── README.md
+│   ├── activate.sh
+│   ├── build.sh
+│   ├── dbt_project.yml
+│   ├── models
+│   │   ├── agencies
+│   │   │   ├── agencies.sql
+│   │   │   ├── agency_users.sql
+│   │   │   └── schema.yml
+│   │   ├── conventions
+│   │   │   ├── conventions.sql
+│   │   │   ├── conventions_for_counting.sql
+│   │   │   └── schema.yml
+│   │   ├── discussions
+│   │   │   ├── discussion_with_number_of_exchanges.sql
+│   │   │   └── schema.yml
+│   │   ├── establishments
+│   │   │   ├── establishment_locations.sql
+│   │   │   ├── establishment_offers.sql
+│   │   │   ├── establishment_users.sql
+│   │   │   ├── establishments.sql
+│   │   │   └── schema.yml
+│   │   ├── groups
+│   │   │   ├── groups.sql
+│   │   │   ├── groups_sirets.sql
+│   │   │   └── schema.yml
+│   │   ├── naf
+│   │   │   ├── naf_nomenclature.sql
+│   │   │   └── schema.yml
+│   │   ├── searches
+│   │   │   ├── most_frequent_searches.sql
+│   │   │   └── schema.yml
+│   │   └── sources.yml
+│   ├── profiles.yml
+│   ├── requirements.txt
+│   ├── run_dbt.sh
+│   └── setup.sh
+├── biome.json
+├── doc
+│   ├── actions
+│   │   └── s3-cellar
+│   │       ├── clever_list_addon_plan.png
+│   │       ├── clever_list_addons.png
+│   │       ├── clever_login.png
+│   │       ├── clever_login_url.png
+│   │       ├── clever_test_cli.png
+│   │       ├── s3-bucket-creation.md
+│   │       ├── s3api_putobject_response.png
+│   │       └── setup-cellar-addon.md
+│   ├── adr
+│   │   ├── application-architecture.drawio
+│   │   ├── application-architecture.svg
+│   │   ├── back
+│   │   │   ├── adapters-test-double.md
+│   │   │   ├── cross-domain-coupling-usecase-repo.md
+│   │   │   ├── cross-domain-query-model.md
+│   │   │   ├── db-migration-static-data.md
+│   │   │   ├── usecase-mandatory-documentation.md
+│   │   │   └── usecase-responsability-split.md
+│   │   ├── code
+│   │   │   ├── comments.md
+│   │   │   └── function-explicit-output-type.md
+│   │   ├── code-review-practices.md
+│   │   ├── dev-process-PR.md
+│   │   ├── dev-team-organisation.md
+│   │   ├── file-organisation.md
+│   │   ├── front
+│   │   │   ├── feedback-in-front.md
+│   │   │   ├── front-code-organisation.md
+│   │   │   ├── slice-organization.md
+│   │   │   └── use-route-in-components.md
+│   │   ├── infra
+│   │   │   └── infrastructure-provider.md
+│   │   ├── pair-mob-programming.md
+│   │   ├── pe.io
+│   │   │   └── rome3-to-rome4.md
+│   │   ├── query
+│   │   │   └── metabase.md
+│   │   ├── review-and-deployment-process.md
+│   │   ├── security
+│   │   │   └── pnpm_dependencies_vulnerabilities.md
+│   │   └── test
+│   │       └── adapters-automated-integration-testing.md
+│   ├── api
+│   │   └── search
+│   │       └── contactEstablishmentV2.md
+│   ├── conventions status flux.excalidraw
+│   ├── flux de statuts de convention.png
+│   ├── front
+│   │   └── onboarding-management-etat
+│   │       ├── capture_console.png
+│   │       ├── console_action_type.png
+│   │       ├── onboading-management-etat.md
+│   │       └── tl-dr-magement-etat.md
+│   └── update-libphonenumber.md
+├── docker-compose.logging-loki-plugin.yml
+├── docker-compose.resources.yml
+├── docker-compose.yml
+├── front
+│   ├── .dockerignore
+│   ├── .gitignore
+│   ├── .swcrc
+│   ├── .vscode
+│   │   └── settings.json
+│   ├── README.md
+│   ├── biome.json
+│   ├── check_includes.sh
+│   ├── env.sh
+│   ├── index.html
+│   ├── jest.config.js
+│   ├── package.json
+│   ├── postcss.config.js
+│   ├── public
+│   │   ├── .well-known
+│   │   │   └── security.txt
+│   │   ├── assets
+│   │   │   ├── css
+│   │   │   │   └── custom.css
+│   │   │   └── img
+│   │   │       ├── logo-if-dark.svg
+│   │   │       ├── logo-if-dark.svg:Zone.Identifier
+│   │   │       ├── logo-if.svg
+│   │   │       ├── logo-if.svg:Zone.Identifier
+│   │   │       ├── logo-rf.svg
+│   │   │       └── screenshots
+│   │   │           ├── narrow.jpg
+│   │   │           └── wide.jpg
+│   │   ├── layers-2x.png
+│   │   ├── layers.png
+│   │   ├── marker-icon-2x--active.png
+│   │   ├── marker-icon-2x--purple.png
+│   │   ├── marker-icon-2x.png
+│   │   ├── marker-icon.png
+│   │   ├── marker-shadow.png
+│   │   └── robots.txt
+│   ├── scalingo
+│   │   ├── .buildpacks
+│   │   ├── Procfile
+│   │   └── nginx.conf.erb
+│   ├── src
+│   │   ├── app
+│   │   │   ├── App.tsx
+│   │   │   ├── TagContainer.tsx
+│   │   │   ├── components
+│   │   │   │   ├── Breadcrumbs.tsx
+│   │   │   │   ├── ConsentManager.tsx
+│   │   │   │   ├── DiscussionContentTab.tsx
+│   │   │   │   ├── MetabaseFullScreenButton.tsx
+│   │   │   │   ├── MetabaseView.tsx
+│   │   │   │   ├── SelectConventionFromIdForm.tsx
+│   │   │   │   ├── SubmitFeedbackNotification.tsx
+│   │   │   │   ├── SubscriberErrorFeedback.tsx
+│   │   │   │   ├── UploadFile.tsx
+│   │   │   │   ├── admin
+│   │   │   │   │   ├── NameAndEmailInTable.tsx
+│   │   │   │   │   ├── TextCell.tsx
+│   │   │   │   │   ├── conventions
+│   │   │   │   │   │   ├── ConventionManageActions.tsx
+│   │   │   │   │   │   ├── ConventionManageContent.tsx
+│   │   │   │   │   │   ├── ConventionValidation.tsx
+│   │   │   │   │   │   └── renderButtonsBySubStatus.tsx
+│   │   │   │   │   ├── establishments
+│   │   │   │   │   │   ├── AcceptDiscussionModal.tsx
+│   │   │   │   │   │   ├── AddEstablishmentsByBatch.tsx
+│   │   │   │   │   │   ├── ManageEstablishment.tsx
+│   │   │   │   │   │   └── RejectDiscussionModal.tsx
+│   │   │   │   │   └── technical-options
+│   │   │   │   │       └── ApiConsumerForm.tsx
+│   │   │   │   ├── agency
+│   │   │   │   │   ├── AgencyAdminAutocomplete.tsx
+│   │   │   │   │   ├── AgencyStatusBadge.tsx
+│   │   │   │   │   ├── AgencySubmitFeedback.tsx
+│   │   │   │   │   ├── AgencyTag.tsx
+│   │   │   │   │   ├── AgencyUserModificationForm.tsx
+│   │   │   │   │   ├── AgencyUsers.tsx
+│   │   │   │   │   ├── AgencyUsersTable.tsx
+│   │   │   │   │   ├── CloseAgencyAndTransferConventions.tsx
+│   │   │   │   │   ├── CopyAgencyId.tsx
+│   │   │   │   │   ├── EditAgency.tsx
+│   │   │   │   │   ├── IcUserAgenciesToReview.tsx
+│   │   │   │   │   ├── RegisterUsersToAgencies.tsx
+│   │   │   │   │   ├── UsersWithoutNameHint.tsx
+│   │   │   │   │   ├── agencies-table
+│   │   │   │   │   │   ├── AgenciesTablesSection.tsx
+│   │   │   │   │   │   ├── AgencyRightsTable.tsx
+│   │   │   │   │   │   └── agency-line
+│   │   │   │   │   │       ├── AgencyLineAdminEmails.tsx
+│   │   │   │   │   │       └── AgencyLineRightsCTAs.tsx
+│   │   │   │   │   ├── agency-dashboard
+│   │   │   │   │   │   ├── AgencyDashboard.tsx
+│   │   │   │   │   │   ├── AgencyTasks.tsx
+│   │   │   │   │   │   ├── ConventionList.tsx
+│   │   │   │   │   │   ├── ConventionTemplatesList.tsx
+│   │   │   │   │   │   ├── ConventionsToManageList.tsx
+│   │   │   │   │   │   ├── ConventionsWithAssessmentToCompleteList.tsx
+│   │   │   │   │   │   ├── ConventionsWithBroadcastErrorList.tsx
+│   │   │   │   │   │   ├── NoActiveAgencyRights.tsx
+│   │   │   │   │   │   └── tabs
+│   │   │   │   │   │       ├── AgencyAdminTabContent.tsx
+│   │   │   │   │   │       └── ConventionTabContent.tsx
+│   │   │   │   │   └── removeUserAgencyRights.tsx
+│   │   │   │   ├── auth
+│   │   │   │   │   └── RenewExpiredJwtButton.tsx
+│   │   │   │   ├── convention
+│   │   │   │   │   └── SendReminderModal.tsx
+│   │   │   │   ├── establishment
+│   │   │   │   │   ├── establishment-dashboard
+│   │   │   │   │   │   ├── DiscussionList.tsx
+│   │   │   │   │   │   ├── DiscussionManageContent.tsx
+│   │   │   │   │   │   ├── DiscussionStatusBadge.tsx
+│   │   │   │   │   │   ├── EstablishmentDashboardAccessNotAllowedContent.tsx
+│   │   │   │   │   │   └── EstablishmentDashboardTabs.tsx
+│   │   │   │   │   ├── establishment-users.ts
+│   │   │   │   │   └── establishments-table
+│   │   │   │   │       ├── EstablishmentsRightsTable.tsx
+│   │   │   │   │       ├── EstablishmentsTablesSection.tsx
+│   │   │   │   │       └── establishment-line
+│   │   │   │   │           ├── EstablishmentLineAdminInfos.tsx
+│   │   │   │   │           ├── EstablishmentLineBusinessName.tsx
+│   │   │   │   │           └── EstablishmentLineDesiredRoleInfos.tsx
+│   │   │   │   ├── feedback
+│   │   │   │   │   ├── Feedback.tsx
+│   │   │   │   │   ├── FeedbackContent.tsx
+│   │   │   │   │   ├── FullpageFeedback.tsx
+│   │   │   │   │   └── WithFeedbackReplacer.tsx
+│   │   │   │   ├── forms
+│   │   │   │   │   ├── agency
+│   │   │   │   │   │   ├── AddAgencyForm.tsx
+│   │   │   │   │   │   ├── AdminAgencyDetail.tsx
+│   │   │   │   │   │   ├── AgencyDetailForAgencyDashboard.tsx
+│   │   │   │   │   │   ├── AgencyFormCommonFields.tsx
+│   │   │   │   │   │   ├── AgencyOverview.tsx
+│   │   │   │   │   │   ├── EditAgencyForm.tsx
+│   │   │   │   │   │   └── agencyKindToLabel.ts
+│   │   │   │   │   ├── assessment
+│   │   │   │   │   │   ├── AssessmentForm.tsx
+│   │   │   │   │   │   ├── ImmersionDescription.tsx
+│   │   │   │   │   │   └── SignAssessmentModalContent.tsx
+│   │   │   │   │   ├── autocomplete
+│   │   │   │   │   │   ├── AddressAutocomplete.tsx
+│   │   │   │   │   │   ├── AddressAutocompleteWithCountrySelect.tsx
+│   │   │   │   │   │   ├── AppellationAutocomplete.tsx
+│   │   │   │   │   │   └── PlaceAutocomplete.tsx
+│   │   │   │   │   ├── commons
+│   │   │   │   │   │   ├── AgencySelector.tsx
+│   │   │   │   │   │   ├── EmailValidationInput.tsx
+│   │   │   │   │   │   ├── MultipleEmailsInput.tsx
+│   │   │   │   │   │   ├── PhoneInput.tsx
+│   │   │   │   │   │   ├── RadioGroup.tsx
+│   │   │   │   │   │   └── SchedulePicker
+│   │   │   │   │   │       ├── ComplexSchedulePicker.tsx
+│   │   │   │   │   │       ├── DayCircle.tsx
+│   │   │   │   │   │       ├── DayPicker.tsx
+│   │   │   │   │   │       ├── HourIndicator.tsx
+│   │   │   │   │   │       ├── HourPicker.tsx
+│   │   │   │   │   │       ├── RegularSchedulePicker.tsx
+│   │   │   │   │   │       ├── SchedulePicker.css
+│   │   │   │   │   │       ├── SchedulePicker.tsx
+│   │   │   │   │   │       ├── TotalWeeklylHoursIndicator.tsx
+│   │   │   │   │   │       ├── WeekdayPicker.tsx
+│   │   │   │   │   │       ├── WeeklyRow.tsx
+│   │   │   │   │   │       └── utils
+│   │   │   │   │   │           └── getDayStatus.ts
+│   │   │   │   │   ├── convention
+│   │   │   │   │   │   ├── ConventionEmailWarning.tsx
+│   │   │   │   │   │   ├── ConventionForm.tsx
+│   │   │   │   │   │   ├── ConventionFormProfession.tsx
+│   │   │   │   │   │   ├── ConventionFormWrapper.tsx
+│   │   │   │   │   │   ├── ConventionSignForm.tsx
+│   │   │   │   │   │   ├── ShareConventionDraft.tsx
+│   │   │   │   │   │   ├── ShareForm.tsx
+│   │   │   │   │   │   ├── SignButton.tsx
+│   │   │   │   │   │   ├── SignatureActions.tsx
+│   │   │   │   │   │   ├── manage-actions
+│   │   │   │   │   │   │   ├── ManageActionModalWrapper.tsx
+│   │   │   │   │   │   │   ├── getButtonConfigBySubStatus.ts
+│   │   │   │   │   │   │   ├── getVerificationActionButtonProps.ts
+│   │   │   │   │   │   │   ├── manageActionLinks.ts
+│   │   │   │   │   │   │   ├── manageActionModals.tsx
+│   │   │   │   │   │   │   ├── manageActionOnClick.ts
+│   │   │   │   │   │   │   └── modals
+│   │   │   │   │   │   │       ├── BroadcastAgainModalContent.tsx
+│   │   │   │   │   │   │       ├── DeleteAssessmentModalContent.tsx
+│   │   │   │   │   │   │       ├── EditConventionWithFinalStatusModalContent.tsx
+│   │   │   │   │   │   │       ├── EditCounsellorNameModalContent.tsx
+│   │   │   │   │   │   │       ├── JustificationModalContent.tsx
+│   │   │   │   │   │   │       ├── MarkConventionAsHandledModalContent.tsx
+│   │   │   │   │   │   │       ├── RenewConventionModalContent.tsx
+│   │   │   │   │   │   │       ├── SignConventionModalContent.tsx
+│   │   │   │   │   │   │       ├── TransferModalContent.tsx
+│   │   │   │   │   │   │       └── ValidatorModalContent.tsx
+│   │   │   │   │   │   └── sections
+│   │   │   │   │   │       ├── agency
+│   │   │   │   │   │       │   └── AgencyErrorText.tsx
+│   │   │   │   │   │       ├── beneficiary
+│   │   │   │   │   │       │   ├── BeneficiaryCurrentEmployerFields.tsx
+│   │   │   │   │   │       │   ├── BeneficiaryEmergencyContactFields.tsx
+│   │   │   │   │   │       │   ├── BeneficiaryFormSection.tsx
+│   │   │   │   │   │       │   └── BeneficiaryRepresentativeFields.tsx
+│   │   │   │   │   │       ├── establishment
+│   │   │   │   │   │       │   ├── EstablishementTutorFields.tsx
+│   │   │   │   │   │       │   ├── EstablishmentBusinessFields.tsx
+│   │   │   │   │   │       │   ├── EstablishmentFormSection.tsx
+│   │   │   │   │   │       │   └── EstablishmentRepresentativeFields.tsx
+│   │   │   │   │   │       ├── immersion-details
+│   │   │   │   │   │       │   └── ImmersionDetailsSection.tsx
+│   │   │   │   │   │       └── schedule
+│   │   │   │   │   │           └── ScheduleSection.tsx
+│   │   │   │   │   ├── establishment
+│   │   │   │   │   │   ├── CreationSiretRelatedInputs.tsx
+│   │   │   │   │   │   ├── EditionSiretRelatedInputs.tsx
+│   │   │   │   │   │   ├── EstablishmentForm.tsx
+│   │   │   │   │   │   ├── MultipleAddressInput.tsx
+│   │   │   │   │   │   ├── Proposal.tsx
+│   │   │   │   │   │   ├── SearchResultPreview.tsx
+│   │   │   │   │   │   └── sections
+│   │   │   │   │   │       ├── BusinessAndAdminSection.tsx
+│   │   │   │   │   │       ├── OffersSection.tsx
+│   │   │   │   │   │       ├── OffersSettingsSection.tsx
+│   │   │   │   │   │       ├── SummarySection.tsx
+│   │   │   │   │   │       └── offer
+│   │   │   │   │   │           ├── OfferCard.tsx
+│   │   │   │   │   │           └── OfferModal.tsx
+│   │   │   │   │   ├── register-agencies
+│   │   │   │   │   │   └── RegisterAgenciesForm.tsx
+│   │   │   │   │   └── register-establishments
+│   │   │   │   │       └── RequestRegisterEstablishmentsForUserForm.tsx
+│   │   │   │   ├── immersion-offer
+│   │   │   │   │   ├── CreateDiscussionForm.tsx
+│   │   │   │   │   ├── TranscientPreferencesDisplay.tsx
+│   │   │   │   │   ├── contactUtils.ts
+│   │   │   │   │   └── useTranscientDataFromStorage.ts
+│   │   │   │   ├── layout
+│   │   │   │   │   ├── BackofficeDashboardTabContent.tsx
+│   │   │   │   │   ├── DefaultMetaContent.tsx
+│   │   │   │   │   ├── HeaderFooterLayout.tsx
+│   │   │   │   │   ├── LayoutFooter.tsx
+│   │   │   │   │   ├── LayoutHeader.tsx
+│   │   │   │   │   └── StandardLayoutPage.tsx
+│   │   │   │   ├── nps
+│   │   │   │   │   └── NpsSection.tsx
+│   │   │   │   ├── search
+│   │   │   │   │   ├── SearchInfoSection.tsx
+│   │   │   │   │   ├── SearchListResults.tsx
+│   │   │   │   │   ├── SearchMiniMap.scss
+│   │   │   │   │   ├── SearchMiniMap.tsx
+│   │   │   │   │   ├── SearchResult.scss
+│   │   │   │   │   ├── SearchResult.tsx
+│   │   │   │   │   ├── SearchResultContactSection.tsx
+│   │   │   │   │   ├── SearchResultLabels.tsx
+│   │   │   │   │   └── useContactEstablishmentError.ts
+│   │   │   │   └── user-profile
+│   │   │   │       ├── PersonnalInformationsSection.tsx
+│   │   │   │       └── UserProfile.tsx
+│   │   │   ├── contents
+│   │   │   │   ├── admin
+│   │   │   │   │   ├── apiConsumer.tsx
+│   │   │   │   │   └── types.ts
+│   │   │   │   ├── breadcrumbs
+│   │   │   │   │   └── breadcrumbs.ts
+│   │   │   │   ├── broadcast-feedback
+│   │   │   │   │   └── broadcastFeedback.tsx
+│   │   │   │   ├── convention
+│   │   │   │   │   ├── conventionSummary.helpers.tsx
+│   │   │   │   │   └── labelAndSeverityByStatus.ts
+│   │   │   │   ├── error
+│   │   │   │   │   └── types.ts
+│   │   │   │   ├── forms
+│   │   │   │   │   ├── admin
+│   │   │   │   │   │   └── technicalOptions.ts
+│   │   │   │   │   ├── agency
+│   │   │   │   │   │   └── formAgency.ts
+│   │   │   │   │   ├── common
+│   │   │   │   │   │   └── values.tsx
+│   │   │   │   │   ├── convention
+│   │   │   │   │   │   ├── formConvention.tsx
+│   │   │   │   │   │   └── textSetup.tsx
+│   │   │   │   │   ├── establishment
+│   │   │   │   │   │   └── formEstablishment.ts
+│   │   │   │   │   └── types.ts
+│   │   │   │   ├── home
+│   │   │   │   │   └── content.ts
+│   │   │   │   ├── meta
+│   │   │   │   │   └── metaContents.ts
+│   │   │   │   ├── standard
+│   │   │   │   │   ├── accessibilite.tsx
+│   │   │   │   │   ├── budget.tsx
+│   │   │   │   │   ├── cgu.tsx
+│   │   │   │   │   ├── headings.tsx
+│   │   │   │   │   ├── mentions-legales.tsx
+│   │   │   │   │   ├── obligations-des-parties.tsx
+│   │   │   │   │   ├── politique-de-confidentialite.tsx
+│   │   │   │   │   ├── siteMap.tsx
+│   │   │   │   │   ├── textSetup.ts
+│   │   │   │   │   └── textSetup.unit.test.ts
+│   │   │   │   ├── statsUrls.ts
+│   │   │   │   └── userRolesToDisplay.ts
+│   │   │   ├── hooks
+│   │   │   │   ├── acquisition.hooks.ts
+│   │   │   │   ├── convention.hooks.ts
+│   │   │   │   ├── discussion.hooks.ts
+│   │   │   │   ├── feedback.hooks.ts
+│   │   │   │   ├── formContents.hooks.test.ts
+│   │   │   │   ├── formContents.hooks.ts
+│   │   │   │   ├── jwt.hooks.ts
+│   │   │   │   ├── pdf.hooks.ts
+│   │   │   │   ├── reduxHooks.ts
+│   │   │   │   ├── search.hooks.ts
+│   │   │   │   ├── siret.hooks.ts
+│   │   │   │   └── useFeatureFlags.ts
+│   │   │   ├── main.tsx
+│   │   │   ├── pages
+│   │   │   │   ├── StatsPage.tsx
+│   │   │   │   ├── admin
+│   │   │   │   │   ├── AdminTabs.tsx
+│   │   │   │   │   ├── AdminUserDetail.tsx
+│   │   │   │   │   ├── AgencyTab.tsx
+│   │   │   │   │   ├── ConventionTab.tsx
+│   │   │   │   │   ├── EmailPreviewTab.tsx
+│   │   │   │   │   ├── EstablishmentsTab.tsx
+│   │   │   │   │   ├── EventsTabs.tsx
+│   │   │   │   │   ├── NotificationsTab.tsx
+│   │   │   │   │   ├── TechnicalOptionsTab.tsx
+│   │   │   │   │   ├── UsersTab.tsx
+│   │   │   │   │   ├── technical-options-sections
+│   │   │   │   │   │   ├── ApiConsumersSection.tsx
+│   │   │   │   │   │   ├── FeatureFlagsSection.tsx
+│   │   │   │   │   │   └── UploadFileSection.tsx
+│   │   │   │   │   └── useAdminDashboard.ts
+│   │   │   │   ├── agency
+│   │   │   │   │   └── AddAgencyPage.tsx
+│   │   │   │   ├── agency-dashboard
+│   │   │   │   │   ├── AgencyDashboardMainTab.tsx
+│   │   │   │   │   └── ConventionManageConnectedUser.tsx
+│   │   │   │   ├── auth
+│   │   │   │   │   ├── AdminPrivateRoutePage.tsx
+│   │   │   │   │   ├── ConnectedPrivateRoutePage.tsx
+│   │   │   │   │   ├── DashboardPrivateRoutePage.tsx
+│   │   │   │   │   ├── LoginByEmailFeedbackPage.tsx
+│   │   │   │   │   └── MagicLinkInterstitialPage.tsx
+│   │   │   │   ├── beneficiary-dashboard
+│   │   │   │   │   └── BeneficiaryDashboardDiscussionsTab.tsx
+│   │   │   │   ├── convention
+│   │   │   │   │   ├── AdminConventionDetail.tsx
+│   │   │   │   │   ├── AssessmentDocumentPage.tsx
+│   │   │   │   │   ├── ConventionConfirmationPage.tsx
+│   │   │   │   │   ├── ConventionDocumentPage.tsx
+│   │   │   │   │   ├── ConventionImmersionPage.tsx
+│   │   │   │   │   ├── ConventionManagePage.tsx
+│   │   │   │   │   ├── ConventionMiniStagePage.tsx
+│   │   │   │   │   ├── ConventionPageForExternals.tsx
+│   │   │   │   │   ├── ConventionSignPage.tsx
+│   │   │   │   │   ├── ConventionStatusDashboardPage.tsx
+│   │   │   │   │   ├── ConventionTemplateForm.tsx
+│   │   │   │   │   ├── InitiateConventionPage.tsx
+│   │   │   │   │   └── ShowConventionErrorOrRenewExpiredJwt.tsx
+│   │   │   │   ├── error
+│   │   │   │   │   ├── ErrorPage.tsx
+│   │   │   │   │   ├── ErrorPageContent.tsx
+│   │   │   │   │   ├── MinimalErrorPage.tsx
+│   │   │   │   │   └── front-errors.tsx
+│   │   │   │   ├── establishment
+│   │   │   │   │   ├── EstablishmentCreationFormPage.tsx
+│   │   │   │   │   └── EstablishmentLeadRegistrationRejectedPage.tsx
+│   │   │   │   ├── establishment-dashboard
+│   │   │   │   │   ├── EstablishmentDashboardMainTab.tsx
+│   │   │   │   │   ├── EstablishmentUserForm.tsx
+│   │   │   │   │   ├── EstablishmentUsersList.tsx
+│   │   │   │   │   ├── InitiateConventionButton.tsx
+│   │   │   │   │   ├── ManageDiscussionFormSection.tsx
+│   │   │   │   │   └── ManageEstablishmentTab.tsx
+│   │   │   │   ├── group
+│   │   │   │   │   ├── GroupListResults.tsx
+│   │   │   │   │   └── GroupPage.tsx
+│   │   │   │   ├── home
+│   │   │   │   │   └── HomePage.tsx
+│   │   │   │   ├── immersion-assessment
+│   │   │   │   │   └── AssessmentPage.tsx
+│   │   │   │   ├── open-api-doc
+│   │   │   │   │   ├── OpenApiDoc.tsx
+│   │   │   │   │   ├── OpenApiDocV2Page.tsx
+│   │   │   │   │   └── OpenApiDocV3Page.tsx
+│   │   │   │   ├── search
+│   │   │   │   │   ├── SearchPage.scss
+│   │   │   │   │   ├── SearchPage.styles.ts
+│   │   │   │   │   ├── SearchPage.tsx
+│   │   │   │   │   └── SearchResultPage.tsx
+│   │   │   │   └── user
+│   │   │   │       ├── MyProfileMainTab.tsx
+│   │   │   │       └── tabs
+│   │   │   │           ├── RequestAgencyRegistrationTab.tsx
+│   │   │   │           └── RequestEstablishmentRegistrationTab.tsx
+│   │   │   ├── routes
+│   │   │   │   ├── Router.tsx
+│   │   │   │   └── routes.hooks.ts
+│   │   │   └── utils
+│   │   │       ├── IsAllowedConventionTransition.ts
+│   │   │       ├── IsAllowedConventionTransition.unit.test.ts
+│   │   │       ├── assessment.utils.ts
+│   │   │       ├── breadcrumbs.ts
+│   │   │       ├── breadcrumbs.unit.test.ts
+│   │   │       ├── conventionSubStatus.ts
+│   │   │       ├── createFormModal.tsx
+│   │   │       ├── dashboard.ts
+│   │   │       ├── highlightStringsFromMatches.ts
+│   │   │       ├── highlightStringsFromMatches.unit.test.ts
+│   │   │       ├── html.utils.ts
+│   │   │       ├── url.utils.ts
+│   │   │       └── url.utils.unit.test.ts
+│   │   ├── assets
+│   │   │   ├── admin.css
+│   │   │   ├── fonts
+│   │   │   │   ├── Marianne-Bold.woff
+│   │   │   │   ├── Marianne-Bold.woff2
+│   │   │   │   ├── Marianne-Bold_Italic.woff
+│   │   │   │   ├── Marianne-Bold_Italic.woff2
+│   │   │   │   ├── Marianne-Light.woff
+│   │   │   │   ├── Marianne-Light.woff2
+│   │   │   │   ├── Marianne-Light_Italic.woff
+│   │   │   │   ├── Marianne-Light_Italic.woff2
+│   │   │   │   ├── Marianne-Regular.woff
+│   │   │   │   ├── Marianne-Regular.woff2
+│   │   │   │   ├── Marianne-Regular_Italic.woff
+│   │   │   │   ├── Marianne-Regular_Italic.woff2
+│   │   │   │   ├── Spectral-ExtraBold.woff
+│   │   │   │   ├── Spectral-ExtraBold.woff2
+│   │   │   │   ├── Spectral-Regular.woff
+│   │   │   │   └── Spectral-Regular.woff2
+│   │   │   ├── img
+│   │   │   │   ├── Logo-immersion-facilitee.png
+│   │   │   │   ├── all.svg
+│   │   │   │   ├── beneficiary-faq.svg
+│   │   │   │   ├── bulles.svg
+│   │   │   │   ├── check-circle-icon.svg
+│   │   │   │   ├── checked.svg
+│   │   │   │   ├── distance-search-icon.svg
+│   │   │   │   ├── error.svg
+│   │   │   │   ├── establishment_video_image.png
+│   │   │   │   ├── eye-off.svg
+│   │   │   │   ├── eye.svg
+│   │   │   │   ├── favicon.svg
+│   │   │   │   ├── fill-convention-form.svg
+│   │   │   │   ├── fill-convention-help.svg
+│   │   │   │   ├── fill-convention-pe.svg
+│   │   │   │   ├── fleche.svg
+│   │   │   │   ├── greatings.png
+│   │   │   │   ├── home_video_image.jpg
+│   │   │   │   ├── illustration-agency-hero.webp
+│   │   │   │   ├── illustration-candidate-hero.webp
+│   │   │   │   ├── illustration-default-hero.webp
+│   │   │   │   ├── illustration-establishment-hero.webp
+│   │   │   │   ├── illustrations
+│   │   │   │   │   ├── annuaire-des-entreprises.webp
+│   │   │   │   │   ├── contact.webp
+│   │   │   │   │   ├── discussions.webp
+│   │   │   │   │   ├── documents-administratifs.webp
+│   │   │   │   │   ├── error-illustration.webp
+│   │   │   │   │   ├── error-missing-illustration.webp
+│   │   │   │   │   ├── fill-form.webp
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── infos-importantes.webp
+│   │   │   │   │   ├── inscription.webp
+│   │   │   │   │   ├── job-illustration.webp
+│   │   │   │   │   ├── login-illustration.webp
+│   │   │   │   │   ├── mon-compte.webp
+│   │   │   │   │   ├── objective-illustration.webp
+│   │   │   │   │   ├── reach-data.webp
+│   │   │   │   │   ├── search-illustration-0.webp
+│   │   │   │   │   ├── search-illustration-1.webp
+│   │   │   │   │   ├── search-illustration-2.webp
+│   │   │   │   │   ├── search-illustration-3.webp
+│   │   │   │   │   ├── structure-accueil.webp
+│   │   │   │   │   └── success-illustration.webp
+│   │   │   │   ├── jobseeker.svg
+│   │   │   │   ├── les-entreprises-s-engagent-dark.svg
+│   │   │   │   ├── les-entreprises-s-engagent.svg
+│   │   │   │   ├── location-search-icon.svg
+│   │   │   │   ├── logo-france-travail-dark.svg
+│   │   │   │   ├── logo-france-travail.svg
+│   │   │   │   ├── logo-ft.svg
+│   │   │   │   ├── logo-immersion-facile.svg
+│   │   │   │   ├── logo-lbb-centered.png
+│   │   │   │   ├── logo-lbb-on-left.png
+│   │   │   │   ├── logo-le-mois-les-entreprises.svg
+│   │   │   │   ├── logo-pdi-dark.svg
+│   │   │   │   ├── logo-pdi.svg
+│   │   │   │   ├── logo.svg
+│   │   │   │   ├── mail.svg
+│   │   │   │   ├── mushroom.webp
+│   │   │   │   ├── pe-connect-barre-nav-b-o.svg
+│   │   │   │   ├── pe-connect-barre-nav-b.svg
+│   │   │   │   ├── pe-connect-barre-nav-w-o.svg
+│   │   │   │   ├── pe-connect-barre-nav-w.svg
+│   │   │   │   ├── pe-connect-logo.svg
+│   │   │   │   ├── pe-connect-mobile-b-o.svg
+│   │   │   │   ├── pe-connect-mobile-b.svg
+│   │   │   │   ├── pe-connect-mobile-w-o.svg
+│   │   │   │   ├── pe-connect-mobile-w.svg
+│   │   │   │   ├── pe-connect-popin-b-o.svg
+│   │   │   │   ├── pe-connect-popin-b.svg
+│   │   │   │   ├── pe-connect-popin-w-o.svg
+│   │   │   │   ├── pe-connect-popin-w.svg
+│   │   │   │   ├── phone-search-icon.svg
+│   │   │   │   ├── phone.svg
+│   │   │   │   ├── plateforme-inclusion-logo.svg
+│   │   │   │   ├── round-square.webp
+│   │   │   │   ├── search-button-icon.svg
+│   │   │   │   ├── search.svg
+│   │   │   │   ├── share-convention.svg
+│   │   │   │   ├── shuriken.webp
+│   │   │   │   ├── student.svg
+│   │   │   │   ├── success.svg
+│   │   │   │   ├── tandem.png
+│   │   │   │   └── user.svg
+│   │   │   └── sort-search-icon.svg
+│   │   ├── config
+│   │   │   ├── createCommonDependencies.ts
+│   │   │   ├── createHttpDependencies.ts
+│   │   │   ├── createInMemoryDependencies.ts
+│   │   │   ├── dependencies.ts
+│   │   │   └── environmentVariables.ts
+│   │   ├── core-logic
+│   │   │   ├── adapters
+│   │   │   │   ├── AddressGateway
+│   │   │   │   │   ├── HttpAddressGateway.ts
+│   │   │   │   │   ├── InMemoryAddressGateway.ts
+│   │   │   │   │   └── TestAddressGateway.ts
+│   │   │   │   ├── AdminGateway
+│   │   │   │   │   ├── HttpAdminGateway.ts
+│   │   │   │   │   ├── SimulatedAdminGateway.ts
+│   │   │   │   │   └── TestAdminGateway.ts
+│   │   │   │   ├── AgencyGateway
+│   │   │   │   │   ├── HttpAgencyGateway.ts
+│   │   │   │   │   ├── SimulatedAgencyGateway.ts
+│   │   │   │   │   └── TestAgencyGateway.ts
+│   │   │   │   ├── AssessmentGateway
+│   │   │   │   │   ├── HttpAssessmentGateway.ts
+│   │   │   │   │   ├── SimulatedAssessmentGateway.ts
+│   │   │   │   │   └── TestAssessmentGateway.ts
+│   │   │   │   ├── AuthGateway
+│   │   │   │   │   ├── HttpAuthGateway.ts
+│   │   │   │   │   ├── SimulatedAuthGateway.ts
+│   │   │   │   │   └── TestAuthGateway.ts
+│   │   │   │   ├── Convention
+│   │   │   │   │   ├── HttpConventionGateway.ts
+│   │   │   │   │   └── InMemoryConventionGateway.ts
+│   │   │   │   ├── DeviceRepository
+│   │   │   │   │   ├── createStorageDeviceRepository.ts
+│   │   │   │   │   └── createTestDeviceRepository.ts
+│   │   │   │   ├── EstablishmentGateway
+│   │   │   │   │   ├── HttpEstablishmentGateway.ts
+│   │   │   │   │   ├── SimulatedEstablishmentGateway.ts
+│   │   │   │   │   └── TestEstablishmentGateway.ts
+│   │   │   │   ├── EstablishmentLeadGateway
+│   │   │   │   │   ├── HttpEstablishmentLeadGateway.ts
+│   │   │   │   │   ├── SimulatedEstablishmentLeadGateway.ts
+│   │   │   │   │   └── TestEstablishmentLeadGateway.ts
+│   │   │   │   ├── FormCompletionGateway
+│   │   │   │   │   ├── FormCompletionGateway.manual.test.ts
+│   │   │   │   │   ├── HttpFormCompletionGateway.ts
+│   │   │   │   │   ├── SimulatedFormCompletionGateway.ts
+│   │   │   │   │   └── TestFormCompletionGateway.ts
+│   │   │   │   ├── JwtValidator
+│   │   │   │   │   ├── DecodeJwtValidator.ts
+│   │   │   │   │   └── TestJwtValidator.ts
+│   │   │   │   ├── NafGateway
+│   │   │   │   │   ├── HttpNafGateway.ts
+│   │   │   │   │   ├── SimulatedNafGateway.ts
+│   │   │   │   │   └── TestNafGateway.ts
+│   │   │   │   ├── NavigationGateway
+│   │   │   │   │   ├── InMemoryNavigationGateway.ts
+│   │   │   │   │   └── ReactNavigationGateway.ts
+│   │   │   │   ├── SearchGateway
+│   │   │   │   │   ├── HttpSearchGateway.ts
+│   │   │   │   │   ├── SimulatedSearchGateway.ts
+│   │   │   │   │   ├── TestSearchGateway.ts
+│   │   │   │   │   └── simulatedSearchData.ts
+│   │   │   │   ├── TechnicalGateway
+│   │   │   │   │   ├── HttpTechnicalGateway.ts
+│   │   │   │   │   ├── SimulatedTechnicalGateway.ts
+│   │   │   │   │   └── TestTechnicalGateway.ts
+│   │   │   │   └── otherwiseThrow.ts
+│   │   │   ├── domain
+│   │   │   │   ├── SubmitFeedback.ts
+│   │   │   │   ├── admin
+│   │   │   │   │   ├── admin.helpers.ts
+│   │   │   │   │   ├── admin.selectors.ts
+│   │   │   │   │   ├── adminPreloadedState.ts
+│   │   │   │   │   ├── agenciesAdmin
+│   │   │   │   │   │   └── fetch-agency-options
+│   │   │   │   │   │       ├── fetchAgencyOptions.epics.ts
+│   │   │   │   │   │       ├── fetchAgencyOptions.selectors.ts
+│   │   │   │   │   │       ├── fetchAgencyOptions.slice.ts
+│   │   │   │   │   │       └── fetchAgencyOptions.test.ts
+│   │   │   │   │   ├── connectedUsersAdmin
+│   │   │   │   │   │   ├── connectedUsersAdmin.epics.ts
+│   │   │   │   │   │   ├── connectedUsersAdmin.selectors.ts
+│   │   │   │   │   │   ├── connectedUsersAdmin.slice.ts
+│   │   │   │   │   │   └── connectedUsersAdmin.test.ts
+│   │   │   │   │   ├── dashboardUrls
+│   │   │   │   │   │   ├── dashboardUrls.epics.ts
+│   │   │   │   │   │   ├── dashboardUrls.slice.ts
+│   │   │   │   │   │   └── dashboardUrls.test.ts
+│   │   │   │   │   ├── fetchUser
+│   │   │   │   │   │   ├── fetchUser.epic.ts
+│   │   │   │   │   │   ├── fetchUser.selectors.ts
+│   │   │   │   │   │   ├── fetchUser.slice.ts
+│   │   │   │   │   │   └── fetchUser.test.ts
+│   │   │   │   │   ├── listUsers
+│   │   │   │   │   │   ├── listUsers.epics.ts
+│   │   │   │   │   │   ├── listUsers.selectors.ts
+│   │   │   │   │   │   ├── listUsers.slice.ts
+│   │   │   │   │   │   └── listUsers.test.ts
+│   │   │   │   │   └── notifications
+│   │   │   │   │       ├── notifications.epics.ts
+│   │   │   │   │       ├── notifications.test.ts
+│   │   │   │   │       └── notificationsSlice.ts
+│   │   │   │   ├── agencies
+│   │   │   │   │   ├── agencies.epics.ts
+│   │   │   │   │   ├── agencies.helpers.ts
+│   │   │   │   │   ├── agencies.selectors.ts
+│   │   │   │   │   ├── agencies.slice.ts
+│   │   │   │   │   ├── agencies.test.ts
+│   │   │   │   │   ├── agenciesPreloadedState.ts
+│   │   │   │   │   ├── close-agency-and-transfert-conventions
+│   │   │   │   │   │   ├── closeAgencyAndTransferConventions.epics.ts
+│   │   │   │   │   │   ├── closeAgencyAndTransferConventions.slice.ts
+│   │   │   │   │   │   └── closeAgencyAndTransferConventions.test.ts
+│   │   │   │   │   ├── create-user-on-agency
+│   │   │   │   │   │   ├── createUserOnAgency.epics.ts
+│   │   │   │   │   │   ├── createUserOnAgency.selectors.ts
+│   │   │   │   │   │   ├── createUserOnAgency.slice.ts
+│   │   │   │   │   │   └── createUserOnAgency.test.ts
+│   │   │   │   │   ├── fetch-agency
+│   │   │   │   │   │   ├── fetchAgency.epics.ts
+│   │   │   │   │   │   ├── fetchAgency.selectors.ts
+│   │   │   │   │   │   ├── fetchAgency.slice.ts
+│   │   │   │   │   │   └── fetchAgency.test.ts
+│   │   │   │   │   ├── remove-user-from-agency
+│   │   │   │   │   │   ├── removeUserFromAgency.epics.ts
+│   │   │   │   │   │   ├── removeUserFromAgency.selectors.ts
+│   │   │   │   │   │   ├── removeUserFromAgency.slice.ts
+│   │   │   │   │   │   └── removeUserFromAgency.test.ts
+│   │   │   │   │   ├── update-agency
+│   │   │   │   │   │   ├── updateAgency.epics.ts
+│   │   │   │   │   │   ├── updateAgency.selectors.ts
+│   │   │   │   │   │   ├── updateAgency.slice.ts
+│   │   │   │   │   │   └── updateAgency.test.ts
+│   │   │   │   │   └── update-user-on-agency
+│   │   │   │   │       ├── updateUserOnAgency.epic.ts
+│   │   │   │   │       ├── updateUserOnAgency.selectors.ts
+│   │   │   │   │       ├── updateUserOnAgency.slice.ts
+│   │   │   │   │       └── updateUserOnAgency.test.ts
+│   │   │   │   ├── apiConsumer
+│   │   │   │   │   ├── apiConsumer.epics.ts
+│   │   │   │   │   ├── apiConsumer.selector.ts
+│   │   │   │   │   ├── apiConsumer.slice.ts
+│   │   │   │   │   └── apiConsumer.test.ts
+│   │   │   │   ├── appellation
+│   │   │   │   │   ├── appellation.epics.ts
+│   │   │   │   │   ├── appellation.selectors.ts
+│   │   │   │   │   ├── appellation.slice.ts
+│   │   │   │   │   └── appellation.test.ts
+│   │   │   │   ├── assessment
+│   │   │   │   │   ├── assessment.epics.ts
+│   │   │   │   │   ├── assessment.selectors.ts
+│   │   │   │   │   ├── assessment.slice.ts
+│   │   │   │   │   ├── assessment.test.ts
+│   │   │   │   │   └── send-assessment-link
+│   │   │   │   │       ├── sendAssessmentLink.epics.ts
+│   │   │   │   │       ├── sendAssessmentLink.slice.ts
+│   │   │   │   │       └── sendAssessmentLink.test.ts
+│   │   │   │   ├── auth
+│   │   │   │   │   ├── auth.epics.ts
+│   │   │   │   │   ├── auth.selectors.ts
+│   │   │   │   │   ├── auth.slice.ts
+│   │   │   │   │   └── auth.test.ts
+│   │   │   │   ├── autocomplete.utils.ts
+│   │   │   │   ├── connected-user
+│   │   │   │   │   ├── connectedUser.epics.ts
+│   │   │   │   │   ├── connectedUser.selectors.ts
+│   │   │   │   │   ├── connectedUser.slice.ts
+│   │   │   │   │   ├── connectedUser.test.ts
+│   │   │   │   │   ├── conventionList
+│   │   │   │   │   │   ├── connectedUserConventionList.epics.ts
+│   │   │   │   │   │   ├── connectedUserConventionList.selectors.ts
+│   │   │   │   │   │   ├── connectedUserConventionList.slice.ts
+│   │   │   │   │   │   └── connectedUserConventionList.test.ts
+│   │   │   │   │   ├── conventionsToManage
+│   │   │   │   │   │   ├── connectedUserConventionsToManage.epics.ts
+│   │   │   │   │   │   ├── connectedUserConventionsToManage.selectors.ts
+│   │   │   │   │   │   ├── connectedUserConventionsToManage.slice.ts
+│   │   │   │   │   │   └── connectedUserConventionsToManage.test.ts
+│   │   │   │   │   └── conventionsWithBroadcastFeedback
+│   │   │   │   │       ├── conventionsWithBroadcastFeedback.epics.ts
+│   │   │   │   │       ├── conventionsWithBroadcastFeedback.selectors.ts
+│   │   │   │   │       ├── conventionsWithBroadcastFeedback.slice.ts
+│   │   │   │   │       └── conventionsWithBroadcastFeedback.test.ts
+│   │   │   │   ├── convention
+│   │   │   │   │   ├── convention-action
+│   │   │   │   │   │   ├── conventionAction.epics.ts
+│   │   │   │   │   │   ├── conventionAction.selectors.ts
+│   │   │   │   │   │   ├── conventionAction.slice.ts
+│   │   │   │   │   │   └── conventionAction.test.ts
+│   │   │   │   │   ├── convention-draft
+│   │   │   │   │   │   ├── conventionDraft.epics.ts
+│   │   │   │   │   │   ├── conventionDraft.selectors.ts
+│   │   │   │   │   │   ├── conventionDraft.slice.ts
+│   │   │   │   │   │   └── conventionDraft.test.ts
+│   │   │   │   │   ├── convention.epics.ts
+│   │   │   │   │   ├── convention.selectors.ts
+│   │   │   │   │   ├── convention.slice.ts
+│   │   │   │   │   ├── convention.test.ts
+│   │   │   │   │   ├── convention.utils.ts
+│   │   │   │   │   ├── edit-convention-with-final-status
+│   │   │   │   │   │   ├── editConventionWithFinalStatus.epic.ts
+│   │   │   │   │   │   ├── editConventionWithFinalStatus.slice.ts
+│   │   │   │   │   │   └── editConventionWithFinalStatus.test.ts
+│   │   │   │   │   └── send-signature-link
+│   │   │   │   │       ├── sendSignatureLink.epic.ts
+│   │   │   │   │       ├── sendSignatureLink.slice.ts
+│   │   │   │   │       └── sendSignatureLink.test.ts
+│   │   │   │   ├── convention-template
+│   │   │   │   │   ├── conventionTemplate.epics.ts
+│   │   │   │   │   ├── conventionTemplate.selectors.ts
+│   │   │   │   │   ├── conventionTemplate.slice.ts
+│   │   │   │   │   └── conventionTemplate.test.ts
+│   │   │   │   ├── discussion
+│   │   │   │   │   ├── discussion.epics.ts
+│   │   │   │   │   ├── discussion.selectors.ts
+│   │   │   │   │   ├── discussion.slice.ts
+│   │   │   │   │   └── discussion.test.ts
+│   │   │   │   ├── establishment
+│   │   │   │   │   ├── establishment.epics.ts
+│   │   │   │   │   ├── establishment.selectors.ts
+│   │   │   │   │   ├── establishment.slice.ts
+│   │   │   │   │   └── establishment.test.ts
+│   │   │   │   ├── establishmentBatch
+│   │   │   │   │   ├── establishmentBatch.epics.ts
+│   │   │   │   │   ├── establishmentBatch.selectors.ts
+│   │   │   │   │   ├── establishmentBatch.slice.ts
+│   │   │   │   │   └── establishmentBatch.test.ts
+│   │   │   │   ├── establishmentLead
+│   │   │   │   │   ├── establishmentLead.epics.ts
+│   │   │   │   │   ├── establishmentLead.selectors.ts
+│   │   │   │   │   ├── establishmentLead.slice.ts
+│   │   │   │   │   └── establishmentLead.test.ts
+│   │   │   │   ├── featureFlags
+│   │   │   │   │   ├── featureFlags.epics.ts
+│   │   │   │   │   ├── featureFlags.selector.ts
+│   │   │   │   │   ├── featureFlags.slice.ts
+│   │   │   │   │   └── featureFlags.test.ts
+│   │   │   │   ├── feedback
+│   │   │   │   │   ├── feedback.content.ts
+│   │   │   │   │   ├── feedback.selectors.ts
+│   │   │   │   │   ├── feedback.slice.ts
+│   │   │   │   │   └── feedback.test.ts
+│   │   │   │   ├── geocoding
+│   │   │   │   │   ├── geocoding.epics.ts
+│   │   │   │   │   ├── geocoding.selectors.ts
+│   │   │   │   │   ├── geocoding.slice.ts
+│   │   │   │   │   └── geocoding.test.ts
+│   │   │   │   ├── geosearch
+│   │   │   │   │   ├── geosearch.epics.ts
+│   │   │   │   │   ├── geosearch.selectors.ts
+│   │   │   │   │   ├── geosearch.slice.ts
+│   │   │   │   │   └── geosearch.test.ts
+│   │   │   │   ├── naf
+│   │   │   │   │   ├── naf.epics.ts
+│   │   │   │   │   ├── naf.selectors.ts
+│   │   │   │   │   ├── naf.slice.ts
+│   │   │   │   │   └── naf.test.ts
+│   │   │   │   ├── partnersErroredConvention
+│   │   │   │   │   ├── partnersErroredConvention.epics.ts
+│   │   │   │   │   ├── partnersErroredConvention.selectors.ts
+│   │   │   │   │   ├── partnersErroredConvention.slice.ts
+│   │   │   │   │   └── partnersErroredConvention.test.ts
+│   │   │   │   ├── rootApp
+│   │   │   │   │   ├── rootApp.epics.ts
+│   │   │   │   │   ├── rootApp.slice.ts
+│   │   │   │   │   └── rootApp.test.ts
+│   │   │   │   ├── search
+│   │   │   │   │   ├── search.epics.ts
+│   │   │   │   │   ├── search.selectors.ts
+│   │   │   │   │   ├── search.slice.ts
+│   │   │   │   │   └── search.test.ts
+│   │   │   │   ├── siret
+│   │   │   │   │   ├── siret.epics.ts
+│   │   │   │   │   ├── siret.selectors.tsx
+│   │   │   │   │   ├── siret.slice.ts
+│   │   │   │   │   └── siret.test.ts
+│   │   │   │   └── testHelpers
+│   │   │   │       └── test.helpers.ts
+│   │   │   ├── ports
+│   │   │   │   ├── AddressGateway.ts
+│   │   │   │   ├── AdminGateway.ts
+│   │   │   │   ├── AgencyGateway.ts
+│   │   │   │   ├── AssessmentGateway.ts
+│   │   │   │   ├── AuthGateway.ts
+│   │   │   │   ├── ConventionGateway.ts
+│   │   │   │   ├── DeviceRepository.ts
+│   │   │   │   ├── EstablishmentGateway.ts
+│   │   │   │   ├── EstablishmentLeadGateway.ts
+│   │   │   │   ├── FormCompletionGateway.ts
+│   │   │   │   ├── JwtDecoder.ts
+│   │   │   │   ├── NafGateway.ts
+│   │   │   │   ├── NavigationGateway.ts
+│   │   │   │   ├── SearchGateway.ts
+│   │   │   │   └── TechnicalGateway.ts
+│   │   │   └── storeConfig
+│   │   │       ├── catchEpicError.ts
+│   │   │       ├── createTestStore.ts
+│   │   │       ├── redux.helpers.ts
+│   │   │       └── store.ts
+│   │   ├── fixes
+│   │   │   └── fixes.d.ts
+│   │   └── vite-env.d.ts
+│   ├── tsconfig.json
+│   └── vite.config.ts
+├── libs
+│   ├── html-templates
+│   │   ├── check_includes.sh
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── components
+│   │   │   │   └── email
+│   │   │   │       ├── button.ts
+│   │   │   │       ├── content.ts
+│   │   │   │       ├── footer.ts
+│   │   │   │       ├── greetings.ts
+│   │   │   │       ├── head.ts
+│   │   │   │       ├── header.ts
+│   │   │   │       ├── highlight.ts
+│   │   │   │       ├── index.ts
+│   │   │   │       └── legals.ts
+│   │   │   ├── configureGenerateHtmlFromTemplate.ts
+│   │   │   ├── createTemplatesByName.ts
+│   │   │   ├── helpers
+│   │   │   │   └── formatters.ts
+│   │   │   └── index.ts
+│   │   └── tsconfig.json
+│   ├── react-design-system
+│   │   ├── .babelrc.json
+│   │   ├── .gitignore
+│   │   ├── .storybook
+│   │   │   ├── main.js
+│   │   │   ├── preview-head.html
+│   │   │   └── preview.js
+│   │   ├── biome.json
+│   │   ├── immersionFacile.ts
+│   │   ├── index.ts
+│   │   ├── package.json
+│   │   ├── public
+│   │   │   └── assets
+│   │   │       └── images
+│   │   │           ├── candidat.webp
+│   │   │           ├── logo-if.svg
+│   │   │           └── structure-accueil.webp
+│   │   ├── src
+│   │   │   ├── config
+│   │   │   │   └── responsive
+│   │   │   │       ├── _breakpoints.scss
+│   │   │   │       ├── _index.scss
+│   │   │   │       └── _mixins.scss
+│   │   │   ├── helpers
+│   │   │   │   ├── flavor.ts
+│   │   │   │   └── layout.ts
+│   │   │   ├── immersionFacile
+│   │   │   │   ├── components
+│   │   │   │   │   ├── button-with-submenu
+│   │   │   │   │   │   ├── ButtonWithSubMenu.scss
+│   │   │   │   │   │   ├── ButtonWithSubMenu.stories.tsx
+│   │   │   │   │   │   ├── ButtonWithSubMenu.styles.ts
+│   │   │   │   │   │   ├── ButtonWithSubMenu.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── convention-agency-sub-section
+│   │   │   │   │   │   ├── ConventionAgencySubSection.scss
+│   │   │   │   │   │   ├── ConventionAgencySubSection.stories.tsx
+│   │   │   │   │   │   ├── ConventionAgencySubSection.styles.ts
+│   │   │   │   │   │   ├── ConventionAgencySubSection.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── convention-form-layout
+│   │   │   │   │   │   ├── ConventionFormLayout.scss
+│   │   │   │   │   │   ├── ConventionFormLayout.stories.tsx
+│   │   │   │   │   │   ├── ConventionFormLayout.styles.ts
+│   │   │   │   │   │   ├── ConventionFormLayout.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── convention-form-sidebar
+│   │   │   │   │   │   ├── ConventionFormSidebar.scss
+│   │   │   │   │   │   ├── ConventionFormSidebar.stories.tsx
+│   │   │   │   │   │   ├── ConventionFormSidebar.styles.ts
+│   │   │   │   │   │   ├── ConventionFormSidebar.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── convention-job-and-objective
+│   │   │   │   │   │   ├── ConventionJobAndObjective.scss
+│   │   │   │   │   │   ├── ConventionJobAndObjective.styles.ts
+│   │   │   │   │   │   ├── ConventionJobAndObjective.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── convention-renewed-informations
+│   │   │   │   │   │   ├── ConventionRenewedInformations.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── convention-summary
+│   │   │   │   │   │   ├── ConventionSummary.scss
+│   │   │   │   │   │   ├── ConventionSummary.stories.tsx
+│   │   │   │   │   │   ├── ConventionSummary.styles.ts
+│   │   │   │   │   │   ├── ConventionSummary.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── convention-total-hours
+│   │   │   │   │   │   ├── ConventionTotalHours.scss
+│   │   │   │   │   │   ├── ConventionTotalHours.styles.ts
+│   │   │   │   │   │   ├── ConventionTotalHours.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── convention-weekly-schedule
+│   │   │   │   │   │   ├── ConventionWeeklySchedule.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── copy-button
+│   │   │   │   │   │   ├── CopyButton.stories.tsx
+│   │   │   │   │   │   ├── CopyButton.tsx
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   └── useCopyButton.ts
+│   │   │   │   │   ├── crisp-chat
+│   │   │   │   │   │   ├── CrispChat.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── discussion-meta
+│   │   │   │   │   │   ├── DiscussionMeta.scss
+│   │   │   │   │   │   ├── DiscussionMeta.styles.ts
+│   │   │   │   │   │   ├── DiscussionMeta.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── document
+│   │   │   │   │   │   ├── Document.scss
+│   │   │   │   │   │   ├── Document.stories.tsx
+│   │   │   │   │   │   ├── Document.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── error-notifications
+│   │   │   │   │   │   ├── ErrorNotification.stories.tsx
+│   │   │   │   │   │   ├── ErrorNotifications.scss
+│   │   │   │   │   │   ├── ErrorNotifications.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── exchange-message
+│   │   │   │   │   │   ├── ExchangeMessage.scss
+│   │   │   │   │   │   ├── ExchangeMessage.styles.ts
+│   │   │   │   │   │   ├── ExchangeMessage.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── field
+│   │   │   │   │   │   ├── FieldDescription.stories.tsx
+│   │   │   │   │   │   ├── FieldDescription.tsx
+│   │   │   │   │   │   ├── ImmersionTextField.stories.tsx
+│   │   │   │   │   │   ├── ImmersionTextField.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── file
+│   │   │   │   │   │   ├── File.stories.tsx
+│   │   │   │   │   │   ├── File.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── fixed-stamp
+│   │   │   │   │   │   ├── FixedStamp.scss
+│   │   │   │   │   │   ├── FixedStamp.stories.tsx
+│   │   │   │   │   │   ├── FixedStamp.styles.ts
+│   │   │   │   │   │   ├── FixedStamp.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── footer
+│   │   │   │   │   │   ├── Footer.scss
+│   │   │   │   │   │   ├── Footer.stories.tsx
+│   │   │   │   │   │   ├── Footer.styles.ts
+│   │   │   │   │   │   ├── Footer.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── form-overlay
+│   │   │   │   │   │   ├── FormOverlay.scss
+│   │   │   │   │   │   ├── FormOverlay.styles.ts
+│   │   │   │   │   │   ├── FormOverlay.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── heading-section
+│   │   │   │   │   │   ├── HeadingSection.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── hero-header
+│   │   │   │   │   │   ├── HeroHeader.scss
+│   │   │   │   │   │   ├── HeroHeader.stories.tsx
+│   │   │   │   │   │   ├── HeroHeader.styles.ts
+│   │   │   │   │   │   ├── HeroHeader.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── inputs
+│   │   │   │   │   │   ├── AutocompleteAttributeValue.type.ts
+│   │   │   │   │   │   ├── Input.stories.tsx
+│   │   │   │   │   │   ├── Input.tsx
+│   │   │   │   │   │   ├── InputGroup.stories.tsx
+│   │   │   │   │   │   ├── InputGroup.tsx
+│   │   │   │   │   │   ├── TextArea.stories.tsx
+│   │   │   │   │   │   ├── TextArea.tsx
+│   │   │   │   │   │   ├── TextInputError.stories.tsx
+│   │   │   │   │   │   ├── TextInputError.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── label
+│   │   │   │   │   │   ├── Label.stories.tsx
+│   │   │   │   │   │   ├── Label.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── link
+│   │   │   │   │   │   ├── LinkHome.stories.tsx
+│   │   │   │   │   │   ├── LinkHome.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── loader
+│   │   │   │   │   │   ├── Loader.scss
+│   │   │   │   │   │   ├── Loader.stories.tsx
+│   │   │   │   │   │   ├── Loader.tsx
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   └── refresh-line.svg
+│   │   │   │   │   ├── login-form
+│   │   │   │   │   │   ├── LoginForm.scss
+│   │   │   │   │   │   ├── LoginForm.stories.tsx
+│   │   │   │   │   │   ├── LoginForm.styles.ts
+│   │   │   │   │   │   ├── LoginForm.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── main-wrapper
+│   │   │   │   │   │   ├── MainWrapper.scss
+│   │   │   │   │   │   ├── MainWrapper.stories.tsx
+│   │   │   │   │   │   ├── MainWrapper.styles.ts
+│   │   │   │   │   │   ├── MainWrapper.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── maintenance-callout
+│   │   │   │   │   │   ├── MaintenanceCallout.scss
+│   │   │   │   │   │   ├── MaintenanceCallout.stories.tsx
+│   │   │   │   │   │   ├── MaintenanceCallout.styles.ts
+│   │   │   │   │   │   ├── MaintenanceCallout.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── ministere-emploi-logo
+│   │   │   │   │   │   ├── MinistereEmploiLogo.scss
+│   │   │   │   │   │   ├── MinistereEmploiLogo.styles.ts
+│   │   │   │   │   │   ├── MinistereEmploiLogo.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── nav-card
+│   │   │   │   │   │   ├── NavCard.scss
+│   │   │   │   │   │   ├── NavCard.styles.ts
+│   │   │   │   │   │   ├── NavCard.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── notification-indicator
+│   │   │   │   │   │   ├── NotificationIndicator.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── nps-form
+│   │   │   │   │   │   ├── NPSForm.stories.tsx
+│   │   │   │   │   │   ├── NPSForm.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── over-footer
+│   │   │   │   │   │   ├── OverFooter.css
+│   │   │   │   │   │   ├── OverFooter.stories.tsx
+│   │   │   │   │   │   ├── OverFooter.tsx
+│   │   │   │   │   │   ├── OverFooterCol.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── page-header
+│   │   │   │   │   │   ├── PageHeader.scss
+│   │   │   │   │   │   ├── PageHeader.stories.tsx
+│   │   │   │   │   │   ├── PageHeader.styles.ts
+│   │   │   │   │   │   ├── PageHeader.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── pe-connect-button
+│   │   │   │   │   │   ├── PeConnectButton.scss
+│   │   │   │   │   │   ├── PeConnectButton.stories.tsx
+│   │   │   │   │   │   ├── PeConnectButton.tsx
+│   │   │   │   │   │   ├── assets
+│   │   │   │   │   │   │   └── img
+│   │   │   │   │   │   │       └── pe-connect-logo.svg
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── rich-dropdown
+│   │   │   │   │   │   ├── RichDropdown.scss
+│   │   │   │   │   │   ├── RichDropdown.styles.ts
+│   │   │   │   │   │   ├── RichDropdown.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── rich-table
+│   │   │   │   │   │   ├── RichTable.scss
+│   │   │   │   │   │   ├── RichTable.styles.ts
+│   │   │   │   │   │   ├── RichTable.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── rs-autocomplete
+│   │   │   │   │   │   ├── RSAutocomplete.scss
+│   │   │   │   │   │   ├── RSAutocomplete.styles.ts
+│   │   │   │   │   │   ├── RSAutocomplete.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── search-result-illustration
+│   │   │   │   │   │   ├── SearchResultIllustration.scss
+│   │   │   │   │   │   ├── SearchResultIllustration.styles.ts
+│   │   │   │   │   │   ├── SearchResultIllustration.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── section-accordion
+│   │   │   │   │   │   ├── SectionAccordion.scss
+│   │   │   │   │   │   ├── SectionAccordion.stories.tsx
+│   │   │   │   │   │   ├── SectionAccordion.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── section-convention-next-steps
+│   │   │   │   │   │   ├── SectionConventionNextSteps.scss
+│   │   │   │   │   │   ├── SectionConventionNextSteps.stories.tsx
+│   │   │   │   │   │   ├── SectionConventionNextSteps.styles.ts
+│   │   │   │   │   │   ├── SectionConventionNextSteps.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── section-faq
+│   │   │   │   │   │   ├── SectionFaq.scss
+│   │   │   │   │   │   ├── SectionFaq.stories.tsx
+│   │   │   │   │   │   ├── SectionFaq.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── section-highlight
+│   │   │   │   │   │   ├── SectionHighlight.scss
+│   │   │   │   │   │   ├── SectionHighlight.stories.tsx
+│   │   │   │   │   │   ├── SectionHighlight.styles.ts
+│   │   │   │   │   │   ├── SectionHighlight.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── section-stats
+│   │   │   │   │   │   ├── SectionStats.scss
+│   │   │   │   │   │   ├── SectionStats.stories.tsx
+│   │   │   │   │   │   ├── SectionStats.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── section-text-embed
+│   │   │   │   │   │   ├── SectionTextEmbed.scss
+│   │   │   │   │   │   ├── SectionTextEmbed.stories.tsx
+│   │   │   │   │   │   ├── SectionTextEmbed.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── separated-section
+│   │   │   │   │   │   ├── SeparatedSection.scss
+│   │   │   │   │   │   ├── SeparatedSection.styles.ts
+│   │   │   │   │   │   ├── SeparatedSection.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── skip-links
+│   │   │   │   │   │   ├── SkipLinks.stories.tsx
+│   │   │   │   │   │   ├── SkipLinks.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── tag
+│   │   │   │   │   │   ├── Tag.scss
+│   │   │   │   │   │   ├── Tag.styles.ts
+│   │   │   │   │   │   ├── Tag.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── task
+│   │   │   │   │   │   ├── Task.scss
+│   │   │   │   │   │   ├── Task.stories.tsx
+│   │   │   │   │   │   ├── Task.styles.ts
+│   │   │   │   │   │   ├── Task.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── task-summary
+│   │   │   │   │   │   ├── TaskSummary.scss
+│   │   │   │   │   │   ├── TaskSummary.stories.tsx
+│   │   │   │   │   │   ├── TaskSummary.styles.ts
+│   │   │   │   │   │   ├── TaskSummary.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── toastr
+│   │   │   │   │   │   ├── Toastr.scss
+│   │   │   │   │   │   ├── Toastr.styles.ts
+│   │   │   │   │   │   ├── Toastr.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   └── tooltip
+│   │   │   │   │       ├── Tooltip.stories.tsx
+│   │   │   │   │       ├── Tooltip.tsx
+│   │   │   │   │       └── index.ts
+│   │   │   │   ├── hooks
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── useDebounce.ts
+│   │   │   │   │   └── useScrollTo.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── storyPrefixes.ts
+│   │   │   │   └── utils.ts
+│   │   │   └── types.d.ts
+│   │   └── tsconfig.json
+│   └── scss-mapper
+│       ├── .eslintrc.json
+│       ├── bin
+│       │   └── cli.ts
+│       ├── dist
+│       │   ├── bin
+│       │   │   └── cli.js
+│       │   ├── index.js
+│       │   └── tests
+│       │       └── scss-mapper.unit.test.js
+│       ├── index.ts
+│       ├── jest.config.cjs
+│       ├── package.json
+│       ├── tests
+│       │   ├── data
+│       │   │   ├── responsive.scss
+│       │   │   └── test.scss
+│       │   └── scss-mapper.unit.test.ts
+│       └── tsconfig.json
+├── onboard.md
+├── package.json
+├── playwright-e2e
+│   ├── .gitignore
+│   ├── README.md
+│   ├── custom.config.ts
+│   ├── data
+│   │   └── storageState.json
+│   ├── e2e-args.ts
+│   ├── e2e-container.ts
+│   ├── e2e-env.ts
+│   ├── e2e-playwright.ts
+│   ├── package.json
+│   ├── playwright.config.ts
+│   ├── start-e2e.ts
+│   ├── tests
+│   │   ├── a11y
+│   │   │   └── axe.spec.ts
+│   │   ├── admin
+│   │   │   ├── apiConsumerWorkflow.spec.ts
+│   │   │   └── manageUser.spec.ts
+│   │   ├── agency
+│   │   │   └── agencyWorkflow.spec.ts
+│   │   ├── assessment
+│   │   │   └── assessmentWorkflow.spec.ts
+│   │   ├── auth.setup.ts
+│   │   ├── convention
+│   │   │   ├── conventionManageActions.spec.ts
+│   │   │   └── conventionWorkflow.spec.ts
+│   │   ├── dashboard
+│   │   │   ├── agencyWorkflow.spec.ts
+│   │   │   └── establishmentWorkflow.spec.ts
+│   │   ├── establishment
+│   │   │   ├── createNewEstablishment.ts
+│   │   │   ├── establishmentForm.utils.ts
+│   │   │   ├── establishmentNavigation.utils.ts
+│   │   │   ├── establishmentWorkflow.spec.ts
+│   │   │   ├── manageEstablishment.ts
+│   │   │   ├── modifyEstablishment.ts
+│   │   │   └── searchEstablishment.ts
+│   │   ├── navigation
+│   │   │   ├── brokenLinks.spec.ts
+│   │   │   └── homeNavigation.spec.ts
+│   │   ├── proConnect.spec.ts
+│   │   ├── search
+│   │   │   └── search.spec.ts
+│   │   └── user
+│   │       └── myAccountWorkflow.spec.ts
+│   ├── tsconfig.json
+│   └── utils
+│       ├── admin.ts
+│       ├── agency.ts
+│       ├── apiRoutes.ts
+│       ├── convention.ts
+│       ├── dashboard.ts
+│       ├── data.ts
+│       └── utils.ts
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
+├── shared
+│   ├── .swcrc
+│   ├── biome.json
+│   ├── check_includes.sh
+│   ├── jest.config.js
+│   ├── package.json
+│   ├── src
+│   │   ├── AbsoluteUrl.ts
+│   │   ├── AbsoluteUrl.unit.test.ts
+│   │   ├── Builder.ts
+│   │   ├── acquisition.dto.ts
+│   │   ├── address
+│   │   │   ├── address.dto.ts
+│   │   │   ├── address.response.ts
+│   │   │   ├── address.schema.ts
+│   │   │   └── address.unit.test.ts
+│   │   ├── admin
+│   │   │   ├── admin.dto.ts
+│   │   │   ├── admin.routes.ts
+│   │   │   ├── admin.schema.ts
+│   │   │   └── adminTabs.ts
+│   │   ├── agency
+│   │   │   ├── AgencyDtoBuilder.ts
+│   │   │   ├── agency.dto.ts
+│   │   │   ├── agency.schema.test.ts
+│   │   │   ├── agency.schema.ts
+│   │   │   ├── agency.utils.ts
+│   │   │   ├── publicAgency.dto.ts
+│   │   │   └── publicAgency.schema.ts
+│   │   ├── agency-group
+│   │   │   └── agencyGroup.ts
+│   │   ├── apiConsumer
+│   │   │   ├── ApiConsumer.ts
+│   │   │   └── apiConsumer.schema.ts
+│   │   ├── assertions.ts
+│   │   ├── assessment
+│   │   │   ├── AssessmentDtoBuilder.ts
+│   │   │   ├── assessment.dto.ts
+│   │   │   ├── assessment.helpers.ts
+│   │   │   ├── assessment.schema.test.ts
+│   │   │   └── assessment.schema.ts
+│   │   ├── auth
+│   │   │   ├── auth.dto.ts
+│   │   │   ├── auth.routes.ts
+│   │   │   ├── auth.schema.ts
+│   │   │   └── proConnect
+│   │   │       ├── proConnect.dto.ts
+│   │   │       └── proConnect.schema.ts
+│   │   ├── broadcast
+│   │   │   ├── broadcastFeedback.dto.ts
+│   │   │   └── broadcastFeedback.schema.ts
+│   │   ├── contactEstablishmentRequest
+│   │   │   ├── legacyContactEstablishmentRequest.dto.ts
+│   │   │   └── legacyContactEstablishmentRequest.schema.ts
+│   │   ├── convention
+│   │   │   ├── ConventionDto.unit.test.ts
+│   │   │   ├── ConventionDtoBuilder.ts
+│   │   │   ├── addConventionInput.ts
+│   │   │   ├── convention.dto.ts
+│   │   │   ├── convention.schema.ts
+│   │   │   ├── convention.ts
+│   │   │   ├── conventionPresentation.dto.ts
+│   │   │   ├── conventionPresentation.schema.ts
+│   │   │   ├── conventionPresentation.schema.unit.test.ts
+│   │   │   ├── conventionRefinements.ts
+│   │   │   ├── conventionStatusTransitions.ts
+│   │   │   ├── conventionTemplate.dto.ts
+│   │   │   ├── conventionTemplate.schema.ts
+│   │   │   ├── conventionTemplate.schema.unit.test.ts
+│   │   │   ├── conventionWithBroadcastFeedback.dto.ts
+│   │   │   ├── conventionWithBroadcastFeedback.schema.ts
+│   │   │   ├── conventionWithUnfinalizedAssessment.dto.ts
+│   │   │   ├── conventionWithUnfinalizedAssessment.schema.ts
+│   │   │   ├── saveConventionDraft.dto.ts
+│   │   │   ├── saveConventionDraft.schema.ts
+│   │   │   └── saveConventionDraft.schema.unit.test.ts
+│   │   ├── dashboard
+│   │   │   ├── dashboard.dto.ts
+│   │   │   ├── dashboard.schema.ts
+│   │   │   └── establishmentDashboardTabs.ts
+│   │   ├── discussion
+│   │   │   ├── DiscussionBuilder.ts
+│   │   │   ├── discussion.content.ts
+│   │   │   ├── discussion.dto.ts
+│   │   │   ├── discussion.helpers.ts
+│   │   │   ├── discussion.schema.ts
+│   │   │   └── discussion.unit.test.ts
+│   │   ├── domElementIds.ts
+│   │   ├── durations.ts
+│   │   ├── email
+│   │   │   ├── EmailParamsByEmailType.ts
+│   │   │   ├── advices.ts
+│   │   │   ├── defaultConventionFinalLegals.ts
+│   │   │   ├── email.content.ts
+│   │   │   ├── email.dto.ts
+│   │   │   ├── email.schema.ts
+│   │   │   ├── email.ts
+│   │   │   ├── email.unit.test.ts
+│   │   │   ├── emailTemplatesByName.ts
+│   │   │   ├── knownEmailsAddresses.ts
+│   │   │   ├── validateEmail.dto.ts
+│   │   │   └── validateEmail.schema.ts
+│   │   ├── envHelpers.ts
+│   │   ├── environment.ts
+│   │   ├── errors
+│   │   │   ├── errors.ts
+│   │   │   ├── ftConnectErrors.ts
+│   │   │   └── httpErrors.ts
+│   │   ├── establishment
+│   │   │   ├── bannedEstablishmentInformations.dto.ts
+│   │   │   ├── bannedEstablishmentInformations.schema.ts
+│   │   │   ├── businessComponents.schema.ts
+│   │   │   ├── establishment.dto.ts
+│   │   │   ├── establishment.schema.ts
+│   │   │   └── superEstablishment.ts
+│   │   ├── expectToEqual.ts
+│   │   ├── featureFlag
+│   │   │   ├── featureFlags.dto.ts
+│   │   │   ├── featureFlags.schema.ts
+│   │   │   └── featureFlags.unit.test.ts
+│   │   ├── federatedIdentities
+│   │   │   ├── federatedIdentity.dto.ts
+│   │   │   └── federatedIdentity.schema.ts
+│   │   ├── file
+│   │   │   ├── file.dto.ts
+│   │   │   ├── file.validators.test.ts
+│   │   │   ├── file.validators.ts
+│   │   │   ├── htmlToPdf.ts
+│   │   │   └── htmlToPdf.unit.test.ts
+│   │   ├── filters.ts
+│   │   ├── formEstablishment
+│   │   │   ├── FormEstablishment.dto.ts
+│   │   │   ├── FormEstablishment.schema.ts
+│   │   │   ├── FormEstablishment.schema.unit.test.ts
+│   │   │   └── FormEstablishmentDtoBuilder.ts
+│   │   ├── geoPosition
+│   │   │   ├── geoPosition.dto.ts
+│   │   │   └── geoPosition.schema.ts
+│   │   ├── group
+│   │   │   ├── group.dto.ts
+│   │   │   └── group.schema.ts
+│   │   ├── headers.ts
+│   │   ├── http
+│   │   │   └── httpStatus.ts
+│   │   ├── httpClient
+│   │   │   └── httpErrors.schema.ts
+│   │   ├── inboundEmailParsing
+│   │   │   ├── brevoInbound.dto.ts
+│   │   │   ├── brevoInbound.schema.ts
+│   │   │   ├── inboundEmailParsing.unit.test.ts
+│   │   │   └── inboundEmailParsing.utils.ts
+│   │   ├── index.ts
+│   │   ├── naf
+│   │   │   ├── naf.dto.ts
+│   │   │   ├── naf.routes.ts
+│   │   │   └── naf.schema.ts
+│   │   ├── notifications
+│   │   │   ├── notifications.dto.ts
+│   │   │   └── notifications.schema.ts
+│   │   ├── npsForms.ts
+│   │   ├── pagination
+│   │   │   ├── pagination.dto.ts
+│   │   │   ├── pagination.schema.ts
+│   │   │   └── pagination.ts
+│   │   ├── phone
+│   │   │   ├── phone.dto.ts
+│   │   │   ├── phone.schema.ts
+│   │   │   └── phone.schema.unit.test.ts
+│   │   ├── pipeWithValue.ts
+│   │   ├── ramdaExtensions
+│   │   │   ├── notEqual.ts
+│   │   │   ├── path.ts
+│   │   │   └── path.unit.test.ts
+│   │   ├── remoteWorkMode
+│   │   │   ├── remoteWorkMode.dto.ts
+│   │   │   └── remoteWorkMode.schema.ts
+│   │   ├── role
+│   │   │   ├── role.dto.ts
+│   │   │   ├── role.schema.ts
+│   │   │   └── role.utils.ts
+│   │   ├── rome.ts
+│   │   ├── romeAndAppellationDtos
+│   │   │   ├── rome.unit.test.ts
+│   │   │   ├── romeAndAppellation.dto.ts
+│   │   │   └── romeAndAppellation.schema.ts
+│   │   ├── routes
+│   │   │   ├── address.routes.ts
+│   │   │   ├── agency.routes.ts
+│   │   │   ├── convention.routes.ts
+│   │   │   ├── establishment.routes.ts
+│   │   │   ├── establishmentLeadRoutes.ts
+│   │   │   ├── formCompletion.routes.ts
+│   │   │   ├── route.utils.ts
+│   │   │   ├── routeParams
+│   │   │   │   ├── convention.ts
+│   │   │   │   └── standardPage.ts
+│   │   │   ├── routes.ts
+│   │   │   ├── technicalRoutes.ts
+│   │   │   └── valueSerializer.ts
+│   │   ├── schedule
+│   │   │   ├── Schedule.dto.ts
+│   │   │   ├── Schedule.schema.ts
+│   │   │   ├── ScheduleDtoBuilder.ts
+│   │   │   ├── ScheduleUtils.ts
+│   │   │   └── ScheduleUtils.unit.test.ts
+│   │   ├── search
+│   │   │   ├── Offer.dto.ts
+│   │   │   ├── Offer.schema.ts
+│   │   │   ├── SearchQueryParams.dto.ts
+│   │   │   ├── SearchQueryParams.schema.ts
+│   │   │   ├── search.routes.ts
+│   │   │   ├── search.utils.ts
+│   │   │   ├── searchText.schema.ts
+│   │   │   └── searchText.unit.test.ts
+│   │   ├── shortLink
+│   │   │   └── shortLink.dto.ts
+│   │   ├── siret
+│   │   │   ├── siret.schema.ts
+│   │   │   ├── siret.ts
+│   │   │   └── siret.unit.test.ts
+│   │   ├── siretAndAppellation
+│   │   │   ├── SiretAndAppellation.dto.ts
+│   │   │   └── SiretAndAppellation.schema.ts
+│   │   ├── siretAndRome
+│   │   │   ├── SiretAndRome.dto.ts
+│   │   │   └── SiretAndRome.schema.ts
+│   │   ├── sms
+│   │   │   ├── sms.schema.ts
+│   │   │   ├── sms.schema.unit.test.ts
+│   │   │   └── smsTemplateByName.ts
+│   │   ├── tallyForm.ts
+│   │   ├── test.helpers.ts
+│   │   ├── tokens
+│   │   │   ├── jwt.dto.ts
+│   │   │   ├── jwt.schema.ts
+│   │   │   ├── jwt.utils.ts
+│   │   │   └── payload.dto.ts
+│   │   ├── typeFlavors.ts
+│   │   ├── typeGuard.ts
+│   │   ├── user
+│   │   │   ├── user.builder.ts
+│   │   │   ├── user.dto.ts
+│   │   │   ├── user.schema.ts
+│   │   │   └── user.test.ts
+│   │   ├── utils
+│   │   │   ├── address.ts
+│   │   │   ├── beneficiary.ts
+│   │   │   ├── beneficiary.unit.test.ts
+│   │   │   ├── csv.ts
+│   │   │   ├── date.ts
+│   │   │   ├── date.unit.test.ts
+│   │   │   ├── durations.ts
+│   │   │   ├── establishment.ts
+│   │   │   ├── json.ts
+│   │   │   ├── postalCode.ts
+│   │   │   ├── postalCode.unit.test.ts
+│   │   │   ├── queryParams.ts
+│   │   │   ├── queryParams.unit.test.ts
+│   │   │   ├── sanitizeHtmlForPdf.ts
+│   │   │   ├── sanitizeHtmlForPdf.unit.test.ts
+│   │   │   ├── searchResult.ts
+│   │   │   ├── string.schema.ts
+│   │   │   ├── string.ts
+│   │   │   ├── string.unit.test.ts
+│   │   │   ├── toDotNotation.ts
+│   │   │   ├── toDotNotation.unit.test.ts
+│   │   │   └── uuid.ts
+│   │   ├── utils.ts
+│   │   ├── utils.unit.test.ts
+│   │   ├── zodUtils.ts
+│   │   └── zodUtils.unit.test.ts
+│   └── tsconfig.json
+└── turbo.json
+526 directories, 2612 files
