@@ -1,0 +1,99 @@
+.
+├── .env.example
+├── .github
+│   ├── codeql-config.yml
+│   ├── dependabot.yml
+│   └── workflows
+│       └── ci.yml
+├── .gitignore
+├── .gitleaksignore
+├── .pre-commit-config.yaml
+├── ARCHITECTURE.md
+├── CLAUDE.md
+├── EXPLAINER.md
+├── README.md
+├── RESOURCES.md
+├── bin
+│   └── setup.sh
+├── infra
+│   ├── 01-bootstrap.sh
+│   ├── 02-secrets.sh
+│   ├── 03-job-definition.sh
+│   ├── 04-container.sh
+│   ├── 05-init-db.sh
+│   ├── README.md
+│   └── lib.sh
+├── jobsctl
+│   ├── pyproject.toml
+│   ├── src
+│   │   └── jobsctl
+│   │       ├── __init__.py
+│   │       └── cli.py
+│   └── uv.lock
+├── orchestrator
+│   ├── Dockerfile
+│   ├── alembic
+│   │   ├── env.py
+│   │   ├── script.py.mako
+│   │   └── versions
+│   │       └── 0001_initial.py
+│   ├── alembic.ini
+│   ├── pyproject.toml
+│   └── src
+│       └── orchestrator
+│           ├── __init__.py
+│           ├── auth.py
+│           ├── config.py
+│           ├── db.py
+│           ├── dispatch.py
+│           ├── main.py
+│           ├── models.py
+│           ├── reconcile.py
+│           ├── routes
+│           │   ├── __init__.py
+│           │   ├── admin.py
+│           │   ├── pipelines.py
+│           │   └── runs.py
+│           ├── s3.py
+│           ├── scaleway.py
+│           └── schemas.py
+├── pipelines
+│   ├── di-discover.json
+│   ├── di-extract-strict-haiku.json
+│   ├── di-extract-strict-sonnet.json
+│   ├── di-extract-strict.json
+│   ├── di-extract.json
+│   ├── hello.json
+│   ├── meta-di-gold.example.md
+│   ├── meta-di-schema.v0.2.json
+│   └── meta-di.md
+├── pyproject.toml
+├── requirements-dev.txt
+├── scripts
+│   ├── _resync_orchestrator_secrets.py
+│   ├── deploy_port_driver_cron.sh
+│   ├── di_compare_runs.py
+│   ├── di_discover_launch.py
+│   ├── di_extract_launch.py
+│   ├── di_gold_seed.py
+│   ├── di_prep.py
+│   ├── di_profile.py
+│   ├── di_structures_profile.py
+│   ├── di_structures_segment.py
+│   ├── di_t1_finalize.py
+│   ├── di_t1_launch.py
+│   ├── di_t1_merge.py
+│   ├── di_t1_prep.py
+│   ├── di_validate_schema.py
+│   ├── drive_port_loops.py
+│   └── register_port_loops.py
+└── worker
+    ├── Dockerfile
+    ├── pyproject.toml
+    └── src
+        └── worker
+            ├── __init__.py
+            ├── __main__.py
+            ├── client.py
+            └── runner.py
+19 directories, 79 files
