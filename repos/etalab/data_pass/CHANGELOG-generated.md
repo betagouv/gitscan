@@ -1,32 +1,34 @@
-## Changelog : data_pass (30 derniers jours, au 20 juillet 2026)
+## Changelog : data_pass (30 derniers jours, au 23 juillet 2026)
 
 ### Résumé
-Les dernières mises à jour de data_pass se concentrent sur l'amélioration de l'expérience utilisateur, notamment avec l'ajout de nouvelles fonctionnalités pour la gestion des définitions d'autorisations et des cas d'usage, ainsi que des corrections et des améliorations de la documentation. Des optimisations techniques ont également été apportées, notamment des mises à jour de dépendances et des refactorings pour améliorer la maintenabilité du code.
+Les dernières mises à jour de data_pass se concentrent sur l'ajout de nouveaux éditeurs et formulaires, l'amélioration de l'expérience utilisateur avec l'ajout de pages d'informations et de navigation (breadcrumbs), et le renforcement de la sécurité avec une durée de session réduite. Des corrections et améliorations techniques ont également été apportées pour stabiliser l'application et faciliter le développement futur.
 
 ### Évolutions fonctionnelles
-- Ajout de la gestion des définitions d'autorisations : affichage de la liste, recherche, édition et création. ([#1632](https://github.com/etalab/data_pass/pull/1632), [#1637](https://github.com/etalab/data_pass/pull/1637), [#1640](https://github.com/etalab/data_pass/pull/1640), [#1645](https://github.com/etalab/data_pass/pull/1645))
-- Implémentation de l'API pour les éditeurs EAJE Particulier. ([#1690](https://github.com/etalab/data_pass/pull/1690))
-- Ajout d'un scope pour l'allocation de rentrée scolaire. ([#1676](https://github.com/etalab/data_pass/pull/1676), [#1684](https://github.com/etalab/data_pass/pull/1684))
-- Amélioration des wordings pour les cas d'usage EAJE pour l'API particulier. ([#1647](https://github.com/etalab/data_pass/pull/1647))
-- Ajout de la démarche DDMariage au formulaire HubEE DILA (puis revert). ([#1654](https://github.com/etalab/data_pass/pull/1654), [#1666](https://github.com/etalab/data_pass/pull/1666))
-- Amélioration de la validation et de l'affichage des erreurs pour les communes CNOUS. ([#1644](https://github.com/etalab/data_pass/pull/1644))
-- Refonte des cadres juridiques API Particulier pour une meilleure factorisation et uniformisation. ([#1605](https://github.com/etalab/data_pass/pull/1605))
-- Ajout d'une page temporaire pour les emails de définition. ([#1674](https://github.com/etalab/data_pass/pull/1674))
-- Ajout de breadcrumbs pour une meilleure navigation. ([#1673](https://github.com/etalab/data_pass/pull/1673))
+- Ajout de l'éditeur Hoptis Software et de ses formulaires API Particulier.
+- Introduction d'un nouveau type de formulaire : API Particulier via Démarche numérique ([#1682](https://github.com/etalab/data_pass/issues/1682)).
+- Ajout de l'éditeur CNAV et de la démarche allocation rentrée scolaire.
+- Ajout de la démarche DDMariage au formulaire HubEE DILA (puis revert).
+- Amélioration des wordings pour la proactivité pour les étudiants boursiers.
+- Mise à jour des introductions des services CISIRH.
+- Ajout d'une page listant les cas d'usages.
+- Ajout d'une page permettant d'afficher une définition.
+- Ajout d'une page permettant de modifier une définition (en développement).
+- Amélioration de la navigation avec l'ajout de breadcrumbs.
+- Refonte des cadres juridiques API Particulier pour une meilleure factorisation et uniformisation ([#1605](https://github.com/etalab/data_pass/issues/1605)).
 
 ### Évolutions techniques
-- Migration du scope TVA d'API Entreprise de VIES vers la DGFIP.
-- Standardisation des migrations de renommage de scope avec l'ajout de `ScopeMigrationService`.
-- Ajout d'un module `FeatureFlag` centralisé et de sa documentation.
-- Correction d'un problème de shadowing des requêtes dans les alertes utilisateur.
-- Correction d'un bug lié à la restauration incorrecte d'une étape lors de l'annulation d'une réouverture.
-- Amélioration de la gestion de la session ProConnect (durée de vie réduite à 12h).
-- Suppression du `france_connect_authorization_id` lors de la suppression d'une modalité FranceConnect. ([#1683](https://github.com/etalab/data_pass/pull/1683))
+- Durcissement de la sécurité des sessions avec une durée maximale de 12 heures.
+- Correction d'un problème de shadowing des requêtes UserAlerts.
+- Correction d'un bug lié au restore d'autorisation après annulation.
+- Implémentation d'un module FeatureFlag centralisé pour une meilleure gestion des fonctionnalités.
+- Mise à jour des dépendances : Rubocop, CSS Parser, YARD, actions GitHub (cache, checkout).
+- Amélioration de la purge de l'identifiant d'autorisation FranceConnect lors de la suppression de la modalité.
+- Correction d'une apostrophe dans le step "je démarre une nouvelle demande" (DILA).
 
 ### Autres changements
-- Mise à jour de diverses dépendances (Rubocop, CSS Parser, Faraday, Rails Pulse, etc.).
-- Amélioration de la documentation concernant la gestion de session ProConnect.
-- Amélioration des tests et du linting du code.
-- Ajout de tests pour les composants.
-- Amélioration de la configuration et de l'organisation du code.
-- Mise à jour de l'introduction des services CISIRH. ([#1685](https://github.com/etalab/data_pass/pull/1685))
+- Ajout d'une page temporaire pour les emails de définition.
+- Amélioration des marges de l'en-tête lorsque aucune image n'est présente.
+- Suppression de l'affichage du request de ViewComponent dans UserAlertsComponent.
+- Correction de la majuscule de "DDmariage".
+- Renommage des solutions logicielles Familea Diabolo et Mikado.
+- Ajout de l'éditeur Enfance et Petite Enfance.
