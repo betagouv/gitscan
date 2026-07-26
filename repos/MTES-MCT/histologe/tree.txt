@@ -59,6 +59,7 @@
 │   │   ├── GUIDE-QUI-REPARE-QUI-ENTRETIENT-Ministere2016-1.pdf
 │   │   ├── Grille-visite.pdf
 │   │   ├── Lettre-information-proprietaire-bailleur_A-COMPLETER.pdf
+│   │   ├── import_arrete_modele.csv
 │   │   └── zone_modele.csv
 │   ├── json
 │   │   └── Signalement
@@ -83,12 +84,16 @@
 │   │   │   ├── controllers
 │   │   │   │   ├── activate_account
 │   │   │   │   │   └── activate_account.js
+│   │   │   │   ├── back_addresses_history
+│   │   │   │   │   └── back_addresses_history.js
 │   │   │   │   ├── back_api_user
 │   │   │   │   │   └── back_api_user.js
 │   │   │   │   ├── back_archived_signalements
 │   │   │   │   │   └── back_archived_signalements_reactiver.js
 │   │   │   │   ├── back_archived_users_index
 │   │   │   │   │   └── back_archived_users_index.js
+│   │   │   │   ├── back_arrete_import
+│   │   │   │   │   └── back_arrete_import.js
 │   │   │   │   ├── back_auto_affectation_rule
 │   │   │   │   │   └── form_auto_affectation_rule.js
 │   │   │   │   ├── back_bailleur_view
@@ -101,8 +106,6 @@
 │   │   │   │   │   ├── pagination_handler.js
 │   │   │   │   │   ├── sort_handler.js
 │   │   │   │   │   └── tabs_loader.js
-│   │   │   │   ├── back_histo_address
-│   │   │   │   │   └── back_histo_address.js
 │   │   │   │   ├── back_interconnexion_index
 │   │   │   │   │   └── back_interconnexion_index.js
 │   │   │   │   ├── back_partner_index
@@ -124,6 +127,7 @@
 │   │   │   │   │   ├── form_acceptation_refus.js
 │   │   │   │   │   ├── form_cloture_modal.js
 │   │   │   │   │   ├── form_upload_documents.js
+│   │   │   │   │   ├── personal_note.js
 │   │   │   │   │   ├── toggle-suivi-auto.js
 │   │   │   │   │   └── zip_selection_photos.js
 │   │   │   │   ├── back_territory_management_arrete_index
@@ -165,7 +169,8 @@
 │   │   │       │   ├── component_search_autocomplete.js
 │   │   │       │   ├── component_search_checkbox.js
 │   │   │       │   ├── component_select_all_checkbox.js
-│   │   │       │   └── pick-localisation.js
+│   │   │       │   ├── pick-localisation.js
+│   │   │       │   └── rnb-map-controller.js
 │   │   │       ├── cookie
 │   │   │       │   ├── cookie_banner.js
 │   │   │       │   ├── cookie_matomo_tracking.js
@@ -188,7 +193,23 @@
 │   │   │           ├── responsive_array.js
 │   │   │           └── tabs_manager.js
 │   │   └── vue
+│   │       ├── addresses-history.ts
 │   │       ├── components
+│   │       │   ├── addresses-history
+│   │       │   │   ├── AddressesHistory.vue
+│   │       │   │   ├── api.ts
+│   │       │   │   ├── components
+│   │       │   │   │   ├── AddressesHistoryHeader.vue
+│   │       │   │   │   ├── AddressesHistoryList.vue
+│   │       │   │   │   ├── AddressesHistoryListFilters.vue
+│   │       │   │   │   ├── AddressesHistoryMap.vue
+│   │       │   │   │   └── AddressesHistoryMapFilters.vue
+│   │       │   │   ├── composables
+│   │       │   │   │   ├── useAddressesHistoryFilters.ts
+│   │       │   │   │   └── useAddressesHistoryStore.ts
+│   │       │   │   ├── services
+│   │       │   │   │   └── activeFiltersBuilder.ts
+│   │       │   │   └── types.ts
 │   │       │   ├── common
 │   │       │   │   ├── AppAutoComplete.vue
 │   │       │   │   ├── AppNumber.vue
@@ -200,14 +221,20 @@
 │   │       │   │   ├── HistoInterfaceSelectOption.ts
 │   │       │   │   ├── HistoMultiSelect.vue
 │   │       │   │   ├── HistoSelect.vue
-│   │       │   │   └── external
-│   │       │   │       ├── HistoDataTable.vue
-│   │       │   │       ├── HistoDatePicker.vue
-│   │       │   │       └── chartjs
-│   │       │   │           ├── HistoChartBar.vue
-│   │       │   │           ├── HistoChartDoughnut.vue
-│   │       │   │           ├── HistoChartLine.vue
-│   │       │   │           └── HistoChartPie.vue
+│   │       │   │   ├── external
+│   │       │   │   │   ├── HistoDataTable.vue
+│   │       │   │   │   ├── HistoDatePicker.vue
+│   │       │   │   │   └── chartjs
+│   │       │   │   │       ├── HistoChartBar.vue
+│   │       │   │   │       ├── HistoChartDoughnut.vue
+│   │       │   │   │       ├── HistoChartLine.vue
+│   │       │   │   │       └── HistoChartPie.vue
+│   │       │   │   ├── interfaces
+│   │       │   │   │   ├── SearchInterfaceSelectOption.ts
+│   │       │   │   │   └── queryParameter.ts
+│   │       │   │   └── utils
+│   │       │   │       ├── commonRequests.ts
+│   │       │   │       └── variableTester.ts
 │   │       │   ├── front-stats
 │   │       │   │   ├── TheHistoAppFrontStats.vue
 │   │       │   │   ├── TheHistoFrontStatsDetailsItem.vue
@@ -287,9 +314,7 @@
 │   │       │   │   │   ├── SignalementViewModalEditSearch.vue
 │   │       │   │   │   └── SignalementViewModalSaveSearch.vue
 │   │       │   │   ├── interfaces
-│   │       │   │   │   ├── SearchInterfaceSelectOption.ts
 │   │       │   │   │   ├── filters.ts
-│   │       │   │   │   ├── queryParameter.ts
 │   │       │   │   │   ├── signalementItem.ts
 │   │       │   │   │   └── signalementMarkerOptions.ts
 │   │       │   │   ├── requests.ts
@@ -313,9 +338,7 @@
 │   │       ├── index.ts
 │   │       ├── signalement-carto.ts
 │   │       ├── signalement-form.ts
-│   │       ├── signalement-list.ts
-│   │       └── utils
-│   │           └── variableTester.ts
+│   │       └── signalement-list.ts
 │   ├── shims-tsx.d.ts
 │   ├── shims-vue.d.ts
 │   ├── styles
@@ -416,7 +439,7 @@
 ├── grumphp.yml
 ├── migrations
 │   ├── .gitignore
-│   └── Version*.php  (116 files)
+│   └── Version*.php  (122 files)
 ├── package-lock.json
 ├── package.json
 ├── phpstan.neon
@@ -612,6 +635,7 @@
 │   │   │   ├── VisiteCreateController.php
 │   │   │   └── VisiteUploadDocumentsController.php
 │   │   ├── Back
+│   │   │   ├── AddressesHistoryController.php
 │   │   │   ├── AdminTerritoryFilesController.php
 │   │   │   ├── AffectationController.php
 │   │   │   ├── AnnuaireController.php
@@ -635,7 +659,6 @@
 │   │   │   ├── DashboardController.php
 │   │   │   ├── DashboardTabPanelController.php
 │   │   │   ├── ExportSignalementController.php
-│   │   │   ├── HistoAddressController.php
 │   │   │   ├── HistoryEntryController.php
 │   │   │   ├── InterconnexionController.php
 │   │   │   ├── MetabaseController.php
@@ -653,6 +676,7 @@
 │   │   │   ├── SignalementFileGenerateZipController.php
 │   │   │   ├── SignalementInjonctionController.php
 │   │   │   ├── SignalementListController.php
+│   │   │   ├── SignalementNoteController.php
 │   │   │   ├── SignalementSameAddressController.php
 │   │   │   ├── SignalementVisitesController.php
 │   │   │   ├── SitemapController.php
@@ -710,6 +734,7 @@
 │   │   │   ├── SignalementDraft.yml
 │   │   │   ├── Situation.yml
 │   │   │   ├── Suivi.yml
+│   │   │   ├── SuiviDelayed.yml
 │   │   │   ├── Tag.yml
 │   │   │   ├── Territory.yml
 │   │   │   ├── User.yml
@@ -761,12 +786,15 @@
 │   │       ├── LoadSignalementDraft.php
 │   │       ├── LoadSituationData.php
 │   │       ├── LoadSuiviData.php
+│   │       ├── LoadSuiviDelayedData.php
 │   │       ├── LoadTagData.php
 │   │       ├── LoadTerritoryData.php
 │   │       ├── LoadUserApiPermission.php
 │   │       ├── LoadUserData.php
 │   │       └── LoadZoneData.php
 │   ├── Dto
+│   │   ├── AddressesHistoryListView.php
+│   │   ├── AddressesHistorySignalementView.php
 │   │   ├── AgentSelection.php
 │   │   ├── Api
 │   │   │   ├── Model
@@ -807,6 +835,7 @@
 │   │   ├── ReponseInjonctionBailleur.php
 │   │   ├── Request
 │   │   │   ├── Signalement
+│   │   │   │   ├── AddressesHistorySearchQuery.php
 │   │   │   │   ├── AdresseOccupantRequest.php
 │   │   │   │   ├── CompositionLogementRequest.php
 │   │   │   │   ├── CoordonneesAgenceRequest.php
@@ -902,6 +931,7 @@
 │   │   │   ├── SignalementDraftStatus.php
 │   │   │   ├── SignalementStatus.php
 │   │   │   ├── SuiviCategory.php
+│   │   │   ├── SuiviDelayedType.php
 │   │   │   ├── TiersInvitationStatus.php
 │   │   │   ├── TypeArrete.php
 │   │   │   ├── UserStatus.php
@@ -920,6 +950,8 @@
 │   │   │   └── TypeCompositionLogement.php
 │   │   ├── Notification.php
 │   │   ├── Partner.php
+│   │   ├── PersonalNote.php
+│   │   ├── PersonalTag.php
 │   │   ├── PopNotification.php
 │   │   ├── ServiceSecoursRoute.php
 │   │   ├── Signalement.php
@@ -928,6 +960,7 @@
 │   │   ├── SignalementUsager.php
 │   │   ├── Situation.php
 │   │   ├── Suivi.php
+│   │   ├── SuiviDelayed.php
 │   │   ├── SuiviFile.php
 │   │   ├── Tag.php
 │   │   ├── Territory.php
@@ -1004,6 +1037,7 @@
 │   │   └── Suivi
 │   │       └── UsagerNotificationRequiredException.php
 │   ├── Factory
+│   │   ├── AddressesHistoryListViewFactory.php
 │   │   ├── Api
 │   │   │   ├── FileFactory.php
 │   │   │   ├── SignalementResponseFactory.php
@@ -1036,6 +1070,7 @@
 │   │   ├── SignalementSearchQueryFactory.php
 │   │   ├── SignalementServiceSecoursFactory.php
 │   │   ├── SignalementVisiteRequestFactory.php
+│   │   ├── SuiviDelayedFactory.php
 │   │   ├── TiersInvitationFactory.php
 │   │   └── UserFactory.php
 │   ├── Form
@@ -1054,6 +1089,7 @@
 │   │   │   └── PolygonToWktTransformer.php
 │   │   ├── DemandeLienSignalementType.php
 │   │   ├── EditTagType.php
+│   │   ├── ImportArreteType.php
 │   │   ├── MessageBailleurType.php
 │   │   ├── MessageUsagerType.php
 │   │   ├── PartnerPerimetreType.php
@@ -1215,8 +1251,12 @@
 │   │   ├── JobEventRepository.php
 │   │   ├── NotificationRepository.php
 │   │   ├── PartnerRepository.php
+│   │   ├── PersonalNoteRepository.php
+│   │   ├── PersonalTagRepository.php
 │   │   ├── PopNotificationRepository.php
 │   │   ├── Query
+│   │   │   ├── Address
+│   │   │   │   └── AddressesHistoryQuery.php
 │   │   │   ├── Arrete
 │   │   │   │   └── ArreteQuery.php
 │   │   │   ├── Commune
@@ -1260,6 +1300,7 @@
 │   │   ├── SignalementRepository.php
 │   │   ├── SignalementUsagerRepository.php
 │   │   ├── SituationRepository.php
+│   │   ├── SuiviDelayedRepository.php
 │   │   ├── SuiviFileRepository.php
 │   │   ├── SuiviRepository.php
 │   │   ├── TagRepository.php
@@ -1420,7 +1461,6 @@
 │   │   ├── History
 │   │   │   ├── EntityComparator.php
 │   │   │   └── HistoryEntryBuffer.php
-│   │   ├── HtmlTargetContentsService.php
 │   │   ├── Import
 │   │   │   ├── AutoAffectationRule
 │   │   │   │   ├── AutoAffectationRuleHeader.php
@@ -1665,6 +1705,8 @@
 │   │   │   ├── SignalementInputValueMapper.php
 │   │   │   ├── SignalementProfileOccupantMapper.php
 │   │   │   ├── SignalementQualificationNde.php
+│   │   │   ├── SignalementSameAddressArreteFinder.php
+│   │   │   ├── SignalementUpdateService.php
 │   │   │   ├── Suivi
 │   │   │   │   ├── HistoriqueEvenementsGenerator.php
 │   │   │   │   ├── SuiviCategoryMapper.php
@@ -1675,6 +1717,7 @@
 │   │   │   │   └── SuiviTransformerService.php
 │   │   │   ├── VisiteNotifier.php
 │   │   │   └── ZipcodeProvider.php
+│   │   ├── SignalementAddressContentService.php
 │   │   ├── Statistics
 │   │   │   ├── BatimentDesordresStatisticProvider.php
 │   │   │   ├── CriticitePercentStatisticProvider.php
@@ -1844,6 +1887,9 @@
 │   │       └── signalement-typecomposition-fenetres.html.twig
 │   ├── back
 │   │   ├── _nav_bo_profile_link.html.twig
+│   │   ├── addresses-history
+│   │   │   ├── carte-facile.html.twig
+│   │   │   └── index.html.twig
 │   │   ├── admin-territory-files
 │   │   │   ├── _table-list-results.html.twig
 │   │   │   ├── _title-list-results.html.twig
@@ -1858,6 +1904,7 @@
 │   │   ├── arrete
 │   │   │   ├── _table-list-results.html.twig
 │   │   │   ├── _title-list-results.html.twig
+│   │   │   ├── import.html.twig
 │   │   │   └── index.html.twig
 │   │   ├── auto-affectation-rule
 │   │   │   ├── _form.html.twig
@@ -1948,8 +1995,6 @@
 │   │   │           ├── _header_dossier_nouveaux.html.twig
 │   │   │           └── tab_dossier_nouveaux.html.twig
 │   │   ├── header_main_menu.html.twig
-│   │   ├── histo-address
-│   │   │   └── index.html.twig
 │   │   ├── history-entry
 │   │   │   └── details.html.twig
 │   │   ├── indicateurs_pnlhi
@@ -2046,9 +2091,12 @@
 │   │   │   │   ├── photos-documents.html.twig
 │   │   │   │   ├── suivis.html.twig
 │   │   │   │   ├── tabs
+│   │   │   │   │   ├── _tab-notes-personal-note.html.twig
+│   │   │   │   │   ├── _tab-notes-personal-tags.html.twig
 │   │   │   │   │   ├── tab-activite.html.twig
 │   │   │   │   │   ├── tab-documents.html.twig
 │   │   │   │   │   ├── tab-foyer.html.twig
+│   │   │   │   │   ├── tab-notes.html.twig
 │   │   │   │   │   └── tab-situation.html.twig
 │   │   │   │   ├── tabs.html.twig
 │   │   │   │   ├── user-declaration-desordre-item.html.twig
@@ -2298,7 +2346,7 @@
 │   │   │   │   ├── RemindPendingDraftsCommandTest.php
 │   │   │   │   ├── ResetInjonctionNoResponseCommandTest.php
 │   │   │   │   ├── SendDailyEmailsCommandTest.php
-│   │   │   │   └── SendSuiviWaitingNotificationCommandTest.php
+│   │   │   │   └── SendSuiviWaitingNotificationAndDelayedCommandTest.php
 │   │   │   ├── LoadEpciCommandTest.php
 │   │   │   ├── MergePartnersCommandTest.php
 │   │   │   └── NotifyVisitsCommandTest.php
@@ -2427,6 +2475,8 @@
 │   │   │   ├── FileRepositoryTest.php
 │   │   │   ├── PartnerRepositoryTest.php
 │   │   │   ├── Query
+│   │   │   │   ├── Address
+│   │   │   │   │   └── AddressesHistoryQueryTest.php
 │   │   │   │   ├── Dashboard
 │   │   │   │   │   ├── DossiersActiviteRecenteQueryTest.php
 │   │   │   │   │   ├── DossiersAvecRelanceSansReponseTest.php
@@ -2436,6 +2486,7 @@
 │   │   │   │   │   ├── KpiQueryTest.php
 │   │   │   │   │   └── SignalementsSansAffectationAccepteeQueryTest.php
 │   │   │   │   ├── Interconnection
+│   │   │   │   │   ├── JobEventQueryTest.php
 │   │   │   │   │   └── JobEventRepositoryTest.php
 │   │   │   │   ├── SignalementList
 │   │   │   │   │   ├── ExportIterableQueryTest.php
@@ -2544,6 +2595,8 @@
 │   │   │   ├── UpdateSignalementDocumentFieldsCommandTest.php
 │   │   │   └── UpdateSignalementGeolocalisationCommandTest.php
 │   │   ├── Dto
+│   │   │   ├── AddressesHistoryListViewTest.php
+│   │   │   ├── AddressesHistorySignalementViewTest.php
 │   │   │   ├── Api
 │   │   │   │   └── Model
 │   │   │   │       └── PartnerTest.php
@@ -2551,6 +2604,7 @@
 │   │   │   │   └── CommandContextTest.php
 │   │   │   ├── Request
 │   │   │   │   └── Signalement
+│   │   │   │       ├── AddressesHistorySearchQueryTest.php
 │   │   │   │       ├── AdresseOccupantRequestTest.php
 │   │   │   │       ├── CompositionLogementRequestTest.php
 │   │   │   │       ├── CoordonneesFoyerRequestTest.php
@@ -2590,6 +2644,7 @@
 │   │   │   ├── MailerSubscriberTest.php
 │   │   │   └── WorkerMessageEventSubscriberTest.php
 │   │   ├── Factory
+│   │   │   ├── AddressesHistoryListViewFactoryTest.php
 │   │   │   ├── CommuneFactoryTest.php
 │   │   │   ├── Esabora
 │   │   │   │   ├── DossierMessageSCHSFactoryTest.php
@@ -2740,6 +2795,7 @@
 │   │   │   │   ├── SignalementFileProcessorTest.php
 │   │   │   │   ├── SignalementInputValueMapperTest.php
 │   │   │   │   ├── SignalementProfileOccupantMapperTest.php
+│   │   │   │   ├── SignalementSameAddressArreteFinderTest.php
 │   │   │   │   └── Suivi
 │   │   │   │       └── HistoriqueEvenementsGeneratorTest.php
 │   │   │   └── TimezoneProviderTest.php
@@ -2915,4 +2971,4 @@
 │   ├── .gitignore
 │   └── security.fr.yaml
 └── webpack.config.js
-491 directories, 2558 files
+499 directories, 2612 files
