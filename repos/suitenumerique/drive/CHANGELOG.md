@@ -8,6 +8,21 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
+- ✨(backend) make the upload ACL configurable to support GCS based storages
+
+### Changed
+
+- 🔧(docker) drop the unused pip upgrade and apk caches from the image
+- ✨(backend) expose item existence in the malware detection admin
+- ✨(backend) show human readable item size in the admin
+
+### Fixed
+
+- 🐛(docker) pin collabora image and adapt to its new runtime contract
+- 🐛(backend) delete malware detection record when purging an item
+
 ## [v0.20.0] - 2026-07-15
 
 ### Added
@@ -15,6 +30,8 @@ and this project adheres to
 - ✨(backend) allow converting a file while it is being analyzed
 - ✨(frontend) add file type, contact and modification date topbar filters
 - ✨(frontend) add location, file type, contact and date search filters
+- ✨(backend) add a local entitlements backend with per-user storage limits
+- ✨(frontend) add storage gauge and settings modal
 
 ### Fixed
 
