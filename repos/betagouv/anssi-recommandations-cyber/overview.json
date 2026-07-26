@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/anssi-recommandations-cyber",
   "name": "anssi-recommandations-cyber",
-  "description": "Une interface permettant d'interroger Albert, le modèle IA, chargé avec des guides de l'ANSSI.  Elle offre une recherche et une interaction avec ces guides pour obtenir des recommandations en matière de cybersécurité.",
+  "description": "Une interface permettant d'interroger Albert, le modèle IA, chargé avec des guides de l'ANSSI.  Elle offre une recherche et une interaction avec ces recommandations.",
   "language": "Python",
   "features": [
     "Recherche",
@@ -13,13 +13,17 @@
   ],
   "audience": "Professionnels",
   "dependencies": [
-    "FastAPI",
-    "OpenAI",
+    "cryptography",
+    "fastapi",
+    "httpx",
+    "openai",
     "psycopg2-binary",
     "requests",
     "sentry-sdk",
+    "slowapi",
+    "starlette",
     "uvicorn",
-    "React",
+    "docker",
     "Node.js"
   ],
   "components": [
@@ -27,7 +31,8 @@
     "PostgreSQL & SQL",
     "React / Next.js",
     "Python (scripts & backend)",
-    "Docker & Conteneurs"
+    "Docker & Conteneurs",
+    "Node.js / NestJS"
   ],
   "auth": {
     "methods": [
@@ -39,7 +44,8 @@
     "mypy"
   ],
   "workflows": [
-    "CI/CD"
+    "CI/CD",
+    "Déploiement"
   ],
   "lastActivity": "2026-07-23T15:39:02+02:00",
   "status": "active",
@@ -53,9 +59,12 @@
   },
   "tags": [
     "Données & Open Data",
-    "Sécurité & Conformité",
-    "Intelligence Artificielle & NLP",
+    "Écosystème beta.gouv / État",
+    "React & Next.js",
+    "TypeScript",
+    "Déploiement & Hosting",
     "Python",
-    "API & Intégrations"
+    "Bases de données SQL",
+    "Sécurité & Auth"
   ]
 }
