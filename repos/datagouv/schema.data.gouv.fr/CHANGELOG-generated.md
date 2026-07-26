@@ -1,15 +1,14 @@
-## Changelog : schema.data.gouv.fr (30 derniers jours, au 24 juillet 2026)
+## Changelog : schema.data.gouv.fr (30 derniers jours, au 26 juillet 2026)
 
 ### Résumé
-Les récentes mises à jour du site schema.data.gouv.fr concernent principalement des actualisations des recommandations de schémas de données et du site web lui-même. Une correction a été apportée pour ignorer un jeu de données spécifique (PAN) dans la recherche. La page "À propos" a également été mise à jour.
+Les récentes mises à jour du site schema.data.gouv.fr concernent principalement des actualisations régulières des recommandations de schémas de données et du site web lui-même. Une correction a été apportée pour ignorer un jeu de données spécifique (PAN). La page "À propos" a également été mise à jour.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug : le jeu de données PAN est maintenant ignoré lors des recherches [#349](https://github.com/datagouv/schema.data.gouv.fr/issues/349).
-- Mise à jour de la page "À propos" avec de nouvelles informations.
+- Correction : Le jeu de données PAN est maintenant ignoré, améliorant potentiellement la pertinence des résultats de recherche. [#349](https://github.com/datagouv/schema.data.gouv.fr/issues/349)
+- Documentation : Mise à jour de la page "À propos" pour fournir des informations plus récentes ou corrigées.
 
 ### Évolutions techniques
-- Mises à jour régulières des recommandations de schémas de données.
-- Mises à jour régulières du site web (correction de bugs, améliorations diverses).
+- Mises à jour régulières du site web et des recommandations de schémas de données. Ces mises à jour sont fréquentes et semblent concerner des ajustements continus de la plateforme.
 
 ### Autres changements
-- Aucune information supplémentaire à signaler.
+- Aucune information supplémentaire ne ressort des commits analysés.
