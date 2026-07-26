@@ -23,21 +23,99 @@
 │   ├── admin
 │   │   ├── package.json
 │   │   ├── src
+│   │   │   ├── app.css
 │   │   │   ├── app.d.ts
 │   │   │   ├── app.html
 │   │   │   ├── hooks.client.ts
 │   │   │   ├── hooks.server.ts
 │   │   │   ├── instrumentation.server.ts
 │   │   │   ├── lib
+│   │   │   │   ├── actions
+│   │   │   │   │   ├── admin.ts
+│   │   │   │   │   ├── adminEspeces.ts
+│   │   │   │   │   └── adminEvenements.ts
 │   │   │   │   └── server
-│   │   │   │       └── database.ts
+│   │   │   │       ├── env.ts
+│   │   │   │       ├── proconnect.ts
+│   │   │   │       ├── redirect.ts
+│   │   │   │       ├── session.test.ts
+│   │   │   │       └── session.ts
 │   │   │   ├── routes
+│   │   │   │   ├── +error.svelte
+│   │   │   │   ├── +layout.server.ts
 │   │   │   │   ├── +layout.svelte
 │   │   │   │   ├── +page.server.ts
 │   │   │   │   ├── +page.svelte
-│   │   │   │   └── docs
-│   │   │   │       └── [...path]
-│   │   │   │           └── +server.ts
+│   │   │   │   ├── ErrorPage.svelte
+│   │   │   │   ├── aarri
+│   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   ├── BadgeNiveauAARRI.svelte
+│   │   │   │   │   ├── LevelsAARRIModal.svelte
+│   │   │   │   │   ├── RepartitionNiveaux.svelte
+│   │   │   │   │   ├── UtilisateursFilterPanel.svelte
+│   │   │   │   │   ├── UtilisateursList.svelte
+│   │   │   │   │   ├── UtilisateursSortPanel.svelte
+│   │   │   │   │   ├── UtilisateursTable.svelte
+│   │   │   │   │   ├── utilisateursList.test.ts
+│   │   │   │   │   └── utilisateursList.ts
+│   │   │   │   ├── api
+│   │   │   │   │   ├── especes-protegees
+│   │   │   │   │   │   ├── +server.ts
+│   │   │   │   │   │   └── modifications
+│   │   │   │   │   │       ├── +server.ts
+│   │   │   │   │   │       └── [cd_ref]
+│   │   │   │   │   │           └── +server.ts
+│   │   │   │   │   ├── evenements
+│   │   │   │   │   │   ├── +server.ts
+│   │   │   │   │   │   └── types
+│   │   │   │   │   │       └── +server.ts
+│   │   │   │   │   ├── evenements-metriques-csv
+│   │   │   │   │   │   └── +server.ts
+│   │   │   │   │   ├── taxref
+│   │   │   │   │   │   ├── +server.ts
+│   │   │   │   │   │   └── filtres
+│   │   │   │   │   │       └── +server.ts
+│   │   │   │   │   └── utilisateurs-aarri
+│   │   │   │   │       └── +server.ts
+│   │   │   │   ├── auth
+│   │   │   │   │   ├── acces-refuse
+│   │   │   │   │   │   └── +page.svelte
+│   │   │   │   │   ├── callback
+│   │   │   │   │   │   └── +server.ts
+│   │   │   │   │   ├── login
+│   │   │   │   │   │   ├── +page.server.ts
+│   │   │   │   │   │   └── +page.svelte
+│   │   │   │   │   ├── logout
+│   │   │   │   │   │   └── +server.ts
+│   │   │   │   │   └── proconnect
+│   │   │   │   │       └── +server.ts
+│   │   │   │   ├── docs
+│   │   │   │   │   └── [...path]
+│   │   │   │   │       └── +server.ts
+│   │   │   │   ├── especes-protegees
+│   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   ├── FieldClassification.svelte
+│   │   │   │   │   ├── FieldModifiable.svelte
+│   │   │   │   │   ├── FieldNoms.svelte
+│   │   │   │   │   ├── FieldStatuts.svelte
+│   │   │   │   │   ├── FieldYesNo.svelte
+│   │   │   │   │   ├── InheritanceCheckbox.svelte
+│   │   │   │   │   ├── ListModifications.svelte
+│   │   │   │   │   ├── Modal.svelte
+│   │   │   │   │   ├── ModalAdd.svelte
+│   │   │   │   │   ├── ModalEditModification.svelte
+│   │   │   │   │   ├── ModificationsFilterPanel.svelte
+│   │   │   │   │   ├── ModificationsSortPanel.svelte
+│   │   │   │   │   ├── SelectorEspece.svelte
+│   │   │   │   │   ├── SelectorTaxref.svelte
+│   │   │   │   │   ├── TableModifications.svelte
+│   │   │   │   │   ├── YesNoToggle.svelte
+│   │   │   │   │   └── adminModificationsList.ts
+│   │   │   │   └── evenements
+│   │   │   │       ├── +page.svelte
+│   │   │   │       ├── EvenementsFilterPanel.svelte
+│   │   │   │       ├── ListEvenements.svelte
+│   │   │   │       └── TableEvenements.svelte
 │   │   │   └── smoke.test.ts
 │   │   ├── static
 │   │   │   └── favicon
@@ -55,28 +133,46 @@
 │   └── instructeur
 │       ├── package.json
 │       ├── src
+│       │   ├── app.css
 │       │   ├── app.d.ts
 │       │   ├── app.html
 │       │   ├── hooks.client.ts
 │       │   ├── hooks.server.ts
 │       │   ├── instrumentation.server.ts
 │       │   ├── lib
-│       │   │   ├── actions
-│       │   │   │   ├── admin.ts
-│       │   │   │   └── adminEspeces.ts
 │       │   │   ├── components
 │       │   │   │   ├── CartographieProjet.svelte
 │       │   │   │   ├── DSFR
-│       │   │   │   │   ├── ModalButton.svelte
-│       │   │   │   │   └── Pagination.svelte
-│       │   │   │   ├── DatePicker.svelte
+│       │   │   │   │   └── ModalButton.svelte
 │       │   │   │   ├── DownloadButton.svelte
 │       │   │   │   ├── EspecesProtegeesGroupedByImpact.svelte
 │       │   │   │   ├── ListDossiers
 │       │   │   │   │   ├── BadgePhase.svelte
 │       │   │   │   │   ├── CardDossier.svelte
-│       │   │   │   │   └── ListDossiers.svelte
-│       │   │   │   ├── Loader.svelte
+│       │   │   │   │   ├── DossiersFilterModal.svelte
+│       │   │   │   │   ├── DossiersFilterSections.svelte
+│       │   │   │   │   ├── DossiersSearchBar.svelte
+│       │   │   │   │   ├── DossiersSortMenu.svelte
+│       │   │   │   │   ├── DossiersToolbar.svelte
+│       │   │   │   │   ├── ListDossiers.svelte
+│       │   │   │   │   ├── dossiersFilter.test.ts
+│       │   │   │   │   ├── dossiersFilter.ts
+│       │   │   │   │   ├── dossiersFilterChips.test.ts
+│       │   │   │   │   ├── dossiersFilterChips.ts
+│       │   │   │   │   ├── dossiersFilterDate.test.ts
+│       │   │   │   │   ├── dossiersFilterOptions.test.ts
+│       │   │   │   │   ├── dossiersList.ts
+│       │   │   │   │   ├── dossiersQuery.test.ts
+│       │   │   │   │   ├── dossiersQuery.ts
+│       │   │   │   │   ├── dossiersSearch.test.ts
+│       │   │   │   │   ├── dossiersSearch.ts
+│       │   │   │   │   ├── dossiersSearchEvent.test.ts
+│       │   │   │   │   ├── dossiersSearchEvent.ts
+│       │   │   │   │   ├── dossiersServices.test.ts
+│       │   │   │   │   ├── dossiersServices.ts
+│       │   │   │   │   ├── dossiersSort.test.ts
+│       │   │   │   │   ├── dossiersSort.ts
+│       │   │   │   │   └── dossiersTestHelpers.ts
 │       │   │   │   ├── TagPhase.svelte
 │       │   │   │   ├── TagPhase.svelte.test.ts
 │       │   │   │   └── common
@@ -89,6 +185,7 @@
 │       │   │   │   ├── notification.ts
 │       │   │   │   ├── searchInDossier.ts
 │       │   │   │   ├── suiviDossier.ts
+│       │   │   │   ├── textFilters.test.ts
 │       │   │   │   └── textFilters.ts
 │       │   │   ├── especes
 │       │   │   │   ├── activitesMethodesMoyensDePoursuite.ts
@@ -118,6 +215,7 @@
 │       │       ├── +layout.svelte
 │       │       ├── +layout.ts
 │       │       ├── +page.svelte
+│       │       ├── +page.ts
 │       │       ├── ErrorPage.svelte
 │       │       ├── Layout
 │       │       │   ├── BandeauEnvironnement.svelte
@@ -141,51 +239,9 @@
 │       │       │   ├── +page.svelte
 │       │       │   ├── +page.ts
 │       │       │   └── Accessibilite.svelte
-│       │       ├── admin
-│       │       │   ├── especes-protegees
-│       │       │   │   ├── +page.svelte
-│       │       │   │   ├── FieldClassification.svelte
-│       │       │   │   ├── FieldModifiable.svelte
-│       │       │   │   ├── FieldNoms.svelte
-│       │       │   │   ├── FieldStatuts.svelte
-│       │       │   │   ├── FieldYesNo.svelte
-│       │       │   │   ├── InheritanceCheckbox.svelte
-│       │       │   │   ├── ListModifications.svelte
-│       │       │   │   ├── Modal.svelte
-│       │       │   │   ├── ModalAdd.svelte
-│       │       │   │   ├── ModalEditModification.svelte
-│       │       │   │   ├── ModificationsFilterPanel.svelte
-│       │       │   │   ├── ModificationsSortPanel.svelte
-│       │       │   │   ├── SelectorEspece.svelte
-│       │       │   │   ├── SelectorTaxref.svelte
-│       │       │   │   ├── TableModifications.svelte
-│       │       │   │   ├── YesNoToggle.svelte
-│       │       │   │   └── adminModificationsList.ts
-│       │       │   └── utilisateurs
-│       │       │       ├── +page.svelte
-│       │       │       ├── BadgeNiveauAARRI.svelte
-│       │       │       ├── LevelsAARRIModal.svelte
-│       │       │       ├── RepartitionNiveaux.svelte
-│       │       │       ├── UtilisateursFilterPanel.svelte
-│       │       │       ├── UtilisateursList.svelte
-│       │       │       ├── UtilisateursSortPanel.svelte
-│       │       │       ├── UtilisateursTable.svelte
-│       │       │       ├── utilisateursList.test.ts
-│       │       │       └── utilisateursList.ts
 │       │       ├── api
 │       │       │   ├── aarri
 │       │       │   │   └── +server.ts
-│       │       │   ├── admin
-│       │       │   │   ├── especes-protegees
-│       │       │   │   │   ├── +server.ts
-│       │       │   │   │   └── modifications
-│       │       │   │   │       ├── +server.ts
-│       │       │   │   │       └── [cd_ref]
-│       │       │   │   │           └── +server.ts
-│       │       │   │   ├── evenements-metriques-csv
-│       │       │   │   │   └── +server.ts
-│       │       │   │   └── utilisateurs-aarri
-│       │       │   │       └── +server.ts
 │       │       │   ├── bdc-statuts
 │       │       │   │   ├── +server.ts
 │       │       │   │   └── filtres
@@ -193,6 +249,8 @@
 │       │       │   ├── especes-protegees
 │       │       │   │   └── +server.ts
 │       │       │   ├── metriques
+│       │       │   │   ├── dernieres-recherches
+│       │       │   │   │   └── +server.ts
 │       │       │   │   └── evenements
 │       │       │   │       └── +server.ts
 │       │       │   ├── stats-publiques
@@ -222,6 +280,9 @@
 │       │       │   └── bdcStatutsList.ts
 │       │       ├── caps
 │       │       │   └── +server.ts
+│       │       ├── connexion
+│       │       │   ├── +page.svelte
+│       │       │   └── +page.ts
 │       │       ├── controle
 │       │       │   ├── +server.ts
 │       │       │   └── [controleId]
@@ -310,14 +371,11 @@
 │       │       │       └── +server.ts
 │       │       ├── especes-protegees
 │       │       │   ├── +page.svelte
-│       │       │   ├── EspecesFilterPanel.svelte
 │       │       │   ├── EspecesGenerationModal.svelte
-│       │       │   ├── EspecesSortPanel.svelte
 │       │       │   ├── EspecesSynonymesModal.svelte
 │       │       │   ├── EspecesTable.svelte
 │       │       │   ├── ListEspecesProtegees.svelte
-│       │       │   ├── especesList.test.ts
-│       │       │   └── especesList.ts
+│       │       │   └── especesList.test.ts
 │       │       ├── import-dossier-historique
 │       │       │   ├── bourgogne-franche-comte
 │       │       │   │   ├── +page.svelte
@@ -334,6 +392,7 @@
 │       │       │   └── +page.svelte
 │       │       ├── mes-dossiers
 │       │       │   ├── +page.svelte
+│       │       │   ├── +page.ts
 │       │       │   └── MesDossiers.svelte
 │       │       ├── piece-jointe-petitionnaire
 │       │       │   └── fichier
@@ -375,13 +434,13 @@
 │       │       │   ├── IndicatorsAARRI.svelte
 │       │       │   ├── MatrixImpact.svelte
 │       │       │   └── StatsContent.svelte
+│       │       ├── tableau-de-suivi
+│       │       │   ├── +page.svelte
+│       │       │   └── +page.ts
 │       │       ├── taxref
 │       │       │   ├── +page.svelte
-│       │       │   ├── TaxrefFilterPanel.svelte
 │       │       │   ├── TaxrefList.svelte
-│       │       │   ├── TaxrefSortPanel.svelte
-│       │       │   ├── TaxrefTable.svelte
-│       │       │   └── taxrefList.ts
+│       │       │   └── TaxrefTable.svelte
 │       │       ├── tmp
 │       │       │   └── stats
 │       │       │       ├── +page.svelte
@@ -389,6 +448,7 @@
 │       │       │       └── TmpStats.svelte
 │       │       └── tous-les-dossiers
 │       │           ├── +page.svelte
+│       │           ├── +page.ts
 │       │           └── TousLesDossiers.svelte
 │       ├── static
 │       │   ├── declaration-accessibilite_2025-07-07.html
@@ -410,6 +470,7 @@
 │       │   │   ├── dossier-instruction.spec.ts
 │       │   │   ├── failed-login.spec.ts
 │       │   │   ├── login-and-see-dossier.spec.ts
+│       │   │   ├── logout.spec.ts
 │       │   │   ├── mes-dossiers.spec.ts
 │       │   │   ├── rajouter-decision-administrative.spec.ts
 │       │   │   ├── reload-dossier.spec.ts
@@ -419,6 +480,7 @@
 │       │   │   ├── _random.ts
 │       │   │   ├── cap.ts
 │       │   │   ├── dossier.ts
+│       │   │   ├── dossierSearch.ts
 │       │   │   ├── especeProtegeeReference.ts
 │       │   │   ├── fichier.ts
 │       │   │   ├── index.ts
@@ -429,7 +491,6 @@
 │       │   ├── helpers
 │       │   │   └── reactive.svelte.ts
 │       │   ├── integration
-│       │   │   ├── admin-utilisateurs-aarri.test.ts
 │       │   │   ├── api-especes-protegees.test.ts
 │       │   │   ├── caps.test.ts
 │       │   │   ├── controle-notification-http.test.ts
@@ -447,7 +508,8 @@
 │       │   │   ├── telechargement-fichier-s3.test.ts
 │       │   │   ├── telechargement-fichier.test.ts
 │       │   │   ├── upload-avis-fichier-http.test.ts
-│       │   │   └── upload-decision-admin-http.test.ts
+│       │   │   ├── upload-decision-admin-http.test.ts
+│       │   │   └── utilisateurs-aarri.test.ts
 │       │   ├── manuels
 │       │   │   ├── aide-pitchou.md
 │       │   │   ├── dossier.md
@@ -1155,6 +1217,7 @@
 │   │   │   ├── DateToJSON.ts
 │   │   │   ├── constants.ts
 │   │   │   ├── decisionAdministrative.ts
+│   │   │   ├── departements.ts
 │   │   │   ├── dossiersUtils.ts
 │   │   │   ├── errors.ts
 │   │   │   ├── especesUtils.test.ts
@@ -1246,6 +1309,7 @@
 │   │   │   ├── 20260622145147_convertir-date-fin-consultation-public-en-date.ts
 │   │   │   ├── 20260623094941_ajout-colonne-enjeu-dossier.ts
 │   │   │   ├── 20260623110921_supprimer-enjeu-politique-et-ecologique-dossier.ts
+│   │   │   ├── 20260625101716_creer-table-session.ts
 │   │   │   ├── 20260626120000_supprimer-date-envoi-derniere-contribution-ddep.ts
 │   │   │   ├── 20260629120000_ajout-date-mise-en-service.ts
 │   │   │   ├── 20260629140000_unique-nom-numéro-démarche-groupe-instructeurs.ts
@@ -1254,6 +1318,7 @@
 │   │   │   ├── 20260706150000_add-attachment-autre.ts
 │   │   │   ├── 20260707120000_ajout-document-bdc-statut.ts
 │   │   │   ├── 20260713000000_drop-fichier-table.ts
+│   │   │   ├── 20260713120000_add-dossier-search.ts
 │   │   │   ├── 20260715120000_identites-porteur-de-projet.ts
 │   │   │   └── 20260718120000_translate-database-schema.ts
 │   │   ├── package.json
@@ -1301,6 +1366,7 @@
 │   │   │   │   ├── decision_administrative.test.ts
 │   │   │   │   ├── decision_administrative.ts
 │   │   │   │   ├── dossier.ts
+│   │   │   │   ├── dossier_search.ts
 │   │   │   │   ├── edge_dossier__fichier_pieces_jointes_petitionnaire.ts
 │   │   │   │   ├── especes_impactees.ts
 │   │   │   │   ├── evenements_metriques.ts
@@ -1342,6 +1408,8 @@
 │   │   │   ├── index.ts
 │   │   │   ├── objectStorage.test.ts
 │   │   │   ├── objectStorage.ts
+│   │   │   ├── session.test.ts
+│   │   │   ├── session.ts
 │   │   │   └── taxref.ts
 │   │   └── tsconfig.json
 │   ├── server-utils
@@ -1413,13 +1481,27 @@
 │   │   ├── package.json
 │   │   ├── src
 │   │   │   ├── AccountMenu.svelte
+│   │   │   ├── DSFR
+│   │   │   │   └── Pagination.svelte
+│   │   │   ├── DatePicker.svelte
 │   │   │   ├── Footer.svelte
 │   │   │   ├── Header.svelte
-│   │   │   └── index.ts
+│   │   │   ├── Loader.svelte
+│   │   │   ├── MultiSelectFilter.svelte
+│   │   │   ├── especes
+│   │   │   │   ├── EspecesFilterPanel.svelte
+│   │   │   │   ├── EspecesSortPanel.svelte
+│   │   │   │   └── especesList.ts
+│   │   │   ├── index.ts
+│   │   │   └── taxref
+│   │   │       ├── TaxrefFilterPanel.svelte
+│   │   │       ├── TaxrefSortPanel.svelte
+│   │   │       └── taxrefList.ts
 │   │   └── tsconfig.json
 │   └── worker
 │       ├── aarri
 │       │   └── delete-evenements.ts
+│       ├── delete-expired-sessions.ts
 │       ├── import-bdc.ts
 │       ├── import-modifications-especes.ts
 │       ├── import-taxref.ts
@@ -1453,4 +1535,4 @@
 │   └── tsconfig.json
 ├── tsconfig.base.json
 └── tsconfig.json
-192 directories, 1304 files
+208 directories, 1370 files
