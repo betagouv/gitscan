@@ -5,6 +5,8 @@
 │       ├── deploy-alert-widget.yml
 │       ├── deploy-api.yml
 │       ├── deploy-autodiag.yml
+│       ├── deploy-climadiag.yml
+│       ├── deploy-cms.yml
 │       ├── terraform-apply.yml
 │       └── terraform-plan.yml
 ├── .gitignore
@@ -29,16 +31,19 @@
 │   │       ├── routes
 │   │       │   ├── __init__.py
 │   │       │   ├── alerts.py
+│   │       │   ├── climadiag.py
 │   │       │   └── health.py
 │   │       ├── schemas.py
 │   │       └── sources
 │   │           ├── __init__.py
+│   │           ├── climadiag.py
 │   │           ├── meteofrance.py
 │   │           └── rte.py
 │   ├── tests
 │   │   ├── __init__.py
 │   │   ├── conftest.py
 │   │   ├── test_alerts.py
+│   │   ├── test_climadiag.py
 │   │   ├── test_health.py
 │   │   ├── test_meteofrance.py
 │   │   └── test_rte.py
@@ -74,59 +79,102 @@
 │   │   ├── tsconfig.json
 │   │   ├── tsconfig.node.json
 │   │   └── vite.config.ts
-│   └── autodiag
-│       ├── .gitignore
+│   ├── autodiag
+│   │   ├── .gitignore
+│   │   ├── README.md
+│   │   ├── contenu.yaml
+│   │   ├── data
+│   │   │   ├── autodiag.publicodes
+│   │   │   ├── batiments.publicodes
+│   │   │   ├── desimpermeabilisation.publicodes
+│   │   │   ├── eaux-pluviales.publicodes
+│   │   │   └── ilots-de-rafraichissement.publicodes
+│   │   ├── e2e
+│   │   │   └── autodiag.spec.ts
+│   │   ├── eslint.config.js
+│   │   ├── index.html
+│   │   ├── package.json
+│   │   ├── playwright.config.ts
+│   │   ├── public
+│   │   │   └── vite.svg
+│   │   ├── src
+│   │   │   ├── App.tsx
+│   │   │   ├── assets
+│   │   │   │   └── react.svg
+│   │   │   ├── components
+│   │   │   │   ├── ProgressHeader.tsx
+│   │   │   │   ├── QuestionCard.tsx
+│   │   │   │   ├── RadarChartComponent.tsx
+│   │   │   │   └── RecommendationCard.tsx
+│   │   │   ├── context
+│   │   │   │   ├── FormContext.tsx
+│   │   │   │   └── WagtailContext.tsx
+│   │   │   ├── data
+│   │   │   │   ├── contenu.ts
+│   │   │   │   ├── model.ts
+│   │   │   │   ├── publicodes.d.ts
+│   │   │   │   └── questions.ts
+│   │   │   ├── embed.tsx
+│   │   │   ├── main.tsx
+│   │   │   ├── pages
+│   │   │   │   ├── QuestionPage.tsx
+│   │   │   │   ├── ResultsPage.tsx
+│   │   │   │   └── WelcomePage.tsx
+│   │   │   ├── styles
+│   │   │   │   └── index.css
+│   │   │   └── vite-env.d.ts
+│   │   ├── test-embed
+│   │   │   ├── index.html
+│   │   │   └── with-dsfr.html
+│   │   ├── test-results
+│   │   │   └── .last-run.json
+│   │   ├── tsconfig.app.json
+│   │   ├── tsconfig.json
+│   │   ├── tsconfig.node.json
+│   │   └── vite.config.ts
+│   ├── climadiag
+│   │   ├── README.md
+│   │   ├── index.html
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── App.tsx
+│   │   │   ├── ClimadiagWidget.tsx
+│   │   │   ├── CommuneCombobox.tsx
+│   │   │   ├── climadiag
+│   │   │   │   ├── Climadiag.tsx
+│   │   │   │   ├── climadiag.css
+│   │   │   │   ├── data.ts
+│   │   │   │   ├── images
+│   │   │   │   │   ├── climadiag-jour-tres-chaud.svg
+│   │   │   │   │   ├── climadiag-jour-vdc.svg
+│   │   │   │   │   ├── climadiag-meteo-france.png
+│   │   │   │   │   ├── climadiag-nuits-chaudes.svg
+│   │   │   │   │   └── meteo-france.svg
+│   │   │   │   └── types.ts
+│   │   │   ├── combobox.css
+│   │   │   ├── embed.tsx
+│   │   │   ├── main.tsx
+│   │   │   └── vite-env.d.ts
+│   │   ├── tsconfig.json
+│   │   └── vite.config.ts
+│   └── cms
+│       ├── .dockerignore
+│       ├── .env.example
+│       ├── Dockerfile
 │       ├── README.md
-│       ├── contenu.yaml
-│       ├── data
-│       │   ├── autodiag.publicodes
-│       │   ├── batiments.publicodes
-│       │   ├── desimpermeabilisation.publicodes
-│       │   ├── eaux-pluviales.publicodes
-│       │   └── ilots-de-rafraichissement.publicodes
-│       ├── e2e
-│       │   └── autodiag.spec.ts
-│       ├── eslint.config.js
-│       ├── index.html
-│       ├── package.json
-│       ├── playwright.config.ts
-│       ├── public
-│       │   └── vite.svg
-│       ├── src
-│       │   ├── App.tsx
-│       │   ├── assets
-│       │   │   └── react.svg
-│       │   ├── components
-│       │   │   ├── ProgressHeader.tsx
-│       │   │   ├── QuestionCard.tsx
-│       │   │   ├── RadarChartComponent.tsx
-│       │   │   └── RecommendationCard.tsx
-│       │   ├── context
-│       │   │   ├── FormContext.tsx
-│       │   │   └── WagtailContext.tsx
-│       │   ├── data
-│       │   │   ├── contenu.ts
-│       │   │   ├── model.ts
-│       │   │   ├── publicodes.d.ts
-│       │   │   └── questions.ts
-│       │   ├── embed.tsx
-│       │   ├── main.tsx
-│       │   ├── pages
-│       │   │   ├── QuestionPage.tsx
-│       │   │   ├── ResultsPage.tsx
-│       │   │   └── WelcomePage.tsx
-│       │   ├── styles
-│       │   │   └── index.css
-│       │   └── vite-env.d.ts
-│       ├── test-embed
-│       │   ├── index.html
-│       │   └── with-dsfr.html
-│       ├── test-results
-│       │   └── .last-run.json
-│       ├── tsconfig.app.json
-│       ├── tsconfig.json
-│       ├── tsconfig.node.json
-│       └── vite.config.ts
+│       ├── entrypoint.sh
+│       ├── manage.py
+│       ├── pyproject.toml
+│       ├── sites_conformes
+│       │   ├── __init__.py
+│       │   ├── asgi.py
+│       │   ├── settings.py
+│       │   ├── urls.py
+│       │   └── wsgi.py
+│       ├── tests
+│       │   ├── __init__.py
+│       │   └── test_healthz.py
+│       └── uv.lock
 ├── infra
 │   ├── README.md
 │   ├── envs
@@ -138,6 +186,14 @@
 │   │       ├── terraform.tfvars.example
 │   │       └── variables.tf
 │   └── modules
+│       ├── managed-postgres
+│       │   ├── main.tf
+│       │   ├── outputs.tf
+│       │   └── variables.tf
+│       ├── object-bucket
+│       │   ├── main.tf
+│       │   ├── outputs.tf
+│       │   └── variables.tf
 │       ├── serverless-container
 │       │   ├── main.tf
 │       │   ├── outputs.tf
@@ -162,4 +218,4 @@
     ├── diagram.png
     ├── get_vigilance.py
     └── notebooks_getVigilance.ipynb
-41 directories, 123 files
+50 directories, 170 files
