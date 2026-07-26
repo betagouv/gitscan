@@ -1,40 +1,33 @@
-## Changelog : iterion (30 derniers jours, au 2026-07-19)
+## Changelog : iterion (30 derniers jours, au 2026-07-26)
 
 ### Résumé
-Ce mois-ci, iterion a connu une évolution majeure avec l'introduction de fonctionnalités de gestion de workflows plus puissantes, notamment des améliorations significatives dans la gestion des exécutions, l'intégration de nouveaux outils et une refonte de l'interface utilisateur pour une meilleure expérience. L'accent a été mis sur l'amélioration de la flexibilité, de la robustesse et de la facilité d'utilisation de la plateforme.
+Ce mois-ci, iterion a connu des améliorations significatives en termes de sécurité, de fonctionnalités et de stabilité. Des efforts importants ont été consacrés à la gestion des secrets, à l'intégration de Forge (GitHub, GitLab, Forgejo), à l'amélioration de l'interface utilisateur et à la correction de vulnérabilités potentielles. De nouvelles fonctionnalités ont été ajoutées pour faciliter l'automatisation des tâches et améliorer l'expérience utilisateur, notamment en matière de gestion des bots et de suivi des exécutions.
 
 ### Évolutions fonctionnelles
-*   **Intégration Forge (GitHub, GitLab, Forgejo):** Ajout de la connexion à des dépôts via des applications GitHub, OAuth et PAT, permettant une intégration plus fluide avec les outils de développement existants.
-*   **Gestion des Runs:** Possibilité de supprimer des runs, de visualiser l'historique des exécutions et de les gérer plus efficacement.
-*   **Amélioration de l'interface utilisateur:** Refonte de l'interface utilisateur avec de nouveaux composants (boutons, champs de saisie, etc.) pour une expérience plus cohérente et intuitive.
-*   **Nouvelles fonctionnalités de débogage:** Ajout de fonctionnalités pour faciliter le débogage des workflows, notamment la visualisation des logs et des variables.
-*   **Gestion des secrets:** Amélioration de la gestion des secrets, avec la possibilité de les stocker et de les utiliser de manière sécurisée.
-*   **Planification des tâches:** Introduction de la planification des tâches avec des options de configuration avancées.
-*   **Nouvelles commandes CLI:** Ajout de nouvelles commandes CLI pour faciliter l'automatisation des tâches.
-*   **Amélioration de la gestion des erreurs:** Amélioration de la gestion des erreurs et des messages d'erreur plus clairs.
-*   **Support des plugins:** Possibilité d'installer et de gérer des plugins pour étendre les fonctionnalités de la plateforme.
-*   **Nouvelles capacités de modélisation:** Ajout de nouvelles capacités de modélisation pour définir des workflows plus complexes.
-*   **Amélioration de la performance:** Optimisations de la performance pour une exécution plus rapide des workflows.
-*   **Intégration de nouveaux outils:** Ajout de l'intégration avec de nouveaux outils, tels que des modèles de langage et des services d'analyse de données.
+- **Forge:** Amélioration de l'intégration avec GitHub, GitLab et Forgejo, incluant la gestion des applications GitHub, la synchronisation des informations et la possibilité de créer des applications avec des permissions minimales.
+- **Gestion des bots:** Ajout de la possibilité de créer des bots à partir de scripts, d'importer des bots existants et de gérer les configurations des plugins.
+- **Interface utilisateur:** Amélioration de l'interface utilisateur avec de nouvelles fonctionnalités telles que la gestion des tâches, la visualisation des pipelines, et une navigation plus intuitive.
+- **Suivi des exécutions:** Ajout de la possibilité de supprimer des exécutions, d'afficher les journaux en temps réel et de suivre l'état des exécutions.
+- **Plugins:** Introduction d'un système de plugins pour étendre les fonctionnalités d'iterion.
+- **Sécurité:** Amélioration de la sécurité avec la gestion des secrets, la protection contre les attaques CSRF et la correction de vulnérabilités potentielles.
+- **Tableaux de bord:** Ajout de tableaux de bord pour visualiser les performances et l'état des bots.
+- **Amélioration de la boucle d'amélioration:** Introduction d'une boucle d'amélioration pour automatiser le processus d'amélioration continue des bots.
 
 ### Évolutions techniques
-*   **Refactorisation du code:** Refactorisation importante du code pour améliorer la maintenabilité et la lisibilité.
-*   **Amélioration de la sécurité:** Amélioration de la sécurité de la plateforme, notamment en corrigeant des vulnérabilités potentielles.
-*   **Mise à jour des dépendances:** Mise à jour des dépendances pour bénéficier des dernières corrections de bugs et améliorations de sécurité.
-*   **Amélioration de l'architecture:** Amélioration de l'architecture de la plateforme pour une meilleure évolutivité et une meilleure performance.
-*   **Intégration continue/Déploiement continu (CI/CD):** Amélioration du pipeline CI/CD pour une livraison plus rapide et plus fiable des nouvelles fonctionnalités.
-*   **Utilisation de nouveaux outils de développement:** Adoption de nouveaux outils de développement pour améliorer la productivité et la qualité du code.
-*   **Amélioration des tests:** Ajout de nouveaux tests pour améliorer la couverture de code et la fiabilité de la plateforme.
-*   **Optimisation des performances:** Optimisation des performances de la plateforme, notamment en réduisant la consommation de mémoire et en améliorant la vitesse d'exécution.
-*   **Amélioration de la scalabilité:** Amélioration de la scalabilité de la plateforme pour pouvoir gérer un nombre croissant d'utilisateurs et de workflows.
-*   **Implémentation de nouvelles fonctionnalités de surveillance:** Ajout de nouvelles fonctionnalités de surveillance pour suivre l'état de la plateforme et détecter les problèmes potentiels.
-*   **Amélioration de la gestion des logs:** Amélioration de la gestion des logs pour faciliter le débogage et l'analyse des problèmes.
+- **Refactorings importants:** Refactorings importants du code pour améliorer la maintenabilité et la performance.
+- **Amélioration de l'architecture:** Amélioration de l'architecture pour faciliter l'ajout de nouvelles fonctionnalités et améliorer la scalabilité.
+- **Mise à jour des dépendances:** Mise à jour des dépendances pour bénéficier des dernières corrections de bugs et améliorations de sécurité.
+- **CI/CD:** Amélioration du pipeline CI/CD pour automatiser le processus de construction, de test et de déploiement.
+- **Sécurité:** Renforcement de la sécurité avec la correction de vulnérabilités potentielles et l'implémentation de nouvelles mesures de protection.
+- **Gestion des secrets:** Amélioration de la gestion des secrets avec l'utilisation de secrets stockés en toute sécurité.
+- **Optimisation des performances:** Optimisation des performances pour améliorer la réactivité et la scalabilité de l'application.
+- **Nouvelles bibliothèques:** Intégration de nouvelles bibliothèques pour faciliter le développement et améliorer les fonctionnalités.
+- **Amélioration de la journalisation:** Amélioration de la journalisation pour faciliter le débogage et le suivi des erreurs.
 
 ### Autres changements
-*   **Documentation:** Mise à jour de la documentation pour refléter les dernières modifications de la plateforme.
-*   **Corrections de bugs:** Correction de nombreux bugs et améliorations de la stabilité de la plateforme.
-*   **Amélioration de la configuration:** Amélioration de la configuration de la plateforme pour une installation et une maintenance plus faciles.
-*   **Mise à jour des dépendances:** Mise à jour des dépendances pour bénéficier des dernières corrections de bugs et améliorations de sécurité.
-*   **Amélioration de la gestion des erreurs:** Amélioration de la gestion des erreurs et des messages d'erreur plus clairs.
-*   **Ajout de nouveaux tests:** Ajout de nouveaux tests pour améliorer la couverture de code et la fiabilité de la plateforme.
-*   **Refactorisation du code:** Refactorisation du code pour améliorer la maintenabilité et la lisibilité.
+- **Documentation:** Mise à jour de la documentation pour refléter les dernières modifications et améliorations.
+- **Tests:** Ajout de nouveaux tests pour améliorer la couverture et la qualité du code.
+- **Corrections de bugs:** Correction de nombreux bugs pour améliorer la stabilité et la fiabilité de l'application.
+- **Amélioration de la configuration:** Amélioration de la configuration pour faciliter l'installation et la personnalisation de l'application.
+- **Nettoyage du code:** Nettoyage du code pour améliorer la lisibilité et la maintenabilité.
+- **Mise à jour des outils de développement:** Mise à jour des outils de développement pour bénéficier des dernières fonctionnalités et améliorations.
