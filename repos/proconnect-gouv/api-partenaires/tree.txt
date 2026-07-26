@@ -5,6 +5,7 @@
 │   ├── dependabot.yml
 │   └── workflows
 │       ├── ci.yml
+│       ├── config-lint.yml
 │       └── docker.yml
 ├── .gitignore
 ├── Dockerfile
@@ -13,7 +14,8 @@
 ├── bun.lock
 ├── config
 │   └── anct
-│       └── oidc_providers.yaml
+│       ├── oidc_providers.production.yaml
+│       └── oidc_providers.sandbox.yaml
 ├── examples
 │   ├── edit_provider_fqdns
 │   │   ├── README.md
@@ -29,6 +31,8 @@
 │       │   └── client.js
 │       └── integration.test.ts
 ├── package.json
+├── scripts
+│   └── lint_config.ts
 ├── src
 │   ├── app.test.ts
 │   ├── app.ts
@@ -45,4 +49,4 @@
 │   ├── oidc_providers_config.ts
 │   └── signature_middleware.ts
 └── tsconfig.json
-11 directories, 36 files
+12 directories, 39 files
