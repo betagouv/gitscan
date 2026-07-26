@@ -1,14 +1,14 @@
-## Changelog : fiches-vdd (30 derniers jours, au 23 juillet 2026)
+## Changelog : fiches-vdd (30 derniers jours, au 25 juillet 2026)
 
 ### Résumé
-Ce changelog couvre une période d'intense mise à jour des données. Au cours des 30 derniers jours, le projet a reçu de nombreuses mises à jour de données quotidiennes, ainsi qu'une correction pour bloquer la version de npm à la version 11 afin d'assurer la stabilité du processus de construction.
+Ce changelog couvre une période d'intenses mises à jour des données. Le projet a été mis à jour quotidiennement avec les dernières informations sur les droits et démarches administratives. Une correction a également été apportée pour bloquer la version de npm à la version 11 afin d'assurer la stabilité du build.
 
 ### Évolutions fonctionnelles
-- Mise à jour quotidienne des données des fiches VDD. Chaque jour, de nouvelles données sont intégrées pour maintenir l'information à jour et précise.
-- Correction de la version de npm pour garantir la stabilité du processus de construction et éviter des problèmes potentiels lors du déploiement. [#233](https://github.com/SocialGouv/fiches-vdd/issues/233)
+- Mise à jour quotidienne des données de droits et démarches administratives. Chaque jour, de nouvelles informations ou des mises à jour sont intégrées au système.
+- Correction d'un problème lié à la version de npm, bloquée en v11 pour garantir la stabilité des builds [#233](https://github.com/SocialGouv/fiches-vdd/issues/233).
 
 ### Évolutions techniques
-- Blocage de la version de npm à v11 pour assurer la cohérence et la stabilité de l'environnement de développement et de construction.
+- Blocage de la version de npm à v11 pour assurer la cohérence et la reproductibilité des builds.
 
 ### Autres changements
-- Aucun autre changement significatif à signaler.
+- Aucune autre modification significative n'a été apportée au projet durant cette période.
