@@ -80,6 +80,7 @@
 │   │   ├── 20260615133725_initialiseMesuresModuleGestionComptes.ts
 │   │   ├── 20260716095237_ajouteColonneParcours.ts
 │   │   ├── 20260717135356_metsAJourMesuresCyberdepartV0_6.ts
+│   │   ├── 20260721140439_creeTableTutoriels.ts
 │   │   └── README.md
 │   ├── package.json
 │   ├── src
@@ -530,8 +531,9 @@
 │   │   ├── guides.ts
 │   │   ├── infrastructure
 │   │   │   ├── adaptateurEnvironnement.ts
-│   │   │   ├── consignateurDeComparaisonDeGuides.ts
-│   │   │   └── entrepotGuideGrist.ts
+│   │   │   └── guides
+│   │   │       ├── consignateurDeComparaisonDeGuides.ts
+│   │   │       └── entrepotGuideGrist.ts
 │   │   └── metier
 │   │       ├── clientHttp.ts
 │   │       └── guides
@@ -540,7 +542,8 @@
 │   │           └── guide.type.ts
 │   ├── tests
 │   │   ├── infrastructure
-│   │   │   └── consignateurDeComparaisonDeGuides.spec.ts
+│   │   │   └── guides
+│   │   │       └── consignateurDeComparaisonDeGuides.spec.ts
 │   │   └── metier
 │   │       └── guides
 │   │           ├── comparateurDeGuides.spec.ts
@@ -1038,6 +1041,7 @@
 │   │   │   ├── directives
 │   │   │   │   ├── actions.svelte.ts
 │   │   │   │   └── validationChamp.ts
+│   │   │   ├── env.d.ts
 │   │   │   ├── favoris
 │   │   │   │   ├── BoutonFavori.svelte
 │   │   │   │   ├── ContenuFavoris.svelte
@@ -1219,7 +1223,6 @@
 │   │   │   │   ├── CarteMesure.svelte
 │   │   │   │   ├── GrilleCartesMesures.svelte
 │   │   │   │   ├── InterlocuteursParcoursSecurisation.svelte
-│   │   │   │   ├── Mesure.svelte
 │   │   │   │   ├── MesuresDeModule.svelte
 │   │   │   │   ├── Module.svelte
 │   │   │   │   ├── ModuleCyberdepart.svelte
@@ -1227,6 +1230,10 @@
 │   │   │   │   ├── PriseEnCompteMesure.svelte
 │   │   │   │   ├── Progression.svelte
 │   │   │   │   ├── avisUtilisateur.store.ts
+│   │   │   │   ├── mesure
+│   │   │   │   │   ├── Mesure.svelte
+│   │   │   │   │   ├── ModaleTutoriel.svelte
+│   │   │   │   │   └── TutorielMesure.svelte
 │   │   │   │   ├── mesure.ts
 │   │   │   │   └── modales
 │   │   │   │       ├── ModaleBadgeCyberdepartDebloque.svelte
@@ -1305,6 +1312,7 @@
 │   │   │   ├── ui
 │   │   │   │   ├── Accordeon.svelte
 │   │   │   │   ├── Alerte.svelte
+│   │   │   │   ├── Alternatives.svelte
 │   │   │   │   ├── Bouton.svelte
 │   │   │   │   ├── BoutonFermerModale.svelte
 │   │   │   │   ├── CaseACocher.svelte
@@ -1482,4 +1490,4 @@
 ├── scripts
 │   └── get-node-version.sh
 └── shell.nix
-210 directories, 1317 files
+213 directories, 1322 files

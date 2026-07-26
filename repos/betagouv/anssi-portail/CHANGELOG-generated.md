@@ -1,40 +1,34 @@
-## Changelog : anssi-portail (30 derniers jours, au 22 juillet 2026)
+## Changelog : anssi-portail (30 derniers jours, au 24 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la performance du site via le rendu côté serveur (SSR) pour de nombreuses pages, incluant les guides, les financements, et le catalogue. Des corrections de SEO ont également été apportées, notamment pour les sitemaps et les liens canoniques. Des améliorations de l'expérience utilisateur ont été implémentées, notamment pour le parcours de sécurisation et la page NIS2.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment avec l'ajout de tutoriels interactifs pour le parcours de sécurisation, la refonte des pages avec les composants DSFR, et l'amélioration du SEO. Des efforts importants ont également été réalisés pour préparer le rendu côté serveur (SSR) de plusieurs pages, optimisant ainsi les performances et le référencement.
 
 ### Évolutions fonctionnelles
-- Implémentation du rendu côté serveur (SSR) pour de nombreuses pages : guides, financements, associations, collectivités, test de maturité, sessions de groupe, pages NIS2, etc. [#1234](https://github.com/betagouv/anssi-portail/issues/1234)
-- Amélioration du parcours de sécurisation : affichage de la progression, des badges de complétion, et des mesures par module.
-- Ajout de la possibilité de féliciter l'utilisateur à la fin du parcours de sécurisation.
-- Amélioration de l'affichage des cartes de modules dans le parcours de sécurisation.
-- Ajout d'un lien dans la note informative de la page NIS2.
-- Correction de l'affichage des liens dans le footer.
-- Mise à jour des mesures du module Cyberdépart.
-- Ajout des pages des contacts régionaux dans le sitemap.
-- Ajout des pages ressources et services dans le sitemap.
-- Ajout des pages guides et financements dans le sitemap.
+- Ajout de tutoriels interactifs pour le parcours de sécurisation, avec des modales d'avertissement harmonisées et un affichage amélioré des mesures.
+- Refonte des pages "NIS 2", "Session de Groupe", "Test Maturité", "Protéger" et "Statistiques" avec les composants DSFR pour une meilleure cohérence visuelle.
+- Amélioration de la navigation et de l'affichage des filtres dans le catalogue.
+- Ajout de la fonctionnalité de sélection de la DA (Direction d'Application) pour une personnalisation accrue.
+- Mise en place d'un composant pour afficher le nombre de mesures prises en compte dans le parcours de sécurisation.
+- Ajout de métadonnées Open Graph et Twitter pour améliorer le partage sur les réseaux sociaux.
+- Ajout d'un composant pour sélectionner la DA à appliquer.
 
 ### Évolutions techniques
+- Préparation du rendu côté serveur (SSR) pour de nombreuses pages : catalogue, guides, financements, associations, NIS2, sessions de groupe, etc.
 - Migration vers Svelte 5 pour le composant Guide.
-- Refonte de l'architecture pour supporter le rendu côté serveur (SSR).
-- Utilisation d'un seul runtime Svelte pour améliorer la performance.
-- Mutualisation des versions de dépendances.
-- Amélioration de la gestion des erreurs 403.
-- Mise à jour de plusieurs dépendances pour corriger des failles de sécurité (axios, brace-expansion, dompurify, uuid, etc.).
-- Ajout de tests Playwright pour l'authentification.
-- Ajout d'un Nix Shell pour le développement en local.
-- Renforcement de la sécurité du CI/CD (désactivation des identifiants git, secrets explicites).
-- Ajout de la validation de configuration avec `zizmor`.
-- Utilisation de uuid v7 pour générer des clés primaires.
+- Amélioration de la gestion des secrets et des variables d'environnement.
+- Mise à jour de nombreuses dépendances, incluant `eslint`, `axios`, `sharp`, `dompurify`, `vitest`, `prettier-plugin-svelte`, `express`, `minimatch` et `concurrently`.
+- Refactorisation du code pour améliorer la modularité et la maintenabilité.
+- Ajout de tests et d'outils de sécurité (zizmor) pour renforcer la robustesse de l'application.
+- Utilisation de UUID v7 pour la génération de clés primaires.
+- Mise en place d'un Nix Shell pour faciliter le développement en local.
 
 ### Autres changements
-- Ajout de métadonnées Open Graph et Twitter pour le SEO.
-- Amélioration de la hiérarchie des titres sur plusieurs pages pour le SEO.
-- Correction de l'indentation des secrets dans les fichiers YAML de déploiement.
-- Ajout de commentaires et de documentation pour améliorer la maintenabilité du code.
-- Suppression de code inutile et de styles obsolètes.
-- Correction de bugs mineurs et amélioration de la qualité du code.
-- Ajout d'un pixel de suivi et gestion du consentement.
+- Correction de bugs et améliorations de la performance.
+- Documentation mise à jour.
+- Nettoyage du code et suppression de code inutile.
+- Uniformisation de l'appellation "parcours complet".
+- Suppression de références figées et de styles inline.
 - Ajout de la campagne Matomo à l'origine des demandes d'aide.
-- Uniformisation des noms des propriétés des composants Svelte.
+- Correction de liens et d'URL canoniques.
+- Suppression de la surcharge de vite@7.
+- Ajout de la taille sur toutes les images.
