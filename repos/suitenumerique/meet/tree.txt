@@ -609,6 +609,16 @@
     │   │   │   │       ├── authUrl.ts
     │   │   │   │       ├── logout.ts
     │   │   │   │       └── silentLogin.ts
+    │   │   │   ├── chat
+    │   │   │   │   └── components
+    │   │   │   │       ├── Chat.tsx
+    │   │   │   │       ├── ChatMessage.tsx
+    │   │   │   │       ├── ChatMessageBody.tsx
+    │   │   │   │       ├── ChatMessageMedata.tsx
+    │   │   │   │       ├── ChatMessages.tsx
+    │   │   │   │       ├── ChatProvider.tsx
+    │   │   │   │       ├── ChatSubmitButton.tsx
+    │   │   │   │       └── ChatTextArea.tsx
     │   │   │   ├── files
     │   │   │   │   └── api
     │   │   │   │       ├── createFile.ts
@@ -628,12 +638,17 @@
     │   │   │   │   ├── components
     │   │   │   │   │   ├── CarouselLayout.tsx
     │   │   │   │   │   ├── ControlBarRegion.tsx
+    │   │   │   │   │   ├── FocusLayout.tsx
     │   │   │   │   │   ├── GridLayout.tsx
     │   │   │   │   │   ├── PaginationControl.tsx
     │   │   │   │   │   ├── PaginationIndicator.tsx
-    │   │   │   │   │   └── RoomContentArea.tsx
+    │   │   │   │   │   ├── PinAnnouncer.tsx
+    │   │   │   │   │   ├── RoomContentArea.tsx
+    │   │   │   │   │   └── StageLayout.tsx
     │   │   │   │   └── hooks
-    │   │   │   │       └── useGridLayout.ts
+    │   │   │   │       ├── useGridLayout.ts
+    │   │   │   │       ├── usePinAnnouncements.ts
+    │   │   │   │       └── useSpeakerPromotionTrigger.ts
     │   │   │   ├── legalsTerms
     │   │   │   │   ├── Accessibility.tsx
     │   │   │   │   ├── LegalTermsRoute.tsx
@@ -666,6 +681,47 @@
     │   │   │   │   │   └── useSoundNotification.tsx
     │   │   │   │   ├── index.ts
     │   │   │   │   └── utils.ts
+    │   │   │   ├── participantTile
+    │   │   │   │   └── components
+    │   │   │   │       ├── FullScreenShareWarning.tsx
+    │   │   │   │       ├── KeyboardShortcutHint.tsx
+    │   │   │   │       ├── MutedMicIndicator.tsx
+    │   │   │   │       ├── ParticipantMetadata.tsx
+    │   │   │   │       ├── ParticipantName.tsx
+    │   │   │   │       ├── ParticipantPlaceholder.tsx
+    │   │   │   │       ├── ParticipantTile.tsx
+    │   │   │   │       ├── RaisedHandMetadataWrapper.tsx
+    │   │   │   │       └── participantTileFocus
+    │   │   │   │           ├── EffectsButton.tsx
+    │   │   │   │           ├── FocusButton.tsx
+    │   │   │   │           ├── MuteButton.tsx
+    │   │   │   │           ├── ParticipantTileFocus.tsx
+    │   │   │   │           └── ZoomButton.tsx
+    │   │   │   ├── participants
+    │   │   │   │   ├── api
+    │   │   │   │   │   ├── enterRoom.ts
+    │   │   │   │   │   ├── listWaitingParticipants.ts
+    │   │   │   │   │   ├── lowerHandParticipant.ts
+    │   │   │   │   │   └── lowerHandParticipants.ts
+    │   │   │   │   ├── components
+    │   │   │   │   │   ├── LowerAllHandsButton.tsx
+    │   │   │   │   │   ├── MuteEveryoneButton.tsx
+    │   │   │   │   │   ├── ParticipantRow.tsx
+    │   │   │   │   │   ├── ParticipantsCollapsibleSection.tsx
+    │   │   │   │   │   ├── ParticipantsCount.tsx
+    │   │   │   │   │   ├── ParticipantsList.tsx
+    │   │   │   │   │   ├── PinBadge.tsx
+    │   │   │   │   │   ├── RaisedHandRow.tsx
+    │   │   │   │   │   ├── WaitingParticipantRow.tsx
+    │   │   │   │   │   ├── WaitingParticipantsSection.tsx
+    │   │   │   │   │   └── menu
+    │   │   │   │   │       ├── ParticipantMenu.tsx
+    │   │   │   │   │       ├── ParticipantMenuButton.tsx
+    │   │   │   │   │       └── items
+    │   │   │   │   │           ├── PinMenuItem.tsx
+    │   │   │   │   │           └── RemoveMenuItem.tsx
+    │   │   │   │   └── hooks
+    │   │   │   │       └── useWaitingParticipants.ts
     │   │   │   ├── pip
     │   │   │   │   ├── components
     │   │   │   │   │   ├── PictureInPictureConference.tsx
@@ -742,11 +798,7 @@
     │   │   │   │   ├── api
     │   │   │   │   │   ├── ApiRoom.ts
     │   │   │   │   │   ├── createRoom.ts
-    │   │   │   │   │   ├── enterRoom.ts
     │   │   │   │   │   ├── fetchRoom.ts
-    │   │   │   │   │   ├── listWaitingParticipants.ts
-    │   │   │   │   │   ├── lowerHandParticipant.ts
-    │   │   │   │   │   ├── lowerHandParticipants.ts
     │   │   │   │   │   ├── muteParticipant.ts
     │   │   │   │   │   ├── muteParticipants.ts
     │   │   │   │   │   ├── patchRoom.tsx
@@ -767,41 +819,27 @@
     │   │   │   │   │   └── Rating.tsx
     │   │   │   │   ├── hooks
     │   │   │   │   │   ├── useLobby.ts
-    │   │   │   │   │   ├── useWaitingParticipants.ts
     │   │   │   │   │   └── useWatchPermissions.ts
     │   │   │   │   ├── index.ts
     │   │   │   │   ├── livekit
     │   │   │   │   │   ├── components
     │   │   │   │   │   │   ├── Admin.tsx
     │   │   │   │   │   │   ├── AdminToggle.tsx
-    │   │   │   │   │   │   ├── FocusLayout.tsx
-    │   │   │   │   │   │   ├── FullScreenShareWarning.tsx
+    │   │   │   │   │   │   ├── ConnectionObserver.tsx
     │   │   │   │   │   │   ├── Info.tsx
     │   │   │   │   │   │   ├── IsIdleDisconnectModal.tsx
-    │   │   │   │   │   │   ├── KeyboardShortcutHint.tsx
     │   │   │   │   │   │   ├── MuteAlertDialog.tsx
-    │   │   │   │   │   │   ├── MutedMicIndicator.tsx
-    │   │   │   │   │   │   ├── ParticipantMenu
-    │   │   │   │   │   │   │   ├── ParticipantMenu.tsx
-    │   │   │   │   │   │   │   ├── ParticipantMenuButton.tsx
-    │   │   │   │   │   │   │   ├── PinMenuItem.tsx
-    │   │   │   │   │   │   │   └── RemoveMenuItem.tsx
-    │   │   │   │   │   │   ├── ParticipantName.tsx
-    │   │   │   │   │   │   ├── ParticipantPlaceholder.tsx
-    │   │   │   │   │   │   ├── ParticipantTile.tsx
-    │   │   │   │   │   │   ├── ParticipantTileFocus.tsx
+    │   │   │   │   │   │   ├── RoomMetadataSynchronizer.tsx
     │   │   │   │   │   │   ├── ScreenShareErrorModal.tsx
     │   │   │   │   │   │   ├── SidePanel.tsx
     │   │   │   │   │   │   ├── Tools.tsx
+    │   │   │   │   │   │   ├── VideoResolutionSubscription.tsx
     │   │   │   │   │   │   ├── blur
     │   │   │   │   │   │   │   ├── BackgroundCustomProcessor.ts
     │   │   │   │   │   │   │   ├── FaceLandmarksProcessor.ts
     │   │   │   │   │   │   │   ├── TimerWorker.ts
     │   │   │   │   │   │   │   ├── UnifiedBackgroundTrackProcessor.ts
     │   │   │   │   │   │   │   └── index.ts
-    │   │   │   │   │   │   ├── chat
-    │   │   │   │   │   │   │   ├── Entry.tsx
-    │   │   │   │   │   │   │   └── Input.tsx
     │   │   │   │   │   │   ├── controls
     │   │   │   │   │   │   │   ├── CameraSwitchButton.tsx
     │   │   │   │   │   │   │   ├── ChatToggle.tsx
@@ -816,6 +854,7 @@
     │   │   │   │   │   │   │   ├── InfoToggle.tsx
     │   │   │   │   │   │   │   ├── LeaveButton.tsx
     │   │   │   │   │   │   │   ├── Options
+    │   │   │   │   │   │   │   │   ├── DocumentationMenuItem.tsx
     │   │   │   │   │   │   │   │   ├── EffectsMenuItem.tsx
     │   │   │   │   │   │   │   │   ├── FeedbackMenuItem.tsx
     │   │   │   │   │   │   │   │   ├── FullScreenMenuItem.tsx
@@ -826,16 +865,7 @@
     │   │   │   │   │   │   │   │   ├── SettingsMenuItem.tsx
     │   │   │   │   │   │   │   │   ├── SupportMenuItem.tsx
     │   │   │   │   │   │   │   │   └── TranscriptMenuItem.tsx
-    │   │   │   │   │   │   │   ├── Participants
-    │   │   │   │   │   │   │   │   ├── HandRaisedListItem.tsx
-    │   │   │   │   │   │   │   │   ├── LowerAllHandsButton.tsx
-    │   │   │   │   │   │   │   │   ├── MuteEveryoneButton.tsx
-    │   │   │   │   │   │   │   │   ├── ParticipantListItem.tsx
-    │   │   │   │   │   │   │   │   ├── ParticipantsCollapsableList.tsx
-    │   │   │   │   │   │   │   │   ├── ParticipantsList.tsx
-    │   │   │   │   │   │   │   │   ├── ParticipantsToggle.tsx
-    │   │   │   │   │   │   │   │   ├── PinBadge.tsx
-    │   │   │   │   │   │   │   │   └── WaitingParticipantListItem.tsx
+    │   │   │   │   │   │   │   ├── ParticipantsToggle.tsx
     │   │   │   │   │   │   │   ├── ScreenShareToggle.tsx
     │   │   │   │   │   │   │   ├── StartMediaButton.tsx
     │   │   │   │   │   │   │   ├── SubtitlesToggle.tsx
@@ -848,7 +878,6 @@
     │   │   │   │   │   │   ├── useCanMute.ts
     │   │   │   │   │   │   ├── useCanPublishTrack.ts
     │   │   │   │   │   │   ├── useCannotUseDevice.ts
-    │   │   │   │   │   │   ├── useConnectionObserver.ts
     │   │   │   │   │   │   ├── useCopyRoomToClipboard.ts
     │   │   │   │   │   │   ├── useDeviceIcons.ts
     │   │   │   │   │   │   ├── useDeviceShortcut.ts
@@ -856,7 +885,6 @@
     │   │   │   │   │   │   ├── useFullScreen.ts
     │   │   │   │   │   │   ├── useHasFunnyEffectsAccess.ts
     │   │   │   │   │   │   ├── useIsAdminOrOwner.ts
-    │   │   │   │   │   │   ├── useIsAdvancedConnectionObserverEnabled.ts
     │   │   │   │   │   │   ├── useKonami.ts
     │   │   │   │   │   │   ├── useMediaQuery.ts
     │   │   │   │   │   │   ├── useNoiseReduction.ts
@@ -871,10 +899,8 @@
     │   │   │   │   │   │   ├── useRoomPageTitle.ts
     │   │   │   │   │   │   ├── useSidePanel.ts
     │   │   │   │   │   │   ├── useSyncLiveKitMetadata.ts
-    │   │   │   │   │   │   ├── useTelephony.ts
-    │   │   │   │   │   │   └── useVideoResolutionSubscription.ts
+    │   │   │   │   │   │   └── useTelephony.ts
     │   │   │   │   │   ├── prefabs
-    │   │   │   │   │   │   ├── Chat.tsx
     │   │   │   │   │   │   ├── ControlBar
     │   │   │   │   │   │   │   ├── ControlBar.tsx
     │   │   │   │   │   │   │   ├── DesktopControlBar.tsx
@@ -927,7 +953,6 @@
     │   │   │   │   │       └── layout
     │   │   │   │   │           └── RowWrapper.tsx
     │   │   │   │   ├── hook
-    │   │   │   │   │   ├── useSettingsDialog.ts
     │   │   │   │   │   └── useTranscriptionLanguage.ts
     │   │   │   │   ├── index.ts
     │   │   │   │   └── type.ts
@@ -1318,4 +1343,4 @@
             └── unit
                 ├── test_file_service.py
                 └── test_user_assign.py
-249 directories, 1071 files
+257 directories, 1088 files
