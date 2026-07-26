@@ -1,23 +1,28 @@
 ## Changelog : monstagedeseconde (30 derniers jours, au 22 juillet 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations de la sécurité, des corrections de bugs et des optimisations de l'interface utilisateur. Des mises à jour ont été apportées aux formulaires d'offres, aux pages partenaires et à la gestion des candidatures. Des refactorings techniques ont également été réalisés pour améliorer la maintenabilité du code.
+Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur des entreprises et des étudiants, avec des mises à jour des pages partenaires, de la page étudiant et du formulaire de création d'offres. Des corrections de sécurité importantes ont également été apportées, ainsi que des refactorisations techniques pour améliorer la qualité du code et la maintenance de la plateforme.
 
 ### Évolutions fonctionnelles
-- **Offres d'emploi :** Limitation de la longueur de la description des offres via l'API [#922](https://github.com/betagouv/monstagedeseconde/pulls/922).
-- **Formulaire d'offre :** Amélioration de la visualisation des erreurs lors de la création d'une offre [#937](https://github.com/betagouv/monstagedeseconde/pulls/937).
-- **Pages partenaires :** Mise à jour des pages partenaires avec un carrousel de logos [#941](https://github.com/betagouv/monstagedeseconde/pulls/941), [#944](https://github.com/betagouv/monstagedeseconde/pulls/944), [#942](https://github.com/betagouv/monstagedeseconde/pulls/942).
-- **Page étudiant :** Mise à jour de la page étudiant [#941](https://github.com/betagouv/monstagedeseconde/pulls/941).
-- **Suppression FAQ :** Suppression du bloc FAQ de la page d'accueil [#921](https://github.com/betagouv/monstagedeseconde/pulls/921).
-- **Statut des candidatures :** Simplification des libellés des états des candidatures dans les tableaux de bord [#936](https://github.com/betagouv/monstagedeseconde/pulls/936).
+- **Pages Partenaires :** Ajout d'un carrousel de logos de partenaires sur les pages dédiées. [#944](https://github.com/betagouv/monstagedeseconde/pull/944)
+- **Page Étudiant :** Mise à jour de la page étudiant avec des améliorations non précisées. [#941](https://github.com/betagouv/monstagedeseconde/pull/941)
+- **Formulaire Offres :** Amélioration de la visualisation des erreurs lors de la création d'une offre. [#937](https://github.com/betagouv/monstagedeseconde/pull/937)
+- **Statut des offres :** Modification des libellés des états des candidatures dans les tableaux de bord pour plus de clarté. [#936](https://github.com/betagouv/monstagedeseconde/pull/936)
+- **Suppression FAQ :** Suppression de la FAQ de la page d'accueil. [#921](https://github.com/betagouv/monstagedeseconde/pull/921)
+- **Limitation description offre :** Limitation de la longueur de la description des offres via l'API. [#922](https://github.com/betagouv/monstagedeseconde/pull/922)
 
 ### Évolutions techniques
-- **Sécurité :** Correction de potentielles failles XSS dans le rendu du contenu Prismic [#933](https://github.com/betagouv/monstagedeseconde/pulls/933) et renforcement de la sécurité contre le détournement de compte [#932](https://github.com/betagouv/monstagedeseconde/pulls/932). Utilisation de `secure_compare` pour les comparaisons sensibles [#920](https://github.com/betagouv/monstagedeseconde/pulls/920).
-- **Refactoring :** Mutualisation de code et suppression de code mort dans divers composants [#938](https://github.com/betagouv/monstagedeseconde/pulls/938), [#920](https://github.com/betagouv/monstagedeseconde/pulls/920).
-- **Archivage :** Mise à jour des tâches d'archivage des offres et des employeurs [#943](https://github.com/betagouv/monstagedeseconde/pulls/943), [#947](https://github.com/betagouv/monstagedeseconde/pulls/947).
-- **Maintenance :** Préparation pour la maintenance d'été 2026 [#943](https://github.com/betagouv/monstagedeseconde/pulls/943).
+- **Refactorisation du code :** Mutualisation de code pour la vérification SIRET et la création de signatures.
+- **Refactorisation des états de candidature :** Refactorisation des libellés des états des candidatures. [#936](https://github.com/betagouv/monstagedeseconde/pull/936)
+- **Sécurité :** Correction d'une vulnérabilité potentielle de détournement de compte par un élève. [#932](https://github.com/betagouv/monstagedeseconde/pull/932)
+- **Sécurité :** Correction d'une vulnérabilité XSS dans le rendu du contenu Prismic. [#933](https://github.com/betagouv/monstagedeseconde/pull/933)
+- **Archivage des offres :** Amélioration de la tâche d'archivage automatique des offres d'entreprises.
+- **Maintenance :** Mise à jour pour la maintenance estivale. [#943](https://github.com/betagouv/monstagedeseconde/pull/943)
+- **Refactorisation :** Suppression d'instanciation inutile de l'objet `signature_builder`.
+- **Refactorisation :** Mutualisation de `before_action :authenticate_user!` dans les contrôleurs du tableau de bord.
 
 ### Autres changements
-- Mise à jour des dépendances : plusieurs dépendances ont été mises à jour (webpack-dev-server, babel/core, undici, http-proxy-middleware, concurrent-ruby, js-yaml, form-data, launch-editor, nokogiri, faraday, view_component, websocket-driver).
-- Amélioration de la gestion des erreurs et des tests.
-- Corrections mineures et améliorations de la qualité du code.
+- Mise à jour des dépendances : `websocket-driver` (0.8.0 -> 0.8.1), `view_component` (4.9.0 -> 4.12.0), `js-yaml` (3.14.2 -> 3.15.0).
+- Correction de tests unitaires et système.
+- Amélioration de la gestion des erreurs.
+- Suppression de code obsolète.
