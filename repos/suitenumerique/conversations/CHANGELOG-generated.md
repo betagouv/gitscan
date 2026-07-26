@@ -1,29 +1,26 @@
-## Changelog : conversations (30 derniers jours, au 22 juillet 2026)
+## Changelog : conversations (30 derniers jours, au 23 juillet 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à la gestion des fichiers, notamment un traitement asynchrone pour une meilleure performance. L'interface utilisateur a été peaufinée avec des corrections de bugs et des améliorations visuelles, ainsi qu'un indicateur d'impact carbone pour les messages de l'assistant. Des changements techniques ont été effectués pour optimiser le code et préparer le terrain pour de futures évolutions.
+Ce mois-ci, les améliorations se concentrent sur la performance, la sécurité et l'expérience utilisateur. Des optimisations ont été apportées au traitement des fichiers et des conversations, notamment en utilisant des tâches asynchrones pour éviter les blocages. L'interface utilisateur a été améliorée avec l'ajout d'un indicateur d'impact carbone et la correction de bugs visuels. La sécurité a également été renforcée avec des protections contre les attaques par décompression et la gestion des tailles de fichiers.
 
 ### Évolutions fonctionnelles
 - Ajout d'un indicateur d'impact carbone sur les messages de l'assistant [#554ff4a](https://github.com/suitenumerique/conversations/commit/554ff4a).
-- Implémentation d'une fonctionnalité "Modifier dans Docs" pour exporter facilement les messages vers la documentation [#1a19225](https://github.com/suitenumerique/conversations/commit/1a19225).
-- Amélioration de la gestion des erreurs et des messages d'information, notamment avec l'utilisation de couleurs sémantiques pour les bannières [#b33481a](https://github.com/suitenumerique/conversations/commit/b33481a).
-- Correction d'un bug qui empêchait le rafraîchissement du titre de la conversation dans le panneau latéral replié [#91b5554](https://github.com/suitenumerique/conversations/commit/91b5554).
-- Mise à jour de l'illustration de la page 404 [#2579a14](https://github.com/suitenumerique/conversations/commit/2579a14).
-- Correction d'un problème empêchant l'application de fonctionner correctement pour les utilisateurs sans nom complet ou adresse email [#08127a3](https://github.com/suitenumerique/conversations/commit/08127a3).
+- Implémentation d'une fonctionnalité "Modifier dans Docs" pour exporter les messages vers la documentation [#1a19225](https://github.com/suitenumerique/conversations/commit/1a19225).
+- Mise à jour de l'interface utilisateur pour autoriser les noms complets vides [#08127a3](https://github.com/suitenumerique/conversations/commit/08127a3).
+- Amélioration du widget d'impact CO2 [#c823027](https://github.com/suitenumerique/conversations/commit/c823027).
+- Modification de l'illustration de la page 404 [#2579a14](https://github.com/suitenumerique/conversations/commit/2579a14).
 
 ### Évolutions techniques
-- Suppression de l'ancien backend Find RAG et de ses paramètres associés [#55266db](https://github.com/suitenumerique/conversations/commit/55266db).
-- Protection contre les "decompression bombs" et les fichiers PDF trop volumineux lors de l'analyse [#d48bbb0](https://github.com/suitenumerique/conversations/commit/d48bbb0).
-- Traitement asynchrone des fichiers de conversation et des fichiers de projet pour améliorer les performances [#d9cf44f](https://github.com/suitenumerique/conversations/commit/d9cf44f) et [#059ac93](https://github.com/suitenumerique/conversations/commit/059ac93).
-- Mise en place de Celery pour l'exécution de tâches en arrière-plan [#9abe4b9](https://github.com/suitenumerique/conversations/commit/9abe4b9).
-- Ajout d'un mécanisme de repli (fallback) pour les modèles [#b57d758](https://github.com/suitenumerique/conversations/commit/b57d758).
+- Suppression du backend Find RAG et de ses paramètres associés [#55266db](https://github.com/suitenumerique/conversations/commit/55266db).
+- Mise en place de tâches asynchrones avec Celery pour le traitement des fichiers et des conversations [#29abe4b9](https://github.com/suitenumerique/conversations/commit/9abe4b9), [#d9cf44f](https://github.com/suitenumerique/conversations/commit/d9cf44f), [#059ac93](https://github.com/suitenumerique/conversations/commit/059ac93).
+- Protection contre les attaques par décompression et les fichiers PDF trop volumineux [#d48bbb0](https://github.com/suitenumerique/conversations/commit/d48bbb0).
 - Refactorisation du module de vues de chat et utilisation de constantes partagées [#0c06446](https://github.com/suitenumerique/conversations/commit/0c06446).
-- Amélioration de la configuration de l'environnement de test et des dépendances [#7a9b58b](https://github.com/suitenumerique/conversations/commit/7a9b58b) et [#1466e32](https://github.com/suitenumerique/conversations/commit/1466e32).
+- Mise à jour et épinglage des dépendances pour corriger des vulnérabilités CVE [#aab6e91](https://github.com/suitenumerique/conversations/commit/aab6e91), [#2337408](https://github.com/suitenumerique/conversations/commit/2337408).
+- Ajout d'un mécanisme de repli de modèle [#b57d758](https://github.com/suitenumerique/conversations/commit/b57d758).
+- Amélioration des tests : nettoyage des paramètres et des fixtures, simplification de la configuration de l'environnement de test [#7a9b58b](https://github.com/suitenumerique/conversations/commit/7a9b58b), [#1466e32](https://github.com/suitenumerique/conversations/commit/1466e32).
 - Extraction d'un composant réutilisable pour la bannière de saisie de chat [#e1ea8fb](https://github.com/suitenumerique/conversations/commit/e1ea8fb).
 
 ### Autres changements
-- Mise à jour des traductions [#bd8c532](https://github.com/suitenumerique/conversations/commit/bd8c532).
-- Mise à jour des logos et des favicons [#ea17208](https://github.com/suitenumerique/conversations/commit/ea17208).
-- Correction de liens et de cibles [#9dd4cb7](https://github.com/suitenumerique/conversations/commit/9dd4cb7).
-- Mise à jour des dépendances frontales et de messagerie [#68dd00b](https://github.com/suitenumerique/conversations/commit/68dd00b).
-- Mise à jour de la version à 0.0.19 [#77c41c4](https://github.com/suitenumerique/conversations/commit/77c41c4).
+- Correction du titre de la conversation dans le panneau latéral replié [#91b5554](https://github.com/suitenumerique/conversations/commit/91b5554).
+- Modification du titre des exports de documentation pour utiliser un format horodaté localisé [#2e79f94](https://github.com/suitenumerique/conversations/commit/2e79f94).
+- Correction de l'extension des fichiers exportés en documentation (suppression de `.md`) [#a2af746](https://github.com/suitenumerique/conversations/commit/a2af746), [#7e89b33](https://github.com/suitenumerique/conversations/commit/7e89b33).
