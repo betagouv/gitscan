@@ -1383,6 +1383,17 @@
 │   │   │   ├── select_champ_template_position_component
 │   │   │   │   └── select_champ_template_position_component.html.haml
 │   │   │   └── select_champ_template_position_component.rb
+│   │   ├── users
+│   │   │   ├── dossier_card_champs_component
+│   │   │   │   ├── dossier_card_champs_component.en.yml
+│   │   │   │   ├── dossier_card_champs_component.fr.yml
+│   │   │   │   └── dossier_card_champs_component.html.erb
+│   │   │   ├── dossier_card_champs_component.rb
+│   │   │   ├── personnalisation_component
+│   │   │   │   ├── personnalisation_component.en.yml
+│   │   │   │   ├── personnalisation_component.fr.yml
+│   │   │   │   └── personnalisation_component.html.erb
+│   │   │   └── personnalisation_component.rb
 │   │   └── viewable_champ
 │   │       ├── header_sections_summary_component
 │   │       │   └── header_sections_summary_component.html.haml
@@ -1850,6 +1861,7 @@
 │   │   │   │   │   └── ParcelleLayer.tsx
 │   │   │   │   └── index.tsx
 │   │   │   ├── MapReader.tsx
+│   │   │   ├── Select.test.tsx
 │   │   │   ├── Select.tsx
 │   │   │   ├── SelectSections.test.tsx
 │   │   │   ├── process-env-shim.ts
@@ -2377,6 +2389,7 @@
 │   │   ├── dossier_transfer.rb
 │   │   ├── dossier_transfer_log.rb
 │   │   ├── dossiers_filter.rb
+│   │   ├── dossiers_list_personnalisation.rb
 │   │   ├── dubious_procedure.rb
 │   │   ├── email_event.rb
 │   │   ├── entreprise.rb
@@ -2601,6 +2614,7 @@
 │   │   ├── clone_pieces_justificatives_service.rb
 │   │   ├── clone_referentiel_service.rb
 │   │   ├── cojo_service.rb
+│   │   ├── column_value_formatter.rb
 │   │   ├── commentaire_service.rb
 │   │   ├── create_avis_service.rb
 │   │   ├── crisp
@@ -2820,6 +2834,7 @@
 │   │   ├── exported_column_type.rb
 │   │   ├── external_data_exception_type.rb
 │   │   ├── filtered_column_type.rb
+│   │   ├── personnalisation_column_type.rb
 │   │   └── sorted_column_type.rb
 │   ├── validators
 │   │   ├── date_limit_validator.rb
@@ -3640,6 +3655,7 @@
 │           │   ├── messagerie.html.haml
 │           │   ├── modifier.html.haml
 │           │   ├── modifier_legacy.turbo_stream.haml
+│           │   ├── personnalisation.html.erb
 │           │   ├── rendez_vous.html.haml
 │           │   ├── show
 │           │   │   ├── _attestation_depot.html.haml
@@ -4776,9 +4792,11 @@
 │   │   ├── 20260622131426_add_estimated_processing_duration_visible_to_procedures.rb
 │   │   ├── 20260625153605_add_requires_ip_filtering_to_api_tokens.rb
 │   │   ├── 20260625153641_change_requires_ip_filtering_default.rb
+│   │   ├── 20260629135523_create_dossiers_list_personnalisations.rb
 │   │   ├── 20260701140241_add_json_columns_to_mail_templates.rb
 │   │   ├── 20260703000000_add_soft_delete_at_to_active_storage_blobs.rb
-│   │   └── 20260713000000_rename_soft_delete_at_to_soft_deleted_at_on_active_storage_blobs.rb
+│   │   ├── 20260713000000_rename_soft_delete_at_to_soft_deleted_at_on_active_storage_blobs.rb
+│   │   └── 20260722000000_add_dossiers_connection_ordering_indexes.rb
 │   ├── schema.rb
 │   ├── seeds
 │   │   ├── avis.rb
@@ -5174,13 +5192,16 @@
 │   │   ├── tags_button_list_component_spec.rb
 │   │   ├── tiptap_editor_component_spec.rb
 │   │   ├── type_de_champ_header_sections_summary_component_spec.rb
-│   │   └── types_de_champ_editor
-│   │       ├── champ_component_spec.rb
-│   │       ├── conditions_errors_component_spec.rb
-│   │       ├── dossier_link_champ_component_spec.rb
-│   │       ├── editor_component_spec.rb
-│   │       ├── explication_component_spec.rb
-│   │       └── info_referentiel_component_spec.rb
+│   │   ├── types_de_champ_editor
+│   │   │   ├── champ_component_spec.rb
+│   │   │   ├── conditions_errors_component_spec.rb
+│   │   │   ├── dossier_link_champ_component_spec.rb
+│   │   │   ├── editor_component_spec.rb
+│   │   │   ├── explication_component_spec.rb
+│   │   │   └── info_referentiel_component_spec.rb
+│   │   └── users
+│   │       ├── dossier_card_champs_component_spec.rb
+│   │       └── personnalisation_component_spec.rb
 │   ├── config
 │   │   └── active_storage_spec.rb
 │   ├── controllers
@@ -5221,7 +5242,7 @@
 │   │   │       ├── base_controller_spec.rb
 │   │   │       ├── dossiers_controller_spec.rb
 │   │   │       ├── graphql_controller_n+1_spec.rb
-│   │   │       ├── graphql_controller_spec.rb
+│   │   │       ├── graphql_controller_stored_mutations_spec.rb
 │   │   │       └── graphql_controller_stored_queries_spec.rb
 │   │   ├── api_controller_spec.rb
 │   │   ├── application_controller
@@ -5342,6 +5363,7 @@
 │   │   ├── deleted_dossier.rb
 │   │   ├── dossier.rb
 │   │   ├── dossier_*.rb  (6 files)
+│   │   ├── dossiers_list_personnalisation.rb
 │   │   ├── email_event.rb
 │   │   ├── etablissement.rb
 │   │   ├── exercice.rb
@@ -5885,6 +5907,7 @@
 │   │   ├── dossier_spec.rb
 │   │   ├── dossier_submitted_message_spec.rb
 │   │   ├── dossier_transfer_spec.rb
+│   │   ├── dossiers_list_personnalisation_spec.rb
 │   │   ├── dubious_procedure_spec.rb
 │   │   ├── email_event_spec.rb
 │   │   ├── etablissement_spec.rb
@@ -6022,6 +6045,7 @@
 │   │   ├── blob_service_spec.rb
 │   │   ├── clamav_service_spec.rb
 │   │   ├── clone_pieces_justificatives_service_spec.rb
+│   │   ├── column_value_formatter_spec.rb
 │   │   ├── commentaire_service_spec.rb
 │   │   ├── create_avis_service_spec.rb
 │   │   ├── crisp
@@ -6176,6 +6200,7 @@
 │   │       ├── dossier_prefill_get_spec.rb
 │   │       ├── dossier_prefill_post_spec.rb
 │   │       ├── dossier_shared_examples.rb
+│   │       ├── dossiers_personnalisation_spec.rb
 │   │       ├── dropdown_rebase_spec.rb
 │   │       ├── dropdown_spec.rb
 │   │       ├── en_construction_spec.rb
@@ -6367,6 +6392,7 @@
 │       │   ├── _header_spec.rb
 │       │   ├── application_html_spec.rb
 │       │   └── procedure_context.html.haml_spec.rb
+│       ├── prawn_templates_spec.rb
 │       ├── prefill_descriptions
 │       │   └── _prefillable_entities.html.haml_spec.rb
 │       ├── shared
@@ -6417,4 +6443,4 @@
 │           └── leaflet.scss
 ├── vite.config.ts
 └── vitest.config.ts
-1030 directories, 5734 files
+1034 directories, 5756 files

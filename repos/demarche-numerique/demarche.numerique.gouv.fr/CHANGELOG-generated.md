@@ -1,40 +1,35 @@
-## Changelog : demarche.numerique.gouv.fr (30 derniers jours, au 2026-07-23)
+## Changelog : demarche.numerique.gouv.fr (30 derniers jours, au 24 juillet 2026)
 
 ### Résumé
-Les dernières semaines ont été marquées par des améliorations de la performance, de la sécurité et de l'expérience utilisateur. Des corrections de bugs ont été apportées, notamment concernant l'affichage des informations et la gestion des pièces jointes. Des refactorings importants ont été réalisés pour préparer la plateforme à de futures évolutions, notamment en vue de l'intégration de nouvelles fonctionnalités et de l'amélioration de la gestion des données. L'accessibilité a également été améliorée.
+Cette période a été marquée par des améliorations significatives de l'expérience utilisateur, notamment autour de la personnalisation des dossiers, de la gestion des pièces jointes et de l'ergonomie de l'interface. Des corrections de bugs et des optimisations de performance ont également été apportées, ainsi que des évolutions techniques pour faciliter la maintenance et l'évolutivité de la plateforme.
 
 ### Évolutions fonctionnelles
-*   **Gestion des pièces jointes :** Amélioration de la gestion des pièces jointes, notamment pour l'avis d'imposition avec extraction OCR.
+*   **Personnalisation des dossiers :** Ajout d'une fonctionnalité de personnalisation des dossiers permettant aux utilisateurs de choisir les champs à afficher. Cela inclut la possibilité de regrouper les champs par section et de gérer les champs conditionnels.
+*   **Gestion des pièces jointes :** Amélioration de la gestion des pièces jointes, notamment en affichant les valeurs des champs associés sur les cartes de dossier.
 *   **Interface utilisateur :**
-    *   Amélioration de l'interface pour la gestion des dossiers, notamment avec l'ajout d'un panneau de filtre et d'une recherche.
-    *   Refonte de l'affichage des informations sur les procédures.
-    *   Amélioration de l'affichage des informations relatives à l'expiration des dossiers.
-    *   Amélioration de l'affichage des informations sur les transferts de dossiers.
-*   **Notifications :** Ajout d'une notification pour les dossiers soumis via ProConnect.
-*   **Sécurité :** Renforcement de la sécurité avec l'ajout d'une validation de la présence d'un token API.
-*   **API :** Ajout de la possibilité de cloner une démarche via l'API.
-*   **Gestion des utilisateurs :** Possibilité pour un administrateur de réinitialiser le mot de passe d'un autre super-administrateur.
-*   **Amélioration de l'accessibilité :** Amélioration de l'accessibilité pour les champs et les formulaires.
+    *   Amélioration de l'affichage des notifications et des messages d'erreur.
+    *   Correction de problèmes d'affichage et d'accessibilité.
+    *   Refonte de l'interface d'administration pour la gestion des modèles d'emails.
+*   **Export des données :** Optimisation de l'export des données au format CSV pour améliorer les performances.
+*   **Instructions :** Amélioration du flux d'instruction des dossiers, avec une nouvelle interface modale pour la prise de décision.
+*   **Avis d'imposition :** Ajout de la gestion des avis d'imposition avec extraction OCR.
+*   **Géolocalisation :** Amélioration de la gestion de la géolocalisation et correction de problèmes d'affichage sur la carte cadastrale.
 
 ### Évolutions techniques
-*   **Refactoring :**
-    *   Migration de nombreux composants HAML vers ERB pour une meilleure maintenabilité.
-    *   Refactorisation du code pour améliorer la performance et la lisibilité.
-    *   Refactorisation de la gestion des champs et des types de champs.
-*   **Performance :** Optimisation des requêtes SQL pour améliorer la performance de l'application.
+*   **Refactoring :** Refactorisation de plusieurs composants pour améliorer la maintenabilité et la lisibilité du code.
 *   **Tests :** Ajout de tests unitaires et d'intégration pour garantir la qualité du code.
-*   **Déploiement :** Amélioration du processus de déploiement.
-*   **Dépendances :** Mise à jour des dépendances pour bénéficier des dernières corrections de bugs et améliorations de sécurité.
-*   **Infrastructure :** Amélioration de l'infrastructure pour garantir la disponibilité et la scalabilité de l'application.
-*   **Oaken Seeds:** Utilisation de Oaken seeds pour les données de test, améliorant la cohérence et la reproductibilité des tests.
-*   **GraphQL:** Utilisation de dataloader pour optimiser les requêtes GraphQL.
-*   **S3:** Ajout d'un feature flag pour l'utilisation de S3.
+*   **Performance :** Optimisation des requêtes en base de données pour améliorer les performances de l'application.
+*   **Dépendances :** Mise à jour de plusieurs dépendances pour bénéficier des dernières corrections de bugs et améliorations de sécurité.
+*   **Infrastructure :** Amélioration de l'infrastructure de déploiement et de la gestion des logs.
+*   **GraphQL :** Utilisation de dataloader pour optimiser les requêtes GraphQL.
+*   **Rails 8 :** Finalisation de la migration vers Rails 8.
+*   **Oaken seeds :** Utilisation de seeds Oaken pour améliorer la cohérence et la reproductibilité des tests.
+*   **Suppression de code obsolète :** Suppression de code obsolète et de fonctionnalités non utilisées.
 
 ### Autres changements
-*   **Documentation :** Mise à jour de la documentation pour refléter les dernières modifications.
-*   **i18n :** Ajout de traductions pour les nouvelles fonctionnalités.
-*   **Nettoyage du code :** Suppression du code obsolète et amélioration de la qualité du code.
-*   **Skylight:** Instrumentation de la liste des dossiers pour le suivi des performances avec Skylight.
-*   **Suppression de fonctionnalités obsolètes:** Suppression de fonctionnalités et de code inutilisés.
-*   **Amélioration des logs:** Ajout de logs plus informatifs pour faciliter le débogage.
-*   **Correction de bugs mineurs:** Correction de divers bugs mineurs.
+*   **Documentation :** Mise à jour de la documentation pour refléter les dernières modifications de l'application.
+*   **i18n :** Ajout de nouvelles traductions et correction de problèmes de traduction.
+*   **Linting :** Application de règles de linting pour améliorer la qualité du code.
+*   **Sécurité :** Correction de vulnérabilités de sécurité potentielles.
+*   **Monitoring :** Ajout de nouvelles métriques de monitoring pour suivre les performances de l'application.
+*   **Nettoyage du code :** Nettoyage général du code pour améliorer la lisibilité et la maintenabilité.
