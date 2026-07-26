@@ -1,36 +1,36 @@
-## Changelog : playground (30 derniers jours, au 2026-07-16)
+## Changelog : playground (30 derniers jours, au 22 juillet 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a travaillé sur l'amélioration de la gestion des documents, notamment en ajoutant des fonctionnalités de filtrage, de tri et de journalisation des activités. Des améliorations ont également été apportées à l'interface utilisateur pour faciliter la traduction et l'archivage des fiches, ainsi qu'à la gestion des logs et des agents Lletta.
+Ce mois-ci, l'équipe a travaillé sur l'amélioration de l'expérience utilisateur, notamment au niveau des pop-ups de publication, de la gestion des traductions et de l'historique des actions sur les fiches. Des améliorations techniques ont également été apportées pour optimiser les logs, la gestion des états et l'intégration de nouveaux filtres.
 
 ### Évolutions fonctionnelles
-- Ajout d'un filtre sur la barre de recherche pour spécifier le champ à interroger. [#300](https://github.com/refugies-info/playground/issues/300)
-- Possibilité de trier la liste des fichiers importés par date d'importation. [#299](https://github.com/refugies-info/playground/issues/299)
-- Affichage des dates de publication et d'archivage sur les fiches. [#296](https://github.com/refugies-info/playground/issues/296)
-- Intégration d'un système de notes pour les fiches. [#292](https://github.com/refugies-info/playground/issues/292)
-- Possibilité de mettre à jour le statut de travail directement depuis l'en-tête de la fiche et la liste. [#293](https://github.com/refugies-info/playground/issues/293)
-- Amélioration de l'interface utilisateur pour la page de traduction et la liste des traductions. [#282](https://github.com/refugies-info/playground/issues/282), [#283](https://github.com/refugies-info/playground/issues/283)
-- Ajout d'un message d'avertissement pour indiquer à l'utilisateur qu'une autre personne est en train d'éditer la fiche. [#256](https://github.com/refugies-info/playground/issues/256)
-- Ajout d'un filtre pour spécifier le champ à rechercher. [#291](https://github.com/refugies-info/playground/issues/291)
-- Possibilité de trier par numéro de version sur la liste des documents. [#278](https://github.com/refugies-info/playground/issues/278)
-- Affichage des versions d'ingestion sous forme de fractions. [#277](https://github.com/refugies-info/playground/issues/277)
+- **Publication :** Amélioration de l'UX/UI des pop-ups de publication [#305](https://github.com/refugies-info/playground/pull/305).
+- **Conformité :** Suppression de la restriction du changement de conformité pour faciliter la gestion des fiches [#298](https://github.com/refugies-info/playground/pull/298).
+- **Notifications :** Ajout d'une notification Slack lors de la publication d'une fiche [#303](https://github.com/refugies-info/playground/pull/303).
+- **Archivage :** Affichage d'une pop-up informant qu'une fiche a été archivée [#303](https://github.com/refugies-info/playground/pull/303).
+- **Traduction :**
+    - Amélioration de l'UX/UI de la page de traduction [#294](https://github.com/refugies-info/playground/pull/294) et de la liste des traductions [#282](https://github.com/refugies-info/playground/pull/282), [#286](https://github.com/refugies-info/playground/pull/286).
+    - Ajout d'un système de notes pour les traductions [#292](https://github.com/refugies-info/playground/pull/292).
+    - Possibilité d'assigner un traducteur à une traduction.
+    - Ajout d'une sauvegarde automatique pour les traductions.
+- **Recherche :** Ajout d'un filtre pour la barre de recherche permettant de spécifier le champ à rechercher [#300](https://github.com/refugies-info/playground/pull/300).
+- **Import :**
+    - Tri de la liste des éléments importés par date d'import [#299](https://github.com/refugies-info/playground/pull/299).
+    - Ajout de filtres dans l'onglet d'import [#291](https://github.com/refugies-info/playground/pull/291).
+- **Workflow :** Ajout d'un onglet "Journal d'activités" pour suivre l'historique des actions sur les fiches [#269](https://github.com/refugies-info/playground/pull/269).
+- **État de traitement :** Amélioration de la gestion de l'état de traitement des fiches [#293](https://github.com/refugies-info/playground/pull/293).
+- **Gestion des utilisateurs :** Centralisation des données utilisateurs dans le backend [#289](https://github.com/refugies-info/playground/pull/289).
 
 ### Évolutions techniques
-- Enregistrement des tokens consommés pour chaque opération avec Lletta. [#295](https://github.com/refugies-info/playground/issues/295)
-- Ajout de logs pour l'ensemble des opérations, incluant l'archivage, la modification du statut et les actions sur les documents. [#297](https://github.com/refugies-info/playground/issues/297)
-- Amélioration de la gestion des états de traitement. [#294](https://github.com/refugies-info/playground/issues/294)
-- Mise en place d'un environnement local de développement pour éviter la consommation de ressources de production. [#275](https://github.com/refugies-info/playground/issues/275)
-- Correction d'un problème de création d'agent sur Lletta. [#298](https://github.com/refugies-info/playground/issues/298)
-- Refactoring du code pour améliorer la cohérence et la maintenabilité.
-- Mise à jour des dépendances et correction de bugs mineurs.
+- **Logs :** Ajout de logs pour diverses opérations, notamment l'archivage et les traductions [#297](https://github.com/refugies-info/playground/pull/297).
+- **Base de données :** Suppression d'une requête inutile et migration pour le type de valeur archivage [#298](https://github.com/refugies-info/playground/pull/298).
+- **Performance :** Réduction du nombre d'éléments traités par défaut dans l'ingestion de données [#275](https://github.com/refugies-info/playground/pull/275).
+- **Architecture :** Refactorisation du code et suppression de fichiers inutiles.
+- **Intégration :** Amélioration de l'intégration avec Letta (gestion des tokens et des logs).
 
 ### Autres changements
-- Ajout de commentaires et de documentation pour faciliter la compréhension du code.
-- Nettoyage du code et suppression de fichiers inutiles.
-- Amélioration des tests unitaires.
-- Correction de problèmes de typage et de gestion des erreurs.
-- Centralisation des données utilisateurs dans le Bomo. [#289](https://github.com/refugies-info/playground/issues/289)
-- Suppression de l'action d'archivage sur la page de traduction.
-- Amélioration de la gestion des permissions pour les traductions.
-- Ajout de tests pour les nouvelles fonctionnalités.
-- Correction de bugs et amélioration de la stabilité de l'application.
+- Ajout d'un SVG personnalisé [#303](https://github.com/refugies-info/playground/pull/303).
+- Mise à jour de la documentation.
+- Corrections de bugs et améliorations de la qualité du code.
+- Amélioration de la gestion des erreurs et des messages d'information.
+- Correction de conflits de branche.

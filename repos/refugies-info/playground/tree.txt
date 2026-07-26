@@ -266,6 +266,7 @@
 │   │   │   │   └── translation-editor
 │   │   │   │       ├── SourcePane.tsx
 │   │   │   │       ├── TranslationActions.tsx
+│   │   │   │       ├── TranslationArchivedDialog.tsx
 │   │   │   │       ├── TranslationContext.tsx
 │   │   │   │       ├── TranslationEditorPane.tsx
 │   │   │   │       ├── TranslationLayout.tsx
@@ -700,52 +701,55 @@
 │   │   │   │   │   ├── Icon.stories.tsx
 │   │   │   │   │   ├── Icon.tsx
 │   │   │   │   │   ├── custom-icons
-│   │   │   │   │   │   └── dsfr
-│   │   │   │   │   │       ├── EraserFill1.tsx
-│   │   │   │   │   │       ├── EraserLine1.tsx
-│   │   │   │   │   │       ├── FrAccessibilityFill.tsx
-│   │   │   │   │   │       ├── FrAccessibilityLine.tsx
-│   │   │   │   │   │       ├── FrAlertWarning2Fill.tsx
-│   │   │   │   │   │       ├── FrAlertWarningFill.tsx
-│   │   │   │   │   │       ├── FrArrowLeftSFirstLine.tsx
-│   │   │   │   │   │       ├── FrArrowLeftSLineDouble.tsx
-│   │   │   │   │   │       ├── FrArrowRightSLastLine.tsx
-│   │   │   │   │   │       ├── FrArrowRightSLineDouble.tsx
-│   │   │   │   │   │       ├── FrAvalanchesFill.tsx
-│   │   │   │   │   │       ├── FrAvalanchesLine.tsx
-│   │   │   │   │   │       ├── FrBold.tsx
-│   │   │   │   │   │       ├── FrCapslockLine.tsx
-│   │   │   │   │   │       ├── FrDailymotionFill.tsx
-│   │   │   │   │   │       ├── FrDailymotionLine.tsx
-│   │   │   │   │   │       ├── FrEarOffFill.tsx
-│   │   │   │   │   │       ├── FrEarOffLine.tsx
-│   │   │   │   │   │       ├── FrEqualCircleFill.tsx
-│   │   │   │   │   │       ├── FrErrorFill.tsx
-│   │   │   │   │   │       ├── FrErrorLine.tsx
-│   │   │   │   │   │       ├── FrHighlight.tsx
-│   │   │   │   │   │       ├── FrInfoFill.tsx
-│   │   │   │   │   │       ├── FrInfoLine.tsx
-│   │   │   │   │   │       ├── FrMentalDisabilitiesFill.tsx
-│   │   │   │   │   │       ├── FrMentalDisabilitiesLine.tsx
-│   │   │   │   │   │       ├── FrQuoteFill.tsx
-│   │   │   │   │   │       ├── FrQuoteLine.tsx
-│   │   │   │   │   │       ├── FrSignLanguageFill.tsx
-│   │   │   │   │   │       ├── FrSignLanguageLine.tsx
-│   │   │   │   │   │       ├── FrSubmersionFill.tsx
-│   │   │   │   │   │       ├── FrSubmersionLine.tsx
-│   │   │   │   │   │       ├── FrSuccessFill.tsx
-│   │   │   │   │   │       ├── FrSuccessLine.tsx
-│   │   │   │   │   │       ├── FrThemeFill.tsx
-│   │   │   │   │   │       ├── FrTiktokFill.tsx
-│   │   │   │   │   │       ├── FrTiktokLine.tsx
-│   │   │   │   │   │       ├── FrWarningFill.tsx
-│   │   │   │   │   │       ├── FrWarningLine.tsx
-│   │   │   │   │   │       ├── FranceFill.tsx
-│   │   │   │   │   │       ├── FranceLine.tsx
-│   │   │   │   │   │       ├── ProfilFill.tsx
-│   │   │   │   │   │       ├── ProfilLine.tsx
-│   │   │   │   │   │       ├── UserSettingFill.tsx
-│   │   │   │   │   │       ├── UserSettingLine.tsx
+│   │   │   │   │   │   ├── dsfr
+│   │   │   │   │   │   │   ├── EraserFill1.tsx
+│   │   │   │   │   │   │   ├── EraserLine1.tsx
+│   │   │   │   │   │   │   ├── FrAccessibilityFill.tsx
+│   │   │   │   │   │   │   ├── FrAccessibilityLine.tsx
+│   │   │   │   │   │   │   ├── FrAlertWarning2Fill.tsx
+│   │   │   │   │   │   │   ├── FrAlertWarningFill.tsx
+│   │   │   │   │   │   │   ├── FrArrowLeftSFirstLine.tsx
+│   │   │   │   │   │   │   ├── FrArrowLeftSLineDouble.tsx
+│   │   │   │   │   │   │   ├── FrArrowRightSLastLine.tsx
+│   │   │   │   │   │   │   ├── FrArrowRightSLineDouble.tsx
+│   │   │   │   │   │   │   ├── FrAvalanchesFill.tsx
+│   │   │   │   │   │   │   ├── FrAvalanchesLine.tsx
+│   │   │   │   │   │   │   ├── FrBold.tsx
+│   │   │   │   │   │   │   ├── FrCapslockLine.tsx
+│   │   │   │   │   │   │   ├── FrDailymotionFill.tsx
+│   │   │   │   │   │   │   ├── FrDailymotionLine.tsx
+│   │   │   │   │   │   │   ├── FrEarOffFill.tsx
+│   │   │   │   │   │   │   ├── FrEarOffLine.tsx
+│   │   │   │   │   │   │   ├── FrEqualCircleFill.tsx
+│   │   │   │   │   │   │   ├── FrErrorFill.tsx
+│   │   │   │   │   │   │   ├── FrErrorLine.tsx
+│   │   │   │   │   │   │   ├── FrHighlight.tsx
+│   │   │   │   │   │   │   ├── FrInfoFill.tsx
+│   │   │   │   │   │   │   ├── FrInfoLine.tsx
+│   │   │   │   │   │   │   ├── FrMentalDisabilitiesFill.tsx
+│   │   │   │   │   │   │   ├── FrMentalDisabilitiesLine.tsx
+│   │   │   │   │   │   │   ├── FrQuoteFill.tsx
+│   │   │   │   │   │   │   ├── FrQuoteLine.tsx
+│   │   │   │   │   │   │   ├── FrSignLanguageFill.tsx
+│   │   │   │   │   │   │   ├── FrSignLanguageLine.tsx
+│   │   │   │   │   │   │   ├── FrSubmersionFill.tsx
+│   │   │   │   │   │   │   ├── FrSubmersionLine.tsx
+│   │   │   │   │   │   │   ├── FrSuccessFill.tsx
+│   │   │   │   │   │   │   ├── FrSuccessLine.tsx
+│   │   │   │   │   │   │   ├── FrThemeFill.tsx
+│   │   │   │   │   │   │   ├── FrTiktokFill.tsx
+│   │   │   │   │   │   │   ├── FrTiktokLine.tsx
+│   │   │   │   │   │   │   ├── FrWarningFill.tsx
+│   │   │   │   │   │   │   ├── FrWarningLine.tsx
+│   │   │   │   │   │   │   ├── FranceFill.tsx
+│   │   │   │   │   │   │   ├── FranceLine.tsx
+│   │   │   │   │   │   │   ├── ProfilFill.tsx
+│   │   │   │   │   │   │   ├── ProfilLine.tsx
+│   │   │   │   │   │   │   ├── UserSettingFill.tsx
+│   │   │   │   │   │   │   ├── UserSettingLine.tsx
+│   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   └── manual
+│   │   │   │   │   │       ├── FrRefreshLine2.tsx
 │   │   │   │   │   │       └── index.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── icon-badge
@@ -819,6 +823,7 @@
 │       │   │   ├── common
 │       │   │   │   ├── activity-log.ts
 │       │   │   │   ├── get-editorial-record-id.ts
+│       │   │   │   ├── slack.ts
 │       │   │   │   └── supabase.ts
 │       │   │   ├── editorial
 │       │   │   │   ├── force-editorial-step.ts
@@ -1008,4 +1013,4 @@
 ├── tsconfig.json
 ├── turbo.json
 └── vercel-setup.sh
-224 directories, 786 files
+225 directories, 790 files
