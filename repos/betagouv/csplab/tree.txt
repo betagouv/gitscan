@@ -70,6 +70,7 @@
 │   ├── docker_compose_override.md
 │   ├── frontend_conventions.md
 │   ├── frontend_vue.md
+│   ├── local_https_named_host.md
 │   ├── notebook
 │   │   ├── .gitkeep
 │   │   └── dila_organisme.html
@@ -173,6 +174,7 @@
 │           ├── source_type.py
 │           ├── type_competence.py
 │           └── verse.py
+├── mise.toml
 ├── package.json
 └── src
     ├── ingestion
@@ -498,7 +500,6 @@
         │           ├── initialize_organisme_steps.py
         │           ├── lister_mes_recrutements.py
         │           ├── lister_notes_candidature.py
-        │           ├── recrutement_detail_static_data.py
         │           ├── supprimer_note.py
         │           └── update_organisme_steps.py
         ├── bin
@@ -1091,7 +1092,8 @@
         │   ├── frontend
         │   │   ├── .storybook
         │   │   │   ├── main.ts
-        │   │   │   └── preview.ts
+        │   │   │   ├── preview.ts
+        │   │   │   └── storybook.css
         │   │   ├── eslint.config.js
         │   │   ├── package.json
         │   │   ├── src
@@ -1109,6 +1111,9 @@
         │   │   │   ├── components
         │   │   │   │   ├── ErrorBoundary.vue
         │   │   │   │   ├── base
+        │   │   │   │   │   ├── CspAsyncSection
+        │   │   │   │   │   │   ├── CspAsyncSection.stories.ts
+        │   │   │   │   │   │   └── CspAsyncSection.vue
         │   │   │   │   │   ├── CspAvatar
         │   │   │   │   │   │   ├── CspAvatar.stories.ts
         │   │   │   │   │   │   └── CspAvatar.vue
@@ -1147,6 +1152,12 @@
         │   │   │   │   │   ├── CspDropdownMenu
         │   │   │   │   │   │   ├── CspDropdownMenu.stories.ts
         │   │   │   │   │   │   └── CspDropdownMenu.vue
+        │   │   │   │   │   ├── CspEmptyState
+        │   │   │   │   │   │   ├── CspEmptyState.stories.ts
+        │   │   │   │   │   │   └── CspEmptyState.vue
+        │   │   │   │   │   ├── CspErrorState
+        │   │   │   │   │   │   ├── CspErrorState.stories.ts
+        │   │   │   │   │   │   └── CspErrorState.vue
         │   │   │   │   │   ├── CspIcon
         │   │   │   │   │   │   ├── CspIcon.stories.ts
         │   │   │   │   │   │   └── CspIcon.vue
@@ -1222,6 +1233,7 @@
         │   │   │   │       │   ├── CspAppShell.types.ts
         │   │   │   │       │   └── CspAppShell.vue
         │   │   │   │       ├── CspPageContainer
+        │   │   │   │       │   ├── CspPageContainer.stories.ts
         │   │   │   │       │   └── CspPageContainer.vue
         │   │   │   │       ├── CspPageHeader
         │   │   │   │       │   ├── CspPageHeader.stories.ts
@@ -1348,12 +1360,16 @@
         │   │   │   │   │   ├── DDR-002.mdx
         │   │   │   │   │   ├── DDR-003.mdx
         │   │   │   │   │   ├── DDR-004.mdx
+        │   │   │   │   │   ├── DDR-005.mdx
+        │   │   │   │   │   ├── DDR-006.mdx
         │   │   │   │   │   └── content
         │   │   │   │   │       ├── ddr-000-pourquoi-des-ddr.md
         │   │   │   │   │       ├── ddr-001-couches-design.md
         │   │   │   │   │       ├── ddr-002-ossature-configuree.md
         │   │   │   │   │       ├── ddr-003-stabilite-au-chargement.md
-        │   │   │   │   │       └── ddr-004-transitions.md
+        │   │   │   │   │       ├── ddr-004-transitions.md
+        │   │   │   │   │       ├── ddr-005-largeur-de-contenu.md
+        │   │   │   │   │       └── ddr-006-etats-asynchrones.md
         │   │   │   │   └── useStoryOpenState.ts
         │   │   │   ├── styles
         │   │   │   │   ├── csp-variables.css
@@ -1663,6 +1679,9 @@
         │   │       └── test_admin.py
         │   ├── presentation
         │   │   ├── __init__.py
+        │   │   ├── ats
+        │   │   │   ├── __init__.py
+        │   │   │   └── test_vite_tags.py
         │   │   ├── candidate
         │   │   │   ├── __init__.py
         │   │   │   ├── accessibility
@@ -1748,4 +1767,4 @@
         │       ├── test_interface_aware_mock.py
         │       └── test_storages.py
         └── uv.lock
-350 directories, 1400 files
+354 directories, 1415 files
