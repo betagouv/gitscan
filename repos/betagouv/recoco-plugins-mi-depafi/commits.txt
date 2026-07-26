@@ -1,5 +1,26 @@
+2026-07-24T21:30:13+02:00 - cda19c7 - Guillaume Libersat : Merge pull request #31 from betagouv/feature/import
+2026-07-24T21:26:16+02:00 - c6410d7 - Guillaume Libersat : update README to reflect latest evoltuions of the command. move test file now that a dedicated tests dir exsits.
+2026-07-24T21:14:27+02:00 - 741ffa4 - Guillaume Libersat : Merge branch 'main' into feature/import
+2026-07-24T21:06:33+02:00 - f10e4c5 - Guillaume Libersat : chore(tests): split test files into smaller ones so it is more maintainable
+2026-07-24T20:55:21+02:00 - ee50dcc - Guillaume Libersat : Merge branch 'main' into feature/import
+2026-07-24T20:50:43+02:00 - d9c2055 - Guillaume Libersat : Merge pull request #32 from betagouv/feat/add-real-detail
+2026-07-24T20:48:39+02:00 - 45cbc9f - Guillaume Libersat : optim(photos): prefetch related field to avoir o(N) queries.
+2026-07-24T16:30:06+02:00 - c1f5c23 - Louis Pluvinage : [refactor] photo array to make it work like a linked list
+2026-07-24T15:29:35+02:00 - f660ef6 - Jérémy Bojko : Merge pull request #43 from betagouv/feat/enhance-form-real#2290
+2026-07-24T15:08:01+02:00 - e274580 - Jeremy-Bojko : feat: add required field on site
+2026-07-24T12:03:51+02:00 - 172e18e - Guillaume Libersat : models(realisation): update get_absolute_url so it points to the Realisation list page with the identifying anchor.
+2026-07-24T11:44:56+02:00 - 837df8e - Guillaume Libersat : fix(notifications): do not send notification as privates, does not make sense
+2026-07-24T10:45:29+02:00 - 4d8e3c8 - Jeremy-Bojko : feat: add required field
+2026-07-24T10:38:03+02:00 - d361597 - Guillaume Libersat : Merge pull request #42 from betagouv/fix/enhance_description_card
+2026-07-24T10:26:12+02:00 - 4b09621 - Jeremy-Bojko : feat: change required wording on realisation form
+2026-07-23T11:22:33+02:00 - bf9db3e - Guillaume Libersat : feat(brevo): add the template hook so it appears in the admin
+2026-07-21T17:15:14+02:00 - 0dcb1e9 - Louis Pluvinage : Merge branch 'feat/add-real-detail' of https://github.com/betagouv/recoco-plugins-mi-depafi into feat/add-real-detail
+2026-07-21T17:14:27+02:00 - 94a3e09 - Louis Pluvinage : [refactor] overload dsfr classes instead of creating new classes
+2026-07-20T16:54:44+02:00 - afd31f6 - Jeremy-Bojko : fix: remove unecessary spaces in realisation card description
 2026-07-20T14:50:42+02:00 - b25ba88 - Guillaume Libersat : fix(notifications): do not notify the Realisation author
+2026-07-20T12:56:39+02:00 - a6b1b41 - Guillaume Libersat : Merge branch 'main' into feat/add-real-detail
 2026-07-20T12:56:26+02:00 - 767a3d7 - Guillaume Libersat : bump version
+2026-07-20T12:55:36+02:00 - 3bb5a04 - Guillaume Libersat : Merge branch 'main' into feat/add-real-detail
 2026-07-20T12:53:15+02:00 - f06d6ea - Guillaume Libersat : Merge pull request #33 from betagouv/feature/08-crm-traces
 2026-07-20T12:51:56+02:00 - c9db89d - Guillaume Libersat : Merge branch 'main' into feature/08-crm-traces
 2026-07-20T12:15:59+02:00 - a6501b8 - Jeremy-Bojko : chore: add comment
@@ -8,6 +29,9 @@
 2026-07-20T12:09:37+02:00 - 5b029a7 - Guillaume Libersat : Merge pull request #37 from betagouv/feat/add-search-select#36
 2026-07-20T12:03:04+02:00 - 8d95421 - Guillaume Libersat : plugin(security): clean description field using nh3
 2026-07-20T11:19:56+02:00 - 10d3da9 - Guillaume Libersat : Merge pull request #34 from betagouv/features/notifications
+2026-07-20T09:48:04+02:00 - 1eaaae3 - Louis Pluvinage : [feat] add hover effect on picture
+2026-07-20T09:35:27+02:00 - 19440b8 - Louis Pluvinage : [feat] add sticky header and scrollable columns
+2026-07-16T11:25:35+02:00 - 79e20dc - Louis Pluvinage : [feat] merge headers in one
 2026-07-16T11:12:01+02:00 - 8bbc7b6 - Jeremy-Bojko : fix: display correct formatted content in realisation card
 2026-07-16T10:54:09+02:00 - c4c909d - Jérémy Bojko : Merge pull request #39 from betagouv/feat/list-realisation-change-order#38
 2026-07-16T10:53:44+02:00 - 0f13fae - Jeremy-Bojko : feat: change order by in view list realisations
@@ -16,9 +40,31 @@
 2026-07-16T10:07:05+02:00 - 6ecbf37 - Jeremy-Bojko : style: add ellipsis behaviour on category col + title
 2026-07-16T10:04:41+02:00 - 3931af0 - Jeremy-Bojko : feat: display new trace in admin with linked resource
 2026-07-15T15:16:34+02:00 - ecc1d01 - Guillaume Libersat : feature(realisations): restrict Resources to current site when creating a Realisation
+2026-07-13T15:15:26+02:00 - 82e56a3 - Guillaume Libersat : tests: copy current_site since conftests.py is not importe (note: should make a util to import from plugins)
+2026-07-13T15:07:10+02:00 - baf5d4d - Guillaume Libersat : import(lakaa): since lakaa exports Realisation as multi-lines, consolidate data before upserting.
+2026-07-13T14:46:15+02:00 - f25690c - Guillaume Libersat : import(lakaa): consider status (draft, published) for Resources
+2026-07-13T14:34:42+02:00 - d94fe29 - Guillaume Libersat : import(lakaa): enhance import for Resources.  - make use of body AND description field  - concatenate optional info to the body  - convert html to markdown
+2026-07-13T11:25:10+02:00 - 0084c91 - Guillaume Libersat : import(lakaa): better location handling for Projects (Sites)  - try to guess the city  - better coordinates handling
+2026-07-10T20:18:33+02:00 - aaf31b0 - Guillaume Libersat : commands(import): allow one to force import the Projects
+2026-07-10T15:43:00+02:00 - aa03122 - Guillaume Libersat : command(import): Enhance Organisation import  - add force sync flag  - use OrganizationGroup  - add tests
 2026-07-09T22:28:12+02:00 - 233bfce - Guillaume Libersat : feature(notifications): add staff notification and digests  - Implement staff digest to dispatch the Realisation email  - Add a new Template for new Realisation/projects  - Create notifications for staff for new Realisation and new Project (may be duplicate)
 2026-07-09T18:25:55+02:00 - 3c78889 - Guillaume Libersat : feature(crm): enhance Realisation tracability  - Add a deletion trace (and VERB)  - Add tests for both creation and deletion  - Add a test fixture so MI_Futur switch is enabled and does not break tests
+2026-07-09T18:16:24+02:00 - 34f3488 - Guillaume Libersat : scripts(import): enhance user handling by allowing force resync
+2026-07-09T13:51:46+02:00 - e5bbaa2 - Guillaume Libersat : imports: add the imported User to the current matching Site
+2026-07-08T16:50:44+02:00 - 8cecfdb - Louis Pluvinage : [feat] add navigation element selected style and refactor next and previous buttons logic
+2026-07-08T16:08:34+02:00 - 61c8c0c - Louis Pluvinage : [feat] add next and previous button for photos in modal (logic + style)
+2026-07-08T12:36:55+02:00 - 1aaedce - Louis Pluvinage : [feat] add logic to change modal content and add more specific context from django to display photo and their number in array
+2026-07-08T11:27:57+02:00 - b03efc0 - Louis Pluvinage : [feat] add modal display gestion with js structur
+2026-07-08T11:20:39+02:00 - 842f166 - Guillaume Libersat : feature(import): initial import logic for Lakaa migration (needs work!)  - Users, Projects (Sites), Resources and Realisations imported  - Links between models  - Image download from Lakaa servers (PDF too)  - Still need field assignment reviewing
 2026-07-08T10:09:57+02:00 - 7ac43d4 - Guillaume Libersat : chore(uv): do not incldue the data dir when building
+2026-07-08T09:53:23+02:00 - 8c91c30 - Louis Pluvinage : [feat] add style to pictures
+2026-07-07T17:48:34+02:00 - 5afc7e3 - Louis Pluvinage : [refactor] put inline css into classes
+2026-07-07T17:41:59+02:00 - 1123d87 - Louis Pluvinage : [feat] add second column with final style
+2026-07-07T16:55:11+02:00 - 6d0009c - Louis Pluvinage : [feat] add picures button
+2026-07-07T16:45:21+02:00 - 2ea5e4b - Louis Pluvinage : [feat] add documents part
+2026-07-07T16:00:44+02:00 - 4fd5675 - Louis Pluvinage : [feat] add key figures part to modal
+2026-07-07T15:55:09+02:00 - 594a808 - Louis Pluvinage : [feat] add css class to right column elements
+2026-07-07T15:10:18+02:00 - 4ecd8ff - Louis Pluvinage : [feat] add css structur + header final style
 2026-07-07T10:47:56+02:00 - b9e263f - Jérémy Bojko : Merge pull request #30 from betagouv/style/card
 2026-07-07T10:47:24+02:00 - b80c71d - Jeremy-Bojko : style: restore lost changes
 2026-07-06T16:46:46+02:00 - ab14ff4 - Guillaume Libersat : Merge pull request #29 from betagouv/feat/add-switch-feature

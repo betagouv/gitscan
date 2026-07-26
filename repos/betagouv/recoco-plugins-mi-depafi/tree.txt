@@ -8,6 +8,8 @@
 │   ├── apps.py
 │   ├── conftest.py
 │   ├── css
+│   │   ├── fragments
+│   │   │   └── realisation-modal.scss
 │   │   ├── realisation-form.scss
 │   │   └── realisation-list.scss
 │   ├── digests.py
@@ -17,16 +19,24 @@
 │   │   │   ├── realisationForm.js
 │   │   │   └── realisationListCrm.js
 │   │   ├── components
+│   │   │   ├── RealisationDetailView.js
 │   │   │   ├── RealisationDocumentList.js
 │   │   │   ├── RealisationListCrm.js
 │   │   │   ├── RealisationPhotoGallery.js
 │   │   │   ├── RealisationResourceSelect.js
 │   │   │   └── realisationsMap.js
 │   │   ├── styles
+│   │   │   ├── fragments
+│   │   │   │   └── realisation-modal.css.js
 │   │   │   ├── realisation-form.css.js
 │   │   │   └── realisation-list.css.js
 │   │   └── utils
 │   │       └── RealisationInviteOnTaskDone.js
+│   ├── management
+│   │   ├── __init__.py
+│   │   └── commands
+│   │       ├── __init__.py
+│   │       └── import_lakaa.py
 │   ├── migrations
 │   │   ├── 0001_initial.py
 │   │   ├── 0002_realisationlike.py
@@ -61,10 +71,20 @@
 │   │       ├── realisation_list.html
 │   │       ├── realisation_map.html
 │   │       └── realisations_by_resource.html
+│   ├── tests
+│   │   ├── __init__.py
+│   │   ├── conftest.py
+│   │   ├── test_conversation_nodes.py
+│   │   ├── test_crm_export.py
+│   │   ├── test_digests.py
+│   │   ├── test_import_lakaa.py
+│   │   ├── test_notifications.py
+│   │   ├── test_ownership.py
+│   │   └── test_realisation_views.py
 │   ├── tests.py
 │   ├── urls.py
 │   ├── verbs.py
 │   └── views.py
 ├── pyproject.toml
 └── yarn.lock
-12 directories, 57 files
+17 directories, 72 files
