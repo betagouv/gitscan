@@ -1,38 +1,37 @@
-## Changelog : recommandations-collaboratives (30 derniers jours, au 21 juillet 2026)
+## Changelog : recommandations-collaboratives (30 derniers jours, au 24 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment en matière d'authentification (ajout d'une option de connexion par code, amélioration de la gestion de l'authentification à deux facteurs) et de gestion des organisations et des projets. Des travaux ont également été réalisés pour préparer l'intégration de plugins et améliorer la sécurité du projet.
+Cette période a été marquée par des améliorations significatives de l'interface utilisateur, notamment au niveau du CRM avec la refonte des pages organisations et projets, l'ajout de filtres et l'amélioration de la navigation. Des corrections de bugs et des optimisations de sécurité ont également été apportées, ainsi que l'introduction d'un système de plugins pour une plus grande extensibilité.
 
 ### Évolutions fonctionnelles
-- **Authentification :** Ajout d'une méthode de connexion par code, en complément de l'authentification par email/mot de passe.
-- **Authentification à deux facteurs (2FA) :** Amélioration de la gestion de la 2FA, avec la possibilité de désactiver la 2FA pour les comptes de service et une configuration plus flexible.
-- **Interface utilisateur :**
-    - Amélioration de l'affichage des informations sur les projets (ajout d'un indicateur de statut).
-    - Refonte de la page d'accueil et de la page des organisations.
-    - Amélioration de l'accessibilité des éléments d'interface.
-- **Gestion des projets :**
-    - Ajout d'une colonne "Raison de la pause" pour les projets inactifs.
-    - Possibilité de filtrer les projets par statut de lecture des recommandations.
-    - Amélioration de l'interface de fusion des organisations.
-- **Notifications :** Amélioration de la visibilité des notifications.
+- Amélioration de l'interface CRM : refonte des pages d'organisations et de projets [#2182, #2200].
+- Ajout de filtres sur la page des organisations CRM [#2226].
+- Possibilité de masquer le bouton de création de nouveau projet [#2205].
+- Ajout d'un indicateur visuel pour les projets "en pause" avec l'identification de l'utilisateur responsable [#2229].
+- Amélioration de l'affichage des informations de projet sur la page d'accueil du CRM.
+- Ajout d'un lien cliquable vers l'organisation dans les détails d'un utilisateur CRM [#2296].
+- Amélioration de la gestion des notifications : affichage correct des notifications privées et publiques [#2279, #2292].
+- Mise en place d'un système de plugins pour étendre les fonctionnalités de l'application [#1986, #2225].
+- Possibilité de se connecter par code (email) [#2278].
+- Augmentation de la longueur maximale du message d'avertissement [#2227].
+- Ajout d'une option pour masquer le bouton "Nouveau projet" dans le CRM.
 
 ### Évolutions techniques
-- **Plugins :**
-    - Intégration d'un système de plugins pour étendre les fonctionnalités de l'application.
-    - Amélioration de la gestion des migrations et de la sécurité des plugins.
-    - Refonte de la gestion des assets (JavaScript, CSS) pour les plugins.
-- **Dépendances :** Mise à jour de plusieurs dépendances (Django, Wagtail, Axios, etc.) pour bénéficier des dernières corrections de sécurité et améliorations de performance.
-- **Refactoring :**
-    - Simplification et clarification de plusieurs parties du code.
-    - Suppression de code obsolète.
-    - Amélioration de la structure du code pour faciliter la maintenance et l'évolution.
-- **CI/CD :** Amélioration de la configuration du pipeline CI/CD.
-- **Suppression de `requirements.txt` :** Le fichier `requirements.txt` a été supprimé, la gestion des dépendances étant désormais assurée par d'autres outils.
+- Mise à jour de plusieurs dépendances (Django, Wagtail, Axios, etc.) pour bénéficier des dernières corrections de sécurité et améliorations de performance.
+- Refactorisation du code pour améliorer la maintenabilité et la lisibilité.
+- Amélioration de la gestion des erreurs et des exceptions.
+- Optimisation des requêtes SQL pour améliorer les performances.
+- Mise en place de tests unitaires et d'intégration pour garantir la qualité du code.
+- Suppression de code inutilisé et nettoyage du codebase.
+- Amélioration de la gestion des migrations de base de données pour le système de plugins.
+- Correction de problèmes liés à la configuration de l'authentification 2FA.
+- Mise à jour de la configuration de Vite pour le système de plugins.
 
 ### Autres changements
-- Documentation mise à jour pour le système de plugins.
-- Ajout de tests unitaires pour les nouvelles fonctionnalités.
-- Nettoyage du code et correction de petites erreurs.
-- Suppression de fichiers inutiles du dépôt.
-- Amélioration des messages d'erreur et des validations de formulaire.
-- Correction de problèmes de sécurité mineurs.
+- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les changements d'API.
+- Correction de problèmes mineurs d'interface utilisateur et d'accessibilité.
+- Amélioration des messages d'erreur et des notifications.
+- Ajout de commentaires et de documentation au code.
+- Correction de problèmes liés à la gestion des cookies Sesame.
+- Ajout de fichiers au `.gitignore` pour exclure les fichiers inutiles du contrôle de version.
+- Suppression de la maintenance du fichier `requirements.txt`.
