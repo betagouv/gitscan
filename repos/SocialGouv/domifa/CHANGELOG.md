@@ -1,3 +1,36 @@
+## [2.250.19](https://github.com/SocialGouv/domifa/compare/v2.250.18...v2.250.19) (2026-07-08)
+
+
+### Bug Fixes
+
+* **backend:** fix double send ([f158e0b](https://github.com/SocialGouv/domifa/commit/f158e0bb0bf411546cd8ca999cdb7a4caf4d5045))
+* **backend:** fix double send ([53789f8](https://github.com/SocialGouv/domifa/commit/53789f81d56e56627ea602109dedd5f6f1d6540b))
+
+## [2.250.18](https://github.com/SocialGouv/domifa/compare/v2.250.17...v2.250.18) (2026-07-07)
+
+
+### Bug Fixes
+
+* **backend:** add domains to whitelist ([f35c878](https://github.com/SocialGouv/domifa/commit/f35c8787e6b2a11da126807c81d48e9964d2a8c6))
+* **backend:** add emails for some domains ([af45969](https://github.com/SocialGouv/domifa/commit/af45969a717774f95a7087a1b97e7f40b929c9f8))
+* **backend:** update build ([d15ca38](https://github.com/SocialGouv/domifa/commit/d15ca38a096f87869c2ae8b85d3bfabf716431a8))
+
+## [2.250.17](https://github.com/SocialGouv/domifa/compare/v2.250.16...v2.250.17) (2026-06-30)
+
+
+### Bug Fixes
+
+* **backend:** add type forgotten ([9a880b5](https://github.com/SocialGouv/domifa/commit/9a880b520200a57204adc5140124f05f5fa3a4a6))
+* **backend:** fix linter & imports ([5352630](https://github.com/SocialGouv/domifa/commit/53526305cbd0c1f7f6acb70cde0836185c82621a))
+* **backend:** fix unique ip ([c358003](https://github.com/SocialGouv/domifa/commit/c358003b6b0db4b6542368d04e9f11e4c777cbf1))
+
+## [2.250.16](https://github.com/SocialGouv/domifa/compare/v2.250.15...v2.250.16) (2026-06-30)
+
+
+### Bug Fixes
+
+* **backend:** fix save of ips ([458bc5f](https://github.com/SocialGouv/domifa/commit/458bc5f179e4ff9b05be3c446e687b2fbf802b76))
+
 ## [2.250.15](https://github.com/SocialGouv/domifa/compare/v2.250.14...v2.250.15) (2026-06-29)
 
 
