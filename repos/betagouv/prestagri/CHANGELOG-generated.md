@@ -1,20 +1,17 @@
-## Changelog : prestagri (30 derniers jours, au 2026-07-16)
+## Changelog : prestagri (30 derniers jours, au 24 juillet 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives au calcul de l'aide à la scolarité, notamment la prise en compte des couples mariés, des points de scolarité et des combinaisons de bonus QF.  Des corrections de gestion des erreurs API et de documentation ont également été apportées, ainsi qu'un contrôle de sécurité.
+Cette nouvelle version de Prest'Agri se concentre sur l'amélioration du calcul et de l'affichage des aides sociales, notamment pour l'aide à la scolarité. Des contrôles de sécurité ont été ajoutés et l'interface a été enrichie pour une meilleure compréhension des calculs.
 
 ### Évolutions fonctionnelles
-- Ajout d'une calculatrice pour l'aide à la scolarité [#1234](https://github.com/betagouv/prestagri/issues/1234) (v0.18).
-- Prise en charge des couples mariés dans le calcul de l'aide à la scolarité (v0.17).
-- Intégration des valeurs de points de scolarité et des combinaisons de bonus QF (v0.20).
-- Déploiement de l'aide à la scolarité sans trajet (v0.15).
-- Amélioration de la gestion des erreurs de l'API (v0.16).
-- Tests d'adresse depuis le DN (v0.15.1).
-- Ajout de fichiers de démonstration pour la documentation (v0.15.2).
-- Amélioration des explications et de la clarté de l'application (v0.21).
+- Ajout d'une calculette pour l'aide à la scolarité [#1234](https://github.com/betagouv/prestagri/issues/1234)
+- Prise en compte des couples mariés dans les calculs.
+- Affichage amélioré des explications concernant les calculs des aides.
+- Prise en compte de la valeur du point de scolarité et combinaison avec le bonus QF.
+- Mise en place d'un pilotage simple pour l'application.
 
 ### Évolutions techniques
-- Ajout d'un contrôle de sécurité (v0.22).
+- Ajout de contrôles de sécurité pour renforcer la protection de l'application.
 
 ### Autres changements
-- Mise à jour de la documentation.
+- Aucun changement significatif à signaler.
