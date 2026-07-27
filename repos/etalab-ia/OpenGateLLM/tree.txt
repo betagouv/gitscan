@@ -15,7 +15,6 @@
 │   ├── badges
 │   │   └── coverage.json
 │   ├── codeql.config.yml
-│   ├── compose.ci.yml
 │   ├── semgrep-rules.yml
 │   └── workflows
 │       ├── build.yml
@@ -37,6 +36,7 @@
 │   ├── 2026-01-30-es-scaling.md
 │   ├── 2026-03-17-integration-test-isolation.md
 │   ├── 2026-05-28-refactoring-model-forwarding.md
+│   ├── 2026-07-01-split-rag.md
 │   ├── README.md
 │   └── scripts
 │       └── 2026-01-30-es-migration.py
@@ -167,8 +167,7 @@
 │   │   ├── admin
 │   │   │   ├── __init__.py
 │   │   │   ├── organizations.py
-│   │   │   ├── tokens.py
-│   │   │   └── users.py
+│   │   │   └── tokens.py
 │   │   ├── audio.py
 │   │   ├── chat.py
 │   │   ├── me
@@ -444,7 +443,9 @@
 │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   ├── keys
 │   │   │   │   │   │   ├── __init__.py
-│   │   │   │   │   │   └── test_create_key.py
+│   │   │   │   │   │   ├── test_create_key.py
+│   │   │   │   │   │   ├── test_get_key.py
+│   │   │   │   │   │   └── test_get_keys.py
 │   │   │   │   │   ├── provider
 │   │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   │   ├── test_create_provider.py
@@ -471,7 +472,8 @@
 │   │   │   │   │       ├── test_create_user.py
 │   │   │   │   │       ├── test_delete_user.py
 │   │   │   │   │       ├── test_get_user.py
-│   │   │   │   │       └── test_get_users.py
+│   │   │   │   │       ├── test_get_users.py
+│   │   │   │   │       └── test_update_user.py
 │   │   │   │   ├── conftest.py
 │   │   │   │   ├── test_auth_login.py
 │   │   │   │   ├── test_embeddings.py
@@ -520,7 +522,8 @@
 │   │   │   │       ├── test_get_first_admin_user.py
 │   │   │   │       ├── test_get_user_by_id.py
 │   │   │   │       ├── test_get_user_id_and_password_by_email.py
-│   │   │   │       └── test_get_users.py
+│   │   │   │       ├── test_get_users.py
+│   │   │   │       └── test_update_user.py
 │   │   │   ├── redis
 │   │   │   │   ├── test_redisproviderloadbalancer.py
 │   │   │   │   ├── test_redisprovidermetricslogger.py
@@ -542,6 +545,12 @@
 │   │       │       └── test_entities.py
 │   │       ├── infrastructure
 │   │       │   ├── factories.py
+│   │       │   ├── fastapi
+│   │       │   │   └── endpoints
+│   │       │   │       └── admin
+│   │       │   │           └── keys
+│   │       │   │               ├── test_get_key.py
+│   │       │   │               └── test_get_keys.py
 │   │       │   ├── http
 │   │       │   │   ├── adapters
 │   │       │   │   │   ├── test_embeddingsadapter.py
@@ -600,7 +609,8 @@
 │   │           │       ├── test_createuserusecase.py
 │   │           │       ├── test_deleteuserusecase.py
 │   │           │       ├── test_getoneuserusecase.py
-│   │           │       └── test_getusersusecase.py
+│   │           │       ├── test_getusersusecase.py
+│   │           │       └── test_updateuserusecase.py
 │   │           ├── auth
 │   │           │   └── test_authloginusecase.py
 │   │           ├── embeddings
@@ -622,7 +632,9 @@
 │   │   │   ├── _bootstrapadminusecase.py
 │   │   │   ├── keys
 │   │   │   │   ├── __init__.py
-│   │   │   │   └── _createkeyusecase.py
+│   │   │   │   ├── _createkeyusecase.py
+│   │   │   │   ├── _getkeysusecase.py
+│   │   │   │   └── _getonekeyusecase.py
 │   │   │   ├── providers
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── _createproviderusecase.py
@@ -701,7 +713,6 @@
 │   ├── src
 │   │   ├── assets
 │   │   │   ├── icons
-│   │   │   │   ├── elasticsearch.svg
 │   │   │   │   ├── kubernetes.svg
 │   │   │   │   ├── postgres.svg
 │   │   │   │   ├── prometheus.svg
@@ -919,4 +930,4 @@
     ├── manage_docs_dns.py
     ├── startup_api.sh
     └── startup_worker.sh
-206 directories, 715 files
+210 directories, 722 files
