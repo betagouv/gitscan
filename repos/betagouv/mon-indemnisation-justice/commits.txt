@@ -1,3 +1,14 @@
+2026-07-24T14:04:58+02:00 - bd81e85 - Pierre LEMEE : Correctif : provisionnement des comptes agent en staging
+2026-07-24T11:12:52+02:00 - f558880 - Pierre LEMEE : Correctifs : ordre des migrations & reverse proxy staging & démarrage staging
+2026-07-24T08:21:13+02:00 - f7f62fd - Pierre Lemée : Merge pull request #137 from betagouv/dysfonctionnement/3-api-test-eligibilite
+2026-07-23T16:36:22+02:00 - f508c18 - Pierre LEMEE : Script de démarrage staging & correctifs sur l'import zones de compétence FDO
+2026-07-23T10:53:32+02:00 - 5c2a1bb - Pierre Lemée : Merge pull request #149 from betagouv/tech/use-mock-oidc-server-2
+2026-07-22T17:36:48+02:00 - 5685b9c - Pierre LEMEE : Ajouter du log à l'erreur OIDC
+2026-07-22T17:14:45+02:00 - 35a5325 - Pierre LEMEE : Déployer le staging en CI et aligner les clefs de S3
+2026-07-22T14:55:48+02:00 - f865904 - Pierre LEMEE : Script de demarrage en staging
+2026-07-22T14:21:30+02:00 - 051e62d - Pierre LEMEE : Utiliser 2.2.2 qui étend l'auth basic à tous les providers
+2026-07-22T11:36:49+02:00 - bb0314e - Pierre LEMEE : Utiliser 2.2.1 qui support les redirect_uris et l'auth basic
+2026-07-21T19:43:10+02:00 - 94d7548 - Pierre LEMEE : S'appuyer sur l'image pierrelemee/mock-oidc-server:2.1.2
 2026-07-20T15:02:56+02:00 - d832b82 - Pierre LEMEE : Correctif modale rejet si pas de courrier
 2026-07-20T11:50:44+02:00 - 620e64b - Pierre LEMEE : Correctif : cacher le bouton pour marquer indemnisé si pas encore concerné
 2026-07-17T14:25:54+02:00 - 865562a - Pierre LEMEE : Correctif : adapter l'objet du courrier de décision
@@ -31,9 +42,12 @@
 2026-07-02T17:05:09+02:00 - 8a87013 - Pierre LEMEE : Importer les données des gendarmeries
 2026-07-02T17:05:09+02:00 - 7fa2ab0 - Pierre LEMEE : En cours : recaler les imports sur les fichiers CSV ⚡️
 2026-07-02T17:05:09+02:00 - 389a8f3 - Pierre LEMEE : Améliorer la gestion des fichiers et des données
+2026-06-29T15:55:51+02:00 - 1c8b903 - Wafa Ben-ayed : Ajouter les boutons de navigation (annuler, précédent, retour à l'accueil) au test d'éligibilité dysfonctionnement et revoir la mise en page de l'étape date de décision
+2026-06-26T14:19:59+02:00 - 3fba619 - Wafa Ben-ayed : Ajouter la navigation suivant/annuler aux intefaces test d'éligibilité dysfonctionnement
 2026-06-25T16:28:33+02:00 - 47ad9ec - Pierre LEMEE : Ajouter un test unitaire sur la route de suppression
 2026-06-25T16:28:33+02:00 - 353565b - Pierre LEMEE : Créer le point d'entrée API et l'appeler depuis le DossierManager
 2026-06-25T16:28:33+02:00 - 1d377d4 - Pierre LEMEE : Créer la modale de suppression de la pièce jointe, sans action réelle
+2026-06-25T16:23:12+02:00 - 67b98ec - Wafa Ben-ayed : Propager les erreurs de soumettre() vers l'ErrorBoundary et Sentry
 2026-06-24T16:33:48+02:00 - e93302c - Pierre LEMEE : Eviter l'appel API pour les compteurs dossiers pour l'agent sans role DOSSIER
 2026-06-24T16:33:48+02:00 - b3785de - Pierre LEMEE : Permettre de modifier les critères de recherche
 2026-06-24T16:33:48+02:00 - 9a719ef - Pierre LEMEE : Séparer les listes actifs / inactifs en 2 onglets distincts
@@ -44,10 +58,14 @@
 2026-06-24T16:33:21+02:00 - 4d0b818 - Pierre LEMEE : Attraper, afficher et remonter les erreurs sur FDO
 2026-06-24T15:43:21+02:00 - a871324 - Pierre LEMEE : Correctif : vite-plugin-static-copy en dépendance non dev
 2026-06-24T15:32:32+02:00 - 60bcdf2 - Pierre LEMEE : Correctif : l'adresse peut être manquante sur un dossier
+2026-06-22T16:45:16+02:00 - 17c5572 - Wafa Ben-ayed : Améliorer le test d'éligibilité dysfonctionnement : restreindre la route API aux envs non-prod, extraire getDateExpiration(), déplacer soumettre() à la soumission du formulaire et renforcer les tests
+2026-06-22T16:03:16+02:00 - 437392b - Wafa Ben-ayed : Réviser les libellés et textes des étapes du test d'éligibilité dysfonctionnement
 2026-06-22T10:15:30+02:00 - 1464000 - Pierre LEMEE : Correctifs pour react-pdf
 2026-06-19T16:27:55+02:00 - f120742 - Pierre LEMEE : Correctif : la modale de mot de passe oublié ne fonctionne pas
 2026-06-18T14:06:11+02:00 - e8aeaf1 - Pierre LEMEE : Fluidifier l'affichage en tiroir des champs et pouvoir masquer les outils tanstack
 2026-06-18T14:06:11+02:00 - 6d80a06 - Pierre LEMEE : Pas de quittance subrogative pour les bailleurs sociaux
+2026-06-17T16:00:16+02:00 - a1df809 - Wafa Ben-ayed : Aligner l'alerte de validation de la date de décision avec les autres étapes du test d'éligibilité
+2026-06-17T14:59:02+02:00 - 3f01475 - Wafa Ben-ayed : Ajouter l'endpoint et les tests pour la sauvegarde du test d'éligibilité dysfonctionnement
 2026-06-17T11:03:38+02:00 - c83cf05 - Pierre LEMEE : Correctif : support de react-pdf pour Safari ios
 2026-06-16T15:26:05+02:00 - f66b0e8 - Pierre LEMEE : Purger la boite et envoyer les emails au chargement des fixtures
 2026-06-16T15:26:05+02:00 - d8641d3 - Pierre LEMEE : Correctif argument optionnel Requerant.nomSimple

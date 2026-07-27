@@ -1,8 +1,8 @@
 .
 ├── .docker
-│   ├── franceconnect
+│   ├── idconnect
 │   │   ├── .gitignore
-│   │   └── usagers.json.dist
+│   │   └── config.json.dist
 │   ├── nginx
 │   │   ├── Dockerfile
 │   │   ├── conf
@@ -22,6 +22,7 @@
 │   │   └── scripts
 │   │       ├── demarrage_develop.sh
 │   │       ├── demarrage_prod.sh
+│   │       ├── demarrage_staging.sh
 │   │       └── demarrage_test.sh
 │   ├── playwright
 │   │   └── Dockerfile
@@ -32,9 +33,6 @@
 │   │       ├── 000-create-database-precontest.sh
 │   │       ├── 000-creer-fonctions.sql
 │   │       └── 002-dev-chargement-agents.sql
-│   ├── proconnect
-│   │   ├── .gitignore
-│   │   └── agents.json.dist
 │   ├── prod
 │   │   ├── web.dockerfile
 │   │   └── worker.dockerfile
@@ -48,6 +46,7 @@
 │       ├── build-docker-image.yml
 │       ├── deploy-develop.yml
 │       ├── deploy-prod.yml
+│       ├── deploy-staging.yml
 │       ├── merge-to-prod.yml
 │       └── test.yml
 ├── .gitignore
@@ -91,6 +90,8 @@
 │   │   │   ├── routing.yaml
 │   │   │   ├── security.yaml
 │   │   │   ├── sentry.yaml
+│   │   │   ├── staging
+│   │   │   │   └── monolog.yaml
 │   │   │   ├── test
 │   │   │   │   ├── cache.yaml
 │   │   │   │   ├── flysystem.yaml
@@ -132,7 +133,8 @@
 │   │   ├── Version20260610080243.php
 │   │   ├── Version20260610131925.php
 │   │   ├── Version20260702144847.php
-│   │   └── Version20260708210430.php
+│   │   ├── Version20260708210430.php
+│   │   └── Version20260724092141.php
 │   ├── package.json
 │   ├── phpcs.xml.dist
 │   ├── phpunit.xml.dist
@@ -271,6 +273,11 @@
 │   │   │   │           ├── AgentVoter.php
 │   │   │   │           ├── DocumentVoter.php
 │   │   │   │           └── DossierVoter.php
+│   │   │   ├── Public
+│   │   │   │   └── Dysfonctionnement
+│   │   │   │       ├── Input
+│   │   │   │       │   └── TestEligibiliteDysfonctionnementInput.php
+│   │   │   │       └── SauvegarderTestEligibiliteDysfonctionnementEndpoint.php
 │   │   │   └── Requerant
 │   │   │       ├── Commune
 │   │   │       │   └── ListerCommuneEndpoint.php
@@ -402,11 +409,14 @@
 │   │   │   ├── PersonneMorale.php
 │   │   │   ├── PersonneMoraleType.php
 │   │   │   ├── PersonnePhysique.php
+│   │   │   ├── PieceProcedure.php
 │   │   │   ├── PrejudiceType.php
 │   │   │   ├── ProcedureJudiciaire.php
 │   │   │   ├── RapportAuLogement.php
 │   │   │   ├── TestEligibiliteBrisPorte.php
+│   │   │   ├── TestEligibiliteDysfonctionnement.php
 │   │   │   ├── TypeAttestation.php
+│   │   │   ├── TypeDecision.php
 │   │   │   └── Usager.php
 │   │   ├── Event
 │   │   │   ├── Event
@@ -637,6 +647,9 @@
 │   │   │   │               ├── MarquerDossierIndemniseEndpointTest.php
 │   │   │   │               ├── RechercherDossierEndpointTest.php
 │   │   │   │               └── TransmettreAFIP3EndpointTest.php
+│   │   │   ├── Public
+│   │   │   │   └── Dysfonctionnement
+│   │   │   │       └── SauvegarderTestEligibiliteDysfonctionnementEndpointTest.php
 │   │   │   └── Requerant
 │   │   │       ├── Dossier
 │   │   │       │   ├── AmenderDossierEndpointTest.php
@@ -654,7 +667,8 @@
 │   │   │   │   └── HomeControllerTest.php
 │   │   │   └── SecurityControllerTest.php
 │   │   ├── Entity
-│   │   │   └── PersonneMoraleTest.php
+│   │   │   ├── PersonneMoraleTest.php
+│   │   │   └── TestEligibiliteDysfonctionnementTest.php
 │   │   ├── Repository
 │   │   │   └── BrisPorteRepositoryTest.php
 │   │   ├── Service
@@ -890,6 +904,8 @@
     │   │   │   │   ├── formulaires
     │   │   │   │   │   └── eligibilite.schemas.ts
     │   │   │   │   ├── steps
+    │   │   │   │   │   ├── BlockedNavButtons.tsx
+    │   │   │   │   │   ├── ConditionalButtonsGroup.tsx
     │   │   │   │   │   ├── NavButtons.tsx
     │   │   │   │   │   ├── StepActionContentieuse.tsx
     │   │   │   │   │   ├── StepDateDecision.tsx
@@ -1090,6 +1106,9 @@
     ├── tests
     │   ├── apps
     │   │   ├── public
+    │   │   │   ├── components
+    │   │   │   │   └── formulaires
+    │   │   │   │       └── eligibilite.schemas.test.ts
     │   │   │   ├── models
     │   │   │   │   └── TestEligibilite.test.ts
     │   │   │   └── services
@@ -1114,4 +1133,4 @@
     ├── vite.config.ts
     ├── vitest.config.ts
     └── yarn.lock
-248 directories, 868 files
+255 directories, 880 files
