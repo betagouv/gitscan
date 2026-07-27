@@ -250,7 +250,9 @@
 │   │   │   │                   │   │   │       ├── Infraction.kt
 │   │   │   │                   │   │   │       ├── InfractionType.kt
 │   │   │   │                   │   │   │       ├── MissionAction.kt
+│   │   │   │                   │   │   │       ├── MissionActionReporting.kt
 │   │   │   │                   │   │   │       ├── MissionActionType.kt
+│   │   │   │                   │   │   │       ├── MissionActionVesselGroup.kt
 │   │   │   │                   │   │   │       ├── PatchableMissionAction.kt
 │   │   │   │                   │   │   │       ├── SpeciesControlPrefill.kt
 │   │   │   │                   │   │   │       ├── SpeciesOnboardControl.kt
@@ -1258,6 +1260,7 @@
 │   │   │       │   │   │   ├── V0.389__Update_mission_actions_table.sql
 │   │   │       │   │   │   ├── V0.38__Update_last_positions_table.sql
 │   │   │       │   │   │   ├── V0.390__Drop_minimum_conservation_reference_size_controlled_column.sql
+│   │   │       │   │   │   ├── V0.391__Update_mission_actions_table.sql
 │   │   │       │   │   │   ├── V0.39__Update_last_positions_table.sql
 │   │   │       │   │   │   ├── V0.40__Update_control_anteriority_table.sql
 │   │   │       │   │   │   ├── V0.41__Update_segments_tables.sql
@@ -3242,7 +3245,8 @@
 │   │   │   │   │   │   │   │   │   ├── SpeciesTableRow.tsx
 │   │   │   │   │   │   │   │   │   ├── WeightInput.tsx
 │   │   │   │   │   │   │   │   │   ├── __tests__
-│   │   │   │   │   │   │   │   │   │   └── getSpeciesEISRApplicability.test.ts
+│   │   │   │   │   │   │   │   │   │   ├── getSpeciesEISRApplicability.test.ts
+│   │   │   │   │   │   │   │   │   │   └── rowNavigation.test.tsx
 │   │   │   │   │   │   │   │   │   ├── getSpeciesEISRApplicability.ts
 │   │   │   │   │   │   │   │   │   ├── speciesControlCheckRows.tsx
 │   │   │   │   │   │   │   │   │   ├── speciesEISRVisibility.constants.ts
@@ -3254,6 +3258,8 @@
 │   │   │   │   │   │   │   │   ├── UpdateMissionActionCompletionEffect.ts
 │   │   │   │   │   │   │   │   ├── VesselField.tsx
 │   │   │   │   │   │   │   │   ├── VesselFleetSegmentsField.tsx
+│   │   │   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   │   │   └── ControlQualityField.test.tsx
 │   │   │   │   │   │   │   │   ├── constants.ts
 │   │   │   │   │   │   │   │   ├── styles.ts
 │   │   │   │   │   │   │   │   └── utils.ts
@@ -3401,6 +3407,7 @@
 │   │   │   │   │   ├── GearControlSchema.ts
 │   │   │   │   │   ├── InfractionSchema.ts
 │   │   │   │   │   ├── MissionActionSchema.ts
+│   │   │   │   │   ├── MissionActionSnapshotSchema.ts
 │   │   │   │   │   ├── NatinfSchema.ts
 │   │   │   │   │   ├── SpeciesControlSchema.ts
 │   │   │   │   │   ├── SpeciesOnboardControlSchema.ts
@@ -5926,4 +5933,4 @@
 ├── pull_request_template.md
 ├── settings.gradle.kts
 └── sonar-project.properties
-799 directories, 5443 files
+800 directories, 5449 files
