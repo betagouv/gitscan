@@ -60,6 +60,7 @@
 │   │   │   │       │   ├── drive.backend.env.j2
 │   │   │   │       │   ├── keycloak.env.j2
 │   │   │   │       │   ├── meet.backend.env.j2
+│   │   │   │       │   ├── meet.caddy.env.j2
 │   │   │   │       │   ├── messages.backend.env.j2
 │   │   │   │       │   └── messages.frontend.env.j2
 │   │   │   │       └── scaffold
@@ -112,7 +113,8 @@
 │   │   └── 01-keycloak.md
 │   ├── 03-meet
 │   │   ├── 01-meet.md
-│   │   └── 02-livekit.md
+│   │   ├── 02-livekit.md
+│   │   └── 03-egress.md
 │   ├── 04-messages
 │   │   ├── 01-messages.md
 │   │   ├── 02-workers.md
@@ -127,6 +129,7 @@
 │   │   │   ├── playbook_collabora.yml
 │   │   │   ├── playbook_drive.yml
 │   │   │   ├── playbook_drive_workers.yml
+│   │   │   ├── playbook_egress.yml
 │   │   │   ├── playbook_keycloak.yml
 │   │   │   ├── playbook_livekit.yml
 │   │   │   ├── playbook_meet.yml
@@ -258,22 +261,26 @@
     │   │   └── main.yml
     │   ├── tasks
     │   │   ├── deploy
+    │   │   │   ├── egress.yml
     │   │   │   ├── livekit.yml
     │   │   │   └── meet.yml
     │   │   ├── deploy.yml
     │   │   └── main.yml
     │   └── templates
+    │       ├── egress
+    │       │   ├── compose.yaml.j2
+    │       │   └── egress.yaml.j2
     │       ├── livekit
     │       │   ├── caddy.default.yaml.j2
     │       │   ├── compose.default.yaml.j2
-    │       │   ├── egress.default.yaml.j2
     │       │   ├── livekit.default.yaml.j2
     │       │   └── valkey.default.conf.j2
     │       ├── meet
+    │       │   ├── Caddyfile.j2
     │       │   ├── backend_env.j2
+    │       │   ├── caddy_env.j2
     │       │   ├── compose.yaml.j2
-    │       │   ├── frontend_env.j2
-    │       │   └── nginx.conf.j2
+    │       │   └── frontend_env.j2
     │       └── monitoring
     │           └── compose_cadvisor.yaml.j2
     ├── messages
@@ -382,4 +389,4 @@
             ├── files.j2
             ├── forget.service.j2
             └── forget.timer.j2
-98 directories, 286 files
+99 directories, 292 files
