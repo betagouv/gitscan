@@ -1,3 +1,46 @@
+2026-07-24T11:40:03+02:00 - 20a3c1c - ThomasMetzger : Merge Fix/better error handling
+2026-07-24T11:32:04+02:00 - de6aa9c - Thomas Metzger : :white_check_mark:: align API error and access-control tests
+2026-07-24T11:32:04+02:00 - 2467d61 - Thomas Metzger : :lock:: return 404 for forbidden access to avoid leaking existence
+2026-07-24T11:32:04+02:00 - 09c05d9 - Thomas Metzger : :recycle:: report unforeseen errors via an HTTP boundary catch-all
+2026-07-24T11:31:35+02:00 - 532b19e - Thomas Metzger : :recycle:: decouple logging from Sentry and consolidate init
+2026-07-23T18:28:15+02:00 - 717a880 - Thibault Foucart : Merge pull request #978 from IA-Generative/feat/948-generer-depuis-deliverable-card
+2026-07-23T18:22:24+02:00 - d8f21a0 - Thibault Foucart : :sparkles: (948): persist deliverable custom_prompt and forward it at transcription drain
+2026-07-23T18:22:24+02:00 - 92f93e3 - Thibault Foucart : :lipstick: (948): match the custom prompt modal generate button to the card generate button
+2026-07-23T18:22:24+02:00 - 4fab41f - Thibault Foucart : :sparkles: (948): generate deliverables from autonomous per-type cards with live status
+2026-07-23T18:22:24+02:00 - 1e74890 - Thibault Foucart : :bug: add DeliverableStatus lost in merges
+2026-07-23T18:21:32+02:00 - 3d57b5f - Thibault Foucart : Merge pull request #977 from IA-Generative/feat/947-request-verrou
+2026-07-23T18:18:02+02:00 - c85e0a8 - Thibault Foucart : :sparkles: (947): queue REQUESTED or dispatch PENDING under the meeting lock
+2026-07-23T18:18:02+02:00 - bf30c3d - Thibault Foucart : :recycle: (947): take the same meeting lock when draining at transcription completion
+2026-07-23T18:18:02+02:00 - b84ed35 - Thibault Foucart : :sparkles: (947): add get_meeting_for_update with row lock and selectinload
+2026-07-23T18:18:02+02:00 - 2cc260e - Thibault Foucart : :white_check_mark: (947): mark transcription available in deliverable router tests
+2026-07-23T16:09:51Z - dc3a921 - Thibault Foucart : :recycle: (946): encapsulate report generation dispatch in the celery infra
+2026-07-23T16:09:51Z - ccdc11a - Thibault Foucart : :sparkles: (946): fail REQUESTED reports when transcription fails
+2026-07-23T16:09:51Z - cb55e86 - Thibault Foucart : :sparkles: (946): drain REQUESTED reports at transcription completion
+2026-07-23T16:09:51Z - c8c6e0a - Thibault Foucart : :recycle: (946): factor report dispatch mapping and kwargs into _shared
+2026-07-23T16:09:51Z - b04b0e6 - Thibault Foucart : :recycle: (946): collapse SOFT_DELETE union into from_.any()
+2026-07-23T16:09:51Z - 9cc7601 - Thibault Foucart : :white_check_mark: (946): move repository tests to tests/db and drop trivial query unit-tests
+2026-07-23T16:09:51Z - 3bd47db - Thibault Foucart : :art: (946): qualify drain calls with their module name
+2026-07-23T16:09:51Z - 0e5bf05 - Thibault Foucart : :sparkles: (946): add REQUESTED DISPATCH & find_requested_reports_by_meeting
+2026-07-23T16:09:51Z - 01c815c - Thibault Foucart : :sparkles: (946): retry in_progress while deliverable is still REQUESTED (425)
+2026-07-23T15:20:14Z - bb95be0 - Thibault Foucart : :white_check_mark: adapt test from SM removal
+2026-07-23T15:20:14Z - 927cfc1 - Thibault Foucart : :recycle: remove all report parts from meeting state machine
+2026-07-23T15:20:14Z - 57f549c - Thibault Foucart : :recycle: (945): rename mark_deliverable_* use-cases to mark_report_*
+2026-07-23T15:20:14Z - 502ddeb - Thibault Foucart : :recycle: (945): derive deliverable column statuses on the front and drop the legacy file_type alias
+2026-07-23T15:20:14Z - 2329eaf - Thibault Foucart : :recycle: update tags in meeting list from deliverables status
+2026-07-23T15:20:14Z - 168a888 - Thibault Foucart : :recycle: (945): slim down the list deliverable schema and filter deleted ones in the repository
+2026-07-23T13:30:26Z - 2f9e4c2 - Carl-Adrien Mercey : :construction_worker:: run CI on merge queue groups
+2026-07-23T13:30:26Z - 0037f26 - Carl-Adrien Mercey : :construction_worker:: run CI on pull requests targeting any branch
+2026-07-23T11:27:05+02:00 - 151cd87 - ThomasMetzger : Merge pull request #979 from IA-Generative/fix/sentry-session-expired-noise
+2026-07-23T11:22:01+02:00 - b3dba38 - Thomas Metzger : :mute:: stop reporting expected session expiry to Sentry
+2026-07-23T11:21:10+02:00 - 8b45a83 - ThomasMetzger : Merge pull request #969 from IA-Generative/feat/add-admin-retry-endpoint
+2026-07-22T19:53:22+02:00 - c2bc9fb - Thomas Metzger : :sparkles:: forward admin requeue through the gateway
+2026-07-22T19:50:16+02:00 - fed43e4 - Thomas Metzger : :recycle:: require an existing transcription deliverable instead of upserting
+2026-07-22T19:50:16+02:00 - 5b50d63 - Thomas Metzger : :memo:: normalize CLAUDE.md emphasis markers
+2026-07-22T19:50:16+02:00 - 5a494f2 - Thomas Metzger : :passport_control:: resolve authenticated caller and add admin guard
+2026-07-22T19:50:16+02:00 - 53be1f4 - Thomas Metzger : :sparkles:: add admin requeue-transcriptions endpoint to mcr-core
+2026-07-22T19:50:16+02:00 - 458c0b0 - Thomas Metzger : :sparkles:: add FORCED_REQUEUE transition to meeting and deliverable state machines
+2026-07-22T19:50:16+02:00 - 13615fe - Thomas Metzger : :lock:: validate inbound Keycloak bearer tokens in mcr-core
+2026-07-22T19:50:16+02:00 - 11bb4d1 - Thomas Metzger : :recycle:: centralize transcription dispatch behind a shared flag helper and hold the first task for commit visibility
 2026-07-22T18:34:55+02:00 - 35876d2 - Carl-Adrien Mercey : Merge pull request #976 from IA-Generative/feat/894-import-progress-eta-errors
 2026-07-22T18:30:19+02:00 - d6aade6 - Carl-Adrien Mercey : :sparkles: (894): show import errors inline per file and drop the toasts
 2026-07-22T18:30:19+02:00 - cedba49 - Carl-Adrien Mercey : :goal_net: (894): track every import failure cause in Sentry by type

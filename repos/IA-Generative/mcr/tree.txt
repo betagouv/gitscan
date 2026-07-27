@@ -164,6 +164,9 @@
 │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   ├── request_id_middleware.py
 │   │   │   │   │   └── response_headers.py
+│   │   │   │   ├── dependencies
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── auth.py
 │   │   │   │   ├── evaluation_router.py
 │   │   │   │   ├── feature_flag_router.py
 │   │   │   │   ├── feedback_router.py
@@ -175,6 +178,7 @@
 │   │   │   │   │   ├── deliverable_router.py
 │   │   │   │   │   ├── meeting_multipart_router.py
 │   │   │   │   │   ├── meeting_router.py
+│   │   │   │   │   ├── requeue_router.py
 │   │   │   │   │   └── transcription_router.py
 │   │   │   │   └── user_router.py
 │   │   │   ├── configs
@@ -203,6 +207,7 @@
 │   │   │   │   │       ├── 1dfb13692257_add_vote_field_to_deliverable.py
 │   │   │   │   │       ├── 2183b593393d_merge_transition_estimation_capture_end_.py
 │   │   │   │   │       ├── 2391ddc44079_remove_member_table.py
+│   │   │   │   │       ├── 26c0970cb677_add_custom_prompt_to_deliverable.py
 │   │   │   │   │       ├── 2eff96979526_remove_list_participants_table.py
 │   │   │   │   │       ├── 309fda53987a_remove_meeting_audio_index.py
 │   │   │   │   │       ├── 37e431c19a4d_add_webcconf_to_meeting_platform.py
@@ -234,6 +239,7 @@
 │   │   │   │   │       ├── bbf0d24b3bc4_add_cascade_delete.py
 │   │   │   │   │       ├── beec5d6f2075_baseline.py
 │   │   │   │   │       ├── c3a1f0d8e2b4_deliverable_type_and_status.py
+│   │   │   │   │       ├── c7e2a4f1b9d3_map_report_status_to_transcription_done.py
 │   │   │   │   │       ├── ca74396de706_add_report_filename.py
 │   │   │   │   │       ├── d1fe6890d8a3_add_bot_is_connecting_status_to_meeting_.py
 │   │   │   │   │       ├── d2c7b9a4e1f8_backfill_recent_transcription_deliverables.py
@@ -326,21 +332,25 @@
 │   │   │   ├── schemas
 │   │   │   │   ├── S3_types.py
 │   │   │   │   ├── __init__.py
+│   │   │   │   ├── caller_schema.py
 │   │   │   │   ├── celery_types.py
 │   │   │   │   ├── deliverable_schema.py
 │   │   │   │   ├── feedback_schema.py
+│   │   │   │   ├── keycloak_claims.py
 │   │   │   │   ├── lookup_schema.py
 │   │   │   │   ├── meeting_schema.py
 │   │   │   │   ├── platform_connection_validator_schema.py
 │   │   │   │   ├── report_generation.py
+│   │   │   │   ├── requeue_schema.py
 │   │   │   │   ├── transcription_schema.py
 │   │   │   │   └── user_schema.py
 │   │   │   └── use_cases
 │   │   │       ├── __init__.py
 │   │   │       ├── _shared
 │   │   │       │   ├── __init__.py
+│   │   │       │   ├── dispatch_transcription.py
 │   │   │       │   ├── drive_upload.py
-│   │   │       │   └── transcription_deliverable.py
+│   │   │       │   └── report_dispatch.py
 │   │   │       ├── abort_multipart_upload.py
 │   │   │       ├── complete_capture.py
 │   │   │       ├── complete_multipart_upload.py
@@ -366,10 +376,11 @@
 │   │   │       ├── list_deliverables_for_meeting.py
 │   │   │       ├── list_meetings.py
 │   │   │       ├── lookup_comu_meeting.py
-│   │   │       ├── mark_deliverable_failure.py
-│   │   │       ├── mark_deliverable_in_progress.py
-│   │   │       ├── mark_deliverable_success.py
+│   │   │       ├── mark_report_failure.py
+│   │   │       ├── mark_report_in_progress.py
+│   │   │       ├── mark_report_success.py
 │   │   │       ├── request_deliverable.py
+│   │   │       ├── requeue_transcriptions.py
 │   │   │       ├── run_evaluation_from_zip.py
 │   │   │       ├── sign_multipart_part.py
 │   │   │       ├── soft_delete_deliverable.py
@@ -477,6 +488,9 @@
 │   │   ├── api
 │   │   │   ├── __init__.py
 │   │   │   ├── conftest.py
+│   │   │   ├── dependencies
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── test_auth.py
 │   │   │   ├── test_capture_bot_router.py
 │   │   │   ├── test_capture_router.py
 │   │   │   ├── test_deliverable_router.py
@@ -486,6 +500,7 @@
 │   │   │   ├── test_lookup_router.py
 │   │   │   ├── test_meeting_multipart_router.py
 │   │   │   ├── test_meeting_router.py
+│   │   │   ├── test_requeue_router.py
 │   │   │   ├── test_transcription_router.py
 │   │   │   └── test_user_router.py
 │   │   ├── client
@@ -495,8 +510,13 @@
 │   │   │   ├── __init__.py
 │   │   │   └── test_env_vars.py
 │   │   ├── conftest.py
+│   │   ├── db
+│   │   │   ├── __init__.py
+│   │   │   ├── test_deliverable_repository.py
+│   │   │   └── test_meeting_repository.py
 │   │   ├── domain
 │   │   │   ├── __init__.py
+│   │   │   ├── test_authorize_meeting_access.py
 │   │   │   ├── test_custom_report_generation.py
 │   │   │   ├── test_deliverable_transitions.py
 │   │   │   ├── test_detailed_synthesis_generation.py
@@ -533,9 +553,6 @@
 │   │   │   ├── in_memory_redis.py
 │   │   │   ├── in_memory_s3.py
 │   │   │   └── report_task_mocks.py
-│   │   ├── orchestrators
-│   │   │   ├── test_deliverable_repository.py
-│   │   │   └── test_meeting_repository.py
 │   │   ├── schemas
 │   │   │   └── test_meeting_schema.py
 │   │   ├── services
@@ -592,10 +609,11 @@
 │   │       ├── test_init_transcription.py
 │   │       ├── test_list_deliverables_for_meeting.py
 │   │       ├── test_list_meetings.py
-│   │       ├── test_mark_deliverable_failure.py
-│   │       ├── test_mark_deliverable_in_progress.py
-│   │       ├── test_mark_deliverable_success.py
+│   │       ├── test_mark_report_failure.py
+│   │       ├── test_mark_report_in_progress.py
+│   │       ├── test_mark_report_success.py
 │   │       ├── test_request_deliverable.py
+│   │       ├── test_requeue_transcriptions.py
 │   │       ├── test_run_diarization.py
 │   │       ├── test_run_evaluation_from_zip.py
 │   │       ├── test_run_finalize_transcription.py
@@ -682,11 +700,11 @@
 │   │   │   │   ├── AddMeetingForm.spec.ts
 │   │   │   │   ├── AddMeetingForm.vue
 │   │   │   │   ├── CreateVisioMeetingForm.vue
-│   │   │   │   ├── DeliverableItem.vue
+│   │   │   │   ├── DeliverableTypeCard.spec.ts
+│   │   │   │   ├── DeliverableTypeCard.vue
 │   │   │   │   ├── LiveRecordingInProgress.vue
 │   │   │   │   ├── MeetingAudioCard.vue
 │   │   │   │   ├── MeetingDeliverableCard.vue
-│   │   │   │   ├── MeetingDeliverableList.vue
 │   │   │   │   ├── MeetingFrontMatterV2.spec.ts
 │   │   │   │   ├── MeetingFrontMatterV2.vue
 │   │   │   │   ├── MeetingNotesEditor.vue
@@ -924,6 +942,7 @@
 │   │   │   │   ├── feedback_schema.py
 │   │   │   │   ├── lookup_schema.py
 │   │   │   │   ├── meeting_schema.py
+│   │   │   │   ├── requeue_schema.py
 │   │   │   │   ├── token_schema.py
 │   │   │   │   └── user_schema.py
 │   │   │   ├── services
@@ -970,6 +989,7 @@
 │   │           ├── test_get_all_meetings.py
 │   │           ├── test_get_meeting.py
 │   │           ├── test_meeting_date_format.py
+│   │           ├── test_requeue_transcriptions.py
 │   │           └── test_update_meeting.py
 │   └── uv.lock
 ├── mcr-generation
@@ -1177,4 +1197,4 @@
 └── scripts
     ├── check_changed.py
     └── guard_git_commit.py
-213 directories, 966 files
+215 directories, 984 files
