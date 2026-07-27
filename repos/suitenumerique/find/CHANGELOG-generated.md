@@ -1,14 +1,12 @@
-## Changelog : find (30 derniers jours, au 28 juin 2026)
+## Changelog : find (30 derniers jours, au 06 juillet 2026)
 
 ### Résumé
-Ce changelog présente les ajustements récents apportés à find. Les modifications concernent principalement des retours en arrière sur des changements récents liés à la gestion des indices de recherche et des services Docker. Ces ajustements visent à assurer la stabilité et la fiabilité de la plateforme.
+Ce changelog présente les récentes améliorations apportées à Find, axées sur la configuration du déploiement via Helm et des ajustements techniques pour l'environnement local.  Aucune nouvelle fonctionnalité visible pour l'utilisateur n'a été introduite durant cette période.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle majeure n'a été déployée durant cette période.
+*   Ajout de la possibilité de spécifier un `secretName` existant lors de l'utilisation du chart Helm, offrant plus de flexibilité pour la gestion des secrets. [#34583e](https://github.com/suitenumerique/find/commit/034583e)
 
 ### Évolutions techniques
-- Retour en arrière sur la suppression du service `dockerize` dans le Dockerfile. [#3483ca1](https://github.com/suitenumerique/find/commit/3483ca1)
-- Retour en arrière sur l'unification des indices de recherche avec la portée des services. [#bec4fd9](https://github.com/suitenumerique/find/commit/bec4fd9)
-
-### Autres changements
-Aucun autre changement significatif à signaler.
+*   Mise à jour de la version de Python à 3.14. [58553aa](https://github.com/suitenumerique/find/commit/58553aa)
+*   Modification des ports exposés des conteneurs pour l'environnement local. [025e6d0](https://github.com/suitenumerique/find/commit/025e6d0)
+*   Annulation de la suppression du service `dockerize` et de l'unification des index de recherche avec la portée du service. [3483ca1](https://github.com/suitenumerique/find/commit/3483ca1) et [bec4fd9](https://github.com/suitenumerique/find/commit/bec4fd9)
