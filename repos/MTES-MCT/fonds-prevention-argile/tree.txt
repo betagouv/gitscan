@@ -58,6 +58,7 @@
 │   │   ├── 0019-early-exit-simulateur-agent.md
 │   │   ├── 0020-correction-simulation-agent-post-eligibilite.md
 │   │   ├── 0021-synchro-contacts-brevo-cycle-de-vie.md
+│   │   ├── 0022-refus-accompagnement-demandeur-eligible.md
 │   │   └── README.md
 │   ├── emails
 │   │   └── BREVO-LIFECYCLE.md
@@ -186,6 +187,7 @@
 │   │   │   ├── fix-double-progression-amo.ts
 │   │   │   ├── fix-missing-epci.ts
 │   │   │   ├── lier-amo-oblig.ts
+│   │   │   ├── purge-comptes-test-fc.ts
 │   │   │   ├── reclasser-source-autre.ts
 │   │   │   └── reouvrir-demande.ts
 │   │   ├── lib
@@ -194,7 +196,9 @@
 │   │   │   ├── db.ts
 │   │   │   ├── double-progression.ts
 │   │   │   ├── ds-graphql.ts
-│   │   │   └── env.ts
+│   │   │   ├── env.ts
+│   │   │   ├── fc-test-emails.test.ts
+│   │   │   └── fc-test-emails.ts
 │   │   ├── sql
 │   │   │   ├── cleanup-staging.sql
 │   │   │   └── extend-expired-tokens.sql
@@ -1235,7 +1239,8 @@
 │   │   │   │   │   └── rga-data.service.ts
 │   │   │   │   └── utils
 │   │   │   │       ├── index.ts
-│   │   │   │       └── parcours.validators.ts
+│   │   │   │       ├── parcours.validators.ts
+│   │   │   │       └── simulation-comparison.ts
 │   │   │   └── dossiers-ds
 │   │   │       ├── actions
 │   │   │       │   ├── demarches-admin.actions.ts
@@ -1813,4 +1818,4 @@
 ├── vitest-env.d.ts
 ├── vitest.config.ts
 └── vitest.setup.ts
-483 directories, 1332 files
+483 directories, 1337 files
