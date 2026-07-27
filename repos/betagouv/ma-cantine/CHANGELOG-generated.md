@@ -1,34 +1,30 @@
 ## Changelog : ma-cantine (30 derniers jours, au 21 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des achats, avec une refonte de l'interface et de l'API pour intégrer de nouvelles informations comme l'origine locale des produits et les catégories Egalim. Des corrections de bugs et des améliorations techniques ont également été apportées pour une meilleure stabilité et performance de la plateforme.
+Les dernières mises à jour de ma-cantine se concentrent sur l'amélioration de la gestion des achats, notamment avec l'ajout de nouvelles informations (origine, circuit court, distance locale) et une refonte de l'API pour faciliter l'intégration et l'utilisation. Des corrections de bugs et des améliorations de l'interface utilisateur ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Ajout d'un bandeau de service réduit sur la page contact.
-- Amélioration de l'interface d'import des achats pour supporter les prix avec virgule comme séparateur décimal.
-- Correction du bug empêchant l'envoi du formulaire "Acteurs de l'écosystème".
-- Correction de l'affichage de la colonne "definition_local_km" lors de l'import des achats.
-- Amélioration de la distinction visuelle des libellés et des valeurs dans le formulaire d'achat.
-- Restauration du lien vers l'ancienne page d'import des achats SIRET.
+- Les achats permettent désormais de spécifier si un produit est d'origine locale, avec la possibilité de renseigner la distance en kilomètres.
+- L'interface d'import des achats a été améliorée pour une meilleure expérience utilisateur.
+- La page de contact affiche désormais un bandeau de service réduit.
+- Les libellés des champs et leurs valeurs sont mieux distingués dans l'interface des achats.
+- Le bloc de facture est maintenant remonté dans l'interface des achats.
 
 ### Évolutions techniques
-- Refactorisation de la logique de gestion des cantines pour une meilleure organisation du code.
-- Amélioration des URLs de l'API pour les endpoints liés aux équipes et aux résumés d'achats.
-- Ajout d'un nouvel endpoint `/check` pour vérifier l'état de remplissage et détecter les erreurs des cantines.
-- Mise en place d'un logger pour les résultats des commandes de gestion, stockés dans une nouvelle table `CommandLog`.
-- Ajout des champs `creation_user` et `creation_source` pour suivre l'origine des créations et modifications d'objets.
-- Refactorisation des validateurs d'évaluation du gaspillage.
-- Amélioration de la gestion des accès à l'API pour les éditeurs (OAuth2).
-- Refonte de la gestion des caractéristiques des achats (origine, circuit court, local) avec de nouveaux champs et une API dédiée.
-- Correction d'un warning dans la console Swagger.
+- Une nouvelle API a été développée pour la création, la lecture, la modification et la suppression des achats, avec des caractéristiques divisées en quatre catégories.
+- L'API a été améliorée pour permettre aux éditeurs (utilisateurs authentifiés via OAuth2) d'accéder uniquement à leurs propres achats.
+- Refactor de la logique de gestion des cantines dans un nouveau fichier dédié.
+- Amélioration des URLs de certains endpoints de l'API (cantines, achats).
+- Ajout d'un nouveau champ `history_source_api_oauth2_application` pour suivre l'application ayant modifié un objet.
+- Suppression du champ `groupe_snapshot` de l'historisation des diagnostics.
+- Amélioration de la documentation de l'API (Swagger) et suppression du champ `creation_source`.
+- Les signaux d'historisation ont été déplacés directement dans les modèles.
 
 ### Autres changements
-- Documentation de l'API mise à jour pour cacher certains champs non pertinents.
-- Remplissage des champs `creation_user` et `creation_source` dans les données existantes grâce à l'historisation.
-- Nettoyage du code et des tests dans le module d'évaluation du gaspillage.
-- Correction d'un problème de pre-commit sur le fichier `achats.json`.
-- Suppression d'un groupe snapshot de l'historisation des diagnostics.
-- Ajout d'un nouveau champ `history_source_api_oauth2_application` pour tracer l'application OAuth2 ayant modifié un objet.
-- Ajout de `history_source` à d'autres modèles (Canteen, Diagnostic, WasteMeasurement, ResourceAction).
-- Remplacement de `authentication_method` par `history_source`.
-- Déplacement des signals dans les modèles.
+- Correction d'un bug empêchant l'envoi du formulaire pour les acteurs de l'écosystème.
+- Correction de la colonne "definition_local_km" dans les imports d'achats.
+- Correction d'un bug lié à l'ancienne page d'import des achats SIRET.
+- Correction d'un warning affiché dans la console Swagger.
+- Renommage d'une catégorie de produits ("Boulangerie / Pâtisserie fraîches et surgelées" -> "Boulangerie / Pâtisserie fraîches").
+- Ajout d'un endpoint `/check` pour vérifier l'état de remplissage et détecter les erreurs.
+- Permettre de passer un prix HT avec un séparateur virgule lors de l'import d'achats.
