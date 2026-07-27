@@ -1,13 +1,10 @@
-## Changelog : legi-data (30 derniers jours, au 2026-07-27)
+## Changelog : legi-data (30 derniers jours, au 2026-07-25)
 
 ### Résumé
-Ce changelog couvre les 30 derniers jours d'activité sur le projet legi-data. Les principales évolutions concernent des mises à jour régulières des données de législation française extraites de l'API Legifrance, ainsi qu'une correction pour bloquer la version de npm à la version 11 afin d'assurer la stabilité des builds.
+Ce changelog couvre les 30 derniers jours d'activité sur le projet legi-data. Les principales évolutions concernent des mises à jour régulières des données de législation, ainsi qu'un correctif pour bloquer la version de npm afin d'assurer la stabilité des builds.
 
 ### Évolutions fonctionnelles
-- Mise à jour des données de législation : plusieurs mises à jour de données ont été intégrées les 2, 8, 11, 13, 15, 16, 19, 27 et 30 juin ainsi que les 1er et 2 juillet 2026. Ces mises à jour assurent que les données disponibles via l'API et les fichiers JSON sont à jour.
+- Mises à jour régulières des données de législation (plusieurs versions, dont 20260725_1607, 20260724_1642, 20260711_1559, 20260708_1648, 20260702_1657, 20260701_1736, 20260630_1727, 20260627_1620, 20260619_1722, 20260616_1910, 20260615_1913).
 
 ### Évolutions techniques
-- Correction de la version de npm : La version de npm a été bloquée à la version 11 pour éviter des problèmes de build et assurer la cohérence de l'environnement de développement.  [#292](https://github.com/SocialGouv/legi-data/issues/292)
-
-### Autres changements
-- Aucun autre changement significatif à signaler.
+- Correction d'un problème de version de npm en bloquant sur la version 11 pour assurer la stabilité des builds. [#292](https://github.com/SocialGouv/legi-data/issues/292)
