@@ -1,78 +1,57 @@
-#
-# menshen package
-#
 [build-system]
-requires = ["uv_build>=0.10.7,<0.12.0"]
-build-backend = "uv_build"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [project]
-name = "menshen"
+name = "menshen-client"
 version = "0.1.0"
-authors = [{ "name" = "DINUM", "email" = "dev@mail.numerique.gouv.fr" }]
+description = "An API client for Menshen, the OAuth 2.0 token exchange server"
+readme = "README.md"
+requires-python = ">=3.11,<4.0.0"
+license = {file = "LICENSE"}
+keywords = [
+  "token-exchange",
+  "oauth 2.0",
+  "api",
+  "client",
+]
+authors = [
+    {name = "DINUM", email = "dev@mail.numerique.gouv.fr"},
+]
 classifiers = [
-    "Development Status :: 2 - Pre-Alpha",
-    "Framework :: Django",
-    "Framework :: Django :: 6",
+    "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
-    "Natural Language :: English",
+    "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.14",
 ]
-description = "An OAuth 2.0 Token Exchange autorization server build with Django."
-keywords = ["Django", "OAuth"]
-license = "MIT"
-requires-python = "~=3.14.6"
 dependencies = [
-    "dj-database-url==3.1.2",
-    "django==6.0.6",
-    "django-configurations==2.5.1",
-    "django-cors-headers==4.9.0",
-    "django-lasuite[all]==0.0.27",
-    "django-redis==7.0.0",
-    "djangorestframework==3.17.1",
-    "dockerflow==2026.3.4",
-    "drf-spectacular==0.30.0",
-    "msgspec==0.21.1",
-    "psycopg[binary,pool]==3.3.4",
-    "sentry-sdk[django]==2.64.0",
-    "uvicorn==0.50.2",
-    "whitenoise==6.12.0",
+    "requests>=2.32.3",
 ]
 
 [project.urls]
-"Bug Tracker" = "https://github.com/suitenumerique/menshen/issues/new"
-"Changelog" = "https://github.com/suitenumerique/menshen/blob/main/CHANGELOG.md"
 "Homepage" = "https://github.com/suitenumerique/menshen"
-"Repository" = "https://github.com/suitenumerique/menshen"
+"Bug Tracker" = "https://github.com/suitenumerique/menshen/issues"
 
 [dependency-groups]
 dev = [
-    "django-debug-toolbar==7.0.0",
-    "django-extensions==4.1",
-    "django-types==0.24.0",
-    "factory-boy==3.3.3",
-    "ipdb==0.13.13",
-    "ipython==9.15.0",
-    "pytest==9.1.1",
+    "pytest==9.1.0",
     "pytest-cov==7.1.0",
-    "pytest-django==4.12.0",
-    "pytest-xdist==3.8.0",
-    "ruff==0.15.20",
-    "ty==0.0.56",
+    "pytest-responses==0.6.0",
+    "responses==0.26.2",
+    "ruff==0.15.17",
+    "ty==0.0.49",
 ]
 
-[tool.uv.build-backend]
-module-root = ""
-source-exclude = [
-    "**/tests/**",
-    "**/test_*.py",
-    "**/tests.py",
-]
+[tool.hatch.build.targets.sdist]
+only-include = ["menshen_client"]
 
 [tool.ruff]
 line-length = 100
 target-version = "py314"
-extend-exclude = ["migrations"]
 lint.select = [
     # pycodestyle
     "E", "W",
@@ -139,19 +118,13 @@ lint.per-file-ignores = { "**/tests/*" = [
     "D104"
 ]}
 
-[tool.coverage.run]
-omit = [
-  "token_exchange/migrations/*",
-  "token_exchange/tests/*",
-]
-
 [tool.pytest.ini_options]
 addopts = [
     "-v",
     "--cov-report",
     "term-missing",
     "--cov",
-    "token_exchange",
+    "menshen_client",
     # Allow test files to have the same name in different directories.
     "--import-mode=importlib",
 ]

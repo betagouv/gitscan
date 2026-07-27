@@ -9,8 +9,10 @@
 │   └── workflows
 │       ├── _docker-publish.yml
 │       ├── backend.yml
+│       ├── client.yml
 │       ├── docker-hub.yml
 │       ├── helm.yml
+│       ├── python-packages.yml
 │       ├── release-helm-chart.yml
 │       └── security.yml
 ├── .gitignore
@@ -110,6 +112,24 @@
     │   │   │   └── test_views.py
     │   │   ├── urls.py
     │   │   └── views.py
+    │   └── uv.lock
+    ├── client
+    │   ├── .python-version
+    │   ├── CHANGELOG.md
+    │   ├── LICENSE
+    │   ├── README.md
+    │   ├── menshen_client
+    │   │   ├── __init__.py
+    │   │   ├── client.py
+    │   │   ├── enums.py
+    │   │   ├── exceptions.py
+    │   │   └── schemas.py
+    │   ├── pyproject.toml
+    │   ├── tests
+    │   │   ├── __init__.py
+    │   │   ├── conftest.py
+    │   │   ├── test_client.py
+    │   │   └── test_schemas.py
     │   └── uv.lock
     ├── helm
     │   ├── env.d
@@ -215,4 +235,4 @@
             ├── templates
             │   └── base.html
             └── uv.lock
-59 directories, 158 files
+62 directories, 175 files

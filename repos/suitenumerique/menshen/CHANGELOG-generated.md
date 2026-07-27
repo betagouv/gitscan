@@ -1,35 +1,28 @@
-## Changelog : menshen (30 derniers jours, au 16 juillet 2026)
+## Changelog : menshen (30 derniers jours, au 24 juillet 2026)
 
 ### Résumé
-Ce mois-ci, le projet Menshen a connu une avancée significative vers une version stable avec l'implémentation des endpoints de base pour l'échange de jetons OAuth 2.0 (RFC 8693).  Des améliorations ont été apportées à l'architecture interne pour une meilleure lisibilité et maintenabilité, ainsi qu'une automatisation accrue des processus de développement et de publication via Helm et Docker.
+Ce mois-ci, le projet menshen a connu des avancées significatives en termes de déploiement et de structure interne. L'ajout d'un chart Helm permet une gestion simplifiée du déploiement sur Kubernetes, tandis que des refactorings importants améliorent la lisibilité et la maintenabilité du code. Une première version de l'API client a également été ajoutée.
 
 ### Évolutions fonctionnelles
-- Implémentation des endpoints de base pour l'échange de jetons OAuth 2.0, permettant l'échange de jetons selon la RFC 8693.
-- Ajout des "grants" à la réponse de l'échange de jetons.
-- Restriction de la portée (scope) de l'échange de jetons dans l'environnement de test (playground) à "openid".
-- Ajout de messages d'avertissement lorsque des portées supplémentaires sont demandées lors de l'échange de jetons.
-- Correction du type de contenu attendu pour les requêtes d'échange de jetons (doit être JSON).
+- Ajout d'une API client de base. [#c74b37e](https://github.com/suitenumerique/menshen/commit/c74b37e)
+- Amélioration des messages d'avertissement lorsque des scopes supplémentaires sont demandés lors de l'échange de jetons. [#782ad4e](https://github.com/suitenumerique/menshen/commit/782ad4e)
+- Restriction du scope d'échange de jetons à `openid` dans le playground. [#039e9bb](https://github.com/suitenumerique/menshen/commit/039e9bb)
 
 ### Évolutions techniques
-- Refonte du service de requête pour une meilleure lisibilité.
-- Déplacement de la logique de révocation de jetons et de l'introspection de jetons échangés vers des services dédiés.
-- Factorisation des utilitaires principaux du service dans un mixin pour éviter la duplication de code.
-- Simplification des messages d'erreur liés à la validation des jetons.
-- Utilisation de `msgspec.Struc` pour les structures de données.
-- Suppression des dépendances inutiles `drf-standardized-errors` et `annotated-types`.
-- Ajout de la prise en charge du pool de connexions PostgreSQL.
-- Utilisation de Uvicorn pour l'exécution en production.
-- Migration des structures vers l'héritage de `msgspec.Struc`.
-- Suppression des paramètres OIDC inutilisés.
+- Implémentation d'un chart Helm pour faciliter le déploiement sur Kubernetes, incluant des workflows pour le linting et la publication. [#6f1dddc](https://github.com/suitenumerique/menshen/commit/6f1dddc), [#5840f47](https://github.com/suitenumerique/menshen/commit/5840f47), [#573a09a](https://github.com/suitenumerique/menshen/commit/573a09a)
+- Refactoring du service de requête pour améliorer la lisibilité. [#a12811c](https://github.com/suitenumerique/menshen/commit/a12811c)
+- Déplacement de la révocation de jetons et de l'introspection vers des services dédiés. [#00e9cab](https://github.com/suitenumerique/menshen/commit/00e9cab), [#cae5fa1](https://github.com/suitenumerique/menshen/commit/cae5fa1)
+- Factorisation des utilitaires de base du service dans un mixin. [#54634f2](https://github.com/suitenumerique/menshen/commit/54634f2)
+- Simplification des messages d'erreur liés à la validation des jetons. [#0c48ab9](https://github.com/suitenumerique/menshen/commit/0c48ab9)
+- Ajout de support pour un pool de connexions PostgreSQL. [#7b027c6](https://github.com/suitenumerique/menshen/commit/7b027c6)
+- Suppression des suffixes "Enum" des énumérations. [#0ff6880](https://github.com/suitenumerique/menshen/commit/0ff6880)
+- Suppression des paramètres OIDC inutilisés. [#05ca571](https://github.com/suitenumerique/menshen/commit/05ca571)
 
 ### Autres changements
-- Publication de la première version (0.1.0) avec les endpoints d'échange de jetons.
-- Ajout d'un chart Helm pour faciliter le déploiement et la gestion de l'application sur Kubernetes.
-- Automatisation du linting et de la publication du chart Helm.
-- Automatisation et documentation du développement basé sur Kubernetes.
-- Bundle des fichiers statiques dans l'image Docker.
-- Mise à jour de la version de Python à 3.14.6.
-- Ajout de tests pour le service de requête d'échange de jetons.
-- Suppression du suffixe "Enum" des énumérations.
-- Corrections mineures et améliorations de la documentation.
-- Mises à jour des dépendances (actions GitHub, python, Docker).
+- Correction d'une erreur d'importation de module. [#a570180](https://github.com/suitenumerique/menshen/commit/a570180)
+- Correction d'une erreur de type de contenu JSON lors de la requête d'échange de jetons. [#ddcd221](https://github.com/suitenumerique/menshen/commit/ddcd221)
+- Correction d'un problème d'état désynchronisé avec ArgoCD. [#573a09a](https://github.com/suitenumerique/menshen/commit/573a09a)
+- Correction d'une erreur de copier/coller dans le playground. [#f76e461](https://github.com/suitenumerique/menshen/commit/f76e461)
+- Ajout de la dépendance uvicorn. [#c8816ac](https://github.com/suitenumerique/menshen/commit/c8816ac)
+- Ajout de la configuration Sentry pour Django. [#822aeed](https://github.com/suitenumerique/menshen/commit/822aeed)
+- Bump de la version à 0.1.0 [#48c570d](https://github.com/suitenumerique/menshen/commit/48c570d)
