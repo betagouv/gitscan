@@ -165,6 +165,7 @@
 │   │   │   │       ├── AsyncUseCase.ts
 │   │   │   │       └── UseCase.ts
 │   │   │   ├── adapters
+│   │   │   │   ├── http.adapter.ts
 │   │   │   │   ├── inputs
 │   │   │   │   │   ├── abstract-parser.test.ts
 │   │   │   │   │   ├── abstract-parser.ts
@@ -242,7 +243,8 @@
 │   │   │   │   │   │   ├── rgpd.cron.ts
 │   │   │   │   │   │   ├── scdl-deposit.cron.ts
 │   │   │   │   │   │   ├── search-cache.cron.ts
-│   │   │   │   │   │   ├── sirene-stock-unite-legale.cron.ts
+│   │   │   │   │   │   ├── sirene-stock.cron.test.ts
+│   │   │   │   │   │   ├── sirene-stock.cron.ts
 │   │   │   │   │   │   └── stats.cron.ts
 │   │   │   │   │   ├── http
 │   │   │   │   │   │   ├── CONTRIBUTING.md
@@ -292,6 +294,7 @@
 │   │   │   │   │           │   ├── chorus.mapper.ts
 │   │   │   │   │           │   ├── chorus.parser.ts
 │   │   │   │   │           │   └── chorus.validator.ts
+│   │   │   │   │           ├── import-notifier.ts
 │   │   │   │   │           ├── rna
 │   │   │   │   │           │   ├── __snapshots__
 │   │   │   │   │           │   │   └── rna.mapper.test.ts.snap
@@ -306,10 +309,10 @@
 │   │   │   │   │           └── sirene-establishment
 │   │   │   │   │               ├── sirene-establishment.dto.ts
 │   │   │   │   │               ├── sirene-establishment.fixture.ts
-│   │   │   │   │               ├── sirene-establishment.import.test.ts
-│   │   │   │   │               ├── sirene-establishment.import.ts
 │   │   │   │   │               ├── sirene-establishment.parser.test.ts
-│   │   │   │   │               └── sirene-establishment.parser.ts
+│   │   │   │   │               ├── sirene-establishment.parser.ts
+│   │   │   │   │               ├── sirene-establishment.pipeline.test.ts
+│   │   │   │   │               └── sirene-establishment.pipeline.ts
 │   │   │   │   └── outputs
 │   │   │   │       ├── api
 │   │   │   │       │   ├── api-asso
@@ -327,6 +330,9 @@
 │   │   │   │       │   │   ├── data-bretagne.port.ts
 │   │   │   │       │   │   ├── data-bretagne.validator.test.ts
 │   │   │   │       │   │   └── data-bretagne.validator.ts
+│   │   │   │       │   ├── data-gouv
+│   │   │   │       │   │   ├── data-gouv.adapter.test.ts
+│   │   │   │       │   │   └── data-gouv.adapter.ts
 │   │   │   │       │   ├── recherche-entreprises
 │   │   │   │       │   │   ├── @types
 │   │   │   │       │   │   │   └── RechercheEntreprisesDto.ts
@@ -364,6 +370,7 @@
 │   │   │   │       │   │   ├── configurations.adapter.ts
 │   │   │   │       │   │   └── configurations.port.ts
 │   │   │   │       │   ├── data-log
+│   │   │   │       │   │   ├── data-log.adapter.test.ts
 │   │   │   │       │   │   ├── data-log.adapter.ts
 │   │   │   │       │   │   └── data-log.port.ts
 │   │   │   │       │   ├── database.port.ts
@@ -542,6 +549,7 @@
 │   │   │   │       │       ├── user.dbo.ts
 │   │   │   │       │       ├── user.mapper.ts
 │   │   │   │       │       └── user.port.ts
+│   │   │   │       ├── file-stream.port.ts
 │   │   │   │       └── s3
 │   │   │   │           ├── @errors
 │   │   │   │           │   └── S3Error.ts
@@ -1197,8 +1205,6 @@
 │   │   │   │   │   ├── s3-storage.service.test.ts
 │   │   │   │   │   ├── s3-storage.service.ts
 │   │   │   │   │   └── use-cases
-│   │   │   │   │       ├── get-file-data.test.ts
-│   │   │   │   │       ├── get-file-data.ts
 │   │   │   │   │       ├── get-new-s3-file.test.ts
 │   │   │   │   │       ├── get-new-s3-file.ts
 │   │   │   │   │       ├── tag-imported-file.test.ts
@@ -1282,74 +1288,77 @@
 │   │   │   │       ├── user.helper.test.ts
 │   │   │   │       └── user.helper.ts
 │   │   │   ├── server.ts
-│   │   │   └── shared
-│   │   │       ├── @types
-│   │   │       │   └── ValueWithPath.ts
-│   │   │       ├── Cache.test.ts
-│   │   │       ├── Cache.ts
-│   │   │       ├── ChorusBrancheAccepted.ts
-│   │   │       ├── CliController.test.ts
-│   │   │       ├── CliController.ts
-│   │   │       ├── CliLogger.test.ts
-│   │   │       ├── CliLogger.ts
-│   │   │       ├── ExecutionSyncStack.test.ts
-│   │   │       ├── ExecutionSyncStack.ts
-│   │   │       ├── Flux.test.ts
-│   │   │       ├── Flux.ts
-│   │   │       ├── GenericAdapter.ts
-│   │   │       ├── GenericParser.test.ts
-│   │   │       ├── GenericParser.ts
-│   │   │       ├── LegalCategoriesAccepted.ts
-│   │   │       ├── LogOptions.ts
-│   │   │       ├── MongoConnection.ts
-│   │   │       ├── MongoInit.ts
-│   │   │       ├── ProviderValueFactory.test.ts
-│   │   │       ├── ProviderValueFactory.ts
-│   │   │       ├── Validators.test.ts
-│   │   │       ├── Validators.ts
-│   │   │       ├── __mocks__
-│   │   │       │   └── EventManager.ts
-│   │   │       ├── __snapshots__
-│   │   │       │   └── GenericParser.test.ts.snap
-│   │   │       ├── errors
-│   │   │       │   ├── MongoCnxError.ts
-│   │   │       │   ├── cliErrors
-│   │   │       │   │   ├── FormatDateError.ts
-│   │   │       │   │   ├── ObsoleteDateError.ts
-│   │   │       │   │   └── OutOfRangeDateError.ts
-│   │   │       │   └── dbError
-│   │   │       │       └── DuplicateIndexError.ts
-│   │   │       ├── helpers
-│   │   │       │   ├── ArrayHelper.test.ts
-│   │   │       │   ├── ArrayHelper.ts
-│   │   │       │   ├── CliHelper.test.ts
-│   │   │       │   ├── CliHelper.ts
-│   │   │       │   ├── DataFormatHelper.ts
-│   │   │       │   ├── DateHelper.test.ts
-│   │   │       │   ├── DateHelper.ts
-│   │   │       │   ├── FileHelper.test.ts
-│   │   │       │   ├── FileHelper.ts
-│   │   │       │   ├── FormaterHelper.test.ts
-│   │   │       │   ├── FormaterHelper.ts
-│   │   │       │   ├── HttpHelper.test.ts
-│   │   │       │   ├── HttpHelper.ts
-│   │   │       │   ├── LogHelper.ts
-│   │   │       │   ├── MongoHelper.test.ts
-│   │   │       │   ├── MongoHelper.ts
-│   │   │       │   ├── NumberHelper.test.ts
-│   │   │       │   ├── NumberHelper.ts
-│   │   │       │   ├── ObjectHelper.test.ts
-│   │   │       │   ├── ObjectHelper.ts
-│   │   │       │   ├── StringHelper.test.ts
-│   │   │       │   ├── StringHelper.ts
-│   │   │       │   ├── TimeHelper.ts
-│   │   │       │   ├── UserHelper.test.ts
-│   │   │       │   ├── UserHelper.ts
-│   │   │       │   ├── WaitHelper.ts
-│   │   │       │   └── validation.helper.ts
-│   │   │       └── mappers
-│   │   │           ├── provider-value.mapper.test.ts
-│   │   │           └── provider-value.mapper.ts
+│   │   │   ├── shared
+│   │   │   │   ├── @types
+│   │   │   │   │   └── ValueWithPath.ts
+│   │   │   │   ├── Cache.test.ts
+│   │   │   │   ├── Cache.ts
+│   │   │   │   ├── ChorusBrancheAccepted.ts
+│   │   │   │   ├── CliController.test.ts
+│   │   │   │   ├── CliController.ts
+│   │   │   │   ├── CliLogger.test.ts
+│   │   │   │   ├── CliLogger.ts
+│   │   │   │   ├── ExecutionSyncStack.test.ts
+│   │   │   │   ├── ExecutionSyncStack.ts
+│   │   │   │   ├── Flux.test.ts
+│   │   │   │   ├── Flux.ts
+│   │   │   │   ├── GenericAdapter.ts
+│   │   │   │   ├── GenericParser.test.ts
+│   │   │   │   ├── GenericParser.ts
+│   │   │   │   ├── LegalCategoriesAccepted.ts
+│   │   │   │   ├── LogOptions.ts
+│   │   │   │   ├── MongoConnection.ts
+│   │   │   │   ├── MongoInit.ts
+│   │   │   │   ├── ProviderValueFactory.test.ts
+│   │   │   │   ├── ProviderValueFactory.ts
+│   │   │   │   ├── Validators.test.ts
+│   │   │   │   ├── Validators.ts
+│   │   │   │   ├── __mocks__
+│   │   │   │   │   └── EventManager.ts
+│   │   │   │   ├── __snapshots__
+│   │   │   │   │   └── GenericParser.test.ts.snap
+│   │   │   │   ├── errors
+│   │   │   │   │   ├── MongoCnxError.ts
+│   │   │   │   │   ├── cliErrors
+│   │   │   │   │   │   ├── FormatDateError.ts
+│   │   │   │   │   │   ├── ObsoleteDateError.ts
+│   │   │   │   │   │   └── OutOfRangeDateError.ts
+│   │   │   │   │   └── dbError
+│   │   │   │   │       └── DuplicateIndexError.ts
+│   │   │   │   ├── helpers
+│   │   │   │   │   ├── ArrayHelper.test.ts
+│   │   │   │   │   ├── ArrayHelper.ts
+│   │   │   │   │   ├── CliHelper.test.ts
+│   │   │   │   │   ├── CliHelper.ts
+│   │   │   │   │   ├── DataFormatHelper.ts
+│   │   │   │   │   ├── DateHelper.test.ts
+│   │   │   │   │   ├── DateHelper.ts
+│   │   │   │   │   ├── FileHelper.test.ts
+│   │   │   │   │   ├── FileHelper.ts
+│   │   │   │   │   ├── FormaterHelper.test.ts
+│   │   │   │   │   ├── FormaterHelper.ts
+│   │   │   │   │   ├── HttpHelper.test.ts
+│   │   │   │   │   ├── HttpHelper.ts
+│   │   │   │   │   ├── LogHelper.ts
+│   │   │   │   │   ├── MongoHelper.test.ts
+│   │   │   │   │   ├── MongoHelper.ts
+│   │   │   │   │   ├── NumberHelper.test.ts
+│   │   │   │   │   ├── NumberHelper.ts
+│   │   │   │   │   ├── ObjectHelper.test.ts
+│   │   │   │   │   ├── ObjectHelper.ts
+│   │   │   │   │   ├── StringHelper.test.ts
+│   │   │   │   │   ├── StringHelper.ts
+│   │   │   │   │   ├── TimeHelper.ts
+│   │   │   │   │   ├── UserHelper.test.ts
+│   │   │   │   │   ├── UserHelper.ts
+│   │   │   │   │   ├── WaitHelper.ts
+│   │   │   │   │   └── validation.helper.ts
+│   │   │   │   └── mappers
+│   │   │   │       ├── provider-value.mapper.test.ts
+│   │   │   │       └── provider-value.mapper.ts
+│   │   │   └── usecases
+│   │   │       ├── download-file.ts
+│   │   │       └── remove-file.ts
 │   │   ├── tests
 │   │   │   ├── __fixtures__
 │   │   │   │   ├── allocators.fixture.ts
@@ -1381,11 +1390,15 @@
 │   │   │   │   ├── inputs
 │   │   │   │   │   ├── __fixtures__
 │   │   │   │   │   │   ├── chorus.xlsx
-│   │   │   │   │   │   └── rna-waldec.parquet
+│   │   │   │   │   │   ├── multiple-batch.sirene-establishment.parquet
+│   │   │   │   │   │   ├── rna-waldec.parquet
+│   │   │   │   │   │   └── sirene-establishment.parquet
 │   │   │   │   │   ├── cli
 │   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   ├── establishment.cli.spec.ts.snap
 │   │   │   │   │   │   │   ├── helios.cli.spec.ts.snap
 │   │   │   │   │   │   │   └── rna.cli.spec.ts.snap
+│   │   │   │   │   │   ├── establishment.cli.spec.ts
 │   │   │   │   │   │   ├── helios.cli.spec.ts
 │   │   │   │   │   │   ├── helios.fixture.ods
 │   │   │   │   │   │   └── rna.cli.spec.ts
@@ -2300,11 +2313,12 @@
 │       │   └── index.js
 │       ├── package.json
 │       └── parquet-files
-│           └── create-fixture-from-file.mjs
+│           ├── create-fixture-from-file.mjs
+│           └── create-sirene-establishment-fixture.mjs
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 ├── post-install.bash
 └── vendor
     ├── README.md
     └── xlsx-0.20.3.tgz
-526 directories, 1783 files
+528 directories, 1795 files

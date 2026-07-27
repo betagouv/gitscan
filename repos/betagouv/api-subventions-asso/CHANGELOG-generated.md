@@ -1,25 +1,26 @@
-## Changelog : api-subventions-asso (30 derniers jours, au 20 juillet 2026)
+## Changelog : api-subventions-asso (30 derniers jours, au 24 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'importation et du traitement des données de subventions, notamment via l'intégration de nouvelles sources de données (RNA Waldec, Sirene) et la correction de bugs liés à la gestion des documents et des associations. Des améliorations techniques ont également été apportées pour la gestion des erreurs et la stabilité de l'API.
+Ce mois-ci, les améliorations se concentrent sur l'importation et la gestion des données des associations, notamment via l'intégration de sources externes comme Sirene et Chorus. Des corrections de bugs et des optimisations ont également été apportées pour améliorer la stabilité et la fiabilité de l'API.
 
 ### Évolutions fonctionnelles
-- Intégration de l'importation des fichiers parquet RNA Waldec pour enrichir les données de subventions. [#3984](https://github.com/betagouv/api-subventions-asso/issues/3984)
-- Intégration de la source de données Sirene-Etablissements pour améliorer la recherche et la validation des informations sur les établissements. [#3986](https://github.com/betagouv/api-subventions-asso/issues/3986)
-- Amélioration des notifications concernant l'importation des données des fournisseurs. [#3933](https://github.com/betagouv/api-subventions-asso/issues/3933)
-- Correction d'un bug empêchant la récupération correcte des documents associés aux associations. [#0000](https://github.com/betagouv/api-subventions-asso/issues/0000)
-- Correction d'un problème d'affichage d'alertes de doublons SIREN sur le front-end. [#3964](https://github.com/betagouv/api-subventions-asso/issues/3964)
-- Correction d'un bug lié à la gestion des erreurs 404 lors de la récupération des données de l'API asso. [#3980](https://github.com/betagouv/api-subventions-asso/issues/3980)
-- Amélioration de la gestion des identifiants uniques Chorus, en passant à un index composite. [#3942](https://github.com/betagouv/api-subventions-asso/issues/3942)
+- Intégration de l'importation automatisée des établissements Sirene via une tâche cron (#4006).
+- Import des fichiers parquet RNA Waldec (#4000).
+- Intégration des établissements Sirene (#3995).
+- Amélioration des notifications lors de l'importation de données des fournisseurs (#3954).
+- Correction d'un bug d'affichage d'alertes de doublons SIREN sur le front-end (#3965).
 
 ### Évolutions techniques
-- Refactorisation du service de gestion des droits (grant service) pour une meilleure maintenabilité. [#3527](https://github.com/betagouv/api-subventions-asso/issues/3527)
-- Suppression des codes d'erreur HTTP personnalisés au profit de codes standards. [#3945](https://github.com/betagouv/api-subventions-asso/issues/3945)
-- Refactorisation du code pour utiliser l'entité `UserEntity` au lieu de `_id` pour une meilleure cohérence. [#3971](https://github.com/betagouv/api-subventions-asso/issues/3971)
-- Mise à jour de la version de pnpm vers la version 11. [#3897](https://github.com/betagouv/api-subventions-asso/issues/3897)
-- Mise à jour de l'URL de la source de données Sirene pour utiliser un lien stable. [#3982](https://github.com/betagouv/api-subventions-asso/issues/3982)
+- Refactorisation pour remplacer l'utilisation de l'ID utilisateur par l'entité `UserEntity` (#3978).
+- Remplacement de l'identifiant unique Chorus par un index composite (#3968).
+- Suppression des codes d'erreur HTTP personnalisés au profit des codes standards (#3979).
+- Mise à jour de l'URL de l'unité légale Sirene Stock pour utiliser un lien stable (#3983).
+- Ajout de tests d'intégration pour l'importation des établissements Sirene (#4012).
+- Correction d'une erreur 404 lors de l'appel à l'API asso et ajout d'un `await` manquant (#3981).
 
 ### Autres changements
-- Mise à jour des scripts de publication pour inclure tous les packages, y compris le package racine.
-- Régénération du fichier changelog.
-- Suppression d'un ancien nom de connexion Pro Connect. [#3972](https://github.com/betagouv/api-subventions-asso/issues/3972)
+- Mise à jour du script de publication pour mettre à jour tous les paquets, y compris le paquet racine.
+- Suppression d'une exclusion d'âge de publication pnpm obsolète.
+- Regénération du changelog.
+- Suppression d'un ancien nom de connexion Pro Connect.
+- Correction de tests suite à la mise à jour de l'URL Sirene Stock.
