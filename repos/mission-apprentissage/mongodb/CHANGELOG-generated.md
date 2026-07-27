@@ -1,15 +1,15 @@
-## Changelog : mongodb (30 derniers jours, au 08 juillet 2026)
+## Changelog : mongodb (30 derniers jours, au 24 juillet 2026)
 
 ### Résumé
-Ce changelog présente les récentes modifications apportées à l'infrastructure MongoDB de la Mission Apprentissage. Les changements incluent une rotation de secret pour une sécurité accrue, la correction d'un problème lié à un token, et une simplification de la structure du dépôt en supprimant des sous-modules obsolètes.
+Ce mois-ci, les efforts se sont concentrés sur la modernisation de l'infrastructure MongoDB. Une version plus récente de MongoDB a été déployée sur le cluster LBA, et une installation native de mongot 1.70.1 a été mise en place, ouvrant la voie à de nouvelles fonctionnalités et améliorations de performance.
 
 ### Évolutions fonctionnelles
-- Correction du token `TOKEN_MNA_SHARED` [#issue à investiguer]
+- Mise à niveau de MongoDB de la version 8.0 à la version 8.2 sur le cluster lba. [#64](https://github.com/mission-apprentissage/mongodb/issues/64)
+- Installation native de mongot 1.70.1 colocalisé sur une grappe MongoDB. [#65](https://github.com/mission-apprentissage/mongodb/issues/65)
 
 ### Évolutions techniques
-- Suppression des sous-modules `.infra/authorizations` et `.infra/inventories` pour simplifier la gestion du dépôt et réduire sa complexité. [#issue à investiguer]
-- Mise à jour du sous-module `.bin/shared`.
-- Rotation du secret principal SOPS pour renforcer la sécurité de l'infrastructure.
+- Aucune évolution technique significative à signaler.
 
 ### Autres changements
-- Aucun changement significatif à signaler.
+- Correction de fautes de frappe. [#64](https://github.com/mission-apprentissage/mongodb/issues/64)
+- Rotation du secret principal SOPS pour renforcer la sécurité.
