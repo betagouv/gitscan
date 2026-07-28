@@ -1,100 +1,37 @@
-## Changelog : les-emplois (30 derniers jours, au 2026-07-24)
+## Changelog : les-emplois (30 derniers jours, au 27 juillet 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à la gestion de l'authentification FranceConnect et Pôle Emploi Connect, avec une refactorisation importante du code associé. Des corrections et des optimisations ont également été apportées à la gestion des fichiers, à l'interface utilisateur et aux tests. Enfin, plusieurs dépendances ont été mises à jour pour bénéficier des dernières corrections et améliorations de sécurité.
+Cette période a été marquée par d'importantes améliorations concernant la sécurité, notamment autour de l'authentification multi-facteurs (MFA) et de la gestion des accès. Des évolutions significatives ont également été apportées au module d'insertion, avec une refonte de la gestion des services et des orientations, ainsi qu'une amélioration de l'expérience utilisateur. Enfin, des corrections et des optimisations ont été réalisées sur divers aspects de l'application.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'expérience utilisateur lors de la déconnexion avec FranceConnect, incluant un rappel de l'URL de retour.
-- Ajout de la possibilité d'afficher les orientations dans l'interface d'administration des utilisateurs.
-- Amélioration de l'affichage des informations de contact de l'accompagnateur pour les demandeurs d'emploi.
-- Ajout de boutons pour assigner un conseiller ou s'auto-assigner à un demandeur d'emploi.
-- Amélioration de l'affichage des heures d'ouverture et des prérequis des services.
-- Ajout d'une alerte pour les utilisateurs professionnels concernant l'activation prochaine de l'authentification à deux facteurs.
-- Clarification des messages affichés après l'utilisation d'un code de récupération pour l'authentification à deux facteurs.
-- Ajout d'un mécanisme de demande de rôle administrateur par email.
-- Ajout d'un affichage des heures d'ouverture et des informations complémentaires des structures.
-- Amélioration de la gestion des services et des structures lors de l'insertion.
+- **Authentification :** Renforcement de la sécurité avec l'ajout de la suppression logicielle des dispositifs MFA et la gestion des cas d'utilisation de codes de récupération.
+- **Authentification :** Amélioration de la gestion des erreurs et des messages d'information liés à l'authentification à deux facteurs (2FA).
+- **Authentification :** Ajout d'exemples d'applications d'authentification pour faciliter la configuration du 2FA.
+- **Authentification :** Affichage d'un message d'avertissement pour les utilisateurs professionnels concernant l'activation prochaine du MFA.
+- **Insertion :** Possibilité de supprimer "en douceur" les services et structures, permettant une gestion plus flexible des données.
+- **Insertion :** Amélioration du suivi des orientations avec l'enregistrement des événements de mobilisation et la liaison avec les iMER (identifiants uniques).
+- **Insertion :** Affichage des informations de réception du service (lieu) sur la fiche structure.
+- **Insertion :** Suppression de la nécessité d'un numéro de téléphone pour démarrer une orientation.
+- **Insertion :** Affichage des détails des frais lorsque le service est payant.
+- **Interface Utilisateur :** Affichage du dernier accompagnateur connu au lieu du référent GPS pour les demandeurs d'emploi.
+- **Interface Utilisateur :** Ajout d'un bouton pour assigner un utilisateur à un accompagnement.
+- **Interface Utilisateur :** Amélioration de la navigation et de la clarté des messages.
+- **Structures :** Désactivation automatique des offres d'emploi spontanées après 90 jours d'inactivité.
+- **Structures :** Envoi d'un email aux administrateurs lors de la désactivation des offres d'emploi spontanées.
 
 ### Évolutions techniques
-- Refactorisation complète du code lié à Pôle Emploi Connect (renommage de variables, fonctions, modèles, templates, etc.) pour une meilleure cohérence et maintenabilité.
-- Optimisation de la suppression des fichiers inutilisés en réduisant la taille des lots traités.
-- Amélioration de la robustesse des tests et correction de tests flaky.
-- Mise à jour de plusieurs dépendances, notamment `Django`, `pytest`, `MinIO`, `Docker`, `ruff`, `filelock`, `numpy`, et autres.
-- Suppression de code obsolète et simplification de la logique dans certains modules.
-- Amélioration de la gestion des erreurs et des logs.
+- **Sécurité :** Simplification et amélioration de la gestion des permissions et des règles d'accès.
+- **FranceConnect :** Suppression des URLs de déconnexion obsolètes.
+- **API :** Envoi des données d'orientation au format JSON pour une meilleure compatibilité avec DORA.
+- **Tests :** Ajout de tests de régression pour la gestion du MFA et correction de tests instables.
+- **Refactoring :** Refactorisation du code lié à la gestion des identifiants et des connexions.
+- **Déploiement :** Mise à jour des dépendances et des outils de construction.
+- **Base de données :** Optimisation des requêtes pour améliorer les performances.
+- **Monitoring :** Ajout de suivi Matomo pour les soumissions de l'assistant d'orientation.
 
 ### Autres changements
-- Mise à jour de la documentation et des liens d'accessibilité.
-- Correction de bugs mineurs dans l'interface utilisateur.
-- Amélioration de la gestion des configurations et des variables d'environnement.
-- Suppression de code non utilisé.
-- Ajout de commentaires et de documentation pour améliorer la lisibilité du code.
-- Mise à jour des URLs SIRENE.
-- Correction d'un bug dans le calcul du pourcentage d'attribution des évaluations GEIQ.
-- Ajout d'une commande pour désactiver les offres d'emploi spontanées après une certaine période.
-- Correction d'un bug lié à l'affichage des informations de contact des conseillers.
-- Suppression d'une fonctionnalité de suppression des transferts d'enregistrements des employés.
-- Correction d'un bug dans l'affichage des jours d'ouverture.
-- Ajout de la possibilité de spécifier un identifiant URI pour le secteur d'activité dans FranceConnect.
-- Ajout de la possibilité de définir le genre de l'utilisateur dans FranceConnect.
-- Amélioration de la gestion des erreurs lors de la suppression de fichiers.
-- Ajout de la possibilité de configurer des buckets MinIO distincts pour les tests et le développement.
-- Ajout d'une gestion plus robuste des contraintes de validation des données.
-- Ajout d'une alerte pour les utilisateurs professionnels concernant l'activation prochaine de l'authentification à deux facteurs.
-- Correction d'un bug dans le test de l'ordre des périmètres de service.
-- Ajout de la possibilité de définir des heures d'ouverture pour les structures.
-- Correction d'un bug dans l'affichage des informations de contact des conseillers.
-- Amélioration de la gestion des erreurs lors de la suppression de fichiers.
-- Ajout de la possibilité de configurer des buckets MinIO distincts pour les tests et le développement.
-- Ajout d'une gestion plus robuste des contraintes de validation des données.
-- Ajout d'une alerte pour les utilisateurs professionnels concernant l'activation prochaine de l'authentification à deux facteurs.
-- Correction d'un bug dans le test de l'ordre des périmètres de service.
-- Ajout de la possibilité de définir des heures d'ouverture pour les structures.
-- Correction d'un bug dans l'affichage des informations de contact des conseillers.
-- Amélioration de la gestion des erreurs lors de la suppression de fichiers.
-- Ajout de la possibilité de configurer des buckets MinIO distincts pour les tests et le développement.
-- Ajout d'une gestion plus robuste des contraintes de validation des données.
-- Ajout d'une alerte pour les utilisateurs professionnels concernant l'activation prochaine de l'authentification à deux facteurs.
-- Correction d'un bug dans le test de l'ordre des périmètres de service.
-- Ajout de la possibilité de définir des heures d'ouverture pour les structures.
-- Correction d'un bug dans l'affichage des informations de contact des conseillers.
-- Amélioration de la gestion des erreurs lors de la suppression de fichiers.
-- Ajout de la possibilité de configurer des buckets MinIO distincts pour les tests et le développement.
-- Ajout d'une gestion plus robuste des contraintes de validation des données.
-- Ajout d'une alerte pour les utilisateurs professionnels concernant l'activation prochaine de l'authentification à deux facteurs.
-- Correction d'un bug dans le test de l'ordre des périmètres de service.
-- Ajout de la possibilité de définir des heures d'ouverture pour les structures.
-- Correction d'un bug dans l'affichage des informations de contact des conseillers.
-- Amélioration de la gestion des erreurs lors de la suppression de fichiers.
-- Ajout de la possibilité de configurer des buckets MinIO distincts pour les tests et le développement.
-- Ajout d'une gestion plus robuste des contraintes de validation des données.
-- Ajout d'une alerte pour les utilisateurs professionnels concernant l'activation prochaine de l'authentification à deux facteurs.
-- Correction d'un bug dans le test de l'ordre des périmètres de service.
-- Ajout de la possibilité de définir des heures d'ouverture pour les structures.
-- Correction d'un bug dans l'affichage des informations de contact des conseillers.
-- Amélioration de la gestion des erreurs lors de la suppression de fichiers.
-- Ajout de la possibilité de configurer des buckets MinIO distincts pour les tests et le développement.
-- Ajout d'une gestion plus robuste des contraintes de validation des données.
-- Ajout d'une alerte pour les utilisateurs professionnels concernant l'activation prochaine de l'authentification à deux facteurs.
-- Correction d'un bug dans le test de l'ordre des périmètres de service.
-- Ajout de la possibilité de définir des heures d'ouverture pour les structures.
-- Correction d'un bug dans l'affichage des informations de contact des conseillers.
-- Amélioration de la gestion des erreurs lors de la suppression de fichiers.
-- Ajout de la possibilité de configurer des buckets MinIO distincts pour les tests et le développement.
-- Ajout d'une gestion plus robuste des contraintes de validation des données.
-- Ajout d'une alerte pour les utilisateurs professionnels concernant l'activation prochaine de l'authentification à deux facteurs.
-- Correction d'un bug dans le test de l'ordre des périmètres de service.
-- Ajout de la possibilité de définir des heures d'ouverture pour les structures.
-- Correction d'un bug dans l'affichage des informations de contact des conseillers.
-- Amélioration de la gestion des erreurs lors de la suppression de fichiers.
-- Ajout de la possibilité de configurer des buckets MinIO distincts pour les tests et le développement.
-- Ajout d'une gestion plus robuste des contraintes de validation des données.
-- Ajout d'une alerte pour les utilisateurs professionnels concernant l'activation prochaine de l'authentification à deux facteurs.
-- Correction d'un bug dans le test de l'ordre des périmètres de service.
-- Ajout de la possibilité de définir des heures d'ouverture pour les structures.
-- Correction d'un bug dans l'affichage des informations de contact des conseillers.
-- Amélioration de la gestion des erreurs lors de la suppression de fichiers.
-- Ajout de la possibilité de configurer des buckets MinIO distincts pour les tests et le développement.
-- Ajout d'une gestion plus robuste des contraintes de validation des données.
-- Ajout d'une alerte pour les utilisateurs professionnels concernant l'activation prochaine de l'authentification à deux facteurs.
-- Correction d'un bug dans le test de l'ordre des périmètres de service.
+- **Documentation :** Mise à jour de la documentation pour refléter les changements apportés.
+- **Configuration :** Modification de la configuration pour améliorer la flexibilité et la maintenabilité.
+- **Nettoyage de code :** Suppression de code obsolète et amélioration de la lisibilité du code.
+- **Accessibilité :** Mise à jour des liens de déclaration d'accessibilité.
+- **Divers :** Corrections de fautes de frappe et améliorations de la qualité du code.

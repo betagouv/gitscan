@@ -1,14 +1,48 @@
-2026-07-24T18:05:27Z - babb04f - Antoine LAURENT : ft_connect: Rename urls
-2026-07-24T18:05:27Z - d6ec1cb - Antoine LAURENT : users: Change db value for FT connect
-2026-07-24T18:05:27Z - 2e0ce90 - Antoine LAURENT : ft_connect: Rename PoleEmploiConnect in user messages
-2026-07-24T18:05:27Z - 973d325 - Antoine LAURENT : ft_connect: Rename functions and tests
-2026-07-24T18:05:27Z - 4727a24 - Antoine LAURENT : users: Fix comment
+2026-07-27T18:24:40Z - 57e2836 - Victor Perron : insertion: Allow servcies & structures to be soft deleted
+2026-07-27T18:05:02Z - 1449c6a - François Freitag : FranceConnect: Remove logout URLs from sector_identifier
+2026-07-27T12:31:53Z - c18d1da - Antoine LAURENT : perms: Remove bypass for pro_connect urls
+2026-07-27T12:31:53Z - 715ad2f - Antoine LAURENT : perms: Small refactor
+2026-07-27T12:31:53Z - 540ac94 - Antoine LAURENT : perms: Simplify Nexus bypass
+2026-07-27T12:31:53Z - 41b7b7f - Antoine LAURENT : perms: Improve comment in middleware whitelist
+2026-07-27T12:31:53Z - 3193ebb - Antoine LAURENT : perms: Replace redirection for admin login with a overridden url
+2026-07-27T12:31:53Z - 21aeeff - Antoine LAURENT : perms: Reorder checks and bypass in Middleware
+2026-07-27T12:08:53Z - e30bcdb - Gérald Gounot : fix(insertion): log emplois_sync_uid instead of id for DORA orientation
+2026-07-27T12:08:53Z - 294782c - Gérald Gounot : feat(insertion): persist Orientation locally after a successful DORA POST
+2026-07-27T12:08:53Z - 0fff491 - Gérald Gounot : feat(insertion): link the originating iMER to the created Orientation
+2026-07-27T12:06:40Z - c9f0789 - Antoine LAURENT : login: Improve old url comment
+2026-07-27T12:06:40Z - 545e8c2 - Antoine LAURENT : login: Remove backward compatibility url
+2026-07-27T10:14:33Z - fc206cc - Louis Lalba : fix: enforce role-based access on OTP routes with 404s
+2026-07-27T10:14:33Z - f872f7e - Damien Baty : otp: Restore "account change" banner on review demo/dev environments
+2026-07-27T10:14:33Z - f7713f5 - Louis Lalba : fix: reject manipulated device-enrollment requests
+2026-07-27T10:14:33Z - eb3f0aa - Louis Lalba : test: add regression test for 2FA bypass via device enrollment
+2026-07-27T10:14:33Z - c63260a - Louis Lalba : fix: tolerate a null `amr` claim from ProConnect
+2026-07-27T10:14:33Z - b37a19f - Louis Lalba : fix: verify login OTP without over-throttling other devices
+2026-07-27T10:14:33Z - a56a29c - Louis Lalba : fix: use the `maxlength` HTML attribute and the correct `mark_safe` import
+2026-07-27T10:14:33Z - 983c316 - Louis Lalba : feat: add authenticator app examples to enrollment QR code screen
+2026-07-27T10:14:33Z - 8d2650d - Damien Baty : otp: Require internal MFA if user has already enrolled
+2026-07-27T10:14:33Z - 79ea7eb - Louis Lalba : feat: show OTP configuration menu link to all users concerned by 2FA
+2026-07-27T10:14:33Z - 6332809 - Damien Baty : otp: Add bold text to various banner messages
+2026-07-27T10:14:33Z - 62d6b5d - Damien Baty : otp_views: Fix typo in "login with backup code" form
+2026-07-27T10:14:33Z - 5b2d97d - Damien Baty : otp_views: Change wording in TOTP device confirmation form
+2026-07-27T10:14:33Z - 4ce7e6e - Louis Lalba : fix: correct typos in OTP user-facing messages
+2026-07-27T10:14:33Z - 41a9fcd - Louis Lalba : fix: import `AnonymousUser` from Django instead of allauth
+2026-07-27T10:14:33Z - 0c85923 - Louis Lalba : fix: enforce internal OTP before the Nexus view whitelist
+2026-07-27T10:14:33Z - 08d596b - Louis Lalba : test: pin MFA-for-pros settings for a deterministic suite
+2026-07-27T10:14:33Z - 0498395 - Louis Lalba : feat: soft-delete TOTP devices and support the external-MFA placeholder
+2026-07-27T08:04:48Z - 4916daa - Changelog Bot : changelog: From 2026-07-06 to 2026-07-12
+2026-07-27T07:43:17Z - a013ed9 - dependabot[bot] : requirement: bump regex from 2026.7.10 to 2026.7.19 in /requirements
+2026-07-27T07:43:15Z - 365f674 - dependabot[bot] : requirement: bump soupsieve from 2.8.4 to 2.9.1 in /requirements
 2026-07-24T18:05:27Z - e0018d4 - Antoine LAURENT : users: Rename IdentityProvider.PE_CONNECT enum
-2026-07-24T18:05:27Z - 2c22387 - Antoine LAURENT : ft_connect: Rename PE connect in various comments and loggers
-2026-07-24T18:05:27Z - 467aca5 - Antoine LAURENT : ft_connect: Replace all peamu uses
+2026-07-24T18:05:27Z - d6ec1cb - Antoine LAURENT : users: Change db value for FT connect
+2026-07-24T18:05:27Z - babb04f - Antoine LAURENT : ft_connect: Rename urls
 2026-07-24T18:05:27Z - a046af5 - Antoine LAURENT : ft_connect: Rename templates and statics
-2026-07-24T18:05:27Z - 16a441e - Antoine LAURENT : ft_connect: Rename constants and settings
+2026-07-24T18:05:27Z - 973d325 - Antoine LAURENT : ft_connect: Rename functions and tests
 2026-07-24T18:05:27Z - 5180041 - Antoine LAURENT : ft_connect: Rename models and db table
+2026-07-24T18:05:27Z - 4727a24 - Antoine LAURENT : users: Fix comment
+2026-07-24T18:05:27Z - 467aca5 - Antoine LAURENT : ft_connect: Replace all peamu uses
+2026-07-24T18:05:27Z - 2e0ce90 - Antoine LAURENT : ft_connect: Rename PoleEmploiConnect in user messages
+2026-07-24T18:05:27Z - 2c22387 - Antoine LAURENT : ft_connect: Rename PE connect in various comments and loggers
+2026-07-24T18:05:27Z - 16a441e - Antoine LAURENT : ft_connect: Rename constants and settings
 2026-07-24T16:01:52Z - 83758ae - Antoine LAURENT : invitations: Remove old urls
 2026-07-24T12:33:01Z - 526627c - Damien Baty : ci: Fix wrong version number when pinning `actions/setup-python`
 2026-07-24T12:33:01Z - 35321eb - dependabot[bot] : build(deps): bump actions/setup-python from 6.3.0 to 7.0.0
@@ -22,10 +56,10 @@
 2026-07-23T12:27:14Z - 9f0f878 - dependabot[bot] : build(deps): bump actions/checkout from 7.0.0 to 7.0.1
 2026-07-23T12:27:00Z - c11b7e9 - dependabot[bot] : requirement: bump ruff from 0.15.21 to 0.15.22 in /requirements
 2026-07-23T08:52:54Z - db54851 - Ewen Corre : admin: update insertion app verbose name
-2026-07-23T07:47:09Z - b864f8e - François Freitag : FranceConnect: Implement logout_callback
 2026-07-23T07:47:09Z - d2827dd - François Freitag : FranceConnect: Improve logout flow
-2026-07-23T07:39:38Z - 5484fd8 - Gérald Gounot : users: show orientations inlines in the user admin
+2026-07-23T07:47:09Z - b864f8e - François Freitag : FranceConnect: Implement logout_callback
 2026-07-23T07:39:38Z - 7b5072a - Gérald Gounot : users: cover orientations in the user data transfer test
+2026-07-23T07:39:38Z - 5484fd8 - Gérald Gounot : users: show orientations inlines in the user admin
 2026-07-23T07:39:38Z - 2dc28b9 - Gérald Gounot : prescribers: move orientations when merging organizations
 2026-07-23T07:39:38Z - 22ea593 - Ewen Corre : insertion: add the Orientation model
 2026-07-23T07:19:08Z - 2c31692 - Ewen Corre : Revert "chore: add a configure_bucket.py symlink"
@@ -34,12 +68,12 @@
 2026-07-22T09:31:45Z - f6f5f02 - hellodeloo : fix: update accessibility declaration links
 2026-07-22T09:10:41Z - e7d41be - Damien Baty : otp: Clarify wording after recovery code is used and show disabled devices
 2026-07-22T08:37:59Z - f31ac55 - François Freitag : Prefer absolute url from request.get_host
-2026-07-22T08:16:04Z - c49c997 - Ewen Corre : chore: use a separate bucket for Dora test and dev
 2026-07-22T08:16:04Z - feda8a1 - Ewen Corre : chore: refactor configure_buckets
-2026-07-22T08:16:04Z - 2f97e6c - Ewen Corre : chore: add a configure_bucket.py symlink
 2026-07-22T08:16:04Z - ea812a3 - Ewen Corre : chore: rename configure_bucket to configure_buckets
-2026-07-22T07:57:35Z - 874e2e7 - Mathieu Dupuy : migration: AddConstraintNotValid
+2026-07-22T08:16:04Z - c49c997 - Ewen Corre : chore: use a separate bucket for Dora test and dev
+2026-07-22T08:16:04Z - 2f97e6c - Ewen Corre : chore: add a configure_bucket.py symlink
 2026-07-22T07:57:35Z - 98905c0 - Mathieu Dupuy : job_seeker_profile: exclude empty asp_uid from validate_constraints
+2026-07-22T07:57:35Z - 874e2e7 - Mathieu Dupuy : migration: AddConstraintNotValid
 2026-07-22T07:16:59Z - 000440c - Antoine LAURENT : utils: Alert when INSEE password was last changed to long ago
 2026-07-22T07:00:04Z - b75504b - Antoine LAURENT : meteabase: Reduce some batch sizes
 2026-07-21T15:35:29Z - 6519774 - Xavier Fernandez : files: increase frequency & limit the max number of files to delete
@@ -97,67 +131,67 @@
 2026-07-13T14:56:39Z - 2525c67 - Antoine LAURENT : pro_connect: Check state before calling token endpoint
 2026-07-13T14:50:21Z - c879ddc - Antoine LAURENT : pe_connect: Don't store state as we don't use it
 2026-07-13T14:50:21Z - 730a75e - Antoine LAURENT : pro_connect: Remove session in authorize view
-2026-07-13T14:13:30Z - 175eb51 - Antoine LAURENT : pro_connect: Check nonce in login callback
-2026-07-13T14:13:30Z - 2077612 - Antoine LAURENT : pro_connect: Reuse id_token in test mocked logout flow
-2026-07-13T14:13:30Z - e07297c - Antoine LAURENT : pro_connect: Improve failed login tests
 2026-07-13T14:13:30Z - f595d8c - Antoine LAURENT : pro_connect: Test setupclass returns an instance when used as context manager
+2026-07-13T14:13:30Z - e07297c - Antoine LAURENT : pro_connect: Improve failed login tests
 2026-07-13T14:13:30Z - 4f1bfae - Antoine LAURENT : openid_connect: Remove comment
-2026-07-13T12:45:28Z - 23d8562 - Victor Blanchard : clever: Add cron task to disable spontaneous job applications in inactive companies
+2026-07-13T14:13:30Z - 2077612 - Antoine LAURENT : pro_connect: Reuse id_token in test mocked logout flow
+2026-07-13T14:13:30Z - 175eb51 - Antoine LAURENT : pro_connect: Check nonce in login callback
 2026-07-13T12:45:28Z - d6d9387 - Victor Blanchard : companies: Add command to disable spontaneous applications after 90 days
-2026-07-13T12:45:28Z - b287be6 - Victor Blanchard : companies: Add mail template for deactivating spontaneous job applications
-2026-07-13T12:45:28Z - 1627be2 - Victor Blanchard : companies: Print number of job descriptions left to deactivate in log
 2026-07-13T12:45:28Z - d3149be - Victor Blanchard : companies: Replace hardcoded value with `DEACTIVATION_DELAY` setting
-2026-07-13T12:24:52Z - 678475e - Victor Blanchard : job_seekers_views: Clean up `display_last_known_advisor_contact_info`
-2026-07-13T12:24:52Z - d56c5e2 - Victor Blanchard : job_seekers_views: Add button to self-assign as advisor in list
+2026-07-13T12:45:28Z - b287be6 - Victor Blanchard : companies: Add mail template for deactivating spontaneous job applications
+2026-07-13T12:45:28Z - 23d8562 - Victor Blanchard : clever: Add cron task to disable spontaneous job applications in inactive companies
+2026-07-13T12:45:28Z - 1627be2 - Victor Blanchard : companies: Print number of job descriptions left to deactivate in log
 2026-07-13T12:24:52Z - db84da1 - Victor Blanchard : job_seekers_views: Add button to assign oneself as last known advisor
 2026-07-13T12:24:52Z - d87b7dc - Victor Blanchard : job_seekers_views: Add `assign_oneself_as_advisor` view for professionals
+2026-07-13T12:24:52Z - d56c5e2 - Victor Blanchard : job_seekers_views: Add button to self-assign as advisor in list
+2026-07-13T12:24:52Z - 678475e - Victor Blanchard : job_seekers_views: Clean up `display_last_known_advisor_contact_info`
 2026-07-13T08:57:04Z - b7b61cf - Antoine LAURENT : metabase: Put back jobseeker creator kind
 2026-07-10T16:03:37Z - a7c517e - Mathieu Dupuy : feat: admin role request mechanism through email
 2026-07-10T16:03:37Z - 3fc472c - Mathieu Dupuy : feat: add auto attribution email for new organization admins
 2026-07-10T12:42:11Z - 749c7f4 - dependabot[bot] : requirement: bump rpds-py from 2026.5.1 to 2026.6.3 in /requirements
 2026-07-10T12:38:17Z - 03a9283 - dependabot[bot] : requirement: bump sentry-sdk from 2.63.0 to 2.64.0 in /requirements
 2026-07-10T09:07:22Z - 4afcb56 - Ewen Corre : insertion_views: allow the `/` character in service UIDs
-2026-07-09T13:44:57Z - 394ec83 - David Martin Cohen : fix: opening hours shows open days without hours specified as well as additional info displayed below
 2026-07-09T13:44:57Z - 6f32e8a - David Martin Cohen : fix: format prerequisites that are in markdown
+2026-07-09T13:44:57Z - 394ec83 - David Martin Cohen : fix: opening hours shows open days without hours specified as well as additional info displayed below
 2026-07-09T13:08:31Z - 4ddca19 - dependabot[bot] : requirement: bump regex from 2026.5.9 to 2026.6.28 in /requirements
 2026-07-09T13:05:45Z - 464fc76 - dependabot[bot] : requirement: bump data-inclusion-schema in /requirements
 2026-07-09T12:00:19Z - dbe4038 - Xavier Fernandez : Revert "feat: add alert for temporary suspension of employee record submission service"
-2026-07-09T08:14:52Z - 7d748a1 - Damien Baty : api: Allow clients to control meaning of `salarieLangueFrancaise`
 2026-07-09T08:14:52Z - b26577b - Damien Baty : employee_record: Invert `salarieLangueFrancaise`
+2026-07-09T08:14:52Z - 7d748a1 - Damien Baty : api: Allow clients to control meaning of `salarieLangueFrancaise`
 2026-07-09T07:26:25Z - 18507c6 - Victor Blanchard : tests: Fix flaky test
 2026-07-09T07:17:54Z - 21b5f3b - Ewen Corre : admin: add read permissions on MobilizationEvent objects to itou-admin
 2026-07-07T15:02:22Z - cbb739b - Arnaud Denoix : Update SIRENE urls
 2026-07-07T13:53:40Z - dff2f4b - hellodeloo : fix: update title in assessment print view to reflect service control
 2026-07-07T13:03:55Z - de1abcf - dependabot[bot] : requirement: bump syrupy from 5.3.4 to 5.5.1 in /requirements
 2026-07-07T08:19:08Z - 32e89e0 - Mathieu Dupuy : geiq_assessments_views: add c-alert banner "refusal justif. are not shared w/ GEIQ"
-2026-07-06T13:43:54Z - b7cd39c - Ewen Corre : insertion_views: register at click a mobilization event when clicking on external service link
 2026-07-06T13:43:54Z - f9fb451 - Ewen Corre : insertion_views: register at click a mobilization event when orienting a user
 2026-07-06T13:43:54Z - f0be283 - Ewen Corre : insertion_views: register at click a mobilization event when displaying service contact info
+2026-07-06T13:43:54Z - e1bedd3 - Ewen Corre : insertion: move enums to a dedicated file
 2026-07-06T13:43:54Z - df247d4 - Ewen Corre : insertion_views: do not generate modal if it cannot be shown
+2026-07-06T13:43:54Z - b7cd39c - Ewen Corre : insertion_views: register at click a mobilization event when clicking on external service link
 2026-07-06T13:43:54Z - 7f467ba - Ewen Corre : insertion_views: register at click a mobilization event when displaying structure contact info
 2026-07-06T13:43:54Z - 412e27e - Ewen Corre : insertion: create the MobilizationEvent model
-2026-07-06T13:43:54Z - e1bedd3 - Ewen Corre : insertion: move enums to a dedicated file
-2026-07-06T13:26:19Z - 3043479 - David Martin Cohen : fix: add missing fields to payload regarding DI services
-2026-07-06T13:26:19Z - 220977e - Victor Perron : insertion: show fee details inline when service is payant
-2026-07-06T13:26:19Z - 977e1f7 - Victor Perron : insertion: track orientation wizard submit in Matomo
-2026-07-06T13:26:19Z - 470b9f4 - Victor Perron : insertion: show proof upload when service has prerequisites
-2026-07-06T13:26:19Z - 776ef24 - Victor Perron : insertion: include coworkers' beneficiaries in orientation select
-2026-07-06T13:26:19Z - 19b39f6 - Victor Perron : insertion: send empty beneficiary phone to DORA
-2026-07-06T13:26:19Z - 6939d8b - David Martin Cohen : fix: change the wording of the orientation conditions section of the confirm step
-2026-07-06T13:26:19Z - dfd8427 - Victor Perron : insertion: also POST data⋅inclusion service details
-2026-07-06T13:26:19Z - 231d715 - Victor Perron : insertion: use hand-heart icon and open structure card in a new tab
-2026-07-06T13:26:19Z - d9bc885 - Victor Perron : insertion: don't require a phone number to start an orientation
-2026-07-06T13:26:19Z - 60251f4 - Victor Perron : insertion: factor service prerequisites into model properties & rename section
-2026-07-06T13:26:19Z - 09e5956 - Victor Perron : insertion: fix N+1 queries when loading structure service perimeters
 2026-07-06T13:26:19Z - fabc690 - Victor Perron : insertion: show service reception location on structure card
-2026-07-06T13:26:19Z - a277b81 - Victor Perron : insertion: disable lock timeout for slow import_structures_and_services
-2026-07-06T13:26:19Z - bc85381 - Victor Perron : insertion: use a single "Vous orientez pour John DOE" orientation banner
-2026-07-06T13:26:19Z - 17e1613 - Victor Perron : insertion: enable service orientation for everyone & from candidate list
+2026-07-06T13:26:19Z - dfd8427 - Victor Perron : insertion: also POST data⋅inclusion service details
+2026-07-06T13:26:19Z - d9bc885 - Victor Perron : insertion: don't require a phone number to start an orientation
 2026-07-06T13:26:19Z - d573add - Victor Perron : insertion: remove dead DORA orientation JWT from service detail
 2026-07-06T13:26:19Z - d077a5e - Victor Perron : apis: send orientation payload as JSON data field to DORA
-2026-07-06T13:26:19Z - 5b95d4d - Victor Perron : fixtures: add credentials and a credential document to the CEJ service
+2026-07-06T13:26:19Z - bc85381 - Victor Perron : insertion: use a single "Vous orientez pour John DOE" orientation banner
+2026-07-06T13:26:19Z - a277b81 - Victor Perron : insertion: disable lock timeout for slow import_structures_and_services
+2026-07-06T13:26:19Z - 977e1f7 - Victor Perron : insertion: track orientation wizard submit in Matomo
 2026-07-06T13:26:19Z - 92f164a - Victor Perron : refactor: remove dead/unreachable data·inclusion/DORA client code
 2026-07-06T13:26:19Z - 7af69dc - Victor Perron : search: use local Service.search() instead of data·inclusion GET
+2026-07-06T13:26:19Z - 776ef24 - Victor Perron : insertion: include coworkers' beneficiaries in orientation select
+2026-07-06T13:26:19Z - 6939d8b - David Martin Cohen : fix: change the wording of the orientation conditions section of the confirm step
+2026-07-06T13:26:19Z - 60251f4 - Victor Perron : insertion: factor service prerequisites into model properties & rename section
+2026-07-06T13:26:19Z - 5b95d4d - Victor Perron : fixtures: add credentials and a credential document to the CEJ service
+2026-07-06T13:26:19Z - 470b9f4 - Victor Perron : insertion: show proof upload when service has prerequisites
+2026-07-06T13:26:19Z - 3043479 - David Martin Cohen : fix: add missing fields to payload regarding DI services
+2026-07-06T13:26:19Z - 231d715 - Victor Perron : insertion: use hand-heart icon and open structure card in a new tab
+2026-07-06T13:26:19Z - 220977e - Victor Perron : insertion: show fee details inline when service is payant
+2026-07-06T13:26:19Z - 19b39f6 - Victor Perron : insertion: send empty beneficiary phone to DORA
+2026-07-06T13:26:19Z - 17e1613 - Victor Perron : insertion: enable service orientation for everyone & from candidate list
+2026-07-06T13:26:19Z - 09e5956 - Victor Perron : insertion: fix N+1 queries when loading structure service perimeters
 2026-07-03T10:27:29Z - e474d4d - David Martin Cohen : fix: change pro mobilization mode from "Via le formulaire DORA" to "Via le formulaire (bouton “Orienter votre bénéficiaire”)"
 2026-07-03T10:27:29Z - a6362fb - David Martin Cohen : fix: dora services whose structure does not have an email should still be orientable with form
 2026-07-03T09:20:59Z - 1c1641a - dependabot[bot] : requirement: bump redis from 8.0.0 to 8.0.1 in /requirements
@@ -175,22 +209,22 @@
 2026-07-03T08:14:53Z - e321cd3 - Damien Baty : geiq_assessments_views: Fix rounding in `grant_percentage_badge`
 2026-07-03T08:14:53Z - 7c6a85e - Damien Baty : geiq_assessments: Allow DDETS/DREETS to enter decimal amounts
 2026-07-03T08:10:13Z - 24f56f4 - Damien Baty : job_applications: Hard drop `JobApplication.prehiring_guidance_days` column
-2026-07-02T13:50:08Z - 6159a2e - Victor Blanchard : job_seekers_views: Add buttons to display last known advisor contact info
-2026-07-02T13:50:08Z - 08cd605 - Victor Blanchard : utils: Add `can_view_last_advisor_contact_info` function
 2026-07-02T13:50:08Z - 989a9f7 - Victor Blanchard : ui: Display last known advisor instead of follow up group referent
+2026-07-02T13:50:08Z - 6159a2e - Victor Blanchard : job_seekers_views: Add buttons to display last known advisor contact info
 2026-07-02T13:50:08Z - 36c7a84 - Victor Blanchard : job_seekers_views: Add template to display job seeker's last known advisor This replaces the previous 'referent' section that was related to GPS.
-2026-07-02T13:20:35Z - 15fd3a4 - Victor Blanchard : job_seekers_views: Change toast wording on job seeker account creation
-2026-07-02T13:20:35Z - 5f19942 - Victor Blanchard : utils: Handle safe strings in toasts content
+2026-07-02T13:50:08Z - 08cd605 - Victor Blanchard : utils: Add `can_view_last_advisor_contact_info` function
 2026-07-02T13:20:35Z - 7fa566d - Victor Blanchard : job_seekers_views: Create assignment on NIR confirmation
-2026-07-02T13:20:35Z - 37b3745 - Victor Blanchard : users: Add support for companies in `assigned_to` method for `JobSeekerAssignment`
-2026-07-02T13:20:35Z - 2b30c6d - Victor Blanchard : users: Add new action kind `SELF_ASSIGN` to assignments
-2026-07-02T13:20:35Z - 0680795 - Victor Blanchard : job_seekers_views: Change wording in modal to confirm job seeker
+2026-07-02T13:20:35Z - 5f19942 - Victor Blanchard : utils: Handle safe strings in toasts content
 2026-07-02T13:20:35Z - 4ec0cbf - Victor Blanchard : job_seekers_views: Add info alert when adding a new user
 2026-07-02T13:20:35Z - 3cc9499 - Victor Blanchard : apply: Change button name to add user to assignments
+2026-07-02T13:20:35Z - 37b3745 - Victor Blanchard : users: Add support for companies in `assigned_to` method for `JobSeekerAssignment`
+2026-07-02T13:20:35Z - 2b30c6d - Victor Blanchard : users: Add new action kind `SELF_ASSIGN` to assignments
+2026-07-02T13:20:35Z - 15fd3a4 - Victor Blanchard : job_seekers_views: Change toast wording on job seeker account creation
+2026-07-02T13:20:35Z - 0680795 - Victor Blanchard : job_seekers_views: Change wording in modal to confirm job seeker
 2026-07-01T18:29:55Z - 1c3ed58 - Antoine LAURENT : recommendations: Improve dataclasses
 2026-06-30T15:50:37Z - 38ddffa - Louis Lalba : feat (sps): add OpenLayers map of recommendations
-2026-06-29T09:59:03Z - f52eea9 - David Martin Cohen : tests: update insertion structures fixture
 2026-06-29T09:59:03Z - fc594f5 - David Martin Cohen : feat: add opening hours to structure modal
+2026-06-29T09:59:03Z - f52eea9 - David Martin Cohen : tests: update insertion structures fixture
 2026-06-29T09:59:03Z - 928c08c - David Martin Cohen : fix: structure detail page back button goes to the last visited page
 2026-06-29T07:49:57Z - b9934b2 - Mathieu Dupuy : fix: use local dates in job application test factory
 2026-06-29T06:57:02Z - 93653f7 - Changelog Bot : changelog: From 2026-06-22 to 2026-06-28
@@ -204,28 +238,28 @@
 2026-06-25T08:37:41Z - 13d9bac - Damien Baty : employee_record: Hide warning about suspension of employee record transfers
 2026-06-24T12:45:28Z - 4c95a8e - Gérald Gounot : feat: split structure card into description/services tabs
 2026-06-24T12:22:25Z - d07c835 - Damien Baty : asp: Update date of suspension of employee record transfer
-2026-06-23T16:27:55Z - 63ec599 - Victor Perron : feat: add the complete orientation wizard
 2026-06-23T16:27:55Z - e627b12 - Victor Perron : urls: rename insertion service/structure card routes to /services and /structures
 2026-06-23T16:27:55Z - ba758b0 - Victor Perron : apis: create DORA orientation atomically with multipart attachments
-2026-06-23T16:27:55Z - 0342d50 - Victor Perron : forms: add acceptable formats label and multi-file field to FileInput
-2026-06-23T16:27:55Z - 3b587d7 - Victor Perron : fix: let FileForm form not crash if no validator specified
 2026-06-23T16:27:55Z - 6623fad - Victor Perron : utils: add normalize_phone_number and factorize format_phone on it
+2026-06-23T16:27:55Z - 63ec599 - Victor Perron : feat: add the complete orientation wizard
+2026-06-23T16:27:55Z - 3b587d7 - Victor Perron : fix: let FileForm form not crash if no validator specified
+2026-06-23T16:27:55Z - 0342d50 - Victor Perron : forms: add acceptable formats label and multi-file field to FileInput
 2026-06-23T16:10:55Z - 3ed3d44 - Louis : fix: flaky test_employer_allowed test
-2026-06-23T16:06:56Z - 5440bd8 - Victor Perron : insertion: add Service.search() queryset method
 2026-06-23T16:06:56Z - 6be447e - Victor Perron : cities: add siren_epci to sync_cities and refresh fixtures
+2026-06-23T16:06:56Z - 5440bd8 - Victor Perron : insertion: add Service.search() queryset method
 2026-06-23T07:47:30Z - 6d19110 - Xavier Fernandez : geiq_assessments: document expected methods on each view
 2026-06-23T07:42:35Z - bd441f8 - dependabot[bot] : requirement: bump sentry-sdk from 2.62.0 to 2.63.0 in /requirements
 2026-06-23T07:42:31Z - 5817c39 - dependabot[bot] : requirement: bump certifi from 2026.5.20 to 2026.6.17 in /requirements
 2026-06-23T06:27:17Z - cba8b94 - hellodeloo : feat: add alert for temporary suspension of employee record submission service
 2026-06-22T15:21:33Z - 944d1ac - Victor Blanchard : dashboard: Send mail on job seeker's email modification
 2026-06-22T15:21:33Z - 4f405bd - Victor Blanchard : users: Remove `can_edit_mail()` method
-2026-06-22T13:50:24Z - dcfb51b - Antoine LAURENT : utils: Improve bad response handling in PoleEmploiRoyaumePartenaireApiClient
-2026-06-22T13:50:24Z - 0bdbbb2 - Antoine LAURENT : recommendations: Add helper to query job seeker data
-2026-06-22T13:50:24Z - c262ce1 - Antoine LAURENT : utils: Improve method typing
-2026-06-22T13:50:24Z - d60d556 - Antoine LAURENT : utils: Add new endpoints to PoleEmploiRoyaumeAgentAPIClient
-2026-06-22T13:50:24Z - bba6805 - Antoine LAURENT : utils: Allow to call rechercher_usager with only the france travail id
-2026-06-22T13:50:24Z - dd73986 - Antoine LAURENT : utils: Prepare PoleEmploiRoyaumeAgentAPIClient for more endpoints
 2026-06-22T13:50:24Z - fe1a096 - Antoine LAURENT : utils: Allow to easily override the used credentials
+2026-06-22T13:50:24Z - dd73986 - Antoine LAURENT : utils: Prepare PoleEmploiRoyaumeAgentAPIClient for more endpoints
+2026-06-22T13:50:24Z - dcfb51b - Antoine LAURENT : utils: Improve bad response handling in PoleEmploiRoyaumePartenaireApiClient
+2026-06-22T13:50:24Z - d60d556 - Antoine LAURENT : utils: Add new endpoints to PoleEmploiRoyaumeAgentAPIClient
+2026-06-22T13:50:24Z - c262ce1 - Antoine LAURENT : utils: Improve method typing
+2026-06-22T13:50:24Z - bba6805 - Antoine LAURENT : utils: Allow to call rechercher_usager with only the france travail id
+2026-06-22T13:50:24Z - 0bdbbb2 - Antoine LAURENT : recommendations: Add helper to query job seeker data
 2026-06-22T12:47:56Z - b2e639a - dependabot[bot] : requirement: bump tqdm from 4.68.2 to 4.68.3 in /requirements
 2026-06-22T12:40:55Z - 230c4d0 - dependabot[bot] : requirement: bump anyio from 4.13.0 to 4.14.0 in /requirements
 2026-06-22T12:30:16Z - 7c694c5 - dependabot[bot] : build(deps): bump actions/checkout from 6.0.3 to 7.0.0
@@ -237,11 +271,11 @@
 2026-06-22T08:31:59Z - 719083b - Victor Blanchard : antivirus: Fix `scan_s3_files` command
 2026-06-22T08:03:48Z - 3e7aab1 - Damien Baty : otp: Display `created_at` in `ItouTOTPDeviceAdmin`
 2026-06-22T07:42:42Z - c496fba - David Martin Cohen : refactor: handle all the disabling of non-orientable services in one function
-2026-06-22T07:42:42Z - 4499590 - David Martin Cohen : fix: increase max length of url fields and leave them blank if they exceed max length
 2026-06-22T07:42:42Z - 57614b4 - David Martin Cohen : fix: align import of insertion services with Dora
+2026-06-22T07:42:42Z - 4499590 - David Martin Cohen : fix: increase max length of url fields and leave them blank if they exceed max length
 2026-06-22T07:33:19Z - 624b684 - David Martin Cohen : fix: align the design of the modals for the service and structure detail pages
-2026-06-22T04:22:02Z - 45a0280 - Damien Baty : tests: Turn class-scoped fixture from instance method to classmethod
 2026-06-22T04:22:02Z - d7309db - dependabot[bot] : requirement: bump pytest from 9.0.3 to 9.1.1 in /requirements
+2026-06-22T04:22:02Z - 45a0280 - Damien Baty : tests: Turn class-scoped fixture from instance method to classmethod
 2026-06-22T03:19:21Z - 81eff0b - Changelog Bot : changelog: From 2026-06-15 to 2026-06-21
 2026-06-19T14:45:22Z - 8f40041 - Louis Lalba : feat: reassure pros about suspended PASS IAE
 2026-06-19T13:51:32Z - 25bd4e8 - Antoine LAURENT : nexus: Remove mvp attribut from api
@@ -253,21 +287,21 @@
 2026-06-18T15:36:21Z - a273c7c - Damien Baty : otp: Remove unnecessary error log about missing backup code
 2026-06-18T15:11:27Z - 35bbd5e - Antoine LAURENT : fix: Use get_truncated_full_name() to prevent bugs with users with no last_name
 2026-06-18T12:38:38Z - 80715e3 - Antoine LAURENT : nexus: Remove departments restriction
+2026-06-18T10:17:50Z - e500ff7 - Ewen Corre : tests: move structures_views tests to insertion_views
 2026-06-18T10:17:50Z - 7bf0c06 - Ewen Corre : tests: link assertContains with assertNotContains
-2026-06-18T10:17:50Z - 1924b0c - Ewen Corre : tests: remove useless db fixtures
 2026-06-18T10:17:50Z - 376df07 - Ewen Corre : tests: small refactor to get structure or service url
 2026-06-18T10:17:50Z - 25bcd1e - Ewen Corre : tests: group tests by view in tests.insertion_views
-2026-06-18T10:17:50Z - e500ff7 - Ewen Corre : tests: move structures_views tests to insertion_views
+2026-06-18T10:17:50Z - 1924b0c - Ewen Corre : tests: remove useless db fixtures
 2026-06-18T10:17:16Z - e8801b8 - dependabot[bot] : requirement: bump djlint from 1.39.0 to 1.39.2 in /requirements
 2026-06-18T09:28:12Z - f9e580b - Antoine LAURENT : nexus: Put back remove departments restriction
 2026-06-18T08:39:37Z - 7e97c9c - Antoine LAURENT : nexus: Remove departments restriction
-2026-06-18T08:39:37Z - 0a7cc67 - Antoine LAURENT : tests: Remove old snapshots
 2026-06-18T08:39:37Z - 54b4574 - Antoine LAURENT : tests: Improve test
+2026-06-18T08:39:37Z - 0a7cc67 - Antoine LAURENT : tests: Remove old snapshots
 2026-06-18T07:39:38Z - 3900da5 - Louis Lalba : fix(dashboard): keep empty SSO fields editable on job seeker edit form
-2026-06-18T07:03:23Z - 50f0fc2 - Victor Blanchard : job_seekers_views: Display sent and received applications for employers in applications tab
-2026-06-18T07:03:23Z - 216041e - Victor Blanchard : job_seekers_views: Test filter on organization members for employers
 2026-06-18T07:03:23Z - 76f66d4 - Victor Blanchard : job_seekers_views: Add assignments to navigation tab for employers
+2026-06-18T07:03:23Z - 50f0fc2 - Victor Blanchard : job_seekers_views: Display sent and received applications for employers in applications tab
 2026-06-18T07:03:23Z - 457f04c - Victor Blanchard : job_applications: Add custom queryset method to get job applications sent and received by companies
+2026-06-18T07:03:23Z - 216041e - Victor Blanchard : job_seekers_views: Test filter on organization members for employers
 2026-06-18T06:48:52Z - 41ef763 - hellodeloo : fix: some ui adjustments in geiq_assessments_views
 2026-06-18T05:50:12Z - ffffc7e - dependabot[bot] : requirement: bump huey from 3.0.1 to 3.0.3 in /requirements
 2026-06-18T05:48:16Z - 9a8f088 - dependabot[bot] : requirement: bump python-discovery from 1.4.0 to 1.4.2 in /requirements
@@ -276,22 +310,22 @@
 2026-06-16T15:32:13Z - 8a4ee4e - dependabot[bot] : requirement: bump filelock from 3.29.1 to 3.29.4 in /requirements
 2026-06-16T12:42:18Z - d3017de - dependabot[bot] : requirement: bump pypdf from 6.13.1 to 6.13.2 in /requirements
 2026-06-16T12:34:33Z - f06aeae - David Martin Cohen : feat: add detail page for an insertion service
-2026-06-16T12:34:33Z - 9a3025a - David Martin Cohen : fix: change page size of import to 1000
 2026-06-16T12:34:33Z - eeae5cc - David Martin Cohen : chore: add decoupage_administratif to installed apps
+2026-06-16T12:34:33Z - 9a3025a - David Martin Cohen : fix: change page size of import to 1000
 2026-06-16T08:56:38Z - c26c67d - Louis Lalba : feat (sps): add recommendations app and related templates, views, and URLs
 2026-06-16T08:02:42Z - f6e244b - Antoine LAURENT : fixtures: Format newly added files
-2026-06-16T08:02:42Z - 8fc2ac4 - Antoine LAURENT : fixtures: Add readme to dumpdata.sh
-2026-06-16T08:02:42Z - 910d3bc - Antoine LAURENT : fixtures: Remove sponge requirements for dumpdata.sh
-2026-06-16T08:02:42Z - 82eb1fd - Antoine LAURENT : fixtures: Rename files
 2026-06-16T08:02:42Z - e26ea24 - Antoine LAURENT : fixtures: Fix loaddata_bulk command
+2026-06-16T08:02:42Z - 910d3bc - Antoine LAURENT : fixtures: Remove sponge requirements for dumpdata.sh
+2026-06-16T08:02:42Z - 8fc2ac4 - Antoine LAURENT : fixtures: Add readme to dumpdata.sh
+2026-06-16T08:02:42Z - 82eb1fd - Antoine LAURENT : fixtures: Rename files
 2026-06-16T07:47:21Z - f88f695 - hellodeloo : feat: updating the boxes in the sidebar
 2026-06-16T06:57:16Z - d385198 - Damien Baty : otp: Remove unused `OTP_ADMIN_HIDE_SENSITIVE_DATA`
 2026-06-16T06:57:16Z - ad7b824 - Damien Baty : otp: Better admin for ItouTOTPDevice
 2026-06-16T06:48:02Z - fbf35f0 - Damien Baty : pro_connect: Remove deprecated ACR claims
 2026-06-15T18:05:35Z - 9793b81 - Antoine LAURENT : utils: Improve hijack permissions
 2026-06-15T18:05:35Z - 4b324ed - Antoine LAURENT : utils: Fix nexus_dropdown when middleware wasn't used
-2026-06-15T15:25:12Z - 6821c2d - Damien Baty : otp: Require MFA on a subset of organizations and companies
 2026-06-15T15:25:12Z - c6bec57 - Damien Baty : proconnect: Allowlist MFA-ready identity providers that do not inform ProConnect
+2026-06-15T15:25:12Z - 6821c2d - Damien Baty : otp: Require MFA on a subset of organizations and companies
 2026-06-15T15:25:12Z - 2c4a7f0 - Damien Baty : otp: Require TOTP device for pro users
 2026-06-15T15:24:05Z - d231ef0 - François Freitag : tests: Remove redefinition of admin_client
 2026-06-15T14:23:37Z - aa2b365 - David Martin Cohen : fix: import_structures_and_services must use dora_data when evaluating whether a service is orientable with form
