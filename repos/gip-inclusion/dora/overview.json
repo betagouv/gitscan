@@ -1,24 +1,24 @@
 {
   "url": "https://github.com/gip-inclusion/dora",
   "name": "dora",
-  "description": "Ce projet vise à faciliter la vie des personnes en insertion et de celles et ceux qui les accompagnent.",
+  "description": "Faciliter la vie des personnes en insertion et de celles et ceux qui les accompagnent.",
   "language": "Python",
   "features": [
     "Gestion des utilisateurs & Permissions",
+    "Recherche & Filtres",
     "Notifications & Alertes",
-    "API & Intégrations",
-    "Sécurité & Conformité",
-    "Données & Schémas"
+    "API & Intégrations"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "PostgreSQL",
     "Redis",
     "Django",
-    "dbt-core",
-    "sqlfluff",
+    "SQLAlchemy",
     "psycopg2",
-    "boto3"
+    "dbt-core",
+    "dbt-postgres",
+    "sqlfluff"
   ],
   "components": [
     "API REST & GraphQL",
@@ -28,25 +28,20 @@
   ],
   "auth": {
     "methods": [
-      "session"
+      "email-password"
     ]
   },
   "tests": "Pytest",
-  "workflows": [
-    "back-ci.yml",
-    "front-ci.yml",
-    "lint-pr.yml",
-    "create-review-apps.yml"
-  ],
-  "lastActivity": "2026-07-23T10:13:43+02:00",
+  "workflows": [],
+  "lastActivity": "2026-07-27T14:11:14+02:00",
   "status": "active",
-  "license": "MIT",
+  "license": null,
   "hasDocumentation": true,
   "metrics": {
-    "stars": 6,
-    "forks": 3,
+    "stars": null,
+    "forks": null,
     "contributors": null,
-    "openIssues": 6
+    "openIssues": null
   },
   "tags": [
     "Données & Open Data",
