@@ -23,6 +23,7 @@
 │       ├── common:deploy-preview.yaml
 │       ├── common:deploy.yaml
 │       ├── common:quality-control.yml
+│       ├── infra:nginx-lint.yaml
 │       ├── site:e2e.yaml
 │       ├── site:generate-pr-comment.yaml
 │       └── site:storybook.yaml
@@ -917,6 +918,7 @@
 │       │   │   │   │   │   ├── guide
 │       │   │   │   │   │   │   ├── [category]
 │       │   │   │   │   │   │   │   └── page.tsx
+│       │   │   │   │   │   │   ├── guideCategories.ts
 │       │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   ├── international
 │       │   │   │   │   │   │   └── page.tsx
@@ -1216,13 +1218,15 @@
 │       │   │   │   │   │   └── getNewSimulationModelService.ts
 │       │   │   │   │   └── commencer
 │       │   │   │   │       └── page.tsx
-│       │   │   │   ├── sitemap.ts
 │       │   │   │   └── themes
 │       │   │   │       ├── [landingPageSlug]
 │       │   │   │       │   └── page.tsx
 │       │   │   │       └── page.tsx
+│       │   │   ├── __tests__
+│       │   │   │   └── sitemap.test.ts
 │       │   │   ├── global-error.tsx
-│       │   │   └── not-found.tsx
+│       │   │   ├── not-found.tsx
+│       │   │   └── sitemap.ts
 │       │   ├── components
 │       │   │   ├── Link.tsx
 │       │   │   ├── actions
@@ -2345,6 +2349,16 @@
 ├── docs
 │   └── fgp-routes.md
 ├── eslint.config.js
+├── infra
+│   └── nginx
+│       ├── .gitignore
+│       ├── README.md
+│       ├── cloud-init.tpl.yaml
+│       ├── generate-cloud-init.sh
+│       ├── nginx-config-pull.service
+│       ├── nginx-config-pull.timer
+│       ├── nginx.conf.tpl
+│       └── pull-config.sh
 ├── knip.json
 ├── package.json
 ├── packages
@@ -2395,6 +2409,8 @@
 │       │   │   ├── 20260716120000_add_action_translation
 │       │   │   │   └── migration.sql
 │       │   │   ├── 20260723093738_add_action_translation_slug_index
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20260723120000_drop_legacy_action_columns
 │       │   │   │   └── migration.sql
 │       │   │   └── migration_lock.toml
 │       │   ├── schema
@@ -2558,4 +2574,4 @@
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 └── tsconfig.json
-656 directories, 1949 files
+660 directories, 1961 files
