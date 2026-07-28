@@ -1,42 +1,46 @@
-## Changelog : territoires-en-transitions (30 derniers jours, au 21 juillet 2026)
+## Changelog : territoires-en-transitions (30 derniers jours, au 27 juillet 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives de la sécurité, notamment la correction de failles potentielles d'injection IDOR et de création de membres non autorisés.  De plus, des fonctionnalités importantes ont été ajoutées pour la gestion des référentiels, en particulier pour la migration vers le nouveau référentiel TE (Territoires en Transition), avec des outils de fusion de données et de gestion des statuts. L'interface utilisateur a également été améliorée, notamment avec l'introduction d'une nouvelle grille d'indicateurs et des améliorations de l'expérience utilisateur pour les audits et labellisations.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la sécurité, la refactorisation technique pour une meilleure maintenabilité et performance, et l'ajout de nouvelles fonctionnalités pour les indicateurs et les référentiels, notamment en préparation de la bascule vers le référentiel Climat Ressources. Des améliorations significatives ont été apportées à l'interface utilisateur, notamment pour la gestion des audits et des preuves.
 
 ### Évolutions fonctionnelles
-- Amélioration de la sécurité : blocage de l'injection IDOR dans les relations cross-collectivité pour les plans et les discussions [#7358](https://github.com/incubateur-ademe/territoires-en-transitions/issues/7358).
-- Amélioration de la sécurité : blocage de la création de membres fantômes dans les collectivités [#7360](https://github.com/incubateur-ademe/territoires-en-transitions/issues/7360).
-- Ajout de dates de début/fin pour les plans [#7490](https://github.com/incubateur-ademe/territoires-en-transitions/issues/7490).
-- Possibilité d'importer des données via l'IA pour un plan.
-- Nouvelle grille d'indicateurs avec édition en ligne, réordonnancement, et possibilité de collage de données.
-- Amélioration de l'interface pour les audits et labellisations, avec une nouvelle checklist et une gestion améliorée des documents.
-- Ajout de la possibilité d'archiver les preuves d'audit.
-- Ajout d'un bandeau d'information pour les référentiels archivés ou en lecture seule.
-- Ajout de la fusion des services, pilotes et explications CAE/ECI vers les mesures TE.
-- Ajout de la fusion des liens fiches CAE/ECI vers TE.
-- Ajout de la fusion des statuts d'origine vers les actions du référentiel CR.
+- Ajout de la possibilité de définir des dates de début et de fin pour un plan ([#7490](https://github.com/incubateur-ademe/territoires-en-transitions/issues/7490)).
+- Implémentation de la fonctionnalité de déconnexion dans la navigation secondaire.
+- Amélioration de l'export Excel des indicateurs pour afficher tous les indicateurs filtrés dans un format consolidé ([#7414](https://github.com/incubateur-ademe/territoires-en-transitions/issues/7414)).
+- Possibilité de modifier l'année de référence des indicateurs directement dans la grille de saisie.
+- Ajout d'une grille de saisie tabulaire pour les indicateurs, permettant l'édition et l'autosave des valeurs par cellule.
+- Amélioration de la gestion des preuves d'audit : suppression des archives expirées, affichage des plus récentes en bas de liste, et possibilité pour l'auditeur de remplacer le rapport.
+- Amélioration de l'interface de gestion des audits et des labellisations, avec édition inline des notes de l'auditeur et remplacement du rapport.
+- Ajout de la possibilité d'importer un plan via l'IA, avec suivi de la progression et reprise.
+- Amélioration de l'affichage des badges de rôle et des statuts dans l'interface.
+- Correction du tri des actions et sous-actions dans le rapport PPT.
+- Correction de l'affichage des sous-thématiques et des temps de mise en œuvre dans les fiches.
 
 ### Évolutions techniques
-- Refactor de l'authentification et migration vers une application Next.js unique.
-- Mise à jour de Nx et des dépendances.
-- Migration de certains composants vers TypeScript 6/7.
-- Amélioration du pipeline CI/CD avec parallélisation des tests et optimisation des temps d'exécution.
-- Suppression de code obsolète et simplification de certaines structures de données.
-- Utilisation de `date-fns` au lieu de `luxon` pour les manipulations de dates.
-- Mise en place d'un système de gestion des variables d'environnement plus robuste avec `dotenvx`.
-- Refonte de l'architecture des tests E2E pour une meilleure fiabilité et parallélisation.
-- Migration vers le pattern Result pour la gestion des erreurs dans certains modules.
-- Amélioration de la gestion des erreurs et des transactions.
-- Suppression de dépendances inutiles.
+- Refactorisation du module d'authentification et migration vers l'application principale.
+- Mise à jour de Next.js vers la dernière version.
+- Mise à jour de TypeScript vers la version 6/7.
+- Suppression de l'utilisation de Luxon au profit de date-fns pour une meilleure performance et compatibilité.
+- Refactorisation de plusieurs composants pour améliorer la maintenabilité et la lisibilité du code.
+- Amélioration de la gestion des variables d'environnement avec `dotenvx`.
+- Optimisation des tests E2E pour une exécution plus rapide et fiable.
+- Suppression de dépendances obsolètes et simplification de la configuration.
+- Ajout de tests de sécurité pour prévenir les injections IDOR.
+- Migration vers le pattern Result pour une meilleure gestion des erreurs.
+- Amélioration de la gestion des permissions et de la sécurité des données.
+- Refactorisation de l'architecture des référentiels pour préparer la bascule vers le référentiel Climat Ressources.
+- Ajout de jalons pour la bascule vers le référentiel Climat Ressources.
 
 ### Autres changements
-- Amélioration de la documentation pour les agents IA.
-- Mise à jour des labels et des textes de l'interface utilisateur.
-- Correction de bugs mineurs et améliorations de la performance.
-- Ajout de tests unitaires et E2E pour couvrir les nouvelles fonctionnalités et les corrections de bugs.
-- Amélioration de la configuration de Storybook.
-- Ajout de scripts pour faciliter le développement et le déploiement.
-- Mise à jour du schéma des préférences de la collectivité.
-- Ajout d'un script d'import des statuts EMT.
-- Suppression de configurations npm obsolètes.
-- Nettoyage du code et amélioration de la lisibilité.
+- Mise à jour de la documentation et des labels.
+- Correction de bugs mineurs et améliorations de l'interface utilisateur.
+- Amélioration de la gestion des erreurs et des logs.
+- Optimisation des performances de l'application.
+- Ajout de tests unitaires et d'intégration.
+- Suppression de code mort et nettoyage du code source.
+- Correction de problèmes de compatibilité avec différents navigateurs.
+- Amélioration de l'accessibilité de l'application.
+- Correction de problèmes de sécurité potentiels.
+- Ajout de commentaires et de documentation pour faciliter la compréhension du code.
+- Suppression de configurations obsolètes.
+- Mise à jour des dépendances.

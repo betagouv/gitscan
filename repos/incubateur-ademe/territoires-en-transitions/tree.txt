@@ -131,6 +131,7 @@
 │   │   └── wait-for-url
 │   │       └── action.yml
 │   ├── config
+│   │   ├── .act.env.empty
 │   │   ├── .act.secrets.default
 │   │   └── .act.vars.default
 │   └── workflows
@@ -514,6 +515,15 @@
 │   │   │   │   │   ├── referentiels
 │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   └── template.tsx
+│   │   │   │   ├── rejoindre-une-collectivite
+│   │   │   │   │   ├── CollectiviteSelectionnee.stories.tsx
+│   │   │   │   │   ├── CollectiviteSelectionnee.tsx
+│   │   │   │   │   ├── RejoindreUneCollectivite.stories.tsx
+│   │   │   │   │   ├── RejoindreUneCollectivite.tsx
+│   │   │   │   │   ├── RejoindreUneCollectiviteModal.tsx
+│   │   │   │   │   ├── page.client.tsx
+│   │   │   │   │   ├── page.tsx
+│   │   │   │   │   └── useRejoindreUneCollectivite.ts
 │   │   │   │   └── tests
 │   │   │   │       └── trpc-error
 │   │   │   │           └── page.tsx
@@ -521,10 +531,17 @@
 │   │   │   │   ├── home.page.tsx
 │   │   │   │   ├── invitation
 │   │   │   │   │   └── [invitationId]
-│   │   │   │   │       └── [invitationEmail]
-│   │   │   │   │           └── route.ts
+│   │   │   │   │       └── route.ts
 │   │   │   │   ├── layout.tsx
-│   │   │   │   └── page.tsx
+│   │   │   │   ├── login
+│   │   │   │   │   ├── page.client.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── page.tsx
+│   │   │   │   ├── recover
+│   │   │   │   │   ├── page.client.tsx
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── signup
+│   │   │   │       └── page.tsx
 │   │   │   ├── api
 │   │   │   │   ├── version
 │   │   │   │   │   └── route.ts
@@ -540,6 +557,7 @@
 │   │   │   ├── root-providers.tsx
 │   │   │   └── third-party-providers.tsx
 │   │   ├── content-security-policy.config.ts
+│   │   ├── cors.config.ts
 │   │   ├── eslint.config.mjs
 │   │   ├── instrumentation-client.ts
 │   │   ├── instrumentation.ts
@@ -547,6 +565,7 @@
 │   │   ├── next.config.ts
 │   │   ├── package.json
 │   │   ├── postcss.config.js
+│   │   ├── proxy.spec.ts
 │   │   ├── proxy.ts
 │   │   ├── public
 │   │   │   ├── ADEME-Methodo-Outil-trajectoire-reference_VF_Nov2024.pdf
@@ -936,10 +955,13 @@
 │   │   │   │       └── use-update-tag.ts
 │   │   │   ├── indicateurs
 │   │   │   │   ├── indicateurs
+│   │   │   │   │   ├── format-indicateur-filters-to-categories.ts
 │   │   │   │   │   ├── indicateur-definition-authorization.utils.ts
+│   │   │   │   │   ├── indicateur-filter-badges.tsx
 │   │   │   │   │   ├── use-create-indicateur-definition.ts
 │   │   │   │   │   ├── use-delete-indicateur-definition.ts
 │   │   │   │   │   ├── use-get-indicateur.ts
+│   │   │   │   │   ├── use-indicateur-filter-categories.ts
 │   │   │   │   │   ├── use-list-indicateurs.ts
 │   │   │   │   │   └── use-update-indicateur.ts
 │   │   │   │   ├── trajectoire-leviers
@@ -1106,6 +1128,7 @@
 │   │   │   │   │   │   │   │   └── fiche-action-filters.context.test.ts
 │   │   │   │   │   │   │   ├── count-active-fiche-filters.ts
 │   │   │   │   │   │   │   ├── fiche-action-filters-context.tsx
+│   │   │   │   │   │   │   ├── filter-categories-to-badge-strings.ts
 │   │   │   │   │   │   │   ├── filter-converter.ts
 │   │   │   │   │   │   │   ├── filters-search-parameters-mapper.ts
 │   │   │   │   │   │   │   ├── filters.button-menu.tsx
@@ -1115,6 +1138,7 @@
 │   │   │   │   │   │   │   │   │   └── format-to-printable-filters.test.ts
 │   │   │   │   │   │   │   │   ├── create-date-filter-label.ts
 │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   ├── get-filter-values-labels.ts
 │   │   │   │   │   │   │   ├── labels.ts
 │   │   │   │   │   │   │   ├── options.ts
 │   │   │   │   │   │   │   ├── toutes-les-fiches-filters.form.tsx
@@ -1496,6 +1520,7 @@
 │   │   │   │   │   ├── action-context.tsx
 │   │   │   │   │   ├── action-documents.download-button.tsx
 │   │   │   │   │   ├── action-edit.modal.tsx
+│   │   │   │   │   ├── action-filter-badges.tsx
 │   │   │   │   │   ├── action-label.constants.ts
 │   │   │   │   │   ├── action-personnalisations-info.tsx
 │   │   │   │   │   ├── action-preuve.panel.stories.tsx
@@ -1542,10 +1567,12 @@
 │   │   │   │   │   │   │   ├── use-update-discussion-message.ts
 │   │   │   │   │   │   │   └── use-update-discussion.ts
 │   │   │   │   │   │   └── rounded-vertical-border.tsx
+│   │   │   │   │   ├── format-action-filters-to-categories.ts
 │   │   │   │   │   ├── get-prev-and-next-action-links.utils.tsx
 │   │   │   │   │   ├── sub-action
 │   │   │   │   │   │   └── sub-action.description.tsx
 │   │   │   │   │   ├── use-action-availability.ts
+│   │   │   │   │   ├── use-action-filter-categories.ts
 │   │   │   │   │   ├── use-get-action-ancestors.tsx
 │   │   │   │   │   ├── use-get-action-children.tsx
 │   │   │   │   │   ├── use-get-action.tsx
@@ -1887,9 +1914,12 @@
 │   │   │   │   │   └── metric.card.tsx
 │   │   │   │   ├── modules
 │   │   │   │   │   ├── module
+│   │   │   │   │   │   ├── format-module-filters-to-categories.spec.ts
+│   │   │   │   │   │   ├── format-module-filters-to-categories.ts
 │   │   │   │   │   │   ├── module.container.tsx
 │   │   │   │   │   │   ├── module.error.tsx
-│   │   │   │   │   │   └── module.tsx
+│   │   │   │   │   │   ├── module.tsx
+│   │   │   │   │   │   └── use-module-filter-categories.ts
 │   │   │   │   │   └── module.page.tsx
 │   │   │   │   ├── plans-action
 │   │   │   │   │   ├── data
@@ -1996,18 +2026,16 @@
 │   │   │   │   │   │   │   │   ├── make-collectivite-nav.ts
 │   │   │   │   │   │   │   │   └── make-role-edition-actions-indicateurs-nav.ts
 │   │   │   │   │   │   │   └── make-main-nav.ts
-│   │   │   │   │   │   └── make-secondary-nav.ts
+│   │   │   │   │   │   ├── make-secondary-nav.ts
+│   │   │   │   │   │   └── use-logout.ts
 │   │   │   │   │   ├── offline-alert.tsx
 │   │   │   │   │   └── side-panel
 │   │   │   │   │       ├── side-panel.context.tsx
 │   │   │   │   │       └── side-panel.tsx
 │   │   │   │   ├── lists
-│   │   │   │   │   ├── DEPRECATED_filter-badges
-│   │   │   │   │   │   ├── DEPRECATED_filter-badges.tsx
-│   │   │   │   │   │   ├── delete-filters.button.tsx
-│   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   └── use-filters-to-badges.ts
 │   │   │   │   │   ├── ListWithTooltip.tsx
+│   │   │   │   │   ├── filter-badges
+│   │   │   │   │   │   └── readonly-filter-badges.tsx
 │   │   │   │   │   └── filters.generic-button-menu.tsx
 │   │   │   │   ├── logo
 │   │   │   │   │   ├── logoTerritoireEngage.png
@@ -2053,6 +2081,47 @@
 │   │   │   │           └── commons.tsx
 │   │   │   ├── users
 │   │   │   │   ├── BadgeNiveauAcces.tsx
+│   │   │   │   ├── authentications
+│   │   │   │   │   ├── login-user
+│   │   │   │   │   │   ├── delete-old-auth-cookie.server.ts
+│   │   │   │   │   │   ├── forgotten-password.tsx
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── login-modal.tsx
+│   │   │   │   │   │   ├── login-tabs.tsx
+│   │   │   │   │   │   ├── login.stories.tsx
+│   │   │   │   │   │   ├── login.tsx
+│   │   │   │   │   │   ├── mail-send-message.tsx
+│   │   │   │   │   │   ├── mail-send.tsx
+│   │   │   │   │   │   ├── reset-password.tsx
+│   │   │   │   │   │   ├── type.ts
+│   │   │   │   │   │   ├── use-form-state.tsx
+│   │   │   │   │   │   ├── use-login-state.ts
+│   │   │   │   │   │   └── warning-step2-message.tsx
+│   │   │   │   │   ├── password-strength-meter
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── password-strength-meter.spec.tsx
+│   │   │   │   │   │   ├── password-strength-meter.stories.tsx
+│   │   │   │   │   │   ├── password-strength-meter.tsx
+│   │   │   │   │   │   └── use-get-password-strength.ts
+│   │   │   │   │   ├── resend-email
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── resend-message.stories.tsx
+│   │   │   │   │   │   └── resend-message.tsx
+│   │   │   │   │   ├── signup-user
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── signup-modal.tsx
+│   │   │   │   │   │   ├── signup-step1.tsx
+│   │   │   │   │   │   ├── signup-step3.tsx
+│   │   │   │   │   │   ├── signup.stories.tsx
+│   │   │   │   │   │   ├── signup.tsx
+│   │   │   │   │   │   ├── signup.view.tsx
+│   │   │   │   │   │   ├── type.ts
+│   │   │   │   │   │   └── use-signup-state.ts
+│   │   │   │   │   └── verify-otp
+│   │   │   │   │       ├── index.ts
+│   │   │   │   │       ├── verify-otp.spec.tsx
+│   │   │   │   │       ├── verify-otp.stories.tsx
+│   │   │   │   │       └── verify-otp.tsx
 │   │   │   │   ├── authorizations
 │   │   │   │   │   ├── collectivite-role.utils.ts
 │   │   │   │   │   ├── super-admin-mode
@@ -2062,6 +2131,10 @@
 │   │   │   │   │   ├── use-is-access-edition-fiches-indicateurs-enabled.ts
 │   │   │   │   │   ├── use-is-visitor.tsx
 │   │   │   │   │   └── use-list-user-collectivite-roles.ts
+│   │   │   │   ├── data
+│   │   │   │   │   ├── is-allowed-without-collectivite.spec.ts
+│   │   │   │   │   ├── is-allowed-without-collectivite.ts
+│   │   │   │   │   └── require-onboarded-user.server.ts
 │   │   │   │   ├── profil
 │   │   │   │   │   ├── modifier-profil.modal.tsx
 │   │   │   │   │   ├── profil-info.tsx
@@ -2127,97 +2200,6 @@
 │   │   ├── tsconfig.spec.json
 │   │   ├── tsconfig.storybook.json
 │   │   └── vitest.config.mts
-│   ├── auth
-│   │   ├── .env
-│   │   ├── .storybook
-│   │   │   ├── main.ts
-│   │   │   ├── preview.css
-│   │   │   └── preview.ts
-│   │   ├── README.md
-│   │   ├── app
-│   │   │   ├── (authed)
-│   │   │   │   └── rejoindre-une-collectivite
-│   │   │   │       ├── CollectiviteSelectionnee.stories.tsx
-│   │   │   │       ├── CollectiviteSelectionnee.tsx
-│   │   │   │       ├── RejoindreUneCollectivite.stories.tsx
-│   │   │   │       ├── RejoindreUneCollectivite.tsx
-│   │   │   │       ├── RejoindreUneCollectiviteModal.tsx
-│   │   │   │       ├── page.client.tsx
-│   │   │   │       ├── page.tsx
-│   │   │   │       └── useRejoindreUneCollectivite.ts
-│   │   │   ├── error
-│   │   │   │   └── page.tsx
-│   │   │   ├── global.css
-│   │   │   ├── invite
-│   │   │   │   └── route.ts
-│   │   │   ├── layout.tsx
-│   │   │   ├── login
-│   │   │   │   ├── delete-old-auth-cookie.server.ts
-│   │   │   │   ├── page.client.tsx
-│   │   │   │   ├── page.tsx
-│   │   │   │   └── useLoginState.tsx
-│   │   │   ├── page.tsx
-│   │   │   └── signup
-│   │   │       ├── page.client.tsx
-│   │   │       ├── page.tsx
-│   │   │       └── useSignupState.tsx
-│   │   ├── components
-│   │   │   ├── Login
-│   │   │   │   ├── ForgottenPassword.tsx
-│   │   │   │   ├── Login.stories.tsx
-│   │   │   │   ├── Login.tsx
-│   │   │   │   ├── LoginModal.tsx
-│   │   │   │   ├── LoginTabs.tsx
-│   │   │   │   ├── MailSend.tsx
-│   │   │   │   ├── MailSendMessage.tsx
-│   │   │   │   ├── ResetPassword.tsx
-│   │   │   │   ├── WarningStep2Message.tsx
-│   │   │   │   ├── index.ts
-│   │   │   │   ├── type.ts
-│   │   │   │   └── useFormState.tsx
-│   │   │   ├── PasswordStrengthMeter
-│   │   │   │   ├── PasswordStrengthMeter.stories.tsx
-│   │   │   │   ├── PasswordStrengthMeter.tsx
-│   │   │   │   ├── index.ts
-│   │   │   │   └── useGetPasswordStrength.ts
-│   │   │   ├── ResendMessage
-│   │   │   │   ├── ResendMessage.stories.tsx
-│   │   │   │   ├── ResendMessage.tsx
-│   │   │   │   └── index.ts
-│   │   │   ├── Signup
-│   │   │   │   ├── Signup.stories.tsx
-│   │   │   │   ├── Signup.tsx
-│   │   │   │   ├── SignupModal.tsx
-│   │   │   │   ├── SignupStep1.tsx
-│   │   │   │   ├── SignupStep3.tsx
-│   │   │   │   ├── index.ts
-│   │   │   │   └── type.ts
-│   │   │   └── VerifyOTP
-│   │   │       ├── VerifyOTP.stories.tsx
-│   │   │       ├── VerifyOTP.tsx
-│   │   │       └── index.ts
-│   │   ├── eslint.config.mjs
-│   │   ├── next-env.d.ts
-│   │   ├── next.config.mjs
-│   │   ├── package.json
-│   │   ├── postcss.config.js
-│   │   ├── proxy.ts
-│   │   ├── public
-│   │   │   ├── favicon-16x16.png
-│   │   │   ├── favicon-32x32.png
-│   │   │   └── favicon.ico
-│   │   ├── src
-│   │   │   ├── supabase
-│   │   │   │   ├── actions.ts
-│   │   │   │   ├── getDbUserFromRequest.ts
-│   │   │   │   └── middleware.ts
-│   │   │   └── utils
-│   │   │       └── sendEmail.ts
-│   │   ├── svgr.d.ts
-│   │   ├── tailwind.config.ts
-│   │   ├── tsconfig.app.json
-│   │   ├── tsconfig.json
-│   │   └── tsconfig.spec.json
 │   ├── backend
 │   │   ├── .env
 │   │   ├── .swcrc
@@ -2346,6 +2328,11 @@
 │   │   │   │   │   └── list-collectivites.service.ts
 │   │   │   │   ├── membres
 │   │   │   │   │   ├── invitation.table.ts
+│   │   │   │   │   ├── invite-membre
+│   │   │   │   │   │   ├── send-invitation.email.tsx
+│   │   │   │   │   │   ├── send-invitation.errors.ts
+│   │   │   │   │   │   ├── send-invitation.input.ts
+│   │   │   │   │   │   └── send-invitation.service.ts
 │   │   │   │   │   ├── list-membres
 │   │   │   │   │   │   ├── list-membres.input.ts
 │   │   │   │   │   │   ├── list-membres.router.e2e-spec.ts
@@ -3160,6 +3147,7 @@
 │   │   │   │   │   │   ├── notify-report-failed.props.ts
 │   │   │   │   │   │   ├── notify-report.errors.ts
 │   │   │   │   │   │   ├── notify-report.service.ts
+│   │   │   │   │   │   ├── ppt-builder.service.spec.ts
 │   │   │   │   │   │   ├── ppt-builder.service.ts
 │   │   │   │   │   │   ├── report-axe-general-info.dto.ts
 │   │   │   │   │   │   ├── report-fiche-info.dto.ts
@@ -6482,21 +6470,23 @@
 │   │   │   ├── storage-download.utils.ts
 │   │   │   ├── supabase-client.utils.ts
 │   │   │   └── trpc.utils.ts
-│   │   └── users
-│   │       ├── authorizations
-│   │       │   └── role-edition-fiches-indicateurs.spec.ts
-│   │       ├── banner-info
-│   │       │   └── banner-info.spec.ts
-│   │       ├── users
-│   │       │   ├── signin-user.pom.ts
-│   │       │   ├── signin-user.spec.ts
-│   │       │   ├── signup-user
-│   │       │   │   ├── signup-user.pom.ts
-│   │       │   │   └── signup-user.spec.ts
-│   │       │   └── update-user
-│   │       │       ├── update-user.pom.ts
-│   │       │       └── update-user.spec.ts
-│   │       └── users.fixture.ts
+│   │   ├── users
+│   │   │   ├── authentications
+│   │   │   │   ├── middleware-auth-redirects.spec.ts
+│   │   │   │   ├── recover-password.spec.ts
+│   │   │   │   ├── rejoindre-une-collectivite.spec.ts
+│   │   │   │   ├── signin-user.pom.ts
+│   │   │   │   ├── signin-user.spec.ts
+│   │   │   │   ├── signup-user.pom.ts
+│   │   │   │   └── signup-user.spec.ts
+│   │   │   ├── authorizations
+│   │   │   │   └── role-edition-fiches-indicateurs.spec.ts
+│   │   │   ├── users
+│   │   │   │   ├── update-user.pom.ts
+│   │   │   │   └── update-user.spec.ts
+│   │   │   └── users.fixture.ts
+│   │   └── utils
+│   │       └── banner-info.spec.ts
 │   ├── tsconfig.json
 │   └── tsconfig.spec.json
 ├── eslint-frontend.config.mjs
@@ -6523,11 +6513,7 @@
 │   │   │   │   │   └── utils.ts
 │   │   │   │   ├── get-collectivite.server.ts
 │   │   │   │   ├── index.server.ts
-│   │   │   │   ├── index.ts
-│   │   │   │   └── shared
-│   │   │   │       └── data-access
-│   │   │   │           ├── filtre-values.fetch.test.ts
-│   │   │   │           └── filtre-values.fetch.ts
+│   │   │   │   └── index.ts
 │   │   │   ├── database.types.ts
 │   │   │   ├── environmentVariables.ts
 │   │   │   ├── index.ts
@@ -6565,6 +6551,7 @@
 │   │   │       ├── get-request-url.ts
 │   │   │       ├── isAllowedOrigin.test.ts
 │   │   │       ├── isAllowedOrigin.ts
+│   │   │       ├── pathUtils.spec.ts
 │   │   │       ├── pathUtils.ts
 │   │   │       ├── react-query
 │   │   │       │   └── query-options.ts
@@ -7078,8 +7065,6 @@
 │       │   │   │   ├── Badge.stories.tsx
 │       │   │   │   ├── Badge.tsx
 │       │   │   │   ├── BadgeDouble.tsx
-│       │   │   │   ├── DEPRECATED_BadgesContainer.stories.tsx
-│       │   │   │   ├── DEPRECATED_BadgesContainer.tsx
 │       │   │   │   └── index.ts
 │       │   │   ├── BadgeFilters
 │       │   │   │   ├── BadgeFilters.stories.tsx
@@ -7598,4 +7583,4 @@
 ├── tsconfig.json
 ├── vitest.config.ts
 └── vitest.workspace.ts
-1299 directories, 6559 files
+1288 directories, 6555 files
