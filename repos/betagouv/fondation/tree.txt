@@ -37,6 +37,9 @@
 │   │   ├── .sqlfluff
 │   │   ├── .vscode
 │   │   │   └── settings.json
+│   │   ├── docs
+│   │   │   └── adr
+│   │   │       └── 2026-07-20-frontiere-des-contextes-et-queries-de-liste.md
 │   │   ├── nest-cli.json
 │   │   ├── package.json
 │   │   ├── prisma
@@ -52,6 +55,8 @@
 │   │   │   │   ├── 20260706101345_adds_audition_date
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260708120000_official_report_editable_blocks
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260720073718_add_report_nomination_file_reporter_index
 │   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   ├── schema.prisma
@@ -444,7 +449,8 @@
 │   │   │   │   │   │   │   └── report.dto.ts
 │   │   │   │   │   │   ├── queries
 │   │   │   │   │   │   │   ├── detail-report.query.ts
-│   │   │   │   │   │   │   └── get-report-file-urls.query.ts
+│   │   │   │   │   │   │   ├── get-report-file-urls.query.ts
+│   │   │   │   │   │   │   └── search-nomination-file-members-report.query.ts
 │   │   │   │   │   │   └── report.repository.ts
 │   │   │   │   │   ├── report.controller.ts
 │   │   │   │   │   ├── report.module.ts
@@ -1439,4 +1445,4 @@
 └── vendor
     ├── .gitkeep
     └── xlsx-0.20.3.tgz
-321 directories, 1120 files
+324 directories, 1123 files
