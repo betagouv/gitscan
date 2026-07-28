@@ -121,7 +121,8 @@
 │       ├── release.yml
 │       ├── review-auto.yaml
 │       ├── review.yaml
-│       └── sync-docs-to-wiki.yaml
+│       ├── sync-docs-to-wiki.yaml
+│       └── ticket-end-date.yaml
 ├── .gitignore
 ├── .kontinuous
 │   ├── Chart.yaml
@@ -206,6 +207,7 @@
 │   ├── PUBLIC-API.md
 │   ├── SUIT-API.md
 │   ├── architecture.md
+│   ├── cahier-de-tests.md
 │   ├── features.md
 │   ├── mails
 │   │   ├── compliance-path-choice-reminder.md
@@ -348,6 +350,7 @@
 │   │   │   ├── audit-cleanup.mjs
 │   │   │   ├── audit-domain-leaks.sh
 │   │   │   ├── backfill-company-region-department.mjs
+│   │   │   ├── check-cahier.mjs
 │   │   │   ├── check-journal.mjs
 │   │   │   ├── copy-dsfr.mjs
 │   │   │   ├── copy-swagger-ui.mjs
@@ -552,6 +555,7 @@
 │   │   │   │   ├── declaration.e2e.ts
 │   │   │   │   ├── declarationDraft.e2e.ts
 │   │   │   │   ├── error-pages.e2e.ts
+│   │   │   │   ├── export-declarations.e2e.ts
 │   │   │   │   ├── fileUpload.e2e.ts
 │   │   │   │   ├── fixtures
 │   │   │   │   │   └── dummy.pdf
@@ -574,7 +578,8 @@
 │   │   │   │   ├── notifications-email-flow.e2e.ts
 │   │   │   │   ├── public-referents.e2e.ts
 │   │   │   │   ├── public-stats.e2e.ts
-│   │   │   │   └── recapitulatif.e2e.ts
+│   │   │   │   ├── recapitulatif.e2e.ts
+│   │   │   │   └── suit-export-declarations.e2e.ts
 │   │   │   ├── env.js
 │   │   │   ├── instrumentation-client.ts
 │   │   │   ├── instrumentation.ts
@@ -999,7 +1004,8 @@
 │   │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   │   ├── CategoryImportExport.test.tsx
 │   │   │   │   │   │   │   │   ├── categoryFileHandler.test.ts
-│   │   │   │   │   │   │   │   └── categoryModelTracking.test.ts
+│   │   │   │   │   │   │   │   ├── categoryModelTracking.test.ts
+│   │   │   │   │   │   │   │   └── sources.test.ts
 │   │   │   │   │   │   │   ├── categoryFileHandler.ts
 │   │   │   │   │   │   │   ├── categoryModelTracking.ts
 │   │   │   │   │   │   │   ├── categorySerializer.ts
@@ -1723,6 +1729,7 @@
 │   ├── orchestration
 │   │   ├── agent_drilldown.sh
 │   │   ├── agent_status.sh
+│   │   ├── backfill_ticket_dates.sh
 │   │   ├── cache_gh.sh
 │   │   ├── cleanup_terminal_worktrees.sh
 │   │   ├── compute_cost.sh
@@ -1744,6 +1751,7 @@
 │   │   ├── run_architect_rework.sh
 │   │   ├── run_doc_writer.sh
 │   │   ├── run_e2e_dev.sh
+│   │   ├── set_ticket_date.sh
 │   │   ├── set_ticket_size.sh
 │   │   ├── set_ticket_status.sh
 │   │   └── sprint_velocity.sh
@@ -1754,4 +1762,4 @@
 │   ├── setup-worktree.sh
 │   └── teardown-worktree.sh
 └── sonar-project.properties
-294 directories, 1462 files
+294 directories, 1470 files
