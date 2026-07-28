@@ -1,4 +1,31 @@
+2026-07-27T20:05:41Z - 5f609b96b - Paul Chavard : Merge pull request #13545 from demarche-numerique/push-ulwnzskqqtxw
+2026-07-27T15:22:22+02:00 - fa174d09b - Paul Chavard : test(batch): suppress polling per example and wait for DSFR modals
+2026-07-27T11:00:14+02:00 - 833f6e682 - Paul Chavard : fix(stats): serve 0% shares when a procedure has no dossier terminé
+2026-07-27T10:41:55+02:00 - a35421fa1 - Paul Chavard : fix(stats): count deleted dossiers in the terminés state shares
+2026-07-27T10:27:40+02:00 - c9c369c27 - Paul Chavard : fix(routes): remove routes pointing to missing controllers or actions
+2026-07-27T10:27:40+02:00 - 3c50604a9 - Paul Chavard : refactor(routes): split config/routes.rb by profile
+2026-07-27T10:24:41+02:00 - e1bb80ef1 - Paul Chavard : perf(graphql): re-enable query complexity limit (budget 60k)
+2026-07-27T10:07:18Z - 68f20f32e - Paul Chavard : Merge pull request #13583 from demarche-numerique/push-xnprvvuwmwqr
+2026-07-27T10:01:52Z - 741d4badb - Paul Chavard : Merge pull request #13559 from demarche-numerique/push-klmzuxuwuptm
+2026-07-27T09:59:03Z - b46e35989 - Paul Chavard : Merge pull request #13590 from demarche-numerique/push-wlwxspynomly
+2026-07-27T09:04:05Z - 45b3433bc - Paul Chavard : Merge pull request #13549 from demarche-numerique/push-nypupysmomxw
+2026-07-27T08:50:19Z - 2e3a6fc18 - Paul Chavard : Merge pull request #13582 from demarche-numerique/push-xlnnptrpwsvz
+2026-07-27T08:14:58Z - 21a91558c - Paul Chavard : Merge pull request #13551 from demarche-numerique/push-kvtmolyxumxn
+2026-07-27T08:13:58Z - a6ff7d0c1 - Paul Chavard : Merge pull request #13585 from demarche-numerique/push-muuqmkpynwpq
+2026-07-27T07:19:42Z - 1b3b9aeb6 - Benoit Queyron : Merge pull request #13562 from demarche-numerique/fix-estimated-dossiers-count-of-procedures
+2026-07-27T07:18:42Z - 8d079a285 - Benoit Queyron : Merge pull request #13575 from demarche-numerique/api-part-url-datapass
+2026-07-27T07:18:15Z - 972908d5e - Benoit Queyron : Merge pull request #13577 from demarche-numerique/opendata-adds-department-data-json-description
+2026-07-27T05:57:54Z - 770a6f338 - Mathieu Magnin : Merge pull request #13564 from demarche-numerique/ami-item-type-procedure-id
+2026-07-26T23:43:54+02:00 - 80be9bcfc - Paul Chavard : fix(usager): attachment row renders a blob with an empty filename
+2026-07-26T23:43:54+02:00 - 174bc5743 - Paul Chavard : fix(dossier): RNA component renders a fetched champ with missing data
+2026-07-26T21:35:24Z - 61bf20529 - Paul Chavard : Merge pull request #13542 from demarche-numerique/push-ltswlysrvtyn
+2026-07-26T08:35:22+02:00 - d0de3f608 - Paul Chavard : fix(a11y): announce avis externe notifications to screen readers
+2026-07-26T08:35:22+02:00 - 65e65e782 - Paul Chavard : fix(a11y): use a valid aria-live value on the pending correction error
+2026-07-25T22:26:16+02:00 - 598f866ca - Paul Chavard : ci: split linters in three parallel jobs
+2026-07-24T22:56:23+02:00 - f5e0c372f - Paul Chavard : fix(instructeur): gallery renders champ attachments orphaned by a revision change
 2026-07-24T16:22:34Z - 790a59206 - Mathieu Magnin : Merge pull request #13571 from demarche-numerique/worktree-compressed-churning-swing
+2026-07-24T15:29:23+02:00 - 75b8cea05 - benoitqueyron : opendata(demarches publiques export): adds the departement of service
+2026-07-24T14:41:24+02:00 - 9b32fa436 - benoitqueyron : feat(admin): provides the new DN specific datapass url
 2026-07-24T13:46:51Z - 5a9f2f3ab - Paul Chavard : Merge pull request #13544 from demarche-numerique/push-vmkzlnkkolpy
 2026-07-24T13:45:32Z - 4a4454ffa - Paul Chavard : Merge pull request #13555 from demarche-numerique/push-zptukllpyont
 2026-07-24T12:04:50+02:00 - 412ec119c - Mathieu Magnin : fix(pdf): prevent method redefinition race between prawn templates
@@ -26,7 +53,11 @@
 2026-07-23T14:49:26+02:00 - 158c6753c - Kara Diaby : fix(personnalisation): align mes dossiers header and enlarge perso icon
 2026-07-23T14:49:25+02:00 - 5c05ae139 - Kara Diaby : feat(personnalisation): display chosen champ values on the dossiers list
 2026-07-23T14:46:16Z - e714d260f - Mathieu Magnin : Merge pull request #13565 from demarche-numerique/fix/mes-dossiers-filtre-nouveau-message-perf
+2026-07-23T14:46:13+02:00 - 5553b2e6d - benoitqueyron : fix test
+2026-07-23T14:46:12+02:00 - a66d469bf - benoitqueyron : task(procedure): update estimated dossiers count
+2026-07-23T14:46:12+02:00 - 9794680f3 - benoitqueyron : refactor: uses estimated_dossiers_count to provide information on the number of dossiers submitted to administration
 2026-07-23T14:45:46+02:00 - 6aacae22d - Mathieu Magnin : perf(mes-dossiers): scope the "nouveau message" filter exclusions to the candidate row
+2026-07-23T14:45:43+02:00 - 4ad25f16a - benoitqueyron : feat(super admin): estimated dossiers count is now the total number of dossiers submitted to administration
 2026-07-23T14:11:17+02:00 - fa7089e9b - Kara Diaby : feat(personnalisation): add dossier card champs component
 2026-07-23T14:11:17+02:00 - ab2ec914a - Kara Diaby : refactor(personnalisation): extract column value formatting into a shared module
 2026-07-23T13:56:12+02:00 - d6b7dbeea - Kara Diaby : fix(personnalisation): include dossiers received by invitation
@@ -43,9 +74,11 @@
 2026-07-23T13:33:34+02:00 - 5f876e27c - Kara Diaby : fix(personnalisation): ignore stale columns when reading a personnalisation
 2026-07-23T13:33:34+02:00 - 4ace7bd7b - Kara Diaby : feat(personnalisation): list personnalisable columns of a procedure
 2026-07-23T13:33:33+02:00 - fbe6a6355 - Kara Diaby : feat(personnalisation): add DossiersListPersonnalisation model
+2026-07-23T13:25:09+02:00 - e67282c23 - Mathieu Magnin : feat(ami): categorize notifications by démarche via item_type
 2026-07-23T12:55:28Z - 12d4ba719 - Kara Diaby : Merge pull request #13384 from demarche-numerique/feat/dossiers-personnalisation-pr3
 2026-07-23T12:02:25Z - c7b0c3799 - Kara Diaby : Merge pull request #13381 from demarche-numerique/feat/dossiers-personnalisation-pr2
 2026-07-23T11:59:16+02:00 - e5be5c067 - Paul Chavard : test(routing): poll DB for routing result instead of asserting once
+2026-07-23T11:51:11+02:00 - dc381bc22 - Paul Chavard : test(pdf): run pdftotext view specs on CI via external_deps tag
 2026-07-23T11:43:05Z - a91b013c9 - Kara Diaby : Merge pull request #13373 from demarche-numerique/feat/dossiers-personnalisation
 2026-07-23T10:22:35+02:00 - 6632db865 - Paul Chavard : fix(graphql): reject createDirectUpload with a read-only token cleanly
 2026-07-23T10:19:29Z - 14deca32b - Paul Chavard : Merge pull request #13530 from demarche-numerique/push-rmnuknmowmvt
@@ -63,10 +96,12 @@
 2026-07-22T22:07:32+02:00 - 2e7a363e7 - Paul Chavard : fix(instructeur): hide the export template submit when there is no template
 2026-07-22T19:44:41+02:00 - b0017219b - Paul Chavard : fix(champ): accept clearing the address value_json
 2026-07-22T19:42:49+02:00 - 1f04480e8 - Paul Chavard : fix(geo): render a fallback location for out of range coordinates
+2026-07-22T19:41:15+02:00 - 50ac8db93 - Paul Chavard : fix(referentiel): skip empty paragraphs in the autocomplete template
 2026-07-22T19:40:04+02:00 - ec93b5ca1 - Paul Chavard : fix(admin): make publish_or_reopen! idempotent on replay
 2026-07-22T19:38:05+02:00 - e2d2b6e2e - Paul Chavard : fix(instructeur): redirect when the export format is missing
 2026-07-22T19:35:37+02:00 - df5e7f45e - Paul Chavard : fix(admin): ignore replayed type de champ deletion
 2026-07-22T17:51:31+02:00 - 7357b5e12 - Paul Chavard : refactor(spec): lean on Oaken seeds in GraphQL API specs
+2026-07-22T17:47:52+02:00 - 308572559 - benoitqueyron : model(procedure) : adds method to count dossiers submitted to administration
 2026-07-22T17:31:08+02:00 - 362c0b111 - Paul Chavard : refactor(spec): split stored queries GraphQL spec into queries and mutations files
 2026-07-22T17:27:44+02:00 - 5fadfe720 - Paul Chavard : refactor(graphql): consolidate API v2 controller specs on stored queries
 2026-07-22T17:26:46+02:00 - c86ae01af - mfo : fix(prefill): resolve referentiel-backed drop_down_list labels to item ids
