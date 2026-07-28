@@ -313,6 +313,8 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260715120000_add_simple_prefix_search_index
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260716063510_application_business_divisions_many_to_many
+│   │   │   │   └── migration.sql
 │   │   │   ├── 20260716120000_add_actortype_is_admin
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260717120000_remove_license_tables
@@ -324,6 +326,10 @@
 │   │   │   ├── 20260717140000_add_technology_permissions
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260717171935_data_description_multiple_families
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260721120000_remove_actortype_is_admin
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260724130000_add_never_update_frequency
 │   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   ├── schema
@@ -614,6 +620,7 @@
 │   │   │   ├── organizations.service.ts
 │   │   │   └── prisma-query-builder.service.ts
 │   │   ├── permissions
+│   │   │   ├── role-to-permissions.spec.ts
 │   │   │   └── role-to-permissions.ts
 │   │   ├── prisma
 │   │   │   ├── extensions
@@ -1022,8 +1029,10 @@
 │   │   │   │   ├── CompliancesAccordionManager.vue
 │   │   │   │   └── RgaaComplianceSection.vue
 │   │   │   ├── data-application
+│   │   │   │   ├── DataApplicationDetail.spec.ts
 │   │   │   │   ├── DataApplicationDetail.vue
 │   │   │   │   ├── DataApplicationModal.vue
+│   │   │   │   ├── DataApplicationTab.spec.ts
 │   │   │   │   ├── DataApplicationTab.vue
 │   │   │   │   └── DataExposureModal.vue
 │   │   │   ├── form
@@ -1208,4 +1217,4 @@
 │       ├── campaign.mjs
 │       └── sync-issue.mjs
 └── release-please-config.json
-326 directories, 884 files
+329 directories, 890 files
