@@ -103,6 +103,8 @@
 │   │   │   │   ├── mongo_keyfile.txt
 │   │   │   │   ├── mongod.conf
 │   │   │   │   └── seed.gpg
+│   │   │   ├── mongot
+│   │   │   │   └── mongot.yml
 │   │   │   └── reverse_proxy
 │   │   │       ├── extra-conf.d
 │   │   │       │   ├── alias.conf.template
@@ -140,12 +142,13 @@
 │   ├── inventories
 │   │   └── env.ini
 │   └── local
-│       ├── Dockerfile
+│       ├── Dockerfile.mongod
+│       ├── Dockerfile.mongot
 │       ├── mongo_keyfile
-│       └── mongod.conf
+│       ├── mongod.conf
+│       └── mongot.yml
 ├── .openpgp-keyid
 ├── .openpgp-pubkey
-├── .talismanrc
 ├── .vscode
 │   ├── extensions.json
 │   ├── launch.json
@@ -183,6 +186,7 @@
 │   ├── infrastructure
 │   │   ├── architecture.md
 │   │   ├── manage.md
+│   │   ├── mongodb-local.md
 │   │   └── preview.md
 │   ├── infrastructure.md
 │   ├── migration-preview
@@ -207,9 +211,24 @@
 │   │       ├── 02-server-impact.md
 │   │       ├── 03-ui-impact.md
 │   │       └── 04-migration-recommendations.md
+│   ├── mongodb
+│   │   ├── analyse-search-analyzers.md
+│   │   ├── api-search.md
+│   │   ├── current-behavior.md
+│   │   ├── references-mongodb-search.md
+│   │   ├── search-config-finale.md
+│   │   ├── search-items-keywords-cache.jsonl.gz
+│   │   └── search-synonyms.json
+│   ├── nurturing-entreprises.md
 │   ├── optimization
 │   │   └── blocked-cfa-aho-corasick.md
-│   └── securite.md
+│   ├── relance-candidats-inactifs.md
+│   ├── relance-incitation-spontanee.md
+│   ├── securite.md
+│   └── test_analyser
+│       ├── 2026-06-06-baseline-boosting-sans-phase3.md
+│       ├── README.md
+│       └── comparaison-avec-phase3.md
 ├── gitleaks-fingerprints-baseline.txt
 ├── knip.json
 ├── package.json
@@ -349,6 +368,8 @@
 │   │   │   │   ├── reportedCompany.controller.ts
 │   │   │   │   ├── rolesRoutes.test.ts
 │   │   │   │   ├── rome.controller.ts
+│   │   │   │   ├── search.controller.test.ts
+│   │   │   │   ├── search.controller.ts
 │   │   │   │   ├── sitemap.controller.ts
 │   │   │   │   ├── trainingLinks.controller.ts
 │   │   │   │   ├── unsubscribeRecruteurLba.controller.ts
@@ -388,11 +409,17 @@
 │   │   │   ├── applications
 │   │   │   │   ├── processApplications.test.ts
 │   │   │   │   ├── processApplications.ts
-│   │   │   │   └── processRecruiterIntentions.ts
+│   │   │   │   ├── processRecruiterIntentions.ts
+│   │   │   │   ├── relanceCandidatsInactifs.test.ts
+│   │   │   │   ├── relanceCandidatsInactifs.ts
+│   │   │   │   ├── relanceIncitationSpontanee.test.ts
+│   │   │   │   ├── relanceIncitationSpontanee.ts
+│   │   │   │   └── relanceSearchUrl.ts
 │   │   │   ├── database
 │   │   │   │   ├── obfuscateCollections.ts
 │   │   │   │   ├── recreateIndexes.ts
-│   │   │   │   └── schemaValidation.ts
+│   │   │   │   ├── schemaValidation.ts
+│   │   │   │   └── seedSearchSynonyms.ts
 │   │   │   ├── diplomesMetiers
 │   │   │   │   └── updateDiplomesMetiers.ts
 │   │   │   ├── domainesMetiers
@@ -653,6 +680,7 @@
 │   │   │   │   │   ├── exportJobsToS3V2.test.ts.snap
 │   │   │   │   │   └── exportToFranceTravail.test.ts.snap
 │   │   │   │   ├── exportBlacklistAlgo.ts
+│   │   │   │   ├── exportContactsToBrevo.test.ts
 │   │   │   │   ├── exportContactsToBrevo.ts
 │   │   │   │   ├── exportJobsToS3.ts
 │   │   │   │   ├── exportJobsToS3V2.test.ts
@@ -679,6 +707,8 @@
 │   │   │   ├── recruiters
 │   │   │   │   ├── createApiUser.ts
 │   │   │   │   ├── disableApiUser.ts
+│   │   │   │   ├── nurturingEntreprises.test.ts
+│   │   │   │   ├── nurturingEntreprises.ts
 │   │   │   │   ├── opcoReminderJob.ts
 │   │   │   │   ├── recruiterOfferExpirationReminderJob.test.ts
 │   │   │   │   ├── recruiterOfferExpirationReminderJob.ts
@@ -686,6 +716,12 @@
 │   │   │   │   └── updateSiretInfosInErrorJob.ts
 │   │   │   ├── referentielRome
 │   │   │   │   └── referentielRome.ts
+│   │   │   ├── search
+│   │   │   │   ├── analyzeSearchQueries.ts
+│   │   │   │   ├── generateSearchItemsCollection.test.ts
+│   │   │   │   ├── generateSearchItemsCollection.ts
+│   │   │   │   ├── searchSuggestionCriteria.test.ts
+│   │   │   │   └── searchSuggestionCriteria.ts
 │   │   │   ├── seo
 │   │   │   │   ├── dataMetierSEO.ts
 │   │   │   │   └── updateSEO.ts
@@ -698,47 +734,7 @@
 │   │   ├── main.ts
 │   │   ├── migrations
 │   │   │   ├── .gitkeep
-│   │   │   ├── 20251031112120-initialisation-seo-ville.ts
-│   │   │   ├── 20251110154539-clean-migration.ts
-│   │   │   ├── 20251110163231-clean-recruteurslbalegacies.ts
-│   │   │   ├── 20251117180055-reset-pending-jobs.ts
-│   │   │   ├── 20251119174516-drop-referentielopcos.ts
-│   │   │   ├── 20251120025212-update-rome.ts
-│   │   │   ├── 20251204025232-fill-last-action-date.ts
-│   │   │   ├── 20251212155522-remove-metadata-ft-model.ts
-│   │   │   ├── 20260115190052-unset-lba-url.ts
-│   │   │   ├── 20260119151900-reset-lba-url.ts
-│   │   │   ├── 20260121150000-ajout-2-domaines-metiers.ts
-│   │   │   ├── 20260121150000-fix-5-domainesmetiers.ts
-│   │   │   ├── 20260121150000-fix-domainemetier-sans-solution.ts
-│   │   │   ├── 20260122140000-renommage-romes.ts
-│   │   │   ├── 20260122150000-classification-domaine-metier-new copy.ts
-│   │   │   ├── 20260122160000-regeneration-rome-label.ts
-│   │   │   ├── 20260127123456-clean-rolemanagement.ts
-│   │   │   ├── 20260129123456-mise-a-jour-diplomes-metiers.ts
-│   │   │   ├── 20260129123457-export-recruteurs-s3.ts
-│   │   │   ├── 20260129161156-maj-handi-engagement.ts
-│   │   │   ├── 20260205123456-maj-handi-engagement-offres-actives.ts
-│   │   │   ├── 20260212150000-classification-domaine-metier.ts
-│   │   │   ├── 20260218011730-initialisation-seo-metier.ts
-│   │   │   ├── 20260218174124-update-indexes.ts
-│   │   │   ├── 20260226120000-classification-publish-unpublish.ts
-│   │   │   ├── 20260304120000-suppression-recruiters.ts
-│   │   │   ├── 20260316162512-initialisation-seo-offres-metiers-villes.ts
-│   │   │   ├── 20260318120000-fill-entreprises-managed-by-cfa.ts
-│   │   │   ├── 20260323180547-update-seo-ville.ts
-│   │   │   ├── 20260403125147-fix-contract-type-jobs-partners.ts
-│   │   │   ├── 20260409135117-partner-job-id-taleez.ts
-│   │   │   ├── 20260421191642-add-10-seo-villes.ts
-│   │   │   ├── 20260422115041-reset-date-premium.ts
-│   │   │   ├── 20260423095902-add-10-seo-villes-batch-2.ts
-│   │   │   ├── 20260427170242-initialisation-seo-diplome.ts
-│   │   │   ├── 20260507120000-add-10-seo-metiers-batch-2.ts
-│   │   │   ├── 20260507130000-add-10-seo-metiers-batch-3.ts
-│   │   │   ├── 20260512182814-maj-handi-engagement-avril-2026.ts
-│   │   │   ├── 20260518121500-remove-salaire-seo-diplome.ts
 │   │   │   ├── 20260526115741-add-ft-support-jobs-partners.ts
-│   │   │   ├── 20260528143130-drop-eligible-trainings-for-appointments-histories.ts
 │   │   │   ├── 20260603120000-remove-establishment-id-from-jobs-partners.ts
 │   │   │   ├── 20260605185522-normalize-offer-origin-jobs-partners.ts
 │   │   │   ├── 20260611143504-restore-jobs-partners-offres-emploi-lba.ts
@@ -746,9 +742,11 @@
 │   │   │   ├── 20260618102545-cancel-jobs-partners-with-invalid-computed.ts
 │   │   │   ├── 20260626000000-update-diploma-labels-jobs-partners.ts
 │   │   │   ├── 20260702000000-remove-origin-from-cfas.ts
+│   │   │   ├── 20260709120000-add-relance-candidats-indexes.ts
 │   │   │   ├── 20260716120000-remove-origin-from-rolemanagements.ts
 │   │   │   ├── 20260717120000-normalize-userswithaccounts-origin.ts
-│   │   │   └── 20260720104100-remove-opco-short-name.ts
+│   │   │   ├── 20260720104100-remove-opco-short-name.ts
+│   │   │   └── 20260727210718-seed-search-items-keywords-cache.ts
 │   │   ├── security
 │   │   │   ├── accessLog.service.ts
 │   │   │   ├── accessLog.types.ts
@@ -831,6 +829,15 @@
 │   │       ├── roleManagement.service.ts
 │   │       ├── rome.service.ts
 │   │       ├── rome.service.types.ts
+│   │       ├── search
+│   │       │   ├── search-result.test.ts
+│   │       │   ├── search.service.ts
+│   │       │   ├── searchItems.service.test.ts
+│   │       │   ├── searchItems.service.ts
+│   │       │   ├── searchItemsKeywords.service.test.ts
+│   │       │   ├── searchItemsKeywords.service.ts
+│   │       │   ├── searchQueryLog.service.test.ts
+│   │       │   └── searchQueryLog.service.ts
 │   │       ├── seo.service.ts
 │   │       ├── sessions.service.ts
 │   │       ├── sitemap.service.ts
@@ -969,6 +976,7 @@
 │   │   │   │   └── onisep.fixture.ts
 │   │   │   ├── roleManagement.fixture.ts
 │   │   │   ├── rome.fixture.ts
+│   │   │   ├── searchItems.fixture.ts
 │   │   │   ├── user.fixture.ts
 │   │   │   └── userWithAccount.fixture.ts
 │   │   ├── global.d.ts
@@ -1037,6 +1045,7 @@
 │   │   │   ├── jobsPartnersComputed.model.ts
 │   │   │   ├── lbaItem.model.ts
 │   │   │   ├── lbacError.model.ts
+│   │   │   ├── mistralBatchJobs.model.ts
 │   │   │   ├── model-to-keep.model.ts
 │   │   │   ├── models.ts
 │   │   │   ├── opco.model.ts
@@ -1075,6 +1084,11 @@
 │   │   │   ├── roleManagement.model.ts
 │   │   │   ├── roleManagement360.model.ts
 │   │   │   ├── rome.model.ts
+│   │   │   ├── searchItems.model.ts
+│   │   │   ├── searchItemsKeywords.model.ts
+│   │   │   ├── searchQueries.model.ts
+│   │   │   ├── searchSuggestions.model.ts
+│   │   │   ├── searchSynonyms.model.ts
 │   │   │   ├── seoDiplome.model.ts
 │   │   │   ├── seoMetier.model.ts
 │   │   │   ├── seoVille.model.ts
@@ -1115,6 +1129,7 @@
 │   │   │   ├── recruiters.routes.ts
 │   │   │   ├── reportedCompany.routes.ts
 │   │   │   ├── rome.routes.ts
+│   │   │   ├── search.routes.ts
 │   │   │   ├── sitemap.routes.ts
 │   │   │   ├── trainingLinks.routes.ts
 │   │   │   ├── unsubscribe.routes.ts
@@ -1148,6 +1163,8 @@
 │   │   │   ├── stringUtils.test.ts
 │   │   │   └── stringUtils.ts
 │   │   └── validators
+│   │       ├── nameValidator.test.ts
+│   │       ├── nameValidator.ts
 │   │       ├── phoneValidator.test.ts
 │   │       ├── phoneValidator.ts
 │   │       ├── siretValidator.test.ts
@@ -1185,6 +1202,7 @@
 │   │   │   │   │   │   │   ├── RechercheResultTypeCheckbox.tsx
 │   │   │   │   │   │   │   ├── RechercheSubmitButton.tsx
 │   │   │   │   │   │   │   └── RechercheTypeEmploiSelect.tsx
+│   │   │   │   │   │   ├── RechercheOptInBanner.tsx
 │   │   │   │   │   │   ├── RecherchePageComponent.tsx
 │   │   │   │   │   │   ├── RecherchePageComponentServer.tsx
 │   │   │   │   │   │   ├── RechercheResultats
@@ -1215,6 +1233,8 @@
 │   │   │   │   │   │   ├── useSearchViewNotifier.ts
 │   │   │   │   │   │   └── useWhispers.ts
 │   │   │   │   │   ├── _utils
+│   │   │   │   │   │   ├── recherche.metadata.utils.test.ts
+│   │   │   │   │   │   ├── recherche.metadata.utils.ts
 │   │   │   │   │   │   ├── recherche.route.utils.ts
 │   │   │   │   │   │   └── scrollToVirtualItem.ts
 │   │   │   │   │   └── page.tsx
@@ -1670,6 +1690,7 @@
 │   │   │   │   ├── GrandsGroupesRecruteur.tsx
 │   │   │   │   ├── HomeCircleImageDecoration.tsx
 │   │   │   │   ├── HomeRechercheForm.tsx
+│   │   │   │   ├── HomeRechercheOptIn.tsx
 │   │   │   │   ├── HowTo.tsx
 │   │   │   │   ├── InformationsAlternance.tsx
 │   │   │   │   ├── home_form_decoration.svg
@@ -1744,6 +1765,36 @@
 │   │   │   │   └── ModalTitle.tsx
 │   │   │   ├── WidgetAwareHeader.tsx
 │   │   │   └── WidgetTester.tsx
+│   │   ├── beta
+│   │   │   ├── _components
+│   │   │   │   ├── ExitNewSearchLink.tsx
+│   │   │   │   ├── NewSearchOptInBanner.tsx
+│   │   │   │   ├── SearchBar.tsx
+│   │   │   │   ├── SearchFilterChip.tsx
+│   │   │   │   ├── SearchFilters.tsx
+│   │   │   │   ├── SearchHitCard.tsx
+│   │   │   │   ├── SearchHomeForm.tsx
+│   │   │   │   ├── SearchMobilePanel.tsx
+│   │   │   │   ├── SearchMobileSummaryBar.tsx
+│   │   │   │   ├── SearchMobileTriModal.tsx
+│   │   │   │   ├── SearchPageClient.tsx
+│   │   │   │   ├── SearchResultsList.tsx
+│   │   │   │   ├── SearchSortSelect.tsx
+│   │   │   │   └── SearchTypeRechercheSelect.tsx
+│   │   │   ├── _hooks
+│   │   │   │   ├── useAutoRadius.ts
+│   │   │   │   ├── useBetaDetailNavigation.ts
+│   │   │   │   ├── useDialogA11y.ts
+│   │   │   │   ├── useLockBodyScroll.ts
+│   │   │   │   ├── useNewSearchOptIn.ts
+│   │   │   │   └── useSearchResults.ts
+│   │   │   ├── _utils
+│   │   │   │   ├── search.params.utils.test.ts
+│   │   │   │   ├── search.params.utils.ts
+│   │   │   │   ├── search.tracking.utils.test.ts
+│   │   │   │   └── search.tracking.utils.ts
+│   │   │   └── recherche
+│   │   │       └── page.tsx
 │   │   ├── client_only_providers.tsx
 │   │   ├── dsfr-setup
 │   │   │   ├── defaultColorScheme.ts
@@ -2582,10 +2633,12 @@
 │       ├── matomoUtils.ts
 │       ├── plausible.ts
 │       ├── requestUtils.ts
+│       ├── robots.utils.test.ts
+│       ├── robots.utils.ts
 │       ├── routes.utils.ts
 │       ├── strutils.ts
 │       ├── tools.ts
 │       └── useSearchParamsRecord.ts
 ├── vitest.config.ts
 └── yarn.lock
-490 directories, 2668 files
+500 directories, 2711 files
