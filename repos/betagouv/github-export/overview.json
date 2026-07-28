@@ -1,1 +1,48 @@
-{}
+{
+  "url": "https://github.com/betagouv/github-export",
+  "name": "github-export",
+  "description": "Ce projet permet de migrer des dépôts d'organisations GitHub vers Codeberg, en conservant l'historique complet, les branches, les issues, les pull requests et plus encore.",
+  "language": "TypeScript",
+  "features": [
+    "Gestion documentaire & Fichiers",
+    "API & Intégrations"
+  ],
+  "audience": "Développeurs",
+  "dependencies": [
+    "@octokit/rest",
+    "puppeteer",
+    "simple-git",
+    "zod"
+  ],
+  "components": [
+    "API REST & GraphQL",
+    "TypeScript / JavaScript",
+    "CI/CD & Déploiement"
+  ],
+  "auth": {
+    "methods": [
+      "api-key"
+    ]
+  },
+  "tests": null,
+  "workflows": [
+    "cleanup-inactive-codeberg.yml",
+    "migrate-batch.yml",
+    "sync-orchestrator.yml"
+  ],
+  "lastActivity": "2026-07-26T04:26:22Z",
+  "status": "active",
+  "license": "MIT",
+  "hasDocumentation": true,
+  "metrics": {
+    "stars": 3,
+    "forks": 2,
+    "contributors": null,
+    "openIssues": 0
+  },
+  "tags": [
+    "Données & Open Data",
+    "TypeScript",
+    "Déploiement & Hosting"
+  ]
+}
