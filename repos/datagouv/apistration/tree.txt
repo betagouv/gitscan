@@ -1123,6 +1123,7 @@
 │   │   ├── api_particulier_v3_cnav_allocation_enfant_handicape_with_france_connect
 │   │   │   ├── 404.yaml
 │   │   │   ├── README.md
+│   │   │   ├── fake_france_connect_all_fc.yaml
 │   │   │   ├── fake_france_connect_cnaf.yaml
 │   │   │   ├── france_connect_cnaf.yaml
 │   │   │   └── summary.csv
@@ -1137,8 +1138,10 @@
 │   │   │   └── summary.csv
 │   │   ├── api_particulier_v3_cnav_allocation_rentree_scolaire_with_france_connect
 │   │   │   ├── 200_allocataire.yaml
+│   │   │   ├── 200_allocataire_angela_dubois.yaml
 │   │   │   ├── 404.yaml
 │   │   │   ├── README.md
+│   │   │   ├── fake_france_connect_all_fc.yaml
 │   │   │   └── summary.csv
 │   │   ├── api_particulier_v3_cnav_allocation_soutien_familial_with_civility
 │   │   │   ├── 200_beneficiaire.yaml
@@ -1513,6 +1516,8 @@
 │   │   │   └── summary.csv
 │   │   ├── api_particulier_v4_cnous_etudiant_boursier_with_ine
 │   │   │   ├── 200_boursier.yaml
+│   │   │   ├── 200_boursier_annee_n1_fille_dupont.yaml
+│   │   │   ├── 200_boursier_annee_n2_fille_b_dupont.yaml
 │   │   │   ├── 200_boursier_campagne_anterieure.yaml
 │   │   │   ├── 200_boursier_commune_accentuee_minnie_mouse.yaml
 │   │   │   ├── 200_boursier_commune_naissance_typo_mickey_mouse.yaml
@@ -1532,6 +1537,39 @@
 │   │   │   ├── 200_eleve_boursier.yaml
 │   │   │   ├── 200_eleve_non_boursier.yaml
 │   │   │   ├── 404.yaml
+│   │   │   ├── README.md
+│   │   │   └── summary.csv
+│   │   ├── api_particulier_v5_cnous_etudiant_boursier_with_civility
+│   │   │   ├── 200-usager-base-france_connect.yml
+│   │   │   ├── 200-usager-moins-25-ans-france_connect.yml
+│   │   │   ├── 200_boursier.yaml
+│   │   │   ├── 200_boursier_campagne_anterieure.yaml
+│   │   │   ├── 200_non_boursier.yaml
+│   │   │   ├── README.md
+│   │   │   └── summary.csv
+│   │   ├── api_particulier_v5_cnous_etudiant_boursier_with_france_connect
+│   │   │   ├── 200_boursier_campagne_anterieure.yaml
+│   │   │   ├── README.md
+│   │   │   ├── fake_france_connect.yaml
+│   │   │   ├── france_connect.yaml
+│   │   │   └── summary.csv
+│   │   ├── api_particulier_v5_cnous_etudiant_boursier_with_ine
+│   │   │   ├── 200_boursier.yaml
+│   │   │   ├── 200_boursier_annee_n1_fille_dupont.yaml
+│   │   │   ├── 200_boursier_annee_n2_fille_b_dupont.yaml
+│   │   │   ├── 200_boursier_campagne_anterieure.yaml
+│   │   │   ├── 200_boursier_commune_accentuee_minnie_mouse.yaml
+│   │   │   ├── 200_boursier_commune_naissance_typo_mickey_mouse.yaml
+│   │   │   ├── 200_boursier_daisy_duck.yaml
+│   │   │   ├── 200_boursier_hors_dijon_donald_duck.yaml
+│   │   │   ├── 200_boursier_naissance_1947_balthazar_picsou.yaml
+│   │   │   ├── 200_boursier_pat_hibulaire.yaml
+│   │   │   ├── 200_boursier_prenom_compose_espace_anne_marie_robert.yaml
+│   │   │   ├── 200_boursier_prenom_compose_tiret_jean_michel_robert.yaml
+│   │   │   ├── 200_boursier_regional_provisoire_loulou_duck.yaml
+│   │   │   ├── 200_boursier_riri_duck.yaml
+│   │   │   ├── 200_non_boursier_fifi_duck.yaml
+│   │   │   ├── 200_radie.yaml
 │   │   │   ├── README.md
 │   │   │   └── summary.csv
 │   │   ├── api_particulier_v5_men_scolarites_with_civility
@@ -1598,6 +1636,7 @@
 │   ├── spec
 │   │   ├── acceptances
 │   │   │   ├── duplicate_params_spec.rb
+│   │   │   ├── france_connect_derived_params_spec.rb
 │   │   │   ├── france_connect_spec.rb
 │   │   │   ├── generate_payload_readme_spec.rb
 │   │   │   ├── payloads_spec.rb
@@ -2698,7 +2737,8 @@
 │   │   │   │   ├── cnous
 │   │   │   │   │   ├── etudiant_boursier
 │   │   │   │   │   │   ├── v3.rb
-│   │   │   │   │   │   └── v4.rb
+│   │   │   │   │   │   ├── v4.rb
+│   │   │   │   │   │   └── v5.rb
 │   │   │   │   │   └── student_scholarship
 │   │   │   │   │       └── v2.rb
 │   │   │   │   ├── dsnj
@@ -4146,6 +4186,7 @@
 │   │   ├── requests
 │   │   │   ├── api_entreprise
 │   │   │   │   ├── ping_spec.rb
+│   │   │   │   ├── pings_spec.rb
 │   │   │   │   ├── privileges_spec.rb
 │   │   │   │   └── v3_and_more
 │   │   │   │       ├── acoss
@@ -4273,6 +4314,8 @@
 │   │   │   │               └── v4_spec.rb
 │   │   │   ├── api_particulier
 │   │   │   │   ├── legacy_caf_famille_route_spec.rb
+│   │   │   │   ├── ping_spec.rb
+│   │   │   │   ├── pings_spec.rb
 │   │   │   │   ├── v2
 │   │   │   │   │   ├── cnav
 │   │   │   │   │   │   ├── allocation_adulte_handicape_spec.rb
@@ -4284,6 +4327,7 @@
 │   │   │   │   │   ├── men
 │   │   │   │   │   │   └── scolarites
 │   │   │   │   │   │       └── scolarites_spec.rb
+│   │   │   │   │   ├── ping_spec.rb
 │   │   │   │   │   └── pole_emploi
 │   │   │   │   │       └── indemnites
 │   │   │   │   │           └── v2_spec.rb
@@ -4317,7 +4361,11 @@
 │   │   │   │       │   │   ├── etudiant_boursier_with_civility_spec.rb
 │   │   │   │       │   │   ├── etudiant_boursier_with_france_connect_spec.rb
 │   │   │   │       │   │   └── etudiant_boursier_with_ine_spec.rb
-│   │   │   │       │   └── v4
+│   │   │   │       │   ├── v4
+│   │   │   │       │   │   ├── etudiant_boursier_with_civility_spec.rb
+│   │   │   │       │   │   ├── etudiant_boursier_with_france_connect_spec.rb
+│   │   │   │       │   │   └── etudiant_boursier_with_ine_spec.rb
+│   │   │   │       │   └── v5
 │   │   │   │       │       ├── etudiant_boursier_with_civility_spec.rb
 │   │   │   │       │       ├── etudiant_boursier_with_france_connect_spec.rb
 │   │   │   │       │       └── etudiant_boursier_with_ine_spec.rb
@@ -4359,7 +4407,8 @@
 │   │   │   ├── rack_attack_acceptance_spec.rb
 │   │   │   ├── rack_attack_for_api_entreprise_spec.rb
 │   │   │   ├── rack_attack_for_api_particulier_spec.rb
-│   │   │   └── rack_attack_for_api_particulier_v2_spec.rb
+│   │   │   ├── rack_attack_for_api_particulier_v2_spec.rb
+│   │   │   └── throttle_override_spec.rb
 │   │   ├── serializers
 │   │   │   ├── api_entreprise
 │   │   │   │   ├── acoss
@@ -4396,7 +4445,8 @@
 │   │   │       ├── cnous
 │   │   │       │   ├── etudiant_boursier
 │   │   │       │   │   ├── v3_spec.rb
-│   │   │       │   │   └── v4_spec.rb
+│   │   │       │   │   ├── v4_spec.rb
+│   │   │       │   │   └── v5_spec.rb
 │   │   │       │   └── student_scholarship
 │   │   │       │       └── v2_spec.rb
 │   │   │       ├── france_travail
@@ -5486,6 +5536,7 @@
     │   │   │   │       └── delegations_controller.rb
     │   │   │   ├── authorization_requests_controller.rb
     │   │   │   ├── delegations_controller.rb
+    │   │   │   ├── settings_controller.rb
     │   │   │   └── tokens_controller.rb
     │   │   ├── editor_controller.rb
     │   │   ├── provider
@@ -5565,6 +5616,7 @@
     │   │   │   ├── find_or_create_authorization_request.rb
     │   │   │   ├── find_or_create_organization.rb
     │   │   │   ├── find_or_create_user.rb
+    │   │   │   ├── pass_scopes.rb
     │   │   │   ├── refuse_current_authorization_request.rb
     │   │   │   ├── revoke_current_token.rb
     │   │   │   ├── schedule_authorization_request_emails.rb
@@ -5964,10 +6016,12 @@
     │       │   ├── authorization_requests
     │       │   │   └── index.html.erb
     │       │   ├── delegations
-    │       │   │   ├── _scopes_cell.html.erb
     │       │   │   └── index.html.erb
+    │       │   ├── settings
+    │       │   │   └── show.html.erb
     │       │   └── tokens
     │       │       ├── created.html.erb
+    │       │       ├── disabled.html.erb
     │       │       ├── edit.html.erb
     │       │       └── index.html.erb
     │       ├── errors
@@ -6084,6 +6138,7 @@
     │           │   ├── current_status.html.erb
     │           │   ├── mentions.html.erb
     │           │   ├── redoc.html.erb
+    │           │   ├── redoc_editor.html.erb
     │           │   ├── redoc_v2.html.erb
     │           │   └── redoc_v3.html.erb
     │           ├── prolong_token_wizard
@@ -6205,8 +6260,6 @@
     │   │   ├── new_framework_defaults_7_0.rb
     │   │   ├── omniauth.rb
     │   │   ├── permissions_policy.rb
-    │   │   ├── rswag_api.rb
-    │   │   ├── rswag_ui.rb
     │   │   ├── sentry.rb
     │   │   ├── sitemap_generator.rb
     │   │   ├── strong_migrations.rb
@@ -6307,7 +6360,11 @@
     │   │   ├── 20260520132026_add_fields_to_editors.rb
     │   │   ├── 20260605120000_create_admin_activities.rb
     │   │   ├── 20260706120000_add_created_via_to_editor_delegations.rb
-    │   │   └── 20260708120000_add_allowed_ips_to_editor_tokens.rb
+    │   │   ├── 20260708120000_add_allowed_ips_to_editor_tokens.rb
+    │   │   ├── 20260721100000_add_apis_to_editors.rb
+    │   │   ├── 20260721100001_backfill_editor_apis.rb
+    │   │   ├── 20260721120000_rename_delegations_enabled_to_editor_tokens_enabled_on_editors.rb
+    │   │   └── 20260723120000_add_throttle_overrides_to_authorization_request_security_settings.rb
     │   ├── schema.rb
     │   ├── seeds.rb
     │   └── views
@@ -7026,6 +7083,7 @@
     │   │   │   ├── create_token_magic_link_spec.rb
     │   │   │   ├── documentation_spec.rb
     │   │   │   ├── download_attestations_spec.rb
+    │   │   │   ├── editor_space_link_spec.rb
     │   │   │   ├── endpoints
     │   │   │   │   ├── index_spec.rb
     │   │   │   │   └── show_spec.rb
@@ -7070,6 +7128,8 @@
     │   │   │   ├── access_spec.rb
     │   │   │   ├── authorization_requests_spec.rb
     │   │   │   ├── delegations_spec.rb
+    │   │   │   ├── openapi_spec.rb
+    │   │   │   ├── settings_spec.rb
     │   │   │   └── tokens_spec.rb
     │   │   ├── prolong_token_build_spec.rb
     │   │   ├── prolong_token_spec.rb
@@ -7324,4 +7384,4 @@
     │   └── .gitkeep
     └── vendor
         └── .keep
-1481 directories, 6175 files
+1486 directories, 6230 files
