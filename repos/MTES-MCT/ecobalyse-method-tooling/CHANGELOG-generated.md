@@ -1,30 +1,30 @@
-## Changelog : ecobalyse-method-tooling (30 derniers jours, au 20 juillet 2026)
+## Changelog : ecobalyse-method-tooling (30 derniers jours, au 28 juillet 2026)
 
 ### Résumé
-Les dernières mises à jour se concentrent sur l'amélioration des outils de comparaison entre différentes bases de données (Brightway et VoLCA), notamment pour la base de données BAFU et la base de données Agribalyse. Des corrections et des améliorations ont été apportées pour assurer la compatibilité avec les dernières versions des dépendances et pour faciliter l'utilisation des outils, en particulier dans les notebooks Jupyter.
+Les dernières mises à jour se concentrent sur l'amélioration des outils de comparaison et de diagnostic pour les données Agribalyse et BAFU, ainsi que sur l'extraction et la gestion des recettes Agribalyse. Des corrections ont été apportées pour assurer la compatibilité avec les dernières versions des dépendances et pour améliorer la précision des calculs.
 
 ### Évolutions fonctionnelles
-- Ajout d'un outil de diagnostic de caractérisation des flux pour la base de données BAFU. [#1234](https://github.com/MTES-MCT/ecobalyse-method-tooling/issues/1234)
-- Ajout d'un outil de comparaison (parity-cloud) entre Brightway et VoLCA pour la base de données BAFU, permettant d'identifier les divergences. [#1234](https://github.com/MTES-MCT/ecobalyse-method-tooling/issues/1234)
-- Possibilité d'exclure les processus à long terme lors de la comparaison avec l'option `--exclude-long-term`, pour correspondre au comportement d'Ecobalyse.
-- Amélioration de la recette Agribalyse : l'extraction de la recette et l'ajout de fichiers README facilitent son utilisation.
-- Ajout de l'option `--ingredients-only` à l'outil `food/agribalyse_recipe` et lien vers la documentation pyvolca.
-- Correction du titre du rapport généré par l'outil `brightway_vs_volca` pour utiliser la variable d'environnement `EB_DATABASE`.
+- Ajout d'un outil pour comparer les données Brightway et VoLCA, incluant des fonctionnalités pour exclure les données à long terme (similaire à l'option "noLT" d'Ecobalyse) via l'option `--exclude-long-term` [#242b45a](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/242b45a).
+- Ajout d'un outil de diagnostic pour la caractérisation des flux BAFU [#9eb6835](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/9eb6835).
+- Extraction des recettes Agribalyse et ajout de fichiers README correspondants [#e85b591](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/e85b591).
+- Extraction de l'emballage de chaque recette Agribalyse en plus des ingrédients [#a5d64d5](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/a5d64d5).
+- Possibilité de spécifier uniquement les ingrédients avec l'option `--ingredients-only` pour les recettes Agribalyse [#7dfd3e0](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/7dfd3e0).
+- Restauration de l'environnement Jupyter et nettoyage de la configuration VoLCA [#190be03](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/190be03).
 
 ### Évolutions techniques
-- Mise à jour de l'importation d'IPython dans `explore.py` pour la compatibilité avec IPython 9.
-- Correction d'une inversion d'unité (km<->m) dans `brightway_vs_volca`.
-- Refactoring de l'organisation des outils `brightway_vs_volca` sous le répertoire `food/`.
-- Déplacement de l'outil `brightway_vs_volca` sous le répertoire `bafu/` puis retour sous `food/`.
-- Epinglage de la version de `pyvolca` à `>=0.8.0` pour assurer la stabilité de `transformed-ingredients`.
-- Utilisation de VoLCA 0.9.1 pour la fonctionnalité `bulk exclude-long-term`.
-- Passage de la génération d'un fichier TOML à l'upload direct de la base de données pour la recette Agribalyse.
-- Correction de la résolution des chemins des données dans les notebooks Jupyter.
+- Mise à jour de l'importation d'IPython dans `explore.py` pour la compatibilité avec IPython 9 [#89010cd](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/89010cd).
+- Correction de l'unité de conversion de km en m dans `brightway_vs_volca` [#990d761](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/990d761).
+- Refactoring du code `brightway_vs_volca` pour le déplacer sous le répertoire `food/` [#1a6ffe8](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/1a6ffe8) et [#242b45a](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/242b45a).
+- Utilisation de pyvolca >=0.8.0 pour `transformed-ingredients` [#c8e4af0](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/c8e4af0).
+- Correction de la résolution des chemins de données dans les notebooks Jupyter [#7d23aed](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/7d23aed).
+- Correction de plusieurs erreurs dans la gestion des co-produits et des identifiants dans la recette Agribalyse [#bf90f85](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/bf90f85) et [#7ab5463](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/7ab5463).
+- Correction de problèmes liés au calcul du bilan de l'emballage dans la recette Agribalyse [#95852d0](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/95852d0).
 
 ### Autres changements
-- Ajout de documentation concernant les divergences entre Brightway et VoLCA, notamment pour l'antimoine/stibnite et les fonds marins offshore.
-- Ajout de `etat_egalise.html` comme preuve de parité.
-- Ajout de commentaires dans la documentation concernant un problème de VoLCA lié aux eaux souterraines.
-- Ajout d'une configuration `.gitignore` pour ignorer l'état d'exécution de Jupyter (checkpoints, ystore, config dir).
-- Correction de la valeur de la partie non comestible de la noix de cajou (WFLDB).
-- Mise à jour des fichiers README.
+- Ajout de documentation sur les résultats de parité et les problèmes de VoLCA liés aux eaux souterraines [#ad308c1](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/ad308c1) et [#c235f84](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/c235f84).
+- Ajout de la documentation `etat_egalise.html` comme preuve de parité [#c235f84](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/c235f84).
+- Mise à jour du titre du rapport dans `brightway_vs_volca` pour utiliser la variable `EB_DATABASE` [#7f1fd8e](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/7f1fd8e).
+- Ajout de la contrainte VoLCA 0.9.1 pour la fonctionnalité `bulk exclude-long-term` [#936fc44](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/936fc44).
+- Ajout d'un fichier `.gitignore` pour ignorer l'état d'exécution de Jupyter [#880140b](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/880140b).
+- Correction de la valeur de la partie non comestible des noix de cajou [#6f6fcb6](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/6f6fcb6).
+- Maintenance des fichiers README [#431771f](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/431771f).
