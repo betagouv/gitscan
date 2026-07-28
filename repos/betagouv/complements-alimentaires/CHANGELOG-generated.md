@@ -1,29 +1,16 @@
-## Changelog : complements-alimentaires (30 derniers jours, au 07 juillet 2026)
+## Changelog : complements-alimentaires (30 derniers jours, au 22 juillet 2026)
 
 ### Résumé
-Cette période a été marquée par une mise à jour importante des dépendances du projet, tant côté frontend (React, Vue.js, Node.js) que backend (Python, Django, Redis).  Une simplification du code a été effectuée en supprimant une librairie non utilisée. Des validations backend ont été ajoutées en préparation de la gestion de la visa obligatoire pour certains articles.
+Ce mois-ci, les évolutions se concentrent sur la mise à jour des dépendances du projet, assurant ainsi sa sécurité et sa stabilité. Une amélioration fonctionnelle a été apportée concernant la gestion des visas pour certains articles.
 
 ### Évolutions fonctionnelles
-- Ajout de validations côté backend en préparation de la gestion de la visa obligatoire pour les articles 16 et 18. [#2996](https://github.com/betagouv/complements-alimentaires/pull/2996)
+- Amélioration de la gestion des visas pour les articles 16 et 18. [#2997-visa-approval](https://github.com/betagouv/complements-alimentaires/pull/2997)
 
 ### Évolutions techniques
-- Suppression de la librairie `beautifulsoup4` et de ses dépendances, simplifiant ainsi le code. [#2977](https://github.com/betagouv/complements-alimentaires/pull/2977)
-- Mise à jour de nombreuses dépendances :
-    - Redis (7.4.0 -> 8.0.0)
-    - Django-webpack-loader (3.2.3 -> 3.2.4)
-    - pikepdf (10.5.1 -> 10.9.1)
-    - regex (2026.5.9 -> 2026.6.28)
-    - sentry-sdk (2.60.0 -> 2.63.0)
-    - tzlocal (5.3.1 -> 5.4.3)
-    - uritools (6.0.1 -> 6.1.2)
-    - pandas (3.0.2 -> 3.0.3)
-    - pypdf (6.12.0 -> 6.13.3)
-    - numpy (2.4.4 -> 2.4.6)
-    - cryptography (48.0.0 -> 48.0.1)
-    - bleach (6.3.0 -> 6.4.0)
-- Mises à jour des dépendances frontend (React, Vue.js, PostCSS, TailwindCSS, etc.) pour bénéficier des dernières corrections et améliorations.
+- Mise à jour de nombreuses dépendances Python (Django, django-filter, django-viewflow, pillow, sentry-sdk, tzlocal, uritools, pandas, regex, pikepdf, django-webpack-loader) vers leurs dernières versions stables.
+- Mise à jour des dépendances npm/yarn du frontend (body-parser, prettier, vue, websocket-driver, svgo, fast-uri, postcss, @tailwindcss/postcss).
+- Mise à jour des actions GitHub utilisées pour le CI/CD.
 
 ### Autres changements
-- Mise à jour des actions GitHub utilisées pour le CI/CD.
-- Corrections de tests.
-- Amélioration de la configuration du projet.
+- Correction de tests suite à l'implémentation de la gestion des visas.
+- Ajout de validations côté backend pour la gestion des visas.
