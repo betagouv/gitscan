@@ -1,34 +1,30 @@
 ## Changelog : drive (30 derniers jours, au 23 juillet 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à la gestion du stockage, notamment un indicateur d'utilisation et des limitations configurables. L'expérience utilisateur est également améliorée grâce à de nouveaux filtres de recherche et à une meilleure gestion des quotas. Des corrections de bugs et des mises à jour de dépendances ont également été incluses pour améliorer la stabilité et la sécurité.
+Cette mise à jour apporte des améliorations significatives à la gestion du quota de stockage des utilisateurs, avec l'ajout d'un indicateur visuel et de messages plus clairs. De plus, des améliorations ont été apportées à la recherche, à la sécurité et à la configuration du système, ainsi qu'à la gestion des fichiers et des permissions.
 
 ### Évolutions fonctionnelles
-- Ajout d'un indicateur d'utilisation du stockage et d'un lien vers les paramètres correspondants. [#1234](https://github.com/suitenumerique/drive/issues/1234) (implémentation backend et frontend)
-- Amélioration des messages d'erreur liés aux quotas, affichant des informations plus spécifiques.
-- Ajout de filtres de recherche avancés : type de fichier, contact, date de modification et emplacement.
-- Possibilité de filtrer les résultats de recherche par date de modification (avec des options prédéfinies comme "plus d'un an").
+- Ajout d'un indicateur de quota de stockage pour les utilisateurs, affichant l'espace utilisé et disponible. [#2345](https://github.com/suitenumerique/drive/pull/2345)
+- Amélioration des messages d'erreur liés au quota dépassé pour une meilleure clarté.
+- Possibilité de filtrer les résultats de recherche par date de modification (personnalisable avec un intervalle).
+- Ajout de filtres de recherche par type de fichier, contact et emplacement.
 - Ajout d'un menu d'aide dans le pied de page du panneau gauche.
-- Amélioration de la recherche de fichiers supprimés dans la corbeille.
-- Possibilité de configurer l'ACL (Access Control List) pour les uploads.
-- Ajout d'un indicateur visuel pour les contacts partagés dans les filtres de recherche.
+- Amélioration de l'expérience utilisateur lors du téléchargement de fichiers avec une notification de progression, d'erreurs et la possibilité d'annulation.
 
 ### Évolutions techniques
-- Mise à jour de plusieurs dépendances : Django, Next.js, Vite, Turbo, pillow, idna, et ui-kit.
-- Renforcement de la sécurité en contraignant la version de la librairie `joserfc` pour corriger une vulnérabilité (CVE-2026-49852).
-- Amélioration de la gestion des caches de stockage pour une meilleure performance.
-- Refactorisation du code pour améliorer la maintenabilité et la lisibilité.
-- Amélioration de la gestion des erreurs et des transactions.
-- Optimisation de l'exportation de fichiers depuis S3.
-- Ajout d'une API pour exposer le quota utilisateur.
-- Implémentation d'un backend local pour la gestion des droits d'accès basés sur le stockage.
-- Amélioration de la gestion des fichiers supprimés lors de la suppression d'éléments.
+- Mise à jour de plusieurs dépendances : Django, Next.js, Vite, Turbo, pillow, idna, ui-kit.
+- Renforcement de la sécurité en contraignant la version de la librairie joserfc pour corriger une vulnérabilité (CVE-2026-49852).
+- Amélioration de la configuration Docker pour une meilleure sécurité et robustesse.
+- Optimisation de la gestion du cache de stockage par utilisateur.
+- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+- Exposition de l'information de quota utilisateur via l'API des entitlements.
+- Ajout d'un backend local pour la gestion des entitlements avec des limites de stockage.
+- Amélioration de la gestion des fichiers supprimés lors du calcul de l'espace de stockage.
 
 ### Autres changements
+- Ajout de fixtures pour améliorer les tests et la démonstration du système.
+- Correction de bugs mineurs dans l'interface utilisateur et les tests.
+- Amélioration de la documentation et des messages de log.
 - Mise à jour des tests E2E pour refléter les changements de l'interface utilisateur.
-- Correction de fautes d'orthographe dans les messages d'erreur et le code.
-- Amélioration de la documentation et des commentaires.
+- Correction de problèmes liés à l'affichage des icônes et des tests de dropdown.
 - Suppression de code obsolète.
-- Mise à jour de la version de release à 0.20.0.
-- Amélioration de la configuration Docker pour une meilleure sécurité.
-- Ajout de fixtures pour les tests de démonstration.
