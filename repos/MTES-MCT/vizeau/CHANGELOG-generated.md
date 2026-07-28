@@ -1,34 +1,28 @@
-## Changelog : vizeau (30 derniers jours, au 16 juillet 2026)
+## Changelog : vizeau (30 derniers jours, au 23 juillet 2026)
 
 ### Résumé
-Les dernières mises à jour de Vizeau se concentrent sur l'amélioration de la gestion des projets, notamment avec l'ajout d'étapes de projet, la gestion des documents associés, et l'intégration de tags. Des améliorations ont également été apportées à l'interface utilisateur, à la cartographie et à la gestion des données, ainsi qu'à l'infrastructure technique du projet.
+Les dernières mises à jour de Vizeau se concentrent sur l'amélioration de l'expérience utilisateur, la correction de bugs et la modernisation de l'infrastructure technique. Une migration vers AdonisJS 7 a été réalisée, apportant des améliorations de performance et de sécurité. De nouvelles fonctionnalités ont été ajoutées, notamment l'affichage des projets sur la carte et l'intégration de Matomo pour le suivi analytique.
 
 ### Évolutions fonctionnelles
-- Ajout de la gestion des étapes de projet : création, édition, suppression et validation. [#451](https://github.com/MTES-MCT/vizeau/pull/451)
-- Possibilité d'ajouter des documents à chaque étape de projet. [#456](https://github.com/MTES-MCT/vizeau/pull/456)
-- Implémentation de tags pour les étapes de projet. [#444](https://github.com/MTES-MCT/vizeau/pull/444)
-- Affichage des projets sur les pop-ups de parcelle sur la carte. [#470](https://github.com/MTES-MCT/vizeau/pull/470)
-- Ajout d'un bouton de navigation vers la sélection de parcelles lors de l'association de parcelles à un projet. [#452](https://github.com/MTES-MCT/vizeau/pull/452)
-- Amélioration de l'affichage des titres pour éviter les troncatures. [#455](https://github.com/MTES-MCT/vizeau/pull/455)
-- Correction de l'affichage des messages d'erreur d'authentification. [#472](https://github.com/MTES-MCT/vizeau/pull/472)
+- Affichage des projets sur les pop-ups de parcelle sur la carte. [#467](https://github.com/MTES-MCT/vizeau/pull/467)
+- Amélioration du message d'erreur d'authentification pour une meilleure clarté. [#472](https://github.com/MTES-MCT/vizeau/pull/472)
+- Correction d'une permission trop stricte empêchant le téléchargement de documents de journal de bord. [#477](https://github.com/MTES-MCT/vizeau/pull/477)
 - Les commentaires de parcelle sont maintenant individuels à chaque utilisateur. [#474](https://github.com/MTES-MCT/vizeau/pull/474)
+- Intégration de Matomo pour le suivi analytique et la collecte de données d'utilisation. [#459](https://github.com/MTES-MCT/vizeau/pull/459)
+- Amélioration de l'interface utilisateur (UI) avec des corrections basées sur les retours Figma. [#462](https://github.com/MTES-MCT/vizeau/pull/462)
+- Scripts pour la génération de fiches AAC et d'analyses. [#460](https://github.com/MTES-MCT/vizeau/pull/460) & [#458](https://github.com/MTES-MCT/vizeau/pull/458)
 
 ### Évolutions techniques
-- Migration vers Adonis 7. [#470](https://github.com/MTES-MCT/vizeau/pull/470)
-- Intégration du tracking Matomo pour l'analyse de l'utilisation de l'application. [#459](https://github.com/MTES-MCT/vizeau/pull/459)
+- Migration vers AdonisJS 7 pour bénéficier des dernières améliorations et corrections de sécurité. [#470](https://github.com/MTES-MCT/vizeau/pull/470)
+- Refonte du système de routage avec l'utilisation d'un nouveau router. [#478](https://github.com/MTES-MCT/vizeau/pull/478)
+- Utilisation de "barrel" pour les contrôleurs afin d'améliorer l'organisation du code. [#476](https://github.com/MTES-MCT/vizeau/pull/476)
+- Simplification des modèles de données.
 - Optimisation de la requête de récupération des AAC et ajout d'un mode debug pour DuckDB. [#461](https://github.com/MTES-MCT/vizeau/pull/461)
-- Raccourcissement des imports relatifs des types pour une meilleure organisation du code. [#442](https://github.com/MTES-MCT/vizeau/pull/442)
-- Correction des erreurs de linter (imports de type).
-- Génération de fichiers PMTiles. [#369](https://github.com/MTES-MCT/vizeau/pull/369)
-- Scripts pour la génération de fiches AAC et d'analyses. [#460](https://github.com/MTES-MCT/vizeau/pull/460) et [#458](https://github.com/MTES-MCT/vizeau/pull/458)
+- Génération de tuiles PMTiles. [#369](https://github.com/MTES-MCT/vizeau/pull/369)
 
 ### Autres changements
-- Ajout d'un fichier `.env.sample` et mise à jour du fichier `.gitignore`.
-- Amélioration de la documentation.
-- Corrections de typos et de la mise en forme de la documentation.
-- Suppression des logs de session non définis. [#444](https://github.com/MTES-MCT/vizeau/pull/444)
-- Corrections diverses suite aux revues de code (Copilot).
-- Corrections des différences livrable FIGMA.
-- Correction des validations dans le validateur.
-- Amélioration du texte des labels.
-- Ajout de classes CSS pour améliorer la réactivité de la mise en page.
+- Ajout d'un fichier `.gitignore` et d'un fichier `.env.sample`.
+- Mise à jour des dépendances (TailwindCSS, npm).
+- Corrections de linter (imports de type).
+- Amélioration de la taille d'une illustration sur la page d'accueil.
+- Corrections diverses et amélioration de la qualité du code suite aux revues.
