@@ -9,12 +9,16 @@ and this project adheres to
 ### Added
 
 - ✨(frontend) init the frontend app (webapp + e2e)
+- ✨(authentication) support multiple identity providers
+- ✨(OIDC Provider) configure and customize the Authorization Server
+- ✨(OIDC Provider) add a `guest` claim and the `account` scope
 
 ### Changed
 
 - ✨(users) make `email` our username
-- ✨(authentication) Support multiple identity providers
-- ✨(authentication) Encrypt identity providers' `extra_data`
-- ✨(OIDC Provider) Configure and customize the Authorization Server
+- ✨(authentication) encrypt identity providers' `extra_data`
+- 🔒(authentication) make the logout view POST-only
+- 👽(authentication) handle Social Auth's login views requiring POST requests
+- 🦖(OIDC Provider) make introspection endpoint fall back to PSA backends
 
-[unreleased]: https://github.com/suitenumerique/docs/compare/main
+[unreleased]: https://github.com/suitenumerique/accounts/compare/main
