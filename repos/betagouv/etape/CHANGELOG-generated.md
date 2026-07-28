@@ -1,17 +1,22 @@
-## Changelog : etape (30 derniers jours, au 17 juillet 2026)
+## Changelog : etape (30 derniers jours, au 27 juillet 2026)
 
 ### Résumé
-Ce mois-ci, le projet ETAPE a connu une refonte majeure avec la mise en place d'une nouvelle architecture monorepo basée sur Turborepo et l'initialisation d'un site vitrine.  Une première version d'un simulateur a également été ajoutée, permettant aux utilisateurs d'explorer les possibilités de transition professionnelle.
+Ce mois-ci, le projet ETAPE a connu une avancée significative avec la mise en place d'une infrastructure moderne basée sur Turborepo et l'intégration de Shadcn UI.  Un premier jet du simulateur de transition professionnelle a été implémenté, ainsi que des améliorations de l'accessibilité et de la qualité du code.
 
 ### Évolutions fonctionnelles
-- Ajout d'un simulateur pour aider les utilisateurs à visualiser leur transition professionnelle [#ac41291](https://github.com/betagouv/etape/commit/ac41291).
-- Initialisation du site vitrine ETAPE [#28233af](https://github.com/betagouv/etape/commit/28233af).
+- **Simulateur de transition professionnelle :** Ajout d'une première version du simulateur, incluant l'écran d'introduction aligné sur le design system. [#3](https://github.com/betagouv/etape/pull/3)
+- **Accessibilité :** Implémentation des liens d'évitement (SkipLinks) et branchement des cibles de contenu pour améliorer l'accessibilité de l'application.
+- **Skills partagées :** Ajout de skills partagées pour le développement frontend (design, React). [#4](https://github.com/betagouv/etape/pull/4)
 
 ### Évolutions techniques
-- Mise en place d'une architecture monorepo avec Turborepo [#28233af](https://github.com/betagouv/etape/commit/28233af).
-- Utilisation de Next.js avec le rendu statique de site (SSG) pour le simulateur [#ac41291](https://github.com/betagouv/etape/commit/ac41291).
+- **Infrastructure :** Initialisation d'un monorepo avec Turborepo pour une meilleure gestion des projets et des dépendances.
+- **Shadcn UI :** Intégration de la librairie de composants Shadcn UI pour accélérer le développement et assurer une cohérence visuelle. [#1](https://github.com/betagouv/etape/pull/1)
+- **Qualité du code :** Configuration centralisée d'ESLint et Prettier pour garantir un style de code uniforme et détecter les erreurs potentielles. [#2](https://github.com/betagouv/etape/pull/2)
+- **Design System :** Ajout des composants partagés `SkipLinks` et `Container` au design system.
+- **CSS Global :** Mise à jour des tokens CSS globaux.
 
 ### Autres changements
-- Modification du titre du projet en "ETAPE" [#e38d3a6](https://github.com/betagouv/etape/commit/e38d3a6).
-- Mise à jour de la terminologie dans le README pour utiliser "salarié" au lieu de "professionnel" [#df06b02](https://github.com/betagouv/etape/commit/df06b02).
-- Initialisation du dépôt [#983acee](https://github.com/betagouv/etape/commit/983acee).
+- Ajout d'un template de pull request pour faciliter les contributions. [#29d0585](https://github.com/betagouv/etape/commit/29d0585)
+- Modification du titre du projet en "ETAPE".
+- Mise à jour de la description dans le README pour utiliser le terme "salarié" au lieu de "professionnel".
+- Initialisation du dépôt.
