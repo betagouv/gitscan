@@ -1,38 +1,34 @@
-## Changelog : seves (30 derniers jours, au 2026-07-16)
+## Changelog : seves (30 derniers jours, au 27 juillet 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a concentré ses efforts sur l'amélioration de l'expérience utilisateur, notamment dans les formulaires de conclusion et de recherche, avec l'introduction de nouveaux composants interactifs comme Treeselect. Des corrections de bugs et des améliorations de la sécurité ont également été apportées, ainsi qu'une documentation de l'architecture du projet.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'interface utilisateur et de la gestion des données, notamment avec l'introduction du composant Treeselect pour des filtres plus performants et une expérience utilisateur optimisée. Des corrections de bugs et des améliorations de sécurité ont également été apportées, en particulier concernant la gestion des accès et la publication d'informations.
 
 ### Évolutions fonctionnelles
-- **Conclusions :**
-    - Possibilité de supprimer une conclusion. [#issue](lien vers issue si disponible)
-    - Pré-remplissage amélioré des formulaires de conclusion pour les repas, les aliments suspects et les établissements.
-    - Déplacement du formulaire de conclusion dans une modale pour une meilleure expérience utilisateur.
-    - Correction de bugs liés à l'édition et à la suppression des conclusions.
-- **Filtres et recherches :**
-    - Introduction de Treeselect pour les filtres de sources et types SSA, SV et TIAC, offrant une sélection multiple plus intuitive. [#issue](lien vers issue si disponible)
-    - Possibilité de filtrer par plusieurs structures et contacts.
-    - Amélioration de la sélection des dangers pour TIAC.
-- **Notifications :**
-    - Envoi de notifications DI aux agents.
-- **Autres améliorations UI/UX :**
-    - Amélioration de la gestion des valeurs lors de la fermeture des modales Lieu et Repas.
-    - Correction de l'affichage des dates dans la liste des révisions.
-    - Harmonisation de la terminologie de navigation pour SV.
-    - Correction de problèmes d'affichage et de comportement des boutons dans les modales.
-    - Ajout de l'Organisme nuisible.
+- Implémentation de Treeselect pour les filtres TIAC (Type d'Incidents Alimentaires et Comportementaux), permettant une sélection multiple et hiérarchique d'options. [#2178](https://github.com/betagouv/seves/issues/2178)
+- Activation de Treeselect pour les filtres produits et cas, améliorant l'ergonomie de la sélection.
+- Ajout d'une fonctionnalité de sélection/désélection de tous les éléments dans Treeselect.
+- Amélioration de la gestion des conclusions pour les investigations TIAC, avec pré-remplissage des informations pertinentes et gestion des états (CONCLU).
+- Possibilité de filtrer par plusieurs structures et contacts.
+- Amélioration de la gestion des repas et des aliments suspects, avec pré-remplissage des informations lors de la création.
+- Ajout d'une vue SQL pour les événements produits.
+- Amélioration de la sécurité des endpoints Core.
+- Possibilité de supprimer une conclusion.
+- Amélioration de la gestion des notifications AC (Autorisation de Commercialisation) avec la date de publication correcte.
 
 ### Évolutions techniques
-- **Architecture :** Ajout de la documentation de l'architecture du projet.
-- **Sécurité :**
-    - Amélioration de la sécurité des vues TIAC.
-    - Précision de la politique de sécurité du contenu (CSP).
-    - Exclusion des membres de l'équipe SEVES de la désactivation de compte.
-- **Tests :**
-    - Amélioration et stabilisation des tests pour les messages SV, les conclusions et TIAC.
-    - Correction de tests pour les documents.
-- **Déploiement :**
-    - Optimisation du nombre de workers en CI.
+- Refactorisation du code pour mutualiser la logique de fermeture des modals.
+- Déplacement du contrôleur JavaScript de SV (Surveillance Vie) vers le Core, favorisant la réutilisabilité du code.
+- Utilisation de `ControlOrMeta` pour remplacer la touche `Control` dans les raccourcis clavier, améliorant la compatibilité.
+- Amélioration de la robustesse des tests Playwright, notamment en ajoutant des délais d'attente pour les interactions avec la carte.
+- Ajout de documentation sur l'architecture du projet.
+- Mise à jour de plusieurs dépendances : `pytest-env`, `sentry-sdk`, `ruff`, `django-reversion-compare`, `django-filter`, `django`, `redis`, `playwright`.
 
 ### Autres changements
-- Mise à jour de plusieurs dépendances : Django, Django-filter, sentry-sdk, pytest-rerunfailures, ruff, playwright, redis, django-debug-toolbar, django-environ, soupsieve, django-reversion-compare. (Ces mises à jour de routine ont été omises dans le détail, mais sont incluses ici pour information).
+- Correction de divers bugs et améliorations de la stabilité de l'application.
+- Amélioration de la précision du Content Security Policy (CSP).
+- Nettoyage et simplification du code, notamment dans les tests.
+- Ajout de tests unitaires pour le composant Treeselect.
+- Correction de problèmes de valeurs incorrectes lors de la fermeture de modals.
+- Amélioration de la gestion des permissions pour certaines actions (création d'ICH, clôture/réouverture, mise à jour de messages).
+- Suppression de fonctionnalités en cours de développement (feature flags).
+- Amélioration de la gestion des erreurs et des messages d'information.

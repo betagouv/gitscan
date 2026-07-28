@@ -61,6 +61,7 @@
 │   ├── apps.py
 │   ├── audit.py
 │   ├── auth_views.py
+│   ├── authorization.py
 │   ├── constants.py
 │   ├── content_types.py
 │   ├── diffs.py
@@ -163,6 +164,7 @@
 │   ├── static
 │   │   └── core
 │   │       ├── _etablissement_card.css
+│   │       ├── address_search_autocomplete.mjs
 │   │       ├── ban_autocomplete.js
 │   │       ├── base.css
 │   │       ├── base.js
@@ -287,6 +289,7 @@
 │   │   ├── __init__.py
 │   │   ├── generic_tests
 │   │   │   ├── actions.py
+│   │   │   ├── authorization.py
 │   │   │   ├── bloc_commun.py
 │   │   │   ├── contacts.py
 │   │   │   ├── documents.py
@@ -322,6 +325,36 @@
 ├── requirements.in
 ├── requirements.txt
 ├── ruff.toml
+├── sa
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── context_processors.py
+│   ├── forms
+│   │   ├── __init__.py
+│   │   └── evenement.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   ├── 0002_espece_evenementanimal_maladie_delete_evenement_and_more.py
+│   │   └── __init__.py
+│   ├── models
+│   │   ├── __init__.py
+│   │   └── evenement.py
+│   ├── templates
+│   │   └── sa
+│   │       ├── base.html
+│   │       ├── evenement_animal_details.html
+│   │       ├── evenement_animal_form.html
+│   │       └── evenementanimal_list.html
+│   ├── tests
+│   │   ├── __init__.py
+│   │   ├── factories.py
+│   │   ├── pages.py
+│   │   └── test_evenement_animal_creation.py
+│   ├── urls.py
+│   └── views
+│       ├── __init__.py
+│       └── evenement.py
 ├── scalingo.json
 ├── seves
 │   ├── __init__.py
@@ -351,6 +384,7 @@
 │   ├── maestro.py
 │   ├── management
 │   │   └── commands
+│   │       ├── refresh_evenement_produit_view.py
 │   │       └── send_document_emails_batch.py
 │   ├── managers.py
 │   ├── migrations
@@ -422,6 +456,7 @@
 │   │   ├── 0066_alter_evenementproduit_source.py
 │   │   ├── 0067_evenementproduit_maestro_reference.py
 │   │   ├── 0068_alter_evenementproduit_actions_engagees_and_more.py
+│   │   ├── 0069_auto_20260723_1713.py
 │   │   └── __init__.py
 │   ├── models
 │   │   ├── __init__.py
@@ -445,14 +480,8 @@
 │   │       ├── evenement_produit_form.mjs
 │   │       ├── evenement_produit_list.css
 │   │       ├── evenement_produit_list.js
-│   │       ├── form
-│   │       │   └── widgets
-│   │       │       ├── _custom_tree_select.css
-│   │       │       ├── _custom_tree_select.js
-│   │       │       └── legacy_treeselect.mjs
 │   │       ├── free_links.mjs
-│   │       ├── investigation_cas_humain_detail.js
-│   │       └── treeselectjs.umd.js
+│   │       └── investigation_cas_humain_detail.js
 │   ├── tasks.py
 │   ├── templates
 │   │   └── ssa
@@ -476,15 +505,14 @@
 │   │       ├── forms
 │   │       │   ├── etablissement.html
 │   │       │   ├── etablissement_formset.html
-│   │       │   ├── investigation_cas_humain.html
-│   │       │   └── widgets
-│   │       │       └── legacy_treeselect.html
+│   │       │   └── investigation_cas_humain.html
 │   │       └── investigation_cas_humain_detail.html
 │   ├── tests
 │   │   ├── __init__.py
 │   │   ├── conftest.py
 │   │   ├── pages.py
 │   │   ├── test_api_views.py
+│   │   ├── test_evenement_produit_authorization.py
 │   │   ├── test_evenement_produit_contact_actions.py
 │   │   ├── test_evenement_produit_creation.py
 │   │   ├── test_evenement_produit_details.py
@@ -499,6 +527,7 @@
 │   │   ├── test_evenement_produit_update.py
 │   │   ├── test_evenements_export.py
 │   │   ├── test_evenements_list.py
+│   │   ├── test_investigation_cas_humain_authorization.py
 │   │   ├── test_investigation_cas_humain_contact_actions.py
 │   │   ├── test_investigation_cas_humain_creation.py
 │   │   ├── test_investigation_cas_humain_details.py
@@ -723,7 +752,6 @@
 │   │       ├── _fichezonedelimitee_cartographies.html
 │   │       ├── _fichezonedelimitee_detail_zone_tampon.html
 │   │       ├── _fichezonedelimitee_detail_zones_infestees.html
-│   │       ├── _latest_revision.html
 │   │       ├── _update_visibilite_modale.html
 │   │       ├── base.html
 │   │       ├── evenement_detail.html
@@ -757,6 +785,7 @@
 │   │   ├── test_constants.py
 │   │   ├── test_create_espece_from_csv.py
 │   │   ├── test_evenement_ac_notification.py
+│   │   ├── test_evenement_authorization.py
 │   │   ├── test_evenement_contact_actions.py
 │   │   ├── test_evenement_contacts_list.py
 │   │   ├── test_evenement_contacts_remove.py
@@ -945,6 +974,7 @@
     │   ├── pages.py
     │   ├── test_evenement_export.py
     │   ├── test_evenement_list.py
+    │   ├── test_evenement_simple_authorization.py
     │   ├── test_evenement_simple_contact_actions.py
     │   ├── test_evenement_simple_creation.py
     │   ├── test_evenement_simple_details.py
@@ -957,6 +987,7 @@
     │   ├── test_evenement_simple_modification.py
     │   ├── test_evenement_simple_security.py
     │   ├── test_evenement_simple_update.py
+    │   ├── test_investigation_authorization.py
     │   ├── test_investigation_conclusion.py
     │   ├── test_investigation_contact_actions.py
     │   ├── test_investigation_details_actions.py
@@ -972,4 +1003,4 @@
     │   └── test_models.py
     ├── urls.py
     └── views.py
-74 directories, 900 files
+79 directories, 926 files
