@@ -1,44 +1,40 @@
-## Changelog : reva (30 derniers jours, au 2026-07-23)
+## Changelog : reva (30 derniers jours, au 27 juillet 2026)
 
 ### Résumé
-Les dernières semaines ont été marquées par des améliorations significatives de l'expérience utilisateur dans l'interface administrateur, notamment pour la gestion des certifications et des candidatures. De nouvelles fonctionnalités ont été ajoutées pour la dématérialisation des dossiers, avec un focus sur la gestion des pièces justificatives et des informations relatives aux organismes certificateurs. Des corrections et optimisations ont également été apportées à l'API et aux tests.
+Cette période a été marquée par des améliorations significatives sur l'expérience utilisateur, notamment dans le cadre de la dématérialisation de la VAE (DF demat autonome). De nouvelles fonctionnalités ont été ajoutées pour gérer les candidatures, les pièces jointes, les compétences et les certifications. Des corrections et des optimisations ont également été apportées à l'API et à l'administration. Enfin, des améliorations de sécurité et de maintenance ont été effectuées.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'interface utilisateur et de l'expérience utilisateur pour les pages de gestion des expériences, des pièces jointes, des compétences, des certifications et de l'éligibilité dans l'interface administrateur.
-- Ajout de la gestion des pièces justificatives et du parcours de validation pour la dématérialisation des dossiers (DF demat autonome).
-- Possibilité de sélectionner un organisme certificateur lors de la soumission d'un dossier.
-- Affichage des organismes certificateurs de France Compétences dans l'interface administrateur.
-- Ajout d'un lien vers le centre d'aide Crisp sur les pages de contact.
-- Amélioration de la gestion des erreurs et des messages d'information dans l'interface administrateur.
-- Ajout d'une page de consentement pour le traitement des données dans le cadre des cohortes VAE collective.
-- Ajout de la possibilité de mettre à jour l'organisme certificateur d'une candidature.
-- Ajout d'une page pour la sélection d'un organisme certificateur.
-- Amélioration de la gestion des alertes et des notifications.
+- Ajout de composants pour la sélection de formacodes v2 dans l'administration [#1082](https://github.com/betagouv/reva/issues/1082).
+- Amélioration de l'interface utilisateur et de l'expérience utilisateur pour la page de soumission de pièces justificatives pour la DF demat autonome.
+- Ajout de la possibilité de mettre à jour l'autorité de certification d'une candidature depuis la page de détails de l'autorité de certification.
+- Ajout d'une page pour la sélection de plusieurs autorités de certification.
+- Ajout d'une étape pour l'acceptation des conditions générales d'utilisation pour les candidatures collectives.
+- Amélioration de l'affichage des informations sur les organismes financeurs.
+- Ajout d'un lien vers le centre d'aide Crisp sur différentes pages (contact, Keycloak, etc.).
+- Ajout d'une fonctionnalité permettant de supprimer les comptes d'administration "maison mère".
+- Amélioration de la gestion des erreurs et des messages d'alerte.
+- Ajout d'une fonctionnalité permettant de rafraîchir les informations de l'autorité de certification des candidatures.
 
 ### Évolutions techniques
-- Refactorisation de l'architecture de l'API pour améliorer la sécurité et la maintenabilité.
-- Mise en place d'un système d'autorisation plus granulaire basé sur des politiques.
-- Suppression de code obsolète et simplification de l'architecture.
-- Mise à jour des dépendances pour corriger des vulnérabilités et améliorer les performances.
-- Amélioration des tests unitaires et d'intégration.
-- Ajout de tests pour l'interopérabilité avec d'autres systèmes.
-- Optimisation des requêtes à la base de données.
-- Ajout de scripts pour automatiser certaines tâches administratives.
-- Mise en place d'un système de logs plus complet.
-- Correction de bugs et amélioration de la stabilité du système.
-- Migration vers des versions plus récentes de certaines librairies (axios, js-yaml, postcss, ws).
-- Amélioration de la gestion des erreurs et des exceptions.
-- Suppression de l'utilisation de Produkly.
+- Refactorisation de l'architecture de l'interopérabilité avec des tests unitaires et HTTP.
+- Mise à jour de plusieurs dépendances (axios, js-yaml, postcss, etc.).
+- Amélioration de la sécurité avec l'ajout de contrôles d'accès et de validation.
+- Optimisation des performances de l'API.
+- Mise en place d'un système d'autorisation basé sur des politiques.
+- Suppression de code obsolète et simplification de la base de code.
+- Amélioration de la gestion des erreurs et de la journalisation.
+- Correction de plusieurs bugs et vulnérabilités de sécurité.
+- Mise à jour de la version de Keycloak.
+- Ajout de tests unitaires et d'intégration.
+- Amélioration de la couverture de test.
+- Correction de problèmes de compatibilité avec différents navigateurs.
 
 ### Autres changements
 - Mise à jour de la documentation.
-- Correction de problèmes de typographie et d'orthographe.
-- Amélioration de la lisibilité du code.
-- Ajout de commentaires pour faciliter la compréhension du code.
-- Mise à jour des configurations.
-- Nettoyage du code.
-- Correction de la gestion des timezones.
-- Suppression de code mort.
-- Amélioration des messages de logs.
-- Correction de problèmes de compatibilité avec différents navigateurs.
-- Mise à jour des informations de contact sur le site web.
+- Amélioration de la configuration du projet.
+- Nettoyage du code et suppression de code mort.
+- Correction de problèmes de linting.
+- Mise à jour des fichiers de configuration de CI/CD.
+- Correction de problèmes de typage.
+- Amélioration de la gestion des secrets.
+- Mise à jour des dépendances de développement.

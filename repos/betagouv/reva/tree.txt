@@ -953,14 +953,21 @@
     │   │   │   │   │   │   │   │   │   │   ├── formacodes-ccns-degrees-form
     │   │   │   │   │   │   │   │   │   │   │   ├── FormacodesCcnsDegreesForm.tsx
     │   │   │   │   │   │   │   │   │   │   │   └── formacodesCcnsDegreesForm.hook.ts
+    │   │   │   │   │   │   │   │   │   │   ├── formacodes-form
+    │   │   │   │   │   │   │   │   │   │   │   ├── FormacodesForm.tsx
+    │   │   │   │   │   │   │   │   │   │   │   └── formacodesForm.hook.ts
     │   │   │   │   │   │   │   │   │   │   ├── organism-disponible-pour-vae-collective-toggle
     │   │   │   │   │   │   │   │   │   │   │   └── OrganismDisponiblePourVaeCollectiveToggle.tsx
-    │   │   │   │   │   │   │   │   │   │   └── organism-visibility-toggle
-    │   │   │   │   │   │   │   │   │   │       └── OrganismVisibilityToggle.tsx
+    │   │   │   │   │   │   │   │   │   │   ├── organism-visibility-toggle
+    │   │   │   │   │   │   │   │   │   │   │   └── OrganismVisibilityToggle.tsx
+    │   │   │   │   │   │   │   │   │   │   └── perimetre-accompagnement-form
+    │   │   │   │   │   │   │   │   │   │       ├── PerimetreAccompagnementForm.tsx
+    │   │   │   │   │   │   │   │   │   │       └── perimetreAccompagnementForm.hook.ts
     │   │   │   │   │   │   │   │   │   ├── on-site
     │   │   │   │   │   │   │   │   │   │   ├── _components
     │   │   │   │   │   │   │   │   │   │   │   ├── delete-lieu-accueil-tile
     │   │   │   │   │   │   │   │   │   │   │   │   └── DeleteLieuAccueilTile.tsx
+    │   │   │   │   │   │   │   │   │   │   │   ├── onRemoteOrganism.hook.ts
     │   │   │   │   │   │   │   │   │   │   │   └── onSiteOrganism.hook.ts
     │   │   │   │   │   │   │   │   │   │   ├── formacodes-ccns-degrees
     │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
@@ -969,6 +976,8 @@
     │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   │   │   ├── page.tsx
     │   │   │   │   │   │   │   │   │   │   └── perimetre-accompagnement
+    │   │   │   │   │   │   │   │   │   │       ├── formacode
+    │   │   │   │   │   │   │   │   │   │       │   └── page.tsx
     │   │   │   │   │   │   │   │   │   │       └── page.tsx
     │   │   │   │   │   │   │   │   │   └── remote
     │   │   │   │   │   │   │   │   │       ├── formacodes-ccns-degrees
@@ -979,6 +988,8 @@
     │   │   │   │   │   │   │   │   │       │   └── page.tsx
     │   │   │   │   │   │   │   │   │       ├── page.tsx
     │   │   │   │   │   │   │   │   │       └── perimetre-accompagnement
+    │   │   │   │   │   │   │   │   │           ├── formacode
+    │   │   │   │   │   │   │   │   │           │   └── page.tsx
     │   │   │   │   │   │   │   │   │           └── page.tsx
     │   │   │   │   │   │   │   │   ├── _components
     │   │   │   │   │   │   │   │   │   ├── OrganismInformationForm.tsx
@@ -2939,6 +2950,7 @@
     │   │   │   │   ├── getCompetenceBlocsByCertificationId.ts
     │   │   │   │   ├── getConventionCollectiveById.ts
     │   │   │   │   ├── getConventionsCollectivesByCertificationId.ts
+    │   │   │   │   ├── getCountOfChildrenByParentCode.ts
     │   │   │   │   ├── getDegreeByLevel.ts
     │   │   │   │   ├── getDegreeByid.ts
     │   │   │   │   ├── getDegrees.ts
@@ -5543,17 +5555,22 @@
     │   │   └── v1
     │   │       ├── __tests__
     │   │       │   ├── enumConsistency.test.ts
+    │   │       │   ├── httpTestHarness.ts
     │   │       │   └── smoke.test.ts
     │   │       ├── auth
     │   │       │   ├── README.md
+    │   │       │   ├── routes.test.ts
     │   │       │   └── routes.ts
     │   │       ├── authMiddleware.test.ts
     │   │       ├── authMiddleware.ts
     │   │       ├── candidacy
+    │   │       │   ├── routes.test.ts
     │   │       │   └── routes.ts
     │   │       ├── dossierValidation
+    │   │       │   ├── routes.test.ts
     │   │       │   └── routes.ts
     │   │       ├── feasibility
+    │   │       │   ├── routes.test.ts
     │   │       │   └── routes.ts
     │   │       ├── features
     │   │       │   ├── __testUtils
@@ -5610,6 +5627,7 @@
     │   │       ├── index.ts
     │   │       ├── inputSchemas.ts
     │   │       ├── jury
+    │   │       │   ├── routes.test.ts
     │   │       │   └── routes.ts
     │   │       ├── responseSchemas.ts
     │   │       └── schemas.ts
@@ -6256,4 +6274,4 @@
         ├── tsconfig.json
         └── types
             └── primitives.d.ts
-2102 directories, 4156 files
+2106 directories, 4170 files
