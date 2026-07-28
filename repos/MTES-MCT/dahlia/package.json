@@ -19,11 +19,12 @@
     "db:reset": "prisma migrate reset",
     "db:studio": "prisma studio",
     "db:format": "prisma format",
-    "scrape:dev": "ts-node -P data/tsconfig.json data/cli/scrape-telerecours.ts",
+    "scrape:telerecours": "ts-node -P data/tsconfig.json data/cli/scrape-telerecours.ts",
     "download:dev": "ts-node -P data/tsconfig.json data/telecharge-fichier.ts",
     "reschedule-deliberation:dev": "ts-node -P data/tsconfig.json data/cli/reschedule-deliberation-case-files.ts",
     "test:unit": "vitest run --config vitest.unit.config.mts",
     "test:integration": "vitest run --config vitest.integration.config.mts",
+    "test": "pnpm test:unit && pnpm test:integration",
     "prepare": "husky"
   },
   "dependencies": {
@@ -33,7 +34,7 @@
     "@prisma/client": "^7.8.0",
     "@prisma/config": "^7.8.0",
     "bcrypt": "^6.0.0",
-    "better-auth": "^1.6.20",
+    "better-auth": "^1.6.23",
     "cheerio": "^1.2.0",
     "clsx": "^2.1.1",
     "date-fns": "^4.4.0",
@@ -61,7 +62,7 @@
     "eslint-config-next": "16.2.9",
     "husky": "^9.1.7",
     "jsdom": "^29.1.1",
-    "postcss": ">=8.5.17",
+    "postcss": ">=8.5.20",
     "prettier": "3.8.4",
     "prettier-plugin-tailwindcss": "0.8.0",
     "sass": "^1.101.0",
@@ -70,6 +71,6 @@
     "vite": ">=8.1.3",
     "vite-tsconfig-paths": "^6.1.1",
     "vitest": "^4.1.9",
-    "vitest-mock-extended": "^4.0.0"
+    "vitest-mock-extended": "^5.0.0"
   }
 }

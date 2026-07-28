@@ -81,9 +81,6 @@
 ├── .gitignore
 ├── .husky
 │   └── pre-commit
-├── .pnpm-store
-│   └── v11
-│       └── index.db
 ├── .prettierignore
 ├── .prettierrc
 ├── .tools-version
@@ -144,6 +141,7 @@
 │   │   ├── case-files-dashboard-columns.ts
 │   │   ├── case-files-dashboard-columns.unit.test.ts
 │   │   ├── dashboard-filter.ts
+│   │   ├── dashboard-filter.unit.test.ts
 │   │   ├── data
 │   │   │   ├── attached-files.ts
 │   │   │   ├── attached-files.unit.test.ts
@@ -152,7 +150,9 @@
 │   │   │   ├── case-files.ts
 │   │   │   ├── case-files.unit.test.ts
 │   │   │   ├── piece-content.ts
-│   │   │   └── piece-content.unit.test.ts
+│   │   │   ├── piece-content.unit.test.ts
+│   │   │   ├── statuses.ts
+│   │   │   └── statuses.unit.test.ts
 │   │   ├── fetch-paginated-table-data.ts
 │   │   ├── historique-table.ts
 │   │   ├── mocked-pieces.ts
@@ -261,13 +261,18 @@
 │   │   ├── enrich-case-file.unit.test.ts
 │   │   ├── paginate.ts
 │   │   ├── upsert-case-file-actors.ts
-│   │   └── upsert-case-file.ts
+│   │   ├── upsert-case-file.ts
+│   │   ├── upsert-status-catalog.ts
+│   │   └── upsert-status-catalog.unit.test.ts
 │   ├── scrape
 │   │   ├── phase-a-list.ts
 │   │   ├── phase-a-list.unit.test.ts
+│   │   ├── phase-a0-status-catalog.ts
+│   │   ├── phase-a0-status-catalog.unit.test.ts
 │   │   ├── phase-b-enrich.ts
 │   │   ├── phase-c-related.ts
 │   │   ├── pipeline.ts
+│   │   ├── pipeline.unit.test.ts
 │   │   ├── where.ts
 │   │   └── where.unit.test.ts
 │   ├── telecharge-fichier.ts
@@ -456,6 +461,10 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260717110000_case_file_actors
 │   │   │   └── migration.sql
+│   │   ├── 20260722140000_right_type_rename
+│   │   │   └── migration.sql
+│   │   ├── 20260722220651_memory_deadline_requires_hearing_status
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   └── schema
 │       ├── actor.prisma
@@ -486,4 +495,4 @@
 ├── vitest.config.mts
 ├── vitest.integration.config.mts
 └── vitest.unit.config.mts
-85 directories, 450 files
+85 directories, 459 files
