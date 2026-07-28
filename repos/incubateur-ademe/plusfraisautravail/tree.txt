@@ -8,6 +8,7 @@
 │       ├── deploy-climadiag.yml
 │       ├── deploy-cms.yml
 │       ├── terraform-apply.yml
+│       ├── terraform-destroy.yml
 │       └── terraform-plan.yml
 ├── .gitignore
 ├── .pre-commit-config.yaml
@@ -162,15 +163,19 @@
 │       ├── .env.example
 │       ├── Dockerfile
 │       ├── README.md
+│       ├── cms
+│       │   ├── __init__.py
+│       │   ├── asgi.py
+│       │   ├── settings
+│       │   │   ├── __init__.py
+│       │   │   ├── base.py
+│       │   │   ├── dev.py
+│       │   │   └── production.py
+│       │   ├── urls.py
+│       │   └── wsgi.py
 │       ├── entrypoint.sh
 │       ├── manage.py
 │       ├── pyproject.toml
-│       ├── sites_conformes
-│       │   ├── __init__.py
-│       │   ├── asgi.py
-│       │   ├── settings.py
-│       │   ├── urls.py
-│       │   └── wsgi.py
 │       ├── tests
 │       │   ├── __init__.py
 │       │   └── test_healthz.py
@@ -218,4 +223,4 @@
     ├── diagram.png
     ├── get_vigilance.py
     └── notebooks_getVigilance.ipynb
-50 directories, 170 files
+51 directories, 174 files

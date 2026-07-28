@@ -1,3 +1,20 @@
+2026-07-28T02:13:12+02:00 - 0536a39 - Fabien Le Frapper : feat(ci): add tofu_replace workflow_dispatch input for one-off -replace
+2026-07-28T01:33:47+02:00 - 5cc6455 - Fabien Le Frapper : fix(cms): surface the real DB-connect error and fail fast instead of retrying blind
+2026-07-28T00:10:25+02:00 - bc1b03b - Fabien Le Frapper : fix: switch cms to public DB endpoint, drop private network attachment
+2026-07-27T11:40:29+02:00 - 6117d57 - Fabien Le Frapper : fix: set cms_extra_allowed_hosts in CI so Django accepts Scaleway's health probe
+2026-07-27T11:27:56+02:00 - f25c74e - Fabien Le Frapper : fix: point api/cms containers at pushed :latest images, not unpushed :bootstrap
+2026-07-27T00:19:55+02:00 - eb66f56 - Fabien Le Frapper : set container deploy=false in terraform-apply for bootstrap
+2026-07-27T00:14:15+02:00 - fd1d02a - Fabien Le Frapper : add force_destroy to bucket modules, add destroy workflow
+2026-07-27T00:11:52+02:00 - 8962435 - Fabien Le Frapper : add terraform-destroy workflow for cleanup
+2026-07-27T00:06:39+02:00 - 03458c2 - Fabien Le Frapper : set cms_image and api_image in terraform-apply CI workflow
+2026-07-26T23:50:06+02:00 - 7923d00 - Fabien Le Frapper : point CMS media at existing pfat-cms bucket, drop restore logic
+2026-07-26T23:46:18+02:00 - 8b3d289 - Fabien Le Frapper : add sync-prod-media-to-new recipe for cross-bucket media sync
+2026-07-26T23:43:25+02:00 - 40b3c2e - Fabien Le Frapper : enable dotenv-load and support S3_ACCESS_KEY_ID fallback in sync-prod-media
+2026-07-26T23:37:31+02:00 - 0581db3 - Fabien Le Frapper : add sync-prod-media recipe to download old pfat-cms bucket locally
+2026-07-26T23:16:19+02:00 - 03aeacf - Fabien Le Frapper : fix: restore from actual dump filename (20260726013540_sf_plusfrai_2200.tar.gz)
+2026-07-26T23:14:49+02:00 - bb3f78f - Fabien Le Frapper : simplify restore to expect raw dump.pgsql instead of tarball
+2026-07-26T23:09:31+02:00 - bbfa68f - Fabien Le Frapper : add DB restore + app label migration to CMS entrypoint
+2026-07-26T14:26:37+02:00 - b1096ed - Fabien Le Frapper : migrate CMS to Wagtail with sites-conformes package
 2026-07-25T00:36:34+02:00 - 4cb630f - Fabien Le Frapper : fix(cms): connect to DB via private network, add private_database_url output
 2026-07-25T00:20:16+02:00 - 60ad0f6 - Fabien Le Frapper : fix(cms): switch deploy to v1 API, set container ID in GitHub env
 2026-07-25T00:17:56+02:00 - 93442a3 - Fabien Le Frapper : Ajout sites conformes (#23)
