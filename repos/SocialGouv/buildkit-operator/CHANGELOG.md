@@ -1,5 +1,83 @@
 # Changelog
 
+## [0.15.2](https://github.com/SocialGouv/buildkit-operator/compare/v0.15.1...v0.15.2) (2026-07-27)
+
+## [0.15.1](https://github.com/SocialGouv/buildkit-operator/compare/v0.15.0...v0.15.1) (2026-07-27)
+
+## [0.15.0](https://github.com/SocialGouv/buildkit-operator/compare/v0.14.2...v0.15.0) (2026-07-22)
+
+### Features
+
+* **buildd,api:** S3 cold-cache policy — import always, export on cadence ([d10c3bf](https://github.com/SocialGouv/buildkit-operator/commit/d10c3bf36897676d9be4652819129c20210701e1))
+
+### Bug Fixes
+
+* **build,buildd,chart:** harden the S3 cache policy after adversarial review ([69e8781](https://github.com/SocialGouv/buildkit-operator/commit/69e8781814956f1a608b3938aaa943122fa85a5d))
+* **controller:** reset a stale inflight counter instead of letting it grow forever ([0b5763b](https://github.com/SocialGouv/buildkit-operator/commit/0b5763b64c8cd6c95941ecb2d05bcc28c74c8d90))
+
+## [0.14.2](https://github.com/SocialGouv/buildkit-operator/compare/v0.14.1...v0.14.2) (2026-07-22)
+
+### Bug Fixes
+
+* **controller,buildd:** harden auto-grow + fork sizing after adversarial review ([b8400f8](https://github.com/SocialGouv/buildkit-operator/commit/b8400f8531912e5602182673775140fb8ff670c8))
+
+## [0.14.1](https://github.com/SocialGouv/buildkit-operator/compare/v0.14.0...v0.14.1) (2026-07-22)
+
+## [0.14.0](https://github.com/SocialGouv/buildkit-operator/compare/v0.13.0...v0.14.0) (2026-07-22)
+
+### Features
+
+* **controller,companion:** bounded cache-volume auto-grow ([c6492d5](https://github.com/SocialGouv/buildkit-operator/commit/c6492d52ceb31d9e124cf0170b100ec5014f8291))
+
+### Bug Fixes
+
+* **ci:** unit-coverage gate back above 85% ([1c94314](https://github.com/SocialGouv/buildkit-operator/commit/1c94314597f45e364fda26e0c6e26b1b5479ddb9))
+
+## [0.13.0](https://github.com/SocialGouv/buildkit-operator/compare/v1...v0.13.0) (2026-07-22)
+
+### Features
+
+* **buildd:** declarative per-project defaults seeded at BuildProject creation ([4922bd7](https://github.com/SocialGouv/buildkit-operator/commit/4922bd7bf3dd206b56e1cfd4562bc78f395d72e2))
+* **chart:** S3 bucket lifecycle GC (expiry + multipart abort) via hook Job ([a8bd579](https://github.com/SocialGouv/buildkit-operator/commit/a8bd5790b49b469a0c5fbc23c82fe077255e05c9))
+* **controller:** adaptive keep-warm — idle window scales with build cadence ([504a79a](https://github.com/SocialGouv/buildkit-operator/commit/504a79aee3a924c8b210ab0ad0166936f731a5f4))
+
+## [0.12.0](https://github.com/socialgouv/buildkit-operator/compare/v1...v0.12.0) (2026-07-03)
+
+### Features
+
+* **identity:** trust same-project GitLab refs by default (strictUnprotectedRefs opt-in) ([0baba22](https://github.com/socialgouv/buildkit-operator/commit/0baba22b7fc6c3a06de816b8fde7b709d58631de))
+
+## [0.11.1](https://github.com/socialgouv/buildkit-operator/compare/v1...v0.11.1) (2026-07-02)
+
+### Bug Fixes
+
+* **build:** S3 cache export is best-effort (ignore-error=true) ([7004ac6](https://github.com/socialgouv/buildkit-operator/commit/7004ac6ffff942d8df468bb0b129d120b3947108))
+
+## [0.11.0](https://github.com/socialgouv/buildkit-operator/compare/v0.10.0...v0.11.0) (2026-07-02)
+
+### Features
+
+* **action:** build secrets passthrough (--secret id=…,env=…) across GitHub/Forgejo/GitLab surfaces ([d561212](https://github.com/socialgouv/buildkit-operator/commit/d561212316b9da39f33eb880f3763f26b9bf9181))
+
+## [0.10.0](https://github.com/SocialGouv/buildkit-operator/compare/v0.9.0...v0.10.0) (2026-06-29)
+
+### Features
+
+* **buildd:** local backend parity — ZFS snapshots, CoW fork seed, VM forks, fan-out ([33813e1](https://github.com/SocialGouv/buildkit-operator/commit/33813e169f30872e2cb004b516e88a5dd3d8d83b))
+* **buildd:** single-host Incus + ZFS backend (--backend local, MVP) ([c16b7c6](https://github.com/SocialGouv/buildkit-operator/commit/c16b7c6ea166756b22bfda951f5a329d2add2b02))
+* **build:** forward --build-arg / --label across GitHub, GitLab & Forgejo ([#1](https://github.com/SocialGouv/buildkit-operator/issues/1)) ([8707e7f](https://github.com/SocialGouv/buildkit-operator/commit/8707e7f9d2a3baeeb5154bfbd0ae114bccfa4e58))
+* **local:** Docker dev runtime + validate the local control plane end-to-end ([49988f8](https://github.com/SocialGouv/buildkit-operator/commit/49988f885db71d2cc83fae3d14ec831bd6cbcd9c))
+* **vm:** e2e kit for the local backend + deterministic endpoints & cert mount ([08da2fa](https://github.com/SocialGouv/buildkit-operator/commit/08da2fa6efc479805f4034559d90896a0eb9a7d5))
+
+### Bug Fixes
+
+* **local:** incus Launch via init+device add+start; best-effort egress ([bb337ef](https://github.com/SocialGouv/buildkit-operator/commit/bb337efcde81b6ce6ca1ff223664499745aba16c))
+* **local:** Ready probes the buildkitd port (instance Running != daemon serving) ([5d3202e](https://github.com/SocialGouv/buildkit-operator/commit/5d3202e383cb01785067fa701cd7f8df97b80f0d))
+* **vm:** don't pass container-only security.nesting to the VM fork image ([3dee930](https://github.com/SocialGouv/buildkit-operator/commit/3dee930e1e2c17074bb5d1dd42cd7bd2562e007b))
+* **vm:** quickstart waits for instance network + auto-relaxes Docker bridge netfilter ([30c86ea](https://github.com/SocialGouv/buildkit-operator/commit/30c86ea293582bbac8df686fb8e78cc1d93f9e00))
+* **vm:** skip the VM fork image when qemu is absent (only /dev/kvm is not enough) ([0b0ee35](https://github.com/SocialGouv/buildkit-operator/commit/0b0ee3513065454059f79777d2ba3084df3ac7a2))
+* **vm:** VM fork image build is non-fatal (incus VM unsupported on some hosts) ([bc22757](https://github.com/SocialGouv/buildkit-operator/commit/bc227570ba50a067c04feb8bb914a502ef2a4998))
+
 ## [0.9.0](https://github.com/SocialGouv/buildkit-operator/compare/v1...v0.9.0) (2026-06-27)
 
 ### Features

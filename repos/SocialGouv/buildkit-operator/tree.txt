@@ -6,7 +6,8 @@
 │       ├── ci.yml
 │       ├── images.yml
 │       ├── pages.yml
-│       └── release.yml
+│       ├── release.yml
+│       └── renovate.yml
 ├── .gitignore
 ├── .golangci.yml
 ├── .release-it.json
@@ -19,6 +20,8 @@
 ├── action.yml
 ├── api
 │   └── v1alpha1
+│       ├── adaptive.go
+│       ├── adaptive_test.go
 │       ├── buildproject_types.go
 │       ├── defaults.go
 │       ├── defaults_test.go
@@ -38,6 +41,7 @@
 │   │   ├── certs.go
 │   │   ├── certs_test.go
 │   │   ├── coverage_test.go
+│   │   ├── local_backend.go
 │   │   ├── main.go
 │   │   ├── oidc_route_test.go
 │   │   ├── route.go
@@ -105,6 +109,8 @@
 │   │       │   ├── networkpolicy.yaml
 │   │       │   ├── oidc-configmap.yaml
 │   │       │   ├── pdb.yaml
+│   │       │   ├── project-defaults-configmap.yaml
+│   │       │   ├── s3-lifecycle-job.yaml
 │   │       │   ├── service.yaml
 │   │       │   └── serviceaccount.yaml
 │   │       └── values.yaml
@@ -114,6 +120,14 @@
 │   │   └── kata-deploy-values.yaml
 │   ├── rbac
 │   │   └── role.yaml
+│   ├── vm
+│   │   ├── README.md
+│   │   ├── build-buildkitd-image.sh
+│   │   ├── buildd.env.example
+│   │   ├── buildd.service
+│   │   ├── quickstart-insecure.sh
+│   │   ├── setup-host.sh
+│   │   └── smoke-test.sh
 │   └── warm-pool.yaml
 ├── devbox.json
 ├── devbox.lock
@@ -126,6 +140,7 @@
 │   │   ├── 0004-shared-sni-gateway.md
 │   │   ├── 0005-kata-clh-for-untrusted-forks.md
 │   │   ├── 0006-namespace-topology.md
+│   │   ├── 0007-vm-backend-incus-zfs.md
 │   │   └── README.md
 │   ├── architecture.md
 │   ├── benchmarks-phase0.md
@@ -140,6 +155,7 @@
 │   ├── poc-pic-oidc.md
 │   ├── sandboxed-builds.md
 │   ├── security.md
+│   ├── single-host-backend.md
 │   ├── storage-and-cold-cache.md
 │   └── validation-report.md
 ├── forgejo
@@ -154,6 +170,8 @@
 │   │   ├── statefulset.go
 │   │   └── statefulset_test.go
 │   ├── controller
+│   │   ├── autogrow.go
+│   │   ├── autogrow_test.go
 │   │   ├── buildproject_controller.go
 │   │   ├── buildproject_controller_test.go
 │   │   ├── helpers_test.go
@@ -168,6 +186,20 @@
 │   ├── metrics
 │   │   ├── metrics.go
 │   │   └── metrics_test.go
+│   ├── projectdefaults
+│   │   ├── projectdefaults.go
+│   │   └── projectdefaults_test.go
+│   ├── provisioner
+│   │   ├── k8s
+│   │   │   ├── k8s.go
+│   │   │   └── k8s_test.go
+│   │   ├── local
+│   │   │   ├── host.go
+│   │   │   ├── host_docker.go
+│   │   │   ├── host_test.go
+│   │   │   ├── local.go
+│   │   │   └── local_test.go
+│   │   └── provisioner.go
 │   └── router
 │       ├── router.go
 │       └── router_test.go
@@ -186,4 +218,4 @@
         ├── features_test.go
         ├── harness_test.go
         └── security_test.go
-37 directories, 151 files
+42 directories, 178 files

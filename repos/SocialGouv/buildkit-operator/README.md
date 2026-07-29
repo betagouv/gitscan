@@ -1,11 +1,12 @@
 # buildkit-operator
 
-**A distributed BuildKit build service: one hot, *vanilla* `buildkitd` per `(project, arch)` on Kubernetes.**
+**A distributed BuildKit build service: one hot, *vanilla* `buildkitd` per `(project, arch)` — on Kubernetes or a single host.**
 
 buildkit-operator gives CI image builds the perceived speed of a warm local BuildKit cache, with the
 elasticity and durability of Kubernetes — **without forking BuildKit, containerd, or writing a
 custom snapshotter.** It is a small **control plane** (routing + lifecycle) on top of stock
-`buildkitd`/`containerd`. Built for OVH Managed Kubernetes (Cinder gen2), portable to any CSI.
+`buildkitd`/`containerd`. Built for OVH Managed Kubernetes (Cinder gen2), portable to any CSI — and the
+same control plane runs on a **single host** (Incus + ZFS) when a cluster is overkill ([backends →](docs/single-host-backend.md)).
 
 The numbers below are measured on a real OVH MKS cluster: **warm builds ≈ 10 s** (vs ≈ 18 s on a
 shared pool), a **cold daemon rehydrates ≈ 9× faster** from S3 (4.5 s vs 41.8 s), and idle projects
@@ -28,6 +29,7 @@ shared pool), a **cold daemon rehydrates ≈ 9× faster** from S3 (4.5 s vs 41.8
 - 🔑 **Verified identity exposure** — the public `/route` API binds each build to a **forge-signed OIDC identity** (GitHub/GitLab; Forgejo-ready), so a caller can only ever build *its own* repo — no self-declared cache poisoning — and the build path is mTLS end-to-end. [CI integration →](docs/ci-integration.md#route-identity-oidc-recommended-vs-beareradmin)
 - 🔒 **Vanilla rootless buildkit** — no fork of BuildKit, containerd, or the snapshotter; the daemon runs non-root and unprivileged. [security →](docs/security.md)
 - 🧱 **HA control plane** — `buildd` runs 2 replicas with leader election; routing is served by every replica. [architecture →](docs/architecture.md#control-plane-ha)
+- 🖥️ **Pluggable backend** — the same control plane runs on **Kubernetes** (default) or a **single host** (Incus + ZFS): one buildkitd per project on a retained ZFS dataset, with scale-to-zero, kernel snapshots, CoW fork seeding and VM-isolated untrusted forks. The client, the CI Actions and OIDC are identical. [single-host backend →](docs/single-host-backend.md) · [ADR 0007 →](docs/adr/0007-vm-backend-incus-zfs.md)
 
 All numbers are validated on OVH Managed Kubernetes (GRA9, Cinder gen2). See
 [performance.md](docs/performance.md) for the methodology.
@@ -266,6 +268,51 @@ status:
 
 You rarely write these by hand — the GitHub Action / `build` CLI / `buildd` `/route` create them on
 demand.
+
+## Per-project tuning — recommended practice
+
+The default posture is **tune nothing**: two mechanisms adapt each project to its observed usage,
+bounded by platform-set quotas.
+
+- **Adaptive keep-warm** (on by default, `adaptiveIdle.maxSeconds`, 0 = off). A warm daemon's
+  effective idle window is `idleTimeoutSec × builds observed in the trailing 24h`, capped (6h by
+  default). Frequent builders stay warm between builds; quiet projects still scale to zero. Fleet
+  cost stays proportional to observed usage — nobody maintains a list of "important" repos.
+- **Bounded cache-volume auto-grow** (on by default, `autoGrow.{thresholdPct,factor,maxGi}`,
+  thresholdPct 0 = off). buildkitd GC reclaims layers past ~85% of the volume, so a project whose
+  working set outgrows its PVC silently thrashes its own cache. The reconciler polls the companion's
+  statfs (`/usage`) on warm daemons and, past the threshold, grows the PVC by `factor` — never past
+  `maxGi`, the per-project cost quota. Growth is one-way; the filesystem resize is applied by an
+  idle-time pod bounce. Requires a storage class with `allowVolumeExpansion` (cinder gen2: yes).
+
+Declare the rest — the things usage cannot reveal — as **`projectDefaults` rules** in the Helm
+values (seeded when buildd auto-creates the BuildProject; admin-only by design, so a routing caller
+can never self-assign a hot daemon):
+
+| Symptom you observe | Signal | Rule to declare |
+|---|---|---|
+| Rare-but-clustered builds (working sessions) restart cold mid-session | `kubectl get bp`: phase flapping Idle↔Warm within the hour at low daily cadence | `idleTimeoutSec` floor (e.g. 3600) |
+| The known working set exceeds the auto-grow quota | `autoGrow` logs hitting `maxGi` | `cacheVolumeGi` (pre-size) |
+| Cold-wake latency unacceptable on a critical path even warm-tier | `buildkit_operator_coldstart_seconds`, `RoutesTotal{cold}` share | `tier: hot` — last resort |
+
+What `tier` and `idleTimeoutSec` actually cost: the **cache is never at stake** (the PVC is retained
+across scale-to-zero) — these knobs only trade **wake latency** against **resident-pod cost**.
+`warm` pays a ~20–30s PVC reattach on the first build after an idle gap and nothing while idle;
+`idleTimeoutSec` (a floor under adaptivity) decides how long the daemon lingers after its last
+build; `tier: hot` erases the wake latency by keeping the pod resident 24/7 — the only setting with
+a permanent cost, which is why it is a declared platform decision, not something adaptivity infers.
+
+Example:
+
+```yaml
+projectDefaults:
+  - repo: github.com/acme/monorepo
+    name: "toolchain-*"
+    idleTimeoutSec: 3600
+    cacheVolumeGi: 120
+  - repo: github.com/acme/release-train
+    tier: hot
+```
 
 ---
 
