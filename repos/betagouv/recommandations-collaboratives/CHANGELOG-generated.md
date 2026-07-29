@@ -1,37 +1,39 @@
-## Changelog : recommandations-collaboratives (30 derniers jours, au 24 juillet 2026)
+## Changelog : recommandations-collaboratives (30 derniers jours, au 28 juillet 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives de l'interface utilisateur, notamment au niveau du CRM avec la refonte des pages organisations et projets, l'ajout de filtres et l'amélioration de la navigation. Des corrections de bugs et des optimisations de sécurité ont également été apportées, ainsi que l'introduction d'un système de plugins pour une plus grande extensibilité.
+Cette période a été marquée par des améliorations significatives de l'interface utilisateur, notamment au niveau de la gestion des organisations et des projets, ainsi que par l'ajout de fonctionnalités de gestion de plugins. Des corrections de bugs et des optimisations de sécurité ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'interface CRM : refonte des pages d'organisations et de projets [#2182, #2200].
-- Ajout de filtres sur la page des organisations CRM [#2226].
-- Possibilité de masquer le bouton de création de nouveau projet [#2205].
-- Ajout d'un indicateur visuel pour les projets "en pause" avec l'identification de l'utilisateur responsable [#2229].
-- Amélioration de l'affichage des informations de projet sur la page d'accueil du CRM.
-- Ajout d'un lien cliquable vers l'organisation dans les détails d'un utilisateur CRM [#2296].
-- Amélioration de la gestion des notifications : affichage correct des notifications privées et publiques [#2279, #2292].
-- Mise en place d'un système de plugins pour étendre les fonctionnalités de l'application [#1986, #2225].
-- Possibilité de se connecter par code (email) [#2278].
-- Augmentation de la longueur maximale du message d'avertissement [#2227].
-- Ajout d'une option pour masquer le bouton "Nouveau projet" dans le CRM.
+- Amélioration de l'interface pour la fusion d'organisations [#2249](https://github.com/betagouv/recommandations-collaboratives/pull/2249).
+- Ajout d'un bouton d'annulation lors de la suppression d'une ressource [#2275](https://github.com/betagouv/recommandations-collaboratives/pull/2275).
+- Possibilité de cliquer sur le nom d'une organisation dans la fiche d'un utilisateur pour accéder à sa page [#2293](https://github.com/betagouv/recommandations-collaboratives/pull/2293).
+- Ajout d'un indicateur visuel pour les projets avec peu de retours [#2220](https://github.com/betagouv/recommandations-collaboratives/pull/2220).
+- Refonte de la page d'accueil du CRM et de la page des organisations [#2182](https://github.com/betagouv/recommandations-collaboratives/pull/2182), [#2205](https://github.com/betagouv/recommandations-collaboratives/pull/2205).
+- Ajout de la possibilité de masquer le bouton de création de nouveau projet [#2170](https://github.com/betagouv/recommandations-collaboratives/pull/2205).
+- Amélioration de la gestion des notifications, notamment pour les notifications privées [#2292](https://github.com/betagouv/recommandations-collaboratives/pull/2292).
+- Ajout de la possibilité de filtrer les projets par statut de lecture des recommandations [#2274](https://github.com/betagouv/recommandations-collaboratives/pull/2274).
+- Ajout d'un système de plugins pour étendre les fonctionnalités de l'application [#2246](https://github.com/betagouv/recommandations-collaboratives/pull/2246).
 
 ### Évolutions techniques
-- Mise à jour de plusieurs dépendances (Django, Wagtail, Axios, etc.) pour bénéficier des dernières corrections de sécurité et améliorations de performance.
-- Refactorisation du code pour améliorer la maintenabilité et la lisibilité.
-- Amélioration de la gestion des erreurs et des exceptions.
-- Optimisation des requêtes SQL pour améliorer les performances.
-- Mise en place de tests unitaires et d'intégration pour garantir la qualité du code.
-- Suppression de code inutilisé et nettoyage du codebase.
-- Amélioration de la gestion des migrations de base de données pour le système de plugins.
-- Correction de problèmes liés à la configuration de l'authentification 2FA.
-- Mise à jour de la configuration de Vite pour le système de plugins.
+- Mise à jour de plusieurs dépendances frontend (postcss, fast-uri, dompurify, immutable, axios, shell-quote, systeminformation, ws) pour corriger des failles de sécurité et améliorer les performances.
+- Refactorisation du code pour améliorer la lisibilité et la maintenabilité, notamment au niveau des filtres et des composants d'interface utilisateur.
+- Amélioration de la gestion des erreurs et des validations.
+- Optimisation des requêtes SQL pour réduire les temps de chargement.
+- Mise en place d'un système de gestion des migrations pour les plugins.
+- Amélioration de la gestion des tests.
+- Mise à jour de JupyterLab à la version 4.6.2 [#2284](https://github.com/betagouv/recommandations-collaboratives/pull/2284).
+- Suppression de dépendances inutilisées.
+- Ajout de la possibilité de configurer l'authentification à deux facteurs (2FA) pour les utilisateurs staff [#2220](https://github.com/betagouv/recommandations-collaboratives/pull/2220).
 
 ### Autres changements
-- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les changements d'API.
-- Correction de problèmes mineurs d'interface utilisateur et d'accessibilité.
-- Amélioration des messages d'erreur et des notifications.
-- Ajout de commentaires et de documentation au code.
-- Correction de problèmes liés à la gestion des cookies Sesame.
-- Ajout de fichiers au `.gitignore` pour exclure les fichiers inutiles du contrôle de version.
-- Suppression de la maintenance du fichier `requirements.txt`.
+- Amélioration de la documentation README [#2293](https://github.com/betagouv/recommandations-collaboratives/pull/2293).
+- Corrections de bugs mineurs liés à l'affichage et au comportement de l'interface utilisateur.
+- Ajout de tests unitaires pour garantir la qualité du code.
+- Mise à jour des messages d'erreur pour une meilleure clarté.
+- Nettoyage du code et suppression de code obsolète.
+- Ajout d'un mécanisme pour gérer les plugins et leurs migrations.
+- Correction d'un problème lié à l'affichage des notifications.
+- Amélioration de la gestion des cookies Sesame.
+- Ajout d'un champ "paused_by" pour indiquer qui a mis un projet en pause.
+- Ajout de la possibilité de trier la liste des utilisateurs dans le CRM par date d'inscription.
+- Suppression de l'entrée 'plugins' du fichier .gitignore.
