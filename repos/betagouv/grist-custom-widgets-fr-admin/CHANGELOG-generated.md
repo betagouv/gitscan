@@ -1,16 +1,12 @@
-## Changelog : grist-custom-widgets-fr-admin (30 derniers jours, au 26 juin 2026)
+## Changelog : grist-custom-widgets-fr-admin (30 derniers jours, au 21 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur la préparation de la publication du widget "Tableau de bord cartographique" en production, avec des améliorations de la gestion des erreurs et de l'expérience utilisateur. Des corrections ont également été apportées pour améliorer la robustesse du widget "Générateur de PDF".
-
-### Évolutions fonctionnelles
-- Amélioration de la gestion des erreurs dans le widget "Tableau de bord cartographique" pour une meilleure résilience et un affichage plus clair des problèmes rencontrés.
-- Correction d'un bug dans le widget "Générateur de PDF" empêchant la génération correcte des documents dans certains cas.
-- Amélioration de l'expérience utilisateur du widget "Tableau de bord cartographique" avec des messages d'information plus précis et une meilleure gestion des états de chargement.
+Ce mois-ci, les mises à jour se concentrent sur la maintenance technique du projet, notamment la mise à jour des dépendances pour assurer la sécurité et la stabilité de l'application. Aucune nouvelle fonctionnalité ou correction de bug visible par l'utilisateur n'a été déployée.
 
 ### Évolutions techniques
-- Préparation de la publication du widget "Tableau de bord cartographique" en production, incluant des tests et des validations supplémentaires.
-- Refonte de la gestion des erreurs dans le widget "Générateur de PDF" pour une meilleure maintenabilité et une plus grande flexibilité.
+- Mise à jour de Next.js de la version 16.2.9 à la version 16.2.10.
+- Mise à jour de la dépendance `ws` de la version 8.18.3 à la version 8.21.1.
+- Mise à jour de plusieurs dépendances de production (groupe 410f647947 et 0c2cfe8147).
 
 ### Autres changements
-- Mise à jour de la dépendance Next.js vers la version 16.2.6.
+Aucun autre changement significatif à signaler.
