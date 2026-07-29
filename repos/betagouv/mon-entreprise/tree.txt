@@ -54,26 +54,29 @@
 │   │   └── doc
 │   │       └── swagger-initializer.js
 │   ├── source
-│   │   ├── analytics.ts
 │   │   ├── errors.ts
 │   │   ├── index.ts
+│   │   ├── middlewares
+│   │   │   ├── analytics.test.ts
+│   │   │   ├── analytics.ts
+│   │   │   ├── rate-limiter.ts
+│   │   │   ├── redis-cache.ts
+│   │   │   ├── redis-supervision.ts
+│   │   │   ├── sentry.ts
+│   │   │   └── v1unitéAdapterMiddleware.ts
+│   │   ├── modeles.ts
 │   │   ├── openapi.yaml
-│   │   ├── rate-limiter.ts
-│   │   ├── redis-cache.ts
-│   │   ├── redis-supervision.ts
 │   │   ├── route
 │   │   │   ├── doc.ts
 │   │   │   └── openapi.ts
-│   │   ├── sentry.ts
 │   │   ├── server.ts
-│   │   ├── test-e2e
-│   │   │   ├── __snapshots__
-│   │   │   │   └── index.test.ts.snap
-│   │   │   ├── coherence-npm-api.test.ts
-│   │   │   ├── index.test.ts
-│   │   │   └── test-server.ts
-│   │   ├── utils.ts
-│   │   └── v1unitéAdapterMiddleware.ts
+│   │   └── test-e2e
+│   │       ├── __snapshots__
+│   │       │   └── index.test.ts.snap
+│   │       ├── coherence-npm-api.test.ts
+│   │       ├── index.test.ts
+│   │       ├── modeles.test.ts
+│   │       └── test-server.ts
 │   ├── tsconfig.json
 │   └── vitest.config.ts
 ├── architecture.archimate
@@ -1920,4 +1923,4 @@
 │   ├── vite.config.ts
 │   └── vitest-setup.ts
 └── yarn.lock
-331 directories, 1591 files
+332 directories, 1593 files
