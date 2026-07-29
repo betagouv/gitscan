@@ -1,17 +1,17 @@
 {
   "url": "https://github.com/proconnect-gouv/federation",
   "name": "federation",
-  "description": "La solution qui vous identifie en tant que professionnel. Ce projet fournit une plateforme d'identification et de fédération pour les professionnels, avec des fonctionnalités de gestion des utilisateurs, de sécurité et d'intégration avec divers services.",
+  "description": "La solution qui vous identifie en tant que professionnel. Ce projet fournit une plateforme d'identification pour les professionnels, avec des fonctionnalités de gestion des utilisateurs, d'authentification et d'intégration avec divers services.",
   "language": "TypeScript",
   "features": [
     "Authentification & Accès",
     "Gestion des utilisateurs & Permissions",
-    "Sécurité & Conformité",
     "API & Intégrations",
-    "Gestion des collaborateurs",
+    "Sécurité & Conformité",
+    "Gestion documentaire & Fichiers",
     "Notifications & Alertes"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": "Professionnels",
   "dependencies": [
     "Node.js",
     "Yarn",
@@ -26,8 +26,8 @@
     "nodemailer",
     "oidc-provider",
     "passport",
-    "pg",
     "pino",
+    "rxjs",
     "typeorm"
   ],
   "components": [
@@ -36,14 +36,15 @@
     "TypeScript / JavaScript",
     "Docker & Conteneurs",
     "Node.js / NestJS",
-    "Authentification (composant)",
     "Microservices & Architecture"
   ],
   "auth": {
     "methods": [
       "email-password",
       "oauth2",
-      "sso"
+      "saml",
+      "jwt",
+      "session"
     ]
   },
   "tests": [
@@ -51,9 +52,10 @@
     "Cypress"
   ],
   "workflows": [
-    "CI/CD"
+    "CI/CD",
+    "GitHub Actions"
   ],
-  "lastActivity": "2026-07-23T15:10:57+02:00",
+  "lastActivity": "2026-07-28T18:35:09+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -64,13 +66,13 @@
     "openIssues": null
   },
   "tags": [
-    "Sécurité & Conformité",
-    "Authentification",
-    "API",
+    "Sécurité & Auth",
+    "API & Intégrations",
     "TypeScript",
     "Docker",
+    "Node.js",
     "PostgreSQL",
     "MongoDB",
-    "Gestion des utilisateurs"
+    "SSO & Identité fédérée"
   ]
 }

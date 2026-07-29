@@ -1,32 +1,32 @@
-## Changelog : federation (30 derniers jours, au 23 juillet 2026)
+## Changelog : federation (30 derniers jours, au 28 juillet 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations de la sécurité, de la gestion des utilisateurs et de la stabilité de la plateforme. Des correctifs ont été apportés pour renforcer la conformité MFA, améliorer la gestion des clients OIDC et résoudre des problèmes liés à la configuration de la base de données. Des mises à jour de dépendances ont également été effectuées pour maintenir la plateforme à jour.
+Cette période a été marquée par des améliorations de la sécurité, notamment la suppression de configurations SSL obsolètes et l'ajout d'une politique de sécurité de contenu plus stricte. Des fonctionnalités ont été ajoutées pour faciliter la gestion des collaborateurs des clients OIDC et pour permettre des tests de l'authentification multi-facteurs (MFA). Des corrections de bugs et des optimisations de performance ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de rechercher des utilisateurs fédérés par email dans l'interface d'administration. [#1307](https://github.com/proconnect-gouv/federation/issues/1307)
-- Activation des tests MFA avec des alias d'email "+mfa". [#1348](https://github.com/proconnect-gouv/federation/issues/1348)
-- Ajout d'un endpoint pour supprimer un client OIDC par son ID. [#1390](https://github.com/proconnect-gouv/federation/issues/1390)
-- Ajout d'une bibliothèque de mailing (@fc/mailer) avec des adaptateurs SMTP/Brevo/noop. [#1343](https://github.com/proconnect-gouv/federation/issues/1343)
-- Ajout d'un indicateur de conformité MFA pour les fournisseurs d'identité (IdP). [#1335](https://github.com/proconnect-gouv/federation/issues/1335)
-- Gestion des collaborateurs pour les clients OIDC. [#1312](https://github.com/proconnect-gouv/federation/issues/1312)
+- Ajout de la possibilité de gérer les collaborateurs des clients OIDC. [#1312](https://github.com/proconnect-gouv/federation/issues/1312)
+- Implémentation d'un mécanisme de repli basé sur l'email pour l'authentification multi-facteurs (MFA) pour les fournisseurs d'identité non compatibles. [#4bc2593](https://github.com/proconnect-gouv/federation/commit/4bc2593)
+- Possibilité de tester l'authentification multi-facteurs (MFA) avec des alias d'email +mfa. [#5ae2f9e](https://github.com/proconnect-gouv/federation/commit/5ae2f9e)
+- Ajout d'un point de terminaison DELETE pour supprimer les clients OIDC. [#73c3167](https://github.com/proconnect-gouv/federation/commit/73c3167)
+- Ajout d'un indicateur de conformité MFA aux fournisseurs d'identité. [#6a941e2](https://github.com/proconnect-gouv/federation/commit/6a941e2)
 
 ### Évolutions techniques
-- Mise en place de healthchecks livez/readyz pour l'application admin. [#1391](https://github.com/proconnect-gouv/federation/issues/1391)
-- Refactorisation pour supprimer le champ "owner email" obsolète. [#1370](https://github.com/proconnect-gouv/federation/issues/1370)
-- Amélioration des performances des requêtes MongoDB en utilisant une correspondance de chaînes de caractères exacte. [#1369](https://github.com/proconnect-gouv/federation/issues/1369)
-- Suppression de la configuration SSL MongoDB non sécurisée. [#1323](https://github.com/proconnect-gouv/federation/issues/1323)
-- Suppression du widget de chat Crisp. [#1324](https://github.com/proconnect-gouv/federation/issues/1324)
-- Mise à jour de la version de PostgreSQL en local pour correspondre à la production. [#1311](https://github.com/proconnect-gouv/federation/issues/1311)
-- Application du formatage Prettier sur l'ensemble du projet. [#1389](https://github.com/proconnect-gouv/federation/issues/1389)
-- Amélioration de la lisibilité des diagrammes dans la documentation back. [#1365](https://github.com/proconnect-gouv/federation/issues/1365)
-- Suppression de l'autocomplétion sur le champ des collaborateurs. [#1372](https://github.com/proconnect-gouv/federation/issues/1372)
+- Extraction de l'application de fourniture de données de mock vers une application autonome. [#978f84d](https://github.com/proconnect-gouv/federation/commit/978f84d)
+- Ajout de healthchecks livez/readyz à l'application admin. [#bd1e7f7](https://github.com/proconnect-gouv/federation/commit/bd1e7f7)
+- Refactorisation pour supprimer le champ d'email du propriétaire obsolète. [#c75ab46](https://github.com/proconnect-gouv/federation/commit/c75ab46)
+- Amélioration des performances des requêtes MongoDB en utilisant une correspondance de chaînes exacte. [#46a03a5](https://github.com/proconnect-gouv/federation/commit/46a03a5)
+- Mise à jour de plusieurs dépendances (FastAPI, PostgreSQL, Uvicorn, etc.).
+- Suppression de la configuration SSL MongoDB obsolète. [#2e75757](https://github.com/proconnect-gouv/federation/commit/2e75757)
+- Suppression de la politique `unsafe-inline` de la Content Security Policy pour renforcer la sécurité. [#7f6ec77](https://github.com/proconnect-gouv/federation/commit/7f6ec77)
+- Downgrade de PostgreSQL à la version 16. [#ee15ae5](https://github.com/proconnect-gouv/federation/commit/ee15ae5)
 
 ### Autres changements
-- Documentation pour hyyyperbridge ajoutée. [#1392](https://github.com/proconnect-gouv/federation/issues/1392)
-- Extraction du script de confirmation de déconnexion dans un fichier externe. [#1410](https://github.com/proconnect-gouv/federation/issues/1410)
-- Correction d'un bug où l'IDP non conforme ACR était demandé. [#1340](https://github.com/proconnect-gouv/federation/issues/1340)
-- Suppression de tests Kubernetes obsolètes. [#1337](https://github.com/proconnect-gouv/federation/issues/1337)
-- Nettoyage des fixtures Cypress pour Kubernetes. [#1373](https://github.com/proconnect-gouv/federation/issues/1373) et [#1364](https://github.com/proconnect-gouv/federation/issues/1364)
-- Ajout de règles d'ignorance pour les dépendances PostgreSQL. [#1325](https://github.com/proconnect-gouv/federation/issues/1325)
-- Plusieurs mises à jour de dépendances (voir les commits dependabot).
+- Ajout de documentation pour hyyyperbridge. [#888e759](https://github.com/proconnect-gouv/federation/commit/888e759)
+- Suppression du widget de chat Crisp. [#4892f96](https://github.com/proconnect-gouv/federation/commit/4892f96)
+- Nettoyage des fixtures Cypress pour Kubernetes. [#f492706](https://github.com/proconnect-gouv/federation/commit/f492706)
+- Amélioration de la lisibilité du diagramme cinématique dans la documentation back. [#01a73fc](https://github.com/proconnect-gouv/federation/commit/01a73fc)
+- Extraction du script de confirmation de déconnexion vers un fichier externe. [#87a5321](https://github.com/proconnect-gouv/federation/commit/87a5321)
+- Correction d'un bug empêchant l'application de la valeur par défaut `isMfaCompliant` lors de la migration. [#3e1e38e](https://github.com/proconnect-gouv/federation/commit/3e1e38e)
+- Correction d'un bug dans pcdbapi où l'ID client demandé était ignoré. [#2a5d290](https://github.com/proconnect-gouv/federation/commit/2a5d290)
+- Correction d'un bug empêchant l'application de la valeur par défaut `isMfaCompliant` lors de la migration. [#d9ebabb](https://github.com/proconnect-gouv/federation/commit/d9ebabb)
+- Correction d'un bug empêchant l'application de la valeur par défaut `isMfaCompliant` lors de la migration. [#3e1e38e](https://github.com/proconnect-gouv/federation/commit/3e1e38e)

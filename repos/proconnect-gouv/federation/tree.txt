@@ -6,6 +6,7 @@
 │       ├── auto-assign.yml
 │       ├── build-docker.yml
 │       ├── ci-admin-tests.yml
+│       ├── ci-apps-tests.yml
 │       ├── ci-pcdbapi-test.yml
 │       ├── ci-tests.yml
 │       ├── integration-tests.yml
@@ -443,6 +444,7 @@
 │   │   │   │   │   ├── api-entreprise.ts
 │   │   │   │   │   ├── app.ts
 │   │   │   │   │   ├── email-validator.ts
+│   │   │   │   │   ├── email-verification.ts
 │   │   │   │   │   ├── exceptions.ts
 │   │   │   │   │   ├── hyyyperbridge-broker.ts
 │   │   │   │   │   ├── identity-provider-adapter-mongo.ts
@@ -452,12 +454,15 @@
 │   │   │   │   │   ├── mongoose.ts
 │   │   │   │   │   ├── oidc-client.ts
 │   │   │   │   │   ├── oidc-provider.ts
+│   │   │   │   │   ├── rate-limiter.ts
 │   │   │   │   │   ├── redis.ts
 │   │   │   │   │   ├── service-provider-adapter-mongo.ts
 │   │   │   │   │   └── session.ts
 │   │   │   │   ├── controllers
 │   │   │   │   │   ├── accessibility.controller.spec.ts
 │   │   │   │   │   ├── accessibility.controller.ts
+│   │   │   │   │   ├── email-verification.controller.spec.ts
+│   │   │   │   │   ├── email-verification.controller.ts
 │   │   │   │   │   ├── health.controller.spec.ts
 │   │   │   │   │   ├── health.controller.ts
 │   │   │   │   │   ├── index.ts
@@ -488,13 +493,14 @@
 │   │   │   │   │   ├── redirect-to-idp.dto.ts
 │   │   │   │   │   ├── revocation-token-params.dto.ts
 │   │   │   │   │   ├── sp-authorized-fqdns-config.dto.ts
-│   │   │   │   │   └── user-session
-│   │   │   │   │       ├── active-user-session.dto.ts
-│   │   │   │   │       ├── after-get-interaction-session.dto.ts
-│   │   │   │   │       ├── after-get-oidc-callback-session.dto.ts
-│   │   │   │   │       ├── after-redirect-to-idp-with-email-session.dto.ts
-│   │   │   │   │       ├── after-redirect-to-idp-with-idp-id-session.dto.ts
-│   │   │   │   │       └── user-session.dto.ts
+│   │   │   │   │   ├── user-session
+│   │   │   │   │   │   ├── active-user-session.dto.ts
+│   │   │   │   │   │   ├── after-get-interaction-session.dto.ts
+│   │   │   │   │   │   ├── after-get-oidc-callback-session.dto.ts
+│   │   │   │   │   │   ├── after-redirect-to-idp-with-email-session.dto.ts
+│   │   │   │   │   │   ├── after-redirect-to-idp-with-idp-id-session.dto.ts
+│   │   │   │   │   │   └── user-session.dto.ts
+│   │   │   │   │   └── verify-email.dto.ts
 │   │   │   │   ├── enums
 │   │   │   │   │   ├── error-code.enum.ts
 │   │   │   │   │   ├── index.ts
@@ -548,6 +554,7 @@
 │   │   │   │   │   │   ├── temporary-restricted-error.svg
 │   │   │   │   │   │   └── unauthorized-email-error.svg
 │   │   │   │   │   ├── js
+│   │   │   │   │   │   ├── disabled-with-countdown.js
 │   │   │   │   │   │   ├── email-fca.js
 │   │   │   │   │   │   ├── email-suggestion.js
 │   │   │   │   │   │   ├── end-session-confirm.js
@@ -583,7 +590,8 @@
 │   │   │   │       │   ├── scripts.ejs
 │   │   │   │       │   ├── skiplinks.ejs
 │   │   │   │       │   └── test-env-warning.ejs
-│   │   │   │       └── interaction.ejs
+│   │   │   │       ├── interaction.ejs
+│   │   │   │       └── verify-email.ejs
 │   │   │   └── tsconfig.app.json
 │   │   ├── csmr-rie
 │   │   │   ├── src
@@ -604,10 +612,6 @@
 │   │   │   │   │   ├── csmr-http-proxy.config.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── index.ts
-│   │   │   │   └── main.ts
-│   │   │   └── tsconfig.app.json
-│   │   ├── mock-data-provider
-│   │   │   ├── src
 │   │   │   │   └── main.ts
 │   │   │   └── tsconfig.app.json
 │   │   ├── mock-identity-provider-fca-low
@@ -830,6 +834,19 @@
 │   │   │   │   └── services
 │   │   │   │       ├── email-validator.service.spec.ts
 │   │   │   │       ├── email-validator.service.ts
+│   │   │   │       └── index.ts
+│   │   │   └── tsconfig.lib.json
+│   │   ├── email-verification
+│   │   │   ├── src
+│   │   │   │   ├── dto
+│   │   │   │   │   ├── email-verification-config.dto.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── email-verification.module.ts
+│   │   │   │   ├── email-verification.service.spec.ts
+│   │   │   │   ├── email-verification.service.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── schemas
+│   │   │   │       ├── email-verification-token.schema.ts
 │   │   │   │       └── index.ts
 │   │   │   └── tsconfig.lib.json
 │   │   ├── exceptions
@@ -1146,6 +1163,21 @@
 │   │   │   │   ├── rabbitmq.module.spec.ts
 │   │   │   │   └── rabbitmq.module.ts
 │   │   │   └── tsconfig.lib.json
+│   │   ├── rate-limiter
+│   │   │   ├── src
+│   │   │   │   ├── dto
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── rate-limiter.config.ts
+│   │   │   │   ├── enum
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── rate-limiter-key-prefix.enum.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── rate-limiter.module.ts
+│   │   │   │   └── services
+│   │   │   │       ├── index.ts
+│   │   │   │       ├── rate-limiter.service.ts
+│   │   │   │       └── rate-limiter.test.spec.ts
+│   │   │   └── tsconfig.lib.json
 │   │   ├── redis
 │   │   │   ├── .mocks
 │   │   │   │   ├── index.ts
@@ -1377,6 +1409,16 @@
 │           └── requests
 │               ├── app-req.conf
 │               └── app.csr
+├── mock-data-provider
+│   ├── .gitignore
+│   ├── Dockerfile
+│   ├── package.json
+│   ├── src
+│   │   ├── app.test.ts
+│   │   ├── app.ts
+│   │   └── main.ts
+│   ├── tsconfig.json
+│   └── yarn.lock
 ├── pcdbapi
 │   ├── .dockerignore
 │   ├── .gitignore
@@ -1444,6 +1486,7 @@
     │   │   │   ├── connexion-acr.feature
     │   │   │   ├── connexion-claims.feature
     │   │   │   ├── connexion-email-authorise.feature
+    │   │   │   ├── connexion-email-verification.feature
     │   │   │   ├── connexion-fi-non-signé.feature
     │   │   │   ├── connexion-fi.feature
     │   │   │   ├── connexion-identite-personnalisee.feature
@@ -1553,6 +1596,7 @@
     │       └── usager
     │           └── steps
     │               ├── contact-support-steps.ts
+    │               ├── email-verification-steps.ts
     │               ├── identity-provider-steps.ts
     │               ├── idp-proconnect-identite-steps.ts
     │               ├── interaction-idp-selection-steps.ts
@@ -1570,4 +1614,4 @@
     │   └── parse-business-log.ts
     ├── tsconfig.json
     └── yarn.lock
-361 directories, 1211 files
+370 directories, 1246 files
