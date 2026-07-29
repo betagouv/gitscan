@@ -37,6 +37,7 @@
     ├── .env.example
     ├── .eslintrc.json
     ├── .gitignore
+    ├── .yarnrc.yml
     ├── Dockerfile
     ├── components
     │   ├── actions
@@ -58,8 +59,8 @@
     │   │   ├── map
     │   │   │   ├── Header.tsx
     │   │   │   ├── Map.tsx
-    │   │   │   ├── MapDetails.tsx
-    │   │   │   └── MapLegends.tsx
+    │   │   │   ├── MapLegends.tsx
+    │   │   │   └── MapTooltip.tsx
     │   │   └── table
     │   │       ├── Header.tsx
     │   │       └── Table.tsx
@@ -145,9 +146,11 @@
     │   ├── Left.svg
     │   ├── Placeholder-image.svg
     │   ├── PlaceholderImageArticle.svg
+    │   ├── apple-touch-icon.png
     │   ├── dashboard.png
     │   ├── dashboard.svg
     │   ├── favicon.ico
+    │   ├── favicon.png
     │   ├── fonts
     │   │   └── marianne
     │   │       ├── Marianne-Bold.woff
@@ -175,6 +178,8 @@
     │   │       ├── Marianne-Thin_Italic.woff
     │   │       └── Marianne-Thin_Italic.woff2
     │   ├── fonts.css
+    │   ├── geo
+    │   │   └── departements.geojson
     │   ├── icons
     │   │   ├── about-circle.svg
     │   │   ├── avatar.svg
@@ -200,9 +205,6 @@
     │   │   ├── user-search-blue.svg
     │   │   ├── user-search.svg
     │   │   └── user.svg
-    │   ├── libs
-    │   │   └── countrymap
-    │   │       └── countrymap.js
     │   ├── next.svg
     │   ├── placeholder-img.svg
     │   ├── step-1.svg
@@ -212,6 +214,9 @@
     │   ├── tech.svg
     │   ├── thirteen.svg
     │   └── vercel.svg
+    ├── scripts
+    │   ├── seed-elastic.ts
+    │   └── setup-elastic.ts
     ├── sentry.client.config.ts
     ├── sentry.edge.config.ts
     ├── sentry.server.config.ts
@@ -227,12 +232,14 @@
     │   ├── elastic-client.ts
     │   ├── mailter.ts
     │   ├── map
+    │   │   ├── details.ts
     │   │   ├── props.ts
     │   │   └── type.ts
     │   ├── orders.ts
     │   ├── overrides.css
     │   ├── prompts.ts
     │   ├── rate-limit.ts
+    │   ├── regions.ts
     │   └── tools.ts
     └── yarn.lock
-46 directories, 191 files
+46 directories, 198 files
