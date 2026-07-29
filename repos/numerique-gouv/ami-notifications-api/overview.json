@@ -1,11 +1,12 @@
 {
   "url": "https://github.com/numerique-gouv/ami-notifications-api",
   "name": "ami-notifications-api",
-  "description": "Cette API permet de gérer les notifications de l'application mobile interministérielle (AMI), notamment la création, la liste et le stockage des URL push. Elle fournit des points d'entrée pour ces opérations.",
+  "description": "L'API AMI (Application Mobile Interministérielle) de notifications permet de créer et de lister des notifications, et de stocker les URL push enregistrées à partir des clients (web ou mobile) entre autres choses. Elle gère l'envoi de notifications et l'interaction avec les services.",
   "language": "Python",
   "features": [
-    "Notifications & Alertes",
-    "Authentification & Accès"
+    "Notifications",
+    "Authentification & Accès",
+    "API & Intégrations"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -14,7 +15,9 @@
     "asyncpg",
     "webpush",
     "mozilla-django-oidc",
-    "django-dsfr"
+    "djangorestframework",
+    "uvicorn",
+    "gunicorn"
   ],
   "components": [
     "API REST & GraphQL",
@@ -24,7 +27,8 @@
   ],
   "auth": {
     "methods": [
-      "oauth2"
+      "oauth2",
+      "saml"
     ],
     "providers": [
       "FranceConnect"
@@ -32,7 +36,7 @@
   },
   "tests": "Pytest",
   "workflows": [],
-  "lastActivity": "2026-07-21T16:08:50+02:00",
+  "lastActivity": "2026-07-28T15:05:11+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -43,10 +47,12 @@
     "openIssues": null
   },
   "tags": [
-    "Données & Open Data",
-    "Écosystème beta.gouv / État",
+    "Notifications",
+    "API",
     "Python",
-    "Bases de données SQL",
-    "Sécurité & Auth"
+    "Django",
+    "Sécurité",
+    "Authentification",
+    "FranceConnect"
   ]
 }
