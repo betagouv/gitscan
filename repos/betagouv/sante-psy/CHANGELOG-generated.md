@@ -1,28 +1,30 @@
-## Changelog : sante-psy (30 derniers jours, au 20 juillet 2026)
+## Changelog : sante-psy (30 derniers jours, au 27 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur, notamment au niveau de l'annuaire des psychologues, de la gestion des rendez-vous et de l'espace étudiant. Des corrections de texte et des ajustements d'interface ont également été apportés pour une meilleure clarté et fluidité.
+Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur et la gestion des informations des psychologues et des étudiants. Des ajustements ont été apportés à l'annuaire des psychologues, à la prise de rendez-vous, et aux pages de connexion et de gestion de compte. Des améliorations de la documentation et de la clarté des informations ont également été réalisées.
 
 ### Évolutions fonctionnelles
 - **Annuaire des psychologues :**
-    - Utilisation des coordonnées géographiques lorsque disponibles pour une recherche plus précise [#864](https://github.com/betagouv/sante-psy/issues/864).
-    - Suppression de l'objet adresse des paramètres d'URL pour simplifier les liens [#862](https://github.com/betagouv/sante-psy/issues/862).
-    - Possibilité pour les psychologues de modifier leur adresse [#865](https://github.com/betagouv/sante-psy/issues/865).
-    - Amélioration de l'ordre des résultats dans l'annuaire (correction d'un problème de randomisation) [#867](https://github.com/betagouv/sante-psy/issues/867).
-- **Rendez-vous :** Les psychologues ne peuvent plus proposer de nouveaux rendez-vous si la date n'a pas été modifiée [#866](https://github.com/betagouv/sante-psy/issues/866).
+    - Suppression de l'adresse de l'objet de l'URL pour simplifier l'accès. [#864](https://github.com/betagouv/sante-psy/issues/864)
+    - Utilisation des coordonnées géographiques lorsque disponibles pour une recherche plus précise. [#864](https://github.com/betagouv/sante-psy/issues/864)
+    - Correction du tri aléatoire des résultats dans la base de données. [#867](https://github.com/betagouv/sante-psy/issues/867)
+    - Possibilité pour les psychologues de modifier leur adresse. [#865](https://github.com/betagouv/sante-psy/issues/865)
+- **Prise de rendez-vous :** Les psychologues ne peuvent plus proposer de nouveaux rendez-vous si la date n'a pas été modifiée. [#866](https://github.com/betagouv/sante-psy/issues/866)
 - **Espace étudiant :**
-    - Ajout d'un lien pour supprimer son compte, redirigeant vers le support [#868](https://github.com/betagouv/sante-psy/issues/868).
-    - Affichage de l'adresse e-mail actuelle désactivée dans la page de modification du profil.
-    - Avertissement indiquant qu'il n'est possible de modifier l'e-mail que si l'utilisateur est connecté.
-- **Connexion :** Amélioration du texte sur la page de connexion.
-- **Notifications :** La tâche cron de notification des étudiants est maintenant exécutée à 8h00.
-- **FAQ :** Mise à jour de la formulation de certaines questions et réponses.
+    - Ajout d'un lien pour supprimer son compte via le support. [#869](https://github.com/betagouv/sante-psy/issues/869)
+    - Affichage de l'adresse e-mail actuelle désactivée sur la page de modification du profil.
+    - Avertissement indiquant que l'adresse e-mail ne peut être modifiée que si l'utilisateur est connecté.
+- **Authentification :**
+    - Amélioration de la formulation sur la page de connexion.
+    - Redirection depuis `/espace-etudiant` vers `/login`.
+- **Certificats :** Possibilité d'uploader des certificats. [#870](https://github.com/betagouv/sante-psy/issues/870)
+- **Contact Support :** Amélioration de la formulation pour contacter le support. [#868](https://github.com/betagouv/sante-psy/issues/868)
 
 ### Évolutions techniques
-- Refonte de l'utilisation des coordonnées dans l'annuaire pour une meilleure performance [#851](https://github.com/betagouv/sante-psy/issues/851).
-- Correction de problèmes de linting.
+- Correction de problèmes de linting. [#865](https://github.com/betagouv/sante-psy/issues/865)
+- Mise en place d'un cron pour notifier les étudiants à 8h00.
 
 ### Autres changements
+- Mise à jour de la formulation de la FAQ. [#867](https://github.com/betagouv/sante-psy/issues/867)
 - Amélioration de la lisibilité des informations sur la page de connexion.
-- Exclusion temporaire de tests DS défaillants pour permettre la poursuite du développement.
-- Mise à jour de la redirection de l'espace étudiant vers la page de connexion.
+- Mise à jour des questions de la FAQ.
