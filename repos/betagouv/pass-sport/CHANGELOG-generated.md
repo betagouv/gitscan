@@ -1,14 +1,13 @@
-## Changelog : pass-sport (30 derniers jours, au 23 juillet 2026)
+## Changelog : pass-sport (30 derniers jours, au 27 juillet 2026)
 
 ### Résumé
-Ce changelog fait état d'améliorations significatives concernant le déploiement et la configuration de l'application en production. Les modifications se concentrent sur l'optimisation de la disponibilité et de la sécurité de l'application, notamment via l'ajout d'un Web Application Firewall (WAF) et l'amélioration de la gestion des processus.
+Ce mois-ci, les améliorations se concentrent sur la stabilisation de l'infrastructure de production et la correction de bugs. Des ajustements ont été apportés à la configuration du serveur Nginx pour améliorer la sécurité et la disponibilité du service. Un correctif a également été implémenté pour résoudre un problème d'analyse JSON dans la gestion des contacts.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle visible pour les utilisateurs n'a été apportée durant cette période.
+- Correction d'un bug empêchant l'analyse correcte des données JSON pour les contacts [#518](https://github.com/betagouv/pass-sport/issues/518).
 
 ### Évolutions techniques
-- **Déploiement & Infrastructure:** Configuration du Web Application Firewall (WAF) en production pour renforcer la sécurité de l'application. [#516](https://github.com/betagouv/pass-sport/issues/516) et [#514](https://github.com/betagouv/pass-sport/issues/514)
-- **Procfile:** Modification du `Procfile` pour lancer deux processus afin de minimiser les interruptions de service lors des déploiements. [#508](https://github.com/betagouv/pass-sport/issues/508)
-- **Procfile:** Configuration de l'application pour écouter sur toutes les interfaces réseau. [#507](https://github.com/betagouv/pass-sport/issues/507)
-- **Port:** Correction de la configuration du port d'écoute de l'application. [#513](https://github.com/betagouv/pass-sport/issues/513), [#511](https://github.com/betagouv/pass-sport/issues/511), [#510](https://github.com/betagouv/pass-sport/issues/510), [#509](https://github.com/betagouv/pass-sport/issues/509)
-- **Production:** Diverses mises à jour de configuration pour l'environnement de production. [#512](https://github.com/betagouv/pass-sport/issues/512)
+- Activation de la configuration WAF (Web Application Firewall) sur le proxy Nginx en production [#516](https://github.com/betagouv/pass-sport/issues/516), [#514](https://github.com/betagouv/pass-sport/issues/514).
+- Ajustements de la configuration du port pour la production [#513](https://github.com/betagouv/pass-sport/issues/513), [#512](https://github.com/betagouv/pass-sport/issues/512), [#510](https://github.com/betagouv/pass-sport/issues/510), [#509](https://github.com/betagouv/pass-sport/issues/509).
+- Modification du Procfile pour lancer deux processus afin de minimiser les interruptions de service lors des déploiements [#508](https://github.com/betagouv/pass-sport/issues/508).
+- Configuration du Procfile pour écouter sur toutes les interfaces réseau [#507](https://github.com/betagouv/pass-sport/issues/507).
