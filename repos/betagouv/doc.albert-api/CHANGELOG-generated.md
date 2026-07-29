@@ -1,14 +1,22 @@
-## Changelog : doc.albert-api (30 derniers jours, au 2026-07-03)
+## Changelog : doc.albert-api (30 derniers jours, au 28 juillet 2026)
 
 ### Résumé
-La documentation de l'API Albert a été mise à jour pour refléter les dernières modifications apportées à l'API, notamment concernant l'authentification et la gestion des erreurs. Ces changements visent à améliorer l'expérience des développeurs et à faciliter l'intégration de l'API Albert dans leurs applications.
+Cette mise à jour améliore significativement la documentation de l'API Albert, notamment concernant les modèles, les embeddings, et les guides d'utilisation pour des cas comme la RAG (Retrieval-Augmented Generation) et l'OCR. Des ajustements ont également été faits concernant les quotas et limites d'utilisation de l'API.
 
 ### Évolutions fonctionnelles
-- Mise à jour de la documentation concernant l'authentification avec une clé API.
-- Amélioration de la documentation sur la gestion des erreurs retournées par l'API.
+- Ajout d'une page dédiée aux embeddings avec une icône associée.
+- Mise à jour de la documentation concernant les modèles disponibles.
+- Amélioration du guide d'utilisation pour la RAG, avec une réécriture complète et une section dédiée à l'audio.
+- Mise à jour du guide OCR.
+- Correction d'un problème lié à la RAG.
+- Mise à jour de l'URL du site web dans la documentation.
 
 ### Évolutions techniques
-- Mise à jour de la configuration Gitbook.
+- Modification de la structure des pages de modèles.
+- Changement du format des "hints" dans la documentation.
+- Ajout de nouvelles configurations pour l'open code.
+- Ajout de nouvelles limites de débit pour deux nouveaux modèles.
 
 ### Autres changements
-- Aucune information supplémentaire.
+- Documentation des quotas et limites d'utilisation de l'API.
+- Correction d'un problème mineur non spécifié [#688d2c3](https://github.com/betagouv/doc.albert-api/commit/688d2c3).
