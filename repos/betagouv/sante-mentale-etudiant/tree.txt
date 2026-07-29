@@ -1,4 +1,5 @@
 .
+├── .env.sample
 ├── .github
 │   └── workflows
 │       └── nodejs.yml
@@ -7,8 +8,12 @@
 ├── .prettierrc
 ├── README.md
 ├── app
+│   ├── actions.ts
 │   ├── aider-un-proche
 │   │   └── page.tsx
+│   ├── api
+│   │   └── newsletter
+│   │       └── route.ts
 │   ├── articles
 │   │   └── page.tsx
 │   ├── besoin-de-soutien
@@ -28,24 +33,53 @@
 │   └── trouver-du-soutien
 │       └── page.tsx
 ├── components
+│   ├── aider-un-proche
+│   │   ├── Help.module.scss
+│   │   ├── Help.tsx
+│   │   ├── HelpCall.module.scss
+│   │   ├── HelpCall.tsx
+│   │   ├── HelpReact.module.scss
+│   │   ├── HelpReact.tsx
+│   │   ├── HelpSigns.module.scss
+│   │   ├── HelpSigns.tsx
+│   │   ├── HelpWords.module.scss
+│   │   ├── HelpWords.tsx
+│   │   ├── HelpYourself.module.scss
+│   │   ├── HelpYourself.tsx
+│   │   └── data
+│   │       ├── lienSteps.ts
+│   │       └── signs.ts
+│   ├── besoin-de-parler
+│   │   ├── NeedToTalkBanner.module.scss
+│   │   └── NeedToTalkBanner.tsx
 │   ├── common
 │   │   ├── Badges.module.scss
 │   │   ├── Badges.tsx
 │   │   ├── CustomCard.module.scss
 │   │   ├── CustomCard.tsx
+│   │   ├── InfoFields.module.scss
+│   │   ├── InfoFields.tsx
 │   │   ├── InputAddress.module.scss
 │   │   ├── InputAddress.tsx
 │   │   ├── RequiredField.module.scss
-│   │   └── RequiredField.tsx
+│   │   ├── RequiredField.tsx
+│   │   └── Tiles.tsx
 │   ├── home
-│   │   ├── LaunchOrienteur.module.css
+│   │   ├── LaunchOrienteur.module.scss
 │   │   ├── LaunchOrienteur.tsx
 │   │   ├── LaunchOrienteurCard.module.scss
 │   │   └── LaunchOrienteurCard.tsx
 │   ├── layout
+│   │   ├── EmergencyModal.module.scss
+│   │   ├── EmergencyModal.tsx
 │   │   ├── Footer.tsx
 │   │   ├── Header.tsx
 │   │   └── Newsletter.tsx
+│   ├── modals
+│   │   ├── ModalBapu.tsx
+│   │   ├── ModalSse.tsx
+│   │   ├── Modals.module.scss
+│   │   └── index.ts
 │   ├── orienteur
 │   │   ├── Orienteur.module.scss
 │   │   ├── Orienteur.tsx
@@ -64,11 +98,16 @@
 │   │   │   ├── findHelp.ts
 │   │   │   └── resultCards.tsx
 │   │   └── findHelpResults.module.scss
-│   └── typography
-│       ├── Subtitle.module.scss
-│       ├── Subtitle.tsx
-│       ├── Title.module.scss
-│       └── Title.tsx
+│   ├── typography
+│   │   ├── Subtitle.module.scss
+│   │   ├── Subtitle.tsx
+│   │   ├── Title.module.scss
+│   │   └── Title.tsx
+│   └── wrapper
+│       └── FullBleedSection.tsx
+├── data
+│   ├── bapu.json
+│   └── sse.json
 ├── dsfr-bootstrap
 │   ├── defaultColorScheme.ts
 │   ├── index.tsx
@@ -76,6 +115,9 @@
 ├── eslint.config.mjs
 ├── hooks
 │   └── useQueryState.ts
+├── lib
+│   ├── bapu.ts
+│   └── sse.ts
 ├── next.config.ts
 ├── package.json
 ├── pnpm-lock.yaml
@@ -85,31 +127,39 @@
 │   ├── globe.svg
 │   ├── images
 │   │   ├── illustrations
+│   │   │   ├── need-to-talk-bg.svg
 │   │   │   ├── student-mood.svg
 │   │   │   └── students-support.svg
 │   │   ├── logos
 │   │   │   ├── 3018.png
 │   │   │   ├── 3040.png
+│   │   │   ├── 3114.png
 │   │   │   ├── 3919.png
 │   │   │   ├── SPE.png
-│   │   │   └── nightline.png
-│   │   └── pictograms
-│   │       ├── buildings
-│   │       │   └── city-hall.svg
-│   │       ├── digital
-│   │       │   ├── avatar.svg
-│   │       │   ├── calendar.svg
-│   │       │   ├── ecosystem.svg
-│   │       │   ├── search.svg
-│   │       │   ├── self-training.svg
-│   │       │   └── smartphone.svg
-│   │       ├── health
-│   │       │   └── hospital.svg
-│   │       ├── leisure
-│   │       │   └── community.svg
-│   │       └── system
-│   │           ├── success.svg
-│   │           └── warning.svg
+│   │   │   ├── nightline.png
+│   │   │   └── sme.png
+│   │   ├── pictograms
+│   │   │   ├── accessibility
+│   │   │   │   └── ear-off.svg
+│   │   │   ├── buildings
+│   │   │   │   └── city-hall.svg
+│   │   │   ├── digital
+│   │   │   │   ├── avatar.svg
+│   │   │   │   ├── calendar.svg
+│   │   │   │   ├── ecosystem.svg
+│   │   │   │   ├── search.svg
+│   │   │   │   ├── self-training.svg
+│   │   │   │   └── smartphone.svg
+│   │   │   ├── health
+│   │   │   │   └── hospital.svg
+│   │   │   ├── leisure
+│   │   │   │   └── community.svg
+│   │   │   └── system
+│   │   │       ├── success.svg
+│   │   │       └── warning.svg
+│   │   └── pictures
+│   │       ├── psy.jpg
+│   │       └── woman-phone.jpg
 │   ├── next.svg
 │   ├── vercel.svg
 │   └── window.svg
@@ -117,5 +167,9 @@
 │   └── address.ts
 ├── styles
 │   └── colors.scss
-└── tsconfig.json
-35 directories, 85 files
+├── tsconfig.json
+└── utils
+    ├── distance.ts
+    ├── email.ts
+    └── misc.ts
+47 directories, 127 files
