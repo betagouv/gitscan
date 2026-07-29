@@ -1,26 +1,20 @@
 ## Changelog : cartographie (30 derniers jours, au 10 juillet 2026)
 
 ### Résumé
-Cette version apporte des améliorations de la stabilité et de la performance, notamment au niveau de la gestion du cache des lieux. Des corrections ont été apportées à l'affichage des messages d'erreur et à la gestion des toasts. De plus, des optimisations ont été réalisées pour améliorer l'observabilité et le monitoring de l'application.
+Cette version apporte des améliorations de stabilité et de diagnostic pour le cache des lieux, ainsi que des corrections concernant l'affichage des notifications et la gestion des erreurs du formulaire de contact. Des optimisations techniques ont également été réalisées pour l'observabilité et la journalisation.
 
 ### Évolutions fonctionnelles
-- Correction de l'affichage des toasts pour qu'ils restent visibles au-dessus du backdrop du modal de contact.
-- Traduction des codes d'erreur de l'action serveur au lieu d'afficher les erreurs brutes, améliorant l'expérience utilisateur.
-- Ajout d'un filtre par source de données pour affiner la recherche de lieux [#a4f4fd0](https://github.com/anct-cartographie-nationale/cartographie/commit/a4f4fd0662c3b76ef8563c42dfb092e52e307a16).
+- Correction d'un problème d'affichage des toasts (notifications) qui pouvaient être masqués par le modal de contact. [#94c0c6b](https://github.com/anct-cartographie-nationale/cartographie/commit/94c0c6b13b0c9618de7ce7822b3d16c9219737b0)
+- Amélioration de la gestion des erreurs du formulaire de contact : les codes d'erreur du serveur sont maintenant traduits pour une meilleure compréhension par l'utilisateur. [#94c0c6b](https://github.com/anct-cartographie-nationale/cartographie/commit/94c0c6b13b0c9618de7ce7822b3d16c9219737b0)
 
 ### Évolutions techniques
-- Amélioration de la gestion du cache des lieux : partage du store entre les différentes couches du bundle via un singleton `globalThis`.
-- Instrumentation du store des lieux pour diagnostiquer les fiches potentiellement obsolètes [#052847a](https://github.com/anct-cartographie-nationale/cartographie/commit/052847a3c47a96a4b40bc93fef7a57426026576d).
-- Refactor de l'accès aux variables d'environnement pour utiliser la notation par points.
-- Mise à jour des dépendances React Email pour une importation unifiée.
-- Mise à jour des actions GitHub (checkout et cache) vers leurs dernières versions.
-- Optimisation de la gestion du cache Nginx avec une réduction du TTL à 5 minutes pour une propagation plus rapide des mises à jour.
-- Implémentation de la corrélation des logs Nginx et Sentry via un `request_id` pour faciliter le débogage.
-- Émission des logs d'accès Nginx au format JSON pour une meilleure intégration avec Grafana.
-- Capture des échecs de préchargement du cache au démarrage pour un monitoring plus précis.
-- Ajout de logs structurés des requêtes serveur pour une meilleure analyse.
-- Gestion des erreurs de chargement du cache : tentative de relance en cas d'échec au lieu de mettre en cache le rejet.
+- Amélioration du cache des lieux :
+    - Instrumentation du cache pour faciliter le diagnostic des données obsolètes. [#052847a](https://github.com/anct-cartographie-nationale/cartographie/commit/052847a3c47a96a4b40bc93fef7a57426026576d)
+    - Partage de l'instance du cache entre les différentes parties de l'application pour une meilleure cohérence. [#5053aac](https://github.com/anct-cartographie-nationale/cartographie/commit/5053aacfe4acb5f8a33a877b0770e09f1eb10f0f)
+- Mise à jour des dépendances React Email pour une gestion unifiée des imports. [#7154acb](https://github.com/anct-cartographie-nationale/cartographie/commit/7154acb98641994a0528a58f788916241f48416a)
+- Mise à jour des actions GitHub utilisées pour le CI/CD (actions/checkout et actions/cache). [#87ee084](https://github.com/anct-cartographie-nationale/cartographie/commit/87ee084771395763268135f6326141018131710e)
+- Refactorisation de l'accès aux variables d'environnement pour utiliser la notation par points. [#f7deebe](https://github.com/anct-cartographie-nationale/cartographie/commit/f7deebe5c33757787576b225912005419496a696)
 
 ### Autres changements
-- Mise à jour de la configuration de Biome pour s'adapter à la version 2.5.
-- Mise à jour des dépendances du projet.
+- Mise à jour de la configuration de Biome pour s'aligner sur la version 2.5. [#1f3b970](https://github.com/anct-cartographie-nationale/cartographie/commit/1f3b9702b33a0f83995319f6946a22570f9d343f)
+- Mise à jour de la version de la librairie `react-email`. [#7154acb](https://github.com/anct-cartographie-nationale/cartographie/commit/7154acb98641994a0528a58f788916241f48416a)
