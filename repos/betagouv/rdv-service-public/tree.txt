@@ -410,6 +410,9 @@
 │   │   ├── users
 │   │   │   ├── edit_form.rb
 │   │   │   ├── login_code_request_form.rb
+│   │   │   ├── rdv_booking_form
+│   │   │   │   ├── ants_concern.rb
+│   │   │   │   └── selected_user_param.rb
 │   │   │   └── rdv_booking_form.rb
 │   │   └── zone_import_form.rb
 │   ├── helpers
@@ -553,6 +556,7 @@
 │   │       │   ├── _motifs.scss
 │   │       │   ├── _nav.scss
 │   │       │   ├── _planning_agents_select.scss
+│   │       │   ├── _proche_selection.scss
 │   │       │   ├── _rdv_solidarites_instance_name.scss
 │   │       │   ├── _rdv_status.scss
 │   │       │   ├── _recurrence.scss
@@ -838,6 +842,7 @@
 │   │   │   └── user_profile_policy.rb
 │   │   └── user
 │   │       ├── participation_policy.rb
+│   │       ├── rdv_booking_policy.rb
 │   │       ├── rdv_policy.rb
 │   │       └── user_policy.rb
 │   ├── presenters
@@ -1561,9 +1566,8 @@
 │       │   │   └── index.html.slim
 │       │   ├── rdv_wizard_steps
 │       │   │   ├── _rdv_wizard_summary.html.slim
-│       │   │   ├── step1.html.slim
-│       │   │   ├── step2.html.slim
-│       │   │   └── step3.html.slim
+│       │   │   ├── _select_users_section.html.slim
+│       │   │   └── new.html.slim
 │       │   ├── rdvs
 │       │   │   ├── _creneaux.html.slim
 │       │   │   ├── _file_attente.html.slim
@@ -2463,21 +2467,30 @@
 │   │       │   ├── user_is_redirected_back_after_login_spec.rb
 │   │       │   ├── user_session_expires_spec.rb
 │   │       │   └── user_signs_up_and_signs_in_spec.rb
-│   │       ├── online_booking
-│   │       │   ├── creneaux_selection_spec.rb
-│   │       │   ├── default_spec.rb
-│   │       │   ├── link_to_take_rdv_in_organisation_spec.rb
+│   │       ├── prise_de_rdv
+│   │       │   ├── creneau_devenu_indisponible_spec.rb
+│   │       │   ├── depuis_invitation_spec.rb
+│   │       │   ├── depuis_lien_public_organisation_spec.rb
+│   │       │   ├── depuis_lien_resin_spec.rb
 │   │       │   ├── login_multi_fiche_spec.rb
-│   │       │   ├── motif_selection_spec.rb
-│   │       │   ├── on_rdv_mairie_spec.rb
-│   │       │   ├── on_rdv_service_public_spec.rb
-│   │       │   ├── organisation_selection_spec.rb
+│   │       │   ├── motif_ants_spec.rb
+│   │       │   ├── motif_avec_restriction_pre_rdv_spec.rb
+│   │       │   ├── motif_de_suivi_spec.rb
+│   │       │   ├── motif_reservable_par_les_prescripteurs_spec.rb
+│   │       │   ├── motif_sans_service_spec.rb
+│   │       │   ├── motif_telephonique_spec.rb
+│   │       │   ├── motif_visio_spec.rb
+│   │       │   ├── pour_un_proche_spec.rb
 │   │       │   ├── reprendre_rdv_apres_annulation_spec.rb
-│   │       │   ├── resin_link_spec.rb
 │   │       │   ├── sectorisation_with_two_territories_spec.rb
-│   │       │   ├── with_invitation_spec.rb
-│   │       │   └── with_short_rdv_link_spec.rb
+│   │       │   ├── selection_du_creneau_spec.rb
+│   │       │   ├── selection_du_motif_spec.rb
+│   │       │   ├── selection_du_service_spec.rb
+│   │       │   ├── selection_dune_organisation_spec.rb
+│   │       │   ├── sur_rdv_service_public_spec.rb
+│   │       │   └── sur_rdv_solidarites_spec.rb
 │   │       ├── reminders_spec.rb
+│   │       ├── user_can_access_rdv_via_short_link_spec.rb
 │   │       ├── user_can_change_rdv_participant_spec.rb
 │   │       ├── user_can_manage_collective_rdv_spec.rb
 │   │       ├── user_can_manage_rdv_spec.rb
@@ -2538,6 +2551,8 @@
 │   │   ├── relative_user_form_spec.rb
 │   │   └── users
 │   │       ├── login_code_request_form_spec.rb
+│   │       ├── rdv_booking_form_cas_ants_multiple_predemandes_spec.rb
+│   │       ├── rdv_booking_form_cas_ants_unique_predemande_spec.rb
 │   │       ├── rdv_booking_form_spec.rb
 │   │       └── rdv_builder_spec.rb
 │   ├── helpers
@@ -2650,6 +2665,7 @@
 │   │   │   │   └── feature_flags_spec.rb
 │   │   │   ├── ants
 │   │   │   │   └── appointment_serializer_and_listener_spec.rb
+│   │   │   ├── benign_errors_spec.rb
 │   │   │   ├── expiration_spec.rb
 │   │   │   ├── full_name_concern_spec.rb
 │   │   │   ├── human_attribute_value_spec.rb
@@ -2739,6 +2755,7 @@
 │   │   │   └── user_profile_policy_spec.rb
 │   │   └── user
 │   │       ├── participation_policy_spec.rb
+│   │       ├── rdv_booking_policy_spec.rb
 │   │       └── rdv_policy_spec.rb
 │   ├── presenters
 │   │   ├── admin
@@ -2971,4 +2988,4 @@
 ├── vendor
 │   └── .keep
 └── yarn.lock
-458 directories, 2515 files
+459 directories, 2531 files
