@@ -1,100 +1,32 @@
-## Changelog : device-management (30 derniers jours, au 2026-07-15)
+## Changelog : device-management (30 derniers jours, au 15 juillet 2026)
 
 ### Résumé
-Ce mois-ci, le projet a connu des avancées significatives en termes de gestion de la configuration, de sécurité et d'observabilité. L'introduction de la gestion des *feature flags* et des surcharges de configuration runtime permet une plus grande flexibilité et un contrôle plus fin du système. Des améliorations ont également été apportées à l'interface d'administration, notamment avec un nouveau tableau de bord pour le suivi de l'adoption et des journaux d'audit plus détaillés. La préparation du déploiement via Helm et l'amélioration de la sécurité sont également des points importants.
+Les dernières mises à jour de device-management se concentrent sur l'amélioration de la gestion des configurations, l'ajout de fonctionnalités de proxy LLM, l'amélioration de l'observabilité et de la sécurité, ainsi que la préparation du déploiement cloud-native. Plusieurs correctifs ont été apportés pour améliorer la stabilité et la fiabilité du système.
 
 ### Évolutions fonctionnelles
-
-*   Ajout d'un histogramme du trafic LLM (chat vs embeddings) sur le tableau de bord d'administration.
-*   Affichage de la version du serveur device-management et du modèle d'embedding sur le tableau de bord, avec alerte en cas de versions mixtes.
-*   Implémentation d'un journal d'audit plus détaillé avec des filtres en direct, une recherche améliorée et un affichage dense des entrées.
-*   Possibilité de filtrer les journaux par plugin.
-*   Ajout d'un toggle sur le tableau de bord pour afficher les données par appareils ou par utilisateurs.
-*   Les credentials Keycloak et de relais sont maintenant modifiables via l'interface d'administration.
-*   Ajout d'une page de débogage avec édition en ligne de la configuration, diff, reset et rechargement.
-*   Possibilité de visualiser l'état de santé des pods (RAM, charge CPU, requêtes).
-*   Implémentation d'un système de *feature flags* tri-état (transparent, forcé ON, forcé OFF).
-*   Ajout d'un proxy LLM compatible OpenAI avec la possibilité de surcharger l'endpoint.
-*   Ajout d'un endpoint pour récupérer les embeddings.
-*   Redirection automatique de la racine `/` vers `/catalog/` et `/admin` vers `/admin/`.
+- Ajout d'un proxy LLM compatible OpenAI via l'endpoint `/llm/v1` avec possibilité de surcharger l'endpoint LLM. [#27](https://github.com/IA-Generative/device-management/pull/27)
+- Implémentation de la gestion des feature flags avec un état tri-valeur (transparent, activé, désactivé). [#62c09c4](https://github.com/IA-Generative/device-management/commit/62c09c4)
+- Ajout d'un tableau de bord avec des histogrammes du trafic LLM (chat vs embeddings). [#d5705bb](https://github.com/IA-Generative/device-management/commit/d5705bb)
+- Affichage de la version du device-management et du modèle d'embedding sur le tableau de bord. [#d3a2fd3](https://github.com/IA-Generative/device-management/commit/d3a2fd3)
+- Amélioration du journal d'audit avec des filtres en direct, une recherche détaillée et un défilement infini. [#a8f1e0a](https://github.com/IA-Generative/device-management/commit/a8f1e0a)
+- Ajout de la possibilité de basculer entre l'affichage des appareils et des utilisateurs sur le widget d'adoption du tableau de bord. [#b759bdb](https://github.com/IA-Generative/device-management/commit/b759bdb)
+- Redirections automatiques de la racine `/` vers `/catalog/` et de `/admin` vers `/admin/`. [#b673c7b](https://github.com/IA-Generative/device-management/commit/b673c7b)
+- Possibilité d'éditer les informations d'identification (Keycloak, relais) et d'importer des overrides de configuration au démarrage. [#5e60baa](https://github.com/IA-Generative/device-management/commit/5e60baa)
+- Ajout de légendes et d'infobulles sur les statuts de configuration dans l'interface d'administration. [#fe7b2ea](https://github.com/IA-Generative/device-management/commit/fe7b2ea)
 
 ### Évolutions techniques
-
-*   Préparation du déploiement via un chart Helm documenté.
-*   Amélioration de la sécurité avec l'utilisation d'images Docker non-root et l'ajout de vérifications de sécurité.
-*   Implémentation d'un système de surcharge de configuration runtime avec chiffrement Fernet pour les secrets.
-*   Refonte de la gestion des configurations avec un registre, une baseline, une résolution et un rechargement.
-*   Ajout d'un reaper automatique pour les pods obsolètes.
-*   Amélioration de la résilience du heartbeat.
-*   Correction de problèmes liés à la gestion des installations et des plugins.
-*   Amélioration de la gestion des logs avec des filtres et une récapitulation.
-*   Utilisation de `pg_advisory_lock` pour la synchronisation de la base de données.
-*   Mise à jour des dépendances et amélioration de la qualité du code avec Ruff et Bandit.
-*   Correction de problèmes de configuration et de déploiement.
+- Mise en place d'un chart Helm pour faciliter le déploiement. [#12](https://github.com/IA-Generative/device-management/pull/12)
+- Préparation pour un déploiement cloud-native avec S3, observabilité, résilience et arrêt gracieux. [#fc3ab55](https://github.com/IA-Generative/device-management/commit/fc3ab55)
+- Utilisation d'images Docker non-root pour renforcer la sécurité. [#5f4cd9e](https://github.com/IA-Generative/device-management/commit/5f4cd9e)
+- Amélioration de la gestion des logs avec filtrage des sondes et des accès Nginx. [#c176e41](https://github.com/IA-Generative/device-management/commit/c176e41)
+- Implémentation d'un verrou consultatif PostgreSQL pour la migration du schéma. [#cba003d](https://github.com/IA-Generative/device-management/commit/cba003d)
+- Correction de la persistance de l'identifiant du plugin dans les logs d'audit. [#7cc5ba4](https://github.com/IA-Generative/device-management/commit/7cc5ba4)
+- Correction d'un problème avec les installations fantômes sans version. [#970c0ca](https://github.com/IA-Generative/device-management/commit/970c0ca)
+- Correction d'un problème de propagation des flags d'administration. [#9a72394](https://github.com/IA-Generative/device-management/commit/9a72394)
+- Amélioration de la gestion des identités pour la télémétrie avec l'utilisation de CUID. [#a478617](https://github.com/IA-Generative/device-management/commit/a478617)
 
 ### Autres changements
-
-*   Documentation mise à jour pour refléter les nouvelles fonctionnalités et les changements d'architecture.
-*   Ajout de tests unitaires et d'intégration pour assurer la qualité du code.
-*   Amélioration de la CI/CD pour automatiser le processus de déploiement.
-*   Correction de bugs mineurs et amélioration de la performance.
-*   Documentation des ADR-0002 et 0003.
-*   Ajout de documentation pour le guide opérateur du proxy LLM.
-*   Amélioration de la documentation des plugins.
-*   Correction de problèmes de configuration locale.
-*   Amélioration de la robustesse des tests CI.
-*   Correction de problèmes de sécurité identifiés par Bandit.
-*   Amélioration de la qualité du code avec Ruff.
-*   Correction de NameError latents dans le router admin.
-*   Correction de problèmes de configuration du relais Keycloak.
-*   Amélioration de la gestion des erreurs et des logs.
-*   Ajout de métriques de performance et d'observabilité.
-*   Correction de problèmes de compatibilité avec les navigateurs.
-*   Amélioration de l'expérience utilisateur.
-*   Correction de bugs et amélioration de la stabilité.
-*   Ajout de documentation pour les nouveaux endpoints et fonctionnalités.
-*   Amélioration de la documentation existante.
-*   Correction de problèmes de traduction.
-*   Amélioration de l'accessibilité.
-*   Correction de problèmes de performance.
-*   Amélioration de la sécurité.
-*   Correction de bugs et amélioration de la stabilité.
-*   Ajout de documentation pour les nouveaux endpoints et fonctionnalités.
-*   Amélioration de la documentation existante.
-*   Correction de problèmes de traduction.
-*   Amélioration de l'accessibilité.
-*   Correction de problèmes de performance.
-*   Amélioration de la sécurité.
-*   Correction de bugs et amélioration de la stabilité.
-*   Ajout de documentation pour les nouveaux endpoints et fonctionnalités.
-*   Amélioration de la documentation existante.
-*   Correction de problèmes de traduction.
-*   Amélioration de l'accessibilité.
-*   Correction de problèmes de performance.
-*   Amélioration de la sécurité.
-*   Correction de bugs et amélioration de la stabilité.
-*   Ajout de documentation pour les nouveaux endpoints et fonctionnalités.
-*   Amélioration de la documentation existante.
-*   Correction de problèmes de traduction.
-*   Amélioration de l'accessibilité.
-*   Correction de problèmes de performance.
-*   Amélioration de la sécurité.
-*   Correction de bugs et amélioration de la stabilité.
-*   Ajout de documentation pour les nouveaux endpoints et fonctionnalités.
-*   Amélioration de la documentation existante.
-*   Correction de problèmes de traduction.
-*   Amélioration de l'accessibilité.
-*   Correction de problèmes de performance.
-*   Amélioration de la sécurité.
-*   Correction de bugs et amélioration de la stabilité.
-*   Ajout de documentation pour les nouveaux endpoints et fonctionnalités.
-*   Amélioration de la documentation existante.
-*   Correction de problèmes de traduction.
-*   Amélioration de l'accessibilité.
-*   Correction de problèmes de performance.
-*   Amélioration de la sécurité.
-*   Correction de bugs et amélioration de la stabilité.
-*   Ajout de documentation pour les nouveaux endpoints et fonctionnalités.
-*   Amélioration de la documentation existante.
-*   Correction de problèmes de traduction.
-*   Amélioration de l'accessibilité.
+- Mise à jour de la documentation avec les nouvelles fonctionnalités et les changements d'architecture.
+- Correction de bugs mineurs et améliorations de la qualité du code.
+- Plusieurs mises à jour de version (0.9.3 à 0.9.12).
+- Amélioration du linting du code. [#5e60baa](https://github.com/IA-Generative/device-management/commit/5e60baa)
