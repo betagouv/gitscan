@@ -1,23 +1,23 @@
-## Changelog : cdtn-admin (30 derniers jours, au 22 juillet 2026)
+## Changelog : cdtn-admin (30 derniers jours, au 27 juillet 2026)
 
 ### Résumé
-Ce mois-ci, l'administration du site du Code du Travail Numérique a bénéficié d'améliorations concernant le sitemap, l'ingestion de données (accords d'entreprise), l'analyse des contributions et la gestion des alertes de suppression. Des corrections ont également été apportées pour assurer la bonne prise en compte des URLs et des données.
+Cette mise à jour apporte des améliorations significatives à l'ingestion des données (accords d'entreprise, NPS, contributions) et au sitemap du site, notamment pour les URLs liées aux congés et aux conventions collectives. Des corrections de bugs ont également été apportées pour assurer la stabilité et la fiabilité de l'application. L'infrastructure de build a été modernisée.
 
 ### Évolutions fonctionnelles
-- Ajout d'une table pour le calcul du NPS (Net Promoter Score) permettant de mesurer la satisfaction des utilisateurs. [#1705](https://github.com/SocialGouv/cdtn-admin/issues/1705)
-- Intégration de l'ingestion des accords d'entreprise. [#1702](https://github.com/SocialGouv/cdtn-admin/issues/1702)
-- Ajout du suivi des contributions par nombre de vues mensuelles, offrant une meilleure analyse de l'utilisation du site. [#1697](https://github.com/SocialGouv/cdtn-admin/issues/1697)
-- Mise à jour de l'analyse des contributions suite aux changements SEO récents. [#1698](https://github.com/SocialGouv/cdtn-admin/issues/1698)
-- Correction des URLs sur la contribution congés pour les événements familiaux, améliorant la navigation et le référencement.
-- Ajout du slug de la convention collective dans l'URL pour une meilleure identification des contenus. [#1701](https://github.com/SocialGouv/cdtn-admin/issues/1701)
-- Correction du parsing des documents IDCCS. [#1694](https://github.com/SocialGouv/cdtn-admin/issues/1694)
-- Les accords et statuts sont désormais exclus des alertes de suppression. [#1696](https://github.com/SocialGouv/cdtn-admin/issues/1696)
+- Ajout de l'ingestion des accords d'entreprise. [#1702](https://github.com/SocialGouv/cdtn-admin/issues/1702)
+- Ajout d'une table pour le calcul du NPS (Net Promoter Score). [#1705](https://github.com/SocialGouv/cdtn-admin/issues/1705)
+- Amélioration de l'analyse des contributions suite aux changements SEO. [#1698](https://github.com/SocialGouv/cdtn-admin/issues/1698)
+- Ajout du suivi des contributions par vues mensuelles. [#1697](https://github.com/SocialGouv/cdtn-admin/issues/1697)
+- Correction des URLs sur la contribution congés pour évènement familiaux. [#1699](https://github.com/SocialGouv/cdtn-admin/issues/1699) et [3b28a51](https://github.com/SocialGouv/cdtn-admin/commit/3b28a51e2bb8ac1ff8c8b6876c9b30c37c6a71d9)
+- Ajout du slug de la convention collective dans l'URL du sitemap. [#1701](https://github.com/SocialGouv/cdtn-admin/issues/1701)
 
 ### Évolutions techniques
-- Mise à jour de la version de Node.
-- Migration des builds d'images de buildkit-service vers buildkit-operator, optimisant le processus de construction des images Docker. [#1695](https://github.com/SocialGouv/cdtn-admin/issues/1695)
-- Mise en place d'un package Python pour l'analyse des statistiques. [#1690](https://github.com/SocialGouv/cdtn-admin/issues/1690)
+- Mise à jour de la version de Node dans le CI. [2a1a180](https://github.com/SocialGouv/cdtn-admin/commit/2a1a180bf151bc688567a31c527e606676d8d2fc)
+- Migration des builds d'images de buildkit-service vers buildkit-operator. [#1695](https://github.com/SocialGouv/cdtn-admin/issues/1695)
+- Ajout du job d'analyse dans le docker-compose et documentation associée. [#1704](https://github.com/SocialGouv/cdtn-admin/issues/1704)
 
 ### Autres changements
-- Correction du filtrage du sitemap pour ne prendre en compte que les documents de type contribution.
-- Amélioration de la gestion des URLs pour la contribution congés pour les événements familiaux.
+- Correction d'une erreur lors de l'ingestion des contributions. [#1706](https://github.com/SocialGouv/cdtn-admin/issues/1706)
+- Exclusion des accords et statuts des alertes de suppression. [#1696](https://github.com/SocialGouv/cdtn-admin/issues/1696)
+- Correction du parsing du document des IDCC. [#1694](https://github.com/SocialGouv/cdtn-admin/issues/1694)
+- Filtrage des documents de type contribution dans le sitemap. [6deb18c](https://github.com/SocialGouv/cdtn-admin/commit/6deb18c5a66ffd05a25d6fe85d99638bebdd99a4)
