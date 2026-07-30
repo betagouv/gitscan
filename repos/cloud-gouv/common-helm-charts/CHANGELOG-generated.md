@@ -1,16 +1,17 @@
-## Changelog : common-helm-charts (30 derniers jours, au 06 juillet 2026)
+## Changelog : common-helm-charts (30 derniers jours, au 29 juillet 2026)
 
 ### Résumé
-Cette version apporte des améliorations à plusieurs charts, notamment l'ajout d'annotations aux applications, la possibilité d'ajouter des annotations à External Secrets, l'intégration d'un fingerprint d'alerte pour Matrix, un tableau de bord de base pour Coturn et l'ajout d'Auditbeat. Une fonctionnalité de test de stress a également été ajoutée à pgbench.
+Cette mise à jour apporte des corrections et des améliorations à plusieurs charts, notamment pour la gestion des secrets, les annotations des applications et la configuration du chart `matrix`. Une nouvelle fonctionnalité permet également la gestion de versions individuelles pour chaque chart.
 
 ### Évolutions fonctionnelles
-- **Applications:** Ajout d'annotations aux charts d'applications pour une meilleure identification et gestion. [#32](https://github.com/cloud-gouv/common-helm-charts/pull/32)
-- **External Secrets:** Permet désormais l'ajout d'annotations aux ressources External Secrets. [#29](https://github.com/cloud-gouv/common-helm-charts/pull/29)
-- **Matrix:** Ajout de l'ID et du fingerprint d'alerte dans les templates pour une meilleure traçabilité des alertes. [#28](https://github.com/cloud-gouv/common-helm-charts/pull/28)
-- **Coturn:** Intégration d'un tableau de bord basique pour visualiser les métriques de Coturn.
-- **pgbench:** Ajout d'une fonctionnalité de test de stress pour évaluer les performances de pgbench. [#22](https://github.com/cloud-gouv/common-helm-charts/pull/22)
+- **`matrix` chart:** Ajout de dates de début et de fin pour une meilleure configuration. [#31](https://github.com/cloud-gouv/common-helm-charts/pull/31)
+- **`external-secrets` chart:** Possibilité d'ajouter des annotations aux secrets externes. [#29](https://github.com/cloud-gouv/common-helm-charts/issues/29)
+- **Gestion des secrets:** Correction pour la création de secrets dans le chart `client-namespaces` lorsque la clé du template n'est pas définie. [#32](https://github.com/cloud-gouv/common-helm-charts/pull/32)
+- **`apps` chart:** Ajout d'annotations aux applications pour une meilleure identification et configuration. [#32](https://github.com/cloud-gouv/common-helm-charts/pull/32)
 
 ### Évolutions techniques
-- **Coturn:** Correction de la source de données pour le tableau de bord.
-- **Auditbeat:** Intégration du chart Auditbeat pour l'audit des événements Kubernetes. [#26](https://github.com/cloud-gouv/common-helm-charts/pull/26)
-- **VM:** Ajout d'un tableau de bord pour afficher toutes les métriques d'une machine virtuelle.
+- **Gestion des versions:** Implémentation de la gestion de versions individuelles pour chaque chart. [#34](https://github.com/cloud-gouv/common-helm-charts/pull/34)
+- **`matrix` chart:** Correction du tag par défaut pour résoudre un problème de CA (Certificate Authority). [#36](https://github.com/cloud-gouv/common-helm-charts/pull/36)
+
+### Autres changements
+- Correction d'un bug dans le chart `es` concernant l'ajout de labels. [#36](https://github.com/cloud-gouv/common-helm-charts/pull/36)
