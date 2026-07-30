@@ -580,7 +580,8 @@
 │   │   │       │   ├── 1781623185163_add-prevent-to-delete-to-users.ts
 │   │   │       │   ├── 1781790712181_add-cascade-delete-on-agency-convention-drafts-and-templates.ts
 │   │   │       │   ├── 1782811954472_rename-convention-draft-to-delete.ts
-│   │   │       │   └── 1783678432358_ongoingauth-with-id-token.ts
+│   │   │       │   ├── 1783678432358_ongoingauth-with-id-token.ts
+│   │   │       │   └── 1785232463565_add-notifications-sms-missing-indexes.ts
 │   │   │       ├── pgPool.ts
 │   │   │       └── static-data
 │   │   │           ├── appellations_public.csv
@@ -743,6 +744,8 @@
 │   │   │   │       ├── GetApiConsumersByConvention.unit.test.ts
 │   │   │   │       ├── GetAssessmentByConventionId.ts
 │   │   │   │       ├── GetAssessmentByConventionId.unit.test.ts
+│   │   │   │       ├── GetBeneficiaryConventionList.ts
+│   │   │   │       ├── GetBeneficiaryConventionList.unit.test.ts
 │   │   │   │       ├── GetConvention.ts
 │   │   │   │       ├── GetConvention.unit.test.ts
 │   │   │   │       ├── GetConventionDraftById.ts
@@ -1285,6 +1288,7 @@
 │   │   │   │   │   ├── contactRequest.ts
 │   │   │   │   │   ├── discussion.utils.ts
 │   │   │   │   │   ├── discussion.utils.unit.test.ts
+│   │   │   │   │   ├── establishment.utils.ts
 │   │   │   │   │   └── makeEstablishmentAggregate.ts
 │   │   │   │   ├── ports
 │   │   │   │   │   ├── BannedEstablishmentRepository.ts
@@ -1355,6 +1359,8 @@
 │   │   │   │       │   ├── ArchiveDiscussions.unit.test.ts
 │   │   │   │       │   ├── GetDiscussionById.ts
 │   │   │   │       │   ├── GetDiscussionById.unit.test.ts
+│   │   │   │       │   ├── GetDiscussionEstablishmentContactInfo.ts
+│   │   │   │       │   ├── GetDiscussionEstablishmentContactInfo.unit.test.ts
 │   │   │   │       │   ├── GetDiscussionsForUser.ts
 │   │   │   │       │   ├── GetDiscussionsForUser.unit.test.ts
 │   │   │   │       │   ├── GetObsoleteDiscussionsAndEmitDeprecatedEvents.ts
@@ -1675,7 +1681,6 @@
 │   │   │   ├── components
 │   │   │   │   ├── Breadcrumbs.tsx
 │   │   │   │   ├── ConsentManager.tsx
-│   │   │   │   ├── DiscussionContentTab.tsx
 │   │   │   │   ├── MetabaseFullScreenButton.tsx
 │   │   │   │   ├── MetabaseView.tsx
 │   │   │   │   ├── SelectConventionFromIdForm.tsx
@@ -1728,12 +1733,21 @@
 │   │   │   │   │   │   ├── NoActiveAgencyRights.tsx
 │   │   │   │   │   │   └── tabs
 │   │   │   │   │   │       ├── AgencyAdminTabContent.tsx
-│   │   │   │   │   │       └── ConventionTabContent.tsx
+│   │   │   │   │   │       └── AgencyConventionTabContent.tsx
 │   │   │   │   │   └── removeUserAgencyRights.tsx
 │   │   │   │   ├── auth
 │   │   │   │   │   └── RenewExpiredJwtButton.tsx
+│   │   │   │   ├── beneficiary
+│   │   │   │   │   └── ConventionTab
+│   │   │   │   │       ├── BeneficiaryConventionList.tsx
+│   │   │   │   │       └── BeneficiaryConventionTabContent.tsx
 │   │   │   │   ├── convention
+│   │   │   │   │   ├── ConventionAssessmentStatusBadge.tsx
+│   │   │   │   │   ├── ConventionDatesDisplay.tsx
+│   │   │   │   │   ├── ConventionStatusBadge.tsx
 │   │   │   │   │   └── SendReminderModal.tsx
+│   │   │   │   ├── discussion
+│   │   │   │   │   └── DiscussionTabContent.tsx
 │   │   │   │   ├── establishment
 │   │   │   │   │   ├── establishment-dashboard
 │   │   │   │   │   │   ├── DiscussionList.tsx
@@ -1970,7 +1984,8 @@
 │   │   │   │   │   ├── LoginByEmailFeedbackPage.tsx
 │   │   │   │   │   └── MagicLinkInterstitialPage.tsx
 │   │   │   │   ├── beneficiary-dashboard
-│   │   │   │   │   └── BeneficiaryDashboardDiscussionsTab.tsx
+│   │   │   │   │   ├── BeneficiaryDashboardPage.tsx
+│   │   │   │   │   └── beneficiaryDashboard.utils.ts
 │   │   │   │   ├── convention
 │   │   │   │   │   ├── AdminConventionDetail.tsx
 │   │   │   │   │   ├── AssessmentDocumentPage.tsx
@@ -2033,6 +2048,7 @@
 │   │   │       ├── conventionSubStatus.ts
 │   │   │       ├── createFormModal.tsx
 │   │   │       ├── dashboard.ts
+│   │   │       ├── form.utils.ts
 │   │   │       ├── highlightStringsFromMatches.ts
 │   │   │       ├── highlightStringsFromMatches.unit.test.ts
 │   │   │       ├── html.utils.ts
@@ -2498,6 +2514,11 @@
 │   │   │   │   └── layout.ts
 │   │   │   ├── immersionFacile
 │   │   │   │   ├── components
+│   │   │   │   │   ├── bordered-section
+│   │   │   │   │   │   ├── BorderedSection.scss
+│   │   │   │   │   │   ├── BorderedSection.styles.ts
+│   │   │   │   │   │   ├── BorderedSection.tsx
+│   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── button-with-submenu
 │   │   │   │   │   │   ├── ButtonWithSubMenu.scss
 │   │   │   │   │   │   ├── ButtonWithSubMenu.stories.tsx
@@ -2551,11 +2572,6 @@
 │   │   │   │   │   │   └── useCopyButton.ts
 │   │   │   │   │   ├── crisp-chat
 │   │   │   │   │   │   ├── CrispChat.tsx
-│   │   │   │   │   │   └── index.ts
-│   │   │   │   │   ├── discussion-meta
-│   │   │   │   │   │   ├── DiscussionMeta.scss
-│   │   │   │   │   │   ├── DiscussionMeta.styles.ts
-│   │   │   │   │   │   ├── DiscussionMeta.tsx
 │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── document
 │   │   │   │   │   │   ├── Document.scss
@@ -2835,6 +2851,7 @@
 │   │   │   └── conventionWorkflow.spec.ts
 │   │   ├── dashboard
 │   │   │   ├── agencyWorkflow.spec.ts
+│   │   │   ├── beneficiaryWorkflow.spec.ts
 │   │   │   └── establishmentWorkflow.spec.ts
 │   │   ├── establishment
 │   │   │   ├── createNewEstablishment.ts
@@ -2902,8 +2919,9 @@
 │   │   │   ├── AssessmentDtoBuilder.ts
 │   │   │   ├── assessment.dto.ts
 │   │   │   ├── assessment.helpers.ts
-│   │   │   ├── assessment.schema.test.ts
-│   │   │   └── assessment.schema.ts
+│   │   │   ├── assessment.helpers.unit.test.ts
+│   │   │   ├── assessment.schema.ts
+│   │   │   └── assessment.schema.unit.test.ts
 │   │   ├── auth
 │   │   │   ├── auth.dto.ts
 │   │   │   ├── auth.routes.ts
@@ -2924,6 +2942,7 @@
 │   │   │   ├── convention.dto.ts
 │   │   │   ├── convention.schema.ts
 │   │   │   ├── convention.ts
+│   │   │   ├── conventionBeneficiaryList.ts
 │   │   │   ├── conventionPresentation.dto.ts
 │   │   │   ├── conventionPresentation.schema.ts
 │   │   │   ├── conventionPresentation.schema.unit.test.ts
@@ -2940,6 +2959,7 @@
 │   │   │   ├── saveConventionDraft.schema.ts
 │   │   │   └── saveConventionDraft.schema.unit.test.ts
 │   │   ├── dashboard
+│   │   │   ├── beneficiaryDashboardTabs.ts
 │   │   │   ├── dashboard.dto.ts
 │   │   │   ├── dashboard.schema.ts
 │   │   │   └── establishmentDashboardTabs.ts
@@ -3136,4 +3156,4 @@
 │   │   └── zodUtils.unit.test.ts
 │   └── tsconfig.json
 └── turbo.json
-526 directories, 2612 files
+529 directories, 2629 files

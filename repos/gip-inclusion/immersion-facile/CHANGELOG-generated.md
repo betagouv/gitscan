@@ -1,100 +1,38 @@
-## Changelog : immersion-facile (30 derniers jours, au 24 juillet 2026)
+## Changelog : immersion-facile (30 derniers jours, au 29 juillet 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives de l'expérience utilisateur, notamment concernant la gestion des agences et des conventions, ainsi que par des corrections de bugs et des optimisations techniques. Des efforts ont également été déployés pour améliorer la sécurité et la conformité, notamment en matière de gestion des données personnelles et de notifications.
+Les dernières mises à jour se concentrent sur l'amélioration de l'expérience utilisateur pour les bénéficiaires et les administrateurs, notamment avec un nouveau tableau de bord pour les bénéficiaires et des améliorations de la gestion des droits d'accès aux agences. Des corrections et des optimisations ont également été apportées à la gestion des conventions et des notifications.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'affichage des informations de l'agence dans la page de document de convention. [#5048](https://github.com/gip-inclusion/immersion-facile/issues/5048)
-- Ajout d'une notification pour les agences lorsqu'une évaluation est créée avec le statut "NON_PRESENT".
-- Possibilité pour un prescripteur de modifier la date de naissance du bénéficiaire dans la convention.
-- Affichage du logo de l'agence sur le document d'évaluation si fourni.
-- Ajout d'un bouton pour supprimer les droits d'accès d'un utilisateur à une agence, avec une modale de confirmation.
-- Amélioration de l'affichage de la description du feedback de diffusion dans une modale.
-- Ajout d'une alerte dans le formulaire d'agence si des informations obligatoires sont manquantes.
-- Mise à jour des textes légaux (politique de confidentialité, mentions légales, CGU). [#5011](https://github.com/gip-inclusion/immersion-facile/issues/5011)
-- Ajout d'un lien vers l'inscription dans le message d'erreur du SIRET.
-- Amélioration de la gestion des agences fermées et de la suppression des tâches inactives.
-- Ajout de la possibilité d'activer une agence via un seul canal.
+- Ajout d'un bouton pour suivre l'intérêt des bénéficiaires [#794e446](https://github.com/gip-inclusion/immersion-facile/commit/794e446).
+- Ajout d'un badge "à relancer" pour les conventions nécessitant une action [#111380f](https://github.com/gip-inclusion/immersion-facile/commit/111380f).
+- Nouveau tableau de bord pour les bénéficiaires, incluant une liste des conventions, des onglets pour les discussions et un message de bienvenue personnalisé [#a7741dd](https://github.com/gip-inclusion/immersion-facile/commit/a7741dd), [#76c3ed5](https://github.com/gip-inclusion/immersion-facile/commit/76c3ed5), [#ab25ad7](https://github.com/gip-inclusion/immersion-facile/commit/ab25ad7).
+- Affichage des informations supplémentaires de l'établissement dans les discussions [#5c1e655](https://github.com/gip-inclusion/immersion-facile/commit/5c1e655).
+- Possibilité de supprimer les droits d'accès d'un utilisateur à une agence, avec confirmation modale [#84dbca2](https://github.com/gip-inclusion/immersion-facile/commit/84dbca2).
+- Affichage de la date de naissance du bénéficiaire pour les administrateurs dans le détail de la convention [#e0bf5bd](https://github.com/gip-inclusion/immersion-facile/commit/e0bf5bd).
+- Amélioration de l'affichage des statuts de convention pour les bénéficiaires [#3831a54](https://github.com/gip-inclusion/immersion-facile/commit/3831a54).
+- Ajout d'un message d'aide lorsque l'utilisateur n'a aucune convention [#c043fa0](https://github.com/gip-inclusion/immersion-facile/commit/c043fa0).
+- Affichage de la description des retours d'information dans la modale de diffusion [#021e4e6](https://github.com/gip-inclusion/immersion-facile/commit/021e4e6).
+- Mise à jour des instructions d'erreur pour la date de naissance [#68a7750](https://github.com/gip-inclusion/immersion-facile/commit/68a7750).
+- Mise à jour des CGU [#530e132](https://github.com/gip-inclusion/immersion-facile/commit/530e132).
 
 ### Évolutions techniques
-- Refactorisation de plusieurs UseCases pour utiliser un builder, améliorant la lisibilité et la maintenabilité du code.
-- Mise à jour des dépendances (libphonenumber, pnpm).
-- Amélioration de la gestion des tests (suppression de tests inutiles, correction de tests défaillants).
-- Optimisation de la récupération des sections NAF avec mise en cache.
-- Suppression du job cron pour la fermeture des agences inactives.
-- Amélioration de la gestion des erreurs et des codes de statut HTTP.
-- Passage à PostgreSQL client 17.
-- Ajout de contraintes de suppression en cascade sur les tables liées aux agences.
-- Amélioration de la gestion des adresses (gestion des champs vides).
-- Correction de problèmes liés à l'affichage des boutons dans les modales.
-- Amélioration de la sécurité (correction de CSP, gestion des renouvellements de mots de passe INSEE).
-- Suppression de code inutilisé.
+- Refactor de l'accès utilisateur pour simplifier l'authentification et la gestion des rôles [#f6eeb5d](https://github.com/gip-inclusion/immersion-facile/commit/f6eeb5d), [#af2259e](https://github.com/gip-inclusion/immersion-facile/commit/af2259e), [#a354bc8](https://github.com/gip-inclusion/immersion-facile/commit/a354bc8), [#9b21ae4](https://github.com/gip-inclusion/immersion-facile/commit/9b21ae4).
+- Ajout d'index manquants pour la table `notifications_sms` [#aabacc1](https://github.com/gip-inclusion/immersion-facile/commit/aabacc1).
+- Refactor de la gestion des conventions pour améliorer les performances et la lisibilité du code [#3f64d47](https://github.com/gip-inclusion/immersion-facile/commit/3f64d47).
+- Amélioration de la gestion des rappels pour les évaluations [#3afdb6b](https://github.com/gip-inclusion/immersion-facile/commit/3afdb6b).
+- Mise en place d'une architecture "use case builder" pour simplifier la logique métier [#e10a9ff](https://github.com/gip-inclusion/immersion-facile/commit/e10a9ff), [#cfa1192](https://github.com/gip-inclusion/immersion-facile/commit/cfa1192), [#ce03bf4](https://github.com/gip-inclusion/immersion-facile/commit/ce03bf4), [#cae86de](https://github.com/gip-inclusion/immersion-facile/commit/cae86de), [#aba2565](https://github.com/gip-inclusion/immersion-facile/commit/aba2565), [#9cd2b05](https://github.com/gip-inclusion/immersion-facile/commit/9cd2b05), [#869c84a](https://github.com/gip-inclusion/immersion-facile/commit/869c84a), [#4cea1ec](https://github.com/gip-inclusion/immersion-facile/commit/4cea1ec), [#369a4d9](https://github.com/gip-inclusion/immersion-facile/commit/369a4d9), [#2baa720](https://github.com/gip-inclusion/immersion-facile/commit/2baa720).
+- Suppression de la suppression de tâches cron pour la fermeture des agences inactives [#021e4e6](https://github.com/gip-inclusion/immersion-facile/commit/021e4e6).
 
 ### Autres changements
-- Mise à jour de la documentation.
-- Amélioration du formatage du code.
-- Ajout de commentaires et de documentation pour faciliter la compréhension du code.
-- Correction de bugs mineurs.
-- Mise à jour des messages d'erreur pour plus de clarté.
+- Mise à jour de la documentation et des tests unitaires.
+- Corrections de tests Playwright pour le tableau de bord de l'établissement [#8e05585](https://github.com/gip-inclusion/immersion-facile/commit/8e05585).
+- Suppression de code inutilisé.
+- Mise à jour des dépendances (immutable, vite, axios, dompurify, body-parser, brace-expansion, fast-uri, js-yaml).
+- Amélioration de la gestion des erreurs et des messages d'information.
 - Ajout de tests unitaires et d'intégration.
-- Amélioration de la gestion des logs.
-- Suppression de paramètres d'authentification FT Connect inutilisés.
-- Modification du planning de la tâche de rappel des droits d'agence.
-- Suppression de la version dupliquée des CGU.
-- Ajout de tests pour la suppression des utilisateurs liés à une convention.
-- Amélioration de la gestion des notifications (bannissement, confirmation d'agence).
-- Suppression des informations de webinar dans l'email d'activation de l'agence.
-- Amélioration de la gestion des erreurs de validation.
-- Ajout de la possibilité de filtrer les résultats OpenCage par type.
-- Suppression de la quarantaine et définition d'une priorité basse pour certaines tâches.
-- Ajout de la possibilité de mettre à jour le code NAF d'un établissement marketing.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
-- Amélioration de la gestion des emails (signature, contenu).
-- Correction de l'affichage des valeurs sélectionnées dans le champ MultipleAddressInput.
-- Ajout de tests pour la suppression des utilisateurs par ID de convention.
-- Amélioration de la gestion des erreurs dans les tests.
-- Suppression de la gestion des utilisateurs FT Connect.
-- Amélioration de la gestion des droits d'accès.
-- Ajout d'un test pour vérifier que la suppression d'un utilisateur ne fait rien s'il n'y a pas de conseiller présent.
-- Suppression des paramètres d'authentification FT Connect.
-- Ajout de la possibilité de rafraîchir le cache pour index.html.
-- Ajout de documentation ADR.
-- Ajout de la possibilité de notifier les utilisateurs de l'agence en cas de bannissement d'un établissement.
-- Ajout d'un email pour le validateur.
-- Amélioration de la gestion des notifications Slack.
-- Ajout d'un test pour le préfixe téléphonique.
-- Ajout de la possibilité de filtrer les résultats de l'établissement dans le tableau de bord.
-- Amélioration de la gestion des erreurs de date de naissance.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
-- Ajout de la possibilité de masquer le bouton de suppression des droits d'agence pour les utilisateurs auto-supprimables.
+- Correction de bugs mineurs et améliorations de la qualité du code.
+- Ajout de tests pour la suppression d'un conseiller par convention [#21b5431](https://github.com/gip-inclusion/immersion-facile/commit/21b5431).
+- Mise à jour des libellés et des textes dans l'interface utilisateur.
+- Ajout de la possibilité de notifier les utilisateurs d'une agence en cas de bannissement d'un établissement [#54d9748](https://github.com/gip-inclusion/immersion-facile/commit/54d9748).
+- Suppression de la version dupliquée des CGU [#4d3aad0](https://github.com/gip-inclusion/immersion-facile/commit/4d3aad0).
