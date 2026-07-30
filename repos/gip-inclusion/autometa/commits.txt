@@ -12,12 +12,12 @@
 2026-07-17T20:58:45+02:00 - c78ff51 - cdarnispro : test: enforce diff coverage gate at 90% on changed lines (phase 2) (#175)
 2026-07-17T20:30:44+02:00 - f0e4a9a - cdarnispro : test: Phase 1 — gel du plancher de couverture (74,90% branches) + hygiène marqueurs (#174)
 2026-07-15T18:15:55+02:00 - f14d3d5 - Annaelle Garcia : Bump pillow to 12.3.0 (fix vulnérabilités pip-audit)
-2026-07-15T18:15:55+02:00 - 620811a - Annaelle Garcia : Retours de revue : popstate, onglet Rapports actif, partiel outils, aria-current
-2026-07-15T18:15:55+02:00 - 115fa66 - Annaelle Garcia : Vrais tooltips Bootstrap au survol des outils (au lieu du title natif)
-2026-07-15T18:15:55+02:00 - b11a0f5 - Annaelle Garcia : Ajoute des tooltips (title) sur Jobs, Cron et Tag Manager
-2026-07-15T18:15:55+02:00 - 2f67103 - Annaelle Garcia : Retours de revue : double-surlignage mobile, contraste, parametrize
 2026-07-15T18:15:55+02:00 - b7bfa86 - Annaelle Garcia : Onglet Conversations pointe vers ?show=convos (retour revue)
+2026-07-15T18:15:55+02:00 - b11a0f5 - Annaelle Garcia : Ajoute des tooltips (title) sur Jobs, Cron et Tag Manager
 2026-07-15T18:15:55+02:00 - 703dc95 - Annaelle Garcia : Refonte de la navigation principale (sidebar + accueil)
+2026-07-15T18:15:55+02:00 - 620811a - Annaelle Garcia : Retours de revue : popstate, onglet Rapports actif, partiel outils, aria-current
+2026-07-15T18:15:55+02:00 - 2f67103 - Annaelle Garcia : Retours de revue : double-surlignage mobile, contraste, parametrize
+2026-07-15T18:15:55+02:00 - 115fa66 - Annaelle Garcia : Vrais tooltips Bootstrap au survol des outils (au lieu du title natif)
 2026-07-15T14:23:20+02:00 - f5979e3 - Yannick Passarelli : create a bizdev glossary (#169)
 2026-07-03T19:49:24+02:00 - d86f70e - Louis-Jean Teitelbaum : chore: Création d'un objet Environment (#158)
 2026-07-03T16:22:08+02:00 - 73e4cba - Louis-Jean Teitelbaum : AUTOMETA_ENV simplifié (#156)
@@ -52,9 +52,9 @@
 2026-06-16T13:53:53+02:00 - d4ae76f - Scttpr : rewrite dynamic WHERE queries with SQLAlchemy ORM and test them (#134)
 2026-06-16T13:53:10+02:00 - 9326ad1 - Louis-Jean Teitelbaum : Autometa Jobs (#108)
 2026-06-16T13:52:17+02:00 - c4a8215 - Scttpr : Require ownership on conversation mutation routes (#132)
-2026-06-15T12:26:09+02:00 - 7bb4ae1 - scttpr : ci: add weekly scheduled full gitleaks scan of main
 2026-06-15T12:26:09+02:00 - b69ba85 - scttpr : ci: fall back to full gitleaks scan when push range is invalid
 2026-06-15T12:26:09+02:00 - 7c76d46 - scttpr : ci: scan only PR commit range with gitleaks instead of full history
+2026-06-15T12:26:09+02:00 - 7bb4ae1 - scttpr : ci: add weekly scheduled full gitleaks scan of main
 2026-06-15T11:29:13+02:00 - c3249b0 - Scttpr : add tests for sources config loading and credential resolution (#133)
 2026-06-15T11:29:09+02:00 - a85022d - Scttpr : Add ownership and permission tests for conversation routes (#131)
 2026-06-15T11:29:05+02:00 - f4154cb - Scttpr : add tests for CLI backend event parsing and process lifecycle (#130)
@@ -65,8 +65,8 @@
 2026-06-15T11:28:45+02:00 - ac45bb5 - Scttpr : require auth on /api/conversations/running and scope to current user (#124)
 2026-06-11T17:45:32+02:00 - ada324d - Louis-Jean Teitelbaum : feat: add daily cron recreating autometa_tables_db indexes
 2026-06-10T11:39:39+02:00 - 2a4b868 - Pivii : docs(readme): fix Autometa repository links
-2026-06-10T11:36:30+02:00 - b7cdd24 - Louis-Jean Teitelbaum : harden API URL credential masking (IPv6 hosts, broader secret-key matching)
 2026-06-10T11:36:30+02:00 - e01fc17 - Louis-Jean Teitelbaum : use named SQL param in delete_file instead of psycopg2-style %s
+2026-06-10T11:36:30+02:00 - b7cdd24 - Louis-Jean Teitelbaum : harden API URL credential masking (IPv6 hosts, broader secret-key matching)
 2026-06-10T11:36:30+02:00 - 22cdfb1 - Louis-Jean Teitelbaum : mask credentials in API signal URLs so they never reach tool output
 2026-06-10T11:35:38+02:00 - 152ada1 - Louis-Jean Teitelbaum : raise MAX_CONCURRENT_AGENTS to 4 and document prod runtime env vars
 2026-06-10T11:35:07+02:00 - 67604fa - Louis-Jean Teitelbaum : retry S3 session download before falling back to history reconstruction
@@ -99,14 +99,14 @@
 2026-05-18T20:10:47+02:00 - c9c51a2 - Louis-Jean Teitelbaum : Fix: Sauvegarde auto du S3 (#89)
 2026-05-18T19:52:17+02:00 - 164e4a2 - Alexis-Akinyemi : chore(agent): renforcer le system prompt pour éviter la modification (provisoire) de l'interface  (#83)
 2026-05-18T17:52:07Z - 47b9315 - Scttpr : fix(cron): validate slug format in API routes to block path-injection (#91)
-2026-05-18T17:49:29Z - 898226c - Scttpr : Potential fix for pull request finding 'CodeQL / Log Injection'
 2026-05-18T17:49:29Z - cb1bc1e - scttpr : fix(security): close 3 medium codeql alerts (log f-string, workflow permissions)
+2026-05-18T17:49:29Z - 898226c - Scttpr : Potential fix for pull request finding 'CodeQL / Log Injection'
 2026-05-18T17:22:40+02:00 - cb44c24 - Louis-Jean Teitelbaum : docs: require dashboard crons to be self-contained
 2026-05-18T17:22:39+02:00 - 20061ba - Louis-Jean Teitelbaum : chore: add GITHUB_TOKEN setting to web/config.py
 2026-05-18T14:23:43+02:00 - 7fdab2c - Louis-Jean Teitelbaum : fix(a11y): make sidebar keyboard focus visible and skip links work (#90)
+2026-05-13T16:03:45+02:00 - 2c39376 - Yannick Passarelli : feat:allow autometa to get di's metabase models (#87)
 2026-05-13T15:30:54Z - efa1abf - Scttpr : Update deploiement.md
 2026-05-13T15:30:54Z - 3c56207 - scttpr : doc: deploy prod with tag
-2026-05-13T16:03:45+02:00 - 2c39376 - Yannick Passarelli : feat:allow autometa to get di's metabase models (#87)
 2026-05-13T15:13:39+02:00 - ad2f032 - Louis-Jean Teitelbaum : refactor(cron): discover dashboard crons via dashboards.has_cron (#79)
 2026-05-13T10:06:59+02:00 - 551949f - Louis-Jean Teitelbaum : Nettoyage auto du dossier interactive (#78)
 2026-05-13T09:54:53+02:00 - 339a687 - Scttpr : Reparation du workflow de migration (#82)
@@ -115,52 +115,52 @@
 2026-05-13T09:23:37+02:00 - 3f255f0 - Louis-Jean Teitelbaum : Fix: bouton Flag qui fonctionne du premier coup (#86)
 2026-05-12T20:05:21+02:00 - 37fc721 - Louis-Jean Teitelbaum : Spans Sentry détaillés dans le subprocess CLI (#71)
 2026-05-12T10:18:01+02:00 - 275eac5 - Yannick : chore:change a bad naming
+2026-05-11T22:34:31+02:00 - f4b2b97 - Louis-Jean Teitelbaum : fix: clarify documentation
+2026-05-11T22:34:31+02:00 - ebd9c6c - Louis-Jean Teitelbaum : fix: parametrize tests
 2026-05-11T22:34:31+02:00 - dc519e2 - Louis-Jean Teitelbaum : feat: enforce statement_timeout server-side for postgres query executors
 2026-05-11T22:34:31+02:00 - 72c3d77 - Louis-Jean Teitelbaum : refactor: hoist sqlalchemy imports above paramiko monkeypatch in data_inclusion
-2026-05-11T22:34:31+02:00 - ebd9c6c - Louis-Jean Teitelbaum : fix: parametrize tests
-2026-05-11T22:34:31+02:00 - f4b2b97 - Louis-Jean Teitelbaum : fix: clarify documentation
 2026-05-11T22:34:31+02:00 - 4139962 - Yannick : feat:add a new data source & its doc
 2026-05-11T22:28:57+02:00 - 7928ef7 - Louis-Jean Teitelbaum : chore(deps): constrain urllib3 to >=2.7.0
 2026-05-11T21:07:24+02:00 - b0b83af - Louis-Jean Teitelbaum : fix: Consistency bugs (fn calling, listing dashboards)
-2026-05-11T21:07:24+02:00 - 0647b26 - scttpr : docs(update_dashboard): clarify --has-* flags require explicit true|false
 2026-05-11T21:07:24+02:00 - 6169c06 - Louis-Jean Teitelbaum : feat(skills): add create_dashboard, update_dashboard, list_dashboards
+2026-05-11T21:07:24+02:00 - 0647b26 - scttpr : docs(update_dashboard): clarify --has-* flags require explicit true|false
 2026-05-11T17:50:22+02:00 - d8a382e - Louis-Jean Teitelbaum : hotfix: remove sixth cron
 2026-05-11T16:07:36+02:00 - edd5168 - Louis-Jean Teitelbaum : feat(agents): inject AUTOMETA_CONVERSATION_ID and AUTOMETA_USER_EMAIL into CLI subprocess env, with config helpers
-2026-05-11T15:20:36+02:00 - 586ef02 - Louis-Jean Teitelbaum : fix(dashboards): cleanup runs dry-run daily and reports orphans to logs
-2026-05-11T15:20:36+02:00 - 0cf7e69 - scttpr : fix(db): use SAVEPOINT in test mode to mirror prod rollback semantics
-2026-05-11T15:20:36+02:00 - 58c9bda - scttpr : chore(deps): bump paramiko to 5.0.0 to fix CVE-2026-44405
-2026-05-11T15:20:36+02:00 - d48e7f8 - scttpr : docs(review): replace SCHEMA_VERSION rule with Alembic migration criteria
-2026-05-11T15:20:36+02:00 - 7c625d5 - scttpr : refactor(dashboards): move APP.md import out of alembic to one-shot postdeploy script
-2026-05-11T15:20:36+02:00 - bf41cae - scttpr : fix(dashboards): atomic scaffold + GC cron to prevent disk/DB drift on crash
-2026-05-11T15:20:36+02:00 - 2aed981 - Louis-Jean Teitelbaum : docs: rewrite interactive-dashboards.md for DB-backed inventory
-2026-05-11T15:20:36+02:00 - aa33276 - Louis-Jean Teitelbaum : test(dashboards): add 71 tests for heuristic, lib, inventory, and migration
-2026-05-11T15:20:36+02:00 - 84b5917 - Louis-Jean Teitelbaum : feat(alembic): import APP.md to dashboards table with V1 normalization and S3 fallback
-2026-05-11T15:20:36+02:00 - bf8e1e8 - Louis-Jean Teitelbaum : refactor(web): replace interactive_apps with store.list_dashboards backed by DB
 2026-05-11T15:20:36+02:00 - f8e3beb - Louis-Jean Teitelbaum : feat(lib): add dashboards helpers (create, update, detect_api_flags, normalize_tag_name)
 2026-05-11T15:20:36+02:00 - dd44f40 - Louis-Jean Teitelbaum : feat(alembic): add dashboards schema migration
 2026-05-11T15:20:36+02:00 - d81f194 - Louis-Jean Teitelbaum : feat(models): add Dashboard and DashboardTag tables
+2026-05-11T15:20:36+02:00 - d48e7f8 - scttpr : docs(review): replace SCHEMA_VERSION rule with Alembic migration criteria
+2026-05-11T15:20:36+02:00 - bf8e1e8 - Louis-Jean Teitelbaum : refactor(web): replace interactive_apps with store.list_dashboards backed by DB
+2026-05-11T15:20:36+02:00 - bf41cae - scttpr : fix(dashboards): atomic scaffold + GC cron to prevent disk/DB drift on crash
+2026-05-11T15:20:36+02:00 - aa33276 - Louis-Jean Teitelbaum : test(dashboards): add 71 tests for heuristic, lib, inventory, and migration
+2026-05-11T15:20:36+02:00 - 84b5917 - Louis-Jean Teitelbaum : feat(alembic): import APP.md to dashboards table with V1 normalization and S3 fallback
+2026-05-11T15:20:36+02:00 - 7c625d5 - scttpr : refactor(dashboards): move APP.md import out of alembic to one-shot postdeploy script
+2026-05-11T15:20:36+02:00 - 58c9bda - scttpr : chore(deps): bump paramiko to 5.0.0 to fix CVE-2026-44405
+2026-05-11T15:20:36+02:00 - 586ef02 - Louis-Jean Teitelbaum : fix(dashboards): cleanup runs dry-run daily and reports orphans to logs
+2026-05-11T15:20:36+02:00 - 2aed981 - Louis-Jean Teitelbaum : docs: rewrite interactive-dashboards.md for DB-backed inventory
+2026-05-11T15:20:36+02:00 - 0cf7e69 - scttpr : fix(db): use SAVEPOINT in test mode to mirror prod rollback semantics
 2026-05-07T22:47:23Z - 690aa17 - scttpr : fix: execute postdeploy hook
 2026-05-07T13:33:29+02:00 - 89dc63d - Louis-Jean Teitelbaum : feat(web): read-only Tag Manager audit dashboard
-2026-05-07T13:30:37+02:00 - 13254af - scttpr : fix(flag): reject cross-user POST overwrite with 409
-2026-05-07T13:30:37+02:00 - 5ce8e44 - scttpr : refactor(flag): expose flagged_by alongside legacy user_id in /flagged
-2026-05-07T13:30:37+02:00 - 7643efc - scttpr : fix(flag): make DELETE idempotent when already unflagged
-2026-05-07T13:30:37+02:00 - 4ca91e9 - scttpr : fix(flag): allow admins to remove flag from chat UI
-2026-05-07T13:30:37+02:00 - 9839c22 - Annaelle Garcia : ci: ignore CVE-2026-3219 sur pip (pas de fix dispo)
-2026-05-07T13:30:37+02:00 - 3704a79 - Louis-Jean Teitelbaum : chore: fix import order in flag migration
-2026-05-07T13:30:37+02:00 - 3c861f1 - Louis-Jean Teitelbaum : fix: rebind flag dialog after hx-boost nav, swap icon class for filled flag
-2026-05-07T13:30:37+02:00 - 0c56d96 - Louis-Jean Teitelbaum : refactor: switch flag toggle to htmx, drop JSON serialization
-2026-05-07T13:30:37+02:00 - 642b42d - Louis-Jean Teitelbaum : chore: drop spec docs from PR
 2026-05-07T13:30:37+02:00 - cc50aab - elz : feat: ajoute un bouton drapeau pour signaler une conversation
+2026-05-07T13:30:37+02:00 - 9839c22 - Annaelle Garcia : ci: ignore CVE-2026-3219 sur pip (pas de fix dispo)
+2026-05-07T13:30:37+02:00 - 7643efc - scttpr : fix(flag): make DELETE idempotent when already unflagged
+2026-05-07T13:30:37+02:00 - 642b42d - Louis-Jean Teitelbaum : chore: drop spec docs from PR
+2026-05-07T13:30:37+02:00 - 5ce8e44 - scttpr : refactor(flag): expose flagged_by alongside legacy user_id in /flagged
+2026-05-07T13:30:37+02:00 - 4ca91e9 - scttpr : fix(flag): allow admins to remove flag from chat UI
+2026-05-07T13:30:37+02:00 - 3c861f1 - Louis-Jean Teitelbaum : fix: rebind flag dialog after hx-boost nav, swap icon class for filled flag
+2026-05-07T13:30:37+02:00 - 3704a79 - Louis-Jean Teitelbaum : chore: fix import order in flag migration
+2026-05-07T13:30:37+02:00 - 13254af - scttpr : fix(flag): reject cross-user POST overwrite with 409
+2026-05-07T13:30:37+02:00 - 0c56d96 - Louis-Jean Teitelbaum : refactor: switch flag toggle to htmx, drop JSON serialization
 2026-05-07T11:41:20+02:00 - 7c14d00 - Louis-Jean Teitelbaum : feat: intègre Matomo Tag Manager au site Autometa
-2026-05-07T10:59:34+02:00 - 4b4e1fa - PierreDeNantes : Update actes-metier.md
 2026-05-07T10:59:34+02:00 - 8851f9f - PierreDeNantes : Update actes-metier.md
+2026-05-07T10:59:34+02:00 - 4b4e1fa - PierreDeNantes : Update actes-metier.md
 2026-05-07T10:59:34+02:00 - 38beb45 - PierreDeNantes : Update actes-metier.md
-2026-05-06T18:31:54Z - 714062a - scttpr : ci: align checkout pin with ci.yml, drop redundant permissions, restore paths-ignore on staging
+2026-05-06T18:31:54Z - c91ee08 - scttpr : docs: trim staging section to env diffs vs .env.example
+2026-05-06T18:31:54Z - c2213d2 - scttpr : chore: remove dead alembic stamp block from postdeploy
 2026-05-06T18:31:54Z - a803807 - scttpr : ci: restrict prod deploy tag pattern to semver
 2026-05-06T18:31:54Z - 9c2f595 - scttpr : docs: drop env var mention from staging section
-2026-05-06T18:31:54Z - 554548e - scttpr : docs: drop staging env diff table
-2026-05-06T18:31:54Z - c91ee08 - scttpr : docs: trim staging section to env diffs vs .env.example
 2026-05-06T18:31:54Z - 7cac7e6 - scttpr : ci: split deploy into staging+prod with reusable workflow
 2026-05-06T18:31:54Z - 769b7ac - scttpr : ci: deploy main to staging, gate prod on tag
-2026-05-06T18:31:54Z - c2213d2 - scttpr : chore: remove dead alembic stamp block from postdeploy
+2026-05-06T18:31:54Z - 714062a - scttpr : ci: align checkout pin with ci.yml, drop redundant permissions, restore paths-ignore on staging
+2026-05-06T18:31:54Z - 554548e - scttpr : docs: drop staging env diff table
 2026-05-01T16:39:36+02:00 - 122c8fe - Louis-Jean Teitelbaum : chore: refresh uv.lock to clear dependabot Mako alert
