@@ -1,36 +1,45 @@
-## Changelog : nitrates (30 derniers jours, au 24 juillet 2026)
+## Changelog : nitrates (30 derniers jours, au 2026-07-28)
 
 ### Résumé
-Cette version apporte des améliorations significatives en matière de sécurité, notamment des correctifs pour des vulnérabilités identifiées lors d'un pentest. L'interface utilisateur a été améliorée, en particulier sur mobile, avec des ajustements pour l'accessibilité et l'expérience utilisateur. Des optimisations ont été apportées au processus de déploiement (GitOps) et à la gestion des données, ainsi que des corrections de bugs et des améliorations de la performance.
+Cette version apporte des améliorations significatives à la sécurité, à l'expérience utilisateur et à l'administration du simulateur de réglementation nitrates. Les corrections de vulnérabilités sont prioritaires, suivies d'améliorations de l'interface utilisateur, notamment sur mobile, et d'optimisations pour les administrateurs du système. Des améliorations de la gestion des données et de l'infrastructure sous-jacente ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'accessibilité du simulateur, notamment au niveau du clavier et du parcours utilisateur. [#215](https://github.com/betagouv/nitrates/issues/215)
-- Affichage du contenu riche des pièces complémentaires même en cas de message d'erreur. [#216](https://github.com/betagouv/nitrates/issues/216)
-- Amélioration du récapitulatif du calendrier avec des puces indentées et un ordre plus logique des périodes. [#159](https://github.com/betagouv/nitrates/issues/159)
-- Adaptation de l'affichage du calendrier et du bandeau pour une meilleure expérience sur mobile. [#177](https://github.com/betagouv/nitrates/issues/177)
-- Ajout d'une flèche de prévisualisation pour les catalogues de paramètres dans l'administration. [#218](https://github.com/betagouv/nitrates/issues/218) et [#219](https://github.com/betagouv/nitrates/issues/219)
-- Possibilité de filtrer les données de validation par région Hauts-de-France.
-- Amélioration du comparateur d'images dans la validation, avec affichage en galerie.
-- Ajout d'un lien d'accès rapide vers la validation des feuilles dans l'interface d'administration.
-- Affichage des points PAR (Présence Agricole Régionale) par région métropolitaine dans la prévisualisation.
-- Simplification des libellés publics pour les vergers et les vignes.
-- Amélioration de la gestion des renvois d'arbres et des contextes associés. [#222](https://github.com/betagouv/nitrates/issues/222)
+- **Simulateur :**
+    - Amélioration du parcours utilisateur avec correction de bugs liés au scroll et au rechargement des données.
+    - Correction de l'affichage des dates et des périodes dans le calendrier dynamique et le récapitulatif.
+    - Amélioration de la gestion des champs de cascade et des renvois entre les différents éléments du simulateur.
+    - Possibilité de précharger les données des questions complémentaires (QC) pour une expérience plus fluide.
+- **Interface utilisateur :**
+    - Amélioration de l'accessibilité clavier et de l'expérience utilisateur globale du simulateur.
+    - Adaptation de l'interface pour une meilleure expérience sur mobile, notamment avec un bandeau d'information plus lisible et un affichage optimisé du calendrier.
+    - Ajout d'infobulles claires et concises pour expliquer les différentes options et réglementations.
+    - Amélioration de la cartographie et de l'affichage des données géographiques.
+- **Administration :**
+    - Ajout d'un filtre rapide pour la recherche de textes conditionnés dans l'interface d'administration.
+    - Amélioration de l'éditeur YAML pour faciliter la modification des textes conditionnés.
+    - Ajout d'un lien d'accès rapide vers la validation des feuilles dans la barre de navigation.
+    - Possibilité de filtrer les données de validation par région (Hauts-de-France).
+    - Validation des choix dans les migrations pour éviter les erreurs.
 
 ### Évolutions techniques
-- Mise en place d'un processus de déploiement GitOps avec des garde-fous pour les migrations, les arbres et les fixtures. [#50](https://github.com/betagouv/nitrates/issues/50)
-- Correction de faux négatifs dans le smoke test CI. [#50](https://github.com/betagouv/nitrates/issues/50)
-- Sécurisation de la page de connexion administrateur, désactivation du mot de passe par défaut et redirection vers ProConnect.
-- Correction de plusieurs vulnérabilités de sécurité identifiées lors d'un pentest (reflected-XSS, etc.). [#150](https://github.com/betagouv/nitrates/issues/150)
-- Mise à jour des dépendances pour corriger des vulnérabilités de sécurité (high/critical et medium).
-- Amélioration de la couverture de test et exclusion des applications Envergo non-nitrates.
-- Migration des données de référentiels vers une base de données native. [#226](https://github.com/betagouv/nitrates/issues/226)
-- Refonte de la gestion des arbres et des snapshots. [#50](https://github.com/betagouv/nitrates/issues/50)
-- Amélioration de la gestion des erreurs et des validations dans l'administration.
+- **Sécurité :**
+    - Correction de plusieurs vulnérabilités de sécurité identifiées lors d'un pentest (F3, F4).
+    - Mise à jour des dépendances pour corriger les vulnérabilités connues (high, critical, medium).
+    - Renforcement de la sécurité de la page de connexion administrateur.
+    - Désactivation par défaut de la connexion administrateur par mot de passe.
+- **Infrastructure & CI/CD :**
+    - Mise en place d'un pipeline CI/CD avec des garde-fous pour garantir la qualité du code et la stabilité des déploiements.
+    - Amélioration des tests unitaires et d'intégration.
+    - Migration de la gestion des données de référentiels vers une base de données native pour une meilleure performance et flexibilité.
+    - Optimisation de la configuration du CI pour éviter les faux négatifs.
+- **Code :**
+    - Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+    - Suppression de code obsolète et de résidus de développement.
 
 ### Autres changements
-- Mise à jour de la documentation et des textes de l'application. [#160](https://github.com/betagouv/nitrates/issues/160), [#177](https://github.com/betagouv/nitrates/issues/177)
-- Correction de bugs mineurs et améliorations de la performance.
-- Modification de l'intitulé de certaines questions et textes pour plus de clarté. [#192](https://github.com/betagouv/nitrates/issues/192)
-- Ajout d'une illustration dédiée au thème sombre. [#190](https://github.com/betagouv/nitrates/issues/190)
-- Amélioration du bandeau de construction pour une meilleure lisibilité. [#194](https://github.com/betagouv/nitrates/issues/194)
-- Ajustements de l'interface utilisateur pour une meilleure expérience globale.
+- Mise à jour de la documentation.
+- Simplification des libellés publics pour les vergers et les vignes.
+- Amélioration des messages d'information et des textes d'aide.
+- Correction de bugs mineurs et améliorations de la stabilité.
+- Ajout de points PAR par région pour une meilleure précision des données.
+- Amélioration de la gestion des arbres de données et des snapshots.
