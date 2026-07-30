@@ -1,28 +1,38 @@
-## Changelog : dora (30 derniers jours, au 27 juillet 2026)
+## Changelog : dora (30 derniers jours, au 29 juillet 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations de la recherche, des corrections de bugs et des mises à jour de la configuration et des dépendances. Des efforts ont également été déployés pour améliorer la qualité des données et l'expérience utilisateur, notamment en affinant l'affichage des informations et en optimisant les performances. Enfin, la conformité légale a été renforcée avec la mise à jour des CGU et de la déclaration d'accessibilité.
+Cette période a été marquée par des améliorations de la stabilité et de la performance, notamment concernant la gestion des erreurs et la synchronisation des données. Plusieurs corrections ont été apportées pour améliorer l'expérience utilisateur, en particulier concernant la recherche et l'affichage des informations. Des efforts ont également été déployés pour optimiser l'infrastructure et la gestion des dépendances.
 
 ### Évolutions fonctionnelles
-- **Recherche :** Implémentation d'une recherche par texte (en A/B test) [#1194](https://github.com/gip-inclusion/dora/issues/1194).
-- **Orientations Emplois :** Ajout d'un endpoint de synchronisation des statuts des orientations Les Emplois [#1169](https://github.com/gip-inclusion/dora/issues/1169) et envoi de mails pour les orientations créées depuis les emplois [#1125](https://github.com/gip-inclusion/dora/issues/1125).
-- **Structures :** Possibilité de réactiver une structure obsolète [#1145](https://github.com/gip-inclusion/dora/issues/1145).
-- **Informations de contact :** Publication de l'information de contact des services à data⋅inclusion [#1127](https://github.com/gip-inclusion/dora/issues/1127).
-- **CGU et Accessibilité :** Mise à jour des Conditions Générales d'Utilisation [#1182](https://github.com/gip-inclusion/dora/issues/1182) et de la déclaration d’accessibilité [#1202](https://github.com/gip-inclusion/dora/issues/1202).
-- **Notifications :** Suppression des notifications de relance au prescripteur [#1136](https://github.com/gip-inclusion/dora/issues/1136).
+- Ajout d'une commande pour supprimer les anciennes structures orphelines [#1219](https://github.com/gip-inclusion/dora/issues/1219).
+- Ajout du champ `processing_date` à l'endpoint de synchronisation des statuts des orientations [#1212](https://github.com/gip-inclusion/dora/issues/1212).
+- Ajout d'un endpoint de synchronisation des statuts des orientations Les Emplois [#1169](https://github.com/gip-inclusion/dora/issues/1169).
+- Ajout de la source de l'orientation sur la page d'affichage [#1155](https://github.com/gip-inclusion/dora/issues/1155).
+- Mise à jour des CGU [#1182](https://github.com/gip-inclusion/dora/issues/1182) et [#1135](https://github.com/gip-inclusion/dora/issues/1135).
+- Ajout d'une commande d'export des orientations Les Emplois [#1209](https://github.com/gip-inclusion/dora/issues/1209).
+- Implémentation d'une recherche par texte (en A/B test) [#1194](https://github.com/gip-inclusion/dora/issues/1194).
+- Suppression des notifications de relance au prescripteur [#1136](https://github.com/gip-inclusion/dora/issues/1136).
+- Envoi de mails pour les orientations créées depuis les emplois [#1125](https://github.com/gip-inclusion/dora/issues/1125).
+- Stockage du code de la zone géographique de recherche (commune, département ou région) [#1216](https://github.com/gip-inclusion/dora/issues/1216).
 
 ### Évolutions techniques
-- **Refactoring :** Retrait de la recherche DORA de la recherche de services [#1201](https://github.com/gip-inclusion/dora/issues/1201) et de la méthode `_map_dora_kinds_to_di` [#1199](https://github.com/gip-inclusion/dora/issues/1199). Simplification du code lié aux services et à la distance dans les résultats unifiés [#1140](https://github.com/gip-inclusion/dora/issues/1140), [#1132](https://github.com/gip-inclusion/dora/issues/1132).
-- **Statistiques :** Passage des vues admin en lecture seule [#1179](https://github.com/gip-inclusion/dora/issues/1179).
-- **Dépendances :** Mise à jour de plusieurs dépendances (actions/setup-python, @sveltejs/kit, boto3, pygraphviz, etc.).
-- **Configuration :** Nouvelle adresse API BAN définie comme constante [#1167](https://github.com/gip-inclusion/dora/issues/1167) et version de NPM fixée à 24 LTS [#1166](https://github.com/gip-inclusion/dora/issues/1166).
-- **Build :** Remplacement de p7zip par 7zip pour compatibilité scalingo [#1150](https://github.com/gip-inclusion/dora/issues/1150).
+- Protection contre la suppression en cascade d'objets [#1220](https://github.com/gip-inclusion/dora/issues/1220).
+- Remplacement de la bibliothèque de génération de fichier Excel [#1191](https://github.com/gip-inclusion/dora/issues/1191).
+- Refactor de la recherche de services et suppression de code obsolète [#1201](https://github.com/gip-inclusion/dora/issues/1201), [#1199](https://github.com/gip-inclusion/dora/issues/1199), [#1176](https://github.com/gip-inclusion/dora/issues/1176), [#1175](https://github.com/gip-inclusion/dora/issues/1175), [#1140](https://github.com/gip-inclusion/dora/issues/1140), [#1132](https://github.com/gip-inclusion/dora/issues/1132).
+- Amélioration du FakeDataInclusionClient [#1198](https://github.com/gip-inclusion/dora/issues/1198).
+- Passage des vues admin en lecture seule [#1179](https://github.com/gip-inclusion/dora/issues/1179).
+- Utilisation de l’enum ModeAccueil de d·i [#1124](https://github.com/gip-inclusion/dora/issues/1124).
+- Suppression de l'espace entre le nom du contact et les autres infos de contact [#1148](https://github.com/gip-inclusion/dora/issues/1148).
+- Suppression de l'app et des données Admin Express [#1154](https://github.com/gip-inclusion/dora/issues/1154).
+- Remplacement de p7zip par 7zip pour compatibilité scalingo-22/26 [#1150](https://github.com/gip-inclusion/dora/issues/1150).
 
 ### Autres changements
-- **Documentation :** Amélioration du FakeDataInclusionClient [#1198](https://github.com/gip-inclusion/dora/issues/1198).
-- **Corrections :** Correction de typos [#1181](https://github.com/gip-inclusion/dora/issues/1181) et suppression d'un message de non-cumulabilité des services DI [#1144](https://github.com/gip-inclusion/dora/issues/1144).
-- **Sentry :** Correction de fausses erreurs 500 remontées à Sentry dans Safari [#1164](https://github.com/gip-inclusion/dora/issues/1164) et [#1160](https://github.com/gip-inclusion/dora/issues/1160).
-- **Code :** Amélioration du tri des imports [#1200](https://github.com/gip-inclusion/dora/issues/1200) et nettoyage post recherche unifiée [#1095](https://github.com/gip-inclusion/dora/issues/1095).
-- **Analytics :** Synchronisation de la table `orientations_emploisorientationdata` [#1190](https://github.com/gip-inclusion/dora/issues/1190) et correction de l'export pilotage sans renommage du schéma public [#1170](https://github.com/gip-inclusion/dora/issues/1170).
-- **UI :** Amélioration du bouton de suppression d’option sélectionnée dans le dropdown [#1156](https://github.com/gip-inclusion/dora/issues/1156).
-- **Contact :** Suppression de l'espace entre le nom du contact et les autres infos de contact [#1148](https://github.com/gip-inclusion/dora/issues/1148).
+- Correction d'un bug qui provoquait le double report des erreurs inattendues à Sentry [#1203](https://github.com/gip-inclusion/dora/issues/1203).
+- Correction d'une typo [#1181](https://github.com/gip-inclusion/dora/issues/1181).
+- Correction d'un bug qui remontait des fausses erreurs 500 lors du rechargement après déploiement [#1160](https://github.com/gip-inclusion/dora/issues/1160).
+- Suppression du message de non-cumulabilité des services DI [#1144](https://github.com/gip-inclusion/dora/issues/1144).
+- Mise à jour de la déclaration d’accessibilité [#1202](https://github.com/gip-inclusion/dora/issues/1202).
+- Correction du tri des imports dans un fichier Python [#1200](https://github.com/gip-inclusion/dora/issues/1200).
+- Amélioration du bouton de suppression d’option sélectionnée dans le dropdown [#1156](https://github.com/gip-inclusion/dora/issues/1156).
+- Correction pour ne plus remonter à Sentry les erreurs de fetch des scripts tiers [#1146](https://github.com/gip-inclusion/dora/issues/1146).
+- Plusieurs mises à jour de dépendances (actions/checkout, actions/setup-python, actions/setup-node, @babel/core, @sveltejs/kit, boto3, data-inclusion-schema, lint-staged, pygraphviz) ont été effectuées.

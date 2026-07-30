@@ -361,6 +361,7 @@
 │   │   │   │       ├── close_expired_orientations.py
 │   │   │   │       ├── delete_old_closed_orientation_attachments.py
 │   │   │   │       ├── delete_orientation_attachments.py
+│   │   │   │       ├── export_emplois_orientations.py
 │   │   │   │       └── send_orientations_reminders.py
 │   │   │   ├── migrations
 │   │   │   │   ├── 0001_initial.py
@@ -432,6 +433,7 @@
 │   │   │   │   ├── test_emplois_emails.py
 │   │   │   │   ├── test_emplois_orientation_data.py
 │   │   │   │   ├── test_emplois_orientation_handler.py
+│   │   │   │   ├── test_export_emplois_orientations.py
 │   │   │   │   ├── test_orientation.py
 │   │   │   │   ├── test_orientation_admin.py
 │   │   │   │   ├── test_orientation_attachments.py
@@ -479,6 +481,7 @@
 │   │   │   │   ├── 0001_initial.py
 │   │   │   │   ├── 0002_initial.py
 │   │   │   │   ├── 0003_seed_data.py
+│   │   │   │   ├── 0004_protect_structure_fks.py
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── data
 │   │   │   │       └── assignation-thematiques.csv
@@ -544,8 +547,12 @@
 │   │   │   │   ├── 0001_initial.py
 │   │   │   │   ├── 0002_searchview_keyword_searchview_search_type.py
 │   │   │   │   ├── 0003_structureview_search_view.py
+│   │   │   │   ├── 0004_searchview_region.py
 │   │   │   │   └── __init__.py
 │   │   │   ├── models.py
+│   │   │   ├── tests
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── test_search_event.py
 │   │   │   └── views.py
 │   │   ├── structures
 │   │   │   ├── __init__.py
@@ -560,12 +567,14 @@
 │   │   │   ├── management
 │   │   │   │   └── commands
 │   │   │   │       ├── clean_mobin_label.py
+│   │   │   │       ├── delete_orphan_structures.py
 │   │   │   │       ├── import_dr_dt_ft.py
 │   │   │   │       ├── import_ft_agencies.py
 │   │   │   │       └── import_structures.py
 │   │   │   ├── migrations
 │   │   │   │   ├── 0001_initial.py
 │   │   │   │   ├── 0002_seed_data.py
+│   │   │   │   ├── 0003_protect_structure_fks.py
 │   │   │   │   └── __init__.py
 │   │   │   ├── models.py
 │   │   │   ├── permissions.py
@@ -596,6 +605,7 @@
 │   │   │   │   ├── conftest.py
 │   │   │   │   ├── test_admin_import_view.py
 │   │   │   │   ├── test_clean_mobin_label.py
+│   │   │   │   ├── test_delete_orphan_structures.py
 │   │   │   │   ├── test_emails.py
 │   │   │   │   ├── test_import_structures.py
 │   │   │   │   ├── test_querysets.py
@@ -1434,4 +1444,4 @@
 └── tools
     ├── create-review-apps.sh
     └── release.sh
-274 directories, 1162 files
+275 directories, 1171 files
