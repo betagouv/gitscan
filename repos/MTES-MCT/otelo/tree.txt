@@ -110,6 +110,8 @@
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260707120000_demographic_evolution_scenarios_nullable
 │   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260729090000_fix_projection_below_millesime
+│   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   └── schema.prisma
 │   │   ├── prisma.config.ts
@@ -223,6 +225,8 @@
 │   │   │   │   │   ├── share-token.guard.spec.ts
 │   │   │   │   │   └── share-token.guard.ts
 │   │   │   │   └── utils
+│   │   │   │       ├── content-disposition.spec.ts
+│   │   │   │       ├── content-disposition.ts
 │   │   │   │       ├── email-anonymizer.ts
 │   │   │   │       └── encryption.ts
 │   │   │   ├── config
@@ -303,6 +307,9 @@
 │   │   │   │   ├── export-excel.service.spec.ts
 │   │   │   │   ├── export-excel.service.ts
 │   │   │   │   └── helpers
+│   │   │   │       ├── export-filename.spec.ts
+│   │   │   │       ├── export-filename.ts
+│   │   │   │       ├── labels.spec.ts
 │   │   │   │       └── labels.ts
 │   │   │   ├── export-powerpoint
 │   │   │   │   ├── chart-generation
@@ -757,9 +764,6 @@
 │       │   │   │   │   └── upload
 │       │   │   │   │       └── route.ts
 │       │   │   │   ├── docurba
-│       │   │   │   │   ├── epci
-│       │   │   │   │   │   └── [code]
-│       │   │   │   │   │       └── route.ts
 │       │   │   │   │   └── epcis
 │       │   │   │   │       └── route.ts
 │       │   │   │   ├── epci
@@ -908,6 +912,8 @@
 │       │   │   ├── collaboration
 │       │   │   │   └── share-simulation-modal.tsx
 │       │   │   ├── common
+│       │   │   │   ├── drawer.module.css
+│       │   │   │   ├── drawer.tsx
 │       │   │   │   ├── dropdown.tsx
 │       │   │   │   ├── generic-card
 │       │   │   │   │   ├── generic-card.module.css
@@ -945,6 +951,9 @@
 │       │   │   │   ├── creation-guide
 │       │   │   │   │   ├── bad-housing-settings-creation-guide-tag.tsx
 │       │   │   │   │   └── demographic-settings-creation-guide-tag.tsx
+│       │   │   │   ├── docurba
+│       │   │   │   │   ├── scot-info-drawer.tsx
+│       │   │   │   │   └── scot-info-table.tsx
 │       │   │   │   ├── preview
 │       │   │   │   │   ├── bad-housing-preview.tsx
 │       │   │   │   │   ├── creation-preview.tsx
@@ -971,9 +980,6 @@
 │       │   │   │   │   │   ├── simulation-demographic-parc-evolution-data-wrapper.tsx
 │       │   │   │   │   │   ├── simulation-demographic-parc-evolution-dropdown.tsx
 │       │   │   │   │   │   └── simulation-demographic-parc-evolution.tsx
-│       │   │   │   │   ├── docurba
-│       │   │   │   │   │   ├── epci-scot-info.tsx
-│       │   │   │   │   │   └── synthesis-scot-info.tsx
 │       │   │   │   │   ├── export-simulation-settings-button.tsx
 │       │   │   │   │   ├── header
 │       │   │   │   │   │   ├── simulation-header-segmented-controls.tsx
@@ -1028,6 +1034,8 @@
 │       │   │   │   │   │   ├── rates-toggle-switch.tsx
 │       │   │   │   │   │   └── secondary-rates-toggle-switch.tsx
 │       │   │   │   │   ├── long-term-vacancy-alert.tsx
+│       │   │   │   │   ├── millesime-initializer.tsx
+│       │   │   │   │   ├── millesime-reminder.tsx
 │       │   │   │   │   ├── modification
 │       │   │   │   │   │   ├── mal-logement
 │       │   │   │   │   │   │   ├── bad-housing-settings-form-context-wrapper.tsx
@@ -1088,7 +1096,13 @@
 │       │   │   │   │   ├── select-territorial-issues.tsx
 │       │   │   │   │   ├── simulation-form-context-wrapper.tsx
 │       │   │   │   │   ├── simulation-side-menu.module.css
-│       │   │   │   │   └── update-simulation-form.tsx
+│       │   │   │   │   ├── update-simulation-form.tsx
+│       │   │   │   │   └── wizard-steps.ts
+│       │   │   │   ├── tutorial
+│       │   │   │   │   ├── tutorial-button.tsx
+│       │   │   │   │   ├── tutorial-content.ts
+│       │   │   │   │   ├── tutorial.css
+│       │   │   │   │   └── use-tutorial.ts
 │       │   │   │   └── validation-settings
 │       │   │   │       ├── create-validation-accommodation-rates.tsx
 │       │   │   │       ├── create-validation-restructuration-disparition-rates.tsx
@@ -1156,7 +1170,7 @@
 │       │   │   ├── size.css
 │       │   │   └── text.css
 │       │   ├── hooks
-│       │   │   └── use-*.ts  (61 files)
+│       │   │   └── use-*.ts  (60 files)
 │       │   ├── lib
 │       │   │   └── auth
 │       │   │       ├── client.ts
@@ -1199,6 +1213,7 @@
 │       │       ├── calculation-helpers.ts
 │       │       ├── format-numbers.ts
 │       │       ├── omphale-label.ts
+│       │       ├── projection.ts
 │       │       ├── resources.ts
 │       │       ├── round-chart-axis.ts
 │       │       └── sPluriel.ts
@@ -1254,4 +1269,4 @@
 ├── scripts
 │   └── scalingo-postbuild.mjs
 └── tsconfig.base.json
-375 directories, 941 files
+375 directories, 955 files
