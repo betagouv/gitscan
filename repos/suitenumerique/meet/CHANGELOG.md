@@ -12,21 +12,30 @@ and this project adheres to
 
 - ✨(summary) report exception type in failure analytics
 - ✨(frontend) add configurable documentation menu item
+- ✨(frontend) allow promoting authenticated participants
+- ✨(frontend) introduce an "unauthenticated" participant badge
+
+### Changed
+
+- ⬆️(frontend) upgrade @mediapipe/tasks-vision from 0.10.14 to 0.10.35
+- ⬆️(frontend) upgrade i18next from 26.3.1 to 26.3.4
+- ⬆️(frontend) upgrade posthog-js from 1.391.2 to 1.395.0
+- ⬆️(frontend) upgrade @tanstack/react-query from 5.101.0 to 5.101.1
+- ⬆️(frontend) upgrade livekit-client from 2.19.2 to 2.20.0
+- ⚡️(frontend) limit unnecessary re-renders #1510
+- 📝(legal) update terms of service
+- 💄(frontend) render Avatar initials in uppercase
+- 💄(frontend) improve participant name rendering in the list
 
 ## Fixed
 
 - 🐛(transcription) fix silent bug in speaker assignment
 - 🐛(summary) extend tasks auto retry logic
 - 🐛(summary) properly detect when failure webhook should be sent
-
-### Changed
-
-- ⬆️(frontend) upgrade @mediapipe/tasks-vision from 0.10.14 to 0.10.35
-- ⬆️(frontend) upgrade i18next from 26.3.1 to 26.3.2
-- ⬆️(frontend) upgrade posthog-js from 1.391.2 to 1.395.0
-- ⬆️(frontend) upgrade @tanstack/react-query from 5.101.0 to 5.101.1
-- ⬆️(frontend) upgrade livekit-client from 2.19.2 to 2.20.0
-- ⚡️(frontend) limit unnecessary re-renders #1510
+- 🐛(backend) preserve recording metadata when updating room access
+- 🐛(backend) allow any string as sub in the API serializer
+- 🐛(frontend) fall back to user.full_name on request-entry
+- 🚸(frontend) show two initials in the Avatar when possible
 
 ## [1.24.0] - 2026-07-21
 

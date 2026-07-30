@@ -161,6 +161,7 @@
 │       └── postgresql
 ├── gitlint
 │   └── gitlint_emoji.py
+├── publiccode.yml
 ├── renovate.json
 └── src
     ├── addons
@@ -327,6 +328,7 @@
     │   │   │   ├── provisional_user_service.py
     │   │   │   ├── room_creation.py
     │   │   │   ├── room_management.py
+    │   │   │   ├── room_roles.py
     │   │   │   ├── subtitle.py
     │   │   │   └── telephony.py
     │   │   ├── static
@@ -406,6 +408,7 @@
     │   │   │   │   ├── test_api_rooms_stop_recording.py
     │   │   │   │   ├── test_api_rooms_subtitle.py
     │   │   │   │   ├── test_api_rooms_update.py
+    │   │   │   │   ├── test_api_rooms_update_participant_role.py
     │   │   │   │   └── test_api_rooms_webhook.py
     │   │   │   ├── services
     │   │   │   │   ├── __init__.py
@@ -675,6 +678,7 @@
     │   │   │   │   │   ├── ToastRecordingRequest.tsx
     │   │   │   │   │   ├── ToastRecordingSaving.tsx
     │   │   │   │   │   ├── ToastRegion.tsx
+    │   │   │   │   │   ├── ToastRoleChanged.tsx
     │   │   │   │   │   └── WaitingParticipantNotification.tsx
     │   │   │   │   ├── hooks
     │   │   │   │   │   ├── useNotifyParticipants.ts
@@ -702,16 +706,19 @@
     │   │   │   │   │   ├── enterRoom.ts
     │   │   │   │   │   ├── listWaitingParticipants.ts
     │   │   │   │   │   ├── lowerHandParticipant.ts
-    │   │   │   │   │   └── lowerHandParticipants.ts
+    │   │   │   │   │   ├── lowerHandParticipants.ts
+    │   │   │   │   │   └── updateParticipantRole.ts
     │   │   │   │   ├── components
     │   │   │   │   │   ├── LowerAllHandsButton.tsx
     │   │   │   │   │   ├── MuteEveryoneButton.tsx
+    │   │   │   │   │   ├── ParticipantName.tsx
     │   │   │   │   │   ├── ParticipantRow.tsx
     │   │   │   │   │   ├── ParticipantsCollapsibleSection.tsx
     │   │   │   │   │   ├── ParticipantsCount.tsx
     │   │   │   │   │   ├── ParticipantsList.tsx
     │   │   │   │   │   ├── PinBadge.tsx
     │   │   │   │   │   ├── RaisedHandRow.tsx
+    │   │   │   │   │   ├── UnauthenticatedBadge.tsx
     │   │   │   │   │   ├── WaitingParticipantRow.tsx
     │   │   │   │   │   ├── WaitingParticipantsSection.tsx
     │   │   │   │   │   └── menu
@@ -719,6 +726,7 @@
     │   │   │   │   │       ├── ParticipantMenuButton.tsx
     │   │   │   │   │       └── items
     │   │   │   │   │           ├── PinMenuItem.tsx
+    │   │   │   │   │           ├── PromoteMenuItem.tsx
     │   │   │   │   │           └── RemoveMenuItem.tsx
     │   │   │   │   └── hooks
     │   │   │   │       └── useWaitingParticipants.ts
@@ -917,7 +925,8 @@
     │   │   │   │       ├── generateRoomId.ts
     │   │   │   │       ├── getParticipantBackgroundGradient.ts
     │   │   │   │       ├── getParticipantColor.ts
-    │   │   │   │       ├── getParticipantIsRoomAdmin.ts
+    │   │   │   │       ├── getParticipantIsAuthenticated.ts
+    │   │   │   │       ├── getParticipantIsRoomAdminOrOwner.ts
     │   │   │   │       ├── getParticipantName.ts
     │   │   │   │       ├── isRoomValid.ts
     │   │   │   │       ├── isSubsetOf.ts
@@ -1343,4 +1352,4 @@
             └── unit
                 ├── test_file_service.py
                 └── test_user_assign.py
-257 directories, 1088 files
+257 directories, 1097 files
