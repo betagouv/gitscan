@@ -86,7 +86,7 @@
 ├── .husky
 │   ├── .gitignore
 │   └── pre-commit
-├── .lintstagedrc
+├── .lintstagedrc.mjs
 ├── .mcp.json
 ├── .slugignore
 ├── .talismanrc
@@ -743,6 +743,7 @@
 │   ├── dropRemoteTables.sh
 │   ├── dump-schema.sh
 │   ├── fetch-features-from-feature-server.sh
+│   ├── fetch-publicodes-branch.sh
 │   ├── migrate.sh
 │   ├── postinstall.mjs
 │   ├── simulateur
@@ -833,6 +834,7 @@
 │   │   │   │   ├── EligibilityForm.styled.tsx
 │   │   │   │   ├── SelectEnergy.tsx
 │   │   │   │   └── index.ts
+│   │   │   ├── eligibilityTestValidation.ts
 │   │   │   └── index.ts
 │   │   ├── EligibilityHelpDialog.tsx
 │   │   ├── GenericContent
@@ -1004,15 +1006,13 @@
 │   │   │   │   ├── SelectCheckboxes.tsx
 │   │   │   │   ├── TextArea.tsx
 │   │   │   │   └── Upload.tsx
-│   │   │   ├── publicodes
-│   │   │   │   ├── FormProvider.tsx
-│   │   │   │   ├── Input.tsx
-│   │   │   │   ├── Label.tsx
-│   │   │   │   ├── Radio.tsx
-│   │   │   │   ├── Select.tsx
-│   │   │   │   └── labels.ts
-│   │   │   └── react-form
-│   │   │       └── useForm.tsx
+│   │   │   └── publicodes
+│   │   │       ├── FormProvider.tsx
+│   │   │       ├── Input.tsx
+│   │   │       ├── Label.tsx
+│   │   │       ├── Radio.tsx
+│   │   │       ├── Select.tsx
+│   │   │       └── labels.ts
 │   │   ├── shared
 │   │   │   ├── layout
 │   │   │   │   └── Global.style.ts
@@ -1272,6 +1272,8 @@
 │   │   │   ├── client.ts
 │   │   │   └── posthog.config.ts
 │   │   ├── app
+│   │   │   ├── AGENTS.md
+│   │   │   ├── business-rules.ts
 │   │   │   ├── client
 │   │   │   │   └── hooks
 │   │   │   │       └── useUserInfo.tsx
@@ -1334,6 +1336,7 @@
 │   │   │   │   │   └── selectors.ts
 │   │   │   │   ├── heatingModeCosts.ts
 │   │   │   │   ├── hooks
+│   │   │   │   │   ├── useAddressEligibility.spec.ts
 │   │   │   │   │   ├── useAddressEligibility.ts
 │   │   │   │   │   ├── useChoixChauffageQueryParams.spec.ts
 │   │   │   │   │   ├── useChoixChauffageQueryParams.ts
@@ -1414,6 +1417,7 @@
 │   │   │   │   └── trpc-routes.ts
 │   │   │   └── types.ts
 │   │   ├── demands
+│   │   │   ├── AGENTS.md
 │   │   │   ├── client
 │   │   │   │   ├── AccessCountsCell.tsx
 │   │   │   │   ├── AccessDetailDialog.tsx
@@ -1466,11 +1470,56 @@
 │   │   │   └── server
 │   │   │       ├── service.ts
 │   │   │       └── trpc-routes.ts
+│   │   ├── doc
+│   │   │   ├── AGENTS.md
+│   │   │   ├── client
+│   │   │   │   ├── DocArticle.tsx
+│   │   │   │   ├── DocSearch.tsx
+│   │   │   │   ├── Mermaid.tsx
+│   │   │   │   ├── Rule.tsx
+│   │   │   │   ├── inventories
+│   │   │   │   │   ├── CronsInventory.tsx
+│   │   │   │   │   ├── DemandStatuses.tsx
+│   │   │   │   │   ├── EmailsInventory.tsx
+│   │   │   │   │   ├── EventsInventory.tsx
+│   │   │   │   │   ├── FcrDemandStatuses.tsx
+│   │   │   │   │   ├── event-groups.ts
+│   │   │   │   │   └── table-classes.ts
+│   │   │   │   ├── search.ts
+│   │   │   │   └── useDocScrollRestoration.ts
+│   │   │   ├── commands
+│   │   │   │   └── build-search-index.ts
+│   │   │   ├── commands.ts
+│   │   │   ├── content
+│   │   │   │   ├── carte-iframes.mdx
+│   │   │   │   ├── chaleur-renouvelable.mdx
+│   │   │   │   ├── comparateur.mdx
+│   │   │   │   ├── cycle-de-vie-demande.mdx
+│   │   │   │   ├── eligibilite.mdx
+│   │   │   │   ├── gestion-reseaux.mdx
+│   │   │   │   ├── glossaire.mdx
+│   │   │   │   ├── inscription-comptes.mdx
+│   │   │   │   ├── perimetre-doc.mdx
+│   │   │   │   ├── reaffectation-demandes.mdx
+│   │   │   │   ├── references.mdx
+│   │   │   │   ├── relances-notifications.mdx
+│   │   │   │   ├── role-admin.mdx
+│   │   │   │   ├── role-collectivite.mdx
+│   │   │   │   ├── role-demandeur.mdx
+│   │   │   │   ├── role-gestionnaire.mdx
+│   │   │   │   ├── roles-permissions.mdx
+│   │   │   │   └── tests-adresses-pro.mdx
+│   │   │   ├── doc-coverage.spec.ts
+│   │   │   ├── doc.config.ts
+│   │   │   ├── search-extract.ts
+│   │   │   ├── search-index.generated.ts
+│   │   │   └── search-index.spec.ts
 │   │   ├── email
 │   │   │   ├── AGENTS.md
 │   │   │   ├── client
 │   │   │   │   └── admin
 │   │   │   │       └── EmailsPage.tsx
+│   │   │   ├── constants.ts
 │   │   │   ├── email.config.tsx
 │   │   │   ├── index.tsx
 │   │   │   ├── react-email
@@ -1519,7 +1568,28 @@
 │   │   │   ├── Autocomplete.spec.tsx
 │   │   │   ├── Autocomplete.tsx
 │   │   │   ├── EntrepriseField.tsx
+│   │   │   ├── Form.tsx
+│   │   │   ├── MIGRATION.md
 │   │   │   ├── MultiAutocompleteField.tsx
+│   │   │   ├── SubmitButton.tsx
+│   │   │   ├── fields
+│   │   │   │   ├── AddressSelectField.tsx
+│   │   │   │   ├── BooleanRadioField.tsx
+│   │   │   │   ├── CheckboxField.tsx
+│   │   │   │   ├── CustomField.tsx
+│   │   │   │   ├── EmailField.tsx
+│   │   │   │   ├── NumberField.tsx
+│   │   │   │   ├── PasswordField.tsx
+│   │   │   │   ├── PhoneField.tsx
+│   │   │   │   ├── RadioField.tsx
+│   │   │   │   ├── SelectField.tsx
+│   │   │   │   ├── TextField.tsx
+│   │   │   │   ├── TextareaField.tsx
+│   │   │   │   ├── UploadField.tsx
+│   │   │   │   └── useFieldStatus.ts
+│   │   │   ├── form-contexts.ts
+│   │   │   ├── useAppForm.spec.tsx
+│   │   │   ├── useAppForm.tsx
 │   │   │   ├── useDebouncedSwitchMap.spec.ts
 │   │   │   └── useDebouncedSwitchMap.ts
 │   │   ├── geo
@@ -1534,6 +1604,7 @@
 │   │   │   ├── AGENTS.md
 │   │   │   ├── commands.ts
 │   │   │   ├── constants.ts
+│   │   │   ├── cron.config.ts
 │   │   │   ├── jobs.config.ts
 │   │   │   └── server
 │   │   │       ├── clock.ts
@@ -1821,6 +1892,17 @@
 │   │   │       ├── csvColumnDetection.spec.ts
 │   │   │       ├── csvColumnDetection.ts
 │   │   │       └── xlsx.ts
+│   │   ├── publicodes
+│   │   │   ├── AGENTS.md
+│   │   │   ├── client
+│   │   │   │   ├── ExplainedValue.tsx
+│   │   │   │   ├── ExplanationNodeView.tsx
+│   │   │   │   ├── RuleExplanationDialog.tsx
+│   │   │   │   ├── dev
+│   │   │   │   │   └── ExplanationDemo.tsx
+│   │   │   │   └── explanation-navigation.ts
+│   │   │   ├── explanation-model.ts
+│   │   │   └── format.ts
 │   │   ├── reseaux
 │   │   │   ├── client
 │   │   │   │   ├── ReseauAutocomplete.tsx
@@ -1930,6 +2012,9 @@
 │   │   │   ├── demandes-chaleur-renouvelable.tsx
 │   │   │   ├── demandes.tsx
 │   │   │   ├── diagnostic.tsx
+│   │   │   ├── doc
+│   │   │   │   ├── [slug].tsx
+│   │   │   │   └── index.tsx
 │   │   │   ├── emails.tsx
 │   │   │   ├── events.tsx
 │   │   │   ├── iframes.tsx
@@ -2135,6 +2220,7 @@
 │   │   │       ├── 20260714000000_trim_demand_mail_adresse.ts
 │   │   │       ├── 20260716000000_simplify_etudes_en_cours.ts
 │   │   │       ├── 20260720000000_add_comment_user_to_demands.ts
+│   │   │       ├── 20260727000000_rename_comparateur_publicodes_rules.ts
 │   │   │       └── migrator.ts
 │   │   ├── helpers
 │   │   │   ├── db-errors.ts
@@ -2248,4 +2334,4 @@
 ├── vendor
 │   └── xlsx-0.20.3.tgz
 └── vitest.config.mts
-311 directories, 2267 files
+320 directories, 2344 files

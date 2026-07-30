@@ -1,53 +1,52 @@
-## Changelog : france-chaleur-urbaine (30 derniers jours, au 21 juillet 2026)
+## Changelog : france-chaleur-urbaine (30 derniers jours, au 29 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment dans le cadre de la fonctionnalité "Chaleur Renouvelable" avec l'ajout de commentaires sur les demandes, une meilleure intégration des données du RNB et de la BDNB, et un redesign de l'interface. Des améliorations de performance ont également été apportées au tableau des demandes et à la gestion des données.
+Cette période a été marquée par d'importantes améliorations de l'administration de l'outil, notamment la gestion des utilisateurs, des demandes et des données. L'intégration du simulateur de PAC a été finalisée et des améliorations significatives ont été apportées à la cartographie et à l'expérience utilisateur, en particulier pour les demandes de chaleur renouvelable.
 
 ### Évolutions fonctionnelles
-- Ajout d'un champ commentaire utilisateur sur les demandes de raccordement [#1274](https://github.com/betagouv/france-chaleur-urbaine/issues/1274).
-- Amélioration de l'affichage mobile des autres solutions de chauffage.
-- Redesign du bloc FranceRenov.
-- Amélioration de la gestion de l'affichage des bâtiments sur la carte, avec un effet au survol.
-- Pré-remplissage des informations de bâtiment pour simplifier la création de demandes.
-- Ajout d'un champ type de radiateur obligatoire.
-- Implémentation d'un bloc ECFR (Énergie, Climat, Forêt, Renouvelable).
-- Amélioration de la sélection de bâtiment via le RNB.
-- Ajout d'un effet au survol sur les bâtiments.
-- Ajout de la possibilité d'étiqueter les utilisateurs (tags) pour une meilleure gestion.
-- Amélioration de la gestion des organisations et ajout d'une API v2 correspondante.
-- Ajout de la possibilité de filtrer globalement sur les colonnes du tableau des demandes.
-- Ajout de la possibilité de mettre à jour le statut des demandes par les administrateurs.
-- Ajout du maitre d'ouvrage aux réseaux en construction.
+- Ajout de la possibilité de filtrer globalement les colonnes dans les tableaux de conversion.
 - Amélioration de l'affichage des boutons de modification/suppression pour les relances.
-- Ajout d'un lien vers le formulaire de contact depuis la page "Mes demandes".
-- Amélioration de la gestion des cookies pour les grandes tailles.
-- Restauration de l'affichage de l'éligibilité sur les iframes legacy.
-- Simplification des statuts autour du recontact.
-- Ajout d'un méga-menu pour une meilleure organisation de l'administration.
-- Réorganisation du dashboard admin avec toutes les pages.
-- Ajout de la possibilité d'ajouter une plage d'IP pour la gestion des accès.
+- Possibilité pour les administrateurs de mettre à jour le statut des demandes.
+- Ajout du maître d'ouvrage aux réseaux en construction.
+- Gestion des abus pour les statistiques.
+- Ajout de commentaires utilisateurs sur les demandes de raccordement.
+- Implémentation d'alertes pour les demandes non recontactées.
+- Ajout d'un CTA vers France Chaleur Renouvelable sur la carte lorsque l'adresse n'est pas éligible.
+- Amélioration de l'affichage et de l'ergonomie du comparateur de PAC.
+- Ajout d'un champ commentaire sur les demandes de chaleur renouvelable.
+- Ajout d'un champ type de radiateur sur la landing page.
+- Gestion des étiquettes utilisateurs (tags) pour faciliter l'organisation et le suivi.
+- Amélioration de la gestion des erreurs et des messages d'information.
+- Ajout de la possibilité de supprimer en masse des demandes.
+- Ajout d'un champ pour la gestion des organisations.
+- Affichage des accès aux demandes sur une seule ligne.
 
 ### Évolutions techniques
-- Refactorisation de l'API PAC (Pompe à Chaleur).
-- Utilisation du composant `Dialog` au lieu de `Modal`.
-- Migration vers le nouveau composant MapLibre.
-- Amélioration de la gestion des types et des erreurs.
-- Suppression de dépendances inutilisées.
-- Optimisation des performances du tableau des demandes.
-- Mise à jour du package `publicodes`.
+- Migration vers le module formulaire TanStack pour 13 formulaires, améliorant la performance et la maintenabilité.
+- Utilisation des règles Publicodes v2 pour une gestion plus flexible et efficace des règles de calcul.
+- Refactorisation de l'API PAC pour une meilleure organisation et maintenabilité.
+- Mise à jour du package Publicodes.
+- Amélioration de la gestion des cookies pour les grandes tailles.
+- Centralisation de l'email de contact pour FCR.
+- Centralisation des statuts de FCR dans la documentation.
+- Configuration des tests Playwright et PostgreSQL.
+- Amélioration du typage TypeScript pour Publicodes.
+- Utilisation de Dialog et ConfirmDialog pour une meilleure expérience utilisateur.
+- Suppression de code obsolète et nettoyage du code.
 - Amélioration de la gestion des migrations de base de données.
-- Utilisation de `ConfirmDialog` et des variantes de boutons pour une meilleure cohérence.
-- Suppression de l'intégration Pipedrive et des notifications emails de l'équipe FCU.
-- Amélioration du tracking des événements dans les iframes et formulaires.
 - Ajout de tests unitaires et d'intégration.
-- Correction de problèmes de typage.
+- Optimisation des performances de l'application.
 
 ### Autres changements
-- Mise à jour de la documentation.
-- Nettoyage du code et refactorisation de certains composants.
+- Documentation de la procédure de développement en local avec Publicodes.
+- Mise à jour de la documentation métier et du registre des règles de gestion FCR.
 - Correction de bugs mineurs et améliorations de la qualité du code.
-- Ajout de commentaires pour faciliter la maintenance.
-- Ajustements graphiques et amélioration de l'expérience utilisateur.
-- Mise à jour des données et des configurations.
-- Suppression de tests obsolètes.
-- Amélioration de la gestion des erreurs et des exceptions.
+- Mise à jour des dépendances.
+- Amélioration de la gestion des erreurs Airtable.
+- Correction de problèmes de rendu SSR pour les pages légales et de confidentialité.
+- Ajout de commentaires et de documentation pour faciliter la compréhension du code.
+- Amélioration de la gestion des événements et du tracking.
+- Mise à jour des données des études en cours.
+- Correction de problèmes de compatibilité avec les anciennes iframes.
+- Amélioration de la gestion de l'imposture administrateur.
+- Ajout d'un lien vers le formulaire de contact depuis mes demandes.
