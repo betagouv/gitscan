@@ -1,45 +1,42 @@
-## Changelog : monitorfish (30 derniers jours, au 23 juillet 2026)
+## Changelog : monitorfish (30 derniers jours, au 29 juillet 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives de l'interface utilisateur pour les contrôles, notamment concernant la gestion des groupes de navires prioritaires, des signalements et des formulaires e-ISR. Des corrections de bugs et des optimisations de performance ont également été apportées, ainsi qu'une modernisation des outils de linting pour améliorer la qualité du code.
+Cette version apporte des améliorations significatives à l'interface utilisateur et à la gestion des données, notamment au niveau des contrôles, des signalements, des groupes de navires et des formulaires e-ISR. Des corrections de bugs ont été implémentées pour améliorer la stabilité et la fiabilité de l'application. Des optimisations de performance ont également été réalisées, en particulier pour les requêtes de données AIS.
 
 ### Évolutions fonctionnelles
-- Amélioration du suivi des contrôles sur les cibles prioritaires [#5306](https://github.com/MTES-MCT/monitorfish/issues/5306).
-- Correction de l'affichage des groupes de navires prioritaires et ajout de tests unitaires.
-- Correction de bugs liés à l'affichage de la profondeur des alertes dans les rapports et au débordement des jauges de profil de navire.
-- Corrections sur les formulaires M1 et M3 (e-ISR) : affichage des champs, gestion des dates de mission, et ajout des champs armateur.
-- Affichage des groupes partagés et des signalements de la marée sous la recherche navire dans le contexte des contrôles.
-- Amélioration de l'affichage et de la gestion des groupes de navires, notamment pour l'export CSV et le style des groupes prioritaires.
-- Ajout d'un filtre "navire sans fiche" dans la liste des signalements INN en Outre-mer OP [#5289](https://github.com/MTES-MCT/monitorfish/issues/5289).
-- Correction du troncage du calendrier de fin de mission dans les rapports d'inspection.
-- Mise à jour de la REG UE pour les avaries VMS.
-- Amélioration du flux de gestion des navires.
-- Ajout de colonnes dans l'interface.
-- Mise à jour des PDF.
+- **Contrôles :**
+    - Affichage des groupes prioritaires et des signalements de la marée sous la recherche navire.
+    - Amélioration de l'affichage des tags de groupes et de signalements dans les formulaires de contrôle.
+    - Correction de bugs liés à l'affichage des groupes de navires et des contrôles.
+    - Ajout de la possibilité de suivre les contrôles faits sur des cibles prioritaires.
+- **Signalements INN :**
+    - Ajout d'un filtre "navire sans fiche" dans la liste des signalements "Outre-mer OP".
+    - Amélioration du comportement du bouton "centrer sur la carte" dans la vue liste des signalements.
+    - Correction de bugs liés à l'affichage et à la gestion des signalements.
+- **Groupes de navires :**
+    - Ajout d'une case "cibles prioritaires" au formulaire de création et de modification d'un groupe.
+    - Possibilité de masquer l'affichage des groupes prioritaires pour les unités externes.
+    - Amélioration de l'export CSV des groupes de navires.
+- **Formulaires e-ISR :**
+    - Mise à jour des champs facultatifs et des règles d'applicabilité.
+    - Ajout des champs armateur.
+    - Correction de bugs liés à l'affichage et à la logique des champs.
+- **Autres :**
+    - Correction de bugs liés à l'archivage automatique des alertes de position.
+    - Amélioration de la gestion des poids des espèces dans les formulaires.
+    - Correction de bugs liés aux missions, au rafraîchissement des préavis et aux avaries.
 
 ### Évolutions techniques
-- Optimisation de la requête des dernières positions AIS pour améliorer les performances [#5300](https://github.com/MTES-MCT/monitorfish/issues/5300).
-- Refonte du linter avec l'intégration d'OxLint (hybride ESLint) et application de règles de performance.
-- Mise à jour des dépendances frontend (postcss).
-- Amélioration de la configuration des hooks git et intégration de ktlint pour le backend.
-- Utilisation de `updateMany` pour optimiser les mises à jour en base de données.
-- Suppression de code obsolète et simplification de la logique.
-- Correction de plusieurs avertissements et erreurs de linting.
-- Migration vers ESLint 9 avec suppressions natives.
+- **Performance :** Optimisation de la requête de dernières positions AIS pour améliorer les performances.
+- **Linting :** Migration vers un linter hybride (OxLint) et mise à jour des règles ESLint pour améliorer la qualité du code.
+- **Dépendances :** Mise à jour de plusieurs dépendances frontend (postcss).
+- **Tests :** Ajout et amélioration des tests Cypress pour couvrir les nouvelles fonctionnalités et les corrections de bugs.
+- **Architecture :** Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+- **Scraper Legipeche :** Correction du scraper pour gérer les pages non visitées.
 
 ### Autres changements
-- Ajout d'une section sur le `box-sizing` monitor-ui dans le fichier `CONTRIBUTING.md` [#5273](https://github.com/MTES-MCT/monitorfish/issues/5273).
-- Mise à jour de la description des nouvelles fonctionnalités.
-- Suppression de la baseline ktlint.
-- Correction de commentaires obsolètes.
-- Ajout d'un info icon.
-- Suppression de la prop `vesselTargeted`.
-- Ajout d'un message de progression dans le hook de pré-push pour les tests lents.
-- Correction du scraper Legipeche pour gérer les pages non visitées [#5268](https://github.com/MTES-MCT/monitorfish/issues/5268).
-- Mise à jour des dépendances Python.
-- Suppression d'une réversion de la présentation/zone single-select pour les espèces et les discards.
-- Suppression de règles de linting inutiles.
-- Correction de la gestion des promesses flottantes dans le code frontend.
-- Ajout de tests Cypress pour l'affichage des groupes de navires.
-- Correction de bugs liés à la navigation au clavier dans les tableaux d'espèces.
-- Amélioration de la gestion des états et des événements dans l'interface utilisateur.
+- Mise à jour de la documentation pour refléter les nouvelles fonctionnalités et les changements apportés.
+- Corrections de commentaires obsolètes et ajout d'informations sur le box-sizing dans le fichier CONTRIBUTING.md.
+- Suppression de fichiers de configuration inutiles (ktlint baseline).
+- Amélioration des messages de progression dans le hook pré-push.
+- Correction de divers bugs et améliorations mineures de l'interface utilisateur.
