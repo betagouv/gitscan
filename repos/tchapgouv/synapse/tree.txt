@@ -61,14 +61,14 @@
 ├── book.toml
 ├── build_rust.py
 ├── changelog.d
-│   ├── .gitignore
-│   └── 19902.bugfix
+│   └── .gitignore
 ├── complement
 │   ├── .golangci.yml
 │   ├── README.md
 │   ├── go.mod
 │   ├── go.sum
 │   └── tests
+│       ├── federation_room_join_test.go
 │       ├── federation_test.go
 │       ├── internal
 │       │   └── dockerutil
@@ -396,17 +396,36 @@
 │       ├── acl
 │       │   └── mod.rs
 │       ├── canonical_json.rs
+│       ├── config
+│       │   ├── mod.rs
+│       │   └── types.rs
+│       ├── deferred.rs
 │       ├── duration.rs
 │       ├── errors.rs
 │       ├── events
+│       │   ├── constants.rs
 │       │   ├── filter.rs
+│       │   ├── formats
+│       │   │   ├── mod.rs
+│       │   │   ├── v1.rs
+│       │   │   ├── v2v3.rs
+│       │   │   ├── v4.rs
+│       │   │   └── vmsc4242.rs
 │       │   ├── internal_metadata.rs
+│       │   ├── json_object.rs
 │       │   ├── mod.rs
+│       │   ├── relations.rs
+│       │   ├── serialize.rs
 │       │   ├── signatures.rs
-│       │   └── unsigned.rs
+│       │   ├── unsigned.rs
+│       │   └── utils.rs
+│       ├── handlers
+│       │   ├── mod.rs
+│       │   └── versions.rs
 │       ├── http.rs
 │       ├── http_client.rs
 │       ├── identifier.rs
+│       ├── json.rs
 │       ├── lib.rs
 │       ├── matrix_const.rs
 │       ├── msc4388_rendezvous
@@ -421,7 +440,16 @@
 │       │   ├── mod.rs
 │       │   └── session.rs
 │       ├── room_versions.rs
-│       └── segmenter.rs
+│       ├── segmenter.rs
+│       ├── storage
+│       │   ├── db
+│       │   │   ├── mod.rs
+│       │   │   └── python_db_pool.rs
+│       │   ├── mod.rs
+│       │   └── store.rs
+│       ├── tokio_runtime.rs
+│       └── types
+│           └── mod.rs
 ├── schema
 │   ├── synapse-config.schema.yaml
 │   └── v1
@@ -480,8 +508,7 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── base.py
 │   │   │   ├── internal.py
-│   │   │   ├── mas.py
-│   │   │   └── msc3861_delegated.py
+│   │   │   └── mas.py
 │   │   ├── auth_blocking.py
 │   │   ├── constants.py
 │   │   ├── errors.py
@@ -545,6 +572,7 @@
 │   │   ├── oidc.py
 │   │   ├── password_auth_providers.py
 │   │   ├── push.py
+│   │   ├── push_rules.py
 │   │   ├── ratelimiting.py
 │   │   ├── redis.py
 │   │   ├── registration.py
@@ -576,6 +604,7 @@
 │   │   ├── auto_accept_invites.py
 │   │   ├── builder.py
 │   │   ├── presence_router.py
+│   │   ├── py_protocol.py
 │   │   ├── snapshot.py
 │   │   ├── utils.py
 │   │   └── validator.py
@@ -874,6 +903,7 @@
 │   │   │   ├── relations.py
 │   │   │   ├── rendezvous.py
 │   │   │   ├── reporting.py
+│   │   │   ├── retention.py
 │   │   │   ├── room.py
 │   │   │   ├── room_keys.py
 │   │   │   ├── room_upgrade_rest_servlet.py
@@ -916,7 +946,6 @@
 │   │   │   ├── client
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── federation_whitelist.py
-│   │   │   │   ├── jwks.py
 │   │   │   │   ├── new_user_consent.py
 │   │   │   │   ├── oidc
 │   │   │   │   │   ├── __init__.py
@@ -1578,7 +1607,10 @@
 │   │   │   │   │       ├── 03_quarantined_media_tracking.sql
 │   │   │   │   │       ├── 03_quarantined_media_tracking_seq.sql.postgres
 │   │   │   │   │       ├── 03_state_dag_fwd_extrems.sql
-│   │   │   │   │       └── 04_device_lists_changes_max_pruned.sql
+│   │   │   │   │       ├── 04_device_lists_changes_max_pruned.sql
+│   │   │   │   │       ├── 05_rerun_flag_existing_quarantined_media.sql
+│   │   │   │   │       ├── 06_sliding_sync_connections_last_used_ts_index.sql
+│   │   │   │   │       └── 07_sliding_sync_lazy_members_position_index.sql
 │   │   │   │   └── full_schemas
 │   │   │   │       └── 72
 │   │   │   │           ├── full.sql.postgres
@@ -1624,12 +1656,14 @@
 │   │   ├── __init__.pyi
 │   │   ├── acl.pyi
 │   │   ├── events.pyi
+│   │   ├── handlers.pyi
 │   │   ├── http_client.pyi
 │   │   ├── msc4388_rendezvous.pyi
 │   │   ├── push.pyi
 │   │   ├── rendezvous.pyi
 │   │   ├── room_versions.pyi
-│   │   └── segmenter.pyi
+│   │   ├── segmenter.pyi
+│   │   └── types.pyi
 │   ├── types
 │   │   ├── __init__.py
 │   │   ├── handlers
@@ -1687,7 +1721,6 @@
 │   │   ├── retryutils.py
 │   │   ├── rlimit.py
 │   │   ├── rust.py
-│   │   ├── sentinel.py
 │   │   ├── stringutils.py
 │   │   ├── task_scheduler.py
 │   │   ├── templates.py
@@ -1732,6 +1765,7 @@
 │   │   ├── test_base.py
 │   │   ├── test_cache.py
 │   │   ├── test_database.py
+│   │   ├── test_experimental.py
 │   │   ├── test_generate.py
 │   │   ├── test_load.py
 │   │   ├── test_oauth_delegation.py
@@ -1750,16 +1784,21 @@
 │   ├── events
 │   │   ├── __init__.py
 │   │   ├── test_auto_accept_invites.py
+│   │   ├── test_event_parsing.py
 │   │   ├── test_presence_router.py
+│   │   ├── test_py_protocol.py
 │   │   ├── test_snapshot.py
-│   │   └── test_utils.py
+│   │   ├── test_utils.py
+│   │   └── test_validator.py
 │   ├── federation
 │   │   ├── __init__.py
+│   │   ├── _remote_join.py
 │   │   ├── test_complexity.py
 │   │   ├── test_federation_base.py
 │   │   ├── test_federation_catch_up.py
 │   │   ├── test_federation_client.py
 │   │   ├── test_federation_devices.py
+│   │   ├── test_federation_join_upgraded_room.py
 │   │   ├── test_federation_media.py
 │   │   ├── test_federation_out_of_band_membership.py
 │   │   ├── test_federation_sender.py
@@ -1906,7 +1945,6 @@
 │   │   │   ├── test_event.py
 │   │   │   ├── test_event_reports.py
 │   │   │   ├── test_federation.py
-│   │   │   ├── test_jwks.py
 │   │   │   ├── test_media.py
 │   │   │   ├── test_registration_tokens.py
 │   │   │   ├── test_room.py
@@ -1924,6 +1962,7 @@
 │   │   │   │   ├── test_extension_account_data.py
 │   │   │   │   ├── test_extension_e2ee.py
 │   │   │   │   ├── test_extension_receipts.py
+│   │   │   │   ├── test_extension_sticky_events.py
 │   │   │   │   ├── test_extension_thread_subscriptions.py
 │   │   │   │   ├── test_extension_to_device.py
 │   │   │   │   ├── test_extension_typing.py
@@ -1935,7 +1974,7 @@
 │   │   │   │   ├── test_rooms_required_state.py
 │   │   │   │   ├── test_rooms_timeline.py
 │   │   │   │   └── test_sliding_sync.py
-│   │   │   ├── test_*.py  (49 files)
+│   │   │   ├── test_*.py  (50 files)
 │   │   │   └── utils.py
 │   │   ├── key
 │   │   │   ├── __init__.py
@@ -2033,11 +2072,13 @@
 │   ├── synapse_rust
 │   │   ├── __init__.py
 │   │   ├── test_http_client.py
+│   │   ├── test_json_object.py
 │   │   ├── test_room_versions.py
 │   │   └── test_unsigned.py
 │   ├── test_distributor.py
 │   ├── test_event_auth.py
 │   ├── test_mau.py
+│   ├── test_notifier.py
 │   ├── test_phone_home.py
 │   ├── test_rust.py
 │   ├── test_server.py
@@ -2046,6 +2087,7 @@
 │   ├── test_types.py
 │   ├── test_utils
 │   │   ├── __init__.py
+│   │   ├── event_builders.py
 │   │   ├── event_injection.py
 │   │   ├── html_parsers.py
 │   │   ├── logging_setup.py
@@ -2074,6 +2116,7 @@
 │   │   ├── test_events.py
 │   │   ├── test_expiring_cache.py
 │   │   ├── test_file_consumer.py
+│   │   ├── test_httpresourcetree.py
 │   │   ├── test_itertools.py
 │   │   ├── test_linearizer.py
 │   │   ├── test_logcontext.py
@@ -2084,6 +2127,7 @@
 │   │   ├── test_ratelimitutils.py
 │   │   ├── test_retryutils.py
 │   │   ├── test_rwlock.py
+│   │   ├── test_split_dict.py
 │   │   ├── test_stream_change_cache.py
 │   │   ├── test_stringutils.py
 │   │   ├── test_task_scheduler.py
@@ -2092,4 +2136,4 @@
 │   │   └── test_wheel_timer.py
 │   └── utils.py
 └── tox.ini
-295 directories, 1847 files
+301 directories, 1886 files

@@ -1,17 +1,15 @@
 {
   "url": "https://github.com/tchapgouv/synapse",
   "name": "synapse",
-  "description": "Synapse est un serveur Matrix de référence, implémentant le protocole de communication décentralisé Matrix. Il permet d'héberger une instance de communication sécurisée et ouverte.",
+  "description": "Synapse est un serveur domestique pour le protocole de communication décentralisé Matrix. Il permet de gérer les communications, les utilisateurs et les salles au sein d'un réseau Matrix.",
   "language": "Python",
   "features": [
     "Authentification utilisateur",
     "Gestion des utilisateurs & Permissions",
-    "Gestion des accès aux salles",
-    "Recherche",
-    "Notifications",
     "Gestion documentaire & Fichiers",
-    "Sécurité & Conformité",
-    "API & Intégrations"
+    "API & Intégrations",
+    "Notifications & Alertes",
+    "Sécurité & Conformité"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -21,33 +19,31 @@
     "Pillow",
     "prometheus-client",
     "attrs",
+    "Jinja2",
     "cryptography",
     "ijson",
     "matrix-common",
-    "packaging",
-    "setuptools_rust"
+    "packaging"
   ],
   "components": [
     "API REST & GraphQL",
     "Python (scripts & backend)",
     "Base de données PostgreSQL",
-    "Microservices & Architecture",
     "Docker & Conteneurs"
   ],
-  "auth": {
-    "methods": [
-      "email-password",
-      "oauth2",
-      "saml",
-      "jwt"
-    ]
-  },
+  "auth.methods": [
+    "email-password",
+    "oauth2",
+    "saml",
+    "jwt"
+  ],
   "tests": "Pytest",
   "workflows": [
-    "Build and push complement image",
-    "CI"
+    "build",
+    "test",
+    "release"
   ],
-  "lastActivity": "2026-07-16T15:22:57+02:00",
+  "lastActivity": "2026-07-28T18:55:55+02:00",
   "status": "active",
   "license": "AGPL-3.0-or-later",
   "hasDocumentation": true,
@@ -62,6 +58,7 @@
     "Écosystème beta.gouv / État",
     "Python",
     "Sécurité & Auth",
+    "Communication & Messagerie",
     "Intelligence Artificielle & NLP"
   ]
 }
