@@ -1,28 +1,26 @@
-## Changelog : mobilic-api (30 derniers jours, au 22 juillet 2026)
+## Changelog : mobilic-api (30 derniers jours, au 27 juillet 2026)
 
 ### Résumé
-Les dernières semaines ont été marquées par des améliorations significatives de la gestion des détachements des employés, de la gestion des litiges et de la robustesse de l'application. Des corrections ont également été apportées pour optimiser les performances et la stabilité, notamment concernant l'intégration avec Livestorm et la gestion des webinars. Des améliorations de l'observabilité ont été ajoutées pour faciliter le diagnostic des problèmes.
+Les dernières semaines ont été marquées par des améliorations significatives de la gestion des signalements (contestation) et des détachements d'employés, avec l'ajout de nouvelles fonctionnalités pour initier des demandes de détachement et contester des éléments. Des corrections ont également été apportées pour améliorer la robustesse et la performance de l'API, notamment en lien avec les webinaires Livestorm et l'export de données.
 
 ### Évolutions fonctionnelles
-- Ajout de la fonctionnalité de demande de détachement d'employé avec envoi d'emails associés. [#743](https://github.com/MTES-MCT/mobilic-api/issues/743)
-- Implémentation de la gestion des contestations initiées par les employés, incluant l'historique des actions. [#722](https://github.com/MTES-MCT/mobilic-api/issues/722)
-- Possibilité de créer des missions en mode impersonation et de suivre les actions associées dans les exports. [#732](https://github.com/MTES-MCT/mobilic-api/issues/732)
-- Amélioration de la vue d'activité pour les administrateurs. [#719](https://github.com/MTES-MCT/mobilic-api/issues/719)
-- Ajout de la possibilité d'ajouter un contact aux deals. [#715](https://github.com/MTES-MCT/mobilic-api/issues/715)
-- Contrôle amélioré de l'ajout et de la modification des jours de travail. [#707](https://github.com/MTES-MCT/mobilic-api/issues/707)
-- Ajout de la colonne et des totaux de temps de pause dans l'export des jours de travail des employés. [#736](https://github.com/MTES-MCT/mobilic-api/issues/736)
+- Ajout de la possibilité pour un employé de formuler une contestation. [#722](https://github.com/MTES-MCT/mobilic-api/pulls/722)
+- Implémentation de la demande de détachement d'un employé avec envoi d'emails associés. [#731](https://github.com/MTES-MCT/mobilic-api/pulls/731)
+- Amélioration de l'affichage des motifs d'activité dans l'historique des missions et dans les exports PDF. [#742](https://github.com/MTES-MCT/mobilic-api/pulls/742), [#738](https://github.com/MTES-MCT/mobilic-api/pulls/738)
+- Ajout de la possibilité de tracer les actions de validation lors de la création de missions en mode impersonation. [#732](https://github.com/MTES-MCT/mobilic-api/pulls/732)
+- Amélioration du contenu des emails liés aux détachements d'employés. [#743](https://github.com/MTES-MCT/mobilic-api/pulls/743), [#744](https://github.com/MTES-MCT/mobilic-api/pulls/744)
+- Ajout d'une colonne et de totaux pour le temps de pause dans l'export des journées de travail des employés. [#736](https://github.com/MTES-MCT/mobilic-api/pulls/736)
 
 ### Évolutions techniques
-- Optimisation de la récupération des webinars pour éviter les limitations de débit de l'API Livestorm, avec mise en cache Redis. [#725](https://github.com/MTES-MCT/mobilic-api/issues/725)
-- Correction d'un effet secondaire lors de la validation des missions qui empêchait le gel. [#718](https://github.com/MTES-MCT/mobilic-api/issues/718)
-- Amélioration de la gestion des erreurs Sentry pour réduire le bruit et faciliter le diagnostic. [#724](https://github.com/MTES-MCT/mobilic-api/issues/724)
-- Instrumentation SQL pour mesurer le temps d'exécution des requêtes et améliorer l'observabilité. [#706](https://github.com/MTES-MCT/mobilic-api/issues/706)
-- Refactoring du code lié à l'historique des litiges et aux exports pour corriger des problèmes de qualité identifiés par SonarCloud. [#715](https://github.com/MTES-MCT/mobilic-api/issues/715)
-- Correction de problèmes d'idempotence, de migration, de typage et de gestion des erreurs dans l'intégration Brevo.
-- Correction de bugs et amélioration de la robustesse de l'intégration Livestorm (gestion des timeouts, etc.). [#728](https://github.com/MTES-MCT/mobilic-api/issues/728), [#730](https://github.com/MTES-MCT/mobilic-api/issues/730)
+- Optimisation de la récupération des webinaires Livestorm avec mise en cache Redis et gestion des limites de débit. [#725](https://github.com/MTES-MCT/mobilic-api/pulls/725)
+- Correction d'un problème de performance lié aux requêtes sur les validations en attente sur le dashboard.
+- Amélioration de la gestion des erreurs Sentry pour réduire le bruit et faciliter le diagnostic. [#724](https://github.com/MTES-MCT/mobilic-api/pulls/724)
+- Refactorisation du code lié aux activités pour corriger des anomalies détectées par SonarCloud. [#715](https://github.com/MTES-MCT/mobilic-api/pulls/715)
+- Fusion des branches de migration de la base de données pour les fonctionnalités de détachement, de contestation et d'impersonation.
+- Correction d'un problème de synchronisation de l'adresse email lors de la rédemption d'une invitation d'emploi. [#739](https://github.com/MTES-MCT/mobilic-api/pulls/739)
 
 ### Autres changements
-- Mise à jour des migrations de la base de données pour les fonctionnalités de détachement, de litige et d'impersonation.
-- Ajout de tests unitaires et d'intégration pour les nouvelles fonctionnalités et corrections.
-- Amélioration de la documentation et des exemples de payloads GraphQL.
-- Correction de divers problèmes de code identifiés par SonarCloud.
+- Correction de plusieurs bugs mineurs et améliorations de la qualité du code.
+- Ajout de tests unitaires et d'intégration pour les nouvelles fonctionnalités.
+- Mise à jour de la documentation.
+- Correction de problèmes de timeout pour les appels à l'API Livestorm. [#728](https://github.com/MTES-MCT/mobilic-api/pulls/728), [#730](https://github.com/MTES-MCT/mobilic-api/pulls/730)
