@@ -13,7 +13,6 @@
 │       ├── update-metabase-dump.sh
 │       └── update-potentiel-dump.sh
 ├── .demo
-│   ├── Tests-Intrusions-EY.csv
 │   ├── demo.dump
 │   ├── exampleCandidatsCRE4.csv
 │   ├── exempleCandidatsPPE2.csv
@@ -188,7 +187,9 @@
 │   │   │   │   │   │   └── vérifier-données.ts
 │   │   │   │   │   ├── candidature
 │   │   │   │   │   │   ├── importer-dossier.ts
-│   │   │   │   │   │   └── lister-dossiers.ts
+│   │   │   │   │   │   ├── lister-dossiers.ts
+│   │   │   │   │   │   ├── migrer-presence-trackers.ts
+│   │   │   │   │   │   └── migrer-volume-reserve.ts
 │   │   │   │   │   ├── document
 │   │   │   │   │   │   └── générer.ts
 │   │   │   │   │   ├── files
@@ -1139,6 +1140,7 @@
 │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   ├── Providers.tsx
 │   │   │   │   │   ├── _helpers
+│   │   │   │   │   │   ├── afficherBooleanValue.ts
 │   │   │   │   │   │   ├── applySearchParams.test.ts
 │   │   │   │   │   │   ├── applySearchParams.ts
 │   │   │   │   │   │   ├── assertIdentifiantProjet.ts
@@ -1432,6 +1434,120 @@
 │   │   │   │   │   │   │   │   │   ├── modifierLauréat.action.ts
 │   │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   ├── page.tsx
+│   │   │   │   │   │   │   │   ├── raccordements
+│   │   │   │   │   │   │   │   │   ├── (dossier-de-raccordement)
+│   │   │   │   │   │   │   │   │   │   ├── (supprimer)
+│   │   │   │   │   │   │   │   │   │   │   ├── SupprimerDossierDuRaccordement.tsx
+│   │   │   │   │   │   │   │   │   │   │   └── supprimerDossierDuRaccordement.action.ts
+│   │   │   │   │   │   │   │   │   │   ├── [reference]
+│   │   │   │   │   │   │   │   │   │   │   ├── date-mise-en-service
+│   │   │   │   │   │   │   │   │   │   │   │   ├── DateMiseEnService.form.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   ├── DateMiseEnServiceAlert.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   ├── modifier
+│   │   │   │   │   │   │   │   │   │   │   │   │   ├── ModifierDateMiseEnService.page.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   │   ├── modifierDateMiseEnService.action.ts
+│   │   │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   ├── supprimer-date-mise-en-service
+│   │   │   │   │   │   │   │   │   │   │   │   │   ├── SupprimerDateMiseEnService.form.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   │   └── supprimerDateMiseEnService.action.ts
+│   │   │   │   │   │   │   │   │   │   │   │   └── transmettre
+│   │   │   │   │   │   │   │   │   │   │   │       ├── TransmettreDateMiseEnService.page.tsx
+│   │   │   │   │   │   │   │   │   │   │   │       ├── page.tsx
+│   │   │   │   │   │   │   │   │   │   │   │       └── transmettreDateMiseEnService.action.ts
+│   │   │   │   │   │   │   │   │   │   │   ├── document
+│   │   │   │   │   │   │   │   │   │   │   │   ├── [type]
+│   │   │   │   │   │   │   │   │   │   │   │   │   ├── modifier
+│   │   │   │   │   │   │   │   │   │   │   │   │   │   ├── ModifierDocument.form.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   │   │   ├── ModifierDocument.page.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   │   │   ├── modifierDocument.action.ts
+│   │   │   │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   │   └── supprimer
+│   │   │   │   │   │   │   │   │   │   │   │   │       ├── SupprimerDocument.form.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   │       └── supprimerDocument.action.ts
+│   │   │   │   │   │   │   │   │   │   │   │   └── transmettre
+│   │   │   │   │   │   │   │   │   │   │   │       ├── TransmettreDocument.form.tsx
+│   │   │   │   │   │   │   │   │   │   │   │       ├── TransmettreDocument.page.tsx
+│   │   │   │   │   │   │   │   │   │   │   │       ├── page.tsx
+│   │   │   │   │   │   │   │   │   │   │   │       └── transmettreDocument.action.ts
+│   │   │   │   │   │   │   │   │   │   │   └── reference
+│   │   │   │   │   │   │   │   │   │   │       └── corriger
+│   │   │   │   │   │   │   │   │   │   │           ├── CorrigerRéférenceDossierRaccordement.form.tsx
+│   │   │   │   │   │   │   │   │   │   │           ├── CorrigerRéférenceDossierRaccordement.page.tsx
+│   │   │   │   │   │   │   │   │   │   │           ├── corrigerRéférenceDossierRaccordement.action.ts
+│   │   │   │   │   │   │   │   │   │   │           └── page.tsx
+│   │   │   │   │   │   │   │   │   │   ├── components
+│   │   │   │   │   │   │   │   │   │   │   ├── AccuséRéceptionInput.tsx
+│   │   │   │   │   │   │   │   │   │   │   ├── AucunDossierDeRaccordementAlert.tsx
+│   │   │   │   │   │   │   │   │   │   │   ├── DossierRaccordement.tsx
+│   │   │   │   │   │   │   │   │   │   │   ├── FormatFichierInvalide.tsx
+│   │   │   │   │   │   │   │   │   │   │   ├── RéférenceDossierInput.tsx
+│   │   │   │   │   │   │   │   │   │   │   ├── TransmettreModifierDocumentAlert.tsx
+│   │   │   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   │   │   └── demande-complete-raccordement
+│   │   │   │   │   │   │   │   │   │       ├── modifier
+│   │   │   │   │   │   │   │   │   │       │   ├── ModifierDemandeComplèteRaccordement.form.tsx
+│   │   │   │   │   │   │   │   │   │       │   ├── ModifierDemandeComplèteRaccordement.page.tsx
+│   │   │   │   │   │   │   │   │   │       │   ├── modifierDemandeComplèteRaccordement.action.ts
+│   │   │   │   │   │   │   │   │   │       │   └── page.tsx
+│   │   │   │   │   │   │   │   │   │       └── transmettre
+│   │   │   │   │   │   │   │   │   │           ├── TransmettreDemandeComplèteRaccordement.form.tsx
+│   │   │   │   │   │   │   │   │   │           ├── TransmettreDemandeComplèteRaccordement.page.tsx
+│   │   │   │   │   │   │   │   │   │           ├── page.tsx
+│   │   │   │   │   │   │   │   │   │           └── transmettreDemandeComplèteRaccordement.action.ts
+│   │   │   │   │   │   │   │   │   ├── (historique)
+│   │   │   │   │   │   │   │   │   │   ├── events
+│   │   │   │   │   │   │   │   │   │   │   ├── dossier
+│   │   │   │   │   │   │   │   │   │   │   │   ├── dateMiseEnService
+│   │   │   │   │   │   │   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   │   │   │   │   │   │   ├── mapToDateMiseEnServiceModifiéeTimelineItemProps.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   │   ├── mapToDateMiseEnServiceSuppriméeTimelineItemProps.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   │   └── mapToDateMiseEnServiceTransmiseTimelineItemProps.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   ├── demande-complète-de-raccordement
+│   │   │   │   │   │   │   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   │   │   │   │   │   │   ├── mapToAccuséRéceptionDemandeComplèteRaccordementTransmisTimelineItemProps.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   │   ├── mapToDemandeComplèteDeRaccordementTransmiseTimelineItemProps.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   │   └── mapToDemandeComplèteRaccordementModifiéeTimelineItemProps.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   ├── document
+│   │   │   │   │   │   │   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   │   │   │   │   │   │   ├── mapToDocumentModifiéTimelineItemProps.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   │   ├── mapToDocumentSuppriméTimelineItemProps.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   │   └── mapToDocumentTransmisTimelineItemProps.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   │   │   │   │   │   ├── mapToDossierRaccordementSuppriméTimelineItemProps.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   ├── mapToRéférenceDossierRacordementModifiéeTimelineItemProps.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   └── proposition-technique-et-financière
+│   │   │   │   │   │   │   │   │   │   │   │       ├── index.ts
+│   │   │   │   │   │   │   │   │   │   │   │       ├── mapToPropositionTechniqueEtFinancièreModifiéeTimelineItemProps.tsx
+│   │   │   │   │   │   │   │   │   │   │   │       └── mapToPropositionTechniqueEtFinancièreTransmiseTimelineItemProps.tsx
+│   │   │   │   │   │   │   │   │   │   │   ├── gestionnaire-réseau
+│   │   │   │   │   │   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   │   │   │   │   │   ├── mapToGestionnaireRéseauAttribuéTimelineItemProps.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   └── mapToGestionnaireRéseauRaccordementModifiéTimelineItemProps.tsx
+│   │   │   │   │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   │   │   │   │   └── mapToRaccordementTimelineItemProps.ts
+│   │   │   │   │   │   │   │   │   └── (raccordement-du-projet)
+│   │   │   │   │   │   │   │   │       ├── (détails)
+│   │   │   │   │   │   │   │   │       │   ├── DossiersRaccordement.section.tsx
+│   │   │   │   │   │   │   │   │       │   ├── DétailsRaccordementDuProjetPage.tsx
+│   │   │   │   │   │   │   │   │       │   ├── GestionnaireRéseau.section.tsx
+│   │   │   │   │   │   │   │   │       │   ├── ModifierGestionnaireRéseauDuRaccordement.tsx
+│   │   │   │   │   │   │   │   │       │   ├── _helpers
+│   │   │   │   │   │   │   │   │       │   │   ├── getDemandeComplèteDeRaccordementActions.ts
+│   │   │   │   │   │   │   │   │       │   │   ├── getDocumentActions.ts
+│   │   │   │   │   │   │   │   │       │   │   ├── getGestionnaireRéseauAction.ts
+│   │   │   │   │   │   │   │   │       │   │   ├── getMiseEnServiceAction.ts
+│   │   │   │   │   │   │   │   │       │   │   ├── getSupprimerDossierAction.ts
+│   │   │   │   │   │   │   │   │       │   │   ├── index.ts
+│   │   │   │   │   │   │   │   │       │   │   └── vérifierStatutDuProjetPourModification.ts
+│   │   │   │   │   │   │   │   │       │   └── page.tsx
+│   │   │   │   │   │   │   │   │       └── (gestionnaire-réseau)
+│   │   │   │   │   │   │   │   │           ├── GestionnaireRéseauSelect.tsx
+│   │   │   │   │   │   │   │   │           └── gestionnaire
+│   │   │   │   │   │   │   │   │               └── modifier
+│   │   │   │   │   │   │   │   │                   ├── ModifierGestionnaireRéseauRaccordement.form.tsx
+│   │   │   │   │   │   │   │   │                   ├── ModifierGestionnaireRéseauRaccordement.page.tsx
+│   │   │   │   │   │   │   │   │                   ├── modifierGestionnaireRéseauRaccordement.action.ts
+│   │   │   │   │   │   │   │   │                   └── page.tsx
 │   │   │   │   │   │   │   │   ├── taches
 │   │   │   │   │   │   │   │   │   ├── Tâches.page.tsx
 │   │   │   │   │   │   │   │   │   ├── _helpers
@@ -1973,117 +2089,6 @@
 │   │   │   │   │   │   │   │       ├── ModifierPuissance.page.tsx
 │   │   │   │   │   │   │   │       ├── modifierPuissance.action.ts
 │   │   │   │   │   │   │   │       └── page.tsx
-│   │   │   │   │   │   │   ├── raccordements
-│   │   │   │   │   │   │   │   ├── (dossier-de-raccordement)
-│   │   │   │   │   │   │   │   │   ├── (supprimer)
-│   │   │   │   │   │   │   │   │   │   ├── SupprimerDossierDuRaccordement.tsx
-│   │   │   │   │   │   │   │   │   │   └── supprimerDossierDuRaccordement.action.ts
-│   │   │   │   │   │   │   │   │   ├── [reference]
-│   │   │   │   │   │   │   │   │   │   ├── (demande-complète-raccordement)
-│   │   │   │   │   │   │   │   │   │   │   ├── InformationDemandeComplèteRaccordement.tsx
-│   │   │   │   │   │   │   │   │   │   │   └── demande-complete-raccordement:modifier
-│   │   │   │   │   │   │   │   │   │   │       ├── ModifierDemandeComplèteRaccordement.form.tsx
-│   │   │   │   │   │   │   │   │   │   │       ├── ModifierDemandeComplèteRaccordement.page.tsx
-│   │   │   │   │   │   │   │   │   │   │       ├── modifierDemandeComplèteRaccordement.action.ts
-│   │   │   │   │   │   │   │   │   │   │       └── page.tsx
-│   │   │   │   │   │   │   │   │   │   ├── date-mise-en-service
-│   │   │   │   │   │   │   │   │   │   │   ├── DateMiseEnService.form.tsx
-│   │   │   │   │   │   │   │   │   │   │   ├── modifier
-│   │   │   │   │   │   │   │   │   │   │   │   ├── ModifierDateMiseEnService.page.tsx
-│   │   │   │   │   │   │   │   │   │   │   │   ├── modifierDateMiseEnService.action.ts
-│   │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │   │   │   ├── supprimer-date-mise-en-service
-│   │   │   │   │   │   │   │   │   │   │   │   ├── SupprimerDateMiseEnService.form.tsx
-│   │   │   │   │   │   │   │   │   │   │   │   └── supprimerDateMiseEnService.action.ts
-│   │   │   │   │   │   │   │   │   │   │   └── transmettre
-│   │   │   │   │   │   │   │   │   │   │       ├── TransmettreDateMiseEnService.page.tsx
-│   │   │   │   │   │   │   │   │   │   │       ├── page.tsx
-│   │   │   │   │   │   │   │   │   │   │       └── transmettreDateMiseEnService.action.ts
-│   │   │   │   │   │   │   │   │   │   ├── document
-│   │   │   │   │   │   │   │   │   │   │   ├── [type]
-│   │   │   │   │   │   │   │   │   │   │   │   ├── modifier
-│   │   │   │   │   │   │   │   │   │   │   │   │   ├── ModifierDocument.form.tsx
-│   │   │   │   │   │   │   │   │   │   │   │   │   ├── ModifierDocument.page.tsx
-│   │   │   │   │   │   │   │   │   │   │   │   │   ├── modifierDocument.action.ts
-│   │   │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │   │   │   │   └── supprimer
-│   │   │   │   │   │   │   │   │   │   │   │       ├── SupprimerDocument.form.tsx
-│   │   │   │   │   │   │   │   │   │   │   │       └── supprimerDocument.action.ts
-│   │   │   │   │   │   │   │   │   │   │   └── transmettre
-│   │   │   │   │   │   │   │   │   │   │       ├── TransmettreDocument.form.tsx
-│   │   │   │   │   │   │   │   │   │   │       ├── TransmettreDocument.page.tsx
-│   │   │   │   │   │   │   │   │   │   │       ├── page.tsx
-│   │   │   │   │   │   │   │   │   │   │       └── transmettreDocument.action.ts
-│   │   │   │   │   │   │   │   │   │   └── reference:corriger
-│   │   │   │   │   │   │   │   │   │       ├── CorrigerRéférenceDossier.form.tsx
-│   │   │   │   │   │   │   │   │   │       ├── CorrigerRéférenceDossier.page.tsx
-│   │   │   │   │   │   │   │   │   │       ├── corrigerRéférenceDossier.action.ts
-│   │   │   │   │   │   │   │   │   │       └── page.tsx
-│   │   │   │   │   │   │   │   │   ├── components
-│   │   │   │   │   │   │   │   │   │   ├── AucunDossierDeRaccordementAlert.tsx
-│   │   │   │   │   │   │   │   │   │   ├── DossierRaccordement.tsx
-│   │   │   │   │   │   │   │   │   │   ├── FormatFichierInvalide.tsx
-│   │   │   │   │   │   │   │   │   │   ├── TransmettreModifierDocumentAlert.tsx
-│   │   │   │   │   │   │   │   │   │   └── index.ts
-│   │   │   │   │   │   │   │   │   └── demande-complete-raccordement:transmettre
-│   │   │   │   │   │   │   │   │       ├── TransmettreDemandeComplèteRaccordement.form.tsx
-│   │   │   │   │   │   │   │   │       ├── TransmettreDemandeComplèteRaccordement.page.tsx
-│   │   │   │   │   │   │   │   │       ├── page.tsx
-│   │   │   │   │   │   │   │   │       └── transmettreDemandeComplèteRaccordement.action.ts
-│   │   │   │   │   │   │   │   ├── (historique)
-│   │   │   │   │   │   │   │   │   ├── events
-│   │   │   │   │   │   │   │   │   │   ├── dossier
-│   │   │   │   │   │   │   │   │   │   │   ├── dateMiseEnService
-│   │   │   │   │   │   │   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   │   │   │   │   │   │   ├── mapToDateMiseEnServiceModifiéeTimelineItemProps.tsx
-│   │   │   │   │   │   │   │   │   │   │   │   ├── mapToDateMiseEnServiceSuppriméeTimelineItemProps.tsx
-│   │   │   │   │   │   │   │   │   │   │   │   └── mapToDateMiseEnServiceTransmiseTimelineItemProps.tsx
-│   │   │   │   │   │   │   │   │   │   │   ├── demande-complète-de-raccordement
-│   │   │   │   │   │   │   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   │   │   │   │   │   │   ├── mapToAccuséRéceptionDemandeComplèteRaccordementTransmisTimelineItemProps.tsx
-│   │   │   │   │   │   │   │   │   │   │   │   ├── mapToDemandeComplèteDeRaccordementTransmiseTimelineItemProps.tsx
-│   │   │   │   │   │   │   │   │   │   │   │   └── mapToDemandeComplèteRaccordementModifiéeTimelineItemProps.tsx
-│   │   │   │   │   │   │   │   │   │   │   ├── document
-│   │   │   │   │   │   │   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   │   │   │   │   │   │   ├── mapToDocumentModifiéTimelineItemProps.tsx
-│   │   │   │   │   │   │   │   │   │   │   │   ├── mapToDocumentSuppriméTimelineItemProps.tsx
-│   │   │   │   │   │   │   │   │   │   │   │   └── mapToDocumentTransmisTimelineItemProps.tsx
-│   │   │   │   │   │   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   │   │   │   │   │   ├── mapToDossierRaccordementSuppriméTimelineItemProps.tsx
-│   │   │   │   │   │   │   │   │   │   │   ├── mapToRéférenceDossierRacordementModifiéeTimelineItemProps.tsx
-│   │   │   │   │   │   │   │   │   │   │   └── proposition-technique-et-financière
-│   │   │   │   │   │   │   │   │   │   │       ├── index.ts
-│   │   │   │   │   │   │   │   │   │   │       ├── mapToPropositionTechniqueEtFinancièreModifiéeTimelineItemProps.tsx
-│   │   │   │   │   │   │   │   │   │   │       └── mapToPropositionTechniqueEtFinancièreTransmiseTimelineItemProps.tsx
-│   │   │   │   │   │   │   │   │   │   ├── gestionnaire-réseau
-│   │   │   │   │   │   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   │   │   │   │   │   ├── mapToGestionnaireRéseauAttribuéTimelineItemProps.tsx
-│   │   │   │   │   │   │   │   │   │   │   └── mapToGestionnaireRéseauRaccordementModifiéTimelineItemProps.tsx
-│   │   │   │   │   │   │   │   │   │   └── index.ts
-│   │   │   │   │   │   │   │   │   └── mapToRaccordementTimelineItemProps.ts
-│   │   │   │   │   │   │   │   ├── (raccordement-du-projet)
-│   │   │   │   │   │   │   │   │   ├── (détails)
-│   │   │   │   │   │   │   │   │   │   ├── DossiersRaccordement.section.tsx
-│   │   │   │   │   │   │   │   │   │   ├── DétailsRaccordementDuProjetPage.tsx
-│   │   │   │   │   │   │   │   │   │   ├── GestionnaireRéseau.section.tsx
-│   │   │   │   │   │   │   │   │   │   ├── ModifierGestionnaireRéseauDuRaccordement.tsx
-│   │   │   │   │   │   │   │   │   │   ├── _helpers
-│   │   │   │   │   │   │   │   │   │   │   ├── getDemandeComplèteDeRaccordementActions.ts
-│   │   │   │   │   │   │   │   │   │   │   ├── getDocumentActions.ts
-│   │   │   │   │   │   │   │   │   │   │   ├── getGestionnaireRéseauAction.ts
-│   │   │   │   │   │   │   │   │   │   │   ├── getMiseEnServiceAction.ts
-│   │   │   │   │   │   │   │   │   │   │   ├── getSupprimerDossierAction.ts
-│   │   │   │   │   │   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   │   │   │   │   │   └── vérifierStatutDuProjetPourModification.ts
-│   │   │   │   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │   └── (gestionnaire-réseau)
-│   │   │   │   │   │   │   │   │       ├── GestionnaireRéseauSelect.tsx
-│   │   │   │   │   │   │   │   │       └── gestionnaire:modifier
-│   │   │   │   │   │   │   │   │           ├── ModifierGestionnaireRéseauRaccordement.form.tsx
-│   │   │   │   │   │   │   │   │           ├── ModifierGestionnaireRéseauRaccordement.page.tsx
-│   │   │   │   │   │   │   │   │           ├── modifierGestionnaireRéseauRaccordement.action.ts
-│   │   │   │   │   │   │   │   │           └── page.tsx
-│   │   │   │   │   │   │   │   └── TitrePageRaccordement.tsx
 │   │   │   │   │   │   │   ├── representant-legal
 │   │   │   │   │   │   │   │   ├── (historique)
 │   │   │   │   │   │   │   │   │   ├── events
@@ -3430,8 +3435,7 @@
 │   │   │   │   │   │   │       ├── supprimerChangementPuissance.event.ts
 │   │   │   │   │   │   │       └── supprimerChangementPuissance.options.ts
 │   │   │   │   │   │   ├── consulter
-│   │   │   │   │   │   │   ├── consulterPuissance.query.ts
-│   │   │   │   │   │   │   └── consulterVolumeRéservé.query.ts
+│   │   │   │   │   │   │   └── consulterPuissance.query.ts
 │   │   │   │   │   │   ├── importer
 │   │   │   │   │   │   │   ├── importerPuissance.event.ts
 │   │   │   │   │   │   │   └── importerPuissance.options.ts
@@ -3452,8 +3456,7 @@
 │   │   │   │   │   │       ├── autoritéCompétente.valueType.ts
 │   │   │   │   │   │       ├── documentPuissance.valueType.ts
 │   │   │   │   │   │       ├── ratioChangementPuissance.valueType.ts
-│   │   │   │   │   │       ├── statutChangementPuissance.valueType.ts
-│   │   │   │   │   │       └── volumeRéservé.valueType.ts
+│   │   │   │   │   │       └── statutChangementPuissance.valueType.ts
 │   │   │   │   │   ├── raccordement
 │   │   │   │   │   │   ├── attribuer
 │   │   │   │   │   │   │   ├── attribuerGestionnaireRéseau.command.ts
@@ -3711,6 +3714,7 @@
 │   │   │   │       │   └── statutRecours.valueType.ts
 │   │   │   │       ├── éliminé.aggregate.ts
 │   │   │   │       ├── éliminé.entity.ts
+│   │   │   │       ├── éliminé.error.ts
 │   │   │   │       ├── éliminé.event.ts
 │   │   │   │       └── éliminé.register.ts
 │   │   │   └── tsconfig.json
@@ -3841,6 +3845,7 @@
 │   │   │   │   │   │   ├── getLocalité.ts
 │   │   │   │   │   │   ├── getNatureDeLExploitation.ts
 │   │   │   │   │   │   ├── getNuméroIdentification.ts
+│   │   │   │   │   │   ├── getPuissanceInstallée.ts
 │   │   │   │   │   │   ├── getRaccordement.test.ts
 │   │   │   │   │   │   ├── getRaccordements.ts
 │   │   │   │   │   │   ├── getTypeActionnariat.ts
@@ -4200,6 +4205,8 @@
 │   │   │   │   │   ├── getFakeLocation.ts
 │   │   │   │   │   ├── getFakeNuméroIdentification.ts
 │   │   │   │   │   └── index.ts
+│   │   │   │   ├── getAppelOffresChampsSupplémentaires.ts
+│   │   │   │   ├── getPériodeData.ts
 │   │   │   │   ├── getRôle.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── mapToExemple.ts
@@ -4699,4 +4706,4 @@
 ├── scalingo.json
 ├── turbo.json
 └── update-ts-references.yaml
-1139 directories, 3562 files
+1141 directories, 3567 files
