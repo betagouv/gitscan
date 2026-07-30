@@ -1,37 +1,31 @@
-## Changelog : les-emplois (30 derniers jours, au 27 juillet 2026)
+## Changelog : les-emplois (30 derniers jours, au 2026-07-29)
 
 ### Résumé
-Cette période a été marquée par d'importantes améliorations concernant la sécurité, notamment autour de l'authentification multi-facteurs (MFA) et de la gestion des accès. Des évolutions significatives ont également été apportées au module d'insertion, avec une refonte de la gestion des services et des orientations, ainsi qu'une amélioration de l'expérience utilisateur. Enfin, des corrections et des optimisations ont été réalisées sur divers aspects de l'application.
+Les dernières mises à jour de "les-emplois" se concentrent sur l'amélioration de l'expérience utilisateur lors de l'orientation des candidats, notamment en affinant la gestion des dates de contrat, en clarifiant les informations affichées et en corrigeant des problèmes de performance. Des améliorations significatives ont également été apportées à la sécurité, en particulier concernant l'authentification à deux facteurs (2FA) et la gestion des accès. Enfin, des corrections et des refactorisations techniques ont été effectuées pour améliorer la stabilité et la maintenabilité du code.
 
 ### Évolutions fonctionnelles
-- **Authentification :** Renforcement de la sécurité avec l'ajout de la suppression logicielle des dispositifs MFA et la gestion des cas d'utilisation de codes de récupération.
-- **Authentification :** Amélioration de la gestion des erreurs et des messages d'information liés à l'authentification à deux facteurs (2FA).
-- **Authentification :** Ajout d'exemples d'applications d'authentification pour faciliter la configuration du 2FA.
-- **Authentification :** Affichage d'un message d'avertissement pour les utilisateurs professionnels concernant l'activation prochaine du MFA.
-- **Insertion :** Possibilité de supprimer "en douceur" les services et structures, permettant une gestion plus flexible des données.
-- **Insertion :** Amélioration du suivi des orientations avec l'enregistrement des événements de mobilisation et la liaison avec les iMER (identifiants uniques).
-- **Insertion :** Affichage des informations de réception du service (lieu) sur la fiche structure.
-- **Insertion :** Suppression de la nécessité d'un numéro de téléphone pour démarrer une orientation.
-- **Insertion :** Affichage des détails des frais lorsque le service est payant.
-- **Interface Utilisateur :** Affichage du dernier accompagnateur connu au lieu du référent GPS pour les demandeurs d'emploi.
-- **Interface Utilisateur :** Ajout d'un bouton pour assigner un utilisateur à un accompagnement.
-- **Interface Utilisateur :** Amélioration de la navigation et de la clarté des messages.
-- **Structures :** Désactivation automatique des offres d'emploi spontanées après 90 jours d'inactivité.
-- **Structures :** Envoi d'un email aux administrateurs lors de la désactivation des offres d'emploi spontanées.
+- Amélioration de l'interface de saisie des dates de contrat lors de l'application, avec des informations contextuelles et une validation plus précise.
+- Affichage du dernier accompagnateur connu pour les demandeurs d'emploi, remplaçant l'ancien référent GPS.
+- Ajout de boutons pour assigner un utilisateur à un accompagnement et afficher les informations de contact de l'accompagnateur.
+- Amélioration de l'affichage des services et des structures lors de l'orientation, avec notamment l'ajout d'une carte pour visualiser les solutions recommandées (SPS).
+- Correction de l'affichage des conditions d'orientation et des informations sur les services DI.
+- Possibilité de rechercher des services directement via l'application, sans passer par l'API data-inclusion.
+- Ajout d'un mécanisme de demande de rôle administrateur par email.
+- Amélioration de la gestion des alertes et des messages d'information pour les utilisateurs.
+- Ajout d'une commande pour importer les orientations depuis un fichier d'export Dora.
 
 ### Évolutions techniques
-- **Sécurité :** Simplification et amélioration de la gestion des permissions et des règles d'accès.
-- **FranceConnect :** Suppression des URLs de déconnexion obsolètes.
-- **API :** Envoi des données d'orientation au format JSON pour une meilleure compatibilité avec DORA.
-- **Tests :** Ajout de tests de régression pour la gestion du MFA et correction de tests instables.
-- **Refactoring :** Refactorisation du code lié à la gestion des identifiants et des connexions.
-- **Déploiement :** Mise à jour des dépendances et des outils de construction.
-- **Base de données :** Optimisation des requêtes pour améliorer les performances.
-- **Monitoring :** Ajout de suivi Matomo pour les soumissions de l'assistant d'orientation.
+- Optimisation des requêtes SQL pour améliorer la performance de l'affichage des demandeurs d'emploi (correction de requêtes 1+N).
+- Refactorisation du code lié à l'authentification FranceConnect et à la gestion des accès.
+- Mise à jour de plusieurs dépendances, notamment Django, Django-HTMX, et les librairies de sécurité.
+- Amélioration de la gestion des erreurs et des logs.
+- Correction de tests unitaires et ajout de nouveaux tests pour garantir la qualité du code.
+- Suppression de code obsolète et refactorisation de certaines parties du code pour améliorer la lisibilité et la maintenabilité.
+- Amélioration de la configuration des buckets MinIO pour les environnements de test et de développement.
 
 ### Autres changements
-- **Documentation :** Mise à jour de la documentation pour refléter les changements apportés.
-- **Configuration :** Modification de la configuration pour améliorer la flexibilité et la maintenabilité.
-- **Nettoyage de code :** Suppression de code obsolète et amélioration de la lisibilité du code.
-- **Accessibilité :** Mise à jour des liens de déclaration d'accessibilité.
-- **Divers :** Corrections de fautes de frappe et améliorations de la qualité du code.
+- Mise à jour de la documentation et des commentaires dans le code.
+- Correction de liens et de références obsolètes.
+- Amélioration de la gestion des configurations et des variables d'environnement.
+- Correction de problèmes mineurs d'interface utilisateur et d'accessibilité.
+- Mise à jour des URLs et des noms de modèles liés à l'ancien module PE Connect (Pole Emploi Connect).
