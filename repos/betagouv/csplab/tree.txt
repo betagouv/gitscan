@@ -19,7 +19,6 @@
 │   └── workflows
 │       ├── auto_assign.yml
 │       ├── chore.yml
-│       ├── chore_auto_rebase_on_approval.yml
 │       ├── chore_create_pr_for_changelog.yml
 │       ├── chore_create_release.yml
 │       ├── chore_require_pr_fields.yml
@@ -487,21 +486,27 @@
         │       ├── __init__.py
         │       ├── dtos
         │       │   ├── __init__.py
-        │       │   └── recrutement_read_models.py
+        │       │   ├── etape_data.py
+        │       │   ├── recrutement_read_models.py
+        │       │   └── recrutement_request.py
         │       ├── services
         │       │   ├── __init__.py
         │       │   └── recrutement_query_service_interface.py
         │       └── usecases
+        │           ├── changer_etape_candidatures.py
         │           ├── creer_note.py
         │           ├── editer_note.py
         │           ├── get_organisme_recruteur.py
+        │           ├── get_recrutement_etapes.py
         │           ├── get_recrutement_kanban.py
         │           ├── get_recrutement_liste.py
+        │           ├── init_recrutement_etapes.py
         │           ├── initialize_organisme_steps.py
         │           ├── lister_mes_recrutements.py
         │           ├── lister_notes_candidature.py
         │           ├── supprimer_note.py
-        │           └── update_organisme_steps.py
+        │           ├── update_organisme_steps.py
+        │           └── update_recrutement_etapes.py
         ├── bin
         │   ├── backup-db-to-scaleway.sh
         │   ├── postdeploy.sh
@@ -662,6 +667,7 @@
         │       │   ├── note_repository_interface.py
         │       │   ├── organisme_agent_repository_interface.py
         │       │   ├── organisme_repository_interface.py
+        │       │   ├── recrutement_agent_repository_interface.py
         │       │   └── recrutement_repository_interface.py
         │       ├── services
         │       │   ├── __init__.py
@@ -678,7 +684,8 @@
         │   ├── __init__.py
         │   ├── authentication
         │   │   ├── __init__.py
-        │   │   └── api_key_authentication.py
+        │   │   ├── api_key_authentication.py
+        │   │   └── jwt_token.py
         │   ├── di
         │   │   ├── __init__.py
         │   │   ├── candidate
@@ -987,6 +994,7 @@
         │       │   ├── postgres_note_repository.py
         │       │   ├── postgres_organisme_agent_repository.py
         │       │   ├── postgres_organisme_repository.py
+        │       │   ├── postgres_recrutement_agent_repository.py
         │       │   ├── postgres_recrutement_query_service.py
         │       │   └── postgres_recrutement_repository.py
         │       ├── repository_factory.py
@@ -1434,7 +1442,8 @@
         │   │       └── sources.py
         │   ├── middleware
         │   │   ├── __init__.py
-        │   │   └── api_request_logger.py
+        │   │   ├── api_request_logger.py
+        │   │   └── rate_limit_headers.py
         │   ├── pages
         │   │   ├── __init__.py
         │   │   ├── urls.py
@@ -1448,7 +1457,9 @@
         │   │       ├── __init__.py
         │   │       ├── notes.py
         │   │       ├── organismes.py
-        │   │       └── recrutements.py
+        │   │       ├── recrutement_detail.py
+        │   │       ├── recrutement_listes.py
+        │   │       └── recrutement_params.py
         │   ├── static
         │   │   ├── api
         │   │   │   ├── guide_api.md
@@ -1584,12 +1595,16 @@
         │   │   │   └── test_vectorize_documents.py
         │   │   └── recruteur
         │   │       ├── __init__.py
+        │   │       ├── test_changer_etape_candidatures.py
+        │   │       ├── test_get_recrutement_etapes.py
         │   │       ├── test_get_recrutement_kanban.py
         │   │       ├── test_get_recrutement_liste.py
+        │   │       ├── test_init_recrutement_etapes.py
         │   │       ├── test_lister_mes_recrutements.py
         │   │       ├── test_lister_note_usecases.py
         │   │       ├── test_note_usecases.py
-        │   │       └── test_organisme_steps.py
+        │   │       ├── test_organisme_steps.py
+        │   │       └── test_update_recrutement_etapes.py
         │   ├── conftest.py
         │   ├── domain
         │   │   ├── __init__.py
@@ -1659,15 +1674,20 @@
         │   │   │   └── test_vectorize_documents.py
         │   │   ├── recruteur
         │   │   │   ├── __init__.py
+        │   │   │   ├── test_changer_etape_candidatures.py
+        │   │   │   ├── test_get_recrutement_etapes.py
         │   │   │   ├── test_get_recrutement_kanban.py
         │   │   │   ├── test_get_recrutement_liste.py
+        │   │   │   ├── test_init_recrutement_etapes.py
         │   │   │   ├── test_lister_mes_recrutements.py
         │   │   │   ├── test_note_query_service.py
         │   │   │   ├── test_note_repository.py
         │   │   │   ├── test_notes_usecases.py
         │   │   │   ├── test_organisme_admin.py
         │   │   │   ├── test_organisme_agent_repository.py
-        │   │   │   └── test_organisme_steps.py
+        │   │   │   ├── test_organisme_steps.py
+        │   │   │   ├── test_recrutement_agent_repository.py
+        │   │   │   └── test_update_recrutement_etapes.py
         │   │   ├── referentiel
         │   │   │   ├── __init__.py
         │   │   │   ├── test_postgres_concours_repository.py
@@ -1754,7 +1774,9 @@
         │   │       ├── test_views_ats_base.py
         │   │       ├── test_views_notes.py
         │   │       ├── test_views_organismes.py
-        │   │       └── test_views_recrutements.py
+        │   │       ├── test_views_recrutement_detail.py
+        │   │       ├── test_views_recrutement_listes.py
+        │   │       └── test_views_recrutement_params.py
         │   └── utils
         │       ├── async_in_memory_cv_metadata_repository.py
         │       ├── form_test_utils.py
@@ -1765,6 +1787,7 @@
         │       ├── shared_fixtures.py
         │       ├── test_api_request_logger_middleware.py
         │       ├── test_interface_aware_mock.py
+        │       ├── test_rate_limit_headers_middleware.py
         │       └── test_storages.py
         └── uv.lock
-354 directories, 1415 files
+354 directories, 1438 files
