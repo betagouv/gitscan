@@ -769,6 +769,7 @@
 │   │   │   │   │   ├── ConfirmationPage.tsx
 │   │   │   │   │   ├── CseOpinionLayout.module.scss
 │   │   │   │   │   ├── CseOpinionLayout.tsx
+│   │   │   │   │   ├── DownloadCard.tsx
 │   │   │   │   │   ├── Step1Opinions.module.scss
 │   │   │   │   │   ├── Step1Opinions.tsx
 │   │   │   │   │   ├── Step2Upload.tsx
@@ -776,6 +777,7 @@
 │   │   │   │   │   │   ├── AccuracyOpinionCard.test.tsx
 │   │   │   │   │   │   ├── ConfirmationPage.test.tsx
 │   │   │   │   │   │   ├── CseOpinionLayout.test.tsx
+│   │   │   │   │   │   ├── DownloadCard.test.tsx
 │   │   │   │   │   │   ├── GapConsultationCard.test.tsx
 │   │   │   │   │   │   ├── OpinionSummaryBox.test.tsx
 │   │   │   │   │   │   ├── Step1Opinions.test.tsx
@@ -961,6 +963,8 @@
 │   │   │   │   │   │   │   ├── CompliancePathReadOnlyAlert.tsx
 │   │   │   │   │   │   │   ├── DeclarationSuccessBanner.module.scss
 │   │   │   │   │   │   │   ├── DeclarationSuccessBanner.tsx
+│   │   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   │   └── CompliancePathOptions.test.tsx
 │   │   │   │   │   │   │   └── constants.ts
 │   │   │   │   │   │   ├── jointEvaluation
 │   │   │   │   │   │   │   ├── JointEvaluationForm.module.scss
@@ -982,7 +986,8 @@
 │   │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   │   ├── SecondDeclarationStep1Info.test.tsx
 │   │   │   │   │   │   │   │   ├── SecondDeclarationStep2Form.test.tsx
-│   │   │   │   │   │   │   │   └── SecondDeclarationStep3Review.test.tsx
+│   │   │   │   │   │   │   │   ├── SecondDeclarationStep3Review.test.tsx
+│   │   │   │   │   │   │   │   └── SecondDeclarationStepPage.test.tsx
 │   │   │   │   │   │   │   ├── constants.ts
 │   │   │   │   │   │   │   ├── funnelConfig.ts
 │   │   │   │   │   │   │   └── index.ts
@@ -996,12 +1001,15 @@
 │   │   │   │   │   │   │   ├── quartileErrors.ts
 │   │   │   │   │   │   │   └── quartileFormHelpers.ts
 │   │   │   │   │   │   ├── step5
+│   │   │   │   │   │   │   ├── CategoryAccordionItem.tsx
 │   │   │   │   │   │   │   ├── CategoryDataTable.tsx
 │   │   │   │   │   │   │   ├── CategoryForm.tsx
 │   │   │   │   │   │   │   ├── CategoryImportExport.module.scss
 │   │   │   │   │   │   │   ├── CategoryImportExport.tsx
 │   │   │   │   │   │   │   ├── DeleteCategoryDialog.tsx
 │   │   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   │   ├── CategoryAccordionItem.test.tsx
+│   │   │   │   │   │   │   │   ├── CategoryForm.test.tsx
 │   │   │   │   │   │   │   │   ├── CategoryImportExport.test.tsx
 │   │   │   │   │   │   │   │   ├── categoryFileHandler.test.ts
 │   │   │   │   │   │   │   │   ├── categoryModelTracking.test.ts
@@ -1045,7 +1053,8 @@
 │   │   │   │   │   │   ├── DownloadDeclarationPdfButton.test.tsx
 │   │   │   │   │   │   ├── TransmittedPdfDocument.test.tsx
 │   │   │   │   │   │   ├── buildPdfData.test.ts
-│   │   │   │   │   │   └── buildTransmittedPdfData.test.ts
+│   │   │   │   │   │   ├── buildTransmittedPdfData.test.ts
+│   │   │   │   │   │   └── pdfAccentRendering.test.tsx
 │   │   │   │   │   ├── buildPdfData.ts
 │   │   │   │   │   ├── buildTransmittedPdfData.ts
 │   │   │   │   │   ├── index.ts
@@ -1093,6 +1102,7 @@
 │   │   │   │   │   │   ├── declarationTrajectory.test.ts
 │   │   │   │   │   │   ├── demarcheDecisionTable.test.ts
 │   │   │   │   │   │   ├── demarcheRevisionAndStatus.test.ts
+│   │   │   │   │   │   ├── employeeCategoryRemuneration.test.ts
 │   │   │   │   │   │   ├── format.test.ts
 │   │   │   │   │   │   ├── formatLongDate.test.ts
 │   │   │   │   │   │   ├── gap.test.ts
@@ -1106,6 +1116,7 @@
 │   │   │   │   │   │   ├── scoreBracket.test.ts
 │   │   │   │   │   │   ├── siren.test.ts
 │   │   │   │   │   │   ├── submissionRate.test.ts
+│   │   │   │   │   │   ├── variablePay.test.ts
 │   │   │   │   │   │   └── workforce.test.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── shared
@@ -1122,6 +1133,7 @@
 │   │   │   │   │   │   ├── declarationStatus.ts
 │   │   │   │   │   │   ├── declarationSteps.ts
 │   │   │   │   │   │   ├── declarationTrajectory.ts
+│   │   │   │   │   │   ├── employeeCategoryRemuneration.ts
 │   │   │   │   │   │   ├── format.ts
 │   │   │   │   │   │   ├── gap.ts
 │   │   │   │   │   │   ├── gipWorkforce.ts
@@ -1134,6 +1146,7 @@
 │   │   │   │   │   │   ├── scoreBracket.ts
 │   │   │   │   │   │   ├── siren.ts
 │   │   │   │   │   │   ├── submissionRate.ts
+│   │   │   │   │   │   ├── variablePay.ts
 │   │   │   │   │   │   └── workforce.ts
 │   │   │   │   │   └── types.ts
 │   │   │   │   ├── error
@@ -1220,9 +1233,12 @@
 │   │   │   │   ├── layout
 │   │   │   │   │   ├── Breadcrumb.tsx
 │   │   │   │   │   ├── Footer
+│   │   │   │   │   │   ├── AppVersion.tsx
 │   │   │   │   │   │   ├── FooterBody.tsx
 │   │   │   │   │   │   ├── FooterBottom.tsx
 │   │   │   │   │   │   ├── ThemeModal.tsx
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   └── AppVersion.test.tsx
 │   │   │   │   │   │   └── index.tsx
 │   │   │   │   │   ├── Header
 │   │   │   │   │   │   ├── HeaderBrand.tsx
@@ -1250,6 +1266,7 @@
 │   │   │   │   │   │   ├── ImpersonateBanner.test.tsx
 │   │   │   │   │   │   ├── PublicChrome.test.tsx
 │   │   │   │   │   │   └── ResourceBanner.test.tsx
+│   │   │   │   │   ├── dsfrFixes.scss
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   └── shared
 │   │   │   │   │       ├── ConsultationNavLink.tsx
@@ -1354,6 +1371,7 @@
 │   │   │   │   │   │   ├── DeclarationProcessPanel.test.tsx
 │   │   │   │   │   │   ├── DeclarationStepLabel.test.ts
 │   │   │   │   │   │   ├── DeclarationsSection.test.tsx
+│   │   │   │   │   │   ├── DocumentsPanel.test.tsx
 │   │   │   │   │   │   ├── MissingInfoModal.test.tsx
 │   │   │   │   │   │   ├── MonEspacePage.test.tsx
 │   │   │   │   │   │   ├── MyCompaniesPage.test.tsx
@@ -1440,9 +1458,11 @@
 │   │   │   │   ├── shared
 │   │   │   │   │   ├── CampaignRateTileStates.tsx
 │   │   │   │   │   ├── CompanySizeFilter.tsx
+│   │   │   │   │   ├── DownloadStatusRegion.tsx
 │   │   │   │   │   ├── DsfrTable.tsx
 │   │   │   │   │   ├── FeedbackBanner.module.scss
 │   │   │   │   │   ├── FeedbackBanner.tsx
+│   │   │   │   │   ├── FileDownloadLink.tsx
 │   │   │   │   │   ├── FileUpload.module.scss
 │   │   │   │   │   ├── FileUpload.tsx
 │   │   │   │   │   ├── KpiBadge.tsx
@@ -1451,8 +1471,10 @@
 │   │   │   │   │   ├── SubmitModal.tsx
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   ├── CompanySizeFilter.test.tsx
+│   │   │   │   │   │   ├── DownloadStatusRegion.test.tsx
 │   │   │   │   │   │   ├── DsfrTable.test.tsx
 │   │   │   │   │   │   ├── FeedbackBanner.test.tsx
+│   │   │   │   │   │   ├── FileDownloadLink.test.tsx
 │   │   │   │   │   │   ├── FileUpload.test.tsx
 │   │   │   │   │   │   ├── KpiBadge.test.tsx
 │   │   │   │   │   │   ├── Pagination.test.tsx
@@ -1460,6 +1482,7 @@
 │   │   │   │   │   │   ├── formatFileSize.test.ts
 │   │   │   │   │   │   ├── getDsfrModal.test.ts
 │   │   │   │   │   │   ├── uploadFile.test.ts
+│   │   │   │   │   │   ├── useDownloadClickGuard.test.ts
 │   │   │   │   │   │   ├── useFileUploadForm.test.tsx
 │   │   │   │   │   │   ├── useSortableTable.test.tsx
 │   │   │   │   │   │   └── useZodForm.test.ts
@@ -1470,6 +1493,7 @@
 │   │   │   │   │   ├── parseSiren.ts
 │   │   │   │   │   ├── uploadConfig.ts
 │   │   │   │   │   ├── uploadFile.ts
+│   │   │   │   │   ├── useDownloadClickGuard.ts
 │   │   │   │   │   ├── useDsfrDialogOpen.ts
 │   │   │   │   │   ├── useDsfrModal.ts
 │   │   │   │   │   ├── useFileUploadForm.ts
@@ -1509,6 +1533,7 @@
 │   │   │   │   │   │   │   ├── declaration.impersonation.test.ts
 │   │   │   │   │   │   │   ├── declaration.step4Loader.test.ts
 │   │   │   │   │   │   │   ├── declaration.test.ts
+│   │   │   │   │   │   │   ├── declarationDeadlineGuard.test.ts
 │   │   │   │   │   │   │   ├── declarationDraft.integration.test.ts
 │   │   │   │   │   │   │   ├── declarationDraft.test.ts
 │   │   │   │   │   │   │   ├── declarationHelpers.test.ts
@@ -1591,6 +1616,7 @@
 │   │   │   │   └── services
 │   │   │   │       ├── __tests__
 │   │   │   │       │   ├── clamav.test.ts
+│   │   │   │       │   ├── cseRequirementSync.test.ts
 │   │   │   │       │   ├── declarationLockService.integration.test.ts
 │   │   │   │       │   ├── declarationLockService.test.ts
 │   │   │   │       │   ├── fileStreaming.test.ts
@@ -1605,6 +1631,7 @@
 │   │   │   │       │   ├── uploadPipeline.test.ts
 │   │   │   │       │   └── weez.test.ts
 │   │   │   │       ├── clamav.ts
+│   │   │   │       ├── cseRequirementSync.ts
 │   │   │   │       ├── declarationLockService.ts
 │   │   │   │       ├── fileStreaming.ts
 │   │   │   │       ├── fileUpload.ts
@@ -1618,6 +1645,7 @@
 │   │   │   │       ├── uploadPipeline.ts
 │   │   │   │       └── weez.ts
 │   │   │   ├── test
+│   │   │   │   ├── downloadHelpers.ts
 │   │   │   │   ├── impersonationMock.ts
 │   │   │   │   ├── integration-per-file-setup.ts
 │   │   │   │   ├── integration-setup.ts
@@ -1762,4 +1790,4 @@
 │   ├── setup-worktree.sh
 │   └── teardown-worktree.sh
 └── sonar-project.properties
-294 directories, 1470 files
+296 directories, 1496 files
