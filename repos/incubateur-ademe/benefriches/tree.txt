@@ -41,10 +41,6 @@
 │       │   └── SKILL.md
 │       ├── fix-ci
 │       │   └── SKILL.md
-│       ├── implement-plan
-│       │   └── SKILL.md
-│       ├── plan-feature
-│       │   └── SKILL.md
 │       ├── react-best-practices
 │       │   ├── SKILL.md
 │       │   └── examples.md
@@ -53,6 +49,12 @@
 │       ├── run-e2e-tests
 │       │   └── SKILL.md
 │       ├── security-review
+│       │   └── SKILL.md
+│       ├── to-spec
+│       │   └── SKILL.md
+│       ├── to-tickets
+│       │   └── SKILL.md
+│       ├── wizard-form
 │       │   └── SKILL.md
 │       ├── worktree
 │       │   └── SKILL.md
@@ -304,7 +306,9 @@
 │   │   │   │   │       │   │   └── FakeAddressSearchGateway.ts
 │   │   │   │   │       │   ├── ademeScriptDeps.ts
 │   │   │   │   │       │   ├── export
-│   │   │   │   │       │   │   └── ademeImpactsCsvRow.ts
+│   │   │   │   │       │   │   ├── ademeImpactsCsvRow.ts
+│   │   │   │   │       │   │   ├── referentielProjectsCsvRow.spec.ts
+│   │   │   │   │       │   │   └── referentielProjectsCsvRow.ts
 │   │   │   │   │       │   ├── import
 │   │   │   │   │       │   │   ├── importAdemeProjects.ts
 │   │   │   │   │       │   │   ├── mapAdemeProjectToFriche.ts
@@ -720,7 +724,10 @@
 │   │   │   ├── project-update
 │   │   │   │   ├── photovoltaic
 │   │   │   │   │   ├── edit-custom-photovoltaic.spec.ts
-│   │   │   │   │   └── fixtures.ts
+│   │   │   │   │   ├── edit-production-on-suitable-site.spec.ts
+│   │   │   │   │   ├── enable-site-reinstatement.spec.ts
+│   │   │   │   │   ├── fixtures.ts
+│   │   │   │   │   └── increase-surface-beyond-suitable-soils.spec.ts
 │   │   │   │   └── urban
 │   │   │   │       ├── edit-custom-urban-project.spec.ts
 │   │   │   │       └── fixtures.ts
@@ -1027,6 +1034,7 @@
 │       │   │   │   │   │   ├── projectName.spec.ts
 │       │   │   │   │   │   ├── projectName.ts
 │       │   │   │   │   │   ├── projectSite.types.ts
+│       │   │   │   │   │   ├── renewableEnergyLabelMapping.ts
 │       │   │   │   │   │   ├── siteRelatedLocalAuthorities.action.ts
 │       │   │   │   │   │   ├── soilsCarbonStorage.types.ts
 │       │   │   │   │   │   └── stakeholders.ts
@@ -1062,6 +1070,7 @@
 │       │   │   │   │   │   │   ├── soilsTransformation.selectors.ts
 │       │   │   │   │   │   │   ├── stakeholders.selectors.ts
 │       │   │   │   │   │   │   ├── stepper.selector.ts
+│       │   │   │   │   │   │   ├── stepperNavigation.spec.ts
 │       │   │   │   │   │   │   └── stepperNavigation.ts
 │       │   │   │   │   │   └── step-handlers
 │       │   │   │   │   │       ├── expenses
@@ -1114,6 +1123,9 @@
 │       │   │   │   │   │       │   │   ├── photovoltaicExpectedAnnualProduction.step.spec.ts
 │       │   │   │   │   │       │   │   └── photovoltaicExpectedAnnualProduction.stepperConfig.ts
 │       │   │   │   │   │       │   ├── photovoltaic-key-parameter
+│       │   │   │   │   │       │   │   ├── __tests__
+│       │   │   │   │   │       │   │   │   └── sequencing
+│       │   │   │   │   │       │   │   │       └── photovoltaicKeyParameterNoCascade.sequence.spec.ts
 │       │   │   │   │   │       │   │   ├── photovoltaicKeyParameter.handler.spec.ts
 │       │   │   │   │   │       │   │   ├── photovoltaicKeyParameter.handler.ts
 │       │   │   │   │   │       │   │   ├── photovoltaicKeyParameter.schema.ts
@@ -1121,6 +1133,9 @@
 │       │   │   │   │   │       │   │   ├── photovoltaicKeyParameter.step.spec.ts
 │       │   │   │   │   │       │   │   └── photovoltaicKeyParameter.stepperConfig.ts
 │       │   │   │   │   │       │   ├── photovoltaic-power
+│       │   │   │   │   │       │   │   ├── __tests__
+│       │   │   │   │   │       │   │   │   └── sequencing
+│       │   │   │   │   │       │   │   │       └── photovoltaicPowerCascade.sequence.spec.ts
 │       │   │   │   │   │       │   │   ├── photovoltaicPower.handler.spec.ts
 │       │   │   │   │   │       │   │   ├── photovoltaicPower.handler.ts
 │       │   │   │   │   │       │   │   ├── photovoltaicPower.schema.ts
@@ -1128,12 +1143,17 @@
 │       │   │   │   │   │       │   │   ├── photovoltaicPower.step.spec.ts
 │       │   │   │   │   │       │   │   └── photovoltaicPower.stepperConfig.ts
 │       │   │   │   │   │       │   └── photovoltaic-surface
+│       │   │   │   │   │       │       ├── __tests__
+│       │   │   │   │   │       │       │   └── sequencing
+│       │   │   │   │   │       │       │       ├── photovoltaicSurfaceCascade.sequence.spec.ts
+│       │   │   │   │   │       │       │       └── photovoltaicSurfaceSoilsCascade.sequence.spec.ts
 │       │   │   │   │   │       │       ├── photovoltaicSurface.handler.spec.ts
 │       │   │   │   │   │       │       ├── photovoltaicSurface.handler.ts
 │       │   │   │   │   │       │       ├── photovoltaicSurface.schema.ts
 │       │   │   │   │   │       │       ├── photovoltaicSurface.selector.ts
 │       │   │   │   │   │       │       ├── photovoltaicSurface.step.spec.ts
 │       │   │   │   │   │       │       └── photovoltaicSurface.stepperConfig.ts
+│       │   │   │   │   │       ├── renewableEnergyStepperConfig.spec.ts
 │       │   │   │   │   │       ├── renewableEnergyStepperConfig.ts
 │       │   │   │   │   │       ├── revenue
 │       │   │   │   │   │       │   ├── revenue-financial-assistance
@@ -1165,6 +1185,10 @@
 │       │   │   │   │   │       │   └── soils.schema.ts
 │       │   │   │   │   │       ├── soils-decontamination
 │       │   │   │   │   │       │   ├── involves-reinstatement
+│       │   │   │   │   │       │   │   ├── __tests__
+│       │   │   │   │   │       │   │   │   └── sequencing
+│       │   │   │   │   │       │   │   │       └── involvesReinstatementCascade.sequence.spec.ts
+│       │   │   │   │   │       │   │   ├── involvesReinstatement.handler.spec.ts
 │       │   │   │   │   │       │   │   ├── involvesReinstatement.handler.ts
 │       │   │   │   │   │       │   │   ├── involvesReinstatement.schema.ts
 │       │   │   │   │   │       │   │   ├── involvesReinstatement.selectors.ts
@@ -1564,6 +1588,7 @@
 │       │   │   │   │   │   │   │   │   └── stakeholdersReinstatementContractOwner.stepperConfig.ts
 │       │   │   │   │   │   │   │   ├── stakeholders.selector.ts
 │       │   │   │   │   │   │   │   └── stakeholdersReaders.ts
+│       │   │   │   │   │   │   ├── stepGroups.types.ts
 │       │   │   │   │   │   │   ├── stepHandler.type.ts
 │       │   │   │   │   │   │   ├── stepHandlerRegistry.ts
 │       │   │   │   │   │   │   ├── summary
@@ -1583,7 +1608,9 @@
 │       │   │   │   │   │   │       └── selection
 │       │   │   │   │   │   │           ├── usesSelection.handler.ts
 │       │   │   │   │   │   │           ├── usesSelection.schema.ts
+│       │   │   │   │   │   │           ├── usesSelection.step.spec.ts
 │       │   │   │   │   │   │           └── usesSelection.stepperConfig.ts
+│       │   │   │   │   │   ├── stepperConfig.ts
 │       │   │   │   │   │   ├── urbanProject.actions.ts
 │       │   │   │   │   │   ├── urbanProject.reducer.ts
 │       │   │   │   │   │   ├── urbanProject.selectors.ts
@@ -1641,6 +1668,7 @@
 │       │   │   │       ├── photovoltaic-power-station
 │       │   │   │       │   ├── PhotovoltaicPowerStationCreationWizard.tsx
 │       │   │   │       │   ├── PhotovoltaicPowerStationStepper.tsx
+│       │   │   │       │   ├── RenewableEnergyCascadingUpdateDialog.tsx
 │       │   │   │       │   ├── creationStepQueryStringMap.ts
 │       │   │   │       │   ├── expenses
 │       │   │   │       │   │   ├── installation
@@ -1753,11 +1781,13 @@
 │       │   │   │       │   │   └── site-purchased
 │       │   │   │       │   │       ├── SitePurchasedForm.tsx
 │       │   │   │       │   │       └── index.tsx
+│       │   │   │       │   ├── stepToComponent.tsx
 │       │   │   │       │   └── summary
 │       │   │   │       │       ├── ProjectCreationDataSummary.tsx
 │       │   │   │       │       └── index.tsx
 │       │   │   │       ├── project-form
 │       │   │   │       │   ├── AnswerCascadingUpdateDialog.tsx
+│       │   │   │       │   ├── CascadingChangesAlertDialog.tsx
 │       │   │   │       │   ├── ProjectFormContext.tsx
 │       │   │   │       │   ├── ProjectFormProvider.tsx
 │       │   │   │       │   ├── common
@@ -1805,9 +1835,7 @@
 │       │   │   │       │   │   └── stakeholder-introduction
 │       │   │   │       │   │       └── StakeholdersIntroduction.tsx
 │       │   │   │       │   ├── stepper
-│       │   │   │       │   │   ├── StepperItem.tsx
-│       │   │   │       │   │   ├── stepperConfig.ts
-│       │   │   │       │   │   └── useBuildStepperNavigationItems.tsx
+│       │   │   │       │   │   └── StepperItem.tsx
 │       │   │   │       │   └── useProjectForm.tsx
 │       │   │   │       ├── projectTypeLabelMapping.ts
 │       │   │   │       ├── urban-project
@@ -1941,6 +1969,7 @@
 │       │   │   │       │   │   │   └── index.tsx
 │       │   │   │       │   │   └── reinstatement-contract-owner
 │       │   │   │       │   │       └── index.tsx
+│       │   │   │       │   ├── stepToComponent.tsx
 │       │   │   │       │   ├── summary
 │       │   │   │       │   │   ├── UrbanProjectExpensesSection.spec.tsx
 │       │   │   │       │   │   ├── UrbanProjectExpensesSection.tsx
@@ -2245,8 +2274,6 @@
 │       │   │   │   │       ├── urbanZoneStepperConfig.ts
 │       │   │   │   │       └── urbanZoneSteps.ts
 │       │   │   │   ├── infrastructure
-│       │   │   │   │   ├── address-service
-│       │   │   │   │   │   └── nationalAddressBaseApi.ts
 │       │   │   │   │   └── create-site-service
 │       │   │   │   │       ├── HttpCreateSiteApi.ts
 │       │   │   │   │       └── inMemoryCreateSiteApi.ts
@@ -2485,8 +2512,7 @@
 │       │   │   │   ├── core
 │       │   │   │   │   ├── __tests__
 │       │   │   │   │   │   └── myEvaluations.selectors.spec.ts
-│       │   │   │   │   └── myEvaluations.selectors.ts
-│       │   │   │   ├── domain
+│       │   │   │   │   ├── myEvaluations.selectors.ts
 │       │   │   │   │   └── types.ts
 │       │   │   │   ├── infrastructure
 │       │   │   │   │   └── projects-list-service
@@ -2584,7 +2610,7 @@
 │       │   │   │   │           ├── projectImpacts.selectors.ts
 │       │   │   │   │           ├── projectSummary.selector.ts
 │       │   │   │   │           └── projectUrbanSprawlComparisonOnboardingSkip.selector.ts
-│       │   │   │   ├── domain
+│       │   │   │   ├── core
 │       │   │   │   │   ├── cropImpactsByEvaluationPeriod.ts
 │       │   │   │   │   ├── groupIndirectImpactsByBearer.ts
 │       │   │   │   │   ├── projectImpactsEconomicBalance.ts
@@ -2707,6 +2733,7 @@
 │       │   │   │       │   │   │   │   ├── EconomicBalanceDescription.tsx
 │       │   │   │       │   │   │   │   ├── EconomicBalanceModalSiteOrProjectFeature.tsx
 │       │   │   │       │   │   │   │   ├── EconomicBalanceModalWizard.tsx
+│       │   │   │       │   │   │   │   ├── colors.ts
 │       │   │   │       │   │   │   │   ├── financial_assistance-local_or_regional_authority_participation.mdx
 │       │   │   │       │   │   │   │   ├── financial_assistance-public_subsidies.mdx
 │       │   │   │       │   │   │   │   ├── financial_assistance.mdx
@@ -2714,7 +2741,9 @@
 │       │   │   │       │   │   │   │   ├── photovoltaic_other.mdx
 │       │   │   │       │   │   │   │   ├── photovoltaic_technical_studies.mdx
 │       │   │   │       │   │   │   │   ├── photovoltaic_works.mdx
-│       │   │   │       │   │   │   │   ├── site_purchase.mdx
+│       │   │   │       │   │   │   │   ├── real_estate_acquisition-site_purchase.mdx
+│       │   │   │       │   │   │   │   ├── real_estate_acquisition-site_resale.mdx
+│       │   │   │       │   │   │   │   ├── real_estate_acquisition.mdx
 │       │   │   │       │   │   │   │   ├── site_reinstatement-deimpermeabilization.mdx
 │       │   │   │       │   │   │   │   ├── site_reinstatement-demolition.mdx
 │       │   │   │       │   │   │   │   ├── site_reinstatement-other_reinstatement.mdx
@@ -2722,7 +2751,6 @@
 │       │   │   │       │   │   │   │   ├── site_reinstatement-sustainable_soils_reinstatement.mdx
 │       │   │   │       │   │   │   │   ├── site_reinstatement-waste_collection.mdx
 │       │   │   │       │   │   │   │   ├── site_reinstatement.mdx
-│       │   │   │       │   │   │   │   ├── site_resale.mdx
 │       │   │   │       │   │   │   │   ├── urban_project_development_plan_installation.mdx
 │       │   │   │       │   │   │   │   ├── urban_project_other.mdx
 │       │   │   │       │   │   │   │   ├── urban_project_technical_studies.mdx
@@ -2991,7 +3019,6 @@
 │       │   │   │           │   └── summary.ts
 │       │   │   │           ├── project-badge
 │       │   │   │           │   └── ExpressProjectBadge.tsx
-│       │   │   │           ├── scenarioType.ts
 │       │   │   │           ├── socioEconomicLabels.ts
 │       │   │   │           └── urbanProjectCategory.ts
 │       │   │   ├── public-pages
@@ -3188,7 +3215,9 @@
 │       │   │   │   │   └── formatNumber.ts
 │       │   │   │   ├── gateways
 │       │   │   │   │   ├── AddressSearchGateway.ts
-│       │   │   │   │   └── RealEstateValuationGateway.ts
+│       │   │   │   │   ├── AdministrativeDivisionGateway.ts
+│       │   │   │   │   ├── RealEstateValuationGateway.ts
+│       │   │   │   │   └── SoilsCarbonStorageGateway.ts
 │       │   │   │   ├── isObjectsEqual
 │       │   │   │   │   ├── isObjectsEqual.spec.ts
 │       │   │   │   │   └── isObjectsEqual.ts
@@ -3219,8 +3248,10 @@
 │       │   │   │   ├── split-number
 │       │   │   │   │   ├── splitNumber.spec.ts
 │       │   │   │   │   └── splitNumber.ts
+│       │   │   │   ├── stepVariant.types.ts
 │       │   │   │   ├── urbanProject.ts
 │       │   │   │   └── wizard-form
+│       │   │   │       ├── CLAUDE.md
 │       │   │   │       ├── helpers
 │       │   │   │       │   ├── applyStepChanges.ts
 │       │   │   │       │   ├── computeStepChanges.spec.ts
@@ -3230,11 +3261,16 @@
 │       │   │   │       │   ├── navigateToStep.ts
 │       │   │   │       │   ├── readState.spec.ts
 │       │   │   │       │   ├── readState.ts
-│       │   │   │       │   └── stepsSequence.ts
+│       │   │   │       │   ├── stepGroups.ts
+│       │   │   │       │   ├── stepsSequence.spec.ts
+│       │   │   │       │   ├── stepsSequence.ts
+│       │   │   │       │   └── useBuildStepperNavigationItems.tsx
 │       │   │   │       ├── stepHandler.type.ts
 │       │   │   │       ├── wizardForm.actions.ts
 │       │   │   │       └── wizardForm.reducer.ts
 │       │   │   ├── infrastructure
+│       │   │   │   ├── address-service
+│       │   │   │   │   └── nationalAddressBaseApi.ts
 │       │   │   │   ├── administrative-division-service
 │       │   │   │   │   ├── administrativeDivisionMock.ts
 │       │   │   │   │   └── municipalityDataService.ts
@@ -3314,6 +3350,7 @@
 │       │   │       │   │   ├── ProjectOverviewTile.tsx
 │       │   │       │   │   ├── ProjectTile.tsx
 │       │   │       │   │   ├── ProjectTileMenu.tsx
+│       │   │       │   │   ├── scenarioType.ts
 │       │   │       │   │   └── useProjectTileMenu.tsx
 │       │   │       │   ├── RadioButtons
 │       │   │       │   │   └── RadioButtons.tsx
@@ -3704,9 +3741,8 @@
 │       └── tsdown.config.ts
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
-├── refactor-container-viewdata-pattern.md
 └── scripts
     ├── create-worktree.sh
     ├── prime-worktree.sh
     └── remove-worktree.sh
-996 directories, 2715 files
+1004 directories, 2743 files
