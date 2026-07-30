@@ -28,10 +28,12 @@
 │       ├── codeql-analysis.yml
 │       ├── git.yml
 │       ├── publiccodeyml-check.yml
-│       └── rails_schema_check.yml
+│       ├── rails_schema_check.yml
+│       └── sentry_release.yml
 ├── .gitignore
 ├── .gpg_authorized_keys
 ├── .haml-lint.yml
+├── .herb.yml
 ├── .rspec
 ├── .rubocop.yml
 ├── .ruby-version
@@ -721,6 +723,7 @@
 │   │   │   │   ├── api_part_preview_data
 │   │   │   │   │   ├── preview_aah_data.json
 │   │   │   │   │   ├── preview_aeeh_data.json
+│   │   │   │   │   ├── preview_ars_data.json
 │   │   │   │   │   ├── preview_etudiant_boursier_data.json
 │   │   │   │   │   └── preview_quotient_familial_data.json
 │   │   │   │   ├── france_connect_champ_base_component.en.yml
@@ -1703,6 +1706,7 @@
 │   │       │   │   ├── address_champ_descriptor_type.rb
 │   │       │   │   ├── aeeh_champ_descriptor_type.rb
 │   │       │   │   ├── annuaire_education_champ_descriptor_type.rb
+│   │       │   │   ├── ars_champ_descriptor_type.rb
 │   │       │   │   ├── carte_champ_descriptor_type.rb
 │   │       │   │   ├── checkbox_champ_descriptor_type.rb
 │   │       │   │   ├── civilite_champ_descriptor_type.rb
@@ -2050,7 +2054,8 @@
 │   │   ├── bulk_route_job.rb
 │   │   ├── champ_fetch_external_data_job.rb
 │   │   ├── concerns
-│   │   │   └── datagouv_cron_schedulable_concern.rb
+│   │   │   ├── datagouv_cron_schedulable_concern.rb
+│   │   │   └── unreadable_vips_source_concern.rb
 │   │   ├── create_representations_job.rb
 │   │   ├── crisp_create_conversation_job.rb
 │   │   ├── crisp_mattermost_tech_notification_job.rb
@@ -2286,6 +2291,7 @@
 │   │   │   ├── address_champ.rb
 │   │   │   ├── aeeh_champ.rb
 │   │   │   ├── annuaire_education_champ.rb
+│   │   │   ├── ars_champ.rb
 │   │   │   ├── boolean_champ.rb
 │   │   │   ├── carte_champ.rb
 │   │   │   ├── checkbox_champ.rb
@@ -2505,6 +2511,7 @@
 │   │   │   ├── address_type_de_champ.rb
 │   │   │   ├── aeeh_type_de_champ.rb
 │   │   │   ├── annuaire_education_type_de_champ.rb
+│   │   │   ├── ars_type_de_champ.rb
 │   │   │   ├── carte_type_de_champ.rb
 │   │   │   ├── checkbox_type_de_champ.rb
 │   │   │   ├── civilite_type_de_champ.rb
@@ -2567,6 +2574,7 @@
 │   │   ├── accreditation-cojo.json
 │   │   ├── adresse-ban.json
 │   │   ├── aeeh.json
+│   │   ├── ars.json
 │   │   ├── association.json
 │   │   ├── etablissement-annuaire-education.json
 │   │   ├── etudiant-boursier.json
@@ -2639,6 +2647,7 @@
 │   │   ├── france_connect_champ
 │   │   │   ├── aah_rows_builder.rb
 │   │   │   ├── aeeh_rows_builder.rb
+│   │   │   ├── ars_rows_builder.rb
 │   │   │   ├── base_rows_builder.rb
 │   │   │   ├── etudiant_boursier_rows_builder.rb
 │   │   │   └── quotient_familial_rows_builder.rb
@@ -2827,6 +2836,8 @@
 │   │       ├── t20260616backfill_rna_external_id_task.rb
 │   │       ├── t20260623backfill_rna_external_state_task.rb
 │   │       ├── t20260722update_procedure_estimated_dossiers_count_task.rb
+│   │       ├── t20260728_backfill_search_terms_tsvector_task.rb
+│   │       ├── t20260728_purge_empty_attachments_task.rb
 │   │       ├── update_*.rb  (6 files)
 │   │       └── verify_confirmed_users_task.rb
 │   ├── types
@@ -2841,6 +2852,7 @@
 │   │   ├── date_limit_validator.rb
 │   │   ├── dossier_link_validator.rb
 │   │   ├── drop_down_options_validator.rb
+│   │   ├── empty_file_validator.rb
 │   │   ├── export_template_validator.rb
 │   │   ├── expression_reguliere_validator.rb
 │   │   ├── external_data_champ_validator.rb
@@ -3693,6 +3705,7 @@
 │   ├── bundle
 │   ├── delayed_job
 │   ├── dev
+│   ├── parallel-rspec
 │   ├── rails
 │   ├── rake
 │   ├── rspec
@@ -3709,6 +3722,7 @@
 │   ├── application.rb
 │   ├── boot.rb
 │   ├── brakeman.ignore
+│   ├── brakeman.yml
 │   ├── cable.yml
 │   ├── custom_locales
 │   │   └── .keep
@@ -4809,12 +4823,17 @@
 │   │   ├── 20260701140241_add_json_columns_to_mail_templates.rb
 │   │   ├── 20260703000000_add_soft_delete_at_to_active_storage_blobs.rb
 │   │   ├── 20260713000000_rename_soft_delete_at_to_soft_deleted_at_on_active_storage_blobs.rb
-│   │   └── 20260722000000_add_dossiers_connection_ordering_indexes.rb
+│   │   ├── 20260722000000_add_dossiers_connection_ordering_indexes.rb
+│   │   ├── 20260727220000_add_champs_stable_id_and_dossier_id_index.rb
+│   │   ├── 20260727220100_remove_champs_stable_id_index.rb
+│   │   ├── 20260728120000_add_search_terms_tsvector_to_dossiers.rb
+│   │   └── 20260728120001_add_search_terms_tsvector_indexes_to_dossiers.rb
 │   ├── schema.rb
 │   ├── seeds
 │   │   ├── avis.rb
 │   │   ├── cases
 │   │   │   ├── champs.rb
+│   │   │   ├── routage.rb
 │   │   │   └── sva.rb
 │   │   ├── development
 │   │   │   └── users.rb
@@ -4901,6 +4920,13 @@
 │   ├── object-storage-and-data-encryption.md
 │   └── recovery.md
 ├── eslint.config.ts
+├── failing_specs2.txt
+├── failing_specs3.txt
+├── failing_specs4.txt
+├── failing_specs5.txt
+├── failing_specs6.txt
+├── failing_specs7.txt
+├── failing_specs8.txt
 ├── lib
 │   ├── cops
 │   │   ├── add_concurrent_index.rb
@@ -5560,6 +5586,7 @@
 │   │   │   ├── modele-import-referentiel-with-bom.csv
 │   │   │   ├── modele-import-referentiel-without-separators.csv
 │   │   │   ├── modele-import-referentiel.csv
+│   │   │   ├── not-an-image.jpg
 │   │   │   ├── pays_dump.json
 │   │   │   ├── pencil.tiff
 │   │   │   ├── piece_justificative_0.pdf
@@ -5587,7 +5614,8 @@
 │   │   │   └── v2
 │   │   │       └── schema_spec.rb
 │   │   ├── connections
-│   │   │   └── cursor_connection_spec.rb
+│   │   │   ├── cursor_connection_spec.rb
+│   │   │   └── dossiers_connection_spec.rb
 │   │   ├── demarche_spec.rb
 │   │   ├── dossier_spec.rb
 │   │   └── types
@@ -5893,6 +5921,7 @@
 │   │   │   ├── dossier_searchable_concern_spec.rb
 │   │   │   ├── dossier_sections_concern_spec.rb
 │   │   │   ├── dossier_state_concern_spec.rb
+│   │   │   ├── dossier_stream_concern_spec.rb
 │   │   │   ├── email_sanitizable_concern_spec.rb
 │   │   │   ├── initiation_procedure_concern_spec.rb
 │   │   │   ├── instructeur_procedure_concern_spec.rb
@@ -6347,6 +6376,8 @@
 │   │       ├── t20260616backfill_rna_external_id_task_spec.rb
 │   │       ├── t20260623backfill_rna_external_state_task_spec.rb
 │   │       ├── t20260722update_procedure_estimated_dossiers_count_task_spec.rb
+│   │       ├── t20260728_backfill_search_terms_tsvector_task_spec.rb
+│   │       ├── t20260728_purge_empty_attachments_task_spec.rb
 │   │       ├── update_*.rb  (5 files)
 │   │       └── verify_confirmed_users_task_spec.rb
 │   ├── types
@@ -6356,6 +6387,7 @@
 │   │   ├── filtered_column_type_spec.rb
 │   │   └── sorted_column_type_spec.rb
 │   ├── validators
+│   │   ├── empty_file_validator_spec.rb
 │   │   ├── export_template_validator_spec.rb
 │   │   └── types_de_champ
 │   │       ├── api_particulier_validator_spec.rb
@@ -6457,4 +6489,4 @@
 │           └── leaflet.scss
 ├── vite.config.ts
 └── vitest.config.ts
-1035 directories, 5769 files
+1035 directories, 5801 files
