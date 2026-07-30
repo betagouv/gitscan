@@ -943,7 +943,9 @@
 │       ├── tests
 │       │   ├── auth-transition.spec.ts
 │       │   ├── change-establishment.spec.ts
+│       │   ├── group-to-campaign.spec.ts
 │       │   ├── protected-route.spec.ts
+│       │   ├── save-campaign.spec.ts
 │       │   ├── sign-in.spec.ts
 │       │   ├── sign-out.spec.ts
 │       │   └── suspended-user.spec.ts
@@ -1049,7 +1051,9 @@
 │   │   │   ├── 2026-06-13-auth-hardening-backend.md
 │   │   │   ├── 2026-06-13-auth-hardening-frontend.md
 │   │   │   ├── 2026-06-13-reference-data-cache.md
-│   │   │   └── 2026-07-08-zlv-repair-harness.md
+│   │   │   ├── 2026-07-08-zlv-repair-harness.md
+│   │   │   ├── 2026-07-17-save-campaign.md
+│   │   │   └── 2026-07-20-campaign-documents.md
 │   │   └── specs
 │   │       ├── 2026-04-07-groups-precomputed-counts-design.md
 │   │       ├── 2026-04-13-factories-design.md
@@ -1071,7 +1075,9 @@
 │   │       ├── 2026-06-11-remove-old-dsfr-design.md
 │   │       ├── 2026-06-13-auth-hardening-design.md
 │   │       ├── 2026-06-13-reference-data-cache-design.md
-│   │       └── 2026-07-08-zlv-repair-harness-design.md
+│   │       ├── 2026-07-08-zlv-repair-harness-design.md
+│   │       ├── 2026-07-17-save-campaign-design.md
+│   │       └── 2026-07-20-campaign-documents-design.md
 │   └── technical
 │       ├── .gitignore
 │       ├── DAT-Dossier-Architecture-Technique.md
@@ -1151,7 +1157,9 @@
 │   │   │   ├── AdvancedTable
 │   │   │   │   ├── AdvancedTable.tsx
 │   │   │   │   ├── AdvancedTableHeader.tsx
-│   │   │   │   └── SortButton.tsx
+│   │   │   │   ├── SortButton.tsx
+│   │   │   │   └── test
+│   │   │   │       └── AdvancedTable.test.tsx
 │   │   │   ├── Analysis
 │   │   │   │   ├── AnalysisCard.tsx
 │   │   │   │   ├── BarChartDisplay.tsx
@@ -1169,6 +1177,7 @@
 │   │   │   ├── Campaign
 │   │   │   │   ├── CampaignCreatedFromGroup.tsx
 │   │   │   │   ├── CampaignDeleteModal.tsx
+│   │   │   │   ├── CampaignDocumentsTab.tsx
 │   │   │   │   ├── CampaignRecipients.tsx
 │   │   │   │   ├── CampaignReturnCountStatCard.tsx
 │   │   │   │   ├── CampaignReturnRateStatCard.tsx
@@ -1179,8 +1188,14 @@
 │   │   │   │   ├── CampaignStatusBadge.tsx
 │   │   │   │   ├── CampaignTable.tsx
 │   │   │   │   ├── CampaignTitle.tsx
+│   │   │   │   ├── SaveCampaignFlow.tsx
+│   │   │   │   ├── SelectGroupModal.tsx
 │   │   │   │   ├── WaitingBadge.tsx
-│   │   │   │   └── campaign.module.scss
+│   │   │   │   ├── campaign.module.scss
+│   │   │   │   └── test
+│   │   │   │       ├── CampaignDocumentsTab.test.tsx
+│   │   │   │       ├── SaveCampaignFlow.test.tsx
+│   │   │   │       └── SelectGroupModal.test.tsx
 │   │   │   ├── Collapse
 │   │   │   │   ├── Collapse.test.tsx
 │   │   │   │   ├── Collapse.tsx
@@ -1233,11 +1248,16 @@
 │   │   │   │   ├── ExtendedToggle.tsx
 │   │   │   │   └── extended-toggle.module.scss
 │   │   │   ├── FileUpload
+│   │   │   │   ├── CampaignDocumentUpload.tsx
 │   │   │   │   ├── DocumentCyclingBar.tsx
 │   │   │   │   ├── DocumentFullscreenPreview.tsx
 │   │   │   │   ├── DocumentPreview.tsx
 │   │   │   │   ├── DocumentUpload.tsx
+│   │   │   │   ├── DocumentUploadHint.tsx
 │   │   │   │   ├── HousingDocumentUpload.tsx
+│   │   │   │   ├── test
+│   │   │   │   │   ├── CampaignDocumentUpload.test.tsx
+│   │   │   │   │   └── DocumentFullscreenPreview.test.tsx
 │   │   │   │   └── useDocumentUpload.ts
 │   │   │   ├── FiltersBadges
 │   │   │   │   ├── FilterBadge.tsx
@@ -1254,7 +1274,10 @@
 │   │   │   │   ├── GroupNext.tsx
 │   │   │   │   ├── RemoveGroupModal.tsx
 │   │   │   │   ├── RenameGroupModal.tsx
-│   │   │   │   └── group.module.scss
+│   │   │   │   ├── group.module.scss
+│   │   │   │   └── test
+│   │   │   │       ├── CreateCampaignFromGroupModal.test.tsx
+│   │   │   │       └── GroupNext.test.tsx
 │   │   │   ├── GroupCard
 │   │   │   │   ├── GroupCard.test.tsx
 │   │   │   │   ├── GroupCard.tsx
@@ -1517,6 +1540,7 @@
 │   │   │   │   ├── useAuth.test.tsx
 │   │   │   │   ├── useForm.test.ts
 │   │   │   │   ├── useMapImage.test.tsx
+│   │   │   │   ├── useNotification.test.tsx
 │   │   │   │   ├── useSelection.test.tsx
 │   │   │   │   └── useUser.test.tsx
 │   │   │   ├── useActivationEmail.tsx
@@ -1654,6 +1678,7 @@
 │   │   │   ├── session-aware-base-query.ts
 │   │   │   ├── signup-link.service.ts
 │   │   │   ├── test
+│   │   │   │   ├── document.service.test.tsx
 │   │   │   │   ├── draft.service.test.ts
 │   │   │   │   ├── owner.service.test.ts
 │   │   │   │   ├── reset-link.service.test.ts
@@ -1749,6 +1774,7 @@
 │   │   │   │   ├── HousingListTabsProvider.tsx
 │   │   │   │   ├── HousingListView.tsx
 │   │   │   │   └── test
+│   │   │   │       ├── HousingListView.campaignFlows.test.tsx
 │   │   │   │       └── HousingListView.test.tsx
 │   │   │   ├── Login
 │   │   │   │   ├── LoginView.test.tsx
@@ -1835,6 +1861,7 @@
 │   │   │   ├── CadastralClassification.ts
 │   │   │   ├── CampaignCount.ts
 │   │   │   ├── CampaignDTO.ts
+│   │   │   ├── CampaignDocumentDTO.ts
 │   │   │   ├── ContactPoint.ts
 │   │   │   ├── DashboardDTO.ts
 │   │   │   ├── DataFileYear.ts
@@ -1893,6 +1920,7 @@
 │   │   │   │   ├── AddressDTO.test.ts
 │   │   │   │   ├── CampaignDTO.test.ts
 │   │   │   │   ├── DatafoncierHousing.test.ts
+│   │   │   │   ├── DocumentDTO.test.ts
 │   │   │   │   ├── EstablishmentKind.test.ts
 │   │   │   │   ├── HousingDTO.test.ts
 │   │   │   │   ├── HousingOwnerDTO.test.ts
@@ -1953,9 +1981,11 @@
 │   │   ├── src
 │   │   │   ├── building-filters.ts
 │   │   │   ├── campaign-creation-payload.ts
+│   │   │   ├── campaign-document-payload.ts
 │   │   │   ├── campaign-filters.ts
 │   │   │   ├── campaign-update-next-payload.ts
 │   │   │   ├── date-string.ts
+│   │   │   ├── document-ids-payload.ts
 │   │   │   ├── document-payload.ts
 │   │   │   ├── draft-creation-payload.ts
 │   │   │   ├── draft-update-payload.ts
@@ -1984,6 +2014,7 @@
 │   │   │   ├── test
 │   │   │   │   ├── building-filters.test.ts
 │   │   │   │   ├── campaign-creation-payload.test.ts
+│   │   │   │   ├── campaign-document-payload.test.ts
 │   │   │   │   ├── campaign-filters.test.ts
 │   │   │   │   ├── date-string.test.ts
 │   │   │   │   ├── draft-creation-payload.test.ts
@@ -2384,7 +2415,9 @@
 │   │   │   │   │   ├── 20260506221143_drop-owners-dept.ts
 │   │   │   │   │   ├── 20260506221144_drop-owners-duplicates.ts
 │   │   │   │   │   ├── 20260613120000_better_auth_tables.ts
-│   │   │   │   │   └── 20260623000000_user-perimeters-add-establishment-id.ts
+│   │   │   │   │   ├── 20260623000000_user-perimeters-add-establishment-id.ts
+│   │   │   │   │   ├── 20260720100000_documents-campaigns.ts
+│   │   │   │   │   └── 20260720100001_campaign-document-events.ts
 │   │   │   │   ├── procedures
 │   │   │   │   │   ├── 001-load-housing.sql
 │   │   │   │   │   └── 002-load-non-vacant-housing.sql
@@ -2470,6 +2503,7 @@
 │   │   │   ├── AddressApi.ts
 │   │   │   ├── BuildingApi.ts
 │   │   │   ├── CampaignApi.ts
+│   │   │   ├── CampaignDocumentApi.ts
 │   │   │   ├── CampaignFiltersApi.ts
 │   │   │   ├── DashboardApi.ts
 │   │   │   ├── DocumentApi.ts
@@ -2508,6 +2542,7 @@
 │   │   ├── repositories
 │   │   │   ├── banAddressesRepository.ts
 │   │   │   ├── buildingRepository.ts
+│   │   │   ├── campaignDocumentRepository.ts
 │   │   │   ├── campaignDraftRepository.ts
 │   │   │   ├── campaignHousingRepository.ts
 │   │   │   ├── campaignRepository.ts
@@ -2534,6 +2569,7 @@
 │   │   │   ├── test
 │   │   │   │   ├── banAddressesRepository.test.ts
 │   │   │   │   ├── buildingRepository.test.ts
+│   │   │   │   ├── campaignDocumentRepository.test.ts
 │   │   │   │   ├── campaignHousingRepository.test.ts
 │   │   │   │   ├── campaignRepository.test.ts
 │   │   │   │   ├── datafoncierHousingRepository.test.ts
@@ -2922,4 +2958,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── yarn.lock
-458 directories, 2466 files
+462 directories, 2498 files
