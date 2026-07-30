@@ -1,3 +1,17 @@
+# [2.1808.0](https://github.com/SocialGouv/fiches-vdd/compare/v2.1807.0...v2.1808.0) (2026-07-29)
+
+
+### Features
+
+* **data:** 20260729_1918 update ([df657f4](https://github.com/SocialGouv/fiches-vdd/commit/df657f48640d28beaa2ccfe7b84e9eadaefb2a49))
+
+# [2.1807.0](https://github.com/SocialGouv/fiches-vdd/compare/v2.1806.0...v2.1807.0) (2026-07-28)
+
+
+### Features
+
+* **data:** 20260728_1926 update ([52e5476](https://github.com/SocialGouv/fiches-vdd/commit/52e547659f3b1305fdad959b748149638e2da17c))
+
 # [2.1806.0](https://github.com/SocialGouv/fiches-vdd/compare/v2.1805.0...v2.1806.0) (2026-07-27)
 
 
