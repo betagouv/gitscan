@@ -1,11 +1,13 @@
-## Changelog : eva (30 derniers jours, au 20 juin 2026)
+## Changelog : eva (30 derniers jours, au 30 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur la maintenance technique du projet. L'environnement de développement a été mis à jour avec une version plus récente de Node.js (v22) pour bénéficier des dernières améliorations de performance et de sécurité. Des mises à jour de dépendances mineures ont également été effectuées pour assurer la stabilité du projet.
+Cette mise à jour apporte une correction de l'affichage du titre de l'inventaire et supprime une fonctionnalité obsolète du store de l'accueil. Ces changements visent à améliorer la clarté de l'interface utilisateur et à maintenir la propreté du code.
+
+### Évolutions fonctionnelles
+- Correction du titre de l'inventaire affiché dans l'onglet. [#9970d31](https://github.com/betagouv/eva/commit/9970d31)
 
 ### Évolutions techniques
-- Mise à jour de Node.js vers la version 22 [#73bb2b9](https://github.com/betagouv/eva/commit/73bb2b9)
+- Suppression de la fonction `enregistreDonneesComplementaires` du store de l'accueil, supprimant du code inutilisé. [#0b12ab9](https://github.com/betagouv/eva/commit/0b12ab9)
 
 ### Autres changements
-- Mise à jour de certaines dépendances du projet. [#ed48db2](https://github.com/betagouv/eva/commit/ed48db2)
-- Mise à jour de la dépendance `shell-quote` de la version 1.8.3 à la version 1.8.4 [#c7f02f8](https://github.com/betagouv/eva/commit/c7f02f8)
+- Mise à jour des dépendances. [#5ccd2b1](https://github.com/betagouv/eva/commit/5ccd2b1)
