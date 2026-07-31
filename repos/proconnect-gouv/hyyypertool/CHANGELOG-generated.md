@@ -1,21 +1,19 @@
-## Changelog : hyyypertool (30 derniers jours, au 24 juillet 2026)
+## Changelog : hyyypertool (30 derniers jours, au 30 juillet 2026)
 
 ### Résumé
-Cette version apporte des améliorations à l'interface utilisateur, notamment des ajustements de texte et l'ajout d'informations sur les organisations des utilisateurs. Des corrections et des optimisations ont également été apportées, ainsi que des mises à jour de dépendances pour assurer la sécurité et la stabilité de l'outil.
+Cette version apporte des améliorations à l'interface utilisateur, notamment concernant la gestion des PDF et des motifs de refus. Des corrections ont été apportées pour l'ouverture des PDF des dirigeants d'association et l'édition des motifs de refus. De nombreuses mises à jour de dépendances ont également été effectuées pour maintenir la sécurité et la stabilité de l'outil.
 
 ### Évolutions fonctionnelles
-- Modification du texte du bouton de révocation d'identité pour plus de clarté. [#1737](https://github.com/proconnect-gouv/hyyypertool/issues/1737)
-- Ajout d'un champ éditable pour le motif de refus dans la modale de refus. [#1718](https://github.com/proconnect-gouv/hyyypertool/issues/1718)
-- Ajout d'une colonne "Externe" avec un indicateur visuel dans le tableau des organisations des utilisateurs. [#1717](https://github.com/proconnect-gouv/hyyypertool/issues/1717)
-- Ajout de badges avec des émojis indiquant le nombre d'éléments dans différentes sections du tableau utilisateur. [#1716](https://github.com/proconnect-gouv/hyyypertool/issues/1716)
-- Regroupement des sections du tableau utilisateur dans des blocs repliables pour une meilleure organisation. [#1715](https://github.com/proconnect-gouv/hyyypertool/issues/1715)
-- Ajout d'une colonne indiquant le type de vérification pour les organisations. [#1713](https://github.com/proconnect-gouv/hyyypertool/issues/1713)
+- Le PDF des dirigeants d'association s'ouvre désormais dans un nouvel onglet, améliorant l'expérience utilisateur. ([#1746](https://github.com/proconnect-gouv/hyyypertool/issues/1746))
+- Un champ éditable a été ajouté pour le motif de refus dans la modale de refus, permettant une plus grande précision. ([#1718](https://github.com/proconnect-gouv/hyyypertool/issues/1718))
+- Ajout de badges de comptage avec emojis pour les sections de la table des utilisateurs. ([#1716](https://github.com/proconnect-gouv/hyyypertool/issues/1716))
+- Ajout d'une colonne "Type de vérification" à la table des organisations. ([#1713](https://github.com/proconnect-gouv/hyyypertool/issues/1713))
+- La table des utilisateurs affiche désormais une colonne "Interne". ([#1717](https://github.com/proconnect-gouv/hyyypertool/issues/1717))
 
 ### Évolutions techniques
-- Mise à jour de plusieurs dépendances, incluant TypeScript, Prettier, Cypress et divers paquets Sentry.
-- Mises à jour de l'infrastructure CI/CD (actions GitHub).
-- Refactoring du composant `MemberRowActions` pour le rendre réutilisable. [#1714](https://github.com/proconnect-gouv/hyyypertool/issues/1714)
+- Refactorisation du composant `MemberRowActions` pour le rendre réutilisable. ([#1714](https://github.com/proconnect-gouv/hyyypertool/issues/1714))
+- Mises à jour de nombreuses dépendances (TypeScript, Cypress, Hono, etc.) pour améliorer la sécurité et les performances.
 
 ### Autres changements
-- Documentation mise à jour.
-- Corrections mineures et améliorations de la qualité du code.
+- Amélioration de la formulation du bouton de révocation d'identité. ([#1737](https://github.com/proconnect-gouv/hyyypertool/issues/1737))
+- Ajout de notes de publication pour la correction de l'ouverture des PDF des dirigeants d'association.
