@@ -1,22 +1,33 @@
 ## Changelog : standards-front (30 derniers jours, au 28 juillet 2026)
 
 ### Résumé
-Ce mois-ci, l'application a bénéficié d'améliorations significatives, notamment l'ajout d'une vue pour les incubateurs, une simplification de l'interface utilisateur et des mises à jour techniques pour améliorer la stabilité et la compatibilité avec les services externes. L'objectif est de faciliter l'audit des produits numériques selon les standards de beta.gouv.fr.
+Ce mois-ci, l'application a bénéficié d'améliorations significatives concernant la gestion des incubateurs, avec l'ajout d'une vue dédiée et d'informations plus détaillées. Des optimisations ont également été apportées à l'interface utilisateur, notamment pour l'affichage des tableaux et la simplification du menu principal. Enfin, des mises à jour de dépendances et de configuration ont été effectuées pour assurer la stabilité et la performance de l'application.
 
 ### Évolutions fonctionnelles
-- **Incubateurs :** Ajout d'une nouvelle vue permettant de visualiser les incubateurs, avec le nombre de services et d'évaluations actives. [#185](https://github.com/betagouv/standards-front/pulls/185)
-- **Tableaux :** Introduction d'un composant de tableau DSFR (DsfrTableComponent) pour améliorer l'affichage des données tabulaires et permettre la personnalisation des légendes.
-- **Interface utilisateur :** Simplification du menu principal et amélioration de la présentation de la liste des incubateurs avec un affichage en tableau.
-- **Informations de démarrage :** Amélioration de la page de résumé pour afficher des informations de démarrage plus claires et une liste des composants. [#190](https://github.com/betagouv/standards-front/pulls/190)
+- Ajout d'une vue pour les incubateurs, permettant de visualiser les incubateurs actifs et leurs évaluations. [#185](https://github.com/betagouv/standards-front/pulls/185)
+- Affichage du nombre de services et d'évaluations actives pour chaque incubateur.
+- Amélioration de l'affichage des tableaux avec l'introduction du composant `DsfrTableComponent`.
+- Simplification du menu principal pour une meilleure expérience utilisateur.
+- Formatage amélioré de la phase la plus récente des incubateurs.
+- Suppression de la formulation "résumé" dans l'affichage des évaluations.
 
 ### Évolutions techniques
-- **Dépendances :** Mises à jour de plusieurs dépendances, incluant `grape`, `solid_queue`, `actions/checkout`, `actions/cache`, `dsfr-view-components` et `espace_membre-ruby`.
-- **Configuration :** Mise à jour des URLs de staging et configuration pour ignorer les messages Zeitwerk liés à `espace_membre-ruby`.
-- **Espace Membre :** Intégration et mise à jour de la gem `espace_membre-ruby` pour supporter le code `user.teams` et améliorer la compatibilité avec la base de données.
-- **Tests :** Mise à jour de la gem `betagouv-cucumber-steps` pour partager les étapes Cucumber.
-- **Rack Mini Profiler :** Ajout de la gem `rack-mini-profiler` pour faciliter le profilage des performances.
+- Mise à jour de plusieurs dépendances :
+    - `grape` vers la version 3.3.4
+    - `solid_queue` vers la version 1.5.0
+    - `actions/checkout` vers la version 7
+    - `actions/cache` vers la version 6
+    - `dsfr-view-components` (version non spécifiée)
+- Intégration de `rack-mini-profiler` pour l'analyse des performances.
+- Refonte de la configuration pour utiliser les nouvelles URL de staging.
+- Mise à jour du schéma de la base de données `espace_membre`.
+- Utilisation des étapes Cucumber partagées (`betagouv-cucumber-steps`).
+- Refactorisation des fichiers de locales.
+- Amélioration de la gestion de l'initialisation de `EspaceMembre::Startup`.
+- Mise à jour de la gem `espace_membre-ruby` pour supporter le code `user.teams`.
 
 ### Autres changements
-- **Locales :** Refactorisation des fichiers de localisation pour une meilleure organisation.
-- **Nettoyage de code :** Suppression de texte superflu dans l'affichage des évaluations.
-- **Documentation :** Amélioration de la documentation interne et des commentaires.
+- Ajout d'une liste de résumé des composants de l'application sur la page d'accueil. [#190](https://github.com/betagouv/standards-front/pulls/190)
+- Nettoyage du code et suppression d'informations inutiles.
+- Correction de tests instables liés à la gem `espace_membre-ruby`.
+- Ajout de la possibilité de personnaliser la description du titre d'un tableau.
