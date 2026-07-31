@@ -1,34 +1,33 @@
-## Changelog : mon-service-securise (30 derniers jours, au 20 juillet 2026)
+## Changelog : mon-service-securise (30 derniers jours, au 30 juillet 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à la gestion des risques, notamment avec l'intégration de référentiels externes (AE2690, ISO2700X, ReCyf) et l'introduction des Risques V2. L'interface utilisateur a été modernisée avec l'utilisation de composants DSFR et des corrections ont été apportées pour améliorer l'expérience utilisateur et la stabilité de l'application. Des améliorations de la sécurité et des corrections de bugs ont également été implémentées.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration des statistiques et du reporting, avec l'ajout d'une page de statistiques administratives, de graphiques et de données enrichies. Des améliorations significatives ont également été apportées à la gestion des référentiels externes et à la génération de documents, notamment l'implémentation de Typst pour les PDF. Des corrections et des optimisations diverses ont été apportées à l'interface utilisateur et au code.
 
 ### Évolutions fonctionnelles
-- Ajout de la gestion des référentiels externes (AE2690, ISO2700X, ReCyf) et affichage des mesures associées.
-- Introduction des Risques V2 avec la possibilité de surcharger la gravité d'un risque.
+- Ajout d'une page de statistiques pour les administrateurs, incluant des graphiques sur l'évolution du nombre de services et par type de service.
+- Possibilité de filtrer les statistiques par type de service.
+- Affichage des données des référentiels externes (ReCyf, ISO2700X) dans les listes de mesures et tiroirs.
 - Ajout d'une page publique répertoriant toutes les mesures du référentiel V2.
-- Amélioration de l'affichage des mesures spécifiques et des risques dans les tableaux.
-- Ajout d'un toggle pour afficher ou masquer les référentiels externes.
-- Implémentation d'une première version du PDF "Annexes" en Typst.
-- Ajout d'une notification de nouveauté pour les référentiels externes et les risques V2.
-- Possibilité d'insérer un service V1 depuis la console admin.
-- Ajout d'une indication de fichier généré lors de la sélection des vecteurs et des matrices.
-- Ajout d'un champ de consentement pour le pixel de suivi et d'un webhook associé.
+- Implémentation de la première page du PDF "Annexes" en Typst, incluant les risques spécifiques.
+- Ajout d'une option pour accepter ou refuser le pixel de suivi dans le parcours d'inscription.
+- Amélioration de la recherche textuelle pour inclure les noms des responsables de mesures.
+- Ajout d'une page "Documents" et d'une page "Avis".
 
 ### Évolutions techniques
-- Conversion de nombreux modèles métier en Typescript (PartiesPrenantes, ActeurHomologation, etc.).
-- Refonte de l'interface utilisateur avec l'utilisation de composants DSFR.
-- Amélioration de la gestion des erreurs et des validations.
-- Mise à jour de nombreuses dépendances (Express, ESLint, Playwright, etc.).
-- Optimisation de l'affichage des données et des performances.
-- Suppression de code obsolète et simplification de l'architecture.
+- Conversion de plusieurs modèles de données métier en Typescript pour une meilleure typage et maintenabilité.
+- Refonte de la gestion des tiroirs, avec conversion du tiroir "Mesure" en un tiroir Svelte.
+- Utilisation de Typst pour la génération de documents PDF, remplaçant les anciennes méthodes.
+- Amélioration de la gestion des erreurs et des exceptions.
+- Mise à jour de nombreuses dépendances.
 - Ajout de tests unitaires et d'intégration.
-- Amélioration du système de logs et de monitoring.
+- Optimisation de la performance de certaines requêtes.
 
 ### Autres changements
-- Documentation mise à jour pour refléter les nouvelles fonctionnalités.
-- Correction de nombreuses coquilles et typos.
-- Amélioration de la cohérence de l'interface utilisateur.
-- Suppression de configurations et de variables inutilisées.
-- Ajout de commentaires et de documentation pour faciliter la maintenance du code.
-- Amélioration du système de suivi des événements (Matomo).
+- Amélioration de la documentation et des commentaires dans le code.
+- Corrections de style et de mise en page.
+- Suppression de code obsolète et de dépendances inutilisées.
+- Ajout de nouvelles variables d'environnement et de configurations.
+- Amélioration de l'accessibilité de certains composants.
+- Ajout de données JSON+LD pour améliorer le référencement.
+- Ajout d'un script pour extraire les données ReCyf de Grist.
+- Ajout d'un script pour extraire les données ISO2700X du CSV.

@@ -1,6 +1,8 @@
 .
 ├── .claude
 │   └── skills
+│       ├── integrer-landing-page
+│       │   └── SKILL.md
 │       └── migration-javascript-vers-typescript
 │           └── SKILL.md
 ├── .dockerignore
@@ -190,12 +192,14 @@
 ├── pnpm-workspace.yaml
 ├── public
 │   ├── accueilInscription.mjs
+│   ├── adminStatistiques.mjs
 │   ├── apresAuthentification.js
 │   ├── assets
 │   │   ├── .DS_Store
 │   │   ├── fichiers
 │   │   │   ├── Template mesures - MSS.xlsx
 │   │   │   ├── Template services v2 - MSS.xlsx
+│   │   │   ├── llms.txt
 │   │   │   ├── robots.txt
 │   │   │   └── sitemap.xml
 │   │   ├── fonts
@@ -260,6 +264,7 @@
 │   │   │   │   ├── icone-succes.svg
 │   │   │   │   ├── icone-utilisateur.svg
 │   │   │   │   ├── illustration_doctrine_homologation.svg
+│   │   │   │   ├── illustration_formation.svg
 │   │   │   │   ├── illustration_homologuation_personnages.svg
 │   │   │   │   ├── illustration_ordinateurs.svg
 │   │   │   │   ├── illustration_tdb.svg
@@ -280,6 +285,11 @@
 │   │   │   ├── fleche_pointe_droite.svg
 │   │   │   ├── fleche_retour.svg
 │   │   │   ├── fond_recommandation_anssi.svg
+│   │   │   ├── formation
+│   │   │   │   ├── illustration_atelier_pilotage.png
+│   │   │   │   ├── illustration_atelier_pratique.png
+│   │   │   │   ├── illustration_hero.svg
+│   │   │   │   └── illustration_public.png
 │   │   │   ├── forme_chevron_blanc.svg
 │   │   │   ├── forme_chevron_bleu.svg
 │   │   │   ├── forme_chevron_bleu_fonce.svg
@@ -342,7 +352,7 @@
 │   │   │   │   │   └── SYNDICAT MIXTE LA FIBRE64.webp
 │   │   │   │   └── tableau-de-bord.png
 │   │   │   ├── icone_*.svg  (112 files)
-│   │   │   ├── illustration_*.svg  (17 files)
+│   │   │   ├── illustration_*.svg  (20 files)
 │   │   │   ├── image_intro_mss.svg
 │   │   │   ├── invitation_envoyee.svg
 │   │   │   ├── landing
@@ -408,6 +418,7 @@
 │   │   │   │   │   └── televersementServices.png
 │   │   │   │   ├── nouveaute.svg
 │   │   │   │   └── tache.svg
+│   │   │   ├── partage-monservicesecurise.png
 │   │   │   ├── pastille_bleu_anssi.svg
 │   │   │   ├── pastille_grise.svg
 │   │   │   ├── pastille_transparente.svg
@@ -478,6 +489,7 @@
 │   │       ├── fonctionnalitesSegmentees.css
 │   │       ├── fond-blanc.css
 │   │       ├── fonts.css
+│   │       ├── formezVous.css
 │   │       ├── formulaire.css
 │   │       ├── home.css
 │   │       ├── home.desktop.css
@@ -536,6 +548,7 @@
 │   │   ├── cgu.js
 │   │   ├── conseilsCyber.mjs
 │   │   ├── csrf.mjs
+│   │   ├── formezVous.mjs
 │   │   ├── intercepteurAxios.mjs
 │   │   ├── matomo.js
 │   │   ├── matomoGestionnaireTag.js
@@ -650,8 +663,10 @@
 │   │   ├── fabriqueAdaptateurStatistiques.ts
 │   │   ├── fabriqueAdaptateurSupervision.ts
 │   │   ├── fabriqueAdaptateurTracking.js
+│   │   ├── fabriqueServiceStatistiquesAdmin.ts
 │   │   ├── indiceCyberSvg.ts
-│   │   └── persistanceTS.interface.ts
+│   │   ├── persistanceTS.interface.ts
+│   │   └── serviceStatistiquesAdmin.ts
 │   ├── annuaire
 │   │   ├── serviceAnnuaire.interface.ts
 │   │   └── serviceAnnuaire.js
@@ -785,6 +800,7 @@
 │   │   │   ├── siret.schema.ts
 │   │   │   ├── suggestionAction.schema.ts
 │   │   │   └── visiteGuidee.schema.ts
+│   │   ├── seo.ts
 │   │   └── validePayloads.ts
 │   ├── mesures
 │   │   └── referentielsExternes
@@ -1094,6 +1110,7 @@
 │   │   ├── admin
 │   │   │   ├── administrateurs.pug
 │   │   │   ├── entites.pug
+│   │   │   ├── statistiques.pug
 │   │   │   └── utilisateurs.pug
 │   │   ├── apresAuthentification.pug
 │   │   ├── article.pug
@@ -1107,11 +1124,13 @@
 │   │   ├── doctrineHomologation.pug
 │   │   ├── erreur.pug
 │   │   ├── erreurAccesRefuse.pug
+│   │   ├── formezVous.pug
 │   │   ├── fragments
 │   │   │   ├── avancementEtape.pug
 │   │   │   ├── blocCommunaute.pug
 │   │   │   ├── composantSvelte.pug
 │   │   │   ├── donneesPartagees.pug
+│   │   │   ├── donneesStructurees.pug
 │   │   │   ├── elementsAjoutables
 │   │   │   │   ├── elementsAjoutables.pug
 │   │   │   │   ├── elementsAjoutablesAvis.pug
@@ -1224,6 +1243,15 @@
 │   │   │   ├── adminEntites.api.ts
 │   │   │   ├── adminEntites.ts
 │   │   │   └── adminEntites.types.ts
+│   │   ├── adminStatistiques
+│   │   │   ├── AdminStatistiques.svelte
+│   │   │   ├── adminStatistiques.api.ts
+│   │   │   ├── adminStatistiques.ts
+│   │   │   ├── adminStatistiques.types.ts
+│   │   │   └── charts
+│   │   │       ├── Chart.svelte
+│   │   │       ├── LineChart.svelte
+│   │   │       └── PieChart.svelte
 │   │   ├── adminUtilisateurs
 │   │   │   ├── AdminUtilisateurs.svelte
 │   │   │   ├── BadgeAdmin.svelte
@@ -1403,6 +1431,7 @@
 │   │   │   ├── mesureGenerale
 │   │   │   │   ├── modelesMesureGenerale.store.ts
 │   │   │   │   └── modification
+│   │   │   │       ├── EnteteTiroir.svelte
 │   │   │   │       └── TiroirModificationMultipleMesuresGenerales.svelte
 │   │   │   ├── mesureSpecifique
 │   │   │   │   ├── InformationsModeleMesureSpecifique.svelte
@@ -1707,6 +1736,7 @@
 │   │   │   ├── CartoucheIndispensable.svelte
 │   │   │   ├── CartoucheReferentiel.svelte
 │   │   │   ├── CartoucheThematique.svelte
+│   │   │   ├── CartouchesMesure.svelte
 │   │   │   ├── CaseACocher.svelte
 │   │   │   ├── ChampDeSaisie.svelte
 │   │   │   ├── ChampOrganisation.svelte
@@ -1850,12 +1880,14 @@
 │   │   ├── adaptateurChiffrementChaCha20.spec.ts
 │   │   ├── adaptateurEnvironnement.spec.js
 │   │   ├── adaptateurJWT.spec.ts
+│   │   ├── adaptateurJournalMSSPostgres.spec.ts
 │   │   ├── adaptateurOidc.spec.ts
 │   │   ├── adaptateurPostgres.spec.js
 │   │   ├── adaptateurPostgresTS.spec.ts
 │   │   ├── adaptateurRechercheEntrepriseAPI.spec.js
-│   │   └── excel
-│   │       └── LecteurExcel.spec.ts
+│   │   ├── excel
+│   │   │   └── LecteurExcel.spec.ts
+│   │   └── serviceStatistiquesAdmin.spec.ts
 │   ├── aides
 │   │   ├── cookie.js
 │   │   ├── http.js
@@ -1974,7 +2006,8 @@
 │   │   └── depotVide.js
 │   ├── http
 │   │   ├── middleware.spec.js
-│   │   └── requeteHttp.spec.js
+│   │   ├── requeteHttp.spec.js
+│   │   └── seo.spec.ts
 │   ├── mocks
 │   │   ├── adaptateurChiffrement.js
 │   │   ├── adaptateurChiffrementQuiWrap.ts
@@ -2223,4 +2256,4 @@
 │       └── parametres.spec.mjs
 ├── tsconfig.json
 └── vitest.config.ts
-295 directories, 2057 files
+299 directories, 2089 files
