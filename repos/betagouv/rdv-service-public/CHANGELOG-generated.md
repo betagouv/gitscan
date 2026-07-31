@@ -1,35 +1,40 @@
-## Changelog : rdv-service-public (30 derniers jours, au 28 juillet 2026)
+## Changelog : rdv-service-public (30 derniers jours, au 30 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment pour les agents et les utilisateurs lors de la prise de rendez-vous. Des corrections de bugs ont été apportées pour améliorer la fiabilité de la recherche d'usagers et la gestion des rendez-vous. Des mises à jour techniques ont également été réalisées pour améliorer la sécurité et la performance de la plateforme.
+Cette période a été marquée par des améliorations significatives de l'expérience utilisateur, notamment concernant la prise de rendez-vous pour les usagers et la gestion des agents. Des corrections de bugs ont été apportées pour améliorer la stabilité et la fiabilité du service, ainsi que des optimisations techniques et de sécurité. L'intégration de Visio est en cours et a reçu des améliorations.
 
 ### Évolutions fonctionnelles
-- **Prise de rendez-vous :** Fusion des étapes de prise de rendez-vous pour les utilisateurs connectés, simplifiant ainsi le processus. [#6421](https://github.com/betagouv/rdv-service-public/pull/6421)
-- **Recherche d'usagers :** Correction de la recherche d'usagers par numéro de téléphone se terminant par un 9. [#6546](https://github.com/betagouv/rdv-service-public/issues/6546)
-- **Redirections :** Correction des redirections lors de la recherche d'usagers pour des motifs sans service. [#6560](https://github.com/betagouv/rdv-service-public/issues/6560)
-- **Validation de date :** Correction de la validation de la date lors de la création de rendez-vous collectifs. [#6556](https://github.com/betagouv/rdv-service-public/issues/6556)
-- **Modification d'email usager :** Correction de la modification d'email usager. [#6507](https://github.com/betagouv/rdv-service-public/issues/6507)
-- **Liens de reprise de RDV :** Correction des liens pour permettre la reprise de rendez-vous après annulation (via email et SMS). [#6535](https://github.com/betagouv/rdv-service-public/issues/6535)
-- **Synchronisation Outlook :** Correction de la synchronisation Outlook avec les fuseaux horaires. [#6527](https://github.com/betagouv/rdv-service-public/issues/6527)
-- **Agent :** Affichage des différents paramètres du compte agent dans un dropdown. [#6549](https://github.com/betagouv/rdv-service-public/issues/6549)
-- **Agent :** Correction de l'ordre des agents dans les vues multi-agents. [#6532](https://github.com/betagouv/rdv-service-public/issues/6532)
-- **Agent :** Utilisation des modales du DSFR côté agent. [#6463](https://github.com/betagouv/rdv-service-public/pull/6463)
-- **Agent LLM :** Ajout de documentation et d'un script pour le setup d'une VM pour les agents LLM. [#6492](https://github.com/betagouv/rdv-service-public/issues/6492)
+- **Prise de rendez-vous usager :** Simplification et fusion des étapes de prise de rendez-vous post-connexion pour une expérience plus fluide [#6421](https://github.com/betagouv/rdv-service-public/pull/6421).
+- **Recherche d'usagers :**
+    - Correction de la recherche usager par numéro de téléphone finissant par 9 [#6546](https://github.com/betagouv/rdv-service-public/issues/6546).
+    - Correction des redirections lors de recherches usagers pour des motifs sans service [#6560](https://github.com/betagouv/rdv-service-public/issues/6560).
+    - Amélioration de la recherche textuelle d'usagers avec réduction des tests "flaky" [#6532](https://github.com/betagouv/rdv-service-public/pull/6532), [#6533](https://github.com/betagouv/rdv-service-public/pull/6533), [#6534](https://github.com/betagouv/rdv-service-public/pull/6534).
+    - Utilisation de la recherche usager full-text dans le super admin [#6515](https://github.com/betagouv/rdv-service-public/pull/6515).
+- **Visio :**
+    - Possibilité de désactiver Visio sur une instance [#6565](https://github.com/betagouv/rdv-service-public/pull/6565).
+    - Ajout de Visio et intégration des scopes nécessaires à la connexion ProConnect [#6536](https://github.com/betagouv/rdv-service-public/pull/6536), [#6543](https://github.com/betagouv/rdv-service-public/pull/6543), [#6550](https://github.com/betagouv/rdv-service-public/pull/6550).
+- **Notifications :** Correction des liens de reprise de rendez-vous après annulation dans les emails et SMS [#6535](https://github.com/betagouv/rdv-service-public/pull/6535).
+- **Interface Agent :**
+    - Étoffer le dropdown agent avec les différents paramètres de son compte [#6549](https://github.com/betagouv/rdv-service-public/pull/6549).
+    - Changement de l’emplacement du lien « Donnez votre avis » [#6548](https://github.com/betagouv/rdv-service-public/pull/6548).
+    - Correction de la saisie d’une durée négative dans l'interface de création de RDV pour les agents [#6530](https://github.com/betagouv/rdv-service-public/pull/6530).
+- **Collectif RDV :** Correction de la validation de la date pour les nouveaux RDV collectifs [#6556](https://github.com/betagouv/rdv-service-public/pull/6556).
+- **Accessibilité :** Amélioration de l'accessibilité du menu latéral avec le DSFR et correction du focus sur l'agenda [#6499](https://github.com/betagouv/rdv-service-public/pull/6499), [#6508](https://github.com/betagouv/rdv-service-public/pull/6508), [#6512](https://github.com/betagouv/rdv-service-public/pull/6512).
 
 ### Évolutions techniques
-- **Ruby :** Mise à jour vers Ruby 3.4.10. [#6505](https://github.com/betagouv/rdv-service-public/pull/6505)
-- **Sécurité :** Correction d'une vulnérabilité (CVE-2026-53727) dans la gem `css_parser`. [#6520](https://github.com/betagouv/rdv-service-public/pull/6520)
-- **Recherche :** Utilisation de la recherche usager full-text dans le super admin. [#6515](https://github.com/betagouv/rdv-service-public/issues/6515)
-- **DSFR :** Passage du sidemenu au Design System Fr. [#6512](https://github.com/betagouv/rdv-service-public/pull/6512)
-- **Alertes :** Remplacement des alertes Bootstrap par des alertes DSFR. [#6489](https://github.com/betagouv/rdv-service-public/pull/6489)
-- **Infrastructure :**  Correction pour les organisations ANTS ajoutées avec le mauvais nom de domaine. [#6502](https://github.com/betagouv/rdv-service-public/issues/6502)
-- **Infrastructure :** Migration d'organisations ouvertes à la main vers le nouveau nom de domaine. [#6518](https://github.com/betagouv/rdv-service-public/pull/6518)
+- **Mise à jour Ruby :** Mise à jour vers Ruby 3.4.10 [#6505](https://github.com/betagouv/rdv-service-public/pull/6505).
+- **Sécurité :** Correction de la vulnérabilité CVE-2026-53727 dans la gem `css_parser` [#6520](https://github.com/betagouv/rdv-service-public/pull/6520).
+- **Infrastructure :**
+    - Ajout d'une API de gestion des webhooks pour visioplainte [#6517](https://github.com/betagouv/rdv-service-public/pull/6517).
+    - Migration d'organisations ouvertes à la main vers le nouveau nom de domaine [#6518](https://github.com/betagouv/rdv-service-public/pull/6518).
+- **Logging :** Ajout du logging des paramètres des recherches de RDV usagers [#6564](https://github.com/betagouv/rdv-service-public/pull/6564).
+- **Corrections API :** Correction de l'API pour les doublons de RDV avec plusieurs agents [#6559](https://github.com/betagouv/rdv-service-public/pull/6559).
 
 ### Autres changements
-- **Documentation :** Ajout de liens entre les détails du motif et la réservation en ligne. [#6466](https://github.com/betagouv/rdv-service-public/pull/6466)
-- **Accessibilité :** Améliorations de l'accessibilité (a11y) pour la plage d’ouverture et la navigation de l’agenda. [#6498](https://github.com/betagouv/rdv-service-public/issues/6498) et [#6499](https://github.com/betagouv/rdv-service-public/issues/6499)
-- **Configuration :** Ajout de `mise.toml` et mise à jour des instructions d'installation. [#6440](https://github.com/betagouv/rdv-service-public/pull/6440)
-- **Sécurité :** Ajout d'une option pour désactiver l'exécution de la tâche cron de renouvellement des comptes sensibles. [#6513](https://github.com/betagouv/rdv-service-public/issues/6513)
-- **Agents :** Marquer les agents des organisations rdv-insertion comme sensibles. [#6387](https://github.com/betagouv/rdv-service-public/issues/6387)
-- **API :** Ajout d'une API de gestion des webhooks pour visioplainte. [#6517](https://github.com/betagouv/rdv-service-public/pull/6517)
-- **Divers :** Ajustement de logos et de la direction de la publication pour le site vitrine côté État. [#6483](https://github.com/betagouv/rdv-service-public/pull/6483)
+- **Documentation :** Ajout de documentation et d'un script pour le setup d'une VM pour les agents LLM [#6492](https://github.com/betagouv/rdv-service-public/pull/6492).
+- **Monitoring :** Ajout du referer dans les messages Zammad des erreurs 404 [#6562](https://github.com/betagouv/rdv-service-public/pull/6562).
+- **Maintenance :** Mise à jour de latest_login_at lors de l’utilisation de FC [#6551](https://github.com/betagouv/rdv-service-public/pull/6551).
+- **Divers :** Désactivation possible d'un job CRON sensible [#6513](https://github.com/betagouv/rdv-service-public/pull/6513).
+- **Correction :** Correction d'un bug empêchant la modification de l'email d'un usager [#6507](https://github.com/betagouv/rdv-service-public/pull/6507).
+- **Correction :** Correction d'un problème de verticale sur le nouveau nom de domaine [#6500](https://github.com/betagouv/rdv-service-public/pull/6500).
+- **Correction :** Correction d'un problème d'export des participations [#6514](https://github.com/betagouv/rdv-service-public/pull/6514).
