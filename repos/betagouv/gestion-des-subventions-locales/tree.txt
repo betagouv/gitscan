@@ -49,6 +49,7 @@
 │   │   └── commands
 │   │       ├── __init__.py
 │   │       ├── create_perimetres.py
+│   │       ├── import_cog.py
 │   │       └── init_document_sizes.py
 │   ├── matomo.py
 │   ├── matomo_constants.py
@@ -389,6 +390,8 @@
 │   │   ├── 0018_rename_arreteetlettresignes_to_lettreetarretesignes.py
 │   │   ├── 0019_documentimportjob.py
 │   │   ├── 0020_exportjob.py
+│   │   ├── 0021_modelelettrerefus.py
+│   │   ├── 0022_alter_lettrenotification_programmation_projet.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── qr.py
@@ -416,13 +419,13 @@
 │   │       ├── deleteNotificationDocumentModal.js
 │   │       ├── modeleArreteForm.js
 │   │       ├── notification.js
-│   │       └── qrCodeToggle.js
+│   │       ├── qrCodeToggle.js
+│   │       └── skipDocumentToggle.js
 │   ├── tasks.py
 │   ├── templates
 │   │   ├── gsl_notification
 │   │   │   ├── generated_document
 │   │   │   │   ├── change_document.html
-│   │   │   │   ├── choose_generated_document_type.html
 │   │   │   │   ├── multiple
 │   │   │   │   │   ├── modal_export_error_body.html
 │   │   │   │   │   ├── modal_export_progress_body.html
@@ -454,19 +457,21 @@
 │   │   │   ├── pdf
 │   │   │   │   └── document.html
 │   │   │   ├── tab_simulation_projet
-│   │   │   │   ├── tab_notifications.html
-│   │   │   │   └── tab_notifications_message.html
+│   │   │   │   └── tab_notifications.html
 │   │   │   └── uploaded_document
 │   │   │       ├── choose_upload_document_type.html
 │   │   │       └── upload_document.html
 │   │   └── includes
-│   │       ├── _document_card.html
+│   │       ├── _documents_table.html
+│   │       ├── _generate_documents_form.html
 │   │       ├── _generated_document_form.html
-│   │       ├── _generated_document_type_form.html
 │   │       ├── _modele_card.html
 │   │       ├── _not_instructeur_modal.html
+│   │       ├── _notification_message_form.html
 │   │       ├── _select_model_in_list.html
 │   │       └── _uploaded_document_form.html
+│   ├── templatetags
+│   │   └── notification_tags.py
 │   ├── tests
 │   │   ├── __init__.py
 │   │   ├── factories.py
@@ -484,6 +489,7 @@
 │   │       ├── test_generate_document_for_multiple_projets_views.py
 │   │       ├── test_import_views.py
 │   │       ├── test_modele_views.py
+│   │       ├── test_notification_message.py
 │   │       ├── test_refused_dismissed_notification.py
 │   │       ├── test_upload_document_views.py
 │   │       └── test_views.py
@@ -694,7 +700,6 @@
 │   │       ├── _projets_table.html
 │   │       ├── forms
 │   │       │   ├── _assiette_dotation_projet_form.html
-│   │       │   ├── _boolean_field.html
 │   │       │   ├── _boolean_fields_projet_form.html
 │   │       │   ├── _detr_avis_commission_form.html
 │   │       │   ├── _dotations_form.html
@@ -891,8 +896,6 @@
 ├── package-lock.json
 ├── package.json
 ├── pyproject.toml
-├── requirements-dev.txt
-├── requirements.txt
 ├── scripts
 │   ├── generate_dump.sh
 │   └── restore_db.sh
@@ -917,11 +920,13 @@
 │   │   └── ui
 │   │       └── components
 │   │           ├── confirmation_modal.html
+│   │           ├── form_errors.html
 │   │           ├── multiselect.html
 │   │           ├── status_badge.html
 │   │           └── tiptap_editor.html
 │   └── templatetags
 │       ├── __init__.py
 │       └── ui_tags.py
+├── uv.lock
 └── vendorize.txt
-160 directories, 766 files
+161 directories, 770 files
