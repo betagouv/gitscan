@@ -950,6 +950,9 @@
     │   │   │   │   │   │   │   ├── organisms
     │   │   │   │   │   │   │   │   ├── [organismId]
     │   │   │   │   │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   │   │   │   │   ├── certifications
+    │   │   │   │   │   │   │   │   │   │   │   ├── Certifications.tsx
+    │   │   │   │   │   │   │   │   │   │   │   └── certifications.hook.ts
     │   │   │   │   │   │   │   │   │   │   ├── formacodes-ccns-degrees-form
     │   │   │   │   │   │   │   │   │   │   │   ├── FormacodesCcnsDegreesForm.tsx
     │   │   │   │   │   │   │   │   │   │   │   └── formacodesCcnsDegreesForm.hook.ts
@@ -976,6 +979,8 @@
     │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   │   │   ├── page.tsx
     │   │   │   │   │   │   │   │   │   │   └── perimetre-accompagnement
+    │   │   │   │   │   │   │   │   │   │       ├── certifications
+    │   │   │   │   │   │   │   │   │   │       │   └── page.tsx
     │   │   │   │   │   │   │   │   │   │       ├── formacode
     │   │   │   │   │   │   │   │   │   │       │   └── page.tsx
     │   │   │   │   │   │   │   │   │   │       └── page.tsx
@@ -988,6 +993,8 @@
     │   │   │   │   │   │   │   │   │       │   └── page.tsx
     │   │   │   │   │   │   │   │   │       ├── page.tsx
     │   │   │   │   │   │   │   │   │       └── perimetre-accompagnement
+    │   │   │   │   │   │   │   │   │           ├── certifications
+    │   │   │   │   │   │   │   │   │           │   └── page.tsx
     │   │   │   │   │   │   │   │   │           ├── formacode
     │   │   │   │   │   │   │   │   │           │   └── page.tsx
     │   │   │   │   │   │   │   │   │           └── page.tsx
@@ -2219,10 +2226,10 @@
     │   │           └── module.d.ts
     │   ├── modules
     │   │   ├── aap-log
+    │   │   │   ├── aap-log.authorization.test.ts
     │   │   │   ├── aap-log.graphql
     │   │   │   ├── aap-log.loaders.ts
     │   │   │   ├── aap-log.resolvers.ts
-    │   │   │   ├── aap-log.security.ts
     │   │   │   ├── aap-log.types.ts
     │   │   │   └── features
     │   │   │       ├── getAAPLogMessage.ts
@@ -2435,10 +2442,10 @@
     │   │   │       ├── candidacy.helper.ts
     │   │   │       └── getWhereClauseFromStatusFilterForCertificationAuthority.helper.ts
     │   │   ├── candidacy-log
+    │   │   │   ├── candidacy-log.authorization.test.ts
     │   │   │   ├── candidacy-log.graphql
     │   │   │   ├── candidacy-log.loaders.ts
     │   │   │   ├── candidacy-log.resolvers.ts
-    │   │   │   ├── candidacy-log.security.ts
     │   │   │   ├── candidacy-log.types.ts
     │   │   │   └── features
     │   │   │       ├── getCandidacyLogMessage.ts
@@ -2446,9 +2453,9 @@
     │   │   │       ├── getCandidacyLogs.ts
     │   │   │       └── logCandidacyAuditEvent.ts
     │   │   ├── candidacy-menu
+    │   │   │   ├── candidacy-menu.authorization.test.ts
     │   │   │   ├── candidacy-menu.graphql
     │   │   │   ├── candidacy-menu.resolvers.ts
-    │   │   │   ├── candidacy-menu.security.ts
     │   │   │   ├── candidacy-menu.types.ts
     │   │   │   └── features
     │   │   │       ├── getActiveCandidacyMenu.ts
@@ -2493,6 +2500,7 @@
     │   │   │   │   ├── getCandidateById.ts
     │   │   │   │   ├── getCandidateByKeycloakId.ts
     │   │   │   │   ├── getCivilInformationCompletedByCandidateId.ts
+    │   │   │   │   ├── getContactInformationCompletedByCandidateId.test.ts
     │   │   │   │   ├── getContactInformationCompletedByCandidateId.ts
     │   │   │   │   ├── getFranceConnectSandboxCandidates.test.ts
     │   │   │   │   ├── getFranceConnectSandboxCandidates.ts
@@ -2547,6 +2555,7 @@
     │   │   │       ├── getCertificationAuthorityLocalAccountByCertificationAuthorityId.test.ts
     │   │   │       ├── getCertificationAuthorityLocalAccountByCertificationAuthorityId.ts
     │   │   │       ├── getCertificationAuthorityLocalAccountById.ts
+    │   │   │       ├── getCertificationAuthorityLocalAccountsToTransferCandidacy.test.ts
     │   │   │       ├── getCertificationAuthorityLocalAccountsToTransferCandidacy.ts
     │   │   │       ├── getCertificationAuthorityRegions.ts
     │   │   │       ├── getCertificationAuthorityStructureById.ts
@@ -2574,7 +2583,9 @@
     │   │   │       ├── refreshCertificationAuthorityOfCandidacy.ts
     │   │   │       ├── searchCertificationAuthoritiesAndLocalAccounts.ts
     │   │   │       ├── sendEmailsForCertificationExpiration.ts
+    │   │   │       ├── transferCandidacyToAnotherCertificationAuthority.test.ts
     │   │   │       ├── transferCandidacyToAnotherCertificationAuthority.ts
+    │   │   │       ├── transferCandidacyToCertificationAuthorityLocalAccount.test.ts
     │   │   │       ├── transferCandidacyToCertificationAuthorityLocalAccount.ts
     │   │   │       ├── updateCertificationAuthority.ts
     │   │   │       ├── updateCertificationAuthorityCertifications.test.ts
@@ -2962,6 +2973,7 @@
     │   │   │   │   ├── getDropOutReasonById.ts
     │   │   │   │   ├── getDropOutReasons.ts
     │   │   │   │   ├── getFormacodes.ts
+    │   │   │   │   ├── getFormacodesByCertificationId.ts
     │   │   │   │   ├── getGoals.ts
     │   │   │   │   ├── getParcoursCertificationByCertificationId.ts
     │   │   │   │   ├── getRegionById.ts
@@ -3111,15 +3123,23 @@
     │   │       │   ├── getCommanditaireVaeCollectiveById.ts
     │   │       │   ├── getCommanditaireVaeCollectives.ts
     │   │       │   ├── getMetabaseDashboardIframeUrlVaeCollective.ts
+    │   │       │   ├── getPermissionsForRole.ts
+    │   │       │   ├── getUserPermissions.ts
+    │   │       │   ├── getVaeCollectiveRolesFromKeycloakRoles.ts
     │   │       │   ├── publishCohorteVAECollective.ts
     │   │       │   ├── updateCohorteVAECollectiveCertification.ts
     │   │       │   ├── updateCohorteVAECollectiveOrganism.ts
     │   │       │   └── updateNomCohorteVaeCollective.ts
+    │   │       ├── security
+    │   │       │   ├── hasVaeCollectiveRole.test.ts
+    │   │       │   └── hasVaeCollectiveRole.ts
     │   │       ├── vae-collective.cohortesVaeCollectivesForConnectedAap.test.ts
     │   │       ├── vae-collective.cohortesVaeCollectivesForConnectedCertificationAuthorityOrLocalAccount.test.ts
+    │   │       ├── vae-collective.createCohorteVaeCollective.test.ts
     │   │       ├── vae-collective.createCommanditaireVaeCollective.test.ts
     │   │       ├── vae-collective.deleteCohorteVaeCollective.test.ts
     │   │       ├── vae-collective.getCohorteVaeCollective.test.ts
+    │   │       ├── vae-collective.getUserPermissions.test.ts
     │   │       ├── vae-collective.graphql
     │   │       ├── vae-collective.publishCohorteVaeCollective.test.ts
     │   │       ├── vae-collective.resolvers.ts
@@ -4562,6 +4582,16 @@
     │   │   │   │   └── migration.sql
     │   │   │   ├── 20260723131604_add_aap_formacode_selection_v2_feature_flag
     │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260727084948_make_candidate_department_id_optional
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260729090724_add_vae_collective_permission_tables
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260729092626_add_keycloak_role_on_role_vae_collective_mapping_table
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260730081839_add_manage_vae_collective_role_to_keycloak_role_on_role_vae_collective_table
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260730082104_add_creer_cohorte_to_administrateur_porteur_de_projet_role_to_role_permission_vae_collective
+    │   │   │   │   └── migration.sql
     │   │   │   └── migration_lock.toml
     │   │   ├── schema.prisma
     │   │   └── seed
@@ -4663,7 +4693,8 @@
     │   │   │   │   ├── create-payment-request-unireva-helper.ts
     │   │   │   │   ├── create-reorientation-reason-helper.ts
     │   │   │   │   ├── create-vae-collective-helper.ts
-    │   │   │   │   └── fc-claims-helper.ts
+    │   │   │   │   ├── fc-claims-helper.ts
+    │   │   │   │   └── get-candidate-department-id-or-throw.ts
     │   │   │   ├── graphql-helper.ts
     │   │   │   └── pdf
     │   │   │       └── pdfTestHelper.ts
@@ -6274,4 +6305,4 @@
         ├── tsconfig.json
         └── types
             └── primitives.d.ts
-2106 directories, 4170 files
+2115 directories, 4192 files

@@ -1,3 +1,37 @@
+2026-07-30T15:20:32+02:00 - cc85526 - Alexandre Garbe : chore(api): removed tx param from createCandidacy since its not used
+2026-07-30T15:20:32+02:00 - af3e9fe - Alexandre Garbe : fix(api): creating a new candidacy not properly set its certification authority
+2026-07-30T15:20:32+02:00 - 8f50764 - Alexandre Garbe : fix(api): candidacy certification authority id was updated when the feasibility file was rejected
+2026-07-30T15:20:32+02:00 - 5da5743 - Alexandre Garbe : feat(api): updated vaeCollective_createCohorteVaeCollective permission to use hasVaeCollectivePermission
+2026-07-30T15:20:32+02:00 - 1ea8e72 - Alexandre Garbe : feat(api): added an hasVaeCollectiveRole security preset
+2026-07-30T13:44:26+02:00 - a39f298 - Alexandre Garbe : test(api): added a test file for vae collective cohorte creation
+2026-07-30T11:14:21+02:00 - f0bfbd7 - Florian Bonniec : feat(admin): improved Certifications component for formacode selection v2
+2026-07-30T11:11:09+02:00 - b642ff6 - ThomasDos : refactor(api): migrate candidacy-log resolvers to withPolicies
+2026-07-30T11:11:09+02:00 - 7a9bc25 - ThomasDos : refactor(api): migrate candidacy-menu resolvers to withPolicies
+2026-07-30T11:11:08+02:00 - 88a6793 - ThomasDos : test(api): cover candidacy-log resolver authorization
+2026-07-30T11:11:08+02:00 - 5f0be8b - ThomasDos : refactor(api): migrate aap-log resolvers to withPolicies
+2026-07-30T11:11:08+02:00 - 5c5dfbe - ThomasDos : test(api): cover candidacy-menu resolver authorization
+2026-07-30T11:11:07+02:00 - 6ba514b - ThomasDos : test(api): cover aap-log resolver authorization
+2026-07-30T10:43:05+02:00 - d1053a3 - Alexandre Garbe : feat(api): added mapping from keycloak manage_vae_collective to vae collective role ADMINISTRATEUR_PORTEUR_DE_PROJET and CREER_COHORTE permission to ADMINISTRATEUR_PORTEUR_DE_PROJET role
+2026-07-30T10:43:05+02:00 - c6f2dbe - Alexandre Garbe : feat(api): add KeycloakRoleOnRoleVaeCollective model and migration for role mapping
+2026-07-30T10:43:05+02:00 - 6ba5327 - Alexandre Garbe : feat(api): add role and permission models for VAE collective
+2026-07-30T10:43:05+02:00 - 0b530d5 - Alexandre Garbe : feat(api): added vaeCollective_getUserPermissions graphql query for fine grained vae collective access control
+2026-07-30T10:22:12+02:00 - b1d9f83 - Florian Bonniec : feat(api): usage of feature flag for DF_DEMAT_AUTONOME improved in updateCandidacyTypeAccompagnement feature
+2026-07-29T17:46:16+02:00 - 1b2d11e - Florian Bonniec : feat(api): feature flag for DF_DEMAT_AUTONOME added to updateCandidacyTypeAccompagnement feature
+2026-07-29T17:37:22+02:00 - 67c9707 - Florian Bonniec : feat(api,admin): feature flag for DF_DEMAT_AUTONOME is now used for candidacy creation
+2026-07-29T17:07:03+02:00 - 91a8d40 - Florian Bonniec : feat(api,admin): added Certifications component for formacode selection v2
+2026-07-29T16:53:00+02:00 - 917782e - Alexandre Garbe : fix(api): refresh certification authority when feasibility is marked INCOMPLETE and candidate's department changes and DF type is "uploaded_pdf"
+2026-07-29T16:53:00+02:00 - 87cd10a - Alexandre Garbe : fix(api): transfering a candidacy to another certification authority now updates the certification_authority_id field in the candidacy table
+2026-07-29T15:54:46+02:00 - caf01b1 - ThomasDos : test(api): cover local accounts listing for candidacy transfer
+2026-07-29T15:54:41+02:00 - ec2626f - ThomasDos : fix(api): let certification authority structure members read local account accounts
+2026-07-29T15:54:35+02:00 - 1b52e59 - ThomasDos : fix(api): compare every structure a certification authority belongs to in structure membership security
+2026-07-29T10:05:55+02:00 - 6974fc8 - Alexandre Garbe : fix(api): candidacy certification authority was incorrectly refreshed when a candidate updated its zip code.
+2026-07-28T16:49:53+02:00 - 5978e8e - ThomasDos : feat(api): stop assigning a default department on password registration
+2026-07-28T16:49:53+02:00 - 4e8bfd6 - ThomasDos : feat(api): stop assigning a default department on FranceConnect signup
+2026-07-28T16:49:52+02:00 - d7ff499 - ThomasDos : feat(api): require a department for contact information to be complete
+2026-07-28T16:49:52+02:00 - 8054423 - ThomasDos : fix(candidate): require the zip code in the address forms
+2026-07-28T16:49:51+02:00 - cd20ed0 - ThomasDos : feat(api): make candidate department nullable
+2026-07-28T16:49:51+02:00 - 055e0b5 - ThomasDos : feat(api, admin, interop): make Candidate.department nullable in the graphql schema
+2026-07-28T16:49:50+02:00 - e34268f - ThomasDos : test(api): extract a helper for the test candidate department id
 2026-07-27T16:08:24+02:00 - 9ea2c2d - Florian Bonniec : feat(admin): added FormacodesForm component for formacode selection v2
 2026-07-24T16:28:17+02:00 - ac71b23 - Florian Bonniec : feat(api,admin): added PerimetreAccompagnementForm component for formacode selection v2
 2026-07-24T16:19:10+02:00 - 31621ea - fbonniec : Merge pull request #1082 from betagouv/dependabot/npm_and_yarn/infra/strapi/multi-83553d53be
