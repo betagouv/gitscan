@@ -129,7 +129,6 @@
 │   │   │   ├── _provideradapter.py
 │   │   │   ├── _provideradapterbuilder.py
 │   │   │   ├── _providerclient.py
-│   │   │   ├── _providergateway.py
 │   │   │   ├── _providerloadbalancer.py
 │   │   │   ├── _providermetricslogger.py
 │   │   │   ├── _providerrepository.py
@@ -344,9 +343,6 @@
 │   │   ├── jwt
 │   │   │   ├── __init__.py
 │   │   │   └── _jwtkeyencoder.py
-│   │   ├── model
-│   │   │   ├── __init__.py
-│   │   │   └── _modelprovidergateway.py
 │   │   ├── postgres
 │   │   │   ├── __init__.py
 │   │   │   ├── _postgresauthenticateduserquery.py
@@ -497,8 +493,6 @@
 │   │   │   │   └── test_httpproviderclient.py
 │   │   │   ├── jwt
 │   │   │   │   └── test_jwtkeyencoder.py
-│   │   │   ├── models
-│   │   │   │   └── test_modelprovidergateway.py
 │   │   │   ├── postgres
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── role_repository
@@ -528,8 +522,10 @@
 │   │   │   │   ├── test_redisproviderloadbalancer.py
 │   │   │   │   ├── test_redisprovidermetricslogger.py
 │   │   │   │   └── test_redisrouterratelimiter.py
-│   │   │   └── tiktoken
-│   │   │       └── test_tiktokenmodeltokenizer.py
+│   │   │   ├── tiktoken
+│   │   │   │   └── test_tiktokenmodeltokenizer.py
+│   │   │   └── use_case
+│   │   │       └── test_providercapabilitiesprobe.py
 │   │   └── unit
 │   │       ├── __init__.py
 │   │       ├── domain
@@ -551,15 +547,13 @@
 │   │       │   │           └── keys
 │   │       │   │               ├── test_get_key.py
 │   │       │   │               └── test_get_keys.py
-│   │       │   ├── http
-│   │       │   │   ├── adapters
-│   │       │   │   │   ├── test_embeddingsadapter.py
-│   │       │   │   │   ├── test_metricsadapter.py
-│   │       │   │   │   ├── test_modelsadapter.py
-│   │       │   │   │   └── test_rerankadapter.py
-│   │       │   │   └── test_httpprovideradapterbuilder.py
-│   │       │   └── model
-│   │       │       └── test_modelprovidergateway.py
+│   │       │   └── http
+│   │       │       ├── adapters
+│   │       │       │   ├── test_embeddingsadapter.py
+│   │       │       │   ├── test_metricsadapter.py
+│   │       │       │   ├── test_modelsadapter.py
+│   │       │       │   └── test_rerankadapter.py
+│   │       │       └── test_httpprovideradapterbuilder.py
 │   │       ├── test_configuration.py
 │   │       ├── test_helpers
 │   │       │   ├── test_accesscontroller.py
@@ -623,8 +617,11 @@
 │   │           │   ├── __init__.py
 │   │           │   ├── test_getmodelsusecase.py
 │   │           │   └── test_getmodelusecase.py
-│   │           └── reranks
-│   │               └── test_creatererankusecase.py
+│   │           ├── reranks
+│   │           │   └── test_creatererankusecase.py
+│   │           └── services
+│   │               ├── __init__.py
+│   │               └── test_providercapabilitiesprobe.py
 │   ├── use_cases
 │   │   ├── __init__.py
 │   │   ├── admin
@@ -677,9 +674,12 @@
 │   │   │   ├── _bootstrapmodelsusecase.py
 │   │   │   ├── _getmodelsusecase.py
 │   │   │   └── _getmodelusecase.py
-│   │   └── reranks
+│   │   ├── reranks
+│   │   │   ├── __init__.py
+│   │   │   └── _creatererankusecase.py
+│   │   └── services
 │   │       ├── __init__.py
-│   │       └── _creatererankusecase.py
+│   │       └── _providercapabilitiesprobe.py
 │   └── utils
 │       ├── __init__.py
 │       ├── carbon.py
