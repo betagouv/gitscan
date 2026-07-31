@@ -1,23 +1,32 @@
-## Changelog : domifa (30 derniers jours, au 27 juillet 2026)
+## Changelog : domifa (30 derniers jours, au 30 juillet 2026)
 
 ### Résumé
-Cette version apporte des corrections de sécurité, des améliorations de la gestion des erreurs et des ajustements sur l'interface utilisateur, notamment au niveau des formulaires et des pages d'information. Des optimisations ont également été apportées à l'infrastructure pour améliorer la sécurité et la performance.
+Cette version apporte principalement des mises à jour techniques importantes, notamment la migration vers Angular 20 et Node 22, ainsi que des corrections de sécurité et des améliorations de l'infrastructure. Quelques corrections de bugs et améliorations mineures sont également incluses pour l'interface utilisateur et le backend.
 
 ### Évolutions fonctionnelles
-- Correction du formulaire de mot de passe sur le frontend pour une meilleure expérience utilisateur.
-- Ajout de domaines et d'adresses email à une liste blanche pour améliorer la sécurité et la gestion des accès.
-- Mise à jour des pages CGU et FAQ avec du nouveau contenu.
-- Amélioration de la gestion des erreurs et des alertes sur le frontend.
-- Correction de l'affichage de la liste des utilisateurs dans l'administration.
+*   Correction d'un bug empêchant l'ouverture correcte des modales et des images dans le parcours de découverte de l'application.
+*   Ajout d'un bouton permettant d'ajouter tous les témoins dans une section spécifique.
+*   Correction de l'envoi double de certains emails.
+*   Mise à jour des Conditions Générales d'Utilisation (CGU) pour l'année 2026.
 
 ### Évolutions techniques
-- Amélioration de la sécurité en servant les headers de sécurité depuis le serveur Nginx de l'application plutôt que depuis l'ingress.
-- Refactorisation de la configuration Nginx pour partager un seul fichier de configuration entre les différentes images SPA.
-- Migration des builds d'images vers buildkit-operator pour une meilleure gestion des builds Docker.
-- Correction de problèmes liés à l'enregistrement des adresses IP.
-- Mise à jour de la dépendance `typeorm` vers la version 0.3.31.
+*   Mise à jour majeure de l'application vers Angular 20, incluant des mises à jour des dépendances associées (Angular CLI, CDK, NRx, ngx-matomo, etc.).
+*   Mise à jour de Node.js vers la version 22.
+*   Refactorisation de l'infrastructure Nginx pour améliorer la sécurité et la performance, notamment en intégrant les en-têtes de sécurité.
+*   Migration des builds d'images Docker vers buildkit-operator.
+*   Mise à jour de la librairie `typeorm`.
+*   Mise à jour de la librairie `pizzip`.
 
 ### Autres changements
-- Correction de bugs mineurs et améliorations de la qualité du code.
-- Mise à jour de la documentation.
-- Nettoyage du code et amélioration de la lisibilité.
+*   Correction de divers problèmes mineurs dans l'interface utilisateur (suppression de trackers Matomo inutiles, correction de règles de nettoyage de chaînes de caractères).
+*   Suppression de données de test obsolètes.
+*   Correction d'erreurs liées à la gestion des domaines pour l'envoi d'emails.
+*   Nettoyage du code et corrections de formatage.
+*   Mise à jour de la documentation.
+*   Correction d'une erreur html-sanitize.
+*   Ajout de la librairie sentry pour le suivi des erreurs.
+*   Ajout de la règle `@angular-eslint/prefer-inject`.
+*   Mise à jour de `ngx-charts`.
+*   Mise à jour de `dsfr`.
+*   Mise à jour de `ngx-countup`.
+*   Mise à jour de `ngx-matomo-client`.

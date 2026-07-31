@@ -1,3 +1,54 @@
+## [2.250.26](https://github.com/SocialGouv/domifa/compare/v2.250.25...v2.250.26) (2026-07-30)
+
+
+### Bug Fixes
+
+* **backend:** upgrade pizzip ([1223db1](https://github.com/SocialGouv/domifa/commit/1223db15834e76b3512b8a5b5192e3cc92312ad3))
+* **common:** update to node 22 ([9173efa](https://github.com/SocialGouv/domifa/commit/9173efa931f69b81c123973e3b2971202c33d8d2))
+* **frontend, portail-usagers, portail-admins:** copy angular 20 browser output to nginx root ([1526226](https://github.com/SocialGouv/domifa/commit/152622695b7a13e3b068b14a219d99a150229cde))
+
+## [2.250.25](https://github.com/SocialGouv/domifa/compare/v2.250.24...v2.250.25) (2026-07-30)
+
+
+### Bug Fixes
+
+* **frontend:** fix opening of modals & images for app tour ([bf0ddda](https://github.com/SocialGouv/domifa/commit/bf0ddda5aca3abc8175f0e21561c1f8f232d185f))
+
+## [2.250.24](https://github.com/SocialGouv/domifa/compare/v2.250.23...v2.250.24) (2026-07-29)
+
+
+### Bug Fixes
+
+* **backend:** update brevo's contact update for deleted users ([bf1ecf6](https://github.com/SocialGouv/domifa/commit/bf1ecf619d45755f7025a6f4c21a51e68556f033))
+
+## [2.250.23](https://github.com/SocialGouv/domifa/compare/v2.250.22...v2.250.23) (2026-07-29)
+
+
+### Bug Fixes
+
+* **frontend:** add all witnesses button ([464f050](https://github.com/SocialGouv/domifa/commit/464f050b62c5b00c4f062ae50e4e2c0cd3e12530))
+* **frontend:** delete matomo tacker on click ([1b801f7](https://github.com/SocialGouv/domifa/commit/1b801f77462640b59d8f30328da3c042af12ff98))
+* **frontend:** delete test of deleted rule ([16f31ea](https://github.com/SocialGouv/domifa/commit/16f31ea2549dcdd91359650f33884c2cb7126994))
+* **frontend:** fix string-cleaner double space rule ([5cd11a3](https://github.com/SocialGouv/domifa/commit/5cd11a38e36cab7d2d37cf999b2a3fcc3644cd69))
+
+## [2.250.22](https://github.com/SocialGouv/domifa/compare/v2.250.21...v2.250.22) (2026-07-29)
+
+
+### Bug Fixes
+
+* **frontend:** add unit test & UTC ([dc585a7](https://github.com/SocialGouv/domifa/commit/dc585a7edd9c82d1e4f1b6709896037148f34fbe))
+* **frontend:** fix 2025 - 2026 cgu ([c16d97c](https://github.com/SocialGouv/domifa/commit/c16d97c3643b90f2e30d98028310ccf7e5ada3f7))
+* **frontend:** update cgu 2026 ([428cc37](https://github.com/SocialGouv/domifa/commit/428cc37f97644a3fd1f1e98bdb93f04d162b8f88))
+* **frontend:** update code ([907d10f](https://github.com/SocialGouv/domifa/commit/907d10f1a8c3c9a9360ea3c16c81147d7c28abc9))
+
+## [2.250.21](https://github.com/SocialGouv/domifa/compare/v2.250.20...v2.250.21) (2026-07-29)
+
+
+### Bug Fixes
+
+* **backend:** strip psql meta-commands from the review env schema dump ([2a3b2aa](https://github.com/SocialGouv/domifa/commit/2a3b2aaaa620a68544c4bd37cd44ec79ae9d94de))
+* **backend:** strip psql meta-commands from the seed data dumps ([1fbecff](https://github.com/SocialGouv/domifa/commit/1fbecff34b9e776c942bd8d2655c3491b28528de))
+
 ## [2.250.20](https://github.com/SocialGouv/domifa/compare/v2.250.19...v2.250.20) (2026-07-27)
 
 
