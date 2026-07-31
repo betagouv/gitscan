@@ -114,6 +114,12 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260506124351_add_bercy_role
 │   │   │   └── migration.sql
+│   │   ├── 20260723071509_add_gtin_prefixes
+│   │   │   └── migration.sql
+│   │   ├── 20260728145338_user_citoyen
+│   │   │   └── migration.sql
+│   │   ├── 20260729092626_optional_organization
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   ├── schema.prisma
 │   └── seed
@@ -145,8 +151,15 @@
 │   │   ├── conclusion.svg
 │   │   ├── contract.svg
 │   │   ├── distributor.png
+│   │   ├── document-search.svg
 │   │   ├── document.svg
+│   │   ├── environment.svg
 │   │   ├── etiquette.svg
+│   │   ├── gtin_prefixes.png
+│   │   ├── homebanner-pro.png
+│   │   ├── homebanner.svg
+│   │   ├── homejeans.png
+│   │   ├── hometshirt.png
 │   │   ├── impactmode.png
 │   │   ├── information.png
 │   │   ├── informations
@@ -165,6 +178,7 @@
 │   │   │   └── planete.webp
 │   │   ├── mail-send.svg
 │   │   ├── other.png
+│   │   ├── planet.svg
 │   │   ├── scores
 │   │   │   ├── biodiversity.svg
 │   │   │   ├── climat.svg
@@ -173,6 +187,7 @@
 │   │   │   └── ressources.svg
 │   │   ├── search.svg
 │   │   ├── searchicon.svg
+│   │   ├── searchjeans.png
 │   │   ├── self-training.svg
 │   │   └── tshirt.webp
 │   ├── notice-reglementaire-english.pdf
@@ -203,19 +218,23 @@
 │   │   │   ├── organisation
 │   │   │   │   └── route.ts
 │   │   │   ├── page.tsx
-│   │   │   └── produits
-│   │   │       ├── [gtin]
-│   │   │       │   ├── historique
-│   │   │       │   │   └── route.ts
-│   │   │       │   └── route.ts
-│   │   │       ├── lot
-│   │   │       │   └── route.ts
-│   │   │       ├── multicomposants
-│   │   │       │   └── route.ts
-│   │   │       ├── route.ts
-│   │   │       └── tous
-│   │   │           └── route.ts
+│   │   │   ├── produits
+│   │   │   │   ├── [gtin]
+│   │   │   │   │   ├── historique
+│   │   │   │   │   │   └── route.ts
+│   │   │   │   │   └── route.ts
+│   │   │   │   ├── lot
+│   │   │   │   │   └── route.ts
+│   │   │   │   ├── multicomposants
+│   │   │   │   │   └── route.ts
+│   │   │   │   ├── route.ts
+│   │   │   │   └── tous
+│   │   │   │       └── route.ts
+│   │   │   └── stats
+│   │   │       └── route.ts
 │   │   ├── conditions-generales-utilisation
+│   │   │   └── page.tsx
+│   │   ├── declaration-simplifiee
 │   │   │   └── page.tsx
 │   │   ├── declarations
 │   │   │   └── page.tsx
@@ -232,8 +251,12 @@
 │   │   │   └── page.tsx
 │   │   ├── layout.tsx
 │   │   ├── login
-│   │   │   └── page.tsx
+│   │   │   ├── page.tsx
+│   │   │   └── public
+│   │   │       └── page.tsx
 │   │   ├── logout
+│   │   │   ├── franceconnect
+│   │   │   │   └── page.tsx
 │   │   │   ├── page.tsx
 │   │   │   └── proconnect
 │   │   │       └── page.tsx
@@ -306,6 +329,17 @@
 │   │   │   ├── Loading.tsx
 │   │   │   ├── LoadingButton.tsx
 │   │   │   └── ProConnect.tsx
+│   │   ├── Declaration
+│   │   │   ├── BrandAutocomplete.module.css
+│   │   │   ├── BrandAutocomplete.tsx
+│   │   │   ├── CalculationParameters.module.css
+│   │   │   ├── CalculationParameters.tsx
+│   │   │   ├── Identification.module.css
+│   │   │   ├── Identification.tsx
+│   │   │   ├── SimplifiedDeclaration.module.css
+│   │   │   ├── SimplifiedDeclaration.tsx
+│   │   │   ├── Validation.module.css
+│   │   │   └── Validation.tsx
 │   │   ├── Dgccrf
 │   │   │   ├── Informations.tsx
 │   │   │   ├── Search.tsx
@@ -321,16 +355,25 @@
 │   │   ├── Header
 │   │   │   └── Header.tsx
 │   │   ├── Home
+│   │   │   ├── ContributionBanner.module.css
+│   │   │   ├── ContributionBanner.tsx
+│   │   │   ├── ExplanationBanner.tsx
+│   │   │   ├── FAQ.module.css
+│   │   │   ├── FAQ.tsx
 │   │   │   ├── HomeBanner.module.css
 │   │   │   ├── HomeBanner.tsx
+│   │   │   ├── InformationBanner.module.css
 │   │   │   ├── InformationBanner.tsx
 │   │   │   ├── InformationProBanner.tsx
 │   │   │   ├── KeyResult.module.css
 │   │   │   ├── KeyResult.tsx
 │   │   │   ├── KeyResults.module.css
 │   │   │   ├── KeyResults.tsx
+│   │   │   ├── LastBrands.module.css
 │   │   │   ├── LastBrands.tsx
 │   │   │   ├── OrganizationTypeBanner.tsx
+│   │   │   ├── ProductNotFound.module.css
+│   │   │   ├── ProductNotFound.tsx
 │   │   │   ├── SearchBanner.module.css
 │   │   │   └── SearchBanner.tsx
 │   │   ├── Label
@@ -338,6 +381,7 @@
 │   │   ├── Login
 │   │   │   ├── LoginForm.module.css
 │   │   │   ├── LoginForm.tsx
+│   │   │   ├── PublicLoginForm.tsx
 │   │   │   └── ResetPasswordForm.tsx
 │   │   ├── Matomo
 │   │   │   └── Matomo.ts
@@ -350,6 +394,8 @@
 │   │   │   ├── Brand
 │   │   │   │   ├── BrandOrganization.tsx
 │   │   │   │   ├── Brands.tsx
+│   │   │   │   ├── GTINPrefixes.module.css
+│   │   │   │   ├── GTINPrefixes.tsx
 │   │   │   │   ├── MyBrands.tsx
 │   │   │   │   ├── NewBrand.tsx
 │   │   │   │   ├── OtherBrands.tsx
@@ -438,7 +484,6 @@
 │   │       └── Uploads.tsx
 │   ├── css
 │   │   ├── dsfr.css
-│   │   ├── login.css
 │   │   └── reset.css
 │   ├── db
 │   │   ├── brands.test.ts
@@ -560,6 +605,7 @@
 │   │   │   ├── simple.ts
 │   │   │   ├── size.ts
 │   │   │   └── withComparison.ts
+│   │   ├── login.ts
 │   │   ├── matomo.ts
 │   │   ├── organization
 │   │   │   ├── brands.test.ts
@@ -629,8 +675,10 @@
 │       ├── PolitiqueDeConfidentialite.tsx
 │       ├── Product.tsx
 │       ├── Products.tsx
+│       ├── PublicLogin.tsx
 │       ├── ResetPassword.tsx
 │       ├── SearchProducts.tsx
+│       ├── SimplifiedDeclaration.tsx
 │       └── Statistics.tsx
 └── tsconfig.json
-159 directories, 476 files
+167 directories, 516 files
