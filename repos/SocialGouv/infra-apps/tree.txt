@@ -10,12 +10,10 @@
 │   ├── arc-runners.yaml
 │   ├── arc-system.yaml
 │   ├── buildkit-operator.yaml
-│   ├── buildkit-services.yaml
 │   ├── charon.yaml
 │   ├── clamav.yaml
 │   ├── cnpg.yaml
 │   ├── eck-operator.yaml
-│   ├── huginn.yaml
 │   ├── iterion.yaml
 │   ├── kata.yaml
 │   ├── keda.yaml
@@ -53,17 +51,6 @@
 │   └── values.yaml
 ├── buildkit-operator
 │   └── README.md
-├── buildkit-service
-│   ├── .gitignore
-│   ├── Chart.lock
-│   ├── Chart.yaml
-│   ├── charts
-│   │   ├── 3s-0.1.0.tgz
-│   │   └── buildkit-service-1.30.7.tgz
-│   ├── templates
-│   │   └── lb.svc.yaml
-│   ├── values.ovh.yaml
-│   └── values.yaml
 ├── charon
 │   ├── charon.yaml
 │   └── projects
@@ -182,28 +169,6 @@
 │   │   ├── controller-manager-secret.yaml
 │   │   ├── github-webhook-server-secret.yaml
 │   │   └── runner-deployment.yaml
-│   └── values.yaml
-├── huginn
-│   ├── Chart.lock
-│   ├── Chart.yaml
-│   ├── README.md
-│   ├── charts
-│   │   └── cnpg-cluster-1.30.5.tgz
-│   ├── scenarios
-│   │   ├── README.md
-│   │   ├── veille-tech-dev.json
-│   │   └── veille-tech-prod.json
-│   ├── templates
-│   │   ├── configmap.yaml
-│   │   ├── deployment-web.yaml
-│   │   ├── deployment-worker.yaml
-│   │   ├── huginn-secrets-prod.sealedsecret.yaml
-│   │   ├── huginn-secrets.sealedsecret.yaml
-│   │   ├── ingress.yaml
-│   │   ├── netpol.yaml
-│   │   └── service.yaml
-│   ├── values.ovh-dev.yaml
-│   ├── values.ovh-prod.yaml
 │   └── values.yaml
 ├── iterion
 │   ├── Chart.lock
@@ -382,11 +347,9 @@
 ├── secrets-policies
 │   ├── Chart.yaml
 │   ├── README.md
-│   ├── copy_secret_script.sh
 │   ├── templates
 │   │   └── clusterpolicies
 │   │       ├── kyverno-resync-wildcard-crt.yaml
-│   │       ├── sync-secrets-common-to-ci-ns.yaml
 │   │       ├── sync-secrets-from-ci-ns.yaml
 │   │       ├── sync-sre-secret-to-startups.yaml
 │   │       ├── sync-sre-secrets-from-startups.yaml
@@ -718,8 +681,6 @@
 │   │   └── raw
 │   │       └── clusters
 │   │           ├── ovh-dev
-│   │           │   ├── buildkit-service
-│   │           │   │   └── buildkit-client-certs.sealedsecret.yaml
 │   │           │   ├── cnpg
 │   │           │   │   └── prorityclass-cnpg-3.yml
 │   │           │   ├── enforced-labels
@@ -733,9 +694,6 @@
 │   │           └── ovh-prod
 │   │               ├── buildkit-operator
 │   │               │   └── buildkit-operator-s3.sealedsecret.yaml
-│   │               ├── buildkit-service
-│   │               │   ├── buildkit-client-certs.sealedsecret.yaml
-│   │               │   └── buildkit-daemon-certs.sealedsecret.yaml
 │   │               ├── cnpg
 │   │               │   └── prorityclass-cnpg-3.yml
 │   │               └── sre-secrets
@@ -795,4 +753,4 @@
     │   ├── s3-creds.sealedsecret.yaml
     │   └── smtp-creds.sealedsecret.yaml
     └── values.yaml
-310 directories, 487 files
+301 directories, 454 files
