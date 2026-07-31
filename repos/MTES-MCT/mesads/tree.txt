@@ -57,7 +57,8 @@
 │   │   │   ├── arrete_creation_ads.docx
 │   │   │   ├── arrete_location_gerance.docx
 │   │   │   ├── arrete_nombre_ads.docx
-│   │   │   └── arrete_renouvellement.docx
+│   │   │   ├── arrete_renouvellement.docx
+│   │   │   └── template_arrete_changement_titulaire.docx
 │   │   ├── fields.py
 │   │   ├── forms.py
 │   │   ├── management
@@ -196,6 +197,9 @@
 │   │   │   ├── 0116_demandeacceslectureseule.py
 │   │   │   ├── 0117_auto_20260527_1719.py
 │   │   │   ├── 0118_adsmanageradministrator_notify_verification_enabled.py
+│   │   │   ├── 0119_entreeregistretransaction.py
+│   │   │   ├── 0120_adsmanager_registre_transaction_publique.py
+│   │   │   ├── 0121_rename_registre_transaction_publique_adsmanager_registre_transaction_public_and_more.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── reversion_diff.py
@@ -212,6 +216,7 @@
 │   │   │   ├── is_subpath.py
 │   │   │   ├── markdownify.py
 │   │   │   ├── meta.py
+│   │   │   ├── registre_transaction.py
 │   │   │   ├── selectattr.py
 │   │   │   ├── show_pagination_links.py
 │   │   │   └── str_to_date.py
@@ -227,6 +232,7 @@
 │   │   │   │   ├── test_html_metadata.py
 │   │   │   │   ├── test_markdownify.py
 │   │   │   │   ├── test_meta.py
+│   │   │   │   ├── test_registre_transaction.py
 │   │   │   │   ├── test_selectattr.py
 │   │   │   │   ├── test_show_pagination_links.py
 │   │   │   │   └── test_str_to_date.py
@@ -247,7 +253,8 @@
 │   │   │       ├── test_dashboards.py
 │   │   │       ├── test_liste_attente.py
 │   │   │       ├── test_notation_view.py
-│   │   │       └── test_public.py
+│   │   │       ├── test_public.py
+│   │   │       └── test_registre_transaction.py
 │   │   ├── urls.py
 │   │   ├── views
 │   │   │   ├── __init__.py
@@ -261,17 +268,23 @@
 │   │   │   ├── export.py
 │   │   │   ├── liste_attente.py
 │   │   │   ├── notation_view.py
-│   │   │   └── public.py
+│   │   │   ├── public.py
+│   │   │   └── registre_transactions.py
 │   │   └── widgets.py
 │   ├── asgi.py
 │   ├── common
 │   │   ├── __init__.py
-│   │   └── mixins.py
+│   │   ├── api_insee.py
+│   │   ├── context_mixins.py
+│   │   ├── mixins.py
+│   │   └── tests
+│   │       └── test_api_insee.py
 │   ├── conftest.py
 │   ├── context_processors.py
 │   ├── docs
 │   │   ├── courrier_archive_liste_attente.docx
-│   │   └── courrier_contact.docx
+│   │   ├── courrier_contact.docx
+│   │   └── courrier_contact_cession.docx
 │   ├── fradm
 │   │   ├── __init__.py
 │   │   ├── admin.py
@@ -490,8 +503,16 @@
 │   │       │   │   ├── liste_attente_traitement_demande.html
 │   │       │   │   ├── listes_attentes_publiques.html
 │   │       │   │   ├── prefecture_liste_gestionnaires.html
-│   │       │   │   ├── prefecture_vehicule_relais_detail.html
-│   │       │   │   └── prefecture_vehicules_relais.html
+│   │       │   │   └── registre_transactions
+│   │       │   │       ├── registre_transactions_public.html
+│   │       │   │       ├── registres_transactions_publics.html
+│   │       │   │       ├── transaction_confirmation.html
+│   │       │   │       ├── transaction_creation.html
+│   │       │   │       ├── transaction_documents.html
+│   │       │   │       ├── transaction_edition.html
+│   │       │   │       ├── transaction_enregistrement.html
+│   │       │   │       ├── transaction_liste.html
+│   │       │   │       └── transaction_selection_ads.html
 │   │       │   ├── cgu.html
 │   │       │   ├── faq.html
 │   │       │   ├── homepage.html
@@ -518,6 +539,9 @@
 │   │       │   ├── stats_map_vehicules_relais.ts
 │   │       │   ├── suivi.html
 │   │       │   └── vehicules_relais
+│   │       │       ├── prefecture_vehicule_relais_detail.html
+│   │       │       ├── prefecture_vehicule_relais_history_list.html
+│   │       │       ├── prefecture_vehicules_relais.html
 │   │       │       ├── proprietaire_confirm_delete.html
 │   │       │       ├── proprietaire_detail.html
 │   │       │       ├── proprietaire_edit.html
@@ -598,6 +622,7 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── test_models.py
 │   │   │   ├── test_views.py
+│   │   │   ├── test_views_history.py
 │   │   │   └── unittest.py
 │   │   ├── urls.py
 │   │   └── views.py
@@ -629,4 +654,4 @@
 ├── setup.cfg
 ├── tsconfig.json
 └── webpack.config.js
-86 directories, 545 files
+88 directories, 568 files
