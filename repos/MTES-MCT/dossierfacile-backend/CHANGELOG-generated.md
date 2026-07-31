@@ -1,21 +1,21 @@
-## Changelog : dossierfacile-backend (30 derniers jours, au 15 juillet 2026)
+## Changelog : dossierfacile-backend (30 derniers jours, au 30 juillet 2026)
 
 ### Résumé
-Cette version apporte des améliorations à la gestion des locataires et des garants, notamment en rendant obligatoires certaines informations de contact. Des corrections ont également été apportées pour éviter la duplication de documents et améliorer l'analyse des avis de taxe foncière. Enfin, des optimisations de logs et de sécurité ont été implémentées.
+Cette version apporte des améliorations à la gestion des pièces justificatives, notamment en permettant l'upload d'avis d'imposition plus récents et en corrigeant des erreurs lors de l'analyse des documents ADEME. Des modifications ont également été apportées aux informations requises concernant les locataires et les garants, et une correction a été implémentée pour éviter la duplication de documents.
 
 ### Évolutions fonctionnelles
-- Rendre l'email du bénéficiaire obligatoire lors de la création d'un locataire. [#1277](https://github.com/MTES-MCT/dossierfacile-backend/issues/1277)
-- Rendre l'email du couple co-locataire obligatoire. [#1274](https://github.com/MTES-MCT/dossierfacile-backend/issues/1274)
-- Ajouter la possibilité de saisir l'email d'un garant personnel (garant naturel). [#1273](https://github.com/MTES-MCT/dossierfacile-backend/issues/1273)
-- Ajouter un endpoint de vérification d'email, suppression d'utilisateur et test de l'opérateur dans le contrôleur de test. [#1260](https://github.com/MTES-MCT/dossierfacile-backend/issues/1260)
-- Amélioration de l'analyse des avis de taxe foncière pour supporter plusieurs propriétaires et les catégories RESIDENCY/OWNER. [#1263](https://github.com/MTES-MCT/dossierfacile-backend/issues/1263) et [#1262](https://github.com/MTES-MCT/dossierfacile-backend/issues/1262)
+- Possibilité de télécharger des avis d'imposition plus récents pour l'analyse.  [#1281](https://github.com/MTES-MCT/dossierfacile-backend/issues/1281)
+- L'email du bénéficiaire est désormais obligatoire lors de la création d'un dossier locataire. [#1277](https://github.com/MTES-MCT/dossierfacile-backend/issues/1277)
+- L'email du co-locataire est désormais obligatoire lors de la création d'un dossier locataire. [#1274](https://github.com/MTES-MCT/dossierfacile-backend/issues/1274)
+- Ajout du champ email pour le garant personnel (locataire ou co-locataire). [#1273](https://github.com/MTES-MCT/dossierfacile-backend/issues/1273)
+- Correction de l'analyse des erreurs génériques et inconnues pour les documents ADEME. [#1280](https://github.com/MTES-MCT/dossierfacile-backend/issues/1280)
 
 ### Évolutions techniques
+- Ajout de SSL pour les logs envoyés à Logstash. [#1271](https://github.com/MTES-MCT/dossierfacile-backend/issues/1271)
+- Mise à jour des dépendances du projet. [#1272](https://github.com/MTES-MCT/dossierfacile-backend/issues/1272)
 - Ajout d'un index unique sur la table des documents pour éviter les doublons. [#1261](https://github.com/MTES-MCT/dossierfacile-backend/issues/1261)
-- Mise à jour des dépendances. [#1272](https://github.com/MTES-MCT/dossierfacile-backend/issues/1272)
-- Ajout de SSL aux logs envoyés à Logstash. [#1271](https://github.com/MTES-MCT/dossierfacile-backend/issues/1271)
-- Modification de la règle de classification de la taxe foncière. [#1269](https://github.com/MTES-MCT/dossierfacile-backend/issues/1269)
-- Bump vers la version V3.5.12. [#1261](https://github.com/MTES-MCT/dossierfacile-backend/issues/1261)
+- Modification de la règle de classification de la taxe foncière pour l'analyse des documents. [#1269](https://github.com/MTES-MCT/dossierfacile-backend/issues/1269)
+- Correction d'un problème de logs en environnement SSL. [#1276](https://github.com/MTES-MCT/dossierfacile-backend/issues/1276)
 
 ### Autres changements
-- Ajout de logs lors de la suppression d'un fichier dans le back-office. [#1240](https://github.com/MTES-MCT/dossierfacile-backend/issues/1240)
+- Préparation des versions 3.5.12 et 3.5.13.
