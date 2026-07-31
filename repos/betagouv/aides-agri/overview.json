@@ -1,14 +1,16 @@
 {
   "url": "https://github.com/betagouv/aides-agri",
   "name": "aides-agri",
-  "description": "Ce service permet de gérer un catalogue des dispositifs d’aide publics destinés aux exploitations agricoles françaises et propose des interfaces pour l'administration et les utilisateurs.",
+  "description": "Ce service permet de gérer un catalogue des dispositifs d’aide publics destinés aux exploitations agricoles françaises. Il propose une interface d'administration et un parcours usager pour les exploitants agricoles.",
   "language": "Python",
   "features": [
-    "Gestion des utilisateurs & Permissions",
-    "Recherche & Filtres",
-    "Formulaires & Démarches",
     "Gestion documentaire & Fichiers",
-    "API & Intégrations"
+    "Recherche & Filtres",
+    "Gestion des utilisateurs & Permissions",
+    "Notifications & Alertes",
+    "Formulaires & Démarches",
+    "Sécurité & Conformité",
+    "Données & Schémas"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -16,6 +18,7 @@
     "PostgreSQL",
     "htmx.org",
     "Sentry",
+    "uv",
     "Docker"
   ],
   "components": [
@@ -34,9 +37,8 @@
     "pytest"
   ],
   "workflows": [
-    "Dependabot updates",
-    "CodeQL analysis",
-    "Code coverage"
+    "dependabot",
+    "github-code-scanning"
   ],
   "lastActivity": "2026-07-11T06:09:13+02:00",
   "status": "active",
@@ -53,7 +55,8 @@
     "Écosystème beta.gouv / État",
     "Python",
     "Bases de données SQL",
-    "Aides & Éligibilité",
-    "Agriculture"
+    "Sécurité & Auth",
+    "Environnement & Énergie",
+    "Subventions & Finances publiques"
   ]
 }
