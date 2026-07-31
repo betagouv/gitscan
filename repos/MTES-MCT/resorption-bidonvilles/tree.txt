@@ -882,6 +882,9 @@
 │   │   │   │   └── shantytown_actor_themes.ts
 │   │   │   ├── config.ts
 │   │   │   ├── controllers
+│   │   │   │   ├── _common
+│   │   │   │   │   ├── makeDeleteCommentController.ts
+│   │   │   │   │   └── makeUpdateCommentController.ts
 │   │   │   │   ├── action
 │   │   │   │   │   ├── _common
 │   │   │   │   │   │   ├── action.write.validator.spec.ts
@@ -890,13 +893,6 @@
 │   │   │   │   │   │   ├── action.create.route.ts
 │   │   │   │   │   │   ├── action.create.ts
 │   │   │   │   │   │   └── action.create.validator.ts
-│   │   │   │   │   ├── createComment
-│   │   │   │   │   │   ├── action.createComment.route.ts
-│   │   │   │   │   │   ├── action.createComment.ts
-│   │   │   │   │   │   └── action.createComment.validator.ts
-│   │   │   │   │   ├── deleteComment
-│   │   │   │   │   │   ├── action.deleteComment.route.ts
-│   │   │   │   │   │   └── action.deleteComment.ts
 │   │   │   │   │   ├── exportList
 │   │   │   │   │   │   ├── action.exportList.route.ts
 │   │   │   │   │   │   └── action.exportList.ts
@@ -921,9 +917,20 @@
 │   │   │   │   │       ├── action.update.ts
 │   │   │   │   │       └── action.update.validator.ts
 │   │   │   │   ├── actionComment
-│   │   │   │   │   └── exportList
-│   │   │   │   │       ├── actionComment.exportList.route.ts
-│   │   │   │   │       └── actionComment.exportList.ts
+│   │   │   │   │   ├── createComment
+│   │   │   │   │   │   ├── actionComment.createComment.route.ts
+│   │   │   │   │   │   ├── actionComment.createComment.ts
+│   │   │   │   │   │   └── actionComment.createComment.validator.ts
+│   │   │   │   │   ├── deleteComment
+│   │   │   │   │   │   ├── actionComment.deleteComment.route.ts
+│   │   │   │   │   │   └── actionComment.deleteComment.ts
+│   │   │   │   │   ├── exportList
+│   │   │   │   │   │   ├── actionComment.exportList.route.ts
+│   │   │   │   │   │   └── actionComment.exportList.ts
+│   │   │   │   │   └── updateComment
+│   │   │   │   │       ├── actionComment.updateComment.route.ts
+│   │   │   │   │       ├── actionComment.updateComment.ts
+│   │   │   │   │       └── actionComment.updateComment.validator.ts
 │   │   │   │   ├── actionFinanceReader
 │   │   │   │   │   └── listForNewAction
 │   │   │   │   │       ├── actionFinanceReader.listForNewAction.route.ts
@@ -1143,11 +1150,6 @@
 │   │   │   │   │   │   ├── shantytown.create.route.ts
 │   │   │   │   │   │   ├── shantytown.create.ts
 │   │   │   │   │   │   └── shantytown.create.validator.ts
-│   │   │   │   │   ├── createComment
-│   │   │   │   │   │   ├── shantytown.createComment.route.ts
-│   │   │   │   │   │   ├── shantytown.createComment.spec.ts
-│   │   │   │   │   │   ├── shantytown.createComment.ts
-│   │   │   │   │   │   └── shantytown.createComment.validator.ts
 │   │   │   │   │   ├── delete
 │   │   │   │   │   │   ├── shantytown.delete.route.ts
 │   │   │   │   │   │   └── shantytown.delete.ts
@@ -1189,9 +1191,6 @@
 │   │   │   │   │   │   ├── shantytown.listRelations.route.ts
 │   │   │   │   │   │   ├── shantytown.listRelations.ts
 │   │   │   │   │   │   └── shantytown.listRelations.validator.ts
-│   │   │   │   │   ├── moderateComment
-│   │   │   │   │   │   ├── shantytown.moderateComment.route.ts
-│   │   │   │   │   │   └── shantytown.moderateComment.ts
 │   │   │   │   │   ├── removeActorTheme
 │   │   │   │   │   │   ├── shantytown.removeActorTheme.route.ts
 │   │   │   │   │   │   ├── shantytown.removeActorTheme.ts
@@ -1238,9 +1237,21 @@
 │   │   │   │   │       ├── shantytownActor.exportList.route.ts
 │   │   │   │   │       └── shantytownActor.exportList.ts
 │   │   │   │   ├── shantytownComment
-│   │   │   │   │   └── exportList
-│   │   │   │   │       ├── shantytownComment.exportList.route.ts
-│   │   │   │   │       └── shantytownComment.exportList.ts
+│   │   │   │   │   ├── createComment
+│   │   │   │   │   │   ├── shantytownComment.createComment.route.ts
+│   │   │   │   │   │   ├── shantytownComment.createComment.spec.ts
+│   │   │   │   │   │   ├── shantytownComment.createComment.ts
+│   │   │   │   │   │   └── shantytownComment.createComment.validator.ts
+│   │   │   │   │   ├── exportList
+│   │   │   │   │   │   ├── shantytownComment.exportList.route.ts
+│   │   │   │   │   │   └── shantytownComment.exportList.ts
+│   │   │   │   │   ├── moderateComment
+│   │   │   │   │   │   ├── shantytownComment.moderateComment.route.ts
+│   │   │   │   │   │   └── shantytownComment.moderateComment.ts
+│   │   │   │   │   └── updateComment
+│   │   │   │   │       ├── shantytownComment.updateComment.route.ts
+│   │   │   │   │       ├── shantytownComment.updateComment.ts
+│   │   │   │   │       └── shantytownComment.updateComment.validator.ts
 │   │   │   │   ├── shantytownJusticeReader
 │   │   │   │   │   └── listByLocation
 │   │   │   │   │       ├── shantytownJusticeReader.listByLocation.route.ts
@@ -1604,18 +1615,20 @@
 │   │   │   │   │   │   ├── historizeShantytowns.ts
 │   │   │   │   │   │   └── historizeTopics.ts
 │   │   │   │   │   ├── index.ts
-│   │   │   │   │   └── update
-│   │   │   │   │       ├── resetAddresses.ts
-│   │   │   │   │       ├── resetAsideData.spec.ts
-│   │   │   │   │       ├── resetAsideData.ts
-│   │   │   │   │       ├── resetFinances.ts
-│   │   │   │   │       ├── resetManagers.ts
-│   │   │   │   │       ├── resetMetrics.ts
-│   │   │   │   │       ├── resetOperators.ts
-│   │   │   │   │       ├── resetShantytowns.ts
-│   │   │   │   │       ├── resetTopics.ts
-│   │   │   │   │       ├── update.ts
-│   │   │   │   │       └── updateAction.ts
+│   │   │   │   │   ├── update
+│   │   │   │   │   │   ├── resetAddresses.ts
+│   │   │   │   │   │   ├── resetAsideData.spec.ts
+│   │   │   │   │   │   ├── resetAsideData.ts
+│   │   │   │   │   │   ├── resetFinances.ts
+│   │   │   │   │   │   ├── resetManagers.ts
+│   │   │   │   │   │   ├── resetMetrics.ts
+│   │   │   │   │   │   ├── resetOperators.ts
+│   │   │   │   │   │   ├── resetShantytowns.ts
+│   │   │   │   │   │   ├── resetTopics.ts
+│   │   │   │   │   │   ├── update.ts
+│   │   │   │   │   │   └── updateAction.ts
+│   │   │   │   │   └── updateComment
+│   │   │   │   │       └── updateComment.ts
 │   │   │   │   ├── activityModel
 │   │   │   │   │   ├── get.ts
 │   │   │   │   │   ├── getQuestions.ts
@@ -1837,7 +1850,9 @@
 │   │   │   │   │   ├── findByShantytown.ts
 │   │   │   │   │   ├── findOne.ts
 │   │   │   │   │   ├── getHistory.ts
-│   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── serializeComment.ts
+│   │   │   │   │   └── update.ts
 │   │   │   │   ├── shantytownCommentTagModel
 │   │   │   │   │   ├── CommentTagRow.d.ts
 │   │   │   │   │   ├── create.ts
@@ -1931,7 +1946,6 @@
 │   │   │   │   │   │   │   ├── enrichTownsWithRelations.ts
 │   │   │   │   │   │   │   └── processPreparatoryPhases.ts
 │   │   │   │   │   │   ├── rawLocation.ts
-│   │   │   │   │   │   ├── serializeComment.ts
 │   │   │   │   │   │   ├── serializeShantytown.ts
 │   │   │   │   │   │   ├── types
 │   │   │   │   │   │   │   ├── FIELD_MAPPING.md
@@ -2115,16 +2129,10 @@
 │   │   │   │   │   ├── actionService.ts
 │   │   │   │   │   ├── create.spec.ts
 │   │   │   │   │   ├── create.ts
-│   │   │   │   │   ├── createComment.sendMailNotifications.ts
-│   │   │   │   │   ├── createComment.sendMattermostNotification.ts
-│   │   │   │   │   ├── createComment.spec.ts
-│   │   │   │   │   ├── createComment.ts
-│   │   │   │   │   ├── deleteComment.spec.ts
-│   │   │   │   │   ├── deleteComment.ts
-│   │   │   │   │   ├── enrichCommentsAttachments.ts
 │   │   │   │   │   ├── exportActions.creerClasseurExcel.spec.ts
 │   │   │   │   │   ├── exportActions.creerClasseurExcel.ts
 │   │   │   │   │   ├── exportActions.generateExportFile.ts
+│   │   │   │   │   ├── exportActions.spec.ts
 │   │   │   │   │   ├── exportActions.ts
 │   │   │   │   │   ├── fetch.spec.ts
 │   │   │   │   │   ├── fetch.ts
@@ -2132,8 +2140,6 @@
 │   │   │   │   │   ├── findActionFinancesReadersByAction.ts
 │   │   │   │   │   ├── findActionFinancesReadersByManagers.spec.ts
 │   │   │   │   │   ├── findActionFinancesReadersByManagers.ts
-│   │   │   │   │   ├── getCommentReport.spec.ts
-│   │   │   │   │   ├── getCommentReport.ts
 │   │   │   │   │   ├── getHistory.spec.ts
 │   │   │   │   │   ├── getHistory.ts
 │   │   │   │   │   ├── operatorValidation.spec.ts
@@ -2144,6 +2150,19 @@
 │   │   │   │   │   ├── update.spec.ts
 │   │   │   │   │   ├── update.ts
 │   │   │   │   │   └── write.fetchAction.ts
+│   │   │   │   ├── actionComment
+│   │   │   │   │   ├── createComment.sendMailNotifications.ts
+│   │   │   │   │   ├── createComment.sendMattermostNotification.ts
+│   │   │   │   │   ├── createComment.spec.ts
+│   │   │   │   │   ├── createComment.ts
+│   │   │   │   │   ├── deleteComment.spec.ts
+│   │   │   │   │   ├── deleteComment.ts
+│   │   │   │   │   ├── enrichCommentsAttachments.ts
+│   │   │   │   │   ├── getCommentReport.spec.ts
+│   │   │   │   │   ├── getCommentReport.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── updateComment.spec.ts
+│   │   │   │   │   └── updateComment.ts
 │   │   │   │   ├── activitySummary
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── sendAll.ts
@@ -2268,7 +2287,6 @@
 │   │   │   │   │   │   ├── baseShantytown.ts
 │   │   │   │   │   │   ├── createExportSections.ts
 │   │   │   │   │   │   ├── departements_in_resorption_phases.ts
-│   │   │   │   │   │   ├── enrichCommentsAttachments.ts
 │   │   │   │   │   │   ├── enrichShantytownWithALeastOneActionFinanced.ts
 │   │   │   │   │   │   ├── formatDate.ts
 │   │   │   │   │   │   ├── formatDateSince.ts
@@ -2280,6 +2298,7 @@
 │   │   │   │   │   │   │   ├── sanitaryAccessStatusLabels.ts
 │   │   │   │   │   │   │   ├── trashEvacuationStatusLabels.ts
 │   │   │   │   │   │   │   └── waterAccessStatusLabels.ts
+│   │   │   │   │   │   ├── populationStatus.ts
 │   │   │   │   │   │   ├── sendMailForClosedTown.ts
 │   │   │   │   │   │   ├── serializeExportProperties.ts
 │   │   │   │   │   │   └── serializeReport.ts
@@ -2288,8 +2307,6 @@
 │   │   │   │   │   ├── close.ts
 │   │   │   │   │   ├── create.spec.ts
 │   │   │   │   │   ├── create.ts
-│   │   │   │   │   ├── deleteComment.spec.ts
-│   │   │   │   │   ├── deleteComment.ts
 │   │   │   │   │   ├── deleteTown.spec.ts
 │   │   │   │   │   ├── deleteTown.ts
 │   │   │   │   │   ├── export
@@ -2362,8 +2379,13 @@
 │   │   │   │   ├── shantytownComment
 │   │   │   │   │   ├── createComment.spec.ts
 │   │   │   │   │   ├── createComment.ts
+│   │   │   │   │   ├── deleteComment.spec.ts
+│   │   │   │   │   ├── deleteComment.ts
+│   │   │   │   │   ├── enrichCommentsAttachments.ts
 │   │   │   │   │   ├── exportAll.ts
-│   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── updateComment.spec.ts
+│   │   │   │   │   └── updateComment.ts
 │   │   │   │   ├── shantytownDecree
 │   │   │   │   │   ├── findAll.ts
 │   │   │   │   │   └── index.ts
@@ -2438,6 +2460,11 @@
 │   │   │   └── utils
 │   │   │       ├── auth.ts
 │   │   │       ├── checkPassword.ts
+│   │   │       ├── comment
+│   │   │       │   ├── assertIsCommentOwner.ts
+│   │   │       │   ├── runDeleteComment.ts
+│   │   │       │   ├── runUpdateComment.ts
+│   │   │       │   └── sanitizeCommentDescription.ts
 │   │   │       ├── date.ts
 │   │   │       ├── dateConstants.ts
 │   │   │       ├── departementsOrdonnes.ts
@@ -4296,4 +4323,4 @@
 ├── scripts
 │   └── checkout.sh
 └── yarn.lock
-750 directories, 3898 files
+756 directories, 3919 files
