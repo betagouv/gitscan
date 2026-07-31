@@ -1,34 +1,30 @@
-## Changelog : ma-cantine (30 derniers jours, au 28 juillet 2026)
+## Changelog : ma-cantine (30 derniers jours, au 29 juillet 2026)
 
 ### Résumé
-Les dernières évolutions de ma-cantine se concentrent sur l'amélioration de la gestion des achats, notamment l'ajout de nouvelles informations sur les produits (origine, circuit court, etc.) et la refonte de l'API associée. Des améliorations ont également été apportées à la gestion des images des cantines et à la correction de bugs sur les formulaires et les imports.
+Les dernières mises à jour de ma-cantine se concentrent sur l'amélioration de la gestion des images et des logos des cantines, ainsi que sur l'ajout de nouveaux endpoints API pour faciliter l'accès et la manipulation de ces données. Des corrections et améliorations diverses ont également été apportées à l'interface et aux fonctionnalités existantes.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de passer un prix HT avec un séparateur virgule lors des imports d'achats.
-- Correction du bug empêchant l'envoi du formulaire "Acteurs de l'écosystème".
-- Correction de la colonne "definition_local_km" lors des imports d'achats.
-- Ajout d'un bandeau de service réduit sur la page de contact.
-- Amélioration de la distinction visuelle des libellés et des valeurs dans les formulaires d'achats.
-- Remontée du bloc de facture dans l'interface d'achat.
+- Ajout de nouveaux endpoints API pour la gestion des images des cantines : récupération de la liste des images, ajout, suppression et modification d'images individuelles.
+- Possibilité de récupérer des informations sur le remplissage et les erreurs d'une cantine via un nouvel endpoint API.
+- Amélioration de la distinction visuelle des libellés et des valeurs dans la section "Achats".
+- Ajout d'un bandeau de service réduit sur la page "Contact".
+- Correction du lien vers l'ancienne page d'import des achats SIRET.
 
 ### Évolutions techniques
-- Refactor de la gestion des factures liées aux achats, permettant de les sauvegarder ou supprimer même si l'achat n'est pas valide.
-- Ajout de nouvelles propriétés aux cantines : logo, gestionnaires.
-- Développement d'endpoints API dédiés à la gestion des logos des cantines (récupération, upload, suppression).
-- Refactor de l'API pour regrouper les endpoints par lots fonctionnels.
-- Amélioration des URLs de certains endpoints API (Achats, Cantines).
-- Ajout de la possibilité d'ignorer les validations lors de la sauvegarde ou suppression d'objets.
-- Ajout de champs de date de création et de modification aux images des cantines.
-- Ajout d'un endpoint API pour vérifier si les informations d'une cantine sont complètes.
-- Ajout d'un nouveau champ `history_source` pour tracer l'origine des modifications des objets.
-- Refactor de l'historisation des données.
-- Amélioration de la documentation de l'API (ajout de descriptions, masquage de certains champs).
-- Restriction de l'accès aux achats aux seuls éditeurs autorisés via OAuth2.
-- Ajout d'un endpoint dédié à la création d'achats avec les nouvelles caractéristiques (origine, circuit court, etc.).
+- Refactor de la logique de gestion des gestionnaires de cantines dans un nouveau fichier dédié.
+- Simplification du serializer des factures dans la section "Achats".
+- Ajout d'une nouvelle propriété pour le logo des cantines et affichage dans l'admin.
+- Amélioration de l'URL de l'endpoint `teamJoin`.
+- Amélioration des URLs des endpoints `summary` et `purchaseSummary`.
+- Regroupement des endpoints API par lots fonctionnels pour une meilleure organisation.
+- Ajout d'un champ de dates de création et de modification pour les images des cantines.
+- Implémentation de `skip_validations` pour ignorer les validations lors de la suppression ou de la sauvegarde d'achats.
+- Utilisation d'un nouveau queryset `has_invalid_reason` pour exclure facilement les TDs non valides.
+- Correction d'un bug d'envoi du formulaire "Acteurs de l'écosystème".
+- Correction de la colonne "definition_local_km" dans les nouveaux imports d'achats.
+- Correction d'un bug lié à la duplication avec le nouveau format attendu pour les achats.
+- Correction des warnings affichés dans la console Swagger.
 
 ### Autres changements
-- Correction d'un warning dans la console lié à la documentation Swagger.
-- Correction d'un lien obsolète sur la page d'import des achats SIRET.
-- Renommage d'une catégorie de produits ("Boulangerie / Pâtisserie fraîches et surgelées" -> "Boulangerie / Pâtisserie fraîches").
-- Suppression d'un groupe snapshot de l'historisation des diagnostics.
-- Mise à jour des dépendances et release de nouvelles versions (2026.40.2, 2026.40.1, 2026.40.0, 2026.39.1, 2026.39.0).
+- Correction d'un bug dans la catégorie "Boulangerie / Pâtisserie fraîches" (suppression de "et surgelées").
+- Permettre de passer un prix HT avec un séparateur virgule lors des imports d'achats.
