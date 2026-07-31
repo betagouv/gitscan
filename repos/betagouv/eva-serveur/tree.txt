@@ -240,7 +240,6 @@
 │   │   │   ├── liens_evitement.js
 │   │   │   ├── modal_fusion.js
 │   │   │   ├── modal_verification.js
-│   │   │   ├── numero_telephone_input.js
 │   │   │   ├── plausible.js.erb
 │   │   │   ├── recherche_structure.js
 │   │   │   ├── reset_password.js
@@ -639,7 +638,6 @@
 │   │   ├── email_input.rb
 │   │   ├── file_input.rb
 │   │   ├── image_file_input.rb
-│   │   ├── numero_telephone_input.rb
 │   │   ├── select_input.rb
 │   │   ├── siret_input.rb
 │   │   └── toggle_input.rb
@@ -704,23 +702,18 @@
 │   │   ├── connexion_demo.rb
 │   │   ├── donnee_sociodemographique.rb
 │   │   ├── envoi_invitation_service.rb
-│   │   ├── evaluation
-│   │   │   └── context.rb
 │   │   ├── evaluation.rb
 │   │   ├── evaluation_eva.rb
 │   │   ├── evaluation_evapro.rb
-│   │   ├── evaluations
-│   │   │   ├── diagnostic_pro
-│   │   │   │   ├── bilan_consolide_calculator.rb
-│   │   │   │   ├── couts_presenter.rb
-│   │   │   │   ├── impacts_presenter.rb
-│   │   │   │   ├── restitution.rb
-│   │   │   │   └── risques_presenter.rb
-│   │   │   ├── diagnostic_pro.rb
-│   │   │   ├── passation_beneficiaire
-│   │   │   │   ├── mise_en_action_presenter.rb
-│   │   │   │   └── tableau_de_bord_mises_en_action.rb
-│   │   │   └── passation_beneficiaire.rb
+│   │   ├── evaluations_eva
+│   │   │   ├── mise_en_action_presenter.rb
+│   │   │   └── tableau_de_bord_mises_en_action.rb
+│   │   ├── evaluations_evapro
+│   │   │   ├── bilan_consolide_calculator.rb
+│   │   │   ├── couts_presenter.rb
+│   │   │   ├── impacts_presenter.rb
+│   │   │   ├── restitution.rb
+│   │   │   └── risques_presenter.rb
 │   │   ├── evenement.rb
 │   │   ├── evenement_question.rb
 │   │   ├── fabrique_evenement.rb
@@ -995,7 +988,6 @@
 │       │   │   │   └── _campagnes.html.arb
 │       │   │   ├── eva_pro
 │       │   │   │   ├── _bienvenue_entreprise.html.erb
-│       │   │   │   ├── _bloc_actualites_entreprise.html.erb
 │       │   │   │   ├── _bloc_questionnaires_entreprise.html.erb
 │       │   │   │   ├── _cinq_dernieres_evaluations.html.erb
 │       │   │   │   ├── _derniere_evaluation_complete.html.erb
@@ -1019,6 +1011,7 @@
 │       │   │   ├── _entete_page.erb
 │       │   │   ├── _form.html.arb
 │       │   │   ├── _index.html.arb
+│       │   │   ├── _informations_complementaires.arb
 │       │   │   ├── _litteratie.erb
 │       │   │   ├── _litteratie_numeratie_niveau1.arb
 │       │   │   ├── _litteratie_numeratie_synthese.arb
@@ -1332,6 +1325,7 @@
 │   │   │   │   └── table_criteres_component.yml
 │   │   │   ├── footer.yml
 │   │   │   ├── header.yml
+│   │   │   ├── numero_telephone_input.yml
 │   │   │   ├── qcm.yml
 │   │   │   ├── recheche_compte.yml
 │   │   │   ├── sous_competences.yml
@@ -1344,7 +1338,6 @@
 │   │   ├── inputs
 │   │   │   ├── email_input.yml
 │   │   │   ├── image_file_input.yml
-│   │   │   ├── numero_telephone_input.yml
 │   │   │   └── siret_input.yml
 │   │   ├── models
 │   │   │   ├── actualite.yml
@@ -1910,9 +1903,6 @@
 │   │   │   │   └── fins_controller_spec.rb
 │   │   │   ├── evaluations_controller_spec.rb
 │   │   │   └── evenements_controller_spec.rb
-│   │   ├── eva
-│   │   │   └── devise
-│   │   │       └── sessions_controller_spec.rb
 │   │   └── inscription
 │   │       ├── nouveaux_comptes_controller_spec.rb
 │   │       ├── recherche_structures_controller_spec.rb
@@ -2067,20 +2057,17 @@
 │   │   ├── conditions_passation_spec.rb
 │   │   ├── donnee_sociodemographique_spec.rb
 │   │   ├── envoi_invitation_service_spec.rb
-│   │   ├── evaluation
-│   │   │   └── context_spec.rb
+│   │   ├── evaluation_eva_spec.rb
+│   │   ├── evaluation_evapro_spec.rb
 │   │   ├── evaluation_spec.rb
-│   │   ├── evaluations
-│   │   │   ├── diagnostic_pro
-│   │   │   │   ├── bilan_consolide_calculator_spec.rb
-│   │   │   │   ├── couts_presenter_spec.rb
-│   │   │   │   └── risques_presenter_spec.rb
-│   │   │   ├── diagnostic_pro_spec.rb
-│   │   │   ├── passation_beneficiaire
-│   │   │   │   ├── mise_en_action_presenter_spec.rb
-│   │   │   │   └── tableau_de_bord_mises_en_action_spec.rb
-│   │   │   ├── passation_beneficiaire_enregistre_mise_en_action_spec.rb
-│   │   │   └── passation_beneficiaire_spec.rb
+│   │   ├── evaluations_eva
+│   │   │   ├── mise_en_action_presenter_spec.rb
+│   │   │   └── tableau_de_bord_mises_en_action_spec.rb
+│   │   ├── evaluations_evapro
+│   │   │   ├── bilan_consolide_calculator_spec.rb
+│   │   │   ├── couts_presenter_spec.rb
+│   │   │   ├── impacts_presenter_spec.rb
+│   │   │   └── risques_presenter_spec.rb
 │   │   ├── evenement_question_spec.rb
 │   │   ├── evenement_spec.rb
 │   │   ├── fabrique_evenement_spec.rb
@@ -2331,4 +2318,4 @@
 │   └── .keep
 └── vendor
     └── .keep
-334 directories, 2053 files
+328 directories, 2046 files

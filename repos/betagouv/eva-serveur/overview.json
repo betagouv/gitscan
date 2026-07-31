@@ -1,52 +1,65 @@
 {
   "url": "https://github.com/betagouv/eva-serveur",
   "name": "eva-serveur",
-  "description": "Ce serveur fournit une interface d'administration pour eva, permettant la gestion des évaluations et des utilisateurs. Il est utilisé en conjonction avec la partie cliente et Metabase.",
+  "description": "Cette application sert de serveur et d'espace d'administration pour eva. Elle permet de gérer les évaluations et les campagnes associées.",
   "language": "Ruby",
   "features": [
-    "Gestion des utilisateurs & Permissions",
-    "Authentification & Accès",
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
-    "Administration & Backoffice"
+    "Authentification & Accès",
+    "Gestion des utilisateurs & Permissions",
+    "Gestion des établissements & Structures",
+    "Reporting & BI",
+    "Gestion métier générale"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Rails",
+    "Puma",
     "PostgreSQL",
     "Redis",
     "Devise",
-    "Puma",
-    "Sass",
-    "ActiveAdmin"
+    "ActiveAdmin",
+    "Image Processing",
+    "ruby-vips",
+    "Sidekiq"
   ],
   "components": [
-    "API REST",
-    "Base de données PostgreSQL",
-    "Ruby on Rails",
-    "Frontend (via views)"
+    "API REST & GraphQL",
+    "PostgreSQL & SQL",
+    "Ruby",
+    "Rails",
+    "Docker & Conteneurs",
+    "Tests"
   ],
   "auth": {
     "methods": [
       "email-password",
-      "session"
+      "oauth2",
+      "sso"
     ]
   },
   "tests": [
-    "RSpec"
+    "RSpec",
+    "FactoryBot"
   ],
   "workflows": [],
-  "lastActivity": "2026-07-23T19:19:41+02:00",
+  "lastActivity": "2026-07-30T20:18:13+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
-  "metrics": null,
+  "metrics": {
+    "stars": null,
+    "forks": null,
+    "contributors": null,
+    "openIssues": null
+  },
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
     "Ruby",
     "Bases de données SQL",
     "Sécurité & Auth",
-    "Administration & Backoffice"
+    "Gestion métier générale"
   ]
 }
