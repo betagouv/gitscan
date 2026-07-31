@@ -7,7 +7,6 @@
 │       ├── build-docker.yml
 │       ├── ci-admin-tests.yml
 │       ├── ci-apps-tests.yml
-│       ├── ci-pcdbapi-test.yml
 │       ├── ci-tests.yml
 │       ├── integration-tests.yml
 │       └── labeler.yml
@@ -437,198 +436,161 @@
 │   │   ├── hyyyperbridge.md
 │   │   └── tracked-event.md
 │   ├── apps
-│   │   ├── core-fca-low
-│   │   │   ├── src
-│   │   │   │   ├── app.module.ts
-│   │   │   │   ├── config
-│   │   │   │   │   ├── api-entreprise.ts
-│   │   │   │   │   ├── app.ts
-│   │   │   │   │   ├── email-validator.ts
-│   │   │   │   │   ├── email-verification.ts
-│   │   │   │   │   ├── exceptions.ts
-│   │   │   │   │   ├── hyyyperbridge-broker.ts
-│   │   │   │   │   ├── identity-provider-adapter-mongo.ts
-│   │   │   │   │   ├── index.ts
-│   │   │   │   │   ├── logger.ts
-│   │   │   │   │   ├── mailer.ts
-│   │   │   │   │   ├── mongoose.ts
-│   │   │   │   │   ├── oidc-client.ts
-│   │   │   │   │   ├── oidc-provider.ts
-│   │   │   │   │   ├── rate-limiter.ts
-│   │   │   │   │   ├── redis.ts
-│   │   │   │   │   ├── service-provider-adapter-mongo.ts
-│   │   │   │   │   └── session.ts
-│   │   │   │   ├── controllers
-│   │   │   │   │   ├── accessibility.controller.spec.ts
-│   │   │   │   │   ├── accessibility.controller.ts
-│   │   │   │   │   ├── email-verification.controller.spec.ts
-│   │   │   │   │   ├── email-verification.controller.ts
-│   │   │   │   │   ├── health.controller.spec.ts
-│   │   │   │   │   ├── health.controller.ts
-│   │   │   │   │   ├── index.ts
-│   │   │   │   │   ├── interaction.controller.spec.ts
-│   │   │   │   │   ├── interaction.controller.ts
-│   │   │   │   │   ├── oidc-client.controller.spec.ts
-│   │   │   │   │   ├── oidc-client.controller.ts
-│   │   │   │   │   ├── oidc-provider.controller.spec.ts
-│   │   │   │   │   └── oidc-provider.controller.ts
-│   │   │   │   ├── decorators
-│   │   │   │   │   ├── index.ts
-│   │   │   │   │   ├── user-session.decorator.spec.ts
-│   │   │   │   │   └── user-session.decorator.ts
-│   │   │   │   ├── dto
-│   │   │   │   │   ├── app-config.dto.ts
-│   │   │   │   │   ├── authorize-params.dto.ts
-│   │   │   │   │   ├── content-secury-policy.dto.ts
-│   │   │   │   │   ├── core-fca-config.dto.ts
-│   │   │   │   │   ├── core-fca-session.dto.ts
-│   │   │   │   │   ├── identity-for-sp.dto.ts
-│   │   │   │   │   ├── identity-from-idp.dto.ts
-│   │   │   │   │   ├── index.ts
-│   │   │   │   │   ├── interaction-params.dto.ts
-│   │   │   │   │   ├── interaction.dto.ts
-│   │   │   │   │   ├── interaction_error_query.dto.ts
-│   │   │   │   │   ├── logout-params.dto.ts
-│   │   │   │   │   ├── post-identity-provider-selection.dto.ts
-│   │   │   │   │   ├── redirect-to-idp.dto.ts
-│   │   │   │   │   ├── revocation-token-params.dto.ts
-│   │   │   │   │   ├── sp-authorized-fqdns-config.dto.ts
-│   │   │   │   │   ├── user-session
-│   │   │   │   │   │   ├── active-user-session.dto.ts
-│   │   │   │   │   │   ├── after-get-interaction-session.dto.ts
-│   │   │   │   │   │   ├── after-get-oidc-callback-session.dto.ts
-│   │   │   │   │   │   ├── after-redirect-to-idp-with-email-session.dto.ts
-│   │   │   │   │   │   ├── after-redirect-to-idp-with-idp-id-session.dto.ts
-│   │   │   │   │   │   └── user-session.dto.ts
-│   │   │   │   │   └── verify-email.dto.ts
-│   │   │   │   ├── enums
-│   │   │   │   │   ├── error-code.enum.ts
-│   │   │   │   │   ├── index.ts
-│   │   │   │   │   └── routes.enum.ts
-│   │   │   │   ├── exceptions
-│   │   │   │   │   ├── core-fca-account-blocked.exception.ts
-│   │   │   │   │   ├── core-fca-agent-not-from-public-service.exception.ts
-│   │   │   │   │   ├── core-fca-base.exception.ts
-│   │   │   │   │   ├── core-fca-invalid-email-domain.exception.ts
-│   │   │   │   │   ├── core-fca-invalid-identity.exception.spec.ts
-│   │   │   │   │   ├── core-fca-invalid-identity.exception.ts
-│   │   │   │   │   ├── core-fca-no-idp.exception.spec.ts
-│   │   │   │   │   ├── core-fca-no-idp.exception.ts
-│   │   │   │   │   ├── core-fca-unauthorized-email.exception.spec.ts
-│   │   │   │   │   ├── core-fca-unauthorized-email.exception.ts
-│   │   │   │   │   ├── index.ts
-│   │   │   │   │   └── invalid-session.exception.ts
-│   │   │   │   ├── filters
-│   │   │   │   │   ├── index.ts
-│   │   │   │   │   ├── invalid-session-exception.filter.spec.ts
-│   │   │   │   │   └── invalid-session-exception.filter.ts
-│   │   │   │   ├── index.ts
-│   │   │   │   ├── interfaces
-│   │   │   │   │   ├── index.ts
-│   │   │   │   │   └── sp-authorized-fqdns-details.ts
-│   │   │   │   ├── main.ts
-│   │   │   │   ├── public
-│   │   │   │   │   ├── apple-touch-icon.png
-│   │   │   │   │   ├── css
-│   │   │   │   │   │   └── pages
-│   │   │   │   │   │       ├── dsfr.pc.css
-│   │   │   │   │   │       ├── error.css
-│   │   │   │   │   │       └── interaction.css
-│   │   │   │   │   ├── favicon
-│   │   │   │   │   │   ├── apple-touch-icon.png
-│   │   │   │   │   │   ├── favicon.ico
-│   │   │   │   │   │   └── favicon.svg
-│   │   │   │   │   ├── favicon.ico
-│   │   │   │   │   ├── img
-│   │   │   │   │   │   ├── access-restricted-error.svg
-│   │   │   │   │   │   ├── connexion.svg
-│   │   │   │   │   │   ├── default-error.svg
-│   │   │   │   │   │   ├── expert-id.svg
-│   │   │   │   │   │   ├── forbidden-access-error.svg
-│   │   │   │   │   │   ├── ordre-avocats.svg
-│   │   │   │   │   │   ├── pro-sante-connect.svg
-│   │   │   │   │   │   ├── proconnect-logo.svg
-│   │   │   │   │   │   ├── provider.svg
-│   │   │   │   │   │   ├── renater.svg
-│   │   │   │   │   │   ├── renater2.svg
-│   │   │   │   │   │   ├── temporary-restricted-error.svg
-│   │   │   │   │   │   └── unauthorized-email-error.svg
-│   │   │   │   │   ├── js
-│   │   │   │   │   │   ├── disabled-with-countdown.js
-│   │   │   │   │   │   ├── email-fca.js
-│   │   │   │   │   │   ├── email-suggestion.js
-│   │   │   │   │   │   ├── end-session-confirm.js
-│   │   │   │   │   │   ├── form-validation.js
-│   │   │   │   │   │   ├── matomo.js
-│   │   │   │   │   │   └── unshow-notice.js
-│   │   │   │   │   └── robots.txt
-│   │   │   │   ├── services
-│   │   │   │   │   ├── core-fca-controller.service.spec.ts
-│   │   │   │   │   ├── core-fca-controller.service.ts
-│   │   │   │   │   ├── core-fca-middleware.service.spec.ts
-│   │   │   │   │   ├── core-fca-middleware.service.ts
-│   │   │   │   │   ├── core-fca.service.spec.ts
-│   │   │   │   │   ├── core-fca.service.ts
-│   │   │   │   │   ├── identity.sanitizer.spec.ts
-│   │   │   │   │   ├── identity.sanitizer.ts
-│   │   │   │   │   └── index.ts
-│   │   │   │   ├── validators
-│   │   │   │   │   ├── index.ts
-│   │   │   │   │   ├── is-phone-number-simple-validator.spec.ts
-│   │   │   │   │   ├── is-phone-number-simple-validator.validator.ts
-│   │   │   │   │   ├── is-siret-validator.spec.ts
-│   │   │   │   │   └── is-siret-validator.ts
-│   │   │   │   └── views
-│   │   │   │       ├── accessibility.ejs
-│   │   │   │       ├── error.ejs
-│   │   │   │       ├── identity-provider-selection.ejs
-│   │   │   │       ├── includes
-│   │   │   │       │   ├── footer.ejs
-│   │   │   │       │   ├── head.ejs
-│   │   │   │       │   ├── header.ejs
-│   │   │   │       │   ├── notice.ejs
-│   │   │   │       │   ├── scripts.ejs
-│   │   │   │       │   ├── skiplinks.ejs
-│   │   │   │       │   └── test-env-warning.ejs
-│   │   │   │       ├── interaction.ejs
-│   │   │   │       └── verify-email.ejs
-│   │   │   └── tsconfig.app.json
-│   │   ├── csmr-rie
-│   │   │   ├── src
-│   │   │   │   ├── app.module.ts
-│   │   │   │   ├── config
-│   │   │   │   │   ├── app.ts
-│   │   │   │   │   ├── index.ts
-│   │   │   │   │   ├── logger.ts
-│   │   │   │   │   └── rie-broker.ts
-│   │   │   │   ├── controllers
-│   │   │   │   │   ├── csmr-http-proxy.controller.spec.ts
-│   │   │   │   │   ├── csmr-http-proxy.controller.ts
-│   │   │   │   │   ├── health.controller.spec.ts
-│   │   │   │   │   ├── health.controller.ts
-│   │   │   │   │   └── index.ts
-│   │   │   │   ├── dto
-│   │   │   │   │   ├── bridge-payload.dto.ts
-│   │   │   │   │   ├── csmr-http-proxy.config.ts
-│   │   │   │   │   └── index.ts
-│   │   │   │   ├── index.ts
-│   │   │   │   └── main.ts
-│   │   │   └── tsconfig.app.json
-│   │   ├── mock-identity-provider-fca-low
-│   │   │   ├── src
-│   │   │   │   ├── index.ejs
-│   │   │   │   ├── main.ts
-│   │   │   │   ├── oidc-provider-support
-│   │   │   │   │   ├── configuration.ts
-│   │   │   │   │   ├── memory_adapter.js
-│   │   │   │   │   └── policy.js
-│   │   │   │   └── user-data.ts
-│   │   │   └── tsconfig.app.json
-│   │   └── mock-service-provider-fca-low
+│   │   └── core-fca-low
 │   │       ├── src
-│   │       │   ├── decrypt.ts
-│   │       │   ├── index.ejs
-│   │       │   └── main.ts
+│   │       │   ├── app.module.ts
+│   │       │   ├── config
+│   │       │   │   ├── api-entreprise.ts
+│   │       │   │   ├── app.ts
+│   │       │   │   ├── email-validator.ts
+│   │       │   │   ├── email-verification.ts
+│   │       │   │   ├── exceptions.ts
+│   │       │   │   ├── hyyyperbridge-broker.ts
+│   │       │   │   ├── identity-provider-adapter-mongo.ts
+│   │       │   │   ├── index.ts
+│   │       │   │   ├── logger.ts
+│   │       │   │   ├── mailer.ts
+│   │       │   │   ├── mongoose.ts
+│   │       │   │   ├── oidc-client.ts
+│   │       │   │   ├── oidc-provider.ts
+│   │       │   │   ├── rate-limiter.ts
+│   │       │   │   ├── redis.ts
+│   │       │   │   ├── service-provider-adapter-mongo.ts
+│   │       │   │   └── session.ts
+│   │       │   ├── controllers
+│   │       │   │   ├── accessibility.controller.spec.ts
+│   │       │   │   ├── accessibility.controller.ts
+│   │       │   │   ├── email-verification.controller.spec.ts
+│   │       │   │   ├── email-verification.controller.ts
+│   │       │   │   ├── health.controller.spec.ts
+│   │       │   │   ├── health.controller.ts
+│   │       │   │   ├── index.ts
+│   │       │   │   ├── interaction.controller.spec.ts
+│   │       │   │   ├── interaction.controller.ts
+│   │       │   │   ├── oidc-client.controller.spec.ts
+│   │       │   │   ├── oidc-client.controller.ts
+│   │       │   │   ├── oidc-provider.controller.spec.ts
+│   │       │   │   └── oidc-provider.controller.ts
+│   │       │   ├── decorators
+│   │       │   │   ├── index.ts
+│   │       │   │   ├── user-session.decorator.spec.ts
+│   │       │   │   └── user-session.decorator.ts
+│   │       │   ├── dto
+│   │       │   │   ├── app-config.dto.ts
+│   │       │   │   ├── authorize-params.dto.ts
+│   │       │   │   ├── content-secury-policy.dto.ts
+│   │       │   │   ├── core-fca-config.dto.ts
+│   │       │   │   ├── core-fca-session.dto.ts
+│   │       │   │   ├── identity-for-sp.dto.ts
+│   │       │   │   ├── identity-from-idp.dto.ts
+│   │       │   │   ├── index.ts
+│   │       │   │   ├── interaction-params.dto.ts
+│   │       │   │   ├── interaction.dto.ts
+│   │       │   │   ├── interaction_error_query.dto.ts
+│   │       │   │   ├── logout-params.dto.ts
+│   │       │   │   ├── post-identity-provider-selection.dto.ts
+│   │       │   │   ├── redirect-to-idp.dto.ts
+│   │       │   │   ├── revocation-token-params.dto.ts
+│   │       │   │   ├── sp-authorized-fqdns-config.dto.ts
+│   │       │   │   ├── user-session
+│   │       │   │   │   ├── active-user-session.dto.ts
+│   │       │   │   │   ├── after-get-interaction-session.dto.ts
+│   │       │   │   │   ├── after-get-oidc-callback-session.dto.ts
+│   │       │   │   │   ├── after-redirect-to-idp-with-email-session.dto.ts
+│   │       │   │   │   ├── after-redirect-to-idp-with-idp-id-session.dto.ts
+│   │       │   │   │   └── user-session.dto.ts
+│   │       │   │   └── verify-email.dto.ts
+│   │       │   ├── enums
+│   │       │   │   ├── error-code.enum.ts
+│   │       │   │   ├── index.ts
+│   │       │   │   └── routes.enum.ts
+│   │       │   ├── exceptions
+│   │       │   │   ├── core-fca-account-blocked.exception.ts
+│   │       │   │   ├── core-fca-agent-not-from-public-service.exception.ts
+│   │       │   │   ├── core-fca-base.exception.ts
+│   │       │   │   ├── core-fca-invalid-email-domain.exception.ts
+│   │       │   │   ├── core-fca-invalid-identity.exception.spec.ts
+│   │       │   │   ├── core-fca-invalid-identity.exception.ts
+│   │       │   │   ├── core-fca-no-idp.exception.spec.ts
+│   │       │   │   ├── core-fca-no-idp.exception.ts
+│   │       │   │   ├── core-fca-unauthorized-email.exception.spec.ts
+│   │       │   │   ├── core-fca-unauthorized-email.exception.ts
+│   │       │   │   ├── index.ts
+│   │       │   │   └── invalid-session.exception.ts
+│   │       │   ├── filters
+│   │       │   │   ├── index.ts
+│   │       │   │   ├── invalid-session-exception.filter.spec.ts
+│   │       │   │   └── invalid-session-exception.filter.ts
+│   │       │   ├── index.ts
+│   │       │   ├── interfaces
+│   │       │   │   ├── index.ts
+│   │       │   │   └── sp-authorized-fqdns-details.ts
+│   │       │   ├── main.ts
+│   │       │   ├── public
+│   │       │   │   ├── apple-touch-icon.png
+│   │       │   │   ├── css
+│   │       │   │   │   └── pages
+│   │       │   │   │       ├── dsfr.pc.css
+│   │       │   │   │       ├── error.css
+│   │       │   │   │       └── interaction.css
+│   │       │   │   ├── favicon
+│   │       │   │   │   ├── apple-touch-icon.png
+│   │       │   │   │   ├── favicon.ico
+│   │       │   │   │   └── favicon.svg
+│   │       │   │   ├── favicon.ico
+│   │       │   │   ├── img
+│   │       │   │   │   ├── access-restricted-error.svg
+│   │       │   │   │   ├── connexion.svg
+│   │       │   │   │   ├── default-error.svg
+│   │       │   │   │   ├── expert-id.svg
+│   │       │   │   │   ├── forbidden-access-error.svg
+│   │       │   │   │   ├── ordre-avocats.svg
+│   │       │   │   │   ├── pro-sante-connect.svg
+│   │       │   │   │   ├── proconnect-logo.svg
+│   │       │   │   │   ├── provider.svg
+│   │       │   │   │   ├── renater.svg
+│   │       │   │   │   ├── renater2.svg
+│   │       │   │   │   ├── temporary-restricted-error.svg
+│   │       │   │   │   └── unauthorized-email-error.svg
+│   │       │   │   ├── js
+│   │       │   │   │   ├── disabled-with-countdown.js
+│   │       │   │   │   ├── email-fca.js
+│   │       │   │   │   ├── email-suggestion.js
+│   │       │   │   │   ├── end-session-confirm.js
+│   │       │   │   │   ├── form-validation.js
+│   │       │   │   │   ├── matomo.js
+│   │       │   │   │   └── unshow-notice.js
+│   │       │   │   └── robots.txt
+│   │       │   ├── services
+│   │       │   │   ├── core-fca-controller.service.spec.ts
+│   │       │   │   ├── core-fca-controller.service.ts
+│   │       │   │   ├── core-fca-middleware.service.spec.ts
+│   │       │   │   ├── core-fca-middleware.service.ts
+│   │       │   │   ├── core-fca.service.spec.ts
+│   │       │   │   ├── core-fca.service.ts
+│   │       │   │   ├── identity.sanitizer.spec.ts
+│   │       │   │   ├── identity.sanitizer.ts
+│   │       │   │   └── index.ts
+│   │       │   ├── validators
+│   │       │   │   ├── index.ts
+│   │       │   │   ├── is-phone-number-simple-validator.spec.ts
+│   │       │   │   ├── is-phone-number-simple-validator.validator.ts
+│   │       │   │   ├── is-siret-validator.spec.ts
+│   │       │   │   └── is-siret-validator.ts
+│   │       │   └── views
+│   │       │       ├── accessibility.ejs
+│   │       │       ├── error.ejs
+│   │       │       ├── identity-provider-selection.ejs
+│   │       │       ├── includes
+│   │       │       │   ├── footer.ejs
+│   │       │       │   ├── head.ejs
+│   │       │       │   ├── header.ejs
+│   │       │       │   ├── notice.ejs
+│   │       │       │   ├── scripts.ejs
+│   │       │       │   ├── skiplinks.ejs
+│   │       │       │   └── test-env-warning.ejs
+│   │       │       ├── interaction.ejs
+│   │       │       └── verify-email.ejs
 │   │       └── tsconfig.app.json
 │   ├── global.d.ts
 │   ├── jest-setup-file.ts
@@ -844,6 +806,19 @@
 │   │   │   │   ├── email-verification.module.ts
 │   │   │   │   ├── email-verification.service.spec.ts
 │   │   │   │   ├── email-verification.service.ts
+│   │   │   │   ├── enums
+│   │   │   │   │   ├── error-code.enum.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── exception-filters
+│   │   │   │   │   ├── email-verification-exception.filter.spec.ts
+│   │   │   │   │   ├── email-verification-exception.filter.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── exceptions
+│   │   │   │   │   ├── email-verification-base.exception.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── invalid-email-verification-token.exception.ts
+│   │   │   │   │   ├── send-email-failure.exception.ts
+│   │   │   │   │   └── too-many-attempts.exception.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   └── schemas
 │   │   │   │       ├── email-verification-token.schema.ts
@@ -1287,6 +1262,36 @@
 │   ├── tsconfig.spec.json
 │   └── yarn.lock
 ├── compose.yaml
+├── csmr-rie
+│   ├── .gitignore
+│   ├── Dockerfile
+│   ├── jest-setup-file.ts
+│   ├── jest.config.ts
+│   ├── nest-cli.json
+│   ├── package.json
+│   ├── src
+│   │   ├── app.module.ts
+│   │   ├── config
+│   │   │   ├── app.ts
+│   │   │   ├── index.ts
+│   │   │   ├── logger.ts
+│   │   │   └── rie-broker.ts
+│   │   ├── controllers
+│   │   │   ├── csmr-http-proxy.controller.spec.ts
+│   │   │   ├── csmr-http-proxy.controller.ts
+│   │   │   ├── health.controller.spec.ts
+│   │   │   ├── health.controller.ts
+│   │   │   └── index.ts
+│   │   ├── dto
+│   │   │   ├── bridge-payload.dto.ts
+│   │   │   ├── csmr-http-proxy.config.ts
+│   │   │   └── index.ts
+│   │   ├── index.ts
+│   │   └── main.ts
+│   ├── tsconfig.app.json
+│   ├── tsconfig.json
+│   ├── tsconfig.spec.json
+│   └── yarn.lock
 ├── docker
 │   ├── .dockerignore
 │   ├── .env
@@ -1419,19 +1424,35 @@
 │   │   └── main.ts
 │   ├── tsconfig.json
 │   └── yarn.lock
-├── pcdbapi
-│   ├── .dockerignore
+├── mock-identity-provider
 │   ├── .gitignore
 │   ├── Dockerfile
-│   ├── Dockerfile.test
-│   ├── README.md
-│   ├── compose.yaml
-│   ├── crypt.py
-│   ├── main.py
-│   ├── middleware.py
-│   ├── pyproject.toml
-│   ├── test_api.py
-│   └── test_crypt.py
+│   ├── package.json
+│   ├── src
+│   │   ├── app.test.ts
+│   │   ├── app.ts
+│   │   ├── config.ts
+│   │   ├── index.ejs
+│   │   ├── main.ts
+│   │   ├── oidc-provider-support
+│   │   │   ├── configuration.ts
+│   │   │   ├── memory_adapter.ts
+│   │   │   └── policy.ts
+│   │   └── user-data.ts
+│   ├── tsconfig.json
+│   └── yarn.lock
+├── mock-service-provider
+│   ├── .gitignore
+│   ├── Dockerfile
+│   ├── package.json
+│   ├── src
+│   │   ├── app.test.ts
+│   │   ├── app.ts
+│   │   ├── decrypt.ts
+│   │   ├── index.ejs
+│   │   └── main.ts
+│   ├── tsconfig.json
+│   └── yarn.lock
 └── quality
     ├── .cypress-cucumber-preprocessorrc.json
     ├── .gitignore
@@ -1614,4 +1635,4 @@
     │   └── parse-business-log.ts
     ├── tsconfig.json
     └── yarn.lock
-370 directories, 1246 files
+372 directories, 1265 files
