@@ -1,17 +1,18 @@
 {
   "url": "https://github.com/betagouv/agreste",
   "name": "agreste",
-  "description": "Agreste est une fork de Sites Conformes permettant la création simplifiée de sites internet pour l'administration française, basée sur Wagtail et le Système de design de l’État (DSFR).",
+  "description": "Agreste est une solution permettant la création simplifiée de sites web pour l'administration française, basée sur Wagtail et le Système de design de l’État (DSFR). Elle facilite la conception de sites internet conformes aux normes numériques en vigueur.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
     "Authentification & Accès",
-    "Visualisation de données & Cartographie",
+    "Recherche & Filtres",
+    "Gestion des utilisateurs & Permissions",
     "Contenu éditorial",
     "Sécurité & Conformité",
-    "Gestion des utilisateurs & Permissions",
-    "Formulaires & Démarches"
+    "Données & Schémas",
+    "Interface utilisateur & Design"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -27,32 +28,34 @@
     "wagtailmenus",
     "wagtail-modeladmin",
     "wagtail-markdown",
-    "icalendar",
-    "mozilla-django-oidc"
+    "boto3"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
+    "React / Next.js",
     "Python (scripts & backend)",
+    "Design System (DSFR & UI libs)",
     "Django",
-    "Wagtail",
     "HTML / CSS / Templates visuels"
   ],
   "auth": {
     "methods": [
-      "saml",
-      "oauth2"
+      "oauth2",
+      "saml"
     ],
     "providers": [
       "ProConnect"
     ]
   },
-  "tests": "Tests unitaires et d'intégration avec pytest et coverage",
-  "workflows": [
-    "CI/CD avec GitHub Actions",
-    "Déploiement sur Scalingo"
+  "tests": [
+    "Pytest",
+    "Playwright"
   ],
-  "lastActivity": "2026-07-15T17:04:48+02:00",
+  "workflows": [
+    "GitHub Actions"
+  ],
+  "lastActivity": "2026-07-30T16:03:52+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -65,6 +68,9 @@
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
+    "React & Next.js",
+    "TypeScript",
+    "Déploiement & Hosting",
     "Python",
     "Bases de données SQL",
     "Sécurité & Auth",

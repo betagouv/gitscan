@@ -1,4 +1,5 @@
 .
+├── .agent-vm.runtime.sh
 ├── .buildpacks
 ├── .dockerignore
 ├── .env.example
@@ -6,17 +7,23 @@
 ├── .git-blame-ignore-revs
 ├── .github
 │   ├── PULL_REQUEST_TEMPLATE
+│   ├── actions
+│   │   └── setup-e2e
+│   │       └── action.yml
 │   └── workflows
+│       ├── _e2e.yml
 │       ├── cd-docker.yml
 │       ├── ci-check-i18n.yml
 │       ├── ci-check-migrations.yml
+│       ├── ci-e2e.yml
 │       ├── ci-main.yml
 │       ├── ci-quality.yml
 │       ├── docs.yml
 │       ├── publiccode-yml-validation.yml
 │       ├── publiccodeyml-check.yml
 │       ├── publish.yml
-│       └── release-agreste.yml
+│       ├── release-agreste.yml
+│       └── validate-notifications.yml
 ├── .gitignore
 ├── .locales
 ├── .pre-commit-config.yaml
@@ -27,6 +34,7 @@
 ├── DOD.md
 ├── Dockerfile
 ├── LICENSE
+├── NOTIFICATIONS.md
 ├── ONBOARDING.md
 ├── Procfile
 ├── README.md
@@ -119,6 +127,10 @@
 │   │   └── installation.md
 │   ├── index.md
 │   └── requirements.txt
+├── e2e
+│   ├── errors.spec.ts
+│   ├── fixtures.ts
+│   └── homepage.spec.ts
 ├── entrypoint.sh
 ├── faceted_search
 │   ├── __init__.py
@@ -129,22 +141,34 @@
 │   │       └── LC_MESSAGES
 │   │           ├── django.mo
 │   │           └── django.po
+│   ├── static
+│   │   └── faceted_search
+│   │       └── css
+│   │           └── faceted_search.css
 │   ├── templates
 │   │   └── faceted_search
 │   │       ├── blocks
-│   │       │   └── search_filters.html
+│   │       │   ├── search_filters.html
+│   │       │   ├── search_result.html
+│   │       │   ├── taxonomy_list.html
+│   │       │   └── taxonomy_tree.html
 │   │       └── search_results.html
 │   ├── templatetags
 │   │   ├── __init__.py
 │   │   └── faceted_search_tags.py
 │   ├── tests
 │   │   ├── __init__.py
-│   │   └── test_filters.py
+│   │   ├── test_filters.py
+│   │   ├── test_tags.py
+│   │   └── test_views.py
 │   └── views.py
 ├── justfile
 ├── manage.py
+├── notifications.json
+├── notifications.schema.json
 ├── package-lock.json
 ├── package.json
+├── playwright.config.ts
 ├── publications
 │   ├── __init__.py
 │   ├── api.py
@@ -294,6 +318,7 @@
 │   │   │   ├── 0059_blogentrypage_exclude_from_sitemap_and_more.py
 │   │   │   ├── 0060_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
 │   │   │   ├── 0061_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
+│   │   │   ├── 0062_alter_blogentrypage_body_alter_blogindexpage_body.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── templates
@@ -354,6 +379,7 @@
 │   │   │       ├── set_config.py
 │   │   │       └── shell.py
 │   │   ├── managers.py
+│   │   ├── middleware.py
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
 │   │   │   ├── 0001_squashed_0062_catalogindexpage_preview_image_and_more.py
@@ -434,8 +460,11 @@
 │   │   │   ├── 0076_cmsdsfrconfig_language_selector_mode_and_more.py
 │   │   │   ├── 0077_alter_catalogindexpage_body_alter_contentpage_body.py
 │   │   │   ├── 0078_alter_catalogindexpage_body_alter_contentpage_body.py
+│   │   │   ├── 0079_alter_catalogindexpage_body_alter_contentpage_body.py
+│   │   │   ├── 0080_cmsdsfrconfig_iframe_allow_origins.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
+│   │   ├── monkey_patches.py
 │   │   ├── page_templates
 │   │   │   ├── img
 │   │   │   │   ├── Design_sans_titre.png
@@ -450,7 +479,7 @@
 │   │   │   │   ├── undraw_female_avatar_efig.svg
 │   │   │   │   └── undraw_male_avatar_g98d.svg
 │   │   │   └── pages_data.json
-│   │   ├── search_registry.py
+│   │   ├── search_view_loader.py
 │   │   ├── services
 │   │   │   ├── __init__.py
 │   │   │   ├── accessors.py
@@ -549,11 +578,13 @@
 │   │   │   ├── test_blocks.py
 │   │   │   ├── test_create_demo_pages.py
 │   │   │   ├── test_force_script_name.py
+│   │   │   ├── test_iframe_middleware.py
 │   │   │   ├── test_managers.py
 │   │   │   ├── test_search.py
-│   │   │   ├── test_search_registry.py
+│   │   │   ├── test_search_view_loader.py
 │   │   │   ├── test_services_accessors.py
 │   │   │   ├── test_services_import_export.py
+│   │   │   ├── test_translation.py
 │   │   │   ├── test_utils.py
 │   │   │   ├── test_views.py
 │   │   │   └── test_wagtail_dsfr_tags.py
@@ -573,9 +604,13 @@
 │   │   │           └── django.po
 │   │   ├── migrations
 │   │   │   └── __init__.py
+│   │   ├── notifications.py
 │   │   ├── templates
 │   │   │   ├── admin_icons
 │   │   │   │   └── anchor.svg
+│   │   │   ├── sites_conformes_admin
+│   │   │   │   └── panels
+│   │   │   │       └── _notifications.html
 │   │   │   └── wagtailadmin
 │   │   │       ├── account
 │   │   │       │   └── password_reset
@@ -595,6 +630,7 @@
 │   │   │           └── base.html
 │   │   ├── tests
 │   │   │   ├── __init__.py
+│   │   │   ├── test_notifications.py
 │   │   │   └── test_views.py
 │   │   ├── views.py
 │   │   └── wagtail_hooks.py
@@ -669,6 +705,7 @@
 │   │   │   ├── 0031_evententrypage_exclude_from_sitemap_and_more.py
 │   │   │   ├── 0032_alter_evententrypage_body_alter_eventsindexpage_body.py
 │   │   │   ├── 0033_alter_evententrypage_body_alter_eventsindexpage_body.py
+│   │   │   ├── 0034_alter_evententrypage_body_alter_eventsindexpage_body.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── static
@@ -921,8 +958,10 @@
 │   │       │   ├── share.html
 │   │       │   ├── socialmedia_preview_image.html
 │   │       │   └── user_menu.html
-│   │       └── robots.txt
+│   │       ├── iframe.html
+│   │       ├── robots.txt
+│   │       └── standalone.html
 │   └── utils
 │       └── __init__.py
 └── uv.lock
-168 directories, 759 files
+176 directories, 790 files
