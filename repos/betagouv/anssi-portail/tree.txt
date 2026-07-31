@@ -121,6 +121,10 @@
 │   │   │   │   ├── ressourceParcours.ts
 │   │   │   │   ├── ressourceParcoursComplet.ts
 │   │   │   │   ├── ressourcePriseEnCompte.ts
+│   │   │   │   ├── ressourceRecompensesCyberDepart
+│   │   │   │   │   ├── banniere.svg
+│   │   │   │   │   ├── ressourceRecompensesCyberDepart.ts
+│   │   │   │   │   └── serviceRecompensesCyberDepart.ts
 │   │   │   │   └── schemaRessourceModule.schema.ts
 │   │   │   ├── middleware.ts
 │   │   │   ├── mon-aide-cyber
@@ -157,8 +161,10 @@
 │   │   │   ├── ressourceInformationsCreationCompte.ts
 │   │   │   ├── ressourceInfosSite.ts
 │   │   │   ├── ressourcePageConnexion.ts
+│   │   │   ├── ressourcePageContact.ts
 │   │   │   ├── ressourcePageCrisp.ts
-│   │   │   ├── ressourcePageProduit.ts
+│   │   │   ├── ressourcePageRessource.ts
+│   │   │   ├── ressourcePageService.ts
 │   │   │   ├── ressourcePagesJekyll.ts
 │   │   │   ├── ressourcePagesJekyllConnectees.ts
 │   │   │   ├── ressourceProfil.ts
@@ -172,6 +178,7 @@
 │   │   │   ├── ressourceUtilisateurs.schema.ts
 │   │   │   ├── ressourceUtilisateurs.ts
 │   │   │   ├── ressourceVisa.ts
+│   │   │   ├── routesPagesConnectees.ts
 │   │   │   ├── schemas.ts
 │   │   │   ├── session.ts
 │   │   │   ├── testMaturite
@@ -388,7 +395,11 @@
 │   │   │   │   ├── ressourceModule.spec.ts
 │   │   │   │   ├── ressourceParcours.spec.ts
 │   │   │   │   ├── ressourceParcoursComplet.spec.ts
-│   │   │   │   └── ressourcePriseEnCompte.spec.ts
+│   │   │   │   ├── ressourcePriseEnCompte.spec.ts
+│   │   │   │   └── ressourceRecompensesCyberDepart
+│   │   │   │       ├── ressourceRecompensesCyberDepart.spec.ts
+│   │   │   │       ├── serviceRecompensesCyberDepart.spec.ts
+│   │   │   │       └── snapshot-banniere.png
 │   │   │   ├── middleware.spec.ts
 │   │   │   ├── mon-aide-cyber
 │   │   │   │   └── ressourceDemandesAide.spec.ts
@@ -417,8 +428,10 @@
 │   │   │   ├── ressourceInformationsCreationCompte.spec.ts
 │   │   │   ├── ressourceInfosSite.spec.ts
 │   │   │   ├── ressourcePageConnexion.spec.ts
+│   │   │   ├── ressourcePageContact.spec.ts
 │   │   │   ├── ressourcePageCrisp.spec.ts
-│   │   │   ├── ressourcePageProduit.spec.ts
+│   │   │   ├── ressourcePageRessource.spec.ts
+│   │   │   ├── ressourcePageService.spec.ts
 │   │   │   ├── ressourcePagesJekyll.spec.ts
 │   │   │   ├── ressourcePagesJekyllConnectees.spec.ts
 │   │   │   ├── ressourceProfil.spec.ts
@@ -428,6 +441,7 @@
 │   │   │   ├── ressourceStatistiquesDiagnostic.spec.ts
 │   │   │   ├── ressourceUtilisateurs.spec.ts
 │   │   │   ├── ressourceVisa.spec.ts
+│   │   │   ├── routesPagesConnectees.spec.ts
 │   │   │   └── testMaturite
 │   │   │       ├── ressourceDernierResultatDeTest.spec.ts
 │   │   │       ├── ressourceRepartitionDesResultatsDeTest.spec.ts
@@ -859,6 +873,7 @@
 │   │   │   ├── motif-fond-opacite-30.avif
 │   │   │   ├── motif-fond-service-opacite-16.avif
 │   │   │   ├── motif-fond-service.avif
+│   │   │   ├── nis2-noir.svg
 │   │   │   ├── nis2.svg
 │   │   │   ├── parcours-securisation
 │   │   │   │   ├── badge-cyberdepart.png
@@ -1332,8 +1347,8 @@
 │   │   │   │   ├── FiltresMobile.svelte
 │   │   │   │   ├── Formulaire.svelte
 │   │   │   │   ├── GroupeDeBadges.svelte
-│   │   │   │   ├── Hero.svelte
 │   │   │   │   ├── Heros.svelte
+│   │   │   │   ├── HerosRiche.svelte
 │   │   │   │   ├── Icone.svelte
 │   │   │   │   ├── Lien.svelte
 │   │   │   │   ├── MenuFlottant.svelte
@@ -1434,6 +1449,7 @@
 │   ├── sante.html
 │   ├── scripts
 │   │   ├── apres-authentification.js
+│   │   ├── connexion.js
 │   │   ├── matomo.js
 │   │   ├── matomoTagManager.js
 │   │   ├── optOutMatomo.js
@@ -1496,4 +1512,4 @@
 ├── scripts
 │   └── get-node-version.sh
 └── shell.nix
-214 directories, 1327 files
+216 directories, 1341 files

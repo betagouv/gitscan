@@ -1,36 +1,45 @@
-## Changelog : anssi-portail (30 derniers jours, au 28 juillet 2026)
+## Changelog : anssi-portail (30 derniers jours, au 30 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la performance du site via le rendu côté serveur (SSR) et la mise à jour de l'interface utilisateur (UI) avec les nouveaux composants de design. Des corrections et améliorations ont également été apportées à la navigation, à la sécurité et à la gestion des données.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur avec l'implémentation d'une nouvelle identité visuelle, l'optimisation du parcours de sécurisation et l'amélioration des performances grâce au rendu côté serveur (SSR) pour plusieurs pages du site. Des corrections et des mises à jour de sécurité ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Implémentation du rendu côté serveur (SSR) pour plusieurs pages : accueil, financements, collectivités, associations, NIS2, sessions de groupe, guides et catalogue. Cela devrait améliorer la vitesse de chargement et l'accessibilité du site.
-- Ajout d'un export CSV des mesures du parcours de sécurisation.
-- Amélioration de l'affichage et de la navigation dans le parcours de sécurisation, notamment avec l'ajout d'une barre de progression et la gestion des modules.
-- Mise à jour des filtres et de l'affichage des mesures dans le parcours de sécurisation.
-- Ajout de tutoriels pour les mesures du parcours de sécurisation.
-- Modification de l'affichage du titre de page et de la carte d'une mesure dans le parcours de sécurisation.
-- Amélioration de l'affichage des badges et des collections de guides.
-- Correction de l'affichage d'un espace insécable.
-- Mise à jour du wording des CTA du parcours de sécurisation.
+- Mise à jour de l'identité visuelle (DA) sur de nombreuses pages, incluant l'accueil, les pages de services, les guides, les financements, les contacts, les niveaux de maturité et les associations.
+- Implémentation d'un nouveau héros (bannière) sur plusieurs pages pour une meilleure présentation visuelle.
+- Amélioration du parcours de sécurisation :
+    - Affichage des mesures sous forme de liste.
+    - Gestion de la prise en compte des mesures.
+    - Ajout de badges de progression et d'informations sur l'état d'avancement des modules.
+    - Possibilité de naviguer vers les modules.
+    - Affichage des interlocuteurs associés aux mesures.
+- Ajout d'un système de consentement pour le suivi via Pixel.
+- Mise à jour du badge cyberdépart dans l'encart associé.
+- Correction de l'affichage du titre de page et de la carte d'une mesure.
+- Correction de la redirection vers la page accédée avant authentification.
+- Correction de l'affichage du fil d'Ariane.
+- Mise à jour des liens et des descriptions sur certaines pages.
 
 ### Évolutions techniques
-- Migration vers Svelte 5 pour le composant Guide.
-- Refonte de l'architecture pour supporter le rendu côté serveur (SSR) avec une séparation claire des composants client et serveur.
-- Utilisation d'un enrichisseur Svelte pour le SSR.
-- Mise à jour de plusieurs dépendances, notamment `axios`, `eslint`, `sharp`, `dompurify`, `vitest`, `prettier-plugin-svelte` et `papaparse`.
-- Amélioration de la configuration CI/CD avec la gestion des secrets et l'ajout d'outils de sécurité comme `zizmor`.
-- Ajout d'un Nix Shell pour faciliter le développement en local.
-- Uniformisation des versions de dépendances.
-- Utilisation de UUID v7 pour générer des clés primaires.
+- Implémentation du rendu côté serveur (SSR) pour de nombreuses pages, améliorant ainsi les performances et le SEO :
+    - Pages des associations, collectivités, financements, guides, NIS2, contacts.
+    - Composants tels que les liens, les cartes, les filtres, les WebC.
+- Refonte de l'architecture pour faciliter l'intégration du SSR.
+- Utilisation de Svelte 5 pour certains composants.
+- Amélioration de la gestion des dépendances et des versions.
+- Ajout de tests unitaires et d'intégration.
+- Mise à jour des outils de CI/CD pour inclure des scans antivirus.
+- Amélioration de la configuration et de la gestion des secrets.
+- Ajout d'un Nix Shell pour le développement en local.
+- Migration vers des UUID v7 pour la génération de clés primaires.
 
 ### Autres changements
-- Ajout des métadonnées Open Graph et Twitter pour améliorer le partage sur les réseaux sociaux.
-- Correction de liens et de styles divers.
-- Nettoyage de code et suppression de configurations inutiles.
-- Mise à jour de la documentation et du README.
-- Ajout de tests et corrections de bugs mineurs.
+- Mise à jour de la documentation.
+- Correction de l'indentation des fichiers YAML de déploiement.
+- Ajout de métadonnées Open Graph et Twitter pour améliorer le partage sur les réseaux sociaux.
+- Suppression de code inutile et nettoyage du codebase.
+- Correction de bugs mineurs et améliorations de la stabilité.
+- Ajout du skill d'agent Playwright.
+- Mise à jour des dépendances (hors mises à jour automatiques).
+- Correction de la navigation tertiaire.
 - Ajout de la campagne Matomo à l'origine des demandes d'aide.
-- Correction de l'URL canonique pour inclure le `site.url`.
-- Suppression d'un test obsolète.
-- Ajout de la taille sur toutes les images.
+- Suppression d'un test qui ne pouvait plus fonctionner.
