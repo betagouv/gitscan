@@ -1,35 +1,31 @@
-## Changelog : quefairedemesobjets (30 derniers jours, au 28 juillet 2026)
+## Changelog : quefairedemesobjets (30 derniers jours, au 30 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la stabilité de la plateforme, la correction de bugs et l'amélioration des processus de déploiement. Des travaux ont également été réalisés sur l'enrichissement des données et l'optimisation des pipelines de traitement.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la stabilité et de la robustesse de la plateforme, notamment au niveau des déploiements et des tests. Des corrections ont été apportées pour résoudre des problèmes de synchronisation de données et de déploiement en pré-production. Des améliorations ont également été apportées à la cartographie des données et à la gestion des établissements.
 
 ### Évolutions fonctionnelles
-- Suppression du filtrage des établissements avec un code étranger [#3216](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3216).
 - Correction d'un bug empêchant la prévisualisation des pages Wagtail avec des accents dans le slug [#3195](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3195).
+- Suppression du filtrage des établissements ayant un code étranger [#3216](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3216).
+- L'infographie est maintenant responsive sur les petits écrans [#3179](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3179).
+- Amélioration de la suggestion d'établissements à partir de la table `lien_suggestion` [#3177](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3177).
 - Ajout d'actions en tâche de fond dans l'interface d'administration Django [#3093](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3093).
-- Correction d'un problème lié à l'espace au-dessus du fil d'Ariane sur les pages produit [#3121](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3121).
-- Ajout d'un template pour les pages index et script de migration [#3122](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3122).
 
 ### Évolutions techniques
-- Modification de la logique de clonage des données pour lancer (ou non) une commande DBT de consolidation [#3169](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3169).
-- Utilisation de la fonction `chain` au lieu de l'opérateur `>>` pour une meilleure lisibilité du code [#3178](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3178).
-- Première version de suggestion basée sur la table `lien_suggestion` [#3177](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3177).
-- Restructuration des modèles DBT [#3170](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3170).
-- Utilisation des workspaces uv [#3058](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3058).
-- Passage des volumes Docker en named volumes pour une meilleure gestion [#3130](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3130).
-- Correction de la synchronisation entre la production et la pré-production en utilisant le DSN pour la restauration [#3135](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3135).
-- Amélioration de la stabilité des tests e2e [#3021](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3021).
+- Passage aux workspaces UV pour une meilleure gestion des dépendances et des environnements [#3058](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3058).
+- Mise à jour de la logique de clonage des datasets de la BAN avec un paramètre de correction [#3199](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3199).
+- Refonte des modèles DBT pour une meilleure organisation [#3170](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3170).
+- Amélioration de la stabilité des tests e2e et correction de la CI en échec [#3151](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3151).
+- Correction de la synchronisation de la production vers la pré-production en utilisant le DSN pour la restauration [#3135](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3135).
+- Mise à jour de la configuration Docker pour utiliser des volumes nommés [#3130](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3130).
 - Restructuration des settings Django [#3060](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3060).
-- Mise à jour des dépendances (voir section "Autres changements").
+- DAG pour enrichir les SIREN depuis les SIRET et vice-versa [#3125](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3125).
+- Correction des DAGs CMA et Généric [#3124](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3124).
 
 ### Autres changements
-- Mise à jour régulière des dépendances du projet (Python, JavaScript, etc.) via Dependabot et Renovate.
-- Ajout d'un paramètre pour corriger les datasets de la BAN [#3199](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3199).
-- Augmentation de la durée de rétention des sauvegardes de la webapp [#3137](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3137).
-- Désactivation temporaire de la comparaison visuelle dans les tests e2e [#3136](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3136).
-- Correction d'un problème de lockfile empêchant le déploiement en pré-production [#3133](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3133).
+- Correction d'un problème lié au lockfile empêchant le déploiement en pré-production [#3133](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3133).
 - Déplacement du script SQL `wagtail_french` pour résoudre un problème de déploiement Scalingo [#3134](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3134).
-- Ajout de la conservation de 15 jours d'historique de DAG dans Airflow [#3101](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3101).
-- Suppression des tables temporaires après l'action principale [#3095](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3095).
-- DAG pour enrichir les SIREN depuis les SIRET et réciproquement [#3125](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3125).
-- Correction des DAGs CMA et Généric [#3124](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3124).
+- Suppression temporaire de la comparaison visuelle dans les tests e2e [#3136](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3136).
+- Ajout d'un template pour les pages index et script de migration [#3122](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3122).
+- Correction d'un espace au-dessus du breadcrumb sur les pages produit [#3121](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3121).
+- Augmentation de la durée de rétention des sauvegardes de la webapp [#3137](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3137).
+- Nombreuses mises à jour de dépendances (voir les commits pour plus de détails).
