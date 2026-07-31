@@ -1,29 +1,29 @@
-## Changelog : rapportnav2 (30 derniers jours, au 23 juillet 2026)
+## Changelog : rapportnav2 (30 derniers jours, au 30 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'administration des missions et des actions, notamment avec l'ajout d'une interface dédiée dans l'espace administrateur. Des corrections de performance et des ajustements de l'interface utilisateur ont également été apportés. L'intégration des données de pays via une API a été finalisée.
+Cette période a été marquée par d'importantes améliorations concernant l'intégration de SATI, notamment au niveau de l'interface utilisateur et du traitement des données. Des corrections de bugs et des optimisations de performance ont également été apportées, ainsi que des évolutions sur l'administration des missions et des infractions.
 
 ### Évolutions fonctionnelles
-- Ajout d'une interface d'administration pour gérer les actions, incluant la possibilité de définir le propriétaire de l'action.
-- Possibilité de rechercher les missions par ID et ID interne dans l'interface d'administration.
-- Pré-remplissage de la table des missions et synchronisation avec les données environnementales.
-- Intégration des données de pays via une API.
-- Amélioration de l'interface PAM pour la gestion de l'équipage des missions.
-- Correction de l'ordre des options dans les radios multiples (MultiRadio) pour les Fish [#1033](https://github.com/MTES-MCT/rapportnav2/issues/1033).
-- Correction d'un bug empêchant la suppression d'une infraction sur les Fish Controls [#1461](https://github.com/MTES-MCT/rapportnav2/issues/1461).
-- Correction d'un bug concernant la sauvegarde des données Sati.
+- **SATI :** Intégration et amélioration de l'interface utilisateur pour SATI, avec de nouveaux composants et la gestion des perspectives d'inspecteur.
+- **Formulaire M1 :** Amélioration du formulaire M1 via la PR [#1444](https://github.com/MTES-MCT/rapportnav2/pulls/1444).
+- **Administration :** Ajout de fonctionnalités de recherche par ID et ID interne dans l'interface d'administration.
+- **Missions :** Intégration des missions dans l'interface d'administration.
+- **Données pays :** Mise à jour de la source des données pays via une API.
+- **Gestion des infractions :** Amélioration de la suppression des infractions sur l'interface Fish Controls.
+- **Gestion des actions :** Ajout d'actions à l'interface d'administration.
 
 ### Évolutions techniques
-- Optimisation des performances lors du calcul du statut des actions en utilisant les données en mémoire plutôt que des requêtes répétées à la base de données.
-- Amélioration des performances des requêtes sur les infractions et les contrôles grâce à l'utilisation de `@BatchSize`.
-- Mise à jour de la version de Spring Boot vers la 4.1.0.
-- Utilisation de mocks dans les tests pour améliorer la fiabilité et la rapidité.
-- Nettoyage de fichiers backend inutiles.
-- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+- **React Router :** Mise à jour vers la version 8 de la librairie React Router.
+- **Spring Boot :** Mise à jour vers la version 4.1.0 de Spring Boot.
+- **Refactoring :** Nettoyage et refactoring du code backend, notamment la suppression de données obsolètes et la correction de l'intégrité des données.
+- **Performance :** Amélioration des performances en évitant la récupération répétée des dates de mission.
+- **Tests :** Utilisation de mocks dans les tests.
+- **Dépendances :** Mise à jour de certaines dépendances frontend.
 
 ### Autres changements
-- Correction de règles de validation.
-- Correction de problèmes de dépendances.
-- Prévention de la duplication des informations générales et des cibles.
-- Mise à jour des librairies frontend.
-- Intégration des modifications de la branche `main` dans les branches de fonctionnalités.
+- Configuration des services SATI activés.
+- Correction de bugs mineurs et améliorations diverses.
+- Mise à jour de la documentation.
+- Correction de la gestion des valeurs nulles pour le principal inspector et les types d'infraction.
+- Correction d'un problème de suppression des cibles.
+- Correction d'un problème de pagination dans l'administration.

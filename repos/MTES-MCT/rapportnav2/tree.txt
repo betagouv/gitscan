@@ -205,13 +205,13 @@
 │   │   │   │                   │   │   │   │   ├── AddressEntity.kt
 │   │   │   │                   │   │   │   │   ├── AuthorityType.kt
 │   │   │   │                   │   │   │   │   ├── ContactEntity.kt
-│   │   │   │                   │   │   │   │   ├── PartyType.kt
 │   │   │   │                   │   │   │   │   ├── SatiEntity.kt
 │   │   │   │                   │   │   │   │   ├── SatiEntityMapper.kt
 │   │   │   │                   │   │   │   │   ├── SatiInspectorEntity.kt
 │   │   │   │                   │   │   │   │   ├── SatiJpeEntity.kt
 │   │   │   │                   │   │   │   │   ├── SatiModuleType.kt
 │   │   │   │                   │   │   │   │   ├── SatiPartyEntity.kt
+│   │   │   │                   │   │   │   │   ├── SatiPartyType.kt
 │   │   │   │                   │   │   │   │   └── SatiVesselEntity.kt
 │   │   │   │                   │   │   │   └── v2
 │   │   │   │                   │   │   │       ├── BaseMissionActionEntity.kt
@@ -342,6 +342,7 @@
 │   │   │   │                   │   │   │   │   ├── ResolveActionOwnerId.kt
 │   │   │   │                   │   │   │   │   └── v2
 │   │   │   │                   │   │   │   │       ├── AbstractGetMissionAction.kt
+│   │   │   │                   │   │   │   │       ├── ComputeActionValidityAndRecomputeMission.kt
 │   │   │   │                   │   │   │   │       ├── CreateNavAction.kt
 │   │   │   │                   │   │   │   │       ├── DeleteNavAction.kt
 │   │   │   │                   │   │   │   │       ├── DeleteTarget.kt
@@ -425,7 +426,9 @@
 │   │   │   │                   │   │   │       ├── ProcessMissionActionTarget.kt
 │   │   │   │                   │   │   │       ├── ProcessMissionCrew.kt
 │   │   │   │                   │   │   │       ├── ProcessSati.kt
+│   │   │   │                   │   │   │       ├── RecomputeMissionValidation.kt
 │   │   │   │                   │   │   │       ├── SoftDeleteMission.kt
+│   │   │   │                   │   │   │       ├── SyncMissionValidation.kt
 │   │   │   │                   │   │   │       ├── UpdateGeneralInfo.kt
 │   │   │   │                   │   │   │       ├── UpdateGeneralInfoAdmin.kt
 │   │   │   │                   │   │   │       ├── administrations
@@ -987,13 +990,20 @@
 │   │   │       │       ├── V1.2026.06.22.15.55__update_sati_table_and_correspondance.sql
 │   │   │       │       ├── V1.2026.06.30.10.00__delete_duplicate_target2_external_id.sql
 │   │   │       │       ├── V1.2026.07.01.10.00__unique_constraint_general_info_mission_id.sql
+│   │   │       │       ├── V1.2026.07.01.20.55__update_sati_inspector_table.sql
 │   │   │       │       ├── V1.2026.07.16.10.00__prepopulate_mission_and_external_mission_id.sql
 │   │   │       │       ├── V1.2026.07.20.10.00__backfill_mission_action_owner_id.sql
+│   │   │       │       ├── V1.2026.07.21.10.00__persist_mission_validation.sql
+│   │   │       │       ├── V1.2026.07.21.15.04__update_sati_vessel_table.sql
+│   │   │       │       ├── V1.2026.07.23.11.10__update_sati_vessel_table_m3.sql
 │   │   │       │       └── V1.2026.25.03.17.00__control_admin_new_field.sql
 │   │   │       ├── global
 │   │   │       │   └── migration
 │   │   │       │       ├── migration_mission_action.sql
 │   │   │       │       └── migration_target_control_infraction.sql
+│   │   │       ├── json
+│   │   │       │   └── stubs
+│   │   │       │       └── countries.json
 │   │   │       ├── log4j2.xml
 │   │   │       ├── template_export_aem_PAM.xlsx
 │   │   │       ├── template_export_rapport_patrouille_PAM.docx
@@ -1144,6 +1154,7 @@
 │   │       │                   │   │   │   │   ├── UpdateFishActionTest.kt
 │   │       │                   │   │   │   │   ├── UpdateNavActionTest.kt
 │   │       │                   │   │   │   │   └── v2
+│   │       │                   │   │   │   │       ├── ComputeActionValidityAndRecomputeMissionTest.kt
 │   │       │                   │   │   │   │       ├── DeleteNavActionTest.kt
 │   │       │                   │   │   │   │       ├── DeleteTargetTest.kt
 │   │       │                   │   │   │   │       ├── GetFishActionListByMissionIdTest.kt
@@ -1215,7 +1226,9 @@
 │   │       │                   │   │   │       ├── PatchMissionEnvTest.kt
 │   │       │                   │   │   │       ├── PatchNavMissionTest.kt
 │   │       │                   │   │   │       ├── ProcessMissionActionTargetTest.kt
+│   │       │                   │   │   │       ├── RecomputeMissionValidationTest.kt
 │   │       │                   │   │   │       ├── SoftDeleteMissionTest.kt
+│   │       │                   │   │   │       ├── SyncMissionValidationTest.kt
 │   │       │                   │   │   │       ├── UpdateGeneralInfoAdminTest.kt
 │   │       │                   │   │   │       ├── UpdateGeneralInfoTest.kt
 │   │       │                   │   │   │       ├── administrations
@@ -1809,6 +1822,7 @@
 │   │   │   │   │   │   └── ui
 │   │   │   │   │   │       ├── __tests__
 │   │   │   │   │   │       │   ├── __snapshots__
+│   │   │   │   │   │       │   │   ├── banner-yes-no.test.tsx.snap
 │   │   │   │   │   │       │   │   ├── dialog-question.test.tsx.snap
 │   │   │   │   │   │       │   │   ├── formik-coordonates-input-dmd.test.tsx.snap
 │   │   │   │   │   │       │   │   ├── formik-date-range-picker.test.tsx.snap
@@ -1837,6 +1851,7 @@
 │   │   │   │   │   │       │   │   ├── vessel-name.test.tsx.snap
 │   │   │   │   │   │       │   │   └── yes-no-toogle.test.tsx.snap
 │   │   │   │   │   │       │   ├── action-header-completeness-for-stats.test.tsx
+│   │   │   │   │   │       │   ├── banner-yes-no.test.tsx
 │   │   │   │   │   │       │   ├── dialog-question.test.tsx
 │   │   │   │   │   │       │   ├── formik-coordonates-input-dmd.test.tsx
 │   │   │   │   │   │       │   ├── formik-date-range-picker.test.tsx
@@ -1873,13 +1888,14 @@
 │   │   │   │   │   │       │   ├── vessel-name.test.tsx
 │   │   │   │   │   │       │   └── yes-no-toogle.test.tsx
 │   │   │   │   │   │       ├── action-*.tsx  (5 files)
+│   │   │   │   │   │       ├── banner-yes-no.tsx
 │   │   │   │   │   │       ├── basic-dialog-form.tsx
 │   │   │   │   │   │       ├── basic-item-table.tsx
 │   │   │   │   │   │       ├── dialog-question.tsx
 │   │   │   │   │   │       ├── foreign-establishment.tsx
-│   │   │   │   │   │       ├── formik-*.tsx  (17 files)
+│   │   │   │   │   │       ├── formik-*.tsx  (18 files)
 │   │   │   │   │   │       ├── general-information-header.tsx
-│   │   │   │   │   │       ├── icon-*.tsx  (6 files)
+│   │   │   │   │   │       ├── icon-*.tsx  (7 files)
 │   │   │   │   │   │       ├── mission-*.tsx  (12 files)
 │   │   │   │   │   │       ├── search-city.tsx
 │   │   │   │   │   │       ├── search-establishment.tsx
@@ -1931,8 +1947,10 @@
 │   │   │   │   │   │   ├── use-action-status.tsx
 │   │   │   │   │   │   ├── use-action-target.tsx
 │   │   │   │   │   │   ├── use-agent.tsx
+│   │   │   │   │   │   ├── use-authority.tsx
 │   │   │   │   │   │   ├── use-control-check.tsx
 │   │   │   │   │   │   ├── use-coordinate.tsx
+│   │   │   │   │   │   ├── use-countries.tsx
 │   │   │   │   │   │   ├── use-date.tsx
 │   │   │   │   │   │   ├── use-daterange-navigator.tsx
 │   │   │   │   │   │   ├── use-delay-formik.tsx
@@ -1955,6 +1973,8 @@
 │   │   │   │   │   │   ├── use-offline-since.tsx
 │   │   │   │   │   │   ├── use-online-manager.tsx
 │   │   │   │   │   │   ├── use-password.tsx
+│   │   │   │   │   │   ├── use-pno.tsx
+│   │   │   │   │   │   ├── use-resources.tsx
 │   │   │   │   │   │   ├── use-sector.tsx
 │   │   │   │   │   │   ├── use-table-basic-item.tsx
 │   │   │   │   │   │   ├── use-timeline-action.tsx
@@ -1988,6 +2008,7 @@
 │   │   │   │   │   │   ├── use-agent-roles.tsx
 │   │   │   │   │   │   ├── use-agent-services.tsx
 │   │   │   │   │   │   ├── use-agents.tsx
+│   │   │   │   │   │   ├── use-country-service.tsx
 │   │   │   │   │   │   ├── use-create-action.tsx
 │   │   │   │   │   │   ├── use-delete-action.tsx
 │   │   │   │   │   │   ├── use-delete-mission.tsx
@@ -1999,7 +2020,6 @@
 │   │   │   │   │   │   ├── use-natinf-service.tsx
 │   │   │   │   │   │   ├── use-port-service.tsx
 │   │   │   │   │   │   ├── use-prefetch-static-data.tsx
-│   │   │   │   │   │   ├── use-resources-control-unit.tsx
 │   │   │   │   │   │   ├── use-resources.tsx
 │   │   │   │   │   │   ├── use-update-action.tsx
 │   │   │   │   │   │   ├── use-update-general-info.tsx
@@ -2012,6 +2032,7 @@
 │   │   │   │   │       ├── address.ts
 │   │   │   │   │       ├── basic-action.ts
 │   │   │   │   │       ├── control-unit-types.ts
+│   │   │   │   │       ├── country-type.ts
 │   │   │   │   │       ├── crew-type.ts
 │   │   │   │   │       ├── etablishment.ts
 │   │   │   │   │       ├── inquiry.ts
@@ -2025,9 +2046,11 @@
 │   │   │   │   │       ├── network-types.ts
 │   │   │   │   │       ├── owner-type.ts
 │   │   │   │   │       ├── passenger-type.ts
+│   │   │   │   │       ├── pno-type.ts
 │   │   │   │   │       ├── port-type.ts
 │   │   │   │   │       ├── rescue-type.ts
 │   │   │   │   │       ├── role-type.ts
+│   │   │   │   │       ├── sati.ts
 │   │   │   │   │       ├── sector-types.ts
 │   │   │   │   │       ├── service-agents-types.ts
 │   │   │   │   │       ├── service-types.ts
@@ -2036,6 +2059,45 @@
 │   │   │   │   │       ├── user.ts
 │   │   │   │   │       ├── vessel-type.ts
 │   │   │   │   │       └── visit-security-type.ts
+│   │   │   │   ├── fish-sati
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── elements
+│   │   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   │   ├── fish-control-conclusion.test.tsx
+│   │   │   │   │   │   │   │   ├── fish-control-others.test.tsx
+│   │   │   │   │   │   │   │   └── fish-control-polpeche.test.tsx
+│   │   │   │   │   │   │   ├── fish-control-conclusion.tsx
+│   │   │   │   │   │   │   ├── fish-control-infos-agent.tsx
+│   │   │   │   │   │   │   ├── fish-control-infos-beneficiary.tsx
+│   │   │   │   │   │   │   ├── fish-control-infos-boat.tsx
+│   │   │   │   │   │   │   ├── fish-control-infos-master.tsx
+│   │   │   │   │   │   │   ├── fish-control-infos-operator.tsx
+│   │   │   │   │   │   │   ├── fish-control-infos-owner.tsx
+│   │   │   │   │   │   │   ├── fish-control-infos.tsx
+│   │   │   │   │   │   │   ├── fish-control-others.tsx
+│   │   │   │   │   │   │   └── fish-control-polpeche.tsx
+│   │   │   │   │   │   ├── layout
+│   │   │   │   │   │   │   └── inspector-item-layout.tsx
+│   │   │   │   │   │   └── ui
+│   │   │   │   │   │       ├── add-contact-form.tsx
+│   │   │   │   │   │       ├── address-form.tsx
+│   │   │   │   │   │       ├── contact-form-item.tsx
+│   │   │   │   │   │       ├── inpector-list.tsx
+│   │   │   │   │   │       ├── inspector-item-footer.tsx
+│   │   │   │   │   │       ├── inspector-item-form.tsx
+│   │   │   │   │   │       ├── inspector-item-header.tsx
+│   │   │   │   │   │       ├── inspector-item-new.tsx
+│   │   │   │   │   │       ├── inspector-item-other.tsx
+│   │   │   │   │   │       ├── inspector-item-principal.tsx
+│   │   │   │   │   │       ├── inspector-item.tsx
+│   │   │   │   │   │       ├── jpe-form.tsx
+│   │   │   │   │   │       ├── jpe-message.tsx
+│   │   │   │   │   │       ├── jpe-summary.tsx
+│   │   │   │   │   │       ├── labeled-value.tsx
+│   │   │   │   │   │       ├── party-form.tsx
+│   │   │   │   │   │       └── resource-form.tsx
+│   │   │   │   │   └── hooks
+│   │   │   │   │       └── use-sati.tsx
 │   │   │   │   ├── inquiry
 │   │   │   │   │   ├── components
 │   │   │   │   │   │   ├── elements
@@ -2113,7 +2175,9 @@
 │   │   │   │   │   │   ├── elements
 │   │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   │   ├── mission-action-item-env-control.test.tsx
+│   │   │   │   │   │   │   │   ├── mission-action-item-fish-control-real-payload.test.tsx
 │   │   │   │   │   │   │   │   ├── mission-action-item-fish-control.test.tsx
+│   │   │   │   │   │   │   │   ├── mission-action-item-illegal-immigration-real-payload.test.tsx
 │   │   │   │   │   │   │   │   └── mission-action-item-nav-control.test.tsx
 │   │   │   │   │   │   │   ├── mission-action-item-anti-pollution.tsx
 │   │   │   │   │   │   │   ├── mission-action-item-baaem-performance.tsx
@@ -2151,18 +2215,11 @@
 │   │   │   │   │   │   │   └── mission-action-item-vigimer.tsx
 │   │   │   │   │   │   └── ui
 │   │   │   │   │   │       ├── __tests__
-│   │   │   │   │   │       │   ├── fish-control-conclusion.test.tsx
-│   │   │   │   │   │       │   ├── fish-control-others.test.tsx
-│   │   │   │   │   │       │   ├── fish-control-polpeche.test.tsx
 │   │   │   │   │   │       │   ├── mission-action-control-sector-form.test.tsx
 │   │   │   │   │   │       │   ├── mission-action-env-themes.test.tsx
 │   │   │   │   │   │       │   ├── mission-action-formik-coordonate-input-dmd.test.tsx
 │   │   │   │   │   │       │   ├── mission-action-location-picker.test.tsx
 │   │   │   │   │   │       │   └── mission-action-nav-control-warning.test.tsx
-│   │   │   │   │   │       ├── fish-control-conclusion.tsx
-│   │   │   │   │   │       ├── fish-control-infos.tsx
-│   │   │   │   │   │       ├── fish-control-others.tsx
-│   │   │   │   │   │       ├── fish-control-polpeche.tsx
 │   │   │   │   │   │       ├── mission-action-anti-pollution-warning.tsx
 │   │   │   │   │   │       ├── mission-action-control-nautical-leisure-form.tsx
 │   │   │   │   │   │       ├── mission-action-control-sector-form.tsx
@@ -2177,6 +2234,7 @@
 │   │   │   │   │   │       └── nav-control-conclusion.tsx
 │   │   │   │   │   ├── hooks
 │   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   ├── use-mission-action-fish-control-date-regression.test.tsx
 │   │   │   │   │   │   │   └── use-mission-action-nav-control.test.tsx
 │   │   │   │   │   │   ├── use-mission-action-anti-pollution.tsx
 │   │   │   │   │   │   ├── use-mission-action-env-control.tsx
@@ -2206,11 +2264,9 @@
 │   │   │   │   │   │       ├── __tests__
 │   │   │   │   │   │       │   ├── __snapshots__
 │   │   │   │   │   │       │   │   ├── mission-control-nav-summary.test.tsx.snap
-│   │   │   │   │   │       │   │   ├── mission-control-title.test.tsx.snap
-│   │   │   │   │   │       │   │   └── mission-control-unit-confirm.test.tsx.snap
+│   │   │   │   │   │       │   │   └── mission-control-title.test.tsx.snap
 │   │   │   │   │   │       │   ├── mission-control-nav-summary.test.tsx
-│   │   │   │   │   │       │   ├── mission-control-title.test.tsx
-│   │   │   │   │   │       │   └── mission-control-unit-confirm.test.tsx
+│   │   │   │   │   │       │   └── mission-control-title.test.tsx
 │   │   │   │   │   │       ├── fish-control-administrative-section.tsx
 │   │   │   │   │   │       ├── fish-control-engines-section.tsx
 │   │   │   │   │   │       ├── fish-control-other-observation-section.tsx
@@ -2220,8 +2276,7 @@
 │   │   │   │   │   │       ├── mission-control-fish-fleet-segment-section.tsx
 │   │   │   │   │   │       ├── mission-control-fomik-multi-radio.tsx
 │   │   │   │   │   │       ├── mission-control-nav-summary.tsx
-│   │   │   │   │   │       ├── mission-control-title.tsx
-│   │   │   │   │   │       └── mission-control-unit-confirm.tsx
+│   │   │   │   │   │       └── mission-control-title.tsx
 │   │   │   │   │   ├── hooks
 │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   ├── use-abstract-control.test.tsx
@@ -2273,6 +2328,8 @@
 │   │   │   │   │   │       ├── mission-infraction-type-tag.tsx
 │   │   │   │   │   │       └── mission-infraction-vessel-form.tsx
 │   │   │   │   │   ├── hooks
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   └── use-infraction-form.test.tsx
 │   │   │   │   │   │   ├── use-infraction-form.tsx
 │   │   │   │   │   │   └── use-infraction.tsx
 │   │   │   │   │   └── types
@@ -2577,4 +2634,4 @@
 │   └── docker-compose.yml
 ├── release-please-config.json
 └── sonar-project.properties
-503 directories, 2112 files
+513 directories, 2161 files

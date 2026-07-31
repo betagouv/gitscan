@@ -1,5 +1,83 @@
 # Changelog
 
+## [2.93.3](https://github.com/MTES-MCT/rapportnav2/compare/v2.93.2...v2.93.3) (2026-07-30)
+
+
+### Bug Fixes
+
+* **sati:** make principalInspector nullable ([1dabccb](https://github.com/MTES-MCT/rapportnav2/commit/1dabccbff17dc2bb6fafb58db234c3ed22eae451))
+
+## [2.93.2](https://github.com/MTES-MCT/rapportnav2/compare/v2.93.1...v2.93.2) (2026-07-30)
+
+
+### Bug Fixes
+
+* **infractions:** enforce and guard around null infraction types ([c755703](https://github.com/MTES-MCT/rapportnav2/commit/c755703dff2f733c92ea5fc7209bb75de9a4e414))
+* **targets:** handle stale delete ([a237cce](https://github.com/MTES-MCT/rapportnav2/commit/a237ccec3e5de3acb0b198a757e46d86d9e842b2))
+
+## [2.93.1](https://github.com/MTES-MCT/rapportnav2/compare/v2.93.0...v2.93.1) (2026-07-28)
+
+
+### Bug Fixes
+
+* disable SATI in prod ([dcf9122](https://github.com/MTES-MCT/rapportnav2/commit/dcf912205d9b4bf43a8ed2ae88f365340aee8dc3))
+
+## [2.93.0](https://github.com/MTES-MCT/rapportnav2/compare/v2.92.0...v2.93.0) (2026-07-28)
+
+
+### Features
+
+* **router:** bump to react-router v8 ([f3cb8c0](https://github.com/MTES-MCT/rapportnav2/commit/f3cb8c080f4568e3ad900514517c25788b362998))
+
+## [2.92.0](https://github.com/MTES-MCT/rapportnav2/compare/v2.91.1...v2.92.0) (2026-07-28)
+
+
+### Features
+
+* **backend:** handle operator directly from Monitor ([d239ba2](https://github.com/MTES-MCT/rapportnav2/commit/d239ba2aacf712134e75549ca56e8f3b371e2f10))
+* **backend:** remove data enseignement + fix data integrity ([62875e2](https://github.com/MTES-MCT/rapportnav2/commit/62875e216470e45b7473de8407352714e6e20bd8))
+* **backend:** update satiInspector perspectives ([aef2fbb](https://github.com/MTES-MCT/rapportnav2/commit/aef2fbb8a9636f19509b09e1e650579424fa1a45))
+* **backend:** update satiPartyType ([a67a1ad](https://github.com/MTES-MCT/rapportnav2/commit/a67a1ad81b13246600b372b20c069cc22b0585e7))
+* **frontend:** apply fix from revie ([edff0eb](https://github.com/MTES-MCT/rapportnav2/commit/edff0eb3aa6121c4adc777a21ca22fdf3be6317e))
+* **frontend:** common component for sati ([4d45d81](https://github.com/MTES-MCT/rapportnav2/commit/4d45d81066e6605a3c0197d53b280b2be7a48a14))
+* **frontend:** create new component for  fish sati ([fd179b6](https://github.com/MTES-MCT/rapportnav2/commit/fd179b6d7715547c07f59274eb520f6c4e58179b))
+* **frontend:** disabled selected inspector ([479b911](https://github.com/MTES-MCT/rapportnav2/commit/479b91107614ab1ed8293224daf2b186a31b9cb2))
+* **frontend:** feature flag ([eeb4d20](https://github.com/MTES-MCT/rapportnav2/commit/eeb4d20aa58dd4fb6727a38ada2a06c1ba9b3edd))
+* **frontend:** fix small issues ([f6baea6](https://github.com/MTES-MCT/rapportnav2/commit/f6baea64c210493ed778c7c0ba106b8bc217fa3a))
+* **frontend:** update tabs with sati components ([f2b6297](https://github.com/MTES-MCT/rapportnav2/commit/f2b62975c72c0855c66c2282c40940884e2d27bf))
+
+
+### Bug Fixes
+
+* **admin:** pagination ([da08c7c](https://github.com/MTES-MCT/rapportnav2/commit/da08c7cc3ea68193eaddbbeadcaf73ec6d4655f0))
+* **backend:** add last_port_is_not_same ([edc83a7](https://github.com/MTES-MCT/rapportnav2/commit/edc83a7942f0f5f2e9c20aa8e29e318f40f5f3e5))
+* **backend:** build ([97bf0f3](https://github.com/MTES-MCT/rapportnav2/commit/97bf0f3320d9ff19f3197b6b072cc8800f189aea))
+* **backend:** reviews duplications ([56fd1d0](https://github.com/MTES-MCT/rapportnav2/commit/56fd1d09b0e8dfda28025baae4f04f81c842f6ee))
+* **frontend:** build ([6bb306b](https://github.com/MTES-MCT/rapportnav2/commit/6bb306b8b41d213bb2779499cbd84f7bc6d01566))
+* **frontend:** build and test issues ([738604f](https://github.com/MTES-MCT/rapportnav2/commit/738604fc7e87cfff1d419b40776d9b5ab86aa4bf))
+* **frontend:** check backend trigger through null ([6fb4910](https://github.com/MTES-MCT/rapportnav2/commit/6fb49103f03d78832b2dfdd3c35ce13a08ea2260))
+* **frontend:** double call from sati or others ([ad1ba39](https://github.com/MTES-MCT/rapportnav2/commit/ad1ba3950c10217ebe2a202aac0533a2ac41114e))
+* **frontend:** remove serviceId ([23a16b3](https://github.com/MTES-MCT/rapportnav2/commit/23a16b31e039fb232f027814055a530f531d485b))
+
+## [2.91.1](https://github.com/MTES-MCT/rapportnav2/compare/v2.91.0...v2.91.1) (2026-07-27)
+
+
+### Bug Fixes
+
+* **Mission:** service should now be treated as nullable ([7cf5fef](https://github.com/MTES-MCT/rapportnav2/commit/7cf5fef7c39c61999bddc2caaafb92010c884740))
+
+## [2.91.0](https://github.com/MTES-MCT/rapportnav2/compare/v2.90.0...v2.91.0) (2026-07-27)
+
+
+### Features
+
+* **mission:** store validation status ([f2b56d7](https://github.com/MTES-MCT/rapportnav2/commit/f2b56d7d91e8515b38a2a852ba2af80447b1de44))
+
+
+### Bug Fixes
+
+* perf improvement by not refetching mission dates for each action ([6ea3dc1](https://github.com/MTES-MCT/rapportnav2/commit/6ea3dc186848ac00ce0c5c31bc8d4c663c4af32e))
+
 ## [2.90.0](https://github.com/MTES-MCT/rapportnav2/compare/v2.89.0...v2.90.0) (2026-07-21)
 
 
