@@ -1,8 +1,12 @@
-## Changelog : authentik-sso (30 derniers jours, au 20 juillet 2026)
+## Changelog : authentik-sso (30 derniers jours, au 30 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les efforts se sont concentrés sur la mise en place de l'infrastructure initiale du projet, incluant l'initialisation du dépôt et la création des fichiers Docker nécessaires au déploiement de l'application. Ces fondations permettront de faciliter le développement et le déploiement futurs d'authentik-sso.
+Ce mois-ci, les efforts de développement se sont concentrés sur la mise en place de l'infrastructure initiale du projet, incluant la création des fichiers Docker pour faciliter le déploiement et la configuration. Une mise à jour de la version de Fro a également été effectuée.
+
+### Évolutions fonctionnelles
+- Création des fichiers Docker pour simplifier le déploiement et l'exécution d'authentik-sso. [#05ec72a](https://github.com/gip-inclusion/authentik-sso/commit/05ec72a)
 
 ### Évolutions techniques
-- Initialisation du dépôt GitHub. [#1](https://github.com/gip-inclusion/authentik-sso/pull/1)
-- Création des fichiers Docker pour la containerisation de l'application. [#2](https://github.com/gip-inclusion/authentik-sso/pull/2)
+- Initialisation du dépôt. [#d90516c](https://github.com/gip-inclusion/authentik-sso/commit/d90516c)
+- Mise à jour de la version de Fro de 2026.2.6 à 2026.5.6. [#251d0f3](https://github.com/gip-inclusion/authentik-sso/commit/251d0f3)
+- Correction d'une valeur de paramètre. [#57ad8fd](https://github.com/gip-inclusion/authentik-sso/commit/57ad8fd)
