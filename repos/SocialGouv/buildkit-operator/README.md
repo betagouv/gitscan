@@ -204,16 +204,18 @@ curl -XPOST http://buildkit-operator-buildd.buildkit-operator.svc:8080/prewarm -
 curl -XPOST http://buildkit-operator-buildd.buildkit-operator.svc:8080/route   -d '{"repo":"...","arch":"amd64","untrusted":true}'   # fork PR -> isolated daemon
 ```
 
-`buildd` HTTP API: `POST /route` (ensure + wait Ready, returns the mTLS endpoint + optional cache
-reference), `POST /prewarm` (anticipatory scale-up, returns immediately), `GET /healthz`, and
+`buildd` HTTP API: `POST /route` (ensure + wait Ready, returns the mTLS endpoint, a `buildId` and an
+optional cache reference), `POST /complete` (`{key, buildId}` — releases the build so the daemon can
+idle out), `POST /prewarm` (anticipatory scale-up, returns immediately), `GET /healthz`, and
 Prometheus on `--metrics-addr` (`:8081`).
 
 ---
 
 ## Install
 
-Prerequisites: a Kubernetes cluster with a CSI that supports snapshots (OVH MKS gen2 +
-`csi-cinder-snapclass-in-use-v1`), `kubectl`, `helm`, and the VolumeSnapshot CRDs.
+Prerequisites: a Kubernetes cluster with a dynamic-provisioning StorageClass, `kubectl` and `helm`.
+Durability snapshots are opt-in (`snapshotClassName`) and only then need a snapshot-capable CSI plus the
+VolumeSnapshot CRDs — on OVH MKS, gen2 + `csi-cinder-snapclass-in-use-v1`.
 
 ```bash
 # 1. CRDs
@@ -254,7 +256,7 @@ spec:
   tier: warm                    # hot (never scale-to-zero) | warm | cold
   idleTimeoutSec: 900           # wake window before scale-to-zero
   cacheVolumeGi: 60             # gen2: throughput scales with size
-  storageClass: csi-cinder-high-speed-gen2
+  storageClass: ""                # "" => the operator default (--default-storage-class), else the cluster's
   snapshotEverySec: 0           # durability snapshot cadence (0 = off)
   restoreFromSnapshot: ""       # seed the cache PVC from a VolumeSnapshot (DR / new cluster)
   fanout: 0                     # extra CoW clone daemons for a saturated project (0 = none)

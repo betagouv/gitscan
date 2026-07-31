@@ -1,44 +1,42 @@
 {
   "url": "https://github.com/SocialGouv/buildkit-operator",
   "name": "buildkit-operator",
-  "description": "L'opérateur buildkit fournit un service de construction BuildKit distribué, avec un `buildkitd` dédié par projet et architecture, sur Kubernetes ou un hôte unique. Il offre une mise en cache rapide, une élasticité et une durabilité, sans modifier BuildKit, containerd ou le snapshotter.",
+  "description": "Cet opérateur Kubernetes permet de créer un service de construction distribué BuildKit, avec un `buildkitd` dédié par projet et architecture. Il offre une mise en cache rapide et élastique, sans nécessiter de modifications à BuildKit, containerd ou au snapshotter.",
   "language": "Go",
   "features": [
-    "Authentification & Accès",
-    "Gestion des utilisateurs & Permissions",
+    "Gestion documentaire & Fichiers",
+    "API & Intégrations",
     "Sécurité & Conformité",
-    "Gestion des fichiers",
-    "Notifications & Alertes",
     "Monitoring & Logs",
-    "Gestion métier générale"
+    "Collaboration & Workflow",
+    "Gestion des utilisateurs & Permissions",
+    "Notifications & Alertes"
   ],
   "audience": "Professionnels",
   "dependencies": [
+    "Kubernetes",
     "BuildKit",
     "containerd",
-    "Kubernetes",
-    "Helm",
-    "Go"
+    "Docker",
+    "Helm"
   ],
   "components": [
     "API REST & GraphQL",
     "Kubernetes & Helm",
-    "TypeScript / JavaScript",
     "Docker & Conteneurs",
-    "PostgreSQL & SQL"
+    "TypeScript / JavaScript",
+    "Python (scripts & backend)"
   ],
   "auth": {
     "methods": [
-      "oauth2",
-      "jwt",
-      "sso"
+      "none"
     ]
   },
-  "tests": "Tests unitaires et d'intégration",
+  "tests": "Tests unitaires",
   "workflows": [
-    "CI/CD avec GitHub Actions"
+    "CI/CD workflows from .github/workflows"
   ],
-  "lastActivity": "2026-07-27T00:00:00Z",
+  "lastActivity": "2026-07-29T00:00:00Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -49,9 +47,7 @@
     "TypeScript",
     "Déploiement & Hosting",
     "Python",
-    "Bases de données SQL",
     "Sécurité & Auth",
-    "JavaScript",
-    "Docker & Conteneurs"
+    "CI/CD & GitHub Actions"
   ]
 }

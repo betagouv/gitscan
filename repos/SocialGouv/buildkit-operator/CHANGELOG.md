@@ -1,5 +1,58 @@
 # Changelog
 
+## [0.21.0](https://github.com/SocialGouv/buildkit-operator/compare/v0.20.0...v0.21.0) (2026-07-29)
+
+## [0.20.0](https://github.com/SocialGouv/buildkit-operator/compare/v0.19.0...v0.20.0) (2026-07-29)
+
+### Bug Fixes
+
+* **buildd:** the buildId authorizes /complete when the identity has expired ([0003b24](https://github.com/SocialGouv/buildkit-operator/commit/0003b243339f658aea3da102ffdea0e1beccacbf))
+* keep OIDC ahead of the shared bearer, and unauthenticated callers off the limiter ([7802037](https://github.com/SocialGouv/buildkit-operator/commit/78020372070b42f94ca97dc17e018893ec8aa925))
+
+## [0.19.0](https://github.com/SocialGouv/buildkit-operator/compare/v0.18.0...v0.19.0) (2026-07-29)
+
+### Features
+
+* close the remaining ways a daemon disappears under a build ([42e1c11](https://github.com/SocialGouv/buildkit-operator/commit/42e1c112dcbde9175f277e4b81495d3decd439bc))
+
+### Bug Fixes
+
+* an idle daemon gets no disruption budget, and the gateway rollout can drain ([e2626ec](https://github.com/SocialGouv/buildkit-operator/commit/e2626ec358e6ddc3894cfdb1c216a5075c80985b))
+* wire the gateway drain flag, and guard chart/binary drift in CI ([40c5dc5](https://github.com/SocialGouv/buildkit-operator/commit/40c5dc5114c0731dfc5d26b9cb5329ec5b8fdffc))
+
+## [0.18.0](https://github.com/SocialGouv/buildkit-operator/compare/v0.17.0...v0.18.0) (2026-07-29)
+
+### Features
+
+* **controller:** drain a daemon before rolling its pod template ([e593b39](https://github.com/SocialGouv/buildkit-operator/commit/e593b39b7b3228a7c30e738123d64ed3d9d9bede))
+
+### Bug Fixes
+
+* **buildd:** stop advertising a daemon that is being replaced ([42e0330](https://github.com/SocialGouv/buildkit-operator/commit/42e03301ad81b44d271e3b0fba153d5185727e90))
+* **controller:** guarantee every build an hour before a forced roll ([077f50b](https://github.com/SocialGouv/buildkit-operator/commit/077f50b18637d138eebbe4f53f1763c15557ec00))
+
+## [0.17.0](https://github.com/SocialGouv/buildkit-operator/compare/v0.16.0...v0.17.0) (2026-07-29)
+
+### Features
+
+* **chart:** expose maxBuildSeconds ([4a221ef](https://github.com/SocialGouv/buildkit-operator/commit/4a221ef2b2470588fb00498f6dad2651b2441ef8))
+
+### Bug Fixes
+
+* **api,buildd,controller:** track inflight builds as timestamped entries ([e510894](https://github.com/SocialGouv/buildkit-operator/commit/e51089413d1b4436b2a42c43c993cd39cf0b7066))
+* **buildd,controller:** close the upgrade hazards found in adversarial review ([53105ea](https://github.com/SocialGouv/buildkit-operator/commit/53105ea3ddf4bcdddcf9b9ff1226ff4212861731))
+
+## [0.16.0](https://github.com/SocialGouv/buildkit-operator/compare/v0.15.2...v0.16.0) (2026-07-29)
+
+### Features
+
+* make cloud defaults configurable (generic k8s, still OVH) ([#3](https://github.com/SocialGouv/buildkit-operator/issues/3)) ([e154e86](https://github.com/SocialGouv/buildkit-operator/commit/e154e8632009c683f81a7b5a25b360053c13ca7a))
+* opt-in per-arch nodeSelector pinning for daemons (daemonScheduling.pinArch) ([#2](https://github.com/SocialGouv/buildkit-operator/issues/2)) ([a6656a2](https://github.com/SocialGouv/buildkit-operator/commit/a6656a2c52bb9ac244e87ea19d03fdf8f5ed55b2))
+
+### Bug Fixes
+
+* **builder:** the build's arch wins over the operator-wide nodeSelector ([89af0e6](https://github.com/SocialGouv/buildkit-operator/commit/89af0e6379bf898948c9190fdc09383d1277cd2d))
+
 ## [0.15.2](https://github.com/SocialGouv/buildkit-operator/compare/v0.15.1...v0.15.2) (2026-07-27)
 
 ## [0.15.1](https://github.com/SocialGouv/buildkit-operator/compare/v0.15.0...v0.15.1) (2026-07-27)

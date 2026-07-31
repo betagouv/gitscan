@@ -1,28 +1,27 @@
-## Changelog : buildkit-operator (30 derniers jours, au 27 juillet 2026)
+## Changelog : buildkit-operator (30 derniers jours, au 29 juillet 2026)
 
 ### Résumé
-Ce mois-ci, l'opérateur buildkit a bénéficié d'améliorations significatives en matière de gestion du cache S3, de dimensionnement automatique des ressources et de support de nouveaux environnements de construction, notamment avec l'ajout d'un backend local basé sur Incus et ZFS. Ces améliorations visent à optimiser les performances, la fiabilité et la flexibilité de l'opérateur.
+Les dernières mises à jour de buildkit-operator améliorent la gestion des daemons de construction, notamment en introduisant un mécanisme de drainage avant les déploiements, une meilleure gestion des builds en cours et des configurations plus flexibles pour l'environnement cloud. Des améliorations de la sécurité et de la robustesse ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Ajout d'une politique de cache "cold" pour S3 : importation toujours activée, exportation périodique, permettant une gestion plus fine des coûts et des performances du cache.
-- Possibilité de définir des valeurs par défaut pour les projets lors de leur création, simplifiant la configuration.
-- Mise en place d'un dimensionnement adaptatif du cache, ajustant automatiquement la taille en fonction de la cadence de construction.
-- Ajout d'un support expérimental pour un backend local basé sur Incus et ZFS, offrant une alternative à Kubernetes pour les environnements de développement ou de test.
-- Amélioration de la gestion des références GitLab, permettant de faire confiance aux références du même projet par défaut.
-- Implémentation d'un mécanisme de nettoyage (lifecycle GC) des buckets S3 via un job hook, optimisant les coûts de stockage.
+- Possibilité de configurer des sélecteurs de nœuds spécifiques à l'architecture pour les daemons de construction, permettant un contrôle plus précis de leur placement. ([#2](https://github.com/SocialGouv/buildkit-operator/issues/2))
+- Configuration des stratégies de cache S3, avec une importation toujours active et une exportation périodique.
+- Exposition d'un paramètre `maxBuildSeconds` dans le chart Helm pour limiter la durée maximale d'exécution des builds.
+- Amélioration de la gestion des builds en cours pour éviter les problèmes lors des mises à jour et des déploiements.
+- Possibilité de configurer des defaults par projet au moment de la création du BuildProject.
+- Adaptation du keep-warm pour qu'il s'adapte au rythme des builds.
 
 ### Évolutions techniques
-- Renforcement de la robustesse de la gestion du cache S3 après une revue de sécurité.
-- Correction d'un problème de compteur inflight qui pouvait croître indéfiniment dans le contrôleur.
-- Refactorisation du code pour introduire une interface `Provisioner` pour les backends, facilitant l'ajout de nouveaux supports.
-- Mise à jour des actions GitHub pour utiliser Node 24.
-- Amélioration des tests unitaires pour maintenir une couverture de code supérieure à 85%.
-- Correction de problèmes liés au démarrage des VMs dans le backend local.
-- Amélioration de la gestion des erreurs lors de l'exportation du cache S3.
+- Refactorisation de la gestion des tokens de build pour stocker uniquement leur hash et centraliser la création des identités OIDC.
+- Suppression de la compatibilité avec les tokens en clair, privilégiant l'authentification OIDC.
+- Amélioration de la gestion des erreurs lors de l'exportation du cache S3 (passage en mode "best-effort").
+- Mise à jour des actions GitHub vers Node 24 pour une meilleure sécurité et performance.
+- Publication d'images pour l'architecture ARM64 en plus d'AMD64.
+- Amélioration de la robustesse du controller et du buildd face à des scénarios d'adversité.
+- Mise en place d'un système de drainage des daemons avant leur remplacement lors des déploiements.
 
 ### Autres changements
-- Documentation mise à jour pour refléter le support du backend Incus/ZFS.
-- Suppression des artefacts de construction locaux du fichier `.gitignore`.
-- Ajout de scripts de démarrage rapide pour tester le backend local sur des environnements cloud (OVH/Ubuntu).
-- Correction de la gestion des probes de readiness pour le buildkitd.
-- Amélioration de la gestion des secrets lors de l'utilisation des actions de construction sur différentes plateformes (GitHub, Forgejo, GitLab).
+- Documentation mise à jour pour refléter les nouvelles fonctionnalités et configurations.
+- Corrections de bugs mineurs et améliorations de la qualité du code.
+- Renouvellement de Renovate pour la gestion des dépendances.
+- Amélioration de la couverture des tests unitaires.
