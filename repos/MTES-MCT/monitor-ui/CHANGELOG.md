@@ -1,3 +1,30 @@
+## [24.57.1](https://github.com/MTES-MCT/monitor-ui/compare/v24.57.0...v24.57.1) (2026-07-30)
+
+### Bug Fixes
+
+* **components:** round before substring to prevent float rounding ([ad45937](https://github.com/MTES-MCT/monitor-ui/commit/ad459374eb61d9599e4727b796d596d92ee9e340))
+
+## [24.57.0](https://github.com/MTES-MCT/monitor-ui/compare/v24.56.1...v24.57.0) (2026-07-29)
+
+### Features
+
+* **fields:** add withAllChildrenInResults prop to display all children even if not march with search query ([4d74485](https://github.com/MTES-MCT/monitor-ui/commit/4d744853c8abaf67ce19f1d3655daa0e74d53335))
+* **fields:** update CheckTreePicker to display all children when one match with search query ([1cd69c5](https://github.com/MTES-MCT/monitor-ui/commit/1cd69c5686f7038bccd42a3cb663099ad2635f93))
+
+### Bug Fixes
+
+* **fields:** fix CheTreePicker with large dataset when withAllChildrenInResults is true ([24dea47](https://github.com/MTES-MCT/monitor-ui/commit/24dea47616861e18d077c4a7732193c0f4a8196a))
+* **fields:** rename prop "isMultiSelect" to "canSelectMultipleParents" ([9092287](https://github.com/MTES-MCT/monitor-ui/commit/909228728f47524d0b8b8a909b31d0b1187de56f))
+
+## [24.56.1](https://github.com/MTES-MCT/monitor-ui/compare/v24.56.0...v24.56.1) (2026-07-27)
+
+### Bug Fixes
+
+* **fields:** show full label on hover for truncated CheckTreePicker items ([32d4b06](https://github.com/MTES-MCT/monitor-ui/commit/32d4b062241ffbe2ee1947de17595895b9fbed2f))
+* **fields:** stop expand-icon overlay from blocking row title tooltip ([e3535cf](https://github.com/MTES-MCT/monitor-ui/commit/e3535cf4e320e2656a5362f5c4a0ca4310c428fb))
+* **libs:** avoid O(n²) fuse search in CustomSearch tree filtering ([e99201f](https://github.com/MTES-MCT/monitor-ui/commit/e99201f4912a0ae65c0af2ee76ece687c245707b))
+* **libs:** remove constraint on unused react-router-dom ([cac84b6](https://github.com/MTES-MCT/monitor-ui/commit/cac84b64e98be14cccce1f0d3ce7e42b964f72ce))
+
 ## [24.56.0](https://github.com/MTES-MCT/monitor-ui/compare/v24.55.6...v24.56.0) (2026-07-13)
 
 ### Features
