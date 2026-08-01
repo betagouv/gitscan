@@ -1,31 +1,69 @@
-## Changelog : les-emplois (30 derniers jours, au 2026-07-29)
+## Changelog : les-emplois (30 derniers jours, au 31 juillet 2026)
 
 ### Résumé
-Les dernières mises à jour de "les-emplois" se concentrent sur l'amélioration de l'expérience utilisateur lors de l'orientation des candidats, notamment en affinant la gestion des dates de contrat, en clarifiant les informations affichées et en corrigeant des problèmes de performance. Des améliorations significatives ont également été apportées à la sécurité, en particulier concernant l'authentification à deux facteurs (2FA) et la gestion des accès. Enfin, des corrections et des refactorisations techniques ont été effectuées pour améliorer la stabilité et la maintenabilité du code.
+Cette période a été marquée par d'importantes améliorations de l'expérience utilisateur, notamment dans le parcours d'insertion et la gestion des utilisateurs. Des corrections et des optimisations ont également été apportées pour améliorer la stabilité et la performance de la plateforme. L'intégration avec Dora a été renforcée pour une meilleure synchronisation des données.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'interface de saisie des dates de contrat lors de l'application, avec des informations contextuelles et une validation plus précise.
-- Affichage du dernier accompagnateur connu pour les demandeurs d'emploi, remplaçant l'ancien référent GPS.
-- Ajout de boutons pour assigner un utilisateur à un accompagnement et afficher les informations de contact de l'accompagnateur.
-- Amélioration de l'affichage des services et des structures lors de l'orientation, avec notamment l'ajout d'une carte pour visualiser les solutions recommandées (SPS).
-- Correction de l'affichage des conditions d'orientation et des informations sur les services DI.
-- Possibilité de rechercher des services directement via l'application, sans passer par l'API data-inclusion.
+- Possibilité de rechercher un utilisateur par email directement.
+- Synchronisation des statuts d'orientation depuis Dora via une tâche planifiée.
+- Correction du filtre de recherche de demandeurs d'emploi dans l'interface d'insertion.
+- Un utilisateur inactif ne peut plus être affecté comme dernier conseiller.
+- Amélioration des performances de récupération du dernier conseiller.
+- Suppression du formatage des prérequis pour les services DI.
+- Nettoyage d'une méthode inutilisée dans l'application web.
+- Limitation de la date de début de contrat pour les GEIQ, avec ajout d'explications.
+- Ouverture automatique de l'info-bulle sur les dates de contrat pour les GEIQ.
+- Correction de requêtes N+1 dans la liste des demandeurs d'emploi.
+- Ajout de support pour le rendu de markdown en ligne dans les templates.
+- Affichage du dernier accompagnateur connu au lieu du référent GPS.
+- Ajout de boutons pour afficher les informations de contact du dernier accompagnateur.
+- Ajout d'une action "auto-affectation" pour les conseillers.
+- Correction de l'affichage des communes dans l'application ASP.
 - Ajout d'un mécanisme de demande de rôle administrateur par email.
-- Amélioration de la gestion des alertes et des messages d'information pour les utilisateurs.
+- Ajout d'un email automatique pour les nouveaux administrateurs d'organisation.
+- Amélioration de l'affichage des pourcentages dans le formulaire.
+- Ajout de la possibilité de s'auto-affecter comme conseiller.
+- Ajout d'une nouvelle colonne pour les applications d'emploi dans le pilotage.
+- Ajout d'une fonctionnalité pour désactiver automatiquement les candidatures spontanées après 90 jours.
+- Ajout d'un modèle d'email pour la désactivation des candidatures spontanées.
+- Ajout d'une tâche cron pour désactiver les candidatures spontanées dans les entreprises inactives.
+- Correction de l'affichage des heures d'ouverture.
+- Mise à jour des liens de déclaration d'accessibilité.
+- Amélioration des messages d'avertissement pour l'activation de l'authentification à deux facteurs.
+- Correction de l'affichage des messages globaux lors de la configuration de l'authentification à deux facteurs.
+- Ajout d'exemples d'applications d'authentification à deux facteurs.
+- Suppression des URL obsolètes de déconnexion de FranceConnect.
+- Amélioration du flux de déconnexion de FranceConnect.
+- Suppression des autorisations de contournement pour les URL pro_connect.
+- Simplification des autorisations.
+- Suppression d'une redirection pour la connexion administrateur.
+- Ajout de la prise en charge des orientations dans l'interface d'administration des utilisateurs.
+- Ajout de la possibilité de lier l'iMER d'origine à l'orientation créée.
 - Ajout d'une commande pour importer les orientations depuis un fichier d'export Dora.
+- Ajout d'une fonctionnalité pour enregistrer les événements de mobilisation lors de l'orientation.
 
 ### Évolutions techniques
-- Optimisation des requêtes SQL pour améliorer la performance de l'affichage des demandeurs d'emploi (correction de requêtes 1+N).
-- Refactorisation du code lié à l'authentification FranceConnect et à la gestion des accès.
-- Mise à jour de plusieurs dépendances, notamment Django, Django-HTMX, et les librairies de sécurité.
-- Amélioration de la gestion des erreurs et des logs.
-- Correction de tests unitaires et ajout de nouveaux tests pour garantir la qualité du code.
-- Suppression de code obsolète et refactorisation de certaines parties du code pour améliorer la lisibilité et la maintenabilité.
-- Amélioration de la configuration des buckets MinIO pour les environnements de test et de développement.
+- Refactor de la synchronisation des statuts d'orientation depuis Dora.
+- Utilisation de NamedTuple pour améliorer la lisibilité du code.
+- Correction de bugs liés à la synchronisation des statuts d'orientation depuis Dora.
+- Mise à jour de la version de Huey.
+- Mise à jour de plusieurs dépendances (Django, Pandas, etc.).
+- Correction de problèmes de cache dans les actions CI/CD.
+- Amélioration de la configuration des buckets MinIO.
+- Correction de tests flaky.
+- Ajout de tests unitaires.
+- Amélioration de la gestion des erreurs.
+- Suppression de code mort.
+- Refactor de la gestion des autorisations.
 
 ### Autres changements
-- Mise à jour de la documentation et des commentaires dans le code.
-- Correction de liens et de références obsolètes.
-- Amélioration de la gestion des configurations et des variables d'environnement.
-- Correction de problèmes mineurs d'interface utilisateur et d'accessibilité.
-- Mise à jour des URLs et des noms de modèles liés à l'ancien module PE Connect (Pole Emploi Connect).
+- Mise à jour de la documentation.
+- Correction de fautes de frappe dans les messages utilisateur.
+- Amélioration des logs.
+- Correction de problèmes de compatibilité avec différentes versions de Python.
+- Suppression de configurations obsolètes.
+- Ajout de commentaires pour améliorer la lisibilité du code.
+- Mise à jour des URLs SIRENE.
+- Suppression de l'affichage en liste des résultats.
+- Correction de la configuration des tâches cron.
+- Amélioration de la gestion des erreurs dans les tests.
