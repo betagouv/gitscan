@@ -1,28 +1,25 @@
-## Changelog : hubee (30 derniers jours, au 28 juillet 2026)
+## Changelog : hubee (30 derniers jours, au 31 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions de Hubee se concentrent sur l'amélioration de la sécurité, la modernisation de l'infrastructure et la préparation du portail V2. Des corrections de vulnérabilités ont été apportées, la configuration de Renovate a été revue et l'intégration de Sentry permet un meilleur suivi des erreurs en production.
+Ce mois-ci, les évolutions de hubee se concentrent sur l'amélioration de la sécurité, la modernisation de l'infrastructure et la simplification de la configuration. Des corrections de vulnérabilités ont été appliquées, le format des logs a été mis à jour pour une meilleure intégration avec les outils de surveillance, et la configuration de l'environnement de production a été simplifiée.
 
 ### Évolutions fonctionnelles
-- **Sécurité:** Activation du `force_ssl` au niveau de l'application et ajout d'une politique de sécurité du contenu (CSP) minimale pour renforcer la sécurité. [#87](https://github.com/datagouv/hubee/pulls/87)
-- **Portail V2:** Début de l'implémentation de la base du portail V2 en utilisant le Design System FR (DSFR). [#73](https://github.com/datagouv/hubee/pulls/73)
-- **Monitoring:** Intégration de Sentry pour le suivi et la notification des erreurs en production. [#81](https://github.com/datagouv/hubee/pulls/81)
+- Acceptation des Conditions Générales d'Utilisation (CGU) du DSFR requises par la dernière version de dsfr-assets [#100](https://github.com/datagouv/hubee/issues/100).
+- Intégration de Sentry pour le suivi des erreurs, permettant une meilleure réactivité face aux incidents [#81](https://github.com/datagouv/hubee/issues/81).
+- Activation d'une Content Security Policy (CSP) minimale et gestion de `force_ssl` côté application pour renforcer la sécurité [#87](https://github.com/datagouv/hubee/issues/87).
 
 ### Évolutions techniques
-- **Configuration:** Suppression du fichier `credentials.yml.enc` et récupération des informations de connexion PostgreSQL via 4 variables d'environnement en production. [#94](https://github.com/datagouv/hubee/pulls/94)
-- **Logs:** Passage des logs au format `logfmt` recommandé par le CSIRT. [#90](https://github.com/datagouv/hubee/pulls/90)
-- **Renovate:** Configuration de Renovate pour être le seul robot de mise à jour et regroupement de la version Ruby sur `depName`. [#88](https://github.com/datagouv/hubee/pulls/88), [#92](https://github.com/datagouv/hubee/pulls/92), [#62](https://github.com/datagouv/hubee/pulls/62)
-- **CI/CD:** Restriction de la CI GitHub à l'analyse statique et à la sécurité. [#85](https://github.com/datagouv/hubee/pulls/85)
-- **Docker:** Ajout d'un argument de construction pour la gem `bundler` dans le Dockerfile. [#93](https://github.com/datagouv/hubee/pulls/93)
-- **Dépendances:** Mise à jour de plusieurs dépendances : `solid_cable` vers v4.0.2 [#100](https://github.com/datagouv/hubee/pulls/100), `rails_semantic_logger` vers v5.1.0, `simplecov` vers v1, `cucumber-rails` vers 4.1.0 [#84](https://github.com/datagouv/hubee/pulls/84), `aasm` vers 6.0.0 [#83](https://github.com/datagouv/hubee/pulls/83).
-- **Correction de vulnérabilités:** Correction de 4 vulnérabilités identifiées dans `loofah` et `rails-html-sanitizer`. [#95](https://github.com/datagouv/hubee/pulls/95)
-- **Correction de CVE:** Correction de la CVE dans `crass`. [#80](https://github.com/datagouv/hubee/pulls/80)
+- Mise à jour de la configuration Renovate pour une gestion centralisée des dépendances [#92](https://github.com/datagouv/hubee/issues/92).
+- Migration des logs au format `logfmt` pour une meilleure compatibilité avec les outils de surveillance et d'analyse [#90](https://github.com/datagouv/hubee/issues/90).
+- Suppression des patchs Ruby de la documentation pour simplifier la maintenance et la compréhension du code [#93](https://github.com/datagouv/hubee/issues/93).
+- Simplification de la configuration de l'environnement de production en dérivation des informations de connexion PostgreSQL à partir de variables d'environnement [#94](https://github.com/datagouv/hubee/issues/94).
+- Ajout d'une gem client API Hubee V1 (`hub-api-v1`) [#84](https://github.com/datagouv/hubee/issues/84).
+- Correction de vulnérabilités identifiées dans les dépendances Loofah et Rails HTML Sanitizer [#95](https://github.com/datagouv/hubee/issues/95) et Active Storage [#100](https://github.com/datagouv/hubee/issues/100).
+- Mise à jour de plusieurs dépendances : `solid_queue` (v1.5.0), `solid_cable` (v4.0.2), `standard` (v1.56.0), `rails_semantic_logger` (v5.1.0), `simplecov` (v1), `ruby` (v4.0.6), `cucumber-rails` (v4.1.0), `aasm` (v6.0.0).
 
 ### Autres changements
-- Suppression des patchs Ruby de la documentation.
-- Ajout de la gem `hub-api-v1` (client API Hubee V1).
-- Suppression du devcontainer, car non utilisé. [#82](https://github.com/datagouv/hubee/pulls/82)
-- Mise à jour de la version de PostgreSQL dans le devcontainer vers 18. [#78](https://github.com/datagouv/hubee/pulls/78)
-- Migration de la configuration SimpleCov vers l'API 1.x.
-- Chargement de `strong_migrations` dans tous les environnements. [#91](https://github.com/datagouv/hubee/pulls/91)
-- La CI est déclenchée chaque nuit à 5h UTC.
+- Restriction de la CI GitHub à l'analyse statique et à la sécurité pour optimiser les ressources [#85](https://github.com/datagouv/hubee/issues/85).
+- Suppression du devcontainer, jugé inutile pour le projet [#82](https://github.com/datagouv/hubee/issues/82).
+- Ajout d'une tâche planifiée pour déclencher la CI chaque nuit à 5h UTC [#85](https://github.com/datagouv/hubee/issues/85).
+- Migration de la configuration SimpleCov vers l'API 1.x [#91](https://github.com/datagouv/hubee/issues/91).
+- Chargement de `strong_migrations` dans tous les environnements [#91](https://github.com/datagouv/hubee/issues/91).
