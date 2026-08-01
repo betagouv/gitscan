@@ -209,6 +209,7 @@
 │   │   │   │   ├── 0010_alter_modelhealth_status.py
 │   │   │   │   ├── 0011_chatconversation_model_hrid.py
 │   │   │   │   ├── 0012_chatconversationattachment_index_state_and_more.py
+│   │   │   │   ├── 0013_chatconversation_history_summary_and_more.py
 │   │   │   │   └── __init__.py
 │   │   │   ├── model_health.py
 │   │   │   ├── model_routing.py
@@ -266,6 +267,7 @@
 │   │   │   │   │   │   ├── test_parse_input_documents.py
 │   │   │   │   │   │   ├── test_project_instructions.py
 │   │   │   │   │   │   ├── test_reindex_conversation.py
+│   │   │   │   │   │   ├── test_run_agent_summary.py
 │   │   │   │   │   │   ├── test_self_documentation_tool.py
 │   │   │   │   │   │   ├── test_smart_web_search.py
 │   │   │   │   │   │   ├── test_stream_methods.py
@@ -302,6 +304,7 @@
 │   │   │   │   ├── test_malware_detection.py
 │   │   │   │   ├── test_model_health.py
 │   │   │   │   ├── test_model_routing.py
+│   │   │   │   ├── test_models_history_summary_claim.py
 │   │   │   │   ├── test_rate_limiting.py
 │   │   │   │   ├── test_settings_isolation.py
 │   │   │   │   ├── test_tasks.py
@@ -802,11 +805,14 @@
 │   │   │   │   │   │   │   │   ├── ModelSelector.tsx
 │   │   │   │   │   │   │   │   ├── MoreActionsButton.tsx
 │   │   │   │   │   │   │   │   ├── ProjectWelcomeMessage.tsx
+│   │   │   │   │   │   │   │   ├── RetryButton.tsx
 │   │   │   │   │   │   │   │   ├── ScrollDown.tsx
 │   │   │   │   │   │   │   │   ├── SendButton.tsx
 │   │   │   │   │   │   │   │   ├── SourceItem.tsx
 │   │   │   │   │   │   │   │   ├── SourceItemList.tsx
 │   │   │   │   │   │   │   │   ├── SuggestionCarousel.tsx
+│   │   │   │   │   │   │   │   ├── SummarizationError.tsx
+│   │   │   │   │   │   │   │   ├── SummarizationProgress.tsx
 │   │   │   │   │   │   │   │   ├── ToolInvocationItem.tsx
 │   │   │   │   │   │   │   │   ├── WelcomeLayout.tsx
 │   │   │   │   │   │   │   │   ├── WelcomeMessage.tsx
@@ -824,6 +830,8 @@
 │   │   │   │   │   │   │   │   │   ├── SendButton.test.tsx
 │   │   │   │   │   │   │   │   │   ├── SourceItem.test.tsx
 │   │   │   │   │   │   │   │   │   ├── SuggestionCarousel.test.tsx
+│   │   │   │   │   │   │   │   │   ├── SummarizationError.test.tsx
+│   │   │   │   │   │   │   │   │   ├── SummarizationProgress.test.tsx
 │   │   │   │   │   │   │   │   │   ├── ToolInvocationItem.test.tsx
 │   │   │   │   │   │   │   │   │   ├── WelcomeMessage.test.tsx
 │   │   │   │   │   │   │   │   │   └── reindexErrorMessages.test.ts
@@ -1139,4 +1147,4 @@
 │       ├── package.json
 │       └── yarn.lock
 └── yarn.lock
-231 directories, 910 files
+231 directories, 918 files
