@@ -1,34 +1,36 @@
-## Changelog : seves (30 derniers jours, au 27 juillet 2026)
+## Changelog : seves (30 derniers jours, au 30 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'interface utilisateur et de la gestion des données, notamment avec l'introduction du composant Treeselect pour des filtres plus performants et une expérience utilisateur optimisée. Des corrections de bugs et des améliorations de sécurité ont également été apportées, en particulier concernant la gestion des accès et la publication d'informations.
+Ce mois-ci, les améliorations se concentrent sur l'expérience utilisateur, notamment avec l'intégration d'un nouveau composant Treeselect pour des filtres plus performants et une meilleure gestion des données. Des corrections de bugs et des optimisations ont également été apportées pour améliorer la stabilité et la fiabilité de l'application. L'application SA (Sanitaire Alimentaire) a vu des débuts de développement et des améliorations significatives.
 
 ### Évolutions fonctionnelles
-- Implémentation de Treeselect pour les filtres TIAC (Type d'Incidents Alimentaires et Comportementaux), permettant une sélection multiple et hiérarchique d'options. [#2178](https://github.com/betagouv/seves/issues/2178)
-- Activation de Treeselect pour les filtres produits et cas, améliorant l'ergonomie de la sélection.
-- Ajout d'une fonctionnalité de sélection/désélection de tous les éléments dans Treeselect.
-- Amélioration de la gestion des conclusions pour les investigations TIAC, avec pré-remplissage des informations pertinentes et gestion des états (CONCLU).
+- Intégration du composant Treeselect pour les filtres dans plusieurs vues : TIAC (ICH, filtres généraux), SSA (sources et types d'établissements), SV (filtres généraux), et produits/cas. Cela améliore la sélection multiple et la recherche dans les filtres. [#2179](https://github.com/betagouv/seves/issues/2179)
+- Ajout d'un mécanisme de "pré-remplissage" des formulaires de conclusion pour Repas, Aliment Suspect et investigations TIAC, facilitant la saisie des données.
+- Amélioration de la gestion des dates de publication des notifications AC (Autorisation de Commercialisation).
+- Ajout d'un bloc de contexte pour les événements sanitaires (SA).
+- Début du développement de l'application SA (Sanitaire Alimentaire) avec une première implémentation de la création basique.
+- Ajout d'une alerte modale pour les extractions volumineuses de données, informant l'utilisateur et évitant des problèmes de performance. [#2196](https://github.com/betagouv/seves/issues/2196)
 - Possibilité de filtrer par plusieurs structures et contacts.
-- Amélioration de la gestion des repas et des aliments suspects, avec pré-remplissage des informations lors de la création.
-- Ajout d'une vue SQL pour les événements produits.
-- Amélioration de la sécurité des endpoints Core.
-- Possibilité de supprimer une conclusion.
-- Amélioration de la gestion des notifications AC (Autorisation de Commercialisation) avec la date de publication correcte.
+- Ajout d'un état "Conclu" pour les investigations TIAC.
+- Amélioration de la notice et du comportement du champ "repas".
 
 ### Évolutions techniques
-- Refactorisation du code pour mutualiser la logique de fermeture des modals.
-- Déplacement du contrôleur JavaScript de SV (Surveillance Vie) vers le Core, favorisant la réutilisabilité du code.
-- Utilisation de `ControlOrMeta` pour remplacer la touche `Control` dans les raccourcis clavier, améliorant la compatibilité.
-- Amélioration de la robustesse des tests Playwright, notamment en ajoutant des délais d'attente pour les interactions avec la carte.
-- Ajout de documentation sur l'architecture du projet.
-- Mise à jour de plusieurs dépendances : `pytest-env`, `sentry-sdk`, `ruff`, `django-reversion-compare`, `django-filter`, `django`, `redis`, `playwright`.
+- Refactoring de la gestion des modals pour mutualiser la logique de fermeture.
+- Migration de contrôleurs JavaScript de SV vers le Core pour une meilleure réutilisation.
+- Ajout de tests unitaires et d'intégration pour les nouvelles fonctionnalités et corrections de bugs.
+- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
+- Correction d'un problème de déploiement en recette lié à GDAL.
+- Mise à jour de plusieurs dépendances : `pre-commit`, `sentry-sdk`, `pytest-env`, `django-reversion-compare`, `django-filter`, `pytest-rerunfailures`.
+- Amélioration de la robustesse des tests, notamment en ajoutant des attentes pour éviter les faux positifs.
+- Ajout de documentation pour l'architecture du projet.
+- Utilisation de `ControlOrMeta` pour remplacer la touche `Control` dans les raccourcis clavier.
 
 ### Autres changements
-- Correction de divers bugs et améliorations de la stabilité de l'application.
-- Amélioration de la précision du Content Security Policy (CSP).
-- Nettoyage et simplification du code, notamment dans les tests.
-- Ajout de tests unitaires pour le composant Treeselect.
-- Correction de problèmes de valeurs incorrectes lors de la fermeture de modals.
-- Amélioration de la gestion des permissions pour certaines actions (création d'ICH, clôture/réouverture, mise à jour de messages).
-- Suppression de fonctionnalités en cours de développement (feature flags).
-- Amélioration de la gestion des erreurs et des messages d'information.
+- Suppression de templates modaux inutilisés.
+- Suppression de code obsolète lié à l'ancien composant Treeselect.
+- Ajout d'une constante pour définir le seuil d'extraction volumineuse.
+- Nettoyage du code et amélioration de la mise en forme.
+- Correction de problèmes de CSP (Content Security Policy) pour la page des messages.
+- Suppression d'un attribut `role` inutile.
+- Ajout de commentaires et de documentation pour faciliter la compréhension du code.
+- Correction de plusieurs petites anomalies et améliorations de l'interface utilisateur.
