@@ -7,10 +7,12 @@
 │       ├── publish.yaml
 │       └── security.yml
 ├── .gitignore
+├── .mise.toml
 ├── .prettierrc.yaml
 ├── .vscode
 │   ├── extensions.json
 │   └── settings.json
+├── DOCUMENTATION.md
 ├── README.md
 ├── bench
 │   └── index.ts
@@ -37,20 +39,39 @@
 ├── situations
 │   └── situations.publicodes
 ├── src
-│   ├── bilan-1an.publicodes
-│   ├── calcul-tarif-gaz-tertiaire.publicodes
-│   ├── calculs-economiques.publicodes
-│   ├── calculs-environnementaux.publicodes
-│   ├── calculs-techniques.publicodes
+│   ├── bareme-revenu-mpr.publicodes
+│   ├── commun
+│   │   ├── aides.publicodes
+│   │   ├── besoins.publicodes
+│   │   ├── climatisation-additionnelle.publicodes
+│   │   ├── coefficients-intermittence.publicodes
+│   │   ├── combustibles.publicodes
+│   │   ├── consommations-specifiques-chauffage.publicodes
+│   │   ├── consommations-specifiques-climatisation.publicodes
+│   │   ├── consommations-specifiques-ecs.publicodes
+│   │   ├── ecs-additionnelle.publicodes
+│   │   ├── facteurs-emission.publicodes
+│   │   ├── investissement.publicodes
+│   │   ├── pac.publicodes
+│   │   └── tarif-gaz-tertiaire.publicodes
 │   ├── departements.publicodes
 │   ├── liste-rfu-rcu.publicodes
-│   ├── parametres-economiques.publicodes
-│   ├── parametres-techniques.publicodes
-│   ├── ratios-economiques-aides.publicodes
-│   ├── ratios-economiques.publicodes
-│   ├── ratios-environnementaux.publicodes
-│   └── ratios-techniques.publicodes
+│   ├── modes
+│   │   ├── add-ons-solaire.publicodes
+│   │   ├── fioul.publicodes
+│   │   ├── gaz.publicodes
+│   │   ├── granules.publicodes
+│   │   ├── pac-air-air.publicodes
+│   │   ├── pac-air-eau.publicodes
+│   │   ├── pac-eau-eau.publicodes
+│   │   ├── radiateur-electrique.publicodes
+│   │   ├── reseau-de-chaleur.publicodes
+│   │   └── reseau-de-froid.publicodes
+│   └── parametres-techniques.publicodes
 └── test
+    ├── __snapshots__
+    │   └── golden.spec.ts.snap
     ├── external-keys.spec.ts
+    ├── golden.spec.ts
     └── index.spec.ts
-12 directories, 43 files
+15 directories, 61 files
