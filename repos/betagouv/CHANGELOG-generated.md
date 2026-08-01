@@ -1,32 +1,44 @@
-# Synthèse d'activité : betagouv (du 17/05 au 17/07)
+# Synthèse d'activité : betagouv (du 24/06 au 24/07)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation betagouv a été marquée par des améliorations significatives en matière de sécurité, de performance et d'expérience utilisateur sur de nombreux projets. Plusieurs dépôts ont bénéficié de mises à jour de dépendances pour corriger des vulnérabilités et renforcer la sécurité. Des efforts importants ont été déployés pour améliorer l'intégration des données entre différents services, notamment avec l'ajout de synchronisations entre Turgot et Matomo, et l'intégration de nouvelles sources de données pour des projets comme *ma-cantine*.  De nombreux projets ont également vu des améliorations de l'interface utilisateur, des corrections de bugs et des optimisations de la performance. Les projets *sylvasan*, *mission-transition-ecologique* et *mon-aide-cyber* ont connu des évolutions notables en termes de fonctionnalités et de stabilité.
+L'activité récente de l'organisation betagouv a été marquée par une forte concentration sur l'amélioration de l'expérience utilisateur et la robustesse des outils existants. Plusieurs dépôts ont bénéficié de corrections de bugs, d'optimisations de performance et de l'ajout de nouvelles fonctionnalités, notamment dans les domaines de la gestion des données (synchronisation avec Matomo, importation de données), de la sécurité (renforcement de l'authentification, correction de vulnérabilités) et de l'interface utilisateur (amélioration de la navigation, ajout de filtres). Des efforts significatifs ont également été déployés pour moderniser l'infrastructure et les outils de développement, avec l'adoption de nouvelles technologies comme Poetry et Nix. Les projets *mon-aide-cyber*, *ma-cantine*, *infomedicament* et *jeveuxaider* ont été particulièrement actifs.
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié de mises à jour de sécurité :
+Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
 
-*   Correction d'une vulnérabilité XSS dans [mon-service-securise-journal](/repos/betagouv/mon-service-securise-journal).
-*   Mise à jour de dépendances vulnérables dans [mon-profil-anssi](/repos/betagouv/mon-profil-anssi).
-*   Implémentation de TLS et d'une authentification par certificat dans [lab-anssi-antivirus](/repos/betagouv/lab-anssi-antivirus).
-*   Ajout de `checkov` et `zizmor` pour la validation de la configuration dans [lab-anssi-ui-kit](/repos/betagouv/lab-anssi-ui-kit).
-*   Vérification du certificat MQC dans [lab-anssi-admin](/repos/betagouv/lab-anssi-admin).
+*   **lab-anssi-ui-kit**: Ajout d'outils d'analyse statique et correction de failles potentielles d'injection.
+*   **mon-suivi-justice**: Mise à jour d'une dépendance pour corriger une vulnérabilité de sécurité.
+*   **lab-anssi-lib**: Intégration de Renovate pour la gestion automatisée des dépendances et correction de vulnérabilités.
+*   **infomedicament-html-parser**: Optimisations pour éviter les redémarrages fréquents et améliorer la stabilité sur Scalingo.
+*   **mes-services-cyber-journal**: Ajout d'outils d'analyse de sécurité et désactivation des identifiants git dans le pipeline CI.
 
 ## Autres changements notables
-*   **Refonte d'architecture:** Refonte de l'architecture de l'API dans [signalement-api](/repos/betagouv/signalement-api) et refactorisation du code dans [sylvasan](/repos/betagouv/sylvasan).
-*   **Intégration de données:** Ajout de nouvelles sources de données dans [ma-cantine](/repos/betagouv/ma-cantine) et [mle-back](/repos/betagouv/mle-back).
-*   **CI/CD:** Amélioration des workflows CI/CD dans plusieurs dépôts, notamment [mission-transition-ecologique-back](/repos/betagouv/mission-transition-ecologique-back) et [matomo-to-pg](/repos/betagouv/matomo-to-pg).
-*   **Migration de technologies:** Passage à pnpm dans [test-sme](/repos/betagouv/test-sme) et migration vers Node.js dans [sante-psy](/repos/betagouv/sante-psy).
-*   **Nouvelles fonctionnalités:** Ajout de la fonctionnalité de duplication d'enquêtes dans [sylvasan](/repos/betagouv/sylvasan) et de la gestion des risques dans [mon-service-securise](/repos/betagouv/mon-service-securise).
+Plusieurs projets ont connu des évolutions techniques majeures :
+
+*   **nitrates-iac**: Initialisation du dépôt pour l'infrastructure en tant que code.
+*   **mission-transition-ecologique-back**: Refonte de la gestion des données canoniques et optimisation de la chaîne CI/CD.
+*   **infomedicament-dataeng**: Ajout de la prise en charge des documents PDF centralisés de l'EMA et optimisation des performances d'importation.
+*   **ma-cantine**: Refactorisation de la gestion des images et ajout de nouveaux endpoints API.
+*   **jeveuxaider-front**: Refonte des formulaires d'inscription des organisations.
+*   **infomedicament**: Mise à jour des données de l'ANSM via de nouvelles migrations.
+*   **grist-utils**: Mise à jour des dépendances pour améliorer la stabilité et la sécurité.
 
 ## Dépôts les plus actifs
-*   [sylvasan](/repos/betagouv/sylvasan) : Amélioration significative de l'application mobile et web, ajout de nouvelles fonctionnalités et corrections de bugs.
-*   [mission-transition-ecologique](/repos/betagouv/mission-transition-ecologique) : Amélioration de l'interface utilisateur et de la gestion des données.
-*   [mon-service-securise](/repos/betagouv/mon-service-securise) : Amélioration de la gestion des risques et renforcement de la sécurité.
-*   [ma-cantine](/repos/betagouv/ma-cantine) : Intégration de nouvelles sources de données et amélioration de l'interface utilisateur.
-*   [lab-anssi-ui-kit](/repos/betagouv/lab-anssi-ui-kit) : Amélioration de plusieurs composants et renforcement de la sécurité du CI.
-*   [mon-aide-cyber](/repos/betagouv/mon-aide-cyber) : Amélioration de la sécurité et corrections de bugs.
-*   [test-sme](/repos/betagouv/test-sme) : Amélioration de l'expérience utilisateur et maintenance technique.
-*   [transports-sanitaires](/repos/betagouv/transports-sanitaires) : Refonte majeure du simulateur de transport sanitaire.
-*   [nitrates](/repos/betagouv/nitrates) : Amélioration de l'interface administrateur et de la gestion des données.
-*   [jeveuxaider-front](/repos/betagouv/jeveuxaider-front) : Refonte des formulaires d'inscription et amélioration du partage de missions.
+*   **zacharie**: Ajout de fonctionnalités pour les utilisateurs SVI, simplification de l'acceptation SVI et amélioration des performances.
+*   **turgot-metabase**: Ajout de statistiques d'utilisation de Metabase et intégration de Matomo.
+*   **transports-sanitaires**: Refonte majeure de l'application, fusion de l'identification et du simulateur, ajout de nouvelles fonctionnalités et amélioration de l'architecture.
+*   **test-sme**: Améliorations de l'expérience utilisateur, corrections de bugs et maintenance technique.
+*   **sylvasan**: Ajout de fonctionnalités de suivi des enquêtes et d'interface dédiée pour les laboratoires.
+*   **standards-front**: Amélioration de l'interface utilisateur, ajout d'une vue pour les incubateurs et optimisation des performances.
+*   **stage-direct**: Ajout de pages d'authentification avec Proconnect et mise en place de tests end-to-end.
+*   **seves**: Ajout d'un composant Treeselect pour des filtres plus performants et amélioration de l'interface utilisateur.
+*   **sante-psy**: Amélioration de l'expérience utilisateur et correction de bugs.
+*   **sante-mentale-etudiant**: Développement de nouvelles fonctionnalités clés, notamment l'orientateur et l'espace "Aider un proche".
+*   **infomedicament**: Amélioration de l'affichage des informations des médicaments et mise à jour des données de l'ANSM.
+*   **jeveuxaider-back**: Amélioration de la synchronisation des données avec Airtable et correction de bugs.
+*   **lab-anssi-lib**: Amélioration de la sécurité et intégration de Renovate.
+*   **ma-cantine**: Amélioration de la gestion des images et ajout de nouveaux endpoints API.
+*   **mon-entreprise**: Amélioration du comparateur de statuts et correction de bugs.
+*   **infomedicament-dataeng**: Ajout de la prise en charge des documents PDF centralisés de l'EMA.
+*   **mon-aide-cyber**: Amélioration de la sécurité et correction de bugs.
+*   **mission-transition-ecologique-back**: Refonte de la gestion des données canoniques et optimisation de la chaîne CI/CD.

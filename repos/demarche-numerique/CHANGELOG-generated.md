@@ -1,16 +1,18 @@
-# Synthèse d'activité : demarche-numerique (du 30 juin 2026 au 6 juillet 2026)
+# Synthèse d'activité : demarche-numerique (du 29/06 au 29/07)
 
 ## Résumé de l'activité
-Cette semaine, l'organisation demarche-numerique a concentré ses efforts sur l'amélioration de l'expérience utilisateur de la plateforme [demarche.numerique.gouv.fr] et sur l'augmentation de la flexibilité de l'infrastructure sous-jacente. Les améliorations apportées à la gestion des pièces jointes, notamment grâce à l'OCR, et à l'interface utilisateur faciliteront l'utilisation de la plateforme pour les citoyens.  [ds_proxy] a également bénéficié d'améliorations significatives en termes de configuration et de performance.
+La période a été marquée par des améliorations significatives sur la plateforme [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr), axées sur l'expérience utilisateur avec notamment une gestion améliorée des pièces justificatives, la personnalisation des dossiers et l'intégration de nouvelles données comme le quotient familial et les données ARS.  Parallèlement, des efforts importants ont été réalisés pour moderniser l'infrastructure avec la finalisation de la migration vers Rails 8 et l'optimisation des performances via l'utilisation de DataLoaders. Le proxy [ds_proxy](/repos/demarche-numerique/ds_proxy) a également bénéficié d'améliorations de configuration et de stabilité.
 
 ## Sécurité
-Aucun changement lié à la sécurité n'a été signalé durant cette période.
+- Ajout d'une validation de la présence d'un token API pour certaines fonctionnalités sur [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
+- Renforcement de la sécurité de l'application [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
 
 ## Autres changements notables
-- Migration de composants HAML vers ERB dans [demarche.numerique.gouv.fr] pour améliorer la maintenabilité du code.
-- Refactorisation de la configuration S3 dans [ds_proxy] pour une meilleure organisation.
-- Optimisation des requêtes SQL et utilisation de dataloader dans [demarche.numerique.gouv.fr] pour améliorer la performance de la plateforme.
+- Finalisation de la migration vers Rails 8 sur [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
+- Refactorisation du code et amélioration du pipeline CI/CD sur [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) pour une meilleure maintenabilité.
+- Ajout de la prise en charge de S3 et Swift avec détection automatique du type de stockage sur [ds_proxy](/repos/demarche-numerique/ds_proxy).
+- Suppression du header `content-md5` altéré par le proxy [ds_proxy](/repos/demarche-numerique/ds_proxy).
 
 ## Dépôts les plus actifs
-- [ds_proxy](/repos/demarche-numerique/ds_proxy) : Amélioration de la flexibilité de la configuration avec la prise en charge de S3 et Swift, et correction de bugs.
-- [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) : Amélioration de l'expérience utilisateur avec une meilleure gestion des pièces jointes, des dossiers et ajout de notifications.
+- [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) : Amélioration de l'expérience utilisateur et modernisation de l'infrastructure avec la migration vers Rails 8.
+- [ds_proxy](/repos/demarche-numerique/ds_proxy) : Amélioration de la flexibilité de la configuration et de la stabilité du proxy.

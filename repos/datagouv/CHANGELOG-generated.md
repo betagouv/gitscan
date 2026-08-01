@@ -1,25 +1,29 @@
-# Synthèse d'activité : datagouv (du 13 mai 2026 au 27 juillet 2026)
+# Synthèse d'activité : datagouv (du 01/05 au 31/07)
 
 ## Résumé de l'activité
-L'organisation datagouv a connu une période d'activité soutenue, marquée par des améliorations significatives de l'infrastructure, de la sécurité et des fonctionnalités de ses différents services. Plusieurs projets ont bénéficié de mises à jour majeures, comme le passage à Rails 8.1 pour [relais](/repos/datagouv/relais) et la migration vers PNPM pour [ouverture.data.gouv.fr](/repos/datagouv/ouverture.data.gouv.fr). L'accent a également été mis sur l'amélioration de l'accessibilité et de la robustesse des API, notamment [apistration](/repos/datagouv/apistration) et [api-tabular](/repos/datagouv/api-tabular). De nouveaux services et fonctionnalités ont été introduits, comme l'intégration CNOUS dans [relais](/repos/datagouv/relais) et l'ajout de l'IdRNB au format de validation dans [fr-format](/repos/datagouv/fr-format). Enfin, plusieurs projets ont bénéficié de mises à jour de données, comme [cadastre.data.gouv.fr](/repos/datagouv/cadastre.data.gouv.fr) et [contours-administratifs](/repos/datagouv/contours-administratifs).
+L'organisation datagouv a connu une période d'activité soutenue, marquée par des mises à jour importantes de plusieurs de ses projets clés.  On observe une forte concentration sur l'amélioration de la robustesse, de la sécurité et de la performance des infrastructures existantes, notamment avec la migration vers de nouvelles versions de librairies et de frameworks (Rails 8.1, Airflow 3).  Plusieurs projets ont également bénéficié d'améliorations fonctionnelles, comme l'ajout de nouvelles intégrations (CNOUS pour relais, IdRNB pour fr-format) et l'amélioration des interfaces utilisateurs (cdata, api-geo).  L'accent est mis sur la préparation de nouvelles fonctionnalités et l'amélioration de l'expérience développeur, avec la création de nouveaux outils (datagouv-cli) et l'amélioration de la documentation.
 
 ## Sécurité
 Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
-- Correction de vulnérabilités dans [hubee](/repos/datagouv/hubee) (CVEs) et [apistration](/repos/datagouv/apistration) (tabnapping, XSS).
-- Anonymisation des adresses email dans les logs d'erreur de [roles.data](/repos/datagouv/roles.data).
-- Ajout d'une Content Security Policy (CSP) minimale dans [hubee](/repos/datagouv/hubee).
+
+*   Correction de vulnérabilités dans `passemarche` (Rails 8.1.3.1, CVE-2026-66066).
+*   Correction de vulnérabilités dans `hubee` (Loofah, Rails HTML Sanitizer, Active Storage).
+*   Renforcement de la sécurité dans `apistration` avec la validation des adresses IP autorisées pour les tokens d'éditeur.
+*   Correction d'une vulnérabilité ActiveStorage dans `apistration`.
 
 ## Autres changements notables
-- Migration vers Airflow 3 dans [data-engineering-stack](/repos/datagouv/data-engineering-stack).
-- Refonte de l'architecture de [relais](/repos/datagouv/relais) pour s'aligner avec apistration.
-- Introduction d'une nouvelle couche sémantique dans [datagouv-ai-evaluation](/repos/datagouv/datagouv-ai-evaluation) pour faciliter l'évaluation des modèles d'IA.
-- Nouvelle version de l'API géographique (v2) dans [api-decoupage-administratif](/repos/datagouv/api-decoupage-administratif).
-- Migration de l'interface en ligne de commande vers `datagouv-cli` dans [datagouv_client](/repos/datagouv/datagouv_client).
+Plusieurs projets ont connu des évolutions techniques majeures :
+
+*   Migration vers Rails 8.1 et intégration de GoodJob dans `relais`, refonte de l'architecture.
+*   Migration vers PNPM dans `ouverture.data.gouv.fr` pour améliorer la performance et la sécurité.
+*   Mise à jour d'Airflow vers la version 3 dans `data-engineering-stack`.
+*   Remplacement de `httpx` par `niquests` dans plusieurs projets (`datagouv_client`, `hubee`, `api-tabular`) pour une meilleure gestion des requêtes HTTP.
+*   Refonte de l'API géographique (v2) dans `api-decoupage-administratif`.
+*   Migration du code CLI de `datagouv_client` vers un nouveau dépôt `datagouv-cli` pour une meilleure distribution et support multi-plateforme.
 
 ## Dépôts les plus actifs
-- [relais](/repos/datagouv/relais) : Refonte majeure de l'infrastructure et ajout de nouvelles fonctionnalités (intégration CNOUS, demandes proactives).
-- [hubee](/repos/datagouv/hubee) : Améliorations de la sécurité, modernisation de l'infrastructure et préparation du portail V2.
-- [roles.data](/repos/datagouv/roles.data) : Amélioration de la robustesse et du débogage de l'application.
-- [apistration](/repos/datagouv/apistration) : Ajout de nouvelles fonctionnalités (gestion des tokens éditeur, webhook) et amélioration de l'accessibilité.
-- [datagouvfr_data_pipelines](/repos/datagouv/datagouvfr_data_pipelines) : Corrections et améliorations des pipelines de données, migration vers OVH.
-- [datagouv-cli](/repos/datagouv/datagouv-cli) : Migration du code CLI et amélioration de la distribution.
+*   [relais](/repos/datagouv/relais) : Refonte majeure de l'infrastructure et intégration de nouvelles fonctionnalités pour l'intégration avec CNOUS et la gestion des demandes proactives.
+*   [hubee](/repos/datagouv/hubee) : Améliorations significatives de la sécurité, modernisation de l'infrastructure et simplification de la configuration.
+*   [cdata](/repos/datagouv/cdata) : Ajout de nouvelles fonctionnalités d'exploration et d'amélioration de la visualisation des données.
+*   [apistration](/repos/datagouv/apistration) : Amélioration de la gestion des éditeurs d'API et ajout de la prise en charge de l'INE pour l'API CNOUS v5.
+*   [datagouv-cli](/repos/datagouv/datagouv-cli) : Création d'un nouveau dépôt pour l'interface en ligne de commande, permettant une distribution plus autonome et un support multi-plateforme.

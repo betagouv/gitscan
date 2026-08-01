@@ -1,11 +1,10 @@
 # Synthèse d'activité : ARCEP-dev (du 22/06 au 02/07)
 
 ## Résumé de l'activité
-L'activité de la semaine a été principalement axée sur la préparation technique de l'application [Mon-Reseau-Mobile-v2](/repos/ARCEP-dev/Mon-Reseau-Mobile-v2), notamment la mise en place de la structure initiale de la base de données.  Parallèlement, un effort significatif a été consenti pour améliorer la documentation du projet, en particulier en la rendant accessible à un public plus large grâce à la traduction du fichier README. Ces améliorations préparent le terrain pour les prochaines étapes de développement et facilitent l'adoption de l'application.
+L'activité de la semaine s'est concentrée sur la préparation de l'infrastructure et l'amélioration de la documentation du projet [Mon-Reseau-Mobile-v2](/repos/ARCEP-dev/Mon-Reseau-Mobile-v2). Ces efforts visent à faciliter l'accès à l'information et à préparer le terrain pour les futures fonctionnalités, notamment en rendant la documentation accessible à un public plus large grâce à la traduction du README.
 
 ## Autres changements notables
 - Préparation de la structure initiale de la base de données dans [Mon-Reseau-Mobile-v2](/repos/ARCEP-dev/Mon-Reseau-Mobile-v2).
-- Amélioration et traduction de la documentation README dans [Mon-Reseau-Mobile-v2](/repos/ARCEP-dev/Mon-Reseau-Mobile-v2) pour une meilleure accessibilité.
 
 ## Dépôts les plus actifs
-- [Mon-Reseau-Mobile-v2](/repos/ARCEP-dev/Mon-Reseau-Mobile-v2) : Travaux préparatoires sur la base de données et amélioration de la documentation du projet.
+- [Mon-Reseau-Mobile-v2](/repos/ARCEP-dev/Mon-Reseau-Mobile-v2) : Travaux préparatoires sur la base de données et amélioration significative de la documentation du projet.

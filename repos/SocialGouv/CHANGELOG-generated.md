@@ -1,30 +1,34 @@
-# Synthèse d'activité : SocialGouv (du 22/06 au 22/07)
+# Synthèse d'activité : SocialGouv (du 22 juillet au 29 juillet 2026)
 
 ## Résumé de l'activité
-L'activité récente de SocialGouv a été marquée par une forte concentration sur l'amélioration de la qualité du code, la sécurité et l'expérience utilisateur. Plusieurs dépôts ont bénéficié de corrections de bugs, de mises à jour de dépendances et d'améliorations de la documentation. Des efforts importants ont été déployés pour préparer l'arrêt de certains services comme Recosanté, tout en lançant de nouveaux projets comme `migration-harbor2` et `appy-quotes-live`. L'intégration de l'IA et l'automatisation des tâches continuent d'être des axes majeurs, avec des avancées notables dans les projets `git-ai-trace`, `repo-falcon` et `dashlord`.  Des améliorations significatives ont été apportées à l'accessibilité de plusieurs applications, notamment `vao` et `dashlord`.
+L'activité récente de SocialGouv est marquée par une forte concentration sur l'amélioration de la qualité du code, la sécurité et l'expérience utilisateur. Plusieurs dépôts ont bénéficié de mises à jour de dépendances, de corrections de bugs et d'optimisations de performance. Des efforts importants ont été déployés pour préparer l'arrêt de certains services, comme Recosanté, tout en développant de nouvelles fonctionnalités pour d'autres, notamment vao avec le support complet du premier agrément DREETS. L'intégration de l'IA et l'automatisation des tâches sont également des thèmes récurrents, avec des avancées notables dans des projets comme `claw-code-go` et `dashlord`.
 
 ## Sécurité
 Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
 
-*   Correction d'une vulnérabilité dans [archifiltre-mails](/repos/SocialGouv/archifiltre-mails).
-*   Migration vers pnpm dans [nos1000jours-blues-epds-widget](/repos/SocialGouv/nos1000jours-blues-epds-widget) pour une meilleure gestion des dépendances et réduction des risques de sécurité.
-*   Amélioration de la sécurité de la chaîne d'approvisionnement logicielle dans [buildkit-operator-example](/repos/SocialGouv/buildkit-operator-example) avec l'implémentation de la signature cosign et de la génération de SBOM.
-*   Correction de vulnérabilités potentielles dans [domifa](/repos/SocialGouv/domifa).
+*   `nos1000jours-blues-epds-widget` : Correction de vulnérabilités de sécurité dans les dépendances.
+*   `dsfr-mcp` : Ajout d'une correction de sécurité.
+*   `archifiltre-mails` : Correction d'une vulnérabilité de sécurité.
+*   `buildkit-operator` : Renforcement de la sécurité avec la suppression de l'authentification par token et le passage à OIDC.
 
 ## Autres changements notables
-*   **Infrastructure :** Migration vers buildkit-operator dans plusieurs dépôts ([cdtn-admin](/repos/SocialGouv/cdtn-admin), [buildkit-operator-example](/repos/SocialGouv/buildkit-operator-example)) pour améliorer la gestion des builds.
-*   **Migration :** Préparation à l'arrêt du service Recosanté ([recosante](/repos/SocialGouv/recosante)) avec l'ajout d'une bannière d'information.
-*   **IA :** Intégration de l'IA dans plusieurs projets, notamment `git-ai-trace` pour le suivi des contributions IA/humain et `repo-falcon` pour l'analyse de code et la génération de graphes de connaissances.
-*   **Accessibilité :** Amélioration de l'accessibilité (RGAA) dans [vao](/repos/SocialGouv/vao) et [dashlord](/repos/SocialGouv/dashlord).
-*   **Modernisation :** Migration vers pnpm dans plusieurs projets ([dashlord-actions](/repos/SocialGouv/dashlord-actions), [cdtn-admin](/repos/SocialGouv/cdtn-admin), [collecte-pro](/repos/SocialGouv/collecte-pro), [nos1000jours-blues-epds-widget](/repos/SocialGouv/nos1000jours-blues-epds-widget)).
+*   `vao` : Ajout du support complet du premier agrément DREETS, incluant les étapes de demande de compléments, de confirmation de complétude, de refus et d'acceptation.
+*   `smart-allow` : Ajout d'une fonctionnalité bloquant l'envoi de données à des fournisseurs d'IA externes.
+*   `token-bureau` : Amélioration de la flexibilité avec l'accès aux projets V2 et correction de problèmes de configuration des permissions.
+*   `srdt` : Ajout d'une section FAQ, d'une page "Nouveautés" et d'un écran d'introduction pour améliorer l'expérience utilisateur.
+*   `matomo-postgres` : Correction de bugs liés à la migration de schéma, à la gestion des partitions et à la compatibilité avec les versions de Node.js.
+*   `infra-apps` : Migration vers buildkit-operator et décommissionnement de certains services.
+*   `cdtn-admin` : Migration vers buildkit-operator et ajout de l'ingestion des accords d'entreprise.
+*   `dashlord` : Ajout d'un système de notation des contributions et implémentation du Net Promoter Score (NPS).
 
 ## Dépôts les plus actifs
-*   [vao](/repos/SocialGouv/vao) : Amélioration significative de l'accessibilité et ajout de la gestion des premiers agréments dans le back-office.
-*   [srdt](/repos/SocialGouv/srdt) : Ajout de nouvelles fonctionnalités à l'assistant virtuel, comme une section FAQ et une page "Nouveautés".
-*   [smart-allow](/repos/SocialGouv/smart-allow) : Ajout d'une fonctionnalité bloquant l'envoi de données à des fournisseurs d'IA externes.
-*   [dashlord](/repos/SocialGouv/dashlord) : Amélioration de l'interface utilisateur et ajout de nouvelles fonctionnalités de gestion des utilisateurs.
-*   [code-du-travail-numerique](/repos/SocialGouv/code-du-travail-numerique) : Ajout d'un score NPS et correction de plusieurs bugs.
-*   [buildkit-operator](/repos/SocialGouv/buildkit-operator) : Amélioration de l'infrastructure de build et de l'authentification.
-*   [legi-data](/repos/SocialGouv/legi-data) : Mises à jour régulières des données de législation française.
-*   [matomo-next](/repos/SocialGouv/matomo-next) : Ajout d'un proxy de suivi côté serveur et prise en charge des tests A/B.
-*   [cdtn-admin](/repos/SocialGouv/cdtn-admin) : Ajout d'une table pour le calcul du NPS et intégration de l'ingestion des accords d'entreprise.
+*   `vao` : Développement du support du premier agrément DREETS et améliorations de l'accessibilité.
+*   `token-bureau` : Amélioration de la gestion des permissions et de l'intégration avec GitHub.
+*   `srdt` : Amélioration de l'expérience utilisateur avec de nouvelles fonctionnalités et corrections de bugs.
+*   `infra-apps` : Optimisation de l'infrastructure et migration vers de nouvelles technologies.
+*   `dashlord` : Ajout de nouvelles fonctionnalités pour l'analyse et l'amélioration de l'application.
+*   `cdtn-admin` : Ajout de l'ingestion des accords d'entreprise et migration vers buildkit-operator.
+*   `matomo-postgres` : Correction de bugs et amélioration de la stabilité.
+*   `buildkit-operator` : Amélioration de la sécurité et de la gestion des builds.
+*   `legi-data` : Mises à jour régulières des données de législation.
+*   `fiches-vdd` : Mises à jour régulières des données des fiches d'informations.

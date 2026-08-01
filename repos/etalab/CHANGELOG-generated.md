@@ -1,21 +1,21 @@
-# Synthèse d'activité : etalab (du 22 avril 2026 au 22 juillet 2026)
+# Synthèse d'activité : etalab (du 27 avril 2026 au 27 juillet 2026)
 
 ## Résumé de l'activité
-L'activité récente d'etalab s'est concentrée sur l'amélioration et la maintenance de ses outils et schémas de données, particulièrement dans les domaines du transport, du covoiturage et des services publics numériques. Plusieurs dépôts ont bénéficié de corrections de bugs, d'optimisations de performance et d'ajouts de nouvelles fonctionnalités, notamment pour la gestion des données IRVE, des opérateurs de vélos en libre-service et des dispositifs d'aide. L'organisation a également continué à développer et à documenter ses schémas de données, comme NeTEx France et MAJIC, pour faciliter l'interopérabilité et l'échange de données.  [transport-site](/repos/etalab/transport-site) et [data_pass](/repos/etalab/data_pass) ont été particulièrement actifs.
+L'activité récente d'etalab s'est concentrée sur l'amélioration et la maintenance de ses outils et données liés au transport, aux aides sociales et à l'administration publique.  Des efforts significatifs ont été déployés pour améliorer la qualité des données IRVE et des lieux de covoiturage, ainsi que pour l'intégration de nouveaux opérateurs de vélos en libre-service. Le projet *data_pass* a connu des avancées notables avec l'ajout de nouveaux éditeurs et l'amélioration de la gestion des autorisations. Plusieurs dépôts ont bénéficié de mises à jour de sécurité et de corrections de bugs, renforçant la stabilité et la fiabilité des services proposés.
 
 ## Sécurité
-- Correction d'un bug dans [flask-storage](/repos/etalab/flask-storage) qui pouvait potentiellement permettre la suppression de fichiers non autorisés sur S3.
+- Mise en place d'un scanner de vulnérabilités et upgrades de librairies dans [transport-site](/repos/etalab/transport-site).
 - Rotation annuelle du token webhook dans [admin_api_entreprise](/repos/etalab/admin_api_entreprise) pour renforcer la sécurité.
 
 ## Autres changements notables
-- Refactorisation du processus de consolidation IRVE dans [transport-site](/repos/etalab/transport-site) pour optimiser les performances.
-- Passage à l'allocateur mémoire `jemalloc` dans [transport-validator](/repos/etalab/transport-validator) pour réduire la consommation mémoire.
-- Introduction de l'architecture des "data packages" dans [schema-dispositif-aide](/repos/etalab/schema-dispositif-aide) pour permettre l'extension du schéma de données.
+- Refactorisation de la consolidation IRVE dans [transport-site](/repos/etalab/transport-site) pour simplifier le traitement des données.
+- Passage à l'allocateur mémoire `jemalloc` dans [transport-validator](/repos/etalab/transport-validator) pour optimiser la consommation mémoire.
+- Introduction d'un système de Feature Flags centralisé dans [data_pass](/repos/etalab/data_pass).
 - Migration des scopes des tokens vers les demandes d'autorisation dans [admin_api_entreprise](/repos/etalab/admin_api_entreprise) pour une meilleure gestion.
 
 ## Dépôts les plus actifs
-- [transport-site](/repos/etalab/transport-site) : Amélioration du traitement des données IRVE, ajout de nouveaux opérateurs de vélos en libre-service et corrections de bugs.
-- [data_pass](/repos/etalab/data_pass) : Ajout de la gestion des définitions d'autorisations et implémentation de nouvelles APIs.
-- [admin_api_entreprise](/repos/etalab/admin_api_entreprise) : Ajout de nouvelles APIs (CNOUS, MSA, MEN) et amélioration de la gestion des tokens et de la sécurité.
-- [transport-validator](/repos/etalab/transport-validator) : Optimisation de la performance et de la consommation mémoire.
-- [schema-dispositif-aide](/repos/etalab/schema-dispositif-aide) : Introduction de l'architecture des "data packages" pour une plus grande flexibilité du schéma.
+- [transport-site](/repos/etalab/transport-site) : Consolidation et validation des données IRVE, ajout de nouveaux opérateurs de vélos en libre-service et améliorations de la robustesse.
+- [transport-base-nationale-covoiturage](/repos/etalab/transport-base-nationale-covoiturage) : Mise à jour régulière de la base de données des lieux de covoiturage.
+- [data_pass](/repos/etalab/data_pass) : Ajout de nouveaux éditeurs, amélioration de la gestion des autorisations et introduction de Feature Flags.
+- [admin_api_entreprise](/repos/etalab/admin_api_entreprise) : Ajout de nouvelles API et amélioration de la gestion des endpoints.
+- [transport-profil-netex-fr](/repos/etalab/transport-profil-netex-fr) : Publication de la version 2.4.0 du profil France NeTEx avec des clarifications et améliorations.

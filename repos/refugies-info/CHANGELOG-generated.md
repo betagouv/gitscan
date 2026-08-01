@@ -1,15 +1,14 @@
-# Synthèse d'activité : refugies-info (du 08/07 au 16/07)
+# Synthèse d'activité : refugies-info (du 15/05 au 22/05)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation refugies-info s'est concentrée sur l'amélioration de l'expérience utilisateur et de la gestion des données. Le [playground](/repos/refugies-info/playground) a bénéficié de nombreuses améliorations concernant le filtrage, le tri, l'affichage des informations et la gestion des fiches. Le [karfur](/repos/refugies-info/karfur) a quant à lui vu des progrès significatifs dans l'intégration des données des opérateurs AGIR et la correction de bugs affectant l'accès aux fiches et la gestion des favoris. Ces améliorations visent à faciliter l'accès à l'information et à optimiser le travail des utilisateurs.
+L'activité de la semaine s'est concentrée sur l'amélioration de l'expérience utilisateur et la correction de bugs sur les plateformes principales [playground](/repos/refugies-info/playground) et [karfur](/repos/refugies-info/karfur).  Des améliorations significatives ont été apportées à l'interface de [playground](/repos/refugies-info/playground), notamment pour la gestion des publications, la traduction et l'historique des actions.  Sur [karfur](/repos/refugies-info/karfur), l'accent a été mis sur l'amélioration de la recherche, la correction de bugs d'accessibilité et l'enrichissement des informations affichées sur les dispositifs et démarches.
 
 ## Sécurité
-Aucun changement lié à la sécurité n'a été signalé durant cette période.
+Aucun changement lié à la sécurité n'a été identifié durant cette période.
 
 ## Autres changements notables
-- L'intégration de la synchronisation des opérateurs AGIR depuis Grist dans [karfur](/repos/refugies-info/karfur) représente une évolution technique majeure, permettant une mise à jour plus automatisée et fiable des données.
-- La centralisation des données utilisateurs dans le Bomo via [playground](/repos/refugies-info/playground) est un pas vers une meilleure gestion et sécurité des informations.
+Des migrations de base de données et une centralisation des données utilisateurs ont eu lieu sur [playground](/repos/refugies-info/playground) pour améliorer la robustesse et la gestion des données.  Sur [karfur](/repos/refugies-info/karfur), une synchronisation des opérateurs AGIR depuis Grist a été implémentée, avec une gestion des erreurs et une publication des données sur Google Cloud Storage (GCS).
 
 ## Dépôts les plus actifs
-- [playground](/repos/refugies-info/playground) : Amélioration significative de l'interface et des fonctionnalités pour la gestion des fiches et des données.
-- [karfur](/repos/refugies-info/karfur) : Intégration des données AGIR, corrections de bugs et améliorations de l'interface utilisateur pour une meilleure expérience utilisateur.
+- [playground](/repos/refugies-info/playground) : Amélioration continue de l'interface utilisateur et ajout de nouvelles fonctionnalités pour faciliter la gestion du contenu.
+- [karfur](/repos/refugies-info/karfur) : Corrections de bugs, améliorations de la recherche et intégration de nouvelles sources de données pour enrichir la plateforme.

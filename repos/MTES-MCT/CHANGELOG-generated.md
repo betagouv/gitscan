@@ -1,31 +1,28 @@
-# Synthèse d'activité : MTES-MCT (du 22/07 au 29/07)
+# Synthèse d'activité : MTES-MCT (du 22/05 au 30/07)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation MTES-MCT se concentre sur l'amélioration continue de ses outils et plateformes, avec une attention particulière portée à la qualité des données, la sécurité et l'expérience utilisateur. Plusieurs dépôts ont bénéficié de mises à jour significatives, notamment [zero-logement-vacant](/repos/MTES-MCT/zero-logement-vacant) avec l'intégration de Better Auth et l'amélioration de l'affichage cartographique, et [trackdechets](/repos/MTES-MCT/trackdechets) avec l'implémentation de l'authentification multi-facteurs.  Des améliorations notables ont également été apportées à [dialog](/repos/MTES-MCT/dialog) pour la gestion des restrictions de circulation et à [dahlia](/repos/MTES-MCT/dahlia) pour la gestion des pièces jointes et l'affichage des jugements. Plusieurs dépôts ont également bénéficié de mises à jour de sécurité et d'optimisations techniques.
+L'activité récente de l'organisation MTES-MCT a été marquée par des améliorations significatives sur plusieurs fronts.  De nombreuses mises à jour ont visé à renforcer la sécurité (notamment [trackdechets](/repos/MTES-MCT/trackdechets) avec l'authentification multi-facteurs et [keycloak-client-webhook](/repos/MTES-MCT/keycloak-client-webhook) avec l'ajout d'une authentification par token), à améliorer l'expérience utilisateur (par exemple, [vizeau](/repos/MTES-MCT/vizeau) avec l'affichage des projets sur la carte et [otelo](/repos/MTES-MCT/otelo) avec un mode tutoriel guidé), et à optimiser les processus internes (comme [partageonsleau-orchestration](/repos/MTES-MCT/partageonsleau-orchestration) avec l'amélioration de l'ingestion de données). Plusieurs projets ont également bénéficié de refactorisations techniques et de mises à jour de dépendances pour une meilleure maintenabilité et performance.
 
 ## Sécurité
-Plusieurs dépôts ont reçu des mises à jour axées sur la sécurité :
-
-*   Implémentation de l'authentification multi-facteurs dans [trackdechets](/repos/MTES-MCT/trackdechets).
-*   Correction d'une faille de sécurité dans [ecobalyse-runner](/repos/MTES-MCT/ecobalyse-runner) en mettant à jour les dépendances.
-*   Améliorations de sécurité implémentées dans [aigle-api](/repos/MTES-MCT/aigle-api).
-*   Mise à jour de la librairie Sentry dans [otelo-back](/repos/MTES-MCT/otelo-back) pour améliorer la surveillance des erreurs.
+Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
+- **Authentification multi-facteurs :** Implémentation de l'authentification multi-facteurs sur [trackdechets](/repos/MTES-MCT/trackdechets).
+- **Gestion des clés API :** Ajout de la possibilité d'utiliser plusieurs clés API sur [keycloak-client-webhook](/repos/MTES-MCT/keycloak-client-webhook).
+- **Mise à jour des dépendances :** Correction de vulnérabilités en mettant à jour les dépendances sur [mon-devis-sans-oublis-backend-ocr](/repos/MTES-MCT/mon-devis-sans-oublis-backend-ocr) et [qualicharge](/repos/MTES-MCT/qualicharge).
 
 ## Autres changements notables
-*   Refonte de l'authentification et migration vers Better Auth dans [zero-logement-vacant](/repos/MTES-MCT/zero-logement-vacant).
-*   Intégration de nouvelles sources de données et améliorations de l'infrastructure CI/CD dans [dialog-integrations](/repos/MTES-MCT/dialog-integrations).
-*   Mise à jour des URLs des services surveillés par Dashlord dans [dashlord](/repos/MTES-MCT/dashlord).
-*   Amélioration de la gestion des données et des workflows dans [fonds-prevention-argile](/repos/MTES-MCT/fonds-prevention-argile).
-*   Refonte de la page d'accueil et ajout de nouvelles fonctionnalités dans [mobilic](/repos/MTES-MCT/mobilic).
+- **Migration vers Better Auth :** [zero-logement-vacant](/repos/MTES-MCT/zero-logement-vacant) a migré vers Better Auth pour une sécurité renforcée.
+- **Refactorisation technique :** [zero-logement-vacant](/repos/MTES-MCT/zero-logement-vacant) a également entrepris une refactorisation importante avec Kysely.
+- **Intégration de Matomo :** [vizeau](/repos/MTES-MCT/vizeau) a intégré Matomo pour le suivi analytique.
+- **Migration vers AdonisJS 7 :** [vizeau](/repos/MTES-MCT/vizeau) a migré vers AdonisJS 7 pour des améliorations de performance et de sécurité.
+- **Amélioration de l'infrastructure :** Plusieurs projets ont bénéficié d'améliorations de l'infrastructure de déploiement et de la gestion des données, notamment [dossierfacile-infra](/repos/MTES-MCT/dossierfacile-infra) et [fonds-prevention-argile](/repos/MTES-MCT/fonds-prevention-argile).
 
 ## Dépôts les plus actifs
-*   [zero-logement-vacant](/repos/MTES-MCT/zero-logement-vacant) : Amélioration de l'authentification et de l'affichage cartographique.
-*   [trackdechets](/repos/MTES-MCT/trackdechets) : Implémentation de l'authentification multi-facteurs et corrections de bugs.
-*   [vizeau](/repos/MTES-MCT/vizeau) : Amélioration de la gestion des projets et de l'interface utilisateur.
-*   [dialog](/repos/MTES-MCT/dialog) : Amélioration de la gestion des restrictions de circulation et de l'interface utilisateur.
-*   [dahlia](/repos/MTES-MCT/dahlia) : Amélioration de la gestion des pièces jointes et de l'affichage des jugements.
-*   [mobilic](/repos/MTES-MCT/mobilic) : Amélioration de la gestion des utilisateurs et des plans d'approvisionnement.
-*   [apilos](/repos/MTES-MCT/apilos) : Amélioration de la génération de documents et mise à jour des dépendances.
-*   [ecobalyse](/repos/MTES-MCT/ecobalyse) : Ajout de nouveaux ingrédients au catalogue LCI et correction de bugs.
-*   [aigle-frontend](/repos/MTES-MCT/aigle-frontend) : Amélioration des fonctionnalités d'administration et de l'interface utilisateur.
-*   [acceslibre](/repos/MTES-MCT/acceslibre) : Amélioration de la gestion des ERP labellisés RPA et correction de flux.
+- **zero-logement-vacant:** Améliorations de la sécurité, de l'authentification et refactorisation du code.
+- **vizeau:** Ajout de nouvelles fonctionnalités, amélioration de l'expérience utilisateur et migration technique.
+- **trackdechets:** Implémentation de l'authentification multi-facteurs et corrections de bugs.
+- **otelo:** Amélioration de l'expérience utilisateur et ajout de nouvelles fonctionnalités.
+- **dossierfacile-backend:** Amélioration de la gestion des pièces justificatives et corrections de bugs.
+- **mobilic:** Ajout de la possibilité de contester une mission et de gérer les détachements.
+- **ecobalyse:** Ajout de nouveaux ingrédients au catalogue LCI et amélioration de l'export au format Ecospold1.
+- **apilos:** Amélioration de la génération de documents et mise à jour des dépendances.
+- **aigle-frontend & aigle-api:** Amélioration des fonctionnalités d'administration et de la gestion des DDT.

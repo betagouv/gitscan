@@ -1,17 +1,22 @@
-# Synthèse d'activité : incubateur-ademe (du 16/07 au 16/08)
+# Synthèse d'activité : incubateur-ademe (du 17/04 au 29/07)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation incubateur-ademe est marquée par une forte concentration sur l'amélioration de l'expérience utilisateur et la correction de bugs dans plusieurs de ses applications. Les projets *nosgestesclimat* et *plusfraichemaville* ont bénéficié de mises à jour significatives en termes de fonctionnalités et de performance.  Plusieurs dépôts ont également vu des améliorations de la sécurité et de la stabilité, notamment *territoires-en-transitions* et *vaultwarden*. Des efforts importants ont été déployés pour moderniser l'infrastructure et les outils de développement, comme l'intégration de TypeScript et l'amélioration des pipelines CI/CD dans plusieurs projets. L'accent est mis sur la qualité des données et la fiabilité des calculs, avec des mises à jour régulières des données de référence et des corrections de bugs dans les algorithmes de calcul.
+L'organisation incubateur-ademe a connu une période d'activité soutenue, marquée par des améliorations significatives sur plusieurs de ses projets. Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment sur les sites [plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site) et [benefriches](/repos/incubateur-ademe/benefriches), avec l'ajout de nouvelles fonctionnalités et la correction de bugs.  Plusieurs projets ont bénéficié de mises à jour techniques importantes, comme [dsfr-override](/repos/incubateur-ademe/dsfr-override) avec sa migration vers TypeScript et son interface de personnalisation, et [tacct-legacy-nextjs](/repos/incubateur-ademe/tacct-legacy-nextjs) qui progresse dans sa refonte.  L'accent a également été mis sur la sécurité, avec des améliorations sur [next-auth-espace-membre-provider](/repos/incubateur-ademe/next-auth-espace-membre-provider) et [fine-grained-proxy](/repos/incubateur-ademe/fine-grained-proxy). Enfin, des projets comme [france-chaleur-urbaine-pac](/repos/incubateur-ademe/france-chaleur-urbaine-pac) et [impactco2](/repos/incubateur-ademe/impactco2) ont bénéficié de corrections et d'optimisations pour améliorer leur performance et leur fiabilité.
 
 ## Sécurité
-Des améliorations significatives ont été apportées à la sécurité de *territoires-en-transitions* avec la correction de failles IDOR et de création de membres non autorisés.  Des efforts ont également été déployés pour renforcer la sécurité de *dsfr-override* et *impactco2*.
+Des améliorations de sécurité ont été apportées à [next-auth-espace-membre-provider](/repos/incubateur-ademe/next-auth-espace-membre-provider) avec une refonte complète de l'authentification et à [fine-grained-proxy](/repos/incubateur-ademe/fine-grained-proxy) avec la correction de vulnérabilités d'autorisation.
 
 ## Autres changements notables
-Plusieurs projets ont connu des refactorings importants et des migrations technologiques. *territoires-en-transitions* a vu une refonte de l'authentification et une migration vers une application Next.js unique. *dsfr-override* a migré vers TypeScript. *n8n-scalingo* a été mis à jour vers la version 2.  Plusieurs projets ont également bénéficié d'améliorations de l'infrastructure et des outils de développement, comme l'ajout de tests E2E et l'intégration de Sentry et PostHog.
+- Refonte majeure de l'interface utilisateur et de l'architecture de [dsfr-override](/repos/incubateur-ademe/dsfr-override) avec migration vers TypeScript.
+- Mise à niveau de n8n vers la version 2 dans [n8n-scalingo](/repos/incubateur-ademe/n8n-scalingo).
+- Refactorisation importante du code de [benefriches](/repos/incubateur-ademe/benefriches) pour une meilleure maintenabilité.
+- Migration vers FGP (Federated Grafana Proxy) pour l'authentification dans [grafana](/repos/incubateur-ademe/grafana).
+- Mise en place d'un Builder UI pour la personnalisation du DSFR dans [dsfr-override](/repos/incubateur-ademe/dsfr-override).
 
 ## Dépôts les plus actifs
-*   [vaultwarden](/repos/incubateur-ademe/vaultwarden) : Corrections de bugs et améliorations de la stabilité et de la performance du serveur de gestion de mots de passe.
-*   [nosgestesclimat](/repos/incubateur-ademe/nosgestesclimat) : Ajout de nouvelles actions sociétales, prise en compte des PAC collectives, et mise à jour des données de référence pour une évaluation plus précise de l'empreinte carbone.
-*   [plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site) : Ajout de nouvelles pages dédiées à la santé et aux canicules, ainsi que des optimisations pour le référencement et l'expérience utilisateur.
-*   [territoires-en-transitions](/repos/incubateur-ademe/territoires-en-transitions) : Refonte de l'authentification, ajout de nouvelles fonctionnalités pour les audits et labellisations, et amélioration de la sécurité.
-*   [impactco2](/repos/incubateur-ademe/impactco2) : Amélioration de l'outil de calcul d'impact CO2 et ajout de nouvelles fonctionnalités de partage et d'intégration.
+- [tacct-legacy-nextjs](/repos/incubateur-ademe/tacct-legacy-nextjs) : Refonte de l'application avec l'intégration de Next.js et Prisma.
+- [plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site) : Ajout de nouvelles pages et amélioration du SEO.
+- [benefriches](/repos/incubateur-ademe/benefriches) : Amélioration de l'expérience utilisateur et refactorisation du code.
+- [nosgestesclimat-app](/repos/incubateur-ademe/nosgestesclimat-app) : Ajout de nouvelles fonctionnalités et améliorations de sécurité.
+- [dsfr-override](/repos/incubateur-ademe/dsfr-override) : Migration vers TypeScript et développement d'une interface de personnalisation.
+- [impactco2](/repos/incubateur-ademe/impactco2) : Correction de bugs et ajout de nouvelles fonctionnalités de partage.
