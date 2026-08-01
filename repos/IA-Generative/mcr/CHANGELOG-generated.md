@@ -1,29 +1,38 @@
-## Changelog : mcr (30 derniers jours, au 24 juillet 2026)
+## Changelog : mcr (30 derniers jours, au 31 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la robustesse et de la performance du traitement des transcriptions, ainsi que sur l'expérience utilisateur avec de nouvelles fonctionnalités comme le téléchargement de fichiers et la gestion des erreurs. Des refactorings importants ont également été effectués pour simplifier l'architecture et préparer le projet pour de futures évolutions.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la robustesse et de la flexibilité de la plateforme, notamment en matière de gestion des erreurs, de gestion des fichiers et de pipeline de transcription. De nouvelles fonctionnalités ont été ajoutées pour faciliter l'import de fichiers audio et le téléchargement des artefacts de réunion. L'architecture interne a été refactorisée pour une meilleure maintenabilité et performance.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de générer des livrables directement depuis une carte de livrable [#978](https://github.com/IA-Generative/mcr/pull/978).
-- Implémentation d'un verrouillage des réunions pour gérer les requêtes concurrentes [#977](https://github.com/IA-Generative/mcr/pull/977).
-- Amélioration de la gestion des erreurs et ajout d'un endpoint d'administration pour relancer les transcriptions en cas d'échec [#969](https://github.com/IA-Generative/mcr/pull/969).
-- Possibilité de télécharger les artefacts (fichiers) d'une réunion [#935](https://github.com/IA-Generative/mcr/pull/935) et [#903](https://github.com/IA-Generative/mcr/pull/903).
-- Ajout d'une fonctionnalité d'import de fichiers en un clic [#908](https://github.com/IA-Generative/mcr/pull/908).
-- Amélioration du suivi de l'importation de fichiers avec affichage des erreurs et de la progression [#976](https://github.com/IA-Generative/mcr/pull/976) et [#894](https://github.com/IA-Generative/mcr/pull/894).
-- Ajout d'un glossaire avec un en-tête amélioré [#938](https://github.com/IA-Generative/mcr/pull/938).
+- Ajout de la possibilité de générer des rapports de type "Minutes structurées" [#986](https://github.com/IA-Generative/mcr/issues/986).
+- Implémentation d'une interface pour relancer manuellement les transcriptions en cas d'échec [#969](https://github.com/IA-Generative/mcr/issues/969).
+- Amélioration du suivi de l'import de fichiers avec affichage des erreurs par fichier et estimation du temps restant [#976](https://github.com/IA-Generative/mcr/issues/976).
+- Ajout d'une fonctionnalité d'import simplifié en un clic [#908](https://github.com/IA-Generative/mcr/issues/908).
+- Possibilité de télécharger les fichiers d'une réunion depuis S3 via un script dédié [#903](https://github.com/IA-Generative/mcr/issues/903).
+- Ajout de comptes utilisateurs `@fake.com` pour les connexions MCR [#1001](https://github.com/IA-Generative/mcr/issues/1001).
+- Amélioration de la gestion des erreurs lors de l'import de fichiers, avec affichage des erreurs en ligne et abandon de l'utilisation de toasts [#939](https://github.com/IA-Generative/mcr/issues/939).
 
 ### Évolutions techniques
-- Refactorisation majeure de l'architecture pour dissoudre la machine d'état de la réunion et simplifier le code [#861](https://github.com/IA-Generative/mcr/pull/861) et [#912](https://github.com/IA-Generative/mcr/pull/912).
-- Passage de la transcription en mode asynchrone pour améliorer la performance et la scalabilité [#898](https://github.com/IA-Generative/mcr/pull/898).
-- Amélioration de la gestion des erreurs S3 avec des mécanismes de retry [#943](https://github.com/IA-Generative/mcr/pull/943).
-- Utilisation de lazy loading pour les modèles de speech-to-text afin de réduire le temps de démarrage [#923](https://github.com/IA-Generative/mcr/pull/923).
-- Amélioration de la gestion des dépendances et des environnements de développement [#917](https://github.com/IA-Generative/mcr/pull/917) et [#907](https://github.com/IA-Generative/mcr/pull/907).
-- Ajout de tests unitaires et d'intégration pour améliorer la qualité du code.
-- Mise en place de hooks Git pour améliorer la qualité du code et automatiser les tests [#920](https://github.com/IA-Generative/mcr/pull/920).
+- Refactorisation majeure de l'architecture interne, notamment la séparation des responsabilités et l'utilisation de microservices [#959](https://github.com/IA-Generative/mcr/issues/959).
+- Suppression des modèles de speech-to-text locaux et passage à une utilisation exclusive des API distantes [#987](https://github.com/IA-Generative/mcr/issues/987).
+- Amélioration de la gestion des erreurs S3 avec implémentation de mécanismes de retry [#943](https://github.com/IA-Generative/mcr/issues/943).
+- Optimisation du pipeline de transcription en le divisant en quatre tâches distinctes [#912](https://github.com/IA-Generative/mcr/issues/912).
+- Amélioration de la gestion des états de la transcription avec l'ajout d'un état "En cours" [#944](https://github.com/IA-Generative/mcr/issues/944).
+- Utilisation de lazy loading pour les modèles de speech-to-text afin de réduire le temps de démarrage [#923](https://github.com/IA-Generative/mcr/issues/923).
+- Mise en place d'un système de gestion des erreurs plus robuste avec l'utilisation de Sentry et la gestion des exceptions [#952](https://github.com/IA-Generative/mcr/issues/952).
+- Amélioration des tests unitaires et d'intégration.
+- Configuration du CI pour exécuter les tests sur les pull requests et sur les changements des fichiers d'environnement partagés [#976](https://github.com/IA-Generative/mcr/issues/976).
+- Uniformisation de l'utilisation de Keycloak pour l'authentification.
 
 ### Autres changements
-- Amélioration de la documentation et des templates de rapport d'erreurs [#939](https://github.com/IA-Generative/mcr/pull/939) et [#913](https://github.com/IA-Generative/mcr/pull/913).
-- Suppression de code obsolète et nettoyage du codebase.
-- Correction de bugs mineurs et améliorations de la stabilité.
-- Ajout d'une skill de test pour standardiser les tests [#925](https://github.com/IA-Generative/mcr/pull/925).
+- Mise à jour de la documentation pour refléter les changements apportés à la plateforme.
+- Amélioration des messages de log pour faciliter le débogage.
+- Correction de bugs mineurs et améliorations de la performance.
+- Ajout d'un modèle de rapport de bug et de feedback plus complet.
 - Mise à jour des dépendances.
+- Ajout d'un bot Slack "Amalaric".
+- Suppression des anciens comptes utilisateurs `@theodo.com`.
+- Ajout d'une règle d'infrastructure pour Claude.
+- Amélioration de la documentation sur l'utilisation de Kaniko pour la construction des images Docker.
+- Ajout d'un script pour télécharger les artefacts d'une réunion.
+- Ajout d'une nouvelle skill pour les tests.

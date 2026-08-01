@@ -1,3 +1,45 @@
+2026-07-31T13:06:18Z - 3f00246 - Thibault Foucart : :white_check_mark: (989) cover default structured minutes creation, dedup, drain and fail
+2026-07-31T13:06:18Z - 376156f - Thibault Foucart : :sparkles: (989) rename init_transcription and always create the default structured minutes
+2026-07-31T12:48:06Z - e0dffed - Thibault Foucart : :white_check_mark: (987) cover structured minutes tile order and generation
+2026-07-31T12:48:06Z - 71c7c80 - Thibault Foucart : :sparkles: (987) expose STRUCTURED_MINUTES deliverable tile in second position
+2026-07-31T12:48:06Z - 2593530 - Thibault Foucart : :fire: (987): remove dead code
+2026-07-31T12:06:06Z - e53140b - Thomas Metzger : :wrench:: remove the local speech-to-text model settings
+2026-07-31T12:06:06Z - def6b3e - Thomas Metzger : :bricks:: remove unused vars in ci
+2026-07-31T12:06:06Z - d1e5c37 - Thomas Metzger : :recycle:: type check better the feature flag test route
+2026-07-31T12:06:06Z - cb03662 - Thomas Metzger : :wrench:: build one mcr-core image with the role dispatched at run time
+2026-07-31T12:06:06Z - b752ab8 - Thomas Metzger : :fire:: run diarization and transcription through the remote APIs only
+2026-07-31T12:06:06Z - af72a64 - Thomas Metzger : :white_check_mark:: improve _FakeFeatureFlagClient to autouse it and have a typed interface
+2026-07-31T12:06:06Z - 67325f4 - Thomas Metzger : :memo:: update the audio pipeline doc for the API-only stages
+2026-07-31T12:06:06Z - 5a552ac - Thomas Metzger : :white_check_mark:: adapt the speech-to-text tests to the API-only processors
+2026-07-31T12:06:06Z - 364f7fe - Thomas Metzger : :heavy_minus_sign:: drop torch, whisper and pyannote-audio from mcr-core
+2026-07-31T12:06:06Z - 2bb335b - Thomas Metzger : :memo:: document the kaniko docker build constraints
+2026-07-31T12:06:06Z - 0403443 - Thomas Metzger : :construction_worker:: build the core image once for both api and worker
+2026-07-29T14:35:56Z - ad370bb - Thibault Foucart : :white_check_mark: (986) cover structured minutes generator and MINUTES facet
+2026-07-29T14:35:56Z - 71dbbd0 - Thibault Foucart : :sparkles: (986) add STRUCTURED_MINUTES report type and public minutes models
+2026-07-29T14:35:56Z - 707a51e - Thibault Foucart : :bug: (986) prevent the reduce from dropping substantive transcript themes off-objective
+2026-07-29T14:35:56Z - 6eebcfd - Thibault Foucart : :art: (986) format imports and schema models
+2026-07-29T14:35:56Z - 5ac786a - Thibault Foucart : :bug: (986) make writer notes take precedence over the transcript in the report header
+2026-07-29T14:35:56Z - 24459db - Thibault Foucart : :sparkles: (986) wire MINUTES notes facet and hint extraction
+2026-07-29T14:35:56Z - 16b79b6 - Thibault Foucart : :sparkles: (986) register StructuredMinutesGenerator in factory
+2026-07-29T14:35:56Z - 05690f8 - Thibault Foucart : :recycle: (986) drop schema duplication from minutes prompts and wrap map excerpt in xml
+2026-07-29T14:35:56Z - 01dae56 - Thibault Foucart : :sparkles: (986) add minutes_synthesis synthesizer
+2026-07-29T14:35:56Z - 010d389 - Thibault Foucart : :sparkles: (986) add structured_minutes map-reduce section
+2026-07-29T12:39:32+02:00 - f756c1a - Amalaric : (1001): added new @fake.com accounts for MCR login
+2026-07-29T12:39:32+02:00 - bb65bf0 - Amalaric : (1001): deleted old @theodo.com accounts for MCR login
+2026-07-29T12:39:32+02:00 - 17f06b0 - Amalaric : Added "Amalaric" for slack bot
+2026-07-29T09:46:51Z - d2fa84a - Thibault Foucart : :sparkles: (985) add STRUCTURED_MINUTES type and wire contract
+2026-07-29T09:46:51Z - 9470f34 - Thibault Foucart : :recycle: (985): derive report type from deliverable type and map report generation data from the response
+2026-07-29T09:46:51Z - 74baec1 - Thibault Foucart : :white_check_mark: (985): cover structured minutes rendering, union and gateway schema
+2026-07-29T09:46:51Z - 702b22d - Thibault Foucart : :sparkles: (985) render structured minutes docx from jinja template
+2026-07-29T09:46:51Z - 4270429 - Thibault Foucart : :recycle: (985): pass the response model directly to the jinja report templates
+2026-07-29T09:46:51Z - 1a7427a - Thibault Foucart : :sparkles: (985) allow structured minutes deliverable creation and dispatch
+2026-07-29T09:46:51Z - 0d19bc9 - Thibault Foucart : :art: (985): format gateway schema test
+2026-07-29T09:46:51Z - 096dc72 - Thibault Foucart : :sparkles: (985): expose STRUCTURED_MINUTES type through gateway
+2026-07-27T09:49:24Z - f98cf27 - Thomas Metzger : :memo: (claude): fix typo in claude.md
+2026-07-27T09:49:24Z - 7d3b126 - Thomas Metzger : :bug: (record): remove echoCancellation to prevent silentAudioRecording
+2026-07-27T09:19:19Z - 5c5cc04 - Thomas Metzger : :memo: (claude): deny memories with custom prompt
+2026-07-27T09:19:19Z - 1950b45 - Thomas Metzger : :memo: (claude): improve rules on infrastructure
+2026-07-27T09:19:19Z - 08aeb9a - Thomas Metzger : :memo: (claude): improve respect of testing standard
 2026-07-24T11:40:03+02:00 - 20a3c1c - ThomasMetzger : Merge Fix/better error handling
 2026-07-24T11:32:04+02:00 - de6aa9c - Thomas Metzger : :white_check_mark:: align API error and access-control tests
 2026-07-24T11:32:04+02:00 - 2467d61 - Thomas Metzger : :lock:: return 404 for forbidden access to avoid leaking existence

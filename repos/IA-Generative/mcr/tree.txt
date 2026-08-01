@@ -1,8 +1,10 @@
 .
 ├── .claude
 │   ├── rules
+│   │   ├── docker-build.md
 │   │   ├── infrastructure-resilience.md
-│   │   └── repository-flush.md
+│   │   ├── repository-flush.md
+│   │   └── testing.md
 │   ├── settings.json
 │   └── skills
 │       ├── andon
@@ -147,10 +149,15 @@
 │   │   ├── extensions.json
 │   │   ├── launch.json
 │   │   └── settings.json
-│   ├── Dockerfile
 │   ├── Makefile
 │   ├── README.md
 │   ├── alembic.ini
+│   ├── dantotsus
+│   │   └── dant-001-logger-importe-sentry.md
+│   ├── docker
+│   │   ├── Dockerfile
+│   │   ├── docker-entrypoint.dev.sh
+│   │   └── docker-entrypoint.sh
 │   ├── docs
 │   │   ├── archi-captation.png
 │   │   └── audio_processing_pipeline.md
@@ -272,7 +279,8 @@
 │   │   │   │   ├── mime_types.py
 │   │   │   │   ├── report_rendering.py
 │   │   │   │   ├── report_templates
-│   │   │   │   │   └── detailed_synthesis.md.jinja
+│   │   │   │   │   ├── detailed_synthesis.md.jinja
+│   │   │   │   │   └── structured_minutes.md.jinja
 │   │   │   │   ├── transcription
 │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   ├── chunking.py
@@ -292,7 +300,6 @@
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── celery.py
 │   │   │   │   ├── celery_consumer.py
-│   │   │   │   ├── compute_devices.py
 │   │   │   │   ├── comu.py
 │   │   │   │   ├── diarization.py
 │   │   │   │   ├── drive.py
@@ -318,7 +325,6 @@
 │   │   │   │   ├── retry.py
 │   │   │   │   ├── s3.py
 │   │   │   │   ├── sentry.py
-│   │   │   │   ├── speech_to_text_models.py
 │   │   │   │   ├── transcription.py
 │   │   │   │   └── unleash.py
 │   │   │   ├── models
@@ -372,7 +378,7 @@
 │   │   │       ├── get_or_create_user_by_keycloak.py
 │   │   │       ├── init_capture.py
 │   │   │       ├── init_multipart_upload.py
-│   │   │       ├── init_transcription.py
+│   │   │       ├── init_transcription_and_minutes_report.py
 │   │   │       ├── list_deliverables_for_meeting.py
 │   │   │       ├── list_meetings.py
 │   │   │       ├── lookup_comu_meeting.py
@@ -525,6 +531,7 @@
 │   │   │   ├── test_meeting_transitions.py
 │   │   │   ├── test_participant_reconciliation.py
 │   │   │   ├── test_report_rendering.py
+│   │   │   ├── test_structured_minutes_template.py
 │   │   │   ├── test_text_chunking.py
 │   │   │   └── test_transcription_queue_estimation.py
 │   │   ├── factories
@@ -541,14 +548,14 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── test_full_transcript.py
 │   │   │   ├── test_s3.py
-│   │   │   ├── test_s3_multipart.py
-│   │   │   └── test_speech_to_text_models.py
+│   │   │   └── test_s3_multipart.py
 │   │   ├── integration
 │   │   │   └── __init__.py
 │   │   ├── mocks
 │   │   │   ├── __init__.py
 │   │   │   ├── in_memory_drive.py
 │   │   │   ├── in_memory_email.py
+│   │   │   ├── in_memory_feature_flags.py
 │   │   │   ├── in_memory_keycloak.py
 │   │   │   ├── in_memory_redis.py
 │   │   │   ├── in_memory_s3.py
@@ -588,6 +595,7 @@
 │   │   │   ├── test_match_speakers_with_participants.py
 │   │   │   ├── test_noise_detection.py
 │   │   │   ├── test_remove_hallucinations.py
+│   │   │   ├── test_report_response_union.py
 │   │   │   ├── test_s3_audio.py
 │   │   │   └── test_transcription_confidentiality.py
 │   │   └── use_cases
@@ -606,12 +614,13 @@
 │   │       ├── test_get_or_create_transcription_docx.py
 │   │       ├── test_init_capture.py
 │   │       ├── test_init_multipart_upload.py
-│   │       ├── test_init_transcription.py
+│   │       ├── test_init_transcription_and_minutes_report.py
 │   │       ├── test_list_deliverables_for_meeting.py
 │   │       ├── test_list_meetings.py
 │   │       ├── test_mark_report_failure.py
 │   │       ├── test_mark_report_in_progress.py
 │   │       ├── test_mark_report_success.py
+│   │       ├── test_report_dispatch.py
 │   │       ├── test_request_deliverable.py
 │   │       ├── test_requeue_transcriptions.py
 │   │       ├── test_run_diarization.py
@@ -704,6 +713,7 @@
 │   │   │   │   ├── DeliverableTypeCard.vue
 │   │   │   │   ├── LiveRecordingInProgress.vue
 │   │   │   │   ├── MeetingAudioCard.vue
+│   │   │   │   ├── MeetingDeliverableCard.spec.ts
 │   │   │   │   ├── MeetingDeliverableCard.vue
 │   │   │   │   ├── MeetingFrontMatterV2.spec.ts
 │   │   │   │   ├── MeetingFrontMatterV2.vue
@@ -736,7 +746,6 @@
 │   │   │   │   ├── report
 │   │   │   │   │   ├── ReportDownload.vue
 │   │   │   │   │   ├── ReportFailed.vue
-│   │   │   │   │   ├── ReportFormatSelection.vue
 │   │   │   │   │   ├── ReportPending.vue
 │   │   │   │   │   └── TranscriptionNotReady.vue
 │   │   │   │   ├── table
@@ -977,6 +986,7 @@
 │   │       │   └── __init__.py
 │   │       ├── test_deliverable
 │   │       │   ├── __init__.py
+│   │       │   ├── test_deliverable_schema.py
 │   │       │   └── test_deliverable_service.py
 │   │       ├── test_feedback
 │   │       │   ├── __init__.py
@@ -1051,7 +1061,8 @@
 │   │   │   │   │   ├── base_report_generator.py
 │   │   │   │   │   ├── custom_report_generator.py
 │   │   │   │   │   ├── decision_record_generator.py
-│   │   │   │   │   └── detailed_synthesis_generator.py
+│   │   │   │   │   ├── detailed_synthesis_generator.py
+│   │   │   │   │   └── structured_minutes_generator.py
 │   │   │   │   ├── rewriter
 │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   ├── prompts.py
@@ -1076,6 +1087,11 @@
 │   │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   │   ├── prompts.py
 │   │   │   │   │   │   └── refine_intent.py
+│   │   │   │   │   ├── minutes_synthesis
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   ├── minutes_synthesizer.py
+│   │   │   │   │   │   ├── prompts.py
+│   │   │   │   │   │   └── types.py
 │   │   │   │   │   ├── next_meeting
 │   │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   │   ├── format_section_for_report.py
@@ -1085,6 +1101,11 @@
 │   │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   │   ├── prompts.py
 │   │   │   │   │   │   └── refine_participants.py
+│   │   │   │   │   ├── structured_minutes
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   ├── map_reduce_minutes.py
+│   │   │   │   │   │   ├── prompts.py
+│   │   │   │   │   │   └── types.py
 │   │   │   │   │   └── topics
 │   │   │   │   │       ├── __init__.py
 │   │   │   │   │       ├── map_reduce_topics.py
@@ -1161,7 +1182,8 @@
 │   │   │   │   │   ├── test_custom_report_generator.py
 │   │   │   │   │   ├── test_decision_record_generator.py
 │   │   │   │   │   ├── test_detailed_synthesis_generator.py
-│   │   │   │   │   └── test_report_generator_factory.py
+│   │   │   │   │   ├── test_report_generator_factory.py
+│   │   │   │   │   └── test_structured_minutes_generator.py
 │   │   │   │   ├── sections
 │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   ├── base
@@ -1170,6 +1192,9 @@
 │   │   │   │   │   │   └── test_map_reduce.py
 │   │   │   │   │   ├── detailed_discussions
 │   │   │   │   │   │   └── __init__.py
+│   │   │   │   │   ├── intent
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   └── test_refine_intent.py
 │   │   │   │   │   ├── test_detailed_discussions_synthesizer.py
 │   │   │   │   │   └── topics
 │   │   │   │   │       └── __init__.py
@@ -1197,4 +1222,4 @@
 └── scripts
     ├── check_changed.py
     └── guard_git_commit.py
-215 directories, 984 files
+220 directories, 1004 files
