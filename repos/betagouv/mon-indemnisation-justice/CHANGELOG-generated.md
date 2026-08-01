@@ -1,35 +1,46 @@
-## Changelog : mon-indemnisation-justice (30 derniers jours, au 24 juillet 2026)
+## Changelog : mon-indemnisation-justice (30 derniers jours, au 31 juillet 2026)
 
 ### Résumé
-Ce mois-ci, l'application Mon Indemnisation Justice a connu des améliorations significatives concernant la gestion des dossiers, notamment pour les agents et les rédacteurs. Des correctifs ont été apportés aux trames de courriers et à la gestion des rejets, et des fonctionnalités ont été ajoutées pour faciliter la transmission des dossiers à FIP3 et la saisie des informations de virement. L'infrastructure a également été renforcée avec l'ajout d'un worker et l'amélioration du déploiement en staging.
+Ce mois-ci, l'application Mon Indemnisation Justice a bénéficié d'améliorations significatives concernant la gestion des agents, l'intégration de données FDO, la gestion des courriers et des trames associées, ainsi que des corrections et optimisations techniques pour améliorer la stabilité et la performance de la plateforme. Des travaux ont été réalisés pour préparer le déploiement en staging et faciliter l'automatisation des tâches.
 
 ### Évolutions fonctionnelles
-- Les agents peuvent désormais saisir la date de virement.
-- Possibilité pour les rédacteurs de transmettre les dossiers à FIP3 et de les marquer comme indemnisés. [#148](https://github.com/betagouv/mon-indemnisation-justice/pulls/148)
-- Notification des rédacteurs lorsque l'arrêté est signé.
+- Possibilité pour les agents du Ministère de l'Intérieur d'être automatiquement exemptés d'affectation.
+- Ajout de la possibilité pour le rédacteur de saisir la date de virement.
+- Extension des tableaux de bord de liaison FIP3 aux réacteurs.
+- Le rédacteur peut maintenant transmettre les dossiers à FIP3 et marquer le dossier comme indemnisé.
+- Notification du rédacteur lorsque l'arrêté est signé.
 - Ajout de l'option "bailleur social" au test d'éligibilité et adaptation du parcours utilisateur.
-- Amélioration de la prévisualisation des rejets et réorganisation des trames de rejet.
-- Correction de l'affichage du bouton "Marquer indemnisé" qui était visible incorrectement. [#147](https://github.com/betagouv/mon-indemnisation-justice/pulls/147)
-- Correction d'un bug empêchant l'envoi d'un formulaire si le bouton du SideMenu était cliqué.
-- Correction de l'objet du courrier de décision.
-- Amélioration de l'alignement de la modale de décision de rejet.
+- Prévisualisation du rejet possible pour l'agent.
+- Amélioration de la modale de décision de rejet pour une meilleure cohérence.
+- Correction : le bouton pour marquer un dossier comme indemnisé est maintenant caché si le dossier n'est pas concerné.
+- Correction : adaptation de l'objet du courrier de décision.
+- Correction : modale de rejet fonctionnelle même en l'absence de courrier.
 
 ### Évolutions techniques
-- Mise en place d'un worker pour exécuter les tâches cron via supervisor et docker.
+- Mise en place d'un serveur OIDC mock pour faciliter les tests et le développement.
+- Utilisation de `pierrelemee/supervisor-docker` pour lancer et monitorer les tâches du worker.
 - Déploiement des applications web et worker sur l'environnement "develop".
-- Utilisation d'une image Docker spécifique pour la gestion de supervisor.
-- Amélioration de la configuration de supervisor dans le dockerfile du worker.
-- Utilisation d'un serveur OIDC mock pour les tests et le développement, avec des versions mises à jour pour supporter les redirect_uris et l'authentification basique.
-- Ajout de `vite-plugin-node-polyfills` pour éviter les erreurs de conversion node -> browser.
-- Déplacement des actions vers des routes API dédiées.
-- Correction de l'ordre des migrations et configuration du reverse proxy pour l'environnement de staging.
+- Création d'une image Docker pour l'exécution des tâches cron via supervisor.
+- Amélioration de la gestion des fichiers et des données.
+- Correction de l'ordre des migrations et du reverse proxy en staging.
+- Correction des scripts de démarrage en staging.
+- Ajout de logs pour faciliter le débogage des erreurs OIDC.
+- Ajout de polyfills Node.js pour éviter les erreurs de conversion navigateur.
+- Refonte de la structure des routes API pour séparer les actions.
+- Correction d'un bug empêchant la soumission du formulaire par le bouton du SideMenu.
+- Ajout de tests unitaires et fonctionnels.
+- Purge des données avant migration en environnement de développement.
+- Validation du mapping Doctrine lors des tests.
+- Correction d'un problème de provisionnement des comptes agent en staging.
 
 ### Autres changements
-- Import des données des gendarmeries et des zones de compétence FDO.
+- Intégration de la FAQ mise à jour.
+- Mise à jour des trames de courrier (PI, déclaration d'acceptation, arrêtés de paiement et de rejet).
 - Nettoyage des motifs lors des clôtures.
-- Mise à jour de la FAQ.
-- Création d'un importeur CSV basique et d'une entité `EtablissementFDO`.
+- Correction d'un bug lié à l'import des données des zones de compétence FDO.
+- Correction d'un bug lié à l'import des données des gendarmeries.
+- Correction pour gérer les communes sans département (TOM).
+- Configuration de supervisor figée dans le Dockerfile du worker.
 - Ajustement de l'en-tête.
-- Correction du provisionnement des comptes agent en staging.
-- Ajustement des trames de rejet.
-- Relecture et amélioration des trames de l'arrêté de paiement et de la déclaration d'acceptation.
+- Importateur CSV basique implémenté.
+- Création de l'entité EtablissementFDO.

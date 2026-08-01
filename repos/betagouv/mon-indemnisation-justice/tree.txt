@@ -134,7 +134,8 @@
 │   │   ├── Version20260610131925.php
 │   │   ├── Version20260702144847.php
 │   │   ├── Version20260708210430.php
-│   │   └── Version20260724092141.php
+│   │   ├── Version20260724092141.php
+│   │   └── Version20260724130358.php
 │   ├── package.json
 │   ├── phpcs.xml.dist
 │   ├── phpunit.xml.dist
@@ -167,14 +168,20 @@
 │   │   │   ├── Agent
 │   │   │   │   ├── FDO
 │   │   │   │   │   ├── Endpoint
-│   │   │   │   │   │   └── BrisDePorte
-│   │   │   │   │   │       ├── EditerDeclarationBrisPorteEndpoint.php
-│   │   │   │   │   │       ├── InitierDeclarationBrisPorteEndpoint.php
-│   │   │   │   │   │       ├── ListerMesDeclarationsEndpoint.php
-│   │   │   │   │   │       ├── SoumettreDeclarationBrisPorteEndpoint.php
-│   │   │   │   │   │       ├── SupprimerDeclarationBrisPorteEndpoint.php
-│   │   │   │   │   │       ├── SupprimerPieceJointeDeclarationBrisPorteEndpoint.php
-│   │   │   │   │   │       └── TeleverserPieceJointeDeclarationBrisPorteEndpoint.php
+│   │   │   │   │   │   ├── Agent
+│   │   │   │   │   │   │   ├── AffecterEtablissementEndpoint.php
+│   │   │   │   │   │   │   ├── AffecterEtablissementInput.php
+│   │   │   │   │   │   │   └── MoiEndpoint.php
+│   │   │   │   │   │   ├── BrisDePorte
+│   │   │   │   │   │   │   ├── EditerDeclarationBrisPorteEndpoint.php
+│   │   │   │   │   │   │   ├── InitierDeclarationBrisPorteEndpoint.php
+│   │   │   │   │   │   │   ├── ListerMesDeclarationsEndpoint.php
+│   │   │   │   │   │   │   ├── SoumettreDeclarationBrisPorteEndpoint.php
+│   │   │   │   │   │   │   ├── SupprimerDeclarationBrisPorteEndpoint.php
+│   │   │   │   │   │   │   ├── SupprimerPieceJointeDeclarationBrisPorteEndpoint.php
+│   │   │   │   │   │   │   └── TeleverserPieceJointeDeclarationBrisPorteEndpoint.php
+│   │   │   │   │   │   └── Etablissement
+│   │   │   │   │   │       └── RechercherEtablissementFDOEndpoint.php
 │   │   │   │   │   ├── Input
 │   │   │   │   │   │   ├── AdresseInput.php
 │   │   │   │   │   │   ├── CoordonneesRequerantInput.php
@@ -183,10 +190,13 @@
 │   │   │   │   │   │   └── ProcedureJudiciaireInput.php
 │   │   │   │   │   ├── Output
 │   │   │   │   │   │   ├── AdresseOutput.php
+│   │   │   │   │   │   ├── AffectationAgentFDOOutput.php
 │   │   │   │   │   │   ├── AgentOutput.php
 │   │   │   │   │   │   ├── CoordonneesRequerantOutput.php
 │   │   │   │   │   │   ├── DeclarationFDOBrisPorteOutput.php
 │   │   │   │   │   │   ├── DocumentOutput.php
+│   │   │   │   │   │   ├── EtablissementFDOOutput.php
+│   │   │   │   │   │   ├── MoiOutput.php
 │   │   │   │   │   │   └── ProcedureJudiciaireOutput.php
 │   │   │   │   │   ├── Transformers
 │   │   │   │   │   │   ├── DeclarationFDOBrisPorteOutputMapper.php
@@ -354,7 +364,7 @@
 │   │   │   ├── DocumentFixture.php
 │   │   │   ├── DossierFixture.php
 │   │   │   ├── FDOFixture.php
-│   │   │   ├── GeoFixtures.php
+│   │   │   ├── GeoFixture.php
 │   │   │   ├── Helpers
 │   │   │   │   └── MailpitManager.php
 │   │   │   ├── PersonneFixture.php
@@ -379,6 +389,7 @@
 │   │   │   ├── Administration.php
 │   │   │   ├── AdministrationType.php
 │   │   │   ├── Adresse.php
+│   │   │   ├── AffectationAgentFDO.php
 │   │   │   ├── Agent.php
 │   │   │   ├── BrisPorte.php
 │   │   │   ├── BrouillonDeclarationFDOBrisPorte.php
@@ -602,14 +613,19 @@
 │   │   │   ├── Agent
 │   │   │   │   ├── FDO
 │   │   │   │   │   └── Endpoint
-│   │   │   │   │       └── BrisDePorte
-│   │   │   │   │           ├── EditerDeclarationBrisPorteEndpointTest.php
-│   │   │   │   │           ├── InitierDeclarationBrisPorteEndpointTest.php
-│   │   │   │   │           ├── ListerMesDeclarationsBrisPorteEndpointTest.php
-│   │   │   │   │           ├── SoumettreDeclarationBrisPorteEndpointTest.php
-│   │   │   │   │           ├── SupprimerDeclarationBrisPorteEndpointTest.php
-│   │   │   │   │           ├── SupprimerPieceJointeDeclarationBrisPorteEndpointTest.php
-│   │   │   │   │           └── TeleverserPieceJointeDeclarationBrisPorteEndpointTest.php
+│   │   │   │   │       ├── Agent
+│   │   │   │   │       │   ├── AffecterEtablissementEndpointTest.php
+│   │   │   │   │       │   └── MoiEndpointTest.php
+│   │   │   │   │       ├── BrisDePorte
+│   │   │   │   │       │   ├── EditerDeclarationBrisPorteEndpointTest.php
+│   │   │   │   │       │   ├── InitierDeclarationBrisPorteEndpointTest.php
+│   │   │   │   │       │   ├── ListerMesDeclarationsBrisPorteEndpointTest.php
+│   │   │   │   │       │   ├── SoumettreDeclarationBrisPorteEndpointTest.php
+│   │   │   │   │       │   ├── SupprimerDeclarationBrisPorteEndpointTest.php
+│   │   │   │   │       │   ├── SupprimerPieceJointeDeclarationBrisPorteEndpointTest.php
+│   │   │   │   │       │   └── TeleverserPieceJointeDeclarationBrisPorteEndpointTest.php
+│   │   │   │   │       └── Etablissement
+│   │   │   │   │           └── RechercherEtablissementFDOEndpointTest.php
 │   │   │   │   └── Fip6
 │   │   │   │       ├── APIEndpointTestCase.php
 │   │   │   │       ├── AbstractEndpointTestCase.php
@@ -699,6 +715,7 @@
 │   ├── tests
 │   │   ├── agent
 │   │   │   ├── fdo
+│   │   │   │   ├── affecter-agent.e2e.test.ts
 │   │   │   │   └── declarer-bris-de-porte.e2e.test.ts
 │   │   │   └── fip6
 │   │   │       ├── expect.ts
@@ -749,7 +766,9 @@
     │   │   │   ├── fdo
     │   │   │   │   ├── components
     │   │   │   │   │   ├── ModaleAjoutPieceJointe.tsx
-    │   │   │   │   │   └── ModalePrévisualiserPieceJointe.tsx
+    │   │   │   │   │   ├── ModalePrévisualiserPieceJointe.tsx
+    │   │   │   │   │   └── affectation
+    │   │   │   │   │       └── ModaleAutoAffectation.tsx
     │   │   │   │   ├── container.ts
     │   │   │   │   ├── fdo.tsx
     │   │   │   │   ├── fichiers
@@ -759,8 +778,11 @@
     │   │   │   │   │       ├── guide-de-declaration-de-bris-de-porte-a-destination-des-Forces-de-l-ordre-pn.pdf
     │   │   │   │   │       ├── guide-de-declaration-de-bris-de-porte-a-destination-des-Forces-de-l-ordre.pdf
     │   │   │   │   │       └── guide-de-remise-de-l-avis-d-intervention-apres-un-bris-de-porte.pdf
-    │   │   │   │   ├── models
-    │   │   │   │   │   └── DeclarationFDOBrisPorte.ts
+    │   │   │   │   ├── modeles
+    │   │   │   │   │   ├── AffectationAgentFDO.ts
+    │   │   │   │   │   ├── AgentFDO.ts
+    │   │   │   │   │   ├── DeclarationFDOBrisPorte.ts
+    │   │   │   │   │   └── EtablissementFDO.ts
     │   │   │   │   ├── query.ts
     │   │   │   │   ├── routes
     │   │   │   │   │   ├── __root.tsx
@@ -779,9 +801,11 @@
     │   │   │   │   │   ├── mon-compte.tsx
     │   │   │   │   │   └── requisition-serrurier.tsx
     │   │   │   │   ├── routeur
+    │   │   │   │   │   ├── contexte.ts
     │   │   │   │   │   ├── index.ts
     │   │   │   │   │   └── routeur-fdo.gen.ts
     │   │   │   │   ├── services
+    │   │   │   │   │   ├── agent.ts
     │   │   │   │   │   ├── declaration.ts
     │   │   │   │   │   └── index.ts
     │   │   │   │   └── tsconfig.json
@@ -790,6 +814,9 @@
     │   │   │       │   ├── dossiers
     │   │   │       │   │   ├── BadgeEtatDossier.tsx
     │   │   │       │   │   └── ListeDossiers.tsx
+    │   │   │       │   ├── gestion
+    │   │   │       │   │   ├── ValidationAgentPage.tsx
+    │   │   │       │   │   └── index.ts
     │   │   │       │   └── pages
     │   │   │       │       └── RechercherDossierPage.tsx
     │   │   │       ├── container.ts
@@ -845,19 +872,8 @@
     │   │   │       │           ├── DossierRejetASigner.ts
     │   │   │       │           └── dossier-liste-element.css
     │   │   │       ├── fip6.tsx
-    │   │   │       ├── gestion_agents
-    │   │   │       │   ├── components
-    │   │   │       │   │   ├── DeclarationNouvelAgentRow.tsx
-    │   │   │       │   │   ├── ValidationAgentPage.tsx
-    │   │   │       │   │   ├── ValidationAgentRow.tsx
-    │   │   │       │   │   └── index.ts
-    │   │   │       │   └── models
-    │   │   │       │       ├── Administration.ts
-    │   │   │       │       ├── Agent.ts
-    │   │   │       │       ├── RequeteValidationAgent.ts
-    │   │   │       │       ├── RoleAgent.ts
-    │   │   │       │       └── index.ts
     │   │   │       ├── modeles
+    │   │   │       │   ├── AgentFIP6.ts
     │   │   │       │   ├── dossier.ts
     │   │   │       │   └── index.ts
     │   │   │       ├── query.ts
@@ -892,10 +908,12 @@
     │   │   │       │   ├── index.tsx
     │   │   │       │   └── mon-compte.tsx
     │   │   │       ├── routeur
+    │   │   │       │   ├── contexte.ts
     │   │   │       │   ├── index.ts
     │   │   │       │   ├── routeur-fip6.gen.ts
     │   │   │       │   └── routeur-fip6.ts
     │   │   │       ├── services
+    │   │   │       │   ├── agent.ts
     │   │   │       │   └── dossier.ts
     │   │   │       └── tsconfig.json
     │   │   ├── public
@@ -942,26 +960,7 @@
     │   │   │   ├── composants
     │   │   │   │   ├── IconeLigne.tsx
     │   │   │   │   ├── SelectionCivilite.tsx
-    │   │   │   │   ├── SuggestedInput.tsx
     │   │   │   │   ├── TitreSection.tsx
-    │   │   │   │   ├── champs
-    │   │   │   │   │   ├── CodePostalInput.tsx
-    │   │   │   │   │   ├── PaysSelect.tsx
-    │   │   │   │   │   ├── RegExpInput.tsx
-    │   │   │   │   │   ├── check
-    │   │   │   │   │   │   ├── CheckInput.tsx
-    │   │   │   │   │   │   ├── CheckRadioButtons.tsx
-    │   │   │   │   │   │   ├── CheckSelect.tsx
-    │   │   │   │   │   │   ├── CheckSuggestedInput.tsx
-    │   │   │   │   │   │   └── CheckUpload.tsx
-    │   │   │   │   │   ├── form
-    │   │   │   │   │   │   ├── FormInput.tsx
-    │   │   │   │   │   │   ├── FormRadioButtons.tsx
-    │   │   │   │   │   │   ├── FormSelect.tsx
-    │   │   │   │   │   │   ├── FormSuggeestedInput.tsx
-    │   │   │   │   │   │   ├── FormUpload.tsx
-    │   │   │   │   │   │   └── TanstackFormField.d.ts
-    │   │   │   │   │   └── pays.json
     │   │   │   │   └── piecesJointes
     │   │   │   │       ├── AjouterPiecesJointesModale.tsx
     │   │   │   │       ├── PieceJointePanelNavigation.tsx
@@ -1054,7 +1053,26 @@
     │   │   │   │   ├── Requis.tsx
     │   │   │   │   ├── Tableau.tsx
     │   │   │   │   ├── Tourniquet.css
-    │   │   │   │   └── Tourniquet.tsx
+    │   │   │   │   ├── Tourniquet.tsx
+    │   │   │   │   └── champs
+    │   │   │   │       ├── CodePostalInput.tsx
+    │   │   │   │       ├── PaysSelect.tsx
+    │   │   │   │       ├── RegExpInput.tsx
+    │   │   │   │       ├── SuggestedInput.tsx
+    │   │   │   │       ├── check
+    │   │   │   │       │   ├── CheckInput.tsx
+    │   │   │   │       │   ├── CheckRadioButtons.tsx
+    │   │   │   │       │   ├── CheckSelect.tsx
+    │   │   │   │       │   ├── CheckSuggestedInput.tsx
+    │   │   │   │       │   └── CheckUpload.tsx
+    │   │   │   │       ├── form
+    │   │   │   │       │   ├── FormInput.tsx
+    │   │   │   │       │   ├── FormRadioButtons.tsx
+    │   │   │   │       │   ├── FormSelect.tsx
+    │   │   │   │       │   ├── FormSuggestedInput.tsx
+    │   │   │   │       │   ├── FormUpload.tsx
+    │   │   │   │       │   └── TanstackFormField.d.ts
+    │   │   │   │       └── pays.json
     │   │   │   ├── erreur
     │   │   │   │   ├── ErreurComposant.tsx
     │   │   │   │   └── NonTrouveComposant.tsx
@@ -1083,13 +1101,13 @@
     │   │   ├── services
     │   │   │   ├── RequerantManager.ts
     │   │   │   ├── agent
-    │   │   │   │   ├── agent.ts
     │   │   │   │   ├── document.ts
     │   │   │   │   └── index.ts
     │   │   │   ├── courriel.ts
     │   │   │   ├── date.ts
     │   │   │   ├── devise.ts
     │   │   │   ├── divers.ts
+    │   │   │   ├── dsfr.ts
     │   │   │   ├── fichier.ts
     │   │   │   ├── index.ts
     │   │   │   └── object.ts
@@ -1131,6 +1149,6 @@
     ├── types
     │   └── index.d.ts
     ├── vite.config.ts
-    ├── vitest.config.ts
+    ├── vitest.config.js
     └── yarn.lock
-255 directories, 880 files
+258 directories, 895 files
