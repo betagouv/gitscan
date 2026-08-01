@@ -31,6 +31,7 @@
 ├── app
 │   ├── admin
 │   │   ├── antenne.rb
+│   │   ├── api_key.rb
 │   │   ├── company.rb
 │   │   ├── company_satisfaction.rb
 │   │   ├── concerns
@@ -297,7 +298,8 @@
 │   │   │       │   ├── landing_subjects_controller.rb
 │   │   │       │   ├── landing_themes_controller.rb
 │   │   │       │   └── landings_controller.rb
-│   │   │       └── solicitations_controller.rb
+│   │   │       ├── solicitations_controller.rb
+│   │   │       └── subjects_controller.rb
 │   │   ├── app_roots_controller.rb
 │   │   ├── application_controller.rb
 │   │   ├── badges_controller.rb
@@ -366,6 +368,7 @@
 │   │   ├── badges_helper.rb
 │   │   ├── breadcrumbs_helper.rb
 │   │   ├── companies_helper.rb
+│   │   ├── cooperations_helper.rb
 │   │   ├── diagnosis_helper.rb
 │   │   ├── experts_helper.rb
 │   │   ├── images_helper.rb
@@ -391,7 +394,7 @@
 │   │   ├── stats_helper.rb
 │   │   ├── status_helper.rb
 │   │   ├── subject_questions_helper.rb
-│   │   └── user_tabs_helper.rb
+│   │   └── user_menu_helper.rb
 │   ├── javascript
 │   │   ├── application
 │   │   │   ├── annuaire.js
@@ -401,7 +404,6 @@
 │   │   │   │   ├── cgu_acceptance_controller.js
 │   │   │   │   ├── coverage_controller.js
 │   │   │   │   ├── diagnosis_needs_step_controller.js
-│   │   │   │   ├── direct_submit_controller.js
 │   │   │   │   ├── expert_autocomplete_controller.js
 │   │   │   │   ├── feedback_form_controller.js
 │   │   │   │   ├── fr_header_controller.js
@@ -431,9 +433,11 @@
 │   │       │   │   ├── column_charts.js
 │   │       │   │   ├── line_charts.js
 │   │       │   │   └── percentage_column_chart.js
+│   │       │   ├── direct_submit_controller.js
 │   │       │   ├── filters_controller.js
 │   │       │   ├── index.js
 │   │       │   ├── insee_code_controller.js
+│   │       │   ├── slim_select_controller.js
 │   │       │   └── stats_charts_controller.js
 │   │       ├── index.js
 │   │       ├── stimulus_app.js
@@ -543,6 +547,7 @@
 │   │   ├── user.rb
 │   │   └── user_right.rb
 │   ├── policies
+│   │   ├── activity_report_policy.rb
 │   │   ├── antenne_policy.rb
 │   │   ├── application_policy.rb
 │   │   ├── contact_policy.rb
@@ -558,11 +563,11 @@
 │   │   │   └── stats_policy.rb
 │   │   ├── match_policy.rb
 │   │   ├── need_policy.rb
-│   │   ├── report_policy.rb
 │   │   ├── shared_satisfaction_policy.rb
 │   │   ├── solicitation_policy.rb
-│   │   └── stats
-│   │       └── team_policy.rb
+│   │   ├── stats
+│   │   │   └── team_policy.rb
+│   │   └── user_policy.rb
 │   ├── serializers
 │   │   ├── api
 │   │   │   └── v1
@@ -572,7 +577,8 @@
 │   │   │       ├── simple_subject_answer_serializer.rb
 │   │   │       ├── solicitation_logo_serializer.rb
 │   │   │       ├── solicitation_serializer.rb
-│   │   │       └── subject_question_serializer.rb
+│   │   │       ├── subject_question_serializer.rb
+│   │   │       └── subject_serializer.rb
 │   │   └── autocomplete
 │   │       ├── expert_serializer.rb
 │   │       └── expert_subject_serializer.rb
@@ -1004,8 +1010,7 @@
 │       │   ├── mailers.mjml
 │       │   ├── pages.html.haml
 │       │   ├── side_menu.html.haml
-│       │   ├── solicitation_form.html.haml
-│       │   └── user_tabs.html.haml
+│       │   └── solicitation_form.html.haml
 │       ├── mailers
 │       │   ├── _expert_header.mjml
 │       │   ├── _footer.mjml
@@ -1191,6 +1196,7 @@
 │           ├── _menu.html.haml
 │           └── registrations
 │               ├── antenne.html.haml
+│               ├── api_key.html.haml
 │               └── password.html.haml
 ├── bin
 │   ├── brakeman
@@ -1227,6 +1233,7 @@
 │   │   ├── active_admin.rb
 │   │   ├── active_model_serializers.rb
 │   │   ├── application_controller_renderer.rb
+│   │   ├── appsignal_cache_monitoring.rb
 │   │   ├── assets.rb
 │   │   ├── auth_logging.rb
 │   │   ├── backtrace_silencers.rb
@@ -1316,7 +1323,8 @@
 │   │   ├── 20260518121414_create_solicitation_mail_templates.rb
 │   │   ├── 20260518121930_seed_solicitation_mail_templates.rb
 │   │   ├── 20260522133821_add_title_to_solicitation_mail_templates.rb
-│   │   └── 20260609134557_add_position_to_solicitation_mail_templates.rb
+│   │   ├── 20260609134557_add_position_to_solicitation_mail_templates.rb
+│   │   └── 20260717131234_add_subject_can_be_automated.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── doc
@@ -1372,7 +1380,7 @@
 │   │   └── security.txt
 │   ├── 503.html
 │   ├── 504.html
-│   ├── Brochure_Conseillers_Entreprises.pdf
+│   ├── Brochure_Service_Public_Conseillers_entreprises.pdf
 │   ├── DGEFP_decision_homologation_SI_PDE-v0.2.pdf
 │   ├── google7c9d162767dd90a2.html
 │   └── robots.txt
@@ -1542,12 +1550,11 @@
 │   │   ├── experts_helper_spec.rb
 │   │   ├── images_helper_spec.rb
 │   │   ├── nested_errors_helper_spec.rb
+│   │   ├── seo_helper_spec.rb
 │   │   ├── solicitation_helper_spec.rb
 │   │   └── stats_helper_spec.rb
 │   ├── jobs
 │   │   ├── abandon_needs_job_spec.rb
-│   │   ├── activity_reports
-│   │   │   └── notify_antenne_managers_job_spec.rb
 │   │   ├── add_shared_satisfactions_job_spec.rb
 │   │   ├── admin
 │   │   │   ├── create_reminders_registers_job_spec.rb
@@ -1626,6 +1633,7 @@
 │   │   ├── user_right_spec.rb
 │   │   └── user_spec.rb
 │   ├── policies
+│   │   ├── activity_report_policy_spec.rb
 │   │   ├── antenne_policy_spec.rb
 │   │   ├── contact_policy_spec.rb
 │   │   ├── cooperation_policy_spec.rb
@@ -1638,7 +1646,6 @@
 │   │   │   └── stats_policy_spec.rb
 │   │   ├── match_policy_spec.rb
 │   │   ├── need_policy_spec.rb
-│   │   ├── report_policy_spec.rb
 │   │   ├── shared_satisfaction_policy_spec.rb
 │   │   ├── solicitation_policy_spec.rb
 │   │   └── stats
@@ -1651,7 +1658,8 @@
 │   │   │       ├── landing_subjects_spec.rb
 │   │   │       ├── landing_themes_spec.rb
 │   │   │       ├── landings_spec.rb
-│   │   │       └── solicitations_spec.rb
+│   │   │       ├── solicitations_spec.rb
+│   │   │       └── subjects_spec.rb
 │   │   ├── landings_spec.rb
 │   │   └── solicitations_spec.rb
 │   ├── services
@@ -1795,4 +1803,4 @@
 ├── tmp
 │   └── .keep
 └── yarn.lock
-297 directories, 1509 files
+296 directories, 1518 files
