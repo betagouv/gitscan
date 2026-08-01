@@ -11,12 +11,17 @@ and this project adheres to
 ### Added
 
 - ✨(backend) make the upload ACL configurable to support GCS based storages
+- ✨(frontend) show the messages widget button on the homepage
+- ✨(frontend) open the messages widget from the help menu
+- ✨(backend) add an item batch share endpoint gated by ALLOW_SHARE_IMPORT_FILE
+- ✨(frontend) share an item with contacts imported from a file
 
 ### Changed
 
 - 🔧(docker) drop the unused pip upgrade and apk caches from the image
 - ✨(backend) expose item existence in the malware detection admin
 - ✨(backend) show human readable item size in the admin
+- 🚚(global) move favorite items API endpoint to `/items/favorites/`
 
 ### Fixed
 
