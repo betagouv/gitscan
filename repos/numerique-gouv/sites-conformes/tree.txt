@@ -125,6 +125,7 @@
 │   ├── index.md
 │   └── requirements.txt
 ├── e2e
+│   ├── errors.spec.ts
 │   ├── fixtures.ts
 │   └── homepage.spec.ts
 ├── entrypoint.sh
@@ -288,6 +289,7 @@
 │   │   │       ├── set_config.py
 │   │   │       └── shell.py
 │   │   ├── managers.py
+│   │   ├── middleware.py
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
 │   │   │   ├── 0001_squashed_0062_catalogindexpage_preview_image_and_more.py
@@ -369,6 +371,7 @@
 │   │   │   ├── 0077_alter_catalogindexpage_body_alter_contentpage_body.py
 │   │   │   ├── 0078_alter_catalogindexpage_body_alter_contentpage_body.py
 │   │   │   ├── 0079_alter_catalogindexpage_body_alter_contentpage_body.py
+│   │   │   ├── 0080_cmsdsfrconfig_iframe_allow_origins.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── monkey_patches.py
@@ -484,6 +487,7 @@
 │   │   │   ├── test_blocks.py
 │   │   │   ├── test_create_demo_pages.py
 │   │   │   ├── test_force_script_name.py
+│   │   │   ├── test_iframe_middleware.py
 │   │   │   ├── test_managers.py
 │   │   │   ├── test_search.py
 │   │   │   ├── test_services_accessors.py
@@ -862,8 +866,10 @@
 │   │       │   ├── share.html
 │   │       │   ├── socialmedia_preview_image.html
 │   │       │   └── user_menu.html
-│   │       └── robots.txt
+│   │       ├── iframe.html
+│   │       ├── robots.txt
+│   │       └── standalone.html
 │   └── utils
 │       └── __init__.py
 └── uv.lock
-147 directories, 721 files
+147 directories, 727 files
