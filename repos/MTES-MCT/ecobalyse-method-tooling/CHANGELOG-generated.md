@@ -1,30 +1,34 @@
-## Changelog : ecobalyse-method-tooling (30 derniers jours, au 28 juillet 2026)
+## Changelog : ecobalyse-method-tooling (30 derniers jours, au 31 juillet 2026)
 
 ### Résumé
-Les dernières mises à jour se concentrent sur l'amélioration des outils de comparaison et de diagnostic pour les données Agribalyse et BAFU, ainsi que sur l'extraction et la gestion des recettes Agribalyse. Des corrections ont été apportées pour assurer la compatibilité avec les dernières versions des dépendances et pour améliorer la précision des calculs.
+Les dernières mises à jour se concentrent principalement sur l'outil `agribalyse_recipe`, avec des améliorations significatives dans la gestion des ingrédients, de l'emballage et de l'extraction de données. Des corrections et des fonctionnalités ont également été ajoutées aux outils de comparaison et de diagnostic BAFU. L'intégration de Jupyter Notebook a été restaurée et améliorée.
 
 ### Évolutions fonctionnelles
-- Ajout d'un outil pour comparer les données Brightway et VoLCA, incluant des fonctionnalités pour exclure les données à long terme (similaire à l'option "noLT" d'Ecobalyse) via l'option `--exclude-long-term` [#242b45a](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/242b45a).
-- Ajout d'un outil de diagnostic pour la caractérisation des flux BAFU [#9eb6835](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/9eb6835).
-- Extraction des recettes Agribalyse et ajout de fichiers README correspondants [#e85b591](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/e85b591).
-- Extraction de l'emballage de chaque recette Agribalyse en plus des ingrédients [#a5d64d5](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/a5d64d5).
-- Possibilité de spécifier uniquement les ingrédients avec l'option `--ingredients-only` pour les recettes Agribalyse [#7dfd3e0](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/7dfd3e0).
-- Restauration de l'environnement Jupyter et nettoyage de la configuration VoLCA [#190be03](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/190be03).
+- L'outil `agribalyse_recipe` permet désormais d'extraire l'emballage de chaque recette, affiché avec ses ingrédients. [#242b45a](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/242b45a)
+- Possibilité d'extraire tous les processus de la base de données avec l'option `--all`. [#5c377f4](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/5c377f4)
+- Ajout de l'option `--scope ciqual` pour gérer l'emballage des 2 500 produits Ciqual. [#7f8ff3f](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/7f8ff3f)
+- Les produits Ciqual incluent maintenant leurs propres ingrédients. [#0b2feb9](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/0b2feb9)
+- Ajout d'une option `--ingredients-only` pour l'extraction des ingrédients. [#7dfd3e0](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/7dfd3e0)
+- Restauration de l'intégration Jupyter Notebook et nettoyage de la configuration VoLCA. [#190be03](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/190be03)
+- Ajout d'un outil de diagnostic pour la caractérisation des flux BAFU. [#9eb6835](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/9eb6835)
+- Ajout d'un outil de comparaison (parity-cloud) pour BAFU, permettant d'exclure les impacts à long terme avec l'option `--exclude-long-term`. [#242b45a](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/242b45a)
 
 ### Évolutions techniques
-- Mise à jour de l'importation d'IPython dans `explore.py` pour la compatibilité avec IPython 9 [#89010cd](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/89010cd).
-- Correction de l'unité de conversion de km en m dans `brightway_vs_volca` [#990d761](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/990d761).
-- Refactoring du code `brightway_vs_volca` pour le déplacer sous le répertoire `food/` [#1a6ffe8](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/1a6ffe8) et [#242b45a](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/242b45a).
-- Utilisation de pyvolca >=0.8.0 pour `transformed-ingredients` [#c8e4af0](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/c8e4af0).
-- Correction de la résolution des chemins de données dans les notebooks Jupyter [#7d23aed](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/7d23aed).
-- Correction de plusieurs erreurs dans la gestion des co-produits et des identifiants dans la recette Agribalyse [#bf90f85](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/bf90f85) et [#7ab5463](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/7ab5463).
-- Correction de problèmes liés au calcul du bilan de l'emballage dans la recette Agribalyse [#95852d0](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/95852d0).
+- Mise à jour de la version minimale de `pyvolca` à 0.8.0 pour `transformed-ingredients`. [#c8e4af0](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/c8e4af0)
+- Utilisation de `pyvolca` pour piloter VoLCA et téléchargement de la base de données au lieu de générer un fichier TOML. [#1b39a4a](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/1b39a4a)
+- Correction de l'importation d'IPython dans `explore.py` pour la compatibilité avec IPython 9. [#89010cd](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/89010cd)
+- Correction d'une inversion d'unités (km <-> m) dans l'outil de comparaison BAFU. [#990d761](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/990d761)
+- Refactoring de la structure des outils BAFU, les déplaçant sous le répertoire `food/`. [#8b4eff0](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/8b4eff0, #1a6ffe8](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/1a6ffe8) )
+- Mise à jour de la version de l'engine pin à 0.9.3 pour la compatibilité avec pyvolca 0.8.2. [#0a82e21](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/0a82e21)
 
 ### Autres changements
-- Ajout de documentation sur les résultats de parité et les problèmes de VoLCA liés aux eaux souterraines [#ad308c1](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/ad308c1) et [#c235f84](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/c235f84).
-- Ajout de la documentation `etat_egalise.html` comme preuve de parité [#c235f84](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/c235f84).
-- Mise à jour du titre du rapport dans `brightway_vs_volca` pour utiliser la variable `EB_DATABASE` [#7f1fd8e](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/7f1fd8e).
-- Ajout de la contrainte VoLCA 0.9.1 pour la fonctionnalité `bulk exclude-long-term` [#936fc44](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/936fc44).
-- Ajout d'un fichier `.gitignore` pour ignorer l'état d'exécution de Jupyter [#880140b](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/880140b).
-- Correction de la valeur de la partie non comestible des noix de cajou [#6f6fcb6](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/6f6fcb6).
-- Maintenance des fichiers README [#431771f](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/431771f).
+- Documentation : alignement du titre de l'article et déplacement de la méthodologie vers le blog pour `agribalyse_recipe`.
+- Documentation : ajout de liens vers la documentation de `pyvolca`.
+- Documentation : ajout de preuves de parité et signalement d'un problème VoLCA lié aux eaux souterraines.
+- Ajout de READMEs pour les nouvelles fonctionnalités. [#e85b591](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/e85b591)
+- Suppression d'une reconstruction d'impact obsolète pour l'écotoxicité en eau douce. [#391c70d](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/391c70d)
+- Correction de bugs mineurs dans `agribalyse_recipe` concernant l'identification des ingrédients et la gestion des co-produits. [#bf90f85](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/bf90f85, #7ab5463](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/7ab5463) )
+- Correction de problèmes liés au calcul de l'emballage. [#d962c5d](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/d962c5d, #95852d0](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/95852d0) )
+- Correction du chemin d'accès aux données dans les notebooks Jupyter. [#7d23aed](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/7d23aed)
+- Ajout d'une valeur par défaut pour le pourcentage de la partie non comestible des noix de cajou. [#6f6fcb6](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/6f6fcb6)
+- Ajout de fichiers `.gitignore` pour exclure les états de runtime de Jupyter Notebook. [#880140b](https://github.com/MTES-MCT/ecobalyse-method-tooling/commit/880140b)
