@@ -331,6 +331,8 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260724130000_add_never_update_frequency
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260729120000_lowercase_existing_tags
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   ├── schema
 │   │   │   ├── applications.prisma
@@ -522,6 +524,9 @@
 │   │   │       └── user-organization-changed.template.html
 │   │   ├── enum.ts
 │   │   ├── health
+│   │   │   ├── dto
+│   │   │   │   └── health-check.dto.ts
+│   │   │   ├── health-check.controller.spec.ts
 │   │   │   ├── health-check.controller.ts
 │   │   │   └── health-check.module.ts
 │   │   ├── hosting-option
@@ -587,6 +592,13 @@
 │   │   │   ├── logger.service.ts
 │   │   │   └── request-logging.interceptor.ts
 │   │   ├── main.ts
+│   │   ├── maintenance
+│   │   │   ├── maintenance.constants.ts
+│   │   │   ├── maintenance.middleware.spec.ts
+│   │   │   ├── maintenance.middleware.ts
+│   │   │   ├── maintenance.module.ts
+│   │   │   ├── maintenance.service.spec.ts
+│   │   │   └── maintenance.service.ts
 │   │   ├── mdit-campaign
 │   │   │   ├── dto
 │   │   │   │   └── mdit-campaign.dto.ts
@@ -604,6 +616,7 @@
 │   │   │   ├── metadatas.module.ts
 │   │   │   └── metadatas.service.ts
 │   │   ├── middlewares
+│   │   │   ├── auth.middleware.spec.ts
 │   │   │   └── auth.middleware.ts
 │   │   ├── organization-maia-references
 │   │   │   ├── dto
@@ -980,6 +993,8 @@
 │   │   │   ├── ImpersonationBanner.vue
 │   │   │   ├── InformationsGenerales.vue
 │   │   │   ├── LinksTab.vue
+│   │   │   ├── MaintenanceBanner.spec.ts
+│   │   │   ├── MaintenanceBanner.vue
 │   │   │   ├── MarkdownDisplay.vue
 │   │   │   ├── MarkdownEditor.vue
 │   │   │   ├── PaginationFooter.vue
@@ -1015,6 +1030,7 @@
 │   │   │   │   ├── MditCampaignActions.vue
 │   │   │   │   ├── OrganizationActions.vue
 │   │   │   │   ├── TagActions.vue
+│   │   │   │   ├── UserActions.spec.ts
 │   │   │   │   ├── UserActions.vue
 │   │   │   │   └── UserPermissionsModal.vue
 │   │   │   ├── business-division
@@ -1093,6 +1109,8 @@
 │   │   │   ├── use-date.ts
 │   │   │   ├── use-filter-watcher.ts
 │   │   │   ├── use-graph-style.ts
+│   │   │   ├── use-maintenance-mode.spec.ts
+│   │   │   ├── use-maintenance-mode.ts
 │   │   │   ├── use-mdit-campaigns.ts
 │   │   │   ├── use-mermaid.ts
 │   │   │   ├── use-modal.ts
@@ -1101,6 +1119,7 @@
 │   │   │   ├── use-sanitize-utils.ts
 │   │   │   └── use-technical-debt-chart.ts
 │   │   ├── constants
+│   │   │   ├── accessibility-declaration.ts
 │   │   │   ├── breakpoint.ts
 │   │   │   ├── data-catalog.constants.ts
 │   │   │   ├── dictionary.ts
@@ -1150,6 +1169,7 @@
 │   │   │   ├── typeguard-includes.ts
 │   │   │   └── types.ts
 │   │   ├── views
+│   │   │   ├── AccessibilityPage.spec.ts
 │   │   │   ├── AccessibilityPage.vue
 │   │   │   ├── AdminPage.vue
 │   │   │   ├── ApplicationPage.vue
@@ -1220,4 +1240,4 @@
 │       ├── campaign.mjs
 │       └── sync-issue.mjs
 └── release-please-config.json
-329 directories, 893 files
+332 directories, 910 files

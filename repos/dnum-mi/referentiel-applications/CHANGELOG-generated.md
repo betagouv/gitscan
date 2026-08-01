@@ -1,41 +1,28 @@
-## Changelog : referentiel-applications (30 derniers jours, au 29 juillet 2026)
+## Changelog : referentiel-applications (30 derniers jours, au 31 juillet 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à l'interface utilisateur, notamment au niveau de la gestion des applications, des filtres et de la matrice des droits. Des corrections de bugs ont été implémentées pour améliorer la stabilité et la fiabilité de l'application, ainsi que des améliorations d'accessibilité (RGAA). Des travaux ont également été réalisés sur la gestion des permissions et la performance de la recherche.
+Les dernières mises à jour apportent des améliorations significatives à l'accessibilité, la gestion des données et l'expérience utilisateur. Des correctifs ont été implémentés pour améliorer la stabilité et la fiabilité de l'application, notamment au niveau des tests et de la gestion de la base de données. De nouvelles fonctionnalités ont été ajoutées pour la gestion des divisions métiers et l'affichage des informations techniques des applications.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de gérer plusieurs divisions métiers.
-- Amélioration de la recherche globale avec préfixe et correction de sa fiabilité.
-- Affichage du libellé de statut même sans date sur les applications.
-- Ajout de l'option de tri des types d'acteur.
-- Amélioration de l'interface pour la création d'applications (étapes, labels).
-- Ajout de la gestion des licences et de la stack technique sur la fiche d'application.
-- Amélioration de l'interface de filtrage côté application avec ajout d'un espacement entre le portefeuille et les informations générales.
-- Mise à jour de l'affichage de la version de l'application sans rafraîchissement complet de la page.
-- Mise à jour du nom de "time" pour "mco".
-- Ajout de la possibilité de définir une date de statut optionnelle.
-- Ajout de la gestion des importations MOA/MOE avec l'indicateur "is group".
-- Correction du calcul de la valeur totale pour le MDIT.
+- Ajout d'un mode de maintenance en lecture seule pour l'application ([#2201](https://github.com/dnum-mi/referentiel-applications/issues/2201)).
+- Normalisation des tags en minuscules pour une meilleure cohérence des données ([#2202](https://github.com/dnum-mi/referentiel-applications/issues/2202)).
+- Mise à jour de l'affichage de la version de l'application sans rafraîchissement complet de la page ([#2158](https://github.com/dnum-mi/referentiel-applications/issues/2158)).
+- Ajout de la possibilité de gérer plusieurs divisions métiers ([#2114](https://github.com/dnum-mi/referentiel-applications/issues/2114)).
+- Amélioration de la recherche globale avec préfixe et correction de la fiabilité ([#2025](https://github.com/dnum-mi/referentiel-applications/issues/2025)).
+- Affichage du libellé de statut même sans date associée ([#2017](https://github.com/dnum-mi/referentiel-applications/issues/2017)).
+- Ajout de l'affichage de la pile technique et des licences sur la fiche d'application ([#1099](https://github.com/dnum-mi/referentiel-applications/issues/1099)).
+- Ajout de l'affichage du taux de conformité RGAA et de la date de déclaration d'accessibilité ([#1935](https://github.com/dnum-mi/referentiel-applications/issues/1935)).
 
 ### Évolutions techniques
-- Refonte de la stack technologique affichée sur la fiche application (produit, lien documentation, fin de vie).
-- Amélioration de la performance de la recherche d'applications.
-- Fiabilisation du démarrage de la base de données et du backend en CI pour éviter les tests aléatoires.
-- Correction d'un problème de pollution de la base de données de développement par les tests.
-- Suppression de la fonctionnalité de gestion des licences (modèle, API, UI, tests).
-- Correction de plusieurs alertes de sécurité (Dependabot) sur le frontend et le backend.
-- Amélioration de la gestion des permissions : suppression du mécanisme `isAdmin` et simplification des droits.
-- Ajout d'un endpoint pour le catalogue de données et actions associées en frontend.
-- Ajout de permissions d'écriture pour l'édition des données d'application.
+- Migration vers NestJS 11 ([#1937](https://github.com/dnum-mi/referentiel-applications/issues/1937), [#2153](https://github.com/dnum-mi/referentiel-applications/issues/2153)).
+- Correction de problèmes de pollution de la base de données de développement par les tests ([#2117](https://github.com/dnum-mi/referentiel-applications/issues/2117)).
+- Amélioration de la performance de la recherche d'applications ([#1975](https://github.com/dnum-mi/referentiel-applications/issues/1975)).
+- Fiabilisation du démarrage de la base de données et du backend en CI ([#2023](https://github.com/dnum-mi/referentiel-applications/issues/2023)).
+- Correction de plusieurs vulnérabilités de sécurité identifiées par Dependabot.
+- Suppression de la fonctionnalité de gestion des licences.
 
 ### Autres changements
-- Améliorations de l'accessibilité (RGAA) : contraste des couleurs, champs de formulaires, messages de statut, accessibilité des graphiques, gestion du focus clavier, etc.
-- Ajout de documentation récapitulative du RefApp et des ADR (Architectural Decision Records).
-- Correction d'un bug empêchant l'édition d'une ligne de matrice non verrouillée.
-- Amélioration de la gestion des filtres dans l'interface d'administration.
-- Mise à jour des dépendances (versions 1.82.0, 1.82.1, 1.83.0, 1.84.0, 1.85.0 et 1.86.0).
-- Ajout de tests E2E pour améliorer la couverture et la fiabilité.
-- Correction de problèmes de localisation de certains éléments de l'interface utilisateur.
-- Ajout de la validation par défaut dans les filtres d'application.
-- Amélioration de la gestion des erreurs et des messages d'information.
-- Ajout de la gestion des tokens applicatifs admin pour FP8.
+- Amélioration de l'accessibilité (RGAA) : corrections de contraste, champs liés, messages d'état, transcriptions de graphiques, liens explicites, structure globale de la page.
+- Documentation du RefApp et des ADR (Architecture Decision Records).
+- Correction de bugs mineurs et améliorations de l'interface utilisateur.
+- Mise à jour des dépendances.
