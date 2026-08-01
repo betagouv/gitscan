@@ -1,41 +1,53 @@
 {
   "url": "https://github.com/datagouv/apistration",
   "name": "apistration",
-  "description": "APIstration est une application et un site web pour les API Entreprise et Particulier du gouvernement français. Il permet de gérer et de documenter ces APIs certifiées.",
+  "description": "APIstration est une application et un site web pour les API Entreprise et Particulier du gouvernement français. Elle permet de gérer et de documenter ces APIs certifiées.",
   "language": "Ruby",
   "features": [
     "API & Intégrations",
-    "Gestion documentaire & Fichiers",
+    "Gestion des utilisateurs & Permissions",
     "Authentification & Accès",
+    "Documentation",
     "Sécurité & Conformité"
   ],
-  "audience": "Professionnels",
+  "audience": [
+    "Professionnels",
+    "Agents de l'Administration",
+    "Développeurs"
+  ],
   "dependencies": [
     "Ruby",
     "Rails",
     "PostgreSQL",
-    "Redis",
-    "Docker"
+    "Faraday",
+    "RSpec",
+    "Webmock",
+    "tsup",
+    "vitest",
+    "TypeScript"
   ],
   "components": [
-    "API REST",
-    "Base de données PostgreSQL",
-    "Frontend React",
-    "Python (scripts & backend)",
+    "API REST & GraphQL",
+    "PostgreSQL & SQL",
+    "Ruby (scripts & backend)",
+    "TypeScript / JavaScript",
     "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "api-key"
+      "api-key",
+      "jwt"
     ]
   },
-  "tests": "RSpec, Webmock, Vitest",
-  "workflows": [
-    "CI/CD",
-    "Déploiement"
+  "tests": [
+    "RSpec",
+    "Vitest"
   ],
-  "lastActivity": "2026-07-27T11:26:22+02:00",
+  "workflows": [
+    "CI/CD"
+  ],
+  "lastActivity": "2026-07-31T11:00:09+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -48,9 +60,10 @@
   "tags": [
     "Données & Open Data",
     "API",
-    "Sécurité",
     "Ruby",
-    "PostgreSQL",
-    "Docker"
+    "JavaScript",
+    "TypeScript",
+    "Sécurité",
+    "Authentification"
   ]
 }
