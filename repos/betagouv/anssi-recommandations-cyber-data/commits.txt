@@ -1,3 +1,9 @@
+2026-07-27T15:34:08+02:00 - fea161f - Pierre Leroy : [CORRECTION] Supprime aussi le document jeopardy correspondant lors d'une suppression MSC ... la boucle de suppression déclenchée par fichiers_supprimes ne consultait que la collection indexée, laissant le document miroir dans la collection Jeopardy alors qu'il n'a plus lieu d'exister, sur le même modèle que la suppression déjà en place lors d'une réindexation
+2026-07-27T12:00:54+02:00 - cb3f42d - Pierre Leroy : Affiche l'identifiant de la collection dans la liste déroulante ... pour distinguer les collections homonymes (ex : plusieurs test-indexation)
+2026-07-27T12:00:54+02:00 - 8ef4cfb - Bertrand Bougon : Ajoute un composant de sléection des collections disponibles
+2026-07-27T12:00:54+02:00 - 817e34e - Pierre Leroy : Remplace les inputs texte par SelecteurCollection ... pour choisir une collection existante dans la liste plutôt que copier-coller son identifiant, dans PageInformationsCollections et JeopardyseCollectionEntiere
+2026-07-27T12:00:54+02:00 - 4217447 - Bertrand Bougon : Expose une route GET /collections/disponibles pour retourner les collections Albert
+2026-07-27T12:00:54+02:00 - 1e50ca6 - Pierre Leroy : [CORRECTION] Utilise la collection sélectionnée pour lister ses documents ... le tableau de documents interrogeait toujours les collections par défaut de la configuration au lieu de la collection choisie dans le sélecteur, la route GET /api/documents/ ne recevant que des offsets et jamais l'id de collection
 2026-07-24T12:57:06-03:00 - acf723a - Bertrand Bougon : [REMANIEMENT] Extrais un composant PageInformationsCollections
 2026-07-24T12:57:06-03:00 - 908b3fd - Bertrand Bougon : Permets de récupérer les collections voulues depuis le client Albert
 2026-07-24T12:57:06-03:00 - 5787f18 - Bertrand Bougon : Ajoute un formulaire pour récupérer les collections voulues dans Informations collections
