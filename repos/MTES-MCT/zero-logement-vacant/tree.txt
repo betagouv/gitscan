@@ -162,6 +162,8 @@
 │       └── security.yml
 ├── .gitignore
 ├── .husky
+│   ├── post-merge
+│   ├── post-rewrite
 │   └── pre-commit
 ├── .lintstagedrc.json
 ├── .mcp.json
@@ -227,6 +229,7 @@
 │   │   ├── Dockerfile
 │   │   ├── FIX_ASSET_NAMING.md
 │   │   ├── IMPLEMENTATION_SUMMARY.md
+│   │   ├── LOVAC_POST_IMPORT.md
 │   │   ├── QUICK_START.md
 │   │   ├── README.md
 │   │   ├── README_EXTERNAL_SOURCES.md
@@ -239,7 +242,10 @@
 │   │   ├── pyproject.toml
 │   │   ├── scripts
 │   │   │   ├── CONTEXT.md
-│   │   │   └── backfill_ban_owners.py
+│   │   │   ├── backfill_ban_owners.py
+│   │   │   └── owner-housing-distances
+│   │   │       ├── calculate_distances.py
+│   │   │       └── country_detector.py
 │   │   ├── src
 │   │   │   ├── .dlt
 │   │   │   │   ├── .sources
@@ -298,6 +304,9 @@
 │   │   │   │   │       ├── upload_ff_db_to_cellar.py
 │   │   │   │   │       ├── upload_metabase_db_to_cellar.py
 │   │   │   │   │       └── utils.py
+│   │   │   │   ├── lovac
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── owner_housing_locations.py
 │   │   │   │   ├── notion.py
 │   │   │   │   ├── production_dbt.py
 │   │   │   │   └── production_dlt.py
@@ -305,6 +314,10 @@
 │   │   │   ├── definitions.py
 │   │   │   ├── jobs
 │   │   │   │   └── __init__.py
+│   │   │   ├── owner_housing_locations
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── calculator.py
+│   │   │   │   └── country_detector.py
 │   │   │   ├── project.py
 │   │   │   ├── requirements.txt
 │   │   │   ├── resources
@@ -323,8 +336,10 @@
 │   │   ├── test_pipeline.sh
 │   │   ├── tests
 │   │   │   ├── __init__.py
+│   │   │   ├── test_backfill_ban_owners.py
 │   │   │   ├── test_ban_upsert.py
-│   │   │   └── test_compilation.py
+│   │   │   ├── test_compilation.py
+│   │   │   └── test_lovac_owner_housing_locations.py
 │   │   ├── uv.lock
 │   │   └── workspace.yaml
 │   ├── dbt
@@ -1005,6 +1020,8 @@
 │   │       ├── monitoring-alerts.md
 │   │       └── troubleshooting.md
 │   ├── performance-improvements.md
+│   ├── plans
+│   │   └── 2026-06-02-do-not-contact-owner.md
 │   ├── portail-df-decision-tree.md
 │   ├── rgaa
 │   │   └── methodologie-tests.md
@@ -1036,6 +1053,7 @@
 │   │   │   ├── 2026-04-21-extract-prepare-housings-duckdb-script.md
 │   │   │   ├── 2026-04-21-import-buildings-duckdb.md
 │   │   │   ├── 2026-04-21-import-lovac-duckdb-geo-code-parallel-dept.md
+│   │   │   ├── 2026-04-24-kysely-setup.md
 │   │   │   ├── 2026-04-27-port-source-housing-transform.md
 │   │   │   ├── 2026-04-28-complete-dagster-pipeline-translation.md
 │   │   │   ├── 2026-05-11-remove-api-prefix.md
@@ -1051,9 +1069,37 @@
 │   │   │   ├── 2026-06-13-auth-hardening-backend.md
 │   │   │   ├── 2026-06-13-auth-hardening-frontend.md
 │   │   │   ├── 2026-06-13-reference-data-cache.md
+│   │   │   ├── 2026-07-07-knex-to-kysely-step1-transaction-bridge.md
+│   │   │   ├── 2026-07-08-kysely-phase2-campaignHousingRepository-tests.md
+│   │   │   ├── 2026-07-08-kysely-phase2-documentRepository-tests.md
+│   │   │   ├── 2026-07-08-kysely-phase2-eventRepository-tests.md
+│   │   │   ├── 2026-07-08-kysely-phase2-housingDocumentRepository-tests.md
+│   │   │   ├── 2026-07-08-kysely-phase2-housingOwnerRepository-tests.md
+│   │   │   ├── 2026-07-08-kysely-phase2-ownerRepository-core-crud-tests.md
 │   │   │   ├── 2026-07-08-zlv-repair-harness.md
 │   │   │   ├── 2026-07-17-save-campaign.md
-│   │   │   └── 2026-07-20-campaign-documents.md
+│   │   │   ├── 2026-07-20-campaign-documents.md
+│   │   │   ├── 2026-07-23-kysely-phase2-authIdentityService-tests.md
+│   │   │   ├── 2026-07-23-kysely-phase2-datafoncierHousingRepository-tests.md
+│   │   │   ├── 2026-07-23-kysely-phase2-datafoncierOwnersRepository-tests.md
+│   │   │   ├── 2026-07-23-kysely-phase2-establishmentRepository-tests.md
+│   │   │   ├── 2026-07-23-kysely-phase2-localityRepository-tests.md
+│   │   │   ├── 2026-07-23-kysely-phase2-userRepository-tests.md
+│   │   │   ├── 2026-07-23-kysely-phase3-authIdentityService-migration.md
+│   │   │   ├── 2026-07-23-kysely-phase3-datafoncierHousingRepository-migration.md
+│   │   │   ├── 2026-07-23-kysely-phase3-datafoncierOwnersRepository-migration.md
+│   │   │   ├── 2026-07-23-kysely-phase3-establishmentRepository-migration.md
+│   │   │   ├── 2026-07-23-kysely-phase3-localityRepository-migration.md
+│   │   │   ├── 2026-07-23-kysely-phase3-ownerRepository-migration.md
+│   │   │   ├── 2026-07-23-kysely-phase3-userRepository-migration.md
+│   │   │   ├── 2026-07-24-kysely-campaignRepository-cleanup.md
+│   │   │   ├── 2026-07-24-kysely-documentRepository-cleanup.md
+│   │   │   ├── 2026-07-24-kysely-establishmentLocalityRepository-cleanup.md
+│   │   │   ├── 2026-07-24-kysely-eventRepository-migration.md
+│   │   │   ├── 2026-07-24-kysely-phase2-banAddressesRepository-tests.md
+│   │   │   ├── 2026-07-24-kysely-phase2-geoRepository-tests.md
+│   │   │   ├── 2026-07-24-kysely-phase3-banAddressesRepository-migration.md
+│   │   │   └── 2026-07-24-kysely-phase3-geoRepository-migration.md
 │   │   └── specs
 │   │       ├── 2026-04-07-groups-precomputed-counts-design.md
 │   │       ├── 2026-04-13-factories-design.md
@@ -1075,6 +1121,7 @@
 │   │       ├── 2026-06-11-remove-old-dsfr-design.md
 │   │       ├── 2026-06-13-auth-hardening-design.md
 │   │       ├── 2026-06-13-reference-data-cache-design.md
+│   │       ├── 2026-07-07-knex-to-kysely-migration-design.md
 │   │       ├── 2026-07-08-zlv-repair-harness-design.md
 │   │       ├── 2026-07-17-save-campaign-design.md
 │   │       └── 2026-07-20-campaign-documents-design.md
@@ -1399,6 +1446,7 @@
 │   │   │   ├── OccupancyTag
 │   │   │   │   └── OccupancyTag.tsx
 │   │   │   ├── Owner
+│   │   │   │   ├── DoNotContactBadge.tsx
 │   │   │   │   ├── HousingOwnerAdditionModals
 │   │   │   │   │   ├── OwnerAttachmentModal.tsx
 │   │   │   │   │   └── OwnerSearchModal.tsx
@@ -1424,6 +1472,8 @@
 │   │   │   │   ├── RelativeLocationTag.tsx
 │   │   │   │   ├── SecondaryOwnerList.tsx
 │   │   │   │   ├── test
+│   │   │   │   │   ├── DoNotContactBadge.test.tsx
+│   │   │   │   │   ├── OtherOwnerCard.test.tsx
 │   │   │   │   │   └── OwnerCard.test.tsx
 │   │   │   │   ├── useHousingOwners.tsx
 │   │   │   │   └── useIgnoredAddresses.tsx
@@ -1811,6 +1861,7 @@
 │   │   │   │   ├── building.ts
 │   │   │   │   ├── campaign.ts
 │   │   │   │   ├── establishment.ts
+│   │   │   │   ├── geo-code.ts
 │   │   │   │   ├── group.ts
 │   │   │   │   ├── housing.ts
 │   │   │   │   ├── owner.ts
@@ -2071,6 +2122,7 @@
 │   └── bundle-metrics.mjs
 ├── server
 │   ├── .env.example
+│   ├── .kysely-codegenrc.json
 │   ├── README.md
 │   ├── package.json
 │   ├── project.json
@@ -2184,13 +2236,17 @@
 │   │   │   ├── clamav.ts
 │   │   │   ├── config.ts
 │   │   │   ├── database
+│   │   │   │   ├── batch.ts
 │   │   │   │   ├── data
 │   │   │   │   │   └── common
 │   │   │   │   │       ├── establishments.csv
 │   │   │   │   │       ├── establishments_localities.csv
 │   │   │   │   │       └── localities.csv
+│   │   │   │   ├── db.d.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── knexfile.ts
+│   │   │   │   ├── kysely-transaction.ts
+│   │   │   │   ├── kysely.ts
 │   │   │   │   ├── migrations
 │   │   │   │   │   ├── 001-housing.ts
 │   │   │   │   │   ├── 002-owners.ts
@@ -2414,10 +2470,13 @@
 │   │   │   │   │   ├── 20260506221142_drop-owner-matches.ts
 │   │   │   │   │   ├── 20260506221143_drop-owners-dept.ts
 │   │   │   │   │   ├── 20260506221144_drop-owners-duplicates.ts
+│   │   │   │   │   ├── 20260612120000_owners-add-do-not-contact.ts
 │   │   │   │   │   ├── 20260613120000_better_auth_tables.ts
 │   │   │   │   │   ├── 20260623000000_user-perimeters-add-establishment-id.ts
+│   │   │   │   │   ├── 20260625130000_owner-housing-location-postprocess-indexes.ts
 │   │   │   │   │   ├── 20260720100000_documents-campaigns.ts
-│   │   │   │   │   └── 20260720100001_campaign-document-events.ts
+│   │   │   │   │   ├── 20260720100001_campaign-document-events.ts
+│   │   │   │   │   └── 20260727190000_owners-housing-location-update-trigger-guards.ts
 │   │   │   │   ├── procedures
 │   │   │   │   │   ├── 001-load-housing.sql
 │   │   │   │   │   └── 002-load-non-vacant-housing.sql
@@ -2461,7 +2520,11 @@
 │   │   │   │   │       ├── 20260416000000_system_user.ts
 │   │   │   │   │       └── 20260421083139_users.ts
 │   │   │   │   ├── test
-│   │   │   │   │   ├── index.test.ts
+│   │   │   │   │   ├── batch.test.ts
+│   │   │   │   │   ├── kysely-transaction.test.ts
+│   │   │   │   │   ├── kysely.test.ts
+│   │   │   │   │   ├── owners-housing-owner-count-triggers.test.ts
+│   │   │   │   │   ├── transaction-bridge-precision.test.ts
 │   │   │   │   │   └── transaction.test.ts
 │   │   │   │   └── transaction.ts
 │   │   │   ├── graceful-shutdown.ts
@@ -2573,6 +2636,7 @@
 │   │   │   │   ├── campaignHousingRepository.test.ts
 │   │   │   │   ├── campaignRepository.test.ts
 │   │   │   │   ├── datafoncierHousingRepository.test.ts
+│   │   │   │   ├── datafoncierOwnersRepository.test.ts
 │   │   │   │   ├── documentRepository.test.ts
 │   │   │   │   ├── draftRepository.test.ts
 │   │   │   │   ├── establishmentRepository.test.ts
@@ -2586,7 +2650,11 @@
 │   │   │   │   ├── noteRepository.test.ts
 │   │   │   │   ├── ownerRepository.test.ts
 │   │   │   │   ├── precisionRepository.test.ts
-│   │   │   │   └── userPerimeterRepository.test.ts
+│   │   │   │   ├── resetLinkRepository.test.ts
+│   │   │   │   ├── signupLinkRepository.test.ts
+│   │   │   │   ├── user-establishment-repository.test.ts
+│   │   │   │   ├── userPerimeterRepository.test.ts
+│   │   │   │   └── userRepository.test.ts
 │   │   │   ├── user-establishment-repository.ts
 │   │   │   ├── userPerimeterRepository.ts
 │   │   │   └── userRepository.ts
@@ -2855,9 +2923,11 @@
 │   │   │   │   ├── metabase-service.ts
 │   │   │   │   └── test
 │   │   │   │       └── metabase-cache.test.ts
+│   │   │   ├── ownerCountryDetection.ts
 │   │   │   ├── ownerDistanceService.ts
 │   │   │   ├── posthogService.ts
 │   │   │   ├── test
+│   │   │   │   ├── authIdentityService.test.ts
 │   │   │   │   ├── establishmentAuthService.test.ts
 │   │   │   │   ├── file-validation.test.ts
 │   │   │   │   └── ownerDistanceService.test.ts
@@ -2874,11 +2944,12 @@
 │   │   │   │   ├── housing-owner.ts
 │   │   │   │   ├── housing.ts
 │   │   │   │   ├── index.ts
-│   │   │   │   ├── knex-adapter.ts
+│   │   │   │   ├── kysely-adapter.ts
 │   │   │   │   ├── owner.ts
 │   │   │   │   ├── persistence-adapter.ts
 │   │   │   │   └── user.ts
 │   │   │   ├── global-setup.ts
+│   │   │   ├── owner-distance-contract.json
 │   │   │   ├── sample.pdf
 │   │   │   ├── testFixtures.ts
 │   │   │   └── testUtils.ts
@@ -2887,7 +2958,9 @@
 │   │   │   │   └── index.d.ts
 │   │   │   ├── express-jwt
 │   │   │   │   └── index.d.ts
-│   │   │   └── getbrevo__brevo
+│   │   │   ├── getbrevo__brevo
+│   │   │   │   └── index.d.ts
+│   │   │   └── pg-cursor
 │   │   │       └── index.d.ts
 │   │   └── utils
 │   │       ├── addressNormalization.test.ts
@@ -2928,6 +3001,7 @@
 │   │   ├── generate_report.py
 │   │   ├── requirements.txt
 │   │   └── verify_addresses.py
+│   ├── regen-kysely-types.sh
 │   ├── restore.sh
 │   ├── terraform
 │   │   ├── .gitignore
@@ -2958,4 +3032,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── yarn.lock
-462 directories, 2498 files
+467 directories, 2567 files

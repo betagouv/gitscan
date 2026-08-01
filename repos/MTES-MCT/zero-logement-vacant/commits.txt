@@ -1,3 +1,194 @@
+2026-07-31T16:59:34+02:00 - c3bb339a - Andrea Gueugnaut : Merge pull request #1836 from MTES-MCT/feat/do-not-contact-owner
+2026-07-31T16:24:56+02:00 - 6082b043 - Falinor : fix(frontend): update stale configureTestStore call
+2026-07-31T15:46:55+02:00 - 6869d076 - Jouin : fix(server): exclude do-not-contact owners from housing exports
+2026-07-31T15:20:30+02:00 - fa4e214a - Jouin : refactor(owners): make doNotContact a strict non-nullable boolean
+2026-07-31T15:20:30+02:00 - a8bc9f16 - Jouin : fix(schemas): split owner-payload into creation and update schemas
+2026-07-31T15:13:30+02:00 - c25926a2 - Jouin : test(frontend): add CI retry backstop for flaky HousingOwnersView suite
+2026-07-31T15:13:30+02:00 - a16b2069 - Jouin : refactor(owners): model "do not contact" as an owner-level flag
+2026-07-31T15:13:30+02:00 - 2356a93d - Jouin : test(frontend): stabilise flaky HousingOwnersView suite on CI
+2026-07-31T12:52:55+02:00 - 1fdeb576 - Falinor : style: format files
+2026-07-31T12:50:44+02:00 - 002ca14d - Jouin : test(frontend): raise testing-library async timeout for loaded CI runners
+2026-07-31T12:49:31+02:00 - 11f94585 - Jouin : test(frontend): fix flaky HousingOwnersView suite (per-test userEvent)
+2026-07-31T12:45:55+02:00 - 16d661c5 - Jouin : test(frontend): raise testing-library async timeout to fix flaky view tests
+2026-07-31T12:45:22+02:00 - 5ddf24de - Jouin : feat(owners): make "do not contact" a global, owner-level status
+2026-07-31T12:45:22+02:00 - 20346643 - Jouin : feat(owners): add "do not contact" owner status
+2026-07-31T12:09:56+02:00 - 299d8812 - Andrea Gueugnaut : Merge pull request #1787 from MTES-MCT/feat/kysely-setup
+2026-07-31T11:15:37+02:00 - 4991bfc8 - Falinor : fix(server): address code review findings on the Kysely migration
+2026-07-31T09:54:29+02:00 - d2d9643c - Falinor : chore(server): drop Knex accessors from perimeters+drafts seeds (wave 2d)
+2026-07-31T09:54:29+02:00 - 761eb9c7 - Falinor : chore(server): drop Knex accessors from remaining event/datafoncier seeds (wave 3)
+2026-07-31T09:54:28+02:00 - f9087d09 - Falinor : fix(server): build workspace deps before migrate so codegen runs on CI
+2026-07-31T09:54:28+02:00 - cce8c4ad - Falinor : chore(server): drop Knex accessors from establishments/users/owners/buildings seeds (wave 1)
+2026-07-31T09:54:28+02:00 - c7ccb67b - Falinor : test(server): convert 9 more controller tests off Knex accessors (wave 2)
+2026-07-31T09:54:28+02:00 - 9f02c0a3 - Falinor : test(server): convert 4 more repository tests off Knex accessors (wave 3)
+2026-07-31T09:54:28+02:00 - 9a0cd6bd - Falinor : refactor(server): finish Kysely repo migration and drop Knex accessors from repo tests
+2026-07-31T09:54:28+02:00 - 90d2d8fb - Falinor : docs(server): document ground-truth read inlining convention
+2026-07-31T09:54:28+02:00 - 798f4413 - Falinor : chore(server): drop Knex accessors from groups+campaigns seeds (wave 2c)
+2026-07-31T09:54:28+02:00 - 7433b3ac - Falinor : test(server): convert 4 largest repository tests off Knex accessors (wave 1)
+2026-07-31T09:54:28+02:00 - 6e1fe02f - Falinor : test(server): convert final 4 controller tests off Knex accessors (wave 3b)
+2026-07-31T09:54:28+02:00 - 6d302f12 - Falinor : fix(server): address xhigh code review findings on the Kysely migration
+2026-07-31T09:54:28+02:00 - 5f1c004d - Falinor : fix(factories): generate building ids from a partition-safe geo code
+2026-07-31T09:54:28+02:00 - 5c250b86 - Falinor : chore(server): drop Knex accessors from precisions seeds (wave 2b)
+2026-07-31T09:54:28+02:00 - 520f19bc - Falinor : fix(server): restore typed knex(table) calls in wave-1 seed conversions
+2026-07-31T09:54:28+02:00 - 4adb7092 - Falinor : fix(server): scope Kysely codegen to the public schema
+2026-07-31T09:54:28+02:00 - 462b98bc - Falinor : test(server): convert 4 more repository tests off Knex accessors (wave 2)
+2026-07-31T09:54:28+02:00 - 3869709f - Falinor : feat(server): migrate campaign documents to Kysely after rebase
+2026-07-31T09:54:28+02:00 - 314e40f3 - Falinor : chore(server): drop Knex accessors from housings seeds (wave 2a)
+2026-07-31T09:54:28+02:00 - 2de228ae - Falinor : test(server): convert first 6 controller tests off Knex accessors
+2026-07-31T09:54:28+02:00 - 2c07b689 - Falinor : test(server): convert remaining 7 repository tests off Knex accessors (wave 4)
+2026-07-31T09:54:28+02:00 - 2bae5181 - Falinor : refactor(server): migrate ownerDistanceService to Kysely, drop dead db helpers
+2026-07-31T09:54:28+02:00 - 25ba7b59 - Falinor : fix(server): address Guillaume's Kysely review findings
+2026-07-31T09:54:28+02:00 - 117c35c5 - Falinor : test(server): disable pagination in the AND-exclusion housing test
+2026-07-31T09:54:28+02:00 - 0552a583 - Falinor : test(server): convert 5 heavy controller tests off Knex accessors (wave 3a)
+2026-07-31T09:54:28+02:00 - 0254ab7a - Falinor : refactor(server): retire the non-atomic Knex+Kysely transaction bridge
+2026-07-31T09:54:27+02:00 - f4adeb8d - Falinor : docs(server): add Phase 3 establishmentRepository migration plan
+2026-07-31T09:54:27+02:00 - ec97a679 - Falinor : feat(server): remove dead joinDocumentWithCreator from documentRepository
+2026-07-31T09:54:27+02:00 - d98f0ff5 - Falinor : test(server): characterize banAddressesRepository getByRefId and remove
+2026-07-31T09:54:27+02:00 - d36cb5d5 - Falinor : docs(server): add documentRepository cleanup plan
+2026-07-31T09:54:27+02:00 - bd958e35 - Falinor : feat(server): migrate eventRepository's remaining Knex functions to Kysely
+2026-07-31T09:54:27+02:00 - b2517542 - Falinor : test(server): characterize authIdentityService from scratch
+2026-07-31T09:54:27+02:00 - a6236138 - Falinor : docs(server): add Phase 2 establishmentRepository test plan
+2026-07-31T09:54:27+02:00 - a11ca960 - Falinor : feat(server): migrate datafoncierOwnersRepository to Kysely
+2026-07-31T09:54:27+02:00 - 9fda7b53 - Falinor : test(server): characterize userRepository from scratch
+2026-07-31T09:54:27+02:00 - 97e2ac93 - Falinor : feat(server): migrate ownerRepository CRUD tail to Kysely, remove dead code
+2026-07-31T09:54:27+02:00 - 9572a007 - Falinor : docs(server): add campaignRepository cleanup plan
+2026-07-31T09:54:27+02:00 - 85580bf9 - Falinor : docs(server): add Phase 2 banAddressesRepository test plan
+2026-07-31T09:54:27+02:00 - 7bb5146f - Falinor : test(server): characterize establishmentRepository query/kind/name filters and stream
+2026-07-31T09:54:27+02:00 - 772dc7c1 - Falinor : docs(server): add Phase 2 authIdentityService test plan
+2026-07-31T09:54:27+02:00 - 75a89359 - Falinor : feat(server): remove dead insert/update from campaignRepository
+2026-07-31T09:54:27+02:00 - 694eddf7 - Falinor : test(server): characterize geoRepository get/save/update/removeMany
+2026-07-31T09:54:27+02:00 - 543ec7be - Falinor : feat(server): migrate establishmentRepository to Kysely
+2026-07-31T09:54:27+02:00 - 532123c0 - Falinor : docs(server): add Phase 3 ownerRepository migration plan
+2026-07-31T09:54:27+02:00 - 4bf8194e - Falinor : docs(server): add establishmentLocalityRepository cleanup plan
+2026-07-31T09:54:27+02:00 - 46e39f33 - Falinor : feat(server): migrate geoRepository to Kysely
+2026-07-31T09:54:27+02:00 - 3c751a92 - Falinor : feat(server): migrate banAddressesRepository to Kysely
+2026-07-31T09:54:27+02:00 - 3b077f8e - Falinor : fix(server): address remaining PR review findings across the Kysely repos
+2026-07-31T09:54:27+02:00 - 32c4c05c - Falinor : docs(server): add Phase 3 authIdentityService migration plan
+2026-07-31T09:54:27+02:00 - 2c389821 - Falinor : docs(server): add Phase 2 userRepository test plan
+2026-07-31T09:54:27+02:00 - 2b19361d - Falinor : docs(server): add Phase 2 geoRepository test plan
+2026-07-31T09:54:27+02:00 - 22ad74ae - Falinor : docs(server): add Phase 3 geoRepository migration plan
+2026-07-31T09:54:27+02:00 - 20205a46 - Falinor : docs(server): add Phase 3 banAddressesRepository migration plan
+2026-07-31T09:54:27+02:00 - 1e8f6f53 - Falinor : docs(server): add eventRepository migration plan
+2026-07-31T09:54:27+02:00 - 1ce7e260 - Falinor : feat(server): remove dead updateLocalities from establishmentLocalityRepository
+2026-07-31T09:54:27+02:00 - 19dfcf75 - Falinor : docs(server): add Phase 3 userRepository migration plan
+2026-07-31T09:54:27+02:00 - 19593499 - Falinor : feat(server): migrate authIdentityService to Kysely
+2026-07-31T09:54:27+02:00 - 0ea8b4dd - Falinor : feat(server): migrate userRepository to Kysely
+2026-07-31T09:54:26+02:00 - f9854d40 - Falinor : feat(server): migrate the housing+owner+housingOwner mega-cluster to Kysely
+2026-07-31T09:54:26+02:00 - f42997ef - Falinor : feat(server): migrate draft and sender reads to Kysely
+2026-07-31T09:54:26+02:00 - eea8eb93 - Falinor : docs(server): add Phase 2 localityRepository test plan
+2026-07-31T09:54:26+02:00 - e3a7ce2c - Falinor : docs(server): add Phase 2 datafoncierOwnersRepository test plan
+2026-07-31T09:54:26+02:00 - de9743ae - Falinor : feat(server): migrate the campaign write-cluster to Kysely
+2026-07-31T09:54:26+02:00 - c2372eda - Falinor : docs(server): add Phase 3 datafoncierHousingRepository migration plan
+2026-07-31T09:54:26+02:00 - c026a7a1 - Falinor : chore(server): regenerate Kysely types after rebase
+2026-07-31T09:54:26+02:00 - b4e27470 - Falinor : feat(server): migrate housingOwnerRepository.findByOwner to Kysely
+2026-07-31T09:54:26+02:00 - a6d3d009 - Falinor : feat(server): migrate datafoncierHousingRepository to Kysely
+2026-07-31T09:54:26+02:00 - a4478cb4 - Falinor : style(server): format files
+2026-07-31T09:54:26+02:00 - a3de94cf - Falinor : fix(server): migrate auth-integration reset-link ops to Kysely
+2026-07-31T09:54:26+02:00 - 8d4f0882 - Falinor : docs(server): document Kysely as the standard repository query builder
+2026-07-31T09:54:26+02:00 - 89442263 - Falinor : test(server): characterize datafoncierHousingRepository find and full row shape
+2026-07-31T09:54:26+02:00 - 8624a2b0 - Falinor : docs(server): add Phase 3 datafoncierOwnersRepository migration plan
+2026-07-31T09:54:26+02:00 - 80475551 - Falinor : docs(server): add Phase 3 localityRepository migration plan
+2026-07-31T09:54:26+02:00 - 72e04768 - Falinor : test(server): characterize datafoncierOwnersRepository findDatafoncierOwners and count
+2026-07-31T09:54:26+02:00 - 71d48265 - Falinor : feat(server): migrate localityRepository to Kysely
+2026-07-31T09:54:26+02:00 - 64543636 - Falinor : test(server): characterize localityRepository get, update, and establishmentId filter
+2026-07-31T09:54:26+02:00 - 56d9b916 - Falinor : style(server): format files
+2026-07-31T09:54:26+02:00 - 56b9c890 - Falinor : feat(server): reuse the shared Kysely instance for auth v2
+2026-07-31T09:54:26+02:00 - 4a9fa2c7 - Falinor : style(server): format files
+2026-07-31T09:54:26+02:00 - 3ba64b1d - Falinor : ci(server): guard against stale Kysely types + auto-regen locally
+2026-07-31T09:54:26+02:00 - 20a3e0af - Falinor : chore: stop Talisman false-positive on generated Kysely types
+2026-07-31T09:54:26+02:00 - 13bec46a - Falinor : docs(server): add Phase 2 datafoncierHousingRepository test plan
+2026-07-31T09:54:25+02:00 - f89314b7 - Falinor : feat(server): migrate the group write-cluster to Kysely
+2026-07-31T09:54:25+02:00 - ef2dcaa3 - Falinor : test(server): guard event payload JSON-safety with tests instead of a runtime round-trip
+2026-07-31T09:54:25+02:00 - e7840a1b - Falinor : refactor(server): remove unused function
+2026-07-31T09:54:25+02:00 - deecf76c - Falinor : chore(server): set p-map as a sticky dependency
+2026-07-31T09:54:25+02:00 - c96cb6f3 - Falinor : feat(server): migrate housingDocumentRepository to Kysely
+2026-07-31T09:54:25+02:00 - c815511d - Falinor : fix(server): fix housingDocumentRepository transaction join and soft-delete leak
+2026-07-31T09:54:25+02:00 - c4db7842 - Falinor : feat(server): migrate groupRepository reads to Kysely + fix nested-JSON camelCase
+2026-07-31T09:54:25+02:00 - bde55d7f - Falinor : feat(server): migrate the campaign write-cluster to Kysely
+2026-07-31T09:54:25+02:00 - 95d41cdc - Falinor : feat(server): migrate campaignRepository reads to Kysely
+2026-07-31T09:54:25+02:00 - 912176e8 - Falinor : feat(server): migrate ownerRepository reads to Kysely
+2026-07-31T09:54:25+02:00 - 787fef88 - Falinor : fix(server): narrow HousingDocumentRow to fields actually selected
+2026-07-31T09:54:25+02:00 - 780277ec - Falinor : fix(server): run campaign remove() event-deletion in the same transaction
+2026-07-31T09:54:25+02:00 - 74f32565 - Falinor : feat(server): migrate housingRepository reads to Kysely
+2026-07-31T09:54:25+02:00 - 6f36d338 - Falinor : fix(server): address code review findings on the group write-cluster migration
+2026-07-31T09:54:25+02:00 - 660bbc33 - Falinor : refactor(server): wrap snakeToCamel in an arrow when mapping
+2026-07-31T09:54:25+02:00 - 5960c955 - Falinor : refactor(server): extract inline type to Selectable<DB['documentsHousings']>
+2026-07-31T09:54:25+02:00 - 4b0c3e1a - Falinor : feat(server): migrate the campaign write-cluster to Kysely
+2026-07-31T09:54:25+02:00 - 4481269d - Falinor : fix(server): address Kysely-migration review findings on the housing/owner cluster
+2026-07-31T09:54:25+02:00 - 351edba9 - Falinor : style(server): fix oxfmt formatting in housingDocumentRepository
+2026-07-31T09:54:25+02:00 - 34ca5e14 - Falinor : fix(server): chunk campaign-cluster bulk writes to stay under the bind-parameter limit
+2026-07-31T09:54:25+02:00 - 12cf8ec2 - Falinor : style(server): format files
+2026-07-31T09:54:25+02:00 - 12c2c157 - Falinor : feat(server): migrate the housing+owner+housingOwner mega-cluster to Kysely
+2026-07-31T09:54:24+02:00 - fd12361a - Falinor : docs(server): add Phase 2 housingOwnerRepository test plan
+2026-07-31T09:54:24+02:00 - dd045dfd - Falinor : feat(server): migrate documentRepository to Kysely
+2026-07-31T09:54:24+02:00 - dd028c80 - Falinor : test(server): cover ownerRepository insert, update, betterSave(Many)
+2026-07-31T09:54:24+02:00 - da2d938a - Falinor : style: format files
+2026-07-31T09:54:24+02:00 - c0b94537 - Falinor : test(server): cover ownerRepository find filter and include branches
+2026-07-31T09:54:24+02:00 - 99648dd0 - Falinor : test(server): cover ownerRepository housing-owner link read/write
+2026-07-31T09:54:24+02:00 - 94bd96b0 - Falinor : docs(server): add Phase 2 campaignHousingRepository test plan
+2026-07-31T09:54:24+02:00 - 90753918 - Falinor : docs(server): add Phase 2 housingDocumentRepository test plan
+2026-07-31T09:54:24+02:00 - 8f404873 - Falinor : test(server): cover documentRepository joinDocumentWithCreator raw join
+2026-07-31T09:54:24+02:00 - 8ec61e89 - Falinor : docs(server): add Phase 2 documentRepository test plan
+2026-07-31T09:54:24+02:00 - 6601434e - Falinor : fix(server): keep nested JSON keys snake_case in the Kysely CamelCasePlugin
+2026-07-31T09:54:24+02:00 - 65f9ec99 - Falinor : test(server): cover campaignHousingRepository insert, remove, and format
+2026-07-31T09:54:24+02:00 - 5e688dbc - Falinor : style(server): format files
+2026-07-31T09:54:24+02:00 - 5aea6d6e - Falinor : test(server): cover housingOwnerRepository format/parse null branches
+2026-07-31T09:54:24+02:00 - 4eb7d4f7 - Falinor : feat(server): migrate noteRepository to Kysely
+2026-07-31T09:54:24+02:00 - 4643b1af - Falinor : style(server): format files
+2026-07-31T09:54:24+02:00 - 4071598d - Falinor : test(server): cover housingOwnerRepository findByOwner geoCodes and saveMany empty
+2026-07-31T09:54:24+02:00 - 3864f489 - Falinor : test(server): cover housingOwnerRepository relative-location converters
+2026-07-31T09:54:24+02:00 - 270f9919 - Falinor : test(server): cover documentRepository converter date/creator branches
+2026-07-31T09:54:24+02:00 - 1dbf5b5a - Falinor : test(server): cover documentRepository find/findOne filter and soft-delete branches
+2026-07-31T09:54:24+02:00 - 16f73a2d - Falinor : test(server): cover housingDocumentRepository find filters and creator guard
+2026-07-31T09:54:24+02:00 - 1368687e - Falinor : fix(server): address noteRepository code review findings
+2026-07-31T09:54:24+02:00 - 05b54c38 - Falinor : test(server): cover ownerRepository get, findOne null, and parse edge branches
+2026-07-31T09:54:23+02:00 - fb88f59f - Falinor : feat(server): make startTransaction a dual-engine Knex+Kysely bridge
+2026-07-31T09:54:23+02:00 - edf67b2d - Falinor : docs(server): add Step 1 transaction-bridge implementation plan
+2026-07-31T09:54:23+02:00 - e64d5ecc - Falinor : feat(server): generate camelCase Kysely types and drop manual mappers
+2026-07-31T09:54:23+02:00 - d015aa24 - Falinor : feat(server): add kysely transaction infrastructure
+2026-07-31T09:54:23+02:00 - b7345384 - Falinor : chore(server): generate kysely db types from schema
+2026-07-31T09:54:23+02:00 - aed99b4f - Falinor : feat(server): migrate resetLinkRepository to Kysely
+2026-07-31T09:54:23+02:00 - 9c5f8349 - Falinor : test(server): update start_date expectation from Date to String
+2026-07-31T09:54:23+02:00 - 9be797be - Falinor : test(server): cover eventRepository housing-owner and group-housing inserts
+2026-07-31T09:54:23+02:00 - 701cc8a2 - Falinor : feat(server): migrate signupLinkRepository to kysely
+2026-07-31T09:54:23+02:00 - 6aa43674 - Falinor : docs(server): add Phase 2 eventRepository characterization-test plan
+2026-07-31T09:54:23+02:00 - 6427b1ce - Falinor : test(server): regression for precision link rollback under the bridge
+2026-07-31T09:54:23+02:00 - 5599bfa9 - Falinor : feat(server): add runWithinKyselyTransaction store primitive
+2026-07-31T09:54:23+02:00 - 3d40e74b - Falinor : feat(server): add Kysely type overrides and fix DATE column parsing
+2026-07-31T09:54:23+02:00 - 3c8eb601 - Falinor : docs(server): add knex-to-kysely migration strategy spec
+2026-07-31T09:54:23+02:00 - 30338eb0 - Falinor : feat(server): migrate precisionRepository to kysely with transaction support
+2026-07-31T09:54:23+02:00 - 2aded294 - Falinor : test(server): cover eventRepository format/parse null branches
+2026-07-31T09:54:23+02:00 - 28077fbe - Falinor : style: format files
+2026-07-31T09:54:23+02:00 - 178e5093 - Falinor : docs(server): add Phase 2 ownerRepository core-CRUD test plan
+2026-07-31T09:54:23+02:00 - 09546f07 - Falinor : test(server): cover eventRepository insertMany empty-array guards
+2026-07-31T09:54:23+02:00 - 055b7853 - Falinor : test(server): cover eventRepository campaign and precision inserts
+2026-07-31T09:29:04+02:00 - e960ca74 - Guillaume Claverie : Merge pull request #1944 from MTES-MCT/fix/dagster-owner-location-dsn
+2026-07-31T09:09:41+02:00 - 1c3d3a10 - Guillaume Claverie : fix: preserve database password for Dagster reconnects
+2026-07-30T14:23:17+02:00 - 6b6caf1d - Guillaume Claverie : Merge pull request #1941 from MTES-MCT/fix/stabilize-ci-tests
+2026-07-30T14:12:54+02:00 - 0e1d8cfe - Guillaume Claverie : test: stabilize flaky CI tests
+2026-07-30T12:05:54+02:00 - e19624e4 - Guillaume Claverie : Merge pull request #1883 from MTES-MCT/fix/lovac-owner-location-postprocess
+2026-07-30T09:52:27+02:00 - 8b8c2284 - Guillaume Claverie : docs: align owner location index documentation
+2026-07-30T09:51:48+02:00 - fbb6062b - Guillaume Claverie : fix: require matching BAN IDs for same address
+2026-07-30T09:51:48+02:00 - f3f6fe45 - Guillaume Claverie : fix: align owner location classification contract
+2026-07-30T09:51:48+02:00 - e22f92d9 - Guillaume Claverie : fix: make LOVAC post-import jobs fail safely
+2026-07-30T09:51:48+02:00 - c016f47f - Guillaume Claverie : fix: classify owner locations from commune codes
+2026-07-30T09:51:48+02:00 - baddc392 - Guillaume Claverie : fix: resume LOVAC BAN backfills by default
+2026-07-30T09:51:48+02:00 - 91817a80 - Guillaume Claverie : fix: harden owner location classification
+2026-07-30T09:51:48+02:00 - 86c38032 - Guillaume Claverie : fix: harden owner location calculation pipeline
+2026-07-30T09:51:48+02:00 - 64f4ced1 - Guillaume Claverie : fix: target active owners in BAN backfill
+2026-07-30T09:51:48+02:00 - 6107a60b - Guillaume Claverie : refactor: narrow LOVAC postprocess scope
+2026-07-30T09:51:48+02:00 - 48880fb4 - Guillaume Claverie : style: format owner location postprocess files
+2026-07-30T09:51:48+02:00 - 4200c14f - Guillaume Claverie : perf: query BAN address references as UUIDs
+2026-07-30T09:51:48+02:00 - 3a7269f0 - Guillaume Claverie : fix: skip owner count triggers for location updates
+2026-07-30T09:51:48+02:00 - 36066227 - Guillaume Claverie : fix: harden LOVAC owner location postprocess
+2026-07-30T09:51:48+02:00 - 090be23d - Guillaume Claverie : fix: remove unsafe owner location index
+2026-07-30T09:51:47+02:00 - ebb416d6 - Guillaume Claverie : docs: explain owner location country detection
+2026-07-30T09:51:47+02:00 - ddba7dde - Guillaume Claverie : Fix owner housing location calculation safeguards
+2026-07-30T09:51:47+02:00 - 9ee29148 - Guillaume Claverie : Add LOVAC owner location Dagster job
+2026-07-30T09:51:47+02:00 - 70a5b6b8 - Guillaume Claverie : fix: index fast housing partitions for owner locations
+2026-07-30T09:51:47+02:00 - 4ddf1fb5 - Guillaume Claverie : Document LOVAC owner location postprocess
+2026-07-30T09:51:47+02:00 - 48021a3c - Guillaume Claverie : fix: load owner location script in dagster
+2026-07-30T09:51:47+02:00 - 2dfdcab2 - Guillaume Claverie : Add owner housing location postprocess indexes
+2026-07-30T09:51:47+02:00 - 0b3df600 - Guillaume Claverie : fix: make owner location country detection conservative
 2026-07-28T09:38:01+02:00 - 8b1466c3 - Guillaume Claverie : Merge pull request #1926 from MTES-MCT/claude/rgaa-table-captions-36c0b2
 2026-07-27T17:55:35+02:00 - cb457dc2 - Dev curieux : Merge pull request #1931 from MTES-MCT/claude/rgaa-9-2-document-structure-34576b
 2026-07-27T17:54:59+02:00 - 53594d49 - Jouin : fix(frontend): remove duplicate <main> landmark on Resources page
