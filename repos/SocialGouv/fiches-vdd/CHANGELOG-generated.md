@@ -1,14 +1,14 @@
-## Changelog : fiches-vdd (30 derniers jours, au 29 juillet 2026)
+## Changelog : fiches-vdd (30 derniers jours, au 31 juillet 2026)
 
 ### Résumé
-Ce changelog couvre une période de 30 jours marquée par des mises à jour quotidiennes des données fournies par le projet. Ces mises à jour visent à maintenir l'exactitude et la pertinence des fiches d'informations sur les droits et démarches administratives, destinées aux applications et services citoyens. Une correction de la version de npm a également été apportée pour assurer la stabilité du projet.
+Ce changelog couvre une période de 30 jours marquée par des mises à jour quotidiennes des données fournies par le projet. Ces mises à jour visent à maintenir l'exactitude et la pertinence des fiches d'informations sur les droits et démarches administratives. Une correction concernant la version de npm a également été apportée.
 
 ### Évolutions fonctionnelles
-- Mise à jour quotidienne des données des fiches d'informations administratives. Chaque jour, une nouvelle version des données est publiée (20260701 à 20260729).
-- Correction de la version de npm pour assurer la stabilité du projet et éviter des problèmes de dépendances. [#233](https://github.com/SocialGouv/fiches-vdd/issues/233)
+- Mise à jour quotidienne des données des fiches d'informations sur les droits et démarches administratives (mises à jour successives de la version 2.1783.0 à la version 2.1810.0).
+- Correction de la version de npm pour assurer la stabilité du projet [#233](https://github.com/SocialGouv/fiches-vdd/issues/233).
 
 ### Évolutions techniques
-- Blocage de la version de npm à v11 pour garantir la reproductibilité des builds et éviter des comportements inattendus liés aux mises à jour automatiques de npm.
+- Blocage de la version de npm à la version 11 pour éviter des problèmes de compatibilité.
 
 ### Autres changements
 - Aucun autre changement significatif à signaler.
