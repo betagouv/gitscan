@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/codegouvfr/catalogi",
   "name": "catalogi",
-  "description": "Application de catalogue logiciel. Permet de gérer des catalogues de logiciels et fournit une interface pour les administrations françaises.",
+  "description": "Application de catalogue logiciel. Permet de gérer des catalogues de logiciels et fournit des déploiements pour différentes utilisations, notamment pour l'administration française et la recherche.",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -10,7 +10,7 @@
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
     "Visualisation de données & Cartographie",
-    "Sécurité & Conformité"
+    "Notifications & Alertes"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -30,22 +30,23 @@
       "oauth2",
       "saml"
     ],
-    "providers": []
+    "providers": [
+      "Keycloak"
+    ]
   },
-  "tests": [
-    "Playwright",
-    "Jest"
+  "tests": "Playwright, Testcontainers",
+  "workflows": [
+    "CI/CD"
   ],
-  "workflows": [],
-  "lastActivity": "2026-06-18T12:51:31+02:00",
+  "lastActivity": "2026-07-31T09:47:35+00:00",
   "status": "active",
-  "license": null,
+  "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 40,
+    "stars": 41,
     "forks": 11,
     "contributors": null,
-    "openIssues": 84
+    "openIssues": 90
   },
   "tags": [
     "Données & Open Data",
