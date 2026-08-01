@@ -1,13 +1,14 @@
-## Changelog : fiches-travail-data (30 derniers jours, au 29 juillet 2026)
+## Changelog : fiches-travail-data (30 derniers jours, au 31 juillet 2026)
 
 ### Résumé
-Ce changelog détaille les mises à jour des données fournies par le projet, qui sont actualisées quotidiennement. Les changements concernent l'import des données du site travail-emploi, permettant ainsi de maintenir l'information à jour pour les utilisateurs et applications consommant ces données.
+Ce changelog détaille les mises à jour des données des fiches de travail au cours du dernier mois. Ces mises à jour consistent en l'ajout et la modification de données, assurant ainsi la pertinence et l'exactitude des informations fournies par le projet.
 
 ### Évolutions fonctionnelles
-- Mise à jour quotidienne des données : Le jeu de données a été mis à jour quotidiennement du 2 juillet 2026 au 29 juillet 2026, incluant les nouvelles informations disponibles sur le site travail-emploi. Chaque mise à jour est référencée par sa date (ex: 20260729_2156).
+- Mise à jour des données des fiches de travail les 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 et 31 juillet 2026.
+- Correction : Blocage de la version de npm à v11 pour assurer la stabilité des dépendances. [#444](https://github.com/SocialGouv/fiches-travail-data/issues/444)
 
 ### Évolutions techniques
-- Blocage de la version de npm : La version de npm a été bloquée à la version 11 pour assurer la stabilité et la reproductibilité des builds. [#444](https://github.com/SocialGouv/fiches-travail-data/issues/444)
+- Aucune évolution technique significative à signaler durant cette période.
 
 ### Autres changements
-- Aucun autre changement significatif à signaler.
+- Aucune autre modification n'a été apportée au projet.
