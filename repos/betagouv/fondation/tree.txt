@@ -102,15 +102,15 @@
 │   │   │       ├── searchMagistratRawQuery.sql
 │   │   │       └── searchMagistratTotalCountRawQuery.sql
 │   │   ├── prisma.config.ts
+│   │   ├── public-endpoints.json
 │   │   ├── scalingo
 │   │   │   ├── .buildpacks
-│   │   │   ├── Aptfile
 │   │   │   └── Procfile
 │   │   ├── scripts
 │   │   │   ├── build-for-scalingo.sh
+│   │   │   ├── check-public-endpoints.mjs
 │   │   │   ├── init-buckets.js
 │   │   │   ├── migrate.sh
-│   │   │   ├── postinstall.sh
 │   │   │   ├── prisma.js
 │   │   │   └── send-to-scalingo.sh
 │   │   ├── src
@@ -295,6 +295,7 @@
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   └── prisma.service.ts
 │   │   │   │   │   ├── exception.ts
+│   │   │   │   │   ├── favicon.ts
 │   │   │   │   │   ├── files
 │   │   │   │   │   │   ├── files.controller.ts
 │   │   │   │   │   │   ├── files.module.ts
@@ -324,9 +325,11 @@
 │   │   │   │   │   ├── openapi.ts
 │   │   │   │   │   ├── pagination.ts
 │   │   │   │   │   ├── pdf
+│   │   │   │   │   │   ├── gotenberg-http-client.service.spec.ts
+│   │   │   │   │   │   ├── gotenberg-http-client.service.ts
 │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── pdf-renderer.service.spec.ts
 │   │   │   │   │   │   ├── pdf-renderer.service.ts
-│   │   │   │   │   │   ├── pdf-worker.ts
 │   │   │   │   │   │   └── pdf.module.ts
 │   │   │   │   │   └── sorting.ts
 │   │   │   │   ├── ingest
@@ -379,6 +382,18 @@
 │   │   │   │   │       ├── lolfi-xml-sax-parser.spec.ts
 │   │   │   │   │       ├── lolfi-xml-sax-parser.ts
 │   │   │   │   │       └── passthrough-hash.ts
+│   │   │   │   ├── magistrat
+│   │   │   │   │   ├── infrastructure
+│   │   │   │   │   │   ├── dtos
+│   │   │   │   │   │   │   └── magistrat.dto.ts
+│   │   │   │   │   │   └── queries
+│   │   │   │   │   │       ├── detail-magistrat.query.ts
+│   │   │   │   │   │       ├── list-magistrat-nomination-files.query.ts
+│   │   │   │   │   │       ├── list-magistrat-observations.query.ts
+│   │   │   │   │   │       └── search-magistrats.query.ts
+│   │   │   │   │   ├── magistrat.controller.ts
+│   │   │   │   │   ├── magistrat.module.ts
+│   │   │   │   │   └── magistrat.service.ts
 │   │   │   │   ├── maintenance
 │   │   │   │   │   ├── infrastructure
 │   │   │   │   │   │   └── maintenance.service.ts
@@ -425,17 +440,14 @@
 │   │   │   │   │   │   │   └── observation.dto.ts
 │   │   │   │   │   │   ├── finders
 │   │   │   │   │   │   │   └── observation.finder.ts
-│   │   │   │   │   │   ├── magistrat.service.ts
 │   │   │   │   │   │   ├── observation.filter.ts
 │   │   │   │   │   │   ├── queries
 │   │   │   │   │   │   │   ├── get-observation-details.query.ts
 │   │   │   │   │   │   │   ├── get-observation-file-url.query.ts
 │   │   │   │   │   │   │   ├── list-observations-attachments.query.ts
-│   │   │   │   │   │   │   ├── list-observations.query.ts
-│   │   │   │   │   │   │   └── search-magistrats.query.ts
+│   │   │   │   │   │   │   └── list-observations.query.ts
 │   │   │   │   │   │   └── repositories
 │   │   │   │   │   │       └── observation.repository.ts
-│   │   │   │   │   ├── magistrat.controller.ts
 │   │   │   │   │   ├── observation-attachments.controller.ts
 │   │   │   │   │   ├── observation.controller.ts
 │   │   │   │   │   ├── observation.module.ts
@@ -505,6 +517,7 @@
 │   │   │   │   │       │   ├── finders
 │   │   │   │   │       │   │   ├── affectation-version.finder.ts
 │   │   │   │   │       │   │   ├── auto-affectations.finder.ts
+│   │   │   │   │       │   │   ├── hydrated-nomination-files.finder.ts
 │   │   │   │   │       │   │   ├── lolfi-nomination-files.finder.ts
 │   │   │   │   │       │   │   ├── lolfi-nomination-session.finder.ts
 │   │   │   │   │       │   │   ├── transparence-files.finder.ts
@@ -526,6 +539,7 @@
 │   │   │   │   │       │   │   ├── get-lolfi-magistrat-url.query.ts
 │   │   │   │   │       │   │   ├── internal-detail-member-session.query.ts
 │   │   │   │   │       │   │   ├── internal-find-docs-nomination-files.query.ts
+│   │   │   │   │       │   │   ├── internal-list-magistrat-nomination-files.query.ts
 │   │   │   │   │       │   │   ├── internal-list-member-sessions.query.ts
 │   │   │   │   │       │   │   ├── list-currently-affected-reporters.query.ts
 │   │   │   │   │       │   │   ├── list-nomination-file-attachments.query.ts
@@ -685,6 +699,7 @@
 │   │   │   │   ├── affectation.e2e-spec.ts
 │   │   │   │   ├── docs.e2e-spec.ts
 │   │   │   │   ├── lolfi.e2e-spec.ts
+│   │   │   │   ├── magistrat.e2e-spec.ts
 │   │   │   │   ├── members.e2e-spec.ts
 │   │   │   │   ├── report.e2e-spec.ts
 │   │   │   │   ├── session.e2e-spec.ts
@@ -763,7 +778,6 @@
 │       │   │   │       └── useScrollDownIndicator.hook.ts
 │       │   │   ├── auth
 │       │   │   │   ├── components
-│       │   │   │   │   ├── AuthGuard.tsx
 │       │   │   │   │   ├── AuthenticationFailedAlert.tsx
 │       │   │   │   │   ├── ImpersonationBanner.tsx
 │       │   │   │   │   ├── Login.tsx
@@ -771,6 +785,9 @@
 │       │   │   │   │   └── LoginProConnectButton.tsx
 │       │   │   │   ├── constants
 │       │   │   │   │   └── authorized-roles.constants.ts
+│       │   │   │   ├── guards
+│       │   │   │   │   ├── role-guard.test.ts
+│       │   │   │   │   └── role-guard.ts
 │       │   │   │   └── hooks
 │       │   │   │       └── roles.hook.ts
 │       │   │   ├── documents
@@ -797,6 +814,18 @@
 │       │   │   │       ├── format-job-duration.utils.ts
 │       │   │   │       ├── job-status.utils.ts
 │       │   │   │       └── tree.utils.ts
+│       │   │   ├── magistrats
+│       │   │   │   └── components
+│       │   │   │       ├── MagistratDetailsContent.tsx
+│       │   │   │       ├── MagistratDetailsHeader.stories.tsx
+│       │   │   │       ├── MagistratDetailsHeader.tsx
+│       │   │   │       ├── MagistratIdentityCard.stories.tsx
+│       │   │   │       ├── MagistratIdentityCard.tsx
+│       │   │   │       ├── MagistratNominationFilesSection.test.tsx
+│       │   │   │       ├── MagistratNominationFilesSection.tsx
+│       │   │   │       ├── MagistratNominationFilesTable.stories.tsx
+│       │   │   │       ├── MagistratNominationFilesTable.tsx
+│       │   │   │       └── MagistratObservationsSection.tsx
 │       │   │   ├── members
 │       │   │   │   └── components
 │       │   │   │       ├── DetailsMember.tsx
@@ -828,62 +857,62 @@
 │       │   │   │   │       ├── NominationFilesPrioritySelectorCell.tsx
 │       │   │   │   │       ├── magistrat-side-panel
 │       │   │   │   │       │   ├── components
-│       │   │   │   │       │   │   ├── MagistratDetails.tsx
-│       │   │   │   │       │   │   ├── MagistratPanel.tsx
-│       │   │   │   │       │   │   ├── MagistratPanelTrigger.tsx
-│       │   │   │   │       │   │   ├── magistrat-attachments
-│       │   │   │   │       │   │   │   ├── MagistratAttachments.stories.tsx
-│       │   │   │   │       │   │   │   ├── MagistratAttachments.test.tsx
-│       │   │   │   │       │   │   │   └── MagistratAttachments.tsx
-│       │   │   │   │       │   │   ├── magistrat-audition-date
-│       │   │   │   │       │   │   │   ├── MagistratAuditionDate.stories.tsx
-│       │   │   │   │       │   │   │   ├── MagistratAuditionDate.tsx
-│       │   │   │   │       │   │   │   ├── MagistratAuditionDateForm.test.tsx
-│       │   │   │   │       │   │   │   ├── MagistratAuditionDateForm.tsx
-│       │   │   │   │       │   │   │   └── MagistratAuditionNotice.tsx
-│       │   │   │   │       │   │   ├── magistrat-biography
-│       │   │   │   │       │   │   │   ├── MagistratBiography.stories.tsx
-│       │   │   │   │       │   │   │   └── MagistratBiography.tsx
-│       │   │   │   │       │   │   ├── magistrat-career-info
-│       │   │   │   │       │   │   │   ├── MagistratCareerInfo.stories.tsx
-│       │   │   │   │       │   │   │   └── MagistratCareerInfo.tsx
-│       │   │   │   │       │   │   ├── magistrat-header
-│       │   │   │   │       │   │   │   ├── MagistratAffectationFields.test.tsx
-│       │   │   │   │       │   │   │   ├── MagistratAffectationFields.tsx
-│       │   │   │   │       │   │   │   ├── MagistratHeader.stories.tsx
-│       │   │   │   │       │   │   │   ├── MagistratHeader.test.tsx
-│       │   │   │   │       │   │   │   └── MagistratHeader.tsx
-│       │   │   │   │       │   │   ├── magistrat-observations
-│       │   │   │   │       │   │   │   ├── MagistratObservations.stories.tsx
-│       │   │   │   │       │   │   │   ├── MagistratObservations.test.tsx
-│       │   │   │   │       │   │   │   └── MagistratObservations.tsx
-│       │   │   │   │       │   │   ├── magistrat-outcome
-│       │   │   │   │       │   │   │   ├── MagistratOutcome.stories.tsx
-│       │   │   │   │       │   │   │   ├── MagistratOutcome.tsx
-│       │   │   │   │       │   │   │   ├── MagistratOutcomeSelect.test.tsx
-│       │   │   │   │       │   │   │   └── MagistratOutcomeSelect.tsx
-│       │   │   │   │       │   │   ├── magistrat-summary
-│       │   │   │   │       │   │   │   ├── MagistratSummary.stories.tsx
-│       │   │   │   │       │   │   │   ├── MagistratSummary.tsx
-│       │   │   │   │       │   │   │   ├── MagistratSummaryButton.tsx
-│       │   │   │   │       │   │   │   ├── summary-text.test.ts
-│       │   │   │   │       │   │   │   └── summary-text.ts
+│       │   │   │   │       │   │   ├── MagistratSidePanel.tsx
+│       │   │   │   │       │   │   ├── MagistratSidePanelContent.tsx
+│       │   │   │   │       │   │   ├── SidePanelTrigger.tsx
+│       │   │   │   │       │   │   ├── attachments
+│       │   │   │   │       │   │   │   ├── Attachments.stories.tsx
+│       │   │   │   │       │   │   │   ├── Attachments.test.tsx
+│       │   │   │   │       │   │   │   └── Attachments.tsx
+│       │   │   │   │       │   │   ├── audition-date
+│       │   │   │   │       │   │   │   ├── AuditionDate.stories.tsx
+│       │   │   │   │       │   │   │   ├── AuditionDate.tsx
+│       │   │   │   │       │   │   │   ├── AuditionDateForm.test.tsx
+│       │   │   │   │       │   │   │   ├── AuditionDateForm.tsx
+│       │   │   │   │       │   │   │   └── AuditionNotice.tsx
+│       │   │   │   │       │   │   ├── biography
+│       │   │   │   │       │   │   │   ├── Biography.stories.tsx
+│       │   │   │   │       │   │   │   └── Biography.tsx
+│       │   │   │   │       │   │   ├── career-info
+│       │   │   │   │       │   │   │   ├── CareerInfo.stories.tsx
+│       │   │   │   │       │   │   │   └── CareerInfo.tsx
+│       │   │   │   │       │   │   ├── header
+│       │   │   │   │       │   │   │   ├── AffectationFields.test.tsx
+│       │   │   │   │       │   │   │   ├── AffectationFields.tsx
+│       │   │   │   │       │   │   │   ├── Header.stories.tsx
+│       │   │   │   │       │   │   │   ├── Header.test.tsx
+│       │   │   │   │       │   │   │   └── Header.tsx
 │       │   │   │   │       │   │   ├── member-memo
 │       │   │   │   │       │   │   │   ├── MemberMemo.stories.tsx
 │       │   │   │   │       │   │   │   ├── MemberMemo.test.tsx
 │       │   │   │   │       │   │   │   └── MemberMemo.tsx
-│       │   │   │   │       │   │   └── sg-comment
-│       │   │   │   │       │   │       ├── SgComment.stories.tsx
-│       │   │   │   │       │   │       ├── SgComment.test.tsx
-│       │   │   │   │       │   │       └── SgComment.tsx
+│       │   │   │   │       │   │   ├── observations
+│       │   │   │   │       │   │   │   ├── Observations.stories.tsx
+│       │   │   │   │       │   │   │   ├── Observations.test.tsx
+│       │   │   │   │       │   │   │   └── Observations.tsx
+│       │   │   │   │       │   │   ├── outcome
+│       │   │   │   │       │   │   │   ├── Outcome.stories.tsx
+│       │   │   │   │       │   │   │   ├── Outcome.tsx
+│       │   │   │   │       │   │   │   ├── OutcomeSelect.test.tsx
+│       │   │   │   │       │   │   │   └── OutcomeSelect.tsx
+│       │   │   │   │       │   │   ├── sg-comment
+│       │   │   │   │       │   │   │   ├── SgComment.stories.tsx
+│       │   │   │   │       │   │   │   ├── SgComment.test.tsx
+│       │   │   │   │       │   │   │   └── SgComment.tsx
+│       │   │   │   │       │   │   └── summary
+│       │   │   │   │       │   │       ├── Summary.stories.tsx
+│       │   │   │   │       │   │       ├── Summary.tsx
+│       │   │   │   │       │   │       ├── SummaryButton.tsx
+│       │   │   │   │       │   │       ├── summary-text.test.ts
+│       │   │   │   │       │   │       └── summary-text.ts
 │       │   │   │   │       │   ├── context
-│       │   │   │   │       │   │   ├── MagistratPanelProvider.test.tsx
-│       │   │   │   │       │   │   ├── MagistratPanelProvider.tsx
-│       │   │   │   │       │   │   └── magistrat-panel.context.ts
+│       │   │   │   │       │   │   ├── SidePanelProvider.test.tsx
+│       │   │   │   │       │   │   ├── SidePanelProvider.tsx
+│       │   │   │   │       │   │   └── side-panel.context.ts
 │       │   │   │   │       │   └── hooks
-│       │   │   │   │       │       ├── use-magistrat-affectation
-│       │   │   │   │       │       │   ├── use-magistrat-affectation.hook.ts
-│       │   │   │   │       │       │   └── use-magistrat-affectation.test.ts
+│       │   │   │   │       │       ├── use-affectation
+│       │   │   │   │       │       │   ├── use-affectation.hook.ts
+│       │   │   │   │       │       │   └── use-affectation.test.ts
 │       │   │   │   │       │       └── use-unsaved-guard
 │       │   │   │   │       │           ├── use-unsaved-guard.hook.ts
 │       │   │   │   │       │           └── use-unsaved-guard.test.tsx
@@ -945,7 +974,29 @@
 │       │   │   ├── official-report
 │       │   │   │   ├── components
 │       │   │   │   │   ├── OfficialReportBreadCrumb.tsx
-│       │   │   │   │   └── OfficialReportForm.tsx
+│       │   │   │   │   ├── OfficialReportForm.tsx
+│       │   │   │   │   └── official-report-editor
+│       │   │   │   │       ├── OfficialReportDocumentEditor.tsx
+│       │   │   │   │       ├── blocks
+│       │   │   │   │       │   ├── OfficialReportConclusionBlock.tsx
+│       │   │   │   │       │   ├── OfficialReportFileBlock.tsx
+│       │   │   │   │       │   ├── OfficialReportIntroBlock.tsx
+│       │   │   │   │       │   ├── OfficialReportSectionIntroBlock.tsx
+│       │   │   │   │       │   ├── OfficialReportSectionTitleBlock.tsx
+│       │   │   │   │       │   ├── official-report-blocks.model.test.ts
+│       │   │   │   │       │   ├── official-report-blocks.model.ts
+│       │   │   │   │       │   ├── official-report-blocks.type.ts
+│       │   │   │   │       │   └── tiptap-node-to-html.ts
+│       │   │   │   │       ├── blocks.css
+│       │   │   │   │       ├── components
+│       │   │   │   │       │   ├── OfficialReportDriftBanner.tsx
+│       │   │   │   │       │   └── OfficialReportEditedBadge.tsx
+│       │   │   │   │       ├── hooks
+│       │   │   │   │       │   ├── useBlockActive.ts
+│       │   │   │   │       │   └── useOfficialReportEditor.ts
+│       │   │   │   │       ├── index.ts
+│       │   │   │   │       ├── official-report-commands.d.ts
+│       │   │   │   │       └── official-report-tiptap-extensions.ts
 │       │   │   │   └── context
 │       │   │   │       ├── OfficialReportContext.tsx
 │       │   │   │       ├── OfficialReportContext.types.ts
@@ -970,7 +1021,7 @@
 │       │   │   │   │   ├── Biography.tsx
 │       │   │   │   │   ├── Card.tsx
 │       │   │   │   │   ├── HeaderReportList.tsx
-│       │   │   │   │   ├── MagistratIdentity.tsx
+│       │   │   │   │   ├── Identity.tsx
 │       │   │   │   │   ├── Observers.tsx
 │       │   │   │   │   ├── ReportEditor.tsx
 │       │   │   │   │   ├── ReportList.tsx
@@ -1111,6 +1162,8 @@
 │       │   │   │   ├── HelpPage.tsx
 │       │   │   │   ├── HelpPageButton.tsx
 │       │   │   │   └── UserManualPage.tsx
+│       │   │   ├── magistrats
+│       │   │   │   └── MagistratDetailsPage.tsx
 │       │   │   ├── members
 │       │   │   │   ├── DetailsMemberPage.tsx
 │       │   │   │   └── MemberListPage.tsx
@@ -1127,16 +1180,15 @@
 │       │   │   │   ├── admin
 │       │   │   │   │   ├── AdminJobDetailsPage.tsx
 │       │   │   │   │   ├── AdminJobsPage.tsx
-│       │   │   │   │   ├── AdminLayout.tsx
 │       │   │   │   │   ├── AdminUserDetailPage.tsx
 │       │   │   │   │   ├── AdminUserListPage.tsx
 │       │   │   │   │   ├── IngestLolfiArchivePage.tsx
 │       │   │   │   │   └── jobs-page-outlet-context.type.ts
 │       │   │   │   ├── member
-│       │   │   │   │   └── MemberLayout.tsx
+│       │   │   │   │   ├── MemberContentLayout.tsx
+│       │   │   │   │   └── MemberReportOverviewLayout.tsx
 │       │   │   │   └── secretariat-general
-│       │   │   │       ├── SecretariatGeneralPage.tsx
-│       │   │   │       └── SecretariatLayout.tsx
+│       │   │   │       └── SecretariatGeneralPage.tsx
 │       │   │   ├── summary
 │       │   │   │   └── SummaryPage.tsx
 │       │   │   └── transparence
@@ -1151,16 +1203,17 @@
 │       │   │   ├── ingest.queries.ts
 │       │   │   ├── jobs.queries.ts
 │       │   │   ├── jurisdictions.queries.ts
+│       │   │   ├── magistrats.queries.ts
 │       │   │   ├── members.queries.ts
 │       │   │   ├── nomination-sessions.queries.ts
 │       │   │   ├── observations.queries.ts
+│       │   │   ├── query-client.ts
 │       │   │   ├── reports.queries.ts
 │       │   │   └── summary.queries.ts
 │       │   ├── react-dsfr.d.ts
 │       │   ├── router.tsx
 │       │   ├── shared
 │       │   │   ├── components
-│       │   │   │   ├── LolfiMagistratLink.tsx
 │       │   │   │   ├── audition-banner
 │       │   │   │   │   ├── AuditionBanner.stories.tsx
 │       │   │   │   │   ├── AuditionBanner.tsx
@@ -1174,9 +1227,32 @@
 │       │   │   │   │   │   ├── ArchivedSessionBanner.tsx
 │       │   │   │   │   │   └── index.ts
 │       │   │   │   │   └── index.ts
+│       │   │   │   ├── biography-list
+│       │   │   │   │   ├── BiographyList.stories.tsx
+│       │   │   │   │   ├── BiographyList.tsx
+│       │   │   │   │   └── index.ts
+│       │   │   │   ├── details-link
+│       │   │   │   │   ├── DetailsLink.stories.tsx
+│       │   │   │   │   ├── DetailsLink.test.tsx
+│       │   │   │   │   ├── DetailsLink.tsx
+│       │   │   │   │   └── index.ts
+│       │   │   │   ├── identity-list
+│       │   │   │   │   ├── IdentityList.stories.tsx
+│       │   │   │   │   ├── IdentityList.tsx
+│       │   │   │   │   └── index.ts
+│       │   │   │   ├── lolfi-link
+│       │   │   │   │   ├── LolfiLink.stories.tsx
+│       │   │   │   │   ├── LolfiLink.test.tsx
+│       │   │   │   │   ├── LolfiLink.tsx
+│       │   │   │   │   └── index.ts
 │       │   │   │   ├── priority-badge
 │       │   │   │   │   ├── PriorityBadge.stories.tsx
 │       │   │   │   │   ├── PriorityBadge.tsx
+│       │   │   │   │   └── index.ts
+│       │   │   │   ├── title-name-icons
+│       │   │   │   │   ├── TitleNameIcons.stories.tsx
+│       │   │   │   │   ├── TitleNameIcons.test.tsx
+│       │   │   │   │   ├── TitleNameIcons.tsx
 │       │   │   │   │   └── index.ts
 │       │   │   │   └── user-avatar
 │       │   │   │       ├── UserAvatar.tsx
@@ -1224,7 +1300,6 @@
 │       │   │       ├── Marked.tsx
 │       │   │       ├── PageContentLayout.tsx
 │       │   │       ├── ScrollToTop.tsx
-│       │   │       ├── TextValue.tsx
 │       │   │       ├── card
 │       │   │       │   ├── Card.stories.tsx
 │       │   │       │   ├── Card.test.tsx
@@ -1256,27 +1331,17 @@
 │       │   │       │   │   ├── useDataTableState.ts
 │       │   │       │   │   └── useQueryDataTableState.ts
 │       │   │       │   └── index.ts
+│       │   │       ├── details
+│       │   │       │   ├── DetailsCard.tsx
+│       │   │       │   ├── DetailsPageLayout.tsx
+│       │   │       │   └── index.ts
 │       │   │       ├── document-preview
 │       │   │       │   ├── DocumentEditor.css
 │       │   │       │   ├── DocumentEditor.tsx
 │       │   │       │   ├── DocumentIframe.tsx
 │       │   │       │   ├── DocumentPreview.tsx
 │       │   │       │   ├── document-fonts.css
-│       │   │       │   ├── index.ts
-│       │   │       │   └── official-report
-│       │   │       │       ├── OfficialReportDocumentEditor.tsx
-│       │   │       │       ├── OfficialReportDriftBanner.tsx
-│       │   │       │       ├── blocks
-│       │   │       │       │   ├── OfficialReportConclusionBlock.tsx
-│       │   │       │       │   ├── OfficialReportFileBlock.tsx
-│       │   │       │       │   ├── OfficialReportIntroBlock.tsx
-│       │   │       │       │   ├── OfficialReportSectionIntroBlock.tsx
-│       │   │       │       │   └── OfficialReportSectionTitleBlock.tsx
-│       │   │       │       ├── blocks.css
-│       │   │       │       ├── blocks.tsx
-│       │   │       │       ├── official-report.model.ts
-│       │   │       │       ├── official-report.view-model.ts
-│       │   │       │       └── utils.ts
+│       │   │       │   └── index.ts
 │       │   │       ├── dropdown
 │       │   │       │   ├── Dropdown.stories.tsx
 │       │   │       │   ├── Dropdown.test.tsx
@@ -1364,6 +1429,7 @@
 │       │   │   ├── http-exception.ts
 │       │   │   ├── http.config.ts
 │       │   │   ├── multipart-json.ts
+│       │   │   ├── route-path.utils.test.ts
 │       │   │   ├── route-path.utils.ts
 │       │   │   ├── session.utils.ts
 │       │   │   ├── sg-breadcrumb.utils.tsx
@@ -1445,4 +1511,4 @@
 └── vendor
     ├── .gitkeep
     └── xlsx-0.20.3.tgz
-324 directories, 1123 files
+340 directories, 1173 files
