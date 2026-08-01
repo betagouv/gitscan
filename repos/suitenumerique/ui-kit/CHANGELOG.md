@@ -2,6 +2,34 @@
 
 ## [UNRELEASED]
 
+## 0.28.1
+
+### Minor Changes
+
+- ✨(front) rework file uploader dropzone states
+- ♻️(front) surface import feedback through the uploader description
+
+### Patch Changes
+
+- 🌐(front) complete upload and import translations
+- 🐛(front) keep dropzone size stable while dragging
+
+## 0.28.0
+
+### Minor Changes
+
+- ✨(front) add file upload component family
+- ✨(front) unify ShareModal invitation search field
+- ♻️(front) refresh UserMenu layout and actions
+- ✨(front) add Alert component with custom icons
+- ✨(front) add ShareImportModal for importing contacts
+
+### Patch Changes
+
+- 🔧(tooling) stabilize Storybook component testing
+- 💄(UserAvatar) add linear-gradient
+- 💄(front) refresh share modal styling
+
 ## 0.27.0
 
 ### Minor Changes
@@ -545,7 +573,16 @@
 - Add custom cunningham.ts file
 - Still a WIP version
 
-[unreleased]: https://github.com/suitenumerique/ui-kit/compare/v0.22.0...main
+[unreleased]: https://github.com/suitenumerique/ui-kit/compare/v0.28.1...main
+[0.28.1]: https://github.com/suitenumerique/ui-kit/compare/v0.28.0...v0.28.1
+[0.28.0]: https://github.com/suitenumerique/ui-kit/compare/v0.27.0...v0.28.0
+[0.27.0]: https://github.com/suitenumerique/ui-kit/compare/v0.26.0...v0.27.0
+[0.26.0]: https://github.com/suitenumerique/ui-kit/compare/v0.25.0...v0.26.0
+[0.25.0]: https://github.com/suitenumerique/ui-kit/compare/v0.24.0...v0.25.0
+[0.24.0]: https://github.com/suitenumerique/ui-kit/compare/v0.23.2...v0.24.0
+[0.23.2]: https://github.com/suitenumerique/ui-kit/compare/v0.23.1...v0.23.2
+[0.23.1]: https://github.com/suitenumerique/ui-kit/compare/v0.23.0...v0.23.1
+[0.23.0]: https://github.com/suitenumerique/ui-kit/compare/v0.22.0...v0.23.0
 [0.22.0]: https://github.com/suitenumerique/ui-kit/compare/v0.21.0...0.22.0
 [0.21.0]: https://github.com/suitenumerique/ui-kit/compare/v0.2.2...v0.21.0
 [0.20.2]: https://github.com/suitenumerique/ui-kit/compare/v0.2.1...v0.20.2

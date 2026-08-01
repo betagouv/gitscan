@@ -52,7 +52,8 @@
 │   │   ├── mount-la-gaufre.tsx
 │   │   ├── mount-preview.tsx
 │   │   ├── mount-search-filter.tsx
-│   │   ├── mount-share.tsx
+│   │   ├── mount-share-import-modal.tsx
+│   │   ├── mount-share-modal.tsx
 │   │   ├── mount-smart-scroller.tsx
 │   │   ├── mount-storage-gauge.tsx
 │   │   ├── mount-upload.tsx
@@ -61,8 +62,19 @@
 │   │   └── la-gaufre-v2.spec.tsx
 │   ├── search-filter
 │   │   └── search-filter.spec.tsx
-│   ├── share
-│   │   └── share-modal.spec.tsx
+│   ├── share-import-modal
+│   │   ├── fixtures
+│   │   │   └── contacts.xlsx
+│   │   ├── share-import-modal.spec.tsx
+│   │   └── share-modal-import.spec.tsx
+│   ├── share-modal
+│   │   ├── share-modal-basics.spec.tsx
+│   │   ├── share-modal-import-integration.spec.tsx
+│   │   ├── share-modal-invitations.spec.tsx
+│   │   ├── share-modal-link-settings.spec.tsx
+│   │   ├── share-modal-members.spec.tsx
+│   │   ├── share-modal-search-field.spec.tsx
+│   │   └── share-modal-search-invite.spec.tsx
 │   ├── smart-scroller
 │   │   └── smart-scroller.spec.tsx
 │   ├── storage-gauge
@@ -111,7 +123,6 @@
 │   ├── assets
 │   │   ├── files
 │   │   │   └── icons
-│   │   │       ├── file-error-mark.svg
 │   │   │       ├── mime-archive-mini.svg
 │   │   │       ├── mime-archive.svg
 │   │   │       ├── mime-audio-mini.svg
@@ -171,6 +182,11 @@
 │   ├── components
 │   │   ├── Provider
 │   │   │   └── Provider.tsx
+│   │   ├── alert
+│   │   │   ├── Alert.mdx
+│   │   │   ├── Alert.tsx
+│   │   │   ├── alert.stories.tsx
+│   │   │   └── index.scss
 │   │   ├── badge
 │   │   │   ├── badge.stories.tsx
 │   │   │   ├── badge.tsx
@@ -224,6 +240,21 @@
 │   │   │   ├── checkbox
 │   │   │   │   ├── checkbox.stories.tsx
 │   │   │   │   └── index.scss
+│   │   │   ├── file-uploader
+│   │   │   │   ├── FileUploader.mdx
+│   │   │   │   ├── FileUploader.tsx
+│   │   │   │   ├── UploadFileItem.tsx
+│   │   │   │   ├── assets
+│   │   │   │   │   ├── files_color.svg
+│   │   │   │   │   └── files_gray.svg
+│   │   │   │   ├── file-uploader.stories.tsx
+│   │   │   │   ├── index.scss
+│   │   │   │   ├── index.tsx
+│   │   │   │   ├── types.ts
+│   │   │   │   ├── upload-file-item.stories.scss
+│   │   │   │   ├── upload-file-item.stories.tsx
+│   │   │   │   ├── utils.test.ts
+│   │   │   │   └── utils.ts
 │   │   │   ├── form.stories.tsx
 │   │   │   ├── index.tsx
 │   │   │   ├── input
@@ -826,6 +857,14 @@
 │   │   │   │       ├── private_selected.svg
 │   │   │   │       ├── public.svg
 │   │   │   │       └── public_selected.svg
+│   │   │   ├── import-modal
+│   │   │   │   ├── ShareImportModal.tsx
+│   │   │   │   ├── assets
+│   │   │   │   │   └── contacts.csv
+│   │   │   │   ├── import-modal.scss
+│   │   │   │   ├── share-import-modal.stories.tsx
+│   │   │   │   ├── utils.test.ts
+│   │   │   │   └── utils.ts
 │   │   │   ├── index.ts
 │   │   │   ├── modal
 │   │   │   │   ├── ShareModal.tsx
@@ -844,6 +883,7 @@
 │   │   │   │   │   └── share-modal-icons.tsx
 │   │   │   │   ├── share-modal.scss
 │   │   │   │   └── stories
+│   │   │   │       ├── ShareModal.mdx
 │   │   │   │       ├── ShareModalExample.tsx
 │   │   │   │       └── share-modal.stories.tsx
 │   │   │   ├── types.ts
@@ -905,17 +945,6 @@
 │   │   │   ├── types.ts
 │   │   │   ├── useTree.tsx
 │   │   │   └── utils.tsx
-│   │   ├── upload
-│   │   │   ├── FileUploader.tsx
-│   │   │   ├── UploadFileItem.tsx
-│   │   │   ├── index.scss
-│   │   │   ├── index.tsx
-│   │   │   ├── types.ts
-│   │   │   ├── upload-file-item.stories.scss
-│   │   │   ├── upload-file-item.stories.tsx
-│   │   │   ├── upload.stories.tsx
-│   │   │   ├── utils.test.ts
-│   │   │   └── utils.ts
 │   │   └── users
 │   │       ├── avatar
 │   │       │   ├── UserAvatar.tsx
@@ -967,4 +996,4 @@
 ├── tsconfig.json
 ├── vite.config.ts
 └── yarn.lock
-120 directories, 849 files
+126 directories, 872 files
