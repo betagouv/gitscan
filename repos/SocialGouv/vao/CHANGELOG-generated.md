@@ -1,25 +1,28 @@
 ## Changelog : vao (30 derniers jours, au 30 juillet 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives au parcours d'agrément des Directeurs Régionaux des Entreprises, des Établissements, du Travail et des Solidarités (DREETS), notamment pour le premier agrément. De nombreuses corrections d'accessibilité (RGAA) ont été implémentées sur l'ensemble de l'application. Des optimisations de performance ont également été réalisées sur les requêtes en base de données.
+Ce mois-ci, les évolutions se concentrent principalement sur la gestion du "premier agrément" pour les structures d'accueil, avec l'ajout de nouvelles étapes, de la gestion des compléments d'information et des améliorations de l'expérience utilisateur. Des corrections d'accessibilité (RGAA) et des optimisations de performance ont également été apportées.
 
 ### Évolutions fonctionnelles
-- **Agrément DREETS :** Ajout complet du support du premier agrément DREETS, incluant les étapes de demande de compléments, de confirmation de complétude, de refus et d'acceptation.  Les pages "bienvenue", "demande de compléments" et de confirmation ont été implémentées. [#1471, #1492, #1493, #1495, #1497, #1498]
-- **Back-office :** Prise en charge du premier agrément DREETS dans le back-office. [#1487]
-- **Documents :** Amélioration de l'onglet "Documents" dans "Mon agrément". [#1490]
-- **RGAA :** Améliorations de l'accessibilité (RGAA) sur plusieurs pages : création de compte, page de login, étapes de renouvellement, page mot de passe oublié. [#1440, #1474, #1477, #1478, #1488]
-- **Workflow d'agrément :** Mise à jour du wording des emails liés au workflow d'agrément. [#1423]
+- Ajout de la page d'accueil du premier agrément DREETS [#1501](https://github.com/SocialGouv/vao/issues/1501).
+- Implémentation de la gestion des demandes de compléments d'information pour le premier agrément DREETS [#1492](https://github.com/SocialGouv/vao/issues/1492).
+- Ajout de la confirmation de complétude du premier agrément DREETS [#1498](https://github.com/SocialGouv/vao/issues/1498).
+- Gestion du refus du premier agrément DREETS, incluant l'envoi d'un email [#1495](https://github.com/SocialGouv/vao/issues/1495) et [#1497](https://github.com/SocialGouv/vao/issues/1497).
+- Modification du premier agrément OVA suite à une demande de compléments [#1493](https://github.com/SocialGouv/vao/issues/1493).
+- Prise en charge du premier agrément dans le back-office [#1487](https://github.com/SocialGouv/vao/issues/1487).
+- Amélioration de l'affichage des documents dans l'onglet "Mon agrément" [#1490](https://github.com/SocialGouv/vao/issues/1490).
+- Ajout de la page de bienvenue pour le premier agrément [#1471](https://github.com/SocialGouv/vao/issues/1471).
+- Implémentation des étapes 1 et 4 du processus de premier agrément OVA [#1463](https://github.com/SocialGouv/vao/issues/1463) et [#1472](https://github.com/SocialGouv/vao/issues/1472).
+- Ajout du fusager (assistant de navigation) pour le premier agrément, incluant les étapes de reliquat et de suivi [#1470](https://github.com/SocialGouv/vao/issues/1470), [#1475](https://github.com/SocialGouv/vao/issues/1475) et [#1476](https://github.com/SocialGouv/vao/issues/1476).
+- Amélioration de l'accessibilité (RGAA) de plusieurs pages et composants, notamment la page de mot de passe oublié [#1488](https://github.com/SocialGouv/vao/issues/1488), la page de login [#1474](https://github.com/SocialGouv/vao/issues/1474), les étapes de renouvellement [#1478](https://github.com/SocialGouv/vao/issues/1478) et la hiérarchie des vacances [#1486](https://github.com/SocialGouv/vao/issues/1486).
 
 ### Évolutions techniques
-- **Performance :** Optimisation des requêtes en base de données grâce à l'ajout d'index, corrigeant des problèmes de timeout en production. [#1489]
-- **CI/CD :** Migration de la construction des images Docker de buildkit-service vers buildkit-operator. [#1464]
-- **Schéma de route DS :** Ajout d'un contrôle du schéma de route DS. [#1458]
+- Optimisation des performances de la base de données en ajoutant des index pour corriger les timeouts en production [#1489](https://github.com/SocialGouv/vao/issues/1489).
+- Migration de la construction des images Docker de buildkit-service vers buildkit-operator [#1464](https://github.com/SocialGouv/vao/issues/1464).
 
 ### Autres changements
-- Correction d'un bug d'affichage de la date dans les messages internes. [#1460]
-- Publication de la version 1.28.1 en pré-production. [#1462]
-- Amélioration du wording de certaines pages pour une meilleure clarté. [#1475, #1479]
-- Ajout de la prise en charge RGAA pour la hiérarchie des vacanciers. [#1486]
-- Ajout du fusager pour le suivi de mon agrément. [#1473]
-- Ajout du fusager pour le reliquat du stepper. [#1470]
-- Ajout du fusager pour le DF hébergement RGAA. [#1476]
+- Corrections de wording et améliorations de l'accessibilité sur plusieurs pages et formulaires.
+- Ajustements de texte pour l'ajout de la mention du casier judiciaire français [#1499](https://github.com/SocialGouv/vao/issues/1499).
+- Amélioration du wording de l'étape 4 de la mise à jour [#1477](https://github.com/SocialGouv/vao/issues/1477).
+- Ajout du fusager pour l'hébergement DF RGAA [#1476](https://github.com/SocialGouv/vao/issues/1476).
+- Ajout du fusager pour le suivi de mon agrément [#1473](https://github.com/SocialGouv/vao/issues/1473).
