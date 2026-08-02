@@ -639,6 +639,9 @@
 │   │   ├── migrate-mission-activities.ts
 │   │   ├── migrate-widget-rules-reseaux.ts
 │   │   ├── mission-enrichment
+│   │   │   ├── dataset
+│   │   │   │   ├── README.md
+│   │   │   │   └── staging-mission-ids.txt
 │   │   │   ├── export-dataset.ts
 │   │   │   └── judge-enrichments.ts
 │   │   ├── missions
@@ -946,6 +949,8 @@
 │   │   │   │   ├── dlq-consumer.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   └── providers
+│   │   │   │       ├── __tests__
+│   │   │   │       │   └── scaleway.test.ts
 │   │   │   │       ├── local.ts
 │   │   │   │       └── scaleway.ts
 │   │   │   ├── brevo
@@ -982,9 +987,11 @@
 │   │   │   ├── metabase.ts
 │   │   │   ├── mission-browse
 │   │   │   │   ├── __tests__
-│   │   │   │   │   └── index.test.ts
+│   │   │   │   │   ├── index.test.ts
+│   │   │   │   │   └── widget-filters.test.ts
 │   │   │   │   ├── index.ts
-│   │   │   │   └── transformers.ts
+│   │   │   │   ├── transformers.ts
+│   │   │   │   └── widget-filters.ts
 │   │   │   ├── mission-diffusion
 │   │   │   │   ├── __tests__
 │   │   │   │   │   └── index.test.ts
@@ -1025,8 +1032,10 @@
 │   │   │   ├── mission-event.ts
 │   │   │   ├── mission-index
 │   │   │   │   ├── __tests__
-│   │   │   │   │   └── index.test.ts
-│   │   │   │   └── index.ts
+│   │   │   │   │   ├── index.test.ts
+│   │   │   │   │   └── triggers.test.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── triggers.ts
 │   │   │   ├── mission-jobboard.ts
 │   │   │   ├── mission-match
 │   │   │   │   ├── index.ts
@@ -1079,7 +1088,8 @@
 │   │   │   │   │       │   ├── v1.ts
 │   │   │   │   │       │   ├── v2.ts
 │   │   │   │   │       │   ├── v3.ts
-│   │   │   │   │       │   └── v4.ts
+│   │   │   │   │       │   ├── v4.ts
+│   │   │   │   │       │   └── v5.ts
 │   │   │   │   │       └── types.ts
 │   │   │   │   ├── collections.ts
 │   │   │   │   ├── filter.ts
@@ -1237,6 +1247,7 @@
 │   │   │   │   │   │   ├── search.test.ts
 │   │   │   │   │   │   └── widget.test.ts
 │   │   │   │   │   ├── import.test.ts
+│   │   │   │   │   ├── mission-browse.test.ts
 │   │   │   │   │   ├── mission.test.ts
 │   │   │   │   │   ├── moderation.test.ts
 │   │   │   │   │   ├── organization.test.ts
@@ -1956,4 +1967,4 @@
         ├── sentry.ts
         ├── store.ts
         └── utils.ts
-450 directories, 1594 files
+452 directories, 1603 files
