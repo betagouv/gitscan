@@ -1,16 +1,23 @@
-## Changelog : complements-alimentaires (30 derniers jours, au 22 juillet 2026)
+## Changelog : complements-alimentaires (30 derniers jours, au 28 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur la mise à jour des dépendances du projet, assurant ainsi sa sécurité et sa stabilité. Une amélioration fonctionnelle a été apportée concernant la gestion des visas pour certains articles.
+Ce mois-ci, les mises à jour se sont principalement concentrées sur la maintenance et la sécurité du projet, avec des mises à niveau de nombreuses dépendances. Une amélioration fonctionnelle a été intégrée concernant l'approbation des visas.
 
 ### Évolutions fonctionnelles
-- Amélioration de la gestion des visas pour les articles 16 et 18. [#2997-visa-approval](https://github.com/betagouv/complements-alimentaires/pull/2997)
+- Amélioration du processus d'approbation des visas. [#2998](https://github.com/betagouv/complements-alimentaires/pull/2998)
 
 ### Évolutions techniques
-- Mise à jour de nombreuses dépendances Python (Django, django-filter, django-viewflow, pillow, sentry-sdk, tzlocal, uritools, pandas, regex, pikepdf, django-webpack-loader) vers leurs dernières versions stables.
-- Mise à jour des dépendances npm/yarn du frontend (body-parser, prettier, vue, websocket-driver, svgo, fast-uri, postcss, @tailwindcss/postcss).
-- Mise à jour des actions GitHub utilisées pour le CI/CD.
+- Mise à jour de Django en version 6.0.6 pour bénéficier des dernières corrections de sécurité et améliorations.
+- Mise à jour de plusieurs dépendances JavaScript (Vue, PostCSS, TailwindCSS, etc.) pour assurer la compatibilité et la sécurité du frontend.
+- Mise à jour de plusieurs dépendances Python (django-filter, django-viewflow, pikepdf, regex, etc.) pour bénéficier des dernières corrections et améliorations.
+- Mise à jour des actions GitHub pour bénéficier des dernières fonctionnalités et corrections.
 
 ### Autres changements
-- Correction de tests suite à l'implémentation de la gestion des visas.
-- Ajout de validations côté backend pour la gestion des visas.
+- Mise à jour de la documentation et de la configuration du projet.
+- Correction de bugs mineurs et amélioration de la qualité du code.
+- Mise à jour de virtualenv en version 21.6.1.
+- Mise à jour de body-parser en version 1.20.6 dans le frontend.
+- Mise à jour de shell-quote en version 1.10.0 dans le frontend.
+- Mise à jour de websocket-driver en version 0.7.5 dans le frontend.
+- Mise à jour de fast-uri en version 3.1.4 dans le frontend.
+- Mise à jour de svgo en version 2.8.3 dans le frontend.
