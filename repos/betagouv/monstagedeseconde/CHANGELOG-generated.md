@@ -1,23 +1,28 @@
-## Changelog : monstagedeseconde (30 derniers jours, au 24 juillet 2026)
+## Changelog : monstagedeseconde (30 derniers jours, au 31 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur pour les entreprises et les étudiants, avec des mises à jour des pages partenaires, des offres et des formulaires. Des corrections et des optimisations techniques ont également été apportées, notamment pour la gestion des tâches d'archivage et la maintenance estivale.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des stages et des offres, avec des corrections de bugs et des optimisations des tests pour assurer une meilleure stabilité de la plateforme. Des améliorations ont également été apportées à l'interface utilisateur, notamment pour les pages partenaires et l'affichage des logos.
 
 ### Évolutions fonctionnelles
-- Mise à jour de la page étudiant [#941](https://github.com/betagouv/monstagedeseconde/pull/941).
-- Ajout d'un carrousel de logos de partenaires sur les pages pros et partenaires [#944](https://github.com/betagouv/monstagedeseconde/pull/944) et [#942](https://github.com/betagouv/monstagedeseconde/pull/942).
-- Amélioration du formulaire de publication d'offres [#937](https://github.com/betagouv/monstagedeseconde/pull/937).
-- Adaptation de la plateforme pour la maintenance estivale et les jours fériés [#943](https://github.com/betagouv/monstagedeseconde/pull/943).
-- Limitation de la longueur de la description des offres via l'API [#922](https://github.com/betagouv/monstagedeseconde/pull/922).
+- Amélioration du formulaire des offres de stage [#1666](https://github.com/betagouv/monstagedeseconde/issues/1666).
+- Mise à jour des pages partenaires, incluant l'ajout d'un carrousel de logos [#1778](https://github.com/betagouv/monstagedeseconde/issues/1778) et [#1780](https://github.com/betagouv/monstagedeseconde/issues/1780).
+- Mise à jour de la page étudiant [#1775](https://github.com/betagouv/monstagedeseconde/issues/1775).
+- Amélioration de la gestion de la signature groupée des conventions, rendant l'appariement signature/convention indépendant de l'ordre de traitement.
+- Adaptation de la plateforme aux vacances d'été 2026 [#1747](https://github.com/betagouv/monstagedeseconde/issues/1747).
+- Correction d'un bug empêchant l'accès administrateur pendant la maintenance.
 
 ### Évolutions techniques
-- Refactorisation du code pour mutualiser des éléments techniques [#938](https://github.com/betagouv/monstagedeseconde/pull/938).
-- Mise à jour des tâches d'archivage des étudiants pour une meilleure gestion.
-- Correction de tests unitaires et système pour garantir la stabilité de la plateforme.
-- Correction d'une erreur dans la vérification des horaires.
+- Refactorisation du code pour mutualiser des éléments communs [#MGF-1768](https://github.com/betagouv/monstagedeseconde/issues/MGF-1768).
+- Mise à jour de la gestion du déploiement en staging pour éviter les blocages.
+- Amélioration de la robustesse des tests système, avec correction de nombreux tests défaillants et suppression de code obsolète.
+- Normalisation de la recherche d'emails dans le guard de connexion pour la maintenance.
+- Mise à jour de plusieurs dépendances : `msgpack`, `mcp`, `oauth2`, `rails-html-sanitizer`, `websocket-driver`, `js-yaml`, `view_component`, `webpack-dev-server`, `fast-uri`.
 
 ### Autres changements
-- Maintien de l'accès administrateur pendant la maintenance.
-- Suppression de l'outil Tally.
-- Suppression d'un bloc "nl".
-- Mise à jour des dépendances : `websocket-driver` (0.8.0 -> 0.8.1) et `view_component` (4.9.0 -> 4.12.0) et `js-yaml` (3.14.2 -> 3.15.0).
+- Correction de violations d'accessibilité (a11y) sur plusieurs pages, notamment après la remise en service des captures W3C.
+- Mise en quarantaine des pages présentant des violations d'accessibilité préexistantes.
+- Mise à jour des tâches d'archivage des entreprises et des étudiants.
+- Correction de bugs et améliorations diverses pour stabiliser la plateforme.
+- Amélioration des tests d'inscription.
+- Correction du callback Sygne.
+- Correction d'une vérification des heures dans l'offre.

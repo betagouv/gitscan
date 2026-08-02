@@ -788,6 +788,7 @@
 │   │   ├── application_job.rb
 │   │   ├── cancel_validated_internship_application_job.rb
 │   │   ├── cleaning_employer_job.rb
+│   │   ├── count_students_from_sygne_job.rb
 │   │   ├── counter_updater_job.rb
 │   │   ├── desinterlace_school_signature_job.rb
 │   │   ├── geocode_internship_offers_job.rb
@@ -948,6 +949,7 @@
 │   │   │   │       └── recette_employer_digest.pdf
 │   │   │   ├── immersion_facile.rb
 │   │   │   ├── omogen
+│   │   │   │   ├── school_headcount_refresher.rb
 │   │   │   │   ├── sygne.rb
 │   │   │   │   ├── sygne_api_error.rb
 │   │   │   │   ├── sygne_eleve.rb
@@ -1087,6 +1089,7 @@
 │   │   ├── reserved_school.rb
 │   │   ├── school.rb
 │   │   ├── school_internship_week.rb
+│   │   ├── school_stat.rb
 │   │   ├── school_track
 │   │   │   ├── base.rb
 │   │   │   ├── seconde.rb
@@ -1830,6 +1833,7 @@
 │   │   ├── pending_internship_applications_mailing.sh
 │   │   ├── students_internship_application_reminders.sh
 │   │   ├── students_pending_internship_applications_sms_reminder.sh
+│   │   ├── sygne_headcount_refresh.sh
 │   │   ├── sync_production_databases.sh
 │   │   └── year_end_cleaning.sh
 │   ├── older_cron.json
@@ -2427,6 +2431,7 @@
 │   │   ├── 20260520214758_add_unique_index_on_internship_applications_user_offer.rb
 │   │   ├── 20260526090153_add_unique_index_on_internship_agreements_application.rb
 │   │   ├── 20260604000000_backfill_user_schools_for_school_management.rb
+│   │   ├── 20260608090000_create_school_stats.rb
 │   │   └── 20260610090000_add_is_public_and_group_to_multi_coordinators.rb
 │   ├── seeds
 │   │   ├── 00_populate_departments.rb
@@ -2648,6 +2653,7 @@
 │       ├── some_team.rake
 │       ├── support
 │       │   └── commands.rake
+│       ├── sygne_headcount.rake
 │       ├── sync_production_databases.rake
 │       ├── test.rake
 │       ├── transactional_emails.rake
@@ -2910,6 +2916,7 @@
 │   │   │   ├── api-insee-mairie-st-ouen.json
 │   │   │   ├── educonnect_token.json
 │   │   │   ├── educonnect_userinfo.json
+│   │   │   ├── educonnect_userinfo_ineligible_level.json
 │   │   │   ├── educonnect_userinfo_responsible.json
 │   │   │   ├── educonnect_userinfo_unknown.json
 │   │   │   ├── prismic-homepage-response.dump
@@ -2971,6 +2978,8 @@
 │   │   │   ├── archiver_test.rb
 │   │   │   ├── immersion_facile_test.rb
 │   │   │   ├── internship_application_counters_hook_test.rb
+│   │   │   ├── omogen
+│   │   │   │   └── school_headcount_refresher_test.rb
 │   │   │   ├── sync_email_campaigns_test.rb
 │   │   │   └── team_member_invitation_validator_test.rb
 │   │   ├── tasks
@@ -3052,6 +3061,7 @@
 │   │   │   └── school_test.rb
 │   │   ├── reserved_school_test.rb
 │   │   ├── school_search_test.rb
+│   │   ├── school_stat_test.rb
 │   │   ├── school_test.rb
 │   │   ├── school_track
 │   │   │   └── seconde_test.rb
@@ -3129,16 +3139,11 @@
 │   │   │       ├── resend_code_test.rb
 │   │   │       └── signature_test.rb
 │   │   ├── devise
-│   │   │   ├── confirmations_flow.rb
 │   │   │   ├── email_update_flow_test.rb
-│   │   │   ├── forgotten_password_flow.rb
 │   │   │   ├── forgotten_password_flow_test.rb
-│   │   │   ├── password_flow.rb
-│   │   │   ├── sign_in_flow.rb
 │   │   │   ├── sign_up_employers_test.rb
 │   │   │   ├── sign_up_ministry_statisticians_test.rb
-│   │   │   ├── sign_up_statisticians_test.rb
-│   │   │   └── sign_up_students_test.rb
+│   │   │   └── sign_up_statisticians_test.rb
 │   │   ├── favorite_test.rb
 │   │   ├── internship_application_student_flow_test.rb
 │   │   ├── internship_offer_index_test.rb
@@ -3161,11 +3166,9 @@
 ├── tidy_config.txt
 ├── tmp
 │   ├── .keep
-│   ├── functional_screenshots
-│   │   └── .keep
-│   └── w3c
+│   └── functional_screenshots
 │       └── .keep
 ├── vendor
 │   └── .keep
 └── yarn.lock
-438 directories, 2740 files
+438 directories, 2743 files
