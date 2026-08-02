@@ -1,30 +1,29 @@
 ## Changelog : menshen (30 derniers jours, au 29 juillet 2026)
 
 ### Résumé
-Les 30 derniers jours ont été marqués par une refonte significative de l'architecture backend de menshen, avec le passage de Django REST Framework à Django Ninja pour une meilleure performance et maintenabilité. De plus, l'intégration d'un chart Helm a été réalisée pour faciliter le déploiement et la gestion de l'application en Kubernetes.
+Ce mois-ci, menshen a connu une refonte majeure de son API, passant de Django REST Framework à Django Ninja pour plus de performance et de simplicité. Des améliorations ont également été apportées à la gestion des jetons, à la journalisation et à la configuration, ainsi qu'une première version publique (0.2.0) a été publiée.
 
 ### Évolutions fonctionnelles
-- Ajout d'une base pour un client API permettant l'interaction avec le serveur d'autorisation.
-- Amélioration des messages d'avertissement lorsque des scopes supplémentaires sont demandés lors des échanges de jetons.
-- Correction d'un bug qui restreignait le scope de l'échange de jetons dans le playground à `openid`.
-- Correction de bugs liés au content-type des requêtes d'échange de jetons (maintenant forcé à JSON) et à la gestion des champs supplémentaires dans les réponses d'introspection de jetons.
+- Passage à Django Ninja pour l'API, offrant une nouvelle base pour les interactions avec le service [#809d4cd](https://github.com/suitenumerique/menshen/commit/809d4cd).
+- Ajout d'un client API de base pour interagir avec le service [#c74b37e](https://github.com/suitenumerique/menshen/commit/c74b37e).
+- Restriction de la portée (scope) de l'échange de jetons dans le playground à `openid` [#039e9bb](https://github.com/suitenumerique/menshen/commit/039e9bb).
+- Ajout de messages d'avertissement lorsque des portées supplémentaires sont demandées lors de l'échange de jetons [#782ad4e](https://github.com/suitenumerique/menshen/commit/782ad4e).
 
 ### Évolutions techniques
-- Migration de l'API REST de Django REST Framework vers Django Ninja pour une meilleure performance et une syntaxe plus moderne [#822aeed](https://github.com/suitenumerique/menshen/commit/822aeed).
-- Refactorisation du service de validation des jetons et de l'introspection des jetons échangés pour une meilleure organisation du code.
-- Déplacement de la logique de révocation de jetons vers un service dédié.
-- Factorisation des utilitaires principaux du service dans un mixin pour éviter la duplication de code.
-- Ajout de support pour un pool de connexions PostgreSQL pour améliorer les performances.
-- Intégration d'un chart Helm pour simplifier le déploiement Kubernetes et automatiser les workflows associés [#6f1dddc](https://github.com/suitenumerique/menshen/commit/6f1dddc).
-- Ajout de workflows CI/CD pour le linting et la publication du chart Helm.
-- Utilisation d'Uvicorn comme serveur d'application.
-- Bundle des fichiers statiques dans l'image Docker.
-- Mise à jour de la commande de lancement en production.
+- Refactorisation du service de révocation de jetons pour une meilleure organisation du code [#00e9cab](https://github.com/suitenumerique/menshen/commit/00e9cab).
+- Factorisation des utilitaires principaux du service dans un mixin pour éviter la duplication de code [#54634f2](https://github.com/suitenumerique/menshen/commit/54634f2).
+- Simplification des messages d'erreur liés à la validation des jetons [#0c48ab9](https://github.com/suitenumerique/menshen/commit/0c48ab9).
+- Refonte du service d'introspection des jetons échangés [#cae5fa1](https://github.com/suitenumerique/menshen/commit/cae5fa1).
+- Suppression des paramètres OIDC inutilisés [#05ca571](https://github.com/suitenumerique/menshen/commit/05ca571).
+- Suppression du suffixe "Enum" des énumérations pour une meilleure lisibilité [#0ff6880](https://github.com/suitenumerique/menshen/commit/0ff6880).
+- Amélioration de la lisibilité du service de requête [#a12811c](https://github.com/suitenumerique/menshen/commit/a12811c).
+- Correction d'un problème d'importation de module [#a570180](https://github.com/suitenumerique/menshen/commit/a570180).
+- Mise à jour de la commande de lancement en production dans le Dockerfile [#1e89c4f](https://github.com/suitenumerique/menshen/commit/1e89c4f).
+- Correction de la version épinglée de l'action Docker login [#0b772b7](https://github.com/suitenumerique/menshen/commit/0b772b7).
 
 ### Autres changements
-- Ajout de `django.extra` à `sentry-sdk` pour une meilleure intégration avec Sentry.
-- Suppression des paramètres OIDC inutilisés.
-- Correction d'une erreur d'importation de module.
-- Suppression du suffixe "Enum" des énumérations pour une meilleure cohérence du code.
-- Correction d'une erreur de copier/coller dans le playground.
-- Bump de version à 0.2.0 et 0.1.0.
+- Publication de la version 0.2.0 [#7cdfa16](https://github.com/suitenumerique/menshen/commit/7cdfa16).
+- Publication de la version 0.1.0 [#48c570d](https://github.com/suitenumerique/menshen/commit/48c570d).
+- Ajout de `django-extra` à `sentry-sdk` [#822aeed](https://github.com/suitenumerique/menshen/commit/822aeed).
+- Correction du type de contenu attendu pour les requêtes d'échange de jetons (JSON) [#ddcd221](https://github.com/suitenumerique/menshen/commit/ddcd221).
+- Ignorer les champs supplémentaires dans la réponse d'introspection du sujet du jeton [#873376a](https://github.com/suitenumerique/menshen/commit/873376a).
