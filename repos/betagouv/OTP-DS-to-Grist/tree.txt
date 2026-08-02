@@ -92,8 +92,10 @@
 │   │       ├── __tests__
 │   │       │   ├── InternalApi.spec.js
 │   │       │   ├── README.md
-│   │       │   └── configUtils.spec.js
-│   │       └── configUtils.js
+│   │       │   ├── configUtils.spec.js
+│   │       │   └── debounce.spec.js
+│   │       ├── configUtils.js
+│   │       └── debounce.js
 │   ├── vite.config.js
 │   ├── vitest.config.js
 │   └── vitest.setup.js
@@ -141,7 +143,12 @@
 │   ├── error_parser.py
 │   ├── scheduled_sync.py
 │   ├── sync_manager.py
-│   └── sync_result_parser.py
+│   ├── sync_result_parser.py
+│   └── tasks
+│       ├── README.md
+│       ├── __init__.py
+│       ├── instructeurs.py
+│       └── labels.py
 ├── templates
 │   ├── README.md
 │   ├── _sync_banner.html
@@ -170,7 +177,8 @@
 │       ├── conftest.py
 │       ├── integration
 │       │   ├── __init__.py
-│       │   └── test_app.py
+│       │   ├── test_app.py
+│       │   └── test_websocket.py
 │       └── unit
 │           ├── __init__.py
 │           ├── configuration
@@ -179,6 +187,9 @@
 │           │   ├── test_database_manager.py
 │           │   └── test_models.py
 │           ├── sync
+│           │   ├── tasks
+│           │   │   ├── test_instructeurs.py
+│           │   │   └── test_labels.py
 │           │   ├── test_environment_config.py
 │           │   ├── test_error_parser.py
 │           │   └── test_sync_result_parser.py
@@ -199,4 +210,4 @@
     ├── help_links.py
     ├── log_progress.py
     └── socketio.py
-34 directories, 167 files
+36 directories, 176 files
