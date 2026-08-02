@@ -1,23 +1,27 @@
-## Changelog : ami-notifications-api (30 derniers jours, au 28 juillet 2026)
+## Changelog : ami-notifications-api (30 derniers jours, au 31 juillet 2026)
 
 ### Résumé
-Cette période a été marquée par une refonte significative de l'interface utilisateur, notamment autour de la gestion des agendas et des suivis (anciennement "requests" et "inventory"). Des améliorations ont également été apportées à l'intégration avec FranceConnect et à l'API pour les événements, avec l'introduction d'une version 2. Des corrections de style et d'accessibilité ont été implémentées.
+Cette période a été marquée par d'importantes améliorations de l'interface utilisateur, notamment sur l'écran d'accueil et les pages de suivi. De nouvelles fonctionnalités liées aux services ont été implémentées, permettant d'intégrer et de gérer des services externes via l'application. Des corrections de bugs et des optimisations techniques ont également été apportées pour améliorer la stabilité et la performance de l'API.
 
 ### Évolutions fonctionnelles
-- **Services :** Ajout d'une nouvelle section "Services" dans le menu principal, permettant d'accéder à une liste de services disponibles via l'API.  Possibilité d'effectuer une authentification silencieuse (silent-login) pour ces services si activée. [#943](https://github.com/numerique-gouv/ami-notifications-api/issues/943)
-- **Suivis (Followup) :** Renommage de la section "Requests" en "Suivis" pour plus de clarté.  Amélioration de l'affichage et de la navigation dans les suivis, avec une page de détail dédiée. [#266](https://github.com/numerique-gouv/ami-notifications-api/issues/266)
-- **Agendas (Catalog) :** Renommage de la section "Inventory" en "Agendas" pour plus de cohérence.
-- **Notifications :** Les notifications liées à un item redirigent désormais vers la page de suivi correspondante. [#1018](https://github.com/numerique-gouv/ami-notifications-api/issues/1018)
-- **API Événements :** Introduction d'une version 2 de l'API pour les événements, avec l'ajout d'un champ "subheading" et des validations améliorées sur les champs parent. [#940](https://github.com/numerique-gouv/ami-notifications-api/issues/940)
-- **Authentification FranceConnect :** Correction d'un problème de déconnexion intempestive de FranceConnect lors de l'authentification silencieuse. [#992](https://github.com/numerique-gouv/ami-notifications-api/issues/992)
-- **Amélioration de l'expérience utilisateur :** Correction de problèmes de z-index et de styles pour améliorer l'affichage et l'accessibilité. [#950](https://github.com/numerique-gouv/ami-notifications-api/issues/950), [#1020](https://github.com/numerique-gouv/ami-notifications-api/issues/1020), [#1037](https://github.com/numerique-gouv/ami-notifications-api/issues/1037)
+- **Écran d'accueil amélioré :** Refonte de l'écran d'accueil avec amélioration de la présentation des informations FranceConnect, ajustement de la taille des icônes, et recentrage du contenu.  Ajout d'un titre à l'écran d'accueil. [#1098]
+- **Gestion des suivis (Followups) :** Ajout de pages de détails pour les suivis, avec affichage des informations pertinentes et gestion de l'archivage.  Amélioration de l'affichage des suivis archivés. [#266]
+- **Intégration des services :** Ajout d'une nouvelle section "Services" dans le menu principal, permettant d'accéder à une liste de services externes.  Possibilité d'intégrer des services avec une authentification silencieuse si activée.  Affichage des paramètres et descriptions des services. [#943]
+- **Bannières :** Ajout de bannières sur les pages d'édition. [#769]
+- **Correction d'un bug :** Correction d'un bug empêchant l'affichage correct des dates. [#1076]
+- **Correction d'un bug :** Correction d'un problème lié à l'affichage du bouton "Retour" dans l'en-tête. [#950]
+- **Gestion des feature flags :** Ajout d'un mécanisme pour activer/désactiver certaines fonctionnalités via des *feature flags*, notamment pour l'intégration des services. [#1081]
 
 ### Évolutions techniques
-- **API :** Correction de la sérialisation du token OTVJWT. [#1070](https://github.com/numerique-gouv/ami-notifications-api/issues/1070)
-- **Refactoring :** Refactorisation de la navigation principale et des composants d'en-tête pour améliorer la structure et les styles.
-- **Mises à jour :** Mises à jour de plusieurs dépendances : Django (6.0.5 -> 6.0.6), ujson, msgpack, ws, undici, brace-expansion, soupsieve.
+- **Refactoring de la navigation :** Refactorisation de la navigation principale avec correction des styles et amélioration de l'accessibilité (RGAA). [#1037]
+- **Correction de la sérialisation OTVJWTTokenSerializer :** Correction d'un problème dans la sérialisation des tokens OTVJWT. [#1070]
+- **Mise à jour des dépendances :**
+    - Django mis à jour de la version 6.0.5 à 6.0.6.
+    - Daphne mis à jour de la version 4.2.1 à 4.2.2.
+    - Soupsieve mis à jour de la version 2.8.3 à 2.8.4.
+    - ws mis à jour de la version 8.20.1 à 8.21.0.
 
 ### Autres changements
-- **Documentation :** Amélioration de la documentation et nettoyage du code.
-- **Tests :** Ajout de tests pour les nouvelles fonctionnalités.
-- **Configuration :** Ajout d'un feature flag pour activer/désactiver l'accès à la section "Services". [#943](https://github.com/numerique-gouv/ami-notifications-api/issues/943)
+- **Suppression de code inutilisé :** Suppression de code non utilisé dans la gestion des suivis. [#266]
+- **Amélioration de la compatibilité WebView Android :** Correction pour assurer que l'application utilise la pleine hauteur de la fenêtre sur les WebView Android. [#1013]
+- **Documentation :** Amélioration de la documentation interne.
