@@ -1,16 +1,15 @@
 {
   "url": "https://github.com/betagouv/eva-serveur",
   "name": "eva-serveur",
-  "description": "Cette application sert de serveur et d'espace d'administration pour eva. Elle permet de gérer les évaluations et les campagnes associées.",
+  "description": "Cette application sert de serveur et d'espace d'administration pour eva. Elle permet de gérer les évaluations et les données associées.",
   "language": "Ruby",
   "features": [
     "Gestion documentaire & Fichiers",
-    "API & Intégrations",
     "Authentification & Accès",
     "Gestion des utilisateurs & Permissions",
-    "Gestion des établissements & Structures",
-    "Reporting & BI",
-    "Gestion métier générale"
+    "API & Intégrations",
+    "Statistiques & Rapports",
+    "Gestion des établissements & Structures"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -22,6 +21,7 @@
     "ActiveAdmin",
     "Image Processing",
     "ruby-vips",
+    "DSFR",
     "Sidekiq"
   ],
   "components": [
@@ -35,13 +35,12 @@
   "auth": {
     "methods": [
       "email-password",
-      "oauth2",
       "sso"
     ]
   },
   "tests": [
     "RSpec",
-    "FactoryBot"
+    "Capybara"
   ],
   "workflows": [],
   "lastActivity": "2026-07-30T20:18:13+02:00",
@@ -59,7 +58,6 @@
     "Écosystème beta.gouv / État",
     "Ruby",
     "Bases de données SQL",
-    "Sécurité & Auth",
-    "Gestion métier générale"
+    "Sécurité & Auth"
   ]
 }
