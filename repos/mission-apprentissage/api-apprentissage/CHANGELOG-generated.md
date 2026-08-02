@@ -1,16 +1,12 @@
-## Changelog : api-apprentissage (30 derniers jours, au 19 juin 2026)
+## Changelog : api-apprentissage (30 derniers jours, au 1er août 2026)
 
 ### Résumé
-Cette version apporte des améliorations de stabilité et de performance, notamment en limitant le taux de requêtes vers le service LBA et en ajoutant des délais d'attente pour éviter les blocages. Des corrections de documentation et de configuration ont également été effectuées, ainsi que des migrations d'infrastructure pour les environnements de recette et de production.
+Cette mise à jour apporte des corrections de sécurité importantes, améliore la gestion des erreurs lors de la communication avec le service LBA et met à jour la documentation du dépôt d'offres. Une rotation du secret principal SOPS a également été effectuée pour renforcer la sécurité.
 
 ### Évolutions fonctionnelles
-- Correction de la description de l'API de recherche d'emploi [#490](https://github.com/mission-apprentissage/api-apprentissage/issues/490).
-- Mise à jour de l'adresse email de contact [#491](https://github.com/mission-apprentissage/api-apprentissage/issues/491).
-- Suppression du champ "origin" de la documentation, conformément à la demande LBA-3864 [#494](https://github.com/mission-apprentissage/api-apprentissage/issues/494).
+- Correction d'un problème où l'API renvoyait une erreur 500 en cas de timeout lors de la communication avec le service LBA. Elle renvoie maintenant une erreur 504 plus appropriée. [#499](https://github.com/mission-apprentissage/api-apprentissage/issues/499)
+- Mise à jour de la documentation `depot-offre.doc.ts`. [#497](https://github.com/mission-apprentissage/api-apprentissage/issues/497)
 
 ### Évolutions techniques
-- Implémentation d'une limitation du taux de requêtes (rate-limit) par consommateur sur les routes qui transmettent les requêtes au service LBA [#493](https://github.com/mission-apprentissage/api-apprentissage/issues/493).
-- Ajout d'un délai d'attente (timeout) sur les requêtes forwardées vers LBA pour éviter les blocages [#485](https://github.com/mission-apprentissage/api-apprentissage/issues/485).
-- Suppression des sous-modules `.infra/authorizations` et `.infra/inventories` [#488](https://github.com/mission-apprentissage/api-apprentissage/issues/488).
-- Migrations des serveurs API pour les environnements de recette et de production [#486](https://github.com/mission-apprentissage/api-apprentissage/issues/486), [#487](https://github.com/mission-apprentissage/api-apprentissage/issues/487), [#495](https://github.com/mission-apprentissage/api-apprentissage/issues/495).
-- Correction de quelques fautes de frappe [#489](https://github.com/mission-apprentissage/api-apprentissage/issues/489).
+- Correction de deux vulnérabilités de sécurité critiques (CVE) dans les dépendances Vitest et Tar. [#498](https://github.com/mission-apprentissage/api-apprentissage/issues/498)
+- Rotation du secret principal SOPS pour une meilleure sécurité. [#496](https://github.com/mission-apprentissage/api-apprentissage/issues/496)
