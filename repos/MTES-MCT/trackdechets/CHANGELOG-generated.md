@@ -1,34 +1,29 @@
-## Changelog : trackdechets (30 derniers jours, au 20 juillet 2026)
+## Changelog : trackdechets (30 derniers jours, au 29 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la sécurité avec l'implémentation de l'authentification multi-facteurs (MFA) et la gestion des réinitialisations de compte. Des corrections de bugs et des améliorations de l'expérience utilisateur ont également été apportées, notamment concernant la gestion des bordereaux de déchets et des informations de contact.
+Cette période a été marquée par des améliorations significatives de la sécurité avec l'implémentation de l'authentification multi-facteurs (MFA), ainsi que par des corrections et des évolutions fonctionnelles concernant la gestion des bordereaux de déchets, notamment en cas de changement de SIRET et d'erreurs de saisie. Des améliorations ont également été apportées à l'interface utilisateur et à la conformité légale.
 
 ### Évolutions fonctionnelles
-- Ajout de la gestion des réinitialisations MFA via un panneau d'administration. [#4804](https://github.com/MTES-MCT/trackdechets/issues/4804)
-- Implémentation de la récupération de compte via un code de récupération dans le cadre de l'authentification multi-facteurs. [#4830](https://github.com/MTES-MCT/trackdechets/issues/4830)
-- Activation de la double authentification (MFA) avec révisions des codes. [#4827](https://github.com/MTES-MCT/trackdechets/issues/4827)
-- Ajout de la conditionnalité d'affichage des éléments MFA et Crisp en fonction de l'environnement (Sandbox, Production). [#4835](https://github.com/MTES-MCT/trackdechets/issues/4835)
-- Ajout des champs "Conditionnement" (Nombre, Type, Volume) pour les bordereaux de déchets. [#4825](https://github.com/MTES-MCT/trackdechets/issues/4825)
-- Intégration des mentions légales et de la politique de confidentialité en page web (au lieu de PDF). [#4833](https://github.com/MTES-MCT/trackdechets/issues/4833)
-- Amélioration de la gestion des informations de contact du destinataire après signature de l'émetteur.
-- Correction d'un blocage de la signature du transporteur si les informations de contact étaient absentes. [#4813](https://github.com/MTES-MCT/trackdechets/issues/4813)
-- Correction d'un blocage de modification des informations de contact du destinataire. [#4829](https://github.com/MTES-MCT/trackdechets/issues/4829)
-- Correction d'un problème empêchant l'enregistrement d'un bordereau de regroupement BSFF. [#4808](https://github.com/MTES-MCT/trackdechets/issues/4808)
-- Correction de l'affichage de la quantité en kg au lieu de tonnes dans l'aperçu et le formulaire BSFF. [#4800](https://github.com/MTES-MCT/trackdechets/issues/4800)
+- Ajout de la possibilité de modifier la mention ADR d'un BSDA de réexpédition. [#4845](https://github.com/MTES-MCT/trackdechets/issues/4845)
+- Permet de transférer les bordereaux d'un SIRET fermé vers un SIRET ouvert. [#4834](https://github.com/MTES-MCT/trackdechets/issues/4834)
+- Affichage d'un message d'erreur clair si le SIRET est fermé lors du transfert d'un BSFF. [#4837](https://github.com/MTES-MCT/trackdechets/issues/4837)
+- Mise à jour du texte du bandeau d'information. [#4841](https://github.com/MTES-MCT/trackdechets/issues/4841)
+- Ajout des champs "Conditionnement : (Nombre, Type et Volume)" pour tous les bordereaux. [#4825](https://github.com/MTES-MCT/trackdechets/issues/4825)
+- Implémentation de l'authentification multi-facteurs (MFA) : activation, récupération de compte via code, et amélioration du wording. [#4826](https://github.com/MTES-MCT/trackdechets/issues/4826), [#4827](https://github.com/MTES-MCT/trackdechets/issues/4827), [#4830](https://github.com/MTES-MCT/trackdechets/issues/4830)
+- Intégration des Mentions Légales et de la Politique de confidentialité en page WEB. [#4833](https://github.com/MTES-MCT/trackdechets/issues/4833)
+- Correction d'un bug empêchant la modification des informations de contact du destinataire après signature de l'émetteur. [#4829](https://github.com/MTES-MCT/trackdechets/issues/4829)
 
 ### Évolutions techniques
-- Journalisation des événements MFA dans la base de données. [#4810](https://github.com/MTES-MCT/trackdechets/issues/4810)
-- Refactoring et changement du type de la quantité de `Int` à `String` pour améliorer la flexibilité.
-- Suppression de Crisp des cookies pour améliorer la conformité. [#4822](https://github.com/MTES-MCT/trackdechets/issues/4822)
-- Ajout d'un changelog. [#4836](https://github.com/MTES-MCT/trackdechets/issues/4836)
-- Amélioration de la gestion des tests d'intégration et correction de problèmes liés à ceux-ci.
-- Réduction de la complexité cognitive du code.
-- Correction de problèmes de pipelines et de tests.
+- Mise à jour de Matomo pour identifier les applications concernées par Matomo Beta.Gouv. [#4843](https://github.com/MTES-MCT/trackdechets/issues/4843)
+- Suppression de l'utilisation de cookies pour Matomo.
+- Correction d'erreurs de build et refactoring du code.
+- Changement du type de la quantité (quantity) de `Int` à `String`.
+- Suppression de Crisp des cookies. [#4822](https://github.com/MTES-MCT/trackdechets/issues/4822)
+- Correction d'un problème d'apparition des BSVHU & BSFF dans le registre établissement après signature du producteur. [#4840](https://github.com/MTES-MCT/trackdechets/issues/4840)
 
 ### Autres changements
-- Correction de divers messages d'erreur.
-- Amélioration de la documentation et de la configuration.
-- Correction de problèmes de formatage et de linting.
-- Correction de problèmes liés aux migrations de la base de données.
-- Assouplissement du contrôle de format sur le champ `gistridNumber` pour les BSDD. [#4796](https://github.com/MTES-MCT/trackdechets/issues/4796) et [#4797](https://github.com/MTES-MCT/trackdechets/issues/4797)
-- Ajout de notifications de sécurité liées à la récupération manuelle du compte. [#4805](https://github.com/MTES-MCT/trackdechets/issues/4805)
+- Changelog mis à jour pour la MEP du 28/07/2026. [#4842](https://github.com/MTES-MCT/trackdechets/issues/4842)
+- Correction de doublons dans le texte.
+- Correction de messages d'erreur pour le détenteur. [#4847](https://github.com/MTES-MCT/trackdechets/issues/4847)
+- Colonnes "Nom usuel" vides pour tous les acteurs dans le registre exhaustif. [#4836](https://github.com/MTES-MCT/trackdechets/issues/4836)
+- Réactivation de l'affichage des éléments MFA et Crisp en environnement Sandbox et Production. [#4835](https://github.com/MTES-MCT/trackdechets/issues/4835)
