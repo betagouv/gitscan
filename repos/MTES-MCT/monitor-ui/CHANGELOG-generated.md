@@ -1,24 +1,23 @@
 ## Changelog : monitor-ui (30 derniers jours, au 30 juillet 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives au composant CheckTreePicker, notamment en termes de performance et d'affichage des données, en particulier pour les ensembles de données volumineux. Des corrections de bugs ont également été apportées pour améliorer la stabilité et l'expérience utilisateur, ainsi qu'un nouveau composant de gestion de fichiers.
+Cette version apporte des améliorations significatives au composant `CheckTreePicker`, notamment en termes de performance et d'affichage des données, particulièrement pour les ensembles de données volumineux. Des corrections de bugs ont également été apportées pour améliorer l'expérience utilisateur et la stabilité de la bibliothèque. Enfin, quelques ajustements techniques ont été effectués pour optimiser le code et la configuration.
 
 ### Évolutions fonctionnelles
-- **CheckTreePicker :** Ajout de la possibilité d'afficher tous les enfants, même s'ils ne correspondent pas à la requête de recherche, via la prop `withAllChildrenInResults`.
-- **CheckTreePicker :** Amélioration de l'affichage des éléments tronqués avec un affichage complet au survol.
-- **CheckTreePicker :** Correction d'un bug qui empêchait l'affichage correct avec de grands ensembles de données lorsque `withAllChildrenInResults` était activé.
-- **Composant FileUploader :** Ajout d'un nouveau composant pour la gestion des téléchargements de fichiers, incluant l'affichage du nom de fichier avec une ellipse en cas de longueur excessive et la gestion des miniatures.
-- **Bouton Delete :** Le bouton de suppression est maintenant rendu comme un bouton standard.
+- Le composant `CheckTreePicker` affiche désormais tous les enfants, même ceux qui ne correspondent pas directement à la requête de recherche, grâce à la nouvelle propriété `withAllChildrenInResults`.
+- Amélioration de l'affichage des éléments tronqués dans `CheckTreePicker` : le libellé complet est maintenant visible au survol.
+- Correction du comportement du `CheTreePicker` avec de grands ensembles de données lorsque `withAllChildrenInResults` est activé.
+- Renommage de la propriété `isMultiSelect` en `canSelectMultipleParents` pour plus de clarté.
+- Le bouton de suppression est maintenant implémenté en tant que bouton standard.
 
 ### Évolutions techniques
-- **Performance :** Optimisation de la recherche "fuse" dans le composant `CustomSearch` pour éviter une complexité O(n²).
-- **Dépendances :** Suppression d'une dépendance inutile à `react-router-dom`.
-- **Typescript :** Export des types pour une meilleure utilisation du composant.
-- **Composants :** Export de la fonction `convertImagesToThumbnails`.
-- **Composants :** Suppression du padding interne et ajout d'une classname pour overrider le style par défaut.
+- Optimisation de la recherche Fuse dans `CustomSearch` pour éviter une complexité O(n²).
+- Suppression d'une dépendance inutile à `react-router-dom`.
+- Correction d'un problème d'arrondi avant l'extraction de sous-chaînes de caractères.
+- Correction d'un problème d'affichage de l'icône d'expansion qui bloquait l'info-bulle du titre de la ligne.
+- Correction pour empêcher le téléchargement de fichiers si le type MIME ne correspond pas au mode.
+- Export des types pour une meilleure compatibilité.
 
 ### Autres changements
-- Correction d'un problème d'arrondi des nombres flottants lors de l'affichage.
-- Renommage de la prop `isMultiSelect` en `canSelectMultipleParents` pour une meilleure clarté.
-- Ajout d'une icône "Attachment.svg".
-- Ajout de tests unitaires pour le composant `fields`.
+- Mises à jour de la configuration CI/CD pour les versions 24.57.1, 24.57.0, 24.56.1, 24.56.0, 24.55.6, 24.55.5 et 24.55.4.
+- Ajustement du padding interne de certains composants.
