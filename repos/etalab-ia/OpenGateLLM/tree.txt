@@ -152,6 +152,7 @@
 │   │   │   └── errors.py
 │   │   ├── usage
 │   │   │   ├── __init__.py
+│   │   │   ├── _usagerecorder.py
 │   │   │   └── entities.py
 │   │   └── user
 │   │       ├── __init__.py
@@ -174,8 +175,7 @@
 │   │   │   ├── info.py
 │   │   │   ├── keys.py
 │   │   │   └── usage.py
-│   │   ├── monitoring.py
-│   │   └── ocr.py
+│   │   └── monitoring.py
 │   ├── helpers
 │   │   ├── __init__.py
 │   │   ├── _accesscontroller.py
@@ -204,9 +204,11 @@
 │   │   │   └── _ecologitmodelenvironmentalimpactscomputer.py
 │   │   ├── fastapi
 │   │   │   ├── __init__.py
-│   │   │   ├── _accesscontroler.py
-│   │   │   ├── context.py
+│   │   │   ├── _requestcontext.py
+│   │   │   ├── _requestcontextusagerecorder.py
+│   │   │   ├── accesscontroller.py
 │   │   │   ├── decorators.py
+│   │   │   ├── dependencies.py
 │   │   │   ├── documentation.py
 │   │   │   ├── endpoints
 │   │   │   │   ├── __init__.py
@@ -222,6 +224,7 @@
 │   │   │   │   ├── exceptions.py
 │   │   │   │   ├── health.py
 │   │   │   │   ├── models.py
+│   │   │   │   ├── ocr.py
 │   │   │   │   └── rerank.py
 │   │   │   └── schemas
 │   │   │       ├── __init__.py
@@ -236,6 +239,7 @@
 │   │   │       ├── embeddings.py
 │   │   │       ├── health.py
 │   │   │       ├── models.py
+│   │   │       ├── ocr.py
 │   │   │       └── rerank.py
 │   │   ├── http
 │   │   │   ├── __init__.py
@@ -387,7 +391,6 @@
 │   │   │   ├── keys.py
 │   │   │   └── usage.py
 │   │   ├── models.py
-│   │   ├── ocr.py
 │   │   └── usage.py
 │   ├── sql
 │   │   └── models.py
@@ -475,12 +478,12 @@
 │   │   │   │   ├── test_embeddings.py
 │   │   │   │   ├── test_health.py
 │   │   │   │   ├── test_models.py
+│   │   │   │   ├── test_ocr.py
 │   │   │   │   ├── test_rerank.py
 │   │   │   │   └── utils.py
 │   │   │   ├── factories
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── albert.py
-│   │   │   │   ├── http.py
 │   │   │   │   ├── mistral.py
 │   │   │   │   ├── openai.py
 │   │   │   │   ├── redis.py
@@ -488,7 +491,8 @@
 │   │   │   │   ├── tei.py
 │   │   │   │   └── vllm.py
 │   │   │   ├── fastapi
-│   │   │   │   └── test_accesscontroler.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── test_accesscontroller.py
 │   │   │   ├── http
 │   │   │   │   └── test_httpproviderclient.py
 │   │   │   ├── jwt
@@ -533,12 +537,21 @@
 │   │       │   ├── embeddings
 │   │       │   │   ├── __init__.py
 │   │       │   │   └── test_embeddingsentities.py
+│   │       │   ├── ocr
+│   │       │   │   ├── __init__.py
+│   │       │   │   └── test_ocrentities.py
 │   │       │   ├── rerank
 │   │       │   │   ├── __init__.py
 │   │       │   │   └── test_rerankentities.py
-│   │       │   └── usage
+│   │       │   ├── router
+│   │       │   │   ├── __init__.py
+│   │       │   │   └── test_routerentities.py
+│   │       │   ├── usage
+│   │       │   │   ├── __init__.py
+│   │       │   │   └── test_entities.py
+│   │       │   └── user
 │   │       │       ├── __init__.py
-│   │       │       └── test_entities.py
+│   │       │       └── test_userviews.py
 │   │       ├── infrastructure
 │   │       │   ├── factories.py
 │   │       │   ├── fastapi
@@ -556,6 +569,7 @@
 │   │       │       └── test_httpprovideradapterbuilder.py
 │   │       ├── test_configuration.py
 │   │       ├── test_helpers
+│   │       │   ├── __init__.py
 │   │       │   ├── test_accesscontroller.py
 │   │       │   ├── test_identityaccessmanager
 │   │       │   │   ├── test_encryption.py
@@ -564,7 +578,8 @@
 │   │       │   │   ├── test_roles.py
 │   │       │   │   ├── test_tokens.py
 │   │       │   │   └── test_users.py
-│   │       │   └── test_limiter.py
+│   │       │   ├── test_limiter.py
+│   │       │   └── test_usagemanager.py
 │   │       ├── test_utils
 │   │       │   ├── test_carbon.py
 │   │       │   └── test_qos.py
@@ -617,6 +632,9 @@
 │   │           │   ├── __init__.py
 │   │           │   ├── test_getmodelsusecase.py
 │   │           │   └── test_getmodelusecase.py
+│   │           ├── ocr
+│   │           │   ├── __init__.py
+│   │           │   └── test_createocrusecase.py
 │   │           ├── reranks
 │   │           │   └── test_creatererankusecase.py
 │   │           └── services
@@ -624,6 +642,7 @@
 │   │               └── test_providercapabilitiesprobe.py
 │   ├── use_cases
 │   │   ├── __init__.py
+│   │   ├── _providerrequestforwardingusecase.py
 │   │   ├── admin
 │   │   │   ├── __init__.py
 │   │   │   ├── _bootstrapadminusecase.py
@@ -674,6 +693,9 @@
 │   │   │   ├── _bootstrapmodelsusecase.py
 │   │   │   ├── _getmodelsusecase.py
 │   │   │   └── _getmodelusecase.py
+│   │   ├── ocr
+│   │   │   ├── __init__.py
+│   │   │   └── _createocrusecase.py
 │   │   ├── reranks
 │   │   │   ├── __init__.py
 │   │   │   └── _creatererankusecase.py
@@ -714,6 +736,7 @@
 │   │   ├── assets
 │   │   │   ├── icons
 │   │   │   │   ├── kubernetes.svg
+│   │   │   │   ├── langfuse.svg
 │   │   │   │   ├── postgres.svg
 │   │   │   │   ├── prometheus.svg
 │   │   │   │   ├── redis.svg
@@ -736,6 +759,7 @@
 │   │   │       │   ├── configuration_file.mdx
 │   │   │       │   ├── dependencies
 │   │   │       │   │   ├── index.mdx
+│   │   │       │   │   ├── langfuse.mdx
 │   │   │       │   │   ├── postgres.mdx
 │   │   │       │   │   ├── prometheus.mdx
 │   │   │       │   │   ├── redis.mdx
@@ -930,4 +954,4 @@
     ├── manage_docs_dns.py
     ├── startup_api.sh
     └── startup_worker.sh
-210 directories, 722 files
+215 directories, 741 files
