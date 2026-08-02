@@ -1,17 +1,13 @@
-## Changelog : betamap (30 derniers jours, au 25 juillet 2026)
+## Changelog : betamap (30 derniers jours, au 01 août 2026)
 
 ### Résumé
-Ce mois-ci, les mises à jour de Betamap se sont concentrées sur la mise à jour de la base de données des startups d'état.  Aucune nouvelle fonctionnalité ou modification visible pour les utilisateurs n'a été implémentée.
+Ce changelog fait état d'une série de mises à jour régulières des données des startups d'état et de leurs écosystèmes. Ces mises à jour permettent de maintenir la cartographie à jour avec les dernières informations disponibles.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle à signaler.
+- Mise à jour de la liste des startups d'état et de leurs informations.
 
 ### Évolutions techniques
-Aucune évolution technique à signaler.
+- Aucune évolution technique significative à signaler durant cette période.
 
 ### Autres changements
-- Mise à jour de la liste des startups d'état : [#1](https://github.com/betagouv/betamap/commit/1dc37a8)
-- Mise à jour de la liste des startups d'état : [#1](https://github.com/betagouv/betamap/commit/b0b5ec9)
-- Mise à jour de la liste des startups d'état : [#1](https://github.com/betagouv/betamap/commit/c5abf84)
-- Mise à jour de la liste des startups d'état : [#1](https://github.com/betagouv/betamap/commit/d3690e2)
-- Mise à jour de la liste des startups d'état : [#1](https://github.com/betagouv/betamap/commit/f952ed3)
+- Mise à jour régulière des données des startups via le script de mise à jour.
