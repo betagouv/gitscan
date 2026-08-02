@@ -1,28 +1,26 @@
-## Changelog : proconnect-identite (30 derniers jours, au 27 juillet 2026)
+## Changelog : proconnect-identite (30 derniers jours, au 31 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la sécurité, la modernisation de l'interface utilisateur pour l'authentification multi-facteurs (MFA) et l'amélioration de la robustesse des tests. Des corrections de bugs et des refactorings ont également été réalisés pour améliorer la qualité du code et l'expérience utilisateur.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la sécurité, la modernisation de l'interface utilisateur pour l'authentification multi-facteurs (MFA), et la maintenance technique du projet, notamment la suppression de fonctionnalités obsolètes et la mise à jour des dépendances. Des améliorations ont également été apportées à la gestion des données et aux tests.
 
 ### Évolutions fonctionnelles
-- **Authentification Multi-Facteurs (MFA):** Nouvelle interface utilisateur pour le choix des méthodes MFA [#2025](https://github.com/proconnect-gouv/proconnect-identite/pulls/2025).
-- **Vérification d'email:** Clarification du texte sur la page de vérification d'email [#2048](https://github.com/proconnect-gouv/proconnect-identite/pulls/2048) et correction d'une faute de frappe [#2045](https://github.com/proconnect-gouv/proconnect-identite/issues/2045).
-- **Annuaire:** Synchronisation de la fixture de l'annuaire avec l'API réelle [#2035](https://github.com/proconnect-gouv/proconnect-identite/pulls/2035).
-- **AMR (Authentication Method Reference):** Mise à jour de la définition AMR `mail` et remplacement des valeurs TOTP non standard [#2012](https://github.com/proconnect-gouv/proconnect-identite/pulls/2012).
+- **Authentification Multi-Facteurs (MFA):** Nouvelle interface utilisateur pour le choix du MFA, améliorant l'expérience utilisateur. [#2025](https://github.com/proconnect-gouv/proconnect-identite/pulls/2025)
+- **Email de vérification:** Clarification du libellé des emails de vérification pour une meilleure compréhension des utilisateurs. [#2056](https://github.com/proconnect-gouv/proconnect-identite/issues/2056) et [#2045](https://github.com/proconnect-gouv/proconnect-identite/issues/2045)
+- **Suppression du support des scopes `organizations`:** Le support des scopes `organizations` a été supprimé. [#2055](https://github.com/proconnect-gouv/proconnect-identite/pulls/2055)
+- **Suppression de l'ancienne adresse email:** Suppression de la prise en charge de l'ancienne adresse email moncomptepro. [#2061](https://github.com/proconnect-gouv/proconnect-identite/pulls/2061)
+- **Amélioration de l'algorithme de jointure commune:** Mise à jour de l'algorithme de jointure commune. [#2039](https://github.com/proconnect-gouv/proconnect-identite/pulls/2039)
 
 ### Évolutions techniques
-- **Sécurité:** Suppression de `unsafe-inline` de la Content Security Policy pour renforcer la sécurité [#2026](https://github.com/proconnect-gouv/proconnect-identite/pulls/2026).
-- **Tests:**
-    - Mock de l'API `api-lannuaire.service-public.fr` pour les tests end-to-end [#2029](https://github.com/proconnect-gouv/proconnect-identite/pulls/2029).
-    - Vérification quotidienne de la cohérence des données mockées avec l'API réelle.
-    - Correction d'une erreur dans la clé de correspondance pour la vérification de `given_name` [#2015](https://github.com/proconnect-gouv/proconnect-identite/issues/2015).
-- **Refactoring:** Suppression du widget de chat Crisp [#2012](https://github.com/proconnect-gouv/proconnect-identite/pulls/2012) et refactoring du code associé.
-- **Packages:** Publication standalone du package `@proconnect-gouv/proconnect.email` [#2017](https://github.com/proconnect-gouv/proconnect-identite/pulls/2017).
-- **Dépendances:** Mises à jour de plusieurs dépendances (nodemailer, ioredis, vite, axe-core, redis, sentry, actions/labeler, actions/setup-node, body-parser, morgan, systeminformation, @hono/node-server, hono, cypress-io/github-action).
+- **Sécurité:** Suppression de `unsafe-inline` de la Content Security Policy pour renforcer la sécurité. [#2026](https://github.com/proconnect-gouv/proconnect-identite/pulls/2026)
+- **Refactoring:** Refactorisation de la chaîne principale de garde (main guard). [#2059](https://github.com/proconnect-gouv/proconnect-identite/pulls/2059)
+- **Tests:** Mock de l'API `api-lannuaire.service-public.fr` dans les tests end-to-end pour une meilleure isolation et fiabilité. [#2029](https://github.com/proconnect-gouv/proconnect-identite/pulls/2029)
+- **Publication du package email:** Le package `@proconnect-gouv/proconnect.email` a été rendu publiable en tant que module autonome. [#2017](https://github.com/proconnect-gouv/proconnect-identite/pulls/2017)
+- **Suppression de Crisp:** Suppression de la chatbox Crisp. [#2014](https://github.com/proconnect-gouv/proconnect-identite/pulls/2014)
+- **Amélioration de la récursivité du `userSignInRequirementsGuard`:** Modification pour une gestion plus propre des exigences de connexion utilisateur. [#2057](https://github.com/proconnect-gouv/proconnect-identite/pulls/2057)
 
 ### Autres changements
-- Correction d'une copie anonymisée de la table `authenticators` [#2027](https://github.com/proconnect-gouv/proconnect-identite/pulls/2027).
-- Revert d'une mise à jour de Vite qui causait des problèmes [#2024](https://github.com/proconnect-gouv/proconnect-identite/issues/2024).
-- Suppression d'un commit accidentellement poussé sur `main` [#2026](https://github.com/proconnect-gouv/proconnect-identite/pulls/2026).
-- Amélioration de la lisibilité du code (prettify) [#2026](https://github.com/proconnect-gouv/proconnect-identite/pulls/2026).
-- Mise à jour des variables d'environnement par défaut pour les tests [#2011](https://github.com/proconnect-gouv/proconnect-identite/pulls/2011).
-- Restriction des méthodes d'authentification au niveau de l'endpoint token [#2012](https://github.com/proconnect-gouv/proconnect-identite/pulls/2012).
+- **Documentation:** Mise à jour de la définition AMR `mail`. [#2016](https://github.com/proconnect-gouv/proconnect-identite/pulls/2016)
+- **Fixtures:** Synchronisation des fixtures de l'annuaire 50041 avec l'API réelle. [#2035](https://github.com/proconnect-gouv/proconnect-identite/pulls/2035)
+- **Correction de données anonymisées:** Correction de la copie anonymisée de la table des authentificateurs. [#2027](https://github.com/proconnect-gouv/proconnect-identite/pulls/2027)
+- **Correction d'une erreur de syntaxe:** Correction d'une erreur de syntaxe sur la page de vérification de l'email. [#2048](https://github.com/proconnect-gouv/proconnect-identite/pulls/2048)
+- **Correction d'une typo:** Correction d'une faute de frappe dans le template d'email de vérification. [#2045](https://github.com/proconnect-gouv/proconnect-identite/issues/2045)
