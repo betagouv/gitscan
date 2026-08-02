@@ -1,27 +1,38 @@
-## Changelog : infra-apps (30 derniers jours, au 30 juillet 2026)
+## Changelog : infra-apps (30 derniers jours, au 01 août 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de l'infrastructure Iterion, avec des optimisations de performance, l'ajout de nouvelles fonctionnalités comme l'autoscaling et l'intégration de nouveaux services (SearXNG, Claude). Des corrections et améliorations ont également été apportées à Buildkit, Huginn et Token Bureau. Plusieurs applications ont été décommissionnées car leurs fonctionnalités sont désormais gérées par d'autres services.
+Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la plateforme Iterion, avec des optimisations de performance, l'ajout de nouvelles fonctionnalités comme l'authentification OAuth et l'intégration de nouveaux outils comme KEDA pour l'autoscaling. Des améliorations ont également été apportées à la sécurité et à la gestion des secrets, ainsi que des corrections de bugs et des mises à jour de l'infrastructure.
 
 ### Évolutions fonctionnelles
-- **Iterion:** Intégration de l'authentification OAuth pour ChatGPT, permettant une utilisation plus sécurisée et contrôlée. [#49](https://github.com/SocialGouv/infra-apps/issues/49)
+- **Iterion:** Ajout de l'authentification OAuth pour les SDK tiers en production. [#49](https://github.com/SocialGouv/infra-apps/issues/49)
+- **Iterion:** Intégration de l'accès à Claude Code via OAuth sur le runner, remplaçant une clé API obsolète.
+- **Token Bureau:** Autorisation pour l'intégration continue d'Egapro à écrire sur les projets de l'organisation V2.
+- **Iterion:** Possibilité de configurer le type de sandbox par défaut pour les runners.
 - **Iterion:** Ajout d'un backend de recherche web souverain basé sur SearXNG.
-- **Iterion:** Possibilité d'utiliser des sandboxes automatiques pour les exécutions, améliorant l'isolation et la sécurité.
-- **Token Bureau:** Autorisation de l'accès en écriture aux projets V2 pour le CI d'egapro.
-- **Buildkit Operator:** Amélioration de la gestion du cache S3 avec des politiques de cycle de vie pour optimiser le stockage.
+- **Iterion:** Amélioration de la gestion des erreurs OOMKilled pour le web-scrape.
+- **Huginn:** Correction du tri des événements RSS pour afficher les plus récents en premier.
 
 ### Évolutions techniques
-- **Iterion:** Mise en place d'un autoscaler basé sur KEDA pour ajuster dynamiquement le nombre de runners en fonction de la charge.
-- **Iterion:** Mise à jour du chart vers la version 0.50.0, incluant des corrections et des améliorations de performance.
-- **Buildkit Operator:** Mises à jour régulières vers les versions 0.13.0, 0.14.2, 0.15.0, 0.16.0, 0.17.0, 0.18.0, 0.19.0, 0.20.0 et 0.21.0, apportant des optimisations et des corrections.
-- **Huginn:** Décommissionnement du service, ses fonctionnalités étant désormais gérées par Iterion.
-- **Buildkit Service:** Décommissionnement du service, les builds étant désormais gérés par l'opérateur Buildkit.
-- **Kata:** Amélioration de la configuration pour une meilleure compatibilité avec Buildkit.
-- **Metabase:** Augmentation des ressources allouées pour résoudre les problèmes de performance liés aux journaux WAL.
-- **Secrets Policies:** Correction pour permettre la resynchronisation dans les namespaces adoptés par Rancher.
+- **Buildkit Operator:** Décommissionnement du service Buildkit, tout étant désormais géré par l'opérateur.
+- **Huginn:** Décommissionnement de Huginn, la veille étant désormais gérée par Iterion.
+- **Buildkit Operator:** Mises à jour multiples de l'opérateur Buildkit (v0.13.0, v0.14.2, v0.15.0, v0.16.0, v0.17.0, v0.18.0, v0.19.0, v0.20.0, v0.21.0) avec des améliorations de performance, de configuration et de gestion du cache S3.
+- **Iterion:** Mise à jour du chart Iterion (0.33.0, 0.34.0, 0.35.0, 0.37.2, 0.50.0) avec diverses corrections et améliorations.
+- **KEDA:** Intégration de l'opérateur KEDA pour l'autoscaling du runner Iterion en fonction de la profondeur de la queue.
+- **Metabase:** Rotation de la clé de signature statique pour l'intégration.
+- **Secrets Policies:** Correction pour permettre la resynchronisation sur les namespaces adoptés par Rancher.
+- **Kata:** Déploiement de Kata dans l'espace de noms `buildkit-system` et activation de virtiofsd xattr pour améliorer le hachage du contenu dans les VM fork.
+- **Iterion:** Amélioration de la gestion des erreurs de montage NFS sur le runner.
 
 ### Autres changements
-- Documentation mise à jour concernant l'absence de token bearer pour Buildkit Operator.
-- Nettoyage et simplification de la configuration de Kata.
-- Correction de problèmes liés à l'OOMKilled sur les workers Iterion.
-- Diverses corrections et améliorations de la configuration d'Iterion pour une meilleure stabilité et performance.
+- Documentation mise à jour concernant l'accès aux tokens et la configuration de l'opérateur Buildkit.
+- Suppression de la configuration MB_ENABLE_EMBEDDING pour Metabase.
+- Suppression du suivi des sous-charts empaquetés localement.
+- Nettoyage et refactoring du code.
+- Suppression de la configuration ITERION_RUNNER_CONCURRENCY.
+- Suppression de l'ancienne clé API OpenAI pour Iterion.
+- Suppression de la configuration ANTHROPIC_API_KEY.
+- Désactivation des fonctionnalités IA de Metabase.
+- Mise à jour de la version de Metabase (v0.63.2) sur tous les instances.
+- Correction pour servir le certificat renouvelé pour Metabase.
+- Ajustement des ressources CPU et stockage pour Metabase après une panne de WAL-full en production.
+- Suppression du runner NFS build-cache sur ovh-prod pour éviter les blocages.
