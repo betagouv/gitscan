@@ -1,39 +1,34 @@
-## Changelog : zacharie (30 derniers jours, au 28 juillet 2026)
+## Changelog : zacharie (30 derniers jours, au 31 juillet 2026)
 
 ### Résumé
-Ce mois-ci, l'application Zacharie a bénéficié d'améliorations significatives pour les utilisateurs SVI (Suivi Sanitaire des Gibiers), notamment un tableau de bord dédié et une simplification de l'acceptation des données. Des optimisations ont été apportées à la synchronisation des données et à la gestion des carcasses, améliorant la performance et la fiabilité de l'application. Plusieurs corrections de bugs ont également été implémentées pour améliorer l'expérience utilisateur globale.
+Ce mois-ci, les évolutions de Zacharie se concentrent sur l'amélioration de l'expérience utilisateur pour les collecteurs et les détenteurs de SVI, avec des optimisations de la synchronisation des données et l'ajout de fonctionnalités facilitant la gestion des carcasses et des transmissions. Des améliorations techniques ont également été apportées pour la robustesse et la performance de l'application.
 
 ### Évolutions fonctionnelles
-- Ajout d'un tableau de bord dédié aux SVI, offrant une vue d'ensemble des données pertinentes. [#514](https://github.com/betagouv/zacharie/issues/514)
-- Simplification de l'acceptation SVI en un seul clic. [#534](https://github.com/betagouv/zacharie/issues/534)
-- Possibilité de choisir une association de chasse lors de la création d'une fiche.
-- Notification de l'expéditeur lorsqu'un destinataire renvoie une fiche. [#508](https://github.com/betagouv/zacharie/issues/508)
-- Amélioration de l'interface utilisateur pour les filtres SVI en mode sidebar. [#510](https://github.com/betagouv/zacharie/issues/510)
-- Correction de la redirection vers la page de réinitialisation du mot de passe sur l'application iOS/Android. [#543](https://github.com/betagouv/zacharie/issues/543)
-- Correction d'un bug où un examinateur voyait toujours une fiche supprimée dans la liste.
-- Ajout d'une interface pour les laboratoires. [#435](https://github.com/betagouv/zacharie/issues/435)
-- Affichage du statut "Transmise" en vert pour les carcasses transmises en circuit court. [#505](https://github.com/betagouv/zacharie/issues/505)
+- Les carcasses refusées sont désormais visibles par les détenteurs suivants. [#550](https://github.com/betagouv/zacharie/issues/550)
+- Ajout d'une action de masse pour les SVI. [#535](https://github.com/betagouv/zacharie/issues/535)
+- Possibilité de choisir une association de chasse lors de la saisie des données.
+- Acceptation SVI en un clic pour les utilisateurs concernés. [#534](https://github.com/betagouv/zacharie/issues/534)
+- Correction d'un bug où un examinateur voyait toujours une fiche supprimée dans sa liste.
+- Correction de la redirection vers la page de réinitialisation du mot de passe sur iOS/Android. [#543](https://github.com/betagouv/zacharie/issues/543)
+- Amélioration de l'affichage des carcasses pour les collecteurs. [#528](https://github.com/betagouv/zacharie/issues/528)
+- Ajout d'un dashboard SVI pour le suivi des données. [#514](https://github.com/betagouv/zacharie/issues/514)
+- Ajout d'une barre latérale spécifique pour les collecteurs. [#526](https://github.com/betagouv/zacharie/issues/526)
+- Amélioration de l'intégration des carcasses ajoutées. [#516](https://github.com/betagouv/zacharie/issues/516)
+- Suppression des champs dépréciés de la FEI. [#521](https://github.com/betagouv/zacharie/issues/521)
+- La transmission des données est désormais plus cohérente. [#519](https://github.com/betagouv/zacharie/issues/519)
+- Compression des données pour accélérer la transmission. [#485](https://github.com/betagouv/zacharie/issues/485)
+- Masquage des statistiques pour les utilisateurs SVI.
 
 ### Évolutions techniques
-- Ajout de crons pour des vérifications de santé (health check). [#540](https://github.com/betagouv/zacharie/issues/540)
-- Capture des erreurs "request aborted" pour une meilleure analyse avec Sentry. [#541](https://github.com/betagouv/zacharie/issues/541)
-- Optimisation de l'endpoint `/sync` pour une meilleure performance. [#529](https://github.com/betagouv/zacharie/issues/529)
-- Optimisation du backend pour la synchronisation d'un grand nombre de carcasses. [#512](https://github.com/betagouv/zacharie/issues/512)
-- Compression des données pour accélérer la transmission. [#485](https://github.com/betagouv/zacharie/issues/485)
-- Ajout d'un dossier pour les scripts internes.
-- Masquage des outils de débogage en environnement de staging.
+- Optimisation de l'endpoint `/sync` pour améliorer les performances lors de la synchronisation de nombreuses carcasses. [#529](https://github.com/betagouv/zacharie/issues/529)
+- Gestion des erreurs "request aborted" pour éviter les erreurs Sentry. [#541](https://github.com/betagouv/zacharie/issues/541)
+- Ajout de crons pour effectuer des vérifications de l'état de l'application (health check). [#540](https://github.com/betagouv/zacharie/issues/540)
+- Amélioration de la gestion de la suppression logique des entités. [#525](https://github.com/betagouv/zacharie/issues/525)
+- Correction de tests et ajout de nouveaux tests. [#527](https://github.com/betagouv/zacharie/issues/527)
 
 ### Autres changements
-- Amélioration du wording sur différents écrans (bannières, heures FEI, etc.). [#524](https://github.com/betagouv/zacharie/issues/524), [#530](https://github.com/betagouv/zacharie/issues/530)
-- Suppression des champs dépréciés de la FEI. [#521](https://github.com/betagouv/zacharie/issues/521)
-- Amélioration de la gestion de la transmission des données pour assurer la cohérence. [#519](https://github.com/betagouv/zacharie/issues/519)
-- Correction de la gestion des partenaires et suppression d'informations techniques inutiles. [#517](https://github.com/betagouv/zacharie/issues/517)
-- Amélioration du message d'accueil pour les premiers détenteurs non activés. [#518](https://github.com/betagouv/zacharie/issues/518)
-- Ajout de tracking Matomo pour les événements. [#503](https://github.com/betagouv/zacharie/issues/503)
-- Ajout de tracking sur la page d'atterrissage. [#513](https://github.com/betagouv/zacharie/issues/513)
-- Optimisation de l'espace pour afficher le certificat sur une seule page si possible. [#441](https://github.com/betagouv/zacharie/issues/441)
-- Masquage des statistiques pour les utilisateurs SVI.
-- Correction de la création de fiches et limitation du nombre de dispatchs. [#515](https://github.com/betagouv/zacharie/issues/515)
-- Correction de l'affichage des carcasses pour les collecteurs. [#528](https://github.com/betagouv/zacharie/issues/528)
-- Correction de la pagination sur les fiches collecteurs.
-- Amélioration de l'UX générale. [#531](https://github.com/betagouv/zacharie/issues/531)
+- Mise à jour de la configuration de Claude.
+- Ajout d'un dossier pour les scripts internes.
+- Suppression des outils de débogage en environnement de staging.
+- Correction de quelques problèmes de wording (libellés). [#530](https://github.com/betagouv/zacharie/issues/530) et [#524](https://github.com/betagouv/zacharie/issues/524)
+- Amélioration de l'UX sur certaines parties de l'application. [#531](https://github.com/betagouv/zacharie/issues/531)
