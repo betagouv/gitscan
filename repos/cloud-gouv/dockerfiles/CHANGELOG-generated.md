@@ -1,10 +1,13 @@
-## Changelog : dockerfiles (30 derniers jours, au 25 juin 2026)
+## Changelog : dockerfiles (30 derniers jours, au 22 juillet 2026)
 
 ### Résumé
-Ce dépôt a été mis à jour pour améliorer la gestion des versions des outils inclus, notamment `clusterctl`. Ces mises à jour permettent de bénéficier des dernières fonctionnalités et corrections de ces outils, tout en assurant la compatibilité et la stabilité des images Docker fournies.
+Ce mois-ci, les mises à jour se concentrent sur l'amélioration de la sécurité des images Docker, notamment pour les jobs GitLab, en intégrant l'outil `debsecan` pour la détection de vulnérabilités dans les paquets Debian.
 
 ### Évolutions fonctionnelles
-- Mise à jour de `clusterctl` de la version 1.8.10 à la version 1.13.1 [#35](https://github.com/cloud-gouv/dockerfiles/pull/35).
+- Ajout de l'outil `debsecan` aux jobs GitLab pour la détection de vulnérabilités des paquets Debian. [#38](https://github.com/cloud-gouv/dockerfiles/issues/38)
 
 ### Évolutions techniques
-- Correction des sommes SHA des actions utilisées dans les Dockerfiles [#36](https://github.com/cloud-gouv/dockerfiles/pull/36). Ceci assure l'intégrité et la reproductibilité des builds.
+- Intégration de `debsecan` dans le processus de construction des images Docker pour les jobs GitLab.
+
+### Autres changements
+- Aucun changement significatif à signaler.
