@@ -126,10 +126,10 @@
 │   │   │   ├── students_helper.rb
 │   │   │   └── users_helper.rb
 │   │   ├── application_helper.rb
+│   │   ├── attributive_decisions_helper.rb
 │   │   ├── classes_helper.rb
 │   │   ├── dsfr_form_builder.rb
 │   │   ├── dsfr_helper.rb
-│   │   ├── home_helper.rb
 │   │   ├── insee_code_helper.rb
 │   │   ├── menu_helper.rb
 │   │   ├── payment_requests_helper.rb
@@ -159,6 +159,7 @@
 │   │   │   ├── document_generation.rb
 │   │   │   └── fregata_proof.rb
 │   │   ├── consider_payment_requests_job.rb
+│   │   ├── fix_admin_number_job.rb
 │   │   ├── generate
 │   │   │   ├── abrogation_decision_job.rb
 │   │   │   ├── attributive_decision_job.rb
@@ -291,11 +292,10 @@
 │   │   │   ├── filename.rb
 │   │   │   ├── mappers
 │   │   │   │   ├── adresse
+│   │   │   │   │   ├── correction_etranger_mapper.rb
 │   │   │   │   │   ├── correction_france_mapper.rb
 │   │   │   │   │   ├── etranger_mapper.rb
-│   │   │   │   │   ├── france_mapper.rb
-│   │   │   │   │   ├── indu_etranger_mapper.rb
-│   │   │   │   │   └── indu_france_mapper.rb
+│   │   │   │   │   └── france_mapper.rb
 │   │   │   │   ├── coord_paie_mapper.rb
 │   │   │   │   ├── dossier_mapper.rb
 │   │   │   │   ├── element_paiement_mapper.rb
@@ -411,9 +411,12 @@
 │       │       ├── _search-bar.html.haml
 │       │       ├── index.html.haml
 │       │       └── show.html.haml
+│       ├── attributive_decisions
+│       │   ├── _form.haml
+│       │   ├── _home_panel.html.haml
+│       │   └── _reissue_form.html.haml
 │       ├── classes
 │       │   ├── _alert_apprentices.html.haml
-│       │   ├── _attributive_decisions_panel.html.haml
 │       │   ├── _pfmps_payments_table.html.haml
 │       │   ├── _students_removed_table.html.haml
 │       │   ├── _students_table.html.haml
@@ -444,8 +447,6 @@
 │       │   └── unlocks
 │       │       └── new.html.erb
 │       ├── home
-│       │   ├── _attributive_decision_form.html.haml
-│       │   ├── _attributive_decision_reissue_form.html.haml
 │       │   ├── _home_timeline.html.haml
 │       │   ├── accessibility.html
 │       │   ├── faq.html.haml
@@ -498,6 +499,7 @@
 │       ├── schoolings
 │       │   ├── _student_informations.html.haml
 │       │   ├── confirm_abrogation.html.haml
+│       │   ├── confirm_attributive_decision.html.haml
 │       │   ├── confirm_cancellation_decision.html.haml
 │       │   ├── confirm_da_extension.haml
 │       │   ├── confirm_removal.html.haml
@@ -797,9 +799,7 @@
 │   │   │   │   ├── correction_etranger.rb
 │   │   │   │   ├── correction_france.rb
 │   │   │   │   ├── etranger.rb
-│   │   │   │   ├── france.rb
-│   │   │   │   ├── indu_etranger.rb
-│   │   │   │   └── indu_france.rb
+│   │   │   │   └── france.rb
 │   │   │   ├── coord_paie.rb
 │   │   │   ├── correction_adresse_dossier.rb
 │   │   │   ├── correction_adresse_enregistrement.rb
@@ -958,6 +958,7 @@
 │   ├── jobs
 │   │   ├── check_user_role_job_spec.rb
 │   │   ├── consider_payment_requests_job_spec.rb
+│   │   ├── fix_admin_number_job_spec.rb
 │   │   ├── generate
 │   │   │   ├── abrogation_decision_job_spec.rb
 │   │   │   ├── attributive_decision_job_spec.rb
@@ -988,9 +989,7 @@
 │   │   │   │   ├── adresse
 │   │   │   │   │   ├── correction_france_spec.rb
 │   │   │   │   │   ├── etranger_spec.rb
-│   │   │   │   │   ├── france_spec.rb
-│   │   │   │   │   ├── indu_etranger_spec.rb
-│   │   │   │   │   └── indu_france_spec.rb
+│   │   │   │   │   └── france_spec.rb
 │   │   │   │   ├── coord_paie_spec.rb
 │   │   │   │   ├── correction_adresse_fichier_spec.rb
 │   │   │   │   ├── correction_adresse_prestadoss_spec.rb
@@ -1174,4 +1173,4 @@
     ├── .keep
     └── javascript
         └── .keep
-198 directories, 978 files
+199 directories, 976 files

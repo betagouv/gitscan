@@ -1,28 +1,24 @@
-## Changelog : aplypro (30 derniers jours, au 10 juillet 2026)
+## Changelog : aplypro (30 derniers jours, au 31 juillet 2026)
 
 ### Résumé
-Cette version apporte des améliorations à la gestion des données FREGATA, notamment la correction de conflits et l'ajout d'attributs manquants. Des améliorations ont également été apportées à la recherche, aux rapports de paiement et à la gestion des dates de scolarité. Enfin, des tests unitaires ont été ajoutés pour renforcer la qualité du code.
+Cette mise à jour apporte des corrections et améliorations concernant la génération et la gestion des demandes d'autorisation (DA), notamment pour les stages individuels et les paiements. Des ajustements ont également été effectués pour améliorer la gestion des données issues de FREGATA et éviter des erreurs de traitement.
 
 ### Évolutions fonctionnelles
-- Correction d'un conflit dans le mapper FREGATA entre le code 'division' et 'statutApprenant' [#1998](https://github.com/betagouv/aplypro/issues/1998) et [#e363042](https://github.com/betagouv/aplypro/commit/e363042).
-- Ajout d'attributs manquants dans le mapper des scolarités FREGATA [#1997](https://github.com/betagouv/aplypro/issues/1997) et [#4685fa6](https://github.com/betagouv/aplypro/commit/4685fa6).
-- Ajout d'une ventilation par BOP (Base d'Orientation Pédagogique) aux rapports de données [#1992](https://github.com/betagouv/aplypro/issues/1992).
-- Modification du message affiché pour les demandes de paiement envoyées [#1994](https://github.com/betagouv/aplypro/issues/1994) et [#3c1c42c](https://github.com/betagouv/aplypro/commit/3c1c42c).
-- Correction des en-têtes des résultats de recherche [#1988](https://github.com/betagouv/aplypro/issues/1988).
-- Suppression du blocage de l'envoi des paiements négatifs [#1985](https://github.com/betagouv/aplypro/issues/1985).
-- Blocage de la création de scolarités débutant après la date du jour [#1966](https://github.com/betagouv/aplypro/issues/1966).
-- Gestion d'une date de début de scolarité absente dans la méthode `within_schooling_dates?` [#1986](https://github.com/betagouv/aplypro/issues/1986).
+- Correction du bouton de génération des demandes d'autorisation (DA) individuelles. [#2000](https://github.com/betagouv/aplypro/issues/2000)
+- Demande de confirmation du directeur lors de la génération d'une DA individuelle.
+- Correction de la gestion des numéros ADM pour les paiements rejetés, avec génération proactive de nouveaux numéros. [#2002](https://github.com/betagouv/aplypro/issues/2002)
+- Blocage des paiements sortants pour les dossiers MASA afin d'éviter des problèmes.
+- Prévention de l'envoi d'adresses pour les non-recouvrements. [#1999](https://github.com/betagouv/aplypro/issues/1999)
+- Correction de l'injection d'UAI. [#1997](https://github.com/betagouv/aplypro/issues/1997)
 
 ### Évolutions techniques
-- Mise à jour de la syntaxe du fichier `docker-compose` [#d4cf3a6](https://github.com/betagouv/aplypro/commit/d4cf3a6).
-- Ajout de tests unitaires [#d00ea25](https://github.com/betagouv/aplypro/commit/d00ea25), [#2ae887e](https://github.com/betagouv/aplypro/commit/2ae887e), [#01358a8](https://github.com/betagouv/aplypro/commit/01358a8).
-- Refactoring de la structure des pages HTML [#4c6997d](https://github.com/betagouv/aplypro/commit/4c6997d).
-- Suppression de la méthode `check_negative_rectification!` [#1995](https://github.com/betagouv/aplypro/issues/1995).
-- Correction d'une injection UAI [#1f4efb0](https://github.com/betagouv/aplypro/commit/1f4efb0).
+- Refactorisation de l'organisation des vues liées aux décisions d'attribution, regroupées dans un sous-dossier.
+- Gestion des conflits dans le mapper FREGATA entre les codes 'division' et 'statutApprenant'. [#1998](https://github.com/betagouv/aplypro/issues/1998)
+- Ajout d'une méthode d'instance pour inspecter les données XML envoyées pour une demande de paiement spécifique.
+- Ajout de tests unitaires pour améliorer la couverture et la robustesse du code.
+- Ajout des attributs manquants dans le mapper des scolarités FREGATA.
 
 ### Autres changements
-- Ajout de nouvelles données au seeder [#e5e65e5](https://github.com/betagouv/aplypro/commit/e5e65e5).
-- Mise à jour du seeder des rapports [#29ebd00](https://github.com/betagouv/aplypro/commit/29ebd00).
-- Bump de version à 2.10.4 [#1987](https://github.com/betagouv/aplypro/issues/1987) et [#3d15375](https://github.com/betagouv/aplypro/commit/3d15375).
-- Bump de version [#fd58364](https://github.com/betagouv/aplypro/commit/fd58364) et [#08bed71](https://github.com/betagouv/aplypro/commit/08bed71).
-- Ajout d'une méthode d'inspection des données XML envoyées [#fc232cd](https://github.com/betagouv/aplypro/commit/fc232cd).
+- Suppression des anciennes entités "indus" remplacées par des corrections.
+- Mise à jour de la version de l'application.
+- Corrections de style avec Rubocop.
