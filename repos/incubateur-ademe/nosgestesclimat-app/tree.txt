@@ -1510,26 +1510,14 @@
 │       │   │   │   ├── FootprintDetail.tsx
 │       │   │   │   ├── FootprintsLinks.tsx
 │       │   │   │   ├── GroupThankYouBlock.tsx
-│       │   │   │   ├── LegacyActionPage.tsx
 │       │   │   │   ├── SaveResultsBlock.tsx
 │       │   │   │   ├── SaveResultsForm.tsx
 │       │   │   │   ├── TendencyIndicator.tsx
 │       │   │   │   ├── actions
-│       │   │   │   │   ├── ActionAutoSave.tsx
 │       │   │   │   │   ├── ActionDetail.tsx
-│       │   │   │   │   ├── ActionsContent.tsx
-│       │   │   │   │   ├── ActionsTutorial.tsx
-│       │   │   │   │   ├── MTaTerreBanner.tsx
 │       │   │   │   │   └── actionsContent
-│       │   │   │   │       ├── Actions.tsx
-│       │   │   │   │       ├── ActionsChosenIndicator.tsx
-│       │   │   │   │       ├── OptionBar.tsx
 │       │   │   │   │       └── actions
-│       │   │   │   │           ├── ActionCard.tsx
-│       │   │   │   │           ├── ActionForm.tsx
-│       │   │   │   │           ├── ActionList.tsx
-│       │   │   │   │           ├── ActionValue.tsx
-│       │   │   │   │           └── AllerPlusLoin.tsx
+│       │   │   │   │           └── ActionForm.tsx
 │       │   │   │   ├── carbonFootprint
 │       │   │   │   │   └── CarbonFootprintResults.tsx
 │       │   │   │   ├── categoriesAccordion
@@ -1853,7 +1841,6 @@
 │       │   │   │   ├── filterIrrelevantActions.ts
 │       │   │   │   ├── filterRelevantMissingVariables.ts
 │       │   │   │   ├── getActions.ts
-│       │   │   │   ├── getCarbonFootprint.ts
 │       │   │   │   └── getIsActionDisabled.ts
 │       │   │   ├── blog
 │       │   │   │   ├── getDynamicPageTitleWithPagination.ts
@@ -2125,6 +2112,7 @@
 │       │   │   │   ├── ui-en.yaml
 │       │   │   │   └── ui-fr.yaml
 │       │   │   └── units.yaml
+│       │   ├── logger.ts
 │       │   ├── middlewares
 │       │   │   ├── excludedIPs
 │       │   │   │   ├── googlebot.json
@@ -2217,7 +2205,6 @@
 │       │   │   │   ├── get-personalized-actions-catalogue.ts
 │       │   │   │   ├── get-public-actions-catalogue.ts
 │       │   │   │   ├── get-themes.ts
-│       │   │   │   ├── has-action-v2-rollout.ts
 │       │   │   │   └── themes.dto.ts
 │       │   │   ├── auth
 │       │   │   │   ├── create-app-session.ts
@@ -2525,12 +2512,22 @@
 │       │   │   │   ├── factories
 │       │   │   │   │   ├── engine.factory.ts
 │       │   │   │   │   └── simulation.factory.ts
+│       │   │   │   ├── model-support
+│       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   ├── is-model-supported.spec.ts
+│       │   │   │   │   │   └── resolve-version-kind.spec.ts
+│       │   │   │   │   ├── hot-key.schema.ts
+│       │   │   │   │   ├── is-model-supported.ts
+│       │   │   │   │   ├── model-versions.ts
+│       │   │   │   │   └── resolve-version-kind.ts
 │       │   │   │   ├── repositories
 │       │   │   │   │   └── simulation-computations.repository.ts
 │       │   │   │   ├── services
 │       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   ├── engine-registry.service.spec.ts
 │       │   │   │   │   │   ├── process-next-pending-computation.service.spec.ts
 │       │   │   │   │   │   └── program-simulation-computation.service.spec.ts
+│       │   │   │   │   ├── engine-registry.service.ts
 │       │   │   │   │   ├── process-next-pending-computation.service.ts
 │       │   │   │   │   └── program-simulation-computation.ts
 │       │   │   │   └── types
@@ -2566,6 +2563,7 @@
 │       │   ├── index.ts
 │       │   ├── lib
 │       │   │   ├── errors.ts
+│       │   │   ├── memory.ts
 │       │   │   └── result.ts
 │       │   ├── prisma
 │       │   │   ├── client.ts
@@ -2579,4 +2577,4 @@
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 └── tsconfig.json
-661 directories, 1965 files
+663 directories, 1961 files
