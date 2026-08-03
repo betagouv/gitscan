@@ -1,17 +1,18 @@
-## Changelog : prestagri (30 derniers jours, au 24 juillet 2026)
+## Changelog : prestagri (30 derniers jours, au 31 juillet 2026)
 
 ### Résumé
-Cette nouvelle version de Prest'Agri se concentre sur l'amélioration du calcul et de l'affichage des aides sociales, notamment pour l'aide à la scolarité. Des contrôles de sécurité ont été ajoutés et l'interface a été enrichie pour une meilleure compréhension des calculs.
+Les dernières évolutions de Prest'Agri se concentrent sur l'ajout de nouvelles fonctionnalités de calcul et de pilotage pour les aides sociales, notamment pour l'aide à la scolarité. Des améliorations de sécurité ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Ajout d'une calculette pour l'aide à la scolarité [#1234](https://github.com/betagouv/prestagri/issues/1234)
-- Prise en compte des couples mariés dans les calculs.
-- Affichage amélioré des explications concernant les calculs des aides.
-- Prise en compte de la valeur du point de scolarité et combinaison avec le bonus QF.
-- Mise en place d'un pilotage simple pour l'application.
+- Ajout d'une calculatrice pour l'aide à la scolarité [#1234](https://github.com/betagouv/prestagri/issues/1234) (v0.18).
+- Prise en compte des couples mariés dans les calculs [#1234](https://github.com/betagouv/prestagri/issues/1234) (v0.17).
+- Amélioration des explications et de la clarté des informations affichées (v0.21).
+- Ajout d'un pilotage simplifié des instructions (v0.23).
+- Création d'annotations pour faciliter la compréhension et l'utilisation (v0.24).
+- Gestion du calcul des points de scolarité et combinaison avec le bonus QF (v0.20).
 
 ### Évolutions techniques
-- Ajout de contrôles de sécurité pour renforcer la protection de l'application.
+- Ajout d'un contrôle de sécurité pour renforcer la protection des données (v0.22).
 
 ### Autres changements
-- Aucun changement significatif à signaler.
+Aucun autre changement significatif à signaler.
