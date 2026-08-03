@@ -258,6 +258,8 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260717145506_deversion_structure_typologie_and_drop_campaign
 │   │   │   └── migration.sql
+│   │   ├── 20260729121553_flatten_adresse_typologie
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   ├── schema
 │   │   ├── activite.prisma
@@ -287,7 +289,6 @@
 │   ├── seeders
 │   │   ├── acte-administratif.seed.ts
 │   │   ├── activite.seed.ts
-│   │   ├── adresse-typologie.seed.ts
 │   │   ├── adresse.seed.ts
 │   │   ├── antenne.seed.ts
 │   │   ├── budget.seed.ts
@@ -362,7 +363,9 @@
 │   │   ├── 20260717-backfill-typologie-structure-id.ts
 │   │   ├── 20260718-capture-typologie-year-origin.ts
 │   │   ├── 20260718-shift-typologie-years-to-december.ts
-│   │   └── 20260719-backfill-structure-version-places-autorisees.ts
+│   │   ├── 20260719-backfill-structure-version-places-autorisees.ts
+│   │   ├── 20260729-backfill-adresse-scalaires.ts
+│   │   └── 20260731-nullify-socle-effective-date.ts
 │   ├── postdeploy.sh
 │   ├── recurring-scripts
 │   │   ├── clean-old-user-actions.ts
@@ -517,7 +520,9 @@
 │   │   │   │   │   │   │   ├── MoyenneIndicator.tsx
 │   │   │   │   │   │   │   ├── RegionDetailsMap.tsx
 │   │   │   │   │   │   │   ├── YearSelector.tsx
-│   │   │   │   │   │   │   └── ZoneIndicator.tsx
+│   │   │   │   │   │   │   ├── ZoneIndicator.tsx
+│   │   │   │   │   │   │   ├── cartographie.util.ts
+│   │   │   │   │   │   │   └── useCartographieRichZoneData.ts
 │   │   │   │   │   │   ├── controle-qualite
 │   │   │   │   │   │   │   ├── ControleQualiteBlock.tsx
 │   │   │   │   │   │   │   ├── ControleQualiteStatsTable.tsx
@@ -543,8 +548,13 @@
 │   │   │   │   │   │       ├── TypesPlacesBlock.tsx
 │   │   │   │   │   │       └── TypesPlacesStatsTable.tsx
 │   │   │   │   │   ├── _context
+│   │   │   │   │   │   ├── StatistiquesCartographieClientContext.tsx
+│   │   │   │   │   │   ├── StatistiquesCartographieContext.tsx
 │   │   │   │   │   │   ├── StatistiquesClientContext.tsx
 │   │   │   │   │   │   └── StatistiquesContext.tsx
+│   │   │   │   │   ├── cartographie
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   ├── error.tsx
 │   │   │   │   │   └── page.tsx
 │   │   │   │   └── structures
 │   │   │   │       ├── [id]
@@ -1438,6 +1448,10 @@
 │   │   ├── (with-menu)
 │   │   │   ├── _components
 │   │   │   │   └── NotificationsCarousel.test.tsx
+│   │   │   ├── statistiques
+│   │   │   │   └── _components
+│   │   │   │       └── cartographie
+│   │   │   │           └── cartographie.util.test.ts
 │   │   │   └── structures
 │   │   │       └── [id]
 │   │   │           └── _components
@@ -1596,7 +1610,8 @@
 │   │       │       └── documents
 │   │       │           └── documentsStructures.test.ts
 │   │       └── header-filters
-│   │           └── FilterDropdown.test.tsx
+│   │           ├── FilterDropdown.test.tsx
+│   │           └── FilterTypeStructure.test.tsx
 │   ├── components
 │   │   ├── ErrorToast.test.tsx
 │   │   ├── Menu.test.tsx
@@ -1786,7 +1801,6 @@
 │   ├── test-utils
 │   │   ├── factories
 │   │   │   ├── actualisation-form.factory.ts
-│   │   │   ├── adresse-typologie.factory.ts
 │   │   │   ├── adresse.factory.ts
 │   │   │   ├── budget.factory.ts
 │   │   │   ├── contact.factory.ts
@@ -1836,4 +1850,4 @@
 ├── tsconfig.json
 ├── vitest.config.mts
 └── yarn.lock
-473 directories, 1365 files
+478 directories, 1374 files
