@@ -1,14 +1,16 @@
 {
   "url": "https://github.com/datagouv/hydra",
   "name": "hydra",
-  "description": "`udata-hydra` est un crawler de métadonnées asynchrone pour data.gouv.fr. Il analyse les URL, stocke les catalogues et les métadonnées dans une base de données PostgreSQL, et convertit les ressources en différents formats.",
+  "description": "`udata-hydra` est un crawler de métadonnées asynchrone pour data.gouv.fr. Il analyse les ressources distantes, détecte les changements, convertit les fichiers et envoie les informations à une instance udata.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
     "Données & Schémas",
     "Sécurité & Conformité",
-    "Gestion des utilisateurs & Permissions"
+    "Gestion des utilisateurs & Permissions",
+    "Notifications & Alertes",
+    "Visualisation de données & Cartographie"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -20,7 +22,7 @@
     "rq",
     "boto3",
     "csv-detective",
-    "asyncpg",
+    "python-magic",
     "owslib",
     "pyarrow"
   ],
@@ -29,18 +31,19 @@
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
     "Docker & Conteneurs",
-    "RQ & Queue asynchrone"
+    "RQ",
+    "Microservices & Architecture"
   ],
   "auth": {
     "methods": [
       "api-key"
     ]
   },
-  "tests": "Pytest, avec une base de données de test Docker Compose",
+  "tests": "Pytest is used for testing, with coverage reports. Docker Compose is used to launch a test database.",
   "workflows": [
-    "CI/CD avec CircleCI et GitHub Actions"
+    "CI/CD with CircleCI and GitHub Actions"
   ],
-  "lastActivity": "2026-07-08T00:00:00+00:00",
+  "lastActivity": "2026-07-08T00:00:00Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -52,9 +55,10 @@
   },
   "tags": [
     "Données & Open Data",
+    "Écosystème beta.gouv / État",
     "Python",
     "Bases de données SQL",
     "Sécurité & Auth",
-    "API & Intégrations"
+    "Intelligence Artificielle & NLP"
   ]
 }
