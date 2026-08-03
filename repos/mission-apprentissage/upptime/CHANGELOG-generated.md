@@ -1,15 +1,15 @@
-## Changelog : upptime (30 derniers jours, au 01 septembre 2026)
+## Changelog : upptime (30 derniers jours, au 03 septembre 2026)
 
 ### Résumé
-Ce changelog résume les activités récentes du projet upptime sur les 30 derniers jours. Il s'agit principalement de mises à jour automatiques de l'état des services surveillés par le bot Upptime, signalant les succès et les échecs de vérification de la disponibilité. Des mises à jour de version du bot ont également eu lieu.
+Ce changelog résume les activités récentes sur le projet upptime. La majorité des changements concernent les mises à jour régulières des statuts de surveillance des différents services, assurant un suivi constant de leur disponibilité. Des mises à jour de la librairie `@upptime` et des graphiques ont également été effectuées.
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle majeure n'a été apportée au projet durant cette période. Les changements concernent principalement la surveillance et le reporting de l'état des services.
+Aucune évolution fonctionnelle majeure n'a été apportée durant cette période. Les changements se concentrent sur la surveillance continue et la mise à jour des statuts des services.
 
 ### Évolutions techniques
-- Mise à jour de la version d'Upptime à v1.43.12, v1.43.11, v1.43.10 et v1.43.9.
-- Mises à jour régulières des graphiques de statut.
+- Mise à jour de la librairie `@upptime` vers la version 1.43.13, 1.43.12, 1.43.11, 1.43.10 et 1.43.9.
+- Mise à jour régulière des graphiques de surveillance.
 
 ### Autres changements
-- Mises à jour automatiques du fichier README et du résumé de statut par le bot Upptime.
-- Nombreuses vérifications de l'état des services (API Apprentissage, Percona, SENTRY, Monitoring, BAL production, API Referentiel, Tableau de bord, La bonne alternance, Laboratoire La bonne alternance) avec des rapports de succès et quelques incidents temporaires (SENTRY).
+- Mise à jour du résumé dans le fichier README.
+- Mises à jour régulières du fichier `SUMMARY.md` pour refléter l'état des services surveillés.
