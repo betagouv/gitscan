@@ -814,6 +814,7 @@
 │   │       │   ├── authorization_header.css
 │   │       │   ├── authorization_request_form.css
 │   │       │   ├── authorization_row.css
+│   │       │   ├── automated_email.css
 │   │       │   ├── basic_card.css
 │   │       │   ├── blockquote.css
 │   │       │   ├── btn-authorization-header-actions.css
@@ -839,7 +840,6 @@
 │   │       │   ├── scopes_documentation_accordion.css
 │   │       │   ├── scroll_to_top.css
 │   │       │   ├── search_results.css
-│   │       │   ├── side_panel.css
 │   │       │   ├── simple_action_page_wrapper.css
 │   │       │   ├── sticky_bar.css
 │   │       │   ├── summary_block.css
@@ -882,12 +882,10 @@
 │   │   │   ├── config_block_component.rb
 │   │   │   ├── copy_button_component.html.erb
 │   │   │   ├── copy_button_component.rb
-│   │   │   ├── edit_definition_block_component.html.erb
-│   │   │   ├── edit_definition_block_component.rb
+│   │   │   ├── definition_block_component.html.erb
+│   │   │   ├── definition_block_component.rb
 │   │   │   ├── form_buttons_component.html.erb
-│   │   │   ├── form_buttons_component.rb
-│   │   │   ├── under_development_alert_component.html.erb
-│   │   │   └── under_development_alert_component.rb
+│   │   │   └── form_buttons_component.rb
 │   │   ├── authorization_header_component.html.erb
 │   │   ├── authorization_header_component.rb
 │   │   ├── dashboard
@@ -928,6 +926,8 @@
 │   │   │   ├── duration_card_component.rb
 │   │   │   ├── instruction
 │   │   │   │   ├── authorization_definition
+│   │   │   │   │   ├── automated_email_component.html.erb
+│   │   │   │   │   ├── automated_email_component.rb
 │   │   │   │   │   ├── card_component.html.erb
 │   │   │   │   │   ├── card_component.rb
 │   │   │   │   │   ├── config_block_component.rb
@@ -954,8 +954,6 @@
 │   │   │   │   ├── wide_header.html.erb
 │   │   │   │   └── wide_header.rb
 │   │   │   ├── instructor_banner_notice_component.rb
-│   │   │   ├── side_panel_component.html.erb
-│   │   │   ├── side_panel_component.rb
 │   │   │   ├── stat_card_component.html.erb
 │   │   │   ├── stat_card_component.rb
 │   │   │   └── update_in_progress_notice_component.rb
@@ -967,6 +965,9 @@
 │   │       │   ├── legal_framework_component.html.erb
 │   │       │   └── legal_framework_component.rb
 │   │       ├── instruction
+│   │       │   ├── authorization_definition
+│   │       │   │   ├── automated_emails_component.html.erb
+│   │       │   │   └── automated_emails_component.rb
 │   │       │   └── user_rights
 │   │       │       ├── table_component.html.erb
 │   │       │       └── table_component.rb
@@ -1054,6 +1055,7 @@
 │   │   │   ├── abstract_authorization_requests_controller.rb
 │   │   │   ├── approve_authorization_requests_controller.rb
 │   │   │   ├── archive_authorization_requests_controller.rb
+│   │   │   ├── authorization_definition_blocks_controller.rb
 │   │   │   ├── authorization_definition_emails_controller.rb
 │   │   │   ├── authorization_definitions_controller.rb
 │   │   │   ├── authorization_request_events_controller.rb
@@ -1323,7 +1325,6 @@
 │   │   │   ├── search_list_controller.js
 │   │   │   ├── search_status_controller.js
 │   │   │   ├── show_and_hide_controller.js
-│   │   │   ├── side_panel_controller.js
 │   │   │   ├── stats_controller.js
 │   │   │   ├── sticky_bar_controller.js
 │   │   │   ├── toggle_element_display_based_on_checkbox_controller.js
@@ -1372,6 +1373,7 @@
 │   │   ├── instructor_draft_request_mailer.rb
 │   │   ├── link_in_emails_interceptor.rb
 │   │   ├── message_mailer.rb
+│   │   ├── produits_dinum_mailer.rb
 │   │   └── webhook_mailer.rb
 │   ├── migration
 │   │   ├── README.md
@@ -1429,6 +1431,7 @@
 │   │   ├── application_record.rb
 │   │   ├── authorization.rb
 │   │   ├── authorization_definition
+│   │   │   ├── automated_emails.rb
 │   │   │   ├── scope.rb
 │   │   │   └── stage.rb
 │   │   ├── authorization_definition.rb
@@ -1443,6 +1446,7 @@
 │   │   │   ├── le_taxi.rb
 │   │   │   ├── pro_connect_identity_provider.rb
 │   │   │   ├── pro_connect_service_provider.rb
+│   │   │   ├── produits_dinum.rb
 │   │   │   └── services_cisirh.rb
 │   │   ├── authorization_request.rb
 │   │   ├── authorization_request_changelog.rb
@@ -1537,7 +1541,8 @@
 │   │   ├── base_notifier.rb
 │   │   ├── hubee_cert_dc_notifier.rb
 │   │   ├── hubee_dila_notifier.rb
-│   │   └── hubee_notifier.rb
+│   │   ├── hubee_notifier.rb
+│   │   └── produits_dinum_notifier.rb
 │   ├── organizers
 │   │   ├── admin
 │   │   │   ├── ban_user.rb
@@ -1667,6 +1672,7 @@
 │   │   ├── authorization_requests_search_engine_builder.rb
 │   │   ├── authorization_tabs_builder.rb
 │   │   ├── authorizations_search_engine_builder.rb
+│   │   ├── automated_email_preview_renderer.rb
 │   │   ├── bulk_authorization_request_update_notification_extractor.rb
 │   │   ├── datagouv_api_client.rb
 │   │   ├── dgfip_spreadsheet_generator.rb
@@ -1883,9 +1889,11 @@
 │       │   │   │   ├── _supporting_documents.html.erb
 │       │   │   │   ├── _technical_team.html.erb
 │       │   │   │   └── _volumetrie.html.erb
-│       │   │   └── dgfip
-│       │   │       ├── _contact.html.erb
-│       │   │       └── _contacts.html.erb
+│       │   │   ├── dgfip
+│       │   │   │   ├── _contact.html.erb
+│       │   │   │   └── _contacts.html.erb
+│       │   │   └── produits_dinum
+│       │   │       └── _legal.html.erb
 │       │   ├── build
 │       │   │   ├── _header.html.erb
 │       │   │   ├── _wizard_buttons.html.erb
@@ -2156,11 +2164,12 @@
 │       ├── instruction
 │       │   ├── approve_authorization_requests
 │       │   │   └── new.html.erb
+│       │   ├── authorization_definition_blocks
+│       │   │   └── show.html.erb
 │       │   ├── authorization_definition_emails
 │       │   │   └── index.html.erb
 │       │   ├── authorization_definitions
 │       │   │   ├── _counts.html.erb
-│       │   │   ├── edit.html.erb
 │       │   │   ├── index.html.erb
 │       │   │   └── show.html.erb
 │       │   ├── authorization_request_events
@@ -2292,6 +2301,8 @@
 │       │           ├── _eligibility_illustration.html.erb
 │       │           ├── _pro_connect.html.erb
 │       │           └── _welcome_logo.html.erb
+│       ├── produits_dinum_mailer
+│       │   └── transmit_convention.text.erb
 │       ├── profile
 │       │   ├── _authorization_notifications.html.erb
 │       │   └── edit.html.erb
@@ -2364,6 +2375,7 @@
 │   │   ├── mtes.yml
 │   │   ├── others.yml
 │   │   ├── pro_connect.yml
+│   │   ├── produits_dinum.yml
 │   │   ├── services_cisirh.yml
 │   │   └── urssaf.yml
 │   ├── authorization_request_forms
@@ -2403,6 +2415,7 @@
 │   │   ├── le_taxi.yml
 │   │   ├── others.yml
 │   │   ├── pro_connect.yml
+│   │   ├── produits_dinum.yml
 │   │   ├── services_cisirh.yml
 │   │   └── urssaf.yml
 │   ├── boot.rb
@@ -2425,9 +2438,6 @@
 │   ├── environment.rb
 │   ├── environments
 │   │   ├── development.rb
-│   │   ├── production.rb
-│   │   ├── sandbox.rb
-│   │   ├── staging.rb
 │   │   └── test.rb
 │   ├── i18n-tasks.yml
 │   ├── identity_providers.yml
@@ -2447,6 +2457,7 @@
 │   │   ├── good_job.rb
 │   │   ├── inflections.rb
 │   │   ├── link_in_emails.rb
+│   │   ├── logstasher.rb
 │   │   ├── mailjet.rb
 │   │   ├── omniauth.rb
 │   │   ├── paper_trail.rb
@@ -2668,6 +2679,7 @@
 │   │   ├── ajout_nouveau_provider.md
 │   │   ├── api.md
 │   │   ├── authentification_proconnect.md
+│   │   ├── automated_emails.md
 │   │   ├── datagouv-habilitations-sync.md
 │   │   ├── design.md
 │   │   ├── feature_flags.md
@@ -2759,6 +2771,7 @@
 │   │   │   ├── portail_hubee_demarche_certdc.feature
 │   │   │   └── portail_hubee_demarches_dila.feature
 │   │   ├── pre_remplissage_query_params.feature
+│   │   ├── produits_dinum.feature
 │   │   ├── services_cisirh.feature
 │   │   └── urssaf_test_supporting_documents_block.feature
 │   ├── habilitations_avec_des_options_sur_les_scopes.feature
@@ -2968,6 +2981,8 @@
 │   │       │   ├── cgu_prod_robf_v.2023_11.pdf
 │   │       │   └── cgu_prod_satelit_v.2022_v1.pdf
 │   │       └── presentation_de_l_api_impot_particulier_v2.9.pdf
+│   ├── conventions
+│   │   └── convention_mise_a_disposition_produits_dinum.pdf
 │   ├── doc
 │   │   ├── ProtocoleTechniqueFicoba3_v11.pdf
 │   │   ├── documentation_api_rial_v2025_07.pdf
@@ -3009,10 +3024,16 @@
 │   │   ├── link_component_spec.rb
 │   │   ├── molecules
 │   │   │   └── instruction
+│   │   │       ├── authorization_definition
+│   │   │       │   └── automated_email_component_spec.rb
 │   │   │       └── user_rights
 │   │   │           ├── readonly_rights_list_component_spec.rb
 │   │   │           ├── right_field_component_spec.rb
 │   │   │           └── table_row_component_spec.rb
+│   │   ├── organisms
+│   │   │   └── instruction
+│   │   │       └── authorization_definition
+│   │   │           └── automated_emails_component_spec.rb
 │   │   └── previews
 │   │       ├── applicant
 │   │       │   └── demande_alerts_component_preview.rb
@@ -3022,9 +3043,8 @@
 │   │       │   ├── color_badge_component_preview.rb
 │   │       │   ├── config_block_component_preview.rb
 │   │       │   ├── copy_button_component_preview.rb
-│   │       │   ├── edit_definition_block_component_preview.rb
-│   │       │   ├── form_buttons_component_preview.rb
-│   │       │   └── under_development_alert_component_preview.rb
+│   │       │   ├── definition_block_component_preview.rb
+│   │       │   └── form_buttons_component_preview.rb
 │   │       ├── authorization_header_component_preview.rb
 │   │       ├── dashboard
 │   │       │   └── blank_state_component_preview.rb
@@ -3045,6 +3065,7 @@
 │   │       │   ├── duration_card_component_preview.rb
 │   │       │   ├── instruction
 │   │       │   │   ├── authorization_definition
+│   │       │   │   │   ├── automated_email_component_preview.rb
 │   │       │   │   │   ├── card_component_preview.rb
 │   │       │   │   │   ├── config_block_component_preview.rb
 │   │       │   │   │   ├── forms_header_component_preview.rb
@@ -3059,7 +3080,6 @@
 │   │       │   │   │   └── right_field_component_preview.rb
 │   │       │   │   └── wide_header_preview.rb
 │   │       │   ├── instructor_banner_notice_component_preview.rb
-│   │       │   ├── side_panel_component_preview.rb
 │   │       │   ├── stat_card_component_preview.rb
 │   │       │   └── update_in_progress_notice_component_preview.rb
 │   │       └── organisms
@@ -3068,6 +3088,8 @@
 │   │           ├── authorization_request_forms
 │   │           │   └── legal_framework_component_preview.rb
 │   │           ├── instruction
+│   │           │   ├── authorization_definition
+│   │           │   │   └── automated_emails_component_preview.rb
 │   │           │   └── user_rights
 │   │           │       └── table_component_preview.rb
 │   │           └── stats
@@ -3261,6 +3283,8 @@
 │   │   └── update_organization_insee_payload_job_spec.rb
 │   ├── lib
 │   │   └── seeds_spec.rb
+│   ├── logging
+│   │   └── logstasher_spec.rb
 │   ├── mailers
 │   │   ├── admin_mailer_spec.rb
 │   │   ├── authorization_request_mailer_spec.rb
@@ -3286,11 +3310,13 @@
 │   │   │   │   └── authorization_request_mailer_preview.rb
 │   │   │   ├── instructor_draft_request_mailer_preview.rb
 │   │   │   └── message_mailer_preview.rb
+│   │   ├── produits_dinum_mailer_spec.rb
 │   │   └── webhook_mailer_spec.rb
 │   ├── models
 │   │   ├── admin_change_spec.rb
 │   │   ├── admin_event_spec.rb
 │   │   ├── authorization_definition
+│   │   │   ├── automated_emails_spec.rb
 │   │   │   └── scope_spec.rb
 │   │   ├── authorization_definition_spec.rb
 │   │   ├── authorization_document_spec.rb
@@ -3301,7 +3327,8 @@
 │   │   │   ├── api_particulier_with_france_connect_embedded_fields_spec.rb
 │   │   │   ├── api_sfip_spec.rb
 │   │   │   ├── hubee_cert_dc_spec.rb
-│   │   │   └── hubee_dila_spec.rb
+│   │   │   ├── hubee_dila_spec.rb
+│   │   │   └── produits_dinum_spec.rb
 │   │   ├── authorization_request_changelog_spec.rb
 │   │   ├── authorization_request_event_spec.rb
 │   │   ├── authorization_request_form_spec.rb
@@ -3363,7 +3390,10 @@
 │   │   ├── .gitkeep
 │   │   ├── api_particulier_notifier_spec.rb
 │   │   ├── base_notifier_spec.rb
-│   │   └── hubee_notifier_spec.rb
+│   │   ├── definition_automated_emails.yaml
+│   │   ├── definition_automated_emails_spec.rb
+│   │   ├── hubee_notifier_spec.rb
+│   │   └── produits_dinum_notifier_spec.rb
 │   ├── organizers
 │   │   ├── .gitkeep
 │   │   ├── admin
@@ -3477,6 +3507,7 @@
 │   │   ├── authorization_requests_search_engine_builder_spec.rb
 │   │   ├── authorization_tabs_builder_spec.rb
 │   │   ├── authorizations_search_engine_builder_spec.rb
+│   │   ├── automated_email_preview_renderer_spec.rb
 │   │   ├── datagouv_api_client_spec.rb
 │   │   ├── dgfip_spreadsheet_generator_spec.rb
 │   │   ├── diff_presenter_spec.rb
@@ -3543,12 +3574,10 @@
 │               └── authorization_requests_controller_test.rb
 ├── tmp
 │   ├── .keep
-│   ├── pids
-│   │   └── .keep
-│   └── storage
+│   └── pids
 │       └── .keep
 └── vendor
     ├── .keep
     └── javascript
         └── .keep
-498 directories, 3194 files
+508 directories, 3213 files
