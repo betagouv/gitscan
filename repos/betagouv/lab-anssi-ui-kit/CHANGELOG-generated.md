@@ -1,28 +1,38 @@
 ## Changelog : lab-anssi-ui-kit (30 derniers jours, au 31 juillet 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à la compatibilité des composants avec le Design System de la République Française (DSFR), notamment pour le carrousel, la marelle, les boutons et les modales. Des optimisations de performance ont été apportées au composant Segmented. La sécurité a été renforcée avec l'ajout d'outils d'analyse statique et des corrections concernant la gestion des identifiants Git dans les workflows CI/CD. Enfin, plusieurs mises à jour de dépendances ont été effectuées pour assurer la stabilité et la sécurité du projet.
+Cette version apporte des améliorations significatives à la compatibilité avec le Design System de la République Française (DSFR), notamment avec l'ajout de nouveaux composants (DsfrTooltip, DsfrModal) et l'amélioration de composants existants (CarrouselTuiles, Marelle, DsfrButton). Des optimisations de performance et des corrections de sécurité ont également été implémentées. Enfin, l'organisation des stories dans Storybook a été revue pour une meilleure expérience développeur.
 
 ### Évolutions fonctionnelles
-- **DSFR :** Ajout du composant `DsfrTooltip`. [#9b9083a](https://github.com/betagouv/lab-anssi-ui-kit/commit/9b9083a)
-- **CarrouselTuiles :** Rendu compatible avec le DSFR. [#9b9083a](https://github.com/betagouv/lab-anssi-ui-kit/commit/9b9083a)
-- **Marelle :** Rendu compatible avec le DSFR. [#33caa4f](https://github.com/betagouv/lab-anssi-ui-kit/commit/33caa4f)
-- **DsfrButton :** Ajout des variations inversées tertiaires et tertiaires sans bordure. [#9f339cc](https://github.com/betagouv/lab-anssi-ui-kit/commit/9f339cc)
-- **DsfrModal :** Ajout du composant et implémentation du "trapFocus" pour une meilleure accessibilité. [#f69a522](https://github.com/betagouv/lab-anssi-ui-kit/commit/f69a522), [#7843bd1](https://github.com/betagouv/lab-anssi-ui-kit/commit/7843bd1), [#13f6453](https://github.com/betagouv/lab-anssi-ui-kit/commit/13f6453)
-- **DsfrConnect :** Ajout de l'attribut `disabled` au lien du composant. [#f9bfa75](https://github.com/betagouv/lab-anssi-ui-kit/commit/f9bfa75)
-- **DsfrTagsGroup :** Définition de la valeur par défaut de la prop `groupMarkup`. [#f32294a](https://github.com/betagouv/lab-anssi-ui-kit/commit/f32294a)
-- **DsfrSegmented :** Optimisation de la gestion du `ResizeObserver` avec `requestAnimationFrame` pour améliorer la performance. [#4dab6e7](https://github.com/betagouv/lab-anssi-ui-kit/commit/4dab6e7)
-- **Marelle :** Amélioration de la "slotabilité" des étapes. [#e8c5cf5](https://github.com/betagouv/lab-anssi-ui-kit/commit/e8c5cf5)
-- **DsfrCallout :** Rendre le label du bouton optionnel. [#26fcda3](https://github.com/betagouv/lab-anssi-ui-kit/commit/26fcda3)
-- **DsfrSelect :** Ajout de l'attribut `hide-label` à la story du composant. [#1f5fb9f](https://github.com/betagouv/lab-anssi-ui-kit/commit/1f5fb9f)
+- Ajout du composant `DsfrTooltip` pour afficher des infobulles d'aide.
+- Ajout du composant `DsfrModal` avec implémentation du "trapFocus" pour une meilleure accessibilité.
+- Le composant `LAB - CarrouselTuiles` est maintenant compatible avec le DSFR.
+- Le composant `LAB - Marelle` est maintenant compatible avec le DSFR.
+- Ajout de variations inversées tertiaires et tertiaires sans bordure au composant `DsfrButton`.
+- Amélioration de la directive permettant d'implémenter le 'trapFocus' pour une meilleure gestion du focus dans les modales.
+- Le label du bouton du composant `DsfrCallout` est maintenant optionnel.
+- Ajout de l'attribut `hide-label` à la story du composant `DsfrSelect` pour plus de flexibilité.
+- Ajout de l'attribut `disabled` au lien du composant `DsfrConnect`.
+- Définition de la valeur par défaut de la prop 'groupMarkup' du composant `DsfrTagsGroup`.
+- Ajout de boutons inversés aux stories du composant `LabAnssiBandeauPage` dans Storybook.
+- Les étapes du composant `Marelle` sont maintenant plus facilement personnalisables grâce à l'ajout de slots.
 
 ### Évolutions techniques
-- **Sécurité CI/CD :** Ajout des outils `checkov` et `zizmor` pour l'analyse statique de la configuration et la détection de vulnérabilités. [#27897d5](https://github.com/betagouv/lab-anssi-ui-kit/commit/27897d5)
-- **Sécurité CI/CD :** Correction de failles potentielles d'injection et désactivation des identifiants Git dans les workflows CI/CD. [#df25557](https://github.com/betagouv/lab-anssi-ui-kit/commit/df25557), [#c048ebc](https://github.com/betagouv/lab-anssi-ui-kit/commit/c048ebc)
-- **Dépendances :** Mise à jour de plusieurs dépendances (Node.js, PNPM, Storybook, ESLint, TypeScript, Vitest, Playwright, style-dictionary, etc.) pour bénéficier des dernières corrections et améliorations.
-- **Configuration :** Ajout de la configuration pour Code Connect (Figma). [#48ac321](https://github.com/betagouv/lab-anssi-ui-kit/commit/48ac321)
-- **Renovate :** Mise à jour de la configuration Renovate pour améliorer la gestion des mises à jour de dépendances. [#c859428](https://github.com/betagouv/lab-anssi-ui-kit/commit/c859428)
+- Mise à jour de Storybook vers la version 10.5.0.
+- Optimisation du composant `DsfrSegmented` avec l'utilisation de `requestAnimationFrame` pour améliorer la performance du `ResizeObserver`.
+- Mise à jour de PNPM vers la version 11.17.0 pour bénéficier des dernières corrections et améliorations.
+- Fixe de la version de Node.js à la dernière version LTS (24.18.0) pour assurer la stabilité et la sécurité.
+- Ajout de la configuration `allowBuilds` pour `@parcel/watcher` et `esbuild` dans `pnpm-workspace.yaml`.
+- Mise à jour de la configuration de Renovate pour inclure des règles de groupe et des préfixes de commit.
+- Ajout de la configuration pour Code Connect (Figma).
+- Améliorations de la sécurité du CI :
+    - Évite les injections dans le CI.
+    - Désactive les identifiants `git` des dépôts clônés.
+    - Ajout de `checkov` et `zizmor` pour valider la configuration.
 
 ### Autres changements
-- **Storybook :** Réorganisation des titres des composants Lab ANSSI et DSFR, suppression des options de tri des stories. [#e177d4d](https://github.com/betagouv/lab-anssi-ui-kit/commit/e177d4d), [#cd06738](https://github.com/betagouv/lab-anssi-ui-kit/commit/cd06738), [#311dd6d](https://github.com/betagouv/lab-anssi-ui-kit/commit/311dd6d)
-- **Version :** Passage à la version 1.57.0, 1.56.0, 1.55.2 et 1.55.1. [#bc59120](https://github.com/betagouv/lab-anssi-ui-kit/commit/bc59120), [#ee62cc8](https://github.com/betagouv/lab-anssi-ui-kit/commit/ee62cc8), [#104fad1](https://github.com/betagouv/lab-anssi-ui-kit/commit/104fad1), [#76da5b5](https://github.com/betagouv/lab-anssi-ui-kit/commit/76da5b5)
+- Réorganisation des titres des composants Lab ANSSI et DSFR dans Storybook.
+- Suppression des options de tri des stories dans Storybook.
+- Passage à la version 1.57.0, 1.56.0 et 1.55.2.
+- Mise à jour de diverses dépendances (eslint, postcss, playwright, style-dictionary, svelte, etc.).
+- Mise à jour des actions GitHub (actions/checkout, actions/setup-node, actions/upload-pages-artifact, actions/deploy-pages, github/codeql-action, s3-actions/s3cmd, bridgecrewio/checkov-action, zizmorcore/zizmor-action).
