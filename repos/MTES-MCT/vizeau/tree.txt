@@ -91,7 +91,8 @@
 │   │   ├── territoire.ts
 │   │   └── user.ts
 │   ├── policies
-│   │   └── exploitation_policy.ts
+│   │   ├── exploitation_policy.ts
+│   │   └── project_policy.ts
 │   ├── services
 │   │   ├── aac_csv_service.ts
 │   │   ├── aac_service.ts
@@ -218,7 +219,8 @@
 │   │   ├── 1784134967639_backfill_parcelle_comments_data.ts
 │   │   ├── 1784134967640_alter_parcelles_drop_comment.ts
 │   │   ├── 1784193391497_alter_contacts_table.ts
-│   │   └── 1784193391497_alter_log_entries_table.ts
+│   │   ├── 1784193391497_alter_log_entries_table.ts
+│   │   └── 1784200000000_create_project_territoire_relations_table.ts
 │   ├── schema.ts
 │   └── seeders
 │       ├── 1_user_seeder.ts
@@ -328,7 +330,8 @@
 │   │   │   │   ├── project-step-form.tsx
 │   │   │   │   ├── projet-form.tsx
 │   │   │   │   ├── step-renderer.tsx
-│   │   │   │   └── steps_config.ts
+│   │   │   │   ├── steps_config.ts
+│   │   │   │   └── territoires-step.tsx
 │   │   │   ├── projet-infos-card.tsx
 │   │   │   ├── projet-installations-list.tsx
 │   │   │   ├── projet-parcelles-list.tsx
@@ -624,6 +627,7 @@
 │       │   └── parcelle_csv_service.spec.ts
 │       ├── project
 │       │   ├── project_model.spec.ts
+│       │   ├── project_policy.spec.ts
 │       │   ├── project_step_service.spec.ts
 │       │   └── project_step_tag_service.spec.ts
 │       └── territoire
@@ -638,4 +642,4 @@
 ├── vite.config.ts
 ├── vitest.config.ts
 └── vitest.shims.d.ts
-121 directories, 519 files
+121 directories, 523 files
