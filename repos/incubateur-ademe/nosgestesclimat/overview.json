@@ -1,24 +1,29 @@
 {
   "url": "https://github.com/incubateur-ademe/nosgestesclimat",
   "name": "nosgestesclimat",
-  "description": "Nos Gestes Climat est un modèle de calcul de l'empreinte climat personnelle, open source, permettant d'évaluer l'impact individuel sur l'environnement.",
+  "description": "Nos Gestes Climat est un modèle de calcul de l'empreinte climat personnelle. Il permet d'évaluer l'impact individuel sur l'environnement et propose des actions pour le réduire.",
   "language": "TypeScript",
   "features": [
     "Simulation & Calcul",
     "Visualisation de données & Cartographie",
+    "Gestion des utilisateurs & Permissions",
+    "Notifications & Alertes",
     "API & Intégrations"
   ],
   "audience": "Grand public",
   "dependencies": [
     "publicodes",
-    "Node.js",
-    "npm",
-    "Express"
+    "express",
+    "bun",
+    "piscina",
+    "deepl-node"
   ],
   "components": [
     "API REST & GraphQL",
     "TypeScript / JavaScript",
-    "Python (scripts & backend)"
+    "Python (scripts & backend)",
+    "Docker & Conteneurs",
+    "Tests"
   ],
   "auth": {
     "methods": [
@@ -30,8 +35,9 @@
     "Pytest"
   ],
   "workflows": [
-    "CI",
-    "CD"
+    "upload-compilation-result.yaml",
+    "pr-updater.yaml",
+    "packaging.yaml"
   ],
   "lastActivity": "2026-07-29T17:26:37+02:00",
   "status": "active",
@@ -46,10 +52,13 @@
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
+    "React & Next.js",
     "TypeScript",
     "Déploiement & Hosting",
     "Python",
+    "Bases de données SQL",
+    "Sécurité & Auth",
     "Environnement & Énergie",
-    "JavaScript"
+    "Intelligence Artificielle & LLM"
   ]
 }
