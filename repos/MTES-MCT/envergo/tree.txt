@@ -426,6 +426,7 @@
 │   │   │   ├── 0036_backfill_adhoc_group_display.py
 │   │   │   ├── 0037_alter_species_highly_sensitive_and_more.py
 │   │   │   ├── 0038_alter_species_adhoc_group_alter_species_group.py
+│   │   │   ├── 0039_drop_legacy_density_cache.py
 │   │   │   ├── __init__.py
 │   │   │   └── ep_aisne.csv
 │   │   ├── models.py
@@ -634,7 +635,9 @@
 │   │   │   ├── 0127_rename_a_verifier_creation_template.py
 │   │   │   ├── 0128_alter_moulinettetemplate_key.py
 │   │   │   ├── 0129_multi_categories_criteria.py
+│   │   │   ├── 0130_alter_configamenagement_regulations_available_and_more.py
 │   │   │   ├── 0130_rename_demarches_simplifiees_fields_to_demarche_numerique_and_more.py
+│   │   │   ├── 0131_merge_20260710_0750.py
 │   │   │   ├── __init__.py
 │   │   │   ├── haie_department_configs.json
 │   │   │   ├── moulinette_haie.json
@@ -648,11 +651,13 @@
 │   │   │   ├── conditionnalitepac.py
 │   │   │   ├── ep.py
 │   │   │   ├── evalenv.py
+│   │   │   ├── loi_sur_leau_haie.py
 │   │   │   ├── loisurleau.py
 │   │   │   ├── mixins.py
 │   │   │   ├── natura2000.py
 │   │   │   ├── natura2000_haie.py
 │   │   │   ├── protection_captages.py
+│   │   │   ├── regime_unique.py
 │   │   │   ├── regime_unique_haie.py
 │   │   │   ├── reserves_naturelles.py
 │   │   │   ├── sage.py
@@ -679,8 +684,10 @@
 │   │   │   ├── test_evalenv.py
 │   │   │   ├── test_evalenv_cas_par_cas_icpe.py
 │   │   │   ├── test_fields.py
+│   │   │   ├── test_forms_haie.py
 │   │   │   ├── test_get_criteria.py
 │   │   │   ├── test_haie_criterion_evaluator.py
+│   │   │   ├── test_loi_sur_leau_haie.py
 │   │   │   ├── test_loisurleau.py
 │   │   │   ├── test_models.py
 │   │   │   ├── test_n2000_evalenv.py
@@ -831,9 +838,11 @@
 │   │   │   ├── 0051_migrate_category_values.py
 │   │   │   ├── 0052_merge_20260618_1147.py
 │   │   │   ├── 0053_merge_20260701_1003.py
+│   │   │   ├── 0054_date_depot_on_alternative_simu.py
 │   │   │   ├── 0054_merge_20260702_1009.py
 │   │   │   ├── 0054_rename_demarches_simplifiees_fields_to_demarche_numerique_and_more.py
 │   │   │   ├── 0055_statuslog_applicant_message_and_more.py
+│   │   │   ├── 0056_merge_20260710_0758.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── regulations
@@ -841,6 +850,7 @@
 │   │   │   ├── alignementarbres.py
 │   │   │   ├── conditionnalitepac.py
 │   │   │   ├── ep.py
+│   │   │   ├── loi_sur_leau_haie.py
 │   │   │   ├── regime_unique_haie.py
 │   │   │   └── sites_proteges_haie.py
 │   │   ├── services.py
@@ -852,6 +862,7 @@
 │   │   ├── tests
 │   │   │   ├── __init__.py
 │   │   │   ├── factories.py
+│   │   │   ├── test_admin.py
 │   │   │   ├── test_commands.py
 │   │   │   ├── test_forms.py
 │   │   │   ├── test_middleware.py
@@ -987,11 +998,10 @@
 │   │   │   │   ├── notes_toggle.js
 │   │   │   │   ├── optional_forms.js
 │   │   │   │   ├── parcel_fieldset.js
-│   │   │   │   ├── procedure_modal.js
 │   │   │   │   ├── share_url_modal.js
 │   │   │   │   ├── shorten_url_for_copy.js
 │   │   │   │   ├── spinner.js
-│   │   │   │   ├── sync_new_due_date.js
+│   │   │   │   ├── state_change_modal.js
 │   │   │   │   └── urlmappings.js
 │   │   │   ├── project.js
 │   │   │   └── vendors
@@ -1387,10 +1397,12 @@
 │   │   │   │   ├── _item_ds.html
 │   │   │   │   ├── _item_hedges_detail.html
 │   │   │   │   ├── _new_message_modal.html
-│   │   │   │   ├── _procedure_modal.html
 │   │   │   │   ├── _regulation_form.html
+│   │   │   │   ├── _request_info_modal.html
+│   │   │   │   ├── _resume_processing_modal.html
 │   │   │   │   ├── _revoke_token_modal.html
 │   │   │   │   ├── _ru_plantation_condition_details.html
+│   │   │   │   ├── _state_change_modal.html
 │   │   │   │   ├── _summary_dossier.html
 │   │   │   │   ├── alignement_arbres
 │   │   │   │   │   ├── consultation.html
@@ -1437,6 +1449,10 @@
 │   │   │   │   ├── instructor_view_procedure.html
 │   │   │   │   ├── instructor_view_regulation.html
 │   │   │   │   ├── invalid_invitation_token.html
+│   │   │   │   ├── loi_sur_leau_haie
+│   │   │   │   │   ├── consultation.html
+│   │   │   │   │   ├── instruction_guidelines.html
+│   │   │   │   │   └── key_elements.html
 │   │   │   │   ├── mattermost_demarche_numerique_api_error.txt
 │   │   │   │   ├── mattermost_demarche_numerique_api_error_change_dossier_state.txt
 │   │   │   │   ├── mattermost_demarche_numerique_api_error_dossier_send_message.txt
@@ -1460,7 +1476,9 @@
 │   │   │   │   │   ├── consultation.html
 │   │   │   │   │   └── instruction_guidelines.html
 │   │   │   │   ├── regime_unique_haie
-│   │   │   │   │   ├── instructor_result_details.html
+│   │   │   │   │   ├── consultation.html
+│   │   │   │   │   ├── instruction_guidelines.html
+│   │   │   │   │   ├── key_elements.html
 │   │   │   │   │   └── ru
 │   │   │   │   │       └── regime_unique_haie_plantation_condition_details.html
 │   │   │   │   ├── reserves_naturelles
@@ -1712,6 +1730,11 @@
 │   │   │   │   ├── zone_inondable_non_soumis.html
 │   │   │   │   ├── zone_inondable_soumis.html
 │   │   │   │   └── zone_inondable_soumis_ou_pac.html
+│   │   │   ├── loi_sur_leau_haie
+│   │   │   │   ├── result_a_verifier.html
+│   │   │   │   ├── result_non_concerne.html
+│   │   │   │   ├── result_non_soumis.html
+│   │   │   │   └── result_soumis.html
 │   │   │   ├── natura2000
 │   │   │   │   ├── autorisation_urba_a_verifier.html
 │   │   │   │   ├── autorisation_urba_non_soumis.html
@@ -1974,4 +1997,4 @@
                 │   ├── favicon.ico
                 │   └── favicon.svg
                 └── index.html
-252 directories, 1743 files
+254 directories, 1764 files
