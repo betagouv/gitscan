@@ -1,47 +1,38 @@
-## Changelog : meet (30 derniers jours, au 30 juillet 2026)
+## Changelog : meet (30 derniers jours, au 2026-07-30)
 
 ### Résumé
-Cette version apporte des améliorations significatives en termes de performance, notamment au niveau du rendu de l'interface utilisateur et de la gestion des participants. De nouvelles fonctionnalités ont été ajoutées concernant la gestion des rôles des participants et l'intégration d'outils externes. Des corrections de bugs et des mises à jour de dépendances ont également été effectuées pour améliorer la stabilité et la sécurité de l'application.
+Ce mois-ci, l'équipe a concentré ses efforts sur l'amélioration de l'expérience utilisateur, notamment en optimisant les performances de l'interface, en ajoutant des fonctionnalités de gestion des participants (rôles, promotion) et en améliorant la robustesse du système, en particulier pour la transcription et l'analyse. Des mises à jour de sécurité et de dépendances ont également été intégrées.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de modifier le rôle d'un participant pendant une réunion. [#1234](https://github.com/suitenumerique/meet/issues/1234)
+- Ajout de la possibilité de modifier le rôle d'un participant pendant une réunion. [#1510](https://github.com/suitenumerique/meet/issues/1510)
 - Affichage d'un badge indiquant si un participant est authentifié.
-- Amélioration du rendu du nom des participants dans la liste.
 - Possibilité de promouvoir des participants authentifiés en administrateurs.
-- Ajout d'un indicateur visuel pour les participants avec l'appareil photo désactivé.
+- Amélioration de l'affichage du nom des participants dans la liste.
+- Ajout d'un gradient de couleur pour les participants avec la caméra désactivée.
 - Ajout d'un lien configurable vers la documentation.
-- Intégration d'outils externes lors de la création de réunions dans les calendriers partagés.
-- Amélioration de l'affichage des initiales dans les avatars.
-- Ajout d'un gradient de couleur pour les participants dans l'avatar.
+- Possibilité de forcer l'affichage du nom SSO pour les utilisateurs authentifiés.
+- Affichage des initiales en majuscules dans les avatars.
+- Ajout d'outils d'add-in lors de la création de réunions dans les calendriers partagés.
 
 ### Évolutions techniques
-- Refactorisation importante du code du chat pour optimiser les performances.
-- Virtualisation des messages du chat pour réduire la taille du DOM.
-- Optimisation du rendu des métadonnées des participants.
-- Amélioration de la gestion des événements liés aux participants.
-- Refactorisation du code pour isoler et optimiser différents composants de l'interface utilisateur.
+- Refactorisation importante du code du chat pour améliorer les performances et la maintenabilité.
+- Optimisations significatives des performances du frontend, notamment en virtualisant les messages du chat, en optimisant le rendu des métadonnées des participants et en réduisant les re-renders inutiles.
+- Refactorisation du code lié à la liste des participants et au panneau latéral.
+- Amélioration de la gestion des permissions et de l'authentification.
 - Mise à jour de plusieurs dépendances (LiveKit, React Query, PostHog, etc.).
 - Mise à jour de l'image Docker pour utiliser nginx-unprivileged:1.30.3-alpine3.23.
-- Mise à jour de la version de Node.js pour le build frontend à la version 22.
-- Mise à jour de la version de Python pour les agents.
-- Refactorisation du système d'authentification backend.
-- Ajout d'un système d'analytics configurable basé sur PostHog.
-- Amélioration de la gestion des erreurs et des webhooks pour le service de résumé.
-- Mise à jour des dépendances Python.
-- Normalisation des clés S3 pour la compatibilité avec les notifications.
+- Mise à jour de la version de Python utilisée pour les agents.
+- Refactorisation de l'authentification basée sur Bearer Token.
+- Amélioration de la gestion des erreurs et de la résilience du système, notamment pour la transcription et l'analyse.
+- Ajout d'instrumentation Sentry pour les agents.
 
 ### Autres changements
-- Mise à jour des termes de service.
+- Mise à jour des conditions d'utilisation.
 - Ajout d'un fichier `publiccode.yml`.
-- Corrections de bugs mineurs et améliorations de la qualité du code.
-- Ajout de tests unitaires.
-- Amélioration de la documentation.
-- Correction de problèmes liés au centrage des initiales dans les avatars.
-- Suppression de code obsolète.
-- Correction de problèmes de focus dans l'interface utilisateur.
-- Correction de problèmes liés à la gestion des états du chat.
-- Amélioration de la gestion des erreurs dans le service de résumé.
-- Correction d'un bug lié à la détection des tentatives de nouvelles tentatives.
-- Correction d'un bug lié à la gestion des métadonnées d'enregistrement.
-- Correction d'un bug lié à la gestion des erreurs dans le service de résumé.
-- Correction d'un bug lié à la gestion des clés S3.
+- Correction de bugs mineurs et améliorations de la qualité du code.
+- Suppression de code obsolète lié à l'ancienne version de l'API de résumé.
+- Correction de la gestion des erreurs dans l'analyse.
+- Amélioration de la gestion des erreurs de transcription.
+- Correction de la gestion des webhooks de défaillance.
+- Mise à jour de la version du chart Helm.
+- Ajout de tests unitaires pour la transcription.
