@@ -1,19 +1,19 @@
 ## Changelog : qualicharge (30 derniers jours, au 28 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'ajout d'indicateurs de performance dans Prefect pour le suivi des sessions de recharge, ainsi que sur des corrections concernant le calcul des plages horaires et l'inclusion des points de recharge hors service. Des améliorations ont également été apportées à l'API pour la gestion des tarifs et la validation des données.
+Ce mois-ci, les évolutions se concentrent sur l'amélioration de la gestion des tarifs de recharge et des indicateurs de performance dans Prefect, ainsi que sur des mises à jour de sécurité et de dépendances pour assurer la stabilité et la sécurité de la plateforme.
 
 ### Évolutions fonctionnelles
-- L'API requiert désormais au moins une cible lors de la création d'un tarif. [#e80764c](https://github.com/MTES-MCT/qualicharge/commit/e80764c)
-- Ajout d'indicateurs E1-DMR, E2/E3 et E5 dans Prefect pour un meilleur suivi des sessions de recharge. [#c47a775](https://github.com/MTES-MCT/qualicharge/commit/c47a775), [#e916431](https://github.com/MTES-MCT/qualicharge/commit/e916431), [#d2027c1](https://github.com/MTES-MCT/qualicharge/commit/d2027c1)
-- Correction du calcul de la plage horaire pour les requêtes Prefect utilisant la table `lateststatus`. [#fa87d3c](https://github.com/MTES-MCT/qualicharge/commit/fa87d3c)
-- Inclusion des points de recharge hors service dans les calculs Prefect. [#217e5b2](https://github.com/MTES-MCT/qualicharge/commit/217e5b2)
-- Seuls les champs de tarif non nuls sont maintenant stockés en tant que données brutes dans l'API. [#7a5c26d](https://github.com/MTES-MCT/qualicharge/commit/7a5c26d)
+- L'API requiert désormais au moins une cible lors de la création d'un tarif de recharge. [#e80764c](https://github.com/MTES-MCT/qualicharge/commit/e80764c)
+- Amélioration du stockage des champs de tarif dans l'API : seuls les champs non nuls sont désormais stockés en brut. [#7a5c26d](https://github.com/MTES-MCT/qualicharge/commit/7a5c26d)
+- Ajout d'indicateurs E2 et E3 dans Prefect pour un suivi plus précis des performances. [#c47a775](https://github.com/MTES-MCT/qualicharge/commit/c47a775)
+- Ajout d'indicateurs E1-DMR dans Prefect. [#e916431](https://github.com/MTES-MCT/qualicharge/commit/e916431)
 
 ### Évolutions techniques
-- Mise à jour de la version de l'API à 0.34.1. [#bd84d50](https://github.com/MTES-MCT/qualicharge/commit/bd84d50)
-- Mises à jour de plusieurs dépendances Docker (Keycloak, Metabase, Locust, Curl, Terraform, UV) et actions GitHub (checkout, setup-python, setup-uv, zizmor-action). Ces mises à jour concernent principalement la sécurité et la maintenance.
-- Mise à jour des dépendances Python pour corriger des vulnérabilités de sécurité. [#1832d50](https://github.com/MTES-MCT/qualicharge/commit/1832d50)
+- Correction d'une erreur dans Prefect concernant la définition de la plage de temps pour les requêtes utilisant la table `lateststatus`, incluant désormais les points de recharge hors service. [#fa87d3c](https://github.com/MTES-MCT/qualicharge/commit/fa87d3c) [#217e5b2](https://github.com/MTES-MCT/qualicharge/commit/217e5b2)
+- Mise à jour de la version de l'API (patch) à 0.34.1. [#bd84d50](https://github.com/MTES-MCT/qualicharge/commit/bd84d50)
 
 ### Autres changements
-- Ajout d'un offset de 15 jours pour les indicateurs de session dans Prefect. [#9154a3b](https://github.com/MTES-MCT/qualicharge/commit/9154a3b)
+- Mises à jour des dépendances et des images Docker (Metabase, Keycloak, Locust, Curl, Terraform, UV, pydantic-settings, python-multipart, pyjwt) pour bénéficier des dernières corrections de sécurité et améliorations de performance.
+- Mise à jour des actions GitHub (checkout, setup-python, setup-uv, zizmor-action) pour bénéficier des dernières fonctionnalités et corrections.
+- Correction de vulnérabilités dans les dépendances Python. [#1832d50](https://github.com/MTES-MCT/qualicharge/commit/1832d50)
