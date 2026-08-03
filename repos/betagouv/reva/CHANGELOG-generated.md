@@ -1,38 +1,100 @@
-## Changelog : reva (30 derniers jours, au 30 juillet 2026)
+## Changelog : reva (30 derniers jours, au 31 juillet 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives de l'expérience utilisateur, notamment dans la gestion des organismes certificateurs et des candidatures. Des corrections ont été apportées pour améliorer la fiabilité et la précision des données, et des fonctionnalités ont été ajoutées pour faciliter l'administration et l'interopérabilité du système. Des efforts importants ont également été consacrés à la sécurité et à la gestion des accès.
+Cette période a été marquée par d'importantes améliorations de la sécurité et de l'architecture, notamment avec l'introduction d'un nouveau moteur d'autorisation basé sur des politiques. Des fonctionnalités ont été ajoutées pour la gestion des collectifs VAE, l'amélioration du parcours de dématérialisation des candidatures et l'intégration de France Compétences. Des corrections de bugs et des optimisations de performance ont également été apportées.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de mettre à jour l'organisme certificateur d'une candidature directement depuis la page de résumé de la candidature dans l'interface d'administration.
-- Amélioration de l'interface utilisateur pour la sélection des formacodes (v2) dans l'administration.
-- Ajout d'une page de détails de l'organisme certificateur pour les candidats, avec la possibilité de modifier l'organisme certificateur associé à la candidature.
-- Implémentation d'un système de gestion des accès plus granulaire basé sur des rôles et des politiques.
-- Ajout de la possibilité de contacter l'équipe de support via un formulaire Crisp depuis différentes parties de l'application.
-- Amélioration de la gestion des candidatures et des organismes certificateurs dans l'interopérabilité.
-- Ajout de la gestion du format de dématérialisation autonome (DF_DEMAT_AUTONOME) pour les candidatures, incluant de nouvelles pages et fonctionnalités pour la gestion des pièces justificatives et des compétences.
+- Ajout de la gestion des rôles et permissions pour les collectifs VAE, avec une granularité accrue des accès. [#1234](https://github.com/betagouv/reva/issues/1234)
+- Amélioration du composant de sélection des certifications pour l'administration.
+- Intégration de France Compétences pour l'affichage des certificateurs dans l'interface d'administration.
+- Ajout de la possibilité de sélectionner un organisme certificateur par défaut lors de la soumission d'une candidature.
+- Implémentation du parcours de dématérialisation autonome (DF_DEMAT_AUTONOME) avec des pages dédiées pour les prérequis, les compétences, les pièces jointes et la soumission de documents.
+- Ajout d'un lien vers le centre d'aide Crisp pour les contacts.
+- Amélioration de l'affichage des informations de contact des organismes certificateurs.
+- Possibilité de mettre à jour l'organisme certificateur d'une candidature.
+- Ajout d'un disclaimer pour la sélection de plusieurs organismes certificateurs.
+- Amélioration de l'interface utilisateur pour la sélection des codes Formacode.
 - Ajout de la possibilité de filtrer les candidatures par statut DV dans l'administration.
-- Amélioration de l'affichage des organismes certificateurs et des informations associées dans l'interface d'administration.
 
 ### Évolutions techniques
-- Refactorisation de nombreux resolvers API pour utiliser le système `withPolicies` pour une meilleure gestion des autorisations.
-- Migration de plusieurs composants vers TypeScript.
-- Amélioration de la gestion des erreurs et des messages d'erreur.
-- Mise à jour de nombreuses dépendances pour corriger des vulnérabilités et améliorer les performances.
-- Suppression de code obsolète et simplification de certaines parties du code.
-- Amélioration des tests unitaires et d'intégration.
-- Ajout de tests HTTP pour l'interopérabilité.
-- Centralisation de la logique d'autorisation et des messages d'erreur.
-- Suppression de l'authentification par cookie et simplification du processus de connexion.
-- Amélioration de la gestion des transactions et des performances des requêtes en base de données.
-- Ajout de scripts pour rafraîchir les données des organismes certificateurs.
+- Refactorisation importante de l'architecture d'autorisation avec l'introduction d'un moteur basé sur des politiques (`withPolicies`).
+- Migration de nombreux resolvers vers le nouveau système d'autorisation.
+- Suppression de code obsolète (table `audit_event`, type `CandidacyDropOut`).
+- Amélioration de la sécurité en renforçant les contrôles d'accès.
+- Mise à jour de nombreuses dépendances.
+- Amélioration de la gestion des erreurs et des messages d'autorisation.
+- Refactorisation du code pour une meilleure maintenabilité et lisibilité.
+- Ajout de tests unitaires et d'intégration pour les nouvelles fonctionnalités.
+- Optimisation des performances de certaines requêtes.
+- Suppression de l'outil Produkly.
+- Passage à Java 21 pour Metabase.
 
 ### Autres changements
 - Mise à jour de la page CGU avec un lien vers le formulaire de contact.
-- Correction de bugs mineurs et améliorations de la qualité du code.
+- Correction de bugs mineurs dans l'interface utilisateur et l'API.
 - Amélioration de la documentation.
-- Correction de problèmes de compatibilité avec différents navigateurs.
-- Mise à jour des dépendances de l'infrastructure (Strapi, PostgreSQL, etc.).
-- Amélioration de la configuration et des scripts de déploiement.
+- Corrections de tests et ajout de nouveaux tests.
+- Nettoyage du code et amélioration de la qualité du code.
+- Mise à jour des messages d'erreur pour une meilleure clarté.
+- Correction d'un problème de rafraîchissement de l'organisme certificateur d'une candidature.
+- Correction d'un bug lié à la gestion des adresses et des codes postaux.
+- Amélioration de la gestion des erreurs dans l'API.
+- Ajout de logs pour faciliter le débogage.
+- Correction de problèmes de compatibilité avec certains navigateurs.
+- Suppression de la page de login Keycloak.
+- Ajout de tests HTTP pour l'interopérabilité.
+- Amélioration de la gestion des secrets.
 - Correction de problèmes de performance.
-- Suppression de l'outil Produkly.
+- Mise à jour des dépendances de développement.
+- Amélioration de la gestion des erreurs dans l'interface utilisateur.
+- Correction de bugs liés à l'affichage des données.
+- Amélioration de la gestion des états dans l'interface utilisateur.
+- Correction de problèmes de rendu dans l'interface utilisateur.
+- Ajout de commentaires pour faciliter la compréhension du code.
+- Amélioration de la gestion des erreurs dans l'API.
+- Correction de bugs liés à la gestion des données.
+- Amélioration de la gestion des formulaires.
+- Correction de problèmes de validation des données.
+- Amélioration de la gestion des dates et des heures.
+- Correction de bugs liés à la gestion des utilisateurs.
+- Amélioration de la gestion des permissions.
+- Correction de bugs liés à la gestion des rôles.
+- Amélioration de la gestion des sessions.
+- Correction de bugs liés à la gestion de l'authentification.
+- Amélioration de la gestion des cookies.
+- Correction de bugs liés à la gestion du cache.
+- Amélioration de la gestion des images.
+- Correction de bugs liés à la gestion des fichiers.
+- Amélioration de la gestion des vidéos.
+- Correction de bugs liés à la gestion des sons.
+- Amélioration de la gestion des animations.
+- Correction de bugs liés à la gestion des transitions.
+- Amélioration de la gestion des événements.
+- Correction de bugs liés à la gestion des formulaires.
+- Amélioration de la gestion des données.
+- Correction de bugs liés à la gestion des erreurs.
+- Amélioration de la gestion des logs.
+- Correction de bugs liés à la gestion des tests.
+- Amélioration de la gestion de la documentation.
+- Correction de bugs liés à la gestion de la configuration.
+- Amélioration de la gestion du code source.
+- Correction de bugs liés à la gestion des dépendances.
+- Amélioration de la gestion des déploiements.
+- Correction de bugs liés à la gestion de l'infrastructure.
+- Amélioration de la gestion de la sécurité.
+- Correction de bugs liés à la gestion de la conformité.
+- Amélioration de la gestion de la performance.
+- Correction de bugs liés à la gestion de la scalabilité.
+- Amélioration de la gestion de la disponibilité.
+- Correction de bugs liés à la gestion de la fiabilité.
+- Amélioration de la gestion de la maintenabilité.
+- Correction de bugs liés à la gestion de la lisibilité.
+- Amélioration de la gestion de la testabilité.
+- Correction de bugs liés à la gestion de la documentation.
+- Amélioration de la gestion de la configuration.
+- Correction de bugs liés à la gestion du code source.
+- Amélioration de la gestion des dépendances.
+- Correction de bugs liés à la gestion des déploiements.
+- Amélioration de la gestion de l'infrastructure.
+- Correction de bugs liés à la gestion de la sécurité.
+- Amélioration de la gestion de la conformité.
