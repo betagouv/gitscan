@@ -104,7 +104,9 @@
 │   │       ├── code-review-invariants.md
 │   │       ├── forge-mr-create.md
 │   │       └── verify-build.md
+│   ├── branch_improve_gate_test.go
 │   ├── bundle_consistency_test.go
+│   ├── catalog_command_refs_test.go
 │   ├── catalog_freshness_test.go
 │   ├── catalog_parse_compile_test.go
 │   ├── catalog_typing_test.go
@@ -121,6 +123,7 @@
 │   ├── dep_update_guard_automerge_test.go
 │   ├── dep_update_guard_gate_test.go
 │   ├── dep_update_guard_prepare_test.go
+│   ├── dep_update_guard_routing_test.go
 │   ├── devbox-setup
 │   │   ├── README.md
 │   │   ├── main.bot
@@ -186,18 +189,22 @@
 │   │       └── synthesis-scoring.md
 │   ├── golden-master
 │   │   ├── README.md
+│   │   ├── a11y
+│   │   │   └── run-axe.mjs
 │   │   ├── devbox.json
 │   │   ├── main.bot
 │   │   ├── manifest.yaml
 │   │   ├── oracle-harness.py
-│   │   └── skills
-│   │       ├── binary-lane.md
-│   │       ├── canonicalization.md
-│   │       ├── deterministic-fixture.md
-│   │       ├── golden-master.md
-│   │       ├── oracle-mutation.md
-│   │       └── surface-discovery.md
+│   │   ├── skills
+│   │   │   ├── binary-lane.md
+│   │   │   ├── canonicalization.md
+│   │   │   ├── deterministic-fixture.md
+│   │   │   ├── golden-master.md
+│   │   │   ├── oracle-mutation.md
+│   │   │   └── surface-discovery.md
+│   │   └── suite-vs-net.py
 │   ├── golden_master_harness_sync_test.go
+│   ├── handoff_declarations_test.go
 │   ├── issue-triage
 │   │   ├── iterion-bot-catalog-static.md
 │   │   ├── main.bot
@@ -224,6 +231,8 @@
 │   │   ├── README.md
 │   │   ├── main.bot
 │   │   └── manifest.yaml
+│   ├── review_pr_finding_id_test.go
+│   ├── review_pr_stale_anchor_test.go
 │   ├── rgaa-audit
 │   │   ├── main.bot
 │   │   ├── manifest.yaml
@@ -670,7 +679,8 @@
 │   │   ├── 082-sandbox-by-default.md
 │   │   ├── 083-json-field-schema-type-union.md
 │   │   ├── 084-subbot-reattach-across-restarts.md
-│   │   └── 085-pi-as-execution-backend.md
+│   │   ├── 085-pi-as-execution-backend.md
+│   │   └── 086-pipeline-card-drawer-hand-rolled-overlay.md
 │   ├── architecture.md
 │   ├── asymptote-bench.md
 │   ├── async-interaction.md
@@ -928,6 +938,7 @@
 │   │       └── worker
 │   │           ├── worker.go
 │   │           └── worker_test.go
+│   ├── handoff_publish_test.go
 │   ├── issue_triage_trigger_test.go
 │   ├── live_bot_adr_cartograph_test.go
 │   ├── live_bot_adr_rechallenge_test.go
@@ -1000,6 +1011,7 @@
 │   │   ├── feat_verified_action.bot
 │   │   ├── feat_worktree.bot
 │   │   ├── feature_request_dual_model.bot
+│   │   ├── handoff_publish_mini.bot
 │   │   ├── llm_router_task_dispatch.bot
 │   │   ├── playwright_visual_qa.bot
 │   │   ├── pr_refine_dual_model_parallel.bot
@@ -1246,6 +1258,8 @@
 │   │   │   ├── parse_test.go
 │   │   │   ├── pi.go
 │   │   │   ├── pi_async_test.go
+│   │   │   ├── pi_codex.go
+│   │   │   ├── pi_codex_test.go
 │   │   │   ├── pi_ctrl.go
 │   │   │   ├── pi_ctrl_test.go
 │   │   │   ├── pi_mcp_test.go
@@ -1270,6 +1284,8 @@
 │   │   │   │       └── mock-provider.ts
 │   │   │   ├── presets_test.go
 │   │   │   ├── registry.go
+│   │   │   ├── sandbox_state_mirror.go
+│   │   │   ├── sandbox_state_mirror_test.go
 │   │   │   ├── secrets_prompt_test.go
 │   │   │   ├── skills_test.go
 │   │   │   ├── testdata
@@ -1325,7 +1341,7 @@
 │   │   │   ├── events.go
 │   │   │   ├── events_test.go
 │   │   │   ├── executor.go
-│   │   │   ├── executor_*.go  (27 files)
+│   │   │   ├── executor_*.go  (29 files)
 │   │   │   ├── generation.go
 │   │   │   ├── generation_*.go  (9 files)
 │   │   │   ├── hooks.go
@@ -1374,10 +1390,13 @@
 │   │   │   ├── system_reminder.go
 │   │   │   ├── system_reminder_test.go
 │   │   │   ├── template_ctx.go
+│   │   │   ├── tool_attachment.go
+│   │   │   ├── tool_attachment_test.go
 │   │   │   ├── validate.go
 │   │   │   ├── validate_test.go
 │   │   │   └── wire_model_test.go
 │   │   ├── permission
+│   │   │   ├── grants_from_test.go
 │   │   │   ├── marker.go
 │   │   │   ├── marker_test.go
 │   │   │   ├── messages.go
@@ -1624,6 +1643,8 @@
 │   │   ├── schedule_test.go
 │   │   ├── secret.go
 │   │   ├── skilllib.go
+│   │   ├── storeanchor.go
+│   │   ├── storeanchor_test.go
 │   │   ├── studio.go
 │   │   ├── studio_bind_test.go
 │   │   ├── studio_test.go
@@ -1996,6 +2017,7 @@
 │   │   ├── oauth_app_store.go
 │   │   ├── oauth_app_store_test.go
 │   │   ├── orchestrator.go
+│   │   ├── orchestrator_autofix_test.go
 │   │   ├── orchestrator_botrules_test.go
 │   │   ├── orchestrator_test.go
 │   │   ├── permission.go
@@ -2272,7 +2294,7 @@
 │   │   ├── edges.go
 │   │   ├── else_edge_test.go
 │   │   ├── engine.go
-│   │   ├── engine_*.go  (8 files)
+│   │   ├── engine_*.go  (9 files)
 │   │   ├── errors.go
 │   │   ├── events.go
 │   │   ├── events_test.go
@@ -2288,6 +2310,7 @@
 │   │   ├── library_skills_test.go
 │   │   ├── llm_router_test.go
 │   │   ├── loop_head_selfref_test.go
+│   │   ├── mirrored_skills_wiring_test.go
 │   │   ├── node_fields.go
 │   │   ├── node_output.go
 │   │   ├── on_node_finished_test.go
@@ -2296,6 +2319,7 @@
 │   │   ├── parallel_test.go
 │   │   ├── pause.go
 │   │   ├── pause_test.go
+│   │   ├── permission_grants_test.go
 │   │   ├── plugin_hooks.go
 │   │   ├── plugin_hooks_test.go
 │   │   ├── plugin_skills.go
@@ -2618,7 +2642,7 @@
 │   │   ├── filesystem_test.go
 │   │   ├── filter.go
 │   │   ├── filter_test.go
-│   │   ├── forge_*.go  (18 files)
+│   │   ├── forge_*.go  (22 files)
 │   │   ├── generic_secrets_routes.go
 │   │   ├── gosafe.go
 │   │   ├── gosafe_test.go
@@ -2660,7 +2684,7 @@
 │   │   ├── password_routes.go
 │   │   ├── pat_routes.go
 │   │   ├── pat_routes_test.go
-│   │   ├── pipeline_*.go  (14 files)
+│   │   ├── pipeline_*.go  (15 files)
 │   │   ├── plugin_sources_routes.go
 │   │   ├── plugins.go
 │   │   ├── plugins_routes_test.go
@@ -2718,10 +2742,10 @@
 │   │   ├── webhooks_gitlab.go
 │   │   ├── webhooks_gitlab_issues_test.go
 │   │   ├── webhooks_gitlab_test.go
+│   │   ├── webhooks_handoff.go
+│   │   ├── webhooks_handoff_test.go
 │   │   ├── webhooks_prbot_test.go
 │   │   ├── webhooks_prforge.go
-│   │   ├── webhooks_prior_review.go
-│   │   ├── webhooks_prior_review_test.go
 │   │   ├── webhooks_review_approve.go
 │   │   ├── webhooks_review_approve_test.go
 │   │   ├── webhooks_routes.go
@@ -2807,6 +2831,7 @@
 │   │   ├── notes_test.go
 │   │   ├── openat_other.go
 │   │   ├── openat_unix.go
+│   │   ├── permission_grants_test.go
 │   │   ├── pid.go
 │   │   ├── pid_test.go
 │   │   ├── plans.go
@@ -3273,6 +3298,9 @@
 │   │   │   │   │   ├── ConversationEmptyState.test.tsx
 │   │   │   │   │   ├── ConversationEmptyState.tsx
 │   │   │   │   │   ├── GateAttachments.tsx
+│   │   │   │   │   ├── GateInboundFile.tsx
+│   │   │   │   │   ├── GateInboundPayload.test.tsx
+│   │   │   │   │   ├── GateInboundPayload.tsx
 │   │   │   │   │   ├── HumanPromptForm.test.tsx
 │   │   │   │   │   ├── HumanPromptForm.tsx
 │   │   │   │   │   ├── HumanQuestionCard.tsx
@@ -3293,6 +3321,7 @@
 │   │   │   │   │   ├── FollowLivePill.tsx
 │   │   │   │   │   ├── IterationCrumb.tsx
 │   │   │   │   │   ├── IterationPills.tsx
+│   │   │   │   │   ├── LLMTrace.test.tsx
 │   │   │   │   │   ├── LLMTrace.tsx
 │   │   │   │   │   ├── LogsTab.tsx
 │   │   │   │   │   ├── NodeKindIcon.tsx
@@ -3534,6 +3563,8 @@
 │   │   │       ├── EffortBar.tsx
 │   │   │       ├── EmojiPicker.tsx
 │   │   │       ├── EmptyState.tsx
+│   │   │       ├── ExpandableValue.test.tsx
+│   │   │       ├── ExpandableValue.tsx
 │   │   │       ├── FieldLabel.tsx
 │   │   │       ├── HeaderBanner.tsx
 │   │   │       ├── HelpHint.tsx
@@ -3635,6 +3666,7 @@
 │   │   │   ├── useSubbotDocuments.ts
 │   │   │   └── useToggleSet.ts
 │   │   ├── lib
+│   │   │   ├── a11y.test.ts
 │   │   │   ├── a11y.ts
 │   │   │   ├── askUserOptions.ts
 │   │   │   ├── attachmentValidation.test.ts
@@ -3683,6 +3715,8 @@
 │   │   │   ├── forms
 │   │   │   │   ├── formSpecFromSchema.test.ts
 │   │   │   │   └── formSpecFromSchema.ts
+│   │   │   ├── gateInbound.test.ts
+│   │   │   ├── gateInbound.ts
 │   │   │   ├── groups.ts
 │   │   │   ├── humanizeCron.test.ts
 │   │   │   ├── humanizeCron.ts
@@ -3901,6 +3935,7 @@
 │   │   │   │   ├── ImagePreview.tsx
 │   │   │   │   ├── PipelineCardDetails.test.tsx
 │   │   │   │   ├── PipelineCardDetails.tsx
+│   │   │   │   ├── PipelineCardDrawer.test.tsx
 │   │   │   │   ├── PipelineCardPage.tsx
 │   │   │   │   ├── PipelineColumns.test.tsx
 │   │   │   │   ├── PipelineColumns.tsx
@@ -3910,12 +3945,14 @@
 │   │   │   │   ├── SequentialReviews.test.tsx
 │   │   │   │   ├── SequentialReviews.tsx
 │   │   │   │   ├── cardCapabilities.ts
+│   │   │   │   ├── cardDrawerWidth.test.ts
+│   │   │   │   ├── cardDrawerWidth.ts
+│   │   │   │   ├── cardPredicates.test.ts
+│   │   │   │   ├── cardPredicates.ts
 │   │   │   │   ├── cardRoute.test.ts
 │   │   │   │   ├── cardRoute.ts
 │   │   │   │   ├── cardTags.test.ts
 │   │   │   │   ├── cardTags.ts
-│   │   │   │   ├── columnFilters.test.ts
-│   │   │   │   ├── columnFilters.ts
 │   │   │   │   ├── externalActiveRuns.test.ts
 │   │   │   │   ├── externalActiveRuns.ts
 │   │   │   │   ├── fileKind.test.ts
@@ -11254,4 +11291,4 @@
     │           ├── sqlite_windows.go
     │           └── sqlite_windows_386.go
     └── modules.txt
-1582 directories, 10462 files
+1583 directories, 10506 files
