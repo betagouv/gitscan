@@ -7,82 +7,159 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+*Nothing yet*
+
+### [1.3.8] - January 16, 2025
+
+### Security
+
+* Limit untrusted decoders during thumbnailing ([GHSA-rcxc-wjgw-579r](https://github.com/t2bot/matrix-media-repo/security/advisories/GHSA-rcxc-wjgw-579r) / [CVE-2024-56515](https://www.cve.org/CVERecord?id=CVE-2024-56515))
+* Improve handling of JSON ([GHSA-gp86-q8hg-fpxj](https://github.com/t2bot/matrix-media-repo/security/advisories/GHSA-gp86-q8hg-fpxj) / [CVE-2024-52791](https://www.cve.org/CVERecord?id=CVE-2024-52791))
+* Fix SSRF issues ([GHSA-r6jg-jfv6-2fjv](https://github.com/t2bot/matrix-media-repo/security/advisories/GHSA-r6jg-jfv6-2fjv) / [CVE-2024-52602](https://www.cve.org/CVERecord?id=CVE-2024-52602))
+
+### Added
+
+* Allow guests to access uploaded media, as per [MSC4189](https://github.com/matrix-org/matrix-spec-proposals/pull/4189).
+* The thumbnailer can now be run independently with the `thumbnailer` binary. See `thumbnailer -help` for details.
+
+### Changed
+
+* MMR now requires Go 1.22 for compilation.
+* MMR now builds on a base image of `alpine:3.21`.
+* The global `repo.freezeUnauthenticatedMedia` option now defaults to `true`, enabling authenticated media by default. A future release will remove this option, requiring the freeze behaviour. See `config.sample.yaml` for details.
+* For SVG and JPEGXL files, ImageMagick 7 is now required.
+* For MP4 files, ffmpeg 6 or 7 (use 7 for best results) is now required.
+
+### Fixed
+
+* Return a 404 instead of 500 when clients access media which is frozen.
+* Return a 403 instead of 500 when guests access endpoints that are for registered users only.
+* Ensure the request parameters are correctly set for authenticated media client requests.
+* Ensure remote signing keys expire after at most 7 days.
+* Fixed parsing of `Authorization` headers for federated servers.
+* Ensure `ignoredHosts` is applied to unauthenticated requests.
+
+## [1.3.7] - July 30, 2024
+
+### Added
+
+* A new global config option, `repo.freezeUnauthenticatedMedia`, is supported to enact the unauthenticated media freeze early. See `config.sample.yaml` for details.
+
+### Changed
+
+* The default leaky bucket capacity has changed from 300mb to 500mb, allowing for more downloads to go through. The drain rate and overflow limit are unchanged (5mb/minute and 100mb respectively).
+
+## [1.3.6] - July 10, 2024
+
+### Fixed
+
+* Ensure a `boundary` is set on federation downloads, allowing the download to work.
+
+## [1.3.5] - July 10, 2024
+
+### Security
+
+This release fixes the following security concerns:
+
+* [GHSA-8vmr-h7h5-cqhg](https://github.com/t2bot/matrix-media-repo/security/advisories/GHSA-8vmr-h7h5-cqhg) / [CVE-2024-36402](https://www.cve.org/CVERecord?id=CVE-2024-36402)
+* [GHSA-vc2m-hw89-qjxf](https://github.com/t2bot/matrix-media-repo/security/advisories/GHSA-vc2m-hw89-qjxf) / [CVE-2024-36403](https://www.cve.org/CVERecord?id=CVE-2024-36403)
+
+### Added
+
+* New datastore option to ignore Redis cache when downloading media served by a `publicBaseUrl`. This can help ensure more requests get redirected to the CDN.
+* `HEAD /download` is now supported, as per [MSC4120](https://github.com/matrix-org/matrix-spec-proposals/pull/4120).
+* S3 datastores can now specify a `prefixLength` to improve S3 performance on some providers. See `config.sample.yaml` for details.
+* Add `multipartUploads` flag for running MMR against unsupported S3 providers. See `config.sample.yaml` for details. 
+* A new "leaky bucket" rate limit algorithm has been applied to downloads. See `rateLimit.buckets` in `config.sample.yaml` for details.
+* Add support for [MSC3916: Authentication for media](https://github.com/matrix-org/matrix-spec-proposals/pull/3916). 
+  * To enable full support, use `signingKeyPath` in your config. See `config.sample.yaml` for details. 
+  * Server operators should point `/_matrix/client/v1/media/*` and `/_matrix/federation/v1/media/*` at MMR.
+
+### Changed
+
+* The leaky bucket rate limiting introduced above is turned on by default. Administrators are encouraged to review the default settings and adjust as needed.
+
+### Fixed
+
+* Metrics for redirected and HTML requests are tracked.
+* Fixed more issues relating to non-dimensional media being thumbnailed (`invalid image size: 0x0` errors).
+* Long-running purge requests no longer fail when the requesting client times out. They are continued in the background.
+* Purging old media has been fixed to actually identify old media.
+* JPEG thumbnails will now use sensible extensions.
+* Fixed directory permissions when exporting MMR to Synapse.
+* In some rare cases, memory usage may have leaked due to thumbnail error handling. This has been fixed.
+* Synapse signing keys with blank lines can now be decoded/combined with other keys.
+
+## [1.3.4] - February 9, 2024
+
+### Added
+
+* Dendrite homeservers can now have their media imported safely, and `adminApiKind` may be set to `dendrite`.
+* Exporting MMR's data to Synapse is now possible with `import_to_synapse`. To use it, first run `gdpr_export` or similar.
+* Errors encountered during a background task, such as an API-induced export, are exposed as `error_message` in the admin API.
+* MMR will follow redirects on federated downloads up to 5 hops.
+* S3-backed datastores can have download requests redirected to a public-facing CDN rather than being proxied through MMR. See `publicBaseUrl` under the S3 datastore config.
+
+### Changed
+
+* Exports now use an internal timeout of 10 minutes instead of 1 minute when downloading files. This may still result in errors if downloading from S3 takes too long.
+* MMR now requires Go 1.21 for compilation.
+* ARM-supported Docker images are now available through [GHCR](https://github.com/t2bot/matrix-media-repo/pkgs/container/matrix-media-repo).
+  * The Docker Hub (docker.io) builds are deprecated and will not receive updates starting with v1.4.0
+  * Docker Hub images are not guaranteed to have ARM compatibility.
+* The `latest` Docker tag on both Docker Hub and GHCR now points to the latest release instead of the unstable development build.
+
+### Fixed
+
+* Exports created with `s3_urls` now contain valid URLs.
+* Exports no longer fail with "The requested range is not satisfiable".
+* Exports no longer fail with "index out of range \[0] with length 0".
+* Requests requiring authentication, but lack a provided access token, will return HTTP 401 instead of HTTP 500 now.
+* Downloads when using a self-hosted MinIO instance are no longer slower than expected.
+* The `DELETE /_matrix/media/unstable/admin/export/:exportId` endpoint has been reinstated as described.
+* If a server's `downloads.maxSize` is greater than the `uploads.maxSize`, remote media is no longer cut off at `uploads.maxSize`. The media will instead be downloaded at `downloads.maxSize` and error if greater.
+* `Content-Type` on `/download` and `/thumbnail` is now brought in line with [MSC2701](https://github.com/matrix-org/matrix-spec-proposals/pull/2701).
+
+## [1.3.3] - October 31, 2023
+
+### Fixed
+
+* Improved handling when encountering an error attempting to populate Redis during uploads.
+* Fixed `Range` requests failing by default by internally setting a default chunk size of 10mb.
+* Stop logging "no exif data".
+* Fixed admin API requests not working when authenticating as the shared secret user.
+
+### Changed
+
+* Updated dependencies. Manually compiled deployments may need to recompile `libheif` as well.
+
+## [1.3.2] - September 13, 2023
+
+### Fixed
+
+* Fixed thumbnail generation causing `thumbnails_index` errors in some circumstances.
+
+## [1.3.1] - September 8, 2023
+
+### Fixed
+
+* Fixed media purge API not being able to delete thumbnails.
+* Fixed thumbnails being attempted for disabled media types.
+* Fixed SVG and other non-dimensional media failing to be usefully thumbnailed in some cases.
+
+## [1.3.0] - September 8, 2023
+
 ### Mandatory Configuration Change
 
-Datastores are no longer managed by matrix-media-repo internally, meaning you MUST specify a datastore ID on each of your
-configured datastores. If you're setting up matrix-media-repo for the first time then you can use whatever you want for
-a datastore ID (though it's recommended to stick to alphanumeric strings). If you're *upgrading* to this version however,
-you will need to pull the datastore IDs out of the matrix-media-repo and add them to your configuration.
+**Please see [docs.t2bot.io](https://docs.t2bot.io/matrix-media-repo/v1.3.3/upgrading/130.html) for details.**
 
-**For safety, the datastores table is *not* deleted from the database in this upgrade. A future version may drop the table,
-however.**
+### Security Fixes
 
-#### Getting existing datastore IDs
-
-**Before upgrading**, you can get your datastore IDs fairly easily. The best way might be to look at the startup log of
-your media repo:
-
-```text
-INFO[2023-05-21 20:58:45.116 Z] Datastores:                                  
-INFO[2023-05-21 20:58:45.116 Z]         file (e9ce13bbb062383ce1bcee76414058668877f2d51635810652335374336): /mnt/mmr-store/location4
-INFO[2023-05-21 20:58:45.117 Z]         s3 (7669e2fb8ccaa0801e4255a417ad20884f76b8611659655069202644992): s3://redacted.r2.cloudflarestorage.com/redacted
-```
-
-This way, you're able to correlate locations to IDs. For example, the `file` datastore configured to put media at
-`/mnt/mmr-store/location4` has ID `e9ce13bbb062383ce1bcee76414058668877f2d51635810652335374336`. Add this as
-`id: "e9ce13bbb062383ce1bcee76414058668877f2d51635810652335374336"` in your media repo config file.
-
-Alternatively, you can use the admin API to get your datastores:
-
-```text
-curl -s -X GET -H "Authorization: Bearer YOUR_ACCESS_TOKEN" https://example.org/_matrix/media/unstable/admin/datastores
-{
-  "e9ce13bbb062383ce1bcee76414058668877f2d51635810652335374336": {
-    "type": "file",
-    "uri": "/mnt/mmr-store/location4"
-  },
-  "7669e2fb8ccaa0801e4255a417ad20884f76b8611659655069202644992": {
-    "type": "s3",
-    "uri": "s3://redacted.r2.cloudflarestorage.com/redacted"
-  }
-}
-```
-
-The returned object is keyed by ID over the API.
-
-In either case, take the ID and add it to the associated datastore in your config, similar to the following:
-
-```yaml
-# Your specific configuration may be different
-datastores:
-  - type: file
-    id: "e9ce13bbb062383ce1bcee76414058668877f2d51635810652335374336"  ## ADD THIS
-    enabled: true
-    forKinds: ["archives"]
-    opts:
-      path: "/mnt/mmr-store/location4"
-  - type: s3
-    id: "7669e2fb8ccaa0801e4255a417ad20884f76b8611659655069202644992"  ## ADD THIS
-    enabled: true
-    forKinds: ["all"]
-    opts:
-      ssl: true
-      tempPath: "/mnt/mmr-store/s3-staging"
-      endpoint: redacted.r2.cloudflarestorage.com
-      accessKeyId: "redacted"
-      accessSecret: "redacted"
-      bucketName: "redacted"
-```
-
-**Note**: If matrix-media-repo detects that a datastore ID is used but not referenced in the config then it will refuse
-to start.
-
-This new configuration style additionally allows for out-of-band datastore transfers. If you move all your data to a new
-path/server, for example, then you can simply update the path in the config for that datastore.
+* Fix improper usage of `Content-Disposition: inline` and related `Content-Type` safety ([CVE-2023-41318](https://www.cve.org/CVERecord?id=CVE-2023-41318), [GHSA-5crw-6j7v-xc72](https://github.com/t2bot/matrix-media-repo/security/advisories/GHSA-5crw-6j7v-xc72)).
 
 ### Deprecations
 
-* The `GET /_matrix/media/unstable/local_copy/:server/:mediaId` (and `unstable/io.t2bot.media` variant) endpoint is deprecated and scheduled for removal. If you are using this endpoint, please comment on [this issue](https://github.com/turt2live/matrix-media-repo/issues/422) to explain your use case.
+* The `GET /_matrix/media/unstable/local_copy/:server/:mediaId` (and `unstable/io.t2bot.media` variant) endpoint is deprecated and scheduled for removal. If you are using this endpoint, please comment on [this issue](https://github.com/t2bot/matrix-media-repo/issues/422) to explain your use case.
 
 ### Added
 
@@ -97,33 +174,25 @@ path/server, for example, then you can simply update the path in the config for 
 * New metrics:
   * HTTP response times.
   * Age of downloaded/accessed media.
+* Support for [PGO](https://go.dev/doc/pgo) builds has been enabled via [pgo-fleet](https://github.com/t2bot/pgo-fleet).
 
 ### Removed
 
 * IPFS support has been removed due to maintenance burden.
 * Exports initiated through the admin API no longer support `?include_data=false`. Exports will always contain data.
+* Server-side blurhash calculation has been removed. Clients and bridges already calculate blurhashes locally where applicable. 
 
 ### Changed
 
 * **Mandatory configuration change**: You must add datastore IDs to your datastore configuration, as matrix-media-repo will no longer manage datastores for you.
-* If compiling `matrix-media-repo`, note that new external dependencies are required. See [the docs](https://docs.t2bot.io/matrix-media-repo/installing/method/compilation.html).
+* If compiling `matrix-media-repo`, note that new external dependencies are required. See [the docs](https://docs.t2bot.io/matrix-media-repo/v1.3.3/installing/method/compilation.html).
   * Docker images already contain these dependencies. 
 * Datastores no longer use the `enabled` flag set on them. Use `forKinds: []` instead to disable a datastore's usage.
-* Some admin endpoints for purging media, quarantining media, and background task information now require additional path components.
-    ```diff
-    -POST /_matrix/media/unstable/admin/purge/<server>/<media id>?access_token=your_access_token
-    +POST /_matrix/media/unstable/admin/purge/media/<server>/<media id>?access_token=your_access_token
-  
-    -POST /_matrix/media/unstable/admin/quarantine/<server>/<media id>?access_token=your_access_token
-    +POST /_matrix/media/unstable/admin/quarantine/media/<server>/<media id>?access_token=your_access_token
-  
-    -GET /_matrix/media/unstable/admin/tasks/<task ID>
-    +GET /_matrix/media/unstable/admin/task/<task ID>
-    ```
 * Per-user upload quotas now do not allow users to exceed the maximum values, even by 1 byte. Previously, users could exceed the limits by a little bit.
 * Updated to Go 1.19, then Go 1.20 in the same release cycle.
+* New CGO dependencies are required. See [docs.t2bot.io](https://docs.t2bot.io/matrix-media-repo/v1.3.3/installing/method/compilation.html) for details.
 * Logs are now less noisy by default.
-* Connected homeservers must support at least Matrix 1.1 on the Client-Server API.
+* Connected homeservers must support at least Matrix 1.1 on the Client-Server API. Servers over federation are not affected.
 * The example Grafana dashboard has been updated.
 
 ### Fixed
@@ -147,7 +216,7 @@ path/server, for example, then you can simply update the path in the config for 
 
 ### Changed
 
-* Swap out the HEIF library for better support towards [ARM64 Docker Images](https://github.com/turt2live/matrix-media-repo/issues/365).
+* Swap out the HEIF library for better support towards [ARM64 Docker Images](https://github.com/t2bot/matrix-media-repo/issues/365).
 * The development environment now uses Synapse as a homeserver. Test accounts will need recreating.
 * Updated to Go 1.18
 * Improved error message when thumbnailer cannot determine image dimensions.
@@ -246,7 +315,7 @@ caching that is now supported properly by this release, or disable caching if no
 
 ### Security advisories
 
-This release includes a fix for [CVE-2021-29453](https://github.com/turt2live/matrix-media-repo/security/advisories/GHSA-j889-h476-hh9h).
+This release includes a fix for [CVE-2021-29453](https://github.com/t2bot/matrix-media-repo/security/advisories/GHSA-j889-h476-hh9h).
 
 Server administrators are recommended to upgrade as soon as possible. This issue is considered to be exploited in the wild
 due to some deployments being affected unexpectedly.
@@ -348,7 +417,7 @@ due to some deployments being affected unexpectedly.
 release tracks how much a user has uploaded, which might take a while to initially calculate. If you have
 a large database (more than about 100k uploaded files), run the following steps before upgrading:
 
-1. The PostgreSQL script described [here](https://github.com/turt2live/matrix-media-repo/blob/a8951b0562debb9f8ae3b6e517bfc3a84d2e627a/migrations/17_add_user_stats_table_up.sql).
+1. The PostgreSQL script described [here](https://github.com/t2bot/matrix-media-repo/blob/a8951b0562debb9f8ae3b6e517bfc3a84d2e627a/migrations/17_add_user_stats_table_up.sql).
    This can be run while the server is running.
 2. If you have no intention of using stats or quotas, you're done (the stats table will be inaccurate). If
    you do plan on using either, run `INSERT INTO user_stats SELECT user_id, SUM(size_bytes) FROM media GROUP BY user_id;`
@@ -393,7 +462,7 @@ a large database (more than about 100k uploaded files), run the following steps 
 ### Added
 
 * Added options to cache access tokens for users. This prevents excessive calls to `/account/whoami` on your homeserver, particularly for appservices.
-* [Documentation](https://github.com/turt2live/matrix-media-repo/blob/master/docs/contrib/delegation.md) on how to set up delegation with the media repo and Traefik. Thanks @derEisele!
+* [Documentation](https://github.com/t2bot/matrix-media-repo/blob/master/docs/contrib/delegation.md) on how to set up delegation with the media repo and Traefik. Thanks @derEisele!
 
 ### Changed
 
@@ -508,27 +577,36 @@ a large database (more than about 100k uploaded files), run the following steps 
 * Various other features that would be expected like maximum/minimum size controls, rate limiting, etc. Check out the
   sample config for a better idea of what else is possible.
 
-[unreleased]: https://github.com/turt2live/matrix-media-repo/compare/v1.2.13...HEAD
-[1.2.13]: https://github.com/turt2live/matrix-media-repo/compare/v1.2.12...v1.2.13
-[1.2.12]: https://github.com/turt2live/matrix-media-repo/compare/v1.2.11...v1.2.12
-[1.2.11]: https://github.com/turt2live/matrix-media-repo/compare/v1.2.10...v1.2.11
-[1.2.10]: https://github.com/turt2live/matrix-media-repo/compare/v1.2.9...v1.2.10
-[1.2.9]: https://github.com/turt2live/matrix-media-repo/compare/v1.2.8...v1.2.9
-[1.2.8]: https://github.com/turt2live/matrix-media-repo/compare/v1.2.7...v1.2.8
-[1.2.6]: https://github.com/turt2live/matrix-media-repo/compare/v1.2.6...v1.2.7
-[1.2.6]: https://github.com/turt2live/matrix-media-repo/compare/v1.2.5...v1.2.6
-[1.2.5]: https://github.com/turt2live/matrix-media-repo/compare/v1.2.4...v1.2.5
-[1.2.4]: https://github.com/turt2live/matrix-media-repo/compare/v1.2.3...v1.2.4
-[1.2.3]: https://github.com/turt2live/matrix-media-repo/compare/v1.2.2...v1.2.3
-[1.2.2]: https://github.com/turt2live/matrix-media-repo/compare/v1.2.1...v1.2.2
-[1.2.1]: https://github.com/turt2live/matrix-media-repo/compare/v1.2.0...v1.2.1
-[1.2.0]: https://github.com/turt2live/matrix-media-repo/compare/v1.1.3...v1.2.0
-[1.1.3]: https://github.com/turt2live/matrix-media-repo/compare/v1.1.2...v1.1.3
-[1.1.2]: https://github.com/turt2live/matrix-media-repo/compare/v1.1.1...v1.1.2
-[1.1.1]: https://github.com/turt2live/matrix-media-repo/compare/v1.1.0...v1.1.1
-[1.1.0]: https://github.com/turt2live/matrix-media-repo/compare/v1.0.2...v1.1.0
-[1.0.2]: https://github.com/turt2live/matrix-media-repo/compare/v1.0.1...v1.0.2
-[1.0.1]: https://github.com/turt2live/matrix-media-repo/compare/v1.0.0...v1.0.1
-[1.0.0]: https://github.com/turt2live/matrix-media-repo/compare/v1.0.0-rc.2...v1.0.0
-[1.0.0-rc.2]: https://github.com/turt2live/matrix-media-repo/compare/v1.0.0-rc.1...v1.0.0-rc.2
-[1.0.0-rc.1]: https://github.com/turt2live/matrix-media-repo/releases/tag/v1.0.0-rc.1
+[unreleased]: https://github.com/t2bot/matrix-media-repo/compare/v1.3.8...HEAD
+[1.3.8]: https://github.com/t2bot/matrix-media-repo/compare/v1.3.7...v1.3.8
+[1.3.7]: https://github.com/t2bot/matrix-media-repo/compare/v1.3.6...v1.3.7
+[1.3.6]: https://github.com/t2bot/matrix-media-repo/compare/v1.3.5...v1.3.6
+[1.3.5]: https://github.com/t2bot/matrix-media-repo/compare/v1.3.4...v1.3.5
+[1.3.4]: https://github.com/t2bot/matrix-media-repo/compare/v1.3.3...v1.3.4
+[1.3.3]: https://github.com/t2bot/matrix-media-repo/compare/v1.3.2...v1.3.3
+[1.3.2]: https://github.com/t2bot/matrix-media-repo/compare/v1.3.1...v1.3.2
+[1.3.1]: https://github.com/t2bot/matrix-media-repo/compare/v1.3.0...v1.3.1
+[1.3.0]: https://github.com/t2bot/matrix-media-repo/compare/v1.2.13...v1.3.0
+[1.2.13]: https://github.com/t2bot/matrix-media-repo/compare/v1.2.12...v1.2.13
+[1.2.12]: https://github.com/t2bot/matrix-media-repo/compare/v1.2.11...v1.2.12
+[1.2.11]: https://github.com/t2bot/matrix-media-repo/compare/v1.2.10...v1.2.11
+[1.2.10]: https://github.com/t2bot/matrix-media-repo/compare/v1.2.9...v1.2.10
+[1.2.9]: https://github.com/t2bot/matrix-media-repo/compare/v1.2.8...v1.2.9
+[1.2.8]: https://github.com/t2bot/matrix-media-repo/compare/v1.2.7...v1.2.8
+[1.2.6]: https://github.com/t2bot/matrix-media-repo/compare/v1.2.6...v1.2.7
+[1.2.6]: https://github.com/t2bot/matrix-media-repo/compare/v1.2.5...v1.2.6
+[1.2.5]: https://github.com/t2bot/matrix-media-repo/compare/v1.2.4...v1.2.5
+[1.2.4]: https://github.com/t2bot/matrix-media-repo/compare/v1.2.3...v1.2.4
+[1.2.3]: https://github.com/t2bot/matrix-media-repo/compare/v1.2.2...v1.2.3
+[1.2.2]: https://github.com/t2bot/matrix-media-repo/compare/v1.2.1...v1.2.2
+[1.2.1]: https://github.com/t2bot/matrix-media-repo/compare/v1.2.0...v1.2.1
+[1.2.0]: https://github.com/t2bot/matrix-media-repo/compare/v1.1.3...v1.2.0
+[1.1.3]: https://github.com/t2bot/matrix-media-repo/compare/v1.1.2...v1.1.3
+[1.1.2]: https://github.com/t2bot/matrix-media-repo/compare/v1.1.1...v1.1.2
+[1.1.1]: https://github.com/t2bot/matrix-media-repo/compare/v1.1.0...v1.1.1
+[1.1.0]: https://github.com/t2bot/matrix-media-repo/compare/v1.0.2...v1.1.0
+[1.0.2]: https://github.com/t2bot/matrix-media-repo/compare/v1.0.1...v1.0.2
+[1.0.1]: https://github.com/t2bot/matrix-media-repo/compare/v1.0.0...v1.0.1
+[1.0.0]: https://github.com/t2bot/matrix-media-repo/compare/v1.0.0-rc.2...v1.0.0
+[1.0.0-rc.2]: https://github.com/t2bot/matrix-media-repo/compare/v1.0.0-rc.1...v1.0.0-rc.2
+[1.0.0-rc.1]: https://github.com/t2bot/matrix-media-repo/releases/tag/v1.0.0-rc.1

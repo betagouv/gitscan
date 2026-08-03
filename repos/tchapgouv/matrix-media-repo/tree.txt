@@ -2,7 +2,10 @@
 ├── .dockerignore
 ├── .github
 │   └── workflows
+│       ├── binaries.yml
 │       ├── build-libheif.sh
+│       ├── docker.yml
+│       ├── download_pgo.yml
 │       ├── download_providers.yml
 │       └── main.yml
 ├── .gitignore
@@ -11,6 +14,7 @@
 ├── Dockerfile
 ├── LICENSE
 ├── README.md
+├── SECURITY.md
 ├── api
 │   ├── _apimeta
 │   │   └── auth.go
@@ -21,7 +25,8 @@
 │   ├── _responses
 │   │   ├── content.go
 │   │   ├── errors.go
-│   │   └── meta.go
+│   │   ├── meta.go
+│   │   └── redirect.go
 │   ├── _routers
 │   │   ├── 00-install-params.go
 │   │   ├── 01-install_metadata.go
@@ -31,8 +36,10 @@
 │   │   ├── 97-optional-access-token.go
 │   │   ├── 97-require-access-token.go
 │   │   ├── 97-require-repo-admin.go
+│   │   ├── 97-require-server-auth.go
 │   │   ├── 98-use-rcontext.go
 │   │   └── 99-response-metrics.go
+│   ├── branched_route.go
 │   ├── custom
 │   │   ├── datastores.go
 │   │   ├── exports.go
@@ -53,7 +60,8 @@
 │   │   ├── public_config.go
 │   │   ├── thumbnail.go
 │   │   ├── upload_async.go
-│   │   └── upload_sync.go
+│   │   ├── upload_sync.go
+│   │   └── versions.go
 │   ├── router.go
 │   ├── routes.go
 │   ├── unstable
@@ -61,7 +69,9 @@
 │   │   ├── local_copy.go
 │   │   └── public_usage.go
 │   ├── v1
-│   │   └── create.go
+│   │   ├── create.go
+│   │   ├── download.go
+│   │   └── thumbnail.go
 │   └── webserver.go
 ├── archival
 │   ├── dir_part_persister.go
@@ -76,23 +86,53 @@
 ├── build-dist.sh
 ├── build.sh
 ├── cmd
-│   ├── compile_assets
-│   │   └── main.go
-│   ├── export_synapse_for_import
-│   │   └── main.go
-│   ├── gdpr_export
-│   │   └── main.go
-│   ├── gdpr_import
-│   │   └── main.go
-│   ├── import_synapse
-│   │   └── main.go
-│   ├── media_repo
-│   │   ├── main.go
-│   │   └── reloads.go
-│   ├── plugin_antispam_ocr
-│   │   └── main.go
-│   └── s3_consistency_check
-│       └── main.go
+│   ├── archival
+│   │   ├── gdpr_export
+│   │   │   └── main.go
+│   │   └── gdpr_import
+│   │       └── main.go
+│   ├── homeserver_live_importers
+│   │   ├── _common
+│   │   │   ├── download.go
+│   │   │   └── init_import.go
+│   │   ├── import_dendrite
+│   │   │   └── main.go
+│   │   └── import_synapse
+│   │       └── main.go
+│   ├── homeserver_offline_exporters
+│   │   ├── _common
+│   │   │   ├── archive_reader.go
+│   │   │   └── init_export.go
+│   │   └── import_to_synapse
+│   │       └── main.go
+│   ├── homeserver_offline_importers
+│   │   ├── _common
+│   │   │   ├── archiver.go
+│   │   │   └── init_export.go
+│   │   ├── export_dendrite_for_import
+│   │   │   └── main.go
+│   │   └── export_synapse_for_import
+│   │       └── main.go
+│   ├── plugins
+│   │   └── plugin_antispam_ocr
+│   │       └── main.go
+│   ├── utilities
+│   │   ├── _common
+│   │   │   └── signing_key_export.go
+│   │   ├── combine_signing_keys
+│   │   │   └── main.go
+│   │   ├── compile_assets
+│   │   │   └── main.go
+│   │   ├── generate_signing_key
+│   │   │   └── main.go
+│   │   ├── s3_consistency_check
+│   │   │   └── main.go
+│   │   └── thumbnailer
+│   │       └── main.go
+│   └── workers
+│       └── media_repo
+│           ├── main.go
+│           └── reloads.go
 ├── common
 │   ├── assets
 │   │   └── process.go
@@ -110,6 +150,8 @@
 │   ├── errors.go
 │   ├── globals
 │   │   └── reload.go
+│   ├── import_cmdline
+│   │   └── ask_machine_id.go
 │   ├── logging
 │   │   └── logger.go
 │   ├── rcontext
@@ -122,7 +164,6 @@
 ├── database
 │   ├── db.go
 │   ├── json_value.go
-│   ├── table_blurhashes.go
 │   ├── table_expiring_media.go
 │   ├── table_export_parts.go
 │   ├── table_exports.go
@@ -131,6 +172,7 @@
 │   ├── table_media_attributes.go
 │   ├── table_media_hold.go
 │   ├── table_reserved_media.go
+│   ├── table_restricted_media.go
 │   ├── table_tasks.go
 │   ├── table_thumbnails.go
 │   ├── table_url_previews.go
@@ -144,6 +186,7 @@
 │   ├── kind.go
 │   ├── locate.go
 │   ├── pick.go
+│   ├── redirect.go
 │   ├── s3.go
 │   └── upload.go
 ├── dev
@@ -157,30 +200,47 @@
 │   └── run.sh
 ├── docs
 │   ├── admin.md
-│   ├── cache.md
-│   ├── config.md
 │   ├── contrib
 │   │   └── delegation.md
 │   ├── grafana.json
-│   ├── internals
-│   │   └── Media Repo Flow.png
-│   └── redis.md
+│   └── releasing.md
 ├── errcache
 │   ├── cache.go
 │   └── init.go
 ├── go.mod
 ├── go.sum
 ├── homeserver_interop
+│   ├── ImportDb.go
+│   ├── any_server
+│   │   └── signing_key.go
+│   ├── dendrite
+│   │   ├── db.go
+│   │   └── signing_key.go
+│   ├── internal
+│   │   └── signing_key_encode.go
+│   ├── mmr
+│   │   └── signing_key.go
+│   ├── signing_key.go
 │   └── synapse
 │       ├── api.go
-│       └── db.go
+│       ├── db.go
+│       └── signing_key.go
+├── limits
+│   ├── leaky_buckets.go
+│   └── rate_limiting.go
 ├── matrix
-│   ├── admin.go
-│   ├── auth.go
-│   ├── client_server.go
-│   ├── federation.go
-│   ├── matrix.go
-│   └── responses.go
+│   ├── breakers.go
+│   ├── errors.go
+│   ├── http.go
+│   ├── requests.go
+│   ├── requests_admin.go
+│   ├── requests_auth.go
+│   ├── requests_info.go
+│   ├── requests_signing.go
+│   ├── responses.go
+│   ├── server_discovery.go
+│   ├── signing_key_cache.go
+│   └── xmatrix.go
 ├── metrics
 │   ├── metrics.go
 │   └── webserver.go
@@ -221,6 +281,12 @@
 │   ├── 25_try_create_expiring_media_table_up.sql
 │   ├── 26_add_datastore_id_indexes_down.sql
 │   ├── 26_add_datastore_id_indexes_up.sql
+│   ├── 27_drop_blurhashes_down.sql
+│   ├── 27_drop_blurhashes_up.sql
+│   ├── 28_add_task_error_column_down.sql
+│   ├── 28_add_task_error_column_up.sql
+│   ├── 29_create_media_restrictions_down.sql
+│   ├── 29_create_media_restrictions_up.sql
 │   ├── 2_add_animated_col_down.sql
 │   ├── 2_add_animated_col_up.sql
 │   ├── 3_add_quarantine_flag_down.sql
@@ -240,6 +306,9 @@
 ├── notifier
 │   ├── tasks.go
 │   └── uploads.go
+├── pgo_internal
+│   └── pgo.go
+├── pgo_media_repo.pprof
 ├── pipelines
 │   ├── _steps
 │   │   ├── datastore_op
@@ -259,7 +328,6 @@
 │   │   │   ├── generate.go
 │   │   │   └── pick_dimensions.go
 │   │   ├── upload
-│   │   │   ├── blurhash_async.go
 │   │   │   ├── deduplicate.go
 │   │   │   ├── generate_media_id.go
 │   │   │   ├── limit.go
@@ -297,6 +365,8 @@
 │   ├── connection.go
 │   ├── locking.go
 │   └── pubsub.go
+├── restrictions
+│   └── auth.go
 ├── tasks
 │   ├── all.go
 │   ├── exec.go
@@ -319,6 +389,16 @@
 │   ├── models.go
 │   └── templates.go
 ├── test
+│   ├── canonical_json_test.go
+│   ├── matrix_resolve_test.go
+│   ├── msc3916_downloads_suite_test.go
+│   ├── msc3916_misc_client_endpoints_suite_test.go
+│   ├── msc3916_thumbnails_suite_test.go
+│   ├── signing_anyserver_test.go
+│   ├── signing_dendrite_test.go
+│   ├── signing_keys_test.go
+│   ├── signing_mmr_test.go
+│   ├── signing_synapse_test.go
 │   ├── templates
 │   │   ├── minio-config.sh
 │   │   ├── mmr.config.yaml
@@ -331,11 +411,14 @@
 │   │   ├── deps_mmr.go
 │   │   ├── deps_network.go
 │   │   ├── deps_synapse.go
+│   │   ├── inline_dep_host_file.go
 │   │   ├── testcontainers_ext.go
 │   │   ├── util.go
 │   │   ├── util_client.go
-│   │   └── util_client_api_types.go
-│   └── upload_suite_test.go
+│   │   ├── util_client_api_types.go
+│   │   └── util_keyserver.go
+│   ├── upload_suite_test.go
+│   └── xmatrix_header_test.go
 ├── thumbnailing
 │   ├── i
 │   │   ├── 01-factories.go
@@ -375,11 +458,11 @@
 │   │   ├── oembed.go
 │   │   └── opengraph.go
 │   └── u
-│       ├── acl.go
 │       ├── http.go
 │       └── summarize.go
 └── util
     ├── arrays.go
+    ├── canonical_json.go
     ├── config.go
     ├── encoding.go
     ├── http.go
@@ -388,18 +471,24 @@
     │   ├── snowflake.go
     │   └── unique.go
     ├── math.go
+    ├── matrix_media_part.go
     ├── mime.go
+    ├── mime_detect.go
     ├── mxc.go
     ├── random.go
     ├── readers
     │   ├── buffer_reads_reader.go
     │   ├── cancel_closer.go
+    │   ├── error_limit_reader.go
     │   ├── maybe_closer.go
+    │   ├── multipart_reader.go
+    │   ├── nop_seek_closer.go
     │   ├── rewind_reader.go
     │   └── temp_file_closer.go
     ├── sfcache
     │   └── sfcache.go
     ├── strings.go
     ├── time.go
+    ├── unpadded_base64.go
     └── urls.go
-87 directories, 317 files
+111 directories, 382 files

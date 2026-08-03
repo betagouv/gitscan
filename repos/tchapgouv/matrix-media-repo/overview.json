@@ -1,29 +1,38 @@
 {
   "url": "https://github.com/tchapgouv/matrix-media-repo",
   "name": "matrix-media-repo",
-  "description": "Dépôt multimédia Matrix conçu pour les environnements multi-domaines. Il déduplique les médias tout en restant conforme aux spécifications.",
+  "description": "Dépôt multimédia Matrix conçu pour les environnements multi-domaines. Il s'agit d'un composant optionnel de votre configuration de serveur Matrix, recommandé uniquement pour les serveurs individuels de grande taille ou les fournisseurs d'hébergement disposant de nombreux serveurs.",
   "language": "Go",
   "features": [
     "Gestion des médias & Assets",
     "Authentification & Accès",
-    "API & Intégrations"
+    "API & Intégrations",
+    "Gestion documentaire & Fichiers",
+    "Sécurité & Conformité"
   ],
   "audience": "Professionnels",
   "dependencies": [
+    "Go",
     "PostgreSQL",
-    "S3"
+    "Redis"
   ],
   "components": [
-    "API REST",
-    "Base de données PostgreSQL",
-    "Docker & Conteneurs"
+    "API REST & GraphQL",
+    "PostgreSQL & SQL",
+    "Docker & Conteneurs",
+    "TypeScript / JavaScript"
   ],
-  "auth.methods": [
-    "oauth2"
+  "auth": {
+    "methods": [
+      "jwt",
+      "session"
+    ]
+  },
+  "tests": "Tests Go avec Docker",
+  "workflows": [
+    "CI/CD & GitHub Actions"
   ],
-  "tests": null,
-  "workflows": null,
-  "lastActivity": "2023-08-27T02:02:20Z",
+  "lastActivity": "2026-07-21T09:51:10Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -31,11 +40,15 @@
     "stars": 0,
     "forks": 2,
     "contributors": null,
-    "openIssues": 0
+    "openIssues": 2
   },
   "tags": [
     "Données & Open Data",
-    "Sécurité & Auth",
-    "Infrastructure & Stockage"
+    "Écosystème beta.gouv / État",
+    "TypeScript",
+    "Déploiement & Hosting",
+    "Python",
+    "Bases de données SQL",
+    "Sécurité & Auth"
   ]
 }
