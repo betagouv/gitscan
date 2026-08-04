@@ -1,28 +1,41 @@
-## Changelog : drive (30 derniers jours, au 31 juillet 2026)
+## Changelog : drive (30 derniers jours, au 03/08/2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à la gestion des quotas de stockage, avec l'introduction d'un indicateur de stockage et de nouvelles options de configuration. L'expérience de partage de fichiers est également améliorée, notamment avec la possibilité d'importer des contacts à partir d'un fichier. Des corrections de bugs et des optimisations de performance ont été apportées à l'ensemble du système.
+Cette période a été marquée par un effort majeur sur la gestion du stockage et des quotas, offrant aux utilisateurs une meilleure visibilité sur leur espace disponible et des messages d'erreur plus explicites. Les capacités de partage ont été enrichies, notamment par la possibilité de partager des fichiers en masse ou avec des contacts importés depuis un fichier. Enfin, l'interface a été affinée pour améliorer la communication via un nouveau widget de messages et une navigation plus fluide dans les filtres de recherche.
 
 ### Évolutions fonctionnelles
-- Ajout d'un indicateur de stockage (storage gauge) pour visualiser l'utilisation de l'espace disque. [#d3d9dff](https://github.com/suitenumerique/drive/commit/d3d9dff)
-- Possibilité de partager des fichiers avec des contacts importés à partir d'un fichier. [#ab8e0eb](https://github.com/suitenumerique/drive/commit/ab8e0eb)
-- Amélioration de l'expérience de partage avec la mise à jour de l'interface utilisateur (ui-kit 0.28). [#f239b58](https://github.com/suitenumerique/drive/commit/f239b58)
-- Ajout d'un bouton pour accéder au widget de messages depuis le menu d'aide. [#9120c81](https://github.com/suitenumerique/drive/commit/9120c81)
-- Affichage de messages spécifiques concernant les quotas de stockage en cas d'actions rejetées. [#0274332](https://github.com/suitenumerique/drive/commit/0274332)
-- Ajout d'informations sur le quota utilisateur dans l'API des droits (entitlements). [#d9cfb4d](https://github.com/suitenumerique/drive/commit/d9cfb4d)
+- **Gestion du stockage et des quotas** : 
+    - Introduction d'une jauge de stockage visuelle et d'un modal de configuration.
+    - Affichage de messages d'erreur spécifiques lors de l'échec d'une action due à un quota dépassé.
+    - Possibilité d'exclure certains éléments du calcul du quota de stockage.
+    - Ajout d'une commande pour accorder un stockage illimité (administration).
+- **Partage et collaboration** : 
+    - Ajout du partage groupé d'éléments (batch share).
+    - Possibilité d'importer des contacts depuis un fichier lors du partage d'un élément.
+    - Renforcement de la sécurité : les actions de duplication et de déplacement vers la racine sont désormais soumises aux droits d'upload.
+- **Interface utilisateur (UI)** : 
+    - Intégration d'un widget de messages accessible depuis la page d'accueil ou le menu d'aide.
+    - Amélioration de l'ergonomie des filtres de recherche (défilement sur petits écrans, réinitialisation facilitée).
+    - Mise à jour de l'interface de partage pour s'adapter aux nouveaux composants du design system (UI-Kit).
+- **Administration** : 
+    - Amélioration de l'interface de détection de malwares avec l'affichage de la taille des fichiers et de leur existence.
 
 ### Évolutions techniques
-- Refactorisation du service de synchronisation des accès aux descendants. [#22c7eac](https://github.com/suitenumerique/drive/commit/22c7eac)
-- Déplacement de l'API des favoris vers `/items/favorites/`. [#9b1bc4b](https://github.com/suitenumerique/drive/commit/9b1bc4b)
-- Mise à jour de plusieurs dépendances : Django, pillow, next, vite, turbo, idna. [#ab2855a](https://github.com/suitenumerique/drive/commit/ab2855a), [#d2c1e47](https://github.com/suitenumerique/drive/commit/d2c1e47), [#756203e](https://github.com/suitenumerique/drive/commit/756203e), [#20e5d6f](https://github.com/suitenumerique/drive/commit/20e5d6f)
-- Amélioration de la sécurité du Dockerfile. [#6ff79c6](https://github.com/suitenumerique/drive/commit/6ff79c6)
-- Mise à jour de l'image Collabora et adaptation au nouveau contrat d'exécution. [#bd6f6b8](https://github.com/suitenumerique/drive/commit/bd6f6b8)
-- Ajout d'un backend local pour la gestion des droits avec des limites de stockage. [#0f7ee3a](https://github.com/suitenumerique/drive/commit/0f7ee3a)
-- Mise à jour de ui-kit vers les versions 0.27.0 et 0.28. [#5ed2639](https://github.com/suitenumerique/drive/commit/5ed2639), [#41e796b](https://github.com/suitenumerique/drive/commit/41e796b)
-- Correction de bugs liés à la suppression d'éléments et au calcul du stockage. [#6c61275](https://github.com/suitenumerique/drive/commit/6c61275), [#e5f22ea](https://github.com/suitenumerique/drive/commit/e5f22ea)
+- **Architecture et API** : 
+    - Refonte du système de droits (entitlements) pour intégrer la gestion des limites de stockage locales.
+    - Optimisation des performances via une meilleure gestion de l'invalidation du cache de stockage lors des écritures.
+    - Déplacement de la logique de synchronisation des accès des descendants vers un service dédié.
+    - Modification de l'endpoint des éléments favoris vers `/items/favorites/`.
+- **Infrastructure et Sécurité** : 
+    - Durcissement de la configuration Docker et mise à jour de l'image Collabora.
+    - Correction de vulnérabilités de sécurité (notamment sur la bibliothèque `joserfc`).
+    - Rendre la liste d'accès (ACL) d'upload configurable via le backend.
+- **Qualité logicielle** : 
+    - Amélioration de la couverture des tests de bout en bout (E2E) sur les fonctionnalités de partage et de conversion de documents.
+    - Mise à jour des configurations de tests unitaires (Jest).
 
 ### Autres changements
-- Correction de la documentation de l'endpoint de la corbeille. [#d4a8c45](https://github.com/suitenumerique/drive/commit/d4a8c45)
-- Correction de fautes d'orthographe concernant les codes de dépassement de quota. [#1d14ef0](https://github.com/suitenumerique/drive/commit/1d14ef0), [#1a7fcd4](https://github.com/suitenumerique/drive/commit/1a7fcd4)
-- Mise à jour de la version de release à 0.20.0. [#1776a71](https://github.com/suitenumerique/drive/commit/1776a71)
-- Contrainte de version de joserfc >=1.6.8 pour corriger une vulnérabilité CVE-2026-49852. [#25e693b](https://github.com/suitenumerique/drive/commit/25e693b)
+- Passage à la version **0.20.0**.
+- Mise à jour du composant UI-Kit.
+- Corrections orthographiques dans les messages système concernant les quotas.
+- Mise à jour de la documentation du projet.
