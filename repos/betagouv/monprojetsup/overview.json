@@ -1,53 +1,72 @@
 {
   "url": "https://github.com/betagouv/monprojetsup",
   "name": "monprojetsup",
-  "description": "Ce repository contient plusieurs applications nécessaires au fonctionnement de Mon Projet Sup. Il permet de gérer les données et les fonctionnalités liées à ce projet.",
+  "description": "Plateforme mono-repo destinée à accompagner les élèves dans leurs choix de formation via des outils de suggestion et de gestion de projet.",
   "language": "Kotlin",
   "features": [
-    "Gestion des utilisateurs & Permissions",
-    "API & Intégrations",
-    "Données & Schémas"
+    "Authentification & Accès",
+    "Recherche & Filtres",
+    "Gestion des profils & Comptes",
+    "Formulaires & Démarches",
+    "Aides & Éligibilité"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": "Grand public",
   "dependencies": [
-    "FastAPI",
-    "NumPy",
-    "Pandas",
-    "PostgreSQL",
-    "Python-dotenv",
     "React",
-    "TypeScript",
-    "Spring Boot"
+    "Spring Boot",
+    "FastAPI",
+    "PostgreSQL",
+    "Keycloak",
+    "ViteJS",
+    "TailwindCSS",
+    "Kotlin",
+    "Python"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "React / Next.js",
+    "TypeScript / JavaScript",
     "Python (scripts & backend)",
-    "Docker & Conteneurs"
+    "Design System (DSFR & UI libs)",
+    "Docker & Conteneurs",
+    "Authentification (composant)",
+    "Microservices & Architecture"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "saml"
+      "jwt",
+      "session"
+    ],
+    "providers": [
+      "Keycloak"
     ]
   },
   "tests": [
-    "pytest"
+    "Vitest",
+    "Playwright",
+    "Pytest"
   ],
-  "workflows": [],
-  "lastActivity": "2026-04-25T10:28:20+02:00",
-  "status": "active",
-  "license": "Other",
+  "workflows": [
+    "GitLab CI"
+  ],
+  "lastActivity": "2026-04-25T12:28:14+02:00",
+  "status": "maintained",
+  "license": null,
   "hasDocumentation": true,
   "metrics": {
     "stars": 1,
     "forks": 5,
-    "contributors": null,
-    "openIssues": 41
+    "openIssues": 42
   },
   "tags": [
-    "Données & Open Data",
-    "Écosystème beta.gouv / État"
+    "Écosystème beta.gouv / État",
+    "React & Next.js",
+    "TypeScript",
+    "Python",
+    "Bases de données SQL",
+    "Docker & Conteneurs",
+    "Design System & UI"
   ]
 }
