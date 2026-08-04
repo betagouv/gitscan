@@ -1,28 +1,28 @@
 ## Changelog : accounts (30 derniers jours, au 28 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la sécurité, l'authentification et la configuration des fournisseurs d'identité (Keycloak notamment). Des correctifs ont été apportés pour supporter plusieurs fournisseurs d'identité et améliorer la robustesse de l'authentification, ainsi que des optimisations pour l'intégration avec Keycloak. Des changements techniques ont également été effectués pour améliorer la sécurité et la gestion des clés primaires.
+Ce mois-ci, les évolutions se sont concentrées sur le renforcement de la gestion des identités et de la sécurité. Le système supporte désormais plusieurs fournisseurs d'identité et propose des mécanismes de protection accrus pour les données sensibles. Les capacités du serveur d'autorisation ont également été étendues pour offrir plus de flexibilité et de précision dans la gestion des accès.
 
 ### Évolutions fonctionnelles
-- Ajout de la prise en charge de plusieurs fournisseurs d'identité pour l'authentification. [#1234](https://github.com/suitenumerique/accounts/issues/1234)
-- Configuration et personnalisation de l'autorisation server (OIDC Provider).
-- Ajout d'un claim "guest" pour l'OIDC Provider.
-- Amélioration de la gestion des erreurs lors de l'introspection de l'OIDC Provider, avec un fallback vers les backends PSA.
-- Le logout est désormais accessible uniquement via une requête POST, renforçant la sécurité.
-- Prise en charge des vues de connexion de Social Auth nécessitant des requêtes POST.
-- Chiffrement des données supplémentaires (`extra_data`) des fournisseurs d'identité, car elles contiennent des tokens sensibles.
-- Ajout des scopes `given_name` et `usual_name` pour ProConnect dans Keycloak.
+- **Gestion des identités** : support de plusieurs fournisseurs d'identité et gestion améliorée des flux de connexion via les réseaux sociaux (Social Auth).
+- **Sécurité** : 
+    - Chiffrement des données sensibles (`extra_data`) des fournisseurs d'identité.
+    - Sécurisation de la procédure de déconnexion (passage en méthode POST uniquement).
+- **Serveur d'autorisation (OIDC)** : 
+    - Ajout de la revendication (`claim`) `guest`.
+    - Possibilité de personnaliser et configurer le serveur d'autorisation.
+    - Amélioration de la résilience de l'endpoint d'introspection avec un mécanisme de repli (fallback) vers les backends PSA.
+- **Scopes ProConnect** : ajout des périmètres `siret`, `given_name` et `usual_name`.
 
 ### Évolutions techniques
-- Utilisation de UUID version 7 pour les clés primaires des modèles, améliorant la sécurité et la performance.
-- Refonte des tests pour l'invalidation du cache des backends PSA.
-- Ajout de `pytest.mark.django_db` par défaut pour les tests.
-- Mise à jour de la version de Node.js utilisée pour les workflows CrowdIn (retour à la version 22.x).
-- Suppression du code inutile de `app_label` dans `AppConfig()`.
-- Mise à jour des dépendances de sécurité : Django, PyJWT, lxml, pytest, mjml et GitHub Actions.
+- **Base de données** : adoption des UUID Version 7 pour les clés primaires afin d'optimiser les performances et l'indexation.
+- **Gestion du cache** : refonte de l'invalidation du cache pour les backends PSA.
+- **Keycloak** : mise à jour et normalisation de la configuration du royaume (`realm.json`).
+- **Tests** : 
+    - Amélioration de la couverture de tests, notamment sur la gestion des erreurs d'introspection.
+    - Optimisation de la configuration par défaut des tests Django.
+- **Refactoring** : nettoyage de configurations inutiles (`app_label`).
 
 ### Autres changements
-- Mise à jour de l'export du realm Keycloak (`realm.json`) pour une meilleure lisibilité.
-- Correction de la référence au dépôt `docs` dans le changelog.
-- Normalisation des clés dans le fichier `realm.json` de Keycloak pour réduire le bruit dans les diffs.
-- Documentation des scopes et claims supportés.
+- **Documentation** : mise à jour de la documentation concernant les périmètres (scopes) et les revendications (claims) supportés.
+- **CI/CD** : stabilisation de l'environnement Node.js pour les processus de traduction (Crowdin) et uniformisation des arguments de version.
