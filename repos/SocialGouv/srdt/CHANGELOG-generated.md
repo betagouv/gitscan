@@ -1,22 +1,17 @@
-## Changelog : srdt (30 derniers jours, au 16 juillet 2026)
+## Changelog : srdt (30 derniers jours, au 30 juillet 2026)
 
 ### Résumé
-Les dernières mises à jour de l'assistant virtuel SRDT améliorent l'expérience utilisateur avec de nouvelles fonctionnalités comme une section FAQ, une page "Nouveautés" et un écran d'introduction. Des corrections de bugs ont également été apportées pour améliorer l'affichage et la gestion des messages.
+Ce mois-ci, l'assistant a été enrichi de nouvelles sections d'information (FAQ et Nouveautés) pour faciliter l'accompagnement des utilisateurs. L'intelligence de l'assistant a été affinée et l'interface utilisateur a été stabilisée pour offrir une navigation plus fluide. Parallèlement, les processus de construction technique ont été optimisés.
 
 ### Évolutions fonctionnelles
-- Ajout d'une section FAQ pour répondre aux questions fréquentes des utilisateurs. [#397](https://github.com/SocialGouv/srdt/issues/397)
-- Implémentation d'une page "Nouveautés" pour informer les utilisateurs des dernières améliorations. [#396](https://github.com/SocialGouv/srdt/issues/396)
-- Ajout d'un nouvel écran d'introduction pour une meilleure expérience utilisateur initiale.
-- Amélioration de l'envoi des emails suite à une réponse. [#398](https://github.com/SocialGouv/srdt/issues/398)
-- Ajout de la possibilité de continuer une conversation dans la boîte de chat. [#382](https://github.com/SocialGouv/srdt/issues/382)
-- Ajout de barres de défilement et d'un pied de page. [#383](https://github.com/SocialGouv/srdt/issues/383)
-- Correction de l'affichage et de la taille de l'écran. [#401](https://github.com/SocialGouv/srdt/issues/401)
-- Correction de divers problèmes d'affichage. [#384](https://github.com/SocialGouv/srdt/issues/384)
-- Amélioration de l'UX de l'en-tête de la barre latérale. [#385](https://github.com/SocialGouv/srdt/issues/385)
-- Nouveau prompt ajouté. [#402](https://github.com/SocialGouv/srdt/issues/402)
+- Ajout d'une section FAQ pour répondre aux questions fréquentes [#397](https://github.com/SocialGouv/srdt/issues/397).
+- Création d'une section "Nouveautés" pour informer les utilisateurs des dernières évolutions [#396](https://github.com/SocialGouv/srdt/issues/396).
+- Amélioration de la pertinence des réponses via la mise à jour des instructions de l'IA (prompts) [#402](https://github.com/SocialGouv/srdt/issues/402).
+- Correction de l'affichage concernant le défilement et la taille de l'écran [#401](https://github.com/SocialGouv/srdt/issues/401).
+- Correction du processus d'envoi d'e-mails suite à une réponse de l'assistant [#398](https://github.com/SocialGouv/srdt/issues/398).
 
 ### Évolutions techniques
-- Mises à jour régulières de la version du projet (1.44.0 à 1.49.0).
+- Migration de la construction des images vers `buildkit-operator` pour optimiser les processus de déploiement [#386](https://github.com/SocialGouv/srdt/issues/386).
 
 ### Autres changements
-- Aucun changement significatif à signaler.
+- Mise à jour de la documentation des nouveautés [#403](https://github.com/SocialGouv/srdt/issues/403).
