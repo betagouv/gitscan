@@ -1,28 +1,28 @@
 ## Changelog : pilotage-airflow (30 derniers jours, au 28 juillet 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'intégration de nouvelles sources de données (FAGERH, RDV-I, Dora, Matomo, IMER) et l'amélioration des modèles de données existants, notamment pour les enquêtes ESAT. Des optimisations ont également été apportées pour la qualité des données et la performance des pipelines.
+Ce mois a été marqué par un enrichissement significatif des données destinées aux tableaux de bord, notamment pour le suivi des "actes métiers". Les processus de traitement des enquêtes (FAGERH et ESAT) ont été affinés pour garantir une meilleure précision des indicateurs, tandis que l'architecture des modèles de données a été restructurée pour gagner en robustesse et en clarté.
 
 ### Évolutions fonctionnelles
-- Intégration des données de l'enquête FAGERH : ajout de modèles pour l'analyse des taux d'emploi et des réponses, avec gestion des codes départementaux et des bénéficiaires directs. [#1234](https://github.com/gip-inclusion/pilotage-airflow/issues/1234)
-- Ajout de la source de données Dora pour les actes métier, avec DAG et modèles DBT correspondants.
-- Intégration des données Matomo pour le suivi des actes métier, avec DAG et modèles DBT.
-- Intégration des données RDV-I pour les actes métier, avec DAG et modèles DBT.
-- Suivi de l'IMER à partir des données d'emplois.
-- Amélioration de la gestion des données ESAT : ajout d'exclusions au niveau des champs et refonte des modèles pour une meilleure analyse.
-- Inclusion de toutes les réponses dans le profil FAGERH.
+- **Enrichissement du tableau de bord "Actes Métiers"** : Intégration de nouvelles sources de données (DORA, Matomo et RDV-I) pour fournir une vision plus complète.
+- **Optimisation de l'enquête FAGERH** : 
+    - Amélioration du calcul du taux d'emploi.
+    - Mise à jour du mapping des prestations et de l'analyse des bénéficiaires directs.
+    - Inclusion de l'intégralité des réponses dans les profils.
+    - Optimisation des jointures géographiques (départements) pour faciliter le rapprochement avec les communes.
+- **Amélioration de l'enquête ESAT** : Mise en place d'exclusions au niveau des champs pour affiner la qualité des données.
+- **Nouveaux indicateurs et nettoyages** :
+    - Ajout du comptage des préconisations dans les tables de synthèse (marts).
+    - Suppression des doublons dans les flux offre/demande.
+    - Ajout du suivi de l'IMER à partir des données d'emplois.
 
 ### Évolutions techniques
-- Refonte des modèles de données autour des tables de dimensions pour les structures et services (inclusion de données).
-- Refactorisation des modèles DI pour améliorer la cohérence et supprimer les structures dupliquées.
-- Création d'une macro pour indexer les colonnes dans DBT.
-- Amélioration de la documentation DBT pour les tables RDVI.
-- Refonte des modèles de réponses ESAT pour utiliser les réponses mappées de l'enquête.
-- Suppression des doublons dans les données offres/demandes.
-- Ajout d'un numéro de département (dpt) dans les données.
+- **Refonte de l'architecture de données** : Restructuration des modèles d'inclusion de données autour de tables de dimensions (structures et services) pour une meilleure organisation.
+- **Orchestration et infrastructure** :
+    - Mise à jour de la version d'Airflow.
+    - Automatisation de l'orchestration des flux IMER.
+- **Optimisation du code** : Création d'une macro pour l'indexation des colonnes afin de standardiser les processus.
 
 ### Autres changements
-- Ajout de tests pour vérifier l'inclusion de données à jour.
-- Documentation des tables Dora dans le fichier `_sources.yml` de DBT.
-- Dump de la table "marche".
-- Mise à jour de la définition des champs dans les modèles DBT de l'enquête ESAT.
+- **Documentation** : Correction des définitions dans la documentation des modèles DBT pour l'enquête ESAT.
+- **Tests** : Correction de références obsolètes dans les tests d'inclusion de données.
