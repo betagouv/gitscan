@@ -60,11 +60,60 @@
 │   │   │   ├── vercel.svg
 │   │   │   └── window.svg
 │   │   ├── src
-│   │   │   └── app
-│   │   │       ├── favicon.ico
-│   │   │       ├── globals.css
-│   │   │       ├── layout.tsx
-│   │   │       └── page.tsx
+│   │   │   ├── app
+│   │   │   │   ├── error.tsx
+│   │   │   │   ├── favicon.ico
+│   │   │   │   ├── globals.css
+│   │   │   │   ├── layout.tsx
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── questionnaire
+│   │   │   │       └── page.tsx
+│   │   │   ├── questionnaire
+│   │   │   │   ├── components
+│   │   │   │   │   ├── FieldRenderer.tsx
+│   │   │   │   │   ├── FlowShell.tsx
+│   │   │   │   │   ├── HomeCta.tsx
+│   │   │   │   │   ├── Navbar.tsx
+│   │   │   │   │   ├── OutcomeScreen.tsx
+│   │   │   │   │   ├── QuestionCta.tsx
+│   │   │   │   │   ├── QuestionHeader.tsx
+│   │   │   │   │   ├── QuestionScreen.tsx
+│   │   │   │   │   └── fields
+│   │   │   │   │       ├── CheckboxField.tsx
+│   │   │   │   │       ├── CityAutocompleteField.tsx
+│   │   │   │   │       ├── OptionRow.tsx
+│   │   │   │   │       └── RadioField.tsx
+│   │   │   │   ├── domain
+│   │   │   │   │   ├── conditions.ts
+│   │   │   │   │   ├── flags.ts
+│   │   │   │   │   ├── flow.ts
+│   │   │   │   │   ├── questions.ts
+│   │   │   │   │   ├── types.ts
+│   │   │   │   │   └── validation.ts
+│   │   │   │   ├── hooks
+│   │   │   │   │   ├── useDebouncedValue.ts
+│   │   │   │   │   ├── useFlow.ts
+│   │   │   │   │   └── useFlowNavigation.ts
+│   │   │   │   ├── lib
+│   │   │   │   │   └── address-api.ts
+│   │   │   │   └── state
+│   │   │   │       ├── flow-reducer.ts
+│   │   │   │       └── flow-store.ts
+│   │   │   └── resultats
+│   │   │       ├── components
+│   │   │       │   ├── AnswersRecap.tsx
+│   │   │       │   ├── CriteriaList.tsx
+│   │   │       │   ├── DeviceCard.tsx
+│   │   │       │   ├── EmptyResults.tsx
+│   │   │       │   ├── ResultsScreen.tsx
+│   │   │       │   ├── ResultsTabs.tsx
+│   │   │       │   ├── ScrollToTopButton.tsx
+│   │   │       │   └── icons.tsx
+│   │   │       └── domain
+│   │   │           ├── devices.ts
+│   │   │           ├── eligibility.ts
+│   │   │           ├── recap.ts
+│   │   │           └── types.ts
 │   │   └── tsconfig.json
 │   └── site
 │       ├── .gitignore
@@ -86,18 +135,33 @@
 │       │   │   ├── globals.css
 │       │   │   ├── layout.tsx
 │       │   │   └── page.tsx
+│       │   ├── assets
+│       │   │   ├── accompagnement-equipe.jpg
+│       │   │   ├── formation-collective.jpg
+│       │   │   └── hero-reflexion.jpg
 │       │   ├── components
 │       │   │   ├── main-nav.tsx
 │       │   │   ├── nav-link.figma.tsx
 │       │   │   ├── nav-link.tsx
+│       │   │   ├── reassurance-list.tsx
+│       │   │   ├── sections
+│       │   │   │   ├── audience.tsx
+│       │   │   │   ├── did-you-know.tsx
+│       │   │   │   ├── final-cta.tsx
+│       │   │   │   ├── hero.tsx
+│       │   │   │   ├── how-it-works.tsx
+│       │   │   │   ├── impact.tsx
+│       │   │   │   ├── testimonials.tsx
+│       │   │   │   └── trust.tsx
 │       │   │   ├── site-footer.figma.tsx
 │       │   │   ├── site-footer.tsx
 │       │   │   ├── site-header.figma.tsx
 │       │   │   └── site-header.tsx
+│       │   ├── content
+│       │   │   └── home.ts
 │       │   └── lib
 │       │       ├── footer.ts
-│       │       ├── navigation.ts
-│       │       └── styles.ts
+│       │       └── navigation.ts
 │       └── tsconfig.json
 ├── docs
 │   └── previews.md
@@ -120,6 +184,7 @@
 │       ├── package.json
 │       ├── src
 │       │   ├── components
+│       │   │   ├── back-to-top.tsx
 │       │   │   ├── badge.tsx
 │       │   │   ├── button.tsx
 │       │   │   ├── card.tsx
@@ -131,6 +196,7 @@
 │       │   │   ├── input.tsx
 │       │   │   ├── label.tsx
 │       │   │   ├── radio-group.tsx
+│       │   │   ├── section.tsx
 │       │   │   ├── select.tsx
 │       │   │   ├── separator.tsx
 │       │   │   ├── skip-links.tsx
@@ -139,6 +205,7 @@
 │       │   │   ├── textarea.tsx
 │       │   │   └── theme-provider.tsx
 │       │   ├── lib
+│       │   │   ├── focus.ts
 │       │   │   └── utils.ts
 │       │   └── styles
 │       │       └── globals.css
@@ -148,4 +215,4 @@
 │   └── vercel-out.mjs
 ├── skills-lock.json
 └── turbo.json
-34 directories, 172 files
+48 directories, 225 files

@@ -1,25 +1,21 @@
-## Changelog : etape (30 derniers jours, au 30 juillet 2026)
+## Changelog : etape (30 derniers jours, au 31 juillet 2026)
 
 ### Résumé
-Ce mois-ci, le projet ETAPE a connu une avancée significative avec la mise en place d'une architecture monorepo, l'intégration de nouveaux outils de développement (ESLint, Prettier, Shadcn-UI) et le début du développement de l'application simulateur, ainsi que l'amélioration de la navigation et du design du site vitrine.
+Le projet a franchi une étape majeure avec l'intégration de la page d'accueil et la mise en place opérationnelle du simulateur d'éligibilité. L'accent a été mis sur la cohérence visuelle avec les maquettes, l'accessibilité (navigation clavier, liens d'évitement) et la mise en place d'une structure technique robuste pour supporter l'évolution du produit.
 
 ### Évolutions fonctionnelles
-- Ajout d'un écran d'introduction pour le simulateur [#3](https://github.com/betagouv/etape/pulls/3).
-- Implémentation d'une navigation complète avec un footer et des liens mis à jour [#8](https://github.com/betagouv/etape/pulls/8).
-- Ajout de composants de navigation (site navigation) et intégration Figma [#2](https://github.com/betagouv/etape/pulls/2).
-- Ajout des composants partagés `SkipLinks` et `Container` pour améliorer l'accessibilité et le respect du design system.
+- **Intégration du site vitrine** : Mise en ligne de la page d'accueil avec son contenu éditorial, ses visuels et un design responsive adapté à tous les écrans. [#10](https://github.com/betagouv/etape/pull/10)
+- **Développement du simulateur** : Implémentation du parcours utilisateur du questionnaire, incluant l'écran d'introduction, la gestion des questions et une page d'erreur. [#7](https://github.com/betagouv/etape/pull/7) [#3](https://github.com/betagouv/etape/pull/3)
+- **Amélioration de l'expérience utilisateur** : Ajout d'une confirmation de sortie lors du questionnaire, amélioration de la navigation arrière et ajout d'un bouton de retour en haut de page.
+- **Navigation et accessibilité** : Mise en place d'un pied de page, d'un menu mis à jour et de liens d'évitement (SkipLinks) pour faciliter la navigation au clavier. [#8](https://github.com/betagouv/etape/pull/8)
 
 ### Évolutions techniques
-- Initialisation d'un monorepo avec Turborepo pour une meilleure gestion des projets et des dépendances [#1](https://github.com/betagouv/etape/pulls/1).
-- Configuration centralisée de ESLint et Prettier pour garantir la qualité et la cohérence du code [#2](https://github.com/betagouv/etape/pulls/2).
-- Intégration de la librairie de composants réutilisables Shadcn-UI [#1](https://github.com/betagouv/etape/pulls/1).
-- Mise en place de déploiements de previews Vercel en mode prebuilt pour faciliter la revue de code et les tests [#9](https://github.com/betagouv/etape/pulls/9).
-- Centralisation du découpage des chemins et renforcement de la sécurité de l'assemblage des routes.
-- Branchement des liens d'évitement et de la cible de contenu pour améliorer l'accessibilité.
+- **Architecture Monorepo** : Initialisation de la structure avec Turborepo pour gérer conjointement le site vitrine et l'application simulateur.
+- **Design System partagé** : Création d'un package UI centralisant les composants fondamentaux (boutons, cartes, sections, conteneurs, gestion du focus clavier) et l'échelle typographique.
+- **UI & Styling** : Intégration de Shadcn UI et alignement rigoureux des composants et des espacements sur les maquettes Figma.
+- **CI/CD** : Configuration des déploiements de prévisualisation (previews) sur Vercel en mode "prebuilt". [#9](https://github.com/betagouv/etape/pull/9)
+- **Qualité de code** : Mise en place d'une configuration centralisée et partagée pour ESLint et Prettier. [#2](https://github.com/betagouv/etape/pull/2)
 
 ### Autres changements
-- Ajout d'un template de pull request pour standardiser les contributions [#4](https://github.com/betagouv/etape/pulls/4).
-- Mise à jour du titre du projet en "ETAPE" et correction de la terminologie dans le README (remplacement de "professionnel" par "salarié").
-- Ajout de skills partagées (frontend-design, react-best-practices, web-design-guidelines).
-- Mise à jour du fichier CSS global partagé avec de nouvelles familles de tokens.
-- Mise à jour du fichier `.gitignore`.
+- **Documentation** : Ajout d'un template de Pull Request pour standardiser les contributions.
+- **Configuration** : Mise à jour des fichiers `.gitignore` et nettoyage des commentaires de code superflus.
