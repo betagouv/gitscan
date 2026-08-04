@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/suitenumerique/menshen",
   "name": "menshen",
-  "description": "Ce projet est un serveur d'autorisation Token Exchange OAuth 2.0, construit avec Django. Il permet l'échange de jetons OAuth 2.0.",
+  "description": "Serveur d'autorisation OAuth 2.0 spécialisé dans l'échange de jetons (Token Exchange). Il permet de sécuriser les interactions entre services en échangeant des jetons d'accès.",
   "language": "Python",
   "features": [
     "Authentification & Accès"
@@ -9,13 +9,12 @@
   "audience": "Développeurs",
   "dependencies": [
     "Django",
-    "djangorestframework",
-    "django-redis",
-    "psycopg[binary]",
-    "dj-database-url",
-    "django-cors-headers",
-    "msgspec",
-    "requests"
+    "Django Ninja",
+    "PostgreSQL",
+    "Redis",
+    "Keycloak",
+    "uvicorn",
+    "sentry-sdk"
   ],
   "components": [
     "API REST & GraphQL",
@@ -27,7 +26,9 @@
     "methods": [
       "oauth2"
     ],
-    "providers": []
+    "providers": [
+      "Keycloak"
+    ]
   },
   "tests": [
     "pytest"
@@ -35,11 +36,14 @@
   "workflows": [
     "_docker-publish.yml",
     "backend.yml",
+    "client.yml",
+    "docker-hub.yml",
     "helm.yml",
+    "python-packages.yml",
     "release-helm-chart.yml",
     "security.yml"
   ],
-  "lastActivity": "2026-07-29T17:16:38+00:00",
+  "lastActivity": "2026-07-29T17:44:06+02:00",
   "status": "experimental",
   "license": "MIT",
   "hasDocumentation": true,
@@ -51,8 +55,8 @@
   },
   "tags": [
     "Sécurité & Auth",
-    "OAuth",
-    "Django",
-    "Python"
+    "Django & FastAPI",
+    "Docker & Conteneurs",
+    "CI/CD & GitHub Actions"
   ]
 }
