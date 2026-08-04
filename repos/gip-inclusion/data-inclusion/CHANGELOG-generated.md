@@ -1,21 +1,20 @@
-## Changelog : data-inclusion (30 derniers jours, au 29 juillet 2026)
+## Changelog : data-inclusion (30 derniers jours, au 30 juillet 2026)
 
 ### Résumé
-Cette mise à jour améliore la qualité et la fiabilité des données traitées par la plateforme, notamment en corrigeant des erreurs dans le pipeline de traitement et en améliorant la recherche. L'API a également été ajustée pour mieux refléter les données disponibles.
+Ce mois-ci, les développements se sont concentrés sur l'amélioration de l'intelligence de la recherche et la fiabilisation des processus de collecte de données. L'objectif est d'offrir des résultats de recherche plus pertinents et de garantir une plus grande précision dans les informations agrégées.
 
 ### Évolutions fonctionnelles
-- Amélioration de la recherche : la recherche est désormais plus robuste face aux erreurs de frappe.
-- Correction de la pondération des thématiques et des noms de structures dans l'API.
-- Prise en compte de la nouvelle catégorie "cooling_space" dans le pipeline de données.
-- Correction de l'affichage des services Carif-Oref pour garantir une cohérence des données.
+- **Amélioration de la recherche** : 
+    - Le moteur de recherche est désormais plus tolérant aux fautes de frappe.
+    - Ajout d'une option de dédoublonnage pour la recherche sémantique.
+    - Optimisation de la pertinence des résultats grâce à un meilleur équilibrage entre les thématiques et les noms de structures.
 
 ### Évolutions techniques
-- Correction de plusieurs problèmes de déterminisme dans le pipeline de traitement des données (réseau-alpha, carif-oref, les-emplois).
-- Correction des types de données incorrects (âge minimum en nombre entier) dans les données MBA.
-- Correction de l'émission des organismes Carif-Oref publics.
-- Adaptation du pipeline pour prendre en charge le nouveau type "Orienteur" dans les données "les-emplois".
-- Correction des modes de contact "courriel" pour la source "mediation-numerique".
-- Modification du canal Slack utilisé pour les résumés du pipeline.
+- **Fiabilisation des pipelines de données** :
+    - Renforcement du déterminisme des flux de données pour les sources *carif-oref* et *réseau-alpha* afin d'assurer une stabilité accrue.
+    - Correction de la qualité des données : résolution de problèmes de format (ex: âges mal formatés) et correction de l'émission erronée de certains services publics.
+- **Mise à jour des modèles de données** :
+    - Intégration de nouvelles catégories de données (*cooling_space* et type "Orienteur" pour *les-emplois*).
 
 ### Autres changements
-Aucun changement supplémentaire à signaler.
+- Mise à jour de la configuration des notifications Slack pour les résumés de pipeline.

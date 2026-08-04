@@ -1,56 +1,65 @@
 {
   "url": "https://github.com/gip-inclusion/data-inclusion",
   "name": "data-inclusion",
-  "description": "data·inclusion agrège les données de l'insertion sociale et professionnelle. Ce projet collecte, enrichit et publie des données sur l'insertion sociale et professionnelle en open data.",
+  "description": "Ce projet agrège, enrichit et publie des données relatives à l'insertion sociale et professionnelle. Il centralise des informations de diverses sources publiques pour les rendre accessibles via une API et en open data.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
     "Visualisation de données & Cartographie",
-    "Authentification & Accès",
     "Statistiques & Rapports",
     "Recherche & Filtres",
     "Données & Schémas"
   ],
-  "audience": "Associations",
+  "audience": "Professionnels",
   "dependencies": [
+    "FastAPI",
+    "Apache Airflow",
     "PostgreSQL",
-    "Python",
-    "pandas",
-    "fastapi",
-    "scikit-learn",
-    "geopandas",
-    "s3fs"
+    "MinIO",
+    "MLflow",
+    "Pandas",
+    "Polars",
+    "SQLAlchemy",
+    "GeoPandas",
+    "Playwright"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
-    "Docker & Conteneurs",
-    "CI/CD & Déploiement"
+    "CI/CD & Déploiement",
+    "Pipeline de données",
+    "Intelligence Artificielle / ML",
+    "Stockage objet",
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
-      "none"
+      "jwt",
+      "api-key"
     ]
   },
-  "tests": "pytest",
-  "workflows": [
-    "CI",
-    "CD"
+  "tests": [
+    "pytest",
+    "pytest-playwright",
+    "locust"
   ],
-  "lastActivity": "2026-07-29T13:09:05Z",
-  "status": "active",
+  "lastActivity": "2026-07-30T17:13:41+02:00",
+  "status": "maintained",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
     "stars": 9,
     "forks": 3,
-    "contributors": null,
     "openIssues": 24
   },
   "tags": [
     "Données & Open Data",
-    "Écosystème beta.gouv / État"
+    "Python",
+    "ETL & Pipelines de données",
+    "Docker & Conteneurs",
+    "Intelligence Artificielle & LLM",
+    "Standards & Schémas"
   ]
 }
