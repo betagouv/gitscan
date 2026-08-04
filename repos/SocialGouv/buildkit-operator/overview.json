@@ -1,53 +1,64 @@
 {
   "url": "https://github.com/SocialGouv/buildkit-operator",
   "name": "buildkit-operator",
-  "description": "Cet opérateur Kubernetes permet de créer un service de construction distribué BuildKit, avec un `buildkitd` dédié par projet et architecture. Il offre une mise en cache rapide et élastique, sans nécessiter de modifications à BuildKit, containerd ou au snapshotter.",
+  "description": "Un service de construction BuildKit distribué qui fournit un daemon `buildkitd` dédié par projet et par architecture sur Kubernetes ou un hôte unique. Il optimise les temps de build grâce à une gestion intelligente du cache et permet une mise à l'échelle automatique.",
   "language": "Go",
   "features": [
-    "Gestion documentaire & Fichiers",
-    "API & Intégrations",
+    "Infrastructure & Stockage",
     "Sécurité & Conformité",
     "Monitoring & Logs",
     "Collaboration & Workflow",
-    "Gestion des utilisateurs & Permissions",
-    "Notifications & Alertes"
+    "Tests & QA",
+    "Administration & Backoffice"
   ],
-  "audience": "Professionnels",
+  "audience": "Développeurs",
   "dependencies": [
-    "Kubernetes",
     "BuildKit",
-    "containerd",
-    "Docker",
-    "Helm"
+    "Kubernetes",
+    "Helm",
+    "S3",
+    "Prometheus",
+    "Incus",
+    "ZFS",
+    "Cosign"
   ],
   "components": [
-    "API REST & GraphQL",
     "Kubernetes & Helm",
     "Docker & Conteneurs",
-    "TypeScript / JavaScript",
-    "Python (scripts & backend)"
+    "Microservices & Architecture",
+    "CI/CD & Déploiement",
+    "Rust & Go",
+    "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
-      "none"
+      "sso",
+      "jwt"
+    ],
+    "providers": [
+      "GitHub",
+      "GitLab",
+      "Forgejo"
     ]
   },
-  "tests": "Tests unitaires",
+  "tests": [
+    "Unit tests via golangci-lint",
+    "e2e kit for local backend"
+  ],
   "workflows": [
-    "CI/CD workflows from .github/workflows"
+    "GitHub Actions",
+    "GitLab CI/CD"
   ],
   "lastActivity": "2026-07-29T00:00:00Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
-  "metrics": null,
   "tags": [
-    "Données & Open Data",
-    "Écosystème beta.gouv / État",
-    "TypeScript",
+    "Git & DevOps",
+    "Docker & Conteneurs",
+    "Kubernetes & Helm",
+    "CI/CD & GitHub Actions",
     "Déploiement & Hosting",
-    "Python",
-    "Sécurité & Auth",
-    "CI/CD & GitHub Actions"
+    "Sécurité & Auth"
   ]
 }

@@ -1,27 +1,28 @@
-## Changelog : buildkit-operator (30 derniers jours, au 29 juillet 2026)
+## Changelog : buildkit-operator (30 derniers jours, au 31 juillet 2026)
 
 ### Résumé
-Les dernières mises à jour de buildkit-operator améliorent la gestion des daemons de construction, notamment en introduisant un mécanisme de drainage avant les déploiements, une meilleure gestion des builds en cours et des configurations plus flexibles pour l'environnement cloud. Des améliorations de la sécurité et de la robustesse ont également été apportées.
+Ce mois a été marqué par une phase intensive de stabilisation et de sécurisation de l'infrastructure. Les efforts se sont concentrés sur la fiabilité des processus de build (pour éviter toute interruption en cours de travail), l'optimisation de la gestion du stockage (S3) et le renforcement de la sécurité des accès. L'outil est désormais plus flexible pour s'adapter à différents environnements Kubernetes.
 
 ### Évolutions fonctionnelles
-- Possibilité de configurer des sélecteurs de nœuds spécifiques à l'architecture pour les daemons de construction, permettant un contrôle plus précis de leur placement. ([#2](https://github.com/SocialGouv/buildkit-operator/issues/2))
-- Configuration des stratégies de cache S3, avec une importation toujours active et une exportation périodique.
-- Exposition d'un paramètre `maxBuildSeconds` dans le chart Helm pour limiter la durée maximale d'exécution des builds.
-- Amélioration de la gestion des builds en cours pour éviter les problèmes lors des mises à jour et des déploiements.
-- Possibilité de configurer des defaults par projet au moment de la création du BuildProject.
-- Adaptation du keep-warm pour qu'il s'adapte au rythme des builds.
+- **Flexibilité de configuration** : Possibilité de personnaliser les valeurs par défaut pour les environnements cloud (Kubernetes générique) [#3](https://github.com/SocialGouv/buildkit-operator/issues/3).
+- **Gestion des architectures** : Introduction d'une option pour fixer l'architecture des daemons via le `nodeSelector` (pinning) [#2](https://github.com/SocialGouv/buildkit-operator/issues/2).
+- **Nouveaux paramètres Helm** : Ajout de la gestion du temps maximum de build (`maxBuildSeconds`) et du cycle de vie des buckets S3.
+- **Configuration par projet** : Introduction de paramètres par défaut déclaratifs appliqués dès la création d'un projet.
 
 ### Évolutions techniques
-- Refactorisation de la gestion des tokens de build pour stocker uniquement leur hash et centraliser la création des identités OIDC.
-- Suppression de la compatibilité avec les tokens en clair, privilégiant l'authentification OIDC.
-- Amélioration de la gestion des erreurs lors de l'exportation du cache S3 (passage en mode "best-effort").
-- Mise à jour des actions GitHub vers Node 24 pour une meilleure sécurité et performance.
-- Publication d'images pour l'architecture ARM64 en plus d'AMD64.
-- Amélioration de la robustesse du controller et du buildd face à des scénarios d'adversité.
-- Mise en place d'un système de drainage des daemons avant leur remplacement lors des déploiements.
+- **Fiabilité et Résilience** : 
+    - Amélioration majeure de la gestion du cycle de vie des daemons pour empêcher toute disparition ou interruption pendant un build (mécanismes de drainage avant mise à jour et protection lors des rollouts de la gateway).
+    - Suivi précis des builds en cours via des entrées horodatées pour une meilleure gestion des états.
+- **Optimisation du Stockage et du Cache** : 
+    - Mise en place d'une nouvelle politique de "cache à froid" sur S3 (import systématique, export cadencé).
+    - Limitation de la croissance automatique des volumes de cache et automatisation du nettoyage (GC) des buckets S3 (expiration et interruption des uploads multipartites).
+    - Mise en œuvre d'un système de "keep-warm" adaptatif qui ajuste la période d'inactivité selon la cadence des builds.
+- **Sécurité** : 
+    - Durcissement de l'authentification en privilégiant OIDC et en supprimant la compatibilité avec les tokens en clair.
+    - Renforcement des politiques de sécurité S3 et de la gestion de la taille des ressources (auto-grow/fork sizing) suite à des revues de sécurité.
+- **Infrastructure et CI/CD** : 
+    - Support étendu des architectures avec la publication d'images (buildd, companion, gateway) pour ARM64 et AMD64.
+    - Automatisation de la gestion des tags de release.
 
 ### Autres changements
-- Documentation mise à jour pour refléter les nouvelles fonctionnalités et configurations.
-- Corrections de bugs mineurs et améliorations de la qualité du code.
-- Renouvellement de Renovate pour la gestion des dépendances.
-- Amélioration de la couverture des tests unitaires.
+- **Documentation** : Mise à jour des guides concernant les valeurs Helm, les garanties de cycle de vie des daemons et les recommandations de configuration par projet.
