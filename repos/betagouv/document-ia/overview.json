@@ -1,38 +1,33 @@
 {
   "url": "https://github.com/betagouv/document-ia",
   "name": "document-ia",
-  "description": "Document IA est une pile backend pour l'exécution de workflows de traitement de documents. Les fichiers sont téléchargés via une API FastAPI, stockés dans un stockage compatible S3, mis en file d'attente via Redis Streams, traités par un worker asynchrone et suivis dans un Event Store PostgreSQL.",
+  "description": "Stack backend pour l'exécution de workflows de traitement de documents. Il permet l'upload de fichiers via une API FastAPI, leur stockage S3, et leur traitement asynchrone via des workers et Redis.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
-    "Gestion des utilisateurs & Permissions",
-    "Notifications & Alertes",
-    "Sécurité & Conformité",
-    "Données & Schémas",
-    "Intelligence Artificielle & NLP"
+    "Intelligence Artificielle & NLP",
+    "Statistiques & Rapports",
+    "Suivi & Traçabilité"
   ],
-  "audience": "Professionnels",
+  "audience": "Développeurs",
   "dependencies": [
     "FastAPI",
-    "Poetry",
     "Redis",
     "PostgreSQL",
-    "S3",
-    "Pydantic",
+    "MinIO",
+    "Streamlit",
     "SQLAlchemy",
-    "Uvicorn",
-    "python-dotenv",
-    "boto3",
-    "OpenAI",
-    "tiktoken"
+    "Pydantic",
+    "Boto3",
+    "uv"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
     "Docker & Conteneurs",
-    "Microservices & Architecture"
+    "Intelligence Artificielle / ML"
   ],
   "auth": {
     "methods": [
@@ -40,26 +35,20 @@
     ]
   },
   "tests": [
-    "Pytest",
-    "Ruff"
+    "pytest",
+    "ruff",
+    "pyright"
   ],
-  "workflows": [
-    "CI/CD & GitHub Actions"
-  ],
-  "lastActivity": "2026-07-17T09:59:17+02:00",
+  "lastActivity": "2026-07-30T17:25:42+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
   "tags": [
-    "Données & Open Data",
-    "Intelligence Artificielle & NLP",
-    "API & Intégrations",
-    "Sécurité & Conformité"
+    "Intelligence Artificielle & LLM",
+    "Python",
+    "NLP & ML",
+    "Docker & Conteneurs",
+    "Écosystème beta.gouv / État",
+    "Données & Open Data"
   ]
 }
