@@ -170,7 +170,9 @@
 │   │   │   │                   │   │   │   └── RecentControlActivityProperties.kt
 │   │   │   │                   │   │   ├── regulatoryArea
 │   │   │   │                   │   │   │   ├── AdditionalRefRegEntity.kt
-│   │   │   │                   │   │   │   └── RegulatoryAreaEntity.kt
+│   │   │   │                   │   │   │   ├── AreaTypeEnum.kt
+│   │   │   │                   │   │   │   ├── RegulatoryAreaEntity.kt
+│   │   │   │                   │   │   │   └── RegulatoryAreaGroupEntity.kt
 │   │   │   │                   │   │   ├── reporting
 │   │   │   │                   │   │   │   ├── ControlStatusEnum.kt
 │   │   │   │                   │   │   │   ├── ReportingEntity.kt
@@ -236,6 +238,7 @@
 │   │   │   │                   │   │   ├── INatinfRepository.kt
 │   │   │   │                   │   │   ├── IPostgisFunctionRepository.kt
 │   │   │   │                   │   │   ├── IRapportNavMissionActionsRepository.kt
+│   │   │   │                   │   │   ├── IRegulatoryAreaGroupRepository.kt
 │   │   │   │                   │   │   ├── IRegulatoryAreaRepository.kt
 │   │   │   │                   │   │   ├── IReportingRepository.kt
 │   │   │   │                   │   │   ├── IReportingSourceRepository.kt
@@ -354,11 +357,15 @@
 │   │   │   │                   │   │   │       └── RecentControlsActivityListDTO.kt
 │   │   │   │                   │   │   ├── regulatoryAreas
 │   │   │   │                   │   │   │   ├── CreateOrUpdateRegulatoryArea.kt
+│   │   │   │                   │   │   │   ├── CreateOrUpdateRegulatoryAreaGroup.kt
 │   │   │   │                   │   │   │   ├── GetAllLayerNames.kt
 │   │   │   │                   │   │   │   ├── GetAllRegulatoryAreas.kt
 │   │   │   │                   │   │   │   ├── GetAllRegulatoryAreasToComplete.kt
 │   │   │   │                   │   │   │   ├── GetRegulatoryAreaById.kt
-│   │   │   │                   │   │   │   └── GetRegulatoryAreaByIds.kt
+│   │   │   │                   │   │   │   ├── GetRegulatoryAreaByIds.kt
+│   │   │   │                   │   │   │   ├── GetRegulatoryAreasGroupById.kt
+│   │   │   │                   │   │   │   └── dtos
+│   │   │   │                   │   │   │       └── RegulatoryAreaGroupDTO.kt
 │   │   │   │                   │   │   ├── reportings
 │   │   │   │                   │   │   │   ├── ArchiveOutdatedReportings.kt
 │   │   │   │                   │   │   │   ├── ArchiveReportings.kt
@@ -446,7 +453,8 @@
 │   │   │   │                   │   │   │   │   │   │   └── RecentControlsActivityDataInput.kt
 │   │   │   │                   │   │   │   │   │   ├── regulatoryArea
 │   │   │   │                   │   │   │   │   │   │   ├── RegulatoryAreaByIdsDataInput.kt
-│   │   │   │                   │   │   │   │   │   │   └── RegulatoryAreaDataInput.kt
+│   │   │   │                   │   │   │   │   │   │   ├── RegulatoryAreaDataInput.kt
+│   │   │   │                   │   │   │   │   │   │   └── RegulatoryAreaGroupDataInput.kt
 │   │   │   │                   │   │   │   │   │   ├── reportings
 │   │   │   │                   │   │   │   │   │   │   ├── CreateOrUpdateReportingDataInput.kt
 │   │   │   │                   │   │   │   │   │   │   └── ReportingSourceDataInput.kt
@@ -510,6 +518,7 @@
 │   │   │   │                   │   │   │   │       ├── regulatoryArea
 │   │   │   │                   │   │   │   │       │   ├── LayerNamesDataOutput.kt
 │   │   │   │                   │   │   │   │       │   ├── RegulatoryAreaDataOutput.kt
+│   │   │   │                   │   │   │   │       │   ├── RegulatoryAreaGroupDataOutput.kt
 │   │   │   │                   │   │   │   │       │   ├── RegulatoryAreaToCompleteDataOuput.kt
 │   │   │   │                   │   │   │   │       │   ├── RegulatoryAreasDataOutput.kt
 │   │   │   │                   │   │   │   │       │   └── RegulatoryAreasWithTotalDataOutput.kt
@@ -676,6 +685,7 @@
 │   │   │   │                   │   │   │   ├── MissionTagModel.kt
 │   │   │   │                   │   │   │   ├── NaflModel.kt
 │   │   │   │                   │   │   │   ├── NatinfModel.kt
+│   │   │   │                   │   │   │   ├── RegulatoryAreaGroupModel.kt
 │   │   │   │                   │   │   │   ├── RegulatoryAreaModel.kt
 │   │   │   │                   │   │   │   ├── ReportingModel.kt
 │   │   │   │                   │   │   │   ├── ReportingSourceModel.kt
@@ -720,6 +730,7 @@
 │   │   │   │                   │   │       ├── JpaMissionTagsRepository.kt
 │   │   │   │                   │   │       ├── JpaNatinfRepository.kt
 │   │   │   │                   │   │       ├── JpaPostgisFunctionRepository.kt
+│   │   │   │                   │   │       ├── JpaRegulatoryAreaGroupRepository.kt
 │   │   │   │                   │   │       ├── JpaRegulatoryAreaRepository.kt
 │   │   │   │                   │   │       ├── JpaReportingRepository.kt
 │   │   │   │                   │   │       ├── JpaReportingSourceRepository.kt
@@ -758,6 +769,7 @@
 │   │   │   │                   │   │       │   ├── IDBMissionTagsRepository.kt
 │   │   │   │                   │   │       │   ├── IDBNafRepository.kt
 │   │   │   │                   │   │       │   ├── IDBNatinfRepository.kt
+│   │   │   │                   │   │       │   ├── IDBRegulatoryAreaGroupRepository.kt
 │   │   │   │                   │   │       │   ├── IDBRegulatoryAreaRepository.kt
 │   │   │   │                   │   │       │   ├── IDBReportingRepository.kt
 │   │   │   │                   │   │       │   ├── IDBReportingSourceRepository.kt
@@ -1007,7 +1019,8 @@
 │   │   │       │   │   │   ├── V0.224__create_table_mission_tags.sql
 │   │   │       │   │   │   ├── V0.225__add_column_notable_operation.sql
 │   │   │       │   │   │   ├── V0.226__add_table_vessel_additional_informations_and_vessel_files.sql
-│   │   │       │   │   │   └── V0.227__compute_new_facade.sql
+│   │   │       │   │   │   ├── V0.227__compute_new_facade.sql
+│   │   │       │   │   │   └── V0.228__add_regulatory_areas_group.sql
 │   │   │       │   │   └── layers
 │   │   │       │   │       ├── V0.001__create_fao_areas.sql
 │   │   │       │   │       ├── V0.002__create_eez_areas.sql
@@ -1083,7 +1096,8 @@
 │   │   │       │       ├── V666.26__insert_positions.sql
 │   │   │       │       ├── V666.27__insert_last_positions.sql
 │   │   │       │       ├── V666.29__insert_themes_natinfs.sql
-│   │   │       │       └── V666.30__insert_mission_tags.sql
+│   │   │       │       ├── V666.30__insert_mission_tags.sql
+│   │   │       │       └── V666.31__insert_regulatory_areas_group.sql
 │   │   │       ├── log4j2-spring.xml
 │   │   │       └── template_export_brief.docx
 │   │   └── test
@@ -1199,12 +1213,14 @@
 │   │       │                   │   │   │   ├── GetRecentControlsActivityUTest.kt
 │   │       │                   │   │   │   └── RecentControlsActivityListDTOFixture.kt
 │   │       │                   │   │   ├── regulatoryAreas
+│   │       │                   │   │   │   ├── CreateOrUpdateRegulatoryAreaGroupUTest.kt
 │   │       │                   │   │   │   ├── CreateOrUpdateRegulatoryAreaUTest.kt
 │   │       │                   │   │   │   ├── GetAllLayerNamesUTest.kt
 │   │       │                   │   │   │   ├── GetAllNewRegulatoryAreasUTest.kt
 │   │       │                   │   │   │   ├── GetAllRegulatoryAreasToCompleteUTest.kt
 │   │       │                   │   │   │   ├── GetNewRegulatoryAreaByIdUTest.kt
 │   │       │                   │   │   │   ├── GetRegulatoryAreaByIdsUTest.kt
+│   │       │                   │   │   │   ├── GetRegulatoryAreasGroupByIdUTest.kt
 │   │       │                   │   │   │   └── fixtures
 │   │       │                   │   │   │       └── RegulatoryAreaFixture.kt
 │   │       │                   │   │   ├── reportings
@@ -1341,6 +1357,7 @@
 │   │       │                       │       ├── JpaMissionTagsRepositoryITest.kt
 │   │       │                       │       ├── JpaNatinfRepositoryITests.kt
 │   │       │                       │       ├── JpaPostgisFunctionRepositoryITests.kt
+│   │       │                       │       ├── JpaRegulatoryAreaGroupRepositoryITest.kt
 │   │       │                       │       ├── JpaRegulatoryAreaRepositoryITests.kt
 │   │       │                       │       ├── JpaReportingRepositoryITests.kt
 │   │       │                       │       ├── JpaReportingSourceRepositoryITest.kt
@@ -1396,7 +1413,9 @@
 │   │   │   │   │   └── row_actions.spec.ts
 │   │   │   │   ├── regulatory_area
 │   │   │   │   │   ├── create_regulatory_area.spec.ts
+│   │   │   │   │   ├── create_regulatory_area_group.spec.ts
 │   │   │   │   │   ├── edit_regulatory_area.spec.ts
+│   │   │   │   │   ├── edit_regulatory_area_group.spec.ts
 │   │   │   │   │   └── filters.spec.ts
 │   │   │   │   ├── station_form.spec.ts
 │   │   │   │   ├── station_table
@@ -1468,6 +1487,7 @@
 │   │   │       ├── a11y.ts
 │   │   │       ├── createMissionWithAttachedReportingAndAttachedAction.ts
 │   │   │       ├── createPendingMission.ts
+│   │   │       ├── createRegulatoryArea.ts
 │   │   │       ├── createReporting.ts
 │   │   │       ├── createReportingOnSideWindow.ts
 │   │   │       ├── customDayjs.ts
@@ -2519,14 +2539,19 @@
 │   │   │   │   ├── components
 │   │   │   │   │   ├── BaseLayerSelector.tsx
 │   │   │   │   │   ├── Layers
+│   │   │   │   │   │   ├── BackofficeRegulatoryAreaGroupLayer.tsx
 │   │   │   │   │   │   └── BackofficeRegulatoryAreaLayer.tsx
 │   │   │   │   │   ├── RegulatoryAreaForm
 │   │   │   │   │   │   ├── FormContent.tsx
 │   │   │   │   │   │   ├── Identification.tsx
+│   │   │   │   │   │   ├── Localisation.tsx
 │   │   │   │   │   │   ├── RegulatoryTexts.tsx
 │   │   │   │   │   │   ├── Schema.ts
 │   │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   │   └── style.ts
+│   │   │   │   │   ├── RegulatoryAreaGroupForm
+│   │   │   │   │   │   ├── Schema.ts
+│   │   │   │   │   │   └── index.tsx
 │   │   │   │   │   ├── RegulatoryAreaList
 │   │   │   │   │   │   ├── ControlPlanTable.tsx
 │   │   │   │   │   │   ├── RegulatoryAreaFilters.tsx
@@ -2545,8 +2570,10 @@
 │   │   │   │   ├── slice.ts
 │   │   │   │   ├── style.ts
 │   │   │   │   ├── types.ts
-│   │   │   │   └── useCases
-│   │   │   │       └── createOrUpdateRegulatoryArea.ts
+│   │   │   │   ├── useCases
+│   │   │   │   │   ├── createOrUpdateRegulatoryArea.ts
+│   │   │   │   │   └── createOrUpdateRegulatoryAreaGroup.ts
+│   │   │   │   └── utils.ts
 │   │   │   ├── Reportings
 │   │   │   │   ├── Filters
 │   │   │   │   │   ├── Map
@@ -2895,7 +2922,7 @@
 │   │   │   │   ├── AutoSaveTag.tsx
 │   │   │   │   ├── ControlCard
 │   │   │   │   │   └── index.tsx
-│   │   │   │   ├── ReinitializeFiltersButton.tsx
+│   │   │   │   ├── ResetButton.tsx
 │   │   │   │   ├── Skeleton
 │   │   │   │   │   └── index.tsx
 │   │   │   │   ├── TargetSelector
@@ -3387,4 +3414,4 @@
 │       │   └── test_update_queries.py
 │       └── test_utils.py
 └── sonar-project.properties
-618 directories, 2771 files
+620 directories, 2796 files
