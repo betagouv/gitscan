@@ -1,29 +1,33 @@
-## Changelog : anssi-portail (30 derniers jours, au 31 juillet 2026)
+## Changelog : anssi-portail (30 derniers jours, au 04 août 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de la performance via le rendu côté serveur (SSR) de nombreuses pages, la modernisation de l'interface utilisateur avec l'adoption de nouveaux composants DSFR et une refonte de l'expérience utilisateur du parcours de sécurisation. Des corrections de sécurité et des améliorations de la CI/CD ont également été apportées.
+Ce mois-ci, le portail a franchi des étapes majeures avec le déploiement des parcours de sécurisation, incluant désormais un suivi de progression détaillé et un système de récompenses (badges et attestations). L'expérience utilisateur a été transformée par une refonte visuelle (nouveau composant "Héros") et une amélioration significative de la fluidité grâce à la généralisation du rendu côté serveur (SSR).
 
 ### Évolutions fonctionnelles
-- **Parcours de sécurisation :** Amélioration significative de l'expérience utilisateur avec l'ajout de la gestion des modules, de la progression, des badges de complétion et de la persistance du parcours de l'utilisateur.
-- **Téléchargement des récompenses :** Préparation de la création d'archives ZIP contenant les récompenses du parcours sécurisation. [#94d7769](https://github.com/betagouv/anssi-portail/issues/94d7769)
-- **Page NIS2 :** Amélioration de l'affichage et de la navigation sur la page NIS2.
-- **Guides :** Amélioration de l'affichage des guides et intégration dans le catalogue.
-- **Affichage des mesures :** Amélioration de l'affichage des mesures dans le parcours de sécurisation, avec la possibilité de les exporter en CSV.
-- **Modales de tutoriel :** Ajout de modales de tutoriel pour guider l'utilisateur.
-- **Suivi Pixel :** Implémentation du suivi des données avec consentement utilisateur.
+- **Parcours de sécurisation :**
+    - Mise en place d'un suivi de progression complet (barres de progression, badges de complétion et indicateurs de mesures réalisées par module).
+    - Introduction de tutoriels interactifs via des fenêtres modales pour accompagner l'utilisateur dans ses démarches.
+    - Nouveau système de récompenses permettant de télécharger des archives ZIP contenant des badges et des attestations officielles (PDF) personnalisées.
+    - Ajout de la possibilité d'exporter les mesures de sécurité au format CSV.
+- **Interface et Design :**
+    - Refonte visuelle de la page d'accueil et des pages clés avec un nouveau composant "Héros" (Hero) enrichi, incluant des animations (effet machine à écrire) et une meilleure adaptabilité sur mobile et tablette.
+    - Déploiement de nouveaux éléments graphiques (bandeaux riches, décorations visuelles) pour améliorer l'ergonomie.
+- **Confidentialité :**
+    - Mise en place d'un système de gestion du consentement pour le suivi utilisateur (pixel de suivi).
 
 ### Évolutions techniques
-- **Rendu côté serveur (SSR) :** Implémentation du rendu côté serveur pour de nombreuses pages (accueil, associations, financements, sessions de groupe, guides, collectivités, NIS2, etc.) afin d'améliorer la performance et le SEO.
-- **Composants DSFR :** Migration vers des composants DSFR (Design System de la République Française) pour une meilleure cohérence visuelle et accessibilité.
-- **Refactoring :** Refactoring de plusieurs composants pour améliorer la maintenabilité et la lisibilité du code.
-- **CI/CD :** Améliorations de la configuration CI/CD, notamment l'ajout d'étapes de scan antivirus et la sécurisation des secrets.
-- **Dépendances :** Mise à jour de plusieurs dépendances, incluant des correctifs de sécurité.
-- **Nix Shell :** Ajout d'un Nix Shell pour faciliter le développement en local.
-- **Tests :** Ajout de tests de snapshot pour les bannières.
+- **Performance et SEO :**
+    - Migration massive vers le rendu côté serveur (SSR) pour de nombreux composants critiques (catalogue, guides, fil d'Ariane, tableaux NIS2, etc.), optimisant la vitesse de chargement et le référencement naturel.
+    - Optimisation de la gestion des redirections d'URL et des liens canoniques.
+- **Sécurité et CI/CD :**
+    - Renforcement de la sécurité de la chaîne de déploiement avec l'ajout de scans antivirus et de la validation de configuration (`zizmor`).
+    - Durcissement de la gestion des secrets et des identifiants dans les workflows GitHub.
+- **Architecture :**
+    - Refactorisation importante des composants de l'UI Kit (Tuile, Lien, etc.) pour une meilleure réutilisation.
+    - Passage à l'utilisation des UUID v7 pour la génération des clés primaires.
+    - Amélioration de la robustesse de la récupération des statistiques et de la gestion des erreurs.
 
 ### Autres changements
-- **Documentation :** Mise à jour de la documentation et du README.
-- **Configuration :** Amélioration de la configuration des secrets et des variables d'environnement.
-- **Nettoyage de code :** Suppression de code inutile et amélioration de la structure du code.
-- **SEO :** Amélioration du SEO avec la redirection de l'ancienne page /guides vers /catalogue.
-- **Matomo :** Ajout de la campagne Matomo à l'origine des demandes d'aide.
+- **Développement :** Introduction de Nix Shell pour simplifier la configuration de l'environnement de développement local.
+- **Documentation :** Réorganisation du fichier README.
+- **Maintenance :** Nettoyage général du code, suppression de styles CSS obsolètes et harmonisation de la structure des tests.

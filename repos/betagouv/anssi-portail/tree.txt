@@ -1,6 +1,7 @@
 .
 ├── .agents
 │   └── skills
+│       ├── .gitignore
 │       ├── nouvelle-migration-knex
 │       │   └── SKILL.md
 │       └── playwright-cli
@@ -81,6 +82,7 @@
 │   │   ├── 20260716095237_ajouteColonneParcours.ts
 │   │   ├── 20260717135356_metsAJourMesuresCyberdepartV0_6.ts
 │   │   ├── 20260721140439_creeTableTutoriels.ts
+│   │   ├── 20260804091048_ajouteDescriptionModules.ts
 │   │   └── README.md
 │   ├── package.json
 │   ├── src
@@ -122,6 +124,12 @@
 │   │   │   │   ├── ressourceParcoursComplet.ts
 │   │   │   │   ├── ressourcePriseEnCompte.ts
 │   │   │   │   ├── ressourceRecompensesCyberDepart
+│   │   │   │   │   ├── attestation
+│   │   │   │   │   │   ├── attestation.typ
+│   │   │   │   │   │   ├── badge.svg
+│   │   │   │   │   │   ├── logo_ANSSI.png
+│   │   │   │   │   │   └── republique_francaise.svg
+│   │   │   │   │   ├── badge.png
 │   │   │   │   │   ├── banniere.svg
 │   │   │   │   │   ├── ressourceRecompensesCyberDepart.ts
 │   │   │   │   │   └── serviceRecompensesCyberDepart.ts
@@ -277,6 +285,7 @@
 │   │   │   ├── entrepotSecretHachagePostgres.ts
 │   │   │   ├── entrepotUtilisateurMPAPostgres.ts
 │   │   │   ├── fournisseurHorloge.ts
+│   │   │   ├── generateurDocument.ts
 │   │   │   ├── generateurImage.ts
 │   │   │   ├── grist.ts
 │   │   │   ├── markdown.ts
@@ -390,6 +399,7 @@
 │   │   │   ├── mesures
 │   │   │   │   ├── constructeurDUtilisateur.ts
 │   │   │   │   ├── constructeurDeMesure.ts
+│   │   │   │   ├── constructeurDeModule.ts
 │   │   │   │   ├── ressourceAvisMesure.spec.ts
 │   │   │   │   ├── ressourceMesure.spec.ts
 │   │   │   │   ├── ressourceMesureCsv.spec.ts
@@ -486,6 +496,7 @@
 │   │   │   ├── entrepotGuideTravailGrist.spec.ts
 │   │   │   ├── fournisseurClientHttp.ts
 │   │   │   ├── fournisseurHorlogeDeTest.ts
+│   │   │   ├── generateurDocument.spec.ts
 │   │   │   ├── markdown.spec.ts
 │   │   │   ├── nis2
 │   │   │   │   └── entrepotExigenceGrist.spec.ts
@@ -537,7 +548,9 @@
 │   │       │   └── contacts
 │   │       │       └── index.html
 │   │       ├── factice-gros.html
-│   │       └── factice.html
+│   │       ├── factice.html
+│   │       ├── factice.typ
+│   │       └── snapshot-attestation-cyberdepart.pdf
 │   └── tsconfig.json
 ├── comparaison-grist
 │   ├── .env.template
@@ -710,6 +723,7 @@
 │   ├── assets
 │   │   ├── .gitignore
 │   │   ├── fonts
+│   │   │   ├── Marianne-Bold.ttf
 │   │   │   ├── Marianne-Bold.woff
 │   │   │   ├── Marianne-Bold.woff2
 │   │   │   ├── Marianne-Bold_Italic.woff
@@ -724,6 +738,7 @@
 │   │   │   ├── Marianne-Medium.woff2
 │   │   │   ├── Marianne-Medium_Italic.woff
 │   │   │   ├── Marianne-Medium_Italic.woff2
+│   │   │   ├── Marianne-Regular.ttf
 │   │   │   ├── Marianne-Regular.woff
 │   │   │   ├── Marianne-Regular.woff2
 │   │   │   ├── Marianne-Regular_Italic.woff
@@ -741,6 +756,10 @@
 │   │   │   ├── coche-ronde-inactive.svg
 │   │   │   ├── contacts-resultat-vide.svg
 │   │   │   ├── debuter-cyber.avif
+│   │   │   ├── decorations
+│   │   │   │   ├── boucle.svg
+│   │   │   │   ├── ellipse.svg
+│   │   │   │   └── fleur.svg
 │   │   │   ├── directive-nis2-avec-bulle-fond-gris.svg
 │   │   │   ├── directive-nis2.svg
 │   │   │   ├── dragon-coeur-entier.svg
@@ -756,7 +775,7 @@
 │   │   │   ├── erreur.svg
 │   │   │   ├── floriane-bizdev.avif
 │   │   │   ├── homme-cherchant-avec-loupe.svg
-│   │   │   ├── homme-regardant-webinaire-avec-annotations.avif
+│   │   │   ├── homme-regardant-webinaire.avif
 │   │   │   ├── homme-remplissant-ecran-login.svg
 │   │   │   ├── icone-*.svg  (32 files)
 │   │   │   ├── illustration-*.svg  (13 files)
@@ -879,7 +898,6 @@
 │   │   │   ├── nis2-noir.svg
 │   │   │   ├── nis2.svg
 │   │   │   ├── parcours-securisation
-│   │   │   │   ├── badge-cyberdepart.png
 │   │   │   │   ├── badge-cyberdepart.svg
 │   │   │   │   ├── mesure-ANNUAIRE.1.svg
 │   │   │   │   ├── mesure-AUTH.1.svg
@@ -1060,7 +1078,8 @@
 │   │   │   │   ├── FoireAuxQuestions.svelte
 │   │   │   │   ├── FormulaireDemandeAide.svelte
 │   │   │   │   ├── FormulaireDemandeSimplifiee.svelte
-│   │   │   │   └── IllustrationCyberDepart.svelte
+│   │   │   │   ├── IllustrationCyberDepart.svelte
+│   │   │   │   └── IllustrationDemandeAide.svelte
 │   │   │   ├── directives
 │   │   │   │   ├── actions.svelte.ts
 │   │   │   │   └── validationChamp.ts
@@ -1261,6 +1280,7 @@
 │   │   │   │   ├── modales
 │   │   │   │   │   ├── ModaleBadgeCyberdepartDebloque.svelte
 │   │   │   │   │   └── ModaleModuleCyberdepartTermine.svelte
+│   │   │   │   ├── moduleReponseApi.ts
 │   │   │   │   └── parcours-complet
 │   │   │   │       ├── ParcoursComplet.svelte
 │   │   │   │       ├── VueListeMesures.svelte
@@ -1522,4 +1542,4 @@
 ├── scripts
 │   └── get-node-version.sh
 └── shell.nix
-217 directories, 1350 files
+219 directories, 1368 files
