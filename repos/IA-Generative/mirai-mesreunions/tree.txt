@@ -23,6 +23,8 @@
 │   │   ├── docker-compose.yml
 │   │   └── keycloak-realm.json
 │   ├── kubernetes
+│   │   ├── buildkit
+│   │   │   └── buildkit-build-job.yaml
 │   │   ├── environments
 │   │   │   ├── README.md
 │   │   │   └── staging
@@ -39,9 +41,11 @@
 │   │       ├── namespaces.yaml
 │   │       └── secrets.yaml
 │   └── scripts
+│       ├── build-incluster.sh
 │       ├── build-push-scw.sh
 │       ├── commit-push-build.sh
 │       ├── compose-up.sh
+│       ├── create-registry-push-secret.sh
 │       ├── measure_normalization_impact.py
 │       └── setup.sh
 ├── docs
@@ -54,7 +58,8 @@
 │   ├── adr
 │   │   ├── 0001-pipeline-liveness-vs-progress.md
 │   │   ├── 0002-pipeline-status-enum-source-of-truth.md
-│   │   └── 0003-meeting-source-connectors.md
+│   │   ├── 0003-meeting-source-connectors.md
+│   │   └── 0004-build-in-cluster-buildkit.md
 │   ├── architecture
 │   │   └── meeting-source-connectors.md
 │   ├── benchmarks
@@ -148,7 +153,8 @@
 │       ├── 021_transcription_forbidden_phrases.sql
 │       ├── 021_video_ingest_audit.sql
 │       ├── 022_user_audio_files_source_type.sql
-│       └── 022_user_audio_hidden_blocks.sql
+│       ├── 022_user_audio_hidden_blocks.sql
+│       └── 023_video_ingest_job_retry.sql
 ├── requirements.txt
 ├── services
 │   ├── admin-console
@@ -348,6 +354,7 @@
 │       │   │   ├── base.py
 │       │   │   └── youtube
 │       │   │       ├── __init__.py
+│       │   │       ├── _errors.py
 │       │   │       ├── _kevent.py
 │       │   │       ├── audio.py
 │       │   │       ├── metadata.py
@@ -381,6 +388,7 @@
 │   │   │   ├── after-hit-cache-materialize-20260527-071726.txt
 │   │   │   ├── after-token-refresh-20260527-071312.txt
 │   │   │   ├── after-unified-delete-20260527-070343.txt
+│   │   │   ├── antibot-youtube-20260802-122154.txt
 │   │   │   └── before-C0-20260527-023218.txt
 │   │   ├── test_device_token_authority_preparations_meetings.py
 │   │   ├── test_dmz_to_internal_bridge_meetings_autolink.py
@@ -402,7 +410,7 @@
 │   │   ├── resilience_internal_pull.sh
 │   │   └── security_pull_trigger.sh
 │   └── unit
-│       ├── test_*.py  (64 files)
+│       ├── test_*.py  (65 files)
 │       └── test_format_utils.js
 └── tools
     ├── backfill_meeting_datetime_from_filename.py
@@ -410,4 +418,4 @@
     ├── smoke_audio_retention.sh
     ├── smoke_local_upload_transcribe.sh
     └── smoke_youtube_materialization.sh
-86 directories, 389 files
+87 directories, 397 files
