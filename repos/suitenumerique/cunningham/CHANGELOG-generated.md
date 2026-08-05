@@ -1,11 +1,11 @@
-## Changelog : cunningham (30 derniers jours, au 31 juillet 2026)
+## Changelog : cunningham (30 derniers jours, au 16 juillet 2026)
 
 ### Résumé
-Cette mise à jour apporte une amélioration à la personnalisation du composant FileUploader, permettant de modifier le texte affiché lors du chargement des fichiers. Une correction de l'icône affichée dans le composant FileUploaderMono a également été implémentée. Enfin, une nouvelle version des packages a été publiée.
+Les récentes mises à jour améliorent l'expérience d'utilisation du composant de téléchargement de fichiers en offrant plus de flexibilité de personnalisation et en corrigeant un défaut d'affichage d'icône. Une nouvelle version des packages a également été publiée.
 
 ### Évolutions fonctionnelles
-- Amélioration du composant `FileUploader` : Possibilité de personnaliser le texte affiché lors du chargement des fichiers. [#81a6323](https://github.com/suitenumerique/cunningham/commit/81a6323)
-- Correction de l'icône du composant `FileUploaderMono` : L'icône est maintenant correctement mise à jour lorsque la prop `fileSelectedIcon` change. [#a827ec5](https://github.com/suitenumerique/cunningham/commit/a827ec5)
+- **FileUploader (React)** : Ajout de la possibilité de personnaliser la légende (caption) affichée lors du téléchargement de fichiers.
+- **FileUploaderMono (React)** : Correction d'un bug où l'icône ne se mettait pas à jour correctement lorsque l'icône de fichier sélectionné était modifiée.
 
-### Évolutions techniques
-- Publication d'une nouvelle version des packages. [#a754c69](https://github.com/suitenumerique/cunningham/commit/a754c69)
+### Autres changements
+- Publication d'une nouvelle version des packages.
