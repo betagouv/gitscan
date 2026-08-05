@@ -1,15 +1,10 @@
-## Changelog : upptime (30 derniers jours, au 03 septembre 2026)
+## Changelog : upptime (30 derniers jours, au 05/08/2026)
 
 ### Résumé
-Ce changelog résume les activités récentes sur le projet upptime. La majorité des changements concernent les mises à jour régulières des statuts de surveillance des différents services, assurant un suivi constant de leur disponibilité. Des mises à jour de la librairie `@upptime` et des graphiques ont également été effectuées.
-
-### Évolutions fonctionnelles
-Aucune évolution fonctionnelle majeure n'a été apportée durant cette période. Les changements se concentrent sur la surveillance continue et la mise à jour des statuts des services.
+Le projet assure sa mission de surveillance de manière autonome. L'activité récente est principalement composée de la maintenance automatisée des indicateurs de disponibilité et de la mise à jour régulière du moteur de monitoring.
 
 ### Évolutions techniques
-- Mise à jour de la librairie `@upptime` vers la version 1.43.13, 1.43.12, 1.43.11, 1.43.10 et 1.43.9.
-- Mise à jour régulière des graphiques de surveillance.
+- Mise à jour du moteur de surveillance `@upptime` (passage de la version 1.43.9 à la v1.43.13).
 
 ### Autres changements
-- Mise à jour du résumé dans le fichier README.
-- Mises à jour régulières du fichier `SUMMARY.md` pour refléter l'état des services surveillés.
+- Maintenance automatisée : actualisation régulière des graphiques de performance, du résumé de statut et de la documentation (README).
