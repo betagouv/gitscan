@@ -2025,6 +2025,8 @@
     │   │   │   │       │   └── positionnement.spec.ts
     │   │   │   │       └── user-accounts.spec.ts
     │   │   │   ├── candidacies
+    │   │   │   │   ├── candidacies-for-aap
+    │   │   │   │   │   └── candidacies-for-aap.spec.ts
     │   │   │   │   └── candidacy
     │   │   │   │       ├── appointments
     │   │   │   │       │   ├── add-appointment
@@ -2110,6 +2112,8 @@
     │   │   │       └── certification-details.spec.ts
     │   │   ├── (certificateur)
     │   │   │   ├── candidacies
+    │   │   │   │   ├── annuaire
+    │   │   │   │   │   └── annuaire.spec.ts
     │   │   │   │   └── candidacy
     │   │   │   │       ├── dropout
     │   │   │   │       │   └── dropout.spec.ts
@@ -2467,6 +2471,7 @@
     │   │   │       ├── getReorientedCandidacyMenu.ts
     │   │   │       └── isCandidacyStatusEqualOrAboveGivenStatus.ts
     │   │   ├── candidate
+    │   │   │   ├── candidate.authorization.test.ts
     │   │   │   ├── candidate.graphql
     │   │   │   ├── candidate.resolvers.ts
     │   │   │   ├── candidate.test.ts
@@ -2512,8 +2517,6 @@
     │   │   │   │   ├── updateCandidateEmailAndSendNotifications.ts
     │   │   │   │   ├── updateCandidateProfile.ts
     │   │   │   │   └── updateCandidateTypologyAndCcn.ts
-    │   │   │   ├── security
-    │   │   │   │   └── security.ts
     │   │   │   └── utils
     │   │   │       ├── candidate.helpers.ts
     │   │   │       ├── candidate.url.helpers.ts
@@ -3131,8 +3134,8 @@
     │   │       │   ├── updateCohorteVAECollectiveOrganism.ts
     │   │       │   └── updateNomCohorteVaeCollective.ts
     │   │       ├── security
-    │   │       │   ├── hasVaeCollectiveRole.test.ts
-    │   │       │   └── hasVaeCollectiveRole.ts
+    │   │       │   ├── hasVaeCollectivePermission.test.ts
+    │   │       │   └── hasVaeCollectivePermission.ts
     │   │       ├── vae-collective.cohorteVaeCollective.test.ts
     │   │       ├── vae-collective.cohortesVaeCollectivesForConnectedAap.test.ts
     │   │       ├── vae-collective.cohortesVaeCollectivesForConnectedCertificationAuthorityOrLocalAccount.test.ts
@@ -4595,6 +4598,10 @@
     │   │   │   │   └── migration.sql
     │   │   │   ├── 20260730082104_add_creer_cohorte_to_administrateur_porteur_de_projet_role_to_role_permission_vae_collective
     │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260804083306_add_missing_vae_collective_permissions
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260804083406_map_new_vae_collective_permissions_to_administrateur_porteur_de_projet_role
+    │   │   │   │   └── migration.sql
     │   │   │   └── migration_lock.toml
     │   │   ├── schema.prisma
     │   │   └── seed
@@ -5831,6 +5838,7 @@
     │   │   │   │   └── AapSelectionAdvice.tsx
     │   │   │   ├── auth
     │   │   │   │   ├── AuthLoader.tsx
+    │   │   │   │   ├── actions.ts
     │   │   │   │   ├── auth.tsx
     │   │   │   │   ├── authGuard.tsx
     │   │   │   │   ├── keycloak.utils.ts
@@ -5877,6 +5885,8 @@
     │   │   ├── commanditaires
     │   │   │   ├── commanditaire
     │   │   │   │   └── cohortes
+    │   │   │   │       ├── aucune-cohorte
+    │   │   │   │       │   └── aucuneCohorte.spec.ts
     │   │   │   │       ├── cohorte
     │   │   │   │       │   ├── aaps
     │   │   │   │       │   │   └── aaps.spec.ts
@@ -5923,7 +5933,8 @@
     │   │           │       ├── adminToken.json
     │   │           │       └── gestionnaireVaeCollectiveToken.json
     │   │           ├── getBaseUrlTest.ts
-    │   │           └── mockActiveFeatures.ts
+    │   │           ├── mockActiveFeatures.ts
+    │   │           └── mockGetUserPermissions.ts
     │   └── tsconfig.json
     └── reva-website
         ├── .env.example
@@ -6308,4 +6319,4 @@
         ├── tsconfig.json
         └── types
             └── primitives.d.ts
-2115 directories, 4195 files
+2119 directories, 4202 files
