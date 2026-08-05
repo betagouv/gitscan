@@ -1,43 +1,39 @@
-## Changelog : sylvasan (30 derniers jours, au 28 juillet 2026)
+## Changelog : sylvasan (30 derniers jours, au 04/08/2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives sur le web et l'application mobile, notamment l'ajout de fonctionnalités de suivi (follow-ups) des enquêtes, la gestion de la duplication d'enquêtes, et des corrections d'erreurs pour une meilleure expérience utilisateur. De nombreuses mises à jour de dépendances ont également été intégrées pour assurer la sécurité et la stabilité de l'application.
+Ce mois a été marqué par l'introduction majeure de la fonctionnalité de "suivis" (follow-ups), permettant de réagir et d'ajouter des observations aux réponses existantes. L'expérience de terrain a été renforcée par des améliorations de la précision GPS et de la gestion des images, tandis que l'interface web a gagné en puissance grâce à de nouveaux outils de filtrage et de gestion des suivis.
 
 ### Évolutions fonctionnelles
-- Ajout de la fonctionnalité de création, modification et suppression des follow-ups via l'interface web. [#433](https://github.com/betagouv/sylvasan/pull/433)
-- Possibilité de dupliquer une enquête existante. [#429](https://github.com/betagouv/sylvasan/pull/429)
-- Affichage des follow-ups dans l'interface web.
-- Ajout de la possibilité de voir les données d'un follow-up depuis le web.
-- Amélioration de la navigation post-followup.
-- Ajout de la possibilité de remplir des suivis.
-- Ajout d'une validation pour la condition d'affichage.
-- Ajout d'une URL pour créer des follow-ups directement à partir d'une réponse.
-- Ajout de la possibilité d'ajouter une observation à une réponse d'une autre personne.
-- Affichage du nom du répondant et d'une couleur différente pour les pins d'autres personnes.
-- Ajout de la gestion des vocabulaires pour les champs de réponse. [#435](https://github.com/betagouv/sylvasan/pull/435)
-- Ajout de champs par défaut pour les types de champs select, radio et autocomplete. [#434](https://github.com/betagouv/sylvasan/pull/434)
-- Ajout de messages d'erreur pour l'authentification.
-- Publication d'une version de test ouverte pour Android.
-- Publication d'une version preprod pour Android.
+- **Gestion des suivis (Follow-ups) :** 
+    - Possibilité de créer des suivis directement via l'URL d'une réponse.
+    - Ajout d'observations sur les réponses d'autres utilisateurs avec distinction visuelle des répondants (couleurs des pins et noms).
+    - Interface web complète pour la création, la modification et la suppression des suivis.
+- **Géolocalisation et Cartographie :**
+    - Amélioration de la précision GPS et ajout d'un indicateur de précision avec échelle visuelle.
+    - Affichage d'un cercle de précision sur la carte et mise à disposition du bouton de géolocalisation sur l'ensemble des cartes.
+- **Gestion des enquêtes et réponses :**
+    - Fonctionnalité de duplication d'enquêtes.
+    - Amélioration de la recherche via des filtres (notamment par organisation) et une pagination des résultats.
+    - Ajout de valeurs par défaut pour les champs de type sélection, radio et autocomplétion.
+- **Interface Utilisateur (UI/UX) :**
+    - Optimisation de la visibilité des champs obligatoires (styles, labels et espacements).
+    - Amélioration de l'affichage des images (vue complète et composant dédié sur le web).
+    - Mise à jour des libellés pour plus de clarté (boutons d'envoi et de sauvegarde en brouillon).
+    - Correction de l'ordre des champs dans l'application mobile.
 
 ### Évolutions techniques
-- Mise à jour de nombreuses dépendances (Django, React, Node.js, Sentry, etc.) pour améliorer la sécurité et la performance.
-- Refactoring de la sélection d'organisation/pôle vers un composable.
-- Utilisation de Typescript pour améliorer la qualité du code.
-- Ajout de tests unitaires pour les follow-ups au niveau des applications surveys et responses.
-- Mise à jour de la configuration du precommit.
-- Ajout de modèles et migrations pour les follow-ups.
-- Correction d'un bug lié à la sauvegarde des brouillons.
-- Correction d'un bug lié à la modification des suivis.
-- Suppression de l'appel au store depuis ResponsePinCard.
-- Ajout de documentation sur les permissions des rôles.
-- Ajout de PostGIS et PointField pour les réponses.
-- Mise à jour des versions des applications mobiles (iOS et Android).
+- **Architecture et Refactoring :**
+    - Migration de la logique de validation (Zod) et de la sélection d'organisation vers des *composables* pour une meilleure réutilisation.
+    - Optimisation du stockage des images dans les champs de type tableau : passage d'un stockage en base64 à un stockage par ID.
+- **Backend et API :**
+    - Implémentation des modèles, migrations et endpoints API nécessaires à la gestion des suivis.
+    - Ajout du support PostGIS pour les champs de réponse géospatiaux.
+- **Mobile :**
+    - Mises à jour des versions pour les applications Android et iOS.
+- **Qualité et Accessibilité :**
+    - Amélioration de l'accessibilité via l'ajout d'attributs ARIA.
+    - Renforcement de la couverture de tests (notamment sur les membres et les suivis).
 
 ### Autres changements
-- Ajout d'informations sur la provenance des données et des précisions concernant les données géographiques et les images.
-- Suppression de l'URL des données.
-- Correction d'un problème lié au flag "busy" qui restait actif après un unmount.
-- Suppression de la compression d'image. [#416](https://github.com/betagouv/sylvasan/pull/416)
-- Configuration de l'open testing sur le Play Store. [#417](https://github.com/betagouv/sylvasan/pull/417)
-- Amélioration de la structure du code et correction de remarques issues des revues de code.
+- **Documentation :** Ajout d'un document détaillant les permissions par rôle.
+- **Maintenance :** Corrections TypeScript et nettoyage de code suite aux revues.

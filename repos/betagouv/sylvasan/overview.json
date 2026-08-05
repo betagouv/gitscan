@@ -1,63 +1,64 @@
 {
   "url": "https://github.com/betagouv/sylvasan",
   "name": "sylvasan",
-  "description": "SylvaSan facilite le relevé et le suivi des problèmes sanitaires des arbres en forêt. L'application permet de gérer les enquêtes, les follow-ups et les réponses, avec des fonctionnalités de géolocalisation et de gestion des utilisateurs.",
+  "description": "Application dédiée au relevé et au suivi des problèmes sanitaires des arbres en forêt, permettant la collecte de données via des enquêtes géolocalisées.",
   "language": "Python",
   "features": [
-    "Gestion documentaire & Fichiers",
-    "Recherche & Filtres",
-    "Gestion des utilisateurs & Permissions",
     "Visualisation de données & Cartographie",
-    "Notifications & Alertes",
+    "Formulaires & Démarches",
+    "Suivi & Traçabilité",
     "Gestion des utilisateurs & Permissions",
-    "Suivi & Traçabilité"
+    "Recherche & Filtres",
+    "Gestion métier générale"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
+    "Django REST Framework",
     "PostgreSQL",
-    "React",
-    "Node.js",
-    "Sentry",
-    "Ruff"
+    "PostGIS",
+    "Boto3",
+    "Ionic",
+    "Vue.js",
+    "Vite"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "React / Next.js",
+    "SIG & Géospatial",
     "Python (scripts & backend)",
-    "Frontend React",
-    "Tests"
+    "TypeScript / JavaScript",
+    "Authentification (composant)"
   ],
   "auth": {
     "methods": [
-      "email-password",
-      "oauth2"
+      "oauth2",
+      "jwt"
+    ],
+    "providers": [
+      "DSF"
     ]
   },
-  "tests": "Pytest, Jest",
-  "workflows": [
-    "CI/CD & Déploiement"
+  "tests": [
+    "Vitest",
+    "Ruff",
+    "pre-commit"
   ],
-  "lastActivity": "2026-07-28T13:25:01+02:00",
+  "workflows": [
+    "GitHub Actions",
+    "Dependabot"
+  ],
+  "lastActivity": "2026-08-04T12:02:04+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "React & Next.js",
-    "TypeScript",
-    "Déploiement & Hosting",
     "Python",
     "Bases de données SQL",
-    "Sécurité & Auth",
+    "SIG & Géospatial",
+    "CI/CD & GitHub Actions",
     "Environnement & Énergie"
   ]
 }
