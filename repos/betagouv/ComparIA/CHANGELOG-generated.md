@@ -1,22 +1,22 @@
-## Changelog : ComparIA (30 derniers jours, au 17 juillet 2026)
+## Changelog : ComparIA (30 derniers jours, au 04 août 2026)
 
 ### Résumé
-Les récentes évolutions de ComparIA se concentrent sur l'amélioration de la stabilité et de la maintenabilité de la plateforme, avec l'ajout d'un mode maintenance pour faciliter les opérations. L'interface utilisateur a également été améliorée, notamment avec la correction du lien vers les datasets Hugging Face et une refonte de la page d'accueil pour encourager le déploiement auto-hébergé.
+Ce mois-ci, ComparIA a franchi une étape importante dans sa gestion opérationnelle avec l'introduction d'un mode maintenance pour faciliter les interventions techniques. L'outil en ligne de commande a été enrichi pour simplifier l'administration de la base de données, tandis que l'expérience utilisateur a été affinée par la correction de liens et la mise à jour du catalogue de modèles.
 
 ### Évolutions fonctionnelles
-- Ajout d'un mode maintenance pour permettre des opérations de maintenance sans affecter les utilisateurs. Le mode maintenance redirige automatiquement vers la page d'accueil. [#570](https://github.com/betagouv/ComparIA/pull/570)
-- Correction du lien vers les datasets Hugging Face sur la page Datasets. [#575](https://github.com/betagouv/ComparIA/pull/575)
-- Refonte de la page d'accueil (README) pour mettre l'accent sur le déploiement auto-hébergé. [#578](https://github.com/betagouv/ComparIA/pull/578)
-- Ajout de commandes `comperia-cli` pour la sauvegarde de la base de données et la déconnexion des connexions DB pendant la maintenance. [#569](https://github.com/betagouv/ComparIA/pull/569) et [#570](https://github.com/betagouv/ComparIA/pull/570)
+- **Mode maintenance** : Ajout d'une fonctionnalité permettant de suspendre l'accès au service et de rediriger automatiquement les utilisateurs vers la page d'accueil une fois la maintenance terminée [#570](https://github.com/betagouv/ComparIA/pull/570).
+- **Gestion des modèles** : Mise à jour du catalogue des modèles disponibles et optimisation de la gestion des artefacts de modèles.
+- **Corrections d'interface** : 
+    - Correction du lien vers les datasets Hugging Face sur la page dédiée [#575](https://github.com/betagouv/ComparIA/pull/575).
+    - Résolution d'un problème d'identification des modèles de langage (LLM) inconnus [#556](https://github.com/betagouv/ComparIA/pull/556).
 
 ### Évolutions techniques
-- Refactorisation du message système (system message) pour améliorer la clarté et la maintenabilité. [#555](https://github.com/betagouv/ComparIA/pull/555)
-- Correction de la gestion des LLMs inconnus pour éviter les erreurs. [#556](https://github.com/betagouv/ComparIA/pull/556)
-- Diminution du taux d'échantillonnage Sentry par défaut pour réduire le volume de traces et améliorer les performances. [#588](https://github.com/betagouv/ComparIA/pull/588)
-- Suppression d'un helper inutilisé `set_maintenance_mode`. [#572](https://github.com/betagouv/ComparIA/pull/572)
+- **Amélioration de la CLI** : L'outil `comparia-cli` propose désormais de nouvelles commandes pour la gestion de la base de données, notamment la création de sauvegardes et la déconnexion des sessions actives pour sécuriser les opérations de maintenance.
+- **Refactorisation** : Optimisation de la gestion des messages système [#555](https://github.com/betagouv/ComparIA/pull/555).
+- **Observabilité et configuration** :
+    - Réduction du volume de traces envoyées à Sentry pour optimiser le monitoring [#588](https://github.com/betagouv/ComparIA/pull/588).
+    - Ajustement des limites de débit (rate limits) par adresse IP.
 
 ### Autres changements
-- Mise à jour des traductions pour le norvégien Bokmål, l'espagnol et l'anglais via Weblate.
-- Mise à jour des traductions pour l'italien via Weblate.
-- Intégration des dernières mises à jour de Weblate.
-- Augmentation des limites de débit par IP pour la sélection personnalisée (temporaire). [#554](https://github.com/betagouv/ComparIA/pull/554)
+- **Documentation** : Refonte complète du fichier README pour mieux orienter les utilisateurs souhaitant déployer leur propre instance [#578](https://github.com/betagouv/ComparIA/pull/578).
+- **Internationalisation** : Mise à jour des traductions pour l'anglais, l'espagnol, l'italien et le norvégien bokmål via Weblate [#557](https://github.com/betagouv/ComparIA/pull/557).
