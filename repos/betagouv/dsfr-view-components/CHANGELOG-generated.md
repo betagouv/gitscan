@@ -1,14 +1,17 @@
-## Changelog : dsfr-view-components (30 derniers jours, au 12 juin 2026)
+## Changelog : dsfr-view-components (30 derniers jours, au 03/08/2026)
 
 ### Résumé
-Cette nouvelle version apporte des améliorations de maintenance et de simplification de la configuration. La version 5.0.0 marque une étape importante avec la suppression de certaines options de configuration inutilisées, rendant la gem plus légère et plus facile à utiliser. La version 5.0.1 corrige des problèmes liés à la publication.
+Les récentes mises à jour améliorent la flexibilité du composant "Badge" en permettant de personnaliser sa taille et son affichage. Le projet assure également une meilleure compatibilité avec les ressources graphiques du Design Système et a fait l'objet d'une nouvelle version (5.0.1).
 
 ### Évolutions fonctionnelles
-Aucune évolution fonctionnelle majeure n'a été apportée dans cette version. Les changements se concentrent sur l'amélioration de la maintenance et la simplification de la configuration.
+- Composant Badge :
+    - Possibilité de personnaliser la taille du badge.
+    - Possibilité d'afficher un badge sans statut défini.
+    - Correction d'un bug lié à l'absence de statut [#266](https://github.com/betagouv/dsfr-view-components/pull/266).
 
 ### Évolutions techniques
-- Suppression de la configuration configurable, simplifiant ainsi l'architecture de la gem [#265](https://github.com/betagouv/dsfr-view-components/pull/265).
-- Suppression du code de configuration inutilisé.
+- Sortie de la version 5.0.1.
+- Mise à jour de la compatibilité pour permettre l'utilisation de la version 1.15 de la gem `dsfr-assets` [#267](https://github.com/betagouv/dsfr-view-components/pull/267).
 
 ### Autres changements
-- Publication de la version 5.0.0 et 5.0.1.
+- Utilisation de la gem `dsfr-assets` pour la mise à jour du guide [#202](https://github.com/betagouv/dsfr-view-components/pull/202).
