@@ -7,7 +7,11 @@
 │       ├── android-production-build.yml
 │       └── quality.yml
 ├── .gitignore
+├── .husky
+│   └── pre-commit
 ├── .oxlintrc.json
+├── .prettierrc
+├── .sonarcloud.properties
 ├── LICENSE
 ├── README.md
 ├── app.json
@@ -30,35 +34,23 @@
 │   │   └── Marianne-RegularItalic.otf
 │   ├── icons
 │   │   ├── algae.svg
+│   │   ├── chevron.svg
+│   │   ├── close.svg
 │   │   ├── display.svg
 │   │   ├── filter.svg
 │   │   ├── fish.svg
 │   │   ├── location-disabled.svg
 │   │   ├── location.svg
-│   │   └── search.svg
+│   │   ├── search.svg
+│   │   └── target.svg
 │   └── images
 │       ├── android-icon-background.png
 │       ├── android-icon-foreground.png
 │       ├── android-icon-monochrome.png
-│       ├── expo-badge-white.png
-│       ├── expo-badge.png
-│       ├── expo-logo.png
-│       ├── favicon.png
 │       ├── icon.png
-│       ├── logo-glow.png
-│       ├── react-logo.png
-│       ├── react-logo@2x.png
-│       ├── react-logo@3x.png
-│       ├── splash-icon.png
-│       ├── tabIcons
-│       │   ├── explore.png
-│       │   ├── explore@2x.png
-│       │   ├── explore@3x.png
-│       │   ├── home.png
-│       │   ├── home@2x.png
-│       │   └── home@3x.png
-│       └── tutorial-web.png
+│       └── splash-icon.png
 ├── eas.json
+├── global.d.ts
 ├── jest.config.js
 ├── package-lock.json
 ├── package.json
@@ -77,6 +69,7 @@
 │   ├── components
 │   │   ├── BottomBar
 │   │   │   └── index.tsx
+│   │   ├── CustomSplashScreen.tsx
 │   │   ├── Layers
 │   │   │   └── useSearchByZoneLayer.ts
 │   │   ├── LocationButton.tsx
@@ -91,7 +84,7 @@
 │   ├── constants
 │   │   └── theme.ts
 │   ├── contexts
-│   │   ├── AppModeContext.tsx
+│   │   ├── AppContext.tsx
 │   │   └── RegulatoryAreasContext.tsx
 │   ├── database
 │   │   ├── db.migrations.ts
@@ -105,26 +98,38 @@
 │   │       └── getFishRegulatoryAreasQuery.ts
 │   ├── features
 │   │   └── RegulatoryAreas
+│   │       ├── FilteredRegulatoryAreas
+│   │       │   ├── Search.tsx
+│   │       │   └── index.tsx
 │   │       ├── Layers
 │   │       │   └── FishLayers
 │   │       │       └── index.tsx
+│   │       ├── RegulatoryAreaDetails
+│   │       │   └── index.tsx
 │   │       ├── RegulatoryAreasList
 │   │       │   ├── index.tsx
 │   │       │   └── utils.ts
-│   │       └── useCases
-│   │           ├── getFishRegulatoryAreas.ts
-│   │           └── syncFishRegulatoryAreasDB.ts
+│   │       ├── SelectedRegulatoryAreas
+│   │       │   └── index.tsx
+│   │       ├── useCases
+│   │       │   ├── getFishRegulatoryAreas.ts
+│   │       │   └── syncFishRegulatoryAreasDB.ts
+│   │       └── utils
+│   │           └── getRegulatoryAreaLabel.ts
 │   ├── global.css
 │   ├── hooks
 │   │   ├── use-app-color-scheme.ts
-│   │   └── use-theme.ts
+│   │   ├── use-theme.ts
+│   │   └── useLocationStatus.ts
 │   ├── types
-│   │   └── MapTypes.ts
+│   │   ├── mapTypes.ts
+│   │   └── schemas.ts
 │   └── utils
 │       ├── __tests__
 │       │   └── parseWtkToGeojson.test.ts
 │       ├── calculateBboxFromWkt.ts
 │       ├── layersStyle.ts
+│       ├── parseGeoJSONFeature.ts
 │       └── parseWktToGeojson.ts
 └── tsconfig.json
-35 directories, 94 files
+39 directories, 95 files

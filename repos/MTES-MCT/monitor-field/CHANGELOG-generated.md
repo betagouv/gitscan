@@ -1,27 +1,21 @@
-## Changelog : monitor-field (30 derniers jours, au 17 juillet 2026)
+## Changelog : monitor-field (30 derniers jours, au 05/08/2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de l'infrastructure de construction et de test de l'application, ainsi que sur l'implémentation initiale de la fonctionnalité d'affichage des zones réglementaires de pêche. Des améliorations ont également été apportées à la recherche et au stockage des données.
+L'application a franchi une étape majeure avec l'implémentation de la consultation des zones de réglementation de la pêche. L'expérience utilisateur a été enrichie par des fonctions de recherche et de navigation cartographique, tandis que l'infrastructure de développement a été considérablement renforcée pour garantir la qualité du code et automatiser les déploiements.
 
 ### Évolutions fonctionnelles
-- Implémentation initiale de l'affichage des zones réglementaires de pêche [#1](https://github.com/MTES-MCT/monitor-field/pull/1).
-- Ajout de la possibilité de rechercher par zone [#20](https://github.com/MTES-MCT/monitor-field/pull/20).
-- Affichage d'une liste des zones réglementaires de pêche [#23](https://github.com/MTES-MCT/monitor-field/pull/23).
-- Ajout de boutons dans la barre inférieure pour faciliter l'accès aux fonctionnalités de recherche [#24](https://github.com/MTES-MCT/monitor-field/pull/24).
-- Possibilité de sauvegarder les données au format GeoJSON dans la base de données [#19](https://github.com/MTES-MCT/monitor-field/pull/19).
+- **Consultation des zones réglementaires** : possibilité de consulter la liste des zones et d'afficher leurs détails en cliquant sur la carte ou sur la liste [#1](https://github.com/MTES-MCT/monitor-field/pull/1).
+- **Recherche textuelle** : ajout d'une fonction de recherche par nom pour retrouver rapidement une zone réglementaire [#21](https://github.com/MTES-MCT/monitor-field/pull/21).
+- **Navigation cartographique améliorée** : ajout de fonctions de zoom automatique sur une zone et d'un mode d'affichage isolé.
+- **Gestion de la localisation** : suivi de l'état du GPS de l'utilisateur pour s'assurer que la localisation est active pendant l'utilisation.
+- **Identité visuelle et ergonomie** : intégration d'un écran de démarrage (splash screen), d'icônes d'application adaptatives et ajout de boutons de fermeture sur les fenêtres modales.
 
 ### Évolutions techniques
-- Mise en place d'un workflow de construction pour le développement avec EAS [#22](https://github.com/MTES-MCT/monitor-field/pull/22), [#25](https://github.com/MTES-MCT/monitor-field/pull/25).
-- Configuration de workflows CI/CD pour la construction et le déploiement de l'application [#26](https://github.com/MTES-MCT/monitor-field/pull/26).
-- Mise à jour de la configuration de SonarQube et ajout de Codecov pour l'analyse de la qualité du code [#19](https://github.com/MTES-MCT/monitor-field/pull/19).
-- Migration de ESLint vers Oxlint pour un linting plus performant [#19](https://github.com/MTES-MCT/monitor-field/pull/19).
-- Mise à jour des versions de Node et des dépendances du projet [#19](https://github.com/MTES-MCT/monitor-field/pull/19).
-- Correction de la configuration de Jest pour les tests unitaires [#19](https://github.com/MTES-MCT/monitor-field/pull/19).
-- Mise à jour du slug de l'application Expo [#20](https://github.com/MTES-MCT/monitor-field/pull/20).
+- **Automatisation des déploiements (CI/CD)** : mise en place de workflows pour la génération de builds Android (environnements de développement et de preview) via EAS et GitHub Actions.
+- **Qualité et fiabilité du code** : intégration de SonarQube et Codecov pour le suivi de la qualité, et ajout de tests de type automatiques dans le workflow de validation.
+- **Optimisation du workflow de développement** : mise en place de `Husky` pour les pré-commit hooks et migration du linting vers `oxlint` pour plus de rapidité.
+- **Validation des données** : utilisation de `Zod` pour sécuriser la structure des données relatives aux zones réglementaires.
 
 ### Autres changements
-- Mise à jour de la documentation et du fichier README [#12](https://github.com/MTES-MCT/monitor-field/pull/20).
-- Renommage de `reglementations` en `regulations` pour une meilleure cohérence [#1](https://github.com/MTES-MCT/monitor-field/pull/1).
-- Modifications diverses suite aux revues de code [#7](https://github.com/MTES-MCT/monitor-field/pull/7).
-- Ajout du dossier `coverage` au fichier `.gitignore`.
-- Correction de l'importation de modules.
+- **Documentation** : mise à jour du fichier README et des scripts de commande du projet.
+- **Maintenance** : nettoyage et mise à jour des configurations techniques (TypeScript, Jest, et fichiers de configuration de linting).
