@@ -1,39 +1,34 @@
-## Changelog : messages (30 derniers jours, au 24 juillet 2026)
+## Changelog : messages (30 derniers jours, au 06/08/2026)
 
 ### Résumé
-Les dernières mises à jour apportent des améliorations significatives à la sécurité, à l'expérience mobile et à la gestion des messages. L'ajout de notifications push, la prise en charge des applications mobiles et l'amélioration de la gestion des spams renforcent la collaboration et la productivité. Des corrections de bugs et des optimisations de performance complètent ces évolutions.
+Cette période est marquée par le passage en version 0.9.0, qui introduit une étape majeure : le support des applications mobiles (iOS et Android) avec un système de notifications push. La plateforme renforce également sa sécurité, notamment sur le traitement des emails et l'authentification, tout en améliorant la fluidité de l'interface utilisateur.
 
 ### Évolutions fonctionnelles
-- Ajout d'un système de notifications push pour iOS, Android et le web.
-- Prise en charge de la création d'applications mobiles (iOS/Android) avec des mises à jour OTA (Over-The-Air).
-- Possibilité de détecter les liens texte dans le corps des emails HTML et d'avertir l'utilisateur avant redirection [#744].
-- Affichage du nombre de messages non lus dans le menu déroulant des boîtes de réception [#738].
-- Amélioration de la gestion des spams avec une documentation complète.
-- Possibilité de créer une boîte de réception sans mot de passe lorsque la synchronisation d'identité est désactivée [#707].
-- Amélioration du re-traitement des messages entrants depuis l'interface d'administration.
-- Ajout de webhooks et de postmarks pour les messages entrants.
+- **Support Mobile :** Disponibilité des applications mobiles (iOS/Android) et mise en place d'un système de notifications push (iOS, Android et Web).
+- **Sécurité Utilisateur :** Ajout d'un avertissement avant la redirection vers un lien textuel détecté dans un corps de message HTML [#744](https://github.com/suitenumerique/messages/issues/744).
+- **Améliorations de l'interface :** 
+    - Aperçu de texte plus propre.
+    - Meilleure gestion de la vue "aucune boîte de réception".
+    - Réinitialisation automatique de la recherche lors du changement de boîte de réception [#743](https://github.com/suitenumerique/messages/issues/743).
+    - Prise en charge du paramètre de redirection après la connexion.
+    - Feedback explicite en cas de problème d'authentification.
 
 ### Évolutions techniques
-- Refonte de l'architecture MTA-in en Python pur pour supprimer la dépendance à Postfix [#692].
-- Migration du frontend vers Vite et TanStack Router, abandonnant Next.js [#675].
-- Utilisation d'une nouvelle bibliothèque `jmap-email` pour l'analyse et la composition des emails [#700].
-- Amélioration de la sécurité avec l'ajout d'une liste blanche d'hôtes pour contourner les problèmes SSRF (Server-Side Request Forgery) dans les réseaux internes.
-- Mise à jour de Keycloak pour corriger une vulnérabilité de sécurité (CERTFR-2026-AVI-0815) [#729].
-- Livraison du token CSRF via la session au lieu d'un cookie.
-- Amélioration du temps de configuration avec `make bootstrap` et de l'expérience développeur.
+- **Infrastructure Mobile :** Intégration de Capacitor, mise en place d'une chaîne de mise à jour à distance (OTA) auto-hébergée et gestion du transfert de session OIDC pour le mobile.
+- **Sécurité et Email :** 
+    - Renforcement du parsing et de la composition des emails via `jmap-email` pour contrer les contenus malveillants.
+    - Ajout de la règle de confiance ARC pour l'authentification des messages entrants [#763](https://github.com/suitenumerique/messages/issues/763).
+    - Transfert du jeton CSRF via la session plutôt que par cookie.
+- **Architecture et Refactoring :** 
+    - Refactorisation du code d'importation (gestion des tentatives, mode continu, interface de liste) [#742](https://github.com/suitenumerique/messages/issues/742).
+    - Configuration du frontend pilotée directement par le backend [#734](https://github.com/suitenumerique/messages/issues/734).
+    - Support étendu des navigateurs (Chrome >= 109) [#750](https://github.com/suitenumerique/messages/issues/750).
+- **Corrections de bugs :** 
+    - Résolution d'un conflit de synchronisation (race condition) lors de l'envoi de messages concernant les destinataires.
+    - Correction du gestionnaire Outlook Web dans la logique de décodage [#754](https://github.com/suitenumerique/messages/issues/754).
+    - Correction de l'autosave qui s'activait indûment dans la fenêtre d'envoi.
+- **Expérience Développeur (DevX) :** Optimisation du temps de configuration via la commande `make bootstrap`.
 
 ### Autres changements
-- Correction de bugs liés à l'indentation des blocs relay, qui empêchait l'authentification SASL [#733].
-- Correction d'un bug dans le gestionnaire Outlook Web concernant le décodage des caractères [#754].
-- Correction d'un problème de saut de ligne prématuré dans le compositeur sur Safari [#740] et Chrome pour Android [#725].
-- Suppression de la fonctionnalité `TESTDOMAIN`, remplacée par les domaines d'auto-adhésion.
-- Suppression du composant `react-email` pour le rendu des messages sortants.
-- Configuration du frontend à partir du backend [#734].
-- Réinitialisation de la recherche lors du changement de boîte de réception [#743].
-- Amélioration de l'expérience utilisateur avec un message plus clair en cas d'absence de boîte de réception.
-- Ajout d'un en-tête `X-Mailer` aux messages sortants.
-- Ajout d'un cache-busting de la version source dans le build.
-- Linting des sous-projets.
-- Correction de l'affichage des caractères spéciaux.
-- Amélioration de l'accessibilité de la navigation des threads.
-- Correction d'un problème de saut de ligne dans le compositeur sur Chrome pour Android.
+- Documentation complète sur le processus de traitement du spam.
+- Suppression de la fonctionnalité `TESTDOMAIN`.
