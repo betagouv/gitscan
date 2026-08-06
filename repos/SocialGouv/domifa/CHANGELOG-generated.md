@@ -1,27 +1,32 @@
-## Changelog : domifa (30 derniers jours, au 30 juillet 2026)
+## Changelog : domifa (30 derniers jours, au 05 août 2026)
 
 ### Résumé
-Cette version apporte principalement des mises à jour techniques importantes, notamment une migration vers Angular 20 et Node 22, ainsi que des améliorations de la sécurité et de l'infrastructure. Quelques corrections de bugs et des ajustements mineurs ont également été effectués sur le frontend et le backend.
+Ce mois a été marqué par une modernisation majeure de l'infrastructure technique, notamment avec le passage à Angular 20. Côté utilisateur, l'expérience a été enrichie par l'ajout de contenus pédagogiques (vidéo de présentation), de nouveaux outils de téléchargement (affiches) et d'une meilleure gestion des témoins et de la génération de comptes en masse.
 
 ### Évolutions fonctionnelles
-*   Correction d'un bug empêchant l'ouverture correcte des modales et des images dans l'app tour sur le frontend. [#bf0ddda](https://github.com/SocialGouv/domifa/commit/bf0ddda5aca3abc8175f0e21561c1f8f232d185f)
-*   Ajout d'un bouton permettant d'ajouter tous les témoins. [#464f050](https://github.com/SocialGouv/domifa/commit/464f050b62c5b00c4f062ae50e4e2c0cd3e12530)
-*   Correction d'un bug lié à l'envoi double de certaines notifications sur le backend. [#f158e0b](https://github.com/SocialGouv/domifa/commit/f158e0b99434681146619257548887f95809d7f4) et [#d15ca38](https://github.com/SocialGouv/domifa/commit/d15ca38479f1f16082f4b9128498687319951651)
-*   Mise à jour des conditions générales d'utilisation (CGU) pour l'année 2026.
+- **Nouveautés et contenu :**
+    - Intégration d'une vidéo pour découvrir la plateforme Domifa [#4216](https://github.com/SocialGouv/domifa/pull/4216).
+    - Ajout d'un menu et d'un bouton de téléchargement pour les affiches "Mon Domifa" [#cdc9b6a](https://github.com/SocialGouv/domifa/commit/cdc9b6a20b721d8402d9718721ca80c4ae130b84).
+    - Ajout d'une section dédiée et d'un bouton pour la gestion des témoins [#ed1e83a](https://github.com/SocialGouv/domifa/pull/4212).
+    - Mise à jour des Conditions Générales d'Utilisation (CGU) pour l'année 2026.
+- **Améliorations de l'expérience utilisateur (UX) :**
+    - Amélioration de la clarté lors de la génération de comptes en masse avec des informations de statut plus précises [#4219](https://github.com/SocialGouv/domifa/pull/4219).
+    - Optimisation de l'interface : ajustements de textes, repositionnement de la vidéo et nettoyage visuel (suppression de séparateurs inutiles).
+    - Correction du comportement du copier-coller dans les notes [#4211](https://github.com/SocialGouv/domifa/pull/4211).
+    - Amélioration de l'accessibilité via l'ajout d'attributs ARIA dans les tableaux.
 
 ### Évolutions techniques
-*   Mise à jour majeure vers Angular 20 sur le frontend, le portail et l'administration.
-*   Mise à jour de Node.js vers la version 22.
-*   Refactorisation de l'infrastructure Nginx pour améliorer la sécurité en incluant des en-têtes de sécurité dans chaque bloc de localisation.
-*   Migration des builds d'images vers buildkit-operator pour une meilleure performance et fiabilité.
-*   Mise à jour de nombreuses dépendances, incluant TypeORM,  @edugouvfr/ngx-dsfr,  ngx-matomo, ngrx et angular cdk.
-*   Correction d'erreurs liées à la sanitisation HTML.
-*   Suppression de code de test obsolète.
+- **Modernisation du framework :** Migration complète de l'écosystème frontend vers **Angular 20** (incluant la CLI, le CDK, NgRx et les outils de linting).
+- **Infrastructure et CI/CD :**
+    - Migration des processus de build d'images vers `buildkit-operator`.
+    - Optimisation de la configuration Nginx pour centraliser la gestion des en-têtes de sécurité et partager la configuration entre les différentes applications SPA.
+    - Passage à **Node.js 22**.
+- **Backend et Sécurité :**
+    - Correction d'un bug d'affichage de la date de dernière connexion des superviseurs dans l'administration [#4223](https://github.com/SocialGouv/domifa/pull/4223).
+    - Renforcement de la sécurité avec l'ajout systématique des attributs `noopener noreferrer` sur les liens externes.
+    - Amélioration de la gestion des domaines autorisés (whitelist) et de la synchronisation des contacts avec Brevo.
+- **Observabilité :** Intégration du package **Sentry** pour un meilleur suivi des erreurs en production.
 
 ### Autres changements
-*   Ajout de Sentry pour la surveillance des erreurs sur le frontend, le portail et l'administration.
-*   Amélioration de la configuration et des règles ESLint pour le frontend.
-*   Correction de problèmes de formatage des nombres.
-*   Mise à jour de la documentation et des fichiers de configuration.
-*   Corrections mineures de code et de style.
-*   Suppression de commandes meta-psql des dumps de données et de schéma.
+- Mise à jour de la documentation (FAQ et pages statiques).
+- Nettoyage général du code et corrections suite aux revues de code.
