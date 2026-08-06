@@ -1,3 +1,7 @@
+2026-08-04T15:07:50+02:00 - f5fe14d - Pierre Leroy : Ignore les pages PDF sans texte avant OCR
+2026-08-04T14:57:19+02:00 - fc6140a - Pierre Leroy : Envoie la position du bloc dans la métadonnée d'indexation ... afin de pouvoir ordonnancer au retrieval les paragraphes d'une même page
+2026-08-04T14:57:19+02:00 - 7a865f3 - Pierre Leroy : Détecte les blocs à cheval sur deux pages ... afin de signaler qu'un chunk ne doit pas être considéré comme limité à sa page de début lors du retrieval
+2026-08-04T14:57:19+02:00 - 3eb2d19 - Pierre Leroy : Ajoute la position du bloc dans sa page ... calculée automatiquement dans Page.ajoute_blocs, pour permettre plus tard de réordonner au retrieval plusieurs paragraphes d'une même page
 2026-07-27T15:34:08+02:00 - fea161f - Pierre Leroy : [CORRECTION] Supprime aussi le document jeopardy correspondant lors d'une suppression MSC ... la boucle de suppression déclenchée par fichiers_supprimes ne consultait que la collection indexée, laissant le document miroir dans la collection Jeopardy alors qu'il n'a plus lieu d'exister, sur le même modèle que la suppression déjà en place lors d'une réindexation
 2026-07-27T12:00:54+02:00 - cb3f42d - Pierre Leroy : Affiche l'identifiant de la collection dans la liste déroulante ... pour distinguer les collections homonymes (ex : plusieurs test-indexation)
 2026-07-27T12:00:54+02:00 - 8ef4cfb - Bertrand Bougon : Ajoute un composant de sléection des collections disponibles
