@@ -1,14 +1,14 @@
-## Changelog : la-communaute (30 derniers jours, au 27 juillet 2026)
+## Changelog : la-communaute (30 derniers jours, au 05 août 2026)
 
 ### Résumé
-Cette mise à jour apporte une correction concernant les liens vers les déclarations d'accessibilité, améliorant ainsi l'expérience utilisateur pour les personnes ayant des besoins spécifiques. Les dépendances du projet ont également été mises à jour pour bénéficier des dernières corrections et améliorations de sécurité.
+Les récentes interventions ont principalement porté sur l'amélioration de l'interface utilisateur et de l'accessibilité. Des corrections ont été apportées pour stabiliser l'affichage de la page d'accueil et garantir la conformité des liens d'accessibilité, tout en effectuant des ajustements de configuration technique pour sécuriser les liens du site.
 
 ### Évolutions fonctionnelles
-- Correction des liens vers les déclarations d'accessibilité. [#1234](https://github.com/gip-inclusion/la-communaute/issues/1234)
+- Correction d'un bug d'affichage sur la page d'accueil (doublons d'attributs HTML).
+- Mise à jour des liens de déclaration d'accessibilité.
 
 ### Évolutions techniques
-- Mise à jour de la dépendance `astral-sh/setup-uv` de la version 8.2.0 à la version 9.0.0.
-- Mise à jour de la dépendance `actions/checkout` de la version 7.0.0 à la version 7.0.1.
+- Ajustement de la configuration pour forcer l'utilisation du protocole HTTPS lors de la génération de liens.
 
 ### Autres changements
-- Aucune autre modification significative n'a été apportée durant cette période.
+- Nettoyage de la suite de tests (suppression de snapshots inutilisés).

@@ -1,58 +1,65 @@
 {
   "url": "https://github.com/gip-inclusion/la-communaute",
   "name": "la-communaute",
-  "description": "La communauté de l'inclusion est un projet visant à créer une plateforme collaborative pour l'inclusion numérique et sociale. Il permet de partager des ressources, des connaissances et des bonnes pratiques dans ce domaine.",
+  "description": "Plateforme communautaire dédiée à l'inclusion, permettant l'échange de contenus, la gestion de forums et la publication de fiches pratiques.",
   "language": "Python",
   "features": [
-    "Gestion documentaire & Fichiers",
-    "API & Intégrations",
     "Authentification & Accès",
-    "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
-    "Notifications & Alertes",
     "Contenu éditorial",
-    "Sécurité & Conformité",
-    "Collaboration & Workflow"
+    "Commentaires & Discussions",
+    "Recherche & Filtres",
+    "Statistiques & Rapports",
+    "Notifications & Alertes",
+    "Gestion des médias & Assets"
   ],
-  "audience": "Associations",
+  "audience": "Grand public et Professionnels",
   "dependencies": [
     "Django",
     "psycopg",
     "python-dotenv",
-    "sentry-sdk"
+    "django-htmx",
+    "sentry-sdk",
+    "minio",
+    "postgres"
   ],
   "components": [
-    "API REST & GraphQL",
+    "Django",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
+    "HTML / CSS / Templates visuels",
     "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
-      "email-password",
+      "magic-link",
+      "session",
       "oauth2"
+    ],
+    "providers": [
+      "ProConnect"
     ]
   },
-  "tests": "pytest",
+  "tests": [
+    "pytest",
+    "pytest-django",
+    "pytest-xdist"
+  ],
   "workflows": [
     "review_app_creation.yml",
     "review_app_removal.yml"
   ],
-  "lastActivity": "2026-07-23T00:00:00Z",
+  "lastActivity": "2026-07-27T00:00:00Z",
   "status": "active",
-  "license": "ETALAB 2.0",
+  "license": "ETALAB-2.0",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
   "tags": [
-    "Données & Open Data",
     "Écosystème beta.gouv / État",
     "Python",
     "Bases de données SQL",
-    "Sécurité & Auth"
+    "Django & FastAPI",
+    "Docker & Conteneurs",
+    "CI/CD & GitHub Actions",
+    "Accessibilité"
   ]
 }
