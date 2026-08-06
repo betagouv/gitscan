@@ -58,6 +58,8 @@
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260720073718_add_report_nomination_file_reporter_index
 │   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260804170630_agenda_custom_file_html
+│   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   ├── schema.prisma
 │   │   │   ├── schemas
@@ -79,6 +81,7 @@
 │   │   │       ├── findMagistratExternalIdByFullName.sql
 │   │   │       ├── findMagistratsCurrentPositionRawQuery.sql
 │   │   │       ├── findMemberCurrentYearWorkloadRawQuery.sql
+│   │   │       ├── findNominationFileJurisdictionsRawQuery.sql
 │   │   │       ├── findReportedInAgendaNominationFilesRawQuery.sql
 │   │   │       ├── findReportedSessionIds.sql
 │   │   │       ├── insertAdministrativePositionsRawQuery.sql
@@ -159,13 +162,18 @@
 │   │   │   │   │   │   ├── agendas.controller.ts
 │   │   │   │   │   │   ├── agendas.service.ts
 │   │   │   │   │   │   ├── domain
+│   │   │   │   │   │   │   ├── agenda-doc-block.ts
 │   │   │   │   │   │   │   ├── agenda-nomination-file.ts
+│   │   │   │   │   │   │   ├── agenda-snapshot.ts
 │   │   │   │   │   │   │   ├── agenda.spec.ts
 │   │   │   │   │   │   │   └── agenda.ts
 │   │   │   │   │   │   └── infrastructure
 │   │   │   │   │   │       ├── agendas.dto.ts
 │   │   │   │   │   │       ├── agendas.filter.ts
+│   │   │   │   │   │       ├── finders
+│   │   │   │   │   │       │   └── agenda-render-context.finder.ts
 │   │   │   │   │   │       ├── queries
+│   │   │   │   │   │       │   ├── details-agenda-document-blocks.query.ts
 │   │   │   │   │   │       │   ├── details-agenda-files.query.ts
 │   │   │   │   │   │       │   ├── details-agenda-metadata.query.ts
 │   │   │   │   │   │       │   ├── details-session-agenda.query.ts
@@ -292,6 +300,7 @@
 │   │   │   │   │   ├── database
 │   │   │   │   │   │   ├── database.constants.ts
 │   │   │   │   │   │   ├── database.module.ts
+│   │   │   │   │   │   ├── db.ts
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   └── prisma.service.ts
 │   │   │   │   │   ├── exception.ts
@@ -312,11 +321,21 @@
 │   │   │   │   │   │   │   ├── multipart.spec.ts
 │   │   │   │   │   │   │   ├── multipart.types.ts
 │   │   │   │   │   │   │   └── store-file.interceptor.ts
-│   │   │   │   │   │   └── sanitizers
-│   │   │   │   │   │       ├── image.sanitizer.ts
-│   │   │   │   │   │       ├── index.ts
-│   │   │   │   │   │       ├── pdf.sanitizer.ts
-│   │   │   │   │   │       └── sanitizer.ts
+│   │   │   │   │   │   ├── sanitizers
+│   │   │   │   │   │   │   ├── image.sanitizer.ts
+│   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   ├── pdf.sanitizer.ts
+│   │   │   │   │   │   │   └── sanitizer.ts
+│   │   │   │   │   │   └── storable
+│   │   │   │   │   │       ├── db.storable.spec.ts
+│   │   │   │   │   │       ├── db.storable.ts
+│   │   │   │   │   │       ├── objects.storable.ts
+│   │   │   │   │   │       ├── result.storable.ts
+│   │   │   │   │   │       ├── s3.storable.spec.ts
+│   │   │   │   │   │       ├── s3.storable.ts
+│   │   │   │   │   │       ├── s3.ts
+│   │   │   │   │   │       ├── storable.module.ts
+│   │   │   │   │   │       └── storable.types.ts
 │   │   │   │   │   ├── forwards.ts
 │   │   │   │   │   ├── framework.module.ts
 │   │   │   │   │   ├── health.ts
@@ -331,6 +350,9 @@
 │   │   │   │   │   │   ├── pdf-renderer.service.spec.ts
 │   │   │   │   │   │   ├── pdf-renderer.service.ts
 │   │   │   │   │   │   └── pdf.module.ts
+│   │   │   │   │   ├── pipes
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   └── parse-bigint.pipe.ts
 │   │   │   │   │   └── sorting.ts
 │   │   │   │   ├── ingest
 │   │   │   │   │   ├── domain
@@ -520,6 +542,7 @@
 │   │   │   │   │       │   │   ├── hydrated-nomination-files.finder.ts
 │   │   │   │   │       │   │   ├── lolfi-nomination-files.finder.ts
 │   │   │   │   │       │   │   ├── lolfi-nomination-session.finder.ts
+│   │   │   │   │       │   │   ├── nomination-file-jurisdictions.finder.ts
 │   │   │   │   │       │   │   ├── transparence-files.finder.ts
 │   │   │   │   │       │   │   ├── transparence-session.finder.ts
 │   │   │   │   │       │   │   ├── unaffected-files.finder.ts
@@ -764,11 +787,24 @@
 │       │   │   │   │   ├── AgendaBreadcrumb.tsx
 │       │   │   │   │   ├── AgendaChairmanSelect.tsx
 │       │   │   │   │   ├── AgendaFileSearch.tsx
+│       │   │   │   │   ├── AgendaFilesSelection.tsx
+│       │   │   │   │   ├── AgendaMetadataForm.tsx
 │       │   │   │   │   ├── AgendaMetadataStep.tsx
 │       │   │   │   │   ├── AgendaNominationFile.css
 │       │   │   │   │   ├── AgendaNominationFile.test.tsx
 │       │   │   │   │   ├── AgendaNominationFile.tsx
-│       │   │   │   │   └── AgendaNominationFilesStep.tsx
+│       │   │   │   │   ├── AgendaNominationFilesStep.tsx
+│       │   │   │   │   └── agenda-editor
+│       │   │   │   │       ├── AgendaDocumentEditor.tsx
+│       │   │   │   │       ├── agenda-tiptap-extensions.ts
+│       │   │   │   │       ├── blocks
+│       │   │   │   │       │   ├── AgendaFileBlock.tsx
+│       │   │   │   │       │   ├── agenda-blocks.model.test.ts
+│       │   │   │   │       │   ├── agenda-blocks.model.ts
+│       │   │   │   │       │   └── agenda-blocks.type.ts
+│       │   │   │   │       ├── hooks
+│       │   │   │   │       │   └── useAgendaEditor.ts
+│       │   │   │   │       └── index.ts
 │       │   │   │   ├── context
 │       │   │   │   │   ├── AgendaContext.tsx
 │       │   │   │   │   ├── AgendaContext.types.ts
@@ -841,10 +877,15 @@
 │       │   │   ├── nomination-files-table
 │       │   │   │   ├── components
 │       │   │   │   │   ├── AgendaBasketButtons.tsx
+│       │   │   │   │   ├── ExcludedJurisdictionIcon.tsx
+│       │   │   │   │   ├── ExcludedJurisdictionNotice.test.tsx
+│       │   │   │   │   ├── ExcludedJurisdictionNotice.tsx
+│       │   │   │   │   ├── ExcludedJurisdictionWarningList.tsx
 │       │   │   │   │   ├── MemberExclusionSelector.tsx
 │       │   │   │   │   ├── NominationFilesActionsBar.tsx
 │       │   │   │   │   ├── NominationFilesAffectationsStatus.tsx
 │       │   │   │   │   ├── NominationFilesAutoAffectationButton.tsx
+│       │   │   │   │   ├── NominationFilesBatchOperationsButton.test.tsx
 │       │   │   │   │   ├── NominationFilesBatchOperationsButton.tsx
 │       │   │   │   │   ├── NominationFilesReporterSelector.tsx
 │       │   │   │   │   ├── NominationFilesSaveAffectationsButton.tsx
@@ -941,8 +982,9 @@
 │       │   │   │   │       │       ├── ObservationsModalProvider.reducer.test.ts
 │       │   │   │   │       │       └── ObservationsModalProvider.tsx
 │       │   │   │   │       ├── reporters
+│       │   │   │   │       │   ├── ExcludedJurisdictionAlert.tsx
+│       │   │   │   │       │   ├── MissingSecondReporterAlert.tsx
 │       │   │   │   │       │   ├── RapporteursDropdownBase.tsx
-│       │   │   │   │       │   ├── ReportersAlert.tsx
 │       │   │   │   │       │   ├── ReportersCell.tsx
 │       │   │   │   │       │   └── ReportersSelector.tsx
 │       │   │   │   │       └── targeted-position
@@ -950,12 +992,16 @@
 │       │   │   │   │           ├── NominationFileTargetPositionContext.ts
 │       │   │   │   │           └── NominationFileTargetPositionProvider.tsx
 │       │   │   │   ├── context
+│       │   │   │   │   ├── ExcludedJurisdictionsProvider.tsx
 │       │   │   │   │   ├── FilesAffectationsProvider.tsx
 │       │   │   │   │   ├── FilesSelectionProvider.tsx
 │       │   │   │   │   ├── NominationFilesTableProvider.tsx
+│       │   │   │   │   ├── excluded-jurisdictions.context.ts
 │       │   │   │   │   ├── files-affectations.context.ts
 │       │   │   │   │   ├── files-selection.context.ts
-│       │   │   │   │   └── files-table.context.ts
+│       │   │   │   │   ├── files-table.context.ts
+│       │   │   │   │   ├── member-excluded-jurisdictions.test.ts
+│       │   │   │   │   └── member-excluded-jurisdictions.ts
 │       │   │   │   └── hooks
 │       │   │   │       └── useNominationFilesTableColumns.hook.tsx
 │       │   │   ├── observations
@@ -985,17 +1031,11 @@
 │       │   │   │   │       │   ├── OfficialReportSectionTitleBlock.tsx
 │       │   │   │   │       │   ├── official-report-blocks.model.test.ts
 │       │   │   │   │       │   ├── official-report-blocks.model.ts
-│       │   │   │   │       │   ├── official-report-blocks.type.ts
-│       │   │   │   │       │   └── tiptap-node-to-html.ts
+│       │   │   │   │       │   └── official-report-blocks.type.ts
 │       │   │   │   │       ├── blocks.css
-│       │   │   │   │       ├── components
-│       │   │   │   │       │   ├── OfficialReportDriftBanner.tsx
-│       │   │   │   │       │   └── OfficialReportEditedBadge.tsx
 │       │   │   │   │       ├── hooks
-│       │   │   │   │       │   ├── useBlockActive.ts
 │       │   │   │   │       │   └── useOfficialReportEditor.ts
 │       │   │   │   │       ├── index.ts
-│       │   │   │   │       ├── official-report-commands.d.ts
 │       │   │   │   │       └── official-report-tiptap-extensions.ts
 │       │   │   │   └── context
 │       │   │   │       ├── OfficialReportContext.tsx
@@ -1080,6 +1120,8 @@
 │       │   │   │       └── useVisibleSummarySections.ts
 │       │   │   └── transparence
 │       │   │       ├── components
+│       │   │       │   ├── DocActionAgendaFiles.tsx
+│       │   │       │   ├── DocActionAgendaMetadata.tsx
 │       │   │       │   ├── DocActionDelete.tsx
 │       │   │       │   ├── DocActionDetails.tsx
 │       │   │       │   ├── DocActionUpdate.tsx
@@ -1144,7 +1186,10 @@
 │       │   │   ├── documents
 │       │   │   │   ├── agenda
 │       │   │   │   │   ├── AgendaPage.tsx
-│       │   │   │   │   └── AgendaPreviewPage.tsx
+│       │   │   │   │   ├── AgendaPreviewPage.tsx
+│       │   │   │   │   ├── AgendaRenderPage.tsx
+│       │   │   │   │   ├── AgendaUpdateFilesPage.tsx
+│       │   │   │   │   └── AgendaUpdateMetadataPage.tsx
 │       │   │   │   ├── official-report
 │       │   │   │   │   ├── OfficialReportPage.tsx
 │       │   │   │   │   ├── OfficialReportPreviewPage.tsx
@@ -1335,6 +1380,14 @@
 │       │   │       │   ├── DetailsCard.tsx
 │       │   │       │   ├── DetailsPageLayout.tsx
 │       │   │       │   └── index.ts
+│       │   │       ├── doc-block-editor
+│       │   │       │   ├── DocBlockDriftBanner.tsx
+│       │   │       │   ├── DocBlockEditedBadge.tsx
+│       │   │       │   ├── doc-block-commands.d.ts
+│       │   │       │   ├── doc-block.css
+│       │   │       │   ├── index.ts
+│       │   │       │   ├── tiptap-node-to-html.ts
+│       │   │       │   └── useBlockActive.ts
 │       │   │       ├── document-preview
 │       │   │       │   ├── DocumentEditor.css
 │       │   │       │   ├── DocumentEditor.tsx
@@ -1511,4 +1564,4 @@
 └── vendor
     ├── .gitkeep
     └── xlsx-0.20.3.tgz
-340 directories, 1173 files
+347 directories, 1219 files
