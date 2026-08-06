@@ -1,50 +1,52 @@
 {
   "url": "https://github.com/IA-Generative/AssistantMiraiLibreOffice",
   "name": "AssistantMiraiLibreOffice",
-  "description": "Extension LibreOffice intégrant un assistant IA directement dans Writer et Calc. Elle se connecte à un backend compatible OpenAI et inclut un mécanisme d'enrôlement via Device Management.",
+  "description": "Extension LibreOffice intégrant un assistant IA pour Writer et Calc, permettant la reformulation, le résumé et la génération de formules via des modèles compatibles OpenAI.",
   "language": "Python",
   "features": [
+    "Intelligence Artificielle & NLP",
     "Gestion documentaire & Fichiers",
-    "API & Intégrations",
-    "Authentification & Accès",
-    "Recherche & Filtres",
-    "Notifications & Alertes",
-    "Intelligence Artificielle & NLP"
+    "Tableaux & Affichage",
+    "Suivi & Traçabilité",
+    "Collaboration & Workflow"
   ],
-  "audience": "Professionnels",
+  "audience": "Agents de l'Administration",
   "dependencies": [
-    "OpenAI",
-    "LibreOffice"
+    "LibreOffice",
+    "OpenAI-compatible API",
+    "Keycloak",
+    "OpenTelemetry",
+    "pytest"
   ],
   "components": [
-    "API REST & GraphQL",
     "Python (scripts & backend)",
-    "Frontend React",
-    "CI/CD & Déploiement"
+    "Intelligence Artificielle / ML",
+    "Scripts & Utilitaires",
+    "Authentification (composant)",
+    "Intégrations services externes"
   ],
   "auth": {
     "methods": [
-      "oauth2"
+      "oauth2",
+      "sso",
+      "jwt"
+    ],
+    "providers": [
+      "Keycloak"
     ]
   },
   "tests": "pytest",
   "workflows": [
-    "CI/CD"
+    "deploy-release.sh"
   ],
-  "lastActivity": "2026-07-31T22:23:38+00:00",
-  "status": "active",
-  "license": null,
+  "lastActivity": "2026-07-08T11:26:55+02:00",
+  "status": "maintained",
+  "license": "MPL-2.0",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": 3,
-    "forks": 1,
-    "contributors": null,
-    "openIssues": 17
-  },
   "tags": [
-    "Données & Open Data",
     "Intelligence Artificielle & LLM",
     "Python",
-    "Sécurité & Auth"
+    "Plugins & Extensions",
+    "Écosystème beta.gouv / État"
   ]
 }
