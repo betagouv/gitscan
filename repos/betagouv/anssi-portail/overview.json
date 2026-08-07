@@ -1,26 +1,27 @@
 {
   "url": "https://github.com/betagouv/anssi-portail",
   "name": "anssi-portail",
-  "description": "Portail de l'ANSSI destiné à accompagner les organisations dans leur démarche de cybersécurité via des parcours de sécurisation, des guides et des outils de suivi.",
+  "description": "Portail de l'ANSSI proposant des parcours de sécurisation, des guides et des outils de suivi de maturité pour accompagner les organisations dans leur démarche de cybersécurité.",
   "language": "TypeScript",
   "features": [
-    "Sécurité & Conformité",
-    "Contenu éditorial",
-    "Formulaires & Démarches",
     "Authentification & Accès",
-    "Recherche & Filtres",
-    "Statistiques & Rapports"
+    "Sécurité & Conformité",
+    "Statistiques & Rapports",
+    "Interface utilisateur & Design",
+    "Suivi & Traçabilité",
+    "Formulaires & Démarches"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Express",
+    "Knex",
     "PostgreSQL",
     "Svelte",
     "Jekyll",
-    "Knex",
-    "Zod",
+    "TypeScript",
     "AWS S3",
-    "OpenID Connect"
+    "Zod",
+    "Vitest"
   ],
   "components": [
     "API REST & GraphQL",
@@ -28,13 +29,15 @@
     "TypeScript / JavaScript",
     "Design System (DSFR & UI libs)",
     "Docker & Conteneurs",
-    "Sites statiques & SSG",
-    "Node.js / NestJS"
+    "Node.js / NestJS",
+    "Authentification (composant)",
+    "ORM & Accès aux données",
+    "HTML / CSS / Templates visuels",
+    "Sites statiques & SSG"
   ],
   "auth": {
     "methods": [
       "jwt",
-      "sso",
       "session",
       "oauth2"
     ]
@@ -45,9 +48,9 @@
     "Supertest"
   ],
   "workflows": [
-    "CI/CD"
+    "GitHub Actions"
   ],
-  "lastActivity": "2026-08-04T16:01:37+02:00",
+  "lastActivity": "2026-08-06T09:30:10+02:00",
   "status": "maintained",
   "license": null,
   "hasDocumentation": true,
@@ -57,7 +60,8 @@
     "Docker & Conteneurs",
     "Sécurité & Auth",
     "Design System & UI",
-    "HTML, CSS & Web",
-    "CI/CD & GitHub Actions"
+    "CI/CD & GitHub Actions",
+    "Node.js, NestJS & Express",
+    "Bases de données SQL"
   ]
 }

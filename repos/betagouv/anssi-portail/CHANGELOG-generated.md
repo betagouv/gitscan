@@ -1,33 +1,43 @@
-## Changelog : anssi-portail (30 derniers jours, au 04 août 2026)
+## Changelog : anssi-portail (30 derniers jours, au 06/08/2026)
 
 ### Résumé
-Ce mois-ci, le portail a franchi des étapes majeures avec le déploiement des parcours de sécurisation, incluant désormais un suivi de progression détaillé et un système de récompenses (badges et attestations). L'expérience utilisateur a été transformée par une refonte visuelle (nouveau composant "Héros") et une amélioration significative de la fluidité grâce à la généralisation du rendu côté serveur (SSR).
+Ce mois a été marqué par une modernisation majeure de l'interface utilisateur et une amélioration significative de l'expérience de suivi de la cybersécurité. Le déploiement d'un nouveau composant visuel ("Héro") sur l'ensemble du site et l'enrichissement du "Parcours de sécurisation" (avec suivi de progression et génération automatique d'attestations) sont les évolutions les plus notables. Parallèlement, un effort important a été porté sur les performances via le rendu côté serveur (SSR).
 
 ### Évolutions fonctionnelles
-- **Parcours de sécurisation :**
-    - Mise en place d'un suivi de progression complet (barres de progression, badges de complétion et indicateurs de mesures réalisées par module).
-    - Introduction de tutoriels interactifs via des fenêtres modales pour accompagner l'utilisateur dans ses démarches.
-    - Nouveau système de récompenses permettant de télécharger des archives ZIP contenant des badges et des attestations officielles (PDF) personnalisées.
-    - Ajout de la possibilité d'exporter les mesures de sécurité au format CSV.
-- **Interface et Design :**
-    - Refonte visuelle de la page d'accueil et des pages clés avec un nouveau composant "Héros" (Hero) enrichi, incluant des animations (effet machine à écrire) et une meilleure adaptabilité sur mobile et tablette.
-    - Déploiement de nouveaux éléments graphiques (bandeaux riches, décorations visuelles) pour améliorer l'ergonomie.
-- **Confidentialité :**
-    - Mise en place d'un système de gestion du consentement pour le suivi utilisateur (pixel de suivi).
+- **Parcours de sécurisation** :
+    - Mise en place d'un suivi de progression détaillé (barres de progression, badges de complétion et compteurs de mesures par module).
+    - Ajout de tutoriels interactifs via des modales pour accompagner l'utilisateur.
+    - Amélioration de l'affichage des modules (descriptions, ordres d'affichage et vue en liste).
+    - Possibilité d'exporter les mesures sous format CSV.
+- **Récompenses et attestations** :
+    - Automatisation de la génération de documents PDF (attestations Cyberdépart) incluant le nom de l'organisation et respectant la charte graphique (police Marianne).
+    - Création d'archives ZIP de récompenses contenant les badges et les attestations.
+- **Interface et Design (DA)** :
+    - Déploiement du nouveau composant "Héro" (riche et adaptatif) sur la quasi-totalité des pages (accueil, catalogue, statistiques, services, etc.).
+    - Nouvelle identité visuelle pour les "Demandes de Diagnostic" avec des éléments graphiques enrichis.
+    - Optimisation de l'affichage sur mobile et tablette.
+- **Navigation et SEO** :
+    - Redirection automatique de l'ancienne route `/guides` vers le `/catalogue`.
+    - Amélioration de la navigation via le fil d'Ariane.
+- **Conformité et suivi** :
+    - Implémentation d'un système de gestion du consentement pour le suivi via pixel (intégration Brevo).
 
 ### Évolutions techniques
-- **Performance et SEO :**
-    - Migration massive vers le rendu côté serveur (SSR) pour de nombreux composants critiques (catalogue, guides, fil d'Ariane, tableaux NIS2, etc.), optimisant la vitesse de chargement et le référencement naturel.
-    - Optimisation de la gestion des redirections d'URL et des liens canoniques.
-- **Sécurité et CI/CD :**
-    - Renforcement de la sécurité de la chaîne de déploiement avec l'ajout de scans antivirus et de la validation de configuration (`zizmor`).
-    - Durcissement de la gestion des secrets et des identifiants dans les workflows GitHub.
-- **Architecture :**
-    - Refactorisation importante des composants de l'UI Kit (Tuile, Lien, etc.) pour une meilleure réutilisation.
-    - Passage à l'utilisation des UUID v7 pour la génération des clés primaires.
-    - Amélioration de la robustesse de la récupération des statistiques et de la gestion des erreurs.
+- **Performance et SEO** :
+    - Migration massive de composants vers le rendu côté serveur (SSR) pour améliorer la vitesse de chargement et le référencement (Héro, guides, catalogue, NIS2, etc.).
+- **Architecture et Code** :
+    - Migration de certains composants vers Svelte 5.
+    - Refactorisation de la gestion des appels API via la généralisation d'une instance `axios` sécurisée.
+    - Optimisation de la gestion des données avec l'utilisation d'identifiants UUID v7.
+    - Unification des définitions de retour d'API et des gestionnaires Express.
+- **Sécurité** :
+    - Renforcement de la validation des URLs de redirection côté serveur.
+    - Obfuscation et masquage des variables d'environnement.
+- **Infrastructure et CI/CD** :
+    - Ajout d'étapes de scan antivirus dans le pipeline de CI.
+    - Introduction de Nix Shell pour faciliter la configuration de l'environnement de développement local.
 
 ### Autres changements
-- **Développement :** Introduction de Nix Shell pour simplifier la configuration de l'environnement de développement local.
-- **Documentation :** Réorganisation du fichier README.
-- **Maintenance :** Nettoyage général du code, suppression de styles CSS obsolètes et harmonisation de la structure des tests.
+- Réorganisation de la documentation (README).
+- Nettoyage général du code, des commentaires et des styles CSS inutilisés.
+- Amélioration de la couverture de tests (snapshots et tests de composants).
