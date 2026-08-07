@@ -1,28 +1,30 @@
-## Changelog : mobilic (30 derniers jours, au 27 juillet 2026)
+## Changelog : mobilic (30 derniers jours, au 03 août 2026)
 
 ### Résumé
-Les dernières mises à jour de mobilic se concentrent sur l'amélioration de l'expérience utilisateur, notamment dans la gestion des litiges et des missions, ainsi que sur la correction de bugs et l'optimisation des performances. L'interface a été modernisée avec l'intégration du Design System de la République Française (DSFR) pour la page d'accueil, et des améliorations ont été apportées à la gestion des demandes de détachement.
+Ce mois-ci, la plateforme a franchi une étape importante en enrichissant les fonctionnalités pour les salariés, notamment avec la possibilité de demander un détachement ou de contester des données. L'interface a également été modernisée avec l'intégration d'un nouveau design pour l'en-tête et le pied de page, tout en améliorant la clarté de l'historique des activités et la gestion des litiges pour les administrateurs.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité pour les employés de contester une mission directement depuis l'interface [#884](https://github.com/MTES-MCT/mobilic/pulls/884).
-- Implémentation d'une fonctionnalité permettant d'abandonner une mission en cours [#7cb1b8bc](https://github.com/MTES-MCT/mobilic/commits/7cb1b8bc).
-- Ajout d'une demande de détachement avec une période de refroidissement et une possibilité de relance [#a6bcde6f](https://github.com/MTES-MCT/mobilic/commits/a6bcde6f).
-- Amélioration de l'affichage des activités et des validations pour les administrateurs [#33a8abdb](https://github.com/MTES-MCT/mobilic/pulls/33a8abdb).
-- Modification de l'étiquette pour les missions impliquant des poids lourds [#95d66294](https://github.com/MTES-MCT/mobilic/commits/95d66294).
-- Intégration de nouveaux logos de partenaires sur la page dédiée [#f906d272](https://github.com/MTES-MCT/mobilic/pulls/f906d272).
-- Refonte de l'en-tête et du pied de page avec le Design System de la République Française (DSFR) [#164cb3d8](https://github.com/MTES-MCT/mobilic/pulls/164cb3d8).
-- Amélioration de l'affichage des informations relatives aux activités et validations dans l'historique des employés [#5d847d6d](https://github.com/MTES-MCT/mobilic/commits/5d847d6d).
+- **Nouvelles fonctionnalités :**
+  - Mise en place de la demande de détachement pour les salariés ([#898](https://github.com/MTES-MCT/mobilic/pull/898)).
+  - Possibilité pour les salariés d'initier une contestation de données ([#884](https://github.com/MTES-MCT/mobilic/pull/884)).
+  - Ajout de la fonction d'annulation d'une mission en cours ([#889](https://github.com/MTES-MCT/mobilic/pull/889)).
+- **Améliorations de l'interface (UI/UX) :**
+  - Refonte visuelle de la page d'accueil avec l'intégration du nouveau header et footer conforme au DSFR ([#869](https://github.com/MTES-MCT/mobilic/pull/869), [#899](https://github.com/MTES-MCT/mobilic/pull/899), [#902](https://github.com/MTES-MCT/mobilic/pull/902)).
+  - Optimisation de l'affichage des notifications, particulièrement sur les petits écrans ([#906](https://github.com/MTES-MCT/mobilic/pull/906)).
+  - Amélioration de la lisibilité de l'historique des activités (harmonisation avec les PDF, meilleur espacement et textes enrichis).
+  - Amélioration des outils d'administration, notamment pour la gestion des litiges et l'affichage des relevés kilométriques.
+  - Simplification du parcours utilisateur par la suppression de modales d'avertissement non nécessaires.
+- **Corrections :**
+  - Correction du calcul du temps de validation pour les journées comportant plusieurs missions.
+  - Correction de l'affichage des missions supprimées dans l'historique des salariés.
 
 ### Évolutions techniques
-- Optimisation des requêtes pour l'historique des activités afin de réduire les doublons et améliorer les performances [#49919d52](https://github.com/MTES-MCT/mobilic/commits/49919d52).
-- Refactorisation du code pour réduire la complexité cognitive dans divers composants (DurationDisplay, notifications, etc.) [#8bbdabae](https://github.com/MTES-MCT/mobilic/commits/8bbdabae).
-- Suppression de FranceConnect du processus d'inscription des employés [#f7ccef15](https://github.com/MTES-MCT/mobilic/commits/f7ccef15).
-- Mise à jour de l'infrastructure pour éviter les erreurs réseau récurrentes dans Sentry [#835421dd](https://github.com/MTES-MCT/mobilic/commits/835421dd).
-- Amélioration de la gestion des erreurs et des validations pour éviter les erreurs 403 et améliorer la robustesse de l'application [#f2f90afe](https://github.com/MTES-MCT/mobilic/commits/f2f90afe).
-- Correction de plusieurs problèmes liés à l'interface utilisateur (DSFR, espacements, etc.) [#96915c74](https://github.com/MTES-MCT/mobilic/commits/96915c74).
-
-### Autres changements
-- Amélioration de la description des changements dans les bannières de litige pour une meilleure clarté [#b2a76144](https://github.com/MTES-MCT/mobilic/commits/b2a76144).
-- Correction de bugs mineurs et améliorations de la qualité du code suite aux revues de pull requests.
-- Optimisation du nombre d'appels API pour la récupération des webinaires [#8193ebfa](https://github.com/MTES-MCT/mobilic/commits/8193ebfa).
-- Mise à jour de la documentation et des commentaires dans le code.
+- **Infrastructure et CI/CD :**
+  - Déploiement des "Scalingo review apps" pour faciliter les tests automatiques sur chaque Pull Request ([#904](https://github.com/MTES-MCT/mobilic/pull/904)).
+  - Retour à la configuration WAF précédente pour assurer la stabilité du service ([#877](https://github.com/MTES-MCT/mobilic/pull/877)).
+- **Performance et Qualité :**
+  - Optimisation des appels API pour le module des webinaires ([#894](https://github.com/MTES-MCT/mobilic/pull/894)).
+  - Réduction du bruit dans les rapports d'erreurs Sentry pour une meilleure surveillance ([#891](https://github.com/MTES-MCT/mobilic/pull/891)).
+  - Refactorisation de composants clés de la PWA pour réduire la complexité du code et améliorer la maintenance.
+- **Administration et Sécurité :**
+  - Amélioration de la traçabilité et de la création de missions lors de l'utilisation du mode "impersonnalisation" ([#901](https://github.com/MTES-MCT/mobilic/pull/901), [#910](https://github.com/MTES-MCT/mobilic/pull/910)).
