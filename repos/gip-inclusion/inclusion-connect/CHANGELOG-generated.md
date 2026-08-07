@@ -1,7 +1,7 @@
-## Changelog : inclusion-connect (30 derniers jours, au 04/08/2026)
+## Changelog : inclusion-connect (30 derniers jours, au 06/08/2026)
 
 ### Résumé
-Les évolutions récentes se sont concentrées sur l'amélioration de l'environnement de démonstration, offrant une plus grande flexibilité pour tester les profils utilisateurs.
+Les évolutions récentes se concentrent sur l'amélioration de l'expérience de test via le mode de démonstration, permettant une plus grande flexibilité lors des simulations de parcours.
 
 ### Évolutions fonctionnelles
-- Possibilité de personnaliser le prénom et le nom de famille lors de l'utilisation du mode démonstration.
+- Mode démo : possibilité de personnaliser le prénom et le nom de famille pour faciliter les scénarios de test.
