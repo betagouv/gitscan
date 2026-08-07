@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/tchapgouv/synapse-room-access-rules",
   "name": "synapse-room-access-rules",
-  "description": "Ce module implémente la gestion des événements d'accès aux salles (`im.vector.room.access_rules`). Il permet de restreindre l'accès à une salle en fonction de la règle sélectionnée.",
+  "description": "Ce module implémente la gestion des règles d'accès aux salles pour le serveur Matrix Synapse. Il permet de restreindre l'accès, de gérer la visibilité et de contrôler le chiffrement des salons.",
   "language": "Python",
   "features": [
     "Authentification & Accès",
@@ -9,10 +9,11 @@
   ],
   "audience": "Professionnels",
   "dependencies": [
-    "attrs"
+    "attrs",
+    "matrix-synapse",
+    "twisted"
   ],
   "components": [
-    "API REST & GraphQL",
     "Python (scripts & backend)"
   ],
   "auth": {
@@ -27,18 +28,19 @@
   "workflows": [
     "ci.yml"
   ],
-  "lastActivity": "2026-05-21T15:19:47+02:00",
+  "lastActivity": "2026-08-06T22:49:15+02:00",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 0,
+    "stars": 1,
     "forks": 2,
-    "contributors": null,
-    "openIssues": 2
+    "openIssues": 3
   },
   "tags": [
     "Python",
-    "Sécurité & Conformité"
+    "Sécurité & Conformité",
+    "Communication & Messagerie",
+    "Plugins & Extensions"
   ]
 }

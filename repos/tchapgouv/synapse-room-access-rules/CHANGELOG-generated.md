@@ -1,20 +1,20 @@
-## Changelog : synapse-room-access-rules (30 derniers jours, au 27 mai 2026)
+## Changelog : synapse-room-access-rules (30 derniers jours, au 06/08/2026)
 
 ### Résumé
-Les récentes mises à jour de `synapse-room-access-rules` améliorent la gestion de l'accès aux salles, notamment en introduisant la notion de visibilité (publique/privée) et en corrigeant des problèmes liés à la création de salles chiffrées ou non chiffrées. Ces changements renforcent la flexibilité et la sécurité de l'accès aux conversations.
+Les récentes évolutions se concentrent sur l'amélioration de l'outil de gestion de la rétention des messages (retention fixer). Les changements permettent une gestion plus fine de la durée de conservation des messages dans les salons publics et introduisent un mode de réduction progressive pour protéger la stabilité et les performances des serveurs.
 
 ### Évolutions fonctionnelles
-- Ajout de la gestion de la visibilité des salles (publique ou privée) via le paramètre `visibility` dans les règles d'accès. [#18](https://github.com/tchapgouv/synapse-room-access-rules/issues/18)
-- Support des salles privées non chiffrées. [#18](https://github.com/tchapgouv/synapse-room-access-rules/issues/18)
-- Correction : Les paramètres `force_unencrypted_at_creation` et `visibility` sont maintenant optionnels lors de la création d'une salle. [#17](https://github.com/tchapgouv/synapse-room-access-rules/issues/17)
-- Correction : Il n'est plus possible de modifier le paramètre `visibility` après la création de la salle.
-- Correction : Dans les salles publiques, le niveau d'autorisation pour l'invitation est maintenant défini par défaut à 0. [#18](https://github.com/tchapgouv/synapse-room-access-rules/issues/18)
+- **Amélioration de l'outil de gestion de la rétention (retention fixer) :**
+  - Possibilité de configurer spécifiquement la durée de rétention pour les salons publics.
+  - Ajout d'un mécanisme de réduction progressive de la rétention afin d'éviter de surcharger les serveurs lors des processus de nettoyage.
 
 ### Évolutions techniques
-- Refactoring : Renommage du paramètre `encrypted` en `force_unencrypted_at_creation` pour plus de clarté.
-- Correction de problèmes de typage identifiés par mypy.
-- Ajout d'un "fixer" pour ajouter la visibilité publique dans l'événement de règles d'accès pour les salles publiques.
-- Amélioration du formatage du code.
+- **Optimisation des performances :**
+  - Refactorisation de la gestion de l'état des salons via l'utilisation de `get_room_state` pour une meilleure efficacité.
+- **Qualité et maintenance du code :**
+  - Modernisation de la chaîne de qualité avec le passage au formateur `ruff` et la mise à jour des linters.
+  - Amélioration de la traçabilité du système par l'ajout de nouveaux logs.
 
 ### Autres changements
-- Intégration de la branche `private-unencrypted-all`.
+- **Documentation :** Ajout de documentation concernant le fonctionnement du "retention fixer".
+- **Nettoyage :** Diverses corrections de style et nettoyage de code (linting).
