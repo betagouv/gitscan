@@ -2014,8 +2014,16 @@
     │   │   │   │   │   └── informations-connexion
     │   │   │   │   │       └── information-connexion.spec.ts
     │   │   │   │   ├── organisms
-    │   │   │   │   │   ├── organism-on-site.spec.ts
-    │   │   │   │   │   └── organism-remote.spec.ts
+    │   │   │   │   │   ├── on-site
+    │   │   │   │   │   │   ├── certifications.spec.ts
+    │   │   │   │   │   │   ├── formacode.spec.ts
+    │   │   │   │   │   │   ├── organism.spec.ts
+    │   │   │   │   │   │   └── perimetre-accompagnement.spec.ts
+    │   │   │   │   │   └── remote
+    │   │   │   │   │       ├── certifications.spec.ts
+    │   │   │   │   │       ├── formacode.spec.ts
+    │   │   │   │   │       ├── organism.spec.ts
+    │   │   │   │   │       └── perimetre-accompagnement.spec.ts
     │   │   │   │   └── user-accounts
     │   │   │   │       ├── add-user-account
     │   │   │   │       │   └── add-user-account.spec.ts
@@ -2309,6 +2317,7 @@
     │   │   ├── candidacy
     │   │   │   ├── candidacy.canAccessCandidacy.test.ts
     │   │   │   ├── candidacy.getCandidacies.test.ts
+    │   │   │   ├── candidacy.getCandidaciesForAAP.test.ts
     │   │   │   ├── candidacy.graphql
     │   │   │   ├── candidacy.resolvers.ts
     │   │   │   ├── candidacy.selectOrganismAsAdmin.test.ts
@@ -2605,11 +2614,11 @@
     │   │   │       ├── updateCertificationRegistryManager.ts
     │   │   │       └── updateParcoursForCertificationAndCertificationAuthority.ts
     │   │   ├── dossier-de-validation
+    │   │   │   ├── dossier-de-validation.authorization.test.ts
     │   │   │   ├── dossier-de-validation.graphql
     │   │   │   ├── dossier-de-validation.resolvers.ts
     │   │   │   ├── dossier-de-validation.routes.ts
     │   │   │   ├── dossier-de-validation.search-count.test.ts
-    │   │   │   ├── dossier-de-validation.security.ts
     │   │   │   ├── emails
     │   │   │   │   ├── sendDVReportedToCandidateAutonomeEmail.ts
     │   │   │   │   ├── sendDVReportedToOrganismEmail.ts
@@ -2842,12 +2851,12 @@
     │   │   │   │   ├── updateExamInfo.ts
     │   │   │   │   ├── updateResultOfJury.test.ts
     │   │   │   │   └── updateResultOfJury.ts
+    │   │   │   ├── jury.authorization.test.ts
     │   │   │   ├── jury.graphql
     │   │   │   ├── jury.resolvers.ts
     │   │   │   ├── jury.routes.ts
     │   │   │   ├── jury.search-count.test.ts
     │   │   │   ├── jury.types.ts
-    │   │   │   ├── security.ts
     │   │   │   ├── types
     │   │   │   │   └── juryStatusFilter.type.ts
     │   │   │   └── utils
@@ -5535,6 +5544,7 @@
     │   │           ├── civil-informations.spec.ts
     │   │           ├── profile-fc-locking.spec.ts
     │   │           └── profile.spec.ts
+    │   ├── tsconfig.build.json
     │   └── tsconfig.json
     ├── reva-interop
     │   ├── .env.example
@@ -5884,31 +5894,33 @@
     │   ├── tests
     │   │   ├── commanditaires
     │   │   │   ├── commanditaire
-    │   │   │   │   └── cohortes
-    │   │   │   │       ├── aucune-cohorte
-    │   │   │   │       │   └── aucuneCohorte.spec.ts
-    │   │   │   │       ├── cohorte
-    │   │   │   │       │   ├── aaps
-    │   │   │   │       │   │   └── aaps.spec.ts
-    │   │   │   │       │   ├── certifications
-    │   │   │   │       │   │   ├── certification
-    │   │   │   │       │   │   │   └── certification.spec.ts
-    │   │   │   │       │   │   └── certifications.spec.ts
-    │   │   │   │       │   ├── certifications-selectionnees
-    │   │   │   │       │   │   └── certifications-selectionnees.spec.ts
-    │   │   │   │       │   ├── cohorte.certificationsCard.spec.ts
-    │   │   │   │       │   ├── cohorte.deleteCohorteButton.spec.ts
-    │   │   │   │       │   ├── cohorte.generateCodeInscriptionButton.spec.ts
-    │   │   │   │       │   ├── cohorte.global.spec.ts
-    │   │   │   │       │   ├── cohorte.organismCard.spec.ts
-    │   │   │   │       │   ├── cohorte.registrationCodeDisplay.spec.ts
-    │   │   │   │       │   ├── modifier-intitule
-    │   │   │   │       │   │   └── modifier-intitule.spec.ts
-    │   │   │   │       │   └── selection-certifications
-    │   │   │   │       │       └── selection-certifications.spec.ts
-    │   │   │   │       ├── cohortes.spec.ts
-    │   │   │   │       └── nouvelle-cohorte
-    │   │   │   │           └── nouvelleCohorte.spec.ts
+    │   │   │   │   ├── cohortes
+    │   │   │   │   │   ├── aucune-cohorte
+    │   │   │   │   │   │   └── aucuneCohorte.spec.ts
+    │   │   │   │   │   ├── cohorte
+    │   │   │   │   │   │   ├── aaps
+    │   │   │   │   │   │   │   └── aaps.spec.ts
+    │   │   │   │   │   │   ├── certifications
+    │   │   │   │   │   │   │   ├── certification
+    │   │   │   │   │   │   │   │   └── certification.spec.ts
+    │   │   │   │   │   │   │   └── certifications.spec.ts
+    │   │   │   │   │   │   ├── certifications-selectionnees
+    │   │   │   │   │   │   │   └── certifications-selectionnees.spec.ts
+    │   │   │   │   │   │   ├── cohorte.certificationsCard.spec.ts
+    │   │   │   │   │   │   ├── cohorte.deleteCohorteButton.spec.ts
+    │   │   │   │   │   │   ├── cohorte.generateCodeInscriptionButton.spec.ts
+    │   │   │   │   │   │   ├── cohorte.global.spec.ts
+    │   │   │   │   │   │   ├── cohorte.organismCard.spec.ts
+    │   │   │   │   │   │   ├── cohorte.registrationCodeDisplay.spec.ts
+    │   │   │   │   │   │   ├── modifier-intitule
+    │   │   │   │   │   │   │   └── modifier-intitule.spec.ts
+    │   │   │   │   │   │   └── selection-certifications
+    │   │   │   │   │   │       └── selection-certifications.spec.ts
+    │   │   │   │   │   ├── cohortes.spec.ts
+    │   │   │   │   │   └── nouvelle-cohorte
+    │   │   │   │   │       └── nouvelleCohorte.spec.ts
+    │   │   │   │   └── dashboard
+    │   │   │   │       └── dashboard.spec.ts
     │   │   │   └── commanditaires.spec.ts
     │   │   ├── forgot-password
     │   │   │   └── forgotPassword.spec.ts
@@ -6319,4 +6331,4 @@
         ├── tsconfig.json
         └── types
             └── primitives.d.ts
-2119 directories, 4202 files
+2122 directories, 4211 files
