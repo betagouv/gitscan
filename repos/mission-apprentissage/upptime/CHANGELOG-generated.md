@@ -1,10 +1,11 @@
-## Changelog : upptime (30 derniers jours, au 05/08/2026)
+## Changelog : upptime (30 derniers jours, au 07/08/2026)
 
 ### Résumé
-Le projet assure sa mission de surveillance de manière autonome. L'activité récente est principalement composée de la maintenance automatisée des indicateurs de disponibilité et de la mise à jour régulière du moteur de monitoring.
+Le projet assure la surveillance automatisée et continue des services monitorés. L'activité récente est principalement composée de la maintenance automatique des indicateurs de statut (graphiques et résumés) et de la mise à jour du moteur de monitoring.
 
 ### Évolutions techniques
-- Mise à jour du moteur de surveillance `@upptime` (passage de la version 1.43.9 à la v1.43.13).
+- Mise à jour du moteur de monitoring `@upptime` vers la version 1.43.13.
 
 ### Autres changements
-- Maintenance automatisée : actualisation régulière des graphiques de performance, du résumé de statut et de la documentation (README).
+- Actualisation automatique des graphiques de disponibilité et des résumés de statut.
+- Mise à jour régulière du résumé de l'état du système dans le fichier README.
