@@ -1,33 +1,21 @@
-## Changelog : plusfraichemaville-site (30 derniers jours, au 22 juillet 2026)
+## Changelog : plusfraichemaville-site (30 derniers jours, au 04/08/2026)
 
 ### Résumé
-Ce mois-ci, le site a connu des améliorations significatives en termes de contenu et de fonctionnalités, notamment l'ajout de nouvelles pages dédiées à la santé et aux canicules, ainsi que des optimisations pour le référencement (SEO) et l'expérience utilisateur. Des corrections et des ajustements ont également été apportés suite aux retours d'utilisateurs.
+Ce mois-ci, le site a bénéficié de mises à jour de contenus clés, notamment l'intégration du budget 2025 et l'actualisation des données climatiques. Un travail important a également été réalisé pour améliorer le référencement naturel (SEO) du site et permettre une meilleure interopérabilité des données via de nouvelles interfaces de programmation (API).
 
 ### Évolutions fonctionnelles
-
-- Ajout d'une page dédiée aux urgences canicule ([#514](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/514)).
-- Ajout d'une page permettant de demander de l'aide pour un projet ([#513](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/513)).
-- Création d'une page dédiée à la surchauffe urbaine et à la santé ([#509](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/509)).
-- Ajout d'un bloc "santé" dans la page "timing" de la surchauffe urbaine ([#512](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/512)).
-- Ajout du budget 2025 ([#518](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/518)).
-- Suppression des aides régionales et du lien "Aides Territoires" sur les fiches solution ([#519](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/519)).
-- Tri des fiches solutions par type dans la page santé.
+- **Mise à jour des données climatiques** : Actualisation des données relatives aux zones climatiques locales (LCZ) et amélioration de la clarté des informations via une modification du texte et de la fenêtre modale [#521](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/521).
+- **Nouveaux contenus** : Ajout des informations concernant le budget 2025 [#519](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/519).
+- **Simplification de l'interface** : Suppression des sections sur les aides régionales et des liens vers les aides territoriales sur les fiches solutions pour épurer l'expérience utilisateur [#517](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/517).
+- **Correction de contenu** : Rectification d'une coquille sur la page dédiée aux risques sanitaires.
 
 ### Évolutions techniques
-
-- Intégration d'une API pour permettre à pfat d'utiliser les données climadiag ([#520](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/520)).
-- Amélioration de la gestion des données climadiag : possibilité de mise à jour sans effacement des données LCZ.
-- Ajout d'attributs MetaData pour le SEO des pages REX ([#516](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/516)).
-- Ajout de liens canonical pour améliorer le SEO ([#516](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/516)).
-- Ajout de tags Matomo pour le suivi des nouvelles fonctionnalités.
-- Suppression des balises HTML de la méta description.
-- Chargement asynchrone des fiches solutions santé.
-- Ajout de descriptions pour les lecteurs d'écran pour les infographies.
-
-### Autres changements
-
-- Corrections diverses suite aux retours métier (plusieurs commits).
-- Correction d'un problème lié à l'envoi de chaînes vides.
-- Correction d'un problème lié au consentement Matomo.
-- Correction d'un dernier retour sur la page urgence santé.
-- Correction de problèmes de configuration de PostHog.
+- **Optimisation du référencement (SEO)** : 
+    - Mise en place de liens canoniques pour les pages de retours d'expérience (REX) et le site en général [#516](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/516).
+    - Ajout de métadonnées spécifiques pour les pages REX [#515](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/515).
+    - Nettoyage automatique des balises HTML dans les méta-descriptions pour un affichage propre dans les moteurs de recherche.
+- **Interopérabilité et gestion des données** :
+    - Création d'une nouvelle route API permettant au projet PFAT de consommer les données Climadiag [#520](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/520).
+    - Amélioration du processus de mise à jour des données Climadiag pour éviter l'écrasement accidentel des données LCZ.
+- **Analyse et suivi** : Intégration de nouveaux événements et tags Matomo pour affiner le suivi des comportements utilisateurs [#518](https://github.com/incubateur-ademe/plusfraichemaville-site/pull/518).
+- **Fiabilité** : Correction d'un bug de validation pour empêcher l'envoi de chaînes de caractères vides.
