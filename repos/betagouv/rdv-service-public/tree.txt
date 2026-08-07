@@ -445,7 +445,6 @@
 │   │   ├── user_notifications_helper.rb
 │   │   └── users_helper.rb
 │   ├── javascript
-│   │   ├── administrate.js
 │   │   ├── application.js
 │   │   ├── application_agent.js
 │   │   ├── application_agent_config.js
@@ -460,6 +459,7 @@
 │   │   │   ├── browser-detection.js
 │   │   │   ├── calendar
 │   │   │   │   ├── agenda-multi-agent.js
+│   │   │   │   ├── fullcalendar-theme.js
 │   │   │   │   └── utils.js
 │   │   │   ├── calendar.js
 │   │   │   ├── check-all.js
@@ -492,6 +492,7 @@
 │   │   │   └── zones-map.js
 │   │   ├── controllers
 │   │   │   ├── application.js
+│   │   │   ├── blog_posts_modal_controller.js
 │   │   │   ├── dependent_input_controller.js
 │   │   │   ├── destroyable_controller.js
 │   │   │   ├── form_controller.js
@@ -506,92 +507,67 @@
 │   │   ├── lieux_map.js
 │   │   ├── mail.js
 │   │   ├── rdv_plan.js
-│   │   └── stylesheets
-│   │       ├── _variables.scss
-│   │       ├── _variables_dsfr.scss
-│   │       ├── administrate
-│   │       │   ├── application.scss
-│   │       │   ├── base
-│   │       │   │   ├── _forms.scss
-│   │       │   │   ├── _layout.scss
-│   │       │   │   ├── _lists.scss
-│   │       │   │   ├── _tables.scss
-│   │       │   │   └── _typography.scss
-│   │       │   ├── components
-│   │       │   │   ├── _app-container.scss
-│   │       │   │   ├── _attributes.scss
-│   │       │   │   ├── _buttons.scss
-│   │       │   │   ├── _cells.scss
-│   │       │   │   ├── _field-unit.scss
-│   │       │   │   ├── _flashes.scss
-│   │       │   │   ├── _form-actions.scss
-│   │       │   │   ├── _main-content.scss
-│   │       │   │   ├── _navigation.scss
-│   │       │   │   ├── _pagination.scss
-│   │       │   │   └── _search.scss
-│   │       │   ├── library
-│   │       │   │   ├── _clearfix.scss
-│   │       │   │   ├── _data-label.scss
-│   │       │   │   └── _variables.scss
-│   │       │   ├── reset
-│   │       │   │   └── _normalize.scss
-│   │       │   └── utilities
-│   │       │       └── _text-color.scss
-│   │       ├── application.scss
-│   │       ├── application_agent.scss
-│   │       ├── application_agent_config.scss
-│   │       ├── components
-│   │       │   ├── _accordion.scss
-│   │       │   ├── _arrow_list.scss
-│   │       │   ├── _autocomplete.scss
-│   │       │   ├── _backgrounds.scss
-│   │       │   ├── _backgrounds_dsfr.scss
-│   │       │   ├── _bubble.scss
-│   │       │   ├── _button_group_before_card.scss
-│   │       │   ├── _calendar.scss
-│   │       │   ├── _callout.scss
-│   │       │   ├── _cards.scss
-│   │       │   ├── _creneaux.scss
-│   │       │   ├── _dropdown.scss
-│   │       │   ├── _forms.scss
-│   │       │   ├── _logo_partenaire.scss
-│   │       │   ├── _motifs.scss
-│   │       │   ├── _nav.scss
-│   │       │   ├── _planning_agents_select.scss
-│   │       │   ├── _proche_selection.scss
-│   │       │   ├── _rdv_solidarites_instance_name.scss
-│   │       │   ├── _rdv_status.scss
-│   │       │   ├── _recurrence.scss
-│   │       │   ├── _select2.scss
-│   │       │   ├── _settings.scss
-│   │       │   ├── _stats.scss
-│   │       │   ├── _tables.scss
-│   │       │   ├── _types.scss
-│   │       │   ├── _utilities.scss
-│   │       │   ├── _utilities_dsfr.scss
-│   │       │   └── _zones_map.scss
-│   │       ├── instance_name.scss
-│   │       ├── mail.scss
-│   │       ├── print.scss
-│   │       ├── rdv_plan.scss
-│   │       ├── structure
-│   │       │   ├── _authentication.scss
-│   │       │   ├── _bootstrap_overrides.scss
-│   │       │   ├── _footer.scss
-│   │       │   ├── _footer_dsfr.scss
-│   │       │   ├── _general.scss
-│   │       │   ├── _header.scss
-│   │       │   ├── _left-menu.scss
-│   │       │   ├── _misc.scss
-│   │       │   ├── _misc_agent_config.scss
-│   │       │   └── _page-head.scss
-│   │       └── vendor
-│   │           └── proconnect_button_dsfr.scss
+│   │   ├── stylesheets
+│   │   │   ├── _variables.scss
+│   │   │   ├── _variables_dsfr.scss
+│   │   │   ├── application.scss
+│   │   │   ├── application_agent.scss
+│   │   │   ├── application_agent_config.scss
+│   │   │   ├── components
+│   │   │   │   ├── _accordion.scss
+│   │   │   │   ├── _arrow_list.scss
+│   │   │   │   ├── _autocomplete.scss
+│   │   │   │   ├── _backgrounds.scss
+│   │   │   │   ├── _backgrounds_dsfr.scss
+│   │   │   │   ├── _bubble.scss
+│   │   │   │   ├── _button_group_before_card.scss
+│   │   │   │   ├── _calendar.scss
+│   │   │   │   ├── _callout.scss
+│   │   │   │   ├── _cards.scss
+│   │   │   │   ├── _creneaux.scss
+│   │   │   │   ├── _dropdown.scss
+│   │   │   │   ├── _forms.scss
+│   │   │   │   ├── _fullcalendar_theme.scss
+│   │   │   │   ├── _logo_partenaire.scss
+│   │   │   │   ├── _motifs.scss
+│   │   │   │   ├── _nav.scss
+│   │   │   │   ├── _planning_agents_select.scss
+│   │   │   │   ├── _proche_selection.scss
+│   │   │   │   ├── _rdv_solidarites_instance_name.scss
+│   │   │   │   ├── _rdv_status.scss
+│   │   │   │   ├── _recurrence.scss
+│   │   │   │   ├── _select2.scss
+│   │   │   │   ├── _settings.scss
+│   │   │   │   ├── _stats.scss
+│   │   │   │   ├── _tables.scss
+│   │   │   │   ├── _types.scss
+│   │   │   │   ├── _utilities.scss
+│   │   │   │   ├── _utilities_dsfr.scss
+│   │   │   │   └── _zones_map.scss
+│   │   │   ├── instance_name.scss
+│   │   │   ├── mail.scss
+│   │   │   ├── print.scss
+│   │   │   ├── rdv_plan.scss
+│   │   │   ├── structure
+│   │   │   │   ├── _authentication.scss
+│   │   │   │   ├── _bootstrap_overrides.scss
+│   │   │   │   ├── _footer.scss
+│   │   │   │   ├── _footer_dsfr.scss
+│   │   │   │   ├── _general.scss
+│   │   │   │   ├── _header.scss
+│   │   │   │   ├── _left-menu.scss
+│   │   │   │   ├── _misc.scss
+│   │   │   │   ├── _misc_agent_config.scss
+│   │   │   │   └── _page-head.scss
+│   │   │   └── vendor
+│   │   │       └── proconnect_button_dsfr.scss
+│   │   └── super_admin.js
 │   ├── jobs
 │   │   ├── ants
 │   │   │   └── sync_appointment_job.rb
 │   │   ├── application_job.rb
 │   │   ├── caldav
+│   │   │   ├── base_job.rb
 │   │   │   ├── export_rdv_to_caldav_job.rb
 │   │   │   ├── import_absences_from_caldav_job.rb
 │   │   │   ├── mass_destroy_events_and_absences_job.rb
@@ -1008,8 +984,6 @@
 │       │   │   ├── index.html.slim
 │       │   │   ├── new.html.slim
 │       │   │   └── show.html.slim
-│       │   ├── invitations
-│       │   │   └── index.html.slim
 │       │   ├── lieux
 │       │   │   ├── _fil_ariane.html.slim
 │       │   │   ├── _lieu.html.slim
@@ -1388,6 +1362,7 @@
 │       ├── layouts
 │       │   ├── _agent_footer.html.slim
 │       │   ├── _agent_header.html.slim
+│       │   ├── _blog_posts_modal.html.slim
 │       │   ├── _degraded_service.html.slim
 │       │   ├── _flash.html.slim
 │       │   ├── _footer.html.slim
@@ -1543,10 +1518,11 @@
 │       │   │   ├── edit.html.slim
 │       │   │   └── index.html.slim
 │       │   ├── agents
-│       │   │   └── show.html.slim
-│       │   ├── application
-│       │   │   ├── _navigation.html.erb
+│       │   │   ├── _action_buttons_on_show.html.slim
+│       │   │   ├── _agent_features.html.slim
 │       │   │   └── show.html.erb
+│       │   ├── application
+│       │   │   └── _navigation.html.erb
 │       │   ├── comptes
 │       │   │   └── new.html.slim
 │       │   ├── lieux
@@ -1560,7 +1536,7 @@
 │       │   │   ├── edit.html.slim
 │       │   │   └── index.html.slim
 │       │   └── users
-│       │       └── show.html.slim
+│       │       └── show.html.erb
 │       ├── users
 │       │   ├── file_attentes
 │       │   │   └── unsubscribe.html.slim
@@ -2053,7 +2029,9 @@
 │   │   ├── 20260505142243_add_caldav_include_sensitive_data_to_agents.rb
 │   │   ├── 20260518132616_add_online_booking_with_email_to_organisations.rb
 │   │   ├── 20260603152307_add_rdv_etat_to_organisation_verticale_enum.rb
-│   │   └── 20260610142439_remove_uniqueness_on_services_short_name.rb
+│   │   ├── 20260610142439_remove_uniqueness_on_services_short_name.rb
+│   │   ├── 20260630120810_drop_notification_email_and_recreate_text_search_terms.rb
+│   │   └── 20260630124356_add_index_on_text_search_terms.rb
 │   ├── schema.rb
 │   ├── seeds
 │   │   ├── ccas.rb
@@ -2579,6 +2557,7 @@
 │   │   ├── application_job_spec.rb
 │   │   ├── application_mailer_delivery_job_spec.rb
 │   │   ├── caldav
+│   │   │   ├── base_job_spec.rb
 │   │   │   ├── export_rdv_to_caldav_job_spec.rb
 │   │   │   └── import_absences_from_caldav_job_spec.rb
 │   │   ├── cron_job
@@ -2994,4 +2973,4 @@
 ├── vendor
 │   └── .keep
 └── yarn.lock
-462 directories, 2534 files
+455 directories, 2520 files
