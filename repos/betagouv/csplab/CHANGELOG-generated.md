@@ -1,30 +1,20 @@
-## Changelog : csplab (30 derniers jours, au 29 juillet 2026)
+## Changelog : csplab (30 derniers jours, au 06/08/2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a travaillé sur l'amélioration de la gestion des recrutements, notamment l'ajout de rôles et de permissions pour un contrôle d'accès plus précis. Des améliorations ont également été apportées à l'ingestion de données, à la gestion des API et à l'interface utilisateur pour une expérience plus fluide et sécurisée.
+Ce mois-ci, la plateforme a franchi une étape importante en renforçant sa sécurité grâce au déploiement d'un système de gestion des droits d'accès (RBAC) et en enrichissant considérablement la précision des données ingérées (référentiels métiers, localisation). L'expérience utilisateur a également été fluidifiée par l'ajout de capacités de filtrage étendues et une modernisation de l'interface de gestion des recrutements.
 
 ### Évolutions fonctionnelles
-- Ajout de la gestion des étapes d'un pipeline de recrutement, avec possibilité de réinitialisation et de consultation/mise à jour. [#1050](https://github.com/betagouv/csplab/issues/1050) et [#1048](https://github.com/betagouv/csplab/issues/1048)
-- Mise en place du contrôle d'accès basé sur les rôles (RBAC) pour les agents selon leurs rôles sur un recrutement, ainsi que pour la création d'organismes. [#1054](https://github.com/betagouv/csplab/issues/1054), [#1025](https://github.com/betagouv/csplab/issues/1025) et [#1026](https://github.com/betagouv/csplab/issues/1026)
-- Intégration de la gestion des coordonnées GPS des offres via l'API web. [#969](https://github.com/betagouv/csplab/issues/969)
-- Ajout d'une limite quotidienne au débit de l'API key et d'une authentification API key sur la liste des offres. [#1061](https://github.com/betagouv/csplab/issues/1061) et [#1058](https://github.com/betagouv/csplab/issues/1058)
-- Ajout de la possibilité de changer l'étape d'un recrutement par lot. [#948](https://github.com/betagouv/csplab/issues/948)
-- Amélioration de l'interface utilisateur pour la gestion des recrutements avec l'ajout de filtres et d'une vue Kanban. [#916](https://github.com/betagouv/csplab/issues/916), [#900](https://github.com/betagouv/csplab/issues/900) et [#899](https://github.com/betagouv/csplab/issues/899)
-- Ajout d'une guidance utilisateur pour les étapes du pipeline de recrutement. [#915](https://github.com/betagouv/csplab/issues/915)
+- **Amélioration massive des capacités de filtrage** : Ajout de filtres avancés pour les offres (localisation par rayon/coordonnées, domaine, organisme, date de publication, type de contrat, niveau d'expérience, lieu de travail et management) [#1100, #1099, #1098, #1097, #1092, #1091, #1079, #1078, #1077, #1075].
+- **Optimisation de la gestion des recrutements** : Amélioration de l'interface Kanban (défilement automatique, gestion des étapes du pipeline) et ajout d'un système de gestion des notes [#1107, #1105, #1088, #1050, #1048, #879, #878].
+- **Gestion des candidatures** : Intégration de nouvelles vues dédiées et ajout de fonctions de recherche et de filtrage pour les candidatures [#977, #946, #947].
+- **Améliorations UX** : Corrections de l'affichage (largeur des barres de recherche, débordements du Kanban) et amélioration de la navigation générale [#1104, #1102, #1094].
 
 ### Évolutions techniques
-- Ajout des en-têtes `X-RateLimit-Limit`, `X-RateLimit-Remaining` et `X-RateLimit-Reset` aux réponses de l'API. [#1068](https://github.com/betagouv/csplab/issues/1068)
-- Refactorisation de l'extraction des données de recrutement pour utiliser l'interface `IPage`. [#1040](https://github.com/betagouv/csplab/issues/1040)
-- Migration des composants frontend vers Pinia Colada pour une meilleure gestion de l'état. [#1011](https://github.com/betagouv/csplab/issues/1011) et [#983](https://github.com/betagouv/csplab/issues/983)
-- Amélioration de la configuration des identifiants TalentSoft pour la rendre dynamique. [#892](https://github.com/betagouv/csplab/issues/892)
-- Ajout d'un modèle admin readonly pour les snapshots de statistiques. [#894](https://github.com/betagouv/csplab/issues/894)
-- Refactorisation de la gestion des étapes de recrutement. [#943](https://github.com/betagouv/csplab/issues/943) et [#886](https://github.com/betagouv/csplab/issues/886)
-- Séparation de l'interface `IOffersRepository` en deux interfaces distinctes. [#887](https://github.com/betagouv/csplab/issues/887)
+- **Sécurité et accès (RBAC)** : Mise en place complète du contrôle d'accès basé sur les rôles pour sécuriser la création d'organismes, la consultation des listes et la modification des pipelines de recrutement [#1069, #1054, #1030, #1026, #1025, #1020, #1002, #1027].
+- **Enrichissement de l'ingestion de données** : Intégration du référentiel RMFPv2, amélioration du mapping des niveaux d'études et des types de contrats (notamment pour Talentsoft et l'ARS), et prise en compte des coordonnées GPS [#1095, #1081, #1049, #1047, #1046, #970, #969, #968].
+- **Optimisation de l'API** : Amélioration de la gestion du débit (throttling) via Redis, ajout d'en-têtes de limitation de débit (RateLimit) et création d'endpoints dédiés pour le détail des recrutements [#1086, #1068, #1061, #1101].
+- **Modernisation du Frontend** : Migration de la gestion d'état vers Pinia Colada et harmonisation des composants d'interface (scaffolding, sidebar, conteneurs de page) [#1022, #1011, #1003, #983, #979, #1033, #1036, #1038].
 
 ### Autres changements
-- Amélioration des tests RBAC pour la gestion des organismes. [#1027](https://github.com/betagouv/csplab/issues/1027)
-- Suppression du script de rebase automatique après approbation des PR. [#1059](https://github.com/betagouv/csplab/issues/1059)
-- Mise à jour des dépendances de plusieurs modules (ocr, web, notebook, ingestion). [#952](https://github.com/betagouv/csplab/issues/952), [#951](https://github.com/betagouv/csplab/issues/951), [#950](https://github.com/betagouv/csplab/issues/950) et [#889](https://github.com/betagouv/csplab/issues/889)
-- Correction de bugs divers liés à la gestion des niveaux d'études, des codes d'expérience, et de la sérialisation des dates. [#1049](https://github.com/betagouv/csplab/issues/1049), [#1046](https://github.com/betagouv/csplab/issues/1046) et [#888](https://github.com/betagouv/csplab/issues/888)
-- Amélioration de la configuration et des outils de développement. [#1043](https://github.com/betagouv/csplab/issues/1043), [#1021](https://github.com/betagouv/csplab/issues/1021) et [#974](https://github.com/betagouv/csplab/issues/974)
-- Ajout de documentation et de commentaires pour améliorer la lisibilité du code. [#958](https://github.com/betagouv/csplab/issues/958) et [#902](https://github.com/betagouv/csplab/issues/902)
+- **Documentation** : Mise à jour du guide de l'API à partir du schéma OpenAPI [#1108].
+- **Architecture et recherche** : Ajout de documents d'architecture (ADR) et de notebooks d'exploration de données pour les modèles de localisation et les types de contrats [#958, #902].

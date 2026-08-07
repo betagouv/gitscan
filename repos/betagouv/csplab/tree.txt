@@ -160,7 +160,9 @@
 │           ├── country.py
 │           ├── department.py
 │           ├── diploma.py
+│           ├── domaine_fonctionnel.py
 │           ├── experience_level.py
+│           ├── job_family_referential.py
 │           ├── label.py
 │           ├── language.py
 │           ├── language_level.py
@@ -497,6 +499,7 @@
         │           ├── creer_note.py
         │           ├── editer_note.py
         │           ├── get_organisme_recruteur.py
+        │           ├── get_recrutement_detail.py
         │           ├── get_recrutement_etapes.py
         │           ├── get_recrutement_kanban.py
         │           ├── get_recrutement_liste.py
@@ -564,6 +567,9 @@
         │   │   ├── entities
         │   │   │   ├── __init__.py
         │   │   │   └── audit_log.py
+        │   │   ├── errors
+        │   │   │   ├── __init__.py
+        │   │   │   └── organisme_errors.py
         │   │   ├── repositories
         │   │   │   ├── __init__.py
         │   │   │   └── audit_log_repository_interface.py
@@ -841,6 +847,10 @@
         │   │   │   │   ├── 0036_fix_missing_id_indexes.py
         │   │   │   │   ├── 0037_offermodel_application_url_offermodel_conditions_and_more.py
         │   │   │   │   ├── 0038_alter_offermodel_conditions_and_more.py
+        │   │   │   │   ├── 0039_offermodel_job_family_referential.py
+        │   │   │   │   ├── 0040_offermodel_local_job_code.py
+        │   │   │   │   ├── 0041_offermodel_functional_area_code.py
+        │   │   │   │   ├── 0042_populate_offer_functional_area_code.py
         │   │   │   │   └── __init__.py
         │   │   │   └── models
         │   │   │       ├── __init__.py
@@ -1265,6 +1275,9 @@
         │   │   │   │   │   ├── useDraggableElement.ts
         │   │   │   │   │   ├── useDropTargetElement.ts
         │   │   │   │   │   └── useKanbanDnd.ts
+        │   │   │   │   ├── navigation
+        │   │   │   │   │   ├── useRouteTab.test.ts
+        │   │   │   │   │   └── useRouteTab.ts
         │   │   │   │   ├── storage
         │   │   │   │   │   ├── useDraft.test.ts
         │   │   │   │   │   └── useDraft.ts
@@ -1289,7 +1302,6 @@
         │   │   │   │   │   │   ├── CandidatureKanbanColumn.vue
         │   │   │   │   │   │   ├── CandidaturesFiltersDrawer.vue
         │   │   │   │   │   │   ├── CandidaturesKanbanBoard.vue
-        │   │   │   │   │   │   ├── CandidaturesLayout.vue
         │   │   │   │   │   │   ├── CandidaturesViewSwitch.vue
         │   │   │   │   │   │   ├── ChangerEtapeDrawer.vue
         │   │   │   │   │   │   ├── SelectionActionBar.vue
@@ -1325,12 +1337,16 @@
         │   │   │   │   │   ├── constants
         │   │   │   │   │   │   └── etape-recrutement.ts
         │   │   │   │   │   ├── queries.ts
-        │   │   │   │   │   └── types.ts
+        │   │   │   │   │   ├── routes.ts
+        │   │   │   │   │   ├── types.ts
+        │   │   │   │   │   └── views
+        │   │   │   │   │       └── OffreEtapesRecrutementView.vue
         │   │   │   │   └── recrutements
         │   │   │   │       ├── api.ts
         │   │   │   │       ├── columns.ts
         │   │   │   │       ├── components
-        │   │   │   │       │   ├── RecrutementsFiltersDrawer.vue
+        │   │   │   │       │   ├── RecrutementsActifsFiltersDrawer.vue
+        │   │   │   │       │   ├── RecrutementsArchivesFiltersDrawer.vue
         │   │   │   │       │   ├── RecrutementsTables.stories.ts
         │   │   │   │       │   └── cells
         │   │   │   │       │       ├── CandidaturesCell.vue
@@ -1345,6 +1361,7 @@
         │   │   │   │       ├── format.ts
         │   │   │   │       ├── mock.ts
         │   │   │   │       ├── queries.ts
+        │   │   │   │       ├── routes.test.ts
         │   │   │   │       ├── routes.ts
         │   │   │   │       ├── types.ts
         │   │   │   │       ├── utils
@@ -1353,7 +1370,9 @@
         │   │   │   │       └── views
         │   │   │   │           └── MesRecrutementsView.vue
         │   │   │   ├── router
-        │   │   │   │   └── index.ts
+        │   │   │   │   ├── index.test.ts
+        │   │   │   │   ├── index.ts
+        │   │   │   │   └── params.ts
         │   │   │   ├── stores
         │   │   │   │   ├── currentUser.test.ts
         │   │   │   │   └── currentUser.ts
@@ -1397,6 +1416,7 @@
         │   │   │   │   └── search.ts
         │   │   │   └── views
         │   │   │       ├── HomeView.vue
+        │   │   │       ├── NotFoundView.vue
         │   │   │       └── ParametresView.vue
         │   │   ├── tsconfig.json
         │   │   ├── tsconfig.node.json
@@ -1434,10 +1454,12 @@
         │   │   ├── serializers.py
         │   │   ├── tasks.py
         │   │   ├── urls.py
+        │   │   ├── urls_fake_ts.py
         │   │   └── views
         │   │       ├── __init__.py
         │   │       ├── concours.py
         │   │       ├── metiers.py
+        │   │       ├── offer_summaries.py
         │   │       ├── offers.py
         │   │       └── sources.py
         │   ├── middleware
@@ -1596,6 +1618,7 @@
         │   │   └── recruteur
         │   │       ├── __init__.py
         │   │       ├── test_changer_etape_candidatures.py
+        │   │       ├── test_get_recrutement_detail.py
         │   │       ├── test_get_recrutement_etapes.py
         │   │       ├── test_get_recrutement_kanban.py
         │   │       ├── test_get_recrutement_liste.py
@@ -1675,6 +1698,7 @@
         │   │   ├── recruteur
         │   │   │   ├── __init__.py
         │   │   │   ├── test_changer_etape_candidatures.py
+        │   │   │   ├── test_get_recrutement_detail.py
         │   │   │   ├── test_get_recrutement_etapes.py
         │   │   │   ├── test_get_recrutement_kanban.py
         │   │   │   ├── test_get_recrutement_liste.py
@@ -1730,7 +1754,8 @@
         │   │   │       └── test_static_pages_view.py
         │   │   ├── commons
         │   │   │   ├── __init__.py
-        │   │   │   └── test_pagination.py
+        │   │   │   ├── test_pagination.py
+        │   │   │   └── test_serializers.py
         │   │   ├── identite
         │   │   │   └── views
         │   │   │       ├── __init__.py
@@ -1750,6 +1775,7 @@
         │   │   │   │   ├── __init__.py
         │   │   │   │   ├── test_archive_offers.py
         │   │   │   │   └── test_ingestion_tasks.py
+        │   │   │   ├── test_mappers.py
         │   │   │   ├── test_postgres_api_log_daily_agg_repository.py
         │   │   │   ├── test_postgres_api_log_repository.py
         │   │   │   ├── test_serializers.py
@@ -1763,6 +1789,7 @@
         │   │   │       ├── test_list_metiers.py
         │   │   │       ├── test_list_offers.py
         │   │   │       ├── test_list_sources.py
+        │   │   │       ├── test_offer_summaries.py
         │   │   │       ├── test_offers_by_source.py
         │   │   │       ├── test_upsert_offers.py
         │   │   │       └── test_views.py
@@ -1790,4 +1817,4 @@
         │       ├── test_rate_limit_headers_middleware.py
         │       └── test_storages.py
         └── uv.lock
-354 directories, 1438 files
+357 directories, 1462 files
