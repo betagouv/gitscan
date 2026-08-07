@@ -6,11 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.0.21] - 2026-07-28
+## [Unreleased]
 
-## Added
+### Added
 
 - ✨(conversation) summarize messages
+
+### Changed
+
+- ⚡️(back) add users to the Brevo follow-up list only at signup
+- ✨(back) list conversation files on the admin conversation page
+- ⚡️(back) speed up the admin conversation list page
+- ♻️(back) parse PDFs through the current Albert OCR endpoint
+- ⬆️(dependencies) update dependencies and pin CVE-affected packages
+
+### Removed
+
+- 🔥(back) remove the unused Albert RAG document search module
+ 
+## [0.0.21] - 2026-07-28
 
 ### Changed
 
