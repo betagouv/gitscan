@@ -1,36 +1,40 @@
 {
   "url": "https://github.com/suitenumerique/st-ansible",
   "name": "st-ansible",
-  "description": "Cette collection Ansible fournit des rôles pour déployer les applications de La Suite Territoriale sur des systèmes Debian en utilisant des conteneurs Podman rootless gérés par des unités systemd.",
-  "language": "Jinja",
+  "description": "Collection Ansible pour le déploiement des applications de La Suite Territoriale sur des systèmes Debian en utilisant des conteneurs Podman rootless.",
+  "language": "Python",
   "features": [
     "Gestion des utilisateurs & Permissions",
-    "Déploiement & Hosting",
-    "Sécurité & Conformité"
+    "Sécurité & Conformité",
+    "Monitoring & Logs"
   ],
   "audience": "Professionnels",
   "dependencies": [
-    "ansible",
-    "molecule"
+    "Ansible",
+    "Podman",
+    "Molecule",
+    "Restic",
+    "Python"
   ],
   "components": [
     "Ansible & IaC",
-    "Templates & Moteurs de rendu",
-    "Documentation & Schémas"
+    "Docker & Conteneurs",
+    "Python (scripts & backend)",
+    "Templates & Moteurs de rendu"
   ],
   "auth": {
     "methods": [
       "none"
     ]
   },
-  "tests": "molecule",
+  "tests": "Molecule",
   "workflows": [
     "ansible.yml",
     "changelog.yml",
     "cli-docker.yml",
     "cli-tests.yml"
   ],
-  "lastActivity": "2026-07-26T10:30:07Z",
+  "lastActivity": "2026-08-05T23:02:27+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -38,11 +42,12 @@
     "stars": 7,
     "forks": 3,
     "contributors": 0,
-    "openIssues": 13
+    "openIssues": 12
   },
   "tags": [
-    "CI/CD & GitHub Actions",
     "Git & DevOps",
-    "suite territoriale"
+    "CI/CD & GitHub Actions",
+    "Docker & Conteneurs",
+    "Python"
   ]
 }
