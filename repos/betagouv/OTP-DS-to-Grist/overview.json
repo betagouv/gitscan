@@ -1,55 +1,53 @@
 {
   "url": "https://github.com/betagouv/OTP-DS-to-Grist",
   "name": "OTP-DS-to-Grist",
-  "description": "OTP est un gestionnaire de connecteur entre Démarches Simplifiées et Grist. Il permet d'exporter des données de Démarches Simplifiées vers Grist pour les utilisateurs ayant les droits nécessaires.",
+  "description": "Ce projet est un connecteur permettant de synchroniser les données de Démarches Simplifiées vers des documents Grist. Il permet de configurer des filtres de synchronisation et de suivre l'exécution en temps réel via une interface dédiée.",
   "language": "Python",
   "features": [
-    "Gestion documentaire & Fichiers",
     "API & Intégrations",
-    "Authentification & Accès",
-    "Notifications & Alertes",
-    "Gestion des utilisateurs & Permissions"
+    "Données & Schémas",
+    "Administration & Backoffice",
+    "Suivi & Traçabilité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Flask",
-    "Flask-SocketIO",
-    "Requests",
-    "Poetry",
-    "PostgreSQL"
+    "Grist API",
+    "Démarches Simplifiées API",
+    "PostgreSQL",
+    "SQLAlchemy",
+    "APScheduler",
+    "Socket.io"
   ],
   "components": [
-    "API REST & GraphQL",
-    "PostgreSQL & SQL",
     "Python (scripts & backend)",
-    "Docker & Conteneurs"
+    "PostgreSQL & SQL",
+    "Docker & Conteneurs",
+    "Pipeline de données",
+    "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "api-key"
     ]
   },
   "tests": [
-    "Pytest"
+    "pytest",
+    "jest"
   ],
   "workflows": [
     "ci.yml"
   ],
-  "lastActivity": "2026-07-29T00:00:00Z",
-  "status": "active",
+  "lastActivity": "2026-09-01T00:00:00Z",
+  "status": "maintained",
   "license": "ISC",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
     "Python",
     "Bases de données SQL",
-    "Sécurité & Auth"
+    "ETL & Pipelines de données",
+    "Docker & Conteneurs"
   ]
 }
