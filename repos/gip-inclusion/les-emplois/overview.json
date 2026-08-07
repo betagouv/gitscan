@@ -1,56 +1,63 @@
 {
   "url": "https://github.com/gip-inclusion/les-emplois",
   "name": "les-emplois",
-  "description": "Les emplois de l'inclusion est un service numérique de délivrance des PASS IAE et de mise en relation d'employeurs inclusifs avec des candidats éloignés de l'emploi.",
+  "description": "Service numérique de délivrance des PASS IAE et de mise en relation d'employeurs inclusifs avec des candidats éloignés de l'emploi via des tiers ou en autoprescription.",
   "language": "Python",
   "features": [
-    "Gestion des utilisateurs & Permissions",
     "Recherche & Filtres",
     "Authentification & Accès",
-    "Notifications & Alertes",
-    "Gestion métier générale",
-    "Gestion des établissements & Structures",
-    "Aides & Éligibilité"
+    "Gestion des utilisateurs & Permissions",
+    "Formulaires & Démarches",
+    "Statistiques & Rapports",
+    "Tableaux & Affichage",
+    "Aides & Éligibilité",
+    "Gestion métier générale"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Django",
     "PostgreSQL",
     "MinIO",
+    "Redis",
+    "GDAL",
+    "psycopg",
     "pytest",
-    "uv"
+    "uv",
+    "Huey"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
-    "Docker & Conteneurs"
+    "Docker & Conteneurs",
+    "Django",
+    "Authentification (composant)",
+    "Scripts & Utilitaires",
+    "ORM & Accès aux données"
   ],
   "auth": {
     "methods": [
-      "email-password",
       "oauth2",
+      "jwt",
+      "session",
+      "mfa",
       "sso"
+    ],
+    "providers": [
+      "FranceConnect",
+      "ProConnect"
     ]
   },
   "tests": "pytest",
-  "workflows": [],
-  "lastActivity": "2026-07-31T00:00:00Z",
+  "lastActivity": "2026-07-20T00:00:00Z",
   "status": "active",
-  "license": null,
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
   "tags": [
-    "Données & Open Data",
+    "Emploi, Social & Logement",
     "Écosystème beta.gouv / État",
     "Python",
     "Bases de données SQL",
-    "Sécurité & Auth",
-    "Emploi, Social & Logement"
+    "Docker & Conteneurs",
+    "Accessibilité"
   ]
 }

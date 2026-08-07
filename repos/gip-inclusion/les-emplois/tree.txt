@@ -496,6 +496,7 @@
 │   │   │   ├── gps__follow_up_group.json
 │   │   │   ├── gps__follow_up_group_membership.json
 │   │   │   ├── insertion__genericreferenceitem.json
+│   │   │   ├── insertion__orientation.json
 │   │   │   ├── insertion__service.json
 │   │   │   ├── insertion__structure.json
 │   │   │   ├── institutions__institution.json
@@ -1166,14 +1167,12 @@
 │   │   │   │   ├── job_description_fields.html
 │   │   │   │   ├── job_seeker_info.html
 │   │   │   │   ├── known_criteria.html
-│   │   │   │   ├── list_card_body.html
 │   │   │   │   ├── list_counter.html
 │   │   │   │   ├── list_job_applications.html
 │   │   │   │   ├── list_job_applications_title.html
 │   │   │   │   ├── list_reset_filters.html
 │   │   │   │   ├── list_table.html
 │   │   │   │   ├── list_tr.html
-│   │   │   │   ├── next_appointment.html
 │   │   │   │   ├── out_of_band_changes_on_job_application_state_update_siae.html
 │   │   │   │   ├── profile_infos.html
 │   │   │   │   ├── selected_job_applications.html
@@ -1268,7 +1267,6 @@
 │   │   │   │   ├── declaration_contact_details.html
 │   │   │   │   ├── declaration_prescriber_email.html
 │   │   │   │   ├── declaration_upload_panel.html
-│   │   │   │   ├── list_card.html
 │   │   │   │   ├── list_counter.html
 │   │   │   │   ├── list_reset_filters.html
 │   │   │   │   ├── list_results.html
@@ -1303,7 +1301,6 @@
 │   │   │   │   ├── request_for_invitation_subject.txt
 │   │   │   │   ├── used_otp_backup_code_body.txt
 │   │   │   │   └── used_otp_backup_code_subject.txt
-│   │   │   ├── list_view_switcher.html
 │   │   │   └── tables
 │   │   │       └── th_with_sort.html
 │   │   ├── companies
@@ -1580,6 +1577,18 @@
 │   │   │   │   ├── orientation_service_info.html
 │   │   │   │   ├── orientation_wizard_form_buttons.html
 │   │   │   │   ├── orientation_wizard_stepper.html
+│   │   │   │   ├── orientations
+│   │   │   │   │   ├── filters
+│   │   │   │   │   │   ├── list_reset_filters.html
+│   │   │   │   │   │   ├── offcanvas.html
+│   │   │   │   │   │   ├── offcanvas_body.html
+│   │   │   │   │   │   ├── offcanvas_footer.html
+│   │   │   │   │   │   ├── senders.html
+│   │   │   │   │   │   ├── status.html
+│   │   │   │   │   │   ├── structures.html
+│   │   │   │   │   │   └── top_filters.html
+│   │   │   │   │   ├── list_counter.html
+│   │   │   │   │   └── list_orientations.html
 │   │   │   │   ├── register_mobilization_event.html
 │   │   │   │   ├── structure_card_tab_description.html
 │   │   │   │   ├── structure_card_tab_services.html
@@ -1587,6 +1596,9 @@
 │   │   │   ├── orientation_confirmation.html
 │   │   │   ├── orientation_select_job_seeker.html
 │   │   │   ├── orientation_wizard.html
+│   │   │   ├── orientations
+│   │   │   │   ├── details.html
+│   │   │   │   └── list.html
 │   │   │   ├── service_card.html
 │   │   │   ├── service_response_time.html
 │   │   │   └── structure_card.html
@@ -2004,6 +2016,7 @@
 │   │   │       ├── loaddata_bulk.py
 │   │   │       ├── migrate.py
 │   │   │       ├── purge_orphaned_support_remarks.py
+│   │   │       ├── renew_insee_api_password.py
 │   │   │       └── shell.py
 │   │   ├── management_commands.py
 │   │   ├── migrations
@@ -2778,9 +2791,9 @@
         │   │   ├── test_list_for_job_seeker.ambr
         │   │   ├── test_list_for_siae.ambr
         │   │   ├── test_list_prescriptions.ambr
-        │   │   ├── test_list_rdv_insertion.ambr
         │   │   ├── test_process.ambr
         │   │   ├── test_process_comments.ambr
+        │   │   ├── test_rdv_insertion.ambr
         │   │   ├── test_submit.ambr
         │   │   ├── test_submit_from_job_seekers_list.ambr
         │   │   └── test_transfer.ambr
@@ -2796,9 +2809,9 @@
         │   ├── test_list_for_job_seeker.py
         │   ├── test_list_for_siae.py
         │   ├── test_list_prescriptions.py
-        │   ├── test_list_rdv_insertion.py
         │   ├── test_process.py
         │   ├── test_process_comments.py
+        │   ├── test_rdv_insertion.py
         │   ├── test_submit.py
         │   ├── test_submit_from_job_seekers_list.py
         │   ├── test_templates.py
@@ -3036,4 +3049,4 @@
         └── welcoming_tour
             ├── __init__.py
             └── tests.py
-510 directories, 2528 files
+513 directories, 2538 files
