@@ -1,20 +1,31 @@
 {
   "url": "https://github.com/betagouv/grist-utils",
   "name": "grist-utils",
-  "description": "Ce dépôt regroupe divers utilitaires créés par l'administration française pour simplifier l'auto-hébergement de Grist. Il contient des scripts et des outils pour différentes tâches liées à Grist.",
+  "description": "Ce dépôt regroupe divers utilitaires créés par l'administration française pour simplifier l'auto-hébergement de Grist. Il contient des scripts pour la gestion de données, l'audit et les tests de déploiement.",
   "language": "JavaScript",
-  "features": [],
+  "features": [
+    "Gestion des utilisateurs & Permissions",
+    "Suivi & Traçabilité",
+    "Données & Schémas",
+    "Tests & QA",
+    "Infrastructure & Stockage"
+  ],
   "audience": "Professionnels",
   "dependencies": [
     "axios",
     "mocha",
     "chai",
     "@wdio/cli",
-    "wdio-wait-for"
+    "wdio-wait-for",
+    "biome",
+    "undici",
+    "js-yaml"
   ],
   "components": [
+    "Scripts & Utilitaires",
+    "Tests",
     "CI/CD & Déploiement",
-    "Tests"
+    "Python (scripts & backend)"
   ],
   "auth": {
     "methods": [
@@ -32,19 +43,19 @@
     "grist-deployment-tests.yml",
     "readme-check.yml"
   ],
-  "lastActivity": "2026-06-24T07:27:51Z",
+  "lastActivity": "2026-07-23T17:26:35+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
     "stars": 1,
     "forks": 1,
-    "contributors": null,
-    "openIssues": 4
+    "openIssues": 7
   },
   "tags": [
     "Écosystème beta.gouv / État",
-    "Scripts",
+    "Python",
+    "JavaScript",
     "Tests & Qualité",
     "Git & DevOps"
   ]
