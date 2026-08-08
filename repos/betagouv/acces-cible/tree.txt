@@ -84,10 +84,14 @@
 │   ├── jobs
 │   │   ├── application_job.rb
 │   │   ├── fetch_resources_job.rb
+│   │   ├── one_off
+│   │   │   ├── backfill_audits_scores_job.rb
+│   │   │   ├── backfill_checks_conform_and_found_job.rb
+│   │   │   └── backfill_page_snapshots_job.rb
+│   │   ├── process_audit_batch_creation_job.rb
 │   │   ├── process_audit_job.rb
-│   │   ├── process_batch_sites_creation_job.rb
 │   │   ├── process_site_upload_job.rb
-│   │   ├── remove_inactive_sessions_job.rb
+│   │   ├── remove_expired_sessions_job.rb
 │   │   └── run_check_job.rb
 │   ├── libs
 │   │   └── string_comparison.rb
@@ -96,6 +100,7 @@
 │   ├── models
 │   │   ├── application_record.rb
 │   │   ├── audit.rb
+│   │   ├── audit_batch.rb
 │   │   ├── axe_violation.rb
 │   │   ├── browser.rb
 │   │   ├── check.rb
@@ -119,6 +124,7 @@
 │   │   ├── link.rb
 │   │   ├── page.rb
 │   │   ├── page_heading_status.rb
+│   │   ├── page_snapshot.rb
 │   │   ├── session.rb
 │   │   ├── site.rb
 │   │   ├── site_tag.rb
@@ -127,10 +133,10 @@
 │   │   ├── team.rb
 │   │   └── user.rb
 │   ├── services
+│   │   ├── audit_batch_creation_service.rb
 │   │   ├── csv_site_parser.rb
 │   │   ├── fetch_home_page_service.rb
-│   │   ├── find_accessibility_page_service.rb
-│   │   └── site_batch_creation_service.rb
+│   │   └── find_accessibility_page_service.rb
 │   ├── validators
 │   │   ├── email_validator.rb
 │   │   └── url_validator.rb
@@ -311,7 +317,13 @@
 │   │   ├── 20260702092639_add_user_to_audits.rb
 │   │   ├── 20260702092721_backfill_audits_with_user.rb
 │   │   ├── 20260702124628_add_not_null_constraint_to_audits_user_id.rb
-│   │   └── 20260716121525_remove_name_on_sites.rb
+│   │   ├── 20260716121525_remove_name_on_sites.rb
+│   │   ├── 20260729125524_create_page_snapshots.rb
+│   │   ├── 20260730084634_rename_organizational_unit_to_organization_label_in_teams.rb
+│   │   ├── 20260730152622_add_conform_and_found_to_checks.rb
+│   │   ├── 20260730152831_add_legal_obligation_score_and_declaration_quality_score_to_audits.rb
+│   │   ├── 20260805165316_create_audit_batches.rb
+│   │   └── 20260805170423_add_audit_batch_to_audits.rb
 │   ├── queue_schema.rb
 │   ├── schema.rb
 │   └── seeds.rb
@@ -344,6 +356,7 @@
 │   └── tasks
 │       ├── .keep
 │       ├── cucumber.rake
+│       ├── one_off.rake
 │       └── vendor.rake
 ├── log
 │   └── .keep
@@ -366,9 +379,11 @@
 │   ├── export
 │   │   └── site_csv_export_spec.rb
 │   ├── factories
+│   │   ├── audit_batches.rb
 │   │   ├── audits.rb
 │   │   ├── checks.rb
 │   │   ├── links.rb
+│   │   ├── page_snapshots.rb
 │   │   ├── pages.rb
 │   │   ├── sessions.rb
 │   │   ├── sites.rb
@@ -392,14 +407,15 @@
 │   ├── jobs
 │   │   ├── application_job_spec.rb
 │   │   ├── fetch_resources_job_spec.rb
+│   │   ├── process_audit_batch_creation_job_spec.rb
 │   │   ├── process_audit_job_spec.rb
-│   │   ├── process_batch_sites_creation_job_spec.rb
 │   │   ├── process_site_upload_job_spec.rb
-│   │   ├── remove_inactive_sessions_job_spec.rb
+│   │   ├── remove_expired_sessions_job_spec.rb
 │   │   └── run_check_job_spec.rb
 │   ├── lib
 │   │   └── string_comparison_spec.rb
 │   ├── models
+│   │   ├── audit_batch_spec.rb
 │   │   ├── audit_spec.rb
 │   │   ├── browser_spec.rb
 │   │   ├── check_spec.rb
@@ -416,6 +432,7 @@
 │   │   │   └── run_axe_on_homepage_spec.rb
 │   │   ├── crawler_spec.rb
 │   │   ├── link_spec.rb
+│   │   ├── page_snapshot_spec.rb
 │   │   ├── page_spec.rb
 │   │   ├── session_spec.rb
 │   │   ├── site_spec.rb
@@ -432,10 +449,10 @@
 │   │   ├── tags_controller_spec.rb
 │   │   └── users_controller_spec.rb
 │   ├── services
+│   │   ├── audit_batch_creation_service_spec.rb
 │   │   ├── csv_site_parser_spec.rb
 │   │   ├── fetch_home_page_service_spec.rb
-│   │   ├── find_accessibility_page_service_spec.rb
-│   │   └── site_batch_creation_service_spec.rb
+│   │   └── find_accessibility_page_service_spec.rb
 │   ├── spec_helper.rb
 │   └── support
 │       ├── auth_helpers.rb
@@ -459,4 +476,4 @@
         ├── axe.fr.json
         ├── axe.min.js
         └── stealth.min.js
-77 directories, 384 files
+78 directories, 400 files

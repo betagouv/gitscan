@@ -1,32 +1,23 @@
-## Changelog : acces-cible (30 derniers jours, au 28 juillet 2026)
+## Changelog : acces-cible (30 derniers jours, au 2026-08-06)
 
 ### Résumé
-Cette mise à jour apporte des améliorations de sécurité avec l'ajout d'un système de limitation de requêtes, des corrections de bugs pour améliorer la stabilité et l'expérience utilisateur, et des ajustements techniques pour faciliter la maintenance et le déploiement de l'application. Des restrictions d'édition et de suppression d'éléments ont été ajoutées via l'interface utilisateur pour renforcer la sécurité.
+Les récentes évolutions renforcent la sécurité de l'application (gestion des sessions, protection contre les abus et restrictions de modification) et améliorent la fiabilité de la gestion des données, notamment grâce à l'introduction de captures d'écran de pages (snapshots) et une meilleure organisation des traitements par lots.
 
 ### Évolutions fonctionnelles
-- Ajout d'un système de limitation de requêtes pour prévenir les abus et améliorer la disponibilité de l'application. [#659](https://github.com/betagouv/acces-cible/issues/659)
-- Le nom d'utilisateur est maintenant affiché sur la page profil. [#646](https://github.com/betagouv/acces-cible/issues/646)
-- Amélioration de la détection des pages d'accessibilité. [#610](https://github.com/betagouv/acces-cible/issues/610)
-- Liaison des audits aux utilisateurs pour une meilleure traçabilité.
-- Possibilité de lier des audits aux utilisateurs.
-- Prévention de la modification des sites et des tags depuis l'interface utilisateur. [#643](https://github.com/betagouv/acces-cible/issues/643)
-- Prévention de la suppression des sites, audits et tags depuis l'interface utilisateur. [#637](https://github.com/betagouv/acces-cible/issues/637)
+- **Sécurité et permissions** : restriction de la possibilité de modifier ou de supprimer des sites, des audits ou des tags directement depuis l'interface ([#643](https://github.com/betagouv/acces-cible/issues/643), [#637](https://github.com/betagouv/acces-cible/issues/637)).
+- **Gestion des sessions** : ajout d'une durée de vie maximale pour les sessions et réduction du délai d'inactivité pour plus de sécurité ([#674](https://github.com/betagouv/acces-cible/issues/674)).
+- **Gestion des équipes** : utilisation des labels d'organisation ProConnect pour la gestion des équipes ([#668](https://github.com/betagouv/acces-cible/issues/668)).
+- **Interface utilisateur** : correction de l'affichage du nom de l'utilisateur sur la page de profil ([#646](https://github.com/betagouv/acces-cible/issues/646)).
 
 ### Évolutions techniques
-- Suppression de la colonne `name` de la table `sites`. [#641](https://github.com/betagouv/acces-cible/issues/641)
-- Refactorisation du code de parsing des liens, suppression de `LinkList`. [#636](https://github.com/betagouv/acces-cible/issues/636)
-- Ajout d'un "concern" `Privileged` aux modèles `Team` et `User` pour gérer les privilèges. [#639](https://github.com/betagouv/acces-cible/issues/639)
-- Suppression des logs Active Record envoyés à Sentry. [#621](https://github.com/betagouv/acces-cible/issues/621)
-- Mise à jour de la configuration de `release-please` et ajout du workflow associé. [#623](https://github.com/betagouv/acces-cible/issues/623)
-- Ajout de `jemalloc` comme buildpack pour optimiser la gestion de la mémoire. [#591](https://github.com/betagouv/acces-cible/issues/591)
-- Isolation de la page dans un nouveau contexte pour un nettoyage plus efficace avec Ferrum. [#592](https://github.com/betagouv/acces-cible/issues/592)
-- Correction d'une erreur de type de contenu `nil`. [#614](https://github.com/betagouv/acces-cible/issues/614)
-- Correction d'un problème de timeout réseau. [#627](https://github.com/betagouv/acces-cible/issues/627)
-
-### Autres changements
-- Mise à jour de l'adresse email de contact d'AC. [#618](https://github.com/betagouv/acces-cible/issues/618)
-- Blocage de davantage d'extensions de fichiers et de domaines de tracking. [#598](https://github.com/betagouv/acces-cible/issues/598)
-- Nettoyage du fichier README. [#625](https://github.com/betagouv/acces-cible/issues/625)
-- Suppression de scopes inactifs et des jobs récurrents associés.
-- Mises à jour de dépendances (googleapis/release-please-action, minor group updates).
-- Publication des versions 1.1.0 et 1.1.1.
+- **Sécurité et infrastructure** : mise en place de `rack-attack` pour limiter le débit des requêtes et prévenir les abus ([#659](https://github.com/betagouv/acces-cible/issues/659)).
+- **Refonte de la gestion des données et des pages** :
+  - Introduction du modèle `PageSnapshot` pour améliorer la gestion des captures de pages ([#669](https://github.com/betagouv/acces-cible/issues/669)).
+  - Ajout de nouveaux attributs aux contrôles et audits avec mise à jour des données existantes ([#672](https://github.com/betagouv/acces-cible/issues/672)).
+  - Refonte du traitement par lots avec l'introduction d' `AuditBatch` ([#679](https://github.com/betagouv/acces-cible/issues/679)).
+  - Ajout d'une gestion de privilèges pour les modèles `Team` et `User` ([#639](https://github.com/betagouv/acces-cible/issues/639)).
+  - Nettoyage de la base de données (suppression de la colonne `name` sur les sites) ([#641](https://github.com/betagouv/acces-cible/issues/641)).
+- **Corrections et optimisations** :
+  - Optimisation des délais d'attente réseau (network idling/timeout) ([#627](https://github.com/betagouv/acces-cible/issues/627)).
+  - Correction d'erreurs liées au parsing de liens et aux types de contenu ([#636](https://github.com/betagouv/acces-cible/issues/636), [#614](https://github.com/betagouv/acces-cible/issues/614)).
+  - Amélioration et stabilisation des tâches de fond (backfill) pour les snapshots de pages ([#675](https://github.com/betagouv/acces-cible/issues/675), [#676](https://github.com/betagouv/acces-cible/issues/676)).
