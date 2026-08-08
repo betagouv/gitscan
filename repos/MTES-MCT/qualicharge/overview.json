@@ -1,54 +1,73 @@
 {
   "url": "https://github.com/MTES-MCT/qualicharge",
   "name": "qualicharge",
-  "description": "QualiCharge vise à améliorer la qualité du service de recharge pour véhicules électriques en analysant les données de supervision.",
+  "description": "Ce projet vise à améliorer la qualité du service de recharge pour les véhicules électriques en analysant les données de supervision. Il propose une API, un tableau de bord et des outils de visualisation de données.",
   "language": "Python",
   "features": [
     "API & Intégrations",
-    "Gestion des utilisateurs & Permissions",
-    "Statistiques & Rapports",
     "Visualisation de données & Cartographie",
-    "Gestion documentaire & Fichiers"
+    "Statistiques & Rapports",
+    "Administration & Backoffice",
+    "Suivi & Traçabilité"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Docker",
     "PostgreSQL",
-    "FastAPI",
+    "TimescaleDB",
     "Metabase",
-    "Prefect"
+    "Keycloak",
+    "Prefect",
+    "Minio",
+    "Locust",
+    "Terraform",
+    "Django",
+    "FastAPI",
+    "uv"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
-    "Docker & Conteneurs"
+    "Docker & Conteneurs",
+    "Django",
+    "Reporting & BI",
+    "Authentification (composant)",
+    "Pipeline de données",
+    "Stockage objet",
+    "Tests",
+    "Ansible & IaC"
   ],
   "auth": {
     "methods": [
-      "none"
+      "oauth2",
+      "jwt",
+      "sso",
+      "session"
+    ],
+    "providers": [
+      "Keycloak"
     ]
   },
-  "tests": "Tests unitaires et d'intégration (Pytest)",
-  "workflows": [
-    "CI/CD avec GitHub Actions"
+  "tests": [
+    "Locust",
+    "Pytest"
   ],
-  "lastActivity": "2026-07-28T10:54:45+02:00",
+  "workflows": [
+    "GitHub Actions"
+  ],
+  "lastActivity": "2026-08-04T19:59:54+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
   "tags": [
-    "Données & Open Data",
-    "Écosystème beta.gouv / État",
-    "Python",
-    "Bases de données SQL",
     "Environnement & Énergie",
-    "Transport & Mobilité"
+    "Données & Open Data",
+    "Python",
+    "Docker & Conteneurs",
+    "Reporting & BI",
+    "Git & DevOps",
+    "CI/CD & GitHub Actions",
+    "Bases de données SQL"
   ]
 }
