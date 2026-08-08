@@ -1,38 +1,19 @@
-## Changelog : data_pass (30 derniers jours, au 31 juillet 2026)
+## Changelog : data_pass (30 derniers jours, au 06/08/2026)
 
 ### Résumé
-Les dernières mises à jour de data_pass se concentrent sur l'ajout de nouveaux éditeurs et formulaires (notamment pour DINUM et CNOUS), l'amélioration de l'expérience utilisateur (suppression de boutons inutiles, affichage d'emails automatisés), et la correction de bugs et vulnérabilités de sécurité. Des améliorations techniques ont également été apportées, notamment la mise à jour de dépendances et l'amélioration de la journalisation.
+Les récentes évolutions se concentrent sur l'élargissement de l'offre de formulaires (notamment pour les cantines et les API particuliers), l'amélioration de la clarté de l'interface lors de l'instruction des dossiers et le renforcement de la sécurité de l'application.
 
 ### Évolutions fonctionnelles
-- Ajout de l'éditeur Hoptis Software et de ses formulaires API Particulier.
-- Création du formulaire "Produits DINUM" (version 1) pour la gestion des habilitations.
-- Intégration de la gestion de l'allocation de rentrée scolaire (CNOUS).
-- Amélioration de la transmission de la convention aux contacts référents pour DINUM.
-- Affichage des emails automatisés associés aux définitions d'habilitation.
-- Suppression des boutons "Modifier" et du panneau latéral des formulaires d'instruction pour simplifier l'interface.
-- Correction d'un bug empêchant la proactivité CNOUS pour les étudiants boursiers.
-- Amélioration des wordings et des libellés pour une meilleure clarté.
-- Ajout d'une page temporaire pour la gestion des emails.
-- Ajout de breadcrumbs pour faciliter la navigation.
-- Correction de la majuscule sur "DDmariage".
-- Mise à jour des introductions pour les services CISIRH.
+- **Nouveaux éditeurs et formulaires** : intégration de l'éditeur Ianord (formulaires cantines) [#1710](https://github.com/etalab/data_pass/issues/1710), de l'éditeur Hoptis Software (API Particulier) [#1690](https://github.com/etalab/data_pass/issues/1690), des formulaires EAJE et des aides CNAV (rentrée scolaire).
+- **Expérience utilisateur** : passage des formulaires d'instruction en mode consultation (retrait des boutons de modification et du panneau latéral) pour une meilleure lisibilité [#1701](https://github.com/etalab/data_pass/issues/1701), ajout de fil d'Ariane et création d'une interface pour visualiser les emails automatisés.
+- **Clarté des données** : amélioration de l'explication des rôles et des niveaux de droits dans les interfaces de gestion, et ajout d'un label "statut de la demande".
+- **Corrections** : résolution de problèmes liés à la proactivité CNOUS, à la suppression involontaire de droits et à la gestion des identifiants FranceConnect.
 
 ### Évolutions techniques
-- Mise à jour de Rails à la version 8.1.3.1 pour corriger une vulnérabilité de sécurité (CVE-2026-66066).
-- Suppression de la configuration d'environnement pour la production, le staging et le sandbox, désormais gérées par Ansible.
-- Implémentation de la journalisation au format JSON via Logstasher.
-- Mise à jour de plusieurs dépendances (oauth2, rails-html-sanitizer, actions/checkout, rubocop, css_parser, actions/cache).
-- Suppression de l'ID d'autorisation France Connect lors de la suppression d'une modalité.
-- Amélioration de la couverture de test pour les emails automatisés.
+- **Sécurité** : mise à jour de Rails pour corriger la vulnérabilité CVE-2026-66066 [#1715](https://github.com/etalab/data_pass/issues/1715) et restriction du périmètre d'accès (scope) OAuth pour HubEE, passant de `ADMIN` à `DATAPASS` [#1724](https://github.com/etalab/data_pass/issues/1724).
+- **Infrastructure et Observabilité** : passage à la production de journaux au format JSON via logstasher [#1714](https://github.com/etalab/data_pass/issues/1714) et suppression des configurations d'environnement locales au profit d'une gestion centralisée par Ansible.
+- **Refactoring** : refonte, factorisation et uniformisation des cadres juridiques pour les formulaires "API Particulier" [#1605](https://github.com/etalab/data_pass/issues/1605).
+- **Authentification** : ajout du scope INE.
 
 ### Autres changements
-- Documentation des tests pour les emails automatisés.
-- Suppression du fichier `.keep` dans `tmp/storage/`.
-- Correction de typos et amélioration de la lisibilité du code.
-- Suppression de la suppression involontaire de droits lors d'un ajout.
-- Ajout de tests unitaires et d'intégration.
-- Refactorisation du code pour améliorer la maintenabilité.
-- Uniformisation des cadres juridiques API Particulier.
-- Masquage du téléphone et de la fonction des contacts Produits DINUM.
-- Ajout d'un scope pour l'allocation de rentrée scolaire.
-- Correction d'un bug lié à l'affichage de la date de transmission pour CNOUS.
+- **Documentation et libellés** : affinement des textes et des formulations suite aux retours du pôle juridique et mise à jour des introductions pour les services CISIRH.

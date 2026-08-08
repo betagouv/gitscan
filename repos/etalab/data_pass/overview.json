@@ -1,34 +1,37 @@
 {
   "url": "https://github.com/etalab/data_pass",
   "name": "data_pass",
-  "description": "DataPass est un outil de gestion des habilitations juridiques pour les données à accès restreint. Il permet de gérer les accès et les autorisations pour les données sensibles, assurant ainsi la conformité et la sécurité.",
+  "description": "Outil de gestion des habilitations juridiques pour les données à accès restreint. Il permet de gérer les demandes d'accès et l'instruction des dossiers par les autorités compétentes.",
   "language": "Ruby",
   "features": [
-    "Gestion documentaire & Fichiers",
     "Authentification & Accès",
-    "API & Intégrations",
+    "Gestion des utilisateurs & Permissions",
+    "Formulaires & Démarches",
     "Sécurité & Conformité",
-    "Gestion des utilisateurs & Permissions"
+    "Suivi & Traçabilité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Ruby",
+    "Rails",
     "PostgreSQL",
     "Redis",
-    "Rails",
-    "Docker"
+    "GoodJob",
+    "OmniAuth",
+    "Doorkeeper"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "Ruby (scripts & backend)",
     "Docker & Conteneurs",
-    "Tests"
+    "Tests",
+    "Authentification (composant)",
+    "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "session"
+      "email-password"
     ],
     "providers": [
       "ProConnect"
@@ -36,27 +39,23 @@
   },
   "tests": [
     "RSpec",
-    "Cucumber"
+    "Cucumber",
+    "Capybara",
+    "parallel_tests"
   ],
   "workflows": [
-    "Continuous Integration",
-    "Continuous Deployment"
+    "continuous-deployment.yaml",
+    "test.yaml"
   ],
-  "lastActivity": "2026-07-31T15:14:22+02:00",
-  "status": "active",
+  "lastActivity": "2026-08-06T20:10:07+02:00",
+  "status": "maintained",
   "license": null,
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "Ruby",
-    "Bases de données SQL",
-    "Sécurité & Conformité"
+    "Docker & Conteneurs",
+    "Sécurité & Auth",
+    "Standards & Schémas"
   ]
 }
