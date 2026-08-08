@@ -87,10 +87,12 @@
 │   │   │   └── refresh-line.svg
 │   │   └── js
 │   │       ├── controllers
+│   │       │   ├── autoDismiss.js
 │   │       │   ├── commentArbitrage.js
 │   │       │   ├── doubleDotation.js
 │   │       │   ├── formUtils.js
 │   │       │   ├── formatMontant.js
+│   │       │   ├── htmxError.js
 │   │       │   ├── projetForm.js
 │   │       │   ├── projetNoteCard.js
 │   │       │   ├── projetNotes.js
@@ -580,8 +582,7 @@
 │   │       ├── programmation_projet_list.html
 │   │       └── table_cells
 │   │           ├── _other_dotation_row.html
-│   │           ├── documents.html
-│   │           └── notification.html
+│   │           └── documents.html
 │   ├── tests
 │   │   ├── __init__.py
 │   │   ├── factories.py
@@ -592,7 +593,6 @@
 │   │   │   └── test_enveloppe_service.py
 │   │   ├── test_enveloppe_constraints.py
 │   │   ├── test_factories.py
-│   │   ├── test_notification_cell.py
 │   │   ├── test_programmation_projet_filters.py
 │   │   ├── test_urls.py
 │   │   ├── test_views.py
@@ -711,7 +711,8 @@
 │   │           ├── _projet_financial_informations.html
 │   │           └── dotation_montant_info.html
 │   ├── templatetags
-│   │   └── __init__.py
+│   │   ├── __init__.py
+│   │   └── projet_tags.py
 │   ├── tests
 │   │   ├── __init__.py
 │   │   ├── factories.py
@@ -735,6 +736,7 @@
 │   │   ├── test_django_filters_custom_widget.py
 │   │   ├── test_factories.py
 │   │   ├── test_filter_tags.py
+│   │   ├── test_notification_status.py
 │   │   ├── test_projet_manager.py
 │   │   ├── test_status.py
 │   │   ├── test_tasks.py
@@ -929,4 +931,4 @@
 │       └── ui_tags.py
 ├── uv.lock
 └── vendorize.txt
-161 directories, 770 files
+161 directories, 772 files
