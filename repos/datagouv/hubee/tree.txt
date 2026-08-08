@@ -4,6 +4,8 @@
 ├── .claude
 │   └── settings.json
 ├── .dockerignore
+├── .env.example
+├── .env.test
 ├── .git-hooks
 │   └── pre-commit
 ├── .gitattributes
@@ -30,7 +32,8 @@
 │   │   ├── images
 │   │   │   └── .keep
 │   │   └── stylesheets
-│   │       └── application.css
+│   │       ├── application.css
+│   │       └── proconnect_button.css
 │   ├── controllers
 │   │   ├── api
 │   │   │   ├── base_controller.rb
@@ -44,22 +47,48 @@
 │   │   │       └── transmissions_controller.rb
 │   │   ├── application_controller.rb
 │   │   ├── concerns
-│   │   │   └── .keep
+│   │   │   ├── .keep
+│   │   │   └── portail
+│   │   │       └── authentication.rb
 │   │   └── portail
 │   │       ├── base_controller.rb
 │   │       ├── dashboard_controller.rb
-│   │       └── errors_controller.rb
+│   │       ├── errors_controller.rb
+│   │       └── sessions_controller.rb
+│   ├── events
+│   │   └── portail
+│   │       └── auth
+│   │           ├── decision.rb
+│   │           ├── logfmt_logger.rb
+│   │           └── recorder.rb
 │   ├── helpers
-│   │   └── application_helper.rb
+│   │   ├── application_helper.rb
+│   │   └── portail
+│   │       └── support_helper.rb
 │   ├── interactors
-│   │   └── api
-│   │       └── data_packages
-│   │           ├── transmit
-│   │           │   ├── create_notifications.rb
-│   │           │   ├── resolve_recipients.rb
-│   │           │   ├── transition_to_transmitted.rb
-│   │           │   └── validate_transmission.rb
-│   │           └── transmit.rb
+│   │   ├── api
+│   │   │   └── data_packages
+│   │   │       ├── transmit
+│   │   │       │   ├── create_notifications.rb
+│   │   │       │   ├── resolve_recipients.rb
+│   │   │       │   ├── transition_to_transmitted.rb
+│   │   │       │   └── validate_transmission.rb
+│   │   │       └── transmit.rb
+│   │   └── portail
+│   │       └── sessions
+│   │           ├── create
+│   │           │   ├── check_authentication_level.rb
+│   │           │   ├── check_second_factor.rb
+│   │           │   ├── exchange_code.rb
+│   │           │   ├── find_agent.rb
+│   │           │   ├── find_membership.rb
+│   │           │   ├── open_session.rb
+│   │           │   ├── sync_agent_identity.rb
+│   │           │   └── verify_id_token.rb
+│   │           ├── create.rb
+│   │           ├── deny
+│   │           │   └── record_refusal.rb
+│   │           └── deny.rb
 │   ├── javascript
 │   │   ├── application.js
 │   │   └── controllers
@@ -67,17 +96,31 @@
 │   │       ├── hello_controller.js
 │   │       └── index.js
 │   ├── jobs
-│   │   └── application_job.rb
+│   │   ├── application_job.rb
+│   │   └── portail
+│   │       ├── purge_access_decisions_job.rb
+│   │       └── purge_provider_sessions_job.rb
 │   ├── mailers
 │   │   └── application_mailer.rb
 │   ├── models
+│   │   ├── access_decision.rb
+│   │   ├── agent.rb
 │   │   ├── application_record.rb
 │   │   ├── concerns
 │   │   │   └── .keep
+│   │   ├── current.rb
 │   │   ├── data_package.rb
 │   │   ├── data_stream.rb
+│   │   ├── membership.rb
 │   │   ├── notification.rb
 │   │   ├── organization.rb
+│   │   ├── organization_link.rb
+│   │   ├── portail
+│   │   │   ├── authentication_levels.rb
+│   │   │   ├── second_factor.rb
+│   │   │   └── sensitive_processes.rb
+│   │   ├── process_access.rb
+│   │   ├── provider_session.rb
 │   │   └── subscription.rb
 │   ├── queries
 │   │   └── api
@@ -118,6 +161,11 @@
 │       │   │   ├── internal_server_error.html.erb
 │       │   │   ├── not_found.html.erb
 │       │   │   └── unprocessable_entity.html.erb
+│       │   ├── sessions
+│       │   │   ├── _proconnect_button.html.erb
+│       │   │   ├── denied.html.erb
+│       │   │   ├── failure.html.erb
+│       │   │   └── step_up.html.erb
 │       │   └── shared
 │       │       ├── _flash.html.erb
 │       │       ├── _footer.html.erb
@@ -156,12 +204,16 @@
 │   │   └── test.rb
 │   ├── importmap.rb
 │   ├── initializers
+│   │   ├── active_record_encryption.rb
 │   │   ├── assets.rb
 │   │   ├── content_security_policy.rb
 │   │   ├── dsfr_assets.rb
+│   │   ├── event_subscribers.rb
 │   │   ├── filter_parameter_logging.rb
 │   │   ├── inflections.rb
 │   │   ├── pagy.rb
+│   │   ├── pro_connect.rb
+│   │   ├── sensitive_processes.rb
 │   │   ├── sentry.rb
 │   │   └── strong_migrations.rb
 │   ├── locales
@@ -183,7 +235,16 @@
 │   │   ├── 20251102100410_create_data_packages.rb
 │   │   ├── 20251116105107_replace_permission_type_with_booleans.rb
 │   │   ├── 20251116180937_create_notifications.rb
-│   │   └── 20251116183502_add_delivery_criteria_to_data_packages.rb
+│   │   ├── 20251116183502_add_delivery_criteria_to_data_packages.rb
+│   │   ├── 20260720100000_create_agents.rb
+│   │   ├── 20260731090000_allow_null_provider_sub_on_agents.rb
+│   │   ├── 20260803120000_create_organization_links.rb
+│   │   ├── 20260803120100_create_memberships.rb
+│   │   ├── 20260804120000_create_provider_sessions.rb
+│   │   ├── 20260805135858_add_civility_to_agents.rb
+│   │   ├── 20260805141431_add_profile_attributes_to_memberships.rb
+│   │   ├── 20260805141910_create_process_accesses.rb
+│   │   └── 20260806092109_create_access_decisions.rb
 │   ├── queue_schema.rb
 │   ├── schema.rb
 │   └── seeds.rb
@@ -194,13 +255,21 @@
 │   └── OVERVIEW.md
 ├── features
 │   ├── portail
-│   │   └── dashboard.feature
+│   │   ├── accueil.feature
+│   │   └── connexion_proconnect.feature
 │   ├── step_definitions
 │   │   ├── .keep
 │   │   └── portail_steps.rb
 │   └── support
-│       └── env.rb
+│       ├── capybara.rb
+│       ├── env.rb
+│       └── world.rb
 ├── lib
+│   ├── phone_number.rb
+│   ├── portail
+│   │   └── pro_connect
+│   │       ├── client.rb
+│   │       └── token_verifier.rb
 │   └── tasks
 │       ├── .keep
 │       ├── cucumber.rake
@@ -213,8 +282,7 @@
 │   ├── 406-unsupported-browser.html
 │   ├── 422.html
 │   ├── 500.html
-│   ├── icon.png
-│   ├── icon.svg
+│   ├── favicon.ico
 │   └── robots.txt
 ├── renovate.json
 ├── script
@@ -222,27 +290,74 @@
 ├── spec
 │   ├── controllers
 │   │   └── portail
+│   │       ├── authentication_spec.rb
 │   │       └── errors_controller_spec.rb
+│   ├── events
+│   │   └── portail
+│   │       └── auth
+│   │           ├── decision_spec.rb
+│   │           ├── logfmt_logger_spec.rb
+│   │           └── recorder_spec.rb
 │   ├── factories
+│   │   ├── access_decisions.rb
+│   │   ├── agents.rb
 │   │   ├── data_packages.rb
 │   │   ├── data_streams.rb
+│   │   ├── memberships.rb
 │   │   ├── notifications.rb
+│   │   ├── organization_links.rb
 │   │   ├── organizations.rb
+│   │   ├── process_accesses.rb
+│   │   ├── provider_sessions.rb
 │   │   └── subscriptions.rb
 │   ├── interactors
-│   │   └── api
-│   │       └── data_packages
-│   │           ├── transmit
-│   │           │   ├── create_notifications_spec.rb
-│   │           │   ├── resolve_recipients_spec.rb
-│   │           │   ├── transition_to_transmitted_spec.rb
-│   │           │   └── validate_transmission_spec.rb
-│   │           └── transmit_spec.rb
+│   │   ├── api
+│   │   │   └── data_packages
+│   │   │       ├── transmit
+│   │   │       │   ├── create_notifications_spec.rb
+│   │   │       │   ├── resolve_recipients_spec.rb
+│   │   │       │   ├── transition_to_transmitted_spec.rb
+│   │   │       │   └── validate_transmission_spec.rb
+│   │   │       └── transmit_spec.rb
+│   │   └── portail
+│   │       └── sessions
+│   │           ├── create
+│   │           │   ├── check_authentication_level_spec.rb
+│   │           │   ├── check_second_factor_spec.rb
+│   │           │   ├── exchange_code_spec.rb
+│   │           │   ├── find_agent_spec.rb
+│   │           │   ├── find_membership_spec.rb
+│   │           │   ├── open_session_spec.rb
+│   │           │   ├── sync_agent_identity_spec.rb
+│   │           │   └── verify_id_token_spec.rb
+│   │           ├── create_spec.rb
+│   │           └── deny
+│   │               └── record_refusal_spec.rb
+│   ├── jobs
+│   │   └── portail
+│   │       ├── purge_access_decisions_job_spec.rb
+│   │       └── purge_provider_sessions_job_spec.rb
+│   ├── lib
+│   │   ├── phone_number_spec.rb
+│   │   └── portail
+│   │       └── pro_connect
+│   │           ├── client_spec.rb
+│   │           └── token_verifier_spec.rb
 │   ├── models
+│   │   ├── access_decision_spec.rb
+│   │   ├── agent_spec.rb
 │   │   ├── data_package_spec.rb
 │   │   ├── data_stream_spec.rb
+│   │   ├── membership_spec.rb
 │   │   ├── notification_spec.rb
+│   │   ├── organization_link_spec.rb
 │   │   ├── organization_spec.rb
+│   │   ├── portail
+│   │   │   ├── authentication_levels_spec.rb
+│   │   │   ├── second_factor_spec.rb
+│   │   │   └── sensitive_processes_spec.rb
+│   │   ├── process_access_spec.rb
+│   │   ├── provider_session_spec.rb
 │   │   └── subscription_spec.rb
 │   ├── queries
 │   │   └── api
@@ -262,15 +377,14 @@
 │   │   │   ├── content_security_policy_spec.rb
 │   │   │   └── logging_spec.rb
 │   │   └── portail
-│   │       └── dashboard_spec.rb
+│   │       ├── dashboard_spec.rb
+│   │       └── sessions_spec.rb
 │   ├── spec_helper.rb
 │   ├── support
+│   │   ├── proconnect.rb
 │   │   ├── shared_examples_for_boolean_filter_scope.rb
 │   │   ├── shared_examples_for_pagination.rb
-│   │   ├── shared_examples_for_uuid_v7.rb
-│   │   └── system.rb
-│   ├── system
-│   │   └── portail_home_dsfr_layout_spec.rb
+│   │   └── shared_examples_for_uuid_v7.rb
 │   └── validators
 │       └── data_package
 │           └── delivery_criteria_validator_spec.rb
@@ -286,4 +400,4 @@
     ├── .keep
     └── javascript
         └── .keep
-89 directories, 199 files
+115 directories, 287 files

@@ -1,55 +1,74 @@
 {
   "url": "https://github.com/datagouv/hubee",
   "name": "hubee",
-  "description": "Plateforme d'échange sécurisé de fichiers gouvernementaux (SecNumCloud, RGS niveau élevé).",
+  "description": "Plateforme d'échange sécurisé de fichiers gouvernementaux conçue pour répondre aux exigences SecNumCloud et RGS de niveau élevé.",
   "language": "Ruby",
   "features": [
-    "Gestion des utilisateurs & Permissions",
-    "Gestion des fichiers",
+    "Gestion documentaire & Fichiers",
     "Authentification & Accès",
+    "Gestion des utilisateurs & Permissions",
     "Sécurité & Conformité",
-    "Notifications & Alertes"
+    "Notifications & Alertes",
+    "Suivi & Traçabilité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Rails",
     "PostgreSQL",
+    "Solid Queue",
+    "Active Storage",
+    "S3",
     "RSpec",
     "Cucumber",
-    "Bundler",
-    "Solid Queue"
+    "Sentry",
+    "ProConnect"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Ruby (scripts & backend)",
     "Tests",
-    "Authentification (composant)"
+    "Authentification (composant)",
+    "Docker & Conteneurs",
+    "CI/CD & Déploiement"
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "oauth2",
+      "mfa",
+      "sso",
+      "jwt"
+    ],
+    "providers": [
+      "ProConnect"
     ]
   },
   "tests": [
     "RSpec",
-    "Cucumber"
+    "Cucumber",
+    "StandardRB",
+    "Brakeman",
+    "bundler-audit"
   ],
-  "workflows": [],
-  "lastActivity": "2026-07-28T22:09:49Z",
+  "workflows": [
+    "ci.yml"
+  ],
+  "lastActivity": "2026-08-07T11:07:15+02:00",
   "status": "active",
-  "license": "MIT",
+  "license": "AGPL-3.0",
   "hasDocumentation": true,
   "metrics": {
     "stars": 0,
     "forks": 1,
     "contributors": null,
-    "openIssues": 22
+    "openIssues": 24
   },
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
     "Ruby",
-    "Sécurité & Auth"
+    "Sécurité & Auth",
+    "Docker & Conteneurs",
+    "CI/CD & GitHub Actions"
   ]
 }
