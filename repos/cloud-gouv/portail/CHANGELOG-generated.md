@@ -1,14 +1,28 @@
-## Changelog : portail (30 derniers jours, au 28 juillet 2026)
+## Changelog : portail (30 derniers jours, au 07 août 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la stabilité et la correction de bugs, notamment concernant la gestion des connexions SOCKS5 et le fonctionnement des ACLs. Des ajustements ont également été apportés à la configuration système pour une meilleure intégration avec systemd.
+Cette période a été marquée par un effort important de sécurisation et de stabilisation du proxy. Les développements se sont concentrés sur le renforcement de la robustesse du moteur de règles (ACL), l'amélioration des performances de connexion réseau et la fiabilisation de l'infrastructure de déploiement.
 
 ### Évolutions fonctionnelles
-- Correction d'un bug empêchant l'évaluation des ACLs pour les connexions UDP ASSOCIATE. [#0017f76](https://github.com/cloud-gouv/portail/commit/0017f76)
-- Amélioration des tests SOCKS5 pour assurer une connexion correcte. [#a5d0f21](https://github.com/cloud-gouv/portail/commit/a5d0f21)
+- Ajout de la résolution DNS interne pour améliorer la réactivité du service.
 
 ### Évolutions techniques
-- Configuration systemd : les sockets sont maintenant systématiquement gérés par systemd, améliorant la robustesse et la gestion des ressources. [#2bec618](https://github.com/cloud-gouv/portail/commit/2bec618)
+- **Sécurité et Robustesse** :
+    - Renforcement de l'évaluateur d'ACL pour prévenir les comportements anormaux.
+    - Sécurisation des permissions des fichiers de logs (mode 0600).
+    - Réduction de la surface d'attaque par la suppression et la sécurisation des blocs de code non sécurisés (*unsafe*).
+    - Injection du contexte d'authentification client dans l'évaluation des ACL pour distinguer le trafic TLS du trafic en clair.
+- **Réseau et Performance** :
+    - Implémentation de l'algorithme *Happy Eyeballs v2* pour optimiser la résolution DNS.
+    - Ajout de timeouts pour les phases de handshake et renommage des timeouts de requête pour plus de clarté.
+    - Amélioration de la gestion des connexions : ajout d'un plafond de connexions et gestion des erreurs de connexion transitoires.
+    - Normalisation des ports et rejet des formats de requêtes HTTP CONNECT non conformes.
+- **Infrastructure et Système** :
+    - Amélioration de la résilience des modules Nix.
+    - Optimisation de la gestion des sockets via systemd et utilisation de RAII pour la gestion des descripteurs de fichiers.
+    - Mise à jour de la configuration de build (MSRV, profils de release et gestion des fonctionnalités).
 
 ### Autres changements
-- Mise à jour de plusieurs dépendances Rust (uuid, anyhow, bytes, regex, rustls-pki-types) pour bénéficier des dernières corrections et améliorations. (renovate bots)
+- **Documentation** : Ajout de commentaires de sécurité obligatoires sur tous les blocs de code critiques.
+- **Tests** : Correction de tests de connexion SOCKS5.
+- **CI/CD** : Initialisation de la gestion automatisée des dépendances via Renovate.

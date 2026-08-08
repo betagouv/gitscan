@@ -1,59 +1,63 @@
 {
   "url": "https://github.com/cloud-gouv/portail",
   "name": "portail",
-  "description": "Portail est un proxy d'accès pour les terminaux utilisateurs. Il vise à fournir une solution sécurisée et flexible, inspirée des travaux BeyondCorp, pour contrôler l'accès aux ressources.",
+  "description": "Portail est un proxy d'accès sécurisé pour les terminaux, conçu selon le modèle BeyondCorp. Il offre un contrôle d'accès granulaire via un langage ACL et supporte divers protocoles comme SOCKS5 et HTTP CONNECT.",
   "language": "Rust",
   "features": [
     "Authentification & Accès",
-    "Journalisation",
-    "Redirection",
-    "mTLS"
+    "Sécurité & Conformité",
+    "Suivi & Traçabilité",
+    "Gestion des utilisateurs & Permissions"
   ],
   "audience": "Professionnels",
   "dependencies": [
+    "Rust",
     "systemd",
-    "FDStore"
+    "FDStore",
+    "Hyper",
+    "tokio",
+    "rustls"
   ],
   "components": [
-    "Proxy SOCKS5",
-    "Serveur RPC",
-    "Moteur d'évaluation ACL",
-    "Microservices & Architecture"
+    "Rust & Go",
+    "Authentification (composant)",
+    "Microservices & Architecture",
+    "CI/CD & Déploiement",
+    "Documentation & Schémas"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "mfa",
       "jwt",
-      "session"
+      "session",
+      "mfa"
     ],
     "providers": []
   },
   "tests": [
     "Tests d'intégration",
-    "Tests E2E"
+    "Tests E2E",
+    "Tests SOCKS5"
   ],
   "workflows": [
     "cargo.yaml",
     "test.yaml"
   ],
-  "lastActivity": "2026-07-09T13:34:02Z",
+  "lastActivity": "2026-08-07T17:37:46+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 10,
+    "stars": 12,
     "forks": 2,
-    "contributors": 1,
     "openIssues": 51
   },
   "tags": [
-    "Self-hosting & Infrastructure réseau",
     "Sécurité & Auth",
-    "accès",
-    "terminal",
-    "BeyondCorp",
-    "Autres langages",
-    "systemd"
+    "Self-hosting & Infrastructure réseau",
+    "Git & DevOps",
+    "CI/CD & GitHub Actions",
+    "Docker & Conteneurs",
+    "Documentation"
   ]
 }
