@@ -1,33 +1,19 @@
-## Changelog : depots-sauvages (30 derniers jours, au 22 juillet 2026)
+## Changelog : depots-sauvages (30 derniers jours, au 06 août 2026)
 
 ### Résumé
-Les dernières mises à jour de l'application "Dépôts Sauvages" se concentrent sur l'amélioration de l'expérience utilisateur, notamment avec l'ajout d'une page "Comment agir" et la refonte de la page de prise de rendez-vous. Des améliorations de sécurité et des corrections de bugs ont également été apportées, ainsi qu'un début de développement d'un backoffice pour les agents.
+L'application s'enrichit de nouveaux outils pour mieux accompagner les utilisateurs, notamment via l'ajout de pages d'information et de mécanismes de recueil de satisfaction. Parallèlement, une infrastructure de statistiques a été mise en place pour permettre un meilleur suivi de l'activité, tandis que l'expérience utilisateur et la sécurité ont été renforcées.
 
 ### Évolutions fonctionnelles
-- Ajout d'une nouvelle page "Comment agir" pour guider les utilisateurs dans leurs démarches ([#194](https://github.com/betagouv/depots-sauvages/issues/194)).
-- Refonte de la page de prise de rendez-vous (webinaire / RDV) avec une meilleure présentation et des informations plus claires ([#194](https://github.com/betagouv/depots-sauvages/issues/194)).
-- Amélioration de la page d'accueil pour une meilleure présentation de l'application ([#199](https://github.com/betagouv/depots-sauvages/issues/199)).
-- Ajout d'un message d'information sur le nettoyage des dépôts sauvages ([#193](https://github.com/betagouv/depots-sauvages/issues/193)).
-- Amélioration du formulaire de constatation pour une meilleure expérience utilisateur ([#184](https://github.com/betagouv/depots-sauvages/issues/184)).
-- Amélioration de l'accessibilité et du texte sur la page "mes procédures" ([#181](https://github.com/betagouv/depots-sauvages/issues/181)).
-- Amélioration des effets de scroll sur la page FAQ ([#185](https://github.com/betagouv/depots-sauvages/issues/185)).
-- Correction de la durée des rendez-vous, fixée à 60 minutes ([#189](https://github.com/betagouv/depots-sauvages/issues/189)).
+- **Recueil de feedback** : Mise en place de formulaires d'utilisabilité et de popups (Tally) pour mesurer la satisfaction des utilisateurs en fin de procédure ([#202](https://github.com/betagouv/depots-sauvages/issues/202), [#204](https://github.com/betagouv/depots-sauvages/issues/204)).
+- **Nouvelles pages et navigation** : Création de la page "Comment agir" et refonte de la page dédiée aux webinaires ([#194](https://github.com/betagouv/depots-sauvages/issues/194)).
+- **Amélioration de l'expérience utilisateur (UX)** : Simplification du parcours de constatation ([#196](https://github.com/betagouv/depots-sauvages/issues/196)), optimisation de la page d'accueil ([#199](https://github.com/betagouv/depots-sauvages/issues/199)) et amélioration de la visualisation des cartes de procédures ([#201](https://github.com/betagouv/depots-sauvages/issues/201)).
+- **Mises à jour des contenus** : Actualisation des informations de contact ([#205](https://github.com/betagouv/depots-sauvages/issues/205)), corrections orthographiques et de clarté ([#200](https://github.com/betagouv/depots-sauvages/issues/200)), ajustements de la terminologie ([#212](https://github.com/betagouv/depots-sauvages/issues/212)) et ajout d'informations sur le nettoyage des dépôts ([#193](https://github.com/betagouv/depots-sauvages/issues/193)).
+- **Gestion administrative** : Correctifs dans le backoffice concernant les observations des collectivités et le suivi du nettoyage ([#190](https://github.com/betagouv/depots-sauvages/issues/190)).
 
 ### Évolutions techniques
-- Début de développement d'un backoffice pour les agents, permettant la gestion des observations de la collectivité et le nettoyage des données ([#188](https://github.com/betagouv/depots-sauvages/issues/188), [#190](https://github.com/betagouv/depots-sauvages/issues/190)).
-- Améliorations de sécurité générales ([#195](https://github.com/betagouv/depots-sauvages/issues/195)).
-- Mise à jour des packages Python ([#192](https://github.com/betagouv/depots-sauvages/issues/192)).
-- Mise à jour des librairies Yarn pour corriger des failles de sécurité ([#179](https://github.com/betagouv/depots-sauvages/issues/179)).
-- Renommage d'une librairie Vue.js (vue-guillotine) ([#191](https://github.com/betagouv/depots-sauvages/issues/191)).
-- Suppression du code lié à l'ancienne implémentation DN ([#177](https://github.com/betagouv/depots-sauvages/issues/177)).
-- Ajout d'une variable VITE pour le lien de RDV ([#187](https://github.com/betagouv/depots-sauvages/issues/187)).
-- Correction de la configuration de `BACKEND_URL` ([#186](https://github.com/betagouv/depots-sauvages/issues/186)).
+- **Module de statistiques** : Implémentation d'une base de données dédiée, gestion des migrations et automatisation via des tâches planifiées (cron jobs) pour le suivi des données ([#206](https://github.com/betagouv/depots-sauvages/issues/206), [#209](https://github.com/betagouv/depots-sauvages/issues/209), [#210](https://github.com/betagouv/depots-sauvages/issues/210)).
+- **Sécurité et traçabilité** : Renforcement de la sécurité du système ([#195](https://github.com/betagouv/depots-sauvages/issues/195)) et ajout de logs d'activité ([#213](https://github.com/betagouv/depots-sauvages/issues/213)).
+- **Maintenance et refactorisation** : Optimisation du code sur la page "Comment agir" ([#198](https://github.com/betagouv/depots-sauvages/issues/198)), renommage d'une librairie ([#191](https://github.com/betagouv/depots-sauvages/issues/191)) et corrections diverses d'imports et de styles ([#211](https://github.com/betagouv/depots-sauvages/issues/211)).
 
 ### Autres changements
-- Correction des titres et descriptions SEO des pages /comment-agir et /rdv ([#203](https://github.com/betagouv/depots-sauvages/issues/203)).
-- Correction de l'orthographe de "webinaire" et clarification de la phrase d'introduction de la page "Comment agir" ([#200](https://github.com/betagouv/depots-sauvages/issues/200)).
-- Simplification de la page "Démarrer la constatation" ([#196](https://github.com/betagouv/depots-sauvages/issues/196)).
-- Amélioration des redirections après la connexion ([#180](https://github.com/betagouv/depots-sauvages/issues/180)).
-- Suppression des références à "dossier" et ajout de tests unitaires ([#183](https://github.com/betagouv/depots-sauvages/issues/183)).
-- Correction d'un problème lié à `dossierData` ([#182](https://github.com/betagouv/depots-sauvages/issues/182)).
-- Mise à jour de la documentation et des librairies ([#178](https://github.com/betagouv/depots-sauvages/issues/178)).
+- **Référencement** : Optimisation du SEO par la correction des titres et descriptions des pages clés ([#203](https://github.com/betagouv/depots-sauvages/issues/203)).

@@ -25,6 +25,23 @@
 ├── README.md
 ├── SECURITY.md
 ├── backend
+│   ├── activity_logs
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── api_views.py
+│   │   ├── apps.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── signals.py
+│   │   ├── tests
+│   │   │   ├── test_api_views.py
+│   │   │   ├── test_models.py
+│   │   │   └── test_signals.py
+│   │   ├── tracking.py
+│   │   ├── utils.py
+│   │   └── views.py
 │   ├── admin_config
 │   │   ├── __init__.py
 │   │   ├── apps.py
@@ -55,6 +72,8 @@
 │   │   │   ├── 0001_initial.py
 │   │   │   ├── 0002_alter_constatation_prejudice_autres_couts_and_more.py
 │   │   │   ├── 0003_calculate_prejudice_and_regenerate_docs.py
+│   │   │   ├── 0004_constatation_is_draft.py
+│   │   │   ├── 0005_alter_constatation_auteur_identifie.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── prejudice.py
@@ -154,6 +173,26 @@
 │   │   ├── tests
 │   │   │   └── test_views.py
 │   │   └── views.py
+│   ├── stats
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── anonymizer.py
+│   │   ├── apps.py
+│   │   ├── management
+│   │   │   ├── __init__.py
+│   │   │   └── commands
+│   │   │       ├── __init__.py
+│   │   │       └── sync_stats_db.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_statsconstatation_is_draft.py
+│   │   │   ├── 0003_alter_statsconstatation_auteur_identifie.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   └── tests
+│   │       ├── __init__.py
+│   │       ├── test_anonymizer.py
+│   │       └── test_sync_stats_db.py
 │   ├── throttling
 │   │   ├── __init__.py
 │   │   ├── apps.py
@@ -164,6 +203,7 @@
 │   │   └── test_odt_utils.py
 │   ├── urls.py
 │   └── wsgi.py
+├── cron.json
 ├── docker-compose.yml
 ├── docs
 │   ├── architecture-securite.md
@@ -233,7 +273,8 @@
 │   │   │   ├── PremiumCallout.vue
 │   │   │   ├── RichTextEditor.vue
 │   │   │   ├── SelectableChoices.vue
-│   │   │   └── TallyPopupButton.vue
+│   │   │   ├── TallyPopupButton.vue
+│   │   │   └── TallySurveyEmbed.vue
 │   │   └── steps
 │   │       ├── AttenteDecision.vue
 │   │       ├── AucuneProcedure.vue
@@ -282,6 +323,7 @@
 │   │   ├── config.js
 │   │   ├── crisp.js
 │   │   ├── matomo.js
+│   │   ├── tracking.ts
 │   │   └── urls.ts
 │   ├── stores
 │   │   ├── admin-mode.ts
@@ -313,6 +355,7 @@
 │   │   ├── debounce.ts
 │   │   ├── files.ts
 │   │   ├── input.ts
+│   │   ├── procedure-steps.ts
 │   │   ├── procedure.ts
 │   │   ├── scroll.ts
 │   │   ├── tally.ts
@@ -358,4 +401,4 @@
 ├── vite.config.ts
 ├── vitest.setup.ts
 └── yarn.lock
-67 directories, 293 files
+75 directories, 328 files
