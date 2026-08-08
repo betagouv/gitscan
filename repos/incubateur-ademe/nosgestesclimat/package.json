@@ -1,6 +1,6 @@
 {
   "name": "@incubateur-ademe/nosgestesclimat",
-  "version": "4.14.0",
+  "version": "4.14.3",
   "description": "Le modèle de calcul d'empreinte climat individuelle de consommation",
   "main": "index.js",
   "types": "index.d.ts",
@@ -82,7 +82,9 @@
     "git-diff": "^2.0.6",
     "glob": "^13.0.6",
     "http-server": "^14.1.1",
+    "husky": "^9.1.7",
     "isomorphic-fetch": "^3.0.0",
+    "lint-staged": "^17.3.0",
     "mitata": "^1.0.34",
     "nodemon": "^3.1.14",
     "piscina": "^5.2.0",
@@ -105,8 +107,19 @@
   "publishConfig": {
     "access": "public"
   },
+  "lint-staged": {
+    "**/*.{js,mjs,cjs,ts,tsx,json,md,yaml,yml,html,css}": "prettier --write",
+    "**/*.d.ts": "prettier --write",
+    "**/*.publicodes": "prettier --write"
+  },
   "peerDependencies": {
     "publicodes": "^1.8.5"
+  },
+  "pnpm": {
+    "overrides": {
+      "react-router-dom": "7.18.2",
+      "react-router": "7.18.2"
+    }
   },
   "packageManager": "pnpm@10.11.0"
 }

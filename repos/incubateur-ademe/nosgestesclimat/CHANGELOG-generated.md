@@ -1,16 +1,22 @@
-## Changelog : nosgestesclimat (30 derniers jours, au 29 juillet 2026)
+## Changelog : nosgestesclimat (30 derniers jours, au 07/08/2026)
 
 ### Résumé
-Cette version apporte des améliorations à l'expérience utilisateur avec l'ajout de notifications basées sur l'intelligence artificielle pour encourager les actions positives pour le climat. Des corrections ont également été apportées pour améliorer la précision des calculs et l'affichage des icônes. Enfin, une nouvelle version (4.14.0) a été publiée avec une correction concernant le mode scolaire.
+Ce mois-ci, le projet a enrichi ses règles de calcul avec de nouvelles données concernant le transport aérien et l'empreinte des véhicules. Des corrections importantes ont été apportées pour éviter les erreurs de double comptage sur certains terminaux numériques. L'expérience utilisateur est également évoluée avec l'introduction de notifications basées sur l'intelligence artificielle. En parallèle, un travail conséquent a été réalisé pour stabiliser et nettoyer les processus de déploiement automatique (CI/CD).
 
 ### Évolutions fonctionnelles
-- Ajout de notifications personnalisées basées sur l'IA pour inciter à l'action climatique. [#2792](https://github.com/incubateur-ademe/nosgestesclimat/pull/2792)
-- Amélioration de la présentation des notifications avec l'ajout de sauts de ligne pour une meilleure lisibilité. [#636a5943](https://github.com/incubateur-ademe/nosgestesclimat/commit/636a5943)
-- Correction du double comptage des terminaux numériques dans les calculs. [#2795](https://github.com/incubateur-ademe/nosgestesclimat/pull/2795)
-- Correction d'un bug concernant la question "Clim mode scolaire". [#2789](https://github.com/incubateur-ademe/nosgestesclimat/pull/2789)
+- **Transport & Mobilité** : Ajout de nouvelles actions liées au secteur aérien et amélioration du script de calcul de l'empreinte carbone pour les véhicules.
+- **Intelligence Artificielle** : Introduction de nouvelles notifications basées sur l'IA [#2792](https://github.com/incubateur-ademe/nosgestesclimat/pull/2792).
+- **Corrections** : Résolution d'un problème de double comptage concernant les terminaux numériques [#2795](https://github.com/incubateur-ademe/nosgestesclimat/pull/2795).
 
 ### Évolutions techniques
-- Les icônes sont maintenant regroupées dans un espace de nom spécifique pour une meilleure organisation. [#2796](https://github.com/incubateur-ademe/nosgestesclimat/pull/2796)
+- **CI/CD & Automatisation** : 
+    - Nettoyage et optimisation des workflows GitHub Actions (suppression d'actions non conformes et ajout de nouveaux jobs de validation lors des releases du modèle).
+    - Optimisation de la configuration de Dependabot.
+    - Mise en place de Husky pour la gestion des hooks Git.
+- **Architecture & Code** :
+    - Refactorisation de la logique d'envoi des messages (dispatch) pour qu'elle soit uniquement pilotée par le modèle.
+    - Organisation des icônes via l'utilisation de namespaces [#2796](https://github.com/incubateur-ademe/nosgestesclimat/pull/2796).
+- **Releases** : Déploiement des versions 4.14.1, 4.14.2 et 4.14.3.
 
 ### Autres changements
-- Publication de la version 4.14.0. [#2789](https://github.com/incubateur-ademe/nosgestesclimat/pull/2789)
+- **Gestion de projet** : Nettoyage de l'infrastructure de branches avec la suppression de la branche `preprod`.
