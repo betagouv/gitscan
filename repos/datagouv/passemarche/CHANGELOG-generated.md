@@ -1,35 +1,32 @@
-## Changelog : passemarche (30 derniers jours, au 04 août 2026)
+## Changelog : passemarche (30 derniers jours, au 7 août 2026)
 
 ### Résumé
-Ce mois-ci, passemarche a franchi une étape majeure en permettant aux acheteurs de publier et de modifier la configuration de leurs marchés directement depuis l'application. L'expérience utilisateur est enrichie par la génération de synthèses PDF de configuration, une meilleure visibilité sur le type de lots (via des badges colorés) et une gestion plus robuste des données pour les candidats, garantissant que leurs saisies manuelles ne soient pas perdues lors des mises à jour.
+Ce mois a été marqué par l'amélioration significative du cycle de vie des marchés, avec l'introduction de la possibilité de publier et de modifier les configurations de consultation. Les acheteurs disposent désormais d'un outil de synthèse PDF pour leurs configurations, et la fiabilité de l'application a été renforcée par des mises à jour de sécurité critiques et une optimisation des tests automatisés.
 
 ### Évolutions fonctionnelles
-- **Gestion des marchés (Acheteurs) :**
-    - Possibilité de publier une consultation et de modifier la configuration d'un marché ([#439](https://github.com/datagouv/passemarche/pull/439)).
-    - Génération, affichage et téléchargement d'un document PDF de synthèse de la configuration acheteur ([#452](https://github.com/datagouv/passemarche/pull/452)).
+- **Gestion des marchés et publications** :
+    - Ajout de la possibilité de publier une consultation et de verrouiller un marché via un nouveau bouton dédié dans l'éditeur ([#439](https://github.com/datagouv/passemarche/pull/439)).
+    - Mise en place d'un service permettant la re-soumission d'un marché déjà complété ([#439](https://github.com/datagouv/passemarche/pull/439)).
+    - Les candidats peuvent désormais visualiser les marchés publiés directement dans l'éditeur de test ([#471](https://github.com/datagouv/passemarche/pull/471)).
+- **Synthèse et documentation** :
+    - Génération et téléchargement d'un PDF de synthèse de la configuration acheteur ([#452](https://github.com/datagouv/passemarche/pull/452)).
+    - Intégration des icônes de badges de scope dans les documents PDF générés ([#450](https://github.com/datagouv/passemarche/pull/450)).
+    - Amélioration des formulations et ajout de rappels concernant les motifs d'exclusion dans les attestations ([#486](https://github.com/datagouv/passemarche/pull/486)).
+- **Traçabilité et données** :
     - Historisation des modifications de lots et de la sélection des attributs par marché ([#458](https://github.com/datagouv/passemarche/pull/458)).
-    - Mise en conformité des libellés et des rappels concernant les motifs d'exclusion (wording DAJ) ([#486](https://github.com/datagouv/passemarche/pull/486)).
-- **Expérience Candidat :**
-    - Amélioration de la fiabilité des données : préservation des saisies manuelles (chiffre d'affaires, champs additionnels) lors de la re-candidature ou de la mise à jour des données par API ([#442](https://github.com/datagouv/passemarche/pull/442), [#449](https://github.com/datagouv/passemarche/pull/449)).
-    - Gestion intelligente des exigences : les exigences liées à un type de lot sont automatiquement décochées si ce lot est retiré ([#465](https://github.com/datagouv/passemarche/pull/465)).
-    - Clarification des messages d'erreur, notamment lorsqu'un marché n'est pas encore publié ([#472](https://github.com/datagouv/passemarche/pull/472)).
-- **Interface et Design :**
-    - Introduction de badges visuels (icônes et couleurs) pour identifier rapidement le périmètre des lots (travaux, services, fournitures) dans le wizard, les réponses et les documents PDF ([#448](https://github.com/datagouv/passemarche/pull/448), [#447](https://github.com/datagouv/passemarche/pull/447)).
-    - Optimisation de l'interface : ajustements des espacements, de la largeur des boutons et comportement du sélecteur de type de lot ([#482](https://github.com/datagouv/passemarche/pull/482), [#481](https://github.com/datagouv/passemarche/pull/481)).
+    - Inclusion des lots sélectionnés par le candidat dans les webhooks de candidature ([#475](https://github.com/datagouv/passemarche/pull/475)).
+- **Corrections d'expérience utilisateur (UX/UI)** :
+    - Correction de la persistance des choix "non" sur les champs optionnels ([#492](https://github.com/datagouv/passemarche/pull/492)).
+    - Ajustements visuels sur l'interface : espacements des bandeaux d'erreur, largeur des boutons et comportement du sélecteur de types de lots ([#482](https://github.com/datagouv/passemarche/pull/482), [#481](https://github.com/datagouv/passemarche/pull/481)).
 
 ### Évolutions techniques
-- **Sécurité :** Mise à jour de Rails vers la version 8.1.3.1 pour corriger une vulnérabilité critique ([#485](https://github.com/datagouv/passemarche/pull/485)).
-- **API & Intégrations :**
-    - Inclusion des lots sélectionnés par le candidat dans les webhooks de candidature ([#475](https://github.com/datagouv/passemarche/pull/475)).
+- **Sécurité** : Mise à jour de Rails vers la version 8.1.3.1 pour corriger une vulnérabilité (CVE-2026-66066) ([#485](https://github.com/datagouv/passemarche/pull/485)).
+- **Performance CI/CD** : Parallélisation des tests RSpec et Cucumber dans la chaîne de CI pour accélérer les validations ([#451](https://github.com/datagouv/passemarche/pull/451)).
+- **Architecture** :
+    - Refactorisation de la logique de génération de PDF via l'extraction d'un module commun `PdfGeneratable` ([#452](https://github.com/datagouv/passemarche/pull/452)).
     - Sécurisation de la construction des URLs via l'utilisation d'un hôte canonique ([#460](https://github.com/datagouv/passemarche/pull/460)).
-    - Exposition de la synthèse de configuration via l'API éditeur et les webhooks ([#452](https://github.com/datagouv/passemarche/pull/452)).
-    - Correction de la régénération automatique du PDF de synthèse lors de mises à jour via API ([#474](https://github.com/datagouv/passemarche/pull/474)).
-- **Architecture & Refactoring :**
-    - Mise en place d'un *feature flag* pour activer progressivement le module "groupement" ([#483](https://github.com/datagouv/passemarche/pull/483)).
-    - Centralisation de la logique de génération de PDF dans un service partagé (`PdfGeneratable`) ([#452](https://github.com/datagouv/passemarche/pull/452)).
-    - Utilisation de `paper_trail` pour assurer la traçabilité des modifications de lots ([#458](https://github.com/datagouv/passemarche/pull/458)).
-    - Amélioration de la robustesse des migrations de base de données (idempotence et gestion des clés étrangères orphelines) ([#457](https://github.com/datagouv/passemarche/pull/457), [#469](https://github.com/datagouv/passemarche/pull/469)).
+- **Développement** : Activation du feature flag pour le futur module "groupement" en environnement sandbox ([#483](https://github.com/datagouv/passemarche/pull/483)).
 
 ### Autres changements
-- Nettoyage du code mort ([#468](https://github.com/datagouv/passemarche/pull/468)).
-- Simplification de la documentation technique ([#473](https://github.com/datagouv/passemarche/pull/473)).
+- **Documentation** : Suppression de la documentation technique locale au profit des guides officiels sur guides.data.gouv.fr ([#473](https://github.com/datagouv/passemarche/pull/473)).
+- **Nettoyage** : Suppression de code mort dans le modèle `MarketApplication` ([#468](https://github.com/datagouv/passemarche/pull/468)).
