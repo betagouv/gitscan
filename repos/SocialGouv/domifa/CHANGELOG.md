@@ -1,3 +1,42 @@
+# [2.255.0](https://github.com/SocialGouv/domifa/compare/v2.254.3...v2.255.0) (2026-08-07)
+
+
+### Features
+
+* **frontend, admin:** refactor big number pipe ([2fd9d37](https://github.com/SocialGouv/domifa/commit/2fd9d37fe40c146b57a20e72f5a9bd0fce4f7da7))
+
+## [2.254.3](https://github.com/SocialGouv/domifa/compare/v2.254.2...v2.254.3) (2026-08-06)
+
+
+### Bug Fixes
+
+* **backend:** fix otp refactor ([1831268](https://github.com/SocialGouv/domifa/commit/183126877ee31a1f634739e9f0029be23615ba10))
+* **backend:** refactor of OTP management ([9eeaf4a](https://github.com/SocialGouv/domifa/commit/9eeaf4a85bfd979fa6ff55247ac96b1f2d6cf253))
+* **backend:** refactor to use common variables ([b07538f](https://github.com/SocialGouv/domifa/commit/b07538f710080873a83f6ad07107e7a291b81816))
+* **frontend:** factorize functions ([0fa1f4a](https://github.com/SocialGouv/domifa/commit/0fa1f4a4f1b63bf8c65839e81f544403ccda0c90))
+
+## [2.254.2](https://github.com/SocialGouv/domifa/compare/v2.254.1...v2.254.2) (2026-08-06)
+
+
+### Bug Fixes
+
+* **backend:** add delete user from lists & send email ([3bfb26c](https://github.com/SocialGouv/domifa/commit/3bfb26cb91bc02ed60d5b5518a0261f7091f622d))
+
+## [2.254.1](https://github.com/SocialGouv/domifa/compare/v2.254.0...v2.254.1) (2026-08-06)
+
+
+### Bug Fixes
+
+* text condition on reinit pwd modal ([43d3f97](https://github.com/SocialGouv/domifa/commit/43d3f975ab94234ff7d1b426eeda06a1104a9f6f))
+
+# [2.254.0](https://github.com/SocialGouv/domifa/compare/v2.253.0...v2.254.0) (2026-08-06)
+
+
+### Features
+
+* add rgaa portail usagers ([2d22a72](https://github.com/SocialGouv/domifa/commit/2d22a72d2a72ce7b485b4e35a9cee8e9800db154))
+* **portail:** adding rgaa to portail usagers ([a0900f5](https://github.com/SocialGouv/domifa/commit/a0900f533cf5a3b5f57d5063f374020d6dbb415f))
+
 # [2.253.0](https://github.com/SocialGouv/domifa/compare/v2.252.0...v2.253.0) (2026-08-05)
 
 

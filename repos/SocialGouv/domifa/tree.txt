@@ -672,6 +672,9 @@
 │   │   │   │   │   │   ├── otp-cleaner.service.ts
 │   │   │   │   │   │   ├── otp-email.service.spec.ts
 │   │   │   │   │   │   ├── otp-email.service.ts
+│   │   │   │   │   │   ├── otp-outcome-to-http.ts
+│   │   │   │   │   │   ├── otp-outcome.types.ts
+│   │   │   │   │   │   ├── otp-scope.helpers.ts
 │   │   │   │   │   │   └── otp.service.ts
 │   │   │   │   │   └── templates
 │   │   │   │   │       ├── otp-action-email.template.ts
@@ -1256,6 +1259,25 @@
 │   │   │   │   ├── index.ts
 │   │   │   │   └── types
 │   │   │   │       ├── NewsItem.type.ts
+│   │   │   │       └── index.ts
+│   │   │   ├── otp
+│   │   │   │   ├── constants
+│   │   │   │   │   ├── OTP_ERROR_CODES.const.ts
+│   │   │   │   │   ├── OTP_ERROR_LABELS.const.ts
+│   │   │   │   │   ├── OTP_MAX_ATTEMPTS.const.ts
+│   │   │   │   │   ├── OTP_PURPOSES.const.ts
+│   │   │   │   │   ├── OTP_RESEND_COOLDOWN_SECONDS.const.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── functions
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── isOtpErrorCode.ts
+│   │   │   │   │   └── isOtpLockoutError.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── types
+│   │   │   │       ├── OtpErrorCode.type.ts
+│   │   │   │       ├── OtpPromptOptions.type.ts
+│   │   │   │       ├── OtpPromptResult.type.ts
+│   │   │   │       ├── OtpPurpose.type.ts
 │   │   │   │       └── index.ts
 │   │   │   ├── pagination
 │   │   │   │   ├── PageItem.interface.ts
@@ -1959,7 +1981,6 @@
 │   │   │   │   │   │   │       └── otp-modal.component.ts
 │   │   │   │   │   │   ├── interceptors
 │   │   │   │   │   │   │   └── otp.interceptor.ts
-│   │   │   │   │   │   ├── otp.types.ts
 │   │   │   │   │   │   └── services
 │   │   │   │   │   │       └── otp-prompt.service.ts
 │   │   │   │   │   ├── shared
@@ -2074,10 +2095,6 @@
 │   │   │   │   │   │   ├── constants
 │   │   │   │   │   │   │   ├── STATS_REGIONS_FOR_MAP.const.ts
 │   │   │   │   │   │   │   ├── StatsTerritory.type.ts
-│   │   │   │   │   │   │   └── index.ts
-│   │   │   │   │   │   ├── pipes
-│   │   │   │   │   │   │   ├── format-big-number.pipe.spec.ts
-│   │   │   │   │   │   │   ├── format-big-number.pipe.ts
 │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   ├── services
 │   │   │   │   │   │   │   ├── stats.service.spec.ts
@@ -2929,7 +2946,6 @@
 │   │   │   │   │   │   │       └── otp-modal.component.ts
 │   │   │   │   │   │   ├── interceptors
 │   │   │   │   │   │   │   └── otp.interceptor.ts
-│   │   │   │   │   │   ├── otp.types.ts
 │   │   │   │   │   │   └── services
 │   │   │   │   │   │       └── otp-prompt.service.ts
 │   │   │   │   │   ├── sessions-stats
@@ -3022,8 +3038,6 @@
 │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   ├── pipes
 │   │   │   │   │   │   │   ├── fonction-format.pipe.ts
-│   │   │   │   │   │   │   ├── format-big-number.pipe.spec.ts
-│   │   │   │   │   │   │   ├── format-big-number.pipe.ts
 │   │   │   │   │   │   │   ├── format-phone-number.pipe.spec.ts
 │   │   │   │   │   │   │   ├── format-phone-number.pipe.ts
 │   │   │   │   │   │   │   ├── full-name.pipe.ts
@@ -3489,4 +3503,4 @@
 ├── pnpm-workspace.yaml
 ├── sonar-project.properties
 └── tech.yaml
-811 directories, 2680 files
+814 directories, 2691 files
