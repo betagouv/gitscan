@@ -1,16 +1,15 @@
-# Synthèse d'activité : signaux-faibles (du 30 juin 2026 au 07 juillet 2026)
+# Synthèse d'activité : signaux-faibles (du 30/06 au 07/07/2026)
 
 ## Résumé de l'activité
-L'organisation "signaux-faibles" a connu une semaine productive, axée sur l'amélioration de la qualité des données et de l'expérience utilisateur. [sfor](/repos/signaux-faibles/sfor) a reçu des mises à jour significatives pour la gestion des alertes, l'affichage des données et la performance globale, avec l'ajout de nouvelles fonctionnalités comme le suivi des départements d'entreprises et les notifications par email. [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles) s'est concentré sur la correction de bugs liés aux codes NAF et l'amélioration de la fiabilité des données, notamment via la mise à jour des fichiers de référence et la correction des migrations de base de données.
+L'activité récente de l'organisation s'est concentrée sur l'amélioration de l'expérience utilisateur et la fiabilité des données. Dans [sfor](/repos/signaux-faibles/sfor), les utilisateurs bénéficient d'une gestion plus fine des alertes, de nouveaux outils de suivi (notamment par département) et d'un système de notifications par email, rendant l'outil plus réactif et intuitif pour le pilotage.
 
-## Sécurité
-Aucun changement lié à la sécurité n'a été signalé durant cette période.
+Parallèlement, [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles) a renforcé la qualité de ses informations en corrigeant des filtres de données et en stabilisant la gestion des codes NAF, garantissant ainsi une base de données plus précise et fiable pour les analyses.
 
 ## Autres changements notables
-- Refactorisation de la vue de détail des alertes dans [sfor](/repos/signaux-faibles/sfor) pour utiliser des badges.
-- Amélioration de la génération des fichiers de référence dans [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles) avec Go pour une meilleure reproductibilité.
-- Suppression de code obsolète et de migrations inutiles dans [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles) pour simplifier la base de code.
+- **Optimisation et performance** : mise en œuvre de tâches de dénormalisation et amélioration de la gestion des erreurs et des timeouts dans [sfor](/repos/signaux-faibles/sfor).
+- **Fiabilisation des données et de l'infrastructure** : corrections importantes des migrations de base de données et amélioration de la reproductibilité des fichiers de référence dans [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles).
+- **Évolutions analytiques** : intégration de l'algorithme de Shapley pour enrichir les graphiques en cascade dans [sfor](/repos/signaux-faibles/sfor).
 
 ## Dépôts les plus actifs
-- [sfor](/repos/signaux-faibles/sfor) : Amélioration continue de l'interface utilisateur et des fonctionnalités, avec un focus sur la gestion des alertes et l'export de données.
-- [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles) : Correction de bugs et amélioration de la qualité des données, notamment concernant les codes NAF et les migrations de la base de données.
+- [sfor](/repos/signaux-faibles/sfor) : Évolutions de l'interface utilisateur, gestion des alertes et optimisation des performances.
+- [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles) : Travaux sur la qualité des données, les migrations de base de données et la fiabilité des tests.

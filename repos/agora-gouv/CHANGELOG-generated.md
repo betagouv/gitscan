@@ -1,22 +1,19 @@
-# Synthèse d'activité : agora-gouv (du 28 juin au 28 juillet 2026)
+# Synthèse d'activité : agora-gouv (du 02/07 au 28/07)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation agora-gouv s'est concentrée sur l'amélioration de la plateforme, tant en termes de stabilité et de sécurité que de fonctionnalités. Des efforts importants ont été déployés pour optimiser la gestion des certificats (ACME, Sectigo) et des liens profonds, améliorant ainsi l'expérience utilisateur sur mobile.  Des améliorations ont également été apportées à l'interface utilisateur, notamment via l'alignement sur le Design System FR, et à la gestion du contenu via le CMS Strapi. Les dépôts [agora-front](/repos/agora-gouv/agora-front), [agora-cms-strapi](/repos/agora-gouv/agora-cms-strapi) et [agora-back](/repos/agora-gouv/agora-back) ont été particulièrement actifs.
+L'activité de cette période a été marquée par une amélioration significative de l'expérience utilisateur, tant sur le web que sur mobile, notamment grâce à une meilleure gestion du partage de contenu et une navigation plus fluide ([agora-app](/repos/agora-gouv/agora-app), [agora-front](/repos/agora-gouv/agora-front)). Parallèlement, les outils d'administration et de gestion de contenu ont été enrichis pour offrir une modération plus précise et une analyse plus pertinente des contributions via de nouveaux outils d'agrégation de données ([agora-back](/repos/agora-gouv/agora-back), [agora-cms-strapi](/repos/agora-gouv/agora-cms-strapi)).
 
 ## Sécurité
-Plusieurs changements ont été apportés pour renforcer la sécurité de la plateforme :
-- Implémentation de l'automatisation Sectigo via ACME pour la gestion des certificats ([agora-back](/repos/agora-gouv/agora-back)).
-- Ajout de certificats Sectigo pour améliorer la sécurité de l'application mobile ([agora-app](/repos/agora-gouv/agora-app)).
-- Correction des empreintes de certificats SHA256 ([agora-front](/repos/agora-gouv/agora-front)).
-- Ajout de SHA256 pour le débogage des liens profonds ([agora-front](/repos/agora-gouv/agora-front)).
+- Automatisation de la gestion des certificats SSL/TLS via le protocole ACME pour renforcer la sécurité des communications ([agora-back](/repos/agora-gouv/agora-back), [agora-app](/repos/agora-gouv/agora-app)).
+- Renforcement de la sécurité et de la compatibilité des liens profonds (deeplinks) pour les plateformes mobiles ([agora-front](/repos/agora-gouv/agora-front)).
 
 ## Autres changements notables
-- Migration de la plateforme [agora-cms-strapi](/repos/agora-gouv/agora-cms-strapi) vers Strapi V5.
-- Refonte de l'algorithme de calcul des tendances (V3 et V4) sur [agora-back](/repos/agora-gouv/agora-back).
-- Simplification du flush du cache Redis sur [agora-back](/repos/agora-gouv/agora-back).
+- Migration technologique majeure de la plateforme de gestion de contenu vers Strapi V5 ([agora-cms-strapi](/repos/agora-gouv/agora-cms-strapi)).
+- Refonte des algorithmes de calcul des tendances ([agora-back](/repos/agora-gouv/agora-back)).
+- Optimisations de l'infrastructure (Nginx, Node.js) et de la gestion du cache pour améliorer la stabilité et les performances globales ([agora-cms-strapi](/repos/agora-gouv/agora-cms-strapi), [agora-back](/repos/agora-gouv/agora-back)).
 
 ## Dépôts les plus actifs
-- [agora-back](/repos/agora-gouv/agora-back) : Amélioration de la gestion des consultations, de la sélection des questions et ajout de fonctionnalités d'administration.
-- [agora-front](/repos/agora-gouv/agora-front) : Corrections de bugs, améliorations de la sécurité et du design de l'interface utilisateur.
-- [agora-app](/repos/agora-gouv/agora-app) : Amélioration de l'expérience utilisateur mobile avec corrections de liens profonds et de partage de contenu.
-- [agora-cms-strapi](/repos/agora-gouv/agora-cms-strapi) : Migration vers Strapi V5 et ajout de nouvelles fonctionnalités pour la gestion du contenu.
+- [agora-back](/repos/agora-gouv/agora-back) : Développement intensif de nouvelles fonctionnalités d'administration, de modération et d'analyse de données.
+- [agora-app](/repos/agora-gouv/agora-app) : Focus sur l'expérience utilisateur mobile, le partage de contenu et la conformité au Design System.
+- [agora-front](/repos/agora-gouv/agora-front) : Améliorations de l'interface utilisateur et optimisation de la navigation mobile.
+- [agora-cms-strapi](/repos/agora-gouv/agora-cms-strapi) : Mise à jour majeure de l'infrastructure et optimisation des performances serveur.

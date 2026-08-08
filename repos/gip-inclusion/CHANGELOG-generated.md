@@ -1,24 +1,24 @@
-# Synthèse d'activité : gip-inclusion (du 22/06 au 30/07)
+# Synthèse d'activité : gip-inclusion (du 30/06 au 06/08)
 
 ## Résumé de l'activité
-L'activité de l'organisation gip-inclusion au cours des dernières semaines a été particulièrement riche, avec des améliorations significatives sur plusieurs fronts. Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment sur [le-marche](/repos/gip-inclusion/le-marche) avec l'ajout de fonctionnalités pour les acheteurs et sur [immersion-facile](/repos/gip-inclusion/immersion-facile) avec une refonte du tableau de bord.  Des avancées importantes ont également été réalisées sur l'infrastructure et l'automatisation, avec la mise en place de CI/CD, de linters et de Dependabot sur plusieurs dépôts ([plateforme-accueil](/repos/gip-inclusion/plateforme-accueil), [sps-emailer](/repos/gip-inclusion/sps-emailer), [slash-visio](/repos/gip-inclusion/slash-visio), [fluo-proto](/repos/gip-inclusion/fluo-proto), [autometa-jobs](/repos/gip-inclusion/autometa-jobs)).  Enfin, des efforts considérables ont été consacrés à l'intégration de nouvelles sources de données et à l'amélioration de la qualité des données sur [pilotage-airflow](/repos/gip-inclusion/pilotage-airflow) et [data-inclusion](/repos/gip-inclusion/data-inclusion).
+L'activité de la période est marquée par des avancées majeures dans l'accompagnement des parcours professionnels et l'enrichissement des outils de pilotage. Le déploiement du module d'orientation dans [les-emplois](/repos/gip-inclusion/les-emplois) et l'amélioration des fonctionnalités de matching EURES dans [grist-custom-forms](/repos/gip-inclusion/grist-custom-forms) et [eures-beta](/repos/gip-inclusion/eures-beta) renforcent l'efficacité des mises en relation pour les candidats. 
+
+Parallèlement, la refonte de la [plateforme-accueil](/repos/gip-inclusion/plateforme-accueil) et l'optimisation des tableaux de bord dans [pilotage-airflow](/repos/gip-inclusion/pilotage-airflow) et [dora](/repos/gip-inclusion/dora) offrent une meilleure visibilité et une expérience utilisateur plus fluide pour les décideurs et les professionnels. Ces évolutions visent à transformer la donnée en un levier de décision plus précis et accessible.
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
-- [le-marche](/repos/gip-inclusion/le-marche) : le téléchargement de listes de recherche est désormais restreint aux utilisateurs authentifiés.
-- [authentik-sso](/repos/gip-inclusion/authentik-sso) : ajout d'une configuration de Content Security Policy (CSP).
-- [autometa](/repos/gip-inclusion/autometa) : mise à jour de Pillow pour corriger des vulnérabilités.
+- **Protection des données personnelles** : Mise en place de la double authentification (2FA/TOTP) dans [les-emplois](/repos/gip-inclusion/les-emplois) et anonymisation automatique des numéros NIR dans les tickets Zendesk via [autometa](/repos/gip-inclusion/autometa).
+- **Contrôle des accès et des flux** : Restriction du téléchargement de listes de recherche aux utilisateurs authentifiés dans [le-marche](/repos/gip-inclusion/le-marche) et implémentation d'une politique de sécurité de contenu (CSP) ainsi que d'une authentification par token dans [api-relay-cnav](/repos/gip-inclusion/api-relay-cnav).
+- **Sécurisation des infrastructures** : Suppression des mots de passe codés en dur dans [fluo-proto](/repos/gip-inclusion/fluo-proto) et correction de vulnérabilités dans [immersion-facile](/repos/gip-inclusion/immersion-facile).
 
 ## Autres changements notables
-- [plateforme-accueil](/repos/gip-inclusion/plateforme-accueil) : refonte complète de l'architecture et migration vers Django, avec mise en place d'un pipeline CI/CD.
-- [sps-emailer](/repos/gip-inclusion/sps-emailer) : implémentation d'un pipeline complet pour les emails SPS, incluant la conversion, l'anonymisation, le rendu et l'envoi via Brevo.
-- [pilotage-airflow](/repos/gip-inclusion/pilotage-airflow) : intégration de nouvelles sources de données (FAGERH, RDV-I, Dora, Matomo, IMER) et refonte des modèles de données.
-- [api-relay-cnav](/repos/gip-inclusion/api-relay-cnav) : mise en place de l'authentification par token et de la structure de base de l'API.
+- **Modernisation des architectures** : Passage au déploiement de conteneurs serverless pour les prototypes dans [fluo-proto](/repos/gip-inclusion/fluo-proto), refonte complète de la [plateforme-accueil](/repos/gip-inclusion/plateforme-accueil) (utilisation de Django et mise en place de CI/CD), et restructuration des modèles de données autour de tables de dimensions dans [pilotage-airflow](/repos/gip-inclusion/pilotage-airflow).
+- **Optimisation de l'intelligence et des performances** : Amélioration de la recherche sémantique et de la tolérance aux fautes de frappe dans [data-inclusion](/repos/gip-inclusion/data-inclusion), intégration d'embeddings pour l'analyse par IA dans [autometa](/repos/gip-inclusion/autometa), et optimisation des requêtes SQL pour améliorer la réactivité dans [les-emplois](/repos/gip-inclusion/les-emplois) et [immersion-facile](/repos/gip-inclusion/immersion-facile).
+- **Développement de nouveaux services** : Initialisation de l'infrastructure SSO avec [authentik-sso](/repos/gip-inclusion/authentik-sso) et mise en place des fondations de l'API dans [api-relay-cnav](/repos/gip-inclusion/api-relay-cnav).
 
 ## Dépôts les plus actifs
-- [rdv-insertion](/repos/gip-inclusion/rdv-insertion) : Amélioration des performances, correction de bugs et ajout de nouvelles fonctionnalités pour faciliter le suivi des parcours d'accompagnement.
-- [le-marche](/repos/gip-inclusion/le-marche) : Amélioration de l'expérience utilisateur pour les acheteurs avec de nouvelles fonctionnalités et corrections.
-- [pilotage-airflow](/repos/gip-inclusion/pilotage-airflow) : Intégration de nouvelles sources de données et amélioration de la qualité des données.
-- [immersion-facile](/repos/gip-inclusion/immersion-facile) : Refonte du tableau de bord et ajout de nouvelles fonctionnalités pour le suivi des conventions.
-- [autometa](/repos/gip-inclusion/autometa) : Refonte de la navigation et ajout de nouvelles fonctionnalités d'analyse.
-- [dora](/repos/gip-inclusion/dora) : Amélioration de la recherche et de la gestion des services.
+- [les-emplois](/repos/gip-inclusion/les-emplois) : Déploiement du module d'orientation, renforcement de la sécurité (2FA) et optimisation des performances.
+- [plateforme-accueil](/repos/gip-inclusion/plateforme-accueil) : Refonte complète de l'interface utilisateur et de l'architecture technique (Django, Docker, CI/CD).
+- [pilotage-airflow](/repos/gip-inclusion/pilotage-airflow) : Enrichissement massif des indicateurs de pilotage et restructuration de l'architecture de données.
+- [grist-custom-forms](/repos/gip-inclusion/grist-custom-forms) : Évolutions majeures des formulaires EURES et du système de matching.
+- [rdv-insertion](/repos/gip-inclusion/rdv-insertion) : Améliorations de la performance de l'indexation et corrections de bugs fonctionnels.
+- [le-marche](/repos/gip-inclusion/le-marche) : Amélioration de l'expérience acheteur et renforcement de la sécurité des données.

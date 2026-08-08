@@ -1,22 +1,24 @@
-# Synthèse d'activité : numerique-gouv (du 06 mai 2026 au 29 juillet 2026)
+# Synthèse d'activité : numerique-gouv (du 10/07 au 31/07)
 
 ## Résumé de l'activité
-L'organisation numerique-gouv a connu une période d'activité soutenue, avec des améliorations significatives sur plusieurs de ses dépôts. Les efforts se sont concentrés sur l'internationalisation des plateformes ([sites-faciles](/repos/numerique-gouv/sites-faciles), [sites-faciles-fork-1](/repos/numerique-gouv/sites-faciles-fork-1)), l'amélioration de l'expérience utilisateur (ajout de pages Tchap et Tchao sur [lasuite-landingpage](/repos/numerique-gouv/lasuite-landingpage), amélioration de l'interface utilisateur de [b3desk](/repos/numerique-gouv/b3desk) et [ami-app-ios](/repos/numerique-gouv/ami-app-ios)), et le renforcement de la sécurité (corrections de vulnérabilités dans [django-dsfr](/repos/numerique-gouv/django-dsfr)). Des efforts importants ont également été déployés pour moderniser l'infrastructure et les processus de développement, notamment avec l'introduction de tests e2e dans [sites-conformes](/repos/numerique-gouv/sites-conformes) et l'amélioration du déploiement sur Scalingo ([sites-faciles](/repos/numerique-gouv/sites-faciles)).
+L'activité de cette période est marquée par une forte orientation vers l'amélioration de l'expérience utilisateur et l'internationalisation des services. Les outils de création de sites ([sites-faciles](/repos/numerique-gouv/sites-faciles) et [sites-faciles-fork-1](/repos/numerique-gouv/sites-faciles-fork-1)) progressent significativement sur la gestion multilingue, tandis que l'application [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api) bénéficie d'une refonte majeure de son interface et de l'intégration de nouveaux services externes.
+
+Parallèlement, des évolutions structurelles importantes sont visibles sur [statistiques-impact](/repos/numerique-gouv/statistiques-impact) avec une refonte de son modèle de données, et des avancées fonctionnelles sont notables dans [b3desk](/repos/numerique-gouv/b3desk) avec l'amorce de l'intégration de la transcription par IA. L'accessibilité et la visibilité des services sont également renforcées via [lasuite-landingpage](/repos/numerique-gouv/lasuite-landingpage).
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
-- Correction d'une vulnérabilité dans la dépendance `cryptography` dans [django-dsfr](/repos/numerique-gouv/django-dsfr).
-- Mise à jour de secret dans [francetransfert](/repos/numerique-gouv/francetransfert).
+- Correction de vulnérabilités critiques via la mise à jour de la bibliothèque `cryptography` dans [django-dsfr](/repos/numerique-gouv/django-dsfr).
+- Amélioration de la gestion des déconnexions avec FranceConnect via [ami-fc-proxy](/repos/numerique-gouv/ami-fc-proxy).
+- Mise à jour des secrets de l'application pour [francetransfert](/repos/numerique-gouv/francetransfert).
+- Mise à jour des images de base pour Keycloak afin de bénéficier des derniers correctifs de sécurité dans [dockerfiles](/repos/numerique-gouv/dockerfiles).
 
 ## Autres changements notables
-- Refonte du modèle de données dans [statistiques-impact](/repos/numerique-gouv/statistiques-impact) avec l'introduction de "Record".
-- Migration vers Python 3.14 dans [statistiques-impact](/repos/numerique-gouv/statistiques-impact).
-- Ajout de la redirection vers la page de déconnexion FranceConnect dans [ami-fc-proxy](/repos/numerique-gouv/ami-fc-proxy).
-- Introduction de tests end-to-end avec Playwright dans [sites-conformes](/repos/numerique-gouv/sites-conformes).
+- **Refonte de données et infrastructure :** Migration vers Python 3.14 et introduction d'un nouveau modèle de données "Record" pour [statistiques-impact](/repos/numerique-gouv/statistiques-impact).
+- **Qualité logicielle :** Introduction de tests de bout en bout (E2E) avec Playwright et de pipelines de comparaison visuelle pour [sites-conformes](/repos/numerique-gouv/sites-conformes).
+- **Architecture mobile :** Refonte de la structure du package Swift pour [ami-design-system-ios](/repos/numerique-gouv/ami-design-system-ios).
+- **Déploiement et pilotage :** Mise en place de *feature flags* pour le pilotage des fonctionnalités dans [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api) et simplification du déploiement sur Scalingo pour [sites-faciles](/repos/numerique-gouv/sites-faciles).
 
 ## Dépôts les plus actifs
-- [statistiques-impact](/repos/numerique-gouv/statistiques-impact) : Refonte du modèle de données et migration vers Python 3.14.
-- [sites-faciles](/repos/numerique-gouv/sites-faciles) : Internationalisation et simplification du déploiement.
-- [sites-conformes](/repos/numerique-gouv/sites-conformes) : Introduction de tests e2e et amélioration de l'interface utilisateur.
-- [lasuite-landingpage](/repos/numerique-gouv/lasuite-landingpage) : Ajout de pages pour Tchap et Tchao, et mises à jour des webinaires.
-- [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api) : Ajout de la section "Services" et renommage des sections "Requests" et "Inventory".
+- [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api) : Refonte de l'interface utilisateur, gestion des suivis et intégration de nouveaux services.
+- [sites-faciles](/repos/numerique-gouv/sites-faciles) et [sites-faciles-fork-1](/repos/numerique-gouv/sites-faciles-fork-1) : Travaux majeurs sur l'internationalisation et la gestion multilingue.
+- [statistiques-impact](/repos/numerique-gouv/statistiques-impact) : Migration technique majeure et restructuration profonde du modèle de données.
+- [b3desk](/repos/numerique-gouv/b3desk) : Améliorations de l'interface d'administration et développement de fonctionnalités liées à l'IA.

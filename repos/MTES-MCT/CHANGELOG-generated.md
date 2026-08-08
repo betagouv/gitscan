@@ -1,28 +1,28 @@
-# Synthèse d'activité : MTES-MCT (du 22/05 au 30/07)
+# Synthèse d'activité : MTES-MCT (du 25/07 au 05/08)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation MTES-MCT a été marquée par des améliorations significatives sur plusieurs fronts.  De nombreuses mises à jour ont visé à renforcer la sécurité (notamment [trackdechets](/repos/MTES-MCT/trackdechets) avec l'authentification multi-facteurs et [keycloak-client-webhook](/repos/MTES-MCT/keycloak-client-webhook) avec l'ajout d'une authentification par token), à améliorer l'expérience utilisateur (par exemple, [vizeau](/repos/MTES-MCT/vizeau) avec l'affichage des projets sur la carte et [otelo](/repos/MTES-MCT/otelo) avec un mode tutoriel guidé), et à optimiser les processus internes (comme [partageonsleau-orchestration](/repos/MTES-MCT/partageonsleau-orchestration) avec l'amélioration de l'ingestion de données). Plusieurs projets ont également bénéficié de refactorisations techniques et de mises à jour de dépendances pour une meilleure maintenabilité et performance.
+L'activité de l'organisation a été particulièrement intense, marquée par une volonté de modernisation des outils et une amélioration significative de l'expérience utilisateur. Les efforts se sont concentrés sur la mise en conformité avec les standards de design (DSFR) pour des applications comme [mobilic](/repos/MTES-MCT/mobilic) ou [resorption-bidonvilles](/repos/MTES-MCT/resorption-bidonvilles), ainsi que sur l'ajout de fonctionnalités métier clés, telles que la gestion des haies pour [envergo](/repos/MTES-MCT/envergo) ou les demandes de détachement pour [mobilic](/repos/MTES-MCT/mobilic).
+
+Parallèlement, une montée en version technologique majeure a été opérée sur plusieurs projets, notamment via la migration vers de nouveaux frameworks (AdonisJS 7, React 18) et la mise à jour de l'environnement de formation R (version 4.6). Ces évolutions garantissent une meilleure pérennité et performance des services pour les utilisateurs finaux et les agents de l'État.
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
-- **Authentification multi-facteurs :** Implémentation de l'authentification multi-facteurs sur [trackdechets](/repos/MTES-MCT/trackdechets).
-- **Gestion des clés API :** Ajout de la possibilité d'utiliser plusieurs clés API sur [keycloak-client-webhook](/repos/MTES-MCT/keycloak-client-webhook).
-- **Mise à jour des dépendances :** Correction de vulnérabilités en mettant à jour les dépendances sur [mon-devis-sans-oublis-backend-ocr](/repos/MTES-MCT/mon-devis-sans-oublis-backend-ocr) et [qualicharge](/repos/MTES-MCT/qualicharge).
+- Mise en œuvre de l'authentification multi-facteurs (MFA) pour [trackdechets](/repos/MTES-MCT/trackdechets).
+- Migration vers Better Auth pour renforcer la gestion des utilisateurs dans [zero-logement-vacant](/repos/MTES-MCT/zero-logement-vacant).
+- Renforcement des contrôles d'accès via Keycloak et sécurisation des routes pour [potentiel](/repos/MTES-MCT/potentiel).
+- Mise en place d'une authentification par token pour l'API d'[ecobalyse-runner](/repos/MTES-MCT/ecobalyse-runner) et d'[ecobalyse](/repos/MTES-MCT/ecobalyse).
+- Support de plusieurs clés API pour une gestion plus fine des accès dans [mon-devis-sans-oublis-backend-ocr](/repos/MTES-MCT/mon-devis-sans-oublis-backend-ocr).
+- Sécurisation de la transmission des logs via le protocole SSL pour [dossierfacile-backend](/repos/MTES-MCT/dossierfacile-backend).
 
 ## Autres changements notables
-- **Migration vers Better Auth :** [zero-logement-vacant](/repos/MTES-MCT/zero-logement-vacant) a migré vers Better Auth pour une sécurité renforcée.
-- **Refactorisation technique :** [zero-logement-vacant](/repos/MTES-MCT/zero-logement-vacant) a également entrepris une refactorisation importante avec Kysely.
-- **Intégration de Matomo :** [vizeau](/repos/MTES-MCT/vizeau) a intégré Matomo pour le suivi analytique.
-- **Migration vers AdonisJS 7 :** [vizeau](/repos/MTES-MCT/vizeau) a migré vers AdonisJS 7 pour des améliorations de performance et de sécurité.
-- **Amélioration de l'infrastructure :** Plusieurs projets ont bénéficié d'améliorations de l'infrastructure de déploiement et de la gestion des données, notamment [dossierfacile-infra](/repos/MTES-MCT/dossierfacile-infra) et [fonds-prevention-argile](/repos/MTES-MCT/fonds-prevention-argile).
+- **Modernisation des frameworks et langages** : Migrations vers AdonisJS 7 pour [vizeau](/repos/MTES-MCT/vizeau), React 18 pour [partaj](/repos/MTES-MCT/partaj), et passage à R 4.6 pour l'ensemble des modules du [parcours-r](/repos/MTES-MCT/parcours-r).
+- **Refontes d'interface et UX** : Refonte complète de la page de résultats pour [otelo](/repos/MTES-MCT/otelo) et de la page d'accueil pour [sparte](/repos/MTES-MCT/sparte).
+- **Évolutions infrastructurelles et DevOps** : Automatisation des déploiements Android pour [monitor-field](/repos/MTES-MCT/monitor-field), intégration de Sentry pour la surveillance d'erreurs dans [envergo](/repos/MTES-MCT/envergo) et [prelevements-deau-web](/repos/MTES-MCT/prelevements-deau-web), et mise en place de "Review Apps" sur Scalingo pour [mobilic](/repos/MTES-MCT/mobilic).
+- **Restructuration de données** : Fusion des dépôts data et front-end pour [ecobalyse](/repos/MTES-MCT/ecobalyse).
 
 ## Dépôts les plus actifs
-- **zero-logement-vacant:** Améliorations de la sécurité, de l'authentification et refactorisation du code.
-- **vizeau:** Ajout de nouvelles fonctionnalités, amélioration de l'expérience utilisateur et migration technique.
-- **trackdechets:** Implémentation de l'authentification multi-facteurs et corrections de bugs.
-- **otelo:** Amélioration de l'expérience utilisateur et ajout de nouvelles fonctionnalités.
-- **dossierfacile-backend:** Amélioration de la gestion des pièces justificatives et corrections de bugs.
-- **mobilic:** Ajout de la possibilité de contester une mission et de gérer les détachements.
-- **ecobalyse:** Ajout de nouveaux ingrédients au catalogue LCI et amélioration de l'export au format Ecospold1.
-- **apilos:** Amélioration de la génération de documents et mise à jour des dépendances.
-- **aigle-frontend & aigle-api:** Amélioration des fonctionnalités d'administration et de la gestion des DDT.
+- [mobilic](/repos/MTES-MCT/mobilic) : Évolutions majeures sur le cycle de vie des salariés et mise en conformité visuelle DSFR.
+- [envergo](/repos/MTES-MCT/envergo) : Améliorations importantes sur la gestion des haies et des dossiers multi-départementaux.
+- [otelo](/repos/MTES-MCT/otelo) : Refonte de l'interface de résultats et ajout d'un mode tutoriel pour les utilisateurs.
+- [ecobalyse](/repos/MTES-MCT/ecobalyse) : Extension de la modélisation environnementale et refonte de l'architecture.
+- [monitorenv](/repos/MTES-MCT/monitorenv) : Refonte de la gestion des zones réglementaires et du suivi de mission.
+- [resorption-bidonvilles](/repos/MTES-MCT/resorption-bidonvilles) : Amélioration de l'accessibilité et intégration d'une nouvelle phase de diagnostic technique.

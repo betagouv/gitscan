@@ -1,22 +1,22 @@
-# Synthèse d'activité : mission-apprentissage (du 24 juin 2026 au 10 juillet 2026)
+# Synthèse d'activité : mission-apprentissage (du 25/08 au 01/09)
 
 ## Résumé de l'activité
-L'organisation "mission-apprentissage" a connu une période d'activité soutenue, axée sur l'amélioration de la stabilité, de la sécurité et des fonctionnalités de ses différents projets. Plusieurs dépôts ont bénéficié de mises à jour d'infrastructure, notamment des migrations de serveurs et des rotations de secrets SOPS. Des améliorations significatives ont été apportées à l'API d'apprentissage, au catalogue d'apprentissage et à l'outil de flux de retour CFAS, avec l'ajout de nouvelles fonctionnalités et la correction de bugs. Le projet "labonnealternance" a également progressé avec des corrections et des améliorations de la synchronisation avec Brevo.
+L'activité récente est marquée par une forte accélération de l'automatisation des processus métier et de la gestion de projet. L'organisation a déployé de nouveaux outils de communication automatisée (WhatsApp, emails) pour les candidats et les entreprises via [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas) et [labonnealternance](/repos/mission-apprentissage/labonnealternance), tout en enrichissant les capacités de classification des données dans [tableaudebord-lab](/repos/mission-apprentissage/tableaudebord-lab) et [labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab).
+
+Parallèlement, l'efficacité opérationnelle est renforcée par le développement de nouvelles "skills" d'automatisation GitHub dans [mna-skills](/repos/mission-apprentissage/mna-skills) et [lba-github-mcp](/repos/mission-apprentissage/lba-github-mcp), facilitant la gestion des sprints et des tâches de développement.
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié de mesures de sécurité renforcées :
-- Rotation du secret principal SOPS dans [mna-shared-bin](/repos/mission-apprentissage/mna-shared-bin), [bal](/repos/mission-apprentissage/bal), et [api-apprentissage](/repos/mission-apprentissage/api-apprentissage).
-- Blocage de la réactivation de comptes déjà actifs dans [labonnealternance](/repos/mission-apprentissage/labonnealternance).
+- Correction de vulnérabilités critiques (CVE) dans les dépendances de [bal](/repos/mission-apprentissage/bal) et [api-apprentissage](/repos/mission-apprentissage/api-apprentissage).
+- Renforcement de la protection des données via l'implémentation de l'anti-scraping ([labonnealternance](/repos/mission-apprentissage/labonnealternance)) et la vérification des numéros de téléphone ([flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas)).
+- Sécurisation globale de l'infrastructure par une campagne de rotation des secrets principaux (SOPS) ([mongodb](/repos/mission-apprentissage/mongodb), [mna-shared-bin](/repos/mission-apprentissage/mna-shared-bin), [infra](/repos/mission-apprentissage/infra), [bal](/repos/mission-apprentissage/bal), [api-apprentissage](/repos/mission-apprentissage/api-apprentissage)).
 
 ## Autres changements notables
-- Mise à niveau de MongoDB de la version 8.0 à la version 8.2 sur le cluster lba dans [mongodb](/repos/mission-apprentissage/mongodb).
-- Installation native de mongot 1.70.1 colocalisé sur une grappe MongoDB dans [mongodb](/repos/mission-apprentissage/mongodb).
-- Migration de la gestion des secrets d'Ansible Vault vers SOPS dans [labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab).
-- Mise à jour de Mongoose vers la version 9 et réécriture du plugin `diffHistory` dans [catalogue-apprentissage](/repos/mission-apprentissage/catalogue-apprentissage).
+- Modernisation des infrastructures de données avec la mise à niveau de MongoDB ([mongodb](/repos/mission-apprentissage/mongodb)), la migration vers un nouveau moteur de recherche v2 ([labonnealternance](/repos/mission-apprentissage/labonnealternance)) et l'adoption de Mongoose 9 ([catalogue-apprentissage](/repos/mission-apprentissage/catalogue-apprentissage)).
+- Amélioration de l'observabilité système et de la lisibilité des logs ([upptime](/repos/mission-apprentissage/upptime), [infra](/repos/mission-apprentissage/infra)).
+- Migration vers une gestion de secrets centralisée via SOPS pour plusieurs projets ([mna-shared-bin](/repos/mission-apprentissage/mna-shared-bin), [labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab)).
 
 ## Dépôts les plus actifs
-- [mna-skills](/repos/mission-apprentissage/mna-skills) : Développement initial des skills pour l'automatisation de tâches GitHub.
-- [labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab) : Amélioration de la configuration, du déploiement et de la performance du modèle de classification.
-- [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas) : Corrections de bugs et améliorations de l'envoi d'emails et de la synchronisation avec Brevo.
-- [catalogue-apprentissage](/repos/mission-apprentissage/catalogue-apprentissage) : Corrections de bugs, amélioration de la synchronisation avec Elasticsearch et ajout d'une page de configuration.
-- [infra](/repos/mission-apprentissage/infra) : Ajout de Sentry pour le suivi des erreurs applicatives et amélioration de la gestion des logs.
+- [labonnealternance](/repos/mission-apprentissage/labonnealternance) : Évolutions majeures sur l'expérience utilisateur, le SEO et la sécurité.
+- [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas) : Automatisation des communications et optimisation des processus de déploiement.
+- [mna-skills](/repos/mission-apprentissage/mna-skills) : Développement de nouveaux outils d'automatisation pour la gestion des flux de travail GitHub.
+- [labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab) : Amélioration des modèles de classification et de la gestion de la configuration.

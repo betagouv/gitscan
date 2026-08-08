@@ -1,24 +1,24 @@
-# Synthèse d'activité : proconnect-gouv (du 22/07/2026 au 28/07/2026)
+# Synthèse d'activité : proconnect-gouv (du 22/07 au 31/07)
 
 ## Résumé de l'activité
-L'activité de proconnect-gouv au cours des dernières semaines a été marquée par des améliorations significatives de l'expérience utilisateur et de la sécurité. Plusieurs dépôts ont été mis à jour pour renforcer l'authentification multi-facteurs (MFA), notamment avec l'ajout d'indicateurs de conformité et de tests pour les fournisseurs d'identité ([federation](/repos/proconnect-gouv/federation)). L'espace partenaires ([proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires)) a été enrichi de nouvelles fonctionnalités permettant aux partenaires de mieux gérer leurs collaborateurs et applications. Des améliorations ont également été apportées à l'outil de diagnostic "docteur-proconnect" ([docteur-proconnect](/repos/proconnect-gouv/docteur-proconnect)) et à la librairie de validation de données [class-validator](/repos/proconnect-gouv/class-validator).
+L'activité de cette période est marquée par une amélioration significative de l'expérience utilisateur, notamment via l'évolution des interfaces d'authentification multi-facteurs (MFA) [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) et [proconnect-test-client](/repos/proconnect-gouv/proconnect-test-client), ainsi que par une simplification des parcours pour les partenaires [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires).
+
+Sur le plan technique, l'organisation poursuit la modernisation de son infrastructure avec une refactorisation vers une architecture de microservices [federation](/repos/proconnect-gouv/federation) et le lancement de nouveaux services de support et de monitoring [mx-resolver](/repos/proconnect-gouv/mx-resolver) et [monitoring-pinger](/repos/proconnect-gouv/monitoring-pinger).
 
 ## Sécurité
-Plusieurs changements ont été apportés pour améliorer la sécurité :
-- Renforcement de la sécurité en supprimant `unsafe-inline` de la Content Security Policy dans [proconnect-identite](/repos/proconnect-gouv/proconnect-identite).
-- Refonte de la gestion des secrets OIDC dans [api-partenaires](/repos/proconnect-gouv/api-partenaires).
-- Correction d'un bug autorisant des valeurs non sécurisées pour la configuration OIDC dans [api-partenaires](/repos/proconnect-gouv/api-partenaires).
-- Mise à jour des dépendances vulnérables dans [class-validator](/repos/proconnect-gouv/class-validator).
+- Renforcement de la sécurité via la mise à jour des politiques de sécurité du contenu (CSP) pour limiter les risques d'injection [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) et [federation](/repos/proconnect-gouv/federation).
+- Amélioration de la gestion des secrets OIDC pour une cryptographie plus robuste et ajout de tests de régression suite à un audit de sécurité [api-partenaires](/repos/proconnect-gouv/api-partenaires).
+- Correction de vulnérabilités dans les dépendances de la librairie de validation [class-validator](/repos/proconnect-gouv/class-validator).
 
 ## Autres changements notables
-- Refactorisation de services en applications autonomes dans [federation](/repos/proconnect-gouv/federation) pour une meilleure architecture.
-- Publication standalone du package `@proconnect-gouv/proconnect.email` dans [proconnect-identite](/repos/proconnect-gouv/proconnect-identite).
-- Migration vers la nouvelle image `api-partenaires` dans [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires).
-- Amélioration du processus de tests d'intégration dans [idp-status-monitoring](/repos/proconnect-gouv/idp-status-monitoring).
+- Refactorisation majeure de l'architecture par l'extraction de plusieurs microservices en applications autonomes [federation](/repos/proconnect-gouv/federation).
+- Initialisation de nouveaux projets structurants : un fournisseur d'identité de test [proconnect-test-idp](/repos/proconnect-gouv/proconnect-test-idp), un service de résolution MX [mx-resolver](/repos/proconnect-gouv/mx-resolver), un outil de monitoring [monitoring-pinger](/repos/proconnect-gouv/monitoring-pinger) et un buildpack pour Bun [bun-buildpack](/repos/proconnect-gouv/bun-buildpack).
+- Mise à jour importante de la cartographie des identifiants SIRET pour la précision de la fédération d'identité [oidc2fer](/repos/proconnect-gouv/oidc2fer).
+- Optimisation de l'outil de gestion interne avec de nouvelles fonctionnalités d'édition et d'affichage [hyyypertool](/repos/proconnect-gouv/hyyypertool).
 
 ## Dépôts les plus actifs
-- [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) : Améliorations de l'interface utilisateur pour le MFA et renforcement de la sécurité.
-- [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires) : Ajout de fonctionnalités de gestion des collaborateurs et des applications pour les partenaires.
-- [federation](/repos/proconnect-gouv/federation) : Ajout d'indicateurs de conformité MFA et refactorisation de l'architecture.
-- [class-validator](/repos/proconnect-gouv/class-validator) : Ajout de nouveaux validateurs et correction de vulnérabilités.
-- [proconnect-test-client](/repos/proconnect-gouv/proconnect-test-client) : Amélioration de la flexibilité du flux d'authentification et mises à jour de dépendances.
+- [federation](/repos/proconnect-gouv/federation) : Refactorisation architecturale majeure et préparation du MFA.
+- [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) : Évolutions de l'interface MFA et de la gestion des communications.
+- [api-partenaires](/repos/proconnect-gouv/api-partenaires) : Gestion des clients OIDC et sécurisation des secrets.
+- [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires) : Améliorations fonctionnelles et interface pour les partenaires.
+- [hyyypertool](/repos/proconnect-gouv/hyyypertool) : Optimisation de l'interface de gestion et de l'expérience utilisateur.

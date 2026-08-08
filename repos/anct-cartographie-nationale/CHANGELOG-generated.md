@@ -1,14 +1,14 @@
-# Synthèse d'activité : anct-cartographie-nationale (du 29 juin 2026 au 10 juillet 2026)
+# Synthèse d'activité : anct-cartographie-nationale (du 01/07 au 10/07)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation s'est concentrée sur l'amélioration des données utilisées par l'application de cartographie et sur la stabilisation de l'application elle-même.  `mednum-cli` [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli) a été mis à jour avec de nouvelles sources de données (Francilin) et des remplacements de zones géographiques (ZRR par FRR, QPV par les données ANCT 2024), améliorant ainsi la précision et la pertinence des informations disponibles. Parallèlement, l'application `cartographie` [cartographie](/repos/anct-cartographie-nationale/cartographie) a bénéficié de corrections de bugs concernant l'affichage des notifications et du formulaire de contact, ainsi que d'optimisations techniques pour le cache et l'observabilité.
+L'activité de la période est marquée par une mise à jour majeure des référentiels de données et une amélioration de l'expérience utilisateur. L'outil [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli) intègre de nouvelles sources de données (Francilin) et actualise ses zones géographiques (passage des ZRR aux FRR et mise à jour des quartiers prioritaires 2024), garantissant ainsi une précision accrue des analyses nationales. 
 
-## Sécurité
-Aucun changement lié à la sécurité n'a été signalé durant cette période.
+Parallèlement, l'application [cartographie](/repos/anct-cartographie-nationale/cartographie) bénéficie de corrections ergonomiques, notamment sur l'affichage des notifications et la clarté des messages d'erreur pour les utilisateurs, tout en renforçant la fiabilité de la gestion des données locales.
 
 ## Autres changements notables
-Des améliorations techniques ont été apportées à l'infrastructure de `cartographie` [cartographie](/repos/anct-cartographie-nationale/cartographie), notamment la mise à jour des actions GitHub utilisées pour le CI/CD et une refactorisation de l'accès aux variables d'environnement.  Ces changements visent à améliorer la robustesse et la maintenabilité du code.
+- **Optimisation des processus de données** : Amélioration de la stabilité de la fusion des doublons et ajustement du planning de publication pour [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli).
+- **Amélioration de l'observabilité et de la structure** : Instrumentation du cache pour faciliter le diagnostic technique et refactorisation de l'accès aux variables d'environnement dans [cartographie](/repos/anct-cartographie-nationale/cartographie).
 
 ## Dépôts les plus actifs
-- [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli) : Ce dépôt a été activement mis à jour pour intégrer de nouvelles sources de données et améliorer la qualité des données géographiques.
-- [cartographie](/repos/anct-cartographie-nationale/cartographie) : Ce dépôt a reçu des corrections de bugs et des optimisations techniques pour améliorer l'expérience utilisateur et la performance de l'application.
+- [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli) : Mise à jour profonde des sources de données et des processus de publication nationale.
+- [cartographie](/repos/anct-cartographie-nationale/cartographie) : Améliorations de l'interface utilisateur et de la robustesse technique du système de cache.

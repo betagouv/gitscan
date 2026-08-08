@@ -1,23 +1,25 @@
-# Synthèse d'activité : etalab-ia (du 16 mai au 16 juillet 2026)
+# Synthèse d'activité : etalab-ia (du 01/05 au 24/07)
 
 ## Résumé de l'activité
-L'organisation etalab-ia a connu une période d'activité soutenue ces deux derniers mois, marquée par des avancées significatives sur plusieurs fronts. Le développement de l'API [whisperx-openai-api](/repos/etalab-ia/whisperx-openai-api) a permis de proposer une solution performante pour la transcription audio.  Des efforts importants ont été consacrés à l'amélioration de la plateforme [rag-facile](/repos/etalab-ia/rag-facile) et [ragtime](/repos/etalab-ia/ragtime) avec l'ajout de fonctionnalités clés comme l'authentification, l'intégration de l'IA Inspect et une interface CLI plus conviviale.  Enfin, les projets [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) et [OpenGateRAG](/repos/etalab-ia/OpenGateRAG) ont bénéficié d'améliorations de sécurité, de refactoring architectural et de stabilisation des pipelines CI/CD.
+L'activité de cette période est marquée par une montée en puissance majeure des capacités d'agents et des systèmes de génération augmentée par récupération (RAG). Les projets [ragtime](/repos/etalab-ia/ragtime) et [letta](/repos/etalab-ia/letta) ont franchi des étapes clés en intégrant de nouveaux modèles de langage, des systèmes de mémoire avancés et des fonctionnalités de persistance des conversations, rendant les agents plus autonomes et performants.
+
+Parallèlement, l'organisation renforce ses infrastructures de données et d'évaluation. L'automatisation des pipelines d'ingestion (notamment via [mediatech](/repos/etalab-ia/mediatech) et [mediatech-to-albert-api](/repos/etalab-ia/mediatech-to-albert-api)) et l'amélioration des outils de mesure de qualité ([evalap](/repos/etalab-ia/evalap) et [eval-transcript](/repos/etalab-ia/eval-transcript)) permettent de garantir des résultats plus fiables et une meilleure exploitation des données publiques pour l'IA.
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
-
-- [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) : Correction de CVEs bloquant les scans Trivy critiques et amélioration de la gestion des erreurs d'authentification pour éviter l'énumération des utilisateurs.
-- [parcours-rag](/repos/etalab-ia/parcours-rag) : Ajout d'une vérification de vulnérabilités des dépendances en pré-push.
+- Renforcement de la sécurité pour empêcher l'énumération d'utilisateurs dans [OpenGateLLM](/repos/etalab-ia/OpenGateLLM).
+- Sécurisation de la saisie des clés API lors de la configuration dans [ragtime](/repos/etalab-ia/ragtime).
+- Mise en place de vérifications automatiques des vulnérabilités des dépendances dans [parcours-rag](/repos/etalab-ia/parcours-rag).
+- Amélioration de la gestion de la sécurité et des validations dans [skills](/repos/etalab-ia/skills).
 
 ## Autres changements notables
-- **Refactoring architectural :** [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) a subi un refactoring important de plusieurs endpoints pour une meilleure organisation et maintenabilité.
-- **Migration de base de données :** [mediatech-to-albert-api](/repos/etalab-ia/mediatech-to-albert-api) a migré sa base de données vers une architecture serverless pour une meilleure scalabilité.
-- **Simplification de la publication :** [chartsgouv](/repos/etalab-ia/chartsgouv) a simplifié sa stratégie de publication et de gestion du dépôt.
-- **Suppression de fonctionnalités :** La fonctionnalité RAG a été temporairement supprimée de [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) pour permettre une refonte ultérieure.
+- **Évolutions architecturales et renommage** : Le projet [rag-facile](/repos/etalab-ia/rag-facile) a été intégralement refondu et renommé en [ragtime](/repos/etalab-ia/ragtime). [OpenGateRAG](/repos/etalab-ia/OpenGateRAG) a également été stabilisé avec l'unification de son API avec [OpenGateLLM](/repos/etalab-ia/OpenGateLLM).
+- **Migrations et infrastructures** : Migration de la base de données vers une architecture serverless pour [mediatech-to-albert-api](/repos/etalab-ia/mediatech-to-albert-api) et optimisation des images Docker pour [marker-serve](/repos/etalab-ia/marker-serve).
+- **Optimisations techniques** : Améliorations significatives de la gestion de la mémoire et de la concurrence pour [letta](/repos/etalab-ia/letta) et refactorisation de la connexion PostgreSQL pour [mediatech](/repos/etalab-ia/mediatech).
+- **Automatisation** : Mise en place de la mise à jour quotidienne automatisée des dictionnaires de données pour [albert-data-collections](/repos/etalab-ia/albert-data-collections).
 
 ## Dépôts les plus actifs
-- [rag-facile](/repos/etalab-ia/rag-facile) : Amélioration significative de la plateforme avec ajout d'authentification, intégration de l'IA Inspect et d'un système de compétences.
-- [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) : Refactoring architectural, améliorations de sécurité et stabilisation des pipelines CI/CD.
-- [ragtime](/repos/etalab-ia/ragtime) : Changement de nom, ajout d'une interface en ligne de commande et amélioration de la configuration initiale.
-- [mediatech](/repos/etalab-ia/mediatech) : Intégration de nouveaux jeux de données et optimisation du traitement des données.
-- [lettabot](/repos/etalab-ia/lettabot) : Amélioration de l'expérience utilisateur avec un assistant de configuration interactif et une meilleure gestion des modèles.
+- [ragtime](/repos/etalab-ia/ragtime) : Évolutions majeures incluant l'authentification, la gestion de collections et une nouvelle interface CLI.
+- [letta](/repos/etalab-ia/letta) : Extension massive des capacités des agents (nouveaux modèles, gestion de la mémoire et des templates).
+- [lettabot](/repos/etalab-ia/lettabot) : Amélioration de l'expérience utilisateur et de l'intégration sur Slack, Discord et Telegram.
+- [mediatech](/repos/etalab-ia/mediatech) : Optimisation du traitement et de l'intégration de nouveaux jeux de données publics.
+- [evalap](/repos/etalab-ia/evalap) : Amélioration de l'exportation des résultats d'évaluation vers Hugging Face Hub.

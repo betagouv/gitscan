@@ -1,37 +1,26 @@
-# Synthèse d'activité : suitenumerique (du 22 mai au 31 juillet 2026)
+# Synthèse d'activité : suitenumerique (du 02/06 au 06/08)
 
 ## Résumé de l'activité
-L'organisation suitenumerique a connu une période d'activité soutenue, marquée par des améliorations significatives en matière de sécurité, de performance et d'expérience utilisateur. Plusieurs dépôts ont bénéficié de refactorisations architecturales importantes, comme la migration de `conversations` vers un traitement asynchrone et de `calendars` vers Vite. L'intégration de nouvelles fonctionnalités, telles que le chiffrement de bout en bout dans `transfers` et l'authentification multifacteur dans `accounts`, renforce la protection des données. L'accent a également été mis sur l'amélioration de l'interopérabilité, avec l'intégration de Matrix dans `hub` et l'ajout de support pour plusieurs fournisseurs d'identité dans `accounts`. Enfin, des efforts considérables ont été déployés pour améliorer la documentation et faciliter la contribution de la communauté.
+L'activité récente de la suite numérique est marquée par une expansion majeure des capacités de communication et une modernisation profonde des infrastructures. L'introduction du support mobile et des notifications push pour [messages](/repos/suitenumerique/messages), l'intégration complète de la messagerie Matrix dans [hub](/repos/suitenumerique/hub) et l'ajout de la synthèse automatique par IA dans [conversations](/repos/suitenumerique/conversations offrent de nouveaux usages collaboratifs puissants pour les utilisateurs.
+
+Parallèlement, l'expérience de gestion des données est devenue plus intuitive et sécurisée. Les utilisateurs bénéficient d'une meilleure visibilité sur leur stockage avec [drive](/repos/suitenumerique/drive) et de protocoles de transfert de fichiers renforcés dans [transfers](/repos/suitenumerique/transfers) et [st-transfers](/repos/suitenumerique/st-transfers). Ces évolutions visent à rendre la suite plus accessible, mobile et robuste pour répondre aux besoins croissants de collaboration sécurisée.
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
-
-*   `transfers` : Ajout du chiffrement de bout en bout optionnel et d'un scanner de fichiers pour empêcher le stockage de fichiers dangereux.
-*   `accounts` : Chiffrement des données supplémentaires des fournisseurs d'identité, utilisation de UUID v7 pour les clés primaires, et renforcement de la sécurité du logout.
-*   `file-scanner` : Blocage des requêtes SSRF lors des analyses d'URL.
-*   `conversations` : Protection contre les "decompression bombs" et fichiers PDF volumineux.
-*   `calendars` : Renforcement de la sécurité du traitement des données ICS.
-*   `drive` : Correction d'une vulnérabilité CVE-2026-49852 dans `cryptography`.
+- Renforcement de la confidentialité via l'ajout du chiffrement de bout en bout optionnel dans [transfers](/repos/suitenumerique/transfers).
+- Protection contre les vulnérabilités de type SSRF lors de l'analyse d'URL dans [file-scanner](/repos/suitenumerique/file-scanner).
+- Sécurisation des données d'identité et chiffrement des informations sensibles dans [accounts](/repos/suitenumerique/accounts).
+- Amélioration de la robustesse de l'authentification et de la gestion des contenus malveillants dans [messages](/repos/suitenumerique/messages) et [people](/repos/suitenumerique/people).
+- Correction de fuites de fichiers temporaires et durcissement des images Docker dans [meet-whisperx](/repos/suitenumerique/meet-whisperx).
 
 ## Autres changements notables
-Plusieurs évolutions techniques majeures ont été réalisées :
-
-*   `conversations` : Migration vers un traitement asynchrone pour améliorer les performances.
-*   `calendars` : Migration du frontend vers Vite pour une meilleure performance et expérience de développement.
-*   `menshen` : Migration de l'API REST de Django REST Framework vers Django Ninja.
-*   `meet-whisperx` : Mise à jour de l'image Docker de base et correction d'une fuite de fichiers temporaires.
-*   `drive-migrator` : Refonte de l'authentification et intégration de Resana pour l'authentification multifacteur.
-*   `hub` : Intégration de la messagerie Matrix.
-*   `docs-website` : Migration vers Astro pour une meilleure performance et cohérence avec le projet Docs.
+- Transformation structurelle de [ui-kit](/repos/suitenumerique/ui-kit) vers une architecture monorepo.
+- Migrations technologiques majeures vers le framework `django-ninja` pour [menshen](/repos/suitenumerique/menshen) et vers Vite pour [calendars](/repos/suitenumerique/calendars).
+- Refonte complète du site [docs-website](/repos/suitenumerique/docs-website) utilisant Astro pour une gestion dynamique et centralisée du contenu.
+- Intégration de l'outil `st-cli` pour simplifier la gestion des environnements dans [st-ansible](/repos/suitenumerique/st-ansible).
 
 ## Dépôts les plus actifs
-*   [ui-kit](/repos/suitenumerique/ui-kit) : Améliorations significatives de l'interface utilisateur, notamment pour la gestion des fichiers et des contacts.
-*   [transfers](/repos/suitenumerique/transfers) : Ajout de fonctionnalités de sécurité et d'amélioration de la fonctionnalité.
-*   [st-home](/repos/suitenumerique/st-home) : Amélioration de la robustesse et corrections de bugs.
-*   [st-deploycenter](/repos/suitenumerique/st-deploycenter) : Amélioration de la gestion des droits d'accès et des services.
-*   [st-ansible](/repos/suitenumerique/st-ansible) : Introduction de l'outil `st-cli` pour simplifier les déploiements.
-*   [conversations](/repos/suitenumerique/conversations) : Ajout de la fonctionnalité de résumé des conversations et refonte technique pour améliorer les performances.
-*   [accounts](/repos/suitenumerique/accounts) : Amélioration de la sécurité et de l'authentification, avec prise en charge de plusieurs fournisseurs d'identité.
-*   [drive](/repos/suitenumerique/drive) : Ajout d'un indicateur de stockage et amélioration de l'expérience de partage.
-*   [docs](/repos/suitenumerique/docs) : Refonte de l'éditeur de présentation et enrichissement de la documentation.
-*   [calendars](/repos/suitenumerique/calendars) : Refonte de la gestion des RSVP et migration du frontend vers Vite.
+- [messages](/repos/suitenumerique/messages) : Passage à la version 0.9.0 avec support des applications mobiles et notifications push.
+- [hub](/repos/suitenumerique/hub) : Intégration majeure de la messagerie Matrix (temps réel, threads et réactions).
+- [meet](/repos/suitenumerique/meet) : Optimisation des performances de l'interface et gestion avancée des rôles de participants.
+- [drive](/repos/suitenumerique/drive) : Amélioration de la visibilité du stockage et des fonctionnalités de partage de masse.
+- [ui-kit](/repos/suitenumerique/ui-kit) : Évolution vers une architecture monorepo et enrichissement de la bibliothèque de composants.

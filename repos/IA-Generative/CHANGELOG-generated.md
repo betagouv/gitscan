@@ -1,32 +1,25 @@
-# Synthèse d'activité : IA-Generative (du 20/05 au 26/07)
+# Synthèse d'activité : IA-Generative (du 20/07 au 27/07)
 
 ## Résumé de l'activité
-L'organisation IA-Generative a connu une période d'activité intense, axée sur l'amélioration de la sécurité, l'ajout de nouvelles fonctionnalités et l'optimisation de l'expérience utilisateur de ses différents produits. Plusieurs dépôts ont bénéficié de mises à jour significatives, notamment en matière de sécurité (garde anti-prompt injection, correction de vulnérabilités, authentification renforcée) et de nouvelles capacités (transcription de vidéos YouTube, intégration RAG, gestion des tâches asynchrones). L'accent a également été mis sur l'amélioration de l'intégration avec des services tiers (Keycloak, Redis, OpenWebUI) et sur la simplification du déploiement et de la maintenance des applications. Les utilisateurs finaux bénéficieront d'une meilleure sécurité, de fonctionnalités plus avancées et d'une expérience plus fluide. Les dépôts [owuiapps-agents](/repos/IA-Generative/owuiapps-agents), [ocr-api](/repos/IA-Generative/ocr-api), [myvault](/repos/IA-Generative/myvault), [mcr](/repos/IA-Generative/mcr) et [Stirling-PDF](/repos/IA-Generative/Stirling-PDF) ont été particulièrement actifs.
+L'activité de cette période a été marquée par un renforcement massif de la sécurité des données et une extension significative des capacités d'intelligence artificielle. L'organisation a introduit des fonctionnalités avancées telles que la génération de questions-réponses et le scraping web dans [abrege](/repos/IA-Generative/abrege), ainsi que l'intégration de systèmes RAG (Retrieval-Augmented Generation) pour [Stirling-PDF](/repos/IA-Generative/Stirling-PDF).
+
+Parallèlement, l'expérience utilisateur et la fiabilité des services ont été améliorées grâce à de nouveaux outils de transcription multimédia pour [ocr-api](/repos/IA-Generative/ocr-api) et [mcr](/repos/IA-Generative/mcr), ainsi qu'à une modernisation profonde des infrastructures pour supporter une montée en charge plus importante.
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié d'améliorations significatives en matière de sécurité :
-
-*   [owuiapps-agents](/repos/IA-Generative/owuiapps-agents) : Implémentation d'une garde anti-prompt-injection et de limitations de débit.
-*   [myvault](/repos/IA-Generative/myvault) : Renforcement de la sécurité de l'authentification, limitation des abus, hachage des secrets, et correction de vulnérabilités.
-*   [ocr-api](/repos/IA-Generative/ocr-api) : Correction de plusieurs vulnérabilités de sécurité.
-*   [device-management](/repos/IA-Generative/device-management) : Renforcement de la sécurité avec l'utilisation d'images Docker non-root.
-*   [Archives-Mail-Thunderbird-Distribution](/repos/IA-Generative/Archives-Mail-Thunderbird-Distribution) : Renforcement de la sécurité du dépôt avec un `.gitignore` plus restrictif et l'intégration de `gitleaks`.
+- Protection contre les injections de prompt (OWASP LLM01) et détection d'anomalies dans [owuiapps-agents](/repos/IA-Generative/owuiapps-agents).
+- Renforcement de l'authentification avec l'ajout du 2FA (TOTP) et protection accrue des accès machine-to-machine dans [myvault](/repos/IA-Generative/myvault).
+- Sécurisation des données par le cloisonnement des collections via Keycloak et prévention des attaques SSRF/CORS dans [mycollections](/repos/IA-Generative/mycollections).
+- Amélioration de la gestion des jetons JWT et du protocole PKCE pour [dictaphone](/repos/IA-Generative/dictaphone).
+- Corrections de vulnérabilités et durcissement des configurations dans [ocr-api](/repos/IA-Generative/ocr-api), [myvault](/repos/IA-Generative/myvault) et [abrege](/repos/IA-Generative/abrege).
 
 ## Autres changements notables
-Plusieurs évolutions techniques majeures ont été réalisées :
-
-*   [n8n-nodes-playwright-core](/repos/IA-Generative/n8n-nodes-playwright-core) : Ajout d'un nouveau nœud "Claim" pour la gestion des instances Playwright distantes et support des proxys.
-*   [n8n-nodes-async-api](/repos/IA-Generative/n8n-nodes-async-api) : Développement initial du paquet de nœuds pour les services IA BRIO avec gestion des tâches et des fichiers.
-*   [mcr](/repos/IA-Generative/mcr) : Refactorisation majeure de l'architecture vers des microservices et passage à des API de speech-to-text distantes.
-*   [kevent-ai](/repos/IA-Generative/kevent-ai) : Suppression de la dépendance à Kafka et passage à Redis pour la gestion des files d'attente.
-*   [device-management](/repos/IA-Generative/device-management) : Mise en place d'un chart Helm pour faciliter le déploiement et préparation pour un déploiement cloud-native.
-*   [Stirling-PDF](/repos/IA-Generative/Stirling-PDF) : Optimisation du chargement de l'interface utilisateur et intégration d'un système RAG.
+- **Migrations architecturales** : Passage à un modèle de microservices pour [mcr](/repos/IA-Generative/mcr) et remplacement de Kafka par Redis pour la gestion des files d'attente dans [kevent-ai](/repos/IA-Generative/kevent-ai).
+- **Optimisation DevOps** : Migration vers un modèle de build "in-cluster" avec BuildKit pour [mirai-mesreunions](/repos/IA-Generative/mirai-mesreunions) et préparation au déploiement cloud-native via Helm pour [device-management](/repos/IA-Generative/device-management).
+- **Évolutions fonctionnelles majeures** : Ajout de la transcription de vidéos YouTube pour [ocr-api](/repos/IA-Generative/ocr-api) et mise en place de la gestion des priorités de requêtes dans [kevent-ai](/repos/IA-Generative/kevent-ai).
 
 ## Dépôts les plus actifs
-*   [owuiapps-agents](/repos/IA-Generative/owuiapps-agents) : Amélioration de la sécurité et de l'interface utilisateur.
-*   [ocr-api](/repos/IA-Generative/ocr-api) : Ajout de nouvelles fonctionnalités (transcription YouTube, support de nouveaux formats) et corrections de bugs.
-*   [n8n-nodes-playwright-core](/repos/IA-Generative/n8n-nodes-playwright-core) : Gestion des instances Playwright distantes et support des proxys.
-*   [mcr](/repos/IA-Generative/mcr) : Refonte de l'architecture et ajout de nouvelles fonctionnalités d'archivage.
-*   [myvault](/repos/IA-Generative/myvault) : Renforcement de la sécurité et ajout de l'authentification à deux facteurs.
-*   [Stirling-PDF](/repos/IA-Generative/Stirling-PDF) : Optimisation des performances et intégration de l'IA via RAG.
-*   [device-management](/repos/IA-Generative/device-management) : Ajout d'un proxy LLM et amélioration du monitoring.
+- [myvault](/repos/IA-Generative/myvault) : Travaux intensifs sur la sécurité (2FA, chiffrement, anti-leak) et la robustesse.
+- [mycollections](/repos/IA-Generative/mycollections) : Amélioration de l'administration, de la sécurité des données et de l'interface utilisateur.
+- [ocr-api](/repos/IA-Generative/ocr-api) : Extension des capacités de transcription et de support de formats de fichiers.
+- [abrege](/repos/IA-Generative/abrege) : Développement de nouvelles fonctionnalités d'analyse IA (QA, scraping).
+- [mcr](/repos/IA-Generative/mcr) : Refonte majeure de l'architecture vers les microservices.

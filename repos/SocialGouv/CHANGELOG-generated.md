@@ -1,34 +1,27 @@
-# Synthèse d'activité : SocialGouv (du 22 juillet au 29 juillet 2026)
+# Synthèse d'activité : SocialGouv (du 26/07 au 02/08)
 
 ## Résumé de l'activité
-L'activité récente de SocialGouv est marquée par une forte concentration sur l'amélioration de la qualité du code, la sécurité et l'expérience utilisateur. Plusieurs dépôts ont bénéficié de mises à jour de dépendances, de corrections de bugs et d'optimisations de performance. Des efforts importants ont été déployés pour préparer l'arrêt de certains services, comme Recosanté, tout en développant de nouvelles fonctionnalités pour d'autres, notamment vao avec le support complet du premier agrément DREETS. L'intégration de l'IA et l'automatisation des tâches sont également des thèmes récurrents, avec des avancées notables dans des projets comme `claw-code-go` et `dashlord`.
+L'activité de SocialGouv est marquée par une accélération sur l'intégration de l'intelligence artificielle et l'amélioration de l'accessibilité numérique. Des projets comme [iterion](/repos/SocialGouv/iterion) et [repo-falcon](/repos/SocialGouv/repo-falcon) progressent sur l'automatisation des workflows et l'analyse de code assistée par IA, tandis que l'accessibilité (RGAA) devient un pilier central sur [domifa](/repos/SocialGouv/domifa), [egapro](/repos/SocialGouv/egapro) et [vao](/repos/SocialGouv/vao).
+
+Parallèlement, l'organisation assure la mise à jour continue des données législatives et sociales ([legi-data](/repos/SocialGouv/legi-data), [fiches-vdd](/repos/SocialGouv/fiches-vdd)) et prépare la transition de certains services ([recosante](/repos/SocialGouv/recosante), [fce](/repos/SocialGouv/fce)).
 
 ## Sécurité
-Plusieurs dépôts ont bénéficié d'améliorations de sécurité :
-
-*   `nos1000jours-blues-epds-widget` : Correction de vulnérabilités de sécurité dans les dépendances.
-*   `dsfr-mcp` : Ajout d'une correction de sécurité.
-*   `archifiltre-mails` : Correction d'une vulnérabilité de sécurité.
-*   `buildkit-operator` : Renforcement de la sécurité avec la suppression de l'authentification par token et le passage à OIDC.
+- Protection des données et de l'authentification :
+    - Mise en place de politiques contre l'exfiltration de données vers des fournisseurs d'IA dans [smart-allow](/repos/SocialGouv/smart-allow).
+    - Migration vers l'authentification OIDC pour sécuriser les accès dans [buildkit-operator](/repos/SocialGouv/buildkit-operator) et [buildkit-operator-example](/repos/SocialGouv/buildkit-operator-example).
+    - Renforcement de la sécurité des services et des accès (rotation de clés, OAuth) dans [infra-apps](/repos/SocialGouv/infra-apps) et [da-manager](/repos/SocialGouv/da-manager).
+    - Corrections de vulnérabilités dans [archifiltre-mails](/repos/SocialGouv/archifiltre-mails) et [archifiltre-docs](/repos/SocialGouv/archifiltre-docs).
 
 ## Autres changements notables
-*   `vao` : Ajout du support complet du premier agrément DREETS, incluant les étapes de demande de compléments, de confirmation de complétude, de refus et d'acceptation.
-*   `smart-allow` : Ajout d'une fonctionnalité bloquant l'envoi de données à des fournisseurs d'IA externes.
-*   `token-bureau` : Amélioration de la flexibilité avec l'accès aux projets V2 et correction de problèmes de configuration des permissions.
-*   `srdt` : Ajout d'une section FAQ, d'une page "Nouveautés" et d'un écran d'introduction pour améliorer l'expérience utilisateur.
-*   `matomo-postgres` : Correction de bugs liés à la migration de schéma, à la gestion des partitions et à la compatibilité avec les versions de Node.js.
-*   `infra-apps` : Migration vers buildkit-operator et décommissionnement de certains services.
-*   `cdtn-admin` : Migration vers buildkit-operator et ajout de l'ingestion des accords d'entreprise.
-*   `dashlord` : Ajout d'un système de notation des contributions et implémentation du Net Promoter Score (NPS).
+- Migrations technologiques et infrastructurelles :
+    - Adoption généralisée de `pnpm` pour la gestion des dépendances ([revu](/repos/SocialGouv/revu), [matomo-next](/repos/SocialGouv/matomo-next), [jardinmental](/repos/SocialGouv/jardinmental), [enfants-du-spectacle](/repos/SocialGouv/enfants-du-spectacle)).
+    - Migration vers `buildkit-operator` pour l'optimisation des processus de build ([vao](/repos/SocialGouv/vao), [srdt](/repos/SocialGouv/srdt), [egapro](/repos/SocialGouv/egapro), [domifa](/repos/SocialGouv/domifa), [cdtn-admin](/repos/SocialGouv/cdtn-admin)).
+    - Montée de version majeure des frameworks ([domifa](/repos/SocialGouv/domifa) vers Angular 20, [collecte-pro](/repos/SocialGouv/collecte-pro) vers Python 3.14/Django 5.2).
+    - Optimisation des pipelines CI/CD et de la distribution ([questions-ecrites](/repos/SocialGouv/questions-ecrites), [charon](/repos/SocialGouv/charon), [Veille_JO](/repos/SocialGouv/Veille_JO)).
 
 ## Dépôts les plus actifs
-*   `vao` : Développement du support du premier agrément DREETS et améliorations de l'accessibilité.
-*   `token-bureau` : Amélioration de la gestion des permissions et de l'intégration avec GitHub.
-*   `srdt` : Amélioration de l'expérience utilisateur avec de nouvelles fonctionnalités et corrections de bugs.
-*   `infra-apps` : Optimisation de l'infrastructure et migration vers de nouvelles technologies.
-*   `dashlord` : Ajout de nouvelles fonctionnalités pour l'analyse et l'amélioration de l'application.
-*   `cdtn-admin` : Ajout de l'ingestion des accords d'entreprise et migration vers buildkit-operator.
-*   `matomo-postgres` : Correction de bugs et amélioration de la stabilité.
-*   `buildkit-operator` : Amélioration de la sécurité et de la gestion des builds.
-*   `legi-data` : Mises à jour régulières des données de législation.
-*   `fiches-vdd` : Mises à jour régulières des données des fiches d'informations.
+- [domifa](/repos/SocialGouv/domifa) : Migration majeure vers Angular 20 et enrichissement de l'expérience usagers.
+- [iterion](/repos/SocialGouv/iterion) : Développement de l'interface de gestion des bots et des capacités d'IA.
+- [egapro](/repos/SocialGouv/egapro) : Refonte du moteur d'étapes et amélioration de l'accessibilité.
+- [buildkit-operator](/repos/SocialGouv/buildkit-operator) : Stabilisation de l'infrastructure et sécurisation des processus de build.
+- [repo-falcon](/repos/SocialGouv/repo-falcon) : Avancées dans l'analyse de code et l'intégration de modèles de langage locaux.
