@@ -15,6 +15,7 @@
 │   └── workflows
 │       ├── _build-and-deploy-prod.yaml
 │       ├── check-links-validity.yaml
+│       ├── deploy-next-clevercloud.yaml
 │       ├── deploy-production.yaml
 │       ├── e2e-production.yaml
 │       ├── master-tests.yaml
@@ -53,6 +54,8 @@
 │   ├── public
 │   │   └── doc
 │   │       └── swagger-initializer.js
+│   ├── scripts
+│   │   └── smoke-test.sh
 │   ├── source
 │   │   ├── errors.ts
 │   │   ├── index.ts
@@ -80,7 +83,11 @@
 │   ├── tsconfig.json
 │   └── vitest.config.ts
 ├── architecture.archimate
+├── clevercloud
+│   ├── next-en.env
+│   └── next-fr.env
 ├── doc
+│   ├── infrastructure-clevercloud.md
 │   └── infrastructure-netlify.md
 ├── exoneration-covid
 │   ├── .yarnrc.yaml
@@ -505,61 +512,57 @@
 │   │   │   └── sentry.ts
 │   │   ├── assets
 │   │   │   └── images
-│   │   │       ├── Urssaf.svg
-│   │   │       ├── assurance-maladie.svg
-│   │   │       ├── banner-share.png
-│   │   │       ├── banner-share.svg
-│   │   │       ├── company.svg
-│   │   │       ├── destinataires
-│   │   │       │   ├── Urssaf.png
-│   │   │       │   ├── Urssaf.svg
-│   │   │       │   ├── agirc.png
-│   │   │       │   ├── cnav.png
-│   │   │       │   ├── destinataires.yaml
-│   │   │       │   └── salarié.png
 │   │   │       ├── donner-votre-avis-services-publics.svg
-│   │   │       ├── estimate.svg
-│   │   │       ├── hiring.svg
-│   │   │       ├── illustration.svg
-│   │   │       ├── logo-backup.svg
-│   │   │       ├── logo-dgfip.svg
+│   │   │       ├── icons
+│   │   │       │   ├── company.svg
+│   │   │       │   ├── estimate.svg
+│   │   │       │   └── hiring.svg
+│   │   │       ├── illustrations
+│   │   │       │   ├── api.svg
+│   │   │       │   ├── code.svg
+│   │   │       │   ├── croissance.svg
+│   │   │       │   ├── créer.svg
+│   │   │       │   ├── feedback.svg
+│   │   │       │   ├── formes.svg
+│   │   │       │   ├── formulaire.svg
+│   │   │       │   ├── illustration.svg
+│   │   │       │   ├── landing.svg
+│   │   │       │   ├── landing2.svg
+│   │   │       │   ├── library.svg
+│   │   │       │   ├── missed_chance.svg
+│   │   │       │   ├── revenus.svg
+│   │   │       │   ├── road-sign.svg
+│   │   │       │   └── simulateur.svg
 │   │   │       ├── logo-monentreprise.svg
 │   │   │       ├── logo-monentreprise_white.svg
 │   │   │       ├── logo-mycompany.svg
 │   │   │       ├── logo-mycompany_white.svg
-│   │   │       ├── logo.svg
-│   │   │       ├── logos-caisses-retraite
-│   │   │       │   ├── carcdsf.png
-│   │   │       │   ├── carmf.png
-│   │   │       │   ├── carpimko.png
-│   │   │       │   ├── cavec.jpg
-│   │   │       │   ├── cavp.svg
-│   │   │       │   ├── cipav.png
-│   │   │       │   ├── cnbf.png
-│   │   │       │   └── ircec.jpg
-│   │   │       ├── marianne.svg
-│   │   │       ├── missed_chance.svg
-│   │   │       ├── mycompany-logo-partage.png
-│   │   │       ├── publicodes.png
-│   │   │       ├── revenus.svg
-│   │   │       ├── road-sign.svg
-│   │   │       ├── références-images
-│   │   │       │   ├── agirc-arrco.jpg
-│   │   │       │   ├── ameli.svg
-│   │   │       │   ├── bofip.impots.gouv.jpg
-│   │   │       │   ├── boss.svg
-│   │   │       │   ├── bpifrance-creation.svg
-│   │   │       │   ├── code-du-travail-numerique.svg
-│   │   │       │   ├── cpsti.svg
-│   │   │       │   ├── economie.gouv.png
-│   │   │       │   ├── entreprendre.service-public.jpg
-│   │   │       │   ├── france-travail.svg
-│   │   │       │   ├── impots.gouv.svg
-│   │   │       │   ├── lassuranceretraite.svg
-│   │   │       │   ├── legifrance.svg
-│   │   │       │   ├── service-public.svg
-│   │   │       │   └── urssaf.svg
-│   │   │       └── undraw_fill_in_mie5.svg
+│   │   │       └── logos
+│   │   │           ├── agirc-arrco.jpg
+│   │   │           ├── assurance-maladie.svg
+│   │   │           ├── assurance-retraite.svg
+│   │   │           ├── bofip.impots.gouv.jpg
+│   │   │           ├── boss.svg
+│   │   │           ├── bpifrance-creation.svg
+│   │   │           ├── caisses-retraite
+│   │   │           │   ├── carcdsf.png
+│   │   │           │   ├── carmf.png
+│   │   │           │   ├── carpimko.png
+│   │   │           │   ├── cavec.jpg
+│   │   │           │   ├── cavp.svg
+│   │   │           │   ├── cipav.png
+│   │   │           │   ├── cnbf.png
+│   │   │           │   └── ircec.jpg
+│   │   │           ├── code-du-travail-numerique.svg
+│   │   │           ├── cpsti.svg
+│   │   │           ├── dgfip.svg
+│   │   │           ├── economie.gouv.png
+│   │   │           ├── entreprendre.service-public.jpg
+│   │   │           ├── france-travail.svg
+│   │   │           ├── impots.gouv.svg
+│   │   │           ├── legifrance.svg
+│   │   │           ├── service-public.svg
+│   │   │           └── urssaf.svg
 │   │   ├── components
 │   │   │   ├── App.tsx
 │   │   │   ├── AvertissementDansObjectifDeSimulateur.tsx
@@ -571,7 +574,6 @@
 │   │   │   │   └── ConseillersEntreprisesIframe.tsx
 │   │   │   ├── ConseillersEntreprisesButton.tsx
 │   │   │   ├── ConseillersEntreprisesIframe.tsx
-│   │   │   ├── Contact.tsx
 │   │   │   ├── CurrentSimulatorCard.tsx
 │   │   │   ├── DateChip.tsx
 │   │   │   ├── Distribution.css
@@ -643,7 +645,6 @@
 │   │   │   │   ├── Simulateur.tsx
 │   │   │   │   └── ZoneDeSaisie.tsx
 │   │   │   ├── SimulateurCard.tsx
-│   │   │   ├── SimulateurOrAssistantPage.tsx
 │   │   │   ├── SimulateurWarning.tsx
 │   │   │   ├── Simulation
 │   │   │   │   ├── Banner.tsx
@@ -717,14 +718,14 @@
 │   │   │   │   │   ├── Contact.tsx
 │   │   │   │   │   ├── Footer.tsx
 │   │   │   │   │   ├── InscriptionBetaTesteur
-│   │   │   │   │   │   ├── feedback.svg
 │   │   │   │   │   │   └── index.tsx
 │   │   │   │   │   ├── LegalNotice.tsx
 │   │   │   │   │   ├── PrivacyPolicy.tsx
 │   │   │   │   │   └── TermsOfUse.tsx
 │   │   │   │   ├── Header.tsx
 │   │   │   │   ├── Menu.tsx
-│   │   │   │   └── NewsBanner.tsx
+│   │   │   │   ├── NewsBanner.tsx
+│   │   │   │   └── PageLayout.tsx
 │   │   │   ├── search
 │   │   │   │   ├── Algolia.ts
 │   │   │   │   ├── Hightlight.tsx
@@ -1108,9 +1109,9 @@
 │   │   │   ├── Montant.test.ts
 │   │   │   ├── Montant.ts
 │   │   │   ├── OuiNon.ts
+│   │   │   ├── PublicodesSimulationConfig.ts
 │   │   │   ├── Quantite.ts
 │   │   │   ├── RaccourciPublicodes.ts
-│   │   │   ├── SimulationConfig.ts
 │   │   │   ├── Siren.ts
 │   │   │   ├── Situation.ts
 │   │   │   ├── SituationPublicodes.ts
@@ -1176,7 +1177,7 @@
 │   │   │   ├── useAxeCoreAnalysis.ts
 │   │   │   ├── useBarèmeLodeom.ts
 │   │   │   ├── useBrowserOnly.ts
-│   │   │   ├── useCurrentSimulatorData.ts
+│   │   │   ├── useCurrentSimulatorMetadata.ts
 │   │   │   ├── useDarkMode.ts
 │   │   │   ├── useDate.tsx
 │   │   │   ├── useDebounce.ts
@@ -1196,6 +1197,7 @@
 │   │   │   ├── useOnClickOutside.ts
 │   │   │   ├── useOnKeyDown.ts
 │   │   │   ├── useOrdinal.ts
+│   │   │   ├── usePageMetadata.ts
 │   │   │   ├── usePlausibleTracking.ts
 │   │   │   ├── usePromise.ts
 │   │   │   ├── usePublicodes.ts
@@ -1218,8 +1220,7 @@
 │   │   │   ├── useSimulationConfig.ts
 │   │   │   ├── useSimulationPublicodes.ts
 │   │   │   ├── useSimulationPublicodesEditorialisee.ts
-│   │   │   ├── useSimulatorData.ts
-│   │   │   ├── useSimulatorsData.ts
+│   │   │   ├── useSimulatorsMetadata.ts
 │   │   │   ├── useSiteUrl.tsx
 │   │   │   ├── useStatefulRulesEdit.ts
 │   │   │   ├── useTracking.ts
@@ -1261,12 +1262,10 @@
 │   │   │   ├── Plan.tsx
 │   │   │   ├── _landing
 │   │   │   │   ├── Landing.tsx
-│   │   │   │   ├── SearchOrCreate.tsx
-│   │   │   │   ├── illustration.backup.svg
-│   │   │   │   ├── illustration.svg
-│   │   │   │   └── illustration2.svg
+│   │   │   │   └── SearchOrCreate.tsx
 │   │   │   ├── assistants
 │   │   │   │   ├── choix-du-statut
+│   │   │   │   │   ├── SeoExplanations.tsx
 │   │   │   │   │   ├── _components
 │   │   │   │   │   │   ├── ActivitéNonDisponible.tsx
 │   │   │   │   │   │   ├── Layout.tsx
@@ -1274,16 +1273,14 @@
 │   │   │   │   │   │   ├── StatutsPossibles.tsx
 │   │   │   │   │   │   ├── useIsEmbeddedBPI.tsx
 │   │   │   │   │   │   └── useSteps.ts
-│   │   │   │   │   ├── _illustrations
-│   │   │   │   │   │   └── créer.svg
 │   │   │   │   │   ├── association.tsx
 │   │   │   │   │   ├── associé.tsx
 │   │   │   │   │   ├── commune.tsx
 │   │   │   │   │   ├── comparateur.tsx
-│   │   │   │   │   ├── config.tsx
 │   │   │   │   │   ├── détails-activité.tsx
 │   │   │   │   │   ├── home.tsx
 │   │   │   │   │   ├── index.tsx
+│   │   │   │   │   ├── metadata.ts
 │   │   │   │   │   ├── recherche-activité.tsx
 │   │   │   │   │   ├── rémunération.tsx
 │   │   │   │   │   ├── résultat.tsx
@@ -1325,8 +1322,8 @@
 │   │   │   │   │   │   │   ├── QuestionRessources.tsx
 │   │   │   │   │   │   │   └── QuestionSituationFamiliale.tsx
 │   │   │   │   │   │   └── styled-components.ts
-│   │   │   │   │   ├── config.ts
 │   │   │   │   │   ├── index.tsx
+│   │   │   │   │   ├── metadata.ts
 │   │   │   │   │   └── pages
 │   │   │   │   │       ├── Accueil.tsx
 │   │   │   │   │       ├── Déclarations.tsx
@@ -1345,10 +1342,8 @@
 │   │   │   │   ├── index.tsx
 │   │   │   │   ├── pour-mon-entreprise
 │   │   │   │   │   ├── AnnuaireEntreprises.tsx
-│   │   │   │   │   ├── config.ts
-│   │   │   │   │   ├── forms.svg
-│   │   │   │   │   ├── growth.svg
 │   │   │   │   │   ├── index.tsx
+│   │   │   │   │   ├── metadata.ts
 │   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   ├── recherche-code-ape
 │   │   │   │   │   ├── SearchCodeAPE.tsx
@@ -1356,8 +1351,8 @@
 │   │   │   │   │   │   ├── ActivityNotFound.tsx
 │   │   │   │   │   │   ├── Result.tsx
 │   │   │   │   │   │   └── SeoExplanations.tsx
-│   │   │   │   │   ├── config.tsx
-│   │   │   │   │   └── index.tsx
+│   │   │   │   │   ├── index.tsx
+│   │   │   │   │   └── metadata.ts
 │   │   │   │   └── économie-collaborative
 │   │   │   │       └── index.tsx
 │   │   │   ├── budget
@@ -1386,31 +1381,23 @@
 │   │   │   │   │   └── StepByStep.tsx
 │   │   │   │   ├── iframe.css
 │   │   │   │   ├── images
-│   │   │   │   │   ├── API_illustration.svg
-│   │   │   │   │   ├── cci.png
-│   │   │   │   │   ├── illustration_code.svg
-│   │   │   │   │   ├── illustration_library.svg
-│   │   │   │   │   ├── logo-betagouv.svg
-│   │   │   │   │   ├── min-tra.jpg
-│   │   │   │   │   └── pole-emploi.png
+│   │   │   │   │   └── cci.png
 │   │   │   │   └── index.tsx
 │   │   │   ├── nouveautés
 │   │   │   │   └── index.tsx
+│   │   │   ├── routage.test.tsx
 │   │   │   ├── simulateurs
 │   │   │   │   ├── NextSteps.tsx
 │   │   │   │   ├── SimulateurPageLayout.tsx
 │   │   │   │   ├── _configs
-│   │   │   │   │   ├── config.ts
 │   │   │   │   │   └── types.ts
-│   │   │   │   ├── _images
-│   │   │   │   │   ├── AutoEntrepreneurPreview.png
-│   │   │   │   │   └── RémunérationSASUPreview.png
 │   │   │   │   ├── activité-partielle
 │   │   │   │   │   ├── ActivitéPartielle.tsx
 │   │   │   │   │   ├── ActivitéPartiellePreview.png
 │   │   │   │   │   ├── ComparaisonTable.tsx
 │   │   │   │   │   ├── SeoExplanations.tsx
-│   │   │   │   │   ├── config.ts
+│   │   │   │   │   ├── metadata.ts
+│   │   │   │   │   ├── opengraph.ts
 │   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   ├── artiste-auteur
 │   │   │   │   │   ├── ArtisteAuteur.tsx
@@ -1418,10 +1405,12 @@
 │   │   │   │   │   │   ├── CotisationsIrcec.tsx
 │   │   │   │   │   │   ├── CotisationsUrssaf.tsx
 │   │   │   │   │   │   └── InstitutionsPartenaires.tsx
-│   │   │   │   │   ├── config.ts
+│   │   │   │   │   ├── metadata.ts
+│   │   │   │   │   ├── opengraph.ts
 │   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   ├── auto-entrepreneur
 │   │   │   │   │   ├── AutoEntrepreneur.tsx
+│   │   │   │   │   ├── AutoEntrepreneurPreview.png
 │   │   │   │   │   ├── SeoExplanations.tsx
 │   │   │   │   │   ├── components
 │   │   │   │   │   │   ├── CotisationsUrssaf.tsx
@@ -1429,16 +1418,17 @@
 │   │   │   │   │   │   ├── Explications.tsx
 │   │   │   │   │   │   ├── InstitutionsPartenaires.tsx
 │   │   │   │   │   │   └── RépartitionRevenu.tsx
-│   │   │   │   │   ├── config.ts
+│   │   │   │   │   ├── metadata.ts
+│   │   │   │   │   ├── opengraph.ts
 │   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   ├── auxiliaire-médical
 │   │   │   │   │   ├── AuxiliaireMédical.tsx
 │   │   │   │   │   ├── AvertissementAuxiliaireMédical.tsx
-│   │   │   │   │   └── config.ts
+│   │   │   │   │   └── metadata.ts
 │   │   │   │   ├── avocat
 │   │   │   │   │   ├── AvertissementAvocat.tsx
 │   │   │   │   │   ├── Avocat.tsx
-│   │   │   │   │   └── config.ts
+│   │   │   │   │   └── metadata.ts
 │   │   │   │   ├── cards
 │   │   │   │   │   ├── ExternalLinkCard.tsx
 │   │   │   │   │   ├── IframeIntegrationCard.tsx
@@ -1451,16 +1441,17 @@
 │   │   │   │   │   │   ├── DateCessationQuestion.test.tsx
 │   │   │   │   │   │   ├── DateCessationQuestion.tsx
 │   │   │   │   │   │   └── RégimeImpositionQuestion.tsx
-│   │   │   │   │   ├── config.ts
+│   │   │   │   │   ├── metadata.ts
+│   │   │   │   │   ├── opengraph.ts
 │   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   ├── chirurgien-dentiste
 │   │   │   │   │   ├── AvertissementChirurgienDentiste.tsx
 │   │   │   │   │   ├── ChirurgienDentiste.tsx
-│   │   │   │   │   └── config.ts
+│   │   │   │   │   └── metadata.ts
 │   │   │   │   ├── cipav
 │   │   │   │   │   ├── AvertissementCipav.tsx
 │   │   │   │   │   ├── Cipav.tsx
-│   │   │   │   │   ├── config.ts
+│   │   │   │   │   ├── metadata.ts
 │   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   ├── comparaison-statuts
 │   │   │   │   │   ├── ComparateurDeStatuts.tsx
@@ -1480,7 +1471,7 @@
 │   │   │   │   │   │   ├── StatutChoice.tsx
 │   │   │   │   │   │   ├── TableRow.tsx
 │   │   │   │   │   │   └── WarningTooltip.tsx
-│   │   │   │   │   ├── config.ts
+│   │   │   │   │   ├── metadata.ts
 │   │   │   │   │   ├── questions
 │   │   │   │   │   │   ├── questionsPrincipales.ts
 │   │   │   │   │   │   ├── réponseActivité.ts
@@ -1492,12 +1483,12 @@
 │   │   │   │   ├── cotisation-maladie-frontalier-suisse
 │   │   │   │   │   ├── CotisationMaladieFrontalierSuisse.test.tsx
 │   │   │   │   │   ├── CotisationMaladieFrontalierSuisse.tsx
-│   │   │   │   │   ├── config.ts
 │   │   │   │   │   ├── documentation
 │   │   │   │   │   │   ├── Décomposition.tsx
 │   │   │   │   │   │   ├── index.en.mdx
 │   │   │   │   │   │   ├── index.fr.mdx
 │   │   │   │   │   │   └── index.tsx
+│   │   │   │   │   ├── metadata.ts
 │   │   │   │   │   ├── objectifs
 │   │   │   │   │   │   ├── ObjectifAutresRevenus.tsx
 │   │   │   │   │   │   ├── ObjectifSalaires.tsx
@@ -1508,8 +1499,8 @@
 │   │   │   │   │       ├── RéponseAffiliation.tsx
 │   │   │   │   │       └── index.ts
 │   │   │   │   ├── cout-creation-entreprise
-│   │   │   │   │   ├── config.ts
 │   │   │   │   │   ├── index.tsx
+│   │   │   │   │   ├── metadata.ts
 │   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   ├── dividendes
 │   │   │   │   │   ├── Dividendes.tsx
@@ -1518,34 +1509,38 @@
 │   │   │   │   │   ├── components
 │   │   │   │   │   │   ├── Explications.tsx
 │   │   │   │   │   │   └── OptionBarèmeSwitch.tsx
-│   │   │   │   │   ├── config.ts
+│   │   │   │   │   ├── metadata.ts
 │   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   ├── eirl
 │   │   │   │   │   ├── Avertissement.tsx
 │   │   │   │   │   ├── EIRL.tsx
-│   │   │   │   │   ├── config.ts
+│   │   │   │   │   ├── metadata.ts
+│   │   │   │   │   ├── opengraph.ts
 │   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   ├── entreprise-individuelle
 │   │   │   │   │   ├── EntrepriseIndividuelle.tsx
 │   │   │   │   │   ├── SeoExplanations.tsx
-│   │   │   │   │   ├── config.ts
+│   │   │   │   │   ├── metadata.ts
+│   │   │   │   │   ├── opengraph.ts
 │   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   ├── eurl
 │   │   │   │   │   ├── EURL.tsx
-│   │   │   │   │   ├── config.ts
+│   │   │   │   │   ├── metadata.ts
+│   │   │   │   │   ├── opengraph.ts
 │   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   ├── expert-comptable
 │   │   │   │   │   ├── AvertissementExpertComptable.tsx
 │   │   │   │   │   ├── ExpertComptable.tsx
-│   │   │   │   │   └── config.ts
+│   │   │   │   │   └── metadata.ts
 │   │   │   │   ├── impot-societe
-│   │   │   │   │   ├── config.tsx
 │   │   │   │   │   ├── index.tsx
+│   │   │   │   │   ├── metadata.ts
 │   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   ├── index.tsx
 │   │   │   │   ├── indépendant
 │   │   │   │   │   ├── Indépendant.tsx
 │   │   │   │   │   ├── IndépendantBase.tsx
+│   │   │   │   │   ├── RémunérationIndépendantPreview.png
 │   │   │   │   │   ├── components
 │   │   │   │   │   │   ├── AvertissementAnnéeCotisationsIndépendant.tsx
 │   │   │   │   │   │   ├── AvertissementAutoEntrepreneur.tsx
@@ -1560,7 +1555,7 @@
 │   │   │   │   │   │   ├── Objectifs.tsx
 │   │   │   │   │   │   ├── ParticipationCPAM.tsx
 │   │   │   │   │   │   └── RépartitionRevenu.tsx
-│   │   │   │   │   ├── config.ts
+│   │   │   │   │   ├── metadata.ts
 │   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   ├── location-de-meublé
 │   │   │   │   │   ├── LocationDeMeublé.test.tsx
@@ -1576,7 +1571,6 @@
 │   │   │   │   │   │   ├── StatutApplicabilité.tsx
 │   │   │   │   │   │   ├── SécuritéSocialeIndépendantsCard.tsx
 │   │   │   │   │   │   └── TypeHébergementSwitch.tsx
-│   │   │   │   │   ├── config.ts
 │   │   │   │   │   ├── documentation
 │   │   │   │   │   │   ├── ExempleCalcul.tsx
 │   │   │   │   │   │   ├── RecettesDéclarées.tsx
@@ -1587,12 +1581,14 @@
 │   │   │   │   │   │   ├── micro-bic.en.mdx
 │   │   │   │   │   │   └── micro-bic.fr.mdx
 │   │   │   │   │   ├── getLibelléInfoManquante.ts
+│   │   │   │   │   ├── metadata.ts
 │   │   │   │   │   ├── objectifs
 │   │   │   │   │   │   ├── ObjectifAutresRevenus.tsx
 │   │   │   │   │   │   ├── ObjectifCotisations.tsx
 │   │   │   │   │   │   ├── ObjectifRecettes.tsx
 │   │   │   │   │   │   ├── ObjectifRecettesNettes.tsx
 │   │   │   │   │   │   └── ObjectifRevenuNet.tsx
+│   │   │   │   │   ├── opengraph.ts
 │   │   │   │   │   ├── questions
 │   │   │   │   │   │   ├── AlsaceMoselleQuestion.tsx
 │   │   │   │   │   │   ├── ClassementQuestion.tsx
@@ -1622,32 +1618,33 @@
 │   │   │   │   │   │   ├── WarningSalaireTrans.tsx
 │   │   │   │   │   │   ├── Warnings.tsx
 │   │   │   │   │   │   └── ZoneSwitch.tsx
-│   │   │   │   │   ├── config.ts
+│   │   │   │   │   ├── metadata.ts
 │   │   │   │   │   ├── simulationConfig.ts
 │   │   │   │   │   └── utils.ts
 │   │   │   │   ├── médecin
 │   │   │   │   │   ├── AvertissementMédecin.tsx
+│   │   │   │   │   ├── Médecin.test.tsx
 │   │   │   │   │   ├── Médecin.tsx
-│   │   │   │   │   └── config.ts
+│   │   │   │   │   └── metadata.ts
 │   │   │   │   ├── pamc
 │   │   │   │   │   ├── PAMCHome.tsx
-│   │   │   │   │   └── config.ts
+│   │   │   │   │   └── metadata.ts
 │   │   │   │   ├── pharmacien
 │   │   │   │   │   ├── AvertissementPharmacien.tsx
 │   │   │   │   │   ├── Pharmacien.tsx
-│   │   │   │   │   └── config.ts
+│   │   │   │   │   └── metadata.ts
 │   │   │   │   ├── profession-libérale
 │   │   │   │   │   ├── Avertissement.tsx
 │   │   │   │   │   ├── AvertissementProfessionLibérale.tsx
 │   │   │   │   │   ├── ProfessionLibérale.tsx
-│   │   │   │   │   ├── config.ts
+│   │   │   │   │   ├── metadata.ts
 │   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   ├── reduction-generale
 │   │   │   │   │   └── index.tsx
 │   │   │   │   ├── sage-femme
 │   │   │   │   │   ├── AvertissementSageFemme.tsx
 │   │   │   │   │   ├── SageFemme.tsx
-│   │   │   │   │   └── config.ts
+│   │   │   │   │   └── metadata.ts
 │   │   │   │   ├── salarié
 │   │   │   │   │   ├── Goals.tsx
 │   │   │   │   │   ├── Salarié.tsx
@@ -1662,14 +1659,16 @@
 │   │   │   │   │   │   │   └── TempsDeTravail.tsx
 │   │   │   │   │   │   ├── SeoExplanations.tsx
 │   │   │   │   │   │   └── TitresRestaurant.tsx
-│   │   │   │   │   ├── config.ts
 │   │   │   │   │   ├── images
 │   │   │   │   │   │   ├── SalaireBrutNetPreviewEN.png
 │   │   │   │   │   │   ├── SalaireBrutNetPreviewFR.png
 │   │   │   │   │   │   ├── illustration-net-brut-en.png
 │   │   │   │   │   │   └── illustration-net-brut.png
+│   │   │   │   │   ├── metadata.ts
+│   │   │   │   │   ├── opengraph.ts
 │   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   └── sasu
+│   │   │   │       ├── RémunérationSASUPreview.png
 │   │   │   │       ├── SASU.tsx
 │   │   │   │       ├── components
 │   │   │   │       │   ├── Explications.tsx
@@ -1678,10 +1677,10 @@
 │   │   │   │       │       ├── FicheDePaie.tsx
 │   │   │   │       │       ├── SalaireBrut.tsx
 │   │   │   │       │       └── SalaireNet.tsx
-│   │   │   │       ├── config.ts
+│   │   │   │       ├── metadata.ts
+│   │   │   │       ├── opengraph.ts
 │   │   │   │       └── simulationConfig.ts
 │   │   │   ├── simulateurs-et-assistants
-│   │   │   │   ├── illustration-simulateur.svg
 │   │   │   │   ├── index.tsx
 │   │   │   │   └── metadata-src.ts
 │   │   │   └── statistiques
@@ -1819,6 +1818,7 @@
 │   │       ├── ChangeHandler.ts
 │   │       ├── NoOp.ts
 │   │       ├── URLs.ts
+│   │       ├── asset.ts
 │   │       ├── chargeModele.ts
 │   │       ├── complement.ts
 │   │       ├── dates.ts
@@ -1923,4 +1923,4 @@
 │   ├── vite.config.ts
 │   └── vitest-setup.ts
 └── yarn.lock
-332 directories, 1593 files
+333 directories, 1592 files

@@ -1,41 +1,32 @@
-## Changelog : mon-entreprise (30 derniers jours, au 31 juillet 2026)
+## Changelog : mon-entreprise (30 derniers jours, au 07 août 2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives sur le simulateur pour les travailleurs frontaliers suisses, avec une refonte de l'expérience utilisateur et l'ajout de nouvelles fonctionnalités. Des corrections et des mises à jour ont également été apportées aux modèles de calcul, notamment pour Mayotte, ainsi qu'au comparateur de statuts. Des optimisations techniques ont été réalisées pour améliorer la configuration de l'environnement et la gestion des dépendances.
+Ce mois a été marqué par une refonte majeure de l'architecture technique des simulateurs pour améliorer la maintenance du projet, ainsi que par le lancement du nouveau simulateur pour les travailleurs frontaliers en Suisse. Parallèlement, l'infrastructure a évolué avec le déploiement des applications Next.js sur Clever Cloud et une amélioration significative de l'internationalisation (i18n) de la plateforme.
 
 ### Évolutions fonctionnelles
-- **Simulateur frontalier suisse :** Ajout d'un nouveau simulateur pour le calcul de la cotisation maladie des travailleurs frontaliers en Suisse, avec une nouvelle interface utilisateur et la prise en compte de la fin d'affiliation, des revenus et de la situation de l'utilisateur.
-- **Comparateur de statuts :**
-    - Amélioration de l'affichage des réponses en vue liste.
-    - Ajout de liens vers la documentation des objectifs de simulation.
-    - Modification des libellés des questions concernant l'imposition.
-    - Ajout de la carte du statut AE.
-- **Modèles de calcul :**
-    - Correction de l'application de la réforme de l'acre (critère = date de création de l'entreprise).
-    - Correction de la participation de la CPAM en cas d'exonérations.
-    - Correction de l'arrondi des cotisations RC et ID pour les conjoints collaborateurs PLR Cipav.
-    - Mise à jour des taux de la retraite complémentaire CARMF et CARCDSF pour 2026.
-    - Correction de l'application du plancher et du plafond de l'abattement sur l'assiette à Mayotte.
-    - Suppression de la CSG-CRDS à Mayotte.
-- **Documentation :** Mise à jour de la page de documentation sur la librairie de calcul et ajout de descriptions aux modèles.
+- **Nouveau simulateur** : Mise en ligne du simulateur de cotisation maladie pour les travailleurs frontaliers en Suisse, incluant une nouvelle expérience utilisateur et la possibilité de partager une simulation via l'URL.
+- **Améliorations de l'interface** :
+    - Optimisation de l'affichage du comparateur de statuts.
+    - Mise à jour des visuels et des images de prévisualisation pour les simulateurs.
+    - Amélioration de la gestion des erreurs (comportement de la page 404).
+- **Corrections de calculs et règles métier** :
+    - Correction du calcul de la RGDU (ajustement de la valeur du Smic utilisée).
+    - Correction de l'application de la réforme de l'Acre (basée sur la date de création de l'entreprise).
+    - Ajustement des taux de retraite complémentaire (CARMF et CARCDSF).
+    - Correction des arrondis pour les conjoints collaborateurs (Cipav).
+    - Correction de la participation de la CPAM dans le cadre du PAMC.
 
 ### Évolutions techniques
-- **Environnement :**
-    - Refonte de la configuration de l'environnement avec un adaptateur portable pour Vite/Next.
-    - Centralisation de la configuration de production via l'adaptateur.
-    - Suppression du client Fabrique Social inutilisé.
-- **API :**
-    - Exposition des modèles TI et AS via l'API.
-    - Refactorisation de la gestion des chemins du cache.
-    - Réorganisation des middlewares de l'API.
-- **Design System :**
-    - Amélioration de la gestion des boutons et des champs de formulaire.
-    - Correction de problèmes d'affichage sur Chrome et Edge.
-- **Tests :** Correction des tests de l'API.
+- **Refonte de l'architecture des simulateurs** : Restructuration profonde pour séparer les métadonnées (données pures) de la configuration des pages (composants, SEO, routage). Ce changement simplifie l'ajout de nouveaux simulateurs et optimise le plan du site.
+- **Infrastructure et CI/CD** :
+    - Automatisation du déploiement des applications Next.js sur Clever Cloud.
+    - Amélioration des tests automatisés pour supporter le déploiement multi-langues.
+- **Internationalisation (i18n)** : Refonte du système de traduction pour assurer la cohérence des dates, de la documentation (MDX) et des métadonnées selon la langue sélectionnée.
+- **Optimisation de l'API** : Refactorisation des middlewares, de la gestion du cache et amélioration de l'accessibilité des modèles TI et AS.
+- **Design System** :
+    - Amélioration de la robustesse des composants (Switch, Iframe, Navigation).
+    - Normalisation de la gestion des assets (images/icônes) entre les environnements Vite et Next.js.
 
 ### Autres changements
-- Mise à jour des paquets `modele-xx`.
-- Correction de quelques clés de traductions manquantes.
-- Amélioration de la documentation du simulateur TFS (masquage du menu et de la liste des outils).
-- Correction de bugs mineurs et améliorations de la lisibilité du code.
-- Ajout de documentation pour les nouvelles fonctionnalités.
+- **Documentation** : Mise à jour des guides d'infrastructure (Clever Cloud) et de la documentation technique de la librairie de calcul.
+- **Nettoyage** : Suppression des composants, des images et des commentaires de code obsolètes pour alléger le dépôt.
