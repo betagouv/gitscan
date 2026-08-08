@@ -79,10 +79,29 @@
 │       ├── playwright-cli -> ../../.agents/skills/playwright-cli
 │       ├── vercel-composition-patterns -> ../../.agents/skills/vercel-composition-patterns
 │       └── vercel-react-best-practices -> ../../.agents/skills/vercel-react-best-practices
+├── .docker
+│   ├── apps
+│   │   ├── app-entrypoint.sh
+│   │   ├── base.Dockerfile
+│   │   └── nx-daemon-entrypoint.sh
+│   ├── edge-runtime
+│   │   └── main
+│   │       └── index.ts
+│   ├── kong
+│   │   └── kong.template.yml
+│   ├── postgres
+│   │   └── init
+│   │       ├── 98-webhooks.sql
+│   │       ├── 99-jwt.sql
+│   │       ├── 99-realtime.sql
+│   │       └── 99-roles.sql
+│   └── strapi
+│       └── Dockerfile
 ├── .earthlyignore
 ├── .editorconfig
 ├── .env
 ├── .env.staging
+├── .gitguardian.yaml
 ├── .github
 │   ├── README.md
 │   ├── actions
@@ -233,6 +252,21 @@
 │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   ├── bibliotheque
 │   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   ├── demarche-pcaet
+│   │   │   │   │   │   │   │   ├── [demarcheId]
+│   │   │   │   │   │   │   │   │   ├── indicateurs
+│   │   │   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │   │   ├── layout.tsx
+│   │   │   │   │   │   │   │   │   ├── page.tsx
+│   │   │   │   │   │   │   │   │   ├── plan
+│   │   │   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │   │   └── vulnerabilite
+│   │   │   │   │   │   │   │   │       └── page.tsx
+│   │   │   │   │   │   │   │   ├── nouveau
+│   │   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │   ├── page.tsx
+│   │   │   │   │   │   │   │   └── vue-dreal
+│   │   │   │   │   │   │   │       └── page.tsx
 │   │   │   │   │   │   │   ├── historique
 │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   ├── indicateurs
@@ -955,6 +989,96 @@
 │   │   │   │       ├── use-list-structures.ts
 │   │   │   │       ├── use-list-tags.ts
 │   │   │   │       └── use-update-tag.ts
+│   │   │   ├── demarches
+│   │   │   │   ├── completion.spec.ts
+│   │   │   │   ├── completion.ts
+│   │   │   │   ├── components
+│   │   │   │   │   ├── avance.side-panel-button.stories.tsx
+│   │   │   │   │   ├── avance.side-panel-button.tsx
+│   │   │   │   │   ├── avance.side-panel-content.tsx
+│   │   │   │   │   ├── banner.tsx
+│   │   │   │   │   ├── description.field.tsx
+│   │   │   │   │   ├── detail.layout.tsx
+│   │   │   │   │   ├── historique.section.tsx
+│   │   │   │   │   ├── pilotes-info.tooltip.tsx
+│   │   │   │   │   ├── pilotes.field.tsx
+│   │   │   │   │   ├── plan-fiches.table.tsx
+│   │   │   │   │   ├── plan.section.tsx
+│   │   │   │   │   ├── progress.stepper.stories.tsx
+│   │   │   │   │   ├── progress.stepper.tsx
+│   │   │   │   │   ├── section.tsx
+│   │   │   │   │   ├── shell.tsx
+│   │   │   │   │   ├── statut-publication.tsx
+│   │   │   │   │   └── use-avance-side-panel.tsx
+│   │   │   │   ├── pcaet
+│   │   │   │   │   ├── assert-can-mutate.ts
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── contacts.modal.tsx
+│   │   │   │   │   │   ├── contacts.table.tsx
+│   │   │   │   │   │   ├── demarche-menu.button.tsx
+│   │   │   │   │   │   ├── header
+│   │   │   │   │   │   │   ├── date-lancement-field.tsx
+│   │   │   │   │   │   │   ├── date-modification-item.tsx
+│   │   │   │   │   │   │   ├── depot-date-item.tsx
+│   │   │   │   │   │   │   ├── index.tsx
+│   │   │   │   │   │   │   ├── obligation-field.tsx
+│   │   │   │   │   │   │   ├── obligation-statut-badges.tsx
+│   │   │   │   │   │   │   ├── pilotes-field.tsx
+│   │   │   │   │   │   │   ├── separator.tsx
+│   │   │   │   │   │   │   └── statut-badges.tsx
+│   │   │   │   │   │   └── pcaet-documents-table.tsx
+│   │   │   │   │   ├── constants.ts
+│   │   │   │   │   ├── create.page.tsx
+│   │   │   │   │   ├── data
+│   │   │   │   │   │   ├── use-apply-transition.ts
+│   │   │   │   │   │   ├── use-delete-demarche-pcaet.ts
+│   │   │   │   │   │   ├── use-demarche.ts
+│   │   │   │   │   │   ├── use-list-demarches-pcaet.ts
+│   │   │   │   │   │   └── use-set-demarche-pcaet-publication.ts
+│   │   │   │   │   ├── diagnostic
+│   │   │   │   │   │   ├── diagnostic-topics-section.tsx
+│   │   │   │   │   │   ├── diagnostic.page.tsx
+│   │   │   │   │   │   ├── indicateurs-grid
+│   │   │   │   │   │   │   ├── build-topic-years.spec.ts
+│   │   │   │   │   │   │   ├── build-topic-years.ts
+│   │   │   │   │   │   │   ├── enr.grid-shape.ts
+│   │   │   │   │   │   │   ├── polluants-atmospheriques.grid-shape.spec.ts
+│   │   │   │   │   │   │   ├── polluants-atmospheriques.grid-shape.ts
+│   │   │   │   │   │   │   ├── profil-energie-climat.grid-shape.ts
+│   │   │   │   │   │   │   ├── sequestration.grid-shape.ts
+│   │   │   │   │   │   │   ├── topic-grid-shapes.ts
+│   │   │   │   │   │   │   ├── topic-grid.view.tsx
+│   │   │   │   │   │   │   └── use-topic-grid.ts
+│   │   │   │   │   │   ├── topic-diagnostic-panel-content.tsx
+│   │   │   │   │   │   ├── topic-indicateur-modal-content.tsx
+│   │   │   │   │   │   ├── topic-tab.tsx
+│   │   │   │   │   │   ├── use-grid-state.spec.ts
+│   │   │   │   │   │   ├── use-grid-state.ts
+│   │   │   │   │   │   ├── vulnerabilite-table.tsx
+│   │   │   │   │   │   └── vulnerabilite-territoire.page.tsx
+│   │   │   │   │   ├── documents.page.tsx
+│   │   │   │   │   ├── draft.storage.ts
+│   │   │   │   │   ├── list-demarches
+│   │   │   │   │   │   ├── demarche-pcaet-actions.menu.tsx
+│   │   │   │   │   │   ├── demarches-pcaet.table.tsx
+│   │   │   │   │   │   └── list-demarches-pcaet.page.tsx
+│   │   │   │   │   ├── pcaet-documents.constants.ts
+│   │   │   │   │   ├── plan-actions.page.tsx
+│   │   │   │   │   ├── use-is-banner-visible.ts
+│   │   │   │   │   ├── use-is-enabled.ts
+│   │   │   │   │   └── vue-dreal
+│   │   │   │   │       ├── DECISIONS.md
+│   │   │   │   │       ├── components
+│   │   │   │   │       │   ├── dreal-collectivites-table.tsx
+│   │   │   │   │       │   ├── dreal-contact-cell.tsx
+│   │   │   │   │       │   ├── dreal-context-banner.tsx
+│   │   │   │   │       │   ├── dreal-featured-icon.tsx
+│   │   │   │   │       │   ├── dreal-notifications-popover.tsx
+│   │   │   │   │       │   └── dreal-statut-badge.tsx
+│   │   │   │   │       ├── vue-dreal-dashboard.page.tsx
+│   │   │   │   │       └── vue-dreal.mock.ts
+│   │   │   │   ├── types.ts
+│   │   │   │   └── use-demarche-id.ts
 │   │   │   ├── indicateurs
 │   │   │   │   ├── indicateurs
 │   │   │   │   │   ├── format-indicateur-filters-to-categories.ts
@@ -975,58 +1099,45 @@
 │   │   │   │   └── valeurs
 │   │   │   │       ├── grid
 │   │   │   │       │   ├── __tests__
+│   │   │   │       │   │   ├── add-year-column-header.spec.tsx
 │   │   │   │       │   │   ├── grid-fixtures.ts
 │   │   │   │       │   │   ├── grid-model.spec.ts
+│   │   │   │       │   │   ├── indicateur-valeur.cell.spec.tsx
 │   │   │   │       │   │   ├── indicateur-values-grid.stories.tsx
-│   │   │   │       │   │   ├── open-data-cell.spec.tsx
 │   │   │   │       │   │   ├── parse-cell-key.spec.ts
 │   │   │   │       │   │   ├── parse-cell-number.spec.ts
 │   │   │   │       │   │   ├── render-smoke.spec.tsx
-│   │   │   │       │   │   ├── reorderable.spec.tsx
-│   │   │   │       │   │   └── user-data-cell.spec.tsx
+│   │   │   │       │   │   └── year-column-header-remove.spec.tsx
 │   │   │   │       │   ├── adapters
 │   │   │   │       │   │   ├── indicateur-grid-adapter.spec.ts
 │   │   │   │       │   │   └── indicateur-grid-adapter.ts
-│   │   │   │       │   ├── apply-open-data-selections.spec.ts
-│   │   │   │       │   ├── apply-open-data-selections.ts
+│   │   │   │       │   ├── add-year-column-header.tsx
+│   │   │   │       │   ├── cell-editability.spec.ts
+│   │   │   │       │   ├── cell-editability.ts
 │   │   │   │       │   ├── cell-input.tsx
 │   │   │   │       │   ├── cell-props.ts
-│   │   │   │       │   ├── drag-reorder
-│   │   │   │       │   │   ├── drag-handle.tsx
-│   │   │   │       │   │   ├── draggable-header-label.tsx
-│   │   │   │       │   │   ├── sortable-grid-row.tsx
-│   │   │   │       │   │   ├── sortable-group-body.tsx
-│   │   │   │       │   │   ├── use-grid-drag-handlers.ts
-│   │   │   │       │   │   ├── use-grid-reorder.spec.ts
-│   │   │   │       │   │   └── use-grid-reorder.ts
+│   │   │   │       │   ├── column-has-values.spec.ts
+│   │   │   │       │   ├── column-has-values.ts
 │   │   │   │       │   ├── grid-body.tsx
 │   │   │   │       │   ├── grid-context.tsx
 │   │   │   │       │   ├── grid-frame.tsx
 │   │   │   │       │   ├── grid-head.tsx
 │   │   │   │       │   ├── grid-legend.tsx
 │   │   │   │       │   ├── grid-model.ts
-│   │   │   │       │   ├── group-header-cell.tsx
+│   │   │   │       │   ├── grid-row.tsx
+│   │   │   │       │   ├── group-body.tsx
+│   │   │   │       │   ├── group-parent-row.tsx
 │   │   │   │       │   ├── index.ts
 │   │   │   │       │   ├── indicateur-grid-shape.spec.ts
 │   │   │   │       │   ├── indicateur-grid-shape.ts
-│   │   │   │       │   ├── indicateur-values-grid.tsx
-│   │   │   │       │   ├── keyboard-navigation
-│   │   │   │       │   │   ├── grid-navigation.spec.ts
-│   │   │   │       │   │   ├── grid-navigation.ts
-│   │   │   │       │   │   ├── keyboard-nav.spec.tsx
-│   │   │   │       │   │   └── use-grid-keyboard-nav.ts
-│   │   │   │       │   ├── open-data-cell.tsx
-│   │   │   │       │   ├── open-data-picker
-│   │   │   │       │   │   ├── build-column-selection.spec.ts
-│   │   │   │       │   │   ├── build-column-selection.ts
-│   │   │   │       │   │   ├── build-open-data-handlers.spec.ts
-│   │   │   │       │   │   ├── build-open-data-handlers.ts
-│   │   │   │       │   │   ├── coverage-dot.spec.tsx
-│   │   │   │       │   │   ├── coverage-dot.tsx
-│   │   │   │       │   │   ├── open-data-picker.spec.tsx
-│   │   │   │       │   │   ├── open-data-picker.stories.tsx
-│   │   │   │       │   │   ├── open-data-picker.tsx
-│   │   │   │       │   │   └── open-data-selector.tsx
+│   │   │   │       │   ├── indicateur-title.cell.tsx
+│   │   │   │       │   ├── indicateur-title.header-cell.tsx
+│   │   │   │       │   ├── indicateur-valeur-type.badge.tsx
+│   │   │   │       │   ├── indicateur-valeur-year.header-cell.tsx
+│   │   │   │       │   ├── indicateur-valeur.cell.tsx
+│   │   │   │       │   ├── indicateur-valeurs.table.tsx
+│   │   │   │       │   ├── parse-add-year.spec.ts
+│   │   │   │       │   ├── parse-add-year.ts
 │   │   │   │       │   ├── parse-cell-number.ts
 │   │   │   │       │   ├── paste
 │   │   │   │       │   │   ├── grid-paste.spec.tsx
@@ -1034,25 +1145,23 @@
 │   │   │   │       │   │   ├── paste-values.ts
 │   │   │   │       │   │   └── use-grid-copy-paste.ts
 │   │   │   │       │   ├── reference-year
-│   │   │   │       │   │   ├── reference-year-change-modal.tsx
-│   │   │   │       │   │   ├── reference-year-editor.spec.tsx
-│   │   │   │       │   │   └── reference-year-editor.tsx
-│   │   │   │       │   ├── row-header.tsx
+│   │   │   │       │   │   ├── parse-reference-year.spec.ts
+│   │   │   │       │   │   ├── parse-reference-year.ts
+│   │   │   │       │   │   ├── reference-year-field.spec.tsx
+│   │   │   │       │   │   └── reference-year-field.tsx
+│   │   │   │       │   ├── remove-year-confirm-modal.tsx
 │   │   │   │       │   ├── save-ack.tsx
-│   │   │   │       │   ├── source-badge.tsx
 │   │   │   │       │   ├── types.ts
-│   │   │   │       │   ├── unit.tsx
 │   │   │   │       │   ├── use-cell-edit.spec.ts
 │   │   │   │       │   ├── use-cell-edit.ts
 │   │   │   │       │   ├── use-get-table.tsx
 │   │   │   │       │   ├── use-indicateur-grid-data.ts
 │   │   │   │       │   ├── use-indicateur-grid-write-actions.ts
-│   │   │   │       │   ├── user-data-cell.tsx
-│   │   │   │       │   ├── variation
-│   │   │   │       │   │   ├── variation-hint.tsx
-│   │   │   │       │   │   ├── variation.spec.ts
-│   │   │   │       │   │   └── variation.ts
-│   │   │   │       │   └── year-column-header.tsx
+│   │   │   │       │   ├── use-list-indicateur-valeurs-table-columns.tsx
+│   │   │   │       │   └── variation
+│   │   │   │       │       ├── variation-hint.tsx
+│   │   │   │       │       ├── variation.spec.ts
+│   │   │   │       │       └── variation.ts
 │   │   │   │       ├── use-list-indicateur-valeurs.ts
 │   │   │   │       └── use-upsert-indicateur-valeur.ts
 │   │   │   ├── labels
@@ -1451,6 +1560,7 @@
 │   │   │   │   │   │   │   └── use-toggle-axe.ts
 │   │   │   │   │   │   ├── plan-calendar.inline-editable-field.tsx
 │   │   │   │   │   │   ├── plan-menu.button.tsx
+│   │   │   │   │   │   ├── plan-metadata.tsx
 │   │   │   │   │   │   ├── plan-status.chart.tsx
 │   │   │   │   │   │   ├── plan.header.tsx
 │   │   │   │   │   │   └── plan.view.tsx
@@ -2510,6 +2620,71 @@
 │   │   │   │       ├── service-tag.table.ts
 │   │   │   │       ├── structure-tag.table.ts
 │   │   │   │       └── tag.table-base.ts
+│   │   │   ├── demarches
+│   │   │   │   ├── demarches.module.ts
+│   │   │   │   ├── demarches.router.ts
+│   │   │   │   ├── pcaet
+│   │   │   │   │   ├── apply-transition
+│   │   │   │   │   │   ├── apply-transition.errors.ts
+│   │   │   │   │   │   ├── apply-transition.input.ts
+│   │   │   │   │   │   ├── apply-transition.repository.ts
+│   │   │   │   │   │   ├── apply-transition.router.e2e-spec.ts
+│   │   │   │   │   │   ├── apply-transition.router.ts
+│   │   │   │   │   │   └── apply-transition.service.ts
+│   │   │   │   │   ├── create-demarche-pcaet
+│   │   │   │   │   │   ├── create-demarche-pcaet.errors.ts
+│   │   │   │   │   │   ├── create-demarche-pcaet.input.ts
+│   │   │   │   │   │   ├── create-demarche-pcaet.repository.ts
+│   │   │   │   │   │   ├── create-demarche-pcaet.router.e2e-spec.ts
+│   │   │   │   │   │   ├── create-demarche-pcaet.router.ts
+│   │   │   │   │   │   └── create-demarche-pcaet.service.ts
+│   │   │   │   │   ├── delete-demarche-pcaet
+│   │   │   │   │   │   ├── delete-demarche-pcaet.errors.ts
+│   │   │   │   │   │   ├── delete-demarche-pcaet.input.ts
+│   │   │   │   │   │   ├── delete-demarche-pcaet.repository.ts
+│   │   │   │   │   │   ├── delete-demarche-pcaet.router.e2e-spec.ts
+│   │   │   │   │   │   ├── delete-demarche-pcaet.router.ts
+│   │   │   │   │   │   └── delete-demarche-pcaet.service.ts
+│   │   │   │   │   ├── get-demarche-pcaet
+│   │   │   │   │   │   ├── get-demarche-pcaet.errors.ts
+│   │   │   │   │   │   ├── get-demarche-pcaet.input.ts
+│   │   │   │   │   │   ├── get-demarche-pcaet.repository.ts
+│   │   │   │   │   │   ├── get-demarche-pcaet.router.e2e-spec.ts
+│   │   │   │   │   │   ├── get-demarche-pcaet.router.ts
+│   │   │   │   │   │   └── get-demarche-pcaet.service.ts
+│   │   │   │   │   ├── list-demarches-pcaet
+│   │   │   │   │   │   ├── list-demarches-pcaet.errors.ts
+│   │   │   │   │   │   ├── list-demarches-pcaet.input.ts
+│   │   │   │   │   │   ├── list-demarches-pcaet.repository.ts
+│   │   │   │   │   │   ├── list-demarches-pcaet.router.ts
+│   │   │   │   │   │   └── list-demarches-pcaet.service.ts
+│   │   │   │   │   ├── pcaet.module.ts
+│   │   │   │   │   ├── pcaet.router.ts
+│   │   │   │   │   ├── set-publication-status
+│   │   │   │   │   │   ├── set-publication-status.errors.ts
+│   │   │   │   │   │   ├── set-publication-status.input.ts
+│   │   │   │   │   │   ├── set-publication-status.repository.ts
+│   │   │   │   │   │   ├── set-publication-status.router.e2e-spec.ts
+│   │   │   │   │   │   ├── set-publication-status.router.ts
+│   │   │   │   │   │   └── set-publication-status.service.ts
+│   │   │   │   │   ├── shared
+│   │   │   │   │   │   ├── demarche-pcaet-guards.service.ts
+│   │   │   │   │   │   ├── demarche-pcaet-pilotes.repository.ts
+│   │   │   │   │   │   ├── demarche-pcaet-ref.repository.ts
+│   │   │   │   │   │   └── models
+│   │   │   │   │   │       └── demarche-pcaet.dto.ts
+│   │   │   │   │   └── update-demarche-pcaet
+│   │   │   │   │       ├── update-demarche-pcaet.errors.ts
+│   │   │   │   │       ├── update-demarche-pcaet.input.ts
+│   │   │   │   │       ├── update-demarche-pcaet.repository.ts
+│   │   │   │   │       ├── update-demarche-pcaet.router.e2e-spec.ts
+│   │   │   │   │       ├── update-demarche-pcaet.router.ts
+│   │   │   │   │       └── update-demarche-pcaet.service.ts
+│   │   │   │   └── shared
+│   │   │   │       └── models
+│   │   │   │           ├── demarche-pilote.table.ts
+│   │   │   │           ├── demarche-status-history.table.ts
+│   │   │   │           └── demarche.table.ts
 │   │   │   ├── indicateurs
 │   │   │   │   ├── charts
 │   │   │   │   │   ├── indicateur-chart-colors.constants.ts
@@ -3903,6 +4078,7 @@
 │   │   ├── eslint.config.mjs
 │   │   ├── hooks
 │   │   │   └── useLandingPathname.ts
+│   │   ├── next-env.d.ts
 │   │   ├── next.config.mjs
 │   │   ├── package.json
 │   │   ├── postcss.config.js
@@ -4124,6 +4300,7 @@
 │   │   │   └── video
 │   │   │       └── EmbededVideo.tsx
 │   │   ├── eslint.config.mjs
+│   │   ├── next-env.d.ts
 │   │   ├── next.config.mjs
 │   │   ├── package.json
 │   │   ├── postcss.config.js
@@ -4728,6 +4905,8 @@
 │   │   │   ├── delete-plans-old-views.sql
 │   │   │   ├── delete-referentiels-old-views.sql
 │   │   │   ├── delete_navigation_plans-rpc.sql
+│   │   │   ├── demarche
+│   │   │   │   └── demarche.sql
 │   │   │   ├── evaluation
 │   │   │   │   ├── action_score.sql
 │   │   │   │   ├── add_personnalisation_question_competence.sql
@@ -5270,6 +5449,8 @@
 │   │   │   ├── delete-plans-old-views.sql
 │   │   │   ├── delete-referentiels-old-views.sql
 │   │   │   ├── delete_navigation_plans-rpc.sql
+│   │   │   ├── demarche
+│   │   │   │   └── demarche.sql
 │   │   │   ├── evaluation
 │   │   │   │   ├── action_score.sql
 │   │   │   │   ├── add_personnalisation_question_competence.sql
@@ -5811,6 +5992,8 @@
 │   │       ├── delete-plans-old-views.sql
 │   │       ├── delete-referentiels-old-views.sql
 │   │       ├── delete_navigation_plans-rpc.sql
+│   │       ├── demarche
+│   │       │   └── demarche.sql
 │   │       ├── evaluation
 │   │       │   ├── action_score.sql
 │   │       │   ├── add_personnalisation_question_competence.sql
@@ -6322,6 +6505,7 @@
 │   ├── plans
 │   │   ├── 2026-04-08-001-refactor-e2e-tests-parallel-isolation-plan.md
 │   │   ├── 2026-04-28-001-feat-restore-staging-preprod-with-scrubbing-plan.md
+│   │   ├── 2026-05-15-001-feat-migration-workflow-depot-pcaet-plan.md
 │   │   ├── 2026-05-20-001-feat-badges-etat-audit-labellisation-plan.md
 │   │   ├── 2026-06-04-001-feat-condition-referentiel-expr-cible-seuil-prd.md
 │   │   ├── 2026-06-11-001-feat-bascule-referentiel-te-prd.md
@@ -6354,6 +6538,8 @@
 │       │   └── zod-default-leaks-into-partial-update-schema.md
 │       └── test-failures
 │           └── parallel-e2e-test-isolation.md
+├── docker-compose.worktree.yml
+├── docker-compose.yml
 ├── e2e
 │   ├── README.md
 │   ├── eslint.config.mjs
@@ -6383,6 +6569,10 @@
 │   │   │   │   └── preferences-referentiels.spec.ts
 │   │   │   └── tags
 │   │   │       └── personne-tags.fixture.ts
+│   │   ├── demarches
+│   │   │   └── pcaet
+│   │   │       ├── demarche-pcaet-workflow.spec.ts
+│   │   │       └── demarche-pcaet.pom.ts
 │   │   ├── indicateurs
 │   │   │   ├── export-indicateurs
 │   │   │   │   ├── export-indicateurs.pom.ts
@@ -6649,6 +6839,17 @@
 │   │   │   │   ├── service-tag.schema.ts
 │   │   │   │   ├── structure-tag.schema.ts
 │   │   │   │   └── tag.base.schema.ts
+│   │   │   ├── demarches
+│   │   │   │   ├── demarche-type.enum.schema.ts
+│   │   │   │   ├── demarche.schema.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── pcaet
+│   │   │   │       ├── demarche-pcaet-obligation.enum.schema.ts
+│   │   │   │       ├── demarche-pcaet-publication-status.enum.schema.ts
+│   │   │   │       ├── demarche-pcaet-status.enum.schema.ts
+│   │   │   │       ├── demarche-pcaet.schema.ts
+│   │   │   │       ├── demarche-pcaet.workflow.spec.ts
+│   │   │   │       └── demarche-pcaet.workflow.ts
 │   │   │   ├── indicateurs
 │   │   │   │   ├── definitions
 │   │   │   │   │   ├── indicateur-definition.schema.ts
@@ -6869,9 +7070,13 @@
 │   │   │       ├── supabase
 │   │   │       │   └── supabase-url-to-auth-cookie-name.adapter.ts
 │   │   │       ├── version.models.ts
-│   │   │       └── webhooks
-│   │   │           ├── webhook-configuration.schema.ts
-│   │   │           └── webhook-message.schema.ts
+│   │   │       ├── webhooks
+│   │   │       │   ├── webhook-configuration.schema.ts
+│   │   │       │   └── webhook-message.schema.ts
+│   │   │       └── workflow
+│   │   │           ├── create-workflow.spec.ts
+│   │   │           ├── create-workflow.ts
+│   │   │           └── workflow.types.ts
 │   │   ├── tsconfig.json
 │   │   ├── tsconfig.lib.json
 │   │   ├── tsconfig.spec.json
@@ -7320,7 +7525,44 @@
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 ├── scripts
-│   └── pick-env-file.mjs
+│   ├── dev-apps.mts
+│   ├── dev-tui.mts
+│   ├── env-local.mts
+│   ├── new-worktree.mts
+│   ├── pick-env-file.mts
+│   ├── pick-stack.mts
+│   ├── prune-worktree-stacks.mts
+│   ├── stack-profile-prompts.mts
+│   ├── stack-profiles.mts
+│   ├── strapi-localize-uploads.mts
+│   ├── tsconfig.json
+│   ├── tui
+│   │   ├── README.md
+│   │   ├── app.mts
+│   │   ├── docker-stack.mts
+│   │   ├── hooks
+│   │   │   ├── index.mts
+│   │   │   ├── use-log-stream.mts
+│   │   │   ├── use-poll.mts
+│   │   │   ├── use-profile-name.mts
+│   │   │   └── use-stats.mts
+│   │   ├── line-buffer.mts
+│   │   ├── log-view.mts
+│   │   ├── service-list
+│   │   │   ├── index.mts
+│   │   │   ├── list-items.mts
+│   │   │   ├── service-row.mts
+│   │   │   └── use-list-input.mts
+│   │   ├── stack-service
+│   │   │   ├── build-services.mts
+│   │   │   ├── index.mts
+│   │   │   ├── memory.mts
+│   │   │   ├── service.mts
+│   │   │   ├── status.mts
+│   │   │   └── url-resolver.mts
+│   │   └── ui-kit.mts
+│   ├── workflow-graph.mts
+│   └── worktree-env.mts
 ├── skills-lock.json
 ├── sqitch.conf
 ├── strapi
@@ -7554,6 +7796,7 @@
 │   │   │   ├── getSupabaseClient.ts
 │   │   │   ├── groupBy.ts
 │   │   │   ├── indexBy.ts
+│   │   │   ├── mailer.ts
 │   │   │   ├── serveUtils.ts
 │   │   │   └── typeUtils.ts
 │   │   ├── get_panier_data_from_directus
@@ -7587,4 +7830,4 @@
 ├── tsconfig.json
 ├── vitest.config.ts
 └── vitest.workspace.ts
-1288 directories, 6559 files
+1336 directories, 6754 files
