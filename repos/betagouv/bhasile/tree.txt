@@ -1,7 +1,9 @@
 .
 ├── .env.example
 ├── .github
-│   └── dependabot.yml
+│   ├── dependabot.yml
+│   └── workflows
+│       └── ci.yml
 ├── .gitignore
 ├── .husky
 │   └── pre-push
@@ -14,9 +16,17 @@
 ├── Procfile
 ├── README.md
 ├── build.css
+├── content
+│   └── ressources
+│       ├── 01-modeles.md
+│       ├── 02-ressources.md
+│       ├── 03-faq.md
+│       ├── README.md
+│       └── _suggestions.md
 ├── copy-assets.ts
 ├── cron.json
 ├── docs
+│   ├── anomalies.md
 │   ├── architecture.md
 │   ├── budget_fields.md
 │   ├── database.md
@@ -28,7 +38,8 @@
 │   ├── specs
 │   │   └── transformations.md
 │   ├── structure-typology.md
-│   └── tests.md
+│   ├── tests.md
+│   └── transfo_huda_cada.md
 ├── eslint.config.mjs
 ├── next.config.ts
 ├── package.json
@@ -256,14 +267,25 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260715122616_add_notification
 │   │   │   └── migration.sql
+│   │   ├── 20260716111754_add_cpom_documents
+│   │   │   └── migration.sql
 │   │   ├── 20260717145506_deversion_structure_typologie_and_drop_campaign
 │   │   │   └── migration.sql
 │   │   ├── 20260729121553_flatten_adresse_typologie
+│   │   │   └── migration.sql
+│   │   ├── 20260730090721_clean_post_transfo
+│   │   │   └── migration.sql
+│   │   ├── 20260803125511_add_transformation_numero_dossier_and_pre_rempli
+│   │   │   └── migration.sql
+│   │   ├── 20260806144257_add_anomalies_db
+│   │   │   └── migration.sql
+│   │   ├── 20260807080440_remove_ismissing
 │   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   ├── schema
 │   │   ├── activite.prisma
 │   │   ├── adresse.prisma
+│   │   ├── anomalie.prisma
 │   │   ├── budget.prisma
 │   │   ├── contact.prisma
 │   │   ├── controle.prisma
@@ -325,6 +347,7 @@
 │   ├── adresses-diffus.xlsx
 │   ├── adresses-mixte.xlsx
 │   ├── autosave-picto.svg
+│   ├── book-shelf-line.svg
 │   ├── logo.svg
 │   ├── matrice-impact-bhasile.png
 │   ├── ofii.webp
@@ -360,6 +383,7 @@
 │   │   ├── 20260626-backfill-structure-dates.ts
 │   │   ├── 20260708-move-ofii-activite-to-end-of-month.ts
 │   │   ├── 20260709-realign-rmu-dates-to-month-end.ts
+│   │   ├── 20260716-backfill-convention-cpom.ts
 │   │   ├── 20260717-backfill-typologie-structure-id.ts
 │   │   ├── 20260718-capture-typologie-year-origin.ts
 │   │   ├── 20260718-shift-typologie-years-to-december.ts
@@ -376,8 +400,10 @@
 │   │   ├── fill-monthly-reporting.ts
 │   │   ├── fill-roles.ts
 │   │   ├── ofii-fill-referential-and-activity.ts
+│   │   ├── recompute-anomalies.ts
 │   │   ├── reporting-indicator-categories.ts
-│   │   └── rmu-fill.ts
+│   │   ├── rmu-fill.ts
+│   │   └── transfo-huda-cada-fetch.ts
 │   ├── run-one-off.sh
 │   ├── utils
 │   │   ├── csv-loader.ts
@@ -389,6 +415,8 @@
 │   │   ├── ofii-xlsx.ts
 │   │   ├── parse-date.ts
 │   │   ├── rmu-xlsx.ts
+│   │   ├── transfo-huda-cada.resolve.ts
+│   │   ├── transfo-huda-cada.util.ts
 │   │   ├── xlsx-loader.ts
 │   │   └── xlsx-utils.ts
 │   └── views
@@ -396,14 +424,8 @@
 │       ├── 001_structures_filling.sql
 │       ├── 002_structures_aggregate.sql
 │       ├── 003_operateurs_aggregate.sql
-│       ├── 004a_structures_calendar_quality.sql
-│       ├── 004b_structures_places_quality.sql
-│       ├── 004c_structures_finance_quality.sql
-│       ├── 004d_structures_characteristics_quality.sql
-│       ├── 004e_structures_documents_quality.sql
-│       ├── 004f_structures_activite_quality.sql
+│       ├── 004_structures_anomalies.sql
 │       ├── 004z_structures_global_quality.sql
-│       ├── 005_structures_missing_history.sql
 │       ├── 006_reporting_global.sql
 │       └── 007_reporting_mensuel.sql
 ├── sentry.edge.config.ts
@@ -436,14 +458,13 @@
 │   │   │   │   │   ├── [id]
 │   │   │   │   │   │   ├── _components
 │   │   │   │   │   │   │   ├── ActesAdministratifsBlock.tsx
+│   │   │   │   │   │   │   ├── ActesScopeSwitch.tsx
 │   │   │   │   │   │   │   ├── CompositionBlock.tsx
+│   │   │   │   │   │   │   ├── CpomFinancesDocuments.tsx
 │   │   │   │   │   │   │   ├── CpomHeader.tsx
 │   │   │   │   │   │   │   ├── DescriptionBlock.tsx
 │   │   │   │   │   │   │   ├── FinanceTypeSwitch.tsx
 │   │   │   │   │   │   │   └── FinancesBlock.tsx
-│   │   │   │   │   │   ├── _context
-│   │   │   │   │   │   │   ├── CpomClientContext.tsx
-│   │   │   │   │   │   │   └── CpomContext.tsx
 │   │   │   │   │   │   ├── ajout
 │   │   │   │   │   │   │   ├── 01-identification
 │   │   │   │   │   │   │   │   └── page.tsx
@@ -486,9 +507,6 @@
 │   │   │   │   │   │   │   ├── DescriptionBlock.tsx
 │   │   │   │   │   │   │   ├── OperateurHeader.tsx
 │   │   │   │   │   │   │   └── StatsCta.tsx
-│   │   │   │   │   │   ├── _context
-│   │   │   │   │   │   │   ├── OperateurClientContext.tsx
-│   │   │   │   │   │   │   └── OperateurContext.tsx
 │   │   │   │   │   │   ├── layout.tsx
 │   │   │   │   │   │   ├── modification
 │   │   │   │   │   │   │   ├── actes-administratifs
@@ -500,8 +518,19 @@
 │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   └── page.tsx
 │   │   │   │   ├── page.tsx
+│   │   │   │   ├── ressources
+│   │   │   │   │   ├── _components
+│   │   │   │   │   │   ├── DownloadLink.tsx
+│   │   │   │   │   │   ├── FaqTabPanel.tsx
+│   │   │   │   │   │   ├── FilesTabPanel.tsx
+│   │   │   │   │   │   ├── ResourceBlock.tsx
+│   │   │   │   │   │   ├── ResourcesBlockList.tsx
+│   │   │   │   │   │   ├── ResourcesContent.tsx
+│   │   │   │   │   │   └── ResourcesSearch.tsx
+│   │   │   │   │   └── page.tsx
 │   │   │   │   ├── statistiques
 │   │   │   │   │   ├── _components
+│   │   │   │   │   │   ├── AnnualDataNote.tsx
 │   │   │   │   │   │   ├── StatistiquesCartographie.tsx
 │   │   │   │   │   │   ├── StatistiquesContent.tsx
 │   │   │   │   │   │   ├── StatistiquesHeader.tsx
@@ -547,11 +576,6 @@
 │   │   │   │   │   │   └── type-places
 │   │   │   │   │   │       ├── TypesPlacesBlock.tsx
 │   │   │   │   │   │       └── TypesPlacesStatsTable.tsx
-│   │   │   │   │   ├── _context
-│   │   │   │   │   │   ├── StatistiquesCartographieClientContext.tsx
-│   │   │   │   │   │   ├── StatistiquesCartographieContext.tsx
-│   │   │   │   │   │   ├── StatistiquesClientContext.tsx
-│   │   │   │   │   │   └── StatistiquesContext.tsx
 │   │   │   │   │   ├── cartographie
 │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   ├── error.tsx
@@ -627,9 +651,6 @@
 │   │   │   │       │   │       ├── TypePlaceCharts.tsx
 │   │   │   │       │   │       ├── TypePlaceHistory.tsx
 │   │   │   │       │   │       └── getTypePlaceHistoryHeadings.tsx
-│   │   │   │       │   ├── _context
-│   │   │   │       │   │   ├── StructureClientContext.tsx
-│   │   │   │       │   │   └── StructureContext.tsx
 │   │   │   │       │   ├── actualisation
 │   │   │   │       │   │   └── [year]
 │   │   │   │       │   │       ├── 01-places
@@ -708,9 +729,6 @@
 │   │   │           │   │           │       └── TransformationActesAdministratifsForm.tsx
 │   │   │           │   │           ├── layout.tsx
 │   │   │           │   │           └── page.tsx
-│   │   │           │   ├── _context
-│   │   │           │   │   ├── TransformationClientContext.tsx
-│   │   │           │   │   └── TransformationContext.tsx
 │   │   │           │   ├── layout.tsx
 │   │   │           │   ├── page.tsx
 │   │   │           │   ├── selection
@@ -830,6 +848,11 @@
 │   │   │   │   ├── adresse.repository.ts
 │   │   │   │   ├── adresse.service.ts
 │   │   │   │   └── adresse.util.ts
+│   │   │   ├── anomalies
+│   │   │   │   ├── anomalie.db.type.ts
+│   │   │   │   ├── anomalie.repository.ts
+│   │   │   │   ├── anomalie.service.ts
+│   │   │   │   └── anomalie.util.ts
 │   │   │   ├── antennes
 │   │   │   │   ├── antenne.repository.ts
 │   │   │   │   └── antenne.util.ts
@@ -1021,10 +1044,11 @@
 │   │   │   │   ├── Badge.tsx
 │   │   │   │   ├── BarChart.tsx
 │   │   │   │   ├── Block.tsx
+│   │   │   │   ├── ChartAxisLabels.tsx
+│   │   │   │   ├── CountCircle.tsx
 │   │   │   │   ├── CustomAccordion.tsx
 │   │   │   │   ├── CustomNotice.tsx
 │   │   │   │   ├── DeleteButton.tsx
-│   │   │   │   ├── DocumentGranularityBadge.tsx
 │   │   │   │   ├── DoubleYAxisBarLineChart.tsx
 │   │   │   │   ├── DownloadItem.tsx
 │   │   │   │   ├── EmptyCell.tsx
@@ -1098,6 +1122,7 @@
 │   │   │   │   │   ├── Contact.tsx
 │   │   │   │   │   └── FieldSetContacts.tsx
 │   │   │   │   ├── cpom
+│   │   │   │   │   ├── CpomDocumentsFinanciers.tsx
 │   │   │   │   │   ├── DatesAndDocuments.tsx
 │   │   │   │   │   ├── FieldSetActesAdministratifs.tsx
 │   │   │   │   │   ├── FieldSetGeneral.tsx
@@ -1156,7 +1181,6 @@
 │   │   │   │   │       ├── DocumentsFinanciersCategory.tsx
 │   │   │   │   │       ├── DocumentsFinanciersCheckboxIsInCpom.tsx
 │   │   │   │   │       ├── DocumentsFinanciersCommentaire.tsx
-│   │   │   │   │       ├── DocumentsFinanciersCpomDisclaimer.tsx
 │   │   │   │   │       ├── DocumentsFinanciersItem.tsx
 │   │   │   │   │       ├── DocumentsFinanciersList.tsx
 │   │   │   │   │       ├── FieldSetYearlyDocumentsFinanciers.tsx
@@ -1226,10 +1250,6 @@
 │   │   │       ├── InformationBar.tsx
 │   │   │       ├── InputSimple.tsx
 │   │   │       └── Loader.tsx
-│   │   ├── context
-│   │   │   ├── AbilityContext.tsx
-│   │   │   ├── FetchStateContext.tsx
-│   │   │   └── FormContext.tsx
 │   │   ├── css
 │   │   │   └── dsfr-tailwind.css
 │   │   ├── dsfr-bootstrap
@@ -1295,6 +1315,7 @@
 │   │       ├── apiErrorResponse.util.ts
 │   │       ├── bhasile.util.ts
 │   │       ├── budget.util.ts
+│   │       ├── chart.util.ts
 │   │       ├── classname.util.ts
 │   │       ├── common.util.ts
 │   │       ├── contacts.util.ts
@@ -1303,6 +1324,7 @@
 │   │       ├── date.util.ts
 │   │       ├── decimal.util.ts
 │   │       ├── defaultValues.util.ts
+│   │       ├── documentFinancier.util.ts
 │   │       ├── eig.util.ts
 │   │       ├── errorMail.util.ts
 │   │       ├── evaluation.util.ts
@@ -1319,8 +1341,10 @@
 │   │       ├── phone.util.ts
 │   │       ├── rappel.util.ts
 │   │       ├── refresh.util.ts
+│   │       ├── ressources.util.ts
 │   │       ├── searchParams.util.ts
 │   │       ├── statistiques-format.util.ts
+│   │       ├── statistiques-period.util.ts
 │   │       ├── string.util.ts
 │   │       ├── structure.util.ts
 │   │       ├── structureMillesime.util.ts
@@ -1333,13 +1357,40 @@
 │   ├── config
 │   │   ├── acte-administratif.config.ts
 │   │   ├── budget.config.ts
+│   │   ├── cpom-acte-administratif.config.ts
 │   │   ├── operateur.config.ts
 │   │   ├── structure.config.ts
 │   │   └── transformation.config.ts
 │   ├── constants.ts
+│   ├── contexts
+│   │   ├── AbilityProvider.tsx
+│   │   ├── CpomContext.tsx
+│   │   ├── FetchStateContext.tsx
+│   │   ├── FormContext.tsx
+│   │   ├── OperateurContext.tsx
+│   │   ├── StatistiquesCartographieContext.tsx
+│   │   ├── StatistiquesContext.tsx
+│   │   ├── StructureContext.tsx
+│   │   ├── TransformationContext.tsx
+│   │   └── createEntityContext.tsx
 │   ├── instrumentation-client.ts
 │   ├── instrumentation.ts
 │   ├── lib
+│   │   ├── anomalies
+│   │   │   ├── anomalie.compute.ts
+│   │   │   ├── anomalie.definition.ts
+│   │   │   ├── anomalie.reporting.ts
+│   │   │   ├── anomalie.rule.ts
+│   │   │   ├── anomalie.type.ts
+│   │   │   ├── anomalie.util.ts
+│   │   │   └── rules
+│   │   │       ├── activite.rule.ts
+│   │   │       ├── calendar.rule.ts
+│   │   │       ├── characteristics.rule.ts
+│   │   │       ├── documents.rule.ts
+│   │   │       ├── finance.rule.ts
+│   │   │       ├── index.ts
+│   │   │       └── places.rule.ts
 │   │   ├── casl
 │   │   │   └── abilities.ts
 │   │   ├── minio.ts
@@ -1384,6 +1435,8 @@
 │   │       │   ├── ajoutIdentification.schema.ts
 │   │       │   └── ajoutTypePlaces.schema.ts
 │   │       ├── base
+│   │       │   ├── acteAdministratif
+│   │       │   │   └── getActesAdministratifsSchema.ts
 │   │       │   ├── acteAdministratif.schema.ts
 │   │       │   ├── adresse.schema.ts
 │   │       │   ├── adresseAdministrative.schema.ts
@@ -1418,36 +1471,43 @@
 │   │           ├── creationPlacesEtHebergement.schema.ts
 │   │           ├── fermeture.schema.ts
 │   │           └── transformationIdentification.schema.ts
-│   └── types
-│       ├── Entity.type.ts
-│       ├── ListColumn.ts
-│       ├── acte-administratif.type.ts
-│       ├── adresse.type.ts
-│       ├── controle.type.ts
-│       ├── cpom.type.ts
-│       ├── dashboard.type.ts
-│       ├── departement.type.ts
-│       ├── document-financier.type.ts
-│       ├── dsfr-chart.d.ts
-│       ├── fetch-state.type.ts
-│       ├── filters.type.ts
-│       ├── form.type.ts
-│       ├── global.ts
-│       ├── indicateur-financier.type.ts
-│       ├── map.type.ts
-│       ├── principal.type.ts
-│       ├── prisma.type.ts
-│       ├── proxy.type.ts
-│       ├── structure-history.type.ts
-│       ├── structure.type.ts
-│       ├── transformation.type.ts
-│       └── utils.type.ts
+│   ├── types
+│   │   ├── Entity.type.ts
+│   │   ├── ListColumn.ts
+│   │   ├── acte-administratif.type.ts
+│   │   ├── adresse.type.ts
+│   │   ├── anomalie.type.ts
+│   │   ├── controle.type.ts
+│   │   ├── cpom.type.ts
+│   │   ├── dashboard.type.ts
+│   │   ├── departement.type.ts
+│   │   ├── document-financier.type.ts
+│   │   ├── dsfr-chart.d.ts
+│   │   ├── fetch-state.type.ts
+│   │   ├── filters.type.ts
+│   │   ├── form.type.ts
+│   │   ├── global.ts
+│   │   ├── indicateur-financier.type.ts
+│   │   ├── map.type.ts
+│   │   ├── principal.type.ts
+│   │   ├── prisma.type.ts
+│   │   ├── proxy.type.ts
+│   │   ├── ressources.type.ts
+│   │   ├── structure-history.type.ts
+│   │   ├── structure.type.ts
+│   │   ├── transformation.type.ts
+│   │   └── utils.type.ts
+│   └── utils-server
+│       └── ressources.server.util.ts
 ├── tailwind.config.ts
 ├── tests
 │   ├── (authenticated)
 │   │   ├── (with-menu)
 │   │   │   ├── _components
 │   │   │   │   └── NotificationsCarousel.test.tsx
+│   │   │   ├── ressources
+│   │   │   │   └── _components
+│   │   │   │       └── ResourcesContent.test.tsx
 │   │   │   ├── statistiques
 │   │   │   │   └── _components
 │   │   │   │       └── cartographie
@@ -1526,6 +1586,7 @@
 │   │           │   └── page.test.tsx
 │   │           └── _components
 │   │               ├── TransformationMenu.test.tsx
+│   │               ├── TransformationMenuHorsProvider.test.tsx
 │   │               └── TransformationSteps.test.tsx
 │   ├── api
 │   │   ├── actes-administratifs
@@ -1535,6 +1596,8 @@
 │   │   │   ├── activite.util.test.ts
 │   │   │   └── stats
 │   │   │       └── route.test.ts
+│   │   ├── anomalies
+│   │   │   └── anomalie.repository.test.ts
 │   │   ├── cpoms
 │   │   │   ├── [id]
 │   │   │   │   └── route.test.ts
@@ -1552,6 +1615,8 @@
 │   │   ├── dna-codes
 │   │   │   ├── dna-codes.repository.test.ts
 │   │   │   └── route.test.ts
+│   │   ├── documents-financiers
+│   │   │   └── documentFinancier.repository.test.ts
 │   │   ├── files
 │   │   │   ├── [key]
 │   │   │   │   └── route.test.ts
@@ -1638,6 +1703,8 @@
 │   ├── config
 │   │   ├── structure.config.test.ts
 │   │   └── transformation.config.test.ts
+│   ├── contexts
+│   │   └── createEntityContext.test.tsx
 │   ├── e2e
 │   │   ├── README.md
 │   │   ├── data
@@ -1701,6 +1768,7 @@
 │   │   │   ├── autocomplete-helper.ts
 │   │   │   ├── before-flow.ts
 │   │   │   ├── checkbox-helper.ts
+│   │   │   ├── cleanup.ts
 │   │   │   ├── complete-structure-flow-ajout.ts
 │   │   │   ├── complete-structure-flow-finalisation.ts
 │   │   │   ├── complete-structure-flow-modification.ts
@@ -1786,6 +1854,14 @@
 │   │   ├── useTransformationFormHandling.test.ts
 │   │   └── useTransformationNavigateWithSave.test.ts
 │   ├── lib
+│   │   ├── anomalies
+│   │   │   ├── anomalie.compute.test.ts
+│   │   │   ├── anomalie.definition.test.ts
+│   │   │   ├── anomalie.reporting.test.ts
+│   │   │   └── rules
+│   │   │       ├── calendar.rule.test.ts
+│   │   │       ├── finance.rule.test.ts
+│   │   │       └── places.rule.test.ts
 │   │   └── casl
 │   │       └── abilities.test.ts
 │   ├── schemas
@@ -1797,11 +1873,15 @@
 │   │       └── transformation
 │   │           └── creationPlacesEtHebergement.test.ts
 │   ├── scripts
-│   │   └── parse-date.test.ts
+│   │   ├── parse-date.test.ts
+│   │   └── utils
+│   │       └── transfo-huda-cada.resolve.repository.test.ts
 │   ├── test-utils
+│   │   ├── anomalie.ts
 │   │   ├── factories
 │   │   │   ├── actualisation-form.factory.ts
 │   │   │   ├── adresse.factory.ts
+│   │   │   ├── anomalie-context.factory.ts
 │   │   │   ├── budget.factory.ts
 │   │   │   ├── contact.factory.ts
 │   │   │   ├── controle.factory.ts
@@ -1816,6 +1896,7 @@
 │   │   │   └── transformation.factory.ts
 │   │   ├── form-test-wrapper.tsx
 │   │   ├── http.mock.ts
+│   │   ├── referential-dna.ts
 │   │   ├── structure-page-test.helpers.tsx
 │   │   ├── structure-page-test.mocks.tsx
 │   │   ├── structure.factory.ts
@@ -1827,6 +1908,7 @@
 │   │   ├── budget.util.test.ts
 │   │   ├── classname.util.test.ts
 │   │   ├── common.util.test.ts
+│   │   ├── cpom.util.test.ts
 │   │   ├── date.util.test.ts
 │   │   ├── decimal.util.test.ts
 │   │   ├── defaultValues.util.test.ts
@@ -1840,14 +1922,19 @@
 │   │   ├── number.util.test.ts
 │   │   ├── phone.util.test.ts
 │   │   ├── rappel.util.test.ts
+│   │   ├── ressources.util.test.ts
 │   │   ├── searchParams.util.test.ts
+│   │   ├── statistiques-period.util.test.ts
 │   │   ├── string.util.test.ts
 │   │   ├── structure.util.test.ts
+│   │   ├── transfo-huda-cada.util.test.ts
 │   │   ├── transformation.util.test.ts
 │   │   └── zone.util.test.ts
+│   ├── utils-server
+│   │   └── ressources.server.util.test.ts
 │   └── validation
 │       └── finalisationFinanceSchema.test.ts
 ├── tsconfig.json
 ├── vitest.config.mts
 └── yarn.lock
-478 directories, 1374 files
+497 directories, 1442 files

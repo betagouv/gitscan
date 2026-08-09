@@ -1,70 +1,64 @@
 {
   "url": "https://github.com/betagouv/bhasile",
   "name": "bhasile",
-  "description": "Bhasile (anciennement Place d'asile) est un outil permettant de piloter le parc de logements pour demandeurs d’asile. Il vise à améliorer la gestion et le suivi de ces logements.",
+  "description": "Application de pilotage du parc de logements pour les demandeurs d'asile. Elle permet la gestion des structures, le suivi des transformations et la visualisation de statistiques via des cartes et des tableaux de bord.",
   "language": "TypeScript",
   "features": [
-    "Gestion documentaire & Fichiers",
-    "API & Intégrations",
+    "Gestion métier générale",
     "Visualisation de données & Cartographie",
-    "Authentification & Accès",
     "Statistiques & Rapports",
-    "Recherche & Filtres",
-    "Gestion des utilisateurs & Permissions",
-    "Notifications & Alertes",
-    "Sécurité & Conformité"
+    "Authentification & Accès",
+    "Administration & Backoffice",
+    "Tableaux & Affichage",
+    "Suivi & Traçabilité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "React",
     "Next.js",
-    "PostgreSQL",
+    "React",
     "Prisma",
-    "TailwindCSS",
-    "Zod"
+    "Tailwind CSS",
+    "NextAuth.js",
+    "MapLibre GL",
+    "Chartist",
+    "Zod",
+    "MinIO"
   ],
   "components": [
-    "API REST & GraphQL",
-    "PostgreSQL & SQL",
     "React / Next.js",
+    "PostgreSQL & SQL",
     "TypeScript / JavaScript",
-    "Docker & Conteneurs"
+    "Design System (DSFR & UI libs)",
+    "ORM & Accès aux données",
+    "Authentification (composant)"
   ],
   "auth": {
     "methods": [
-      "email-password",
-      "oauth2",
-      "sso"
+      "sso",
+      "session"
+    ],
+    "providers": [
+      "ProConnect"
     ]
   },
   "tests": [
-    "Jest",
     "Vitest",
-    "Playwright",
-    "Cypress"
+    "Playwright"
   ],
   "workflows": [
-    "CI/CD",
     "GitHub Actions"
   ],
-  "lastActivity": "2026-07-31T15:17:27+02:00",
-  "status": "active",
+  "lastActivity": "2026-08-07T14:13:57+02:00",
+  "status": "maintained",
   "license": null,
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
   "tags": [
-    "Données & Open Data",
     "Écosystème beta.gouv / État",
     "React & Next.js",
     "TypeScript",
-    "Déploiement & Hosting",
-    "Python",
     "Bases de données SQL",
-    "Sécurité & Auth"
+    "Design System & UI",
+    "CI/CD & GitHub Actions",
+    "SIG & Géospatial"
   ]
 }
