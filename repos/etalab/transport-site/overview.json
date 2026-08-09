@@ -1,69 +1,63 @@
 {
   "url": "https://github.com/etalab/transport-site",
   "name": "transport-site",
-  "description": "Ce projet fournit un point d'accès national aux données de mobilité en France. Il centralise et valorise les données de transport hébergées sur data.gouv.fr, offrant ainsi un accès facilité aux informations relatives à la mobilité.",
+  "description": "Point d'accès national (NAP) pour les données de mobilité en France. Ce projet met en avant les données de transport hébergées sur la plateforme data.gouv.fr.",
   "language": "Elixir",
   "features": [
-    "Gestion documentaire & Fichiers",
-    "API & Intégrations",
     "Visualisation de données & Cartographie",
-    "Authentification & Accès",
-    "Statistiques & Rapports",
     "Recherche & Filtres",
-    "Gestion des utilisateurs & Permissions",
-    "Notifications & Alertes",
-    "Contenu éditorial",
-    "Sécurité & Conformité",
-    "Données & Schémas"
+    "Données & Schémas",
+    "Administration & Backoffice",
+    "API & Intégrations"
   ],
-  "audience": "Professionnels",
+  "audience": "Grand public",
   "dependencies": [
     "Elixir",
     "Phoenix",
     "PostgreSQL",
-    "JavaScript",
-    "Webpack",
-    "S3"
+    "PostGIS",
+    "Node.js",
+    "Yarn",
+    "Leaflet",
+    "Deck.gl",
+    "Vega"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "TypeScript / JavaScript",
-    "Python (scripts & backend)",
+    "Design System (DSFR & UI libs)",
     "Docker & Conteneurs",
-    "Node.js / NestJS",
-    "HTML / CSS / Templates visuels"
+    "SIG & Géospatial",
+    "Templates & Moteurs de rendu"
   ],
   "auth": {
     "methods": [
       "oauth2"
     ],
     "providers": [
-      "Datagouvfr"
+      "demo.data.gouv.fr"
     ]
   },
-  "tests": "Mix test, Jest",
+  "tests": [
+    "mix test",
+    "excoveralls",
+    "credo",
+    "eslint",
+    "stylelint"
+  ],
   "workflows": [
     "CI/CD"
   ],
-  "lastActivity": "2026-07-27T15:46:18Z",
+  "lastActivity": "2026-08-07T19:14:29+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
   "tags": [
     "Données & Open Data",
-    "Écosystème beta.gouv / État",
     "Transport & Mobilité",
-    "JavaScript",
-    "API & Intégrations",
-    "PostgreSQL",
-    "Elixir",
+    "SIG & Géospatial",
+    "Écosystème beta.gouv / État",
     "Docker & Conteneurs"
   ]
 }
