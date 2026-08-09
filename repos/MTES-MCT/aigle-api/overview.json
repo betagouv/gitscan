@@ -1,50 +1,51 @@
 {
   "url": "https://github.com/MTES-MCT/aigle-api",
   "name": "aigle-api",
-  "description": "L'API Aigle fournit des fonctionnalités pour la gestion et l'analyse de données géospatiales, notamment pour la détection d'anomalies et le suivi de prescriptions. Elle permet d'intégrer des données de différentes sources et de les exploiter via une interface REST.",
+  "description": "L'API Aigle est une plateforme de gestion et d'analyse de données géospatiales destinée au suivi de détections et de prescriptions. Elle permet l'intégration de données provenant de diverses sources et l'exploitation via une interface REST.",
   "language": "Python",
   "features": [
-    "Données & Schémas",
-    "Gestion documentaire & Fichiers",
     "API & Intégrations",
     "Authentification & Accès",
+    "Données & Schémas",
     "Gestion des utilisateurs & Permissions",
-    "Gestion des zones personnalisées",
-    "Simulation & Calcul",
-    "Notifications & Alertes"
+    "Visualisation de données & Cartographie",
+    "Statistiques & Rapports",
+    "Recherche & Filtres"
   ],
-  "audience": "Professionnels",
+  "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
     "PostgreSQL",
+    "PostGIS",
     "Redis",
     "Celery",
     "djangorestframework",
     "djoser",
-    "psycopg2-binary",
     "djangorestframework-gis"
   ],
   "components": [
-    "Django",
     "API REST & GraphQL",
     "PostgreSQL & SQL",
+    "Python (scripts & backend)",
     "Celery & Queue asynchrone",
-    "Microservices & Architecture"
+    "Docker & Conteneurs",
+    "ORM & Accès aux données"
   ],
   "auth": {
     "methods": [
       "email-password",
-      "oauth2",
       "jwt"
     ]
   },
   "tests": [
-    "pytest"
+    "pytest",
+    "pytest-django"
   ],
   "workflows": [
-    "deploy-to-scaleway.yml"
+    "deploy-to-scaleway.yml",
+    "test.yml"
   ],
-  "lastActivity": "2026-07-09T13:28:05Z",
+  "lastActivity": "2026-08-06T16:39:35+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -59,6 +60,8 @@
     "Django & FastAPI",
     "Bases de données SQL",
     "SIG & Géospatial",
-    "Python"
+    "Python",
+    "Docker & Conteneurs",
+    "CI/CD & GitHub Actions"
   ]
 }
