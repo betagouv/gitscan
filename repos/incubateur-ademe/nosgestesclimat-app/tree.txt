@@ -17,12 +17,14 @@
 │   ├── scripts
 │   │   ├── scalingo-ensure-review-app.sh
 │   │   ├── scalingo-monitor-deployment.sh
-│   │   └── scalingo-trigger-deployment.sh
+│   │   ├── scalingo-trigger-deployment.sh
+│   │   └── update-model-version.mjs
 │   └── workflows
 │       ├── common:create-release-note.yaml
 │       ├── common:deploy-preview.yaml
 │       ├── common:deploy.yaml
 │       ├── common:quality-control.yml
+│       ├── common:update-model.yaml
 │       ├── infra:nginx-lint.yaml
 │       ├── site:e2e.yaml
 │       ├── site:generate-pr-comment.yaml
@@ -431,6 +433,7 @@
 │       │   │   ├── organisation-admin.spec.ts
 │       │   │   ├── polls.spec.ts
 │       │   │   ├── resultat.spec.ts
+│       │   │   ├── retake-test.spec.ts
 │       │   │   ├── test.spec.ts
 │       │   │   ├── tutorial.spec.ts
 │       │   │   └── user-account.spec.ts
@@ -752,6 +755,8 @@
 │       │   │   │   │   │   │   │       │   └── NameForm.tsx
 │       │   │   │   │   │   │   │       └── page.tsx
 │       │   │   │   │   │   │   ├── invitation
+│       │   │   │   │   │   │   │   ├── _actions
+│       │   │   │   │   │   │   │   │   └── join-group.action.ts
 │       │   │   │   │   │   │   │   ├── _components
 │       │   │   │   │   │   │   │   │   ├── InvitationForm.tsx
 │       │   │   │   │   │   │   │   │   ├── InvitationPage.tsx
@@ -1217,8 +1222,6 @@
 │       │   │   │   │   │   │   │       └── page.tsx
 │       │   │   │   │   │   │   └── layout.tsx
 │       │   │   │   │   │   └── loading.tsx
-│       │   │   │   │   ├── _service
-│       │   │   │   │   │   └── getNewSimulationModelService.ts
 │       │   │   │   │   └── commencer
 │       │   │   │   │       └── page.tsx
 │       │   │   │   └── themes
@@ -1937,7 +1940,6 @@
 │       │   │   ├── shared
 │       │   │   │   └── handleApiResponse.ts
 │       │   │   ├── simulation
-│       │   │   │   ├── generateSimulation.ts
 │       │   │   │   └── sanitizeSimulation.ts
 │       │   │   ├── tests
 │       │   │   │   └── wrapper.tsx
@@ -2000,7 +2002,6 @@
 │       │   │   ├── useDebug.ts
 │       │   │   ├── useFeatureFlag.ts
 │       │   │   ├── useIframe.ts
-│       │   │   ├── useInitSimulationParam.ts
 │       │   │   ├── useIsClient.ts
 │       │   │   ├── useLocale.ts
 │       │   │   ├── useMagicKey.ts
@@ -2175,8 +2176,8 @@
 │       │   │   │   └── useUser
 │       │   │   │       ├── hooks
 │       │   │   │       │   ├── useActions.ts
-│       │   │   │       │   ├── useSimulations.ts
-│       │   │   │       │   └── useTutorials.ts
+│       │   │   │       │   ├── useTutorials.ts
+│       │   │   │       │   └── useUpdateCurrentSimulation.ts
 │       │   │   │       └── useUser.ts
 │       │   │   ├── index.ts
 │       │   │   ├── providers
@@ -2197,6 +2198,8 @@
 │       │   │   │   │   │   └── useQuestions.ts
 │       │   │   │   │   └── provider.tsx
 │       │   │   │   └── userProvider
+│       │   │   │       ├── __tests__
+│       │   │   │       │   └── provider.test.tsx
 │       │   │   │       ├── context.ts
 │       │   │   │       ├── hooks
 │       │   │   │       │   ├── usePersistentTutorials.ts
@@ -2270,12 +2273,17 @@
 │       │   │   │   ├── exportSituation.ts
 │       │   │   │   └── verifyPartner.ts
 │       │   │   ├── simulations
+│       │   │   │   ├── __tests__
+│       │   │   │   │   └── ensure-simulation-model.test.ts
+│       │   │   │   ├── build-new-simulation-payload.ts
 │       │   │   │   ├── create-simulation.ts
 │       │   │   │   ├── delete-simulation.ts
+│       │   │   │   ├── ensure-simulation-model.ts
 │       │   │   │   ├── get-completed-simulations.ts
 │       │   │   │   ├── get-current-simulation.ts
 │       │   │   │   ├── get-simulation.ts
 │       │   │   │   ├── get-simulations.ts
+│       │   │   │   ├── resolve-new-simulation-model.ts
 │       │   │   │   ├── save-simulation.ts
 │       │   │   │   └── upload-local-simulations.ts
 │       │   │   ├── tracking
@@ -2308,7 +2316,8 @@
 │       │       │   └── cookie.test.ts
 │       │       ├── analytics
 │       │       │   ├── trackEvent.ts
-│       │       │   └── trackGTMEvent.ts
+│       │       │   ├── trackGTMEvent.ts
+│       │       │   └── trackUniqueEvent.ts
 │       │       ├── areArraysEqual.ts
 │       │       ├── browser
 │       │       │   ├── safeLocalStorage.ts
@@ -2548,9 +2557,13 @@
 │       │   │   │   │   ├── model.mapper.ts
 │       │   │   │   │   ├── simulation.mapper.ts
 │       │   │   │   │   └── simulation.repository.ts
-│       │   │   │   └── types
-│       │   │   │       ├── model.ts
-│       │   │   │       └── simulation.ts
+│       │   │   │   ├── types
+│       │   │   │   │   ├── model.ts
+│       │   │   │   │   └── simulation.ts
+│       │   │   │   └── validators
+│       │   │   │       ├── __tests__
+│       │   │   │       │   └── computed-results.schema.spec.ts
+│       │   │   │       └── computed-results.schema.ts
 │       │   │   ├── tracking
 │       │   │   │   └── schema.ts
 │       │   │   └── users
@@ -2584,4 +2597,4 @@
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 └── tsconfig.json
-665 directories, 1966 files
+669 directories, 1975 files

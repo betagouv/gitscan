@@ -1,33 +1,24 @@
-## Changelog : nosgestesclimat-app (30 derniers jours, au 4 août 2026)
+## Changelog : nosgestesclimat-app (30 derniers jours, au 07 août 2026)
 
 ### Résumé
-Ce mois-ci, l'application a franchi une étape majeure avec le déploiement du nouveau catalogue d'actions et l'amélioration de leur internationalisation. Le modèle de calcul de l'empreinte carbone a également été mis à jour pour plus de précision. Parallèlement, des optimisations techniques importantes ont été réalisées pour améliorer la rapidité de l'application et renforcer sa sécurité.
+Ce mois-ci, le projet a franchi une étape importante avec le déploiement et l'internationalisation du catalogue d'actions. L'expérience utilisateur a été affinée avec de nouvelles fonctionnalités visuelles et des corrections de bugs, tandis que l'infrastructure a été optimisée pour offrir une navigation plus rapide et une meilleure stabilité globale.
 
 ### Évolutions fonctionnelles
-- **Nouveautés liées aux actions** : Déploiement du catalogue public des actions ([#1845](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1845)), réactivation des actions liées aux services sociétaux ([#1955](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1955)) et déploiement global du système d'actions ([#1964](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1964)).
-- **Internationalisation** : Support de toutes les régions (actuelles et précédentes) pour les actions ([#1961](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1961)) et mise en place de l'i18n pour le catalogue d'actions ([#1938](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1938)).
-- **Mise à jour du modèle** : Montée de version du modèle de calcul de l'empreinte carbone ([#1965](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1965), [#1917](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1917)).
-- **Expérience utilisateur et Interface** : 
-    - Mise à jour de l'affichage des graphiques de distribution de l'empreinte ([#1898](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1898)).
-    - Remplacement des notifications IA par des anecdotes ("funfacts") ([#1970](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1970)).
-    - Amélioration de la clarté terminologique (remplacement de "divers" par "consommation") ([#1904](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1904)).
-    - Ajustements visuels : icônes de grille sur desktop uniquement ([#1960](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1960)), ajout d'un bouton de fermeture sur les bannières ([#1912](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1912)) et correction de l'affichage des bannières de kit de communication ([#1928](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1928)).
-    - Optimisation de l'affichage : masquage du bloc d'actions sur la page des résultats d'eau ([#1913](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1913)) et restriction d'accès aux blocs de communication pour les non-administrateurs ([#1919](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1919)).
-- **Corrections de bugs** : Résolution de liens brisés dans les iframes ([#1962](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1962)), correction de l'origine de confirmation de la newsletter ([#1931](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1931)) et correction des erreurs de déconnexion avec les sessions héritées ([#1926](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1926)).
+- Déploiement et internationalisation du catalogue d'actions ([#1964](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1964), [#1938](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1938))
+- Prise en charge étendue des régions pour les actions ([#1961](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1961))
+- Réactivation des actions liées aux services sociétaux ([#1955](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1955))
+- Mise à disposition publique du catalogue d'actions ([#1845](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1845))
+- Améliorations de l'interface : ajout d'un bouton de fermeture sur les bannières ([#1912](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1912)), affichage des icônes de grille uniquement sur desktop ([#1960](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1960)) et remplacement des notifications IA par des anecdotes ("funfacts") ([#1970](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1970))
+- Corrections de bugs : liens externes dans les iframes ([#1962](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1962)), processus de confirmation de newsletter ([#1931](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1931)), erreurs d'authentification ([#1959](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1959)), déconnexion avec les anciennes sessions ([#1926](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1926)) et migration des simulations de login ([#1930](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1930))
+- Harmonisation de la terminologie (utilisation de "consommation" au lieu de "divers") ([#1904](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1904))
 
 ### Évolutions techniques
-- **Performance et Infrastructure** : 
-    - Mise en place d'un système de cache via Nginx (reverse proxy) avec limitation de débit pour remplacer un CDN ([#1941](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1941)).
-    - Mise en cache de la page d'accueil et des tutoriels pour les utilisateurs anonymes ([#1946](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1946)).
-    - Optimisation de la distribution des assets S3 via Nginx ([#1949](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1949)).
-- **Sécurité et Authentification** : 
-    - Correction de vulnérabilités d'autorisation et de fuites de données lors des simulations de groupe ([#1885](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1885), [#1923](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1923)).
-    - Refactorisation complète du flux de connexion via une machine à états et typage des erreurs ([#1934](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1934), [#1942](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1942)).
-- **Stabilité et Refactoring** : 
-    - Résolution de problèmes de consommation mémoire (OOM kill) sur les workers de l'application de revue ([#1940](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1940)).
-    - Migration vers un nouveau système de gestion de cache pour les composants ([#1945](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1945)).
+- Optimisation de l'infrastructure : mise en place d'un système de cache via Nginx pour améliorer la rapidité (page d'accueil, tutoriels) et gestion du débit (rate limiting) ([#1941](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1941), [#1946](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1946)) et proxying des assets S3 ([#1949](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1949))
+- Refonte du flux d'authentification : passage à une machine à états et gestion typée des erreurs pour une meilleure fiabilité ([#1934](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1934), [#1942](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1942))
+- Gestion des modèles : mise à jour de la version du modèle ([#1965](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1965)) et ajout d'un script d'automatisation des releases de modèles ([#1980](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1980))
+- Stabilité et tests : résolution de fuites de mémoire lors des simulations de groupe ([#1923](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1923)), correction d'erreurs de mémoire (OOM) sur les workers ([#1940](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1940)) et amélioration de la stabilité des tests E2E ([#1977](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1977))
+- SEO : refonte du sitemap ([#1944](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1944)) et correction des URLs canoniques du tutoriel ([#1935](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1935))
 
 ### Autres changements
-- **SEO** : Refonte du sitemap ([#1944](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1944)) et correction des URLs canoniques pour les tutoriels ([#1935](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1935)).
-- **Qualité logicielle** : Correction de tests instables ([#1954](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1954)) et amélioration des composants de données de test ([#1882](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1882)).
-- **Nettoyage** : Nettoyage de la base de données suite à la fusion de l'i18n des actions ([#1943](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1943)).
+- Nettoyage de la base de données après la fusion de l'internationalisation des actions ([#1943](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1943))
+- Amélioration du suivi analytique (Posthog et stockage local des IDs de tracking) ([#1956](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1956), [#1957](https://github.com/incubateur-ademe/nosgestesclimat-app/issues/1957))
