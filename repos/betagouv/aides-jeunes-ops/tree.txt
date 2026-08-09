@@ -42,13 +42,25 @@
 │   │   │   ├── nginx_restart.yaml
 │   │   │   ├── nginx_site.yaml
 │   │   │   ├── refresh_tasks.yaml
+│   │   │   ├── setup_alerting.yaml
 │   │   │   ├── setup_application.yaml
 │   │   │   ├── setup_cron.yaml
+│   │   │   ├── setup_mongodb_backup.yaml
 │   │   │   ├── setup_monitor.yaml
 │   │   │   ├── setup_openfisca.yaml
 │   │   │   ├── setup_systemd_journal.yaml
 │   │   │   └── setup_webapp.yaml
 │   │   └── templates
+│   │       ├── alerting
+│   │       │   ├── alert-systemd-failure@.service.j2
+│   │       │   ├── alert-systemd-sweep.service.j2
+│   │       │   ├── alert-systemd-sweep.timer.j2
+│   │       │   ├── alert_systemd_failure.sh.j2
+│   │       │   ├── onfailure.conf.j2
+│   │       │   └── sync_alerting_dsn.sh.j2
+│   │       ├── mongodb-backup.service.j2
+│   │       ├── mongodb-backup.timer.j2
+│   │       ├── mongodb_backup.sh.j2
 │   │       ├── monitor
 │   │       │   ├── monitor-config.json.j2
 │   │       │   └── monitor-server.mjs
@@ -70,4 +82,4 @@
 │   ├── update.sh
 │   └── update_ops.sh
 └── synchronize.yaml
-15 directories, 57 files
+16 directories, 68 files

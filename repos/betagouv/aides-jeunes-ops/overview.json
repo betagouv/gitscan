@@ -1,45 +1,52 @@
 {
   "url": "https://github.com/betagouv/aides-jeunes-ops",
   "name": "aides-jeunes-ops",
-  "description": "Ce dépôt permet la mise en place de la stack Mes Aides. Il automatise le déploiement et la configuration des services nécessaires.",
-  "language": "Jinja",
-  "features": [],
+  "description": "Ce dépôt permet la mise en place et l'automatisation du déploiement de la stack technique pour le projet Mes Aides. Il utilise Ansible pour configurer les serveurs, les bases de données et les services associés.",
+  "language": "Python",
+  "features": [
+    "Infrastructure & Stockage",
+    "Monitoring & Logs"
+  ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "ansible"
+    "Ansible",
+    "Nginx",
+    "MongoDB",
+    "Node.js",
+    "Python",
+    "Sentry",
+    "Certbot"
   ],
   "components": [
     "Ansible & IaC",
     "Serveurs web & Proxy",
     "MongoDB & NoSQL",
     "Node.js / NestJS",
-    "Python"
+    "Python (scripts & backend)",
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
       "none"
     ]
   },
-  "tests": [],
   "workflows": [
     "cd.yml",
     "ci.yml"
   ],
-  "lastActivity": "2026-02-04T15:53:26+01:00",
+  "lastActivity": "2026-08-08T00:11:29+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
   "metrics": {
     "stars": 0,
-    "forks": 1,
-    "contributors": null,
-    "openIssues": 2
+    "forks": 2,
+    "openIssues": 3
   },
   "tags": [
     "CI/CD & GitHub Actions",
     "Déploiement & Hosting",
-    "mes-aides",
-    "stack",
-    "Git & DevOps"
+    "Git & DevOps",
+    "Docker & Conteneurs"
   ]
 }
