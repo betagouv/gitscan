@@ -1,59 +1,67 @@
 {
   "url": "https://github.com/suitenumerique/projects",
   "name": "projects",
-  "description": "Projets est une application pour La Suite territoriale, permettant une gestion collaborative de projets et une meilleure organisation des tâches.",
+  "description": "Outil de gestion de projet collaboratif permettant la création de tableaux, listes et cartes avec synchronisation en temps réel. Il facilite la collaboration d'équipe grâce au support Markdown, aux notifications et à l'authentification SSO.",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
-    "API & Intégrations",
     "Authentification & Accès",
-    "Notifications & Alertes",
-    "Internationalisation",
+    "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
-    "Recherche & Filtres"
+    "Notifications & Alertes",
+    "Collaboration & Workflow",
+    "Interface utilisateur & Design",
+    "Tableaux & Affichage"
   ],
-  "audience": "Professionnels",
+  "audience": "Agents de l'Administration",
   "dependencies": [
     "React",
+    "Sails.js",
     "PostgreSQL",
     "Keycloak",
-    "Node.js"
+    "Redux",
+    "Socket.io",
+    "Docker"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "React / Next.js",
-    "TypeScript / JavaScript"
+    "TypeScript / JavaScript",
+    "Docker & Conteneurs",
+    "Authentification (composant)",
+    "Webhooks & Événements"
   ],
   "auth": {
     "methods": [
+      "email-password",
       "oauth2",
-      "jwt"
+      "jwt",
+      "sso"
     ],
     "providers": [
-      "Keycloak"
+      "Keycloak",
+      "Ory Hydra"
     ]
   },
   "tests": [
-    "Jest",
-    "Cypress"
+    "Playwright",
+    "Cucumber",
+    "Chai"
   ],
-  "workflows": [],
+  "workflows": [
+    "GitHub Actions"
+  ],
   "lastActivity": "2026-07-22T12:19:51+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": 44,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
   "tags": [
-    "Données & Open Data",
+    "Écosystème beta.gouv / État",
     "React & Next.js",
     "TypeScript",
-    "Sécurité & Auth",
-    "JavaScript"
+    "Docker & Conteneurs",
+    "Git & DevOps",
+    "Node.js, NestJS & Express"
   ]
 }

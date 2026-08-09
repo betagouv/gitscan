@@ -1,16 +1,15 @@
 ## Changelog : projects (30 derniers jours, au 22 juillet 2026)
 
 ### Résumé
-Cette mise à jour apporte des améliorations visuelles et de confort d'utilisation, notamment concernant le logo, la favicon et la gestion de la langue. Des corrections de bugs ont également été implémentées pour améliorer la stabilité de l'application, en particulier au niveau de l'affichage de la favicon et du chargement de la langue lors de la connexion. Enfin, la documentation d'auto-hébergement a été mise à jour.
+Les récentes mises à jour se sont concentrées sur l'amélioration de l'identité visuelle de l'interface, l'optimisation de l'expérience de connexion et la mise à jour de la documentation pour l'auto-hébergement.
 
 ### Évolutions fonctionnelles
-- Le logo par défaut et la favicon ont été mis à jour pour utiliser les ressources de l'OSS en fonction du schéma de couleurs.
-- La langue par défaut pour les utilisateurs non authentifiés a été corrigée.
-- Le chargement de la langue principale est maintenant effectué avant le rendu de l'écran de connexion, évitant ainsi des problèmes d'affichage.
+- **Identité visuelle** : Amélioration de l'affichage du logo et du favicon dans l'en-tête selon le thème, et application systématique du favicon sur l'ensemble des pages.
+- **Expérience de connexion** : Correction de la langue par défaut pour les utilisateurs non authentifiés et optimisation du chargement des paramètres de langue lors de l'affichage de l'écran de connexion.
+- **Interface utilisateur** : Ajustement de la largeur des boutons d'appel à l'action (CTA) sur la page d'accueil pour une meilleure adaptation au texte.
 
 ### Évolutions techniques
-- Correction d'un problème lié aux rappels de `ResizeObserver` en environnement de développement, évitant ainsi une erreur bénigne.
-- La largeur du bouton d'appel à l'action (CTA) sur la page d'accueil a été adaptée à la longueur du texte.
+- **Développement** : Correction d'une erreur mineure liée aux rappels `ResizeObserver` dans l'environnement de développement.
 
 ### Autres changements
-- Mise à jour de la documentation d'auto-hébergement. [#68ae28d](https://github.com/suitenumerique/projects/commit/68ae28d)
+- **Documentation** : Mise à jour de la documentation relative à l'auto-hébergement (self-hosting).
