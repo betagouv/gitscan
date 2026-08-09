@@ -1,12 +1,13 @@
 {
   "url": "https://github.com/etalab/calendrier.api.gouv.fr",
   "name": "calendrier.api.gouv.fr",
-  "description": "Ce dépôt contient les données et l'API exposées sur le sous-domaine calendrier.api.gouv.fr. Il fournit une API JSON pour les jours fériés en France.",
+  "description": "API JSON fournissant les jours fériés en France. Ce projet permet l'accès aux données calendaires publiques via une interface standardisée.",
   "language": "HTML",
   "features": [
-    "API & Intégrations"
+    "API & Intégrations",
+    "Données & Schémas"
   ],
-  "audience": "Professionnels",
+  "audience": "Développeurs",
   "dependencies": [
     "@redocly/openapi-cli",
     "dredd",
@@ -14,16 +15,20 @@
   ],
   "components": [
     "API REST & GraphQL",
-    "Templates & Moteurs de rendu"
+    "Documentation & Schémas",
+    "CI/CD & Déploiement"
   ],
   "auth": {
     "methods": [
       "none"
     ]
   },
-  "tests": [],
+  "tests": [
+    "dredd"
+  ],
   "workflows": [
-    "CRON: build and deploy"
+    "CRON: build and deploy",
+    "keepalive.yml"
   ],
   "lastActivity": "2026-08-01T04:08:58Z",
   "status": "active",
@@ -32,11 +37,12 @@
   "metrics": {
     "stars": 21,
     "forks": 5,
-    "contributors": null,
     "openIssues": 18
   },
   "tags": [
     "Données & Open Data",
-    "Jours fériés"
+    "Standards & Schémas",
+    "Documentation",
+    "Écosystème beta.gouv / État"
   ]
 }
