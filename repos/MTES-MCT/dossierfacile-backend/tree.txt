@@ -45,6 +45,7 @@
 │           └── Local.bru
 ├── docker-compose.dev.yml
 ├── docs
+│   ├── auto-validation.md
 │   ├── export-db.sh
 │   ├── infrastructure_diagram.jpg
 │   └── sql-helper
@@ -188,6 +189,8 @@
 │           │           └── api
 │           │               └── dossierfacileapiowner
 │           │                   ├── TestApplication.java
+│           │                   ├── config
+│           │                   │   └── WebhookFilterTest.java
 │           │                   ├── property
 │           │                   │   ├── OwnerPropertyMapperTest.java
 │           │                   │   ├── PropertyApartmentSharingServiceImplTest.java
@@ -666,6 +669,7 @@
 │           │                   │       ├── ApiPartnerTenantControllerTest.java
 │           │                   │       └── ApiPartnerUserControllerTest.java
 │           │                   ├── register
+│           │                   │   ├── AbstractDocumentSaveStepTest.java
 │           │                   │   ├── DocumentAddedLogTest.java
 │           │                   │   ├── DocumentTaxCustomTextTest.java
 │           │                   │   ├── guarantor
@@ -810,8 +814,6 @@
 │       │   │               │   ├── MessageSourceConfig.java
 │       │   │               │   ├── TestingSecurityConfig.java
 │       │   │               │   ├── WebSecurityConfig.java
-│       │   │               │   ├── XSSFilter.java
-│       │   │               │   ├── XSSRequestWrapper.java
 │       │   │               │   └── filter
 │       │   │               │       ├── RateLimitingBoAdminFilesFilter.java
 │       │   │               │       └── RateLimitingBoDocumentsFilter.java
@@ -1454,6 +1456,7 @@
 │           │               │   ├── TenantServiceDissociateTenantTest.java
 │           │               │   ├── TenantServiceFindNextTenantInCoupleTest.java
 │           │               │   ├── TenantServiceRegroupTenantTest.java
+│           │               │   ├── TenantServiceSendCustomMessageTest.java
 │           │               │   ├── UserServiceTest.java
 │           │               │   └── impl
 │           │               │       └── KeycloakServiceImplTest.java
@@ -1483,8 +1486,14 @@
 │       │   │               │   ├── ImageMagickConfig.java
 │       │   │               │   ├── MailDependantBeanConfig.java
 │       │   │               │   ├── S3BucketConfig.java
-│       │   │               │   └── filter
-│       │   │               │       └── AbstractDownloadRateLimitingFilter.java
+│       │   │               │   ├── filter
+│       │   │               │   │   └── AbstractDownloadRateLimitingFilter.java
+│       │   │               │   └── xss
+│       │   │               │       ├── JacksonXssConfig.java
+│       │   │               │       ├── XssFilter.java
+│       │   │               │       ├── XssRequestWrapper.java
+│       │   │               │       ├── XssSanitizer.java
+│       │   │               │       └── XssStringJsonDeserializer.java
 │       │   │               ├── constants
 │       │   │               │   └── PartnerConstants.java
 │       │   │               ├── converter
@@ -1572,6 +1581,8 @@
 │       │   │               │   ├── ApartmentSharingLinkType.java
 │       │   │               │   ├── ApplicationType.java
 │       │   │               │   ├── AuthProvider.java
+│       │   │               │   ├── AutoValidationResultStatus.java
+│       │   │               │   ├── DocumentAutoValidationReason.java
 │       │   │               │   ├── DocumentCategory.java
 │       │   │               │   ├── DocumentCategoryStep.java
 │       │   │               │   ├── DocumentIAFileAnalysisStatus.java
@@ -1666,6 +1677,8 @@
 │       │   │               │   │   └── ResultModel.java
 │       │   │               │   └── log
 │       │   │               │       ├── ApplicationTypeChange.java
+│       │   │               │       ├── AutoValidationDocumentDetail.java
+│       │   │               │       ├── AutoValidationLogDetails.java
 │       │   │               │       ├── DeletedOwnerModel.java
 │       │   │               │       ├── DocumentLogDetails.java
 │       │   │               │       ├── EditedStep.java
@@ -1730,6 +1743,7 @@
 │       │   │               │   ├── RequestServiceImpl.java
 │       │   │               │   ├── S3FileStorageServiceImpl.java
 │       │   │               │   ├── SharedFileServiceImpl.java
+│       │   │               │   ├── TenantAutoValidationServiceImpl.java
 │       │   │               │   ├── TenantCommonServiceImpl.java
 │       │   │               │   ├── TenantLogCommonServiceImpl.java
 │       │   │               │   ├── UserFeatureAssignmentServiceImpl.java
@@ -1755,6 +1769,7 @@
 │       │   │               │   │   ├── QueueMessageService.java
 │       │   │               │   │   ├── RequestService.java
 │       │   │               │   │   ├── SharedFileService.java
+│       │   │               │   │   ├── TenantAutoValidationService.java
 │       │   │               │   │   ├── TenantCommonService.java
 │       │   │               │   │   ├── TenantLogCommonService.java
 │       │   │               │   │   └── UserFeatureAssignmentService.java
@@ -1989,7 +2004,9 @@
 │       │       │       ├── 20260616170500-add-unique-constraint-document-category.xml
 │       │       │       ├── 202606180000-add-document-ia-property-tax-analysis-flag.xml
 │       │       │       ├── 202607070000-add-email-to-guarantor.xml
-│       │       │       └── 202607150000-add-beneficiary-email-to-tenant.xml
+│       │       │       ├── 202607150000-add-beneficiary-email-to-tenant.xml
+│       │       │       ├── 20260723160000-add-ready-for-auto-validation-to-tenant.xml
+│       │       │       └── 20260731140000-update-ranked-tenant-exclude-auto-validation.xml
 │       │       └── linux-x86-64
 │       │           └── libzxing_jna.so
 │       └── test
@@ -1997,6 +2014,9 @@
 │           │   └── fr
 │           │       └── dossierfacile
 │           │           └── common
+│           │               ├── config
+│           │               │   └── xss
+│           │               │       └── XssSanitizationTest.java
 │           │               ├── converter
 │           │               │   └── EncryptedResultModelConverterTest.java
 │           │               ├── entity
@@ -2022,7 +2042,8 @@
 │           │               │   ├── LinkLogServiceImplTest.java
 │           │               │   ├── LogServiceImplTest.java
 │           │               │   ├── MimeTypeDetectionServiceTest.java
-│           │               │   └── PartnerCallBackServiceImplTest.java
+│           │               │   ├── PartnerCallBackServiceImplTest.java
+│           │               │   └── TenantAutoValidationServiceImplTest.java
 │           │               └── utils
 │           │                   ├── DateBasedFeatureToggleTest.java
 │           │                   ├── FileExtensionValidationTest.java
@@ -2064,7 +2085,8 @@
 │       │   │                   │       ├── DocumentIAClient.java
 │       │   │                   │       ├── DocumentIARequest.java
 │       │   │                   │       ├── DocumentIAResponse.java
-│       │   │                   │       └── DocumentIAResponseData.java
+│       │   │                   │       ├── DocumentIAResponseData.java
+│       │   │                   │       └── WorkflowV2StepParamOverride.java
 │       │   │                   ├── rule
 │       │   │                   │   ├── AbstractRulesValidationService.java
 │       │   │                   │   ├── AvisImpositionRulesValidationService.java
@@ -2143,6 +2165,9 @@
 │                   └── dossierfacile
 │                       └── document
 │                           └── analysis
+│                               ├── external
+│                               │   └── documentia
+│                               │       └── DocumentIAClientTest.java
 │                               ├── rule
 │                               │   ├── BulletinSalaireRulesValidationServiceTest.java
 │                               │   └── validator
@@ -2347,6 +2372,8 @@
 │       │   │                   ├── TaskName.java
 │       │   │                   ├── ademe
 │       │   │                   │   └── CheckAdemeApiTask.java
+│       │   │                   ├── autovalidation
+│       │   │                   │   └── TenantAutoValidationTask.java
 │       │   │                   ├── document
 │       │   │                   │   ├── DocumentDeleteMailService.java
 │       │   │                   │   ├── DocumentModel.java
@@ -2431,4 +2458,4 @@
     │   ├── CMakeLists.txt
     │   └── zxing_wrapper.cpp
     └── docker-compose.yml
-601 directories, 1936 files
+608 directories, 1956 files

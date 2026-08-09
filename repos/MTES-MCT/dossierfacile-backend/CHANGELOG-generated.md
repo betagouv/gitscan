@@ -1,19 +1,15 @@
-## Changelog : dossierfacile-backend (30 derniers jours, au 30 juillet 2026)
+## Changelog : dossierfacile-backend (30 derniers jours, au 06 août 2026)
 
 ### Résumé
-Cette version apporte des améliorations à la gestion des avis d'imposition, notamment la possibilité de téléverser des avis plus récents. Des corrections ont également été apportées pour une meilleure gestion des erreurs ADEME et des validations concernant les informations des locataires et garants. Enfin, la sécurité a été renforcée avec l'ajout du protocole SSL pour les logs.
+Les récentes mises à jour améliorent l'automatisation et la fiabilité de la plateforme. L'accent a été mis sur l'expérience utilisateur avec l'introduction de l'autovalidation et une gestion plus souple des documents fiscaux, tout en renforçant la sécurité et la qualité des données collectées via de nouvelles règles de saisie obligatoires.
 
 ### Évolutions fonctionnelles
-- Possibilité de téléverser des avis d'imposition plus récents pour l'analyse du dossier. [#1281](https://github.com/MTES-MCT/dossierfacile-backend/issues/1281)
-- L'email du bénéficiaire est désormais obligatoire lors de la création d'un locataire. [#1277](https://github.com/MTES-MCT/dossierfacile-backend/issues/1277)
-- L'email du co-locataire est désormais obligatoire. [#1274](https://github.com/MTES-MCT/dossierfacile-backend/issues/1274)
-- Ajout du champ email pour le garant personnel (locataire et interface administrateur). [#1273](https://github.com/MTES-MCT/dossierfacile-backend/issues/1273)
-- Amélioration de la gestion des erreurs génériques et inconnues provenant d'ADEME. [#1280](https://github.com/MTES-MCT/dossierfacile-backend/issues/1280)
+- Mise en place de l'autovalidation des dossiers [#1283](https://github.com/MTES-MCT/dossierfacile-backend/issues/1283).
+- Amélioration de la gestion documentaire : possibilité pour les utilisateurs de télécharger un avis d'imposition plus récent [#1281](https://github.com/MTES-MCT/dossierfacile-backend/issues/1281).
+- Renforcement de la collecte d'informations : l'adresse e-mail du bénéficiaire [#1277](https://github.com/MTES-MCT/dossierfacile-backend/issues/1277) et celle du co-titulaire [#1274](https://github.com/MTES-MCT/dossierfacile-backend/issues/1274) sont désormais obligatoires.
 
 ### Évolutions techniques
-- Ajout du protocole SSL pour la transmission des logs vers Logstash, améliorant ainsi la sécurité. [#1271](https://github.com/MTES-MCT/dossierfacile-backend/issues/1271)
-- Mise à jour des dépendances du projet. [#1272](https://github.com/MTES-MCT/dossierfacile-backend/issues/1272)
-- Correction d'un problème empêchant l'affichage des logs en SSL. [#1276](https://github.com/MTES-MCT/dossierfacile-backend/issues/1276)
-
-### Autres changements
-- Publication de la version 3.5.13.
+- Sécurité : correction d'une vulnérabilité potentielle liée aux webhooks propriétaires [#1290](https://github.com/MTES-MCT/dossierfacile-backend/issues/1290).
+- Architecture : migration vers la version 2 du moteur de workflow (Docia) [#1266](https://github.com/MTES-MCT/dossierfacile-backend/issues/1266).
+- Fiabilité : amélioration de l'analyse et de la gestion des erreurs provenant de l'ADEME [#1280](https://github.com/MTES-MCT/dossierfacile-backend/issues/1280).
+- Maintenance : résolution d'un problème de journalisation (logs) lors de l'utilisation du protocole SSL [#1276](https://github.com/MTES-MCT/dossierfacile-backend/issues/1276).
