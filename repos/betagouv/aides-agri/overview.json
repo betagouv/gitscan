@@ -1,63 +1,60 @@
 {
   "url": "https://github.com/betagouv/aides-agri",
   "name": "aides-agri",
-  "description": "Cette base de code gère un catalogue des dispositifs d’aide publics destinés aux exploitations agricoles françaises. Elle propose une interface d’administration et d’édition des aides, ainsi qu’un parcours usager pour les exploitants agricoles.",
+  "description": "Cette plateforme gère un catalogue des dispositifs d’aide publics destinés aux exploitations agricoles françaises. Elle propose un outil d'administration pour l'édition des aides et un parcours usager pour orienter les agriculteurs vers les dispositifs adaptés à leur situation.",
   "language": "Python",
   "features": [
-    "Gestion documentaire & Fichiers",
+    "Aides & Éligibilité",
+    "Administration & Backoffice",
     "Recherche & Filtres",
-    "Gestion des utilisateurs & Permissions",
-    "Notifications & Alertes",
-    "Formulaires & Démarches",
-    "Gestion métier générale",
-    "Aides & Éligibilité"
+    "Statistiques & Rapports",
+    "Formulaires & Démarches"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": "Professionnels",
   "dependencies": [
     "Django",
     "PostgreSQL",
-    "htmx.org",
+    "HTMX",
+    "Stimulus",
     "Sentry",
     "uv",
-    "just",
-    "Docker"
+    "Docker",
+    "django-dsfr"
   ],
   "components": [
-    "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
     "Django",
-    "Docker & Conteneurs"
+    "Design System (DSFR & UI libs)",
+    "Docker & Conteneurs",
+    "Templates & Moteurs de rendu",
+    "Tests"
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "session",
+      "mfa"
     ]
   },
   "tests": [
-    "pytest"
+    "pytest",
+    "Cypress",
+    "BrowserStack"
   ],
   "workflows": [
-    "Dependabot updates",
-    "CodeQL analysis",
-    "Code coverage"
+    "GitHub Actions",
+    "Scalingo deployment"
   ],
-  "lastActivity": "2026-07-11T06:09:13+02:00",
-  "status": "active",
-  "license": null,
+  "lastActivity": "2026-08-07T21:59:42+02:00",
+  "status": "maintained",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
   "tags": [
-    "Données & Open Data",
     "Écosystème beta.gouv / État",
     "Python",
     "Bases de données SQL",
     "Subventions & Finances publiques",
-    "Agriculture"
+    "Django & FastAPI",
+    "Design System & UI",
+    "CI/CD & GitHub Actions"
   ]
 }
