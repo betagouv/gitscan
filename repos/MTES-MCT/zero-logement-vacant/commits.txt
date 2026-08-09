@@ -1,3 +1,104 @@
+2026-08-07T16:40:36+02:00 - e2cca547 - Andrea Gueugnaut : Merge pull request #1958 from MTES-MCT/fix/review-app-secrets-exposure
+2026-08-07T16:35:20+02:00 - af921813 - Falinor : fix(ci): stop leaking secrets and shell-injecting PR titles in review-app.yml
+2026-08-07T16:35:20+02:00 - 7c1f09a7 - Falinor : fix(ci): scope review-app.yml token permissions per job
+2026-08-07T16:29:20+02:00 - 85d418b3 - Andrea Gueugnaut : Merge pull request #1937 from MTES-MCT/feat/housing-map-points
+2026-08-07T16:29:10+02:00 - ee144daf - Falinor : refactor(front): migrate housing list, map and counts to /housings
+2026-08-07T16:29:10+02:00 - d2b10897 - Falinor : style: format files
+2026-08-07T16:29:10+02:00 - caf261c7 - Falinor : refactor(front): consume GET /housings as a bare housing array
+2026-08-07T16:29:10+02:00 - 937a9c92 - Falinor : refactor(server): consolidate housing read path onto typed /housings endpoints
+2026-08-07T16:29:10+02:00 - 85233a50 - Falinor : refactor(server): return only housings from GET /housings
+2026-08-07T16:29:10+02:00 - 811f6204 - Falinor : fix(front): rename mock housing list/count handlers off the *Next suffix
+2026-08-07T16:29:10+02:00 - 753e5539 - Falinor : fix(e2e): follow the GET /housing -> /housings rename
+2026-08-07T16:29:10+02:00 - 73d6c001 - Falinor : fix(front): stop stale housing data leaking into the map after edits
+2026-08-07T16:29:10+02:00 - 5ce6682a - Falinor : feat: add sparse housing map projection and wire the map view
+2026-08-07T16:29:10+02:00 - 258114d0 - Falinor : fix(server): centralize housing geo-scope resolution and close read/write gaps
+2026-08-07T16:29:10+02:00 - 18d56663 - Falinor : fix(server): update OpenAPI spec for the /housings rename
+2026-08-07T16:18:12+02:00 - d2571da3 - Andrea Gueugnaut : Merge pull request #1955 from MTES-MCT/ci/playwright-e2e-parallel
+2026-08-07T16:15:52+02:00 - 2525f227 - Falinor : fix(ci): scope e2e.yml to least-privilege permissions
+2026-08-07T13:33:27+02:00 - c5a49c30 - Falinor : fix(ci): pin e2e checkouts to workflow_run head SHA
+2026-08-07T10:19:05+02:00 - 87f45d1a - Falinor : ci: run Playwright e2e in parallel with Cypress on main
+2026-08-06T16:32:40+02:00 - 63e6cda7 - Andrea Gueugnaut : Merge pull request #1915 from MTES-MCT/feat/campaign-sending-date-status
+2026-08-06T15:50:06+02:00 - e7177f28 - Falinor : style(docs): format files
+2026-08-06T15:45:34+02:00 - 3413d835 - Falinor : test(server): cover updateMany's onlyIfStatus and returned-ids behavior
+2026-08-06T15:37:35+02:00 - 776a09f9 - Falinor : fix(server): simplify today() and pin dependency versions per review feedback
+2026-08-06T15:19:53+02:00 - fa42237b - Falinor : docs: add design spec for campaign sending-date-gated housing status
+2026-08-06T15:19:53+02:00 - f7a71e62 - Falinor : feat(server): add daily cron settling sent-campaign housing statuses
+2026-08-06T15:19:53+02:00 - f3c45c0d - Falinor : feat(server): flip campaign housings back when send date is postponed
+2026-08-06T15:19:53+02:00 - edfe3373 - Falinor : refactor(server): attribute automated campaign status flips to the system account
+2026-08-06T15:19:53+02:00 - d8a0cc18 - Falinor : fix(server): address review findings on the sending-date housing flip
+2026-08-06T15:19:53+02:00 - c7d25f1f - Falinor : feat(server): add task flipping sent-campaign housings to waiting
+2026-08-06T15:19:53+02:00 - bff65aae - Falinor : feat(server): revert auto-flipped housings on send-date postpone
+2026-08-06T15:19:53+02:00 - bf934a35 - Falinor : feat(server): gate createFromGroup housing flip on the sending date
+2026-08-06T15:19:53+02:00 - a3538fbe - Falinor : feat(server): add campaign housing flip-to-waiting service
+2026-08-06T15:19:53+02:00 - 9c8aaf45 - Falinor : feat(server): flip campaign housings when update sets a reached sending date
+2026-08-06T15:19:53+02:00 - 9c4f2bed - Falinor : docs: add implementation plan for campaign send-date postpone revert
+2026-08-06T15:19:53+02:00 - 94d870d6 - Falinor : fix(server): address remaining code review findings on campaign send-date revert
+2026-08-06T15:19:53+02:00 - 92e057f0 - Falinor : feat(server): add campaign-sending-date backfill repair
+2026-08-06T15:19:53+02:00 - 902004ee - Falinor : fix(server): use startKyselyTransaction in campaign-housing-service tests
+2026-08-06T15:19:53+02:00 - 84fcddc5 - Falinor : fix(server): close remaining campaign send-date review findings
+2026-08-06T15:19:53+02:00 - 788dd9d8 - Falinor : feat(server): add isSendDateInFuture campaign helper
+2026-08-06T15:19:53+02:00 - 710e22b0 - Falinor : docs: update repair plan for streaming RowStream harness
+2026-08-06T15:19:53+02:00 - 6f2e90c9 - Falinor : docs: sync plan with system-actor attribution refactor
+2026-08-06T15:19:53+02:00 - 5d0bf1bb - Falinor : fix(front): warn about the postpone-revert only once the sending date is reached
+2026-08-06T15:19:53+02:00 - 5984da38 - Falinor : docs: add implementation plan for campaign sending-date status
+2026-08-06T15:19:53+02:00 - 5394a8c6 - Falinor : docs: reformat campaign send-date revert spec and plan
+2026-08-06T15:19:53+02:00 - 42aa70eb - Falinor : feat(server): add today() and isSendDateReached() helpers
+2026-08-06T15:19:53+02:00 - 3f69d26d - Falinor : refactor(server): rename campaignHousingService to kebab-case
+2026-08-06T15:19:53+02:00 - 3916109f - Falinor : feat(front): explain sending-date status gating in the campaign creation modal
+2026-08-06T15:19:53+02:00 - 2942bb62 - Falinor : fix(front): warn before postponing an already-sent campaign
+2026-08-06T15:19:53+02:00 - 1b877aab - Falinor : docs: add design spec for campaign send-date postpone revert
+2026-08-06T15:19:53+02:00 - 1924bcc4 - Falinor : feat(server): re-author old auto-flip events to the system account
+2026-08-06T15:19:53+02:00 - 05fb1e9d - Falinor : style: format files
+2026-08-06T15:19:53+02:00 - 0189cde2 - Falinor : fix(server): address review on campaign send-date backfill
+2026-08-06T13:38:38+02:00 - c7579c58 - Andrea Gueugnaut : Merge pull request #1954 from MTES-MCT/chore/mise-en-production-tasks-relation
+2026-08-06T11:37:56+02:00 - 6b7255a5 - Falinor : chore(skill): link shipped tasks to mise-en-production release note
+2026-08-06T09:55:21+02:00 - 92614c33 - Falinor : fix(server): owner do_not_contact default to false
+2026-08-06T09:40:11+02:00 - 67e9546f - Raphaël Courivaud : Merge pull request #1952 from MTES-MCT/fix/zlv-usage-enrichment-subadditivity
+2026-08-06T09:37:56+02:00 - 25560bce - Raphaël Courivaud : docs(context): sharpen Enrichissement and add Ligne LOVAC to the glossary
+2026-08-06T09:37:50+02:00 - 213de297 - Raphaël Courivaud : fix(analytics): make enrichment counters cover every owner:updated field
+2026-08-05T17:45:07+02:00 - a829d204 - Guillaume Claverie : Merge pull request #1936 from MTES-MCT/fix/analysis-table-pagination
+2026-08-05T17:43:37+02:00 - e6277d98 - Guillaume Claverie : fix(frontend): stabilize table pagination updates
+2026-08-05T17:43:37+02:00 - b6e01dca - Guillaume Claverie : fix(frontend): preserve focus when pagination shrinks
+2026-08-05T17:43:37+02:00 - b4c20b7e - Guillaume Claverie : fix(frontend): paginate analysis tables
+2026-08-05T17:43:37+02:00 - b2f0f4ab - Guillaume Claverie : fix(frontend): address pagination review feedback
+2026-08-05T17:43:37+02:00 - 9f6ff000 - Guillaume Claverie : fix(frontend): handle pagination edge cases
+2026-08-05T17:21:19+02:00 - 0c584ed5 - Raphaël Courivaud : fix(analytics): declare the LOVAC public criterion and count housing, not premises
+2026-08-05T15:17:34+02:00 - d76ac9c2 - Raphaël Courivaud : fix(analytics): rework marts_zlv_usage on a single attribution rule
+2026-08-05T14:52:07+02:00 - e00f0dd5 - Raphaël Courivaud : fix(analytics): resolve event author establishment for deleted users
+2026-08-05T14:15:59-03:00 - d70b61ba - Raphaël Courivaud : Merge pull request #1951 from MTES-MCT/fix/morphology-public-criterion-and-housing-grain
+2026-08-05T14:15:46-03:00 - 2c55aaac - Raphaël Courivaud : Merge pull request #1949 from MTES-MCT/fix/zlv-usage-mart-rework
+2026-08-05T14:15:28-03:00 - 83d7c96e - Raphaël Courivaud : Merge pull request #1948 from MTES-MCT/fix/events-establishment-attribution-deleted-users
+2026-08-04T19:13:04+02:00 - 403fb63c - Guillaume Claverie : Merge pull request #1935 from MTES-MCT/fix/intercommunality-filter-kind-admin
+2026-08-04T18:56:21+02:00 - 2142b9d2 - Guillaume Claverie : test(server): stabilize locality repository fixtures
+2026-08-04T16:52:31+02:00 - a00b6e98 - Guillaume Claverie : Merge pull request #1943 from MTES-MCT/feat/fix-analysis-dashboard-loading
+2026-08-04T16:51:21+02:00 - 83516e40 - Guillaume Claverie : Merge pull request #1945 from MTES-MCT/fix/demo-seed-better-auth
+2026-08-04T16:43:14+02:00 - a28ce874 - Guillaume Claverie : Merge pull request #1947 from MTES-MCT/agent/fix-vite-preload-modal-focus
+2026-08-04T16:34:05+02:00 - a7d33d64 - Guillaume Claverie : fix(frontend): keep stale chunk recovery reachable in modals
+2026-08-04T16:21:27+02:00 - af09d3bb - Guillaume Claverie : fix(analysis): address dashboard resilience review
+2026-08-04T16:14:16+02:00 - 10e43a80 - Guillaume Claverie : refactor(establishments): remove legacy intercommunality helper
+2026-08-04T16:14:07+02:00 - 72c7e190 - Guillaume Claverie : test(server): move demo seed test into test folder
+2026-08-04T16:06:18+02:00 - 2000a6a1 - Guillaume Claverie : Merge pull request #1942 from MTES-MCT/fix/recover-stale-vite-chunks
+2026-08-04T14:14:51+02:00 - e87acaff - Guillaume Claverie : refactor(server): clarify Better Auth seed helper
+2026-08-04T14:14:51+02:00 - 3479fe40 - Guillaume Claverie : test(server): cover generated demo auth identities
+2026-08-04T14:14:51+02:00 - 17dcb37d - Guillaume Claverie : fix(server): keep demo seed compatible with Better Auth
+2026-08-04T14:14:38+02:00 - c6929116 - Guillaume Claverie : fix(frontend): recover from stale Vite chunks
+2026-08-04T14:14:38+02:00 - 2b193201 - Guillaume Claverie : fix(frontend): harden stale chunk recovery
+2026-08-04T14:14:38+02:00 - 1d217b3e - Guillaume Claverie : fix(frontend): preserve focus on preload errors
+2026-08-04T14:14:07+02:00 - e7854300 - Guillaume Claverie : refactor: keep metabase concurrency limit local
+2026-08-04T14:14:07+02:00 - a8c70db5 - Guillaume Claverie : fix: stabilize Metabase card loading
+2026-08-04T14:14:07+02:00 - a4d380bf - Guillaume Claverie : refactor: narrow Metabase loading changes
+2026-08-04T14:14:07+02:00 - 97d08b36 - Guillaume Claverie : test: remove rollout-specific wording
+2026-08-04T14:14:07+02:00 - 5e3141b4 - Guillaume Claverie : fix: address analysis dashboard regressions
+2026-08-04T14:14:07+02:00 - 52272668 - Guillaume Claverie : fix(frontend): preserve dashboard tab relationships
+2026-08-04T14:14:07+02:00 - 458e75ea - Guillaume Claverie : fix: stabilize analysis dashboard loading
+2026-08-04T14:14:07+02:00 - 1d8e92ad - Guillaume Claverie : chore: keep metabase deployment config unchanged
+2026-08-04T13:58:53+02:00 - f1f7350c - Guillaume Claverie : fix(establishments): clarify administrative kind contract
+2026-08-04T13:52:37+02:00 - 9e834508 - Guillaume Claverie : fix(establishments): filter intercommunalities by administrative kind
+2026-08-04T09:28:11+02:00 - d8ec5ce5 - Guillaume Claverie : Merge pull request #1927 from MTES-MCT/claude/rgaa-7-1-accessibility-0c0fc1
+2026-08-04T09:27:24+02:00 - f4178d46 - Guillaume Claverie : Merge pull request #1928 from MTES-MCT/claude/rgaa-11-10-form-validation-4cb66c
+2026-08-03T18:20:39+02:00 - d0dcec7c - Guillaume Claverie : fix(frontend): address RGAA review feedback
+2026-08-03T18:10:21+02:00 - f95c24b4 - Jouin : fix(frontend): expose accessible name and expanded state for AT (RGAA 7.1)
+2026-08-03T18:10:18+02:00 - 217eb5ad - Jouin : fix(frontend): associate form validation errors with fields for RGAA 11.10
 2026-07-31T16:59:34+02:00 - c3bb339a - Andrea Gueugnaut : Merge pull request #1836 from MTES-MCT/feat/do-not-contact-owner
 2026-07-31T16:24:56+02:00 - 6082b043 - Falinor : fix(frontend): update stale configureTestStore call
 2026-07-31T15:46:55+02:00 - 6869d076 - Jouin : fix(server): exclude do-not-contact owners from housing exports

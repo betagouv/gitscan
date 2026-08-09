@@ -182,6 +182,7 @@
 ├── AGENTS.md
 ├── Aptfile
 ├── CLAUDE.md -> AGENTS.md
+├── CONTEXT.md
 ├── LICENSE
 ├── README.md
 ├── analytics
@@ -414,6 +415,7 @@
 │   │   │   │   │   ├── int_analysis_city_features.sql
 │   │   │   │   │   ├── int_analysis_dvg_wide.sql
 │   │   │   │   │   ├── int_analysis_establishments_zlv_usage.sql
+│   │   │   │   │   ├── int_analysis_establishments_zlv_usage_annuel.sql
 │   │   │   │   │   ├── int_analysis_housing_establishment_echelons.sql
 │   │   │   │   │   ├── int_analysis_housing_owners.sql
 │   │   │   │   │   ├── int_analysis_housing_with_out_flag.sql
@@ -468,7 +470,10 @@
 │   │   │   │   │   ├── int_lovac_fil_2025.sql
 │   │   │   │   │   ├── int_lovac_fil_2026.sql
 │   │   │   │   │   ├── int_lovac_geo_code.sql
-│   │   │   │   │   └── int_lovac_history_housing.sql
+│   │   │   │   │   ├── int_lovac_history_housing.sql
+│   │   │   │   │   ├── int_lovac_morphology_housing.sql
+│   │   │   │   │   ├── int_lovac_morphology_locals.sql
+│   │   │   │   │   └── schemas.yml
 │   │   │   │   ├── production
 │   │   │   │   │   ├── README_EVENTS_FLOW.md
 │   │   │   │   │   ├── int_production_campaigns.sql
@@ -482,11 +487,13 @@
 │   │   │   │   │   ├── int_production_establishments.sql
 │   │   │   │   │   ├── int_production_establishments_campaigns.sql
 │   │   │   │   │   ├── int_production_establishments_campaigns_contacts.sql
+│   │   │   │   │   ├── int_production_establishments_echelons.sql
 │   │   │   │   │   ├── int_production_establishments_groups.sql
 │   │   │   │   │   ├── int_production_establishments_housing.sql
 │   │   │   │   │   ├── int_production_establishments_localities.sql
 │   │   │   │   │   ├── int_production_establishments_perimeters.sql
 │   │   │   │   │   ├── int_production_establishments_users.sql
+│   │   │   │   │   ├── int_production_event_authors.sql
 │   │   │   │   │   ├── int_production_events.sql
 │   │   │   │   │   ├── int_production_events_new.sql
 │   │   │   │   │   ├── int_production_events_old.sql
@@ -545,6 +552,7 @@
 │   │   │   │   │   ├── marts_bi_housing_owners.sql
 │   │   │   │   │   ├── marts_bi_housing_zlv_usage.sql
 │   │   │   │   │   ├── marts_zlv_usage.sql
+│   │   │   │   │   ├── marts_zlv_usage_annuel.sql
 │   │   │   │   │   └── schema.yml
 │   │   │   │   ├── common
 │   │   │   │   │   ├── marts_common_cities.sql
@@ -707,6 +715,7 @@
 │   │   │   ├── departements_france.csv
 │   │   │   ├── direction_territoriale.csv
 │   │   │   ├── fusions.csv
+│   │   │   ├── lovac_public_criteria.csv
 │   │   │   ├── nature_juridique.csv
 │   │   │   ├── ngeo-anct-cog2023.csv
 │   │   │   ├── opah.csv
@@ -727,6 +736,8 @@
 │   │   │   │   ├── test_housing_geo_code_valid.sql
 │   │   │   │   ├── test_housing_living_area_reasonable.sql
 │   │   │   │   ├── test_housing_vacancy_year_reasonable.sql
+│   │   │   │   ├── test_morphology_public_criterion_declared.sql
+│   │   │   │   ├── test_morphology_tagged_lovac_consistency.sql
 │   │   │   │   ├── test_zlovac_buildings_in_housing.sql
 │   │   │   │   ├── test_zlovac_dgfip_address_clean.sql
 │   │   │   │   ├── test_zlovac_geolocation_source_coverage.sql
@@ -761,8 +772,11 @@
 │   │   │       │   ├── test_establishment_activation_typology_valid.sql
 │   │   │       │   ├── test_establishment_active_has_users.sql
 │   │   │       │   ├── test_establishment_type_valid.sql
-│   │   │       │   └── test_zlv_usage_maj_attributed_to_own_users.sql
+│   │   │       │   ├── test_zlv_usage_annual_sum_ge_total.sql
+│   │   │       │   ├── test_zlv_usage_maj_attributed_to_own_users.sql
+│   │   │       │   └── test_zlv_usage_reconciles_with_housing.sql
 │   │   │       ├── events
+│   │   │       │   ├── test_events_establishment_resolution_rate.sql
 │   │   │       │   ├── test_events_include_all_versions.sql
 │   │   │       │   ├── test_events_type_valid.sql
 │   │   │       │   ├── test_events_user_source_valid.sql
@@ -780,7 +794,8 @@
 │   │   │       └── stats
 │   │   │           ├── test_kpi_events_both_versions_present.sql
 │   │   │           ├── test_kpi_followup_ended_minimum.sql
-│   │   │           └── test_kpi_housing_with_followup_minimum.sql
+│   │   │           ├── test_kpi_housing_with_followup_minimum.sql
+│   │   │           └── test_kpi_zlv_usage_thresholds.sql
 │   │   └── uv.lock
 │   ├── docker-compose-metabase.yml
 │   ├── docker-compose.yml
@@ -996,6 +1011,8 @@
 │   ├── decisions
 │   │   ├── 20240516132303-use-markdown-any-decision-records.md
 │   │   ├── 20240603162604-msw-pour-mocker-l-api-dans-les-tests-front.md
+│   │   ├── 20260805142324-millesime-inclus-provenance-d-import-et-non-presence-lovac.md
+│   │   ├── 20260805163000-attribution-des-metriques-d-usage-par-evenement-utilisateur.md
 │   │   ├── README.md
 │   │   └── TEMPLATE.md
 │   ├── explorations
@@ -1077,8 +1094,10 @@
 │   │   │   ├── 2026-07-08-kysely-phase2-housingOwnerRepository-tests.md
 │   │   │   ├── 2026-07-08-kysely-phase2-ownerRepository-core-crud-tests.md
 │   │   │   ├── 2026-07-08-zlv-repair-harness.md
+│   │   │   ├── 2026-07-15-campaign-sending-date-status.md
 │   │   │   ├── 2026-07-17-save-campaign.md
 │   │   │   ├── 2026-07-20-campaign-documents.md
+│   │   │   ├── 2026-07-23-campaign-sending-date-revert.md
 │   │   │   ├── 2026-07-23-kysely-phase2-authIdentityService-tests.md
 │   │   │   ├── 2026-07-23-kysely-phase2-datafoncierHousingRepository-tests.md
 │   │   │   ├── 2026-07-23-kysely-phase2-datafoncierOwnersRepository-tests.md
@@ -1123,8 +1142,10 @@
 │   │       ├── 2026-06-13-reference-data-cache-design.md
 │   │       ├── 2026-07-07-knex-to-kysely-migration-design.md
 │   │       ├── 2026-07-08-zlv-repair-harness-design.md
+│   │       ├── 2026-07-15-campaign-sending-date-status-design.md
 │   │       ├── 2026-07-17-save-campaign-design.md
-│   │       └── 2026-07-20-campaign-documents-design.md
+│   │       ├── 2026-07-20-campaign-documents-design.md
+│   │       └── 2026-07-23-campaign-sending-date-revert-design.md
 │   └── technical
 │       ├── .gitignore
 │       ├── DAT-Dossier-Architecture-Technique.md
@@ -1217,7 +1238,9 @@
 │   │   │   │   └── test
 │   │   │   │       └── AnalysisCard.test.tsx
 │   │   │   ├── Aside
-│   │   │   │   └── Aside.tsx
+│   │   │   │   ├── Aside.tsx
+│   │   │   │   └── test
+│   │   │   │       └── Aside.test.tsx
 │   │   │   ├── Auth
 │   │   │   │   ├── RequireAuth.tsx
 │   │   │   │   └── RequireGuest.tsx
@@ -1241,6 +1264,7 @@
 │   │   │   │   ├── campaign.module.scss
 │   │   │   │   └── test
 │   │   │   │       ├── CampaignDocumentsTab.test.tsx
+│   │   │   │       ├── CampaignSentAtModal.test.tsx
 │   │   │   │       ├── SaveCampaignFlow.test.tsx
 │   │   │   │       └── SelectGroupModal.test.tsx
 │   │   │   ├── Collapse
@@ -1263,7 +1287,9 @@
 │   │   │   │   └── draft.module.scss
 │   │   │   ├── Dropdown
 │   │   │   │   ├── Dropdown.tsx
-│   │   │   │   └── dropdown.module.scss
+│   │   │   │   ├── dropdown.module.scss
+│   │   │   │   └── test
+│   │   │   │       └── Dropdown.test.tsx
 │   │   │   ├── EventsHistory
 │   │   │   │   ├── AggregatedEventCard.tsx
 │   │   │   │   ├── EventCard.tsx
@@ -1440,6 +1466,7 @@
 │   │   │   │   ├── map.module.scss
 │   │   │   │   ├── status-colors.ts
 │   │   │   │   └── test
+│   │   │   │       ├── BuildingAside.test.tsx
 │   │   │   │       └── FullscreenControl.test.tsx
 │   │   │   ├── Notification
 │   │   │   │   └── Notification.tsx
@@ -1594,6 +1621,7 @@
 │   │   │   │   ├── useSelection.test.tsx
 │   │   │   │   └── useUser.test.tsx
 │   │   │   ├── useActivationEmail.tsx
+│   │   │   ├── useActiveHousingCount.ts
 │   │   │   ├── useAsyncSubmission.ts
 │   │   │   ├── useAuth.ts
 │   │   │   ├── useAvailableEstablishments.tsx
@@ -1624,7 +1652,6 @@
 │   │   ├── index.tsx
 │   │   ├── layouts
 │   │   │   ├── AuthenticatedLayout.tsx
-│   │   │   ├── FeatureFlagLayout.tsx
 │   │   │   └── GuestLayout.tsx
 │   │   ├── lib
 │   │   │   └── auth-client.ts
@@ -1730,6 +1757,7 @@
 │   │   │   ├── test
 │   │   │   │   ├── document.service.test.tsx
 │   │   │   │   ├── draft.service.test.ts
+│   │   │   │   ├── housing.service.test.tsx
 │   │   │   │   ├── owner.service.test.ts
 │   │   │   │   ├── reset-link.service.test.ts
 │   │   │   │   └── session-aware-base-query.test.ts
@@ -1756,12 +1784,11 @@
 │   │   │   ├── config.ts
 │   │   │   ├── dateUtils.ts
 │   │   │   ├── elementUtils.ts
-│   │   │   ├── featureFlags.test.ts
-│   │   │   ├── featureFlags.ts
 │   │   │   ├── fetchUtils.ts
 │   │   │   ├── fileUploadErrors.ts
 │   │   │   ├── jsonUtils.ts
 │   │   │   ├── number-utils.ts
+│   │   │   ├── preloadError.ts
 │   │   │   ├── sentry.ts
 │   │   │   ├── sentryEnhancer.ts
 │   │   │   ├── storeUtils.tsx
@@ -1769,6 +1796,7 @@
 │   │   │   ├── tableSortUtils.ts
 │   │   │   └── test
 │   │   │       ├── arrayUtils.test.ts
+│   │   │       ├── preloadError.test.ts
 │   │   │       └── stringUtils.test.ts
 │   │   ├── views
 │   │   │   ├── Account
@@ -1794,9 +1822,10 @@
 │   │   │   │   │       └── UsersView.test.tsx
 │   │   │   │   ├── ResetPasswordView.tsx
 │   │   │   │   ├── account-side-menu.module.scss
-│   │   │   │   └── forgotten-password-view.module.scss
+│   │   │   │   ├── forgotten-password-view.module.scss
+│   │   │   │   └── test
+│   │   │   │       └── ResetPasswordView.test.tsx
 │   │   │   ├── Analysis
-│   │   │   │   ├── AnalysisView.tsx
 │   │   │   │   ├── AnalysisViewNext.tsx
 │   │   │   │   └── test
 │   │   │   │       └── AnalysisViewNext.test.tsx
@@ -1924,6 +1953,7 @@
 │   │   │   ├── EstablishmentDTO.ts
 │   │   │   ├── EstablishmentFiltersDTO.ts
 │   │   │   ├── EstablishmentKind.ts
+│   │   │   ├── EstablishmentKindAdmin.ts
 │   │   │   ├── EstablishmentSource.ts
 │   │   │   ├── EventDTO.ts
 │   │   │   ├── EventPayloads.ts
@@ -2050,6 +2080,7 @@
 │   │   │   ├── housing-batch-update-payload.ts
 │   │   │   ├── housing-document-payload.ts
 │   │   │   ├── housing-filters.ts
+│   │   │   ├── housing-list-query.ts
 │   │   │   ├── housing-update-payload.ts
 │   │   │   ├── id.ts
 │   │   │   ├── index.ts
@@ -2076,6 +2107,7 @@
 │   │   │   │   ├── housing-batch-update-payload.test.ts
 │   │   │   │   ├── housing-document-payload.test.ts
 │   │   │   │   ├── housing-filters.test.ts
+│   │   │   │   ├── housing-list-query.test.ts
 │   │   │   │   ├── housing-update-payload.test.ts
 │   │   │   │   ├── id.test.ts
 │   │   │   │   ├── note-payload.test.ts
@@ -2152,6 +2184,7 @@
 │   │   │   ├── groupController.ts
 │   │   │   ├── housingController.ts
 │   │   │   ├── housingExportController.ts
+│   │   │   ├── housingGeoScope.ts
 │   │   │   ├── housingOwnerController.ts
 │   │   │   ├── localityController.ts
 │   │   │   ├── noteController.test.ts
@@ -2191,6 +2224,7 @@
 │   │   │   ├── InvalidFileTypeError.ts
 │   │   │   ├── authenticationFailedError.ts
 │   │   │   ├── authenticationMissingError.ts
+│   │   │   ├── badGatewayError.ts
 │   │   │   ├── badRequestError.ts
 │   │   │   ├── buildingMissingError.ts
 │   │   │   ├── campaignMissingError.ts
@@ -2204,6 +2238,7 @@
 │   │   │   ├── fileValidationError.ts
 │   │   │   ├── filesMissingError.ts
 │   │   │   ├── forbiddenError.ts
+│   │   │   ├── gatewayTimeoutError.ts
 │   │   │   ├── groupMissingError.ts
 │   │   │   ├── housingExistsError.ts
 │   │   │   ├── housingMissingError.ts
@@ -2221,6 +2256,7 @@
 │   │   │   ├── routeNotFoundError.ts
 │   │   │   ├── signupLinkExpiredError.ts
 │   │   │   ├── signupLinkMissingError.ts
+│   │   │   ├── systemUserMissingError.ts
 │   │   │   ├── testAccountError.ts
 │   │   │   ├── unprocessableEntityError.ts
 │   │   │   ├── userDeletedError.ts
@@ -2488,7 +2524,9 @@
 │   │   │   │   │   │   ├── 20240404235456_owners.ts
 │   │   │   │   │   │   ├── 20240404235458_buildings.ts
 │   │   │   │   │   │   ├── 20240404235459_housings.ts
-│   │   │   │   │   │   └── 20250113145122_precisions.ts
+│   │   │   │   │   │   ├── 20250113145122_precisions.ts
+│   │   │   │   │   │   └── test
+│   │   │   │   │   │       └── 20240404235443_users.test.ts
 │   │   │   │   │   ├── development
 │   │   │   │   │   │   ├── 20240404234042_load-common-data.ts
 │   │   │   │   │   │   ├── 20240404235442_establishments.ts
@@ -2514,6 +2552,7 @@
 │   │   │   │   │   ├── production
 │   │   │   │   │   │   ├── 20240405010603_establishments.ts
 │   │   │   │   │   │   └── 20250113145122_precisions.ts
+│   │   │   │   │   ├── seed-better-auth-identities.ts
 │   │   │   │   │   └── test
 │   │   │   │   │       ├── 20240405011849_establishments.ts
 │   │   │   │   │       ├── 20250113145122_precisions.ts
@@ -2595,6 +2634,7 @@
 │   │   │   ├── UserPerimeterApi.test.ts
 │   │   │   ├── UserPerimeterApi.ts
 │   │   │   └── test
+│   │   │       ├── CampaignApi.test.ts
 │   │   │       ├── DocumentApi.test.ts
 │   │   │       ├── EventApi.test.ts
 │   │   │       ├── GroupApi.test.ts
@@ -2677,6 +2717,13 @@
 │   │   │   ├── fix-users-portaildf
 │   │   │   │   ├── .gitignore
 │   │   │   │   └── index.ts
+│   │   │   ├── flip-sent-campaign-housings
+│   │   │   │   ├── flip-sent-campaign-housings.sh
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── task.ts
+│   │   │   │   └── test
+│   │   │   │       ├── index.test.ts
+│   │   │   │       └── task.test.ts
 │   │   │   ├── import-dpe
 │   │   │   │   ├── .gitignore
 │   │   │   │   ├── README.md
@@ -2861,6 +2908,7 @@
 │   │   │   │       └── export-structures-sans-acces-lovac.py
 │   │   │   ├── repairs
 │   │   │   │   ├── README.md
+│   │   │   │   ├── campaign-sending-date.ts
 │   │   │   │   ├── cli.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── lib
@@ -2874,6 +2922,7 @@
 │   │   │   │   │   │   └── plan.test.ts
 │   │   │   │   │   └── types.ts
 │   │   │   │   └── test
+│   │   │   │       ├── campaign-sending-date.test.ts
 │   │   │   │       └── cli.test.ts
 │   │   │   ├── shared
 │   │   │   │   ├── elapsed.ts
@@ -2895,6 +2944,7 @@
 │   │   │   ├── ban
 │   │   │   │   ├── ban-api.ts
 │   │   │   │   └── ban.ts
+│   │   │   ├── campaign-housing-service.ts
 │   │   │   ├── ceremaService
 │   │   │   │   ├── __mocks__
 │   │   │   │   │   └── mockCeremaService.ts
@@ -2919,15 +2969,19 @@
 │   │   │   ├── metabase
 │   │   │   │   ├── metabase-api.ts
 │   │   │   │   ├── metabase-cache.ts
+│   │   │   │   ├── metabase-concurrency.ts
 │   │   │   │   ├── metabase-normalize.ts
 │   │   │   │   ├── metabase-service.ts
 │   │   │   │   └── test
-│   │   │   │       └── metabase-cache.test.ts
+│   │   │   │       ├── metabase-api.test.ts
+│   │   │   │       ├── metabase-cache.test.ts
+│   │   │   │       └── metabase-concurrency.test.ts
 │   │   │   ├── ownerCountryDetection.ts
 │   │   │   ├── ownerDistanceService.ts
 │   │   │   ├── posthogService.ts
 │   │   │   ├── test
 │   │   │   │   ├── authIdentityService.test.ts
+│   │   │   │   ├── campaign-housing-service.test.ts
 │   │   │   │   ├── establishmentAuthService.test.ts
 │   │   │   │   ├── file-validation.test.ts
 │   │   │   │   └── ownerDistanceService.test.ts
@@ -2965,11 +3019,13 @@
 │   │   └── utils
 │   │       ├── addressNormalization.test.ts
 │   │       ├── addressNormalization.ts
+│   │       ├── date.ts
 │   │       ├── diff.ts
 │   │       ├── excelUtils.ts
 │   │       ├── object.ts
 │   │       ├── stringUtils.ts
 │   │       └── test
+│   │           ├── date.test.ts
 │   │           └── object.test.ts
 │   ├── tsconfig.app.json
 │   ├── tsconfig.json
@@ -3032,4 +3088,4 @@
 ├── tsconfig.base.json
 ├── tsconfig.json
 └── yarn.lock
-467 directories, 2567 files
+473 directories, 2617 files
