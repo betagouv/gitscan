@@ -1,51 +1,61 @@
 {
   "url": "https://github.com/betagouv/collectif-objets",
   "name": "collectif-objets",
-  "description": "Collectif Objets est un site web permettant aux communes françaises de recenser leur patrimoine mobilier monument historique et aux conservateurs d'examiner ces recensements.",
+  "description": "Plateforme permettant aux communes françaises de recenser leur patrimoine mobilier monument historique et aux conservateurs d'examiner ces recensements.",
   "language": "Ruby",
   "features": [
-    "Gestion documentaire & Fichiers",
-    "Authentification & Accès",
-    "Visualisation de données & Cartographie"
+    "Gestion métier générale",
+    "Administration & Backoffice",
+    "Gestion des médias & Assets",
+    "Recherche & Filtres",
+    "Visualisation de données & Cartographie",
+    "Statistiques & Rapports",
+    "Authentification & Accès"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "Rails",
+    "Ruby on Rails",
+    "PostgreSQL",
     "Devise",
     "Pundit",
+    "GoodJob",
     "Vite",
-    "Turbo",
     "Stimulus",
-    "DSFR"
+    "DSFR",
+    "Scaleway S3",
+    "Brevo"
   ],
   "components": [
-    "API REST & GraphQL",
+    "Ruby on Rails",
     "PostgreSQL & SQL",
-    "React / Next.js",
     "TypeScript / JavaScript",
-    "Python (scripts & backend)"
+    "CI/CD & Déploiement",
+    "Design System (DSFR & UI libs)",
+    "Docker & Conteneurs",
+    "Authentification (composant)",
+    "Stockage objet",
+    "Bibliothèques & Packages",
+    "Templates & Moteurs de rendu"
   ],
   "auth": {
     "methods": [
       "email-password",
-      "oauth2"
-    ],
-    "providers": []
+      "magic-link"
+    ]
   },
-  "tests": "Tests E2E et unitaires",
-  "workflows": [],
-  "lastActivity": "2024-02-29T14:38:44Z",
-  "status": "active",
-  "license": null,
+  "tests": "Tests E2E (axe pour l'accessibilité) et tests unitaires pour les modèles.",
+  "workflows": [
+    "ci.yml"
+  ],
+  "status": "maintained",
   "hasDocumentation": true,
-  "metrics": null,
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "React & Next.js",
-    "TypeScript",
-    "Déploiement & Hosting",
-    "Python",
-    "Bases de données SQL"
+    "Design System & UI",
+    "Git & DevOps",
+    "Docker & Conteneurs",
+    "CI/CD & GitHub Actions",
+    "Accessibilité"
   ]
 }
