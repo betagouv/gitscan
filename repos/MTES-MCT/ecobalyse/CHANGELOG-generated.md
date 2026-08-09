@@ -1,31 +1,37 @@
-## Changelog : ecobalyse (30 derniers jours, au 4 août 2026)
+## Changelog : ecobalyse (30 derniers jours, au 7 août 2026)
 
 ### Résumé
-Ce mois-ci, ecobalyse a considérablement enrichi ses capacités de modélisation, notamment pour le secteur des véhicules électriques et la gestion des processus de transport. L'expérience utilisateur a été améliorée par de nouveaux outils de manipulation de données et une interface plus intuitive, tandis que la sécurité et l'automatisation des processus de calcul ont été renforcées.
+Cette période a été marquée par un enrichissement significatif de la base de données (alimentation, véhicules, matériaux) et une amélioration des capacités de modélisation grâce à l'introduction de catégories de produits génériques et d'opérations d'assemblage. L'expérience utilisateur a également été affinée avec de nouveaux éléments d'interface et une meilleure sécurisation des accès API.
 
 ### Évolutions fonctionnelles
-- **Modélisation et données** : 
-    - Extension des processus pour les véhicules électriques (normes, consommation, phase d'usage) [#2622](https://github.com/MTES-MCT/ecobalyse/issues/2622) [#2687](https://github.com/MTES-MCT/ecobalyse/issues/2687) [#2619](https://github.com/MTES-MCT/ecobalyse/issues/2619) [#2594](https://github.com/MTES-MCT/ecobalyse/issues/2594).
-    - Gestion avancée des transports (étiquettes de refroidissement, transport pré-assemblage) [#2657](https://github.com/MTES-MCT/ecobalyse/issues/2657) [#2654](https://github.com/MTES-MCT/ecobalyse/issues/2654) [#2616](https://github.com/MTES-MCT/ecobalyse/issues/2616).
-    - Nouveaux formats d'import/export (EcoSpold1, BAFU via Simapro) [#2316](https://github.com/MTES-MCT/ecobalyse/issues/2316) [#2626](https://github.com/MTES-MCT/ecobalyse/issues/2626).
-    - Corrections de données (aluminium, acier, diesel, calcul de score alimentaire) [#2679](https://github.com/MTES-MCT/ecobalyse/issues/2679) [#2641](https://github.com/MTES-MCT/ecobalyse/issues/2641) [#2655](https://github.com/MTES-MCT/ecobalyse/issues/2655) [#2676](https://github.com/MTES-MCT/ecobalyse/issues/2676).
-- **Expérience utilisateur (UX/UI)** : 
-    - Implémentation des opérations d'assemblage [#2683](https://github.com/MTES-MCT/ecobalyse/issues/2683) et de nouvelles transformations avec valeurs par défaut [#2636](https://github.com/MTES-MCT/ecobalyse/issues/2636).
-    - Améliorations de l'interface (étiquettes contextuelles [#2632](https://github.com/MTES-MCT/ecobalyse/issues/2632), bouton d'ajout rapide [#2664](https://github.com/MTES-MCT/ecobalyse/issues/2664), résolution des noms de régions [#2658](https://github.com/MTES-MCT/ecobalyse/issues/2658), lien de feedback [#2612](https://github.com/MTES-MCT/ecobalyse/issues/2612)).
-    - Correction de l'affichage des graphiques en mode sombre [#2690](https://github.com/MTES-MCT/ecobalyse/issues/2690).
-- **Sécurité** : 
-    - Renforcement de la politique de sécurité [#2608](https://github.com/MTES-MCT/ecobalyse/issues/2608) et sécurisation des jetons d'authentification [#2600](https://github.com/MTES-MCT/ecobalyse/issues/2600).
-    - Mise à disposition de commandes API authentifiées [#2653](https://github.com/MTES-MCT/ecobalyse/issues/2653) et restriction d'accès aux impacts détaillés [#2669](https://github.com/MTES-MCT/ecobalyse/issues/2669).
+
+**Modélisation et Données**
+- Implémentation de catégories de produits génériques ([#2714](https://github.com/MTES-MCT/ecobalyse/issues/2714)) et d'opérations d'assemblage ([#2683](https://github.com/MTES-MCT/ecobalyse/issues/2683)).
+- Enrichissement des exemples de données : produits alimentaires (mangues, haricots verts) ([#2712](https://github.com/MTES-MCT/ecobalyse/issues/2712), [#2711](https://github.com/MTES-MCT/ecobalyse/issues/2711)), matériaux pour véhicules électriques ([#2687](https://github.com/MTES-MCT/ecobalyse/issues/2687)) et mise à jour des exemples de véhicules ([#2629](https://github.com/MTES-MCT/ecobalyse/issues/2629)).
+- Nouvelles capacités d'import/export : export au format Ecospold1 ([#2316](https://github.com/MTES-MCT/ecobalyse/issues/2316)), import BAFU depuis un export Simapro ([#2626](https://github.com/MTES-MCT/ecobalyse/issues/2626)) et inférence automatique du ratio cru/cuit ([#2663](https://github.com/MTES-MCT/ecobalyse/issues/2663)).
+- Précisions sur les données : corrections des processus aluminium et acier ([#2679](https://github.com/MTES-MCT/ecobalyse/issues/2679)), gestion des ingrédients de poisson ([#2676](https://github.com/MTES-MCT/ecobalyse/issues/2676)) et ajout de tags pour le transport réfrigéré ([#2657](https://github.com/MTES-MCT/ecobalyse/issues/2657)).
+
+**Interface et Expérience Utilisateur (UX)**
+- Améliorations de l'interface : bouton d'ajout d'article de production unique ([#2664](https://github.com/MTES-MCT/ecobalyse/issues/2664)), mise en place d'étiquettes contextuelles ([#2632](https://github.com/MTES-MCT/ecobalyse/issues/2632)) et localisation des nouvelles transformations ([#2636](https://github.com/MTES-MCT/ecobalyse/issues/2636)).
+- Corrections visuelles : gestion du mode sombre dans les graphiques Highcharts ([#2690](https://github.com/MTES-MCT/ecobalyse/issues/2690)) et affichage des noms de régions complets dans l'explorateur ([#2658](https://github.com/MTES-MCT/ecobalyse/issues/2658)).
+
+**Sécurité et Accès**
+- Mise à disposition de commandes API authentifiées ([#2653](https://github.com/MTES-MCT/ecobalyse/issues/2653)) et restriction de l'accès aux impacts détaillés ([#2669](https://github.com/MTES-MCT/ecobalyse/issues/2669)).
 
 ### Évolutions techniques
-- **Architecture et Performance** : 
-    - Optimisation de la vitesse de l'historique des scores [#2642](https://github.com/MTES-MCT/ecobalyse/issues/2642) et migration vers une base de données dédiée [#2580](https://github.com/MTES-MCT/ecobalyse/issues/2580).
-    - Fusion des dépôts data et front-end [#2614](https://github.com/MTES-MCT/ecobalyse/issues/2614) et refactorisation des schémas de processus pour éviter les duplications [#2680](https://github.com/MTES-MCT/ecobalyse/issues/2680).
-- **Automatisation et Tests** : 
-    - Automatisation de l'historique des scores via GitHub Cron [#2609](https://github.com/MTES-MCT/ecobalyse/issues/2609) et déplacement de la suite de tests E2E vers des tâches planifiées [#2633](https://github.com/MTES-MCT/ecobalyse/issues/2633).
-    - Correction des avertissements dans les tests de données [#2671](https://github.com/MTES-MCT/ecobalyse/issues/2671).
-- **Maintenance** : 
-    - Mise à jour d'Elm [#2638](https://github.com/MTES-MCT/ecobalyse/issues/2638) et nettoyage structurel du code (renommage de composants et nettoyage des ingrédients) [#2604](https://github.com/MTES-MCT/ecobalyse/issues/2604) [#2601](https://github.com/MTES-MCT/ecobalyse/issues/2601) [#2587](https://github.com/MTES-MCT/ecobalyse/issues/2587).
+
+**Architecture et Performance**
+- Fusion des dépôts de données et du front-end ([#2614](https://github.com/MTES-MCT/ecobalyse/issues/2614)).
+- Optimisation de la vitesse de l'historique des scores ([#2642](https://github.com/MTES-MCT/ecobalyse/issues/2642)) et utilisation de la base de données dédiée `ecobalyse-data` ([#2580](https://github.com/MTES-MCT/ecobalyse/issues/2580)).
+- Remplacement de la bibliothèque `msgspec` par `pydantic` ([#2686](https://github.com/MTES-MCT/ecobalyse/issues/2686)).
+
+**Maintenance et CI/CD**
+- Migration de la suite de tests E2E vers un job planifié ([#2633](https://github.com/MTES-MCT/ecobalyse/issues/2633)).
+- Mise à jour d'Elm ([#2638](https://github.com/MTES-MCT/ecobalyse/issues/2638)) et correction des avertissements lors des tests de données ([#2671](https://github.com/MTES-MCT/ecobalyse/issues/2671)).
+- Nettoyage du schéma des processus pour éviter les duplications ([#2680](https://github.com/MTES-MCT/ecobalyse/issues/2680)).
 
 ### Autres changements
-- Amélioration de la gestion de la configuration pour limiter les références aux processus génériques [#2660](https://github.com/MTES-MCT/ecobalyse/issues/2660) [#2627](https://github.com/MTES-MCT/ecobalyse/issues/2627).
+
+**Configuration et Synchronisation**
+- Correction de la synchronisation de l'export de données ([#2707](https://github.com/MTES-MCT/ecobalyse/issues/2707)).
+- Amélioration de la gestion de la configuration (rechargement automatique après réception des processus détaillés [#2627](https://github.com/MTES-MCT/ecobalyse/issues/2627) et limitation des références aux processus génériques [#2660](https://github.com/MTES-MCT/ecobalyse/issues/2660)).

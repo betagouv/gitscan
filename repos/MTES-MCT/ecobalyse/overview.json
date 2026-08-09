@@ -1,24 +1,27 @@
 {
   "url": "https://github.com/MTES-MCT/ecobalyse",
   "name": "ecobalyse",
-  "description": "Application visant à accélérer la mise en place de l'affichage environnemental. Elle permet de calculer et de visualiser les impacts écologiques de divers produits, véhicules et processus.",
+  "description": "Application visant à accélérer la mise en place de l'affichage environnemental. Elle permet de modéliser, calculer et visualiser les impacts environnementaux de divers produits et processus.",
   "language": "Python",
   "features": [
     "Visualisation de données & Cartographie",
     "Simulation & Calcul",
     "API & Intégrations",
+    "Données & Schémas",
     "Statistiques & Rapports",
-    "Données & Schémas"
+    "Interface utilisateur & Design"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Litestar",
     "Elm",
     "PostgreSQL",
-    "Brightway",
+    "Brightway (bw2)",
     "Sentry",
     "Scalingo",
-    "Docker"
+    "Docker",
+    "Playwright",
+    "Pytest"
   ],
   "components": [
     "API REST & GraphQL",
@@ -26,32 +29,32 @@
     "Python (scripts & backend)",
     "Docker & Conteneurs",
     "Tests",
-    "Pipeline de données",
-    "CI/CD & Déploiement"
+    "Pipeline de données"
   ],
   "auth": {
     "methods": [
+      "jwt",
       "email-password",
-      "jwt"
+      "session"
     ]
   },
   "tests": [
-    "pytest",
-    "elm-test",
-    "jest",
-    "playwright"
+    "Pytest",
+    "Elm-test",
+    "Jest",
+    "Playwright"
   ],
   "workflows": [
-    "node.js.yml"
+    "GitHub Actions"
   ],
-  "lastActivity": "2026-02-05T00:00:00Z",
+  "lastActivity": "2026-08-04T00:00:00Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
     "Environnement & Énergie",
-    "Python",
     "Données & Open Data",
+    "Python",
     "Docker & Conteneurs",
     "CI/CD & GitHub Actions",
     "Standards & Schémas"
