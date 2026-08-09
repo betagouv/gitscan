@@ -254,7 +254,12 @@
 │   │   │   ├── aacs-left-sidebar.tsx
 │   │   │   └── aacs-search.tsx
 │   │   ├── accueil
-│   │   │   └── hero.tsx
+│   │   │   ├── dashboard-homepage.tsx
+│   │   │   ├── hero.tsx
+│   │   │   ├── presentation-card
+│   │   │   │   ├── custom-tile.css
+│   │   │   │   └── presentation-tiles-list.tsx
+│   │   │   └── public-homepage.tsx
 │   │   ├── authentification-bloc.tsx
 │   │   ├── captage
 │   │   │   ├── captage-analyses-header.tsx
@@ -298,6 +303,7 @@
 │   │   │   └── LogEntryTagsCard.tsx
 │   │   ├── map
 │   │   │   ├── VisualisationMap.tsx
+│   │   │   ├── map-error-boundary.tsx
 │   │   │   ├── parcelles-selection-map.tsx
 │   │   │   ├── popup-exploitation.tsx
 │   │   │   ├── popup-parcelle.tsx
@@ -364,7 +370,8 @@
 │   │   ├── size.ts
 │   │   └── string.ts
 │   ├── hooks
-│   │   └── use_fetch.ts
+│   │   ├── use_fetch.ts
+│   │   └── use_map.ts
 │   ├── lib
 │   │   ├── communes.ts
 │   │   ├── exploitations.ts
@@ -376,6 +383,7 @@
 │   │   │   ├── id.tsx
 │   │   │   └── index.tsx
 │   │   ├── accueil.tsx
+│   │   ├── bienvenue.tsx
 │   │   ├── errors
 │   │   │   ├── not_found.tsx
 │   │   │   └── server_error.tsx
@@ -384,7 +392,6 @@
 │   │   │   ├── edition.tsx
 │   │   │   ├── id.tsx
 │   │   │   └── index.tsx
-│   │   ├── home.tsx
 │   │   ├── journal
 │   │   │   ├── creation.tsx
 │   │   │   ├── edition.tsx
@@ -491,6 +498,8 @@
 │   │   │   ├── index.tsx
 │   │   │   ├── resume-card.css
 │   │   │   └── resume-card.stories.tsx
+│   │   ├── Reveal
+│   │   │   └── index.tsx
 │   │   ├── SearchWithFilters
 │   │   │   ├── index.tsx
 │   │   │   └── search-with-filters.stories.tsx
@@ -556,9 +565,18 @@
 │       └── upload.sh
 ├── public
 │   ├── Illustration-hero.webp
-│   └── placeholder-illustrations
-│       ├── exploitations.png
-│       └── journal-colored.png
+│   ├── Illustration-qualite-assolement.webp
+│   ├── Illustration-qualite-eau.webp
+│   ├── placeholder-illustrations
+│   │   ├── exploitations.png
+│   │   └── journal-colored.png
+│   └── presentation-tile-icons
+│       ├── chart-line.png
+│       ├── draft-line.png
+│       ├── france-line.png
+│       ├── list-unordered-line.png
+│       ├── map-pin-user-line.png
+│       └── share-line.png
 ├── resources
 │   └── views
 │       └── inertia_layout.edge
@@ -642,4 +660,4 @@
 ├── vite.config.ts
 ├── vitest.config.ts
 └── vitest.shims.d.ts
-121 directories, 523 files
+124 directories, 538 files

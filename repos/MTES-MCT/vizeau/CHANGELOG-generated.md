@@ -1,24 +1,27 @@
-## Changelog : vizeau (30 derniers jours, au 29 juillet 2026)
+## Changelog : vizeau (30 derniers jours, au 06 août 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à l'application, notamment la possibilité de partager des projets entre territoires, une migration vers une version plus récente du framework AdonisJS, et des corrections d'autorisations et d'affichage pour une meilleure expérience utilisateur. L'interface utilisateur a également été améliorée avec des corrections de style et de messages d'erreur.
+Ce mois a été marqué par une évolution majeure de l'accessibilité de la plateforme avec l'introduction d'un accès public et d'une nouvelle page d'accueil. L'expérience utilisateur a été enrichie par de nouveaux éléments visuels et une gestion plus fine des projets, désormais partagés entre les territoires. Parallèlement, des travaux importants ont été menés pour stabiliser l'affichage cartographique et moderniser l'architecture interne du logiciel.
 
 ### Évolutions fonctionnelles
-- Les projets sont désormais communs aux territoires, facilitant la collaboration et le partage d'informations. [#481](https://github.com/MTES-MCT/vizeau/pull/481)
-- Affichage amélioré des messages d'erreur d'authentification pour une meilleure clarté. [#472](https://github.com/MTES-MCT/vizeau/pull/472)
-- Correction d'une permission trop stricte empêchant le téléchargement de documents de journal de bord. [#477](https://github.com/MTES-MCT/vizeau/pull/477)
-- Les commentaires sur les parcelles sont maintenant privés à chaque utilisateur. [#474](https://github.com/MTES-MCT/vizeau/pull/474)
-- Ajout de l'affichage des projets sur la carte. [#467](https://github.com/MTES-MCT/vizeau/pull/467)
+- **Ouverture publique** : Mise en place d'un accès public incluant une nouvelle page d'accueil, une page de bienvenue et une gestion dédiée des routes pour les visiteurs. [#482](https://github.com/MTES-MCT/vizeau/pull/482)
+- **Gestion des projets** : Évolution du modèle métier pour permettre aux projets d'être communs à plusieurs territoires. [#481](https://github.com/MTES-MCT/vizeau/pull/481)
+- **Amélioration de l'interface (UI/UX)** : 
+    - Intégration d'animations d'apparition au défilement (scroll).
+    - Ajout de nouvelles illustrations et de composants de section pour la page d'accueil.
+- **Corrections de gestion et droits** :
+    - Les commentaires sur les parcelles sont désormais individuels et propres à chaque utilisateur. [#474](https://github.com/MTES-MCT/vizeau/pull/474)
+    - Correction des permissions pour le téléchargement des documents de journal de bord. [#477](https://github.com/MTES-MCT/vizeau/pull/477)
+    - Amélioration de l'affichage des messages d'erreur lors de l'authentification. [#472](https://github.com/MTES-MCT/vizeau/pull/472)
 
 ### Évolutions techniques
-- Migration vers AdonisJS version 7, améliorant la performance et la sécurité de l'application. [#470](https://github.com/MTES-MCT/vizeau/pull/470)
-- Utilisation de nouveaux imports de type pour corriger les erreurs de linter.
-- Refonte de la structure des contrôleurs et des policies avec l'utilisation de "barrels". [#476](https://github.com/MTES-MCT/vizeau/pull/476)
-- Simplification des modèles de données.
-- Mise à jour du routeur pour une meilleure gestion des routes. [#478](https://github.com/MTES-MCT/vizeau/pull/478)
+- **Stabilité cartographique** : Correction d'un bug critique : les erreurs lors de l'affichage de la carte ne provoquent plus le plantage de l'intégralité de l'application. [#484](https://github.com/MTES-MCT/vizeau/pull/484)
+- **Refactorisation de l'architecture** :
+    - Migration vers un nouveau système de routage. [#478](https://github.com/MTES-MCT/vizeau/pull/478)
+    - Optimisation de la structure du code via l'utilisation de "barrel controllers" et la simplification des modèles. [#476](https://github.com/MTES-MCT/vizeau/pull/476)
+    - Automatisation des imports pour les contrôleurs et les politiques de sécurité (policies). [#475](https://github.com/MTES-MCT/vizeau/pull/475)
+- **Qualité logicielle** : Diverses corrections et mises à jour de la suite de tests.
 
 ### Autres changements
-- Amélioration du style de la page d'accueil avec de nouveaux composants UI et une réduction de la taille des illustrations. [#480](https://github.com/MTES-MCT/vizeau/pull/480) et [#479](https://github.com/MTES-MCT/vizeau/pull/479)
-- Correction de divers problèmes de linter et de prettier. [#473](https://github.com/MTES-MCT/vizeau/pull/473)
-- Amélioration du message d'erreur affiché à l'utilisateur. [#462](https://github.com/MTES-MCT/vizeau/pull/462)
-- Mise à jour des dépendances (TailwindCSS, npm).
+- Nettoyage général du code et corrections de typographies.
+- Mise en conformité du formatage de code (Prettier).
