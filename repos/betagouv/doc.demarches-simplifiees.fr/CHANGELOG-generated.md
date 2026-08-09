@@ -1,13 +1,7 @@
-## Changelog : doc.demarches-simplifiees.fr (30 derniers jours, au 09 juillet 2026)
+## Changelog : doc.demarches-simplifiees.fr (30 derniers jours, au 07/08/2026)
 
 ### Résumé
-Les récentes mises à jour se concentrent sur l'amélioration de la documentation de l'API GraphQL, notamment en ajoutant la prise en charge des mutations pour la gestion des démarches (publication, modification, clonage). Des ajustements mineurs ont également été effectués sur la plateforme GitBook.
-
-### Évolutions fonctionnelles
-- Amélioration de la documentation de l'API GraphQL avec l'ajout des mutations pour les démarches : publication, modification et clonage. [#1202](https://github.com/betagouv/doc.demarches-simplifiees.fr/issues/1202)
-
-### Évolutions techniques
-- Aucune évolution technique majeure à signaler.
+La documentation a fait l'objet de plusieurs mises à jour pour traiter différents points de suivi identifiés via des tickets GitBook.
 
 ### Autres changements
-- Mises à jour et ajustements mineurs sur la plateforme GitBook. [#1197](https://github.com/betagouv/doc.demarches-simplifiees.fr/issues/1197), [#1198](https://github.com/betagouv/doc.demarches-simplifiees.fr/issues/1198), [#1199](https://github.com/betagouv/doc.demarches-simplifiees.fr/issues/1199), [#1200](https://github.com/betagouv/doc.demarches-simplifiees.fr/issues/1200), [#1201](https://github.com/betagouv/doc.demarches-simplifiees.fr/issues/1201), [#1203](https://github.com/betagouv/doc.demarches-simplifiees.fr/issues/1203), [#1204](https://github.com/betagouv/doc.demarches-simplifiees.fr/issues/1204), [#1205](https://github.com/betagouv/doc.demarches-simplifiees.fr/issues/1205)
+- Mises à jour de la documentation liées aux tickets [#1206](https://github.com/betagouv/doc.demarches-simplifiees.fr/issues/1206), [#1208](https://github.com/betagouv/doc.demarches-simplifiees.fr/issues/1208), [#1209](https://github.com/betagouv/doc.demarches-simplifiees.fr/issues/1209) et [#1210](https://github.com/betagouv/doc.demarches-simplifiees.fr/issues/1210).
