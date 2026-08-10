@@ -333,12 +333,19 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260729120000_lowercase_existing_tags
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260731142658_add_last_permission_change_to_user
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260731142800_backfill_last_permission_change
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260806093152_add_email_log
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   ├── schema
 │   │   │   ├── applications.prisma
 │   │   │   ├── business-division.prisma
 │   │   │   ├── compliance.prisma
 │   │   │   ├── data.prisma
+│   │   │   ├── email-log.prisma
 │   │   │   ├── externals.prisma
 │   │   │   ├── hosting.prisma
 │   │   │   ├── labels.prisma
@@ -506,6 +513,9 @@
 │   │   │   │   ├── application-validation-cron.service.spec.ts
 │   │   │   │   ├── application-validation-cron.service.ts
 │   │   │   │   └── email-cron.service.ts
+│   │   │   ├── dto
+│   │   │   │   └── email-log.dto.ts
+│   │   │   ├── email-log.service.ts
 │   │   │   ├── email-templates.services.ts
 │   │   │   ├── email.controller.ts
 │   │   │   ├── email.module.ts
@@ -521,7 +531,8 @@
 │   │   │       ├── base.template.html
 │   │   │       ├── daily-digest.template.html
 │   │   │       ├── report-status-update.template.html
-│   │   │       └── user-organization-changed.template.html
+│   │   │       ├── user-organization-changed.template.html
+│   │   │       └── user-permissions-changed.template.html
 │   │   ├── enum.ts
 │   │   ├── health
 │   │   │   ├── dto
@@ -757,6 +768,7 @@
 │   │   │   │   ├── sync-organizations-response.dto.ts
 │   │   │   │   ├── sync-organizations.dto.ts
 │   │   │   │   ├── update-user.dto.ts
+│   │   │   │   ├── user-permission-log.dto.ts
 │   │   │   │   └── user.error.dto.ts
 │   │   │   ├── entities
 │   │   │   │   └── user.entity.ts
@@ -1018,6 +1030,7 @@
 │   │   │   │   ├── AdminActorActions.vue
 │   │   │   │   ├── AdminActorsTab.vue
 │   │   │   │   ├── AdminBatchData.vue
+│   │   │   │   ├── AdminEmailLogsTab.vue
 │   │   │   │   ├── AdminLabelSourcesTab.vue
 │   │   │   │   ├── AdminMditCampaignsTab.vue
 │   │   │   │   ├── AdminOrganizationsTab.vue
@@ -1026,12 +1039,14 @@
 │   │   │   │   ├── AdminTokensTab.vue
 │   │   │   │   ├── AdminUsersTab.vue
 │   │   │   │   ├── AppPermsMatrix.vue
+│   │   │   │   ├── EmailLogContentModal.vue
 │   │   │   │   ├── LabelSourceActions.vue
 │   │   │   │   ├── MditCampaignActions.vue
 │   │   │   │   ├── OrganizationActions.vue
 │   │   │   │   ├── TagActions.vue
 │   │   │   │   ├── UserActions.spec.ts
 │   │   │   │   ├── UserActions.vue
+│   │   │   │   ├── UserPermissionLogHistory.vue
 │   │   │   │   └── UserPermissionsModal.vue
 │   │   │   ├── business-division
 │   │   │   │   └── BusinessDivisionSearch.vue
@@ -1240,4 +1255,4 @@
 │       ├── campaign.mjs
 │       └── sync-issue.mjs
 └── release-please-config.json
-332 directories, 910 files
+336 directories, 921 files

@@ -1,28 +1,20 @@
-## Changelog : referentiel-applications (30 derniers jours, au 31 juillet 2026)
+## Changelog : referentiel-applications (30 derniers jours, au 07/08/2026)
 
 ### Résumé
-Les dernières mises à jour apportent des améliorations significatives à l'accessibilité, la gestion des données et l'expérience utilisateur. Des correctifs ont été implémentés pour améliorer la stabilité et la fiabilité de l'application, notamment au niveau des tests et de la gestion de la base de données. De nouvelles fonctionnalités ont été ajoutées pour la gestion des divisions métiers et l'affichage des informations techniques des applications.
+Ce mois-ci, le projet a franchi des étapes importantes en matière de gouvernance et de traçabilité grâce à l'ajout de l'historique des actions sensibles (permissions, envois d'emails). L'expérience utilisateur a été affinée par des améliorations d'accessibilité (RGAA) et une interface plus cohérente. Sur le plan technique, la plateforme a bénéficié d'une montée de version majeure de son framework principal et d'un renforcement de la fiabilité des tests et de la CI/CD.
 
 ### Évolutions fonctionnelles
-- Ajout d'un mode de maintenance en lecture seule pour l'application ([#2201](https://github.com/dnum-mi/referentiel-applications/issues/2201)).
-- Normalisation des tags en minuscules pour une meilleure cohérence des données ([#2202](https://github.com/dnum-mi/referentiel-applications/issues/2202)).
-- Mise à jour de l'affichage de la version de l'application sans rafraîchissement complet de la page ([#2158](https://github.com/dnum-mi/referentiel-applications/issues/2158)).
-- Ajout de la possibilité de gérer plusieurs divisions métiers ([#2114](https://github.com/dnum-mi/referentiel-applications/issues/2114)).
-- Amélioration de la recherche globale avec préfixe et correction de la fiabilité ([#2025](https://github.com/dnum-mi/referentiel-applications/issues/2025)).
-- Affichage du libellé de statut même sans date associée ([#2017](https://github.com/dnum-mi/referentiel-applications/issues/2017)).
-- Ajout de l'affichage de la pile technique et des licences sur la fiche d'application ([#1099](https://github.com/dnum-mi/referentiel-applications/issues/1099)).
-- Ajout de l'affichage du taux de conformité RGAA et de la date de déclaration d'accessibilité ([#1935](https://github.com/dnum-mi/referentiel-applications/issues/1935)).
+- **Gouvernance et sécurité** : Renforcement de la gestion des droits d'accès (matrice de droits technologiques, gestion des administrateurs par application) [#2028](https://github.com/dnum-mi/referentiel-applications/issues/2028), [#2059](https://github.com/dnum-mi/referentiel-applications/issues/2059), [#2088](https://github.com/dnum-mi/referentiel-applications/issues/2088) et ajout de l'historique pour les modifications de rôles et de permissions [#2207](https://github.com/dnum-mi/referentiel-applications/issues/2207).
+- **Traçabilité** : Mise en place d'un suivi de l'historique pour l'envoi des emails [#2223](https://github.com/dnum-mi/referentiel-applications/issues/2223).
+- **Expérience utilisateur et interface** : Amélioration de l'accessibilité (conformité RGAA) [#1782](https://github.com/dnum-mi/referentiel-applications/issues/1782), [#2181](https://github.com/dnum-mi/referentiel-applications/issues/2181), optimisation de la recherche globale [#2025](https://github.com/dnum-mi/referentiel-applications/issues/2025) et divers ajustements ergonomiques (libellés, espacements, comportement des modales) [#2124](https://github.com/dnum-mi/referentiel-applications/issues/2124), [#2118](https://github.com/dnum-mi/referentiel-applications/issues/2118), [#2115](https://github.com/dnum-mi/referentiel-applications/issues/2115), [#2090](https://github.com/dnum-mi/referentiel-applications/issues/2090).
+- **Gestion des données** : Support de plusieurs divisions métier [#2114](https://github.com/dnum-mi/referentiel-applications/issues/2114), refonte de la gestion des stacks technologiques [#2058](https://github.com/dnum-mi/referentiel-applications/issues/2058) et suppression de la fonctionnalité de gestion des licences [#2057](https://github.com/dnum-mi/referentiel-applications/issues/2057).
+- **Maintenance** : Ajout d'un mode "lecture seule" pour faciliter les opérations de maintenance du système [#2201](https://github.com/dnum-mi/referentiel-applications/issues/2201).
 
 ### Évolutions techniques
-- Migration vers NestJS 11 ([#1937](https://github.com/dnum-mi/referentiel-applications/issues/1937), [#2153](https://github.com/dnum-mi/referentiel-applications/issues/2153)).
-- Correction de problèmes de pollution de la base de données de développement par les tests ([#2117](https://github.com/dnum-mi/referentiel-applications/issues/2117)).
-- Amélioration de la performance de la recherche d'applications ([#1975](https://github.com/dnum-mi/referentiel-applications/issues/1975)).
-- Fiabilisation du démarrage de la base de données et du backend en CI ([#2023](https://github.com/dnum-mi/referentiel-applications/issues/2023)).
-- Correction de plusieurs vulnérabilités de sécurité identifiées par Dependabot.
-- Suppression de la fonctionnalité de gestion des licences.
+- **Architecture et Framework** : Migration majeure vers NestJS 11 [#2153](https://github.com/dnum-mi/referentiel-applications/issues/2153) et mise à jour de la version de l'application côté frontend sans rafraîchissement forcé [#2158](https://github.com/dnum-mi/referentiel-applications/issues/2158).
+- **Fiabilité et CI/CD** : Amélioration de la stabilité du démarrage de la base de données et du backend en CI [#2023](https://github.com/dnum-mi/referentiel-applications/issues/2023) et isolation des tests pour éviter de polluer la base de données de développement [#2151](https://github.com/dnum-mi/referentiel-applications/issues/2151).
+- **Backend et Configuration** : Contrôle des tâches automatiques d'envoi d'emails via une variable d'environnement [#2216](https://github.com/dnum-mi/referentiel-applications/issues/2216) et ajout de nouveaux points de terminaison pour le catalogue de données [#2024](https://github.com/dnum-mi/referentiel-applications/issues/2024).
+- **Données** : Normalisation des tags en minuscules [#2202](https://github.com/dnum-mi/referentiel-applications/issues/2202) et sécurisation de l'idempotence des migrations de base de données [#2156](https://github.com/dnum-mi/referentiel-applications/issues/2156).
 
 ### Autres changements
-- Amélioration de l'accessibilité (RGAA) : corrections de contraste, champs liés, messages d'état, transcriptions de graphiques, liens explicites, structure globale de la page.
-- Documentation du RefApp et des ADR (Architecture Decision Records).
-- Correction de bugs mineurs et améliorations de l'interface utilisateur.
-- Mise à jour des dépendances.
+- **Documentation** : Ajout de documents de décision d'architecture (ADR) [#2051](https://github.com/dnum-mi/referentiel-applications/issues/2051) et mise à jour de la documentation récapitulative du projet [#1987](https://github.com/dnum-mi/referentiel-applications/issues/1987).
