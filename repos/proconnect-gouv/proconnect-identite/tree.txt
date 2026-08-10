@@ -146,6 +146,14 @@
 │   │   │   ├── env.conf
 │   │   │   ├── fixtures.sql
 │   │   │   └── index.cy.ts
+│   │   ├── mfa_decision_helper_account
+│   │   │   ├── env.conf
+│   │   │   ├── fixtures.sql
+│   │   │   └── index.cy.ts
+│   │   ├── mfa_decision_helper_signin
+│   │   │   ├── env.conf
+│   │   │   ├── fixtures.sql
+│   │   │   └── index.cy.ts
 │   │   ├── quit-organization
 │   │   │   ├── env.conf
 │   │   │   ├── fixtures.sql
@@ -567,6 +575,10 @@
 │   │   │   ├── OfficialContactEmailVerification.test.tsx
 │   │   │   ├── OfficialContactEmailVerification.test.tsx.snapshot
 │   │   │   ├── OfficialContactEmailVerification.tsx
+│   │   │   ├── OtpEmail.stories.tsx
+│   │   │   ├── OtpEmail.test.tsx
+│   │   │   ├── OtpEmail.test.tsx.snapshot
+│   │   │   ├── OtpEmail.tsx
 │   │   │   ├── ResetPassword.stories.tsx
 │   │   │   ├── ResetPassword.test.tsx
 │   │   │   ├── ResetPassword.test.tsx.snapshot
@@ -956,6 +968,7 @@
 │   ├── arrow-go-back-fill.svg
 │   ├── check-green.svg
 │   ├── check.svg
+│   ├── error.svg
 │   ├── favicons
 │   │   ├── android-chrome-192x192.png
 │   │   ├── android-chrome-512x512.png
@@ -966,6 +979,8 @@
 │   ├── letter.svg
 │   ├── light.svg
 │   ├── mail-proconnect.png
+│   ├── passkey.svg
+│   ├── phone-lock.svg
 │   └── proconnect-logo.svg
 ├── scripts
 │   ├── create-anonymized-copy-of-database.sh
@@ -1128,6 +1143,16 @@
 │       ├── mails
 │       │   └── unable-to-auto-join-organization.ts
 │       ├── manage-organizations.ejs
+│       ├── mfa-decision-helper
+│       │   ├── can-install-software
+│       │   │   ├── external-help-needed.ejs
+│       │   │   ├── index.ejs
+│       │   │   ├── smartphone-app.ejs
+│       │   │   ├── smartphone.ejs
+│       │   │   └── software.ejs
+│       │   ├── index.ejs
+│       │   ├── passkey.ejs
+│       │   └── totp-recommendation.ejs
 │       ├── not-found-error.ejs
 │       ├── partials
 │       │   ├── footer.ejs
@@ -1136,6 +1161,8 @@
 │       │   ├── head.ejs
 │       │   ├── header.ejs
 │       │   ├── icon-edit-personal-info-form.ejs
+│       │   ├── mfa-decision-helper-header.ejs
+│       │   ├── mfa-helper-restart.ejs
 │       │   ├── notifications.ejs
 │       │   ├── organization-info-tile.ejs
 │       │   ├── password-input-messages.ejs
@@ -1164,6 +1191,16 @@
 │           ├── join-organization-confirm.ejs
 │           ├── join-organization.ejs
 │           ├── magic-link-sent.ejs
+│           ├── mfa-decision-helper
+│           │   ├── can-install-software
+│           │   │   ├── external-help-needed.ejs
+│           │   │   ├── index.ejs
+│           │   │   ├── smartphone-app.ejs
+│           │   │   ├── smartphone.ejs
+│           │   │   └── software.ejs
+│           │   ├── index.ejs
+│           │   ├── passkey.ejs
+│           │   └── totp-recommendation.ejs
 │           ├── moderation-rejected.ejs
 │           ├── official-contact-ask-which-email.ejs
 │           ├── official-contact-email-verification.ejs
@@ -1204,4 +1241,4 @@
 │   └── symmetric-encryption.test.ts
 ├── tsconfig.json
 └── vite.config.mjs
-213 directories, 1075 files
+219 directories, 1106 files
