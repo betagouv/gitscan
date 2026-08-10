@@ -1,40 +1,43 @@
-## Changelog : dora (30 derniers jours, au 05/08/2026)
+## Changelog : dora (30 derniers jours, au 07/08/2026)
 
 ### Résumé
-Ce mois-ci, la plateforme Dora a bénéficié d'améliorations significatives de son interface utilisateur pour faciliter la navigation et la recherche. Les capacités de synchronisation de données avec des partenaires externes (notamment "Les Emplois") ont été renforcées, tandis que des travaux importants de nettoyage technique et de mise à jour des outils ont été réalisés pour garantir la stabilité et la performance du système.
+Ce mois-ci, Dora a bénéficié d'améliorations visant à fluidifier la recherche et l'expérience utilisateur, notamment par une meilleure gestion des résultats et des erreurs. Des travaux importants ont également été menés sur la fiabilité des données, la synchronisation des informations liées aux orientations et la mise en conformité (accessibilité et CGU).
 
 ### Évolutions fonctionnelles
-- **Amélioration de l'interface et de l'ergonomie** :
-    - Allègement du tableau des structures dans le tableau de bord des gestionnaires de territoire [#1229].
+- **Recherche et navigation** :
+    - Limitation du nombre de résultats de recherche pour améliorer la lisibilité [#1245].
     - Activation de la recherche via la touche "Entrée" [#1230].
-    - Amélioration du bouton de suppression des options dans les menus déroulants [#1156].
+    - Amélioration de la pertinence de la recherche sémantique en excluant systématiquement les doublons [#1228].
+    - Annulation du test A/B concernant la recherche textuelle [#1246].
+- **Expérience utilisateur (UX)** :
+    - Allègement du tableau des structures dans le tableau de bord des gestionnaires de territoire [#1229].
+    - Amélioration de la gestion des erreurs : affichage d'une erreur 404 pour un service inaccessible au lieu d'une redirection vers la page de connexion [#1224].
     - Filtrage du balisage Markdown dans les descriptions courtes des services [#1221].
-    - Affichage de la source de l'orientation directement sur la page dédiée [#1155].
-- **Expérience utilisateur et recherche** :
-    - Gestion des doublons dans la recherche sémantique pour des résultats plus précis [#1228].
-    - Affichage d'une erreur 404 explicite pour les services inaccessibles au lieu d'une redirection vers la connexion [#1224].
-    - Exclusion des sources "data·inclusion" du formulaire Dora [#1225].
-- **Nouvelles fonctionnalités et statistiques** :
-    - Ajout d'une commande d'export des orientations pour "Les Emplois" [#1209].
-    - Stockage des codes de zones géographiques (commune, département, région) pour enrichir les statistiques [#1216].
-    - Passage des vues administratives en mode lecture seule pour les statistiques [#1179].
+- **Données et exports** :
+    - Exclusion de certaines sources de données du formulaire Dora [#1225].
+    - Ajout d'une fonctionnalité d'export des orientations "Les Emplois" [#1209].
+- **Conformité et légal** :
+    - Mise à jour de la déclaration d'accessibilité [#1202].
+    - Mise à jour des Conditions Générales d'Utilisation (CGU) [#1182].
 
 ### Évolutions techniques
-- **Synchronisation et gestion des données** :
-    - Renforcement de la synchronisation des orientations avec "Les Emplois" via l'ajout d'identifiants uniques (UUID) [#1157], de dates de traitement [#1212] et d'un nouvel endpoint dédié [#1169].
-    - Synchronisation de la table des données d'orientation des emplois [#1190].
-    - Mise en place d'une commande de suppression des anciennes structures orphelines [#1219].
-- **Maintenance et refactoring** :
-    - Nettoyage du code suite à la mise en place de la recherche unifiée [#1095].
-    - Suppression de méthodes, filtres et listes intermédiaires devenus obsolètes [#1199, #1176, #1201, #1175].
-    - Protection contre les suppressions d'objets en cascade [#1220].
-- **Infrastructure et outils** :
-    - Mise à jour majeure de la bibliothèque cartographique MapLibre-GL [#1231].
+- **Gestion des données et base de données** :
+    - Migration du champ `kinds` de M2M vers `ArrayField` pour les recherches sauvegardées et les vues de recherche [#1247].
+    - Garantie de l'unicité de tous les critères d'admission [#1243].
+    - Ajout d'une commande pour supprimer les anciennes structures orphelines [#1219].
+    - Stockage du code de la zone géographique (commune, département ou région) dans les statistiques [#1216].
+    - Amélioration de la synchronisation des statuts des orientations "Les Emplois" (nouveau endpoint et ajout du champ `processing_date`) [#1169, #1212, #1190].
+- **Refactoring et optimisation** :
+    - Retrait de la recherche DORA de la recherche de services [#1201].
+    - Nettoyage du code : suppression de la méthode `_map_dora_kinds_to_di` [#1199] et optimisation du traitement des résultats de services [#1176, #1175].
+    - Passage des vues d'administration en lecture seule pour les statistiques [#1179].
+- **Infrastructure et maintenance** :
+    - Mise à jour majeure de la bibliothèque de cartographie `maplibe-gl` [#1231].
     - Remplacement de la bibliothèque de génération de fichiers Excel [#1191].
-    - Optimisation de la remontée d'erreurs vers Sentry (correction des faux positifs sur Safari et les doublons) [#1203, #1164, #1160].
-    - Amélioration des outils de test et de la couverture sur les critères d'orientabilité [#1227, #1198].
-    - Ajustements de l'environnement de build (NPM, constantes API BAN) [#1166, #1167, #1168].
+    - Protection contre la suppression en cascade d'objets [#1220].
+    - Optimisation du reporting d'erreurs vers Sentry pour éviter les doublons [#1203].
+    - Augmentation de la couverture de tests sur les critères d'orientabilité des services [#1227].
 
 ### Autres changements
-- **Conformité et légal** : Mise à jour de la déclaration d'accessibilité [#1202] et des Conditions Générales d'Utilisation (CGU) [#1182].
-- **Nettoyage** : Suppression des données de l'application Admin Express [#1154] et corrections diverses (typos, tri des imports) [#1181, #1200].
+- Correction du tri des imports dans certains fichiers Python [#1200].
+- Amélioration du client de données fictives (`FakeDataInclusionClient`) pour les tests [#1198].
