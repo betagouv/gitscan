@@ -1,13 +1,13 @@
 {
   "url": "https://github.com/proconnect-gouv/proconnect-espace-partenaires",
   "name": "proconnect-espace-partenaires",
-  "description": "Cette application permet aux partenaires de ProConnect (fournisseurs de services et d'identité) de gérer leurs identifiants en environnement de préproduction et de consulter la documentation d'implémentation.",
+  "description": "Cette application permet aux partenaires de ProConnect de créer de nouveaux identifiants en environnement de préproduction et de consulter la documentation d'implémentation.",
   "language": "TypeScript",
   "features": [
     "Authentification & Accès",
     "Gestion des utilisateurs & Permissions",
-    "Gestion des équipes & Partenaires",
-    "Sécurité & Conformité"
+    "Sécurité & Conformité",
+    "Gestion métier générale"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -18,7 +18,7 @@
     "MongoDB",
     "NextAuth.js",
     "Playwright",
-    "Nodemailer"
+    "@codegouvfr/react-dsfr"
   ],
   "components": [
     "React / Next.js",
@@ -26,35 +26,36 @@
     "MongoDB & NoSQL",
     "TypeScript / JavaScript",
     "API REST & GraphQL",
-    "Docker & Conteneurs",
     "Authentification (composant)",
+    "Docker & Conteneurs",
     "Tests"
   ],
   "auth": {
     "methods": [
       "email-password",
+      "magic-link",
       "jwt",
       "session",
-      "magic-link"
+      "mfa"
     ]
   },
   "tests": [
-    "Playwright",
-    "ESLint",
-    "Prettier"
+    "Playwright"
+  ],
+  "workflows": [
+    "CI/CD"
   ],
   "lastActivity": "2026-08-05T14:36:22+01:00",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
   "tags": [
-    "Écosystème beta.gouv / État",
     "React & Next.js",
     "TypeScript",
+    "Docker & Conteneurs",
     "Bases de données SQL",
     "Bases de données NoSQL",
-    "Docker & Conteneurs",
     "Sécurité & Auth",
-    "Design System & UI"
+    "Écosystème beta.gouv / État"
   ]
 }
