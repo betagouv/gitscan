@@ -1,13 +1,13 @@
 {
   "url": "https://github.com/betagouv/aides-jeunes",
   "name": "aides-jeunes",
-  "description": "Simulateur d'aides et de prestations sociales destiné aux jeunes. Il permet d'évaluer l'éligibilité à divers dispositifs sociaux et financiers grâce au moteur Openfisca.",
+  "description": "Simulateur d'aides et de prestations sociales pour les jeunes, basé sur le moteur socio-fiscal Openfisca. Il permet d'évaluer l'éligibilité aux différents dispositifs d'aide en France.",
   "language": "TypeScript",
   "features": [
     "Aides & Éligibilité",
-    "Simulation & Calcul",
     "Recherche & Filtres",
-    "Formulaires & Démarches"
+    "Formulaires & Démarches",
+    "Notifications & Alertes"
   ],
   "audience": "Grand public",
   "dependencies": [
@@ -18,22 +18,23 @@
     "Express",
     "Mongoose",
     "MJML",
-    "Vite"
+    "Sentry",
+    "Matomo"
   ],
   "components": [
     "Vue.js / Nuxt",
-    "Node.js / NestJS",
-    "MongoDB & NoSQL",
     "API REST & GraphQL",
+    "MongoDB & NoSQL",
     "TypeScript / JavaScript",
     "Python (scripts & backend)",
-    "Design System (DSFR & UI libs)",
     "Docker & Conteneurs",
     "CI/CD & Déploiement"
   ],
   "auth": {
     "methods": [
-      "jwt"
+      "jwt",
+      "oauth2",
+      "session"
     ]
   },
   "tests": [
@@ -43,7 +44,7 @@
   "workflows": [
     "GitHub Actions"
   ],
-  "lastActivity": "2026-08-05T17:27:05+02:00",
+  "lastActivity": "2026-08-07T21:57:04+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -51,7 +52,10 @@
     "Écosystème beta.gouv / État",
     "Vue.js & Nuxt",
     "TypeScript",
-    "Subventions & Finances publiques",
-    "Emploi, Social & Logement"
+    "JavaScript",
+    "Docker & Conteneurs",
+    "CI/CD & GitHub Actions",
+    "Emploi, Social & Logement",
+    "Subventions & Finances publiques"
   ]
 }
