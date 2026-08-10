@@ -1,27 +1,21 @@
 ## Changelog : st-ansible (30 derniers jours, au 05/08/2026)
 
 ### Résumé
-Ce mois-ci, le projet a franchi une étape importante avec l'intégration de l'outil `st-cli` pour la gestion des environnements. Les capacités de déploiement ont été renforcées, notamment pour les configurations sur un seul hôte, et l'expérience utilisateur a été améliorée grâce à un affichage Ansible plus lisible et de nouvelles fonctionnalités pour le composant `meet`.
+Ce mois-ci, le projet a franchi une étape majeure avec l'intégration de `st-cli` pour simplifier la gestion des déploiements. Les capacités de l'outil ont été enrichies, notamment avec la gestion des enregistrements pour les réunions et une meilleure visibilité lors de l'exécution des tâches Ansible grâce à un nouvel affichage compact.
 
 ### Évolutions fonctionnelles
-- **Intégration de `st-cli`** : Introduction de l'outil pour faciliter la gestion des bootstraps et des déploiements des environnements LST.
-- **Gestion des secrets** : Possibilité d'utiliser des marqueurs `@openbao` sur des champs non-secrets via la CLI.
-- **Composant `meet`** : Ajout de la fonctionnalité de gestion des enregistrements.
-- **Optimisation des rôles `messages`** : 
-    - Correction du port par défaut du contrôleur Rspamd.
-    - Correction des noms de services Compose pour les installations sur un seul hôte.
-    - Ajout de nouvelles variables de configuration pour MPA (historique et redirecteurs Rspamd).
-- **Déploiements simplifiés** : Amélioration globale de la compatibilité pour les déploiements sur un seul hôte (single-host).
+- **Gestion des environnements** : Intégration de `st-cli` pour faciliter le pilotage des déploiements et des environnements.
+- **Composant Meet** : Ajout de la prise en charge des enregistrements de réunions.
+- **Sécurité** : Extension de l'utilisation des marqueurs `@openbao` aux champs non-secrets.
+- **Correction** : Rectification du port par défaut du contrôleur Rspamd.
 
 ### Évolutions techniques
-- **Nouveau plugin Ansible** : Ajout du callback `compact` pour un affichage plus concis et lisible des tâches en console (une ligne par tâche/hôte avec suivi de progression).
-- **Refactorisation système** : Révision des UID, GID et des ports pour permettre des déploiements fluides sur une machine unique.
-- **CI/CD** : 
-    - Optimisation de la stratégie de publication des tags pour s'aligner sur la collection `st-cli`.
-    - Correction du workflow de mise à jour pour `restic`.
+- **Interface Ansible** : Création et amélioration d'un nouveau plugin de callback ("compact") permettant un affichage plus clair et concis des tâches et de la progression.
+- **Workflow de mise à jour** : Correction du processus de mise à jour pour Restic.
+- **Automatisation CI/CD** : 
+    - Optimisation de la publication des tags pour suivre la collection `st-cli`.
+    - Mise en place de `antsibull-changelog` pour la génération automatique des notes de version.
+    - Intégration de Renovate pour la gestion automatisée des dépendances.
 
 ### Autres changements
-- **Documentation** : Amélioration de la documentation concernant la CLI, les procédures de mise à jour et ajout de références dans le README.
-- **Outils et automatisation** : 
-    - Mise en place de `antsibull-changelog` pour la génération automatique des notes de version.
-    - Configuration de Renovate pour la gestion automatisée des dépendances.
+- **Documentation** : Amélioration de la documentation de l'interface en ligne de commande (CLI), des procédures de mise à jour et mise à jour du README avec les références à `st-cli`.
