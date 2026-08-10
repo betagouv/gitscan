@@ -1,43 +1,14 @@
-## Changelog : histologe (30 derniers jours, au 30 juillet 2026)
+## Changelog : histologe (30 derniers jours, au 07/08/2026)
 
 ### Résumé
-Les dernières mises à jour d'histologe se concentrent sur l'amélioration de l'expérience utilisateur, notamment dans le back-office pour la gestion des signalements et des adresses. Des optimisations de performance ont été apportées, ainsi que des corrections de bugs et des améliorations de la connexion avec le SISH (Système d'Information Social et Habitat).
+Ce mois-ci, la plateforme a bénéficié d'améliorations significatives sur le processus de "Démarche Accélérée", notamment pour la clôture des dossiers. De nouvelles fonctionnalités de gestion territoriale, comme l'importation d'arrêtés, ont été ajoutées, tandis que l'accessibilité et la fiabilité des signalements ont été renforcées par plusieurs corrections de bugs et optimisations de performance.
 
 ### Évolutions fonctionnelles
-- Amélioration de la gestion des clôtures de signalements pour les bailleurs et dans le cadre de démarches accélérées. [#6162, #6153]
-- Possibilité d'importer un historique d'arrêtés dans le back-office. [#6133]
-- Ajout de la possibilité de fermer un dossier pour un partenaire (agent) dans le back-office. [#6124]
-- Ajout d'informations sur les erreurs de synchronisation d'affectations pour les administrateurs dans le back-office. [#6144]
-- Ajout de la consultation de l'historique des événements à une adresse dans le back-office. [#6098]
-- Ajout d'un socle front pour l'historique des adresses dans le back-office. [#6063]
-- Amélioration de l'accessibilité du formulaire usager, notamment avec la modale de sélection de bâtiment au clavier. [#6038]
-- Ajout de la possibilité d'envoyer l'adresse complète du bailleur via le SISH. [#6129, #6135]
-- Mise en avant des erreurs de données et amélioration de la reprise des dossiers en erreurs lors de la connexion à Esabora. [#6110]
-- Optimisation du filtre "Dossiers sans activité" dans la liste des signalements du back-office. [#6125]
-- Ajout de la possibilité de taguer et de noter personnellement les signalements dans le cadre de l'expérience SA. [#6132]
-- Ajout d'une commande temporaire de clôture de signalements dans le back-office. [#6105]
+- **Démarche Accélérée (SA)** : Amélioration du processus de clôture ([#6162](https://github.com/MTES-MCT/histologe/issues/6162), [#6153](https://github.com/MTES-MCT/histologe/issues/6153)), ajout de notes et tags personnels ([#6132](https://github.com/MTES-MCT/histologe/issues/6132)) et mise en place du suivi lors de la première connexion bailleur ([#6154](https://github.com/MTES-MCT/histologe/issues/6154)).
+- **Gestion des dossiers et signalements** : Possibilité pour les agents partenaires de fermer un dossier ([#6124](https://github.com/MTES-MCT/histologe/issues/6124)), importation de l'historique des arrêtés dans la gestion du territoire ([#6133](https://github.com/MTES-MCT/histologe/issues/6133)), ajout de contrôles sur les dates d'entrée ([#6149](https://github.com/MTES-MCT/histologe/issues/6149)) et meilleure visibilité des erreurs de synchronisation pour les administrateurs ([#6144](https://github.com/MTES-MCT/histologe/issues/6144)).
+- **Corrections et Accessibilité** : Amélioration de l'accessibilité clavier pour la sélection de bâtiments ([#6038](https://github.com/MTES-MCT/histologe/issues/6038)), corrections de filtres de listes ([#6214](https://github.com/MTES-MCT/histologe/issues/6214)), gestion des retours sur les brouillons de signalement ([#6207](https://github.com/MTES-MCT/histologe/issues/6207)) et résolution de divers bugs (doublons [#6205](https://github.com/MTES-MCT/histologe/issues/6205), scores nuls [#6172](https://github.com/MTES-MCT/histologe/issues/6172), relances bailleurs [#6143](https://github.com/MTES-MCT/histologe/issues/6143)).
 
 ### Évolutions techniques
-- Mise à jour de Symfony. [#5246, #6168]
-- Upgrade de la librairie Axios. [#6163, #6164]
-- Upgrade de npm. [#6145, #6146]
-- Upgrade de l'environnement Ubuntu dans la CI pour permettre des mises à jour du stack Scalingo. [#6151]
-- Optimisation de la requête job_event SA et amélioration des performances. [#6158, #6161]
-- Correction de bugs liés à l'édition du suivi avec une description vide. [#6155, #6156]
-- Suppression des dépréciations. [#6157, #6160]
-- Correction d'un bug lié à la gestion des scores nuls dans l'API. [#6172]
-- Ajout de la possibilité de désactiver les appels OVH S3 en cas de dysfonctionnement. [#6117]
-- Modification de la recherche de doublons pour utiliser le code INSEE plutôt que le nom de la ville. [#6066, #6102]
-- Adaptation de EtageParser pour se caler sur les contraintes d'Esabora. [#6100, #6106]
-- Ajout d'un template CSV pour les arrêtés et une interface utilisateur associée. [#6094]
-- Ajout de contraintes de longueur sur les champs JSON des formulaires. [#6067]
-
-### Autres changements
-- Modification du type de suivi pour la conclusion de visite. [#6175, #6187]
-- Correction d'un contrôle de date d'entrée. [#6084, #6149]
-- Correction d'un problème de relance bailleur. [#6142, #6143]
-- Correction d'un warning lié à une clé de tableau. [#6147, #6148]
-- Modification de libellés de types d'arrêtés. [#6097, #6099]
-- Fusion de branches main vers develop. [#6171, #6169, #6147, #6145, #6137, #6113, #6107, #6108]
-- Suppression de la temporisation du suivi et agrégation. [#6054]
-- Correction d'un bug lié à l'ajout de zone/coordonnées et espacement des boutons de service secours. [#6130]
+- **Infrastructure et CI/CD** : Mise à jour de l'environnement Ubuntu dans la CI ([#6151](https://github.com/MTES-MCT/histologe/issues/6151)) et ajout d'un mécanisme pour désactiver les appels OVH S3 en cas de dysfonctionnement ([#6117](https://github.com/MTES-MCT/histologe/issues/6117)).
+- **Performances et Optimisations** : Optimisation des filtres de dossiers sans activité ([#6125](https://github.com/MTES-MCT/histologe/issues/6125)), de la page de connexion SI ([#6138](https://github.com/MTES-MCT/histologe/issues/6138)) et des requêtes liées aux événements de job ([#6161](https://github.com/MTES-MCT/histologe/issues/6161)).
+- **Maintenance et Framework** : Montée de version de Symfony ([#6168](https://github.com/MTES-MCT/histologe/issues/6168)), mise à jour de la bibliothèque Axios ([#6164](https://github.com/MTES-MCT/histologe/issues/6164)) et nettoyage des dépréciations de code ([#6160](https://github.com/MTES-MCT/histologe/issues/6160)).
