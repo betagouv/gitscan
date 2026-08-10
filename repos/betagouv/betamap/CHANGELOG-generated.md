@@ -1,13 +1,7 @@
-## Changelog : betamap (30 derniers jours, au 01 août 2026)
+## Changelog : betamap (30 derniers jours, au 08/08/2026)
 
 ### Résumé
-Ce changelog fait état d'une série de mises à jour régulières des données des startups d'état et de leurs écosystèmes. Ces mises à jour permettent de maintenir la cartographie à jour avec les dernières informations disponibles.
+Les récentes interventions ont principalement porté sur l'actualisation des données afin de garantir que la visualisation des startups de l'écosystème reste précise et à jour.
 
 ### Évolutions fonctionnelles
-- Mise à jour de la liste des startups d'état et de leurs informations.
-
-### Évolutions techniques
-- Aucune évolution technique significative à signaler durant cette période.
-
-### Autres changements
-- Mise à jour régulière des données des startups via le script de mise à jour.
+- Mise à jour régulière de la base de données des startups présentées sur la plateforme.
