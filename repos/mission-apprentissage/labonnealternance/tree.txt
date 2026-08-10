@@ -14,6 +14,8 @@
 │   │   ├── sentry-deploy.sh
 │   │   └── sentry-release.sh
 │   └── shared
+├── .claude
+│   └── launch.json
 ├── .dockerignore
 ├── .editorconfig
 ├── .gitattributes
@@ -159,9 +161,10 @@
 │   ├── patches
 │   │   └── zod-npm-3.21.4-9f570b215c.patch
 │   ├── plugins
-│   │   └── @yarnpkg
-│   │       ├── plugin-version.cjs
-│   │       └── plugin-workspace-tools.cjs
+│   │   ├── @yarnpkg
+│   │   │   ├── plugin-version.cjs
+│   │   │   └── plugin-workspace-tools.cjs
+│   │   └── plugin-disable-typescript-compat.cjs
 │   └── releases
 │       └── yarn-3.8.7.cjs
 ├── .yarnrc.yml
@@ -249,11 +252,11 @@
 │   │   │   │   ├── apec
 │   │   │   │   │   ├── apec.client.test.ts
 │   │   │   │   │   └── apec.client.ts
-│   │   │   │   ├── apiEntreprise
-│   │   │   │   │   ├── apiEntreprise.client.fixture.ts
-│   │   │   │   │   ├── apiEntreprise.client.test.ts
-│   │   │   │   │   └── apiEntreprise.client.ts
-│   │   │   │   ├── apiReferentielCatalogue.fixture.ts
+│   │   │   │   ├── api-entreprise
+│   │   │   │   │   ├── api-entreprise.client.fixture.ts
+│   │   │   │   │   ├── api-entreprise.client.test.ts
+│   │   │   │   │   └── api-entreprise.client.ts
+│   │   │   │   ├── api-referentiel-catalogue.fixture.ts
 │   │   │   │   ├── classification
 │   │   │   │   │   ├── classification.client.fixture.ts
 │   │   │   │   │   ├── classification.client.test.ts
@@ -263,7 +266,7 @@
 │   │   │   │   │   ├── diagoriente.client.fixture.ts
 │   │   │   │   │   ├── diagoriente.client.test.ts
 │   │   │   │   │   └── diagoriente.client.ts
-│   │   │   │   ├── emploiInclusion
+│   │   │   │   ├── emploi-inclusion
 │   │   │   │   │   ├── emploi-inclusion.client.fixture.ts
 │   │   │   │   │   ├── emploi-inclusion.client.test.ts
 │   │   │   │   │   └── emploi-inclusion.client.ts
@@ -271,17 +274,17 @@
 │   │   │   │   │   ├── etudiant.client.fixture.ts
 │   │   │   │   │   ├── etudiant.client.test.ts
 │   │   │   │   │   └── etudiant.client.ts
-│   │   │   │   ├── franceCompetences
-│   │   │   │   │   ├── franceCompetencesClient.fixture.ts
-│   │   │   │   │   ├── franceCompetencesClient.test.ts
-│   │   │   │   │   └── franceCompetencesClient.ts
-│   │   │   │   ├── franceTravail
-│   │   │   │   │   ├── franceTravail.client.fixture.ts
-│   │   │   │   │   ├── franceTravail.client.test.ts
-│   │   │   │   │   └── franceTravail.client.ts
-│   │   │   │   ├── geoApiGouv
-│   │   │   │   │   ├── geoApiGouv.test.ts
-│   │   │   │   │   └── geoApiGouv.ts
+│   │   │   │   ├── france-competences
+│   │   │   │   │   ├── france-competences-client.fixture.ts
+│   │   │   │   │   ├── france-competences-client.test.ts
+│   │   │   │   │   └── france-competences-client.ts
+│   │   │   │   ├── france-travail
+│   │   │   │   │   ├── france-travail.client.fixture.ts
+│   │   │   │   │   ├── france-travail.client.test.ts
+│   │   │   │   │   └── france-travail.client.ts
+│   │   │   │   ├── geo-api-gouv
+│   │   │   │   │   ├── geo-api-gouv.test.ts
+│   │   │   │   │   └── geo-api-gouv.ts
 │   │   │   │   └── inserjeunes
 │   │   │   │       ├── inserjeunes.client.fixture.ts
 │   │   │   │       ├── inserjeunes.client.test.ts
@@ -294,44 +297,43 @@
 │   │   │   ├── territoires.test.ts
 │   │   │   ├── territoires.ts
 │   │   │   └── utils
-│   │   │       ├── apiUtils.ts
+│   │   │       ├── api-utils.ts
 │   │   │       ├── array.test.ts
 │   │   │       ├── array.ts
-│   │   │       ├── asyncUtils.ts
-│   │   │       ├── awsUtils.ts
+│   │   │       ├── async-utils.ts
+│   │   │       ├── aws-utils.ts
 │   │   │       ├── departements.ts
 │   │   │       ├── dirname.ts
-│   │   │       ├── encryptString.ts
-│   │   │       ├── errorManager.ts
-│   │   │       ├── fileUtils.ts
-│   │   │       ├── ftpUtils.ts
+│   │   │       ├── encrypt-string.ts
+│   │   │       ├── error-manager.ts
+│   │   │       ├── file-utils.ts
+│   │   │       ├── ftp-utils.ts
 │   │   │       ├── geolib.test.ts
 │   │   │       ├── geolib.ts
-│   │   │       ├── getStaticFilePath.ts
-│   │   │       ├── httpUtils.ts
-│   │   │       ├── isAllowedSource.ts
-│   │   │       ├── isOriginLocal.ts
-│   │   │       ├── isValidEmail.ts
-│   │   │       ├── jsonToXml.ts
-│   │   │       ├── jwtUtils.ts
-│   │   │       ├── logMessage.ts
-│   │   │       ├── mailUtils.ts
-│   │   │       ├── mongodbUtils.ts
-│   │   │       ├── regionInseeCodes.ts
-│   │   │       ├── sendTrackingEvent.ts
-│   │   │       ├── sentryUtils.ts
+│   │   │       ├── get-static-file-path.ts
+│   │   │       ├── http-utils.ts
+│   │   │       ├── is-allowed-source.ts
+│   │   │       ├── is-origin-local.ts
+│   │   │       ├── is-valid-email.ts
+│   │   │       ├── json-to-xml.ts
+│   │   │       ├── jwt-utils.ts
+│   │   │       ├── log-message.ts
+│   │   │       ├── mail-utils.ts
+│   │   │       ├── mongodb-utils.ts
+│   │   │       ├── region-insee-codes.ts
+│   │   │       ├── send-tracking-event.ts
+│   │   │       ├── sentry-utils.ts
 │   │   │       ├── session.service.ts
-│   │   │       ├── slackUtils.ts
-│   │   │       ├── streamUtils.ts
-│   │   │       ├── stringUtils.test.ts
-│   │   │       └── stringUtils.ts
+│   │   │       ├── slack-utils.ts
+│   │   │       ├── stream-utils.ts
+│   │   │       ├── string-utils.test.ts
+│   │   │       └── string-utils.ts
 │   │   ├── config.ts
 │   │   ├── global.d.ts
 │   │   ├── http
-│   │   │   ├── StreamProcessorServer.ts
 │   │   │   ├── controllers
 │   │   │   │   ├── __snapshots__
-│   │   │   │   │   └── etablissementRecruteur.controller.test.ts.snap
+│   │   │   │   │   └── etablissement-recruteur.controller.test.ts.snap
 │   │   │   │   ├── _private
 │   │   │   │   │   ├── admin
 │   │   │   │   │   │   ├── processor.admin.routes.test.ts
@@ -339,42 +341,42 @@
 │   │   │   │   │   ├── geo.private.controller.ts
 │   │   │   │   │   └── seo.private.controller.ts
 │   │   │   │   ├── admin
-│   │   │   │   │   ├── eligibleTrainingsForAppointment.controller.ts
+│   │   │   │   │   ├── eligible-trainings-for-appointment.controller.ts
 │   │   │   │   │   ├── etablissement.controller.ts
 │   │   │   │   │   └── formations.controller.ts
 │   │   │   │   ├── application.controller.ts
-│   │   │   │   ├── appointmentRequest.controller.ts
+│   │   │   │   ├── appointment-request.controller.ts
 │   │   │   │   ├── classification.controller.ts
 │   │   │   │   ├── core.controller.ts
 │   │   │   │   ├── emails.controller.ts
+│   │   │   │   ├── etablissement-recruteur.controller.test.ts
+│   │   │   │   ├── etablissement-recruteur.controller.ts
 │   │   │   │   ├── etablissement.controller.ts
-│   │   │   │   ├── etablissementRecruteur.controller.test.ts
-│   │   │   │   ├── etablissementRecruteur.controller.ts
+│   │   │   │   ├── formation-region.controller.test.ts
+│   │   │   │   ├── formation-region.controller.ts
 │   │   │   │   ├── formation.controller.test.ts
-│   │   │   │   ├── formationRegion.controller.test.ts
-│   │   │   │   ├── formationRegion.controller.ts
 │   │   │   │   ├── formations.controller.ts
 │   │   │   │   ├── formulaire.controller.test.ts
 │   │   │   │   ├── formulaire.controller.ts
 │   │   │   │   ├── inserjeunes.controller.test.ts
 │   │   │   │   ├── inserjeunes.controller.ts
+│   │   │   │   ├── jobs-et-formations.controller.ts
 │   │   │   │   ├── jobs.controller.test.ts
 │   │   │   │   ├── jobs.controller.ts
-│   │   │   │   ├── jobsEtFormations.controller.ts
 │   │   │   │   ├── login.controller.ts
 │   │   │   │   ├── metiers.controller.test.ts
 │   │   │   │   ├── metiers.controller.ts
 │   │   │   │   ├── partners.controller.test.ts
 │   │   │   │   ├── partners.controller.ts
-│   │   │   │   ├── reportedCompany.controller.ts
-│   │   │   │   ├── rolesRoutes.test.ts
+│   │   │   │   ├── reported-company.controller.ts
+│   │   │   │   ├── roles-routes.test.ts
 │   │   │   │   ├── rome.controller.ts
 │   │   │   │   ├── search.controller.test.ts
 │   │   │   │   ├── search.controller.ts
 │   │   │   │   ├── sitemap.controller.ts
-│   │   │   │   ├── trainingLinks.controller.ts
-│   │   │   │   ├── unsubscribeRecruteurLba.controller.ts
-│   │   │   │   ├── updateRecruteurLba.controller.ts
+│   │   │   │   ├── training-links.controller.ts
+│   │   │   │   ├── unsubscribe-recruteur-lba.controller.ts
+│   │   │   │   ├── update-recruteur-lba.controller.ts
 │   │   │   │   ├── user.controller.test.ts
 │   │   │   │   ├── user.controller.ts
 │   │   │   │   ├── v2
@@ -390,348 +392,364 @@
 │   │   │   │   ├── version.controller.test.ts
 │   │   │   │   └── version.controller.ts
 │   │   │   ├── healthcheck.test.ts
-│   │   │   ├── jobProcessorServer.ts
+│   │   │   ├── job-processor-server.ts
 │   │   │   ├── middlewares
-│   │   │   │   ├── authMiddleware.ts
-│   │   │   │   └── errorMiddleware.ts
+│   │   │   │   ├── auth-middleware.ts
+│   │   │   │   └── error-middleware.ts
 │   │   │   ├── server.test.ts
-│   │   │   └── server.ts
+│   │   │   ├── server.ts
+│   │   │   └── stream-processor-server.ts
 │   │   ├── index.ts
 │   │   ├── jobs
 │   │   │   ├── anonymization
-│   │   │   │   ├── anonimizeUsersWithAccounts.ts
-│   │   │   │   ├── anonymizeApplicantAndApplications.ts
-│   │   │   │   ├── anonymizeApplications.ts
-│   │   │   │   ├── anonymizeAppointments.ts
-│   │   │   │   ├── anonymizeIndividual.ts
-│   │   │   │   ├── anonymizeReportedReasons.ts
-│   │   │   │   ├── anonymizeUsers.ts
-│   │   │   │   └── removeBrevoContacts.ts
+│   │   │   │   ├── anonimize-users-with-accounts.ts
+│   │   │   │   ├── anonymize-applicant-and-applications.ts
+│   │   │   │   ├── anonymize-applications.ts
+│   │   │   │   ├── anonymize-appointments.ts
+│   │   │   │   ├── anonymize-individual.ts
+│   │   │   │   ├── anonymize-reported-reasons.ts
+│   │   │   │   ├── anonymize-users.ts
+│   │   │   │   └── remove-brevo-contacts.ts
 │   │   │   ├── applications
-│   │   │   │   ├── processApplications.test.ts
-│   │   │   │   ├── processApplications.ts
-│   │   │   │   ├── processRecruiterIntentions.ts
-│   │   │   │   ├── relanceCandidatsInactifs.test.ts
-│   │   │   │   ├── relanceCandidatsInactifs.ts
-│   │   │   │   ├── relanceIncitationSpontanee.test.ts
-│   │   │   │   ├── relanceIncitationSpontanee.ts
-│   │   │   │   └── relanceSearchUrl.ts
+│   │   │   │   ├── process-applications.test.ts
+│   │   │   │   ├── process-applications.ts
+│   │   │   │   ├── process-recruiter-intentions.ts
+│   │   │   │   ├── relance-candidats-inactifs.test.ts
+│   │   │   │   ├── relance-candidats-inactifs.ts
+│   │   │   │   ├── relance-incitation-spontanee.test.ts
+│   │   │   │   ├── relance-incitation-spontanee.ts
+│   │   │   │   └── relance-search-url.ts
 │   │   │   ├── database
-│   │   │   │   ├── obfuscateCollections.ts
-│   │   │   │   ├── recreateIndexes.ts
-│   │   │   │   ├── schemaValidation.ts
-│   │   │   │   └── seedSearchSynonyms.ts
-│   │   │   ├── diplomesMetiers
-│   │   │   │   └── updateDiplomesMetiers.ts
-│   │   │   ├── domainesMetiers
+│   │   │   │   ├── obfuscate-collections.ts
+│   │   │   │   ├── recreate-indexes.ts
+│   │   │   │   ├── schema-validation.ts
+│   │   │   │   └── seed-search-synonyms.ts
+│   │   │   ├── diplomes-metiers
+│   │   │   │   └── update-diplomes-metiers.ts
+│   │   │   ├── domaines-metiers
 │   │   │   │   ├── assets
 │   │   │   │   │   └── .gitignore
-│   │   │   │   ├── buildMappingRomeRNCP.ts
-│   │   │   │   ├── classifyRomesForDomainesMetiers.ts
-│   │   │   │   ├── domaineMetiersFixRomes.ts
-│   │   │   │   ├── importFichesRncp.ts
-│   │   │   │   ├── updateRomesForDomainesMetiers.ts
-│   │   │   │   └── validateDomaineMetiers.ts
-│   │   │   ├── engagementHandicap
-│   │   │   │   ├── refreshEntrepriseEngagementJobsPartners.test.ts
-│   │   │   │   └── refreshEntrepriseEngagementJobsPartners.ts
-│   │   │   ├── formationsCatalogue
-│   │   │   │   ├── formationsCatalogue.ts
-│   │   │   │   └── updateParcoursupAndAffelnetInfoOnFormationCatalogue.ts
-│   │   │   ├── franceTravail
-│   │   │   │   └── generateFranceTravailAccess.ts
+│   │   │   │   ├── build-mapping-rome-rncp.ts
+│   │   │   │   ├── classify-romes-for-domaines-metiers.ts
+│   │   │   │   ├── domaine-metiers-fix-romes.ts
+│   │   │   │   ├── import-fiches-rncp.ts
+│   │   │   │   ├── update-romes-for-domaines-metiers.ts
+│   │   │   │   └── validate-domaine-metiers.ts
+│   │   │   ├── engagement-handicap
+│   │   │   │   ├── refresh-entreprise-engagement-jobs-partners.test.ts
+│   │   │   │   └── refresh-entreprise-engagement-jobs-partners.ts
+│   │   │   ├── formations-catalogue
+│   │   │   │   ├── formations-catalogue.ts
+│   │   │   │   └── update-parcoursup-and-affelnet-info-on-formation-catalogue.ts
+│   │   │   ├── france-travail
+│   │   │   │   └── generate-france-travail-access.ts
 │   │   │   ├── jobs.ts
 │   │   │   ├── metabase
-│   │   │   │   └── metabaseRoleManagement360.ts
+│   │   │   │   └── metabase-role-management360.ts
 │   │   │   ├── migrations
 │   │   │   │   └── migrations.ts
-│   │   │   ├── miseEnRelation
-│   │   │   │   └── sendMiseEnRelation.ts
-│   │   │   ├── offrePartenaire
+│   │   │   ├── mise-en-relation
+│   │   │   │   └── send-mise-en-relation.ts
+│   │   │   ├── offre-partenaire
 │   │   │   │   ├── __snapshots__
-│   │   │   │   │   ├── fillSiretInfosForPartners.test.ts.snap
-│   │   │   │   │   └── importFromStreamInXml.test.ts.snap
+│   │   │   │   │   ├── fill-siret-infos-for-partners.test.ts.snap
+│   │   │   │   │   └── import-from-stream-in-xml.test.ts.snap
 │   │   │   │   ├── apec
 │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   ├── import-apec.test.ts.snap
 │   │   │   │   │   │   └── importApec.test.ts.snap
-│   │   │   │   │   ├── apecMapper.ts
-│   │   │   │   │   ├── importApec.test.input.xml
-│   │   │   │   │   ├── importApec.test.ts
-│   │   │   │   │   ├── importApec.ts
-│   │   │   │   │   └── processApec.ts
-│   │   │   │   ├── blockBadRomeJobsPartners.ts
-│   │   │   │   ├── blockJobsPartnersFromCfaList.test.ts
-│   │   │   │   ├── blockJobsPartnersFromCfaList.ts
-│   │   │   │   ├── blockJobsPartnersFromExpirationDate.test.ts
-│   │   │   │   ├── blockJobsPartnersFromExpirationDate.ts
-│   │   │   │   ├── blockJobsPartnersFromFluxCompanyList.test.ts
-│   │   │   │   ├── blockJobsPartnersFromFluxCompanyList.ts
-│   │   │   │   ├── blockJobsPartnersWithNaf85.ts
-│   │   │   │   ├── cancelRemovedJobsPartners.test.ts
-│   │   │   │   ├── cancelRemovedJobsPartners.ts
+│   │   │   │   │   ├── apec-mapper.ts
+│   │   │   │   │   ├── import-apec.test.input.xml
+│   │   │   │   │   ├── import-apec.test.ts
+│   │   │   │   │   ├── import-apec.ts
+│   │   │   │   │   └── process-apec.ts
+│   │   │   │   ├── block-bad-rome-jobs-partners.ts
+│   │   │   │   ├── block-jobs-partners-from-cfa-list.test.ts
+│   │   │   │   ├── block-jobs-partners-from-cfa-list.ts
+│   │   │   │   ├── block-jobs-partners-from-expiration-date.test.ts
+│   │   │   │   ├── block-jobs-partners-from-expiration-date.ts
+│   │   │   │   ├── block-jobs-partners-from-flux-company-list.test.ts
+│   │   │   │   ├── block-jobs-partners-from-flux-company-list.ts
+│   │   │   │   ├── block-jobs-partners-with-naf85.ts
+│   │   │   │   ├── cancel-removed-jobs-partners.test.ts
+│   │   │   │   ├── cancel-removed-jobs-partners.ts
 │   │   │   │   ├── clever-connect
 │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   ├── import-clever-connect.test.ts.snap
 │   │   │   │   │   │   └── importCleverConnect.test.ts.snap
-│   │   │   │   │   ├── cleverConnectMapper.test.ts
-│   │   │   │   │   ├── cleverConnectMapper.ts
-│   │   │   │   │   ├── importCleverConnect.test.input.xml
-│   │   │   │   │   ├── importCleverConnect.test.ts
-│   │   │   │   │   ├── importCleverConnect.ts
-│   │   │   │   │   └── processCleverConnect.ts
+│   │   │   │   │   ├── clever-connect-mapper.test.ts
+│   │   │   │   │   ├── clever-connect-mapper.ts
+│   │   │   │   │   ├── import-clever-connect.test.input.xml
+│   │   │   │   │   ├── import-clever-connect.test.ts
+│   │   │   │   │   ├── import-clever-connect.ts
+│   │   │   │   │   └── process-clever-connect.ts
+│   │   │   │   ├── close-jobs-partners-on-application-threshold.ts
 │   │   │   │   ├── decathlon
 │   │   │   │   │   ├── __snapshots__
-│   │   │   │   │   │   └── importDecathlon.test.ts.snap
+│   │   │   │   │   │   └── import-decathlon.test.ts.snap
+│   │   │   │   │   ├── decathlon-mapper.test.ts
+│   │   │   │   │   ├── decathlon-mapper.ts
 │   │   │   │   │   ├── decathlon.test.input.json
-│   │   │   │   │   ├── decathlonMapper.test.ts
-│   │   │   │   │   ├── decathlonMapper.ts
-│   │   │   │   │   ├── importDecathlon.test.ts
-│   │   │   │   │   └── importDecathlon.ts
-│   │   │   │   ├── detectClassificationJobsPartners.test.ts
-│   │   │   │   ├── detectClassificationJobsPartners.ts
-│   │   │   │   ├── detectDuplicateJobPartners.test.ts
-│   │   │   │   ├── detectDuplicateJobPartners.ts
+│   │   │   │   │   ├── import-decathlon.test.ts
+│   │   │   │   │   └── import-decathlon.ts
+│   │   │   │   ├── detect-classification-jobs-partners.test.ts
+│   │   │   │   ├── detect-classification-jobs-partners.ts
+│   │   │   │   ├── detect-duplicate-job-partners.test.ts
+│   │   │   │   ├── detect-duplicate-job-partners.ts
 │   │   │   │   ├── edf
 │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   ├── import-edf.test.ts.snap
 │   │   │   │   │   │   └── importEdf.test.ts.snap
-│   │   │   │   │   ├── edfMapper.test.ts
-│   │   │   │   │   ├── edfMapper.ts
-│   │   │   │   │   ├── importEDF.ts
-│   │   │   │   │   ├── importEdf.test.input.xml
-│   │   │   │   │   ├── importEdf.test.ts
-│   │   │   │   │   └── processEdf.ts
+│   │   │   │   │   ├── edf-mapper.test.ts
+│   │   │   │   │   ├── edf-mapper.ts
+│   │   │   │   │   ├── import-edf.test.input.xml
+│   │   │   │   │   ├── import-edf.test.ts
+│   │   │   │   │   ├── import-edf.ts
+│   │   │   │   │   └── process-edf.ts
 │   │   │   │   ├── emploi-inclusion
 │   │   │   │   │   ├── __snapshots__
 │   │   │   │   │   │   └── emploi-inclusion.mapper.test.ts.snap
 │   │   │   │   │   ├── emploi-inclusion.mapper.test.ts
 │   │   │   │   │   ├── emploi-inclusion.mapper.ts
-│   │   │   │   │   └── importEmploiInclusion.ts
+│   │   │   │   │   └── import-emploi-inclusion.ts
 │   │   │   │   ├── enedis
 │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   ├── import-enedis.test.ts.snap
 │   │   │   │   │   │   └── importEnedis.test.ts.snap
-│   │   │   │   │   ├── enedisMapper.ts
-│   │   │   │   │   ├── importEnedis.test.input.xml
-│   │   │   │   │   ├── importEnedis.test.ts
-│   │   │   │   │   ├── importEnedis.ts
-│   │   │   │   │   └── processEnedis.ts
-│   │   │   │   ├── engagementJeunes
+│   │   │   │   │   ├── enedis-mapper.ts
+│   │   │   │   │   ├── import-enedis.test.input.xml
+│   │   │   │   │   ├── import-enedis.test.ts
+│   │   │   │   │   ├── import-enedis.ts
+│   │   │   │   │   └── process-enedis.ts
+│   │   │   │   ├── engagement-jeunes
 │   │   │   │   │   ├── __snapshots__
-│   │   │   │   │   │   ├── engagementJeunesMapper.test.ts.snap
-│   │   │   │   │   │   └── importEngagementJeunes.test.ts.snap
+│   │   │   │   │   │   ├── engagement-jeunes-mapper.test.ts.snap
+│   │   │   │   │   │   └── import-engagement-jeunes.test.ts.snap
+│   │   │   │   │   ├── engagement-jeunes-mapper.test.ts
+│   │   │   │   │   ├── engagement-jeunes-mapper.ts
 │   │   │   │   │   ├── engagementJeunes.test.input.json
-│   │   │   │   │   ├── engagementJeunesMapper.test.ts
-│   │   │   │   │   ├── engagementJeunesMapper.ts
-│   │   │   │   │   ├── importEngagementJeunes.test.ts
-│   │   │   │   │   └── importEngagementJeunes.ts
+│   │   │   │   │   ├── import-engagement-jeunes.test.ts
+│   │   │   │   │   └── import-engagement-jeunes.ts
 │   │   │   │   ├── etudiant
 │   │   │   │   │   ├── __snapshots__
 │   │   │   │   │   │   └── etudiant.mapper.test.ts.snap
 │   │   │   │   │   ├── etudiant.mapper.test.ts
 │   │   │   │   │   ├── etudiant.mapper.ts
-│   │   │   │   │   └── processEtudiant.ts
-│   │   │   │   ├── expireJobsPartners.ts
-│   │   │   │   ├── fillComputedJobsPartners.test.ts
-│   │   │   │   ├── fillComputedJobsPartners.ts
-│   │   │   │   ├── fillComputedRecruteursLba.ts
-│   │   │   │   ├── fillEntrepriseEngagementComputedJobsPartners.ts
-│   │   │   │   ├── fillEntrepriseEngagementJobsPartners.ts
-│   │   │   │   ├── fillFieldsForPartnersFactory.ts
-│   │   │   │   ├── fillLbaUrl.ts
-│   │   │   │   ├── fillLocationInfosForPartners.test.ts
-│   │   │   │   ├── fillLocationInfosForPartners.ts
-│   │   │   │   ├── fillOpcoInfosForPartners.test.ts
-│   │   │   │   ├── fillOpcoInfosForPartners.ts
-│   │   │   │   ├── fillRomeForPartners.test.ts
-│   │   │   │   ├── fillRomeForPartners.ts
-│   │   │   │   ├── fillSiretInfosForPartners.test.ts
-│   │   │   │   ├── fillSiretInfosForPartners.ts
-│   │   │   │   ├── formatTextFieldsJobsPartners.ts
+│   │   │   │   │   └── process-etudiant.ts
+│   │   │   │   ├── expire-jobs-partners.ts
+│   │   │   │   ├── fill-computed-jobs-partners.test.ts
+│   │   │   │   ├── fill-computed-jobs-partners.ts
+│   │   │   │   ├── fill-computed-recruteurs-lba.ts
+│   │   │   │   ├── fill-entreprise-engagement-computed-jobs-partners.ts
+│   │   │   │   ├── fill-entreprise-engagement-jobs-partners.ts
+│   │   │   │   ├── fill-fields-for-partners-factory.ts
+│   │   │   │   ├── fill-lba-url.ts
+│   │   │   │   ├── fill-location-infos-for-partners.test.ts
+│   │   │   │   ├── fill-location-infos-for-partners.ts
+│   │   │   │   ├── fill-opco-infos-for-partners.test.ts
+│   │   │   │   ├── fill-opco-infos-for-partners.ts
+│   │   │   │   ├── fill-rome-for-partners.test.ts
+│   │   │   │   ├── fill-rome-for-partners.ts
+│   │   │   │   ├── fill-siret-infos-for-partners.test.ts
+│   │   │   │   ├── fill-siret-infos-for-partners.ts
+│   │   │   │   ├── format-text-fields-jobs-partners.ts
 │   │   │   │   ├── france-travail
-│   │   │   │   │   ├── franceTravailMapper.test.ts
-│   │   │   │   │   ├── franceTravailMapper.ts
-│   │   │   │   │   ├── importJobsFranceTravail.ts
-│   │   │   │   │   └── processFranceTravail.ts
+│   │   │   │   │   ├── france-travail-mapper.test.ts
+│   │   │   │   │   ├── france-travail-mapper.ts
+│   │   │   │   │   ├── import-jobs-france-travail.ts
+│   │   │   │   │   └── process-france-travail.ts
 │   │   │   │   ├── france-travail-CEGID
 │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   ├── france-travail-cegid-mapper.test.ts.snap
 │   │   │   │   │   │   ├── franceTravailCEGIDMapper.test.ts.snap
+│   │   │   │   │   │   ├── import-france-travail-cegid.test.ts.snap
 │   │   │   │   │   │   └── importFranceTravailCEGID.test.ts.snap
-│   │   │   │   │   ├── franceTravailCEGIDMapper.test.input.json
-│   │   │   │   │   ├── franceTravailCEGIDMapper.test.ts
-│   │   │   │   │   ├── franceTravailCEGIDMapper.ts
-│   │   │   │   │   ├── importFranceTravailCEGID.test.input.json
-│   │   │   │   │   ├── importFranceTravailCEGID.test.ts
-│   │   │   │   │   ├── importFranceTravailCEGID.ts
-│   │   │   │   │   ├── mappingAgences.ts
-│   │   │   │   │   └── mockGeolocApi.ts
+│   │   │   │   │   ├── france-travail-cegid-mapper.test.input.json
+│   │   │   │   │   ├── france-travail-cegid-mapper.test.ts
+│   │   │   │   │   ├── france-travail-cegid-mapper.ts
+│   │   │   │   │   ├── import-france-travail-cegid.test.input.json
+│   │   │   │   │   ├── import-france-travail-cegid.test.ts
+│   │   │   │   │   ├── import-france-travail-cegid.ts
+│   │   │   │   │   ├── mapping-agences.ts
+│   │   │   │   │   └── mock-geoloc-api.ts
 │   │   │   │   ├── hellowork
 │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   ├── import-hello-work.test.ts.snap
 │   │   │   │   │   │   └── importHelloWork.test.ts.snap
-│   │   │   │   │   ├── helloWorkMapper.test.ts
-│   │   │   │   │   ├── helloWorkMapper.ts
-│   │   │   │   │   ├── importHelloWork.test.input.xml
-│   │   │   │   │   ├── importHelloWork.test.ts
-│   │   │   │   │   └── importHelloWork.ts
+│   │   │   │   │   ├── hello-work-mapper.test.ts
+│   │   │   │   │   ├── hello-work-mapper.ts
+│   │   │   │   │   ├── import-hello-work.test.input.xml
+│   │   │   │   │   ├── import-hello-work.test.ts
+│   │   │   │   │   └── import-hello-work.ts
 │   │   │   │   ├── hellowork-buddi
 │   │   │   │   │   ├── __snapshots__
-│   │   │   │   │   │   ├── helloWorkBuddiMapper.test.ts.snap
+│   │   │   │   │   │   ├── hello-work-buddi-mapper.test.ts.snap
+│   │   │   │   │   │   ├── import-hello-work-buddi.test.ts.snap
 │   │   │   │   │   │   └── importHelloWorkBuddi.test.ts.snap
-│   │   │   │   │   ├── helloWorkBuddiMapper.test.ts
-│   │   │   │   │   ├── helloWorkBuddiMapper.ts
-│   │   │   │   │   ├── importHelloWorkBuddi.test.input.xml
-│   │   │   │   │   ├── importHelloWorkBuddi.test.ts
-│   │   │   │   │   └── importHelloWorkBuddi.ts
+│   │   │   │   │   ├── hello-work-buddi-mapper.test.ts
+│   │   │   │   │   ├── hello-work-buddi-mapper.ts
+│   │   │   │   │   ├── import-hello-work-buddi.test.input.xml
+│   │   │   │   │   ├── import-hello-work-buddi.test.ts
+│   │   │   │   │   └── import-hello-work-buddi.ts
 │   │   │   │   ├── hellowork-merge
-│   │   │   │   │   ├── deduplicateHellowork.ts
-│   │   │   │   │   └── processHellowork.ts
-│   │   │   │   ├── importFromComputedToJobsPartners.test.ts
-│   │   │   │   ├── importFromComputedToJobsPartners.ts
-│   │   │   │   ├── importFromStreamInCsv.ts
-│   │   │   │   ├── importFromStreamInJson.ts
-│   │   │   │   ├── importFromStreamInXml.test.ts
-│   │   │   │   ├── importFromStreamInXml.ts
-│   │   │   │   ├── importFromUrlInCsv.ts
-│   │   │   │   ├── importFromUrlInXml.ts
-│   │   │   │   ├── isCompanyInBlockedCfaList.test.ts
-│   │   │   │   ├── isCompanyInBlockedCfaList.ts
-│   │   │   │   ├── jobPartnersRankConfig.ts
-│   │   │   │   ├── jobsPartners.importer.ts
+│   │   │   │   │   ├── deduplicate-hellowork.ts
+│   │   │   │   │   └── process-hellowork.ts
+│   │   │   │   ├── import-from-computed-to-jobs-partners.test.ts
+│   │   │   │   ├── import-from-computed-to-jobs-partners.ts
+│   │   │   │   ├── import-from-stream-in-csv.ts
+│   │   │   │   ├── import-from-stream-in-json.ts
+│   │   │   │   ├── import-from-stream-in-xml.test.ts
+│   │   │   │   ├── import-from-stream-in-xml.ts
+│   │   │   │   ├── import-from-url-in-csv.ts
+│   │   │   │   ├── import-from-url-in-xml.ts
+│   │   │   │   ├── is-company-in-blocked-cfa-list.test.ts
+│   │   │   │   ├── is-company-in-blocked-cfa-list.ts
+│   │   │   │   ├── job-partners-rank-config.ts
+│   │   │   │   ├── jobs-partners.importer.ts
 │   │   │   │   ├── jobteaser
 │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   ├── import-jobteaser.test.ts.snap
 │   │   │   │   │   │   └── importJobteaser.test.ts.snap
-│   │   │   │   │   ├── importJobteaser.test.input.xml
-│   │   │   │   │   ├── importJobteaser.test.ts
-│   │   │   │   │   ├── importJobteaser.ts
-│   │   │   │   │   ├── jobteaserMapper.ts
-│   │   │   │   │   └── processJobteaser.ts
+│   │   │   │   │   ├── import-jobteaser.test.input.xml
+│   │   │   │   │   ├── import-jobteaser.test.ts
+│   │   │   │   │   ├── import-jobteaser.ts
+│   │   │   │   │   ├── jobteaser-mapper.ts
+│   │   │   │   │   └── process-jobteaser.ts
 │   │   │   │   ├── jooble
 │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   ├── import-jooble.test.ts.snap
 │   │   │   │   │   │   └── importJooble.test.ts.snap
-│   │   │   │   │   ├── importJooble.test.input.xml
-│   │   │   │   │   ├── importJooble.test.ts
-│   │   │   │   │   ├── importJooble.ts
-│   │   │   │   │   ├── joobleMapper.ts
-│   │   │   │   │   └── processJooble.ts
+│   │   │   │   │   ├── import-jooble.test.input.xml
+│   │   │   │   │   ├── import-jooble.test.ts
+│   │   │   │   │   ├── import-jooble.ts
+│   │   │   │   │   ├── jooble-mapper.ts
+│   │   │   │   │   └── process-jooble.ts
 │   │   │   │   ├── kelio
 │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   ├── import-kelio.test.ts.snap
 │   │   │   │   │   │   └── importKelio.test.ts.snap
-│   │   │   │   │   ├── importKelio.test.input.xml
-│   │   │   │   │   ├── importKelio.test.ts
-│   │   │   │   │   ├── importKelio.ts
-│   │   │   │   │   ├── kelioMapper.ts
-│   │   │   │   │   └── processKelio.ts
+│   │   │   │   │   ├── import-kelio.test.input.xml
+│   │   │   │   │   ├── import-kelio.test.ts
+│   │   │   │   │   ├── import-kelio.ts
+│   │   │   │   │   ├── kelio-mapper.ts
+│   │   │   │   │   └── process-kelio.ts
 │   │   │   │   ├── laposte
 │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   ├── import-laposte.test.ts.snap
 │   │   │   │   │   │   └── importLaposte.test.ts.snap
-│   │   │   │   │   ├── importLaposte.test.input.xml
-│   │   │   │   │   ├── importLaposte.test.ts
-│   │   │   │   │   ├── importLaposte.ts
-│   │   │   │   │   ├── laposteMapper.ts
-│   │   │   │   │   └── processLaposte.ts
+│   │   │   │   │   ├── import-laposte.test.input.xml
+│   │   │   │   │   ├── import-laposte.test.ts
+│   │   │   │   │   ├── import-laposte.ts
+│   │   │   │   │   ├── laposte-mapper.ts
+│   │   │   │   │   └── process-laposte.ts
 │   │   │   │   ├── leboncoin
 │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   ├── import-leboncoin.test.ts.snap
 │   │   │   │   │   │   └── importLeboncoin.test.ts.snap
-│   │   │   │   │   ├── importLeboncoin.test.input.csv
-│   │   │   │   │   ├── importLeboncoin.test.ts
-│   │   │   │   │   ├── importLeboncoin.ts
-│   │   │   │   │   ├── leboncoinMapper.ts
-│   │   │   │   │   └── processLeboncoin.ts
+│   │   │   │   │   ├── import-leboncoin.test.input.csv
+│   │   │   │   │   ├── import-leboncoin.test.ts
+│   │   │   │   │   ├── import-leboncoin.ts
+│   │   │   │   │   ├── leboncoin-mapper.ts
+│   │   │   │   │   └── process-leboncoin.ts
 │   │   │   │   ├── pass
 │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   ├── import-pass.test.ts.snap
 │   │   │   │   │   │   └── importPass.test.ts.snap
-│   │   │   │   │   ├── importPass.test.input.rss
-│   │   │   │   │   ├── importPass.test.ts
-│   │   │   │   │   ├── importPass.ts
-│   │   │   │   │   ├── passMapper.ts
-│   │   │   │   │   └── processPass.ts
-│   │   │   │   ├── processFillRomeStandalone.ts
-│   │   │   │   ├── processJobPartners.ts
-│   │   │   │   ├── processJobPartnersForApi.ts
-│   │   │   │   ├── processMissingRomeAndImportToJobPartners.test.ts
-│   │   │   │   ├── processMissingRomeAndImportToJobPartners.ts
-│   │   │   │   ├── rankJobPartners.ts
-│   │   │   │   ├── rawToComputedJobsPartners.ts
+│   │   │   │   │   ├── import-pass.test.input.rss
+│   │   │   │   │   ├── import-pass.test.ts
+│   │   │   │   │   ├── import-pass.ts
+│   │   │   │   │   ├── pass-mapper.ts
+│   │   │   │   │   └── process-pass.ts
+│   │   │   │   ├── process-fill-rome-standalone.ts
+│   │   │   │   ├── process-job-partners-for-api.ts
+│   │   │   │   ├── process-job-partners.ts
+│   │   │   │   ├── process-missing-rome-and-import-to-job-partners.test.ts
+│   │   │   │   ├── process-missing-rome-and-import-to-job-partners.ts
+│   │   │   │   ├── rank-job-partners.ts
+│   │   │   │   ├── raw-to-computed-jobs-partners.ts
 │   │   │   │   ├── recruteur-lba
 │   │   │   │   │   ├── __snapshots__
-│   │   │   │   │   │   └── processRecruteursLba.test.ts.snap
+│   │   │   │   │   │   └── process-recruteurs-lba.test.ts.snap
 │   │   │   │   │   ├── __tests__
-│   │   │   │   │   │   └── processRecruteursLba.test.1.json
+│   │   │   │   │   │   └── process-recruteurs-lba.test.1.json
 │   │   │   │   │   ├── assets
 │   │   │   │   │   │   └── .gitignore
-│   │   │   │   │   ├── importRecruteursLbaRaw.ts
-│   │   │   │   │   ├── processRecruteursLba.test.ts
-│   │   │   │   │   ├── processRecruteursLba.ts
-│   │   │   │   │   └── recruteursLbaMapper.ts
+│   │   │   │   │   ├── import-recruteurs-lba-raw.ts
+│   │   │   │   │   ├── process-recruteurs-lba.test.ts
+│   │   │   │   │   ├── process-recruteurs-lba.ts
+│   │   │   │   │   └── recruteurs-lba-mapper.ts
 │   │   │   │   ├── rh-alternance
 │   │   │   │   │   ├── __snapshots__
-│   │   │   │   │   │   └── importRHAlternance.test.ts.snap
-│   │   │   │   │   ├── importRHAlternance.test.ts
-│   │   │   │   │   ├── importRHAlternance.ts
-│   │   │   │   │   └── processRhAlternance.ts
-│   │   │   │   ├── validateComputedJobPartners.test.ts
-│   │   │   │   └── validateComputedJobPartners.ts
-│   │   │   ├── oneTimeJob
-│   │   │   │   ├── analyzeCfaBlockList.ts
-│   │   │   │   ├── analyzeClosedCompanies.ts
-│   │   │   │   ├── cleanClosedCompanies.test.ts
-│   │   │   │   ├── cleanClosedCompanies.ts
-│   │   │   │   ├── renvoiMailCreationCompte.ts
-│   │   │   │   └── resyncLbaJobsPartnersStats.ts
-│   │   │   ├── partenaireExport
-│   │   │   │   ├── FTExport.types.ts
+│   │   │   │   │   │   └── import-rh-alternance.test.ts.snap
+│   │   │   │   │   ├── import-rh-alternance.test.ts
+│   │   │   │   │   ├── import-rh-alternance.ts
+│   │   │   │   │   └── process-rh-alternance.ts
+│   │   │   │   ├── validate-computed-job-partners.test.ts
+│   │   │   │   └── validate-computed-job-partners.ts
+│   │   │   ├── one-time-job
+│   │   │   │   ├── analyze-cfa-block-list.ts
+│   │   │   │   ├── analyze-closed-companies.ts
+│   │   │   │   ├── clean-closed-companies.test.ts
+│   │   │   │   ├── clean-closed-companies.ts
+│   │   │   │   ├── renvoi-mail-creation-compte.ts
+│   │   │   │   └── resync-lba-jobs-partners-stats.ts
+│   │   │   ├── partenaire-export
 │   │   │   │   ├── __snapshots__
-│   │   │   │   │   ├── exportJobsToS3V2.test.ts.snap
-│   │   │   │   │   └── exportToFranceTravail.test.ts.snap
-│   │   │   │   ├── exportBlacklistAlgo.ts
-│   │   │   │   ├── exportContactsToBrevo.test.ts
-│   │   │   │   ├── exportContactsToBrevo.ts
-│   │   │   │   ├── exportJobsToS3.ts
-│   │   │   │   ├── exportJobsToS3V2.test.ts
-│   │   │   │   ├── exportJobsToS3V2.ts
-│   │   │   │   ├── exportRecrutersToBrevo.ts
-│   │   │   │   ├── exportToFranceTravail.test.ts
-│   │   │   │   └── exportToFranceTravail.ts
+│   │   │   │   │   ├── export-jobs-to-s3-v2.test.ts.snap
+│   │   │   │   │   └── export-to-france-travail.test.ts.snap
+│   │   │   │   ├── export-blacklist-algo.ts
+│   │   │   │   ├── export-contacts-to-brevo.test.ts
+│   │   │   │   ├── export-contacts-to-brevo.ts
+│   │   │   │   ├── export-jobs-to-s3-v2.test.ts
+│   │   │   │   ├── export-jobs-to-s3-v2.ts
+│   │   │   │   ├── export-jobs-to-s3.ts
+│   │   │   │   ├── export-recruters-to-brevo.ts
+│   │   │   │   ├── export-to-france-travail.test.ts
+│   │   │   │   ├── export-to-france-travail.ts
+│   │   │   │   └── ft-export.types.ts
 │   │   │   ├── rdv
-│   │   │   │   ├── activateOptoutOnEtablissementAndUpdateReferrersOnETFA.ts
-│   │   │   │   ├── importReferentielOnisep.ts
-│   │   │   │   ├── inviteEtablissementAffelnetToPremium.ts
-│   │   │   │   ├── inviteEtablissementAffelnetToPremiumFollowUp.ts
-│   │   │   │   ├── inviteEtablissementParcoursupToPremium.ts
-│   │   │   │   ├── inviteEtablissementParcoursupToPremiumFollowUp.ts
-│   │   │   │   ├── inviteEtablissementToOptOut.ts
-│   │   │   │   ├── premiumActivatedReminder.test.ts
-│   │   │   │   ├── premiumActivatedReminder.ts
-│   │   │   │   ├── removeDuplicateEtablissements.ts
-│   │   │   │   ├── removeEligibleTrainingsForAppointmentsNotInCatalogue.ts
-│   │   │   │   ├── repriseEnvoiPRDV.ts
-│   │   │   │   ├── resetInvitationDates.ts
-│   │   │   │   ├── syncEtablissementDates.ts
-│   │   │   │   └── syncEtablissementsAndFormations.ts
+│   │   │   │   ├── activate-optout-on-etablissement-and-update-referrers-on-etfa.ts
+│   │   │   │   ├── import-referentiel-onisep.ts
+│   │   │   │   ├── invite-etablissement-affelnet-to-premium-follow-up.ts
+│   │   │   │   ├── invite-etablissement-affelnet-to-premium.ts
+│   │   │   │   ├── invite-etablissement-parcoursup-to-premium-follow-up.ts
+│   │   │   │   ├── invite-etablissement-parcoursup-to-premium.ts
+│   │   │   │   ├── invite-etablissement-to-opt-out.ts
+│   │   │   │   ├── premium-activated-reminder.test.ts
+│   │   │   │   ├── premium-activated-reminder.ts
+│   │   │   │   ├── remove-duplicate-etablissements.ts
+│   │   │   │   ├── remove-eligible-trainings-for-appointments-not-in-catalogue.ts
+│   │   │   │   ├── reprise-envoi-prdv.ts
+│   │   │   │   ├── reset-invitation-dates.ts
+│   │   │   │   ├── sync-etablissement-dates.ts
+│   │   │   │   └── sync-etablissements-and-formations.ts
 │   │   │   ├── recruiters
-│   │   │   │   ├── createApiUser.ts
-│   │   │   │   ├── disableApiUser.ts
-│   │   │   │   ├── nurturingEntreprises.test.ts
-│   │   │   │   ├── nurturingEntreprises.ts
-│   │   │   │   ├── opcoReminderJob.ts
-│   │   │   │   ├── recruiterOfferExpirationReminderJob.test.ts
-│   │   │   │   ├── recruiterOfferExpirationReminderJob.ts
-│   │   │   │   ├── resetApiKey.ts
-│   │   │   │   └── updateSiretInfosInErrorJob.ts
-│   │   │   ├── referentielRome
-│   │   │   │   └── referentielRome.ts
+│   │   │   │   ├── create-api-user.ts
+│   │   │   │   ├── disable-api-user.ts
+│   │   │   │   ├── nurturing-entreprises.test.ts
+│   │   │   │   ├── nurturing-entreprises.ts
+│   │   │   │   ├── opco-reminder-job.ts
+│   │   │   │   ├── recruiter-offer-expiration-reminder-job.test.ts
+│   │   │   │   ├── recruiter-offer-expiration-reminder-job.ts
+│   │   │   │   ├── reset-api-key.ts
+│   │   │   │   └── update-siret-infos-in-error-job.ts
+│   │   │   ├── referentiel-rome
+│   │   │   │   └── referentiel-rome.ts
 │   │   │   ├── search
-│   │   │   │   ├── analyzeSearchQueries.ts
-│   │   │   │   ├── generateSearchItemsCollection.test.ts
-│   │   │   │   ├── generateSearchItemsCollection.ts
-│   │   │   │   ├── searchSuggestionCriteria.test.ts
-│   │   │   │   └── searchSuggestionCriteria.ts
+│   │   │   │   ├── analyze-search-queries.ts
+│   │   │   │   ├── generate-search-items-collection.test.ts
+│   │   │   │   ├── generate-search-items-collection.ts
+│   │   │   │   ├── search-suggestion-criteria.test.ts
+│   │   │   │   └── search-suggestion-criteria.ts
 │   │   │   ├── seo
-│   │   │   │   ├── dataMetierSEO.ts
-│   │   │   │   └── updateSEO.ts
-│   │   │   ├── simpleJobDefinitions.ts
-│   │   │   ├── updateBrevoBlockedEmails
-│   │   │   │   └── updateBrevoBlockedEmails.ts
+│   │   │   │   ├── data-metier-seo.ts
+│   │   │   │   └── update-seo.ts
+│   │   │   ├── simple-job-definitions.ts
+│   │   │   ├── update-brevo-blocked-emails
+│   │   │   │   └── update-brevo-blocked-emails.ts
 │   │   │   └── verifications
-│   │   │       ├── controlApplications.ts
-│   │   │       └── controlAppointments.ts
+│   │   │       ├── control-applications.ts
+│   │   │       └── control-appointments.ts
 │   │   ├── main.ts
 │   │   ├── migrations
 │   │   │   ├── .gitkeep
@@ -751,38 +769,38 @@
 │   │   │   ├── 20260728110908-remove-inactive-recruteurs-from-search-items.ts
 │   │   │   └── 20260728150000-sanitize-offer-titles.ts
 │   │   ├── security
-│   │   │   ├── accessLog.service.ts
-│   │   │   ├── accessLog.types.ts
-│   │   │   ├── accessTokenService.test.ts
-│   │   │   ├── accessTokenService.ts
-│   │   │   ├── authenticationService.ts
-│   │   │   ├── authorisationService.test.ts
-│   │   │   └── authorisationService.ts
+│   │   │   ├── access-log.service.ts
+│   │   │   ├── access-log.types.ts
+│   │   │   ├── access-token.service.test.ts
+│   │   │   ├── access-token.service.ts
+│   │   │   ├── authentication.service.ts
+│   │   │   ├── authorisation.service.test.ts
+│   │   │   └── authorisation.service.ts
 │   │   └── services
 │   │       ├── __snapshots__
 │   │       │   ├── application.service.test.ts.snap
 │   │       │   ├── formulaire.service.test.ts.snap
-│   │       │   └── partnerJob.service.test.ts.snap
-│   │       ├── appLinks.service.ts
+│   │       │   └── partner-job.service.test.ts.snap
+│   │       ├── app-links.service.ts
 │   │       ├── applicant.service.ts
 │   │       ├── application.service.test.ts
 │   │       ├── application.service.ts
 │   │       ├── appointment.service.ts
 │   │       ├── bal.service.ts
 │   │       ├── brevo.service.ts
-│   │       ├── cacheClassification.service.ts
-│   │       ├── cacheDiagoriente.service.ts
-│   │       ├── cacheGeolocation.service.ts
-│   │       ├── cacheInfosSiret.service.ts
+│   │       ├── cache-classification.service.ts
+│   │       ├── cache-diagoriente.service.ts
+│   │       ├── cache-geolocation.service.ts
+│   │       ├── cache-infos-siret.service.ts
 │   │       ├── catalogue.service.ts
 │   │       ├── cfa.service.ts
 │   │       ├── clamav.service.ts
 │   │       ├── domainesmetiers.service.ts
-│   │       ├── eligibleTrainingsForAppointment.service.test.ts
-│   │       ├── eligibleTrainingsForAppointment.service.ts
+│   │       ├── eligible-trainings-for-appointment.service.test.ts
+│   │       ├── eligible-trainings-for-appointment.service.ts
 │   │       ├── emails.service.test.ts
 │   │       ├── emails.service.ts
-│   │       ├── entrepriseManagedByCfa.service.ts
+│   │       ├── entreprise-managed-by-cfa.service.ts
 │   │       ├── etablissement.service.test.ts
 │   │       ├── etablissement.service.ts
 │   │       ├── etablissement.service.types.ts
@@ -791,20 +809,21 @@
 │   │       │       ├── certification.fixture.ts
 │   │       │       └── certification.service.ts
 │   │       ├── formation.service.ts
+│   │       ├── formulaire-notifications.service.ts
 │   │       ├── formulaire.service.test.ts
 │   │       ├── formulaire.service.ts
 │   │       ├── ftjob.service.ts
 │   │       ├── ftjob.service.types.ts
 │   │       ├── geolocation.service.ts
-│   │       ├── handiEngagement.service.ts
-│   │       ├── jobOpportunity.service.types.ts
+│   │       ├── handi-engagement.service.ts
+│   │       ├── job-opportunity.service.types.ts
 │   │       ├── jobs
-│   │       │   └── jobOpportunity
-│   │       │       ├── JobOpportunityRequestContext.ts
+│   │       │   └── job-opportunity
 │   │       │       ├── __snapshots__
-│   │       │       │   └── jobOpportunity.service.test.ts.snap
-│   │       │       ├── jobOpportunity.service.test.ts
-│   │       │       └── jobOpportunity.service.ts
+│   │       │       │   └── job-opportunity.service.test.ts.snap
+│   │       │       ├── job-opportunity-request-context.ts
+│   │       │       ├── job-opportunity.service.test.ts
+│   │       │       └── job-opportunity.service.ts
 │   │       ├── lbaitem.shared.service.types.ts
 │   │       ├── lbajob.service.ts
 │   │       ├── login.service.ts
@@ -814,44 +833,44 @@
 │   │       │   └── mistralai.service.ts
 │   │       ├── opco.service.ts
 │   │       ├── organization.service.ts
-│   │       ├── partnerJob.service.test.ts
-│   │       ├── partnerJob.service.ts
-│   │       ├── queryValidator.service.test.ts
-│   │       ├── queryValidator.service.ts
-│   │       ├── queryValidator.service.types.ts
-│   │       ├── recruteurLba.service.test.ts
-│   │       ├── recruteurLba.service.ts
+│   │       ├── partner-job.service.test.ts
+│   │       ├── partner-job.service.ts
+│   │       ├── query-validator.service.test.ts
+│   │       ├── query-validator.service.ts
+│   │       ├── query-validator.service.types.ts
+│   │       ├── recruteur-lba.service.test.ts
+│   │       ├── recruteur-lba.service.ts
 │   │       ├── referentiel
 │   │       │   └── commune
 │   │       │       ├── commune.referentiel.service.test.ts
 │   │       │       └── commune.referentiel.service.ts
-│   │       ├── referentielEngagementEntreprise.service.ts
+│   │       ├── referentiel-engagement-entreprise.service.ts
 │   │       ├── referrers.service.ts
-│   │       ├── reportedCompany.service.ts
-│   │       ├── roleManagement.service.test.ts
-│   │       ├── roleManagement.service.ts
+│   │       ├── reported-company.service.ts
+│   │       ├── role-management.service.test.ts
+│   │       ├── role-management.service.ts
 │   │       ├── rome.service.ts
 │   │       ├── rome.service.types.ts
 │   │       ├── search
+│   │       │   ├── search-items-keywords.service.test.ts
+│   │       │   ├── search-items-keywords.service.ts
+│   │       │   ├── search-items.service.test.ts
+│   │       │   ├── search-items.service.ts
+│   │       │   ├── search-query-log.service.test.ts
+│   │       │   ├── search-query-log.service.ts
 │   │       │   ├── search-result.test.ts
-│   │       │   ├── search.service.ts
-│   │       │   ├── searchItems.service.test.ts
-│   │       │   ├── searchItems.service.ts
-│   │       │   ├── searchItemsKeywords.service.test.ts
-│   │       │   ├── searchItemsKeywords.service.ts
-│   │       │   ├── searchQueryLog.service.test.ts
-│   │       │   └── searchQueryLog.service.ts
+│   │       │   └── search.service.ts
 │   │       ├── seo.service.ts
 │   │       ├── sessions.service.ts
 │   │       ├── sitemap.service.ts
-│   │       ├── trafficSource.service.test.ts
-│   │       ├── trafficSource.service.ts
-│   │       ├── trainingLinks.service.ts
-│   │       ├── unsubscribeRecruteurLba.service.ts
-│   │       ├── user.service.ts
-│   │       ├── userRecruteur.service.ts
-│   │       ├── userWithAccount.service.test.ts
-│   │       └── userWithAccount.service.ts
+│   │       ├── traffic-source.service.test.ts
+│   │       ├── traffic-source.service.ts
+│   │       ├── training-links.service.ts
+│   │       ├── unsubscribe-recruteur-lba.service.ts
+│   │       ├── user-recruteur.service.ts
+│   │       ├── user-with-account.service.test.ts
+│   │       ├── user-with-account.service.ts
+│   │       └── user.service.ts
 │   ├── static
 │   │   ├── .gitkeep
 │   │   ├── companies-to-close.csv
@@ -902,6 +921,8 @@
 │   │       ├── mail-mer-invitation.mjml.ejs
 │   │       ├── mail-nouvelle-offre-depot-simplifie.mjml.ejs
 │   │       ├── mail-nouvelle-offre.mjml.ejs
+│   │       ├── mail-offre-expiree-auto.mjml.ejs
+│   │       ├── mail-offre-seuil-candidatures.mjml.ejs
 │   │       ├── mail-rdva-optout-unsubscription-question.mjml.ejs
 │   │       ├── mail-relance-opco.mjml.ejs
 │   │       ├── mail-reponse-cfa.mjml.ejs
@@ -940,7 +961,8 @@
 │   │       ├── mongo.test.utils.ts
 │   │       ├── server.test.utils.ts
 │   │       ├── setup.ts
-│   │       └── user.test.utils.ts
+│   │       ├── user.test.utils.ts
+│   │       └── zodFixtureCompat.ts
 │   ├── tsconfig.json
 │   └── tsup.config.ts
 ├── shared
@@ -949,13 +971,13 @@
 │   │   ├── constants
 │   │   │   ├── application.ts
 │   │   │   ├── appointment.ts
-│   │   │   ├── diffusibleStatus.ts
-│   │   │   ├── errorCodes.ts
+│   │   │   ├── diffusible-status.ts
+│   │   │   ├── error-codes.ts
 │   │   │   ├── geiq.ts
 │   │   │   ├── geolocation.ts
 │   │   │   ├── index.ts
 │   │   │   ├── lbaitem.ts
-│   │   │   ├── listeCfaEntreprise.ts
+│   │   │   ├── liste-cfa-entreprise.ts
 │   │   │   ├── rdva.ts
 │   │   │   ├── recruteur.ts
 │   │   │   ├── referers.ts
@@ -964,39 +986,37 @@
 │   │   ├── fixtures
 │   │   │   ├── application.fixture.ts
 │   │   │   ├── appointment.fixture.ts
-│   │   │   ├── cacheDiagoriente.fixture.ts
-│   │   │   ├── cacheInfoSiret.fixture.ts
+│   │   │   ├── cache-diagoriente.fixture.ts
+│   │   │   ├── cache-info-siret.fixture.ts
 │   │   │   ├── cfa.fixture.ts
 │   │   │   ├── entreprise.fixture.ts
-│   │   │   ├── fixture_helper.ts
+│   │   │   ├── fixture-helper.ts
 │   │   │   ├── geolocation.fixture.ts
-│   │   │   ├── jobPartners.fixture.ts
-│   │   │   ├── rawRHAlternanceJob.fixture.ts
+│   │   │   ├── job-partners.fixture.ts
+│   │   │   ├── raw-rh-alternance-job.fixture.ts
+│   │   │   ├── recruiter-raw.fixture.ts
 │   │   │   ├── recruiter.fixture.ts
-│   │   │   ├── recruiterRaw.fixture.ts
 │   │   │   ├── referentiel
 │   │   │   │   ├── commune.fixture.ts
 │   │   │   │   └── onisep.fixture.ts
-│   │   │   ├── roleManagement.fixture.ts
+│   │   │   ├── role-management.fixture.ts
 │   │   │   ├── rome.fixture.ts
-│   │   │   ├── searchItems.fixture.ts
-│   │   │   ├── user.fixture.ts
-│   │   │   └── userWithAccount.fixture.ts
+│   │   │   ├── search-items.fixture.ts
+│   │   │   ├── user-with-account.fixture.ts
+│   │   │   └── user.fixture.ts
 │   │   ├── global.d.ts
 │   │   ├── helpers
 │   │   │   ├── common.ts
 │   │   │   ├── dayjs.ts
-│   │   │   ├── generateUri.test.ts
-│   │   │   ├── generateUri.ts
-│   │   │   ├── locale
-│   │   │   │   └── locale.fr.ts
+│   │   │   ├── generate-uri.test.ts
+│   │   │   ├── generate-uri.ts
 │   │   │   ├── openapi
 │   │   │   │   └── __snapshots__
 │   │   │   │       └── generateOpenapi.test.ts.snap
-│   │   │   ├── zodHelpers
-│   │   │   │   ├── setupZodErrorMap.ts
-│   │   │   │   └── zodPrimitives.ts
-│   │   │   └── zodWithOpenApi.ts
+│   │   │   ├── zod-helpers
+│   │   │   │   ├── setup-zod-error-map.ts
+│   │   │   │   └── zod-primitives.ts
+│   │   │   └── zod-with-open-api.ts
 │   │   ├── index.ts
 │   │   ├── interface
 │   │   │   └── etablissement.types.ts
@@ -1005,106 +1025,105 @@
 │   │   │   └── lbaitemutils.ts
 │   │   ├── models
 │   │   │   ├── address.model.ts
-│   │   │   ├── anonymizedApplicant.model.ts
-│   │   │   ├── anonymizedApplications.model.ts
-│   │   │   ├── anonymizedAppointments.model.ts
-│   │   │   ├── anonymizedRecruiters.model.ts
-│   │   │   ├── anonymizedUsers.model.ts
-│   │   │   ├── anonymizedUsersWithAccounts.model.ts
+│   │   │   ├── anonymized-applicant.model.ts
+│   │   │   ├── anonymized-applications.model.ts
+│   │   │   ├── anonymized-appointments.model.ts
+│   │   │   ├── anonymized-recruiters.model.ts
+│   │   │   ├── anonymized-users-with-accounts.model.ts
+│   │   │   ├── anonymized-users.model.ts
 │   │   │   ├── apicalls.model.ts
+│   │   │   ├── applicant-email-log.model.ts
 │   │   │   ├── applicant.model.ts
-│   │   │   ├── applicantEmailLog.model.ts
 │   │   │   ├── applications.model.ts
 │   │   │   ├── appointments.model.ts
-│   │   │   ├── cacheClassification.model.ts
-│   │   │   ├── cacheDiagoriente.model.ts
-│   │   │   ├── cacheGeolocation.model.ts
-│   │   │   ├── cacheInfosSiret.model.ts
+│   │   │   ├── cache-classification.model.ts
+│   │   │   ├── cache-diagoriente.model.ts
+│   │   │   ├── cache-geolocation.model.ts
+│   │   │   ├── cache-infos-siret.model.ts
 │   │   │   ├── cfa.model.ts
 │   │   │   ├── common.ts
-│   │   │   ├── computedUserAccess.model.ts
+│   │   │   ├── computed-user-access.model.ts
 │   │   │   ├── credentials.model.ts
-│   │   │   ├── customEmailETFA.model.ts
-│   │   │   ├── diplomesMetiers.model.ts
-│   │   │   ├── domainesMetiers.model.ts
-│   │   │   ├── elligibleTraining.model.ts
-│   │   │   ├── emailBlacklist.model.ts
+│   │   │   ├── custom-email-etfa.model.ts
+│   │   │   ├── diplomes-metiers.model.ts
+│   │   │   ├── domaines-metiers.model.ts
+│   │   │   ├── elligible-training.model.ts
+│   │   │   ├── email-blacklist.model.ts
 │   │   │   ├── entreprise.model.ts
-│   │   │   ├── entreprisesManagedByCfa.model.ts
+│   │   │   ├── entreprises-managed-by-cfa.model.ts
 │   │   │   ├── errors.model.ts
 │   │   │   ├── etablissement.model.ts
 │   │   │   ├── formation.model.ts
-│   │   │   ├── franceTravailAccess.model.ts
+│   │   │   ├── france-travail-access.model.ts
 │   │   │   ├── geolocations.model.ts
 │   │   │   ├── index.ts
+│   │   │   ├── job-partners
+│   │   │   │   └── job-partners.model.test.ts
+│   │   │   ├── job-partners-duplicate-ref.ts
+│   │   │   ├── job-partners.model.test.ts
 │   │   │   ├── job.model.test.ts
 │   │   │   ├── job.model.ts
-│   │   │   ├── jobPartners
-│   │   │   │   └── jobPartners.model.test.ts
-│   │   │   ├── jobPartners.model.test.ts
-│   │   │   ├── jobPartnersDuplicateRef.ts
+│   │   │   ├── jobs-partners-computed.model.ts
+│   │   │   ├── jobs-partners.model.ts
 │   │   │   ├── jobs.model.ts
-│   │   │   ├── jobsPartners.model.ts
-│   │   │   ├── jobsPartnersComputed.model.ts
-│   │   │   ├── lbaItem.model.ts
-│   │   │   ├── lbacError.model.ts
-│   │   │   ├── mistralBatchJobs.model.ts
+│   │   │   ├── lba-item.model.ts
+│   │   │   ├── lbac-error.model.ts
+│   │   │   ├── mistral-batch-jobs.model.ts
 │   │   │   ├── model-to-keep.model.ts
 │   │   │   ├── models.ts
 │   │   │   ├── opco.model.ts
-│   │   │   ├── rawApec.model.ts
-│   │   │   ├── rawAtlas.model.ts
-│   │   │   ├── rawDecathlon.model.ts
-│   │   │   ├── rawEdf.model.ts
-│   │   │   ├── rawEmploiInclusion.model.ts
-│   │   │   ├── rawEnedis.model.ts
-│   │   │   ├── rawEngagementJeunes.model.ts
-│   │   │   ├── rawEtudiant.model.ts
-│   │   │   ├── rawFranceTravail.model.ts
-│   │   │   ├── rawFranceTravailCEGID.model.ts
-│   │   │   ├── rawHelloWork.model.ts
-│   │   │   ├── rawHelloWorkBuddi.model.ts
-│   │   │   ├── rawJobteaser.model.ts
-│   │   │   ├── rawJooble.model.ts
-│   │   │   ├── rawKelio.model.ts
-│   │   │   ├── rawLaposte.model.ts
-│   │   │   ├── rawLeboncoin.model.ts
-│   │   │   ├── rawMeteojob.model.ts
-│   │   │   ├── rawMonster.model.ts
-│   │   │   ├── rawNosTalentsNosEmplois.model.ts
-│   │   │   ├── rawPass.model.ts
-│   │   │   ├── rawRHAlternance.model.ts
-│   │   │   ├── rawRecruteursLba.model.ts
-│   │   │   ├── rawToulouseMetropole.model.ts
-│   │   │   ├── rawViteUnEmploi.model.ts
+│   │   │   ├── raw-apec.model.ts
+│   │   │   ├── raw-atlas.model.ts
+│   │   │   ├── raw-decathlon.model.ts
+│   │   │   ├── raw-edf.model.ts
+│   │   │   ├── raw-emploi-inclusion.model.ts
+│   │   │   ├── raw-enedis.model.ts
+│   │   │   ├── raw-engagement-jeunes.model.ts
+│   │   │   ├── raw-etudiant.model.ts
+│   │   │   ├── raw-france-travail-cegid.model.ts
+│   │   │   ├── raw-france-travail.model.ts
+│   │   │   ├── raw-hello-work-buddi.model.ts
+│   │   │   ├── raw-hello-work.model.ts
+│   │   │   ├── raw-jobteaser.model.ts
+│   │   │   ├── raw-jooble.model.ts
+│   │   │   ├── raw-kelio.model.ts
+│   │   │   ├── raw-laposte.model.ts
+│   │   │   ├── raw-leboncoin.model.ts
+│   │   │   ├── raw-meteojob.model.ts
+│   │   │   ├── raw-monster.model.ts
+│   │   │   ├── raw-nos-talents-nos-emplois.model.ts
+│   │   │   ├── raw-pass.model.ts
+│   │   │   ├── raw-recruteurs-lba.model.ts
+│   │   │   ├── raw-rh-alternance.model.ts
+│   │   │   ├── raw-toulouse-metropole.model.ts
+│   │   │   ├── raw-vite-un-emploi.model.ts
 │   │   │   ├── recruiter.model.ts
-│   │   │   ├── recruteurLbaUpdateEvent.model.ts
+│   │   │   ├── recruteur-lba-update-event.model.ts
 │   │   │   ├── referentiel
 │   │   │   │   └── communes.model.ts
-│   │   │   ├── referentielEngagementEntreprise.model.ts
-│   │   │   ├── referentielOnisep.model.ts
-│   │   │   ├── reportedCompany.model.ts
-│   │   │   ├── roleManagement.model.ts
-│   │   │   ├── roleManagement360.model.ts
+│   │   │   ├── referentiel-engagement-entreprise.model.ts
+│   │   │   ├── referentiel-onisep.model.ts
+│   │   │   ├── reported-company.model.ts
+│   │   │   ├── role-management.model.ts
+│   │   │   ├── role-management360.model.ts
 │   │   │   ├── rome.model.ts
-│   │   │   ├── searchItems.model.ts
-│   │   │   ├── searchItemsKeywords.model.ts
-│   │   │   ├── searchQueries.model.ts
-│   │   │   ├── searchSuggestions.model.ts
-│   │   │   ├── searchSynonyms.model.ts
-│   │   │   ├── seoDiplome.model.ts
-│   │   │   ├── seoMetier.model.ts
-│   │   │   ├── seoVille.model.ts
+│   │   │   ├── search-items-keywords.model.ts
+│   │   │   ├── search-items.model.ts
+│   │   │   ├── search-queries.model.ts
+│   │   │   ├── search-suggestions.model.ts
+│   │   │   ├── search-synonyms.model.ts
+│   │   │   ├── seo-diplome.model.ts
+│   │   │   ├── seo-metier.model.ts
+│   │   │   ├── seo-ville.model.ts
 │   │   │   ├── session.model.ts
 │   │   │   ├── sitemap.model.ts
-│   │   │   ├── trafficSources.model.ts
-│   │   │   ├── unsubscribeOF.model.ts
-│   │   │   ├── unsubscribedRecruteurLba.model.ts
+│   │   │   ├── traffic-sources.model.ts
+│   │   │   ├── unsubscribe-of.model.ts
+│   │   │   ├── unsubscribed-recruteur-lba.model.ts
+│   │   │   ├── user-with-account.model.ts
 │   │   │   ├── user.model.ts
-│   │   │   ├── userWithAccount.model.ts
-│   │   │   └── usersRecruteur.model.ts
+│   │   │   └── users-recruteur.model.ts
 │   │   ├── routes
-│   │   │   ├── _params.ts
 │   │   │   ├── _private
 │   │   │   │   ├── admin
 │   │   │   │   │   └── processor.admin.routes.ts
@@ -1115,28 +1134,29 @@
 │   │   │   ├── classification.routes.ts
 │   │   │   ├── common.routes.ts
 │   │   │   ├── core.routes.ts
-│   │   │   ├── eligibleTrainingsForAppointment.routes.ts
+│   │   │   ├── eligible-trainings-for-appointment.routes.ts
 │   │   │   ├── emails.routes.ts
 │   │   │   ├── etablissement.routes.ts
+│   │   │   ├── formations-par-region.routes.ts
 │   │   │   ├── formations.routes.ts
-│   │   │   ├── formationsParRegion.routes.ts
 │   │   │   ├── formulaire.route.ts
 │   │   │   ├── index.test.ts
 │   │   │   ├── index.ts
 │   │   │   ├── inserjeunes.routes.ts
+│   │   │   ├── jobs-et-formations.routes.ts
 │   │   │   ├── jobs.routes.ts
-│   │   │   ├── jobsEtFormations.routes.ts
 │   │   │   ├── login.routes.ts
 │   │   │   ├── metiers.routes.ts
+│   │   │   ├── params.ts
 │   │   │   ├── partners.routes.ts
 │   │   │   ├── recruiters.routes.ts
-│   │   │   ├── reportedCompany.routes.ts
+│   │   │   ├── reported-company.routes.ts
 │   │   │   ├── rome.routes.ts
 │   │   │   ├── search.routes.ts
 │   │   │   ├── sitemap.routes.ts
-│   │   │   ├── trainingLinks.routes.ts
+│   │   │   ├── training-links.routes.ts
 │   │   │   ├── unsubscribe.routes.ts
-│   │   │   ├── updateLbaCompany.routes.ts
+│   │   │   ├── update-lba-company.routes.ts
 │   │   │   ├── user.routes.ts
 │   │   │   ├── v2
 │   │   │   │   ├── application.routes.v2.ts
@@ -1150,33 +1170,34 @@
 │   │   ├── security
 │   │   │   └── permissions.ts
 │   │   ├── services
-│   │   │   ├── isCfaEntreprise.ts
-│   │   │   └── isGeiqEntreprise.ts
+│   │   │   ├── is-cfa-entreprise.ts
+│   │   │   └── is-geiq-entreprise.ts
 │   │   ├── utils
-│   │   │   ├── assertUnreachable.ts
-│   │   │   ├── detectUrlAndEmails.test.ts
-│   │   │   ├── detectUrlAndEmails.ts
-│   │   │   ├── enumUtils.ts
-│   │   │   ├── getLastStatusEvent.test.ts
-│   │   │   ├── getLastStatusEvent.ts
+│   │   │   ├── assert-unreachable.ts
+│   │   │   ├── detect-url-and-emails.test.ts
+│   │   │   ├── detect-url-and-emails.ts
+│   │   │   ├── enum-utils.ts
+│   │   │   ├── get-last-status-event.test.ts
+│   │   │   ├── get-last-status-event.ts
 │   │   │   ├── index.ts
-│   │   │   ├── objectUtils.ts
-│   │   │   ├── rateLimitDescription.ts
-│   │   │   ├── sitemapUtils.ts
-│   │   │   ├── stringUtils.test.ts
-│   │   │   └── stringUtils.ts
+│   │   │   ├── object-utils.ts
+│   │   │   ├── rate-limit-description.ts
+│   │   │   ├── sitemap-utils.ts
+│   │   │   ├── string-utils.test.ts
+│   │   │   └── string-utils.ts
 │   │   └── validators
-│   │       ├── nameValidator.test.ts
-│   │       ├── nameValidator.ts
-│   │       ├── phoneValidator.test.ts
-│   │       ├── phoneValidator.ts
-│   │       ├── siretValidator.test.ts
-│   │       └── siretValidator.ts
+│   │       ├── name-validator.test.ts
+│   │       ├── name-validator.ts
+│   │       ├── phone-validator.test.ts
+│   │       ├── phone-validator.ts
+│   │       ├── siret-validator.test.ts
+│   │       └── siret-validator.ts
 │   └── tsconfig.json
 ├── tsconfig.json
 ├── ui
 │   ├── .env.test
 │   ├── .gitignore
+│   ├── AGENTS.md
 │   ├── app
 │   │   ├── (1jeune1solution)
 │   │   │   ├── 1jeune1solution
@@ -1222,23 +1243,23 @@
 │   │   │   │   │   │   │   ├── RechercheResultatsFooter.tsx
 │   │   │   │   │   │   │   ├── RechercheResultatsList.tsx
 │   │   │   │   │   │   │   ├── RechercheTitle.tsx
-│   │   │   │   │   │   │   ├── ResultCardData.ts
 │   │   │   │   │   │   │   ├── VirtualContainer.tsx
-│   │   │   │   │   │   │   └── Whisper.tsx
+│   │   │   │   │   │   │   ├── Whisper.tsx
+│   │   │   │   │   │   │   └── result-card-data.ts
 │   │   │   │   │   │   ├── RechercheResultatsPlaceholder.tsx
-│   │   │   │   │   │   └── isOfferActive.ts
+│   │   │   │   │   │   └── is-offer-active.ts
 │   │   │   │   │   ├── _hooks
-│   │   │   │   │   │   ├── useNavigateToRecherchePage.ts
-│   │   │   │   │   │   ├── useNavigateToResultItemDetail.ts
-│   │   │   │   │   │   ├── useRechercheResults.ts
-│   │   │   │   │   │   ├── useResultItemUrl.ts
-│   │   │   │   │   │   ├── useSearchViewNotifier.ts
-│   │   │   │   │   │   └── useWhispers.ts
+│   │   │   │   │   │   ├── use-navigate-to-recherche-page.ts
+│   │   │   │   │   │   ├── use-navigate-to-result-item-detail.ts
+│   │   │   │   │   │   ├── use-recherche-results.ts
+│   │   │   │   │   │   ├── use-result-item-url.ts
+│   │   │   │   │   │   ├── use-search-view-notifier.ts
+│   │   │   │   │   │   └── use-whispers.ts
 │   │   │   │   │   ├── _utils
 │   │   │   │   │   │   ├── recherche.metadata.utils.test.ts
 │   │   │   │   │   │   ├── recherche.metadata.utils.ts
 │   │   │   │   │   │   ├── recherche.route.utils.ts
-│   │   │   │   │   │   └── scrollToVirtualItem.ts
+│   │   │   │   │   │   └── scroll-to-virtual-item.ts
 │   │   │   │   │   └── page.tsx
 │   │   │   │   ├── recherche-emploi
 │   │   │   │   │   └── page.tsx
@@ -1311,7 +1332,7 @@
 │   │   │   │   │   ├── JobsCtaTracked.tsx
 │   │   │   │   │   ├── SectionTitle.tsx
 │   │   │   │   │   ├── diplome_data.tsx
-│   │   │   │   │   ├── hubStyles.ts
+│   │   │   │   │   ├── hub-styles.ts
 │   │   │   │   │   ├── landing_links.ts
 │   │   │   │   │   ├── metier_data.tsx
 │   │   │   │   │   └── ville_data.tsx
@@ -1349,6 +1370,8 @@
 │   │   │   │   │   ├── BarChartVertical.tsx
 │   │   │   │   │   ├── Callout.tsx
 │   │   │   │   │   └── SectionTitle.tsx
+│   │   │   │   ├── _data
+│   │   │   │   │   └── t1-2026.ts
 │   │   │   │   └── page.tsx
 │   │   │   ├── contact
 │   │   │   │   └── page.tsx
@@ -1436,6 +1459,7 @@
 │   │   │   │   ├── AutocompleteAsync.tsx
 │   │   │   │   ├── Badge.tsx
 │   │   │   │   ├── Bandeau.tsx
+│   │   │   │   ├── ClotureRecrutementForm.tsx
 │   │   │   │   ├── ConnectionActions.tsx
 │   │   │   │   ├── CustomTooltip.tsx
 │   │   │   │   ├── DepotRapideFin.tsx
@@ -1463,6 +1487,7 @@
 │   │   │       │   │   ├── ConfirmationSuppressionOffre.tsx
 │   │   │       │   │   ├── ConnectedHeader.tsx
 │   │   │       │   │   ├── ConnectedHeaderNavigation.tsx
+│   │   │       │   │   ├── ConnectedShellSkeleton.tsx
 │   │   │       │   │   ├── DetailEntreprise.tsx
 │   │   │       │   │   ├── DropdownCombobox.tsx
 │   │   │       │   │   ├── EntreprisesGereesParCfa.tsx
@@ -1786,12 +1811,12 @@
 │   │   │   │   ├── SearchSortSelect.tsx
 │   │   │   │   └── SearchTypeRechercheSelect.tsx
 │   │   │   ├── _hooks
-│   │   │   │   ├── useAutoRadius.ts
-│   │   │   │   ├── useBetaDetailNavigation.ts
-│   │   │   │   ├── useDialogA11y.ts
-│   │   │   │   ├── useLockBodyScroll.ts
-│   │   │   │   ├── useNewSearchOptIn.ts
-│   │   │   │   └── useSearchResults.ts
+│   │   │   │   ├── use-auto-radius.ts
+│   │   │   │   ├── use-beta-detail-navigation.ts
+│   │   │   │   ├── use-dialog-a11y.ts
+│   │   │   │   ├── use-lock-body-scroll.ts
+│   │   │   │   ├── use-new-search-opt-in.ts
+│   │   │   │   └── use-search-results.ts
 │   │   │   ├── _utils
 │   │   │   │   ├── search.params.utils.test.ts
 │   │   │   │   ├── search.params.utils.ts
@@ -1801,7 +1826,7 @@
 │   │   │       └── page.tsx
 │   │   ├── client_only_providers.tsx
 │   │   ├── dsfr-setup
-│   │   │   ├── defaultColorScheme.ts
+│   │   │   ├── default-color-scheme.ts
 │   │   │   ├── index.tsx
 │   │   │   └── server-only-index.tsx
 │   │   ├── error.tsx
@@ -1810,13 +1835,16 @@
 │   │   ├── healthcheck
 │   │   │   └── route.ts
 │   │   ├── hooks
-│   │   │   ├── useBuildNavigation.ts
-│   │   │   ├── useFormationPrdvTracker.ts
-│   │   │   ├── useIsMobileDevice.ts
-│   │   │   ├── useIsWidget.ts
-│   │   │   ├── useLocalStorage.ts
-│   │   │   ├── useToast.tsx
-│   │   │   └── useUrlHash.ts
+│   │   │   ├── use-build-navigation.ts
+│   │   │   ├── use-disclosure.ts
+│   │   │   ├── use-formation-prdv-tracker.ts
+│   │   │   ├── use-is-mobile-device.ts
+│   │   │   ├── use-is-widget.ts
+│   │   │   ├── use-local-storage.ts
+│   │   │   ├── use-url-hash.ts
+│   │   │   ├── use-user-history-update.ts
+│   │   │   ├── use-user-permissions-actions.ts
+│   │   │   └── useToast.tsx
 │   │   ├── layout.tsx
 │   │   ├── llms.txt
 │   │   │   └── route.ts
@@ -1834,15 +1862,8 @@
 │   ├── common
 │   │   ├── contants.ts
 │   │   ├── dayjs.ts
-│   │   ├── hooks
-│   │   │   ├── useDisclosure.ts
-│   │   │   ├── useUserHistoryUpdate.ts
-│   │   │   └── useUserPermissionsActions.ts
-│   │   ├── utils
-│   │   │   ├── dateUtils.ts
-│   │   │   └── debounce.ts
 │   │   └── validation
-│   │       └── fieldValidations.ts
+│   │       └── field-validations.ts
 │   ├── components
 │   │   ├── DepotOffre
 │   │   │   ├── InfosDiffusionOffre.tsx
@@ -1873,8 +1894,8 @@
 │   │   │   │   ├── WidgetCandidatureLba.tsx
 │   │   │   │   ├── WidgetPostulerError.tsx
 │   │   │   │   └── services
-│   │   │   │       ├── getSchema.ts
-│   │   │   │       └── submitCandidature.ts
+│   │   │   │       ├── get-schema.ts
+│   │   │   │       └── submit-candidature.ts
 │   │   │   ├── CandidatureParTelephone.tsx
 │   │   │   ├── DidYouKnow.tsx
 │   │   │   ├── GoingToContactQuestion.tsx
@@ -1894,8 +1915,8 @@
 │   │   │   │   ├── JobItemCardHeader.tsx
 │   │   │   │   ├── LbaItemTags.tsx
 │   │   │   │   ├── NavigationButtons.tsx
-│   │   │   │   ├── getCompanyGoogleSearchLink.ts
-│   │   │   │   ├── getCompanySize.ts
+│   │   │   │   ├── get-company-google-search-link.ts
+│   │   │   │   ├── get-company-size.ts
 │   │   │   │   └── getJobPublishedTimeAndApplications.tsx
 │   │   │   ├── JobPostingSchema.tsx
 │   │   │   ├── LbaJobComponents
@@ -1933,7 +1954,7 @@
 │   │   │   ├── DemandeDeContactConfirmation.tsx
 │   │   │   ├── DemandeDeContactForm.tsx
 │   │   │   ├── DemandeDeContactModal.tsx
-│   │   │   └── RdvReasons.ts
+│   │   │   └── rdv-reasons.ts
 │   │   ├── SchemaOrg.tsx
 │   │   ├── SearchForTrainingsAndJobs
 │   │   │   ├── components
@@ -2015,11 +2036,14 @@
 │   │   ├── UserContext.tsx
 │   │   ├── contextLogo.tsx
 │   │   └── contextWidget.tsx
+│   ├── e2e
+│   │   └── instant-navigation.spec.ts
 │   ├── images.d.ts
 │   ├── instrumentation-client.ts
 │   ├── instrumentation.ts
 │   ├── next.config.mjs
 │   ├── package.json
+│   ├── playwright.config.ts
 │   ├── proxy.ts
 │   ├── public
 │   │   ├── assets
@@ -2569,23 +2593,23 @@
 │   ├── sentry.server.config.ts
 │   ├── services
 │   │   ├── arrondissements.ts
-│   │   ├── baseAdresse.ts
-│   │   ├── fetchInserJeuneStats.test.ts
-│   │   ├── fetchInserJeuneStats.ts
-│   │   ├── fetchLbaCompanyDetails.ts
-│   │   ├── fetchLbaJobDetails.ts
-│   │   ├── fetchNotionPage.ts
-│   │   ├── fetchPartnerJobDetails.ts
-│   │   ├── generateLlmsTxt.test.ts
-│   │   ├── generateLlmsTxt.ts
-│   │   ├── generateMainSitemap.ts
-│   │   ├── getDepotCtaHref.ts
-│   │   ├── searchEntreprises.ts
-│   │   ├── simulateurAlternant.test.ts
-│   │   └── simulateurAlternant.ts
+│   │   ├── base-adresse.ts
+│   │   ├── fetch-inser-jeune-stats.test.ts
+│   │   ├── fetch-inser-jeune-stats.ts
+│   │   ├── fetch-lba-company-details.ts
+│   │   ├── fetch-lba-job-details.ts
+│   │   ├── fetch-notion-page.ts
+│   │   ├── fetch-partner-job-details.ts
+│   │   ├── generate-llms-txt.test.ts
+│   │   ├── generate-llms-txt.ts
+│   │   ├── generate-main-sitemap.ts
+│   │   ├── get-depot-cta-href.ts
+│   │   ├── search-entreprises.ts
+│   │   ├── simulateur-alternant.test.ts
+│   │   └── simulateur-alternant.ts
 │   ├── styles
 │   │   ├── search.css
-│   │   └── webkitLineClamp.ts
+│   │   └── webkit-line-clamp.ts
 │   ├── tests
 │   │   └── setup.ts
 │   ├── theme
@@ -2614,35 +2638,36 @@
 │   │       │   └── index.ts
 │   │       └── logos
 │   │           ├── LbaNew.tsx
-│   │           └── infosOpcos.ts
+│   │           └── infos-opcos.ts
 │   ├── tracking
-│   │   ├── trackingCookieUtils.ts
+│   │   ├── tracking-cookie-utils.ts
 │   │   └── trackingMatomo.tsx
 │   ├── tsconfig.json
 │   ├── types
 │   │   ├── matomo.d.ts
 │   │   └── svg.d.ts
 │   └── utils
-│       ├── addressUtils.ts
+│       ├── address-utils.ts
 │       ├── api.ts
 │       ├── api.utils.test.ts
 │       ├── api.utils.ts
-│       ├── classNames.ts
-│       ├── dateUtils.ts
-│       ├── getItemId.ts
-│       ├── getSession.ts
-│       ├── getStaticData.ts
-│       ├── isWidget.utils.ts
-│       ├── localStorage.ts
-│       ├── matomoUtils.ts
+│       ├── class-names.ts
+│       ├── date-utils.ts
+│       ├── debounce.ts
+│       ├── get-item-id.ts
+│       ├── get-session.ts
+│       ├── get-static-data.ts
+│       ├── is-widget.utils.ts
+│       ├── local-storage.ts
+│       ├── matomo-utils.ts
 │       ├── plausible.ts
-│       ├── requestUtils.ts
+│       ├── request-utils.ts
 │       ├── robots.utils.test.ts
 │       ├── robots.utils.ts
 │       ├── routes.utils.ts
 │       ├── strutils.ts
 │       ├── tools.ts
-│       └── useSearchParamsRecord.ts
+│       └── use-search-params-record.ts
 ├── vitest.config.ts
 └── yarn.lock
-500 directories, 2715 files
+500 directories, 2740 files
