@@ -1,19 +1,25 @@
 {
   "url": "https://github.com/MTES-MCT/dossierfacile-data",
   "name": "dossierfacile-data",
-  "description": "Ce projet gère la transformation des données pour DossierFacile via DBT. Il permet de modéliser les données, d'assurer leur qualité et de générer des analyses.",
+  "description": "Ce projet gère la transformation et la modélisation des données pour l'écosystème DossierFacile via le framework DBT. Il assure la qualité des données et génère des modèles d'analyse pour Metabase.",
   "language": "SQL",
-  "features": [],
+  "features": [
+    "Données & Schémas",
+    "Statistiques & Rapports"
+  ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "DBT Core",
-    "PostgreSQL"
+    "dbt-core",
+    "dbt-postgres",
+    "PostgreSQL",
+    "sqlfluff"
   ],
   "components": [
-    "ORM & Accès aux données",
-    "Pipeline de transformation de données",
+    "Pipeline de données",
+    "Documentation & Schémas",
     "Tests",
-    "Documentation & Schémas"
+    "PostgreSQL & SQL",
+    "ORM & Accès aux données"
   ],
   "auth": {
     "methods": [
@@ -22,12 +28,13 @@
   },
   "tests": [
     "DBT tests",
-    "Tests unitaires"
+    "Tests unitaires",
+    "Sqlfluff"
   ],
   "workflows": [
     "pipeline-ci-data.yml"
   ],
-  "lastActivity": "2026-06-26T16:45:50+00:00",
+  "lastActivity": "2026-07-15T14:00:06+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -35,13 +42,12 @@
     "stars": 0,
     "forks": 0,
     "contributors": 0,
-    "openIssues": 1
+    "openIssues": 3
   },
   "tags": [
-    "ETL & Pipelines de données",
-    "Data Transformation",
+    "Données & Open Data",
     "Bases de données SQL",
-    "Data Modeling",
-    "Data Quality"
+    "ETL & Pipelines de données",
+    "Documentation"
   ]
 }
