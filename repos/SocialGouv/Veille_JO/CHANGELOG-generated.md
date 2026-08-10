@@ -1,18 +1,23 @@
-## Changelog : Veille_JO (30 derniers jours, au 05 août 2026)
+## Changelog : Veille_JO (30 derniers jours, au 07/08/2026)
 
 ### Résumé
-Le projet a franchi une étape importante dans son automatisation et sa distribution. Les capacités d'extraction de données ont été affinées pour garantir une meilleure précision des rapports, et la publication des résultats est désormais automatisée. L'outil est également plus accessible grâce à la création de versions prêtes à l'emploi pour différents systèmes d'exploitation et une documentation enrichie.
+Cette période a été marquée par une amélioration significative de l'automatisation et de la distribution de l'outil. L'accent a été mis sur la facilité de consultation des archives, la précision de l'extraction des données de médicaments et la mise en place d'un système de publication automatique des rapports de veille.
 
 ### Évolutions fonctionnelles
-- **Amélioration de la précision des données** : optimisation de l'extraction pour mieux gérer les nouvelles unités dans les noms de médicaments et exclusion des titres de tableaux afin d'éviter les erreurs de lecture.
-- **Optimisation de la recherche** : ajustement des mots-clés pour améliorer la pertinence des résultats de veille.
+- **Consultation des archives** : Amélioration de l'expérience utilisateur avec l'ajout de filtres, un affichage optimisé et un lien de retour à l'accueil sur les pages archivées.
+- **Précision des données** : 
+    - Meilleure gestion des nouvelles unités de mesure dans les noms de médicaments.
+    - Correction du filtrage des mots-clés (suppression du terme "spécialité").
+    - Correction du parsing des tableaux pour éviter l'inclusion erronée des titres.
 
 ### Évolutions techniques
-- **Automatisation de la diffusion** : mise en place d'une GitHub Action pour publier automatiquement et quotidiennement le rapport de veille pharmaceutique sur GitHub Pages.
-- **Amélioration de la distribution** : déploiement de la génération de binaires autonomes (standalone) via Nuitka, permettant une utilisation simplifiée sur Windows, Linux et macOS.
-- **Flexibilité du workflow** : ajout de la possibilité de spécifier une date lors du processus de publication des pages.
-- **Initialisation** : mise en place de la structure initiale du projet.
+- **Automatisation (CI/CD)** : 
+    - Mise en place d'une GitHub Action pour la publication quotidienne automatique des rapports de veille sur GitHub Pages.
+    - Ajout de la possibilité de spécifier une date manuellement lors du workflow de publication.
+- **Distribution** : Automatisation de la génération de binaires autonomes (standalone) via Nuitka pour Windows, Linux et macOS, facilitant l'installation par les utilisateurs.
 
 ### Autres changements
-- **Documentation** : ajout d'instructions d'installation spécifiques pour macOS et réorganisation de la documentation relative à l'exécution des tests.
-- **Supports** : mise à jour de la présentation du projet.
+- **Documentation** : 
+    - Ajout d'instructions spécifiques pour l'installation sur macOS.
+    - Réorganisation de la documentation de test (déplacement vers `TESTS.md`).
+    - Mise à jour de la présentation du projet.
