@@ -85,7 +85,6 @@ services:
         - postgresql
         - mailcatcher
         - redis
-        - livekit
         - createbuckets
         - createwebhook
     extra_hosts:
@@ -97,7 +96,7 @@ services:
   celery-dev:
     user: ${DOCKER_USER:-1000}
     image: meet:backend-development
-    command: ["celery", "-A", "meet.celery_app", "worker", "-l", "DEBUG"]
+    command: ["celery", "-A", "meet.celery_app", "worker", "-l", "DEBUG", "--pool=solo"]
     environment:
       - DJANGO_CONFIGURATION=Development
     env_file:
@@ -132,7 +131,7 @@ services:
   celery:
     user: ${DOCKER_USER:-1000}
     image: meet:backend-production
-    command: ["celery", "-A", "meet.celery_app", "worker", "-l", "INFO"]
+    command: ["celery", "-A", "meet.celery_app", "worker", "-l", "INFO", "--pool=solo"]
     environment:
       - DJANGO_CONFIGURATION=Demo
     env_file:

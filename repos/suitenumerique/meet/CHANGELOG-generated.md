@@ -1,38 +1,22 @@
-## Changelog : meet (30 derniers jours, au 2026-07-30)
+## Changelog : meet (30 derniers jours, au 06 août 2026)
 
 ### Résumé
-Ce mois-ci, l'équipe a concentré ses efforts sur l'amélioration de l'expérience utilisateur, notamment en optimisant les performances de l'interface, en ajoutant des fonctionnalités de gestion des participants (rôles, promotion) et en améliorant la robustesse du système, en particulier pour la transcription et l'analyse. Des mises à jour de sécurité et de dépendances ont également été intégrées.
+Ce mois-ci, Meet a franchi une étape importante dans la gestion des réunions en permettant aux organisateurs de modifier les rôles des participants en temps réel et en offrant une personnalisation accrue des paramètres de réunion par défaut. Une part majeure des développements a également été consacrée à l'optimisation des performances de l'interface utilisateur et à la stabilisation des services de transcription et de résumé.
 
 ### Évolutions fonctionnelles
-- Ajout de la possibilité de modifier le rôle d'un participant pendant une réunion. [#1510](https://github.com/suitenumerique/meet/issues/1510)
-- Affichage d'un badge indiquant si un participant est authentifié.
-- Possibilité de promouvoir des participants authentifiés en administrateurs.
-- Amélioration de l'affichage du nom des participants dans la liste.
-- Ajout d'un gradient de couleur pour les participants avec la caméra désactivée.
-- Ajout d'un lien configurable vers la documentation.
-- Possibilité de forcer l'affichage du nom SSO pour les utilisateurs authentifiés.
-- Affichage des initiales en majuscules dans les avatars.
-- Ajout d'outils d'add-in lors de la création de réunions dans les calendriers partagés.
+- **Gestion des rôles** : Possibilité de promouvoir ou de rétrograder des participants en cours de réunion, avec notification automatique des changements de rôle.
+- **Tests de connexion** : Ajout d'une fonctionnalité de diagnostic permettant de tester la qualité de la connexion et de vérifier les paramètres WebRTC.
+- **Personnalisation des réunions** : Les utilisateurs peuvent désormais définir des préférences de configuration par défaut pour leurs liens de réunion générés.
+- **Améliorations du SDK** : Introduction d'une fenêtre de configuration de réunion lors de la création et possibilité de personnaliser la couleur de fond de l'iframe calendrier.
+- **Identification** : Ajout d'un badge pour identifier les participants non authentifiés.
 
 ### Évolutions techniques
-- Refactorisation importante du code du chat pour améliorer les performances et la maintenabilité.
-- Optimisations significatives des performances du frontend, notamment en virtualisant les messages du chat, en optimisant le rendu des métadonnées des participants et en réduisant les re-renders inutiles.
-- Refactorisation du code lié à la liste des participants et au panneau latéral.
-- Amélioration de la gestion des permissions et de l'authentification.
-- Mise à jour de plusieurs dépendances (LiveKit, React Query, PostHog, etc.).
-- Mise à jour de l'image Docker pour utiliser nginx-unprivileged:1.30.3-alpine3.23.
-- Mise à jour de la version de Python utilisée pour les agents.
-- Refactorisation de l'authentification basée sur Bearer Token.
-- Amélioration de la gestion des erreurs et de la résilience du système, notamment pour la transcription et l'analyse.
-- Ajout d'instrumentation Sentry pour les agents.
+- **Optimisation des performances** : Réduction massive des re-renders de l'interface via la mémoïsation de composants clés (Avatars, ParticipantTiles, boutons) et la virtualisation des messages du chat pour améliorer la fluidité.
+- **Stabilité MediaPipe** : Amélioration de la gestion des assets MediaPipe (WASM) et du cache pour prévenir les crashs liés aux versions et optimiser le chargement.
+- **Refactoring majeur** : Restructuration profonde du module de chat et de la gestion des composants de la liste de participants pour une meilleure maintenabilité.
+- **Fiabilité des services** : Amélioration de la robustesse des services de transcription et de résumé (summary) grâce à une meilleure gestion des erreurs et des mécanismes de tentatives de reconnexion (retries).
+- **Accessibilité** : Amélioration de la gestion du focus lors de l'ouverture et de la navigation dans les panneaux latéraux.
 
 ### Autres changements
-- Mise à jour des conditions d'utilisation.
-- Ajout d'un fichier `publiccode.yml`.
-- Correction de bugs mineurs et améliorations de la qualité du code.
-- Suppression de code obsolète lié à l'ancienne version de l'API de résumé.
-- Correction de la gestion des erreurs dans l'analyse.
-- Amélioration de la gestion des erreurs de transcription.
-- Correction de la gestion des webhooks de défaillance.
-- Mise à jour de la version du chart Helm.
-- Ajout de tests unitaires pour la transcription.
+- **Légal et conformité** : Mise à jour des conditions d'utilisation et ajout du fichier de métadonnées `publiccode.yml`.
+- **Qualité de code** : Nettoyage de la dette technique (SonarCloud, linting) et optimisation de la configuration de la CI.

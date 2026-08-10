@@ -8,17 +8,38 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [1.25.2] - 2026-08-06
+
+### Fixed
+
+- 🐛(frontend) serve MediaPipe assets under a versioned path
+- 🐛(frontend) harmonize cache configuration for MediaPipe assets
+
+## [1.25.1] - 2026-08-06
+
+### Fixed
+
+- 🚑️(frontend) fix background crash from MediaPipe WASM version mismatch
+
+## [1.25.0] - 2026-08-05
+
 ### Added
 
 - ✨(summary) report exception type in failure analytics
 - ✨(frontend) add configurable documentation menu item
 - ✨(frontend) allow promoting authenticated participants
 - ✨(frontend) introduce an "unauthenticated" participant badge
+- ✨(backend) add roomkit viewset to start a room without WebRTC join
+- ✨(frontend) let users set default configuration for generated links
+- ✨(frontend) expose media state to external gateways
+- ✨(frontend) add connection test feature
+- ✨(sdk) allow passing a background color to the calendar iframe
+- ✨(sdk) add a room configuration popup from CreateMeetingButton
 
 ### Changed
 
 - ⬆️(frontend) upgrade @mediapipe/tasks-vision from 0.10.14 to 0.10.35
-- ⬆️(frontend) upgrade i18next from 26.3.1 to 26.3.4
+- ⬆️(frontend) upgrade i18next from 26.3.1 to 26.3.6
 - ⬆️(frontend) upgrade posthog-js from 1.391.2 to 1.395.0
 - ⬆️(frontend) upgrade @tanstack/react-query from 5.101.0 to 5.101.1
 - ⬆️(frontend) upgrade livekit-client from 2.19.2 to 2.20.0
@@ -26,8 +47,10 @@ and this project adheres to
 - 📝(legal) update terms of service
 - 💄(frontend) render Avatar initials in uppercase
 - 💄(frontend) improve participant name rendering in the list
+- 🚚(backend) rename TelephonyService to SIPManagement
+- ⬆️(dependencies) update python dependencies
 
-## Fixed
+### Fixed
 
 - 🐛(transcription) fix silent bug in speaker assignment
 - 🐛(summary) extend tasks auto retry logic
@@ -36,6 +59,13 @@ and this project adheres to
 - 🐛(backend) allow any string as sub in the API serializer
 - 🐛(frontend) fall back to user.full_name on request-entry
 - 🚸(frontend) show two initials in the Avatar when possible
+- 🩹(all) clear the SonarCloud reliability finding and the lint debt
+- 🐛(frontend) stop the installed app reopening the room it came from
+- 🐛(backend) serialize lazy title in summary payload
+- 💄(frontend) show pointer cursor on interactive switches
+- 🐛(frontend) fix icon centering in the Switch primitive
+- 🐛(frontend) keep Unicode initials intact in avatar
+- 🐛(frontend) prevent concurrent settings updates from overwriting each other
 
 ## [1.24.0] - 2026-07-21
 

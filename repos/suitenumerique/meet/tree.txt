@@ -10,8 +10,7 @@
 │       ├── crowdin-download.yml
 │       ├── docker-hub.yml
 │       ├── meet.yml
-│       ├── release-helm-chart.yaml
-│       └── security.yaml
+│       └── release-helm-chart.yaml
 ├── .gitignore
 ├── .gitlint
 ├── .gitmodules
@@ -296,6 +295,7 @@
     │   │   │   ├── 0019_user_unique_email_when_sub_is_null.py
     │   │   │   ├── 0020_alter_file_upload_state.py
     │   │   │   ├── 0021_recording_external_process_id_alter_recording_status.py
+    │   │   │   ├── 0022_user_default_room_access_level_and_more.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── recording
@@ -317,6 +317,11 @@
     │   │   │       ├── factories.py
     │   │   │       ├── mediator.py
     │   │   │       └── services.py
+    │   │   ├── roomkit
+    │   │   │   ├── __init__.py
+    │   │   │   ├── authentication.py
+    │   │   │   ├── serializers.py
+    │   │   │   └── viewsets.py
     │   │   ├── services
     │   │   │   ├── __init__.py
     │   │   │   ├── invitation.py
@@ -329,15 +334,17 @@
     │   │   │   ├── room_creation.py
     │   │   │   ├── room_management.py
     │   │   │   ├── room_roles.py
-    │   │   │   ├── subtitle.py
-    │   │   │   └── telephony.py
+    │   │   │   ├── sip_management.py
+    │   │   │   └── subtitle.py
     │   │   ├── static
     │   │   │   └── images
     │   │   │       ├── logo-suite-numerique.png
     │   │   │       ├── logo.png
     │   │   │       └── mail-header-background.png
     │   │   ├── tasks
+    │   │   │   ├── __init__.py
     │   │   │   ├── _task.py
+    │   │   │   ├── connection_test.py
     │   │   │   └── file.py
     │   │   ├── templatetags
     │   │   │   ├── __init__.py
@@ -393,6 +400,9 @@
     │   │   │   │       ├── test_factories.py
     │   │   │   │       ├── test_mediator.py
     │   │   │   │       └── test_services.py
+    │   │   │   ├── roomkit
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   └── test_api_roomkit_join.py
     │   │   │   ├── rooms
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── test_api_rooms_create.py
@@ -416,13 +426,18 @@
     │   │   │   │   ├── test_livekit_events.py
     │   │   │   │   ├── test_lobby.py
     │   │   │   │   ├── test_marketing.py
-    │   │   │   │   ├── test_subtitle.py
-    │   │   │   │   └── test_telephony_service.py
+    │   │   │   │   ├── test_room_management.py
+    │   │   │   │   ├── test_sip_management.py
+    │   │   │   │   └── test_subtitle.py
     │   │   │   ├── swagger
     │   │   │   │   ├── __init__.py
     │   │   │   │   └── test_openapi_schema.py
+    │   │   │   ├── tasks
+    │   │   │   │   └── test_connection_test.py
+    │   │   │   ├── test_api_diagnostics.py
     │   │   │   ├── test_api_resource_accesses.py
     │   │   │   ├── test_api_users.py
+    │   │   │   ├── test_api_users_room_preferences.py
     │   │   │   ├── test_external_api_rooms.py
     │   │   │   ├── test_external_api_token.py
     │   │   │   ├── test_models_applications.py
@@ -550,10 +565,10 @@
     │   │   ├── favicon-32x32.png
     │   │   ├── favicon.ico
     │   │   ├── icon.png
-    │   │   ├── site.webmanifest
     │   │   └── sounds
     │   │       ├── notifications.mp3
     │   │       └── uprise.mp3
+    │   ├── site.webmanifest
     │   ├── src
     │   │   ├── App.tsx
     │   │   ├── api
@@ -603,6 +618,7 @@
     │   │   │   │   ├── api
     │   │   │   │   │   ├── ApiUser.ts
     │   │   │   │   │   ├── fetchUser.ts
+    │   │   │   │   │   ├── patchUser.ts
     │   │   │   │   │   ├── updateUserPreferences.ts
     │   │   │   │   │   ├── useSyncUserPreferencesWithBackend.tsx
     │   │   │   │   │   └── useUser.tsx
@@ -622,6 +638,23 @@
     │   │   │   │       ├── ChatProvider.tsx
     │   │   │   │       ├── ChatSubmitButton.tsx
     │   │   │   │       └── ChatTextArea.tsx
+    │   │   │   ├── diagnostics
+    │   │   │   │   ├── api
+    │   │   │   │   │   └── fetchConnectionTestDetails.ts
+    │   │   │   │   ├── checks
+    │   │   │   │   │   └── selectedCandidate.ts
+    │   │   │   │   ├── components
+    │   │   │   │   │   ├── ConnectionTestStepRow.tsx
+    │   │   │   │   │   ├── ConnectionTestSummary.tsx
+    │   │   │   │   │   ├── StepStatusIndicator.tsx
+    │   │   │   │   │   └── stepAppearance.ts
+    │   │   │   │   ├── hooks
+    │   │   │   │   │   └── useConnectionTestRunner.ts
+    │   │   │   │   ├── routes
+    │   │   │   │   │   └── ConnectionTest.tsx
+    │   │   │   │   ├── types.ts
+    │   │   │   │   └── utils
+    │   │   │   │       └── downloadConnectionTestReport.ts
     │   │   │   ├── files
     │   │   │   │   └── api
     │   │   │   │       ├── createFile.ts
@@ -836,6 +869,7 @@
     │   │   │   │   │   │   ├── ConnectionObserver.tsx
     │   │   │   │   │   │   ├── Info.tsx
     │   │   │   │   │   │   ├── IsIdleDisconnectModal.tsx
+    │   │   │   │   │   │   ├── MediaStateObserver.tsx
     │   │   │   │   │   │   ├── MuteAlertDialog.tsx
     │   │   │   │   │   │   ├── RoomMetadataSynchronizer.tsx
     │   │   │   │   │   │   ├── ScreenShareErrorModal.tsx
@@ -938,7 +972,8 @@
     │   │   │   │   │   └── useIsSdkContext.ts
     │   │   │   │   ├── routes
     │   │   │   │   │   ├── CreateMeetingButton.tsx
-    │   │   │   │   │   └── CreatePopup.tsx
+    │   │   │   │   │   ├── CreatePopup.tsx
+    │   │   │   │   │   └── SettingsPopup.tsx
     │   │   │   │   └── utils
     │   │   │   │       ├── CallbackIdHandler.ts
     │   │   │   │       ├── PopupManager.ts
@@ -956,6 +991,7 @@
     │   │   │   │   │       ├── AudioTab.tsx
     │   │   │   │   │       ├── GeneralTab.tsx
     │   │   │   │   │       ├── NotificationsTab.tsx
+    │   │   │   │   │       ├── RoomsTab.tsx
     │   │   │   │   │       ├── ShortcutTab.tsx
     │   │   │   │   │       ├── TranscriptionTab.tsx
     │   │   │   │   │       ├── VideoTab.tsx
@@ -1014,6 +1050,7 @@
     │   │   ├── locales
     │   │   │   ├── de
     │   │   │   │   ├── accessibility.json
+    │   │   │   │   ├── connectionTest.json
     │   │   │   │   ├── global.json
     │   │   │   │   ├── home.json
     │   │   │   │   ├── legals.json
@@ -1025,6 +1062,7 @@
     │   │   │   │   └── termsOfService.json
     │   │   │   ├── en
     │   │   │   │   ├── accessibility.json
+    │   │   │   │   ├── connectionTest.json
     │   │   │   │   ├── global.json
     │   │   │   │   ├── home.json
     │   │   │   │   ├── legals.json
@@ -1036,6 +1074,7 @@
     │   │   │   │   └── termsOfService.json
     │   │   │   ├── fr
     │   │   │   │   ├── accessibility.json
+    │   │   │   │   ├── connectionTest.json
     │   │   │   │   ├── global.json
     │   │   │   │   ├── home.json
     │   │   │   │   ├── legals.json
@@ -1047,6 +1086,7 @@
     │   │   │   │   └── termsOfService.json
     │   │   │   └── nl
     │   │   │       ├── accessibility.json
+    │   │   │       ├── connectionTest.json
     │   │   │       ├── global.json
     │   │   │       ├── home.json
     │   │   │       ├── legals.json
@@ -1352,4 +1392,4 @@
             └── unit
                 ├── test_file_service.py
                 └── test_user_assign.py
-257 directories, 1097 files
+267 directories, 1127 files
