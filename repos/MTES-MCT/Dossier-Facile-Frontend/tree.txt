@@ -89,6 +89,7 @@
 │   │   │   │   └── TextField.vue
 │   │   │   └── patches
 │   │   │       └── DsfrModalPatch.vue
+│   │   ├── directives.d.ts
 │   │   ├── helper
 │   │   │   └── __tests__
 │   │   │       └── useI18n.ts
@@ -132,15 +133,19 @@
 │   │   ├── services
 │   │   │   ├── ConsentService.ts
 │   │   │   ├── CookiesService.ts
+│   │   │   ├── SanitizeService.ts
 │   │   │   ├── SharedPropertyService.ts
 │   │   │   ├── SupportService.ts
-│   │   │   └── UtilsService.ts
+│   │   │   ├── UtilsService.ts
+│   │   │   └── __tests__
+│   │   │       └── SanitizeService.spec.ts
 │   │   ├── stores
 │   │   │   └── useModalStore.ts
 │   │   ├── validators
 │   │   │   └── validationRules.ts
 │   │   └── vue-matomo.d.ts
-│   └── tsconfig.json
+│   ├── tsconfig.json
+│   └── vitest.config.ts
 ├── docs
 │   └── dependency-audit.md
 ├── e2e-tests
@@ -281,6 +286,8 @@
 │   │   │       ├── PropertyType.vue
 │   │   │       ├── UpdateRowBtn.vue
 │   │   │       └── ValidateProperty.vue
+│   │   ├── composables
+│   │   │   └── useSaveProperty.ts
 │   │   ├── cover-features.webp
 │   │   ├── i18n.ts
 │   │   ├── locales
@@ -458,6 +465,7 @@
 │   │   │   │   ├── RowListItem.spec.ts
 │   │   │   │   ├── ShareActionsMenu.spec.ts
 │   │   │   │   ├── SharingLinkDetails.spec.ts
+│   │   │   │   ├── TaxAnalysisErrorBannerContent.spec.ts
 │   │   │   │   ├── TenantPanel.spec.ts
 │   │   │   │   ├── UploadFileFinancialWithAnalysis.spec.ts
 │   │   │   │   └── UploadFileWithAnalysis.spec.ts
@@ -518,7 +526,9 @@
 │   │   │   │   │   ├── PreValidationMessages.vue
 │   │   │   │   │   ├── ShowDoc.vue
 │   │   │   │   │   ├── ShowPreview.vue
-│   │   │   │   │   └── SimulationCaf.vue
+│   │   │   │   │   ├── SimulationCaf.vue
+│   │   │   │   │   └── __tests__
+│   │   │   │   │       └── AllDeclinedMessages.spec.ts
 │   │   │   │   └── tenant
 │   │   │   │       ├── TenantFinancial.vue
 │   │   │   │       ├── TenantMainActivity.vue
@@ -698,7 +708,9 @@
 │   │   │   ├── messaging
 │   │   │   │   ├── DeclinedDocuments.vue
 │   │   │   │   ├── DocumentsCard.vue
-│   │   │   │   └── MessagesPanel.vue
+│   │   │   │   ├── MessagesPanel.vue
+│   │   │   │   └── __tests__
+│   │   │   │       └── MessagesPanel.spec.ts
 │   │   │   ├── residency
 │   │   │   │   ├── ChooseResidency.vue
 │   │   │   │   ├── GuestCompany.vue
@@ -758,6 +770,8 @@
 │   │   │   │       ├── TaxFooter.vue
 │   │   │   │       ├── UploadFileTaxWithAnalysis.vue
 │   │   │   │       ├── UploadFilesTax.vue
+│   │   │   │       ├── analysisBanner
+│   │   │   │       │   └── TaxAnalysisErrorBannerContent.vue
 │   │   │   │       ├── taxLink.ts
 │   │   │   │       ├── taxState.ts
 │   │   │   │       └── taxYear.ts
@@ -882,6 +896,7 @@
 │   │   │   ├── FooterComponent.vue
 │   │   │   ├── HeaderComponent.vue
 │   │   │   └── ProgressIndicator.vue
+│   │   ├── env.d.ts
 │   │   ├── i18n.ts
 │   │   ├── locales
 │   │   │   └── fr.json
@@ -1083,7 +1098,6 @@
     │   │       ├── ArticlePage8.vue
     │   │       ├── ArticlePage9.vue
     │   │       ├── BlogArticle.vue
-    │   │       ├── BlogExtractTile.vue
     │   │       ├── BlogView.vue
     │   │       └── ShareArticle.vue
     │   └── vue-matomo.d.ts
@@ -1095,4 +1109,4 @@
     ├── tsconfig.vitest.json
     ├── vite.config.ts
     └── vitest.config.ts
-152 directories, 992 files
+157 directories, 1001 files

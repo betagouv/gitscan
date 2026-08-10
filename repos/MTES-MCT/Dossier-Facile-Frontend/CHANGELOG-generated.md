@@ -1,24 +1,19 @@
-## Changelog : Dossier-Facile-Frontend (30 derniers jours, au 16 juillet 2026)
+## Changelog : Dossier-Facile-Frontend (30 derniers jours, au 06/08/2026)
 
 ### Résumé
-Les dernières mises à jour de Dossier-Facile se concentrent sur l'amélioration de l'expérience utilisateur, notamment dans la gestion des informations des garants et des documents fiscaux. Des corrections de bugs ont également été apportées pour assurer la stabilité de l'application et améliorer la fiabilité des tests automatisés.
+Cette période a été marquée par un renforcement de la sécurité et de l'accessibilité de la plateforme. Les efforts se sont concentrés sur l'amélioration de l'expérience utilisateur, notamment via la fiabilisation des données (e-mails obligatoires) et l'optimisation des parcours de dépôt de documents pour les locataires.
 
 ### Évolutions fonctionnelles
-- L'adresse email du bénéficiaire est désormais obligatoire lors de la création d'un dossier. [#2005](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2005)
-- Ajout de la possibilité de renseigner l'adresse email du garant naturel (caution). [#1999](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1999)
-- Amélioration des messages d'erreur et d'information concernant l'analyse de la taxe foncière. [#1987](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1987) et [#1996](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1996)
-- Modification du message concernant la déclaration d'honneur pour revenir à une version précédente. [#1988](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1988)
-- Amélioration du message affiché lors d'une mauvaise classification d'un document lors de la revue de dossier. [#1995](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1995)
-- Création d'un composant personnalisé pour la taxe foncière. [#1993](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1993)
+- **Gestion des contacts** : l'adresse e-mail est désormais obligatoire pour les bénéficiaires et les garants naturels ([#2005](https://github.com/MTES-MCT/Dossier-Facile-Frontend/pull/2005), [#1999](https://github.com/MTES-MCT/Dossier-Facile-Frontend/pull/1999), [#2003](https://github.com/MTES-MCT/Dossier-Facile-Frontend/pull/2003)).
+- **Parcours Locataire** :
+    - Amélioration de la clarté des formulaires fiscaux (traductions et gestion du pipeline de documents) ([#2016](https://github.com/MTES-MCT/Dossier-Facile-Frontend/pull/2016), [#2013](https://github.com/MTES-MCT/Dossier-Facile-Frontend/pull/2013)).
+    - Optimisation des libellés liés à la classification IA des documents et des explications en cas d'absence de revenus ([#2012](https://github.com/MTES-MCT/Dossier-Facile-Frontend/pull/2012), [#2015](https://github.com/MTES-MCT/Dossier-Facile-Frontend/pull/2015)).
+- **Interface et Navigation** :
+    - Correction de la visibilité du focus sur la bannière d'analyse ([#2017](https://github.com/MTES-MCT/Dossier-Facile-Frontend/pull/2017)).
+    - Mise à jour des liens dans les pages d'aide et de contact ([#2011](https://github.com/MTES-MCT/Dossier-Facile-Frontend/pull/2011)).
+    - Amélioration de l'affichage des messages d'erreur pour les propriétaires lors de la sauvegarde d'un bien ([#2010](https://github.com/MTES-MCT/Dossier-Facile-Frontend/pull/2010)).
 
 ### Évolutions techniques
-- Correction d'un bug empêchant la navigation après validation d'un fichier et rechargement de la page. [#1997](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1997)
-- Mise à jour des dépendances du projet. [#1998](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1998)
-- Correction des tests E2E pour utiliser l'inscription native au lieu de FranceConnect. [#1986](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1986)
-- Ajout d'un délai d'attente plus long pour l'analyse de la taxe foncière afin d'améliorer la fiabilité des tests. [#1989](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1989)
-- Correction d'un problème de déconnexion FranceConnect après la suppression d'un locataire. [#1991](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1991)
-- Ajout d'un scénario de test E2E pour les partenaires. [#1990](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/1990)
-- Correction des tests E2E. [#2006](https://github.com/MTES-MCT/Dossier-Facile-Frontend/issues/2006)
-
-### Autres changements
-- Publication de la version V3.5.12.
+- **Sécurité** : correction d'une vulnérabilité d'injection XSS ([#2019](https://github.com/MTES-MCT/Dossier-Facile-Frontend/pull/2019)).
+- **Accessibilité (a11y)** : résolution de plusieurs points soulevés lors des audits d'accessibilité internes et pré-audits ([#2002](https://github.com/MTES-MCT/Dossier-Facile-Frontend/pull/2002), [#2014](https://github.com/MTES-MCT/Dossier-Facile-Frontend/pull/2014)).
+- **Qualité logicielle** : corrections apportées aux tests de bout en bout (E2E) ([#2006](https://github.com/MTES-MCT/Dossier-Facile-Frontend/pull/2006)).
