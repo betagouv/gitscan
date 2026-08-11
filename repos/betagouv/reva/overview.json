@@ -1,24 +1,25 @@
 {
   "url": "https://github.com/betagouv/reva",
   "name": "reva",
-  "description": "Plateforme monorepo pour la gestion de la Validation des Acquis de l'Expérience (VAE). Elle regroupe des API et des applications web pour les candidats, les administrateurs et les organismes certificateurs.",
+  "description": "Plateforme monorepo dédiée à la gestion de la Validation des Acquis de l'Expérience (VAE). Elle comprend des API GraphQL et REST, ainsi que des interfaces web pour les candidats, les organismes et l'administration.",
   "language": "TypeScript",
   "features": [
+    "Gestion documentaire & Fichiers",
     "API & Intégrations",
     "Authentification & Accès",
-    "Statistiques & Rapports",
     "Gestion des utilisateurs & Permissions",
     "Formulaires & Démarches",
     "Administration & Backoffice",
-    "Gestion métier générale"
+    "Suivi & Traçabilité",
+    "Tableaux & Affichage"
   ],
-  "audience": "Professionnels",
+  "audience": "Agents de l'Administration, Professionnels et Grand public",
   "dependencies": [
     "Fastify",
     "Next.js",
     "Prisma",
-    "PostgreSQL",
     "Keycloak",
+    "PostgreSQL",
     "Strapi",
     "Metabase",
     "Vitest",
@@ -32,8 +33,6 @@
     "PostgreSQL & SQL",
     "React / Next.js",
     "TypeScript / JavaScript",
-    "Design System (DSFR & UI libs)",
-    "Docker & Conteneurs",
     "Authentification (composant)",
     "CMS (Strapi, Wagtail…)",
     "Tests",
@@ -42,8 +41,10 @@
   "auth": {
     "methods": [
       "oauth2",
-      "jwt",
-      "sso"
+      "jwt"
+    ],
+    "providers": [
+      "Keycloak"
     ]
   },
   "tests": [
@@ -51,9 +52,12 @@
     "Cypress",
     "Playwright"
   ],
-  "lastActivity": "2026-08-06T15:57:19+02:00",
+  "workflows": [
+    "deploy.sh",
+    "deploy-preprod.sh"
+  ],
+  "lastActivity": "2026-08-10T14:36:35+02:00",
   "status": "active",
-  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
@@ -61,6 +65,8 @@
     "React & Next.js",
     "Bases de données SQL",
     "Docker & Conteneurs",
-    "CI/CD & GitHub Actions"
+    "Node.js, NestJS & Express",
+    "Sécurité & Auth",
+    "Documentation"
   ]
 }
