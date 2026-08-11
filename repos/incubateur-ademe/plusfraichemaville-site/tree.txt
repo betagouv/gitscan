@@ -380,6 +380,7 @@
 │   │   │   ├── viewer-mode.svg
 │   │   │   └── wave.svg
 │   │   ├── espace-projet-incentive
+│   │   │   ├── apercu-aide-decision.png
 │   │   │   ├── apercu-module-financement.png
 │   │   │   ├── apercu-prestation-diag.jpg
 │   │   │   ├── apercu-resultat-tribu.jpg
@@ -692,7 +693,11 @@
 │   │   │   │   │   │   ├── [ficheSolutionSlug]
 │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   ├── liste
-│   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   ├── arbre
+│   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   ├── page.tsx
+│   │   │   │   │   │   │   └── toutes-solutions
+│   │   │   │   │   │   │       └── page.tsx
 │   │   │   │   │   │   ├── page.tsx
 │   │   │   │   │   │   └── recommandations
 │   │   │   │   │   │       └── page.tsx
@@ -725,12 +730,6 @@
 │   │   │   └── statut-perso
 │   │   │       └── page.tsx
 │   │   ├── (site-vitrine)
-│   │   │   ├── aide-decision
-│   │   │   │   ├── [aideDecisionEtapeSlug]
-│   │   │   │   │   ├── layout.tsx
-│   │   │   │   │   └── page.tsx
-│   │   │   │   ├── layout.tsx
-│   │   │   │   └── page.tsx
 │   │   │   ├── fiche-solution
 │   │   │   │   ├── [ficheSolutionSlug]
 │   │   │   │   │   └── page.tsx
@@ -795,6 +794,10 @@
 │   │   │   │   └── route.ts
 │   │   │   ├── fuzzy-search
 │   │   │   │   └── route.ts
+│   │   │   ├── get-aide-decision-first-step
+│   │   │   │   └── route.ts
+│   │   │   ├── get-aide-decision-step
+│   │   │   │   └── route.ts
 │   │   │   ├── get-aides-territoires-aide-by-aide-id
 │   │   │   │   └── route.ts
 │   │   │   ├── get-available-projets-for-user
@@ -839,13 +842,6 @@
 │   │   ├── server-only-index.tsx
 │   │   └── sitemap.ts
 │   ├── components
-│   │   ├── aideDecision
-│   │   │   ├── AideDecisionBreadcrumbs.tsx
-│   │   │   ├── AideDecisionBreadcrumbsStyles.module.css
-│   │   │   ├── AideDecisionEtapeCard.tsx
-│   │   │   ├── AideDecisionFirstStepCard.tsx
-│   │   │   ├── AideDecisionResult.tsx
-│   │   │   └── aide-decision-breadcrumb-link.tsx
 │   │   ├── analytics
 │   │   │   └── helpers.ts
 │   │   ├── annuaire
@@ -956,9 +952,12 @@
 │   │   │   ├── currency-input-form-field.tsx
 │   │   │   ├── display-user-name.tsx
 │   │   │   ├── espace-projet-incentive
-│   │   │   │   └── espace-projet-incentive-banner.tsx
+│   │   │   │   ├── aide-decision-incentive-banner.tsx
+│   │   │   │   ├── espace-projet-incentive-banner.tsx
+│   │   │   │   └── modale-aide-decision-choix-projet.tsx
 │   │   │   ├── fiche-card-skeleton.tsx
 │   │   │   ├── fiche-completion-label.tsx
+│   │   │   ├── fil-d-arianne-avec-bouton.tsx
 │   │   │   ├── generic-links
 │   │   │   │   ├── generic-link.tsx
 │   │   │   │   └── route-couples.ts
@@ -1037,6 +1036,17 @@
 │   │   │   │   └── espace-projet-breadcurmb-list.tsx
 │   │   │   ├── besoin-aide
 │   │   │   │   └── besoin-aide-page.tsx
+│   │   │   ├── recherche-solutions
+│   │   │   │   ├── aide-decision-container.tsx
+│   │   │   │   ├── aide-decision-etape-card.tsx
+│   │   │   │   ├── aide-decision-first-step-card.tsx
+│   │   │   │   ├── aide-decision-first-step-skeleton.tsx
+│   │   │   │   ├── aide-decision-first-step.tsx
+│   │   │   │   ├── aide-decision-result-container.tsx
+│   │   │   │   ├── aide-decision-step-skeleton.tsx
+│   │   │   │   ├── aide-decision-step.tsx
+│   │   │   │   ├── fiches-solutions-liste-page-content.tsx
+│   │   │   │   └── recherche-solutions.tsx
 │   │   │   ├── recommandations-solutions
 │   │   │   │   └── recommandations-fiche-solution.tsx
 │   │   │   ├── statut-common
@@ -1541,6 +1551,7 @@
 │   │   │   └── store.ts
 │   │   └── user
 │   │       ├── client.tsx
+│   │       ├── helper.ts
 │   │       ├── provider.tsx
 │   │       ├── server.tsx
 │   │       └── store.ts
@@ -1549,4 +1560,4 @@
 │       └── nextAuth.d.ts
 ├── tailwind.config.js
 └── tsconfig.json
-388 directories, 1163 files
+390 directories, 1172 files
