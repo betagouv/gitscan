@@ -1,18 +1,18 @@
 {
   "url": "https://github.com/betagouv/agreste",
   "name": "agreste",
-  "description": "Agreste est une solution permettant la création simplifiée de sites web pour l'administration française, basée sur Wagtail et le Système de design de l’État (DSFR). Elle facilite la conception de sites internet conformes aux normes numériques en vigueur.",
+  "description": "Un gestionnaire de contenu basé sur Wagtail et Django permettant de créer facilement des sites internet conformes au Système de design de l'État (DSFR) avec un domaine en .gouv.fr.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
-    "Authentification & Accès",
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
+    "Formulaires & Démarches",
+    "Notifications & Alertes",
     "Contenu éditorial",
-    "Sécurité & Conformité",
-    "Données & Schémas",
-    "Interface utilisateur & Design"
+    "Accessibilité & i18n",
+    "Administration & Backoffice"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -20,62 +20,49 @@
     "Wagtail",
     "PostgreSQL",
     "django-dsfr",
-    "python-dotenv",
-    "dj-database-url",
-    "gunicorn",
-    "dj-static",
-    "whitenoise",
-    "wagtailmenus",
-    "wagtail-modeladmin",
-    "wagtail-markdown",
-    "boto3"
+    "ProConnect",
+    "Playwright",
+    "Gunicorn",
+    "Sentry"
   ],
   "components": [
-    "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "React / Next.js",
     "Python (scripts & backend)",
     "Design System (DSFR & UI libs)",
+    "Docker & Conteneurs",
     "Django",
-    "HTML / CSS / Templates visuels"
+    "CMS (Strapi, Wagtail…)",
+    "Authentification (composant)",
+    "Templates & Moteurs de rendu"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "saml"
+      "sso"
     ],
     "providers": [
       "ProConnect"
     ]
   },
   "tests": [
-    "Pytest",
-    "Playwright"
+    "Playwright",
+    "coverage",
+    "pytest"
   ],
   "workflows": [
     "GitHub Actions"
   ],
-  "lastActivity": "2026-07-30T16:03:52+02:00",
+  "lastActivity": "2026-08-10T15:35:33+02:00",
   "status": "active",
-  "license": null,
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
   "tags": [
-    "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "React & Next.js",
-    "TypeScript",
-    "Déploiement & Hosting",
     "Python",
+    "Django & FastAPI",
+    "Wagtail, CMS & générateurs statiques",
     "Bases de données SQL",
-    "Sécurité & Auth",
-    "Environnement & Énergie",
-    "Intelligence Artificielle & LLM",
-    "Design System & UI"
+    "Design System & UI",
+    "CI/CD & GitHub Actions",
+    "Accessibilité"
   ]
 }
