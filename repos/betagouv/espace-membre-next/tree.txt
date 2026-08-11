@@ -4,12 +4,12 @@
 ├── .env.test
 ├── .github
 │   ├── dependabot.yml
+│   ├── scripts
+│   │   └── validate-checklists.ts
 │   └── workflows
 │       ├── codeql-analysis.yml
 │       ├── nodejs.yml
-│       ├── playwright.yml
-│       └── utils
-│           └── validateFile.ts
+│       └── playwright.yml
 ├── .gitignore
 ├── .gitmodules
 ├── .husky
@@ -18,7 +18,6 @@
 ├── .prettierrc
 ├── .slugignore
 ├── .talismanrc
-├── CRON.md
 ├── Dockerfile
 ├── LICENCE.md
 ├── Makefile
@@ -35,10 +34,12 @@
 │   │   └── fake_data.ts
 │   ├── startups.json
 │   ├── test-account.ts
-│   ├── test-api-info-update.ts
+│   ├── test-api-incubator-members.ts
+│   ├── test-api-member-detail.ts
+│   ├── test-api-startup-members.ts
+│   ├── test-api-startup-phases.ts
 │   ├── test-create-member-send-email.ts
 │   ├── test-create-member-validation.ts
-│   ├── test-create-member.ts
 │   ├── test-event.ts
 │   ├── test-setup.ts
 │   ├── test-startups.ts
@@ -67,8 +68,6 @@
 │   ├── startups.spec.ts
 │   └── team.spec.ts
 ├── eslint.config.mjs
-├── generate-cron-md.ts
-├── generate-email-md.ts
 ├── knexfile.js
 ├── migrations
 │   ├── 20200811181439_initial.js
@@ -224,6 +223,7 @@
 │   │   ├── db.d.ts
 │   │   ├── global.d.ts
 │   │   ├── next-auth.d.ts
+│   │   ├── request.d.ts
 │   │   └── serverAction.d.ts
 │   ├── app
 │   │   ├── (private)
@@ -337,16 +337,7 @@
 │   │   │   │       └── updateIncubator.ts
 │   │   │   ├── member
 │   │   │   │   ├── [username]
-│   │   │   │   │   ├── (brevo)
-│   │   │   │   │   │   ├── brevo-emails-info
-│   │   │   │   │   │   │   └── route.ts
-│   │   │   │   │   │   └── brevo-events
-│   │   │   │   │   │       └── route.ts
-│   │   │   │   │   ├── events
-│   │   │   │   │   │   └── route.ts
-│   │   │   │   │   ├── image
-│   │   │   │   │   │   └── route.ts
-│   │   │   │   │   └── info-update
+│   │   │   │   │   └── image
 │   │   │   │   │       └── route.ts
 │   │   │   │   ├── actions
 │   │   │   │   │   ├── __tests__
@@ -360,25 +351,42 @@
 │   │   │   │   │   ├── updateUserEvent.ts
 │   │   │   │   │   ├── validateNewMember.ts
 │   │   │   │   │   └── verifyNewMember.ts
-│   │   │   │   ├── getInfo.ts
-│   │   │   │   ├── route.ts
 │   │   │   │   └── updateMember.ts
 │   │   │   ├── members
-│   │   │   │   ├── actions
-│   │   │   │   │   └── verify.ts
-│   │   │   │   └── route.ts
+│   │   │   │   └── actions
+│   │   │   │       └── verify.ts
 │   │   │   ├── organizations
 │   │   │   │   └── actions
 │   │   │   │       ├── createOrganization.ts
 │   │   │   │       └── updateOrganization.ts
 │   │   │   ├── protected
-│   │   │   │   ├── incubator
+│   │   │   │   ├── (deprecated)
+│   │   │   │   │   ├── incubator
+│   │   │   │   │   │   └── route.ts
+│   │   │   │   │   ├── member
+│   │   │   │   │   │   └── [username]
+│   │   │   │   │   │       └── route.ts
+│   │   │   │   │   └── startup
+│   │   │   │   │       ├── [startupId]
+│   │   │   │   │       │   └── route.ts
+│   │   │   │   │       └── route.ts
+│   │   │   │   ├── incubators
+│   │   │   │   │   ├── [ghid]
+│   │   │   │   │   │   ├── members
+│   │   │   │   │   │   │   └── route.ts
+│   │   │   │   │   │   ├── route.ts
+│   │   │   │   │   │   └── startups
+│   │   │   │   │   │       └── route.ts
 │   │   │   │   │   └── route.ts
-│   │   │   │   ├── member
+│   │   │   │   ├── members
 │   │   │   │   │   └── [username]
 │   │   │   │   │       └── route.ts
-│   │   │   │   └── startup
-│   │   │   │       ├── [startupId]
+│   │   │   │   ├── openapi.json
+│   │   │   │   │   └── route.ts
+│   │   │   │   └── startups
+│   │   │   │       ├── [ghid]
+│   │   │   │       │   ├── members
+│   │   │   │       │   │   └── route.ts
 │   │   │   │       │   └── route.ts
 │   │   │   │       └── route.ts
 │   │   │   ├── services
@@ -581,28 +589,61 @@
 │   │   ├── defaultColorScheme.ts
 │   │   ├── index.tsx
 │   │   └── server-only-index.tsx
-│   ├── frontConfig
-│   │   └── index.ts
 │   ├── instrumentation-client.ts
 │   ├── instrumentation.ts
 │   ├── lib
+│   │   ├── actions
+│   │   │   ├── createMember.ts
+│   │   │   ├── image.ts
+│   │   │   ├── memberBrevo.ts
+│   │   │   ├── memberEvents.ts
+│   │   │   ├── members.ts
+│   │   │   └── updateMemberInfo.ts
 │   │   ├── airtable.ts
+│   │   ├── auth
+│   │   │   └── hashToken.ts
+│   │   ├── authoptions.ts
 │   │   ├── canEditMember.spec.ts
 │   │   ├── canEditMember.ts
 │   │   ├── canEditStartup.spec.ts
 │   │   ├── canEditStartup.ts
+│   │   ├── checklists
+│   │   │   ├── computeProgress.spec.ts
+│   │   │   ├── computeProgress.ts
+│   │   │   ├── getChecklistObject.ts
+│   │   │   ├── getUserChecklists.ts
+│   │   │   ├── offboarding.yml
+│   │   │   └── onboarding.yml
+│   │   ├── config.ts
+│   │   ├── copyToClipBoard.ts
+│   │   ├── date.ts
+│   │   ├── db.ts
+│   │   ├── deprecation.ts
 │   │   ├── dimail
 │   │   │   ├── client.spec.ts
 │   │   │   ├── client.ts
 │   │   │   ├── utils.spec.ts
 │   │   │   └── utils.ts
-│   │   ├── ds.ts
+│   │   ├── email
+│   │   │   ├── email.ts
+│   │   │   ├── fakeMailer.ts
+│   │   │   ├── index.ts
+│   │   │   ├── nodeMailer.ts
+│   │   │   ├── send-email-to-team-when-new-member.spec.ts
+│   │   │   ├── send-email-to-team-when-new-member.ts
+│   │   │   ├── send-validation-email.ts
+│   │   │   ├── send-verification-email.ts
+│   │   │   └── sendInBlue.ts
 │   │   ├── env.ts
+│   │   ├── error.ts
 │   │   ├── events.ts
 │   │   ├── file.ts
-│   │   ├── flat.ts
+│   │   ├── frontConfig
+│   │   │   └── index.ts
 │   │   ├── grist.ts
 │   │   ├── hstore.ts
+│   │   ├── htmlbuilder.ts
+│   │   ├── ical.ts
 │   │   ├── kysely
 │   │   │   ├── index.ts
 │   │   │   ├── queries
@@ -611,7 +652,6 @@
 │   │   │   │   ├── missions.ts
 │   │   │   │   ├── organizations.ts
 │   │   │   │   ├── search.ts
-│   │   │   │   ├── services.ts
 │   │   │   │   ├── startups.ts
 │   │   │   │   ├── teams.ts
 │   │   │   │   ├── userEvents.ts
@@ -621,9 +661,21 @@
 │   │   │   ├── client.spec.ts
 │   │   │   └── client.ts
 │   │   ├── mdtohtml.ts
+│   │   ├── member.ts
+│   │   ├── member.utils.ts
+│   │   ├── memberPageProps.ts
+│   │   ├── openapi.ts
+│   │   ├── pgAdpter.ts
+│   │   ├── routes.ts
 │   │   ├── s3.ts
 │   │   ├── searchCommune.ts
-│   │   └── sentry.ts
+│   │   ├── session.ts
+│   │   ├── startup.ts
+│   │   ├── startupPhase.ts
+│   │   ├── url.ts
+│   │   ├── utils.spec.ts
+│   │   ├── utils.ts
+│   │   └── withRetry.ts
 │   ├── middleware.ts
 │   ├── models
 │   │   ├── actionEvent
@@ -638,6 +690,10 @@
 │   │   │   ├── segurRequest.ts
 │   │   │   ├── startup.ts
 │   │   │   └── team.ts
+│   │   ├── api
+│   │   │   ├── incubator.ts
+│   │   │   ├── member.ts
+│   │   │   └── startup.ts
 │   │   ├── brevoEvent.ts
 │   │   ├── brevoInfo.ts
 │   │   ├── checklist.ts
@@ -660,7 +716,6 @@
 │   │   ├── mission.ts
 │   │   ├── ops.ts
 │   │   ├── segur.ts
-│   │   ├── services.ts
 │   │   ├── sponsor.ts
 │   │   ├── startup.ts
 │   │   ├── startupChange.ts
@@ -673,121 +728,54 @@
 │   ├── routes
 │   │   └── routes.ts
 │   ├── scripts
+│   │   ├── clean-teams-members.ts
 │   │   ├── export-to-www.sh
 │   │   ├── github-schemas.ts
 │   │   ├── import-from-www.ts
 │   │   ├── import-teams-from-www.ts
+│   │   ├── recreate-email-if-user-active.ts
 │   │   ├── setup-grist-ops-table.ts
 │   │   ├── setup-grist-segur-table.ts
-│   │   ├── sync-dimail.ts
+│   │   ├── sync-dinum-emails.ts
 │   │   ├── sync-matrix-accounts.ts
 │   │   ├── update-local-files.ts
 │   │   └── utils.ts
-│   ├── server
-│   │   ├── betagouv.ts
-│   │   ├── config
-│   │   │   ├── admin.config.ts
-│   │   │   ├── email.config.ts
-│   │   │   ├── index.ts
-│   │   │   └── sentry.config.ts
-│   │   ├── controllers
-│   │   │   ├── utils.spec.ts
-│   │   │   └── utils.ts
-│   │   ├── db
-│   │   │   └── index.ts
-│   │   ├── helpers
-│   │   │   └── session.ts
-│   │   ├── infra
-│   │   │   └── email
-│   │   │       ├── fakeMailer.ts
-│   │   │       ├── index.ts
-│   │   │       ├── nodeMailer.ts
-│   │   │       └── sendInBlue.ts
-│   │   ├── modules
-│   │   │   ├── email
-│   │   │   │   ├── email.ts
-│   │   │   │   └── index.ts
-│   │   │   └── htmlbuilder
-│   │   │       └── htmlbuilder.ts
-│   │   ├── queueing
-│   │   │   ├── client.ts
-│   │   │   ├── schedule.ts
-│   │   │   └── workers
-│   │   │       ├── clean-teams-members.ts
-│   │   │       ├── create-dimail-mailbox.spec.ts
-│   │   │       ├── create-dimail-mailbox.ts
-│   │   │       ├── send-email-to-incubator.spec.ts
-│   │   │       ├── send-email-to-incubator.ts
-│   │   │       ├── send-email-to-team-when-new-member.spec.ts
-│   │   │       ├── send-email-to-team-when-new-member.ts
-│   │   │       ├── send-email-to-teams-to-check-on-team-composition.spec.ts
-│   │   │       ├── send-email-to-teams-to-check-on-team-composition.ts
-│   │   │       ├── send-validation-email.ts
-│   │   │       ├── send-verification-email.ts
-│   │   │       ├── sync-dinum-emails.spec.ts
-│   │   │       ├── sync-dinum-emails.ts
-│   │   │       ├── sync-matrix-accounts.spec.ts
-│   │   │       ├── sync-matrix-accounts.ts
-│   │   │       └── utils.ts
-│   │   ├── schedulers
-│   │   │   ├── cron.ts
-│   │   │   ├── recreateEmailIfUserActive.spec.ts
-│   │   │   ├── recreateEmailIfUserActive.ts
-│   │   │   ├── scheduleCronJobs.ts
-│   │   │   ├── schedulePgBossJobs.ts
-│   │   │   └── startups
-│   │   │       ├── index.ts
-│   │   │       └── sendEmailToStartupToUpdatePhase.ts
-│   │   ├── types
-│   │   │   └── request.d.ts
-│   │   └── views
-│   │       ├── templates
-│   │       │   └── emails
-│   │       │       ├── EmailCreatedDimail
-│   │       │       │   └── EmailCreatedDimail.tsx
-│   │       │       ├── LoginEmail
-│   │       │       │   └── LoginEmail.tsx
-│   │       │       ├── StartupNewMemberArrivalEmail
-│   │       │       │   └── StartupNewMemberArrivalEmail.tsx
-│   │       │       ├── VerificationWaitingEmail
-│   │       │       │   └── VerificationWaitingEmail.tsx
-│   │       │       ├── eventMessage.ejs
-│   │       │       ├── forumBetaMessage.ejs
-│   │       │       ├── memberValidationEmail
-│   │       │       │   └── memberValidationEmail.tsx
-│   │       │       ├── startupMembersDidNotChangeInXMonthsEmail
-│   │       │       │   └── startupMembersDidNotChangeInXMonthsEmail.tsx
-│   │       │       ├── teamCompositionEmail
-│   │       │       │   └── teamCompositionEmail.tsx
-│   │       │       └── updateSecondaryEmail.ejs
-│   │       └── test.yml
-│   └── utils
-│       ├── airtable.ts
-│       ├── auth
-│       │   └── hashToken.ts
-│       ├── authoptions.ts
-│       ├── checklists
-│       │   ├── computeProgress.spec.ts
-│       │   ├── computeProgress.ts
-│       │   ├── getChecklistObject.ts
-│       │   ├── getUserChecklists.ts
-│       │   ├── offboarding.yml
-│       │   └── onboarding.yml
-│       ├── copyToClipBoard.ts
-│       ├── date.ts
-│       ├── error.ts
-│       ├── file.ts
+│   └── server
+│       ├── config
+│       │   ├── admin.config.ts
+│       │   ├── email.config.ts
+│       │   └── index.ts
 │       ├── gracefulExit.ts
-│       ├── ical.ts
-│       ├── member.ts
-│       ├── pgAdpter.ts
-│       ├── platform.ts
-│       ├── routes
-│       │   ├── routeTitles.ts
-│       │   └── routes.ts
-│       ├── startup.ts
-│       └── url.ts
+│       ├── queueing
+│       │   ├── client.ts
+│       │   └── workers
+│       │       ├── clean-teams-members.ts
+│       │       ├── create-dimail-mailbox.spec.ts
+│       │       ├── create-dimail-mailbox.ts
+│       │       ├── sync-dinum-emails.spec.ts
+│       │       ├── sync-dinum-emails.ts
+│       │       ├── sync-matrix-accounts.spec.ts
+│       │       └── sync-matrix-accounts.ts
+│       ├── schedulers
+│       │   ├── recreateEmailIfUserActive.spec.ts
+│       │   ├── recreateEmailIfUserActive.ts
+│       │   └── schedulePgBossJobs.ts
+│       └── views
+│           └── templates
+│               └── emails
+│                   ├── EmailCreatedDimail
+│                   │   └── EmailCreatedDimail.tsx
+│                   ├── LoginEmail
+│                   │   └── LoginEmail.tsx
+│                   ├── StartupNewMemberArrivalEmail
+│                   │   └── StartupNewMemberArrivalEmail.tsx
+│                   ├── VerificationWaitingEmail
+│                   │   └── VerificationWaitingEmail.tsx
+│                   ├── eventMessage.ejs
+│                   ├── forumBetaMessage.ejs
+│                   ├── memberValidationEmail
+│                   │   └── memberValidationEmail.tsx
+│                   └── updateSecondaryEmail.ejs
 ├── storybook
-├── tsconfig.json
-└── tsconfig.server.json
-183 directories, 609 files
+└── tsconfig.json
+178 directories, 602 files

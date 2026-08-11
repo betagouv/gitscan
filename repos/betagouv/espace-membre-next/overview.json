@@ -1,75 +1,72 @@
 {
   "url": "https://github.com/betagouv/espace-membre-next",
   "name": "espace-membre-next",
-  "description": "L'espace membre permet de gérer les membres et missions de la communauté, ainsi que les produits, incubateurs, sponsors et accès aux outils.",
+  "description": "Plateforme de gestion de l'espace membre de l'incubateur beta.gouv.fr. Elle permet de gérer les membres, leurs missions, ainsi que les produits, équipes et sponsors de la communauté.",
   "language": "TypeScript",
   "features": [
     "Gestion des utilisateurs & Permissions",
-    "Gestion métier générale",
-    "Gestion des produits",
-    "Gestion des incubateurs",
+    "Gestion des profils & Comptes",
+    "Authentification & Accès",
     "Gestion des équipes & Partenaires",
-    "Accès aux outils (Sentry, Matomo)",
-    "Exploration de la communauté",
-    "Affichage des formations et événements",
-    "Gestion de l'infolettre",
-    "Authentification & Accès"
+    "Administration & Backoffice",
+    "Collaboration & Workflow"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "React",
     "Next.js",
-    "PostgreSQL",
-    "pg",
-    "Express",
-    "jsonwebtoken",
-    "nodemailer",
+    "React",
+    "TypeScript",
+    "Knex",
     "Kysely",
-    "tailwindcss"
+    "PostgreSQL",
+    "NextAuth.js",
+    "Zod",
+    "Sentry",
+    "Matomo",
+    "@codegouvfr/react-dsfr"
   ],
   "components": [
     "React / Next.js",
-    "API REST & GraphQL",
+    "TypeScript / JavaScript",
     "PostgreSQL & SQL",
-    "Authentification (composant)",
-    "Celery & Queue asynchrone",
-    "Microservices & Architecture"
+    "API REST & GraphQL",
+    "Design System (DSFR & UI libs)",
+    "Docker & Conteneurs",
+    "Authentification (composant)"
   ],
   "auth": {
     "methods": [
-      "oauth2",
       "magic-link",
-      "session"
+      "sso"
     ],
     "providers": [
       "ProConnect"
     ]
   },
   "tests": [
-    "Jest",
     "Playwright",
-    "ts-mocha"
+    "ts-mocha",
+    "Chai",
+    "Sinon"
   ],
   "workflows": [
-    "Node.js",
-    "CodeQL Analysis",
-    "Playwright"
+    "Scalingo Scheduler",
+    "n8n"
   ],
-  "lastActivity": "2026-07-22T20:43:47+00:00",
-  "status": "active",
+  "lastActivity": "2026-08-10T16:08:00+02:00",
+  "status": "maintained",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
     "stars": 4,
     "forks": 8,
-    "openIssues": 59
+    "openIssues": 41
   },
   "tags": [
     "Écosystème beta.gouv / État",
-    "community management",
-    "member management",
-    "TypeScript",
     "React & Next.js",
-    "Bases de données SQL"
+    "TypeScript",
+    "Design System & UI",
+    "Sécurité & Auth"
   ]
 }
