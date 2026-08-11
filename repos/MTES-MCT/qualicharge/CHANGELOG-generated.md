@@ -1,17 +1,13 @@
-## Changelog : qualicharge (30 derniers jours, au 04/08/2026)
+## Changelog : qualicharge (30 derniers jours, au 10 août 2026)
 
 ### Résumé
-Les récentes évolutions se concentrent sur l'enrichissement des indicateurs de performance et la fiabilisation des pipelines de données. Des améliorations ont également été apportées à l'API pour optimiser le stockage et renforcer la validation des données saisies.
+Les récentes évolutions se concentrent sur l'enrichissement des capacités d'analyse avec l'ajout de nouveaux indicateurs de performance et sur l'amélioration de la fiabilité des données via l'API. Des optimisations techniques ont également été réalisées pour accélérer les calculs et optimiser le stockage.
 
 ### Évolutions fonctionnelles
-- **API** : La création d'un tarif nécessite désormais la définition d'au moins une cible pour être valide.
+- Ajout de nouveaux indicateurs de performance (e2 et e3).
+- Renforcement de la validation de l'API : l'ajout d'au moins une cible est désormais obligatoire lors de la création d'un tarif.
 
 ### Évolutions techniques
-- **Pipelines de données (Prefect)** :
-  - Ajout et amélioration de nouveaux indicateurs de performance (e1-DMR, e2 et e3).
-  - Correction de la gestion des plages temporelles lors des requêtes utilisant la table `lateststatus`.
-  - Inclusion des points de charge décommissionnés dans les processus d'analyse.
-- **API** : Optimisation du stockage des données de tarifs en ne conservant que les champs non nuls en format brut.
-
-### Autres changements
-- Mise à jour de la version du projet vers la 0.34.1.
+- **Optimisation des performances** : Amélioration de la vitesse de calcul des indicateurs e2 et e3 via Prefect.
+- **Optimisation du stockage** : L'API ne stocke désormais que les champs de tarifs non nuls en format brut pour réduire l'empreinte des données.
+- **Correction de bug** : Rectification de la définition de la plage temporelle pour les requêtes utilisant la table `lateststatus`.
