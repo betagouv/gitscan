@@ -1,28 +1,23 @@
-## Changelog : plateforme-accueil (30 derniers jours, au 27 juillet 2026)
+## Changelog : plateforme-accueil (30 derniers jours, au 10 août 2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a subi une refonte majeure de sa page d'accueil, passant d'une structure imbriquée à une approche plus directe avec l'intégration de la maquette directement en page. Des améliorations significatives ont également été apportées à la configuration et à l'infrastructure du projet, incluant l'ajout de CI/CD, de linters et de règles de contribution.
+Ce mois a été marqué par la structuration initiale et la refonte majeure de la plateforme. Le projet est désormais pleinement opérationnel avec une nouvelle page d'accueil et une infrastructure technique robuste, optimisée spécifiquement pour une intégration fluide et sécurisée via iframe.
 
 ### Évolutions fonctionnelles
-- La page d'accueil affiche désormais la maquette directement, sans iframe imbriquée. [#3](https://github.com/gip-inclusion/plateforme-accueil/pull/3)
-- Un exemple HTML a été ajouté pour faciliter la visualisation et la collaboration.
-- La plateforme intègre désormais le gestionnaire de tags Matomo pour le suivi analytique.
-- La plateforme utilise un template de base commun à toutes les pages.
-- La plateforme permet de définir des `frame-ancestors` supplémentaires via une variable d'environnement pour une meilleure gestion de la sécurité.
-- Un avertissement est affiché si l'attribut `scrolling="no"` est utilisé sur l'iframe d'intégration.
+- **Refonte de la page d'accueil** : Refonte complète de la landing page pour améliorer l'expérience utilisateur [#3](https://github.com/gip-inclusion/plateforme-accueil/pull/3).
+- **Amélioration de la présentation** : Affichage direct de la maquette d'exemple pour faciliter la visualisation du rendu final.
 
 ### Évolutions techniques
-- Refonte complète de l'architecture du projet avec l'utilisation de Django pour le rendu de la page d'accueil.
-- Mise en place d'un pipeline CI/CD avec des workflows pour les tests et le déploiement.
-- Ajout d'un Dockerfile et d'un Makefile pour faciliter le développement et le déploiement.
-- Intégration des outils de linting `ruff` et de formatage `uv` pour garantir la qualité du code.
-- Ajout de tests avec `pytest`.
-- Les commentaires du code sont désormais écrits en anglais, conformément aux standards du projet les-emplois.
-- Le sprite SVG est intégré en ligne pour éviter les problèmes de sécurité liés aux iframes avec des origines opaques.
-- Amélioration de la gestion de la taille du contenu pour éviter les problèmes de "viewport ratchet".
-- Version du setup-uv action épinglée pour garantir la stabilité.
+- **Infrastructure et CI/CD** : Mise en place complète de l'environnement de développement et de déploiement (Docker, Makefile, workflows GitHub Actions pour la CI et le déploiement).
+- **Optimisation de l'intégration (iframe)** : 
+    - Amélioration de la gestion du redimensionnement automatique pour éviter les problèmes d'affichage lors du chargement du contenu.
+    - Optimisation de la compatibilité des icônes (SVG inline) pour garantir leur affichage dans des environnements sécurisés (sandboxed iframes).
+    - Ajout de la possibilité de configurer les politiques de sécurité (CSP) via des variables d'environnement.
+- **Architecture logicielle** : 
+    - Transition d'un bundle HTML unique vers une architecture Django standard (utilisation de templates et de fichiers statiques).
+    - Création d'un template de base pour uniformiser l'ensemble des pages.
+- **Analytique** : Intégration du gestionnaire de balises Matomo pour le suivi de l'audience.
 
 ### Autres changements
-- Ajout d'un fichier `CLAUDE.md` contenant les règles de contribution.
-- Ajout d'un fichier `README.md` pour une meilleure documentation du projet.
-- Ignorer le dossier `docs/explorations` pour éviter de versionner des notes locales.
+- **Documentation** : Ajout du fichier README et de règles de développement (CLAUDE.md).
+- **Standardisation** : Passage des commentaires de code en anglais pour assurer la cohérence avec les standards du projet.
