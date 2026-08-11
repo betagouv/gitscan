@@ -1,28 +1,36 @@
 {
   "url": "https://github.com/numerique-gouv/sites-faciles-saas",
   "name": "sites-faciles-saas",
-  "description": "Application Django pour gérer les demandes de création de sites utilisant Sites faciles.",
+  "description": "Application Django permettant de gérer le déploiement d'instances de Sites Faciles sur des plateformes comme Scalingo ou Alwaysdata.",
   "language": "Python",
   "features": [
+    "Authentification & Accès",
     "Gestion des utilisateurs & Permissions",
-    "Authentification & Accès"
+    "Administration & Backoffice",
+    "Sécurité & Conformité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
     "psycopg2-binary",
     "dj-database-url",
-    "django-dsfr"
+    "django-dsfr",
+    "django-two-factor-auth",
+    "gunicorn",
+    "requests"
   ],
   "components": [
     "API REST & GraphQL",
     "Django",
     "PostgreSQL & SQL",
-    "Python (scripts & backend)"
+    "Python (scripts & backend)",
+    "Design System (DSFR & UI libs)",
+    "Authentification (composant)"
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "email-password",
+      "mfa"
     ]
   },
   "tests": "Pytest",
@@ -30,18 +38,21 @@
     "django_ci.yaml",
     "pre_commit.yaml"
   ],
-  "lastActivity": "2026-07-29T17:03:00Z",
+  "lastActivity": "2026-07-29T14:52:51+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
   "metrics": {
     "stars": 2,
     "forks": 1,
-    "openIssues": 2
+    "openIssues": 3
   },
   "tags": [
-    "Django",
+    "Django & FastAPI",
     "Python",
-    "Bases de données SQL"
+    "Bases de données SQL",
+    "Design System & UI",
+    "Sécurité & Auth",
+    "CI/CD & GitHub Actions"
   ]
 }
