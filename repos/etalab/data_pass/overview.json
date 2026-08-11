@@ -1,14 +1,14 @@
 {
   "url": "https://github.com/etalab/data_pass",
   "name": "data_pass",
-  "description": "Outil de gestion des habilitations juridiques pour les données à accès restreint. Il permet de gérer les demandes d'accès et l'instruction des dossiers par les autorités compétentes.",
+  "description": "Outil de gestion des habilitations juridiques pour les données à accès restreint. Il permet de gérer les demandes d'accès et les droits associés pour différents services.",
   "language": "Ruby",
   "features": [
     "Authentification & Accès",
     "Gestion des utilisateurs & Permissions",
     "Formulaires & Démarches",
     "Sécurité & Conformité",
-    "Suivi & Traçabilité"
+    "API & Intégrations"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -17,21 +17,25 @@
     "PostgreSQL",
     "Redis",
     "GoodJob",
-    "OmniAuth",
-    "Doorkeeper"
+    "Doorkeeper",
+    "Pundit",
+    "Stimulus",
+    "Turbo"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Docker & Conteneurs",
-    "Tests",
+    "Ruby on Rails",
     "Authentification (composant)",
+    "Tests",
     "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "email-password"
+      "email-password",
+      "api-key"
     ],
     "providers": [
       "ProConnect"
@@ -40,22 +44,24 @@
   "tests": [
     "RSpec",
     "Cucumber",
-    "Capybara",
-    "parallel_tests"
+    "Capybara"
   ],
   "workflows": [
     "continuous-deployment.yaml",
     "test.yaml"
   ],
-  "lastActivity": "2026-08-06T20:10:07+02:00",
-  "status": "maintained",
+  "lastActivity": "2026-08-10T12:29:09+02:00",
+  "status": "active",
   "license": null,
   "hasDocumentation": true,
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "Docker & Conteneurs",
+    "Ruby",
+    "Bases de données SQL",
     "Sécurité & Auth",
-    "Standards & Schémas"
+    "Git & DevOps",
+    "Docker & Conteneurs",
+    "CI/CD & GitHub Actions"
   ]
 }
