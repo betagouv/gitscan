@@ -1,14 +1,14 @@
 {
   "url": "https://github.com/MTES-MCT/prelevements-deau-front",
   "name": "prelevements-deau-front",
-  "description": "Application front-end dédiée à la gestion des prélèvements d'eau, utilisant Next.js et le Design System de l'État (DSFR). Elle permet la gestion documentaire, la visualisation de données cartographiques et l'authentification par lien magique.",
+  "description": "Application front-end pour la gestion des prélèvements d'eau. Elle permet la visualisation de données cartographiques, la gestion de documents et le suivi des dossiers via une interface conforme au Design System de l'État.",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
     "Visualisation de données & Cartographie",
-    "Authentification & Accès",
     "Formulaires & Démarches",
-    "Tableaux & Affichage"
+    "Tableaux & Affichage",
+    "Recherche & Filtres"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -18,6 +18,7 @@
     "MapLibre GL",
     "MUI",
     "Tailwind CSS",
+    "Emotion",
     "Date-fns",
     "Lodash"
   ],
@@ -25,13 +26,15 @@
     "React / Next.js",
     "TypeScript / JavaScript",
     "Design System (DSFR & UI libs)",
-    "Authentification (composant)",
-    "HTML / CSS / Templates visuels",
-    "SIG & Géospatial"
+    "SIG & Géospatial",
+    "Gestion d'état",
+    "HTML / CSS / Templates visuels"
   ],
   "auth": {
     "methods": [
-      "magic-link"
+      "magic-link",
+      "jwt",
+      "session"
     ]
   },
   "tests": [
@@ -46,7 +49,8 @@
     "React & Next.js",
     "TypeScript",
     "Design System & UI",
+    "SIG & Géospatial",
     "HTML, CSS & Web",
-    "Écosystème beta.gouv / État"
+    "Accessibilité"
   ]
 }
