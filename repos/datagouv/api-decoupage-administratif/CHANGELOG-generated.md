@@ -1,15 +1,17 @@
-## Changelog : api-decoupage-administratif (30 derniers jours, au 5 juin 2026)
+## Changelog : api-decoupage-administratif (30 derniers jours, au 11 août 2026)
 
 ### Résumé
-Cette mise à jour majeure introduit une nouvelle version de l'API géographique (v2) pour l'accès aux données des découpages administratifs français. Cette refonte vise à améliorer la performance et la stabilité de l'API, tout en préparant le terrain pour de futures fonctionnalités.
+Les récentes évolutions améliorent la précision du traitement des données et introduisent de nouveaux paramètres de filtrage par zone, permettant une utilisation plus flexible et fiable de l'API.
 
 ### Évolutions fonctionnelles
-- Nouvelle version de l'API géographique (v2) déployée. [#1](https://github.com/datagouv/api-decoupage-administratif/issues/1)
+- Introduction de la gestion du paramètre `zone` pour affiner les requêtes.
+- Optimisation du processus de traitement des données avant leur mise à disposition.
 
 ### Évolutions techniques
-- Refonte complète de l'API géographique.
-- Passage à une nouvelle infrastructure pour l'API géographique.
-- Optimisations de performance pour l'API géographique.
+- Intégration de correctifs via la pull request [#6](https://github.com/datagouv/api-decoupage-administratif/pull/6).
+- Mise à jour du script de téléchargement des données (`1_download_decoupage_administratif_data.py`).
+- Ajout de la dépendance `lxml`.
+- Correction des appels de scripts suite à des renommages de fichiers internes.
 
 ### Autres changements
-- Préparation du déploiement de la nouvelle API géographique.
+- Mise à jour de la documentation dans le fichier `README.md`.
