@@ -287,10 +287,7 @@
 │   │   │   ├── identity-provider.mongodb.entity.ts
 │   │   │   ├── identity-provider.service.spec.ts
 │   │   │   ├── identity-provider.service.ts
-│   │   │   ├── index.ts
-│   │   │   └── interface
-│   │   │       ├── identity-provider-with-fqdn.interface.ts
-│   │   │       └── index.ts
+│   │   │   └── index.ts
 │   │   ├── interfaces
 │   │   │   ├── config.interface.ts
 │   │   │   ├── crud-track.interface.ts
@@ -491,7 +488,7 @@
 │   │       │   │   ├── post-identity-provider-selection.dto.ts
 │   │       │   │   ├── redirect-to-idp.dto.ts
 │   │       │   │   ├── revocation-token-params.dto.ts
-│   │       │   │   ├── sp-authorized-fqdns-config.dto.ts
+│   │       │   │   ├── sp-authorized-attached-email-domains-config.dto.ts
 │   │       │   │   ├── user-session
 │   │       │   │   │   ├── active-user-session.dto.ts
 │   │       │   │   │   ├── after-get-interaction-session.dto.ts
@@ -522,9 +519,6 @@
 │   │       │   │   ├── invalid-session-exception.filter.spec.ts
 │   │       │   │   └── invalid-session-exception.filter.ts
 │   │       │   ├── index.ts
-│   │       │   ├── interfaces
-│   │       │   │   ├── index.ts
-│   │       │   │   └── sp-authorized-fqdns-details.ts
 │   │       │   ├── main.ts
 │   │       │   ├── public
 │   │       │   │   ├── apple-touch-icon.png
@@ -820,6 +814,10 @@
 │   │   │   │   │   ├── send-email-failure.exception.ts
 │   │   │   │   │   └── too-many-attempts.exception.ts
 │   │   │   │   ├── index.ts
+│   │   │   │   ├── repositories
+│   │   │   │   │   ├── email-verification-token.repository.spec.ts
+│   │   │   │   │   ├── email-verification-token.repository.ts
+│   │   │   │   │   └── index.ts
 │   │   │   │   └── schemas
 │   │   │   │       ├── email-verification-token.schema.ts
 │   │   │   │       └── index.ts
@@ -850,13 +848,13 @@
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── exceptions.module.ts
 │   │   │   │   ├── filters
-│   │   │   │   │   ├── fc-web-html-exception.filter.spec.ts
-│   │   │   │   │   ├── fc-web-html-exception.filter.ts
+│   │   │   │   │   ├── base-exception.filter.spec.ts
+│   │   │   │   │   ├── base-exception.filter.ts
 │   │   │   │   │   ├── http-exception.filter.spec.ts
 │   │   │   │   │   ├── http-exception.filter.ts
 │   │   │   │   │   ├── index.ts
-│   │   │   │   │   ├── unknown-html-exception.filter.spec.ts
-│   │   │   │   │   └── unknown-html-exception.filter.ts
+│   │   │   │   │   ├── unknown-exception.filter.spec.ts
+│   │   │   │   │   └── unknown-exception.filter.ts
 │   │   │   │   ├── helpers
 │   │   │   │   │   ├── cause.helper.spec.ts
 │   │   │   │   │   ├── cause.helper.ts
@@ -1248,7 +1246,8 @@
 │   │   ├── 20260707145416-default_value_for_isMfaCompliant.ts
 │   │   ├── 20260708100033-fix_default_value_for_isMfaCompliant.ts
 │   │   ├── 20260713141446-remove_email_field_in_service_provider.ts
-│   │   └── 20260731082824-delete_multiple_tokens_per_email.ts
+│   │   ├── 20260731082824-delete_multiple_tokens_per_email.ts
+│   │   └── 20260807183716-rename_fqdns_to_attachedEmailDomains.ts
 │   ├── nest-cli.json
 │   ├── package.json
 │   ├── scripts
@@ -1381,11 +1380,11 @@
 │       │       ├── db-states
 │       │       │   ├── _default
 │       │       │   │   ├── account-fca.js
-│       │       │   │   ├── dp.js
-│       │       │   │   ├── idp.js
+│       │       │   │   ├── identity-providers.js
 │       │       │   │   ├── index.js
+│       │       │   │   ├── resource-servers.js
 │       │       │   │   ├── scopes.js
-│       │       │   │   └── sp.js
+│       │       │   │   └── service-providers.js
 │       │       │   ├── drop-db.js
 │       │       │   ├── e2e-idp
 │       │       │   │   ├── e2e-idp-insert.js
@@ -1636,4 +1635,4 @@
     │   └── parse-business-log.ts
     ├── tsconfig.json
     └── yarn.lock
-372 directories, 1266 files
+371 directories, 1266 files

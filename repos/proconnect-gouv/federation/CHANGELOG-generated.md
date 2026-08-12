@@ -1,34 +1,35 @@
-## Changelog : federation (30 derniers jours, au 31 juillet 2026)
+## Changelog : federation (30 derniers jours, au 11 août 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la sécurité, la refactorisation de l'architecture pour une meilleure maintenabilité et la préparation du terrain pour de nouvelles fonctionnalités, notamment l'authentification multi-facteurs (MFA). Plusieurs microservices ont été extraits en applications autonomes pour simplifier le développement et le déploiement.
+Ce mois-ci, la plateforme a franchi des étapes importantes en matière de sécurité et de robustesse. Les évolutions se sont concentrées sur l'amélioration de l'expérience utilisateur via des communications par email plus claires et sécurisées (notamment sur l'authentification multi-facteur), ainsi que sur une restructuration technique majeure visant à transformer plusieurs composants en services autonomes pour une meilleure maintenance.
 
 ### Évolutions fonctionnelles
-- Ajout d'un point de terminaison pour supprimer les clients OIDC via l'API. [#1390](https://github.com/proconnect-gouv/federation/issues/1390)
-- Possibilité de tester l'authentification multi-facteurs (MFA) avec des alias d'e-mail "+mfa". [#1348](https://github.com/proconnect-gouv/federation/issues/1348)
-- Implémentation d'un fallback par e-mail pour la MFA pour les fournisseurs d'identité non compatibles. [#1362](https://github.com/proconnect-gouv/federation/issues/1362)
-- Ajout d'un indicateur de conformité MFA pour les fournisseurs d'identité. [#1335](https://github.com/proconnect-gouv/federation/issues/1335)
-- Amélioration de la gestion des erreurs lors de la vérification de l'e-mail. [#1438](https://github.com/proconnect-gouv/federation/issues/1438)
-- Possibilité de configurer un préfixe pour l'objet des e-mails. [#1437](https://github.com/proconnect-gouv/federation/issues/1437)
+- **Sécurité & Authentification** :
+    - Mise en place d'un mode de secours (fallback) par email pour le MFA afin de supporter les fournisseurs d'identité ne le permettant pas [#1348](https://github.com/proconnect-gouv/federation/issues/1348).
+    - Amélioration de la gestion des sessions MFA pour réutiliser les sessions lorsque les exigences ACR sont satisfaites [#1450](https://github.com/proconnect-gouv/federation/issues/1450).
+    - Possibilité de tester le MFA via des alias d'emails (ex: `+mfa`) [#1348](https://github.com/proconnect-gouv/federation/issues/1348).
+    - Blocage par défaut des emails de domaine lors de la création d'un fournisseur d'identité (IdP) dans l'administration [#1476](https://github.com/proconnect-gouv/federation/issues/1476).
+- **Expérience Utilisateur (UX) & Emails** :
+    - Refonte des emails de code OTP : utilisation de modèles dédiés, réduction de la longueur du code et clarification des sujets pour une meilleure lisibilité [#1477](https://github.com/proconnect-gouv/federation/issues/1477).
+    - Amélioration de la clarté des messages et des sujets d'emails de vérification [#1425](https://github.com/proconnect-gouv/federation/issues/1425), [#855942c](https://github.com/proconnect-gouv/federation/issues/855942c).
+    - Mise à jour de la terminologie : "Fournisseur de données" devient "Serveur de ressources" pour plus de clarté [#8542d4d](https://github.com/proconnect-gouv/federation/issues/8542d4d).
+    - Simplification de l'interface d'administration : suppression de l'autocomplétion et de l'autofill sur les champs "collaborateurs" [#06120f9](https://github.com/proconnect-gouv/federation/issues/06120f9).
+- **API** :
+    - Ajout d'un point de terminaison pour la suppression de clients OIDC via l'API [#1390](https://github.com/proconnect-gouv/federation/issues/1390).
 
 ### Évolutions techniques
-- Refactorisation de l'architecture : extraction de plusieurs microservices (mock-data-provider, mock-identity-provider, mock-service-provider, csmr-rie) en applications autonomes. [#1428](https://github.com/proconnect-gouv/federation/issues/1428), [#1424](https://github.com/proconnect-gouv/federation/issues/1424), [#1416](https://github.com/proconnect-gouv/federation/issues/1416), [#1413](https://github.com/proconnect-gouv/federation/issues/1413)
-- Suppression du service pcdbapi. [#1427](https://github.com/proconnect-gouv/federation/issues/1427)
-- Migration de la gestion des erreurs vers les filtres d'exception NestJS. [#1436](https://github.com/proconnect-gouv/federation/issues/1436)
-- Refactorisation pour imposer un seul jeton de vérification d'e-mail par utilisateur. [#1446](https://github.com/proconnect-gouv/federation/issues/1446)
-- Amélioration de la performance des requêtes MongoDB en utilisant des correspondances de chaînes exactes. [#1369](https://github.com/proconnect-gouv/federation/issues/1369)
-- Ajout de healthchecks livez/readyz à l'application admin. [#1391](https://github.com/proconnect-gouv/federation/issues/1391)
-- Mise en place d'une bibliothèque de gestion des e-mails (@fc/mailer) avec des adaptateurs SMTP/Brevo/noop. [#1343](https://github.com/proconnect-gouv/federation/issues/1343)
-- Suppression du widget de chat Crisp. [#1324](https://github.com/proconnect-gouv/federation/issues/1324)
+- **Architecture & Refactoring** :
+    - **Modularisation** : Extraction de plusieurs services de simulation (mock-data-provider, mock-identity-provider, mock-service-provider, csmr-rie) en applications autonomes pour alléger le dépôt principal [#1413](https://github.com/proconnect-gouv/federation/issues/1413), [#1416](https://github.com/proconnect-gouv/federation/issues/1416), [#1424](https://github.com/proconnect-gouv/federation/issues/1424), [#1428](https://github.com/proconnect-gouv/federation/issues/1428).
+    - **Gestion des emails** : Introduction de la bibliothèque `@fc/mailer` permettant de gérer différents adaptateurs (SMTP, Brevo, noop) [#1343](https://github.com/proconnect-gouv/federation/issues/1343).
+    - **Standardisation** : Migration de la gestion des erreurs vers les filtres d'exception NestJS [#38ecea7](https://github.com/proconnect-gouv/federation/issues/38ecea7).
+    - **Nettoyage** : Suppression de nombreuses références obsolètes (champs `fqdn`, fonctions de calcul de tokens inutilisées, services `pcdbapi`) [#1427](https://github.com/proconnect-gouv/federation/issues/1427), [#1485](https://github.com/proconnect-gouv/federation/issues/1485), [#1370](https://github.com/proconnect-gouv/federation/issues/1370).
+- **Performance & Infrastructure** :
+    - Optimisation des performances via l'utilisation de correspondances de chaînes exactes pour les requêtes MongoDB [#1369](https://github.com/proconnect-gouv/federation/issues/1369).
+    - Accélération du "watcher" MongoDB local pour le développement [#1451](https://github.com/proconnect-gouv/federation/issues/1451).
+    - Ajout de points de contrôle de santé (healthchecks `livez`/`readyz`) pour l'interface d'administration [#1391](https://github.com/proconnect-gouv/federation/issues/1391).
+- **Qualité & Tests** :
+    - Amélioration de la fiabilité des tests E2E via une meilleure gestion de la base de données (utilisation de `TRUNCATE` et `reseed`) [#1449](https://github.com/proconnect-gouv/federation/issues/1449).
+    - Standardisation des commandes de tests Cypress [#f757a4a](https://github.com/proconnect-gouv/federation/issues/f757a4a).
 
 ### Autres changements
-- Mise à jour de la documentation. [#1392](https://github.com/proconnect-gouv/federation/issues/1392), [#1411](https://github.com/proconnect-gouv/federation/issues/1411)
-- Amélioration de la description du README. [#1448](https://github.com/proconnect-gouv/federation/issues/1448)
-- Nettoyage du code et suppression de code obsolète.
-- Diverses mises à jour de dépendances.
-- Correction d'un bug dans la migration pour ajouter la valeur par défaut à isMfaCompliant. [#1446](https://github.com/proconnect-gouv/federation/issues/1446)
-- Correction d'un bug où l'ID du client n'était pas pris en compte lors de la récupération par ID. [#1366](https://github.com/proconnect-gouv/federation/issues/1366)
-- Suppression de l'autocomplétion sur le champ des collaborateurs. [#1370](https://github.com/proconnect-gouv/federation/issues/1370)
-- Backfill des propriétaires d'applications en tant que collaborateurs. [#1344](https://github.com/proconnect-gouv/federation/issues/1344)
-- Amélioration de la résilience du template EJS. [#1434](https://github.com/proconnect-gouv/federation/issues/1434)
-- Correction d'un problème de sécurité lié à Content Security Policy. [#1362](https://github.com/proconnect-gouv/federation/issues/1362)
+- **Documentation** : Mise à jour du fichier README et ajout de la documentation concernant `hyyyperbridge` [#1448](https://github.com/proconnect-gouv/federation/issues/1448), [#888e759](https://github.com/proconnect-gouv/federation/issues/888e759).

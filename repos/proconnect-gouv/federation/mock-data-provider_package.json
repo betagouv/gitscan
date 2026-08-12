@@ -6,13 +6,14 @@
   "scripts": {
     "start": "node src/main.ts",
     "start:dev": "node --watch src/main.ts",
-    "lint": "tsc --noEmit && prettier --check .",
+    "lint": "prettier --check . && yarn run type:check",
     "format": "prettier --write .",
-    "test": "node --experimental-strip-types --test src/app.test.ts"
+    "test": "node --experimental-strip-types --test src/app.test.ts",
+    "type:check": "tsc --noEmit"
   },
   "dependencies": {
     "express": "^5.2.1",
-    "jose": "^6.2.4",
+    "jose": "^6.2.8",
     "openid-client": "^6.8.4",
     "zod": "^4.4.3"
   },
