@@ -829,13 +829,19 @@
 │       │   │   │   │   │   │   │   │       │   ├── CommunicationKit.tsx
 │       │   │   │   │   │   │   │   │       │   ├── PollNotFound.tsx
 │       │   │   │   │   │   │   │   │       │   ├── ShareSection.tsx
-│       │   │   │   │   │   │   │   │       │   └── footPrintDistribution
-│       │   │   │   │   │   │   │   │       │       ├── FootprintDistribution.tsx
-│       │   │   │   │   │   │   │   │       │       └── _components
-│       │   │   │   │   │   │   │   │       │           ├── CategoryDistribution.tsx
-│       │   │   │   │   │   │   │   │       │           ├── CategoryRadarChart.tsx
-│       │   │   │   │   │   │   │   │       │           ├── FootprintBarChart.tsx
-│       │   │   │   │   │   │   │   │       │           └── MeanFootprintDistribution.tsx
+│       │   │   │   │   │   │   │   │       │   ├── footPrintDistribution
+│       │   │   │   │   │   │   │   │       │   │   ├── FootprintDistribution.tsx
+│       │   │   │   │   │   │   │   │       │   │   └── _components
+│       │   │   │   │   │   │   │   │       │   │       ├── CategoryDistribution.tsx
+│       │   │   │   │   │   │   │   │       │   │       ├── CategoryRadarChart.tsx
+│       │   │   │   │   │   │   │   │       │   │       ├── FootprintBarChart.tsx
+│       │   │   │   │   │   │   │   │       │   │       └── MeanFootprintDistribution.tsx
+│       │   │   │   │   │   │   │   │       │   └── waterFootprint
+│       │   │   │   │   │   │   │   │       │       ├── WaterFootprintSection.tsx
+│       │   │   │   │   │   │   │   │       │       └── waterFootprintSection
+│       │   │   │   │   │   │   │   │       │           ├── WaterFootprintCard.tsx
+│       │   │   │   │   │   │   │   │       │           └── waterFootprintCard
+│       │   │   │   │   │   │   │   │       │               └── WaterWaveBackground.tsx
 │       │   │   │   │   │   │   │   │       ├── layout.tsx
 │       │   │   │   │   │   │   │   │       ├── page.tsx
 │       │   │   │   │   │   │   │   │       └── parametres
@@ -1164,6 +1170,10 @@
 │       │   │   │   │   │   │       ├── layout.tsx
 │       │   │   │   │   │   │       └── page.tsx
 │       │   │   │   │   │   ├── email
+│       │   │   │   │   │   │   ├── _components
+│       │   │   │   │   │   │   │   └── EmailConfirmation.tsx
+│       │   │   │   │   │   │   ├── _helpers
+│       │   │   │   │   │   │   │   └── getEmailPageData.ts
 │       │   │   │   │   │   │   ├── layout.tsx
 │       │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   ├── layout.tsx
@@ -1414,6 +1424,7 @@
 │       │   │   │   │   ├── MessengerIcon.tsx
 │       │   │   │   │   └── WhatsappIcon.tsx
 │       │   │   │   └── status
+│       │   │   │       ├── AnimatedCheckIcon.tsx
 │       │   │   │       ├── CheckCircleIcon.tsx
 │       │   │   │       └── CheckIcon.tsx
 │       │   │   ├── iframe
@@ -2229,6 +2240,7 @@
 │       │   │   │   ├── fetchArticlePageContent.ts
 │       │   │   │   ├── fetchArticlePageMetadata.ts
 │       │   │   │   ├── fetchArticles.ts
+│       │   │   │   ├── fetchBanner.cached.ts
 │       │   │   │   ├── fetchBanner.ts
 │       │   │   │   ├── fetchCategories.ts
 │       │   │   │   ├── fetchCategoryPageContent.ts
@@ -2417,6 +2429,8 @@
 │       │   │   │   └── migration.sql
 │       │   │   ├── 20260723120000_drop_legacy_action_columns
 │       │   │   │   └── migration.sql
+│       │   │   ├── 20260811103200_add_groups_views_to_ngc_anon
+│       │   │   │   └── migration.sql
 │       │   │   └── migration_lock.toml
 │       │   ├── schema
 │       │   │   ├── ngc.prisma
@@ -2597,4 +2611,4 @@
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 └── tsconfig.json
-669 directories, 1975 files
+675 directories, 1983 files
