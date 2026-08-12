@@ -1,8 +1,46 @@
 .
+├── .agents
+│   ├── README.md
+│   ├── commit-message.md
+│   ├── instructions.md
+│   ├── skills
+│   │   ├── code-implementation
+│   │   │   ├── SKILL.md
+│   │   │   └── tasks.md
+│   │   ├── commit-conventions
+│   │   │   ├── SKILL.md
+│   │   │   └── tasks.md
+│   │   ├── documentation
+│   │   │   ├── SKILL.md
+│   │   │   └── tasks.md
+│   │   └── test-writing
+│   │       ├── SKILL.md
+│   │       └── tasks.md
+│   └── tasks.md
 ├── .browserslistrc
 ├── .claude
 │   └── commands
+│       ├── commit-staged.md
+│       ├── create-branch.md
+│       ├── create-issue.md
+│       ├── create-pr.md
 │       └── guide.md
+├── .codex
+│   ├── commands
+│   │   ├── commit-staged.md
+│   │   ├── create-branch.md
+│   │   ├── create-issue.md
+│   │   ├── create-pr.md
+│   │   └── guide.md
+│   └── skills
+│       ├── code-implementation
+│       │   └── SKILL.md
+│       ├── commit-conventions
+│       │   └── SKILL.md
+│       ├── documentation
+│       │   └── SKILL.md
+│       └── test-writing
+│           └── SKILL.md
 ├── .docker
 │   ├── Dockerfile
 │   └── docker-compose.dev.yml
@@ -11,6 +49,11 @@
 │   ├── .copilot-commit-message-instructions.md
 │   ├── copilot-instructions.md
 │   ├── copilot-tasks.instructions.md
+│   ├── prompts
+│   │   ├── commit-staged.prompt.md
+│   │   ├── create-branch.prompt.md
+│   │   ├── create-issue.prompt.md
+│   │   └── create-pr.prompt.md
 │   ├── pull_request_template.md
 │   └── workflows
 │       ├── check-merge-branch.yml
@@ -34,8 +77,7 @@
 │   ├── theme.css
 │   └── vue-dsfr-theme.ts
 ├── .storybook-build
-│   ├── package.json
-│   └── pnpm-lock.yaml
+│   └── package.json
 ├── .vitepress
 │   ├── config.ts
 │   ├── plugins
@@ -53,9 +95,15 @@
 │   ├── launch.json
 │   ├── settings.json
 │   └── vue.code-snippets
+├── AGENTS.md
 ├── CLAUDE.md
 ├── LICENSE.md
 ├── README.md
+├── agent-instructions
+│   ├── commit-staged.md
+│   ├── create-branch.md
+│   ├── create-issue.md
+│   └── create-pr.md
 ├── ci
 │   └── check-exports.mjs
 ├── commitlint.config.cjs
@@ -125,8 +173,10 @@
 │   ├── custom-icon-collections-creator-bin.js
 │   ├── custom-icon-collections-creator.js
 │   └── index.js
+├── netlify.toml
 ├── package.json
 ├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
 ├── public
 │   ├── _redirects
 │   ├── cat.svg
@@ -744,11 +794,17 @@
 │   │   ├── VIcon
 │   │   │   ├── VIcon.md
 │   │   │   ├── VIcon.spec.ts
+│   │   │   ├── VIcon.ssr.spec.ts
 │   │   │   ├── VIcon.stories.ts
 │   │   │   ├── VIcon.types.ts
 │   │   │   ├── VIcon.vue
 │   │   │   └── docs-demo
 │   │   │       └── VIconExample.vue
+│   │   ├── VIconOffline
+│   │   │   ├── VIconOffline.spec.ts
+│   │   │   ├── VIconOffline.types.ts
+│   │   │   ├── VIconOffline.vue
+│   │   │   └── injection-key.ts
 │   │   └── index.ts
 │   ├── composables
 │   │   ├── docs-demo
@@ -772,11 +828,14 @@
 │   │       ├── classes-utilitaires.mdx
 │   │       ├── colors.mdx
 │   │       └── titles.stories.ts
-│   └── utils
-│       ├── random-utils.spec.ts
-│       ├── random-utils.ts
-│       ├── svg-data-uri-utils.spec.ts
-│       └── svg-data-uri-utils.ts
+│   ├── utils
+│   │   ├── random-utils.spec.ts
+│   │   ├── random-utils.ts
+│   │   ├── resolve-offline-icon.spec.ts
+│   │   ├── resolve-offline-icon.ts
+│   │   ├── svg-data-uri-utils.spec.ts
+│   │   └── svg-data-uri-utils.ts
+│   └── vue-dsfr-icon-plugin.ts
 ├── tests
 │   └── unit
 │       ├── init-dsfr.ts
@@ -791,4 +850,4 @@
 ├── vite.config.ts
 ├── vitest.config.ts
 └── vitest.shims.d.ts
-139 directories, 654 files
+155 directories, 697 files
