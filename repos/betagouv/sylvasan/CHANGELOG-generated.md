@@ -1,39 +1,26 @@
-## Changelog : sylvasan (30 derniers jours, au 04/08/2026)
+## Changelog : sylvasan (30 derniers jours, au 07/08/2026)
 
 ### Résumé
-Ce mois a été marqué par l'introduction majeure de la fonctionnalité de "suivis" (follow-ups), permettant de réagir et d'ajouter des observations aux réponses existantes. L'expérience de terrain a été renforcée par des améliorations de la précision GPS et de la gestion des images, tandis que l'interface web a gagné en puissance grâce à de nouveaux outils de filtrage et de gestion des suivis.
+Ce mois-ci, les évolutions se sont concentrées sur l'amélioration de la précision des données géographiques, l'enrichissement des exports de données et l'optimisation de l'expérience de saisie sur le terrain. L'interface a été affinée pour rendre les formulaires plus lisibles et les actions plus explicites pour les agents.
 
 ### Évolutions fonctionnelles
-- **Gestion des suivis (Follow-ups) :** 
-    - Possibilité de créer des suivis directement via l'URL d'une réponse.
-    - Ajout d'observations sur les réponses d'autres utilisateurs avec distinction visuelle des répondants (couleurs des pins et noms).
-    - Interface web complète pour la création, la modification et la suppression des suivis.
-- **Géolocalisation et Cartographie :**
-    - Amélioration de la précision GPS et ajout d'un indicateur de précision avec échelle visuelle.
-    - Affichage d'un cercle de précision sur la carte et mise à disposition du bouton de géolocalisation sur l'ensemble des cartes.
-- **Gestion des enquêtes et réponses :**
-    - Fonctionnalité de duplication d'enquêtes.
-    - Amélioration de la recherche via des filtres (notamment par organisation) et une pagination des résultats.
-    - Ajout de valeurs par défaut pour les champs de type sélection, radio et autocomplétion.
-- **Interface Utilisateur (UI/UX) :**
-    - Optimisation de la visibilité des champs obligatoires (styles, labels et espacements).
-    - Amélioration de l'affichage des images (vue complète et composant dédié sur le web).
-    - Mise à jour des libellés pour plus de clarté (boutons d'envoi et de sauvegarde en brouillon).
-    - Correction de l'ordre des champs dans l'application mobile.
+- **Exports de données** : Amélioration de la richesse des exports qui incluent désormais le titre de l'enquête, les suivis (*follow-ups*) et l'identifiant externe des répondants [#516](https://github.com/betagouv/sylvasan/pull/516).
+- **Cartographie et Géolocalisation** :
+    - Ajout d'indicateurs de précision GPS (cercle de précision et échelle) pour une meilleure fiabilité des relevés [#497](https://github.com/betagouv/sylvasan/pull/497).
+    - Amélioration de la carte avec l'ajout du clustering et de la visibilité des suivis sur l'observation [#515](https://github.com/betagouv/sylvasan/pull/515).
+    - Le bouton de géolocalisation est désormais disponible sur l'ensemble des cartes.
+- **Saisie et Formulaires** :
+    - Amélioration de la visibilité des champs obligatoires (ajustement des labels, des icônes et des styles) [#514](https://github.com/betagouv/sylvasan/pull/514).
+    - Optimisation de la gestion des images (affichage en plein écran et nouveau composant dédié sur le web).
+    - Clarification des libellés pour les actions de sauvegarde en brouillon et d'envoi d'enquête [#499](https://github.com/betagouv/sylvasan/pull/499), [#496](https://github.com/betagouv/sylvasan/pull/496).
+- **Gestion des données** :
+    - Ajout de filtres (notamment par organisation) et de la pagination pour la liste des enquêtes [#494](https://github.com/betagouv/sylvasan/pull/494).
+    - Mise en place de mécanismes de prévention pour éviter les doublons d'observations et dans les modales de sous-enquêtes [#517](https://github.com/betagouv/sylvasan/pull/517).
+- **Application Mobile** : Correction de l'ordre d'affichage des champs dans les formulaires mobiles [#500](https://github.com/betagouv/sylvasan/pull/500).
 
 ### Évolutions techniques
-- **Architecture et Refactoring :**
-    - Migration de la logique de validation (Zod) et de la sélection d'organisation vers des *composables* pour une meilleure réutilisation.
-    - Optimisation du stockage des images dans les champs de type tableau : passage d'un stockage en base64 à un stockage par ID.
-- **Backend et API :**
-    - Implémentation des modèles, migrations et endpoints API nécessaires à la gestion des suivis.
-    - Ajout du support PostGIS pour les champs de réponse géospatiaux.
-- **Mobile :**
-    - Mises à jour des versions pour les applications Android et iOS.
-- **Qualité et Accessibilité :**
-    - Amélioration de l'accessibilité via l'ajout d'attributs ARIA.
-    - Renforcement de la couverture de tests (notamment sur les membres et les suivis).
-
-### Autres changements
-- **Documentation :** Ajout d'un document détaillant les permissions par rôle.
-- **Maintenance :** Corrections TypeScript et nettoyage de code suite aux revues.
+- **Optimisation du stockage** : Passage d'un stockage en Base64 à un stockage par ID pour les champs de type tableau (*array fields*), améliorant la performance.
+- **Qualité et Accessibilité** :
+    - Renforcement de l'accessibilité numérique via l'ajout d'attributs ARIA.
+    - Augmentation de la couverture de tests, notamment sur la gestion des adhésions (*memberships*) [#469](https://github.com/betagouv/sylvasan/pull/469).
+- **Déploiement Mobile** : Nouvelles versions et releases de l'application Android (environnements de test et préproduction).
