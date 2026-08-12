@@ -1,0 +1,182 @@
+.
+├── .envrc
+├── .github
+│   └── workflows
+│       ├── docs.yml
+│       └── tests.yml
+├── .gitignore
+├── CLAUDE.md
+├── LICENSE
+├── LICENSES.md
+├── PLAN-proxy-pseudonymisation.md
+├── README.md
+├── REPRISE.md
+├── Taskfile.yml
+├── anthropic_walker.py
+├── config
+│   ├── allowlist.txt
+│   ├── custom_patterns.json
+│   ├── domaines_ouverts.txt
+│   └── inventory.txt
+├── corpus
+│   ├── README.md
+│   └── synthetic
+│       └── annotations.jsonl
+├── devbox.json
+├── devbox.lock
+├── docs
+│   ├── architecture.md
+│   ├── d9-network-isolation.md
+│   ├── decisions.md
+│   ├── detection.md
+│   ├── hook-parser.md
+│   ├── hook.md
+│   ├── index.md
+│   ├── licensing.md
+│   ├── limits.md
+│   ├── philosophy.md
+│   ├── policy.md
+│   ├── re-identification-analysis.md
+│   ├── rounds.md
+│   ├── start.md
+│   └── surrogates.md
+├── extension
+│   ├── extension.js
+│   └── package.json
+├── go
+│   ├── .gitignore
+│   ├── cmd
+│   │   ├── anonproxy-control
+│   │   │   ├── events.go
+│   │   │   └── main.go
+│   │   └── anonproxy-guard
+│   │       └── main.go
+│   ├── go.mod
+│   ├── go.sum
+│   └── internal
+│       ├── guard
+│       │   ├── check.go
+│       │   ├── check_test.go
+│       │   ├── evaluate.go
+│       │   ├── gen_fixture.py
+│       │   ├── gen_patterns.py
+│       │   ├── nested.go
+│       │   ├── nested_test.go
+│       │   ├── normalize.go
+│       │   ├── patterns_gen.go
+│       │   ├── patterns_test.go
+│       │   ├── program.go
+│       │   ├── program_test.go
+│       │   ├── state.go
+│       │   ├── testdata
+│       │   │   └── python_decisions.json
+│       │   ├── tokenize.go
+│       │   ├── tokenize_test.go
+│       │   ├── variables.go
+│       │   └── verifiers.go
+│       ├── policy
+│       │   ├── policy.go
+│       │   └── settings.go
+│       └── vault
+│           └── vault.go
+├── hooks
+│   ├── pretooluse_guard.py
+│   └── settings.json
+├── mkdocs.yml
+├── pyproject.toml
+├── scripts
+│   ├── anonproxy.sh
+│   ├── anonproxy_policy.py
+│   ├── install-extension.sh
+│   ├── lib
+│   │   └── state.sh
+│   ├── migrate_vault.py
+│   ├── package-extension.py
+│   ├── run-control.sh
+│   ├── run-proxy.sh
+│   └── watch.py
+├── services
+│   ├── anonshield
+│   │   └── wrapper
+│   │       ├── LICENSE
+│   │       ├── README.md
+│   │       ├── app.py
+│   │       ├── install-cuda.sh
+│   │       └── run.sh
+│   └── pii
+│       ├── app.py
+│       └── run.sh
+├── src
+│   └── anonproxy
+│       ├── __init__.py
+│       ├── allowlist.py
+│       ├── annonce.py
+│       ├── config.py
+│       ├── detect.py
+│       ├── forward
+│       │   ├── __init__.py
+│       │   ├── __main__.py
+│       │   ├── ca.py
+│       │   ├── jsonrpc.py
+│       │   ├── launcher.py
+│       │   ├── policy.py
+│       │   └── proxy.py
+│       ├── inventory.py
+│       ├── modes.py
+│       ├── pii
+│       │   ├── __init__.py
+│       │   ├── client.py
+│       │   ├── composite.py
+│       │   └── spans.py
+│       ├── pipeline.py
+│       ├── policy.py
+│       ├── proxy
+│       │   ├── __init__.py
+│       │   └── app.py
+│       ├── sse.py
+│       ├── surrogates
+│       │   ├── __init__.py
+│       │   ├── canonical.py
+│       │   ├── classes.py
+│       │   ├── dates.py
+│       │   ├── engine.py
+│       │   ├── lexicon.py
+│       │   └── overlap.py
+│       └── vault.py
+├── tests
+│   ├── ab_decoupage.py
+│   ├── bench_classification.jsonl
+│   ├── bench_classification.py
+│   ├── bench_detecteurs.py
+│   ├── bench_donnees_personnelles.py
+│   ├── bench_gliner.py
+│   ├── bench_privacy_filter.py
+│   ├── conftest.py
+│   ├── control_client.js
+│   ├── control_e2e.sh
+│   ├── corpus_eval.py
+│   ├── datadog_probe.sh
+│   ├── detect_latency.py
+│   ├── egress
+│   │   ├── datadog_probe.py
+│   │   ├── datadog_report.py
+│   │   ├── inventory_addon.py
+│   │   ├── known_destinations.json
+│   │   ├── leak_check_addon.py
+│   │   ├── leak_report.py
+│   │   ├── reference_session.md
+│   │   ├── report.py
+│   │   └── test_report.py
+│   ├── egress_capture.sh
+│   ├── fixtures
+│   │   ├── README.md
+│   │   ├── synthetic_infra.md
+│   │   └── synthetic_note.md
+│   ├── forward_e2e.sh
+│   ├── phase3_e2e.sh
+│   ├── phase4_e2e.sh
+│   ├── policy_e2e.sh
+│   ├── policy_e2e_tour.py
+│   └── test_*.py  (53 files)
+└── uv.lock
+33 directories, 200 files

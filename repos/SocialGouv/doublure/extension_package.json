@@ -1,0 +1,42 @@
+{
+  "name": "anonproxy-arbitrage",
+  "displayName": "anonproxy — confidentiality arbitration",
+  "description": "See what the proxy anonymised, and decide. Control surface only: protection stays in the proxy.",
+  "version": "0.1.0",
+  "publisher": "anonproxy",
+  "license": "GPL-3.0-or-later",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "anonproxy.arbitrate",
+        "title": "Arbitrate anonymised values",
+        "category": "anonproxy"
+      },
+      {
+        "command": "anonproxy.mode",
+        "title": "Change mode",
+        "category": "anonproxy"
+      }
+    ],
+    "configuration": {
+      "title": "anonproxy",
+      "properties": {
+        "anonproxy.socket": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "Path to the control socket. Empty = the one under the state directory, which the launcher prints on start.\n\nIt is a **Unix socket**, not a port: a local port would be reachable by the agent itself, and this API returns real values."
+        }
+      }
+    }
+  }
+}
