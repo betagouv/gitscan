@@ -1,15 +1,16 @@
 {
   "url": "https://github.com/suitenumerique/meet",
   "name": "meet",
-  "description": "La Suite Meet est une solution de visioconférence open-source et sécurisée, basée sur LiveKit, offrant des performances de haute qualité. Elle permet des réunions avec partage d'écran, chat et enregistrement, sans installation requise.",
+  "description": "Une solution de visioconférence open-source et auto-hébergeable offrant des performances de haute qualité. Elle permet de rejoindre des appels vidéo et audio directement depuis un navigateur sans installation.",
   "language": "TypeScript",
   "features": [
-    "Collaboration & Workflow",
     "Temps réel & WebSocket",
+    "Collaboration & Workflow",
     "Authentification & Accès",
+    "Communication & Messagerie",
+    "Sécurité & Conformité",
     "Gestion des médias & Assets",
-    "Interface utilisateur & Design",
-    "Communication & Messagerie"
+    "Interface utilisateur & Design"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -19,6 +20,7 @@
     "React Aria",
     "PostHog",
     "Sentry",
+    "MediaPipe",
     "BrowserStack"
   ],
   "components": [
@@ -28,16 +30,20 @@
     "Python (scripts & backend)",
     "Docker & Conteneurs",
     "Kubernetes & Helm",
-    "Celery & Queue asynchrone",
-    "Authentification (composant)"
+    "Authentification (composant)",
+    "Webhooks & Événements"
   ],
   "auth": {
     "methods": [
       "jwt",
+      "session",
       "sso"
     ]
   },
   "tests": "BrowserStack, tests unitaires",
+  "workflows": [
+    "CI/CD"
+  ],
   "lastActivity": "2026-08-06T13:29:17+02:00",
   "status": "maintained",
   "license": "MIT",
@@ -47,8 +53,9 @@
     "TypeScript",
     "Python",
     "Docker & Conteneurs",
-    "React & Next.js",
-    "Écosystème beta.gouv / État",
-    "Accessibilité"
+    "CI/CD & GitHub Actions",
+    "Design System & UI",
+    "Accessibilité",
+    "Sécurité & Auth"
   ]
 }
