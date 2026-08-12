@@ -1,15 +1,14 @@
 {
   "url": "https://github.com/SocialGouv/buildkit-operator",
   "name": "buildkit-operator",
-  "description": "Un service de construction BuildKit distribué qui fournit un daemon `buildkitd` dédié par projet et par architecture sur Kubernetes ou un hôte unique. Il optimise les temps de build grâce à une gestion intelligente du cache et permet une mise à l'échelle automatique.",
+  "description": "Un service de build distribué basé sur BuildKit qui fournit un daemon dédié par projet et architecture sur Kubernetes ou un hôte unique. Il optimise les performances grâce à une gestion intelligente du cache et permet une mise à l'échelle automatique.",
   "language": "Go",
   "features": [
     "Infrastructure & Stockage",
     "Sécurité & Conformité",
     "Monitoring & Logs",
     "Collaboration & Workflow",
-    "Tests & QA",
-    "Administration & Backoffice"
+    "Suivi & Traçabilité"
   ],
   "audience": "Développeurs",
   "dependencies": [
@@ -20,20 +19,20 @@
     "Prometheus",
     "Incus",
     "ZFS",
+    "Kata Containers",
     "Cosign"
   ],
   "components": [
     "Kubernetes & Helm",
     "Docker & Conteneurs",
-    "Microservices & Architecture",
     "CI/CD & Déploiement",
-    "Rust & Go",
-    "Scripts & Utilitaires"
+    "Microservices & Architecture",
+    "Rust & Go"
   ],
   "auth": {
     "methods": [
-      "sso",
-      "jwt"
+      "oauth2",
+      "sso"
     ],
     "providers": [
       "GitHub",
@@ -41,16 +40,12 @@
       "Forgejo"
     ]
   },
-  "tests": [
-    "Unit tests via golangci-lint",
-    "e2e kit for local backend"
-  ],
+  "tests": "go-task, unit tests",
   "workflows": [
-    "GitHub Actions",
-    "GitLab CI/CD"
+    "GitHub Actions"
   ],
   "lastActivity": "2026-07-29T00:00:00Z",
-  "status": "active",
+  "status": "maintained",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
