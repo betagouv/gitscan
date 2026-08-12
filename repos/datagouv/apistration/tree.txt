@@ -6214,14 +6214,6 @@
     │   ├── cache_redis.yml
     │   ├── cancelled_open_bureau_dates.yml
     │   ├── changelogs.yml
-    │   ├── credentials
-    │   │   ├── development.key -> test.key
-    │   │   ├── development.yml.enc -> test.yml.enc
-    │   │   ├── production.yml.enc
-    │   │   ├── sandbox.yml.enc
-    │   │   ├── staging.yml.enc
-    │   │   ├── test.key
-    │   │   └── test.yml.enc
     │   ├── database.yml
     │   ├── datapass_webhooks_entreprise.yml
     │   ├── datapass_webhooks_particulier.yml
@@ -6246,6 +6238,7 @@
     │   │   ├── content_security_policy.rb
     │   │   ├── cookies_serializer.rb
     │   │   ├── cors.rb
+    │   │   ├── credentials.rb
     │   │   ├── filter_parameter_logging.rb
     │   │   ├── frontal.rb
     │   │   ├── frontal_mailer.rb
@@ -6253,6 +6246,7 @@
     │   │   ├── generators.rb
     │   │   ├── good_job.rb
     │   │   ├── inflections.rb
+    │   │   ├── ip_anonymizer.rb
     │   │   ├── logstasher.rb
     │   │   ├── mailjet.rb
     │   │   ├── mime_types.rb
@@ -6260,6 +6254,7 @@
     │   │   ├── new_framework_defaults_7_0.rb
     │   │   ├── omniauth.rb
     │   │   ├── permissions_policy.rb
+    │   │   ├── secret_key_base.rb
     │   │   ├── sentry.rb
     │   │   ├── sitemap_generator.rb
     │   │   ├── strong_migrations.rb
@@ -6377,6 +6372,7 @@
     ├── docs
     │   ├── announcement_banner.md
     │   ├── blog_posts.md
+    │   ├── credentials.md
     │   ├── design.md
     │   ├── endpoint.md
     │   ├── search.md
@@ -7020,9 +7016,12 @@
     ├── spec
     │   ├── .rubocop.yml
     │   ├── acceptances
+    │   │   ├── admin_apientreprise_credentials_spec.rb
     │   │   ├── datapass_webhooks_config_format_spec.rb
     │   │   └── expand_file_spec.rb
     │   ├── clients
+    │   │   ├── formulaire_qf_api_client_spec.rb
+    │   │   ├── hubee_api_authentication_spec.rb
     │   │   ├── hubee_api_client_spec.rb
     │   │   └── insee_sirene_api_client_spec.rb
     │   ├── controllers
@@ -7330,46 +7329,49 @@
     │   │   │   └── sitemap_spec.rb
     │   │   └── simplifions_store_spec.rb
     │   ├── support
+    │   │   ├── helpers
+    │   │   │   └── credentials_helpers.rb
     │   │   ├── hubee_api_mocks.rb
     │   │   ├── insee_sirene_api_mocks.rb
-    │   │   └── shared_examples
-    │   │       ├── controllers
-    │   │       │   ├── authenticated_users_controller.rb
-    │   │       │   └── stats_controller.rb
-    │   │       ├── datapass_webhooks.rb
-    │   │       ├── features
-    │   │       │   ├── blog.rb
-    │   │       │   ├── cas_usages.rb
-    │   │       │   ├── changelog_subscriptions.rb
-    │   │       │   ├── changelogs.rb
-    │   │       │   ├── create_token_magic_link.rb
-    │   │       │   ├── documentation.rb
-    │   │       │   ├── endpoints
-    │   │       │   │   ├── index.rb
-    │   │       │   │   └── show.rb
-    │   │       │   ├── faq.rb
-    │   │       │   ├── layout_landmarks.rb
-    │   │       │   ├── logout.rb
-    │   │       │   ├── pages.rb
-    │   │       │   ├── show_token_from_magic_link.rb
-    │   │       │   ├── signin_process_datapass.rb
-    │   │       │   ├── stats.rb
-    │   │       │   └── user_profile.rb
-    │   │       ├── flash_notification.rb
-    │   │       ├── mailers
-    │   │       │   ├── authorization_request_mailer.rb
-    │   │       │   └── token_mailer.rb
-    │   │       ├── models
-    │   │       │   ├── blog_post.rb
-    │   │       │   ├── endpoint.rb
-    │   │       │   ├── faq_entry.rb
-    │   │       │   └── provider.rb
-    │   │       ├── organizers
-    │   │       │   ├── datapass_webhook
-    │   │       │   │   └── base.rb
-    │   │       │   └── user
-    │   │       │       └── o_auth_login.rb
-    │   │       └── token_magic_link.rb
+    │   │   ├── shared_examples
+    │   │   │   ├── controllers
+    │   │   │   │   ├── authenticated_users_controller.rb
+    │   │   │   │   └── stats_controller.rb
+    │   │   │   ├── datapass_webhooks.rb
+    │   │   │   ├── features
+    │   │   │   │   ├── blog.rb
+    │   │   │   │   ├── cas_usages.rb
+    │   │   │   │   ├── changelog_subscriptions.rb
+    │   │   │   │   ├── changelogs.rb
+    │   │   │   │   ├── create_token_magic_link.rb
+    │   │   │   │   ├── documentation.rb
+    │   │   │   │   ├── endpoints
+    │   │   │   │   │   ├── index.rb
+    │   │   │   │   │   └── show.rb
+    │   │   │   │   ├── faq.rb
+    │   │   │   │   ├── layout_landmarks.rb
+    │   │   │   │   ├── logout.rb
+    │   │   │   │   ├── pages.rb
+    │   │   │   │   ├── show_token_from_magic_link.rb
+    │   │   │   │   ├── signin_process_datapass.rb
+    │   │   │   │   ├── stats.rb
+    │   │   │   │   └── user_profile.rb
+    │   │   │   ├── flash_notification.rb
+    │   │   │   ├── mailers
+    │   │   │   │   ├── authorization_request_mailer.rb
+    │   │   │   │   └── token_mailer.rb
+    │   │   │   ├── models
+    │   │   │   │   ├── blog_post.rb
+    │   │   │   │   ├── endpoint.rb
+    │   │   │   │   ├── faq_entry.rb
+    │   │   │   │   └── provider.rb
+    │   │   │   ├── organizers
+    │   │   │   │   ├── datapass_webhook
+    │   │   │   │   │   └── base.rb
+    │   │   │   │   └── user
+    │   │   │   │       └── o_auth_login.rb
+    │   │   │   └── token_magic_link.rb
+    │   │   └── test_credentials_setup.rb
     │   ├── swagger_helper.rb
     │   └── validators
     │       └── allowed_ips_validator_spec.rb
@@ -7384,4 +7386,4 @@
     │   └── .gitkeep
     └── vendor
         └── .keep
-1486 directories, 6230 files
+1486 directories, 6232 files
