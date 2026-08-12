@@ -1,15 +1,19 @@
-## Changelog : aides-jeunes (30 derniers jours, au 07/08/2026)
+## Changelog : aides-jeunes (30 derniers jours, au 7 août 2026)
 
 ### Résumé
-Ce mois-ci, l'activité s'est concentrée sur la fiabilité des informations proposées aux usagers et la stabilisation du moteur de calcul. Plusieurs liens vers des aides ont été corrigés ou mis à jour, et des améliorations techniques ont été apportées pour garantir la précision des résultats et la stabilité du service.
+Ce mois-ci, les efforts se sont concentrés sur la fiabilisation des simulations grâce à des améliorations du moteur de calcul et la résolution d'incidents de production. Parallèlement, une maintenance importante des contenus a été réalisée pour corriger de nombreux liens obsolètes et mettre à jour les informations relatives aux différentes aides proposées.
 
 ### Évolutions fonctionnelles
-- **Maintenance des contenus** : Correction de liens cassés et mise à jour du statut (passage en privé) pour de nombreux dispositifs tels que le BAFA, le Pass Pass, les stages à l'étranger ou encore les fonds d'aide à la mobilité [#5165-5172, #5185-5190].
-- **Correction de liens** : Mise à jour des liens concernant la Bourse du secteur sanitaire et social en région Grand Est [#5173].
-- **Nouveauté locale** : Ajout d'un système permettant d'identifier spécifiquement les dispositifs pour Paris Centre [#5160].
+- Ajout d'un système d'identification de dispositifs spécifiques pour Paris Cité [#5160](https://github.com/betagouv/aides-jeunes/issues/5160).
+- Maintenance et correction de nombreux liens rompus ou obsolètes concernant diverses aides (BAFA, Pass, stages, mobilité, etc.) [#5165-5190](https://github.com/betagouv/aides-jeunes/issues/5165).
+- Correction des liens pour les bourses du secteur sanitaire et social en région Grand Est [#5173](https://github.com/betagouv/aides-jeunes/issues/5173).
 
 ### Évolutions techniques
-- **Améliorations du moteur Openfisca** : Fiabilisation des calculs, gestion optimisée des erreurs, précision du budget pour les usagers déclarant un taux d'incapacité et amélioration du tracé des coûts réels [#5205, #5211, #5212].
-- **Stabilité et production** : Résolution d'incidents de production (erreurs 504) liés aux mises à jour d'Openfisca [#5204, #5207].
-- **Authentification** : Correction de l'authentification par jeton pour les appels échouant dans les iframes [#5210].
-- **Maintenance des outils** : Mise à jour des outils de test et d'envoi d'emails (Cypress, Nodemailer, MJML) [#5146, #5148].
+- **Améliorations du moteur Openfisca** :
+  - Prise en compte des résultats pour les usagers déclarant un taux d'incapacité [#5212](https://github.com/betagouv/aides-jeunes/issues/5212).
+  - Optimisation du calcul budgétaire sur les tracés selon leur coût réel [#5211](https://github.com/betagouv/aides-jeunes/issues/5211).
+  - Fiabilisation des chemins d'erreur et limitation de la durée des calculs [#5205](https://github.com/betagouv/aides-jeunes/issues/5205).
+- **Stabilité et infrastructure** :
+  - Résolution d'incidents de production (erreurs 504) suite à une mise à jour du moteur de calcul [#5204](https://github.com/betagouv/aides-jeunes/issues/5204).
+  - Correction de l'authentification par jeton pour les appels échouant dans une iframe [#5210](https://github.com/betagouv/aides-jeunes/issues/5210).
+  - Mise à jour des outils de test et de communication (Cypress, Nodemailer, MJML) [#5148](https://github.com/betagouv/aides-jeunes/issues/5148), [#5146](https://github.com/betagouv/aides-jeunes/issues/5146).
