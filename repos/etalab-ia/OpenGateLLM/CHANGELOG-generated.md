@@ -1,28 +1,20 @@
 ## Changelog : OpenGateLLM (30 derniers jours, au 31 juillet 2026)
 
 ### Résumé
-Ce mois-ci, OpenGateLLM a bénéficié d'une refonte architecturale significative, notamment au niveau des endpoints OCR, de la gestion des utilisateurs et des clés API, pour une meilleure maintenabilité et une plus grande cohérence. Des améliorations ont également été apportées à la sécurité, notamment en empêchant l'énumération des utilisateurs. L'interface utilisateur du playground a été améliorée et la gestion des RAG (Retrieval-Augmented Generation) a été revue.
+Ce mois-ci, OpenGateLLM a franchi une étape importante de sa structuration interne en migrant plusieurs composants clés vers une architecture plus robuste et maintenable (Clean Architecture). Les évolutions se sont également concentrées sur le renforcement de la sécurité des accès, l'amélioration de la fiabilité des tests automatisés et la précision du monitoring.
 
 ### Évolutions fonctionnelles
-- **Playground:** L'authentification dans le playground utilise désormais un formulaire Reflex pour une meilleure expérience utilisateur. [#981](https://github.com/etalab-ia/OpenGateLLM/issues/981)
-- **RAG:** Suppression de la fonctionnalité RAG. [#956](https://github.com/etalab-ia/OpenGateLLM/issues/956)
-- **OCR:** Refonte de l'endpoint `/v1/ocr` vers une architecture plus propre et plus maintenable. [#984](https://github.com/etalab-ia/OpenGateLLM/issues/984)
-- **Gestion des utilisateurs:** Refonte de l'endpoint `/v1/admin/users` vers une architecture plus propre. [#962](https://github.com/etalab-ia/OpenGateLLM/issues/962)
-- **Gestion des clés API:** Migration de l'endpoint `GET /v1/admin/tokens` vers une architecture plus propre. [#947](https://github.com/etalab-ia/OpenGateLLM/issues/947)
-- **Sécurité:** Amélioration de la sécurité en retournant une erreur générique en cas d'identifiants invalides pour empêcher l'énumération des utilisateurs. [#963](https://github.com/etalab-ia/OpenGateLLM/issues/963)
+- **Sécurité** : Protection contre l'énumération d'utilisateurs via l'utilisation de messages d'erreur d'authentification génériques [#963](https://github.com/etalab-ia/OpenGateLLM/issues/963).
+- **Interface utilisateur** : Correction des formulaires d'authentification dans l'interface Playground [#981](https://github.com/etalab-ia/OpenGateLLM/issues/981).
+- **Données** : Amélioration de la précision des indicateurs d'impact environnemental (utilisation de 0.0 au lieu de None) [#990](https://github.com/etalab-ia/OpenGateLLM/issues/990).
 
 ### Évolutions techniques
-- **Architecture:** Suppression de `ModelProviderGateway` dans l'administration. [#972](https://github.com/etalab-ia/OpenGateLLM/issues/972)
-- **Monitoring:**  Les requêtes non-streaming sont maintenant loguées dans Langfuse. [#987](https://github.com/etalab-ia/OpenGateLLM/issues/987)
-- **CI/CD:** Corrections pour ignorer les CVE perl-base bloquant les scans Trivy CRITICAL et pour l'installation des packages nécessaires aux tests E2E. [#969](https://github.com/etalab-ia/OpenGateLLM/issues/969), [#964](https://github.com/etalab-ia/OpenGateLLM/issues/964)
-- **Configuration:** Modification de la valeur par défaut des variables d'environnement dans le fichier de configuration d'exemple. [#974](https://github.com/etalab-ia/OpenGateLLM/issues/974)
-- **Gestion des dépendances:** Mise à jour de plusieurs dépendances (sharp, svgo, tar, undici, postcss).
-- **Documentation:** Mise à jour de la documentation générée et des versions de publication. [#975](https://github.com/etalab-ia/OpenGateLLM/issues/975), [#958](https://github.com/etalab-ia/OpenGateLLM/issues/958)
+- **Refactorisation majeure** : Migration vers une "Clean Architecture" pour plusieurs points d'entrée critiques de l'API : endpoint OCR [#984](https://github.com/etalab-ia/OpenGateLLM/issues/984), gestion des utilisateurs [#962](https://github.com/etalab-ia/OpenGateLLM/issues/962) et gestion des tokens [#947](https://github.com/etalab-ia/OpenGateLLM/issues/947).
+- **Optimisation de la CI/CD** : Résolution des problèmes de dépendances pour l'exécution des tests E2E [#964](https://github.com/etalab-ia/OpenGateLLM/issues/964), [#968](https://github.com/etalab-ia/OpenGateLLM/issues/968) et gestion des scans de sécurité Trivy [#969](https://github.com/etalab-ia/OpenGateLLM/issues/969).
+- **Observabilité** : Amélioration du monitoring avec l'enregistrement des requêtes non-streaming dans Langfuse [#987](https://github.com/etalab-ia/OpenGateLLM/issues/987).
+- **Maintenance du code** : Suppression de `ModelProviderGateway` [#972](https://github.com/etalab-ia/OpenGateLLM/issues/972), ajustement des corps de requêtes pour les modèles [#977](https://github.com/etalab-ia/OpenGateLLM/issues/977) et résolution de conflits de versions de packages.
 
 ### Autres changements
-- Ajout d'une ADR (Architecture Decision Record) concernant la séparation de la fonctionnalité RAG. [#971](https://github.com/etalab-ia/OpenGateLLM/issues/971)
-- Correction pour préférer `0.0` à `None` pour les impacts environnementaux. [#990](https://github.com/etalab-ia/OpenGateLLM/issues/990)
-- Correction d'un test d'intégration de la configuration legacy. [#991](https://github.com/etalab-ia/OpenGateLLM/issues/991)
-- Ignorer un CVE spécifique pour éviter des problèmes de sécurité bloquants. [#951](https://github.com/etalab-ia/OpenGateLLM/issues/951)
-- Améliorations des workflows de release et de semgrep. [#957](https://github.com/etalab-ia/OpenGateLLM/issues/957)
-- Publication de la version 0.4.9. [#953](https://github.com/etalab-ia/OpenGateLLM/issues/953)
+- **Documentation** : Ajout d'une décision d'architecture (ADR) concernant la séparation du RAG [#971](https://github.com/etalab-ia/OpenGateLLM/issues/971) et mise à jour de la documentation générée [#975](https://github.com/etalab-ia/OpenGateLLM/issues/975).
+- **Configuration** : Mise à jour des variables d'environnement par défaut dans les exemples de configuration [#974](https://github.com/etalab-ia/OpenGateLLM/issues/974).
+- **Tests** : Intégration de tests pour la gestion de la configuration héritée [#991](https://github.com/etalab-ia/OpenGateLLM/issues/991).
