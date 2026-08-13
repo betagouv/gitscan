@@ -1,65 +1,60 @@
 {
   "url": "https://github.com/gip-inclusion/la-communaute",
   "name": "la-communaute",
-  "description": "Plateforme communautaire dédiée à l'inclusion, permettant l'échange de contenus, la gestion de forums et la publication de fiches pratiques.",
+  "description": "Plateforme communautaire dédiée à l'inclusion, permettant l'échange via des forums, la consultation de fiches pratiques et la gestion de partenariats.",
   "language": "Python",
   "features": [
     "Authentification & Accès",
-    "Gestion des utilisateurs & Permissions",
-    "Contenu éditorial",
     "Commentaires & Discussions",
-    "Recherche & Filtres",
+    "Contenu éditorial",
+    "Gestion des utilisateurs & Permissions",
     "Statistiques & Rapports",
-    "Notifications & Alertes",
-    "Gestion des médias & Assets"
+    "Gestion des établissements & Structures",
+    "Sécurité & Conformité"
   ],
-  "audience": "Grand public et Professionnels",
+  "audience": "Grand public",
   "dependencies": [
     "Django",
-    "psycopg",
-    "python-dotenv",
-    "django-htmx",
-    "sentry-sdk",
-    "minio",
-    "postgres"
+    "PostgreSQL",
+    "Minio",
+    "Sentry",
+    "Matomo",
+    "HTMX",
+    "uv"
   ],
   "components": [
-    "Django",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
-    "HTML / CSS / Templates visuels",
-    "Docker & Conteneurs"
+    "Django",
+    "Docker & Conteneurs",
+    "Authentification (composant)",
+    "Templates & Moteurs de rendu"
   ],
   "auth": {
     "methods": [
       "magic-link",
-      "session",
       "oauth2"
     ],
     "providers": [
       "ProConnect"
     ]
   },
-  "tests": [
-    "pytest",
-    "pytest-django",
-    "pytest-xdist"
-  ],
+  "tests": "pytest, pytest-django, pytest-xdist",
   "workflows": [
     "review_app_creation.yml",
     "review_app_removal.yml"
   ],
-  "lastActivity": "2026-07-27T00:00:00Z",
-  "status": "active",
-  "license": "ETALAB-2.0",
+  "lastActivity": "2025-11-18T00:00:00Z",
+  "status": "maintained",
+  "license": "ETALAB 2.0",
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "Python",
     "Bases de données SQL",
     "Django & FastAPI",
-    "Docker & Conteneurs",
     "CI/CD & GitHub Actions",
+    "Docker & Conteneurs",
     "Accessibilité"
   ]
 }
