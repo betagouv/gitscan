@@ -1,34 +1,35 @@
-## Changelog : messages (30 derniers jours, au 06/08/2026)
+## Changelog : messages (30 derniers jours, au 10 août 2026)
 
 ### Résumé
-Cette période est marquée par le passage en version 0.9.0, qui introduit une étape majeure : le support des applications mobiles (iOS et Android) avec un système de notifications push. La plateforme renforce également sa sécurité, notamment sur le traitement des emails et l'authentification, tout en améliorant la fluidité de l'interface utilisateur.
+Ce mois-ci, le projet franchit une étape majeure avec l'introduction des notifications push et le lancement du support mobile via Capacitor. Les capacités de gestion des emails ont été renforcées par une meilleure sécurité et une gestion plus robuste des messages entrants, tout en améliorant l'expérience de développement et la stabilité de l'interface.
 
 ### Évolutions fonctionnelles
-- **Support Mobile :** Disponibilité des applications mobiles (iOS/Android) et mise en place d'un système de notifications push (iOS, Android et Web).
-- **Sécurité Utilisateur :** Ajout d'un avertissement avant la redirection vers un lien textuel détecté dans un corps de message HTML [#744](https://github.com/suitenumerique/messages/issues/744).
-- **Améliorations de l'interface :** 
-    - Aperçu de texte plus propre.
-    - Meilleure gestion de la vue "aucune boîte de réception".
-    - Réinitialisation automatique de la recherche lors du changement de boîte de réception [#743](https://github.com/suitenumerique/messages/issues/743).
-    - Prise en charge du paramètre de redirection après la connexion.
-    - Feedback explicite en cas de problème d'authentification.
+- **Notifications :** Mise en place d'un système de notifications push pour iOS, Android et le Web.
+- **Expérience utilisateur :**
+    - Amélioration de l'aperçu du texte pour une lecture plus claire.
+    - Amélioration de l'affichage de l'interface lorsqu'aucune boîte de réception n'est sélectionnée.
+    - Prise en charge du paramètre de redirection après la connexion pour retrouver la page consultée.
+- **Corrections :**
+    - Résolution d'un problème d'affichage lié à la logique de décodage d'Outlook Web [#754](https://github.com/suitenumerique/messages/issues/754).
+    - Correction du comportement de l'enregistrement automatique qui s'activait de manière inappropriée lors de la fenêtre d'envoi.
+    - Correction des retours d'authentification pour les utilisateurs sans compte.
+- **Suppression :** Retrait de la fonctionnalité `TESTDOMAIN`.
 
 ### Évolutions techniques
-- **Infrastructure Mobile :** Intégration de Capacitor, mise en place d'une chaîne de mise à jour à distance (OTA) auto-hébergée et gestion du transfert de session OIDC pour le mobile.
-- **Sécurité et Email :** 
-    - Renforcement du parsing et de la composition des emails via `jmap-email` pour contrer les contenus malveillants.
-    - Ajout de la règle de confiance ARC pour l'authentification des messages entrants [#763](https://github.com/suitenumerique/messages/issues/763).
-    - Transfert du jeton CSRF via la session plutôt que par cookie.
-- **Architecture et Refactoring :** 
-    - Refactorisation du code d'importation (gestion des tentatives, mode continu, interface de liste) [#742](https://github.com/suitenumerique/messages/issues/742).
-    - Configuration du frontend pilotée directement par le backend [#734](https://github.com/suitenumerique/messages/issues/734).
-    - Support étendu des navigateurs (Chrome >= 109) [#750](https://github.com/suitenumerique/messages/issues/750).
-- **Corrections de bugs :** 
-    - Résolution d'un conflit de synchronisation (race condition) lors de l'envoi de messages concernant les destinataires.
-    - Correction du gestionnaire Outlook Web dans la logique de décodage [#754](https://github.com/suitenumerique/messages/issues/754).
-    - Correction de l'autosave qui s'activait indûment dans la fenêtre d'envoi.
-- **Expérience Développeur (DevX) :** Optimisation du temps de configuration via la commande `make bootstrap`.
+- **Support Mobile :** 
+    - Initialisation des applications mobiles via Capacitor.
+    - Mise en place d'une chaîne de mise à jour à distance (OTA) auto-hébergée.
+    - Gestion de la transition de session OIDC pour les appareils mobiles.
+- **Sécurité et Protocoles Email :**
+    - Renforcement du parsing et de la composition des messages (via `jmap-email`) pour contrer les contenus malveillants.
+    - Ajout de règles de confiance ARC pour l'authentification des messages entrants [#763](https://github.com/suitenumerique/messages/issues/763).
+    - Assouplissement des vérifications d'espacement DKIM pour les configurations DNS [#778](https://github.com/suitenumerique/messages/issues/778).
+    - Migration de la livraison du jeton CSRF via la session plutôt que par cookie.
+- **Architecture et Développement :**
+    - Refonte du code d'importation (gestion des tentatives, mode continu, interface de liste) [#742](https://github.com/suitenumerique/messages/issues/742).
+    - Optimisation du temps de configuration de l'environnement de développement (*DevX*).
+    - Amélioration du processus de build (cache-busting et support de versions de navigateurs plus anciennes [#750](https://github.com/suitenumerique/messages/issues/750)).
+    - Résolution d'un conflit de synchronisation (*race condition*) lors de l'envoi de messages avec des destinataires.
 
 ### Autres changements
-- Documentation complète sur le processus de traitement du spam.
-- Suppression de la fonctionnalité `TESTDOMAIN`.
+- Ajout d'une documentation complète sur le processus de traitement du spam.
