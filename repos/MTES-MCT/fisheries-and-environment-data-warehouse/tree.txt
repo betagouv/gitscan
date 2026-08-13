@@ -95,9 +95,11 @@
 │   │       │   ├── discards.py
 │   │       │   ├── drop_table.py
 │   │       │   ├── enrich_monitorfish_catches.py
+│   │       │   ├── eofs.py
 │   │       │   ├── extract_rapportnav_analytics.py
 │   │       │   ├── import_sacrois_data.py
 │   │       │   ├── landings.py
+│   │       │   ├── matomo_stats.py
 │   │       │   ├── pnos.py
 │   │       │   ├── reset_dictionary.py
 │   │       │   ├── reset_proxy_pg_database.py
@@ -114,7 +116,12 @@
 │   │       │   ├── generic.py
 │   │       │   └── processing.py
 │   │       ├── queries
+│   │       │   ├── data_warehouse
+│   │       │   │   ├── analytics_missions_full_data.sql
+│   │       │   │   ├── missions_aem.sql
+│   │       │   │   └── vessels.sql
 │   │       │   ├── monitorenv_remote
+│   │       │   │   ├── actions_infractions.sql
 │   │       │   │   ├── amp_cacem.sql
 │   │       │   │   ├── amp_cacem_tmp.sql
 │   │       │   │   ├── analytics_actions.sql
@@ -122,34 +129,31 @@
 │   │       │   │   ├── missions_pam.sql
 │   │       │   │   ├── regulations_cacem.sql
 │   │       │   │   └── regulations_cacem_h3.sql
-│   │       │   ├── monitorfish_proxy
-│   │       │   │   └── vessels.sql
-│   │       │   ├── monitorfish_remote
-│   │       │   │   ├── activities.sql
-│   │       │   │   ├── analytics_controls_full_data.sql
-│   │       │   │   ├── bft_catches.sql
-│   │       │   │   ├── catches.sql
-│   │       │   │   ├── coe.sql
-│   │       │   │   ├── cox.sql
-│   │       │   │   ├── cps.sql
-│   │       │   │   ├── deps.sql
-│   │       │   │   ├── discards.sql
-│   │       │   │   ├── eez_areas.sql
-│   │       │   │   ├── facade_areas_subdivided.sql
-│   │       │   │   ├── fao_areas.sql
-│   │       │   │   ├── landings.sql
-│   │       │   │   ├── manual_pnos.sql
-│   │       │   │   ├── non_overlapping_fao_areas.sql
-│   │       │   │   ├── pno_type_rules_unnested.sql
-│   │       │   │   ├── pnos.sql
-│   │       │   │   ├── ports.sql
-│   │       │   │   ├── rectangles_stat_areas.sql
-│   │       │   │   ├── regulations.sql
-│   │       │   │   ├── rtps.sql
-│   │       │   │   ├── sales_notes.sql
-│   │       │   │   └── vessel_profiles.sql
-│   │       │   └── rapportnav_remote
-│   │       │       └── analytics_missions_full_data.sql
+│   │       │   └── monitorfish_remote
+│   │       │       ├── activities.sql
+│   │       │       ├── analytics_controls_full_data.sql
+│   │       │       ├── bft_catches.sql
+│   │       │       ├── catches.sql
+│   │       │       ├── coe.sql
+│   │       │       ├── cox.sql
+│   │       │       ├── cps.sql
+│   │       │       ├── deps.sql
+│   │       │       ├── discards.sql
+│   │       │       ├── eez_areas.sql
+│   │       │       ├── eofs.sql
+│   │       │       ├── facade_areas_subdivided.sql
+│   │       │       ├── fao_areas.sql
+│   │       │       ├── landings.sql
+│   │       │       ├── manual_pnos.sql
+│   │       │       ├── non_overlapping_fao_areas.sql
+│   │       │       ├── pno_type_rules_unnested.sql
+│   │       │       ├── pnos.sql
+│   │       │       ├── ports.sql
+│   │       │       ├── rectangles_stat_areas.sql
+│   │       │       ├── regulations.sql
+│   │       │       ├── rtps.sql
+│   │       │       ├── sales_notes.sql
+│   │       │       └── vessel_profiles.sql
 │   │       ├── shared_tasks
 │   │       │   ├── __init__.py
 │   │       │   ├── control_flow.py
@@ -176,7 +180,11 @@
 │   │       │   │   └── sacrois
 │   │       │   │       └── compute_fishing_activity_segments.sql
 │   │       │   └── ddl
+│   │       │       ├── matomo
+│   │       │       │   ├── create_daily_unique_visitors_if_not_exists.sql
+│   │       │       │   └── create_monthly_users_if_not_exists.sql
 │   │       │       ├── monitorenv
+│   │       │       │   ├── create_actions_infractions.sql
 │   │       │       │   ├── create_amp_cacem_h3.sql
 │   │       │       │   ├── create_amp_cacem_tmp.sql
 │   │       │       │   ├── create_analytics_actions.sql
@@ -195,6 +203,7 @@
 │   │       │       │   ├── create_eez_areas_dict.sql
 │   │       │       │   ├── create_eez_areas_tmp.sql
 │   │       │       │   ├── create_enriched_catches_if_not_exists.sql
+│   │       │       │   ├── create_eofs_if_not_exists.sql
 │   │       │       │   ├── create_facade_areas_dict.sql
 │   │       │       │   ├── create_facade_areas_subdivided_tmp.sql
 │   │       │       │   ├── create_fao_areas_dict.sql
@@ -247,7 +256,9 @@
 │       │   ├── monitorenv
 │       │   │   └── remote_database
 │       │   │       ├── V777.01__dummy_amp_cacem.sql
-│       │   │       └── V777.02__dummy_regulations_cacem.sql
+│       │   │       ├── V777.02__dummy_env_actions.sql
+│       │   │       ├── V777.03__dummy_missions_aem_test.sql
+│       │   │       └── V777.04__dummy_env_actions_aem_test.sql
 │       │   ├── monitorfish
 │       │   │   └── remote_database
 │       │   │       ├── V777.01__dummy_rectangles_stat_areas.sql
@@ -261,11 +272,15 @@
 │       │   │       ├── V777.09__dummy_facade_areas_subdivided.sql
 │       │   │       ├── V777.10__dummy_species_groups.sql
 │       │   │       ├── V777.11__dummy_species_codes_groups.sql
-│       │   │       └── V777.12__dummy_sales_notes.sql
+│       │   │       ├── V777.12__dummy_sales_notes.sql
+│       │   │       └── V777.13__dummy_mission_actions_aem_test.sql
 │       │   └── rapportnav
 │       │       └── remote_database
-│       │           ├── V777.05__dummy_mission_actions.sql
-│       │           └── V777.06__dummy_mission_general_info.sql
+│       │           ├── V777.01__dummy_mission_actions.sql
+│       │           ├── V777.02__dummy_service_aem_test.sql
+│       │           ├── V777.03__dummy_mission_general_info_aem_test.sql
+│       │           ├── V777.04__dummy_mission_uuid_table.sql
+│       │           └── V777.05__dummy_target_control_infraction_aem_test.sql
 │       └── test_pipeline
 │           ├── __init__.py
 │           ├── test_flows
@@ -280,8 +295,10 @@
 │           │   ├── test_deps.py
 │           │   ├── test_discards.py
 │           │   ├── test_enrich_monitorfish_catches.py
+│           │   ├── test_eofs.py
 │           │   ├── test_import_sacrois_data.py
 │           │   ├── test_landings.py
+│           │   ├── test_matomo_stats.py
 │           │   ├── test_pnos.py
 │           │   ├── test_rapportnav.py
 │           │   ├── test_reset_proxy_pg_database.py
@@ -316,4 +333,4 @@
 │       ├── docker-compose-dev-metabase.yml
 │       └── docker-compose-test-data.yml
 └── sonar-project.properties
-69 directories, 249 files
+69 directories, 266 files

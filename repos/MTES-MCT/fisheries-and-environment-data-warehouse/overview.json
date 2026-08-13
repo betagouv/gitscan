@@ -1,12 +1,13 @@
 {
   "url": "https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse",
   "name": "fisheries-and-environment-data-warehouse",
-  "description": "Entrepôt de données dédié à l'analyse des données relatives aux activités et au contrôle des pêches et de l'environnement marin.",
+  "description": "Entrepôt de données dédié à l'analyse des données relatives aux activités de pêche et de contrôle de l'environnement marin.",
   "language": "Python",
   "features": [
-    "Données & Schémas",
+    "Visualisation de données & Cartographie",
     "Statistiques & Rapports",
-    "Visualisation de données & Cartographie"
+    "Données & Schémas",
+    "Suivi & Traçabilité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -15,45 +16,40 @@
     "duckdb",
     "clickhouse-connect",
     "geopandas",
-    "python-dotenv",
-    "pytest",
-    "unidecode",
-    "tornado"
+    "tornado",
+    "pytest"
   ],
   "components": [
     "Python (scripts & backend)",
-    "PostgreSQL & SQL",
     "Pipeline de données",
-    "Docker & Conteneurs"
+    "Docker & Conteneurs",
+    "SIG & Géospatial",
+    "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
       "none"
     ]
   },
-  "tests": [
-    "pytest"
-  ],
+  "tests": "pytest",
   "workflows": [
-    "cicd-forklift.yml",
-    "release.yml",
-    "trivy.yml"
+    "dependabot",
+    "trivy"
   ],
-  "lastActivity": "2026-07-27T17:55:14+00:00",
-  "status": "active",
+  "lastActivity": "2026-08-12T14:47:03+02:00",
+  "status": "maintained",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
   "metrics": {
     "stars": 4,
     "forks": 0,
-    "contributors": 0,
-    "openIssues": 12
+    "openIssues": 17
   },
   "tags": [
     "Données & Open Data",
-    "Environnement & Énergie",
     "Python",
-    "Bases de données NoSQL",
-    "ETL & Pipelines de données"
+    "ETL & Pipelines de données",
+    "SIG & Géospatial",
+    "Environnement & Énergie"
   ]
 }
