@@ -1,64 +1,58 @@
 {
   "url": "https://github.com/MTES-MCT/prelevements-deau-api",
   "name": "prelevements-deau-api",
-  "description": "Ce projet vise à collecter, organiser et analyser les données de prélèvement d'eau provenant de Démarche Simplifiée. Il fournit des scripts pour récupérer les dossiers, extraire des données et générer des rapports.",
+  "description": "Ce projet permet de collecter, organiser et analyser les données de prélèvement d'eau provenant de Démarche Simplifiée. Il fournit une API REST et des workers pour la synchronisation, la validation et le traitement des dossiers.",
   "language": "JavaScript",
   "features": [
-    "Gestion documentaire & Fichiers",
     "API & Intégrations",
-    "Visualisation de données & Cartographie",
-    "Authentification & Accès",
+    "Données & Schémas",
     "Statistiques & Rapports",
-    "Recherche & Filtres",
-    "Gestion des utilisateurs & Permissions"
+    "Suivi & Traçabilité",
+    "Administration & Backoffice"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "Node.js",
-    "npm",
-    "Docker",
-    "@bull-board/api",
-    "@bull-board/express",
-    "@bull-board/ui",
-    "bullmq",
-    "mongodb",
-    "express",
-    "nodemailer",
-    "mjml"
+    "Express",
+    "MongoDB",
+    "Redis",
+    "BullMQ",
+    "AWS SDK",
+    "Nodemailer",
+    "MJML"
   ],
   "components": [
     "API REST & GraphQL",
-    "PostgreSQL & SQL",
-    "TypeScript / JavaScript",
-    "Docker & Conteneurs",
     "Node.js / NestJS",
-    "Microservices & Architecture"
+    "MongoDB & NoSQL",
+    "Docker & Conteneurs",
+    "Webhooks & Événements",
+    "Scripts & Utilitaires",
+    "Tests"
   ],
   "auth": {
     "methods": [
-      "email-password",
-      "oauth2"
+      "magic-link",
+      "api-key"
     ]
   },
-  "tests": "Ava, Jest",
+  "tests": [
+    "Ava",
+    "Supertest"
+  ],
   "workflows": [
-    "CI/CD & Déploiement"
+    "openapi-lint.yml"
   ],
   "lastActivity": "2026-07-02T14:33:45+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
     "JavaScript",
-    "API & Intégrations",
-    "Environnement & Énergie"
+    "Docker & Conteneurs",
+    "Node.js, NestJS & Express",
+    "Bases de données NoSQL",
+    "Documentation"
   ]
 }
