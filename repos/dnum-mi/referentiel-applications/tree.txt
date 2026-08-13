@@ -339,6 +339,10 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260806093152_add_email_log
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260810070000_add_technology_eol_details
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260810121831_add_user_is_blocked
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   ├── schema
 │   │   │   ├── applications.prisma
@@ -531,8 +535,10 @@
 │   │   │       ├── base.template.html
 │   │   │       ├── daily-digest.template.html
 │   │   │       ├── report-status-update.template.html
+│   │   │       ├── user-blocked.template.html
 │   │   │       ├── user-organization-changed.template.html
-│   │   │       └── user-permissions-changed.template.html
+│   │   │       ├── user-permissions-changed.template.html
+│   │   │       └── user-unblocked.template.html
 │   │   ├── enum.ts
 │   │   ├── health
 │   │   │   ├── dto
@@ -796,6 +802,7 @@
 │   │   ├── actor.e2e-spec.ts
 │   │   ├── app.e2e-spec.ts
 │   │   ├── applications.e2e-spec.ts
+│   │   ├── business-division.e2e-spec.ts
 │   │   ├── compliances.e2e-spec.ts
 │   │   ├── config.e2e-spec.ts
 │   │   ├── data-catalog.e2e-spec.ts
@@ -843,6 +850,7 @@
 │   │   ├── technical-debt-info.e2e-spec.ts
 │   │   ├── technologies.e2e-spec.ts
 │   │   ├── test-database.utils.ts
+│   │   ├── user-block.e2e-spec.ts
 │   │   └── user.e2e-spec.ts
 │   ├── tsconfig.build.json
 │   ├── tsconfig.json
@@ -1000,6 +1008,7 @@
 │   │   │   ├── ApplicationReportsTab.vue
 │   │   │   ├── ApplicationSearchActions.vue
 │   │   │   ├── ApplicationTableView.vue
+│   │   │   ├── BlockedAccessScreen.vue
 │   │   │   ├── ColumnCustomization.vue
 │   │   │   ├── EditRelationModal.vue
 │   │   │   ├── ImpersonationBanner.vue
@@ -1030,6 +1039,7 @@
 │   │   │   │   ├── AdminActorActions.vue
 │   │   │   │   ├── AdminActorsTab.vue
 │   │   │   │   ├── AdminBatchData.vue
+│   │   │   │   ├── AdminBusinessDivisionsTab.vue
 │   │   │   │   ├── AdminEmailLogsTab.vue
 │   │   │   │   ├── AdminLabelSourcesTab.vue
 │   │   │   │   ├── AdminMditCampaignsTab.vue
@@ -1039,6 +1049,7 @@
 │   │   │   │   ├── AdminTokensTab.vue
 │   │   │   │   ├── AdminUsersTab.vue
 │   │   │   │   ├── AppPermsMatrix.vue
+│   │   │   │   ├── BusinessDivisionActions.vue
 │   │   │   │   ├── EmailLogContentModal.vue
 │   │   │   │   ├── LabelSourceActions.vue
 │   │   │   │   ├── MditCampaignActions.vue
@@ -1118,6 +1129,7 @@
 │   │   │   ├── use-app-update.spec.ts
 │   │   │   ├── use-app-update.ts
 │   │   │   ├── use-application-search.ts
+│   │   │   ├── use-blocked-access.ts
 │   │   │   ├── use-column-preferences.ts
 │   │   │   ├── use-completeness.ts
 │   │   │   ├── use-d3-graph.ts
@@ -1142,6 +1154,7 @@
 │   │   ├── main.css
 │   │   ├── main.ts
 │   │   ├── models
+│   │   │   ├── Application.spec.ts
 │   │   │   ├── Application.ts
 │   │   │   ├── relations.ts
 │   │   │   └── user.ts
@@ -1255,4 +1268,4 @@
 │       ├── campaign.mjs
 │       └── sync-issue.mjs
 └── release-please-config.json
-336 directories, 921 files
+338 directories, 932 files
