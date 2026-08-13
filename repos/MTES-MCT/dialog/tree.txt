@@ -47,7 +47,9 @@
 │   │   ├── form_submit_controller.js
 │   │   ├── form_upload_controller.js
 │   │   ├── hidden_select_controller.js
+│   │   ├── house_number_input_controller.js
 │   │   ├── location_preview_map_controller.js
+│   │   ├── matomo_event_controller.js
 │   │   ├── mirror_value_controller.js
 │   │   ├── modal_close_controller.js
 │   │   ├── notice_controller.js
@@ -57,6 +59,8 @@
 │   │   ├── reset_controller.js
 │   │   ├── rich_text_controller.js
 │   │   ├── stats_map_controller.js
+│   │   ├── unsaved_changes_controller.js
+│   │   ├── unsaved_changes_controller.test.js
 │   │   ├── user_dropdown_controller.js
 │   │   └── viewport_controller.js
 │   ├── controllers.json
@@ -336,6 +340,7 @@
 │       │   │       ├── SaveTimeSlotCommand.xml
 │       │   │       ├── SaveVehicleSetCommand.xml
 │       │   │       ├── SaveWholeCityCommand.xml
+│       │   │       ├── SaveZoneCommand.xml
 │       │   │       ├── SendRegulationOrderToMailingListCommand.xml
 │       │   │       └── UpdateRegulationWithMeasureCommand.xml
 │       │   ├── SigningAuthority
@@ -584,6 +589,7 @@
 │   │   │   ├── RoadGeocodingFailureException.php
 │   │   │   └── StartAbscissaOutOfRangeException.php
 │   │   ├── GeocoderInterface.php
+│   │   ├── HouseNumberGeocoderInterface.php
 │   │   ├── IdFactoryInterface.php
 │   │   ├── Ign
 │   │   │   └── IgnReportSubmissionResult.php
@@ -689,6 +695,9 @@
 │   │   │   │   ├── GenerateDatexCommand.php
 │   │   │   │   ├── GenerateDatexCommandHandler.php
 │   │   │   │   ├── Location
+│   │   │   │   │   ├── ConvertPolygonsToZonesCommand.php
+│   │   │   │   │   ├── ConvertPolygonsToZonesCommandHandler.php
+│   │   │   │   │   ├── ConvertPolygonsToZonesCommandResult.php
 │   │   │   │   │   ├── DeleteLocationCommand.php
 │   │   │   │   │   ├── DeleteLocationCommandHandler.php
 │   │   │   │   │   ├── DeleteNamedStreetCommand.php
@@ -697,6 +706,8 @@
 │   │   │   │   │   ├── DeleteNumberedRoadCommandHandler.php
 │   │   │   │   │   ├── DeleteRawGeoJSONCommand.php
 │   │   │   │   │   ├── DeleteRawGeoJSONCommandHandler.php
+│   │   │   │   │   ├── DeleteZoneCommand.php
+│   │   │   │   │   ├── DeleteZoneCommandHandler.php
 │   │   │   │   │   ├── GeocodeLocationsWithoutGeometryCommand.php
 │   │   │   │   │   ├── GeocodeLocationsWithoutGeometryCommandHandler.php
 │   │   │   │   │   ├── GeocodeLocationsWithoutGeometryCommandResult.php
@@ -711,6 +722,8 @@
 │   │   │   │   │   ├── SaveRawGeoJSONCommandHandler.php
 │   │   │   │   │   ├── SaveWholeCityCommand.php
 │   │   │   │   │   ├── SaveWholeCityExceptionCommand.php
+│   │   │   │   │   ├── SaveZoneCommand.php
+│   │   │   │   │   ├── SaveZoneCommandHandler.php
 │   │   │   │   │   └── UpdateNamedStreetsWithoutRoadBanIdsCommandResult.php
 │   │   │   │   ├── MapImage
 │   │   │   │   │   ├── WarmRegulationMapImageCacheCommand.php
@@ -798,7 +811,9 @@
 │   │   │   │   │   ├── GetStorageAreasByRoadNumbersQuery.php
 │   │   │   │   │   ├── GetStorageAreasByRoadNumbersQueryHandler.php
 │   │   │   │   │   ├── GetWholeCityGeometryQuery.php
-│   │   │   │   │   └── GetWholeCityGeometryQueryHandler.php
+│   │   │   │   │   ├── GetWholeCityGeometryQueryHandler.php
+│   │   │   │   │   ├── GetZoneGeometryQuery.php
+│   │   │   │   │   └── GetZoneGeometryQueryHandler.php
 │   │   │   │   ├── Measure
 │   │   │   │   │   ├── GetMeasureByUuidQuery.php
 │   │   │   │   │   ├── GetMeasureByUuidQueryHandler.php
@@ -825,7 +840,8 @@
 │   │   │       │   ├── RawGeoJSONView.php
 │   │   │       │   ├── StorageAreaView.php
 │   │   │       │   ├── WholeCityExceptionView.php
-│   │   │       │   └── WholeCityView.php
+│   │   │       │   ├── WholeCityView.php
+│   │   │       │   └── ZoneView.php
 │   │   │       ├── NamedStreetView.php
 │   │   │       ├── NumberedRoadView.php
 │   │   │       ├── PeriodView.php
@@ -839,7 +855,8 @@
 │   │   │       ├── TimeSlotView.php
 │   │   │       ├── VehicleSetView.php
 │   │   │       ├── VisasAndReasonsView.php
-│   │   │       └── WholeCityView.php
+│   │   │       ├── WholeCityView.php
+│   │   │       └── ZoneView.php
 │   │   ├── RoadGeocoderInterface.php
 │   │   ├── RoadSectionMakerInterface.php
 │   │   ├── Statistics
@@ -875,6 +892,8 @@
 │   │       │   │   ├── SendConfirmationMailCommandHandler.php
 │   │       │   │   ├── SendForgotPasswordMailCommand.php
 │   │       │   │   ├── SendForgotPasswordMailCommandHandler.php
+│   │       │   │   ├── SendInactivityReminderEmailCommand.php
+│   │       │   │   ├── SendInactivityReminderEmailCommandHandler.php
 │   │       │   │   ├── SendInvitationMailCommand.php
 │   │       │   │   ├── SendInvitationMailCommandHandler.php
 │   │       │   │   ├── SendWelcomeEmailCommand.php
@@ -1003,7 +1022,8 @@
 │   │   │   │   ├── NumberedRoad.php
 │   │   │   │   ├── RawGeoJSON.php
 │   │   │   │   ├── StorageArea.php
-│   │   │   │   └── WholeCityException.php
+│   │   │   │   ├── WholeCityException.php
+│   │   │   │   └── Zone.php
 │   │   │   ├── Measure.php
 │   │   │   ├── RegulationLocationsInterface.php
 │   │   │   ├── RegulationMapImage.php
@@ -1031,7 +1051,8 @@
 │   │   │   │   ├── StorageAreaRepositoryInterface.php
 │   │   │   │   ├── StorageRegulationOrderRepositoryInterface.php
 │   │   │   │   ├── TimeSlotRepositoryInterface.php
-│   │   │   │   └── VehicleSetRepositoryInterface.php
+│   │   │   │   ├── VehicleSetRepositoryInterface.php
+│   │   │   │   └── ZoneRepositoryInterface.php
 │   │   │   ├── Specification
 │   │   │   │   ├── CanDeleteMeasures.php
 │   │   │   │   ├── CanOrganizationAccessToRegulation.php
@@ -1075,6 +1096,7 @@
 │   │       ├── PasswordUser.php
 │   │       ├── ProConnectUser.php
 │   │       ├── ReportAddress.php
+│   │       ├── ReportAddressLocation.php
 │   │       ├── Repository
 │   │       │   ├── FeedbackRepositoryInterface.php
 │   │       │   ├── InvitationRepositoryInterface.php
@@ -1103,6 +1125,7 @@
 │   │   │   ├── APIAdresseGeocoder.php
 │   │   │   ├── ApiClientSecretHasher.php
 │   │   │   ├── ApiOrganizationFetcher.php
+│   │   │   ├── BanApiGeocoder.php
 │   │   │   ├── BdTopoRoadGeocoder.php
 │   │   │   ├── BdTopoStreetGeocoderAdapter.php
 │   │   │   ├── CifsExportClient.php
@@ -1234,12 +1257,14 @@
 │   │   │   │   │   ├── DuplicateMeasureFragmentController.php
 │   │   │   │   │   ├── GetCityCompletionFragmentController.php
 │   │   │   │   │   ├── GetGeneralInfoController.php
+│   │   │   │   │   ├── GetHouseNumberOptionsFragmentController.php
 │   │   │   │   │   ├── GetIntersectionOptionsFragmentController.php
 │   │   │   │   │   ├── GetLocationGeometryController.php
 │   │   │   │   │   ├── GetMeasureController.php
 │   │   │   │   │   ├── GetNamedStreetCompletionFragmentController.php
 │   │   │   │   │   ├── GetNumberedRoadCompletionFragmentController.php
 │   │   │   │   │   ├── GetPointNumberCompletionFragmentController.php
+│   │   │   │   │   ├── GetReferencePointsController.php
 │   │   │   │   │   ├── GetSideOptionsFragmentController.php
 │   │   │   │   │   ├── RegulationOrderTemplatesAndIdentifiersFragmentController.php
 │   │   │   │   │   ├── SaveGeneralInfoController.php
@@ -1285,7 +1310,8 @@
 │   │   │       ├── RegulationApiView.php
 │   │   │       ├── StorageAreaApiView.php
 │   │   │       ├── TimeSlotApiView.php
-│   │   │       └── VehicleSetApiView.php
+│   │   │       ├── VehicleSetApiView.php
+│   │   │       └── ZoneApiView.php
 │   │   ├── Data
 │   │   │   └── StorageArea
 │   │   │       └── StorageAreaMigrationGenerator.php
@@ -1314,7 +1340,8 @@
 │   │   │   │   ├── TimeSlotFormType.php
 │   │   │   │   ├── VehicleSetFormType.php
 │   │   │   │   ├── WholeCityExceptionFormType.php
-│   │   │   │   └── WholeCityFormType.php
+│   │   │   │   ├── WholeCityFormType.php
+│   │   │   │   └── ZoneFormType.php
 │   │   │   └── User
 │   │   │       ├── CreateAccountFromInvitationFormType.php
 │   │   │       ├── EditPasswordFormType.php
@@ -1423,6 +1450,7 @@
 │   │   │       │   ├── Regulation.Location.RawGeoJSON.orm.xml
 │   │   │       │   ├── Regulation.Location.StorageArea.orm.xml
 │   │   │       │   ├── Regulation.Location.WholeCityException.orm.xml
+│   │   │       │   ├── Regulation.Location.Zone.orm.xml
 │   │   │       │   ├── Regulation.Measure.orm.xml
 │   │   │       │   ├── Regulation.RegulationOrder.orm.xml
 │   │   │       │   ├── Regulation.RegulationOrderHistory.orm.xml
@@ -1448,7 +1476,7 @@
 │   │   │       │   ├── Version20260129110000.php
 │   │   │       │   └── Version20260312100001.php
 │   │   │       ├── Migrations
-│   │   │       │   └── Version*.php  (160 files)
+│   │   │       │   └── Version*.php  (162 files)
 │   │   │       ├── PostGIS
 │   │   │       │   ├── Event
 │   │   │       │   │   └── ORMSchemaEventListener.php
@@ -1480,7 +1508,8 @@
 │   │   │           │   ├── StorageAreaRepository.php
 │   │   │           │   ├── StorageRegulationOrderRepository.php
 │   │   │           │   ├── TimeSlotRepository.php
-│   │   │           │   └── VehicleSetRepository.php
+│   │   │           │   ├── VehicleSetRepository.php
+│   │   │           │   └── ZoneRepository.php
 │   │   │           ├── SigningAuthority
 │   │   │           │   └── SigningAuthorityRepository.php
 │   │   │           ├── Statistics
@@ -1527,9 +1556,11 @@
 │   │   │   │   ├── LitteralisImportCommand.php
 │   │   │   │   ├── LitteralisImportCommunicationCommand.php
 │   │   │   │   ├── LoadFrCityDataCommand.php
+│   │   │   │   ├── MigratePolygonsToZonesCommand.php
 │   │   │   │   ├── PurgeUserTokensCommand.php
 │   │   │   │   ├── RefreshTopPublishedOrganizationsCommand.php
 │   │   │   │   ├── RunMetabaseExportCommand.php
+│   │   │   │   ├── SendInactivityRemindersCommand.php
 │   │   │   │   ├── StorageAreaGenerateCommand.php
 │   │   │   │   ├── SyncLocationGeometriesCommand.php
 │   │   │   │   ├── SyncOrganizationsCodesCommand.php
@@ -1603,9 +1634,11 @@
 │   │   └── user
 │   │       ├── confirm_user_account.html.twig
 │   │       ├── forgot_password.html.twig
+│   │       ├── inactivity_reminder.html.twig
 │   │       ├── organization_invitation.html.twig
 │   │       ├── user_feedback.html.twig
 │   │       ├── user_report.html.twig
+│   │       ├── user_report_sent_to_ign.html.twig
 │   │       ├── user_report_status_updated.html.twig
 │   │       └── welcome_user.html.twig
 │   ├── feedback.html.twig
@@ -1634,8 +1667,7 @@
 │   │   │   ├── detail.html.twig
 │   │   │   ├── fragments
 │   │   │   │   ├── _form.html.twig
-│   │   │   │   ├── _preview.html.twig
-│   │   │   │   └── _warning_notice.html.twig
+│   │   │   │   └── _preview.html.twig
 │   │   │   ├── index.html.twig
 │   │   │   ├── mailing_list
 │   │   │   │   ├── form.html.twig
@@ -1688,6 +1720,7 @@
 │   │   │   ├── _general_info.html.twig
 │   │   │   ├── _general_info.updated.stream.html.twig
 │   │   │   ├── _general_info_form.html.twig
+│   │   │   ├── _house_number_options.html.twig
 │   │   │   ├── _intersection_options.html.twig
 │   │   │   ├── _measure.added.stream.html.twig
 │   │   │   ├── _measure.deleted.stream.html.twig
@@ -1826,6 +1859,7 @@
 │   │       │   │   │   ├── DeleteMeasureFragmentControllerTest.php
 │   │       │   │   │   ├── DuplicateMeasureFragmentControllerTest.php
 │   │       │   │   │   ├── GetCityCompletionFragmentControllerTest.php
+│   │       │   │   │   ├── GetHouseNumberOptionsFragmentControllerTest.php
 │   │       │   │   │   ├── GetIntersectionOptionsFragmentControllerTest.php
 │   │       │   │   │   ├── GetMeasureControllerTest.php
 │   │       │   │   │   ├── GetNamedStreetCompletionFragmentControllerTest.php
@@ -1871,6 +1905,7 @@
 │   │       │       ├── PurgeUserTokensCommandTest.php
 │   │       │       ├── RefreshTopPublishedOrganizationsCommandTest.php
 │   │       │       ├── RunMetabaseExportCommandTest.php
+│   │       │       ├── SendInactivityRemindersCommandTest.php
 │   │       │       ├── StorageAreaGenerateCommandTest.php
 │   │       │       └── SyncLocationGeometriesCommandTest.php
 │   │       └── Templates
@@ -1881,6 +1916,7 @@
 │   │   ├── APIAdresseMockClientTest.php
 │   │   ├── ApiGeoMock.php
 │   │   ├── ApiOrganizationFetcherMock.php
+│   │   ├── BanApiMockClient.php
 │   │   ├── DateUtilsMock.php
 │   │   ├── DiaLogMockHttpClient.php
 │   │   ├── EudonetParis
@@ -1957,10 +1993,12 @@
 │   │   │   │   │   ├── DuplicateRegulationCommandHandlerTest.php
 │   │   │   │   │   ├── GenerateDatexCommandHandlerTest.php
 │   │   │   │   │   ├── Location
+│   │   │   │   │   │   ├── ConvertPolygonsToZonesCommandHandlerTest.php
 │   │   │   │   │   │   ├── DeleteLocationCommandHandlerTest.php
 │   │   │   │   │   │   ├── DeleteNamedStreetCommandHandlerTest.php
 │   │   │   │   │   │   ├── DeleteNumberedRoadCommandHandlerTest.php
 │   │   │   │   │   │   ├── DeleteRawGeoJSONCommandHandlerTest.php
+│   │   │   │   │   │   ├── DeleteZoneCommandHandlerTest.php
 │   │   │   │   │   │   ├── GeocodeLocationsWithoutGeometryCommandHandlerTest.php
 │   │   │   │   │   │   ├── SaveLocationCommandHandlerTest.php
 │   │   │   │   │   │   ├── SaveNamedStreetCommandHandlerTest.php
@@ -1968,7 +2006,9 @@
 │   │   │   │   │   │   ├── SaveNumberedRoadCommandTest.php
 │   │   │   │   │   │   ├── SaveRawGeoJSONCommandHandlerTest.php
 │   │   │   │   │   │   ├── SaveWholeCityCommandTest.php
-│   │   │   │   │   │   └── SaveWholeCityExceptionCommandTest.php
+│   │   │   │   │   │   ├── SaveWholeCityExceptionCommandTest.php
+│   │   │   │   │   │   ├── SaveZoneCommandHandlerTest.php
+│   │   │   │   │   │   └── SaveZoneCommandTest.php
 │   │   │   │   │   ├── MapImage
 │   │   │   │   │   │   └── WarmRegulationMapImageCacheCommandHandlerTest.php
 │   │   │   │   │   ├── Period
@@ -2012,7 +2052,8 @@
 │   │   │   │   │   │   ├── GetNamedStreetGeometryQueryHandlerTest.php
 │   │   │   │   │   │   ├── GetNumberedRoadGeometryQueryHandlerTest.php
 │   │   │   │   │   │   ├── GetStorageAreasByRoadNumbersQueryHandlerTest.php
-│   │   │   │   │   │   └── GetWholeCityGeometryQueryHandlerTest.php
+│   │   │   │   │   │   ├── GetWholeCityGeometryQueryHandlerTest.php
+│   │   │   │   │   │   └── GetZoneGeometryQueryHandlerTest.php
 │   │   │   │   │   ├── Measure
 │   │   │   │   │   │   ├── GetMeasureByUuidQueryHandlerTest.php
 │   │   │   │   │   │   └── GetMeasuresQueryHandlerTest.php
@@ -2040,6 +2081,7 @@
 │   │   │       │   ├── Mail
 │   │   │       │   │   ├── SendConfirmationMailCommandHandlerTest.php
 │   │   │       │   │   ├── SendForgotPasswordMailCommandHandlerTest.php
+│   │   │       │   │   ├── SendInactivityReminderEmailCommandHandlerTest.php
 │   │   │       │   │   ├── SendInvitationMailCommandHandlerTest.php
 │   │   │       │   │   └── SendWelcomeEmailCommandHandlerTest.php
 │   │   │       │   ├── MarkUserActiveCommandHandlerTest.php
@@ -2094,7 +2136,8 @@
 │   │   │   │   │   ├── NumberedRoadTest.php
 │   │   │   │   │   ├── RawGeoJSONTest.php
 │   │   │   │   │   ├── StorageAreaTest.php
-│   │   │   │   │   └── WholeCityExceptionTest.php
+│   │   │   │   │   ├── WholeCityExceptionTest.php
+│   │   │   │   │   └── ZoneTest.php
 │   │   │   │   ├── MeasureTest.php
 │   │   │   │   ├── RegulationOrderHistoryTest.php
 │   │   │   │   ├── RegulationOrderRecordTest.php
@@ -2116,6 +2159,7 @@
 │   │   │       ├── OrganizationUserTest.php
 │   │   │       ├── PasswordUserTest.php
 │   │   │       ├── ProConnectUserTest.php
+│   │   │       ├── ReportAddressLocationTest.php
 │   │   │       ├── ReportAddressTest.php
 │   │   │       ├── SigningAuthorityTest.php
 │   │   │       ├── Specification
@@ -2134,6 +2178,7 @@
 │   │       ├── Adapter
 │   │       │   ├── APIAdresseGeocoderTest.php
 │   │       │   ├── ApiOrganizationFetcherTest.php
+│   │       │   ├── BanApiGeocoderTest.php
 │   │       │   ├── BdTopoRoadGeocoderTest.php
 │   │       │   ├── BdTopoStreetGeocoderAdapterTest.php
 │   │       │   ├── CifsExportClientTest.php
@@ -2158,7 +2203,8 @@
 │   │       │   │       └── SearchRegulationsControllerTest.php
 │   │       │   └── Regulation
 │   │       │       └── Fragments
-│   │       │           └── GetLocationGeometryControllerTest.php
+│   │       │           ├── GetLocationGeometryControllerTest.php
+│   │       │           └── GetReferencePointsControllerTest.php
 │   │       ├── DTO
 │   │       │   └── Regulation
 │   │       │       └── RegulationApiViewTest.php
@@ -2223,6 +2269,7 @@
 │   │       │   │   ├── JOPImportCommandTest.php
 │   │       │   │   ├── LitteralisImportCommandTest.php
 │   │       │   │   ├── LitteralisImportCommunicationCommandTest.php
+│   │       │   │   ├── SendInactivityRemindersCommandTest.php
 │   │       │   │   ├── SyncLocationGeometriesCommandTest.php
 │   │       │   │   ├── SyncOrganizationsToGristCommandTest.php
 │   │       │   │   └── SyncUsersToGristCommandTest.php
@@ -2271,4 +2318,4 @@
 │   └── validators.fr.xlf
 ├── vitest.config.js
 └── webpack.config.js
-439 directories, 1993 files
+439 directories, 2042 files

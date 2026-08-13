@@ -1,29 +1,32 @@
-## Changelog : dialog (30 derniers jours, au 29 juillet 2026)
+## Changelog : dialog (30 derniers jours, au 12 août 2026)
 
 ### Résumé
-Les récentes mises à jour de dialog se concentrent sur l'amélioration de l'API, la correction de bugs liés à l'affichage et au stockage des données, ainsi que sur l'amélioration de l'importation et du parsing des données réglementaires. Des améliorations ont également été apportées à l'interface utilisateur pour faciliter la saisie et la visualisation des informations.
+Ce mois-ci, la plateforme a bénéficié d'une refonte visuelle de son interface (header et footer) et d'améliorations significatives de l'expérience utilisateur, notamment sur la cartographie et la validation des formulaires. De nouvelles fonctionnalités de communication par email et des capacités de recherche enrichies via l'API ont également été déployées pour faciliter l'accès à l'information réglementaire.
 
 ### Évolutions fonctionnelles
-- L'API permet désormais de récupérer les réglementations par organisation. [#1967](https://github.com/MTES-MCT/dialog/issues/1967)
-- Les réglementations sont maintenant correctement stockées, corrigeant un problème d'enregistrement vide. [#1979](https://github.com/MTES-MCT/dialog/issues/1979)
-- Correction de l'affichage du filtre de type de véhicules sur la cartographie. [#1992](https://github.com/MTES-MCT/dialog/issues/1992)
-- Amélioration des légendes de la cartographie pour une meilleure clarté. [#1984](https://github.com/MTES-MCT/dialog/issues/1984)
-- Correction d'une erreur empêchant l'affichage des pièces jointes (PJ) sur les arrêtés. [#1990](https://github.com/MTES-MCT/dialog/issues/1990)
-- Le formulaire de localisation pré-remplit maintenant le type de voie et la ville. [#1951](https://github.com/MTES-MCT/dialog/issues/1951)
-- Le nom de l'éditeur est masqué dans le formulaire si l'utilisateur n'est pas connecté. [#1965](https://github.com/MTES-MCT/dialog/issues/1965)
-- Ajout de nouvelles expressions pour identifier "toute la journée" dans le parseur de périodes. [#1952](https://github.com/MTES-MCT/dialog/issues/1952)
-- Possibilité de filtrer les véhicules lourds sur la cartographie. [#1975](https://github.com/MTES-MCT/dialog/issues/1975)
+- **Interface et Expérience Utilisateur (UX) :**
+    - Refonte du header [#2016](https://github.com/MTES-MCT/dialog/issues/2016) et extension du footer [#2015](https://github.com/MTES-MCT/dialog/issues/2015).
+    - Amélioration de la cartographie : ajout de points de PR [#2005](https://github.com/MTES-MCT/dialog/issues/2005), retravail des légendes [#1984](https://github.com/MTES-MCT/dialog/issues/1984) et correction de l'icône du filtre poids lourd [#2020](https://github.com/MTES-MCT/dialog/issues/2020).
+    - Sécurisation de la saisie : ajout d'une alerte en cas de modifications non sauvegardées sur les formulaires d'arrêté [#2007](https://github.com/MTES-MCT/dialog/issues/2007) et validation immédiate du numéro de rue côté client [#1999](https://github.com/MTES-MCT/dialog/issues/1999).
+    - Corrections d'affichage : ajustement du padding pour les exceptions de villes entières [#2021](https://github.com/MTES-MCT/dialog/issues/2021) et correction du filtre de type de véhicules [#1992](https://github.com/MTES-MCT/dialog/issues/1992).
+- **Nouvelles fonctionnalités :**
+    - Amélioration du système d'email : ajout de la fonction "répondre à" via l'utilisateur actuel [#2019](https://github.com/MTES-MCT/dialog/issues/2019) et envoi d'emails de suivi après abonnement [#2003](https://github.com/MTES-MCT/dialog/issues/2003).
+    - Gestion des restrictions : possibilité d'appliquer une restriction sur une zone [#1998](https://github.com/MTES-MCT/dialog/issues/1998) et migration des polygones en zones de restriction [#2006](https://github.com/MTES-MCT/dialog/issues/2006).
+    - Back-office : ajout d'un bouton pour l'envoi de rapports IGN [#1995](https://github.com/MTES-MCT/dialog/issues/1995).
+- **Corrections :**
+    - Résolution du problème de pièces jointes manquantes sur les arrêtés [#1990](https://github.com/MTES-MCT/dialog/issues/1990).
+    - Amélioration de la gestion des exceptions sur les restrictions de villes entières [#1949](https://github.com/MTES-MCT/dialog/issues/1949).
 
 ### Évolutions techniques
-- Correction d'un bug dans la recherche de tronçons de route et de voies nommées pour le calcul des lignes sur la base de données BDTopo. [#1954](https://github.com/MTES-MCT/dialog/issues/1954)
-- Correction d'un problème avec l'opérateur `andwhere` dans le code. [#1985](https://github.com/MTES-MCT/dialog/issues/1985)
-- Correction pour récupérer l'ID de l'interdiction de circulation (depuis et vers) à partir du nom. [#1968](https://github.com/MTES-MCT/dialog/issues/1968)
-- Gestion des exceptions pour les restrictions sur des villes entières. [#1949](https://github.com/MTES-MCT/dialog/issues/1949)
-- Ajout d'un séparateur ":" pour les périodes dans le parseur Litteralis. [#1966](https://github.com/MTES-MCT/dialog/issues/1966)
-- Suppression de l'envoi automatique des rapports IGN. [#1991](https://github.com/MTES-MCT/dialog/issues/1991)
-- Ajout d'une commande bash pour supprimer les réglementations de la base de données. [#1947](https://github.com/MTES-MCT/dialog/issues/1947)
-- Les réglementations JSON sont maintenant publiques. [#1997](https://github.com/MTES-MCT/dialog/issues/1997)
+- **API :**
+    - Ajout de la recherche de réglementation par code ville d'organisation [#2008](https://github.com/MTES-MCT/dialog/issues/2008).
+    - Nouvel endpoint pour récupérer les arrêtés par organisation [#1967](https://github.com/MTES-MCT/dialog/issues/1967).
+    - Passage des données JSON de la réglementation de l'accès privé à l'accès public [#1997](https://github.com/MTES-MCT/dialog/issues/1997).
+- **Données et Infrastructure :**
+    - Correction de la synchronisation vers Grist [#2002](https://github.com/MTES-MCT/dialog/issues/2002).
+    - Mise en place du suivi d'événements Matomo pour le téléchargement des arrêtés [#2004](https://github.com/MTES-MCT/dialog/issues/2004).
+    - Corrections de bugs de base de données et de requêtes (stockage vide [#1979](https://github.com/MTES-MCT/dialog/issues/1979) et clause `andwhere` [#1985](https://github.com/MTES-MCT/dialog/issues/1985)).
 
 ### Autres changements
-- Tri des utilisateurs administrateurs. [#1972](https://github.com/MTES-MCT/dialog/issues/1972)
-- Correction d'un bug où la mesure n'appartenait pas à l'enregistrement de la commande. [#1983](https://github.com/MTES-MCT/dialog/issues/1983)
+- Suppression de la notification d'avertissement pour les organisations incomplètes [#2018](https://github.com/MTES-MCT/dialog/issues/2018).
+- Modification du processus d'envoi des rapports IGN (suppression de l'automatisme) [#1991](https://github.com/MTES-MCT/dialog/issues/1991).
