@@ -94,12 +94,14 @@
     │   │   │   ├── serializers.py
     │   │   │   ├── throttling.py
     │   │   │   └── viewsets.py
+    │   │   ├── audio.py
     │   │   ├── authentication
     │   │   │   ├── __init__.py
     │   │   │   ├── backends.py
     │   │   │   ├── schemas.py
     │   │   │   ├── views.py
     │   │   │   └── webhooks.py
+    │   │   ├── configuration.py
     │   │   ├── enums.py
     │   │   ├── factories.py
     │   │   ├── management
@@ -123,6 +125,10 @@
     │   │   │   ├── 0011_alter_file_upload_state.py
     │   │   │   ├── 0012_file_lifecycle_state_file_file_created_915352_idx.py
     │   │   │   ├── 0013_file_language.py
+    │   │   │   ├── 0014_file_email_domain_and_more.py
+    │   │   │   ├── 0015_file_audio_extraction_state.py
+    │   │   │   ├── 0016_remove_file_file_snapshot_complete_and_more.py
+    │   │   │   ├── 0017_aifilejob_docs_creation_in_progress.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── static
@@ -130,10 +136,19 @@
     │   │   │       ├── logo-suite-numerique.png
     │   │   │       ├── logo.png
     │   │   │       └── mail-header-background.png
+    │   │   ├── storage.py
     │   │   ├── tasks
     │   │   │   ├── __init__.py
+    │   │   │   ├── constants.py
     │   │   │   ├── file.py
+    │   │   │   ├── mail.py
     │   │   │   └── retry.py
+    │   │   ├── templates
+    │   │   │   └── mail
+    │   │   │       ├── html
+    │   │   │       │   └── transcription_ready.html
+    │   │   │       └── text
+    │   │   │           └── transcription_ready.txt
     │   │   ├── tests
     │   │   │   ├── __init__.py
     │   │   │   ├── ai_jobs
@@ -143,7 +158,20 @@
     │   │   │   │   ├── test_api_ai_jobs_retry.py
     │   │   │   │   └── test_api_files_ai_api_webhook.py
     │   │   │   ├── assets
-    │   │   │   │   └── export-throughput.csv
+    │   │   │   │   ├── audio-sample-android-chrome.webm
+    │   │   │   │   ├── audio-sample-android-firefox.ogg
+    │   │   │   │   ├── audio-sample-android.m4a
+    │   │   │   │   ├── audio-sample-chromium.webm
+    │   │   │   │   ├── audio-sample-corrupted.how.txt
+    │   │   │   │   ├── audio-sample-corrupted.m4a
+    │   │   │   │   ├── audio-sample-firefox.ogg
+    │   │   │   │   ├── audio-sample-ios-browser.webm
+    │   │   │   │   ├── audio-sample-ios.m4a
+    │   │   │   │   ├── audio-sample-mac-os-safari.webm
+    │   │   │   │   ├── email_previews
+    │   │   │   │   │   └── .gitignore
+    │   │   │   │   ├── export-throughput.csv
+    │   │   │   │   └── video-sample-visio.mp4
     │   │   │   ├── authentication
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── test_backends.py
@@ -175,10 +203,18 @@
     │   │   │   ├── test_admin.py
     │   │   │   ├── test_api_frontend_configuration.py
     │   │   │   ├── test_api_users.py
+    │   │   │   ├── test_audio.py
+    │   │   │   ├── test_configuration.py
+    │   │   │   ├── test_e2e_file.py
     │   │   │   ├── test_floor_dt_to_bucket.py
+    │   │   │   ├── test_mail_templates.py
     │   │   │   ├── test_models_ai_jobs.py
+    │   │   │   ├── test_models_file_configuration.py
     │   │   │   ├── test_models_users.py
+    │   │   │   ├── test_settings_values.py
+    │   │   │   ├── test_storage.py
     │   │   │   ├── test_tasks.py
+    │   │   │   ├── test_tasks_mail.py
     │   │   │   ├── test_utils_detect_mimetype.py
     │   │   │   └── test_utils_update_url_query_params.py
     │   │   ├── urls.py
@@ -205,6 +241,7 @@
     │   │   ├── celery_app.py
     │   │   ├── settings.py
     │   │   ├── urls.py
+    │   │   ├── values.py
     │   │   └── wsgi.py
     │   ├── locale
     │   │   ├── en_US
@@ -446,6 +483,7 @@
     │   │   │   ├── backend_job_createsuperuser.yaml
     │   │   │   ├── backend_job_migrate.yaml
     │   │   │   ├── backend_svc.yaml
+    │   │   │   ├── celery_audio_extractor_deployment.yaml
     │   │   │   ├── celery_backend_deployment.yaml
     │   │   │   ├── extra-objects.yaml
     │   │   │   ├── frontend_deployment.yaml
@@ -757,4 +795,4 @@
         │       └── wait.ts
         ├── tsconfig.json
         └── yarn.lock
-184 directories, 575 files
+189 directories, 608 files
