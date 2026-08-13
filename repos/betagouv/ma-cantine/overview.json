@@ -1,62 +1,65 @@
 {
   "url": "https://github.com/betagouv/ma-cantine",
   "name": "ma-cantine",
-  "description": "Accompagner au mieux les acteurs de la restauration collective dans leur offre aux consommateurs pour une alimentation de qualité, saine et durable.",
+  "description": "Plateforme d'accompagnement pour les acteurs de la restauration collective afin de promouvoir une alimentation de qualité, saine et durable.",
   "language": "Python",
   "features": [
-    "Gestion des utilisateurs & Permissions",
-    "Recherche & Filtres",
-    "Notifications & Alertes",
-    "API & Intégrations"
+    "Gestion des établissements & Structures",
+    "Statistiques & Rapports",
+    "Gestion métier générale",
+    "API & Intégrations",
+    "Visualisation de données & Cartographie",
+    "Gestion des médias & Assets"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": "Professionnels",
   "dependencies": [
     "Django",
     "Vue.js",
-    "PostgreSQL",
     "Celery",
     "Redis",
-    "Sentry",
-    "Brevo",
-    "Crisp",
-    "AlwaysData",
+    "PostgreSQL",
+    "Wagtail",
+    "Django REST Framework",
     "Metabase",
     "Matomo"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "React / Next.js",
+    "Vue.js / Nuxt",
     "Python (scripts & backend)",
-    "Frontend React"
+    "Design System (DSFR & UI libs)",
+    "Django",
+    "Celery & Queue asynchrone",
+    "Tests",
+    "ORM & Accès aux données"
   ],
   "auth": {
     "methods": [
-      "oauth2"
+      "oauth2",
+      "magic-link",
+      "mfa",
+      "session"
     ]
   },
   "tests": [
-    "Pytest"
+    "pytest",
+    "pytest-django"
   ],
-  "workflows": [],
-  "lastActivity": "2026-07-29T00:00:00Z",
+  "workflows": [
+    "GitHub Actions"
+  ],
+  "lastActivity": "2026-08-10T00:00:00Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
   "tags": [
-    "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "React & Next.js",
-    "TypeScript",
-    "Déploiement & Hosting",
     "Python",
-    "Bases de données SQL",
-    "Sécurité & Auth"
+    "Vue.js & Nuxt",
+    "Django & FastAPI",
+    "Données & Open Data",
+    "Design System & UI",
+    "CI/CD & GitHub Actions"
   ]
 }

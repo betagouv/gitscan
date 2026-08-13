@@ -456,7 +456,9 @@
 │   │   ├── test_diagnostic_teledeclaration.py
 │   │   ├── test_diagnostics.py
 │   │   ├── test_diagnostics_complete_import.py
+│   │   ├── test_diagnostics_complete_schema_import.py
 │   │   ├── test_diagnostics_simple_import.py
+│   │   ├── test_diagnostics_simple_schema_import.py
 │   │   ├── test_initial_data.py
 │   │   ├── test_inquiry.py
 │   │   ├── test_messages.py
@@ -467,6 +469,9 @@
 │   │   ├── test_purchases.py
 │   │   ├── test_purchases_import.py
 │   │   ├── test_purchases_import_old.py
+│   │   ├── test_purchases_old.py
+│   │   ├── test_purchases_schema_import.py
+│   │   ├── test_purchases_schema_import_old.py
 │   │   ├── test_reservation_expe.py
 │   │   ├── test_resource_actions.py
 │   │   ├── test_reviews.py
@@ -943,6 +948,7 @@
 │   │   ├── 0267_history_source_and_api_oauth2.py
 │   │   ├── 0268_alter_diagnostic_valeur_boulangerie_aocaop_igp_stg_and_more.py
 │   │   ├── 0269_canteenimage_creation_and_modification_date.py
+│   │   ├── 0270_diagnostic_valeur_autres_diagnostic_valeur_boissons_and_more.py
 │   │   └── __init__.py
 │   ├── models
 │   │   ├── __init__.py
@@ -1002,6 +1008,13 @@
 │   │   ├── param_non_retenus_cantines.json
 │   │   └── param_non_retenus_td.json
 │   ├── signals.py
+│   ├── templates
+│   │   └── admin
+│   │       └── data
+│   │           ├── canteen
+│   │           │   └── change_form.html
+│   │           └── purchase
+│   │               └── change_form.html
 │   ├── tests
 │   │   ├── __init__.py
 │   │   ├── test_canteen.py
@@ -1275,7 +1288,6 @@
 │   │       │   └── index.vue
 │   │       ├── KeyMeasuresPage
 │   │       │   ├── DashboardPage.vue
-│   │       │   ├── KeyMeasurePage.vue
 │   │       │   ├── KeyMeasuresHome.vue
 │   │       │   └── index.vue
 │   │       ├── LandingPage
@@ -1660,17 +1672,16 @@
     │   │   │   ├── good-1.svg
     │   │   │   └── good-2.svg
     │   │   ├── badges
-    │   │   │   ├── appro-disabled.svg
-    │   │   │   ├── appro.svg
-    │   │   │   ├── canteen.svg
-    │   │   │   ├── diversification-disabled.svg
-    │   │   │   ├── diversification.svg
-    │   │   │   ├── info-disabled.svg
-    │   │   │   ├── info.svg
-    │   │   │   ├── plastic-disabled.svg
-    │   │   │   ├── plastic.svg
-    │   │   │   ├── waste-disabled.svg
-    │   │   │   └── waste.svg
+    │   │   │   ├── badge-appro-disabled.svg
+    │   │   │   ├── badge-appro.svg
+    │   │   │   ├── badge-diversification-disabled.svg
+    │   │   │   ├── badge-diversification.svg
+    │   │   │   ├── badge-info-disabled.svg
+    │   │   │   ├── badge-info.svg
+    │   │   │   ├── badge-plastic-disabled.svg
+    │   │   │   ├── badge-plastic.svg
+    │   │   │   ├── badge-waste-disabled.svg
+    │   │   │   └── badge-waste.svg
     │   │   ├── button-moncomptepro.svg
     │   │   ├── canteen-default-image.jpg
     │   │   ├── card-social-media.png
@@ -1782,4 +1793,4 @@
     │   └── test_sitemaps.py
     ├── urls.py
     └── views.py
-140 directories, 1717 files
+145 directories, 1723 files
