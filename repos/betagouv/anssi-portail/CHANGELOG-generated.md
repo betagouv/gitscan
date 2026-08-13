@@ -1,38 +1,37 @@
-## Changelog : anssi-portail (30 derniers jours, au 06/08/2026)
+## Changelog : anssi-portail (30 derniers jours, au 12 août 2026)
 
 ### Résumé
-Ce mois a été marqué par une refonte visuelle majeure et une amélioration significative de l'expérience utilisateur, notamment via l'introduction de nouveaux composants graphiques ("Héros riche") et une meilleure gestion du parcours de sécurisation. Le projet a également franchi une étape importante en termes de performance et de référencement grâce à une migration massive vers le rendu côté serveur (SSR).
+Ce mois a été marqué par une transformation majeure de l'expérience utilisateur, tant sur le plan visuel que fonctionnel. Le portail adopte une nouvelle identité graphique et déploie les "parcours de sécurisation", permettant aux organisations de suivre leur progression et d'obtenir des attestations officielles (badges et documents PDF).
 
 ### Évolutions fonctionnelles
-- **Parcours de sécurisation** :
-    - Amélioration du suivi de progression avec l'ajout de barres de progression, de badges de complétion et d'indicateurs de mesures par module.
-    - Mise en place de tutoriels via des fenêtres modales pour accompagner l'utilisateur.
-    - Nouvelle gestion des mesures : affichage sous forme de liste, possibilité d'exporter les mesures au format CSV et ajout de tutoriels dédiés.
-- **Récompenses et attestations** :
-    - Création d'un générateur de documents pour les attestations (notamment pour le badge Cyberdépart) incluant le nom de l'organisation et respectant la charte graphique (police Marianne).
-    - Automatisation de la création d'archives ZIP contenant les badges et les attestations de réussite.
-- **Interface et Design (UI/UX)** :
-    - Déploiement du nouveau composant "Héros riche" et de nouveaux bandeaux sur l'ensemble des pages (accueil, guides, statistiques, simulateur NIS2, etc.).
-    - Amélioration de l'adaptabilité (responsive design) pour les écrans mobiles et tablettes.
-    - Ajout d'effets visuels dynamiques, comme l'effet "machine à écrire" sur certains composants.
-- **Conformité et suivi** :
-    - Mise en place d'un système de gestion du consentement pour le pixel de suivi (tracking).
+- **Parcours de sécurisation** : 
+    - Mise en place des parcours "Basique" et "Complet" avec un suivi de progression détaillé (barres de progression, badges de complétion).
+    - Nouveau système de récompenses permettant de télécharger des archives ZIP contenant des attestations PDF personnalisées et des badges (notamment le badge Cyberdépart).
+    - Gestion des modules de formation avec affichage des mesures et tutoriels intégrés.
+- **Refonte visuelle (Nouvelle DA)** : 
+    - Déploiement d'une nouvelle charte graphique incluant de nouveaux composants "Héros", une nouvelle palette de couleurs et des illustrations mises à jour.
+    - Amélioration de l'ergonomie sur mobile et tablette pour l'ensemble des sections clés.
+- **Améliorations thématiques** :
+    - Mise à jour de la section NIS 2 et de son simulateur.
+    - Optimisation de la section "Guides et Ressources" et des statistiques.
+- **Expérience utilisateur** : 
+    - Amélioration du wording (textes) sur l'ensemble du portail pour plus de clarté.
+    - Ajout d'un système de consentement pour le suivi (pixel) et de notifications (toasters) plus explicites.
 
 ### Évolutions techniques
-- **Performance et SEO** :
-    - Migration vers le rendu côté serveur (SSR) pour une large gamme de composants (fil d'Ariane, guides, statistiques, carrousels, pages NIS2, etc.), optimisant ainsi la vitesse de chargement et le référencement.
-- **Architecture et Refactoring** :
-    - Refactorisation du système de gestion des ressources et des chemins (`fournisseurChemin`).
-    - Modularisation et extraction de composants Svelte réutilisables (Tuile, machine à écrire, modales).
-    - Standardisation des appels API via une instance `axios` mutualisée et sécurisée.
-    - Fusion des entités "entité" et "organisation" pour simplifier le modèle de données.
-- **Sécurité et CI/CD** :
-    - Renforcement de la sécurité des redirections par une validation systématique côté serveur.
-    - Amélioration de la protection des données sensibles (obfuscation et masquage des variables d'environnement).
-    - Intégration de scans antivirus dans le pipeline de déploiement (CI).
+- **Performance et SEO** : 
+    - Généralisation du rendu côté serveur (SSR) pour de nombreuses pages (Guides, Statistiques, NIS 2, Accueil, etc.) afin d'optimiser le temps de chargement et le référencement.
+- **Architecture et composants** :
+    - Migration et mise à jour vers Svelte 5.
+    - Standardisation massive des composants via l'utilisation du Design System de l'État (DSFR).
+    - Refonte de la bibliothèque de composants interne (UI-Kit).
+- **Sécurité et DevOps** :
+    - Renforcement de la sécurité de la CI avec l'ajout de scans antivirus.
+    - Amélioration de la gestion des secrets et masquage des variables d'environnement.
+    - Sécurisation des mécanismes de redirection d'URL côté serveur.
 - **Qualité logicielle** :
-    - Augmentation de la couverture de tests avec l'ajout de tests de snapshot pour les composants critiques.
+    - Renforcement de la couverture de tests (Vitest, Playwright) et introduction de tests de snapshot pour garantir la stabilité visuelle.
 
 ### Autres changements
-- **SEO** : Redirection automatique de l'ancienne URL `/guides` vers le nouveau `/catalogue`.
-- **Maintenance** : Nettoyage général du code, suppression de commentaires obsolètes et harmonisation de l'arborescence des tests.
+- **Documentation** : Réorganisation complète du guide de développement et des procédures d'exploitation.
+- **Maintenance** : Nettoyage de l'application avec la suppression de pages obsolètes (anciennes pages "promouvoir") et de code non utilisé.

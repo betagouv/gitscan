@@ -2,6 +2,14 @@
 ├── .agents
 │   └── skills
 │       ├── .gitignore
+│       ├── ajouter-page-publique
+│       │   ├── SKILL.md
+│       │   └── references
+│       │       └── cablage-jekyll-svelte.md
+│       ├── integrer-maquette-figma
+│       │   ├── SKILL.md
+│       │   └── references
+│       │       └── design-system-et-assets.md
 │       ├── nouvelle-migration-knex
 │       │   └── SKILL.md
 │       └── playwright-cli
@@ -17,6 +25,8 @@
 │               ├── test-generation.md
 │               ├── tracing.md
 │               └── video-recording.md
+├── .claude
+│   └── skills -> ../.agents/skills
 ├── .env.template
 ├── .envrc
 ├── .github
@@ -40,6 +50,7 @@
 ├── .ruby-version
 ├── AGENTS.md
 ├── CLAUDE.md
+├── DEVELOPER.md
 ├── LICENSE
 ├── README.md
 ├── axios
@@ -53,6 +64,7 @@
 │   └── tsconfig.json
 ├── back
 │   ├── AGENTS.md
+│   ├── CLAUDE.md
 │   ├── eslint.config.mjs
 │   ├── knexfile.ts
 │   ├── migrations
@@ -92,6 +104,7 @@
 │   │   ├── 20260717135356_metsAJourMesuresCyberdepartV0_6.ts
 │   │   ├── 20260721140439_creeTableTutoriels.ts
 │   │   ├── 20260804091048_ajouteDescriptionModules.ts
+│   │   ├── 20260811093629_rendDeferrableContrainteEmailUtilisateurHachePrisesEnCompte.ts
 │   │   └── README.md
 │   ├── package.json
 │   ├── src
@@ -563,6 +576,7 @@
 ├── comparaison-grist
 │   ├── .env.template
 │   ├── AGENTS.md
+│   ├── CLAUDE.md
 │   ├── eslint.config.mjs
 │   ├── package.json
 │   ├── src
@@ -592,6 +606,7 @@
 ├── demande-diag
 │   ├── .gitignore
 │   ├── AGENTS.md
+│   ├── CLAUDE.md
 │   ├── README.md
 │   ├── package.json
 │   ├── plugin
@@ -610,10 +625,17 @@
 │   ├── tsconfig.node.json
 │   └── vite.config.ts
 ├── docker-compose.yml
+├── docs
+│   ├── developpement
+│   │   └── mettre-a-jour-toolchain.md
+│   └── exploitation
+│       ├── re-hachage-donnees-avec-nouveau-sel.md
+│       └── rotation-cle-chiffrement.md
 ├── eslint.config.base.mjs
 ├── front
 │   ├── 404.html
 │   ├── AGENTS.md
+│   ├── CLAUDE.md
 │   ├── Gemfile
 │   ├── Gemfile.lock
 │   ├── _config.yml
@@ -660,7 +682,6 @@
 │   │   ├── contact-region.html
 │   │   ├── donnees-structurees-indexation.html
 │   │   ├── encart-cyberdepart.html
-│   │   ├── encart-nis2.html
 │   │   ├── footer.html
 │   │   ├── head.html
 │   │   ├── header-sans-menu.html
@@ -758,10 +779,14 @@
 │   │   │   └── icone-recompense.svg
 │   │   ├── images
 │   │   │   ├── apercu-faq-nis2-dans-laptop.avif
-│   │   │   ├── approfondir-cyber.avif
 │   │   │   ├── coche-jaune-sur-rond-noir.svg
+│   │   │   ├── coche-ronde-active-nouvelle-da.svg
 │   │   │   ├── coche-ronde-active.svg
 │   │   │   ├── coche-ronde-inactive.svg
+│   │   │   ├── coche-rouge-dans-cercle-bleu.svg
+│   │   │   ├── composition-bizdev-floriane-et-pierre.png
+│   │   │   ├── composition-guides-et-ressources.png
+│   │   │   ├── contacts-resultat-vide-nouvelle-da.svg
 │   │   │   ├── contacts-resultat-vide.svg
 │   │   │   ├── debuter-cyber.avif
 │   │   │   ├── decorations
@@ -774,19 +799,25 @@
 │   │   │   ├── dragon-coeur.svg
 │   │   │   ├── dragon-kart.svg
 │   │   │   ├── ecrans-virtuels-avec-femme-au-centre.svg
+│   │   │   ├── emoji-bulle.svg
+│   │   │   ├── emoji-crayon.svg
+│   │   │   ├── emoji-ordinateur.svg
 │   │   │   ├── encart-homologation
 │   │   │   │   ├── encartHomologation.desktop.avif
 │   │   │   │   ├── encartHomologation.mobile.avif
 │   │   │   │   └── encartHomologation.tablette.avif
 │   │   │   ├── erreur-404.avif
+│   │   │   ├── erreur-404.svg
 │   │   │   ├── erreur-404.webp
 │   │   │   ├── erreur.svg
 │   │   │   ├── floriane-bizdev.avif
+│   │   │   ├── homme-cherchant-avec-loupe-nouvelle-da.svg
 │   │   │   ├── homme-cherchant-avec-loupe.svg
 │   │   │   ├── homme-regardant-webinaire.avif
 │   │   │   ├── homme-remplissant-ecran-login.svg
 │   │   │   ├── icone-*.svg  (32 files)
-│   │   │   ├── illustration-*.svg  (13 files)
+│   │   │   ├── illustration-*.svg  (20 files)
+│   │   │   ├── illustration-proteger-organisation.png
 │   │   │   ├── illustrations-services
 │   │   │   │   ├── ads
 │   │   │   │   │   └── active-directory-security.avif
@@ -883,6 +914,7 @@
 │   │   │   ├── image-generique.avif
 │   │   │   ├── index-touchant-ecran-demandant-empreinte-digitale.svg
 │   │   │   ├── jumelles-avec-bulle-fond-gris.svg
+│   │   │   ├── la-directive-NIS2.svg
 │   │   │   ├── localisation-france.svg
 │   │   │   ├── logo-afcdp.avif
 │   │   │   ├── logo-amrf.avif
@@ -896,17 +928,37 @@
 │   │   │   ├── logo-spiil.avif
 │   │   │   ├── logo-suite-territoriale.svg
 │   │   │   ├── logo-umih.svg
+│   │   │   ├── maintenance-nouvelle-da.svg
 │   │   │   ├── maintenance.svg
 │   │   │   ├── marelle-avec-bulle-fond-gris.svg
 │   │   │   ├── marianne-dark.svg
 │   │   │   ├── mario-dsi-et-femme-qui-utilisent-mss.png
+│   │   │   ├── motif-fond-macaron.svg
 │   │   │   ├── motif-fond-opacite-30.avif
 │   │   │   ├── motif-fond-service-opacite-16.avif
 │   │   │   ├── motif-fond-service.avif
+│   │   │   ├── motif-surlignage-cercle.svg
+│   │   │   ├── motif-titre-petales.svg
 │   │   │   ├── nis2-noir.svg
 │   │   │   ├── nis2.svg
 │   │   │   ├── parcours-securisation
 │   │   │   │   ├── badge-cyberdepart.svg
+│   │   │   │   ├── fond-hero-landing-parcours-securisation.svg
+│   │   │   │   ├── hero-12-mesures-decor.svg
+│   │   │   │   ├── hero-12-mesures-illustration.jpg
+│   │   │   │   ├── hero-decor-titre.svg
+│   │   │   │   ├── illustration-diagnostic.png
+│   │   │   │   ├── illustration-hero-parcours-complet.png
+│   │   │   │   ├── illustration-hero-parcours-cyberdepart.png
+│   │   │   │   ├── illustration-hero-parcours-securisation.png
+│   │   │   │   ├── illustration-parcours-basique-badge.svg
+│   │   │   │   ├── illustration-parcours-basique-comment.svg
+│   │   │   │   ├── illustration-parcours-basique-mots-de-passe.svg
+│   │   │   │   ├── illustration-parcours-basique-pourquoi.svg
+│   │   │   │   ├── illustration-parcours-complet-controler.svg
+│   │   │   │   ├── illustration-parcours-complet-modules.svg
+│   │   │   │   ├── illustration-parcours-complet-pourquoi.svg
+│   │   │   │   ├── illustration-parcours-complet-progression.svg
 │   │   │   │   ├── mesure-ANNUAIRE.1.svg
 │   │   │   │   ├── mesure-AUTH.1.svg
 │   │   │   │   ├── mesure-AUTH.4.svg
@@ -919,35 +971,54 @@
 │   │   │   │   ├── mesure-MALWARE.3.svg
 │   │   │   │   ├── mesure-MCO_MCS.5.svg
 │   │   │   │   ├── mesure-RECENSEMENT.1.svg
-│   │   │   │   └── mesure-RH.2.svg
+│   │   │   │   ├── mesure-RH.2.svg
+│   │   │   │   ├── module-1.svg
+│   │   │   │   ├── module-2.svg
+│   │   │   │   ├── module-3.svg
+│   │   │   │   ├── module-4.svg
+│   │   │   │   ├── module-5.svg
+│   │   │   │   └── module-6.svg
 │   │   │   ├── personne-avec-laptop-entoure-de-diagrammes.svg
 │   │   │   ├── personne-avec-micro-consultant-sites-cyber.svg
 │   │   │   ├── personne-qui-cogite.svg
 │   │   │   ├── personne-reflechissant-devant-un-ecran.svg
 │   │   │   ├── photo-livret-nis2.avif
 │   │   │   ├── pile-de-pieces.svg
+│   │   │   ├── piles-de-pieces.svg
 │   │   │   ├── pro_connect.svg
 │   │   │   ├── pro_connect_hover.svg
 │   │   │   ├── stat-diagnostics-cyber.svg
-│   │   │   ├── stat-services-et-ressources-consultes.svg
 │   │   │   ├── stat-test-maturite.svg
 │   │   │   ├── stat-utilisateurs-inscrits.svg
 │   │   │   ├── surligne-gauche-droite-vert-clair.svg
 │   │   │   ├── test-maturite
 │   │   │   │   ├── comparaison-floue-md.avif
 │   │   │   │   ├── comparaison-floue-xs.avif
+│   │   │   │   ├── illustration-adoption-solutions-nouvelle-da.svg
 │   │   │   │   ├── illustration-adoption-solutions.svg
+│   │   │   │   ├── illustration-budget-nouvelle-da.svg
 │   │   │   │   ├── illustration-budget.svg
+│   │   │   │   ├── illustration-infos-complementaires-nouvelle-da.svg
 │   │   │   │   ├── illustration-infos-complementaires.svg
+│   │   │   │   ├── illustration-introduction.svg
+│   │   │   │   ├── illustration-pilotage-nouvelle-da.svg
 │   │   │   │   ├── illustration-pilotage.svg
+│   │   │   │   ├── illustration-posture-nouvelle-da.svg
 │   │   │   │   ├── illustration-posture.svg
+│   │   │   │   ├── illustration-prise-en-compte-risque-nouvelle-da.svg
 │   │   │   │   ├── illustration-prise-en-compte-risque.svg
+│   │   │   │   ├── illustration-ressources-humaines-nouvelle-da.svg
 │   │   │   │   ├── illustration-ressources-humaines.svg
 │   │   │   │   ├── niveaux
+│   │   │   │   │   ├── confirme-nouvelle-da.svg
 │   │   │   │   │   ├── confirme.svg
+│   │   │   │   │   ├── emergent-nouvelle-da.svg
 │   │   │   │   │   ├── emergent.svg
+│   │   │   │   │   ├── insuffisant-nouvelle-da.svg
 │   │   │   │   │   ├── insuffisant.svg
+│   │   │   │   │   ├── intermediaire-nouvelle-da.svg
 │   │   │   │   │   ├── intermediaire.svg
+│   │   │   │   │   ├── optimal-nouvelle-da.svg
 │   │   │   │   │   └── optimal.svg
 │   │   │   │   └── test-maturite.avif
 │   │   │   ├── toasts
@@ -955,6 +1026,7 @@
 │   │   │   │   ├── icone_erreur.svg
 │   │   │   │   ├── icone_info.svg
 │   │   │   │   └── icone_succes.svg
+│   │   │   ├── trois-mains-croisees-nouvelle-da.svg
 │   │   │   ├── trois-mains-croisees.svg
 │   │   │   └── trouver-parcours.avif
 │   │   └── styles
@@ -970,6 +1042,7 @@
 │   │       ├── fonts.scss
 │   │       ├── grille.scss
 │   │       ├── maintenance.scss
+│   │       ├── niveaux-maturite-nouvelle-da.scss
 │   │       ├── niveaux-maturite.scss
 │   │       ├── page-statique.scss
 │   │       ├── parcours.scss
@@ -977,6 +1050,7 @@
 │   │       ├── responsive.scss
 │   │       ├── service.scss
 │   │       ├── site.scss
+│   │       ├── test-maturite-nouvelle-da.scss
 │   │       └── test-maturite.scss
 │   ├── associations.html
 │   ├── catalogue.html
@@ -1001,6 +1075,7 @@
 │   │   ├── .gitignore
 │   │   ├── .prettierrc.cjs
 │   │   ├── AGENTS.md
+│   │   ├── CLAUDE.md
 │   │   ├── README.md
 │   │   ├── eslint.config.mjs
 │   │   ├── index.html
@@ -1164,6 +1239,9 @@
 │   │   │   ├── main-page-crisp.ts
 │   │   │   ├── main-page-directive-nis2.ts
 │   │   │   ├── main-parcours-complet.ts
+│   │   │   ├── main-parcours-cyberdepart.ts
+│   │   │   ├── main-parcours-securisation-complet.ts
+│   │   │   ├── main-parcours-securisation.ts
 │   │   │   ├── main-resultats-session-groupe.ts
 │   │   │   ├── main-sante.ts
 │   │   │   ├── main-sentry.ts
@@ -1274,6 +1352,9 @@
 │   │   │   │   ├── CarteMesure.svelte
 │   │   │   │   ├── GrilleCartesMesures.svelte
 │   │   │   │   ├── InterlocuteursParcoursSecurisation.svelte
+│   │   │   │   ├── LandingParcoursCyberdepart.svelte
+│   │   │   │   ├── LandingParcoursSecurisation.svelte
+│   │   │   │   ├── LandingParcoursSecurisationComplet.svelte
 │   │   │   │   ├── MesuresDeModule.svelte
 │   │   │   │   ├── Module.svelte
 │   │   │   │   ├── ModuleCyberdepart.svelte
@@ -1330,7 +1411,6 @@
 │   │   │   │   ├── EncartDeRecommandationMaturiteFaible.svelte
 │   │   │   │   ├── EncartDeRecommandationMaturiteForte.svelte
 │   │   │   │   ├── EncartDeRecommandationSelonMaturite.svelte
-│   │   │   │   ├── EncartDeRecommandationVersCatalogue.svelte
 │   │   │   │   ├── GraphiqueAnneau.svelte
 │   │   │   │   ├── HistoriqueTests.svelte
 │   │   │   │   ├── IntroductionTestMaturite.svelte
@@ -1368,8 +1448,12 @@
 │   │   │   │   ├── Accordeon.svelte
 │   │   │   │   ├── Alerte.svelte
 │   │   │   │   ├── Alternatives.svelte
+│   │   │   │   ├── BadgeBeta.svelte
+│   │   │   │   ├── BlocContenuLanding.svelte
+│   │   │   │   ├── BlocDiagnostic.svelte
 │   │   │   │   ├── Bouton.svelte
 │   │   │   │   ├── BoutonFermerModale.svelte
+│   │   │   │   ├── Bulle.svelte
 │   │   │   │   ├── CaseACocher.svelte
 │   │   │   │   ├── ChampRecherche.svelte
 │   │   │   │   ├── ChampTexte.svelte
@@ -1382,9 +1466,12 @@
 │   │   │   │   ├── FiltresMobile.svelte
 │   │   │   │   ├── Formulaire.svelte
 │   │   │   │   ├── GroupeDeBadges.svelte
+│   │   │   │   ├── HeroLandingPage.svelte
 │   │   │   │   ├── Heros.svelte
 │   │   │   │   ├── HerosRiche.svelte
 │   │   │   │   ├── Icone.svelte
+│   │   │   │   ├── IllustrationDragonPasDeResultat.svelte
+│   │   │   │   ├── IllustrationPasDeResultatDeRecherche.svelte
 │   │   │   │   ├── Lien.svelte
 │   │   │   │   ├── MachineAEcrire.svelte
 │   │   │   │   ├── MachineAEcrireCyclique.svelte
@@ -1478,10 +1565,11 @@
 │   ├── package.json
 │   ├── parcours-approfondir.html
 │   ├── parcours-complet.html
+│   ├── parcours-cyberdepart.html
 │   ├── parcours-debuter.html
+│   ├── parcours-securisation-complet.html
+│   ├── parcours-securisation.html
 │   ├── prestataires.html
-│   ├── promouvoir-diagnostic-cyber.html
-│   ├── promouvoir-msc.html
 │   ├── resultats-session-groupe.html
 │   ├── robots.txt
 │   ├── sante.html
@@ -1506,6 +1594,7 @@
 ├── mise-a-jour-financements
 │   ├── .env.template
 │   ├── AGENTS.md
+│   ├── CLAUDE.md
 │   ├── eslint.config.mjs
 │   ├── package.json
 │   ├── src
@@ -1550,4 +1639,4 @@
 ├── scripts
 │   └── get-node-version.sh
 └── shell.nix
-222 directories, 1373 files
+231 directories, 1460 files
