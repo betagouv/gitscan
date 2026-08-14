@@ -121,10 +121,15 @@
 │   │   ├── SoloAccordion
 │   │   │   ├── index.module.scss
 │   │   │   └── index.tsx
+│   │   ├── SortableTable
+│   │   │   ├── index.module.scss
+│   │   │   └── index.tsx
 │   │   ├── UserGroupSelector
 │   │   │   ├── index.module.scss
 │   │   │   └── index.tsx
 │   │   ├── admin
+│   │   │   ├── AdminTabs
+│   │   │   │   └── index.tsx
 │   │   │   ├── BulkImportExport
 │   │   │   │   ├── ImportDialog.tsx
 │   │   │   │   ├── index.module.scss
@@ -208,6 +213,7 @@
 │   │   │   ├── geo-custom-zone-category.ts
 │   │   │   ├── geo-custom-zone.ts
 │   │   │   ├── geo-department.ts
+│   │   │   ├── geo-epci.ts
 │   │   │   ├── geo-region.ts
 │   │   │   ├── geo-sub-custom-zone.ts
 │   │   │   └── geo-zone.ts
@@ -220,12 +226,10 @@
 │   │   ├── tile-set.ts
 │   │   ├── tile.ts
 │   │   ├── ui
-│   │   │   ├── section.ts
 │   │   │   └── select-option.ts
 │   │   ├── user-action-log.ts
 │   │   ├── user-group.ts
 │   │   └── user.ts
-│   ├── routeTree.gen.ts
 │   ├── routes
 │   │   ├── About
 │   │   │   ├── index.module.scss
@@ -238,8 +242,21 @@
 │   │   │   └── index.tsx
 │   │   ├── Statistics
 │   │   │   └── Charts
+│   │   │       ├── ChartLegendToggle.tsx
+│   │   │       ├── PeriodBreakdown.tsx
+│   │   │       ├── activity.ts
+│   │   │       ├── buildAnimation.ts
+│   │   │       ├── chartConfig.tsx
+│   │   │       ├── charts.tsx
 │   │   │       ├── index.module.scss
-│   │   │       └── index.tsx
+│   │   │       ├── index.tsx
+│   │   │       ├── report
+│   │   │       │   ├── ReportDocument.tsx
+│   │   │       │   ├── context.ts
+│   │   │       │   └── index.tsx
+│   │   │       ├── tableColumns.tsx
+│   │   │       ├── tables.tsx
+│   │   │       └── tierUi.tsx
 │   │   ├── Table
 │   │   │   ├── DetectionCountCell
 │   │   │   │   ├── index.module.scss
@@ -262,6 +279,7 @@
 │   │   │   │   │   ├── index.module.scss
 │   │   │   │   │   └── index.tsx
 │   │   │   │   └── CollectiviteList
+│   │   │   │       ├── GeoParentFilter.tsx
 │   │   │   │       ├── index.module.scss
 │   │   │   │       └── index.tsx
 │   │   │   ├── custom-zone
@@ -292,7 +310,11 @@
 │   │   │   │       ├── index.module.scss
 │   │   │   │       └── index.tsx
 │   │   │   ├── imports
-│   │   │   │   └── index.tsx
+│   │   │   │   ├── BatchesTab.tsx
+│   │   │   │   ├── RunsTab.tsx
+│   │   │   │   ├── ZaeTab.tsx
+│   │   │   │   ├── index.tsx
+│   │   │   │   └── shared.tsx
 │   │   │   ├── object-type
 │   │   │   │   ├── ObjectTypeForm
 │   │   │   │   │   ├── index.module.scss
@@ -373,11 +395,12 @@
 │   ├── utils
 │   │   ├── ProtectedRoute.tsx
 │   │   ├── api.ts
+│   │   ├── brevo.ts
 │   │   ├── colors.ts
 │   │   ├── constants.ts
+│   │   ├── download.ts
 │   │   ├── format.ts
 │   │   ├── geojson.ts
-│   │   ├── group-change.ts
 │   │   ├── html.ts
 │   │   ├── link.ts
 │   │   ├── map-url.ts
@@ -392,4 +415,4 @@
 ├── tsconfig.json
 ├── tsconfig.node.json
 └── vite.config.ts
-120 directories, 274 files
+123 directories, 294 files

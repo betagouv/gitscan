@@ -1,24 +1,25 @@
-## Changelog : aigle-frontend (30 derniers jours, au 21 juillet 2026)
+## Changelog : aigle-frontend (30 derniers jours, au 12/08/2026)
 
 ### Résumé
-Les dernières mises à jour d'aigle-frontend se concentrent sur l'amélioration des fonctionnalités d'administration, notamment la gestion des utilisateurs et des groupes, ainsi que sur l'optimisation des processus de déploiement et de gestion des données. Des améliorations ont également été apportées à l'interface DDT (Droit de Préemption Urbain) et à la gestion des signalements.
+Cette période a été marquée par un enrichissement significatif des capacités d'analyse territoriale, notamment avec l'intégration du niveau EPCI et l'amélioration des tableaux de bord. Les outils d'administration ont également été affinés pour offrir une meilleure gestion des collectivités et des droits, tandis que la robustesse technique a été renforcée par une meilleure intégration des outils de suivi et de communication.
 
 ### Évolutions fonctionnelles
-- Amélioration du tableau de bord DDT avec de nouvelles fonctionnalités. [#57](https://github.com/MTES-MCT/aigle-frontend/pull/57)
-- Possibilité de bloquer des zones urbaines. [#58](https://github.com/MTES-MCT/aigle-frontend/pull/58)
-- Ajout d'une interface statistique pour le DDTM (Droit de Préemption Urbain Métropolitain), accessible en interne pour le moment. [#56](https://github.com/MTES-MCT/aigle-frontend/pull/56)
-- Correction d'un bug empêchant le téléchargement du PDF de signalement en l'absence de parcelle. [#58](https://github.com/MTES-MCT/aigle-frontend/pull/58)
-- Ajout d'un bouton pour copier l'UUID dans les vues de tableau de l'administration. [#52](https://github.com/MTES-MCT/aigle-frontend/pull/52)
-- Amélioration de la gestion des collectivités dans l'administration. [#56](https://github.com/MTES-MCT/aigle-frontend/pull/56)
-- Vérification du statut "interne" des utilisateurs lors de la création/modification dans l'administration. [#58](https://github.com/MTES-MCT/aigle-frontend/pull/58)
-- Limitation du nombre d'éditions multiples augmentée à 500. [#57](https://github.com/MTES-MCT/aigle-frontend/pull/57)
+- **Analyse et visualisation de données** :
+    - Amélioration des statistiques et du tableau de bord DDT.
+    - Intégration du niveau territorial EPCI dans l'application.
+    - Ajout de nouvelles vues pour le déploiement, incluant la gestion par lots et par zones d'activités économiques (ZAE).
+- **Administration** :
+    - Optimisation de la gestion des collectivités avec l'ajout de nouveaux filtres.
+    - Amélioration de la gestion des dépassements de groupe (group override).
+    - Nettoyage de l'interface d'administration (masquage des boutons Brevo et Sentry pour les administrateurs).
+- **Corrections d'interface (UX)** :
+    - Correction du placement des messages de feedback.
+    - Résolution d'un problème lors de l'édition multiple.
 
 ### Évolutions techniques
-- Mise en place de la configuration de Brevo pour remplacer Crisp Chat. [#50](https://github.com/MTES-MCT/aigle-frontend/pull/50)
-- Amélioration des processus de déploiement : possibilité de déployer une seule batch ou une seule ZAE. [#55](https://github.com/MTES-MCT/aigle-frontend/pull/55)
-- Possibilité de déployer uniquement des parties spécifiques de l'application. [#56](https://github.com/MTES-MCT/aigle-frontend/pull/56)
-- Suppression des routes liées aux statistiques (nettoyage). [#53](https://github.com/MTES-MCT/aigle-frontend/pull/53)
-- Prévention de l'assignation simultanée de départements et de communes à un groupe d'utilisateurs dans l'administration. [#54](https://github.com/MTES-MCT/aigle-frontend/pull/54)
-
-### Autres changements
-- Suppression d'un statut illégal (rollback). [#54](https://github.com/MTES-MCT/aigle-frontend/pull/54)
+- **Monitoring et Communication** :
+    - Amélioration de l'intégration de Sentry pour le suivi des erreurs.
+    - Optimisation de l'intégration de Brevo pour la gestion des communications.
+- **Authentification et Architecture** :
+    - Correction de la gestion du rafraîchissement des jetons (refresh token).
+    - Optimisation des imports au sein du module d'administration.
