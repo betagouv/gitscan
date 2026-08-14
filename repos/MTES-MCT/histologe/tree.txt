@@ -181,6 +181,7 @@
 │   │   │       │   └── file_delete.js
 │   │   │       ├── form
 │   │   │       │   ├── ajax_form_handler.js
+│   │   │       │   ├── ajax_form_steps.js
 │   │   │       │   └── form_helper.js
 │   │   │       ├── maintenance_banner.js
 │   │   │       ├── matomo
@@ -433,13 +434,14 @@
 │   │   ├── template-postmortem.md
 │   │   └── template-procedure.md
 │   └── postmortems
-│       └── postmortem-2026-05-signature-key.md
+│       ├── postmortem-2026-05-signature-key.md
+│       └── postmortem-2026-08-archivage-brouillon.md
 ├── eslint.vanilla.config.mjs
 ├── eslint.vue.config.mjs
 ├── grumphp.yml
 ├── migrations
 │   ├── .gitignore
-│   └── Version*.php  (127 files)
+│   └── Version*.php  (131 files)
 ├── package-lock.json
 ├── package.json
 ├── phpstan.neon
@@ -616,7 +618,9 @@
 │   │   │   ├── .gitignore
 │   │   │   ├── ForceCloturesDossiersCommand.php
 │   │   │   ├── ForceEsaboraDossierClotureCommand.php
-│   │   │   └── UpdateJobEventErrorsCommand.php
+│   │   │   ├── ManageSignalementAndAddressRelationCommand.php
+│   │   │   ├── UpdateJobEventErrorsCommand.php
+│   │   │   └── UpdateSignalementInvariantRialCommand.php
 │   │   ├── UpdateCommunesCommand.php
 │   │   ├── UpdateMergedCommunesCommand.php
 │   │   ├── UpdateSignalementDocumentFieldsCommand.php
@@ -656,11 +660,13 @@
 │   │   │   ├── CartographieController.php
 │   │   │   ├── CguController.php
 │   │   │   ├── ConfigClubEventController.php
+│   │   │   ├── ConfigInAppCommunicationController.php
 │   │   │   ├── ConfigServiceSecoursController.php
 │   │   │   ├── DashboardController.php
 │   │   │   ├── DashboardTabPanelController.php
 │   │   │   ├── ExportSignalementController.php
 │   │   │   ├── HistoryEntryController.php
+│   │   │   ├── InAppCommunicationController.php
 │   │   │   ├── InterconnexionController.php
 │   │   │   ├── MetabaseController.php
 │   │   │   ├── NotificationController.php
@@ -725,6 +731,7 @@
 │   │   │   ├── DesordrePrecision.yml
 │   │   │   ├── EmailDeliveryIssue.yml
 │   │   │   ├── Epci.yml
+│   │   │   ├── InAppCommunication.yml
 │   │   │   ├── Intervention.yml
 │   │   │   ├── JobEvent.yml
 │   │   │   ├── NewSignalement.yml
@@ -778,6 +785,7 @@
 │   │       ├── LoadEmailDeliveryIssue.php
 │   │       ├── LoadEpciData.php
 │   │       ├── LoadFileData.php
+│   │       ├── LoadInAppCommunicationData.php
 │   │       ├── LoadInterventionData.php
 │   │       ├── LoadJobEventData.php
 │   │       ├── LoadNotification.php
@@ -944,6 +952,8 @@
 │   │   ├── FailedEmail.php
 │   │   ├── File.php
 │   │   ├── HistoryEntry.php
+│   │   ├── InAppCommunication.php
+│   │   ├── InAppCommunicationUser.php
 │   │   ├── Intervention.php
 │   │   ├── JobEvent.php
 │   │   ├── Model
@@ -959,6 +969,7 @@
 │   │   ├── ServiceSecoursRoute.php
 │   │   ├── Signalement.php
 │   │   ├── SignalementDraft.php
+│   │   ├── SignalementProcedure.php
 │   │   ├── SignalementQualification.php
 │   │   ├── SignalementUsager.php
 │   │   ├── Situation.php
@@ -1087,6 +1098,7 @@
 │   │   ├── BailleurClotureProcedureType.php
 │   │   ├── BailleurType.php
 │   │   ├── CloseAffectationType.php
+│   │   ├── CloseSignalementType.php
 │   │   ├── ClotureType.php
 │   │   ├── ClubEventType.php
 │   │   ├── CommuneType.php
@@ -1096,6 +1108,7 @@
 │   │   ├── DemandeLienSignalementType.php
 │   │   ├── EditTagType.php
 │   │   ├── ImportArreteType.php
+│   │   ├── InAppCommunicationType.php
 │   │   ├── MessageBailleurType.php
 │   │   ├── MessageUsagerType.php
 │   │   ├── PartnerPerimetreType.php
@@ -1116,6 +1129,7 @@
 │   │   ├── SearchDashboardAverifierType.php
 │   │   ├── SearchDraftType.php
 │   │   ├── SearchHistoryEntryType.php
+│   │   ├── SearchInAppCommunicationType.php
 │   │   ├── SearchInterconnexionType.php
 │   │   ├── SearchNotificationType.php
 │   │   ├── SearchPartnerType.php
@@ -1253,6 +1267,8 @@
 │   │   ├── FailedEmailRepository.php
 │   │   ├── FileRepository.php
 │   │   ├── HistoryEntryRepository.php
+│   │   ├── InAppCommunicationRepository.php
+│   │   ├── InAppCommunicationUserRepository.php
 │   │   ├── InterventionRepository.php
 │   │   ├── JobEventRepository.php
 │   │   ├── NotificationRepository.php
@@ -1302,6 +1318,7 @@
 │   │   │       └── ZonePaginatorQuery.php
 │   │   ├── ServiceSecoursRouteRepository.php
 │   │   ├── SignalementDraftRepository.php
+│   │   ├── SignalementProcedureRepository.php
 │   │   ├── SignalementQualificationRepository.php
 │   │   ├── SignalementRepository.php
 │   │   ├── SignalementUsagerRepository.php
@@ -1553,6 +1570,7 @@
 │   │   │   ├── SearchCommune.php
 │   │   │   ├── SearchDashboardAverifier.php
 │   │   │   ├── SearchDraft.php
+│   │   │   ├── SearchInAppCommunication.php
 │   │   │   ├── SearchInterconnexion.php
 │   │   │   ├── SearchNotification.php
 │   │   │   ├── SearchPartner.php
@@ -1607,6 +1625,8 @@
 │   │   │   │   │   ├── SignalementFeedbackUsagerThirdMailer.php
 │   │   │   │   │   ├── SignalementFeedbackUsagerWithResponseMailer.php
 │   │   │   │   │   ├── SignalementFeedbackUsagerWithoutResponseMailer.php
+│   │   │   │   │   ├── SignalementInjonctionClosedBailleurMailer.php
+│   │   │   │   │   ├── SignalementInjonctionClosedUsagerMailer.php
 │   │   │   │   │   ├── SignalementInviteTiersMailer.php
 │   │   │   │   │   ├── SignalementLienSuiviMailer.php
 │   │   │   │   │   ├── SignalementNewMailer.php
@@ -1717,6 +1737,7 @@
 │   │   │   ├── SignalementDuplicateChecker.php
 │   │   │   ├── SignalementFileProcessor.php
 │   │   │   ├── SignalementInputValueMapper.php
+│   │   │   ├── SignalementProcedureService.php
 │   │   │   ├── SignalementProfileOccupantMapper.php
 │   │   │   ├── SignalementQualificationNde.php
 │   │   │   ├── SignalementSameAddressArreteFinder.php
@@ -1726,6 +1747,7 @@
 │   │   │   │   ├── SuiviCategoryMapper.php
 │   │   │   │   ├── SuiviDescriptionHelper.php
 │   │   │   │   ├── SuiviHelper.php
+│   │   │   │   ├── SuiviMentionExtractor.php
 │   │   │   │   ├── SuiviRecipient.php
 │   │   │   │   ├── SuiviSeenMarker.php
 │   │   │   │   └── SuiviTransformerService.php
@@ -1897,6 +1919,7 @@
 │   │   └── signalement
 │   │       ├── _panel-add-suivi.html.twig
 │   │       ├── _panel-close-affectation.html.twig
+│   │       ├── _panel-close-signalement.html.twig
 │   │       ├── conclude-procedure.html.twig
 │   │       ├── desordre-precision-label.html.twig
 │   │       ├── display_alert.html.twig
@@ -2016,6 +2039,11 @@
 │   │   ├── header_main_menu.html.twig
 │   │   ├── history-entry
 │   │   │   └── details.html.twig
+│   │   ├── in-app-communication
+│   │   │   ├── add.html.twig
+│   │   │   ├── edit.html.twig
+│   │   │   ├── index.html.twig
+│   │   │   └── show.html.twig
 │   │   ├── indicateurs_pnlhi
 │   │   │   └── index.html.twig
 │   │   ├── interconnexion
@@ -2057,6 +2085,7 @@
 │   │   │   ├── list
 │   │   │   │   └── index.html.twig
 │   │   │   ├── view
+│   │   │   │   ├── _destinataires-du-message.html.twig
 │   │   │   │   ├── _menu_actions_photo_situation.html.twig
 │   │   │   │   ├── _static_picto.html.twig
 │   │   │   │   ├── add-edit-suivi-form.html.twig
@@ -2392,7 +2421,6 @@
 │   │   │   │   ├── AutoAssignerSimulatorControllerTest.php
 │   │   │   │   ├── BackArchivedPartnerControllerTest.php
 │   │   │   │   ├── BackBailleurControllerTest.php
-│   │   │   │   ├── BackTagControllerTest.php
 │   │   │   │   ├── BackTerritoryControllerTest.php
 │   │   │   │   ├── BackUserControllerTest.php
 │   │   │   │   ├── BackZoneControllerTest.php
@@ -2402,6 +2430,7 @@
 │   │   │   │   ├── DashboardControllerTest.php
 │   │   │   │   ├── DashboardTabPanelControllerTest.php
 │   │   │   │   ├── HistoryEntryControllerTest.php
+│   │   │   │   ├── InAppCommunicationControllerTest.php
 │   │   │   │   ├── InterconnexionControllerTest.php
 │   │   │   │   ├── ProfilControllerTest.php
 │   │   │   │   ├── SignalementActionControllerTest.php
@@ -2413,6 +2442,7 @@
 │   │   │   │   ├── SignalementInjonctionControllerTest.php
 │   │   │   │   ├── SignalementListControllerTest.php
 │   │   │   │   ├── SignalementVisitesControllerTest.php
+│   │   │   │   ├── TagControllerTest.php
 │   │   │   │   ├── TerritoryFilesControllerTest.php
 │   │   │   │   ├── UserApiPermissionControllerTest.php
 │   │   │   │   └── UserSearchFilterControllerTest.php
@@ -2493,6 +2523,7 @@
 │   │   │   ├── DesordreCritereRepositoryTest.php
 │   │   │   ├── EpciRepositoryTest.php
 │   │   │   ├── FileRepositoryTest.php
+│   │   │   ├── NotificationRepositoryTest.php
 │   │   │   ├── PartnerRepositoryTest.php
 │   │   │   ├── Query
 │   │   │   │   ├── Address
@@ -2824,7 +2855,8 @@
 │   │   │   │   ├── SignalementProfileOccupantMapperTest.php
 │   │   │   │   ├── SignalementSameAddressArreteFinderTest.php
 │   │   │   │   └── Suivi
-│   │   │   │       └── HistoriqueEvenementsGeneratorTest.php
+│   │   │   │       ├── HistoriqueEvenementsGeneratorTest.php
+│   │   │   │       └── SuiviMentionExtractorTest.php
 │   │   │   └── TimezoneProviderTest.php
 │   │   ├── Twig
 │   │   │   └── AppExtensionTest.php
@@ -2997,6 +3029,7 @@
 │                   └── token.json
 ├── translations
 │   ├── .gitignore
-│   └── security.fr.yaml
+│   ├── security.fr.yaml
+│   └── validators.fr.xlf
 └── webpack.config.js
-503 directories, 2641 files
+504 directories, 2677 files
