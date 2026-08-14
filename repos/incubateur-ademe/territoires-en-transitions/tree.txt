@@ -254,6 +254,8 @@
 │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   ├── demarche-pcaet
 │   │   │   │   │   │   │   │   ├── [demarcheId]
+│   │   │   │   │   │   │   │   │   ├── documents
+│   │   │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   │   ├── indicateurs
 │   │   │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   │   ├── layout.tsx
@@ -990,6 +992,7 @@
 │   │   │   │       ├── use-list-tags.ts
 │   │   │   │       └── use-update-tag.ts
 │   │   │   ├── demarches
+│   │   │   │   ├── active-topic.ts
 │   │   │   │   ├── completion.spec.ts
 │   │   │   │   ├── completion.ts
 │   │   │   │   ├── components
@@ -999,6 +1002,8 @@
 │   │   │   │   │   ├── banner.tsx
 │   │   │   │   │   ├── description.field.tsx
 │   │   │   │   │   ├── detail.layout.tsx
+│   │   │   │   │   ├── document-upload.button.tsx
+│   │   │   │   │   ├── documents.table.tsx
 │   │   │   │   │   ├── historique.section.tsx
 │   │   │   │   │   ├── pilotes-info.tooltip.tsx
 │   │   │   │   │   ├── pilotes.field.tsx
@@ -1009,6 +1014,7 @@
 │   │   │   │   │   ├── section.tsx
 │   │   │   │   │   ├── shell.tsx
 │   │   │   │   │   ├── statut-publication.tsx
+│   │   │   │   │   ├── steps-nav.tsx
 │   │   │   │   │   └── use-avance-side-panel.tsx
 │   │   │   │   ├── pcaet
 │   │   │   │   │   ├── assert-can-mutate.ts
@@ -1016,44 +1022,39 @@
 │   │   │   │   │   │   ├── contacts.modal.tsx
 │   │   │   │   │   │   ├── contacts.table.tsx
 │   │   │   │   │   │   ├── demarche-menu.button.tsx
-│   │   │   │   │   │   ├── header
-│   │   │   │   │   │   │   ├── date-lancement-field.tsx
-│   │   │   │   │   │   │   ├── date-modification-item.tsx
-│   │   │   │   │   │   │   ├── depot-date-item.tsx
-│   │   │   │   │   │   │   ├── index.tsx
-│   │   │   │   │   │   │   ├── obligation-field.tsx
-│   │   │   │   │   │   │   ├── obligation-statut-badges.tsx
-│   │   │   │   │   │   │   ├── pilotes-field.tsx
-│   │   │   │   │   │   │   ├── separator.tsx
-│   │   │   │   │   │   │   └── statut-badges.tsx
-│   │   │   │   │   │   └── pcaet-documents-table.tsx
+│   │   │   │   │   │   └── header
+│   │   │   │   │   │       ├── date-lancement-field.tsx
+│   │   │   │   │   │       ├── date-modification-item.tsx
+│   │   │   │   │   │       ├── depot-date-item.tsx
+│   │   │   │   │   │       ├── index.tsx
+│   │   │   │   │   │       ├── obligation-field.tsx
+│   │   │   │   │   │       ├── obligation-statut-badges.tsx
+│   │   │   │   │   │       ├── pilotes-field.tsx
+│   │   │   │   │   │       ├── separator.tsx
+│   │   │   │   │   │       └── statut-badges.tsx
 │   │   │   │   │   ├── constants.ts
 │   │   │   │   │   ├── create.page.tsx
 │   │   │   │   │   ├── data
 │   │   │   │   │   │   ├── use-apply-transition.ts
 │   │   │   │   │   │   ├── use-delete-demarche-pcaet.ts
 │   │   │   │   │   │   ├── use-demarche.ts
+│   │   │   │   │   │   ├── use-documents.ts
 │   │   │   │   │   │   ├── use-list-demarches-pcaet.ts
 │   │   │   │   │   │   └── use-set-demarche-pcaet-publication.ts
 │   │   │   │   │   ├── diagnostic
+│   │   │   │   │   │   ├── data
+│   │   │   │   │   │   │   ├── use-diagnostic.ts
+│   │   │   │   │   │   │   └── use-source-labels.ts
 │   │   │   │   │   │   ├── diagnostic-topics-section.tsx
 │   │   │   │   │   │   ├── diagnostic.page.tsx
 │   │   │   │   │   │   ├── indicateurs-grid
-│   │   │   │   │   │   │   ├── build-topic-years.spec.ts
-│   │   │   │   │   │   │   ├── build-topic-years.ts
-│   │   │   │   │   │   │   ├── enr.grid-shape.ts
-│   │   │   │   │   │   │   ├── polluants-atmospheriques.grid-shape.spec.ts
-│   │   │   │   │   │   │   ├── polluants-atmospheriques.grid-shape.ts
-│   │   │   │   │   │   │   ├── profil-energie-climat.grid-shape.ts
-│   │   │   │   │   │   │   ├── sequestration.grid-shape.ts
-│   │   │   │   │   │   │   ├── topic-grid-shapes.ts
+│   │   │   │   │   │   │   ├── topic-grid.adapter.spec.ts
+│   │   │   │   │   │   │   ├── topic-grid.adapter.ts
 │   │   │   │   │   │   │   ├── topic-grid.view.tsx
 │   │   │   │   │   │   │   └── use-topic-grid.ts
 │   │   │   │   │   │   ├── topic-diagnostic-panel-content.tsx
-│   │   │   │   │   │   ├── topic-indicateur-modal-content.tsx
 │   │   │   │   │   │   ├── topic-tab.tsx
-│   │   │   │   │   │   ├── use-grid-state.spec.ts
-│   │   │   │   │   │   ├── use-grid-state.ts
+│   │   │   │   │   │   ├── use-topic-param.ts
 │   │   │   │   │   │   ├── vulnerabilite-table.tsx
 │   │   │   │   │   │   └── vulnerabilite-territoire.page.tsx
 │   │   │   │   │   ├── documents.page.tsx
@@ -1062,7 +1063,6 @@
 │   │   │   │   │   │   ├── demarche-pcaet-actions.menu.tsx
 │   │   │   │   │   │   ├── demarches-pcaet.table.tsx
 │   │   │   │   │   │   └── list-demarches-pcaet.page.tsx
-│   │   │   │   │   ├── pcaet-documents.constants.ts
 │   │   │   │   │   ├── plan-actions.page.tsx
 │   │   │   │   │   ├── use-is-banner-visible.ts
 │   │   │   │   │   ├── use-is-enabled.ts
@@ -1077,6 +1077,8 @@
 │   │   │   │   │       │   └── dreal-statut-badge.tsx
 │   │   │   │   │       ├── vue-dreal-dashboard.page.tsx
 │   │   │   │   │       └── vue-dreal.mock.ts
+│   │   │   │   ├── steps.spec.ts
+│   │   │   │   ├── steps.ts
 │   │   │   │   ├── types.ts
 │   │   │   │   └── use-demarche-id.ts
 │   │   │   ├── indicateurs
@@ -1100,6 +1102,7 @@
 │   │   │   │       ├── grid
 │   │   │   │       │   ├── __tests__
 │   │   │   │       │   │   ├── add-year-column-header.spec.tsx
+│   │   │   │       │   │   ├── cell-references.stories.tsx
 │   │   │   │       │   │   ├── grid-fixtures.ts
 │   │   │   │       │   │   ├── grid-model.spec.ts
 │   │   │   │       │   │   ├── indicateur-valeur.cell.spec.tsx
@@ -1116,6 +1119,7 @@
 │   │   │   │       │   ├── cell-editability.ts
 │   │   │   │       │   ├── cell-input.tsx
 │   │   │   │       │   ├── cell-props.ts
+│   │   │   │       │   ├── cell-references.tsx
 │   │   │   │       │   ├── column-has-values.spec.ts
 │   │   │   │       │   ├── column-has-values.ts
 │   │   │   │       │   ├── grid-body.tsx
@@ -1337,6 +1341,8 @@
 │   │   │   │   │   │   │   │   │   │   ├── budget-per-year-form.context.tsx
 │   │   │   │   │   │   │   │   │   │   ├── budget-per-year.cells.tsx
 │   │   │   │   │   │   │   │   │   │   ├── budget-per-year.form-fields.tsx
+│   │   │   │   │   │   │   │   │   │   ├── compute-budget-totals.spec.ts
+│   │   │   │   │   │   │   │   │   │   ├── compute-budget-totals.ts
 │   │   │   │   │   │   │   │   │   │   ├── delete-budget.button.tsx
 │   │   │   │   │   │   │   │   │   │   └── index.tsx
 │   │   │   │   │   │   │   │   │   ├── summary-table
@@ -1734,11 +1740,6 @@
 │   │   │   │   │   │   ├── layout
 │   │   │   │   │   │   │   ├── container.tsx
 │   │   │   │   │   │   │   └── header.tsx
-│   │   │   │   │   │   ├── rules
-│   │   │   │   │   │   │   ├── is-acte-engagement-visible.spec.ts
-│   │   │   │   │   │   │   ├── is-acte-engagement-visible.ts
-│   │   │   │   │   │   │   ├── is-candidature-documents-visible.spec.ts
-│   │   │   │   │   │   │   └── is-candidature-documents-visible.ts
 │   │   │   │   │   │   └── table
 │   │   │   │   │   │       ├── format-reponse-attendue.spec.ts
 │   │   │   │   │   │       ├── format-reponse-attendue.ts
@@ -1747,22 +1748,28 @@
 │   │   │   │   │   │       └── sections
 │   │   │   │   │   │           ├── acte-engagement.section.spec.tsx
 │   │   │   │   │   │           ├── acte-engagement.section.tsx
+│   │   │   │   │   │           ├── answer-stack.tsx
 │   │   │   │   │   │           ├── candidature-documents
 │   │   │   │   │   │           │   ├── candidature-documents.section.spec.tsx
-│   │   │   │   │   │           │   ├── candidature-documents.section.tsx
-│   │   │   │   │   │           │   ├── delete-preuve-button.tsx
-│   │   │   │   │   │           │   └── rename-preuve-button.tsx
+│   │   │   │   │   │           │   └── candidature-documents.section.tsx
+│   │   │   │   │   │           ├── checklist-preuve.ts
+│   │   │   │   │   │           ├── delete-preuve-button.tsx
 │   │   │   │   │   │           ├── document-line.tsx
 │   │   │   │   │   │           ├── download-preuve-button.tsx
+│   │   │   │   │   │           ├── preuves-list.tsx
+│   │   │   │   │   │           ├── rename-preuve-button.tsx
 │   │   │   │   │   │           ├── upload-preuve-button.tsx
 │   │   │   │   │   │           └── use-download-preuve.ts
 │   │   │   │   │   ├── checklist-page-header
 │   │   │   │   │   │   ├── checklist-page-header.tsx
 │   │   │   │   │   │   ├── conseiller-referent.item.tsx
+│   │   │   │   │   │   ├── propagate-statut-to-taches.spec.ts
+│   │   │   │   │   │   ├── propagate-statut-to-taches.ts
 │   │   │   │   │   │   ├── referentiel-menu.button.tsx
 │   │   │   │   │   │   ├── referents-line.tsx
 │   │   │   │   │   │   ├── role-mesure.item.tsx
 │   │   │   │   │   │   ├── use-conseiller-referent.ts
+│   │   │   │   │   │   ├── use-get-sous-action-of-tache.ts
 │   │   │   │   │   │   └── use-role-mesure.ts
 │   │   │   │   │   ├── checklist-view-model.ts
 │   │   │   │   │   ├── checklist.context.tsx
@@ -1920,6 +1927,7 @@
 │   │   │   │   │   │   ├── PreuveReglementaire.stories.tsx
 │   │   │   │   │   │   ├── PreuveReglementaire.tsx
 │   │   │   │   │   │   ├── canUserUpdateAuditReport.ts
+│   │   │   │   │   │   ├── download-fichier.ts
 │   │   │   │   │   │   ├── fixture.ts
 │   │   │   │   │   │   ├── openPreuve.ts
 │   │   │   │   │   │   ├── saveBlob.ts
@@ -1940,6 +1948,7 @@
 │   │   │   │   │   │   ├── use-upload-file-to-collectivite-library.ts
 │   │   │   │   │   │   ├── useAddFileToLib.ts
 │   │   │   │   │   │   ├── useCollectiviteBucketId.ts
+│   │   │   │   │   │   ├── validate-file.spec.ts
 │   │   │   │   │   │   └── validate-file.ts
 │   │   │   │   │   ├── use-action-preuves-count.ts
 │   │   │   │   │   ├── useAddPreuveToAction.ts
@@ -2645,6 +2654,32 @@
 │   │   │   │   │   │   ├── delete-demarche-pcaet.router.e2e-spec.ts
 │   │   │   │   │   │   ├── delete-demarche-pcaet.router.ts
 │   │   │   │   │   │   └── delete-demarche-pcaet.service.ts
+│   │   │   │   │   ├── demarches-pcaet.test-fixture.ts
+│   │   │   │   │   ├── diagnostic
+│   │   │   │   │   │   └── pcaet-diagnostic.router.ts
+│   │   │   │   │   ├── documents
+│   │   │   │   │   │   ├── add-document
+│   │   │   │   │   │   │   ├── add-document.errors.ts
+│   │   │   │   │   │   │   ├── add-document.input.ts
+│   │   │   │   │   │   │   ├── add-document.router.ts
+│   │   │   │   │   │   │   └── add-document.service.ts
+│   │   │   │   │   │   ├── documents.router.e2e-spec.ts
+│   │   │   │   │   │   ├── list-documents
+│   │   │   │   │   │   │   ├── list-documents.errors.ts
+│   │   │   │   │   │   │   ├── list-documents.input.ts
+│   │   │   │   │   │   │   ├── list-documents.router.ts
+│   │   │   │   │   │   │   └── list-documents.service.ts
+│   │   │   │   │   │   ├── pcaet-documents.router.ts
+│   │   │   │   │   │   ├── remove-document
+│   │   │   │   │   │   │   ├── remove-document.errors.ts
+│   │   │   │   │   │   │   ├── remove-document.input.ts
+│   │   │   │   │   │   │   ├── remove-document.router.ts
+│   │   │   │   │   │   │   └── remove-document.service.ts
+│   │   │   │   │   │   └── set-document-couverture
+│   │   │   │   │   │       ├── set-document-couverture.errors.ts
+│   │   │   │   │   │       ├── set-document-couverture.input.ts
+│   │   │   │   │   │       ├── set-document-couverture.router.ts
+│   │   │   │   │   │       └── set-document-couverture.service.ts
 │   │   │   │   │   ├── get-demarche-pcaet
 │   │   │   │   │   │   ├── get-demarche-pcaet.errors.ts
 │   │   │   │   │   │   ├── get-demarche-pcaet.input.ts
@@ -2652,6 +2687,12 @@
 │   │   │   │   │   │   ├── get-demarche-pcaet.router.e2e-spec.ts
 │   │   │   │   │   │   ├── get-demarche-pcaet.router.ts
 │   │   │   │   │   │   └── get-demarche-pcaet.service.ts
+│   │   │   │   │   ├── get-diagnostic
+│   │   │   │   │   │   ├── get-diagnostic.errors.ts
+│   │   │   │   │   │   ├── get-diagnostic.input.ts
+│   │   │   │   │   │   ├── get-diagnostic.router.e2e-spec.ts
+│   │   │   │   │   │   ├── get-diagnostic.router.ts
+│   │   │   │   │   │   └── get-diagnostic.service.ts
 │   │   │   │   │   ├── list-demarches-pcaet
 │   │   │   │   │   │   ├── list-demarches-pcaet.errors.ts
 │   │   │   │   │   │   ├── list-demarches-pcaet.input.ts
@@ -2660,6 +2701,12 @@
 │   │   │   │   │   │   └── list-demarches-pcaet.service.ts
 │   │   │   │   │   ├── pcaet.module.ts
 │   │   │   │   │   ├── pcaet.router.ts
+│   │   │   │   │   ├── set-diagnostic-years
+│   │   │   │   │   │   ├── set-diagnostic-years.errors.ts
+│   │   │   │   │   │   ├── set-diagnostic-years.input.ts
+│   │   │   │   │   │   ├── set-diagnostic-years.router.e2e-spec.ts
+│   │   │   │   │   │   ├── set-diagnostic-years.router.ts
+│   │   │   │   │   │   └── set-diagnostic-years.service.ts
 │   │   │   │   │   ├── set-publication-status
 │   │   │   │   │   │   ├── set-publication-status.errors.ts
 │   │   │   │   │   │   ├── set-publication-status.input.ts
@@ -2668,10 +2715,16 @@
 │   │   │   │   │   │   ├── set-publication-status.router.ts
 │   │   │   │   │   │   └── set-publication-status.service.ts
 │   │   │   │   │   ├── shared
+│   │   │   │   │   │   ├── demarche-pcaet-diagnostic.repository.ts
+│   │   │   │   │   │   ├── demarche-pcaet-diagnostic.service.ts
 │   │   │   │   │   │   ├── demarche-pcaet-guards.service.ts
 │   │   │   │   │   │   ├── demarche-pcaet-pilotes.repository.ts
 │   │   │   │   │   │   ├── demarche-pcaet-ref.repository.ts
 │   │   │   │   │   │   └── models
+│   │   │   │   │   │       ├── demarche-pcaet-diagnostic-snapshot.table.ts
+│   │   │   │   │   │       ├── demarche-pcaet-diagnostic-state.table.ts
+│   │   │   │   │   │       ├── demarche-pcaet-topic-row.table.ts
+│   │   │   │   │   │       ├── demarche-pcaet-topic.table.ts
 │   │   │   │   │   │       └── demarche-pcaet.dto.ts
 │   │   │   │   │   └── update-demarche-pcaet
 │   │   │   │   │       ├── update-demarche-pcaet.errors.ts
@@ -2681,7 +2734,12 @@
 │   │   │   │   │       ├── update-demarche-pcaet.router.ts
 │   │   │   │   │       └── update-demarche-pcaet.service.ts
 │   │   │   │   └── shared
+│   │   │   │       ├── demarche-documents.repository.ts
 │   │   │   │       └── models
+│   │   │   │           ├── demarche-document-couverture.table.ts
+│   │   │   │           ├── demarche-document-definition.table.ts
+│   │   │   │           ├── demarche-document-substitution.table.ts
+│   │   │   │           ├── demarche-document.table.ts
 │   │   │   │           ├── demarche-pilote.table.ts
 │   │   │   │           ├── demarche-status-history.table.ts
 │   │   │   │           └── demarche.table.ts
@@ -4573,7 +4631,6 @@
 │   │   │   │   └── types.ts
 │   │   │   └── utils
 │   │   │       ├── convertNameToSlug.ts
-│   │   │       ├── getFormattedNumber.ts
 │   │   │       ├── getLocalDateString.ts
 │   │   │       ├── getUpdatedMetadata.ts
 │   │   │       ├── labels.ts
@@ -4735,6 +4792,7 @@
 │   │   ├── restore-config.yml
 │   │   └── restore.sh
 │   ├── scripts
+│   │   ├── generate_code_siren_commune.py
 │   │   └── run_tests.sh
 │   ├── seed
 │   │   ├── README.md
@@ -4759,6 +4817,7 @@
 │   │   │   ├── 22-insert_action_discussion.sql
 │   │   │   ├── 23-cot.sql
 │   │   │   ├── 24-insert-fake-action-impact.sql
+│   │   │   ├── 25-insert_fake_demarche_pcaet.sql
 │   │   │   └── README.md
 │   │   ├── geojson
 │   │   │   ├── commune_geojson.sql
@@ -4773,7 +4832,8 @@
 │   │   │   ├── 04-banatic.sql
 │   │   │   ├── 05-competence_banatic.sql
 │   │   │   ├── 06-complete_collectivite_with_import.sql
-│   │   │   └── 07-banatic_2025_competence_par_collectivite.sql
+│   │   │   ├── 07-banatic_2025_competence_par_collectivite.sql
+│   │   │   └── 08-code_siren_commune.sql
 │   │   ├── seed.sh
 │   │   ├── test
 │   │   │   ├── 00-pgtap.sql
@@ -4906,7 +4966,12 @@
 │   │   │   ├── delete-referentiels-old-views.sql
 │   │   │   ├── delete_navigation_plans-rpc.sql
 │   │   │   ├── demarche
-│   │   │   │   └── demarche.sql
+│   │   │   │   ├── demarche.sql
+│   │   │   │   ├── demarche_documents.sql
+│   │   │   │   ├── demarche_documents_etape.sql
+│   │   │   │   ├── pcaet_diagnostic.sql
+│   │   │   │   ├── pcaet_documents_amont.sql
+│   │   │   │   └── pcaet_documents_aval.sql
 │   │   │   ├── evaluation
 │   │   │   │   ├── action_score.sql
 │   │   │   │   ├── add_personnalisation_question_competence.sql
@@ -5050,7 +5115,7 @@
 │   │   │   │   ├── prerequis@v2.11.0.sql
 │   │   │   │   ├── prerequis@v2.42.0.sql
 │   │   │   │   ├── prerequis_fix.sql
-│   │   │   │   ├── preuve_*.sql  (10 files)
+│   │   │   │   ├── preuve_*.sql  (11 files)
 │   │   │   │   ├── schema.sql
 │   │   │   │   └── suivi_audit.sql
 │   │   │   ├── migrate_calendrier_to_description.sql
@@ -5450,7 +5515,12 @@
 │   │   │   ├── delete-referentiels-old-views.sql
 │   │   │   ├── delete_navigation_plans-rpc.sql
 │   │   │   ├── demarche
-│   │   │   │   └── demarche.sql
+│   │   │   │   ├── demarche.sql
+│   │   │   │   ├── demarche_documents.sql
+│   │   │   │   ├── demarche_documents_etape.sql
+│   │   │   │   ├── pcaet_diagnostic.sql
+│   │   │   │   ├── pcaet_documents_amont.sql
+│   │   │   │   └── pcaet_documents_aval.sql
 │   │   │   ├── evaluation
 │   │   │   │   ├── action_score.sql
 │   │   │   │   ├── add_personnalisation_question_competence.sql
@@ -5594,7 +5664,7 @@
 │   │   │   │   ├── prerequis@v2.11.0.sql
 │   │   │   │   ├── prerequis@v2.42.0.sql
 │   │   │   │   ├── prerequis_fix.sql
-│   │   │   │   ├── preuve_*.sql  (10 files)
+│   │   │   │   ├── preuve_*.sql  (11 files)
 │   │   │   │   ├── schema.sql
 │   │   │   │   └── suivi_audit.sql
 │   │   │   ├── migrate_calendrier_to_description.sql
@@ -5993,7 +6063,12 @@
 │   │       ├── delete-referentiels-old-views.sql
 │   │       ├── delete_navigation_plans-rpc.sql
 │   │       ├── demarche
-│   │       │   └── demarche.sql
+│   │       │   ├── demarche.sql
+│   │       │   ├── demarche_documents.sql
+│   │       │   ├── demarche_documents_etape.sql
+│   │       │   ├── pcaet_diagnostic.sql
+│   │       │   ├── pcaet_documents_amont.sql
+│   │       │   └── pcaet_documents_aval.sql
 │   │       ├── evaluation
 │   │       │   ├── action_score.sql
 │   │       │   ├── add_personnalisation_question_competence.sql
@@ -6137,7 +6212,7 @@
 │   │       │   ├── prerequis@v2.11.0.sql
 │   │       │   ├── prerequis@v2.42.0.sql
 │   │       │   ├── prerequis_fix.sql
-│   │       │   ├── preuve_*.sql  (10 files)
+│   │       │   ├── preuve_*.sql  (11 files)
 │   │       │   ├── schema.sql
 │   │       │   └── suivi_audit.sql
 │   │       ├── migrate_calendrier_to_description.sql
@@ -6440,6 +6515,8 @@
 │       │   ├── bucket_rls_super_admin.sql
 │       │   ├── collectivite_test.sql
 │       │   └── identite.sql
+│       ├── demarche
+│       │   └── pcaet_diagnostic.sql
 │       ├── evaluation
 │       │   ├── contenu_json.sql
 │       │   ├── score_service.sql
@@ -6624,13 +6701,18 @@
 │   │   │   │   ├── candidature-documents-verrou.spec.ts
 │   │   │   │   ├── checklist-acte-engagement.spec.ts
 │   │   │   │   ├── checklist-candidature-documents.spec.ts
+│   │   │   │   ├── checklist-completude-role-mesure.spec.ts
+│   │   │   │   ├── checklist-documents-coexistence.spec.ts
 │   │   │   │   ├── checklist-role-mesures.spec.ts
 │   │   │   │   ├── checklist-score-minimum.spec.ts
 │   │   │   │   ├── checklist-statut-refresh.spec.ts
 │   │   │   │   ├── cloturer-audit.spec.ts
+│   │   │   │   ├── demande-audit-pieces-attendues.spec.ts
 │   │   │   │   ├── demandes-audit-labellisation.spec.ts
 │   │   │   │   ├── labellisation.pom.ts
+│   │   │   │   ├── legacy-documents-objet.spec.ts
 │   │   │   │   ├── new-audit-labellisation.pom.ts
+│   │   │   │   ├── premiere-etoile-pieces-attendues.spec.ts
 │   │   │   │   ├── rapport-audit-bibliotheque.spec.ts
 │   │   │   │   ├── request-labellisation-audit-cot.spec.ts
 │   │   │   │   ├── request-labellisation-from-new-checklist.spec.ts
@@ -6840,6 +6922,9 @@
 │   │   │   │   ├── structure-tag.schema.ts
 │   │   │   │   └── tag.base.schema.ts
 │   │   │   ├── demarches
+│   │   │   │   ├── demarche-document.schema.ts
+│   │   │   │   ├── demarche-documents.rules.spec.ts
+│   │   │   │   ├── demarche-documents.rules.ts
 │   │   │   │   ├── demarche-type.enum.schema.ts
 │   │   │   │   ├── demarche.schema.ts
 │   │   │   │   ├── index.ts
@@ -6849,7 +6934,14 @@
 │   │   │   │       ├── demarche-pcaet-status.enum.schema.ts
 │   │   │   │       ├── demarche-pcaet.schema.ts
 │   │   │   │       ├── demarche-pcaet.workflow.spec.ts
-│   │   │   │       └── demarche-pcaet.workflow.ts
+│   │   │   │       ├── demarche-pcaet.workflow.ts
+│   │   │   │       ├── diagnostic
+│   │   │   │       │   ├── demarche-pcaet-diagnostic.rules.spec.ts
+│   │   │   │       │   ├── demarche-pcaet-diagnostic.rules.ts
+│   │   │   │       │   ├── demarche-pcaet-diagnostic.schema.ts
+│   │   │   │       │   └── demarche-pcaet-topic-kind.enum.schema.ts
+│   │   │   │       ├── pcaet-documents.rules.spec.ts
+│   │   │   │       └── pcaet-documents.rules.ts
 │   │   │   ├── indicateurs
 │   │   │   │   ├── definitions
 │   │   │   │   │   ├── indicateur-definition.schema.ts
@@ -6970,12 +7062,16 @@
 │   │   │   │   │   │   ├── can-user-update-candidature-documents.rule.spec.ts
 │   │   │   │   │   │   └── can-user-update-candidature-documents.rule.ts
 │   │   │   │   │   ├── etoile-action-condition-definition.schema.ts
+│   │   │   │   │   ├── expected-documents
+│   │   │   │   │   │   ├── expected-documents.rule.spec.ts
+│   │   │   │   │   │   └── expected-documents.rule.ts
 │   │   │   │   │   ├── labellisation-audit.schema.ts
 │   │   │   │   │   ├── labellisation-critere.schema.ts
 │   │   │   │   │   ├── labellisation-demande.schema.ts
 │   │   │   │   │   ├── labellisation-etoile-definition.schema.ts
 │   │   │   │   │   ├── labellisation-etoile.enum.schema.ts
 │   │   │   │   │   ├── labellisation.schema.ts
+│   │   │   │   │   ├── objet-preuve.enum.schema.ts
 │   │   │   │   │   ├── parcours-labellisation-status.enum.ts
 │   │   │   │   │   ├── parcours-labellisation.schema.ts
 │   │   │   │   │   ├── request-labellisation
@@ -7153,6 +7249,8 @@
 │   │   │   │   │       ├── infos.tsx
 │   │   │   │   │       └── statuts.tsx
 │   │   │   │   ├── compose-document.ts
+│   │   │   │   ├── compute-budget-totals.spec.ts
+│   │   │   │   ├── compute-budget-totals.ts
 │   │   │   │   ├── external-helpers.ts
 │   │   │   │   ├── external-types.ts
 │   │   │   │   ├── scores
@@ -7830,4 +7928,4 @@
 ├── tsconfig.json
 ├── vitest.config.ts
 └── vitest.workspace.ts
-1336 directories, 6754 files
+1348 directories, 6843 files
