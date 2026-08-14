@@ -1,10 +1,8 @@
-## Changelog : upptime (30 derniers jours, au 10 août 2026)
+## Changelog : upptime (30 derniers jours, au 14 août 2026)
 
 ### Résumé
-Le projet est en phase de fonctionnement nominal. L'activité récente est principalement centrée sur le monitoring automatique des services et l'actualisation régulière des indicateurs de disponibilité et de performance.
-
-### Évolutions techniques
-- Mise à jour de la version du package principal `@upptime` vers la v1.43.13.
+Le projet est en phase de fonctionnement nominal. L'activité récente est exclusivement composée de l'exécution automatisée des tâches de monitoring, garantissant la mise à jour continue des indicateurs de disponibilité et des rapports visuels.
 
 ### Autres changements
-- Actualisation automatique des graphiques de performance et des résumés de statut (README et page de statut) par le bot de monitoring.
+- Mise à jour automatique et régulière des graphiques de performance.
+- Actualisation continue du résumé de statut et de la documentation (README) pour refléter l'état des services monitorés.
