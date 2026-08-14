@@ -1,5 +1,3 @@
-version: '3'
-
 x-domibus: &env-domibus
   env_file:
     - ./.env.domibus
@@ -7,16 +5,24 @@ x-domibus: &env-domibus
 x-oots: &configuration-base
   build:
     context: .
+  # Une seule image pour `web`, `worker` et `test` : sans ce nom explicite,
+  # Compose en dérive un par service et `docker compose build web` n'en
+  # construirait qu'un des trois.
+  image: oots-france-app
   env_file:
     - ./.env.oots
+  # Les gems vivent dans `/usr/local/bundle`, hors du répertoire monté : ce
+  # montage-ci ne les masque donc pas, et aucun volume nommé n'est nécessaire
+  # là où `node_modules` en réclamait un.
   volumes:
     - .:/usr/src/app
-    - node_modules:/usr/src/app/node_modules/
 
 services:
   test:
     <<: *configuration-base
-    command: "npm run test:watch"
+    command: "sh -c 'bundle exec rubocop && bundle exec rspec'"
+    depends_on:
+      - postgres
 
   certbot:
     image: certbot/certbot
@@ -44,26 +50,90 @@ services:
 
   web:
     <<: *configuration-base
-    command: "npx nodemon server.js"
+    # Le fichier de PID vit dans le répertoire monté depuis l'hôte : un
+    # conteneur tué en laisse un, et `rails server` refuse alors de démarrer en
+    # annonçant un serveur déjà lancé qui n'existe plus. Le retirer ici est sans
+    # risque, un seul serveur tournant par conteneur.
+    #
+    # `exec` n'est pas cosmétique : sans lui, `sh` reste PID 1 et reçoit seul le
+    # SIGTERM de `docker compose stop`, sans le relayer. Le serveur est alors
+    # tué au SIGKILL à l'expiration du délai de grâce, sans avoir rien fermé.
+    command: "sh -c 'rm -f tmp/pids/server.pid && exec bundle exec rails server -b 0.0.0.0'"
     ports:
       - "${PORT_OOTS_FRANCE}:3000"
     depends_on:
      - domibus
+     - postgres
+
+  # Le worker tourne dans son propre processus : c'est ce qui impose que
+  # l'état des conversations soit partagé et persistant, là où l'application
+  # Node se contentait d'un annonceur interne au processus.
+  worker:
+    <<: *configuration-base
+    command: "bundle exec good_job start"
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:18-alpine
+    env_file:
+      - ./.env.postgres
+    # Publié pour que la suite puisse tourner hors conteneur, avec
+    # `HOTE_BASE_DE_DONNEES=localhost PORT_BASE_DE_DONNEES=`, suivi de la valeur
+    # que `.env` donne à `PORT_POSTGRES`. Celle de référence, 5433, diffère de
+    # 5432 pour ne pas heurter un PostgreSQL déjà installé sur la machine.
+    ports:
+      - "${PORT_POSTGRES}:5432"
+    # Monté sur `/var/lib/postgresql` et non sur son sous-répertoire `data` :
+    # depuis la version 18, l'image range les données dans un sous-répertoire
+    # nommé d'après la version majeure, pour permettre un `pg_upgrade --link`
+    # sans franchir de frontière de montage. Monter `data` directement fait
+    # échouer le démarrage.
+    volumes:
+      - postgres_data:/var/lib/postgresql
 
   domibus:
-    image: code.europa.eu:4567/edelivery/docker/domibus-tomcat9:5.0.4
+    image: code.europa.eu:4567/edelivery/docker/domibus-tomcat10:5.2-JEE10
     <<: *env-domibus
     environment:
       - DB_TYPE=MySQL
       - DB_HOST=mysql
       - DB_PORT=3306
-      - LOGGER_LEVEL_ORG_APACHE_CXF=INFO
+      # L'image ne réécrit que ces deux niveaux dans logback.xml, et laisse
+      # eu.domibus à DEBUG. INFO ne suffirait pas : l'authentification de chaque
+      # requête journalise « [SEC-001] Unsecure login is allowed » à ce
+      # niveau-là. Ce que WARN écarte reste consultable dans
+      # logs/domibus-error.log, dont le seuil est justement WARN.
+      #
+      # Ces deux variables ne sont lues qu'à la création de ./domibus : pour
+      # changer un niveau sur une pile qui tourne, modifier domibus/logback.xml,
+      # que Domibus relit toutes les 10 s.
+      - LOGGER_LEVEL_EU_DOMIBUS=WARN
+      # Passer org.apache.cxf à INFO fait apparaître les enveloppes SOAP.
+      - LOGGER_LEVEL_ORG_APACHE_CXF=WARN
       - CHECK_DEFAULT_PASSWD=false
-      - domibus.metrics.sl4j.reporter.enable=false
-      - domibus.metrics.monitor.jms.queues=false
-      - domibus.metrics.monitor.memory=false
-      - domibus.metrics.monitor.gc=false
-      - domibus.metrics.monitor.cached.threads=false
+      - KEYSTORE_PASSWD=${MOT_DE_PASSE_MAGASINS:?à renseigner dans .env, cf. .env.template}
+      - TRUSTSTORE_PASSWD=${MOT_DE_PASSE_MAGASINS:?à renseigner dans .env, cf. .env.template}
+      # L'entrypoint de l'image injecte SERVER_INIT_PROPERTIES dans JAVA_OPTS.
+      # C'est le seul moyen de fixer une propriété qui ne soit pas perdue à la
+      # prochaine réinitialisation de ./domibus par l'image.
+      - >-
+        SERVER_INIT_PROPERTIES=
+        -Ddomibus.metrics.slf4j.reporter.enable=false
+        -Ddomibus.metrics.monitor.jms.queues=false
+        -Ddomibus.metrics.monitor.memory=false
+        -Ddomibus.metrics.monitor.gc=false
+        -Ddomibus.metrics.monitor.cached.threads=false
+        -Ddomibus.security.keystore.type=pkcs12
+        -Ddomibus.security.keystore.location=/data/tomcat/conf/domibus/keystores/gateway_keystore.p12
+        -Ddomibus.security.profiles.active=true
+        -Ddomibus.security.profile.rsa.enabled=true
+        -Ddomibus.security.profile.rsa.signature.enabled=true
+        -Ddomibus.security.profile.rsa.encryption.enabled=true
+        -Ddomibus.security.profile.rsa.key.private.sign.alias=blue_gw_rsa_sign
+        -Ddomibus.security.profile.rsa.key.private.sign.password=${MOT_DE_PASSE_MAGASINS:?à renseigner dans .env, cf. .env.template}
+        -Ddomibus.security.profile.rsa.key.private.decrypt.alias=blue_gw_rsa_decrypt
+        -Ddomibus.security.profile.rsa.key.private.decrypt.password=${MOT_DE_PASSE_MAGASINS:?à renseigner dans .env, cf. .env.template}
     logging:
       driver:
         none
@@ -75,7 +145,7 @@ services:
       - mysql
 
   mysql:
-    image: code.europa.eu:4567/edelivery/docker/domibus-mysql8:5.0.4
+    image: code.europa.eu:4567/edelivery/docker/domibus-mysql8:5.2-JEE10
     <<: *env-domibus
     security_opt:
       - seccomp:unconfined
@@ -83,5 +153,5 @@ services:
       - shared_db_file_system:/var/lib/mysql
 
 volumes:
-  node_modules:
+  postgres_data:
   shared_db_file_system:

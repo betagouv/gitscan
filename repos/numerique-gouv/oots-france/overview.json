@@ -1,58 +1,74 @@
 {
   "url": "https://github.com/numerique-gouv/oots-france",
   "name": "oots-france",
-  "description": "OOTS-France est la plateforme française du système européen OOTS, agissant comme intermédiaire entre les institutions consommatrices et les fournisseurs de pièces justificatives.",
-  "language": "JavaScript",
+  "description": "Plateforme française du système européen OOTS agissant comme intermédiaire pour l'échange de pièces justificatives entre les institutions et la couche eDelivery.",
+  "language": "Ruby",
   "features": [
     "API & Intégrations",
-    "Gestion des utilisateurs & Permissions",
+    "Authentification & Accès",
     "Sécurité & Conformité",
-    "Gestion des fichiers"
+    "Données & Schémas",
+    "Administration & Backoffice",
+    "Suivi & Traçabilité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
+    "Ruby on Rails",
+    "Node.js",
     "Express",
-    "axios",
-    "jose",
-    "uuid"
+    "PostgreSQL",
+    "MySQL",
+    "Docker",
+    "Nginx",
+    "Domibus",
+    "GoodJob",
+    "Pundit"
   ],
   "components": [
     "API REST & GraphQL",
-    "TypeScript / JavaScript",
+    "PostgreSQL & SQL",
     "Docker & Conteneurs",
-    "Node.js / NestJS"
+    "Node.js / NestJS",
+    "Design System (DSFR & UI libs)",
+    "Authentification (composant)",
+    "Scripts & Utilitaires",
+    "Webhooks & Événements"
   ],
   "auth": {
     "methods": [
-      "oauth2"
+      "api-key",
+      "jwt",
+      "session"
     ],
     "providers": []
   },
   "tests": [
-    "Jest"
+    "RSpec",
+    "Jest",
+    "Capybara",
+    "Cucumber",
+    "Schematron"
   ],
   "workflows": [
-    "node.js.yml",
-    "codeql.yml"
+    "e2e.yml",
+    "schematron.yml",
+    "tests.yml"
   ],
-  "lastActivity": "2026-02-14T04:22:28Z",
-  "status": "active",
+  "lastActivity": "2026-08-13T17:27:15+02:00",
+  "status": "maintained",
   "license": "Apache-2.0",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 1,
+    "stars": 0,
     "forks": 1,
-    "contributors": null,
-    "openIssues": 6
+    "openIssues": 2
   },
   "tags": [
-    "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "React & Next.js",
-    "TypeScript",
-    "Déploiement & Hosting",
-    "Python",
-    "Bases de données SQL",
-    "Sécurité & Auth"
+    "Ruby",
+    "Docker & Conteneurs",
+    "Standards & Schémas",
+    "Sécurité & Auth",
+    "CI/CD & GitHub Actions"
   ]
 }

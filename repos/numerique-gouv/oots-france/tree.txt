@@ -1,134 +1,452 @@
 .
+├── .dockerignore
 ├── .env.domibus.template
 ├── .env.oots.template
+├── .env.postgres.template
 ├── .env.template
-├── .eslintrc.js
+├── .git-blame-ignore-revs
 ├── .github
+│   ├── dependabot.yml
 │   └── workflows
 │       ├── codeql.yml
-│       └── node.js.yml
+│       ├── e2e.yml
+│       ├── schematron.yml
+│       └── tests.yml
 ├── .gitignore
+├── .rspec
+├── .rubocop.yml
+├── .ruby-version
+├── CLAUDE.md
 ├── Dockerfile
+├── Gemfile
+├── Gemfile.lock
 ├── LICENSE
+├── Makefile
 ├── README.md
+├── Rakefile
+├── app
+│   ├── assets
+│   │   ├── images
+│   │   │   ├── .keep
+│   │   │   └── favicons
+│   │   │       ├── apple-touch-icon.png
+│   │   │       ├── favicon.ico
+│   │   │       └── favicon.svg
+│   │   └── stylesheets
+│   │       └── application.css
+│   ├── builders
+│   │   ├── agent_builder.rb
+│   │   ├── application_builder.rb
+│   │   ├── concerns
+│   │   │   └── xml_escaping.rb
+│   │   ├── ebms_header_builder.rb
+│   │   ├── error_response_builder.rb
+│   │   ├── evidence_request_builder.rb
+│   │   ├── evidence_type_builder.rb
+│   │   ├── list_pending_messages_builder.rb
+│   │   ├── natural_person_builder.rb
+│   │   ├── outgoing_envelope_builder.rb
+│   │   ├── retrieve_message_builder.rb
+│   │   ├── submit_message_builder.rb
+│   │   └── system_check_response_builder.rb
+│   ├── clients
+│   │   ├── beneficiary_token.rb
+│   │   ├── common_services_instance.rb
+│   │   ├── common_services_query.rb
+│   │   ├── common_services_signature.rb
+│   │   ├── data_service_directory_client.rb
+│   │   ├── domibus_client.rb
+│   │   ├── evidence_broker_client.rb
+│   │   ├── evidence_forwarder.rb
+│   │   └── jwks_fetcher.rb
+│   ├── components
+│   │   ├── conversation_status_component.rb
+│   │   ├── pagination_component.html.erb
+│   │   └── pagination_component.rb
+│   ├── controllers
+│   │   ├── accueil_controller.rb
+│   │   ├── admin
+│   │   │   ├── base_controller.rb
+│   │   │   ├── conversations_controller.rb
+│   │   │   └── home_controller.rb
+│   │   ├── application_controller.rb
+│   │   ├── auth_controller.rb
+│   │   ├── concerns
+│   │   │   └── .keep
+│   │   ├── domibus_notifications_controller.rb
+│   │   └── evidence_requests_controller.rb
+│   ├── errors
+│   │   ├── common_services_error.rb
+│   │   ├── configuration_error.rb
+│   │   ├── country_code_not_found.rb
+│   │   ├── ebms_error.rb
+│   │   ├── evidence_requester_not_found.rb
+│   │   ├── evidence_type_not_found.rb
+│   │   ├── invalid_token_error.rb
+│   │   ├── procedure_code_not_found.rb
+│   │   └── unreadable_message_error.rb
+│   ├── filters
+│   │   └── conversation_filter.rb
+│   ├── helpers
+│   │   └── application_helper.rb
+│   ├── interactors
+│   │   ├── application_interactor.rb
+│   │   ├── evidence_provision
+│   │   │   └── answer_request.rb
+│   │   ├── evidence_request
+│   │   │   ├── decrypt_beneficiary.rb
+│   │   │   ├── open_conversation.rb
+│   │   │   ├── resolve_evidence_type.rb
+│   │   │   ├── resolve_provider.rb
+│   │   │   ├── resolve_requester.rb
+│   │   │   └── send_to_gateway.rb
+│   │   └── incoming_message
+│   │       ├── process.rb
+│   │       └── settle_conversation.rb
+│   ├── jobs
+│   │   ├── application_job.rb
+│   │   ├── collect_pending_messages_job.rb
+│   │   └── process_incoming_message_job.rb
+│   ├── lib
+│   │   ├── clock.rb
+│   │   ├── oots
+│   │   │   ├── frozen_clock.rb
+│   │   │   ├── sequential_uuids.rb
+│   │   │   └── specimen_messages.rb
+│   │   ├── public_key_set.rb
+│   │   ├── settings.rb
+│   │   └── uuid_generator.rb
+│   ├── mailers
+│   │   └── application_mailer.rb
+│   ├── models
+│   │   ├── access_point.rb
+│   │   ├── address.rb
+│   │   ├── application_record.rb
+│   │   ├── attachment.rb
+│   │   ├── common_services_specification.rb
+│   │   ├── concerns
+│   │   │   ├── .keep
+│   │   │   └── strict_validation.rb
+│   │   ├── conversation.rb
+│   │   ├── directories
+│   │   │   ├── common_services.rb
+│   │   │   └── evidence_requesters.rb
+│   │   ├── ebms_action.rb
+│   │   ├── ebms_identity.rb
+│   │   ├── edm_exception.rb
+│   │   ├── edm_specification.rb
+│   │   ├── empty_attachment.rb
+│   │   ├── evidence_provider.rb
+│   │   ├── evidence_requester.rb
+│   │   ├── evidence_type.rb
+│   │   ├── identifier_scheme.rb
+│   │   ├── natural_person.rb
+│   │   └── procedure_code.rb
+│   ├── organizers
+│   │   ├── application_organizer.rb
+│   │   └── evidence_request
+│   │       └── fetch.rb
+│   ├── parsers
+│   │   ├── common_services_response_parser.rb
+│   │   ├── concerns
+│   │   │   ├── oots_namespaces.rb
+│   │   │   └── slot_reading.rb
+│   │   ├── data_services_response_parser.rb
+│   │   ├── ebms_header_parser.rb
+│   │   ├── error_response_parser.rb
+│   │   ├── evidence_request_parser.rb
+│   │   ├── evidence_response_parser.rb
+│   │   ├── evidence_types_response_parser.rb
+│   │   ├── pending_messages_parser.rb
+│   │   ├── push_notification_parser.rb
+│   │   ├── requirements_response_parser.rb
+│   │   ├── retrieved_message_parser.rb
+│   │   └── submitted_message_parser.rb
+│   ├── templates
+│   │   ├── _agent.xml.erb
+│   │   ├── _evidence_type.xml.erb
+│   │   ├── _natural_person.xml.erb
+│   │   ├── ebms_header.xml.erb
+│   │   ├── error_response.xml.erb
+│   │   ├── evidence_request.xml.erb
+│   │   ├── list_pending_messages.xml.erb
+│   │   ├── retrieve_message.xml.erb
+│   │   ├── submit_message.xml.erb
+│   │   └── system_check_response.xml.erb
+│   └── views
+│       ├── accueil
+│       │   └── index.html.erb
+│       ├── admin
+│       │   ├── conversations
+│       │   │   ├── _filtre.html.erb
+│       │   │   ├── index.html.erb
+│       │   │   └── show.html.erb
+│       │   └── home
+│       │       └── show.html.erb
+│       ├── layouts
+│       │   ├── _entete.html.erb
+│       │   ├── _messages.html.erb
+│       │   ├── _pied_de_page.html.erb
+│       │   ├── application.html.erb
+│       │   ├── mailer.html.erb
+│       │   └── mailer.text.erb
+│       └── pwa
+│           ├── manifest.json.erb
+│           └── service-worker.js
 ├── assets
 │   └── drapeau.pdf
+├── bin
+│   ├── brakeman
+│   ├── bundler-audit
+│   ├── ci
+│   ├── cucumber
+│   ├── dev
+│   ├── rails
+│   ├── rake
+│   ├── setup
+│   └── thrust
+├── config
+│   ├── application.rb
+│   ├── boot.rb
+│   ├── bundler-audit.yml
+│   ├── cable.yml
+│   ├── certificats
+│   │   ├── services_communs_acc.pem
+│   │   └── services_communs_prod.pem
+│   ├── ci.rb
+│   ├── credentials.yml.enc
+│   ├── cucumber.yml
+│   ├── database.yml
+│   ├── environment.rb
+│   ├── environments
+│   │   ├── development.rb
+│   │   ├── production.rb
+│   │   └── test.rb
+│   ├── initializers
+│   │   ├── assets.rb
+│   │   ├── content_security_policy.rb
+│   │   ├── filter_parameter_logging.rb
+│   │   ├── inflections.rb
+│   │   └── naptr_record.rb
+│   ├── locales
+│   │   ├── en.yml
+│   │   └── fr.yml
+│   ├── puma.rb
+│   ├── routes.rb
+│   └── schedule.yml
+├── config.ru
+├── db
+│   ├── migrate
+│   │   ├── 20260811095415_create_good_jobs.rb
+│   │   └── 20260811120000_create_conversations.rb
+│   ├── schema.rb
+│   └── seeds.rb
 ├── docker-compose.yml
+├── docs
+│   ├── carte_des_tdd.md
+│   ├── configurer_domibus_via_l_interface.md
+│   ├── domibus_context.md
+│   ├── espace_administration.md
+│   ├── glossaire.md
+│   ├── implementations_europeennes.md
+│   ├── oots_context.md
+│   ├── reste_à_faire.md
+│   ├── test_e2e.md
+│   ├── versions_domibus.md
+│   └── versions_tdd.md
 ├── exemples
 │   └── configuration_PMode_Domibus.xml
+├── features
+│   ├── espace_administration.feature
+│   ├── requete_de_justificatif.feature
+│   ├── step_definitions
+│   │   ├── .keep
+│   │   ├── administration_steps.rb
+│   │   └── evidence_request_steps.rb
+│   └── support
+│       ├── common_services
+│       │   ├── data_services.xml.erb
+│       │   ├── evidence_types.xml.erb
+│       │   ├── refusal.xml.erb
+│       │   └── requirements.xml.erb
+│       ├── directory_answer.rb
+│       ├── env.rb
+│       ├── fabriques.rb
+│       ├── fake_common_services.rb
+│       └── fake_requester.rb
+├── lib
+│   ├── .keep
+│   └── tasks
+│       ├── cucumber.rake
+│       └── oots.rake
+├── log
+│   └── .keep
 ├── nginx.template
 │   ├── conf
 │   │   └── nginx.conf
 │   └── scripts
 │       └── init-letsencrypt.sh
-├── package-lock.json
-├── package.json
+├── public
+│   ├── 400.html
+│   ├── 404.html
+│   ├── 406-unsupported-browser.html
+│   ├── 422.html
+│   ├── 500.html
+│   ├── icon.png
+│   ├── icon.svg
+│   └── robots.txt
+├── script
+│   └── .keep
 ├── scripts
-│   ├── logsDomibus.sh
-│   ├── start.sh
-│   └── tests.sh
-├── server.js
-├── src
-│   ├── adaptateurs
-│   │   ├── adaptateurChiffrement.js
-│   │   ├── adaptateurDomibus.js
-│   │   ├── adaptateurEnvironnement.js
-│   │   ├── adaptateurUUID.js
-│   │   ├── horodateur.js
-│   │   └── transmetteurPiecesJustificatives.js
-│   ├── api
-│   │   └── pieceJustificative.js
-│   ├── depots
-│   │   ├── depotPointsAcces.js
-│   │   ├── depotRequeteurs.js
-│   │   └── depotServicesCommunsLocal.js
-│   ├── domibus
-│   │   ├── enteteMessageRecu.js
-│   │   ├── fabriqueMessages.js
-│   │   ├── instructionSOAP.js
-│   │   ├── messageRecu.js
-│   │   ├── reponseDomibus.js
-│   │   ├── reponseEnvoiMessage.js
-│   │   ├── reponseErreur.js
-│   │   ├── reponseErreurAutorisationRequise.js
-│   │   ├── reponseRecuperationMessage.js
-│   │   ├── reponseRequeteListeMessagesEnAttente.js
-│   │   ├── reponseSucces.js
-│   │   ├── requete.js
-│   │   └── requetes.js
-│   ├── ebms
-│   │   ├── codeDemarche.js
-│   │   ├── entete.js
-│   │   ├── enteteErreur.js
-│   │   ├── enteteReponse.js
-│   │   ├── enteteRequete.js
-│   │   ├── fournisseur.js
-│   │   ├── message.js
-│   │   ├── personnePhysique.js
-│   │   ├── pieceJointe.js
-│   │   ├── pieceJointeVide.js
-│   │   ├── pointAcces.js
-│   │   ├── reponseErreur.js
-│   │   ├── reponseVerificationSysteme.js
-│   │   ├── requeteJustificatif.js
-│   │   ├── requeteur.js
-│   │   ├── typeJustificatif.js
-│   │   └── utils.js
-│   ├── ecouteurDomibus.js
-│   ├── erreurs.js
-│   ├── ootsFrance.js
-│   └── routes
-│       ├── middleware.js
-│       ├── routesAdmin.js
-│       ├── routesAuth.js
-│       ├── routesBase.js
-│       ├── routesEbms.js
-│       └── routesRequete.js
-└── test
-    ├── api
-    │   └── pieceJustificative.spec.js
-    ├── constructeurs
-    │   ├── constructeurDepotServicesCommuns.js
-    │   ├── constructeurEnveloppeSOAPAvecPieceJointe.js
-    │   ├── constructeurEnveloppeSOAPException.js
-    │   ├── constructeurEnveloppeSOAPRequete.js
-    │   ├── constructeurXMLParseMessageRecu.js
-    │   ├── constructeurXMLParseReponseSuccesRecue.js
-    │   └── constructeurXMLParseRequeteRecue.js
-    ├── depots
-    │   ├── depotPointsAcces.spec.js
-    │   ├── depotRequeteurs.spec.js
-    │   └── depotServicesCommunsLocal.spec.js
-    ├── domibus
-    │   ├── enteteMessageRecu.spec.js
-    │   ├── fabriqueMessages.spec.js
-    │   ├── instructionSOAP.spec.js
-    │   ├── messageRecu.spec.js
-    │   ├── reponseEnvoiMessage.spec.js
-    │   ├── reponseErreur.spec.js
-    │   ├── reponseErreurAutorisationRequise.spec.js
-    │   ├── reponseRecuperationMessage.spec.js
-    │   ├── reponseRequeteListeMessagesEnAttente.spec.js
-    │   ├── reponseSucces.spec.js
-    │   └── requete.spec.js
-    ├── ebms
-    │   ├── enteteErreur.spec.js
-    │   ├── enteteReponse.spec.js
-    │   ├── enteteRequete.spec.js
-    │   ├── fournisseur.spec.js
-    │   ├── personnePhysique.spec.js
-    │   ├── reponseErreur.spec.js
-    │   ├── reponseVerificationSysteme.spec.js
-    │   ├── requeteJustificatif.spec.js
-    │   ├── requeteur.spec.js
-    │   ├── typeJustificatif.spec.js
-    │   └── utils.spec.js
-    ├── ecouteurDomibus.spec.js
-    └── routes
-        ├── routesAdmin.spec.js
-        ├── routesAuth.spec.js
-        ├── routesEbms.spec.js
-        ├── routesRequete.spec.js
-        ├── serveurTest.js
-        └── utils.js
-23 directories, 110 files
+│   ├── ci
+│   │   ├── diagnose_domibus.sh
+│   │   ├── prepare_environment.sh
+│   │   ├── wait_for_domibus.sh
+│   │   ├── wait_for_mysql.sh
+│   │   └── wait_for_postgres.sh
+│   ├── configure_domibus.sh
+│   ├── domibus_logs.sh
+│   ├── generate_certificates.sh
+│   ├── setup.sh
+│   ├── summarize_schematron.py
+│   ├── validate_schematron.sh
+│   └── worktree.sh
+├── spec
+│   ├── builders
+│   │   ├── concerns
+│   │   │   └── xml_escaping_spec.rb
+│   │   ├── ebms_header_builder_spec.rb
+│   │   ├── error_response_builder_spec.rb
+│   │   ├── evidence_request_builder_spec.rb
+│   │   ├── submit_envelope_reference_spec.rb
+│   │   ├── submit_message_builder_spec.rb
+│   │   ├── system_check_response_builder_spec.rb
+│   │   └── ws_plugin_requests_spec.rb
+│   ├── clients
+│   │   ├── beneficiary_token_spec.rb
+│   │   ├── common_services_instance_spec.rb
+│   │   ├── common_services_query_spec.rb
+│   │   ├── common_services_signature_spec.rb
+│   │   ├── data_service_directory_client_spec.rb
+│   │   ├── domibus_client_spec.rb
+│   │   └── evidence_broker_client_spec.rb
+│   ├── components
+│   │   ├── conversation_status_component_spec.rb
+│   │   └── pagination_component_spec.rb
+│   ├── factories
+│   │   ├── conversations.rb
+│   │   └── value_objects.rb
+│   ├── filters
+│   │   └── conversation_filter_spec.rb
+│   ├── fixtures
+│   │   ├── README.md
+│   │   ├── common_services
+│   │   │   ├── dsd_aucun_service_fr.headers
+│   │   │   ├── dsd_aucun_service_fr.xml
+│   │   │   ├── dsd_data_services_fi.headers
+│   │   │   ├── dsd_data_services_fi.xml
+│   │   │   ├── eb_evidence_types_fi.headers
+│   │   │   ├── eb_evidence_types_fi.xml
+│   │   │   ├── eb_evidence_types_fr.headers
+│   │   │   ├── eb_evidence_types_fr.xml
+│   │   │   ├── eb_requirements_fr.headers
+│   │   │   ├── eb_requirements_fr.xml
+│   │   │   ├── eb_requirements_vides.headers
+│   │   │   └── eb_requirements_vides.xml
+│   │   ├── incoming
+│   │   │   ├── erreurAutorisationRequise.xml
+│   │   │   ├── erreurObjetIntrouvable.xml
+│   │   │   ├── erreurSansCode.xml
+│   │   │   ├── reel
+│   │   │   │   ├── erreurObjetIntrouvable.xml
+│   │   │   │   ├── listeMessagesEnAttente.vide.xml
+│   │   │   │   ├── listeMessagesEnAttente.xml
+│   │   │   │   ├── reponseAvecPieceJointe.xml
+│   │   │   │   ├── requete.demarcheInconnue.xml
+│   │   │   │   ├── requete.xml
+│   │   │   │   └── soumissionMessage.xml
+│   │   │   ├── reponseAvecPieceJointe.xml
+│   │   │   ├── requete.demarcheInconnue.xml
+│   │   │   ├── requete.sansProcedure.xml
+│   │   │   ├── requete.sansRequeteur.xml
+│   │   │   └── requete.xml
+│   │   └── reference
+│   │       ├── messages
+│   │       │   ├── erreur.entete.xml
+│   │       │   ├── erreur.xml
+│   │       │   ├── erreurCapaciteNonSupportee.entete.xml
+│   │       │   ├── erreurCapaciteNonSupportee.xml
+│   │       │   ├── erreurRequeteInvalide.entete.xml
+│   │       │   ├── erreurRequeteInvalide.xml
+│   │       │   ├── reponse.entete.xml
+│   │       │   ├── reponse.xml
+│   │       │   ├── requete.entete.xml
+│   │       │   └── requete.xml
+│   │       └── soap
+│   │           ├── erreur.soumission.xml
+│   │           ├── erreurCapaciteNonSupportee.soumission.xml
+│   │           ├── erreurRequeteInvalide.soumission.xml
+│   │           ├── listeMessagesEnAttente.filtree.xml
+│   │           ├── listeMessagesEnAttente.xml
+│   │           ├── recuperationMessage.xml
+│   │           ├── reponse.soumission.xml
+│   │           └── requete.soumission.xml
+│   ├── interactors
+│   │   ├── evidence_provision
+│   │   │   └── answer_request_spec.rb
+│   │   ├── evidence_request
+│   │   │   ├── decrypt_beneficiary_spec.rb
+│   │   │   ├── open_conversation_spec.rb
+│   │   │   ├── resolve_evidence_type_spec.rb
+│   │   │   ├── resolve_provider_spec.rb
+│   │   │   ├── resolve_requester_spec.rb
+│   │   │   └── send_to_gateway_spec.rb
+│   │   └── incoming_message
+│   │       ├── process_spec.rb
+│   │       └── settle_conversation_spec.rb
+│   ├── jobs
+│   │   └── collect_pending_messages_job_spec.rb
+│   ├── lib
+│   │   ├── public_key_set_spec.rb
+│   │   └── settings_spec.rb
+│   ├── models
+│   │   ├── address_spec.rb
+│   │   ├── conversation_spec.rb
+│   │   ├── directories
+│   │   │   ├── common_services_spec.rb
+│   │   │   ├── common_services_wiring_spec.rb
+│   │   │   └── evidence_requesters_spec.rb
+│   │   ├── ebms_identity_spec.rb
+│   │   ├── edm_exception_spec.rb
+│   │   ├── evidence_provider_spec.rb
+│   │   ├── evidence_requester_spec.rb
+│   │   └── natural_person_spec.rb
+│   ├── parsers
+│   │   ├── common_services_response_parser_spec.rb
+│   │   ├── data_services_response_parser_spec.rb
+│   │   ├── error_response_parser_spec.rb
+│   │   ├── evidence_request_parser_spec.rb
+│   │   ├── evidence_types_response_parser_spec.rb
+│   │   ├── requirements_response_parser_spec.rb
+│   │   └── retrieved_message_parser_spec.rb
+│   ├── rails_helper.rb
+│   ├── requests
+│   │   ├── accueil_spec.rb
+│   │   ├── admin
+│   │   │   ├── conversations_spec.rb
+│   │   │   ├── home_spec.rb
+│   │   │   └── jobs_spec.rb
+│   │   ├── auth_spec.rb
+│   │   ├── domibus_notifications_spec.rb
+│   │   └── evidence_requests_spec.rb
+│   ├── spec_helper.rb
+│   └── support
+│       ├── fixtures.rb
+│       ├── test_environment.rb
+│       ├── view_components.rb
+│       └── xml_matchers.rb
+├── tmp
+│   └── .keep
+└── vendor
+    └── .keep
+94 directories, 357 files
