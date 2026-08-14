@@ -1,55 +1,59 @@
 {
   "url": "https://github.com/betagouv/Aidants_Connect",
   "name": "Aidants_Connect",
-  "description": "Aidants Connect est une application web permettant aux aidants de créer des mandats de connexion, de connecter des usagers et d'accéder à des ressources d'accompagnement. Elle vise à simplifier la gestion des accès et des informations pour les aidants et les personnes aidées.",
+  "description": "Application web permettant aux aidants de créer des mandats de connexion via FranceConnect, d'accéder à des ressources d'accompagnement et de suivre leurs mandats.",
   "language": "Python",
   "features": [
-    "Authentification utilisateur",
-    "Gestion des utilisateurs & Permissions",
+    "Authentification & Accès",
     "Formulaires & Démarches",
-    "Gestion des profils & Comptes",
-    "Sécurité & Conformité",
-    "Notifications & Alertes"
+    "Suivi & Traçabilité",
+    "Aides & Éligibilité"
   ],
   "audience": "Grand public",
   "dependencies": [
+    "Python",
     "Django",
     "PostgreSQL",
+    "Stimulus",
+    "Sass",
     "FranceConnect"
   ],
   "components": [
-    "API REST & GraphQL",
-    "PostgreSQL & SQL",
     "Python (scripts & backend)",
-    "HTML / CSS / Templates visuels"
+    "Django",
+    "PostgreSQL & SQL",
+    "HTML / CSS / Templates visuels",
+    "Design System (DSFR & UI libs)",
+    "Authentification (composant)"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "session"
+      "mfa"
     ],
     "providers": [
       "FranceConnect"
     ]
   },
-  "tests": "Pytest",
-  "workflows": [],
-  "lastActivity": "2026-07-27T00:01:52+02:00",
+  "tests": [
+    "Django test framework",
+    "Selenium",
+    "flake8",
+    "black"
+  ],
+  "workflows": [
+    "CircleCI"
+  ],
+  "lastActivity": "2026-08-10T17:24:32+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
   "tags": [
-    "Données & Open Data",
     "Écosystème beta.gouv / État",
     "Python",
+    "Django & FastAPI",
     "Bases de données SQL",
-    "Sécurité & Auth",
-    "Aides & Éligibilité"
+    "Accessibilité",
+    "Design System & UI"
   ]
 }
