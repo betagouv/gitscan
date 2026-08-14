@@ -165,9 +165,7 @@
 │   │   │   │       ├── __init__.py
 │   │   │   │       ├── delete_orphaned_uploads.py
 │   │   │   │       ├── generate_security_report.py
-│   │   │   │       ├── import_data_inclusion.py
 │   │   │   │       ├── import_ft_users.py
-│   │   │   │       ├── import_mednum.py
 │   │   │   │       ├── import_users.py
 │   │   │   │       └── sync_migration_history.py
 │   │   │   ├── migrations
@@ -463,6 +461,7 @@
 │   │   ├── services
 │   │   │   ├── __init__.py
 │   │   │   ├── admin.py
+│   │   │   ├── apps.py
 │   │   │   ├── csv_import.py
 │   │   │   ├── emails.py
 │   │   │   ├── enums.py
@@ -471,6 +470,8 @@
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── commands
 │   │   │   │       ├── __init__.py
+│   │   │   │       ├── backfill_publics_di.py
+│   │   │   │       ├── backfill_service_kind.py
 │   │   │   │       ├── export_service_data_for_classification.py
 │   │   │   │       ├── fix_missing_geom.py
 │   │   │   │       ├── import_services.py
@@ -483,12 +484,17 @@
 │   │   │   │   ├── 0003_seed_data.py
 │   │   │   │   ├── 0004_protect_structure_fks.py
 │   │   │   │   ├── 0005_savedsearch_kinds_array.py
+│   │   │   │   ├── 0006_service_publics_di_service_publics_precisions.py
+│   │   │   │   ├── 0007_service_kind.py
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── data
 │   │   │   │       └── assignation-thematiques.csv
 │   │   │   ├── models.py
 │   │   │   ├── search.py
 │   │   │   ├── serializers.py
+│   │   │   ├── signals_kind.py
+│   │   │   ├── signals_kinds.py
+│   │   │   ├── signals_publics.py
 │   │   │   ├── templates
 │   │   │   │   ├── admin
 │   │   │   │   │   └── services
@@ -502,6 +508,8 @@
 │   │   │   │   ├── __snapshots__
 │   │   │   │   │   └── test_import_services.ambr
 │   │   │   │   ├── test_admin_import_view.py
+│   │   │   │   ├── test_backfill_publics_di.py
+│   │   │   │   ├── test_backfill_service_kind.py
 │   │   │   │   ├── test_bookmarks.py
 │   │   │   │   ├── test_categories_subcategories.py
 │   │   │   │   ├── test_emails.py
@@ -513,8 +521,12 @@
 │   │   │   │   ├── test_profiles.py
 │   │   │   │   ├── test_search.py
 │   │   │   │   ├── test_serializers.py
+│   │   │   │   ├── test_service_kind_api.py
 │   │   │   │   ├── test_services.py
-│   │   │   │   └── test_services_saved_searchs.py
+│   │   │   │   ├── test_services_saved_searchs.py
+│   │   │   │   ├── test_signals_kind.py
+│   │   │   │   ├── test_signals_publics.py
+│   │   │   │   └── test_utils_kind.py
 │   │   │   ├── utils.py
 │   │   │   └── views.py
 │   │   ├── sirene
@@ -1446,4 +1458,4 @@
 └── tools
     ├── create-review-apps.sh
     └── release.sh
-275 directories, 1173 files
+275 directories, 1185 files
