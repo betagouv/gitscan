@@ -4,12 +4,14 @@
   "description": "Plateforme numérique facilitant la gestion de la domiciliation pour les organismes agréés et l'accès aux droits pour les personnes sans domicile stable.",
   "language": "TypeScript",
   "features": [
+    "Gestion des utilisateurs & Permissions",
     "Authentification & Accès",
-    "Administration & Backoffice",
-    "Formulaires & Démarches",
-    "Notifications & Alertes",
     "Statistiques & Rapports",
-    "Gestion des utilisateurs & Permissions"
+    "Formulaires & Démarches",
+    "Sécurité & Conformité",
+    "Administration & Backoffice",
+    "Notifications & Alertes",
+    "Gestion des établissements & Structures"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -18,12 +20,11 @@
     "PostgreSQL",
     "TypeORM",
     "Docker",
-    "Pnpm",
+    "pnpm",
     "Lerna",
     "Brevo",
     "Sentry",
-    "Matomo",
-    "Metabase"
+    "Matomo"
   ],
   "components": [
     "API REST & GraphQL",
@@ -31,22 +32,23 @@
     "TypeScript / JavaScript",
     "Docker & Conteneurs",
     "Node.js / NestJS",
-    "Angular / Svelte / Autres SPA",
-    "Authentification (composant)"
+    "Authentification (composant)",
+    "Documentation & Schémas",
+    "Angular / Svelte / Autres SPA"
   ],
   "auth": {
     "methods": [
-      "email-password",
       "jwt",
-      "session"
-    ]
+      "session",
+      "mfa"
+    ],
+    "providers": []
   },
-  "tests": "Tests unitaires et tests d'intégration",
-  "workflows": [
-    "CI/CD",
-    "semantic-release"
+  "tests": [
+    "Tests unitaires",
+    "Tests d'intégration"
   ],
-  "lastActivity": "2026-08-07T00:00:00Z",
+  "lastActivity": "2026-08-13T00:00:00Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -54,6 +56,7 @@
     "Écosystème beta.gouv / État",
     "TypeScript",
     "Docker & Conteneurs",
+    "Bases de données SQL",
     "Node.js, NestJS & Express",
     "Angular, Svelte & autres SPA",
     "Emploi, Social & Logement"

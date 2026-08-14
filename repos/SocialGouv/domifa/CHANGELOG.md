@@ -1,3 +1,49 @@
+## [2.257.2](https://github.com/SocialGouv/domifa/compare/v2.257.1...v2.257.2) (2026-08-13)
+
+
+### Bug Fixes
+
+* **frontend:** update popup ([aba30b0](https://github.com/SocialGouv/domifa/commit/aba30b04164c810d7cb8560aab49137c998fd8b1))
+
+## [2.257.1](https://github.com/SocialGouv/domifa/compare/v2.257.0...v2.257.1) (2026-08-13)
+
+
+### Bug Fixes
+
+* **backend:** release the concurrency counter on every outcome ([1a7259a](https://github.com/SocialGouv/domifa/commit/1a7259a19af5bbe515a5cb71717a09071a6e227b))
+* **backend:** run import parse/validation in a worker thread, bounded ([321f819](https://github.com/SocialGouv/domifa/commit/321f819caf63353ce5c1a6e944d4082d3f30be34))
+* **backend:** stop import parsing from freezing the event loop ([5a6a984](https://github.com/SocialGouv/domifa/commit/5a6a9845bab3ab6339b67fd3ac6be8cf2dcd8701)), closes [#4248](https://github.com/SocialGouv/domifa/issues/4248)
+* **frontend:** fix links ([9dbf4f6](https://github.com/SocialGouv/domifa/commit/9dbf4f6947b088466f18c73cc4e3328b727da15b))
+
+# [2.257.0](https://github.com/SocialGouv/domifa/compare/v2.256.1...v2.257.0) (2026-08-13)
+
+
+### Features
+
+* notify users on account deletion and remove 2FA alert ([6a7d253](https://github.com/SocialGouv/domifa/commit/6a7d25301162da12413c519f0ec8554868158468))
+
+## [2.256.1](https://github.com/SocialGouv/domifa/compare/v2.256.0...v2.256.1) (2026-08-13)
+
+
+### Bug Fixes
+
+* **ci:** drain backend-export too, cap preStop under the grace period ([f831fdf](https://github.com/SocialGouv/domifa/commit/f831fdf80e4f99b401145bb34c885d1bffbcd256))
+* **ci:** route /import to the dedicated backend-export pod ([#4249](https://github.com/SocialGouv/domifa/issues/4249)) ([84550e7](https://github.com/SocialGouv/domifa/commit/84550e7a7f4788acb553fc0de121f7ebf5c6a18b)), closes [#4248](https://github.com/SocialGouv/domifa/issues/4248)
+
+# [2.256.0](https://github.com/SocialGouv/domifa/compare/v2.255.1...v2.256.0) (2026-08-12)
+
+
+### Features
+
+* migrate db for logged users without last password update ([#4241](https://github.com/SocialGouv/domifa/issues/4241)) ([2e8a8a7](https://github.com/SocialGouv/domifa/commit/2e8a8a7852b5086008126f7c3469a030c35e9863))
+
+## [2.255.1](https://github.com/SocialGouv/domifa/compare/v2.255.0...v2.255.1) (2026-08-10)
+
+
+### Bug Fixes
+
+* auth admin module imports ([#4234](https://github.com/SocialGouv/domifa/issues/4234)) ([e173e9f](https://github.com/SocialGouv/domifa/commit/e173e9f822d39c1c030bfe590d6fb1bc34493ffa))
+
 # [2.255.0](https://github.com/SocialGouv/domifa/compare/v2.254.3...v2.255.0) (2026-08-07)
 
 

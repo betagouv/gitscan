@@ -1,29 +1,32 @@
-## Changelog : domifa (30 derniers jours, au 07/08/2026)
+## Changelog : domifa (30 derniers jours, au 13 août 2026)
 
 ### Résumé
-Ce mois a été marqué par une montée de version majeure de l'infrastructure technique (passage à Angular 20) et l'enrichissement du portail usagers. Les utilisateurs bénéficient désormais de nouvelles fonctionnalités comme l'intégration du RGAA, la possibilité de télécharger des affiches "Mon Domifa" et l'ajout de contenus pédagogiques via une vidéo de présentation.
+Ce mois-ci, la plateforme a franchi des étapes importantes en enrichissant l'expérience utilisateur avec de nouveaux contenus (vidéo de présentation, téléchargement d'affiches) et l'intégration du RGAA sur le portail usagers. Parallèlement, des optimisations majeures ont été réalisées sur le moteur d'importation et l'infrastructure pour garantir une meilleure stabilité et performance du service.
 
 ### Évolutions fonctionnelles
-- **Nouveautés usagers** : Intégration du RGAA sur le portail usagers ([#4227](https://github.com/SocialGouv/domifa/pull/4227)) et ajout d'un bouton de téléchargement pour les affiches "Mon Domifa" ([#4217](https://github.com/SocialGouv/domifa/pull/4217)).
-- **Gestion des témoins** : Ajout d'une section et d'un bouton dédié aux témoins ([#4212](https://github.com/SocialGouv/domifa/pull/4212)).
-- **Expérience utilisateur** : 
-    - Intégration d'une vidéo de présentation pour découvrir Domifa.
-    - Amélioration de la clarté des informations de statut lors de la génération de comptes en masse ([#4219](https://github.com/SocialGouv/domifa/pull/4219)).
-    - Ajustements ergonomiques sur les pages de gestion des utilisateurs et de l'interface d'administration.
+- **Nouvelles fonctionnalités**
+    - Intégration du RGAA sur le portail usagers ([#4227](https://github.com/SocialGouv/domifa/pull/4227)).
+    - Ajout d'une vidéo de présentation "Découvrir Domifa".
+    - Mise à disposition d'un bouton de téléchargement pour les affiches "Mon Domifa".
+    - Ajout d'une section dédiée aux témoins avec option d'affichage global ([#4212](https://github.com/SocialGouv/domifa/pull/4212)).
+- **Améliorations et corrections**
+    - Mise en place de notifications utilisateurs lors de la suppression d'un compte.
+    - Amélioration de la clarté des informations de statut lors de la génération massive de comptes ([#4219](https://github.com/SocialGouv/domifa/pull/4219)).
+    - Mise à jour des Conditions Générales d'Utilisation (CGU) pour l'année 2026.
+    - Correction de l'affichage de la date de dernière connexion pour les superviseurs administrateurs ([#4223](https://github.com/SocialGouv/domifa/pull/4223)).
+    - Diverses corrections d'interface (popups, liens, positionnement d'éléments et formulaires).
 
 ### Évolutions techniques
-- **Migration majeure** : Mise à jour complète de l'écosystème frontend vers Angular 20 (incluant CDK, CLI, NGRX) et passage à Node 22.
-- **Optimisation Backend** : 
-    - Refactorisation de la gestion des codes OTP (One-Time Password).
-    - Amélioration du processus de suppression d'utilisateurs (nettoyage des listes et synchronisation avec Brevo).
-- **Infrastructure & CI/CD** : 
-    - Migration des builds d'images vers `buildkit-operator`.
-    - Refactorisation de la configuration Nginx pour centraliser la gestion des fichiers de configuration et renforcer la sécurité via les headers.
-- **Corrections de bugs** : 
-    - Résolution d'un problème d'affichage des dates de dernière connexion pour les superviseurs admin ([#4223](https://github.com/SocialGouv/domifa/pull/4223)).
-    - Correction de l'affichage textuel sur le modal de réinitialisation de mot de passe ([#4228](https://github.com/SocialGouv/domifa/pull/4228)).
-    - Refactorisation du composant de formatage des grands nombres (Big Number Pipe) ([#4233](https://github.com/SocialGouv/domifa/pull/4233)).
+- **Performance et Backend**
+    - Optimisation critique du processus d'importation : passage par des *worker threads* pour éviter le blocage du serveur et limitation de la concurrence pour stabiliser la charge.
+    - Refactorisation complète de la gestion des codes OTP (One-Time Password).
+    - Migration de la base de données pour les utilisateurs connectés n'ayant pas effectué leur dernière mise à jour de mot de passe ([#4241](https://github.com/SocialGouv/domifa/issues/4241)).
+- **Infrastructure et CI/CD**
+    - Migration des processus de construction d'images vers `buildkit-operator`.
+    - Amélioration de la résilience des déploiements (détection des pods backend gelés et gestion du *zero-downtime*).
+    - Optimisation de la configuration Nginx pour renforcer la gestion des en-têtes de sécurité.
+    - Mise à jour majeure de l'environnement de développement (passage à Angular 20 et mise à jour des bibliothèques de monitoring comme Matomo et Sentry).
 
 ### Autres changements
-- **Documentation** : Mise à jour des contenus de la FAQ et des Conditions Générales d'Utilisation (CGU).
-- **Accessibilité & Sécurité** : Amélioration de l'accessibilité (attributs ARIA) et renforcement de la sécurité des liens externes (`noopener noreferrer`).
+- Mise à jour de la documentation d'aide (FAQ).
+- Refactorisation de composants internes pour améliorer la maintenance du code (notamment le traitement des grands nombres).

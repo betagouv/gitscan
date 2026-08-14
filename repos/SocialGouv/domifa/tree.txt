@@ -246,6 +246,7 @@
 │   │   │   │               ├── UserUsagerAuthenticated.type.ts
 │   │   │   │               └── index.ts
 │   │   │   ├── _migrations
+│   │   │   │   ├── 1786366757476-backfill-user-structure-password-last-update.ts
 │   │   │   │   └── _init-db
 │   │   │   │       ├── 1603812391580-pr-env-create-database.ts
 │   │   │   │       └── domifa_test_schema.sql
@@ -937,12 +938,15 @@
 │   │   │   │   │   │   ├── import.controller.security-tests.ts
 │   │   │   │   │   │   ├── import.controller.spec.ts
 │   │   │   │   │   │   ├── import.controller.ts
+│   │   │   │   │   │   ├── import.worker.ts
 │   │   │   │   │   │   ├── model
 │   │   │   │   │   │   │   ├── UsagerImportAyantDroitColumn.type.ts
 │   │   │   │   │   │   │   ├── UsagerImportObject.type.ts
 │   │   │   │   │   │   │   ├── UsagersImportError.type.ts
 │   │   │   │   │   │   │   ├── UsagersImportRow.type.ts
 │   │   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── parseAndValidateImportFile.spec.ts
+│   │   │   │   │   │   ├── parseAndValidateImportFile.ts
 │   │   │   │   │   │   ├── step1-parse-excel
 │   │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   │   └── usagersImportExcelParser.service.ts
@@ -981,10 +985,12 @@
 │   │   │   │   │   │   │   ├── usagersImportValidator.service.invalid.test.ts
 │   │   │   │   │   │   │   ├── usagersImportValidator.service.ts
 │   │   │   │   │   │   │   └── usagersImportValidator.service.valid.test.ts
-│   │   │   │   │   │   └── step3-create
-│   │   │   │   │   │       ├── index.ts
-│   │   │   │   │   │       ├── usagersImportBuilder.service.ts
-│   │   │   │   │   │       └── usagersImportCreator.service.ts
+│   │   │   │   │   │   ├── step3-create
+│   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   ├── usagersImportBuilder.service.ts
+│   │   │   │   │   │   │   └── usagersImportCreator.service.ts
+│   │   │   │   │   │   ├── usagersImportRunner.service.spec.ts
+│   │   │   │   │   │   └── usagersImportRunner.service.ts
 │   │   │   │   │   ├── search-usagers.controller.ts
 │   │   │   │   │   ├── security-tests
 │   │   │   │   │   │   ├── agenda.controller.security-tests.ts
@@ -1781,9 +1787,6 @@
 │   │   │   │   │   │   │   │   └── home.component.ts
 │   │   │   │   │   │   │   ├── navbar
 │   │   │   │   │   │   │   │   ├── fragments
-│   │   │   │   │   │   │   │   │   ├── alerte-2fa
-│   │   │   │   │   │   │   │   │   │   ├── alerte-2fa.component.html
-│   │   │   │   │   │   │   │   │   │   └── alerte-2fa.component.ts
 │   │   │   │   │   │   │   │   │   ├── alerte-confidentialite
 │   │   │   │   │   │   │   │   │   │   ├── alerte-confidentialite.component.html
 │   │   │   │   │   │   │   │   │   │   ├── alerte-confidentialite.component.spec.ts
@@ -3503,4 +3506,4 @@
 ├── pnpm-workspace.yaml
 ├── sonar-project.properties
 └── tech.yaml
-814 directories, 2691 files
+813 directories, 2695 files
