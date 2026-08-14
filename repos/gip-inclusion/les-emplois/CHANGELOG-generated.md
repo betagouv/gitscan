@@ -1,23 +1,38 @@
-## Changelog : les-emplois (30 derniers jours, au 05/08/2026)
+## Changelog : les-emplois (30 derniers jours, au 13 août 2026)
 
 ### Résumé
-Ce mois-ci, le projet a franchi une étape majeure avec le déploiement du module d'orientation, permettant un suivi plus précis des parcours des candidats. La sécurité a été renforcée par l'introduction de la double authentification (2FA), tandis que l'expérience des professionnels a été simplifiée, notamment pour la gestion des accompagnements et l'automatisation de certaines tâches de maintenance des entreprises.
+Ce mois a été marqué par l'intégration majeure du module d'orientation (Insertion), permettant une synchronisation fluide avec l'outil Dora. Nous avons également renforcé la sécurité des accès via une refonte de la double authentification (MFA) et amélioré l'expérience utilisateur grâce à de nouveaux filtres de recherche et une interface plus intuitive pour le suivi des candidats et des entreprises.
 
 ### Évolutions fonctionnelles
-- **Module Orientation** : Ajout d'un menu dédié incluant une vue détaillée et une liste filtrable (par expéditeur, structure, statut ou bénéficiaire). Les statuts d'orientation sont désormais synchronisés automatiquement avec l'outil Dora.
-- **Sécurité & Authentification** : Mise en place de la double authentification (2FA/TOTP) avec des guides d'utilisation (QR codes), un menu de configuration et une gestion améliorée des messages d'erreur. Amélioration de la fiabilité des flux de connexion FranceConnect et ProConnect.
-- **Gestion des professionnels** : Les professionnels peuvent désormais se désigner eux-mêmes comme le "dernier accompagnateur connu" d'un candidat.
-- **Gestion des entreprises** : Désactivation automatique des candidatures spontanées pour les entreprises inactives depuis plus de 90 jours.
-- **Parcours candidat** : Amélioration de la saisie des dates de contrat avec l'ajout de composants d'aide contextuelle et de contrôles de validité renforcés.
-- **Recherche** : Facilitation de la recherche de candidats par adresse email.
-- **Administration** : Nouveau mécanisme de demande de rôle administrateur par email et attribution automatique des administrateurs pour les nouvelles organisations.
+- **Module d'Orientation (Insertion) :** 
+    - Ajout d'un menu dédié et d'une vue détaillée pour les orientations.
+    - Mise en place de filtres avancés dans les listes (par bénéficiaire, structure, statut ou expéditeur).
+    - Synchronisation automatique des statuts d'orientation depuis Dora.
+- **Gestion des Candidats :** 
+    - Amélioration de la visibilité des informations de contact des accompagnateurs.
+    - Ajout d'alertes informatives lors de la mise à jour de profils avec une identité certifiée.
+    - Clarification des champs en lecture seule pour les utilisateurs.
+- **Entreprises & GEIQ :** 
+    - Nouvelles contraintes de saisie sur les dates de contrat pour plus de cohérence.
+    - Automatisation du transfert des évaluations GEIQ et des données d'évaluation lors des changements d'entreprise.
+- **Interface & Navigation :** 
+    - Mise à jour du thème visuel et amélioration de l'affichage des résultats de recherche.
+    - Ajout de propriétés d'affichage pour les types de membres au sein des organisations.
 
 ### Évolutions techniques
-- **Optimisation des performances** : Réduction significative du nombre de requêtes SQL (correction de problèmes de type 1+N) sur les vues de listes de candidats et les recherches d'accompagnateurs.
-- **Refactorisation** : Restructuration complète du module `ft_connect` (renommage et réorganisation) et mise en place du "soft-delete" pour les services et les structures.
-- **Automatisation** : Création de tâches planifiées pour la synchronisation des données d'orientation et le nettoyage automatique des fichiers inutilisés sur le stockage.
-- **Données & Reporting** : Mise à jour du schéma Metabase pour permettre un meilleur suivi des événements de mobilisation et des profils candidats.
+- **Sécurité & Authentification :** 
+    - Refonte complète de la gestion du MFA (TOTP) : ajout d'exemples d'applications d'authentification, amélioration des messages d'erreur et gestion plus robuste des codes de secours.
+    - Renommage complet du module de connexion (passage de `PoleEmploiConnect` à `FTConnect`) pour une meilleure cohérence sémantique.
+    - Amélioration du flux de déconnexion FranceConnect.
+- **Performance & Optimisation :** 
+    - Optimisation des requêtes SQL (réduction des problèmes de type 1+N) sur les listes de candidats.
+    - Amélioration des performances de recherche et de l'affichage des listes.
+- **Architecture & Données :** 
+    - Mise en place de la suppression logique (*soft-delete*) pour les services et les structures.
+    - Amélioration de la gestion des logs de transition pour les statuts d'orientation.
+    - Refactorisation des vues de détails pour une meilleure maintenabilité.
 
 ### Autres changements
-- Mise à jour du thème visuel et des liens d'accessibilité.
-- Nettoyage du code et refactorisation de la gestion des permissions et du middleware.
+- **Nettoyage :** Suppression de templates, de tests et de méthodes inutilisés.
+- **Documentation & Code :** Passage des commentaires techniques du module d'insertion en anglais et mise à jour de la documentation interne.
+- **Maintenance :** Mise à jour du thème (v3.5.0) et optimisation des processus de nettoyage des fichiers.
