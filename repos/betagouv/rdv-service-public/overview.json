@@ -1,16 +1,16 @@
 {
   "url": "https://github.com/betagouv/rdv-service-public",
   "name": "rdv-service-public",
-  "description": "Ce service numérique public facilite la gestion et la prise de rendez-vous au sein des administrations, des collectivités territoriales et des opérateurs de services publics.",
+  "description": "Service numérique public facilitant la gestion et la prise de rendez-vous pour les administrations, les collectivités et les opérateurs de services publics.",
   "language": "Ruby",
   "features": [
     "Calendrier & Planification",
     "Formulaires & Démarches",
-    "Authentification & Accès",
+    "Gestion des utilisateurs & Permissions",
     "Administration & Backoffice",
     "Notifications & Alertes",
-    "Recherche & Filtres",
-    "Gestion des utilisateurs & Permissions"
+    "API & Intégrations",
+    "Interface utilisateur & Design"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -31,21 +31,21 @@
     "Design System (DSFR & UI libs)",
     "HTML / CSS / Templates visuels",
     "Tests",
-    "Templates & Moteurs de rendu",
     "Authentification (composant)",
     "Intégrations services externes",
-    "ORM & Accès aux données",
-    "Webhooks & Événements"
+    "Templates & Moteurs de rendu",
+    "ORM & Accès aux données"
   ],
   "auth": {
     "methods": [
       "email-password",
       "oauth2",
       "jwt",
+      "session",
       "sso"
     ],
     "providers": [
-      "Microsoft",
+      "Microsoft Graph",
       "OpenID Connect"
     ]
   },
@@ -54,15 +54,17 @@
     "Capybara",
     "Playwright"
   ],
-  "lastActivity": "2026-08-06T14:36:42Z",
+  "lastActivity": "2026-08-13T14:52:54Z",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
-    "Design System & UI",
-    "Accessibilité",
+    "TypeScript",
     "Bases de données SQL",
-    "HTML, CSS & Web"
+    "Sécurité & Auth",
+    "Design System & UI",
+    "JavaScript",
+    "Accessibilité"
   ]
 }
