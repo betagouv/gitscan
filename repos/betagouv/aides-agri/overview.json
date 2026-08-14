@@ -1,13 +1,14 @@
 {
   "url": "https://github.com/betagouv/aides-agri",
   "name": "aides-agri",
-  "description": "Cette plateforme gère un catalogue des dispositifs d’aide publics destinés aux exploitations agricoles françaises. Elle propose un outil d'administration pour l'édition des aides et un parcours usager pour orienter les agriculteurs vers les dispositifs adaptés à leur situation.",
+  "description": "Plateforme de service public numérique gérant un catalogue de dispositifs d'aide destinés aux exploitations agricoles françaises. Elle propose un outil d'administration pour l'édition des aides et un parcours usager pour orienter les agriculteurs vers les aides adaptées.",
   "language": "Python",
   "features": [
     "Aides & Éligibilité",
     "Administration & Backoffice",
     "Recherche & Filtres",
     "Statistiques & Rapports",
+    "Données & Schémas",
     "Formulaires & Démarches"
   ],
   "audience": "Professionnels",
@@ -19,7 +20,7 @@
     "Sentry",
     "uv",
     "Docker",
-    "django-dsfr"
+    "Brevo"
   ],
   "components": [
     "PostgreSQL & SQL",
@@ -27,34 +28,37 @@
     "Django",
     "Design System (DSFR & UI libs)",
     "Docker & Conteneurs",
+    "CI/CD & Déploiement",
     "Templates & Moteurs de rendu",
-    "Tests"
+    "Authentification (composant)"
   ],
   "auth": {
     "methods": [
-      "session",
-      "mfa"
+      "mfa",
+      "session"
     ]
   },
   "tests": [
     "pytest",
+    "pytest-django",
     "Cypress",
     "BrowserStack"
   ],
   "workflows": [
     "GitHub Actions",
-    "Scalingo deployment"
+    "Dependabot"
   ],
-  "lastActivity": "2026-08-07T21:59:42+02:00",
-  "status": "maintained",
+  "lastActivity": "2026-08-13T18:39:09+02:00",
+  "status": "active",
+  "license": null,
   "hasDocumentation": true,
   "tags": [
+    "Données & Open Data",
     "Écosystème beta.gouv / État",
     "Python",
     "Bases de données SQL",
+    "CI/CD & GitHub Actions",
     "Subventions & Finances publiques",
-    "Django & FastAPI",
-    "Design System & UI",
-    "CI/CD & GitHub Actions"
+    "Accessibilité"
   ]
 }
