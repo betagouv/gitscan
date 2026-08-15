@@ -63,7 +63,22 @@ task bench:parser     # inputs the bash grammar still refuses
 ```
 
 The proofs start real processes and, for two of them, a real Claude Code
-session. Three defects were only ever found by them, never by the unit suites.
+session. `task proofs` is the complete set; a faster loop while working is the
+two unit suites plus `policy`, `control` and `forward` — but `control` is the
+only one that crosses into Go, and leaving it out once left the control
+interface disconnected for two rounds.
+
+Three layers, and each finds what the one below does not:
+
+- the **unit suites** find what you thought to check;
+- the **end-to-end proofs** found three defects the suites never saw — a broken
+  schema, a rejected `cache_control`, a session burning its turns on a file
+  whose name had been masked;
+- **real sessions** found four more in a single afternoon, two of which
+  twenty-four rounds of adversarial review had missed. After changing a
+  surrogate generator, run one, and read the model's reasoning as well as its
+  answer: told that the layer exists, it reports what does not hold in its own
+  surrogates.
 
 ## Layout
 
@@ -135,13 +150,18 @@ meant to close.
 Closed by default: everything detected is substituted, and every value no rule
 covers is recorded as a question — without blocking. The operator answers once,
 at one of three granularities (this value, this type, this class) and one of
-three scopes (global, project, session), each the default for the next.
+four scopes (global, project, session, message), each the default for the next.
 
 ```bash
-task policy -- questions      # what was anonymised without an explicit rule
-task policy -- arbitrate      # answer, one at a time
-task control                  # arbitration API, for the IDE extension
+task policy -- questions                          # anonymised without a rule
+task policy -- arbitrer                           # answer, one at a time
+task policy -- valeur projet PERSON "Ada" reveler # decide on a value you name
+task control                                      # API, for the IDE extension
 ```
+
+`message` is the narrowest scope and the least committing: nothing is recorded,
+so there is no rule to revoke — the answer dies with the message it was given
+for.
 
 Revealing is the only decision that lets a value out, so it is never a default,
 it is traced, and revoking it does not recall what has already gone. A SECRET

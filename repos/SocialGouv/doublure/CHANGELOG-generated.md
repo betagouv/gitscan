@@ -1,29 +1,23 @@
-## Changelog : doublure (30 derniers jours, au 12 août 2026)
+## Changelog : doublure (30 derniers jours, au 13 août 2026)
 
 ### Résumé
-Ce mois a marqué une accélération majeure du développement, faisant passer doublure d'un prototype à un proxy de sécurité robuste. Le système est désormais capable de détecter et de remplacer de manière beaucoup plus fine les données sensibles (identités, coordonnées bancaires, adresses) tout en offrant une meilleure intégration avec les outils de développement (IDE) et les agents d'IA. La sécurité a été renforcée par une approche "fermé par défaut" et une protection accrue contre les tentatives de contournement des règles de confidentialité.
+Le projet a franchi une étape majeure avec la stabilisation de sa première version fonctionnelle. Doublure est désormais capable de protéger efficacement les échanges avec les IA (comme Claude) en détectant et en remplaçant automatiquement les données sensibles (noms, adresses, dates, IBAN) par des données fictives mais réalistes. Le système garantit que les informations réelles ne quittent jamais l'environnement sécurisé, tout en permettant à l'utilisateur de valider ou de refuser les décisions de protection via une interface intégrée.
 
 ### Évolutions fonctionnelles
-- **Détection avancée de données sensibles (PII) :** Amélioration significative de la reconnaissance des informations personnelles, incluant désormais les noms de personnes, les IBAN, les adresses et les formats de dates.
-- **Gestion des politiques de sécurité :** Mise en place d'un mode "fermé par défaut" où seules les données explicitement autorisées sont transmises, avec une gestion granulaire par type d'entité.
-- **Contrôle et personnalisation :** 
-    - Possibilité de choisir les types de substituts (surrogates) via la ligne de commande.
-    - Introduction de profils de configuration nommés pour adapter le comportement du proxy.
-- **Support des agents IA :** Capacité de pseudonymiser les corps de messages MCP et support d'un lanceur universel pour divers agents.
-- **Expérience développeur :** Développement d'une extension (VSIX) pour permettre une arbitration de la sécurité directement dans l'IDE.
+- **Protection des données personnelles (PII) :** Amélioration de la détection et de la pseudonymisation des noms, adresses postales, dates et numéros IBAN. Les dates sont désormais "décalées" de manière cohérente pour préserver leur sens sans révéler la réalité.
+- **Gestion de la confidentialité :** Mise en place d'une politique de sécurité "fermée par défaut". En cas d'incertitude, le système demande l'arbitrage de l'utilisateur sur la portée et la granularité de la protection.
+- **Intégration de l'environnement de développement :** Introduction d'une extension VSCode permettant de gérer les politiques de confidentialité et l'arbitrage directement depuis l'IDE.
+- **Support des protocoles distants (MCP) :** Ajout d'un proxy pour intercepter et pseudonymiser les flux de données provenant des serveurs MCP (Model Context Protocol) distants.
+- **Contrôle des outils :** Capacité de bloquer l'exécution de commandes ou d'outils à haut risque avant qu'ils ne soient lancés.
 
 ### Évolutions techniques
-- **Sécurisation du proxy (Forwarding) :** Correction de plusieurs vulnérabilités critiques, notamment sur le transport de données en base64, la prévention du "response smuggling" et la gestion des flux provenant de serveurs distants.
-- **Durcissement de la détection (Guard/Hook) :** 
-    - Portage de la garde "PreToolUse" en Go pour plus de performance et de fiabilité.
-    - Amélioration de la détection des mécanismes shell (heredoc, expansion de variables, commandes exec) pour éviter les fuites via des commandes système.
-- **Architecture et stockage :** 
-    - Mise en place d'un coffre-fort (Vault) avec chiffrement des valeurs réelles au repos.
-    - Refactorisation de la gestion de l'état pour isoler les données par projet.
-    - Utilisation de sockets Unix pour l'arbitration entre les services.
-- **Qualité et tests :** Ajout d'une suite de tests adverses et d'un corpus de référence ("golden corpus") pour valider l'efficacité de la pseudonymisation face à des tentatives de contournement.
+- **Sécurisation intensive (Hardening) :** Plusieurs cycles de révision (rounds de tests adverses) ont permis de corriger de nombreuses vulnérabilités, notamment des fuites d'URL, des contournements via des commandes shell (heredoc, pipelines, exec) et des problèmes de manipulation de données encodées en base64.
+- **Coffre-fort sécurisé (Vault) :** Implémentation d'un système de stockage des valeurs réelles chiffré au repos (AES-256-GCM), garantissant une restauration fidèle et injective des données.
+- **Architecture de contrôle :** Développement d'un service de contrôle performant en Go, communiquant via un socket Unix, pour assurer la séparation entre l'enforcement (protection) et l'interface de contrôle.
+- **Validation et tests :** Mise en place de suites de tests adverses, d'un "golden corpus" pour la validation des modèles, et d'un dispositif de test de l'égress réseau pour prouver l'étanchéité du système.
+- **Optimisation du moteur de détection :** Amélioration de la précision de la détection par l'intégration de modèles de type NER (Named Entity Recognition) et de règles de forme (shape rules).
 
 ### Autres changements
-- **Documentation :** Migration complète de la documentation en anglais et ajout d'analyses de risques liées à la protection des données (DPO).
 - **Identité du projet :** Renommage officiel du projet en "doublure".
-- **Toolchain :** Introduction de `Taskfile` et `devbox` pour simplifier la gestion des environnements de développement et des commandes de build.
+- **Documentation :** Mise à jour complète de la documentation (README, guides de transfert) et migration de la documentation technique vers l'anglais.
+- **Standardisation :** Adoption de `Taskfile` pour la gestion des commandes et de `devbox` pour la gestion de la chaîne d'outils.
