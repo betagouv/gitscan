@@ -1,9 +1,7 @@
-# Synthèse d'activité : entrepreneur-interet-general (du 24/07 au 31/07)
+# Synthèse d'activité : entrepreneur-interet-general (au 31/07/2026)
 
 ## Résumé de l'activité
-L'activité de la période a été principalement consacrée à la gestion et à l'actualisation des contenus du site web. Les interventions ont permis de mettre à jour les informations relatives aux membres de l'équipe via le CMS, garantissant ainsi une présentation à jour et fiable des intervenants pour les utilisateurs.
-
-Un travail de nettoyage des ressources visuelles a également été effectué, incluant la suppression d'images promotionnelles et de photos de profil obsolètes dans le dépôt [site-eig-v3](/repos/entrepreneur-interet-general/site-eig-v3).
+L'activité récente s'est concentrée sur la gestion du contenu éditorial du site web. Les interventions ont permis d'actualiser les profils des membres de l'équipe via le CMS et de procéder au nettoyage de ressources visuelles obsolètes dans [site-eig-v3](/repos/entrepreneur-interet-general/site-eig-v3), garantissant ainsi une information à jour et cohérente pour les utilisateurs finaux.
 
 ## Dépôts les plus actifs
-- [site-eig-v3](/repos/entrepreneur-interet-general/site-eig-v3) : Mise à jour des contenus éditoriaux et nettoyage des ressources graphiques.
+- [site-eig-v3](/repos/entrepreneur-interet-general/site-eig-v3) : Mise à jour des informations de l'équipe et maintenance des ressources média.

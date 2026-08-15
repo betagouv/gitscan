@@ -1,24 +1,26 @@
-# Synthèse d'activité : numerique-gouv (du 10/07 au 31/07)
+# Synthèse d'activité : numerique-gouv (du 23/04 au 13/08)
 
 ## Résumé de l'activité
-L'activité de cette période est marquée par une forte orientation vers l'amélioration de l'expérience utilisateur et l'internationalisation des services. Les outils de création de sites ([sites-faciles](/repos/numerique-gouv/sites-faciles) et [sites-faciles-fork-1](/repos/numerique-gouv/sites-faciles-fork-1)) progressent significativement sur la gestion multilingue, tandis que l'application [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api) bénéficie d'une refonte majeure de son interface et de l'intégration de nouveaux services externes.
+L'activité récente de l'organisation est marquée par des transformations structurelles majeures et une amélioration continue de l'expérience utilisateur. Les efforts se sont concentrés sur l'internationalisation des plateformes de création de sites [sites-faciles](/repos/numerique-gouv/sites-faciles) et [sites-faciles-fork-1](/repos/numerique-gouv/sites-faciles-fork-1), ainsi que sur la modernisation de l'interface de [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api).
 
-Parallèlement, des évolutions structurelles importantes sont visibles sur [statistiques-impact](/repos/numerique-gouv/statistiques-impact) avec une refonte de son modèle de données, et des avancées fonctionnelles sont notables dans [b3desk](/repos/numerique-gouv/b3desk) avec l'amorce de l'intégration de la transcription par IA. L'accessibilité et la visibilité des services sont également renforcées via [lasuite-landingpage](/repos/numerique-gouv/lasuite-landingpage).
+Par ailleurs, des refontes architecturales importantes, comme le passage vers Ruby on Rails pour [oots-france](/repos/numerique-gouv/oots-france) et l'évolution du modèle de données pour [statistiques-impact](/repos/numerique-gouv/statistiques-impact), renforcent la robustesse et la flexibilité des services. L'alignement avec le Design System de l'État (DSFR) progresse également via [oots-france](/repos/numerique-gouv/oots-france) et [ami-design-system-ios](/repos/numerique-gouv/ami-design-system-ios).
 
 ## Sécurité
-- Correction de vulnérabilités critiques via la mise à jour de la bibliothèque `cryptography` dans [django-dsfr](/repos/numerique-gouv/django-dsfr).
-- Amélioration de la gestion des déconnexions avec FranceConnect via [ami-fc-proxy](/repos/numerique-gouv/ami-fc-proxy).
-- Mise à jour des secrets de l'application pour [francetransfert](/repos/numerique-gouv/francetransfert).
-- Mise à jour des images de base pour Keycloak afin de bénéficier des derniers correctifs de sécurité dans [dockerfiles](/repos/numerique-gouv/dockerfiles).
+- Mise à jour de secrets pour sécuriser le service [francetransfert](/repos/numerique-gouv/francetransfert).
+- Correction de vulnérabilités via la mise à jour de la bibliothèque `cryptography` dans [django-dsfr](/repos/numerique-gouv/django-dsfr).
+- Amélioration de la gestion de la déconnexion FranceConnect pour garantir une redirection sécurisée via [ami-fc-proxy](/repos/numerique-gouv/ami-fc-proxy).
+- Mise à jour de l'image de base Keycloak pour bénéficier de correctifs de sécurité dans [dockerfiles](/repos/numerique-gouv/dockerfiles).
 
 ## Autres changements notables
-- **Refonte de données et infrastructure :** Migration vers Python 3.14 et introduction d'un nouveau modèle de données "Record" pour [statistiques-impact](/repos/numerique-gouv/statistiques-impact).
-- **Qualité logicielle :** Introduction de tests de bout en bout (E2E) avec Playwright et de pipelines de comparaison visuelle pour [sites-conformes](/repos/numerique-gouv/sites-conformes).
-- **Architecture mobile :** Refonte de la structure du package Swift pour [ami-design-system-ios](/repos/numerique-gouv/ami-design-system-ios).
-- **Déploiement et pilotage :** Mise en place de *feature flags* pour le pilotage des fonctionnalités dans [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api) et simplification du déploiement sur Scalingo pour [sites-faciles](/repos/numerique-gouv/sites-faciles).
+- Migration architecturale complète vers Ruby on Rails pour [oots-france](/repos/numerique-gouv/oots-france), incluant une simplification de l'installation et l'intégration du DSFR.
+- Refonte du modèle de données avec l'introduction du modèle "Record" et migration vers Python 3.14 pour [statistiques-impact](/repos/numerique-gouv/statistiques-impact).
+- Mise en place de tests de bout en bout (E2E) avec Playwright et de pipelines de comparaison visuelle pour [sites-conformes](/repos/numerique-gouv/sites-conformes).
+- Refonte de la structure du projet et du Swift Package pour [ami-design-system-ios](/repos/numerique-gouv/ami-design-system-ios).
+- Implémentation d'un mécanisme de *feature flags* pour la gestion dynamique des fonctionnalités dans [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api).
 
 ## Dépôts les plus actifs
-- [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api) : Refonte de l'interface utilisateur, gestion des suivis et intégration de nouveaux services.
-- [sites-faciles](/repos/numerique-gouv/sites-faciles) et [sites-faciles-fork-1](/repos/numerique-gouv/sites-faciles-fork-1) : Travaux majeurs sur l'internationalisation et la gestion multilingue.
-- [statistiques-impact](/repos/numerique-gouv/statistiques-impact) : Migration technique majeure et restructuration profonde du modèle de données.
-- [b3desk](/repos/numerique-gouv/b3desk) : Améliorations de l'interface d'administration et développement de fonctionnalités liées à l'IA.
+- [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api) : Refonte de l'interface utilisateur, gestion des services externes et amélioration de l'accessibilité.
+- [oots-france](/repos/numerique-gouv/oots-france) : Réécriture complète de l'architecture et modernisation de l'interface.
+- [sites-faciles](/repos/numerique-gouv/sites-faciles) : Travaux importants sur l'internationalisation et l'optimisation du déploiement.
+- [statistiques-impact](/repos/numerique-gouv/statistiques-impact) : Évolution majeure du modèle de données et mise à jour de l'environnement technique.
+- [ami-design-system-ios](/repos/numerique-gouv/ami-design-system-ios) : Développement de nouveaux composants et restructuration du projet.

@@ -1,17 +1,14 @@
-# Synthèse d'activité : refugies-info (du 22/05 au 29/05)
+# Synthèse d'activité : refugies-info (du [Date de début] au [Date de fin])
 
 ## Résumé de l'activité
-L'activité de cette semaine s'est concentrée sur l'amélioration de l'expérience utilisateur et la fiabilité des outils de gestion de données. Dans [playground](/repos/refugies-info/playground), les utilisateurs bénéficient de nouveaux outils de publication, d'un meilleur suivi des activités via Slack et de fonctionnalités de traduction enrichies. 
+L'activité de cette semaine s'est concentrée sur l'amélioration de l'expérience utilisateur et la fiabilité de la gestion des données. Les capacités de traduction et de recherche ont été considérablement enrichies dans [playground](/repos/refugies-info/playground), permettant un travail collaboratif plus fluide et un meilleur suivi des contenus. 
 
-Parallèlement, [karfur](/repos/refugies-info/karfur) progresse sur l'accessibilité et la clarté de l'information, notamment grâce à une recherche multilingue améliorée et une meilleure visibilité des responsables et financeurs des dispositifs. Ces évolutions visent à rendre les plateformes plus intuitives et plus précises pour les acteurs de terrain.
+Dans [karfur](/repos/refugies-info/karfur), l'accent a été mis sur la précision de l'information et l'accessibilité multilingue, offrant ainsi une meilleure visibilité sur les responsables et les financements des dispositifs pour les utilisateurs finaux.
 
 ## Autres changements notables
-- **Gestion et synchronisation des données** : 
-    - Migration de la base de données pour l'archivage et centralisation des données utilisateurs dans [playground](/repos/refugies-info/playground).
-    - Implémentation d'un nouveau système de synchronisation pour les opérateurs AGIR via Grist et Google Cloud Storage dans [karfur](/repos/refugies-info/karfur).
-- **Optimisation technique** : 
-    - Amélioration de l'ingestion de données et de l'intégration avec Letta dans [playground](/repos/refugies-info/playground).
+- **Évolutions de l'infrastructure de données** : migration de la base de données pour la gestion de l'archivage et centralisation des données utilisateurs dans le backend pour [playground](/repos/refugies-info/playground), et mise en place d'une nouvelle architecture de synchronisation des opérateurs AGIR (via Grist et Google Cloud Storage) pour [karfur](/repos/refugies-info/karfur).
+- **Optimisations de performance** : amélioration de l'ingestion de données pour [playground](/repos/refugies-info/playground) et optimisation du processus de build de l'application pour [karfur](/repos/refugies-info/karfur).
 
 ## Dépôts les plus actifs
-- [playground](/repos/refugies-info/playground) : Évolutions majeures sur l'UX de publication, les outils de traduction et l'optimisation de la gestion des données.
-- [karfur](/repos/refugies-info/karfur) : Améliorations de la recherche multilingue, de l'affichage des informations clés et de la synchronisation des données opérateurs.
+- [playground](/repos/refugies-info/playground) : Développement de nouveaux outils de traduction, de suivi d'activité et amélioration de l'interface de publication.
+- [karfur](/repos/refugies-info/karfur) : Amélioration de la recherche multilingue, de l'affichage des informations clés et de la synchronisation des données.

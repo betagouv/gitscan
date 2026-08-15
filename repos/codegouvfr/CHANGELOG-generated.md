@@ -1,16 +1,19 @@
-# Synthèse d'activité : codegouvfr (du 11/06 au 18/06)
+# Synthèse d'activité : codegouvfr (du 12/06 au 18/06)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation est marquée par un renforcement des outils de gestion, de cartographie et d'évaluation des logiciels. Les évolutions dans [sill-deploy](/repos/codegouvfr/sill-deploy) permettent une meilleure identification des organisations grâce à l'intégration de sources de données externes (Wikidata, ROR), tandis que [cartonum](/repos/codegouvfr/cartonum) enrichit ses capacités de suivi des actifs et de gestion documentaire. 
+L'activité récente est marquée par un renforcement des capacités de gestion, de déploiement et d'évaluation des logiciels. Les outils de gestion et de catalogue ([sill-deploy](/repos/codegouvfr/sill-deploy) et [catalogi](/repos/codegouvfr/catalogi)) bénéficient d'améliorations significatives, notamment pour la recherche d'organisations et une meilleure visibilité sur la protection des logiciels, facilitant ainsi le travail des administrateurs.
 
-Ces développements, complétés par le lancement de [floss-criteria](/repos/codegouvfr/floss-criteria), visent à fournir aux décideurs et administrateurs des outils plus précis pour piloter les actifs numériques et structurer le choix de logiciels libres au sein de l'administration.
+En parallèle, [cartonum](/repos/codegouvfr/cartonum) étend ses fonctionnalités vers la gestion documentaire et l'infrastructure, tandis que le nouveau projet [floss-criteria](/repos/codegouvfr/floss-criteria) amorce la structuration des critères d'évaluation des logiciels libres pour l'administration.
+
+## Sécurité
+- Ajout de fonctionnalités de gestion des mots de passe et de coffres-forts partagés dans [cartonum](/repos/codegouvfr/cartonum).
 
 ## Autres changements notables
-- Optimisation des performances via un refactoring du filtrage de données au niveau SQL dans [sill-deploy](/repos/codegouvfr/sill-deploy).
-- Structuration initiale du projet et mise en place des premiers critères d'évaluation dans [floss-criteria](/repos/codegouvfr/floss-criteria).
-- Extension du périmètre technique de la cartographie (conteneurisation, stockage objet, plateformes développeurs) dans [cartonum](/repos/codegouvfr/cartonum).
+- Refactorisation du filtrage au niveau SQL dans [sill-deploy](/repos/codegouvfr/sill-deploy) pour optimiser les performances.
+- Initialisation de la structure et des bases méthodologiques pour l'évaluation des logiciels dans [floss-criteria](/repos/codegouvfr/floss-criteria).
 
 ## Dépôts les plus actifs
-- [sill-deploy](/repos/codegouvfr/sill-deploy) : Améliorations majeures de l'interface d'administration, de la gestion des organisations et des workflows de déploiement.
-- [cartonum](/repos/codegouvfr/cartonum) : Enrichissement important des fonctionnalités de cartographie, de gestion documentaire et de suivi d'infrastructure.
-- [floss-criteria](/repos/codegouvfr/floss-criteria) : Initialisation et structuration du cadre d'évaluation des logiciels libres.
+- [sill-deploy](/repos/codegouvfr/sill-deploy) : Évolutions majeures sur la gestion des organisations, l'administration et les workflows de déploiement.
+- [cartonum](/repos/codegouvfr/cartonum) : Extension importante des capacités de gestion documentaire, de sauvegarde et de suivi d'infrastructure.
+- [catalogi](/repos/codegouvfr/catalogi) : Amélioration de l'affichage des métadonnées et de la gestion de la protection logicielle.
+- [floss-criteria](/repos/codegouvfr/floss-criteria) : Lancement et structuration des premiers critères d'évaluation des logiciels libres.

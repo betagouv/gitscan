@@ -1,22 +1,20 @@
-# Synthèse d'activité : gristgouv (du 31/07 au 07/08)
+# Synthèse d'activité : gristgouv (du 01/08 au 07/08)
 
 ## Résumé de l'activité
-L'activité de cette période est marquée par une amélioration significative de l'expérience utilisateur et des capacités de visualisation de données. L'introduction de nouveaux widgets basés sur D3.js dans [widgets-config](/repos/gristgouv/widgets-config) et la refonte majeure du widget de vue groupée dans [grist-widget-grouped-view](/repos/gristgouv/grist-widget-grouped-view) offrent des outils de pilotage plus riches, personnalisables et accessibles.
+L'activité récente est marquée par un enrichissement des capacités de visualisation et une amélioration de l'ergonomie globale. L'intégration de nouveaux widgets basés sur D3.js via [widgets-config](/repos/gristgouv/widgets-config) et la refonte majeure du widget de vue groupée dans [grist-widget-grouped-view](/repos/gristgouv/grist-widget-grouped-view) offrent des outils de pilotage plus riches, plus visuels et plus accessibles pour les utilisateurs.
 
-Parallèlement, l'écosystème se renforce sur le plan fonctionnel et pédagogique : [grist-core](/repos/gristgouv/grist-core) apporte une plus grande flexibilité dans la personnalisation des interfaces, tandis que [grist-mooc](/repos/gristgouv/grist-mooc) actualise ses ressources pour faciliter l'apprentissage de l'outil par les utilisateurs finaux.
+En parallèle, les évolutions de [grist-core](/repos/gristgouv/grist-core) permettent une personnalisation accrue de l'interface et une extension du support linguistique, tandis que la mise à jour des contenus pédagogiques de [grist-mooc](/repos/gristgouv/grist-mooc) facilite la montée en compétence et la prise en main de l'outil par les utilisateurs finaux.
 
 ## Sécurité
-- Intégration d'un scanner de vulnérabilités (Trivy) pour sécuriser les images Docker dans [grist-docker-image](/repos/gristgouv/grist-docker-image).
-- Amélioration de la gestion de l'authentification OAuth, incluant la persistance des tokens et la ré-autorisation dans [grist-core](/repos/gristgouv/grist-core).
+- Intégration de l'outil Trivy pour l'analyse automatisée des vulnérabilités au sein des images Docker dans [grist-docker-image](/repos/gristgouv/grist-docker-image).
 
 ## Autres changements notables
-- **Accessibilité et Ergonomie** : Mise en conformité avec les standards WCAG 2.1 AA et ajout de l'internationalisation (français/anglais) pour [grist-widget-grouped-view](/repos/gristgouv/grist-widget-grouped-view).
-- **Infrastructure et CI/CD** : Optimisation de l'environnement de construction avec GVISOR dans [grist-docker-image](/repos/gristgouv/grist-docker-image) et mise en place de tests automatisés (smoke tests) dans [grist-cw-intra-form](/repos/gristgouv/grist-cw-intra-form).
-- **Architecture logicielle** : Introduction d'un proxy pour le fleet Grist et optimisation de la gestion des appels MCP dans [grist-core](/repos/gristgouv/grist-core).
-- **Robustesse de l'affichage** : Amélioration de la gestion des erreurs et de la lisibilité des données (rendu en texte brut) dans [gristlabs-widgets](/repos/gristgouv/gristlabs-widgets).
+- **Infrastructure et DevOps** : Optimisation de la gestion du trafic via le proxying Grist Fleet ([grist-core](/repos/gristgouv/grist-core)) et renforcement de la robustesse des environnements de construction grâce à une meilleure intégration de GVISOR ([grist-docker-image](/repos/gristgouv/grist-docker-image)).
+- **Qualité et Accessibilité** : Mise en conformité avec les standards d'accessibilité WCAG 2.1 AA pour le widget de vue groupée ([grist-widget-grouped-view](/repos/gristgouv/grist-widget-grouped-view)) et introduction de tests automatisés ("smoke tests") pour garantir la stabilité des formulaires ([grist-cw-intra-form](/repos/gristgouv/grist-cw-intra-form)).
+- **Fiabilité de l'affichage** : Amélioration de la gestion des erreurs et des données complexes par l'utilisation systématique du texte brut pour les étiquettes et les messages d'inspection, évitant ainsi les problèmes d'interprétation HTML ([gristlabs-widgets](/repos/gristgouv/gristlabs-widgets)).
 
 ## Dépôts les plus actifs
-- [grist-core](/repos/gristgouv/grist-core) : Évolutions majeures sur la personnalisation de la grille, l'authentification et l'architecture réseau.
-- [grist-widget-grouped-view](/repos/gristgouv/grist-widget-grouped-view) : Refonte complète de l'ergonomie, de l'accessibilité et de l'internationalisation.
-- [grist-docker-image](/repos/gristgouv/grist-docker-image) : Renforcement de la sécurité et de la robustesse de l'infrastructure de déploiement.
-- [gristlabs-widgets](/repos/gristgouv/gristlabs-widgets) : Amélioration de la robustesse de l'affichage et de la gestion des erreurs.
+- [grist-core](/repos/gristgouv/grist-core) : Évolutions de l'interface utilisateur, du support linguistique et de l'infrastructure serveur.
+- [grist-widget-grouped-view](/repos/gristgouv/grist-widget-grouped-view) : Refonte majeure de l'ergonomie, de l'internationalisation et de l'accessibilité.
+- [grist-docker-image](/repos/gristgouv/grist-docker-image) : Renforcement de la sécurité et optimisation des workflows de construction.
+- [gristlabs-widgets](/repos/gristgouv/gristlabs-widgets) : Amélioration de la robustesse et de la fiabilité de l'affichage des données.

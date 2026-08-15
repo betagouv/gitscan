@@ -1,22 +1,23 @@
-# Synthèse d'activité : mission-apprentissage (du 25/08 au 01/09)
+# Synthèse d'activité : mission-apprentissage (du 01/09 au 07/09)
 
 ## Résumé de l'activité
-L'activité récente est marquée par une forte accélération de l'automatisation des processus métier et de la gestion de projet. L'organisation a déployé de nouveaux outils de communication automatisée (WhatsApp, emails) pour les candidats et les entreprises via [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas) et [labonnealternance](/repos/mission-apprentissage/labonnealternance), tout en enrichissant les capacités de classification des données dans [tableaudebord-lab](/repos/mission-apprentissage/tableaudebord-lab) et [labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab).
+L'activité de cette période est marquée par des avancées majeures sur l'expérience utilisateur et la visibilité des services. Le lancement du nouveau moteur de recherche et l'optimisation massive du SEO sur [labonnealternance](/repos/mission-apprentissage/labonnealternance) améliorent significativement la découverte des offres, tandis que l'automatisation des relances emails fluidifie le parcours des candidats et entreprises. Parallèlement, l'organisation renforce ses capacités d'automatisation interne grâce au développement de nouveaux outils de gestion de projet et de tâches via [mna-skills](/repos/mission-apprentissage/mna-skills) et [lba-github-mcp](/repos/mission-apprentissage/lba-github-mcp).
 
-Parallèlement, l'efficacité opérationnelle est renforcée par le développement de nouvelles "skills" d'automatisation GitHub dans [mna-skills](/repos/mission-apprentissage/mna-skills) et [lba-github-mcp](/repos/mission-apprentissage/lba-github-mcp), facilitant la gestion des sprints et des tâches de développement.
+D'autres améliorations notables incluent une meilleure gestion des données de contact dans [tableaudebord-lab](/repos/mission-apprentissage/tableaudebord-lab) et une recherche plus performante pour [voeux-affelnet](/repos/mission-apprentissage/voeux-affelnet).
 
 ## Sécurité
-- Correction de vulnérabilités critiques (CVE) dans les dépendances de [bal](/repos/mission-apprentissage/bal) et [api-apprentissage](/repos/mission-apprentissage/api-apprentissage).
-- Renforcement de la protection des données via l'implémentation de l'anti-scraping ([labonnealternance](/repos/mission-apprentissage/labonnealternance)) et la vérification des numéros de téléphone ([flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas)).
-- Sécurisation globale de l'infrastructure par une campagne de rotation des secrets principaux (SOPS) ([mongodb](/repos/mission-apprentissage/mongodb), [mna-shared-bin](/repos/mission-apprentissage/mna-shared-bin), [infra](/repos/mission-apprentissage/infra), [bal](/repos/mission-apprentissage/bal), [api-apprentissage](/repos/mission-apprentissage/api-apprentissage)).
+- Correction de vulnérabilités critiques (CVE) sur les dépendances de [bal](/repos/mission-apprentissage/bal), [api-apprentissage](/repos/mission-apprentissage/api-apprentissage) et [labonnealternance](/repos/mission-apprentissage/labonnealternance).
+- Renforcement global de la gestion des secrets par la généralisation de l'outil SOPS et la rotation des clés de sécurité sur plusieurs dépôts, notamment [mongodb](/repos/mission-apprentissage/mongodb), [mna-shared-bin](/repos/mission-apprentissage/mna-shared-bin), [infra](/repos/mission-apprentissage/infra) et [labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab).
+- Amélioration de la protection contre les abus via le déploiement du rate limiting Nginx sur [labonnealternance](/repos/mission-apprentissage/labonnealternance).
 
 ## Autres changements notables
-- Modernisation des infrastructures de données avec la mise à niveau de MongoDB ([mongodb](/repos/mission-apprentissage/mongodb)), la migration vers un nouveau moteur de recherche v2 ([labonnealternance](/repos/mission-apprentissage/labonnealternance)) et l'adoption de Mongoose 9 ([catalogue-apprentissage](/repos/mission-apprentissage/catalogue-apprentissage)).
-- Amélioration de l'observabilité système et de la lisibilité des logs ([upptime](/repos/mission-apprentissage/upptime), [infra](/repos/mission-apprentissage/infra)).
-- Migration vers une gestion de secrets centralisée via SOPS pour plusieurs projets ([mna-shared-bin](/repos/mission-apprentissage/mna-shared-bin), [labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab)).
+- **Modernisation des infrastructures de données** : Montée de version de MongoDB sur [mongodb](/repos/mission-apprentissage/mongodb), migration vers Mongoose 9 sur [catalogue-apprentissage](/repos/mission-apprentissage/catalogue-apprentissage) et optimisation de la gestion des index Elasticsearch.
+- **Optimisation des performances et de l'UX** : Implémentation de composants de cache pour une navigation instantanée sur [labonnealternance](/repos/mission-apprentissage/labonnealternance) et amélioration de la réactivité de la recherche sur [voeux-affelnet](/repos/mission-apprentissage/voeux-affelnet).
+- **Observabilité et stabilité** : Ajout de métriques de monitoring pour MongoDB sur [infra](/repos/mission-apprentissage/infra) et unification des environnements de développement (Node.js, Docker) sur [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas).
+- **Intelligence Artificielle** : Intégration d'un nouveau modèle de classification des offres d'emploi sur [labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab).
 
 ## Dépôts les plus actifs
-- [labonnealternance](/repos/mission-apprentissage/labonnealternance) : Évolutions majeures sur l'expérience utilisateur, le SEO et la sécurité.
-- [flux-retour-cfas](/repos/mission-apprentissage/flux-retour-cfas) : Automatisation des communications et optimisation des processus de déploiement.
-- [mna-skills](/repos/mission-apprentissage/mna-skills) : Développement de nouveaux outils d'automatisation pour la gestion des flux de travail GitHub.
-- [labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab) : Amélioration des modèles de classification et de la gestion de la configuration.
+- [labonnealternance](/repos/mission-apprentissage/labonnealternance) : Évolutions majeures du moteur de recherche, du SEO et de l'interface utilisateur.
+- [mna-skills](/repos/mission-apprentissage/mna-skills) : Développement intensif de nouveaux outils d'automatisation pour la gestion des tâches GitHub.
+- [labonnealternance-lab](/repos/mission-apprentissage/labonnealternance-lab) : Améliorations du pipeline de machine learning et de la gestion des modèles.
+- [catalogue-apprentissage](/repos/mission-apprentissage/catalogue-apprentissage) : Migrations techniques et optimisations des processus de synchronisation de données.
