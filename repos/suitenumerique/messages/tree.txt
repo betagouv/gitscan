@@ -169,6 +169,7 @@
     │   │   │   └── commands
     │   │   │       ├── __init__.py
     │   │   │       ├── backfill_postmark.py
+    │   │   │       ├── backfill_thread_snippets.py
     │   │   │       ├── bucket_cors.py
     │   │   │       ├── create_bucket.py
     │   │   │       ├── createsuperuser.py
@@ -310,23 +311,25 @@
     │   │   ├── signals.py
     │   │   ├── tasks.py
     │   │   ├── templates
-    │   │   │   └── admin
-    │   │   │       ├── _object_tools_button_styles.html
-    │   │   │       └── core
-    │   │   │           ├── blob
-    │   │   │           │   └── change_form.html
-    │   │   │           ├── channel
-    │   │   │           │   ├── change_form.html
-    │   │   │           │   └── regenerated_secret.html
-    │   │   │           ├── mailbox
-    │   │   │           │   └── change_form.html
-    │   │   │           ├── maildomain
-    │   │   │           │   └── change_form.html
-    │   │   │           ├── message
-    │   │   │           │   └── change_form.html
-    │   │   │           └── user
-    │   │   │               ├── add_passwordless.html
-    │   │   │               └── change_list.html
+    │   │   │   ├── admin
+    │   │   │   │   ├── _object_tools_button_styles.html
+    │   │   │   │   └── core
+    │   │   │   │       ├── blob
+    │   │   │   │       │   └── change_form.html
+    │   │   │   │       ├── channel
+    │   │   │   │       │   ├── change_form.html
+    │   │   │   │       │   └── regenerated_secret.html
+    │   │   │   │       ├── mailbox
+    │   │   │   │       │   └── change_form.html
+    │   │   │   │       ├── maildomain
+    │   │   │   │       │   └── change_form.html
+    │   │   │   │       ├── message
+    │   │   │   │       │   └── change_form.html
+    │   │   │   │       └── user
+    │   │   │   │           ├── add_passwordless.html
+    │   │   │   │           └── change_list.html
+    │   │   │   └── core
+    │   │   │       └── mobile_handoff.html
     │   │   ├── templatetags
     │   │   │   ├── __init__.py
     │   │   │   └── extra_tags.py
@@ -335,7 +338,7 @@
     │   │   │   ├── api
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── conftest.py
-    │   │   │   │   └── test_*.py  (64 files)
+    │   │   │   │   └── test_*.py  (65 files)
     │   │   │   ├── authentication
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── test_backends.py
@@ -344,6 +347,7 @@
     │   │   │   ├── commands
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── test_backfill_postmark.py
+    │   │   │   │   ├── test_backfill_thread_snippets.py
     │   │   │   │   ├── test_re_store_blobs.py
     │   │   │   │   ├── test_send_mail_compose_error.py
     │   │   │   │   └── test_verify_blobs.py
@@ -403,6 +407,7 @@
     │   │   │   │   ├── test_message_get_parsed_data.py
     │   │   │   │   ├── test_message_template.py
     │   │   │   │   ├── test_thread_event.py
+    │   │   │   │   ├── test_thread_snippet.py
     │   │   │   │   ├── test_user_abilities.py
     │   │   │   │   ├── test_user_event.py
     │   │   │   │   └── test_users.py
@@ -681,10 +686,7 @@
     │   │   │   │   │       ├── Default@2x~universal~anyany-dark.png
     │   │   │   │   │       ├── Default@2x~universal~anyany.png
     │   │   │   │   │       ├── Default@3x~universal~anyany-dark.png
-    │   │   │   │   │       ├── Default@3x~universal~anyany.png
-    │   │   │   │   │       ├── splash-2732x2732-1.png
-    │   │   │   │   │       ├── splash-2732x2732-2.png
-    │   │   │   │   │       └── splash-2732x2732.png
+    │   │   │   │   │       └── Default@3x~universal~anyany.png
     │   │   │   │   ├── Base.lproj
     │   │   │   │   │   ├── LaunchScreen.storyboard
     │   │   │   │   │   └── Main.storyboard
@@ -898,6 +900,7 @@
     │   ├── scripts
     │   │   ├── check-node-modules.mjs
     │   │   ├── create-ota-bucket.mjs
+    │   │   ├── generate-ios-xcconfig.mjs
     │   │   ├── generate-ota-keys.mjs
     │   │   ├── ota-lib.mjs
     │   │   ├── print-bundle-stats.mjs
@@ -1043,6 +1046,7 @@
     │   │   │   │   ├── blocknote-view-field
     │   │   │   │   │   ├── _index.scss
     │   │   │   │   │   └── index.tsx
+    │   │   │   │   ├── colors.ts
     │   │   │   │   ├── column-layout-block
     │   │   │   │   │   ├── _index.scss
     │   │   │   │   │   ├── column-layout-insert-button.tsx
@@ -1074,6 +1078,8 @@
     │   │   │   │   ├── message-template-block
     │   │   │   │   │   ├── _index.scss
     │   │   │   │   │   └── index.tsx
+    │   │   │   │   ├── paste-sanitizer.test.ts
+    │   │   │   │   ├── paste-sanitizer.ts
     │   │   │   │   ├── quoted-message-block
     │   │   │   │   │   └── index.tsx
     │   │   │   │   ├── signature-block
@@ -1104,7 +1110,9 @@
     │   │   │   │   │   │   ├── chip.tsx
     │   │   │   │   │   │   └── index.tsx
     │   │   │   │   │   ├── message-composer
-    │   │   │   │   │   │   └── index.tsx
+    │   │   │   │   │   │   ├── index.tsx
+    │   │   │   │   │   │   ├── orphan-inline-images.test.ts
+    │   │   │   │   │   │   └── orphan-inline-images.ts
     │   │   │   │   │   ├── message-form
     │   │   │   │   │   │   ├── _index.scss
     │   │   │   │   │   │   ├── attachment-uploader.tsx
@@ -1384,6 +1392,7 @@
     │   │   │   │           │   │   ├── thread-message-body.tsx
     │   │   │   │           │   │   ├── thread-message-footer.tsx
     │   │   │   │           │   │   ├── thread-message-header.tsx
+    │   │   │   │           │   │   ├── thread-message-recipients.tsx
     │   │   │   │           │   │   ├── types.ts
     │   │   │   │           │   │   └── use-link-confirmation.tsx
     │   │   │   │           │   ├── thread-summary
@@ -1752,10 +1761,13 @@
     │   │   ├── test_attachments.py
     │   │   ├── test_email_delivery.py
     │   │   ├── test_handler.py
+    │   │   ├── test_hardened_smtp.py
     │   │   ├── test_limits.py
     │   │   ├── test_mda_async.py
     │   │   ├── test_metrics.py
     │   │   ├── test_security.py
+    │   │   ├── test_server_config.py
+    │   │   ├── test_settings.py
     │   │   └── test_smtp_protocol.py
     │   └── uv.lock
     ├── mta-out
@@ -1787,4 +1799,4 @@
             ├── requirements.txt
             ├── test_smtp.py
             └── test_socks_proxy.py
-397 directories, 1597 files
+398 directories, 1609 files

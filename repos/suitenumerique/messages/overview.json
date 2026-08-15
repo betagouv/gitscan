@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/suitenumerique/messages",
   "name": "messages",
-  "description": "Une plateforme de messagerie collaborative conçue pour les équipes, permettant la gestion de boîtes de réception partagées ou personnelles. Elle intègre des fonctionnalités modernes comme l'IA, le threading intelligent et le support mobile.",
+  "description": "Une plateforme de messagerie collaborative conçue pour les équipes, permettant la gestion de boîtes de réception partagées ou personnelles. Elle intègre des fonctionnalités d'intelligence artificielle et repose sur des standards ouverts comme l'OpenID Connect.",
   "language": "Python",
   "features": [
     "Collaboration & Workflow",
@@ -15,15 +15,16 @@
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django Rest Framework",
+    "Postfix",
     "Vite",
     "TanStack Router",
+    "BlockNote.js",
     "PostgreSQL",
     "Redis",
     "OpenSearch",
     "Celery",
     "Keycloak",
-    "Capacitor",
-    "BlockNote.js"
+    "Capacitor"
   ],
   "components": [
     "API REST & GraphQL",
@@ -32,18 +33,20 @@
     "Python (scripts & backend)",
     "Docker & Conteneurs",
     "Celery & Queue asynchrone",
-    "Webhooks & Événements",
-    "Authentification (composant)"
+    "Authentification (composant)",
+    "Webhooks & Événements"
   ],
   "auth": {
     "methods": [
-      "oauth2"
+      "oauth2",
+      "jwt",
+      "session"
     ],
     "providers": [
       "Keycloak"
     ]
   },
-  "lastActivity": "2026-08-10T14:38:38+02:00",
+  "lastActivity": "2026-08-13T21:26:27+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -53,7 +56,8 @@
     "Python",
     "TypeScript",
     "Docker & Conteneurs",
+    "Intelligence Artificielle & LLM",
     "Bases de données SQL",
-    "Intelligence Artificielle & LLM"
+    "Accessibilité"
   ]
 }
