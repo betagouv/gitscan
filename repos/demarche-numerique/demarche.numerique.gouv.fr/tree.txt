@@ -790,9 +790,7 @@
 │   │   │   │   └── rna_component.html.haml
 │   │   │   ├── rna_component.rb
 │   │   │   ├── rnf_component
-│   │   │   │   ├── rnf_component.en.yml
-│   │   │   │   ├── rnf_component.fr.yml
-│   │   │   │   └── rnf_component.html.haml
+│   │   │   │   └── rnf_component.html.erb
 │   │   │   ├── rnf_component.rb
 │   │   │   ├── section_component
 │   │   │   │   └── section_component.html.haml
@@ -2226,6 +2224,7 @@
 │   │   ├── scaleway
 │   │   │   └── api.rb
 │   │   ├── sent_mail.rb
+│   │   ├── trusted_vips_loader.rb
 │   │   ├── typhoeus
 │   │   │   └── cache
 │   │   │       └── successful_requests_rails_cache.rb
@@ -2838,6 +2837,7 @@
 │   │       ├── t20260722update_procedure_estimated_dossiers_count_task.rb
 │   │       ├── t20260728_backfill_search_terms_tsvector_task.rb
 │   │       ├── t20260728_purge_empty_attachments_task.rb
+│   │       ├── t20260805_backfill_champs_value_updated_at_from_checkpoint_task.rb
 │   │       ├── update_*.rb  (6 files)
 │   │       └── verify_confirmed_users_task.rb
 │   ├── types
@@ -3799,6 +3799,7 @@
 │   │   ├── strong_migrations.rb
 │   │   ├── types.rb
 │   │   ├── typhoeus.rb
+│   │   ├── vips_untrusted_loaders.rb
 │   │   ├── wrap_parameters.rb
 │   │   └── zxcvbn.rb
 │   ├── locales
@@ -3997,6 +3998,8 @@
 │   │   │   │   └── fr.yml
 │   │   │   ├── published_procedure
 │   │   │   │   └── fr.yml
+│   │   │   ├── re_instructed_mail
+│   │   │   │   └── fr.yml
 │   │   │   ├── received_mail
 │   │   │   │   └── fr.yml
 │   │   │   ├── referentiel
@@ -4008,6 +4011,8 @@
 │   │   │   │   ├── en.yml
 │   │   │   │   └── fr.yml
 │   │   │   ├── siret
+│   │   │   │   └── fr.yml
+│   │   │   ├── tags_validator
 │   │   │   │   └── fr.yml
 │   │   │   ├── type_de_champ
 │   │   │   │   ├── en.yml
@@ -4827,7 +4832,8 @@
 │   │   ├── 20260727220000_add_champs_stable_id_and_dossier_id_index.rb
 │   │   ├── 20260727220100_remove_champs_stable_id_index.rb
 │   │   ├── 20260728120000_add_search_terms_tsvector_to_dossiers.rb
-│   │   └── 20260728120001_add_search_terms_tsvector_indexes_to_dossiers.rb
+│   │   ├── 20260728120001_add_search_terms_tsvector_indexes_to_dossiers.rb
+│   │   └── 20260804120000_add_value_updated_at_to_champs.rb
 │   ├── schema.rb
 │   ├── seeds
 │   │   ├── avis.rb
@@ -4920,13 +4926,6 @@
 │   ├── object-storage-and-data-encryption.md
 │   └── recovery.md
 ├── eslint.config.ts
-├── failing_specs2.txt
-├── failing_specs3.txt
-├── failing_specs4.txt
-├── failing_specs5.txt
-├── failing_specs6.txt
-├── failing_specs7.txt
-├── failing_specs8.txt
 ├── lib
 │   ├── cops
 │   │   ├── add_concurrent_index.rb
@@ -5111,6 +5110,7 @@
 │   │   │   ├── pre_rempli_component_spec.rb
 │   │   │   ├── referentiel_component_spec.rb
 │   │   │   ├── referentiel_display_component_spec.rb
+│   │   │   ├── rnf_component_spec.rb
 │   │   │   ├── section_component_spec.rb
 │   │   │   └── yes_no_component_spec.rb
 │   │   ├── export_template
@@ -5242,7 +5242,8 @@
 │   │       ├── dossier_card_champs_component_spec.rb
 │   │       └── personnalisation_component_spec.rb
 │   ├── config
-│   │   └── active_storage_spec.rb
+│   │   ├── active_storage_spec.rb
+│   │   └── vips_untrusted_loaders_spec.rb
 │   ├── controllers
 │   │   ├── administrateurs
 │   │   │   ├── administrateur_controller_spec.rb
@@ -5281,6 +5282,7 @@
 │   │   │       ├── base_controller_spec.rb
 │   │   │       ├── dossiers_controller_spec.rb
 │   │   │       ├── graphql_controller_n+1_spec.rb
+│   │   │       ├── graphql_controller_skylight_spec.rb
 │   │   │       ├── graphql_controller_stored_mutations_spec.rb
 │   │   │       └── graphql_controller_stored_queries_spec.rb
 │   │   ├── api_controller_spec.rb
@@ -5796,6 +5798,7 @@
 │   │   │   ├── jobs_spec.rb
 │   │   │   ├── support_spec.rb
 │   │   │   └── task_helper_spec.rb
+│   │   ├── trusted_vips_loader_spec.rb
 │   │   ├── typhoeus
 │   │   │   └── cache
 │   │   │       └── successful_requests_rails_cache_spec.rb
@@ -6065,7 +6068,8 @@
 │   ├── rails_helper.rb
 │   ├── requests
 │   │   ├── active_storage
-│   │   │   └── direct_uploads_spec.rb
+│   │   │   ├── direct_uploads_spec.rb
+│   │   │   └── representations_spec.rb
 │   │   ├── cookie_overflow_prevention_spec.rb
 │   │   └── instructeurs
 │   │       └── telecharger_pjs_spec.rb
@@ -6222,7 +6226,8 @@
 │   │   ├── integrateurs
 │   │   │   └── procedure_prefilling_spec.rb
 │   │   ├── manager
-│   │   │   └── instructeurs_spec.rb
+│   │   │   ├── instructeurs_spec.rb
+│   │   │   └── procedure_add_tags_spec.rb
 │   │   ├── outdated_browser_spec.rb
 │   │   ├── patron_spec.rb
 │   │   ├── playground_spec.rb
@@ -6378,6 +6383,7 @@
 │   │       ├── t20260722update_procedure_estimated_dossiers_count_task_spec.rb
 │   │       ├── t20260728_backfill_search_terms_tsvector_task_spec.rb
 │   │       ├── t20260728_purge_empty_attachments_task_spec.rb
+│   │       ├── t20260805_backfill_champs_value_updated_at_from_checkpoint_task_spec.rb
 │   │       ├── update_*.rb  (5 files)
 │   │       └── verify_confirmed_users_task_spec.rb
 │   ├── types
@@ -6489,4 +6495,4 @@
 │           └── leaflet.scss
 ├── vite.config.ts
 └── vitest.config.ts
-1035 directories, 5801 files
+1037 directories, 5805 files
