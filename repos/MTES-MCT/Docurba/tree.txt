@@ -41,7 +41,6 @@
 │   │   │   ├── apps.py
 │   │   │   ├── constants.py
 │   │   │   ├── data
-│   │   │   │   ├── event_types.json
 │   │   │   │   └── topics.json
 │   │   │   ├── enums.py
 │   │   │   ├── management
@@ -49,9 +48,9 @@
 │   │   │   │   └── commands
 │   │   │   │       ├── __init__.py
 │   │   │   │       ├── collectivites_en_base.py
+│   │   │   │       ├── event_type_add_scope_pplh_ppilh.py
 │   │   │   │       ├── import_dgaln_zan_objects.py
-│   │   │   │       ├── link_events_with_event_types.py
-│   │   │   │       └── update_nuxt3_trigger.py
+│   │   │   │       └── link_events_with_event_types.py
 │   │   │   ├── migrations
 │   │   │   │   ├── 0001_initial.py
 │   │   │   │   ├── 0002_rename_code_insee_collectivite_code_insee_unique.py
@@ -104,6 +103,10 @@
 │   │   │   │   ├── 0049_alter_eventtype_scope_list_and_more.py
 │   │   │   │   ├── 0050_remove_event_unused_fields.py
 │   │   │   │   ├── 0051_alter_event_procedure.py
+│   │   │   │   ├── 0052_alter_event_event_type_blank.py
+│   │   │   │   ├── 0053_alter_procedure_vaut_pdm_alter_procedure_vaut_plh_and_more.py
+│   │   │   │   ├── 0054_remove_sql_unused_functions.py
+│   │   │   │   ├── 0055_remove_procedure_status_functions.py
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── sql_statements
 │   │   │   │       ├── create_table_doc_frise_events.sql
@@ -130,6 +133,7 @@
 │   │   │   │   ├── 0006_alter_eventsnapshot_pgh_obj.py
 │   │   │   │   ├── 0007_event_add_event_type.py
 │   │   │   │   ├── 0008_alter_eventsnapshot_procedure.py
+│   │   │   │   ├── 0009_alter_eventsnapshot_event_type_blank.py
 │   │   │   │   └── __init__.py
 │   │   │   └── models.py
 │   │   ├── internal_api
@@ -158,8 +162,10 @@
 │   │   │   ├── 404.html
 │   │   │   ├── admin
 │   │   │   │   ├── core
-│   │   │   │   │   └── commune
-│   │   │   │   │       └── procedures.html
+│   │   │   │   │   ├── commune
+│   │   │   │   │   │   └── procedures.html
+│   │   │   │   │   └── event
+│   │   │   │   │       └── change_event_form.html
 │   │   │   │   └── users
 │   │   │   │       └── change_user_form.html
 │   │   │   └── core
@@ -173,6 +179,7 @@
 │   │   │   │   ├── 0001_squashed_0006_user.py
 │   │   │   │   ├── 0002_user_profile.py
 │   │   │   │   ├── 0003_enable_track_functions.py
+│   │   │   │   ├── 0004_disable_track_functions.py
 │   │   │   │   └── __init__.py
 │   │   │   └── models.py
 │   │   └── utils
@@ -206,6 +213,7 @@
 │   │   │   ├── management
 │   │   │   │   └── commands
 │   │   │   │       ├── __init__.py
+│   │   │   │       ├── test_event_type_add_scope_pplh_ppilh.py
 │   │   │   │       └── test_link_events_with_event_types.py
 │   │   │   ├── test_admin.py
 │   │   │   ├── test_models.py
@@ -215,11 +223,13 @@
 │   │   │   └── test_admin.py
 │   │   ├── internal_api
 │   │   │   ├── __init__.py
-│   │   │   ├── __snapshots__
-│   │   │   │   └── test_views.ambr
 │   │   │   ├── test_auth.py
 │   │   │   ├── test_paginators.py
-│   │   │   └── test_views.py
+│   │   │   └── test_views
+│   │   │       ├── __init__.py
+│   │   │       ├── __snapshots__
+│   │   │       │   └── test_views.ambr
+│   │   │       └── test_views.py
 │   │   ├── surveys
 │   │   │   ├── __init__.py
 │   │   │   └── test_models.py
@@ -401,6 +411,7 @@
 │   │   ├── Layouts
 │   │   │   ├── AppBar.vue
 │   │   │   ├── Footer.vue
+│   │   │   ├── HolidayBanner.vue
 │   │   │   └── LoginBanner.vue
 │   │   ├── Onboarding
 │   │   │   └── SignupForm.vue
@@ -662,6 +673,7 @@
 │   │       ├── Guide-synthetique-ZAN.md
 │   │       ├── Mondiagartif.md
 │   │       ├── Plusfraîchemaville.md
+│   │       ├── Rédiger-un-cahier-des-charges.md
 │   │       ├── SCoT-modernise.md
 │   │       ├── Solutions_delus.md
 │   │       ├── aires_geographiques.md
@@ -669,6 +681,7 @@
 │   │       ├── cerema.md
 │   │       ├── climat-resilience.md
 │   │       ├── evaluation-environementale.md
+│   │       ├── fiche-technique-DGALN-OAP.md
 │   │       ├── inao.md
 │   │       ├── modernisation.md
 │   │       ├── paysages.md
@@ -736,8 +749,7 @@
 │   │   │   │   └── procedures
 │   │   │   │       ├── choix-collectivite.vue
 │   │   │   │       └── index.vue
-│   │   │   ├── _departement.vue
-│   │   │   └── enquete_overview.vue
+│   │   │   └── _departement.vue
 │   │   ├── ddt-ddtm-dreal.vue
 │   │   ├── dev
 │   │   │   └── api.vue
@@ -871,9 +883,7 @@
 │   │   │   ├── project_sharings.delete.sql
 │   │   │   └── project_sharings.insert.sql
 │   │   └── rpc
-│   │       ├── procedures_by_collectivites.sql
-│   │       ├── validated_collectivites.sql
-│   │       └── validated_collectivites_by_depts.sql
+│   │       └── procedures_by_collectivites.sql
 │   └── static
 │       ├── Guide_PLU_18_03_20_BD_WEB.pdf
 │       ├── README.md
@@ -1028,8 +1038,7 @@
 │       │   ├── pac-ghost-section.png
 │       │   └── risques.png
 │       ├── json
-│       │   ├── communes_colors.json
-│       │   └── nb_collectivites_par_departement.json
+│       │   └── communes_colors.json
 │       ├── pdf
 │       │   └── kitdecom
 │       │       ├── BE
@@ -1051,10 +1060,7 @@
 │       │   └── doc_20210200_ddt_sat_cc_plu.odt
 │       ├── v.png
 │       └── vuetify-logo.svg
-├── supabase
-│   ├── .gitignore
-│   └── config.toml
-└── tests_e2e
+└── supabase
     ├── .gitignore
-    └── test_titre_procedure.py
-208 directories, 893 files
+    └── config.toml
+209 directories, 898 files
