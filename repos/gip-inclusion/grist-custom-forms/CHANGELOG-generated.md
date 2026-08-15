@@ -1,22 +1,36 @@
-## Changelog : grist-custom-forms (30 derniers jours, au 10 août 2026)
+## Changelog : grist-custom-forms (30 derniers jours, au 13 août 2026)
 
 ### Résumé
-Ce mois-ci, le projet a franchi une étape importante avec l'intégration complète du suivi des candidatures spontanées et l'optimisation du système de matching EURES. Les outils de communication, notamment via WhatsApp, ont été renforcés, et l'interface d'administration a été modernisée pour offrir une gestion plus fluide et une meilleure visibilité sur les interactions avec les employeurs et les candidats.
+Ce mois a été marqué par une évolution majeure de l'identité visuelle du projet, avec le rebranding des pages EURES vers "Match Europe". Le projet a également introduit une gestion complète des candidatures spontanées (prospection et suivi) et a bénéficié d'une refonte importante de l'interface d'administration pour améliorer l'efficacité du matching et la lisibilité des données.
 
 ### Évolutions fonctionnelles
-- **Gestion des candidatures spontanées** : Mise en place d'un suivi complet incluant la capture des réponses des employeurs, le suivi des candidatures de candidats, l'envoi d'emails de prospection et la documentation automatique dans le journal de projet.
-- **Optimisation du matching EURES** : 
-    - Amélioration de la prise de décision pour le matching manuel et clarification des badges de statut.
-    - Meilleure gestion de la qualité des données (gestion des doublons de réponses, précision de la correspondance des salaires brut/net et amélioration de l'historique).
-    - Interface optimisée avec une vue compacte de la liste de matching et de nouveaux filtres (ex: filtrage par employeur ayant répondu).
-- **Communication & WhatsApp** : Ajout de la confirmation de numéro de téléphone pour les employeurs, affichage du statut WhatsApp dans les listes de matching et rétablissement du mécanisme de consentement pour les candidats.
-- **Accès & Visibilité** : Rétablissement de l'accès public aux pages de projet et aux journaux de projet.
+- **Rebranding et Identité** : Passage de l'identité visuelle des pages EURES vers la marque "Match Europe".
+- **Gestion des candidatures spontanées** : Mise en place d'un nouveau flux complet incluant l'envoi d'e-mails de prospection (candidats et employeurs), le suivi des candidatures et la capture automatique des réponses des employeurs.
+- **Optimisation de l'administration EURES** : 
+    - Refonte globale de l'interface d'administration Match Europe.
+    - Amélioration de la lisibilité des listes de matching et des données de relations.
+    - Clarification des badges de statut et des notions de salaire (brut vs net).
+    - Amélioration des outils de décision de matching manuel.
+- **Amélioration du Matching** : 
+    - Ajout de filtres (ex: employeur ayant répondu).
+    - Meilleure gestion des doublons de réponses EURES.
+    - Amélioration du suivi des cas de "non-match".
+- **Communication et WhatsApp** : 
+    - Ajout de la confirmation de numéro de téléphone WhatsApp pour les employeurs.
+    - Affichage du statut WhatsApp des employeurs directement dans les listes de matching.
+- **Gestion des invitations** : Ajout d'un canal d'invitation manuel pour France Travail et possibilité de nettoyer les invitations en doublon.
+- **Restauration de fonctionnalités** : Réactivation des pages du journal de projet public, des outils de suivi de projet EURES et des rapports d'analyse FAGERH.
 
 ### Évolutions techniques
-- **Administration & Performance** : 
-    - Refonte complète de l'interface d'administration "Match Europe".
-    - Correction des problèmes de délai d'attente (timeout) lors de l'envoi d'invitations groupées.
-- **Stabilité & Fiabilité** : 
-    - Mise en place de gardes de régression pour le module EURES.
-    - Renforcement de la suite de tests, notamment pour les processus d'envoi d'emails et les actions de matching.
-    - Amélioration des outils de nettoyage des invitations en double.
+- **Infrastructure et Déploiement** : 
+    - Sécurisation des scripts de déploiement (guarded deploy scripts).
+    - Mise en place de tests de régression pour EURES.
+- **Configuration et Réseau** : 
+    - Utilisation d'URLs publiques pour les liens magiques d'administration et les tests d'e-mails.
+    - Désactivation des en-têtes de suivi Brevo pour la confidentialité.
+- **Performance et Fiabilité** : 
+    - Correction d'un problème de timeout lors de l'envoi massif d'invitations.
+- **Tests** : Renforcement de la couverture de tests sur les flux d'e-mails (prospection, boutons de réponse, actions de matching).
+
+### Autres changements
+- **Documentation** : Mise à jour du journal de projet pour documenter les évolutions de Match Europe et le nouveau processus de candidatures spontanées.

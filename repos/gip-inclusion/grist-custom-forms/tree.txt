@@ -11,10 +11,37 @@
 │   ├── finess_reference.csv
 │   ├── grist-form.js
 │   ├── logo_carre.png
+│   ├── match-europe-logo.png
 │   └── referentiel_formations.csv
 ├── docs
+│   ├── deploiements-eures-fagerh.md
 │   └── fagerh_questions_completes.pdf
 ├── eures_beta_email_templates.py
+├── fagerh_analytics
+│   ├── __init__.py
+│   ├── api.py
+│   ├── auth.py
+│   ├── catalog.py
+│   ├── catalog_service.py
+│   ├── dashboard.py
+│   ├── data_quality.py
+│   ├── domain.py
+│   ├── engine.py
+│   ├── evaluation_projection.py
+│   ├── filters.py
+│   ├── finess.py
+│   ├── flask_adapter.py
+│   ├── geography.py
+│   ├── health.py
+│   ├── observatoire.py
+│   ├── permissions.py
+│   ├── prestations.py
+│   ├── repositories
+│   │   ├── __init__.py
+│   │   ├── base.py
+│   │   ├── fake.py
+│   │   └── grist.py
+│   └── schema.py
 ├── forms
 │   ├── eures-beta
 │   │   ├── admin-suivi.html
@@ -33,9 +60,22 @@
 │   │   └── stat.html
 │   └── fagerh
 │       ├── admin.html
+│       ├── analytics.css
+│       ├── analytics.html
+│       ├── analytics.js
+│       ├── aura-establishments-map.svg
+│       ├── aura-map.jpg
+│       ├── cover-photo.jpg
 │       ├── grist_columns_core.txt
 │       ├── grist_columns_pd_suffixed.txt
 │       ├── index.html
+│       ├── livret.css
+│       ├── livret.html
+│       ├── livret.js
+│       ├── model-cover.jpg
+│       ├── observatoire.css
+│       ├── observatoire.html
+│       ├── observatoire.js
 │       ├── saisie-quotidienne.html
 │       ├── wizard_v2.html
 │       └── wizard_v3.html
@@ -46,10 +86,27 @@
 │   ├── test_eures_public_proxy.py
 │   ├── test_eures_salary_matching.py
 │   ├── test_eures_security.py
+│   ├── test_fagerh_analytics_api.py
+│   ├── test_fagerh_analytics_catalog.py
+│   ├── test_fagerh_analytics_catalog_http.py
+│   ├── test_fagerh_analytics_dashboard.py
+│   ├── test_fagerh_analytics_data_quality.py
+│   ├── test_fagerh_analytics_engine.py
+│   ├── test_fagerh_analytics_finess.py
+│   ├── test_fagerh_analytics_geography.py
+│   ├── test_fagerh_analytics_grist_repository.py
+│   ├── test_fagerh_analytics_health.py
+│   ├── test_fagerh_analytics_http.py
+│   ├── test_fagerh_analytics_page.py
+│   ├── test_fagerh_analytics_prestations.py
+│   ├── test_fagerh_analytics_schema.py
 │   ├── test_public_stats.py
 │   └── test_save_record.py
 ├── tools
 │   ├── check-eures-regressions.mjs
+│   ├── check-fagerh-regressions.mjs
+│   ├── deploy-eures.mjs
+│   ├── deploy-fagerh.mjs
 │   └── fagerh_suivi_local
 │       ├── README.md
 │       ├── app.py
@@ -65,4 +122,4 @@
 │           ├── people_new.html
 │           └── person_detail.html
 └── uv.lock
-11 directories, 56 files
+13 directories, 111 files
