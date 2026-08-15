@@ -1,29 +1,30 @@
-## Changelog : sante-mentale-etudiant (30 derniers jours, au 27 juillet 2026)
+## Changelog : sante-mentale-etudiant (30 derniers jours, au 14 août 2026)
 
 ### Résumé
-Ce mois-ci, le projet a connu des avancées significatives sur plusieurs fronts. L'accent a été mis sur le développement de nouvelles fonctionnalités clés, notamment l'intégration d'une section newsletter, l'amélioration de la page "Trouver du soutien" et la création d'un espace "Aider un proche". Des travaux importants ont également été réalisés sur l'orientateur et l'infrastructure du projet, avec une migration vers pnpm 11 et la mise en place de jobs CI/CD.
+Ce mois a été marqué par une structuration importante du contenu et de l'interface. La plateforme s'enrichit de fonctionnalités clés comme un système d'articles complet, une section dédiée aux ressentis, une page d'aide pour l'entourage, ainsi qu'un module d'inscription à la newsletter. L'expérience utilisateur est également améliorée par une navigation plus fluide et une meilleure adaptation aux supports mobiles.
 
 ### Évolutions fonctionnelles
-- Ajout d'une première version de la page d'accueil avec un premier banner [#1](https://github.com/betagouv/sante-mentale-etudiant/issues/1).
-- Implémentation de la structure principale et de l'arbre de décision pour l'orientateur [#6](https://github.com/betagouv/sante-mentale-etudiant/issues/6).
-- Création d'une page "Aider un proche" avec une structure de base et un style amélioré [#22](https://github.com/betagouv/sante-mentale-etudiant/pulls/22).
-- Mise en place d'une section newsletter avec appel à l'API Brevo [#22](https://github.com/betagouv/sante-mentale-etudiant/pulls/22).
-- Amélioration de la page "Trouver du soutien" avec correction de bugs d'affichage et ajout de filtres conditionnels [#20](https://github.com/betagouv/sante-mentale-etudiant/pulls/20), [#21](https://github.com/betagouv/sante-mentale-etudiant/issues/21).
-- Ajout de la fonctionnalité de liens entre l'orientateur et la page de résultats [#18](https://github.com/betagouv/sante-mentale-etudiant/issues/18).
-- Implémentation de la liste des résultats de l'orientateur [#10](https://github.com/betagouv/sante-mentale-etudiant/issues/10).
-- Ajout de la fonctionnalité d'affichage des adresses via une API [#11](https://github.com/betagouv/sante-mentale-etudiant/issues/11).
-- Ajout de modals pour les BAPU [#23](https://github.com/betagouv/sante-mentale-etudiant/issues/23).
+- **Enrichissement de la page d'accueil** : Ajout de nouvelles sections incluant une grille de ressentis, des statistiques et une bannière d'appel à l'aide.
+- **Système d'articles** : Mise en place d'un template d'article complet incluant le temps de lecture, des thématiques liées et un support pour le contenu en Markdown [#25](https://github.com/betagouv/sante-mentale-etudiant/pull/25).
+- **Section "Ressentis"** : Développement d'une interface dédiée comprenant une FAQ, des conseils et une gestion de la réactivité [#27](https://github.com/betagouv/sante-mentale-etudiant/pull/27).
+- **Nouvelles pages et modules** :
+    - Création de la page "Aider un proche".
+    - Intégration d'un module de newsletter avec connexion à l'API Brevo [#22](https://github.com/betagouv/sante-mentale-etudiant/pull/22).
+    - Amélioration du pied de page (mentions légales, liens de navigation).
+- **Outils d'orientation et de soutien** :
+    - Amélioration de l'affichage des résultats et des modales pour l'outil d'orientation [#10](https://github.com/betagouv/sante-mentale-etudiant/pull/10) [#23](https://github.com/betagouv/sante-mentale-etudiant/pull/23).
+    - Corrections de bugs sur la recherche de soutien "Près de chez toi" [#20](https://github.com/betagouv/sante-mentale-etudiant/pull/20) [#21](https://github.com/betagouv/sante-mentale-etudiant/pull/21).
 
 ### Évolutions techniques
-- Migration vers pnpm 11 pour la gestion des dépendances et correction des vulnérabilités associées.
-- Mise en place de jobs CI/CD initiaux sur GitHub Actions [#5](https://github.com/betagouv/sante-mentale-etudiant/pulls/5).
-- Refactoring du code et mise à jour des noms de couleurs pour une meilleure maintenabilité.
-- Amélioration de la réactivité de certaines sections.
+- **Gestion de contenu** : Installation et configuration de `remark` et `remark-html` pour le rendu des articles en Markdown.
+- **Optimisation de la navigation** : Remplacement des balises `<a>` par les composants `<Link>` de Next.js pour améliorer la fluidité de navigation.
+- **Refactoring et architecture** :
+    - Réorganisation de la structure de la page d'accueil et des composants d'articles.
+    - Mise en place de la gestion des adresses API [#11](https://github.com/betagouv/sante-mentale-etudiant/pull/11).
+- **Interface et Design** :
+    - Amélioration globale de la réactivité (responsive design) sur les pages articles, ressentis et aide.
+    - Ajustements typographiques et de mise en page pour les écrans mobiles.
 
 ### Autres changements
-- Correction de problèmes de marge et de padding sur l'interface utilisateur.
-- Mise à jour du style de la page "Aider un proche".
-- Correction de bugs mineurs et améliorations de la qualité du code.
-- Ajout de tests pour la fonctionnalité d'orientateur.
-- Correction d'une erreur de clé.
-- Mise à jour de la documentation.
+- **Maintenance du code** : Harmonisation du nommage des pages et nettoyage des variables de couleurs.
+- **Organisation** : Réorganisation des fichiers et mise à jour de la documentation interne.

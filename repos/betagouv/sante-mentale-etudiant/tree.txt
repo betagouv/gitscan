@@ -8,6 +8,8 @@
 ├── .prettierrc
 ├── README.md
 ├── app
+│   ├── accessibilite
+│   │   └── page.tsx
 │   ├── actions.ts
 │   ├── aider-un-proche
 │   │   └── page.tsx
@@ -15,17 +17,25 @@
 │   │   └── newsletter
 │   │       └── route.ts
 │   ├── articles
+│   │   ├── [slug]
+│   │   │   └── page.tsx
 │   │   └── page.tsx
 │   ├── besoin-de-soutien
 │   │   └── page.tsx
+│   ├── cgu
+│   │   └── page.tsx
 │   ├── comprendre
+│   │   └── page.tsx
+│   ├── donnees-personnelles
 │   │   └── page.tsx
 │   ├── favicon.ico
 │   ├── globals.scss
 │   ├── je-ressens
-│   │   └── [feeling]
+│   │   └── [slug]
 │   │       └── page.tsx
 │   ├── layout.tsx
+│   ├── mentions-legales
+│   │   └── page.tsx
 │   ├── orienteur
 │   │   └── page.tsx
 │   ├── page.module.css
@@ -49,14 +59,26 @@
 │   │   └── data
 │   │       ├── lienSteps.ts
 │   │       └── signs.ts
+│   ├── articles
+│   │   ├── Article.module.scss
+│   │   ├── Article.tsx
+│   │   ├── ArticleHeroImage.module.scss
+│   │   ├── ArticleHeroImage.tsx
+│   │   ├── ArticleInfo.module.scss
+│   │   ├── ArticleInfo.tsx
+│   │   ├── ReadingTime.module.scss
+│   │   └── ReadingTime.tsx
 │   ├── besoin-de-parler
 │   │   ├── NeedToTalkBanner.module.scss
 │   │   └── NeedToTalkBanner.tsx
 │   ├── common
+│   │   ├── ArticleCard.module.scss
+│   │   ├── ArticleCard.tsx
 │   │   ├── Badges.module.scss
 │   │   ├── Badges.tsx
 │   │   ├── CustomCard.module.scss
 │   │   ├── CustomCard.tsx
+│   │   ├── Helper.tsx
 │   │   ├── InfoFields.module.scss
 │   │   ├── InfoFields.tsx
 │   │   ├── InputAddress.module.scss
@@ -65,10 +87,37 @@
 │   │   ├── RequiredField.tsx
 │   │   └── Tiles.tsx
 │   ├── home
-│   │   ├── LaunchOrienteur.module.scss
-│   │   ├── LaunchOrienteur.tsx
-│   │   ├── LaunchOrienteurCard.module.scss
-│   │   └── LaunchOrienteurCard.tsx
+│   │   ├── HomeHero.module.scss
+│   │   ├── HomeHero.tsx
+│   │   ├── HomeStudentsStat.module.scss
+│   │   ├── HomeStudentsStat.tsx
+│   │   ├── Homepage.tsx
+│   │   ├── feelings
+│   │   │   ├── HomeFeelings.module.scss
+│   │   │   ├── HomeFeelings.tsx
+│   │   │   └── feelings.config.ts
+│   │   └── orienteur
+│   │       ├── LaunchOrienteurCard.module.scss
+│   │       └── LaunchOrienteurCard.tsx
+│   ├── je-ressens
+│   │   ├── Feeling.module.scss
+│   │   ├── Feeling.tsx
+│   │   ├── FeelingArticles.module.scss
+│   │   ├── FeelingArticles.tsx
+│   │   ├── FeelingRecap.module.scss
+│   │   ├── FeelingRecap.tsx
+│   │   ├── FeelingUnderstand.module.scss
+│   │   ├── FeelingUnderstand.tsx
+│   │   ├── tips
+│   │   │   ├── FeelingTips.module.scss
+│   │   │   ├── FeelingTips.tsx
+│   │   │   ├── TipCard.module.scss
+│   │   │   └── TipCard.tsx
+│   │   └── video
+│   │       ├── FeelingVideo.module.scss
+│   │       ├── FeelingVideo.tsx
+│   │       ├── NeedHelp.module.scss
+│   │       └── NeedHelp.tsx
 │   ├── layout
 │   │   ├── EmergencyModal.module.scss
 │   │   ├── EmergencyModal.tsx
@@ -106,6 +155,9 @@
 │   └── wrapper
 │       └── FullBleedSection.tsx
 ├── data
+│   ├── articles
+│   │   ├── le-blues-du-dimanche-soir.md
+│   │   └── stress-avant-un-examen.md
 │   ├── bapu.json
 │   └── sse.json
 ├── dsfr-bootstrap
@@ -116,17 +168,31 @@
 ├── hooks
 │   └── useQueryState.ts
 ├── lib
+│   ├── articles
+│   │   ├── data.ts
+│   │   ├── index.ts
+│   │   └── types.ts
 │   ├── bapu.ts
+│   ├── feelings
+│   │   ├── data.tsx
+│   │   ├── index.ts
+│   │   └── types.ts
 │   └── sse.ts
 ├── next.config.ts
 ├── package.json
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 ├── public
+│   ├── articles
+│   │   ├── le-blues-du-dimanche-soir
+│   │   │   └── hero.jpg
+│   │   └── stress-avant-un-examen
+│   │       └── hero.jpg
 │   ├── file.svg
 │   ├── globe.svg
 │   ├── images
 │   │   ├── illustrations
+│   │   │   ├── feeling-video.svg
 │   │   │   ├── need-to-talk-bg.svg
 │   │   │   ├── student-mood.svg
 │   │   │   └── students-support.svg
@@ -157,9 +223,11 @@
 │   │   │   └── system
 │   │   │       ├── success.svg
 │   │   │       └── warning.svg
-│   │   └── pictures
-│   │       ├── psy.jpg
-│   │       └── woman-phone.jpg
+│   │   ├── pictures
+│   │   │   ├── psy.jpg
+│   │   │   └── woman-phone.jpg
+│   │   └── tmp
+│   │       └── tmp_video.jpg
 │   ├── next.svg
 │   ├── vercel.svg
 │   └── window.svg
@@ -172,4 +240,4 @@
     ├── distance.ts
     ├── email.ts
     └── misc.ts
-47 directories, 127 files
+65 directories, 177 files
