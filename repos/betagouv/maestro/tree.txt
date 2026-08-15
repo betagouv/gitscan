@@ -560,13 +560,14 @@
 │   │       └── UserListView
 │   │           ├── UserListView.stories.tsx
 │   │           ├── UserListView.tsx
-│   │           └── components
-│   │               ├── UserCard.scss
-│   │               ├── UserCard.stories.tsx
-│   │               ├── UserCard.tsx
-│   │               ├── UserModal.tsx
-│   │               ├── UsersFilterTags.tsx
-│   │               └── UsersFilters.tsx
+│   │           ├── components
+│   │           │   ├── UserCard.scss
+│   │           │   ├── UserCard.stories.tsx
+│   │           │   ├── UserCard.tsx
+│   │           │   ├── UserModal.tsx
+│   │           │   ├── UsersFilterTags.tsx
+│   │           │   └── UsersFilters.tsx
+│   │           └── useUserManagement.ts
 │   ├── tsconfig.json
 │   ├── vite-env.d.ts
 │   └── vite.config.ts
@@ -739,7 +740,8 @@
 │   │   │   ├── 106-analysis-residues-daoa.ts
 │   │   │   ├── 106-backfill-laboratory-residue-mappings.ts
 │   │   │   ├── 107-analysis-rai-states.ts
-│   │   │   └── 108-prescription-sample-count.ts
+│   │   │   ├── 108-prescription-sample-count.ts
+│   │   │   └── 109-lnr-residue-mappings.ts
 │   │   └── seeds
 │   │       ├── departments
 │   │       │   ├── departmentsSeed.ts
@@ -937,6 +939,8 @@
 │   │   │   ├── analysis-handler.ts
 │   │   │   ├── extractError.ts
 │   │   │   ├── index.ts
+│   │   │   ├── labErrorReply.test.ts
+│   │   │   ├── labErrorReply.ts
 │   │   │   ├── laborartories
 │   │   │   │   ├── capinov.test.ts
 │   │   │   │   ├── capinov.ts
@@ -949,7 +953,15 @@
 │   │   │   │   ├── girpa.test.ts
 │   │   │   │   ├── girpa.ts
 │   │   │   │   ├── inovalys.test.ts
-│   │   │   │   └── inovalys.ts
+│   │   │   │   ├── inovalys.ts
+│   │   │   │   └── lnr
+│   │   │   │       ├── lnr.ts
+│   │   │   │       ├── lnrParser.test.ts
+│   │   │   │       ├── lnrParser.ts
+│   │   │   │       ├── pdfText.test.ts
+│   │   │   │       ├── pdfText.ts
+│   │   │   │       └── test
+│   │   │   │           └── report.fixture.txt
 │   │   │   ├── script.ts
 │   │   │   ├── utils.test.ts
 │   │   │   └── utils.ts
@@ -1196,6 +1208,8 @@
 │   │   │   ├── FindUserOptions.ts
 │   │   │   ├── TokenPayload.ts
 │   │   │   ├── User.ts
+│   │   │   ├── UserManagement.test.ts
+│   │   │   ├── UserManagement.ts
 │   │   │   ├── UserPermission.ts
 │   │   │   └── UserRole.ts
 │   │   └── commons
@@ -1237,4 +1251,4 @@
     ├── express-jwt
     │   └── index.d.ts
     └── knex-stringcase.d.ts
-229 directories, 1010 files
+231 directories, 1022 files

@@ -1,24 +1,23 @@
-## Changelog : maestro (30 derniers jours, au 11 août 2026)
+## Changelog : maestro (30 derniers jours, au 13 août 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se sont concentrées sur l'amélioration de la précision des données et de l'expérience utilisateur. De nouvelles fonctionnalités ont été ajoutées, notamment des statistiques sur le tableau de bord et de nouveaux filtres de recherche. Plusieurs corrections ont également été apportées pour fiabiliser l'intégration des données provenant de différents laboratoires et partenaires.
+Ce mois-ci, Maestro a franchi des étapes importantes dans l'automatisation des échanges avec les laboratoires (lecture de rapports PDF, gestion SFTP et réponses emails automatiques) et dans l'autonomie des coordinateurs pour la gestion de leurs utilisateurs. L'outil est également devenu plus performant grâce à une meilleure gestion de la mémoire et propose des outils de pilotage enrichis avec de nouvelles statistiques et des filtres de recherche.
 
 ### Évolutions fonctionnelles
-- **Nouvelles fonctionnalités**
-  - Ajout de statistiques sur le tableau de bord [#949](https://github.com/betagouv/maestro/issues/949).
-  - Ajout d'un filtre par date d'envoi pour les prélèvements (DAI) [#1231](https://github.com/betagouv/maestro/issues/1231).
-  - Intégration de la substance active "cyprosulfamide" dans le référentiel [#1246](https://github.com/betagouv/maestro/issues/1246).
-  - Gestion d'un fichier déclencheur lors de l'envoi de DAI via SFTP [#1289](https://github.com/betagouv/maestro/issues/1289).
-- **Améliorations et corrections**
-  - **Tableau de bord :** Correction de l'affichage des détails des prélèvements et de la récupération des conformités [#1288](https://github.com/betagouv/maestro/issues/1288), [#1262](https://github.com/betagouv/maestro/issues/1262).
-  - **Intégration laboratoires :** Diverses corrections pour fiabiliser la récupération des données (Inovalys, Girpa, Cereco, Labcam) et la gestion des matrices [#1276](https://github.com/betagouv/maestro/issues/1276), [#1275](https://github.com/betagouv/maestro/issues/1275), [#1265](https://github.com/betagouv/maestro/issues/1265), [#1264](https://github.com/betagouv/maestro/issues/1264), [#1213](https://github.com/betagouv/maestro/issues/1213), [#1274](https://github.com/betagouv/maestro/issues/1274).
-  - **Interface utilisateur :** Optimisation de l'affichage des détails d'échantillons, des noms de documents et de l'historique des rapports [#1229](https://github.com/betagouv/maestro/issues/1229), [#1232](https://github.com/betagouv/maestro/issues/1232), [#1230](https://github.com/betagouv/maestro/issues/1230).
-  - **Corrections diverses :** Rectification du tableau de programmation en vue nationale [#1155](https://github.com/betagouv/maestro/issues/1155) et du formatage des références [#1263](https://github.com/betagouv/maestro/issues/1263).
+- **Gestion des utilisateurs** : Les coordinateurs disposent désormais de la possibilité de gérer directement leurs propres utilisateurs [#1280](https://github.com/betagouv/maestro/issues/1280).
+- **Intégration et données laboratoires** :
+    - Lecture automatisée des rapports PDF provenant des LNR [#1304](https://github.com/betagouv/maestro/issues/1304).
+    - Amélioration de la gestion des transferts SFTP lors de l'envoi de DAI (gestion du fichier déclencheur) [#1289](https://github.com/betagouv/maestro/issues/1289).
+    - Optimisation du traitement des données provenant de divers laboratoires (Inovalys, Girpa, Cereco) et harmonisation de l'extraction des références Maestro [#1276, #1275, #1265, #1264, #1247](https://github.com/betagouv/maestro/issues/1247).
+    - Ajout de la substance active *cyprosulfamide* au référentiel [#1246](https://github.com/betagouv/maestro/issues/1246).
+    - Envoi automatique d'une réponse par email au laboratoire en cas d'adresse incorrecte [#1305](https://github.com/betagouv/maestro/issues/1305).
+- **Pilotage et interface utilisateur** :
+    - Ajout de nouvelles statistiques sur le tableau de bord [#949](https://github.com/betagouv/maestro/issues/949).
+    - Ajout d'un filtre sur la date d'envoi de la DAI pour faciliter les recherches [#1231](https://github.com/betagouv/maestro/issues/1231).
+    - Améliorations ergonomiques : affichage des détails de prélèvement, ouverture par défaut des accordéons d'échantillons, correction de l'affichage des noms de documents et de l'historique des rapports [#1288, #1229, #1232, #1230, #1155](https://github.com/betagouv/maestro/issues/1155).
 
 ### Évolutions techniques
-- **Performance et architecture**
-  - Optimisation de la consommation de mémoire vive (RAM) en modifiant le mode de mise à jour des départements [#1260](https://github.com/betagouv/maestro/issues/1260).
-  - Refactorisation du code d'extraction des références Maestro pour les laboratoires afin de centraliser la logique [#1247](https://github.com/betagouv/maestro/issues/1247).
-- **Outils et Build**
-  - Nettoyage des avertissements (warnings) de l'outil de build Vite [#1261](https://github.com/betagouv/maestro/issues/1261).
-  - Mise à jour de la gestion des scripts via le passage de `npm-run-all` à `npm-run-all2` [#1243](https://github.com/betagouv/maestro/issues/1243).
+- **Performance** : La mise à jour des départements est passée en mode non automatique afin de réduire la consommation de mémoire vive (RAM) du système [#1260](https://github.com/betagouv/maestro/issues/1260).
+- **Qualité et Build** :
+    - Refactorisation du code pour centraliser l'extraction des références Maestro [#1247](https://github.com/betagouv/maestro/issues/1247).
+    - Nettoyage des avertissements (warnings) lors du processus de build Vite [#1261](https://github.com/betagouv/maestro/issues/1261).
