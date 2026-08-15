@@ -73,10 +73,16 @@
 │   │   │   ├── icon-alert-error.svg
 │   │   │   ├── icon-api-error.svg
 │   │   │   ├── icon-api-success.svg
+│   │   │   ├── icon-candidacy-groupement.svg
+│   │   │   ├── icon-candidacy-mixte.svg
+│   │   │   ├── icon-candidacy-solo.svg
 │   │   │   ├── icon-commun-only.svg
 │   │   │   ├── icon-fournitures-only.svg
 │   │   │   ├── icon-fournitures.svg
 │   │   │   ├── icon-info.svg
+│   │   │   ├── icon-legal-type-conjoint-mandataire-solidaire.svg
+│   │   │   ├── icon-legal-type-conjoint.svg
+│   │   │   ├── icon-legal-type-solidaire.svg
 │   │   │   ├── icon-lock-config.svg
 │   │   │   ├── icon-services-only.svg
 │   │   │   ├── icon-services.svg
@@ -203,10 +209,12 @@
 │   │   ├── candidate
 │   │   │   ├── application_consultations_controller.rb
 │   │   │   ├── application_controller.rb
+│   │   │   ├── application_modes_controller.rb
 │   │   │   ├── attachments_controller.rb
 │   │   │   ├── company_identifications_controller.rb
 │   │   │   ├── dashboards_controller.rb
 │   │   │   ├── deadline_passed_controller.rb
+│   │   │   ├── grouping_legal_types_controller.rb
 │   │   │   ├── lot_selections_controller.rb
 │   │   │   ├── market_applications_controller.rb
 │   │   │   ├── sessions_controller.rb
@@ -217,7 +225,9 @@
 │   │   │   │   ├── authorization.rb
 │   │   │   │   └── csv_import_handling.rb
 │   │   │   └── candidate
+│   │   │       ├── application_mode_guard.rb
 │   │   │       ├── authentication.rb
+│   │   │       ├── groupement_feature_guard.rb
 │   │   │       ├── market_application_guard.rb
 │   │   │       └── webhook_submission.rb
 │   │   ├── home_controller.rb
@@ -262,12 +272,14 @@
 │   │   │   └── make_request.rb
 │   │   ├── build_resource.rb
 │   │   ├── candidate
+│   │   │   ├── create_applications_for_mode.rb
 │   │   │   ├── delete_attached_file.rb
 │   │   │   ├── delete_unattached_blob.rb
 │   │   │   ├── find_market_application.rb
 │   │   │   ├── find_or_create_user.rb
 │   │   │   ├── generate_and_send_magic_link.rb
 │   │   │   ├── prepare_document_scan_status.rb
+│   │   │   ├── set_grouping_legal_type.rb
 │   │   │   ├── validate_email_format.rb
 │   │   │   └── validate_siret.rb
 │   │   ├── carif_oref
@@ -359,6 +371,7 @@
 │   │       ├── direct_upload_controller.js
 │   │       ├── drag_reorder_controller.js
 │   │       ├── dropdown_controller.js
+│   │       ├── enable_on_choice_controller.js
 │   │       ├── file_delete_controller.js
 │   │       ├── hello_controller.js
 │   │       ├── index.js
@@ -423,6 +436,8 @@
 │   │   │   └── unique_association_validator.rb
 │   │   ├── custom_doorkeeper_application.rb
 │   │   ├── editor.rb
+│   │   ├── grouping.rb
+│   │   ├── grouping_member.rb
 │   │   ├── lot.rb
 │   │   ├── market_application.rb
 │   │   ├── market_application_lot.rb
@@ -594,6 +609,8 @@
 │       ├── candidate
 │       │   ├── application_consultations
 │       │   │   └── show.html.erb
+│       │   ├── application_modes
+│       │   │   └── show.html.erb
 │       │   ├── attestations
 │       │   │   └── show.html.erb
 │       │   ├── company_identifications
@@ -604,6 +621,8 @@
 │       │   │   ├── _summary_tile.html.erb
 │       │   │   └── index.html.erb
 │       │   ├── deadline_passed
+│       │   │   └── show.html.erb
+│       │   ├── grouping_legal_types
 │       │   │   └── show.html.erb
 │       │   ├── lot_selections
 │       │   │   ├── _market_info_card.html.erb
@@ -833,7 +852,10 @@
 │   │   ├── 20260629114816_remove_deleted_at_from_market_applications.rb
 │   │   ├── 20260715092718_create_market_attribute_selections.rb
 │   │   ├── 20260715092901_drop_market_attributes_public_markets.rb
-│   │   └── 20260715095835_change_whodunnit_to_string_on_versions.rb
+│   │   ├── 20260715095835_change_whodunnit_to_string_on_versions.rb
+│   │   ├── 20260724135926_add_application_mode_to_market_applications.rb
+│   │   ├── 20260729095329_create_groupings.rb
+│   │   └── 20260729100623_create_grouping_members.rb
 │   ├── postgresql_setup.txt
 │   ├── queue_schema.rb
 │   ├── schema.rb
@@ -885,6 +907,7 @@
 │   ├── application_consultation.feature
 │   ├── attestation_lots_display.feature
 │   ├── buyer_*.feature  (5 files)
+│   ├── candidacy_mode_choice.feature
 │   ├── candidate_*.feature  (12 files)
 │   ├── capacite_economique_financiere_chiffre_affaires_global_annuel.feature
 │   ├── capacite_economique_financiere_effectifs_moyens_annuels.feature
@@ -894,6 +917,7 @@
 │   ├── dgfip_chiffres_affaires_hybrid_mode.feature
 │   ├── document_display_naming.feature
 │   ├── ess_integration.feature
+│   ├── grouping_legal_type.feature
 │   ├── motifs_exclusion_accordion.feature
 │   ├── motifs_exclusion_attestation_display.feature
 │   ├── motifs_exclusion_badge_colors.feature
@@ -911,6 +935,7 @@
 │   │   ├── application_consultation_steps.rb
 │   │   ├── attestation_lots_display_steps.rb
 │   │   ├── buyer_*.rb  (5 files)
+│   │   ├── candidacy_mode_steps.rb
 │   │   ├── candidate_*.rb  (13 files)
 │   │   ├── capacite_economique_financiere_chiffre_affaires_global_annuel_steps.rb
 │   │   ├── capacite_economique_financiere_effectifs_moyens_annuels_steps.rb
@@ -921,6 +946,7 @@
 │   │   ├── document_display_naming_steps.rb
 │   │   ├── ess_steps.rb
 │   │   ├── fast_track_steps.rb
+│   │   ├── grouping_legal_type_steps.rb
 │   │   ├── motifs_exclusion_accordion_steps.rb
 │   │   ├── motifs_exclusion_attestation_steps.rb
 │   │   ├── motifs_exclusion_badge_colors_steps.rb
@@ -942,6 +968,7 @@
 │   │   ├── candidate_auth_helper.rb
 │   │   ├── capybara.rb
 │   │   ├── env.rb
+│   │   ├── feature_flags.rb
 │   │   ├── form_helpers.rb
 │   │   ├── market_builder_helpers.rb
 │   │   ├── navigation_helpers.rb
@@ -955,6 +982,7 @@
 │   │       └── attestation_summary_pdf.css
 │   └── tasks
 │       ├── .keep
+│       ├── application_mode.rake
 │       ├── attestation.rake
 │       └── cucumber.rake
 ├── log
@@ -1047,6 +1075,8 @@
 │   │   ├── admin_users.rb
 │   │   ├── categories.rb
 │   │   ├── editors.rb
+│   │   ├── grouping_members.rb
+│   │   ├── groupings.rb
 │   │   ├── lots.rb
 │   │   ├── market_application_lots.rb
 │   │   ├── market_applications.rb
@@ -1091,11 +1121,13 @@
 │   │   │   ├── build_resource_spec.rb
 │   │   │   └── make_request_spec.rb
 │   │   ├── candidate
+│   │   │   ├── create_applications_for_mode_spec.rb
 │   │   │   ├── delete_attached_file_spec.rb
 │   │   │   ├── delete_unattached_blob_spec.rb
 │   │   │   ├── find_market_application_spec.rb
 │   │   │   ├── prepare_document_scan_status_spec.rb
 │   │   │   ├── request_magic_link_spec.rb
+│   │   │   ├── set_grouping_legal_type_spec.rb
 │   │   │   ├── validate_email_format_spec.rb
 │   │   │   └── validate_siret_spec.rb
 │   │   ├── carif_oref
@@ -1209,6 +1241,8 @@
 │   │   │   └── unique_association_validator_spec.rb
 │   │   ├── editor_spec.rb
 │   │   ├── editor_webhook_spec.rb
+│   │   ├── grouping_member_spec.rb
+│   │   ├── grouping_spec.rb
 │   │   ├── lot_spec.rb
 │   │   ├── market_application_lot_spec.rb
 │   │   ├── market_application_spec.rb
@@ -1289,8 +1323,10 @@
 │   │   ├── candidate
 │   │   │   ├── access_control_spec.rb
 │   │   │   ├── application_consultations_spec.rb
+│   │   │   ├── application_modes_spec.rb
 │   │   │   ├── company_identifications_spec.rb
 │   │   │   ├── dashboards_spec.rb
+│   │   │   ├── grouping_legal_types_spec.rb
 │   │   │   ├── lot_selections_spec.rb
 │   │   │   ├── market_applications_spec.rb
 │   │   │   ├── sessions_spec.rb
@@ -1349,6 +1385,8 @@
 │   │   │   └── make_request_shared_examples.rb
 │   │   ├── time_helpers.rb
 │   │   └── webmock.rb
+│   ├── tasks
+│   │   └── application_mode_rake_spec.rb
 │   ├── validators
 │   │   ├── email_validator_spec.rb
 │   │   └── siret_validator_spec.rb
@@ -1409,4 +1447,4 @@
         ├── @rails--activestorage.js
         ├── sortablejs.js
         └── stimulus-rails-nested-form.js
-230 directories, 1238 files
+233 directories, 1273 files
