@@ -1,13 +1,12 @@
 {
   "url": "https://github.com/proconnect-gouv/proconnect-identite",
   "name": "proconnect-identite",
-  "description": "Fournisseur d'identité OpenID Connect (OIDC) géré par la DINUM pour la fédération ProConnect. Il permet aux professionnels affiliés à une organisation avec un numéro SIRET d'accéder aux services de la fédération.",
+  "description": "Fournisseur d'identité OpenID Connect (OIDC) géré par la DINUM pour les professionnels. Il permet aux utilisateurs affiliés à une organisation avec un numéro SIRET d'accéder à la fédération ProConnect.",
   "language": "TypeScript",
   "features": [
     "Authentification & Accès",
     "Gestion des utilisateurs & Permissions",
-    "Sécurité & Conformité",
-    "API & Intégrations"
+    "Sécurité & Conformité"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -15,10 +14,10 @@
     "oidc-provider",
     "PostgreSQL",
     "Redis",
-    "Zod",
-    "Axios",
     "Nodemailer",
-    "SimpleWebAuthn"
+    "Zod",
+    "SimpleWebAuthn",
+    "Axios"
   ],
   "components": [
     "API REST & GraphQL",
@@ -26,6 +25,7 @@
     "TypeScript / JavaScript",
     "Docker & Conteneurs",
     "Authentification (composant)",
+    "Templates & Moteurs de rendu",
     "Microservices & Architecture",
     "Node.js / NestJS"
   ],
@@ -34,24 +34,28 @@
       "oauth2",
       "jwt",
       "mfa",
-      "session",
-      "email-password"
+      "session"
     ]
   },
-  "tests": "Cypress (E2E) et tests unitaires Node.js",
-  "workflows": [
-    "GitHub Actions",
-    "Changesets"
+  "tests": [
+    "Cypress",
+    "Node unit tests"
   ],
-  "lastActivity": "2026-08-12T08:41:51+01:00",
+  "workflows": [
+    "Changesets",
+    "GitHub Actions"
+  ],
+  "lastActivity": "2026-08-14T11:00:21+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
-    "SSO & Identité fédérée",
+    "Écosystème beta.gouv / État",
     "Sécurité & Auth",
+    "SSO & Identité fédérée",
     "TypeScript",
     "Docker & Conteneurs",
-    "Écosystème beta.gouv / État"
+    "Node.js, NestJS & Express",
+    "CI/CD & GitHub Actions"
   ]
 }
