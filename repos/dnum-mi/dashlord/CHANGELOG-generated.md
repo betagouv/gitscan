@@ -1,13 +1,14 @@
-## Changelog : dashlord (30 derniers jours, au 11 août 2026)
+## Changelog : dashlord (30 derniers jours, au 15 août 2026)
 
 ### Résumé
-L'activité récente a été quasi exclusivement dédiée à l'actualisation du périmètre de surveillance. Le tableau de bord a été mis à jour pour intégrer les dernières URLs et services publics, garantissant ainsi la continuité et la précision du suivi technique et sécuritaire des plateformes gouvernementales.
+Le projet s'est concentré sur l'actualisation et l'extension de son périmètre de surveillance. L'essentiel de l'activité a consisté à mettre à jour la liste des sites web suivis, garantissant ainsi la continuité du monitoring de sécurité et de conformité pour les services administratifs et techniques ciblés.
 
 ### Évolutions fonctionnelles
-- **Actualisation du périmètre de monitoring** : Mise à jour massive des cibles de scan pour assurer la couverture des services suivants :
-    - **Services de l'administration numérique** : Mise à jour des portails ANTS (permis de conduire, immatriculation, passeport, cartes d'identité) et des services liés à la sécurité routière.
-    - **Services territoriaux** : Actualisation des sites des préfectures (régionales et départementales) sur l'ensemble du territoire.
-    - **Portails de services publics** : Mise à jour des accès vers Service-Public.fr, France-Visas et d'autres plateformes de l'administration intérieure.
+- Mise à jour et enrichissement de la liste des cibles de scan, incluant notamment :
+    - Les services de l'ANTS (gestion des permis de conduire, immatriculations, passeports et titres de séjour).
+    - L'ensemble des sites des préfectures (régionales et départementales).
+    - Les portails de services publics (service-public.fr).
+    - Divers outils et services techniques spécialisés (MatchID, IA Flash, etc.).
 
 ### Évolutions techniques
-- **Automatisation** : Maintenance des workflows GitHub Actions pour la génération et la mise à jour des rapports de suivi.
+- Maintenance et mise à jour du workflow de génération des rapports via GitHub Actions.
