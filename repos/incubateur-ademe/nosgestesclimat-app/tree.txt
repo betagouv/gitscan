@@ -666,7 +666,6 @@
 │       │   │   │   │   │   ├── layout.tsx
 │       │   │   │   │   │   └── plan-du-site
 │       │   │   │   │   │       ├── _components
-│       │   │   │   │   │       │   ├── Actions.tsx
 │       │   │   │   │   │       │   └── LinkList.tsx
 │       │   │   │   │   │       └── page.tsx
 │       │   │   │   │   └── layout.tsx
@@ -704,9 +703,6 @@
 │       │   │   │   │   │   │       │           ├── ResultListItem.tsx
 │       │   │   │   │   │   │       │           └── SeeListItemDetailLink.tsx
 │       │   │   │   │   │   │       ├── actions
-│       │   │   │   │   │   │       │   ├── [...dottedName]
-│       │   │   │   │   │   │       │   │   └── page.tsx
-│       │   │   │   │   │   │       │   ├── layout.tsx
 │       │   │   │   │   │   │       │   └── page.tsx
 │       │   │   │   │   │   │       ├── groupes
 │       │   │   │   │   │   │       │   ├── error.tsx
@@ -743,6 +739,7 @@
 │       │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   ├── amis
 │       │   │   │   │   │   │   ├── _helpers
+│       │   │   │   │   │   │   │   ├── findOwnParticipant.ts
 │       │   │   │   │   │   │   │   ├── getParticipantName.ts
 │       │   │   │   │   │   │   │   └── isGroupOwner.ts
 │       │   │   │   │   │   │   ├── creer
@@ -751,6 +748,9 @@
 │       │   │   │   │   │   │   │   ├── page.ts
 │       │   │   │   │   │   │   │   ├── unauthorized.tsx
 │       │   │   │   │   │   │   │   └── votre-groupe
+│       │   │   │   │   │   │   │       ├── _actions
+│       │   │   │   │   │   │   │       │   ├── create-group.action.ts
+│       │   │   │   │   │   │   │       │   └── errors.ts
 │       │   │   │   │   │   │   │       ├── _components
 │       │   │   │   │   │   │   │       │   └── NameForm.tsx
 │       │   │   │   │   │   │   │       └── page.tsx
@@ -764,10 +764,12 @@
 │       │   │   │   │   │   │   │   ├── guard.ts
 │       │   │   │   │   │   │   │   ├── layout.tsx
 │       │   │   │   │   │   │   │   └── page.tsx
-│       │   │   │   │   │   │   ├── layout.tsx
 │       │   │   │   │   │   │   └── resultats
 │       │   │   │   │   │   │       ├── _actions
-│       │   │   │   │   │   │       │   └── delete-group.action.ts
+│       │   │   │   │   │   │       │   ├── delete-group.action.ts
+│       │   │   │   │   │   │       │   ├── leave-group.action.ts
+│       │   │   │   │   │   │       │   ├── remove-participant.action.ts
+│       │   │   │   │   │   │       │   └── update-group.action.ts
 │       │   │   │   │   │   │       ├── _components
 │       │   │   │   │   │   │       │   ├── EditableGroupTitle.tsx
 │       │   │   │   │   │   │       │   ├── GroupPage.tsx
@@ -793,9 +795,6 @@
 │       │   │   │   │   │   │   │   ├── FinTabs.tsx
 │       │   │   │   │   │   │   │   └── PartnerRedirectionAlert.tsx
 │       │   │   │   │   │   │   ├── actions
-│       │   │   │   │   │   │   │   ├── [...dottedName]
-│       │   │   │   │   │   │   │   │   └── page.tsx
-│       │   │   │   │   │   │   │   ├── layout.tsx
 │       │   │   │   │   │   │   │   └── page.tsx
 │       │   │   │   │   │   │   ├── eau
 │       │   │   │   │   │   │   │   └── page.tsx
@@ -1256,11 +1255,6 @@
 │       │   │   │   ├── HighestImpactActionsSection.tsx
 │       │   │   │   ├── ThemeBadge.tsx
 │       │   │   │   ├── ThemeSection.tsx
-│       │   │   │   ├── howToAct
-│       │   │   │   │   ├── HowToAct.tsx
-│       │   │   │   │   ├── RecommendedActions.tsx
-│       │   │   │   │   └── recommendedActions
-│       │   │   │   │       └── RecommendedAction.tsx
 │       │   │   │   └── pages
 │       │   │   │       └── ActionsPage.tsx
 │       │   │   ├── animations
@@ -1531,11 +1525,6 @@
 │       │   │   │   ├── SaveResultsBlock.tsx
 │       │   │   │   ├── SaveResultsForm.tsx
 │       │   │   │   ├── TendencyIndicator.tsx
-│       │   │   │   ├── actions
-│       │   │   │   │   ├── ActionDetail.tsx
-│       │   │   │   │   └── actionsContent
-│       │   │   │   │       └── actions
-│       │   │   │   │           └── ActionForm.tsx
 │       │   │   │   ├── carbonFootprint
 │       │   │   │   │   └── CarbonFootprintResults.tsx
 │       │   │   │   ├── categoriesAccordion
@@ -1707,9 +1696,6 @@
 │       │   │   ├── accessibility
 │       │   │   │   ├── SkipToMainContentLink.stories.tsx
 │       │   │   │   └── SkipToMainContentLink.tsx
-│       │   │   ├── actions
-│       │   │   │   ├── ActionCard.stories.tsx
-│       │   │   │   └── ActionCard.tsx
 │       │   │   ├── alerts
 │       │   │   │   ├── Confirmation.stories.tsx
 │       │   │   │   ├── Confirmation.tsx
@@ -1855,11 +1841,6 @@
 │       │   ├── helpers
 │       │   │   ├── accessibility
 │       │   │   │   └── onKeyDownHelper.ts
-│       │   │   ├── actions
-│       │   │   │   ├── filterIrrelevantActions.ts
-│       │   │   │   ├── filterRelevantMissingVariables.ts
-│       │   │   │   ├── getActions.ts
-│       │   │   │   └── getIsActionDisabled.ts
 │       │   │   ├── blog
 │       │   │   │   ├── getDynamicPageTitleWithPagination.ts
 │       │   │   │   └── getPageNumber.ts
@@ -1873,9 +1854,12 @@
 │       │   │   ├── getLocalisedMDX.ts
 │       │   │   ├── getServerTranslation.ts
 │       │   │   ├── groups
+│       │   │   │   ├── __tests__
+│       │   │   │   │   └── sortParticipantsByFootprint.test.ts
+│       │   │   │   ├── getParticipantFootprint.ts
 │       │   │   │   ├── getTopThreeAndRestMembers.ts
 │       │   │   │   ├── getUserCategoryFootprintsSortedByDifference.ts
-│       │   │   │   └── isFullSimulation.ts
+│       │   │   │   └── sortParticipantsByFootprint.ts
 │       │   │   ├── iframe
 │       │   │   │   ├── postMessageToIntegrator.test.ts
 │       │   │   │   ├── postMessageToIntegrator.ts
@@ -1967,15 +1951,12 @@
 │       │   │   │   │   ├── fixtures
 │       │   │   │   │   │   └── createGroup.ts
 │       │   │   │   │   └── useGetGroupStats.test.ts
-│       │   │   │   ├── useCreateGroup.ts
 │       │   │   │   ├── useGetGroupAndUserFootprints
 │       │   │   │   │   ├── getCategoriesObject.ts
 │       │   │   │   │   └── getSubcategoriesObject.ts
 │       │   │   │   ├── useGetGroupAndUserFootprints.ts
 │       │   │   │   ├── useGetGroupStats.ts
-│       │   │   │   ├── useGroupIdInQueryParams.ts
-│       │   │   │   ├── useRemoveParticipant.ts
-│       │   │   │   └── useUpdateGroup.ts
+│       │   │   │   └── useGroupIdInQueryParams.ts
 │       │   │   ├── iframe
 │       │   │   │   └── useShouldHideIfIframe.ts
 │       │   │   ├── organisations
@@ -2157,8 +2138,6 @@
 │       │   │   │   ├── safeEvaluateHelper.ts
 │       │   │   │   └── safeGetRuleHelper.ts
 │       │   │   ├── hooks
-│       │   │   │   ├── useActions
-│       │   │   │   │   └── useActions.ts
 │       │   │   │   ├── useCurrentSimulation
 │       │   │   │   │   └── useCurrentSimulation.ts
 │       │   │   │   ├── useDisposableEngine
@@ -2186,7 +2165,6 @@
 │       │   │   │   │   └── useTempEngine.ts
 │       │   │   │   └── useUser
 │       │   │   │       ├── hooks
-│       │   │   │       │   ├── useActions.ts
 │       │   │   │       │   ├── useTutorials.ts
 │       │   │   │       │   └── useUpdateCurrentSimulation.ts
 │       │   │   │       └── useUser.ts
@@ -2213,8 +2191,7 @@
 │       │   │   │       │   └── provider.test.tsx
 │       │   │   │       ├── context.ts
 │       │   │   │       ├── hooks
-│       │   │   │       │   ├── usePersistentTutorials.ts
-│       │   │   │       │   └── usePersistentUser.ts
+│       │   │   │       │   └── usePersistentTutorials.ts
 │       │   │   │       └── provider.tsx
 │       │   │   └── types.d.ts
 │       │   ├── services
@@ -2240,7 +2217,6 @@
 │       │   │   │   ├── fetchArticlePageContent.ts
 │       │   │   │   ├── fetchArticlePageMetadata.ts
 │       │   │   │   ├── fetchArticles.ts
-│       │   │   │   ├── fetchBanner.cached.ts
 │       │   │   │   ├── fetchBanner.ts
 │       │   │   │   ├── fetchCategories.ts
 │       │   │   │   ├── fetchCategoryPageContent.ts
@@ -2611,4 +2587,4 @@
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 └── tsconfig.json
-675 directories, 1983 files
+667 directories, 1967 files
