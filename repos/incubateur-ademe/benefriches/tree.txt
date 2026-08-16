@@ -604,13 +604,16 @@
 │   │   │   ├── stats
 │   │   │   │   ├── adapters
 │   │   │   │   │   ├── primary
+│   │   │   │   │   │   ├── stats.controller.integration-spec.ts
 │   │   │   │   │   │   ├── stats.controller.ts
 │   │   │   │   │   │   └── stats.module.ts
 │   │   │   │   │   └── secondary
+│   │   │   │   │       ├── SqlPeriodicityStatsQuery.ts
 │   │   │   │   │       └── SqlStatsQuery.ts
 │   │   │   │   └── core
 │   │   │   │       └── usecases
-│   │   │   │           └── computeEvaluatedProjectStats.usecase.ts
+│   │   │   │           ├── computeEvaluatedProjectStats.usecase.ts
+│   │   │   │           └── computeStatsWithPeriodicity.usecase.ts
 │   │   │   ├── territory
 │   │   │   │   ├── adapters
 │   │   │   │   │   ├── primary
@@ -2612,6 +2615,13 @@
 │       │   │   │   │           └── projectUrbanSprawlComparisonOnboardingSkip.selector.ts
 │       │   │   │   ├── core
 │       │   │   │   │   ├── cropImpactsByEvaluationPeriod.ts
+│       │   │   │   │   ├── group-impacts
+│       │   │   │   │   │   ├── extractDetailsGroup.ts
+│       │   │   │   │   │   ├── extractDetailsKeyName.type.ts
+│       │   │   │   │   │   ├── filterNonEmpty.ts
+│       │   │   │   │   │   ├── findTotalByName.ts
+│       │   │   │   │   │   ├── groupImpactsByName.ts
+│       │   │   │   │   │   └── withBreakdown.ts
 │       │   │   │   │   ├── groupIndirectImpactsByBearer.ts
 │       │   │   │   │   ├── projectImpactsEconomicBalance.ts
 │       │   │   │   │   ├── projectImpactsEnvironmental.ts
@@ -2669,7 +2679,9 @@
 │       │   │   │       │   │   ├── HumanityIndirectEconomicImpactsCharts.tsx
 │       │   │   │       │   │   ├── IndirectEconomicImpactsChart.tsx
 │       │   │   │       │   │   ├── LocalAuthorityIndirectEconomicImpactsCharts.tsx
-│       │   │   │       │   │   └── LocalPeopleOrCompanyIndirectEconomicImpactsCharts.tsx
+│       │   │   │       │   │   ├── LocalPeopleOrCompanyIndirectEconomicImpactsCharts.tsx
+│       │   │   │       │   │   └── chart-options
+│       │   │   │       │   │       └── breakEvenLevelChartOptions.tsx
 │       │   │   │       │   └── index.tsx
 │       │   │   │       ├── project-development-score
 │       │   │   │       │   ├── ProjectDevelopmentEnvironmentScore.tsx
@@ -2726,168 +2738,124 @@
 │       │   │   │       │   │   │   └── AboutImpactsModalButton.tsx
 │       │   │   │       │   │   ├── getImpactLabel.ts
 │       │   │   │       │   │   ├── impact-description-modals
+│       │   │   │       │   │   │   ├── ImpactModalContentWizard.tsx
 │       │   │   │       │   │   │   ├── ImpactModalDescription.tsx
-│       │   │   │       │   │   │   ├── cost-benefit-analysis
-│       │   │   │       │   │   │   │   └── CostBenefitAnalysisDescription.tsx
-│       │   │   │       │   │   │   ├── economic-balance
+│       │   │   │       │   │   │   ├── body-component
+│       │   │   │       │   │   │   │   ├── CostBenefitAnalysisDescription.tsx
 │       │   │   │       │   │   │   │   ├── EconomicBalanceDescription.tsx
-│       │   │   │       │   │   │   │   ├── EconomicBalanceModalSiteOrProjectFeature.tsx
-│       │   │   │       │   │   │   │   ├── EconomicBalanceModalWizard.tsx
-│       │   │   │       │   │   │   │   ├── colors.ts
-│       │   │   │       │   │   │   │   ├── financial_assistance-local_or_regional_authority_participation.mdx
-│       │   │   │       │   │   │   │   ├── financial_assistance-public_subsidies.mdx
-│       │   │   │       │   │   │   │   ├── financial_assistance.mdx
-│       │   │   │       │   │   │   │   ├── photovoltaic_development_plan_installation.mdx
-│       │   │   │       │   │   │   │   ├── photovoltaic_other.mdx
-│       │   │   │       │   │   │   │   ├── photovoltaic_technical_studies.mdx
-│       │   │   │       │   │   │   │   ├── photovoltaic_works.mdx
-│       │   │   │       │   │   │   │   ├── real_estate_acquisition-site_purchase.mdx
-│       │   │   │       │   │   │   │   ├── real_estate_acquisition-site_resale.mdx
-│       │   │   │       │   │   │   │   ├── real_estate_acquisition.mdx
-│       │   │   │       │   │   │   │   ├── site_reinstatement-deimpermeabilization.mdx
-│       │   │   │       │   │   │   │   ├── site_reinstatement-demolition.mdx
-│       │   │   │       │   │   │   │   ├── site_reinstatement-other_reinstatement.mdx
-│       │   │   │       │   │   │   │   ├── site_reinstatement-remediation.mdx
-│       │   │   │       │   │   │   │   ├── site_reinstatement-sustainable_soils_reinstatement.mdx
-│       │   │   │       │   │   │   │   ├── site_reinstatement-waste_collection.mdx
-│       │   │   │       │   │   │   │   ├── site_reinstatement.mdx
-│       │   │   │       │   │   │   │   ├── urban_project_development_plan_installation.mdx
-│       │   │   │       │   │   │   │   ├── urban_project_other.mdx
-│       │   │   │       │   │   │   │   ├── urban_project_technical_studies.mdx
-│       │   │   │       │   │   │   │   └── urban_project_works.mdx
-│       │   │   │       │   │   │   ├── environmental
-│       │   │   │       │   │   │   │   ├── Co2SubSectionDescription.tsx
-│       │   │   │       │   │   │   │   ├── EnvironmentalMainDescription.tsx
-│       │   │   │       │   │   │   │   ├── EnvironmentalModalWizard.tsx
-│       │   │   │       │   │   │   │   ├── SoilsSubSectionDescription.tsx
-│       │   │   │       │   │   │   │   ├── breadcrumbSections.ts
-│       │   │   │       │   │   │   │   ├── impact-co2
-│       │   │   │       │   │   │   │   │   ├── AirConditionningRelatedCo2Description.tsx
-│       │   │   │       │   │   │   │   │   ├── Co2EqEmissionsDescription.tsx
-│       │   │   │       │   │   │   │   │   ├── RenewableEnergyRelatedCo2Description.tsx
-│       │   │   │       │   │   │   │   │   ├── SoilsStorageRelatedCo2Description.tsx
-│       │   │   │       │   │   │   │   │   ├── TravelRelatedCo2Description.tsx
-│       │   │   │       │   │   │   │   │   └── breadcrumbSegments.ts
-│       │   │   │       │   │   │   │   ├── non-contaminated-surface
-│       │   │   │       │   │   │   │   │   └── NonContaminatedSurface.tsx
-│       │   │   │       │   │   │   │   └── permeable-surface
-│       │   │   │       │   │   │   │       ├── PermeableGreenSurface.tsx
-│       │   │   │       │   │   │   │       ├── PermeableMineraleSurface.tsx
-│       │   │   │       │   │   │   │       ├── PermeableSurface.tsx
-│       │   │   │       │   │   │   │       └── breadcrumbSegments.ts
-│       │   │   │       │   │   │   ├── shared
-│       │   │   │       │   │   │   │   ├── ModalGroupTable.tsx
-│       │   │   │       │   │   │   │   ├── ModalTable.css
-│       │   │   │       │   │   │   │   ├── ModalTable.tsx
-│       │   │   │       │   │   │   │   ├── avoided-kilometers-social-impact-link
-│       │   │   │       │   │   │   │   │   └── AvoidedKilometersSocialImpactLink.tsx
-│       │   │   │       │   │   │   │   ├── avoided-traffic-accidents
-│       │   │   │       │   │   │   │   │   ├── AvoidedTrafficAccidentsContent.tsx
-│       │   │   │       │   │   │   │   │   ├── AvoidedTrafficAccidentsDeathsContent.tsx
-│       │   │   │       │   │   │   │   │   ├── AvoidedTrafficAccidentsMinorInjuriesContent.tsx
-│       │   │   │       │   │   │   │   │   └── AvoidedTrafficAccidentsSevereInjuriesContent.tsx
-│       │   │   │       │   │   │   │   ├── co2-emissions
-│       │   │   │       │   │   │   │   │   ├── AirConditionningRelatedCo2Content.tsx
-│       │   │   │       │   │   │   │   │   ├── RenewableEnergyRelatedCo2Content.tsx
-│       │   │   │       │   │   │   │   │   ├── SoilsStorageRelatedCo2Content.tsx
-│       │   │   │       │   │   │   │   │   └── TravelRelatedCo2Content.tsx
-│       │   │   │       │   │   │   │   ├── modal-charts
-│       │   │   │       │   │   │   │   │   ├── ModalAreaChart.tsx
-│       │   │   │       │   │   │   │   │   ├── ModalColumnChartTooltip.css
-│       │   │   │       │   │   │   │   │   ├── ModalColumnChartTooltip.tsx
-│       │   │   │       │   │   │   │   │   ├── ModalColumnPointChart.tsx
-│       │   │   │       │   │   │   │   │   ├── ModalColumnSeriesChart.tsx
-│       │   │   │       │   │   │   │   │   ├── modalBarChartOptions.ts
-│       │   │   │       │   │   │   │   │   ├── modalBarChartValueFormat.ts
-│       │   │   │       │   │   │   │   │   └── useBarChartCustomTooltip.tsx
-│       │   │   │       │   │   │   │   └── travel-related-impacts-introduction
-│       │   │   │       │   │   │   │       └── TravelRelatedImpactsIntroduction.tsx
-│       │   │   │       │   │   │   ├── social
-│       │   │   │       │   │   │   │   ├── JobsSubSectionDescription.tsx
-│       │   │   │       │   │   │   │   ├── SocialMainDescription.tsx
-│       │   │   │       │   │   │   │   ├── SocialModalWizard.tsx
-│       │   │   │       │   │   │   │   ├── avoided-traffic-accidents
-│       │   │   │       │   │   │   │   │   ├── AvoidedTrafficAccidentsDeathsDescription.tsx
-│       │   │   │       │   │   │   │   │   ├── AvoidedTrafficAccidentsDescription.tsx
-│       │   │   │       │   │   │   │   │   ├── AvoidedTrafficAccidentsMinorInjuries.tsx
-│       │   │   │       │   │   │   │   │   ├── AvoidedTrafficAccidentsSevereInjuriesDescription.tsx
-│       │   │   │       │   │   │   │   │   └── breadcrumbSegments.ts
-│       │   │   │       │   │   │   │   ├── avoided-vehicule-kilometers
-│       │   │   │       │   │   │   │   │   └── AvoidedVehiculeKilometersDescription.tsx
-│       │   │   │       │   │   │   │   ├── breadcrumbSections.ts
+│       │   │   │       │   │   │   │   └── socio-economic
+│       │   │   │       │   │   │   │       ├── HumanityDescription.tsx
+│       │   │   │       │   │   │   │       ├── LocalAuthorityDescription.tsx
+│       │   │   │       │   │   │   │       ├── LocalPeopleOrCompanyDescription.tsx
+│       │   │   │       │   │   │   │       ├── SocioEconomicDescription.tsx
+│       │   │   │       │   │   │   │       └── SocioEconomicSubSectionDescription.tsx
+│       │   │   │       │   │   │   ├── breadcrumb.ts
+│       │   │   │       │   │   │   ├── colors.ts
+│       │   │   │       │   │   │   ├── config-wizard
+│       │   │   │       │   │   │   │   ├── config.type.ts
+│       │   │   │       │   │   │   │   ├── economicBalanceConfig.ts
+│       │   │   │       │   │   │   │   ├── environmentalSectionConfig.ts
+│       │   │   │       │   │   │   │   ├── socialSectionConfig.ts
+│       │   │   │       │   │   │   │   └── socioEconomicSectionConfig.ts
+│       │   │   │       │   │   │   ├── getImpactData.ts
+│       │   │   │       │   │   │   ├── lazy-component
+│       │   │   │       │   │   │   │   └── LazyContentComponent.tsx
+│       │   │   │       │   │   │   ├── mdx-component
+│       │   │   │       │   │   │   │   ├── avoided-accidents
+│       │   │   │       │   │   │   │   │   ├── avoided_traffic_accidents.mdx
+│       │   │   │       │   │   │   │   │   ├── avoided_traffic_accidents__avoided_accidents_deaths.mdx
+│       │   │   │       │   │   │   │   │   ├── avoided_traffic_accidents__avoided_accidents_minor_injuries.mdx
+│       │   │   │       │   │   │   │   │   └── avoided_traffic_accidents__avoided_accidents_severe_injuries.mdx
+│       │   │   │       │   │   │   │   ├── avoided-co2eq-emissions
+│       │   │   │       │   │   │   │   │   ├── avoided_co2eq_emissions.mdx
+│       │   │   │       │   │   │   │   │   ├── avoided_co2eq_emissions__avoided_air_conditioning_co2eq_emissions.mdx
+│       │   │   │       │   │   │   │   │   ├── avoided_co2eq_emissions__avoided_co2eq_with_energy_production.mdx
+│       │   │   │       │   │   │   │   │   └── avoided_co2eq_emissions__avoided_traffic_co2_eq_emissions.mdx
+│       │   │   │       │   │   │   │   ├── avoided-friche-costs
+│       │   │   │       │   │   │   │   │   ├── avoided_friche_maintenance_and_securing_costs.mdx
+│       │   │   │       │   │   │   │   │   ├── avoided_friche_maintenance_and_securing_costs__illegal_dumping_cost.mdx
+│       │   │   │       │   │   │   │   │   ├── avoided_friche_maintenance_and_securing_costs__maintenance.mdx
+│       │   │   │       │   │   │   │   │   ├── avoided_friche_maintenance_and_securing_costs__other_securing_costs.mdx
+│       │   │   │       │   │   │   │   │   └── avoided_friche_maintenance_and_securing_costs__security.mdx
+│       │   │   │       │   │   │   │   ├── avoided_air_conditioning_expenses.mdx
+│       │   │   │       │   │   │   │   ├── avoided_air_pollution_health_expenses.mdx
+│       │   │   │       │   │   │   │   ├── avoided_car_related_expenses.mdx
+│       │   │   │       │   │   │   │   ├── avoided_property_damage_expenses.mdx
+│       │   │   │       │   │   │   │   ├── avoided_vehicule_kilometers.mdx
+│       │   │   │       │   │   │   │   ├── economic-balance
+│       │   │   │       │   │   │   │   │   ├── financial_assistance-local_or_regional_authority_participation.mdx
+│       │   │   │       │   │   │   │   │   ├── financial_assistance-public_subsidies.mdx
+│       │   │   │       │   │   │   │   │   ├── financial_assistance.mdx
+│       │   │   │       │   │   │   │   │   ├── photovoltaic_development_plan_installation.mdx
+│       │   │   │       │   │   │   │   │   ├── photovoltaic_other.mdx
+│       │   │   │       │   │   │   │   │   ├── photovoltaic_technical_studies.mdx
+│       │   │   │       │   │   │   │   │   ├── photovoltaic_works.mdx
+│       │   │   │       │   │   │   │   │   ├── real_estate_acquisition-site_purchase.mdx
+│       │   │   │       │   │   │   │   │   ├── real_estate_acquisition-site_resale.mdx
+│       │   │   │       │   │   │   │   │   ├── real_estate_acquisition.mdx
+│       │   │   │       │   │   │   │   │   ├── site_reinstatement-deimpermeabilization.mdx
+│       │   │   │       │   │   │   │   │   ├── site_reinstatement-demolition.mdx
+│       │   │   │       │   │   │   │   │   ├── site_reinstatement-other_reinstatement.mdx
+│       │   │   │       │   │   │   │   │   ├── site_reinstatement-remediation.mdx
+│       │   │   │       │   │   │   │   │   ├── site_reinstatement-sustainable_soils_reinstatement.mdx
+│       │   │   │       │   │   │   │   │   ├── site_reinstatement-waste_collection.mdx
+│       │   │   │       │   │   │   │   │   ├── site_reinstatement.mdx
+│       │   │   │       │   │   │   │   │   ├── urban_project_development_plan_installation.mdx
+│       │   │   │       │   │   │   │   │   ├── urban_project_other.mdx
+│       │   │   │       │   │   │   │   │   ├── urban_project_technical_studies.mdx
+│       │   │   │       │   │   │   │   │   └── urban_project_works.mdx
+│       │   │   │       │   │   │   │   ├── ecosystem-services
+│       │   │   │       │   │   │   │   │   ├── ecosystem_services.mdx
+│       │   │   │       │   │   │   │   │   ├── ecosystem_services__forest_related_product.mdx
+│       │   │   │       │   │   │   │   │   ├── ecosystem_services__invasive_species_regulation.mdx
+│       │   │   │       │   │   │   │   │   ├── ecosystem_services__nature_related_welness_and_leisure.mdx
+│       │   │   │       │   │   │   │   │   ├── ecosystem_services__new_stored_co2_eq.mdx
+│       │   │   │       │   │   │   │   │   ├── ecosystem_services__nitrogen_cycle.mdx
+│       │   │   │       │   │   │   │   │   ├── ecosystem_services__pollination.mdx
+│       │   │   │       │   │   │   │   │   ├── ecosystem_services__soil_erosion.mdx
+│       │   │   │       │   │   │   │   │   └── ecosystem_services__water_cycle.mdx
+│       │   │   │       │   │   │   │   ├── environmental_co2_section.mdx
+│       │   │   │       │   │   │   │   ├── environmental_section.mdx
+│       │   │   │       │   │   │   │   ├── environmental_soils_section.mdx
+│       │   │   │       │   │   │   │   ├── friche_roads_and_utilities_expenses.mdx
 │       │   │   │       │   │   │   │   ├── full-time-jobs
-│       │   │   │       │   │   │   │   │   ├── FullTimeJobsDescription.tsx
-│       │   │   │       │   │   │   │   │   ├── PhotovoltaicOperationFullTimeJobsDescription.tsx
-│       │   │   │       │   │   │   │   │   ├── ReconversionFullTimeJobsDescription.tsx
-│       │   │   │       │   │   │   │   │   ├── UrbanProjectOperationFullTimeJobsDescription.tsx
-│       │   │   │       │   │   │   │   │   └── breadcrumbSegments.ts
-│       │   │   │       │   │   │   │   ├── householdsPoweredByEnR
-│       │   │   │       │   │   │   │   │   └── householdsPoweredByEnR.tsx
-│       │   │   │       │   │   │   │   └── time-travel-saved
-│       │   │   │       │   │   │   │       └── TimeTravelSavedDescription.tsx
-│       │   │   │       │   │   │   └── socio-economic
-│       │   │   │       │   │   │       ├── HumanityDescription.tsx
-│       │   │   │       │   │   │       ├── LocalAuthorityDescription.tsx
-│       │   │   │       │   │   │       ├── LocalPeopleOrCompanyDescription.tsx
-│       │   │   │       │   │   │       ├── SocioEconomicDescription.tsx
-│       │   │   │       │   │   │       ├── SocioEconomicSubSectionDescription.tsx
-│       │   │   │       │   │   │       ├── avoided-air-conditionning-expenses
-│       │   │   │       │   │   │       │   └── AvoidedAirConditionningExpensesDescription.tsx
-│       │   │   │       │   │   │       ├── avoided-air-pollution
-│       │   │   │       │   │   │       │   └── AvoidedAirPollutionDescription.tsx
-│       │   │   │       │   │   │       ├── avoided-car-related-expenses
-│       │   │   │       │   │   │       │   └── AvoidedCarRelatedExpensesDescription.tsx
-│       │   │   │       │   │   │       ├── avoided-co2-monetary-value
-│       │   │   │       │   │   │       │   ├── AirConditionningRelatedCo2MonetaryValueDescription.tsx
-│       │   │   │       │   │   │       │   ├── AvoidedCo2MonetaryValueDescription.tsx
-│       │   │   │       │   │   │       │   ├── RenewableEnergyRelatedCo2MonetaryValueDescription.tsx
-│       │   │   │       │   │   │       │   ├── TravelRelatedCo2MonetaryValueDescription.tsx
-│       │   │   │       │   │   │       │   └── breadcrumbSegments.ts
-│       │   │   │       │   │   │       ├── avoided-friche-costs
-│       │   │   │       │   │   │       │   ├── AvoidedFricheCostsDescription.tsx
-│       │   │   │       │   │   │       │   ├── AvoidedIllegalDumpingCostsDescription.tsx
-│       │   │   │       │   │   │       │   ├── AvoidedOtherSecuringCostsDescription.tsx
-│       │   │   │       │   │   │       │   ├── AvoidedSecurityCostsDescription.tsx
-│       │   │   │       │   │   │       │   └── breadcrumbSegments.ts
-│       │   │   │       │   │   │       ├── avoided-property-damages-expenses
-│       │   │   │       │   │   │       │   └── AvoidedPropertyDamagesExpenses.tsx
-│       │   │   │       │   │   │       ├── avoided-traffic-accidents-monetary-value
-│       │   │   │       │   │   │       │   ├── AvoidedTrafficAccidentsDeathsDescription.tsx
-│       │   │   │       │   │   │       │   ├── AvoidedTrafficAccidentsDescription.tsx
-│       │   │   │       │   │   │       │   ├── AvoidedTrafficAccidentsMinorInjuries.tsx
-│       │   │   │       │   │   │       │   ├── AvoidedTrafficAccidentsSevereInjuriesDescription.tsx
-│       │   │   │       │   │   │       │   └── breadcrumbSegments.ts
-│       │   │   │       │   │   │       ├── breadcrumbSections.ts
-│       │   │   │       │   │   │       ├── ecosystem-services
-│       │   │   │       │   │   │       │   ├── EcosystemServicesDescription.tsx
-│       │   │   │       │   │   │       │   ├── ForestRelatedProductDescription.tsx
-│       │   │   │       │   │   │       │   ├── InvasiveSpeciesRegulationDescription.tsx
-│       │   │   │       │   │   │       │   ├── NatureRelatedWellnessAndLeisureDescription.tsx
-│       │   │   │       │   │   │       │   ├── NitrogenCycleDescription.tsx
-│       │   │   │       │   │   │       │   ├── PollinationDescription.tsx
-│       │   │   │       │   │   │       │   ├── SoilErosionDescription.tsx
-│       │   │   │       │   │   │       │   ├── SoilsStorageRelatedCo2MonetaryValueDescription.tsx
-│       │   │   │       │   │   │       │   ├── WaterCycle.tsx
-│       │   │   │       │   │   │       │   └── breadcrumbSegments.ts
-│       │   │   │       │   │   │       ├── getSocioEconomicImpactColor.ts
-│       │   │   │       │   │   │       ├── property-value-increase
-│       │   │   │       │   │   │       │   ├── PropertyTransferDutiesIncreaseDescription.tsx
-│       │   │   │       │   │   │       │   └── PropertyValueIncreaseDescription.tsx
-│       │   │   │       │   │   │       ├── rental-income
-│       │   │   │       │   │   │       │   └── RentalIncomeDescription.tsx
-│       │   │   │       │   │   │       ├── roads-and-utilities-maintenance-expenses
-│       │   │   │       │   │   │       │   └── RoadsAndUtilitiesMaintenanceExpenses.tsx
-│       │   │   │       │   │   │       ├── taxes-income
-│       │   │   │       │   │   │       │   └── TaxesIncomeDescription.tsx
-│       │   │   │       │   │   │       ├── time-travel-saved
-│       │   │   │       │   │   │       │   └── TimeTravelSavedMonetaryValueDescription.tsx
-│       │   │   │       │   │   │       ├── water-regulation
-│       │   │   │       │   │   │       │   └── WaterRegulationDescription.tsx
-│       │   │   │       │   │   │       └── wizards
-│       │   │   │       │   │   │           ├── HumanityModalWizard.tsx
-│       │   │   │       │   │   │           ├── LocalAuthorityWizard.tsx
-│       │   │   │       │   │   │           ├── LocalPeopleOrCompanyWizard.tsx
-│       │   │   │       │   │   │           └── SocioEconomicModalWizard.tsx
+│       │   │   │       │   │   │   │   │   ├── full_time_jobs.mdx
+│       │   │   │       │   │   │   │   │   ├── full_time_jobs__operations_pv.mdx
+│       │   │   │       │   │   │   │   │   ├── full_time_jobs__operations_urban.mdx
+│       │   │   │       │   │   │   │   │   └── full_time_jobs__reconversion.mdx
+│       │   │   │       │   │   │   │   ├── households_powered_by_enr.mdx
+│       │   │   │       │   │   │   │   ├── local_property_value_increase.mdx
+│       │   │   │       │   │   │   │   ├── local_transfer_duties_increase.mdx
+│       │   │   │       │   │   │   │   ├── new_permeable_surface.mdx
+│       │   │   │       │   │   │   │   ├── new_permeable_surface__green_surface.mdx
+│       │   │   │       │   │   │   │   ├── new_permeable_surface__mineral_surface.mdx
+│       │   │   │       │   │   │   │   ├── non_contaminated_surface.mdx
+│       │   │   │       │   │   │   │   ├── projected_rental_income.mdx
+│       │   │   │       │   │   │   │   ├── social_jobs_section.mdx
+│       │   │   │       │   │   │   │   ├── social_section.mdx
+│       │   │   │       │   │   │   │   ├── taxes_income.mdx
+│       │   │   │       │   │   │   │   ├── travel_time_saved.mdx
+│       │   │   │       │   │   │   │   ├── travel_time_saved_per_traveler_expenses.mdx
+│       │   │   │       │   │   │   │   └── water_regulation.mdx
+│       │   │   │       │   │   │   ├── modal-charts
+│       │   │   │       │   │   │   │   ├── ModalAreaChart.tsx
+│       │   │   │       │   │   │   │   ├── ModalColumnChartTooltip.css
+│       │   │   │       │   │   │   │   ├── ModalColumnChartTooltip.tsx
+│       │   │   │       │   │   │   │   ├── ModalColumnPointChart.tsx
+│       │   │   │       │   │   │   │   ├── ModalColumnSeriesChart.tsx
+│       │   │   │       │   │   │   │   ├── modalBarChartOptions.ts
+│       │   │   │       │   │   │   │   ├── modalBarChartValueFormat.ts
+│       │   │   │       │   │   │   │   └── useBarChartCustomTooltip.tsx
+│       │   │   │       │   │   │   ├── modal-features
+│       │   │   │       │   │   │   │   ├── ModalFeature.tsx
+│       │   │   │       │   │   │   │   ├── ModalFeatureLine.tsx
+│       │   │   │       │   │   │   │   ├── ModalProjectFeature.tsx
+│       │   │   │       │   │   │   │   ├── ModalSiteFeature.tsx
+│       │   │   │       │   │   │   │   └── ModalSoilsDistribution.tsx
+│       │   │   │       │   │   │   └── modal-table
+│       │   │   │       │   │   │       ├── ModalGroupTable.tsx
+│       │   │   │       │   │   │       ├── ModalTable.css
+│       │   │   │       │   │   │       └── ModalTable.tsx
 │       │   │   │       │   │   ├── index.tsx
 │       │   │   │       │   │   ├── list-view
 │       │   │   │       │   │   │   ├── ImpactActorsItem.tsx
@@ -3513,6 +3481,9 @@
 │       │   │   │   ├── getSiteRealEstateValuation.dto.ts
 │       │   │   │   ├── getSiteView.dto.ts
 │       │   │   │   └── index.ts
+│       │   │   ├── stats
+│       │   │   │   ├── getPeriodicityStats.dto.ts
+│       │   │   │   └── index.ts
 │       │   │   └── urban-sprawl-impacts-comparison
 │       │   │       ├── getUrbanSprawlImpactsComparison.dto.ts
 │       │   │       └── index.ts
@@ -3745,4 +3716,4 @@
     ├── create-worktree.sh
     ├── prime-worktree.sh
     └── remove-worktree.sh
-1004 directories, 2743 files
+987 directories, 2731 files
