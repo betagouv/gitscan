@@ -77,114 +77,115 @@
 │   ├── 20210218111152_newsletters.js
 │   ├── 20210420155550_change_newsletter_primary.js
 │   ├── 20210422071821_add_id_primary_key.js
-│   ├── 20210830093835_events.ts
-│   ├── 20210927111224_add_action_metadata.ts
-│   ├── 20211110105155_add_primary_email.ts
-│   ├── 20211124153737_populate_primary_email.ts
-│   ├── 20220112153656_add_primary_email_status.ts
-│   ├── 20220418082512_new_user_field.ts
-│   ├── 20220418142016_alter_legal_status.ts
-│   ├── 20220602144257_add_domaine_to_user.ts
-│   ├── 20220613120826_add_missions_to_users.ts
-│   ├── 20220613135052_add_missions_table.ts
-│   ├── 20220614150846_community_chart_data.ts
-│   ├── 20220615081828_change_chart_name.ts
-│   ├── 20220617123852_add_community_table.ts
-│   ├── 20220619122922_data_migration.ts
-│   ├── 20220704140902_add_startup_table.ts
-│   ├── 20220705075310_add_field_startups_in_users.ts
-│   ├── 20220705083653_add_field_domaine_to_user_details.ts
-│   ├── 20220705091429_add_users_startups_table.ts
-│   ├── 20220712092918_add_communication_email_to_users.ts
-│   ├── 20220718144115_add_osm_city_field_in_user.ts
-│   ├── 20220815154932_add_marrainage_group.ts
-│   ├── 20220830090457_add_average_nb_of_days_to_users.ts
-│   ├── 20220830091135_add_average_nb_of_days_to_user_details.ts
-│   ├── 20220830141113_delete_missions_table.ts
-│   ├── 20220830144944_add_new_missions_table.ts
-│   ├── 20220831150340_add_mattermost_stats_table.ts
-│   ├── 20220901140511_change_column_name_in_mattermost_user_infos.ts
-│   ├── 20221115153248_add_should_create_marrainage_to_users_table.ts
-│   ├── 20221128140158_add_mailing_list_to_startup.ts
-│   ├── 20221129151806_add_pr_table.ts
-│   ├── 20221129170136_add_info_column_to_pull_requests_table.ts
-│   ├── 20221221150411_pull_requests_add_type.ts
-│   ├── 20230112172917_add_startup_to_pull_request_table.ts
-│   ├── 20230215083456_add_tasks_table.ts
-│   ├── 20230228140359_add_current_phase_date_to_startup_table.ts
-│   ├── 20230308120436_badge_requests.ts
-│   ├── 20230322084710_add_fields_to_badge_request.ts
-│   ├── 20230517132444_add_email_is_redirection_to_user_table.ts
-│   ├── 20230614125947_add_formation_table.ts
-│   ├── 20230614131607_add_users_formations_table.ts
-│   ├── 20230615150727_add_has_intra_and_has_coach_to_startup_column.ts
-│   ├── 20230621083621_add_formation_type_to_formation.ts
-│   ├── 20230621134830_add_nb_members_to_startups.ts
-│   ├── 20230622135904_add_nb_days_at_beta.ts
-│   ├── 20230622151104_add_nb_days_at_beta_to_users_details.ts
-│   ├── 20230921083410_add_is_embarquement_to_formations.ts
-│   ├── 20240326175801_add_nextauth_table.ts
-│   ├── 20240326175802_add_column_uuid_to_startups.ts
-│   ├── 20240326175803_add_column_uuid_to_missions.ts
-│   ├── 20240417083828_add_missions_startups_table.ts
-│   ├── 20240417083830_add_column_uuid_to_users.ts
-│   ├── 20240417085512_add_columns_to_users.ts
-│   ├── 20240417094853_add_table_organizations.ts
-│   ├── 20240417095400_add_columns_to_startups.ts
-│   ├── 20240417095401_add_table_startups_sponsors.ts
-│   ├── 20240418081201_add_table_incubator.ts
-│   ├── 20240418131455_add_column_incubator_id_to_startups.ts
-│   ├── 20240422092552_add_column_user_id_to_missions_table.ts
-│   ├── 20240422131742_add_unique_to_id_in_startups.ts
-│   ├── 20240504203525_mission-start-not-null.ts
-│   ├── 20240504203526_mission-start-date.ts
-│   ├── 20240504203527_mission-status-enum.ts
-│   ├── 20240504203528_user-role-not-null.ts
-│   ├── 20240504203529_user-fullname-not-null.ts
-│   ├── 20240504203530-user-domaine-not-null.ts
-│   ├── 20240504203531_user-domaine-enum.ts
-│   ├── 20240504203532_startup_id_notnull.ts
-│   ├── 20240504203532_startup_name_notnull.ts
-│   ├── 20240504203533_missions_dates_check.ts
-│   ├── 20240504203534_missions_cleanup.ts
-│   ├── 20240521124054_add_phases_table.ts
-│   ├── 20240521130849_alter_table_startups.ts
-│   ├── 20240521151735_add_table_events.ts
-│   ├── 20240521155337_alter_table_users.ts
-│   ├── 20240612101110_misc_change_to_users_members_incubators_tables.ts
-│   ├── 20240613144547_add_budget_url_to_startups_table.ts
-│   ├── 20240619085550_change_default_value_for_email_primary_status.ts
-│   ├── 20240619085551_add_startup_created_at.ts
-│   ├── 20240724095840_add_team_table.ts
-│   ├── 20240724100153_add_users_teams_table.ts
-│   ├── 20240731072026_add_trigger_update.ts
-│   ├── 20240731072027_add_startup_files.ts
-│   ├── 20240909125722_add_highlighted_startups_to_incubators.ts
-│   ├── 20240917131255_add_action_on_identifier_to_events.ts
-│   ├── 20241009165214_add_services_account.ts
-│   ├── 20241023153024_add_startups_aggregated_stats.ts
-│   ├── 20241028142619_add_brevo_url_column_to_newsletter_table.ts
-│   ├── 20241028170333_add_publish_at_column_to_newsletters.ts
-│   ├── 20241112162859_add_new_enum_value_to_domaine.ts
-│   ├── 20241119092134_add_column_status_to_service_accounts.ts
-│   ├── 20241120171235_add_sentry_teams_table.ts
-│   ├── 20241209110850_add_matomo_sites_table.ts
-│   ├── 20241219092134_add_columns_to_startups.ts
-│   ├── 20241219102134_clean_tables.ts
-│   ├── 20250101010101_add_table_dinum_emails.ts
-│   ├── 20250102092134_add_columns_to_startups.ts
-│   ├── 20250130143104_add_slug_to_sentry_teams.ts
-│   ├── 20250303092134_add_roadmap_url_to_startups.ts
-│   ├── 20250314092134_add_impact_url_to_startups.ts
-│   ├── 20250407133555_add_user_events.ts
-│   ├── 20251220131112_add_dinum_emails_columns.ts
-│   ├── 20260410000001_update_phases_enum_to_text.ts
-│   ├── 20260507000001_update_phases_check.ts
-│   ├── 20260512000001_add_matrix_accounts.ts
-│   ├── 20260527000001_update_phase_perenisation_consolidation.ts
-│   ├── 20260615000001_drop_marrainage_tables.ts
-│   ├── 20260615000001_drop_users_tjm_column.ts
-│   └── 20260617000001_add_contact_fields_to_startups.ts
+│   ├── 20210830093835_events.js
+│   ├── 20210927111224_add_action_metadata.js
+│   ├── 20211110105155_add_primary_email.js
+│   ├── 20211124153737_populate_primary_email.js
+│   ├── 20220112153656_add_primary_email_status.js
+│   ├── 20220418082512_new_user_field.js
+│   ├── 20220418142016_alter_legal_status.js
+│   ├── 20220602144257_add_domaine_to_user.js
+│   ├── 20220613120826_add_missions_to_users.js
+│   ├── 20220613135052_add_missions_table.js
+│   ├── 20220614150846_community_chart_data.js
+│   ├── 20220615081828_change_chart_name.js
+│   ├── 20220617123852_add_community_table.js
+│   ├── 20220619122922_data_migration.js
+│   ├── 20220704140902_add_startup_table.js
+│   ├── 20220705075310_add_field_startups_in_users.js
+│   ├── 20220705083653_add_field_domaine_to_user_details.js
+│   ├── 20220705091429_add_users_startups_table.js
+│   ├── 20220712092918_add_communication_email_to_users.js
+│   ├── 20220718144115_add_osm_city_field_in_user.js
+│   ├── 20220815154932_add_marrainage_group.js
+│   ├── 20220830090457_add_average_nb_of_days_to_users.js
+│   ├── 20220830091135_add_average_nb_of_days_to_user_details.js
+│   ├── 20220830141113_delete_missions_table.js
+│   ├── 20220830144944_add_new_missions_table.js
+│   ├── 20220831150340_add_mattermost_stats_table.js
+│   ├── 20220901140511_change_column_name_in_mattermost_user_infos.js
+│   ├── 20221115153248_add_should_create_marrainage_to_users_table.js
+│   ├── 20221128140158_add_mailing_list_to_startup.js
+│   ├── 20221129151806_add_pr_table.js
+│   ├── 20221129170136_add_info_column_to_pull_requests_table.js
+│   ├── 20221221150411_pull_requests_add_type.js
+│   ├── 20230112172917_add_startup_to_pull_request_table.js
+│   ├── 20230215083456_add_tasks_table.js
+│   ├── 20230228140359_add_current_phase_date_to_startup_table.js
+│   ├── 20230308120436_badge_requests.js
+│   ├── 20230322084710_add_fields_to_badge_request.js
+│   ├── 20230517132444_add_email_is_redirection_to_user_table.js
+│   ├── 20230614125947_add_formation_table.js
+│   ├── 20230614131607_add_users_formations_table.js
+│   ├── 20230615150727_add_has_intra_and_has_coach_to_startup_column.js
+│   ├── 20230621083621_add_formation_type_to_formation.js
+│   ├── 20230621134830_add_nb_members_to_startups.js
+│   ├── 20230622135904_add_nb_days_at_beta.js
+│   ├── 20230622151104_add_nb_days_at_beta_to_users_details.js
+│   ├── 20230921083410_add_is_embarquement_to_formations.js
+│   ├── 20240326175801_add_nextauth_table.js
+│   ├── 20240326175802_add_column_uuid_to_startups.js
+│   ├── 20240326175803_add_column_uuid_to_missions.js
+│   ├── 20240417083828_add_missions_startups_table.js
+│   ├── 20240417083830_add_column_uuid_to_users.js
+│   ├── 20240417085512_add_columns_to_users.js
+│   ├── 20240417094853_add_table_organizations.js
+│   ├── 20240417095400_add_columns_to_startups.js
+│   ├── 20240417095401_add_table_startups_sponsors.js
+│   ├── 20240418081201_add_table_incubator.js
+│   ├── 20240418131455_add_column_incubator_id_to_startups.js
+│   ├── 20240422092552_add_column_user_id_to_missions_table.js
+│   ├── 20240422131742_add_unique_to_id_in_startups.js
+│   ├── 20240504203525_mission-start-not-null.js
+│   ├── 20240504203526_mission-start-date.js
+│   ├── 20240504203527_mission-status-enum.js
+│   ├── 20240504203528_user-role-not-null.js
+│   ├── 20240504203529_user-fullname-not-null.js
+│   ├── 20240504203530-user-domaine-not-null.js
+│   ├── 20240504203531_user-domaine-enum.js
+│   ├── 20240504203532_startup_id_notnull.js
+│   ├── 20240504203532_startup_name_notnull.js
+│   ├── 20240504203533_missions_dates_check.js
+│   ├── 20240504203534_missions_cleanup.js
+│   ├── 20240521124054_add_phases_table.js
+│   ├── 20240521130849_alter_table_startups.js
+│   ├── 20240521151735_add_table_events.js
+│   ├── 20240521155337_alter_table_users.js
+│   ├── 20240612101110_misc_change_to_users_members_incubators_tables.js
+│   ├── 20240613144547_add_budget_url_to_startups_table.js
+│   ├── 20240619085550_change_default_value_for_email_primary_status.js
+│   ├── 20240619085551_add_startup_created_at.js
+│   ├── 20240724095840_add_team_table.js
+│   ├── 20240724100153_add_users_teams_table.js
+│   ├── 20240731072026_add_trigger_update.js
+│   ├── 20240731072027_add_startup_files.js
+│   ├── 20240909125722_add_highlighted_startups_to_incubators.js
+│   ├── 20240917131255_add_action_on_identifier_to_events.js
+│   ├── 20241009165214_add_services_account.js
+│   ├── 20241023153024_add_startups_aggregated_stats.js
+│   ├── 20241028142619_add_brevo_url_column_to_newsletter_table.js
+│   ├── 20241028170333_add_publish_at_column_to_newsletters.js
+│   ├── 20241112162859_add_new_enum_value_to_domaine.js
+│   ├── 20241119092134_add_column_status_to_service_accounts.js
+│   ├── 20241120171235_add_sentry_teams_table.js
+│   ├── 20241209110850_add_matomo_sites_table.js
+│   ├── 20241219092134_add_columns_to_startups.js
+│   ├── 20241219102134_clean_tables.js
+│   ├── 20250101010101_add_table_dinum_emails.js
+│   ├── 20250102092134_add_columns_to_startups.js
+│   ├── 20250130143104_add_slug_to_sentry_teams.js
+│   ├── 20250303092134_add_roadmap_url_to_startups.js
+│   ├── 20250314092134_add_impact_url_to_startups.js
+│   ├── 20250407133555_add_user_events.js
+│   ├── 20251220131112_add_dinum_emails_columns.js
+│   ├── 20260410000001_update_phases_enum_to_text.js
+│   ├── 20260507000001_update_phases_check.js
+│   ├── 20260512000001_add_matrix_accounts.js
+│   ├── 20260527000001_update_phase_perenisation_consolidation.js
+│   ├── 20260615000001_drop_marrainage_tables.js
+│   ├── 20260615000001_drop_users_tjm_column.js
+│   ├── 20260617000001_add_contact_fields_to_startups.js
+│   └── 20260618000001_add_startups_incubators_table.ts
 ├── next.config.js
 ├── package-lock.json
 ├── package.json
@@ -547,9 +548,6 @@
 │   │   ├── TeamSelect.tsx
 │   │   ├── UploadForm
 │   │   │   └── UploadForm.tsx
-│   │   ├── emails
-│   │   │   └── layouts
-│   │   │       └── StandardEmail.tsx
 │   │   ├── live-chat
 │   │   │   ├── LiveChatContext.tsx
 │   │   │   ├── LiveChatProvider.tsx
@@ -610,6 +608,7 @@
 │   │   ├── checklists
 │   │   │   ├── computeProgress.spec.ts
 │   │   │   ├── computeProgress.ts
+│   │   │   ├── filterByDomaine.ts
 │   │   │   ├── getChecklistObject.ts
 │   │   │   ├── getUserChecklists.ts
 │   │   │   ├── offboarding.yml
@@ -764,18 +763,23 @@
 │           └── templates
 │               └── emails
 │                   ├── EmailCreatedDimail
-│                   │   └── EmailCreatedDimail.tsx
+│                   │   ├── EmailCreatedDimail.mjml.ejs
+│                   │   └── EmailCreatedDimail.ts
 │                   ├── LoginEmail
-│                   │   └── LoginEmail.tsx
+│                   │   ├── LoginEmail.mjml.ejs
+│                   │   └── LoginEmail.ts
 │                   ├── StartupNewMemberArrivalEmail
-│                   │   └── StartupNewMemberArrivalEmail.tsx
+│                   │   ├── StartupNewMemberArrivalEmail.mjml.ejs
+│                   │   └── StartupNewMemberArrivalEmail.ts
 │                   ├── VerificationWaitingEmail
-│                   │   └── VerificationWaitingEmail.tsx
+│                   │   ├── VerificationWaitingEmail.mjml.ejs
+│                   │   └── VerificationWaitingEmail.ts
+│                   ├── _layout.mjml.ejs
 │                   ├── eventMessage.ejs
 │                   ├── forumBetaMessage.ejs
 │                   ├── memberValidationEmail
-│                   │   └── memberValidationEmail.tsx
+│                   │   ├── memberValidationEmail.mjml.ejs
+│                   │   └── memberValidationEmail.ts
 │                   └── updateSecondaryEmail.ejs
-├── storybook
 └── tsconfig.json
-178 directories, 602 files
+175 directories, 609 files
