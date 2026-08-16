@@ -1,37 +1,39 @@
-## Changelog : dora (30 derniers jours, au 13 août 2026)
+## Changelog : dora (30 derniers jours, au 14 août 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions ont principalement porté sur la modernisation de la gestion des données, notamment via la migration du référentiel des "Publics". L'expérience utilisateur a été affinée grâce à des améliorations de la recherche, une meilleure gestion des erreurs et des tableaux de bord plus lisibles pour les gestionnaires de territoire.
+Ce mois-ci, la plateforme a bénéficié d'améliorations significatives pour faciliter la recherche de services et la consultation des informations liées aux publics. L'expérience utilisateur a été fluidifiée par des corrections sur les filtres et l'interface de recherche, tandis que des travaux de fond ont été menés pour moderniser la structure des données et optimiser la gestion des services et des orientations.
 
 ### Évolutions fonctionnelles
-- **Recherche et navigation** :
-    - Expérimentation et ajustements de la recherche textuelle [#1194](https://github.com/gip-inclusion/dora/issues/1194) [#1246](https://github.com/gip-inclusion/dora/issues/1246) [#1254](https://github.com/gip-inclusion/dora/issues/1254).
-    - Limitation du nombre de résultats de recherche pour éviter la surcharge d'informations [#1245](https://github.com/gip-inclusion/dora/issues/1245).
-    - Activation de la recherche via la touche "Entrée" pour une navigation plus fluide [#1230](https://github.com/gip-inclusion/dora/issues/1230).
-- **Expérience utilisateur (UX)** :
-    - Allègement du tableau des structures dans le tableau de bord des gestionnaires de territoire [#1229](https://github.com/gip-inclusion/dora/issues/1229).
-    - Amélioration de la gestion des erreurs : affichage d'une page 404 pour les services inaccessibles au lieu d'une redirection vers la connexion [#1224](https://github.com/gip-inclusion/dora/issues/1224).
-    - Nettoyage de l'affichage des descriptions de services via le filtrage du balisage Markdown [#1221](https://github.com/gip-inclusion/dora/issues/1221).
-- **Nouvelles fonctionnalités et accessibilité** :
-    - Mise à jour de la déclaration d'accessibilité de la plateforme [#1202](https://github.com/gip-inclusion/dora/issues/1202).
-    - Ajout d'une fonction d'export des orientations pour "Les Emplois" [#1209](https://github.com/gip-inclusion/dora/issues/1209).
-    - Passage des vues administratives de statistiques en mode lecture seule [#1179](https://github.com/gip-inclusion/dora/issues/1179).
+- **Recherche et navigation**
+  - Expérimentation de la recherche par texte (A/B test) [#1194](https://github.com/gip-inclusion/dora/issues/1194).
+  - Limitation du nombre de résultats de recherche pour éviter de submerger les utilisateurs [#1245](https://github.com/gip-inclusion/dora/issues/1245).
+  - Activation de la recherche lors de l'appui sur la touche "Entrée" [#1230](https://github.com/gip-inclusion/dora/issues/1230).
+  - Correction des filtres pour assurer l'affichage correct des services "tous-publics" [#1261](https://github.com/gip-inclusion/dora/issues/1261).
+  - Suppression des doublons dans les résultats de recherche sémantique [#1228](https://github.com/gip-inclusion/dora/issues/1228).
+- **Consultation des services**
+  - Affichage des précisions concernant les publics sur les pages de détails des services [#1264](https://github.com/gip-inclusion/dora/issues/1264).
+  - Nettoyage du balisage Markdown dans les descriptions courtes des services [#1221](https://github.com/gip-inclusion/dora/issues/1221).
+  - Amélioration de la gestion des erreurs : affichage d'une page 404 explicite pour les services inaccessibles [#1224](https://github.com/gip-inclusion/dora/issues/1224).
+- **Gestion et conformité**
+  - Allègement de l'affichage du tableau des structures dans le tableau de bord des gestionnaires de territoire [#1229](https://github.com/gip-inclusion/dora/issues/1229).
+  - Ajout de la possibilité d'exporter les orientations "Les Emplois" [#1209](https://github.com/gip-inclusion/dora/issues/1209).
+  - Mise à jour des Conditions Générales d'Utilisation (CGU) [#1182](https://github.com/gip-inclusion/dora/issues/1182) et de la déclaration d'accessibilité [#1202](https://github.com/gip-inclusion/dora/issues/1202).
 
 ### Évolutions techniques
-- **Migration et gestion des données** :
-    - Migration majeure des données "Publics" vers le nouveau référentiel DI [#1237](https://github.com/gip-inclusion/dora/issues/1237) et basculement vers de nouvelles colonnes de lecture [#1252](https://github.com/gip-inclusion/dora/issues/1252).
-    - Refactorisation de la gestion des types de services (`kind`) et des recherches sauvegardées pour optimiser le stockage en base de données [#1247](https://github.com/gip-inclusion/dora/issues/1247) [#1249](https://github.com/gip-inclusion/dora/issues/1249).
-    - Sécurisation de l'intégrité des données : garantie de l'unicité des critères d'admission [#1243](https://github.com/gip-inclusion/dora/issues/1243) et protection contre les suppressions d'objets en cascade [#1220](https://github.com/gip-inclusion/dora/issues/1220).
-- **Backend et API** :
-    - Ajout de la date de traitement (`processing_date`) dans le flux de synchronisation des statuts des orientations [#1212](https://github.com/gip-inclusion/dora/issues/1212).
-    - Exclusion de certaines sources de données du formulaire Dora [#1225](https://github.com/gip-inclusion/dora/issues/1225).
-- **Analytique et Statistiques** :
-    - Amélioration du suivi statistique par l'intégration du code de zone géographique (commune, département, région) [#1216](https://github.com/gip-inclusion/dora/issues/1216).
-    - Synchronisation de la table des données d'orientation des emplois [#1190](https://github.com/gip-inclusion/dora/issues/1190) et correction de l'export de pilotage [#1170](https://github.com/gip-inclusion/dora/issues/1170).
-- **Qualité logicielle** :
-    - Augmentation de la couverture de tests sur les critères d'orientabilité des services [#1227](https://github.com/gip-inclusion/dora/issues/1227).
+- **Refonte du modèle de données**
+  - Migration progressive des données "Publics" vers le nouveau référentiel DI [#1237](https://github.com/gip-inclusion/dora/issues/1237).
+  - Introduction d'un champ unique `kind` pour définir le type de service [#1249](https://github.com/gip-inclusion/dora/issues/1249).
+  - Optimisation du stockage des recherches sauvegardées via le passage au format `ArrayField` [#1247](https://github.com/gip-inclusion/dora/issues/1247).
+  - Migration de la lecture des publics vers de nouvelles colonnes de base de données [#1252](https://github.com/gip-inclusion/dora/issues/1252).
+- **Backend et API**
+  - Amélioration de la synchronisation des statuts des orientations avec l'ajout d'une date de traitement [#1212](https://github.com/gip-inclusion/dora/issues/1212).
+  - Sécurisation de la suppression des objets en cascade [#1220](https://github.com/gip-inclusion/dora/issues/1220).
+  - Partage de types communs entre les modèles et les services pour renforcer la cohérence du code [#1265](https://github.com/gip-inclusion/dora/issues/1265).
+- **Infrastructure et outils**
+  - Mise à jour majeure de la bibliothèque cartographique MapLibre GL [#1231](https://github.com/gip-inclusion/dora/issues/1231).
+  - Remplacement de la bibliothèque de génération de fichiers Excel [#1191](https://github.com/gip-inclusion/dora/issues/1191).
+  - Augmentation de la couverture de tests sur les critères d'orientabilité des services [#1227](https://github.com/gip-inclusion/dora/issues/1227).
 
 ### Autres changements
-- **Maintenance et nettoyage** :
-    - Suppression des commandes d'import inutilisées [#1260](https://github.com/gip-inclusion/dora/issues/1260) et nettoyage des anciennes structures orphelines [#1219](https://github.com/gip-inclusion/dora/issues/1219).
-    - Remplacement de la bibliothèque de génération de fichiers Excel [#1191](https://github.com/gip-inclusion/dora/issues/1191).
+- Nettoyage du code : suppression de commandes d'import inutilisées [#1260](https://github.com/gip-inclusion/dora/issues/1260) et de fichiers de signaux en doublon [#1263](https://github.com/gip-inclusion/dora/issues/1263).
+- Ajout d'une commande pour supprimer les anciennes structures orphelines [#1219](https://github.com/gip-inclusion/dora/issues/1219).
