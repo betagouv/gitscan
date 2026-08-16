@@ -47,6 +47,7 @@ and this project adheres to
 ### Changed
 
 - update cunningham tokens
+- replace unmaintained retry package with tenacity
 
 ### Fixed
 
@@ -57,6 +58,7 @@ and this project adheres to
 - secure archive ZIP download link
 - fix export crash on folder/file names containing "/" #165
 - fix lint-git print() check matching removed lines instead of only added ones
+- retry Drive upload-ended notification on transient network timeouts #176
 
 ### Removed
 
