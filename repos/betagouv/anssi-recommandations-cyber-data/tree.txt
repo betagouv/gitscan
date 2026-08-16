@@ -69,7 +69,8 @@
 │   │   ├── api_evaluation.py
 │   │   ├── api_jeopardy.py
 │   │   ├── auth.py
-│   │   └── securite.py
+│   │   ├── securite.py
+│   │   └── suivi_indexation.py
 │   ├── configuration.py
 │   ├── documents
 │   │   ├── ajoute_document_a_la_collection.py
@@ -80,8 +81,7 @@
 │   │   │   ├── chunker_docling_mqc.py
 │   │   │   ├── document.py
 │   │   │   ├── filtre_resultat.py
-│   │   │   ├── multi_processeur.py
-│   │   │   └── pages_avec_texte.py
+│   │   │   └── multi_processeur.py
 │   │   ├── elements_filtres.py
 │   │   ├── generateur_de_pages.py
 │   │   ├── html
@@ -95,9 +95,18 @@
 │   │   ├── page.py
 │   │   ├── pdf
 │   │   │   ├── __init__.py
-│   │   │   ├── categorise_le_contenu.py
+│   │   │   ├── _contrat_ocr_json.py
+│   │   │   ├── _gestionnaire_sections.py
+│   │   │   ├── _normalisateur_ocr.py
+│   │   │   ├── _rattacheur_blocs.py
+│   │   │   ├── _rendeur_pages_pdf.py
+│   │   │   ├── assembleur_blocs_json.py
+│   │   │   ├── convertisseur_ocr_json.py
 │   │   │   ├── cree_document_pdf.py
-│   │   │   └── document_pdf.py
+│   │   │   ├── document_pdf.py
+│   │   │   ├── modeles_ocr_json.py
+│   │   │   ├── pages_avec_texte.py
+│   │   │   └── prompt_ocr_json.py
 │   │   ├── service_collections.py
 │   │   ├── service_indexation_collections.py
 │   │   └── service_indexation_documents.py
@@ -194,8 +203,7 @@
 │   │   ├── docling
 │   │   │   ├── test_chunker_docling_mqc.py
 │   │   │   ├── test_document.py
-│   │   │   ├── test_filtre_resultat.py
-│   │   │   └── test_pages_avec_texte.py
+│   │   │   └── test_filtre_resultat.py
 │   │   ├── html
 │   │   │   ├── test_document_html.py
 │   │   │   ├── test_document_qr.py
@@ -203,8 +211,11 @@
 │   │   ├── indexeur
 │   │   │   └── test_indexeur_docling.py
 │   │   ├── pdf
-│   │   │   ├── test_categorise_le_contenu.py
-│   │   │   └── test_document_pdf.py
+│   │   │   ├── test_assembleur_blocs_json.py
+│   │   │   ├── test_composants_assembleur_blocs_json.py
+│   │   │   ├── test_convertisseur_ocr_json.py
+│   │   │   ├── test_document_pdf.py
+│   │   │   └── test_pages_avec_texte.py
 │   │   ├── test_indexe_documents_rag.py
 │   │   ├── test_service_collections.py
 │   │   ├── test_service_indexation_collection.py
@@ -307,4 +318,4 @@
 │   ├── tsconfig.node.json
 │   └── vite.config.ts
 └── uv.lock
-61 directories, 248 files
+61 directories, 259 files

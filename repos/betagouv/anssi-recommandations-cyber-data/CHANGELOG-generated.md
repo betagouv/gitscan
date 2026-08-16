@@ -1,27 +1,28 @@
-## Changelog : anssi-recommandations-cyber-data (30 derniers jours, au 04/08/2026)
+## Changelog : anssi-recommandations-cyber-data (30 derniers jours, au 12 août 2026)
 
 ### Résumé
-Cette période a été marquée par une amélioration significative de la gestion documentaire (importation via URL, suppression de fichiers) et de l'expérience utilisateur grâce à une sélection de collections plus intuitive. Le moteur de recherche (RAG) a également bénéficié d'optimisations majeures pour mieux comprendre la structure des documents (ordre des paragraphes, blocs sur plusieurs pages), garantissant des résultats plus précis.
+Cette période a été marquée par une amélioration significative de la précision du traitement des documents (OCR et PDF) et une optimisation de l'expérience utilisateur pour la gestion des collections. L'interface est désormais plus intuitive et informative, tandis que la sécurité des processus d'intégration continue a été renforcée.
 
 ### Évolutions fonctionnelles
-- **Gestion documentaire** : Ajout de la possibilité d'importer des documents HTML via une URL et de supprimer des documents existants.
-- **Interface de sélection** : Remplacement de la saisie manuelle d'identifiants par des menus déroulants pour choisir les collections, incluant l'affichage de l'identifiant pour distinguer les collections portant le même nom.
-- **Expérience utilisateur** : Redirection automatique vers le tableau de bord après l'authentification.
-- **Corrections** : Résolution d'un problème où la liste des documents affichés ne correspondait pas à la collection sélectionnée dans l'interface.
+- **Nouvelle fonctionnalité d'importation** : Possibilité d'ajouter des documents HTML directement via une URL.
+- **Amélioration de la gestion des collections** : 
+    - Remplacement de la saisie manuelle des identifiants par un composant de sélection (menu déroulant) pour éviter les erreurs.
+    - Affichage de l'identifiant des collections dans les listes pour faciliter la distinction entre des collections portant le même nom.
+- **Amélioration de l'expérience utilisateur (UX)** : 
+    - Remontée directe des erreurs d'indexation et de création de collection dans l'interface utilisateur.
+- **Corrections de bugs** :
+    - Correction de l'affichage de la liste des documents pour qu'elle respecte la collection sélectionnée.
+    - Correction du processus de suppression pour garantir la cohérence entre les collections indexées et les documents miroirs.
 
 ### Évolutions techniques
-- **Optimisation du RAG (Retrieval-Augmented Generation)** : 
-    - Amélioration de la précision de la recherche en intégrant la position exacte des blocs et des paragraphes dans les métadonnées d'indexation.
-    - Détection des blocs de texte s'étendant sur deux pages pour éviter les erreurs de découpage (chunking).
-- **Performance d'indexation** : Ignoration automatique des pages PDF dépourvues de texte avant le passage par l'OCR.
-- **Sécurité et CI/CD** : 
-    - Renforcement de la sécurité des pipelines en désactivant les identifiants `git` lors du clonage des dépôts.
+- **Refonte du pipeline de traitement PDF/OCR** : 
+    - Implémentation d'un convertisseur OCR JSON pour une meilleure extraction de la structure des documents (gestion améliorée des tableaux, des listes, des titres et de la table des matières).
+    - Amélioration de l'assemblage des blocs de texte pour assurer la continuité entre les pages.
+- **Optimisation du moteur de recherche (RAG)** : 
+    - Ajout de métadonnées de positionnement (coordonnées des blocs dans la page) pour permettre un meilleur ordonnancement des paragraphes lors de la phase de récupération d'informations.
+    - Détection des blocs de texte chevauchant deux pages pour améliorer la segmentation des données.
+- **Évolutions de l'API** : Mise à disposition de nouveaux points de terminaison (endpoints) pour récupérer dynamiquement la liste des collections disponibles.
+- **Sécurité et CI/CD** :
+    - Renforcement de la sécurité de la chaîne de déploiement (désactivation des identifiants `git` dans les dépôts clonés).
     - Intégration de `zizmor` pour la validation de la configuration.
-- **API et Backend** : 
-    - Mise en place de nouvelles routes pour la récupération et la gestion des collections.
-    - Correction de l'encodage des noms de documents en UTF-8.
-    - Correction de la synchronisation des suppressions pour assurer la cohérence entre les collections indexées et la collection de suivi (Jeopardy).
-
-### Autres changements
-- **Refactoring** : Extraction et réorganisation de composants UI (notamment pour les informations de collections) pour améliorer la maintenabilité du code.
-- **Nettoyage** : Optimisation de l'espace de travail et nettoyage de code.
+    - Mise à jour de sécurité de la bibliothèque `Docling`.
