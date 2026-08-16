@@ -1,12 +1,16 @@
 .
 ├── .claude
-│   ├── claude.md
+│   ├── claude copy.md
+│   ├── hooks
+│   │   └── block-env.sh
 │   └── settings.json
 ├── .env.example
 ├── .gitignore
 ├── .prettierignore
 ├── .prettierrc.json
 ├── README.md
+├── docs
+│   └── INTEROPERABILITE CONNECT - Flux Objet Contact.pdf
 ├── eslint.config.mjs
 ├── next.config.ts
 ├── package.json
@@ -106,7 +110,10 @@
 │   │   │   │   └── technique.svg
 │   │   │   ├── info.svg
 │   │   │   ├── info_tacct.png
+│   │   │   ├── logo-ademe.png
 │   │   │   ├── logo-life-artisan.png
+│   │   │   ├── logo-rf.png
+│   │   │   ├── logo-tacct.png
 │   │   │   ├── logo.svg
 │   │   │   ├── logo_rf.png
 │   │   │   ├── logo_tacct.svg
@@ -300,6 +307,7 @@
 │   │   │   │   └── page.tsx
 │   │   │   └── skills-partners-mobilised
 │   │   │       └── page.tsx
+│   │   ├── PostHogPageView.tsx
 │   │   ├── api
 │   │   │   ├── dashboard
 │   │   │   │   └── [studyId]
@@ -310,10 +318,11 @@
 │   │   │           └── route.ts
 │   │   ├── favicon.ico
 │   │   ├── layout.tsx
-│   │   └── project-sheets
-│   │       ├── [slug]
-│   │       │   └── page.tsx
-│   │       └── page.tsx
+│   │   ├── project-sheets
+│   │   │   ├── [slug]
+│   │   │   │   └── page.tsx
+│   │   │   └── page.tsx
+│   │   └── providers.tsx
 │   ├── components
 │   │   ├── admin
 │   │   │   ├── CommuneAutocomplete.tsx
@@ -370,7 +379,7 @@
 │   │   │   ├── SensibilityTheme.tsx
 │   │   │   └── Thematic.tsx
 │   │   ├── settings
-│   │   │   ├── InviteCoUserForm.tsx
+│   │   │   ├── InviteColleagueForm.tsx
 │   │   │   ├── StudySettingsForm.tsx
 │   │   │   └── TransferStudyForm.tsx
 │   │   ├── skills-partners
@@ -382,6 +391,7 @@
 │   │   │   ├── ActionDotsTimeline.tsx
 │   │   │   ├── AddRemoveImpactButton.tsx
 │   │   │   ├── CardAction.tsx
+│   │   │   ├── CreateImpactStrategyForm.tsx
 │   │   │   ├── DefineActions.tsx
 │   │   │   ├── Dots.tsx
 │   │   │   ├── ExportActionPlanButton.tsx
@@ -398,7 +408,8 @@
 │   │   │   ├── ConfirmModal.tsx
 │   │   │   ├── Label.tsx
 │   │   │   ├── RichTextEditor.tsx
-│   │   │   └── StepStatus.tsx
+│   │   │   ├── StepStatus.tsx
+│   │   │   └── Toaster.tsx
 │   │   └── workspace
 │   │       └── DiagnosticIncompleteButton.tsx
 │   ├── generated
@@ -438,9 +449,6 @@
 │   │       │   ├── impact_trajectory.ts
 │   │       │   ├── impact_trajectory_impact_action.ts
 │   │       │   ├── messenger_messages.ts
-│   │       │   ├── natural_disaster.ts
-│   │       │   ├── natural_disaster_search.ts
-│   │       │   ├── natural_disaster_search_commune.ts
 │   │       │   ├── observed_exposure.ts
 │   │       │   ├── observed_exposure_impact.ts
 │   │       │   ├── old_region.ts
@@ -453,6 +461,8 @@
 │   │       │   ├── skill_territory.ts
 │   │       │   ├── study.ts
 │   │       │   ├── study_office.ts
+│   │       │   ├── tacctoscope_answer.ts
+│   │       │   ├── tacctoscope_criterion_feedback.ts
 │   │       │   ├── thematic.ts
 │   │       │   ├── token.ts
 │   │       │   ├── user.ts
@@ -471,10 +481,12 @@
 │   │   ├── review-average.ts
 │   │   ├── sensibility.ts
 │   │   ├── skillsScore.ts
+│   │   ├── study-switch-target.ts
 │   │   └── typeExposure.ts
 │   ├── server
 │   │   ├── acl
-│   │   │   └── README.md
+│   │   │   ├── README.md
+│   │   │   └── account.ts
 │   │   ├── admin
 │   │   │   ├── actions.ts
 │   │   │   └── queries.ts
@@ -488,6 +500,8 @@
 │   │   │   └── queries.ts
 │   │   ├── db
 │   │   │   └── index.ts
+│   │   ├── flash-actions.ts
+│   │   ├── flash.ts
 │   │   ├── future-exposure
 │   │   │   ├── actions.ts
 │   │   │   └── queries.ts
@@ -495,6 +509,7 @@
 │   │   │   └── actions.ts
 │   │   ├── mail
 │   │   │   ├── account-emails.ts
+│   │   │   ├── invite-emails.ts
 │   │   │   ├── layout.ts
 │   │   │   ├── mailer.ts
 │   │   │   └── study-emails.ts
@@ -514,11 +529,13 @@
 │   │   │   └── queries.ts
 │   │   ├── strategies
 │   │   │   ├── actions.ts
+│   │   │   ├── cascade.ts
 │   │   │   ├── export-tet.ts
 │   │   │   ├── impact-actions.ts
 │   │   │   ├── impact-queries.ts
 │   │   │   └── queries.ts
 │   │   └── study
+│   │       ├── actions.ts
 │   │       └── current-study.ts
 │   ├── styles
 │   │   ├── 01_variables
@@ -597,6 +614,7 @@
 │   │   │   ├── tab.scss
 │   │   │   ├── text-editor.scss
 │   │   │   ├── texts.scss
+│   │   │   ├── toast.scss
 │   │   │   └── workspace-home.scss
 │   │   ├── 07_utilities
 │   │   │   ├── _index.scss
@@ -608,5 +626,27 @@
 │   │   └── main.scss
 │   └── types
 │       └── next-auth.d.ts
-└── tsconfig.json
-121 directories, 490 files
+├── tests
+│   ├── helpers
+│   │   ├── config.ts
+│   │   ├── consistency.ts
+│   │   ├── db.ts
+│   │   ├── fixtures.ts
+│   │   ├── http.ts
+│   │   ├── routes.ts
+│   │   ├── server.ts
+│   │   └── session.ts
+│   ├── setup
+│   │   ├── env.ts
+│   │   └── server-only-stub.ts
+│   ├── smoke
+│   │   ├── current-study.test.ts
+│   │   ├── route-coverage.test.ts
+│   │   └── routes.test.ts
+│   └── unit
+│       ├── account-validated.test.ts
+│       ├── menu-items.test.ts
+│       └── study-switch-target.test.ts
+├── tsconfig.json
+└── vitest.config.ts
+128 directories, 523 files
