@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/codegouvfr/catalogi",
   "name": "catalogi",
-  "description": "Une application web de gestion de catalogues de logiciels, utilisée pour répertorier les logiciels libres recommandés pour les administrations françaises.",
+  "description": "Application de catalogue de logiciels permettant de gérer et de répertorier des solutions logicielles, notamment pour les administrations françaises.",
   "language": "TypeScript",
   "features": [
     "Gestion métier générale",
@@ -15,24 +15,29 @@
     "Express",
     "Kysely",
     "PostgreSQL",
+    "TRPC",
     "Zod",
     "Playwright",
-    "Vitest",
-    "Turbo",
-    "Keycloak"
+    "Keycloak",
+    "Docker",
+    "Helm",
+    "Turbo"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "TypeScript / JavaScript",
     "Docker & Conteneurs",
+    "Authentification (composant)",
     "Tests",
-    "Authentification (composant)"
+    "CI/CD & Déploiement",
+    "Design System (DSFR & UI libs)"
   ],
   "auth": {
     "methods": [
-      "oauth2",
-      "sso"
+      "sso",
+      "jwt",
+      "session"
     ],
     "providers": [
       "Keycloak"
@@ -40,7 +45,8 @@
   },
   "tests": [
     "Vitest",
-    "Playwright"
+    "Playwright",
+    "Testcontainers"
   ],
   "workflows": [
     "GitHub Actions"
@@ -50,7 +56,7 @@
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 41,
+    "stars": 42,
     "forks": 11,
     "openIssues": 90
   },
@@ -60,6 +66,6 @@
     "TypeScript",
     "Docker & Conteneurs",
     "CI/CD & GitHub Actions",
-    "Bases de données SQL"
+    "Standards & Schémas"
   ]
 }
