@@ -27,6 +27,8 @@
 │               └── video-recording.md
 ├── .claude
 │   └── skills -> ../.agents/skills
+├── .codex
+│   └── config.toml
 ├── .env.template
 ├── .envrc
 ├── .github
@@ -41,6 +43,7 @@
 │       ├── integration-continue.yml
 │       └── securite-ci.yml
 ├── .gitignore
+├── .mcp.json
 ├── .npmrc
 ├── .nvmrc
 ├── .playwright
@@ -48,6 +51,11 @@
 ├── .prettierignore
 ├── .prettierrc.cjs
 ├── .ruby-version
+├── .serena
+│   ├── .gitignore
+│   ├── memories
+│   │   └── memory_maintenance.md
+│   └── project.yml
 ├── AGENTS.md
 ├── CLAUDE.md
 ├── DEVELOPER.md
@@ -142,7 +150,6 @@
 │   │   │   │   ├── ressourceMesureCsv.ts
 │   │   │   │   ├── ressourceModule.ts
 │   │   │   │   ├── ressourceParcours.schema.ts
-│   │   │   │   ├── ressourceParcours.ts
 │   │   │   │   ├── ressourceParcoursComplet.ts
 │   │   │   │   ├── ressourcePriseEnCompte.ts
 │   │   │   │   ├── ressourceRecompensesCyberDepart
@@ -156,7 +163,11 @@
 │   │   │   │   │   ├── ressourceRecompensesCyberDepart.ts
 │   │   │   │   │   └── serviceRecompensesCyberDepart.ts
 │   │   │   │   └── schemaRessourceModule.schema.ts
-│   │   │   ├── middleware.ts
+│   │   │   ├── middlewares
+│   │   │   │   ├── attributionParcours.ts
+│   │   │   │   ├── attributionParcoursMesure.ts
+│   │   │   │   ├── middleware.ts
+│   │   │   │   └── publieMesureConsultee.ts
 │   │   │   ├── mon-aide-cyber
 │   │   │   │   ├── ressourceDemandesAide.schema.ts
 │   │   │   │   └── ressourceDemandesAide.ts
@@ -237,6 +248,8 @@
 │   │   │   ├── consigneEvenementSimulationNis2TermineeDansJournal.ts
 │   │   │   ├── consigneEvenementTestRealiseDansJournal.ts
 │   │   │   ├── consigneEvenementUtilisateurConnecteDansJournal.ts
+│   │   │   ├── consigneParcoursChangeDansJournal.ts
+│   │   │   ├── consigneParcoursRejointDansJournal.ts
 │   │   │   ├── creeContactBrevo.ts
 │   │   │   ├── envoieEmailCreationCompte.ts
 │   │   │   ├── evenements
@@ -247,12 +260,15 @@
 │   │   │   │   ├── mesureConsultee.ts
 │   │   │   │   ├── mesurePriseEnCompte.ts
 │   │   │   │   ├── moduleTermine.ts
+│   │   │   │   ├── parcoursChange.ts
+│   │   │   │   ├── parcoursRejoint.ts
 │   │   │   │   ├── proprieteTestRevendiquee.ts
 │   │   │   │   ├── retourExperienceDonne.ts
 │   │   │   │   ├── simulationNis2Terminee.ts
 │   │   │   │   ├── testRealise.ts
 │   │   │   │   └── utilisateurConnecte.ts
-│   │   │   └── miseAJourFavorisUtilisateur.ts
+│   │   │   ├── miseAJourFavorisUtilisateur.ts
+│   │   │   └── notifieCommentaireAvisMesureDonneDansMessagerie.ts
 │   │   ├── entrepotModulePostgres.ts
 │   │   ├── express.d.ts
 │   │   ├── infra
@@ -382,6 +398,7 @@
 │   │   │   │       │   └── RegleTypeDeStructure.ts
 │   │   │   │       └── specifications-completes.csv
 │   │   │   ├── niveauDeSatisfaction.ts
+│   │   │   ├── parcours.ts
 │   │   │   ├── referentielDepartements.ts
 │   │   │   ├── referentielDomainesDeSpecialite.ts
 │   │   │   ├── referentielRegions.ts
@@ -425,7 +442,6 @@
 │   │   │   │   ├── ressourceMesure.spec.ts
 │   │   │   │   ├── ressourceMesureCsv.spec.ts
 │   │   │   │   ├── ressourceModule.spec.ts
-│   │   │   │   ├── ressourceParcours.spec.ts
 │   │   │   │   ├── ressourceParcoursComplet.spec.ts
 │   │   │   │   ├── ressourcePriseEnCompte.spec.ts
 │   │   │   │   └── ressourceRecompensesCyberDepart
@@ -485,8 +501,8 @@
 │   │   ├── bus
 │   │   │   ├── busEvenements.spec.ts
 │   │   │   ├── busPourLesTests.ts
+│   │   │   ├── consigneAvisMesureDansJournal.spec.ts
 │   │   │   ├── consigneBadgeCyberdepartDebloqueDansJournal.spec.ts
-│   │   │   ├── consigneEvenementAvisMesureDansJournal.spec.ts
 │   │   │   ├── consigneEvenementAvisUtilisateurDonneDansJournal.spec.ts
 │   │   │   ├── consigneEvenementCompteCreeDansJournal.spec.ts
 │   │   │   ├── consigneEvenementMAJFavorisUtilisateurDansJournal.spec.ts
@@ -498,8 +514,11 @@
 │   │   │   ├── consigneEvenementSimulationNis2TermineeDansJournal.spec.ts
 │   │   │   ├── consigneEvenementTestRealiseDansJournal.spec.ts
 │   │   │   ├── consigneEvenementUtilisateurConnecteDansJournal.spec.ts
+│   │   │   ├── consigneParcoursChangeDansJournal.spec.ts
+│   │   │   ├── consigneParcoursRejointDansJournal.spec.ts
 │   │   │   ├── creeContactBrevo.spec.ts
-│   │   │   └── envoieEmailCreationCompte.spec.ts
+│   │   │   ├── envoieEmailCreationCompte.spec.ts
+│   │   │   └── notifieCommentaireAvisMesureDonneDansMessagerie.spec.ts
 │   │   ├── infra
 │   │   │   ├── EntrepotGristGenerique.ts
 │   │   │   ├── RechercheEntrepriseAvecCache.spec.ts
@@ -692,9 +711,9 @@
 │   │   ├── accueil.html
 │   │   ├── defaut.html
 │   │   ├── guide.html
-│   │   ├── maintenance.html
 │   │   ├── page-statique.html
 │   │   ├── parcours.html
+│   │   ├── sans-menu.html
 │   │   ├── service.html
 │   │   └── test-maturite.html
 │   ├── _plugins
@@ -778,13 +797,29 @@
 │   │   │   ├── icone-fleche-gauche.svg
 │   │   │   └── icone-recompense.svg
 │   │   ├── images
+│   │   │   ├── accueil
+│   │   │   │   └── animation
+│   │   │   │       ├── heros
+│   │   │   │       │   ├── association-avatar.avif
+│   │   │   │       │   ├── association.avif
+│   │   │   │       │   ├── dpo-avatar.avif
+│   │   │   │       │   ├── dpo.avif
+│   │   │   │       │   ├── dsi-avatar.avif
+│   │   │   │       │   ├── dsi.avif
+│   │   │   │       │   ├── rssi-avatar.avif
+│   │   │   │       │   └── rssi.avif
+│   │   │   │       └── proteger-organisation
+│   │   │   │           ├── bon-reflexe.avif
+│   │   │   │           ├── etre-pret.avif
+│   │   │   │           └── risque-prioritaire.avif
 │   │   │   ├── apercu-faq-nis2-dans-laptop.avif
+│   │   │   ├── badge-nis2.svg
 │   │   │   ├── coche-jaune-sur-rond-noir.svg
 │   │   │   ├── coche-ronde-active-nouvelle-da.svg
 │   │   │   ├── coche-ronde-active.svg
 │   │   │   ├── coche-ronde-inactive.svg
 │   │   │   ├── coche-rouge-dans-cercle-bleu.svg
-│   │   │   ├── composition-bizdev-floriane-et-pierre.png
+│   │   │   ├── composition-bizdev-floriane-et-pierre.avif
 │   │   │   ├── composition-guides-et-ressources.png
 │   │   │   ├── contacts-resultat-vide-nouvelle-da.svg
 │   │   │   ├── contacts-resultat-vide.svg
@@ -814,9 +849,11 @@
 │   │   │   ├── homme-cherchant-avec-loupe-nouvelle-da.svg
 │   │   │   ├── homme-cherchant-avec-loupe.svg
 │   │   │   ├── homme-regardant-webinaire.avif
+│   │   │   ├── homme-remplissant-ecran-login-nouvelle-da.svg
 │   │   │   ├── homme-remplissant-ecran-login.svg
-│   │   │   ├── icone-*.svg  (32 files)
+│   │   │   ├── icone-*.svg  (33 files)
 │   │   │   ├── illustration-*.svg  (20 files)
+│   │   │   ├── illustration-connexion-nouvelle-da.avif
 │   │   │   ├── illustration-proteger-organisation.png
 │   │   │   ├── illustrations-services
 │   │   │   │   ├── ads
@@ -912,6 +949,7 @@
 │   │   │   │   └── visa-secu
 │   │   │   │       └── visa-secu.avif
 │   │   │   ├── image-generique.avif
+│   │   │   ├── index-touchant-ecran-demandant-empreinte-digitale-nouvelle-da.svg
 │   │   │   ├── index-touchant-ecran-demandant-empreinte-digitale.svg
 │   │   │   ├── jumelles-avec-bulle-fond-gris.svg
 │   │   │   ├── la-directive-NIS2.svg
@@ -932,7 +970,6 @@
 │   │   │   ├── maintenance.svg
 │   │   │   ├── marelle-avec-bulle-fond-gris.svg
 │   │   │   ├── marianne-dark.svg
-│   │   │   ├── mario-dsi-et-femme-qui-utilisent-mss.png
 │   │   │   ├── motif-fond-macaron.svg
 │   │   │   ├── motif-fond-opacite-30.avif
 │   │   │   ├── motif-fond-service-opacite-16.avif
@@ -950,7 +987,6 @@
 │   │   │   │   ├── illustration-diagnostic.png
 │   │   │   │   ├── illustration-hero-parcours-complet.png
 │   │   │   │   ├── illustration-hero-parcours-cyberdepart.png
-│   │   │   │   ├── illustration-hero-parcours-securisation.png
 │   │   │   │   ├── illustration-parcours-basique-badge.svg
 │   │   │   │   ├── illustration-parcours-basique-comment.svg
 │   │   │   │   ├── illustration-parcours-basique-mots-de-passe.svg
@@ -981,6 +1017,7 @@
 │   │   │   ├── personne-avec-laptop-entoure-de-diagrammes.svg
 │   │   │   ├── personne-avec-micro-consultant-sites-cyber.svg
 │   │   │   ├── personne-qui-cogite.svg
+│   │   │   ├── personne-reflechissant-devant-un-ecran-nouvelle-da.svg
 │   │   │   ├── personne-reflechissant-devant-un-ecran.svg
 │   │   │   ├── photo-livret-nis2.avif
 │   │   │   ├── pile-de-pieces.svg
@@ -1042,7 +1079,6 @@
 │   │       ├── fonts.scss
 │   │       ├── grille.scss
 │   │       ├── maintenance.scss
-│   │       ├── niveaux-maturite-nouvelle-da.scss
 │   │       ├── niveaux-maturite.scss
 │   │       ├── page-statique.scss
 │   │       ├── parcours.scss
@@ -1050,7 +1086,6 @@
 │   │       ├── responsive.scss
 │   │       ├── service.scss
 │   │       ├── site.scss
-│   │       ├── test-maturite-nouvelle-da.scss
 │   │       └── test-maturite.scss
 │   ├── associations.html
 │   ├── catalogue.html
@@ -1085,7 +1120,22 @@
 │   │   │   │   ├── AbonnementInfolettre.svelte
 │   │   │   │   └── ConfirmationAbonnementInfolettre.svelte
 │   │   │   ├── accueil
-│   │   │   │   └── HerosAccueil.svelte
+│   │   │   │   ├── HerosAccueil.svelte
+│   │   │   │   ├── ProtegerOrganisation.svelte
+│   │   │   │   └── animation
+│   │   │   │       ├── IllustrationAnimee.svelte
+│   │   │   │       ├── heros
+│   │   │   │       │   ├── Association.svelte
+│   │   │   │       │   ├── DPO.svelte
+│   │   │   │       │   ├── DSI.svelte
+│   │   │   │       │   ├── IllustrationHeros.svelte
+│   │   │   │       │   └── RSSI.svelte
+│   │   │   │       └── proteger-organisation
+│   │   │   │           ├── BonReflexe.svelte
+│   │   │   │           ├── Decor.svelte
+│   │   │   │           ├── EtrePret.svelte
+│   │   │   │           ├── IllustrationProtegerOrganisation.svelte
+│   │   │   │           └── RisquePrioritaire.svelte
 │   │   │   ├── avis-utilisateur
 │   │   │   │   ├── AvisUtilisateur.svelte
 │   │   │   │   └── ControleAvisUtilisateur.ts
@@ -1242,6 +1292,7 @@
 │   │   │   ├── main-parcours-cyberdepart.ts
 │   │   │   ├── main-parcours-securisation-complet.ts
 │   │   │   ├── main-parcours-securisation.ts
+│   │   │   ├── main-proteger-organisation.ts
 │   │   │   ├── main-resultats-session-groupe.ts
 │   │   │   ├── main-sante.ts
 │   │   │   ├── main-sentry.ts
@@ -1339,7 +1390,8 @@
 │   │   │   │   ├── NiveauxMaturite.donnees.ts
 │   │   │   │   ├── NiveauxMaturite.svelte
 │   │   │   │   ├── NiveauxMaturite.type.ts
-│   │   │   │   └── SelectNiveauMaturite.svelte
+│   │   │   │   ├── SelectNiveauMaturite.svelte
+│   │   │   │   └── calculeIdNiveau.ts
 │   │   │   ├── page-crisp
 │   │   │   │   └── PageCrisp.svelte
 │   │   │   ├── parcours
@@ -1350,6 +1402,8 @@
 │   │   │   │   ├── BasculeParcoursComplet.svelte
 │   │   │   │   ├── BoutonPartageBadgeCyberdepart.svelte
 │   │   │   │   ├── CarteMesure.svelte
+│   │   │   │   ├── EncartPromotionParcoursBasique.svelte
+│   │   │   │   ├── EncartPromotionParcoursComplet.svelte
 │   │   │   │   ├── GrilleCartesMesures.svelte
 │   │   │   │   ├── InterlocuteursParcoursSecurisation.svelte
 │   │   │   │   ├── LandingParcoursCyberdepart.svelte
@@ -1360,6 +1414,7 @@
 │   │   │   │   ├── ModuleCyberdepart.svelte
 │   │   │   │   ├── PriseEnCompteMesure.svelte
 │   │   │   │   ├── Progression.svelte
+│   │   │   │   ├── TagProgrammeGratuit.svelte
 │   │   │   │   ├── avisUtilisateur.store.ts
 │   │   │   │   ├── mesure
 │   │   │   │   │   ├── Mesure.svelte
@@ -1441,6 +1496,14 @@
 │   │   │   │   ├── TestMaturite.type.ts
 │   │   │   │   ├── TuilesMaturite.svelte
 │   │   │   │   ├── TuilesMaturiteSessionGroupe.svelte
+│   │   │   │   ├── animation
+│   │   │   │   │   ├── CarrouselMaturite.svelte
+│   │   │   │   │   ├── Confirme.svelte
+│   │   │   │   │   ├── Decor.svelte
+│   │   │   │   │   ├── Emergent.svelte
+│   │   │   │   │   ├── Insuffisant.svelte
+│   │   │   │   │   ├── Intermediaire.svelte
+│   │   │   │   │   └── Optimal.svelte
 │   │   │   │   ├── resultatTest.ts
 │   │   │   │   └── stores
 │   │   │   │       └── questionnaire.store.ts
@@ -1497,7 +1560,8 @@
 │   │   │   │   ├── arrondis.ts
 │   │   │   │   ├── composantsAutorises.plugin.ts
 │   │   │   │   ├── erreurApi.ts
-│   │   │   │   └── injecteNonce.plugin.ts
+│   │   │   │   ├── injecteNonce.plugin.ts
+│   │   │   │   └── mouvementReduit.svelte.ts
 │   │   │   └── vite-env.d.ts
 │   │   ├── svelte.config.js
 │   │   ├── test
@@ -1543,6 +1607,8 @@
 │   │   │   │   └── stores
 │   │   │   │       ├── questionnaire.store.spec.ts
 │   │   │   │       └── questionnaireAvecUndo.store.spec.ts
+│   │   │   ├── niveaux-maturite
+│   │   │   │   └── calculeIdNiveau.spec.ts
 │   │   │   ├── test-maturite
 │   │   │   │   ├── repartitions.spec.ts
 │   │   │   │   └── stores
@@ -1583,7 +1649,6 @@
 │   │   ├── scroll.js
 │   │   └── service.js
 │   ├── securite.html
-│   ├── services-anssi.html
 │   ├── session-groupe.html
 │   ├── simulateur-nis2.html
 │   ├── statistiques.html
@@ -1639,4 +1704,4 @@
 ├── scripts
 │   └── get-node-version.sh
 └── shell.nix
-231 directories, 1460 files
+244 directories, 1513 files

@@ -5,11 +5,12 @@
   "main": "serveur.ts",
   "packageManager": "pnpm@10.24.0",
   "scripts": {
+    "preadmin": "pnpm --filter @anssi-portail/axios build && pnpm --filter @anssi-portail/back build",
     "admin": "node -e \"const admin = new (require('./back/dist/src/admin/consoleAdministration.js').ConsoleAdministration)()\" -i",
-    "admin:dev": "pnpm -F @anssi-portail/back build && node --env-file .env -e \"const admin = new (require('./back/dist/src/admin/consoleAdministration.js').ConsoleAdministration)()\" -i",
+    "admin:dev": "node --conditions=anssi-portail:source --import tsx --env-file .env -e \"const admin = new (require('./back/src/admin/consoleAdministration.ts').ConsoleAdministration)()\" -i",
     "bootstrap": "(bundler check --gemfile=front/Gemfile || bundler install --gemfile=front/Gemfile) && pnpm install --frozen-lockfile",
     "build": "pnpm --reporter=append-only -r build",
-    "dev": "concurrently -n \"SERVEUR,SVELTE,JEKYLL,BDD,MIGRE\" --prefix-colors \"cyan,green,magenta,blue,yellow\" \"SVELTE_DEV_LOCAL_AVEC_HOT_RELOAD=true node --watch --import tsx --env-file .env ./back/src/serveur.ts\" \"pnpm --filter @anssi-portail/svelte watch\" \"sleep 5 && SVELTE_DEV_LOCAL_AVEC_HOT_RELOAD=true ${GEM_HOME}/bin/jekyll build -s ./front -d ./front/_site -w\" \"docker compose up db\" \"sleep 3 && pnpm migre-bdd\"",
+    "dev": "concurrently -n \"SERVEUR,SVELTE,JEKYLL,BDD,MIGRE\" --prefix-colors \"cyan,green,magenta,blue,yellow\" \"SVELTE_DEV_LOCAL_AVEC_HOT_RELOAD=true node --conditions=anssi-portail:source --watch --import tsx --env-file .env ./back/src/serveur.ts\" \"pnpm --filter @anssi-portail/svelte watch\" \"sleep 5 && SVELTE_DEV_LOCAL_AVEC_HOT_RELOAD=true ${GEM_HOME}/bin/jekyll build -s ./front -d ./front/_site -w\" \"docker compose up db\" \"sleep 3 && pnpm migre-bdd\"",
     "lint": "pnpm -r lint",
     "format": "pnpm --reporter=append-only -r format",
     "test": "pnpm --reporter=append-only -r test",
@@ -17,7 +18,7 @@
     "preinstall": "npx only-allow@1.2.2 pnpm",
     "postinstall": "pnpm -F regles-eslint build",
     "start": "node back/dist/src/serveur.js",
-    "prestart": "pnpm --filter @anssi-portail/back prestart"
+    "prestart": "pnpm --filter @anssi-portail/axios build && pnpm --filter @anssi-portail/back prestart"
   },
   "repository": {
     "type": "git",
@@ -36,14 +37,14 @@
     "vitest": "^4.1.7"
   },
   "runtimeDependencies": {
-    "@lab-anssi/ui-kit": "1.58.1"
+    "@lab-anssi/ui-kit": "1.59.0"
   },
   "pnpm": {
     "overrides": {
       "@babel/core@<=7.29.0": ">=7.29.6",
       "ajv@<6.14.0": "6.15.0",
       "axios@>=1.0.0 <1.16.0": ">=1.16.0",
-      "brace-expansion@<1.1.13": "5.0.7",
+      "brace-expansion@<1.1.13": "5.0.9",
       "brace-expansion@>=4.0.0 <5.0.6": ">=5.0.6",
       "devalue@<=5.8.0": ">=5.8.1",
       "esbuild@>=0.27.3 <0.28.1": ">=0.28.1",
