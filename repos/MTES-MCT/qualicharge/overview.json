@@ -1,14 +1,15 @@
 {
   "url": "https://github.com/MTES-MCT/qualicharge",
   "name": "qualicharge",
-  "description": "Ce projet vise à améliorer la qualité du service de recharge pour les véhicules électriques en analysant les données de supervision. Il propose une API, un tableau de bord de visualisation et des pipelines de données pour le suivi des indicateurs de performance.",
+  "description": "Ce projet vise à améliorer la qualité globale du service de recharge pour les véhicules électriques en analysant les données de supervision. Il propose une API, un tableau de bord et des outils de visualisation de données pour les opérateurs.",
   "language": "Python",
   "features": [
     "API & Intégrations",
     "Visualisation de données & Cartographie",
     "Statistiques & Rapports",
-    "Administration & Backoffice",
-    "Suivi & Traçabilité"
+    "Sécurité & Conformité",
+    "Données & Schémas",
+    "Administration & Backoffice"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -19,33 +20,37 @@
     "Keycloak",
     "Prefect",
     "Minio",
+    "Locust",
+    "Terraform",
     "Django",
     "FastAPI",
-    "Locust",
-    "Terraform"
+    "uv"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
-    "Django",
     "Docker & Conteneurs",
+    "Django",
     "Authentification (composant)",
     "Reporting & BI",
-    "Pipelines de données",
-    "Stockage objet"
+    "Ansible & IaC",
+    "Stockage objet",
+    "Tests"
   ],
   "auth": {
     "methods": [
-      "oauth2",
       "jwt",
-      "session",
-      "sso"
+      "sso",
+      "session"
+    ],
+    "providers": [
+      "Keycloak"
     ]
   },
   "tests": [
-    "Pytest",
-    "Locust (tests de charge)"
+    "Locust",
+    "pytest"
   ],
   "workflows": [
     "GitHub Actions"
@@ -55,12 +60,13 @@
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
-    "Environnement & Énergie",
     "Données & Open Data",
+    "Écosystème beta.gouv / État",
     "Python",
+    "Bases de données SQL",
     "Docker & Conteneurs",
-    "Reporting & BI",
     "CI/CD & GitHub Actions",
-    "Bases de données SQL"
+    "Environnement & Énergie",
+    "Reporting & BI"
   ]
 }
