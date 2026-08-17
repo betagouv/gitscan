@@ -1,14 +1,30 @@
-## Changelog : fonds-vert-espace-laureat (30 derniers jours, au 11 juin 2026)
+## Changelog : fonds-vert-espace-laureat (30 derniers jours, au 14 août 2026)
 
 ### Résumé
-Cette mise à jour apporte des améliorations à l'affichage des informations sur les projets, notamment l'ajout d'une section dédiée aux anomalies de démonstration. Des mises à jour des URLs vers les services de la Démarche Numérique ont également été effectuées.
+Ce mois a été marqué par une refonte majeure du module de gestion des métriques. L'accent a été mis sur la capacité des utilisateurs à identifier, corriger et valider les anomalies de données de manière intuitive. L'interface a été considérablement simplifiée et harmonisée avec le design system (DSFR) pour offrir une expérience de suivi plus fluide et professionnelle.
 
 ### Évolutions fonctionnelles
-- Ajout d'une section "anomalies de démonstration" pour les projets, permettant de visualiser plus facilement les points à surveiller. [#f619aab](https://github.com/MTES-MCT/fonds-vert-espace-laureat/commit/f619aab)
+
+**Gestion des métriques et des anomalies**
+- **Correction simplifiée** : Possibilité de corriger directement les valeurs depuis les cartes de métriques et via un nouvel éditeur de listes structuré.
+- **Suivi des anomalies** : Les anomalies sont désormais propagées directement sur les lignes de métriques et peuvent être filtrées via une grille dédiée pour faciliter leur traitement.
+- **Persistance des données** : Les corrections effectuées sont désormais enregistrées en base de données, garantissant la fiabilité des révisions.
+- **Importation** : Finalisation du processus d'importation initiale des données du Fonds Vert.
+- **Mode Démo** : Ajout de fonctionnalités de réinitialisation des données de base pour faciliter les tests et les démonstrations.
+
+**Interface Utilisateur (UI/UX)**
+- **Refonte visuelle** : Amélioration de la lisibilité des cartes thématiques (meilleur contraste, icônes standardisées, regroupement des valeurs et des unités).
+- **Notifications** : Mise en conformité des messages de succès (toasts) avec les standards du DSFR.
+- **Ergonomie des formulaires** : Optimisation des modales de correction et de l'espacement des tableaux pour une navigation plus claire.
 
 ### Évolutions techniques
-- Mise à jour des URLs pointant vers les services de la Démarche Numérique. [#e9c7bb7](https://github.com/MTES-MCT/fonds-vert-espace-laureat/commit/e9c7bb7) et [#4275a4a](https://github.com/MTES-MCT/fonds-vert-espace-laureat/commit/4275a4a)
-- Refactorisation du code lié aux métriques pour partager le contenu de la valeur de la métrique. [#188f6bb](https://github.com/MTES-MCT/fonds-vert-espace-laureat/commit/188f6bb)
 
-### Autres changements
-- Mise à jour de la dépendance `shell-quote`. [#77e3fee](https://github.com/MTES-MCT/fonds-vert-espace-laureat/commit/77e3fee) et [#0d1dc49](https://github.com/MTES-MCT/fonds-vert-espace-laureat/commit/0d1dc49)
+**Architecture et données**
+- **Modélisation des données** : Séparation entre les données brutes et les données de confiance ("trusted shapes") pour une meilleure intégrité.
+- **Gestion des révisions** : Implémentation d'un système de révisions atomiques et typées pour assurer la traçabilité des modifications.
+- **Optimisation du pipeline** : Refactorisation du pipeline d'importation local et optimisation du chargement des cibles de correction.
+
+**Infrastructure et Qualité**
+- **CI/CD** : Mise à jour de la chaîne d'outils npm pour les tests Playwright.
+- **Docker** : Clarification de la gestion des ports dans la configuration Docker.
+- **Tests** : Renforcement de la couverture de tests, notamment sur la persistance des corrections et les comportements de traitement des métriques.

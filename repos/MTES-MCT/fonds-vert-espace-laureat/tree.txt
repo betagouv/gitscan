@@ -1,13 +1,29 @@
 .
 ├── .env.example
 ├── .env.test
+├── .env.test.example
 ├── .github
 │   └── workflows
 │       └── playwright.yml
 ├── .gitignore
+├── .node-version
 ├── .npmrc
+├── .nvmrc
 ├── LICENSE
+├── Procfile
 ├── README.md
+├── docker
+│   └── initdb
+│       └── 01-create-test-db.sql
+├── docker-compose.yml
+├── drizzle
+│   ├── 20260611085914_eminent_ultron
+│   │   ├── migration.sql
+│   │   └── snapshot.json
+│   └── 20260729150629_swift_captain_midlands
+│       ├── migration.sql
+│       └── snapshot.json
+├── drizzle.config.ts
 ├── eslint.config.mjs
 ├── graphql.config.yml
 ├── next.config.ts
@@ -15,18 +31,35 @@
 ├── package.json
 ├── playwright.config.ts
 ├── postcss.config.mjs
+├── scripts
+│   ├── disable-next-test-client-request-interceptor.cjs
+│   ├── lib
+│   │   └── dev-db.mjs
+│   ├── migrate-production.mjs
+│   └── setup-dev-db.mjs
 ├── src
 │   ├── app
 │   │   ├── api
-│   │   │   └── auth
-│   │   │       └── proconnect
-│   │   │           ├── login
-│   │   │           │   └── route.ts
-│   │   │           ├── login-callback
-│   │   │           │   └── route.ts
-│   │   │           ├── logout
-│   │   │           │   └── route.ts
-│   │   │           └── logout-callback
+│   │   │   ├── auth
+│   │   │   │   └── proconnect
+│   │   │   │       ├── login
+│   │   │   │       │   └── route.ts
+│   │   │   │       ├── login-callback
+│   │   │   │       │   └── route.ts
+│   │   │   │       ├── logout
+│   │   │   │       │   └── route.ts
+│   │   │   │       └── logout-callback
+│   │   │   │           └── route.ts
+│   │   │   └── projets
+│   │   │       ├── [dossierNumber]
+│   │   │       │   └── metrics
+│   │   │       │       └── [metricCode]
+│   │   │       │           └── route.ts
+│   │   │       └── demo
+│   │   │           ├── metrics
+│   │   │           │   └── [metricCode]
+│   │   │           │       └── route.ts
+│   │   │           └── reset
 │   │   │               └── route.ts
 │   │   ├── connexion
 │   │   │   ├── echec
@@ -84,9 +117,12 @@
 │   │       │   ├── getDossier.ts
 │   │       │   ├── getPageTitle.ts
 │   │       │   ├── getParams.ts
-│   │       │   └── impact
-│   │       │       └── CompletionSidebar.tsx
+│   │       │   ├── impact
+│   │       │   │   └── CompletionSidebar.tsx
+│   │       │   └── startDossierMetricLoading.ts
 │   │       ├── demo
+│   │       │   ├── DemoAnomaliesSection.tsx
+│   │       │   ├── DemoResetButton.tsx
 │   │       │   └── page.tsx
 │   │       ├── loading.tsx
 │   │       └── page.tsx
@@ -103,18 +139,30 @@
 │   │   │   ├── Header.tsx
 │   │   │   └── Navigation.tsx
 │   │   ├── metrics
-│   │   │   ├── ArrowedValues.tsx
+│   │   │   ├── MetricAnomalyContext.tsx
+│   │   │   ├── MetricAnomalyMessage.tsx
+│   │   │   ├── MetricCorrectionEditor.tsx
 │   │   │   ├── MetricField.tsx
+│   │   │   ├── MetricRevisionContext.tsx
 │   │   │   └── MetricValue.tsx
 │   │   ├── money-field
 │   │   │   └── MoneyField.tsx
-│   │   └── non-disponible
-│   │       └── NonDisponible.tsx
+│   │   ├── non-disponible
+│   │   │   └── NonDisponible.tsx
+│   │   └── toast
+│   │       └── toast.tsx
+│   ├── db
+│   │   ├── demoMetrics.ts
+│   │   ├── dossierMetrics.ts
+│   │   ├── index.ts
+│   │   └── schema.ts
 │   ├── proxy.ts
 │   ├── services
 │   │   ├── ds
 │   │   │   ├── graphql
 │   │   │   │   ├── getDemarcheDossiersQuery
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── getDossierAccessQuery
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── getDossierQuery
 │   │   │   │   │   └── index.ts
@@ -166,8 +214,11 @@
 │       ├── format
 │       │   └── index.ts
 │       ├── metrics
+│       │   ├── guards.ts
 │       │   ├── process.ts
-│       │   └── themes.ts
+│       │   ├── revisions.ts
+│       │   ├── themes.ts
+│       │   └── values.ts
 │       ├── projets
 │       │   ├── codeCommuneToCodeDepartement.ts
 │       │   ├── import.ts
@@ -184,6 +235,7 @@
 │           └── index.ts
 ├── tests
 │   ├── demo.spec.ts
+│   ├── dossier-metrics.spec.ts
 │   ├── dossier.spec.ts
 │   ├── dossiers-liste.spec.ts
 │   ├── fixtures
@@ -192,7 +244,15 @@
 │   │   ├── fondsvert.ts
 │   │   └── grist.ts
 │   ├── impact-prefill.spec.ts
-│   └── setup
-│       └── auth.ts
+│   ├── metric-correction.spec.ts
+│   ├── metric-revisions.spec.ts
+│   ├── metrics-process.spec.ts
+│   ├── next-test-proxy.unit.test.mjs
+│   ├── playwright-global-setup.mjs
+│   ├── setup
+│   │   ├── auth.ts
+│   │   ├── db.ts
+│   │   └── load-test-env.ts
+│   └── setup-test-db.mjs
 └── tsconfig.json
-71 directories, 126 files
+89 directories, 168 files
