@@ -1,32 +1,21 @@
-## Changelog : conversations (30 derniers jours, au 06/08/2026)
+## Changelog : conversations (30 derniers jours, au 13 août 2026)
 
 ### Résumé
-Ce mois-ci, Conversations a franchi une étape importante dans l'amélioration de l'expérience utilisateur grâce à l'introduction de la synthèse automatique des messages et d'une meilleure gestion des documents. Le projet a également renforcé sa sécurité et ses performances grâce à l'adoption de traitements asynchrones et de nouvelles protections contre les fichiers malveillants.
+Ce mois-ci, Conversations a franchi une étape importante avec une refonte technique de son interface pour offrir une navigation plus fluide et réactive. L'intelligence artificielle est devenue plus performante grâce à l'introduction de la synthèse automatique des échanges et à des instructions plus précises. L'expérience utilisateur a également été enrichie par de nouveaux indicateurs visuels, comme une barre de progression, et une gestion plus intuitive des documents.
 
 ### Évolutions fonctionnelles
-- **Synthèse de conversation** : Ajout de la capacité de résumer les messages, accompagnée d'une barre de progression pour le suivi de l'opération.
-- **Gestion des documents** : 
-    - Nouvelle fonctionnalité "Modifier dans Docs" pour faciliter l'édition des messages exportés.
-    - Amélioration de l'export de documents avec des titres localisés et une meilleure gestion des extensions Markdown.
-- **Expérience utilisateur (UX)** :
-    - Amélioration de la fluidité visuelle lors de l'affichage de la première réponse de l'IA.
-    - Correction de l'affichage des titres de conversation dans le panneau latéral réduit.
-    - Amélioration du widget d'impact CO2 (corrections et ajout d'infobulles sur les messages de l'assistant).
+- **Intelligence Artificielle** : introduction de la synthèse automatique des messages et optimisation des instructions (prompts) pour l'assistant DINUM afin d'améliorer la pertinence des réponses.
+- **Interface & Expérience Utilisateur** : ajout d'une barre de progression lors des traitements, correction de l'affichage de l'icône "Docs" et amélioration du widget d'impact CO2.
+- **Gestion documentaire** : optimisation de l'exportation des documents (gestion des titres et des extensions) et amélioration de la fluidité visuelle lors de la génération des premières réponses de l'IA.
+- **Administration** : accélération et amélioration de l'affichage de la liste des conversations pour les administrateurs.
+- **Paramètres** : déplacement des réglages d'analyse (analytics) vers la section générale pour une meilleure organisation.
 
 ### Évolutions techniques
-- **Performance et Asynchronisme** :
-    - Passage en mode asynchrone pour la synthèse des messages et le traitement des fichiers de conversation.
-    - Accélération de l'affichage de la liste des conversations dans l'interface d'administration.
-- **Sécurité** :
-    - Renforcement de la protection lors du parsing de fichiers (protection contre les bombes de décompression et les PDF de taille excessive).
-- **Architecture et Refactoring** :
-    - Migration du parsing PDF vers l'API Albert OCR et suppression des anciens modules de recherche obsolètes.
-    - Refactorisation de composants frontend (notamment la bannière de saisie) pour une meilleure réutilisabilité.
-    - Optimisation de la gestion de l'historique pour éviter les synthèses redondantes.
-- **Corrections techniques** :
-    - Alignement des requêtes RAG avec les contrats d'API actuels.
-    - Optimisation de l'inscription des utilisateurs à la liste de suivi Brevo.
+- **Architecture & Frontend** : migration majeure de l'interface de Next.js vers Vite et React Router pour gagner en performance et en maintenabilité.
+- **Intelligence Artificielle** : migration vers `pydantic-ai 2.x`, mise en place de la synthèse de messages en mode asynchrone et optimisation de la gestion de l'historique des messages.
+- **Sécurité & Traitement de fichiers** : renforcement de la sécurité contre les fichiers PDF malveillants (bombes de décompression, fichiers trop volumineux) et migration de l'analyse de documents vers l'API Albert OCR.
+- **Optimisation & Nettoyage** : suppression de plusieurs modules et outils de recherche web inutilisés (Tavily, Find RAG, Albert web search) et remplacement de la bibliothèque `requests` par `httpx` pour une gestion plus moderne des requêtes HTTP.
+- **Backend** : optimisation de l'inscription des utilisateurs sur la liste de suivi Brevo.
 
 ### Autres changements
-- **Internationalisation** : Mise à jour des chaînes de caractères traduites.
-- **Tests** : Nettoyage et simplification de la configuration de l'environnement de tests et des fixtures.
+- Mise à jour des traductions (i18n).

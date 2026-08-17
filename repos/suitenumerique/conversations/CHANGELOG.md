@@ -6,7 +6,28 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [unreleased]
+
+### Added
+
+- 💄(settings) move analytics settings to general
+
+### Changed
+
+- ⬆️(back) migrate to pydantic-ai 2.x
+- 🏗️(front) migrate the frontend from Next.js to Vite and React Router
+- 🏗️(front) rename frontend build var from the NEXT_PUBLIC_ prefix to VITE_
+- 💬(back) rewrite the default agent instructions and tool descriptions
+- 💄(front) correct icon Docs button
+- ♻️(back) use httpx as the single HTTP client for outbound calls
+
+### Removed
+
+- 🔥(back) remove the unused Albert web search manager and its tool
+- 🔥(back) remove the unused RAG_WEB_SEARCH_PROMPT_UPDATE setting
+- 🔥(back) remove the unused Tavily web search tool
+
+## [0.0.22] - 2026-08-10
 
 ### Added
 
@@ -23,7 +44,7 @@ and this project adheres to
 ### Removed
 
 - 🔥(back) remove the unused Albert RAG document search module
- 
+
 ## [0.0.21] - 2026-07-28
 
 ### Changed
@@ -423,7 +444,9 @@ and this project adheres to
 - ✨(onboarding) add activation code logic for launch #62
 - 💄(chat) add code highlighting for LLM responses #67
 
-[unreleased]: https://github.com/suitenumerique/conversations/compare/v0.0.21...main
+[unreleased]: https://github.com/suitenumerique/conversations/compare/v0.0.22...main
+
+[0.0.22]: https://github.com/suitenumerique/conversations/compare/v0.0.22
 
 [0.0.21]: https://github.com/suitenumerique/conversations/compare/v0.0.21
 
