@@ -46,6 +46,7 @@
 ├── docker-compose.dev.yml
 ├── docs
 │   ├── auto-validation.md
+│   ├── completed-optin.md
 │   ├── export-db.sh
 │   ├── infrastructure_diagram.jpg
 │   └── sql-helper
@@ -192,6 +193,7 @@
 │           │                   ├── config
 │           │                   │   └── WebhookFilterTest.java
 │           │                   ├── property
+│           │                   │   ├── ApartmentSharingModelMapperTest.java
 │           │                   │   ├── OwnerPropertyMapperTest.java
 │           │                   │   ├── PropertyApartmentSharingServiceImplTest.java
 │           │                   │   ├── PropertyControllerTest.java
@@ -309,6 +311,7 @@
 │       │   │                   │   ├── PasswordForm.java
 │       │   │                   │   ├── ShareFileByLinkForm.java
 │       │   │                   │   ├── ShareFileByMailForm.java
+│       │   │                   │   ├── ValidationRequestForm.java
 │       │   │                   │   └── interfaces
 │       │   │                   │       └── FormWithTenantId.java
 │       │   │                   ├── mapper
@@ -1630,6 +1633,9 @@
 │       │   │               │   ├── ApplicationFullMapper.java
 │       │   │               │   ├── ApplicationLightMapper.java
 │       │   │               │   ├── MapDocumentCategories.java
+│       │   │               │   ├── MasksCompletedStatusForOwner.java
+│       │   │               │   ├── MasksCompletedStatusForPartner.java
+│       │   │               │   ├── PartnerVisibleStatus.java
 │       │   │               │   ├── log
 │       │   │               │   │   └── DeletedOwnerMapper.java
 │       │   │               │   └── mail
@@ -1720,6 +1726,8 @@
 │       │   │               │   ├── AdemeApiServiceImpl.java
 │       │   │               │   ├── ApartmentSharingCommonServiceImpl.java
 │       │   │               │   ├── ApartmentSharingLinkService.java
+│       │   │               │   ├── CompletedDossierServiceImpl.java
+│       │   │               │   ├── CompletedEligibilityServiceImpl.java
 │       │   │               │   ├── ConfirmationTokenServiceImpl.java
 │       │   │               │   ├── DocumentHelperServiceImpl.java
 │       │   │               │   ├── EncryptionKeyServiceImpl.java
@@ -1750,6 +1758,8 @@
 │       │   │               │   ├── interfaces
 │       │   │               │   │   ├── AdemeApiService.java
 │       │   │               │   │   ├── ApartmentSharingCommonService.java
+│       │   │               │   │   ├── CompletedDossierService.java
+│       │   │               │   │   ├── CompletedEligibilityService.java
 │       │   │               │   │   ├── ConfirmationTokenService.java
 │       │   │               │   │   ├── DocumentHelperService.java
 │       │   │               │   │   ├── EncryptionKeyService.java
@@ -2006,7 +2016,8 @@
 │       │       │       ├── 202607070000-add-email-to-guarantor.xml
 │       │       │       ├── 202607150000-add-beneficiary-email-to-tenant.xml
 │       │       │       ├── 20260723160000-add-ready-for-auto-validation-to-tenant.xml
-│       │       │       └── 20260731140000-update-ranked-tenant-exclude-auto-validation.xml
+│       │       │       ├── 20260731140000-update-ranked-tenant-exclude-auto-validation.xml
+│       │       │       └── 20260806000000-add-completed-optin.xml
 │       │       └── linux-x86-64
 │       │           └── libzxing_jna.so
 │       └── test
@@ -2026,7 +2037,8 @@
 │           │               │   ├── TenantTest.java
 │           │               │   └── UserTest.java
 │           │               ├── mapper
-│           │               │   └── ApplicationFullMapperTest.java
+│           │               │   ├── ApplicationFullMapperTest.java
+│           │               │   └── PartnerVisibleStatusTest.java
 │           │               ├── model
 │           │               │   ├── ademe
 │           │               │   │   └── AdemeApiResultModelTest.java
@@ -2035,6 +2047,8 @@
 │           │               ├── service
 │           │               │   ├── AdemeApiServiceImplTest.java
 │           │               │   ├── ApartmentSharingLinkServiceTest.java
+│           │               │   ├── CompletedDossierServiceImplTest.java
+│           │               │   ├── CompletedEligibilityServiceImplTest.java
 │           │               │   ├── FeatureFlagServiceImplConcurrencyTest.java
 │           │               │   ├── FeatureFlagServiceImplHashTest.java
 │           │               │   ├── FeatureFlagServiceImplTest.java
@@ -2458,4 +2472,4 @@
     │   ├── CMakeLists.txt
     │   └── zxing_wrapper.cpp
     └── docker-compose.yml
-608 directories, 1956 files
+608 directories, 1970 files

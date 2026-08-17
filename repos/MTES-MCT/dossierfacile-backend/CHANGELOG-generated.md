@@ -1,15 +1,15 @@
-## Changelog : dossierfacile-backend (30 derniers jours, au 06 août 2026)
+## Changelog : dossierfacile-backend (30 derniers jours, au 14 août 2026)
 
 ### Résumé
-Les récentes mises à jour améliorent l'automatisation et la fiabilité de la plateforme. L'accent a été mis sur l'expérience utilisateur avec l'introduction de l'autovalidation et une gestion plus souple des documents fiscaux, tout en renforçant la sécurité et la qualité des données collectées via de nouvelles règles de saisie obligatoires.
+Ce mois-ci, les évolutions se sont concentrées sur l'automatisation et la fluidification du processus de validation des dossiers de location. L'introduction de l'autovalidation et de nouveaux mécanismes de choix (opt-in) permet d'améliorer l'expérience utilisateur, tandis que des mesures de sécurité renforcées ont été appliquées pour protéger les échanges de données via les webhooks.
 
 ### Évolutions fonctionnelles
 - Mise en place de l'autovalidation des dossiers [#1283](https://github.com/MTES-MCT/dossierfacile-backend/issues/1283).
-- Amélioration de la gestion documentaire : possibilité pour les utilisateurs de télécharger un avis d'imposition plus récent [#1281](https://github.com/MTES-MCT/dossierfacile-backend/issues/1281).
-- Renforcement de la collecte d'informations : l'adresse e-mail du bénéficiaire [#1277](https://github.com/MTES-MCT/dossierfacile-backend/issues/1277) et celle du co-titulaire [#1274](https://github.com/MTES-MCT/dossierfacile-backend/issues/1274) sont désormais obligatoires.
+- Introduction d'un système d'opt-in pour le processus de validation [#1293](https://github.com/MTES-MCT/dossierfacile-backend/issues/1293) [#1295](https://github.com/MTES-MCT/dossierfacile-backend/issues/1295).
+- Possibilité pour les utilisateurs de télécharger un avis d'imposition plus récent pour mettre à jour leur dossier [#1281](https://github.com/MTES-MCT/dossierfacile-backend/issues/1281).
 
 ### Évolutions techniques
-- Sécurité : correction d'une vulnérabilité potentielle liée aux webhooks propriétaires [#1290](https://github.com/MTES-MCT/dossierfacile-backend/issues/1290).
-- Architecture : migration vers la version 2 du moteur de workflow (Docia) [#1266](https://github.com/MTES-MCT/dossierfacile-backend/issues/1266).
-- Fiabilité : amélioration de l'analyse et de la gestion des erreurs provenant de l'ADEME [#1280](https://github.com/MTES-MCT/dossierfacile-backend/issues/1280).
-- Maintenance : résolution d'un problème de journalisation (logs) lors de l'utilisation du protocole SSL [#1276](https://github.com/MTES-MCT/dossierfacile-backend/issues/1276).
+- **Sécurité** : Correction d'une vulnérabilité potentielle concernant les attaques via les webhooks des propriétaires [#1290](https://github.com/MTES-MCT/dossierfacile-backend/issues/1290).
+- **Architecture** : Migration vers la version 2 du moteur de workflow pour le composant Docia [#1266](https://github.com/MTES-MCT/dossierfacile-backend/issues/1266).
+- **Gestion des erreurs** : Amélioration du parsing des erreurs génériques et inconnues lors des échanges avec l'ADEME [#1280](https://github.com/MTES-MCT/dossierfacile-backend/issues/1280).
+- **Maintenance** : Diverses corrections et optimisations du backend [#1289](https://github.com/MTES-MCT/dossierfacile-backend/issues/1289).
