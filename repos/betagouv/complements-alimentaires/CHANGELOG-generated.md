@@ -1,23 +1,22 @@
-## Changelog : complements-alimentaires (30 derniers jours, au 28 juillet 2026)
+## Changelog : complements-alimentaires (30 derniers jours, au 15 août 2026)
 
 ### Résumé
-Ce mois-ci, les mises à jour se sont principalement concentrées sur la maintenance et la sécurité du projet, avec des mises à niveau de nombreuses dépendances. Une amélioration fonctionnelle a été intégrée concernant l'approbation des visas.
+Ce mois-ci, le projet a bénéficié d'une modernisation majeure de son architecture frontend avec le passage à Vite, visant à améliorer les performances de développement et de build. Des corrections ont également été apportées pour fiabiliser l'export de fichiers Excel et le processus de création d'entreprise.
 
 ### Évolutions fonctionnelles
-- Amélioration du processus d'approbation des visas. [#2998](https://github.com/betagouv/complements-alimentaires/pull/2998)
+- Correction de l'URL de téléchargement pour les fichiers Excel [#3064](https://github.com/betagouv/complements-alimentaires/pull/3064).
+- Résolution d'un bug impactant le composant de création d'entreprise [#3063](https://github.com/betagouv/complements-alimentaires/pull/3063).
 
 ### Évolutions techniques
-- Mise à jour de Django en version 6.0.6 pour bénéficier des dernières corrections de sécurité et améliorations.
-- Mise à jour de plusieurs dépendances JavaScript (Vue, PostCSS, TailwindCSS, etc.) pour assurer la compatibilité et la sécurité du frontend.
-- Mise à jour de plusieurs dépendances Python (django-filter, django-viewflow, pikepdf, regex, etc.) pour bénéficier des dernières corrections et améliorations.
-- Mise à jour des actions GitHub pour bénéficier des dernières fonctionnalités et corrections.
+- **Migration Frontend** : Passage à une architecture basée sur Vite [#3050](https://github.com/betagouv/complements-alimentaires/pull/3050), incluant la transition vers `type:module` et la suppression d'ESLint.
+- **Optimisation API** : Centralisation des appels API via `createFetch` pour une gestion unifiée des credentials et de l'URL racine.
+- **CI/CD & Build** : 
+    - Ajout d'un workflow GitHub Actions dédié au build du frontend.
+    - Optimisation du Dockerfile (suppression de code inutile) et ajout d'un fichier `env.example`.
+- **Configuration** : Généralisation de l'utilisation des variables d'environnement pour la gestion des URLs (API et backend).
 
 ### Autres changements
-- Mise à jour de la documentation et de la configuration du projet.
-- Correction de bugs mineurs et amélioration de la qualité du code.
-- Mise à jour de virtualenv en version 21.6.1.
-- Mise à jour de body-parser en version 1.20.6 dans le frontend.
-- Mise à jour de shell-quote en version 1.10.0 dans le frontend.
-- Mise à jour de websocket-driver en version 0.7.5 dans le frontend.
-- Mise à jour de fast-uri en version 3.1.4 dans le frontend.
-- Mise à jour de svgo en version 2.8.3 dans le frontend.
+- **Nettoyage** : Suppression de bibliothèques obsolètes (`python.json`, `deprecated`, `wrapt`) et de tâches de build inutilisées.
+- **Documentation** : Mise à jour du README.
+- **Configuration serveur** : Ajout d'un fichier `.htaccess` et déplacement du fichier `robots.txt`.
+- **Gestion de version** : Modification de la stratégie de gestion du dossier `dist` pour permettre son maintien en version.
