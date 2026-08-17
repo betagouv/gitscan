@@ -1,27 +1,30 @@
-## Changelog : ami-notifications-api (30 derniers jours, au 31 juillet 2026)
+## Changelog : ami-notifications-api (30 derniers jours, au 14/08/2026)
 
 ### Résumé
-Cette période a été marquée par d'importantes améliorations de l'interface utilisateur, notamment sur l'écran d'accueil et les pages de suivi. De nouvelles fonctionnalités liées aux services ont été implémentées, permettant d'intégrer et de gérer des services externes via l'application. Des corrections de bugs et des optimisations techniques ont également été apportées pour améliorer la stabilité et la performance de l'API.
+Ce mois-ci a été marqué par le déploiement majeur de la nouvelle section "Services", offrant une navigation enrichie et un rendu de contenu amélioré. L'interface d'administration a été considérablement renforcée pour permettre une gestion complète des services, tandis que l'expérience utilisateur a été fluidifiée par une refonte de l'écran de démarrage et une meilleure gestion des éléments de suivi. Enfin, la sécurité a été renforcée par l'introduction de nouveaux mécanismes de contrôle des clés d'accès.
 
 ### Évolutions fonctionnelles
-- **Écran d'accueil amélioré :** Refonte de l'écran d'accueil avec amélioration de la présentation des informations FranceConnect, ajustement de la taille des icônes, et recentrage du contenu.  Ajout d'un titre à l'écran d'accueil. [#1098]
-- **Gestion des suivis (Followups) :** Ajout de pages de détails pour les suivis, avec affichage des informations pertinentes et gestion de l'archivage.  Amélioration de l'affichage des suivis archivés. [#266]
-- **Intégration des services :** Ajout d'une nouvelle section "Services" dans le menu principal, permettant d'accéder à une liste de services externes.  Possibilité d'intégrer des services avec une authentification silencieuse si activée.  Affichage des paramètres et descriptions des services. [#943]
-- **Bannières :** Ajout de bannières sur les pages d'édition. [#769]
-- **Correction d'un bug :** Correction d'un bug empêchant l'affichage correct des dates. [#1076]
-- **Correction d'un bug :** Correction d'un problème lié à l'affichage du bouton "Retour" dans l'en-tête. [#950]
-- **Gestion des feature flags :** Ajout d'un mécanisme pour activer/désactiver certaines fonctionnalités via des *feature flags*, notamment pour l'intégration des services. [#1081]
+- **Déploiement de la fonctionnalité "Services"** : ajout d'un menu dédié, de pages de détails avec rendu Markdown et de nouveaux points d'accès API [#943](https://github.com/numerique-gouv/ami-notifications-api/issues/943).
+- **Amélioration de l'interface d'administration** : gestion complète du cycle de vie des services (ajout, modification, suppression, restriction d'accès) et mise en place de journaux d'audit pour les changements de service [#1054](https://github.com/numerique-gouv/ami-notifications-api/issues/1054).
+- **Refonte de l'expérience utilisateur (UI/UX)** : 
+    - Nouveau design de l'écran de démarrage pour plus de clarté [#1098](https://github.com/numerique-gouv/ami-notifications-api/issues/1098).
+    - Amélioration de l'affichage et de la structure des éléments de suivi (follow-up) [#266](https://github.com/numerique-gouv/ami-notifications-api/issues/266).
+    - Ajout de bannières informatives sur les pages d'édition [#769](https://github.com/numerique-gouv/ami-notifications-api/issues/769).
+    - Amélioration de la navigation et des composants de modales [#979](https://github.com/numerique-gouv/ami-notifications-api/issues/979).
+- **Nouveaux partenaires** : ajout du partenaire "RDV SP" [#1130](https://github.com/numerique-gouv/ami-notifications-api/issues/1130).
+- **Corrections diverses** : résolution de problèmes d'affichage (bouton de préférence [#1107](https://github.com/numerique-gouv/ami-notifications-api/issues/1107), z-index de la navigation [#1091](https://github.com/numerique-gouv/ami-notifications-api/issues/1091)) et de l'initialisation des dates [#1076](https://github.com/numerique-gouv/ami-notifications-api/issues/1076).
 
 ### Évolutions techniques
-- **Refactoring de la navigation :** Refactorisation de la navigation principale avec correction des styles et amélioration de l'accessibilité (RGAA). [#1037]
-- **Correction de la sérialisation OTVJWTTokenSerializer :** Correction d'un problème dans la sérialisation des tokens OTVJWT. [#1070]
-- **Mise à jour des dépendances :**
-    - Django mis à jour de la version 6.0.5 à 6.0.6.
-    - Daphne mis à jour de la version 4.2.1 à 4.2.2.
-    - Soupsieve mis à jour de la version 2.8.3 à 2.8.4.
-    - ws mis à jour de la version 8.20.1 à 8.21.0.
+- **Sécurité et accès** : mise en place d'un système de vérification des clés d'accès avec limitation de débit (rate limiting) et contrôle avant le chargement de l'application [#1096](https://github.com/numerique-gouv/ami-notifications-api/issues/1096).
+- **API & Backend** : 
+    - Finalisation de la migration des champs de notification vers la version 2 [#1005](https://github.com/numerique-gouv/ami-notifications-api/issues/1005).
+    - Limitation du schéma API principal aux partenaires [#876](https://github.com/numerique-gouv/ami-notifications-api/issues/876).
+    - Ajout de logs pour le suivi de la création des notifications et des événements [#1120](https://github.com/numerique-gouv/ami-notifications-api/issues/1120).
+- **Architecture & Build** : 
+    - Optimisation du développement avec le proxying des URLs Django via Vite [#1138](https://github.com/numerique-gouv/ami-notifications-api/issues/1138).
+    - Passage à `sass-embedded` pour la gestion du CSS [#1123](https://github.com/numerique-gouv/ami-notifications-api/issues/1123).
+    - Nettoyage des variables d'environnement publiques [#1138](https://github.com/numerique-gouv/ami-notifications-api/issues/1138).
 
 ### Autres changements
-- **Suppression de code inutilisé :** Suppression de code non utilisé dans la gestion des suivis. [#266]
-- **Amélioration de la compatibilité WebView Android :** Correction pour assurer que l'application utilise la pleine hauteur de la fenêtre sur les WebView Android. [#1013]
-- **Documentation :** Amélioration de la documentation interne.
+- **Documentation et corrections** : correction de coquilles dans la description de l'API [#876](https://github.com/numerique-gouv/ami-notifications-api/issues/876) et dans l'interface des préférences [#1157](https://github.com/numerique-gouv/ami-notifications-api/issues/1157).
+- **Nettoyage du code** : suppression de fichiers d'icônes et de blocs de code inutilisés [#445](https://github.com/numerique-gouv/ami-notifications-api/issues/445) [#266](https://github.com/numerique-gouv/ami-notifications-api/issues/266).
