@@ -117,6 +117,7 @@
 │   │   │   ├── example_aggregate_factory.py
 │   │   │   └── test_aggregate_root.py
 │   │   ├── types.py
+│   │   ├── unit_of_work.py
 │   │   ├── usecase_interface.py
 │   │   └── uv.lock
 │   └── referentiel
@@ -171,6 +172,7 @@
 │           ├── ministry.py
 │           ├── nor.py
 │           ├── offer_conditions.py
+│           ├── offer_criteria.py
 │           ├── region.py
 │           ├── source_type.py
 │           ├── type_competence.py
@@ -465,6 +467,7 @@
         │   │   ├── interfaces
         │   │   │   ├── __init__.py
         │   │   │   ├── archive_offer_by_reference_input.py
+        │   │   │   ├── get_offer_by_reference_input.py
         │   │   │   ├── get_offers_by_source_input.py
         │   │   │   ├── list_metiers_input.py
         │   │   │   ├── list_offers_input.py
@@ -476,6 +479,7 @@
         │   │       ├── archive_offer_by_reference.py
         │   │       ├── archive_offers.py
         │   │       ├── clean_documents.py
+        │   │       ├── get_offer_by_reference.py
         │   │       ├── get_offers_by_source.py
         │   │       ├── list_metiers.py
         │   │       ├── list_offers.py
@@ -657,7 +661,6 @@
         │       │   └── recrutement.py
         │       ├── errors
         │       │   ├── __init__.py
-        │       │   ├── candidature_errors.py
         │       │   ├── erreur_recrutement.py
         │       │   ├── note_errors.py
         │       │   ├── organisme_permission_errors.py
@@ -666,7 +669,8 @@
         │       │   ├── __init__.py
         │       │   ├── candidature_events.py
         │       │   ├── note_events.py
-        │       │   └── organisme_events.py
+        │       │   ├── organisme_events.py
+        │       │   └── recrutement_events.py
         │       ├── repositories
         │       │   ├── __init__.py
         │       │   ├── candidature_recruteur_repository_interface.py
@@ -726,6 +730,7 @@
         │   │   │   │   ├── 0004_candidaturemodel.py
         │   │   │   │   ├── 0005_fix_cv_metadata_id_index.py
         │   │   │   │   ├── 0006_remove_candidaturemodel_unique_candidature_candidat_offre_and_more.py
+        │   │   │   │   ├── 0007_candidaturemodel_updated_by_candidate_and_more.py
         │   │   │   │   └── __init__.py
         │   │   │   └── models
         │   │   │       ├── __init__.py
@@ -965,6 +970,7 @@
         │   ├── mappers
         │   │   ├── __init__.py
         │   │   ├── candidature_mapper.py
+        │   │   ├── candidature_recruteur_mapper.py
         │   │   ├── metier_mapper.py
         │   │   ├── note_mapper.py
         │   │   ├── offer_mapper.py
@@ -986,7 +992,8 @@
         │       │   ├── __init__.py
         │       │   ├── postgres_audit_log_repository.py
         │       │   ├── postgres_offer_stats_query_service.py
-        │       │   └── postgres_stat_snapshot_writer.py
+        │       │   ├── postgres_stat_snapshot_writer.py
+        │       │   └── postgres_unit_of_work.py
         │       ├── identite
         │       │   ├── __init__.py
         │       │   ├── postgres_agent_repository.py
@@ -1000,6 +1007,7 @@
         │       │   └── postgres_user_source_repository.py
         │       ├── recruteur
         │       │   ├── __init__.py
+        │       │   ├── postgres_candidature_recruteur_repository.py
         │       │   ├── postgres_note_query_service.py
         │       │   ├── postgres_note_repository.py
         │       │   ├── postgres_organisme_agent_repository.py
@@ -1435,6 +1443,7 @@
         │   ├── ingestion
         │   │   ├── __init__.py
         │   │   ├── apps.py
+        │   │   ├── legacy_client_aliases.py
         │   │   ├── management
         │   │   │   ├── README.md
         │   │   │   ├── __init__.py
@@ -1459,6 +1468,7 @@
         │   │       ├── __init__.py
         │   │       ├── concours.py
         │   │       ├── metiers.py
+        │   │       ├── offer_detail.py
         │   │       ├── offer_summaries.py
         │   │       ├── offers.py
         │   │       └── sources.py
@@ -1686,6 +1696,7 @@
         │   │   │   ├── test_archive_offer_by_reference.py
         │   │   │   ├── test_archive_offers.py
         │   │   │   ├── test_clean_documents.py
+        │   │   │   ├── test_get_offer_by_reference.py
         │   │   │   ├── test_list_metiers.py
         │   │   │   ├── test_list_offers.py
         │   │   │   ├── test_list_sources.py
@@ -1789,6 +1800,7 @@
         │   │   │       ├── test_list_metiers.py
         │   │   │       ├── test_list_offers.py
         │   │   │       ├── test_list_sources.py
+        │   │   │       ├── test_offer_detail.py
         │   │   │       ├── test_offer_summaries.py
         │   │   │       ├── test_offers_by_source.py
         │   │   │       ├── test_upsert_offers.py
@@ -1817,4 +1829,4 @@
         │       ├── test_rate_limit_headers_middleware.py
         │       └── test_storages.py
         └── uv.lock
-357 directories, 1462 files
+357 directories, 1474 files
