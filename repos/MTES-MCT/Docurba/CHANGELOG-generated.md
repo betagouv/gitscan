@@ -1,32 +1,38 @@
 ## Changelog : Docurba (30 derniers jours, au 14 août 2026)
 
 ### Résumé
-Ce mois a été marqué par une consolidation importante de l'architecture, notamment par le transfert de plusieurs services de données du frontend vers le backend pour gagner en fiabilité. L'expérience utilisateur a été enrichie par l'adoption du format Markdown pour les descriptions et par l'ajout de nouveaux outils de gestion dans l'interface d'administration.
+Ce mois a été marqué par une restructuration importante de la plateforme pour améliorer sa fiabilité et ses performances. Les utilisateurs bénéficieront d'une interface plus riche grâce au support du format Markdown pour les descriptions, et d'outils d'administration renforcés (archivage d'événements, meilleurs filtres). Techniquement, une grande partie de la logique de données géographiques a été déplacée vers le serveur pour garantir une meilleure cohérence des informations.
 
 ### Évolutions fonctionnelles
-- **Amélioration de l'édition de contenu** : Support du format Markdown pour les descriptions de procédures et d'événements, incluant la gestion des liens externes.
-- **Gestion des événements** : 
-    - Possibilité d'archiver ou de désarchiver des événements directement depuis l'interface d'administration.
-    - Prise en compte des nouveaux types d'événements liés à la loi Huwart (PP et PPI).
-- **Interface et ergonomie** :
-    - Ajout d'une bannière d'information pour signaler les périodes de congés.
-    - Amélioration de la recherche de collaborateurs (recherche insensible à la casse).
-    - Correction de la gestion des emails lors du partage de procédures.
-- **Administration** : Amélioration des filtres de recherche pour les procédures dans le back-office.
+- **Interface et expérience utilisateur**
+    - Support du format Markdown pour les descriptions de procédures et d'événements, incluant la gestion des liens externes.
+    - Ajout d'une bannière d'information pour signaler les périodes de vacances.
+    - Amélioration de la gestion des types d'événements (loi Huwart, SCOT, etc.).
+- **Administration (Backoffice)**
+    - Possibilité d'archiver ou de désarchiver des événements directement depuis l'interface d'administration Django.
+    - Amélioration du filtrage des procédures dans l'interface d'administration.
+- **Corrections**
+    - Correction de l'affichage des collaborateurs (gestion de la casse).
+    - Amélioration de la robustesse lors du partage de procédures (gestion des formats d'emails).
+    - Correction de bugs sur l'export des communes et la gestion des listes de codes SIREN.
 
 ### Évolutions techniques
-- **Migration d'architecture** : Migration massive d'endpoints API (collectivités, communes, intercommunalités, Slack) du frontend Nuxt vers le backend Django pour centraliser la logique métier.
-- **Optimisation des performances** : 
-    - Résolution de problèmes de requêtes N+1 sur l'API interne.
-    - Optimisation globale des performances de l'API Django.
-- **Refonte du modèle de données** :
-    - Renommage et restructuration du modèle utilisateur (`SupabaseUser`).
-    - Séparation des codes INSEE et SIREN pour les collectivités.
-    - Amélioration de la traçabilité via l'ajout de relations pour l'historique des snapshots d'événements.
-- **Qualité et tests** : 
-    - Renforcement de la suite de tests (utilisation de snapshots et de `freezegun` pour la gestion du temps).
-    - Nettoyage du code : suppression de composants Nuxt, de fonctions SQL et de migrations inutilisées.
+- **Architecture et Migration**
+    - Migration massive des services de données (communes, intercommunalités, collectivités, Slack, projets) du frontend Nuxt vers le backend Django pour centraliser la logique métier.
+    - Refonte du modèle utilisateur (renommé `SupabaseUser`) et intégration de la gestion des profils.
+    - Centralisation de la logique de mise à jour des statuts de procédures via des plugins Nuxt et des fonctions SQL.
+- **Optimisation et Performance**
+    - Résolution de problèmes de performance de type "N+1" sur l'API interne.
+    - Optimisation du chargement conditionnel des données liées aux enquêtes.
+- **Maintenance et Qualité**
+    - Nettoyage approfondi du code : suppression de composants Nuxt, de fonctions SQL et de fichiers de tests inutilisés.
+    - Renforcement de la suite de tests (utilisation de snapshots, nouveaux tests pour l'API interne et amélioration des performances de test).
+- **Infrastructure et DevOps**
+    - Introduction d'une variable d'environnement `$ENABLE_MIGRATIONS` pour contrôler l'application des migrations.
+    - Automatisation de certaines tâches via des commandes de gestion et des processus CRON.
 
 ### Autres changements
-- **Documentation** : Ajout de nouvelles ressources documentaires : [Fiche technique DGALN-OAP](#2307) et [Guide de rédaction de cahier des charges](#2298).
-- **Configuration** : Mise en place d'une variable d'environnement pour activer ou désactiver les migrations de base de données.
+- **Documentation**
+    - Ajout de fiches techniques et de guides méthodologiques : [Fiche technique DGALN-OAP](https://github.com/MTES-MCT/Docurba/issues/2307) et [Guide de rédaction de cahier des charges](https://github.com/MTES-MCT/Docurba/issues/2298).
+- **Configuration**
+    - Mise à jour des configurations de linting (Ruff) et du fichier `.gitignore`.
