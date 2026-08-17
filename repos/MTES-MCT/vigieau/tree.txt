@@ -1,15 +1,28 @@
 .
+├── .editorconfig
+├── .gitattributes
+├── .github
+│   ├── dependabot.yml
+│   └── workflows
+│       ├── ci.yml
+│       └── production-smoke.yml
 ├── .gitignore
+├── .npmrc
+├── .vscode
+│   └── settings.json
 ├── README.md
 ├── apps
 │   ├── backend
 │   │   ├── .eslintrc.js
 │   │   ├── .gitignore
+│   │   ├── .npmrc
 │   │   ├── .prettierrc
 │   │   ├── Procfile
 │   │   ├── README.md
 │   │   ├── env.example
+│   │   ├── eslint.config.js
 │   │   ├── nest-cli.json
+│   │   ├── package-lock.json
 │   │   ├── package.json
 │   │   ├── renovate.json
 │   │   ├── src
@@ -52,8 +65,14 @@
 │   │   │   │   ├── data.module.ts
 │   │   │   │   ├── data.service.spec.ts
 │   │   │   │   ├── data.service.ts
-│   │   │   │   └── dto
-│   │   │   │       └── data.dto.ts
+│   │   │   │   ├── dto
+│   │   │   │   │   └── data.dto.ts
+│   │   │   │   ├── historic-config-schema-repair.postgres.spec.ts
+│   │   │   │   ├── statistic-cache-artifact.postgres.spec.ts
+│   │   │   │   ├── statistic-cache-artifact.service.spec.ts
+│   │   │   │   ├── statistic-cache-artifact.service.ts
+│   │   │   │   ├── statistic-publication-freshness.spec.ts
+│   │   │   │   └── statistic-publication-freshness.ts
 │   │   │   ├── departements
 │   │   │   │   ├── departements.controller.spec.ts
 │   │   │   │   ├── departements.controller.ts
@@ -62,6 +81,11 @@
 │   │   │   │   ├── departements.service.ts
 │   │   │   │   └── dto
 │   │   │   │       └── departement.dto.ts
+│   │   │   ├── health
+│   │   │   │   ├── health.controller.spec.ts
+│   │   │   │   ├── health.controller.ts
+│   │   │   │   └── health.module.ts
+│   │   │   ├── instrument.ts
 │   │   │   ├── logger
 │   │   │   │   ├── logger.module.ts
 │   │   │   │   └── vigieau.logger.ts
@@ -109,17 +133,18 @@
 │   │   │   ├── app.e2e-spec.ts
 │   │   │   └── jest-e2e.json
 │   │   ├── tsconfig.build.json
-│   │   ├── tsconfig.json
-│   │   └── yarn.lock
+│   │   └── tsconfig.json
 │   ├── backend-admin
 │   │   ├── .buildpacks
 │   │   ├── .eslintrc.js
 │   │   ├── .gitignore
+│   │   ├── .npmrc
 │   │   ├── .prettierrc
 │   │   ├── Aptfile
 │   │   ├── Procfile
 │   │   ├── README.md
 │   │   ├── env.example
+│   │   ├── eslint.config.js
 │   │   ├── migration_db
 │   │   │   ├── migration_aci.sql
 │   │   │   ├── migration_db.sql
@@ -127,18 +152,24 @@
 │   │   │   ├── migration_regle_commune.sql
 │   │   │   └── migration_usage.sql
 │   │   ├── nest-cli.json
+│   │   ├── package-lock.json
 │   │   ├── package.json
 │   │   ├── renovate.json
+│   │   ├── scripts
+│   │   │   └── validate-tippecanoe-install.mjs
 │   │   ├── src
 │   │   │   ├── abonnement_mail
 │   │   │   │   ├── abonnement_mail.module.ts
 │   │   │   │   └── abonnement_mail.service.ts
-│   │   │   ├── admin.module.ts
 │   │   │   ├── app.controller.ts
 │   │   │   ├── app.module.ts
 │   │   │   ├── arrete_cadre
+│   │   │   │   ├── arrete_cadre.continuity.spec.ts
 │   │   │   │   ├── arrete_cadre.controller.ts
 │   │   │   │   ├── arrete_cadre.module.ts
+│   │   │   │   ├── arrete_cadre.scheduler.spec.ts
+│   │   │   │   ├── arrete_cadre.scheduler.ts
+│   │   │   │   ├── arrete_cadre.service.spec.ts
 │   │   │   │   ├── arrete_cadre.service.ts
 │   │   │   │   └── dto
 │   │   │   │       ├── arrete_cadre.dto.ts
@@ -147,6 +178,7 @@
 │   │   │   │       └── repeal_arrete_cadre.dto.ts
 │   │   │   ├── arrete_cadre_zone_alerte_communes
 │   │   │   │   ├── arrete_cadre_zone_alerte_communes.module.ts
+│   │   │   │   ├── arrete_cadre_zone_alerte_communes.service.spec.ts
 │   │   │   │   └── arrete_cadre_zone_alerte_communes.service.ts
 │   │   │   ├── arrete_municipal
 │   │   │   │   ├── arrete_municipal.controller.ts
@@ -157,9 +189,17 @@
 │   │   │   │       ├── create_update_arrete_municipal.dto.ts
 │   │   │   │       └── repeal_arrete_municipal.dto.ts
 │   │   │   ├── arrete_restriction
+│   │   │   │   ├── arrete-end-date-provenance.migration.spec.ts
+│   │   │   │   ├── arrete-end-date-provenance.postgres.spec.ts
 │   │   │   │   ├── arrete_restriction.controller.ts
 │   │   │   │   ├── arrete_restriction.module.ts
+│   │   │   │   ├── arrete_restriction.mutations.spec.ts
+│   │   │   │   ├── arrete_restriction.scheduler.spec.ts
+│   │   │   │   ├── arrete_restriction.service.spec.ts
 │   │   │   │   ├── arrete_restriction.service.ts
+│   │   │   │   ├── current-zone-recompute-queue.migration.spec.ts
+│   │   │   │   ├── current-zone-recompute-queue.postgres.spec.ts
+│   │   │   │   ├── current-zone-recompute-queue.spec.ts
 │   │   │   │   └── dto
 │   │   │   │       ├── arrete_restriction.dto.ts
 │   │   │   │       ├── create_update_arrete_restriction.dto.ts
@@ -176,15 +216,21 @@
 │   │   │   ├── bassin_versant
 │   │   │   │   ├── bassin_versant.module.ts
 │   │   │   │   └── bassin_versant.service.ts
+│   │   │   ├── clock.ts
 │   │   │   ├── commune
 │   │   │   │   ├── commune.controller.ts
 │   │   │   │   ├── commune.module.ts
+│   │   │   │   ├── commune.service.spec.ts
 │   │   │   │   ├── commune.service.ts
 │   │   │   │   └── dto
 │   │   │   │       └── commune.dto.ts
 │   │   │   ├── config
 │   │   │   │   ├── config.module.ts
-│   │   │   │   └── config.service.ts
+│   │   │   │   ├── config.service.spec.ts
+│   │   │   │   ├── config.service.ts
+│   │   │   │   ├── historic-config-schema-repair.migration.spec.ts
+│   │   │   │   ├── historic-cursor-generation.migration.spec.ts
+│   │   │   │   └── historic-cursor-progress.migration.spec.ts
 │   │   │   ├── core
 │   │   │   │   ├── decorators
 │   │   │   │   │   ├── public.decorator.ts
@@ -197,15 +243,37 @@
 │   │   │   │   │   └── roles.guard.ts
 │   │   │   │   ├── interceptor
 │   │   │   │   │   └── logger.interceptor.ts
+│   │   │   │   ├── middleware
+│   │   │   │   │   ├── admin-write-freeze.middleware.spec.ts
+│   │   │   │   │   └── admin-write-freeze.middleware.ts
+│   │   │   │   ├── scheduling
+│   │   │   │   │   ├── business-cron.spec.ts
+│   │   │   │   │   ├── business-cron.ts
+│   │   │   │   │   ├── clock-heartbeat.service.spec.ts
+│   │   │   │   │   ├── clock-heartbeat.service.ts
+│   │   │   │   │   ├── daily-job-schedule.spec.ts
+│   │   │   │   │   ├── daily-job-schedule.ts
+│   │   │   │   │   ├── historic-run-identity.spec.ts
+│   │   │   │   │   └── historic-run-identity.ts
+│   │   │   │   ├── startup-data-loads.ts
 │   │   │   │   ├── test
 │   │   │   │   │   └── data.ts
 │   │   │   │   └── utils.ts
 │   │   │   ├── datagouv
+│   │   │   │   ├── datagouv-scheduler.service.spec.ts
+│   │   │   │   ├── datagouv-scheduler.service.ts
 │   │   │   │   ├── datagouv.module.ts
-│   │   │   │   └── datagouv.service.ts
+│   │   │   │   ├── datagouv.service.spec.ts
+│   │   │   │   ├── datagouv.service.ts
+│   │   │   │   ├── external-publication-registry.migration.spec.ts
+│   │   │   │   ├── external-publication-registry.service.spec.ts
+│   │   │   │   └── external-publication-registry.service.ts
 │   │   │   ├── departement
+│   │   │   │   ├── departement-geometry.spec.ts
+│   │   │   │   ├── departement-geometry.ts
 │   │   │   │   ├── departement.controller.ts
 │   │   │   │   ├── departement.module.ts
+│   │   │   │   ├── departement.service.spec.ts
 │   │   │   │   ├── departement.service.ts
 │   │   │   │   └── dto
 │   │   │   │       └── departement.dto.ts
@@ -213,10 +281,16 @@
 │   │   │   │   ├── dto
 │   │   │   │   │   └── fichier.dto.ts
 │   │   │   │   ├── fichier.module.ts
+│   │   │   │   ├── fichier.service.spec.ts
 │   │   │   │   └── fichier.service.ts
 │   │   │   ├── health
+│   │   │   │   ├── health.controller.spec.ts
 │   │   │   │   ├── health.controller.ts
-│   │   │   │   └── health.module.ts
+│   │   │   │   ├── health.module.ts
+│   │   │   │   ├── zone-publication-health.postgres.spec.ts
+│   │   │   │   ├── zone-publication-health.service.spec.ts
+│   │   │   │   └── zone-publication-health.service.ts
+│   │   │   ├── instrument.ts
 │   │   │   ├── logger
 │   │   │   │   ├── logger.module.ts
 │   │   │   │   └── regleau.logger.ts
@@ -235,13 +309,35 @@
 │   │   │   │   └── relance_arrete_mois.hbs
 │   │   │   ├── main.ts
 │   │   │   ├── migrations
-│   │   │   │   └── 1701365083324-Users.ts
+│   │   │   │   ├── 1701365083324-Users.ts
+│   │   │   │   ├── 1785484800000-SandreZoneSync.ts
+│   │   │   │   ├── 1785518400000-ZonePublication.ts
+│   │   │   │   ├── 1785604800000-ExternalPublicationRegistry.ts
+│   │   │   │   ├── 1785608400000-ZonePublicationDurability.ts
+│   │   │   │   ├── 1785772800000-SandreZoneGovernance.ts
+│   │   │   │   ├── 1785859200000-SandreDisabledZoneReferenceGuard.ts
+│   │   │   │   ├── 1785945600000-StatisticCommuneSnapshotBarrier.ts
+│   │   │   │   ├── 1786032000000-HistoricCursorGeneration.ts
+│   │   │   │   ├── 1786118400000-SandreOperationalReferenceRepair.ts
+│   │   │   │   ├── 1786122000000-SandreOperationalStatusGuards.ts
+│   │   │   │   ├── 1786125600000-SandreCustomizationUniqueness.ts
+│   │   │   │   ├── 1786129200000-StatisticPublicationActivationBarrier.ts
+│   │   │   │   ├── 1786132800000-HistoricCursorProgress.ts
+│   │   │   │   ├── 1786219200000-HistoricDepartmentCheckpoint.ts
+│   │   │   │   ├── 1786219300000-ReconcileTerminalPublicationSnapshots.ts
+│   │   │   │   ├── 1786305600000-ArreteEndDateProvenance.ts
+│   │   │   │   ├── 1786309200000-CurrentZoneRecomputeQueue.ts
+│   │   │   │   ├── 1786392000000-SandreZoneSchemaPrerequisites.ts
+│   │   │   │   ├── 1786395600000-SandreZoneDurability.ts
+│   │   │   │   ├── 1786744800000-StatisticCachePublication.ts
+│   │   │   │   └── 1786831200000-HistoricConfigSchemaRepair.ts
 │   │   │   ├── parametres
 │   │   │   │   ├── dto
 │   │   │   │   │   ├── create_update_parametres.dto.ts
 │   │   │   │   │   └── parametres.dto.ts
 │   │   │   │   ├── parametres.controller.ts
 │   │   │   │   ├── parametres.module.ts
+│   │   │   │   ├── parametres.service.spec.ts
 │   │   │   │   └── parametres.service.ts
 │   │   │   ├── restriction
 │   │   │   │   ├── dto
@@ -249,20 +345,51 @@
 │   │   │   │   │   └── restriction.dto.ts
 │   │   │   │   ├── restriction.module.ts
 │   │   │   │   └── restriction.service.ts
+│   │   │   ├── schema-bootstrap.spec.ts
+│   │   │   ├── schema-bootstrap.ts
+│   │   │   ├── scripts
+│   │   │   │   ├── confirm-open-ended-predecessor.spec.ts
+│   │   │   │   ├── confirm-open-ended-predecessor.ts
+│   │   │   │   ├── publish-datagouv-communes.spec.ts
+│   │   │   │   ├── publish-datagouv-communes.ts
+│   │   │   │   ├── publish-datagouv-historique-communes.ts
+│   │   │   │   ├── recompute-commune-statistics.spec.ts
+│   │   │   │   ├── recompute-commune-statistics.ts
+│   │   │   │   ├── reconcile-sandre-zones.spec.ts
+│   │   │   │   ├── reconcile-sandre-zones.ts
+│   │   │   │   └── sandre-reconciliation-plans
+│   │   │   │       ├── 2026-08-15-prod-sandre-audit-blockers.json
+│   │   │   │       └── 2026-08-15-prod-sandre-unblock.json
 │   │   │   ├── shared
+│   │   │   │   ├── arrete-date-continuity.spec.ts
+│   │   │   │   ├── arrete-date-continuity.ts
+│   │   │   │   ├── mail-rendering.spec.ts
 │   │   │   │   ├── services
 │   │   │   │   │   ├── mail.service.ts
+│   │   │   │   │   ├── s3.service.spec.ts
 │   │   │   │   │   └── s3.service.ts
 │   │   │   │   └── shared.module.ts
 │   │   │   ├── statistic
 │   │   │   │   ├── statistic.module.ts
+│   │   │   │   ├── statistic.service.spec.ts
 │   │   │   │   └── statistic.service.ts
+│   │   │   ├── statistic_cache
+│   │   │   │   ├── statistic_cache.config.ts
+│   │   │   │   ├── statistic_cache.module.ts
+│   │   │   │   ├── statistic_cache_publication.migration.spec.ts
+│   │   │   │   ├── statistic_cache_readiness.service.spec.ts
+│   │   │   │   └── statistic_cache_readiness.service.ts
 │   │   │   ├── statistic_commune
 │   │   │   │   ├── statistic_commune.module.ts
-│   │   │   │   └── statistic_commune.service.ts
+│   │   │   │   ├── statistic_commune.postgres.spec.ts
+│   │   │   │   ├── statistic_commune.service.spec.ts
+│   │   │   │   ├── statistic_commune.service.ts
+│   │   │   │   ├── statistic_commune_snapshot.migration.spec.ts
+│   │   │   │   └── terminal-publication-snapshot.migration.spec.ts
 │   │   │   ├── statistic_departement
 │   │   │   │   ├── statistic_departement.controller.ts
 │   │   │   │   ├── statistic_departement.module.ts
+│   │   │   │   ├── statistic_departement.service.spec.ts
 │   │   │   │   └── statistic_departement.service.ts
 │   │   │   ├── thematique
 │   │   │   │   ├── dto
@@ -276,6 +403,7 @@
 │   │   │   │   │   └── usage.dto.ts
 │   │   │   │   ├── usage.controller.ts
 │   │   │   │   ├── usage.module.ts
+│   │   │   │   ├── usage.service.spec.ts
 │   │   │   │   └── usage.service.ts
 │   │   │   ├── usage_feedback
 │   │   │   │   ├── usage_feedback.controller.ts
@@ -292,32 +420,78 @@
 │   │   │   ├── worker_threads
 │   │   │   │   ├── computeHistoric.ts
 │   │   │   │   ├── computeMap.ts
-│   │   │   │   └── config.ts
+│   │   │   │   ├── config.ts
+│   │   │   │   ├── run-current-zone-compute.spec.ts
+│   │   │   │   ├── run-current-zone-compute.ts
+│   │   │   │   ├── zone-compute-lock.spec.ts
+│   │   │   │   └── zone-compute-lock.ts
 │   │   │   ├── zone_alerte
 │   │   │   │   ├── dto
 │   │   │   │   │   └── zone_alerte.dto.ts
+│   │   │   │   ├── sandre-disabled-zone-reference-guard.migration.spec.ts
+│   │   │   │   ├── sandre-mdm-evidence.spec.ts
+│   │   │   │   ├── sandre-mdm-evidence.ts
+│   │   │   │   ├── sandre-zone-durability.migration.spec.ts
+│   │   │   │   ├── sandre-zone-durability.postgres.spec.ts
+│   │   │   │   ├── sandre-zone-geometry-approvals.spec.ts
+│   │   │   │   ├── sandre-zone-geometry-approvals.ts
+│   │   │   │   ├── sandre-zone-geometry.spec.ts
+│   │   │   │   ├── sandre-zone-geometry.ts
+│   │   │   │   ├── sandre-zone-governance.migration.spec.ts
+│   │   │   │   ├── sandre-zone-governance.spec.ts
+│   │   │   │   ├── sandre-zone-governance.ts
+│   │   │   │   ├── sandre-zone-reconciliation-actions.spec.ts
+│   │   │   │   ├── sandre-zone-reconciliation-actions.ts
+│   │   │   │   ├── sandre-zone-reconciliation.spec.ts
+│   │   │   │   ├── sandre-zone-reconciliation.ts
+│   │   │   │   ├── sandre-zone-sync-approvals.spec.ts
+│   │   │   │   ├── sandre-zone-sync-approvals.ts
+│   │   │   │   ├── sandre-zone-sync-approved-references.ts
+│   │   │   │   ├── sandre-zone-sync.spec.ts
+│   │   │   │   ├── sandre-zone-sync.ts
 │   │   │   │   ├── zone_alerte.controller.ts
 │   │   │   │   ├── zone_alerte.module.ts
+│   │   │   │   ├── zone_alerte.service.spec.ts
 │   │   │   │   └── zone_alerte.service.ts
-│   │   │   └── zone_alerte_computed
-│   │   │       ├── zone_alerte_computed.module.ts
-│   │   │       ├── zone_alerte_computed.service.ts
-│   │   │       └── zone_alerte_computed_historic.service.ts
+│   │   │   ├── zone_alerte_computed
+│   │   │   │   ├── empty-pmtiles.spec.ts
+│   │   │   │   ├── empty-pmtiles.ts
+│   │   │   │   ├── historic-department-checkpoint.migration.spec.ts
+│   │   │   │   ├── historic-department-checkpoint.service.spec.ts
+│   │   │   │   ├── historic-department-checkpoint.service.ts
+│   │   │   │   ├── pmtiles-generation.spec.ts
+│   │   │   │   ├── pmtiles-generation.ts
+│   │   │   │   ├── statistic-cache-boundary.postgres.spec.ts
+│   │   │   │   ├── zone_alerte_computed.module.ts
+│   │   │   │   ├── zone_alerte_computed.service.spec.ts
+│   │   │   │   ├── zone_alerte_computed.service.ts
+│   │   │   │   └── zone_alerte_computed_historic.service.ts
+│   │   │   └── zone_publication
+│   │   │       ├── statistic_publication_activation.migration.spec.ts
+│   │   │       ├── typeorm-query-result.spec.ts
+│   │   │       ├── typeorm-query-result.ts
+│   │   │       ├── zone_publication.config.ts
+│   │   │       ├── zone_publication.controller.ts
+│   │   │       ├── zone_publication.migration.spec.ts
+│   │   │       ├── zone_publication.module.ts
+│   │   │       ├── zone_publication.postgres.spec.ts
+│   │   │       ├── zone_publication.service.spec.ts
+│   │   │       ├── zone_publication.service.ts
+│   │   │       ├── zone_publication_materialization.spec.ts
+│   │   │       ├── zone_publication_operator.service.spec.ts
+│   │   │       ├── zone_publication_operator.service.ts
+│   │   │       ├── zone_publication_promotion.service.spec.ts
+│   │   │       └── zone_publication_promotion.service.ts
 │   │   ├── test
 │   │   │   ├── app.e2e-spec.ts
 │   │   │   └── jest-e2e.json
 │   │   ├── tsconfig.build.json
-│   │   ├── tsconfig.json
-│   │   └── yarn.lock
+│   │   └── tsconfig.json
 │   ├── frontend
 │   │   ├── .buildpacks
-│   │   ├── .eslintignore
 │   │   ├── .eslintrc.cjs
-│   │   ├── .github
-│   │   │   └── workflows
-│   │   │       ├── build.yml
-│   │   │       └── e2e-tests.yml
 │   │   ├── .gitignore
+│   │   ├── .npmrc
 │   │   ├── .prettierrc
 │   │   ├── .vscode
 │   │   │   ├── extensions.json
@@ -336,6 +510,11 @@
 │   │   │   │   └── workers
 │   │   │   │       └── communeMap.js
 │   │   │   ├── components
+│   │   │   │   ├── AccessibleDataTable.vue
+│   │   │   │   ├── AccessibleModal.vue
+│   │   │   │   ├── AccessibleTabs.vue
+│   │   │   │   ├── AppBreadcrumb.vue
+│   │   │   │   ├── DocumentAccessibilityNotice.vue
 │   │   │   │   ├── FdrAutoComplete.vue
 │   │   │   │   ├── Loader.vue
 │   │   │   │   ├── accueil
@@ -410,6 +589,7 @@
 │   │   │   │   ├── restriction.dto.ts
 │   │   │   │   ├── subscription.dto.ts
 │   │   │   │   ├── usage.dto.ts
+│   │   │   │   ├── zone-publication.dto.ts
 │   │   │   │   └── zone.dto.ts
 │   │   │   ├── env.d.ts
 │   │   │   ├── error.vue
@@ -459,6 +639,7 @@
 │   │   │   │       └── index.vue
 │   │   │   ├── plugins
 │   │   │   │   ├── matomo.client.ts
+│   │   │   │   ├── sentry.client.ts
 │   │   │   │   └── vue-dsfr.ts
 │   │   │   ├── public
 │   │   │   │   ├── accueil_background.svg
@@ -483,38 +664,101 @@
 │   │   │   ├── store
 │   │   │   │   ├── address.ts
 │   │   │   │   ├── refData.ts
-│   │   │   │   └── zone.ts
+│   │   │   │   ├── zone.ts
+│   │   │   │   └── zonePublication.ts
 │   │   │   └── utils
-│   │   │       └── index.ts
+│   │   │       ├── address-combobox.ts
+│   │   │       ├── date-sort.ts
+│   │   │       ├── fetch-response.ts
+│   │   │       ├── focus-management.ts
+│   │   │       ├── form-validation.ts
+│   │   │       ├── index.ts
+│   │   │       ├── map-locale.ts
+│   │   │       ├── map-popup-content.ts
+│   │   │       ├── modal-scroll-lock.ts
+│   │   │       ├── new-window-links.ts
+│   │   │       ├── pmtiles.ts
+│   │   │       ├── pwa-cache-policy.ts
+│   │   │       ├── retryable-initializer.ts
+│   │   │       ├── retryable-task.ts
+│   │   │       ├── tab-navigation.ts
+│   │   │       ├── table-pagination.ts
+│   │   │       ├── tally-popup.ts
+│   │   │       ├── zone-publication.ts
+│   │   │       └── zone-source-transition.ts
 │   │   ├── cypress
 │   │   │   ├── e2e
 │   │   │   │   ├── accueil.cy.js
+│   │   │   │   ├── breadcrumb.cy.js
+│   │   │   │   ├── carte.cy.js
 │   │   │   │   ├── gestes.cy.js
+│   │   │   │   ├── rgaa-address-combobox.cy.js
+│   │   │   │   ├── rgaa-documents-institutional.cy.js
+│   │   │   │   ├── rgaa-faq.cy.js
+│   │   │   │   ├── rgaa-gestures.cy.js
+│   │   │   │   ├── rgaa-map-controls-integration.cy.js
+│   │   │   │   ├── rgaa-map-table.cy.js
+│   │   │   │   ├── rgaa-map-tabs-responsive.cy.js
+│   │   │   │   ├── rgaa-modal-dialogs.cy.js
+│   │   │   │   ├── rgaa-navigation.cy.js
+│   │   │   │   ├── rgaa-public-forms.cy.js
+│   │   │   │   ├── rgaa-public-html-safety.cy.js
+│   │   │   │   ├── rgaa-shared-content.cy.js
+│   │   │   │   ├── rgaa-situation-selectors.cy.js
+│   │   │   │   ├── rgaa-tally-feedback.cy.js
 │   │   │   │   ├── situationEntreprise.cy.js
 │   │   │   │   └── situationParticulier.cy.js
 │   │   │   ├── fixtures
 │   │   │   │   └── example.json
 │   │   │   └── support
 │   │   │       ├── commands.ts
-│   │   │       └── e2e.ts
+│   │   │       ├── e2e.ts
+│   │   │       └── public-situation.js
 │   │   ├── cypress.config.ts
 │   │   ├── env.example
+│   │   ├── eslint.config.js
 │   │   ├── nginx.conf
 │   │   ├── nuxt.config.ts
 │   │   ├── nyc.config.js
+│   │   ├── package-lock.json
 │   │   ├── package.json
 │   │   ├── prettier.config.cjs
 │   │   ├── purgecss.config.js
 │   │   ├── renovate.json
+│   │   ├── test
+│   │   │   ├── a11y-colors.test.mjs
+│   │   │   ├── address-combobox.test.mjs
+│   │   │   ├── document-pages-accessibility.test.mjs
+│   │   │   ├── faq-accessibility.test.mjs
+│   │   │   ├── fetch-response.test.mjs
+│   │   │   ├── focus-management.test.mjs
+│   │   │   ├── form-validation.test.mjs
+│   │   │   ├── gesture-semantics.test.mjs
+│   │   │   ├── image-alternatives.test.mjs
+│   │   │   ├── map-locale.test.mjs
+│   │   │   ├── map-popup-safety.test.mjs
+│   │   │   ├── map-table-accessibility.test.mjs
+│   │   │   ├── modal-accessibility.test.mjs
+│   │   │   ├── modal-scroll-lock.test.mjs
+│   │   │   ├── new-window-links.test.mjs
+│   │   │   ├── public-html-safety.test.mjs
+│   │   │   ├── pwa-cache-policy.test.mjs
+│   │   │   ├── retryable-initializer.test.mjs
+│   │   │   ├── retryable-task.test.mjs
+│   │   │   ├── situation-selectors-accessibility.test.mjs
+│   │   │   ├── tab-navigation.test.mjs
+│   │   │   ├── tally-popup.test.mjs
+│   │   │   ├── zone-publication.test.mjs
+│   │   │   └── zone-source-transition.test.mjs
 │   │   ├── tsconfig.json
-│   │   ├── vue-shim.d.ts
-│   │   └── yarn.lock
+│   │   └── vue-shim.d.ts
 │   └── frontend-admin
 │       ├── .buildpacks
 │       ├── .editorconfig
 │       ├── .eslintignore
 │       ├── .eslintrc.js
 │       ├── .gitignore
+│       ├── .npmrc
 │       ├── .prettierrc
 │       ├── .vscode
 │       │   ├── extensions.json
@@ -619,6 +863,7 @@
 │       │   │       └── list.vue
 │       │   ├── composables
 │       │   │   ├── useApi.ts
+│       │   │   ├── useApiErrorHandler.ts
 │       │   │   ├── useClickOutside.ts
 │       │   │   ├── useCustomFetch.ts
 │       │   │   └── useUtils.ts
@@ -679,6 +924,7 @@
 │       │   ├── plugins
 │       │   │   ├── chart.ts
 │       │   │   ├── load-context.ts
+│       │   │   ├── sentry.client.ts
 │       │   │   └── vue-dsfr.ts
 │       │   ├── public
 │       │   │   ├── accueil_1.png
@@ -715,12 +961,21 @@
 │       │       └── e2e.ts
 │       ├── cypress.config.ts
 │       ├── env.example
+│       ├── eslint.config.js
 │       ├── nginx.conf.erb
 │       ├── nuxt.config.ts
+│       ├── package-lock.json
 │       ├── package.json
 │       ├── purgecss.config.js
-│       ├── tsconfig.json
-│       └── yarn.lock
+│       └── tsconfig.json
+├── compose.yaml
+├── docker
+│   └── minio
+│       └── cors.json
+├── docs
+│   ├── accessibilite
+│   │   └── RGAA_REMEDIATION_CODEX.md
+│   └── zone-publication-rollout.md
 ├── global_shared
 │   ├── entities
 │   │   ├── abonnement_mail.entity.ts
@@ -736,8 +991,15 @@
 │   │   ├── parametres.entity.ts
 │   │   ├── region.entity.ts
 │   │   ├── restriction.entity.ts
+│   │   ├── sandre_zone_alias.entity.ts
+│   │   ├── sandre_zone_sync_batch.entity.ts
+│   │   ├── sandre_zone_sync_decision.entity.ts
+│   │   ├── sandre_zone_sync_state.entity.ts
 │   │   ├── session.entity.ts
 │   │   ├── statistic.entity.ts
+│   │   ├── statistic_cache_artifact.entity.ts
+│   │   ├── statistic_cache_publication.entity.ts
+│   │   ├── statistic_cache_state.entity.ts
 │   │   ├── statistic_commune.entity.ts
 │   │   ├── statistic_departement.entity.ts
 │   │   ├── thematique.entity.ts
@@ -746,14 +1008,42 @@
 │   │   ├── user.entity.ts
 │   │   ├── zone_alerte.entity.ts
 │   │   ├── zone_alerte_computed.entity.ts
-│   │   └── zone_alerte_computed_historic.entity.ts
-│   └── types
-│       ├── arrete_cadre.type.ts
-│       ├── arrete_municipal.type.ts
-│       ├── niveau_gravite.type.ts
-│       ├── parameters.type.ts
-│       ├── statut_arrete_restriction.type.ts
-│       └── user-role.type.ts
+│   │   ├── zone_alerte_computed_historic.entity.ts
+│   │   ├── zone_publication.entity.ts
+│   │   ├── zone_publication_aggregate.entity.ts
+│   │   ├── zone_publication_commune.entity.ts
+│   │   ├── zone_publication_instance.entity.ts
+│   │   ├── zone_publication_source_state.entity.ts
+│   │   ├── zone_publication_state.entity.ts
+│   │   └── zone_publication_zone.entity.ts
+│   ├── types
+│   │   ├── arrete_cadre.type.ts
+│   │   ├── arrete_municipal.type.ts
+│   │   ├── niveau_gravite.type.ts
+│   │   ├── parameters.type.ts
+│   │   ├── statut_arrete_restriction.type.ts
+│   │   └── user-role.type.ts
+│   └── zone_publication_materialization.ts
+├── package-lock.json
 ├── package.json
-└── yarn.lock
-184 directories, 574 files
+└── scripts
+    ├── inspect-zip-dates.mjs
+    ├── lint-changed.mjs
+    ├── smoke-admin-zone-publication.mjs
+    ├── smoke-admin.mjs
+    ├── smoke-admin.test.mjs
+    ├── smoke-browser-startup.mjs
+    ├── smoke-browser-startup.test.mjs
+    ├── smoke-browser-tarbes.mjs
+    ├── smoke-browser-tarbes.test.mjs
+    ├── smoke-browser.mjs
+    ├── smoke-datagouv.mjs
+    ├── smoke-public-zone-publication.mjs
+    ├── smoke-public.mjs
+    ├── smoke-public.test.mjs
+    ├── smoke-statistics-policy.mjs
+    ├── smoke-statistics.mjs
+    ├── smoke-statistics.test.mjs
+    ├── verify-admin-migrations.mjs
+    └── verify-pwa-build.mjs
+199 directories, 849 files
