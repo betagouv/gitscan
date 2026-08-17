@@ -32,11 +32,16 @@
 │       │   │                       ├── SecurityConfig.java
 │       │   │                       ├── config
 │       │   │                       │   ├── AdumApiProperties.java
+│       │   │                       │   ├── EuraxessProperties.java
+│       │   │                       │   ├── FresqApiProperties.java
 │       │   │                       │   └── IndexationConfig.java
 │       │   │                       ├── controller
 │       │   │                       │   ├── AlbertSearchController.java
 │       │   │                       │   ├── AngularForwardController.java
 │       │   │                       │   ├── ContactController.java
+│       │   │                       │   ├── EuraxessController.java
+│       │   │                       │   ├── EuraxessFeedExceptionHandler.java
+│       │   │                       │   ├── ExportController.java
 │       │   │                       │   ├── FilterController.java
 │       │   │                       │   ├── PropositionTheseController.java
 │       │   │                       │   ├── ScalewaySearchController.java
@@ -50,10 +55,14 @@
 │       │   │                       │   ├── Attachment.java
 │       │   │                       │   ├── ChunkWithType.java
 │       │   │                       │   ├── ContactRequest.java
+│       │   │                       │   ├── EcoleDoctoraleDto.java
+│       │   │                       │   ├── ExportPropositionTheseDTO.java
+│       │   │                       │   ├── ExportResponseDTO.java
 │       │   │                       │   ├── PropositionTheseDto.java
 │       │   │                       │   ├── TheseSemanticDocument.java
 │       │   │                       │   └── VectorSearchHit.java
 │       │   │                       ├── entity
+│       │   │                       │   ├── EcoleDoctorale.java
 │       │   │                       │   ├── PropositionThese.java
 │       │   │                       │   ├── ScalewayQueryLog.java
 │       │   │                       │   └── SujetEmbedding.java
@@ -64,11 +73,22 @@
 │       │   │                       ├── exception
 │       │   │                       │   └── ResourceNotFoundException.java
 │       │   │                       ├── mapper
-│       │   │                       │   └── PropositionTheseMapper.java
+│       │   │                       │   ├── EcoleDoctoraleMapper.java
+│       │   │                       │   ├── EuraxessFeedMapper.java
+│       │   │                       │   ├── PropositionTheseMapper.java
+│       │   │                       │   └── ResearchFieldDictionary.java
 │       │   │                       ├── model
 │       │   │                       │   ├── AdumResponse.java
-│       │   │                       │   └── AmethisResponse.java
+│       │   │                       │   ├── AmethisResponse.java
+│       │   │                       │   ├── FresqDiplomeDetail.java
+│       │   │                       │   ├── FresqEtablissement.java
+│       │   │                       │   ├── FresqEtablissementResult.java
+│       │   │                       │   ├── FresqReferentielItem.java
+│       │   │                       │   ├── FresqSearchContent.java
+│       │   │                       │   ├── FresqSearchResult.java
+│       │   │                       │   └── FresqTokenResponse.java
 │       │   │                       ├── repository
+│       │   │                       │   ├── EcoleDoctoraleRepository.java
 │       │   │                       │   ├── PropositionTheseRepository.java
 │       │   │                       │   ├── ScalewayQueryLogRepository.java
 │       │   │                       │   └── SujetEmbeddingRepository.java
@@ -76,7 +96,10 @@
 │       │   │                       │   ├── AdumScheduler.java
 │       │   │                       │   ├── AlbertIndexationScheduler.java
 │       │   │                       │   ├── AmethisScheduler.java
-│       │   │                       │   └── EmbeddingScheduler.java
+│       │   │                       │   ├── EmbeddingScheduler.java
+│       │   │                       │   └── FresqSyncScheduler.java
+│       │   │                       ├── security
+│       │   │                       │   └── ApiKeyFilter.java
 │       │   │                       └── service
 │       │   │                           ├── AdumApiService.java
 │       │   │                           ├── AlbertChunkDeletionService.java
@@ -89,7 +112,11 @@
 │       │   │                           ├── BlocExtractor.java
 │       │   │                           ├── BrevoEmailService.java
 │       │   │                           ├── EmbeddingIndexationService.java
+│       │   │                           ├── EuraxessEmptyFeedException.java
+│       │   │                           ├── EuraxessFeedService.java
+│       │   │                           ├── ExportService.java
 │       │   │                           ├── FilterService.java
+│       │   │                           ├── FresqApiService.java
 │       │   │                           ├── PropositionTheseService.java
 │       │   │                           ├── ScalewayEmbeddingService.java
 │       │   │                           ├── SearchCriteriaExtractor.java
@@ -110,17 +137,31 @@
 │       │       ├── db
 │       │       │   └── migration
 │       │       │       └── V2__alter_financement_types.sql
+│       │       ├── euraxess
+│       │       │   ├── JobOpportunitySchema.codegen.xsd
+│       │       │   └── JobOpportunitySchema.xsd
 │       │       └── logback-spring.xml
 │       └── test
-│           └── java
-│               └── fr
-│                   └── dinum
-│                       └── beta
-│                           └── gouv
-│                               └── doctorat
-│                                   ├── DoctoratGouvBackendApplicationTests.java
-│                                   └── service
-│                                       └── AdumApiServiceTest.java
+│           ├── java
+│           │   └── fr
+│           │       └── dinum
+│           │           └── beta
+│           │               └── gouv
+│           │                   └── doctorat
+│           │                       ├── DoctoratGouvBackendApplicationTests.java
+│           │                       ├── controller
+│           │                       │   └── EuraxessControllerTest.java
+│           │                       ├── euraxess
+│           │                       │   └── EuraxessSchemaValidationTest.java
+│           │                       ├── mapper
+│           │                       │   └── EuraxessFeedMapperTest.java
+│           │                       ├── security
+│           │                       │   └── EuraxessFeedSecurityTest.java
+│           │                       └── service
+│           │                           ├── AdumApiServiceTest.java
+│           │                           └── EuraxessFeedServiceTest.java
+│           └── resources
+│               └── application.properties
 ├── doctorat-gouv-frontend
 │   ├── .editorconfig
 │   ├── .gitignore
@@ -285,4 +326,4 @@
 ├── pom.xml
 ├── start.sh
 └── system.properties
-58 directories, 229 files
+65 directories, 263 files
