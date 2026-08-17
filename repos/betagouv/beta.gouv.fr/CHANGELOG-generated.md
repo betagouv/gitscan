@@ -1,14 +1,11 @@
-## Changelog : beta.gouv.fr (30 derniers jours, au 07 août 2026)
+## Changelog : beta.gouv.fr (30 derniers jours, au 14 août 2026)
 
 ### Résumé
-Les récentes évolutions se concentrent sur l'amélioration de l'information de recrutement, l'ajustement de la navigation et l'optimisation du référencement (SEO) du site.
+Les récentes évolutions du site permettent une meilleure visibilité sur les modalités d'incubation des produits et apportent des précisions sur la structure de l'organisation dans la section "Nous rejoindre". Le projet a également bénéficié de nombreuses mises à jour de sa base de données.
 
 ### Évolutions fonctionnelles
-- **Recrutement** : Ajout d'un encart concernant l'EIG dans la section "Nous rejoindre" ([#21632](https://github.com/betagouv/beta.gouv.fr/pull/21632)).
-- **Navigation** : Mise à jour du menu du site ([#21628](https://github.com/betagouv/beta.gouv.fr/pull/21628)).
-- **Référencement (SEO)** : Désactivation de l'indexation par les moteurs de recherche pour la page `/community` ([#21629](https://github.com/betagouv/beta.gouv.fr/pull/21629)).
-- **Contenu** : Actualisation de la liste des startups ([#21625](https://github.com/betagouv/beta.gouv.fr/pull/21625)).
+- Prise en charge de la co-incubation pour les produits [#21649](https://github.com/betagouv/beta.gouv.fr/pull/21649)
+- Ajout d'un encart d'information concernant l'EIG dans la section "Nous rejoindre" [#21632](https://github.com/betagouv/beta.gouv.fr/pull/21632)
 
-### Autres changements
-- **Nettoyage** : Suppression de fichiers de contenu d'auteurs obsolètes ([#21620](https://github.com/betagouv/beta.gouv.fr/pull/21620)).
-- **Maintenance** : Mises à jour régulières de la base de données via des processus automatisés.
+### Évolutions techniques
+- Maintenance et mises à jour régulières du schéma de la base de données [#21631](https://github.com/betagouv/beta.gouv.fr/pull/21631) à [#21655](https://github.com/betagouv/beta.gouv.fr/pull/21655)
