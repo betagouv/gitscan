@@ -1,21 +1,22 @@
-## Changelog : st-ansible (30 derniers jours, au 05/08/2026)
+## Changelog : st-ansible (30 derniers jours, au 10 août 2026)
 
 ### Résumé
-Ce mois-ci, le projet a franchi une étape majeure avec l'intégration de `st-cli` pour simplifier la gestion des déploiements. Les capacités de l'outil ont été enrichies, notamment avec la gestion des enregistrements pour les réunions et une meilleure visibilité lors de l'exécution des tâches Ansible grâce à un nouvel affichage compact.
+Cette période a été marquée par l'intégration de l'outil `st-cli`, l'amélioration de la visibilité des tâches Ansible via un nouveau mode d'affichage compact, et la mise à jour de plusieurs composants de sécurité et de services (ClamAV, Valkey, Rspamd).
 
 ### Évolutions fonctionnelles
-- **Gestion des environnements** : Intégration de `st-cli` pour faciliter le pilotage des déploiements et des environnements.
-- **Composant Meet** : Ajout de la prise en charge des enregistrements de réunions.
-- **Sécurité** : Extension de l'utilisation des marqueurs `@openbao` aux champs non-secrets.
-- **Correction** : Rectification du port par défaut du contrôleur Rspamd.
+- **Intégration de la CLI** : Premier commit et intégration de l'outil `st-cli`.
+- **Nouvelle interface Ansible** : Ajout d'un callback "compact" pour un affichage plus clair et concis des résultats de tâches.
+- **Amélioration de la CLI** : Possibilité d'utiliser des marqueurs `@openbao` sur des champs non-secrets.
+- **Module Meet** : Ajout du support pour les enregistrements.
 
 ### Évolutions techniques
-- **Interface Ansible** : Création et amélioration d'un nouveau plugin de callback ("compact") permettant un affichage plus clair et concis des tâches et de la progression.
-- **Workflow de mise à jour** : Correction du processus de mise à jour pour Restic.
-- **Automatisation CI/CD** : 
-    - Optimisation de la publication des tags pour suivre la collection `st-cli`.
-    - Mise en place de `antsibull-changelog` pour la génération automatique des notes de version.
-    - Intégration de Renovate pour la gestion automatisée des dépendances.
+- **Mise à jour des services (conteneurs)** : Actualisation des images Docker pour ClamAV (v1.5.4), Valkey (v9.1.1) et Rspamd (v4.1.4).
+- **CI/CD & Automatisation** :
+    - Mise en place de `antsibull-changelog` pour l'automatisation des notes de version.
+    - Configuration de Renovate pour la gestion des dépendances.
+    - Optimisation de la gestion des tags pour la CLI (push uniquement du tag `latest`).
+- **Workflows** : Amélioration du workflow de mise à jour de Restic.
 
 ### Autres changements
-- **Documentation** : Amélioration de la documentation de l'interface en ligne de commande (CLI), des procédures de mise à jour et mise à jour du README avec les références à `st-cli`.
+- **Documentation** : Amélioration de la documentation de la CLI, des instructions de mise à jour et ajout de références à `st-cli` dans le README.
+- **Maintenance** : Corrections mineures sur le rendu du changelog.
