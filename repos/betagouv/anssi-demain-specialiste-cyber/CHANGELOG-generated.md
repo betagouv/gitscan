@@ -1,17 +1,21 @@
 ## Changelog : anssi-demain-specialiste-cyber (30 derniers jours, au 29 juillet 2026)
 
 ### Résumé
-Ce mois-ci, le site s'est enrichi de nouvelles pages dédiées aux challenges "Passe ton hack d'abord" et "Opération Cactus". Des améliorations visuelles importantes ont été apportées aux jeux existants pour garantir une meilleure expérience sur tous les écrans (mobile, tablette, ordinateur), tandis que la sécurité de la plateforme et le système de suivi des consentements ont été renforcés.
+Les récentes évolutions se sont concentrées sur l'amélioration de l'expérience utilisateur et de l'ergonomie visuelle, particulièrement pour les modules "Passetonhack" et "Cactus". L'interface est désormais plus cohérente et mieux adaptée aux mobiles. Par ailleurs, de nouveaux outils de suivi ont été intégrés pour mieux analyser l'engagement des utilisateurs.
 
 ### Évolutions fonctionnelles
-- **Nouveaux contenus et pages** : Création complète des pages pour les dispositifs "Passe ton hack d'abord" et "Opération Cactus", incluant les sections de présentation, les avantages, les témoignages et les modalités de participation.
-- **Amélioration de l'expérience de jeu** : Optimisation de l'interface et de la mise en page pour les jeux "Cactus" et "Passe ton Hack" (ajustements du centrage, de l'espacement, du responsive et de la gestion des retours à la ligne).
-- **Suivi et conformité** : Implémentation d'un pixel de suivi et gestion de l'enregistrement des consentements via Brevo.
-- **Mises à jour éditoriales** : Actualisation de la bannière du webinaire CyberEnJeux et réactivation du mode d'affichage élargi ainsi que des descriptions.
+- **Amélioration de l'interface et de l'ergonomie** :
+    - Réactivation du mode élargi et de l'affichage des descriptions.
+    - Optimisation visuelle du module **Passetonhack** : ajustement des espacements, centrage des étapes du challenge et du bouton d'inscription, correction des images du héros et transformation du lien "Inscrire mes élèves" en lien externe.
+    - Optimisation visuelle du module **Cactus** : centrage des illustrations sur mobile, mise en valeur des titres et mise en italique du terme "phishing".
+    - Amélioration de la lisibilité des contenus de jeux via une meilleure gestion des retours à la ligne.
+- **Contenu et navigation** :
+    - Regroupement des dispositifs phares pour une navigation plus intuitive.
+    - Mise à jour de la bannière promotionnelle pour le webinaire CyberEnJeux.
+- **Suivi et marketing** :
+    - Implémentation d'un pixel de suivi incluant la gestion du consentement et l'enregistrement des données dans Brevo.
 
 ### Évolutions techniques
-- **Sécurité renforcée** : 
-    - Sécurisation de la chaîne CI/CD par la désactivation des identifiants Git des dépôts clonés et la validation des configurations.
-    - Protection contre les injections de code via l'expansion de templates.
-    - Suppression d'exceptions liées à des versions spécifiques.
-- **Maintenance** : Correction de commandes liées à l'outil de gestion de paquets pnpm.
+- **Maintenance et sécurité** :
+    - Correction d'erreurs de compilation liées à l'intégration du système de suivi (pixel).
+    - Nettoyage du module de sécurité par le retrait de versions spécifiques d'exceptions.
