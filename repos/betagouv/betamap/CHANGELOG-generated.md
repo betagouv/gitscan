@@ -1,7 +1,7 @@
-## Changelog : betamap (30 derniers jours, au 08/08/2026)
+## Changelog : betamap (30 derniers jours, au 15 août 2026)
 
 ### Résumé
-Les récentes interventions ont principalement porté sur l'actualisation des données afin de garantir que la visualisation des startups de l'écosystème reste précise et à jour.
+Les récentes interventions ont porté sur l'actualisation des données relatives aux startups de l'État, garantissant ainsi une représentation fidèle et à jour de l'écosystème numérique dans l'outil de visualisation.
 
 ### Évolutions fonctionnelles
-- Mise à jour régulière de la base de données des startups présentées sur la plateforme.
+- Actualisation régulière de la liste des startups présentées sur la plateforme.
