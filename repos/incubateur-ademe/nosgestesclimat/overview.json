@@ -1,49 +1,54 @@
 {
   "url": "https://github.com/incubateur-ademe/nosgestesclimat",
   "name": "nosgestesclimat",
-  "description": "Modèle de calcul de l'empreinte climat personnelle basé sur le moteur Publicodes. Ce projet fournit les règles métier pour simuler l'impact environnemental des modes de vie.",
+  "description": "Modèle de calcul de l'empreinte climat personnelle basé sur le moteur de règles Publicodes. Il permet de simuler l'impact environnemental des comportements quotidiens.",
   "language": "TypeScript",
   "features": [
     "Simulation & Calcul",
-    "Intelligence Artificielle & NLP",
     "Données & Schémas",
-    "Accessibilité & i18n"
+    "Intelligence Artificielle & NLP"
   ],
   "audience": "Développeurs",
   "dependencies": [
-    "publicodes",
-    "express",
-    "socket.io",
-    "ramda",
-    "yaml"
+    "Publicodes",
+    "Express",
+    "Socket.io",
+    "Ramda",
+    "Yargs"
   ],
   "components": [
     "Publicodes & Règles métier",
     "TypeScript / JavaScript",
-    "Bibliothèques & Packages",
+    "Tests",
     "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
       "none"
-    ],
-    "providers": []
+    ]
   },
-  "tests": "Tests de personas, tests d'optimisation et tests de traduction via des scripts personnalisés.",
+  "tests": [
+    "pnpm test:personas",
+    "pnpm test:optim",
+    "pnpm test:translation",
+    "pnpm test:bornes",
+    "pnpm test:pedagogie"
+  ],
   "workflows": [
     "upload-compilation-result.yaml",
     "pr-updater.yaml",
     "packaging.yaml"
   ],
   "lastActivity": "2026-08-07T17:59:13+02:00",
-  "status": "maintained",
+  "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
     "Environnement & Énergie",
     "TypeScript",
     "JavaScript",
-    "Documentation",
-    "CI/CD & GitHub Actions"
+    "CI/CD & GitHub Actions",
+    "Données & Open Data",
+    "Tests & Qualité"
   ]
 }
