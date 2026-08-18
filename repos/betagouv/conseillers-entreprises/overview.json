@@ -1,63 +1,68 @@
 {
   "url": "https://github.com/betagouv/conseillers-entreprises",
   "name": "conseillers-entreprises",
-  "description": "Le Service Public Conseillers entreprises permet à l’État, aux Régions et aux organismes publics de développer leur rôle de conseil auprès des TPE & PME. Il vise à faciliter la mise en relation entre les entreprises et les conseillers appropriés.",
+  "description": "Plateforme permettant à l'État, aux Régions et aux organismes publics de développer leur rôle de conseil auprès des TPE et PME.",
   "language": "Ruby",
   "features": [
-    "Gestion des utilisateurs & Permissions",
-    "Recherche & Filtres",
-    "Notifications & Alertes",
     "API & Intégrations",
-    "Statistiques & Rapports"
+    "Statistiques & Rapports",
+    "Authentification & Accès",
+    "Administration & Backoffice",
+    "Recherche & Filtres",
+    "Gestion des utilisateurs & Permissions"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "Rails",
+    "Ruby on Rails",
     "PostgreSQL",
-    "Puma",
+    "Sidekiq",
+    "Redis",
     "Devise",
     "ActiveAdmin",
-    "Sidekiq",
-    "Highcharts",
-    "Redis"
+    "Stimulus",
+    "Turbo",
+    "AWS S3",
+    "AppSignal"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Ruby on Rails",
-    "Microservices & Architecture",
-    "Documentation & Schémas",
-    "CI/CD & Déploiement"
+    "Design System (DSFR & UI libs)",
+    "Tests",
+    "Templates & Moteurs de rendu",
+    "Authentification (composant)",
+    "Intégrations services externes",
+    "Reporting & BI"
   ],
   "auth": {
     "methods": [
-      "email-password"
+      "email-password",
+      "api-key",
+      "session"
     ]
   },
   "tests": [
     "RSpec",
     "Capybara",
-    "Selenium"
+    "Selenium",
+    "Webmock"
   ],
   "workflows": [
     "CircleCI"
   ],
-  "lastActivity": "2026-07-30T09:40:00+02:00",
-  "status": "active",
+  "lastActivity": "2026-08-13T10:37:25+02:00",
+  "status": "maintained",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
   "tags": [
-    "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "Ruby on Rails",
     "Bases de données SQL",
-    "Sécurité & Auth",
-    "Environnement & Énergie"
+    "Design System & UI",
+    "Ruby",
+    "Ruby on Rails",
+    "Documentation",
+    "Accessibilité",
+    "Reporting & BI"
   ]
 }

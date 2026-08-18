@@ -897,6 +897,7 @@
 │       │   └── thank_you.html.haml
 │       ├── conseiller
 │       │   ├── cooperations
+│       │   │   ├── _header.html.haml
 │       │   │   ├── _menu.html.haml
 │       │   │   ├── _stats_filters.haml
 │       │   │   ├── matches.html.haml
@@ -1127,7 +1128,6 @@
 │       ├── reports
 │       │   ├── _header.html.haml
 │       │   ├── _menu.html.haml
-│       │   ├── _search.haml
 │       │   ├── matches.html.haml
 │       │   └── stats.html.haml
 │       ├── shared
@@ -1286,36 +1286,6 @@
 ├── config.ru
 ├── db
 │   ├── migrate
-│   │   ├── 20250107135215_create_territorial_zones.rb
-│   │   ├── 20250109094556_add_index_for_diagnoses_step_created_at.rb
-│   │   ├── 20250123101225_add_provenance_detail_to_solicitations.rb
-│   │   ├── 20250123141418_migrate_territories_to_territorial_zones.rb
-│   │   ├── 20250205165906_add_insee_code_to_facilities.rb
-│   │   ├── 20250219122842_add_display_matches_stats_to_cooperation.rb
-│   │   ├── 20250303155501_change_quarterly_report_to_activity_report.rb
-│   │   ├── 20250513130727_create_tih_questions.rb
-│   │   ├── 20250519095209_add_paused_at_to_landings.rb
-│   │   ├── 20250602123325_migrate_territories_for_themes.rb
-│   │   ├── 20250606113927_add_absence_end_at_to_users.rb
-│   │   ├── 20250618095527_add_external_to_cooperations.rb
-│   │   ├── 20250704084013_drop_referencement_coverage_table.rb
-│   │   ├── 20250708080921_create_user_rights_for_territories.rb
-│   │   ├── 20250728143011_add_logo_for_les_clubs_sportif_engages.rb
-│   │   ├── 20251027084019_not_null_logos.rb
-│   │   ├── 20251125162726_new_report_for_cooperation_solicitations.rb
-│   │   ├── 20251219102410_remove_commune_and_territory.rb
-│   │   ├── 20260106143520_add_imported_at_columns.rb
-│   │   ├── 20260106153226_fix_schema.rb
-│   │   ├── 20260113150217_add_insee_code_to_solicitations.rb
-│   │   ├── 20260126152754_add_insee_code_format_constraint.rb
-│   │   ├── 20260216135245_add_information_banner_to_landing.rb
-│   │   ├── 20260218085238_remove_requires_fields.rb
-│   │   ├── 20260303133123_add_missing_indexes_for_solicitations_performance.rb
-│   │   ├── 20260303150007_add_index_on_solicitations_status_and_completed_at.rb
-│   │   ├── 20260310152229_add_service_name_to_active_storage_blobs.active_storage.rb
-│   │   ├── 20260310152230_create_active_storage_variant_records.active_storage.rb
-│   │   ├── 20260310152231_remove_not_null_on_active_storage_blobs_checksum.active_storage.rb
-│   │   ├── 20260330132110_add_index_for_solicitation_email_and_siret.rb
 │   │   ├── 20260421130510_remove_is_global_zone_to_expert.rb
 │   │   ├── 20260423101238_add_satisfaction_third_question.rb
 │   │   ├── 20260423172541_remove_support_subject.rb
@@ -1364,6 +1334,9 @@
 │       │   └── .keep
 │       ├── migrations
 │       │   └── move_filters_to_institution.rake
+│       ├── production_announcement.rake
+│       ├── production_announcement_prompt.md
+│       ├── production_helpers.rb
 │       ├── push_to_production.rake
 │       ├── rattrapage_analyse_sollicitations.rake
 │       ├── rattrapage_api_rne.rake
@@ -1803,4 +1776,4 @@
 ├── tmp
 │   └── .keep
 └── yarn.lock
-296 directories, 1518 files
+296 directories, 1491 files
