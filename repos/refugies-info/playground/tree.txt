@@ -106,6 +106,8 @@
 │   │   │   │   │   │   │   ├── activity-logs
 │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   ├── layout.tsx
+│   │   │   │   │   │   │   ├── metadata
+│   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   ├── columns.tsx
 │   │   │   │   │   │   ├── error.tsx
@@ -120,6 +122,8 @@
 │   │   │   │   │       ├── page.tsx
 │   │   │   │   │       └── workflow-client.tsx
 │   │   │   │   ├── actions
+│   │   │   │   │   ├── avatars.test.ts
+│   │   │   │   │   ├── avatars.ts
 │   │   │   │   │   ├── di.ts
 │   │   │   │   │   ├── sidebar.ts
 │   │   │   │   │   └── users.ts
@@ -171,6 +175,8 @@
 │   │   │   │   │   ├── AppPagination.tsx
 │   │   │   │   │   ├── AppSidebar.tsx
 │   │   │   │   │   ├── AssigneeDropdown.tsx
+│   │   │   │   │   ├── EditableTextareaCell.tsx
+│   │   │   │   │   ├── ValueActionButton.tsx
 │   │   │   │   │   └── WorkStatusDropdown.tsx
 │   │   │   │   ├── document-editor
 │   │   │   │   │   ├── DocumentContext.tsx
@@ -204,7 +210,6 @@
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   └── slash-menu-config.tsx
 │   │   │   │   │   ├── metadata
-│   │   │   │   │   │   ├── FieldBadge.tsx
 │   │   │   │   │   │   ├── MetadataContext.tsx
 │   │   │   │   │   │   ├── MetadataRow.tsx
 │   │   │   │   │   │   ├── MetadataTable.tsx
@@ -243,6 +248,8 @@
 │   │   │   │   │       ├── ContentContext.tsx
 │   │   │   │   │       ├── DebugPanel.tsx
 │   │   │   │   │       ├── DocumentLayout.tsx
+│   │   │   │   │       ├── DocumentPublicationStatus.tsx
+│   │   │   │   │       ├── DocumentStatus.tsx
 │   │   │   │   │       ├── EditorNavigation.tsx
 │   │   │   │   │       ├── HeaderFicheConnected.tsx
 │   │   │   │   │       ├── MarkdownViewer.inner.tsx
@@ -270,11 +277,15 @@
 │   │   │   │       ├── TranslationContext.tsx
 │   │   │   │       ├── TranslationEditorPane.tsx
 │   │   │   │       ├── TranslationLayout.tsx
+│   │   │   │       ├── TranslationRegenerateButton.tsx
 │   │   │   │       ├── TranslationSidebar.tsx
 │   │   │   │       ├── TranslationStatus.tsx
 │   │   │   │       ├── TranslationTopBar.tsx
-│   │   │   │       └── hooks
-│   │   │   │           └── useTranslationPublicationRealtime.ts
+│   │   │   │       ├── hooks
+│   │   │   │       │   └── useTranslationPublicationRealtime.ts
+│   │   │   │       └── metadata
+│   │   │   │           ├── TranslationMetadataTable.tsx
+│   │   │   │           └── TranslationMetadataView.tsx
 │   │   │   ├── config
 │   │   │   │   └── features.ts
 │   │   │   ├── contexts
@@ -284,6 +295,7 @@
 │   │   │   │   └── useUrlFilters.ts
 │   │   │   ├── lib
 │   │   │   │   ├── auth.ts
+│   │   │   │   ├── authz.ts
 │   │   │   │   ├── column-factories.tsx
 │   │   │   │   ├── cookies.ts
 │   │   │   │   ├── document-column-factories.tsx
@@ -320,6 +332,7 @@
 │   │   │   │   ├── helpers.ts
 │   │   │   │   ├── metadata-actions.ts
 │   │   │   │   ├── note-actions.ts
+│   │   │   │   ├── notifications.ts
 │   │   │   │   ├── permission-helper.ts
 │   │   │   │   ├── profiles.ts
 │   │   │   │   ├── publication-urls.ts
@@ -483,6 +496,13 @@
 │   │   │   ├── word-counter.test.ts
 │   │   │   └── word-counter.ts
 │   │   └── tsconfig.json
+│   ├── cloudinary
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── client.test.ts
+│   │   │   ├── client.ts
+│   │   │   └── index.ts
+│   │   └── tsconfig.json
 │   ├── di
 │   │   ├── README.md
 │   │   ├── package.json
@@ -553,7 +573,8 @@
 │   │   ├── src
 │   │   │   ├── constants
 │   │   │   │   ├── languages.ts
-│   │   │   │   └── model.ts
+│   │   │   │   ├── model.ts
+│   │   │   │   └── roles.ts
 │   │   │   ├── index.ts
 │   │   │   ├── lib
 │   │   │   │   ├── markdown.ts
@@ -564,14 +585,18 @@
 │   │   │   │   └── workflow-status.ts
 │   │   │   ├── logger.ts
 │   │   │   ├── schemas
+│   │   │   │   ├── email.test.ts
+│   │   │   │   ├── email.ts
 │   │   │   │   └── metadata-ri.ts
 │   │   │   └── types
 │   │   │       ├── activity-log.ts
 │   │   │       ├── content.ts
+│   │   │       ├── date-filter.ts
 │   │   │       ├── date.ts
 │   │   │       ├── document.ts
 │   │   │       ├── index.ts
 │   │   │       ├── metadata-ri.ts
+│   │   │       ├── notification.ts
 │   │   │       └── search.ts
 │   │   ├── tests
 │   │   │   ├── metadata.test.ts
@@ -644,6 +669,7 @@
 │   │   │   │   ├── NumberInput.tsx
 │   │   │   │   ├── RadioGroup.tsx
 │   │   │   │   ├── SelectInput.tsx
+│   │   │   │   ├── SelectRow.tsx
 │   │   │   │   ├── TextArea.tsx
 │   │   │   │   ├── TextInput.tsx
 │   │   │   │   ├── date-range-picker.tsx
@@ -674,6 +700,7 @@
 │   │   │   │   │   ├── BoutonFiltre.tsx
 │   │   │   │   │   ├── BoutonFiltreDate.stories.tsx
 │   │   │   │   │   ├── BoutonFiltreDate.tsx
+│   │   │   │   │   ├── FilterOptionsList.tsx
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   └── variants.ts
 │   │   │   │   ├── bouton-menu
@@ -696,6 +723,13 @@
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── error
 │   │   │   │   │   ├── ErrorCard.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── filtre-date
+│   │   │   │   │   ├── FiltreDate.stories.tsx
+│   │   │   │   │   ├── FiltreDate.tsx
+│   │   │   │   │   ├── FiltreDateDropdown.tsx
+│   │   │   │   │   ├── PickerDate.tsx
+│   │   │   │   │   ├── dates.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── icon
 │   │   │   │   │   ├── Icon.stories.tsx
@@ -755,6 +789,10 @@
 │   │   │   │   ├── icon-badge
 │   │   │   │   │   ├── IconBadge.stories.tsx
 │   │   │   │   │   ├── IconBadge.tsx
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── image-upload
+│   │   │   │   │   ├── ImageUpload.stories.tsx
+│   │   │   │   │   ├── ImageUpload.tsx
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── indication-conformite
@@ -823,6 +861,7 @@
 │       │   │   ├── common
 │       │   │   │   ├── activity-log.ts
 │       │   │   │   ├── get-editorial-record-id.ts
+│       │   │   │   ├── notification.ts
 │       │   │   │   ├── slack.ts
 │       │   │   │   └── supabase.ts
 │       │   │   ├── editorial
@@ -995,7 +1034,11 @@
 │   │   ├── 20260623120000_grant_service_role_translation_records.sql
 │   │   ├── 20260626150000_rename_activity_log_archivage_to_archive.sql
 │   │   ├── 20260703170000_add_to_review_work_status.sql
-│   │   └── 20260707100000_add_archived_at_to_editorial_records.sql
+│   │   ├── 20260707100000_add_archived_at_to_editorial_records.sql
+│   │   ├── 20260803151753_add_avatar_url_workflow.sql
+│   │   ├── 20260805140000_add_update_translation_metadata_field_rpc.sql
+│   │   ├── 20260807124601_add_notifications.sql
+│   │   └── 20260807145941_enable_realtime_notifications.sql
 │   ├── seed
 │   │   ├── 00_auth_users.sql
 │   │   ├── 02_ingestion_runs.sql
@@ -1013,4 +1056,4 @@
 ├── tsconfig.json
 ├── turbo.json
 └── vercel-setup.sh
-225 directories, 790 files
+231 directories, 827 files
