@@ -1,28 +1,21 @@
 ## Changelog : espace-membre-next (30 derniers jours, au 14 août 2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a franchi des étapes importantes dans la gestion des utilisateurs et des structures, notamment avec l'introduction de la co-incubation pour les produits et de nouvelles procédures de demande d'accès (Ségur). L'expérience d'accueil (onboarding) a été fluidifiée et l'infrastructure technique a été modernisée, passant d'une gestion de tâches interne à un système de planification plus robuste.
+Ce mois-ci, la plateforme a enrichi ses capacités métier avec la gestion de la co-incubation et des demandes d'accès aux services Ségur, tout en affinant l'expérience d'accueil des nouveaux utilisateurs. Un travail important de simplification technique et de migration d'infrastructure a également été réalisé pour améliorer la stabilité et la maintenabilité du système.
 
 ### Évolutions fonctionnelles
-- **Gestion des structures et produits** : possibilité de gérer la co-incubation d'un produit [#1498](https://github.com/betagouv/espace-membre-next/issues/1498).
-- **Demandes d'accès** : mise en place de la gestion des demandes d'accès pour les bureaux Ségur [#1460](https://github.com/betagouv/espace-membre-next/issues/1460) [#1468](https://github.com/betagouv/espace-membre-next/issues/1468).
-- **Parcours d'accueil (Onboarding)** : 
-    - Amélioration de l'affichage des conditions d'entrée.
-    - Filtrage des éléments de checklist par domaine utilisateur [#1517](https://github.com/betagouv/espace-membre-next/issues/1517).
-    - Mise à jour de la checklist avec l'intégration des canaux Tchap [#1450](https://github.com/betagouv/espace-membre-next/issues/1450).
-- **Expérience utilisateur** : ajout d'un nudge pour encourager l'utilisation de ProConnect [#1405](https://github.com/betagouv/espace-membre-next/issues/1405).
+- **Gestion métier** : introduction de la possibilité de co-incuber un produit ([#1498](https://github.com/betagouv/espace-membre-next/issues/1498)) et mise en place des demandes d'accès aux bureaux et services Ségur ([#1460](https://github.com/betagouv/espace-membre-next/issues/1460), [#1468](https://github.com/betagouv/espace-membre-next/issues/1468)).
+- **Expérience utilisateur (Onboarding)** : amélioration du parcours d'accueil avec une clarification des conditions d'affichage et une mise à jour des canaux Tchap dans les checklists ([#1450](https://github.com/betagouv/espace-membre-next/issues/1450)).
+- **Checklists** : filtrage des éléments de checklist par domaine utilisateur pour plus de pertinence ([#1517](https://github.com/betagouv/espace-membre-next/issues/1517)).
+- **Authentification** : ajout d'une incitation (nudge) pour encourager l'utilisation de ProConnect ([#1405](https://github.com/betagouv/espace-membre-next/issues/1405)).
 
 ### Évolutions techniques
-- **Infrastructure et tâches de fond** : migration de la gestion des jobs de `pg-boss` vers `Scalingo Scheduler` [#1505](https://github.com/betagouv/espace-membre-next/issues/1505) et suppression des anciens processus obsolètes [#1504](https://github.com/betagouv/espace-membre-next/issues/1504).
-- **API et Sécurité** : 
-    - Refonte des routes REST pour les incubateurs, startups et membres avec mise à jour de la documentation OpenAPI [#1497](https://github.com/betagouv/espace-membre-next/issues/1497).
-    - Correction des droits d'accès en lecture pour les utilisateurs connectés via l'API [#1508](https://github.com/betagouv/espace-membre-next/issues/1508).
-- **Maintenance et mises à jour** : 
-    - Passage à Next.js 15.5.23 [#1514](https://github.com/betagouv/espace-membre-next/issues/1514).
-    - Mise à jour de Sentry [#1491](https://github.com/betagouv/espace-membre-next/issues/1491).
-    - Nettoyage des dépendances [#1496](https://github.com/betagouv/espace-membre-next/issues/1496).
-- **Corrections de bugs** : résolution d'exceptions d'exécution liées à `pg-boss` [#1487](https://github.com/betagouv/espace-membre-next/issues/1487) et correction d'importations sur les tâches cron [#1493](https://github.com/betagouv/espace-membre-next/issues/1493).
+- **Infrastructure** : migration de la gestion des tâches planifiées de `pg-boss` vers le `Scalingo Scheduler` ([#1505](https://github.com/betagouv/espace-membre-next/issues/1505)).
+- **API** : standardisation des routes REST (utilisation du pluriel) et mise à jour de la documentation OpenAPI ([#1497](https://github.com/betagouv/espace-membre-next/issues/1497), [#1508](https://github.com/betagouv/espace-membre-next/issues/1508)).
+- **Maintenance et nettoyage** : suppression de code obsolète (legacy), de tâches inutiles et simplification des fichiers de routes et d'utilitaires ([#1504](https://github.com/betagouv/espace-membre-next/issues/1504), [#1495](https://github.com/betagouv/espace-membre-next/issues/1495), [#1489](https://github.com/betagouv/espace-membre-next/issues/1489)).
+- **Corrections de bugs** : résolution d'exceptions d'exécution liées à la gestion des tâches planifiées ([#1487](https://github.com/betagouv/espace-membre-next/issues/1487), [#1493](https://github.com/betagouv/espace-membre-next/issues/1493)).
+- **CI/CD** : optimisation des processus de build en supprimant les étapes inutiles ([#1482](https://github.com/betagouv/espace-membre-next/issues/1482)).
 
 ### Autres changements
 - **Documentation** : ajout d'une section dédiée à la documentation de l'API dans le README.
-- **Nettoyage** : suppression de fichiers obsolètes, nettoyage de Storybook et optimisation des fichiers de routes et utilitaires.
+- **Nettoyage** : maintenance de Storybook et divers nettoyages de fichiers de configuration ([#1506](https://github.com/betagouv/espace-membre-next/issues/1506)).
