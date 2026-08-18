@@ -1,5 +1,9 @@
 .
 ├── .claude
+│   ├── claude.md
+│   ├── hooks
+│   │   └── block-env.sh
+│   ├── settings.json
 │   └── settings.local.json
 ├── .claudeignore
 ├── .editorconfig
@@ -10,7 +14,6 @@
 │   └── prompts
 │       └── claude.prompt.md
 ├── .gitignore
-├── .mcp.json
 ├── .npmrc
 ├── .prettierignore
 ├── .prettierrc
@@ -48,8 +51,7 @@
 │   │   └── intensite_secheresses.md
 │   └── reference
 │       ├── audit-rgaa-2026-04-28.md
-│       ├── methodo-rgga.txt
-│       └── reference.md
+│       └── audit-rgaa-2026-08-11.md
 ├── docker-compose.yml
 ├── e2e
 │   ├── app.spec.ts
@@ -124,6 +126,7 @@
 │   │   ├── 34f6523d-57d7-80de-a225-c4ea5c9d89ef.png
 │   │   ├── 3576523d-57d7-8358-9975-012d59670a4a-7711e2da.png
 │   │   ├── 3576523d-57d7-8358-9975-012d59670a4a.png
+│   │   ├── 3b46523d-57d7-80b0-bb65-c79846ae2a2d.png
 │   │   ├── 3e46523d-57d7-8347-9a7e-8167d3deb3d7-0a9b57fe.png
 │   │   ├── 3e46523d-57d7-8347-9a7e-8167d3deb3d7.png
 │   │   ├── 4146523d-57d7-82eb-8d19-81d3008d5f01-3347d70d.png
@@ -169,6 +172,34 @@
 │   ├── ressources_eau_bluetile.svg
 │   └── texte-facili-tacct.png
 ├── robots.ts
+├── scripts
+│   ├── comptes-recents.mjs
+│   ├── copier-donnees-user.mjs
+│   ├── copier-etude.mjs
+│   ├── crm-ping.mjs
+│   ├── detail-etude.mjs
+│   ├── legacy-dump-to-postgres
+│   │   ├── README.md
+│   │   ├── backfill-user-crypto.mjs
+│   │   ├── docker-compose.yml
+│   │   ├── pgloader.load
+│   │   └── sql
+│   │       ├── 01-phase2-additif.sql
+│   │       └── 02-phase4-unicite.sql
+│   ├── lire-user.mjs
+│   ├── reimport-dump-2026-08
+│   │   ├── README.md
+│   │   ├── backfill-user-crypto.mjs
+│   │   ├── generer-verification-tacctoscope.mjs
+│   │   ├── renommer-index.mjs
+│   │   ├── sql
+│   │   │   ├── 01-additif-user.sql
+│   │   │   ├── 02-unicite-bidx.sql
+│   │   │   ├── 03-bascule-prod.sql
+│   │   │   ├── 04-reprise-tables-hors-dump.sql
+│   │   │   └── 05-reprise-liens-moncompteademe.sql
+│   │   └── verifier-schema.mjs
+│   └── trouver-email.mjs
 ├── src
 │   ├── CTA.tsx
 │   ├── app
@@ -317,7 +348,11 @@
 │   │   │   ├── mentions-legales
 │   │   │   │   └── page.tsx
 │   │   │   ├── mon-compte
+│   │   │   │   ├── MonCompteClient.tsx
 │   │   │   │   ├── moncompte.module.scss
+│   │   │   │   └── page.tsx
+│   │   │   ├── mon-espace
+│   │   │   │   ├── monEspace.module.scss
 │   │   │   │   └── page.tsx
 │   │   │   ├── page.tsx
 │   │   │   ├── plan-du-site
@@ -362,6 +397,8 @@
 │   │   │   │   └── text.md
 │   │   │   ├── shared-metadata.ts
 │   │   │   ├── statistiques
+│   │   │   │   ├── indicateurExclusion.module.scss
+│   │   │   │   ├── indicateurExclusion.tsx
 │   │   │   │   ├── page.tsx
 │   │   │   │   ├── statistiques.module.scss
 │   │   │   │   └── stats.module.scss
@@ -374,6 +411,15 @@
 │   │   │   │       └── route.ts
 │   │   │   ├── map-proxy
 │   │   │   │   └── route.ts
+│   │   │   ├── proconnect
+│   │   │   │   ├── callback
+│   │   │   │   │   └── route.ts
+│   │   │   │   ├── login
+│   │   │   │   │   └── route.ts
+│   │   │   │   ├── logout
+│   │   │   │   │   └── route.ts
+│   │   │   │   └── me
+│   │   │   │       └── route.ts
 │   │   │   └── stats
 │   │   │       ├── north_star.sql
 │   │   │       └── route.ts
@@ -427,8 +473,10 @@
 │   │   │   │   ├── page.tsx
 │   │   │   │   └── patch4c.module.scss
 │   │   │   ├── recherche-territoire
+│   │   │   │   ├── layout.tsx
 │   │   │   │   └── page.tsx
 │   │   │   ├── recherche-territoire-patch4
+│   │   │   │   ├── layout.tsx
 │   │   │   │   └── page.tsx
 │   │   │   ├── ressources
 │   │   │   │   ├── CarteCollection.tsx
@@ -465,6 +513,7 @@
 │   │   │   ├── thematiques
 │   │   │   │   ├── card.tsx
 │   │   │   │   ├── cards.tsx
+│   │   │   │   ├── layout.tsx
 │   │   │   │   ├── loading.tsx
 │   │   │   │   ├── not-found.tsx
 │   │   │   │   ├── page.tsx
@@ -492,6 +541,7 @@
 │   │   │   ├── bookmark_icon_black.svg
 │   │   │   ├── calculator_icon_blue.svg
 │   │   │   ├── calculator_icon_green.svg
+│   │   │   ├── calendar_icon_white.svg
 │   │   │   ├── camembert_icon_black.svg
 │   │   │   ├── camembert_icon_green.svg
 │   │   │   ├── camembert_icon_white.svg
@@ -504,6 +554,7 @@
 │   │   │   ├── circle-marker-lightblue.svg
 │   │   │   ├── clock_icon_black.png
 │   │   │   ├── clock_icon_black.svg
+│   │   │   ├── clock_icon_green.svg
 │   │   │   ├── clock_icon_white.png
 │   │   │   ├── cogwheel_icon_black.svg
 │   │   │   ├── connexion_compte_icon_black.svg
@@ -514,6 +565,7 @@
 │   │   │   ├── doc_icon_white.png
 │   │   │   ├── double_chevron_icon_black.svg
 │   │   │   ├── enveloppe_icon_green.svg
+│   │   │   ├── enveloppe_icon_white.svg
 │   │   │   ├── evolution_icon_black.svg
 │   │   │   ├── evolution_icon_green.svg
 │   │   │   ├── evolution_icon_white.svg
@@ -536,6 +588,7 @@
 │   │   │   ├── habitat_icon_green.svg
 │   │   │   ├── habitat_icon_white.svg
 │   │   │   ├── handshake_icon_green.svg
+│   │   │   ├── haut_de_page_icon_green.svg
 │   │   │   ├── haut_de_page_icon_white.svg
 │   │   │   ├── hourglass_icon_black.svg
 │   │   │   ├── inconnu_icon_black.svg
@@ -557,6 +610,7 @@
 │   │   │   ├── location_icon_black.svg
 │   │   │   ├── magnifying_glass_icon_white.svg
 │   │   │   ├── maison_icon_black.svg
+│   │   │   ├── map_pin_icon_green.svg
 │   │   │   ├── map_search_icon_blue.svg
 │   │   │   ├── markerHand_icon_green.svg
 │   │   │   ├── marker_icon_blue.svg
@@ -580,6 +634,7 @@
 │   │   │   ├── precipitation_icon_black.svg
 │   │   │   ├── prendreRDV.png
 │   │   │   ├── qualite_*.svg  (6 files)
+│   │   │   ├── question_answer_icon_green.svg
 │   │   │   ├── quiz_icon_yellow.svg
 │   │   │   ├── refresh_icon_green.png
 │   │   │   ├── ressources_icon_blue.svg
@@ -596,6 +651,7 @@
 │   │   │   ├── saint_martin_icon_black.svg
 │   │   │   ├── secheresse_icon_black.svg
 │   │   │   ├── share_icon_white.svg
+│   │   │   ├── sparkling_icon_green.svg
 │   │   │   ├── sun_icon_green.svg
 │   │   │   ├── sun_icon_white.svg
 │   │   │   ├── support_icon_blue.svg
@@ -605,6 +661,7 @@
 │   │   │   ├── tacct_icon4.svg
 │   │   │   ├── tahiti_icon_black.png
 │   │   │   ├── tahiti_icon_black.svg
+│   │   │   ├── team_icon_green.svg
 │   │   │   ├── team_meeting_icon_orange.png
 │   │   │   ├── themes
 │   │   │   │   ├── agriculture_icon_teal.svg
@@ -636,6 +693,7 @@
 │   │   │   ├── train_icon_black.svg
 │   │   │   ├── train_icon_green.svg
 │   │   │   ├── train_icon_white.svg
+│   │   │   ├── video_icon_green.svg
 │   │   │   ├── video_icon_purple.svg
 │   │   │   ├── warning_icon_black.svg
 │   │   │   └── water_drop_blue.svg
@@ -703,12 +761,14 @@
 │   │   │   ├── patch4_formula.svg
 │   │   │   ├── patch4_home.png
 │   │   │   ├── prendreRDV.png
+│   │   │   ├── product-launch.png
 │   │   │   ├── ressources_eau_bluetile.svg
 │   │   │   ├── ressources_home.png
 │   │   │   ├── ressources_home.webp
 │   │   │   ├── ressources_naturelles_texte.svg
 │   │   │   ├── rga.webp
 │   │   │   ├── roue_systemique_shape.png
+│   │   │   ├── session-accueil.png
 │   │   │   ├── systemie.png
 │   │   │   ├── tacct-image-screenshot.png
 │   │   │   ├── test_tuile.png
@@ -718,6 +778,8 @@
 │   │   │   ├── villes_exposees_icu.png
 │   │   │   └── zero_data_found.png
 │   │   └── svg
+│   │       ├── custom
+│   │       │   └── avatar-profil.svg
 │   │       └── home
 │   │           ├── etape1Image.svg
 │   │           ├── etape1background.svg
@@ -864,6 +926,14 @@
 │   │   │       └── tooltips.tsx
 │   │   ├── mdx
 │   │   │   └── Link.tsx
+│   │   ├── mon-espace
+│   │   │   ├── AncienEspaceCard.tsx
+│   │   │   ├── CommunauteCards.tsx
+│   │   │   ├── EspaceMenu.tsx
+│   │   │   ├── HautDePage.tsx
+│   │   │   ├── ProfilCard.tsx
+│   │   │   ├── SuggestionsBanner.tsx
+│   │   │   └── TacctoscopeCard.tsx
 │   │   ├── patch4
 │   │   │   ├── AlgoPatch4.tsx
 │   │   │   ├── Tag.tsx
@@ -871,21 +941,24 @@
 │   │   │   └── TagItem.tsx
 │   │   ├── searchbar
 │   │   │   ├── BarreDeRecherche.tsx
+│   │   │   ├── BarreDeRechercheSansFiltre.tsx
 │   │   │   ├── fonctions.ts
 │   │   │   ├── header
 │   │   │   │   ├── BoutonRechercher.tsx
 │   │   │   │   ├── HeaderRechercheTerritoire.tsx
 │   │   │   │   ├── SearchInputHeader.tsx
-│   │   │   │   ├── SelectTypeTerritoire.tsx
 │   │   │   │   └── renderInputHeader.tsx
 │   │   │   ├── radioButtons.ts
 │   │   │   ├── rechercheInput.tsx
 │   │   │   ├── rechercherTerritoire.module.scss
 │   │   │   ├── renderInput.tsx
-│   │   │   └── renderOption.tsx
+│   │   │   ├── renderOption.tsx
+│   │   │   └── renderOptionSansFiltre.tsx
 │   │   ├── types.d.ts
 │   │   ├── ui
+│   │   │   ├── Header.module.scss
 │   │   │   ├── Header.tsx
+│   │   │   ├── HeaderMonCompteMenu.tsx
 │   │   │   ├── MenuLateral.tsx
 │   │   │   ├── MenuMobileDrawer.tsx
 │   │   │   ├── SideMenu.tsx
@@ -898,6 +971,8 @@
 │   │       ├── OptimalParagraph.tsx
 │   │       ├── ReadMoreFade.tsx
 │   │       ├── TabTooltip.tsx
+│   │       ├── Toast.module.scss
+│   │       ├── Toast.tsx
 │   │       ├── Tooltips.module.scss
 │   │       ├── Tooltips.tsx
 │   │       ├── ZoomOnClick.tsx
@@ -948,32 +1023,54 @@
 │   │       ├── models
 │   │       │   ├── aot_40_new.ts
 │   │       │   ├── arbovirose.ts
-│   │       │   ├── databases_v2_agriculture.ts
-│   │       │   ├── databases_v2_agriculture_bio.ts
-│   │       │   ├── databases_v2_aot_40.ts
-│   │       │   ├── databases_v2_arretes_catnat.ts
-│   │       │   ├── databases_v2_atlas_biodiversite.ts
-│   │       │   ├── databases_v2_collectivites_searchbar.ts
-│   │       │   ├── databases_v2_confort_thermique.ts
-│   │       │   ├── databases_v2_consommation_espaces_naf.ts
-│   │       │   ├── databases_v2_export_cours_d_eau.ts
-│   │       │   ├── databases_v2_lcz_couverture.ts
-│   │       │   ├── databases_v2_patch4c.ts
-│   │       │   ├── databases_v2_prelevements_eau.ts
-│   │       │   ├── databases_v2_qualite_sites_baignade.ts
-│   │       │   ├── databases_v2_rga.ts
-│   │       │   ├── databases_v2_surfaces_agricoles.ts
-│   │       │   ├── databases_v2_table_commune.ts
-│   │       │   ├── databases_v2_table_territoires.ts
+│   │       │   ├── climate.ts
+│   │       │   ├── climate_hazard.ts
+│   │       │   ├── climate_hazard_category.ts
+│   │       │   ├── climate_hazard_category_department.ts
+│   │       │   ├── command_migration.ts
+│   │       │   ├── command_process.ts
+│   │       │   ├── commune.ts
+│   │       │   ├── config.ts
+│   │       │   ├── databases_*.ts  (17 files)
+│   │       │   ├── department.ts
+│   │       │   ├── doctrine_migration_versions.ts
+│   │       │   ├── domain.ts
 │   │       │   ├── feux_foret.ts
+│   │       │   ├── file.ts
+│   │       │   ├── future_climate.ts
+│   │       │   ├── future_exposure.ts
+│   │       │   ├── impact.ts
+│   │       │   ├── impact_*.ts  (10 files)
 │   │       │   ├── inondations_par_debordement.ts
+│   │       │   ├── messenger_messages.ts
+│   │       │   ├── natural_disaster.ts
+│   │       │   ├── natural_disaster_search.ts
+│   │       │   ├── natural_disaster_search_commune.ts
 │   │       │   ├── o3_seuils.ts
+│   │       │   ├── observed_exposure.ts
+│   │       │   ├── observed_exposure_impact.ts
+│   │       │   ├── old_region.ts
+│   │       │   ├── page.ts
+│   │       │   ├── page_info.ts
 │   │       │   ├── postgis_v2_communes_drom.ts
 │   │       │   ├── postgis_v2_erosion_cotiere.ts
 │   │       │   ├── postgis_v2_etat_cours_d_eau.ts
 │   │       │   ├── prelevements_eau_new.ts
+│   │       │   ├── project_sheet_detail.ts
+│   │       │   ├── project_sheet_detail_relation.ts
+│   │       │   ├── project_sheet_question.ts
+│   │       │   ├── region.ts
 │   │       │   ├── secheresses.ts
-│   │       │   └── spatial_ref_sys.ts
+│   │       │   ├── skill_territory.ts
+│   │       │   ├── spatial_ref_sys.ts
+│   │       │   ├── study.ts
+│   │       │   ├── study_office.ts
+│   │       │   ├── tacctoscope_answer.ts
+│   │       │   ├── tacctoscope_criterion_feedback.ts
+│   │       │   ├── thematic.ts
+│   │       │   ├── token.ts
+│   │       │   ├── user.ts
+│   │       │   └── user_study.ts
 │   │       └── models.ts
 │   ├── hooks
 │   │   ├── EndPageTrigger.tsx
@@ -986,10 +1083,19 @@
 │   │   └── windowDimensions.ts
 │   ├── lib
 │   │   ├── Brand.tsx
+│   │   ├── analytics
+│   │   │   └── exclusionNavigateur.ts
+│   │   ├── auth
+│   │   │   ├── getCurrentUser.ts
+│   │   │   ├── moncompteademe.ts
+│   │   │   ├── proconnect.ts
+│   │   │   └── statsSessionCookie.ts
 │   │   ├── charts
 │   │   │   ├── gestionRisques.tsx
 │   │   │   ├── ressourcesEau.tsx
 │   │   │   └── surfacesAgricoles.ts
+│   │   ├── crypto
+│   │   │   └── user-crypto.ts
 │   │   ├── data
 │   │   │   ├── departements.json
 │   │   │   ├── departements_contours.json
@@ -1044,6 +1150,7 @@
 │   │   │   │   ├── cartographie.ts
 │   │   │   │   └── etatCoursDeau.ts
 │   │   │   ├── searchBar.ts
+│   │   │   ├── tacctoscope.ts
 │   │   │   └── territoiresQueries.ts
 │   │   ├── react-leaflet.ts
 │   │   ├── ressources
@@ -1056,6 +1163,12 @@
 │   │   │   └── transformationContenuArticles.tsx
 │   │   ├── sources.ts
 │   │   ├── staticTexts.tsx
+│   │   ├── tacctoscope
+│   │   │   ├── content
+│   │   │   │   └── criteria.ts
+│   │   │   ├── keys.ts
+│   │   │   ├── progress.ts
+│   │   │   └── types.ts
 │   │   ├── territoireData
 │   │   │   ├── LCZselectionTerritoires.ts
 │   │   │   ├── arrondissements.ts
@@ -1105,4 +1218,4 @@
 ├── tailwind.config.js
 ├── test2.json
 └── tsconfig.json
-143 directories, 992 files
+162 directories, 1111 files

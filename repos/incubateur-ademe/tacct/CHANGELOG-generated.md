@@ -1,16 +1,19 @@
-## Changelog : tacct (30 derniers jours, au 16 juillet 2026)
+## Changelog : tacct (30 derniers jours, au 17 août 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à l'expérience mobile de l'application, avec une refonte de la navigation et de l'affichage des données. Une correction a également été apportée concernant l'année source des données INERIS.
+Les récentes évolutions se sont concentrées sur l'amélioration de la gestion des comptes utilisateurs, l'enrichissement des contenus et l'optimisation de l'accessibilité. Parallèlement, des travaux techniques importants ont été menés pour stabiliser les bases de données et affiner le suivi analytique du projet.
 
 ### Évolutions fonctionnelles
-- Amélioration de la navigation sur mobile.
-- Affichage optimisé des données sur mobile, notamment pour la section "données".
-- Correction de l'année source affichée pour les données INERIS [#c5444148](https://github.com/incubateur-ademe/tacct/commit/c5444148).
-- Amélioration de l'accordéon mobile Drom.
+- **Accessibilité** : Amélioration des critères d'accessibilité suite à un audit.
+- **Expérience utilisateur** : Ajout du suivi de la dernière date de connexion et correction des accès au compte.
+- **Contenus** : Ajout d'un nouvel article sur l'entretien de terrain et réorganisation de l'ordre des articles dans la collection.
+- **Interface** : Mise à jour des textes sur la page "Mon Espace" et la bannière de suggestion.
 
 ### Évolutions techniques
-- Suppression des logs de console inutiles [#34ab2726](https://github.com/incubateur-ademe/tacct/commit/34ab2726).
-- Correction des requêtes de tests [#40f680f5](https://github.com/incubateur-ademe/tacct/commit/40f680f5).
-- Refactoring des ancres pour améliorer la navigation.
-- Intégration des différents composants pour la version mobile [#cc75d813](https://github.com/incubateur-ademe/tacct/commit/cc75d813), [#638014e3](https://github.com/incubateur-ademe/tacct/commit/638014e3), [#52eb7363](https://github.com/incubateur-ademe/tacct/commit/52eb7363), [#65a15b56](https://github.com/incubateur-ademe/tacct/commit/65a15b56).
+- **Authentification** : Stabilisation des processus de redirection (déconnexion et URI de redirection) pour le module MonCompteAdeme.
+- **Données** : Migration complète de l'historique vers MariaDB et mise à jour du schéma de la base de données.
+- **Analytique** : Optimisation du suivi via Posthog (capture de sortie de page, profils utilisateurs et filtrage des navigateurs).
+- **Infrastructure & DevOps** : Déploiement de la mise en production du 10 août, gestion des versions Next.js et ajout d'un script de copie de comptes et d'études.
+
+### Autres changements
+- **Nettoyage** : Retrait des notifications de maintenance et de certains fichiers de configuration du suivi Git.
