@@ -1,8 +1,10 @@
-## Changelog : upptime (30 derniers jours, au 14 août 2026)
+## Changelog : upptime (30 derniers jours, au 2026-08-18)
 
 ### Résumé
-Le projet est en phase de fonctionnement nominal. L'activité récente est exclusivement composée de l'exécution automatisée des tâches de monitoring, garantissant la mise à jour continue des indicateurs de disponibilité et des rapports visuels.
+Le système assure la surveillance constante des services et la mise à jour automatique des indicateurs de disponibilité et de la documentation associée.
+
+### Évolutions techniques
+- Mise à jour de l'outil de monitoring vers la version v1.43.14.
 
 ### Autres changements
-- Mise à jour automatique et régulière des graphiques de performance.
-- Actualisation continue du résumé de statut et de la documentation (README) pour refléter l'état des services monitorés.
+- Actualisation automatique des graphiques de disponibilité, des résumés de statut et du fichier README.
