@@ -1,28 +1,27 @@
-## Changelog : portail (30 derniers jours, au 07 août 2026)
+## Changelog : portail (30 derniers jours, au 14 août 2026)
 
 ### Résumé
-Cette période a été marquée par un effort important de sécurisation et de stabilisation du proxy. Les développements se sont concentrés sur le renforcement de la robustesse du moteur de règles (ACL), l'amélioration des performances de connexion réseau et la fiabilisation de l'infrastructure de déploiement.
+Ce mois-ci, le projet a franchi une étape importante en matière de robustesse et de sécurité. Les efforts se sont concentrés sur la fiabilisation du moteur de routage, l'optimisation de la résolution DNS et l'amélioration des outils d'administration, notamment pour la gestion simplifiée des journaux d'activité (logs).
 
 ### Évolutions fonctionnelles
-- Ajout de la résolution DNS interne pour améliorer la réactivité du service.
+- **Gestion des logs :** Ajout d'une commande CLI `set-log-level` permettant de modifier le niveau de verbosité des logs en temps réel sans redémarrer le service.
+- **Administration :** Support de la rotation des fichiers de logs (logrotate) via le module NixOS et possibilité de recharger les fichiers de logs via un signal SIGHUP.
 
 ### Évolutions techniques
-- **Sécurité et Robustesse** :
-    - Renforcement de l'évaluateur d'ACL pour prévenir les comportements anormaux.
+- **Routage et Protocoles :** 
+    - Refonte majeure de la détection des protocoles, incluant désormais une extension au support TLS.
+    - Factorisation et réorganisation de la logique de routage vers un nouveau composant dédié pour les flux HTTP et SOCKS5.
+- **Sécurité et Résilience :**
+    - Renforcement de l'évaluateur d'ACL pour prévenir les comportements anormaux ou malveillants.
     - Sécurisation des permissions des fichiers de logs (mode 0600).
-    - Réduction de la surface d'attaque par la suppression et la sécurisation des blocs de code non sécurisés (*unsafe*).
-    - Injection du contexte d'authentification client dans l'évaluation des ACL pour distinguer le trafic TLS du trafic en clair.
-- **Réseau et Performance** :
-    - Implémentation de l'algorithme *Happy Eyeballs v2* pour optimiser la résolution DNS.
-    - Ajout de timeouts pour les phases de handshake et renommage des timeouts de requête pour plus de clarté.
-    - Amélioration de la gestion des connexions : ajout d'un plafond de connexions et gestion des erreurs de connexion transitoires.
-    - Normalisation des ports et rejet des formats de requêtes HTTP CONNECT non conformes.
-- **Infrastructure et Système** :
-    - Amélioration de la résilience des modules Nix.
-    - Optimisation de la gestion des sockets via systemd et utilisation de RAII pour la gestion des descripteurs de fichiers.
-    - Mise à jour de la configuration de build (MSRV, profils de release et gestion des fonctionnalités).
+    - Amélioration de la conformité du protocole HTTP (normalisation des ports et validation des requêtes CONNECT).
+    - Réduction de la surface d'attaque par la suppression de blocs de code `unsafe` et une meilleure gestion des erreurs pour éviter les plantages (panics).
+- **Performance et Stabilité :**
+    - Implémentation de l'algorithme "Happy Eyeballs v2" et de la résolution DNS interne pour accélérer l'établissement des connexions.
+    - Introduction de timeouts pour les phases de handshake et de requêtes, ainsi que de limites de connexions pour protéger le système contre la saturation.
+- **Infrastructure :** Amélioration de la résilience des modules Nix/Systemd, notamment sur la gestion des sockets et des descripteurs de fichiers.
 
 ### Autres changements
-- **Documentation** : Ajout de commentaires de sécurité obligatoires sur tous les blocs de code critiques.
-- **Tests** : Correction de tests de connexion SOCKS5.
-- **CI/CD** : Initialisation de la gestion automatisée des dépendances via Renovate.
+- **Documentation :** Ajout de commentaires de sécurité sur l'utilisation des blocs `unsafe` dans le code Rust.
+- **Build et CI :** Optimisation du processus de compilation (définition du MSRV, ajout de profils de release) et nettoyage des fonctionnalités de build.
+- **Tests :** Corrections de tests sur les connexions SOCKS5 multi-backends.

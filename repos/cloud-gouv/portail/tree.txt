@@ -98,18 +98,22 @@
     │       ├── portail__acl__parser__tests__valid_expression_precedence.snap
     │       ├── portail__acl__parser__tests__valid_integer_limits.snap
     │       └── portail__acl__parser__tests__valid_integers.snap
+    ├── backend_routing.rs
     ├── config.rs
     ├── dns.rs
     ├── lib.rs
     ├── logging
-    │   └── mod.rs
+    │   ├── mod.rs
+    │   └── writer.rs
     ├── main.rs
     ├── proxy
     │   ├── client_tls.rs
     │   ├── context.rs
     │   ├── http_connect.rs
     │   ├── mod.rs
-    │   ├── protocol_detect.rs
+    │   ├── protocols
+    │   │   ├── mod.rs
+    │   │   └── tls.rs
     │   └── socks5.rs
     ├── rpc
     │   ├── fr.gouv.portail.control.varlink
@@ -117,4 +121,4 @@
     │   └── mod.rs
     ├── state.rs
     └── systemd.rs
-22 directories, 97 files
+23 directories, 100 files
