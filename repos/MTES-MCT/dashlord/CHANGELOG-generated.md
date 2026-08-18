@@ -1,15 +1,14 @@
-## Changelog : dashlord (30 derniers jours, au 26 juillet 2026)
+## Changelog : dashlord (30 derniers jours, au 16 août 2026)
 
 ### Résumé
-Ce changelog fait état d'une mise à jour massive des URLs surveillées par Dashlord. De nombreux services du beta.gouv.fr ont été ajoutés ou mis à jour, permettant un suivi plus complet de l'état de santé et de la sécurité des services numériques du Ministère de la Transition Écologique et de la Cohésion des Territoires.
+Le tableau de bord a bénéficié d'une mise à jour massive de ses données de suivi. La liste des services numériques surveillés a été considérablement enrichie, permettant une visibilité accrue sur la conformité et la sécurité d'un plus grand nombre de plateformes gouvernementales et de services de l'écosystème beta.gouv.fr.
 
 ### Évolutions fonctionnelles
-- Mise à jour de la liste des services surveillés avec de nombreuses nouvelles URLs (plus de 50 entrées).
-- Ajout de la surveillance de nouveaux services beta.gouv.fr tels que `https://signal-logement.beta.gouv.fr`, `https://mon-devis-sans-oublis.beta.gouv.fr`, `https://api.trackdechets.beta.gouv.fr` et bien d'autres.
-- Mise à jour des URLs existantes pour certains services, assurant la pertinence du monitoring.
-
-### Évolutions techniques
-- Aucune évolution technique significative n'a été apportée durant cette période. Les changements concernent exclusivement la configuration des services surveillés.
+- **Extension du périmètre de monitoring** : Intégration de nombreux nouveaux services et API dans le tableau de bord, couvrant notamment :
+    - **Le logement** (ex: DossierFacile, Signal Logement, Pilotes Logement).
+    - **La mobilité** (ex: Covoiturage.beta.gouv.fr, Camino, Mobilic).
+    - **L'environnement et les ressources** (ex: Trackdéchets, VigieEau, Ecobalyse).
+    - **Divers services publics** (ex: Transport.data.gouv.fr, Envergo).
 
 ### Autres changements
-- Mise à jour régulière des rapports de monitoring via le bot DashlordBetaGouvBot.
+- **Maintenance automatisée** : Mise à jour régulière et automatisée du registre des services via `DashlordBetaGouvBot`.

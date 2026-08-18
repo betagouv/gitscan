@@ -1,38 +1,36 @@
 {
   "url": "https://github.com/MTES-MCT/dashlord",
   "name": "dashlord",
-  "description": "DashLord est un tableau de bord qui permet de suivre les bonnes pratiques techniques des services numériques du Ministère de la Transition Écologique et de la Cohésion des Territoires. Il permet de surveiller l'état de santé et la sécurité des services web.",
-  "language": "YAML",
+  "description": "Tableau de bord de suivi des bonnes pratiques techniques et de la sécurité pour les services numériques de la fabrique numérique du MTE.",
   "features": [
-    "Gestion documentaire & Fichiers",
     "Visualisation de données & Cartographie",
     "Sécurité & Conformité",
-    "Monitoring & Logs"
+    "Statistiques & Rapports",
+    "Monitoring & Logs",
+    "Infrastructure & Stockage"
   ],
   "audience": "Agents de l'Administration",
-  "dependencies": [],
-  "components": [
-    "API REST & GraphQL",
-    "Python (scripts & backend)",
-    "Docker & Conteneurs"
+  "dependencies": [
+    "nmap",
+    "trivy",
+    "lighthouse",
+    "Docker"
   ],
-  "auth": {
-    "methods": [
-      "none"
-    ]
-  },
-  "tests": [],
+  "components": [
+    "Documentation & Schémas",
+    "CI/CD & Déploiement",
+    "Scripts & Utilitaires"
+  ],
   "workflows": [
     "scans.yml"
   ],
-  "lastActivity": "2026-07-26T07:50:42Z",
+  "lastActivity": "2026-08-16T01:30:42Z",
   "status": "active",
-  "license": null,
   "hasDocumentation": true,
-  "metrics": null,
   "tags": [
-    "Données & Open Data",
-    "Sécurité & Conformité",
-    "Monitoring & Logs"
+    "Écosystème beta.gouv / État",
+    "Sécurité & Auth",
+    "Monitoring & Observabilité",
+    "Git & DevOps"
   ]
 }
