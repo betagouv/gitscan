@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/numerique-gouv/ami-fc-proxy",
   "name": "ami-fc-proxy",
-  "description": "Ce projet est un proxy pour FranceConnect. Il simplifie la configuration des URLs de redirection et de l'identifiant de secteur pour les applications déployées sur Scalingo, en automatisant les étapes manuelles et sujettes aux erreurs.",
+  "description": "Ce projet est un proxy pour FranceConnect qui simplifie la gestion des URLs de redirection et des identifiants de secteur, facilitant ainsi le déploiement d'applications via des environnements de revue automatisés.",
   "language": "Python",
   "features": [
     "Authentification & Accès"
@@ -9,25 +9,29 @@
   "audience": "Développeurs",
   "dependencies": [
     "litestar",
-    "pytest",
+    "uv",
     "ruff",
-    "uv"
+    "pytest"
   ],
   "components": [
     "API REST & GraphQL",
     "Python (scripts & backend)",
-    "Docker & Conteneurs"
+    "Serveurs web & Proxy",
+    "Tests"
   ],
-  "auth.methods": [
-    "oauth2"
-  ],
-  "tests": [
-    "pytest"
-  ],
+  "auth": {
+    "methods": [
+      "oauth2"
+    ],
+    "providers": [
+      "FranceConnect"
+    ]
+  },
+  "tests": "pytest",
   "workflows": [
     "pytest.yml"
   ],
-  "lastActivity": "2026-05-26T11:08:56+02:00",
+  "lastActivity": "2026-08-14T19:17:37+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -35,10 +39,13 @@
     "stars": 0,
     "forks": 0,
     "contributors": 0,
-    "openIssues": 12
+    "openIssues": 11
   },
   "tags": [
     "Authentification & Accès",
-    "FranceConnect"
+    "Python",
+    "Git & DevOps",
+    "CI/CD & GitHub Actions",
+    "Sécurité & Auth"
   ]
 }
