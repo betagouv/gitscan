@@ -1,14 +1,13 @@
-## Changelog : dashlord (30 derniers jours, au 15 août 2026)
+## Changelog : dashlord (30 derniers jours, au 17 août 2026)
 
 ### Résumé
-Le projet s'est concentré sur l'actualisation et l'extension de son périmètre de surveillance. L'essentiel de l'activité a consisté à mettre à jour la liste des sites web suivis, garantissant ainsi la continuité du monitoring de sécurité et de conformité pour les services administratifs et techniques ciblés.
+L'activité de ce mois a été quasi exclusivement dédiée à l'actualisation du catalogue de sites web surveillés. Ces mises à jour garantissent que le tableau de bord continue de fournir des rapports de conformité et de sécurité précis et exhaustifs pour l'ensemble des services de l'État et des préfectures.
 
 ### Évolutions fonctionnelles
-- Mise à jour et enrichissement de la liste des cibles de scan, incluant notamment :
-    - Les services de l'ANTS (gestion des permis de conduire, immatriculations, passeports et titres de séjour).
-    - L'ensemble des sites des préfectures (régionales et départementales).
-    - Les portails de services publics (service-public.fr).
-    - Divers outils et services techniques spécialisés (MatchID, IA Flash, etc.).
+- **Mise à jour du périmètre de surveillance** : Actualisation massive de la liste des URLs suivies pour assurer la continuité du monitoring, incluant notamment :
+    - Les services de l'ANTS (permis de conduire, immatriculation, passeport, etc.).
+    - L'ensemble des sites des préfectures de régions et de territoires.
+    - Les portails de services publics (service-public.fr) et les services de l'administration centrale (Sécurité routière, élections, etc.).
 
 ### Évolutions techniques
-- Maintenance et mise à jour du workflow de génération des rapports via GitHub Actions.
+- **Maintenance du reporting** : Mises à jour régulières du workflow GitHub Actions pour la génération et la mise à jour des rapports de conformité.
