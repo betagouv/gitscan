@@ -1,89 +1,35 @@
-## Changelog : iterion (30 derniers jours, au 2026-08-02)
+## Changelog : iterion (30 derniers jours, au 17 août 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'expérience utilisateur dans l'interface studio, l'ajout de fonctionnalités pour la gestion des secrets et des configurations, ainsi que des corrections de bugs et des optimisations de performance. L'intégration de nouveaux backends et l'amélioration de la gestion des workflows sont également notables.
+Ce mois a été marqué par une montée en puissance majeure de la plateforme, notamment avec l'introduction du nouveau backend d'exécution "Pi" et d'une architecture optimisée pour les interactions asynchrones entre l'IA et l'humain. L'expérience utilisateur a été considérablement enrichie par de nouveaux outils d'automatisation (triage d'issues, génération de wiki) et une interface de pilotage (Studio) plus intuitive et visuelle. La fiabilité globale a été renforcée par la mise en place de tests de non-régression comportementale ("Golden Master") et d'un système de gestion de la persistance des tâches.
 
 ### Évolutions fonctionnelles
-- Ajout d'une interface pour gérer les configurations des bots, avec des fonctionnalités de recherche et de regroupement.
-- Amélioration de l'interface de la vue des runs avec des informations plus détaillées et une meilleure organisation.
-- Possibilité de visualiser les fichiers produits par les pipelines.
-- Ajout d'un système de gestion des secrets locaux pour une meilleure sécurité.
-- Intégration d'un nouveau backend pour l'exécution des tâches (pi).
-- Amélioration de la gestion des erreurs et des messages d'information dans l'interface utilisateur.
-- Ajout d'une fonctionnalité de recherche et de filtrage des bots.
-- Possibilité de créer des bots à partir de workflows existants.
-- Amélioration de la gestion des webhooks pour automatiser les tâches.
-- Ajout d'une fonctionnalité de gestion des équipes et des permissions.
-- Amélioration de l'intégration avec GitHub pour la gestion des issues et des pull requests.
-- Ajout d'une fonctionnalité de gestion des budgets pour contrôler les coûts d'utilisation.
-- Amélioration de la gestion des logs pour faciliter le débogage.
-- Ajout d'une fonctionnalité de gestion des notifications pour informer les utilisateurs des événements importants.
-- Possibilité de personnaliser l'apparence de l'interface utilisateur.
-- Amélioration de la documentation et de l'aide en ligne.
-- Ajout d'une fonctionnalité de gestion des plugins pour étendre les fonctionnalités de la plateforme.
-- Ajout d'un système de gestion des tâches planifiées.
-- Amélioration de la gestion des utilisateurs et des rôles.
-- Ajout d'une fonctionnalité de gestion des alertes.
-- Amélioration de la sécurité de la plateforme.
-- Ajout d'une fonctionnalité de gestion des données.
-- Amélioration de l'administration de la plateforme.
-- Ajout d'une fonctionnalité de gestion des workflows.
-- Amélioration de la collaboration entre les utilisateurs.
-- Ajout d'une fonctionnalité d'intelligence artificielle pour automatiser les tâches.
+- **Gestion des ressources et coûts** : Ajout de limites d'usage personnalisables pour prévenir les dépassements de quotas auprès des fournisseurs d'IA [#438](https://github.com/SocialGouv/iterion/pull/438).
+- **Améliorations du Studio** : 
+    - Prévisualisation directe des contenus (JSON, Markdown, texte) lors des étapes de validation humaine [#425](https://github.com/SocialGouv/iterion/pull/425).
+    - Nouvel éditeur multi-fichiers pour la configuration des bots dans le cloud [#344](https://github.com/SocialGouv/iterion/pull/344).
+    - Refonte du tableau de bord des pipelines avec un système de colonnes et de glisser-déposer [#243](https://github.com/SocialGouv/iterion/pull/243).
+    - Interface de recherche et d'exploration de configuration par arbre rétractable.
+- **Nouveaux agents spécialisés** :
+    - **Triagy** : Automatisation du triage des issues via un système de routage intelligent [#22](https://github.com/SocialGouv/iterion/pull/22).
+    - **Wikky** : Générateur de documentation (wiki) pour maintenir la connaissance du projet.
+- **Accessibilité et Notifications** : 
+    - Intégration d'un auditeur d'accessibilité (Ultra11y) pour garantir la conformité des interfaces [#409](https://github.com/SocialGouv/iterion/pull/409).
+    - Système de notifications par Web Push pour alerter les opérateurs lors des pauses nécessitant une intervention [#266](https://github.com/SocialGouv/iterion/pull/266).
 
 ### Évolutions techniques
-- Refactorisation du code pour améliorer la maintenabilité et la lisibilité.
-- Optimisation des performances de la plateforme.
-- Mise à jour des dépendances pour bénéficier des dernières corrections de bugs et améliorations de sécurité.
-- Amélioration de l'architecture de la plateforme pour la rendre plus scalable et résiliente.
-- Mise en place de tests unitaires et d'intégration pour garantir la qualité du code.
-- Amélioration du processus de CI/CD pour automatiser les déploiements.
-- Utilisation de nouvelles technologies pour améliorer les fonctionnalités de la plateforme.
-- Amélioration de la sécurité de la plateforme en implémentant des mesures de protection contre les attaques.
-- Amélioration de la gestion des logs pour faciliter le débogage et la surveillance de la plateforme.
-- Amélioration de la documentation de l'API pour faciliter l'intégration avec d'autres systèmes.
-- Refonte de l'interface utilisateur pour la rendre plus intuitive et conviviale.
-- Amélioration de la gestion des erreurs pour fournir des messages d'erreur plus clairs et informatifs.
-- Optimisation de la base de données pour améliorer les performances de la plateforme.
-- Mise en place d'un système de cache pour réduire la charge sur la base de données.
-- Amélioration de la gestion de la mémoire pour éviter les fuites de mémoire.
-- Utilisation de techniques de compression pour réduire la taille des données stockées.
-- Amélioration de la gestion des ressources pour optimiser l'utilisation des ressources système.
-- Mise en place d'un système de monitoring pour surveiller les performances de la plateforme.
-- Amélioration de la gestion des configurations pour faciliter la personnalisation de la plateforme.
-- Utilisation de conteneurs pour faciliter le déploiement et la gestion de la plateforme.
-- Amélioration de la gestion des secrets pour protéger les informations sensibles.
-- Mise en place d'un système d'authentification et d'autorisation pour contrôler l'accès à la plateforme.
+- **Architecture et Backends** :
+    - Introduction de **Pi** comme backend d'exécution de premier rang [#308](https://github.com/SocialGouv/iterion/pull/308).
+    - Implémentation de l'architecture asynchrone (ADR-081) permettant des interactions fluides et des points de suspension (await_answers) entre les nœuds et l'opérateur.
+    - Déploiement d'un serveur **MCP** (Model Context Protocol) pour l'opérateur.
+- **Fiabilité et Qualité** :
+    - Mise en place de **Golden Master (Goldy)** : un réseau de non-régression comportementale pour valider les sorties des agents face à des scénarios de test complexes.
+    - Renforcement de l'isolation via un système de **sandbox** amélioré (support Devbox) et une gestion plus stricte des identités Git et des credentials.
+    - Amélioration de la résilience des exécutions : gestion du "keepalive" pour les tâches de longue durée et mécanisme de reprise (resume) plus robuste pour les sous-agents.
+- **Infrastructure et CI/CD** :
+    - Optimisation des pipelines d'images et découplage des flux de déploiement pour accélérer les cycles de release.
+    - Amélioration de la gestion des budgets de tokens et de la détection des dérives de dépendances.
 
 ### Autres changements
-- Mise à jour de la documentation pour refléter les dernières modifications de la plateforme.
-- Correction de bugs mineurs et améliorations de la qualité du code.
-- Ajout de commentaires et de documentation pour faciliter la compréhension du code.
-- Refactorisation du code pour améliorer la lisibilité et la maintenabilité.
-- Mise à jour des dépendances pour bénéficier des dernières corrections de bugs et améliorations de sécurité.
-- Amélioration de la gestion des logs pour faciliter le débogage et la surveillance de la plateforme.
-- Ajout de tests unitaires et d'intégration pour garantir la qualité du code.
-- Amélioration du processus de CI/CD pour automatiser les déploiements.
-- Correction de problèmes de performance et d'optimisation du code.
-- Amélioration de la sécurité de la plateforme en implémentant des mesures de protection contre les attaques.
-- Ajout de nouvelles fonctionnalités et améliorations de l'interface utilisateur.
-- Correction de bugs et améliorations de la stabilité de la plateforme.
-- Amélioration de la documentation et de l'aide en ligne.
-- Ajout de nouvelles fonctionnalités et améliorations de l'API.
-- Correction de bugs et améliorations de la performance de l'API.
-- Amélioration de la sécurité de l'API en implémentant des mesures de protection contre les attaques.
-- Ajout de nouvelles fonctionnalités et améliorations de la gestion des données.
-- Correction de bugs et améliorations de la performance de la gestion des données.
-- Amélioration de la sécurité de la gestion des données en implémentant des mesures de protection contre les attaques.
-- Ajout de nouvelles fonctionnalités et améliorations de l'administration de la plateforme.
-- Correction de bugs et améliorations de la performance de l'administration de la plateforme.
-- Amélioration de la sécurité de l'administration de la plateforme en implémentant des mesures de protection contre les attaques.
-- Ajout de nouvelles fonctionnalités et améliorations de la gestion des workflows.
-- Correction de bugs et améliorations de la performance de la gestion des workflows.
-- Amélioration de la sécurité de la gestion des workflows en implémentant des mesures de protection contre les attaques.
-- Ajout de nouvelles fonctionnalités et améliorations de la collaboration entre les utilisateurs.
-- Correction de bugs et améliorations de la performance de la collaboration entre les utilisateurs.
-- Amélioration de la sécurité de la collaboration entre les utilisateurs en implémentant des mesures de protection contre les attaques.
-- Ajout de nouvelles fonctionnalités et améliorations de l'intelligence artificielle.
-- Correction de bugs et améliorations de la performance de l'intelligence artificielle.
-- Amélioration de la sécurité de l'intelligence artificielle en implémentant des mesures de protection contre les attaques.
+- **Documentation** : Mise à jour massive et alignement de l'ensemble de la documentation technique (guides d'architecture, procédures de déploiement cloud, et bilans de runs de bots).
+- **Nettoyage** : Refactorisation de la gestion des bundles et optimisation de la gestion des ressources de l'engine.

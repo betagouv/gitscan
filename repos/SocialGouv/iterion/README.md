@@ -20,6 +20,7 @@ Kubernetes gave cloud workloads a declarative control plane. Iterion brings that
 ## Table of Contents
 
 - [Why Iterion?](docs/why-iterion.md) — origin + recipe + asymptote + lab
+- [Philosophy](docs/philosophy.md) — maximum power, modularity, cloud-nativeness, git-native first class, product-open
 - [Current state](docs/current-state.md) — as-built capabilities, architecture, defaults, and limits
 - [What is Iterion?](#what-is-iterion)
 - [Features](#features)
@@ -80,13 +81,13 @@ More than a DAG runner: Iterion is built for long, autonomous, multi-agent work 
 - 🔁 **Fuelled loops** — Fixed, templated, or convergence-driven loops with iteration and liveness backstops
 - 📡 **In-bot events** — `emit` / `wait` nodes coordinate concurrent branches without polling
 - 🔲 **Structured I/O** — Typed schemas for inputs and outputs with enum constraints
-- 🔗 **MCP support** — Declare MCP servers directly in `.bot` files (`stdio`, `http`)
+- 🔗 **MCP support** — Declare MCP servers directly in `.bot` files (`stdio`, `http`), and drive Iterion itself from any MCP client via `iterion mcp` (local runs/board + the remote instance) — see [docs/mcp-server.md](docs/mcp-server.md)
 - 🧪 **Recipe system** — Bundle workflows with presets for comparison and benchmarking
 - 📐 **Mermaid diagrams** — Auto-generate visual workflow diagrams (compact / detailed / full)
 
 ### Execution & runtime
 
-- 🔌 **Multiple execution backends** — In-process `claw`, the recommended Claude Code delegate, the `pi` coding-agent backend, plus explicit Kimi Code and Grok Build CLI-agent backends; the Codex delegate is deprecated and frozen
+- 🔌 **Multiple execution backends** — In-process `claw`, Claude Code, Codex CLI, `pi`, Kimi Code and Grok Build, selectable per node or workflow
 - 🌐 **Provider routing** — `claw` validates Anthropic and OpenAI as first-class lanes and also wires xAI, Bedrock, Vertex, Foundry, and compatible endpoints with varying test coverage; OpenAI can use an API key or a ChatGPT/Codex OAuth forfait
 - 💰 **Budget enforcement** — Shared, mutex-protected caps on tokens, cost (USD), duration, parallel branches, and loop iterations
 - 🎛️ **Live control and recovery** — Queue operator/supervisor messages, raise budgets, grant loop iterations, retry eligible failures, and resume from persisted checkpoints
@@ -209,6 +210,7 @@ work on and pick the entry point that matches your intent:
 | **Build your own bot** | `iterion bots create <slug>`, or the studio builder at `/bots/new` |
 | **Wire bots into CI / a forge** | [`docs/repo-scope.md`](docs/repo-scope.md) — connect a repo, then trigger on PRs and issues |
 | **Use a cloud instance** | `iterion remote login <url>` — see [`docs/cloud-cli.md`](docs/cloud-cli.md) |
+| **Drive Iterion from your AI agent** | `claude mcp add iterion -- iterion mcp` — see [`docs/mcp-server.md`](docs/mcp-server.md) |
 
 #### Run a bot from the catalog
 
@@ -325,13 +327,14 @@ The full documentation lives under [`docs/`](docs/) — start with the [document
 - [docs/desktop.md](docs/desktop.md) — native desktop app
 - [docs/examples.md](docs/examples.md) — workflows of increasing complexity (starter → advanced)
 - [docs/skill.md](docs/skill.md) — install Iterion as an AI agent skill (Claude Code, Cursor, Copilot…)
+- [docs/mcp-server.md](docs/mcp-server.md) — drive Iterion from any MCP client (`iterion mcp`): local runs/board + remote instance
 
 **Author workflows**
 - [docs/dsl.md](docs/dsl.md) — full `.bot` DSL reference
 - [docs/routers.md](docs/routers.md) — routing modes deep dive
 - [docs/human-in-the-loop.md](docs/human-in-the-loop.md) — pause for human input; all six interaction values and their node-specific behavior
 - [docs/recipes.md](docs/recipes.md) — preset-driven runs (benchmarking, prompt comparison)
-- [docs/backends.md](docs/backends.md) + [docs/delegation.md](docs/delegation.md) — model/provider routing and the `claw`, Claude Code, `pi`, Kimi, Grok, and legacy Codex execution paths
+- [docs/backends.md](docs/backends.md) + [docs/delegation.md](docs/delegation.md) — model/provider routing and the `claw`, Claude Code, Codex, `pi`, Kimi and Grok execution paths
 - [docs/cursors.md](docs/cursors.md) — prompt-engineering cursors (ambition / depth / rigor / autonomy dials)
 - [docs/attachments.md](docs/attachments.md) — file/image attachments in prompts
 - [docs/privacy_filter.md](docs/privacy_filter.md) — built-in PII redaction tools
