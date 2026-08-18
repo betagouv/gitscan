@@ -44,6 +44,7 @@
 │   ├── testController.ts
 │   ├── universitiesController.ts
 │   └── validators
+│       ├── common.ts
 │       ├── patientValidators.ts
 │       └── studentValidators.ts
 ├── cron_jobs
@@ -278,6 +279,9 @@
 │   │   │   ├── Footer
 │   │   │   │   ├── Footer.jsx
 │   │   │   │   └── Mail.jsx
+│   │   │   ├── Forms
+│   │   │   │   ├── ErrorMessage.jsx
+│   │   │   │   └── errorMessage.cssmodule.scss
 │   │   │   ├── Header
 │   │   │   │   ├── Header.jsx
 │   │   │   │   └── Skiplinks.jsx
@@ -362,15 +366,18 @@
 │   │   │   │   │   ├── appointments.cssmodule.scss
 │   │   │   │   │   └── newAppointment.cssmodule.scss
 │   │   │   │   ├── Patients
-│   │   │   │   │   ├── AddEditPatient.jsx
-│   │   │   │   │   ├── AddEditPatientInfo.jsx
+│   │   │   │   │   ├── AddNewPatient.jsx
+│   │   │   │   │   ├── ConfirmNewPatient.jsx
+│   │   │   │   │   ├── InviteStudent.jsx
 │   │   │   │   │   ├── PatientAppointments.jsx
 │   │   │   │   │   ├── Patients.jsx
+│   │   │   │   │   ├── SeePatient.jsx
 │   │   │   │   │   ├── SendPatientCertificate.jsx
-│   │   │   │   │   ├── addEditPatient.cssmodule.scss
+│   │   │   │   │   ├── confirmNewPatient.cssmodule.scss
 │   │   │   │   │   ├── patientAppointments.cssmodule.scss
 │   │   │   │   │   ├── patientactions.cssmodule.scss
-│   │   │   │   │   └── patients.cssmodule.scss
+│   │   │   │   │   ├── patients.cssmodule.scss
+│   │   │   │   │   └── seePatient.cssmodule.scss
 │   │   │   │   ├── PsyDashboard
 │   │   │   │   │   ├── PsyDashboard.jsx
 │   │   │   │   │   ├── PsySection
@@ -453,20 +460,22 @@
 │   │   │   ├── Tooltip
 │   │   │   │   ├── Tooltip.jsx
 │   │   │   │   └── tooltip.cssmodule.scss
-│   │   │   └── Tutorial
-│   │   │       ├── Modal.jsx
-│   │   │       ├── Steps
-│   │   │       │   ├── appointments.js
-│   │   │       │   ├── billing.js
-│   │   │       │   ├── billingInfo.js
-│   │   │       │   ├── dashboard.js
-│   │   │       │   ├── global.js
-│   │   │       │   ├── index.js
-│   │   │       │   ├── newAppointment.js
-│   │   │       │   ├── newStudent.js
-│   │   │       │   └── students.js
-│   │   │       ├── Tutorial.jsx
-│   │   │       └── modal.cssmodule.scss
+│   │   │   ├── Tutorial
+│   │   │   │   ├── Modal.jsx
+│   │   │   │   ├── Steps
+│   │   │   │   │   ├── appointments.js
+│   │   │   │   │   ├── billing.js
+│   │   │   │   │   ├── billingInfo.js
+│   │   │   │   │   ├── dashboard.js
+│   │   │   │   │   ├── global.js
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   ├── newAppointment.js
+│   │   │   │   │   └── students.js
+│   │   │   │   ├── Tutorial.jsx
+│   │   │   │   └── modal.cssmodule.scss
+│   │   │   └── Utils
+│   │   │       ├── Stack.jsx
+│   │   │       └── stack.cssmodule.scss
 │   │   ├── custom-date-picker.css
 │   │   ├── custom-month-picker.css
 │   │   ├── index.js
@@ -596,11 +605,13 @@
 │   ├── 20260205151206_add_token_signin_attempts.ts
 │   ├── 20260413144901_add_students_fields_questionnaire.ts
 │   ├── 20260428124907_add_last_connection_student_table.ts
+│   ├── 20260518075210_link_patients_to_students.ts
 │   ├── 20260603124541_add_students_edit_email_token.ts
 │   ├── 20260609100350_add_uai_university.ts
 │   ├── 20260609140450_add_rpps_psychologist.ts
 │   ├── 20260626144356_remove_is_very_available.ts
-│   └── 20260723090208_student_add_last_update_personal_data.ts
+│   ├── 20260723090208_student_add_last_update_personal_data.ts
+│   └── 20260804114500_student_add_api_check_column.ts
 ├── package.json
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
@@ -622,6 +633,7 @@
 │   ├── completeInstitutions.json
 │   ├── createInstitutionNames.ts
 │   ├── deactivateInactivePsy.ts
+│   ├── downloadCertificates.ts
 │   ├── generateInactiveTokens.ts
 │   ├── getCleanInstitutionsName.ts
 │   ├── insertAddressToUniversities.ts
@@ -666,7 +678,6 @@
 │   ├── sendStudentMailTemplate.ts
 │   ├── signInAttempts.ts
 │   ├── studentAppointments.ts
-│   ├── studentEligibility.ts
 │   ├── studentNewsletterMails.ts
 │   ├── updatePsyFields.ts
 │   └── verifyStudentINE.ts
@@ -749,7 +760,8 @@
 │       ├── departments.spec.ts
 │       ├── graphql.spec.ts
 │       ├── string.spec.ts
-│       └── uuid.spec.ts
+│       ├── uuid.spec.ts
+│       └── validateINE.spec.ts
 ├── tsconfig.json
 ├── types
 │   ├── AdeliInfo.ts
@@ -757,7 +769,6 @@
 │   ├── Coordinates.ts
 │   ├── DemarcheSimplifiee.ts
 │   ├── DossierState.ts
-│   ├── Eligibility.ts
 │   ├── Genders.ts
 │   ├── INESresponse.ts
 │   ├── LastConnection.ts
@@ -819,4 +830,4 @@
         ├── studentSignInValidation.ejs
         ├── studentWelcome.ejs
         └── summaryUniversity.ejs
-123 directories, 698 files
+125 directories, 707 files
