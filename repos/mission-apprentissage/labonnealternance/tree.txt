@@ -28,6 +28,9 @@
 │   │   ├── feature-request.yml
 │   │   └── task-request.yml
 │   ├── copilot-instructions.md
+│   ├── instructions
+│   │   ├── review-server-shared.instructions.md
+│   │   └── review-ui.instructions.md
 │   ├── issue-assets
 │   │   ├── LBA-*.png  (530 files)
 │   │   ├── LBA-*.jpg  (14 files)
@@ -258,6 +261,8 @@
 │   │   │   │   │   └── api-entreprise.client.ts
 │   │   │   │   ├── api-referentiel-catalogue.fixture.ts
 │   │   │   │   ├── classification
+│   │   │   │   │   ├── classification-mistral.client.test.ts
+│   │   │   │   │   ├── classification-mistral.client.ts
 │   │   │   │   │   ├── classification.client.fixture.ts
 │   │   │   │   │   ├── classification.client.test.ts
 │   │   │   │   │   └── classification.client.ts
@@ -343,10 +348,11 @@
 │   │   │   │   ├── admin
 │   │   │   │   │   ├── eligible-trainings-for-appointment.controller.ts
 │   │   │   │   │   ├── etablissement.controller.ts
-│   │   │   │   │   └── formations.controller.ts
+│   │   │   │   │   ├── formations.controller.ts
+│   │   │   │   │   ├── jobs-partners.controller.test.ts
+│   │   │   │   │   └── jobs-partners.controller.ts
 │   │   │   │   ├── application.controller.ts
 │   │   │   │   ├── appointment-request.controller.ts
-│   │   │   │   ├── classification.controller.ts
 │   │   │   │   ├── core.controller.ts
 │   │   │   │   ├── emails.controller.ts
 │   │   │   │   ├── etablissement-recruteur.controller.test.ts
@@ -684,6 +690,8 @@
 │   │   │   │   │   ├── import-rh-alternance.test.ts
 │   │   │   │   │   ├── import-rh-alternance.ts
 │   │   │   │   │   └── process-rh-alternance.ts
+│   │   │   │   ├── send-job-partners-nightly-digest.test.ts
+│   │   │   │   ├── send-job-partners-nightly-digest.ts
 │   │   │   │   ├── validate-computed-job-partners.test.ts
 │   │   │   │   └── validate-computed-job-partners.ts
 │   │   │   ├── one-time-job
@@ -767,7 +775,8 @@
 │   │   │   ├── 20260720104100-remove-opco-short-name.ts
 │   │   │   ├── 20260727210718-seed-search-items-keywords-cache.ts
 │   │   │   ├── 20260728110908-remove-inactive-recruteurs-from-search-items.ts
-│   │   │   └── 20260728150000-sanitize-offer-titles.ts
+│   │   │   ├── 20260728150000-sanitize-offer-titles.ts
+│   │   │   └── 20260811224141-add-offer-creation-index-jobs-partners.ts
 │   │   ├── security
 │   │   │   ├── access-log.service.ts
 │   │   │   ├── access-log.types.ts
@@ -788,6 +797,7 @@
 │   │       ├── appointment.service.ts
 │   │       ├── bal.service.ts
 │   │       ├── brevo.service.ts
+│   │       ├── cache-classification.service.test.ts
 │   │       ├── cache-classification.service.ts
 │   │       ├── cache-diagoriente.service.ts
 │   │       ├── cache-geolocation.service.ts
@@ -795,6 +805,11 @@
 │   │       ├── catalogue.service.ts
 │   │       ├── cfa.service.ts
 │   │       ├── clamav.service.ts
+│   │       ├── classification
+│   │       │   ├── classification-mistral-batch.service.test.ts
+│   │       │   ├── classification-mistral-batch.service.ts
+│   │       │   ├── compare-lab-mistral-classification.service.test.ts
+│   │       │   └── compare-lab-mistral-classification.service.ts
 │   │       ├── domainesmetiers.service.ts
 │   │       ├── eligible-trainings-for-appointment.service.test.ts
 │   │       ├── eligible-trainings-for-appointment.service.ts
@@ -1131,7 +1146,6 @@
 │   │   │   │   └── seo.routes.ts
 │   │   │   ├── application.routes.ts
 │   │   │   ├── appointments.routes.ts
-│   │   │   ├── classification.routes.ts
 │   │   │   ├── common.routes.ts
 │   │   │   ├── core.routes.ts
 │   │   │   ├── eligible-trainings-for-appointment.routes.ts
@@ -1144,6 +1158,7 @@
 │   │   │   ├── index.ts
 │   │   │   ├── inserjeunes.routes.ts
 │   │   │   ├── jobs-et-formations.routes.ts
+│   │   │   ├── jobs-partners-admin.routes.ts
 │   │   │   ├── jobs.routes.ts
 │   │   │   ├── login.routes.ts
 │   │   │   ├── metiers.routes.ts
@@ -1214,57 +1229,86 @@
 │   │   │   │   ├── layout.tsx
 │   │   │   │   ├── recherche
 │   │   │   │   │   ├── _components
-│   │   │   │   │   │   ├── CandidatRechercheFilters.tsx
-│   │   │   │   │   │   ├── CandidatRechercheForm.tsx
+│   │   │   │   │   │   ├── CandidatRechercheFilters_LEGACY.tsx
+│   │   │   │   │   │   ├── CandidatRechercheForm_LEGACY.tsx
+│   │   │   │   │   │   ├── EnqueteTally_LEGACY.tsx
+│   │   │   │   │   │   ├── ExitNewSearchLink_LEGACY.tsx
+│   │   │   │   │   │   ├── NewSearchOptInBanner_LEGACY.tsx
 │   │   │   │   │   │   ├── RechercheInputs
-│   │   │   │   │   │   │   ├── RechercheElligibleHandicapCheckbox.tsx
-│   │   │   │   │   │   │   ├── RechercheInputsLayout.tsx
-│   │   │   │   │   │   │   ├── RechercheLieuAutocomplete.tsx
-│   │   │   │   │   │   │   ├── RechercheMetierAutocomplete.tsx
-│   │   │   │   │   │   │   ├── RechercheNiveauSelect.tsx
-│   │   │   │   │   │   │   ├── RechercheRayonSelect.tsx
-│   │   │   │   │   │   │   ├── RechercheResultTypeCheckbox.tsx
-│   │   │   │   │   │   │   ├── RechercheSubmitButton.tsx
-│   │   │   │   │   │   │   └── RechercheTypeEmploiSelect.tsx
-│   │   │   │   │   │   ├── RechercheOptInBanner.tsx
-│   │   │   │   │   │   ├── RecherchePageComponent.tsx
-│   │   │   │   │   │   ├── RecherchePageComponentServer.tsx
+│   │   │   │   │   │   │   ├── RechercheElligibleHandicapCheckbox_LEGACY.tsx
+│   │   │   │   │   │   │   ├── RechercheInputsLayout_LEGACY.tsx
+│   │   │   │   │   │   │   ├── RechercheLieuAutocomplete_LEGACY.tsx
+│   │   │   │   │   │   │   ├── RechercheMetierAutocomplete_LEGACY.tsx
+│   │   │   │   │   │   │   ├── RechercheNiveauSelect_LEGACY.tsx
+│   │   │   │   │   │   │   ├── RechercheRayonSelect_LEGACY.tsx
+│   │   │   │   │   │   │   ├── RechercheResultTypeCheckbox_LEGACY.tsx
+│   │   │   │   │   │   │   ├── RechercheSubmitButton_LEGACY.tsx
+│   │   │   │   │   │   │   └── RechercheTypeEmploiSelect_LEGACY.tsx
+│   │   │   │   │   │   ├── RechercheOptInBanner_LEGACY.tsx
+│   │   │   │   │   │   ├── RecherchePageComponentServer_LEGACY.tsx
+│   │   │   │   │   │   ├── RecherchePageComponent_LEGACY.tsx
 │   │   │   │   │   │   ├── RechercheResultats
 │   │   │   │   │   │   │   ├── CardStyling.tsx
-│   │   │   │   │   │   │   ├── LbaItemCard.tsx
-│   │   │   │   │   │   │   ├── RechercheBackToTopButton.tsx
-│   │   │   │   │   │   │   ├── RechercheHeader.tsx
-│   │   │   │   │   │   │   ├── RechercheMobileEmpty.tsx
-│   │   │   │   │   │   │   ├── RechercheMobileForm.tsx
-│   │   │   │   │   │   │   ├── RechercheMobileFormUpdate.tsx
-│   │   │   │   │   │   │   ├── RechercheMobileHome.tsx
-│   │   │   │   │   │   │   ├── RecherchePageEmpty.tsx
-│   │   │   │   │   │   │   ├── RecherchePageHome.tsx
-│   │   │   │   │   │   │   ├── RechercheResultatsFooter.tsx
-│   │   │   │   │   │   │   ├── RechercheResultatsList.tsx
-│   │   │   │   │   │   │   ├── RechercheTitle.tsx
-│   │   │   │   │   │   │   ├── VirtualContainer.tsx
-│   │   │   │   │   │   │   ├── Whisper.tsx
-│   │   │   │   │   │   │   └── result-card-data.ts
-│   │   │   │   │   │   ├── RechercheResultatsPlaceholder.tsx
+│   │   │   │   │   │   │   ├── LbaItemCard_LEGACY.tsx
+│   │   │   │   │   │   │   ├── RechercheBackToTopButton_LEGACY.tsx
+│   │   │   │   │   │   │   ├── RechercheHeader_LEGACY.tsx
+│   │   │   │   │   │   │   ├── RechercheMobileEmpty_LEGACY.tsx
+│   │   │   │   │   │   │   ├── RechercheMobileFormUpdate_LEGACY.tsx
+│   │   │   │   │   │   │   ├── RechercheMobileForm_LEGACY.tsx
+│   │   │   │   │   │   │   ├── RechercheMobileHome_LEGACY.tsx
+│   │   │   │   │   │   │   ├── RecherchePageEmpty_LEGACY.tsx
+│   │   │   │   │   │   │   ├── RecherchePageHome_LEGACY.tsx
+│   │   │   │   │   │   │   ├── RechercheResultatsFooter_LEGACY.tsx
+│   │   │   │   │   │   │   ├── RechercheResultatsList_LEGACY.tsx
+│   │   │   │   │   │   │   ├── RechercheTitle_LEGACY.tsx
+│   │   │   │   │   │   │   ├── VirtualContainer_LEGACY.tsx
+│   │   │   │   │   │   │   ├── Whisper_LEGACY.tsx
+│   │   │   │   │   │   │   └── result-card-data_LEGACY.ts
+│   │   │   │   │   │   ├── RechercheResultatsPlaceholder_LEGACY.tsx
+│   │   │   │   │   │   ├── RechercheSeoContent.tsx
+│   │   │   │   │   │   ├── SearchBar.tsx
+│   │   │   │   │   │   ├── SearchFilterChip.tsx
+│   │   │   │   │   │   ├── SearchFilters.tsx
+│   │   │   │   │   │   ├── SearchHitCard.tsx
+│   │   │   │   │   │   ├── SearchHomeForm.tsx
+│   │   │   │   │   │   ├── SearchMobilePanel.tsx
+│   │   │   │   │   │   ├── SearchMobileSummaryBar.tsx
+│   │   │   │   │   │   ├── SearchMobileTriModal.tsx
+│   │   │   │   │   │   ├── SearchPageClient.tsx
+│   │   │   │   │   │   ├── SearchResultsList.tsx
+│   │   │   │   │   │   ├── SearchSortSelect.tsx
+│   │   │   │   │   │   ├── SearchTypeRechercheSelect.tsx
 │   │   │   │   │   │   └── is-offer-active.ts
 │   │   │   │   │   ├── _hooks
-│   │   │   │   │   │   ├── use-navigate-to-recherche-page.ts
-│   │   │   │   │   │   ├── use-navigate-to-result-item-detail.ts
+│   │   │   │   │   │   ├── use-auto-radius.ts
+│   │   │   │   │   │   ├── use-beta-detail-navigation.ts
+│   │   │   │   │   │   ├── use-dialog-a11y.ts
+│   │   │   │   │   │   ├── use-lock-body-scroll.ts
+│   │   │   │   │   │   ├── use-navigate-to-recherche-page_LEGACY.ts
+│   │   │   │   │   │   ├── use-navigate-to-result-item-detail_LEGACY.ts
+│   │   │   │   │   │   ├── use-new-search-opt-in_LEGACY.ts
 │   │   │   │   │   │   ├── use-recherche-results.ts
-│   │   │   │   │   │   ├── use-result-item-url.ts
-│   │   │   │   │   │   ├── use-search-view-notifier.ts
-│   │   │   │   │   │   └── use-whispers.ts
+│   │   │   │   │   │   ├── use-result-item-url_LEGACY.ts
+│   │   │   │   │   │   ├── use-search-results.ts
+│   │   │   │   │   │   ├── use-search-view-notifier_LEGACY.ts
+│   │   │   │   │   │   └── use-whispers_LEGACY.ts
 │   │   │   │   │   ├── _utils
 │   │   │   │   │   │   ├── recherche.metadata.utils.test.ts
 │   │   │   │   │   │   ├── recherche.metadata.utils.ts
+│   │   │   │   │   │   ├── recherche.metadata.utils_LEGACY.test.ts
+│   │   │   │   │   │   ├── recherche.metadata.utils_LEGACY.ts
 │   │   │   │   │   │   ├── recherche.route.utils.ts
-│   │   │   │   │   │   └── scroll-to-virtual-item.ts
-│   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   ├── scroll-to-virtual-item_LEGACY.ts
+│   │   │   │   │   │   ├── search.params.utils.test.ts
+│   │   │   │   │   │   ├── search.params.utils.ts
+│   │   │   │   │   │   ├── search.tracking.utils.test.ts
+│   │   │   │   │   │   └── search.tracking.utils.ts
+│   │   │   │   │   ├── page.tsx
+│   │   │   │   │   └── page_LEGACY.tsx
 │   │   │   │   ├── recherche-emploi
-│   │   │   │   │   └── page.tsx
+│   │   │   │   │   └── page_LEGACY.tsx
 │   │   │   │   └── recherche-formation
-│   │   │   │       └── page.tsx
+│   │   │   │       └── page_LEGACY.tsx
 │   │   │   ├── detail-rendez-vous
 │   │   │   │   └── [id]
 │   │   │   │       ├── DetailRendezVousRendererClient.tsx
@@ -1335,6 +1379,7 @@
 │   │   │   │   │   ├── hub-styles.ts
 │   │   │   │   │   ├── landing_links.ts
 │   │   │   │   │   ├── metier_data.tsx
+│   │   │   │   │   ├── offres-item-list.ts
 │   │   │   │   │   └── ville_data.tsx
 │   │   │   │   ├── diplome
 │   │   │   │   │   └── [slug]
@@ -1510,6 +1555,7 @@
 │   │   │       │   │   │   └── EtablissementComponent.tsx
 │   │   │       │   │   ├── _utils
 │   │   │       │   │   │   ├── lbaCompaniesColumns.tsx
+│   │   │       │   │   │   ├── offresPartenairesColumns.tsx
 │   │   │       │   │   │   └── recruteursColumns.tsx
 │   │   │       │   │   ├── compte
 │   │   │       │   │   │   ├── layout.tsx
@@ -1527,6 +1573,11 @@
 │   │   │       │   │   │   ├── gestionEntreprises.tsx
 │   │   │       │   │   │   └── page.tsx
 │   │   │       │   │   ├── layout.tsx
+│   │   │       │   │   ├── offres-partenaires
+│   │   │       │   │   │   ├── OffresPartenairesList.tsx
+│   │   │       │   │   │   ├── OffresPartenairesMenu.tsx
+│   │   │       │   │   │   ├── OffresPartenairesModals.tsx
+│   │   │       │   │   │   └── page.tsx
 │   │   │       │   │   ├── processeur
 │   │   │       │   │   │   ├── ProcesseurPage.tsx
 │   │   │       │   │   │   ├── components
@@ -1717,7 +1768,7 @@
 │   │   │   │   ├── GrandsGroupesLink.tsx
 │   │   │   │   ├── GrandsGroupesRecruteur.tsx
 │   │   │   │   ├── HomeCircleImageDecoration.tsx
-│   │   │   │   ├── HomeRechercheForm.tsx
+│   │   │   │   ├── HomeRechercheForm_LEGACY.tsx
 │   │   │   │   ├── HomeRechercheOptIn.tsx
 │   │   │   │   ├── HowTo.tsx
 │   │   │   │   ├── InformationsAlternance.tsx
@@ -1793,37 +1844,6 @@
 │   │   │   │   └── ModalTitle.tsx
 │   │   │   ├── WidgetAwareHeader.tsx
 │   │   │   └── WidgetTester.tsx
-│   │   ├── beta
-│   │   │   ├── _components
-│   │   │   │   ├── EnqueteTally.tsx
-│   │   │   │   ├── ExitNewSearchLink.tsx
-│   │   │   │   ├── NewSearchOptInBanner.tsx
-│   │   │   │   ├── SearchBar.tsx
-│   │   │   │   ├── SearchFilterChip.tsx
-│   │   │   │   ├── SearchFilters.tsx
-│   │   │   │   ├── SearchHitCard.tsx
-│   │   │   │   ├── SearchHomeForm.tsx
-│   │   │   │   ├── SearchMobilePanel.tsx
-│   │   │   │   ├── SearchMobileSummaryBar.tsx
-│   │   │   │   ├── SearchMobileTriModal.tsx
-│   │   │   │   ├── SearchPageClient.tsx
-│   │   │   │   ├── SearchResultsList.tsx
-│   │   │   │   ├── SearchSortSelect.tsx
-│   │   │   │   └── SearchTypeRechercheSelect.tsx
-│   │   │   ├── _hooks
-│   │   │   │   ├── use-auto-radius.ts
-│   │   │   │   ├── use-beta-detail-navigation.ts
-│   │   │   │   ├── use-dialog-a11y.ts
-│   │   │   │   ├── use-lock-body-scroll.ts
-│   │   │   │   ├── use-new-search-opt-in.ts
-│   │   │   │   └── use-search-results.ts
-│   │   │   ├── _utils
-│   │   │   │   ├── search.params.utils.test.ts
-│   │   │   │   ├── search.params.utils.ts
-│   │   │   │   ├── search.tracking.utils.test.ts
-│   │   │   │   └── search.tracking.utils.ts
-│   │   │   └── recherche
-│   │   │       └── page.tsx
 │   │   ├── client_only_providers.tsx
 │   │   ├── dsfr-setup
 │   │   │   ├── default-color-scheme.ts
@@ -1840,6 +1860,7 @@
 │   │   │   ├── use-formation-prdv-tracker.ts
 │   │   │   ├── use-is-mobile-device.ts
 │   │   │   ├── use-is-widget.ts
+│   │   │   ├── use-jobs-partners-admin-actions.ts
 │   │   │   ├── use-local-storage.ts
 │   │   │   ├── use-url-hash.ts
 │   │   │   ├── use-user-history-update.ts
@@ -2661,6 +2682,7 @@
 │       ├── local-storage.ts
 │       ├── matomo-utils.ts
 │       ├── plausible.ts
+│       ├── reload-guard.utils.ts
 │       ├── request-utils.ts
 │       ├── robots.utils.test.ts
 │       ├── robots.utils.ts
@@ -2670,4 +2692,4 @@
 │       └── use-search-params-record.ts
 ├── vitest.config.ts
 └── yarn.lock
-500 directories, 2740 files
+498 directories, 2764 files
