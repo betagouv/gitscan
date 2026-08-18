@@ -10,14 +10,23 @@ and this project adheres to
 
 - ♿️(frontend) restore skip to content link after header redesign #2510
 - 🌐(i18n) rename cn_CN to zh_CN, add eo_PL and zh_TW locales #2486
-
-### Fixed
-
-- 🐛(frontend) redirect homepage to login when homepage feat is disabled #2521
+- ✨(backend) conditional email notification in server to server api #2554
 
 ### Changed
 
 - ♿️(frontend) use semantic `<dl>` structure in document info card #2379
+- 💄(frontend) use the same highlight color for cells and moves #2575
+
+### Fixed
+
+- 🐛(frontend) refresh pins after document deletion and restoration
+- 🐛(frontend) redirect homepage to login when homepage feat is disabled #2521
+- 🐛(backend) ignore CSPs for API docs in development
+- 🐛(frontend) export images embedded with a relative url #2573
+- 🐛(y-provider) fix sentry init #2579
+- 🐛(backend) handle object storage metadata keys case-insensitively #2576
+- 🐛(keycloak) fix database env variables in the self-hosting example #2572
+- 🐛(helm) show the database error while jobs wait for it to be ready #2578
 
 ## [v5.4.1] - 2026-07-09
 

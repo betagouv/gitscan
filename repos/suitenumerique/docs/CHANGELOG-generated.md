@@ -1,28 +1,37 @@
-## Changelog : docs (30 derniers jours, au 28 juillet 2026)
+## Changelog : docs (30 derniers jours, au 14 août 2026)
 
 ### Résumé
-Les dernières mises à jour apportent des améliorations significatives à l'éditeur de présentation, avec la possibilité d'ouvrir et de partager une présentation à une diapositive spécifique. Des corrections de bugs et des améliorations de l'interface utilisateur ont également été implémentées, notamment pour la gestion des documents, la barre latérale et le mode présentation. La documentation a été enrichie avec des informations sur la configuration de la conversion de format et l'utilisation de S3.
+Ce mois-ci, les efforts se sont concentrés sur l'amélioration de l'expérience de présentation, l'extension des capacités linguistiques et une mise à jour majeure de l'infrastructure technique (notamment le passage à Python 3.14). L'outil est désormais plus robuste pour l'auto-hébergement et offre des fonctionnalités de partage plus précises pour les présentations.
 
 ### Évolutions fonctionnelles
-- Possibilité d'ouvrir et de partager une présentation à une diapositive spécifique. [#2508](https://github.com/suitenumerique/docs/issues/2508)
-- Amélioration de l'interface utilisateur de la barre latérale. [#2516](https://github.com/suitenumerique/docs/issues/2516)
-- Ajout d'une animation Lottie à la barre flottante dans l'en-tête.
-- Restauration du lien "Passer au contenu" après la refonte de l'en-tête. [#2510](https://github.com/suitenumerique/docs/issues/2510)
-- Ajout de la gestion des locales `zh_CN`, `eo_PL` et `zh_TW`. [#2486](https://github.com/suitenumerique/docs/issues/2486)
-- Correction d'un problème de redirection vers la page de connexion lorsque la fonctionnalité de page d'accueil est désactivée. [#2521](https://github.com/suitenumerique/docs/issues/2521)
+- **Mode Présentation** : 
+  - Possibilité de démarrer une présentation directement à partir d'un bloc spécifique.
+  - Ajout de la fonction de partage de liens pointant vers une diapositive précise.
+  - Affichage automatique d'une diapositive de titre générée avant le contenu.
+  - Améliorations visuelles et corrections de l'espacement des diapositives.
+- **Internationalisation** : Ajout des langues bretonne (`eo_PL`) et chinois traditionnel (`zh_TW`), et renommage de la locale chinoise.
+- **Interface et Expérience Utilisateur** :
+  - Amélioration de l'accessibilité via l'utilisation d'éléments HTML sémantiques dans les cartes d'information.
+  - Harmonisation des couleurs de surbrillance pour les cellules et les mouvements.
+  - Correction du rafraîchissement des épingles après la suppression ou la restauration d'un document.
+  - Correction de la redirection de la page d'accueil lorsque la fonctionnalité est désactivée.
+- **API et Export** :
+  - Ajout de notifications par email conditionnelles pour l'API serveur-à-serveur.
+  - Correction de l'exportation des images intégrées pour utiliser des URLs relatives.
 
 ### Évolutions techniques
-- Adaptation de la commande de build `y-provider` suite à une mise à jour de `tsc-alias`.
-- Mise à jour de la configuration de l'IA pour exclure les fichiers du suivi Git.
-- Amélioration de l'architecture du mode présentateur pour une meilleure réutilisation des composants.
-- Refonte de l'en-tête avec une barre flottante plus générique et réutilisable.
-- Correction d'un problème de focus sur les diapositives du présentateur.
-- Utilisation d'éléments `<p>` sémantiques dans la carte d'informations du document pour l'accessibilité. [#2379](https://github.com/suitenumerique/docs/issues/2379)
-- Modification de la recherche de documents pour utiliser l'ID au lieu du chemin. [#2501](https://github.com/suitenumerique/docs/issues/2501)
+- **Infrastructure et Environnement** :
+  - Migration majeure vers Python 3.14.
+  - Amélioration de la gestion de l'auto-hébergement via la correction des variables d'environnement Keycloak.
+  - Meilleure visibilité des erreurs de base de données lors de l'attente des jobs dans Helm.
+  - Optimisation de la gestion de la casse pour les clés de métadonnées du stockage d'objets.
+- **Qualité de code et Maintenance** :
+  - Mise à jour des outils de linting et de qualité (Ruff 0.16, Pylint 4.0.6).
+  - Adaptation du code au nouveau UI-kit (v0.28).
+  - Stabilisation des tests E2E concernant les changements de langue.
+  - Corrections de diverses alertes de sécurité et de warnings de dépendances.
 
 ### Autres changements
-- Mise à jour de la documentation pour expliquer la configuration du format de conversion et l'utilisation de S3.
-- Mise à jour des modèles de formulaires pour les issues. [#2207](https://github.com/suitenumerique/docs/issues/2207)
-- Correction de bugs et améliorations de l'expérience utilisateur mineures.
-- Mise à jour des chaînes de traduction.
-- Publication des versions 5.4.0 et 5.4.1.
+- Mise à jour de la documentation du projet (README) [#2508](https://github.com/suitenumerique/docs/issues/2508).
+- Nettoyage du code via un formatage automatique (Prettier).
+- Ajustements de la configuration Git (ajout des fichiers de configuration IA au `.gitignore`).
