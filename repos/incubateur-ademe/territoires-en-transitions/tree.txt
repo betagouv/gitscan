@@ -243,14 +243,6 @@
 │   │   │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   │   └── sous-actions
 │   │   │   │   │   │   │   │   │       └── page.tsx
-│   │   │   │   │   │   │   │   ├── dans-plan
-│   │   │   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   ├── hors-plan
-│   │   │   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   ├── mes-actions
-│   │   │   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   │   ├── bibliotheque
 │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   ├── demarche-pcaet
 │   │   │   │   │   │   │   │   ├── [demarcheId]
@@ -260,34 +252,24 @@
 │   │   │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   │   ├── layout.tsx
 │   │   │   │   │   │   │   │   │   ├── page.tsx
-│   │   │   │   │   │   │   │   │   ├── plan
-│   │   │   │   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │   └── vulnerabilite
+│   │   │   │   │   │   │   │   │   └── plan
 │   │   │   │   │   │   │   │   │       └── page.tsx
 │   │   │   │   │   │   │   │   ├── nouveau
 │   │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   ├── page.tsx
 │   │   │   │   │   │   │   │   └── vue-dreal
 │   │   │   │   │   │   │   │       └── page.tsx
-│   │   │   │   │   │   │   ├── historique
-│   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   ├── indicateurs
 │   │   │   │   │   │   │   │   ├── [referentield]
 │   │   │   │   │   │   │   │   │   └── [indicateurId]
 │   │   │   │   │   │   │   │   │       └── page.tsx
 │   │   │   │   │   │   │   │   ├── liste
 │   │   │   │   │   │   │   │   │   ├── @tabs
-│   │   │   │   │   │   │   │   │   │   ├── cles
-│   │   │   │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   │   │   ├── collectivite
 │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   │   │   ├── default.tsx
 │   │   │   │   │   │   │   │   │   │   ├── layout.tsx
-│   │   │   │   │   │   │   │   │   │   ├── mes-indicateurs
-│   │   │   │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   │   │   ├── page.tsx
-│   │   │   │   │   │   │   │   │   │   ├── perso
-│   │   │   │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   │   │   ├── tabs-list.ts
 │   │   │   │   │   │   │   │   │   │   └── tous
 │   │   │   │   │   │   │   │   │   │       └── page.tsx
@@ -325,147 +307,113 @@
 │   │   │   │   │   │   │   │       │   └── use-upsert-module.ts
 │   │   │   │   │   │   │   │       └── page.tsx
 │   │   │   │   │   │   │   ├── referentiel
-│   │   │   │   │   │   │   │   ├── [referentielId]
-│   │   │   │   │   │   │   │   │   ├── (overview)
-│   │   │   │   │   │   │   │   │   │   ├── @tabs
-│   │   │   │   │   │   │   │   │   │   │   ├── commentaires
-│   │   │   │   │   │   │   │   │   │   │   │   ├── action-comments-tab-content.tsx
-│   │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │   │   │   ├── default.tsx
-│   │   │   │   │   │   │   │   │   │   │   ├── detail
-│   │   │   │   │   │   │   │   │   │   │   │   ├── action-statuts.table.tsx
-│   │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │   │   │   ├── evolutions
-│   │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │   │   │   ├── header.tsx
-│   │   │   │   │   │   │   │   │   │   │   ├── layout.tsx
-│   │   │   │   │   │   │   │   │   │   │   ├── page.tsx
-│   │   │   │   │   │   │   │   │   │   │   ├── priorisation
-│   │   │   │   │   │   │   │   │   │   │   │   ├── action-scores.table.tsx
-│   │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │   │   │   ├── progression
-│   │   │   │   │   │   │   │   │   │   │   │   ├── _components
-│   │   │   │   │   │   │   │   │   │   │   │   │   ├── action.list.tsx
-│   │   │   │   │   │   │   │   │   │   │   │   │   ├── axe.tsx
-│   │   │   │   │   │   │   │   │   │   │   │   │   ├── filters.tsx
-│   │   │   │   │   │   │   │   │   │   │   │   │   ├── list.tsx
-│   │   │   │   │   │   │   │   │   │   │   │   │   ├── referentiel-view-switcher.tsx
-│   │   │   │   │   │   │   │   │   │   │   │   │   └── utils.ts
-│   │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │   │   │   └── tabs-wrapper.tsx
-│   │   │   │   │   │   │   │   │   │   ├── default.tsx
-│   │   │   │   │   │   │   │   │   │   └── layout.tsx
-│   │   │   │   │   │   │   │   │   ├── action
-│   │   │   │   │   │   │   │   │   │   └── [actionId]
-│   │   │   │   │   │   │   │   │   │       ├── _components
-│   │   │   │   │   │   │   │   │   │       │   ├── action-explication.field.tsx
-│   │   │   │   │   │   │   │   │   │       │   ├── action-hidden.view.tsx
-│   │   │   │   │   │   │   │   │   │       │   ├── action-not-found.view.tsx
-│   │   │   │   │   │   │   │   │   │       │   ├── action.view.tsx
-│   │   │   │   │   │   │   │   │   │       │   ├── components.new-referentiel
-│   │   │   │   │   │   │   │   │   │       │   │   ├── indicateurs-score
-│   │   │   │   │   │   │   │   │   │       │   │   │   ├── subaction.indicateur-list.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   │   ├── subaction.indicateur-modal-resultats.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   │   ├── subaction.indicateur-modal.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   │   ├── subaction.indicateur.skeleton.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   │   └── subaction.indicateur.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── subaction-comments.button.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── subaction.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   └── subactions.list-container.tsx
-│   │   │   │   │   │   │   │   │   │       │   ├── components.old-referentiel
-│   │   │   │   │   │   │   │   │   │       │   │   ├── score-indicatif.actions.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── subaction
-│   │   │   │   │   │   │   │   │   │       │   │   │   ├── subaction-card.header.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   │   ├── subaction-card.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   │   ├── subaction.cards-list.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   │   └── use-scroll-to-hash.ts
-│   │   │   │   │   │   │   │   │   │       │   │   └── task
-│   │   │   │   │   │   │   │   │   │       │   │       ├── task-card.tsx
-│   │   │   │   │   │   │   │   │   │       │   │       └── task.cards-list.tsx
-│   │   │   │   │   │   │   │   │   │       │   ├── display-settings.context.tsx
-│   │   │   │   │   │   │   │   │   │       │   ├── header
-│   │   │   │   │   │   │   │   │   │       │   │   ├── action-side-panel-toolbar.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── action.header.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── breadcrumb
-│   │   │   │   │   │   │   │   │   │       │   │   │   ├── action.breadcrumb.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   │   └── referentiel-dropdown.navigation.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── current-collectivite.badge.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── display-settings-buttons.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── infos.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── points-potentiels.label.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── previous-and-next-actions.links.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── score.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   └── vertical-divider.tsx
-│   │   │   │   │   │   │   │   │   │       │   ├── score-indicatif
-│   │   │   │   │   │   │   │   │   │       │   │   ├── score-indicatif.donnees.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── score-indicatif.labels.ts
-│   │   │   │   │   │   │   │   │   │       │   │   ├── score-indicatif.libelle.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── score-indicatif.modal.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── score-indicatif.types.ts
-│   │   │   │   │   │   │   │   │   │       │   │   ├── score-indicatif.valeurs-utilisees.tsx
-│   │   │   │   │   │   │   │   │   │       │   │   ├── use-get-score-indicatif.ts
-│   │   │   │   │   │   │   │   │   │       │   │   ├── use-get-valeurs-utilisables.ts
-│   │   │   │   │   │   │   │   │   │       │   │   ├── use-get-valeurs-utilisees.ts
-│   │   │   │   │   │   │   │   │   │       │   │   ├── use-set-valeurs-utilisees.ts
-│   │   │   │   │   │   │   │   │   │       │   │   └── utils.ts
-│   │   │   │   │   │   │   │   │   │       │   └── side-panel
-│   │   │   │   │   │   │   │   │   │       │       ├── buttons.tsx
-│   │   │   │   │   │   │   │   │   │       │       ├── comments.tsx
-│   │   │   │   │   │   │   │   │   │       │       ├── context.tsx
-│   │   │   │   │   │   │   │   │   │       │       ├── documents.tsx
-│   │   │   │   │   │   │   │   │   │       │       ├── index.tsx
-│   │   │   │   │   │   │   │   │   │       │       ├── indicateurs.tsx
-│   │   │   │   │   │   │   │   │   │       │       ├── informations.button.tsx
-│   │   │   │   │   │   │   │   │   │       │       ├── informations.config.ts
-│   │   │   │   │   │   │   │   │   │       │       ├── informations.item.tsx
-│   │   │   │   │   │   │   │   │   │       │       ├── informations.tsx
-│   │   │   │   │   │   │   │   │   │       │       ├── types.ts
-│   │   │   │   │   │   │   │   │   │       │       └── use-metadata-count.ts
-│   │   │   │   │   │   │   │   │   │       ├── layout.tsx
-│   │   │   │   │   │   │   │   │   │       └── page.tsx
-│   │   │   │   │   │   │   │   │   ├── labellisation
-│   │   │   │   │   │   │   │   │   │   ├── @tabs
-│   │   │   │   │   │   │   │   │   │   │   ├── criteres
-│   │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │   │   │   ├── cycles
-│   │   │   │   │   │   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │   │   │   ├── default.tsx
-│   │   │   │   │   │   │   │   │   │   │   ├── layout.tsx
-│   │   │   │   │   │   │   │   │   │   │   └── suivi
-│   │   │   │   │   │   │   │   │   │   │       └── page.tsx
-│   │   │   │   │   │   │   │   │   │   ├── default.tsx
-│   │   │   │   │   │   │   │   │   │   └── layout.tsx
-│   │   │   │   │   │   │   │   │   └── layout.tsx
-│   │   │   │   │   │   │   │   ├── new
-│   │   │   │   │   │   │   │   │   └── [referentielId]
-│   │   │   │   │   │   │   │   │       ├── (overview)
-│   │   │   │   │   │   │   │   │       │   ├── @tabs
-│   │   │   │   │   │   │   │   │       │   │   ├── audit-labellisation
-│   │   │   │   │   │   │   │   │       │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │       │   │   ├── commentaires
-│   │   │   │   │   │   │   │   │       │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │       │   │   ├── cycles
-│   │   │   │   │   │   │   │   │       │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │       │   │   ├── default.tsx
-│   │   │   │   │   │   │   │   │       │   │   ├── detail
-│   │   │   │   │   │   │   │   │       │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │       │   │   ├── evolutions
-│   │   │   │   │   │   │   │   │       │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │       │   │   ├── layout.tsx
-│   │   │   │   │   │   │   │   │       │   │   ├── page.tsx
-│   │   │   │   │   │   │   │   │       │   │   ├── priorisation
-│   │   │   │   │   │   │   │   │       │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │       │   │   ├── progression
-│   │   │   │   │   │   │   │   │       │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │       │   │   └── tabs-wrapper.tsx
-│   │   │   │   │   │   │   │   │       │   ├── default.tsx
-│   │   │   │   │   │   │   │   │       │   └── layout.tsx
-│   │   │   │   │   │   │   │   │       └── layout.tsx
-│   │   │   │   │   │   │   │   ├── page.tsx
-│   │   │   │   │   │   │   │   └── tableau-de-bord.show.tsx
+│   │   │   │   │   │   │   │   └── [referentielId]
+│   │   │   │   │   │   │   │       ├── (overview)
+│   │   │   │   │   │   │   │       │   ├── @tabs
+│   │   │   │   │   │   │   │       │   │   ├── audit-labellisation
+│   │   │   │   │   │   │   │       │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │       │   │   ├── commentaires
+│   │   │   │   │   │   │   │       │   │   │   ├── action-comments-tab-content.tsx
+│   │   │   │   │   │   │   │       │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │       │   │   ├── cycles
+│   │   │   │   │   │   │   │       │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │       │   │   ├── default.tsx
+│   │   │   │   │   │   │   │       │   │   ├── documents
+│   │   │   │   │   │   │   │       │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │       │   │   ├── evolutions
+│   │   │   │   │   │   │   │       │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │       │   │   ├── historique
+│   │   │   │   │   │   │   │       │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │       │   │   ├── layout.tsx
+│   │   │   │   │   │   │   │       │   │   ├── page.tsx
+│   │   │   │   │   │   │   │       │   │   ├── progression
+│   │   │   │   │   │   │   │       │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │       │   │   ├── synthese
+│   │   │   │   │   │   │   │       │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │       │   │   └── tabs-wrapper.tsx
+│   │   │   │   │   │   │   │       │   ├── default.tsx
+│   │   │   │   │   │   │   │       │   └── layout.tsx
+│   │   │   │   │   │   │   │       ├── action
+│   │   │   │   │   │   │   │       │   └── [actionId]
+│   │   │   │   │   │   │   │       │       ├── _components
+│   │   │   │   │   │   │   │       │       │   ├── action-explication.field.tsx
+│   │   │   │   │   │   │   │       │       │   ├── action-hidden.view.tsx
+│   │   │   │   │   │   │   │       │       │   ├── action-not-found.view.tsx
+│   │   │   │   │   │   │   │       │       │   ├── action.view.tsx
+│   │   │   │   │   │   │   │       │       │   ├── components.new-referentiel
+│   │   │   │   │   │   │   │       │       │   │   ├── indicateurs-score
+│   │   │   │   │   │   │   │       │       │   │   │   ├── subaction.indicateur-list.tsx
+│   │   │   │   │   │   │   │       │       │   │   │   ├── subaction.indicateur-modal-resultats.tsx
+│   │   │   │   │   │   │   │       │       │   │   │   ├── subaction.indicateur-modal.tsx
+│   │   │   │   │   │   │   │       │       │   │   │   ├── subaction.indicateur.skeleton.tsx
+│   │   │   │   │   │   │   │       │       │   │   │   └── subaction.indicateur.tsx
+│   │   │   │   │   │   │   │       │       │   │   ├── subaction-comments.button.tsx
+│   │   │   │   │   │   │   │       │       │   │   ├── subaction.tsx
+│   │   │   │   │   │   │   │       │       │   │   └── subactions.list-container.tsx
+│   │   │   │   │   │   │   │       │       │   ├── components.old-referentiel
+│   │   │   │   │   │   │   │       │       │   │   ├── score-indicatif.actions.tsx
+│   │   │   │   │   │   │   │       │       │   │   ├── subaction
+│   │   │   │   │   │   │   │       │       │   │   │   ├── subaction-card.header.tsx
+│   │   │   │   │   │   │   │       │       │   │   │   ├── subaction-card.tsx
+│   │   │   │   │   │   │   │       │       │   │   │   ├── subaction.cards-list.tsx
+│   │   │   │   │   │   │   │       │       │   │   │   └── use-scroll-to-hash.ts
+│   │   │   │   │   │   │   │       │       │   │   └── task
+│   │   │   │   │   │   │   │       │       │   │       ├── task-card.tsx
+│   │   │   │   │   │   │   │       │       │   │       └── task.cards-list.tsx
+│   │   │   │   │   │   │   │       │       │   ├── display-settings.context.tsx
+│   │   │   │   │   │   │   │       │       │   ├── header
+│   │   │   │   │   │   │   │       │       │   │   ├── action-side-panel-toolbar.tsx
+│   │   │   │   │   │   │   │       │       │   │   ├── action.header.tsx
+│   │   │   │   │   │   │   │       │       │   │   ├── breadcrumb
+│   │   │   │   │   │   │   │       │       │   │   │   ├── action.breadcrumb.tsx
+│   │   │   │   │   │   │   │       │       │   │   │   └── referentiel-dropdown.navigation.tsx
+│   │   │   │   │   │   │   │       │       │   │   ├── current-collectivite.badge.tsx
+│   │   │   │   │   │   │   │       │       │   │   ├── display-settings-buttons.tsx
+│   │   │   │   │   │   │   │       │       │   │   ├── infos.tsx
+│   │   │   │   │   │   │   │       │       │   │   ├── points-potentiels.label.tsx
+│   │   │   │   │   │   │   │       │       │   │   ├── previous-and-next-actions.links.tsx
+│   │   │   │   │   │   │   │       │       │   │   ├── score.tsx
+│   │   │   │   │   │   │   │       │       │   │   └── vertical-divider.tsx
+│   │   │   │   │   │   │   │       │       │   ├── score-indicatif
+│   │   │   │   │   │   │   │       │       │   │   ├── score-indicatif.donnees.tsx
+│   │   │   │   │   │   │   │       │       │   │   ├── score-indicatif.labels.ts
+│   │   │   │   │   │   │   │       │       │   │   ├── score-indicatif.libelle.tsx
+│   │   │   │   │   │   │   │       │       │   │   ├── score-indicatif.modal.tsx
+│   │   │   │   │   │   │   │       │       │   │   ├── score-indicatif.types.ts
+│   │   │   │   │   │   │   │       │       │   │   ├── score-indicatif.valeurs-utilisees.tsx
+│   │   │   │   │   │   │   │       │       │   │   ├── use-get-score-indicatif.ts
+│   │   │   │   │   │   │   │       │       │   │   ├── use-get-valeurs-utilisables.ts
+│   │   │   │   │   │   │   │       │       │   │   ├── use-get-valeurs-utilisees.ts
+│   │   │   │   │   │   │   │       │       │   │   ├── use-set-valeurs-utilisees.ts
+│   │   │   │   │   │   │   │       │       │   │   └── utils.ts
+│   │   │   │   │   │   │   │       │       │   └── side-panel
+│   │   │   │   │   │   │   │       │       │       ├── buttons.tsx
+│   │   │   │   │   │   │   │       │       │       ├── comments.tsx
+│   │   │   │   │   │   │   │       │       │       ├── context.tsx
+│   │   │   │   │   │   │   │       │       │       ├── documents.tsx
+│   │   │   │   │   │   │   │       │       │       ├── historique.tsx
+│   │   │   │   │   │   │   │       │       │       ├── index.tsx
+│   │   │   │   │   │   │   │       │       │       ├── indicateurs.tsx
+│   │   │   │   │   │   │   │       │       │       ├── informations.button.tsx
+│   │   │   │   │   │   │   │       │       │       ├── informations.config.ts
+│   │   │   │   │   │   │   │       │       │       ├── informations.item.tsx
+│   │   │   │   │   │   │   │       │       │       ├── informations.tsx
+│   │   │   │   │   │   │   │       │       │       ├── types.ts
+│   │   │   │   │   │   │   │       │       │       └── use-metadata-count.ts
+│   │   │   │   │   │   │   │       │       ├── layout.tsx
+│   │   │   │   │   │   │   │       │       └── page.tsx
+│   │   │   │   │   │   │   │       ├── labellisation
+│   │   │   │   │   │   │   │       │   ├── @tabs
+│   │   │   │   │   │   │   │       │   │   ├── criteres
+│   │   │   │   │   │   │   │       │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │       │   │   ├── cycles
+│   │   │   │   │   │   │   │       │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │       │   │   ├── default.tsx
+│   │   │   │   │   │   │   │       │   │   └── layout.tsx
+│   │   │   │   │   │   │   │       │   ├── default.tsx
+│   │   │   │   │   │   │   │       │   └── layout.tsx
+│   │   │   │   │   │   │   │       └── layout.tsx
 │   │   │   │   │   │   │   ├── tableau-de-bord
-│   │   │   │   │   │   │   │   ├── _components
-│   │   │   │   │   │   │   │   │   └── header.tsx
 │   │   │   │   │   │   │   │   ├── page.tsx
 │   │   │   │   │   │   │   │   ├── personnel
 │   │   │   │   │   │   │   │   │   ├── [moduleKey]
@@ -514,11 +462,6 @@
 │   │   │   │   │   │   │       ├── layout.tsx
 │   │   │   │   │   │   │       ├── page.tsx
 │   │   │   │   │   │   │       └── users-header.tsx
-│   │   │   │   │   │   ├── accueil
-│   │   │   │   │   │   │   ├── _components
-│   │   │   │   │   │   │   │   ├── accueil.page.tsx
-│   │   │   │   │   │   │   │   └── section.card.tsx
-│   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   ├── affichage-referentiels
 │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   ├── layout.tsx
@@ -693,50 +636,6 @@
 │   │   │   │   │   │   └── ImporterPlan
 │   │   │   │   │   │       └── importer-plan.page.tsx
 │   │   │   │   │   └── collectivite
-│   │   │   │   │       ├── BibliothequeDocs
-│   │   │   │   │       │   ├── AddRapportVisite.tsx
-│   │   │   │   │       │   ├── BibliothequeDocs.tsx
-│   │   │   │   │       │   ├── PreuveLabellisation.tsx
-│   │   │   │   │       │   ├── PreuvesTable.tsx
-│   │   │   │   │       │   ├── PreuvesTabs.tsx
-│   │   │   │   │       │   ├── groupeParReferentielEtDemande.test.ts
-│   │   │   │   │       │   ├── groupeParReferentielEtDemande.tsx
-│   │   │   │   │       │   ├── useAddRapportVisite.ts
-│   │   │   │   │       │   └── useTableData.ts
-│   │   │   │   │       ├── Historique
-│   │   │   │   │       │   ├── DetailModificationWrapper.stories.tsx
-│   │   │   │   │       │   ├── DetailModificationWrapper.tsx
-│   │   │   │   │       │   ├── HistoriqueFiltres
-│   │   │   │   │       │   │   ├── FiltreDate.tsx
-│   │   │   │   │       │   │   ├── FiltreMembre.tsx
-│   │   │   │   │       │   │   ├── FiltreType.tsx
-│   │   │   │   │       │   │   ├── HistoriqueFiltres.stories.tsx
-│   │   │   │   │       │   │   └── HistoriqueFiltres.tsx
-│   │   │   │   │       │   ├── HistoriqueListe.tsx
-│   │   │   │   │       │   ├── JournalActivite.stories.tsx
-│   │   │   │   │       │   ├── JournalActivite.tsx
-│   │   │   │   │       │   ├── Modification.tsx
-│   │   │   │   │       │   ├── actionPrecision
-│   │   │   │   │       │   │   ├── HistoriqueItemActionPrecision.stories.tsx
-│   │   │   │   │       │   │   └── HistoriqueItemActionPrecision.tsx
-│   │   │   │   │       │   ├── actionStatut
-│   │   │   │   │       │   │   ├── ActionStatutDetaillee.stories.tsx
-│   │   │   │   │       │   │   ├── ActionStatutDetaillee.tsx
-│   │   │   │   │       │   │   ├── HistoriqueItemActionStatut.stories.tsx
-│   │   │   │   │       │   │   ├── HistoriqueItemActionStatut.tsx
-│   │   │   │   │       │   │   └── getItemActionProps.tsx
-│   │   │   │   │       │   ├── filters.tsx
-│   │   │   │   │       │   ├── fixture.ts
-│   │   │   │   │       │   ├── reponse
-│   │   │   │   │       │   │   ├── HistoriqueItemJustification.stories.tsx
-│   │   │   │   │       │   │   ├── HistoriqueItemJustification.tsx
-│   │   │   │   │       │   │   ├── HistoriqueItemReponse.stories.tsx
-│   │   │   │   │       │   │   ├── HistoriqueItemReponse.tsx
-│   │   │   │   │       │   │   ├── fixture.ts
-│   │   │   │   │       │   │   └── formatReponseValue.tsx
-│   │   │   │   │       │   ├── types.ts
-│   │   │   │   │       │   ├── useHistoriqueItemListe.ts
-│   │   │   │   │       │   └── useHistoriqueUtilisateurListe.ts
 │   │   │   │   │       ├── Indicateurs
 │   │   │   │   │       │   ├── Indicateur
 │   │   │   │   │       │   │   ├── detail
@@ -837,10 +736,8 @@
 │   │   │   │   │       │       └── fiche-access-bulk-editor.modal.tsx
 │   │   │   │   │       ├── Referentiels
 │   │   │   │   │       │   ├── DownloadScore
-│   │   │   │   │       │   │   ├── download-score.button.tsx
 │   │   │   │   │       │   │   └── download-score.modal.tsx
 │   │   │   │   │       │   └── SaveScore
-│   │   │   │   │       │       ├── save-score.button.tsx
 │   │   │   │   │       │       ├── save-score.modal.tsx
 │   │   │   │   │       │       └── useSaveScore.ts
 │   │   │   │   │       ├── Trajectoire
@@ -1000,7 +897,7 @@
 │   │   │   │   │   ├── avance.side-panel-button.tsx
 │   │   │   │   │   ├── avance.side-panel-content.tsx
 │   │   │   │   │   ├── banner.tsx
-│   │   │   │   │   ├── description.field.tsx
+│   │   │   │   │   ├── completion.badge.tsx
 │   │   │   │   │   ├── detail.layout.tsx
 │   │   │   │   │   ├── document-upload.button.tsx
 │   │   │   │   │   ├── documents.table.tsx
@@ -1013,7 +910,6 @@
 │   │   │   │   │   ├── progress.stepper.tsx
 │   │   │   │   │   ├── section.tsx
 │   │   │   │   │   ├── shell.tsx
-│   │   │   │   │   ├── statut-publication.tsx
 │   │   │   │   │   ├── steps-nav.tsx
 │   │   │   │   │   └── use-avance-side-panel.tsx
 │   │   │   │   ├── pcaet
@@ -1035,16 +931,16 @@
 │   │   │   │   │   ├── constants.ts
 │   │   │   │   │   ├── create.page.tsx
 │   │   │   │   │   ├── data
-│   │   │   │   │   │   ├── use-apply-transition.ts
 │   │   │   │   │   │   ├── use-delete-demarche-pcaet.ts
 │   │   │   │   │   │   ├── use-demarche.ts
 │   │   │   │   │   │   ├── use-documents.ts
 │   │   │   │   │   │   ├── use-list-demarches-pcaet.ts
-│   │   │   │   │   │   └── use-set-demarche-pcaet-publication.ts
+│   │   │   │   │   │   └── use-transition-options.ts
 │   │   │   │   │   ├── diagnostic
 │   │   │   │   │   │   ├── data
 │   │   │   │   │   │   │   ├── use-diagnostic.ts
-│   │   │   │   │   │   │   └── use-source-labels.ts
+│   │   │   │   │   │   │   ├── use-source-labels.ts
+│   │   │   │   │   │   │   └── use-vulnerabilite.ts
 │   │   │   │   │   │   ├── diagnostic-topics-section.tsx
 │   │   │   │   │   │   ├── diagnostic.page.tsx
 │   │   │   │   │   │   ├── indicateurs-grid
@@ -1055,10 +951,10 @@
 │   │   │   │   │   │   ├── topic-diagnostic-panel-content.tsx
 │   │   │   │   │   │   ├── topic-tab.tsx
 │   │   │   │   │   │   ├── use-topic-param.ts
-│   │   │   │   │   │   ├── vulnerabilite-table.tsx
-│   │   │   │   │   │   └── vulnerabilite-territoire.page.tsx
+│   │   │   │   │   │   ├── vulnerabilite-table.rules.spec.ts
+│   │   │   │   │   │   ├── vulnerabilite-table.rules.ts
+│   │   │   │   │   │   └── vulnerabilite-table.tsx
 │   │   │   │   │   ├── documents.page.tsx
-│   │   │   │   │   ├── draft.storage.ts
 │   │   │   │   │   ├── list-demarches
 │   │   │   │   │   │   ├── demarche-pcaet-actions.menu.tsx
 │   │   │   │   │   │   ├── demarches-pcaet.table.tsx
@@ -1079,6 +975,7 @@
 │   │   │   │   │       └── vue-dreal.mock.ts
 │   │   │   │   ├── steps.spec.ts
 │   │   │   │   ├── steps.ts
+│   │   │   │   ├── transitions.ts
 │   │   │   │   ├── types.ts
 │   │   │   │   └── use-demarche-id.ts
 │   │   │   ├── indicateurs
@@ -1602,16 +1499,6 @@
 │   │   │   │               ├── sous-action.table.tsx
 │   │   │   │               └── sous-action.title.cell.tsx
 │   │   │   ├── referentiels
-│   │   │   │   ├── AidePriorisation
-│   │   │   │   │   ├── Cells.tsx
-│   │   │   │   │   ├── FiltrePhase.tsx
-│   │   │   │   │   ├── FiltrePourcentage.tsx
-│   │   │   │   │   ├── Table.tsx
-│   │   │   │   │   ├── boundariesToQueryFilter.ts
-│   │   │   │   │   ├── down.svg
-│   │   │   │   │   ├── filters.tsx
-│   │   │   │   │   ├── queries.tsx
-│   │   │   │   │   └── up.svg
 │   │   │   │   ├── DEPRECATED_ReferentielTable
 │   │   │   │   │   ├── CellAction.tsx
 │   │   │   │   │   ├── Row.tsx
@@ -1620,14 +1507,29 @@
 │   │   │   │   │   ├── use-row-expanded-reducer.ts
 │   │   │   │   │   ├── useModifierStateRef.ts
 │   │   │   │   │   └── useReferentiel.ts
-│   │   │   │   ├── DetailTaches
-│   │   │   │   │   ├── CellStatut.tsx
-│   │   │   │   │   ├── DetailTacheTable.tsx
-│   │   │   │   │   ├── FiltreStatut.stories.tsx
-│   │   │   │   │   ├── FiltreStatut.tsx
+│   │   │   │   ├── Historique
+│   │   │   │   │   ├── DetailModificationWrapper.tsx
+│   │   │   │   │   ├── HistoriqueFiltres
+│   │   │   │   │   │   ├── FiltreDate.tsx
+│   │   │   │   │   │   ├── FiltreMembre.tsx
+│   │   │   │   │   │   ├── FiltreType.tsx
+│   │   │   │   │   │   └── HistoriqueFiltres.tsx
+│   │   │   │   │   ├── HistoriqueItemActionPrecision.tsx
+│   │   │   │   │   ├── HistoriqueItemActionStatut.tsx
+│   │   │   │   │   ├── HistoriqueItemJustification.tsx
+│   │   │   │   │   ├── HistoriqueItemReponse.tsx
+│   │   │   │   │   ├── HistoriqueListe.tsx
+│   │   │   │   │   ├── Modification.tsx
+│   │   │   │   │   ├── filters.spec.ts
 │   │   │   │   │   ├── filters.tsx
-│   │   │   │   │   ├── fixture.json
-│   │   │   │   │   └── useTableData.ts
+│   │   │   │   │   ├── fixture.ts
+│   │   │   │   │   ├── historique-referentiel.view.tsx
+│   │   │   │   │   ├── types.ts
+│   │   │   │   │   ├── use-historique-filters.spec.ts
+│   │   │   │   │   ├── use-historique-filters.ts
+│   │   │   │   │   ├── useHistoriqueItemListe.ts
+│   │   │   │   │   ├── useHistoriqueUtilisateurListe.ts
+│   │   │   │   │   └── utils.tsx
 │   │   │   │   ├── action.show
 │   │   │   │   │   ├── FichesActionLiees.tsx
 │   │   │   │   │   ├── IndicateurChartsGrid.tsx
@@ -1725,6 +1627,7 @@
 │   │   │   │   │   │   ├── parcours-to-audit-badge-status.ts
 │   │   │   │   │   │   ├── types.ts
 │   │   │   │   │   │   └── use-get-audit-badge.ts
+│   │   │   │   │   ├── audit-labellisation-tabs.tsx
 │   │   │   │   │   ├── checklist
 │   │   │   │   │   │   ├── actions
 │   │   │   │   │   │   │   ├── ask-premiere-etoile-button-state.spec.ts
@@ -1786,6 +1689,10 @@
 │   │   │   │   │   ├── ActionAuditStatut.tsx
 │   │   │   │   │   ├── AuditComparaison
 │   │   │   │   │   │   ├── AuditComparaisonTable.tsx
+│   │   │   │   │   │   ├── cell
+│   │   │   │   │   │   │   ├── Cells.tsx
+│   │   │   │   │   │   │   ├── down.svg
+│   │   │   │   │   │   │   └── up.svg
 │   │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   │   ├── styles.css
 │   │   │   │   │   │   ├── types.ts
@@ -1793,18 +1700,6 @@
 │   │   │   │   │   │   ├── useExportComparisonScore.ts
 │   │   │   │   │   │   ├── useTableData.ts
 │   │   │   │   │   │   └── utils.ts
-│   │   │   │   │   ├── AuditSuivi
-│   │   │   │   │   │   ├── Cells.tsx
-│   │   │   │   │   │   ├── FiltreAuditStatut.stories.tsx
-│   │   │   │   │   │   ├── FiltreAuditStatut.tsx
-│   │   │   │   │   │   ├── FiltreOrdreDuJour.stories.tsx
-│   │   │   │   │   │   ├── FiltreOrdreDuJour.tsx
-│   │   │   │   │   │   ├── Table.tsx
-│   │   │   │   │   │   ├── filters.tsx
-│   │   │   │   │   │   ├── index.tsx
-│   │   │   │   │   │   ├── mesure-row-link.spec.tsx
-│   │   │   │   │   │   ├── queries.tsx
-│   │   │   │   │   │   └── useTableData.ts
 │   │   │   │   │   ├── BadgeAuditStatut.tsx
 │   │   │   │   │   ├── cloture
 │   │   │   │   │   │   ├── cloturer-audit.button.tsx
@@ -1852,6 +1747,15 @@
 │   │   │   │   │   └── use-get-referentiel-definition.ts
 │   │   │   │   ├── display-preferences
 │   │   │   │   │   └── use-reset-display-preferences.ts
+│   │   │   │   ├── documents
+│   │   │   │   │   ├── AddRapportVisite.tsx
+│   │   │   │   │   ├── PreuveLabellisation.tsx
+│   │   │   │   │   ├── PreuvesTable.tsx
+│   │   │   │   │   ├── documents.view.tsx
+│   │   │   │   │   ├── groupeParDemande.test.ts
+│   │   │   │   │   ├── groupeParDemande.tsx
+│   │   │   │   │   ├── useAddRapportVisite.ts
+│   │   │   │   │   └── useTableData.ts
 │   │   │   │   ├── labellisations
 │   │   │   │   │   ├── AddDocsButton.tsx
 │   │   │   │   │   ├── CritereCompletude.tsx
@@ -1873,7 +1777,6 @@
 │   │   │   │   │   ├── HeaderLabellisation.tsx
 │   │   │   │   │   ├── MessageCompletudeECi.tsx
 │   │   │   │   │   ├── fixture.json
-│   │   │   │   │   ├── new-referentiel-layout.gate.tsx
 │   │   │   │   │   ├── numLabels.tsx
 │   │   │   │   │   ├── request-audit
 │   │   │   │   │   │   ├── audit-selection.spec.ts
@@ -1990,7 +1893,6 @@
 │   │   │   │   │   ├── use-referentiel-table-data.ts
 │   │   │   │   │   ├── use-referentiel-table-row-expanded.ts
 │   │   │   │   │   ├── use-referentiel-thematique-view.tsx
-│   │   │   │   │   ├── use-referentiel-view-mode.tsx
 │   │   │   │   │   └── utils.ts
 │   │   │   │   ├── scores
 │   │   │   │   │   ├── progress-bar-with-tooltip.tsx
@@ -1999,6 +1901,8 @@
 │   │   │   │   │   ├── score.progress-bar.tsx
 │   │   │   │   │   ├── score.ratio-badge.tsx
 │   │   │   │   │   └── score.show.tsx
+│   │   │   │   ├── synthese
+│   │   │   │   │   └── synthese-referentiel.view.tsx
 │   │   │   │   ├── tableau-de-bord
 │   │   │   │   │   ├── AccueilCard.tsx
 │   │   │   │   │   ├── graphs
@@ -2013,10 +1917,7 @@
 │   │   │   │   │   ├── referentiel-data.utils.ts
 │   │   │   │   │   ├── referentiel.card.tsx
 │   │   │   │   │   ├── referents
-│   │   │   │   │   │   ├── ModaleReferents.tsx
-│   │   │   │   │   │   ├── ReferentItem.tsx
 │   │   │   │   │   │   ├── ReferentsDropdown.tsx
-│   │   │   │   │   │   ├── ReferentsList.tsx
 │   │   │   │   │   │   └── useMembres.ts
 │   │   │   │   │   ├── useTableauDeBordReferentielData.ts
 │   │   │   │   │   └── utils.ts
@@ -2050,15 +1951,13 @@
 │   │   │   │   │   │   └── use-fetch-modules.ts
 │   │   │   │   │   ├── fiches-action
 │   │   │   │   │   │   └── fiches-action.module.tsx
-│   │   │   │   │   ├── fiches-action-count-by
-│   │   │   │   │   │   ├── fiches-action-count-by.module.tsx
-│   │   │   │   │   │   └── utils
-│   │   │   │   │   │       ├── filter-keys.spec.ts
-│   │   │   │   │   │       ├── filter-keys.ts
-│   │   │   │   │   │       ├── get-chart-option.ts
-│   │   │   │   │   │       └── make-fiches-action-url-with-params.ts
-│   │   │   │   │   └── suivi-plans
-│   │   │   │   │       └── suivi-plans.module.tsx
+│   │   │   │   │   └── fiches-action-count-by
+│   │   │   │   │       ├── fiches-action-count-by.module.tsx
+│   │   │   │   │       └── utils
+│   │   │   │   │           ├── filter-keys.spec.ts
+│   │   │   │   │           ├── filter-keys.ts
+│   │   │   │   │           ├── get-chart-option.ts
+│   │   │   │   │           └── make-fiches-action-url-with-params.ts
 │   │   │   │   └── referentiels
 │   │   │   │       ├── mesures.module-page.tsx
 │   │   │   │       └── mesures.module.tsx
@@ -2132,6 +2031,7 @@
 │   │   │   │   │   │   └── utils.ts
 │   │   │   │   │   └── listesStatiques.ts
 │   │   │   │   ├── icons
+│   │   │   │   │   ├── IconFrance.tsx
 │   │   │   │   │   └── IconThreeDotHorizontal.tsx
 │   │   │   │   ├── layout
 │   │   │   │   │   ├── app-layout.tsx
@@ -2142,14 +2042,12 @@
 │   │   │   │   │   │   │   │   ├── generate-collectivite-nav-item.tsx
 │   │   │   │   │   │   │   │   ├── generate-edl-dropdown.ts
 │   │   │   │   │   │   │   │   ├── generate-indicateurs-dropdown.ts
-│   │   │   │   │   │   │   │   ├── generate-parametres-dropdown.ts
 │   │   │   │   │   │   │   │   ├── generate-plans-actions-dropdown.ts
 │   │   │   │   │   │   │   │   ├── generate-tdb-dropdown.ts
-│   │   │   │   │   │   │   │   ├── generate-tdb-personal-link.ts
 │   │   │   │   │   │   │   │   ├── make-collectivite-nav.ts
 │   │   │   │   │   │   │   │   └── make-role-edition-actions-indicateurs-nav.ts
 │   │   │   │   │   │   │   └── make-main-nav.ts
-│   │   │   │   │   │   ├── make-secondary-nav.ts
+│   │   │   │   │   │   ├── make-secondary-nav.tsx
 │   │   │   │   │   │   └── use-logout.ts
 │   │   │   │   │   ├── offline-alert.tsx
 │   │   │   │   │   └── side-panel
@@ -2172,18 +2070,12 @@
 │   │   │   │   ├── pictogrammes
 │   │   │   │   │   ├── ActionPicto.tsx
 │   │   │   │   │   ├── PictoAction.tsx
-│   │   │   │   │   ├── PictoCollectivite.tsx
 │   │   │   │   │   ├── PictoDashboard.tsx
 │   │   │   │   │   ├── PictoDataViz.tsx
 │   │   │   │   │   ├── PictoDocument.tsx
-│   │   │   │   │   ├── PictoEtatDesLieux.tsx
 │   │   │   │   │   ├── PictoEtatDesLieuxMonochrome.tsx
 │   │   │   │   │   ├── PictoExpert.tsx
 │   │   │   │   │   ├── PictoIndicateurVide.tsx
-│   │   │   │   │   ├── PictoIndicateurs.tsx
-│   │   │   │   │   ├── PictoPanierActions.tsx
-│   │   │   │   │   ├── PictoPlansAction.tsx
-│   │   │   │   │   ├── PictoTrajectoire.tsx
 │   │   │   │   │   └── mesure.picto.svg
 │   │   │   │   └── shared
 │   │   │   │       ├── Kbd
@@ -2196,8 +2088,6 @@
 │   │   │   │       └── select
 │   │   │   │           ├── MultiSelectDropdown.stories.tsx
 │   │   │   │           ├── MultiSelectDropdown.tsx
-│   │   │   │           ├── MultiSelectFilter.stories.tsx
-│   │   │   │           ├── MultiSelectFilter.tsx
 │   │   │   │           ├── Options.tsx
 │   │   │   │           ├── SelectDropdown.stories.tsx
 │   │   │   │           ├── SelectDropdown.tsx
@@ -2267,8 +2157,6 @@
 │   │   │   │   ├── use-update-user.ts
 │   │   │   │   └── use-user-preferences.ts
 │   │   │   └── utils
-│   │   │       ├── [deprecated]use-search-params.test.ts
-│   │   │       ├── [deprecated]use-search-params.ts
 │   │   │       ├── __mocks__
 │   │   │       │   └── shasum256.ts
 │   │   │       ├── banner
@@ -2633,13 +2521,20 @@
 │   │   │   │   ├── demarches.module.ts
 │   │   │   │   ├── demarches.router.ts
 │   │   │   │   ├── pcaet
-│   │   │   │   │   ├── apply-transition
-│   │   │   │   │   │   ├── apply-transition.errors.ts
-│   │   │   │   │   │   ├── apply-transition.input.ts
-│   │   │   │   │   │   ├── apply-transition.repository.ts
-│   │   │   │   │   │   ├── apply-transition.router.e2e-spec.ts
-│   │   │   │   │   │   ├── apply-transition.router.ts
-│   │   │   │   │   │   └── apply-transition.service.ts
+│   │   │   │   │   ├── add-vulnerabilite-domaine
+│   │   │   │   │   │   ├── add-vulnerabilite-domaine.errors.ts
+│   │   │   │   │   │   ├── add-vulnerabilite-domaine.input.ts
+│   │   │   │   │   │   ├── add-vulnerabilite-domaine.router.e2e-spec.ts
+│   │   │   │   │   │   ├── add-vulnerabilite-domaine.router.ts
+│   │   │   │   │   │   └── add-vulnerabilite-domaine.service.ts
+│   │   │   │   │   ├── adopter-demarche
+│   │   │   │   │   │   ├── adopter-demarche.errors.ts
+│   │   │   │   │   │   ├── adopter-demarche.router.ts
+│   │   │   │   │   │   └── adopter-demarche.service.ts
+│   │   │   │   │   ├── archiver-demarche
+│   │   │   │   │   │   ├── archiver-demarche.errors.ts
+│   │   │   │   │   │   ├── archiver-demarche.router.ts
+│   │   │   │   │   │   └── archiver-demarche.service.ts
 │   │   │   │   │   ├── create-demarche-pcaet
 │   │   │   │   │   │   ├── create-demarche-pcaet.errors.ts
 │   │   │   │   │   │   ├── create-demarche-pcaet.input.ts
@@ -2655,6 +2550,10 @@
 │   │   │   │   │   │   ├── delete-demarche-pcaet.router.ts
 │   │   │   │   │   │   └── delete-demarche-pcaet.service.ts
 │   │   │   │   │   ├── demarches-pcaet.test-fixture.ts
+│   │   │   │   │   ├── depublier-demarche
+│   │   │   │   │   │   ├── depublier-demarche.errors.ts
+│   │   │   │   │   │   ├── depublier-demarche.router.ts
+│   │   │   │   │   │   └── depublier-demarche.service.ts
 │   │   │   │   │   ├── diagnostic
 │   │   │   │   │   │   └── pcaet-diagnostic.router.ts
 │   │   │   │   │   ├── documents
@@ -2701,38 +2600,74 @@
 │   │   │   │   │   │   └── list-demarches-pcaet.service.ts
 │   │   │   │   │   ├── pcaet.module.ts
 │   │   │   │   │   ├── pcaet.router.ts
+│   │   │   │   │   ├── publier-demarche
+│   │   │   │   │   │   ├── publier-demarche.errors.ts
+│   │   │   │   │   │   ├── publier-demarche.router.e2e-spec.ts
+│   │   │   │   │   │   ├── publier-demarche.router.ts
+│   │   │   │   │   │   └── publier-demarche.service.ts
+│   │   │   │   │   ├── remove-vulnerabilite-domaine
+│   │   │   │   │   │   ├── remove-vulnerabilite-domaine.errors.ts
+│   │   │   │   │   │   ├── remove-vulnerabilite-domaine.input.ts
+│   │   │   │   │   │   ├── remove-vulnerabilite-domaine.router.e2e-spec.ts
+│   │   │   │   │   │   ├── remove-vulnerabilite-domaine.router.ts
+│   │   │   │   │   │   └── remove-vulnerabilite-domaine.service.ts
+│   │   │   │   │   ├── reprendre-elaboration
+│   │   │   │   │   │   ├── reprendre-elaboration.errors.ts
+│   │   │   │   │   │   ├── reprendre-elaboration.router.ts
+│   │   │   │   │   │   └── reprendre-elaboration.service.ts
 │   │   │   │   │   ├── set-diagnostic-years
 │   │   │   │   │   │   ├── set-diagnostic-years.errors.ts
 │   │   │   │   │   │   ├── set-diagnostic-years.input.ts
 │   │   │   │   │   │   ├── set-diagnostic-years.router.e2e-spec.ts
 │   │   │   │   │   │   ├── set-diagnostic-years.router.ts
 │   │   │   │   │   │   └── set-diagnostic-years.service.ts
-│   │   │   │   │   ├── set-publication-status
-│   │   │   │   │   │   ├── set-publication-status.errors.ts
-│   │   │   │   │   │   ├── set-publication-status.input.ts
-│   │   │   │   │   │   ├── set-publication-status.repository.ts
-│   │   │   │   │   │   ├── set-publication-status.router.e2e-spec.ts
-│   │   │   │   │   │   ├── set-publication-status.router.ts
-│   │   │   │   │   │   └── set-publication-status.service.ts
+│   │   │   │   │   ├── set-vulnerabilite-ligne
+│   │   │   │   │   │   ├── set-vulnerabilite-ligne.errors.ts
+│   │   │   │   │   │   ├── set-vulnerabilite-ligne.input.ts
+│   │   │   │   │   │   ├── set-vulnerabilite-ligne.router.e2e-spec.ts
+│   │   │   │   │   │   ├── set-vulnerabilite-ligne.router.ts
+│   │   │   │   │   │   └── set-vulnerabilite-ligne.service.ts
 │   │   │   │   │   ├── shared
+│   │   │   │   │   │   ├── demarche-pcaet-access.service.ts
 │   │   │   │   │   │   ├── demarche-pcaet-diagnostic.repository.ts
 │   │   │   │   │   │   ├── demarche-pcaet-diagnostic.service.ts
 │   │   │   │   │   │   ├── demarche-pcaet-guards.service.ts
 │   │   │   │   │   │   ├── demarche-pcaet-pilotes.repository.ts
 │   │   │   │   │   │   ├── demarche-pcaet-ref.repository.ts
+│   │   │   │   │   │   ├── demarche-pcaet-transition.errors.ts
+│   │   │   │   │   │   ├── demarche-pcaet-transition.input.ts
+│   │   │   │   │   │   ├── demarche-pcaet-transition.repository.ts
+│   │   │   │   │   │   ├── demarche-pcaet-transition.service.ts
+│   │   │   │   │   │   ├── demarche-pcaet-vulnerabilite-conflict.utils.ts
+│   │   │   │   │   │   ├── demarche-pcaet-vulnerabilite-read.service.ts
+│   │   │   │   │   │   ├── demarche-pcaet-vulnerabilite.repository.ts
+│   │   │   │   │   │   ├── demarches-pcaet-vulnerabilite.test-fixture.ts
 │   │   │   │   │   │   └── models
 │   │   │   │   │   │       ├── demarche-pcaet-diagnostic-snapshot.table.ts
 │   │   │   │   │   │       ├── demarche-pcaet-diagnostic-state.table.ts
 │   │   │   │   │   │       ├── demarche-pcaet-topic-row.table.ts
 │   │   │   │   │   │       ├── demarche-pcaet-topic.table.ts
+│   │   │   │   │   │       ├── demarche-pcaet-vulnerabilite-domaine.table.ts
+│   │   │   │   │   │       ├── demarche-pcaet-vulnerabilite-valeur.table.ts
 │   │   │   │   │   │       └── demarche-pcaet.dto.ts
-│   │   │   │   │   └── update-demarche-pcaet
-│   │   │   │   │       ├── update-demarche-pcaet.errors.ts
-│   │   │   │   │       ├── update-demarche-pcaet.input.ts
-│   │   │   │   │       ├── update-demarche-pcaet.repository.ts
-│   │   │   │   │       ├── update-demarche-pcaet.router.e2e-spec.ts
-│   │   │   │   │       ├── update-demarche-pcaet.router.ts
-│   │   │   │   │       └── update-demarche-pcaet.service.ts
+│   │   │   │   │   ├── transmettre-pour-avis
+│   │   │   │   │   │   ├── transmettre-pour-avis.errors.ts
+│   │   │   │   │   │   ├── transmettre-pour-avis.router.e2e-spec.ts
+│   │   │   │   │   │   ├── transmettre-pour-avis.router.ts
+│   │   │   │   │   │   └── transmettre-pour-avis.service.ts
+│   │   │   │   │   ├── update-demarche-pcaet
+│   │   │   │   │   │   ├── update-demarche-pcaet.errors.ts
+│   │   │   │   │   │   ├── update-demarche-pcaet.input.ts
+│   │   │   │   │   │   ├── update-demarche-pcaet.repository.ts
+│   │   │   │   │   │   ├── update-demarche-pcaet.router.e2e-spec.ts
+│   │   │   │   │   │   ├── update-demarche-pcaet.router.ts
+│   │   │   │   │   │   └── update-demarche-pcaet.service.ts
+│   │   │   │   │   └── update-vulnerabilite-domaine
+│   │   │   │   │       ├── update-vulnerabilite-domaine.errors.ts
+│   │   │   │   │       ├── update-vulnerabilite-domaine.input.ts
+│   │   │   │   │       ├── update-vulnerabilite-domaine.router.e2e-spec.ts
+│   │   │   │   │       ├── update-vulnerabilite-domaine.router.ts
+│   │   │   │   │       └── update-vulnerabilite-domaine.service.ts
 │   │   │   │   └── shared
 │   │   │   │       ├── demarche-documents.repository.ts
 │   │   │   │       └── models
@@ -4970,8 +4905,11 @@
 │   │   │   │   ├── demarche_documents.sql
 │   │   │   │   ├── demarche_documents_etape.sql
 │   │   │   │   ├── pcaet_diagnostic.sql
+│   │   │   │   ├── pcaet_diagnostic_ordre_reglementaire.sql
 │   │   │   │   ├── pcaet_documents_amont.sql
-│   │   │   │   └── pcaet_documents_aval.sql
+│   │   │   │   ├── pcaet_documents_aval.sql
+│   │   │   │   ├── pcaet_vulnerabilite.sql
+│   │   │   │   └── statut_publication_fusionne.sql
 │   │   │   ├── evaluation
 │   │   │   │   ├── action_score.sql
 │   │   │   │   ├── add_personnalisation_question_competence.sql
@@ -5519,8 +5457,11 @@
 │   │   │   │   ├── demarche_documents.sql
 │   │   │   │   ├── demarche_documents_etape.sql
 │   │   │   │   ├── pcaet_diagnostic.sql
+│   │   │   │   ├── pcaet_diagnostic_ordre_reglementaire.sql
 │   │   │   │   ├── pcaet_documents_amont.sql
-│   │   │   │   └── pcaet_documents_aval.sql
+│   │   │   │   ├── pcaet_documents_aval.sql
+│   │   │   │   ├── pcaet_vulnerabilite.sql
+│   │   │   │   └── statut_publication_fusionne.sql
 │   │   │   ├── evaluation
 │   │   │   │   ├── action_score.sql
 │   │   │   │   ├── add_personnalisation_question_competence.sql
@@ -6067,8 +6008,11 @@
 │   │       │   ├── demarche_documents.sql
 │   │       │   ├── demarche_documents_etape.sql
 │   │       │   ├── pcaet_diagnostic.sql
+│   │       │   ├── pcaet_diagnostic_ordre_reglementaire.sql
 │   │       │   ├── pcaet_documents_amont.sql
-│   │       │   └── pcaet_documents_aval.sql
+│   │       │   ├── pcaet_documents_aval.sql
+│   │       │   ├── pcaet_vulnerabilite.sql
+│   │       │   └── statut_publication_fusionne.sql
 │   │       ├── evaluation
 │   │       │   ├── action_score.sql
 │   │       │   ├── add_personnalisation_question_competence.sql
@@ -6516,7 +6460,8 @@
 │       │   ├── collectivite_test.sql
 │       │   └── identite.sql
 │       ├── demarche
-│       │   └── pcaet_diagnostic.sql
+│       │   ├── pcaet_diagnostic.sql
+│       │   └── pcaet_vulnerabilite.sql
 │       ├── evaluation
 │       │   ├── contenu_json.sql
 │       │   ├── score_service.sql
@@ -6648,6 +6593,7 @@
 │   │   │       └── personne-tags.fixture.ts
 │   │   ├── demarches
 │   │   │   └── pcaet
+│   │   │       ├── demarche-pcaet-vulnerabilite.spec.ts
 │   │   │       ├── demarche-pcaet-workflow.spec.ts
 │   │   │       └── demarche-pcaet.pom.ts
 │   │   ├── indicateurs
@@ -6690,6 +6636,7 @@
 │   │   ├── referentiels
 │   │   │   ├── historique
 │   │   │   │   ├── historique-affichage.spec.ts
+│   │   │   │   ├── historique-scope-referentiel.spec.ts
 │   │   │   │   ├── historique-seed.ts
 │   │   │   │   └── historique.pom.ts
 │   │   │   ├── labellisations
@@ -6697,6 +6644,7 @@
 │   │   │   │   ├── audit-badge-tab.spec.ts
 │   │   │   │   ├── audit-conduct-tabs-auditeur.spec.ts
 │   │   │   │   ├── audit-labellisation-to-action-scroll.spec.ts
+│   │   │   │   ├── audit-labellisation.pom.ts
 │   │   │   │   ├── candidature-documents-auditeur.spec.ts
 │   │   │   │   ├── candidature-documents-verrou.spec.ts
 │   │   │   │   ├── checklist-acte-engagement.spec.ts
@@ -6710,14 +6658,9 @@
 │   │   │   │   ├── demande-audit-pieces-attendues.spec.ts
 │   │   │   │   ├── demandes-audit-labellisation.spec.ts
 │   │   │   │   ├── labellisation.pom.ts
-│   │   │   │   ├── legacy-documents-objet.spec.ts
-│   │   │   │   ├── new-audit-labellisation.pom.ts
 │   │   │   │   ├── premiere-etoile-pieces-attendues.spec.ts
 │   │   │   │   ├── rapport-audit-bibliotheque.spec.ts
-│   │   │   │   ├── request-labellisation-audit-cot.spec.ts
-│   │   │   │   ├── request-labellisation-from-new-checklist.spec.ts
-│   │   │   │   ├── request-labellisation-non-cot.spec.ts
-│   │   │   │   └── start-labellisation-cot.spec.ts
+│   │   │   │   └── request-labellisation-from-new-checklist.spec.ts
 │   │   │   ├── referentiel-mode
 │   │   │   │   ├── referentiel-mode-banner.pom.ts
 │   │   │   │   └── referentiel-mode-banner.spec.ts
@@ -6929,19 +6872,36 @@
 │   │   │   │   ├── demarche.schema.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   └── pcaet
+│   │   │   │       ├── demarche-pcaet-modifiable.rules.spec.ts
+│   │   │   │       ├── demarche-pcaet-modifiable.rules.ts
 │   │   │   │       ├── demarche-pcaet-obligation.enum.schema.ts
-│   │   │   │       ├── demarche-pcaet-publication-status.enum.schema.ts
 │   │   │   │       ├── demarche-pcaet-status.enum.schema.ts
 │   │   │   │       ├── demarche-pcaet.schema.ts
-│   │   │   │       ├── demarche-pcaet.workflow.spec.ts
-│   │   │   │       ├── demarche-pcaet.workflow.ts
 │   │   │   │       ├── diagnostic
 │   │   │   │       │   ├── demarche-pcaet-diagnostic.rules.spec.ts
 │   │   │   │       │   ├── demarche-pcaet-diagnostic.rules.ts
 │   │   │   │       │   ├── demarche-pcaet-diagnostic.schema.ts
-│   │   │   │       │   └── demarche-pcaet-topic-kind.enum.schema.ts
+│   │   │   │       │   ├── demarche-pcaet-topic-kind.enum.schema.ts
+│   │   │   │       │   ├── demarche-pcaet-vulnerabilite-niveau.enum.schema.ts
+│   │   │   │       │   ├── demarche-pcaet-vulnerabilite.rules.spec.ts
+│   │   │   │       │   ├── demarche-pcaet-vulnerabilite.rules.ts
+│   │   │   │       │   └── demarche-pcaet-vulnerabilite.schema.ts
 │   │   │   │       ├── pcaet-documents.rules.spec.ts
-│   │   │   │       └── pcaet-documents.rules.ts
+│   │   │   │       ├── pcaet-documents.rules.ts
+│   │   │   │       └── workflow
+│   │   │   │           ├── demarche-pcaet-state.spec.ts
+│   │   │   │           ├── demarche-pcaet-state.ts
+│   │   │   │           ├── demarche-pcaet-workflow.facade.spec.ts
+│   │   │   │           ├── demarche-pcaet-workflow.facade.ts
+│   │   │   │           ├── demarche-pcaet.workflow.spec.ts
+│   │   │   │           ├── demarche-pcaet.workflow.ts
+│   │   │   │           ├── guards
+│   │   │   │           │   ├── demarche-pcaet-guard.rules.spec.ts
+│   │   │   │           │   ├── demarche-pcaet-guard.rules.ts
+│   │   │   │           │   └── demarche-pcaet-guard.types.ts
+│   │   │   │           └── transitions
+│   │   │   │               ├── demarche-pcaet-transition.enum.ts
+│   │   │   │               └── demarche-pcaet.transitions.ts
 │   │   │   ├── indicateurs
 │   │   │   │   ├── definitions
 │   │   │   │   │   ├── indicateur-definition.schema.ts
@@ -7172,6 +7132,8 @@
 │   │   │       └── workflow
 │   │   │           ├── create-workflow.spec.ts
 │   │   │           ├── create-workflow.ts
+│   │   │           ├── workflow-to-mermaid.spec.ts
+│   │   │           ├── workflow-to-mermaid.ts
 │   │   │           └── workflow.types.ts
 │   │   ├── tsconfig.json
 │   │   ├── tsconfig.lib.json
@@ -7390,8 +7352,6 @@
 │       │   │   │   ├── ButtonContent.tsx
 │       │   │   │   ├── ButtonGroup.stories.tsx
 │       │   │   │   ├── ButtonGroup.tsx
-│       │   │   │   ├── DEPRECATED_ButtonMenu.stories.tsx
-│       │   │   │   ├── DEPRECATED_ButtonMenu.tsx
 │       │   │   │   ├── button-menu.stories.tsx
 │       │   │   │   ├── button-menu.tsx
 │       │   │   │   ├── index.ts
@@ -7522,6 +7482,7 @@
 │       │   │   │   ├── components
 │       │   │   │   │   ├── DropdownFloater.tsx
 │       │   │   │   │   ├── OptionMenu.tsx
+│       │   │   │   │   ├── Options.behavior.test.tsx
 │       │   │   │   │   ├── Options.tsx
 │       │   │   │   │   ├── SelectBase.tsx
 │       │   │   │   │   └── select.base-button.tsx
@@ -7928,4 +7889,4 @@
 ├── tsconfig.json
 ├── vitest.config.ts
 └── vitest.workspace.ts
-1348 directories, 6843 files
+1332 directories, 6820 files

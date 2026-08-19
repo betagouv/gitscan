@@ -1,37 +1,45 @@
-## Changelog : territoires-en-transitions (30 derniers jours, au 13 août 2026)
+## Changelog : territoires-en-transitions (30 derniers jours, au 18 août 2026)
 
 ### Résumé
-Ce mois a été marqué par un développement majeur autour du processus PCAET, incluant la mise en place du parcours de diagnostic et la gestion structurée des documents associés. Parallèlement, le projet a entamé une phase importante de fusion des anciens référentiels (CAE/ECI) vers le nouveau cadre "Territoires en Transition" (TE) et a considérablement modernisé son environnement de développement pour améliorer la productivité des contributeurs.
+Ce mois a été marqué par une transformation majeure de l'interface et des processus métier. La plateforme a bénéficié d'une refonte complète de sa navigation pour offrir une expérience plus fluide et une meilleure visibilité sur les activités. Le cœur du projet a évolué avec l'intégration d'un nouveau parcours guidé pour les démarches PCAET (Plan Climat-Air-Énergie Territorial), incluant un diagnostic structuré et une gestion documentaire renforcée. Enfin, l'environnement de travail des développeurs a été considérablement modernisé pour accélérer les cycles de création.
 
 ### Évolutions fonctionnelles
-- **Processus PCAET** : 
-    - Mise en place d'un parcours de navigation pas à pas pour l'élaboration du PCAET.
-    - Introduction d'un nouveau référentiel de diagnostic et de règles de complétude.
-    - Refonte du catalogue de documents avec une distinction entre les documents "amont" et "aval".
-- **Référentiels et Migration** : 
-    - Fusion des services et des pilotes des anciens référentiels (CAE/ECI) vers les mesures du nouveau référentiel TE.
-    - Ajout d'une vue SGPE avec persistance des réglages via le stockage local.
-- **Indicateurs et Données** : 
-    - Amélioration de la lisibilité des indicateurs : affichage des sources de référence et maintien de la précision décimale dans les grilles de valeurs.
-    - Correction de bugs sur le calcul des totaux de budgets et sur l'affichage des courbes de trajectoires d'émissions.
-- **Interface Utilisateur (UI/UX)** : 
-    - Amélioration de l'accessibilité des composants de tableaux (ChecklistTable).
-    - Mise à jour visuelle globale et ajustement de la taille des badges.
-    - Ajout de la fonctionnalité de déconnexion dans la navigation secondaire.
+
+**Parcours PCAET et Démarches**
+- Mise en place d'un nouveau workflow pour les démarches PCAET, incluant une navigation étape par étape pour accompagner l'élaboration.
+- Introduction d'un outil de diagnostic PCAET piloté par l'API, avec des règles de complétude et une gestion des vulnérabilités.
+- Amélioration de la gestion documentaire : nouveau catalogue de documents, distinction entre documents "amont" et "aval", et obligation de compléter le dossier avant transmission pour revue.
+- Refonte de la gestion des statuts pour intégrer la publication directement dans le statut de la démarche.
+
+**Navigation et Interface Utilisateur**
+- Refonte globale de la navigation principale : ajout d'un journal d'activité, d'une bibliothèque de documents et d'un onglet de synthèse dans les référentiels.
+- Optimisation des redirections : accès direct au tableau de bord personnel ou à la synthèse de la collectivité selon le profil.
+- Amélioration de l'ergonomie mobile (header) et de l'accessibilité des menus déroulants et des tableaux.
+- Nettoyage de l'interface par la suppression d'onglets obsolètes (Aide à la priorisation, Détail des statuts).
+
+**Référentiels et Indicateurs**
+- Ajout d'une nouvelle vue SGPE avec persistance des préférences de l'utilisateur.
+- Amélioration de l'historique : le scope est désormais limité au référentiel consulté pour plus de clarté.
+- Optimisation de l'affichage des indicateurs : ajout des sources de référence et maintien de la précision décimale dans les grilles de valeurs.
+
+**Gestion et Audit**
+- Extension des droits : les éditeurs peuvent désormais créer et modifier des modules personnalisés sur le tableau de bord "Plans et Actions".
+- Renforcement du module d'audit avec l'ajout d'une page dédiée à l'audit-labellisation et la restauration des alertes pour les auditeurs.
 
 ### Évolutions techniques
-- **Expérience de Développement (DX)** : 
-    - Refonte majeure de l'environnement local : introduction d'un tableau de bord interactif en ligne de commande (`make tui`) et support des *worktrees* Git pour gérer plusieurs environnements simultanément.
-    - Mise en place d'une stack Docker complète répliquant Supabase pour un développement local plus fidèle à la production.
-- **Architecture et Backend** : 
-    - Création d'un nouveau domaine métier pour la gestion des "démarches" incluant un moteur de workflow dédié et des API via tRPC.
-    - Refactorisation et migration du module d'authentification vers le cœur de l'application.
-- **Gestion des données et Imports** : 
-    - Optimisation de l'import des communes via BANATIC (amélioration de la génération du SIREN et de la gestion de l'encodage).
-    - Mise à jour des modèles de données (Drizzle) pour supporter l'héritage par type de démarche.
-- **CI/CD** : 
-    - Automatisation de la relance des tests de bout en bout (E2E) en cas de faux négatifs pour stabiliser la chaîne de validation.
+
+**Architecture et Backend**
+- Migration du parcours PCAET vers une architecture pilotée par tRPC pour plus de robustesse.
+- Restructuration du module d'authentification, désormais intégré directement dans l'application principale.
+- Refonte du modèle de données (base de données) pour supporter l'héritage des types de démarches et le suivi historique des statuts.
+
+**Expérience de Développement (DevEx) et Infrastructure**
+- Modernisation massive de la stack de développement : création d'un tableau de bord interactif en ligne de commande (`make tui`) et support des *git worktrees* avec des stacks d'applications dédiées.
+- Amélioration de l'orchestration Docker pour permettre une réplication locale de Supabase et une meilleure gestion des conteneurs.
+- Optimisation de la gestion des variables d'environnement via de nouveaux outils de sélection et de sécurisation.
+- Amélioration de la CI/CD avec la mise en place de relances automatiques des tests E2E en cas de faux négatifs.
 
 ### Autres changements
-- **Documentation** : Nettoyage et mise à jour du fichier README.
-- **Configuration** : Amélioration de la gestion des variables d'environnement (utilisation de `dotenvx` et gestion sécurisée des clés).
+- Nettoyage important du code source et suppression de nombreux composants et fichiers non utilisés.
+- Mise à jour de la documentation technique (README).
+- Amélioration de la couverture et de la fiabilité des tests de bout en bout (E2E).
