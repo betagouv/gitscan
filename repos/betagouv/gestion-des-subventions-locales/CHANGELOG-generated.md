@@ -1,32 +1,31 @@
-## Changelog : gestion-des-subventions-locales (30 derniers jours, au 2026-08-05)
+## Changelog : gestion-des-subventions-locales (30 derniers jours, au 18 août 2026)
 
 ### Résumé
-Cette période a été marquée par une refonte majeure du système de notifications, rendant son suivi beaucoup plus visible et intégré au flux de travail des utilisateurs. L'expérience de saisie a également été améliorée grâce à une interface plus réactive et une meilleure gestion des formulaires et des documents. Enfin, l'environnement de développement a été modernisé pour gagner en rapidité.
+Ce mois-ci, l'outil a bénéficié d'une refonte majeure de son système de notifications et d'une amélioration significative de la gestion documentaire. Les utilisateurs peuvent désormais gérer plus facilement les documents (téléchargement groupé, mise à jour, génération de lettres de refus) et suivre plus précisément l'état de notification de chaque projet directement depuis les listes.
 
 ### Évolutions fonctionnelles
-- **Système de notifications** :
-    - Refonte complète de l'onglet de gestion des notifications [#783](https://github.com/betagouv/gestion-des-subventions-locales/issues/783).
-    - Ajout de badges de notification pour une meilleure visibilité [#788](https://github.com/betagouv/gestion-des-subventions-locales/issues/788).
-    - Affichage du statut de notification directement dans les listes de projets [#789](https://github.com/betagouv/gestion-des-subventions-locales/issues/789).
-    - Sécurisation du processus : impossibilité de générer ou d'importer des documents lorsqu'un projet est en cours de notification [#790](https://github.com/betagouv/gestion-des-subventions-locales/issues/790).
-- **Gestion des projets et documents** :
-    - Ajout d'un modèle de lettre de refus [#785](https://github.com/betagouv/gestion-des-subventions-locales/issues/785).
-    - Amélioration du formulaire de gestion des projets [#784](https://github.com/betagouv/gestion-des-subventions-locales/issues/784).
-    - Corrections diverses sur l'interface (modales de suppression, liens vers les modèles de formulaires).
-- **Interface utilisateur** :
-    - Correction de l'affichage des erreurs HTMX [#798](https://github.com/betagouv/gestion-des-subventions-locales/issues/798).
-    - Amélioration de la gestion des messages d'erreur dans les formulaires.
+- **Gestion documentaire**
+  - Possibilité de télécharger l'ensemble des documents générés via un nouveau bouton dédié [#802](https://github.com/betagouv/gestion-des-subventions-locales/pull/802).
+  - Tous les documents générés sont désormais téléchargeables individuellement [#742](https://github.com/betagouv/gestion-des-subventions-locales/pull/742).
+  - Les fichiers générés peuvent désormais être mis à jour.
+  - Ajout de la fonctionnalité de génération de lettres de refus ou de classement sans suite [#793](https://github.com/betagouv/gestion-des-subventions-locales/pull/793).
+- **Système de notifications**
+  - Refonte complète de l'onglet des notifications pour une meilleure lisibilité [#783](https://github.com/betagouv/gestion-des-subventions-locales/pull/783).
+  - Ajout de badges de notification dans l'onglet dédié [#788](https://github.com/betagouv/gestion-des-subventions-locales/pull/788).
+  - Affichage du statut de notification directement dans les listes de projets [#789](https://github.com/betagouv/gestion-des-subventions-locales/pull/789).
+  - Sécurisation du processus : la génération et l'import de documents sont désormais bloqués lorsqu'un projet est notifié [#790](https://github.com/betagouv/gestion-des-subventions-locales/pull/790).
 
 ### Évolutions techniques
-- **Infrastructure et outils de développement** :
-    - Migration de la gestion des dépendances de `pip-tools` vers `uv` [#786](https://github.com/betagouv/gestion-des-subventions-locales/issues/786).
-    - Ajustements de l'environnement pour assurer la compatibilité avec le DSFR [#794](https://github.com/betagouv/gestion-des-subventions-locales/issues/794).
-- **Modernisation de l'interface (Frontend)** :
-    - Intégration de HTMX pour rendre les formulaires plus dynamiques et fluides (notamment pour l'assiette de dotation [#787](https://github.com/betagouv/gestion-des-subventions-locales/issues/787), les notifications et la génération de documents).
-- **Refactorisation du code** :
-    - Optimisation du système de notifications (structure de la base de données, propriétés et respect des principes DRY).
-    - Refactorisation des filtres et utilisation de "inclusion tags" pour simplifier la gestion des formulaires de documents et de notifications.
+- **Architecture et outils**
+  - Migration de la gestion des dépendances de `pip-tools` vers `uv` [#786](https://github.com/betagouv/gestion-des-subventions-locales/pull/786).
+  - Intégration de `HTMX` pour améliorer l'interactivité des formulaires (assiette de dotation, notifications, génération de documents) [#787](https://github.com/betagouv/gestion-des-subventions-locales/pull/787).
+  - Mise en place de la nouvelle structure de données pour le système de notifications.
+  - Ajustements techniques pour garantir la compatibilité du Design System (DSFR) avec l'utilisation de `uv` [#794](https://github.com/betagouv/gestion-des-subventions-locales/pull/794).
+- **Optimisations et corrections**
+  - Optimisation des propriétés de statut de notification et refactorisation du code pour limiter la duplication.
+  - Correction de l'affichage des erreurs HTMX [#798](https://github.com/betagouv/gestion-des-subventions-locales/pull/798).
 
 ### Autres changements
-- **Outils métier** : Ajout d'une commande permettant d'importer les données du COG [#782](https://github.com/betagouv/gestion-des-subventions-locales/issues/782).
-- **Maintenance** : Nettoyage et optimisation du script de génération de dump `generate_dump.py` [#799](https://github.com/betagouv/gestion-des-subventions-locales/issues/799).
+- Ajout d'une commande permettant l'importation des données du COG [#782](https://github.com/betagouv/gestion-des-subventions-locales/pull/782).
+- Mise en place de `dependabot.yml` pour automatiser la maintenance des dépendances [#797](https://github.com/betagouv/gestion-des-subventions-locales/pull/797).
+- Nettoyage et maintenance de scripts internes (`generate_dump.py`).
