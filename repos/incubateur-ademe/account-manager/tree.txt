@@ -1,0 +1,227 @@
+.
+├── .claude
+│   ├── hooks
+│   │   └── block-env.sh
+│   ├── settings.json
+│   └── skills
+│       ├── add-tests
+│       │   └── SKILL.md
+│       ├── architecture-decision
+│       │   └── SKILL.md
+│       ├── check-review-pr
+│       │   └── SKILL.md
+│       ├── code-review
+│       │   └── SKILL.md
+│       ├── next-best-practices
+│       │   ├── SKILL.md
+│       │   ├── async-patterns.md
+│       │   ├── bundling.md
+│       │   ├── data-patterns.md
+│       │   ├── debug-tricks.md
+│       │   ├── directives.md
+│       │   ├── error-handling.md
+│       │   ├── file-conventions.md
+│       │   ├── font.md
+│       │   ├── functions.md
+│       │   ├── hydration-error.md
+│       │   ├── image.md
+│       │   ├── metadata.md
+│       │   ├── parallel-routes.md
+│       │   ├── route-handlers.md
+│       │   ├── rsc-boundaries.md
+│       │   ├── runtime-selection.md
+│       │   ├── scripts.md
+│       │   ├── self-hosting.md
+│       │   └── suspense-boundaries.md
+│       ├── next-cache-components
+│       │   └── SKILL.md
+│       ├── sync-docs
+│       │   └── SKILL.md
+│       └── verif
+│           └── SKILL.md
+├── .dockerignore
+├── .env.example
+├── .github
+│   └── workflows
+│       └── ci.yml
+├── .gitignore
+├── .nvmrc
+├── .vscode
+│   └── settings.json
+├── CLAUDE.md
+├── Dockerfile
+├── LICENSE
+├── README.md
+├── TODO.md
+├── biome.jsonc
+├── config
+│   ├── accounts.exemple.yaml
+│   ├── accounts.schema.json
+│   ├── config.exemple.yaml
+│   └── config.schema.json
+├── docker-compose.yml
+├── docs
+│   ├── architecture.md
+│   ├── co-incubation-em-1498.md
+│   ├── deploiement.md
+│   └── plans
+│       ├── #01_edition-fiche-manuelle.md
+│       ├── #02_rattachement-startup-manuel.md
+│       ├── #03_appartenance-perimetre.md
+│       ├── #04_connecteur-notion-scim.md
+│       ├── #05_page-connecteur.md
+│       ├── #06_page-startup.md
+│       ├── #07_tableau-de-bord.md
+│       ├── #08_plan-generique.md
+│       ├── #09_modeles-de-plan.md
+│       ├── #10_acteur-et-validation.md
+│       ├── #11_capacite-grant-profils.md
+│       ├── #12_constat-arrivee.md
+│       ├── #13_participation-non-operateur.md
+│       ├── #14_page-perso.md
+│       ├── #15_derogations.md
+│       └── #16_references.md
+├── next.config.ts
+├── package.json
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
+├── prisma
+│   ├── migrations
+│   │   ├── 20260808000000_init
+│   │   │   └── migration.sql
+│   │   ├── 20260808102632_startups_et_constats
+│   │   │   └── migration.sql
+│   │   ├── 20260808233319_ancre_de_renommage
+│   │   │   └── migration.sql
+│   │   ├── 20260811133243_cloture_nominative_des_constats
+│   │   │   └── migration.sql
+│   │   ├── 20260818091511_systeme_non_lu
+│   │   │   └── migration.sql
+│   │   ├── 20260818161504_marche_a_suivre_figee
+│   │   │   └── migration.sql
+│   │   └── migration_lock.toml
+│   └── schema.prisma
+├── prisma.config.ts
+├── src
+│   ├── app
+│   │   ├── api
+│   │   │   └── auth
+│   │   │       └── [...nextauth]
+│   │   │           └── route.ts
+│   │   ├── collectes
+│   │   │   ├── BoutonCollecte.tsx
+│   │   │   ├── actions.ts
+│   │   │   └── page.tsx
+│   │   ├── comptes-de-service
+│   │   │   ├── BoutonRevue.tsx
+│   │   │   ├── actions.ts
+│   │   │   └── page.tsx
+│   │   ├── comptes-isoles
+│   │   │   ├── Rattacher.tsx
+│   │   │   ├── actions.ts
+│   │   │   ├── creer.ts
+│   │   │   └── page.tsx
+│   │   ├── constats
+│   │   │   ├── ClotureConstat.tsx
+│   │   │   ├── actions.ts
+│   │   │   └── page.tsx
+│   │   ├── departs
+│   │   │   ├── [id]
+│   │   │   │   ├── Pointage.tsx
+│   │   │   │   ├── actions.ts
+│   │   │   │   └── page.tsx
+│   │   │   └── actions.ts
+│   │   ├── error.tsx
+│   │   ├── global-error.tsx
+│   │   ├── healthz
+│   │   │   └── route.ts
+│   │   ├── journal
+│   │   │   ├── DetailJson.tsx
+│   │   │   ├── Filtres.tsx
+│   │   │   ├── Pagination.tsx
+│   │   │   ├── criteres.test.ts
+│   │   │   ├── criteres.ts
+│   │   │   ├── libelles.ts
+│   │   │   └── page.tsx
+│   │   ├── layout.tsx
+│   │   ├── login
+│   │   │   ├── LoginForm.tsx
+│   │   │   ├── actions.ts
+│   │   │   └── page.tsx
+│   │   ├── not-found.tsx
+│   │   ├── page.tsx
+│   │   ├── personnes
+│   │   │   ├── EnteteTri.tsx
+│   │   │   ├── Filtres.tsx
+│   │   │   ├── [username]
+│   │   │   │   ├── BoutonDepart.tsx
+│   │   │   │   ├── Detacher.tsx
+│   │   │   │   ├── actions.ts
+│   │   │   │   ├── not-found.tsx
+│   │   │   │   └── page.tsx
+│   │   │   └── page.tsx
+│   │   └── systemes
+│   │       └── page.tsx
+│   ├── cli
+│   │   ├── schema-politique.ts
+│   │   ├── sync.ts
+│   │   └── verifier-politique.ts
+│   ├── connectors
+│   │   ├── github.ts
+│   │   └── index.ts
+│   ├── core
+│   │   ├── audit.ts
+│   │   ├── collecte.test.ts
+│   │   ├── collecte.ts
+│   │   ├── connector.test.ts
+│   │   ├── connector.ts
+│   │   ├── constat-verification.test.ts
+│   │   ├── constat.test.ts
+│   │   ├── constat.ts
+│   │   ├── depart.test.ts
+│   │   ├── depart.ts
+│   │   ├── identite.test.ts
+│   │   ├── identite.ts
+│   │   ├── libelle-constat.ts
+│   │   ├── membre.test.ts
+│   │   ├── membre.ts
+│   │   ├── perimetre.test.ts
+│   │   ├── perimetre.ts
+│   │   ├── plan.test.ts
+│   │   ├── plan.ts
+│   │   ├── policy.ts
+│   │   ├── rapprochement.test.ts
+│   │   ├── rapprochement.ts
+│   │   ├── revue.test.ts
+│   │   ├── revue.ts
+│   │   ├── statut.test.ts
+│   │   ├── statut.ts
+│   │   └── tri-personnes.ts
+│   ├── lib
+│   │   ├── actions.ts
+│   │   ├── audit.ts
+│   │   ├── auth.ts
+│   │   ├── db.ts
+│   │   ├── depart.ts
+│   │   ├── env.ts
+│   │   ├── espace-membre.ts
+│   │   ├── policy.ts
+│   │   ├── session.ts
+│   │   └── sync
+│   │       ├── collecte.ts
+│   │       ├── comptes-service.ts
+│   │       ├── constats.ts
+│   │       ├── executer.ts
+│   │       ├── perimetre.ts
+│   │       └── rapprochement.ts
+│   ├── proxy.ts
+│   └── ui
+│       ├── Deconnexion.tsx
+│       ├── Navigation.tsx
+│       └── dsfr
+│           ├── client.tsx
+│           ├── defaultColorScheme.ts
+│           └── server.tsx
+├── tsconfig.json
+└── vitest.config.ts
+50 directories, 176 files
