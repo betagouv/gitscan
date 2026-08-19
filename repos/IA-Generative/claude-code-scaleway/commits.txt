@@ -1,0 +1,21 @@
+2026-08-16T07:15:20+02:00 - d3bf1e7 - etiquet : README : precise que seul le CLI est valide (pas VS Code) + section Feedback et contributions
+2026-08-16T06:55:08+02:00 - 2b79219 - etiquet : README : section dediee 'Cache de tokens' (renvoi depuis Limites, fin du doublon)
+2026-08-16T06:53:24+02:00 - dd9c71f - etiquet : README : ajoute une section Claude Code avec Ollama (ollama launch claude, modeles cloud kimi)
+2026-08-16T01:01:01+02:00 - ccd3fec - etiquet : Ajoute make cache-probe : mesure si Scaleway rapporte des tokens de prefixe en cache (GLM-5.2 : non)
+2026-08-16T00:53:34+02:00 - c08c4ee - etiquet : README : ajoute une definition de GLM (famille de modeles Zhipu AI / Z.ai)
+2026-08-16T00:52:43+02:00 - d5c1f01 - etiquet : refactor: centralise le plafond de tokens de sortie (fin de la duplication du 16384)
+2026-08-16T00:39:41+02:00 - ff5e638 - etiquet : chore(security): durcit .gitignore + anti-leak gitleaks bloquant (pre-commit)
+2026-08-16T00:34:20+02:00 - df1e6cc - etiquet : README : mise en forme lisible (sommaire, aide-memoire make, sections repliables, tableaux)
+2026-08-16T00:27:36+02:00 - a0e2d0f - etiquet : Docs : chaine de retry observee sur 429 — Claude Code retente seul, les 200 intercales font foi
+2026-08-16T00:25:47+02:00 - 7214183 - etiquet : Docs : pieges Scaleway neutralises, mode Docker epingle, quotas par defaut et limites en l'etat
+2026-08-16T00:03:49+02:00 - cdaf365 - etiquet : Epingle l'image Docker sur litellm v1.96.2 (version validee du venv)
+2026-08-15T23:30:35+02:00 - b7985da - etiquet : Ecrete max_tokens a 16384 cote proxy (pre-call hook) — les appels internes de Claude Code ignorent le plafond client
+2026-08-15T21:42:28+02:00 - eed0841 - etiquet : shell.sh : compatibilite zsh (--no-rcs) — l'exec mourait et laissait l'utilisateur sans l'environnement proxy
+2026-08-15T21:37:43+02:00 - 7a29bff - etiquet : Provider hosted_vllm + alias versionnes : supprime le spam 404 count_tokens et les 400 sur claude-haiku-4-5-20251001
+2026-08-15T21:31:35+02:00 - d87e9e1 - etiquet : Plafonne la sortie Claude Code a 16384 tokens (limite Scaleway glm-5.2)
+2026-08-15T21:28:00+02:00 - d83e4fb - etiquet : check.sh : max_tokens 20 -> 500, laisse GLM-5.2 finir son thinking avant de répondre
+2026-08-15T21:25:10+02:00 - e16d278 - etiquet : Force le pont chat/completions pour /v1/messages (fix 422 /v1/responses Scaleway)
+2026-08-15T21:17:58+02:00 - 0126f0f - etiquet : Passerelle Claude Code vers les modeles Scaleway (GLM-5.2)
+2026-08-15T21:07:49+02:00 - ddf96b6 - etiquet : Passerelle Claude Code vers les modeles Scaleway (GLM-5.2)
+2026-08-15T20:51:11+02:00 - f9a7bce - etiquet : Passerelle Claude Code vers les modèles Scaleway (GLM-5.2)
+2026-08-15T20:48:10+02:00 - 0022702 - etiquet : Passerelle Claude Code vers les modèles Scaleway (GLM-5.2)
