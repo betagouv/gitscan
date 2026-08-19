@@ -1,20 +1,29 @@
-## Changelog : OpenGateLLM (30 derniers jours, au 31 juillet 2026)
+## Changelog : OpenGateLLM (30 derniers jours, au 17 août 2026)
 
 ### Résumé
-Ce mois-ci, OpenGateLLM a franchi une étape importante de sa structuration interne en migrant plusieurs composants clés vers une architecture plus robuste et maintenable (Clean Architecture). Les évolutions se sont également concentrées sur le renforcement de la sécurité des accès, l'amélioration de la fiabilité des tests automatisés et la précision du monitoring.
+Ce mois a été marqué par un effort important de restructuration interne pour améliorer la maintenabilité du projet via l'adoption d'une "Clean Architecture". Les utilisateurs bénéficieront également d'une sécurité renforcée lors de l'authentification et de corrections sur l'interface du Playground.
 
 ### Évolutions fonctionnelles
-- **Sécurité** : Protection contre l'énumération d'utilisateurs via l'utilisation de messages d'erreur d'authentification génériques [#963](https://github.com/etalab-ia/OpenGateLLM/issues/963).
-- **Interface utilisateur** : Correction des formulaires d'authentification dans l'interface Playground [#981](https://github.com/etalab-ia/OpenGateLLM/issues/981).
-- **Données** : Amélioration de la précision des indicateurs d'impact environnemental (utilisation de 0.0 au lieu de None) [#990](https://github.com/etalab-ia/OpenGateLLM/issues/990).
+- **Sécurité** : Amélioration de la protection contre l'énumération d'utilisateurs en retournant des messages d'erreur génériques lors des échecs d'authentification ([#963](https://github.com/etalab-ia/OpenGateLLM/issues/963)).
+- **Interface (Playground)** : Correction du formulaire d'authentification dans le Playground via l'utilisation de Reflex ([#981](https://github.com/etalab-ia/OpenGateLLM/issues/981)).
+- **Données** : Amélioration de la précision de l'affichage des impacts environnementaux en privilégiant la valeur `0.0` au lieu de `None` ([#990](https://github.com/etalab-ia/OpenGateLLM/issues/990)).
 
 ### Évolutions techniques
-- **Refactorisation majeure** : Migration vers une "Clean Architecture" pour plusieurs points d'entrée critiques de l'API : endpoint OCR [#984](https://github.com/etalab-ia/OpenGateLLM/issues/984), gestion des utilisateurs [#962](https://github.com/etalab-ia/OpenGateLLM/issues/962) et gestion des tokens [#947](https://github.com/etalab-ia/OpenGateLLM/issues/947).
-- **Optimisation de la CI/CD** : Résolution des problèmes de dépendances pour l'exécution des tests E2E [#964](https://github.com/etalab-ia/OpenGateLLM/issues/964), [#968](https://github.com/etalab-ia/OpenGateLLM/issues/968) et gestion des scans de sécurité Trivy [#969](https://github.com/etalab-ia/OpenGateLLM/issues/969).
-- **Observabilité** : Amélioration du monitoring avec l'enregistrement des requêtes non-streaming dans Langfuse [#987](https://github.com/etalab-ia/OpenGateLLM/issues/987).
-- **Maintenance du code** : Suppression de `ModelProviderGateway` [#972](https://github.com/etalab-ia/OpenGateLLM/issues/972), ajustement des corps de requêtes pour les modèles [#977](https://github.com/etalab-ia/OpenGateLLM/issues/977) et résolution de conflits de versions de packages.
+- **Refactoring (Clean Architecture)** : Migration de plusieurs points de terminaison critiques vers une architecture propre pour faciliter l'évolution du code :
+    - Endpoint OCR ([#984](https://github.com/etalab-ia/OpenGateLLM/issues/984))
+    - Gestion des utilisateurs administrateurs ([#962](https://github.com/etalab-ia/OpenGateLLM/issues/962))
+    - Gestion des tokens d'administration ([#947](https://github.com/etalab-ia/OpenGateLLM/issues/947))
+- **CI/CD et Tests** : 
+    - Stabilisation de la pipeline CI/CD avec l'installation des dépendances manquantes pour les tests de bout en bout (E2E) ([#968](https://github.com/etalab-ia/OpenGateLLM/issues/968), [#964](https://github.com/etalab-ia/OpenGateLLM/issues/964)).
+    - Résolution de blocages de scans de sécurité (Trivy) liés à des vulnérabilités CVE sur `perl-base` ([#969](https://github.com/etalab-ia/OpenGateLLM/issues/969)).
+    - Intégration de tests de configuration héritée ([#991](https://github.com/etalab-ia/OpenGateLLM/issues/991)).
+- **Monitoring et Modèles** :
+    - Amélioration du suivi dans Langfuse pour inclure les requêtes non-streaming ([#987](https://github.com/etalab-ia/OpenGateLLM/issues/987)).
+    - Optimisation de la construction du corps des requêtes de modèles ([#977](https://github.com/etalab-ia/OpenGateLLM/issues/977)).
+    - Suppression du composant `ModelProviderGateway` pour simplifier l'architecture ([#972](https://github.com/etalab-ia/OpenGateLLM/issues/972)).
 
 ### Autres changements
-- **Documentation** : Ajout d'une décision d'architecture (ADR) concernant la séparation du RAG [#971](https://github.com/etalab-ia/OpenGateLLM/issues/971) et mise à jour de la documentation générée [#975](https://github.com/etalab-ia/OpenGateLLM/issues/975).
-- **Configuration** : Mise à jour des variables d'environnement par défaut dans les exemples de configuration [#974](https://github.com/etalab-ia/OpenGateLLM/issues/974).
-- **Tests** : Intégration de tests pour la gestion de la configuration héritée [#991](https://github.com/etalab-ia/OpenGateLLM/issues/991).
+- **Documentation** : 
+    - Mise à jour de la documentation générée et des versions de release ([#975](https://github.com/etalab-ia/OpenGateLLM/issues/975)).
+    - Ajout d'une décision d'architecture (ADR) concernant la segmentation du RAG ([#971](https://github.com/etalab-ia/OpenGateLLM/issues/971)).
+- **Configuration** : Mise à jour des variables d'environnement par défaut dans l'exemple de configuration ([#974](https://github.com/etalab-ia/OpenGateLLM/issues/974)).
