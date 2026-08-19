@@ -471,7 +471,6 @@
 │   │   │   │   └── commands
 │   │   │   │       ├── __init__.py
 │   │   │   │       ├── backfill_publics_di.py
-│   │   │   │       ├── backfill_service_kind.py
 │   │   │   │       ├── export_service_data_for_classification.py
 │   │   │   │       ├── fix_missing_geom.py
 │   │   │   │       ├── import_services.py
@@ -486,13 +485,14 @@
 │   │   │   │   ├── 0005_savedsearch_kinds_array.py
 │   │   │   │   ├── 0006_service_publics_di_service_publics_precisions.py
 │   │   │   │   ├── 0007_service_kind.py
+│   │   │   │   ├── 0008_recompute_sync_checksums.py
+│   │   │   │   ├── 0009_remove_service_kinds.py
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── data
 │   │   │   │       └── assignation-thematiques.csv
 │   │   │   ├── models.py
 │   │   │   ├── search.py
 │   │   │   ├── serializers.py
-│   │   │   ├── signals_kind.py
 │   │   │   ├── signals_publics.py
 │   │   │   ├── templates
 │   │   │   │   ├── admin
@@ -508,7 +508,6 @@
 │   │   │   │   │   └── test_import_services.ambr
 │   │   │   │   ├── test_admin_import_view.py
 │   │   │   │   ├── test_backfill_publics_di.py
-│   │   │   │   ├── test_backfill_service_kind.py
 │   │   │   │   ├── test_bookmarks.py
 │   │   │   │   ├── test_categories_subcategories.py
 │   │   │   │   ├── test_emails.py
@@ -523,9 +522,8 @@
 │   │   │   │   ├── test_service_kind_api.py
 │   │   │   │   ├── test_services.py
 │   │   │   │   ├── test_services_saved_searchs.py
-│   │   │   │   ├── test_signals_kind.py
 │   │   │   │   ├── test_signals_publics.py
-│   │   │   │   └── test_utils_kind.py
+│   │   │   │   └── test_utils_publics.py
 │   │   │   ├── utils.py
 │   │   │   └── views.py
 │   │   ├── sirene
@@ -1457,4 +1455,4 @@
 └── tools
     ├── create-review-apps.sh
     └── release.sh
-275 directories, 1184 files
+275 directories, 1182 files
