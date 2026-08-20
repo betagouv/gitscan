@@ -175,7 +175,7 @@
 │   │   │   ├── prescription_controller.rb
 │   │   │   ├── rdv_wizard_steps_controller.rb
 │   │   │   ├── rdvs_collectifs
-│   │   │   │   └── motifs_controller.rb
+│   │   │   │   └── motif_selections_controller.rb
 │   │   │   ├── rdvs_collectifs_controller.rb
 │   │   │   ├── rdvs_controller.rb
 │   │   │   ├── referent_assignations_controller.rb
@@ -186,6 +186,7 @@
 │   │   │   │   ├── agent_territorial_roles_controller.rb
 │   │   │   │   ├── agents_controller.rb
 │   │   │   │   ├── base_controller.rb
+│   │   │   │   ├── calendar_settings_controller.rb
 │   │   │   │   ├── invitations_devise_controller.rb
 │   │   │   │   ├── motif_categories_controller.rb
 │   │   │   │   ├── motif_fields_controller.rb
@@ -673,9 +674,9 @@
 │   │   ├── api_call.rb
 │   │   ├── application_record.rb
 │   │   ├── blog_post.rb
+│   │   ├── caldav_config.rb
 │   │   ├── concerns
 │   │   │   ├── agent
-│   │   │   │   ├── caldav_configuration.rb
 │   │   │   │   ├── custom_devise_token_auth_user_omniauth_callbacks.rb
 │   │   │   │   ├── feature_flags.rb
 │   │   │   │   └── preload_roles.rb
@@ -884,17 +885,13 @@
 │   │   │   └── france_service.rb
 │   │   ├── move_organisation_to_other_territory_service.rb
 │   │   ├── notifiers
-│   │   │   ├── absence_base.rb
-│   │   │   ├── absence_created.rb
-│   │   │   ├── absence_destroyed.rb
-│   │   │   ├── absence_updated.rb
+│   │   │   ├── agent
+│   │   │   │   ├── absence.rb
+│   │   │   │   ├── added_to_rdv.rb
+│   │   │   │   └── plage_ouverture.rb
 │   │   │   ├── agents_concern.rb
 │   │   │   ├── participation_cancelled.rb
 │   │   │   ├── participation_created.rb
-│   │   │   ├── plage_ouverture_base.rb
-│   │   │   ├── plage_ouverture_created.rb
-│   │   │   ├── plage_ouverture_destroyed.rb
-│   │   │   ├── plage_ouverture_updated.rb
 │   │   │   ├── rdv_base.rb
 │   │   │   ├── rdv_cancelled.rb
 │   │   │   ├── rdv_collectif_participations.rb
@@ -1054,6 +1051,7 @@
 │       │   │   ├── _user_details.html.slim
 │       │   │   └── _user_row.html.slim
 │       │   ├── planning
+│       │   │   ├── _new_modal.html.slim
 │       │   │   ├── _planning_agents_select.html.slim
 │       │   │   ├── _planning_tabs.html.slim
 │       │   │   ├── absences
@@ -1129,7 +1127,7 @@
 │       │   │   ├── _rdv.html.slim
 │       │   │   ├── edit.html.slim
 │       │   │   ├── index.html.slim
-│       │   │   ├── motifs
+│       │   │   ├── motif_selections
 │       │   │   │   └── index.html.slim
 │       │   │   └── new.html.slim
 │       │   ├── receipts
@@ -1147,6 +1145,8 @@
 │       │   │   │   ├── index.html.slim
 │       │   │   │   ├── index.json.jb
 │       │   │   │   └── new.html.slim
+│       │   │   ├── calendar_settings
+│       │   │   │   └── edit.html.slim
 │       │   │   ├── edit.html.slim
 │       │   │   ├── invitations_devise
 │       │   │   │   ├── _password_signup_form.html.slim
@@ -1385,7 +1385,7 @@
 │       │   ├── application_narrow.html.slim
 │       │   ├── application_operator.html.slim
 │       │   ├── left_menu
-│       │   │   └── _organisation_switcher.html.slim
+│       │   │   └── _organisation_switcher_modal.html.slim
 │       │   ├── mailer.html.slim
 │       │   ├── mailer.text.erb
 │       │   ├── modal.html.slim
@@ -2033,7 +2033,9 @@
 │   │   ├── 20260610142439_remove_uniqueness_on_services_short_name.rb
 │   │   ├── 20260630120810_drop_notification_email_and_recreate_text_search_terms.rb
 │   │   ├── 20260630124356_add_index_on_text_search_terms.rb
-│   │   └── 20260812083736_add_api_call_params.rb
+│   │   ├── 20260810170821_delete_devise_columns.rb
+│   │   ├── 20260812083736_add_api_call_params.rb
+│   │   └── 20260817155729_create_caldav_configs.rb
 │   ├── schema.rb
 │   ├── seeds
 │   │   ├── ccas.rb
@@ -2208,7 +2210,7 @@
 │   │   │   │   └── plage_ouvertures_controller_spec.rb
 │   │   │   ├── rdv_wizard_steps_controller_spec.rb
 │   │   │   ├── rdvs_collectifs
-│   │   │   │   └── motifs_controller_spec.rb
+│   │   │   │   └── motif_selections_controller_spec.rb
 │   │   │   ├── rdvs_collectifs_controller_spec.rb
 │   │   │   ├── rdvs_controller_spec.rb
 │   │   │   ├── referent_assignations_controller_spec.rb
@@ -2257,6 +2259,7 @@
 │   │   ├── agents_rdv.rb
 │   │   ├── annotations.rb
 │   │   ├── blog_post.rb
+│   │   ├── caldav_config.rb
 │   │   ├── creneau.rb
 │   │   ├── export.rb
 │   │   ├── external_calendar_event.rb
@@ -2431,6 +2434,7 @@
 │   │   │   ├── migrating_an_agent_spec.rb
 │   │   │   └── use_correct_history_version_spec.rb
 │   │   ├── territory_admins
+│   │   │   ├── calendar_settings_spec.rb
 │   │   │   ├── can_crud_webhook_spec.rb
 │   │   │   ├── create_sector_spec.rb
 │   │   │   ├── opening_an_account_spec.rb
@@ -2562,7 +2566,8 @@
 │   │   ├── caldav
 │   │   │   ├── base_job_spec.rb
 │   │   │   ├── export_rdv_to_caldav_job_spec.rb
-│   │   │   └── import_absences_from_caldav_job_spec.rb
+│   │   │   ├── import_absences_from_caldav_job_spec.rb
+│   │   │   └── mass_destroy_events_and_absences_job_spec.rb
 │   │   ├── cron_job
 │   │   │   ├── anonymize_old_receipts_spec.rb
 │   │   │   ├── destroy_expired_export_file_blobs_spec.rb
@@ -2884,10 +2889,12 @@
 │   │   │   └── france_service_spec.rb
 │   │   ├── move_organisation_to_other_territory_service_spec.rb
 │   │   ├── notifiers
-│   │   │   ├── absence_base_spec.rb
+│   │   │   ├── agent
+│   │   │   │   ├── absence_spec.rb
+│   │   │   │   └── plage_ouverture_spec.rb
+│   │   │   ├── agents_concern_spec.rb
 │   │   │   ├── participation_cancelled_spec.rb
 │   │   │   ├── participation_created_spec.rb
-│   │   │   ├── plage_ouverture_base_spec.rb
 │   │   │   ├── rdv_base_spec.rb
 │   │   │   ├── rdv_cancelled_spec.rb
 │   │   │   ├── rdv_created_spec.rb
@@ -2978,4 +2985,4 @@
 ├── vendor
 │   └── .keep
 └── yarn.lock
-456 directories, 2524 files
+459 directories, 2528 files
