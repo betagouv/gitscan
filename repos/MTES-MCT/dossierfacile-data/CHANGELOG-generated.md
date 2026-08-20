@@ -1,10 +1,12 @@
-## Changelog : dossierfacile-data (30 derniers jours, au 15 juillet 2026)
+## Changelog : dossierfacile-data (30 derniers jours, au 19 août 2026)
 
 ### Résumé
-Les récentes interventions ont permis de stabiliser les processus de transformation de données et d'améliorer la clarté des indicateurs destinés aux outils d'analyse.
+Ce mois-ci, le projet a enrichi les données disponibles en intégrant le statut de demande de validation des locataires. Parallèlement, des optimisations de performance et des corrections techniques ont été apportées pour fiabiliser le pipeline de transformation des données.
 
 ### Évolutions fonctionnelles
-- Mise à jour des libellés dans la configuration analytique pour améliorer la lisibilité des rapports ([#77](https://github.com/MTES-MCT/dossierfacile-data/pull/77)).
+- Ajout de la donnée relative au statut de demande de validation des locataires (`validation_requested`) [#80](https://github.com/MTES-MCT/dossierfacile-data/pull/80).
 
 ### Évolutions techniques
-- Correction d'une erreur dbt concernant le traitement et le mapping des dates de validation ([#75](https://github.com/MTES-MCT/dossierfacile-data/pull/75)).
+- Optimisation des performances de la base de données via l'ajout d'index sur les tables [#74](https://github.com/MTES-MCT/dossierfacile-data/pull/74).
+- Correction de la stratégie d'incrémentation des données (incremental strategy) pour assurer la fiabilité des flux [#81](https://github.com/MTES-MCT/dossierfacile-data/pull/81).
+- Résolution d'un problème technique lié à l'exécution des commandes dbt [#82](https://github.com/MTES-MCT/dossierfacile-data/pull/82).
