@@ -6,7 +6,8 @@
 ├── .github
 │   └── workflows
 │       ├── check_push.yml
-│       └── pytest.yml
+│       ├── pytest.yml
+│       └── workflow-e2e-webapp.yml
 ├── .gitignore
 ├── .pre-commit-config.yaml
 ├── .python-version
@@ -405,6 +406,7 @@
 │   └── wsgi.py
 ├── bin
 │   ├── check-no-vanilla-httpx-usage.sh
+│   ├── check_commit_message.py
 │   ├── start.sh
 │   └── worker.sh
 ├── biome.json
@@ -591,6 +593,12 @@
 │   │   │   │   │   └── +page.svelte
 │   │   │   │   ├── layout.svelte.test.ts
 │   │   │   │   ├── layout.test.ts
+│   │   │   │   ├── login
+│   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   └── page.svelte.test.ts
+│   │   │   │   ├── login-callback
+│   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   └── page.svelte.test.ts
 │   │   │   │   ├── network-error
 │   │   │   │   │   └── +page.svelte
 │   │   │   │   ├── notifications
@@ -692,4 +700,4 @@
 ├── scalingo.json
 ├── uv.lock
 └── vapid_keys.py
-137 directories, 557 files
+139 directories, 563 files

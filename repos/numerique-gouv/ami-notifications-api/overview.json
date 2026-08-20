@@ -1,12 +1,13 @@
 {
   "url": "https://github.com/numerique-gouv/ami-notifications-api",
   "name": "ami-notifications-api",
-  "description": "API de notifications pour l'Application Mobile Interministérielle (AMI). Elle permet de gérer l'envoi de notifications push et le stockage des endpoints pour les clients web et mobiles.",
+  "description": "API de notifications pour l'Application Mobile Interministérielle (AMI), permettant la création et la gestion de notifications push pour les clients web et mobiles.",
   "language": "Python",
   "features": [
     "Notifications & Alertes",
     "API & Intégrations",
-    "Authentification & Accès"
+    "Authentification & Accès",
+    "Administration & Backoffice"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -14,24 +15,23 @@
     "PostgreSQL",
     "Svelte",
     "Webpush",
-    "Django REST Framework",
-    "asyncpg",
+    "FranceConnect",
     "uv",
-    "Ruff"
+    "Ruff",
+    "Django REST Framework"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
     "Webhooks & Événements",
-    "Docker & Conteneurs",
-    "TypeScript / JavaScript"
+    "Angular / Svelte / Autres SPA",
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
-      "oauth2",
       "sso",
-      "jwt"
+      "oauth2"
     ],
     "providers": [
       "FranceConnect"
@@ -40,17 +40,22 @@
   "tests": [
     "pytest",
     "pytest-django",
-    "pytest-asyncio"
+    "pytest-asyncio",
+    "django-webtest"
   ],
-  "lastActivity": "2026-08-14T15:50:52+02:00",
+  "workflows": [
+    "GitHub Actions"
+  ],
+  "lastActivity": "2026-08-18T12:38:31+02:00",
   "status": "active",
+  "license": null,
   "hasDocumentation": true,
   "tags": [
+    "Communication & Messagerie",
+    "Écosystème beta.gouv / État",
     "Python",
     "Django & FastAPI",
-    "Communication & Messagerie",
     "Docker & Conteneurs",
-    "Écosystème beta.gouv / État",
-    "JavaScript"
+    "CI/CD & GitHub Actions"
   ]
 }
