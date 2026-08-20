@@ -1,16 +1,16 @@
-## Changelog : transport-site (30 derniers jours, au 7 août 2026)
+## Changelog : transport-site (30 derniers jours, au 19 août 2026)
 
 ### Résumé
-Les récentes évolutions se concentrent sur l'amélioration de la fiabilité des données de transport (GTFS-RT, IRVE) et le renforcement de la sécurité de la plateforme. Des optimisations ont également été apportées au système de notification pour mieux informer les utilisateurs de l'état de fraîcheur des données.
+Ce mois-ci, les efforts se sont concentrés sur le renforcement de la sécurité de la plateforme et la fiabilisation des processus de test. Des améliorations ont également été apportées à la gestion des notifications d'expiration des données et à la validation des formats de données de transport.
 
 ### Évolutions fonctionnelles
 - Mise à jour du système de notification concernant l'expiration des données [#5586](https://github.com/etalab/transport-site/issues/5586).
 
 ### Évolutions techniques
-- **Gestion des données de mobilité** : Mise à jour du protocole GTFS-RT [#5569](https://github.com/etalab/transport-site/issues/5569) et ajustement des règles pour MobilityData [#5574](https://github.com/etalab/transport-site/issues/5574).
-- **Optimisation IRVE** : Refactorisation du processus de consolidation des données de recharge pour véhicules électriques afin d'optimiser le passage des fichiers vers les dataframes et la validation [#5559](https://github.com/etalab/transport-site/issues/5559).
-- **Sécurité** : Mise en place d'un scanner de vulnérabilités pour renforcer la surveillance des dépendances [#5566](https://github.com/etalab/transport-site/issues/5566).
+- **Sécurité** : Mise en place d'un scanner de vulnérabilités et application de diverses mises à jour de sécurité [#5566](https://github.com/etalab/transport-site/issues/5566), [#5581](https://github.com/etalab/transport-site/issues/5581).
+- **Validation et données** : Uniformisation du stockage et de la version du validateur NeTEx [#5576](https://github.com/etalab/transport-site/issues/5576) et mise à jour des règles MobilityData pour la version 8.0.1 [#5574](https://github.com/etalab/transport-site/issues/5574).
+- **Maintenance et tests** : Extraction de la logique de téléchargement pour l'ART [#5590](https://github.com/etalab/transport-site/issues/5590) et travaux de stabilisation de la suite de tests [#5587](https://github.com/etalab/transport-site/issues/5587).
 
 ### Autres changements
-- **Maintenance et documentation** : Corrections diverses dans la documentation [#5547](https://github.com/etalab/transport-site/issues/5547) et ajustement de la configuration du linter pour les liens markdown [#5589](https://github.com/etalab/transport-site/issues/5589).
-- **Nettoyage** : Suppression de l'outil de test `exvcr` [#5564](https://github.com/etalab/transport-site/issues/5564).
+- **Documentation** : Corrections diverses dans la documentation du projet [#5547](https://github.com/etalab/transport-site/issues/5547).
+- **CI/CD** : Désactivation de la vérification des liens Markdown dans le workflow [#5589](https://github.com/etalab/transport-site/issues/5589).

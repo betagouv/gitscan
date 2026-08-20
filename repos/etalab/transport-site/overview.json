@@ -1,14 +1,15 @@
 {
   "url": "https://github.com/etalab/transport-site",
   "name": "transport-site",
-  "description": "Point d'accès national (NAP) pour les données de mobilité en France. Ce projet met en avant les données de transport hébergées sur la plateforme data.gouv.fr.",
+  "description": "Point d'accès national (NAP) pour les données de mobilité en France. Ce projet permet de valoriser et de centraliser les données de transport hébergées sur la plateforme data.gouv.fr.",
   "language": "Elixir",
   "features": [
     "Visualisation de données & Cartographie",
     "Recherche & Filtres",
-    "Données & Schémas",
     "Administration & Backoffice",
-    "API & Intégrations"
+    "Données & Schémas",
+    "API & Intégrations",
+    "Statistiques & Rapports"
   ],
   "audience": "Grand public",
   "dependencies": [
@@ -18,18 +19,21 @@
     "PostGIS",
     "Node.js",
     "Yarn",
-    "Leaflet",
+    "Docker",
     "Deck.gl",
+    "Leaflet",
     "Vega"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "TypeScript / JavaScript",
-    "Design System (DSFR & UI libs)",
     "Docker & Conteneurs",
-    "SIG & Géospatial",
-    "Templates & Moteurs de rendu"
+    "Node.js / NestJS",
+    "HTML / CSS / Templates visuels",
+    "Authentification (composant)",
+    "Scripts & Utilitaires",
+    "SIG & Géospatial"
   ],
   "auth": {
     "methods": [
@@ -42,22 +46,20 @@
   "tests": [
     "mix test",
     "excoveralls",
-    "credo",
+    "mix credo",
     "eslint",
     "stylelint"
   ],
-  "workflows": [
-    "CI/CD"
-  ],
-  "lastActivity": "2026-08-07T19:14:29+02:00",
+  "lastActivity": "2026-08-19T08:58:00Z",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
   "tags": [
     "Données & Open Data",
+    "Écosystème beta.gouv / État",
     "Transport & Mobilité",
     "SIG & Géospatial",
-    "Écosystème beta.gouv / État",
-    "Docker & Conteneurs"
+    "Docker & Conteneurs",
+    "Bases de données SQL"
   ]
 }
