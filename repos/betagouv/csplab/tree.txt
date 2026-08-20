@@ -62,7 +62,9 @@
 │   │   ├── ADR-003-ddd-aggregate-root-pattern.md
 │   │   ├── ADR-004-cross-bounded-context-foreign-keys-and-domain-error-mapping.md
 │   │   ├── ADR-005-business-rule-ownership-entity-vs-orm-model.md
-│   │   └── ADR-006-cqrs-query-use-cases-read-models.md
+│   │   ├── ADR-006-cqrs-query-use-cases-read-models.md
+│   │   ├── ADR-007-can-execute-preconditions-use-cases.md
+│   │   └── ADR-008-coherence-errors-application-layer.md
 │   ├── accessibility_testing.md
 │   ├── browser_auto_reload.md
 │   ├── direnv_dotenv_usage.md
@@ -461,7 +463,9 @@
         │   │       ├── create_candidat.py
         │   │       ├── create_organisme.py
         │   │       ├── get_utilisateur_details.py
-        │   │       └── log_utilisateur_connexion.py
+        │   │       ├── list_organismes.py
+        │   │       ├── log_utilisateur_connexion.py
+        │   │       └── update_organisme.py
         │   ├── ingestion
         │   │   ├── __init__.py
         │   │   ├── interfaces
@@ -493,10 +497,12 @@
         │       ├── dtos
         │       │   ├── __init__.py
         │       │   ├── etape_data.py
+        │       │   ├── note_read_models.py
         │       │   ├── recrutement_read_models.py
         │       │   └── recrutement_request.py
         │       ├── services
         │       │   ├── __init__.py
+        │       │   ├── note_query_service_interface.py
         │       │   └── recrutement_query_service_interface.py
         │       └── usecases
         │           ├── changer_etape_candidatures.py
@@ -680,8 +686,6 @@
         │       │   ├── recrutement_agent_repository_interface.py
         │       │   └── recrutement_repository_interface.py
         │       ├── services
-        │       │   ├── __init__.py
-        │       │   ├── note_query_service_interface.py
         │       │   └── organisme_permission_service.py
         │       └── value_objects
         │           ├── __init__.py
@@ -804,6 +808,7 @@
         │   │   │   │   ├── 0003_recrutement_etapes.py
         │   │   │   │   ├── 0004_alter_recrutementagentmodel_recrutement.py
         │   │   │   │   ├── 0005_recrutementagentmodel_role_organismeagentmodel.py
+        │   │   │   │   ├── 0006_organismemodel_external_id_organismemodel_millesime_and_more.py
         │   │   │   │   └── __init__.py
         │   │   │   └── models
         │   │   │       ├── __init__.py
@@ -1488,6 +1493,7 @@
         │   │   └── views
         │   │       ├── __init__.py
         │   │       ├── notes.py
+        │   │       ├── organisme_detail.py
         │   │       ├── organismes.py
         │   │       ├── recrutement_detail.py
         │   │       ├── recrutement_listes.py
@@ -1812,6 +1818,7 @@
         │   │       ├── __init__.py
         │   │       ├── test_views_ats_base.py
         │   │       ├── test_views_notes.py
+        │   │       ├── test_views_organisme_detail.py
         │   │       ├── test_views_organismes.py
         │   │       ├── test_views_recrutement_detail.py
         │   │       ├── test_views_recrutement_listes.py
@@ -1829,4 +1836,4 @@
         │       ├── test_rate_limit_headers_middleware.py
         │       └── test_storages.py
         └── uv.lock
-357 directories, 1474 files
+357 directories, 1481 files
