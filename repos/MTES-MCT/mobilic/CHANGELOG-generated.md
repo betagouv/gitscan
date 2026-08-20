@@ -1,19 +1,13 @@
-## Changelog : mobilic (30 derniers jours, au 03 août 2026)
+## Changelog : mobilic (30 derniers jours, au 18/08/2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a franchi une étape importante avec l'ajout de fonctionnalités clés pour les salariés, notamment la gestion des demandes de détachement et la possibilité d'initier des contestations. L'interface a également été affinée pour offrir une meilleure navigation et une plus grande clarté dans la consultation des historiques d'activité, tant sur mobile que sur ordinateur.
+Les récentes évolutions se concentrent sur l'amélioration de la cohérence des données et de l'expérience utilisateur. L'historique des activités dans l'application est désormais parfaitement aligné avec les documents PDF exportés. Nous avons également fluidifié la saisie des informations (notamment les dates de naissance) et affiné la gestion des statuts de mission pour les administrateurs et les employés.
 
 ### Évolutions fonctionnelles
-- **Nouvelles fonctionnalités**
-    - Mise en place du système de demande de détachement pour les salariés, incluant l'interface dédiée, la gestion des délais de carence et les relances [#898](https://github.com/MTES-MCT/mobilic/pull/898).
-    - Ajout de la possibilité pour les salariés d'initier des procédures de contestation [#884](https://github.com/MTES-MCT/mobilic/pull/884).
-- **Améliorations et corrections**
-    - **Expérience Salarié & PWA** : Harmonisation de l'historique d'activité avec les exports PDF, meilleure gestion de l'affichage des activités sur les journées multi-missions et masquage automatique des données liées aux missions supprimées.
-    - **Interface & Navigation** : Refonte du header et du footer de la page d'accueil (conformité DSFR) et amélioration de l'ergonomie des menus de navigation (styles de survol et états actifs).
-    - **Notifications** : Optimisation de l'affichage sur petits écrans et ajustement du positionnement des éléments d'information pour une meilleure accessibilité.
-    - **Administration & Contrôle** : Amélioration des outils d'impersonation (traçabilité accrue et visibilité de l'auteur des actions) [#901](https://github.com/MTES-MCT/mobilic/pull/901) [#910](https://github.com/MTES-MCT/mobilic/pull/910) et enrichissement de la bannière de contestation pour les administrateurs.
-    - **Simplification** : Suppression de la fenêtre modale d'avertissement concernant les missions longues pour les salariés [#908](https://github.com/MTES-MCT/mobilic/pull/908).
+- **Saisie et formulaires** : Amélioration de l'expérience de saisie de la date de naissance avec un système de focus automatique optimisé et une validation plus robuste [#924](https://github.com/MTES-MCT/mobilic/pull/924). Suppression de la fenêtre d'alerte concernant les missions longues pour les employés afin de simplifier leur parcours [#908](https://github.com/MTES-MCT/mobilic/pull/908).
+- **Historique et notifications** : Harmonisation de l'historique des activités dans l'application (PWA) avec les exports PDF (textes, motifs, types de contestation) pour éviter toute confusion [#910](https://github.com/MTES-MCT/mobilic/pull/910). Ajout d'un tag "MODIFICATION" pour identifier clairement les activités scindées au lieu du tag "AJOUT" [#912](https://github.com/MTES-MCT/mobilic/pull/912). Optimisation de l'affichage des notifications sur les écrans mobiles [#906](https://github.com/MTES-MCT/mobilic/pull/906).
+- **Gestion administrative** : Optimisation de la gestion des statuts de mission, notamment pour assurer la continuité du statut "en cours" jusqu'à la fin de la mission par l'employé [#913](https://github.com/MTES-MCT/mobilic/pull/913). Amélioration de la traçabilité et de la création de missions lors des sessions d'impersonnalisation [#910](https://github.com/MTES-MCT/mobilic/pull/910). Renforcement des détails dans les bannières de contestation pour les administrateurs.
 
 ### Évolutions techniques
-- **CI/CD & Infrastructure** : Intégration des "review apps" Scalingo pour faciliter les tests de branches [#904](https://github.com/MTES-MCT/mobilic/pull/904) et ajustements de la détection de branche dans le pipeline CI. Retour à la configuration WAF OGO [#877](https://github.com/MTES-MCT/mobilic/pull/877).
-- **Qualité du code & Performance** : Refactorisation de composants clés de la PWA (notamment `DurationDisplay`) pour réduire la complexité du code et amélioration du filtrage des erreurs Sentry pour réduire le bruit de monitoring [#891](https://github.com/MTES-MCT/mobilic/pull/891).
+- **Infrastructure et CI/CD** : Amélioration de la stabilité et de la configuration des environnements de test (Review Apps via Scalingo) [#904](https://github.com/MTES-MCT/mobilic/pull/904), [#921](https://github.com/MTES-MCT/mobilic/pull/921). Optimisation des scripts de détection de branche dans le pipeline de CI.
+- **Refactoring** : Centralisation de la logique de calcul des statuts de mission pour garantir une cohérence totale entre les différentes vues administratives. Simplification de plusieurs composants UI (notamment la gestion de l'affichage des durées) pour réduire la complexité du code.

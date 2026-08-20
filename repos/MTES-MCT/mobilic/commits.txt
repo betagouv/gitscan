@@ -1,6 +1,30 @@
+2026-08-18T16:23:53+02:00 - 28e480af - MrJimmyChevallier : Merge pull request #923 from MTES-MCT/fix/split-activity-text-order
+2026-08-18T16:16:21+02:00 - 2220ffcd - MrJimmyChevallier : chore: retrigger CI
+2026-08-18T12:26:30+02:00 - 1ed0e240 - Redwane Zafari : Merge pull request #924 from MTES-MCT/feat/bdc-date-auto-focus
+2026-08-18T12:22:29+02:00 - ae24c201 - Redwane : fix(birth-date): delay auto-focus to month field for single-digit day input
+2026-08-18T12:17:15+02:00 - 3d8e19a6 - Redwane : fix(birth-date): delay auto-focus to month field for single-digit day input
+2026-08-17T17:36:13+02:00 - 478bca8c - MrJimmyChevallier : fix(pwa): check splitFrom before endTime in activity history text
+2026-08-17T14:20:17+02:00 - eaf3eb97 - MrJimmyChevallier : Merge pull request #921 from MTES-MCT/fix/scalingo_review_apps_boot
+2026-08-12T14:56:05+02:00 - aed15bc0 - Redwane Zafari : Merge pull request #913 from MTES-MCT/fix/mission-status-when-break
+2026-08-12T14:55:21+02:00 - 2a061aea - Redwane Zafari : Merge pull request #919 from MTES-MCT/feat/bdc-date-auto-focus
+2026-08-12T12:46:05+02:00 - 3bdb6788 - Gaspard Lonchampt : fix(review-app): crosslink API_HOST + explicit workflow permissions
+2026-08-10T14:20:29+02:00 - 27c38bf0 - Redwane : fix(forms): remove redundant return in birth date focus helper
+2026-08-10T14:08:33+02:00 - 3015d0df - Redwane : fix(forms): improve birth date input validation and focus flow
+2026-08-10T10:44:08+02:00 - 68c2116f - MrJimmyChevallier : Merge pull request #912 from MTES-MCT/feat/split-activity-modification-tag
+2026-08-10T10:42:58+02:00 - 6c8276ac - MrJimmyChevallier : Merge pull request #897 from MTES-MCT/fix/break-modification
+2026-08-05T14:28:38+02:00 - 39e34c23 - MrJimmyChevallier : refactor(split): export isSplitEvent helper and remove dead virtualContext write
+2026-08-04T15:52:33+02:00 - b7d11902 - Redwane : style(front): add missing semicolon after getStatusForEntry declaration
+2026-08-04T15:29:58+02:00 - 78a70a8e - Redwane : refactor(front): rename mission status prop to missionStatusLabel in MissionDetails
+2026-08-04T15:18:53+02:00 - 800a8a58 - Redwane : fix(front): normalize ended user IDs and prioritize admin mission status
+2026-08-04T14:45:23+02:00 - 6c4e5b73 - Redwane : refactor(front): centralize mission status computation across admin views
+2026-08-04T12:06:08+02:00 - 9eb1a200 - Redwane : fix(admin): prioritize deleted status in WorkTimeTable
 2026-08-03T13:03:51+02:00 - b8e5499b - Gaspard "Sarp" Lonchampt : Merge pull request #904 from MTES-MCT/feat/scalingo_review_apps
 2026-08-02T15:36:29+02:00 - 2fa9cd90 - Redwane Zafari : Merge pull request #906 from MTES-MCT/fix/employee-notification-display
 2026-08-02T15:35:48+02:00 - 8e98d802 - Redwane Zafari : Merge pull request #908 from MTES-MCT/chore/remove-long-mission-modal
+2026-08-02T14:08:11+02:00 - acfb660e - Redwane : feat(admin): keep mission status as ongoing until worker ends mission
+2026-07-29T11:24:24+02:00 - a42bc5f6 - MrJimmyChevallier : refactor(pwa): replace nested ternary with if/else for disputed action
+2026-07-29T10:50:56+02:00 - 5205bb41 - MrJimmyChevallier : fix(pwa): align split activity text with PDF and prevent text override in history
+2026-07-28T17:14:26+02:00 - e492b309 - MrJimmyChevallier : feat(pwa): display split remainder activities with MODIFICATION tag instead of AJOUT
 2026-07-27T16:23:32+02:00 - 51684b10 - MrJimmyChevallier : Merge pull request #910 from MTES-MCT/fix/impersonation-mission-creation-and-tracing-2
 2026-07-27T16:14:21+02:00 - 5d847d6d - MrJimmyChevallier : fix(pwa): harmonize activity history with PDF (enriched texts, motifs, dispute types)
 2026-07-27T13:47:28+02:00 - b2b84681 - Redwane : fix(notifications): pin information button to the bottom of the screen
@@ -26,6 +50,7 @@
 2026-07-20T17:23:01+02:00 - f3189817 - MrJimmyChevallier : fix(pwa): display ongoing activity start time with css
 2026-07-20T15:35:46+02:00 - 116855ec - MrJimmyChevallier : Merge pull request #884 from MTES-MCT/feat/contestation-from-employee
 2026-07-20T15:30:59+02:00 - 2fcbd1e6 - MrJimmyChevallier : Merge branch 'master' into feat/contestation-from-employee
+2026-07-20T10:03:29+02:00 - 2b90a6cb - MrJimmyChevallier : fix(pwa): exclude cancel action from break edit gap closing
 2026-07-20T09:52:08+02:00 - 6290a88c - MrJimmyChevallier : Merge pull request #901 from MTES-MCT/fix/impersonation-mission-creation-and-tracing
 2026-07-20T09:51:30+02:00 - 8b14ccd5 - MrJimmyChevallier : Merge pull request #898 from MTES-MCT/feat/employee-detachment-request
 2026-07-17T10:01:07+02:00 - a3d4f8d4 - MrJimmyChevallier : fix(pwa): gate cancel dispute button on dispute time instead of admin validation time
@@ -41,6 +66,7 @@
 2026-07-13T16:32:48+02:00 - a1b59ef3 - Redwane Zafari : Merge pull request #899 from MTES-MCT/feat/homepage-dsfr-header-footer
 2026-07-13T16:29:03+02:00 - 85baf6ef - Redwane : fix(ui): fix header dropdown width, certificate title style and card image layout
 2026-07-13T12:23:49+02:00 - 0b2dc2a6 - MrJimmyChevallier : feat(pwa): add detachment request UI with cooldown and relance
+2026-07-10T16:12:01+02:00 - 91055628 - MrJimmyChevallier : fix(pwa): close old break gap when editing a pause position
 2026-07-09T18:13:43+02:00 - fa1ff5bb - MrJimmyChevallier : fix(pwa): address PR review, dispute author, React keys, async modal, cross-ref comment
 2026-07-09T15:35:11+02:00 - 3c6eff32 - Doniaab : Merge pull request #896 from MTES-MCT/prod
 2026-07-09T14:45:45+02:00 - 3d78ca5d - Doniaab : Merge pull request #894 from MTES-MCT/fix/optimize-fetch-webinars
