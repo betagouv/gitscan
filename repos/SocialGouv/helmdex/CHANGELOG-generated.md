@@ -1,29 +1,41 @@
-## Changelog : helmdex (30 derniers jours)
+## Changelog : helmdex (30 derniers jours, au 19 août 2026)
 
 ### Résumé
-Les 30 derniers jours ont été marqués par une amélioration significative de l'interface utilisateur (TUI) et de la fonctionnalité de gestion des catalogues Helm. De nombreuses corrections de bugs et améliorations de l'expérience utilisateur ont été apportées, notamment concernant la navigation, l'affichage des valeurs et la gestion des versions. Des fonctionnalités importantes comme la prise en charge des schémas de valeurs et la gestion des sources ont également été ajoutées.
+Ce mois a marqué une étape majeure avec le passage à la version 0.8.0. Helmdex s'est considérablement enrichi avec le lancement d'une interface web complète (React SPA) et l'amélioration de l'expérience desktop via la gestion de workspaces et de thèmes. Parallèlement, un effort important a été porté sur la sécurisation de l'application et la simplification de l'accès aux sources de données privées.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'interface utilisateur TUI avec une navigation plus intuitive et des améliorations visuelles. [#2442e4a](https://github.com/SocialGouv/helmdex/commit/2442e4a)
-- Ajout de la prise en charge des schémas de valeurs pour une meilleure validation et édition des fichiers `values.yaml`. [#247b153](https://github.com/SocialGouv/helmdex/commit/247b153)
-- Implémentation de la coloration syntaxique pour les fichiers YAML dans l'interface utilisateur. [#24cf7c3](https://github.com/SocialGouv/helmdex/commit/24cf7c3)
-- Ajout de la gestion des sources (OCI et système de fichiers) pour les catalogues Helm. [#aef6831](https://github.com/SocialGouv/helmdex/commit/aef6831), [#ad23b48](https://github.com/SocialGouv/helmdex/commit/ad23b48)
-- Possibilité de renommer et supprimer des éléments. [#cdffecf](https://github.com/SocialGouv/helmdex/commit/cdffecf)
-- Ajout de la gestion des versions des charts Helm. [#8c9b559](https://github.com/SocialGouv/helmdex/commit/8c9b559), [#7db0efe](https://github.com/SocialGouv/helmdex/commit/7db0efe)
-- Ajout d'un wizard pour la gestion des catalogues. [#5d59504](https://github.com/SocialGouv/helmdex/commit/5d59504)
-- Implémentation d'une fonctionnalité de cache pour Helm. [#bc11729](https://github.com/SocialGouv/helmdex/commit/bc11729)
-- Ajout de la possibilité de pinner et d'autoload des charts Helm. [#0fcec2d](https://github.com/SocialGouv/helmdex/commit/0fcec2d)
+- **Nouvelle Interface Web :** Déploiement d'une application web (SPA React) intégrée, incluant un tableau de bord, la gestion des dépendances, des valeurs, des fichiers et un catalogue.
+- **Améliorations Desktop :**
+    - Introduction de workspaces multi-dossiers avec titres personnalisés et modes d'affichage variés.
+    - Navigation améliorée avec un rail de dossiers extensible affichant les détails de chemin.
+    - Système d'auto-mise à jour avec redémarrage automatique.
+    - Ajout d'une boîte de dialogue "À propos" permettant de vérifier les mises à jour.
+- **Gestion des données et édition :**
+    - Nouveau configurateur de formulaires basé sur des schémas et éditeur de sources.
+    - Support du Markdown pour la lecture des README.
+    - Édition de valeurs "in-place" avec affichage des différences (minimal-diff).
+    - Validation automatique des schémas lors de l'enregistrement des fichiers de valeurs.
+- **Gestion des sources :**
+    - Connexion simplifiée (frictionless) pour les sources de charts privées (OCI, dépôts Helm, Git).
+    - Support de dépôts agnostiques permettant l'utilisation d'états externes et de chaînes de configuration.
+- **Corrections d'interface :**
+    - Résolution des problèmes de rechargement intempestif des onglets d'inspection dans l'interface web.
+    - Meilleure distinction entre les artefacts de charts absents et les échecs de téléchargement.
 
 ### Évolutions techniques
-- Mise à jour de la version vers v0.2.0. [#51933fe](https://github.com/SocialGouv/helmdex/commit/51933fe)
-- Amélioration de la configuration du CI/CD, incluant la correction de problèmes de concurrence et la gestion des dépendances. [#95b032e](https://github.com/SocialGouv/helmdex/commit/95b032e), [#01c0552](https://github.com/SocialGouv/helmdex/commit/01c0552), [#23e8f2e](https://github.com/SocialGouv/helmdex/commit/23e8f2e)
-- Ajout d'un hook pre-commit pour garantir la qualité du code. [#01c0552](https://github.com/SocialGouv/helmdex/commit/01c0552)
-- Amélioration de l'isolation de Helm pour éviter les conflits. [#98a8c6f](https://github.com/SocialGouv/helmdex/commit/98a8c6f)
-- Ajout de tests E2E pour l'interface TUI. [#fe5d239](https://github.com/SocialGouv/helmdex/commit/fe5d239)
-- Correction de bugs dans les tests E2E. [#2442e4a](https://github.com/SocialGouv/helmdex/commit/2442e4a), [#5de53c0](https://github.com/SocialGouv/helmdex/commit/5de53c0)
+- **Architecture et Serveur :**
+    - Migration de l'application desktop vers Wails v2.
+    - Mise en place d'une API HTTP locale avec interface web embarquée.
+    - Refonte de l'authentification pour permettre une détection parallèle et plus performante.
+- **Sécurité et Robustesse :**
+    - Correction de vulnérabilités critiques : injections de shell, exfiltration de credentials et traversées de chemin (path traversal).
+    - Renforcement de la validation des fichiers pour rejeter le YAML/JSON malformé.
+    - Protection contre les corruptions de configuration lors de l'enregistrement.
+- **Infrastructure et CI/CD :**
+    - Mise à jour de l'environnement de build vers Go 1.25 (Docker et Devbox).
+    - Amélioration de la compatibilité Linux : correction des builds AppImage et support de l'affichage sur Ubuntu 24.04 (Wayland/WebKitGTK).
+    - Mise en place de tests de bout en bout (E2E) hermétiques couvrant l'ensemble des surfaces (Desktop, Web, TUI, CLI).
 
 ### Autres changements
-- Amélioration de la documentation, notamment l'ajout d'instructions d'installation. [#7195641](https://github.com/SocialGouv/helmdex/commit/7195641)
-- Nettoyage du code et amélioration de la lisibilité. [#de35cc7](https://github.com/SocialGouv/helmdex/commit/de35cc7)
-- Mise à jour du fichier `.gitignore`. [#374d721](https://github.com/SocialGouv/helmdex/commit/374d721)
-- Ajout d'un logo. [#ed37013](https://github.com/SocialGouv/helmdex/commit/ed37013)
+- **Documentation :** Mise à jour du README pour positionner l'application desktop comme une interface de premier plan.
+- **Refactoring :** Simplification de l'interface web par l'utilisation de composants de navigation plus standards.

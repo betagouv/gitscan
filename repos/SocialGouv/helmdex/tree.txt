@@ -4,11 +4,13 @@
 │   └── pre-commit
 ├── .github
 │   └── workflows
+│       ├── desktop-release.yml
 │       ├── docker.yml
 │       ├── release.yml
 │       ├── tests.yml
 │       ├── tui-e2e.yml
-│       └── version.yml
+│       ├── version.yml
+│       └── web-e2e.yml
 ├── .gitignore
 ├── .mcp.json
 ├── .release-it.json
@@ -17,14 +19,46 @@
 ├── Dockerfile
 ├── README.md
 ├── Taskfile.yml
+├── build
+│   ├── appicon.png
+│   └── linux
+│       ├── AppImage
+│       │   └── AppRun
+│       └── helmdex.desktop
 ├── cmd
-│   └── helmdex
-│       └── main.go
+│   ├── helmdex
+│   │   └── main.go
+│   └── helmdex-desktop
+│       ├── app.go
+│       ├── appicon.png
+│       ├── build -> ../../build
+│       ├── main.go
+│       ├── main_stub.go
+│       ├── restart_unix.go
+│       ├── restart_windows.go
+│       ├── wails.json
+│       ├── webkit_env_linux.go
+│       └── webkit_env_other.go
 ├── devbox.json
 ├── devbox.lock
 ├── docs
 │   └── logo.png
 ├── fixtures
+│   ├── agnostic-gitops
+│   │   ├── apps
+│   │   │   └── demo-preprod
+│   │   │       ├── Chart.yaml
+│   │   │       ├── atlas-env.yaml
+│   │   │       ├── templates
+│   │   │       │   └── netpol.yaml
+│   │   │       ├── values.deploy.yaml
+│   │   │       └── values.yaml
+│   │   └── templates
+│   │       └── demo-review
+│   │           ├── Chart.yaml
+│   │           ├── templates
+│   │           │   └── netpol.yaml
+│   │           └── values.yaml
 │   └── remote-source
 │       ├── README.md
 │       ├── catalog.yaml
@@ -49,6 +83,8 @@
 │   ├── artifacthub
 │   │   ├── client.go
 │   │   └── client_test.go
+│   ├── authsvc
+│   │   └── authsvc.go
 │   ├── catalog
 │   │   ├── load.go
 │   │   ├── model.go
@@ -56,12 +92,19 @@
 │   │   └── sync_fs_test.go
 │   ├── cli
 │   │   ├── artifacthub.go
+│   │   ├── auth.go
 │   │   ├── cache.go
 │   │   ├── catalog.go
 │   │   ├── catalog_list.go
+│   │   ├── dep_values_path_test.go
+│   │   ├── e2e_agnostic_test.go
+│   │   ├── e2e_catalog_presets_test.go
+│   │   ├── e2e_dep_lifecycle_test.go
 │   │   ├── e2e_dep_parity_test.go
 │   │   ├── e2e_remote_catalog_sets_test.go
+│   │   ├── e2e_values_test.go
 │   │   ├── format.go
+│   │   ├── harness_test.go
 │   │   ├── init.go
 │   │   ├── instance.go
 │   │   ├── instance_dep_extra.go
@@ -74,12 +117,31 @@
 │   │   ├── registry.go
 │   │   ├── root.go
 │   │   ├── smoke_test.go
-│   │   └── tui.go
+│   │   ├── tui.go
+│   │   └── ui.go
 │   ├── config
 │   │   ├── config.go
-│   │   └── config_test.go
+│   │   ├── config_test.go
+│   │   ├── resolve.go
+│   │   ├── resolve_test.go
+│   │   └── save_leak_test.go
+│   ├── creds
+│   │   ├── classify.go
+│   │   ├── creds.go
+│   │   ├── creds_test.go
+│   │   ├── detect.go
+│   │   ├── dockerauth.go
+│   │   ├── hosts.go
+│   │   ├── security_test.go
+│   │   └── tokenurl.go
+│   ├── depmeta
+│   │   └── depmeta.go
+│   ├── desktopstate
+│   │   ├── state.go
+│   │   └── state_test.go
 │   ├── gitutil
-│   │   └── git.go
+│   │   ├── git.go
+│   │   └── security_test.go
 │   ├── helmutil
 │   │   ├── bundled_helm.go
 │   │   ├── bundled_helm_test.go
@@ -95,18 +157,29 @@
 │   │   ├── show.go
 │   │   ├── show_env_test.go
 │   │   ├── showcache.go
+│   │   ├── showcache_test.go
 │   │   ├── versions.go
 │   │   ├── versions_test.go
 │   │   ├── versionscache.go
 │   │   └── versionscache_test.go
 │   ├── instances
+│   │   ├── agnostic_gitops_test.go
+│   │   ├── apply.go
 │   │   ├── diff.go
 │   │   ├── diff_test.go
+│   │   ├── discover.go
+│   │   ├── inspect.go
+│   │   ├── inspect_absent_test.go
 │   │   ├── instances.go
-│   │   └── instances_test.go
+│   │   ├── instances_test.go
+│   │   ├── name_validation_test.go
+│   │   └── schema_validate.go
 │   ├── merge
 │   │   ├── merge.go
 │   │   └── merge_test.go
+│   ├── paths
+│   │   ├── paths.go
+│   │   └── paths_test.go
 │   ├── presets
 │   │   ├── coverage.go
 │   │   ├── import.go
@@ -116,9 +189,47 @@
 │   ├── repo
 │   │   └── root.go
 │   ├── schemaform
-│   │   └── schema.go
+│   │   ├── schema.go
+│   │   ├── validate.go
+│   │   └── validate_test.go
+│   ├── selfupdate
+│   │   ├── selfupdate.go
+│   │   └── selfupdate_test.go
 │   ├── semverutil
-│   │   └── semverutil.go
+│   │   ├── semverutil.go
+│   │   └── semverutil_test.go
+│   ├── server
+│   │   ├── events.go
+│   │   ├── events_test.go
+│   │   ├── handlers.go
+│   │   ├── handlers_auth.go
+│   │   ├── handlers_auth_test.go
+│   │   ├── handlers_config.go
+│   │   ├── handlers_config_test.go
+│   │   ├── handlers_deps_test.go
+│   │   ├── handlers_instances_test.go
+│   │   ├── handlers_security_test.go
+│   │   ├── handlers_sets.go
+│   │   ├── handlers_sets_test.go
+│   │   ├── handlers_values_test.go
+│   │   ├── handlers_version.go
+│   │   ├── handlers_version_test.go
+│   │   ├── multi.go
+│   │   ├── multi_test.go
+│   │   ├── routes_coverage_test.go
+│   │   ├── server.go
+│   │   ├── server_test.go
+│   │   ├── static
+│   │   │   └── index.html
+│   │   └── static.go
+│   ├── testutil
+│   │   ├── dockerconfig.go
+│   │   ├── fakehelm
+│   │   │   ├── main.go
+│   │   │   └── universe.go
+│   │   ├── hermetic.go
+│   │   ├── hermetic_test.go
+│   │   └── repo.go
 │   ├── tui
 │   │   ├── action_delegate.go
 │   │   ├── add_dep_wizard_esc_test.go
@@ -159,10 +270,15 @@
 │   │   ├── ui.go
 │   │   ├── values_filter_capture_test.go
 │   │   └── values_tab_test.go
+│   ├── updates
+│   │   ├── updates.go
+│   │   └── updates_test.go
 │   ├── values
 │   │   ├── generate.go
 │   │   ├── generate_test.go
 │   │   ├── instance_values.go
+│   │   ├── nodefile.go
+│   │   ├── nodefile_test.go
 │   │   └── yamlpath.go
 │   └── yamlchart
 │       ├── chart.go
@@ -176,1310 +292,2352 @@
 │       └── SKILL.md
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
+├── scripts
+│   └── desktop
+│       └── build-appimage.sh
 ├── tests
-│   └── tui
-│       ├── README.md
+│   ├── README.md
+│   ├── shared
+│   │   ├── diskAssertions.ts
+│   │   ├── fakehelm.ts
+│   │   └── repoFixture.ts
+│   ├── tui
+│   │   ├── README.md
+│   │   ├── scripts
+│   │   │   ├── app-run.ts
+│   │   │   ├── daemon-start.ts
+│   │   │   ├── daemon-stop.ts
+│   │   │   └── debug-screenshot.mjs
+│   │   ├── specs
+│   │   │   ├── add-dep-wizard.spec.ts
+│   │   │   ├── catalog-and-sets.spec.ts
+│   │   │   ├── confirm-cancel.spec.ts
+│   │   │   ├── direct-mode.spec.ts
+│   │   │   ├── disk-state.spec.ts
+│   │   │   ├── navigation.spec.ts
+│   │   │   ├── palette-and-sources.spec.ts
+│   │   │   ├── smoke.spec.ts
+│   │   │   ├── tier2-dep-detail-diff-apply.spec.ts
+│   │   │   ├── user-input.spec.ts
+│   │   │   ├── values-and-editor-gating.spec.ts
+│   │   │   └── version-editor-open-close.spec.ts
+│   │   ├── src
+│   │   │   ├── agentTui
+│   │   │   │   ├── cli.ts
+│   │   │   │   └── daemon.ts
+│   │   │   ├── assertions.ts
+│   │   │   ├── exec.ts
+│   │   │   ├── helmdex.ts
+│   │   │   ├── repoHarness.ts
+│   │   │   └── sessionHarness.ts
+│   │   ├── tsconfig.json
+│   │   └── vitest.config.ts
+│   └── web
+│       ├── playwright.config.ts
 │       ├── scripts
-│       │   ├── app-run.ts
-│       │   ├── daemon-start.ts
-│       │   ├── daemon-stop.ts
-│       │   └── debug-screenshot.mjs
-│       ├── specs
-│       │   ├── add-dep-wizard.spec.ts
-│       │   ├── confirm-cancel.spec.ts
-│       │   ├── navigation.spec.ts
-│       │   ├── palette-and-sources.spec.ts
-│       │   ├── smoke.spec.ts
-│       │   ├── tier2-dep-detail-diff-apply.spec.ts
-│       │   ├── user-input.spec.ts
-│       │   ├── values-and-editor-gating.spec.ts
-│       │   └── version-editor-open-close.spec.ts
-│       ├── src
-│       │   ├── agentTui
-│       │   │   ├── cli.ts
-│       │   │   └── daemon.ts
-│       │   ├── assertions.ts
-│       │   ├── exec.ts
-│       │   ├── helmdex.ts
-│       │   ├── repoHarness.ts
-│       │   └── sessionHarness.ts
-│       ├── tsconfig.json
-│       └── vitest.config.ts
-└── vendor
-    ├── github.com
-    │   ├── Masterminds
-    │   │   └── semver
-    │   │       └── v3
-    │   │           ├── .gitignore
-    │   │           ├── .golangci.yml
-    │   │           ├── CHANGELOG.md
-    │   │           ├── LICENSE.txt
-    │   │           ├── Makefile
-    │   │           ├── README.md
-    │   │           ├── SECURITY.md
-    │   │           ├── collection.go
-    │   │           ├── constraints.go
-    │   │           ├── doc.go
-    │   │           └── version.go
-    │   ├── alecthomas
-    │   │   └── chroma
-    │   │       └── v2
-    │   │           ├── .editorconfig
-    │   │           ├── .gitignore
-    │   │           ├── .golangci.yml
-    │   │           ├── .goreleaser.yml
-    │   │           ├── AGENTS.md
-    │   │           ├── Bitfile
-    │   │           ├── COPYING
-    │   │           ├── Dockerfile
-    │   │           ├── Justfile
-    │   │           ├── README.md
-    │   │           ├── biome.json
-    │   │           ├── chroma.jpg
-    │   │           ├── coalesce.go
-    │   │           ├── colour.go
-    │   │           ├── delegate.go
-    │   │           ├── doc.go
-    │   │           ├── emitters.go
-    │   │           ├── formatter.go
-    │   │           ├── formatters
-    │   │           │   ├── api.go
-    │   │           │   ├── html
-    │   │           │   │   └── html.go
-    │   │           │   ├── json.go
-    │   │           │   ├── svg
-    │   │           │   │   ├── font_liberation_mono.go
-    │   │           │   │   └── svg.go
-    │   │           │   ├── tokens.go
-    │   │           │   ├── tty_indexed.go
-    │   │           │   └── tty_truecolour.go
-    │   │           ├── iterator.go
-    │   │           ├── lexer.go
-    │   │           ├── lexers
-    │   │           │   ├── README.md
-    │   │           │   ├── caddyfile.go
-    │   │           │   ├── cl.go
-    │   │           │   ├── dns.go
-    │   │           │   ├── emacs.go
-    │   │           │   ├── embedded
-    │   │           │   │   ├── abap.xml
-    │   │           │   │   ├── abnf.xml
-    │   │           │   │   ├── actionscript.xml
-    │   │           │   │   ├── actionscript_3.xml
-    │   │           │   │   ├── ada.xml
-    │   │           │   │   ├── agda.xml
-    │   │           │   │   ├── al.xml
-    │   │           │   │   ├── alloy.xml
-    │   │           │   │   ├── angular2.xml
-    │   │           │   │   ├── antlr.xml
-    │   │           │   │   ├── apacheconf.xml
-    │   │           │   │   ├── apl.xml
-    │   │           │   │   ├── applescript.xml
-    │   │           │   │   ├── arangodb_aql.xml
-    │   │           │   │   ├── arduino.xml
-    │   │           │   │   ├── armasm.xml
-    │   │           │   │   ├── atl.xml
-    │   │           │   │   ├── autohotkey.xml
-    │   │           │   │   ├── autoit.xml
-    │   │           │   │   ├── awk.xml
-    │   │           │   │   ├── ballerina.xml
-    │   │           │   │   ├── bash.xml
-    │   │           │   │   ├── bash_session.xml
-    │   │           │   │   ├── batchfile.xml
-    │   │           │   │   ├── beef.xml
-    │   │           │   │   ├── bibtex.xml
-    │   │           │   │   ├── bicep.xml
-    │   │           │   │   ├── blitzbasic.xml
-    │   │           │   │   ├── bnf.xml
-    │   │           │   │   ├── bqn.xml
-    │   │           │   │   ├── brainfuck.xml
-    │   │           │   │   ├── c#.xml
-    │   │           │   │   ├── c++.xml
-    │   │           │   │   ├── c.xml
-    │   │           │   │   ├── c3.xml
-    │   │           │   │   ├── cap_n_proto.xml
-    │   │           │   │   ├── cassandra_cql.xml
-    │   │           │   │   ├── ceylon.xml
-    │   │           │   │   ├── cfengine3.xml
-    │   │           │   │   ├── cfstatement.xml
-    │   │           │   │   ├── chaiscript.xml
-    │   │           │   │   ├── chapel.xml
-    │   │           │   │   ├── cheetah.xml
-    │   │           │   │   ├── clojure.xml
-    │   │           │   │   ├── cmake.xml
-    │   │           │   │   ├── cobol.xml
-    │   │           │   │   ├── coffeescript.xml
-    │   │           │   │   ├── common_lisp.xml
-    │   │           │   │   ├── coq.xml
-    │   │           │   │   ├── core.xml
-    │   │           │   │   ├── crystal.xml
-    │   │           │   │   ├── css.xml
-    │   │           │   │   ├── csv.xml
-    │   │           │   │   ├── cue.xml
-    │   │           │   │   ├── cython.xml
-    │   │           │   │   ├── d.xml
-    │   │           │   │   ├── dart.xml
-    │   │           │   │   ├── dax.xml
-    │   │           │   │   ├── desktop_entry.xml
-    │   │           │   │   ├── devicetree.xml
-    │   │           │   │   ├── diff.xml
-    │   │           │   │   ├── django_jinja.xml
-    │   │           │   │   ├── dns.xml
-    │   │           │   │   ├── docker.xml
-    │   │           │   │   ├── dtd.xml
-    │   │           │   │   ├── dylan.xml
-    │   │           │   │   ├── ebnf.xml
-    │   │           │   │   ├── elixir.xml
-    │   │           │   │   ├── elm.xml
-    │   │           │   │   ├── emacslisp.xml
-    │   │           │   │   ├── erlang.xml
-    │   │           │   │   ├── factor.xml
-    │   │           │   │   ├── fennel.xml
-    │   │           │   │   ├── fish.xml
-    │   │           │   │   ├── forth.xml
-    │   │           │   │   ├── fortran.xml
-    │   │           │   │   ├── fortranfixed.xml
-    │   │           │   │   ├── fsharp.xml
-    │   │           │   │   ├── gas.xml
-    │   │           │   │   ├── gdscript.xml
-    │   │           │   │   ├── gdscript3.xml
-    │   │           │   │   ├── gherkin.xml
-    │   │           │   │   ├── gleam.xml
-    │   │           │   │   ├── glsl.xml
-    │   │           │   │   ├── gnuplot.xml
-    │   │           │   │   ├── go_template.xml
-    │   │           │   │   ├── graphql.xml
-    │   │           │   │   ├── groff.xml
-    │   │           │   │   ├── groovy.xml
-    │   │           │   │   ├── handlebars.xml
-    │   │           │   │   ├── hare.xml
-    │   │           │   │   ├── haskell.xml
-    │   │           │   │   ├── hcl.xml
-    │   │           │   │   ├── hexdump.xml
-    │   │           │   │   ├── hlb.xml
-    │   │           │   │   ├── hlsl.xml
-    │   │           │   │   ├── holyc.xml
-    │   │           │   │   ├── html.xml
-    │   │           │   │   ├── hy.xml
-    │   │           │   │   ├── idris.xml
-    │   │           │   │   ├── igor.xml
-    │   │           │   │   ├── ini.xml
-    │   │           │   │   ├── io.xml
-    │   │           │   │   ├── iscdhcpd.xml
-    │   │           │   │   ├── j.xml
-    │   │           │   │   ├── janet.xml
-    │   │           │   │   ├── java.xml
-    │   │           │   │   ├── javascript.xml
-    │   │           │   │   ├── json.xml
-    │   │           │   │   ├── jsonata.xml
-    │   │           │   │   ├── jsonnet.xml
-    │   │           │   │   ├── julia.xml
-    │   │           │   │   ├── jungle.xml
-    │   │           │   │   ├── kakoune.xml
-    │   │           │   │   ├── kdl.xml
-    │   │           │   │   ├── kotlin.xml
-    │   │           │   │   ├── lean.xml
-    │   │           │   │   ├── lighttpd_configuration_file.xml
-    │   │           │   │   ├── llvm.xml
-    │   │           │   │   ├── lox.xml
-    │   │           │   │   ├── lua.xml
-    │   │           │   │   ├── makefile.xml
-    │   │           │   │   ├── mako.xml
-    │   │           │   │   ├── mason.xml
-    │   │           │   │   ├── materialize_sql_dialect.xml
-    │   │           │   │   ├── mathematica.xml
-    │   │           │   │   ├── matlab.xml
-    │   │           │   │   ├── mcfunction.xml
-    │   │           │   │   ├── meson.xml
-    │   │           │   │   ├── metal.xml
-    │   │           │   │   ├── microcad.xml
-    │   │           │   │   ├── minizinc.xml
-    │   │           │   │   ├── mlir.xml
-    │   │           │   │   ├── modelica.xml
-    │   │           │   │   ├── modula-2.xml
-    │   │           │   │   ├── mojo.xml
-    │   │           │   │   ├── monkeyc.xml
-    │   │           │   │   ├── moonbit.xml
-    │   │           │   │   ├── moonscript.xml
-    │   │           │   │   ├── morrowindscript.xml
-    │   │           │   │   ├── myghty.xml
-    │   │           │   │   ├── mysql.xml
-    │   │           │   │   ├── nasm.xml
-    │   │           │   │   ├── natural.xml
-    │   │           │   │   ├── ndisasm.xml
-    │   │           │   │   ├── newspeak.xml
-    │   │           │   │   ├── nginx_configuration_file.xml
-    │   │           │   │   ├── nim.xml
-    │   │           │   │   ├── nix.xml
-    │   │           │   │   ├── nsis.xml
-    │   │           │   │   ├── nu.xml
-    │   │           │   │   ├── objective-c.xml
-    │   │           │   │   ├── objectpascal.xml
-    │   │           │   │   ├── ocaml.xml
-    │   │           │   │   ├── octave.xml
-    │   │           │   │   ├── odin.xml
-    │   │           │   │   ├── onesenterprise.xml
-    │   │           │   │   ├── openedge_abl.xml
-    │   │           │   │   ├── openscad.xml
-    │   │           │   │   ├── org_mode.xml
-    │   │           │   │   ├── pacmanconf.xml
-    │   │           │   │   ├── perl.xml
-    │   │           │   │   ├── php.xml
-    │   │           │   │   ├── pig.xml
-    │   │           │   │   ├── pkgconfig.xml
-    │   │           │   │   ├── pl_pgsql.xml
-    │   │           │   │   ├── plaintext.xml
-    │   │           │   │   ├── plutus_core.xml
-    │   │           │   │   ├── pony.xml
-    │   │           │   │   ├── postgresql_sql_dialect.xml
-    │   │           │   │   ├── postscript.xml
-    │   │           │   │   ├── povray.xml
-    │   │           │   │   ├── powerquery.xml
-    │   │           │   │   ├── powershell.xml
-    │   │           │   │   ├── prolog.xml
-    │   │           │   │   ├── promela.xml
-    │   │           │   │   ├── promql.xml
-    │   │           │   │   ├── properties.xml
-    │   │           │   │   ├── protocol_buffer.xml
-    │   │           │   │   ├── prql.xml
-    │   │           │   │   ├── psl.xml
-    │   │           │   │   ├── puppet.xml
-    │   │           │   │   ├── python.xml
-    │   │           │   │   ├── python_2.xml
-    │   │           │   │   ├── qbasic.xml
-    │   │           │   │   ├── qml.xml
-    │   │           │   │   ├── r.xml
-    │   │           │   │   ├── racket.xml
-    │   │           │   │   ├── ragel.xml
-    │   │           │   │   ├── react.xml
-    │   │           │   │   ├── reasonml.xml
-    │   │           │   │   ├── reg.xml
-    │   │           │   │   ├── rego.xml
-    │   │           │   │   ├── rexx.xml
-    │   │           │   │   ├── rgbasm.xml
-    │   │           │   │   ├── ring.xml
-    │   │           │   │   ├── rpgle.xml
-    │   │           │   │   ├── rpm_spec.xml
-    │   │           │   │   ├── ruby.xml
-    │   │           │   │   ├── rust.xml
-    │   │           │   │   ├── sas.xml
-    │   │           │   │   ├── sass.xml
-    │   │           │   │   ├── scala.xml
-    │   │           │   │   ├── scheme.xml
-    │   │           │   │   ├── scilab.xml
-    │   │           │   │   ├── scss.xml
-    │   │           │   │   ├── sed.xml
-    │   │           │   │   ├── sieve.xml
-    │   │           │   │   ├── smali.xml
-    │   │           │   │   ├── smalltalk.xml
-    │   │           │   │   ├── smarty.xml
-    │   │           │   │   ├── snbt.xml
-    │   │           │   │   ├── snobol.xml
-    │   │           │   │   ├── solidity.xml
-    │   │           │   │   ├── sourcepawn.xml
-    │   │           │   │   ├── sparql.xml
-    │   │           │   │   ├── sql.xml
-    │   │           │   │   ├── squidconf.xml
-    │   │           │   │   ├── standard_ml.xml
-    │   │           │   │   ├── stas.xml
-    │   │           │   │   ├── stylus.xml
-    │   │           │   │   ├── swift.xml
-    │   │           │   │   ├── systemd.xml
-    │   │           │   │   ├── systemverilog.xml
-    │   │           │   │   ├── tablegen.xml
-    │   │           │   │   ├── tal.xml
-    │   │           │   │   ├── tasm.xml
-    │   │           │   │   ├── tcl.xml
-    │   │           │   │   ├── tcsh.xml
-    │   │           │   │   ├── termcap.xml
-    │   │           │   │   ├── terminfo.xml
-    │   │           │   │   ├── terraform.xml
-    │   │           │   │   ├── tex.xml
-    │   │           │   │   ├── thrift.xml
-    │   │           │   │   ├── toml.xml
-    │   │           │   │   ├── tradingview.xml
-    │   │           │   │   ├── transact-sql.xml
-    │   │           │   │   ├── turing.xml
-    │   │           │   │   ├── turtle.xml
-    │   │           │   │   ├── twig.xml
-    │   │           │   │   ├── txtpb.xml
-    │   │           │   │   ├── typescript.xml
-    │   │           │   │   ├── typoscript.xml
-    │   │           │   │   ├── typoscriptcssdata.xml
-    │   │           │   │   ├── typoscripthtmldata.xml
-    │   │           │   │   ├── typst.xml
-    │   │           │   │   ├── ucode.xml
-    │   │           │   │   ├── v.xml
-    │   │           │   │   ├── v_shell.xml
-    │   │           │   │   ├── vala.xml
-    │   │           │   │   ├── vb_net.xml
-    │   │           │   │   ├── verilog.xml
-    │   │           │   │   ├── vhdl.xml
-    │   │           │   │   ├── vhs.xml
-    │   │           │   │   ├── viml.xml
-    │   │           │   │   ├── vue.xml
-    │   │           │   │   ├── wat.xml
-    │   │           │   │   ├── wdte.xml
-    │   │           │   │   ├── webgpu_shading_language.xml
-    │   │           │   │   ├── webvtt.xml
-    │   │           │   │   ├── whiley.xml
-    │   │           │   │   ├── xml.xml
-    │   │           │   │   ├── xorg.xml
-    │   │           │   │   ├── yaml.xml
-    │   │           │   │   ├── yang.xml
-    │   │           │   │   ├── z80_assembly.xml
-    │   │           │   │   ├── zed.xml
-    │   │           │   │   └── zig.xml
-    │   │           │   ├── gemtext.go
-    │   │           │   ├── genshi.go
-    │   │           │   ├── go.go
-    │   │           │   ├── haxe.go
-    │   │           │   ├── html.go
-    │   │           │   ├── http.go
-    │   │           │   ├── lexers.go
-    │   │           │   ├── markdown.go
-    │   │           │   ├── markless.go
-    │   │           │   ├── mysql.go
-    │   │           │   ├── php.go
-    │   │           │   ├── raku.go
-    │   │           │   ├── rst.go
-    │   │           │   ├── svelte.go
-    │   │           │   ├── typoscript.go
-    │   │           │   └── zed.go
-    │   │           ├── mutators.go
-    │   │           ├── pygments-lexers.txt
-    │   │           ├── quick
-    │   │           │   └── quick.go
-    │   │           ├── regexp.go
-    │   │           ├── registry.go
-    │   │           ├── remap.go
-    │   │           ├── renovate.json5
-    │   │           ├── serialise.go
-    │   │           ├── style.go
-    │   │           ├── styles
-    │   │           │   ├── abap.xml
-    │   │           │   ├── algol.xml
-    │   │           │   ├── algol_nu.xml
-    │   │           │   ├── api.go
-    │   │           │   ├── arduino.xml
-    │   │           │   ├── ashen.xml
-    │   │           │   ├── aura-theme-dark-soft.xml
-    │   │           │   ├── aura-theme-dark.xml
-    │   │           │   ├── autumn.xml
-    │   │           │   ├── average.xml
-    │   │           │   ├── base16-snazzy.xml
-    │   │           │   ├── borland.xml
-    │   │           │   ├── bw.xml
-    │   │           │   ├── catppuccin-frappe.xml
-    │   │           │   ├── catppuccin-latte.xml
-    │   │           │   ├── catppuccin-macchiato.xml
-    │   │           │   ├── catppuccin-mocha.xml
-    │   │           │   ├── colorful.xml
-    │   │           │   ├── compat.go
-    │   │           │   ├── doom-one.xml
-    │   │           │   ├── doom-one2.xml
-    │   │           │   ├── dracula.xml
-    │   │           │   ├── emacs.xml
-    │   │           │   ├── evergarden.xml
-    │   │           │   ├── friendly.xml
-    │   │           │   ├── fruity.xml
-    │   │           │   ├── github-dark.xml
-    │   │           │   ├── github.xml
-    │   │           │   ├── gruvbox-light.xml
-    │   │           │   ├── gruvbox.xml
-    │   │           │   ├── hr_high_contrast.xml
-    │   │           │   ├── hrdark.xml
-    │   │           │   ├── igor.xml
-    │   │           │   ├── lovelace.xml
-    │   │           │   ├── manni.xml
-    │   │           │   ├── modus-operandi.xml
-    │   │           │   ├── modus-vivendi.xml
-    │   │           │   ├── monokai.xml
-    │   │           │   ├── monokailight.xml
-    │   │           │   ├── murphy.xml
-    │   │           │   ├── native.xml
-    │   │           │   ├── nord.xml
-    │   │           │   ├── nordic.xml
-    │   │           │   ├── onedark.xml
-    │   │           │   ├── onesenterprise.xml
-    │   │           │   ├── paraiso-dark.xml
-    │   │           │   ├── paraiso-light.xml
-    │   │           │   ├── pastie.xml
-    │   │           │   ├── perldoc.xml
-    │   │           │   ├── pygments.xml
-    │   │           │   ├── rainbow_dash.xml
-    │   │           │   ├── rose-pine-dawn.xml
-    │   │           │   ├── rose-pine-moon.xml
-    │   │           │   ├── rose-pine.xml
-    │   │           │   ├── rpgle.xml
-    │   │           │   ├── rrt.xml
-    │   │           │   ├── solarized-dark.xml
-    │   │           │   ├── solarized-dark256.xml
-    │   │           │   ├── solarized-light.xml
-    │   │           │   ├── swapoff.xml
-    │   │           │   ├── tango.xml
-    │   │           │   ├── tokyonight-day.xml
-    │   │           │   ├── tokyonight-moon.xml
-    │   │           │   ├── tokyonight-night.xml
-    │   │           │   ├── tokyonight-storm.xml
-    │   │           │   ├── trac.xml
-    │   │           │   ├── vim.xml
-    │   │           │   ├── vs.xml
-    │   │           │   ├── vulcan.xml
-    │   │           │   ├── witchhazel.xml
-    │   │           │   ├── xcode-dark.xml
-    │   │           │   └── xcode.xml
-    │   │           ├── table.py
-    │   │           ├── tokentype_enumer.go
-    │   │           └── types.go
-    │   ├── atotto
-    │   │   └── clipboard
-    │   │       ├── .travis.yml
-    │   │       ├── LICENSE
-    │   │       ├── README.md
-    │   │       ├── clipboard.go
-    │   │       ├── clipboard_darwin.go
-    │   │       ├── clipboard_plan9.go
-    │   │       ├── clipboard_unix.go
-    │   │       └── clipboard_windows.go
-    │   ├── aymanbagabas
-    │   │   └── go-osc52
-    │   │       └── v2
-    │   │           ├── LICENSE
-    │   │           ├── README.md
-    │   │           └── osc52.go
-    │   ├── aymerick
-    │   │   └── douceur
-    │   │       ├── LICENSE
-    │   │       ├── css
-    │   │       │   ├── declaration.go
-    │   │       │   ├── rule.go
-    │   │       │   └── stylesheet.go
-    │   │       └── parser
-    │   │           └── parser.go
-    │   ├── charmbracelet
-    │   │   ├── bubbles
-    │   │   │   ├── LICENSE
-    │   │   │   ├── cursor
-    │   │   │   │   └── cursor.go
-    │   │   │   ├── help
-    │   │   │   │   └── help.go
-    │   │   │   ├── key
-    │   │   │   │   └── key.go
-    │   │   │   ├── list
-    │   │   │   │   ├── README.md
-    │   │   │   │   ├── defaultitem.go
-    │   │   │   │   ├── keys.go
-    │   │   │   │   ├── list.go
-    │   │   │   │   └── style.go
-    │   │   │   ├── paginator
-    │   │   │   │   └── paginator.go
-    │   │   │   ├── runeutil
-    │   │   │   │   └── runeutil.go
-    │   │   │   ├── spinner
-    │   │   │   │   └── spinner.go
-    │   │   │   ├── textinput
-    │   │   │   │   └── textinput.go
-    │   │   │   └── viewport
-    │   │   │       ├── keymap.go
-    │   │   │       └── viewport.go
-    │   │   ├── bubbletea
-    │   │   │   ├── .gitattributes
-    │   │   │   ├── .gitignore
-    │   │   │   ├── .golangci-soft.yml
-    │   │   │   ├── .golangci.yml
-    │   │   │   ├── .goreleaser.yml
-    │   │   │   ├── LICENSE
-    │   │   │   ├── README.md
-    │   │   │   ├── commands.go
-    │   │   │   ├── exec.go
-    │   │   │   ├── focus.go
-    │   │   │   ├── inputreader_other.go
-    │   │   │   ├── inputreader_windows.go
-    │   │   │   ├── key.go
-    │   │   │   ├── key_other.go
-    │   │   │   ├── key_sequences.go
-    │   │   │   ├── key_windows.go
-    │   │   │   ├── logging.go
-    │   │   │   ├── mouse.go
-    │   │   │   ├── nil_renderer.go
-    │   │   │   ├── options.go
-    │   │   │   ├── renderer.go
-    │   │   │   ├── screen.go
-    │   │   │   ├── signals_unix.go
-    │   │   │   ├── signals_windows.go
-    │   │   │   ├── standard_renderer.go
-    │   │   │   ├── tea.go
-    │   │   │   ├── tea_init.go
-    │   │   │   ├── tty.go
-    │   │   │   ├── tty_unix.go
-    │   │   │   └── tty_windows.go
-    │   │   ├── colorprofile
-    │   │   │   ├── .golangci-soft.yml
-    │   │   │   ├── .golangci.yml
-    │   │   │   ├── .goreleaser.yml
-    │   │   │   ├── LICENSE
-    │   │   │   ├── README.md
-    │   │   │   ├── env.go
-    │   │   │   ├── env_other.go
-    │   │   │   ├── env_windows.go
-    │   │   │   ├── profile.go
-    │   │   │   └── writer.go
-    │   │   ├── glamour
-    │   │   │   ├── .editorconfig
-    │   │   │   ├── .gitattributes
-    │   │   │   ├── .gitignore
-    │   │   │   ├── .golangci.yml
-    │   │   │   ├── .goreleaser.yml
-    │   │   │   ├── CONTRIBUTING.md
-    │   │   │   ├── LICENSE
-    │   │   │   ├── README.md
-    │   │   │   ├── Taskfile.yml
-    │   │   │   ├── ansi
-    │   │   │   │   ├── ansi.go
-    │   │   │   │   ├── baseelement.go
-    │   │   │   │   ├── blockelement.go
-    │   │   │   │   ├── blockstack.go
-    │   │   │   │   ├── codeblock.go
-    │   │   │   │   ├── codespan.go
-    │   │   │   │   ├── context.go
-    │   │   │   │   ├── elements.go
-    │   │   │   │   ├── emphasis.go
-    │   │   │   │   ├── heading.go
-    │   │   │   │   ├── image.go
-    │   │   │   │   ├── link.go
-    │   │   │   │   ├── listitem.go
-    │   │   │   │   ├── margin.go
-    │   │   │   │   ├── paragraph.go
-    │   │   │   │   ├── renderer.go
-    │   │   │   │   ├── style.go
-    │   │   │   │   ├── table.go
-    │   │   │   │   ├── table_links.go
-    │   │   │   │   ├── task.go
-    │   │   │   │   └── templatehelper.go
-    │   │   │   ├── examples.sh
-    │   │   │   ├── gallery.sh
-    │   │   │   ├── glamour.go
-    │   │   │   ├── internal
-    │   │   │   │   └── autolink
-    │   │   │   │       └── autolink.go
-    │   │   │   └── styles
-    │   │   │       ├── README.md
-    │   │   │       ├── ascii.json
-    │   │   │       ├── dark.json
-    │   │   │       ├── dracula.go
-    │   │   │       ├── dracula.json
-    │   │   │       ├── light.json
-    │   │   │       ├── notty.json
-    │   │   │       ├── pink.json
-    │   │   │       ├── styles.go
-    │   │   │       ├── tokyo-night.go
-    │   │   │       └── tokyo_night.json
-    │   │   ├── lipgloss
-    │   │   │   ├── .editorconfig
-    │   │   │   ├── .gitattributes
-    │   │   │   ├── .gitignore
-    │   │   │   ├── .golangci.yml
-    │   │   │   ├── .goreleaser.yml
-    │   │   │   ├── LICENSE
-    │   │   │   ├── README.md
-    │   │   │   ├── Taskfile.yaml
-    │   │   │   ├── align.go
-    │   │   │   ├── ansi_unix.go
-    │   │   │   ├── ansi_windows.go
-    │   │   │   ├── borders.go
-    │   │   │   ├── color.go
-    │   │   │   ├── get.go
-    │   │   │   ├── join.go
-    │   │   │   ├── lipgloss.go
-    │   │   │   ├── position.go
-    │   │   │   ├── ranges.go
-    │   │   │   ├── renderer.go
-    │   │   │   ├── runes.go
-    │   │   │   ├── set.go
-    │   │   │   ├── size.go
-    │   │   │   ├── style.go
-    │   │   │   ├── table
-    │   │   │   │   ├── resizing.go
-    │   │   │   │   ├── rows.go
-    │   │   │   │   ├── table.go
-    │   │   │   │   └── util.go
-    │   │   │   ├── unset.go
-    │   │   │   └── whitespace.go
-    │   │   └── x
-    │   │       ├── ansi
-    │   │       │   ├── LICENSE
-    │   │       │   ├── ansi.go
-    │   │       │   ├── ascii.go
-    │   │       │   ├── background.go
-    │   │       │   ├── c0.go
-    │   │       │   ├── c1.go
-    │   │       │   ├── charset.go
-    │   │       │   ├── clipboard.go
-    │   │       │   ├── color.go
-    │   │       │   ├── ctrl.go
-    │   │       │   ├── cursor.go
-    │   │       │   ├── cwd.go
-    │   │       │   ├── doc.go
-    │   │       │   ├── focus.go
-    │   │       │   ├── graphics.go
-    │   │       │   ├── hyperlink.go
-    │   │       │   ├── iterm2.go
-    │   │       │   ├── keypad.go
-    │   │       │   ├── kitty
-    │   │       │   │   ├── decoder.go
-    │   │       │   │   ├── encoder.go
-    │   │       │   │   ├── graphics.go
-    │   │       │   │   └── options.go
-    │   │       │   ├── kitty.go
-    │   │       │   ├── method.go
-    │   │       │   ├── mode.go
-    │   │       │   ├── modes.go
-    │   │       │   ├── mouse.go
-    │   │       │   ├── notification.go
-    │   │       │   ├── parser
-    │   │       │   │   ├── const.go
-    │   │       │   │   ├── seq.go
-    │   │       │   │   └── transition_table.go
-    │   │       │   ├── parser.go
-    │   │       │   ├── parser_decode.go
-    │   │       │   ├── parser_handler.go
-    │   │       │   ├── parser_sync.go
-    │   │       │   ├── passthrough.go
-    │   │       │   ├── paste.go
-    │   │       │   ├── reset.go
-    │   │       │   ├── screen.go
-    │   │       │   ├── sgr.go
-    │   │       │   ├── status.go
-    │   │       │   ├── style.go
-    │   │       │   ├── termcap.go
-    │   │       │   ├── title.go
-    │   │       │   ├── truncate.go
-    │   │       │   ├── util.go
-    │   │       │   ├── width.go
-    │   │       │   ├── winop.go
-    │   │       │   ├── wrap.go
-    │   │       │   └── xterm.go
-    │   │       ├── cellbuf
-    │   │       │   ├── LICENSE
-    │   │       │   ├── buffer.go
-    │   │       │   ├── cell.go
-    │   │       │   ├── errors.go
-    │   │       │   ├── geom.go
-    │   │       │   ├── hardscroll.go
-    │   │       │   ├── hashmap.go
-    │   │       │   ├── link.go
-    │   │       │   ├── screen.go
-    │   │       │   ├── sequence.go
-    │   │       │   ├── style.go
-    │   │       │   ├── tabstop.go
-    │   │       │   ├── utils.go
-    │   │       │   ├── wrap.go
-    │   │       │   └── writer.go
-    │   │       ├── exp
-    │   │       │   └── slice
-    │   │       │       ├── LICENSE
-    │   │       │       └── slice.go
-    │   │       └── term
-    │   │           ├── LICENSE
-    │   │           ├── term.go
-    │   │           ├── term_other.go
-    │   │           ├── term_unix.go
-    │   │           ├── term_unix_bsd.go
-    │   │           ├── term_unix_other.go
-    │   │           ├── term_windows.go
-    │   │           ├── terminal.go
-    │   │           └── util.go
-    │   ├── dlclark
-    │   │   └── regexp2
-    │   │       ├── .gitignore
-    │   │       ├── .travis.yml
-    │   │       ├── ATTRIB
-    │   │       ├── LICENSE
-    │   │       ├── README.md
-    │   │       ├── fastclock.go
-    │   │       ├── match.go
-    │   │       ├── regexp.go
-    │   │       ├── replace.go
-    │   │       ├── runner.go
-    │   │       ├── syntax
-    │   │       │   ├── charclass.go
-    │   │       │   ├── code.go
-    │   │       │   ├── escape.go
-    │   │       │   ├── fuzz.go
-    │   │       │   ├── parser.go
-    │   │       │   ├── prefix.go
-    │   │       │   ├── replacerdata.go
-    │   │       │   ├── tree.go
-    │   │       │   └── writer.go
-    │   │       └── testoutput1
-    │   ├── erikgeiser
-    │   │   └── coninput
-    │   │       ├── .gitignore
-    │   │       ├── .golangci.yml
-    │   │       ├── LICENSE
-    │   │       ├── README.md
-    │   │       ├── keycodes.go
-    │   │       ├── mode.go
-    │   │       ├── read.go
-    │   │       └── records.go
-    │   ├── gorilla
-    │   │   └── css
-    │   │       ├── LICENSE
-    │   │       └── scanner
-    │   │           ├── doc.go
-    │   │           └── scanner.go
-    │   ├── inconshreveable
-    │   │   └── mousetrap
-    │   │       ├── LICENSE
-    │   │       ├── README.md
-    │   │       ├── trap_others.go
-    │   │       └── trap_windows.go
-    │   ├── lucasb-eyer
-    │   │   └── go-colorful
-    │   │       ├── .gitignore
-    │   │       ├── CHANGELOG.md
-    │   │       ├── LICENSE
-    │   │       ├── README.md
-    │   │       ├── colorgens.go
-    │   │       ├── colors.go
-    │   │       ├── happy_palettegen.go
-    │   │       ├── hexcolor.go
-    │   │       ├── hsluv-snapshot-rev4.json
-    │   │       ├── hsluv.go
-    │   │       ├── soft_palettegen.go
-    │   │       └── warm_palettegen.go
-    │   ├── mattn
-    │   │   ├── go-isatty
-    │   │   │   ├── LICENSE
-    │   │   │   ├── README.md
-    │   │   │   ├── doc.go
-    │   │   │   ├── go.test.sh
-    │   │   │   ├── isatty_bsd.go
-    │   │   │   ├── isatty_others.go
-    │   │   │   ├── isatty_plan9.go
-    │   │   │   ├── isatty_solaris.go
-    │   │   │   ├── isatty_tcgets.go
-    │   │   │   └── isatty_windows.go
-    │   │   ├── go-localereader
-    │   │   │   ├── README.md
-    │   │   │   ├── localereader.go
-    │   │   │   ├── localereader_unix.go
-    │   │   │   └── localereader_windows.go
-    │   │   └── go-runewidth
-    │   │       ├── LICENSE
-    │   │       ├── README.md
-    │   │       ├── runewidth.go
-    │   │       ├── runewidth_appengine.go
-    │   │       ├── runewidth_js.go
-    │   │       ├── runewidth_posix.go
-    │   │       ├── runewidth_table.go
-    │   │       └── runewidth_windows.go
-    │   ├── microcosm-cc
-    │   │   └── bluemonday
-    │   │       ├── CONTRIBUTING.md
-    │   │       ├── CREDITS.md
-    │   │       ├── LICENSE.md
-    │   │       ├── README.md
-    │   │       ├── SECURITY.md
-    │   │       ├── css
-    │   │       │   └── handlers.go
-    │   │       ├── doc.go
-    │   │       ├── helpers.go
-    │   │       ├── policies.go
-    │   │       ├── policy.go
-    │   │       └── sanitize.go
-    │   ├── muesli
-    │   │   ├── ansi
-    │   │   │   ├── .gitignore
-    │   │   │   ├── .golangci.yml
-    │   │   │   ├── LICENSE
-    │   │   │   ├── README.md
-    │   │   │   ├── ansi.go
-    │   │   │   ├── buffer.go
-    │   │   │   ├── compressor
-    │   │   │   │   └── writer.go
-    │   │   │   └── writer.go
-    │   │   ├── cancelreader
-    │   │   │   ├── .gitignore
-    │   │   │   ├── .golangci-soft.yml
-    │   │   │   ├── .golangci.yml
-    │   │   │   ├── LICENSE
-    │   │   │   ├── README.md
-    │   │   │   ├── cancelreader.go
-    │   │   │   ├── cancelreader_bsd.go
-    │   │   │   ├── cancelreader_default.go
-    │   │   │   ├── cancelreader_linux.go
-    │   │   │   ├── cancelreader_select.go
-    │   │   │   ├── cancelreader_unix.go
-    │   │   │   └── cancelreader_windows.go
-    │   │   ├── reflow
-    │   │   │   ├── LICENSE
-    │   │   │   ├── ansi
-    │   │   │   │   ├── ansi.go
-    │   │   │   │   ├── buffer.go
-    │   │   │   │   └── writer.go
-    │   │   │   ├── indent
-    │   │   │   │   └── indent.go
-    │   │   │   ├── padding
-    │   │   │   │   └── padding.go
-    │   │   │   └── wordwrap
-    │   │   │       └── wordwrap.go
-    │   │   └── termenv
-    │   │       ├── .gitignore
-    │   │       ├── .golangci-soft.yml
-    │   │       ├── .golangci.yml
-    │   │       ├── LICENSE
-    │   │       ├── README.md
-    │   │       ├── ansi_compat.md
-    │   │       ├── ansicolors.go
-    │   │       ├── color.go
-    │   │       ├── constants_linux.go
-    │   │       ├── constants_solaris.go
-    │   │       ├── constants_unix.go
-    │   │       ├── constants_zos.go
-    │   │       ├── copy.go
-    │   │       ├── hyperlink.go
-    │   │       ├── notification.go
-    │   │       ├── output.go
-    │   │       ├── profile.go
-    │   │       ├── screen.go
-    │   │       ├── style.go
-    │   │       ├── templatehelper.go
-    │   │       ├── termenv.go
-    │   │       ├── termenv_other.go
-    │   │       ├── termenv_posix.go
-    │   │       ├── termenv_solaris.go
-    │   │       ├── termenv_unix.go
-    │   │       └── termenv_windows.go
-    │   ├── rivo
-    │   │   └── uniseg
-    │   │       ├── LICENSE.txt
-    │   │       ├── README.md
-    │   │       ├── doc.go
-    │   │       ├── eastasianwidth.go
-    │   │       ├── emojipresentation.go
-    │   │       ├── gen_breaktest.go
-    │   │       ├── gen_properties.go
-    │   │       ├── grapheme.go
-    │   │       ├── graphemeproperties.go
-    │   │       ├── graphemerules.go
-    │   │       ├── line.go
-    │   │       ├── lineproperties.go
-    │   │       ├── linerules.go
-    │   │       ├── properties.go
-    │   │       ├── sentence.go
-    │   │       ├── sentenceproperties.go
-    │   │       ├── sentencerules.go
-    │   │       ├── step.go
-    │   │       ├── width.go
-    │   │       ├── word.go
-    │   │       ├── wordproperties.go
-    │   │       └── wordrules.go
-    │   ├── sahilm
-    │   │   └── fuzzy
-    │   │       ├── .editorconfig
-    │   │       ├── .gitignore
-    │   │       ├── .travis.yml
-    │   │       ├── CONTRIBUTING.md
-    │   │       ├── Gopkg.lock
-    │   │       ├── Gopkg.toml
-    │   │       ├── LICENSE
-    │   │       ├── Makefile
-    │   │       ├── README.md
-    │   │       └── fuzzy.go
-    │   ├── spf13
-    │   │   ├── cobra
-    │   │   │   ├── .gitignore
-    │   │   │   ├── .golangci.yml
-    │   │   │   ├── .mailmap
-    │   │   │   ├── CONDUCT.md
-    │   │   │   ├── CONTRIBUTING.md
-    │   │   │   ├── LICENSE.txt
-    │   │   │   ├── MAINTAINERS
-    │   │   │   ├── Makefile
-    │   │   │   ├── README.md
-    │   │   │   ├── active_help.go
-    │   │   │   ├── args.go
-    │   │   │   ├── bash_completions.go
-    │   │   │   ├── bash_completionsV2.go
-    │   │   │   ├── cobra.go
-    │   │   │   ├── command.go
-    │   │   │   ├── command_notwin.go
-    │   │   │   ├── command_win.go
-    │   │   │   ├── completions.go
-    │   │   │   ├── fish_completions.go
-    │   │   │   ├── flag_groups.go
-    │   │   │   ├── powershell_completions.go
-    │   │   │   ├── shell_completions.go
-    │   │   │   └── zsh_completions.go
-    │   │   └── pflag
-    │   │       ├── .editorconfig
-    │   │       ├── .gitignore
-    │   │       ├── .golangci.yaml
-    │   │       ├── .travis.yml
-    │   │       ├── LICENSE
-    │   │       ├── README.md
-    │   │       ├── bool.go
-    │   │       ├── bool_slice.go
-    │   │       ├── bytes.go
-    │   │       ├── count.go
-    │   │       ├── duration.go
-    │   │       ├── duration_slice.go
-    │   │       ├── flag.go
-    │   │       ├── float32.go
-    │   │       ├── float32_slice.go
-    │   │       ├── float64.go
-    │   │       ├── float64_slice.go
-    │   │       ├── golangflag.go
-    │   │       ├── int.go
-    │   │       ├── int16.go
-    │   │       ├── int32.go
-    │   │       ├── int32_slice.go
-    │   │       ├── int64.go
-    │   │       ├── int64_slice.go
-    │   │       ├── int8.go
-    │   │       ├── int_slice.go
-    │   │       ├── ip.go
-    │   │       ├── ip_slice.go
-    │   │       ├── ipmask.go
-    │   │       ├── ipnet.go
-    │   │       ├── ipnet_slice.go
-    │   │       ├── string.go
-    │   │       ├── string_array.go
-    │   │       ├── string_slice.go
-    │   │       ├── string_to_int.go
-    │   │       ├── string_to_int64.go
-    │   │       ├── string_to_string.go
-    │   │       ├── uint.go
-    │   │       ├── uint16.go
-    │   │       ├── uint32.go
-    │   │       ├── uint64.go
-    │   │       ├── uint8.go
-    │   │       └── uint_slice.go
-    │   ├── xo
-    │   │   └── terminfo
-    │   │       ├── .gitignore
-    │   │       ├── LICENSE
-    │   │       ├── README.md
-    │   │       ├── caps.go
-    │   │       ├── capvals.go
-    │   │       ├── color.go
-    │   │       ├── dec.go
-    │   │       ├── load.go
-    │   │       ├── param.go
-    │   │       ├── stack.go
-    │   │       └── terminfo.go
-    │   └── yuin
-    │       ├── goldmark
-    │       │   ├── .gitignore
-    │       │   ├── .golangci.yml
-    │       │   ├── LICENSE
-    │       │   ├── Makefile
-    │       │   ├── README.md
-    │       │   ├── ast
-    │       │   │   ├── ast.go
-    │       │   │   ├── block.go
-    │       │   │   └── inline.go
-    │       │   ├── extension
-    │       │   │   ├── ast
-    │       │   │   │   ├── definition_list.go
-    │       │   │   │   ├── footnote.go
-    │       │   │   │   ├── strikethrough.go
-    │       │   │   │   ├── table.go
-    │       │   │   │   └── tasklist.go
-    │       │   │   ├── cjk.go
-    │       │   │   ├── definition_list.go
-    │       │   │   ├── footnote.go
-    │       │   │   ├── gfm.go
-    │       │   │   ├── linkify.go
-    │       │   │   ├── package.go
-    │       │   │   ├── strikethrough.go
-    │       │   │   ├── table.go
-    │       │   │   ├── tasklist.go
-    │       │   │   └── typographer.go
-    │       │   ├── markdown.go
-    │       │   ├── parser
-    │       │   │   ├── attribute.go
-    │       │   │   ├── atx_heading.go
-    │       │   │   ├── auto_link.go
-    │       │   │   ├── blockquote.go
-    │       │   │   ├── code_block.go
-    │       │   │   ├── code_span.go
-    │       │   │   ├── delimiter.go
-    │       │   │   ├── emphasis.go
-    │       │   │   ├── fcode_block.go
-    │       │   │   ├── html_block.go
-    │       │   │   ├── link.go
-    │       │   │   ├── link_ref.go
-    │       │   │   ├── list.go
-    │       │   │   ├── list_item.go
-    │       │   │   ├── paragraph.go
-    │       │   │   ├── parser.go
-    │       │   │   ├── raw_html.go
-    │       │   │   ├── setext_headings.go
-    │       │   │   └── thematic_break.go
-    │       │   ├── renderer
-    │       │   │   ├── html
-    │       │   │   │   └── html.go
-    │       │   │   └── renderer.go
-    │       │   ├── text
-    │       │   │   ├── package.go
-    │       │   │   ├── reader.go
-    │       │   │   └── segment.go
-    │       │   └── util
-    │       │       ├── html5entities.go
-    │       │       ├── unicode_case_folding.go
-    │       │       ├── util.go
-    │       │       ├── util_cjk.go
-    │       │       ├── util_safe.go
-    │       │       ├── util_unsafe_go120.go
-    │       │       └── util_unsafe_go121.go
-    │       └── goldmark-emoji
-    │           ├── .gitignore
-    │           ├── LICENSE
-    │           ├── README.md
-    │           ├── ast
-    │           │   └── emoji.go
-    │           ├── definition
-    │           │   ├── definition.go
-    │           │   └── github.go
-    │           └── emoji.go
-    ├── golang.org
-    │   └── x
-    │       ├── net
-    │       │   ├── LICENSE
-    │       │   ├── PATENTS
-    │       │   └── html
-    │       │       ├── atom
-    │       │       │   ├── atom.go
-    │       │       │   └── table.go
-    │       │       ├── const.go
-    │       │       ├── doc.go
-    │       │       ├── doctype.go
-    │       │       ├── entity.go
-    │       │       ├── escape.go
-    │       │       ├── foreign.go
-    │       │       ├── iter.go
-    │       │       ├── node.go
-    │       │       ├── parse.go
-    │       │       ├── render.go
-    │       │       └── token.go
-    │       ├── sync
-    │       │   ├── LICENSE
-    │       │   ├── PATENTS
-    │       │   └── errgroup
-    │       │       └── errgroup.go
-    │       ├── sys
-    │       │   ├── LICENSE
-    │       │   ├── PATENTS
-    │       │   ├── plan9
-    │       │   │   ├── asm.s
-    │       │   │   ├── asm_plan9_386.s
-    │       │   │   ├── asm_plan9_amd64.s
-    │       │   │   ├── asm_plan9_arm.s
-    │       │   │   ├── const_plan9.go
-    │       │   │   ├── dir_plan9.go
-    │       │   │   ├── env_plan9.go
-    │       │   │   ├── errors_plan9.go
-    │       │   │   ├── mkall.sh
-    │       │   │   ├── mkerrors.sh
-    │       │   │   ├── mksysnum_plan9.sh
-    │       │   │   ├── pwd_go15_plan9.go
-    │       │   │   ├── pwd_plan9.go
-    │       │   │   ├── race.go
-    │       │   │   ├── race0.go
-    │       │   │   ├── str.go
-    │       │   │   ├── syscall.go
-    │       │   │   ├── syscall_plan9.go
-    │       │   │   ├── zsyscall_plan9_386.go
-    │       │   │   ├── zsyscall_plan9_amd64.go
-    │       │   │   ├── zsyscall_plan9_arm.go
-    │       │   │   └── zsysnum_plan9.go
-    │       │   ├── unix
-    │       │   │   ├── .gitignore
-    │       │   │   ├── README.md
-    │       │   │   ├── affinity_linux.go
-    │       │   │   ├── aliases.go
-    │       │   │   ├── asm_*.s  (20 files)
-    │       │   │   ├── auxv.go
-    │       │   │   ├── auxv_unsupported.go
-    │       │   │   ├── bluetooth_linux.go
-    │       │   │   ├── bpxsvc_zos.go
-    │       │   │   ├── bpxsvc_zos.s
-    │       │   │   ├── cap_freebsd.go
-    │       │   │   ├── constants.go
-    │       │   │   ├── dev_*.go  (9 files)
-    │       │   │   ├── dirent.go
-    │       │   │   ├── endian_big.go
-    │       │   │   ├── endian_little.go
-    │       │   │   ├── env_unix.go
-    │       │   │   ├── fcntl.go
-    │       │   │   ├── fcntl_darwin.go
-    │       │   │   ├── fcntl_linux_32bit.go
-    │       │   │   ├── fdset.go
-    │       │   │   ├── gccgo.go
-    │       │   │   ├── gccgo_c.c
-    │       │   │   ├── gccgo_linux_amd64.go
-    │       │   │   ├── ifreq_linux.go
-    │       │   │   ├── ioctl_linux.go
-    │       │   │   ├── ioctl_signed.go
-    │       │   │   ├── ioctl_unsigned.go
-    │       │   │   ├── ioctl_zos.go
-    │       │   │   ├── mkall.sh
-    │       │   │   ├── mkerrors.sh
-    │       │   │   ├── mmap_nomremap.go
-    │       │   │   ├── mremap.go
-    │       │   │   ├── pagesize_unix.go
-    │       │   │   ├── pledge_openbsd.go
-    │       │   │   ├── ptrace_darwin.go
-    │       │   │   ├── ptrace_ios.go
-    │       │   │   ├── race.go
-    │       │   │   ├── race0.go
-    │       │   │   ├── readdirent_getdents.go
-    │       │   │   ├── readdirent_getdirentries.go
-    │       │   │   ├── sockcmsg_*.go  (5 files)
-    │       │   │   ├── symaddr_zos_s390x.s
-    │       │   │   ├── syscall.go
-    │       │   │   ├── syscall_*.go  (59 files)
-    │       │   │   ├── sysvshm_linux.go
-    │       │   │   ├── sysvshm_unix.go
-    │       │   │   ├── sysvshm_unix_other.go
-    │       │   │   ├── timestruct.go
-    │       │   │   ├── unveil_openbsd.go
-    │       │   │   ├── vgetrandom_linux.go
-    │       │   │   ├── vgetrandom_unsupported.go
-    │       │   │   ├── xattr_bsd.go
-    │       │   │   ├── zerrors_*.go  (39 files)
-    │       │   │   ├── zptrace_*.go  (5 files)
-    │       │   │   ├── zsymaddr_zos_s390x.s
-    │       │   │   ├── zsyscall_*.go  (42 files)
-    │       │   │   ├── zsyscall_*.s  (9 files)
-    │       │   │   ├── zsysctl_*.go  (7 files)
-    │       │   │   ├── zsysnum_*.go  (35 files)
-    │       │   │   └── ztypes_*.go  (39 files)
-    │       │   └── windows
-    │       │       ├── aliases.go
-    │       │       ├── dll_windows.go
-    │       │       ├── env_windows.go
-    │       │       ├── eventlog.go
-    │       │       ├── exec_windows.go
-    │       │       ├── memory_windows.go
-    │       │       ├── mkerrors.bash
-    │       │       ├── mkknownfolderids.bash
-    │       │       ├── mksyscall.go
-    │       │       ├── race.go
-    │       │       ├── race0.go
-    │       │       ├── security_windows.go
-    │       │       ├── service.go
-    │       │       ├── setupapi_windows.go
-    │       │       ├── str.go
-    │       │       ├── syscall.go
-    │       │       ├── syscall_windows.go
-    │       │       ├── types_windows.go
-    │       │       ├── types_windows_386.go
-    │       │       ├── types_windows_amd64.go
-    │       │       ├── types_windows_arm.go
-    │       │       ├── types_windows_arm64.go
-    │       │       ├── zerrors_windows.go
-    │       │       ├── zknownfolderids_windows.go
-    │       │       └── zsyscall_windows.go
-    │       ├── term
-    │       │   ├── CONTRIBUTING.md
-    │       │   ├── LICENSE
-    │       │   ├── PATENTS
-    │       │   ├── README.md
-    │       │   ├── codereview.cfg
-    │       │   ├── term.go
-    │       │   ├── term_plan9.go
-    │       │   ├── term_unix.go
-    │       │   ├── term_unix_bsd.go
-    │       │   ├── term_unix_other.go
-    │       │   ├── term_unsupported.go
-    │       │   ├── term_windows.go
-    │       │   └── terminal.go
-    │       └── text
-    │           ├── LICENSE
-    │           ├── PATENTS
-    │           ├── cases
-    │           │   ├── cases.go
-    │           │   ├── context.go
-    │           │   ├── fold.go
-    │           │   ├── icu.go
-    │           │   ├── info.go
-    │           │   ├── map.go
-    │           │   ├── tables10.0.0.go
-    │           │   ├── tables11.0.0.go
-    │           │   ├── tables12.0.0.go
-    │           │   ├── tables13.0.0.go
-    │           │   ├── tables15.0.0.go
-    │           │   ├── tables9.0.0.go
-    │           │   └── trieval.go
-    │           ├── internal
-    │           │   ├── internal.go
-    │           │   ├── language
-    │           │   │   ├── common.go
-    │           │   │   ├── compact
-    │           │   │   │   ├── compact.go
-    │           │   │   │   ├── language.go
-    │           │   │   │   ├── parents.go
-    │           │   │   │   ├── tables.go
-    │           │   │   │   └── tags.go
-    │           │   │   ├── compact.go
-    │           │   │   ├── compose.go
-    │           │   │   ├── coverage.go
-    │           │   │   ├── language.go
-    │           │   │   ├── lookup.go
-    │           │   │   ├── match.go
-    │           │   │   ├── parse.go
-    │           │   │   ├── tables.go
-    │           │   │   └── tags.go
-    │           │   ├── match.go
-    │           │   └── tag
-    │           │       └── tag.go
-    │           ├── language
-    │           │   ├── coverage.go
-    │           │   ├── doc.go
-    │           │   ├── language.go
-    │           │   ├── match.go
-    │           │   ├── parse.go
-    │           │   ├── tables.go
-    │           │   └── tags.go
-    │           ├── transform
-    │           │   └── transform.go
-    │           └── unicode
-    │               └── norm
-    │                   ├── composition.go
-    │                   ├── forminfo.go
-    │                   ├── input.go
-    │                   ├── iter.go
-    │                   ├── normalize.go
-    │                   ├── readwriter.go
-    │                   ├── tables10.0.0.go
-    │                   ├── tables11.0.0.go
-    │                   ├── tables12.0.0.go
-    │                   ├── tables13.0.0.go
-    │                   ├── tables15.0.0.go
-    │                   ├── tables9.0.0.go
-    │                   ├── transform.go
-    │                   └── trie.go
-    ├── gopkg.in
-    │   └── yaml.v3
-    │       ├── LICENSE
-    │       ├── NOTICE
-    │       ├── README.md
-    │       ├── apic.go
-    │       ├── decode.go
-    │       ├── emitterc.go
-    │       ├── encode.go
-    │       ├── parserc.go
-    │       ├── readerc.go
-    │       ├── resolve.go
-    │       ├── scannerc.go
-    │       ├── sorter.go
-    │       ├── writerc.go
-    │       ├── yaml.go
-    │       ├── yamlh.go
-    │       └── yamlprivateh.go
-    └── modules.txt
-166 directories, 1576 files
+│       │   └── serve.ts
+│       └── specs
+│           ├── fixtures.ts
+│           ├── instance-lifecycle.spec.ts
+│           └── smoke.spec.ts
+├── vendor
+│   ├── git.sr.ht
+│   │   └── ~jackmordaunt
+│   │       └── go-toast
+│   │           └── v2
+│   │               ├── .gitignore
+│   │               ├── ARCHITECTURE.md
+│   │               ├── LICENSE
+│   │               ├── README.md
+│   │               ├── constants.go
+│   │               ├── internal
+│   │               │   └── winrt
+│   │               │       ├── data
+│   │               │       │   └── xml
+│   │               │       │       └── dom
+│   │               │       │           └── xmldocument.go
+│   │               │       └── ui
+│   │               │           └── notifications
+│   │               │               ├── toastnotification.go
+│   │               │               ├── toastnotificationmanager.go
+│   │               │               ├── toastnotificationmanagerforuser.go
+│   │               │               └── toastnotifier.go
+│   │               ├── tmpl
+│   │               │   ├── powershell.go.tmpl
+│   │               │   ├── tmpl.go
+│   │               │   └── xml.go.tmpl
+│   │               ├── toast.go
+│   │               └── wintoast
+│   │                   ├── bind.go
+│   │                   ├── bind_noop.go
+│   │                   ├── bind_windows.go
+│   │                   ├── impl.go
+│   │                   ├── procs.go
+│   │                   └── registry.go
+│   ├── github.com
+│   │   ├── Masterminds
+│   │   │   └── semver
+│   │   │       └── v3
+│   │   │           ├── .gitignore
+│   │   │           ├── .golangci.yml
+│   │   │           ├── CHANGELOG.md
+│   │   │           ├── LICENSE.txt
+│   │   │           ├── Makefile
+│   │   │           ├── README.md
+│   │   │           ├── SECURITY.md
+│   │   │           ├── collection.go
+│   │   │           ├── constraints.go
+│   │   │           ├── doc.go
+│   │   │           └── version.go
+│   │   ├── alecthomas
+│   │   │   └── chroma
+│   │   │       └── v2
+│   │   │           ├── .editorconfig
+│   │   │           ├── .gitignore
+│   │   │           ├── .golangci.yml
+│   │   │           ├── .goreleaser.yml
+│   │   │           ├── AGENTS.md
+│   │   │           ├── Bitfile
+│   │   │           ├── COPYING
+│   │   │           ├── Dockerfile
+│   │   │           ├── Justfile
+│   │   │           ├── README.md
+│   │   │           ├── biome.json
+│   │   │           ├── chroma.jpg
+│   │   │           ├── coalesce.go
+│   │   │           ├── colour.go
+│   │   │           ├── delegate.go
+│   │   │           ├── doc.go
+│   │   │           ├── emitters.go
+│   │   │           ├── formatter.go
+│   │   │           ├── formatters
+│   │   │           │   ├── api.go
+│   │   │           │   ├── html
+│   │   │           │   │   └── html.go
+│   │   │           │   ├── json.go
+│   │   │           │   ├── svg
+│   │   │           │   │   ├── font_liberation_mono.go
+│   │   │           │   │   └── svg.go
+│   │   │           │   ├── tokens.go
+│   │   │           │   ├── tty_indexed.go
+│   │   │           │   └── tty_truecolour.go
+│   │   │           ├── iterator.go
+│   │   │           ├── lexer.go
+│   │   │           ├── lexers
+│   │   │           │   ├── README.md
+│   │   │           │   ├── caddyfile.go
+│   │   │           │   ├── cl.go
+│   │   │           │   ├── dns.go
+│   │   │           │   ├── emacs.go
+│   │   │           │   ├── embedded
+│   │   │           │   │   ├── abap.xml
+│   │   │           │   │   ├── abnf.xml
+│   │   │           │   │   ├── actionscript.xml
+│   │   │           │   │   ├── actionscript_3.xml
+│   │   │           │   │   ├── ada.xml
+│   │   │           │   │   ├── agda.xml
+│   │   │           │   │   ├── al.xml
+│   │   │           │   │   ├── alloy.xml
+│   │   │           │   │   ├── angular2.xml
+│   │   │           │   │   ├── antlr.xml
+│   │   │           │   │   ├── apacheconf.xml
+│   │   │           │   │   ├── apl.xml
+│   │   │           │   │   ├── applescript.xml
+│   │   │           │   │   ├── arangodb_aql.xml
+│   │   │           │   │   ├── arduino.xml
+│   │   │           │   │   ├── armasm.xml
+│   │   │           │   │   ├── atl.xml
+│   │   │           │   │   ├── autohotkey.xml
+│   │   │           │   │   ├── autoit.xml
+│   │   │           │   │   ├── awk.xml
+│   │   │           │   │   ├── ballerina.xml
+│   │   │           │   │   ├── bash.xml
+│   │   │           │   │   ├── bash_session.xml
+│   │   │           │   │   ├── batchfile.xml
+│   │   │           │   │   ├── beef.xml
+│   │   │           │   │   ├── bibtex.xml
+│   │   │           │   │   ├── bicep.xml
+│   │   │           │   │   ├── blitzbasic.xml
+│   │   │           │   │   ├── bnf.xml
+│   │   │           │   │   ├── bqn.xml
+│   │   │           │   │   ├── brainfuck.xml
+│   │   │           │   │   ├── c#.xml
+│   │   │           │   │   ├── c++.xml
+│   │   │           │   │   ├── c.xml
+│   │   │           │   │   ├── c3.xml
+│   │   │           │   │   ├── cap_n_proto.xml
+│   │   │           │   │   ├── cassandra_cql.xml
+│   │   │           │   │   ├── ceylon.xml
+│   │   │           │   │   ├── cfengine3.xml
+│   │   │           │   │   ├── cfstatement.xml
+│   │   │           │   │   ├── chaiscript.xml
+│   │   │           │   │   ├── chapel.xml
+│   │   │           │   │   ├── cheetah.xml
+│   │   │           │   │   ├── clojure.xml
+│   │   │           │   │   ├── cmake.xml
+│   │   │           │   │   ├── cobol.xml
+│   │   │           │   │   ├── coffeescript.xml
+│   │   │           │   │   ├── common_lisp.xml
+│   │   │           │   │   ├── coq.xml
+│   │   │           │   │   ├── core.xml
+│   │   │           │   │   ├── crystal.xml
+│   │   │           │   │   ├── css.xml
+│   │   │           │   │   ├── csv.xml
+│   │   │           │   │   ├── cue.xml
+│   │   │           │   │   ├── cython.xml
+│   │   │           │   │   ├── d.xml
+│   │   │           │   │   ├── dart.xml
+│   │   │           │   │   ├── dax.xml
+│   │   │           │   │   ├── desktop_entry.xml
+│   │   │           │   │   ├── devicetree.xml
+│   │   │           │   │   ├── diff.xml
+│   │   │           │   │   ├── django_jinja.xml
+│   │   │           │   │   ├── dns.xml
+│   │   │           │   │   ├── docker.xml
+│   │   │           │   │   ├── dtd.xml
+│   │   │           │   │   ├── dylan.xml
+│   │   │           │   │   ├── ebnf.xml
+│   │   │           │   │   ├── elixir.xml
+│   │   │           │   │   ├── elm.xml
+│   │   │           │   │   ├── emacslisp.xml
+│   │   │           │   │   ├── erlang.xml
+│   │   │           │   │   ├── factor.xml
+│   │   │           │   │   ├── fennel.xml
+│   │   │           │   │   ├── fish.xml
+│   │   │           │   │   ├── forth.xml
+│   │   │           │   │   ├── fortran.xml
+│   │   │           │   │   ├── fortranfixed.xml
+│   │   │           │   │   ├── fsharp.xml
+│   │   │           │   │   ├── gas.xml
+│   │   │           │   │   ├── gdscript.xml
+│   │   │           │   │   ├── gdscript3.xml
+│   │   │           │   │   ├── gherkin.xml
+│   │   │           │   │   ├── gleam.xml
+│   │   │           │   │   ├── glsl.xml
+│   │   │           │   │   ├── gnuplot.xml
+│   │   │           │   │   ├── go_template.xml
+│   │   │           │   │   ├── graphql.xml
+│   │   │           │   │   ├── groff.xml
+│   │   │           │   │   ├── groovy.xml
+│   │   │           │   │   ├── handlebars.xml
+│   │   │           │   │   ├── hare.xml
+│   │   │           │   │   ├── haskell.xml
+│   │   │           │   │   ├── hcl.xml
+│   │   │           │   │   ├── hexdump.xml
+│   │   │           │   │   ├── hlb.xml
+│   │   │           │   │   ├── hlsl.xml
+│   │   │           │   │   ├── holyc.xml
+│   │   │           │   │   ├── html.xml
+│   │   │           │   │   ├── hy.xml
+│   │   │           │   │   ├── idris.xml
+│   │   │           │   │   ├── igor.xml
+│   │   │           │   │   ├── ini.xml
+│   │   │           │   │   ├── io.xml
+│   │   │           │   │   ├── iscdhcpd.xml
+│   │   │           │   │   ├── j.xml
+│   │   │           │   │   ├── janet.xml
+│   │   │           │   │   ├── java.xml
+│   │   │           │   │   ├── javascript.xml
+│   │   │           │   │   ├── json.xml
+│   │   │           │   │   ├── jsonata.xml
+│   │   │           │   │   ├── jsonnet.xml
+│   │   │           │   │   ├── julia.xml
+│   │   │           │   │   ├── jungle.xml
+│   │   │           │   │   ├── kakoune.xml
+│   │   │           │   │   ├── kdl.xml
+│   │   │           │   │   ├── kotlin.xml
+│   │   │           │   │   ├── lean.xml
+│   │   │           │   │   ├── lighttpd_configuration_file.xml
+│   │   │           │   │   ├── llvm.xml
+│   │   │           │   │   ├── lox.xml
+│   │   │           │   │   ├── lua.xml
+│   │   │           │   │   ├── makefile.xml
+│   │   │           │   │   ├── mako.xml
+│   │   │           │   │   ├── mason.xml
+│   │   │           │   │   ├── materialize_sql_dialect.xml
+│   │   │           │   │   ├── mathematica.xml
+│   │   │           │   │   ├── matlab.xml
+│   │   │           │   │   ├── mcfunction.xml
+│   │   │           │   │   ├── meson.xml
+│   │   │           │   │   ├── metal.xml
+│   │   │           │   │   ├── microcad.xml
+│   │   │           │   │   ├── minizinc.xml
+│   │   │           │   │   ├── mlir.xml
+│   │   │           │   │   ├── modelica.xml
+│   │   │           │   │   ├── modula-2.xml
+│   │   │           │   │   ├── mojo.xml
+│   │   │           │   │   ├── monkeyc.xml
+│   │   │           │   │   ├── moonbit.xml
+│   │   │           │   │   ├── moonscript.xml
+│   │   │           │   │   ├── morrowindscript.xml
+│   │   │           │   │   ├── myghty.xml
+│   │   │           │   │   ├── mysql.xml
+│   │   │           │   │   ├── nasm.xml
+│   │   │           │   │   ├── natural.xml
+│   │   │           │   │   ├── ndisasm.xml
+│   │   │           │   │   ├── newspeak.xml
+│   │   │           │   │   ├── nginx_configuration_file.xml
+│   │   │           │   │   ├── nim.xml
+│   │   │           │   │   ├── nix.xml
+│   │   │           │   │   ├── nsis.xml
+│   │   │           │   │   ├── nu.xml
+│   │   │           │   │   ├── objective-c.xml
+│   │   │           │   │   ├── objectpascal.xml
+│   │   │           │   │   ├── ocaml.xml
+│   │   │           │   │   ├── octave.xml
+│   │   │           │   │   ├── odin.xml
+│   │   │           │   │   ├── onesenterprise.xml
+│   │   │           │   │   ├── openedge_abl.xml
+│   │   │           │   │   ├── openscad.xml
+│   │   │           │   │   ├── org_mode.xml
+│   │   │           │   │   ├── pacmanconf.xml
+│   │   │           │   │   ├── perl.xml
+│   │   │           │   │   ├── php.xml
+│   │   │           │   │   ├── pig.xml
+│   │   │           │   │   ├── pkgconfig.xml
+│   │   │           │   │   ├── pl_pgsql.xml
+│   │   │           │   │   ├── plaintext.xml
+│   │   │           │   │   ├── plutus_core.xml
+│   │   │           │   │   ├── pony.xml
+│   │   │           │   │   ├── postgresql_sql_dialect.xml
+│   │   │           │   │   ├── postscript.xml
+│   │   │           │   │   ├── povray.xml
+│   │   │           │   │   ├── powerquery.xml
+│   │   │           │   │   ├── powershell.xml
+│   │   │           │   │   ├── prolog.xml
+│   │   │           │   │   ├── promela.xml
+│   │   │           │   │   ├── promql.xml
+│   │   │           │   │   ├── properties.xml
+│   │   │           │   │   ├── protocol_buffer.xml
+│   │   │           │   │   ├── prql.xml
+│   │   │           │   │   ├── psl.xml
+│   │   │           │   │   ├── puppet.xml
+│   │   │           │   │   ├── python.xml
+│   │   │           │   │   ├── python_2.xml
+│   │   │           │   │   ├── qbasic.xml
+│   │   │           │   │   ├── qml.xml
+│   │   │           │   │   ├── r.xml
+│   │   │           │   │   ├── racket.xml
+│   │   │           │   │   ├── ragel.xml
+│   │   │           │   │   ├── react.xml
+│   │   │           │   │   ├── reasonml.xml
+│   │   │           │   │   ├── reg.xml
+│   │   │           │   │   ├── rego.xml
+│   │   │           │   │   ├── rexx.xml
+│   │   │           │   │   ├── rgbasm.xml
+│   │   │           │   │   ├── ring.xml
+│   │   │           │   │   ├── rpgle.xml
+│   │   │           │   │   ├── rpm_spec.xml
+│   │   │           │   │   ├── ruby.xml
+│   │   │           │   │   ├── rust.xml
+│   │   │           │   │   ├── sas.xml
+│   │   │           │   │   ├── sass.xml
+│   │   │           │   │   ├── scala.xml
+│   │   │           │   │   ├── scheme.xml
+│   │   │           │   │   ├── scilab.xml
+│   │   │           │   │   ├── scss.xml
+│   │   │           │   │   ├── sed.xml
+│   │   │           │   │   ├── sieve.xml
+│   │   │           │   │   ├── smali.xml
+│   │   │           │   │   ├── smalltalk.xml
+│   │   │           │   │   ├── smarty.xml
+│   │   │           │   │   ├── snbt.xml
+│   │   │           │   │   ├── snobol.xml
+│   │   │           │   │   ├── solidity.xml
+│   │   │           │   │   ├── sourcepawn.xml
+│   │   │           │   │   ├── sparql.xml
+│   │   │           │   │   ├── sql.xml
+│   │   │           │   │   ├── squidconf.xml
+│   │   │           │   │   ├── standard_ml.xml
+│   │   │           │   │   ├── stas.xml
+│   │   │           │   │   ├── stylus.xml
+│   │   │           │   │   ├── swift.xml
+│   │   │           │   │   ├── systemd.xml
+│   │   │           │   │   ├── systemverilog.xml
+│   │   │           │   │   ├── tablegen.xml
+│   │   │           │   │   ├── tal.xml
+│   │   │           │   │   ├── tasm.xml
+│   │   │           │   │   ├── tcl.xml
+│   │   │           │   │   ├── tcsh.xml
+│   │   │           │   │   ├── termcap.xml
+│   │   │           │   │   ├── terminfo.xml
+│   │   │           │   │   ├── terraform.xml
+│   │   │           │   │   ├── tex.xml
+│   │   │           │   │   ├── thrift.xml
+│   │   │           │   │   ├── toml.xml
+│   │   │           │   │   ├── tradingview.xml
+│   │   │           │   │   ├── transact-sql.xml
+│   │   │           │   │   ├── turing.xml
+│   │   │           │   │   ├── turtle.xml
+│   │   │           │   │   ├── twig.xml
+│   │   │           │   │   ├── txtpb.xml
+│   │   │           │   │   ├── typescript.xml
+│   │   │           │   │   ├── typoscript.xml
+│   │   │           │   │   ├── typoscriptcssdata.xml
+│   │   │           │   │   ├── typoscripthtmldata.xml
+│   │   │           │   │   ├── typst.xml
+│   │   │           │   │   ├── ucode.xml
+│   │   │           │   │   ├── v.xml
+│   │   │           │   │   ├── v_shell.xml
+│   │   │           │   │   ├── vala.xml
+│   │   │           │   │   ├── vb_net.xml
+│   │   │           │   │   ├── verilog.xml
+│   │   │           │   │   ├── vhdl.xml
+│   │   │           │   │   ├── vhs.xml
+│   │   │           │   │   ├── viml.xml
+│   │   │           │   │   ├── vue.xml
+│   │   │           │   │   ├── wat.xml
+│   │   │           │   │   ├── wdte.xml
+│   │   │           │   │   ├── webgpu_shading_language.xml
+│   │   │           │   │   ├── webvtt.xml
+│   │   │           │   │   ├── whiley.xml
+│   │   │           │   │   ├── xml.xml
+│   │   │           │   │   ├── xorg.xml
+│   │   │           │   │   ├── yaml.xml
+│   │   │           │   │   ├── yang.xml
+│   │   │           │   │   ├── z80_assembly.xml
+│   │   │           │   │   ├── zed.xml
+│   │   │           │   │   └── zig.xml
+│   │   │           │   ├── gemtext.go
+│   │   │           │   ├── genshi.go
+│   │   │           │   ├── go.go
+│   │   │           │   ├── haxe.go
+│   │   │           │   ├── html.go
+│   │   │           │   ├── http.go
+│   │   │           │   ├── lexers.go
+│   │   │           │   ├── markdown.go
+│   │   │           │   ├── markless.go
+│   │   │           │   ├── mysql.go
+│   │   │           │   ├── php.go
+│   │   │           │   ├── raku.go
+│   │   │           │   ├── rst.go
+│   │   │           │   ├── svelte.go
+│   │   │           │   ├── typoscript.go
+│   │   │           │   └── zed.go
+│   │   │           ├── mutators.go
+│   │   │           ├── pygments-lexers.txt
+│   │   │           ├── quick
+│   │   │           │   └── quick.go
+│   │   │           ├── regexp.go
+│   │   │           ├── registry.go
+│   │   │           ├── remap.go
+│   │   │           ├── renovate.json5
+│   │   │           ├── serialise.go
+│   │   │           ├── style.go
+│   │   │           ├── styles
+│   │   │           │   ├── abap.xml
+│   │   │           │   ├── algol.xml
+│   │   │           │   ├── algol_nu.xml
+│   │   │           │   ├── api.go
+│   │   │           │   ├── arduino.xml
+│   │   │           │   ├── ashen.xml
+│   │   │           │   ├── aura-theme-dark-soft.xml
+│   │   │           │   ├── aura-theme-dark.xml
+│   │   │           │   ├── autumn.xml
+│   │   │           │   ├── average.xml
+│   │   │           │   ├── base16-snazzy.xml
+│   │   │           │   ├── borland.xml
+│   │   │           │   ├── bw.xml
+│   │   │           │   ├── catppuccin-frappe.xml
+│   │   │           │   ├── catppuccin-latte.xml
+│   │   │           │   ├── catppuccin-macchiato.xml
+│   │   │           │   ├── catppuccin-mocha.xml
+│   │   │           │   ├── colorful.xml
+│   │   │           │   ├── compat.go
+│   │   │           │   ├── doom-one.xml
+│   │   │           │   ├── doom-one2.xml
+│   │   │           │   ├── dracula.xml
+│   │   │           │   ├── emacs.xml
+│   │   │           │   ├── evergarden.xml
+│   │   │           │   ├── friendly.xml
+│   │   │           │   ├── fruity.xml
+│   │   │           │   ├── github-dark.xml
+│   │   │           │   ├── github.xml
+│   │   │           │   ├── gruvbox-light.xml
+│   │   │           │   ├── gruvbox.xml
+│   │   │           │   ├── hr_high_contrast.xml
+│   │   │           │   ├── hrdark.xml
+│   │   │           │   ├── igor.xml
+│   │   │           │   ├── lovelace.xml
+│   │   │           │   ├── manni.xml
+│   │   │           │   ├── modus-operandi.xml
+│   │   │           │   ├── modus-vivendi.xml
+│   │   │           │   ├── monokai.xml
+│   │   │           │   ├── monokailight.xml
+│   │   │           │   ├── murphy.xml
+│   │   │           │   ├── native.xml
+│   │   │           │   ├── nord.xml
+│   │   │           │   ├── nordic.xml
+│   │   │           │   ├── onedark.xml
+│   │   │           │   ├── onesenterprise.xml
+│   │   │           │   ├── paraiso-dark.xml
+│   │   │           │   ├── paraiso-light.xml
+│   │   │           │   ├── pastie.xml
+│   │   │           │   ├── perldoc.xml
+│   │   │           │   ├── pygments.xml
+│   │   │           │   ├── rainbow_dash.xml
+│   │   │           │   ├── rose-pine-dawn.xml
+│   │   │           │   ├── rose-pine-moon.xml
+│   │   │           │   ├── rose-pine.xml
+│   │   │           │   ├── rpgle.xml
+│   │   │           │   ├── rrt.xml
+│   │   │           │   ├── solarized-dark.xml
+│   │   │           │   ├── solarized-dark256.xml
+│   │   │           │   ├── solarized-light.xml
+│   │   │           │   ├── swapoff.xml
+│   │   │           │   ├── tango.xml
+│   │   │           │   ├── tokyonight-day.xml
+│   │   │           │   ├── tokyonight-moon.xml
+│   │   │           │   ├── tokyonight-night.xml
+│   │   │           │   ├── tokyonight-storm.xml
+│   │   │           │   ├── trac.xml
+│   │   │           │   ├── vim.xml
+│   │   │           │   ├── vs.xml
+│   │   │           │   ├── vulcan.xml
+│   │   │           │   ├── witchhazel.xml
+│   │   │           │   ├── xcode-dark.xml
+│   │   │           │   └── xcode.xml
+│   │   │           ├── table.py
+│   │   │           ├── tokentype_enumer.go
+│   │   │           └── types.go
+│   │   ├── atotto
+│   │   │   └── clipboard
+│   │   │       ├── .travis.yml
+│   │   │       ├── LICENSE
+│   │   │       ├── README.md
+│   │   │       ├── clipboard.go
+│   │   │       ├── clipboard_darwin.go
+│   │   │       ├── clipboard_plan9.go
+│   │   │       ├── clipboard_unix.go
+│   │   │       └── clipboard_windows.go
+│   │   ├── aymanbagabas
+│   │   │   └── go-osc52
+│   │   │       └── v2
+│   │   │           ├── LICENSE
+│   │   │           ├── README.md
+│   │   │           └── osc52.go
+│   │   ├── aymerick
+│   │   │   └── douceur
+│   │   │       ├── LICENSE
+│   │   │       ├── css
+│   │   │       │   ├── declaration.go
+│   │   │       │   ├── rule.go
+│   │   │       │   └── stylesheet.go
+│   │   │       └── parser
+│   │   │           └── parser.go
+│   │   ├── bep
+│   │   │   └── debounce
+│   │   │       ├── .gitignore
+│   │   │       ├── LICENSE
+│   │   │       ├── README.md
+│   │   │       └── debounce.go
+│   │   ├── charmbracelet
+│   │   │   ├── bubbles
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── cursor
+│   │   │   │   │   └── cursor.go
+│   │   │   │   ├── help
+│   │   │   │   │   └── help.go
+│   │   │   │   ├── key
+│   │   │   │   │   └── key.go
+│   │   │   │   ├── list
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   ├── defaultitem.go
+│   │   │   │   │   ├── keys.go
+│   │   │   │   │   ├── list.go
+│   │   │   │   │   └── style.go
+│   │   │   │   ├── paginator
+│   │   │   │   │   └── paginator.go
+│   │   │   │   ├── runeutil
+│   │   │   │   │   └── runeutil.go
+│   │   │   │   ├── spinner
+│   │   │   │   │   └── spinner.go
+│   │   │   │   ├── textinput
+│   │   │   │   │   └── textinput.go
+│   │   │   │   └── viewport
+│   │   │   │       ├── keymap.go
+│   │   │   │       └── viewport.go
+│   │   │   ├── bubbletea
+│   │   │   │   ├── .gitattributes
+│   │   │   │   ├── .gitignore
+│   │   │   │   ├── .golangci-soft.yml
+│   │   │   │   ├── .golangci.yml
+│   │   │   │   ├── .goreleaser.yml
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── README.md
+│   │   │   │   ├── commands.go
+│   │   │   │   ├── exec.go
+│   │   │   │   ├── focus.go
+│   │   │   │   ├── inputreader_other.go
+│   │   │   │   ├── inputreader_windows.go
+│   │   │   │   ├── key.go
+│   │   │   │   ├── key_other.go
+│   │   │   │   ├── key_sequences.go
+│   │   │   │   ├── key_windows.go
+│   │   │   │   ├── logging.go
+│   │   │   │   ├── mouse.go
+│   │   │   │   ├── nil_renderer.go
+│   │   │   │   ├── options.go
+│   │   │   │   ├── renderer.go
+│   │   │   │   ├── screen.go
+│   │   │   │   ├── signals_unix.go
+│   │   │   │   ├── signals_windows.go
+│   │   │   │   ├── standard_renderer.go
+│   │   │   │   ├── tea.go
+│   │   │   │   ├── tea_init.go
+│   │   │   │   ├── tty.go
+│   │   │   │   ├── tty_unix.go
+│   │   │   │   └── tty_windows.go
+│   │   │   ├── colorprofile
+│   │   │   │   ├── .golangci-soft.yml
+│   │   │   │   ├── .golangci.yml
+│   │   │   │   ├── .goreleaser.yml
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── README.md
+│   │   │   │   ├── env.go
+│   │   │   │   ├── env_other.go
+│   │   │   │   ├── env_windows.go
+│   │   │   │   ├── profile.go
+│   │   │   │   └── writer.go
+│   │   │   ├── glamour
+│   │   │   │   ├── .editorconfig
+│   │   │   │   ├── .gitattributes
+│   │   │   │   ├── .gitignore
+│   │   │   │   ├── .golangci.yml
+│   │   │   │   ├── .goreleaser.yml
+│   │   │   │   ├── CONTRIBUTING.md
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── README.md
+│   │   │   │   ├── Taskfile.yml
+│   │   │   │   ├── ansi
+│   │   │   │   │   ├── ansi.go
+│   │   │   │   │   ├── baseelement.go
+│   │   │   │   │   ├── blockelement.go
+│   │   │   │   │   ├── blockstack.go
+│   │   │   │   │   ├── codeblock.go
+│   │   │   │   │   ├── codespan.go
+│   │   │   │   │   ├── context.go
+│   │   │   │   │   ├── elements.go
+│   │   │   │   │   ├── emphasis.go
+│   │   │   │   │   ├── heading.go
+│   │   │   │   │   ├── image.go
+│   │   │   │   │   ├── link.go
+│   │   │   │   │   ├── listitem.go
+│   │   │   │   │   ├── margin.go
+│   │   │   │   │   ├── paragraph.go
+│   │   │   │   │   ├── renderer.go
+│   │   │   │   │   ├── style.go
+│   │   │   │   │   ├── table.go
+│   │   │   │   │   ├── table_links.go
+│   │   │   │   │   ├── task.go
+│   │   │   │   │   └── templatehelper.go
+│   │   │   │   ├── examples.sh
+│   │   │   │   ├── gallery.sh
+│   │   │   │   ├── glamour.go
+│   │   │   │   ├── internal
+│   │   │   │   │   └── autolink
+│   │   │   │   │       └── autolink.go
+│   │   │   │   └── styles
+│   │   │   │       ├── README.md
+│   │   │   │       ├── ascii.json
+│   │   │   │       ├── dark.json
+│   │   │   │       ├── dracula.go
+│   │   │   │       ├── dracula.json
+│   │   │   │       ├── light.json
+│   │   │   │       ├── notty.json
+│   │   │   │       ├── pink.json
+│   │   │   │       ├── styles.go
+│   │   │   │       ├── tokyo-night.go
+│   │   │   │       └── tokyo_night.json
+│   │   │   ├── lipgloss
+│   │   │   │   ├── .editorconfig
+│   │   │   │   ├── .gitattributes
+│   │   │   │   ├── .gitignore
+│   │   │   │   ├── .golangci.yml
+│   │   │   │   ├── .goreleaser.yml
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── README.md
+│   │   │   │   ├── Taskfile.yaml
+│   │   │   │   ├── align.go
+│   │   │   │   ├── ansi_unix.go
+│   │   │   │   ├── ansi_windows.go
+│   │   │   │   ├── borders.go
+│   │   │   │   ├── color.go
+│   │   │   │   ├── get.go
+│   │   │   │   ├── join.go
+│   │   │   │   ├── lipgloss.go
+│   │   │   │   ├── position.go
+│   │   │   │   ├── ranges.go
+│   │   │   │   ├── renderer.go
+│   │   │   │   ├── runes.go
+│   │   │   │   ├── set.go
+│   │   │   │   ├── size.go
+│   │   │   │   ├── style.go
+│   │   │   │   ├── table
+│   │   │   │   │   ├── resizing.go
+│   │   │   │   │   ├── rows.go
+│   │   │   │   │   ├── table.go
+│   │   │   │   │   └── util.go
+│   │   │   │   ├── unset.go
+│   │   │   │   └── whitespace.go
+│   │   │   └── x
+│   │   │       ├── ansi
+│   │   │       │   ├── LICENSE
+│   │   │       │   ├── ansi.go
+│   │   │       │   ├── ascii.go
+│   │   │       │   ├── background.go
+│   │   │       │   ├── c0.go
+│   │   │       │   ├── c1.go
+│   │   │       │   ├── charset.go
+│   │   │       │   ├── clipboard.go
+│   │   │       │   ├── color.go
+│   │   │       │   ├── ctrl.go
+│   │   │       │   ├── cursor.go
+│   │   │       │   ├── cwd.go
+│   │   │       │   ├── doc.go
+│   │   │       │   ├── focus.go
+│   │   │       │   ├── graphics.go
+│   │   │       │   ├── hyperlink.go
+│   │   │       │   ├── iterm2.go
+│   │   │       │   ├── keypad.go
+│   │   │       │   ├── kitty
+│   │   │       │   │   ├── decoder.go
+│   │   │       │   │   ├── encoder.go
+│   │   │       │   │   ├── graphics.go
+│   │   │       │   │   └── options.go
+│   │   │       │   ├── kitty.go
+│   │   │       │   ├── method.go
+│   │   │       │   ├── mode.go
+│   │   │       │   ├── modes.go
+│   │   │       │   ├── mouse.go
+│   │   │       │   ├── notification.go
+│   │   │       │   ├── parser
+│   │   │       │   │   ├── const.go
+│   │   │       │   │   ├── seq.go
+│   │   │       │   │   └── transition_table.go
+│   │   │       │   ├── parser.go
+│   │   │       │   ├── parser_decode.go
+│   │   │       │   ├── parser_handler.go
+│   │   │       │   ├── parser_sync.go
+│   │   │       │   ├── passthrough.go
+│   │   │       │   ├── paste.go
+│   │   │       │   ├── reset.go
+│   │   │       │   ├── screen.go
+│   │   │       │   ├── sgr.go
+│   │   │       │   ├── status.go
+│   │   │       │   ├── style.go
+│   │   │       │   ├── termcap.go
+│   │   │       │   ├── title.go
+│   │   │       │   ├── truncate.go
+│   │   │       │   ├── util.go
+│   │   │       │   ├── width.go
+│   │   │       │   ├── winop.go
+│   │   │       │   ├── wrap.go
+│   │   │       │   └── xterm.go
+│   │   │       ├── cellbuf
+│   │   │       │   ├── LICENSE
+│   │   │       │   ├── buffer.go
+│   │   │       │   ├── cell.go
+│   │   │       │   ├── errors.go
+│   │   │       │   ├── geom.go
+│   │   │       │   ├── hardscroll.go
+│   │   │       │   ├── hashmap.go
+│   │   │       │   ├── link.go
+│   │   │       │   ├── screen.go
+│   │   │       │   ├── sequence.go
+│   │   │       │   ├── style.go
+│   │   │       │   ├── tabstop.go
+│   │   │       │   ├── utils.go
+│   │   │       │   ├── wrap.go
+│   │   │       │   └── writer.go
+│   │   │       ├── exp
+│   │   │       │   └── slice
+│   │   │       │       ├── LICENSE
+│   │   │       │       └── slice.go
+│   │   │       └── term
+│   │   │           ├── LICENSE
+│   │   │           ├── term.go
+│   │   │           ├── term_other.go
+│   │   │           ├── term_unix.go
+│   │   │           ├── term_unix_bsd.go
+│   │   │           ├── term_unix_other.go
+│   │   │           ├── term_windows.go
+│   │   │           ├── terminal.go
+│   │   │           └── util.go
+│   │   ├── dlclark
+│   │   │   └── regexp2
+│   │   │       ├── .gitignore
+│   │   │       ├── .travis.yml
+│   │   │       ├── ATTRIB
+│   │   │       ├── LICENSE
+│   │   │       ├── README.md
+│   │   │       ├── fastclock.go
+│   │   │       ├── match.go
+│   │   │       ├── regexp.go
+│   │   │       ├── replace.go
+│   │   │       ├── runner.go
+│   │   │       ├── syntax
+│   │   │       │   ├── charclass.go
+│   │   │       │   ├── code.go
+│   │   │       │   ├── escape.go
+│   │   │       │   ├── fuzz.go
+│   │   │       │   ├── parser.go
+│   │   │       │   ├── prefix.go
+│   │   │       │   ├── replacerdata.go
+│   │   │       │   ├── tree.go
+│   │   │       │   └── writer.go
+│   │   │       └── testoutput1
+│   │   ├── erikgeiser
+│   │   │   └── coninput
+│   │   │       ├── .gitignore
+│   │   │       ├── .golangci.yml
+│   │   │       ├── LICENSE
+│   │   │       ├── README.md
+│   │   │       ├── keycodes.go
+│   │   │       ├── mode.go
+│   │   │       ├── read.go
+│   │   │       └── records.go
+│   │   ├── go-ole
+│   │   │   └── go-ole
+│   │   │       ├── .travis.yml
+│   │   │       ├── ChangeLog.md
+│   │   │       ├── LICENSE
+│   │   │       ├── README.md
+│   │   │       ├── SECURITY.md
+│   │   │       ├── appveyor.yml
+│   │   │       ├── com.go
+│   │   │       ├── com_func.go
+│   │   │       ├── connect.go
+│   │   │       ├── constants.go
+│   │   │       ├── error.go
+│   │   │       ├── error_func.go
+│   │   │       ├── error_windows.go
+│   │   │       ├── guid.go
+│   │   │       ├── iconnectionpoint.go
+│   │   │       ├── iconnectionpoint_func.go
+│   │   │       ├── iconnectionpoint_windows.go
+│   │   │       ├── iconnectionpointcontainer.go
+│   │   │       ├── iconnectionpointcontainer_func.go
+│   │   │       ├── iconnectionpointcontainer_windows.go
+│   │   │       ├── idispatch.go
+│   │   │       ├── idispatch_func.go
+│   │   │       ├── idispatch_windows.go
+│   │   │       ├── ienumvariant.go
+│   │   │       ├── ienumvariant_func.go
+│   │   │       ├── ienumvariant_windows.go
+│   │   │       ├── iinspectable.go
+│   │   │       ├── iinspectable_func.go
+│   │   │       ├── iinspectable_windows.go
+│   │   │       ├── iprovideclassinfo.go
+│   │   │       ├── iprovideclassinfo_func.go
+│   │   │       ├── iprovideclassinfo_windows.go
+│   │   │       ├── itypeinfo.go
+│   │   │       ├── itypeinfo_func.go
+│   │   │       ├── itypeinfo_windows.go
+│   │   │       ├── iunknown.go
+│   │   │       ├── iunknown_func.go
+│   │   │       ├── iunknown_windows.go
+│   │   │       ├── ole.go
+│   │   │       ├── safearray.go
+│   │   │       ├── safearray_func.go
+│   │   │       ├── safearray_windows.go
+│   │   │       ├── safearrayconversion.go
+│   │   │       ├── safearrayslices.go
+│   │   │       ├── utility.go
+│   │   │       ├── variables.go
+│   │   │       ├── variant.go
+│   │   │       ├── variant_*.go  (10 files)
+│   │   │       ├── vt_string.go
+│   │   │       ├── winrt.go
+│   │   │       └── winrt_doc.go
+│   │   ├── godbus
+│   │   │   └── dbus
+│   │   │       └── v5
+│   │   │           ├── CONTRIBUTING.md
+│   │   │           ├── LICENSE
+│   │   │           ├── MAINTAINERS
+│   │   │           ├── README.md
+│   │   │           ├── auth.go
+│   │   │           ├── auth_anonymous.go
+│   │   │           ├── auth_external.go
+│   │   │           ├── auth_sha1.go
+│   │   │           ├── call.go
+│   │   │           ├── conn.go
+│   │   │           ├── conn_darwin.go
+│   │   │           ├── conn_other.go
+│   │   │           ├── conn_unix.go
+│   │   │           ├── conn_windows.go
+│   │   │           ├── dbus.go
+│   │   │           ├── decoder.go
+│   │   │           ├── default_handler.go
+│   │   │           ├── doc.go
+│   │   │           ├── encoder.go
+│   │   │           ├── escape.go
+│   │   │           ├── export.go
+│   │   │           ├── homedir.go
+│   │   │           ├── match.go
+│   │   │           ├── message.go
+│   │   │           ├── object.go
+│   │   │           ├── sequence.go
+│   │   │           ├── sequential_handler.go
+│   │   │           ├── server_interfaces.go
+│   │   │           ├── sig.go
+│   │   │           ├── transport_darwin.go
+│   │   │           ├── transport_generic.go
+│   │   │           ├── transport_nonce_tcp.go
+│   │   │           ├── transport_tcp.go
+│   │   │           ├── transport_unix.go
+│   │   │           ├── transport_unixcred_dragonfly.go
+│   │   │           ├── transport_unixcred_freebsd.go
+│   │   │           ├── transport_unixcred_linux.go
+│   │   │           ├── transport_unixcred_netbsd.go
+│   │   │           ├── transport_unixcred_openbsd.go
+│   │   │           ├── transport_zos.go
+│   │   │           ├── variant.go
+│   │   │           ├── variant_lexer.go
+│   │   │           └── variant_parser.go
+│   │   ├── google
+│   │   │   └── uuid
+│   │   │       ├── CHANGELOG.md
+│   │   │       ├── CONTRIBUTING.md
+│   │   │       ├── CONTRIBUTORS
+│   │   │       ├── LICENSE
+│   │   │       ├── README.md
+│   │   │       ├── dce.go
+│   │   │       ├── doc.go
+│   │   │       ├── hash.go
+│   │   │       ├── marshal.go
+│   │   │       ├── node.go
+│   │   │       ├── node_js.go
+│   │   │       ├── node_net.go
+│   │   │       ├── null.go
+│   │   │       ├── sql.go
+│   │   │       ├── time.go
+│   │   │       ├── util.go
+│   │   │       ├── uuid.go
+│   │   │       ├── version1.go
+│   │   │       ├── version4.go
+│   │   │       ├── version6.go
+│   │   │       └── version7.go
+│   │   ├── gorilla
+│   │   │   ├── css
+│   │   │   │   ├── LICENSE
+│   │   │   │   └── scanner
+│   │   │   │       ├── doc.go
+│   │   │   │       └── scanner.go
+│   │   │   └── websocket
+│   │   │       ├── .gitignore
+│   │   │       ├── AUTHORS
+│   │   │       ├── LICENSE
+│   │   │       ├── README.md
+│   │   │       ├── client.go
+│   │   │       ├── compression.go
+│   │   │       ├── conn.go
+│   │   │       ├── doc.go
+│   │   │       ├── join.go
+│   │   │       ├── json.go
+│   │   │       ├── mask.go
+│   │   │       ├── mask_safe.go
+│   │   │       ├── prepared.go
+│   │   │       ├── proxy.go
+│   │   │       ├── server.go
+│   │   │       ├── tls_handshake.go
+│   │   │       ├── tls_handshake_116.go
+│   │   │       ├── util.go
+│   │   │       └── x_net_proxy.go
+│   │   ├── inconshreveable
+│   │   │   └── mousetrap
+│   │   │       ├── LICENSE
+│   │   │       ├── README.md
+│   │   │       ├── trap_others.go
+│   │   │       └── trap_windows.go
+│   │   ├── jchv
+│   │   │   └── go-winloader
+│   │   │       ├── LICENSE.md
+│   │   │       ├── README.md
+│   │   │       ├── common.go
+│   │   │       ├── internal
+│   │   │       │   ├── loader
+│   │   │       │   │   ├── loader.go
+│   │   │       │   │   └── machine.go
+│   │   │       │   ├── memloader
+│   │   │       │   │   ├── cache.go
+│   │   │       │   │   └── loader.go
+│   │   │       │   ├── pe
+│   │   │       │   │   ├── export.go
+│   │   │       │   │   ├── format.go
+│   │   │       │   │   ├── import.go
+│   │   │       │   │   ├── module.go
+│   │   │       │   │   ├── reloc.go
+│   │   │       │   │   └── util.go
+│   │   │       │   ├── vmem
+│   │   │       │   │   ├── common.go
+│   │   │       │   │   ├── memory_other.go
+│   │   │       │   │   └── memory_windows.go
+│   │   │       │   └── winloader
+│   │   │       │       ├── hacks_other.go
+│   │   │       │       ├── hacks_windows.go
+│   │   │       │       ├── loader_windows.go
+│   │   │       │       ├── machine_windows.go
+│   │   │       │       ├── nativearch_386.go
+│   │   │       │       ├── nativearch_amd64.go
+│   │   │       │       └── nativearch_arm64.go
+│   │   │       ├── loader_other.go
+│   │   │       └── loader_windows.go
+│   │   ├── labstack
+│   │   │   ├── echo
+│   │   │   │   └── v4
+│   │   │   │       ├── .editorconfig
+│   │   │   │       ├── .gitattributes
+│   │   │   │       ├── .gitignore
+│   │   │   │       ├── CHANGELOG.md
+│   │   │   │       ├── LICENSE
+│   │   │   │       ├── Makefile
+│   │   │   │       ├── README.md
+│   │   │   │       ├── bind.go
+│   │   │   │       ├── binder.go
+│   │   │   │       ├── codecov.yml
+│   │   │   │       ├── context.go
+│   │   │   │       ├── context_fs.go
+│   │   │   │       ├── echo.go
+│   │   │   │       ├── echo_fs.go
+│   │   │   │       ├── group.go
+│   │   │   │       ├── group_fs.go
+│   │   │   │       ├── ip.go
+│   │   │   │       ├── json.go
+│   │   │   │       ├── log.go
+│   │   │   │       ├── renderer.go
+│   │   │   │       ├── response.go
+│   │   │   │       └── router.go
+│   │   │   └── gommon
+│   │   │       ├── LICENSE
+│   │   │       ├── color
+│   │   │       │   ├── README.md
+│   │   │       │   └── color.go
+│   │   │       └── log
+│   │   │           ├── README.md
+│   │   │           ├── color.go
+│   │   │           ├── log.go
+│   │   │           └── white.go
+│   │   ├── leaanthony
+│   │   │   ├── go-ansi-parser
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── README.md
+│   │   │   │   ├── ansi.go
+│   │   │   │   ├── cols.go
+│   │   │   │   ├── logo.png
+│   │   │   │   └── options.go
+│   │   │   ├── gosod
+│   │   │   │   ├── .gitignore
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── README.md
+│   │   │   │   ├── gosod.go
+│   │   │   │   ├── internal
+│   │   │   │   │   └── templatedir
+│   │   │   │   │       └── templatedir.go
+│   │   │   │   └── logo.png
+│   │   │   ├── slicer
+│   │   │   │   ├── .gitignore
+│   │   │   │   ├── CHANGELOG.md
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── README.md
+│   │   │   │   ├── bool.go
+│   │   │   │   ├── float32.go
+│   │   │   │   ├── float64.go
+│   │   │   │   ├── int.go
+│   │   │   │   ├── int16.go
+│   │   │   │   ├── int32.go
+│   │   │   │   ├── int64.go
+│   │   │   │   ├── int8.go
+│   │   │   │   ├── interface.go
+│   │   │   │   ├── logo.png
+│   │   │   │   ├── string.go
+│   │   │   │   ├── uint.go
+│   │   │   │   ├── uint16.go
+│   │   │   │   ├── uint32.go
+│   │   │   │   ├── uint64.go
+│   │   │   │   └── uint8.go
+│   │   │   └── u
+│   │   │       ├── .gitignore
+│   │   │       ├── LICENSE
+│   │   │       ├── README.md
+│   │   │       └── u.go
+│   │   ├── lucasb-eyer
+│   │   │   └── go-colorful
+│   │   │       ├── .gitignore
+│   │   │       ├── CHANGELOG.md
+│   │   │       ├── LICENSE
+│   │   │       ├── README.md
+│   │   │       ├── colorgens.go
+│   │   │       ├── colors.go
+│   │   │       ├── happy_palettegen.go
+│   │   │       ├── hexcolor.go
+│   │   │       ├── hsluv-snapshot-rev4.json
+│   │   │       ├── hsluv.go
+│   │   │       ├── soft_palettegen.go
+│   │   │       └── warm_palettegen.go
+│   │   ├── mattn
+│   │   │   ├── go-colorable
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── README.md
+│   │   │   │   ├── colorable_appengine.go
+│   │   │   │   ├── colorable_others.go
+│   │   │   │   ├── colorable_windows.go
+│   │   │   │   ├── go.test.sh
+│   │   │   │   └── noncolorable.go
+│   │   │   ├── go-isatty
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── README.md
+│   │   │   │   ├── doc.go
+│   │   │   │   ├── go.test.sh
+│   │   │   │   ├── isatty_bsd.go
+│   │   │   │   ├── isatty_others.go
+│   │   │   │   ├── isatty_plan9.go
+│   │   │   │   ├── isatty_solaris.go
+│   │   │   │   ├── isatty_tcgets.go
+│   │   │   │   └── isatty_windows.go
+│   │   │   ├── go-localereader
+│   │   │   │   ├── README.md
+│   │   │   │   ├── localereader.go
+│   │   │   │   ├── localereader_unix.go
+│   │   │   │   └── localereader_windows.go
+│   │   │   └── go-runewidth
+│   │   │       ├── LICENSE
+│   │   │       ├── README.md
+│   │   │       ├── runewidth.go
+│   │   │       ├── runewidth_appengine.go
+│   │   │       ├── runewidth_js.go
+│   │   │       ├── runewidth_posix.go
+│   │   │       ├── runewidth_table.go
+│   │   │       └── runewidth_windows.go
+│   │   ├── microcosm-cc
+│   │   │   └── bluemonday
+│   │   │       ├── CONTRIBUTING.md
+│   │   │       ├── CREDITS.md
+│   │   │       ├── LICENSE.md
+│   │   │       ├── README.md
+│   │   │       ├── SECURITY.md
+│   │   │       ├── css
+│   │   │       │   └── handlers.go
+│   │   │       ├── doc.go
+│   │   │       ├── helpers.go
+│   │   │       ├── policies.go
+│   │   │       ├── policy.go
+│   │   │       └── sanitize.go
+│   │   ├── muesli
+│   │   │   ├── ansi
+│   │   │   │   ├── .gitignore
+│   │   │   │   ├── .golangci.yml
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── README.md
+│   │   │   │   ├── ansi.go
+│   │   │   │   ├── buffer.go
+│   │   │   │   ├── compressor
+│   │   │   │   │   └── writer.go
+│   │   │   │   └── writer.go
+│   │   │   ├── cancelreader
+│   │   │   │   ├── .gitignore
+│   │   │   │   ├── .golangci-soft.yml
+│   │   │   │   ├── .golangci.yml
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── README.md
+│   │   │   │   ├── cancelreader.go
+│   │   │   │   ├── cancelreader_bsd.go
+│   │   │   │   ├── cancelreader_default.go
+│   │   │   │   ├── cancelreader_linux.go
+│   │   │   │   ├── cancelreader_select.go
+│   │   │   │   ├── cancelreader_unix.go
+│   │   │   │   └── cancelreader_windows.go
+│   │   │   ├── reflow
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── ansi
+│   │   │   │   │   ├── ansi.go
+│   │   │   │   │   ├── buffer.go
+│   │   │   │   │   └── writer.go
+│   │   │   │   ├── indent
+│   │   │   │   │   └── indent.go
+│   │   │   │   ├── padding
+│   │   │   │   │   └── padding.go
+│   │   │   │   └── wordwrap
+│   │   │   │       └── wordwrap.go
+│   │   │   └── termenv
+│   │   │       ├── .gitignore
+│   │   │       ├── .golangci-soft.yml
+│   │   │       ├── .golangci.yml
+│   │   │       ├── LICENSE
+│   │   │       ├── README.md
+│   │   │       ├── ansi_compat.md
+│   │   │       ├── ansicolors.go
+│   │   │       ├── color.go
+│   │   │       ├── constants_linux.go
+│   │   │       ├── constants_solaris.go
+│   │   │       ├── constants_unix.go
+│   │   │       ├── constants_zos.go
+│   │   │       ├── copy.go
+│   │   │       ├── hyperlink.go
+│   │   │       ├── notification.go
+│   │   │       ├── output.go
+│   │   │       ├── profile.go
+│   │   │       ├── screen.go
+│   │   │       ├── style.go
+│   │   │       ├── templatehelper.go
+│   │   │       ├── termenv.go
+│   │   │       ├── termenv_other.go
+│   │   │       ├── termenv_posix.go
+│   │   │       ├── termenv_solaris.go
+│   │   │       ├── termenv_unix.go
+│   │   │       └── termenv_windows.go
+│   │   ├── pkg
+│   │   │   ├── browser
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── README.md
+│   │   │   │   ├── browser.go
+│   │   │   │   ├── browser_darwin.go
+│   │   │   │   ├── browser_freebsd.go
+│   │   │   │   ├── browser_linux.go
+│   │   │   │   ├── browser_netbsd.go
+│   │   │   │   ├── browser_openbsd.go
+│   │   │   │   ├── browser_unsupported.go
+│   │   │   │   └── browser_windows.go
+│   │   │   └── errors
+│   │   │       ├── .gitignore
+│   │   │       ├── .travis.yml
+│   │   │       ├── LICENSE
+│   │   │       ├── Makefile
+│   │   │       ├── README.md
+│   │   │       ├── appveyor.yml
+│   │   │       ├── errors.go
+│   │   │       ├── go113.go
+│   │   │       └── stack.go
+│   │   ├── rivo
+│   │   │   └── uniseg
+│   │   │       ├── LICENSE.txt
+│   │   │       ├── README.md
+│   │   │       ├── doc.go
+│   │   │       ├── eastasianwidth.go
+│   │   │       ├── emojipresentation.go
+│   │   │       ├── gen_breaktest.go
+│   │   │       ├── gen_properties.go
+│   │   │       ├── grapheme.go
+│   │   │       ├── graphemeproperties.go
+│   │   │       ├── graphemerules.go
+│   │   │       ├── line.go
+│   │   │       ├── lineproperties.go
+│   │   │       ├── linerules.go
+│   │   │       ├── properties.go
+│   │   │       ├── sentence.go
+│   │   │       ├── sentenceproperties.go
+│   │   │       ├── sentencerules.go
+│   │   │       ├── step.go
+│   │   │       ├── width.go
+│   │   │       ├── word.go
+│   │   │       ├── wordproperties.go
+│   │   │       └── wordrules.go
+│   │   ├── sahilm
+│   │   │   └── fuzzy
+│   │   │       ├── .editorconfig
+│   │   │       ├── .gitignore
+│   │   │       ├── .travis.yml
+│   │   │       ├── CONTRIBUTING.md
+│   │   │       ├── Gopkg.lock
+│   │   │       ├── Gopkg.toml
+│   │   │       ├── LICENSE
+│   │   │       ├── Makefile
+│   │   │       ├── README.md
+│   │   │       └── fuzzy.go
+│   │   ├── samber
+│   │   │   └── lo
+│   │   │       ├── .gitignore
+│   │   │       ├── Dockerfile
+│   │   │       ├── LICENSE
+│   │   │       ├── Makefile
+│   │   │       ├── README.md
+│   │   │       ├── channel.go
+│   │   │       ├── concurrency.go
+│   │   │       ├── condition.go
+│   │   │       ├── constraints.go
+│   │   │       ├── errors.go
+│   │   │       ├── find.go
+│   │   │       ├── func.go
+│   │   │       ├── internal
+│   │   │       │   ├── constraints
+│   │   │       │   │   ├── constraints.go
+│   │   │       │   │   ├── ordered_go118.go
+│   │   │       │   │   └── ordered_go121.go
+│   │   │       │   └── rand
+│   │   │       │       ├── ordered_go118.go
+│   │   │       │       └── ordered_go122.go
+│   │   │       ├── intersect.go
+│   │   │       ├── map.go
+│   │   │       ├── math.go
+│   │   │       ├── mutable
+│   │   │       │   └── slice.go
+│   │   │       ├── retry.go
+│   │   │       ├── slice.go
+│   │   │       ├── string.go
+│   │   │       ├── time.go
+│   │   │       ├── tuples.go
+│   │   │       ├── type_manipulation.go
+│   │   │       └── types.go
+│   │   ├── spf13
+│   │   │   ├── cobra
+│   │   │   │   ├── .gitignore
+│   │   │   │   ├── .golangci.yml
+│   │   │   │   ├── .mailmap
+│   │   │   │   ├── CONDUCT.md
+│   │   │   │   ├── CONTRIBUTING.md
+│   │   │   │   ├── LICENSE.txt
+│   │   │   │   ├── MAINTAINERS
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── README.md
+│   │   │   │   ├── active_help.go
+│   │   │   │   ├── args.go
+│   │   │   │   ├── bash_completions.go
+│   │   │   │   ├── bash_completionsV2.go
+│   │   │   │   ├── cobra.go
+│   │   │   │   ├── command.go
+│   │   │   │   ├── command_notwin.go
+│   │   │   │   ├── command_win.go
+│   │   │   │   ├── completions.go
+│   │   │   │   ├── fish_completions.go
+│   │   │   │   ├── flag_groups.go
+│   │   │   │   ├── powershell_completions.go
+│   │   │   │   ├── shell_completions.go
+│   │   │   │   └── zsh_completions.go
+│   │   │   └── pflag
+│   │   │       ├── .editorconfig
+│   │   │       ├── .gitignore
+│   │   │       ├── .golangci.yaml
+│   │   │       ├── .travis.yml
+│   │   │       ├── LICENSE
+│   │   │       ├── README.md
+│   │   │       ├── bool.go
+│   │   │       ├── bool_slice.go
+│   │   │       ├── bytes.go
+│   │   │       ├── count.go
+│   │   │       ├── duration.go
+│   │   │       ├── duration_slice.go
+│   │   │       ├── flag.go
+│   │   │       ├── float32.go
+│   │   │       ├── float32_slice.go
+│   │   │       ├── float64.go
+│   │   │       ├── float64_slice.go
+│   │   │       ├── golangflag.go
+│   │   │       ├── int.go
+│   │   │       ├── int16.go
+│   │   │       ├── int32.go
+│   │   │       ├── int32_slice.go
+│   │   │       ├── int64.go
+│   │   │       ├── int64_slice.go
+│   │   │       ├── int8.go
+│   │   │       ├── int_slice.go
+│   │   │       ├── ip.go
+│   │   │       ├── ip_slice.go
+│   │   │       ├── ipmask.go
+│   │   │       ├── ipnet.go
+│   │   │       ├── ipnet_slice.go
+│   │   │       ├── string.go
+│   │   │       ├── string_array.go
+│   │   │       ├── string_slice.go
+│   │   │       ├── string_to_int.go
+│   │   │       ├── string_to_int64.go
+│   │   │       ├── string_to_string.go
+│   │   │       ├── uint.go
+│   │   │       ├── uint16.go
+│   │   │       ├── uint32.go
+│   │   │       ├── uint64.go
+│   │   │       ├── uint8.go
+│   │   │       └── uint_slice.go
+│   │   ├── tkrajina
+│   │   │   └── go-reflector
+│   │   │       ├── LICENSE.txt
+│   │   │       └── reflector
+│   │   │           ├── reflector.go
+│   │   │           ├── utils.go
+│   │   │           └── walk.go
+│   │   ├── valyala
+│   │   │   ├── bytebufferpool
+│   │   │   │   ├── .travis.yml
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── README.md
+│   │   │   │   ├── bytebuffer.go
+│   │   │   │   ├── doc.go
+│   │   │   │   └── pool.go
+│   │   │   └── fasttemplate
+│   │   │       ├── LICENSE
+│   │   │       ├── README.md
+│   │   │       ├── template.go
+│   │   │       ├── unsafe.go
+│   │   │       └── unsafe_gae.go
+│   │   ├── wailsapp
+│   │   │   ├── go-webview2
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── internal
+│   │   │   │   │   └── w32
+│   │   │   │   │       └── w32.go
+│   │   │   │   ├── pkg
+│   │   │   │   │   ├── combridge
+│   │   │   │   │   │   ├── bridge.go
+│   │   │   │   │   │   ├── iunknown.go
+│   │   │   │   │   │   ├── iunknown_impl.go
+│   │   │   │   │   │   ├── syscall.go
+│   │   │   │   │   │   └── vtables.go
+│   │   │   │   │   └── edge
+│   │   │   │   │       ├── COREWEBVIEW2_BOUNDS_MODE.go
+│   │   │   │   │       ├── COREWEBVIEW2_COLOR.go
+│   │   │   │   │       ├── COREWEBVIEW2_HOST_RESOURCE_ACCESS_KIND.go
+│   │   │   │   │       ├── COREWEBVIEW2_KEY_EVENT_KIND.go
+│   │   │   │   │       ├── COREWEBVIEW2_MOVE_FOCUS_REASON.go
+│   │   │   │   │       ├── COREWEBVIEW2_PHYSICAL_KEY_STATUS.go
+│   │   │   │   │       ├── COREWEBVIEW2_PROCESS_FAILED_KIND.go
+│   │   │   │   │       ├── COREWEBVIEW2_WEB_RESOURCE_CONTEXT.go
+│   │   │   │   │       ├── ICoreWebView2AcceleratorKeyPressedEventArgs.go
+│   │   │   │   │       ├── ICoreWebView2AcceleratorKeyPressedEventHandler.go
+│   │   │   │   │       ├── ICoreWebView2AddScriptToExecuteOnDocumentCreatedCompletedHandler.go
+│   │   │   │   │       ├── ICoreWebView2ContainsFullScreenElementChangedEventArgs.go
+│   │   │   │   │       ├── ICoreWebView2ContainsFullScreenElementChangedEventHandler.go
+│   │   │   │   │       ├── ICoreWebView2Controller.go
+│   │   │   │   │       ├── ICoreWebView2Controller2.go
+│   │   │   │   │       ├── ICoreWebView2Controller3.go
+│   │   │   │   │       ├── ICoreWebView2Controller4.go
+│   │   │   │   │       ├── ICoreWebView2Cookie.go
+│   │   │   │   │       ├── ICoreWebView2CookieList.go
+│   │   │   │   │       ├── ICoreWebView2CookieManager.go
+│   │   │   │   │       ├── ICoreWebView2CreateCoreWebView2ControllerCompletedHandler.go
+│   │   │   │   │       ├── ICoreWebView2Deferral.go
+│   │   │   │   │       ├── ICoreWebView2ExecuteScriptCompletedHandler.go
+│   │   │   │   │       ├── ICoreWebView2File.go
+│   │   │   │   │       ├── ICoreWebView2HttpHeadersCollectionIterator.go
+│   │   │   │   │       ├── ICoreWebView2HttpRequestHeaders.go
+│   │   │   │   │       ├── ICoreWebView2HttpResponseHeaders.go
+│   │   │   │   │       ├── ICoreWebView2NavigationCompletedEventArgs.go
+│   │   │   │   │       ├── ICoreWebView2NavigationCompletedEventHandler.go
+│   │   │   │   │       ├── ICoreWebView2ObjectCollectionView.go
+│   │   │   │   │       ├── ICoreWebView2ProcessFailedEventArgs.go
+│   │   │   │   │       ├── ICoreWebView2ProcessFailedEventHandler.go
+│   │   │   │   │       ├── ICoreWebView2RasterizationScaleChangedEventHandler.go
+│   │   │   │   │       ├── ICoreWebView2Settings.go
+│   │   │   │   │       ├── ICoreWebView2Settings*.go  (5 files)
+│   │   │   │   │       ├── ICoreWebView2WebMessageReceivedEventArgs.go
+│   │   │   │   │       ├── ICoreWebView2WebMessageReceivedEventHandler.go
+│   │   │   │   │       ├── ICoreWebView2WebResourceRequest.go
+│   │   │   │   │       ├── ICoreWebView2WebResourceRequestedEventArgs.go
+│   │   │   │   │       ├── ICoreWebView2WebResourceRequestedEventHandler.go
+│   │   │   │   │       ├── ICoreWebView2WebResourceResponse.go
+│   │   │   │   │       ├── ICoreWebView2_2.go
+│   │   │   │   │       ├── ICoreWebView2_3.go
+│   │   │   │   │       ├── ICoreWebViewSettings.go
+│   │   │   │   │       ├── IStream.go
+│   │   │   │   │       ├── capabilities.go
+│   │   │   │   │       ├── chromium.go
+│   │   │   │   │       ├── chromium_386.go
+│   │   │   │   │       ├── chromium_amd64.go
+│   │   │   │   │       ├── chromium_arm64.go
+│   │   │   │   │       ├── com.go
+│   │   │   │   │       ├── corewebview2.go
+│   │   │   │   │       ├── create_env_go.go
+│   │   │   │   │       ├── create_env_native.go
+│   │   │   │   │       ├── guid.go
+│   │   │   │   │       └── version_map.go
+│   │   │   │   └── webviewloader
+│   │   │   │       ├── LICENSE
+│   │   │   │       ├── README.md
+│   │   │   │       ├── arm64
+│   │   │   │       │   └── WebView2Loader.dll
+│   │   │   │       ├── env_create.go
+│   │   │   │       ├── env_create_completed.go
+│   │   │   │       ├── env_create_options.go
+│   │   │   │       ├── find_dll.go
+│   │   │   │       ├── find_dll_installed.go
+│   │   │   │       ├── native_module.go
+│   │   │   │       ├── native_module_386.go
+│   │   │   │       ├── native_module_amd64.go
+│   │   │   │       ├── native_module_arm64.go
+│   │   │   │       ├── syscall.go
+│   │   │   │       ├── version.go
+│   │   │   │       ├── x64
+│   │   │   │       │   └── WebView2Loader.dll
+│   │   │   │       └── x86
+│   │   │   │           └── WebView2Loader.dll
+│   │   │   ├── mimetype
+│   │   │   │   ├── .gitattributes
+│   │   │   │   ├── CODE_OF_CONDUCT.md
+│   │   │   │   ├── CONTRIBUTING.md
+│   │   │   │   ├── LICENSE
+│   │   │   │   ├── README.md
+│   │   │   │   ├── internal
+│   │   │   │   │   ├── charset
+│   │   │   │   │   │   └── charset.go
+│   │   │   │   │   ├── json
+│   │   │   │   │   │   └── json.go
+│   │   │   │   │   └── magic
+│   │   │   │   │       ├── archive.go
+│   │   │   │   │       ├── audio.go
+│   │   │   │   │       ├── binary.go
+│   │   │   │   │       ├── database.go
+│   │   │   │   │       ├── document.go
+│   │   │   │   │       ├── font.go
+│   │   │   │   │       ├── ftyp.go
+│   │   │   │   │       ├── geo.go
+│   │   │   │   │       ├── image.go
+│   │   │   │   │       ├── magic.go
+│   │   │   │   │       ├── ms_office.go
+│   │   │   │   │       ├── ogg.go
+│   │   │   │   │       ├── text.go
+│   │   │   │   │       ├── text_csv.go
+│   │   │   │   │       ├── video.go
+│   │   │   │   │       └── zip.go
+│   │   │   │   ├── mime.go
+│   │   │   │   ├── mimetype.gif
+│   │   │   │   ├── mimetype.go
+│   │   │   │   ├── supported_mimes.md
+│   │   │   │   └── tree.go
+│   │   │   └── wails
+│   │   │       └── v2
+│   │   │           ├── .golangci.yml
+│   │   │           ├── .prettierignore
+│   │   │           ├── .prettierrc.yml
+│   │   │           ├── LICENSE
+│   │   │           ├── README.md
+│   │   │           ├── Taskfile.yaml
+│   │   │           ├── internal
+│   │   │           │   ├── app
+│   │   │           │   │   ├── app.go
+│   │   │           │   │   ├── app_bindings.go
+│   │   │           │   │   ├── app_debug.go
+│   │   │           │   │   ├── app_debug_not.go
+│   │   │           │   │   ├── app_default_unix.go
+│   │   │           │   │   ├── app_default_windows.go
+│   │   │           │   │   ├── app_dev.go
+│   │   │           │   │   ├── app_devtools.go
+│   │   │           │   │   ├── app_devtools_not.go
+│   │   │           │   │   ├── app_obfuscated.go
+│   │   │           │   │   ├── app_obfuscated_not.go
+│   │   │           │   │   ├── app_preflight_unix.go
+│   │   │           │   │   ├── app_preflight_windows.go
+│   │   │           │   │   └── app_production.go
+│   │   │           │   ├── binding
+│   │   │           │   │   ├── binding.go
+│   │   │           │   │   ├── boundMethod.go
+│   │   │           │   │   ├── db.go
+│   │   │           │   │   ├── generate.go
+│   │   │           │   │   ├── parameter.go
+│   │   │           │   │   └── reflect.go
+│   │   │           │   ├── frontend
+│   │   │           │   │   ├── calls.go
+│   │   │           │   │   ├── desktop
+│   │   │           │   │   │   ├── darwin
+│   │   │           │   │   │   │   ├── AppDelegate.h
+│   │   │           │   │   │   │   ├── AppDelegate.m
+│   │   │           │   │   │   │   ├── Application.h
+│   │   │           │   │   │   │   ├── Application.m
+│   │   │           │   │   │   │   ├── CustomProtocol.h
+│   │   │           │   │   │   │   ├── CustomProtocol.m
+│   │   │           │   │   │   │   ├── Role.h
+│   │   │           │   │   │   │   ├── WailsAlert.h
+│   │   │           │   │   │   │   ├── WailsAlert.m
+│   │   │           │   │   │   │   ├── WailsContext.h
+│   │   │           │   │   │   │   ├── WailsContext.m
+│   │   │           │   │   │   │   ├── WailsMenu.h
+│   │   │           │   │   │   │   ├── WailsMenu.m
+│   │   │           │   │   │   │   ├── WailsMenuItem.h
+│   │   │           │   │   │   │   ├── WailsMenuItem.m
+│   │   │           │   │   │   │   ├── WailsWebView.h
+│   │   │           │   │   │   │   ├── WailsWebView.m
+│   │   │           │   │   │   │   ├── WindowDelegate.h
+│   │   │           │   │   │   │   ├── WindowDelegate.m
+│   │   │           │   │   │   │   ├── browser.go
+│   │   │           │   │   │   │   ├── callbacks.go
+│   │   │           │   │   │   │   ├── calloc.go
+│   │   │           │   │   │   │   ├── clipboard.go
+│   │   │           │   │   │   │   ├── dialog.go
+│   │   │           │   │   │   │   ├── frontend.go
+│   │   │           │   │   │   │   ├── inspector.go
+│   │   │           │   │   │   │   ├── inspector_dev.go
+│   │   │           │   │   │   │   ├── main.m
+│   │   │           │   │   │   │   ├── menu.go
+│   │   │           │   │   │   │   ├── menuitem.go
+│   │   │           │   │   │   │   ├── message.h
+│   │   │           │   │   │   │   ├── notifications.go
+│   │   │           │   │   │   │   ├── screen.go
+│   │   │           │   │   │   │   ├── single_instance.go
+│   │   │           │   │   │   │   └── window.go
+│   │   │           │   │   │   ├── desktop_darwin.go
+│   │   │           │   │   │   ├── desktop_linux.go
+│   │   │           │   │   │   ├── desktop_windows.go
+│   │   │           │   │   │   ├── linux
+│   │   │           │   │   │   │   ├── browser.go
+│   │   │           │   │   │   │   ├── calloc.go
+│   │   │           │   │   │   │   ├── clipboard.go
+│   │   │           │   │   │   │   ├── dialog.go
+│   │   │           │   │   │   │   ├── frontend.go
+│   │   │           │   │   │   │   ├── gtk.go
+│   │   │           │   │   │   │   ├── invoke.go
+│   │   │           │   │   │   │   ├── keys.go
+│   │   │           │   │   │   │   ├── menu.go
+│   │   │           │   │   │   │   ├── notifications.go
+│   │   │           │   │   │   │   ├── screen.go
+│   │   │           │   │   │   │   ├── single_instance.go
+│   │   │           │   │   │   │   ├── webkit2.go
+│   │   │           │   │   │   │   ├── window.c
+│   │   │           │   │   │   │   ├── window.go
+│   │   │           │   │   │   │   └── window.h
+│   │   │           │   │   │   └── windows
+│   │   │           │   │   │       ├── browser.go
+│   │   │           │   │   │       ├── clipboard.go
+│   │   │           │   │   │       ├── dialog.go
+│   │   │           │   │   │       ├── frontend.go
+│   │   │           │   │   │       ├── keys.go
+│   │   │           │   │   │       ├── menu.go
+│   │   │           │   │   │       ├── notifications.go
+│   │   │           │   │   │       ├── screen.go
+│   │   │           │   │   │       ├── single_instance.go
+│   │   │           │   │   │       ├── theme.go
+│   │   │           │   │   │       ├── win32
+│   │   │           │   │   │       │   ├── clipboard.go
+│   │   │           │   │   │       │   ├── consts.go
+│   │   │           │   │   │       │   ├── theme.go
+│   │   │           │   │   │       │   └── window.go
+│   │   │           │   │   │       ├── winc
+│   │   │           │   │   │       │   ├── .gitignore
+│   │   │           │   │   │       │   ├── AUTHORS
+│   │   │           │   │   │       │   ├── LICENSE
+│   │   │           │   │   │       │   ├── README.md
+│   │   │           │   │   │       │   ├── app.go
+│   │   │           │   │   │       │   ├── bitmap.go
+│   │   │           │   │   │       │   ├── brush.go
+│   │   │           │   │   │       │   ├── buttons.go
+│   │   │           │   │   │       │   ├── canvas.go
+│   │   │           │   │   │       │   ├── color.go
+│   │   │           │   │   │       │   ├── combobox.go
+│   │   │           │   │   │       │   ├── commondlgs.go
+│   │   │           │   │   │       │   ├── controlbase.go
+│   │   │           │   │   │       │   ├── controller.go
+│   │   │           │   │   │       │   ├── dialog.go
+│   │   │           │   │   │       │   ├── dock_topbottom.png
+│   │   │           │   │   │       │   ├── dock_topleft.png
+│   │   │           │   │   │       │   ├── edit.go
+│   │   │           │   │   │       │   ├── event.go
+│   │   │           │   │   │       │   ├── eventdata.go
+│   │   │           │   │   │       │   ├── eventmanager.go
+│   │   │           │   │   │       │   ├── font.go
+│   │   │           │   │   │       │   ├── form.go
+│   │   │           │   │   │       │   ├── globalvars.go
+│   │   │           │   │   │       │   ├── icon.go
+│   │   │           │   │   │       │   ├── imagelist.go
+│   │   │           │   │   │       │   ├── imageview.go
+│   │   │           │   │   │       │   ├── imageviewbox.go
+│   │   │           │   │   │       │   ├── init.go
+│   │   │           │   │   │       │   ├── keyboard.go
+│   │   │           │   │   │       │   ├── label.go
+│   │   │           │   │   │       │   ├── layout.go
+│   │   │           │   │   │       │   ├── listview.go
+│   │   │           │   │   │       │   ├── menu.go
+│   │   │           │   │   │       │   ├── mousecontrol.go
+│   │   │           │   │   │       │   ├── msghandlerregistry.go
+│   │   │           │   │   │       │   ├── panel.go
+│   │   │           │   │   │       │   ├── path.go
+│   │   │           │   │   │       │   ├── pen.go
+│   │   │           │   │   │       │   ├── progressbar.go
+│   │   │           │   │   │       │   ├── rect.go
+│   │   │           │   │   │       │   ├── resizer.go
+│   │   │           │   │   │       │   ├── scrollview.go
+│   │   │           │   │   │       │   ├── slider.go
+│   │   │           │   │   │       │   ├── tabview.go
+│   │   │           │   │   │       │   ├── toolbar.go
+│   │   │           │   │   │       │   ├── tooltip.go
+│   │   │           │   │   │       │   ├── treeview.go
+│   │   │           │   │   │       │   ├── utils.go
+│   │   │           │   │   │       │   ├── w32
+│   │   │           │   │   │       │   │   ├── comctl32.go
+│   │   │           │   │   │       │   │   ├── comdlg32.go
+│   │   │           │   │   │       │   │   ├── constants.go
+│   │   │           │   │   │       │   │   ├── dwmapi.go
+│   │   │           │   │   │       │   │   ├── gdi32.go
+│   │   │           │   │   │       │   │   ├── gdiplus.go
+│   │   │           │   │   │       │   │   ├── idispatch.go
+│   │   │           │   │   │       │   │   ├── istream.go
+│   │   │           │   │   │       │   │   ├── iunknown.go
+│   │   │           │   │   │       │   │   ├── kernel32.go
+│   │   │           │   │   │       │   │   ├── ole32.go
+│   │   │           │   │   │       │   │   ├── oleaut32.go
+│   │   │           │   │   │       │   │   ├── shcore.go
+│   │   │           │   │   │       │   │   ├── shell32.go
+│   │   │           │   │   │       │   │   ├── shlwapi.go
+│   │   │           │   │   │       │   │   ├── toolbar.go
+│   │   │           │   │   │       │   │   ├── typedef.go
+│   │   │           │   │   │       │   │   ├── user32.go
+│   │   │           │   │   │       │   │   ├── utils.go
+│   │   │           │   │   │       │   │   ├── uxtheme.go
+│   │   │           │   │   │       │   │   ├── vars.go
+│   │   │           │   │   │       │   │   └── wda.go
+│   │   │           │   │   │       │   └── wndproc.go
+│   │   │           │   │   │       └── window.go
+│   │   │           │   │   ├── devserver
+│   │   │           │   │   │   └── devserver.go
+│   │   │           │   │   ├── dispatcher
+│   │   │           │   │   │   ├── browser.go
+│   │   │           │   │   │   ├── calls.go
+│   │   │           │   │   │   ├── dispatcher.go
+│   │   │           │   │   │   ├── draganddrop.go
+│   │   │           │   │   │   ├── events.go
+│   │   │           │   │   │   ├── log.go
+│   │   │           │   │   │   ├── securecalls.go
+│   │   │           │   │   │   ├── systemcalls.go
+│   │   │           │   │   │   └── window.go
+│   │   │           │   │   ├── dispatcher.go
+│   │   │           │   │   ├── events.go
+│   │   │           │   │   ├── frontend.go
+│   │   │           │   │   ├── originvalidator
+│   │   │           │   │   │   └── originValidator.go
+│   │   │           │   │   ├── runtime
+│   │   │           │   │   │   ├── assets.go
+│   │   │           │   │   │   ├── assets_dev.go
+│   │   │           │   │   │   ├── events.go
+│   │   │           │   │   │   ├── ipc.go
+│   │   │           │   │   │   ├── ipc.js
+│   │   │           │   │   │   ├── ipc_websocket.go
+│   │   │           │   │   │   ├── ipc_websocket.js
+│   │   │           │   │   │   ├── package-lock.json
+│   │   │           │   │   │   ├── package.json
+│   │   │           │   │   │   ├── runtime_debug_desktop.go
+│   │   │           │   │   │   ├── runtime_debug_desktop.js
+│   │   │           │   │   │   ├── runtime_prod_desktop.go
+│   │   │           │   │   │   ├── runtime_prod_desktop.js
+│   │   │           │   │   │   ├── vite.config.ts
+│   │   │           │   │   │   └── wrapper
+│   │   │           │   │   │       ├── package.json
+│   │   │           │   │   │       ├── runtime.d.ts
+│   │   │           │   │   │       ├── runtime.js
+│   │   │           │   │   │       └── wrapper.go
+│   │   │           │   │   └── utils
+│   │   │           │   │       └── urlValidator.go
+│   │   │           │   ├── fs
+│   │   │           │   │   └── fs.go
+│   │   │           │   ├── go-common-file-dialog
+│   │   │           │   │   ├── LICENSE
+│   │   │           │   │   └── cfd
+│   │   │           │   │       ├── CommonFileDialog.go
+│   │   │           │   │       ├── CommonFileDialog_nonWindows.go
+│   │   │           │   │       ├── CommonFileDialog_windows.go
+│   │   │           │   │       ├── DialogConfig.go
+│   │   │           │   │       ├── errors.go
+│   │   │           │   │       ├── iFileOpenDialog.go
+│   │   │           │   │       ├── iFileSaveDialog.go
+│   │   │           │   │       ├── iShellItem.go
+│   │   │           │   │       ├── iShellItemArray.go
+│   │   │           │   │       ├── vtblCommon.go
+│   │   │           │   │       └── vtblCommonFunc.go
+│   │   │           │   ├── goversion
+│   │   │           │   │   ├── build_constraint.go
+│   │   │           │   │   └── min.go
+│   │   │           │   ├── logger
+│   │   │           │   │   ├── custom_logger.go
+│   │   │           │   │   └── default_logger.go
+│   │   │           │   ├── menumanager
+│   │   │           │   │   ├── applicationmenu.go
+│   │   │           │   │   ├── contextmenu.go
+│   │   │           │   │   ├── menuitemmap.go
+│   │   │           │   │   ├── menumanager.go
+│   │   │           │   │   ├── processedMenu.go
+│   │   │           │   │   └── traymenu.go
+│   │   │           │   ├── platform
+│   │   │           │   │   └── win32
+│   │   │           │   │       ├── consts.go
+│   │   │           │   │       ├── cursor.go
+│   │   │           │   │       ├── icon.go
+│   │   │           │   │       ├── keyboard.go
+│   │   │           │   │       ├── menu.go
+│   │   │           │   │       ├── structs.go
+│   │   │           │   │       ├── theme.go
+│   │   │           │   │       └── window.go
+│   │   │           │   ├── project
+│   │   │           │   │   └── project.go
+│   │   │           │   ├── shell
+│   │   │           │   │   ├── env.go
+│   │   │           │   │   └── shell.go
+│   │   │           │   ├── signal
+│   │   │           │   │   └── signal.go
+│   │   │           │   ├── system
+│   │   │           │   │   └── operatingsystem
+│   │   │           │   │       ├── os.go
+│   │   │           │   │       ├── os_darwin.go
+│   │   │           │   │       ├── os_linux.go
+│   │   │           │   │       ├── os_windows.go
+│   │   │           │   │       └── version_windows.go
+│   │   │           │   ├── typescriptify
+│   │   │           │   │   ├── LICENSE.txt
+│   │   │           │   │   ├── README.md
+│   │   │           │   │   ├── js-reserved-keywords.go
+│   │   │           │   │   └── typescriptify.go
+│   │   │           │   ├── webview2runtime
+│   │   │           │   │   ├── MicrosoftEdgeWebview2Setup.exe
+│   │   │           │   │   ├── webview2installer.go
+│   │   │           │   │   └── webview2runtime.go
+│   │   │           │   └── wv2installer
+│   │   │           │       ├── browser.go
+│   │   │           │       ├── download.go
+│   │   │           │       ├── embed.go
+│   │   │           │       ├── error.go
+│   │   │           │       └── wv2installer.go
+│   │   │           ├── pkg
+│   │   │           │   ├── application
+│   │   │           │   │   ├── application.go
+│   │   │           │   │   ├── events.go
+│   │   │           │   │   ├── init.go
+│   │   │           │   │   └── init_windows.go
+│   │   │           │   ├── assetserver
+│   │   │           │   │   ├── assethandler.go
+│   │   │           │   │   ├── assethandler_external.go
+│   │   │           │   │   ├── assetserver.go
+│   │   │           │   │   ├── assetserver_dev.go
+│   │   │           │   │   ├── assetserver_webview.go
+│   │   │           │   │   ├── body_recorder.go
+│   │   │           │   │   ├── common.go
+│   │   │           │   │   ├── content_type_sniffer.go
+│   │   │           │   │   ├── defaultindex.html
+│   │   │           │   │   ├── fs.go
+│   │   │           │   │   ├── mimecache.go
+│   │   │           │   │   ├── ringqueue.go
+│   │   │           │   │   └── webview
+│   │   │           │   │       ├── request.go
+│   │   │           │   │       ├── request_darwin.go
+│   │   │           │   │       ├── request_finalizer.go
+│   │   │           │   │       ├── request_linux.go
+│   │   │           │   │       ├── request_windows.go
+│   │   │           │   │       ├── responsewriter.go
+│   │   │           │   │       ├── responsewriter_darwin.go
+│   │   │           │   │       ├── responsewriter_linux.go
+│   │   │           │   │       ├── responsewriter_windows.go
+│   │   │           │   │       ├── webkit2_36+.go
+│   │   │           │   │       ├── webkit2_36.go
+│   │   │           │   │       ├── webkit2_40+.go
+│   │   │           │   │       ├── webkit2_40.go
+│   │   │           │   │       ├── webkit2_41.go
+│   │   │           │   │       └── webkit2_legacy.go
+│   │   │           │   ├── logger
+│   │   │           │   │   ├── default.go
+│   │   │           │   │   ├── filelogger.go
+│   │   │           │   │   └── logger.go
+│   │   │           │   ├── menu
+│   │   │           │   │   ├── README.md
+│   │   │           │   │   ├── callback.go
+│   │   │           │   │   ├── cols.go
+│   │   │           │   │   ├── contextmenu.go
+│   │   │           │   │   ├── keys
+│   │   │           │   │   │   ├── keys.go
+│   │   │           │   │   │   ├── macmodifiers.go
+│   │   │           │   │   │   ├── parser.go
+│   │   │           │   │   │   └── stringify.go
+│   │   │           │   │   ├── mac.go
+│   │   │           │   │   ├── menu.go
+│   │   │           │   │   ├── menuitem.go
+│   │   │           │   │   ├── menuroles.go
+│   │   │           │   │   ├── styledlabel.go
+│   │   │           │   │   ├── tray.go
+│   │   │           │   │   ├── type.go
+│   │   │           │   │   └── windows.go
+│   │   │           │   ├── options
+│   │   │           │   │   ├── assetserver
+│   │   │           │   │   │   ├── middleware.go
+│   │   │           │   │   │   └── options.go
+│   │   │           │   │   ├── debug.go
+│   │   │           │   │   ├── linux
+│   │   │           │   │   │   └── linux.go
+│   │   │           │   │   ├── mac
+│   │   │           │   │   │   ├── appearance.go
+│   │   │           │   │   │   ├── mac.go
+│   │   │           │   │   │   ├── preferences.go
+│   │   │           │   │   │   └── titlebar.go
+│   │   │           │   │   ├── options.go
+│   │   │           │   │   └── windows
+│   │   │           │   │       └── windows.go
+│   │   │           │   └── runtime
+│   │   │           │       ├── browser.go
+│   │   │           │       ├── clipboard.go
+│   │   │           │       ├── dialog.go
+│   │   │           │       ├── draganddrop.go
+│   │   │           │       ├── events.go
+│   │   │           │       ├── log.go
+│   │   │           │       ├── menu.go
+│   │   │           │       ├── notifications.go
+│   │   │           │       ├── runtime.go
+│   │   │           │       ├── screen.go
+│   │   │           │       ├── signal_linux.go
+│   │   │           │       ├── signal_other.go
+│   │   │           │       └── window.go
+│   │   │           └── wails.go
+│   │   ├── xo
+│   │   │   └── terminfo
+│   │   │       ├── .gitignore
+│   │   │       ├── LICENSE
+│   │   │       ├── README.md
+│   │   │       ├── caps.go
+│   │   │       ├── capvals.go
+│   │   │       ├── color.go
+│   │   │       ├── dec.go
+│   │   │       ├── load.go
+│   │   │       ├── param.go
+│   │   │       ├── stack.go
+│   │   │       └── terminfo.go
+│   │   └── yuin
+│   │       ├── goldmark
+│   │       │   ├── .gitignore
+│   │       │   ├── .golangci.yml
+│   │       │   ├── LICENSE
+│   │       │   ├── Makefile
+│   │       │   ├── README.md
+│   │       │   ├── ast
+│   │       │   │   ├── ast.go
+│   │       │   │   ├── block.go
+│   │       │   │   └── inline.go
+│   │       │   ├── extension
+│   │       │   │   ├── ast
+│   │       │   │   │   ├── definition_list.go
+│   │       │   │   │   ├── footnote.go
+│   │       │   │   │   ├── strikethrough.go
+│   │       │   │   │   ├── table.go
+│   │       │   │   │   └── tasklist.go
+│   │       │   │   ├── cjk.go
+│   │       │   │   ├── definition_list.go
+│   │       │   │   ├── footnote.go
+│   │       │   │   ├── gfm.go
+│   │       │   │   ├── linkify.go
+│   │       │   │   ├── package.go
+│   │       │   │   ├── strikethrough.go
+│   │       │   │   ├── table.go
+│   │       │   │   ├── tasklist.go
+│   │       │   │   └── typographer.go
+│   │       │   ├── markdown.go
+│   │       │   ├── parser
+│   │       │   │   ├── attribute.go
+│   │       │   │   ├── atx_heading.go
+│   │       │   │   ├── auto_link.go
+│   │       │   │   ├── blockquote.go
+│   │       │   │   ├── code_block.go
+│   │       │   │   ├── code_span.go
+│   │       │   │   ├── delimiter.go
+│   │       │   │   ├── emphasis.go
+│   │       │   │   ├── fcode_block.go
+│   │       │   │   ├── html_block.go
+│   │       │   │   ├── link.go
+│   │       │   │   ├── link_ref.go
+│   │       │   │   ├── list.go
+│   │       │   │   ├── list_item.go
+│   │       │   │   ├── paragraph.go
+│   │       │   │   ├── parser.go
+│   │       │   │   ├── raw_html.go
+│   │       │   │   ├── setext_headings.go
+│   │       │   │   └── thematic_break.go
+│   │       │   ├── renderer
+│   │       │   │   ├── html
+│   │       │   │   │   └── html.go
+│   │       │   │   └── renderer.go
+│   │       │   ├── text
+│   │       │   │   ├── package.go
+│   │       │   │   ├── reader.go
+│   │       │   │   └── segment.go
+│   │       │   └── util
+│   │       │       ├── html5entities.go
+│   │       │       ├── unicode_case_folding.go
+│   │       │       ├── util.go
+│   │       │       ├── util_cjk.go
+│   │       │       ├── util_safe.go
+│   │       │       ├── util_unsafe_go120.go
+│   │       │       └── util_unsafe_go121.go
+│   │       └── goldmark-emoji
+│   │           ├── .gitignore
+│   │           ├── LICENSE
+│   │           ├── README.md
+│   │           ├── ast
+│   │           │   └── emoji.go
+│   │           ├── definition
+│   │           │   ├── definition.go
+│   │           │   └── github.go
+│   │           └── emoji.go
+│   ├── golang.org
+│   │   └── x
+│   │       ├── crypto
+│   │       │   ├── LICENSE
+│   │       │   ├── PATENTS
+│   │       │   └── acme
+│   │       │       ├── acme.go
+│   │       │       ├── autocert
+│   │       │       │   ├── autocert.go
+│   │       │       │   ├── cache.go
+│   │       │       │   ├── listener.go
+│   │       │       │   └── renewal.go
+│   │       │       ├── http.go
+│   │       │       ├── jws.go
+│   │       │       ├── rfc8555.go
+│   │       │       └── types.go
+│   │       ├── net
+│   │       │   ├── LICENSE
+│   │       │   ├── PATENTS
+│   │       │   ├── html
+│   │       │   │   ├── atom
+│   │       │   │   │   ├── atom.go
+│   │       │   │   │   └── table.go
+│   │       │   │   ├── const.go
+│   │       │   │   ├── doc.go
+│   │       │   │   ├── doctype.go
+│   │       │   │   ├── entity.go
+│   │       │   │   ├── escape.go
+│   │       │   │   ├── foreign.go
+│   │       │   │   ├── iter.go
+│   │       │   │   ├── node.go
+│   │       │   │   ├── nodetype_string.go
+│   │       │   │   ├── parse.go
+│   │       │   │   ├── render.go
+│   │       │   │   └── token.go
+│   │       │   ├── http
+│   │       │   │   └── httpguts
+│   │       │   │       ├── guts.go
+│   │       │   │       └── httplex.go
+│   │       │   ├── http2
+│   │       │   │   ├── .gitignore
+│   │       │   │   ├── README.md
+│   │       │   │   ├── ascii.go
+│   │       │   │   ├── ciphers.go
+│   │       │   │   ├── client_conn_pool.go
+│   │       │   │   ├── client_priority_go126.go
+│   │       │   │   ├── client_priority_go127.go
+│   │       │   │   ├── clientconn.go
+│   │       │   │   ├── config.go
+│   │       │   │   ├── config_go125.go
+│   │       │   │   ├── config_go126.go
+│   │       │   │   ├── databuffer.go
+│   │       │   │   ├── errors.go
+│   │       │   │   ├── flow.go
+│   │       │   │   ├── frame.go
+│   │       │   │   ├── gotrack.go
+│   │       │   │   ├── h2c
+│   │       │   │   │   └── h2c.go
+│   │       │   │   ├── hpack
+│   │       │   │   │   ├── encode.go
+│   │       │   │   │   ├── hpack.go
+│   │       │   │   │   ├── huffman.go
+│   │       │   │   │   ├── static_table.go
+│   │       │   │   │   └── tables.go
+│   │       │   │   ├── http2.go
+│   │       │   │   ├── pipe.go
+│   │       │   │   ├── server.go
+│   │       │   │   ├── server_common.go
+│   │       │   │   ├── server_wrap.go
+│   │       │   │   ├── transport.go
+│   │       │   │   ├── transport_common.go
+│   │       │   │   ├── transport_wrap.go
+│   │       │   │   ├── unencrypted.go
+│   │       │   │   ├── write.go
+│   │       │   │   ├── writesched.go
+│   │       │   │   ├── writesched_common.go
+│   │       │   │   ├── writesched_priority_rfc7540.go
+│   │       │   │   ├── writesched_priority_rfc9218.go
+│   │       │   │   ├── writesched_random.go
+│   │       │   │   └── writesched_roundrobin.go
+│   │       │   ├── idna
+│   │       │   │   ├── idna.go
+│   │       │   │   ├── punycode.go
+│   │       │   │   ├── tables15.0.0.go
+│   │       │   │   ├── tables17.0.0.go
+│   │       │   │   ├── trie.go
+│   │       │   │   └── trieval.go
+│   │       │   └── internal
+│   │       │       ├── httpcommon
+│   │       │       │   ├── ascii.go
+│   │       │       │   ├── headermap.go
+│   │       │       │   └── request.go
+│   │       │       └── httpsfv
+│   │       │           └── httpsfv.go
+│   │       ├── sync
+│   │       │   ├── LICENSE
+│   │       │   ├── PATENTS
+│   │       │   └── errgroup
+│   │       │       └── errgroup.go
+│   │       ├── sys
+│   │       │   ├── LICENSE
+│   │       │   ├── PATENTS
+│   │       │   ├── plan9
+│   │       │   │   ├── asm.s
+│   │       │   │   ├── asm_plan9_386.s
+│   │       │   │   ├── asm_plan9_amd64.s
+│   │       │   │   ├── asm_plan9_arm.s
+│   │       │   │   ├── const_plan9.go
+│   │       │   │   ├── dir_plan9.go
+│   │       │   │   ├── env_plan9.go
+│   │       │   │   ├── errors_plan9.go
+│   │       │   │   ├── mkall.sh
+│   │       │   │   ├── mkerrors.sh
+│   │       │   │   ├── mksysnum_plan9.sh
+│   │       │   │   ├── pwd_plan9.go
+│   │       │   │   ├── race.go
+│   │       │   │   ├── race0.go
+│   │       │   │   ├── str.go
+│   │       │   │   ├── syscall.go
+│   │       │   │   ├── syscall_plan9.go
+│   │       │   │   ├── zsyscall_plan9_386.go
+│   │       │   │   ├── zsyscall_plan9_amd64.go
+│   │       │   │   ├── zsyscall_plan9_arm.go
+│   │       │   │   └── zsysnum_plan9.go
+│   │       │   ├── unix
+│   │       │   │   ├── .gitignore
+│   │       │   │   ├── README.md
+│   │       │   │   ├── affinity_linux.go
+│   │       │   │   ├── aliases.go
+│   │       │   │   ├── asm_*.s  (20 files)
+│   │       │   │   ├── auxv.go
+│   │       │   │   ├── auxv_unsupported.go
+│   │       │   │   ├── bluetooth_linux.go
+│   │       │   │   ├── bpxsvc_zos.go
+│   │       │   │   ├── bpxsvc_zos.s
+│   │       │   │   ├── cap_freebsd.go
+│   │       │   │   ├── constants.go
+│   │       │   │   ├── dev_*.go  (9 files)
+│   │       │   │   ├── dirent.go
+│   │       │   │   ├── endian_big.go
+│   │       │   │   ├── endian_little.go
+│   │       │   │   ├── env_unix.go
+│   │       │   │   ├── fcntl.go
+│   │       │   │   ├── fcntl_darwin.go
+│   │       │   │   ├── fcntl_linux_32bit.go
+│   │       │   │   ├── fdset.go
+│   │       │   │   ├── gccgo.go
+│   │       │   │   ├── gccgo_c.c
+│   │       │   │   ├── gccgo_linux_amd64.go
+│   │       │   │   ├── ifreq_linux.go
+│   │       │   │   ├── ioctl_linux.go
+│   │       │   │   ├── ioctl_signed.go
+│   │       │   │   ├── ioctl_unsigned.go
+│   │       │   │   ├── ioctl_zos.go
+│   │       │   │   ├── mkall.sh
+│   │       │   │   ├── mkerrors.sh
+│   │       │   │   ├── mmap_nomremap.go
+│   │       │   │   ├── mremap.go
+│   │       │   │   ├── pagesize_unix.go
+│   │       │   │   ├── pledge_openbsd.go
+│   │       │   │   ├── ptrace_darwin.go
+│   │       │   │   ├── ptrace_ios.go
+│   │       │   │   ├── race.go
+│   │       │   │   ├── race0.go
+│   │       │   │   ├── readdirent_getdents.go
+│   │       │   │   ├── readdirent_getdirentries.go
+│   │       │   │   ├── sockcmsg_*.go  (5 files)
+│   │       │   │   ├── symaddr_zos_s390x.s
+│   │       │   │   ├── syscall.go
+│   │       │   │   ├── syscall_*.go  (59 files)
+│   │       │   │   ├── sysvshm_linux.go
+│   │       │   │   ├── sysvshm_unix.go
+│   │       │   │   ├── sysvshm_unix_other.go
+│   │       │   │   ├── timestruct.go
+│   │       │   │   ├── unveil_openbsd.go
+│   │       │   │   ├── vgetrandom_linux.go
+│   │       │   │   ├── vgetrandom_unsupported.go
+│   │       │   │   ├── xattr_bsd.go
+│   │       │   │   ├── zerrors_*.go  (39 files)
+│   │       │   │   ├── zptrace_*.go  (5 files)
+│   │       │   │   ├── zsymaddr_zos_s390x.s
+│   │       │   │   ├── zsyscall_*.go  (42 files)
+│   │       │   │   ├── zsyscall_*.s  (9 files)
+│   │       │   │   ├── zsysctl_*.go  (7 files)
+│   │       │   │   ├── zsysnum_*.go  (35 files)
+│   │       │   │   └── ztypes_*.go  (39 files)
+│   │       │   └── windows
+│   │       │       ├── aliases.go
+│   │       │       ├── dll_windows.go
+│   │       │       ├── env_windows.go
+│   │       │       ├── eventlog.go
+│   │       │       ├── exec_windows.go
+│   │       │       ├── memory_windows.go
+│   │       │       ├── mkerrors.bash
+│   │       │       ├── mkknownfolderids.bash
+│   │       │       ├── mksyscall.go
+│   │       │       ├── race.go
+│   │       │       ├── race0.go
+│   │       │       ├── registry
+│   │       │       │   ├── key.go
+│   │       │       │   ├── mksyscall.go
+│   │       │       │   ├── syscall.go
+│   │       │       │   ├── value.go
+│   │       │       │   └── zsyscall_windows.go
+│   │       │       ├── security_windows.go
+│   │       │       ├── service.go
+│   │       │       ├── setupapi_windows.go
+│   │       │       ├── str.go
+│   │       │       ├── syscall.go
+│   │       │       ├── syscall_windows.go
+│   │       │       ├── types_windows.go
+│   │       │       ├── types_windows_386.go
+│   │       │       ├── types_windows_amd64.go
+│   │       │       ├── types_windows_arm.go
+│   │       │       ├── types_windows_arm64.go
+│   │       │       ├── zerrors_windows.go
+│   │       │       ├── zknownfolderids_windows.go
+│   │       │       └── zsyscall_windows.go
+│   │       ├── term
+│   │       │   ├── CONTRIBUTING.md
+│   │       │   ├── LICENSE
+│   │       │   ├── PATENTS
+│   │       │   ├── README.md
+│   │       │   ├── codereview.cfg
+│   │       │   ├── term.go
+│   │       │   ├── term_plan9.go
+│   │       │   ├── term_unix.go
+│   │       │   ├── term_unix_bsd.go
+│   │       │   ├── term_unix_other.go
+│   │       │   ├── term_unsupported.go
+│   │       │   ├── term_windows.go
+│   │       │   └── terminal.go
+│   │       └── text
+│   │           ├── LICENSE
+│   │           ├── PATENTS
+│   │           ├── cases
+│   │           │   ├── cases.go
+│   │           │   ├── context.go
+│   │           │   ├── fold.go
+│   │           │   ├── icu.go
+│   │           │   ├── info.go
+│   │           │   ├── map.go
+│   │           │   ├── tables15.0.0.go
+│   │           │   ├── tables17.0.0.go
+│   │           │   └── trieval.go
+│   │           ├── internal
+│   │           │   ├── internal.go
+│   │           │   ├── language
+│   │           │   │   ├── common.go
+│   │           │   │   ├── compact
+│   │           │   │   │   ├── compact.go
+│   │           │   │   │   ├── language.go
+│   │           │   │   │   ├── parents.go
+│   │           │   │   │   ├── tables.go
+│   │           │   │   │   └── tags.go
+│   │           │   │   ├── compact.go
+│   │           │   │   ├── compose.go
+│   │           │   │   ├── coverage.go
+│   │           │   │   ├── language.go
+│   │           │   │   ├── lookup.go
+│   │           │   │   ├── match.go
+│   │           │   │   ├── parse.go
+│   │           │   │   ├── tables.go
+│   │           │   │   └── tags.go
+│   │           │   ├── match.go
+│   │           │   └── tag
+│   │           │       └── tag.go
+│   │           ├── language
+│   │           │   ├── coverage.go
+│   │           │   ├── doc.go
+│   │           │   ├── language.go
+│   │           │   ├── match.go
+│   │           │   ├── parse.go
+│   │           │   ├── tables.go
+│   │           │   └── tags.go
+│   │           ├── secure
+│   │           │   └── bidirule
+│   │           │       └── bidirule.go
+│   │           ├── transform
+│   │           │   └── transform.go
+│   │           └── unicode
+│   │               ├── bidi
+│   │               │   ├── bidi.go
+│   │               │   ├── bracket.go
+│   │               │   ├── core.go
+│   │               │   ├── prop.go
+│   │               │   ├── tables15.0.0.go
+│   │               │   ├── tables17.0.0.go
+│   │               │   └── trieval.go
+│   │               └── norm
+│   │                   ├── composition.go
+│   │                   ├── forminfo.go
+│   │                   ├── input.go
+│   │                   ├── iter.go
+│   │                   ├── normalize.go
+│   │                   ├── readwriter.go
+│   │                   ├── tables15.0.0.go
+│   │                   ├── tables17.0.0.go
+│   │                   ├── transform.go
+│   │                   └── trie.go
+│   ├── gopkg.in
+│   │   └── yaml.v3
+│   │       ├── LICENSE
+│   │       ├── NOTICE
+│   │       ├── README.md
+│   │       ├── apic.go
+│   │       ├── decode.go
+│   │       ├── emitterc.go
+│   │       ├── encode.go
+│   │       ├── parserc.go
+│   │       ├── readerc.go
+│   │       ├── resolve.go
+│   │       ├── scannerc.go
+│   │       ├── sorter.go
+│   │       ├── writerc.go
+│   │       ├── yaml.go
+│   │       ├── yamlh.go
+│   │       └── yamlprivateh.go
+│   └── modules.txt
+└── webui
+    ├── eslint.config.js
+    ├── index.html
+    ├── package.json
+    ├── src
+    │   ├── App.tsx
+    │   ├── api
+    │   │   ├── client.test.ts
+    │   │   ├── client.ts
+    │   │   └── types.ts
+    │   ├── components
+    │   │   ├── AboutDialog.test.tsx
+    │   │   ├── AboutDialog.tsx
+    │   │   ├── AddDepWizard.tsx
+    │   │   ├── AuthDialog.test.tsx
+    │   │   ├── AuthDialog.tsx
+    │   │   ├── AuthRequiredNotice.tsx
+    │   │   ├── CredentialsDialog.tsx
+    │   │   ├── DepConfigureDialog.tsx
+    │   │   ├── DepDiffDialog.tsx
+    │   │   ├── DepsTab.test.tsx
+    │   │   ├── DepsTab.tsx
+    │   │   ├── DesktopShell.test.tsx
+    │   │   ├── DesktopShell.tsx
+    │   │   ├── ErrorWithAuth.tsx
+    │   │   ├── EventsIndicator.test.tsx
+    │   │   ├── EventsIndicator.tsx
+    │   │   ├── FilesTab.tsx
+    │   │   ├── SchemaForm.test.tsx
+    │   │   ├── SchemaForm.tsx
+    │   │   ├── SetsTab.test.tsx
+    │   │   ├── SetsTab.tsx
+    │   │   ├── SourcesEditor.tsx
+    │   │   ├── ThemeToggle.test.tsx
+    │   │   ├── ThemeToggle.tsx
+    │   │   ├── ValuesTab.test.ts
+    │   │   ├── ValuesTab.test.tsx
+    │   │   ├── ValuesTab.tsx
+    │   │   ├── ViewToggle.tsx
+    │   │   ├── WorkspaceRail.test.tsx
+    │   │   └── WorkspaceRail.tsx
+    │   ├── index.css
+    │   ├── lib
+    │   │   ├── desktop.ts
+    │   │   ├── monaco.ts
+    │   │   ├── queryClient.ts
+    │   │   ├── theme.test.ts
+    │   │   ├── theme.ts
+    │   │   ├── updates.test.ts
+    │   │   ├── updates.ts
+    │   │   └── useMounted.ts
+    │   ├── main.tsx
+    │   ├── pages
+    │   │   ├── Catalog.test.tsx
+    │   │   ├── Catalog.tsx
+    │   │   ├── Dashboard.test.tsx
+    │   │   ├── Dashboard.tsx
+    │   │   ├── Instance.test.tsx
+    │   │   └── Instance.tsx
+    │   ├── test
+    │   │   ├── fakeApi.ts
+    │   │   ├── fakeDesktop.ts
+    │   │   └── render.tsx
+    │   └── test-setup.ts
+    ├── tsconfig.json
+    └── vite.config.ts
+342 directories, 2571 files

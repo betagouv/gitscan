@@ -3,19 +3,22 @@
 
   <h1>helmdex</h1>
 
-  <p>TUI organizer for Helm umbrella chart instances — no rendering, no deploy.</p>
+  <p>Organizer for Helm umbrella chart instances — desktop app, web UI, TUI &amp; CLI. No rendering, no deploy.</p>
 </div>
 
 ---
 
 ## helmdex in 30 seconds
 
-`helmdex` is a **TUI-first organizer** for GitOps-friendly Helm **umbrella chart** instances.
+`helmdex` is an organizer for GitOps-friendly Helm **umbrella chart** instances — as a **desktop app**, a **web UI** (`helmdex ui`), a **TUI**, and a **CLI**.
 
 - Create and manage multiple instances (one per app / env)
 - Add / upgrade dependencies, from a curated catalog or Artifact Hub
 - Manage layered values (defaults → platform → sets → instance)
 - Generate a merged `values.yaml` designed to be committed and reviewed
+- Or work on **helmdex-agnostic repos**: point helmdex at any gitops repo of
+  umbrella charts — it adapts to the repo (no helmdex files added, values
+  edited in place with minimal diffs)
 
 **What it is not:** `helmdex` does **not** render templates and does **not** deploy (no `helm template`, no `helm install`).
 
@@ -23,14 +26,18 @@
 
 - 🧾 **GitOps-friendly umbrella chart instances** on disk: commit `Chart.yaml`, `Chart.lock`, and a generated `values.yaml` that’s meant to be reviewed in PRs.
 - 🗂️ **Curated catalog + presets**: add approved dependencies from a team catalog and apply versioned defaults/platform/sets.
-- 🔎 **Artifact Hub built-in**: search charts and pick versions without leaving the TUI (also available via CLI).
+- 🔎 **Artifact Hub built-in**: search charts and pick versions without leaving the app (also available via CLI).
 - 🧅 **Layered values → one merged output**: defaults → platform → sets → per-dep sets → `values.instance.yaml` → merged `values.yaml`.
-- 🧠 **Schema-aware configuration**: when charts publish `values.schema.json`, edit values with a structured TUI editor.
+- 🧠 **Schema-aware configuration**: when charts publish `values.schema.json`, edit values with a structured form editor.
 - 🧪 **Safer upgrades**: preview diffs between chart versions (values + schema) before applying.
 - 🤖 **CLI parity for automation**: use helmdex in CI (`catalog sync`, `instance apply`, values get/set, dependency inspect…).
 - 🧯 **Escape hatches**: detach a dependency from a catalog entry to unblock urgent changes.
 - 📌 **Reproducible dependency operations**: helmdex ships a pinned Helm binary and verifies downloads.
 - 🔒 **Repo-local isolation**: Helm repos/caches and OCI auth are stored under `.helmdex/` (no pollution of user `~/.config/helm` or `~/.docker`).
+- 🔑 **Private sources, frictionless sign-in**: a 401 on a private OCI registry / Helm repo / git source becomes a sign-in flow — credentials auto-detected from local config (docker/podman/helm/git/gh/glab), or a PAT via the provider's pre-filled token page, or SSH deploy keys; verified before being stored.
+- 🕊️ **Agnostic-repo mode**: repos without `helmdex.yaml` stay byte-identical — state lives in the user cache, config in `~/.config/helmdex/config.yaml`, and every values file is user-owned and edited **in place** (comments, blank lines and alignment preserved; a 1-value change is a 1-line diff).
+- 📐 **Templates / blueprints**: a repo `templates/` dir of chart blueprints (e.g. review-env gabarits) is detected; create instances from them in one step (`instance create --from-template`).
+- 🖥️ **Desktop app & web UI**: the Wails-based desktop app manages several repos side by side (one tab per folder) with a native picker — fully offline; `helmdex ui` serves the same local SPA in a browser. Dark/light/system theme and grid ⇄ list display modes.
 
 <details>
 <summary>How helmdex fits a GitOps PR workflow</summary>
@@ -39,7 +46,7 @@
 flowchart TD
   %% Use quoted labels + <br/> for maximum Mermaid renderer compatibility.
   subgraph Dev["Developer and platform repo"]
-    A["Open helmdex (TUI) or run CLI"] --> B["Select instance (app / env)"]
+    A["Open helmdex (desktop/web/TUI) or run CLI"] --> B["Select instance (app / env)"]
     B --> C["Add/upgrade dependency<br/>Catalog • Artifact Hub • Arbitrary • OCI"]
     C --> D["Select sets<br/>values.set.* and values.dep-set.* markers"]
     D --> E["Edit overrides<br/>values.instance.yaml (YAML or schema editor)"]
@@ -73,7 +80,57 @@ flowchart TD
 
 ## Install
 
-Download the latest binary for your platform:
+helmdex ships in three interchangeable forms — all driving the same engine:
+
+- **Desktop app** — a native window, no terminal needed. Best for interactive use.
+- **CLI / TUI** — a single static binary (`helmdex`) for the terminal and CI.
+- **Web UI** — `helmdex ui` serves the same UI in your browser (handy for remote/dev).
+
+### Desktop app
+
+Download the build for your OS from the [latest release](https://github.com/SocialGouv/helmdex/releases/latest), then run it. Every release attaches desktop builds for macOS, Windows and Linux.
+
+**macOS** (universal — Intel + Apple Silicon):
+
+```bash
+curl -fsSL -o helmdex-desktop.zip \
+  https://github.com/SocialGouv/helmdex/releases/latest/download/helmdex-desktop-darwin-universal.zip
+unzip helmdex-desktop.zip -d /Applications/
+# First launch is unsigned: right-click the app → Open, or:
+xattr -dr com.apple.quarantine "/Applications/Helmdex.app"
+open "/Applications/Helmdex.app"
+```
+
+**Windows** (portable — no installer):
+
+```powershell
+Invoke-WebRequest -Uri "https://github.com/SocialGouv/helmdex/releases/latest/download/helmdex-desktop-windows-amd64.exe" -OutFile helmdex-desktop.exe
+.\helmdex-desktop.exe
+```
+
+**Linux** (AppImage — self-contained, bundles its WebKitGTK runtime):
+
+```bash
+ARCH=$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/')
+curl -fsSL -o helmdex-desktop.AppImage \
+  "https://github.com/SocialGouv/helmdex/releases/latest/download/helmdex-desktop-linux-${ARCH}.AppImage"
+chmod +x helmdex-desktop.AppImage
+./helmdex-desktop.AppImage
+```
+
+Running the AppImage needs FUSE (`sudo apt install libfuse2` on Debian/Ubuntu), or run it with `--appimage-extract-and-run`. On a Wayland session where the window fails to open, launch with `GDK_BACKEND=x11 ./helmdex-desktop.AppImage` (a standard WebKitGTK-on-Wayland workaround).
+
+The desktop app manages **several repos side by side**: each open folder is a tab in the vertical rail on the left, served by its own isolated workspace, and the window title follows the active folder. Open folders, the active tab and the window geometry are restored on relaunch. Any GitOps repo works — including [helmdex-agnostic repos](#helmdex-agnostic-mode) with no `helmdex.yaml`.
+
+- **Open a folder**: the `+` tile in the rail (or `Ctrl+O`), or launch as `helmdex-desktop <dir>`; on first launch (no folders restored), starting it from a terminal in a project directory opens that directory.
+- **Switch tabs**: click a tile, `Ctrl+1`…`Ctrl+9` to jump, `Ctrl+PgUp`/`Ctrl+PgDn` to cycle.
+- **Close a tab**: the `×` badge on hover, or middle-click the tile.
+- **Expand the rail**: the chevron at the bottom (or `Ctrl+B`) switches between compact monograms and full names with parent paths.
+- **Updates**: the About dialog (sidebar footer) shows the installed version and checks for new releases (automatic once a day, opt-out). On Linux (AppImage) and Windows, **Update & restart** downloads the release, verifies its checksum, swaps the binary in place and relaunches; the release page stays available as a fallback (and is the way to update on macOS for now).
+
+### CLI / TUI
+
+Download the static binary for your platform:
 
 ```bash
 curl -fsSL "https://github.com/SocialGouv/helmdex/releases/latest/download/helmdex-$(uname -s | tr '[:upper:]' '[:lower:]')-$(uname -m | sed 's/x86_64/amd64/' | sed 's/aarch64/arm64/')" | sudo tee /usr/local/bin/helmdex > /dev/null && sudo chmod +x /usr/local/bin/helmdex
@@ -91,7 +148,7 @@ curl -fsSL "https://github.com/SocialGouv/helmdex/releases/latest/download/helmd
 Invoke-WebRequest -Uri "https://github.com/SocialGouv/helmdex/releases/latest/download/helmdex-windows-amd64.exe" -OutFile helmdex.exe
 ```
 
-Verify the download (optional):
+Verify the download (optional — every asset ships a `.sha256`):
 
 ```bash
 curl -fsSL "https://github.com/SocialGouv/helmdex/releases/latest/download/helmdex-$(uname -s | tr '[:upper:]' '[:lower:]')-$(uname -m | sed 's/x86_64/amd64/' | sed 's/aarch64/arm64/').sha256" | sha256sum -c
@@ -102,6 +159,8 @@ Or build from source:
 ```bash
 go install github.com/SocialGouv/helmdex/cmd/helmdex@latest
 ```
+
+The web UI is served from the CLI binary: `helmdex ui --open` (see [Web UI & desktop](#web-ui--desktop)).
 
 ## Quick start (TUI)
 
@@ -132,6 +191,34 @@ export HELMDEX_NO_BUNDLED_HELM=1
 Running `helmdex` with no arguments opens the interactive dashboard when stdin is a TTY. Outside a TTY (pipe, CI) it prints help instead.
 
 ---
+
+## Web UI & desktop
+
+Prebuilt desktop apps are on the [releases page](#desktop-app). The same UI runs
+in your browser, straight from the CLI binary:
+
+```bash
+helmdex ui --open          # serve the web UI for the current repo (localhost)
+```
+
+The web UI and desktop app share one SPA and local API: dashboard (instances +
+templates), dependency management (catalog / Artifact Hub / arbitrary + OCI,
+version picker, side-by-side values/schema diffs between versions, detach,
+schema-form configurator), mode-aware values editing (Monaco), sets, sources
+editor, and a file browser.
+
+Build them yourself:
+
+```bash
+task ui:dev                      # dev loop: Go API + Vite with hot reload
+task ui:build                    # embed the SPA into the helmdex binary
+task desktop:install-tools       # one-time: install the Wails CLI
+task desktop:build:linux:amd64   # or :linux:arm64 / :darwin:universal / :windows:amd64 / :windows:arm64
+```
+
+Desktop builds (macOS universal `.zip`, Windows portable `.exe`, Linux
+`.AppImage` for amd64 + arm64, each with a `.sha256`) are produced by CI and
+attached to every tagged release.
 
 ## TUI at a glance
 
@@ -187,6 +274,31 @@ The terminal window title tracks your location:
 3. `helmdex catalog sync`
 4. Open the TUI → create an instance → add a dependency → pick sets → apply
 5. Commit the resulting `Chart.yaml`, `Chart.lock`, and generated `values.yaml` for review
+
+---
+
+## helmdex-agnostic mode
+
+Point helmdex (TUI, `helmdex ui`, or the desktop app) at **any** GitOps repo of
+umbrella-chart directories — it adapts to the repo instead of the other way
+round. A repo with no `helmdex.yaml` stays **byte-identical**:
+
+- **No files added.** Per-repo state (Helm envs, caches, catalog, depmeta)
+  lives under your user cache dir, never in the repo. Config comes from
+  `~/.config/helmdex/config.yaml` (with optional per-repo overrides), not a
+  committed file.
+- **Values edited in place.** Instances without a `values.instance.yaml` are
+  *direct*: `values.yaml` (and any `values.*.yaml`) are yours. helmdex edits
+  them through a comment-preserving YAML editor — changing one value is a
+  **one-line diff** (blank lines, comment alignment and list style preserved),
+  and it never regenerates or reorders your file.
+- **Templates detected.** A top-level `templates/` dir of chart blueprints
+  (e.g. review-env gabarits) is surfaced; create instances from them with
+  `helmdex instance create --from-template <name>` or one click in the UI.
+
+Layout is auto-detected (`apps/`, `environments/`, …); pin it per repo in the
+user config if needed. Everything is universal — nothing is tied to any
+specific platform.
 
 ---
 
@@ -308,6 +420,25 @@ Preset files are organized as `charts/<name>/<version-or-constraint>/values.*.ya
 When you open **Add dependency → Predefined catalog** and no entries are found, helmdex attempts a one-time auto-sync for the session. If there is no config or no sources, the wizard offers shortcuts to **Configure sources** and retry.
 
 ---
+
+## Private sources (authentication)
+
+Private OCI registries (e.g. a GitLab container registry), password-protected Helm repositories and private git sources all work — helmdex manages the credentials for you.
+
+When an operation fails because a remote requires authentication, the web/desktop UI turns the error into a **Sign in** flow, ordered by friction:
+
+1. **Detected local credentials** — helmdex scans your existing config for the host (and related hosts, e.g. `pic.example.org` for `pic-registry.example.org`): Docker/Podman logins (including credential helpers), previous `helm registry login`s, git credential helpers, `gh` and `glab` CLI tokens. One click wires it; the secret is resolved locally and never transits through the browser.
+2. **Create a token in the browser** — opens the provider's token-creation page pre-filled with a name and read scopes (GitLab and GitHub), then paste the PAT.
+3. **Manual** — username/password, or an SSH key path for git remotes (stored by path, never read).
+
+Every credential is verified against the remote before being stored (a bad token is rejected with the server's response). The sidebar **Credentials** panel lists every remote the open repository references, its sign-in state, and the stored credentials.
+
+Details:
+
+- Credentials are stored per host in `~/.config/helmdex/credentials.yaml` (0600) and shared across repositories; remove them with `helmdex auth remove <host>` or from the Credentials panel.
+- OCI credentials are materialized into each repository's isolated Helm environment automatically — your global `~/.docker/config.json` stays untouched and is never used implicitly.
+- git operations never prompt interactively (a hidden prompt would hang the server/desktop); a missing credential surfaces as a sign-in flow instead. SSH remotes use your ssh-agent/default keys as usual, or a configured deploy key.
+- The same flows exist in the CLI: `helmdex auth detect|login|list|remove` (see the CLI reference).
 
 ## Values and files (deeper)
 
@@ -442,6 +573,20 @@ helmdex catalog get <id> [--format json|table]
 helmdex artifacthub search <query> [--limit 20] [--format json|table]
 helmdex artifacthub versions <repoKey> <package> [--format json|table]
 ```
+
+### Authentication (private sources)
+
+```bash
+helmdex auth detect <host> [--kind oci|git|helm-repo]   # what local config already knows this host
+helmdex auth login <host> --kind oci --use glab-cli     # wire a detected credential
+helmdex auth login <host> --kind oci --password-stdin   # or paste a PAT
+helmdex auth login <host> --kind oci --open-token-page  # open the provider's token page first
+helmdex auth login <host> --kind git --ssh-key ~/.ssh/id_ed25519
+helmdex auth list
+helmdex auth remove <host> [--kind ...]
+```
+
+See [Private sources](#private-sources-authentication) for the full flow.
 
 ### OCI registry
 
