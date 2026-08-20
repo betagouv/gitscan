@@ -1,21 +1,26 @@
-## Changelog : labonnealternance (30 derniers jours, au 16 août 2026)
+## Changelog : labonnealternance (30 derniers jours, au 19 août 2026)
 
 ### Résumé
-Ce mois-ci a été marqué par un tournant majeur avec le déploiement du nouveau moteur de recherche et un effort massif pour améliorer la visibilité du site sur les moteurs de recherche (SEO). La plateforme est devenue plus rapide et plus robuste grâce à des optimisations de performance significatives et une mise à jour profonde des technologies de base.
+Ce mois a été marqué par un tournant majeur avec le déploiement du nouveau moteur de recherche (v2) et une optimisation profonde du référencement naturel (SEO) pour améliorer la visibilité de la plateforme sur Google. Parallèlement, de nouveaux outils d'administration ont été déployés pour faciliter la gestion des partenaires et des CFA, tandis que des automatisations de relance (via Brevo) ont été mises en place pour dynamiser la mise en relation entre candidats et recruteurs.
 
 ### Évolutions fonctionnelles
-- **Nouveau moteur de recherche** : Bascule du moteur de recherche beta en moteur principal, incluant des améliorations d'accessibilité (RGAA) ([#5146](https://github.com/mission-apprentissage/labonnealternance/issues/5146)) et l'intégration d'un système de feedback utilisateur ([#5056](https://github.com/mission-apprentissage/labonnealternance/issues/5056)).
-- **Optimisation SEO & Visibilité** : Amélioration majeure du référencement Google via l'ajout de données structurées (Course, ItemList, JobPosting), de balises méta dynamiques et de maillages internes sur les pages de recherche, de métiers et de villes ([#5129](https://github.com/mission-apprentissage/labonnealternance/issues/5129), [#5141](https://github.com/mission-apprentissage/labonnealternance/issues/5141), [#5040](https://github.com/mission-apprentissage/labonnealternance/issues/5040), [#5050](https://github.com/mission-apprentissage/labonnealternance/issues/5050)).
-- **Outils d'administration** : Mise en place de nouveaux écrans de gestion pour les offres partenaires ([#5135](https://github.com/mission-apprentissage/labonnealternance/issues/5135)) et pour les entreprises de type CFA ([#4974](https://github.com/mission-apprentissage/labonnealternance/issues/4974)).
-- **Engagement et Nurturing** : Automatisation des relances par email pour les candidats inactifs et les entreprises via Brevo ([#4952](https://github.com/mission-apprentissage/labonnealternance/issues/4952), [#4980](https://github.com/mission-apprentissage/labonnealternance/issues/4980)).
-- **Expérience Utilisateur** : Unification de la modale de clôture de recrutement ([#5046](https://github.com/mission-apprentissage/labonnealternance/issues/5046)) et corrections d'interface (menu header, boutons de recherche mobile) ([#5145](https://github.com/mission-apprentissage/labonnealternance/issues/5145), [#5057](https://github.com/mission-apprentissage/labonnealternance/issues/5057)).
+- **Moteur de recherche :** Bascule du moteur de recherche bêta vers la version principale (v2) [#4785] et intégration d'une enquête de satisfaction via Tally [#5056].
+- **SEO & Visibilité :** Amélioration massive du référencement via l'ajout de données structurées (Course, ItemList, JobPosting) sur les pages de destination et une meilleure visibilité des résultats de recherche sur Google.
+- **Gestion & Administration :** Création d'un écran d'administration pour la gestion des offres partenaires [#5135] et d'une interface dédiée pour les entreprises de type CFA [#4974].
+- **Contenu & Accompagnement :** Enrichissement du guide sur la rémunération, mise à jour de la carte des métiers 2026-2027 et ajout de nouveaux articles dans le guide CFA.
+- **Engagement utilisateur :** Mise en place de campagnes de relance automatisées pour les candidats inactifs et les entreprises (nurturing) via Brevo.
+- **Expérience utilisateur :** Unification de la modale de clôture de recrutement et amélioration de la navigation mobile.
 
 ### Évolutions techniques
-- **Performance & Navigation** : Adoption du "Cache Components" et du "Partial Prefetching" pour permettre des navigations quasi instantanées entre les pages ([#5114](https://github.com/mission-apprentissage/labonnealternance/issues/5114), [#5120](https://github.com/mission-apprentissage/labonnealternance/issues/5120)).
-- **Modernisation de la stack** : Mise à jour majeure des dépendances critiques incluant TypeScript 7, Next.js 16.3, Zod v4 et Node 26 ([#5094](https://github.com/mission-apprentissage/labonnealternance/issues/5094), [#5096](https://github.com/mission-apprentissage/labonnealternance/issues/5096)).
-- **Sécurité & Fiabilité** : Implémentation du rate limiting Nginx pour prévenir le scraping ([#5075](https://github.com/mission-apprentissage/labonnealternance/issues/5075)), correction de vulnérabilités critiques (CVE) ([#5055](https://github.com/mission-apprentissage/labonnealternance/issues/5055)) et résolution d'erreurs critiques remontées par Sentry ([#5151](https://github.com/mission-apprentissage/labonnealternance/issues/5151)).
-- **Intelligence Artificielle** : Migration de la classification des offres partenaires vers le modèle Mistral ([#5131](https://github.com/mission-apprentissage/labonnealternance/issues/5131)).
+- **Performance :** Optimisation de la vitesse de navigation grâce à l'adoption de "Cache Components" et du "Partial Prefetching" (Next.js 16.3) pour des transitions quasi instantanées.
+- **Intelligence Artificielle :** Migration de la classification des offres partenaires vers le modèle Mistral [#5131].
+- **Sécurité :** Implémentation de limitations de débit (rate limiting) sur Nginx pour prévenir le scraping et rotation des clés API Mistral.
+- **Architecture & Code :** 
+    - Migration vers TypeScript 7, Next.js 16.3 et Biome 2.5.7.
+    - Refactoring massif pour passer l'ensemble de la structure de fichiers au format `kebab-case`.
+    - Migration vers Zod v4.
+- **Fiabilité :** Amélioration de la gestion des erreurs d'API et des processus de recherche (gestion des synonymes et des clauses de repli).
 
 ### Autres changements
-- **Refactorisation du code** : Nettoyage massif de la structure des dossiers et fichiers pour appliquer la convention `kebab-case` sur l'ensemble du projet ([#5108](https://github.com/mission-apprentissage/labonnealternance/issues/5108)).
-- **Documentation** : Mise à jour des principes d'architecture pour l'utilisation des agents IA ([#5125](https://github.com/mission-apprentissage/labonnealternance/issues/5125)).
+- **Documentation :** Rédaction des principes d'architecture pour les agents IA [#5125].
+- **Maintenance :** Mise à jour de l'image Docker de Metabase et nettoyage de la base de données (backfill de champs manquants).
