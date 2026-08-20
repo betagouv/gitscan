@@ -1174,6 +1174,7 @@
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── shared
 │   │   │   │   │   │   ├── campaign.ts
+│   │   │   │   │   │   ├── campaignAlignment.ts
 │   │   │   │   │   │   ├── campaignClock.ts
 │   │   │   │   │   │   ├── companyObligation.ts
 │   │   │   │   │   │   ├── companySize.ts
@@ -1328,10 +1329,12 @@
 │   │   │   │   │       ├── DsfrPictogram.tsx
 │   │   │   │   │       ├── NavLink.tsx
 │   │   │   │   │       ├── NewTabNotice.tsx
+│   │   │   │   │       ├── RouteScrollReset.tsx
 │   │   │   │   │       ├── SkipLinks.tsx
 │   │   │   │   │       ├── __tests__
 │   │   │   │   │       │   ├── NavLink.test.tsx
 │   │   │   │   │       │   ├── NewTabNotice.test.tsx
+│   │   │   │   │       │   ├── RouteScrollReset.test.tsx
 │   │   │   │   │       │   └── SkipLinks.test.tsx
 │   │   │   │   │       └── routeUtils.ts
 │   │   │   │   ├── legal
@@ -1380,6 +1383,7 @@
 │   │   │   │   ├── mail
 │   │   │   │   │   ├── ResendReceiptButton.tsx
 │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── buildReceiptAttachments.test.ts
 │   │   │   │   │   │   ├── enqueueReceipt.test.ts
 │   │   │   │   │   │   └── sendRules.test.ts
 │   │   │   │   │   ├── buildReceiptAttachments.ts
@@ -1443,6 +1447,7 @@
 │   │   │   │   │   │   ├── formatAddress.test.ts
 │   │   │   │   │   │   ├── formatSiren.test.ts
 │   │   │   │   │   │   └── useUpdateHasCse.test.tsx
+│   │   │   │   │   ├── archivesAvailability.ts
 │   │   │   │   │   ├── buildDeclarationList.ts
 │   │   │   │   │   ├── declarationProcessState.ts
 │   │   │   │   │   ├── declarationStatus.ts
@@ -1457,7 +1462,8 @@
 │   │   │   │   │   ├── ProfileModal.tsx
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   ├── ProfileModal.test.tsx
-│   │   │   │   │   │   └── phone.test.ts
+│   │   │   │   │   │   ├── phone.test.ts
+│   │   │   │   │   │   └── schemas.test.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── phone.ts
 │   │   │   │   │   └── schemas.ts
@@ -1545,6 +1551,7 @@
 │   │   │   │   │   ├── getDsfrModal.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── parseSiren.ts
+│   │   │   │   │   ├── scrollToTop.ts
 │   │   │   │   │   ├── uploadConfig.ts
 │   │   │   │   │   ├── uploadFile.ts
 │   │   │   │   │   ├── useDownloadClickGuard.ts
@@ -1566,6 +1573,7 @@
 │   │   │   │   │   ├── root.ts
 │   │   │   │   │   ├── routers
 │   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   ├── admin.searchCompany.test.ts
 │   │   │   │   │   │   │   ├── adminDeclarations.cancel.test.ts
 │   │   │   │   │   │   │   ├── adminDeclarations.getById.test.ts
 │   │   │   │   │   │   │   ├── adminDeclarations.getRecap.test.ts
@@ -1574,6 +1582,7 @@
 │   │   │   │   │   │   │   ├── adminReferents.test.ts
 │   │   │   │   │   │   │   ├── adminSettings.test.ts
 │   │   │   │   │   │   │   ├── adminStats.getUsersPerCompany.integration.test.ts
+│   │   │   │   │   │   │   ├── adminStats.gipWorkforceBounds.integration.test.ts
 │   │   │   │   │   │   │   ├── adminStats.test.ts
 │   │   │   │   │   │   │   ├── company.getWithDeclarations.test.ts
 │   │   │   │   │   │   │   ├── company.list.test.ts
@@ -1597,6 +1606,7 @@
 │   │   │   │   │   │   │   │   ├── declarationTestHelpers.ts
 │   │   │   │   │   │   │   │   └── lockTestHelpers.ts
 │   │   │   │   │   │   │   ├── jointEvaluation.test.ts
+│   │   │   │   │   │   │   ├── profile.test.ts
 │   │   │   │   │   │   │   ├── publicReferents.test.ts
 │   │   │   │   │   │   │   ├── publicStats.test.ts
 │   │   │   │   │   │   │   └── statusHistoryHelpers.test.ts
@@ -1681,6 +1691,7 @@
 │   │   │   │       │   ├── fileUpload.test.ts
 │   │   │   │       │   ├── fileValidation.test.ts
 │   │   │   │       │   ├── gipMds.test.ts
+│   │   │   │       │   ├── gipMdsReconciliation.integration.test.ts
 │   │   │   │       │   ├── matomo.test.ts
 │   │   │   │       │   ├── publicDeclarationsService.integration.test.ts
 │   │   │   │       │   ├── publicDeclarationsService.test.ts
@@ -1852,4 +1863,4 @@
 │   ├── setup-worktree.sh
 │   └── teardown-worktree.sh
 └── sonar-project.properties
-302 directories, 1552 files
+302 directories, 1563 files

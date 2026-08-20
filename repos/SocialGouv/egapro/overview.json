@@ -1,39 +1,41 @@
 {
   "url": "https://github.com/SocialGouv/egapro",
   "name": "egapro",
-  "description": "Plateforme gouvernementale de déclaration de l'index de l'égalité professionnelle femmes-hommes. Elle permet aux entreprises de mesurer et déclarer leurs écarts de rémunération conformément à la directive européenne.",
+  "description": "Plateforme gouvernementale permettant aux entreprises de déclarer leur index de l'égalité professionnelle femmes-hommes. Elle facilite la saisie des indicateurs, la gestion des avis du CSE et la consultation publique des données.",
   "language": "TypeScript",
   "features": [
-    "Gestion documentaire & Fichiers",
+    "Formulaires & Démarches",
     "Authentification & Accès",
     "Statistiques & Rapports",
     "Recherche & Filtres",
-    "Formulaires & Démarches",
     "Sécurité & Conformité",
+    "Gestion des médias & Assets",
     "Tableaux & Affichage"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Next.js",
     "TypeScript",
+    "DSFR",
     "PostgreSQL",
     "Drizzle ORM",
-    "DSFR",
-    "ProConnect",
     "Playwright",
+    "pnpm",
     "Matomo",
-    "MinIO",
-    "Valkey"
+    "Minio",
+    "Valkey",
+    "ClamAV"
   ],
   "components": [
-    "API REST & GraphQL",
-    "PostgreSQL & SQL",
     "React / Next.js",
+    "PostgreSQL & SQL",
     "TypeScript / JavaScript",
     "Design System (DSFR & UI libs)",
     "Docker & Conteneurs",
+    "API REST & GraphQL",
+    "Tests",
     "Authentification (composant)",
-    "CI/CD & Déploiement"
+    "ORM & Accès aux données"
   ],
   "auth": {
     "methods": [
@@ -44,7 +46,7 @@
     ]
   },
   "tests": [
-    "Playwright",
+    "Playwright (E2E)",
     "Lighthouse",
     "Unit tests"
   ],
@@ -60,9 +62,9 @@
     "React & Next.js",
     "TypeScript",
     "Bases de données SQL",
-    "Docker & Conteneurs",
-    "CI/CD & GitHub Actions",
     "Design System & UI",
-    "Accessibilité"
+    "Docker & Conteneurs",
+    "Accessibilité",
+    "CI/CD & GitHub Actions"
   ]
 }
