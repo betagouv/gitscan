@@ -1,3 +1,91 @@
+2026-08-19T17:06:03Z - 4da311df4 - Colin Darie : Merge pull request #13682 from demarche-numerique/remove-delayed-job
+2026-08-19T17:01:01+02:00 - 6550ef64e - mfo : refactor(config): drop the no-op html_safe in field_error_proc
+2026-08-19T17:01:00+02:00 - e8eec1cd1 - mfo : refactor(mailer): use the WORD JOINER character instead of its HTML entity
+2026-08-19T17:00:57+02:00 - 7772170fa - mfo : refactor(prefill): assemble possible_values with safe_join instead of html_safe
+2026-08-19T16:22:01+02:00 - 665713f41 - mfo : chore(brakeman): refresh the FAQ ignore entry after the ERB rename
+2026-08-19T16:21:57+02:00 - 13565feb0 - mfo : refactor(haml): migrate FranceConnect choose_email to ERB
+2026-08-19T16:21:50+02:00 - fb9fb3454 - mfo : refactor(haml): migrate FAQ show page to ERB
+2026-08-19T16:19:18+02:00 - ba9258ba3 - mfo : tech: build the drop zone attributes with tag.attributes
+2026-08-19T15:52:04Z - bd657dd55 - Colin Darie : Merge pull request #13685 from demarche-numerique/fix-safe-join-html-safe
+2026-08-19T15:44:38+02:00 - cbda816ad - mfo : refactor(i18n): mark the archived export toggle title with an _html key
+2026-08-19T15:44:38+02:00 - 6cd99d884 - mfo : refactor(i18n): mark the HTML-bearing translations with an _html key
+2026-08-19T15:44:35+02:00 - 20f41fc5f - mfo : refactor(i18n): drop the html_safe calls that were already no-ops
+2026-08-19T15:13:33+02:00 - ef8bfb4b8 - Colin Darie : tech(db): drop the delayed_jobs table
+2026-08-19T15:00:46+02:00 - 672bef871 - Colin Darie : tech: remove delayed_job support
+2026-08-19T14:52:34+02:00 - 7cf888339 - mfo : fix(carte): point the RPG archive at its new host
+2026-08-19T14:52:33+02:00 - a30517f39 - mfo : fix(carte): make cadastres and rpg layers mutually exclusive in the model
+2026-08-19T14:52:30+02:00 - dec02f95d - mfo : fix(i18n): add the missing fr translation for the rpg carte layer
+2026-08-19T14:37:38Z - c7a92b1f0 - mfo : Merge pull request #13683 from demarche-numerique/cleanup-html-safe-i18n
+2026-08-19T14:32:54+02:00 - f43f4aa8d - simon lehericey : tech: move the attachment validations to the STI subclasses
+2026-08-19T14:32:54+02:00 - 5fb091a13 - simon lehericey : tech: move allowed_extensions to PieceJustificativeTypeDeChamp
+2026-08-19T14:32:53+02:00 - 6d1bb0f2e - simon lehericey : tech: drop the attachment filename/checksum helpers of TypeDeChamp
+2026-08-19T14:32:53+02:00 - 34da70efc - simon lehericey : tech: add the formatted *_accepted? predicates
+2026-08-19T14:32:53+02:00 - 056720da5 - simon lehericey : tech: move the last per-type branches of TypeDeChamp to the subclasses
+2026-08-19T14:32:52+02:00 - a383672bf - simon lehericey : tech: move the drop-down options logic to the STI subclasses
+2026-08-19T14:32:52+02:00 - 29dd839ee - simon lehericey : tech: cast the boolean options through ActiveModel::Type::Boolean
+2026-08-19T14:32:51+02:00 - fe474a173 - simon lehericey : tech: move the remaining single-type option predicates to the STI subclasses
+2026-08-19T14:28:02Z - 3bf138bd7 - mfo : Merge pull request #13674 from demarche-numerique/auto/haml-migration/batch-997fe202
+2026-08-19T14:25:16Z - 95c8725fe - mfo : Merge pull request #13684 from demarche-numerique/fix-file-field-tag-attributes
+2026-08-19T14:17:45Z - 4eb204d12 - Colin Darie : Merge pull request #13587 from demarche-numerique/6338-carte-image-pdf
+2026-08-19T13:45:31+02:00 - e574e6e54 - simon lehericey : tech: move the date option predicates to the STI subclasses
+2026-08-19T13:45:31+02:00 - a41ec741b - simon lehericey : tech: move the referentiel mapping methods to the STI subclass
+2026-08-19T13:45:31+02:00 - 7500508cd - simon lehericey : tech: move the number option predicates to the STI subclasses
+2026-08-19T13:45:30+02:00 - df9538b27 - simon lehericey : tech: move the carte and header section methods to the STI subclasses
+2026-08-19T13:45:30+02:00 - 21276018c - simon lehericey : tech: move the piece justificative nature and options to the STI subclass
+2026-08-19T12:58:04Z - 6070943a2 - mfo : Merge pull request #13679 from mfo/fix-i18n-carte-layer-rpg
+2026-08-19T12:42:31Z - 8ddfdf006 - LeSim : Merge pull request #13676 from demarche-numerique/type-de-champ-sti-polymorphism-3
+2026-08-19T10:35:33+02:00 - 668086473 - simon lehericey : tech: rename the customizable columns methods
+2026-08-19T10:30:52+02:00 - be9627b06 - simon lehericey : tech: move the per-type callbacks to the STI subclasses
+2026-08-19T10:30:52+02:00 - a18f41545 - simon lehericey : tech: iterate over the type de champ classes in the editor
+2026-08-19T10:30:51+02:00 - ea0e302fa - simon lehericey : tech: move customizable? to the STI subclasses
+2026-08-19T10:30:51+02:00 - da30196d5 - simon lehericey : tech: move simple_routable? to the STI subclasses
+2026-08-19T10:21:03Z - 0aa2c877e - LeSim : Merge pull request #13673 from demarche-numerique/type-de-champ-sti-polymorphism-2
+2026-08-19T05:16:35Z - 721a92097 - mfo : Merge pull request #13667 from demarche-numerique/tech-parallel-rspec-precompile-assets
+2026-08-19T05:16:32Z - 9a69e478d - mfo : Merge pull request #13669 from mfo/harden-export-path-traversal
+2026-08-18T16:38:26+02:00 - ec8fff4a4 - simon lehericey : tech: move the type de champ feature flags to the STI subclasses
+2026-08-18T16:38:26+02:00 - ddb93ab58 - simon lehericey : tech: move the France Connect editor exceptions to the STI subclasses
+2026-08-18T16:38:26+02:00 - 3deca1ae0 - simon lehericey : tech: move the private-only and public-only predicates to the STI subclasses
+2026-08-18T16:38:25+02:00 - 77584b90c - simon lehericey : tech: move prefillable? to the STI subclasses
+2026-08-18T16:38:25+02:00 - 5fe978a3e - simon lehericey : tech: move options_for_select and the drop-down predicates to the STI subclasses
+2026-08-18T16:38:25+02:00 - 5ce15872a - simon lehericey : tech: merge TypesDeChamp::TypeDeChampBase into TypeDeChamp
+2026-08-18T16:38:24+02:00 - 8108eb019 - simon lehericey : tech: move the column type to the STI subclasses
+2026-08-18T16:38:24+02:00 - 73ee43fe9 - simon lehericey : tech: move the editable option keys to the STI subclasses
+2026-08-18T16:38:24+02:00 - 373b477ec - simon lehericey : tech: move the mandatory and France Connect predicates to the STI subclasses
+2026-08-18T16:38:24+02:00 - 047812e2f - simon lehericey : tech: move fillable? and libelle_optionnal? to the STI subclasses
+2026-08-18T16:38:23+02:00 - a082f6ebb - simon lehericey : tech: move the type de champ category to the STI subclasses
+2026-08-18T15:58:55+02:00 - 1c4a92aab - mfo : fix(carte): declare parcelle sources only when their layer is enabled
+2026-08-18T15:28:18+02:00 - 67f59c316 - Colin Darie : refactor(haml): migrate the default email templates to ERB
+2026-08-18T15:28:18+02:00 - 585e7af15 - Colin Darie : test: cover the repasse en instruction error in the emails card badge
+2026-08-18T15:28:17+02:00 - 7def405c8 - Colin Darie : fix: close the gaps the rename left in the email templates admin
+2026-08-18T15:28:14+02:00 - 0d6f81dff - Colin Darie : tech: rename the 6 email models after the transitions they notify
+2026-08-18T15:15:32+02:00 - 4f266f210 - simon lehericey : tech: drop the legacy type_champ fallback
+2026-08-18T15:13:57+02:00 - fc8cb95ef - simon lehericey : tech: move the carte layers constant to TypeDeChamp
+2026-08-18T15:13:57+02:00 - f8b48761b - simon lehericey : tech: save type_champ changes through the target STI subclass
+2026-08-18T15:13:57+02:00 - 1df12b02e - simon lehericey : tech: version the all_revisions_types_de_champ cache key
+2026-08-18T15:13:56+02:00 - dbc983194 - simon lehericey : tech: prefix the dynamic type champ value methods with typed_
+2026-08-18T15:13:56+02:00 - ba258a01e - simon lehericey : tech: convert TypeDeChamp to STI on the type_champ column
+2026-08-18T15:13:56+02:00 - 75dded015 - simon lehericey : tech: remove the transitional dynamic_type shim
+2026-08-18T15:01:15+02:00 - 446f63506 - mfo : doc: list zip among the runtime dependencies, with the macOS caveat
+2026-08-18T14:56:30Z - 1b5c0b9ab - LeSim : Merge pull request #13663 from demarche-numerique/type-de-champ-sti-polymorphism
+2026-08-18T14:51:46+02:00 - ca3fa526d - mfo : Tech: confine export ZIP writes to the export dir
+2026-08-18T14:51:42+02:00 - 29648b89e - mfo : spec: prove path traversal in export ZIP download sink
+2026-08-18T14:41:27+02:00 - 7490ba318 - mfo : tech: precompile Sprockets assets in bin/parallel-rspec, pin API URLs in .env.test
+2026-08-18T14:37:31Z - fadc75112 - mfo : Merge pull request #13671 from demarche-numerique/doc-zip-runtime-dependency
+2026-08-18T14:30:03Z - ae743e95c - mfo : Merge pull request #13672 from mfo/carte-point-kc
+2026-08-18T14:15:14Z - e2ad044bd - Colin Darie : Merge pull request #13611 from demarche-numerique/email-templates-rename
+2026-08-18T13:22:20Z - 3796c8e0d - LeSim : Merge pull request #13662 from demarche-numerique/type-de-champ-sti
+2026-08-18T09:48:46+02:00 - 5cece084a - simon lehericey : tasks: convert legacy API Particulier champs (cnaf, dgfip, mesri, pole_emploi) to text
+2026-08-18T09:47:30Z - c179cc2d4 - Mathieu Magnin : Merge pull request #13641 from demarche-numerique/fix/referentiel-url-tiptap-label
+2026-08-18T09:45:29+02:00 - 09d0eb897 - mfo : fix(uploads): tell the usager how to unblock an empty file upload
+2026-08-18T09:29:36Z - 834922794 - LeSim : Merge pull request #13666 from demarche-numerique/convert-legacy-api-particulier-champs
+2026-08-18T07:51:28Z - 7d61652e6 - mfo : Merge pull request #13664 from mfo/file-empty-error-message
+2026-08-18T07:39:16Z - b110396c4 - Paul Chavard : Merge pull request #13574 from demarche-numerique/auto/haml-migration/batch-0cd5ae4b
+2026-08-18T07:37:28Z - 0d7f0548f - mfo : Merge pull request #13578 from demarche-numerique/auto/i18n-hardcoded/batch-37e4b2e7
+2026-08-18T07:10:18Z - 7376208f6 - Mathieu Magnin : Merge pull request #13638 from demarche-numerique/fix/referentiel-carry-autocomplete-config
+2026-08-17T16:13:25+02:00 - b4ace5aa6 - mfo : i18n(improve_types_item_component): extract hardcoded strings from LLM::ImproveTypesItemComponent
+2026-08-17T16:13:25+02:00 - 7a6f80efc - mfo : i18n(stepper_component): extract hardcoded strings from LLM::StepperComponent
+2026-08-17T16:13:20+02:00 - 2d0500533 - mfo : i18n(improve_structure_item_component): extract hardcoded strings from LLM::ImproveStructureItemComponent
+2026-08-17T16:11:50+02:00 - 2eef6763c - mfo : refactor(haml): migrate FranceConnect password confirmation partial to ERB
 2026-08-13T11:24:34Z - bd1d02509 - Paul Chavard : Merge pull request #13656 from demarche-numerique/perf-graphql-personne-morale-address
 2026-08-13T10:51:44+02:00 - a471d0359 - LeSim : Merge pull request #13661 from demarche-numerique/block-openslide-loader
 2026-08-13T10:46:27+02:00 - 81ac84063 - simon lehericey : tech: block the unfuzzed vips loaders
@@ -29,6 +117,11 @@
 2026-08-05T21:21:24Z - 20ab38365 - Paul Chavard : Merge pull request #13640 from demarche-numerique/push-lklwpzqmmtxo
 2026-08-05T20:57:56Z - 03711ee09 - Paul Chavard : Merge pull request #13639 from demarche-numerique/fix/sentry-ignore-injected-stack-overflow
 2026-08-05T17:35:56+02:00 - 6c48928da - benoitqueyron : feat(admin): libelle of an explication tdc can be empty
+2026-08-05T15:31:55+02:00 - 9fb56de50 - Mathieu Magnin : fix(referentiel): request step labels stay valid for private annotations
+2026-08-05T15:31:55+02:00 - 6d7f2fd7f - Mathieu Magnin : fix(referentiel): mapping step labels cover private annotations too
+2026-08-05T15:31:55+02:00 - 2d73ade19 - Mathieu Magnin : fix(referentiel): cancel buttons return to annotations list for private annotations
+2026-08-05T15:31:55+02:00 - 1139456a7 - Mathieu Magnin : fix(referentiel): editor info notice mentions annotations and fixes typos
+2026-08-05T15:31:54+02:00 - 35a47e6c3 - Mathieu Magnin : fix(referentiel): prefill table labels cover private annotations too
 2026-08-05T14:18:40Z - 0edd17452 - Mathieu Magnin : Merge pull request #13629 from demarche-numerique/dependabot/bundler/msgpack-1.8.2
 2026-08-05T13:51:26Z - d2f10049b - dependabot[bot] : chore(deps): bump msgpack from 1.8.0 to 1.8.2
 2026-08-05T12:20:37Z - 77a66e5cc - Mathieu Magnin : Merge pull request #13636 from demarche-numerique/fix-rnf-duplicate-error-message
@@ -37,6 +130,7 @@
 2026-08-04T23:26:21+02:00 - c242c207a - Paul Chavard : Filter out stack overflow errors from Google iOS injected scripts
 2026-08-04T20:49:17Z - a94a4fec7 - Paul Chavard : Merge pull request #13601 from demarche-numerique/push-vuyuykxynunn
 2026-08-04T20:48:35Z - 648e8fa5f - Paul Chavard : Merge pull request #13618 from demarche-numerique/push-woppplnyovmk
+2026-08-04T17:40:40+02:00 - f7c68fe41 - Mathieu Magnin : fix(referentiel): carry autocomplete configuration over when cloning
 2026-08-04T15:43:15Z - b52185c11 - Mathieu Magnin : Merge pull request #13637 from demarche-numerique/fix/referentiel-url-tiptap-label
 2026-08-04T15:06:54+02:00 - 070f7d3de - Mathieu Magnin : fix(referentiel): en locale file used fr root key
 2026-08-04T15:06:49+02:00 - b9f7c67d3 - Mathieu Magnin : fix(referentiel): error message shows proper URL field label
@@ -85,6 +179,9 @@
 2026-07-29T08:15:28Z - d2de9c7e0 - dependabot[bot] : chore(deps): bump oauth2 from 2.0.19 to 2.0.22
 2026-07-29T08:08:04Z - 6a6d87d2d - Paul Chavard : Merge pull request #13599 from demarche-numerique/push-ynymsolnpnsr
 2026-07-29T07:47:00Z - 42dd505f5 - Paul Chavard : Merge pull request #13606 from demarche-numerique/push-ylvxlukzmtnv
+2026-07-28T23:10:00+02:00 - ea3993a8a - Paul Chavard : Print the champ carte map in the dossier PDF export
+2026-07-28T23:10:00+02:00 - 2ee9c51df - Paul Chavard : Render and attach a champ carte static map when a dossier is submitted
+2026-07-28T23:10:00+02:00 - 1b394d189 - Paul Chavard : Add StaticMapService to render champ carte geometries as an image
 2026-07-28T17:21:57+02:00 - b97e1e44b - Paul Chavard : feat(search): store the dossier search tsvectors
 2026-07-28T17:21:57+02:00 - 4a07a9f8a - Paul Chavard : chore(maintenance): backfill the dossier search tsvectors
 2026-07-28T17:21:57+02:00 - 24606e2df - Paul Chavard : perf(search): rank the full-text search on the stored tsvectors

@@ -1,29 +1,29 @@
 {
   "url": "https://github.com/demarche-numerique/demarche.numerique.gouv.fr",
   "name": "demarche.numerique.gouv.fr",
-  "description": "Plateforme web permettant la dématérialisation des démarches administratives pour l'État français. Elle facilite la gestion des dossiers et le suivi des procédures par les usagers et les agents.",
+  "description": "Plateforme web conçue pour accompagner la dématérialisation des démarches administratives en France. Elle permet aux usagers de réaliser des procédures en ligne et aux agents de gérer les dossiers numériques.",
   "language": "Ruby",
   "features": [
     "Formulaires & Démarches",
-    "Authentification & Accès",
+    "Gestion des utilisateurs & Permissions",
+    "Notifications & Alertes",
     "Administration & Backoffice",
+    "Interface utilisateur & Design",
     "Suivi & Traçabilité",
     "Accessibilité & i18n",
-    "API & Intégrations",
-    "Gestion documentaire & Fichiers"
+    "Recherche & Filtres"
   ],
-  "audience": "Grand public",
+  "audience": "Grand public et Agents de l'Administration",
   "dependencies": [
     "Ruby on Rails",
+    "React",
     "PostgreSQL",
     "Redis",
-    "React",
-    "TypeScript",
     "Sidekiq",
     "Devise",
     "GraphQL",
     "Playwright",
-    "AWS S3"
+    "TypeScript"
   ],
   "components": [
     "API REST & GraphQL",
@@ -36,25 +36,18 @@
   ],
   "auth": {
     "methods": [
+      "email-password",
       "oauth2",
-      "jwt",
-      "session",
-      "mfa",
-      "sso"
+      "sso",
+      "jwt"
     ],
     "providers": [
-      "France Connect"
+      "FranceConnect"
     ]
   },
-  "tests": [
-    "RSpec",
-    "Playwright",
-    "Vitest"
-  ],
-  "workflows": [
-    "CI/CD"
-  ],
-  "lastActivity": "2026-08-13T11:24:34Z",
+  "tests": "RSpec pour les tests backend, Playwright pour les tests système, et Vitest pour les tests frontend.",
+  "workflows": [],
+  "lastActivity": "2026-08-19T17:06:03Z",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -64,7 +57,6 @@
     "TypeScript",
     "Bases de données SQL",
     "Design System & UI",
-    "Accessibilité",
-    "Legal & Conformité"
+    "Accessibilité"
   ]
 }
