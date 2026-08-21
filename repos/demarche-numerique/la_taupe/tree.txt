@@ -15,8 +15,21 @@
 ├── launch_demo.sh
 ├── models
 │   └── .gitkeep
+├── rust-toolchain.toml
+├── scripts
+│   └── update-references.sh
 ├── src
 │   ├── analysis.rs
+│   ├── bench
+│   │   ├── check.rs
+│   │   ├── mod.rs
+│   │   ├── profile.rs
+│   │   ├── report.rs
+│   │   └── truth.rs
+│   ├── bin
+│   │   ├── bench.rs
+│   │   └── synth.rs
+│   ├── code_postal_commune.csv
 │   ├── datamatrix.rs
 │   ├── fi_extract.rs
 │   ├── file_utils.rs
@@ -28,18 +41,30 @@
 │   │   └── version.rs
 │   ├── image_utils.rs
 │   ├── lib.rs
+│   ├── lines.rs
 │   ├── main.rs
 │   ├── ocr.rs
-│   ├── ocrs.rs
+│   ├── ppocr.rs
+│   ├── provenance.rs
 │   ├── riad_bank_name.csv
 │   ├── rib.rs
 │   ├── shapes.rs
+│   ├── synth
+│   │   ├── data.rs
+│   │   ├── degrade.rs
+│   │   ├── layout.rs
+│   │   ├── mod.rs
+│   │   ├── package.rs
+│   │   ├── pdf.rs
+│   │   └── rng.rs
 │   ├── tesseract.rs
 │   ├── text
 │   │   ├── address.rs
+│   │   ├── communes.rs
 │   │   ├── mod.rs
 │   │   ├── patch.rs
 │   │   └── simple_account_holder.rs
+│   ├── timing.rs
 │   └── twoddoc
 │       ├── certificate_store.rs
 │       ├── data_structure.rs
@@ -52,6 +77,7 @@
 │       ├── tsl_signed.xml
 │       └── utils.rs
 └── tests
+    ├── bench_synth.rs
     ├── fixtures
     │   ├── 2ddoc
     │   │   ├── justificatif_de_domicile.pdf
@@ -92,4 +118,4 @@
     ├── helpers
     │   └── mod.rs
     └── http_tests.rs
-16 directories, 78 files
+20 directories, 100 files

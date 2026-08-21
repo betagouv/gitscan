@@ -1,0 +1,43 @@
+2026-08-21T00:03:12+02:00 - 17884f2 - LeSim : Merge pull request #65 from demarche-numerique/chore/rust-and-deps-upgrade
+2026-08-21T00:02:40+02:00 - fb9771c - LeSim : Merge pull request #63 from demarche-numerique/improve/holder-label-anchor
+2026-08-20T23:20:47+02:00 - ecb0daf - simon lehericey : chore(deps): update every dependency, closing the 20 dependabot alerts
+2026-08-20T19:16:59+02:00 - bd50d5e - simon lehericey : chore(toolchain): rust 1.95.0 -> 1.97.1
+2026-08-20T19:07:07+02:00 - fb6c3fb - simon lehericey : docs: cutting the holder block at the bank's domiciliation line — measured, no effect
+2026-08-20T19:07:07+02:00 - 8e5f0ed - simon lehericey : fix(holder): narrow the titulaire-fallback crop so the bank column stays out
+2026-08-20T19:07:07+02:00 - 7d1f191 - simon lehericey : feat(holder): the block label anchors the holder, ahead of a civility read above it
+2026-08-20T19:04:21+02:00 - 629a5e6 - LeSim : Merge pull request #64 from demarche-numerique/feat/cli-rib-batch
+2026-08-20T18:47:40+02:00 - 9a2e4ec - simon lehericey : feat(cli): --type selects the analysis, mirroring the http hint
+2026-08-20T17:28:18+02:00 - e8fbdb7 - simon lehericey : feat(cli): batch RIB analysis of files and directories
+2026-08-20T17:28:04+02:00 - 08b03fa - simon lehericey : fix(docs): fence the regeneration snippet so rustdoc stops compiling it
+2026-08-19T23:08:51+02:00 - 6b1775e - LeSim : Merge pull request #62 from demarche-numerique/improve/bic-anchor
+2026-08-19T22:36:13+02:00 - 53023cb - LeSim : Merge pull request #61 from demarche-numerique/docs/experiences
+2026-08-19T22:33:44+02:00 - 056f831 - simon lehericey : docs: supervised French NER (camembert-ner) counter-trial — worse than GLiNER
+2026-08-19T22:33:43+02:00 - c938a39 - simon lehericey : fix(lines): reject anchors taller than a line of text
+2026-08-19T22:33:43+02:00 - c33a99b - simon lehericey : feat: script to refresh the embedded reference files; ECB register updated to 2026-07
+2026-08-19T22:33:43+02:00 - 9884185 - simon lehericey : fix(ocr): the "unreadable" flag considers the richest page read, not the first
+2026-08-19T22:33:43+02:00 - 82e8d22 - simon lehericey : docs: zero-shot NER (GLiNER) for holder-block localisation — measured, discarded
+2026-08-19T22:33:43+02:00 - 7e9f4b1 - simon lehericey : docs: holder anchored on the civility — measured, left out
+2026-08-19T22:33:43+02:00 - 518a86b - simon lehericey : feat(text): fix the holder's city line from the postal-code register
+2026-08-19T22:33:43+02:00 - 050c066 - simon lehericey : feat(analysis): flag documents with nothing to read
+2026-08-19T22:33:42+02:00 - 7707073 - simon lehericey : docs: keeping ocrs as a selectable second engine — measured, removed
+2026-08-19T22:33:42+02:00 - 17d98a3 - simon lehericey : feat(rib,ocr): read a BIC printed one letter per cell
+2026-08-19T22:33:42+02:00 - 0423786 - simon lehericey : feat(rib): validate the BIC against the bank of the IBAN
+2026-08-19T22:33:22+02:00 - e6fd9b3 - simon lehericey : docs: what was measured and left out, and how to measure
+2026-08-19T22:13:19+02:00 - e020034 - LeSim : Merge pull request #60 from demarche-numerique/feat/moteur-ppocr
+2026-08-19T21:33:27+02:00 - 5dd167d - simon lehericey : refactor: remove the ocrs engine, PP-OCR stands alone
+2026-08-19T20:54:11+02:00 - c9f7ce2 - LeSim : Merge pull request #59 from demarche-numerique/feat/banc-de-mesure
+2026-08-19T20:42:07+02:00 - 83ea5d0 - LeSim : Merge pull request #58 from demarche-numerique/fix/latence-et-corrections
+2026-08-19T11:43:56+02:00 - 7d7f4d0 - simon lehericey : feat: PP-OCR v6 tiny as default OCR engine (oar-ocr, ONNX Runtime, CPU)
+2026-08-19T11:26:42+02:00 - d0b8413 - simon lehericey : feat: benchmark and synthetic corpus (feature "bench")
+2026-08-19T11:24:41+02:00 - 4e26a72 - simon lehericey : fix(ocr): anchor the holder robustly when the postal code is glued to the city
+2026-08-19T11:24:40+02:00 - fd503a2 - simon lehericey : perf(ocr): rank postal-code anchors before cropping, stop at first good block
+2026-08-19T11:24:40+02:00 - f7a0bd5 - simon lehericey : fix(text): account-holder block bounds on the text path
+2026-08-19T11:24:40+02:00 - cfcca38 - simon lehericey : fix(text,ocr): three RIB layouts read by Simon, reproduced and fixed
+2026-08-19T11:24:40+02:00 - cf9e9bc - simon lehericey : perf(ocr): do not re-recognise the page to find "titulaire"
+2026-08-19T11:24:40+02:00 - b5dd565 - simon lehericey : perf(ocr): carry the IBAN anchor through rotation instead of re-detecting it
+2026-08-19T10:48:58+02:00 - 7be9e9f - simon lehericey : fix(ocr): account holder lines were flattened, and a missing postal code panicked
+2026-08-19T10:48:58+02:00 - 10b6969 - simon lehericey : fix(http): run the analysis on the blocking pool
+2026-08-19T10:48:58+02:00 - 03c90a9 - simon lehericey : fix(rib): drop IBAN fragments from BIC candidates
+2026-08-19T10:48:57+02:00 - f4524e7 - simon lehericey : feat(rib): RIB key, IBAN-from-BBAN, and Rib accessors
+2026-08-19T10:48:57+02:00 - f43e058 - simon lehericey : chore: ignore gitignored/ in the repo, run clippy on all targets
+2026-08-19T10:48:57+02:00 - 549552c - simon lehericey : refactor(ocrs): share one OcrEngine across calls
