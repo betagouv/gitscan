@@ -1,25 +1,36 @@
-## Changelog : les-emplois (30 derniers jours, au 14 août 2026)
+## Changelog : les-emplois (30 derniers jours, au 2026-08-20)
 
 ### Résumé
-Ce mois-ci, le projet a franchi une étape majeure avec l'intégration complète de la gestion des orientations, permettant une synchronisation fluide avec les données externes (Dora). L'expérience utilisateur a été enrichie par une meilleure clarté des informations sur les profils et les candidatures, tandis que la sécurité a été renforcée par une gestion plus intuitive et robuste de la double authentification (MFA).
+Ce mois-ci, le projet a franchi une étape majeure avec l'intégration du module d'orientation, permettant une synchronisation fluide des données avec Dora. L'expérience utilisateur a été considérablement enrichie par de nouveaux filtres de recherche pour les candidats et une interface de double authentification (2FA) plus pédagogique. Parallèlement, des optimisations techniques importantes ont été réalisées pour améliorer la rapidité de l'application et la robustesse de la sécurité.
 
 ### Évolutions fonctionnelles
-- **Gestion des orientations** : Mise en place d'une interface complète permettant de lister et de consulter les détails des orientations, avec des filtres avancés (expéditeur, structure, statut, bénéficiaire).
-- **Expérience candidat** : Amélioration de la clarté des profils (explications sur les champs en lecture seule, alertes sur l'identité certifiée) et affichage systématique des coordonnées des conseillers.
-- **Parcours de candidature** : Ajout d'aides contextuelles et d'informations sur les dates de contrat pour guider les utilisateurs lors de la saisie.
-- **Sécurité (MFA)** : Amélioration de l'accompagnement à l'activation de la double authentification (exemples d'applications, liens de configuration simplifiés, messages clarifiés).
-- **Services de diagnostic** : Priorisation des liens externes pour faciliter les orientations vers des services tiers.
-- **Gestion des entreprises** : Automatisation du transfert des évaluations GEIQ lors du transfert d'une entreprise.
+- **Module Orientation & Insertion :**
+    - Mise en place d'une interface dédiée aux orientations avec vue détaillée, affichage en tableau et filtres avancés (par expéditeur, structure, statut et bénéficiaire).
+    - Automatisation de la synchronisation des statuts d'orientation depuis Dora et ajout d'un outil d'importation de données.
+    - Amélioration du suivi grâce à l'ajout de journaux de transition pour les orientations.
+- **Gestion des Candidats :**
+    - Enrichissement des capacités de filtrage (par conseiller, par membre d'organisation pour GEIQ/OPCS, et alerte sur la fin imminente du parcours IAE).
+    - Ajout d'aides visuelles pour expliquer les champs en lecture seule et clarifier les informations relatives aux dates de contrat.
+- **Expérience Utilisateur & Interface :**
+    - Amélioration de la visibilité des contacts des conseillers et mise à jour des liens vers les formulaires de mise à jour de données ProConnect.
+    - Optimisation de la gestion des transferts d'entreprises (déplacement automatique des évaluations GEIQ/OPCS).
+    - Nettoyage des communications par email (suppression des mentions de sondages inutiles).
+- **Sécurité & Authentification :**
+    - Refonte du parcours de double authentification (OTP) : ajout d'exemples d'applications d'authentification via QR code, création d'un menu de configuration dédié et clarification des messages d'erreur.
+    - Amélioration du flux de déconnexion pour FranceConnect.
 
 ### Évolutions techniques
-- **Synchronisation des données** : Automatisation de la synchronisation des statuts d'orientation depuis Dora et ajout de journaux de suivi (logs) pour tracer les changements de statut.
-- **Sécurité et Authentification** : Renforcement des mécanismes de double authentification (MFA/OTP) et amélioration de la gestion des flux de connexion (FranceConnect, ProConnect).
-- **Optimisation des performances** : Amélioration de la vitesse de chargement des listes de candidats et optimisation des requêtes à la base de données (réduction des requêtes N+1).
-- **Architecture et Refactoring** : 
-    - Refonte de la gestion des entreprises et renommage de composants pour plus de cohérence (passage de PoleEmploiConnect à ProConnect).
-    - Mise en place de la suppression logique (soft-delete) pour les services et les structures.
-- **Gestion de fichiers** : Optimisation du processus de nettoyage des fichiers inutilisés via un traitement par lots.
+- **Architecture & Performance :**
+    - Refonte majeure du module `ft_connect` (renommage complet des modèles, des tables et des constantes pour une meilleure cohérence).
+    - Optimisation significative des performances de la liste des candidats via la résolution de requêtes SQL redondantes (problème de N+1).
+    - Refactorisation de la vue de détail des candidats pour une meilleure maintenabilité.
+- **Gestion des Données & Sécurité :**
+    - Introduction de la suppression logique (*soft-delete*) pour les services et les structures.
+    - Renforcement de la sécurité des routes OTP (contrôle des accès basé sur les rôles et protection contre la manipulation de requêtes d'enrôlement).
+- **Infrastructure & CI/CD :**
+    - Optimisation des pipelines de déploiement avec une meilleure gestion du cache pour `setup-uv`.
+    - Isolation des environnements de test et de développement via l'utilisation de buckets de stockage dédiés.
 
 ### Autres changements
-- **Administration** : Amélioration de l'interface d'administration pour le suivi des dispositifs de sécurité et des utilisateurs.
-- **Maintenance** : Nettoyage des modèles d'e-mails (suppression des mentions de sondages obsolètes) et mise à jour de la documentation technique.
+- **Documentation :** Ajout de recommandations sur l'utilisation de gestionnaires de mots de passe et présentation de Podman comme alternative à Docker.
+- **Maintenance :** Nettoyage général du code (suppression de tests et de templates inutilisés, renommage de variables) et corrections de nombreuses coquilles dans les messages de l'interface.
