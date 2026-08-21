@@ -1,16 +1,13 @@
-## Changelog : transfers (30 derniers jours, au 22 juillet 2026)
+## Changelog : transfers (30 derniers jours, au 20 août 2026)
 
 ### Résumé
-Cette mise à jour apporte des améliorations significatives à la sécurité et à la fonctionnalité du service de transfert de fichiers. L'ajout du chiffrement de bout en bout optionnel et de l'analyse antivirus renforce la protection des données, tandis que des corrections améliorent la robustesse et la compatibilité du système.
+Ce mois-ci, le service a franchi une étape importante avec l'introduction du chiffrement de bout en bout en option. La sécurité a été renforcée par une meilleure visibilité sur l'état des scans de fichiers et une gestion plus fine des erreurs. La gestion administrative a également été simplifiée pour faciliter le nettoyage des données obsolètes.
 
 ### Évolutions fonctionnelles
-- Ajout du chiffrement de bout en bout optionnel pour les transferts, offrant un contrôle accru sur la confidentialité des données [#14](https://github.com/suitenumerique/transfers/issues/14).
-- Intégration d'un scanner de fichiers pour empêcher le stockage de fichiers dangereux [#9](https://github.com/suitenumerique/transfers/issues/9).
+- Mise à disposition du chiffrement de bout en bout (E2EE) en option pour les transferts [#14](https://github.com/suitenumerique/transfers/issues/14).
+- Possibilité pour les agents de procéder à la suppression définitive des transferts totalement désactivés [#17](https://github.com/suitenumerique/transfers/issues/17).
+- Amélioration de la transparence et de la sécurité des scans : affichage systématique de l'état des scans sur les vues de transfert, gestion des timeouts et masquage des termes techniques internes dans les messages d'erreur pour éviter toute fuite d'information.
 
 ### Évolutions techniques
-- Amélioration de la robustesse de l'analyse antivirus en cas de scanner indisponible.
-- Correction des points soulevés lors de la revue du flux de re-scan.
-- Autorisation de l'origine S3 dans la directive `connect-src` du CSP pour les uploads, corrigeant un problème de compatibilité.
-
-### Autres changements
-Aucun autre changement significatif à signaler.
+- Optimisation de la CI/CD : automatisation de la publication des images OCI (backend et frontend) sur GHCR et dérivation dynamique des noms de packages.
+- Refactoring du backend : renommage des variables de configuration du stockage (bucket AWS) et stabilisation du processus de collecte des fichiers statiques lors de la construction.

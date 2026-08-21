@@ -9,7 +9,9 @@
 │   │   └── feature_request.md
 │   ├── PULL_REQUEST_TEMPLATE.md
 │   └── workflows
-│       └── ci.yml
+│       ├── ci.yml
+│       ├── docker-publish.yml
+│       └── st-transfers-ghcr.yml
 ├── .gitignore
 ├── LICENSE
 ├── Makefile
@@ -199,6 +201,7 @@
     │   │   │   │   ├── api
     │   │   │   │   │   ├── useDeactivateTransfer.ts
     │   │   │   │   │   ├── useDownload.ts
+    │   │   │   │   │   ├── useHardDeleteTransfer.ts
     │   │   │   │   │   ├── useResendTransfer.ts
     │   │   │   │   │   ├── useTransfer.ts
     │   │   │   │   │   ├── useTransferDraft.ts
@@ -225,6 +228,7 @@
     │   │   │   │   │   ├── encryptionServiceWorker.ts
     │   │   │   │   │   └── uploadPart.ts
     │   │   │   │   └── utils
+    │   │   │   │       ├── scanStatus.test.ts
     │   │   │   │       ├── scanStatus.ts
     │   │   │   │       └── useDeadlineFlag.ts
     │   │   │   ├── ui
@@ -279,4 +283,4 @@
     │   └── vitest.config.ts
     └── keycloak
         └── realm.json
-70 directories, 211 files
+70 directories, 215 files
