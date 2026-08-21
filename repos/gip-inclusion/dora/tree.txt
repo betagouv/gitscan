@@ -470,8 +470,6 @@
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── commands
 │   │   │   │       ├── __init__.py
-│   │   │   │       ├── backfill_publics_di.py
-│   │   │   │       ├── export_service_data_for_classification.py
 │   │   │   │       ├── fix_missing_geom.py
 │   │   │   │       ├── import_services.py
 │   │   │   │       ├── label_services.py
@@ -487,13 +485,13 @@
 │   │   │   │   ├── 0007_service_kind.py
 │   │   │   │   ├── 0008_recompute_sync_checksums.py
 │   │   │   │   ├── 0009_remove_service_kinds.py
+│   │   │   │   ├── 0010_recompute_sync_checksums_publics.py
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── data
 │   │   │   │       └── assignation-thematiques.csv
 │   │   │   ├── models.py
 │   │   │   ├── search.py
 │   │   │   ├── serializers.py
-│   │   │   ├── signals_publics.py
 │   │   │   ├── templates
 │   │   │   │   ├── admin
 │   │   │   │   │   └── services
@@ -507,7 +505,6 @@
 │   │   │   │   ├── __snapshots__
 │   │   │   │   │   └── test_import_services.ambr
 │   │   │   │   ├── test_admin_import_view.py
-│   │   │   │   ├── test_backfill_publics_di.py
 │   │   │   │   ├── test_bookmarks.py
 │   │   │   │   ├── test_categories_subcategories.py
 │   │   │   │   ├── test_emails.py
@@ -521,9 +518,7 @@
 │   │   │   │   ├── test_serializers.py
 │   │   │   │   ├── test_service_kind_api.py
 │   │   │   │   ├── test_services.py
-│   │   │   │   ├── test_services_saved_searchs.py
-│   │   │   │   ├── test_signals_publics.py
-│   │   │   │   └── test_utils_publics.py
+│   │   │   │   └── test_services_saved_searchs.py
 │   │   │   ├── utils.py
 │   │   │   └── views.py
 │   │   ├── sirene
@@ -637,7 +632,8 @@
 │   │       ├── management
 │   │       │   └── commands
 │   │       │       ├── __init__.py
-│   │       │       └── merge_users.py
+│   │       │       ├── merge_users.py
+│   │       │       └── reset_non_staff_passwords.py
 │   │       ├── migrations
 │   │       │   ├── 0001_initial.py
 │   │       │   ├── 0002_create_dora_bot.py
@@ -701,9 +697,11 @@
 │   ├── adr
 │   │   ├── 001-migrer-le-code-vers-un-monorepo.md
 │   │   └── 002-architecture-label-financement.md
-│   └── models
-│       ├── README.md
-│       └── dora_model.png
+│   ├── models
+│   │   ├── README.md
+│   │   └── dora_model.png
+│   └── passwords
+│       └── README.md
 ├── front
 │   ├── .env-example
 │   ├── .gitignore
@@ -936,7 +934,6 @@
 │   │   │   │   │   │   ├── fields-presentation.svelte
 │   │   │   │   │   │   ├── fields-publics.svelte
 │   │   │   │   │   │   ├── fields-typology.svelte
-│   │   │   │   │   │   ├── inclusion-num-switch.svelte
 │   │   │   │   │   │   ├── model-menu.svelte
 │   │   │   │   │   │   ├── service-state-update-select.svelte
 │   │   │   │   │   │   ├── set-as-updated-modal.svelte
@@ -1033,7 +1030,6 @@
 │   │   │   ├── (modeles-services)
 │   │   │   │   ├── _common
 │   │   │   │   │   ├── fields-documents.svelte
-│   │   │   │   │   ├── fields-inclusion-numerique.svelte
 │   │   │   │   │   ├── fields-modalities-beneficiary.svelte
 │   │   │   │   │   ├── fields-modalities-coach.svelte
 │   │   │   │   │   ├── fields-modalities.svelte
@@ -1455,4 +1451,4 @@
 └── tools
     ├── create-review-apps.sh
     └── release.sh
-275 directories, 1182 files
+276 directories, 1177 files
