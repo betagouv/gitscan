@@ -1,23 +1,15 @@
-## Changelog : monstagedeseconde (30 derniers jours, au 31 juillet 2026)
+## Changelog : monstagedeseconde (30 derniers jours, au 17 août 2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a bénéficié d'une refonte de la gestion des élèves et d'une amélioration de son interface visuelle, notamment avec l'ajout de carrousels pour les partenaires professionnels. Des travaux importants ont également été menés pour préparer la maintenance estivale et stabiliser les processus de déploiement et de tests.
+Ce mois-ci, la plateforme a bénéficié d'améliorations significatives pour la gestion des élèves et l'affichage des partenaires. Nous avons également procédé à un nettoyage technique important en supprimant des modules obsolètes et en renforçant la stabilité de nos processus de déploiement et de tests automatisés.
 
 ### Évolutions fonctionnelles
-- **Gestion des élèves** : Refonte de l'interface de gestion des élèves [#914](https://github.com/betagouv/monstagedeseconde/pull/914) et mise à jour de la page de profil élève [#941](https://github.com/betagouv/monstagedeseconde/pull/941).
-- **Interface utilisateur** : Ajout de carrousels de logos pour mettre en avant les partenaires professionnels [#944](https://github.com/betagouv/monstagedeseconde/pull/944).
-- **Accessibilité** : Correction de plusieurs problèmes d'accessibilité, notamment des ancres mortes et des textes alternatifs manquants sur les images.
+- **Gestion des élèves** : Mise en place d'une nouvelle interface de gestion des élèves [#914](https://github.com/betagouv/monstagedeseconde/pull/914) et mise à jour de la page profil élève [#941](https://github.com/betagouv/monstagedeseconde/pull/941).
+- **Partenaires** : Ajout d'un carrousel pour l'affichage des logos des partenaires [#944](https://github.com/betagouv/monstagedeseconde/pull/944).
+- **Accessibilité** : Correction de plusieurs problèmes d'accessibilité, notamment des liens morts et des images sans description textuelle (alt), afin de garantir une meilleure expérience utilisateur.
 
 ### Évolutions techniques
-- **Maintenance et disponibilité** : 
-    - Mise en place d'un mode maintenance adapté pour la période estivale 2026 [#943](https://github.com/betagouv/monstagedeseconde/pull/943).
-    - Amélioration de la gestion des accès administrateur durant les phases de maintenance.
-- **CI/CD et Déploiement** : 
-    - Optimisation du déploiement sur l'environnement de staging pour le rendre non bloquant dans la CI.
-    - Mise à jour du client SSH pour les déploiements vers Clever Cloud.
-- **Fiabilité et Tests** : 
-    - Stabilisation des tests automatisés (correction de tests instables sur les candidatures d'équipe et la recherche d'établissements) [#940](https://github.com/betagouv/monstagedeseconde/pull/940).
-- **Système** : Mise à jour de la tâche de fond dédiée à l'archivage des élèves.
-
-### Autres changements
-- **Nettoyage** : Suppression de l'intégration Tally et de certains blocs de code obsolètes.
+- **Nettoyage du code** : Suppression complète du module Tally et de ses liens associés [#950](https://github.com/betagouv/monstagedeseconde/pull/950).
+- **Fiabilité des tests** : Correction de nombreux tests automatisés "instables" (flaky tests) concernant les candidatures d'équipe, la recherche d'établissements et la signature de groupe [#940](https://github.com/betagouv/monstagedeseconde/pull/940).
+- **Déploiement et CI/CD** : Optimisation du processus de déploiement sur l'environnement de staging (rendu non-bloquant) et mise à jour du client SSH pour les déploiements vers Clever Cloud.
+- **Mode maintenance** : Amélioration de la gestion du mode maintenance, permettant de maintenir l'accès aux administrateurs et de normaliser la recherche par email.
