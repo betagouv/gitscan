@@ -1,7 +1,10 @@
-## Changelog : st-domain-parking (30 derniers jours, au 12 août 2026)
+## Changelog : st-domain-parking (30 derniers jours, au 20 août 2026)
 
 ### Résumé
-Lancement initial du service Domain Parking, un outil conçu pour générer automatiquement des pages web statiques destinées aux communes ne disposant pas encore de site internet.
+Le service de parking de domaine a été initialement mis en place. Cette phase de lancement a permis d'établir la structure de base du projet et de stabiliser l'environnement de construction technique.
+
+### Évolutions fonctionnelles
+- Mise en place initiale (bootstrap) de l'ensemble du service de parking de domaine.
 
 ### Évolutions techniques
-- Initialisation de la structure du projet et mise en place de l'architecture de base du service (bootstrap).
+- Correction de l'étape de construction `xcaddy` dans le Dockerfile pour garantir un build fiable du serveur web [#2](https://github.com/suitenumerique/st-domain-parking/pull/2).
