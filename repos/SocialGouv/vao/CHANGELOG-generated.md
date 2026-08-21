@@ -1,34 +1,35 @@
-## Changelog : vao (30 derniers jours, au 16 août 2026)
+## Changelog : vao (30 derniers jours, au 20 août 2026)
 
 ### Résumé
-Ce mois a été marqué par un développement intensif du processus de "Premier Agrément" (DREETS), incluant désormais la gestion complète des demandes de compléments, des corrections et des refus. Parallèlement, plusieurs stabilisations ont été effectuées sur les parcours "Fusager" et les outils d'administration pour améliorer la fiabilité des saisies et des droits d'accès.
+Ce mois-ci, les efforts se sont concentrés sur la stabilisation du processus de "premier agrément", particulièrement pour les utilisateurs de la DREETS, et sur l'amélioration des outils de gestion dans le back-office. Plusieurs corrections ont été apportées pour fluidifier la saisie des données (dates, contrôles d'âge) et affiner les messages envoyés aux utilisateurs.
 
 ### Évolutions fonctionnelles
 
-**Gestion du Premier Agrément (DREETS)**
-- Mise en place de la page dédiée au premier agrément [#1501](https://github.com/SocialGouv/vao/issues/1501).
-- Gestion du cycle de vie des demandes : demande de compléments [#1492](https://github.com/SocialGouv/vao/issues/1492), gestion des modifications suite aux demandes [#1493](https://github.com/SocialGouv/vao/issues/1493) et confirmation de la complétude des dossiers [#1498](https://github.com/SocialGouv/vao/issues/1498).
-- Gestion des refus : interface côté DREETS [#1495](https://github.com/SocialGouv/vao/issues/1495) et mise à jour des modèles d'emails de notification [#1497](https://github.com/SocialGouv/vao/issues/1497).
-- Validation du premier agrément [#1506](https://github.com/SocialGouv/vao/issues/1506) et prise en compte des corrections demandées [#1504](https://github.com/SocialGouv/vao/issues/1504).
+**Gestion des premiers agréments (DREETS)**
+- Mise en place de la page dédiée aux premiers agréments ([#1501](https://github.com/SocialGouv/vao/issues/1501)).
+- Ajout de la confirmation de complétude des dossiers pour faciliter le suivi ([#1498](https://github.com/SocialGouv/vao/issues/1498)).
+- Amélioration de la gestion des refus : interface dédiée côté DREETS et correction des libellés dans les emails de notification ([#1495](https://github.com/SocialGouv/vao/issues/1495), [#1497](https://github.com/SocialGouv/vao/issues/1497)).
 
-**Parcours Fusager & Agrément**
-- Ajout de la possibilité de supprimer un agrément directement depuis le formulaire d'organisme [#1507](https://github.com/SocialGouv/vao/issues/1507).
-- Correction des contrôles sur l'âge et le handicap [#1515](https://github.com/SocialGouv/vao/issues/1515).
-- Résolution d'erreurs lors de la création d'organismes [#1512](https://github.com/SocialGouv/vao/issues/1512) et de problèmes de permissions lors des vérifications EIG [#1510](https://github.com/SocialGouv/vao/issues/1510).
+**Back-Office & Administration**
+- Ajout de fonctionnalités de validation pour les premiers agréments ([#1506](https://github.com/SocialGouv/vao/issues/1506)).
+- Amélioration de la visibilité de la validation des comptes OVA dans les listes ([#1513](https://github.com/SocialGouv/vao/issues/1513)).
+- Simplification de l'interface par le masquage des sections RGAA et Bilan ([#1491](https://github.com/SocialGouv/vao/issues/1491)).
 
-**Back-office & Administration**
-- Masquage des sections RGAA et Bilan dans l'interface [#1491](https://github.com/SocialGouv/vao/issues/1491).
-- Amélioration de la visibilité de la liste de validation des comptes OVA [#1513](https://github.com/SocialGouv/vao/issues/1513).
+**Gestion des organismes et des dossiers**
+- Possibilité de supprimer un agrément directement depuis le formulaire d'organisme ([#1507](https://github.com/SocialGouv/vao/issues/1507)).
+- Correction d'erreurs lors de la création d'organismes pour les agréments ([#1512](https://github.com/SocialGouv/vao/issues/1512)).
+- Autorisation de la suppression ou de la modification des séjours et bilans liés aux agréments ([#1516](https://github.com/SocialGouv/vao/issues/1516)).
 
-**Corrections diverses**
-- Correction de la validation des dates de visite pour l'hébergement [#1505](https://github.com/SocialGouv/vao/issues/1505).
-- Ajustement du bouton de refus lors de la validation de compte [#1500](https://github.com/SocialGouv/vao/issues/1500).
-- Amélioration de la formulation concernant la mention du casier judiciaire [#1499](https://github.com/SocialGouv/vao/issues/1499).
+**Corrections et expérience utilisateur**
+- Résolution de problèmes de contrôles de cohérence (âge et déficience) lors des agréments ([#1515](https://github.com/SocialGouv/vao/issues/1515)).
+- Correction des règles de validation concernant les dates de visite des hébergements ([#1505](https://github.com/SocialGouv/vao/issues/1505)).
+- Correction de problèmes de permissions sur les contrôles EIG ([#1511](https://github.com/SocialGouv/vao/issues/1511)).
+- Ajustements de l'interface : correction du bouton de refus de validation de compte ([#1500](https://github.com/SocialGouv/vao/issues/1500)) et des libellés relatifs au casier judiciaire ([#1499](https://github.com/SocialGouv/vao/issues/1499)).
 
 ### Évolutions techniques
 
 **Infrastructure & CI/CD**
-- Migration de la construction des images vers `buildkit-operator` [#1464](https://github.com/SocialGouv/vao/issues/1464).
+- Migration de la construction des images vers `buildkit-operator` pour optimiser les processus de déploiement ([#1464](https://github.com/SocialGouv/vao/issues/1464)).
 
 **Qualité du code**
-- Résolution de problèmes de duplication de code identifiés par Sonar [#1515](https://github.com/SocialGouv/vao/issues/1515).
+- Refactoring de plusieurs modules pour réduire la duplication de code signalée par les outils d'analyse (Sonar).
