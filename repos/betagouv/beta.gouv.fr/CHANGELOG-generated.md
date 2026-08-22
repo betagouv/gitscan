@@ -1,11 +1,10 @@
-## Changelog : beta.gouv.fr (30 derniers jours, au 14 août 2026)
+## Changelog : beta.gouv.fr (30 derniers jours, au 20 août 2026)
 
 ### Résumé
-Les récentes évolutions du site permettent une meilleure visibilité sur les modalités d'incubation des produits et apportent des précisions sur la structure de l'organisation dans la section "Nous rejoindre". Le projet a également bénéficié de nombreuses mises à jour de sa base de données.
+Ce mois-ci, le projet a introduit une évolution majeure permettant de gérer la co-incubation de produits. Cette nouvelle fonctionnalité s'est accompagnée de nombreuses mises à jour de la structure de la base de données pour assurer la stabilité et la compatibilité du système.
 
 ### Évolutions fonctionnelles
-- Prise en charge de la co-incubation pour les produits [#21649](https://github.com/betagouv/beta.gouv.fr/pull/21649)
-- Ajout d'un encart d'information concernant l'EIG dans la section "Nous rejoindre" [#21632](https://github.com/betagouv/beta.gouv.fr/pull/21632)
+- Prise en charge de la co-incubation pour les produits ([#21649](https://github.com/betagouv/beta.gouv.fr/pull/21649))
 
 ### Évolutions techniques
-- Maintenance et mises à jour régulières du schéma de la base de données [#21631](https://github.com/betagouv/beta.gouv.fr/pull/21631) à [#21655](https://github.com/betagouv/beta.gouv.fr/pull/21655)
+- Évolutions successives du schéma de la base de données pour soutenir les nouveaux besoins métier et garantir l'intégrité des données.
