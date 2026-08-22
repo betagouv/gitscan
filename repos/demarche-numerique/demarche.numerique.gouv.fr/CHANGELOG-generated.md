@@ -1,33 +1,28 @@
-## Changelog : demarche.numerique.gouv.fr (30 derniers jours, au 19 août 2026)
+## Changelog : demarche.numerique.gouv.fr (30 derniers jours, au 21 août 2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a franchi une étape importante dans l'expérience utilisateur avec l'introduction de la personnalisation des listes de dossiers. Les usagers peuvent désormais choisir les informations qu'ils souhaitent voir apparaître en priorité dans leurs tableaux de bord. Parallèlement, des améliorations significatives ont été apportées à la recherche, à la cartographie et à l'accessibilité, tout en profitant d'une refonte technique profonde visant à rendre l'outil plus rapide, plus robuste et plus facile à maintenir.
+Ce mois-ci, la plateforme a franchi une étape importante avec l'introduction de la personnalisation des listes de dossiers, permettant aux utilisateurs de choisir les informations qu'ils souhaitent voir apparaître. Nous avons également amélioré la génération de documents PDF, notamment par la possibilité d'exporter des dossiers vides pour faciliter l'instruction, et l'intégration de cartes statiques dans les exports. Enfin, d'importantes optimisations de performance et de sécurité ont été réalisées pour garantir la fluidité et la robustesse du service.
 
 ### Évolutions fonctionnelles
-- **Personnalisation de l'affichage des dossiers** : Les utilisateurs peuvent désormais personnaliser les colonnes affichées dans leur liste de dossiers, avec la possibilité de regrouper les champs par sections, de gérer les champs obligatoires et d'afficher directement les valeurs sélectionnées. [#13373](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13373)
-- **Amélioration de l'éditeur et des tags** : Ajout d'une légende pour les tags dans l'éditeur, prise en charge des couleurs et des suffixes pour les tags conditionnels, et affichage systématique des indices de valeurs vides. [#13510](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13510)
-- **Recherche et Cartographie** : 
-    - Amélioration de la recherche plein texte dans les dossiers pour des résultats plus pertinents.
-    - Intégration de cartes statiques dans les exports PDF des dossiers pour une meilleure traçabilité géographique.
-    - Correction des couches cartographiques (cadastres et RPG) pour éviter les conflits d'affichage.
-- **Administration et Statistiques** : 
-    - Intégration de nouveaux flux de données pour l'endpoint ARS. [#13573](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13573)
-    - Mise à jour du calcul des statistiques pour refléter précisément le nombre de dossiers réellement soumis à l'administration.
-- **Accessibilité (A11y)** : Amélioration de l'expérience pour les utilisateurs de lecteurs d'écran, notamment via une meilleure gestion des notifications et des attributs d'images.
+- **Personnalisation de l'affichage** : Les utilisateurs peuvent désormais personnaliser leurs listes de dossiers en choisissant les colonnes à afficher, en les regroupant par sections et en consultant des aides contextuelles directement dans les menus de sélection [#13373](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13373).
+- **Gestion des dossiers vides** : Possibilité de générer un export PDF d'un dossier vide (via WeasyPrint) pour accompagner les agents dans la compréhension des démarches à venir [#13587](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13587).
+- **Amélioration des exports PDF** : Les cartes géographiques sont désormais intégrées sous forme d'images statiques dans les exports PDF des dossiers pour une meilleure lisibilité [#13597](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13597).
+- **Recherche et filtrage** : Amélioration de la précision des recherches et ajout de filtres booléens plus performants (notamment pour les statuts FranceConnect ou les établissements) [#13653](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13715).
+- **Administration et API** : Intégration de nouveaux points d'accès et de données spécifiques pour l'intégration avec les services de l'ARS (Agence Régionale de Santé) [#13573](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13573).
+- **Expérience utilisateur** : Amélioration des messages d'erreur lors du téléchargement de fichiers et meilleure visibilité des indicateurs de modification sur les champs des dossiers.
 
 ### Évolutions techniques
-- **Refactoring majeur du système de champs** : Migration de la logique des types de champs vers une architecture polymorphe (Single Table Inheritance), permettant une gestion plus propre et évolutive des comportements spécifiques à chaque type de champ. [#13662](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13662)
-- **Modernisation de l'interface utilisateur** : Remplacement des bibliothèques d'icônes et de composants par `react-aria-components` et les icônes officielles du DSFR.
+- **Refonte de l'architecture des champs** : Migration massive du système de gestion des types de champs (`TypeDeChamp`) vers un modèle de polymorphisme (STI) pour une meilleure maintenabilité et une gestion plus fine des comportements par type [#13662](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13662).
 - **Optimisation des performances** : 
-    - Segmentation du trafic GraphQL pour une meilleure observabilité via Skylight.
-    - Optimisation de la recherche via l'utilisation de vecteurs de recherche (tsvectors) en base de données.
-    - Amélioration des temps de réponse sur les listes de dossiers et les requêtes GraphQL complexes.
-- **Tests et Qualité** : Migration des tests système de Selenium/Chrome vers Playwright pour une exécution plus rapide et plus stable. [#13504](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13504)
-- **Nettoyage de l'infrastructure** : Suppression du support de `delayed_job` pour simplifier la gestion des tâches de fond. [#13682](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13682)
-- **Sécurité et Robustesse** : 
-    - Renforcement du traitement des images et de la gestion des fichiers téléchargés (uploads).
-    - Durcissement de la gestion des erreurs pour éviter les fuites d'informations techniques.
+    - Amélioration de la recherche plein texte via l'utilisation de vecteurs de recherche (`tsvectors`) stockés en base de données [#13567](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13567).
+    - Optimisation des requêtes GraphQL grâce au préchargement (preloading) de données pour réduire le nombre d'appels à la base de données [#13567](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13567).
+- **Sécurité et robustesse** :
+    - Renforcement du traitement des images avec `libvips` pour prévenir les vulnérabilités liées aux décodeurs [#13687](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13687).
+    - Protection contre les attaques par traversée de chemin (path traversal) lors de la génération d'exports ZIP [#13669](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13669).
+- **Nettoyage de l'infrastructure** : Suppression de la gestion des tâches via `delayed_job` au profit de solutions plus modernes et suppression de nombreuses colonnes de base de données obsolètes [#13682](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13682), [#13695](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13695).
+- **Internationalisation (i18n)** : Refonte de la gestion des traductions pour utiliser des fichiers "sidecar" par composant, rendant le code plus propre et plus facile à maintenir [#13650](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13650).
 
 ### Autres changements
-- Migration massive de templates de vues de HAML vers ERB pour uniformiser le code.
-- Mise à jour de la documentation de la FAQ avec de nouvelles captures d'écran.
+- **Migration de templates** : Migration importante de nombreux composants de HAML vers ERB pour standardiser le rendu des vues.
+- **Documentation** : Mise à jour de la documentation de l'administrateur et de la FAQ pour refléter les nouveaux termes et fonctionnalités.
+- **Qualité du code** : Nettoyage de nombreuses méthodes d'aide (helpers) et de fichiers de vues inutilisés.

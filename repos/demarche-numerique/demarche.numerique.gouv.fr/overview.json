@@ -1,29 +1,29 @@
 {
   "url": "https://github.com/demarche-numerique/demarche.numerique.gouv.fr",
   "name": "demarche.numerique.gouv.fr",
-  "description": "Plateforme web conçue pour accompagner la dématérialisation des démarches administratives en France. Elle permet aux usagers de réaliser des procédures en ligne et aux agents de gérer les dossiers numériques.",
+  "description": "Plateforme web conçue pour accompagner la dématérialisation des démarches administratives en France. Elle permet la gestion, le suivi et l'instruction de dossiers numériques de manière sécurisée et accessible.",
   "language": "Ruby",
   "features": [
     "Formulaires & Démarches",
+    "Recherche & Filtres",
+    "Visualisation de données & Cartographie",
+    "Statistiques & Rapports",
     "Gestion des utilisateurs & Permissions",
-    "Notifications & Alertes",
-    "Administration & Backoffice",
-    "Interface utilisateur & Design",
-    "Suivi & Traçabilité",
     "Accessibilité & i18n",
-    "Recherche & Filtres"
+    "Administration & Backoffice",
+    "Suivi & Traçabilité"
   ],
-  "audience": "Grand public et Agents de l'Administration",
+  "audience": "Agents de l'Administration",
   "dependencies": [
     "Ruby on Rails",
-    "React",
     "PostgreSQL",
     "Redis",
+    "React",
+    "TypeScript",
     "Sidekiq",
-    "Devise",
     "GraphQL",
-    "Playwright",
-    "TypeScript"
+    "Devise",
+    "Playwright"
   ],
   "components": [
     "API REST & GraphQL",
@@ -38,16 +38,20 @@
     "methods": [
       "email-password",
       "oauth2",
-      "sso",
-      "jwt"
+      "jwt",
+      "mfa",
+      "sso"
     ],
     "providers": [
       "FranceConnect"
     ]
   },
-  "tests": "RSpec pour les tests backend, Playwright pour les tests système, et Vitest pour les tests frontend.",
-  "workflows": [],
-  "lastActivity": "2026-08-19T17:06:03Z",
+  "tests": [
+    "RSpec",
+    "Playwright",
+    "Vitest"
+  ],
+  "lastActivity": "2026-08-21T17:15:52+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
