@@ -1,15 +1,14 @@
 # Synthèse d'activité : signaux-faibles (du 30/06 au 07/07)
 
 ## Résumé de l'activité
-L'activité de la période a été marquée par une amélioration significative de l'expérience utilisateur et de la fiabilité des données. Dans [sfor](/repos/signaux-faibles/sfor), les utilisateurs bénéficient d'une gestion des alertes plus fine (précision ajustable, notifications par email) et d'un suivi enrichi des entreprises, notamment par département.
+L'activité de cette période s'est concentrée sur l'amélioration de l'expérience utilisateur et la fiabilité des données métier. Dans [sfor](/repos/signaux-faibles/sfor), les évolutions permettent une gestion plus fine des entreprises (suivi par département) et des alertes (gestion de la précision), tout en améliorant le confort d'utilisation grâce à de nouvelles notifications par email et des exports Excel optimisés.
 
-Parallèlement, les efforts sur [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles) ont permis de renforcer la précision des informations affichées, en corrigeant notamment les données relatives aux codes NAF et aux effectifs, garantissant ainsi une meilleure qualité de l'information pour les utilisateurs finaux.
+Parallèlement, [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles) a renforcé la précision de ses informations, notamment en corrigeant les filtres sur les effectifs et en fiabilisant l'intégration des codes NAF, garantissant ainsi une meilleure qualité des données affichées.
 
 ## Autres changements notables
-- **Optimisation et robustesse** : Amélioration de la gestion des erreurs, des timeouts et des performances via l'ajout de tâches de dénormalisation dans [sfor](/repos/signaux-faibles/sfor).
-- **Fiabilisation de l'infrastructure** : Nettoyage important des migrations de base de données et amélioration des processus de génération de fichiers de référence dans [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles).
-- **Évolutions algorithmiques** : Travaux sur l'intégration de l'algorithme de Shapley pour enrichir les graphiques de contribution dans [sfor](/repos/signaux-faibles/sfor).
+- **Optimisation des performances et de la robustesse** : Dans [sfor](/repos/signaux-faibles/sfor), des tâches de dénormalisation ont été ajoutées pour optimiser les performances, et la gestion des erreurs ainsi que des timeouts a été renforcée pour améliorer la stabilité de l'application.
+- **Fiabilisation de l'infrastructure de données** : [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles) a procédé à des corrections importantes sur les migrations de la base de données et a amélioré les processus de génération des fichiers de référence pour garantir une meilleure reproductibilité des données.
 
 ## Dépôts les plus actifs
-- [sfor](/repos/signaux-faibles/sfor) : Évolutions centrées sur l'interface utilisateur, la gestion des alertes et l'optimisation des performances.
-- [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles) : Travaux de fiabilisation des données et de maintenance de l'infrastructure technique.
+- [sfor](/repos/signaux-faibles/sfor) : Amélioration de l'interface utilisateur, de la gestion des alertes et de la performance applicative.
+- [opensignauxfaibles](/repos/signaux-faibles/opensignauxfaibles) : Travaux de fiabilisation des données et correction de la logique de filtrage.

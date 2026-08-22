@@ -1,22 +1,24 @@
-# Synthèse d'activité : suitenumerique (du 01/08 au 14/08)
+# Synthèse d'activité : suitenumerique (du 20/05 au 29/08/2026)
 
 ## Résumé de l'activité
-L'activité de cette période est marquée par une montée en puissance des capacités de communication et de collaboration. L'intégration de la messagerie Matrix dans [hub](/repos/suitenumerique/hub) et l'amélioration significative de l'expérience mobile pour [messages](/repos/suitenumerique/messages) et [dictaphone](/repos/suitenumerique/dictaphone) ouvrent de nouveaux usages pour les utilisateurs. Parallèlement, la gestion des fichiers et du stockage est simplifiée et plus intuitive grâce aux évolutions de [drive](/repos/suitenumerique/drive) et [transfers](/repos/suitenumerique/transfers).
+L'activité récente est marquée par une montée en puissance majeure des services de communication et de collaboration. L'intégration de la messagerie Matrix dans [hub](/repos/suitenumerique/hub), le lancement du support mobile pour [messages](/repos/suitenumerique/messages) et [dictaphone](/repos/suitenumerique/dictaphone), ainsi que l'apport de l'intelligence artificielle dans [conversations](/repos/suitenumerique/conversations) transforment l'expérience utilisateur. 
 
-Sur le plan technique, l'organisation poursuit sa modernisation structurelle. Cela se traduit par une transition vers une architecture monorepo pour [ui-kit](/repos/suitenumerique/ui-kit) et l'adoption de frameworks plus performants comme `django-ninja` pour [menshen](/repos/suitenumerique/menshen), garantissant une meilleure maintenabilité et réactivité des services.
+Parallèlement, la gestion de l'information et des fichiers est renforcée par de nouveaux outils de suivi de quota dans [drive](/repos/suitenumerique/drive) et des fonctionnalités de partage sécurisé dans [transfers](/repos/suitenumerique/transfers). L'organisation poursuit également sa modernisation technique avec des migrations vers des architectures plus performantes (Vite, Astro, Django-ninja).
 
 ## Sécurité
-- **Protection des données et confidentialité** : Ajout du chiffrement de bout en bout optionnel dans [transfers](/repos/suitenumerique/transfers), chiffrement des données sensibles dans [accounts](/repos/suitenumerique/accounts) et renforcement de la sécurité des processus de migration avec le support du MFA dans [drive-migrator](/repos/suitenumerique/drive-migrator).
-- **Sécurisation des flux et des fichiers** : Protection contre les attaques SSRF dans [file-scanner](/repos/suitenumerique/file-scanner), durcissement du parsing d'emails dans [messages](/repos/suitenumerique/messages) et protection contre les bombes de décompression dans [conversations](/repos/suitenumerique/conversations).
-- **Maintenance et conformité** : Mise à jour de dépendances critiques pour corriger des vulnérabilités dans [people](/repos/suitenumerique/people) et renforcement de la sécurité des opérations via le protocole WOPI dans [drive](/repos/suitenumerique/drive).
+- Renforcement de la protection des transferts avec l'introduction du chiffrement de bout en bout (E2EE) en option dans [transfers](/repos/suitenumerique/transfers).
+- Amélioration de la sécurité réseau et des données avec le blocage des requêtes SSRF dans [file-scanner](/repos/suitenumerique/file-scanner) et la protection contre les fichiers PDF malveillants dans [conversations](/repos/suitenumerique/conversations).
+- Sécurisation de la gestion des identités via le chiffrement des données sensibles et le support de l'authentification sociale dans [accounts](/repos/suitenumerique/accounts).
+- Correction de vulnérabilités critiques par la mise à jour de bibliothèques de base dans [people](/repos/suitenumerique/people).
 
 ## Autres changements notables
-- **Évolutions architecturales majeures** : Migration vers une structure monorepo pour [ui-kit](/repos/suitenumerique/ui-kit) et refonte de l'API de [menshen](/repos/suitenumerique/menshen) via le framework `django-ninja`.
-- **Modernisation des outils et de l'infrastructure** : Intégration de `st-cli` pour simplifier les déploiements dans [st-ansible](/repos/suitenumerique/st-ansible), reconstruction complète du site de documentation avec Astro pour [docs-website](/repos/suitenumerique/docs-website) et migration du frontend vers Vite pour [calendars](/repos/suitenumerique/calendars).
+- **Modernisation des architectures** : Migrations technologiques importantes vers Vite pour [calendars](/repos/suitenumerique/calendars) et [conversations](/repos/suitenumerique/conversations), vers Astro pour [docs-website](/repos/suitenumerique/docs-website), et vers le framework `django-ninja` pour [menshen](/repos/suitenumerique/menshen).
+- **Consolidation de l'écosystème** : Transition vers une structure monorepo pour [ui-kit](/repos/suitenumerique/ui-kit), incluant la fusion de la bibliothèque Cunningham React.
+- **Nouveaux services** : Lancement et initialisation de nouveaux projets tels que [st-domain-parking](/repos/suitenumerique/st-domain-parking), [gallene-deployment](/repos/suitenumerique/gallene-deployment) et le SDK [gallene-sdk](/repos/suitenumerique/gallene-sdk).
 
 ## Dépôts les plus actifs
-- [drive](/repos/suitenumerique/drive) : Refonte majeure de la gestion des quotas de stockage et des fonctionnalités de partage.
-- [dictaphone](/repos/suitenumerique/dictaphone) : Améliorations de l'expérience mobile et optimisation du traitement audio.
-- [hub](/repos/suitenumerique/hub) : Intégration profonde et complète de la messagerie Matrix.
-- [meet-matting](/repos/suitenumerique/meet-matting) : Optimisations de haute performance pour le traitement vidéo en temps réel.
-- [conversations](/repos/suitenumerique/conversations) : Introduction de la synthèse automatique par IA et amélioration de la gestion documentaire.
+- [drive](/repos/suitenumerique/drive) : Évolutions majeures sur la gestion des quotas, le partage de masse et la sécurité des fichiers.
+- [hub](/repos/suitenumerique/hub) : Intégration complète et profonde de la messagerie Matrix.
+- [dictaphone](/repos/suitenumerique/dictaphone) : Améliorations significatives de l'expérience mobile et du traitement audio.
+- [conversations](/repos/suitenumerique/conversations) : Refonte de l'interface utilisateur et montée en puissance des fonctionnalités d'IA.
+- [ui-kit](/repos/suitenumerique/ui-kit) : Migration vers une structure monorepo et enrichissement de la bibliothèque de composants.

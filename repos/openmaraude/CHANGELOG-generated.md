@@ -1,11 +1,11 @@
-# Synthèse d'activité : openmaraude (du 05/06 au 12/06)
+# Synthèse d'activité : openmaraude (du 12/05 au 12/06)
 
 ## Résumé de l'activité
-L'activité récente s'est concentrée sur le développement des capacités de suspension au sein de l'organisation. L'étape majeure de cette période est l'introduction d'une interface visuelle dans [suspension-service](/repos/openmaraude/suspension-service), permettant désormais de consulter l'état de suspension des éléments, ce qui apporte une visibilité concrète sur cette fonctionnalité pour les utilisateurs.
+L'organisation progresse sur la mise en place du système de gestion des suspensions. L'ajout d'une interface utilisateur dans [suspension-service](/repos/openmaraude/suspension-service) permet désormais de visualiser l'état de suspension des éléments, améliorant ainsi la transparence pour les utilisateurs finaux. Parallèlement, les travaux sur [suspension-service-api](/repos/openmaraude/suspension-service-api) préparent l'infrastructure nécessaire pour assurer un déploiement stable de l'API.
 
 ## Autres changements notables
-- Préparation de l'infrastructure de déploiement pour l'API et le service de suspension, incluant la configuration DNS (CNAME) et la mise en place de points d'entrée web dans [suspension-service-api](/repos/openmaraude/suspension-service-api) et [suspension-service](/repos/openmaraude/suspension-service).
+- **Infrastructure et déploiement** : Configuration DNS (via des fichiers CNAME) et préparation des points d'entrée web pour faciliter la mise en ligne des services de suspension ([suspension-service](/repos/openmaraude/suspension-service) et [suspension-service-api](/repos/openmaraude/suspension-service-api)).
 
 ## Dépôts les plus actifs
-- [suspension-service](/repos/openmaraude/suspension-service) : Développement de l'interface de suspension et configuration DNS.
-- [suspension-service-api](/repos/openmaraude/suspension-service-api) : Travaux de préparation technique pour le déploiement de l'API.
+- [suspension-service](/repos/openmaraude/suspension-service) : Développement de l'interface de visualisation des suspensions.
+- [suspension-service-api](/repos/openmaraude/suspension-service-api) : Travaux de configuration technique pour le déploiement de l'API.

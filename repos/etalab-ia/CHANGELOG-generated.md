@@ -1,23 +1,26 @@
-# Synthèse d'activité : etalab-ia (du 01/07 au 31/07)
+# Synthèse d'activité : etalab-ia (du 20/05 au 27/05)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation se concentre sur l'enrichissement de l'écosystème RAG (Retrieval-Augmented Generation) et l'autonomisation des agents IA via des projets comme [letta](/repos/etalab-ia/letta) et [ragtime](/repos/etalab-ia/ragtime). Les développements majeurs incluent une meilleure gestion des collections de documents, l'intégration de nouveaux modèles de pointe et des outils d'évaluation plus performants comme [evalap](/repos/etalab-ia/evalap) et [eval-transcript](/repos/etalab-ia/eval-transcript). 
+L'activité récente de l'organisation est marquée par une montée en maturité significative de ses solutions de RAG (Retrieval-Augmented Generation) et d'agents IA. Les projets phares comme [ragtime](/repos/etalab-ia/ragtime) (anciennement [rag-facile](/repos/etalab-ia/rag-facile)) et la suite [OpenGate](/repos/etalab-ia/OpenGateLLM) franchissent un cap de production grâce à des refontes architecturales majeures et l'intégration de fonctionnalités essentielles telles que l'authentification (SSO, Supabase) et la persistance des données.
 
-Ces évolutions permettent une exploitation plus fluide et sécurisée des données, notamment grâce à l'automatisation des pipelines vers l'API Albert avec [mediatech-to-albert-api](/repos/etalab-ia/mediatech-to-albert-api) et l'amélioration de l'accessibilité des données publiques via [mediatech](/repos/etalab-ia/mediatech). L'accent est également mis sur la robustesse des infrastructures et la simplification de l'expérience utilisateur pour les développeurs et les intégrateurs.
+Parallèlement, l'écosystème de données et d'évaluation se renforce. L'automatisation des pipelines d'ingestion vers [Albert](/repos/etalab-ia/mediatech-to-albert-api) et l'amélioration des capacités d'exportation des résultats de benchmarks vers Hugging Face via [evalap](/repos/etalab-ia/evalap) et [eval-transcript](/repos/etalab-ia/eval-transcript) permettent une exploitation plus fluide et professionnelle des modèles et des données.
 
 ## Sécurité
-- Protection contre l'énumération d'utilisateurs et renforcement de l'authentification dans [OpenGateLLM](/repos/etalab-ia/OpenGateLLM).
-- Sécurisation de la saisie des clés API dans [ragtime](/repos/etalab-ia/ragtime) et amélioration des validations de sécurité dans [skills](/repos/etalab-ia/skills).
-- Mise en place de contrôles de sécurité automatisés (gitleaks, scans de vulnérabilités) dans [eval-transcript](/repos/etalab-ia/eval-transcript) et [parcours-rag](/repos/etalab-ia/parcours-rag).
+- Amélioration de la sécurisation de la saisie des clés API dans [ragtime](/repos/etalab-ia/ragtime).
+- Mise en place du support SSO pour l'authentification dans [OpenGateLLM](/repos/etalab-ia/OpenGateLLM).
+- Intégration de vérifications de vulnérabilités des dépendances et de détection de secrets (gitleaks) dans [parcours-rag](/repos/etalab-ia/parcours-rag) et [eval-transcript](/repos/etalab-ia/eval-transcript).
+- Sécurisation de l'accès aux machines virtuelles via l'authentification GitHub dans [albert-code](/repos/etalab-ia/albert-code).
+- Renforcement des validations pour la fonctionnalité de sécurité du développement dans [skills](/repos/etalab-ia/skills).
 
 ## Autres changements notables
-- **Refactorisations architecturales majeures** : Migration vers une "Clean Architecture" pour [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) et refonte modulaire de la plateforme RAG avec [rag-facile](/repos/etalab-ia/rag-facile) (devenu [ragtime](/repos/etalab-ia/ragtime)).
-- **Évolutions d'infrastructure** : Migration vers une architecture de base de données serverless pour [mediatech-to-albert-api](/repos/etalab-ia/mediatech-to-albert-api) et optimisation des images Docker pour [marker-serve](/repos/etalab-ia/marker-serve) et [OpenGateRAG](/repos/etalab-ia/OpenGateRAG).
-- **Automatisation et CI/CD** : Amélioration des pipelines de déploiement et de test pour [OpenGateRAG](/repos/etalab-ia/OpenGateRAG) et [whisperx-openai-api](/repos/etalab-ia/whisperx-openai-api).
+- **Refonte architecturale** : Migration massive vers une "Clean Architecture" pour [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) et unification de l'API avec [OpenGateRAG](/repos/etalab-ia/OpenGateRAG).
+- **Évolution de l'offre RAG** : Renommage officiel du projet de [rag-facile](/repos/etalab-ia/rag-facile) vers [ragtime](/repos/etalab-ia/ragtime).
+- **Infrastructure et données** : Migration de la base de données vers une architecture serverless pour [mediatech-to-albert-api](/repos/etalab-ia/mediatech-to-albert-api) et optimisation du support GPU H200 pour [whisperx-openai-api](/repos/etalab-ia/whisperx-openai-api).
+- **Mises à jour technologiques** : Migration vers la version 6 du SDK IA pour [BlockNote](/repos/etalab-ia/BlockNote).
 
 ## Dépôts les plus actifs
-- [lettabot](/repos/etalab-ia/lettabot) : Extension massive des plateformes supportées (Slack, Discord, Telegram) et refonte de la configuration via YAML.
-- [letta](/repos/etalab-ia/letta) : Évolution rapide des capacités des agents (mémoire, planification) et support de nouveaux modèles (Anthropic, Gemini).
-- [ragtime](/repos/etalab-ia/ragtime) : Transformation profonde incluant l'authentification, la gestion de collections et une interface CLI complète.
-- [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) : Restructuration profonde de l'architecture et amélioration de l'observabilité et du monitoring.
-- [evalap](/repos/etalab-ia/evalap) : Amélioration de l'export des résultats vers Hugging Face Hub et de l'interface de visualisation des évaluations.
+- [lettabot](/repos/etalab-ia/lettabot) : Extension massive des capacités d'intégration (Slack, Discord, Telegram) et refonte complète du système de configuration.
+- [ragtime](/repos/etalab-ia/ragtime) : Transformation profonde de la plateforme incluant l'authentification, la gestion de collections et une architecture modulaire.
+- [OpenGateLLM](/repos/etalab-ia/OpenGateLLM) : Évolutions structurelles majeures (Clean Architecture) et amélioration de l'expérience utilisateur (SSO, Playground).
+- [letta](/repos/etalab-ia/letta) et [letta-code](/repos/etalab-ia/letta-code) : Support de nouveaux modèles de pointe et ajout d'outils spécialisés pour les agents (planification, mémoire, sous-agents).
+- [evalap](/repos/etalab-ia/evalap) et [eval-transcript](/repos/etalab-ia/eval-transcript) : Amélioration des capacités d'évaluation et d'exportation automatique des résultats vers Hugging Face.

@@ -1,23 +1,27 @@
-# Synthèse d'activité : IA-Generative (du 20/07 au 27/07)
+# Synthèse d'activité : IA-Generative (du DD/MM au DD/MM)
 
 ## Résumé de l'activité
-L'activité de cette période est marquée par une montée en puissance des capacités d'intelligence artificielle et un renforcement massif de la sécurité des plateformes. Les utilisateurs bénéficient de nouvelles fonctionnalités avancées telles que la génération de questions-réponses et le scraping web dans [abrege](/repos/IA-Generative/abrege), l'intégration de systèmes RAG dans [Stirling-PDF](/repos/IA-Generative/Stirling-PDF), ainsi que la transcription de vidéos YouTube dans [ocr-api](/repos/IA-Generative/ocr-api).
+L'activité de la période est marquée par une montée en puissance des capacités d'analyse de contenu et d'automatisation. L'intégration de systèmes RAG ([Stirling-PDF](/repos/IA-Generative/Stirling-PDF)) et de nouvelles fonctionnalités de génération de questions-réponses ([abrege](/repos/IA-Generative/abrege)) renforce l'intelligence des outils de traitement de documents. Parallèlement, l'extension des capacités de transcription ([ocr-api](/repos/IA-Generative/ocr-api), [mirai-mesreunions](/repos/IA-Generative/mirai-mesreunions)) et l'amélioration de l'expérience utilisateur via des parcours d'onboarding ([IAssistant-Direct](/repos/IA-Generative/IAssistant-Direct)) ou des interfaces mobiles ([dictaphone](/repos/IA-Generative/dictaphone)) augmentent la valeur métier pour les utilisateurs finaux.
 
-Parallèlement, l'organisation a concentré ses efforts sur la robustesse des produits, avec une amélioration significative de l'expérience utilisateur (onboarding, interfaces mobiles) et une modernisation des infrastructures pour supporter des déploiements plus larges et plus stables.
+L'écosystème de l'automatisation s'enrichit également avec le développement de nouveaux nœuds n8n ([n8n-nodes-playwright-core](/repos/IA-Generative/n8n-nodes-playwright-core), [n8n-nodes-async-api](/repos/IA-Generative/n8n-nodes-async-api)) et une meilleure gestion des ressources distantes.
 
 ## Sécurité
-- **Protection contre les attaques et injections** : Mise en place de garde-fous contre les injections de prompt dans [owuiapps-agents](/repos/IA-Generative/owuiapps-agents) et de mécanismes anti-leak dans [myvault](/repos/IA-Generative/myvault) et [mycollections](/repos/IA-Generative/mycollections).
-- **Authentification et gestion des accès** : Implémentation de l'authentification à deux facteurs (2FA/TOTP) dans [myvault](/repos/IA-Generative/myvault), renforcement de la gestion des jetons JWT/PKCE dans [dictaphone](/repos/IA-Generative/dictaphone) et intégration du SSO via Keycloak dans [owuiapps-agents](/repos/IA-Generative/owuiapps-agents) et [mcr](/repos/IA-Generative/mcr).
-- **Sécurisation des données et des flux** : Chiffrement des notes sensibles dans [myvault](/repos/IA-Generative/myvault), validation des URLs pour prévenir les attaques SSRF dans [mycollections](/repos/IA-Generative/mycollections) et correction de diverses vulnérabilités dans [ocr-api](/repos/IA-Generative/ocr-api) et [abrege](/repos/IA-Generative/abrege).
+- **Protection contre les injections** : Renforcement de la sécurité contre les injections de prompt (OWASP LLM01) ([owuiapps-agents](/repos/IA-Generative/owuiapps-agents)).
+- **Authentification et accès** : Implémentation de l'authentification à deux facteurs (2FA/TOTP) ([myvault](/repos/IA-Generative/myvault)), amélioration de la gestion des jetons JWT/PKCE ([dictaphone](/repos/IA-Generative/dictaphone)) et support de la déconnexion fédérée Keycloak ([owuiapps-agents](/repos/IA-Generative/owuiapps-agents)).
+- **Protection des données** : Mise en place de garde-fous anti-leak ([myvault](/repos/IA-Generative/myvault), [mycollections](/repos/IA-Generative/mycollections)), hachage des secrets ([myvault](/repos/IA-Generative/myvault)) et renforcement de la conformité via la documentation des données PII ([mirai-api](/repos/IA-Generative/mirai-api)).
+- **Sécurisation des infrastructures** : Utilisation d'images Docker non-root ([device-management](/repos/IA-Generative/device-management)), intégration de `gitleaks` pour la détection de secrets ([claude-code-scaleway](/repos/IA-Generative/claude-code-scaleway), [Archives-Mail-Thunderbird-Distribution](/repos/IA-Generative/Archives-Mail-Thunderbird-Distribution)) et protection contre les attaques SSRF et XSS ([mycollections](/repos/IA-Generative/mycollections), [myvault](/repos/IA-Generative/myvault)).
 
 ## Autres changements notables
-- **Évolutions architecturales** : Migration majeure de [mcr](/repos/IA-Generative/mcr) vers un modèle de microservices et passage de l'infrastructure de gestion des files d'attente de Kafka vers Redis pour [kevent-ai](/repos/IA-Generative/kevent-ai).
-- **Modernisation de la CI/CD et de l'infrastructure** : Optimisation des processus de build via BuildKit pour [mirai-mesreunions](/repos/IA-Generative/mirai-mesreunions), préparation au déploiement cloud-native avec Helm pour [device-management](/repos/IA-Generative/device-management) et stabilisation des images Docker pour [n8n-image](/repos/IA-Generative/n8n-image).
-- **Développement de nouveaux connecteurs** : Lancement des premiers développements des nœuds n8n pour les services IA BRIO dans [n8n-nodes-async-api](/repos/IA-Generative/n8n-nodes-async-api).
+- **Évolutions architecturales** : Migration majeure vers un modèle de microservices ([mcr](/repos/IA-Generative/mcr)), passage de la gestion des files d'attente de Kafka vers Redis ([kevent-ai](/repos/IA-Generative/kevent-ai)) et optimisation des processus de build via un modèle "in-cluster" ([mirai-mesreunions](/repos/IA-Generative/mirai-mesreunions)).
+- **Intégration de modèles et services** : Support opérationnel des modèles GLM-5.2 de Scaleway ([claude-code-scaleway](/repos/IA-Generative/claude-code-scaleway)) et expansion de l'écosystème de nœuds n8n ([n8n-nodes-playwright-core](/repos/IA-Generative/n8n-nodes-playwright-core), [n8n-nodes-async-api](/repos/IA-Generative/n8n-nodes-async-api)).
+- **Déploiement et Cloud** : Introduction de charts Helm pour faciliter le déploiement et préparation au déploiement cloud-native ([device-management](/repos/IA-Generative/device-management)).
 
 ## Dépôts les plus actifs
-- [myvault](/repos/IA-Generative/myvault) : Travaux intensifs sur la sécurité, le chiffrement et l'authentification forte.
-- [mycollections](/repos/IA-Generative/mycollections) : Améliorations de l'administration, du cloisonnement des données et de l'expérience utilisateur.
-- [ocr-api](/repos/IA-Generative/ocr-api) : Extension des capacités de traitement (YouTube, nouveaux formats) et de l'interface web.
-- [abrege](/repos/IA-Generative/abrege) : Ajout de fonctionnalités de QA et de scraping de contenu web.
-- [mcr](/repos/IA-Generative/mcr) : Refonte structurelle vers les microservices et optimisation du pipeline de transcription.
+- [myvault](/repos/IA-Generative/myvault) : Travaux intensifs sur la sécurité, le chiffrement et la gestion des accès.
+- [mycollections](/repos/IA-Generative/mycollections) : Amélioration de l'expérience playground et sécurisation des données.
+- [mcr](/repos/IA-Generative/mcr) : Refonte profonde de l'architecture vers les microservices.
+- [abrege](/repos/IA-Generative/abrege) : Ajout de fonctionnalités de scraping web et de génération de QA.
+- [ocr-api](/repos/IA-Generative/ocr-api) : Extension des formats de fichiers et des capacités de transcription.
+- [claude-code-scaleway](/repos/IA-Generative/claude-code-scaleway) : Intégration des modèles Scaleway et stabilisation de l'API.
+- [kevent-ai](/repos/IA-Generative/kevent-ai) : Migration vers Redis et optimisation de la gestion des tâches.
+- [device-management](/repos/IA-Generative/device-management) : Nouveaux outils de monitoring et préparation au cloud-native.

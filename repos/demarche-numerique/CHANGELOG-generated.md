@@ -1,17 +1,19 @@
-# Synthèse d'activité : demarche-numerique (du 30/06 au 06/07)
+# Synthèse d'activité : demarche-numerique (du 15/08 au 21/08/2026)
 
 ## Résumé de l'activité
-L'activité de la semaine est marquée par une amélioration significative de l'expérience utilisateur et une plus grande flexibilité technique. La plateforme [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) bénéficie de nouveaux outils de gestion (éditeur d'emails enrichi, personnalisation de l'affichage) et d'une meilleure intégration de données (FranceConnect, ARS), tout en renforçant son accessibilité. 
+L'activité récente de l'organisation se concentre sur l'amélioration de la précision de l'extraction de données et la flexibilité des infrastructures. [la_taupe](/repos/demarche-numerique/la_taupe) renforce ses capacités d'analyse automatique de documents grâce à un nouveau moteur d'OCR et l'introduction du traitement par lots, rendant l'extraction d'informations bancaires plus robuste. 
 
-En parallèle, le proxy [ds_proxy](/repos/demarche-numerique/ds_proxy) gagne en polyvalence grâce à la prise en charge de nouveaux modes de stockage (S3 et Swift), facilitant ainsi son déploiement dans des environnements d'infrastructure variés.
+Parallèlement, [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) enrichit l'expérience utilisateur avec des outils de recherche avancés et des exports PDF améliorés, tandis que [ds_proxy](/repos/demarche-numerique/ds_proxy) gagne en polyvalence en intégrant le support de nouveaux systèmes de stockage comme S3 et Swift.
 
 ## Sécurité
-- Renforcement de la sécurité lors du traitement des fichiers via l'intégration de libvips dans [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
+- Renforcement de la sécurité sur [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) via la protection contre les attaques par *path traversal* et la sécurisation du traitement d'images avec `libvips`.
 
 ## Autres changements notables
-- **Modernisation de l'interface et des tests** : Migration de l'infrastructure de tests vers Playwright, optimisation des performances (recherche plein texte, GraphQL) et modernisation de l'UI avec React-Aria et les composants DSFR pour [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
-- **Optimisation technique** : Simplification des dépendances et refactorisation de la configuration de stockage pour [ds_proxy](/repos/demarche-numerique/ds_proxy).
+- **Optimisation de l'OCR et de la performance :** Migration vers un nouveau moteur d'OCR (PP-OCR v6) et mise en place d'outils de benchmarking pour mesurer la précision et la latence sur [la_taupe](/repos/demarche-numerique/la_taupe).
+- **Évolutions d'infrastructure et de stockage :** Extension du support des protocoles S3 et Swift et simplification des dépendances pour [ds_proxy](/repos/demarche-numerique/ds_proxy).
+- **Refonte technique et recherche :** Optimisation des performances de recherche (via `tsvectors` et GraphQL) et refonte de l'architecture des champs sur [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
 
 ## Dépôts les plus actifs
-- [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) : Évolutions majeures de l'interface utilisateur, de l'accessibilité et de l'intégration de données.
-- [ds_proxy](/repos/demarche-numerique/ds_proxy) : Extension des capacités de stockage et optimisation de la configuration technique.
+- [la_taupe](/repos/demarche-numerique/la_taupe) : Amélioration majeure de l'OCR et ajout du traitement par lots via CLI.
+- [ds_proxy](/repos/demarche-numerique/ds_proxy) : Extension du support de stockage et optimisation de la configuration.
+- [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) : Évolutions de l'interface utilisateur, de la recherche et renforcement de la sécurité.

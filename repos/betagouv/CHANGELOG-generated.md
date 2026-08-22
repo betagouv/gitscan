@@ -1,28 +1,31 @@
-# Synthèse d'activité : betagouv (du 01/07 au 15/08)
+# Synthèse d'activité : betagouv (du 01/07 au 20/08)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation est marquée par une forte dynamique de modernisation des outils et une amélioration de l'expérience utilisateur. On note des avancées majeures dans la simplification des parcours (nouveaux simulateurs pour les frontaliers dans [mon-entreprise](/repos/betagouv/mon-entreprise), gestion des rendez-vous dans [rdv-service-public](/repos/betagouv/rdv-service-public)) et une montée en puissance de l'automatisation des processus métiers, notamment pour le suivi des données de santé et de laboratoire ([maestro](/repos/betagouv/maestro)).
+L'activité de l'organisation a été marquée par une modernisation profonde des outils de pilotage et une automatisation accrue des processus métiers. Des avancées majeures ont été réalisées pour simplifier le travail des agents et des professionnels, notamment via l'automatisation des échanges avec les laboratoires dans [maestro](/repos/betagouv/maestro) et l'amélioration du suivi des dossiers dans [zacharie](/repos/betagouv/zacharie) ou [sante-psy](/repos/betagouv/sante-psy).
 
-L'intégration de l'intelligence artificielle pour la création de contenus pédagogiques ([science-infuse](/repos/betagouv/science-infuse)) et le renforcement de la qualité logicielle via de nouvelles architectures et des outils de design system ([standards](/repos/betagouv/standards), [lab-anssi-ui-kit](/repos/betagouv/lab-anssi-ui-kit)) démontrent une volonté d'accroître la valeur ajoutée et la fiabilité des services mis à disposition des citoyens et des agents.
+Parallèlement, l'expérience utilisateur a été enrichie par de nouveaux services de contenu et d'aide, comme les outils de création pédagogique assistée par IA dans [science-infuse](/repos/betagouv/science-infuse) ou la structuration de l'offre de santé mentale dans [sante-mentale-etudiant](/repos/betagouv/sante-mentale-etudiant). Ces évolutions visent à rendre les services plus intuitifs, plus accessibles et plus performants pour l'ensemble des usagers.
 
 ## Sécurité
-- **Renforcement des communications et de l'authentification** : Implémentation du chiffrement TLS et de l'authentification par certificat pour [lab-anssi-antivirus](/repos/betagouv/lab-anssi-antivirus) et vérification des certificats MQC dans [lab-anssi-admin](/repos/betagouv/lab-anssi-admin).
-- **Correction de vulnérabilités** : Résolution de failles critiques, notamment sur la gestion des sessions dans [mon-suivi-justice](/repos/betagouv/mon-suivi-justice) et des vulnérabilités XSS ou d'authentification dans [nitrates](/repos/betagouv/nitrates).
-- **Protection des infrastructures** : Activation de pare-feu applicatifs (WAF) pour [pass-sport](/repos/betagouv/pass-sport) et intégration d'outils d'analyse de configuration (zizmor, checkov) pour sécuriser les pipelines CI/CD dans [mon-aide-cyber](/repos/betagouv/mon-aide-cyber) et [mon-aide-cyber-journal](/repos/betagouv/mon-aide-cyber-journal).
-- **Remédiation des dépendances** : Correction de vulnérabilités de haute sévérité sur les dépendances dans [reva](/repos/betagouv/reva) et [mon-profil-anssi](/repos/betagouv/mon-profil-anssi).
+- Correction d'une vulnérabilité critique sur la gestion des sessions utilisateurs dans [mon-suivi-justice](/repos/betagouv/mon-suivi-justice).
+- Renforcement de la protection contre les attaques (XSS, authentification admin) dans [nitrates](/repos/betagouv/nitrates).
+- Mise en place du chiffrement TLS et de l'authentification par certificat pour sécuriser les communications dans [lab-anssi-antivirus](/repos/betagouv/lab-anssi-antivirus).
+- Activation d'un pare-feu applicatif (WAF) pour protéger l'infrastructure de [pass-sport](/repos/betagouv/pass-sport).
+- Intégration d'outils d'analyse automatique de la configuration pour prévenir les failles dans [mon-aide-cyber](/repos/betagouv/mon-aide-cyber) et [mon-aide-cyber-journal](/repos/betagouv/mon-aide-cyber-journal).
+- Implémentation de l'authentification à deux facteurs (2FA) pour les administrateurs dans [recommandations-collaboratives](/repos/betagouv/recommandations-collaboratives).
+- Vérification des certificats de sécurité pour les sauvegardes dans [lab-anssi-admin](/repos/betagouv/lab-anssi-admin).
 
 ## Autres changements notables
-- **Modernisation technologique et architecturale** : Passage à Rails 8 et Ruby 3.4 pour [rdv-service-public](/repos/betagouv/rdv-service-public), publication de la version 2.0 des [standards](/repos/betagouv/standards), et refonte profonde du moteur d'autorisation de l'API dans [reva](/repos/betagouv/reva).
-- **Refonte des simulateurs et de l'expérience usager** : Restructuration majeure de l'architecture des simulateurs dans [mon-entreprise](/repos/betagouv/mon-entreprise) et fusion de l'application d'identification et du simulateur dans [transports-sanitaires](/repos/betagouv/transports-sanitaires).
-- **Automatisation et IA** : Développement de fonctionnalités de génération de contenu par IA dans [science-infuse](/repos/betagouv/science-infuse) et automatisation de la lecture de rapports PDF pour [maestro](/repos/betagouv/maestro).
-- **Évolutions infrastructurelles** : Initialisation de l'infrastructure en tant que code (IaC) pour [nitrates-iac](/repos/betagouv/nitrates-iac) et adoption de Nix pour [lab-anssi-antivirus](/repos/betagouv/lab-anssi-antivirus).
+- Publication de la version 2.0 des [standards](/repos/betagouv/standards).
+- Refonte architecturale majeure fusionnant l'identification et le simulateur dans [transports-sanitaires](/repos/betagouv/transports-sanitaires).
+- Modernisation des socles techniques, notamment le passage à Rails 8 pour [rdv-service-public](/repos/betagouv/rdv-service-public) et PHP 8.1 pour [maestro-wordpress](/repos/betagouv/maestro-wordpress).
+- Automatisation des déploiements et mise en place de "Review Apps" pour tester les modifications en isolation dans [mon-entreprise](/repos/betagouv/mon-entreprise).
+- Initialisation de l'infrastructure en tant que code (IaC) pour [nitrates-iac](/repos/betagouv/nitrates-iac).
+- Optimisation de la gestion de la mémoire et des performances de recherche dans [ranking_methods](/repos/betagouv/ranking_methods) et [maestro](/repos/betagouv/maestro).
 
 ## Dépôts les plus actifs
-- [zacharie](/repos/betagouv/zacharie) : Amélioration du suivi SVI et de l'expérience des collecteurs.
-- [sylvasan](/repos/betagouv/sylvasan) : Optimisation de la précision géographique et de la saisie mobile.
-- [rdv-service-public](/repos/betagouv/rdv-service-public) : Modernisation de l'infrastructure et intégration du DSFR.
-- [reva](/repos/betagouv/reva) : Évolutions du parcours candidat et refonte de la sécurité API.
-- [nitrates](/repos/betagouv/nitrates) : Refonte des formulaires et renforcement de la sécurité.
-- [mon-entreprise](/repos/betagouv/mon-entreprise) : Lancement de nouveaux simulateurs et refonte architecturale.
-- [maestro](/repos/betagouv/maestro) : Automatisation des échanges avec les laboratoires et gestion des utilisateurs.
-- [sante-mentale-etudiant](/repos/betagouv/sante-mentale-etudiant) : Structuration du contenu et nouveaux modules d'aide.
+- [maestro](/repos/betagouv/maestro) : Automatisation des échanges avec les laboratoires et gestion accrue de l'autonomie des coordinateurs.
+- [sylvasan](/repos/betagouv/sylvasan) : Amélioration de la précision géographique, des exports de données et de l'ergonomie mobile.
+- [mon-service-securise](/repos/betagouv/mon-service-securise) : Développement de nouveaux outils de reporting, de statistiques et de génération de documents PDF.
+- [nitrates](/repos/betagouv/nitrates) : Refonte de l'expérience utilisateur sur mobile et renforcement global de la sécurité.
+- [transports-sanitaires](/repos/betagouv/transports-sanitaires) : Fusion de l'application d'identification et du simulateur avec une nouvelle architecture.
+- [sante-mentale-etudiant](/repos/betagouv/sante-mentale-etudiant) : Structuration importante du contenu (articles, newsletter) et de l'interface utilisateur.

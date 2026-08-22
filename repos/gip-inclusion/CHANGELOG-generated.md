@@ -1,25 +1,25 @@
-# Synthèse d'activité : gip-inclusion (du 20/06 au 13/08)
+# Synthèse d'activité : gip-inclusion (du 20/06 au 20/08)
 
 ## Résumé de l'activité
-L'activité de la période est marquée par des évolutions majeures de l'expérience utilisateur et de l'offre fonctionnelle. Le rebranding de l'outil EURES en "Match Europe" [grist-custom-forms](/repos/gip-inclusion/grist-custom-forms) et la refonte complète de la page d'accueil [plateforme-accueil](/repos/gip-inclusion/plateforme-accueil) marquent des étapes clés. 
+L'activité de cette période est marquée par des transformations majeures de l'expérience utilisateur et de l'architecture des services. Plusieurs plateformes ont bénéficié de refontes visuelles et fonctionnelles importantes, comme [plateforme-accueil](/repos/gip-inclusion/plateforme-accueil) et [grist-custom-forms](/repos/gip-inclusion/grist-custom-forms) (rebranding en Match Europe), visant à simplifier les parcours et à enrichir les outils de matching. Parallèlement, l'accent a été mis sur l'intelligence de la recherche et la fiabilité des données avec des optimisations significatives dans [dora](/repos/gip-inclusion/dora) et [data-inclusion](/repos/gip-inclusion/data-inclusion).
 
-L'intégration du module d'orientation dans [les-emplois](/repos/gip-inclusion/les-emplois), le déploiement d'un pipeline complet pour les emails SPS [sps-emailer](/repos/gip-inclusion/sps-emailer) et l'amélioration des capacités de recherche et de pilotage ([dora](/repos/gip-inclusion/dora), [data-inclusion](/repos/gip-inclusion/data-inclusion), [pilotage-airflow](/repos/gip-inclusion/pilotage-airflow)) renforcent l'impact des outils pour les acteurs de l'inclusion et les décideurs.
+L'organisation renforce également ses standards d'accessibilité et d'internationalisation, notamment via [site-institutionnel-2025](/repos/gip-inclusion/site-institutionnel-2025) et [itou-theme](/repos/gip-inclusion/itou-theme), tout en modernisant ses infrastructures de déploiement pour gagner en scalabilité et en robustesse.
 
 ## Sécurité
-- Refonte complète de la double authentification (MFA) pour renforcer la sécurité des accès [les-emplois](/repos/gip-inclusion/les-emplois).
-- Mise en place de l'authentification par jeton (token authentication) [api-relay-cnav](/repos/gip-inclusion/api-relay-cnav).
-- Amélioration de la confidentialité via l'anonymisation automatique des données sensibles [autometa](/repos/gip-inclusion/autometa).
-- Sécurisation des accès aux téléchargements [le-marche](/repos/gip-inclusion/le-marche) et suppression des mots de passe codés en dur dans les prototypes [fluo-proto](/repos/gip-inclusion/fluo-proto).
-- Correction de vulnérabilités [immersion-facile](/repos/gip-inclusion/immersion-facile).
+- Renforcement de la protection des données personnelles via l'anonymisation automatique des numéros NIR dans [autometa](/repos/gip-inclusion/autometa) et la gestion sécurisée des sorties nominatives dans [sps-emailer](/repos/gip-inclusion/sps-emailer).
+- Amélioration de la sécurité des accès avec la refonte du parcours de double authentification (2FA) dans [les-emplois](/repos/gip-inclusion/les-emplois) et la restriction des téléchargements aux utilisateurs authentifiés dans [le-marche](/repos/gip-inclusion/le-marche).
+- Sécurisation des infrastructures par la suppression de mots de passe codés en dur dans [fluo-proto](/repos/gip-inclusion/fluo-proto), le renforcement des routes OTP dans [les-emplois](/repos/gip-inclusion/les-emplois) et la normalisation des mots de passe dans [dora](/repos/gip-inclusion/dora).
+- Généralisation du protocole HTTPS pour sécuriser la génération des URL dans [la-communaute](/repos/gip-inclusion/la-communaute).
 
 ## Autres changements notables
-- Migration vers une architecture Django complète et conteneurisée [plateforme-accueil](/repos/gip-inclusion/plateforme-accueil).
-- Passage à un modèle de déploiement serverless pour les prototypes [fluo-proto](/repos/gip-inclusion/fluo-proto).
-- Refonte profonde de l'architecture des données et des modèles d'inclusion [pilotage-airflow](/repos/gip-inclusion/pilotage-airflow) et [dora](/repos/gip-inclusion/dora).
+- Migrations architecturales majeures, notamment le passage à Django pour [plateforme-accueil](/repos/gip-inclusion/plateforme-accueil) et l'évolution vers des conteneurs serverless pour [fluo-proto](/repos/gip-inclusion/fluo-proto).
+- Refonte structurelle des données, particulièrement la migration massive du modèle "Publics" dans [dora](/repos/gip-inclusion/dora).
+- Évolutions de l'orchestration et de l'analyse de données avec l'intégration de nouveaux flux (DORA, IMER) dans [pilotage-airflow](/repos/gip-inclusion/pilotage-airflow).
+- Mise en place de l'internationalisation (i18n) pour [site-institutionnel-2025](/repos/gip-inclusion/site-institutionnel-2025).
 
 ## Dépôts les plus actifs
-- [les-emplois](/repos/gip-inclusion/les-emplois) : Intégration du module d'orientation, refonte de la sécurité (MFA) et optimisations de performance.
-- [grist-custom-forms](/repos/gip-inclusion/grist-custom-forms) : Rebranding en Match Europe et gestion complète des candidatures spontanées.
-- [plateforme-accueil](/repos/gip-inclusion/plateforme-accueil) : Refonte visuelle et migration vers une architecture Django.
-- [pilotage-airflow](/repos/gip-inclusion/pilotage-airflow) : Enrichissement des tableaux de bord et restructuration de l'architecture de données.
-- [dora](/repos/gip-inclusion/dora) : Amélioration de la recherche et migration du référentiel des publics.
+- [grist-custom-forms](/repos/gip-inclusion/grist-custom-forms) : Rebranding complet vers Match Europe et mise en place d'un flux de candidatures spontanées.
+- [dora](/repos/gip-inclusion/dora) : Refonte profonde de la structure des données et optimisation du moteur de recherche.
+- [plateforme-accueil](/repos/gip-inclusion/plateforme-accueil) : Refonte de la page d'accueil et migration vers une architecture Django.
+- [les-emplois](/repos/gip-inclusion/les-emplois) : Intégration de nouveaux modules d'orientation et renforcement de la sécurité des accès.
+- [immersion-facile](/repos/gip-inclusion/immersion-facile) : Amélioration des tableaux de bord et de la gestion des conventions.

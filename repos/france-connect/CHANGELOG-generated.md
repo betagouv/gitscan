@@ -1,16 +1,16 @@
 # Synthèse d'activité : france-connect (du 11/05 au 18/05)
 
 ## Résumé de l'activité
-L'activité récente de FranceConnect s'est concentrée sur l'amélioration de l'expérience utilisateur et l'élargissement des capacités d'accès au service. Des optimisations majeures ont été apportées au tableau de bord utilisateur, notamment pour une utilisation mobile plus fluide et une meilleure gestion des sessions. L'ajout de liens de support contextuels sur les pages d'erreur et l'intégration de nouveaux éléments visuels (logo Yris) visent à simplifier le parcours des usagers et à faciliter l'assistance. Par ailleurs, l'ouverture via l'eIDASBridge permet d'intégrer de nouveaux prestataires de services, renforçant ainsi l'écosystème [sources](/repos/france-connect/sources).
+L'activité de la période s'est concentrée sur l'amélioration de l'expérience utilisateur et l'élargissement des capacités de connexion de l'écosystème. Des optimisations significatives ont été apportées au tableau de bord utilisateur, notamment pour une utilisation mobile plus fluide et une meilleure gestion des sessions, ainsi que l'ajout de mécanismes d'assistance directe via les pages d'erreur. L'intégration du futur IdP Yris et l'ouverture via l'eIDASBridge à des prestataires de services aux exigences de sécurité variées marquent une évolution stratégique de l'offre [sources](/repos/france-connect/sources).
 
 ## Sécurité
-- Renforcement de la protection de la vie privée par la suppression de données non nécessaires (claims "phone_number" et "address") dans FranceConnect+ [sources](/repos/france-connect/sources).
-- Amélioration de l'isolation réseau via la séparation des consommateurs MongoDB selon le niveau d'assurance [sources](/repos/france-connect/sources).
+- Renforcement de l'isolation réseau par la séparation des consommateurs MongoDB selon le niveau d'assurance (faible ou élevé) [sources](/repos/france-connect/sources).
+- Amélioration de la protection des données personnelles via la suppression de claims inutilisés ("phone_number" et "address") dans FranceConnect+ [sources](/repos/france-connect/sources).
 
 ## Autres changements notables
-- Amélioration de la traçabilité et du diagnostic grâce à l'ajout de logs métier détaillés (incluant l'IP et le port client) [sources](/repos/france-connect/sources).
-- Refactorisation de l'architecture du code pour optimiser le partage de composants et la maintenabilité [sources](/repos/france-connect/sources).
-- Renforcement de la qualité logicielle par l'implémentation de tests BDD sur les notifications et l'historique de connexion [sources](/repos/france-connect/sources).
+- Refactorisation de l'architecture logicielle pour faciliter le partage de code entre les différentes applications React [sources](/repos/france-connect/sources).
+- Amélioration de la capacité de diagnostic et de la traçabilité grâce à l'implémentation de logs métier détaillés (incluant l'IP et le port client) [sources](/repos/france-connect/sources).
+- Renforcement de la qualité et de la fiabilité du système par l'ajout de tests BDD sur les notifications de préférences et l'historique de connexion [sources](/repos/france-connect/sources).
 
 ## Dépôts les plus actifs
-- [sources](/repos/france-connect/sources) : Évolutions centrées sur l'expérience utilisateur, la sécurité des données et la robustesse technique de l'infrastructure.
+- [sources](/repos/france-connect/sources) : Évolutions majeures sur l'interface utilisateur, la sécurité des données et la structure technique du projet.

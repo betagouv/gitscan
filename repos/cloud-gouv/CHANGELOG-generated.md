@@ -1,24 +1,20 @@
-# Synthèse d'activité : cloud-gouv (du 20/07 au 27/07)
+# Synthèse d'activité : cloud-gouv (du 14/08 au 22/08/2026)
 
 ## Résumé de l'activité
-L'activité de la semaine est marquée par un renforcement significatif de la sécurité et de la robustesse des infrastructures. Les efforts se sont concentrés sur la sécurisation des accès et des flux via [portail](/repos/cloud-gouv/portail) et [securix](/repos/cloud-gouv/securix), tout en améliorant la détection de vulnérabilités dans [dockerfiles](/repos/cloud-gouv/dockerfiles).
+L'activité récente de l'organisation est centrée sur le renforcement de la sécurité et la consolidation des infrastructures de gestion. L'intégration de [securix](/repos/cloud-gouv/securix) avec le [portail](/repos/cloud-gouv/portail) marque une étape clé vers une gestion centralisée, tandis que les optimisations de performance et de robustesse apportées à [portail](/repos/cloud-gouv/portail) et [openbao](/repos/cloud-gouv/openbao) garantissent une meilleure stabilité des services critiques.
 
-Parallèlement, l'organisation poursuit l'évolution de ses outils de déploiement avec des mises à jour importantes des charts Helm ([k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts) et [common-helm-charts](/repos/cloud-gouv/common-helm-charts)) et l'initiation de nouveaux espaces d'expérimentation avec [playground-public](/repos/cloud-gouv/playground-public).
+Parallèlement, l'organisation améliore ses capacités de déploiement et d'audit, notamment via la mise à jour des charts Helm ([common-helm-charts](/repos/cloud-gouv/common-helm-charts) et [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts)) et l'intégration de nouveaux outils de détection de vulnérabilités dans [dockerfiles](/repos/cloud-gouv/dockerfiles).
 
 ## Sécurité
-- Renforcement de la sécurité du proxy et de l'évaluation des règles d'accès (ACL) dans [portail](/repos/cloud-gouv/portail).
-- Intégration de l'authentification matérielle via les puces P14SG6 dans [securix](/repos/cloud-gouv/securix).
-- Automatisation de la détection de vulnérabilités Debian dans les processus de construction de [dockerfiles](/repos/cloud-gouv/dockerfiles).
-- Application de mises à jour de sécurité critiques pour les composants Go et OpenTelemetry dans [openbao](/repos/cloud-gouv/openbao).
+- Renforcement de la sécurité applicative et détection de vulnérabilités : durcissement des ACL et des permissions de fichiers dans [portail](/repos/cloud-gouv/portail), suppression de blocs de code non sécurisés dans [portail](/repos/cloud-gouv/portail), mise à jour de composants critiques (Go, OpenTelemetry) dans [openbao](/repos/cloud-gouv/openbao) et intégration de l'outil `debsecan` pour le scan de paquets Debian dans [dockerfiles](/repos/cloud-gouv/dockerfiles).
+- Authentification matérielle : ajout du support pour les puces de sécurité P14SG6 dans [securix](/repos/cloud-gouv/securix).
 
 ## Autres changements notables
-- Optimisation des performances réseau et de la résolution DNS dans [portail](/repos/cloud-gouv/portail).
-- Amélioration de la gestion des déploiements Kubernetes via la mise à jour des API et l'introduction d'un versioning individuel par chart dans [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts) et [common-helm-charts](/repos/cloud-gouv/common-helm-charts).
-- Migration technique pour une gestion optimisée des attributs de paquets dans [nixpkgs](/repos/cloud-gouv/nixpkgs).
-- Centralisation de la gestion du système via l'intégration du [portail](/repos/cloud-gouv/portail) dans [securix](/repos/cloud-gouv/securix).
+- Optimisation des infrastructures et du routage : refonte majeure du moteur de routage et amélioration des performances de connexion (DNS, Happy Eyeballs v2) dans [portail](/repos/cloud-gouv/portail), et intégration de [securix](/repos/cloud-gouv/securix) au Portail pour une gestion centralisée.
+- Évolutions des outils de déploiement et de compatibilité : mise à jour des versions d'API pour la compatibilité avec l'opérateur Cluster API dans [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts) et implémentation d'une gestion de versions individuelle pour les charts dans [common-helm-charts](/repos/cloud-gouv/common-helm-charts), ainsi que l'élargissement du support matériel et logiciel dans [nixpkgs](/repos/cloud-gouv/nixpkgs).
 
 ## Dépôts les plus actifs
-- [portail](/repos/cloud-gouv/portail) : Travaux majeurs de sécurisation, de performance réseau et de stabilisation.
-- [securix](/repos/cloud-gouv/securix) : Évolutions fonctionnelles liées à l'authentification matérielle et à la gestion centralisée.
-- [common-helm-charts](/repos/cloud-gouv/common-helm-charts) : Améliorations de la gestion des secrets et de la flexibilité des configurations.
-- [openbao](/repos/cloud-gouv/openbao) : Résolution de bugs et mises à jour de sécurité.
+- [portail](/repos/cloud-gouv/portail) : Travaux intensifs sur la refonte du routage, la performance et la sécurisation.
+- [securix](/repos/cloud-gouv/securix) : Évolutions majeures incluant l'intégration au Portail et le support de l'authentification matérielle.
+- [openbao](/repos/cloud-gouv/openbao) : Corrections de bugs et mises à jour de sécurité importantes.
+- [common-helm-charts](/repos/cloud-gouv/common-helm-charts) : Améliorations fonctionnelles et gestion de versions pour les différents charts.
