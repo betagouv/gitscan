@@ -11,6 +11,8 @@
 │   │   └── get-version.sh
 │   └── shared
 ├── .dockerignore
+├── .editorconfig
+├── .git-blame-ignore-revs
 ├── .gitattributes
 ├── .github
 │   ├── CODEOWNERS
@@ -105,7 +107,6 @@
 ├── .npmrc
 ├── .openpgp-keyid
 ├── .openpgp-pubkey
-├── .prettierignore
 ├── .talismanrc
 ├── .vscode
 │   ├── extensions.json
@@ -115,6 +116,7 @@
 ├── Dockerfile
 ├── LICENSE
 ├── README.md
+├── biome.json
 ├── docker-bake.json
 ├── docker-compose.yml
 ├── docs
@@ -129,7 +131,6 @@
 │   ├── infrastructure.md
 │   ├── securite.md
 │   └── sops.md
-├── eslint.config.mjs
 ├── knip.json
 ├── package.json
 ├── pnpm-lock.yaml
@@ -147,6 +148,7 @@
 │   │   │   │   ├── akto.ts
 │   │   │   │   ├── catalogue.ts
 │   │   │   │   ├── deca.ts
+│   │   │   │   ├── lba.test.ts
 │   │   │   │   ├── lba.ts
 │   │   │   │   └── opcoEp.ts
 │   │   │   ├── logger.ts
@@ -160,12 +162,14 @@
 │   │   │   │   ├── mailer
 │   │   │   │   │   ├── mailBouncer.ts
 │   │   │   │   │   ├── mailer.ts
+│   │   │   │   │   ├── smtpConnection.test.ts
 │   │   │   │   │   └── smtpConnection.ts
 │   │   │   │   └── sentry
 │   │   │   │       ├── sentry.fastify.ts
 │   │   │   │       └── sentry.ts
 │   │   │   └── utils
 │   │   │       ├── apiUtils.ts
+│   │   │       ├── asyncUtils.test.ts
 │   │   │       ├── asyncUtils.ts
 │   │   │       ├── awsUtils.ts
 │   │   │       ├── cryptoUtils.ts
@@ -226,6 +230,8 @@
 │   │   │   │   ├── anonymisation
 │   │   │   │   │   ├── anonymisation.deca.ts
 │   │   │   │   │   └── anonymisation.service.ts
+│   │   │   │   ├── bouncer
+│   │   │   │   │   └── retry-bouncer-errors.ts
 │   │   │   │   ├── catalogueSiretEmailImport.ts
 │   │   │   │   ├── db
 │   │   │   │   │   ├── recreateIndexes.ts
@@ -252,6 +258,7 @@
 │   │   │   │   │   │   └── mailing-list-generator.ts
 │   │   │   │   │   ├── importer
 │   │   │   │   │   │   └── mailing-list.importer.ts
+│   │   │   │   │   ├── mailing-list.notifications.ts
 │   │   │   │   │   ├── mailing-list.processor.ts
 │   │   │   │   │   ├── parsing
 │   │   │   │   │   │   └── mailing-list-parser.ts
@@ -306,6 +313,8 @@
 │   │       │   ├── head.ejs
 │   │       │   ├── header.ejs
 │   │       │   └── signature.ejs
+│   │       ├── mailing_list_failure.mjml.ejs
+│   │       ├── mailing_list_success.mjml.ejs
 │   │       └── reset_password.mjml.ejs
 │   ├── tests
 │   │   ├── data
@@ -317,8 +326,13 @@
 │   │   │   └── server.test.ts
 │   │   ├── modules
 │   │   │   └── jobs
-│   │   │       └── db
-│   │   │           └── schemaValidation.test.ts
+│   │   │       ├── bouncer
+│   │   │       │   └── retry-bouncer-errors.test.ts
+│   │   │       ├── db
+│   │   │       │   └── schemaValidation.test.ts
+│   │   │       └── mailing-list
+│   │   │           ├── mailing-list-generator.test.ts
+│   │   │           └── mailing-list.processor.test.ts
 │   │   ├── routes
 │   │   │   ├── auth.route.test.ts
 │   │   │   ├── organisations.route.test.ts
@@ -671,4 +685,4 @@
 │       ├── date.utils.ts
 │       └── query.utils.ts
 └── vitest.config.ts
-183 directories, 490 files
+186 directories, 501 files
