@@ -35,6 +35,7 @@
 │   │   └── delay.py
 │   ├── models
 │   │   ├── deletable.py
+│   │   ├── functions.py
 │   │   ├── historied.py
 │   │   ├── importable.py
 │   │   ├── timestamped.py
@@ -50,6 +51,7 @@
 │   ├── apps.py
 │   ├── constants
 │   │   ├── __init__.py
+│   │   ├── collectivity.py
 │   │   ├── detection.py
 │   │   ├── geo.py
 │   │   ├── labels.py
@@ -222,6 +224,10 @@
 │   │   ├── 0127_commandrun_origin_and_timing.py
 │   │   ├── 0128_geocustomzone_import_layer_name.py
 │   │   ├── 0129_detection_batch_import_id_unique.py
+│   │   ├── 0130_geocommune_epci_set_null.py
+│   │   ├── 0131_geocustomzone_description.py
+│   │   ├── 0132_geocustomzonecategory_description.py
+│   │   ├── 0133_usergroup_feature_flags.py
 │   │   └── __init__.py
 │   ├── models
 │   │   ├── __init__.py
@@ -276,6 +282,7 @@
 │   │   ├── geo_custom_zone.py
 │   │   ├── geo_custom_zone_category.py
 │   │   ├── geo_department.py
+│   │   ├── geo_epci.py
 │   │   ├── geo_region.py
 │   │   ├── geo_sub_custom_zone.py
 │   │   ├── geo_zone.py
@@ -328,6 +335,7 @@
 │   │   │   ├── test_command_run_tracker.py
 │   │   │   ├── test_import_custom_zones.py
 │   │   │   ├── test_import_detections.py
+│   │   │   ├── test_import_geoepcis.py
 │   │   │   ├── test_import_sitadel.py
 │   │   │   ├── test_update_custom_zones.py
 │   │   │   └── test_update_detectionobject_commune.py
@@ -342,23 +350,28 @@
 │   │   │   └── test_create_detection_coverage.py
 │   │   ├── test_cache.py
 │   │   ├── test_cache_integration.py
+│   │   ├── test_collectivity_hierarchy.py
 │   │   ├── test_detections_schema.py
+│   │   ├── test_epci_isolation.py
 │   │   ├── test_import_parcels.py
 │   │   └── views
 │   │       ├── __init__.py
 │   │       ├── test_data_deployment.py
 │   │       ├── test_ddtm_activity.py
+│   │       ├── test_ddtm_activity_epci.py
 │   │       ├── test_deployed_data.py
 │   │       ├── test_detection_bulk_permissions.py
 │   │       ├── test_detection_data.py
 │   │       ├── test_detection_geo.py
 │   │       ├── test_detection_list.py
 │   │       ├── test_detection_object.py
+│   │       ├── test_epci_permissions.py
 │   │       ├── test_external_api.py
 │   │       ├── test_geo_commune.py
 │   │       ├── test_geo_custom_zone.py
 │   │       ├── test_geo_custom_zone_category.py
 │   │       ├── test_geo_department.py
+│   │       ├── test_geo_epci.py
 │   │       ├── test_geo_region.py
 │   │       ├── test_map_settings.py
 │   │       ├── test_object_type.py
@@ -384,7 +397,6 @@
 │   │   ├── command_progress.py
 │   │   ├── email.py
 │   │   ├── filters.py
-│   │   ├── geo.py
 │   │   ├── logs.py
 │   │   ├── logs_helpers.py
 │   │   ├── odt_processor.py
@@ -412,6 +424,7 @@
 │       ├── geo_custom_zone.py
 │       ├── geo_custom_zone_category.py
 │       ├── geo_department.py
+│       ├── geo_epci.py
 │       ├── geo_region.py
 │       ├── map_settings.py
 │       ├── object_type.py
@@ -428,6 +441,7 @@
 │       ├── user_group.py
 │       └── utils
 │           ├── __init__.py
+│           ├── collectivity_scope.py
 │           ├── contact_us.py
 │           ├── data_deployment.py
 │           ├── deploy_infos.py
@@ -452,4 +466,4 @@
 └── services
     ├── celery.service
     └── gunicorn_aigle.service
-39 directories, 415 files
+39 directories, 429 files

@@ -1,22 +1,18 @@
-## Changelog : aigle-api (30 derniers jours, au 06/08/2026)
+## Changelog : aigle-api (30 derniers jours, au 20/08/2026)
 
 ### Résumé
-Les récentes évolutions se concentrent sur l'amélioration des outils de pilotage (tableau de bord DDT) et la fiabilisation de la gestion des données géospatiales. Des optimisations importantes ont été apportées à la gestion des zones et à la précision des droits d'accès pour garantir une exploitation plus sûre et performante des détections.
+Les dernières mises à jour (incluant les PR [#82](https://github.com/MTES-MCT/aigle-api/pull/82) à [#85](https://github.com/MTES-MCT/aigle-api/pull/85)) enrichissent les capacités d'analyse géospatiale de la plateforme, notamment avec l'intégration du niveau EPCI et des descriptions de zones personnalisées. L'expérience de pilotage est également améliorée grâce à l'optimisation du tableau de bord DDT et de l'interface d'administration.
 
 ### Évolutions fonctionnelles
-- **Visualisation et administration :**
-    - Amélioration du tableau de bord DDT.
-    - Optimisation de la gestion de l'écrasement des groupes dans l'interface d'administration.
-- **Sécurité et accès :**
-    - Renforcement du contrôle des permissions : l'accès et la modification des détections sont désormais basés sur l'identifiant de la commune (au lieu de la géométrie), offrant une gestion des droits plus robuste.
-- **Gestion des zones :**
-    - Mise en place de la fonctionnalité de blocage des zones urbaines.
+- Intégration du niveau EPCI dans l'application.
+- Amélioration du tableau de bord DDT.
+- Ajout de descriptions pour les zones géographiques personnalisées.
+- Amélioration de l'interface d'administration :
+    - Ajout de nouveaux filtres pour les collectivités.
+    - Meilleure gestion de l'écrasement des groupes.
 
 ### Évolutions techniques
-- **Gestion des données et zones :**
-    - Amélioration de la robustesse du processus d'importation des détections.
-    - Optimisation de l'assignation des zones/ZAE lors de la création de groupes et du déploiement de données.
-    - La commande `update_custom_zones` effectue désormais un nettoyage automatique des détections situées en dehors des zones personnalisées.
-- **Optimisation des commandes système :**
-    - Amélioration des performances de la commande `update_detectionobject_commune`.
-    - Ajout d'un paramètre de forçage (`force`) pour la commande `update_detectionobject_commune`.
+- Implémentation de "feature flags" pour le contrôle des fonctionnalités.
+- Ajout de vues "batches" et "zae" dans le processus de déploiement.
+- Optimisation des imports dans l'interface d'administration.
+- Correction d'une commande permettant de forcer la mise à jour des zones géographiques personnalisées (`geocustomzone`).
