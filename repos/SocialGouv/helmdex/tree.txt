@@ -150,8 +150,11 @@
 │   │   ├── chart_archive_test.go
 │   │   ├── charts_cache.go
 │   │   ├── deps.go
+│   │   ├── oci_credential_test.go
 │   │   ├── oci_ref.go
 │   │   ├── oci_ref_test.go
+│   │   ├── oci_versions.go
+│   │   ├── oci_versions_test.go
 │   │   ├── registry.go
 │   │   ├── repos.go
 │   │   ├── show.go
@@ -177,6 +180,9 @@
 │   ├── merge
 │   │   ├── merge.go
 │   │   └── merge_test.go
+│   ├── ociregistry
+│   │   ├── client.go
+│   │   └── client_test.go
 │   ├── paths
 │   │   ├── paths.go
 │   │   └── paths_test.go
@@ -227,6 +233,7 @@
 │   │   ├── fakehelm
 │   │   │   ├── main.go
 │   │   │   └── universe.go
+│   │   ├── fakeregistry.go
 │   │   ├── hermetic.go
 │   │   ├── hermetic_test.go
 │   │   └── repo.go
@@ -269,7 +276,8 @@
 │   │   ├── title_test.go
 │   │   ├── ui.go
 │   │   ├── values_filter_capture_test.go
-│   │   └── values_tab_test.go
+│   │   ├── values_tab_test.go
+│   │   └── versions_refresh_test.go
 │   ├── updates
 │   │   ├── updates.go
 │   │   └── updates_test.go
@@ -2593,6 +2601,7 @@
     │   │   ├── AuthRequiredNotice.tsx
     │   │   ├── CredentialsDialog.tsx
     │   │   ├── DepConfigureDialog.tsx
+    │   │   ├── DepDiffDialog.test.tsx
     │   │   ├── DepDiffDialog.tsx
     │   │   ├── DepsTab.test.tsx
     │   │   ├── DepsTab.tsx
@@ -2640,4 +2649,4 @@
     │   └── test-setup.ts
     ├── tsconfig.json
     └── vite.config.ts
-342 directories, 2571 files
+343 directories, 2579 files
