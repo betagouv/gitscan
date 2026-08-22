@@ -1,27 +1,20 @@
-## Changelog : quefairedemesobjets (30 derniers jours, au 31 juillet 2026)
+## Changelog : quefairedemesobjets (30 derniers jours, au 04/08/2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration de la robustesse de l'infrastructure, notamment la gestion des sauvegardes et la synchronisation des données entre les environnements. Des corrections ont également été apportées pour améliorer la qualité des données et l'expérience utilisateur, en particulier sur l'interface infotri et dans l'administration de l'application. L'architecture des DAGs pour le traitement des données a été revue et optimisée.
+Les récentes évolutions se concentrent sur l'amélioration de l'expérience utilisateur sur mobile, la fiabilisation des processus de traitement des données (notamment pour les datasets de la BAN et le clustering) et l'optimisation de l'environnement de développement pour garantir une meilleure qualité de code.
 
 ### Évolutions fonctionnelles
-- Correction de la preview Wagtail qui buggait avec des accents dans le slug. [#3195](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3195)
-- Suppression du filtrage des établissements ayant un code étranger. [#3216](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3216)
-- L'infotri est maintenant responsive sur les petits écrans. [#3179](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3179)
-- Ajout d'actions en tâche de fond dans l'interface d'administration Django. [#3093](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3093)
-- Amélioration de la suggestion d'objets basée sur la table `lien_suggestion`. [#3177](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3177)
+- **Amélioration de l'interface** : L'affichage de l'infotri est désormais responsive, offrant une meilleure expérience sur les petits écrans [#3179](https://github.com/incubateur-ademe/quefairedemesobjets/pull/3179).
+- **Ajustements des données et filtres** : 
+    - Suppression du filtrage des établissements basé sur un code étranger [#3216](https://github.com/incubateur-ademe/quefairedemesobjets/pull/3216).
+    - Amélioration de la gestion des identifiants nuls pour la CMA [#3253](https://github.com/incubateur-ademe/quefairedemesobjets/pull/3253).
 
 ### Évolutions techniques
-- Passage aux workspaces uv pour la gestion des dépendances et des environnements. [#3058](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3058)
-- Refonte de la logique de clonage des datasets de la BAN avec un paramètre de correction. [#3199](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3199)
-- Modification de la logique des DAGs pour l'enrichissement des SIREN et SIRET. [#3125](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3125)
-- Correction et réorganisation des DAGs CMA et Généric. [#3124](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3124)
-- Amélioration de la synchronisation entre les environnements de production et de pré-production via l'utilisation de DSN. [#3135](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3135)
-- Utilisation de la fonction `chain` au lieu de l'opérateur `>>` pour une meilleure lisibilité et maintenabilité du code Airflow. [#3178](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3178)
-- Mise à jour de la configuration Docker pour utiliser des volumes nommés. [#3130](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3130)
-- Suppression des tables temporaires après l'action principale dans les DAGs. [#3095](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3095)
-
-### Autres changements
-- Augmentation de la durée de rétention des backups de la webapp. [#3137](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3137)
-- Désactivation temporaire des tests de comparaison visuelle e2e. [#3136](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3136)
-- Correction de la CI en cas d'échec des tests e2e. [#3151](https://github.com/incubateur-ademe/quefairedemesobjets/issues/3151)
-- Nombreuses mises à jour de dépendances (linting, tests, build tools, etc.).
+- **Optimisation des pipelines de données** :
+    - Intégration de la récupération des paramètres du DAG de clustering via API [#3246](https://github.com/incubateur-ademe/quefairedemesobjets/pull/3246).
+    - Ajout d'un paramètre de correction pour les datasets de la BAN [#3199](https://github.com/incubateur-ademe/quefairedemesobjets/pull/3199).
+    - Optimisation de la copie des tables en limitant la récupération des colonnes au schéma public uniquement [#3215](https://github.com/incubateur-ademe/quefairedemesobjets/pull/3215).
+- **Infrastructure et outils de développement** :
+    - Amélioration de la qualité du code SQL avec l'ajout de `sqlfluff` sur la plateforme de données [#3190](https://github.com/incubateur-ademe/quefairedemesobjets/pull/3190).
+    - Correction de la gestion des dépendances suite au passage aux workspaces `uv` [#3239](https://github.com/incubateur-ademe/quefairedemesobjets/pull/3239).
+    - Fiabilisation de la recréation de la base de données de prévisualisation [#3254](https://github.com/incubateur-ademe/quefairedemesobjets/pull/3254).
