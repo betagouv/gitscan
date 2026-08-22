@@ -1,0 +1,227 @@
+.
+├── .gitignore
+├── .vscode
+│   ├── extensions.json
+│   └── settings.json
+├── LICENSE
+├── Makefile
+├── README.md
+├── app
+│   ├── .dsfr.yml
+│   ├── .env.example
+│   ├── .gitignore
+│   ├── .npmrc
+│   ├── .prettierignore
+│   ├── .prettierrc
+│   ├── eslint.config.js
+│   ├── messages
+│   │   ├── en.json
+│   │   └── fr.json
+│   ├── package.json
+│   ├── playwright.config.ts
+│   ├── project.inlang
+│   │   └── settings.json
+│   ├── src
+│   │   ├── app.d.ts
+│   │   ├── app.html
+│   │   ├── css
+│   │   │   └── app.css
+│   │   ├── error.html
+│   │   ├── hooks.server.ts
+│   │   ├── hooks.ts
+│   │   ├── lib
+│   │   │   ├── attachments.ts
+│   │   │   ├── components
+│   │   │   │   ├── Dropdown.svelte
+│   │   │   │   ├── Footer.svelte
+│   │   │   │   ├── Header.svelte
+│   │   │   │   ├── LanguageSelector.svelte
+│   │   │   │   ├── Menubar.svelte
+│   │   │   │   ├── SEOHead.svelte
+│   │   │   │   ├── ThemeSelector.svelte
+│   │   │   │   ├── dsfr
+│   │   │   │   │   ├── Accordion.svelte
+│   │   │   │   │   ├── AccordionGroup.svelte
+│   │   │   │   │   ├── Badge.svelte
+│   │   │   │   │   ├── Button.svelte
+│   │   │   │   │   ├── CheckboxGroup.svelte
+│   │   │   │   │   ├── Icon.svelte
+│   │   │   │   │   ├── Link.svelte
+│   │   │   │   │   ├── Tabs.svelte
+│   │   │   │   │   ├── Tooltip.svelte
+│   │   │   │   │   └── index.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── index.ts
+│   │   │   ├── main.ts
+│   │   │   ├── news.json
+│   │   │   └── utils.ts
+│   │   ├── routes
+│   │   │   ├── +error.svelte
+│   │   │   ├── +layout.svelte
+│   │   │   ├── +page.svelte
+│   │   │   ├── components
+│   │   │   │   ├── HowItWorks.svelte
+│   │   │   │   ├── Newsletter.svelte
+│   │   │   │   └── index.ts
+│   │   │   ├── datasets
+│   │   │   │   └── +page.svelte
+│   │   │   ├── duel
+│   │   │   │   └── +page.svelte
+│   │   │   ├── news
+│   │   │   │   ├── +page.svelte
+│   │   │   │   └── bnf
+│   │   │   │       └── +page.svelte
+│   │   │   ├── plan-du-site
+│   │   │   │   └── +page.svelte
+│   │   │   └── product
+│   │   │       ├── +page.server.ts
+│   │   │       └── [tab]
+│   │   │           ├── +page.server.ts
+│   │   │           ├── +page.svelte
+│   │   │           └── components
+│   │   │               ├── Community.svelte
+│   │   │               ├── Comparator.svelte
+│   │   │               ├── FAQ.svelte
+│   │   │               ├── History.svelte
+│   │   │               ├── Partners.svelte
+│   │   │               ├── Problem.svelte
+│   │   │               └── index.ts
+│   │   └── vitest.d.ts
+│   ├── static
+│   │   ├── datasets
+│   │   │   ├── bunka-ai-logo.webp
+│   │   │   ├── bunka-analyse.webp
+│   │   │   ├── bunka-visualisation.webp
+│   │   │   ├── conversations-en.webp
+│   │   │   └── conversations-fr.webp
+│   │   ├── duel
+│   │   │   ├── extension.webp
+│   │   │   └── workshop.webp
+│   │   ├── favicon
+│   │   │   ├── apple-touch-icon.png
+│   │   │   ├── favicon.ico
+│   │   │   ├── favicon.png
+│   │   │   ├── favicon.svg
+│   │   │   ├── manifest.webmanifest
+│   │   │   ├── web-app-manifest-192x192.png
+│   │   │   └── web-app-manifest-512x512.png
+│   │   ├── home
+│   │   │   ├── arrow-h-mobile.svg
+│   │   │   ├── arrow-h.svg
+│   │   │   ├── comparer-dark-en.webp
+│   │   │   ├── comparer-dark-fr.webp
+│   │   │   ├── comparer-en.webp
+│   │   │   ├── comparer-fr.webp
+│   │   │   ├── comparia-stars.webp
+│   │   │   ├── datasets.svg
+│   │   │   ├── finetune.svg
+│   │   │   ├── mesurer-dark-en.webp
+│   │   │   ├── mesurer-dark-fr.webp
+│   │   │   ├── mesurer-en.webp
+│   │   │   ├── mesurer-fr.webp
+│   │   │   ├── prefs.svg
+│   │   │   ├── tester-dark.webp
+│   │   │   └── tester.webp
+│   │   ├── iasummit.webp
+│   │   ├── news
+│   │   │   ├── analyse-bunka.webp
+│   │   │   ├── arXiv-comparia.webp
+│   │   │   ├── article-ZDNet.webp
+│   │   │   ├── article-franceinfo.webp
+│   │   │   ├── article-numerama.webp
+│   │   │   ├── article-usine-digitale.webp
+│   │   │   ├── atelier-unesco.webp
+│   │   │   ├── blog-moderateur.webp
+│   │   │   ├── bnf
+│   │   │   │   ├── anastasia-stasenko.webp
+│   │   │   │   ├── andrei-mogoutov.webp
+│   │   │   │   ├── benjamin-piwowarski.webp
+│   │   │   │   ├── cover.webp
+│   │   │   │   ├── david-mas.webp
+│   │   │   │   ├── francoise-tort.webp
+│   │   │   │   ├── jean-cattan.webp
+│   │   │   │   ├── louis-magnes.webp
+│   │   │   │   ├── loup-cellard.webp
+│   │   │   │   ├── lucie-termignon.webp
+│   │   │   │   ├── margaux-levisalles.webp
+│   │   │   │   ├── marie-bancal.webp
+│   │   │   │   ├── mathilde-bras.webp
+│   │   │   │   ├── placeholder.webp
+│   │   │   │   ├── romain-delassus.webp
+│   │   │   │   ├── samuel-rince.webp
+│   │   │   │   ├── sasha-luccioni.webp
+│   │   │   │   └── victor-laymand.webp
+│   │   │   ├── bnf.webp
+│   │   │   ├── duel.webp
+│   │   │   ├── infolettre3.webp
+│   │   │   ├── infolettre4.webp
+│   │   │   ├── jt-france2.webp
+│   │   │   ├── minumechos_podcast_comparIA.webp
+│   │   │   ├── nec-pitch.webp
+│   │   │   ├── orbicom.webp
+│   │   │   ├── parlezmoidia.webp
+│   │   │   ├── ranking.webp
+│   │   │   └── webinaire-mediation.webp
+│   │   ├── orgs
+│   │   │   ├── alt-edic.webp
+│   │   │   ├── ateliernumerique.webp
+│   │   │   ├── betagouv.svg
+│   │   │   ├── bnf.svg
+│   │   │   ├── cafe-ia.webp
+│   │   │   ├── caire.webp
+│   │   │   ├── cnnum.webp
+│   │   │   ├── cnrs.svg
+│   │   │   ├── comparia.svg
+│   │   │   ├── comparia.webp
+│   │   │   ├── da-dark.webp
+│   │   │   ├── da-light.webp
+│   │   │   ├── datactivist.webp
+│   │   │   ├── dpg.webp
+│   │   │   ├── etalab.webp
+│   │   │   ├── fresque-de-lia.webp
+│   │   │   ├── genai.webp
+│   │   │   ├── huggingface-full.svg
+│   │   │   ├── impactco2.webp
+│   │   │   ├── inria.webp
+│   │   │   ├── latitudes.webp
+│   │   │   ├── make-org.svg
+│   │   │   ├── minicult.svg
+│   │   │   ├── peren.webp
+│   │   │   ├── pix.svg
+│   │   │   └── pleias.webp
+│   │   ├── product
+│   │   │   ├── chatbot-screenshot-fr.webp
+│   │   │   ├── community
+│   │   │   │   ├── aurelien-barot.webp
+│   │   │   │   ├── elie-gavoty.webp
+│   │   │   │   ├── hadrien-pelissier.webp
+│   │   │   │   ├── lucie-termignon.webp
+│   │   │   │   ├── mathilde-bras.webp
+│   │   │   │   ├── nicolas-chesnais.webp
+│   │   │   │   └── simonas-zilinskas.webp
+│   │   │   └── comparia-europe.webp
+│   │   └── robots.txt
+│   ├── tsconfig.json
+│   ├── uno.config.ts
+│   ├── vite.config.ts
+│   ├── vitest-setup-client.ts
+│   └── yarn.lock
+├── devops
+│   ├── Dockerfile
+│   └── helm
+│       └── comparia-landing
+│           ├── .helmignore
+│           ├── Chart.yaml
+│           ├── README.md
+│           ├── templates
+│           │   ├── _helpers.tpl
+│           │   ├── deployment.yaml
+│           │   ├── ingress.yaml
+│           │   ├── service.yaml
+│           │   └── serviceaccount.yaml
+│           ├── tests
+│           │   └── workloads_test.yaml
+│           └── values.yaml
+└── scripts
+    └── i18n.py
+36 directories, 190 files
