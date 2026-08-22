@@ -823,6 +823,7 @@
     │   │   │   └── attestation_sur_l_honneur_modele.pdf
     │   │   ├── fvae_logo.svg
     │   │   ├── logos
+    │   │   │   ├── annuaire-des-entreprises.svg
     │   │   │   ├── icons
     │   │   │   │   ├── applecalendar.svg
     │   │   │   │   ├── googlecalendar.svg
@@ -940,10 +941,25 @@
     │   │   │   │   │   │   │   │   ├── _components
     │   │   │   │   │   │   │   │   │   ├── AdminToggleGestionBranch.tsx
     │   │   │   │   │   │   │   │   │   ├── AttestationReferencement.tsx
+    │   │   │   │   │   │   │   │   │   ├── LegalInformationTile.tsx
     │   │   │   │   │   │   │   │   │   └── legal-information-update-block
     │   │   │   │   │   │   │   │   │       ├── LegalInformationUpdateBlock.tsx
     │   │   │   │   │   │   │   │   │       └── LegalInformationUpdateForm.tsx
     │   │   │   │   │   │   │   │   ├── generalInformationPage.hook.ts
+    │   │   │   │   │   │   │   │   ├── legal-information
+    │   │   │   │   │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   │   │   │   │   ├── LegalInformationBreadcrumb.tsx
+    │   │   │   │   │   │   │   │   │   │   ├── TotalUpdateRequestModal.tsx
+    │   │   │   │   │   │   │   │   │   │   └── useLegalInformationUpdateRequest.ts
+    │   │   │   │   │   │   │   │   │   ├── layout.tsx
+    │   │   │   │   │   │   │   │   │   ├── page.tsx
+    │   │   │   │   │   │   │   │   │   └── targeted
+    │   │   │   │   │   │   │   │   │       ├── _components
+    │   │   │   │   │   │   │   │   │       │   ├── AdministratorStep.tsx
+    │   │   │   │   │   │   │   │   │       │   ├── BlockSelectionStep.tsx
+    │   │   │   │   │   │   │   │   │       │   ├── ContactStep.tsx
+    │   │   │   │   │   │   │   │   │       │   └── SiretAndManagerStep.tsx
+    │   │   │   │   │   │   │   │   │       └── page.tsx
     │   │   │   │   │   │   │   │   ├── legal-information-update
     │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   └── page.tsx
@@ -1999,6 +2015,7 @@
     │   │       ├── feasibilityIncompleteOutdated.util.ts
     │   │       ├── formatIso8601Date.ts
     │   │       ├── formatIso8601Time.ts
+    │   │       ├── formatSiret.ts
     │   │       ├── input-sanitization.ts
     │   │       ├── isCandidacyPaymentRequestAlreadySent.ts
     │   │       ├── isCandidacyStatusEqualOrAbove.ts
@@ -2315,6 +2332,18 @@
     │   │   │       ├── getFirstAppointmentOccuredAt.ts
     │   │   │       └── updateAppointment.ts
     │   │   ├── candidacy
+    │   │   │   ├── authorization
+    │   │   │   │   ├── candidacy.admin-only-writes.authorization.test.ts
+    │   │   │   │   ├── candidacy.candidate-account.authorization.test.ts
+    │   │   │   │   ├── candidacy.candidate-dropout.authorization.test.ts
+    │   │   │   │   ├── candidacy.candidate-fields.authorization.test.ts
+    │   │   │   │   ├── candidacy.certification-authority-selection.authorization.test.ts
+    │   │   │   │   ├── candidacy.details.authorization.test.ts
+    │   │   │   │   ├── candidacy.experiences.authorization.test.ts
+    │   │   │   │   ├── candidacy.jury.authorization.test.ts
+    │   │   │   │   ├── candidacy.professional-lifecycle.authorization.test.ts
+    │   │   │   │   ├── candidacy.queries.authorization.test.ts
+    │   │   │   │   └── candidacy.take-over.authorization.test.ts
     │   │   │   ├── candidacy.canAccessCandidacy.test.ts
     │   │   │   ├── candidacy.getCandidacies.test.ts
     │   │   │   ├── candidacy.getCandidaciesForAAP.test.ts
@@ -2328,9 +2357,9 @@
     │   │   │   ├── candidacy.types.ts
     │   │   │   ├── candidacy.updateCandidateCandidacyDropoutDecision.test.ts
     │   │   │   ├── certification
+    │   │   │   │   ├── certification.authorization.test.ts
     │   │   │   │   ├── certification.graphql
     │   │   │   │   ├── certification.resolvers.ts
-    │   │   │   │   ├── certification.security.ts
     │   │   │   │   └── features
     │   │   │   │       ├── getCertificationByCandidacyId.ts
     │   │   │   │       ├── updateCertification.ts
@@ -2430,10 +2459,7 @@
     │   │   │   │   └── validateDropOutCandidacy.ts
     │   │   │   ├── logCandidacyEvent.ts
     │   │   │   ├── security
-    │   │   │   │   ├── canAccessCandidacy.security.ts
-    │   │   │   │   ├── candidacy.security.test.ts
-    │   │   │   │   ├── candidacyUpdateCertificationAuthority.security.test.ts
-    │   │   │   │   └── security.ts
+    │   │   │   │   └── canAccessCandidacy.security.ts
     │   │   │   ├── training
     │   │   │   │   ├── emails
     │   │   │   │   │   └── sendTrainingEmail.ts
@@ -2447,10 +2473,13 @@
     │   │   │   │   │   ├── getTrainings.ts
     │   │   │   │   │   ├── resetTrainingInformation.ts
     │   │   │   │   │   └── submitTrainingForm.ts
+    │   │   │   │   ├── getBasicSkills.test.ts
+    │   │   │   │   ├── training.candidacyNestedFieldsSecurity.test.ts
     │   │   │   │   ├── training.graphql
     │   │   │   │   ├── training.resolvers.ts
-    │   │   │   │   ├── training.security.ts
-    │   │   │   │   └── training.test.ts
+    │   │   │   │   ├── training_confirmTrainingForm.test.ts
+    │   │   │   │   ├── training_getTrainings.test.ts
+    │   │   │   │   └── training_submitTrainingForm.test.ts
     │   │   │   └── utils
     │   │   │       ├── candidacy.helper.ts
     │   │   │       └── getWhereClauseFromStatusFilterForCertificationAuthority.helper.ts
@@ -2534,7 +2563,6 @@
     │   │   │   ├── certification-authority.graphql
     │   │   │   ├── certification-authority.loaders.ts
     │   │   │   ├── certification-authority.resolvers.ts
-    │   │   │   ├── certification-authority.security.ts
     │   │   │   ├── certification-authority.test.ts
     │   │   │   ├── certification-authority.types.ts
     │   │   │   ├── emails
@@ -4611,6 +4639,18 @@
     │   │   │   │   └── migration.sql
     │   │   │   ├── 20260804083406_map_new_vae_collective_permissions_to_administrateur_porteur_de_projet_role
     │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260813085126_add_vae_collective_sub_account_permissions
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260813085245_link_vae_collective_sub_account_permissions_to_administrateur_porteur_de_projet_role
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260813090213_add_vae_collective_accounts_feature_flag
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260813090433_update_candidacy_with_last_active_df_dv_jury_view
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260814094039_add_maison_mere_general_information_update_feature_flag
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260814094040_make_aap_updated_documents_at_nullable
+    │   │   │   │   └── migration.sql
     │   │   │   └── migration_lock.toml
     │   │   ├── schema.prisma
     │   │   └── seed
@@ -6331,4 +6371,4 @@
         ├── tsconfig.json
         └── types
             └── primitives.d.ts
-2122 directories, 4211 files
+2133 directories, 4240 files

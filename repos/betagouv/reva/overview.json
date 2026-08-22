@@ -1,31 +1,29 @@
 {
   "url": "https://github.com/betagouv/reva",
   "name": "reva",
-  "description": "Plateforme monorepo dédiée à la gestion de la Validation des Acquis de l'Expérience (VAE). Elle comprend des API GraphQL et REST, ainsi que des interfaces web pour les candidats, les organismes et l'administration.",
+  "description": "Plateforme de gestion de la Validation des Acquis de l'Expérience (VAE) en France. Elle permet le dépôt de candidatures, le suivi des dossiers de faisabilité et la gestion administrative par les organismes et certificateurs.",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
     "Authentification & Accès",
-    "Gestion des utilisateurs & Permissions",
+    "Statistiques & Rapports",
     "Formulaires & Démarches",
-    "Administration & Backoffice",
-    "Suivi & Traçabilité",
-    "Tableaux & Affichage"
+    "Administration & Backoffice"
   ],
-  "audience": "Agents de l'Administration, Professionnels et Grand public",
+  "audience": "Agents de l'Administration",
   "dependencies": [
     "Fastify",
     "Next.js",
     "Prisma",
     "Keycloak",
-    "PostgreSQL",
-    "Strapi",
     "Metabase",
+    "Strapi",
+    "Traefik",
     "Vitest",
     "Cypress",
     "Playwright",
-    "Traefik",
+    "PostgreSQL",
     "Brevo"
   ],
   "components": [
@@ -33,15 +31,20 @@
     "PostgreSQL & SQL",
     "React / Next.js",
     "TypeScript / JavaScript",
+    "Node.js / NestJS",
     "Authentification (composant)",
     "CMS (Strapi, Wagtail…)",
+    "Reporting & BI",
     "Tests",
-    "Documentation & Schémas"
+    "Documentation & Schémas",
+    "Serveurs web & Proxy",
+    "ORM & Accès aux données"
   ],
   "auth": {
     "methods": [
-      "oauth2",
-      "jwt"
+      "sso",
+      "jwt",
+      "session"
     ],
     "providers": [
       "Keycloak"
@@ -56,8 +59,9 @@
     "deploy.sh",
     "deploy-preprod.sh"
   ],
-  "lastActivity": "2026-08-10T14:36:35+02:00",
+  "lastActivity": "2026-08-21T14:19:36+02:00",
   "status": "active",
+  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
@@ -65,8 +69,7 @@
     "React & Next.js",
     "Bases de données SQL",
     "Docker & Conteneurs",
-    "Node.js, NestJS & Express",
-    "Sécurité & Auth",
-    "Documentation"
+    "Design System & UI",
+    "Sécurité & Auth"
   ]
 }
