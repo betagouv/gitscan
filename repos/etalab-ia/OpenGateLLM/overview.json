@@ -1,39 +1,40 @@
 {
   "url": "https://github.com/etalab-ia/OpenGateLLM",
   "name": "OpenGateLLM",
-  "description": "Passerelle API open-source pour l'IA générative, conçue pour centraliser, sécuriser et gouverner l'accès aux modèles d'IA. Elle est optimisée pour l'auto-hébergement afin de garantir la souveraineté des données et le contrôle des coûts.",
+  "description": "Une passerelle API open-source et prête pour la production pour l'IA générative. Elle permet de centraliser, sécuriser et gouverner l'accès aux modèles d'IA, en mettant l'accent sur l'hébergement autonome et la souveraineté des données.",
   "language": "Python",
   "features": [
     "Intelligence Artificielle & NLP",
     "Sécurité & Conformité",
     "API & Intégrations",
-    "Gestion des utilisateurs & Permissions",
-    "Monitoring & Logs"
+    "Monitoring & Logs",
+    "Gestion des utilisateurs & Permissions"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "FastAPI",
     "Pydantic",
-    "Celery",
-    "Redis",
-    "PostgreSQL",
     "SQLAlchemy",
+    "Redis",
+    "Celery",
     "OpenAI",
     "MistralAI",
     "Langfuse",
+    "PostgreSQL",
     "Uvicorn"
   ],
   "components": [
     "API REST & GraphQL",
     "Python (scripts & backend)",
     "Intelligence Artificielle / ML",
-    "Celery & Queue asynchrone",
+    "Docker & Conteneurs",
+    "CI/CD & Déploiement",
     "PostgreSQL & SQL",
-    "Documentation & Schémas",
-    "Docker & Conteneurs"
+    "Celery & Queue asynchrone"
   ],
   "auth": {
     "methods": [
+      "oauth2",
       "api-key",
       "jwt"
     ]
@@ -45,10 +46,13 @@
     "factory-boy"
   ],
   "workflows": [
-    "GitHub Actions"
+    "CI/CD",
+    "Trivy security scan",
+    "coverage",
+    "e2e tests"
   ],
-  "lastActivity": "2026-08-17T11:48:02+02:00",
-  "status": "active",
+  "lastActivity": "2026-08-21T12:26:15+02:00",
+  "status": "maintained",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
@@ -57,6 +61,6 @@
     "NLP & ML",
     "Git & DevOps",
     "Docker & Conteneurs",
-    "Sécurité & Auth"
+    "CI/CD & GitHub Actions"
   ]
 }

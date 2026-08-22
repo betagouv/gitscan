@@ -1,29 +1,20 @@
-## Changelog : OpenGateLLM (30 derniers jours, au 17 août 2026)
+## Changelog : OpenGateLLM (30 derniers jours, au 21 août 2026)
 
 ### Résumé
-Ce mois a été marqué par un effort important de restructuration interne pour améliorer la maintenabilité du projet via l'adoption d'une "Clean Architecture". Les utilisateurs bénéficieront également d'une sécurité renforcée lors de l'authentification et de corrections sur l'interface du Playground.
+Ce mois-ci, OpenGateLLM a franchi une étape importante de sa maturité technique avec une refonte majeure de son architecture interne vers un modèle de "Clean Architecture", visant à améliorer la maintenabilité du projet. Côté utilisateur, l'expérience a été enrichie par l'intégration du support SSO et l'amélioration de l'interface de test (Playground).
 
 ### Évolutions fonctionnelles
-- **Sécurité** : Amélioration de la protection contre l'énumération d'utilisateurs en retournant des messages d'erreur génériques lors des échecs d'authentification ([#963](https://github.com/etalab-ia/OpenGateLLM/issues/963)).
-- **Interface (Playground)** : Correction du formulaire d'authentification dans le Playground via l'utilisation de Reflex ([#981](https://github.com/etalab-ia/OpenGateLLM/issues/981)).
-- **Données** : Amélioration de la précision de l'affichage des impacts environnementaux en privilégiant la valeur `0.0` au lieu de `None` ([#990](https://github.com/etalab-ia/OpenGateLLM/issues/990)).
+- **Authentification** : Support de la connexion et déconnexion via SSO avec `oauth2-proxy` [#986](https://github.com/etalab-ia/OpenGateLLM/pull/986).
+- **Playground** : Correction du formulaire d'authentification pour une meilleure expérience utilisateur [#981](https://github.com/etalab-ia/OpenGateLLM/pull/981).
+- **Monitoring** : Amélioration de la visibilité dans Langfuse en enregistrant désormais les requêtes non-streaming [#987](https://github.com/etalab-ia/OpenGateLLM/pull/987).
+- **Corrections** : Ajustement de l'affichage de l'impact environnemental pour éviter les erreurs de valeurs nulles [#990](https://github.com/etalab-ia/OpenGateLLM/pull/990).
 
 ### Évolutions techniques
-- **Refactoring (Clean Architecture)** : Migration de plusieurs points de terminaison critiques vers une architecture propre pour faciliter l'évolution du code :
-    - Endpoint OCR ([#984](https://github.com/etalab-ia/OpenGateLLM/issues/984))
-    - Gestion des utilisateurs administrateurs ([#962](https://github.com/etalab-ia/OpenGateLLM/issues/962))
-    - Gestion des tokens d'administration ([#947](https://github.com/etalab-ia/OpenGateLLM/issues/947))
-- **CI/CD et Tests** : 
-    - Stabilisation de la pipeline CI/CD avec l'installation des dépendances manquantes pour les tests de bout en bout (E2E) ([#968](https://github.com/etalab-ia/OpenGateLLM/issues/968), [#964](https://github.com/etalab-ia/OpenGateLLM/issues/964)).
-    - Résolution de blocages de scans de sécurité (Trivy) liés à des vulnérabilités CVE sur `perl-base` ([#969](https://github.com/etalab-ia/OpenGateLLM/issues/969)).
-    - Intégration de tests de configuration héritée ([#991](https://github.com/etalab-ia/OpenGateLLM/issues/991)).
-- **Monitoring et Modèles** :
-    - Amélioration du suivi dans Langfuse pour inclure les requêtes non-streaming ([#987](https://github.com/etalab-ia/OpenGateLLM/issues/987)).
-    - Optimisation de la construction du corps des requêtes de modèles ([#977](https://github.com/etalab-ia/OpenGateLLM/issues/977)).
-    - Suppression du composant `ModelProviderGateway` pour simplifier l'architecture ([#972](https://github.com/etalab-ia/OpenGateLLM/issues/972)).
+- **Refonte architecturale** : Migration massive de plusieurs endpoints vers une "Clean Architecture" pour stabiliser et structurer le code (gestion des clés API, informations utilisateur, transcription audio et OCR) [#1023](https://github.com/etalab-ia/OpenGateLLM/pull/1023), [#1021](https://github.com/etalab-ia/OpenGateLLM/pull/1021), [#1008](https://github.com/etalab-ia/OpenGateLLM/pull/1008), [#984](https://github.com/etalab-ia/OpenGateLLM/pull/984).
+- **Optimisation des performances** : Amélioration de la gestion du pool de connexions PostgreSQL lors des appels aux fournisseurs d'IA pour libérer les ressources plus rapidement [#1005](https://github.com/etalab-ia/OpenGateLLM/pull/1005).
+- **Gestion de la base de données** : Simplification du schéma de données par la suppression des tables PostgreSQL liées au RAG [#1007](https://github.com/etalab-ia/OpenGateLLM/pull/1007).
+- **CI/CD** : Optimisation des pipelines de tests pour n'exécuter la couverture de code et les tests de bout en bout (E2E) que sur les Pull Requests prêtes à être fusionnées [#1025](https://github.com/etalab-ia/OpenGateLLM/pull/1025).
 
 ### Autres changements
-- **Documentation** : 
-    - Mise à jour de la documentation générée et des versions de release ([#975](https://github.com/etalab-ia/OpenGateLLM/issues/975)).
-    - Ajout d'une décision d'architecture (ADR) concernant la segmentation du RAG ([#971](https://github.com/etalab-ia/OpenGateLLM/issues/971)).
-- **Configuration** : Mise à jour des variables d'environnement par défaut dans l'exemple de configuration ([#974](https://github.com/etalab-ia/OpenGateLLM/issues/974)).
+- **Documentation** : Ajout d'un guide sur les agents (`AGENTS.md`) [#1017](https://github.com/etalab-ia/OpenGateLLM/pull/1017) et de documents de décision architecturale (ADR) concernant la séparation du RAG [#971](https://github.com/etalab-ia/OpenGateLLM/pull/971).
+- **Configuration** : Mise à jour des variables d'environnement par défaut dans l'exemple de configuration [#974](https://github.com/etalab-ia/OpenGateLLM/pull/974) et actualisation de la documentation générée [#1009](https://github.com/etalab-ia/OpenGateLLM/pull/1009).
