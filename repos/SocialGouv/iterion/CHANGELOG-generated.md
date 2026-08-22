@@ -1,35 +1,34 @@
-## Changelog : iterion (30 derniers jours, au 17 août 2026)
+## Changelog : iterion (30 derniers jours, au 21 août 2026)
 
 ### Résumé
-Ce mois a été marqué par une montée en puissance majeure de la plateforme, notamment avec l'introduction du nouveau backend d'exécution "Pi" et d'une architecture optimisée pour les interactions asynchrones entre l'IA et l'humain. L'expérience utilisateur a été considérablement enrichie par de nouveaux outils d'automatisation (triage d'issues, génération de wiki) et une interface de pilotage (Studio) plus intuitive et visuelle. La fiabilité globale a été renforcée par la mise en place de tests de non-régression comportementale ("Golden Master") et d'un système de gestion de la persistance des tâches.
+Ce mois a été marqué par une consolidation majeure de la fiabilité et de la sécurité du système. L'introduction du framework "Golden Master" permet désormais de garantir la non-régression comportementale des agents par des audits automatisés. Parallèlement, le projet a renforcé l'isolation de ses environnements d'exécution (sandbox) et a considérablement enrichi l'interface de pilotage (Studio) pour offrir une meilleure visibilité sur les changements et les processus de validation humaine.
 
 ### Évolutions fonctionnelles
-- **Gestion des ressources et coûts** : Ajout de limites d'usage personnalisables pour prévenir les dépassements de quotas auprès des fournisseurs d'IA [#438](https://github.com/SocialGouv/iterion/pull/438).
-- **Améliorations du Studio** : 
-    - Prévisualisation directe des contenus (JSON, Markdown, texte) lors des étapes de validation humaine [#425](https://github.com/SocialGouv/iterion/pull/425).
-    - Nouvel éditeur multi-fichiers pour la configuration des bots dans le cloud [#344](https://github.com/SocialGouv/iterion/pull/344).
-    - Refonte du tableau de bord des pipelines avec un système de colonnes et de glisser-déposer [#243](https://github.com/SocialGouv/iterion/pull/243).
-    - Interface de recherche et d'exploration de configuration par arbre rétractable.
-- **Nouveaux agents spécialisés** :
-    - **Triagy** : Automatisation du triage des issues via un système de routage intelligent [#22](https://github.com/SocialGouv/iterion/pull/22).
-    - **Wikky** : Générateur de documentation (wiki) pour maintenir la connaissance du projet.
-- **Accessibilité et Notifications** : 
-    - Intégration d'un auditeur d'accessibilité (Ultra11y) pour garantir la conformité des interfaces [#409](https://github.com/SocialGouv/iterion/pull/409).
-    - Système de notifications par Web Push pour alerter les opérateurs lors des pauses nécessitant une intervention [#266](https://github.com/SocialGouv/iterion/pull/266).
+- **Nouveau juge d'arbitrage** : Introduction de *Themis*, un juge spécialisé pour résoudre les cas de divergence bloqués dans les workflows.
+- **Améliorations du Studio** :
+    - Prévisualisation directe des contenus (JSON, Markdown, texte) lors des étapes de validation humaine [#425].
+    - Affichage des changements de fichiers directement dans la console de suivi des exécutions.
+    - Interface de gestion des pipelines et des cartes Kanban améliorée pour un meilleur suivi des tâches.
+    - Éditeur multi-fichiers pour la configuration des bots dans le cloud.
+- **Nouveau serveur MCP** : Mise à disposition d'un serveur *Model Context Protocol* permettant d'exposer les capacités d'Iterion (locales et distantes) à d'autres outils d'IA.
+- **Gestion des budgets et ressources** :
+    - Amélioration de la détection et de la prévention des dépassements de budget lors des boucles d'exécution (loop budget guard).
+    - Possibilité de mutualiser les quotas de souscription LLM entre les contributeurs.
+- **Nouveautés DSL** : Ajout de la fonctionnalité `auto_memory` pour permettre une gestion automatique du contexte par nœud.
 
 ### Évolutions techniques
-- **Architecture et Backends** :
-    - Introduction de **Pi** comme backend d'exécution de premier rang [#308](https://github.com/SocialGouv/iterion/pull/308).
-    - Implémentation de l'architecture asynchrone (ADR-081) permettant des interactions fluides et des points de suspension (await_answers) entre les nœuds et l'opérateur.
-    - Déploiement d'un serveur **MCP** (Model Context Protocol) pour l'opérateur.
-- **Fiabilité et Qualité** :
-    - Mise en place de **Golden Master (Goldy)** : un réseau de non-régression comportementale pour valider les sorties des agents face à des scénarios de test complexes.
-    - Renforcement de l'isolation via un système de **sandbox** amélioré (support Devbox) et une gestion plus stricte des identités Git et des credentials.
-    - Amélioration de la résilience des exécutions : gestion du "keepalive" pour les tâches de longue durée et mécanisme de reprise (resume) plus robuste pour les sous-agents.
-- **Infrastructure et CI/CD** :
-    - Optimisation des pipelines d'images et découplage des flux de déploiement pour accélérer les cycles de release.
-    - Amélioration de la gestion des budgets de tokens et de la détection des dérives de dépendances.
+- **Framework Golden Master (Goldy)** : Déploiement d'un système complet de non-régression comportementale incluant l'audit de mutantes, la gestion de sceaux de validation (seal) et des rapports de verdict structurés pour garantir la stabilité des agents.
+- **Sécurité et Isolation (Sandbox/Pi)** :
+    - Renforcement massif du confinement (containment) pour protéger les credentials et les données sensibles.
+    - Intégration du backend "pi" comme moteur d'exécution de premier rang.
+    - Sécurisation des échanges de tokens et des accès aux secrets.
+- **Résilience du Runtime** :
+    - Implémentation d'une procédure de "lame-duck drain" permettant de terminer gracieusement les exécutions en cours lors d'un déploiement.
+    - Amélioration de la reprise de session (StateRef) pour permettre de reprendre un nœud après une interruption.
+- **Observabilité** : Intégration de Sentry et GlitchTip pour le suivi des erreurs et standardisation des logs pour une meilleure traçabilité des appels LLM [#463, #459].
+- **Gestion des identités et credentials** : Possibilité de faire pivoter les credentials LLM de la plateforme via la base de données sans nécessiter de redéploiement [#466].
 
 ### Autres changements
-- **Documentation** : Mise à jour massive et alignement de l'ensemble de la documentation technique (guides d'architecture, procédures de déploiement cloud, et bilans de runs de bots).
-- **Nettoyage** : Refactorisation de la gestion des bundles et optimisation de la gestion des ressources de l'engine.
+- **Documentation** : Migration complète de la documentation vers **VitePress** et mise à jour massive des guides (MCP, DSL, architectures, et guides de déploiement).
+- **Automatisation de la doc** : Mise en place d'un système de rafraîchissement automatique de la documentation via des bots dédiés, avec support des modes incrémentaux et des amendements de PR [#289].
+- **Maintenance** : Nettoyage automatique des répertoires temporaires de projet (`PROJECT_SCRATCH_DIR`) pour optimiser l'espace disque [#469].

@@ -80,6 +80,10 @@
 │   │       ├── interview-playbook.md
 │   │       ├── rgaa-dsfr.md
 │   │       └── verify-build.md
+│   ├── arbitrate
+│   │   ├── README.md
+│   │   ├── main.bot
+│   │   └── manifest.yaml
 │   ├── bmady
 │   │   ├── README.md
 │   │   ├── main.bot
@@ -118,6 +122,7 @@
 │   ├── catalog_parse_compile_test.go
 │   ├── catalog_typing_test.go
 │   ├── catalog_universality_test.go
+│   ├── clean_tree_clause_test.go
 │   ├── dep-update-guard
 │   │   ├── devbox.json
 │   │   ├── devbox.lock
@@ -206,6 +211,7 @@
 │   │       ├── feed-config.md
 │   │       ├── notify-webhooks.md
 │   │       └── synthesis-scoring.md
+│   ├── gitignore_claude_runtime_test.go
 │   ├── golden-master
 │   │   ├── README.md
 │   │   ├── a11y
@@ -230,6 +236,21 @@
 │   │   └── sync-harness.py
 │   ├── golden_master_harness_sync_test.go
 │   ├── handoff_declarations_test.go
+│   ├── instrument
+│   │   ├── README.md
+│   │   ├── devbox.json
+│   │   ├── devbox.lock
+│   │   ├── main.bot
+│   │   ├── manifest.yaml
+│   │   └── skills
+│   │       ├── code-review-invariants.md
+│   │       ├── forge-mr-create.md
+│   │       ├── instrumentation.md
+│   │       ├── lang-go.md
+│   │       ├── lang-js.md
+│   │       ├── lang-python.md
+│   │       ├── tracing.md
+│   │       └── verify-build.md
 │   ├── issue-triage
 │   │   ├── iterion-bot-catalog-static.md
 │   │   ├── main.bot
@@ -729,7 +750,9 @@
 │   │   ├── 084-subbot-reattach-across-restarts.md
 │   │   ├── 085-pi-as-execution-backend.md
 │   │   ├── 086-pipeline-card-drawer-hand-rolled-overlay.md
-│   │   └── 087-cross-backend-model-fallback-chain.md
+│   │   ├── 087-cross-backend-model-fallback-chain.md
+│   │   ├── 088-error-tracking-via-sentry-dsn-protocol.md
+│   │   └── 089-session-persist.md
 │   ├── architecture.md
 │   ├── asymptote-bench.md
 │   ├── async-interaction.md
@@ -756,6 +779,7 @@
 │   │   ├── feature-gap-fill.md
 │   │   ├── feed-watch.md
 │   │   ├── golden-master.md
+│   │   ├── instrument.md
 │   │   ├── issue-triage.md
 │   │   ├── keepalive.md
 │   │   ├── modernize.md
@@ -872,6 +896,7 @@
 │   │   ├── docker-compose.yml
 │   │   └── grafana
 │   │       └── iterion-workflow.json
+│   ├── observability.md
 │   ├── outbound-callbacks.md
 │   ├── package.json
 │   ├── permissions.md
@@ -880,6 +905,7 @@
 │   ├── plugins.md
 │   ├── post-mortem-shell.md
 │   ├── privacy_filter.md
+│   ├── probes-and-graceful-shutdown.md
 │   ├── public
 │   │   ├── favicon.ico
 │   │   ├── iterion-logo.png
@@ -1208,6 +1234,8 @@
 ├── pkg
 │   ├── alert
 │   │   ├── alert.go
+│   │   ├── errtrack.go
+│   │   ├── errtrack_test.go
 │   │   ├── manager.go
 │   │   ├── manager_test.go
 │   │   ├── run_health_test.go
@@ -1391,6 +1419,8 @@
 │   │   │   ├── sandbox_state_mirror.go
 │   │   │   ├── sandbox_state_mirror_test.go
 │   │   │   ├── secrets_prompt_test.go
+│   │   │   ├── session_root.go
+│   │   │   ├── session_root_test.go
 │   │   │   ├── skills_test.go
 │   │   │   ├── statedir_guards.go
 │   │   │   ├── testdata
@@ -1448,10 +1478,10 @@
 │   │   │   ├── events.go
 │   │   │   ├── events_test.go
 │   │   │   ├── executor.go
-│   │   │   ├── executor_*.go  (32 files)
+│   │   │   ├── executor_*.go  (33 files)
 │   │   │   ├── fallback_prereq_test.go
 │   │   │   ├── generation.go
-│   │   │   ├── generation_*.go  (10 files)
+│   │   │   ├── generation_*.go  (11 files)
 │   │   │   ├── hooks.go
 │   │   │   ├── hooks_secretguard_test.go
 │   │   │   ├── hooks_thinking_test.go
@@ -1525,6 +1555,11 @@
 │   │   │   ├── host_test.go
 │   │   │   ├── secretguard.go
 │   │   │   └── secretguard_test.go
+│   │   ├── sessionpack
+│   │   │   ├── archive.go
+│   │   │   ├── archive_test.go
+│   │   │   ├── nlink_other.go
+│   │   │   └── nlink_unix.go
 │   │   ├── thinktokens
 │   │   │   ├── thinktokens.go
 │   │   │   └── thinktokens_test.go
@@ -1707,6 +1742,8 @@
 │   │   ├── bundle.go
 │   │   ├── bundles.go
 │   │   ├── clean.go
+│   │   ├── clean_scratch.go
+│   │   ├── clean_scratch_test.go
 │   │   ├── clean_test.go
 │   │   ├── cli_docs_examples_test.go
 │   │   ├── cli_test.go
@@ -1714,6 +1751,7 @@
 │   │   ├── dispatch.go
 │   │   ├── dispatch_defaults.go
 │   │   ├── dispatch_defaults_test.go
+│   │   ├── dispatch_log_test.go
 │   │   ├── embedded_recipes.go
 │   │   ├── errors.go
 │   │   ├── import.go
@@ -1735,8 +1773,9 @@
 │   │   ├── models_test.go
 │   │   ├── output.go
 │   │   ├── plugin.go
+│   │   ├── read_secret_value_test.go
 │   │   ├── remote.go
-│   │   ├── remote_*.go  (9 files)
+│   │   ├── remote_*.go  (10 files)
 │   │   ├── report.go
 │   │   ├── report_test.go
 │   │   ├── resume.go
@@ -1800,6 +1839,7 @@
 │   │   ├── config.go
 │   │   ├── config_test.go
 │   │   ├── env.go
+│   │   ├── logger.go
 │   │   └── yaml.go
 │   ├── configshare
 │   │   ├── configshare_test.go
@@ -1985,6 +2025,7 @@
 │   │   │   ├── fallback_apply.go
 │   │   │   ├── fallback_apply_test.go
 │   │   │   ├── fan_out_each_test.go
+│   │   │   ├── feedwatch_shape_test.go
 │   │   │   ├── foreach_test.go
 │   │   │   ├── full_access_test.go
 │   │   │   ├── images_test.go
@@ -2000,6 +2041,7 @@
 │   │   │   ├── prompt_include_test.go
 │   │   │   ├── ref.go
 │   │   │   ├── ref_test.go
+│   │   │   ├── repo_devbox_test.go
 │   │   │   ├── review_test.go
 │   │   │   ├── sandbox.go
 │   │   │   ├── sandbox_test.go
@@ -2008,8 +2050,10 @@
 │   │   │   ├── typecheck.go
 │   │   │   ├── ultracode_test.go
 │   │   │   ├── unbounded_loop_test.go
+│   │   │   ├── uses_llm.go
+│   │   │   ├── uses_llm_test.go
 │   │   │   ├── validate.go
-│   │   │   ├── validate_*.go  (24 files)
+│   │   │   ├── validate_*.go  (25 files)
 │   │   │   ├── verified_action_test.go
 │   │   │   └── worktree_default_test.go
 │   │   ├── parser
@@ -2071,6 +2115,20 @@
 │   │   └── workflowfile
 │   │       ├── workflowfile.go
 │   │       └── workflowfile_test.go
+│   ├── errtrack
+│   │   ├── crash.go
+│   │   ├── crash_test.go
+│   │   ├── errtrack.go
+│   │   ├── errtrack_test.go
+│   │   ├── hook.go
+│   │   ├── http.go
+│   │   ├── http_test.go
+│   │   ├── scrub.go
+│   │   ├── scrub_test.go
+│   │   ├── span.go
+│   │   ├── span_test.go
+│   │   ├── tracing.go
+│   │   └── tracing_test.go
 │   ├── eventbus
 │   │   ├── bus.go
 │   │   ├── inproc.go
@@ -2242,6 +2300,9 @@
 │   │   ├── scope.go
 │   │   └── scope_test.go
 │   ├── log
+│   │   ├── env.go
+│   │   ├── env_test.go
+│   │   ├── hook_test.go
 │   │   ├── json.go
 │   │   ├── log.go
 │   │   └── log_test.go
@@ -2270,6 +2331,8 @@
 │   │   ├── memory_test.go
 │   │   ├── quota_fs.go
 │   │   ├── quota_fs_test.go
+│   │   ├── scratch_sweep.go
+│   │   ├── scratch_sweep_test.go
 │   │   └── space_test.go
 │   ├── notify
 │   │   ├── completion.go
@@ -2368,6 +2431,7 @@
 │   │   ├── resolve.go
 │   │   └── resolve_test.go
 │   ├── runner
+│   │   ├── bank_test.go
 │   │   ├── budget_override_test.go
 │   │   ├── clone_test.go
 │   │   ├── contributions.go
@@ -2381,6 +2445,8 @@
 │   │   ├── gitproc_windows.go
 │   │   ├── gitproxy.go
 │   │   ├── gitproxy_test.go
+│   │   ├── health.go
+│   │   ├── health_test.go
 │   │   ├── hostpin.go
 │   │   ├── hostpin_test.go
 │   │   ├── loop.go
@@ -2449,6 +2515,7 @@
 │   │   ├── errors.go
 │   │   ├── events.go
 │   │   ├── events_test.go
+│   │   ├── exec_branch_loop_skip_test.go
 │   │   ├── expr_eval.go
 │   │   ├── fallbacks_plantime_test.go
 │   │   ├── fan_*.go  (6 files)
@@ -2474,6 +2541,8 @@
 │   │   ├── pause.go
 │   │   ├── pause_test.go
 │   │   ├── permission_grants_test.go
+│   │   ├── persist_session.go
+│   │   ├── persist_session_test.go
 │   │   ├── plugin_hooks.go
 │   │   ├── plugin_hooks_test.go
 │   │   ├── plugin_skills.go
@@ -2485,6 +2554,8 @@
 │   │   │   └── usage_limit_seam_test.go
 │   │   ├── recovery_dispatch.go
 │   │   ├── recovery_dispatch_test.go
+│   │   ├── repo_devbox.go
+│   │   ├── repo_devbox_test.go
 │   │   ├── resume.go
 │   │   ├── resume_failure_char_test.go
 │   │   ├── resume_input_test.go
@@ -2511,7 +2582,9 @@
 │   │   ├── sandbox_secret_files.go
 │   │   ├── sandbox_secret_files_test.go
 │   │   ├── sandbox_test.go
+│   │   ├── scratch_sweep.go
 │   │   ├── session_test.go
+│   │   ├── setup_failure_status_test.go
 │   │   ├── snapshot.go
 │   │   ├── special_node.go
 │   │   ├── spendcap.go
@@ -2552,6 +2625,8 @@
 │   │   ├── log_slice.go
 │   │   ├── manager.go
 │   │   ├── manager_test.go
+│   │   ├── merge_remote.go
+│   │   ├── merge_remote_test.go
 │   │   ├── node_changes.go
 │   │   ├── node_changes_test.go
 │   │   ├── periodic_reconcile_test.go
@@ -2684,6 +2759,8 @@
 │   │   │   ├── errors.go
 │   │   │   ├── inspect.go
 │   │   │   ├── inspect_test.go
+│   │   │   ├── javatruststore.go
+│   │   │   ├── javatruststore_test.go
 │   │   │   ├── matcher.go
 │   │   │   ├── matcher_test.go
 │   │   │   ├── preset.go
@@ -2750,6 +2827,8 @@
 │   │       ├── httpdial.go
 │   │       └── httpdial_test.go
 │   ├── server
+│   │   ├── admin_llm_routes.go
+│   │   ├── admin_llm_routes_test.go
 │   │   ├── admin_orgs_routes.go
 │   │   ├── admin_orgs_routes_test.go
 │   │   ├── audit_helper.go
@@ -2789,6 +2868,7 @@
 │   │   ├── bots_routes_test.go
 │   │   ├── bots_tenant.go
 │   │   ├── byok_routes.go
+│   │   ├── byok_routes_test.go
 │   │   ├── cloudpublisher
 │   │   │   ├── app_committer_test.go
 │   │   │   ├── contributions.go
@@ -2797,6 +2877,7 @@
 │   │   │   ├── gosafe_test.go
 │   │   │   ├── ir_offload_test.go
 │   │   │   ├── oauth_fallback_test.go
+│   │   │   ├── platform_tier_test.go
 │   │   │   ├── publisher.go
 │   │   │   ├── publisher_orgid_test.go
 │   │   │   ├── publisher_resume_test.go
@@ -2822,6 +2903,7 @@
 │   │   ├── forge_*.go  (29 files)
 │   │   ├── generic_secrets_routes.go
 │   │   ├── gosafe.go
+│   │   ├── gosafe_errtrack_test.go
 │   │   ├── gosafe_test.go
 │   │   ├── health.go
 │   │   ├── health_test.go
@@ -2899,6 +2981,8 @@
 │   │   ├── static
 │   │   │   └── .gitkeep
 │   │   ├── timefmt.go
+│   │   ├── tracing.go
+│   │   ├── tracing_test.go
 │   │   ├── trigger_cloud.go
 │   │   ├── trigger_coordinator.go
 │   │   ├── trigger_forge_emit.go
@@ -2982,6 +3066,7 @@
 │   │   ├── mongo
 │   │   │   ├── artifacts.go
 │   │   │   ├── attachments.go
+│   │   │   ├── backend_sessions.go
 │   │   │   ├── conformance_test.go
 │   │   │   ├── decode_shape_test.go
 │   │   │   ├── events.go
@@ -3034,11 +3119,13 @@
 │   │   ├── store.go
 │   │   ├── store_artifacts.go
 │   │   ├── store_atomic.go
+│   │   ├── store_backend_session.go
 │   │   ├── store_delete.go
 │   │   ├── store_delete_guard_test.go
 │   │   ├── store_events.go
 │   │   ├── store_interactions.go
 │   │   ├── store_run.go
+│   │   ├── store_run_phantom_test.go
 │   │   ├── store_runfiles.go
 │   │   ├── store_test.go
 │   │   ├── store_toolblobs.go
@@ -4268,6 +4355,7 @@
 │   │   │   │   ├── AuditAdminPage.tsx
 │   │   │   │   ├── DLQAdminPage.tsx
 │   │   │   │   ├── OrgsAdminPage.tsx
+│   │   │   │   ├── PlatformLlmCredsPage.tsx
 │   │   │   │   ├── UsersAdminPage.tsx
 │   │   │   │   └── orgs
 │   │   │   │       ├── CreateOrgForm.tsx
@@ -6532,6 +6620,109 @@
     │   │       ├── staticcheck.conf
     │   │       ├── system_bsd.go
     │   │       └── system_darwin.go
+    │   ├── getsentry
+    │   │   └── sentry-go
+    │   │       ├── .codecov.yml
+    │   │       ├── .craft.yml
+    │   │       ├── .gitattributes
+    │   │       ├── .gitignore
+    │   │       ├── .golangci.yml
+    │   │       ├── AGENTS.md
+    │   │       ├── CHANGELOG.md
+    │   │       ├── CONTRIBUTING.md
+    │   │       ├── LICENSE
+    │   │       ├── MIGRATION.md
+    │   │       ├── Makefile
+    │   │       ├── README.md
+    │   │       ├── agents.toml
+    │   │       ├── attribute
+    │   │       │   ├── builder.go
+    │   │       │   ├── rawhelpers.go
+    │   │       │   ├── slicehelpers.go
+    │   │       │   └── value.go
+    │   │       ├── baggage.go
+    │   │       ├── batch_processor.go
+    │   │       ├── check_in.go
+    │   │       ├── client.go
+    │   │       ├── data_collection.go
+    │   │       ├── data_collection_filter.go
+    │   │       ├── doc.go
+    │   │       ├── dsn.go
+    │   │       ├── dynamic_sampling_context.go
+    │   │       ├── exception.go
+    │   │       ├── go.work
+    │   │       ├── go.work.sum
+    │   │       ├── http
+    │   │       │   ├── README.md
+    │   │       │   └── sentryhttp.go
+    │   │       ├── hub.go
+    │   │       ├── integrations.go
+    │   │       ├── interfaces.go
+    │   │       ├── internal
+    │   │       │   ├── debug
+    │   │       │   │   └── transport.go
+    │   │       │   ├── debuglog
+    │   │       │   │   └── log.go
+    │   │       │   ├── http
+    │   │       │   │   └── transport.go
+    │   │       │   ├── httputils
+    │   │       │   │   ├── body.go
+    │   │       │   │   └── wrap_writer.go
+    │   │       │   ├── otel
+    │   │       │   │   └── baggage
+    │   │       │   │       ├── README.md
+    │   │       │   │       ├── baggage.go
+    │   │       │   │       └── internal
+    │   │       │   │           └── baggage
+    │   │       │   │               └── baggage.go
+    │   │       │   ├── protocol
+    │   │       │   │   ├── dsn.go
+    │   │       │   │   ├── envelope.go
+    │   │       │   │   ├── interfaces.go
+    │   │       │   │   ├── item_container.go
+    │   │       │   │   ├── types.go
+    │   │       │   │   └── uuid.go
+    │   │       │   ├── ratelimit
+    │   │       │   │   ├── category.go
+    │   │       │   │   ├── deadline.go
+    │   │       │   │   ├── doc.go
+    │   │       │   │   ├── map.go
+    │   │       │   │   ├── rate_limits.go
+    │   │       │   │   └── retry_after.go
+    │   │       │   ├── telemetry
+    │   │       │   │   ├── bucketed_buffer.go
+    │   │       │   │   ├── buffer.go
+    │   │       │   │   ├── processor.go
+    │   │       │   │   ├── ring_buffer.go
+    │   │       │   │   ├── scheduler.go
+    │   │       │   │   └── trace_aware.go
+    │   │       │   ├── traceutils
+    │   │       │   │   └── route_name.go
+    │   │       │   └── util
+    │   │       │       ├── map.go
+    │   │       │       └── util.go
+    │   │       ├── log.go
+    │   │       ├── log_batch_processor.go
+    │   │       ├── log_fallback.go
+    │   │       ├── metric_batch_processor.go
+    │   │       ├── metrics.go
+    │   │       ├── mocks.go
+    │   │       ├── option.go
+    │   │       ├── propagation_context.go
+    │   │       ├── report
+    │   │       │   ├── aggregator.go
+    │   │       │   ├── interfaces.go
+    │   │       │   ├── outcome.go
+    │   │       │   ├── reason.go
+    │   │       │   └── report.go
+    │   │       ├── scope.go
+    │   │       ├── sentry.go
+    │   │       ├── span_recorder.go
+    │   │       ├── stacktrace.go
+    │   │       ├── traces_sampler.go
+    │   │       ├── tracing.go
+    │   │       ├── transport.go
+    │   │       └── util.go
     │   ├── glebarez
     │   │   └── go-sqlite
     │   │       ├── AUTHORS
@@ -7226,7 +7417,9 @@
     │   │   │   ├── GOVERNANCE.md
     │   │   │   ├── LICENSE
     │   │   │   ├── MAINTAINERS.md
+    │   │   │   ├── Makefile
     │   │   │   ├── README.md
+    │   │   │   ├── TESTING.md
     │   │   │   ├── context.go
     │   │   │   ├── dependencies.md
     │   │   │   ├── dependencies.tpl
@@ -9476,6 +9669,7 @@
     │       │   │       ├── sum_generic.go
     │       │   │       ├── sum_loong64.s
     │       │   │       ├── sum_ppc64x.s
+    │       │   │       ├── sum_riscv64.s
     │       │   │       ├── sum_s390x.go
     │       │   │       └── sum_s390x.s
     │       │   ├── nacl
@@ -9668,6 +9862,10 @@
     │       │   │   ├── syscall_darwin_arm64_gc.go
     │       │   │   ├── syscall_darwin_x86_gc.go
     │       │   │   └── zcpu_windows.go
+    │       │   ├── execabs
+    │       │   │   ├── execabs.go
+    │       │   │   ├── execabs_go118.go
+    │       │   │   └── execabs_go119.go
     │       │   ├── plan9
     │       │   │   ├── asm.s
     │       │   │   ├── asm_plan9_386.s
@@ -11582,5 +11780,22 @@
     │           ├── sqlite_openbsd_arm64.go
     │           ├── sqlite_windows.go
     │           └── sqlite_windows_386.go
-    └── modules.txt
-1627 directories, 10817 files
+    ├── modules.txt
+    └── software.sslmate.com
+        └── src
+            └── go-pkcs12
+                ├── .gitattributes
+                ├── .gitignore
+                ├── LICENSE
+                ├── README.md
+                ├── bmp-string.go
+                ├── crypto.go
+                ├── errors.go
+                ├── internal
+                │   └── rc2
+                │       └── rc2.go
+                ├── mac.go
+                ├── pbkdf.go
+                ├── pkcs12.go
+                └── safebags.go
+1657 directories, 11006 files
