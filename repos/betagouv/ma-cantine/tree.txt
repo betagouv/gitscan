@@ -43,7 +43,9 @@
 │   │   │   ├── AppBreadcrumb.vue
 │   │   │   ├── AppCode.vue
 │   │   │   ├── AppDropdownMenu.vue
+│   │   │   ├── AppFieldDisplay.vue
 │   │   │   ├── AppFooter.vue
+│   │   │   ├── AppFormImage.vue
 │   │   │   ├── AppFormSendInquiry.vue
 │   │   │   ├── AppHeader.vue
 │   │   │   ├── AppJeDonneMonAvis.vue
@@ -61,13 +63,21 @@
 │   │   │   ├── CanteenButtonClaim.vue
 │   │   │   ├── CanteenButtonJoin.vue
 │   │   │   ├── CanteenButtonLink.vue
+│   │   │   ├── CanteenDisplayInformations.vue
 │   │   │   ├── CanteenEstablishmentCard.vue
 │   │   │   ├── CanteenEstablishmentSearch.vue
 │   │   │   ├── CanteenFormGroupe.vue
+│   │   │   ├── CanteenFormImages.vue
+│   │   │   ├── CanteenFormLogo.vue
 │   │   │   ├── CanteenFormRestaurant.vue
 │   │   │   ├── CanteenModalExport.vue
+│   │   │   ├── CanteenModalManagerAdd.vue
+│   │   │   ├── CanteenModalManagerRemove.vue
 │   │   │   ├── CanteenModalSatelliteAdd.vue
 │   │   │   ├── CanteenModalSatelliteRemove.vue
+│   │   │   ├── CanteenSidebarTitle.vue
+│   │   │   ├── CanteenTableManagers.vue
+│   │   │   ├── CanteenTeledeclarationPdf.vue
 │   │   │   ├── CanteensTable.vue
 │   │   │   ├── CanteensTableSatellites.vue
 │   │   │   ├── DsfrBooleanRadio.vue
@@ -152,8 +162,8 @@
 │   │   │   └── regions.json
 │   │   ├── i18n.js
 │   │   ├── layouts
-│   │   │   ├── LayoutBigTable.vue
-│   │   │   └── LayoutOneColumn.vue
+│   │   │   ├── LayoutOneColumn.vue
+│   │   │   └── LayoutSidebarCanteen.vue
 │   │   ├── locales
 │   │   │   └── fr.json
 │   │   ├── main.js
@@ -170,8 +180,10 @@
 │   │   │   ├── canteens.js
 │   │   │   ├── canteensTable.js
 │   │   │   ├── diagnostics.js
+│   │   │   ├── diagnosticsBadge.js
 │   │   │   ├── filters.js
 │   │   │   ├── imports.js
+│   │   │   ├── managers.js
 │   │   │   ├── matomo.js
 │   │   │   ├── openData.js
 │   │   │   ├── profile.js
@@ -182,6 +194,7 @@
 │   │   │   ├── strings.js
 │   │   │   └── urls.js
 │   │   ├── stores
+│   │   │   ├── canteen.js
 │   │   │   ├── filters.js
 │   │   │   └── root.js
 │   │   ├── utils.js
@@ -195,13 +208,16 @@
 │   │       ├── DonneesPersonnelles.vue
 │   │       ├── GestionnaireAchatsAjouter.vue
 │   │       ├── GestionnaireAchatsModifier.vue
+│   │       ├── GestionnaireCantine.vue
 │   │       ├── GestionnaireCantineArchiver.vue
-│   │       ├── GestionnaireCantineGerer.vue
+│   │       ├── GestionnaireCantineGestionnaires.vue
+│   │       ├── GestionnaireCantineGroupe.vue
 │   │       ├── GestionnaireCantineGroupeAjouter.vue
 │   │       ├── GestionnaireCantineGroupeModifier.vue
-│   │       ├── GestionnaireCantineGroupeSatellites.vue
+│   │       ├── GestionnaireCantinePagePublique.vue
 │   │       ├── GestionnaireCantineRestaurantAjouter.vue
 │   │       ├── GestionnaireCantineRestaurantModifier.vue
+│   │       ├── GestionnaireCantineTeledeclarations.vue
 │   │       ├── GestionnaireGaspillageAlimentaire.vue
 │   │       ├── GestionnaireGaspillageAlimentaireModifier.vue
 │   │       ├── GestionnaireImport.vue
@@ -949,6 +965,11 @@
 │   │   ├── 0268_alter_diagnostic_valeur_boulangerie_aocaop_igp_stg_and_more.py
 │   │   ├── 0269_canteenimage_creation_and_modification_date.py
 │   │   ├── 0270_diagnostic_valeur_autres_diagnostic_valeur_boissons_and_more.py
+│   │   ├── 0271_diagnostic_valeur_autres_europe_and_more.py
+│   │   ├── 0272_alter_purchase_caracteristiques.py
+│   │   ├── 0273_diagnostic_nombre_repas_an_and_more.py
+│   │   ├── 0274_diagnostic_valeur_france_europe_circuit_court_local.py
+│   │   ├── 0275_diagnostic_valeur_famille_aocaop_igp_stg.py
 │   │   └── __init__.py
 │   ├── models
 │   │   ├── __init__.py
@@ -1220,25 +1241,12 @@
 │   │       │   ├── BlogPage.vue
 │   │       │   ├── BlogsHome.vue
 │   │       │   └── index.vue
-│   │       ├── CanteenEditor
-│   │       │   ├── AdminRemovalDialog.vue
-│   │       │   ├── CanteenGeneratePoster.vue
-│   │       │   ├── CanteenManagers.vue
-│   │       │   ├── CityField.vue
-│   │       │   ├── ManagerItem.vue
-│   │       │   ├── PublicationForm
-│   │       │   │   ├── CanteenHeader.vue
-│   │       │   │   ├── ImagesField.vue
-│   │       │   │   ├── UploadLogo.vue
-│   │       │   │   └── index.vue
-│   │       │   ├── SiretCheck.vue
-│   │       │   ├── TechnicalControlDialog.vue
-│   │       │   └── index.vue
 │   │       ├── CanteenSearchLanding.vue
 │   │       ├── CanteensPage
 │   │       │   ├── CanteenPage.vue
 │   │       │   ├── CanteenWidget.vue
 │   │       │   ├── CanteensHome.vue
+│   │       │   ├── CityField.vue
 │   │       │   ├── ContactForm.vue
 │   │       │   ├── PublishedCanteenCard.vue
 │   │       │   └── index.vue
@@ -1247,18 +1255,7 @@
 │   │       │   ├── WebinaireCard.vue
 │   │       │   └── index.vue
 │   │       ├── DashboardManager
-│   │       │   ├── ApproSegment.vue
-│   │       │   ├── CanteenInfoWidget.vue
-│   │       │   ├── DiversificationCard.vue
-│   │       │   ├── EgalimProgression.vue
-│   │       │   ├── FoodWasteCard.vue
-│   │       │   ├── InformationCard.vue
-│   │       │   ├── NoPlasticCard.vue
-│   │       │   ├── PublicationWidget.vue
-│   │       │   ├── PurchasesWidget.vue
-│   │       │   ├── SatellitesWidget.vue
-│   │       │   ├── TeamWidget.vue
-│   │       │   └── index.vue
+│   │       │   └── SatellitesWidget.vue
 │   │       ├── DiagnosticPage.vue
 │   │       ├── DiagnosticTunnel
 │   │       │   ├── DiversificationMeasureSteps
@@ -1334,7 +1331,6 @@
 │   │   ├── setup.js
 │   │   └── unit
 │   │       ├── AppHeader.spec.js
-│   │       ├── ManagerItem.spec.js
 │   │       └── PublishedCanteenCard.spec.js
 │   └── vue.config.js
 ├── local-build.sh
@@ -1793,4 +1789,4 @@
     │   └── test_sitemaps.py
     ├── urls.py
     └── views.py
-145 directories, 1723 files
+143 directories, 1721 files
