@@ -1116,6 +1116,7 @@
 │   │   ├── RefusAffectationType.php
 │   │   ├── RefusSignalementType.php
 │   │   ├── ReponseInjonctionBailleurType.php
+│   │   ├── RialType.php
 │   │   ├── SearchAffectationWithoutSubscriptionType.php
 │   │   ├── SearchAnnuaireAgentType.php
 │   │   ├── SearchArchivedPartnerType.php
@@ -1166,6 +1167,7 @@
 │   │   │   └── UsagerSituationFoyerType.php
 │   │   ├── StopProcedureType.php
 │   │   ├── TerritoryFileType.php
+│   │   ├── TopoSearchType.php
 │   │   ├── Type
 │   │   │   ├── PhoneType.php
 │   │   │   ├── SearchAutocompleteType.php
@@ -1296,6 +1298,8 @@
 │   │   │   ├── EmailAlert
 │   │   │   │   ├── PartnerQueryService.php
 │   │   │   │   └── UserQueryService.php
+│   │   │   ├── InAppCommunication
+│   │   │   │   └── InAppCommunicationUserQuery.php
 │   │   │   ├── Interconnection
 │   │   │   │   └── JobEventQuery.php
 │   │   │   ├── SignalementList
@@ -1477,10 +1481,12 @@
 │   │   │   │   │   ├── RialHeaders.php
 │   │   │   │   │   └── RialSearchLocauxParams.php
 │   │   │   │   └── RialService.php
-│   │   │   └── Rnb
-│   │   │       ├── Response
-│   │   │       │   └── RnbBuilding.php
-│   │   │       └── RnbService.php
+│   │   │   ├── Rnb
+│   │   │   │   ├── Response
+│   │   │   │   │   └── RnbBuilding.php
+│   │   │   │   └── RnbService.php
+│   │   │   └── Topo
+│   │   │       └── TopoService.php
 │   │   ├── History
 │   │   │   ├── EntityComparator.php
 │   │   │   └── HistoryEntryBuffer.php
@@ -2433,6 +2439,7 @@
 │   │   │   │   ├── InAppCommunicationControllerTest.php
 │   │   │   │   ├── InterconnexionControllerTest.php
 │   │   │   │   ├── ProfilControllerTest.php
+│   │   │   │   ├── RialToolControllerTest.php
 │   │   │   │   ├── SignalementActionControllerTest.php
 │   │   │   │   ├── SignalementControllerTest.php
 │   │   │   │   ├── SignalementCreateControllerTest.php
@@ -2809,8 +2816,10 @@
 │   │   │   │   │   ├── Request
 │   │   │   │   │   │   └── RialSearchLocauxParamsTest.php
 │   │   │   │   │   └── RialServiceTest.php
-│   │   │   │   └── Rnb
-│   │   │   │       └── RnbServiceTest.php
+│   │   │   │   ├── Rnb
+│   │   │   │   │   └── RnbServiceTest.php
+│   │   │   │   └── Topo
+│   │   │   │       └── TopoServiceTest.php
 │   │   │   ├── History
 │   │   │   │   ├── EntityComparatorTest.php
 │   │   │   │   └── HistoryEntryBufferTest.php
@@ -3032,4 +3041,4 @@
 │   ├── security.fr.yaml
 │   └── validators.fr.xlf
 └── webpack.config.js
-504 directories, 2677 files
+507 directories, 2683 files

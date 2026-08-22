@@ -1,15 +1,29 @@
-## Changelog : histologe (30 derniers jours, au 14 août 2026)
+## Changelog : histologe (30 derniers jours, au 21/08/2026)
 
 ### Résumé
-Ce mois-ci, les développements ont principalement porté sur l'automatisation et la gestion de la clôture des dossiers, notamment pour la "Démarche Accélérée". Les outils de gestion pour les administrateurs (Backoffice) ont été enrichis pour offrir une meilleure traçabilité et une gestion plus fine des partenaires et des signalements. Parallèlement, la sécurité et la robustesse de l'infrastructure ont été renforcées.
+Ce mois-ci, les évolutions se sont concentrées sur l'optimisation de la gestion des dossiers et des signalements, notamment via l'automatisation de certaines clôtures et une meilleure collaboration avec les partenaires. L'interface de gestion a également été enrichie pour faciliter le travail des agents, avec des messages d'erreur plus clairs et une meilleure visibilité des informations importantes.
 
 ### Évolutions fonctionnelles
-- **Démarche Accélérée et Clôture** : Automatisation de la clôture des dossiers inactifs [#6178](https://github.com/MTES-MCT/histologe/issues/6178), gestion des clôtures par les RT [#6186](https://github.com/MTES-MCT/histologe/issues/6186) ou pour les partenaires [#6124](https://github.com/MTES-MCT/histologe/issues/6124), et gestion des blocages locataires [#6153](https://github.com/MTES-MCT/histologe/issues/6153).
-- **Gestion du Backoffice** : Amélioration de la gestion des signalements (mention de partenaires [#6176](https://github.com/MTES-MCT/histologe/issues/6176), visibilité accrue des erreurs de synchronisation d'affectations [#6144](https://github.com/MTES-MCT/histologe/issues/6144)), nouvel historique des adresses [#6063](https://github.com/MTES-MCT/histologe/issues/6063), et possibilité d'importer un historique d'arrêtés [#6133](https://github.com/MTES-MCT/histologe/issues/6133).
-- **Expérience Utilisateur et Suivi** : Partage des informations de clôture d'injonction aux bailleurs [#6185](https://github.com/MTES-MCT/histologe/issues/6185), ajout de notes et tags personnels [#6132](https://github.com/MTES-MCT/histologe/issues/6132), et affichage de suivi lors de la première connexion des bailleurs [#6154](https://github.com/MTES-MCT/histologe/issues/6154).
-- **Corrections de bugs** : Résolution de problèmes de filtrage dans les listes de signalements [#6214](https://github.com/MTES-MCT/histologe/issues/6214), d'erreurs de doublons en base de données [#6205](https://github.com/MTES-MCT/histologe/issues/6205), de valeurs nulles dans l'API [#6171](https://github.com/MTES-MCT/histologe/issues/6171) et de dysfonctionnements sur les relances bailleurs [#6142](https://github.com/MTES-MCT/histologe/issues/6142).
+- **Gestion des signalements et des dossiers** :
+    - Amélioration des capacités de clôture : clôture automatique des dossiers inactifs [#6178], clôture par un RT [#6186], clôture pour le compte d'un partenaire [#6124] et gestion spécifique de la clôture pour la "Démarche Accélérée" [#6162, #6153].
+    - Possibilité de mentionner un partenaire directement dans un signalement [#6176].
+    - Partage des informations de clôture d'injonction avec les bailleurs [#6185, #6193].
+    - Nouvelle fonctionnalité d'importation de l'historique des arrêtés dans la gestion du territoire [#6133].
+- **Interface et Backoffice** :
+    - Ajout d'un bandeau de communication dans l'interface d'administration [#6191].
+    - Amélioration de l'interface utilisateur pour la saisie des notes personnelles [#6184, #6190].
+    - Optimisation des messages d'erreur pour l'import d'arrêtés [#6189] et les problèmes de jeton CSRF [#6188].
+- **Corrections de bugs** :
+    - Résolution de problèmes de filtrage dans la liste des signalements [#6214].
+    - Correction d'erreurs d'affichage des communications in-app [#6239] et de doublons de données (contraintes d'intégrité) [#6205].
+    - Correction d'un problème de score nul via l'API [#6172] et ajustement du type de suivi pour les conclusions de visite [#6187].
 
 ### Évolutions techniques
-- **Sécurité et Observabilité** : Analyse post-mortem suite à une vulnérabilité YesWeHack [#6223](https://github.com/MTES-MCT/histologe/issues/6223), mise en place de la gestion du rate limiting et régénération de jetons expirés [#6218](https://github.com/MTES-MCT/histologe/issues/6218), et amélioration de la traçabilité des erreurs API via l'ajout de Correlation-ID [#6228](https://github.com/MTES-MCT/histologe/issues/6228).
-- **Infrastructure et Performance** : Mise à jour de l'environnement CI (Ubuntu/Scalingo) [#6151](https://github.com/MTES-MCT/histologe/issues/6151), montée de version du framework Symfony [#6168](https://github.com/MTES-MCT/histologe/issues/6168), et optimisation des performances de requêtes sur les événements [#6161](https://github.com/MTES-MCT/histologe/issues/6161).
-- **Maintenance et Données** : Migration technique des adresses des signalements [#6202](https://github.com/MTES-MCT/histologe/issues/6202) et nettoyage du code via la suppression de dépréciations [#6160](https://github.com/MTES-MCT/histologe/issues/6160).
+- **Sécurité et API** :
+    - Renforcement de la gestion des limites de requêtes (rate limiting) et implémentation de la régénération des jetons expirés [#6218, #6232].
+    - Amélioration de la traçabilité et du diagnostic des erreurs 401 (ajout de Correlation-ID et diagnostic d'IP sortante) [#6228].
+    - Publication d'un postmortem suite à une vulnérabilité signalée via YesWeHack [#6223].
+- **Architecture et Maintenance** :
+    - Mise à jour du framework Symfony [#6168].
+    - Migration technique des adresses des signalements au sein du socle [#6202].
+    - Investigations techniques sur les erreurs 400 de l'API RIAL [#6235].
