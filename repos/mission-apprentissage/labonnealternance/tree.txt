@@ -52,6 +52,7 @@
 │       ├── codeql.yml
 │       ├── deploy_preview.yml
 │       ├── merge_queue.yml
+│       ├── perf_budget.yml
 │       ├── pr-title-check.yml
 │       ├── preview.yml
 │       ├── preview_cleanup.yml
@@ -171,53 +172,25 @@
 │   └── releases
 │       └── yarn-3.8.7.cjs
 ├── .yarnrc.yml
-├── CHANGELOG.md
 ├── Dockerfile
 ├── LICENSE
 ├── README.md
-├── artillery-test
-│   ├── metiers.csv
-│   ├── readme.md
-│   ├── recherche-candidat.yml
-│   ├── recherche-jobs_et_formations.yml
-│   └── romesandgeolocs.csv
 ├── biome.json
 ├── docker-bake.json
 ├── docker-compose.yml
 ├── docs
-│   ├── CLI-JOBS.md
 │   ├── DATASOURCES.md
-│   ├── deploy.md
 │   ├── developpement
-│   │   └── developpement.md
+│   │   ├── developpement.md
+│   │   └── knip.md
 │   ├── infrastructure
 │   │   ├── architecture.md
 │   │   ├── manage.md
-│   │   ├── mongodb-local.md
-│   │   └── preview.md
+│   │   └── mongodb-local.md
 │   ├── infrastructure.md
 │   ├── migration-preview
 │   │   ├── alternative-build-ci.md
 │   │   └── plan-migration-preview.md
-│   ├── migration-recruiters
-│   │   ├── README.md
-│   │   └── bugs-et-incoherences.md
-│   ├── migration-temp
-│   │   ├── 00-README.md
-│   │   ├── 01-overview.md
-│   │   ├── 02-schema-migration.md
-│   │   ├── 03-file-changes.md
-│   │   ├── 04-background-jobs.md
-│   │   ├── 05-feature-migration.md
-│   │   ├── 06-testing-rollback.md
-│   │   ├── 07-feature-flags.md
-│   │   ├── 08-ai-prompts-timeline.md
-│   │   ├── 09-decision-matrix.md
-│   │   └── establishment-id-analysis
-│   │       ├── 01-README.md
-│   │       ├── 02-server-impact.md
-│   │       ├── 03-ui-impact.md
-│   │       └── 04-migration-recommendations.md
 │   ├── mongodb
 │   │   ├── analyse-search-analyzers.md
 │   │   ├── api-search.md
@@ -317,7 +290,6 @@
 │   │   │       ├── geolib.ts
 │   │   │       ├── get-static-file-path.ts
 │   │   │       ├── http-utils.ts
-│   │   │       ├── is-allowed-source.ts
 │   │   │       ├── is-origin-local.ts
 │   │   │       ├── is-valid-email.ts
 │   │   │       ├── json-to-xml.ts
@@ -366,7 +338,6 @@
 │   │   │   │   ├── formulaire.controller.ts
 │   │   │   │   ├── inserjeunes.controller.test.ts
 │   │   │   │   ├── inserjeunes.controller.ts
-│   │   │   │   ├── jobs-et-formations.controller.ts
 │   │   │   │   ├── jobs.controller.test.ts
 │   │   │   │   ├── jobs.controller.ts
 │   │   │   │   ├── login.controller.ts
@@ -791,8 +762,7 @@
 │   │   └── services
 │   │       ├── __snapshots__
 │   │       │   ├── application.service.test.ts.snap
-│   │       │   ├── formulaire.service.test.ts.snap
-│   │       │   └── partner-job.service.test.ts.snap
+│   │       │   └── formulaire.service.test.ts.snap
 │   │       ├── app-links.service.ts
 │   │       ├── applicant.service.ts
 │   │       ├── application.service.test.ts
@@ -848,10 +818,10 @@
 │   │       ├── mailer.service.ts
 │   │       ├── metiers.service.ts
 │   │       ├── mistralai
+│   │       │   ├── mistralai.service.test.ts
 │   │       │   └── mistralai.service.ts
 │   │       ├── opco.service.ts
 │   │       ├── organization.service.ts
-│   │       ├── partner-job.service.test.ts
 │   │       ├── partner-job.service.ts
 │   │       ├── query-validator.service.test.ts
 │   │       ├── query-validator.service.ts
@@ -877,6 +847,8 @@
 │   │       │   ├── search-query-log.service.test.ts
 │   │       │   ├── search-query-log.service.ts
 │   │       │   ├── search-result.test.ts
+│   │       │   ├── search-transient-retry.test.ts
+│   │       │   ├── search-transient-retry.ts
 │   │       │   ├── search.service.test.ts
 │   │       │   └── search.service.ts
 │   │       ├── seo.service.ts
@@ -884,6 +856,7 @@
 │   │       ├── sitemap.service.ts
 │   │       ├── traffic-source.service.test.ts
 │   │       ├── traffic-source.service.ts
+│   │       ├── training-links.service.test.ts
 │   │       ├── training-links.service.ts
 │   │       ├── unsubscribe-recruteur-lba.service.ts
 │   │       ├── user-recruteur.service.ts
@@ -993,7 +966,6 @@
 │   │   │   ├── diffusible-status.ts
 │   │   │   ├── error-codes.ts
 │   │   │   ├── geiq.ts
-│   │   │   ├── geolocation.ts
 │   │   │   ├── index.ts
 │   │   │   ├── lbaitem.ts
 │   │   │   ├── liste-cfa-entreprise.ts
@@ -1162,7 +1134,6 @@
 │   │   │   ├── index.test.ts
 │   │   │   ├── index.ts
 │   │   │   ├── inserjeunes.routes.ts
-│   │   │   ├── jobs-et-formations.routes.ts
 │   │   │   ├── jobs-partners-admin.routes.ts
 │   │   │   ├── jobs.routes.ts
 │   │   │   ├── login.routes.ts
@@ -1232,88 +1203,44 @@
 │   │   │   ├── (recherche)
 │   │   │   │   ├── RechercheLayoutClient.tsx
 │   │   │   │   ├── layout.tsx
-│   │   │   │   ├── recherche
-│   │   │   │   │   ├── _components
-│   │   │   │   │   │   ├── CandidatRechercheFilters_LEGACY.tsx
-│   │   │   │   │   │   ├── CandidatRechercheForm_LEGACY.tsx
-│   │   │   │   │   │   ├── EnqueteTally_LEGACY.tsx
-│   │   │   │   │   │   ├── ExitNewSearchLink_LEGACY.tsx
-│   │   │   │   │   │   ├── NewSearchOptInBanner_LEGACY.tsx
-│   │   │   │   │   │   ├── RechercheInputs
-│   │   │   │   │   │   │   ├── RechercheElligibleHandicapCheckbox_LEGACY.tsx
-│   │   │   │   │   │   │   ├── RechercheInputsLayout_LEGACY.tsx
-│   │   │   │   │   │   │   ├── RechercheLieuAutocomplete_LEGACY.tsx
-│   │   │   │   │   │   │   ├── RechercheMetierAutocomplete_LEGACY.tsx
-│   │   │   │   │   │   │   ├── RechercheNiveauSelect_LEGACY.tsx
-│   │   │   │   │   │   │   ├── RechercheRayonSelect_LEGACY.tsx
-│   │   │   │   │   │   │   ├── RechercheResultTypeCheckbox_LEGACY.tsx
-│   │   │   │   │   │   │   ├── RechercheSubmitButton_LEGACY.tsx
-│   │   │   │   │   │   │   └── RechercheTypeEmploiSelect_LEGACY.tsx
-│   │   │   │   │   │   ├── RechercheOptInBanner_LEGACY.tsx
-│   │   │   │   │   │   ├── RecherchePageComponentServer_LEGACY.tsx
-│   │   │   │   │   │   ├── RecherchePageComponent_LEGACY.tsx
-│   │   │   │   │   │   ├── RechercheResultats
-│   │   │   │   │   │   │   ├── CardStyling.tsx
-│   │   │   │   │   │   │   ├── LbaItemCard_LEGACY.tsx
-│   │   │   │   │   │   │   ├── RechercheBackToTopButton_LEGACY.tsx
-│   │   │   │   │   │   │   ├── RechercheHeader_LEGACY.tsx
-│   │   │   │   │   │   │   ├── RechercheMobileEmpty_LEGACY.tsx
-│   │   │   │   │   │   │   ├── RechercheMobileFormUpdate_LEGACY.tsx
-│   │   │   │   │   │   │   ├── RechercheMobileForm_LEGACY.tsx
-│   │   │   │   │   │   │   ├── RechercheMobileHome_LEGACY.tsx
-│   │   │   │   │   │   │   ├── RecherchePageEmpty_LEGACY.tsx
-│   │   │   │   │   │   │   ├── RecherchePageHome_LEGACY.tsx
-│   │   │   │   │   │   │   ├── RechercheResultatsFooter_LEGACY.tsx
-│   │   │   │   │   │   │   ├── RechercheResultatsList_LEGACY.tsx
-│   │   │   │   │   │   │   ├── RechercheTitle_LEGACY.tsx
-│   │   │   │   │   │   │   ├── VirtualContainer_LEGACY.tsx
-│   │   │   │   │   │   │   ├── Whisper_LEGACY.tsx
-│   │   │   │   │   │   │   └── result-card-data_LEGACY.ts
-│   │   │   │   │   │   ├── RechercheResultatsPlaceholder_LEGACY.tsx
-│   │   │   │   │   │   ├── RechercheSeoContent.tsx
-│   │   │   │   │   │   ├── SearchBar.tsx
-│   │   │   │   │   │   ├── SearchFilterChip.tsx
-│   │   │   │   │   │   ├── SearchFilters.tsx
-│   │   │   │   │   │   ├── SearchHitCard.tsx
-│   │   │   │   │   │   ├── SearchHomeForm.tsx
-│   │   │   │   │   │   ├── SearchMobilePanel.tsx
-│   │   │   │   │   │   ├── SearchMobileSummaryBar.tsx
-│   │   │   │   │   │   ├── SearchMobileTriModal.tsx
-│   │   │   │   │   │   ├── SearchPageClient.tsx
-│   │   │   │   │   │   ├── SearchResultsList.tsx
-│   │   │   │   │   │   ├── SearchSortSelect.tsx
-│   │   │   │   │   │   ├── SearchTypeRechercheSelect.tsx
-│   │   │   │   │   │   └── is-offer-active.ts
-│   │   │   │   │   ├── _hooks
-│   │   │   │   │   │   ├── use-auto-radius.ts
-│   │   │   │   │   │   ├── use-beta-detail-navigation.ts
-│   │   │   │   │   │   ├── use-dialog-a11y.ts
-│   │   │   │   │   │   ├── use-lock-body-scroll.ts
-│   │   │   │   │   │   ├── use-navigate-to-recherche-page_LEGACY.ts
-│   │   │   │   │   │   ├── use-navigate-to-result-item-detail_LEGACY.ts
-│   │   │   │   │   │   ├── use-new-search-opt-in_LEGACY.ts
-│   │   │   │   │   │   ├── use-recherche-results.ts
-│   │   │   │   │   │   ├── use-result-item-url_LEGACY.ts
-│   │   │   │   │   │   ├── use-search-results.ts
-│   │   │   │   │   │   ├── use-search-view-notifier_LEGACY.ts
-│   │   │   │   │   │   └── use-whispers_LEGACY.ts
-│   │   │   │   │   ├── _utils
-│   │   │   │   │   │   ├── recherche.metadata.utils.test.ts
-│   │   │   │   │   │   ├── recherche.metadata.utils.ts
-│   │   │   │   │   │   ├── recherche.metadata.utils_LEGACY.test.ts
-│   │   │   │   │   │   ├── recherche.metadata.utils_LEGACY.ts
-│   │   │   │   │   │   ├── recherche.route.utils.ts
-│   │   │   │   │   │   ├── scroll-to-virtual-item_LEGACY.ts
-│   │   │   │   │   │   ├── search.params.utils.test.ts
-│   │   │   │   │   │   ├── search.params.utils.ts
-│   │   │   │   │   │   ├── search.tracking.utils.test.ts
-│   │   │   │   │   │   └── search.tracking.utils.ts
-│   │   │   │   │   ├── page.tsx
-│   │   │   │   │   └── page_LEGACY.tsx
-│   │   │   │   ├── recherche-emploi
-│   │   │   │   │   └── page_LEGACY.tsx
-│   │   │   │   └── recherche-formation
-│   │   │   │       └── page_LEGACY.tsx
+│   │   │   │   └── recherche
+│   │   │   │       ├── _components
+│   │   │   │       │   ├── RechercheResultats
+│   │   │   │       │   │   └── CardStyling.tsx
+│   │   │   │       │   ├── RechercheSeoContent.tsx
+│   │   │   │       │   ├── SearchBar.tsx
+│   │   │   │       │   ├── SearchFilterChip.tsx
+│   │   │   │       │   ├── SearchFilters.tsx
+│   │   │   │       │   ├── SearchHitCard.tsx
+│   │   │   │       │   ├── SearchHomeForm.tsx
+│   │   │   │       │   ├── SearchMobilePanel.tsx
+│   │   │   │       │   ├── SearchMobileSummaryBar.tsx
+│   │   │   │       │   ├── SearchMobileTriModal.tsx
+│   │   │   │       │   ├── SearchPageClient.tsx
+│   │   │   │       │   ├── SearchResultsList.tsx
+│   │   │   │       │   ├── SearchSortSelect.tsx
+│   │   │   │       │   ├── SearchTypeRechercheSelect.tsx
+│   │   │   │       │   └── is-offer-active.ts
+│   │   │   │       ├── _hooks
+│   │   │   │       │   ├── use-auto-radius.ts
+│   │   │   │       │   ├── use-detail-navigation.test.ts
+│   │   │   │       │   ├── use-detail-navigation.ts
+│   │   │   │       │   ├── use-dialog-a11y.ts
+│   │   │   │       │   ├── use-lock-body-scroll.ts
+│   │   │   │       │   ├── use-search-results.ts
+│   │   │   │       │   └── use-visual-viewport-size.ts
+│   │   │   │       ├── _utils
+│   │   │   │       │   ├── recherche.metadata.utils.test.ts
+│   │   │   │       │   ├── recherche.metadata.utils.ts
+│   │   │   │       │   ├── recherche.metadata.utils_LEGACY.test.ts
+│   │   │   │       │   ├── recherche.metadata.utils_LEGACY.ts
+│   │   │   │       │   ├── recherche.route.utils.test.ts
+│   │   │   │       │   ├── recherche.route.utils.ts
+│   │   │   │       │   ├── search.params.utils.test.ts
+│   │   │   │       │   ├── search.params.utils.ts
+│   │   │   │       │   ├── search.tracking.utils.test.ts
+│   │   │   │       │   └── search.tracking.utils.ts
+│   │   │   │       └── page.tsx
 │   │   │   ├── detail-rendez-vous
 │   │   │   │   └── [id]
 │   │   │   │       ├── DetailRendezVousRendererClient.tsx
@@ -1509,6 +1436,7 @@
 │   │   │   │   ├── AutocompleteAsync.tsx
 │   │   │   │   ├── Badge.tsx
 │   │   │   │   ├── Bandeau.tsx
+│   │   │   │   ├── CfaDelegationContent.tsx
 │   │   │   │   ├── ClotureRecrutementForm.tsx
 │   │   │   │   ├── ConnectionActions.tsx
 │   │   │   │   ├── CustomTooltip.tsx
@@ -1547,7 +1475,8 @@
 │   │   │       │   │   ├── FormulaireEditionOffreFields.tsx
 │   │   │       │   │   ├── FormulaireEditionOffreStep1.tsx
 │   │   │       │   │   ├── FormulaireEditionOffreStep2.tsx
-│   │   │       │   │   ├── FormulaireEditionOffreStep3FtSupport.tsx
+│   │   │       │   │   ├── FormulaireEditionOffreStep3CFA.tsx
+│   │   │       │   │   ├── FormulaireEditionOffreStep4FtSupport.tsx
 │   │   │       │   │   ├── InformationLegaleEntreprise.tsx
 │   │   │       │   │   ├── ListeOffres.tsx
 │   │   │       │   │   ├── ModificationCompteEmail.tsx
@@ -1773,7 +1702,6 @@
 │   │   │   │   ├── GrandsGroupesLink.tsx
 │   │   │   │   ├── GrandsGroupesRecruteur.tsx
 │   │   │   │   ├── HomeCircleImageDecoration.tsx
-│   │   │   │   ├── HomeRechercheForm_LEGACY.tsx
 │   │   │   │   ├── HomeRechercheOptIn.tsx
 │   │   │   │   ├── HowTo.tsx
 │   │   │   │   ├── InformationsAlternance.tsx
@@ -1828,8 +1756,6 @@
 │   │   │   ├── ErrorComponent.tsx
 │   │   │   ├── Footer.tsx
 │   │   │   ├── FormComponents
-│   │   │   │   ├── AutocompleteAsync.tsx
-│   │   │   │   ├── InputFormField.tsx
 │   │   │   │   ├── MultiSelectField.tsx
 │   │   │   │   ├── SelectField.tsx
 │   │   │   │   └── SelectFormField.tsx
@@ -1843,7 +1769,6 @@
 │   │   │   ├── NotFound.tsx
 │   │   │   ├── PublicHeader.tsx
 │   │   │   ├── RechercheForm
-│   │   │   │   ├── RechercheForm.tsx
 │   │   │   │   └── RechercheFormTitle.tsx
 │   │   │   ├── Title
 │   │   │   │   └── ModalTitle.tsx
@@ -1860,7 +1785,6 @@
 │   │   ├── healthcheck
 │   │   │   └── route.ts
 │   │   ├── hooks
-│   │   │   ├── use-build-navigation.ts
 │   │   │   ├── use-disclosure.ts
 │   │   │   ├── use-formation-prdv-tracker.ts
 │   │   │   ├── use-is-mobile-device.ts
@@ -1875,6 +1799,7 @@
 │   │   ├── llms.txt
 │   │   │   └── route.ts
 │   │   ├── loading.tsx
+│   │   ├── manifest.ts
 │   │   ├── not-found.tsx
 │   │   ├── robots.ts
 │   │   ├── sitemap-index.xml
@@ -1897,12 +1822,8 @@
 │   │   │   ├── RomeDetailReadOnly.tsx
 │   │   │   └── RomeDetailWithQuery.tsx
 │   │   ├── DsfrIcon.tsx
-│   │   ├── ErrorMessage
-│   │   │   ├── ErrorMessage.tsx
-│   │   │   └── index.ts
 │   │   ├── InfoBanner
 │   │   │   └── InfoBanner.tsx
-│   │   ├── InfoTooltipOrModal.tsx
 │   │   ├── IntentionPage
 │   │   │   ├── IntensionPageResult.tsx
 │   │   │   ├── IntentionPage.tsx
@@ -1985,9 +1906,7 @@
 │   │   ├── SearchForTrainingsAndJobs
 │   │   │   ├── components
 │   │   │   │   ├── CustomTag.tsx
-│   │   │   │   ├── LbaItemTag.tsx
-│   │   │   │   ├── ResultListsLoading.tsx
-│   │   │   │   └── rechercheCDDCDI.tsx
+│   │   │   │   └── LbaItemTag.tsx
 │   │   │   └── services
 │   │   │       └── utils.ts
 │   │   ├── dsfr
@@ -2042,7 +1961,6 @@
 │   │   │   │       └── DepotSimplifieLayout.tsx
 │   │   │   └── index.ts
 │   │   ├── head.tsx
-│   │   ├── index.ts
 │   │   └── tsconfig.json
 │   ├── config
 │   │   ├── config.ts
@@ -2069,6 +1987,7 @@
 │   ├── instrumentation.ts
 │   ├── next.config.mjs
 │   ├── package.json
+│   ├── perf-budget.json
 │   ├── playwright.config.ts
 │   ├── proxy.ts
 │   ├── public
@@ -2088,8 +2007,9 @@
 │   │   │   ├── favicon-16x16.png
 │   │   │   ├── favicon-32x32.png
 │   │   │   ├── favicon.ico
-│   │   │   ├── mstile-150x150.png
-│   │   │   └── site.webmanifest
+│   │   │   ├── maskable-icon-192x192.png
+│   │   │   ├── maskable-icon-512x512.png
+│   │   │   └── mstile-150x150.png
 │   │   ├── favicon.ico
 │   │   ├── fonts
 │   │   │   ├── Inter
@@ -2350,12 +2270,14 @@
 │   │   │   │   ├── arrow_right.svg
 │   │   │   │   ├── blue_lock.svg
 │   │   │   │   ├── book.svg
+│   │   │   │   ├── bulb.png
 │   │   │   │   ├── bulb.svg
 │   │   │   │   ├── candidature_file_upload.svg
 │   │   │   │   ├── chainlink.svg
 │   │   │   │   ├── chrono.svg
 │   │   │   │   ├── coche_verte.svg
 │   │   │   │   ├── contact_icon.svg
+│   │   │   │   ├── copy.png
 │   │   │   │   ├── crossInOctogon.svg
 │   │   │   │   ├── domain_error_main.svg
 │   │   │   │   ├── domain_error_notice.svg
@@ -2614,6 +2536,9 @@
 │   │       ├── application.css
 │   │       ├── fonts.css
 │   │       └── notion.css
+│   ├── scripts
+│   │   ├── perf-budget.mjs
+│   │   └── perf-budget.test.ts
 │   ├── sentry-deploy-ui.sh
 │   ├── sentry-release-ui.sh
 │   ├── sentry.edge.config.ts
@@ -2685,6 +2610,7 @@
 │       ├── get-session.ts
 │       ├── get-static-data.ts
 │       ├── is-widget.utils.ts
+│       ├── lba-item.types.ts
 │       ├── local-storage.ts
 │       ├── matomo-utils.ts
 │       ├── plausible.ts
@@ -2692,10 +2618,11 @@
 │       ├── request-utils.ts
 │       ├── robots.utils.test.ts
 │       ├── robots.utils.ts
+│       ├── routes.metadata.utils.ts
 │       ├── routes.utils.ts
 │       ├── strutils.ts
 │       ├── tools.ts
 │       └── use-search-params-record.ts
 ├── vitest.config.ts
 └── yarn.lock
-498 directories, 2770 files
+491 directories, 2704 files
