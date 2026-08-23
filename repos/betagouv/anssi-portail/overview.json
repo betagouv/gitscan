@@ -1,26 +1,25 @@
 {
   "url": "https://github.com/betagouv/anssi-portail",
   "name": "anssi-portail",
-  "description": "Portail de l'ANSSI permettant aux organisations de suivre des parcours de sécurisation, d'obtenir des attestations officielles et d'accéder à des ressources de cybersécurité.",
+  "description": "Portail de l'ANSSI proposant des parcours de sécurisation, des attestations et des ressources pour aider les organisations à protéger leurs systèmes d'information.",
   "language": "TypeScript",
   "features": [
-    "Sécurité & Conformité",
-    "Formulaires & Démarches",
     "Gestion documentaire & Fichiers",
-    "Statistiques & Rapports",
     "Authentification & Accès",
-    "Recherche & Filtres",
-    "Interface utilisateur & Design"
+    "Sécurité & Conformité",
+    "Suivi & Traçabilité",
+    "Interface utilisateur & Design",
+    "Formulaires & Démarches"
   ],
   "audience": "Professionnels",
   "dependencies": [
-    "Svelte",
     "Express",
-    "PostgreSQL",
     "Knex",
+    "PostgreSQL",
+    "Svelte",
     "Jekyll",
-    "Axios",
-    "@aws-sdk/client-s3",
+    "AWS S3",
+    "OpenID Connect",
     "Zod",
     "Vitest",
     "Playwright"
@@ -31,8 +30,9 @@
     "TypeScript / JavaScript",
     "Design System (DSFR & UI libs)",
     "Docker & Conteneurs",
-    "Node.js / NestJS",
-    "Tests"
+    "Sites statiques & SSG",
+    "Tests",
+    "Authentification (composant)"
   ],
   "auth": {
     "methods": [
@@ -46,16 +46,18 @@
     "Playwright",
     "Supertest"
   ],
-  "lastActivity": "2026-08-14T15:03:18+02:00",
+  "workflows": [
+    "CI/CD avec scan antivirus"
+  ],
+  "lastActivity": "2026-08-21T16:31:55+02:00",
   "status": "active",
+  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Sécurité & Auth",
     "TypeScript",
-    "Design System & UI",
     "Docker & Conteneurs",
-    "Écosystème beta.gouv / État",
-    "HTML, CSS & Web",
-    "Tests & Qualité"
+    "Design System & UI",
+    "Écosystème beta.gouv / État"
   ]
 }

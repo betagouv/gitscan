@@ -6,6 +6,19 @@
 │       │   ├── SKILL.md
 │       │   └── references
 │       │       └── cablage-jekyll-svelte.md
+│       ├── animer-illustration
+│       │   ├── SKILL.md
+│       │   ├── references
+│       │   │   ├── convention-calques.md
+│       │   │   ├── pieges.md
+│       │   │   └── verification.md
+│       │   └── scripts
+│       │       ├── .gitignore
+│       │       ├── auditer_traces.py
+│       │       ├── chemin_svg.py
+│       │       ├── preparer_illustration.py
+│       │       ├── recoller_traces.py
+│       │       └── svgo.config.mjs
 │       ├── integrer-maquette-figma
 │       │   ├── SKILL.md
 │       │   └── references
@@ -57,7 +70,7 @@
 │   │   └── memory_maintenance.md
 │   └── project.yml
 ├── AGENTS.md
-├── CLAUDE.md
+├── CLAUDE.md -> AGENTS.md
 ├── DEVELOPER.md
 ├── LICENSE
 ├── README.md
@@ -72,7 +85,7 @@
 │   └── tsconfig.json
 ├── back
 │   ├── AGENTS.md
-│   ├── CLAUDE.md
+│   ├── CLAUDE.md -> AGENTS.md
 │   ├── eslint.config.mjs
 │   ├── knexfile.ts
 │   ├── migrations
@@ -122,6 +135,7 @@
 │   │   │   └── migrationHash.ts
 │   │   ├── api
 │   │   │   ├── adaptateurJWT.ts
+│   │   │   ├── clefRateLimit.ts
 │   │   │   ├── configurationServeur.ts
 │   │   │   ├── erreurs.ts
 │   │   │   ├── favoris
@@ -409,6 +423,7 @@
 │   │   │   ├── serviceSanteGuides.ts
 │   │   │   ├── sessionDeGroupe.ts
 │   │   │   ├── statistiques.ts
+│   │   │   ├── suivi.ts
 │   │   │   ├── telephone.ts
 │   │   │   ├── utilisateur.ts
 │   │   │   └── valideSiret.ts
@@ -420,6 +435,7 @@
 │   │   ├── admin
 │   │   │   └── migrationHash.spec.ts
 │   │   ├── api
+│   │   │   ├── clefRateLimit.spec.ts
 │   │   │   ├── cookie.ts
 │   │   │   ├── fauxObjets.ts
 │   │   │   ├── favoris
@@ -448,7 +464,10 @@
 │   │   │   │       ├── ressourceRecompensesCyberDepart.spec.ts
 │   │   │   │       ├── serviceRecompensesCyberDepart.spec.ts
 │   │   │   │       └── snapshot-banniere.png
-│   │   │   ├── middleware.spec.ts
+│   │   │   ├── middlewares
+│   │   │   │   ├── attributionParcours.spec.ts
+│   │   │   │   ├── attributionParcoursMesure.spec.ts
+│   │   │   │   └── middleware.spec.ts
 │   │   │   ├── mon-aide-cyber
 │   │   │   │   └── ressourceDemandesAide.spec.ts
 │   │   │   ├── msc.spec.ts
@@ -595,7 +614,7 @@
 ├── comparaison-grist
 │   ├── .env.template
 │   ├── AGENTS.md
-│   ├── CLAUDE.md
+│   ├── CLAUDE.md -> AGENTS.md
 │   ├── eslint.config.mjs
 │   ├── package.json
 │   ├── src
@@ -625,7 +644,7 @@
 ├── demande-diag
 │   ├── .gitignore
 │   ├── AGENTS.md
-│   ├── CLAUDE.md
+│   ├── CLAUDE.md -> AGENTS.md
 │   ├── README.md
 │   ├── package.json
 │   ├── plugin
@@ -654,7 +673,7 @@
 ├── front
 │   ├── 404.html
 │   ├── AGENTS.md
-│   ├── CLAUDE.md
+│   ├── CLAUDE.md -> AGENTS.md
 │   ├── Gemfile
 │   ├── Gemfile.lock
 │   ├── _config.yml
@@ -819,8 +838,10 @@
 │   │   │   ├── coche-ronde-active.svg
 │   │   │   ├── coche-ronde-inactive.svg
 │   │   │   ├── coche-rouge-dans-cercle-bleu.svg
-│   │   │   ├── composition-bizdev-floriane-et-pierre.avif
 │   │   │   ├── composition-guides-et-ressources.png
+│   │   │   ├── connexion
+│   │   │   │   └── animation
+│   │   │   │       └── connexion-inscription.avif
 │   │   │   ├── contacts-resultat-vide-nouvelle-da.svg
 │   │   │   ├── contacts-resultat-vide.svg
 │   │   │   ├── debuter-cyber.avif
@@ -853,7 +874,6 @@
 │   │   │   ├── homme-remplissant-ecran-login.svg
 │   │   │   ├── icone-*.svg  (33 files)
 │   │   │   ├── illustration-*.svg  (20 files)
-│   │   │   ├── illustration-connexion-nouvelle-da.avif
 │   │   │   ├── illustration-proteger-organisation.png
 │   │   │   ├── illustrations-services
 │   │   │   │   ├── ads
@@ -951,6 +971,10 @@
 │   │   │   ├── image-generique.avif
 │   │   │   ├── index-touchant-ecran-demandant-empreinte-digitale-nouvelle-da.svg
 │   │   │   ├── index-touchant-ecran-demandant-empreinte-digitale.svg
+│   │   │   ├── interlocuteurs
+│   │   │   │   └── animation
+│   │   │   │       ├── composition-biz-dev-2.avif
+│   │   │   │       └── composition-biz-dev.avif
 │   │   │   ├── jumelles-avec-bulle-fond-gris.svg
 │   │   │   ├── la-directive-NIS2.svg
 │   │   │   ├── localisation-france.svg
@@ -970,30 +994,39 @@
 │   │   │   ├── maintenance.svg
 │   │   │   ├── marelle-avec-bulle-fond-gris.svg
 │   │   │   ├── marianne-dark.svg
+│   │   │   ├── motif-fond-heros-bleu-clair.avif
+│   │   │   ├── motif-fond-heros-bleu-mobile.avif
+│   │   │   ├── motif-fond-heros-bleu.avif
+│   │   │   ├── motif-fond-heros-cafe-creme.avif
+│   │   │   ├── motif-fond-heros-vert-clair.avif
 │   │   │   ├── motif-fond-macaron.svg
 │   │   │   ├── motif-fond-opacite-30.avif
 │   │   │   ├── motif-fond-service-opacite-16.avif
 │   │   │   ├── motif-fond-service.avif
+│   │   │   ├── motif-mot-entoure-moutarde.svg
+│   │   │   ├── motif-mot-souligne-gribouillis-macaron.svg
+│   │   │   ├── motif-mot-souligne-petite-vague-macaron.svg
+│   │   │   ├── motif-mot-souligne-vague-macaron.svg
+│   │   │   ├── motif-mot-souligne-vague-moutarde.svg
 │   │   │   ├── motif-surlignage-cercle.svg
 │   │   │   ├── motif-titre-petales.svg
 │   │   │   ├── nis2-noir.svg
 │   │   │   ├── nis2.svg
 │   │   │   ├── parcours-securisation
+│   │   │   │   ├── animation
+│   │   │   │   │   ├── heros-parcours-basique.avif
+│   │   │   │   │   ├── heros-parcours-complet.avif
+│   │   │   │   │   └── section-pedagogique.avif
 │   │   │   │   ├── badge-cyberdepart.svg
-│   │   │   │   ├── fond-hero-landing-parcours-securisation.svg
 │   │   │   │   ├── hero-12-mesures-decor.svg
 │   │   │   │   ├── hero-12-mesures-illustration.jpg
-│   │   │   │   ├── hero-decor-titre.svg
 │   │   │   │   ├── illustration-diagnostic.png
-│   │   │   │   ├── illustration-hero-parcours-complet.png
-│   │   │   │   ├── illustration-hero-parcours-cyberdepart.png
 │   │   │   │   ├── illustration-parcours-basique-badge.svg
 │   │   │   │   ├── illustration-parcours-basique-comment.svg
 │   │   │   │   ├── illustration-parcours-basique-mots-de-passe.svg
 │   │   │   │   ├── illustration-parcours-basique-pourquoi.svg
 │   │   │   │   ├── illustration-parcours-complet-controler.svg
 │   │   │   │   ├── illustration-parcours-complet-modules.svg
-│   │   │   │   ├── illustration-parcours-complet-pourquoi.svg
 │   │   │   │   ├── illustration-parcours-complet-progression.svg
 │   │   │   │   ├── mesure-ANNUAIRE.1.svg
 │   │   │   │   ├── mesure-AUTH.1.svg
@@ -1024,6 +1057,11 @@
 │   │   │   ├── piles-de-pieces.svg
 │   │   │   ├── pro_connect.svg
 │   │   │   ├── pro_connect_hover.svg
+│   │   │   ├── protection
+│   │   │   │   └── animation
+│   │   │   │       ├── heros-associations.avif
+│   │   │   │       ├── heros-collectivites.avif
+│   │   │   │       └── heros-entreprises.avif
 │   │   │   ├── stat-diagnostics-cyber.svg
 │   │   │   ├── stat-test-maturite.svg
 │   │   │   ├── stat-utilisateurs-inscrits.svg
@@ -1110,7 +1148,7 @@
 │   │   ├── .gitignore
 │   │   ├── .prettierrc.cjs
 │   │   ├── AGENTS.md
-│   │   ├── CLAUDE.md
+│   │   ├── CLAUDE.md -> AGENTS.md
 │   │   ├── README.md
 │   │   ├── eslint.config.mjs
 │   │   ├── index.html
@@ -1188,6 +1226,10 @@
 │   │   │   │       └── recherches.store.ts
 │   │   │   ├── centre-aide
 │   │   │   │   └── CentreAide.svelte
+│   │   │   ├── connexion
+│   │   │   │   ├── IllustrationConnexionInscription.svelte
+│   │   │   │   └── animation
+│   │   │   │       └── ConnexionInscription.svelte
 │   │   │   ├── contacts
 │   │   │   │   ├── Contacts.svelte
 │   │   │   │   ├── FiltresContacts.svelte
@@ -1252,7 +1294,10 @@
 │   │   │   │   └── ZoneIdentification.svelte
 │   │   │   ├── interlocuteurs
 │   │   │   │   ├── CarrouselDesInterlocuteurs.svelte
-│   │   │   │   └── EquipeBizDev.svelte
+│   │   │   │   ├── EquipeBizDev.svelte
+│   │   │   │   └── animation
+│   │   │   │       ├── CompositionBizDev.svelte
+│   │   │   │       └── IllustrationCompositionBizDev.svelte
 │   │   │   ├── main-abonnement-infolettre.ts
 │   │   │   ├── main-associations.ts
 │   │   │   ├── main-avis-utilisateur.ts
@@ -1280,6 +1325,7 @@
 │   │   │   ├── main-guide.ts
 │   │   │   ├── main-heros-accueil.ts
 │   │   │   ├── main-identification.ts
+│   │   │   ├── main-illustration-connexion-inscription.ts
 │   │   │   ├── main-maturite-utilisateur.ts
 │   │   │   ├── main-mesure.ts
 │   │   │   ├── main-module-cyberdepart.ts
@@ -1415,6 +1461,25 @@
 │   │   │   │   ├── PriseEnCompteMesure.svelte
 │   │   │   │   ├── Progression.svelte
 │   │   │   │   ├── TagProgrammeGratuit.svelte
+│   │   │   │   ├── animation
+│   │   │   │   │   ├── HerosParcoursBasique.svelte
+│   │   │   │   │   ├── HerosParcoursComplet.svelte
+│   │   │   │   │   ├── IllustrationBadge.svelte
+│   │   │   │   │   ├── IllustrationHerosParcoursBasique.svelte
+│   │   │   │   │   ├── IllustrationHerosParcoursComplet.svelte
+│   │   │   │   │   ├── IllustrationMesure.svelte
+│   │   │   │   │   ├── IllustrationModules.svelte
+│   │   │   │   │   ├── IllustrationPedagogique.svelte
+│   │   │   │   │   ├── IllustrationProgression.svelte
+│   │   │   │   │   ├── IllustrationRecyf.svelte
+│   │   │   │   │   ├── IllustrationTuto.svelte
+│   │   │   │   │   ├── SectionBadge.svelte
+│   │   │   │   │   ├── SectionMesure.svelte
+│   │   │   │   │   ├── SectionModules.svelte
+│   │   │   │   │   ├── SectionPedagogique.svelte
+│   │   │   │   │   ├── SectionProgression.svelte
+│   │   │   │   │   ├── SectionRecyf.svelte
+│   │   │   │   │   └── SectionTuto.svelte
 │   │   │   │   ├── avisUtilisateur.store.ts
 │   │   │   │   ├── mesure
 │   │   │   │   │   ├── Mesure.svelte
@@ -1441,6 +1506,13 @@
 │   │   │   │   └── webComponent.serveur.ts
 │   │   │   ├── protection
 │   │   │   │   ├── Proteger.svelte
+│   │   │   │   ├── animation
+│   │   │   │   │   ├── HerosAssociations.svelte
+│   │   │   │   │   ├── HerosCollectivites.svelte
+│   │   │   │   │   ├── HerosEntreprises.svelte
+│   │   │   │   │   ├── IllustrationHerosAssociations.svelte
+│   │   │   │   │   ├── IllustrationHerosCollectivites.svelte
+│   │   │   │   │   └── IllustrationHerosEntreprises.svelte
 │   │   │   │   ├── associations
 │   │   │   │   │   └── PresentationAssociations.svelte
 │   │   │   │   ├── collectivites
@@ -1540,6 +1612,7 @@
 │   │   │   │   ├── MachineAEcrireCyclique.svelte
 │   │   │   │   ├── MenuFlottant.svelte
 │   │   │   │   ├── Modale.svelte
+│   │   │   │   ├── MotEnExergue.svelte
 │   │   │   │   ├── Notice.svelte
 │   │   │   │   ├── Separateur.svelte
 │   │   │   │   ├── Surlignage.svelte
@@ -1561,7 +1634,8 @@
 │   │   │   │   ├── composantsAutorises.plugin.ts
 │   │   │   │   ├── erreurApi.ts
 │   │   │   │   ├── injecteNonce.plugin.ts
-│   │   │   │   └── mouvementReduit.svelte.ts
+│   │   │   │   ├── mouvementReduit.svelte.ts
+│   │   │   │   └── visibilite.svelte.ts
 │   │   │   └── vite-env.d.ts
 │   │   ├── svelte.config.js
 │   │   ├── test
@@ -1644,6 +1718,7 @@
 │   │   ├── connexion.js
 │   │   ├── matomo.js
 │   │   ├── matomoTagManager.js
+│   │   ├── metadonneesConnexion.js
 │   │   ├── optOutMatomo.js
 │   │   ├── parcours.js
 │   │   ├── scroll.js
@@ -1659,7 +1734,7 @@
 ├── mise-a-jour-financements
 │   ├── .env.template
 │   ├── AGENTS.md
-│   ├── CLAUDE.md
+│   ├── CLAUDE.md -> AGENTS.md
 │   ├── eslint.config.mjs
 │   ├── package.json
 │   ├── src
@@ -1704,4 +1779,4 @@
 ├── scripts
 │   └── get-node-version.sh
 └── shell.nix
-244 directories, 1513 files
+260 directories, 1572 files

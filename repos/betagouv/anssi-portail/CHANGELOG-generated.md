@@ -1,23 +1,35 @@
-## Changelog : anssi-portail (30 derniers jours, au 14 août 2026)
+## Changelog : anssi-portail (30 derniers jours, au 21 août 2026)
 
 ### Résumé
-Ce mois-ci, le portail a franchi une étape majeure avec le déploiement des parcours de sécurisation et la génération automatique de récompenses (badges, attestations). L'ensemble de l'interface a été modernisé via une nouvelle direction artistique, et les performances de chargement ont été significativement améliorées grâce à une refonte technique profonde du rendu des pages.
+Ce mois a été marqué par une refonte visuelle majeure du portail via l'application d'une nouvelle charte graphique (Design System) sur l'ensemble des pages. Le projet a également franchi une étape importante dans l'automatisation des parcours de sécurisation, notamment avec la génération automatique de récompenses (badges et attestations en PDF/ZIP) et l'amélioration de l'interactivité grâce à de nouvelles illustrations animées.
 
 ### Évolutions fonctionnelles
-- **Parcours de sécurisation** : Mise en place des parcours utilisateurs (basique et complet) avec suivi de progression, attribution de motifs de parcours et gestion des modules.
-- **Récompenses et attestations** : Automatisation de la génération de documents (attestations PDF avec police Marianne, badges et archives ZIP) pour les utilisateurs ayant complété leurs parcours.
-- **Refonte visuelle (Nouvelle DA)** : Modernisation complète de l'interface avec de nouveaux composants "Héros", une nouvelle palette de couleurs, des illustrations enrichies et l'utilisation systématique des composants du Design System (DSFR).
-- **Test de maturité** : Amélioration de l'expérience utilisateur avec un nouveau carrousel des niveaux, des graphiques de résultats mis à jour et de nouvelles illustrations.
-- **Navigation et contenu** : Ajout de nouvelles sections sur la page d'accueil (NIS2, "Protéger mon organisation") et mise à jour des rubriques "Guides et ressources".
-- **Suivi et consentement** : Implémentation d'un système de suivi (pixel) avec gestion explicite du consentement de l'utilisateur.
+- **Refonte visuelle globale** : Application de la nouvelle direction artistique sur l'ensemble du portail (Accueil, pages NIS2, Collectivités, Associations, Entreprises, Test de maturité, etc.) avec l'utilisation de nouveaux composants et motifs de fond.
+- **Enrichissement des parcours de sécurisation** : 
+    - Création de nouvelles pages d'atterrissage (*landing pages*) pour les parcours "Basique" et "Complet".
+    - Mise en place de tutoriels interactifs via des fenêtres modales.
+    - Automatisation des récompenses : génération d'archives ZIP et de documents PDF (attestations, badges) incluant le nom de l'organisation et respectant la typographie officielle.
+- **Amélioration du Test de maturité** : Refonte complète de l'interface de test et de l'affichage des résultats (nouveaux graphiques, couleurs et composants DSFR).
+- **Expérience utilisateur et interactivité** :
+    - Intégration d'illustrations animées (marelle, dragon, etc.) et d'effets visuels (machine à écrire).
+    - Amélioration de la navigation grâce à l'ajout et l'unification du fil d'Ariane.
+    - Optimisation de l'affichage mobile et correction de divers problèmes de mise en page (menus, boutons, images).
+- **Corrections de contenu** : Mise à jour des termes non officiels (ex: remplacement de "CyFun23"), correction des textes (wording) et des informations de contact.
 
 ### Évolutions techniques
-- **Optimisation des performances (SSR)** : Migration massive de composants clés (Héros, fil d'Ariane, carrousels, tuiles, etc.) vers le rendu côté serveur (Server-Side Rendering) pour un affichage plus rapide.
-- **Architecture Backend** : Refonte de la gestion des parcours, de la hiérarchie des middlewares et de la validation sécurisée des URLs de redirection.
-- **Génération de documents** : Développement d'un moteur de génération de documents et d'archives côté serveur.
-- **Sécurité et CI/CD** : Ajout d'étapes de scan antivirus dans la chaîne de production et renforcement du masquage des variables d'environnement.
-- **Tests** : Amélioration de la fiabilité via l'ajout de tests de snapshot et une meilleure intégration des outils de test (Vitest, Playwright).
+- **Refactorisation de l'architecture** :
+    - Réécriture de l'intégration Brevo pour utiliser une architecture par classes et un système piloté par les événements.
+    - Isolation de l'état d'exécution de Serena et amélioration de la gestion des middlewares.
+- **Sécurité et fiabilité** :
+    - Renforcement de la gestion des nonces et de la validation des URLs de redirection côté serveur.
+    - Implémentation du hachage des emails pour les communications via Brevo.
+    - Amélioration du suivi (*tracking*) des événements et des parcours utilisateurs.
+- **Expérience de développement (DX) et CI/CD** :
+    - Support du développement en réseau local (LAN).
+    - Mise à jour de la chaîne d'outils : Vite, Express, TypeScript, pnpm et ESLint.
+    - Optimisation de la CI/CD avec l'ajout de scans antivirus et de vérifications de formatage.
+    - Intégration d'outils d'IA pour le développement (configuration pour Claude/Codex et compétences d'intégration Figma).
 
 ### Autres changements
-- **Documentation** : Mise à jour des guides de développement, des procédures d'exploitation et de la documentation de la toolchain.
-- **Maintenance du code** : Nettoyage important du projet (suppression de composants et de pages obsolètes, optimisation du CSS et renforcement du typage TypeScript).
+- **Documentation** : Réorganisation du guide de développement et mise à jour de la documentation technique (toolchain, procédures d'exploitation).
+- **Nettoyage** : Suppression de pages obsolètes (ex: pages "promouvoir"), de dépendances inutilisées et de styles CSS redondants.
