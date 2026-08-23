@@ -611,9 +611,12 @@
     │   │   ├── features
     │   │   │   ├── analytics
     │   │   │   │   ├── enums.ts
-    │   │   │   │   └── hooks
-    │   │   │   │       ├── useAnalytics.ts
-    │   │   │   │       └── useIsAnalyticsEnabled.ts
+    │   │   │   │   ├── exceptionFilters.ts
+    │   │   │   │   ├── hooks
+    │   │   │   │   │   ├── useAnalytics.ts
+    │   │   │   │   │   └── useIsAnalyticsEnabled.ts
+    │   │   │   │   ├── telemetry.ts
+    │   │   │   │   └── utils.ts
     │   │   │   ├── auth
     │   │   │   │   ├── api
     │   │   │   │   │   ├── ApiUser.ts
@@ -629,15 +632,16 @@
     │   │   │   │       ├── logout.ts
     │   │   │   │       └── silentLogin.ts
     │   │   │   ├── chat
-    │   │   │   │   └── components
-    │   │   │   │       ├── Chat.tsx
-    │   │   │   │       ├── ChatMessage.tsx
-    │   │   │   │       ├── ChatMessageBody.tsx
-    │   │   │   │       ├── ChatMessageMedata.tsx
-    │   │   │   │       ├── ChatMessages.tsx
-    │   │   │   │       ├── ChatProvider.tsx
-    │   │   │   │       ├── ChatSubmitButton.tsx
-    │   │   │   │       └── ChatTextArea.tsx
+    │   │   │   │   ├── components
+    │   │   │   │   │   ├── Chat.tsx
+    │   │   │   │   │   ├── ChatMessage.tsx
+    │   │   │   │   │   ├── ChatMessageBody.tsx
+    │   │   │   │   │   ├── ChatMessageMedata.tsx
+    │   │   │   │   │   ├── ChatMessages.tsx
+    │   │   │   │   │   ├── ChatProvider.tsx
+    │   │   │   │   │   ├── ChatSubmitButton.tsx
+    │   │   │   │   │   └── ChatTextArea.tsx
+    │   │   │   │   └── utils.tsx
     │   │   │   ├── diagnostics
     │   │   │   │   ├── api
     │   │   │   │   │   └── fetchConnectionTestDetails.ts
@@ -855,11 +859,16 @@
     │   │   │   │   │   ├── Conference.tsx
     │   │   │   │   │   ├── InviteDialog.tsx
     │   │   │   │   │   ├── Join.tsx
+    │   │   │   │   │   ├── Lobby.tsx
     │   │   │   │   │   ├── MediaDeviceErrorAlert.tsx
     │   │   │   │   │   ├── Permissions.tsx
-    │   │   │   │   │   └── Rating.tsx
+    │   │   │   │   │   ├── Rating.tsx
+    │   │   │   │   │   ├── SilentMicDetector.tsx
+    │   │   │   │   │   ├── SilentMicDialog.tsx
+    │   │   │   │   │   └── WatchMediaDeviceErrors.tsx
     │   │   │   │   ├── hooks
     │   │   │   │   │   ├── useLobby.ts
+    │   │   │   │   │   ├── useWatchDeviceAvailability.ts
     │   │   │   │   │   └── useWatchPermissions.ts
     │   │   │   │   ├── index.ts
     │   │   │   │   ├── livekit
@@ -871,9 +880,11 @@
     │   │   │   │   │   │   ├── IsIdleDisconnectModal.tsx
     │   │   │   │   │   │   ├── MediaStateObserver.tsx
     │   │   │   │   │   │   ├── MuteAlertDialog.tsx
+    │   │   │   │   │   │   ├── MuteAlertDialogProvider.tsx
     │   │   │   │   │   │   ├── RoomMetadataSynchronizer.tsx
     │   │   │   │   │   │   ├── ScreenShareErrorModal.tsx
     │   │   │   │   │   │   ├── SidePanel.tsx
+    │   │   │   │   │   │   ├── SyncDevicePreferences.tsx
     │   │   │   │   │   │   ├── Tools.tsx
     │   │   │   │   │   │   ├── VideoResolutionSubscription.tsx
     │   │   │   │   │   │   ├── blur
@@ -887,6 +898,8 @@
     │   │   │   │   │   │   │   ├── ChatToggle.tsx
     │   │   │   │   │   │   │   ├── Device
     │   │   │   │   │   │   │   │   ├── AudioDevicesControl.tsx
+    │   │   │   │   │   │   │   │   ├── AudioLevelGauge.tsx
+    │   │   │   │   │   │   │   │   ├── OutputSoundTester.tsx
     │   │   │   │   │   │   │   │   ├── PermissionNeededButton.tsx
     │   │   │   │   │   │   │   │   ├── SelectDevice.tsx
     │   │   │   │   │   │   │   │   ├── SettingsButton.tsx
@@ -922,11 +935,14 @@
     │   │   │   │   │   │   ├── useCannotUseDevice.ts
     │   │   │   │   │   │   ├── useCopyRoomToClipboard.ts
     │   │   │   │   │   │   ├── useDeviceIcons.ts
+    │   │   │   │   │   │   ├── useDeviceMissing.ts
     │   │   │   │   │   │   ├── useDeviceShortcut.ts
     │   │   │   │   │   │   ├── useFocusToggleParticipant.ts
     │   │   │   │   │   │   ├── useFullScreen.ts
     │   │   │   │   │   │   ├── useHasFunnyEffectsAccess.ts
     │   │   │   │   │   │   ├── useIsAdminOrOwner.ts
+    │   │   │   │   │   │   ├── useIsTrackMuted.ts
+    │   │   │   │   │   │   ├── useJoinTracks.ts
     │   │   │   │   │   │   ├── useKonami.ts
     │   │   │   │   │   │   ├── useMediaQuery.ts
     │   │   │   │   │   │   ├── useNoiseReduction.ts
@@ -935,13 +951,14 @@
     │   │   │   │   │   │   ├── usePublishSourcesManager.ts
     │   │   │   │   │   │   ├── useRaisedHand.ts
     │   │   │   │   │   │   ├── useResizeObserver.ts
-    │   │   │   │   │   │   ├── useResolveInitiallyDefaultDeviceId.ts
     │   │   │   │   │   │   ├── useRoomData.ts
     │   │   │   │   │   │   ├── useRoomId.ts
     │   │   │   │   │   │   ├── useRoomPageTitle.ts
     │   │   │   │   │   │   ├── useSidePanel.ts
     │   │   │   │   │   │   ├── useSyncLiveKitMetadata.ts
-    │   │   │   │   │   │   └── useTelephony.ts
+    │   │   │   │   │   │   ├── useSyncTrackDeviceId.ts
+    │   │   │   │   │   │   ├── useTelephony.ts
+    │   │   │   │   │   │   └── useWatchMediaDeviceErrors.ts
     │   │   │   │   │   ├── prefabs
     │   │   │   │   │   │   ├── ControlBar
     │   │   │   │   │   │   │   ├── ControlBar.tsx
@@ -956,6 +973,7 @@
     │   │   │   │   │   ├── Feedback.tsx
     │   │   │   │   │   └── Room.tsx
     │   │   │   │   └── utils
+    │   │   │   │       ├── canTestAudioOutput.ts
     │   │   │   │       ├── generateRoomId.ts
     │   │   │   │       ├── getParticipantBackgroundGradient.ts
     │   │   │   │       ├── getParticipantColor.ts
@@ -1153,11 +1171,13 @@
     │   │   │   ├── accessibility.ts
     │   │   │   ├── chat.ts
     │   │   │   ├── connectionObserver.ts
+    │   │   │   ├── deviceAvailability.ts
     │   │   │   ├── documentPictureInPicture.ts
     │   │   │   ├── hints.ts
     │   │   │   ├── keyboardShortcuts.ts
     │   │   │   ├── konami.ts
     │   │   │   ├── layout.ts
+    │   │   │   ├── muteDialog.ts
     │   │   │   ├── notifications.ts
     │   │   │   ├── permissions.ts
     │   │   │   ├── reactions.ts
@@ -1165,6 +1185,7 @@
     │   │   │   ├── screenReaderAnnouncer.ts
     │   │   │   ├── screenSharePreferences.ts
     │   │   │   ├── settings.ts
+    │   │   │   ├── silentMic.ts
     │   │   │   ├── user.ts
     │   │   │   ├── userChoices.ts
     │   │   │   └── userPreferences.ts
@@ -1179,6 +1200,7 @@
     │   │   │   ├── languages.ts
     │   │   │   ├── livekit.ts
     │   │   │   ├── mergeProps.ts
+    │   │   │   ├── os.ts
     │   │   │   ├── parseLineBreaks.tsx
     │   │   │   ├── slugify.ts
     │   │   │   ├── storageKeys.tsx
@@ -1392,4 +1414,4 @@
             └── unit
                 ├── test_file_service.py
                 └── test_user_assign.py
-267 directories, 1127 files
+267 directories, 1149 files

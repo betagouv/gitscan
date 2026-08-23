@@ -8,6 +8,77 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
+- 📈(frontend) track errors when starting or stopping a recording
+
+### Changed
+
+- ✨(backend) accept form-urlencoded on the user token endpoint
+- ✨(summary) configurable s3 region
+- ⬆️(frontend) upgrade i18next and react-i18next patch versions
+- ⬆️(frontend) upgrade posthog-js from 1.395.0 to 1.404.1
+- ⬆️(frontend) upgrade livekit-client and @livekit/components-react
+- 💄(frontend) increase the blur intensity
+
+### Fixed
+
+- 📝(docs) fix minor typos in comments and docstrings
+- ⬆️(backend) bump sqlparse from 0.5.5 to 0.6.0
+- ⬆️(mail) bump @html-to/text-cli from 0.6.0 to 0.6.1
+- 🐛(frontend) treat client-initiated connect aborts as events
+- 🐛(frontend) use state instead of a ref for MoreControls container
+- 🐛(frontend) stop init_virtual_background from firing on blur updates
+- 🐛(frontend) hoist mute confirmation dialog to VideoConference level
+- 🐛(frontend) fix joined notification tile no longer rendering properly
+
+## [1.27.0] - 2026-08-14
+
+### Changed
+
+- 🔥(frontend) drop unused vendored ConnectionObserver
+- 🐛(frontend) vendor formatChatMessageLinks and trim surrounding newlines
+
+### Fixed
+
+- 📈(frontend) downgrade unreachable external home URL from error to event
+- 🐛(frontend) handle 401 responses when syncing user preferences
+- 🐛(frontend) harden speaker test against missing sinks and play errors
+- 🐛(frontend) implement hysteresis band for the control bar layout
+- 🐛(frontend) fix toolbar ResizeObserver loop and alignment drift
+- 🐛(analytics) filter benign ResizeObserver loop error in Sentry/PostHog
+- 🐛(frontend) stop reporting screen-share denials as errors
+- 🐛(frontend) generalize screen-share error modal beyond macOS
+- 📈(frontend) stop double-reporting media device failures
+
+## [1.26.0] - 2026-08-12
+
+### Added
+
+- 📈(frontend) capture media diagnostics on media errors
+- ✨(frontend) add an audio gauge to the microphone select menu
+- ✨(frontend) add a sound tester to the output select menu
+- ✨(frontend) prompt for permissions when toggling a denied device
+- ⚗️(frontend) capture console.error in PostHog
+- 📈(frontend) snapshot media devices on the happy path
+- 🚸(frontend) guide users when the OS blocks browser media access
+- ✨(frontend) add a silent-microphone watcher on join and room screens
+
+### Changed
+
+- ♻️(frontend) encapsulate error tracking behind a telemetry module
+- ♻️(frontend) encapsulate PostHog capture calls in the telemetry module
+- 🔧(frontend) sync persisted device ids with the actual selected devices
+- 💄(frontend) hide the ProConnect button on narrow viewports
+- ♻️(frontend) prefer captureMediaEvent over reportError when no-op
+
+### Fixed
+
+- 🐛(frontend) drop exact deviceId constraint on dynamic track creation
+- 🐛(frontend) fix permission store regression
+- 🐛(frontend) handle missing device errors gracefully
+- 🐛(frontend) display the meeting id in the join screen page title
+
 ## [1.25.2] - 2026-08-06
 
 ### Fixed

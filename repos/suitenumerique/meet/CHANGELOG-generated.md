@@ -1,40 +1,30 @@
-## Changelog : meet (30 derniers jours, au 06/08/2026)
+## Changelog : meet (30 derniers jours, au 21 août 2026)
 
 ### Résumé
-Les récentes évolutions se concentrent sur une meilleure maîtrise des réunions par les utilisateurs, notamment via la gestion des rôles et la personnalisation des paramètres par défaut. Un nouvel outil de test de connexion a été introduit pour faciliter le diagnostic technique. Parallèlement, un travail important de refactorisation et d'optimisation a été mené pour rendre l'interface plus fluide et réactive.
+Ce mois-ci, Meet a bénéficié d'améliorations significatives axées sur la personnalisation et la fiabilité. Les utilisateurs disposent désormais de meilleurs outils pour tester leur matériel audio et gérer les rôles au sein des réunions. Parallèlement, une refonte technique majeure a été opérée pour optimiser la fluidité de l'interface, notamment pour le chat et l'affichage des participants.
 
 ### Évolutions fonctionnelles
-- **Gestion des réunions et paramètres** :
-    - Introduction d'une fenêtre de configuration lors de la création d'une réunion.
-    - Possibilité pour les utilisateurs de définir des configurations par défaut pour leurs liens de réunion générés.
-    - Personnalisation de la couleur d'arrière-plan de l'iframe du calendrier via le SDK.
-- **Gestion des participants** :
-    - Possibilité de promouvoir ou de rétrograder des participants authentifiés en cours de réunion.
-    - Ajout de badges pour identifier les participants non authentifiés.
-    - Notifications automatiques lorsqu'un utilisateur voit son rôle changer.
-- **Nouvelles fonctionnalités et UX** :
-    - Ajout d'un outil de test de connexion pour vérifier la qualité de l'environnement avant ou pendant un appel.
-    - Amélioration de l'affichage des avatars (gestion des initiales en majuscules et support de l'Unicode).
-    - Améliorations visuelles : affichage du curseur de type "pointer" sur les éléments interactifs et correction de l'alignement des icônes.
-- **Corrections** :
-    - Résolution d'un crash lié à une incompatibilité de version MediaPipe WASM.
-    - Correction du comportement de l'application installée qui réouvrait indûment les anciennes sessions.
+- **Amélioration de l'expérience audio** : ajout d'une jauge de niveau pour le microphone, d'un testeur de haut-parleur et d'un système de surveillance du micro silencieux.
+- **Gestion des rôles et participants** : possibilité de promouvoir des participants en cours de réunion, notification automatique lors d'un changement de rôle et introduction d'un badge pour les participants non authentifiés.
+- **Personnalisation et configuration** : les utilisateurs peuvent désormais définir des configurations par défaut pour leurs liens de réunion et personnaliser la couleur d'arrière-plan de l'iframe du calendrier.
+- **Outils de diagnostic** : ajout d'une fonctionnalité de test de connexion pour vérifier la qualité de la liaison réseau.
+- **Interface utilisateur** : affichage de l'ID de la réunion sur l'écran de participation et amélioration de la visibilité des noms de participants.
 
 ### Évolutions techniques
-- **Performances et fluidité** :
-    - Optimisation massive du rendu de l'interface pour réduire les re-renders inutiles, notamment sur la liste des participants et les composants de mise en page.
-    - Virtualisation des messages du chat pour limiter la taille du DOM et améliorer la réactivité.
-- **Backend et API** :
-    - Création de nouveaux endpoints pour le test de connexion et la mise à jour des rôles des participants.
-    - Amélioration de la sécurité et de la gestion des sessions en intégrant les informations d'authentification et de rôle directement dans les tokens LiveKit.
-    - Renommage du service de téléphonie en `SIPManagement`.
-- **Architecture et Refactoring** :
-    - Refactorisation majeure du système de chat et restructuration des composants de la liste des participants pour une meilleure maintenance.
-    - Optimisation de la gestion des assets MediaPipe (chemins versionnés et configuration du cache).
-- **CI/CD et Développement** :
-    - Nettoyage des étapes de sécurité inutiles dans la CI et optimisation des workflows de linting.
+- **Optimisations de performance** : 
+    - Virtualisation des messages du chat pour réduire la charge du DOM.
+    - Réduction massive des re-rendus inutiles via la mémoïsation de composants clés (Avatar, EffectsButton, ParticipantTile, etc.).
+    - Optimisation de la gestion des métadonnées et des abonnements aux événements de présence.
+- **Refactoring majeur** : 
+    - Restructuration complète du module de chat.
+    - Modularisation du code frontend par l'extraction de composants (Lobby, ParticipantTile, gestion des raccourcis clavier).
+    - Encapsulation de la télémétrie et du suivi des erreurs dans un module dédié.
+- **Fiabilité et corrections** :
+    - Résolution de problèmes critiques liés à MediaPipe (mismatch de version WASM) et aux permissions de l'OS pour l'accès aux médias.
+    - Correction de bugs d'affichage (alignement de la barre d'outils, centrage des avatars) et de synchronisation des périphériques.
+    - Amélioration de la gestion des erreurs de partage d'écran et de la synchronisation des préférences utilisateur.
+- **Backend** : intégration des préférences utilisateur dans le modèle de données et ajout d'API pour la gestion dynamique des rôles.
 
 ### Autres changements
-- **Légal et Documentation** : Mise à jour des conditions générales d'utilisation et ajout de liens de documentation configurables.
-- **Métadonnées** : Ajout du fichier `publiccode.yml` et de notes de version pour les PR importantes (ex: [#1510](https://github.com/suitenumerique/meet/pull/1510)).
-- **Qualité de code** : Nettoyage de la dette technique liée au linting et résolution des alertes de fiabilité SonarCloud.
+- **Documentation et légal** : mise à jour des conditions générales d'utilisation et correction de la documentation technique.
+- **Maintenance** : nettoyage du code (linting), suppression de composants obsolètes et ajout du fichier `publiccode.yml`.
