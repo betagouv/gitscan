@@ -1,25 +1,19 @@
-## Changelog : ocr-api (30 derniers jours, au 17 juillet 2026)
+## Changelog : ocr-api (30 derniers jours, au 22 août 2026)
 
 ### Résumé
-Les dernières mises à jour de l'API OCR se concentrent sur l'ajout de nouvelles fonctionnalités, notamment la transcription de vidéos YouTube, la prise en charge de nouveaux formats de fichiers (EML et ZIP), et l'intégration d'une interface utilisateur web (OpenWebUI) pour le traitement de documents. Des corrections de bugs et des améliorations de la sécurité ont également été apportées.
+Ce mois-ci, les efforts se sont concentrés sur la stabilisation des fonctionnalités d'intelligence artificielle et le renforcement de la sécurité de l'infrastructure. Les corrections apportées améliorent la fiabilité de l'extraction visuelle et de la gestion des accès, tandis que les processus de déploiement et de surveillance ont été modernisés pour garantir un environnement plus robuste et sécurisé.
 
 ### Évolutions fonctionnelles
-*   Ajout de la transcription de vidéos YouTube.
-*   Prise en charge des fichiers EML et ZIP pour l'OCR.
-*   Intégration d'une interface OpenWebUI pour le traitement des documents, incluant des fonctionnalités de recherche et de sélection de zones.
-*   Amélioration de la gestion des tâches dans l'interface OpenWebUI avec l'ajout d'une vue de détail.
+- **Intelligence Artificielle :** Résolution de problèmes affectant le traitement par LLM et les capacités de vision (OCR).
+- **Sécurité des accès :** Correction du système de gestion des clés API.
 
 ### Évolutions techniques
-*   Implémentation du support Redis Sentinel pour une meilleure résilience de la connexion à Redis.
-*   Utilisation de `spawn` comme méthode de démarrage pour les processus multiprocessing afin d'améliorer la stabilité de PaddleOCR.
-*   Intégration de la librairie `liteparse` pour le traitement de certains formats de fichiers.
-*   Amélioration de la configuration de Docker avec l'ajout de la variable d'environnement `TORCHINDUCTOR_CACHE_DIR`.
-*   Mise à jour de la gestion des dépendances Langfuse.
-*   Refactoring du code pour améliorer la lisibilité et la maintenance, notamment dans la méthode `batch_predict` de PaddleOCR.
-
-### Autres changements
-*   Correction de plusieurs vulnérabilités de sécurité.
-*   Amélioration des logs et ajout de logs supplémentaires.
-*   Mise à jour de la documentation et des noms de variables pour plus de cohérence (ex: `S3_BUCKET_NAME` renommé en `AWS_BUCKET_NAME`).
-*   Corrections mineures et ajustements de configuration pour améliorer la stabilité et la fiabilité de l'API.
-*   Plusieurs releases de versions (0.19.5, 0.19.4, 0.19.3, 0.19.2, 0.19.1, 0.19.0, 0.18.0, 0.17.0, 0.16.0, 0.15.1, 0.15.0, 0.14.0, 0.13.0, 0.12.6, 0.12.5, 0.12.4, 0.12.3, 0.12.2, 0.12.1, 0.12.0, 0.11.2, 0.11.1, 0.11.0) avec des corrections de bugs et des améliorations mineures.
+- **Infrastructure & Déploiement (Helm) :**
+  - Intégration directe du chart Helm dans le dépôt pour une meilleure gestion.
+  - Renforcement de la sécurité des conteneurs (système de fichiers racine en lecture seule, gestion des GID) et des sous-composants (PostgreSQL, Redis, RustFS).
+- **CI/CD & Sécurité :**
+  - Modernisation des pipelines de déploiement via l'adoption de workflows réutilisables et l'utilisation de runners GitHub-hosted.
+  - Amélioration de la détection de secrets et de la gestion des scans de sécurité (Gitleaks, Strix).
+  - Automatisation et fiabilisation du processus de publication des versions (release-please).
+- **Observabilité :** Optimisation du traçage des tâches avec Langfuse pour un suivi plus précis des opérations.
+- **Système :** Corrections sur le mécanisme de secours (fallback) de la base de données et sur la journalisation (logging).

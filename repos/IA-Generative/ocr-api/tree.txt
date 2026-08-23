@@ -4,25 +4,28 @@
 ├── .env.local
 ├── .github
 │   ├── releases
+│   │   ├── .release-please-manifest-prerelease.json
 │   │   ├── .release-please-manifest.json
 │   │   ├── release-please-config-prerelease.json
-│   │   ├── release-please-config-release.json
-│   │   └── release-please-manifest.json
+│   │   └── release-please-config-release.json
 │   └── workflows
 │       ├── cd.yml
 │       ├── ci.yml
+│       ├── clean-cache.yml
 │       ├── dso-auto-sync.yaml
 │       ├── lint.yml
 │       ├── publish-sdk.yml
-│       ├── release.yml
+│       ├── security-strix.yml
 │       └── unit-tests.yml
 ├── .gitignore
 ├── .gitlab-ci-dso.yml
+├── .gitleaksignore
 ├── .gitmodules
 ├── .husky
 │   ├── commit-msg
 │   └── pre-commit
 ├── .pre-commit-config.yaml
+├── .trivyignore.yaml
 ├── CHANGELOG.md
 ├── Makefile
 ├── README.md
@@ -177,7 +180,6 @@
 │       │   │       └── liteparse_worker.py
 │       │   ├── llm
 │       │   │   ├── __init__.py
-│       │   │   ├── config.py
 │       │   │   ├── models
 │       │   │   │   ├── __init__.py
 │       │   │   │   ├── base.py
@@ -314,6 +316,7 @@
 │       │   ├── config
 │       │   │   ├── __init__.py
 │       │   │   ├── celery.py
+│       │   │   ├── llm.py
 │       │   │   ├── ocr_model.py
 │       │   │   ├── redis.py
 │       │   │   ├── s3.py
@@ -495,6 +498,9 @@
 │       │       └── utils
 │       │           └── test_bboxes_utils.py
 │       └── uv.lock
+├── ci
+│   └── configs
+│       └── ct.yaml
 ├── commitlint.config.js
 ├── docker-compose-liteparse-test.override.yaml
 ├── docker-compose-test.yaml
@@ -505,10 +511,92 @@
 │   │   ├── Diagrame.drawio.png
 │   │   └── demo-ocr.gif
 │   ├── security
-│   │   └── readme.md
+│   │   ├── readme.md
+│   │   └── strix.md
 │   ├── server
 │   │   └── asyncronus.md
 │   └── variables.md
+├── helm
+│   ├── .helmignore
+│   ├── Chart.lock
+│   ├── Chart.yaml
+│   ├── README.md
+│   ├── README.md.gotmpl
+│   ├── templates
+│   │   ├── _helpers.tpl
+│   │   ├── api
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── grpcroute.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── httproute.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── metrics.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pullsecret.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── statefulset.yaml
+│   │   ├── cronjobs.yaml
+│   │   ├── extra-objects.yaml
+│   │   ├── frontend
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── grpcroute.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── httproute.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── metrics.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pullsecret.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   ├── statefulset.yaml
+│   │   │   └── vite-config.yaml
+│   │   ├── gateway.yaml
+│   │   ├── httproute.yaml
+│   │   ├── ingress.yaml
+│   │   ├── jobs.yaml
+│   │   ├── pullsecret.yaml
+│   │   └── worker
+│   │       ├── celery-config.yaml
+│   │       ├── clusterrole.yaml
+│   │       ├── clusterrolebinding.yaml
+│   │       ├── configmap.yaml
+│   │       ├── deployment.yaml
+│   │       ├── grpcroute.yaml
+│   │       ├── hpa.yaml
+│   │       ├── httproute.yaml
+│   │       ├── ingress.yaml
+│   │       ├── metrics.yaml
+│   │       ├── networkpolicy.yaml
+│   │       ├── pdb.yaml
+│   │       ├── pullsecret.yaml
+│   │       ├── role.yaml
+│   │       ├── rolebinding.yaml
+│   │       ├── scaledobject.yaml
+│   │       ├── secret.yaml
+│   │       ├── service.yaml
+│   │       ├── serviceaccount.yaml
+│   │       ├── servicemonitor.yaml
+│   │       ├── statefulset.yaml
+│   │       └── triggerauthentication.yaml
+│   ├── test-values.yaml
+│   └── values.yaml
 ├── infra
 ├── kind
 │   └── config.yaml
@@ -531,6 +619,7 @@
     │   ├── models.py
     │   └── schemas
     │       ├── __init__.py
+    │       ├── audio.py
     │       ├── box.py
     │       ├── health.py
     │       ├── input.py
@@ -539,7 +628,8 @@
     │       ├── prediction.py
     │       ├── task.py
     │       ├── template.py
-    │       └── vector.py
+    │       ├── vector.py
+    │       └── video.py
     ├── pyproject.toml
     ├── tests
     │   └── ocr_sdk
@@ -547,4 +637,4 @@
     │       ├── test_client_sync.py
     │       └── test_models.py
     └── uv.lock
-143 directories, 406 files
+150 directories, 489 files

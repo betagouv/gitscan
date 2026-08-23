@@ -29,6 +29,49 @@
 - code clean
 - :art: change minio vars
 
+## [0.19.11](https://github.com/IA-Generative/ocr-api/compare/v0.19.10...v0.19.11) (2026-08-14)
+
+
+### Bug Fixes
+
+* **tracing:** open a real langfuse observation for each task ([c2b9637](https://github.com/IA-Generative/ocr-api/commit/c2b9637a0ee7946e2fba9b513cd56b42b7ae560b))
+* **tracing:** shut down the langfuse client when auth fails ([157ba89](https://github.com/IA-Generative/ocr-api/commit/157ba89a4fc5c21794744c92214872d4008665b3))
+
+## [0.19.10](https://github.com/IA-Generative/ocr-api/compare/v0.19.9...v0.19.10) (2026-07-29)
+
+
+### Bug Fixes
+
+* llm ([24b582f](https://github.com/IA-Generative/ocr-api/commit/24b582f3d05e83f32d0ce93ea14c09f127a18015))
+
+## [0.19.9](https://github.com/IA-Generative/ocr-api/compare/v0.19.8...v0.19.9) (2026-07-29)
+
+
+### Bug Fixes
+
+* **api:** api keys ([a195a0f](https://github.com/IA-Generative/ocr-api/commit/a195a0f1c8d2a12ee83e7cd509b54ddbc999a610))
+
+## [0.19.8](https://github.com/IA-Generative/ocr-api/compare/v0.19.7...v0.19.8) (2026-07-29)
+
+
+### Bug Fixes
+
+* **vision:** fix vision ([01d5c8c](https://github.com/IA-Generative/ocr-api/commit/01d5c8c9a09764cdb604663a6ebbd1a92d208d19))
+
+## [0.19.7](https://github.com/IA-Generative/ocr-api/compare/v0.19.6...v0.19.7) (2026-07-29)
+
+
+### Bug Fixes
+
+* **database:** fix fallback ([9a82db8](https://github.com/IA-Generative/ocr-api/commit/9a82db811c5d4549ef688e56b033b10514b3bd7b))
+
+## [0.19.6](https://github.com/IA-Generative/ocr-api/compare/v0.19.5...v0.19.6) (2026-07-29)
+
+
+### Bug Fixes
+
+* **logging:** fix logging and var ([b0c06f4](https://github.com/IA-Generative/ocr-api/commit/b0c06f4e89bd141610e86a3e110a7866034b842d))
+
 ## [0.19.5](https://github.com/IA-Generative/ocr-api/compare/v0.19.4...v0.19.5) (2026-07-17)
 
 
