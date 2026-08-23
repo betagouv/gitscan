@@ -6,6 +6,69 @@
 ├── AGENTS.md
 ├── CLAUDE.md
 ├── apps
+│   ├── data-analyzer
+│   │   ├── .env.example
+│   │   ├── README.md
+│   │   ├── mapping.example.json
+│   │   ├── package-lock.json
+│   │   ├── package.json
+│   │   ├── ref
+│   │   │   ├── finess-ght-manuel.csv
+│   │   │   ├── ght
+│   │   │   │   ├── ara-*.json  (15 files)
+│   │   │   │   ├── bfc-*.json  (12 files)
+│   │   │   │   ├── bre-*.json  (8 files)
+│   │   │   │   ├── cor-01.json
+│   │   │   │   ├── cor-02.json
+│   │   │   │   ├── cvl-*.json  (6 files)
+│   │   │   │   ├── ge-*.json  (11 files)
+│   │   │   │   ├── gua-01.json
+│   │   │   │   ├── gua-02.json
+│   │   │   │   ├── hf-*.json  (14 files)
+│   │   │   │   ├── idf-*.json  (15 files)
+│   │   │   │   ├── mar-01.json
+│   │   │   │   ├── na-*.json  (12 files)
+│   │   │   │   ├── nor-*.json  (11 files)
+│   │   │   │   ├── occ-*.json  (14 files)
+│   │   │   │   ├── oi-01.json
+│   │   │   │   ├── paca-*.json  (6 files)
+│   │   │   │   └── pdl-*.json  (5 files)
+│   │   │   └── plateforme-ght-mapping.csv
+│   │   ├── src
+│   │   │   ├── 01-extract
+│   │   │   │   ├── adapteurs
+│   │   │   │   │   ├── adapteur-ght-fhir-datagouv.ts
+│   │   │   │   │   ├── adapteur-plateforme-finess-tsv.ts
+│   │   │   │   │   ├── adapteur-plateforme-finess-xlsx.ts
+│   │   │   │   │   ├── adapteur-plateforme-ght-xlsx.ts
+│   │   │   │   │   ├── adapteur-referentiel-remboursement-xlsx.ts
+│   │   │   │   │   ├── registry.ts
+│   │   │   │   │   └── shared.ts
+│   │   │   │   └── extract.ts
+│   │   │   ├── 02-staging
+│   │   │   │   └── staging.ts
+│   │   │   ├── 03-reconcile
+│   │   │   │   └── reconcile.ts
+│   │   │   ├── 04-marts
+│   │   │   │   ├── mart-article80.ts
+│   │   │   │   ├── mart-ght-2024.ts
+│   │   │   │   ├── mart-ratio.ts
+│   │   │   │   └── marts.ts
+│   │   │   ├── 05-publish
+│   │   │   │   ├── grist.ts
+│   │   │   │   └── publish.ts
+│   │   │   ├── contrats.ts
+│   │   │   ├── csv.ts
+│   │   │   ├── fetch-ght.ts
+│   │   │   ├── mapping.ts
+│   │   │   ├── paths.ts
+│   │   │   ├── run.ts
+│   │   │   └── types.ts
+│   │   ├── tests
+│   │   │   ├── adapteur-ght-fhir-datagouv.test.ts
+│   │   │   ├── csv.test.ts
+│   │   │   └── marts.test.ts
+│   │   └── tsconfig.json
 │   ├── glossaire-notion
 │   │   ├── icons
 │   │   │   ├── icon-128.png
@@ -46,24 +109,63 @@
 │       │   │   └── analytics.ts
 │       │   ├── app
 │       │   │   ├── App.tsx
-│       │   │   └── main.tsx
+│       │   │   ├── Main.tsx
+│       │   │   ├── dsfr-overrides.css
+│       │   │   └── outil.ts
+│       │   ├── cerfa
+│       │   │   ├── BoutonCerfa.tsx
+│       │   │   ├── cerfa.ts
+│       │   │   ├── champs-cerfa.ts
+│       │   │   ├── depuis-simulateur.ts
+│       │   │   ├── gabarit
+│       │   │   │   └── cerfa-11574-07.pdf
+│       │   │   └── remplir-cerfa.ts
 │       │   ├── identification
 │       │   │   ├── Identification.tsx
-│       │   │   └── referentiel-http.ts
-│       │   ├── identite
 │       │   │   ├── pseudonymisation-http.ts
+│       │   │   ├── referentiel-http.ts
 │       │   │   └── session.ts
+│       │   ├── outils-produit
+│       │   │   ├── OutilsProduit.tsx
+│       │   │   ├── acces.ts
+│       │   │   ├── labo
+│       │   │   │   ├── BandeauLabo.tsx
+│       │   │   │   ├── Labo.tsx
+│       │   │   │   └── labo.ts
+│       │   │   └── seeds
+│       │   │       ├── GalerieSeeds.tsx
+│       │   │       ├── base-neutre.ts
+│       │   │       ├── catalogue.ts
+│       │   │       └── seed.ts
 │       │   └── simulateur
-│       │       ├── FormField.tsx
-│       │       ├── Resultats.tsx
-│       │       ├── Simulateur.tsx
-│       │       └── engine.ts
+│       │       ├── engine.ts
+│       │       ├── passation.ts
+│       │       ├── prescripteur
+│       │       │   ├── Prescripteur.tsx
+│       │       │   └── ResultatMedical.tsx
+│       │       ├── questionnaire
+│       │       │   ├── FormField.tsx
+│       │       │   ├── Mosaique.tsx
+│       │       │   ├── Parcours.tsx
+│       │       │   └── mosaique.ts
+│       │       ├── resultat
+│       │       │   ├── InformationPatient.tsx
+│       │       │   ├── TraceDebug.tsx
+│       │       │   └── Vulgarisation.tsx
+│       │       └── secretariat
+│       │           ├── Article80.tsx
+│       │           ├── Bloc1Resultat.tsx
+│       │           ├── Bloc2Etapes.tsx
+│       │           ├── Bloc3CasRetenu.tsx
+│       │           ├── ResultatFinal.tsx
+│       │           └── Secretariat.tsx
 │       ├── index.html
 │       ├── package-lock.json
 │       ├── package.json
 │       ├── regles
 │       │   └── regles.publicodes
 │       ├── scripts
+│       │   ├── apercu-cerfa.ts
 │       │   └── valider-regles.ts
 │       ├── server
 │       │   ├── app.ts
@@ -81,22 +183,30 @@
 │       │   ├── analytics
 │       │   │   └── analytics.test.ts
 │       │   ├── app
-│       │   │   └── gate.test.tsx
+│       │   │   └── Gate.test.tsx
+│       │   ├── cerfa
+│       │   │   ├── Raccourci.test.tsx
+│       │   │   ├── Telechargement.test.tsx
+│       │   │   └── remplissage.test.ts
 │       │   ├── identification
+│       │   │   ├── Identification.test.tsx
 │       │   │   ├── grist-ecriture.smoke.test.ts
 │       │   │   ├── grist.smoke.test.ts
-│       │   │   ├── identification.test.tsx
-│       │   │   └── server.test.ts
-│       │   ├── identite
+│       │   │   ├── server.test.ts
 │       │   │   └── session.test.ts
+│       │   ├── outils-produit
+│       │   │   ├── Encadre.test.tsx
+│       │   │   ├── Galerie.test.tsx
+│       │   │   ├── acces.test.ts
+│       │   │   └── labo.test.ts
+│       │   ├── porte.ts
 │       │   ├── setup.ts
 │       │   └── simulateur
-│       │       ├── checklist-alerte.test.ts
-│       │       ├── dap.test.ts
+│       │       ├── Outils.test.tsx
 │       │       ├── engine.ts
-│       │       ├── helpers.ts
-│       │       ├── resultat.test.ts
-│       │       └── simulateur.test.tsx
+│       │       ├── passation.test.ts
+│       │       ├── regression-v8-10.test.ts
+│       │       └── scenarios.test.ts
 │       ├── tsconfig.app.json
 │       ├── tsconfig.json
 │       ├── tsconfig.node.json
@@ -107,6 +217,10 @@
 │   │   ├── analytics.md
 │   │   └── identification.md
 │   └── specs
-│       └── enrichissement-referentiel-saisies-libres.md
+│       ├── enrichissement-referentiel-saisies-libres.md
+│       ├── etl-part-plateformes.md
+│       ├── formalisation-mosaique-choix-multiple.md
+│       ├── page-resultat-administratif.md
+│       └── page-resultat-medical.md
 └── mise.toml
-31 directories, 80 files
+51 directories, 291 files
