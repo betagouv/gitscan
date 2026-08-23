@@ -1,36 +1,39 @@
-## Changelog : les-emplois (30 derniers jours, au 2026-08-20)
+## Changelog : les-emplois (30 derniers jours, au 21 août 2026)
 
 ### Résumé
-Ce mois-ci, le projet a franchi une étape majeure avec l'intégration du module d'orientation, permettant une synchronisation fluide des données avec Dora. L'expérience utilisateur a été considérablement enrichie par de nouveaux filtres de recherche pour les candidats et une interface de double authentification (2FA) plus pédagogique. Parallèlement, des optimisations techniques importantes ont été réalisées pour améliorer la rapidité de l'application et la robustesse de la sécurité.
+Ce mois a été marqué par le développement majeur du module d'**Insertion**, incluant la synchronisation des données avec l'outil Dora et de nouvelles interfaces de suivi. Nous avons également renforcé la **sécurité** via une gestion améliorée de la double authentification (2FA) et optimisé l'expérience de **gestion des candidats** grâce à des filtres plus précis et de meilleures performances d'affichage.
 
 ### Évolutions fonctionnelles
-- **Module Orientation & Insertion :**
-    - Mise en place d'une interface dédiée aux orientations avec vue détaillée, affichage en tableau et filtres avancés (par expéditeur, structure, statut et bénéficiaire).
-    - Automatisation de la synchronisation des statuts d'orientation depuis Dora et ajout d'un outil d'importation de données.
-    - Amélioration du suivi grâce à l'ajout de journaux de transition pour les orientations.
-- **Gestion des Candidats :**
-    - Enrichissement des capacités de filtrage (par conseiller, par membre d'organisation pour GEIQ/OPCS, et alerte sur la fin imminente du parcours IAE).
-    - Ajout d'aides visuelles pour expliquer les champs en lecture seule et clarifier les informations relatives aux dates de contrat.
-- **Expérience Utilisateur & Interface :**
-    - Amélioration de la visibilité des contacts des conseillers et mise à jour des liens vers les formulaires de mise à jour de données ProConnect.
-    - Optimisation de la gestion des transferts d'entreprises (déplacement automatique des évaluations GEIQ/OPCS).
-    - Nettoyage des communications par email (suppression des mentions de sondages inutiles).
-- **Sécurité & Authentification :**
-    - Refonte du parcours de double authentification (OTP) : ajout d'exemples d'applications d'authentification via QR code, création d'un menu de configuration dédié et clarification des messages d'erreur.
-    - Amélioration du flux de déconnexion pour FranceConnect.
+- **Module Insertion & Orientations** :
+    - Mise en place de la synchronisation automatique des statuts depuis Dora.
+    - Création de nouvelles vues de listes pour les orientations avec filtres avancés (par expéditeur, structure, statut ou bénéficiaire).
+    - Ajout d'une commande d'importation des orientations via les fichiers d'export Dora.
+- **Gestion des candidats (Job Seekers)** :
+    - Ajout de nouveaux filtres de recherche (acteurs IAE, membres d'organisations, fin de parcours imminente).
+    - Amélioration de la visibilité des informations de contact des conseillers.
+    - Clarification de l'interface : affichage d'alertes lors de la mise à jour d'identités certifiées et explications sur les champs en lecture seule.
+- **Processus de candidature** :
+    - Amélioration de l'interface de saisie des dates de contrat et de recrutement avec des composants d'information contextuels.
+    - Renforcement des contrôles de validation sur les dates de recrutement.
+- **Sécurité & Authentification** :
+    - Amélioration de l'expérience 2FA/OTP : ajout d'exemples d'applications d'authentification, d'un menu de configuration et de messages d'erreur plus explicites.
+    - Renommage du composant `PoleEmploiConnect` (devenu `ft_connect`) pour une meilleure cohérence terminologique.
+- **Expérience Utilisateur (UX)** :
+    - Mise à jour des modèles d'emails (suppression des liens vers les enquêtes).
+    - Mise en place d'une redirection automatique et d'un bandeau d'information lors du changement de domaine.
 
 ### Évolutions techniques
-- **Architecture & Performance :**
-    - Refonte majeure du module `ft_connect` (renommage complet des modèles, des tables et des constantes pour une meilleure cohérence).
-    - Optimisation significative des performances de la liste des candidats via la résolution de requêtes SQL redondantes (problème de N+1).
-    - Refactorisation de la vue de détail des candidats pour une meilleure maintenabilité.
-- **Gestion des Données & Sécurité :**
-    - Introduction de la suppression logique (*soft-delete*) pour les services et les structures.
-    - Renforcement de la sécurité des routes OTP (contrôle des accès basé sur les rôles et protection contre la manipulation de requêtes d'enrôlement).
-- **Infrastructure & CI/CD :**
-    - Optimisation des pipelines de déploiement avec une meilleure gestion du cache pour `setup-uv`.
-    - Isolation des environnements de test et de développement via l'utilisation de buckets de stockage dédiés.
+- **Refactoring & Architecture** :
+    - Refonte majeure du composant `ft_connect` (renommage des modèles, tables et fonctions).
+    - Implémentation de la "soft-deletion" (suppression logique) pour les services et les structures.
+    - Refactorisation des vues de gestion des candidats pour une meilleure maintenabilité.
+- **Performances** :
+    - Optimisation des requêtes SQL (réduction des problèmes de type N+1) sur les listes de candidats et les recherches de conseillers.
+- **Tests & CI/CD** :
+    - Correction de tests instables (flaky tests) liés à Sentry.
+    - Amélioration de la couverture de tests, notamment sur la sécurité et les redirections.
+    - Mise à jour de la configuration CI/CD (setup-uv).
 
 ### Autres changements
-- **Documentation :** Ajout de recommandations sur l'utilisation de gestionnaires de mots de passe et présentation de Podman comme alternative à Docker.
-- **Maintenance :** Nettoyage général du code (suppression de tests et de templates inutilisés, renommage de variables) et corrections de nombreuses coquilles dans les messages de l'interface.
+- **Documentation** : Ajout de documentation concernant l'utilisation de Podman comme alternative à Docker sur Debian.
+- **Maintenance** : Nettoyage général du code, suppression de templates et de tests inutilisés, et passage des commentaires techniques en anglais.
