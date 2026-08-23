@@ -1,14 +1,14 @@
 {
   "url": "https://github.com/MTES-MCT/prelevements-deau-api",
   "name": "prelevements-deau-api",
-  "description": "Ce projet permet de collecter, organiser et analyser les données de prélèvement d'eau provenant de Démarche Simplifiée. Il fournit une API REST et des workers pour la synchronisation, la validation et le traitement des dossiers.",
+  "description": "Ce projet permet de collecter, organiser et analyser les données de prélèvement d'eau provenant de Démarche Simplifiée. Il assure la synchronisation des dossiers, le traitement des pièces jointes et la génération de rapports via une API REST et des workers asynchrones.",
   "language": "JavaScript",
   "features": [
     "API & Intégrations",
     "Données & Schémas",
     "Statistiques & Rapports",
-    "Suivi & Traçabilité",
-    "Administration & Backoffice"
+    "Administration & Backoffice",
+    "Suivi & Traçabilité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -18,26 +18,27 @@
     "BullMQ",
     "AWS SDK",
     "Nodemailer",
-    "MJML"
+    "MinIO"
   ],
   "components": [
     "API REST & GraphQL",
-    "Node.js / NestJS",
     "MongoDB & NoSQL",
+    "Node.js / NestJS",
     "Docker & Conteneurs",
     "Webhooks & Événements",
-    "Scripts & Utilitaires",
-    "Tests"
+    "Documentation & Schémas",
+    "Microservices & Architecture"
   ],
   "auth": {
     "methods": [
-      "magic-link",
-      "api-key"
+      "api-key",
+      "magic-link"
     ]
   },
   "tests": [
-    "Ava",
-    "Supertest"
+    "AVA",
+    "Supertest",
+    "MongoDB Memory Server"
   ],
   "workflows": [
     "openapi-lint.yml"
@@ -49,10 +50,9 @@
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "JavaScript",
-    "Docker & Conteneurs",
     "Node.js, NestJS & Express",
+    "Docker & Conteneurs",
     "Bases de données NoSQL",
-    "Documentation"
+    "CI/CD & GitHub Actions"
   ]
 }
