@@ -1,6 +1,6 @@
 # QE — Questions Écrites
 
-Assigns French parliamentary written questions to the most relevant ministry office. Questions are downloaded directly from the Assemblée Nationale and Sénat open-data portals, ingested into PostgreSQL, embedded into pgvector, then matched to office responsibility descriptions using semantic search and Albert reranking.
+Ingests French parliamentary written questions and answers. Questions are downloaded directly from the Assemblée Nationale and Sénat open-data portals, ingested into PostgreSQL, and embedded into pgvector for semantic search (see "Find similar questions" below).
 
 ## Installation
 
@@ -16,10 +16,10 @@ poetry run alembic upgrade head
 
 ```bash
 # Download ZIP archives for legislatures XIV–XVII (--legislature 17 for one only)
-poetry run python scripts/download_an_legacy.py --dir data/an_archives/
+poetry run python scripts/download_an.py --dir data/an_archives/
 
 # Parse archives → PostgreSQL; auto-embeds newly ingested answers into pgvector
-poetry run python scripts/ingest_an_legacy.py --dir data/an_archives/
+poetry run python scripts/ingest_an.py --dir data/an_archives/
 ```
 
 Legislature XVII is a live archive — re-download periodically to pick up new questions and answers.
@@ -44,32 +44,6 @@ poetry run python scripts/embed_questions.py
 
 Filters (combinable): `--filter-status EN_COURS|REPONDU`, `--ministry TEXT`, `--source AN|SENAT`, `--legislature N`, `--date-from YYYY-MM-DD`, `--date-to YYYY-MM-DD`.
 
-## Ingest office responsibilities
-
-Place XLSX files in `data/office_responsibilities/` (columns: `direction`, `office_id`, `office_name`, `responsibilities`, `keywords`), then:
-
-```bash
-poetry run python scripts/ingest_office_responsibilities.py
-```
-
-Unchanged files are skipped automatically.
-
-## Assign a question
-
-```bash
-poetry run python scripts/assign_qe_to_office.py --question "Quel est le montant du RSA ?"
-```
-
-Returns a ranked JSON list of offices. Options: `--top-k 20`, `--top-offices 5`.
-
-## Evaluate assignment quality
-
-Measures Hit@1/3/5 and MRR against a ground-truth XLSX (`question_id`, `question_text`, `expected_office_id`):
-
-```bash
-poetry run python scripts/eval_office_assignment.py --input data/qe_attributions_DGCS.xlsx
-```
-
 ## Find similar questions
 
 ```bash
@@ -86,53 +60,29 @@ Options: `--collection questions_opendata|answers_opendata`, `--filter-status RE
 ALBERT_API_KEY=... poetry run uvicorn api.main:app --reload
 ```
 
-### `GET /api/questions/{question_id}/attributions?top_k=3`
-
-Returns the top-N office suggestions. The question's embedding is read from pgvector — no call to Socle IA is made.
-
-```json
-{
-  "question_id": "AN-17-QE-12345",
-  "attributions": [
-    {
-      "rank": 1,
-      "office_id": "...",
-      "office_name": "Sous-direction des affaires sociales",
-      "direction": "Direction générale du travail",
-      "score": 1.8432,
-      "relevance": 73.4
-    }
-  ]
-}
-```
-
-`relevance` is a 0–100 score blending an absolute signal (sigmoid of the Albert reranker logit) and a relative signal (deviation from the pool median). High values indicate a strong match regardless of the other candidates.
-
 ### `GET /api/questions/{question_id}/similar?collection=answers&top_k=10`
 
 Returns semantically similar items from another collection, reranked with Albert.
 
-- `collection`: `questions`, `answers`, or `offices`
+- `collection`: `questions` or `answers`
 - `top_k`: 1–50 (default 10)
 - `score_threshold`: optional minimum cosine similarity (0.0–1.0)
 
 ## Environment variables
 
-| Variable               | Required       | Default                     | Description                         |
-| ---------------------- | -------------- | --------------------------- | ----------------------------------- |
-| `PLIAGE_API_KEY`       | Yes            | —                           | Socle IA API key (embeddings + LLM) |
-| `LLM_BASE_URL`         | Yes            | —                           | Base URL for Socle IA services      |
-| `LLM_MODEL`            | Yes            | —                           | LLM model name                      |
-| `ALBERT_API_KEY`       | Yes (API only) | —                           | Albert reranking API key            |
-| `EMBEDDING_MODEL`      | No             | `BAAI/bge-m3`               | Embedding model                     |
-| `EMBEDDINGS_URL`       | No             | derived from `LLM_BASE_URL` | Override embeddings endpoint        |
-| `CHAT_COMPLETIONS_URL` | No             | derived from `LLM_BASE_URL` | Override chat completions endpoint  |
-| `CORS_ORIGINS`         | No             | `http://localhost:3000`     | Comma-separated allowed origins     |
-| `PGHOST`               | No             | `localhost`                 | PostgreSQL host                     |
-| `PGPORT`               | No             | `5433`                      | PostgreSQL port                     |
-| `PGUSER`               | No             | `qe`                        | PostgreSQL user                     |
-| `PGPASSWORD`           | No             | `qe`                        | PostgreSQL password                 |
-| `PGDATABASE`           | No             | `qe`                        | PostgreSQL database                 |
+| Variable                 | Required | Default                              | Description                              |
+| ------------------------ | -------- | ------------------------------------- | ----------------------------------------- |
+| `ALBERT_API_KEY`         | Yes      | —                                      | Albert API key (embeddings + reranking)  |
+| `ALBERT_BASE_URL`        | No       | `https://albert.api.etalab.gouv.fr` | Albert API base URL                      |
+| `ALBERT_EMBEDDING_MODEL` | No       | `BAAI/bge-m3`                       | Embedding model                          |
+| `ALBERT_RERANK_MODEL`    | No       | `openweight-rerank`                 | Reranking model                          |
+| `ALBERT_EMBEDDINGS_URL`  | No       | derived from `ALBERT_BASE_URL`      | Override embeddings endpoint             |
+| `CORS_ORIGINS`           | No       | `http://localhost:3000`             | Comma-separated allowed origins          |
+| `PGHOST`                 | No       | `localhost`                        | PostgreSQL host                          |
+| `PGPORT`                 | No       | `5433`                             | PostgreSQL port                          |
+| `PGUSER`                 | No       | `qe`                               | PostgreSQL user                          |
+| `PGPASSWORD`             | No       | `qe`                               | PostgreSQL password                      |
+| `PGDATABASE`             | No       | `qe`                               | PostgreSQL database                      |
 
 ## Interact with DB in Socle Data
 

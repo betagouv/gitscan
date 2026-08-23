@@ -1,3 +1,68 @@
+2026-08-21T17:59:02+02:00 - c04bae1 - Victor DEGLIAME : docs: update after office-attribution removal
+2026-08-21T17:59:02+02:00 - 3c557c7 - Victor DEGLIAME : chore: remove unused office-attribution feature
+2026-08-21T17:59:02+02:00 - 1e5dcf5 - Victor DEGLIAME : fix: address review feedback on office-attribution removal
+2026-08-21T17:59:02+02:00 - 032f1d9 - Victor DEGLIAME : chore: drop vec_office_responsibilities and question_attribution_suggestions
+2026-08-21T17:43:30+02:00 - a588932 - Victor DEGLIAME : ci: bump cronjob-ingestion.yaml tag alongside deployment.yaml
+2026-08-21T17:43:30+02:00 - 99e2012 - Victor DEGLIAME : ci: guard missing cronjob manifest and tighten sed pattern
+2026-08-21T17:14:13+02:00 - 1602006 - Victor DEGLIAME : fix: stream questions from Postgres in embed_questions.py
+2026-08-21T17:14:13+02:00 - 00985d8 - Victor DEGLIAME : fix: annotate _iter_questions per review (session: Session, -> Iterator[Question])
+2026-08-21T14:44:10+02:00 - bdd1b0d - Victor DEGLIAME : fix(db): déplace le commentaire soft-reference à côté de la colonne source_etape_id
+2026-08-21T14:44:10+02:00 - 8c01621 - Victor DEGLIAME : fix(db): corrige le Revises: obsolète dans le docstring de e5f6c7d8a9b1
+2026-08-21T14:44:10+02:00 - 6935c4b - pofleck-DNUM : fix(db): répare alembic upgrade head, cassé à deux endroits sur main
+2026-08-19T18:11:30+02:00 - 87f6f3e - Victor DEGLIAME : chore: remove unused ingest_office_responsibilities.py script
+2026-08-14T00:12:00+02:00 - f22b288 - pofleck-DNUM : fix(db): rattrapage des tables Auth.js pour les bases antérieures au squash
+2026-08-14T00:06:21+02:00 - d3e56d0 - pofleck-DNUM : docs(db): justifie le NOT NULL DEFAULT FALSE sur est_rappel
+2026-08-14T00:06:21+02:00 - a38f001 - pofleck-DNUM : feat(db): add columns for the JO question parser output
+2026-08-14T00:06:21+02:00 - 90d8201 - Victor DEGLIAME : fix(db): rechaîne la migration sur le head actuel de main (e7f8a9b0c1d2)
+2026-08-14T00:06:21+02:00 - 4626e0b - pofleck-DNUM : fix(db): rechaîne les colonnes d'analyse sur la migration d'init squashée
+2026-08-14T00:06:21+02:00 - 1e4cce1 - pofleck-DNUM : fix(models): expose les colonnes d'analyse sur le modèle Question
+2026-08-13T23:48:25+02:00 - a7d5eee - Victor DEGLIAME : fix(db): rechaîne la migration sur le head actuel de main (d4e5f6a7b8c9)
+2026-08-13T23:48:25+02:00 - 6b59d75 - pofleck-DNUM : fix(db): rattrapage du nom de la table d'attributions pour les bases antérieures au squash
+2026-08-13T23:41:55+02:00 - e088bd2 - Victor DEGLIAME : feat(db): vue question_attributions_all — union lecture des sources bureau
+2026-08-13T23:20:54+02:00 - e8d0ed3 - pofleck-DNUM : fix(embed): survive content-guardrail rejections instead of aborting
+2026-08-13T23:20:54+02:00 - a44063a - pofleck-DNUM : fix(embed): review revu-bot — specific case-insensitive guardrail markers
+2026-08-13T20:53:23+02:00 - ef3bd4a - pofleck-DNUM : fix(bureau): review revu-bot — yield_per streaming + leg from date + text() default
+2026-08-13T20:53:23+02:00 - b083533 - pofleck-DNUM : feat(bureau): éval A/B algo avec vs sans MIN15 en training
+2026-08-13T20:53:23+02:00 - 97b96a1 - pofleck-DNUM : fix(db): rechaîne question_bureau_extract sur la migration d'init squashée
+2026-08-13T20:53:23+02:00 - 5a8087e - pofleck-DNUM : feat(bureau): extraction bureau réel depuis les workflows MIN15
+2026-08-13T20:53:23+02:00 - 58a2565 - pofleck-DNUM : docs(bureau): section sur l'éval indépendante via MIN15
+2026-08-13T20:53:23+02:00 - 5884451 - pofleck-DNUM : fix(bureau): follow the question_real_attributions rename
+2026-08-13T20:53:23+02:00 - 1a6f01c - pofleck-DNUM : feat(bureau): élargir la règle à 'Pour attribution' + doc dédiée
+2026-08-13T20:53:23+02:00 - 1465347 - Victor DEGLIAME : fix(db): rechaîne la migration sur le head actuel de main (d5a1c2f3e4b6)
+2026-08-13T20:33:16+02:00 - e7bd530 - pofleck-DNUM : fix(db): rechaîne la migration sur la migration d'init squashée
+2026-08-13T20:33:16+02:00 - a9d88c6 - pofleck-DNUM : feat(direction): add direction_algo_id cache column on questions
+2026-08-13T20:33:16+02:00 - 74660ce - Victor DEGLIAME : fix(db): rechaîne la migration sur le head actuel de main (e5f6c7d8a9b1)
+2026-08-13T20:33:16+02:00 - 27900e9 - pofleck-DNUM : fix(direction): address revu-bot feedback on PR-A
+2026-08-13T20:25:31+02:00 - e363cd3 - Victor DEGLIAME : docs: drop performance/GT-source reports from this PR
+2026-08-13T20:25:31+02:00 - e0e8c49 - pofleck-DNUM : fix(ingest): reponse_id = hash(texte_reponse) + date — the previous fix was broken
+2026-08-13T20:25:31+02:00 - d95bc74 - pofleck-DNUM : fix(db): la migration de la vue échouait à l'upgrade sur un ':12' littéral
+2026-08-13T20:25:31+02:00 - cc45c78 - pofleck-DNUM : fix(ingest): restore real allotment ids AN-<date>-<page> for AN legacy
+2026-08-13T20:25:31+02:00 - b2e33d0 - pofleck-DNUM : fix(db): rechaîne la vue sur la migration d'init squashée
+2026-08-13T20:25:31+02:00 - a453dbc - pofleck-DNUM : fix(dedupe): review revubot — texte_reponse direct + CTE + note atomicité
+2026-08-13T20:25:31+02:00 - 8340f4a - pofleck-DNUM : docs+scripts(eval): rapport perf v2 + audit sources allotissement + scripts d'éval
+2026-08-13T20:25:31+02:00 - 25b8c63 - Victor DEGLIAME : fix(db): drop redundant COMMENT ON strings from allotissements_jo migration
+2026-08-13T20:25:31+02:00 - 1ca72a4 - pofleck-DNUM : feat(eval): --legislature flag + section perf par leg dans le rapport
+2026-08-13T20:25:31+02:00 - 13face6 - pofleck-DNUM : feat(db): vue allotissements_jo — persister les groupes détectés dans le JO
+2026-08-13T20:09:34+02:00 - dde1d43 - pofleck-DNUM : feat(analysis): extract contexte and question réelle from JO texts
+2026-08-13T20:09:34+02:00 - b593b10 - pofleck-DNUM : fix(analysis): normalise les échappements littéraux + patterns élargis
+2026-08-13T20:09:34+02:00 - abe9b17 - pofleck-DNUM : fix(analysis): review revubot — borne RE_RAPPEL + alignement UPDATE_SQL
+2026-08-13T20:09:34+02:00 - 9877c7a - pofleck-DNUM : fix(analysis): opener 'prie' + fenêtre d'ouverture élargie à 1500 chars
+2026-08-13T20:09:34+02:00 - 88cf3f3 - pofleck-DNUM : fix(analysis): single-sentence questions — question_extraite = full text
+2026-08-13T20:09:34+02:00 - 7c89e81 - pofleck-DNUM : fix(analysis): contexte = tout avant la question (pas de crop de l'ouverture)
+2026-08-13T20:09:34+02:00 - 758d5e7 - pofleck-DNUM : fix(analysis): patterns supplémentaires — interpelle, passif, inversion élargie
+2026-08-13T20:09:34+02:00 - 6eef7d3 - pofleck-DNUM : fix(analysis): review revubot — env DATABASE_URL, SQL params, scope RE_RAPPEL, tests
+2026-08-13T20:09:34+02:00 - 56b991c - pofleck-DNUM : fix(analysis): contexte_extrait couvre tout le corps entre l'ouverture et la question
+2026-08-13T20:06:06+02:00 - fcb05b6 - pofleck-DNUM : fix(ingest): extract objet from XVII schema and fall back to rubrique
+2026-08-13T20:06:06+02:00 - dda9251 - pofleck-DNUM : tests: pin the rubrique last-resort fallback behaviour
+2026-08-13T01:22:41+02:00 - 1f2ada5 - Victor DEGLIAME : Rename AN ingestion scripts to drop legacy naming
+2026-08-13T01:21:09+02:00 - 906b5b2 - Victor DEGLIAME : Stop hardcoding legislature ranges in AN/Sénat ingestion
+2026-08-12T11:54:31+02:00 - 5f363a2 - Victor DEGLIAME : fix: run container as numeric uid:gid for k8s compatibility
+2026-08-12T11:50:20+02:00 - e9fdb24 - Victor DEGLIAME : fix: install mypy/bandit and resolve the type errors they surface
+2026-08-12T11:50:20+02:00 - cd83f3f - Victor DEGLIAME : refactor: squash Alembic history into a single init migration
+2026-08-11T16:11:12+02:00 - cc7472b - Victor DEGLIAME : refacto: bascule des embeddings vers Albert (fin de Socle IA/PLIAGE)
+2026-08-07T01:16:11+02:00 - cc04c58 - Victor DEGLIAME : tests: Add important tests to avoid regressions
+2026-08-07T01:16:00+02:00 - a5e3b9d - Victor DEGLIAME : feat: Add a stable sigmoid function
+2026-08-06T21:14:21+02:00 - 514227b - Victor DEGLIAME : config: Make port come from env variable
 2026-07-27T23:15:05+02:00 - ac6754b - TANOHALAIN : ci: build en kaniko (docker:dind bloqué par proxy)
 2026-07-27T23:00:10+02:00 - cdc07af - TANOHALAIN : ci: Dockerfile + pipeline miroir/build/déploiement auto (ArgoCD)
 2026-06-15T00:09:56+02:00 - a0e481d - Victor DEGLIAME : fix: Better IDs for responses

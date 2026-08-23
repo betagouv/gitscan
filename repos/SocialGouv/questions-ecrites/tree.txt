@@ -23,33 +23,36 @@
 ├── README.md
 ├── alembic
 │   ├── env.py
+│   ├── script.py.mako
 │   └── versions
-│       ├── 070bc60dc466_create_manifest_and_cache_tables.py
-│       ├── 3f8a2c1d9b47_create_qe_ingestion_tables.py
-│       ├── a1b2c3d4e5f6_add_objet_to_questions.py
-│       ├── a8b9c0d1e2f3_add_direction_index_to_vec_offices.py
-│       ├── a9b0c1d2e3f4_drop_question_clusters.py
-│       ├── b3c4d5e6f7a8_extract_reponses_table.py
-│       ├── c0d1e2f3a4b5_add_pgvector_tables.py
-│       ├── c45166ba8ead_drop_is_social_from_ministeres.py
-│       ├── d7e8f9a0b1c2_add_questions_query_indices.py
-│       ├── e1f2a3b4c5d6_add_question_clusters_tables.py
-│       └── f2a3b4c5d6e7_simplify_question_clusters.py
+│       ├── 62ff467c436e_init_schema.py
+│       ├── b2c3d4e5f6a7_add_authjs_tables.py
+│       ├── c1d2e3f4a5b6_add_question_bureau_extract.py
+│       ├── d4e5f6a7b8c9_add_question_attributions_all_view.py
+│       ├── d5a1c2f3e4b6_add_direction_algo_cache.py
+│       ├── e5f6c7d8a9b1_add_allotissements_jo_view.py
+│       ├── e7f8a9b0c1d2_rename_question_attributions.py
+│       ├── f1a2b3c4d5e6_add_question_analysis_columns.py
+│       └── f972851671ad_drop_vec_office_responsibilities.py
 ├── alembic.ini
 ├── api
 │   ├── main.py
 │   ├── questions.py
 │   └── state.py
 ├── docker-compose.yml
+├── docs
+│   └── bureau_extract_min15.md
 ├── poetry.lock
 ├── pyproject.toml
 ├── qe
+│   ├── analysis
+│   │   ├── __init__.py
+│   │   └── question_parser.py
 │   ├── answer_embedding.py
 │   ├── assignment.py
 │   ├── chunking.py
 │   ├── clients
 │   │   ├── embedding.py
-│   │   ├── llm.py
 │   │   ├── pgvector_client.py
 │   │   ├── qdrant.py
 │   │   ├── rerank.py
@@ -57,32 +60,44 @@
 │   ├── config.py
 │   ├── db.py
 │   ├── documents.py
+│   ├── downloads.py
 │   ├── hashing.py
 │   ├── ingestion_an.py
 │   ├── ingestion_senat.py
-│   ├── llm_duties.py
 │   ├── main.py
 │   ├── models.py
-│   ├── office_ingestion.py
 │   ├── question_fetch.py
 │   └── rate_limiter.py
 ├── scripts
-│   ├── assign_qe_to_office.py
-│   ├── download_an_legacy.py
+│   ├── analyze_questions.py
+│   ├── dedupe_legacy_reponses.py
+│   ├── download_an.py
 │   ├── download_senat.py
 │   ├── dump_qdrant.py
 │   ├── embed_answers.py
 │   ├── embed_questions.py
-│   ├── eval_office_assignment.py
+│   ├── eval_bureau_with_min15.py
+│   ├── eval_direction_with_min15.py
 │   ├── eval_question_similarity.py
+│   ├── eval_rank_distribution.py
+│   ├── eval_realistic_encours.py
+│   ├── extract_bureau_from_min15.py
+│   ├── extract_dgcs_lots.py
 │   ├── fetch_senat_question.py
 │   ├── find_similar_questions.py
-│   ├── ingest_an_legacy.py
-│   ├── ingest_office_responsibilities.py
+│   ├── ingest_an.py
 │   ├── ingest_senat.py
 │   ├── inspect_db.py
+│   ├── inspect_similar.py
 │   ├── load_pgvector.py
 │   └── reset_dbs.py
 └── tests
-    └── test_ingestion_an_objet.py
-13 directories, 74 files
+    ├── test_alembic_linear_history.py
+    ├── test_download_an.py
+    ├── test_downloads.py
+    ├── test_embedding_client.py
+    ├── test_hashing.py
+    ├── test_ingestion_an_objet.py
+    ├── test_ingestion_senat_legislature_filter.py
+    └── test_question_parser.py
+15 directories, 87 files

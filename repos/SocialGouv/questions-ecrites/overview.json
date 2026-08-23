@@ -1,37 +1,42 @@
 {
   "url": "https://github.com/SocialGouv/questions-ecrites",
   "name": "questions-ecrites",
-  "description": "Ce projet ingère des questions écrites parlementaires françaises (Assemblée Nationale + Sénat) à partir des données ouvertes de DILA dans une base de données PostgreSQL locale.",
+  "description": "Ce projet ingère les questions et réponses écrites de l'Assemblée Nationale et du Sénat pour permettre une recherche sémantique via des embeddings et une base de données vectorielle PostgreSQL.",
   "language": "Python",
   "features": [
-    "Gestion des données & Schémas",
     "Recherche & Filtres",
-    "Reranking",
-    "Association de questions à des experts"
+    "Données & Schémas",
+    "Intelligence Artificielle & NLP",
+    "API & Intégrations",
+    "Gestion documentaire & Fichiers"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
+    "FastAPI",
+    "PostgreSQL",
+    "pgvector",
+    "SQLAlchemy",
+    "Alembic",
+    "Polars",
+    "Pandas",
+    "Uvicorn",
+    "Albert API",
     "pypdf",
-    "python-docx",
-    "requests",
-    "textract",
-    "psycopg",
-    "alembic",
-    "polars",
-    "openpyxl",
-    "Socle IA",
-    "Albert"
+    "python-docx"
   ],
   "components": [
     "Python (scripts & backend)",
     "PostgreSQL & SQL",
-    "API Socle IA",
-    "Intelligence Artificielle / ML"
+    "API REST & GraphQL",
+    "Intelligence Artificielle / ML",
+    "Docker & Conteneurs",
+    "Documentation & Schémas"
   ],
   "auth": {
     "methods": [
       "api-key"
-    ]
+    ],
+    "providers": []
   },
   "tests": [
     "pytest"
@@ -41,7 +46,7 @@
     "claude-pr.yml",
     "claude-question.yml"
   ],
-  "lastActivity": "2026-07-27T23:15:05+02:00",
+  "lastActivity": "2026-08-21T17:59:02+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -49,15 +54,13 @@
     "stars": 0,
     "forks": 0,
     "contributors": 1,
-    "openIssues": 26
+    "openIssues": 19
   },
   "tags": [
-    "questions-ecrites",
-    "Socle IA",
     "Intelligence Artificielle & LLM",
     "Bases de données SQL",
     "Python",
-    "vector store",
-    "reranking"
+    "Données & Open Data",
+    "Git & DevOps"
   ]
 }
