@@ -49,6 +49,80 @@
       "organization": "mission-apprentissage"
     },
     {
+      "url": "https://github.com/MTES-MCT/vigieau-admin-back",
+      "name": "vigieau-admin-back",
+      "description": "Backend de l'application VigiEau, dédié à la gestion des données et des alertes liées à la sécheresse. Il fournit une interface d'administration pour la gestion des arrêtés, des restrictions et des statistiques.",
+      "language": "TypeScript",
+      "features": [
+        "Gestion documentaire & Fichiers",
+        "API & Intégrations",
+        "Statistiques & Rapports",
+        "Authentification & Accès",
+        "Gestion des utilisateurs & Permissions",
+        "Notifications & Alertes",
+        "Administration & Backoffice",
+        "Gestion métier générale",
+        "Gestion des signalements"
+      ],
+      "audience": "Agents de l'Administration",
+      "dependencies": [
+        "NestJS",
+        "TypeORM",
+        "PostgreSQL",
+        "Express",
+        "AdminJS",
+        "Nodemailer",
+        "AWS SDK",
+        "Passport",
+        "Axios",
+        "OpenID Connect"
+      ],
+      "components": [
+        "Node.js / NestJS",
+        "API REST & GraphQL",
+        "PostgreSQL & SQL",
+        "TypeScript / JavaScript",
+        "Authentification (composant)",
+        "Intégrations services externes",
+        "ORM & Accès aux données"
+      ],
+      "auth": {
+        "methods": [
+          "email-password",
+          "oauth2",
+          "jwt",
+          "session"
+        ],
+        "providers": [
+          "ProConnect"
+        ]
+      },
+      "tests": [
+        "Jest",
+        "Supertest"
+      ],
+      "lastActivity": "2026-08-22T23:58:19Z",
+      "status": "active",
+      "license": "MIT",
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "openIssues": 16
+      },
+      "tags": [
+        "Écosystème beta.gouv / État",
+        "TypeScript",
+        "Node.js, NestJS & Express",
+        "Bases de données SQL",
+        "Git & DevOps",
+        "Signalement & Inspection"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "MTES-MCT"
+    },
+    {
       "url": "https://github.com/suitenumerique/meet",
       "name": "meet",
       "description": "Une solution de visioconférence simple et performante basée sur LiveKit, offrant des fonctionnalités de haute qualité comme l'enregistrement et la transcription de réunions. Elle est conçue pour l'auto-hébergement et est utilisée par l'administration française.",
@@ -183,6 +257,72 @@
       "changelog": "## Changelog : qualicharge (30 derniers jours, au 10 août 2026)\n\n### Résumé\nCe mois-ci, le projet s'est enrichi de nouveaux indicateurs de performance (e2 et e3). Un travail important a également été réalisé pour optimiser la rapidité de calcul de ces indicateurs et améliorer l'efficacité du stockage des données de tarification au sein de l'API.\n\n### Évolutions fonctionnelles\n- Ajout de nouveaux indicateurs de performance (e2 et e3) pour affiner l'analyse des données de recharge.\n\n### Évolutions techniques\n- Optimisation des performances de calcul pour les indicateurs e2 et e3 via Prefect.\n- Optimisation du stockage de l'API en ne conservant que les champs de tarification non nuls, afin de réduire l'empreinte des données brutes.",
       "changelogGeneratedAt": "2026-08-23T01:22:19Z",
       "organization": "MTES-MCT"
+    },
+    {
+      "url": "https://github.com/mission-apprentissage/bal",
+      "name": "bal",
+      "description": "BAL est une boîte aux lettres pour l'apprentissage, facilitant la gestion des communications et des données associées à l'apprentissage.",
+      "language": "TypeScript",
+      "features": [
+        "Gestion documentaire & Fichiers",
+        "API & Intégrations",
+        "Authentification & Accès",
+        "Notifications & Alertes",
+        "Sécurité & Conformité",
+        "Gestion des utilisateurs & Permissions"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [
+        "React",
+        "Next.js",
+        "MongoDB",
+        "Fastify",
+        "Zod",
+        "Nodemailer",
+        "AWS S3",
+        "ClamAV",
+        "Brevo"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "React / Next.js",
+        "TypeScript / JavaScript",
+        "Docker & Conteneurs",
+        "MongoDB & NoSQL"
+      ],
+      "auth": {
+        "methods": [
+          "email-password",
+          "jwt"
+        ]
+      },
+      "tests": "Vitest",
+      "workflows": [
+        "ci.yml",
+        "release.yml",
+        "pull_request.yml",
+        "codeql.yml",
+        "_deploy.yml"
+      ],
+      "lastActivity": "2026-08-22T18:40:41Z",
+      "status": "active",
+      "license": "MIT",
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 3,
+        "forks": 2,
+        "openIssues": 0
+      },
+      "tags": [
+        "Données & Open Data",
+        "TypeScript",
+        "Sécurité & Auth",
+        "API & Intégrations",
+        "Docker & Conteneurs"
+      ],
+      "changelog": "## Changelog : bal (30 derniers jours, au 22 août 2026)\n\n### Résumé\nCe mois-ci, BAL a amélioré l'expérience de gestion des listes de diffusion en offrant un meilleur suivi de l'avancement et des notifications automatiques par email. Le projet a également bénéficié d'une modernisation majeure de ses outils de développement et d'un renforcement de sa sécurité.\n\n### Évolutions fonctionnelles\n- **Gestion des listes de diffusion** : ajout d'un indicateur d'avancement sur la page de gestion [#535](https://github.com/mission-apprentissage/bal/pull/535) et mise en place de notifications par email à la fin du traitement des listes [#533](https://github.com/mission-apprentissage/bal/pull/533).\n\n### Évolutions techniques\n- **Modernisation de la stack technique** : montée de version vers TypeScript 7 et Next.js 16.3, et migration de l'outillage de linting/formatage vers Biome [#4962](https://github.com/mission-apprentissage/bal/pull/4962).\n- **Sécurité et maintenance** : correction d'une vulnérabilité critique (CVE) sur Vitest [#530](https://github.com/mission-apprentissage/bal/pull/530) et mise à jour de l'image Docker Metabase [#531](https://github.com/mission-apprentissage/bal/pull/531).\n- **CI/CD et déploiement** : correction du processus de publication de l'image UI de production lors des releases [#537](https://github.com/mission-apprentissage/bal/pull/537).",
+      "changelogGeneratedAt": "2026-08-24T01:32:55Z",
+      "organization": "mission-apprentissage"
     },
     {
       "url": "https://github.com/mission-apprentissage/labonnealternance",
@@ -487,6 +627,61 @@
       "changelog": "## Changelog : ocr-api (30 derniers jours, au 22 août 2026)\n\n### Résumé\nCe mois-ci, les efforts se sont concentrés sur la stabilisation des fonctionnalités d'intelligence artificielle et le renforcement de la sécurité de l'infrastructure. Les corrections apportées améliorent la fiabilité de l'extraction visuelle et de la gestion des accès, tandis que les processus de déploiement et de surveillance ont été modernisés pour garantir un environnement plus robuste et sécurisé.\n\n### Évolutions fonctionnelles\n- **Intelligence Artificielle :** Résolution de problèmes affectant le traitement par LLM et les capacités de vision (OCR).\n- **Sécurité des accès :** Correction du système de gestion des clés API.\n\n### Évolutions techniques\n- **Infrastructure & Déploiement (Helm) :**\n  - Intégration directe du chart Helm dans le dépôt pour une meilleure gestion.\n  - Renforcement de la sécurité des conteneurs (système de fichiers racine en lecture seule, gestion des GID) et des sous-composants (PostgreSQL, Redis, RustFS).\n- **CI/CD & Sécurité :**\n  - Modernisation des pipelines de déploiement via l'adoption de workflows réutilisables et l'utilisation de runners GitHub-hosted.\n  - Amélioration de la détection de secrets et de la gestion des scans de sécurité (Gitleaks, Strix).\n  - Automatisation et fiabilisation du processus de publication des versions (release-please).\n- **Observabilité :** Optimisation du traçage des tâches avec Langfuse pour un suivi plus précis des opérations.\n- **Système :** Corrections sur le mécanisme de secours (fallback) de la base de données et sur la journalisation (logging).",
       "changelogGeneratedAt": "2026-08-23T01:26:30Z",
       "organization": "IA-Generative"
+    },
+    {
+      "url": "https://github.com/proconnect-gouv/monitoring-pinger",
+      "name": "monitoring-pinger",
+      "description": "Cette application alerte l'équipe ProConnect lorsqu'un incident est reçu via Uptime Robot. Elle permet de gérer les notifications d'incidents critiques et d'éviter les alertes répétitives.",
+      "language": "TypeScript",
+      "features": [
+        "Notifications & Alertes",
+        "Monitoring & Logs"
+      ],
+      "audience": "Agents de l'Administration",
+      "dependencies": [
+        "express",
+        "typeorm",
+        "pg",
+        "dotenv",
+        "cron",
+        "jsonwebtoken",
+        "matrix-bot-sdk",
+        "joi"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "TypeScript / JavaScript",
+        "PostgreSQL & SQL",
+        "Scripts & Utilitaires"
+      ],
+      "auth": {
+        "methods": [
+          "jwt"
+        ],
+        "providers": []
+      },
+      "tests": [
+        "Jest"
+      ],
+      "workflows": [],
+      "lastActivity": "2026-08-22T09:03:16Z",
+      "status": "active",
+      "license": "ISC",
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": 0,
+        "openIssues": 0
+      },
+      "tags": [
+        "Monitoring & Observabilité",
+        "TypeScript",
+        "Node.js, NestJS & Express"
+      ],
+      "changelog": "## Changelog : monitoring-pinger (30 derniers jours, au 22 août 2026)\n\n### Résumé\nLes récentes mises à jour visent à améliorer l'accessibilité et la lisibilité de l'application en proposant une interface en français et un affichage plus clair des durées d'incidents.\n\n### Évolutions fonctionnelles\n- Traduction des messages de l'application en français.\n- Amélioration de la présentation visuelle de la durée des incidents pour une lecture plus intuitive.",
+      "changelogGeneratedAt": "2026-08-24T01:48:45Z",
+      "organization": "proconnect-gouv"
     },
     {
       "url": "https://github.com/betagouv/anssi-portail",
@@ -889,6 +1084,68 @@
       "organization": "gip-inclusion"
     },
     {
+      "url": "https://github.com/dnum-mi/vue-dsfr",
+      "name": "vue-dsfr",
+      "description": "Portage en Vue 3 du Système de Design Français (DSFR) sous forme de bibliothèque de composants. Il permet d'intégrer facilement les composants officiels de l'État dans des applications Vue ou Nuxt.",
+      "language": "TypeScript",
+      "features": [
+        "Interface utilisateur & Design",
+        "Accessibilité & i18n",
+        "Formulaires & Démarches"
+      ],
+      "audience": "Développeurs",
+      "dependencies": [
+        "@gouvfr/dsfr",
+        "vue",
+        "vue-router",
+        "focus-trap",
+        "@iconify/vue"
+      ],
+      "components": [
+        "Design System (DSFR & UI libs)",
+        "TypeScript / JavaScript",
+        "Vue.js / Nuxt",
+        "Bibliothèques & Packages"
+      ],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": [
+        "Vitest",
+        "Playwright",
+        "Storybook"
+      ],
+      "workflows": [
+        "check-merge-branch.yml",
+        "check-pr-linked-issue.yml",
+        "publish-release-beta.yml",
+        "publish-release-next.yml",
+        "publish-release.yml",
+        "run-tests.yml"
+      ],
+      "lastActivity": "2026-08-21T18:38:05Z",
+      "status": "active",
+      "license": "MIT",
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 76,
+        "forks": 45,
+        "openIssues": 15
+      },
+      "tags": [
+        "Design System & UI",
+        "Vue.js & Nuxt",
+        "TypeScript",
+        "Accessibilité",
+        "HTML, CSS & Web"
+      ],
+      "changelog": "## Changelog : vue-dsfr (30 derniers jours, au 11/08/2026)\n\n### Résumé\nCe mois-ci, les évolutions se sont concentrées sur l'amélioration de la gestion des icônes, notamment via un meilleur support du mode hors-ligne et du rendu côté serveur (SSR/SSG). Le projet a également bénéficié d'une stabilisation importante de son infrastructure de build et de ses processus de déploiement.\n\n### Évolutions fonctionnelles\n- **Amélioration de la gestion des icônes** :\n    - Ajout de l'option `preferOffline` pour permettre l'utilisation de collections d'icônes locales [#1384](https://github.com/dnum-mi/vue-dsfr/pull/1384).\n    - Support du rendu local des icônes pour les environnements SSG et SSR [#1370](https://github.com/dnum-mi/vue-dsfr/pull/1370).\n    - Correction du format des noms (gestion des tirets) lors de la résolution des icônes hors-ligne [#1387](https://github.com/dnum-mi/vue-dsfr/pull/1387).\n    - Correction d'un problème de `viewBox` invalide dans le composant `VIconOffline` lorsque les coordonnées sont absentes [#1373](https://github.com/dnum-mi/vue-dsfr/pull/1373).\n- **Composants UI** :\n    - Correction du composant `DsfrDataTable` pour éviter les erreurs lors de l'utilisation de la fonction de copie dans le presse-papier [#1360](https://github.com/dnum-mi/vue-dsfr/pull/1360).\n\n### Évolutions techniques\n- **Infrastructure et Build** :\n    - Mise à jour de l'environnement de gestion de paquets vers `pnpm` v11.21.0 et ajustement de la configuration de build [#1377](https://github.com/dnum-mi/vue-dsfr/pull/1377).\n    - Stabilisation des workflows de release en utilisant Node 24 [#1376](https://github.com/dnum-mi/vue-dsfr/pull/1376).\n    - Amélioration de l'isolation du build Storybook (Vite 7) et correction des builds sur Netlify.\n- **Refactoring** :\n    - Simplification de la gestion des chemins avec l'utilisation de `import.meta.dirname`.\n    - Correction de la nomenclature de certains événements Vue dans le processus de build.\n\n### Autres changements\n- **Documentation** :\n    - Clarification de l'utilisation combinée des fonctions `addCollection` et `createVueDsfrIconPlugin` dans le guide Nuxt [#1381](https://github.com/dnum-mi/vue-dsfr/pull/1381).\n    - Mise à jour importante du guide des contributeurs concernant l'usage, la sécurisation et les conventions liées aux agents d'assistance IA [#1367](https://github.com/dnum-mi/vue-dsfr/pull/1367) [#1365](https://github.com/dnum-mi/vue-dsfr/pull/1365).\n    - Correction de la branche cible par défaut pour les Pull Requests dans la documentation [#1359](https://github.com/dnum-mi/vue-dsfr/pull/1359).",
+      "changelogGeneratedAt": "2026-08-24T02:06:11Z",
+      "organization": "dnum-mi"
+    },
+    {
       "url": "https://github.com/SocialGouv/egapro",
       "name": "egapro",
       "description": "Plateforme gouvernementale permettant aux entreprises de déclarer leur index de l'égalité professionnelle femmes-hommes conformément à la directive européenne.",
@@ -1155,6 +1412,143 @@
       "changelog": "## Changelog : vigieau (30 derniers jours, au 16 août 2026)\n\n### Résumé\nCe mois a été principalement consacré à la mise en conformité de la plateforme avec les normes d'accessibilité numérique (RGAA) et à la fiabilisation des flux de données. Les efforts ont porté sur la correction des erreurs de synchronisation avec les sources officielles (SANDRE, DataGouv) et sur la stabilisation des processus de publication des statistiques et des zones de restriction, garantissant ainsi une information plus précise et inclusive pour tous les utilisateurs.\n\n### Évolutions fonctionnelles\n- **Accessibilité (RGAA) :** Amélioration majeure de l'expérience utilisateur pour les personnes en situation de handicap, incluant la navigation, la gestion du focus, la sémantique des formulaires, la lisibilité des tableaux de données et des cartes, ainsi que les contrastes visuels.\n- **Fiabilité des données :** Correction de l'historique des restrictions par commune et amélioration de la précision des données de zones de restriction.\n- **Suivi de service :** Ajout d'un indicateur de santé pour la synchronisation des publications.\n\n### Évolutions techniques\n- **Synchronisation et intégrité des données :**\n    - Résolution des dérives de schémas (schema drift) lors de la synchronisation avec le SANDRE [#36](https://github.com/MTES-MCT/vigieau/pull/36) [#37](https://github.com/MTES-MCT/vigieau/pull/37).\n    - Sécurisation et atomisation des processus de publication des zones et des statistiques pour éviter toute corruption de données.\n    - Amélioration de la gestion des preuves et des délais de synchronisation MDM (Master Data Management) [#41](https://github.com/MTES-MCT/vigieau/pull/41) [#42](https://github.com/MTES-MCT/vigieau/pull/42).\n- **Infrastructure et CI/CD :**\n    - Mise en place de tests de fumée (\"smoke tests\") en production pour garantir la disponibilité et la fraîcheur des données [#32](https://github.com/MTES-MCT/vigieau/pull/32) [#33](https://github.com/MTES-MCT/vigieau/pull/33).\n    - Renforcement de la robustesse et de la durabilité des pipelines de déploiement.\n- **Performance et stabilité :**\n    - Optimisation de la reprise d'historique par département et gestion de la mémoire lors de la publication des zones.\n    - Correction de vulnérabilités de sécurité sur les dépendances npm.\n\n### Autres changements\n- **Documentation :** Définition de la branche `master` comme branche canonique [#34](https://github.com/MTES-MCT/vigieau/pull/34) et établissement d'un plan de remédiation pour l'accessibilité.",
       "changelogGeneratedAt": "2026-08-22T01:32:04Z",
       "organization": "MTES-MCT"
+    },
+    {
+      "url": "https://github.com/dnum-mi/referentiel-applications",
+      "name": "referentiel-applications",
+      "description": "RefApp est un catalogue et un outil de gouvernance pour les applications du ministère de l'Intérieur. Il permet de centraliser les métadonnées telles que le statut, les acteurs, la conformité et la dette technique des applications.",
+      "language": "TypeScript",
+      "features": [
+        "Gestion des utilisateurs & Permissions",
+        "Administration & Backoffice",
+        "Données & Schémas",
+        "Sécurité & Conformité",
+        "Suivi & Traçabilité",
+        "Interface utilisateur & Design",
+        "Recherche & Filtres"
+      ],
+      "audience": "Agents de l'Administration",
+      "dependencies": [
+        "NestJS",
+        "Prisma",
+        "PostgreSQL",
+        "Vue.js",
+        "Keycloak",
+        "DSFR",
+        "Docker"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "PostgreSQL & SQL",
+        "Vue.js / Nuxt",
+        "TypeScript / JavaScript",
+        "Design System (DSFR & UI libs)",
+        "Docker & Conteneurs",
+        "Node.js / NestJS",
+        "Authentification (composant)",
+        "Documentation & Schémas"
+      ],
+      "auth": {
+        "methods": [
+          "oauth2",
+          "jwt"
+        ],
+        "providers": [
+          "Keycloak"
+        ]
+      },
+      "tests": "Tests E2E",
+      "workflows": [
+        "main-ci.yml"
+      ],
+      "lastActivity": "2026-08-21T17:44:02Z",
+      "status": "maintained",
+      "license": "MIT",
+      "hasDocumentation": true,
+      "tags": [
+        "Écosystème beta.gouv / État",
+        "TypeScript",
+        "Vue.js & Nuxt",
+        "Node.js, NestJS & Express",
+        "Docker & Conteneurs",
+        "Bases de données SQL",
+        "CI/CD & GitHub Actions",
+        "Design System & UI",
+        "Standards & Schémas",
+        "Documentation"
+      ],
+      "changelog": "## Changelog : referentiel-applications (30 derniers jours, au 21 août 2026)\n\n### Résumé\nCette période a été marquée par l'introduction d'un moteur de détection de corrélations entre applications et un renforcement significatif des outils d'administration et de sécurité (gestion des utilisateurs, traçabilité accrue). L'expérience utilisateur a également été affinée avec l'ajout de filtres sauvegardés et une amélioration de l'accessibilité, tandis que l'infrastructure a bénéficié d'une mise à jour majeure vers NestJS 11.\n\n### Évolutions fonctionnelles\n- **Moteur de corrélation** : Mise en place d'un moteur de détection de corrélations avec scoring et tâches planifiées, incluant la gestion des suggestions (liste, acceptation et rejet) [#2318](https://github.com/dnum-mi/referentiel-applications/issues/2318), [#2319](https://github.com/dnum-mi/referentiel-applications/issues/2319), [#2324](https://github.com/dnum-mi/referentiel-applications/issues/2324).\n- **Administration et Sécurité** : \n    - Possibilité pour les administrateurs de bannir des utilisateurs [#2240](https://github.com/dnum-mi/referentiel-applications/issues/2240).\n    - Gestion des directions métier et des rattachements aux organisations [#2218](https://github.com/dnum-mi/referentiel-applications/issues/2218).\n    - Sécurisation de l'impersonation : restriction au périmètre de l'administrateur local et traçabilité de l'administrateur réel lors des modifications [#2221](https://github.com/dnum-mi/referentiel-applications/issues/2221), [#2227](https://github.com/dnum-mi/referentiel-applications/issues/2227).\n    - Mise en place d'un mode maintenance en lecture seule [#2201](https://github.com/dnum-mi/referentiel-applications/issues/2201).\n- **Expérience Utilisateur (UX/UI)** :\n    - Ajout de filtres sauvegardés pour les applications [#2309](https://github.com/dnum-mi/referentiel-applications/issues/2309).\n    - Amélioration de l'accessibilité (score RGAA) [#2181](https://github.com/dnum-mi/referentiel-applications/issues/2181).\n    - Ajout d'info-bulles sur les cartes de dette technique [#2220](https://github.com/dnum-mi/referentiel-applications/issues/2220) et de nouveaux éléments visuels (CTA IQ, espacements, états de chargement) [#2325](https://github.com/dnum-mi/referentiel-applications/issues/2325), [#2124](https://github.com/dnum-mi/referentiel-applications/issues/2124), [#2155](https://github.com/dnum-mi/referentiel-applications/issues/2155).\n- **Gouvernance des données** : \n    - Amélioration de la vérification des dates de fin de vie (EOL) des technologies [#2234](https://github.com/dnum-mi/referentiel-applications/issues/2234).\n    - Normalisation des tags et des entrées de stacks technologiques (insensibilité à la casse) [#2202](https://github.com/dnum-mi/referentiel-applications/issues/2202), [#2317](https://github.com/dnum-mi/referentiel-applications/issues/2317).\n\n### Évolutions techniques\n- **Architecture et Backend** : \n    - Migration majeure vers NestJS 11 [#2153](https://github.com/dnum-mi/referentiel-applications/issues/2153).\n    - Centralisation des vérifications de permissions côté frontend via un hook dédié [#2245](https://github.com/dnum-mi/referentiel-applications/issues/2245).\n    - Refactoring du backend pour la déduplication du code et l'unification des labels (statuts et types de relations) entre le backend et le frontend [#2250](https://github.com/dnum-mi/referentiel-applications/issues/2250), [#2246](https://github.com/dnum-mi/referentiel-applications/issues/2246).\n- **Modèle de données** : Introduction de nouveaux modèles et types de relations pour supporter la détection de corrélation [#2323](https://github.com/dnum-mi/referentiel-applications/issues/2323).\n- **Qualité et Tests** : \n    - Amélioration de l'isolation des tests pour éviter la pollution de la base de données de développement [#2117](https://github.com/dnum-mi/referentiel-applications/issues/2117).\n    - Correction de vulnérabilités et de problèmes de qualité de code (XSS, types \"any\") [#2275](https://github.com/dnum-mi/referentiel-applications/issues/2275).\n\n### Autres changements\n- Mise à jour de la documentation du projet [#2239](https://github.com/dnum-mi/referentiel-applications/issues/2239).",
+      "changelogGeneratedAt": "2026-08-24T02:07:34Z",
+      "organization": "dnum-mi"
+    },
+    {
+      "url": "https://github.com/incubateur-ademe/nosgestesclimat-app",
+      "name": "nosgestesclimat-app",
+      "description": "Un calculateur d'empreinte climat individuelle basé sur la consommation annuelle. Il propose des actions concrètes pour réduire son impact environnemental.",
+      "language": "TypeScript",
+      "features": [
+        "Simulation & Calcul",
+        "Visualisation de données & Cartographie",
+        "Authentification & Accès",
+        "Contenu éditorial",
+        "Aides & Éligibilité",
+        "Interface utilisateur & Design"
+      ],
+      "audience": "Grand public",
+      "dependencies": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "PostgreSQL",
+        "Redis",
+        "Prisma",
+        "Express",
+        "Playwright",
+        "Vitest",
+        "Publicodes"
+      ],
+      "components": [
+        "React / Next.js",
+        "TypeScript / JavaScript",
+        "API REST & GraphQL",
+        "PostgreSQL & SQL",
+        "Docker & Conteneurs",
+        "Tests",
+        "Node.js / NestJS",
+        "Design System (DSFR & UI libs)",
+        "Publicodes & Règles métier",
+        "Documentation & Schémas"
+      ],
+      "auth": {
+        "methods": [
+          "email-password",
+          "jwt",
+          "session"
+        ]
+      },
+      "tests": [
+        "Vitest",
+        "Playwright",
+        "BrowserStack"
+      ],
+      "lastActivity": "2026-08-21T17:27:54Z",
+      "status": "active",
+      "license": "MIT",
+      "hasDocumentation": true,
+      "tags": [
+        "Environnement & Énergie",
+        "React & Next.js",
+        "TypeScript",
+        "Bases de données SQL",
+        "Docker & Conteneurs",
+        "CI/CD & GitHub Actions",
+        "Accessibilité",
+        "Design System & UI"
+      ],
+      "changelog": "## Changelog : nosgestesclimat-app (30 derniers jours, au 21 août 2026)\n\n### Résumé\nCe mois a été marqué par une amélioration significative de l'expérience liée aux \"Actions\" (nouveaux contenus, tests de présentation et déploiement progressif) et par une optimisation majeure des performances de la plateforme. L'application est désormais plus rapide grâce à de nouveaux systèmes de mise en cache et plus stable grâce à un renforcement des tests automatisés.\n\n### Évolutions fonctionnelles\n- **Expérience des Actions :**\n    - Déploiement progressif de nouvelles actions [#1964] et support de toutes les régions du modèle [#1961].\n    - Ajout de descriptions courtes pour les actions [#2012] et réactivation des actions liées aux services sociétaux [#1955].\n    - Mise en place de tests A/B sur le design des cartes d'actions [#2006] et sur la mise en page des actions à fort impact [#1997].\n    - Introduction de fonctionnalités de \"cross-sell\" pour suggérer des actions complémentaires [#2010] et création d'un catalogue d'actions publiques [#2003].\n    - Refonte des actions pour les groupes d'amis [#1987].\n- **Nouvelles fonctionnalités et interface :**\n    - Ajout de la confirmation par email [#1929].\n    - Ajout d'une section explicative sur la page des résultats de tests collectifs [#1969].\n    - Remplacement des notifications d'IA par des \"funfacts\" pour une approche plus ludique [#1970].\n    - Améliorations visuelles (CSS) sur les labels, les suggestions, les champs de saisie et l'affichage des icônes sur desktop [#1995, #1992, #1960].\n- **Corrections de bugs :**\n    - Résolution de problèmes de réinitialisation de simulation dans les groupes d'amis [#1999].\n    - Correction de l'affichage des actions dans le catalogue personnalisé lors de simulations incomplètes [#2002].\n    - Correction de liens externes brisés dans les iframes [#1962] et des URLs du tutoriel [#1935].\n    - Correction de problèmes liés à l'authentification et à la migration des simulations de connexion [#1959, #1930].\n\n### Évolutions techniques\n- **Performance et Infrastructure :**\n    - Mise en place d'un système de cache via un reverse proxy Nginx (remplaçant un CDN) avec limitation de débit [#1941].\n    - Optimisation de la vitesse d'accès via la mise en cache de la page d'accueil et des tutoriels pour les utilisateurs anonymes [#1946] et le proxying des assets S3 [#1949].\n    - Gestion du cache pour la bannière en environnement de préproduction [#1991].\n- **Stabilité et Tests :**\n    - Amélioration significative de la robustesse et de la fiabilité des tests de bout en bout (E2E) sur la CI et en préproduction [#1993, #1990, #1981, #1977].\n- **Architecture et Modèle :**\n    - Mises à jour successives du modèle métier [#2000, #1965] et correction de la gestion des versions du modèle [#1972].\n    - Refactorisation de la gestion des erreurs d'authentification pour plus de typage et de sécurité [#1942].\n    - Migration vers un nouveau système de gestion des composants mis en cache [#1945].\n    - Ajout de vues anonymes pour les groupes dans le schéma de base de données [#1989].\n\n### Autres changements\n- Refonte du sitemap pour améliorer le référencement [#1944].\n- Optimisation du processus de build pour réduire les avertissements de fichiers [#2008].\n- Ajout d'un script pour automatiser les mises à jour des versions du modèle [#1980].",
+      "changelogGeneratedAt": "2026-08-24T02:09:01Z",
+      "organization": "incubateur-ademe"
     },
     {
       "url": "https://github.com/MTES-MCT/prelevements-deau-api",
@@ -1732,6 +2126,76 @@
       "organization": "betagouv"
     },
     {
+      "url": "https://github.com/betagouv/espace-membre-next",
+      "name": "espace-membre-next",
+      "description": "Plateforme de gestion de la communauté de l'incubateur beta.gouv.fr, permettant la gestion des membres, des missions, des produits et des équipes.",
+      "language": "TypeScript",
+      "features": [
+        "Gestion des utilisateurs & Permissions",
+        "Gestion des profils & Comptes",
+        "Collaboration & Workflow",
+        "Authentification & Accès",
+        "Administration & Backoffice",
+        "Gestion métier générale"
+      ],
+      "audience": "Agents de l'Administration",
+      "dependencies": [
+        "Next.js",
+        "React",
+        "PostgreSQL",
+        "Knex",
+        "Kysely",
+        "NextAuth.js",
+        "Zod",
+        "Sentry",
+        "Matomo"
+      ],
+      "components": [
+        "React / Next.js",
+        "API REST & GraphQL",
+        "PostgreSQL & SQL",
+        "TypeScript / JavaScript",
+        "Design System (DSFR & UI libs)",
+        "Docker & Conteneurs",
+        "Authentification (composant)"
+      ],
+      "auth": {
+        "methods": [
+          "magic-link",
+          "sso",
+          "jwt",
+          "session"
+        ],
+        "providers": [
+          "ProConnect"
+        ]
+      },
+      "tests": [
+        "ts-mocha",
+        "chai",
+        "sinon",
+        "playwright"
+      ],
+      "workflows": [
+        "Scalingo Scheduler",
+        "n8n"
+      ],
+      "lastActivity": "2026-08-21T14:55:40Z",
+      "status": "active",
+      "license": null,
+      "hasDocumentation": true,
+      "tags": [
+        "Écosystème beta.gouv / État",
+        "React & Next.js",
+        "TypeScript",
+        "Design System & UI",
+        "Sécurité & Auth"
+      ],
+      "changelog": "## Changelog : espace-membre-next (30 derniers jours, au 20 août 2026)\n\n### Résumé\nCe mois-ci, la plateforme a évolué pour offrir plus de flexibilité dans la gestion des produits (possibilité de co-incubation) et une meilleure précision dans les processus d'accompagnement (gestion des ateliers et des checklists). Des améliorations structurelles importantes ont été apportées à l'API et à la gestion des tâches de fond pour renforcer la stabilité et la performance du système.\n\n### Évolutions fonctionnelles\n- Gestion de la co-incubation pour les produits [#1498](https://github.com/betagouv/espace-membre-next/issues/1498).\n- Restriction de la validation des ateliers d'embarquement aux seuls animateurs [#1470](https://github.com/betagouv/espace-membre-next/issues/1470).\n- Filtrage des éléments de checklist par domaine utilisateur [#1517](https://github.com/betagouv/espace-membre-next/issues/1517).\n- Mise en place de la gestion des demandes d'accès \"Ségur\" [#1468](https://github.com/betagouv/espace-membre-next/issues/1468).\n- Introduction d'un nudge pour encourager l'utilisation de ProConnect [#1405](https://github.com/betagouv/espace-membre-next/issues/1405).\n- Clarification des conditions d'affichage lors de l'onboarding.\n\n### Évolutions techniques\n- Migration de la gestion des tâches de fond (jobs) de `pg-boss` vers Scalingo Scheduler [#1505](https://github.com/betagouv/espace-membre-next/issues/1505).\n- Refonte de l'API : passage aux routes REST au pluriel et mise à jour de la documentation OpenAPI [#1497](https://github.com/betagouv/espace-membre-next/issues/1497).\n- Autorisation de l'accès en lecture via OpenAPI pour les utilisateurs connectés [#1508](https://github.com/betagouv/espace-membre-next/issues/1508).\n- Montée de version de Next.js [#1514](https://github.com/betagouv/espace-membre-next/issues/1514) et de Sentry [#1491](https://github.com/betagouv/espace-membre-next/issues/1491).\n- Résolution d'exceptions d'exécution liées à la gestion des tâches et aux imports cron [#1487](https://github.com/betagouv/espace-membre-next/issues/1487), [#1488](https://github.com/betagouv/espace-membre-next/issues/1488), [#1493](https://github.com/betagouv/espace-membre-next/issues/1493).\n- Optimisation du processus de build [#1482](https://github.com/betagouv/espace-membre-next/issues/1482).\n\n### Autres changements\n- Ajout d'une section dédiée à la documentation de l'API dans le README.\n- Nettoyage général du code, suppression de fichiers obsolètes (legacy) et maintenance de Storybook.",
+      "changelogGeneratedAt": "2026-08-24T02:27:31Z",
+      "organization": "betagouv"
+    },
+    {
       "url": "https://github.com/codegouvfr/react-dsfr",
       "name": "react-dsfr",
       "description": "Bibliothèque React implémentant le système de design de l'État français (DSFR). Elle permet de créer des interfaces web gouvernementales conformes, accessibles et identifiables pour les citoyens.",
@@ -2175,72 +2639,6 @@
       "changelog": "## Changelog : la_taupe (30 derniers jours, au 21 août 2026)\n\n### Résumé\nCe mois-ci, la_taupe a franchi une étape importante avec l'intégration d'un nouveau moteur d'OCR plus performant et l'ajout de fonctionnalités de traitement par lots (batch) via l'interface en ligne de commande. L'extraction des informations critiques des RIB (titulaire, BIC, IBAN) est devenue plus robuste et précise, notamment grâce à une meilleure gestion des mises en page complexes.\n\n### Évolutions fonctionnelles\n- **Traitement par lots (Batch) :** L'interface en ligne de commande (CLI) permet désormais d'analyser des fichiers ou des répertoires entiers de RIB en une seule commande, avec une option `--type` pour spécifier l'analyse. [#64](https://github.com/demarche-numerique/la_taupe/pull/64)\n- **Amélioration de l'extraction des RIB :**\n    - Détection plus fiable du BIC, y compris pour les formats où une lettre est imprimée par cellule. [#62](https://github.com/demarche-numerique/la_taupe/pull/62)\n    - Validation automatique du BIC par rapport à la banque associée à l'IBAN.\n    - Meilleure identification du titulaire du compte (nom, adresse, ville) grâce à un ancrage plus robuste des blocs de texte. [#63](https://github.com/demarche-numerique/la_taupe/pull/63)\n- **Gestion des documents :** Ajout d'un indicateur pour signaler les documents ne contenant aucune donnée exploitable.\n\n### Évolutions techniques\n- **Nouveau moteur OCR :** Passage par défaut au moteur PP-OCR v6 tiny (via ONNX Runtime), offrant une meilleure efficacité pour l'extraction de texte. [#60](https://github.com/demarche-numerique/la_taupe/pull/60)\n- **Banc de mesure et performance :** \n    - Mise en place d'un outil de benchmarking et d'un corpus synthétique pour mesurer précisément la précision et la latence du système. [#59](https://github.com/demarche-numerique/la_taupe/pull/59)\n    - Optimisations diverses pour réduire la latence de traitement. [#58](https://github.com/demarche-numerique/la_taupe/pull/58)\n- **Robustesse de l'OCR et de la mise en page :**\n    - Amélioration de la gestion de la rotation des pages et de l'ancrage des éléments clés (IBAN, code postal).\n    - Correction de la détection des blocs de texte pour mieux gérer les différents layouts de RIB rencontrés sur le terrain.\n\n### Autres changements\n- **Documentation :** Ajout de sections détaillant les méthodologies de mesure et les résultats des expérimentations (notamment sur les tests de reconnaissance d'entités nommées - NER). [#61](https://github.com/demarche-numerique/la_taupe/pull/61)\n- **Données :** Mise à jour du registre de la Banque Centrale Européenne (ECB) intégré au projet.\n- **Qualité de code :** Intégration de l'outil Clippy pour assurer la conformité et la propreté du code Rust sur l'ensemble des cibles.",
       "changelogGeneratedAt": "2026-08-21T01:41:36Z",
       "organization": "demarche-numerique"
-    },
-    {
-      "url": "https://github.com/mission-apprentissage/bal",
-      "name": "bal",
-      "description": "BAL est une boîte aux lettres pour l'apprentissage, facilitant la gestion des communications et des données associées à l'apprentissage.",
-      "language": "TypeScript",
-      "features": [
-        "Gestion documentaire & Fichiers",
-        "API & Intégrations",
-        "Authentification & Accès",
-        "Notifications & Alertes",
-        "Sécurité & Conformité",
-        "Gestion des utilisateurs & Permissions"
-      ],
-      "audience": "Professionnels",
-      "dependencies": [
-        "React",
-        "Next.js",
-        "MongoDB",
-        "Fastify",
-        "Zod",
-        "Nodemailer",
-        "AWS S3",
-        "ClamAV",
-        "Brevo"
-      ],
-      "components": [
-        "API REST & GraphQL",
-        "React / Next.js",
-        "TypeScript / JavaScript",
-        "Docker & Conteneurs",
-        "MongoDB & NoSQL"
-      ],
-      "auth": {
-        "methods": [
-          "email-password",
-          "jwt"
-        ]
-      },
-      "tests": "Vitest",
-      "workflows": [
-        "ci.yml",
-        "release.yml",
-        "pull_request.yml",
-        "codeql.yml",
-        "_deploy.yml"
-      ],
-      "lastActivity": "2026-08-20T21:00:40Z",
-      "status": "active",
-      "license": "MIT",
-      "hasDocumentation": true,
-      "metrics": {
-        "stars": 3,
-        "forks": 2,
-        "openIssues": 0
-      },
-      "tags": [
-        "Données & Open Data",
-        "TypeScript",
-        "Sécurité & Auth",
-        "API & Intégrations",
-        "Docker & Conteneurs"
-      ],
-      "changelog": "## Changelog : bal (30 derniers jours, au 20 août 2026)\n\n### Résumé\nCe mois-ci, BAL a bénéficié d'améliorations sur la gestion des listes de diffusion et d'une mise à jour majeure de ses outils de développement pour garantir une meilleure sécurité, une performance accrue et une maintenance simplifiée.\n\n### Évolutions fonctionnelles\n- Optimisation du processus de génération des listes de diffusion, incluant désormais l'envoi d'une notification par email une fois le traitement terminé ([#533](https://github.com/mission-apprentissage/bal/issues/533), [#534](https://github.com/mission-apprentissage/bal/issues/534)).\n\n### Évolutions techniques\n- Migration majeure de l'environnement de développement : passage à TypeScript 7, Next.js 16.3 et adoption de Biome pour remplacer ESLint et Prettier ([#4962](https://github.com/mission-apprentissage/bal/issues/4962), [#532](https://github.com/mission-apprentissage/bal/issues/532)).\n- Mise à jour de l'infrastructure Docker pour l'image Metabase ([#531](https://github.com/mission-apprentissage/bal/issues/531)).\n- Correction d'une vulnérabilité de sécurité critique (CVE) identifiée sur Vitest ([#530](https://github.com/mission-apprentissage/bal/issues/530)).",
-      "changelogGeneratedAt": "2026-08-22T01:40:44Z",
-      "organization": "mission-apprentissage"
     },
     {
       "url": "https://github.com/betagouv/ma-cantine",
@@ -4816,75 +5214,6 @@
       "organization": "suitenumerique"
     },
     {
-      "url": "https://github.com/betagouv/espace-membre-next",
-      "name": "espace-membre-next",
-      "description": "Plateforme de gestion des membres de l'incubateur beta.gouv.fr, permettant de gérer les missions, les produits, les équipes et les accès aux outils de la communauté.",
-      "language": "TypeScript",
-      "features": [
-        "Gestion des utilisateurs & Permissions",
-        "Gestion des profils & Comptes",
-        "Authentification & Accès",
-        "Gestion métier générale",
-        "Administration & Backoffice"
-      ],
-      "audience": "Agents de l'Administration",
-      "dependencies": [
-        "Next.js",
-        "React",
-        "TypeScript",
-        "PostgreSQL",
-        "Knex",
-        "Kysely",
-        "NextAuth.js",
-        "Zod",
-        "@codegouvfr/react-dsfr"
-      ],
-      "components": [
-        "React / Next.js",
-        "TypeScript / JavaScript",
-        "PostgreSQL & SQL",
-        "API REST & GraphQL",
-        "Design System (DSFR & UI libs)",
-        "Docker & Conteneurs",
-        "Authentification (composant)"
-      ],
-      "auth": {
-        "methods": [
-          "magic-link",
-          "sso"
-        ],
-        "providers": [
-          "ProConnect"
-        ]
-      },
-      "tests": [
-        "Playwright",
-        "Mocha",
-        "Chai"
-      ],
-      "workflows": [
-        "Scalingo Scheduler",
-        "n8n"
-      ],
-      "lastActivity": "2026-08-17T10:19:46Z",
-      "status": "active",
-      "license": null,
-      "hasDocumentation": true,
-      "metrics": {
-        "stars": 4
-      },
-      "tags": [
-        "Écosystème beta.gouv / État",
-        "React & Next.js",
-        "TypeScript",
-        "Design System & UI",
-        "Sécurité & Auth"
-      ],
-      "changelog": "## Changelog : espace-membre-next (30 derniers jours, au 14 août 2026)\n\n### Résumé\nCe mois-ci, la plateforme a enrichi ses capacités métier avec la gestion de la co-incubation et des demandes d'accès aux services Ségur, tout en affinant l'expérience d'accueil des nouveaux utilisateurs. Un travail important de simplification technique et de migration d'infrastructure a également été réalisé pour améliorer la stabilité et la maintenabilité du système.\n\n### Évolutions fonctionnelles\n- **Gestion métier** : introduction de la possibilité de co-incuber un produit ([#1498](https://github.com/betagouv/espace-membre-next/issues/1498)) et mise en place des demandes d'accès aux bureaux et services Ségur ([#1460](https://github.com/betagouv/espace-membre-next/issues/1460), [#1468](https://github.com/betagouv/espace-membre-next/issues/1468)).\n- **Expérience utilisateur (Onboarding)** : amélioration du parcours d'accueil avec une clarification des conditions d'affichage et une mise à jour des canaux Tchap dans les checklists ([#1450](https://github.com/betagouv/espace-membre-next/issues/1450)).\n- **Checklists** : filtrage des éléments de checklist par domaine utilisateur pour plus de pertinence ([#1517](https://github.com/betagouv/espace-membre-next/issues/1517)).\n- **Authentification** : ajout d'une incitation (nudge) pour encourager l'utilisation de ProConnect ([#1405](https://github.com/betagouv/espace-membre-next/issues/1405)).\n\n### Évolutions techniques\n- **Infrastructure** : migration de la gestion des tâches planifiées de `pg-boss` vers le `Scalingo Scheduler` ([#1505](https://github.com/betagouv/espace-membre-next/issues/1505)).\n- **API** : standardisation des routes REST (utilisation du pluriel) et mise à jour de la documentation OpenAPI ([#1497](https://github.com/betagouv/espace-membre-next/issues/1497), [#1508](https://github.com/betagouv/espace-membre-next/issues/1508)).\n- **Maintenance et nettoyage** : suppression de code obsolète (legacy), de tâches inutiles et simplification des fichiers de routes et d'utilitaires ([#1504](https://github.com/betagouv/espace-membre-next/issues/1504), [#1495](https://github.com/betagouv/espace-membre-next/issues/1495), [#1489](https://github.com/betagouv/espace-membre-next/issues/1489)).\n- **Corrections de bugs** : résolution d'exceptions d'exécution liées à la gestion des tâches planifiées ([#1487](https://github.com/betagouv/espace-membre-next/issues/1487), [#1493](https://github.com/betagouv/espace-membre-next/issues/1493)).\n- **CI/CD** : optimisation des processus de build en supprimant les étapes inutiles ([#1482](https://github.com/betagouv/espace-membre-next/issues/1482)).\n\n### Autres changements\n- **Documentation** : ajout d'une section dédiée à la documentation de l'API dans le README.\n- **Nettoyage** : maintenance de Storybook et divers nettoyages de fichiers de configuration ([#1506](https://github.com/betagouv/espace-membre-next/issues/1506)).",
-      "changelogGeneratedAt": "2026-08-18T01:18:30Z",
-      "organization": "betagouv"
-    },
-    {
       "url": "https://github.com/refugies-info/playground",
       "name": "playground",
       "description": "Plateforme de workflow éditorial assistée par IA pour Refugies.info. Elle permet l'ingestion, la réécriture automatique et la validation humaine de contenus pour améliorer la clarté et l'efficacité éditoriale.",
@@ -5672,80 +6001,6 @@
       "organization": "SocialGouv"
     },
     {
-      "url": "https://github.com/MTES-MCT/vigieau-admin-back",
-      "name": "vigieau-admin-back",
-      "description": "Backend de l'application VigiEau, dédié à la gestion des données et des alertes liées à la sécheresse. Il fournit une interface d'administration pour la gestion des arrêtés, des restrictions et des statistiques.",
-      "language": "TypeScript",
-      "features": [
-        "Gestion documentaire & Fichiers",
-        "API & Intégrations",
-        "Statistiques & Rapports",
-        "Authentification & Accès",
-        "Gestion des utilisateurs & Permissions",
-        "Notifications & Alertes",
-        "Administration & Backoffice",
-        "Gestion métier générale",
-        "Gestion des signalements"
-      ],
-      "audience": "Agents de l'Administration",
-      "dependencies": [
-        "NestJS",
-        "TypeORM",
-        "PostgreSQL",
-        "Express",
-        "AdminJS",
-        "Nodemailer",
-        "AWS SDK",
-        "Passport",
-        "Axios",
-        "OpenID Connect"
-      ],
-      "components": [
-        "Node.js / NestJS",
-        "API REST & GraphQL",
-        "PostgreSQL & SQL",
-        "TypeScript / JavaScript",
-        "Authentification (composant)",
-        "Intégrations services externes",
-        "ORM & Accès aux données"
-      ],
-      "auth": {
-        "methods": [
-          "email-password",
-          "oauth2",
-          "jwt",
-          "session"
-        ],
-        "providers": []
-      },
-      "tests": [
-        "Jest",
-        "Supertest"
-      ],
-      "workflows": [],
-      "lastActivity": "2026-08-15T08:09:43Z",
-      "status": "active",
-      "license": "MIT",
-      "hasDocumentation": true,
-      "metrics": {
-        "stars": 0,
-        "forks": 0,
-        "contributors": null,
-        "openIssues": 16
-      },
-      "tags": [
-        "Écosystème beta.gouv / État",
-        "TypeScript",
-        "Node.js, NestJS & Express",
-        "Bases de données SQL",
-        "Git & DevOps",
-        "Signalement & Inspection"
-      ],
-      "changelog": null,
-      "changelogGeneratedAt": null,
-      "organization": "MTES-MCT"
-    },
-    {
       "url": "https://github.com/tchapgouv/compound-design-tokens",
       "name": "compound-design-tokens",
       "description": "Ce projet fournit un ensemble de tokens de design pour différentes plateformes (Web, iOS, Android) afin d'assurer une cohérence visuelle et une expérience utilisateur unifiée.",
@@ -6146,68 +6401,6 @@
       "organization": "suitenumerique"
     },
     {
-      "url": "https://github.com/dnum-mi/vue-dsfr",
-      "name": "vue-dsfr",
-      "description": "Portage en Vue 3 du Système de Design Français (DSFR) sous forme de bibliothèque de composants. Il permet d'intégrer facilement les composants officiels de l'État dans des applications Vue ou Nuxt.",
-      "language": "TypeScript",
-      "features": [
-        "Interface utilisateur & Design",
-        "Accessibilité & i18n",
-        "Formulaires & Démarches"
-      ],
-      "audience": "Développeurs",
-      "dependencies": [
-        "@gouvfr/dsfr",
-        "vue",
-        "vue-router",
-        "focus-trap",
-        "@iconify/vue"
-      ],
-      "components": [
-        "Design System (DSFR & UI libs)",
-        "TypeScript / JavaScript",
-        "Vue.js / Nuxt",
-        "Bibliothèques & Packages"
-      ],
-      "auth": {
-        "methods": [
-          "none"
-        ]
-      },
-      "tests": [
-        "Vitest",
-        "Playwright",
-        "Storybook"
-      ],
-      "workflows": [
-        "check-merge-branch.yml",
-        "check-pr-linked-issue.yml",
-        "publish-release-beta.yml",
-        "publish-release-next.yml",
-        "publish-release.yml",
-        "run-tests.yml"
-      ],
-      "lastActivity": "2026-08-14T19:17:05Z",
-      "status": "active",
-      "license": "MIT",
-      "hasDocumentation": true,
-      "metrics": {
-        "stars": 76,
-        "forks": 45,
-        "openIssues": 14
-      },
-      "tags": [
-        "Design System & UI",
-        "Vue.js & Nuxt",
-        "TypeScript",
-        "Accessibilité",
-        "HTML, CSS & Web"
-      ],
-      "changelog": "## Changelog : vue-dsfr (30 derniers jours, au 11 août 2026)\n\n### Résumé\nCe mois-ci, les évolutions se sont concentrées sur l'amélioration de la gestion des icônes (support du rendu local pour le SSG/SSR et nouvelles options de résolution) et sur la stabilisation de l'environnement de développement et de déploiement (correction des workflows CI/CD et optimisation des builds).\n\n### Évolutions fonctionnelles\n- **Gestion des icônes** :\n    - Ajout du support du rendu local pour les environnements SSG et SSR avec le composant `VIconOffline` [#1369](https://github.com/dnum-mi/vue-dsfr/pull/1369).\n    - Ajout de l'option `preferOffline` dans le plugin d'icônes pour privilégier la résolution depuis les collections locales [#1383](https://github.com/dnum-mi/vue-dsfr/pull/1383).\n    - Support du format de nommage `prefixe-nom` pour la résolution des icônes hors ligne [#1386](https://github.com/dnum-mi/vue-dsfr/pull/1386).\n    - Correction d'un bug de `viewBox` invalide sur le composant `VIconOffline` lorsque les propriétés `left` et `top` sont absentes [#1372](https://github.com/dnum-mi/vue-dsfr/pull/1372).\n- **Composants** :\n    - Correction des erreurs de copie dans le composant `DsfrDataTable` [#1352](https://github.com/dnum-mi/vue-dsfr/pull/1352).\n\n### Évolutions techniques\n- **CI/CD et Build** :\n    - Stabilisation des workflows de release en utilisant Node 24 [#1375](https://github.com/dnum-mi/vue-dsfr/pull/1375).\n    - Amélioration de la robustesse du build : correction de l'isolation de Storybook, mise à jour de `pnpm` (v11) et correction des noms d'événements Vue.\n    - Correction de l'échec du build Storybook sur Netlify via l'épinglage de la version Node.\n- **Refactoring** :\n    - Simplification de la gestion des chemins en remplaçant `fileURLToPath/URL` par `import.meta.dirname`.\n    - Durcissement des prérequis de version Node.js dans la configuration du projet.\n\n### Autres changements\n- **Documentation** :\n    - Clarification de l'usage combiné de `addCollection` et `createVueDsfrIconPlugin` dans le guide Nuxt [#1380](https://github.com/dnum-mi/vue-dsfr/pull/1380).\n    - Mise à jour des guides concernant l'assistance par agents IA (conventions, commandes et workflows) [#1337](https://github.com/dnum-mi/vue-dsfr/pull/1337), [#1364](https://github.com/dnum-mi/vue-dsfr/pull/1364), [#1366](https://github.com/dnum-mi/vue-dsfr/pull/1366).\n    - Correction de la branche cible par défaut lors de la création de pull requests [#1358](https://github.com/dnum-mi/vue-dsfr/pull/1358).",
-      "changelogGeneratedAt": "2026-08-17T01:43:36Z",
-      "organization": "dnum-mi"
-    },
-    {
       "url": "https://github.com/SocialGouv/fiches-vdd",
       "name": "fiches-vdd",
       "description": "Ce projet fournit les fiches 'Vos droits et démarches' au format JSON, mises à jour quotidiennement. Il permet d'accéder aux données pour les particuliers, les professionnels et les associations.",
@@ -6250,74 +6443,6 @@
       "changelog": "## Changelog : fiches-vdd (30 derniers jours, au 14 août 2026)\n\n### Résumé\nLe projet a maintenu son rythme de mise à jour quotidienne, garantissant que les données des fiches \"Vos droits et démarches\" sont actualisées de manière régulière pour assurer la fraîcheur des informations mises à disposition.\n\n### Évolutions fonctionnelles\n- Actualisation quotidienne du contenu des fiches (format JSON) pour intégrer les dernières données relatives aux droits et démarches.\n\n### Autres changements\n- Gestion automatisée du versionnage et des publications quotidiennes.",
       "changelogGeneratedAt": "2026-08-15T01:30:01Z",
       "organization": "SocialGouv"
-    },
-    {
-      "url": "https://github.com/incubateur-ademe/nosgestesclimat-app",
-      "name": "nosgestesclimat-app",
-      "description": "Calculateur d'empreinte climat individuelle basé sur la consommation annuelle. Le projet propose des solutions concrètes pour réduire son impact environnemental.",
-      "language": "TypeScript",
-      "features": [
-        "Simulation & Calcul",
-        "Visualisation de données & Cartographie",
-        "Authentification & Accès",
-        "Contenu éditorial",
-        "Aides & Éligibilité",
-        "Interface utilisateur & Design"
-      ],
-      "audience": "Grand public",
-      "dependencies": [
-        "Next.js",
-        "React",
-        "TypeScript",
-        "Tailwind CSS",
-        "PostgreSQL",
-        "Redis",
-        "Prisma",
-        "Express",
-        "Publicodes",
-        "Vitest",
-        "Playwright"
-      ],
-      "components": [
-        "API REST & GraphQL",
-        "PostgreSQL & SQL",
-        "React / Next.js",
-        "TypeScript / JavaScript",
-        "Docker & Conteneurs",
-        "Node.js / NestJS",
-        "Tests",
-        "Design System (DSFR & UI libs)"
-      ],
-      "auth": {
-        "methods": [
-          "email-password",
-          "jwt",
-          "session"
-        ]
-      },
-      "tests": [
-        "Vitest",
-        "Playwright",
-        "BrowserStack",
-        "Supertest"
-      ],
-      "lastActivity": "2026-08-14T18:38:37Z",
-      "status": "active",
-      "license": "MIT",
-      "hasDocumentation": true,
-      "tags": [
-        "Environnement & Énergie",
-        "React & Next.js",
-        "TypeScript",
-        "Bases de données SQL",
-        "JavaScript",
-        "Docker & Conteneurs",
-        "Design System & UI",
-        "Accessibilité"
-      ],
-      "changelog": "## Changelog : nosgestesclimat-app (30 derniers jours, au 14 août 2026)\n\n### Résumé\nCe mois-ci, le projet a franchi une étape majeure avec le déploiement du catalogue d'actions concrètes pour réduire son empreinte climat. L'expérience utilisateur a été enrichie par de nouveaux éléments d'accompagnement et une interface plus fluide, tandis que l'infrastructure a été optimisée pour garantir une navigation plus rapide et une meilleure stabilité du système.\n\n### Évolutions fonctionnelles\n- **Déploiement des actions :** Mise en ligne du catalogue public d'actions [#1845](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1845), support de l'internationalisation [#1938](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1938) et extension de la compatibilité des actions aux différentes régions du modèle climatique [#1961](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1961).\n- **Amélioration de l'expérience utilisateur (UX) :** \n    - Ajout d'une section explicative sur la page des résultats de tests collectifs [#1969](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1969).\n    - Remplacement des notifications par des \"fun facts\" pour un ton plus engageant [#1970](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1970).\n    - Ajout d'un bouton de fermeture sur les bannières [#1912](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1912).\n- **Authentification et sécurité :** Ajout de la confirmation par email [#1929](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1929) et correction des erreurs liées aux codes d'authentification invalides [#1959](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1959).\n- **Corrections d'interface :** Ajustement du style des champs de saisie [#1992](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1992) et résolution de liens brisés dans les iframes [#1962](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1962).\n\n### Évolutions techniques\n- **Optimisation des performances et infrastructure :** \n    - Mise en place d'un système de cache via Nginx (remplaçant un CDN) pour accélérer l'accès à la page d'accueil et aux tutoriels [#1941](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1941), [#1946](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1946).\n    - Proxyification des assets S3 via Nginx pour une meilleure gestion des contenus statiques [#1949](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1949).\n- **Fiabilisation du code et des tests :** \n    - Travail important sur la stabilité des tests de bout en bout (E2E) pour réduire les échecs aléatoires en environnement de CI et de préproduction [#1993](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1993), [#1990](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1990), [#1981](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1981).\n    - Refactorisation du flux de connexion via une machine à états pour une gestion plus robuste des erreurs [#1934](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1934).\n- **Maintenance du modèle et des données :** \n    - Mise à jour de la version du modèle climatique [#1965](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1965).\n    - Ajout de vues anonymes pour les groupes dans le schéma de base de données [#1989](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1989).\n\n### Autres changements\n- Refonte du sitemap pour optimiser le référencement [#1944](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1944).\n- Nettoyage de la base de données suite à la fusion des traductions des actions [#1943](https://github.com/incubateur-ademe/nosgestesclimat-app/pull/1943).",
-      "changelogGeneratedAt": "2026-08-16T01:31:58Z",
-      "organization": "incubateur-ademe"
     },
     {
       "url": "https://github.com/betagouv/anssi-recommandations-cyber-data",
@@ -7925,77 +8050,6 @@
       "changelog": "## Changelog : plateforme-accueil (30 derniers jours, au 10 août 2026)\n\n### Résumé\nLe projet a franchi une étape majeure avec la refonte complète de la page d'accueil et la transition vers une architecture Django robuste. L'accent a été mis sur une intégration fluide et sécurisée via iframe, ainsi que sur la mise en place d'une infrastructure de déploiement automatisée pour garantir la stabilité de la plateforme.\n\n### Évolutions fonctionnelles\n- **Refonte de la page d'accueil** : Mise en place de la nouvelle maquette visuelle pour la landing page. [#3](https://github.com/gip-inclusion/plateforme-accueil/pull/3)\n- **Aperçu intégré** : Ajout d'un exemple de rendu de la maquette directement sur la page d'accueil pour faciliter la visualisation.\n\n### Évolutions techniques\n- **Architecture & Framework** : \n    - Migration d'un bundle HTML unique vers une structure Django complète (templates, fichiers statiques et gestion des assets).\n    - Extraction d'un template de base pour uniformiser le rendu de toutes les pages.\n- **Optimisation de l'intégration (Iframe)** :\n    - Amélioration du système de redimensionnement automatique pour assurer un affichage fluide du contenu sans décalage de la vue.\n    - Intégration d'un script côté hôte pour faciliter l'inclusion de la plateforme.\n    - Optimisation de la gestion des icônes (SVG inline) pour garantir leur affichage dans des environnements d'iframe sécurisés (sandboxed).\n- **Sécurité & Analytics** :\n    - Mise en place d'une politique de sécurité (CSP) adaptée à l'intégration en iframe, configurable via variable d'environnement.\n    - Intégration du gestionnaire de balises Matomo pour le suivi de l'audience.\n- **Infrastructure & DevOps** :\n    - Mise en place de la conteneurisation avec Docker et automatisation des tâches via un Makefile.\n    - Configuration des workflows de CI/CD (GitHub Actions) pour les tests et le déploiement.\n\n### Autres changements\n- **Documentation** : Initialisation de la documentation du projet (README, CLAUDE.md).\n- **Standardisation** : Passage des commentaires de code en anglais et nettoyage des fichiers de notes locaux.",
       "changelogGeneratedAt": "2026-08-14T01:57:00Z",
       "organization": "gip-inclusion"
-    },
-    {
-      "url": "https://github.com/dnum-mi/referentiel-applications",
-      "name": "referentiel-applications",
-      "description": "RefApp est un catalogue destiné à répertorier et gouverner les métadonnées des applications du ministère de l'Intérieur. Il centralise les informations relatives au statut, aux acteurs, à la conformité et à l'hébergement des applications.",
-      "language": "TypeScript",
-      "features": [
-        "Gestion métier générale",
-        "Données & Schémas",
-        "Sécurité & Conformité",
-        "Administration & Backoffice",
-        "Suivi & Traçabilité",
-        "Interface utilisateur & Design",
-        "Recherche & Filtres"
-      ],
-      "audience": "Agents de l'Administration",
-      "dependencies": [
-        "NestJS",
-        "Prisma",
-        "PostgreSQL",
-        "Vue.js",
-        "Keycloak",
-        "DSFR",
-        "Docker"
-      ],
-      "components": [
-        "API REST & GraphQL",
-        "PostgreSQL & SQL",
-        "Vue.js / Nuxt",
-        "TypeScript / JavaScript",
-        "Design System (DSFR & UI libs)",
-        "Docker & Conteneurs",
-        "Node.js / NestJS",
-        "Authentification (composant)",
-        "Documentation & Schémas"
-      ],
-      "auth": {
-        "methods": [
-          "oauth2",
-          "jwt",
-          "sso"
-        ],
-        "providers": [
-          "Keycloak"
-        ]
-      },
-      "tests": [
-        "E2E tests",
-        "Jest"
-      ],
-      "workflows": [
-        "GitHub Actions"
-      ],
-      "lastActivity": "2026-08-12T23:26:05Z",
-      "status": "maintained",
-      "license": "MIT",
-      "hasDocumentation": true,
-      "tags": [
-        "Écosystème beta.gouv / État",
-        "TypeScript",
-        "Vue.js & Nuxt",
-        "Node.js, NestJS & Express",
-        "Docker & Conteneurs",
-        "Bases de données SQL",
-        "Design System & UI",
-        "CI/CD & GitHub Actions",
-        "Accessibilité"
-      ],
-      "changelog": "## Changelog : referentiel-applications (30 derniers jours, au 14 août 2026)\n\n### Résumé\nCe mois-ci, le projet a renforcé ses capacités de gouvernance et de contrôle administratif. Les évolutions majeures concernent l'amélioration de la gestion des utilisateurs (bannissement, suivi des permissions), une refonte de la gestion des stacks technologiques (cycle de vie, documentation) et une optimisation de l'interface utilisateur pour une navigation plus fluide et sécurisée.\n\n### Évolutions fonctionnelles\n\n**Administration et Gouvernance**\n- Possibilité pour les administrateurs de bannir des utilisateurs [#2240](https://github.com/dnum-mi/referentiel-applications/issues/2240).\n- Mise en place d'un nouveau panneau d'administration pour la gestion des directions métier et leur rattachement aux organisations [#2218](https://github.com/dnum-mi/referentiel-applications/issues/2218).\n- Support de plusieurs divisions métier par entité [#2114](https://github.com/dnum-mi/referentiel-applications/issues/2114).\n- Ajout de l'historique et de la traçabilité pour l'envoi d'emails [#2223](https://github.com/dnum-mi/referentiel-applications/issues/2223) et pour les modifications de rôles et permissions des utilisateurs [#2207](https://github.com/dnum-mi/referentiel-applications/issues/2207).\n\n**Gestion des Technologies et des Données**\n- Refonte complète de la gestion des stacks technologiques incluant le produit, les liens de documentation et la gestion des dates de fin de vie (EOL) [#2058](https://github.com/dnum-mi/referentiel-applications/issues/2058) avec une vérification accrue des dates d'obsolescence [#2234](https://github.com/dnum-mi/referentiel-applications/issues/2234).\n- Enrichissement du catalogue de données avec de nouveaux points d'accès (endpoints) et actions en interface [#2024](https://github.com/dnum-mi/referentiel-applications/issues/2024).\n- Suppression de la fonctionnalité de gestion des licences [#2057](https://github.com/dnum-mi/referentiel-applications/issues/2057).\n\n**Expérience Utilisateur et Interface**\n- Introduction d'un mode maintenance en lecture seule [#2201](https://github.com/dnum-mi/referentiel-applications/issues/2201).\n- Amélioration de la fiabilité et de la performance de la recherche globale dans l'en-tête [#2025](https://github.com/dnum-mi/referentiel-applications/issues/2025).\n- Harmonisation de l'interface utilisateur (matrice des droits, onglets de la fiche, libellés des formulaires) [#2090](https://github.com/dnum-mi/referentiel-applications/issues/2090) [#2118](https://github.com/dnum-mi/referentiel-applications/issues/2118).\n- Ajout d'un avertissement lors de la création d'une application sans permissions de lecture [#2237](https://github.com/dnum-mi/referentiel-applications/issues/2237).\n\n**Sécurité et Permissions**\n- Affinement de la matrice des droits, notamment pour l'onglet technologie [#2059](https://github.com/dnum-mi/referentiel-applications/issues/2059).\n- Correction des accès : masquage des onglets sans droits suffisants [#2088](https://github.com/dnum-mi/referentiel-applications/issues/2088) et attribution des droits complets aux administrateurs de leurs propres applications [#2028](https://github.com/dnum-mi/referentiel-applications/issues/2028).\n\n### Évolutions techniques\n\n**Architecture et Backend**\n- Migration du framework vers NestJS 11 [#2153](https://github.com/dnum-mi/referentiel-applications/issues/2153).\n- Ajout d'une option pour désactiver par défaut les tâches automatiques d'envoi d'emails via une variable de configuration [#2216](https://github.com/dnum-mi/referentiel-applications/issues/2216).\n- Optimisation de la récupération des campagnes via l'API REST pour éviter les limitations de débit (rate-limiting) [#2053](https://github.com/dnum-mi/referentiel-applications/issues/2053).\n\n**Frontend et Qualité**\n- Mise à jour de la version de l'application côté client sans nécessiter de rafraîchissement complet de la page [#2158](https://github.com/dnum-mi/referentiel-applications/issues/2158).\n- Amélioration de la suite de tests : correction des tests E2E sur l'édition de lignes [#2052](https://github.com/dnum-mi/referentiel-applications/issues/2052) et isolation de la base de données de développement pour éviter les pollutions de données lors des tests [#2151](https://github.com/dnum-mi/referentiel-applications/issues/2151).\n\n### Autres changements\n- Ajout de documents d'architecture (ADR 0001 et 0002) pour documenter les fondations partagées [#2051](https://github.com/dnum-mi/referentiel-applications/issues/2051).\n- Mise à jour de la documentation du projet (README) [#2239](https://github.com/dnum-mi/referentiel-applications/issues/2239).",
-      "changelogGeneratedAt": "2026-08-13T01:55:09Z",
-      "organization": "dnum-mi"
     },
     {
       "url": "https://github.com/betagouv/Aidants_Connect",
@@ -21286,57 +21340,6 @@
       "changelog": "## Changelog : datagouv-skill (30 derniers jours, au 17 avril 2026)\n\n### Résumé\nCe mois-ci, les améliorations se concentrent sur la documentation du skill, en particulier concernant l'utilisation des services de données. Ces mises à jour visent à faciliter l'intégration et l'utilisation du skill par les développeurs.\n\n### Évolutions fonctionnelles\n- Amélioration de la documentation du skill concernant les services de données. [#1](https://github.com/datagouv/datagouv-skill/issues/1)\n- Amélioration générale de la documentation du skill.\n\n### Évolutions techniques\n- Aucune évolution technique significative à signaler.\n\n### Autres changements\n- Aucune autre modification à signaler.",
       "changelogGeneratedAt": "2026-04-20T02:38:07Z",
       "organization": "datagouv"
-    },
-    {
-      "url": "https://github.com/proconnect-gouv/monitoring-pinger",
-      "name": "monitoring-pinger",
-      "description": "Cette application alerte l'équipe ProConnect lorsqu'un incident est reçu via Uptime Robot.",
-      "language": "TypeScript",
-      "features": [
-        "Notifications & Alertes"
-      ],
-      "audience": "Agents de l'Administration",
-      "dependencies": [
-        "express",
-        "typeorm",
-        "pg",
-        "dotenv",
-        "cron",
-        "jsonwebtoken",
-        "matrix-bot-sdk",
-        "joi"
-      ],
-      "components": [
-        "API REST & GraphQL",
-        "TypeScript / JavaScript",
-        "PostgreSQL & SQL"
-      ],
-      "auth": {
-        "methods": [
-          "jwt"
-        ],
-        "providers": []
-      },
-      "tests": [
-        "Jest"
-      ],
-      "workflows": [],
-      "lastActivity": "2026-07-03T10:04:13Z",
-      "status": "active",
-      "license": null,
-      "hasDocumentation": true,
-      "metrics": {
-        "stars": 0,
-        "forks": 0,
-        "contributors": 0,
-        "openIssues": 0
-      },
-      "tags": [
-        "Monitoring & Observabilité"
-      ],
-      "changelog": "## Changelog : monitoring-pinger (30 derniers jours, au 03 juillet 2026)\n\n### Résumé\nCe mois-ci, l'application de monitoring a été améliorée pour éviter les notifications répétitives en cas d'incident, et pour ne notifier que les incidents critiques. Des mécanismes de relance ont été ajoutés pour garantir l'envoi des notifications, et la configuration du seuil de minutes pour les alertes est désormais plus flexible.\n\n### Évolutions fonctionnelles\n- Les notifications ne sont plus renvoyées si elles ont déjà été envoyées une fois [#95e9841](https://github.com/proconnect-gouv/monitoring-pinger/commit/95e9841).\n- Seules les urgences sont désormais notifiées [#44d810e](https://github.com/proconnect-gouv/monitoring-pinger/commit/44d810e).\n- Ajout d'une tentative de renvoi des notifications en cas d'échec initial [#e83bd67](https://github.com/proconnect-gouv/monitoring-pinger/commit/e83bd67).\n\n### Évolutions techniques\n- Le seuil de minutes pour les alertes est désormais configurable via une variable d'environnement [#837a246](https://github.com/proconnect-gouv/monitoring-pinger/commit/837a246).\n- Ajout de logs pour faciliter le débogage [#837a246](https://github.com/proconnect-gouv/monitoring-pinger/commit/837a246).\n\n### Autres changements\n- Initialisation du projet [#a80a686](https://github.com/proconnect-gouv/monitoring-pinger/commit/a80a686).",
-      "changelogGeneratedAt": "2026-07-07T03:12:21Z",
-      "organization": "proconnect-gouv"
     },
     {
       "url": "https://github.com/datagouv/datagouv-client",
@@ -47861,70 +47864,6 @@
       "organization": "SocialGouv"
     },
     {
-      "url": "https://github.com/socialgouv/e2esdk",
-      "name": "e2esdk",
-      "description": "SDK pour construire des applications web chiffrées de bout en bout.",
-      "language": "TypeScript",
-      "features": [
-        "Authentification & Accès",
-        "Sécurité & Conformité",
-        "Données & Schémas"
-      ],
-      "audience": "Professionnels",
-      "dependencies": [
-        "PostgreSQL",
-        "ioredis",
-        "libsodium-wrappers",
-        "zod",
-        "@47ng/opaque-server",
-        "@47ng/opaque-client"
-      ],
-      "components": [
-        "API REST & GraphQL",
-        "Node.js / NestJS",
-        "PostgreSQL & SQL",
-        "TypeScript / JavaScript",
-        "React / Next.js",
-        "Devtools"
-      ],
-      "auth": {
-        "methods": [
-          "email-password",
-          "oauth2"
-        ],
-        "providers": []
-      },
-      "tests": [
-        "Jest"
-      ],
-      "workflows": [
-        "ci-cd.yml",
-        "deploy-docs-to-github-pages.yml"
-      ],
-      "lastActivity": "2025-11-20T19:09:48Z",
-      "status": "active",
-      "license": "Apache-2.0",
-      "hasDocumentation": true,
-      "metrics": {
-        "stars": 23,
-        "forks": 3,
-        "contributors": null,
-        "openIssues": 24
-      },
-      "tags": [
-        "crypto",
-        "Tests & Qualité",
-        "end-to-end-encryption",
-        "TypeScript",
-        "HTML, CSS & Web",
-        "Sécurité & Auth",
-        "chiffrement"
-      ],
-      "changelog": null,
-      "changelogGeneratedAt": null,
-      "organization": "SocialGouv"
-    },
-    {
       "url": "https://github.com/betagouv/e2esdk",
       "name": "e2esdk",
       "description": "Ce SDK permet de construire des applications web avec un chiffrement de bout en bout. Il gère les identités cryptographiques et les clés de chiffrement pour une communication sécurisée.",
@@ -47989,6 +47928,70 @@
       "changelog": null,
       "changelogGeneratedAt": null,
       "organization": "betagouv"
+    },
+    {
+      "url": "https://github.com/socialgouv/e2esdk",
+      "name": "e2esdk",
+      "description": "SDK pour construire des applications web chiffrées de bout en bout.",
+      "language": "TypeScript",
+      "features": [
+        "Authentification & Accès",
+        "Sécurité & Conformité",
+        "Données & Schémas"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [
+        "PostgreSQL",
+        "ioredis",
+        "libsodium-wrappers",
+        "zod",
+        "@47ng/opaque-server",
+        "@47ng/opaque-client"
+      ],
+      "components": [
+        "API REST & GraphQL",
+        "Node.js / NestJS",
+        "PostgreSQL & SQL",
+        "TypeScript / JavaScript",
+        "React / Next.js",
+        "Devtools"
+      ],
+      "auth": {
+        "methods": [
+          "email-password",
+          "oauth2"
+        ],
+        "providers": []
+      },
+      "tests": [
+        "Jest"
+      ],
+      "workflows": [
+        "ci-cd.yml",
+        "deploy-docs-to-github-pages.yml"
+      ],
+      "lastActivity": "2025-11-20T19:09:48Z",
+      "status": "active",
+      "license": "Apache-2.0",
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 23,
+        "forks": 3,
+        "contributors": null,
+        "openIssues": 24
+      },
+      "tags": [
+        "crypto",
+        "Tests & Qualité",
+        "end-to-end-encryption",
+        "TypeScript",
+        "HTML, CSS & Web",
+        "Sécurité & Auth",
+        "chiffrement"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "SocialGouv"
     },
     {
       "url": "https://github.com/socialgouv/test-renovate",
@@ -50675,6 +50678,41 @@
       "organization": "proconnect-gouv"
     },
     {
+      "url": "https://github.com/betagouv/reva-metabase-buildpack",
+      "name": "reva-metabase-buildpack",
+      "description": "Ce buildpack permet de déployer Metabase sur la plateforme Heroku. Il simplifie le processus de configuration et d'exécution de Metabase dans un environnement Heroku.",
+      "language": "Shell",
+      "features": [],
+      "audience": "Développeurs",
+      "dependencies": [],
+      "components": [],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": null,
+      "workflows": null,
+      "lastActivity": "2025-10-15T09:06:05Z",
+      "status": "active",
+      "license": "MIT",
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 1,
+        "contributors": null,
+        "openIssues": 0
+      },
+      "tags": [
+        "Heroku",
+        "Metabase",
+        "Buildpack"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "betagouv"
+    },
+    {
       "url": "https://github.com/socialgouv/reva-metabase-buildpack",
       "name": "reva-metabase-buildpack",
       "description": "Ce buildpack permet de déployer Metabase sur la plateforme Heroku. Il simplifie le processus de configuration et d'exécution de Metabase dans un environnement Heroku.",
@@ -50711,41 +50749,6 @@
       "changelog": null,
       "changelogGeneratedAt": null,
       "organization": "SocialGouv"
-    },
-    {
-      "url": "https://github.com/betagouv/reva-metabase-buildpack",
-      "name": "reva-metabase-buildpack",
-      "description": "Ce buildpack permet de déployer Metabase sur la plateforme Heroku. Il simplifie le processus de configuration et d'exécution de Metabase dans un environnement Heroku.",
-      "language": "Shell",
-      "features": [],
-      "audience": "Développeurs",
-      "dependencies": [],
-      "components": [],
-      "auth": {
-        "methods": [
-          "none"
-        ]
-      },
-      "tests": null,
-      "workflows": null,
-      "lastActivity": "2025-10-15T09:06:05Z",
-      "status": "active",
-      "license": "MIT",
-      "hasDocumentation": true,
-      "metrics": {
-        "stars": 0,
-        "forks": 1,
-        "contributors": null,
-        "openIssues": 0
-      },
-      "tags": [
-        "Heroku",
-        "Metabase",
-        "Buildpack"
-      ],
-      "changelog": null,
-      "changelogGeneratedAt": null,
-      "organization": "betagouv"
     },
     {
       "url": "https://github.com/tchapgouv/metabase-scalingo",
@@ -59835,47 +59838,6 @@
       "organization": "dnum-mi"
     },
     {
-      "url": "https://github.com/mtes-mct/dossierfacile-metabase-scalingo",
-      "name": "dossierfacile-metabase-scalingo",
-      "description": "Ce dépôt fournit un moyen simple de déployer Metabase sur Scalingo. Il offre une solution rapide et facile pour mettre en place une instance Metabase fonctionnelle.",
-      "language": "Shell",
-      "features": [],
-      "audience": "Professionnels",
-      "dependencies": [
-        "Metabase",
-        "Scalingo",
-        "PostgreSQL"
-      ],
-      "components": [
-        "CI/CD & Déploiement"
-      ],
-      "auth": {
-        "methods": [
-          "none"
-        ]
-      },
-      "tests": null,
-      "workflows": [],
-      "lastActivity": "2025-03-04T15:33:35Z",
-      "status": "active",
-      "license": null,
-      "hasDocumentation": true,
-      "metrics": {
-        "stars": 0,
-        "forks": 0,
-        "contributors": null,
-        "openIssues": 0
-      },
-      "tags": [
-        "Reporting & BI",
-        "Déploiement & Hosting",
-        "One-click-deploy"
-      ],
-      "changelog": null,
-      "changelogGeneratedAt": null,
-      "organization": "MTES-MCT"
-    },
-    {
       "url": "https://github.com/betagouv/assistant-declaration-metabase-scalingo",
       "name": "assistant-declaration-metabase-scalingo",
       "description": "Ce dépôt permet de déployer facilement Metabase sur la plateforme Scalingo. Il fournit une configuration pré-définie et des instructions pour simplifier le processus de déploiement.",
@@ -59917,6 +59879,47 @@
       "changelog": null,
       "changelogGeneratedAt": null,
       "organization": "betagouv"
+    },
+    {
+      "url": "https://github.com/mtes-mct/dossierfacile-metabase-scalingo",
+      "name": "dossierfacile-metabase-scalingo",
+      "description": "Ce dépôt fournit un moyen simple de déployer Metabase sur Scalingo. Il offre une solution rapide et facile pour mettre en place une instance Metabase fonctionnelle.",
+      "language": "Shell",
+      "features": [],
+      "audience": "Professionnels",
+      "dependencies": [
+        "Metabase",
+        "Scalingo",
+        "PostgreSQL"
+      ],
+      "components": [
+        "CI/CD & Déploiement"
+      ],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": null,
+      "workflows": [],
+      "lastActivity": "2025-03-04T15:33:35Z",
+      "status": "active",
+      "license": null,
+      "hasDocumentation": true,
+      "metrics": {
+        "stars": 0,
+        "forks": 0,
+        "contributors": null,
+        "openIssues": 0
+      },
+      "tags": [
+        "Reporting & BI",
+        "Déploiement & Hosting",
+        "One-click-deploy"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "MTES-MCT"
     },
     {
       "url": "https://github.com/incubateur-ademe/pages-legales-faciles",
@@ -94852,65 +94855,6 @@
       "organization": "incubateur-ademe"
     },
     {
-      "url": "https://github.com/etalab/transport-dev-services",
-      "name": "transport-dev-services",
-      "description": "Ce projet fournit des services de développement liés au transport. Il vise à faciliter la création et l'intégration d'applications dans le domaine des transports. Il offre des outils et des API pour les développeurs.",
-      "language": null,
-      "features": [],
-      "audience": null,
-      "dependencies": [],
-      "components": [],
-      "auth": {},
-      "tests": null,
-      "workflows": [],
-      "lastActivity": null,
-      "status": "unknown",
-      "license": null,
-      "hasDocumentation": false,
-      "metrics": null,
-      "tags": [
-        "Transport & Mobilité"
-      ],
-      "changelog": null,
-      "changelogGeneratedAt": null,
-      "organization": "etalab"
-    },
-    {
-      "url": "https://github.com/etalab/mastodon-stats",
-      "name": "mastodon-stats",
-      "description": "Ce projet vise à collecter et analyser des statistiques sur les instances Mastodon. Il permet de suivre l'évolution de l'utilisation du réseau et d'identifier les tendances émergentes.",
-      "language": "Python",
-      "features": [
-        "Statistiques & Rapports",
-        "Visualisation de données & Cartographie",
-        "Recherche & Filtres"
-      ],
-      "audience": "Professionnels",
-      "dependencies": [],
-      "components": [
-        "Python (scripts & backend)",
-        "Bases de données SQL"
-      ],
-      "auth": {
-        "methods": [
-          "none"
-        ]
-      },
-      "tests": [],
-      "workflows": [],
-      "lastActivity": null,
-      "status": "unknown",
-      "license": null,
-      "hasDocumentation": false,
-      "metrics": null,
-      "tags": [
-        "Données & Open Data"
-      ],
-      "changelog": null,
-      "changelogGeneratedAt": null,
-      "organization": "etalab"
-    },
-    {
       "url": "https://github.com/entrepreneur-interet-general/matchID-search",
       "name": "matchID-search",
       "description": "Ce projet a pour but de fournir un outil de recherche. Il permet de rechercher des informations spécifiques et de les exploiter.",
@@ -94972,9 +94916,234 @@
       "organization": "entrepreneur-interet-general"
     },
     {
-      "url": "https://github.com/MTES-MCT/test_nicolas",
-      "name": "test_nicolas",
-      "description": "Ce dépôt semble être un projet de test, probablement pour des expérimentations ou des validations de concepts. Il est actuellement vide, sans fichiers ni répertoires définis.",
+      "url": "https://github.com/etalab/transport-dev-services",
+      "name": "transport-dev-services",
+      "description": "Ce projet fournit des services de développement liés au transport. Il vise à faciliter la création et l'intégration d'applications dans le domaine des transports. Il offre des outils et des API pour les développeurs.",
+      "language": null,
+      "features": [],
+      "audience": null,
+      "dependencies": [],
+      "components": [],
+      "auth": {},
+      "tests": null,
+      "workflows": [],
+      "lastActivity": null,
+      "status": "unknown",
+      "license": null,
+      "hasDocumentation": false,
+      "metrics": null,
+      "tags": [
+        "Transport & Mobilité"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "etalab"
+    },
+    {
+      "url": "https://github.com/etalab/mastodon-stats",
+      "name": "mastodon-stats",
+      "description": "Ce projet vise à collecter et analyser des statistiques sur les instances Mastodon. Il permet de suivre l'évolution de l'utilisation du réseau et d'identifier les tendances émergentes.",
+      "language": "Python",
+      "features": [
+        "Statistiques & Rapports",
+        "Visualisation de données & Cartographie",
+        "Recherche & Filtres"
+      ],
+      "audience": "Professionnels",
+      "dependencies": [],
+      "components": [
+        "Python (scripts & backend)",
+        "Bases de données SQL"
+      ],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": [],
+      "workflows": [],
+      "lastActivity": null,
+      "status": "unknown",
+      "license": null,
+      "hasDocumentation": false,
+      "metrics": null,
+      "tags": [
+        "Données & Open Data"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "etalab"
+    },
+    {
+      "url": "https://github.com/betagouv/tmp-repo",
+      "name": "tmp-repo",
+      "description": "Ce dépôt semble être un dépôt temporaire ou de test, probablement utilisé pour des expérimentations ou des développements rapides.",
+      "language": null,
+      "features": [],
+      "audience": null,
+      "dependencies": [],
+      "components": [],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": null,
+      "workflows": [],
+      "lastActivity": null,
+      "status": "unknown",
+      "license": null,
+      "hasDocumentation": false,
+      "metrics": null,
+      "tags": [],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "betagouv"
+    },
+    {
+      "url": "https://github.com/betagouv/outline-to-delete",
+      "name": "outline-to-delete",
+      "description": "Ce projet permet de supprimer des données selon un planning défini. Il est conçu pour automatiser la suppression d'informations sensibles ou obsolètes.",
+      "language": null,
+      "features": [],
+      "audience": null,
+      "dependencies": [],
+      "components": [],
+      "auth": {
+        "methods": [
+          "none"
+        ],
+        "providers": []
+      },
+      "tests": null,
+      "workflows": null,
+      "lastActivity": null,
+      "status": "unknown",
+      "license": null,
+      "hasDocumentation": false,
+      "metrics": null,
+      "tags": [],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "betagouv"
+    },
+    {
+      "url": "https://github.com/betagouv/mes-aides-data",
+      "name": "mes-aides-data",
+      "description": "Ce dépôt contient les données relatives aux aides sociales en France. Il vise à centraliser et rendre accessibles ces informations pour faciliter l'accès aux droits pour les citoyens.",
+      "language": null,
+      "features": [],
+      "audience": "Grand public",
+      "dependencies": [],
+      "components": [],
+      "auth": {
+        "methods": [
+          "none"
+        ],
+        "providers": []
+      },
+      "tests": null,
+      "workflows": null,
+      "lastActivity": null,
+      "status": "unknown",
+      "license": null,
+      "hasDocumentation": false,
+      "metrics": null,
+      "tags": [
+        "aides sociales",
+        "Données & Open Data",
+        "Écosystème beta.gouv / État"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "betagouv"
+    },
+    {
+      "url": "https://github.com/betagouv/dsfr-feedback",
+      "name": "dsfr-feedback",
+      "description": "Ce projet permet de recueillir les retours des utilisateurs sur le Design System FR (DSFR). Il vise à améliorer l'accessibilité et l'expérience utilisateur du système de conception.",
+      "language": null,
+      "features": [],
+      "audience": "Agents de l'Administration",
+      "dependencies": [],
+      "components": [],
+      "auth": {
+        "methods": [
+          "none"
+        ]
+      },
+      "tests": null,
+      "workflows": null,
+      "lastActivity": null,
+      "status": "unknown",
+      "license": null,
+      "hasDocumentation": false,
+      "metrics": null,
+      "tags": [
+        "Design System & UI",
+        "Communication & Messagerie",
+        "Tests & Qualité"
+      ],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "betagouv"
+    },
+    {
+      "url": "https://github.com/betagouv/budget",
+      "name": "budget",
+      "description": "Ce projet vise à fournir un outil pour la gestion et la visualisation des budgets. Il permet de suivre les dépenses publiques et de promouvoir la transparence financière. L'objectif est de rendre l'information budgétaire accessible à tous.",
+      "language": null,
+      "features": [],
+      "audience": null,
+      "dependencies": [],
+      "components": [],
+      "auth": {
+        "methods": [
+          "none"
+        ],
+        "providers": []
+      },
+      "tests": null,
+      "workflows": null,
+      "lastActivity": null,
+      "status": "unknown",
+      "license": null,
+      "hasDocumentation": false,
+      "metrics": null,
+      "tags": [],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "betagouv"
+    },
+    {
+      "url": "https://github.com/betagouv/animation-communaute",
+      "name": "animation-communaute",
+      "description": "Ce dépôt contient le code source de l'application Animation Communauté, une plateforme web développée par beta.gouv. Elle vise à faciliter l'animation et la mise en relation des communautés.",
+      "language": null,
+      "features": [],
+      "audience": [],
+      "dependencies": [],
+      "components": [],
+      "auth": {
+        "methods": [],
+        "providers": []
+      },
+      "tests": null,
+      "workflows": [],
+      "lastActivity": null,
+      "status": "unknown",
+      "license": null,
+      "hasDocumentation": false,
+      "metrics": null,
+      "tags": [],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "betagouv"
+    },
+    {
+      "url": "https://github.com/IA-Generative/prompt-guard",
+      "name": "prompt-guard",
+      "description": "Ce projet vise à protéger les applications d'IA générative contre les attaques par injection de prompt. Il offre une couche de sécurité pour garantir la robustesse et la fiabilité des modèles de langage.",
       "language": null,
       "features": [],
       "audience": null,
@@ -94993,83 +95162,13 @@
       "license": null,
       "hasDocumentation": false,
       "metrics": null,
-      "tags": [],
-      "changelog": null,
-      "changelogGeneratedAt": null,
-      "organization": "MTES-MCT"
-    },
-    {
-      "url": "https://github.com/MTES-MCT/parcours_r_module_big_data",
-      "name": "parcours_r_module_big_data",
-      "description": "Ce dépôt semble être un module d'apprentissage ou un parcours pédagogique axé sur le Big Data, probablement utilisant le langage R. Il vise à fournir des ressources et des outils pour comprendre et manipuler de grands ensembles de données.",
-      "language": "R",
-      "features": [],
-      "audience": "Professionnels",
-      "dependencies": [],
-      "components": [],
-      "auth": {
-        "methods": [
-          "none"
-        ]
-      },
-      "tests": null,
-      "workflows": null,
-      "lastActivity": null,
-      "status": "unknown",
-      "license": null,
-      "hasDocumentation": false,
-      "metrics": null,
       "tags": [
-        "Données & Open Data",
-        "R & Data Science"
+        "Intelligence Artificielle & LLM",
+        "Sécurité & Auth"
       ],
       "changelog": null,
       "changelogGeneratedAt": null,
-      "organization": "MTES-MCT"
-    },
-    {
-      "url": "https://github.com/MTES-MCT/dialog-roadmap",
-      "name": "dialog-roadmap",
-      "description": "Ce dépôt semble être un squelette de projet, sans contenu visible. Il est donc difficile de déterminer sa fonction précise sans plus d'informations.",
-      "language": null,
-      "features": [],
-      "audience": null,
-      "dependencies": [],
-      "components": [],
-      "auth": null,
-      "tests": null,
-      "workflows": [],
-      "lastActivity": null,
-      "status": "unknown",
-      "license": null,
-      "hasDocumentation": false,
-      "metrics": null,
-      "tags": [],
-      "changelog": null,
-      "changelogGeneratedAt": null,
-      "organization": "MTES-MCT"
-    },
-    {
-      "url": "https://github.com/MTES-MCT/dataqual",
-      "name": "dataqual",
-      "description": "Ce projet vise à améliorer la qualité des données. Il fournit des outils et des méthodes pour valider, nettoyer et enrichir les données.",
-      "language": null,
-      "features": [],
-      "audience": null,
-      "dependencies": [],
-      "components": [],
-      "auth": {},
-      "tests": null,
-      "workflows": [],
-      "lastActivity": null,
-      "status": "unknown",
-      "license": null,
-      "hasDocumentation": false,
-      "metrics": null,
-      "tags": [],
-      "changelog": null,
-      "changelogGeneratedAt": null,
-      "organization": "MTES-MCT"
+      "organization": "IA-Generative"
     },
     {
       "url": "https://github.com/SocialGouv/token-bureau-test-outscope",
@@ -95248,9 +95347,9 @@
       "organization": "SocialGouv"
     },
     {
-      "url": "https://github.com/IA-Generative/prompt-guard",
-      "name": "prompt-guard",
-      "description": "Ce projet vise à protéger les applications d'IA générative contre les attaques par injection de prompt. Il offre une couche de sécurité pour garantir la robustesse et la fiabilité des modèles de langage.",
+      "url": "https://github.com/MTES-MCT/test_nicolas",
+      "name": "test_nicolas",
+      "description": "Ce dépôt semble être un projet de test, probablement pour des expérimentations ou des validations de concepts. Il est actuellement vide, sans fichiers ni répertoires définis.",
       "language": null,
       "features": [],
       "audience": null,
@@ -95269,21 +95368,18 @@
       "license": null,
       "hasDocumentation": false,
       "metrics": null,
-      "tags": [
-        "Intelligence Artificielle & LLM",
-        "Sécurité & Auth"
-      ],
+      "tags": [],
       "changelog": null,
       "changelogGeneratedAt": null,
-      "organization": "IA-Generative"
+      "organization": "MTES-MCT"
     },
     {
-      "url": "https://github.com/betagouv/tmp-repo",
-      "name": "tmp-repo",
-      "description": "Ce dépôt semble être un dépôt temporaire ou de test, probablement utilisé pour des expérimentations ou des développements rapides.",
-      "language": null,
+      "url": "https://github.com/MTES-MCT/parcours_r_module_big_data",
+      "name": "parcours_r_module_big_data",
+      "description": "Ce dépôt semble être un module d'apprentissage ou un parcours pédagogique axé sur le Big Data, probablement utilisant le langage R. Il vise à fournir des ressources et des outils pour comprendre et manipuler de grands ensembles de données.",
+      "language": "R",
       "features": [],
-      "audience": null,
+      "audience": "Professionnels",
       "dependencies": [],
       "components": [],
       "auth": {
@@ -95292,60 +95388,6 @@
         ]
       },
       "tests": null,
-      "workflows": [],
-      "lastActivity": null,
-      "status": "unknown",
-      "license": null,
-      "hasDocumentation": false,
-      "metrics": null,
-      "tags": [],
-      "changelog": null,
-      "changelogGeneratedAt": null,
-      "organization": "betagouv"
-    },
-    {
-      "url": "https://github.com/betagouv/outline-to-delete",
-      "name": "outline-to-delete",
-      "description": "Ce projet permet de supprimer des données selon un planning défini. Il est conçu pour automatiser la suppression d'informations sensibles ou obsolètes.",
-      "language": null,
-      "features": [],
-      "audience": null,
-      "dependencies": [],
-      "components": [],
-      "auth": {
-        "methods": [
-          "none"
-        ],
-        "providers": []
-      },
-      "tests": null,
-      "workflows": null,
-      "lastActivity": null,
-      "status": "unknown",
-      "license": null,
-      "hasDocumentation": false,
-      "metrics": null,
-      "tags": [],
-      "changelog": null,
-      "changelogGeneratedAt": null,
-      "organization": "betagouv"
-    },
-    {
-      "url": "https://github.com/betagouv/mes-aides-data",
-      "name": "mes-aides-data",
-      "description": "Ce dépôt contient les données relatives aux aides sociales en France. Il vise à centraliser et rendre accessibles ces informations pour faciliter l'accès aux droits pour les citoyens.",
-      "language": null,
-      "features": [],
-      "audience": "Grand public",
-      "dependencies": [],
-      "components": [],
-      "auth": {
-        "methods": [
-          "none"
-        ],
-        "providers": []
-      },
-      "tests": null,
       "workflows": null,
       "lastActivity": null,
       "status": "unknown",
@@ -95353,84 +95395,23 @@
       "hasDocumentation": false,
       "metrics": null,
       "tags": [
-        "aides sociales",
         "Données & Open Data",
-        "Écosystème beta.gouv / État"
+        "R & Data Science"
       ],
       "changelog": null,
       "changelogGeneratedAt": null,
-      "organization": "betagouv"
+      "organization": "MTES-MCT"
     },
     {
-      "url": "https://github.com/betagouv/dsfr-feedback",
-      "name": "dsfr-feedback",
-      "description": "Ce projet permet de recueillir les retours des utilisateurs sur le Design System FR (DSFR). Il vise à améliorer l'accessibilité et l'expérience utilisateur du système de conception.",
-      "language": null,
-      "features": [],
-      "audience": "Agents de l'Administration",
-      "dependencies": [],
-      "components": [],
-      "auth": {
-        "methods": [
-          "none"
-        ]
-      },
-      "tests": null,
-      "workflows": null,
-      "lastActivity": null,
-      "status": "unknown",
-      "license": null,
-      "hasDocumentation": false,
-      "metrics": null,
-      "tags": [
-        "Design System & UI",
-        "Communication & Messagerie",
-        "Tests & Qualité"
-      ],
-      "changelog": null,
-      "changelogGeneratedAt": null,
-      "organization": "betagouv"
-    },
-    {
-      "url": "https://github.com/betagouv/budget",
-      "name": "budget",
-      "description": "Ce projet vise à fournir un outil pour la gestion et la visualisation des budgets. Il permet de suivre les dépenses publiques et de promouvoir la transparence financière. L'objectif est de rendre l'information budgétaire accessible à tous.",
+      "url": "https://github.com/MTES-MCT/dialog-roadmap",
+      "name": "dialog-roadmap",
+      "description": "Ce dépôt semble être un squelette de projet, sans contenu visible. Il est donc difficile de déterminer sa fonction précise sans plus d'informations.",
       "language": null,
       "features": [],
       "audience": null,
       "dependencies": [],
       "components": [],
-      "auth": {
-        "methods": [
-          "none"
-        ],
-        "providers": []
-      },
-      "tests": null,
-      "workflows": null,
-      "lastActivity": null,
-      "status": "unknown",
-      "license": null,
-      "hasDocumentation": false,
-      "metrics": null,
-      "tags": [],
-      "changelog": null,
-      "changelogGeneratedAt": null,
-      "organization": "betagouv"
-    },
-    {
-      "url": "https://github.com/betagouv/animation-communaute",
-      "name": "animation-communaute",
-      "description": "Ce dépôt contient le code source de l'application Animation Communauté, une plateforme web développée par beta.gouv. Elle vise à faciliter l'animation et la mise en relation des communautés.",
-      "language": null,
-      "features": [],
-      "audience": [],
-      "dependencies": [],
-      "components": [],
-      "auth": {
-        "methods": [],
-        "providers": []
-      },
+      "auth": null,
       "tests": null,
       "workflows": [],
       "lastActivity": null,
@@ -95441,7 +95422,29 @@
       "tags": [],
       "changelog": null,
       "changelogGeneratedAt": null,
-      "organization": "betagouv"
+      "organization": "MTES-MCT"
+    },
+    {
+      "url": "https://github.com/MTES-MCT/dataqual",
+      "name": "dataqual",
+      "description": "Ce projet vise à améliorer la qualité des données. Il fournit des outils et des méthodes pour valider, nettoyer et enrichir les données.",
+      "language": null,
+      "features": [],
+      "audience": null,
+      "dependencies": [],
+      "components": [],
+      "auth": {},
+      "tests": null,
+      "workflows": [],
+      "lastActivity": null,
+      "status": "unknown",
+      "license": null,
+      "hasDocumentation": false,
+      "metrics": null,
+      "tags": [],
+      "changelog": null,
+      "changelogGeneratedAt": null,
+      "organization": "MTES-MCT"
     }
   ],
   "organizations": [
@@ -97622,9 +97625,9 @@
   "stats": {
     "total": 1856,
     "byOrg": {
-      "tchapgouv": 88,
-      "suitenumerique": 47,
       "signaux-faibles": 7,
+      "suitenumerique": 47,
+      "tchapgouv": 88,
       "refugies-info": 8,
       "proconnect-gouv": 23,
       "openmaraude": 13,
@@ -97632,82 +97635,82 @@
       "mte-dgpr": 2,
       "mission-apprentissage": 23,
       "mesadsfr": 1,
-      "incubateur-ademe": 82,
       "gristgouv": 25,
+      "incubateur-ademe": 82,
       "france-connect": 10,
       "gip-inclusion": 55,
       "etalab-ia": 69,
       "dnum-mi": 37,
-      "etalab": 177,
       "entrepreneur-interet-general": 87,
+      "etalab": 177,
       "demarche-numerique": 10,
       "codegouvfr": 39,
-      "cloud-gouv": 16,
       "datagouv": 81,
+      "cloud-gouv": 16,
       "betagouv-experimentations": 14,
       "anct-cartographie-nationale": 11,
       "agora-gouv": 11,
-      "MTES-MCT": 190,
-      "SocialGouv": 231,
-      "ARCEP-dev": 16,
+      "betagouv": 377,
       "IA-Generative": 53,
-      "betagouv": 377
+      "ARCEP-dev": 16,
+      "SocialGouv": 231,
+      "MTES-MCT": 190
     },
     "byLanguage": {
+      "Go": 33,
+      "Ruby": 69,
       "Python": 429,
-      "Rust": 19,
-      "Shell": 104,
-      "Swift": 5,
-      "Kotlin": 10,
+      "Makefile": 9,
       "Dockerfile": 23,
       "TypeScript": 390,
+      "Go Template": 8,
+      "Shell": 104,
+      "Jupyter Notebook": 23,
+      "Rust": 19,
+      "Swift": 5,
+      "Kotlin": 10,
       "Smarty": 2,
       "HCL": 9,
       "HTML": 73,
-      "Go": 33,
       "Objective-C": 1,
       "Jinja": 6,
       "YAML": 13,
-      "Go Template": 8,
-      "Jupyter Notebook": 23,
-      "Ruby": 69,
-      "Makefile": 9,
       "JavaScript": 251,
       "Procfile": 4,
       "Java": 19,
-      "PHP": 23,
       "CSS": 13,
+      "PHP": 23,
       "Vue": 19,
       "MDX": 1,
       "Mustache": 4,
       "Nunjucks": 3,
+      "PowerShell": 1,
+      "Clojure": 6,
+      "R": 15,
+      "C#": 2,
       "Elixir": 5,
       "C": 2,
       "COBOL": 1,
       "null": 2,
-      "R": 15,
       "CartoCSS": 2,
-      "Clojure": 6,
       "SCSS": 4,
       "M": 1,
-      "PowerShell": 1,
-      "C#": 2,
       "ReScript": 1,
       "Scheme": 1,
       "TeX": 3,
-      "Nix": 5,
       "XSLT": 1,
+      "Nix": 5,
       "Dart": 2,
-      "SAS": 1,
-      "PLpgSQL": 4,
-      "FreeMarker": 1,
-      "SQL": 1,
-      "Batchfile": 2,
       "Scala": 4,
       "Elm": 2,
       "Pug": 1,
       "Markdown": 1,
-      "Svelte": 1
+      "Svelte": 1,
+      "Batchfile": 2,
+      "PLpgSQL": 4,
+      "SAS": 1,
+      "FreeMarker": 1,
+      "SQL": 1
     }
   }
 }
