@@ -1,12 +1,12 @@
-## Changelog : bal (30 derniers jours, au 20 août 2026)
+## Changelog : bal (30 derniers jours, au 22 août 2026)
 
 ### Résumé
-Ce mois-ci, BAL a bénéficié d'améliorations sur la gestion des listes de diffusion et d'une mise à jour majeure de ses outils de développement pour garantir une meilleure sécurité, une performance accrue et une maintenance simplifiée.
+Ce mois-ci, BAL a amélioré l'expérience de gestion des listes de diffusion en offrant un meilleur suivi de l'avancement et des notifications automatiques par email. Le projet a également bénéficié d'une modernisation majeure de ses outils de développement et d'un renforcement de sa sécurité.
 
 ### Évolutions fonctionnelles
-- Optimisation du processus de génération des listes de diffusion, incluant désormais l'envoi d'une notification par email une fois le traitement terminé ([#533](https://github.com/mission-apprentissage/bal/issues/533), [#534](https://github.com/mission-apprentissage/bal/issues/534)).
+- **Gestion des listes de diffusion** : ajout d'un indicateur d'avancement sur la page de gestion [#535](https://github.com/mission-apprentissage/bal/pull/535) et mise en place de notifications par email à la fin du traitement des listes [#533](https://github.com/mission-apprentissage/bal/pull/533).
 
 ### Évolutions techniques
-- Migration majeure de l'environnement de développement : passage à TypeScript 7, Next.js 16.3 et adoption de Biome pour remplacer ESLint et Prettier ([#4962](https://github.com/mission-apprentissage/bal/issues/4962), [#532](https://github.com/mission-apprentissage/bal/issues/532)).
-- Mise à jour de l'infrastructure Docker pour l'image Metabase ([#531](https://github.com/mission-apprentissage/bal/issues/531)).
-- Correction d'une vulnérabilité de sécurité critique (CVE) identifiée sur Vitest ([#530](https://github.com/mission-apprentissage/bal/issues/530)).
+- **Modernisation de la stack technique** : montée de version vers TypeScript 7 et Next.js 16.3, et migration de l'outillage de linting/formatage vers Biome [#4962](https://github.com/mission-apprentissage/bal/pull/4962).
+- **Sécurité et maintenance** : correction d'une vulnérabilité critique (CVE) sur Vitest [#530](https://github.com/mission-apprentissage/bal/pull/530) et mise à jour de l'image Docker Metabase [#531](https://github.com/mission-apprentissage/bal/pull/531).
+- **CI/CD et déploiement** : correction du processus de publication de l'image UI de production lors des releases [#537](https://github.com/mission-apprentissage/bal/pull/537).
