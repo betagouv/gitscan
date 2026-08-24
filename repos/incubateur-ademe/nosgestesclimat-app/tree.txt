@@ -769,7 +769,8 @@
 │       │   │   │   │   │   │       │   ├── delete-group.action.ts
 │       │   │   │   │   │   │       │   ├── leave-group.action.ts
 │       │   │   │   │   │   │       │   ├── remove-participant.action.ts
-│       │   │   │   │   │   │       │   └── update-group.action.ts
+│       │   │   │   │   │   │       │   ├── update-group.action.ts
+│       │   │   │   │   │   │       │   └── update-simulation-used.action.ts
 │       │   │   │   │   │   │       ├── _components
 │       │   │   │   │   │   │       │   ├── EditableGroupTitle.tsx
 │       │   │   │   │   │   │       │   ├── GroupPage.tsx
@@ -1249,14 +1250,26 @@
 │       │   │   ├── actions
 │       │   │   │   ├── ActionCard
 │       │   │   │   │   ├── ActionCard.module.css
-│       │   │   │   │   └── ActionCard.tsx
+│       │   │   │   │   ├── ActionCard.tsx
+│       │   │   │   │   ├── ActionCardSwitch.tsx
+│       │   │   │   │   ├── ActionCardSwitchServer.tsx
+│       │   │   │   │   ├── ImpactTag.tsx
+│       │   │   │   │   └── rankToEmoji.ts
 │       │   │   │   ├── ActionTracker.tsx
 │       │   │   │   ├── BetaBanner.tsx
 │       │   │   │   ├── HighestImpactActionsSection.tsx
+│       │   │   │   ├── HighestImpactActionsSectionDarkBackground.tsx
+│       │   │   │   ├── HighestImpactActionsSectionSwitch.tsx
+│       │   │   │   ├── HighestImpactActionsSectionWhiteBackground.tsx
+│       │   │   │   ├── HighlightedActionCard.tsx
 │       │   │   │   ├── ThemeBadge.tsx
 │       │   │   │   ├── ThemeSection.tsx
-│       │   │   │   └── pages
-│       │   │   │       └── ActionsPage.tsx
+│       │   │   │   ├── __tests__
+│       │   │   │   │   └── ActionTracker.test.tsx
+│       │   │   │   ├── pages
+│       │   │   │   │   └── ActionsPage.tsx
+│       │   │   │   └── utils
+│       │   │   │       └── shouldDisplayComputationInProgressText.ts
 │       │   │   ├── animations
 │       │   │   │   └── StaggeredCards.tsx
 │       │   │   ├── authentication
@@ -1374,6 +1387,7 @@
 │       │   │   ├── icons
 │       │   │   │   ├── ActionsIcon.tsx
 │       │   │   │   ├── AmisIcon.tsx
+│       │   │   │   ├── ArrowNarrowRightIcon.tsx
 │       │   │   │   ├── BilanIcon.tsx
 │       │   │   │   ├── BookClosedIcon.tsx
 │       │   │   │   ├── CarIcon.tsx
@@ -2172,6 +2186,8 @@
 │       │   │   ├── providers
 │       │   │   │   ├── DefaultProvider.tsx
 │       │   │   │   ├── engineProvider
+│       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   └── provider.test.tsx
 │       │   │   │   │   ├── context.ts
 │       │   │   │   │   ├── hooks
 │       │   │   │   │   │   ├── useCategories.ts
@@ -2235,6 +2251,7 @@
 │       │   │   │   ├── constants.ts
 │       │   │   │   ├── flags.ts
 │       │   │   │   ├── getFeatureFlag.ts
+│       │   │   │   ├── resolveFlagValue.ts
 │       │   │   │   └── urlParams.ts
 │       │   │   ├── geolocation
 │       │   │   │   └── get-geolocation.ts
@@ -2303,6 +2320,9 @@
 │       │       ├── __tests__
 │       │       │   └── cookie.test.ts
 │       │       ├── analytics
+│       │       │   ├── __tests__
+│       │       │   │   └── experimentExposure.test.ts
+│       │       │   ├── experimentExposure.ts
 │       │       │   ├── trackEvent.ts
 │       │       │   ├── trackGTMEvent.ts
 │       │       │   └── trackUniqueEvent.ts
@@ -2406,6 +2426,8 @@
 │       │   │   ├── 20260723120000_drop_legacy_action_columns
 │       │   │   │   └── migration.sql
 │       │   │   ├── 20260811103200_add_groups_views_to_ngc_anon
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20260821114944_add_action_translation_description
 │       │   │   │   └── migration.sql
 │       │   │   └── migration_lock.toml
 │       │   ├── schema
@@ -2587,4 +2609,4 @@
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 └── tsconfig.json
-667 directories, 1967 files
+672 directories, 1984 files
