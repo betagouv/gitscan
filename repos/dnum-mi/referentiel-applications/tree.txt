@@ -337,17 +337,33 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260731142800_backfill_last_permission_change
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260803180730_add_actor_type_is_default
+│   │   │   │   └── migration.sql
 │   │   │   ├── 20260806093152_add_email_log
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260807131841_add_action_log
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260807134452_add_metadata_impersonator
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260810070000_add_technology_eol_details
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260810121831_add_user_is_blocked
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260811082215_nullable_quality
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260814090000_add_createur_actor_type
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260818095241_add_saved_filter
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260820100000_add_correlation_suggestion
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   ├── schema
+│   │   │   ├── action-log.prisma
 │   │   │   ├── applications.prisma
 │   │   │   ├── business-division.prisma
 │   │   │   ├── compliance.prisma
+│   │   │   ├── correlation.prisma
 │   │   │   ├── data.prisma
 │   │   │   ├── email-log.prisma
 │   │   │   ├── externals.prisma
@@ -384,7 +400,9 @@
 │   │   │   ├── actorType.module.ts
 │   │   │   ├── actorType.service.ts
 │   │   │   └── dto
+│   │   │       ├── actor-type-filters.dto.ts
 │   │   │       ├── actorType.dto.ts
+│   │   │       ├── app-perms-matrix-history.dto.ts
 │   │   │       └── app-perms-matrix.dto.ts
 │   │   ├── app.controller.spec.ts
 │   │   ├── app.controller.ts
@@ -399,8 +417,10 @@
 │   │   │   │   └── application-export.columnLabels.ts
 │   │   │   ├── constants
 │   │   │   │   ├── application-export.sheet-labels.ts
+│   │   │   │   ├── enum-label.spec.ts
 │   │   │   │   ├── enum-label.ts
-│   │   │   │   └── relation-type-labels.ts
+│   │   │   │   ├── relation-type-labels.ts
+│   │   │   │   └── status-groups.ts
 │   │   │   ├── dto
 │   │   │   │   ├── application-rights.dto.ts
 │   │   │   │   ├── create-application.dto.ts
@@ -450,12 +470,14 @@
 │   │   │   │   └── pagination.dto.ts
 │   │   │   ├── guards
 │   │   │   │   └── permission.guard.ts
+│   │   │   ├── request-context.ts
 │   │   │   ├── service
 │   │   │   │   ├── check-permissions.service.spec.ts
 │   │   │   │   ├── check-permissions.service.ts
 │   │   │   │   ├── excel-builder.service.ts
 │   │   │   │   └── prisma-query-builder.service.ts
 │   │   │   └── utils
+│   │   │       ├── compliance-presence.utils.ts
 │   │   │       ├── enum.utils.ts
 │   │   │       ├── excel.utils.ts
 │   │   │       ├── quality.utils.ts
@@ -481,6 +503,8 @@
 │   │   │   ├── config.service.ts
 │   │   │   ├── configs
 │   │   │   │   ├── app.config.ts
+│   │   │   │   ├── correlation.config.spec.ts
+│   │   │   │   ├── correlation.config.ts
 │   │   │   │   ├── database.config.ts
 │   │   │   │   ├── email.config.ts
 │   │   │   │   ├── index.ts
@@ -633,8 +657,10 @@
 │   │   │   ├── metadatas.module.ts
 │   │   │   └── metadatas.service.ts
 │   │   ├── middlewares
+│   │   │   ├── action-log.middleware.ts
 │   │   │   ├── auth.middleware.spec.ts
-│   │   │   └── auth.middleware.ts
+│   │   │   ├── auth.middleware.ts
+│   │   │   └── request-context.middleware.ts
 │   │   ├── organization-maia-references
 │   │   │   ├── dto
 │   │   │   │   └── organization-maia-references.dto.ts
@@ -655,6 +681,7 @@
 │   │   ├── prisma
 │   │   │   ├── extensions
 │   │   │   │   ├── decimal-to-number.extension.ts
+│   │   │   │   ├── metadata-impersonator.extension.ts
 │   │   │   │   └── pagination.extension.ts
 │   │   │   ├── prisma.module.ts
 │   │   │   ├── prisma.service.spec.ts
@@ -667,12 +694,29 @@
 │   │   │   ├── application
 │   │   │   │   └── dto
 │   │   │   │       └── relation-application.dto.ts
+│   │   │   ├── correlation
+│   │   │   │   ├── application
+│   │   │   │   │   └── dto
+│   │   │   │   │       └── correlation-suggestion.dto.ts
+│   │   │   │   ├── correlation-detection.service.spec.ts
+│   │   │   │   ├── correlation-detection.service.ts
+│   │   │   │   ├── correlation-pair.util.spec.ts
+│   │   │   │   ├── correlation-pair.util.ts
+│   │   │   │   ├── correlation-suggestion.controller.ts
+│   │   │   │   ├── correlation-suggestion.service.spec.ts
+│   │   │   │   ├── correlation-suggestion.service.ts
+│   │   │   │   └── infrastructure
+│   │   │   │       └── repository
+│   │   │   │           ├── correlation-suggestion.repository.interface.ts
+│   │   │   │           ├── correlation-suggestion.repository.spec.ts
+│   │   │   │           └── correlation-suggestion.repository.ts
 │   │   │   ├── infrastructure
 │   │   │   │   └── repository
 │   │   │   │       ├── relation.repository.interface.ts
 │   │   │   │       └── relation.repository.ts
 │   │   │   ├── relation.controller.ts
 │   │   │   ├── relation.module.ts
+│   │   │   ├── relation.service.spec.ts
 │   │   │   └── relation.service.ts
 │   │   ├── report
 │   │   │   ├── dto
@@ -693,6 +737,14 @@
 │   │   │   ├── rgaa.controller.ts
 │   │   │   ├── rgaa.module.ts
 │   │   │   └── rgaa.service.ts
+│   │   ├── saved-filter
+│   │   │   ├── dto
+│   │   │   │   ├── create-saved-filter.dto.ts
+│   │   │   │   └── saved-filter.dto.ts
+│   │   │   ├── saved-filter.controller.ts
+│   │   │   ├── saved-filter.module.ts
+│   │   │   ├── saved-filter.service.spec.ts
+│   │   │   └── saved-filter.service.ts
 │   │   ├── services
 │   │   │   └── logging.service.ts
 │   │   ├── stats
@@ -751,6 +803,7 @@
 │   │   │   │   └── technology.entity.ts
 │   │   │   ├── technology.controller.ts
 │   │   │   ├── technology.module.ts
+│   │   │   ├── technology.service.spec.ts
 │   │   │   ├── technology.service.ts
 │   │   │   └── utils
 │   │   │       ├── endoflife.utils.spec.ts
@@ -799,6 +852,7 @@
 │   │       ├── typeguard-includes.ts
 │   │       └── types.util.ts
 │   ├── tests
+│   │   ├── action-log.e2e-spec.ts
 │   │   ├── actor.e2e-spec.ts
 │   │   ├── app.e2e-spec.ts
 │   │   ├── applications.e2e-spec.ts
@@ -834,11 +888,13 @@
 │   │   ├── global-teardown.ts
 │   │   ├── hosting-option.e2e-spec.ts
 │   │   ├── hostings.e2e-spec.ts
+│   │   ├── impersonation.e2e-spec.ts
 │   │   ├── jest.setup.ts
 │   │   ├── label-source.e2e-spec.ts
 │   │   ├── labels.e2e-spec.ts
 │   │   ├── links.e2e-spec.ts
 │   │   ├── mdit-campaign.e2e-spec.ts
+│   │   ├── metadata-impersonator.e2e-spec.ts
 │   │   ├── organization.e2e-spec.ts
 │   │   ├── relations.e2e-spec.ts
 │   │   ├── reports.e2e-spec.ts
@@ -851,6 +907,7 @@
 │   │   ├── technologies.e2e-spec.ts
 │   │   ├── test-database.utils.ts
 │   │   ├── user-block.e2e-spec.ts
+│   │   ├── user-list-scope.e2e-spec.ts
 │   │   └── user.e2e-spec.ts
 │   ├── tsconfig.build.json
 │   ├── tsconfig.json
@@ -989,7 +1046,8 @@
 │   │   ├── favicon-16x16.png
 │   │   ├── favicon-32x32.png
 │   │   ├── favicon.ico
-│   │   └── manifest.json
+│   │   ├── manifest.json
+│   │   └── sw-force-reload.js
 │   ├── src
 │   │   ├── App.vue
 │   │   ├── api
@@ -1021,6 +1079,8 @@
 │   │   │   ├── PaginationFooter.vue
 │   │   │   ├── PermissionSelect.vue
 │   │   │   ├── PermissionWritePriorityRestart.vue
+│   │   │   ├── QualityNextActions.vue
+│   │   │   ├── QualityScoreBar.vue
 │   │   │   ├── QualityTab.vue
 │   │   │   ├── RefAppTable.vue
 │   │   │   ├── RelationShipGraph.vue
@@ -1049,6 +1109,7 @@
 │   │   │   │   ├── AdminTokensTab.vue
 │   │   │   │   ├── AdminUsersTab.vue
 │   │   │   │   ├── AppPermsMatrix.vue
+│   │   │   │   ├── AppPermsMatrixHistory.vue
 │   │   │   │   ├── BusinessDivisionActions.vue
 │   │   │   │   ├── EmailLogContentModal.vue
 │   │   │   │   ├── LabelSourceActions.vue
@@ -1101,6 +1162,7 @@
 │   │   │   │   ├── PriorityRestartFilter.vue
 │   │   │   │   ├── QualityFilter.vue
 │   │   │   │   ├── RelationFilter.vue
+│   │   │   │   ├── SavedFiltersPanel.vue
 │   │   │   │   ├── SearchHeader.vue
 │   │   │   │   ├── SidebarFilter.vue
 │   │   │   │   └── StatusFilter.vue
@@ -1126,12 +1188,13 @@
 │   │   │   ├── report
 │   │   │   │   └── use-notes-dialog.ts
 │   │   │   ├── use-accordion-manager.ts
+│   │   │   ├── use-app-permission.spec.ts
+│   │   │   ├── use-app-permission.ts
 │   │   │   ├── use-app-update.spec.ts
 │   │   │   ├── use-app-update.ts
 │   │   │   ├── use-application-search.ts
 │   │   │   ├── use-blocked-access.ts
 │   │   │   ├── use-column-preferences.ts
-│   │   │   ├── use-completeness.ts
 │   │   │   ├── use-d3-graph.ts
 │   │   │   ├── use-date.ts
 │   │   │   ├── use-filter-watcher.ts
@@ -1164,8 +1227,7 @@
 │   │   ├── services
 │   │   │   ├── authentication.ts
 │   │   │   ├── config.ts
-│   │   │   ├── impersonation.ts
-│   │   │   └── technicalDebt.ts
+│   │   │   └── impersonation.ts
 │   │   ├── stores
 │   │   │   ├── actorTypeStore.ts
 │   │   │   ├── applicationStore.ts
@@ -1174,6 +1236,7 @@
 │   │   │   ├── organizationStore.ts
 │   │   │   ├── relationStore.ts
 │   │   │   ├── reportStore.ts
+│   │   │   ├── savedFilterStore.ts
 │   │   │   ├── statisticsStore.ts
 │   │   │   ├── toasterStore.ts
 │   │   │   └── userStore.ts
@@ -1189,6 +1252,9 @@
 │   │   │   ├── get-ecoindex-grade.ts
 │   │   │   ├── get-time-quadrant.ts
 │   │   │   ├── log-dsfr-version.ts
+│   │   │   ├── quality-next-actions.spec.ts
+│   │   │   ├── quality-next-actions.ts
+│   │   │   ├── quality.ts
 │   │   │   ├── regex.ts
 │   │   │   ├── roles-utils.ts
 │   │   │   ├── stale-chunk.spec.ts
@@ -1221,13 +1287,13 @@
 │   │   ├── complianceFilters.spec.ts
 │   │   ├── createApplication.spec.ts
 │   │   ├── navigation.spec.ts
+│   │   ├── qualityNextActions.spec.ts
 │   │   ├── qualityPage.spec.ts
 │   │   ├── reports.spec.ts
+│   │   ├── savedFilters.spec.ts
 │   │   ├── searchHeader.spec.ts
 │   │   ├── utils.ts
 │   │   └── vue.spec.ts
-│   ├── tests-examples
-│   │   └── demo-todo-app.spec.ts
 │   ├── tsconfig.app.json
 │   ├── tsconfig.json
 │   ├── tsconfig.node.json
@@ -1268,4 +1334,4 @@
 │       ├── campaign.mjs
 │       └── sync-issue.mjs
 └── release-please-config.json
-338 directories, 932 files
+351 directories, 985 files
