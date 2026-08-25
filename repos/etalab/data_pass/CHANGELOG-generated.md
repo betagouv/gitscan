@@ -1,36 +1,33 @@
-## Changelog : data_pass (30 derniers jours, au 10 août 2026)
+## Changelog : data_pass (30 derniers jours, au 24 août 2026)
 
 ### Résumé
-Ce mois-ci, l'outil s'est enrichi de nouveaux éditeurs et de nouveaux types de formulaires, notamment pour l'API Particulier. L'expérience utilisateur a été améliorée par une meilleure visibilité des emails automatiques et une clarification des droits et rôles. Parallèlement, des mesures de sécurité importantes et des optimisations d'infrastructure ont été déployées.
+Ce mois-ci, data_pass s'enrichit de nouveaux éditeurs de données (Ianord, Nexys, Dinum) et de nouveaux formulaires. L'expérience utilisateur est simplifiée par une interface de consultation plus claire et une terminologie plus explicite, tandis que la sécurité et la gestion des journaux système ont été renforcées.
 
 ### Évolutions fonctionnelles
-- **Expansion de l'écosystème d'éditeurs et de formulaires** :
-    - Ajout de l'éditeur Ianord et de ses formulaires pour les cantines (lycées/collèges) [#1710](https://github.com/etalab/data_pass/issues/1710).
-    - Introduction d'un nouveau type de formulaire : "API Particulier" via Démarche numérique [#1682](https://github.com/etalab/data_pass/issues/1682).
-    - Ajout des éditeurs Hoptis Software et EAJE avec leurs formulaires respectifs.
-    - Renommage de certaines solutions logicielles (Familea Diabolo et Mikado) pour plus de précision.
-- **Gestion des accès et périmètres (scopes)** :
-    - Ajout du périmètre (scope) INE.
-    - Affichage des scopes AEEH et régime pensionnat sur les formulaires CapDemat [#1709](https://github.com/etalab/data_pass/issues/1709).
-- **Améliorations de l'interface (UI/UX)** :
-    - Mise en place d'une interface permettant de consulter les emails automatiques envoyés.
-    - Clarification de l'affichage des rôles et des niveaux de droits dans les index.
-    - Ajout de fils d'Ariane (breadcrumbs) pour faciliter la navigation.
-    - Amélioration de l'accessibilité de l'interface.
-- **Nouvelles fonctionnalités et corrections** :
-    - Transmission automatique de la convention aux contacts lors de la validation (projet DINUM).
-    - Correction de la proactivité CNOUS (utilisation du contact métier via le bridge HubEE).
-    - Résolution de bugs concernant la suppression involontaire de droits lors d'ajouts et la gestion des identifiants France Connect.
+- **Nouveaux éditeurs et formulaires** :
+    - Intégration de l'éditeur Ianord et de ses formulaires pour les cantines lycées/collèges [#1710](https://github.com/etalab/data_pass/issues/1710).
+    - Ajout du formulaire API Entreprise Nexys Relation Usagers (MGDIS) [#1731](https://github.com/etalab/data_pass/issues/1731).
+    - Ajout du formulaire Dinum permettant de transmettre la convention aux contacts lors de la validation [#1691](https://github.com/etalab/data_pass/issues/1691).
+- **Améliorations des formulaires existants** :
+    - Ajout des scopes AEEH et régime pensionnat sur le formulaire CapDemat [#1709](https://github.com/etalab/data_pass/issues/1709).
+    - Ajout du scope INE [#1722](https://github.com/etalab/data_pass/issues/1722).
+- **Interface utilisateur (UI/UX)** :
+    - Simplification des formulaires d'instruction : passage en mode consultation (suppression des boutons de modification et du panneau latéral) pour éviter les erreurs de saisie.
+    - Amélioration de la visibilité : affichage des emails automatisés et explications sur les différents niveaux de droits.
+    - Clarification de la terminologie : le champ « Nom de naissance » est désormais nommé « Nom de famille » [#1738](https://github.com/etalab/data_pass/issues/1738).
+- **Corrections** :
+    - Correction de la proactivité CNOUS pour utiliser le contact métier via le bridge HubEE.
+    - Correction du paramètre par défaut des brouillons pour les instructeurs (désactivé par défaut).
 
 ### Évolutions techniques
-- **Sécurité** :
-    - Mise à jour de Rails vers la version 8.1.3.1 pour corriger la vulnérabilité CVE-2026-66066.
-    - Restriction des privilèges OAuth pour HubEE : passage du scope `ADMIN` au scope `DATAPASS` pour limiter les risques [#1723](https://github.com/etalab/data_pass/issues/1723).
+- **Sécurité** : Mise à jour de Rails vers la version 8.1.3.1 pour corriger la vulnérabilité CVE-2026-66066 [#1715](https://github.com/etalab/data_pass/issues/1715).
 - **Infrastructure et Observabilité** :
-    - Suppression des configurations d'environnement locales (prod, staging, sandbox) au profit d'une gestion centralisée via Ansible.
-    - Migration de la production des journaux (logs) vers le format JSON via Logstasher pour faciliter l'analyse.
-- **Refactoring** :
-    - Nettoyage de la base de données avec le remplacement de l'ancien champ `cnous_statut_bourse` par une nomenclature unifiée `_boursier`.
+    - Migration de la production des journaux (logs) vers le format JSON via `logstasher`.
+    - Suppression des configurations d'environnement locales (prod, staging, sandbox) pour s'appuyer sur la gestion par Ansible.
+- **API et Documentation** :
+    - Mise à jour de la documentation de l'API (cadres juridiques Ianord, correction du compteur du Socle général) [#1736](https://github.com/etalab/data_pass/issues/1736).
+    - Clarification de la documentation des webhooks concernant la politique de retry [#1728](https://github.com/etalab/data_pass/issues/1728).
+- **Authentification** : Ajustement de la gestion des scopes OAuth pour HubEE.
 
 ### Autres changements
-- Affinage des libellés et des textes de l'interface suite aux retours du pôle juridique.
+- **Nettoyage** : Remplacement de l'attribut `cnous_statut_bourse` par `_boursier` pour une meilleure cohérence du code.
