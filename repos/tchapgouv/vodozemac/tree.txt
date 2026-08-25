@@ -1,0 +1,204 @@
+.
+├── .cargo
+│   └── mutants.toml
+├── .config
+│   └── nextest.toml
+├── .deny.toml
+├── .editorconfig
+├── .github
+│   ├── CODEOWNERS
+│   ├── dependabot.yml
+│   └── workflows
+│       ├── benchmarks.yml
+│       ├── ci.yml
+│       ├── coverage.yml
+│       ├── deny.yml
+│       ├── docs.yml
+│       ├── msrv.yaml
+│       ├── mutants-full.yml
+│       ├── mutants.yml
+│       └── zizmor.yml
+├── .gitignore
+├── .rumdl.toml
+├── .rustfmt.toml
+├── .typos.toml
+├── .vscode
+│   └── settings.json
+├── CHANGELOG.md
+├── CONTRIBUTING.md
+├── Cargo.toml
+├── LICENSE
+├── README.md
+├── RELEASING.md
+├── afl
+│   ├── README.md
+│   ├── hpke-message-decoding
+│   │   ├── Cargo.toml
+│   │   ├── in
+│   │   │   ├── msg_1.bin
+│   │   │   ├── msg_2.bin
+│   │   │   └── msg_3.bin
+│   │   ├── rust-toolchain.toml
+│   │   └── src
+│   │       └── main.rs
+│   ├── megolm-decoding
+│   │   ├── Cargo.toml
+│   │   ├── in
+│   │   │   └── message_*  (102 files)
+│   │   ├── rust-toolchain.toml
+│   │   └── src
+│   │       └── main.rs
+│   ├── megolm-decryption
+│   │   ├── Cargo.toml
+│   │   ├── in
+│   │   │   └── message_*  (125 files)
+│   │   ├── rust-toolchain.toml
+│   │   └── src
+│   │       └── main.rs
+│   ├── megolm-session-creation
+│   │   ├── Cargo.toml
+│   │   ├── in
+│   │   │   ├── message_1
+│   │   │   ├── message_2
+│   │   │   ├── message_3
+│   │   │   ├── message_4
+│   │   │   ├── message_5
+│   │   │   ├── message_6
+│   │   │   ├── message_7
+│   │   │   └── message_8
+│   │   ├── rust-toolchain.toml
+│   │   └── src
+│   │       └── main.rs
+│   ├── megolm-session-import
+│   │   ├── Cargo.toml
+│   │   ├── in
+│   │   │   ├── megolm_session_key
+│   │   │   ├── message_1
+│   │   │   ├── message_2
+│   │   │   ├── message_3
+│   │   │   ├── message_4
+│   │   │   ├── message_5
+│   │   │   └── message_6
+│   │   ├── rust-toolchain.toml
+│   │   └── src
+│   │       └── main.rs
+│   ├── olm-account-unpickling
+│   │   ├── Cargo.toml
+│   │   ├── in
+│   │   │   └── message_*  (123 files)
+│   │   ├── rust-toolchain.toml
+│   │   └── src
+│   │       └── main.rs
+│   ├── olm-decryption
+│   │   ├── Cargo.toml
+│   │   ├── in
+│   │   │   └── message_*  (169 files)
+│   │   ├── rust-toolchain.toml
+│   │   └── src
+│   │       └── main.rs
+│   ├── olm-message-decoding
+│   │   ├── Cargo.toml
+│   │   ├── in
+│   │   │   └── message_*  (107 files)
+│   │   ├── rust-toolchain.toml
+│   │   └── src
+│   │       └── main.rs
+│   └── rehydrate-device
+│       ├── Cargo.toml
+│       ├── in
+│       │   ├── dehydrated1
+│       │   └── dehydrated2
+│       ├── rust-toolchain.toml
+│       └── src
+│           └── main.rs
+├── benches
+│   ├── megolm_benchmark.rs
+│   └── olm_benchmark.rs
+├── clippy.toml
+├── codecov.yaml
+├── contrib
+│   ├── zemi.png
+│   └── zeroization-test
+│       ├── Cargo.toml
+│       ├── Makefile
+│       ├── README.md
+│       ├── src
+│       │   └── main.rs
+│       └── test_zeroization.txt
+├── justfile
+├── release.toml
+└── src
+    ├── cipher
+    │   ├── key.rs
+    │   └── mod.rs
+    ├── ecies
+    │   ├── messages.rs
+    │   ├── mod.rs
+    │   └── snapshots
+    │       └── vodozemac__ecies__test__snapshot_debug.snap
+    ├── hazmat
+    │   ├── mod.rs
+    │   └── olm.rs
+    ├── hpke
+    │   ├── check_code.rs
+    │   ├── error.rs
+    │   ├── messages.rs
+    │   ├── mod.rs
+    │   ├── recipient.rs
+    │   ├── response_context.rs
+    │   ├── sender.rs
+    │   └── snapshots
+    │       ├── vodozemac__hpke__recipient__tests__snapshot_debug.snap
+    │       ├── vodozemac__hpke__recipient__tests__snapshot_debug_unidirectional_channel-2.snap
+    │       ├── vodozemac__hpke__recipient__tests__snapshot_debug_unidirectional_channel.snap
+    │       ├── vodozemac__hpke__sender__tests__snapshot_debug.snap
+    │       ├── vodozemac__hpke__sender__tests__snapshot_debug_unidirectional_channel.snap
+    │       └── vodozemac__hpke__tests__snapshot_debug.snap
+    ├── lib.rs
+    ├── megolm
+    │   ├── group_session.rs
+    │   ├── inbound_group_session.rs
+    │   ├── message.rs
+    │   ├── mod.rs
+    │   ├── ratchet.rs
+    │   ├── session_config.rs
+    │   └── session_keys.rs
+    ├── olm
+    │   ├── account
+    │   │   ├── fallback_keys.rs
+    │   │   ├── mod.rs
+    │   │   └── one_time_keys.rs
+    │   ├── messages
+    │   │   ├── message.rs
+    │   │   ├── mod.rs
+    │   │   └── pre_key.rs
+    │   ├── mod.rs
+    │   ├── session
+    │   │   ├── chain_key.rs
+    │   │   ├── double_ratchet.rs
+    │   │   ├── message_key.rs
+    │   │   ├── mod.rs
+    │   │   ├── ratchet.rs
+    │   │   ├── receiver_chain.rs
+    │   │   └── root_key.rs
+    │   ├── session_config.rs
+    │   ├── session_keys.rs
+    │   ├── shared_secret.rs
+    │   └── snapshots
+    │       └── vodozemac__olm__session_keys__test__snapshot_session_keys_debug.snap
+    ├── pk_encryption.rs
+    ├── sas.rs
+    ├── snapshots
+    │   └── vodozemac__sas__test__snapshot_debug.snap
+    ├── types
+    │   ├── curve25519.rs
+    │   ├── ed25519.rs
+    │   ├── mod.rs
+    │   └── snapshots
+    │       ├── vodozemac__types__curve25519__tests__snapshot_public_key_debug.snap
+    │       ├── vodozemac__types__ed25519__tests__snapshot_public_key_debug.snap
+    │       └── vodozemac__types__ed25519__tests__snapshot_signature_debug.snap
+    └── utilities
+        ├── libolm_compat.rs
+        └── mod.rs
+55 directories, 769 files
