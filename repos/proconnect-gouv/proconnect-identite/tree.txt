@@ -1,7 +1,14 @@
 .
 ├── .changeset
 │   ├── README.md
-│   └── config.json
+│   ├── config.json
+│   ├── migrate-authenticator-repository.md
+│   ├── migrate-email-deliverability-whitelist-repository.md
+│   ├── migrate-moderation-repository.md
+│   ├── migrate-oidc-client-repository.md
+│   ├── migrate-organization-getters-remainder.md
+│   ├── migrate-user-repository-remainder.md
+│   └── wire-organization-setters-through-context.md
 ├── .editorconfig
 ├── .env
 ├── .env.development
@@ -546,6 +553,10 @@
 │   │   │   ├── AddAccessKey.test.tsx
 │   │   │   ├── AddAccessKey.test.tsx.snapshot
 │   │   │   ├── AddAccessKey.tsx
+│   │   │   ├── CancelModeration.stories.tsx
+│   │   │   ├── CancelModeration.test.tsx
+│   │   │   ├── CancelModeration.test.tsx.snapshot
+│   │   │   ├── CancelModeration.tsx
 │   │   │   ├── Delete2faProtection.stories.tsx
 │   │   │   ├── Delete2faProtection.test.tsx
 │   │   │   ├── Delete2faProtection.test.tsx.snapshot
@@ -597,6 +608,7 @@
 │   │   │   │   ├── Em.tsx
 │   │   │   │   ├── Html.tsx
 │   │   │   │   ├── Link.tsx
+│   │   │   │   ├── NoWrap.tsx
 │   │   │   │   ├── ProConnectLogo.tsx
 │   │   │   │   ├── Section.tsx
 │   │   │   │   ├── Text.tsx
@@ -725,6 +737,22 @@
 │   │   │   │       ├── assign-user-verification-type-to-domain.ts
 │   │   │   │       └── index.ts
 │   │   │   ├── repositories
+│   │   │   │   ├── authenticator
+│   │   │   │   │   ├── create-authenticator.test.ts
+│   │   │   │   │   ├── create-authenticator.ts
+│   │   │   │   │   ├── delete-authenticator.test.ts
+│   │   │   │   │   ├── delete-authenticator.ts
+│   │   │   │   │   ├── find-authenticator.test.ts
+│   │   │   │   │   ├── find-authenticator.ts
+│   │   │   │   │   ├── get-authenticators-by-user-id.test.ts
+│   │   │   │   │   ├── get-authenticators-by-user-id.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── update-authenticator.test.ts
+│   │   │   │   │   └── update-authenticator.ts
+│   │   │   │   ├── email-deliverability-whitelist
+│   │   │   │   │   ├── find-email-in-deliverability-white-list.test.ts
+│   │   │   │   │   ├── find-email-in-deliverability-white-list.ts
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── email-domain
 │   │   │   │   │   ├── add-domain.test.ts
 │   │   │   │   │   ├── add-domain.ts
@@ -733,12 +761,44 @@
 │   │   │   │   │   ├── find-email-domains-by-organization-id.test.ts
 │   │   │   │   │   ├── find-email-domains-by-organization-id.ts
 │   │   │   │   │   └── index.ts
+│   │   │   │   ├── moderation
+│   │   │   │   │   ├── create-moderation.test.ts
+│   │   │   │   │   ├── create-moderation.ts
+│   │   │   │   │   ├── delete-moderation.test.ts
+│   │   │   │   │   ├── delete-moderation.ts
+│   │   │   │   │   ├── find-moderation-by-id.test.ts
+│   │   │   │   │   ├── find-moderation-by-id.ts
+│   │   │   │   │   ├── find-pending-moderation.test.ts
+│   │   │   │   │   ├── find-pending-moderation.ts
+│   │   │   │   │   ├── find-rejected-moderation.test.ts
+│   │   │   │   │   ├── find-rejected-moderation.ts
+│   │   │   │   │   ├── get-moderation-by-id.test.ts
+│   │   │   │   │   ├── get-moderation-by-id.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── reopen-moderation.test.ts
+│   │   │   │   │   └── reopen-moderation.ts
+│   │   │   │   ├── oidc-client
+│   │   │   │   │   ├── add-connection.test.ts
+│   │   │   │   │   ├── add-connection.ts
+│   │   │   │   │   ├── find-by-client-id.test.ts
+│   │   │   │   │   ├── find-by-client-id.ts
+│   │   │   │   │   └── index.ts
 │   │   │   │   ├── organization
+│   │   │   │   │   ├── delete-user-organization.test.ts
+│   │   │   │   │   ├── delete-user-organization.ts
 │   │   │   │   │   ├── find-by-id.test.ts
 │   │   │   │   │   ├── find-by-id.ts
+│   │   │   │   │   ├── find-by-siret.test.ts
+│   │   │   │   │   ├── find-by-siret.ts
 │   │   │   │   │   ├── find-by-user-id.test.ts
 │   │   │   │   │   ├── find-by-user-id.test.ts.snapshot
 │   │   │   │   │   ├── find-by-user-id.ts
+│   │   │   │   │   ├── find-by-verified-email-domain.test.ts
+│   │   │   │   │   ├── find-by-verified-email-domain.ts
+│   │   │   │   │   ├── find-pending-by-user-id.test.ts
+│   │   │   │   │   ├── find-pending-by-user-id.ts
+│   │   │   │   │   ├── get-user-organization-link.test.ts
+│   │   │   │   │   ├── get-user-organization-link.ts
 │   │   │   │   │   ├── get-users-by-organization.test.ts
 │   │   │   │   │   ├── get-users-by-organization.test.ts.snapshot
 │   │   │   │   │   ├── get-users-by-organization.ts
@@ -751,10 +811,16 @@
 │   │   │   │   └── user
 │   │   │   │       ├── create.test.ts
 │   │   │   │       ├── create.ts
+│   │   │   │       ├── delete.test.ts
+│   │   │   │       ├── delete.ts
 │   │   │   │       ├── find-by-email.test.ts
 │   │   │   │       ├── find-by-email.ts
 │   │   │   │       ├── find-by-id.test.ts
 │   │   │   │       ├── find-by-id.ts
+│   │   │   │       ├── find-by-magic-link-token.test.ts
+│   │   │   │       ├── find-by-magic-link-token.ts
+│   │   │   │       ├── find-by-reset-password-token.test.ts
+│   │   │   │       ├── find-by-reset-password-token.ts
 │   │   │   │       ├── get-by-id.test.ts
 │   │   │   │       ├── get-by-id.ts
 │   │   │   │       ├── get-franceconnect-user-info.test.ts
@@ -782,13 +848,16 @@
 │   │   │   │       ├── hash-to-postgres-params.ts
 │   │   │   │       └── index.ts
 │   │   │   └── types
+│   │   │       ├── authenticator.ts
 │   │   │       ├── claims.ts
+│   │   │       ├── connection.ts
 │   │   │       ├── contexts.ts
 │   │   │       ├── email-domain.ts
 │   │   │       ├── franceconnect.ts
 │   │   │       ├── identity-vector.ts
 │   │   │       ├── index.ts
 │   │   │       ├── moderation.ts
+│   │   │       ├── oidc-client.ts
 │   │   │       ├── organization-info.ts
 │   │   │       ├── organization.ts
 │   │   │       ├── user-organization-link.ts
@@ -1068,19 +1137,10 @@
 │   │   ├── navigation-guards.ts
 │   │   └── rate-limiter.ts
 │   ├── repositories
-│   │   ├── authenticator.ts
-│   │   ├── email-deliverability-whitelist.ts
-│   │   ├── email-domain.ts
-│   │   ├── moderation.ts
-│   │   ├── oidc-client.ts
 │   │   ├── oidc-provider-adapter-for-clients.ts
-│   │   ├── organization
-│   │   │   ├── getters.ts
-│   │   │   └── setters.ts
-│   │   ├── redis
-│   │   │   ├── oidc-provider-adapter.ts
-│   │   │   └── selected-organization.ts
-│   │   └── user.ts
+│   │   └── redis
+│   │       ├── oidc-provider-adapter.ts
+│   │       └── selected-organization.ts
 │   ├── routers
 │   │   ├── api.ts
 │   │   ├── interaction.ts
@@ -1110,12 +1170,9 @@
 │   │   ├── symmetric-encryption.ts
 │   │   └── uses-auth-headers.ts
 │   ├── types
-│   │   ├── authenticator.d.ts
-│   │   ├── connection.d.ts
 │   │   ├── email-delivrability-whitelist.d.ts
 │   │   ├── express-session.d.ts
 │   │   ├── index.d.ts
-│   │   ├── oidc-client.d.ts
 │   │   ├── oidc-provider.d.ts
 │   │   └── request.d.ts
 │   └── views
@@ -1126,7 +1183,7 @@
 │       │   ├── no-match-error.ejs
 │       │   └── organization-not-covered-error.ejs
 │       ├── connection-and-account.ejs
-│       ├── double-authentication.ejs
+│       ├── double-authentication-choice.ejs
 │       ├── error.ejs
 │       ├── home.ejs
 │       ├── is-totp-app-installed.ejs
@@ -1147,6 +1204,18 @@
 │       │   ├── index.ejs
 │       │   ├── passkey.ejs
 │       │   └── totp-recommendation.ejs
+│       ├── mfa-settings
+│       │   ├── can-install-software-layout.ejs
+│       │   ├── double-authentication-choice-layout.ejs
+│       │   ├── external-help-needed-layout.ejs
+│       │   ├── index-layout.ejs
+│       │   ├── is-totp-app-installed-layout.ejs
+│       │   ├── passkey-layout.ejs
+│       │   ├── smartphone-app-layout.ejs
+│       │   ├── smartphone-layout.ejs
+│       │   ├── software-layout.ejs
+│       │   ├── totp-configuration-layout.ejs
+│       │   └── totp-recommendation-layout.ejs
 │       ├── not-found-error.ejs
 │       ├── partials
 │       │   ├── footer.ejs
@@ -1235,4 +1304,4 @@
 │   └── symmetric-encryption.test.ts
 ├── tsconfig.json
 └── vite.config.mjs
-219 directories, 1100 files
+223 directories, 1165 files

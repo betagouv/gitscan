@@ -1,12 +1,13 @@
 {
   "url": "https://github.com/proconnect-gouv/proconnect-identite",
   "name": "proconnect-identite",
-  "description": "Fournisseur d'identité OpenID Connect (OIDC) géré par la DINUM pour les professionnels. Il permet aux utilisateurs affiliés à une organisation avec un numéro SIRET d'accéder à la fédération ProConnect.",
+  "description": "Fournisseur d'identité OpenID Connect (OIDC) géré par la DINUM pour les professionnels. Il permet aux personnes affiliées à une organisation avec un numéro SIRET d'accéder à la fédération ProConnect.",
   "language": "TypeScript",
   "features": [
     "Authentification & Accès",
     "Gestion des utilisateurs & Permissions",
-    "Sécurité & Conformité"
+    "Sécurité & Conformité",
+    "API & Intégrations"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -14,10 +15,11 @@
     "oidc-provider",
     "PostgreSQL",
     "Redis",
-    "Nodemailer",
     "Zod",
+    "Sentry",
     "SimpleWebAuthn",
-    "Axios"
+    "Axios",
+    "EJS"
   ],
   "components": [
     "API REST & GraphQL",
@@ -25,7 +27,6 @@
     "TypeScript / JavaScript",
     "Docker & Conteneurs",
     "Authentification (composant)",
-    "Templates & Moteurs de rendu",
     "Microservices & Architecture",
     "Node.js / NestJS"
   ],
@@ -34,28 +35,24 @@
       "oauth2",
       "jwt",
       "mfa",
+      "passkey",
       "session"
     ]
   },
-  "tests": [
-    "Cypress",
-    "Node unit tests"
-  ],
+  "tests": "Cypress pour les tests E2E et tests unitaires Node.js",
   "workflows": [
-    "Changesets",
     "GitHub Actions"
   ],
-  "lastActivity": "2026-08-14T11:00:21+02:00",
+  "lastActivity": "2026-08-24T11:17:20+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
-    "Écosystème beta.gouv / État",
-    "Sécurité & Auth",
     "SSO & Identité fédérée",
     "TypeScript",
     "Docker & Conteneurs",
-    "Node.js, NestJS & Express",
-    "CI/CD & GitHub Actions"
+    "Sécurité & Auth",
+    "Écosystème beta.gouv / État",
+    "Node.js, NestJS & Express"
   ]
 }
