@@ -1,61 +1,64 @@
 {
   "url": "https://github.com/MTES-MCT/otelo",
   "name": "otelo",
-  "description": "OTELO est une application d'intelligence territoriale visant à élaborer une stratégie de logement durable et inclusive.",
+  "description": "Application d'intelligence territoriale pour une stratégie de logement adaptée, durable et inclusive. Elle permet de simuler des scénarios et de visualiser des données territoriales via des cartes et des graphiques.",
   "language": "TypeScript",
   "features": [
+    "Simulation & Calcul",
+    "Visualisation de données & Cartographie",
     "Gestion documentaire & Fichiers",
-    "API & Intégrations",
-    "Authentification & Accès",
-    "Statistiques & Rapports",
-    "Recherche & Filtres",
-    "Gestion des utilisateurs & Permissions",
-    "Visualisation de données & Cartographie"
+    "Administration & Backoffice",
+    "Tableaux & Affichage",
+    "Données & Schémas"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "NestJS",
-    "Prisma",
     "Next.js",
+    "Prisma",
+    "PostgreSQL",
     "React",
-    "DSFR",
-    "PostgreSQL"
+    "Leaflet",
+    "Recharts",
+    "Zod",
+    "TanStack Query"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "React / Next.js",
     "TypeScript / JavaScript",
-    "Docker & Conteneurs"
+    "Design System (DSFR & UI libs)",
+    "Docker & Conteneurs",
+    "ORM & Accès aux données",
+    "Documentation & Schémas"
   ],
   "auth": {
     "methods": [
-      "oauth2"
+      "oauth2",
+      "jwt",
+      "session"
+    ],
+    "providers": [
+      "ProConnect"
     ]
   },
-  "tests": "Jest",
-  "workflows": [
-    "build",
-    "lint",
-    "test"
+  "tests": [
+    "Jest",
+    "Supertest"
   ],
-  "lastActivity": "2026-07-29T11:45:55+02:00",
+  "lastActivity": "2026-08-23T15:10:10+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
     "React & Next.js",
     "TypeScript",
-    "Déploiement & Hosting",
-    "Python",
-    "Bases de données SQL"
+    "Bases de données SQL",
+    "SIG & Géospatial",
+    "Docker & Conteneurs",
+    "Design System & UI"
   ]
 }

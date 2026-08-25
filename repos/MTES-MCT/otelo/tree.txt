@@ -112,6 +112,18 @@
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260729090000_fix_projection_below_millesime
 │   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260803120000_epci_group_planning_document
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260815120000_epci_group_planning_document_type
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260815120000_usage_tracking
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260815140000_calculation_timing_and_api_usage
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260815160000_simulation_changes
+│   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260823120000_rename_bassins_aout_2026
+│   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   └── schema.prisma
 │   │   ├── prisma.config.ts
@@ -227,6 +239,10 @@
 │   │   │   │   └── utils
 │   │   │   │       ├── content-disposition.spec.ts
 │   │   │   │       ├── content-disposition.ts
+│   │   │   │       ├── csv.spec.ts
+│   │   │   │       ├── csv.ts
+│   │   │   │       ├── date-range.spec.ts
+│   │   │   │       ├── date-range.ts
 │   │   │   │       ├── email-anonymizer.ts
 │   │   │   │       └── encryption.ts
 │   │   │   ├── config
@@ -286,6 +302,7 @@
 │   │   │   ├── epci-groups
 │   │   │   │   ├── epci-groups.controller.ts
 │   │   │   │   ├── epci-groups.module.ts
+│   │   │   │   ├── epci-groups.service.spec.ts
 │   │   │   │   └── epci-groups.service.ts
 │   │   │   ├── epci-neighbors
 │   │   │   │   ├── epci-neighbors.controller.ts
@@ -431,6 +448,8 @@
 │   │   │   │   ├── share-links.service.spec.ts
 │   │   │   │   └── share-links.service.ts
 │   │   │   ├── simulations
+│   │   │   │   ├── simulation-changes.service.spec.ts
+│   │   │   │   ├── simulation-changes.service.ts
 │   │   │   │   ├── simulations.controller.spec.ts
 │   │   │   │   ├── simulations.controller.ts
 │   │   │   │   ├── simulations.module.ts
@@ -441,6 +460,9 @@
 │   │   │   │   ├── sitadel.service.spec.ts
 │   │   │   │   └── sitadel.service.ts
 │   │   │   ├── statistics
+│   │   │   │   ├── audience-statistics.service.ts
+│   │   │   │   ├── statistics-exports.controller.ts
+│   │   │   │   ├── statistics-exports.service.ts
 │   │   │   │   ├── statistics.controller.ts
 │   │   │   │   ├── statistics.module.ts
 │   │   │   │   └── statistics.service.ts
@@ -524,16 +546,26 @@
 │       │   ├── app
 │       │   │   ├── (authenticated)
 │       │   │   │   ├── admin
+│       │   │   │   │   ├── admin.module.css
+│       │   │   │   │   ├── audience
+│       │   │   │   │   │   └── page.tsx
 │       │   │   │   │   ├── consommateurs
+│       │   │   │   │   │   └── page.tsx
+│       │   │   │   │   ├── exports
 │       │   │   │   │   │   └── page.tsx
 │       │   │   │   │   ├── feedbacks
 │       │   │   │   │   │   ├── layout.tsx
 │       │   │   │   │   │   └── page.tsx
-│       │   │   │   │   ├── gestion-des-utilisateurs
+│       │   │   │   │   ├── journal
 │       │   │   │   │   │   └── page.tsx
+│       │   │   │   │   ├── layout.tsx
 │       │   │   │   │   ├── page.tsx
-│       │   │   │   │   └── statistiques
-│       │   │   │   │       ├── layout.tsx
+│       │   │   │   │   ├── statistiques
+│       │   │   │   │   │   ├── layout.tsx
+│       │   │   │   │   │   └── page.tsx
+│       │   │   │   │   ├── tableau-de-bord
+│       │   │   │   │   │   └── page.tsx
+│       │   │   │   │   └── utilisateurs
 │       │   │   │   │       └── page.tsx
 │       │   │   │   ├── infographies
 │       │   │   │   │   └── page.tsx
@@ -565,6 +597,7 @@
 │       │   │   │   │   │   │   ├── existing-group-selection.tsx
 │       │   │   │   │   │   │   ├── method-selection-cards.tsx
 │       │   │   │   │   │   │   ├── page.tsx
+│       │   │   │   │   │   │   ├── urbanisme-doc-question.tsx
 │       │   │   │   │   │   │   └── wrapper-simulation-type-page.tsx
 │       │   │   │   │   │   ├── layout.tsx
 │       │   │   │   │   │   ├── page.tsx
@@ -812,6 +845,15 @@
 │       │   │   │   │   │   └── route.ts
 │       │   │   │   │   └── route.ts
 │       │   │   │   ├── statistics
+│       │   │   │   │   ├── activation
+│       │   │   │   │   │   └── route.ts
+│       │   │   │   │   ├── audience
+│       │   │   │   │   │   └── route.ts
+│       │   │   │   │   ├── exports
+│       │   │   │   │   │   └── [dataset]
+│       │   │   │   │   │       └── route.ts
+│       │   │   │   │   ├── overview
+│       │   │   │   │   │   └── route.ts
 │       │   │   │   │   ├── pilotage
 │       │   │   │   │   │   ├── epcis-coverage
 │       │   │   │   │   │   │   └── route.ts
@@ -823,6 +865,8 @@
 │       │   │   │   │   ├── results
 │       │   │   │   │   │   └── route.ts
 │       │   │   │   │   ├── route.ts
+│       │   │   │   │   ├── simulation-changes
+│       │   │   │   │   │   └── route.ts
 │       │   │   │   │   ├── simulations
 │       │   │   │   │   │   └── route.ts
 │       │   │   │   │   ├── template
@@ -852,6 +896,14 @@
 │       │   ├── components
 │       │   │   ├── admin
 │       │   │   │   ├── admin-breadcrumb.tsx
+│       │   │   │   ├── audience
+│       │   │   │   │   ├── activation-funnel.module.css
+│       │   │   │   │   ├── activation-funnel.tsx
+│       │   │   │   │   ├── retention-table.tsx
+│       │   │   │   │   └── sharing-usage.tsx
+│       │   │   │   ├── changes
+│       │   │   │   │   ├── change-entry.module.css
+│       │   │   │   │   └── change-entry.tsx
 │       │   │   │   ├── consumers
 │       │   │   │   │   ├── consumers-management.tsx
 │       │   │   │   │   └── consumers-table.tsx
@@ -864,6 +916,18 @@
 │       │   │   │   ├── pilotage-scenarios-table.tsx
 │       │   │   │   ├── pilotage-tab.module.css
 │       │   │   │   ├── pilotage-tab.tsx
+│       │   │   │   ├── shared
+│       │   │   │   │   ├── admin-classes.ts
+│       │   │   │   │   ├── admin-colors.ts
+│       │   │   │   │   ├── admin-data-table.module.css
+│       │   │   │   │   ├── admin-data-table.tsx
+│       │   │   │   │   ├── admin-navigation.tsx
+│       │   │   │   │   ├── admin-page-header.tsx
+│       │   │   │   │   ├── chart-card.tsx
+│       │   │   │   │   ├── export-csv-button.tsx
+│       │   │   │   │   ├── matomo-link.tsx
+│       │   │   │   │   ├── period-selector.tsx
+│       │   │   │   │   └── stat-card.tsx
 │       │   │   │   ├── statistics-export-buttons.tsx
 │       │   │   │   └── users
 │       │   │   │       ├── users-management.tsx
@@ -875,6 +939,7 @@
 │       │   │   │   ├── login-form.tsx
 │       │   │   │   ├── reset-password-form.tsx
 │       │   │   │   ├── sign-up-form.tsx
+│       │   │   │   ├── unauthorized-actions.tsx
 │       │   │   │   └── user-type-selection-modal.tsx
 │       │   │   ├── brand-top.tsx
 │       │   │   ├── breadcrumbs
@@ -910,7 +975,8 @@
 │       │   │   │   ├── synthesis-cn-evolution-chart.tsx
 │       │   │   │   └── upload-demographic-evolution-custom.tsx
 │       │   │   ├── collaboration
-│       │   │   │   └── share-simulation-modal.tsx
+│       │   │   │   ├── share-simulation-modal.tsx
+│       │   │   │   └── shared-view-tracker.tsx
 │       │   │   ├── common
 │       │   │   │   ├── drawer.module.css
 │       │   │   │   ├── drawer.tsx
@@ -940,6 +1006,7 @@
 │       │   │   │   ├── header-navigation-client.tsx
 │       │   │   │   └── header-navigation.tsx
 │       │   │   ├── quick-access-items.tsx
+│       │   │   ├── report-issue-button.tsx
 │       │   │   ├── simulations
 │       │   │   │   ├── autocomplete
 │       │   │   │   │   ├── autocomplete-input.tsx
@@ -1097,10 +1164,23 @@
 │       │   │   │   │   ├── simulation-form-context-wrapper.tsx
 │       │   │   │   │   ├── simulation-side-menu.module.css
 │       │   │   │   │   ├── update-simulation-form.tsx
+│       │   │   │   │   ├── wizard-aside
+│       │   │   │   │   │   ├── creation-estimation-card.tsx
+│       │   │   │   │   │   ├── estimation-card.tsx
+│       │   │   │   │   │   ├── estimation-terms.ts
+│       │   │   │   │   │   ├── modification-estimation-card.tsx
+│       │   │   │   │   │   ├── step-questions-card.tsx
+│       │   │   │   │   │   ├── step-questions.ts
+│       │   │   │   │   │   ├── wizard-aside.module.css
+│       │   │   │   │   │   ├── wizard-aside.tsx
+│       │   │   │   │   │   └── wizard-layout.module.css
+│       │   │   │   │   ├── wizard-step-tracker.tsx
 │       │   │   │   │   └── wizard-steps.ts
 │       │   │   │   ├── tutorial
+│       │   │   │   │   ├── results-tutorial-button.tsx
 │       │   │   │   │   ├── tutorial-button.tsx
 │       │   │   │   │   ├── tutorial-content.ts
+│       │   │   │   │   ├── tutorial-trigger.tsx
 │       │   │   │   │   ├── tutorial.css
 │       │   │   │   │   └── use-tutorial.ts
 │       │   │   │   └── validation-settings
@@ -1144,6 +1224,7 @@
 │       │   │   │   ├── territoires-voisins-page.tsx
 │       │   │   │   ├── territoires-voisins-table.tsx
 │       │   │   │   └── territoires-voisins.module.css
+│       │   │   ├── tracking-session.tsx
 │       │   │   └── ui
 │       │   │       ├── RedAsterisk.module.css
 │       │   │       ├── custom-highlight.module.scss
@@ -1172,9 +1253,13 @@
 │       │   ├── hooks
 │       │   │   └── use-*.ts  (60 files)
 │       │   ├── lib
-│       │   │   └── auth
-│       │   │       ├── client.ts
-│       │   │       └── server.ts
+│       │   │   ├── TRACKING.md
+│       │   │   ├── api
+│       │   │   │   └── admin-proxy.ts
+│       │   │   ├── auth
+│       │   │   │   ├── client.ts
+│       │   │   │   └── server.ts
+│       │   │   └── tracking.ts
 │       │   ├── providers
 │       │   │   └── tanstack-client.tsx
 │       │   ├── schemas
@@ -1211,6 +1296,9 @@
 │       │   │   └── simulation-page-props.ts
 │       │   └── utils
 │       │       ├── calculation-helpers.ts
+│       │       ├── date-helpers.ts
+│       │       ├── epci-group-name.ts
+│       │       ├── estimation-breakdown.ts
 │       │       ├── format-numbers.ts
 │       │       ├── omphale-label.ts
 │       │       ├── projection.ts
@@ -1261,6 +1349,9 @@
 │       │       ├── rates
 │       │       │   └── accommodations-rates.ts
 │       │       └── statistics
+│       │           ├── activation-statistics.ts
+│       │           ├── audience-statistics.ts
+│       │           ├── simulation-changes.ts
 │       │           └── template-statistics.ts
 │       ├── tsconfig.json
 │       └── tsup.config.ts
@@ -1269,4 +1360,4 @@
 ├── scripts
 │   └── scalingo-postbuild.mjs
 └── tsconfig.base.json
-375 directories, 955 files
+396 directories, 1025 files
