@@ -1,27 +1,28 @@
 ## Changelog : portail (30 derniers jours, au 14 août 2026)
 
 ### Résumé
-Ce mois-ci, le projet a franchi une étape importante en matière de robustesse et de sécurité. Les efforts se sont concentrés sur la fiabilisation du moteur de routage, l'optimisation de la résolution DNS et l'amélioration des outils d'administration, notamment pour la gestion simplifiée des journaux d'activité (logs).
+Cette période a été marquée par un travail intensif sur la robustesse, la sécurité et l'observabilité du proxy. Les évolutions majeures concernent l'amélioration de la gestion des journaux (logs), l'optimisation de la résolution DNS et le durcissement des mécanismes de sécurité pour garantir un service plus stable et plus facile à administrer.
 
 ### Évolutions fonctionnelles
-- **Gestion des logs :** Ajout d'une commande CLI `set-log-level` permettant de modifier le niveau de verbosité des logs en temps réel sans redémarrer le service.
-- **Administration :** Support de la rotation des fichiers de logs (logrotate) via le module NixOS et possibilité de recharger les fichiers de logs via un signal SIGHUP.
+- **Gestion des logs** : Ajout d'une commande CLI `set-log-level` permettant de modifier dynamiquement le niveau de verbosité sans redémarrer le service.
+- **Performance DNS** : Amélioration de la réactivité de la résolution DNS via l'implémentation de l'algorithme "Happy Eyeballs v2" et l'ajout de la résolution DNS en interne.
+- **Fiabilité des connexions** : Introduction de timeouts pour les phases de handshake et mise en place d'une limite de connexions simultanées pour prévenir la saturation.
+- **Sécurité des protocoles** : Renforcement de la validation des requêtes HTTP (normalisation des ports et rejet des formats CONNECT non conformes) et extension de la détection de protocole au TLS.
 
 ### Évolutions techniques
-- **Routage et Protocoles :** 
-    - Refonte majeure de la détection des protocoles, incluant désormais une extension au support TLS.
-    - Factorisation et réorganisation de la logique de routage vers un nouveau composant dédié pour les flux HTTP et SOCKS5.
-- **Sécurité et Résilience :**
-    - Renforcement de l'évaluateur d'ACL pour prévenir les comportements anormaux ou malveillants.
+- **Observabilité & Logs** : 
+    - Support du rechargement dynamique des fichiers de logs (via SIGHUP).
+    - Intégration du support `logrotate` pour les modules NixOS.
     - Sécurisation des permissions des fichiers de logs (mode 0600).
-    - Amélioration de la conformité du protocole HTTP (normalisation des ports et validation des requêtes CONNECT).
-    - Réduction de la surface d'attaque par la suppression de blocs de code `unsafe` et une meilleure gestion des erreurs pour éviter les plantages (panics).
-- **Performance et Stabilité :**
-    - Implémentation de l'algorithme "Happy Eyeballs v2" et de la résolution DNS interne pour accélérer l'établissement des connexions.
-    - Introduction de timeouts pour les phases de handshake et de requêtes, ainsi que de limites de connexions pour protéger le système contre la saturation.
-- **Infrastructure :** Amélioration de la résilience des modules Nix/Systemd, notamment sur la gestion des sockets et des descripteurs de fichiers.
+- **Architecture & Routage** : Refactorisation et initialisation de la logique de routage vers les backends pour les protocoles HTTP et SOCKS5.
+- **Sécurité & Robustesse** :
+    - Durcissement de l'évaluateur d'ACL pour prévenir les comportements pathologiques.
+    - Amélioration de la gestion des erreurs pour éliminer les risques de panique (crash) du processus.
+    - Sécurisation de la gestion des descripteurs de fichiers (FD) via systemd et utilisation de RAII.
+- **Build & Infrastructure** : 
+    - Définition de la version minimale de Rust supportée (MSRV) et optimisation du profil de release.
+    - Amélioration de la résilience des modules Nix.
 
 ### Autres changements
-- **Documentation :** Ajout de commentaires de sécurité sur l'utilisation des blocs `unsafe` dans le code Rust.
-- **Build et CI :** Optimisation du processus de compilation (définition du MSRV, ajout de profils de release) et nettoyage des fonctionnalités de build.
-- **Tests :** Corrections de tests sur les connexions SOCKS5 multi-backends.
+- **Documentation** : Ajout de commentaires de sécurité (`SAFETY`) sur les blocs de code critiques et nettoyage des blocs `unsafe`.
+- **Tests** : Correction des tests de connexion SOCKS5 pour les scénarios multi-backends.
