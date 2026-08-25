@@ -1,26 +1,10 @@
-## Changelog : dashlord (30 derniers jours, au 26 juillet 2026)
+## Changelog : dashlord (30 derniers jours, au 23/08/2026)
 
 ### Résumé
-Ce changelog fait état de mises à jour régulières des données de sites web surveillés par DashLord. Ces mises à jour permettent d'assurer la pertinence et l'exactitude des informations affichées dans le tableau de bord, offrant ainsi une vision à jour des bonnes pratiques techniques sur ces sites.
+L'activité de ce mois a été principalement consacrée à la maintenance du périmètre de surveillance. Les mises à jour régulières permettent de garantir que le tableau de bord continue de monitorer correctement l'ensemble des sites web de l'écosystème.
 
 ### Évolutions fonctionnelles
-Aucune nouvelle fonctionnalité ou amélioration significative de l'interface utilisateur n'a été déployée durant cette période. Les changements concernent principalement la mise à jour des données des sites web suivis.
-
-### Évolutions techniques
-Aucun changement technique majeur n'a été effectué. Les commits se concentrent sur la mise à jour des données des sites web.
+- **Mise à jour du périmètre de monitoring** : actualisation de la liste des sites web surveillés pour assurer la continuité du suivi (notamment pour les services liés à la transition écologique et aux territoires).
 
 ### Autres changements
-- Mise à jour régulière des données des sites web suivants :
-    - [https://france-chaleur-urbaine.beta.gouv.fr](https://france-chaleur-urbaine.beta.gouv.fr)
-    - [https://tacct.ademe.fr](https://tacct.ademe.fr)
-    - [https://benefriches.ademe.fr](https://benefriches.ademe.fr)
-    - [https://aldo.territoiresentransitions.fr](https://aldo.territoiresentransitions.fr)
-    - [https://www.territoiresentransitions.fr](https://www.territoiresentransitions.fr)
-    - [https://app.territoiresentransitions.fr](https://app.territoiresentransitions.fr)
-    - [https://mission-transition-ecologique.beta.gouv.fr](https://mission-transition-ecologique.beta.gouv.fr)
-    - [https://mission-transition-ecologique.beta.gouv.fr/api/health](https://mission-transition-ecologique.beta.gouv.fr/api/health)
-    - [https://plusfraichemaville.fr](https://plusfraichemaville.fr)
-    - [https://nosgestesclimat.fr](https://nosgestesclimat.fr)
-    - [https://impactco2.fr](https://impactco2.fr)
-    - [https://quefairedemesdechets.ademe.fr](https://quefairedemesdechets.ademe.fr)
-- Mise à jour du rapport de DashLord.
+- **Maintenance des données** : mises à jour périodiques des rapports de données.
