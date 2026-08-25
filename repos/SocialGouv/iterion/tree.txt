@@ -8,7 +8,6 @@
 ├── .gitattributes
 ├── .github
 │   ├── CODEOWNERS
-│   ├── dependabot.yml
 │   └── workflows
 │       ├── _build-image.yml
 │       ├── _finalize.yml
@@ -545,6 +544,8 @@
 │   │   ├── migrate_to_cloud_test.go
 │   │   ├── models.go
 │   │   ├── openapi.go
+│   │   ├── permission_hook.go
+│   │   ├── permission_hook_test.go
 │   │   ├── plugin.go
 │   │   ├── remote.go
 │   │   ├── remote_*.go  (14 files)
@@ -752,7 +753,8 @@
 │   │   ├── 086-pipeline-card-drawer-hand-rolled-overlay.md
 │   │   ├── 087-cross-backend-model-fallback-chain.md
 │   │   ├── 088-error-tracking-via-sentry-dsn-protocol.md
-│   │   └── 089-session-persist.md
+│   │   ├── 089-session-persist.md
+│   │   └── 090-runtime-operational-settings-db-backed.md
 │   ├── architecture.md
 │   ├── asymptote-bench.md
 │   ├── async-interaction.md
@@ -801,6 +803,7 @@
 │   ├── c082-board-emit-fix-plan.md
 │   ├── ci-performance-buildkit-operator.md
 │   ├── ci-pipeline-topology.md
+│   ├── cli-permission-seam-spike.md
 │   ├── cli-reference.md
 │   ├── cloud-admin-guide.md
 │   ├── cloud-admin.md
@@ -943,6 +946,8 @@
 │   ├── settings-precedence.md
 │   ├── skill.md
 │   ├── skills-library.md
+│   ├── studio
+│   │   └── editor-llm-meta-preview.png
 │   ├── studio-ux-audit-2026-07.md
 │   ├── supervisors.md
 │   ├── thinking-metrics.md
@@ -954,7 +959,8 @@
 │   ├── why-iterion.md
 │   ├── why-not-prompt-orchestration.md
 │   ├── workflow_authoring_pitfalls.md
-│   └── workspace-versioning.md
+│   ├── workspace-versioning.md
+│   └── worktree-pool.md
 ├── e2e
 │   ├── SCENARIOS.md
 │   ├── async_interaction_test.go
@@ -1068,7 +1074,7 @@
 │   │           └── worker_test.go
 │   ├── handoff_publish_test.go
 │   ├── issue_triage_trigger_test.go
-│   ├── live_*.go  (39 files)
+│   ├── live_*.go  (41 files)
 │   ├── malware_fixture_test.go
 │   ├── mcp_server_test.go
 │   ├── privacy_test.go
@@ -1105,6 +1111,8 @@
 │   │   ├── feat_compress.bot
 │   │   ├── feat_permission_ask.bot
 │   │   ├── feat_permission_deny.bot
+│   │   ├── feat_permission_deny_grok.bot
+│   │   ├── feat_permission_deny_kimi.bot
 │   │   ├── feat_sandbox_net.bot
 │   │   ├── feat_sched.bot
 │   │   ├── feat_verified_action.bot
@@ -1334,6 +1342,7 @@
 │   │   │   ├── claude_code_sandbox_kill.go
 │   │   │   ├── claude_code_sandbox_kill_test.go
 │   │   │   ├── claude_code_stream.go
+│   │   │   ├── claude_code_strict_mcp_test.go
 │   │   │   ├── claude_code_thinking_test.go
 │   │   │   ├── claude_code_usage_test.go
 │   │   │   ├── claude_code_usermcp_test.go
@@ -1472,13 +1481,14 @@
 │   │   │   ├── claw_sandbox_env_test.go
 │   │   │   ├── cursors.go
 │   │   │   ├── cursors_test.go
+│   │   │   ├── delegate_observability_test.go
 │   │   │   ├── delegate_test.go
 │   │   │   ├── effort.go
 │   │   │   ├── effort_test.go
 │   │   │   ├── events.go
 │   │   │   ├── events_test.go
 │   │   │   ├── executor.go
-│   │   │   ├── executor_*.go  (33 files)
+│   │   │   ├── executor_*.go  (34 files)
 │   │   │   ├── fallback_prereq_test.go
 │   │   │   ├── generation.go
 │   │   │   ├── generation_*.go  (11 files)
@@ -1543,6 +1553,9 @@
 │   │   │   ├── messages_test.go
 │   │   │   ├── permission.go
 │   │   │   └── permission_test.go
+│   │   ├── permissionhook
+│   │   │   ├── hook.go
+│   │   │   └── hook_test.go
 │   │   ├── recipe
 │   │   │   ├── recipe.go
 │   │   │   └── recipe_test.go
@@ -1565,6 +1578,7 @@
 │   │   │   └── thinktokens_test.go
 │   │   ├── tool
 │   │   │   ├── adapter.go
+│   │   │   ├── catalog_conformance_test.go
 │   │   │   ├── classifier.go
 │   │   │   ├── classifier_test.go
 │   │   │   ├── claw_async_ask.go
@@ -1602,6 +1616,9 @@
 │   │   │   ├── schema_test.go
 │   │   │   ├── web_search_enable.go
 │   │   │   └── web_search_enable_test.go
+│   │   ├── toolcatalog
+│   │   │   ├── toolcatalog.go
+│   │   │   └── toolcatalog_test.go
 │   │   └── tooldisplay
 │   │       ├── display.go
 │   │       └── display_test.go
@@ -1886,6 +1903,7 @@
 │   │   ├── dispatcher_test.go
 │   │   ├── engine_runner.go
 │   │   ├── engine_runner_close_test.go
+│   │   ├── engine_runner_subbot_test.go
 │   │   ├── engine_runner_test.go
 │   │   ├── engine_runner_via_service_test.go
 │   │   ├── external.go
@@ -1960,6 +1978,7 @@
 │   │   ├── routing_runner_test.go
 │   │   ├── runner.go
 │   │   ├── state.go
+│   │   ├── subbot.go
 │   │   ├── sweep_stale_claims_test.go
 │   │   ├── sysinfo.go
 │   │   ├── template.go
@@ -2053,7 +2072,7 @@
 │   │   │   ├── uses_llm.go
 │   │   │   ├── uses_llm_test.go
 │   │   │   ├── validate.go
-│   │   │   ├── validate_*.go  (25 files)
+│   │   │   ├── validate_*.go  (27 files)
 │   │   │   ├── verified_action_test.go
 │   │   │   └── worktree_default_test.go
 │   │   ├── parser
@@ -2461,6 +2480,7 @@
 │   │   ├── loop_test.go
 │   │   ├── loop_upload.go
 │   │   ├── metrics_test.go
+│   │   ├── model_overrides_test.go
 │   │   ├── oauth_refresh.go
 │   │   ├── oauth_refresh_test.go
 │   │   ├── org_spend_test.go
@@ -2508,6 +2528,7 @@
 │   │   ├── copy_outputs_test.go
 │   │   ├── devbox_host.go
 │   │   ├── devbox_host_test.go
+│   │   ├── edge_input_ref_test.go
 │   │   ├── edges.go
 │   │   ├── else_edge_test.go
 │   │   ├── engine.go
@@ -2534,6 +2555,7 @@
 │   │   ├── mirrored_skills_wiring_test.go
 │   │   ├── node_fields.go
 │   │   ├── node_output.go
+│   │   ├── node_output_test.go
 │   │   ├── on_node_finished_test.go
 │   │   ├── override.go
 │   │   ├── override_test.go
@@ -2567,21 +2589,7 @@
 │   │   ├── routing.go
 │   │   ├── run_failure.go
 │   │   ├── sandbox.go
-│   │   ├── sandbox_askuser_test.go
-│   │   ├── sandbox_default_image.go
-│   │   ├── sandbox_devbox.go
-│   │   ├── sandbox_devbox_test.go
-│   │   ├── sandbox_dropbind_test.go
-│   │   ├── sandbox_export_test.go
-│   │   ├── sandbox_helpers_test.go
-│   │   ├── sandbox_internal_test.go
-│   │   ├── sandbox_lifecycle.go
-│   │   ├── sandbox_mounts.go
-│   │   ├── sandbox_mounts_test.go
-│   │   ├── sandbox_network_policy_test.go
-│   │   ├── sandbox_secret_files.go
-│   │   ├── sandbox_secret_files_test.go
-│   │   ├── sandbox_test.go
+│   │   ├── sandbox_*.go  (15 files)
 │   │   ├── scratch_sweep.go
 │   │   ├── session_test.go
 │   │   ├── setup_failure_status_test.go
@@ -2597,10 +2605,7 @@
 │   │   ├── workspace_authority_test.go
 │   │   ├── workspace_safety.go
 │   │   ├── worktree.go
-│   │   ├── worktree_cloud_test.go
-│   │   ├── worktree_default_test.go
-│   │   ├── worktree_empty_repo_test.go
-│   │   └── worktree_test.go
+│   │   └── worktree_*.go  (6 files)
 │   ├── runview
 │   │   ├── bot_identity_test.go
 │   │   ├── broker.go
@@ -2737,6 +2742,7 @@
 │   │   │   ├── driver.go
 │   │   │   ├── driver_defaultuser_test.go
 │   │   │   ├── driver_test.go
+│   │   │   ├── export_refs_test.go
 │   │   │   ├── gc_test.go
 │   │   │   ├── manifest.go
 │   │   │   ├── manifest_gitenv_test.go
@@ -2831,6 +2837,8 @@
 │   │   ├── admin_llm_routes_test.go
 │   │   ├── admin_orgs_routes.go
 │   │   ├── admin_orgs_routes_test.go
+│   │   ├── admin_settings_routes.go
+│   │   ├── admin_settings_routes_test.go
 │   │   ├── audit_helper.go
 │   │   ├── audit_routes_test.go
 │   │   ├── auth_admin.go
@@ -2879,6 +2887,8 @@
 │   │   │   ├── oauth_fallback_test.go
 │   │   │   ├── platform_tier_test.go
 │   │   │   ├── publisher.go
+│   │   │   ├── publisher_cancel_test.go
+│   │   │   ├── publisher_model_overrides_test.go
 │   │   │   ├── publisher_orgid_test.go
 │   │   │   ├── publisher_resume_test.go
 │   │   │   ├── publisher_secrets_test.go
@@ -3096,6 +3106,7 @@
 │   │   │   ├── toolblobs.go
 │   │   │   ├── turns.go
 │   │   │   └── user_messages.go
+│   │   ├── nodes_served_test.go
 │   │   ├── notes.go
 │   │   ├── notes_test.go
 │   │   ├── openat_other.go
@@ -3190,6 +3201,11 @@
 │   │   ├── env.go
 │   │   ├── env_test.go
 │   │   ├── mongo.go
+│   │   ├── resolver.go
+│   │   ├── settings.go
+│   │   ├── settings_mongo.go
+│   │   ├── settings_mongo_test.go
+│   │   ├── settings_test.go
 │   │   ├── store.go
 │   │   ├── usagecap.go
 │   │   └── usagecap_test.go
@@ -3245,16 +3261,24 @@
 │   │   ├── token.go
 │   │   ├── types.go
 │   │   └── webhooks_test.go
-│   └── workspacetrack
-│       ├── changes.go
-│       ├── diff.go
-│       ├── diff_test.go
-│       ├── ignore.go
-│       ├── ignore_bench_test.go
-│       ├── native.go
-│       ├── native_test.go
-│       ├── restore_scope_test.go
-│       └── tracker.go
+│   ├── workspacetrack
+│   │   ├── changes.go
+│   │   ├── diff.go
+│   │   ├── diff_test.go
+│   │   ├── ignore.go
+│   │   ├── ignore_bench_test.go
+│   │   ├── native.go
+│   │   ├── native_test.go
+│   │   ├── restore_scope_test.go
+│   │   └── tracker.go
+│   └── worktreepool
+│       ├── admission.go
+│       ├── bound.go
+│       ├── bound_test.go
+│       ├── classify.go
+│       ├── options.go
+│       ├── scan.go
+│       └── sweep.go
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 ├── renovate.json
@@ -3547,6 +3571,8 @@
 │   │   │   │       ├── ComputeForm.tsx
 │   │   │   │       ├── CursorsFields.tsx
 │   │   │   │       ├── EdgeForm.tsx
+│   │   │   │       ├── FallbacksFields.test.tsx
+│   │   │   │       ├── FallbacksFields.tsx
 │   │   │   │       ├── FormField.tsx
 │   │   │   │       ├── HumanForm.tsx
 │   │   │   │       ├── MCPConfigFields.tsx
@@ -3970,6 +3996,7 @@
 │   │   │   ├── usePromptEditorMount.tsx
 │   │   │   ├── usePromptText.tsx
 │   │   │   ├── useResolvedEffort.ts
+│   │   │   ├── useResolvedModel.ts
 │   │   │   ├── useRunBudgetCaps.ts
 │   │   │   ├── useRunCheckpointBudget.ts
 │   │   │   ├── useRunChildren.ts
@@ -4056,6 +4083,8 @@
 │   │   │   ├── localStorageFlag.ts
 │   │   │   ├── loopLabel.test.ts
 │   │   │   ├── loopLabel.ts
+│   │   │   ├── modelLabel.test.ts
+│   │   │   ├── modelLabel.ts
 │   │   │   ├── nodeDetailGraph.test.ts
 │   │   │   ├── nodeDetailGraph.ts
 │   │   │   ├── openExample.ts
@@ -4066,6 +4095,7 @@
 │   │   │   ├── promptVarHeuristics.test.ts
 │   │   │   ├── promptVarHeuristics.ts
 │   │   │   ├── queryFlash.ts
+│   │   │   ├── refCompletion.test.ts
 │   │   │   ├── refCompletion.ts
 │   │   │   ├── runChat
 │   │   │   │   ├── messagesFromEvents.test.ts
@@ -11798,4 +11828,4 @@
                 ├── pbkdf.go
                 ├── pkcs12.go
                 └── safebags.go
-1657 directories, 11006 files
+1661 directories, 11056 files

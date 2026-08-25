@@ -1,34 +1,32 @@
-## Changelog : iterion (30 derniers jours, au 21 août 2026)
+## Changelog : iterion (30 derniers jours, au 24 août 2026)
 
 ### Résumé
-Ce mois a été marqué par une consolidation majeure de la fiabilité et de la sécurité du système. L'introduction du framework "Golden Master" permet désormais de garantir la non-régression comportementale des agents par des audits automatisés. Parallèlement, le projet a renforcé l'isolation de ses environnements d'exécution (sandbox) et a considérablement enrichi l'interface de pilotage (Studio) pour offrir une meilleure visibilité sur les changements et les processus de validation humaine.
+Ce mois a été marqué par un effort massif sur la fiabilité et la visibilité du système. L'introduction de "Goldy" (un système de test de non-régression comportementale) et du bot "Endy" (couverture de tests de bout en bout) renforce la stabilité des agents. Parallèlement, de nouvelles capacités de contrôle ont été ajoutées, notamment une gestion fine des quotas de consommation (usage-caps) et une meilleure visibilité sur les coûts et les modèles utilisés, permettant un pilotage plus précis des workflows d'IA.
 
 ### Évolutions fonctionnelles
-- **Nouveau juge d'arbitrage** : Introduction de *Themis*, un juge spécialisé pour résoudre les cas de divergence bloqués dans les workflows.
-- **Améliorations du Studio** :
-    - Prévisualisation directe des contenus (JSON, Markdown, texte) lors des étapes de validation humaine [#425].
-    - Affichage des changements de fichiers directement dans la console de suivi des exécutions.
-    - Interface de gestion des pipelines et des cartes Kanban améliorée pour un meilleur suivi des tâches.
-    - Éditeur multi-fichiers pour la configuration des bots dans le cloud.
-- **Nouveau serveur MCP** : Mise à disposition d'un serveur *Model Context Protocol* permettant d'exposer les capacités d'Iterion (locales et distantes) à d'autres outils d'IA.
-- **Gestion des budgets et ressources** :
-    - Amélioration de la détection et de la prévention des dépassements de budget lors des boucles d'exécution (loop budget guard).
-    - Possibilité de mutualiser les quotas de souscription LLM entre les contributeurs.
-- **Nouveautés DSL** : Ajout de la fonctionnalité `auto_memory` pour permettre une gestion automatique du contexte par nœud.
+- **Nouveautés majeures** :
+    - Introduction de **Goldy (Golden Master)** : un système de test de non-régression comportementale qui permet de valider que les agents se comportent toujours comme prévu, incluant désormais la capture de documents (PDF, tableurs) [#27, #30].
+    - Gestion des **Usage-caps** : possibilité de définir, consulter et administrer les limites de consommation (budgets) en temps réel via la CLI et l'API [#9].
+    - Support du backend **Pi** : intégration de Pi comme moteur d'exécution de premier rang [#308].
+    - Serveur **MCP (Model Context Protocol)** : déploiement d'un serveur opérateur permettant d'exposer les capacités d'Iterion localement ou à distance [#421].
+    - Optimisation du **Studio** : ajout de l'aperçu des contenus (JSON, Markdown, texte) lors des étapes de validation humaine [#425] et interface de pipeline redimensionnable [#335].
+    - Mutualisation des ressources : possibilité de partager les quotas LLM inutilisés entre les contributeurs d'une équipe [#350].
+- **Améliorations et corrections** :
+    - Meilleure transparence sur l'exécution : affichage du modèle réellement utilisé et des coûts associés dans le Studio et la console [#474, #472].
+    - Amélioration de la gestion des sessions : les exécutions interrompues peuvent désormais être reprises plus efficacement [#470, #449].
+    - Correction de la gestion des erreurs dans le flux de données (feed-watch) pour éviter les alertes injustifiées [#456].
 
 ### Évolutions techniques
-- **Framework Golden Master (Goldy)** : Déploiement d'un système complet de non-régression comportementale incluant l'audit de mutantes, la gestion de sceaux de validation (seal) et des rapports de verdict structurés pour garantir la stabilité des agents.
-- **Sécurité et Isolation (Sandbox/Pi)** :
-    - Renforcement massif du confinement (containment) pour protéger les credentials et les données sensibles.
-    - Intégration du backend "pi" comme moteur d'exécution de premier rang.
-    - Sécurisation des échanges de tokens et des accès aux secrets.
-- **Résilience du Runtime** :
-    - Implémentation d'une procédure de "lame-duck drain" permettant de terminer gracieusement les exécutions en cours lors d'un déploiement.
-    - Amélioration de la reprise de session (StateRef) pour permettre de reprendre un nœud après une interruption.
-- **Observabilité** : Intégration de Sentry et GlitchTip pour le suivi des erreurs et standardisation des logs pour une meilleure traçabilité des appels LLM [#463, #459].
-- **Gestion des identités et credentials** : Possibilité de faire pivoter les credentials LLM de la plateforme via la base de données sans nécessiter de redéploiement [#466].
+- **Architecture et Runtime** :
+    - Implémentation du mode **"Lame-duck drain"** : permet de terminer proprement les exécutions en cours lors d'un déploiement, évitant ainsi les interruptions brutales [#467].
+    - Renforcement de la **sécurité des Sandboxes** : amélioration de l'isolation (gestion des certificats JVM, politiques réseau, protection accrue des tokens et des secrets) [#466, #468].
+    - Gestion dynamique des identifiants : possibilité de faire pivoter les clés d'accès aux LLM de la plateforme sans nécessiter de redéploiement [#466].
+    - Optimisation du stockage : meilleur nettoyage automatique des espaces de travail (worktrees) et gestion plus fine des fichiers temporaires [#469, #477].
+- **Qualité et Tests** :
+    - Déploiement de **Endy** : un bot dédié à la couverture de tests de bout en bout (e2e) qui analyse la matrice des fonctionnalités pour identifier les zones non couvertes [#fa20d7a].
+    - Amélioration de la robustesse des tests de non-régression avec des rapports de mutation plus précis [#383].
 
 ### Autres changements
-- **Documentation** : Migration complète de la documentation vers **VitePress** et mise à jour massive des guides (MCP, DSL, architectures, et guides de déploiement).
-- **Automatisation de la doc** : Mise en place d'un système de rafraîchissement automatique de la documentation via des bots dédiés, avec support des modes incrémentaux et des amendements de PR [#289].
-- **Maintenance** : Nettoyage automatique des répertoires temporaires de projet (`PROJECT_SCRATCH_DIR`) pour optimiser l'espace disque [#469].
+- **Documentation** : mise à jour massive de la documentation technique, incluant les guides MCP, les bilans de campagnes d'agents, et les procédures de gestion des identifiants cloud.
+- **Infrastructure** : mise à jour des images de base Docker et optimisation des pipelines CI/CD.
+- **Maintenance** : transition de la gestion des dépendances vers l'application interne `socialgouv-renovate` [#509].
