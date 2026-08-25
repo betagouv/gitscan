@@ -1,21 +1,37 @@
-## Changelog : fondation (30 derniers jours, au 05/08/2026)
+## Changelog : fondation (30 derniers jours, au 24 août 2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a franchi des étapes importantes avec la refonte de la gestion des agendas et des rapports officiels, offrant ainsi de nouveaux outils d'édition et une meilleure gestion documentaire. L'expérience utilisateur a été fluidifiée par l'introduction de panneaux latéraux pour la consultation des données et de nouvelles pages de détails. En parallèle, une restructuration profonde de l'architecture technique a été réalisée pour améliorer la robustesse et la maintenabilité du système.
+Ce mois-ci, la plateforme a franchi des étapes importantes dans le suivi des carrières des magistrats, notamment avec l'ajout de nouveaux outils de visibilité sur les évaluations et les détails de carrière. La gestion documentaire a également été renforcée par l'amélioration de l'éditeur d'agenda et la fiabilisation de la génération de rapports officiels. L'interface utilisateur a été affinée pour offrir une navigation plus fluide et une meilleure accessibilité.
 
 ### Évolutions fonctionnelles
-- **Gestion des rapports et agendas** : Mise en place d'un nouvel éditeur d'agenda frontend [#541](https://github.com/betagouv/fondation/issues/541), possibilité de sauvegarder les éditions de documents [#539](https://github.com/betagouv/fondation/issues/539) et augmentation de l'espace disponible pour les signatures dans les rapports [#547](https://github.com/betagouv/fondation/issues/547).
-- **Expérience utilisateur et interface** : Création d'une page dédiée aux détails des magistrats [#513](https://github.com/betagouv/fondation/issues/513) et remplacement des fenêtres modales par des panneaux latéraux pour une consultation plus fluide des observations [#439](https://github.com/betagouv/fondation/issues/439), [#474](https://github.com/betagouv/fondation/issues/474).
-- **Gestion des nominations et auditions** : Ajout de la possibilité de joindre des fichiers aux dossiers de nomination [#407](https://github.com/betagouv/fondation/issues/407), intégration de la date d'audition des magistrats [#463](https://github.com/betagouv/fondation/issues/463) et amélioration du suivi des dates d'audition [#508](https://github.com/betagouv/fondation/issues/508).
-- **Alertes et sécurité** : Ajout d'une alerte en cas de juridiction exclue lors d'une affectation manuelle [#535](https://github.com/betagouv/fondation/issues/535) et mise en place d'un audit des points de terminaison (endpoints) publics [#526](https://github.com/betagouv/fondation/issues/526).
+- **Gestion des magistrats et évaluations** :
+    - Ajout d'une liste permettant d'identifier les magistrats n'ayant pas encore fait l'objet d'une évaluation [#572].
+    - Mise en place d'alertes pour les auditions et les évaluations [#559].
+    - Création d'une page dédiée aux détails du magistrat [#513].
+    - Ajout d'un indicateur de manque d'évaluation sur les dossiers de nomination [#551].
+- **Gestion documentaire et agenda** :
+    - Déploiement d'un éditeur d'agenda côté client et gestion des éditions de documents [#541, #539].
+    - Possibilité de taguer les fichiers joints à une proposition [#562].
+    - Amélioration de la gestion des rapports officiels (ordre des fichiers et préparation des sessions) [#538, #548].
+- **Améliorations de l'interface (UI/UX)** :
+    - Ajout d'alertes concernant les juridictions exclues lors des affectations manuelles [#535].
+    - Amélioration de la lisibilité des tableaux (colonnes de statut, infobulles et gestion de l'espace pour les signatures) [#560, #561, #547].
+    - Uniformisation de l'affichage des juridictions exclues sur l'ensemble de la plateforme [#570].
+    - Correction de l'affichage des auditions sur les dossiers qui n'en acceptent plus [#568].
 
 ### Évolutions techniques
-- **Architecture logicielle** : Migration massive du projet vers une architecture "feature-first" pour une meilleure organisation du code et une modularité accrue [#432](https://github.com/betagouv/fondation/issues/432).
-- **Génération de documents** : Migration de la génération de PDF de Puppeteer vers Gotenberg pour plus de fiabilité [#520](https://github.com/betagouv/fondation/issues/520).
-- **Qualité et Tests** : Migration vers Vitest [#437](https://github.com/betagouv/fondation/issues/437), ajout de tests unitaires frontend et renforcement de la validation des contrats OpenAPI dans la CI pour éviter les dérives de l'API [#472](https://github.com/betagouv/fondation/issues/472).
-- **Mises à jour de l'infrastructure** : Montée de version majeure de TypeScript (v6) [#480](https://github.com/betagouv/fondation/issues/480) et de Prisma (v7) [#481](https://github.com/betagouv/fondation/issues/481).
-- **Design System** : Alignement des espacements et des couleurs sur les tokens officiels du DSFR [#418](https://github.com/betagouv/fondation/issues/418).
+- **Architecture et Refactoring** :
+    - Refonte des composants de fenêtres modales pour garantir une meilleure accessibilité [#579].
+    - Optimisation de la gestion des fichiers et restructuration des routages (layouts et guards de sécurité) [#340, #528, #527].
+    - Introduction de `nestjs-cls` pour une meilleure gestion du contexte en backend [#534].
+    - Refonte du modèle de vue pour l'éditeur de rapports officiels [#523].
+- **Infrastructure et Performance** :
+    - Migration de la génération de PDF de Puppeteer vers Gotenberg pour une plus grande fiabilité [#520, #522].
+    - Amélioration de la gestion des erreurs lors de la génération de documents via Gotenberg [#573].
+- **Qualité et Tests** :
+    - Renforcement de la fiabilité avec l'ajout de tests unitaires frontend dans les cycles d'intégration [#544].
+    - Utilisation de MSW pour simuler les appels API dans l'environnement Storybook [#557].
 
 ### Autres changements
-- **Documentation** : Mise à jour du README et ajout de guides Storybook pour faciliter le développement des composants [#507](https://github.com/betagouv/fondation/issues/507).
-- **Nettoyage du code** : Suppression des anciens modèles partagés et internalisation de diverses énumérations et types (Rôles, Genre, Grades) pour simplifier la structure du projet.
+- Mise à jour de la documentation technique (README) et unification des commandes de configuration du projet [#571].
+- Optimisation des stories Storybook pour le développement des composants [#569].
