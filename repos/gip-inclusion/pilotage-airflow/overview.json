@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/gip-inclusion/pilotage-airflow",
   "name": "pilotage-airflow",
-  "description": "Ce dépôt gère l'intégralité des flux de données pour le Pilotage de l'Inclusion, en orchestrant des scripts Python, des modèles DBT et des DAGs Airflow.",
+  "description": "Ce dépôt gère l'intégralité des flux de données pour le Pilotage de l'Inclusion en orchestrant des scripts Python, des modèles DBT et des DAGs Airflow.",
   "language": "Python",
   "features": [
     "Données & Schémas",
@@ -34,7 +34,11 @@
       "none"
     ]
   },
-  "tests": "Pytest",
+  "tests": [
+    "Pytest",
+    "sqlfluff",
+    "ruff"
+  ],
   "workflows": [
     "ci.yml",
     "dbt-metabase.yml",
@@ -42,7 +46,7 @@
     "require-labels.yml",
     "require-notion-link.yml"
   ],
-  "lastActivity": "2026-08-04T06:51:41Z",
+  "lastActivity": "2026-08-24T16:01:07Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -50,7 +54,7 @@
     "stars": 1,
     "forks": 0,
     "contributors": 0,
-    "openIssues": 9
+    "openIssues": 8
   },
   "tags": [
     "Données & Open Data",

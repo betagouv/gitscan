@@ -1,17 +1,17 @@
-## Changelog : pilotage-airflow (30 derniers jours, au 04/08/2026)
+## Changelog : pilotage-airflow (30 derniers jours, au 24/08/2026)
 
 ### Résumé
-Ce mois-ci, les développements se sont concentrés sur l'enrichissement des indicateurs issus des enquêtes (FAGERH, ESAT) et l'intégration de nouveaux flux de données (DORA, IMER). Ces évolutions permettent d'affiner la précision des analyses et d'automatiser davantage le suivi des activités de pilotage.
+Ce mois a été marqué par une mise à jour majeure de l'infrastructure vers Airflow 3 et par un enrichissement significatif des modèles de données. Les processus de traitement des enquêtes (ESAT, FAGERH, IMER) ont été affinés pour garantir une meilleure précision des indicateurs et une orchestration plus robuste.
 
 ### Évolutions fonctionnelles
-- **Enrichissement de l'enquête FAGERH** : intégration du taux d'emploi, mise à jour du mapping des prestations, analyse des bénéficiaires directs et ajout du comptage des préconisations dans les tables de synthèse (marts).
-- **Intégration des données DORA** : mise en place de nouveaux modèles DBT et de DAGs Airflow pour le suivi des actes métier.
-- **Amélioration de la qualité des données ESAT** : application de règles d'exclusion au niveau des champs pour garantir la fiabilité des résultats de l'enquête.
-- **Suivi de l'IMER** : intégration du suivi de l'IMER à partir des données d'emplois.
+- **Enquêtes ESAT** : Amélioration de la clarté des données via le renommage de colonnes, ajustement des seuils de complétude et fiabilisation du mapping des réponses.
+- **Enquêtes FAGERH** : Ajout de nouveaux modèles pour le calcul du taux d'emploi, mise à jour du mapping des prestations et intégration du suivi des bénéficiaires directs.
+- **Enquête IMER** : Mise en place de l'orchestration et ajustement de la planification des tâches.
+- **Reporting** : Ajout de colonnes de comptage des préconisations dans les tables de données finales (marts).
 
 ### Évolutions techniques
-- **Infrastructure et Orchestration** : mise à jour de la version d'Airflow et automatisation de l'orchestration pour le flux IMER.
-- **Optimisation CI/CD** : amélioration des performances des pipelines de CI via la gestion du cache (`prune-cache`) pour l'action `setup-uv`.
+- **Infrastructure** : Migration complète vers Airflow 3, incluant la mise à jour des DAGs et l'implémentation d'un nouveau gestionnaire d'authentification (`simpleAuthManager`).
+- **CI/CD** : Optimisation des pipelines de tests pour éviter les exécutions inutiles et amélioration de la gestion du cache pour l'outil `setup-uv`.
 
 ### Autres changements
-- **Documentation** : correction des définitions dans la documentation des modèles DBT pour l'enquête ESAT.
+- **Documentation** : Amélioration de la qualité rédactionnelle et mise à jour des définitions des modèles de données DBT.

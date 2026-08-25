@@ -20,7 +20,6 @@
 ├── Dockerfile
 ├── Makefile
 ├── README.md
-├── custom-dev-entrypoint.sh
 ├── custom-prod-entrypoint.sh
 ├── dag-variables.json
 ├── dags
@@ -61,6 +60,7 @@
 │   │   ├── stats_dsn
 │   │   │   └── raw_data_query.sql
 │   │   └── tasks.py
+│   ├── copy_metabase_docs_to_pilotage.py
 │   ├── data_consistency.py
 │   ├── data_inclusion.py
 │   ├── dbt_daily.py
@@ -88,7 +88,6 @@
 │   ├── monrecap_mailing_list.py
 │   ├── nps_gip.py
 │   ├── nps_pilotage.py
-│   ├── populate_autometa_docs.py
 │   ├── populate_esat_database.py
 │   ├── populate_matometa_database.py
 │   ├── populate_metabase_fluxiae.py
@@ -402,6 +401,7 @@
 │   │       ├── esat
 │   │       │   ├── properties.yml
 │   │       │   ├── stg_esat__answer_field_exclusions.sql
+│   │       │   ├── stg_esat__forced_no_answer.sql
 │   │       │   ├── stg_esat__liste_officielle.sql
 │   │       │   ├── stg_esat__mapped_answers.sql
 │   │       │   └── stg_esat__surveys_esat_answers.sql
@@ -468,6 +468,7 @@
 │   │   ├── new_seeds
 │   │   │   ├── esat
 │   │   │   │   ├── seed_esat__answer_field_exclusions.csv
+│   │   │   │   ├── seed_esat__forced_no_answer.csv
 │   │   │   │   ├── seed_esat__liste_officielle.csv
 │   │   │   │   └── seed_esat__mapping_reponses_manuelles.csv
 │   │   │   ├── fagerh
@@ -607,4 +608,4 @@
     ├── test_common_dates.py
     ├── test_common_db.py
     └── test_dags.py
-88 directories, 606 files
+88 directories, 607 files
