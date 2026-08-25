@@ -1,4 +1,8 @@
 .
+├── .claude
+│   └── skills
+│       └── new-article
+│           └── SKILL.md
 ├── .dockerignore
 ├── .gitattributes
 ├── .github
@@ -45,6 +49,14 @@
 │   │   │   └── Spectral-Regular.woff2
 │   │   ├── images
 │   │   │   ├── .keep
+│   │   │   ├── articles
+│   │   │   │   ├── api-franceconnectees-bouton-france-connect.png
+│   │   │   │   ├── api-franceconnectees-donnees-personnelles.png
+│   │   │   │   ├── article-prerequis-etapes-integration-api-exemple-cadre-juridique-dans-simplifions.png
+│   │   │   │   ├── article-qu-est-ce-qu-une-api-donnees-appel.png
+│   │   │   │   ├── article-qu-est-ce-qu-une-api-donnees-reponse.png
+│   │   │   │   ├── article-qu-est-ce-qu-une-api-donnees-transmises-donnees-renvoyees-composant-api.png
+│   │   │   │   └── image-guide-de-base-collectivites-guichet-mairie-2.jpg
 │   │   │   ├── artwork
 │   │   │   │   ├── background
 │   │   │   │   │   └── ovoid.svg
@@ -1004,44 +1016,88 @@
 │   │   │   │       ├── typhoon-line.svg
 │   │   │   │       ├── windy-fill.svg
 │   │   │   │       └── windy-line.svg
-│   │   │   └── simplifions
-│   │   │       ├── accueil-picto-community.svg
-│   │   │       ├── accueil-picto-conclusion.svg
-│   │   │       ├── accueil-picto-decouverte-donnees.svg
-│   │   │       ├── accueil-picto-information.svg
-│   │   │       ├── accueil-picto-innovation.svg
-│   │   │       ├── accueil-picto-justice-scales.svg
-│   │   │       ├── accueil-picto-search.svg
-│   │   │       ├── accueil-picto-self-training.svg
-│   │   │       └── simplifions-logo.svg
+│   │   │   ├── simplifions
+│   │   │   │   ├── accueil-picto-community.svg
+│   │   │   │   ├── accueil-picto-conclusion.svg
+│   │   │   │   ├── accueil-picto-decouverte-donnees.svg
+│   │   │   │   ├── accueil-picto-information.svg
+│   │   │   │   ├── accueil-picto-innovation.svg
+│   │   │   │   ├── accueil-picto-justice-scales.svg
+│   │   │   │   ├── accueil-picto-search.svg
+│   │   │   │   ├── accueil-picto-self-training.svg
+│   │   │   │   └── simplifions-logo.svg
+│   │   │   └── solutions
+│   │   │       ├── annuaire-des-entreprises.png
+│   │   │       ├── bouquet-api-entreprise.png
+│   │   │       ├── bouquet-api-particulier.png
+│   │   │       ├── data-subvention.png
+│   │   │       ├── formulaire-de-collecte-du-quotient-familial.png
+│   │   │       └── franceconnect-2.png
 │   │   ├── javascript
 │   │   │   └── dsfr.module.js
 │   │   └── stylesheets
 │   │       ├── application.css
+│   │       ├── articles.css
 │   │       ├── dsfr-utility.css
 │   │       └── dsfr.css
+│   ├── components
+│   │   ├── application_component.rb
+│   │   ├── article_card_component.html.erb
+│   │   ├── article_card_component.rb
+│   │   ├── article_checklist_component.rb
+│   │   ├── article_figure_component.html.erb
+│   │   ├── article_figure_component.rb
+│   │   ├── article_layout_component.html.erb
+│   │   ├── article_layout_component.rb
+│   │   ├── article_read_more_component.html.erb
+│   │   ├── article_read_more_component.rb
+│   │   ├── article_section_component.html.erb
+│   │   ├── article_section_component.rb
+│   │   ├── article_spotlight_component.html.erb
+│   │   ├── article_spotlight_component.rb
+│   │   ├── catalog_card_component.rb
+│   │   ├── dataservice_card_component.html.erb
+│   │   ├── dataservice_card_component.rb
+│   │   ├── demarche_card_component.html.erb
+│   │   ├── demarche_card_component.rb
+│   │   ├── sirene_demo_component.html.erb
+│   │   ├── sirene_demo_component.rb
+│   │   ├── solution_card_component.html.erb
+│   │   └── solution_card_component.rb
 │   ├── controllers
 │   │   ├── application_controller.rb
+│   │   ├── articles_controller.rb
 │   │   ├── concerns
 │   │   │   └── .keep
 │   │   └── pages_controller.rb
 │   ├── helpers
-│   │   └── application_helper.rb
+│   │   ├── application_helper.rb
+│   │   └── articles_helper.rb
 │   ├── javascript
 │   │   ├── application.js
 │   │   └── controllers
 │   │       ├── application.js
-│   │       ├── hello_controller.js
-│   │       └── index.js
+│   │       ├── index.js
+│   │       ├── sirene_demo_controller.js
+│   │       └── toc_controller.js
 │   ├── jobs
 │   │   └── application_job.rb
 │   ├── mailers
 │   │   └── application_mailer.rb
 │   ├── models
 │   │   ├── application_record.rb
+│   │   ├── article.rb
 │   │   └── concerns
 │   │       └── .keep
 │   └── views
+│       ├── articles
+│       │   ├── anticiper_le_parcours_usager_avant_d_integrer_vos_api.html.erb
+│       │   ├── apis_franceconnectees.html.erb
+│       │   ├── guide_base_petites_collectivites.html.erb
+│       │   ├── index.html.erb
+│       │   ├── prerequis_et_etapes_integration_api.html.erb
+│       │   ├── qu_est_ce_qu_une_api.html.erb
+│       │   └── vos_interlocuteurs_selon_le_type_d_api.html.erb
 │       ├── layouts
 │       │   ├── _footer.html.erb
 │       │   ├── _header.html.erb
@@ -1069,6 +1125,13 @@
 ├── compose.yaml
 ├── config
 │   ├── application.rb
+│   ├── articles
+│   │   ├── 01-qu-est-ce-qu-une-api.yml
+│   │   ├── 02-apis-franceconnectees.yml
+│   │   ├── 03-guide-base-petites-collectivites.yml
+│   │   ├── 04-prerequis-et-etapes-integration-api.yml
+│   │   ├── 05-vos-interlocuteurs-selon-le-type-d-api.yml
+│   │   └── 06-anticiper-le-parcours-usager-avant-d-integrer-vos-api.yml
 │   ├── boot.rb
 │   ├── bundler-audit.yml
 │   ├── cache.yml
@@ -1115,8 +1178,11 @@
 ├── script
 │   └── .keep
 ├── spec
+│   ├── components
+│   │   └── solution_card_component_spec.rb
 │   ├── rails_helper.rb
 │   ├── requests
+│   │   ├── articles_spec.rb
 │   │   └── pages_spec.rb
 │   └── spec_helper.rb
 ├── storage
@@ -1131,4 +1197,4 @@
     ├── .keep
     └── javascript
         └── .keep
-75 directories, 1275 files
+84 directories, 1332 files

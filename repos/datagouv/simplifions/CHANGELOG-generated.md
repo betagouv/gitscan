@@ -1,24 +1,24 @@
-## Changelog : simplifions (30 derniers jours, au 05 août 2026)
+## Changelog : simplifions (30 derniers jours, au 23 août 2026)
 
 ### Résumé
-Ce mois a été consacré à l'initialisation de l'application en tant que projet autonome et à la mise en place de son infrastructure de déploiement. L'accent a été mis sur la synchronisation de l'interface utilisateur avec la version de production et sur l'automatisation des processus de test et de mise en ligne.
+Ce mois a marqué le lancement de l'application Rails autonome de Simplifions. Les efforts se sont concentrés sur la mise en place d'une interface conforme au Design System de l'État (DSFR), l'automatisation complète des déploiements et la simplification de l'environnement de développement pour les contributeurs.
 
 ### Évolutions fonctionnelles
-- **Identité visuelle** : Mise en conformité de l'interface avec la version de production (utilisation du logo Simplifions.data, du favicon officiel et intégration du Design System de l'État - DSFR).
-- **Contenu** : Alignement des pages d'accueil et "À propos" sur le modèle de la version de production.
+- **Identité visuelle** : Mise en conformité de l'interface avec la production (page d'accueil, page "À propos", favicon et logo).
+- **Design System** : Intégration du DSFR pour assurer une expérience utilisateur cohérente avec les standards de l'État.
+- **Gestion de contenu** : Nouveau système de gestion des articles permettant de publier du contenu via des fichiers YAML, évitant ainsi des modifications directes dans le code source.
 
 ### Évolutions techniques
-- **CI/CD et Déploiement** : 
+- **Déploiement & CI/CD** : 
     - Automatisation des déploiements vers les environnements de sandbox, staging et production via GitHub Actions [#6](https://github.com/datagouv/simplifions/pull/6).
-    - Possibilité de déclencher manuellement les cycles d'intégration continue (CI).
-- **Optimisation et Architecture** :
-    - Allègement de l'application par la suppression de composants inutilisés (`solid_queue`, `solid_cable` et `image_processing`).
-    - Initialisation de l'application Rails standalone.
-    - Mise en place d'une gestion multi-environnements pour les identifiants et les configurations.
-- **Expérience de développement** :
-    - Simplification du lancement de l'application en local grâce à Docker et `make`.
-    - Adoption des standards de qualité et de test (RSpec, RuboCop) basés sur les conventions de l'équipe.
-    - Servage local des assets du DSFR pour plus d'autonomie.
+    - Amélioration de la stabilité de la CI (gestion des schémas de base de données et des processus de publication Brakeman).
+- **Développement local** : Simplification de l'installation et du lancement du projet grâce à Docker et `make`.
+- **Architecture & Optimisation** :
+    - Initialisation de l'application Rails en mode autonome.
+    - Refonte de la section articles utilisant `ViewComponent` et `importmap` pour une meilleure gestion du JavaScript et des composants.
+    - Allègement de l'application par la suppression de dépendances inutilisées (`solid_queue`, `solid_cable`, `image_processing`).
+- **Maintenance** : Correction des processus d'installation (`make install`) suite à des changements de dépendances [#11](https://github.com/datagouv/simplifions/pull/11).
 
 ### Autres changements
-- **Nettoyage** : Suppression des notes de projet locales du dépôt pour garantir la propreté du code.
+- **Qualité du code** : Adoption des conventions de tests et de style (RSpec et RuboCop) de l'équipe.
+- **Nettoyage** : Suppression des notes de travail locales du dépôt.
