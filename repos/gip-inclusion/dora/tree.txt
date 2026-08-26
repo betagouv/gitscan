@@ -176,6 +176,7 @@
 │   │   │   ├── models.py
 │   │   │   ├── notify.py
 │   │   │   ├── pagination.py
+│   │   │   ├── slack.py
 │   │   │   ├── templates
 │   │   │   │   ├── admin
 │   │   │   │   │   └── import_csv_form.html
@@ -371,6 +372,7 @@
 │   │   │   │   └── __init__.py
 │   │   │   ├── models.py
 │   │   │   ├── serializers.py
+│   │   │   ├── slack.py
 │   │   │   ├── templates
 │   │   │   │   ├── contact-beneficiary.mjml
 │   │   │   │   ├── contact-prescriber.mjml
@@ -490,9 +492,11 @@
 │   │   │   │   ├── 0011_service_description.py
 │   │   │   │   ├── 0012_remove_service_use_inclusion_numerique_scheme.py
 │   │   │   │   ├── 0013_drop_publics_m2m_rename_publics_di.py
+│   │   │   │   ├── 0014_mobilisation_fields.py
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── data
 │   │   │   │       └── assignation-thematiques.csv
+│   │   │   ├── mobilisation.py
 │   │   │   ├── models.py
 │   │   │   ├── search.py
 │   │   │   ├── serializers.py
@@ -516,6 +520,7 @@
 │   │   │   │   ├── test_import_services.py
 │   │   │   │   ├── test_label_services.py
 │   │   │   │   ├── test_logs.py
+│   │   │   │   ├── test_mobilisation_sync.py
 │   │   │   │   ├── test_models.py
 │   │   │   │   ├── test_search.py
 │   │   │   │   ├── test_serializers.py
@@ -614,6 +619,7 @@
 │   │   │   │   │   └── test_import_structures.ambr
 │   │   │   │   ├── conftest.py
 │   │   │   │   ├── test_admin_import_view.py
+│   │   │   │   ├── test_admin_url.py
 │   │   │   │   ├── test_clean_mobin_label.py
 │   │   │   │   ├── test_delete_orphan_structures.py
 │   │   │   │   ├── test_emails.py
@@ -1455,4 +1461,4 @@
 └── tools
     ├── create-review-apps.sh
     └── release.sh
-276 directories, 1181 files
+276 directories, 1187 files
