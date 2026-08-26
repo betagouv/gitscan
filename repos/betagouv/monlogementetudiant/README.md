@@ -76,12 +76,15 @@ cli/
     db.ts               # Connexion Drizzle CLI avec closeDb()
     db-utils.ts          # clean/restore DB
     scalingo-backup.ts   # API Scalingo
+    backup-storage.ts    # Dépôt et rétention des backups dans S3
     geocoder.ts          # Géocodage BAN + geo.api.gouv.fr
     matomo.ts            # Service API Matomo
   commands/
     migrate-users.ts     # Migration users Django
     backfill-brevo-contacts.ts # Rattrapage des contacts Brevo (étudiants + gestionnaires)
+    backfill-geocoding.ts # Recalage des geom aberrantes et des city_id mal résolus
     import-backup.ts     # Import backup Scalingo
+    backup-db.ts         # Externalisation du backup Scalingo vers S3 (cron prod)
     import-arpej-ibail.ts # Import résidences ARPEJ (API iBAIL)
     import-crous.ts       # Import résidences CROUS depuis XLSX
     import-crous-rents.ts # Import loyers min/max CROUS par typologie depuis XLSX
@@ -102,6 +105,7 @@ cli/
     backfill-alert-jobs.ts  # Vague initiale : jobs pour le stock dispo × alertes existantes
     detect-alert-jobs.ts    # Détecte les hausses de dispo et crée les jobs (réconciliation)
     send-alert-jobs.ts      # Draine la file de jobs et envoie les emails d'alerte
+    expire-alerts.ts        # Relance à 3 mois puis désactive les alertes sans réaction
 ```
 
 ---
@@ -117,6 +121,161 @@ pnpm cli migrate-users
 Lit les tables Django existantes dans la BDD locale (typiquement après un `import-backup`) et traduit les utilisateurs vers le schéma better-auth : insertion dans les tables `user` et `account`, puis liaison des owners existants par correspondance de nom, et liaisons des utilisateurs students.
 
 À utiliser une seule fois après la migration Django → tRPC/Drizzle.
+
+#### `backfill-cache-control` — Rattraper le Cache-Control des médias S3
+
+```bash
+pnpm cli backfill-cache-control --dry-run --verbose   # lister ce qui serait corrigé
+pnpm cli backfill-cache-control                        # rattrapage complet
+pnpm cli backfill-cache-control --prefix purges/       # un autre préfixe
+```
+
+`uploadFile` pose `public, max-age=15552000, immutable` sur les objets déposés (les clés étant
+des UUID, une photo remplacée reçoit une nouvelle clé : le contenu d'une clé ne change jamais).
+Les médias antérieurs n'ont aucun en-tête de cache — les navigateurs revalident, et `next/image`
+plafonne le TTL de ses dérivées à `minimumCacheTTL`, soit 4 h, au lieu de reprendre le `max-age`
+amont.
+
+S3 ne sait pas muter un en-tête en place : la commande recopie chaque objet sur lui-même avec
+`MetadataDirective: REPLACE`. Elle est idempotente et reprenable — un objet déjà à jour est
+ignoré — et sort en code 1 si au moins un objet a échoué, pour que le one-off Scalingo le
+signale.
+
+À lancer une fois par bucket, en one-off :
+
+```bash
+scalingo --app mle-prod --region osc-secnum-fr1 run pnpm cli backfill-cache-control --verbose
+```
+
+##### Cache des images optimisées
+
+`next/image` écrit ses dérivées dans `.next/cache/images`, sur le disque **éphémère** du
+container : avec 4 containers web, une même vignette est réencodée par sharp jusqu'à 4 fois, et
+tout repart à zéro à chaque deploy. `cache-handler.mjs` (racine du repo, branché via
+`cacheHandler` + `images.customCacheHandler` dans `next.config.mjs`) remplace ce cache local par
+un cache à deux étages : un LRU en mémoire par container (`IMAGE_CACHE_MEMORY_MB`, 128 Mo par
+défaut) devant le bucket S3, partagé par les containers et conservé entre les deploys.
+
+Les dérivées vivent sous le préfixe `image-cache/`, sans ACL publique. Comme les
+archives de `purge-logs`, elles ne sont référencées par aucune ligne en base : `audit-storage`
+les exclut explicitement de son balayage des orphelins.
+
+Seules les entrées `IMAGE` sont détournées ; le reste du cache incrémental (fetch cache des
+services WordPress / RAMSESE, pages prérendues) est délégué au `FileSystemCache` de Next. Ce
+dernier est importé par un chemin interne à Next, non couvert par son semver public : **à
+revérifier à chaque montée de version majeure** — le handler échoue au boot plutôt que de
+dégrader le cache en silence.
+
+#### `purge-logs` — Purger les tables append-only
+
+```bash
+pnpm cli purge-logs --dry-run --verbose        # simulation, détail par table
+pnpm cli purge-logs                             # purge + archivage S3
+pnpm cli purge-logs --table tracking_event      # une seule table
+pnpm cli purge-logs --retention-months 12       # force la rétention de toutes les tables
+```
+
+Supprime les lignes plus vieilles que la rétention (filtre sur `created_at`) dans les tables qui ne
+sont jamais mises à jour et grossissent donc indéfiniment (ex. aout 2026):
+
+| Table | Rétention | Taille | Croissance | Périmètre |
+|-------|-----------|--------|------------|-----------|
+| `tracking_event` | **7 mois** | 805 Mo | ~385 Mo/mois | tous les événements de navigation |
+| `alert_job` | 12 mois | 11 Mo | ~8,8 Mo/mois | **jobs terminés uniquement** (`sent`, `failed`) ; les `pending` restent actionnables par le sender |
+| `activity_log` | 36 mois | 5 Mo | ~0,5 Mo/mois, en décroissance | journal d'actions admin/bailleurs |
+| `import_job` | 24 mois | 1,9 Mo | ~0,2 Mo/mois | audit trail des imports et des crons |
+
+Les rétentions sont volontairement dissymétriques. `tracking_event` pèse 98 % du total et croît
+40 fois plus vite que la somme des trois autres : c'est la seule dont la rétention se paie en
+gigaoctets, donc la seule à purger court. Sur les autres, allonger la rétention coûte quelques
+dizaines de mégaoctets sur plusieurs années — moins cher qu'un écran d'admin qui affiche un trou :
+
+- **`activity_log`** — l'écran « Statistiques gestionnaires » laisse choisir une **plage de dates
+  libre** (deux champs `type="date"`, au-delà des présélections 7/30/90 jours). Purger court ferait
+  silencieusement retourner zéro sur les plages anciennes, pour économiser 5 Mo sur une table qui
+  décroît. La rétention n'est ici qu'un garde-fou.
+- **`import_job`** — l'admin « Tâches planifiées » affiche le dernier run de **chaque type de
+  cron** (`selectDistinctOn`). Certains sont trimestriels (`sync rents`) : une rétention courte
+  pourrait effacer le seul enregistrement d'un job rare et l'afficher comme jamais exécuté.
+- **`alert_job`** — n'est relu par aucun écran ni aucune API. `onConflictDoNothing` du détecteur
+  s'appuie sur les index uniques partiels, qui ne couvrent que `pending` / `failed` : un job `sent`
+  ne bloque aucune réémission. Les 12 mois ne servent qu'au diagnostic a posteriori.
+
+La rétention de `tracking_event` est dictée par le tableau de bord bailleur
+(`owner-statistics.ts`). Le sélecteur n'expose que `7d` / `30d` / `90d`, donc **90 jours sont
+affichés** — mais une requête remonte à **180 jours** : `countConsultOffer` sur la période
+précédente, qui alimente le badge d'évolution des consultations d'offre en période `90d`. Sept mois
+couvrent cette fenêtre avec ~33 jours de marge.
+
+Attention si quelqu'un rallonge un jour les périodes proposées dans le tableau de bord : la
+rétention doit suivre, sinon les écrans afficheront des chiffres faux sans lever d'erreur.
+
+`stats` et `event_stat` sont volontairement exclues : ce sont déjà des agrégats journaliers, dont
+le volume est négligeable.
+
+**Archivage.** Avant chaque suppression, les lignes condamnées sont déposées dans S3 en **NDJSON
+gzippé** (une ligne = un objet JSON), sous
+`purges<suffixe-env>/<table>/<année>/<mois>/<table>-<horodatage>.ndjson.gz`. Ce format est écrit en
+flux (mémoire bornée quel que soit le volume), reste exploitable même tronqué, préserve les `jsonb`
+et les `null`, et se relit sans outillage :
+
+```bash
+# Inspecter une archive
+aws s3 cp s3://<bucket>/purges/tracking_event/2026/08/....ndjson.gz - | zcat | jq .
+
+# Réinjecter une archive en base (procédure vérifiée sur une archive réelle)
+psql "$DATABASE_URL" -c "create table _restore(row jsonb)"
+
+# Le quote/delimiter exotiques sont indispensables : en `copy ... from stdin` texte, PostgreSQL
+# interpréterait les antislashs du JSON et corromprait silencieusement les données.
+zcat archive.ndjson.gz | psql "$DATABASE_URL" \
+  -c "copy _restore(row) from stdin csv quote e'\x01' delimiter e'\x02'"
+
+psql "$DATABASE_URL" \
+  -c "insert into tracking_event select (jsonb_populate_record(null::tracking_event, row)).* from _restore" \
+  -c "drop table _restore"
+```
+
+Les identifiants d'origine sont réinjectés tels quels. Sans conséquence dans le cas courant (ils
+sont inférieurs au maximum en base), mais si la table a été vidée entre-temps il faut repositionner
+la séquence : `select setval(pg_get_serial_sequence('tracking_event','id'), max(id)) from
+tracking_event;`
+
+Procédure vérifiée de bout en bout sur une archive réelle de 808 573 lignes (22 Mo compressés,
+20 s de rechargement).
+
+Si le dépôt S3 échoue, **rien n'est supprimé** : mieux vaut une table qui grossit un jour de plus
+que des lignes perdues sans filet.
+
+Options :
+
+| Option | Description |
+|--------|-------------|
+| `--dry-run` | Compte les lignes sans rien supprimer ni archiver |
+| `--verbose` | Affiche le filtre, la coupure et la clé d'archive par table |
+| `--retention-months <n>` | Force la rétention de **toutes** les tables |
+| `--max-rows <n>` | Plafond de lignes par table et par run (défaut : 2 000 000) |
+| `--table <name>` | Ne traite qu'une table |
+| `--no-archive` | Supprime sans déposer d'archive |
+
+**Cadence : mensuelle**, le 1er de chaque mois à 5h. Une archive par table et par mois,
+d'environ 30 Mo compressés pour `tracking_event`. C'est la rétention, et non la cadence, qui fixe la
+taille de la table : une purge plus rare la fait grossir, puisque les lignes expirées y attendent
+plus longtemps. Une ligne de `tracking_event` vit donc entre 7 et 8 mois.
+
+Le plafond `--max-rows` est dimensionné au-dessus d'un mois d'événements (~1,2 M lignes) : il ne
+mord que sur le premier passage, qui rattrape l'historique. La commande signale explicitement les
+tables tronquées et il suffit de la relancer. Idempotente, visible dans l'admin
+« Tâches planifiées ».
+
+> **Espace disque.** La suppression de lignes ne rend pas le disque au système : PostgreSQL garde
+> les pages libérées pour ses propres écritures. Après une grosse purge de rattrapage, il faut un
+> `VACUUM FULL` (lock exclusif) ou `pg_repack` pour que la base rétrécisse réellement. C'est la
+> limite de l'approche par `DELETE`, et l'argument principal en faveur d'un partitionnement mensuel
+> de `tracking_event` si le volume le justifie un jour : la purge deviendrait un `DROP PARTITION`
+> instantané qui libère le disque immédiatement.
+
+Variables d'env requises : `DATABASE_URL`, `S3_*` (sauf avec `--no-archive`)
 
 #### `backfill-brevo-contacts` — Rattraper les contacts Brevo
 
@@ -146,6 +305,62 @@ Variables d'env requises : `DATABASE_URL`, `BREVO_API_KEY`, `BREVO_CONTACTS_API_
 
 > Conçue pour un one-off Scalingo. Sur Scalingo (vars injectées, pas de fichier `.env`), lancer directement `tsx cli/index.ts backfill-brevo-contacts --verbose` plutôt que `pnpm cli` (qui charge `--env-file=.env`).
 
+#### `backfill-geocoding` — Recaler les adresses mal géocodées
+
+```bash
+pnpm cli backfill-geocoding                                  # rapport : liste ce qui demande une revue manuelle
+pnpm cli backfill-geocoding --phase city --csv /tmp/city.csv # simulation du recalage des city_id
+pnpm cli backfill-geocoding --phase city --apply             # écriture
+pnpm cli backfill-geocoding --phase geom --apply --verbose   # écriture des coordonnées
+```
+
+> ⚠️ Contrairement aux autres commandes, celle-ci est **en dry-run par défaut** : c'est `--apply` qui déclenche l'écriture, pas l'absence de `--dry-run`.
+
+Rattrape deux défauts distincts hérités des imports, chacun sur son propre périmètre.
+
+Les deux phases d'écriture ne travaillent que sur les adresses **déjà incohérentes** — celles dont le point tombe hors de la commune de leur `city_id`. Une adresse saine n'est jamais lue, jamais réécrite.
+
+**Phase `city`** — recale le `city_id` sur la commune où le point se trouve, sans toucher aux coordonnées, et seulement quand une source indépendante confirme ce point : soit la BAN y place l'adresse, soit elle la place dans le même département (cas des codes CEDEX), soit le point est dans une commune du code postal. Répare les rattachements arbitraires d'avant le correctif (Rezé pour Nantes, Faugères pour Montpellier, Saint-Denis de La Réunion pour la Seine-Saint-Denis).
+
+**Phase `geom`** — corrige le point pour les adresses que `city` n'a pas pu résoudre, signe que ce sont les coordonnées qui sont en cause. Écrit `geom` et `city_id` ensemble, pour ne pas laisser la ville affichée en désaccord avec la position.
+
+**Phase `report`** (défaut) — n'écrit rien, liste les adresses à arbitrer à la main.
+
+Chaque adresse reçoit une décision :
+
+| Décision | Sens |
+|----------|------|
+| `apply` | Candidat rattachable à la commune du code postal, ou repli sur son centre |
+| `keep` | Le point en base est déjà plausible, on n'y touche pas |
+| `flag` | Indécidable automatiquement — revue manuelle |
+
+Les `flag` sont pour l'essentiel des adresses dont le numéro de boîte a été rangé dans le code postal à l'import (`2 rue du Général Delestraint CS` + code postal `15250`) : l'information d'origine est perdue, seule une correction manuelle est possible. Le motif `boundary-disagreement` en signale un second type : la commune que la BAN attribue à l'adresse ne contient pas le point retenu d'après `city.boundary` — cas des adresses en limite de deux communes, où les deux sources ne s'accordent pas.
+
+Après un cycle complet, `report` ne doit plus afficher que des `MANUELLE` : tout ce qui est annoncé `CORRIGEABLE` est effectivement corrigé, et relancer les phases ne modifie plus rien.
+
+> **Ordre d'exécution : `city` avant `geom`.** Tant que le `city_id` est faux, le nom de commune qui en dérive pollue la requête envoyée à la BAN et fausse la validation des candidats. `city` résolvant déjà une partie du lot, `geom` en voit d'autant moins.
+
+Vérifié sur une copie locale d'un backup de production (1571 adresses, 98 incohérentes) : **85 réparées, 0 adresse saine dégradée**, 13 restantes renvoyées en revue manuelle. Requête de contrôle :
+
+```sql
+SELECT count(*) FROM accommodation_address aa JOIN city c ON c.id = aa.city_id
+WHERE aa.geom IS NOT NULL AND c.boundary IS NOT NULL AND NOT ST_Within(aa.geom, c.boundary);
+```
+
+Options :
+
+| Option | Description |
+|--------|-------------|
+| `--phase <phase>` | `report` (défaut), `geom` ou `city` |
+| `--apply` | Écrit en base (par défaut : simulation) |
+| `--verbose` | Affiche chaque ligne traitée |
+| `--limit <n>` | Limite le nombre d'adresses examinées |
+| `--csv <path>` | Écrit le rapport détaillé (décision, confiance, motif, coordonnées) |
+
+Avec `--apply`, un fichier `rollback-geocoding-<phase>.sql` est écrit : il contient le `SELECT` des valeurs à capturer avant l'opération pour un retour arrière.
+
+Variables d'env requises : `DATABASE_URL`, `GEOCODING_API_URL` (défaut : `https://data.geopf.fr/geocodage/search`)
+
 #### `import-backup` — Importer un backup Scalingo
 
 ```bash
@@ -160,7 +375,54 @@ Options :
 - `--backup-path <path>` : utiliser un fichier backup local au lieu de télécharger
 - `--skip-download` : réutiliser un backup déjà téléchargé dans `/tmp/jde-backup/`
 
-Variables d'env requises : `SCALINGO_API_TOKEN`, `SCALINGO_APP`, `SCALINGO_DB_ADDON_ID`
+Variables d'env requises : `SCALINGO_API_TOKEN`, `SCALINGO_APP`
+
+#### `backup-db` — Externaliser le backup de la base vers S3
+
+```bash
+pnpm cli backup-db --dry-run --verbose   # en local : montre le backup retenu et la clé calculée
+```
+
+Copie le dernier backup PostgreSQL produit par Scalingo dans le bucket `S3_BACKUP_BUCKET`. Piloté par
+un cron quotidien à 5h00 UTC, **en production uniquement** (`cron.json` est commun à toutes les apps
+déployées depuis ce repo : la garde est dans le code, pas dans le planificateur).
+
+On ne produit pas le dump nous-mêmes : `pg_dump` n'existe pas dans un conteneur Node Scalingo, et
+l'addon PostgreSQL fabrique déjà un backup cohérent chaque nuit vers 00h01 UTC. La commande se
+contente de l'externaliser, en streaming (l'archive pèse ~300 Mo, elle ne transite pas par le disque
+ni par un `Buffer`).
+
+**Rétention — le tri se fait à l'écriture, pas à la suppression :**
+
+```
+monlogementetudiant-db-backups/
+  monthly/{app_name}-2026-08-01.tar.gz   ← le 1er du mois, conservé indéfiniment
+  monthly/{app_name}-2026-08-15.tar.gz   ← le 15 du mois, conservé indéfiniment
+  daily/{app_name}-2026-08-18.tar.gz     ← tous les autres jours, supprimé à J+31
+```
+
+La purge ne liste que le préfixe `daily/` : les backups conservés vivent sous `monthly/`,
+physiquement hors de sa portée. Aucune condition n'est écrite pour les épargner, donc aucune
+condition ne peut se tromper. Une clé hors format est ignorée, jamais supprimée.
+
+Ce n'est **pas** un lifecycle S3 : une règle de lifecycle raisonne en âge d'objet (en jours) et non
+en calendrier, elle ne sait pas exclure « le 1er et le 15 » ; et un `PutBucketLifecycleConfiguration`
+remplace la configuration complète du bucket, écrasant silencieusement toute autre règle. La purge
+en TypeScript est versionnée, testable (`cli/lib/__tests__/backup-storage.test.ts`) et visible en
+`--dry-run`.
+
+Garde-fous : la commande refuse un backup Scalingo de plus de 36 h (mieux vaut un cron en échec, qui
+envoie un mail, qu'un doublon déposé silencieusement sous la date du jour), vérifie la taille de
+l'objet déposé avant de purger quoi que ce soit, et ne supprime aucun ancien backup tant que celui
+du jour n'est pas confirmé en place.
+
+Options :
+- `--dry-run` : afficher le backup retenu, la clé calculée et les purges, sans rien écrire
+- `--verbose` : détailler les objets conservés et supprimés
+
+Variables d'env requises : `SCALINGO_API_TOKEN`, `SCALINGO_APP`, `S3_BACKUP_BUCKET`
+
+Pour restaurer : télécharger l'objet depuis le bucket, puis `pnpm cli import-backup --backup-path <fichier>`.
 
 #### `healthcheck` — Vérifier la cohérence des résidences publiées
 
@@ -237,6 +499,8 @@ Variables d'env requises : `DATABASE_URL`, `S3_ENDPOINT`, `S3_REGION`, `S3_BUCKE
 Le web service RAMSESE (référentiel des établissements du MEN, passerelle Omogen) est sur le **réseau RIE** et protégé par **IP whitelistée** + **clé d'API**. Il n'est donc joignable que depuis un environnement autorisé — typiquement un **one-off Scalingo** sortant par l'IP whitelistée. Variables d'env : `RAMSESE_API_URL`, `RAMSESE_CODE_APPLICATION`, `RAMSESE_API_KEY` (envoyée en query param `api-key`).
 
 Le bloc « Établissements à proximité » de la fiche logement s'appuie sur ce service (`src/server/services/ramsese.ts` → `getEtablissementsSuperieurByCodePostal`).
+
+**Établissements ouverts :** `POST /v3/listeUai/filtres` n'expose pas de critère « ouvert » (les filtres utilisés sont `communes`, `natures`, `secteurs`). L'état n'est disponible qu'au détail, dans `IDENTIFICATION.ETAT` — nomenclature `1` = ouvert, `2` = à ouvrir, `3` = fermé. Le service ne conserve donc que les UAI d'état `1` à l'étape détail (un `ETAT` absent est considéré ouvert, pour ne pas vider le bloc si le champ n'est plus servi). Pour re-tester si l'API accepte un critère d'état côté filtres : `--etats 1` (un `400` = critère non supporté).
 
 #### `verify-ramsese` — Diagnostiquer la connectivité et le parsing
 
@@ -320,6 +584,24 @@ Draine la file des jobs `pending`, regroupe par étudiant (un mail listant ses r
 
 > **Garde-fou anti-spam** : `sendStudentAlertEmail` n'envoie réellement qu'en `NEXT_PUBLIC_APP_ENV === 'production'`. En dev/staging, les jobs sont traités mais aucun mail ne part.
 
+#### `expire-alerts` — Péremption des alertes
+
+```bash
+pnpm cli expire-alerts --dry-run --verbose
+pnpm cli expire-alerts
+```
+
+Cycle de vie d'une alerte, piloté par la date de référence `renewed_at` (initialisée à la création, réinitialisée à chaque **édition de critères** dans l'espace étudiant — qui renvoie aussi le template 43 de confirmation) :
+
+1. **Relance** — à `renewed_at + 90 jours`, une alerte encore active reçoit le **template 46** et son `expiry_reminder_sent_at` est horodaté (anti-doublon).
+2. **Désactivation** — 7 jours après la relance sans réaction, elle reçoit le **template 48**, son `receive_notifications` repasse à `false` et `expired_at` est horodaté.
+
+À jouer en cron **quotidien** (`0 6 * * *`). Suivi dans `import_job` (type `alert-expiration`, visible dans l'admin « Tâches planifiées »).
+
+> **Garde-fou anti-spam** : double verrou. La commande `return` hors production (comme `send-alert-jobs`), et `sendAlertExpiryReminderEmail` / `sendAlertDeactivationEmail` refusent aussi d'envoyer hors `NEXT_PUBLIC_APP_ENV === 'production'`. En dev/staging : aucune relance, aucune désactivation, aucun mail.
+
+Variables d'env requises : `DATABASE_URL`, `BREVO_API_KEY`, `BREVO_TEMPLATE_ALERT_EXPIRY_REMINDER`, `BREVO_TEMPLATE_ALERT_DEACTIVATION`.
+
 ---
 
 ### Commandes d'import
@@ -330,6 +612,14 @@ Options communes :
 - `--dry-run` : simuler sans modifier la BDD
 - `--verbose` : afficher les détails de chaque élément traité
 - `--limit <n>` : limiter le nombre d'éléments importés
+- `--owner-id <id>` : id du bailleur auquel rattacher les résidences (prioritaire sur le slug et le nom)
+- `--owner-slug <slug>` : slug du bailleur (prioritaire sur le nom)
+
+Résolution du bailleur : `--owner-id`, puis `--owner-slug`, puis le nom codé en dur dans la commande.
+Les deux premiers sont des identifiants stables — si aucun bailleur ne correspond, la commande échoue
+sans rien écrire. Le nom, lui, est éditable depuis l'admin : il ne sert que de dernier recours et crée
+le bailleur s'il n'existe pas. Les crons (`cron.json`) passent par `--owner-slug`, le slug étant
+identique d'un environnement à l'autre contrairement à l'id.
 
 #### `import arpej-ibail` — Import résidences ARPEJ via API iBAIL
 
@@ -353,11 +643,13 @@ pnpm cli import csv --file data.csv --source crous --limit 10
 
 Importe des résidences depuis un fichier CSV (délimiteur `;`). Géocode les adresses, télécharge et uploade les images sur S3, puis upsert les accommodations en BDD via la table `external_sources`.
 
-Le CSV doit contenir au minimum : `name`, `owner_name`, `address`, `city`, `postal_code`. Colonnes optionnelles : `pictures` (URLs séparées par `|` ou retour à la ligne), types d'appartements (T1–T7), loyers, équipements (parking, laverie, cuisine…), coordonnées GPS, etc.
+Le CSV doit contenir au minimum : `name`, `owner_name`, `address`, `city`, `postal_code`. Colonnes optionnelles : `owner_id` / `owner_slug` (bailleur, prioritaires sur `owner_name` — lus sur la première ligne, comme `owner_name` et `owner_url`), `pictures` (URLs séparées par `|` ou retour à la ligne), types d'appartements (T1–T7), loyers, équipements (parking, laverie, cuisine…), coordonnées GPS, etc.
 
 Options spécifiques :
 - `--file <path>` (requis) : chemin vers le fichier CSV
 - `--source <name>` (requis) : identifiant de la source externe
+
+`--owner-id` / `--owner-slug` l'emportent sur les colonnes `owner_id` / `owner_slug` du fichier.
 
 Variables d'env requises : `S3_*` (upload images)
 
@@ -413,7 +705,7 @@ Le comparateur distingue aussi les écarts de nom dus au script SQL de normalisa
 pnpm cli upload-images /chemin/vers/dossier --name aclef
 ```
 
-Upload les images d'un dossier local vers S3, organisé par sous-dossier. Chaque sous-dossier correspond à une résidence (ex: `albert-camus/`, `l-arsenal/`). Les images sont uploadées dans `accommodations{S3_SUFFIX_DIR}/{name}/pictures/{uuid}.{ext}`.
+Upload les images d'un dossier local vers S3, organisé par sous-dossier. Chaque sous-dossier correspond à une résidence (ex: `albert-camus/`, `l-arsenal/`). Les images sont uploadées dans `accommodations/{name}/pictures/{uuid}.{ext}`.
 
 Le résultat affiche les URLs S3 par sous-dossier, séparées par `|` (format compatible avec la colonne `pictures` de l'import CSV).
 
@@ -503,14 +795,63 @@ Les migrations Drizzle sont appliquées au déploiement via le hook `postdeploy`
 
 | Cron | Commande | Fréquence |
 |------|----------|-----------|
-| `0 2 * * *` | `import arpej-ibail` | Tous les jours à 2h |
+| `0 2 * * *` | `import arpej-ibail --owner-slug arpej` | Tous les jours à 2h |
+| `30 2 * * *` | `import fac-habitat --owner-slug fac-habitat` | Tous les jours à 2h30 |
+| `0 4 * * *` | `import initiall --owner-slug initiall` | Tous les jours à 4h |
 | `0 1 * * 0` | `sync cities` | Dimanche à 1h |
-| `0 4 1 * *` | `sync rents` | 1er du mois à 4h |
+| `0 4 1 */3 *` | `sync rents` | 1er du trimestre à 4h |
 | `10 4 1 * *` | `sync students` | 1er du mois à 4h10 |
+| `0 5 1 * *` | `purge-logs` | 1er du mois à 5h |
 | `0 3 * * *` | `sync stats` | Tous les jours à 3h |
+| `30 3 * * *` | `purge-contact-requests` | Tous les jours à 3h30 |
+| `*/30 * * * *` | `send-alert-jobs` | Toutes les 30 min |
+| `0 8 * * *` | `detect-alert-jobs ; expire-alerts` | Tous les jours à 8h |
+| `0 5 * * *` | `backup-db` | Tous les jours à 5h (production uniquement) |
 
 Pour vérifier les crons actifs : `scalingo --app <app> cron-tasks`
-Pour voir les logs d'exécution : `scalingo --app <app> logs --filter cron`
+Pour voir les logs d'exécution : `scalingo --app <app> logs` (les crons tournent dans des conteneurs `one-off-*`, pas `cron-*`)
+
+#### Alerte mail en cas d'échec
+
+Quand un job planifié échoue, un mail part vers les adresses listées dans `CRON_FAILURE_EMAILS`
+(séparées par des virgules). **La présence de cette variable est l'interrupteur** : si elle est
+vide, l'échec est seulement journalisé. Il n'y a pas de garde sur l'environnement — renseigner
+la variable sur staging suffit à y recevoir les alertes.
+
+Le mail contient le nom du job, l'environnement, l'horodatage, la durée, le conteneur, le
+message d'erreur et une stack tronquée. L'erreur est en parallèle envoyée à Sentry.
+
+Deux natures d'échec déclenchent l'alerte :
+
+- **Crash net** — toute exception non rattrapée qui remonte jusqu'à `cli/index.ts`.
+- **Échec partiel** — le job termine mais des éléments sont passés à la trappe : `result.errors`
+  non vide pour les imports et syncs, alertes étudiantes ayant épuisé leurs `MAX_ATTEMPTS`
+  tentatives pour `send-alert-jobs`. Le job sort alors en code 1 et apparaît en échec sur
+  Scalingo, même si sa ligne `import_job` reste en `done` avec son résumé détaillé.
+
+Il n'y a **pas d'anti-flood** : un échec = un mail. Un job qui casse durablement enverra donc
+autant de mails qu'il a d'exécutions (jusqu'à 48/jour pour `send-alert-jobs`).
+
+Seules les commandes listées dans `CRON_COMMANDS` (`cli/cron-failure.ts`) notifient — un one-off
+lancé à la main affiche déjà son erreur dans le terminal. `cron-failure.test.ts` échoue si une
+commande de `cron.json` manque à cette liste.
+
+**Ce qui n'est pas couvert** — le mail suppose que le process JS vit assez longtemps pour
+l'envoyer :
+
+- conteneur tué de l'extérieur (OOM, timeout) : aucun handler ne s'exécute ;
+- cron jamais déclenché (planification cassée) : rien ne détecte une absence d'exécution ;
+- crash à la validation des variables d'env, qui a lieu à l'import des modules donc avant le
+  `try/catch` — cas de toute façon visible, puisqu'il ferait aussi tomber le site.
+
+Pour valider la chaîne de bout en bout après un déploiement :
+
+```bash
+scalingo -a <app> --region osc-secnum-fr1 run npx tsx cli/index.ts cron-selftest
+```
+
+Cette commande lève une erreur volontaire, ne touche ni la base ni aucune API métier, et n'est
+pas planifiée.
 
 ### Variables d'environnement CLI
 
@@ -519,9 +860,10 @@ Toutes les variables sont dans `.env.dist`. Celles spécifiques au CLI :
 | Variable | Utilisée par |
 |----------|-------------|
 | `DATABASE_URL` | Toutes les commandes |
-| `SCALINGO_API_TOKEN` | `import-backup` |
-| `SCALINGO_APP` | `import-backup` |
-| `SCALINGO_DB_ADDON_ID` | `import-backup` |
+| `CRON_FAILURE_EMAILS` | Alerte d'échec de tous les jobs planifiés (liste séparée par des virgules, vide = pas d'envoi) |
+| `SCALINGO_API_TOKEN` | `import-backup`, `backup-db` |
+| `SCALINGO_APP` | `import-backup`, `backup-db` |
+| `S3_BACKUP_BUCKET` | `backup-db` (production uniquement) |
 | `IBAIL_API_HOST` | `import arpej-ibail` |
 | `IBAIL_API_AUTH_KEY` | `import arpej-ibail` |
 | `IBAIL_API_AUTH_SECRET` | `import arpej-ibail` |
