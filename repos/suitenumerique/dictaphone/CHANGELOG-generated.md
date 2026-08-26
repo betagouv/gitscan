@@ -1,36 +1,35 @@
-## Changelog : dictaphone (30 derniers jours, au 14 août 2026)
+## Changelog : dictaphone (30 derniers jours, au 24 août 2026)
 
 ### Résumé
-Cette période a été marquée par une amélioration majeure de l'expérience mobile, notamment avec le support des téléchargements en arrière-plan et la sélection de documents. Le système de traitement audio a été considérablement renforcé par l'introduction de workers dédiés et une meilleure gestion des erreurs, offrant ainsi une plus grande fiabilité. Les utilisateurs bénéficient également d'une meilleure visibilité sur l'avancement des transcriptions, tant sur le web que sur mobile.
+Ce mois-ci, Dictaphone a franchi une étape importante dans la fiabilité de son traitement audio et l'expérience mobile. Les utilisateurs bénéficient désormais d'un meilleur suivi de l'avancement des transcriptions et de fonctionnalités mobiles enrichies, comme les téléchargements en arrière-plan. En coulisses, l'infrastructure a été renforcée pour améliorer la gestion des données et la stabilité des processus de transcription.
 
 ### Évolutions fonctionnelles
-- **Application Mobile** :
-    - Ajout de la sélection et du téléchargement de documents depuis l'appareil.
-    - Support des téléchargements en arrière-plan sur iOS et Android.
-    - Meilleure visibilité sur l'état de l'extraction audio et mise à jour des messages de notification de téléchargement.
-- **Interface Web** :
-    - Affichage précis du statut de l'extraction audio (succès ou échec) sur la page des enregistrements.
-    - Amélioration de l'ergonomie avec un en-tête de métadonnées de transcription fixe et des indicateurs de chargement.
-    - Mise à jour des documents légaux pour la conformité aux nouvelles politiques de données.
-- **Notifications** :
-    - Envoi automatique d'un e-mail de notification dès que la transcription est prête.
+- **Expérience Mobile (v1.6.x) :**
+    - Support des téléchargements en arrière-plan pour iOS et Android.
+    - Ajout d'un sélecteur de documents pour faciliter l'importation de fichiers.
+    - Amélioration du suivi de l'état de l'extraction audio et des notifications de téléchargement.
+    - Optimisation des performances de téléchargement sur Android.
+- **Interface Web & Administration :**
+    - Affichage détaillé de l'état de l'extraction audio (succès ou échec) directement sur la page des enregistrements.
+    - Amélioration de la gestion des fichiers dans l'interface d'administration (suppression multiple, gestion des tentatives de réessai).
+    - Mise à jour des documents légaux concernant les politiques de conservation des données.
+- **Notifications :**
+    - Envoi automatique d'un e-mail de notification dès qu'une transcription est prête.
 
 ### Évolutions techniques
-- **Traitement Audio et Médias** :
-    - Déploiement de workers dédiés à l'extraction audio pour optimiser les performances.
-    - Fiabilisation du traitement via FFmpeg et optimisation de la conversion audio pour la transcription.
-    - Meilleure gestion des erreurs d'extraction et suivi précis des résultats et des temps d'attente en file d'attente.
-- **Infrastructure et Stockage** :
-    - Renforcement de la gestion du stockage S3 (routage par bucket, configuration via variables d'environnement et mise en cache des clients).
-    - Prise en charge des politiques de données multi-entités (multitenant).
-    - Optimisation de la gestion des tâches via l'utilisation de files d'attente (queues) explicites et limitation de la concurrence des workers audio.
-- **Backend** :
-    - Introduction de la création synchrone de documents.
-    - Amélioration de la robustesse de l'API et du schéma de configuration des domaines via Pydantic.
+- **Traitement Audio & IA :**
+    - Mise en place de workers dédiés à l'extraction audio pour isoler et stabiliser les processus lourds.
+    - Optimisation de la conversion audio pour la transcription et amélioration de la robustesse via FFmpeg.
+    - Mise en place d'un suivi précis des temps de file d'attente et des résultats d'extraction.
+- **Gestion des données & Stockage :**
+    - Support des politiques de données spécifiques par domaine (multitenancy).
+    - Optimisation du routage vers les buckets S3 et gestion des configurations via les variables d'environnement.
+    - Amélioration de la gestion de la rétention des fichiers et des processus de purge.
+- **Architecture Backend :**
+    - Utilisation de files d'attente (queues) explicites pour l'ensemble des tâches asynchrones.
+    - Sécurisation de l'exécution des commandes média et limitation de la concurrence pour les workers audio.
+    - Amélioration de la gestion de la concurrence lors de la création de documents.
 
 ### Autres changements
-- **Administration** :
-    - Amélioration des outils de gestion : suppression multiple de fichiers, relance des tentatives d'extraction et visibilité accrue des statuts d'extraction.
-- **Qualité et CI/CD** :
-    - Augmentation de la couverture de tests (nettoyage audio, politiques de rétention, gestion des fuseaux horaires).
-    - Amélioration de la configuration de la CI (intégration de FFmpeg, correction des problèmes de linting).
+- **Documentation :** Ajout massif de diagrammes techniques détaillant l'architecture globale, le routage des fichiers, les processus de transcription, les webhooks et l'authentification mobile.
+- **Tests & CI/CD :** Renforcement de la couverture de tests (nettoyage audio, délais de rétention, stockage) et intégration de FFmpeg dans la chaîne de CI.
