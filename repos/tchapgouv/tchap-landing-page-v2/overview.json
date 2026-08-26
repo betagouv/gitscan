@@ -1,41 +1,55 @@
 {
   "url": "https://github.com/tchapgouv/tchap-landing-page-v2",
   "name": "tchap-landing-page-v2",
-  "description": "Ce projet permet de créer et gérer des sites internet basés sur le Système de design de l’État, en utilisant Wagtail CMS. Il facilite la conception de sites conformes aux normes numériques.",
+  "description": "Permet la création simplifiée de sites internet conformes aux normes numériques de l'État en utilisant le CMS Wagtail et le Système de design de l'État (DSFR).",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
     "Contenu éditorial",
     "Sécurité & Conformité",
-    "Accessibilité & i18n"
+    "Accessibilité & i18n",
+    "Formulaires & Démarches",
+    "Interface utilisateur & Design"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
     "Wagtail",
-    "django-dsfr"
+    "django-dsfr",
+    "PostgreSQL",
+    "Boto3",
+    "TarteaucitronJS"
   ],
   "components": [
-    "API REST & GraphQL",
-    "PostgreSQL & SQL",
-    "React / Next.js",
-    "TypeScript / JavaScript",
     "Django",
-    "Wagtail CMS"
+    "CMS (Strapi, Wagtail…)",
+    "PostgreSQL & SQL",
+    "Design System (DSFR & UI libs)",
+    "CI/CD & Déploiement",
+    "HTML / CSS / Templates visuels",
+    "Python (scripts & backend)",
+    "TypeScript / JavaScript"
   ],
   "auth": {
     "methods": [
-      "none"
+      "oauth2",
+      "sso"
+    ],
+    "providers": [
+      "ProConnect"
     ]
   },
   "tests": [
-    "pytest"
+    "pytest",
+    "coverage"
   ],
   "workflows": [
+    "cd-docker.yml",
     "ci-check-migrations.yml",
-    "ci-main.yml"
+    "ci-main.yml",
+    "issues-notion-sync.yml"
   ],
-  "lastActivity": "2026-06-01T17:04:09Z",
+  "lastActivity": "2026-08-24T17:04:10Z",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -46,10 +60,12 @@
     "openIssues": 1
   },
   "tags": [
-    "Données & Open Data",
     "Écosystème beta.gouv / État",
     "Python",
-    "Django",
-    "Wagtail"
+    "Django & FastAPI",
+    "Wagtail, CMS & générateurs statiques",
+    "Design System & UI",
+    "Accessibilité",
+    "HTML, CSS & Web"
   ]
 }
