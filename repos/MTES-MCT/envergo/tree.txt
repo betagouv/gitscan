@@ -93,6 +93,7 @@
 │   └── haie
 │       ├── home.spec.ts
 │       ├── moulinette
+│       │   ├── eviter_reduire.spec.ts
 │       │   └── form.spec.ts
 │       └── petitions
 │           ├── instructor.spec.ts
@@ -150,6 +151,9 @@
 │   │   │   ├── 0005_alter_setting_setting_hostedfile.py
 │   │   │   ├── 0006_merge_20241008_1517.py
 │   │   │   ├── 0007_alter_hostedfile_file.py
+│   │   │   ├── 0008_hosted_file_public_storage.py
+│   │   │   ├── 0009_migrate_hosted_file_paths_and_urls.py
+│   │   │   ├── 0010_rewrite_remaining_s3_urls.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── templatetags
@@ -160,7 +164,8 @@
 │   │   │   ├── factories.py
 │   │   │   ├── test_models.py
 │   │   │   └── test_templatetags.py
-│   │   └── utils.py
+│   │   ├── utils.py
+│   │   └── views.py
 │   ├── conftest.py
 │   ├── contrib
 │   │   ├── __init__.py
@@ -638,6 +643,8 @@
 │   │   │   ├── 0130_alter_configamenagement_regulations_available_and_more.py
 │   │   │   ├── 0130_rename_demarches_simplifiees_fields_to_demarche_numerique_and_more.py
 │   │   │   ├── 0131_merge_20260710_0750.py
+│   │   │   ├── 0131_migrate_coeff_compensation_hedge_types.py
+│   │   │   ├── 0132_merge_20260729_1142.py
 │   │   │   ├── __init__.py
 │   │   │   ├── haie_department_configs.json
 │   │   │   ├── moulinette_haie.json
@@ -683,6 +690,7 @@
 │   │   │   ├── test_ep_regime_unique.py
 │   │   │   ├── test_evalenv.py
 │   │   │   ├── test_evalenv_cas_par_cas_icpe.py
+│   │   │   ├── test_eviter_reduire.py
 │   │   │   ├── test_fields.py
 │   │   │   ├── test_forms_haie.py
 │   │   │   ├── test_get_criteria.py
@@ -867,6 +875,7 @@
 │   │   │   ├── test_forms.py
 │   │   │   ├── test_middleware.py
 │   │   │   ├── test_models.py
+│   │   │   ├── test_perfs.py
 │   │   │   ├── test_services.py
 │   │   │   ├── test_tasks.py
 │   │   │   ├── test_templatetags.py
@@ -975,6 +984,7 @@
 │   │   │   │   ├── department_combobox.js
 │   │   │   │   ├── eval_request_department.js
 │   │   │   │   ├── evaluation_analytics.js
+│   │   │   │   ├── eviter_reduire.js
 │   │   │   │   ├── feedback_form.js
 │   │   │   │   ├── follow_up_form.js
 │   │   │   │   ├── form_project_creation.js
@@ -1274,6 +1284,7 @@
 │   │   │   │   ├── _department_alert.html
 │   │   │   │   ├── _department_doctrine_button.html
 │   │   │   │   ├── _department_doctrine_modal.html
+│   │   │   │   ├── _eviter_reduire.html
 │   │   │   │   ├── _form_footer.html
 │   │   │   │   ├── _form_introduction.html
 │   │   │   │   ├── _hedge_input_modal.html
@@ -1965,16 +1976,17 @@
 ├── envs
 │   ├── django
 │   └── postgres
-├── gulpfile.mjs
 ├── locale
 │   ├── README.rst
 │   └── fr
 │       └── LC_MESSAGES
 │           └── django.po
 ├── manage.py
+├── nginx.conf.erb
 ├── package-lock.json
 ├── package.json
 ├── playwright.config.ts
+├── postcss.config.js
 ├── pytest.ini
 ├── requirements
 │   ├── README.md
@@ -1997,4 +2009,4 @@
                 │   ├── favicon.ico
                 │   └── favicon.svg
                 └── index.html
-254 directories, 1764 files
+254 directories, 1776 files

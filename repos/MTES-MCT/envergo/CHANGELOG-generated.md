@@ -1,32 +1,30 @@
-## Changelog : envergo (30 derniers jours, au 30 juillet 2026)
+## Changelog : envergo (30 derniers jours, au 25/08/2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à l'interface utilisateur, notamment concernant la gestion des haies et des dates de demande. Des corrections de bugs et des optimisations ont également été apportées pour améliorer la stabilité et la performance de la plateforme. Plusieurs fusions de branches témoignent d'un travail actif sur de nouvelles fonctionnalités et des corrections.
+Ce mois-ci, le projet a bénéficié d'une mise à jour majeure de son infrastructure pour garantir une meilleure stabilité, d'un renforcement important de la sécurité contre les failles XSS, et d'améliorations significatives de l'interface utilisateur. Ces évolutions visent notamment une meilleure utilisation sur mobile et une gestion plus intuitive des dossiers urgents et des formulaires de validation.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'affichage et de la validation des dates de demande, avec des messages d'alerte et des formulaires dédiés. [#1212](https://github.com/MTES-MCT/envergo/pull/1212)
-- Ajout de la possibilité de relancer une procédure unique. [#1208](https://github.com/MTES-MCT/envergo/pull/1208)
-- Amélioration de la gestion des haies, incluant l'affichage des types de haies, le calcul des coefficients et la gestion des cas sans haies. [#1217](https://github.com/MTES-MCT/envergo/pull/1217), [#1216](https://github.com/MTES-MCT/envergo/pull/1216)
-- Ajout de textes d'aide et d'instructions pour la loi sur l'eau et les haies.
-- Amélioration de la lisibilité du démonstrateur. [#1176](https://github.com/MTES-MCT/envergo/pull/1176)
-- Gestion des dossiers multi-départementaux. [#1196](https://github.com/MTES-MCT/envergo/pull/1196)
-- Fermeture des projets de pétitions. [#1180](https://github.com/MTES-MCT/envergo/pull/1180)
-- Ajout d'un bouton de relance dans les résultats en dehors du département, conditionné par la configuration.
+- **Interface et expérience utilisateur** :
+    - Ajout de badges d'urgence dans la liste des dossiers et les résumés pour une meilleure visibilité.
+    - Amélioration de l'ergonomie mobile, notamment via l'utilisation de fenêtres modales pour la saisie des données relatives aux haies.
+    - Optimisation de la navigation avec l'intégration d'un système de pagination (DSFR) et une meilleure gestion de l'accessibilité.
+    - Amélioration de la clarté des formulaires : nouveaux messages d'alerte, validation plus stricte des dates et des champs, et affichage des dates de demande de compléments.
+- **Nouvelles fonctionnalités et contenus** :
+    - Mise en place de nouveaux formulaires pour les vérifications "éviter/réduire" et les accusés de réception.
+    - Mise à jour des coefficients de compensation par type.
+    - Actualisation des informations de contact pour le CBN.
 
 ### Évolutions techniques
-- Refactoring de la validation des formulaires et amélioration de la gestion des erreurs.
-- Amélioration de l'API pour une meilleure gestion des données.
-- Corrections de conflits de fusion et mises à jour des migrations.
-- Optimisation du calcul de la densité autour des centroïdes.
-- Amélioration de la gestion des exceptions et des erreurs.
-- Mise à jour des tests (pytest, Playwright) et ajout de nouveaux tests pour garantir la qualité du code.
-- Amélioration de la gestion des configurations.
-- Correction d'un problème de condition de course dans l'évaluation des requêtes. [#1168](https://github.com/MTES-MCT/envergo/pull/1168)
-- Intégration de Sentry pour le suivi des erreurs. [#1194](https://github.com/MTES-MCT/envergo/pull/1194)
+- **Sécurité** :
+    - Correction de vulnérabilités XSS par l'échappement systématique des données soumises par les utilisateurs et renforcement de la validation côté backend [#1251](https://github.com/MTES-MCT/envergo/issues/1251).
+    - Mise en place d'une politique de sécurité du contenu (CSP).
+- **Infrastructure et Déploiement** :
+    - Mise à jour majeure de la stack de déploiement (Scalingo, Node.js LTS et buildpack GDAL) [#1252](https://github.com/MTES-MCT/envergo/issues/1252).
+    - Refonte complète du système de stockage des fichiers hébergés et optimisation des scripts de sauvegarde S3 [#1253](https://github.com/MTES-MCT/envergo/issues/1253).
+    - Configuration de Nginx en amont de Gunicorn pour une meilleure gestion du serveur web.
+- **Performance** :
+    - Optimisation des requêtes SQL pour la liste des dossiers afin d'éviter les doublons et réduire la charge de la base de données [#1241](https://github.com/MTES-MCT/envergo/issues/1241).
 
 ### Autres changements
-- Mise à jour de la documentation.
-- Amélioration de la cohérence des textes et des messages.
-- Corrections de style et de formatage du code.
-- Suppression de code inutile et nettoyage du code.
-- Mise à jour des dépendances (non listées ici, car mises à jour de routine).
+- **Tests** : Ajout de suites de tests dédiées pour la détection des vulnérabilités XSS et pour les tests de performance.
+- **Maintenance** : Nettoyage du projet avec la suppression de Gulp et du code non utilisé.
