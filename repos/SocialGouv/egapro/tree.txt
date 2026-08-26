@@ -73,31 +73,6 @@
 │       │   └── SKILL.md
 │       ├── review
 │       │   └── SKILL.md
-│       ├── ultra11y
-│       │   ├── SKILL.md
-│       │   ├── references
-│       │   │   ├── audit.md
-│       │   │   ├── authoring.md
-│       │   │   ├── automation.md
-│       │   │   ├── correction.md
-│       │   │   ├── criteria.md
-│       │   │   ├── cross-file.md
-│       │   │   ├── dynamic.md
-│       │   │   ├── false-positives.md
-│       │   │   ├── fix.md
-│       │   │   ├── focus-and-logic.md
-│       │   │   ├── forbidden-patterns.md
-│       │   │   ├── guidance.md
-│       │   │   ├── judgment.md
-│       │   │   ├── methodology.md
-│       │   │   ├── packs.md
-│       │   │   ├── prd.md
-│       │   │   ├── rendered.md
-│       │   │   ├── scale.md
-│       │   │   ├── standards.md
-│       │   │   └── verify.md
-│       │   └── scripts
-│       │       └── ultra11y.mjs
 │       └── velocity
 │           └── SKILL.md
 ├── .dockerignore
@@ -116,7 +91,6 @@
 │       ├── preproduction.yaml
 │       ├── production.yaml
 │       ├── promote-test-env.yaml
-│       ├── release-alpha-reminder.yaml
 │       ├── release-alpha.yaml
 │       ├── release-changelog.yaml
 │       ├── release.yml
@@ -238,6 +212,10 @@
 │   │   ├── .env.example
 │   │   ├── .gitignore
 │   │   ├── .lighthouserc.json
+│   │   ├── .ultra11y
+│   │   │   ├── undecidable.json
+│   │   │   └── verdicts
+│   │   │       └── rgaa.json
 │   │   ├── .ultra11yrc.json
 │   │   ├── CLAUDE.md
 │   │   ├── Dockerfile
@@ -295,6 +273,7 @@
 │   │   │   ├── 0043_vengeful_bucky.sql
 │   │   │   ├── 0044_natural_sentinels.sql
 │   │   │   ├── 0045_bizarre_sphinx.sql
+│   │   │   ├── 0046_majestic_rocket_raccoon.sql
 │   │   │   └── meta
 │   │   │       ├── 0000_snapshot.json
 │   │   │       ├── 0001_snapshot.json
@@ -327,10 +306,12 @@
 │   │   │       ├── 0043_snapshot.json
 │   │   │       ├── 0044_snapshot.json
 │   │   │       ├── 0045_snapshot.json
+│   │   │       ├── 0046_snapshot.json
 │   │   │       └── _journal.json
 │   │   ├── drizzle.config.ts
 │   │   ├── next.config.js
 │   │   ├── package.json
+│   │   ├── playwright.a11y.config.ts
 │   │   ├── playwright.config.ts
 │   │   ├── playwright.grille.config.ts
 │   │   ├── public
@@ -371,6 +352,8 @@
 │   │   │   ├── generate-edge-case-gip-data.ts
 │   │   │   ├── generate-mock-gip-data.ts
 │   │   │   ├── gipMockShared.ts
+│   │   │   ├── import-v1-representation-mapping.mjs
+│   │   │   ├── import-v1-representation.mjs
 │   │   │   ├── migrate.mjs
 │   │   │   ├── post-process-schema-wiki.ts
 │   │   │   ├── report-grille.ts
@@ -384,6 +367,7 @@
 │   │   │   │       ├── check-journal.test.ts
 │   │   │   │       ├── checkCahier.test.ts
 │   │   │   │       ├── generate-mock-gip-data.test.ts
+│   │   │   │       ├── importV1Representation.test.ts
 │   │   │   │       └── reportGrille.test.ts
 │   │   │   ├── app
 │   │   │   │   ├── admin
@@ -461,10 +445,28 @@
 │   │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   │   └── route.test.ts
 │   │   │   │   │   │   │   └── route.ts
-│   │   │   │   │   │   └── referents-egalite-professionnelle
+│   │   │   │   │   │   ├── referents-egalite-professionnelle
+│   │   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   │   └── route.test.ts
+│   │   │   │   │   │   │   └── route.ts
+│   │   │   │   │   │   └── representations
+│   │   │   │   │   │       ├── [siren]
+│   │   │   │   │   │       │   ├── [year]
+│   │   │   │   │   │       │   │   ├── __tests__
+│   │   │   │   │   │       │   │   │   └── route.test.ts
+│   │   │   │   │   │       │   │   └── route.ts
+│   │   │   │   │   │       │   ├── __tests__
+│   │   │   │   │   │       │   │   └── route.test.ts
+│   │   │   │   │   │       │   └── route.ts
 │   │   │   │   │   │       ├── __tests__
 │   │   │   │   │   │       │   └── route.test.ts
+│   │   │   │   │   │       ├── export
+│   │   │   │   │   │       │   └── route.ts
 │   │   │   │   │   │       └── route.ts
+│   │   │   │   │   ├── representation-pdf
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   └── route.test.ts
+│   │   │   │   │   │   └── route.ts
 │   │   │   │   │   ├── test-sentry
 │   │   │   │   │   │   └── route.ts
 │   │   │   │   │   ├── transmitted-pdf
@@ -481,7 +483,9 @@
 │   │   │   │   │       ├── docs
 │   │   │   │   │       │   └── route.ts
 │   │   │   │   │       ├── export
-│   │   │   │   │       │   └── declarations
+│   │   │   │   │       │   ├── declarations
+│   │   │   │   │       │   │   └── route.ts
+│   │   │   │   │       │   └── representations
 │   │   │   │   │       │       └── route.ts
 │   │   │   │   │       ├── files
 │   │   │   │   │       │   ├── [fileId]
@@ -518,6 +522,14 @@
 │   │   │   │   │   ├── layout.tsx
 │   │   │   │   │   └── recapitulatif
 │   │   │   │   │       └── page.tsx
+│   │   │   │   ├── declaration-representation
+│   │   │   │   │   ├── confirmation
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   ├── etape
+│   │   │   │   │   │   └── [step]
+│   │   │   │   │   │       └── page.tsx
+│   │   │   │   │   ├── layout.tsx
+│   │   │   │   │   └── page.tsx
 │   │   │   │   ├── dev-login
 │   │   │   │   │   └── page.tsx
 │   │   │   │   ├── donnees-personnelles
@@ -558,8 +570,20 @@
 │   │   │   │   ├── test-error
 │   │   │   │   │   └── page.tsx
 │   │   │   │   └── test-panel
-│   │   │   │       └── page.tsx
+│   │   │   │       ├── page.tsx
+│   │   │   │       └── representation
+│   │   │   │           └── page.tsx
 │   │   │   ├── e2e
+│   │   │   │   ├── a11y
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   └── ownership.test.ts
+│   │   │   │   │   ├── anonymous.a11y.ts
+│   │   │   │   │   ├── dynamic.a11y.ts
+│   │   │   │   │   ├── funnels.a11y.ts
+│   │   │   │   │   ├── integration.a11y.ts
+│   │   │   │   │   ├── ownership.ts
+│   │   │   │   │   ├── snapshot.ts
+│   │   │   │   │   └── sweep.a11y.ts
 │   │   │   │   ├── admin-access.e2e.ts
 │   │   │   │   ├── admin-impersonation-read-only.e2e.ts
 │   │   │   │   ├── admin-stats.e2e.ts
@@ -574,6 +598,7 @@
 │   │   │   │   ├── declaration-header-alignment.e2e.ts
 │   │   │   │   ├── declaration-history.e2e.ts
 │   │   │   │   ├── declaration-process-panel.e2e.ts
+│   │   │   │   ├── declaration-representation.e2e.ts
 │   │   │   │   ├── declaration.e2e.ts
 │   │   │   │   ├── declarationDraft.e2e.ts
 │   │   │   │   ├── error-pages.e2e.ts
@@ -692,10 +717,12 @@
 │   │   │   │   │   │   ├── AdminSettingsPage.tsx
 │   │   │   │   │   │   ├── CampaignDeadlinesForm.tsx
 │   │   │   │   │   │   ├── LockTimeoutForm.tsx
+│   │   │   │   │   │   ├── RepresentationCampaignForm.tsx
 │   │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   │   ├── AdminSettingsPage.test.tsx
 │   │   │   │   │   │   │   ├── CampaignDeadlinesForm.test.tsx
 │   │   │   │   │   │   │   ├── LockTimeoutForm.test.tsx
+│   │   │   │   │   │   │   ├── RepresentationCampaignForm.test.tsx
 │   │   │   │   │   │   │   └── schemas.test.ts
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   └── schemas.ts
@@ -1079,6 +1106,76 @@
 │   │   │   │   │   │       ├── index.ts
 │   │   │   │   │   │       └── parseStep5Categories.ts
 │   │   │   │   │   └── types.ts
+│   │   │   │   ├── declaration-representation
+│   │   │   │   │   ├── Confirmation.module.scss
+│   │   │   │   │   ├── Confirmation.tsx
+│   │   │   │   │   ├── DeclarationLayout.tsx
+│   │   │   │   │   ├── RepresentationPlayground.tsx
+│   │   │   │   │   ├── StepPageClient.module.scss
+│   │   │   │   │   ├── StepPageClient.tsx
+│   │   │   │   │   ├── Stepper.tsx
+│   │   │   │   │   ├── SubjectionScreen.tsx
+│   │   │   │   │   ├── SubmitModal.tsx
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── Confirmation.test.tsx
+│   │   │   │   │   │   ├── DeclarationLayout.test.tsx
+│   │   │   │   │   │   ├── RepresentationFunnelLayout.test.tsx
+│   │   │   │   │   │   ├── RepresentationRoutes.test.tsx
+│   │   │   │   │   │   ├── StepPageClient.stepValidator.test.tsx
+│   │   │   │   │   │   ├── StepPageClient.test.tsx
+│   │   │   │   │   │   ├── Stepper.test.tsx
+│   │   │   │   │   │   ├── SubjectionScreen.test.tsx
+│   │   │   │   │   │   ├── SubmitModal.test.tsx
+│   │   │   │   │   │   ├── fixtures.ts
+│   │   │   │   │   │   ├── modalQueries.ts
+│   │   │   │   │   │   ├── schemas.draft.test.ts
+│   │   │   │   │   │   ├── schemas.executives.test.ts
+│   │   │   │   │   │   ├── schemas.members.test.ts
+│   │   │   │   │   │   ├── schemas.publication.test.ts
+│   │   │   │   │   │   ├── schemas.referencePeriod.test.ts
+│   │   │   │   │   │   ├── schemas.routerInputs.test.ts
+│   │   │   │   │   │   ├── schemas.submit.test.ts
+│   │   │   │   │   │   └── steps.test.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── schemas.ts
+│   │   │   │   │   ├── shared
+│   │   │   │   │   │   ├── ComplianceBadge.tsx
+│   │   │   │   │   │   ├── PercentagePairFields.module.scss
+│   │   │   │   │   │   ├── PercentagePairFields.tsx
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   ├── ComplianceBadge.test.tsx
+│   │   │   │   │   │   │   ├── PercentagePairFields.test.tsx
+│   │   │   │   │   │   │   ├── reviewSummary.test.ts
+│   │   │   │   │   │   │   └── submittedDraft.test.ts
+│   │   │   │   │   │   ├── draft
+│   │   │   │   │   │   │   ├── DraftContext.tsx
+│   │   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   │   ├── DraftContext.test.tsx
+│   │   │   │   │   │   │   │   └── useRepresentationDraft.test.tsx
+│   │   │   │   │   │   │   └── useRepresentationDraft.ts
+│   │   │   │   │   │   ├── reviewSummary.ts
+│   │   │   │   │   │   └── submittedDraft.ts
+│   │   │   │   │   ├── steps
+│   │   │   │   │   │   ├── Step1ReferencePeriod.tsx
+│   │   │   │   │   │   ├── Step2Executives.module.scss
+│   │   │   │   │   │   ├── Step2Executives.tsx
+│   │   │   │   │   │   ├── Step3Members.module.scss
+│   │   │   │   │   │   ├── Step3Members.tsx
+│   │   │   │   │   │   ├── Step4Publication.module.scss
+│   │   │   │   │   │   ├── Step4Publication.tsx
+│   │   │   │   │   │   ├── Step5NextSteps.tsx
+│   │   │   │   │   │   ├── Step5Review.module.scss
+│   │   │   │   │   │   ├── Step5Review.tsx
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   ├── Step1ReferencePeriod.test.tsx
+│   │   │   │   │   │   │   ├── Step2Executives.test.tsx
+│   │   │   │   │   │   │   ├── Step3Members.test.tsx
+│   │   │   │   │   │   │   ├── Step4Publication.test.tsx
+│   │   │   │   │   │   │   ├── Step5Review.restitution.test.tsx
+│   │   │   │   │   │   │   ├── Step5Review.submission.test.tsx
+│   │   │   │   │   │   │   └── step5ReviewHarness.tsx
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   └── types.ts
 │   │   │   │   ├── declarationHistory
 │   │   │   │   │   ├── DeclarationHistoryPage.tsx
 │   │   │   │   │   ├── HistoryEntry.tsx
@@ -1095,13 +1192,17 @@
 │   │   │   │   │   ├── DeclarationPdfDocument.tsx
 │   │   │   │   │   ├── DownloadDeclarationPdfButton.tsx
 │   │   │   │   │   ├── PrefillPdfDocument.tsx
+│   │   │   │   │   ├── RepresentationPdfDocument.tsx
 │   │   │   │   │   ├── TransmittedPdfDocument.tsx
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   ├── DeclarationPdfDocument.test.tsx
 │   │   │   │   │   │   ├── DownloadDeclarationPdfButton.test.tsx
 │   │   │   │   │   │   ├── PrefillPdfDocument.test.tsx
+│   │   │   │   │   │   ├── RepresentationPdfDocument.test.tsx
 │   │   │   │   │   │   ├── TransmittedPdfDocument.test.tsx
 │   │   │   │   │   │   ├── buildPdfData.test.ts
+│   │   │   │   │   │   ├── buildRepresentationPdfData.integration.test.ts
+│   │   │   │   │   │   ├── buildRepresentationPdfData.test.ts
 │   │   │   │   │   │   ├── buildTransmittedPdfData.test.ts
 │   │   │   │   │   │   ├── helpers
 │   │   │   │   │   │   │   ├── pdfTextStream.ts
@@ -1111,6 +1212,7 @@
 │   │   │   │   │   │   ├── pdfFontsRegistration.test.ts
 │   │   │   │   │   │   └── pdfHyphenation.test.tsx
 │   │   │   │   │   ├── buildPdfData.ts
+│   │   │   │   │   ├── buildRepresentationPdfData.ts
 │   │   │   │   │   ├── buildTransmittedPdfData.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── pdfFonts.ts
@@ -1168,6 +1270,7 @@
 │   │   │   │   │   │   ├── publicData.test.ts
 │   │   │   │   │   │   ├── quartile.test.ts
 │   │   │   │   │   │   ├── regions.test.ts
+│   │   │   │   │   │   ├── representation.test.ts
 │   │   │   │   │   │   ├── scoreBracket.test.ts
 │   │   │   │   │   │   ├── siren.test.ts
 │   │   │   │   │   │   ├── submissionRate.test.ts
@@ -1200,6 +1303,7 @@
 │   │   │   │   │   │   ├── publicData.ts
 │   │   │   │   │   │   ├── quartile.ts
 │   │   │   │   │   │   ├── regions.ts
+│   │   │   │   │   │   ├── representation.ts
 │   │   │   │   │   │   ├── scoreBracket.ts
 │   │   │   │   │   │   ├── siren.ts
 │   │   │   │   │   │   ├── submissionRate.ts
@@ -1228,18 +1332,27 @@
 │   │   │   │   │   │   ├── exportApi.integration.test.ts
 │   │   │   │   │   │   ├── exportApi.test.ts
 │   │   │   │   │   │   ├── fetchDeclarations.test.ts
+│   │   │   │   │   │   ├── fetchRepresentations.test.ts
 │   │   │   │   │   │   ├── filesApi.test.ts
+│   │   │   │   │   │   ├── generateRepresentationExport.test.ts
 │   │   │   │   │   │   ├── generateXlsx.test.ts
 │   │   │   │   │   │   ├── generateYearlyExport.test.ts
 │   │   │   │   │   │   ├── gipWorkforceExport.integration.test.ts
+│   │   │   │   │   │   ├── helpers
+│   │   │   │   │   │   │   └── representationRowFixture.ts
 │   │   │   │   │   │   ├── mapIndicators.test.ts
 │   │   │   │   │   │   ├── openapi.test.ts
 │   │   │   │   │   │   ├── openapiRoute.test.ts
 │   │   │   │   │   │   ├── queries.test.ts
+│   │   │   │   │   │   ├── representationExport.integration.test.ts
+│   │   │   │   │   │   ├── representationsApi.integration.test.ts
+│   │   │   │   │   │   ├── representationsApi.test.ts
 │   │   │   │   │   │   └── schemas.test.ts
 │   │   │   │   │   ├── buildExportRows.ts
 │   │   │   │   │   ├── downloadExport.ts
 │   │   │   │   │   ├── fetchDeclarations.ts
+│   │   │   │   │   ├── fetchRepresentations.ts
+│   │   │   │   │   ├── generateRepresentationExport.ts
 │   │   │   │   │   ├── generateXlsx.ts
 │   │   │   │   │   ├── generateYearlyExport.ts
 │   │   │   │   │   ├── index.ts
@@ -1387,6 +1500,7 @@
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   ├── buildReceiptAttachments.test.ts
 │   │   │   │   │   │   ├── enqueueReceipt.test.ts
+│   │   │   │   │   │   ├── schemas.test.ts
 │   │   │   │   │   │   └── sendRules.test.ts
 │   │   │   │   │   ├── buildReceiptAttachments.ts
 │   │   │   │   │   ├── enqueueReceipt.ts
@@ -1419,6 +1533,7 @@
 │   │   │   │   │   ├── MonEspacePage.tsx
 │   │   │   │   │   ├── MyCompaniesPage.tsx
 │   │   │   │   │   ├── PanelPlayground.tsx
+│   │   │   │   │   ├── RepresentationProcessPanel.tsx
 │   │   │   │   │   ├── StatusBadge.tsx
 │   │   │   │   │   ├── VerticalStepper.tsx
 │   │   │   │   │   ├── ViewToggle.tsx
@@ -1441,6 +1556,7 @@
 │   │   │   │   │   │   ├── MissingInfoModal.test.tsx
 │   │   │   │   │   │   ├── MonEspacePage.test.tsx
 │   │   │   │   │   │   ├── MyCompaniesPage.test.tsx
+│   │   │   │   │   │   ├── RepresentationProcessPanel.test.tsx
 │   │   │   │   │   │   ├── StatusBadge.test.tsx
 │   │   │   │   │   │   ├── VerticalStepper.test.tsx
 │   │   │   │   │   │   ├── ViewToggle.test.tsx
@@ -1471,13 +1587,22 @@
 │   │   │   │   │   ├── phone.ts
 │   │   │   │   │   └── schemas.ts
 │   │   │   │   ├── public-api
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── representationProjection.test.ts
+│   │   │   │   │   │   ├── representationsBySirenService.integration.test.ts
+│   │   │   │   │   │   └── representationsBySirenService.test.ts
 │   │   │   │   │   ├── declarationsBySirenService.test.ts
 │   │   │   │   │   ├── declarationsBySirenService.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── openapi.test.ts
 │   │   │   │   │   ├── openapi.ts
+│   │   │   │   │   ├── openapiDeclarations.ts
+│   │   │   │   │   ├── openapiRepresentations.ts
+│   │   │   │   │   ├── openapiShared.ts
 │   │   │   │   │   ├── projection.test.ts
 │   │   │   │   │   ├── projection.ts
+│   │   │   │   │   ├── representationProjection.ts
+│   │   │   │   │   ├── representationsBySirenService.ts
 │   │   │   │   │   └── schemas.ts
 │   │   │   │   ├── publicStats
 │   │   │   │   │   ├── CurrentCampaignRateTile.tsx
@@ -1612,6 +1737,11 @@
 │   │   │   │   │   │   │   ├── profile.test.ts
 │   │   │   │   │   │   │   ├── publicReferents.test.ts
 │   │   │   │   │   │   │   ├── publicStats.test.ts
+│   │   │   │   │   │   │   ├── representationDeclaration.get.test.ts
+│   │   │   │   │   │   │   ├── representationDeclaration.integration.test.ts
+│   │   │   │   │   │   │   ├── representationDeclaration.saveDraft.test.ts
+│   │   │   │   │   │   │   ├── representationDeclaration.submit.test.ts
+│   │   │   │   │   │   │   ├── representationDeclarationHarness.ts
 │   │   │   │   │   │   │   └── statusHistoryHelpers.test.ts
 │   │   │   │   │   │   ├── admin.ts
 │   │   │   │   │   │   ├── adminDeclarations.ts
@@ -1631,6 +1761,7 @@
 │   │   │   │   │   │   ├── profile.ts
 │   │   │   │   │   │   ├── publicReferents.ts
 │   │   │   │   │   │   ├── publicStats.ts
+│   │   │   │   │   │   ├── representationDeclaration.ts
 │   │   │   │   │   │   └── statusHistoryHelpers.ts
 │   │   │   │   │   └── trpc.ts
 │   │   │   │   ├── audit
@@ -1666,12 +1797,18 @@
 │   │   │   │   │   │   ├── companyLocation.integration.test.ts
 │   │   │   │   │   │   ├── declarationConditions.test.ts
 │   │   │   │   │   │   ├── getGlobalSettings.test.ts
+│   │   │   │   │   │   ├── getRepresentationCampaign.test.ts
+│   │   │   │   │   │   ├── getRepresentationWorkforceHistory.test.ts
+│   │   │   │   │   │   ├── importV1RepresentationScript.integration.test.ts
 │   │   │   │   │   │   └── schema-comments.test.ts
 │   │   │   │   │   ├── auditSchema.ts
 │   │   │   │   │   ├── declarationConditions.ts
 │   │   │   │   │   ├── getCampaignDeadlines.ts
 │   │   │   │   │   ├── getGlobalSettings.ts
+│   │   │   │   │   ├── getRepresentationCampaign.ts
+│   │   │   │   │   ├── getRepresentationWorkforceHistory.ts
 │   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── parseCivilDate.ts
 │   │   │   │   │   ├── schema-comments.ts
 │   │   │   │   │   └── schema.ts
 │   │   │   │   ├── rules
@@ -1725,7 +1862,8 @@
 │   │   │   │   ├── impersonationMock.ts
 │   │   │   │   ├── integration-per-file-setup.ts
 │   │   │   │   ├── integration-setup.ts
-│   │   │   │   └── setup.ts
+│   │   │   │   ├── setup.ts
+│   │   │   │   └── v1RepresentationFixtures.ts
 │   │   │   └── trpc
 │   │   │       ├── query-client.ts
 │   │   │       ├── react.tsx
@@ -1769,6 +1907,7 @@
 │       │   │   │   ├── jointEvaluationReminder.tsx
 │       │   │   │   ├── jointEvaluationSubmitted.tsx
 │       │   │   │   ├── nextCycleHandover.tsx
+│       │   │   │   ├── representationReceipt.tsx
 │       │   │   │   ├── secondDeclarationConfirmation.tsx
 │       │   │   │   └── secondDeclarationReminder.tsx
 │       │   │   ├── index.ts
@@ -1866,4 +2005,4 @@
 │   ├── setup-worktree.sh
 │   └── teardown-worktree.sh
 └── sonar-project.properties
-302 directories, 1566 files
+328 directories, 1679 files

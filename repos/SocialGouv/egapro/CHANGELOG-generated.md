@@ -1,18 +1,35 @@
-## Changelog : egapro (30 derniers jours, au 20 août 2026)
+## Changelog : egapro (30 derniers jours, au 25 août 2026)
 
 ### Résumé
-Cette période a été marquée par une phase intense de stabilisation et d'affinage de l'expérience utilisateur. Les efforts se sont concentrés sur la fiabilisation du tunnel de déclaration de rémunération, l'alignement rigoureux des interfaces sur les maquettes de design (Figma) et le renforcement de la couverture de tests automatisés pour garantir la qualité des parcours.
+Ce mois-ci, les développements ont principalement porté sur l'amélioration de l'expérience utilisateur, notamment via l'optimisation de l'espace personnel ("Mon espace") et la fiabilisation du parcours de déclaration des rémunérations. Des efforts significatifs ont également été consacrés au renforcement de l'accessibilité, à l'extension de la couverture des tests automatisés et à la sécurisation des échanges techniques.
 
 ### Évolutions fonctionnelles
-- **Déclaration de rémunération** : Fiabilisation des calculs (écarts, quartiles, période de référence), préparation de la campagne 2027 ([#4244](https://github.com/SocialGouv/egapro/issues/4244)) et sécurisation du tunnel en bloquant l'accès si les informations obligatoires (téléphone, CSE) sont manquantes ([#4117](https://github.com/SocialGouv/egapro/issues/4117)).
-- **Mon espace & Profil** : Refonte visuelle conforme aux maquettes Figma (espacements, couleurs, typographie) et mise en place d'une nouvelle modale pour la gestion du profil ([#4188](https://github.com/SocialGouv/egapro/issues/4188)).
-- **Parcours de conformité et CSE** : Correction de boucles de redirection infinie et optimisation du tunnel de dépôt d'avis CSE ([#4061](https://github.com/SocialGouv/egapro/issues/4061), [#4148](https://github.com/SocialGouv/egapro/issues/4148)).
-- **Documents et Exports** : Amélioration de la qualité des exports PDF (gestion des titres et des en-têtes) et enrichissement des données exportées via l'API SUIT ([#4145](https://github.com/SocialGouv/egapro/issues/4145), [#3993](https://github.com/SocialGouv/egapro/issues/3993)).
+- **Nouvelles fonctionnalités et interface utilisateur**
+    - Mise en place de la "représentation équilibrée" ([#4203](https://github.com/SocialGouv/egapro/issues/4203)).
+    - Refonte de la modale "Mon profil" pour une meilleure conformité visuelle et l'ajout des mentions d'obligation ([#4188](https://github.com/SocialGouv/egapro/issues/4188)).
+    - Amélioration de l'ergonomie globale (alignements sur les maquettes Figma, typographies et gestion des couleurs) ([#4271](https://github.com/SocialGouv/egapro/issues/4271), [#4174](https://github.com/SocialGouv/egapro/issues/4174)).
+- **Parcours de déclaration et rémunération**
+    - Correction de la logique de calcul des indicateurs (ratios, décimales et synchronisation des données GIP) ([#4121](https://github.com/SocialGouv/egapro/issues/4121), [#4039](https://github.com/SocialGouv/egapro/issues/4039), [#4048](https://github.com/SocialGouv/egapro/issues/4048)).
+    - Renforcement des règles de validation (blocage de l'accès au tunnel sans informations obligatoires comme le téléphone ou le CSE) ([#4117](https://github.com/SocialGouv/egapro/issues/4117)).
+    - Amélioration de la clarté des libellés et des étapes de la démarche ([#4239](https://github.com/SocialGouv/egapro/issues/4239), [#4274](https://github.com/SocialGouv/egapro/issues/4274)).
+- **Espace utilisateur ("Mon espace")**
+    - Optimisation de l'affichage des démarches en cours et de la gestion des erreurs liées au CSE ([#4229](https://github.com/SocialGouv/egapro/issues/4229), [#4263](https://github.com/SocialGouv/egapro/issues/4263)).
+    - Amélioration de la visibilité des récapitulatifs de déclaration dès leur soumission ([#4130](https://github.com/SocialGouv/egapro/issues/4130)).
+- **Accessibilité et Documents**
+    - Intégration de l'outil `ultra11y` pour renforcer l'accessibilité de la plateforme ([#4169](https://github.com/SocialGouv/egapro/issues/4169)).
+    - Corrections sur la génération des documents PDF (gestion des titres orphelins et des en-têtes de tableaux) ([#4257](https://github.com/SocialGouv/egapro/issues/4257), [#4145](https://github.com/SocialGouv/egapro/issues/4145)).
 
 ### Évolutions techniques
-- **Tests et Qualité** : Extension majeure de la couverture de tests de bout en bout (E2E) sur l'ensemble des parcours ([#4097](https://github.com/SocialGouv/egapro/issues/4097)) et ajustement des seuils de criticité dans la CI ([#4150](https://github.com/SocialGouv/egapro/issues/4150)).
-- **CI/CD et Déploiement** : Automatisation du versioning des images pour les environnements de test, génération assistée par IA des changelogs et sécurisation des appels vers SUIT via certificat mTLS ([#4046](https://github.com/SocialGouv/egapro/issues/4046), [#4101](https://github.com/SocialGouv/egapro/issues/4101)).
-- **Environnement de développement** : Optimisation de l'authentification des nouveaux environnements de travail et mise à jour des mocks pour les données GIP-MDS ([#4095](https://github.com/SocialGouv/egapro/issues/4095)).
+- **Qualité et Tests**
+    - Extension massive de la couverture des tests de bout en bout (E2E) sur l'ensemble des parcours ([#4097](https://github.com/SocialGouv/egapro/issues/4097)).
+    - Amélioration de la fiabilité des environnements de développement et de l'authentification des nouveaux worktrees ([#4095](https://github.com/SocialGouv/egapro/issues/4095)).
+- **Infrastructure et CI/CD**
+    - Optimisation du pipeline de déploiement et de la gestion des versions des images de test ([#4057](https://github.com/SocialGouv/egapro/issues/4057)).
+    - Automatisation et fiabilisation du processus de release via le CLI ([#4009](https://github.com/SocialGouv/egapro/issues/4009)).
+- **Sécurité et API**
+    - Mise en place du certificat client mTLS pour sécuriser les appels vers SUIT ([#4101](https://github.com/SocialGouv/egapro/issues/4101)).
+    - Amélioration de la documentation de l'API publique concernant la convention des ratios d'écarts ([#4041](https://github.com/SocialGouv/egapro/issues/4041)).
 
 ### Autres changements
-- Mise à jour de la documentation technique (nomenclature des tests) et de l'organisation des outils de suivi.
+- Mise à jour de la documentation technique, notamment sur la nomenclature des cas de tests ([#4006](https://github.com/SocialGouv/egapro/issues/4006)).
+- Maintenance des outils d'accessibilité.

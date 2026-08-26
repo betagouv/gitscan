@@ -1,50 +1,51 @@
 {
   "url": "https://github.com/SocialGouv/egapro",
   "name": "egapro",
-  "description": "Plateforme gouvernementale permettant aux entreprises de déclarer leur index de l'égalité professionnelle femmes-hommes conformément à la directive européenne.",
+  "description": "Plateforme gouvernementale de déclaration de l'index de l'égalité professionnelle femmes-hommes en application de la directive européenne sur la transparence salariale.",
   "language": "TypeScript",
   "features": [
-    "Gestion documentaire & Fichiers",
     "Authentification & Accès",
+    "Formulaires & Démarches",
     "Statistiques & Rapports",
     "Recherche & Filtres",
-    "Formulaires & Démarches",
-    "Sécurité & Conformité",
+    "Gestion documentaire & Fichiers",
     "Tableaux & Affichage"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Next.js",
     "TypeScript",
+    "DSFR",
     "PostgreSQL",
     "Drizzle ORM",
-    "DSFR",
-    "ProConnect",
     "Playwright",
+    "pnpm",
     "Matomo",
-    "Minio",
-    "Valkey"
+    "Minio"
   ],
   "components": [
     "React / Next.js",
-    "PostgreSQL & SQL",
     "TypeScript / JavaScript",
-    "API REST & GraphQL",
+    "PostgreSQL & SQL",
+    "ORM & Accès aux données",
     "Docker & Conteneurs",
-    "Authentification (composant)",
-    "Design System (DSFR & UI libs)",
-    "CI/CD & Déploiement"
+    "CI/CD & Déploiement",
+    "API REST & GraphQL",
+    "Serveurs web & Proxy",
+    "Kubernetes & Helm",
+    "Design System (DSFR & UI libs)"
   ],
   "auth": {
     "methods": [
-      "sso"
+      "sso",
+      "jwt"
     ],
     "providers": [
       "ProConnect"
     ]
   },
   "tests": [
-    "Playwright (E2E)",
+    "Playwright",
     "Lighthouse",
     "Unit tests"
   ],
@@ -52,17 +53,17 @@
     "GitHub Actions"
   ],
   "lastActivity": "2025-10-08T00:00:00Z",
-  "status": "active",
+  "status": "maintained",
   "license": null,
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "React & Next.js",
     "TypeScript",
-    "Docker & Conteneurs",
     "Bases de données SQL",
+    "Docker & Conteneurs",
     "CI/CD & GitHub Actions",
-    "Design System & UI",
-    "Tests & Qualité"
+    "Accessibilité",
+    "Sécurité & Auth"
   ]
 }
