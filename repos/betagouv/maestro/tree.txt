@@ -150,8 +150,6 @@
 │   │   │   │   ├── LocalPrescriptionButtons
 │   │   │   │   │   ├── LocalPrescriptionButtons.scss
 │   │   │   │   │   └── LocalPrescriptionButtons.tsx
-│   │   │   │   ├── LocalPrescriptionCard
-│   │   │   │   │   └── LocalPrescriptionCard.tsx
 │   │   │   │   ├── LocalPrescriptionDepartmentalDistribution
 │   │   │   │   │   ├── LocalPrescriptionDepartmentalDistribution.tsx
 │   │   │   │   │   └── LocalPrescriptionDepartmentalDistributionTable.tsx
@@ -174,9 +172,6 @@
 │   │   │   │   │   └── PrescriptionActionBar.tsx
 │   │   │   │   ├── PrescriptionBreadcrumb
 │   │   │   │   │   └── PrescriptionBreadcrumb.tsx
-│   │   │   │   ├── PrescriptionCard
-│   │   │   │   │   ├── PrescriptionCard.scss
-│   │   │   │   │   └── PrescriptionCard.tsx
 │   │   │   │   ├── PrescriptionCommentsModal
 │   │   │   │   │   ├── PrescriptionCommentAuthor.tsx
 │   │   │   │   │   ├── PrescriptionCommentsModal.scss
@@ -184,8 +179,6 @@
 │   │   │   │   │   └── PrescriptionCommentsModalPPV.stories.tsx
 │   │   │   │   ├── PrescriptionDistributionBadge
 │   │   │   │   │   └── PrescriptionDistributionBadge.tsx
-│   │   │   │   ├── PrescriptionDistributionTable
-│   │   │   │   │   └── PrescriptionDistributionTable.tsx
 │   │   │   │   ├── PrescriptionEditSubstances
 │   │   │   │   │   └── PrescriptionEditSubstances.tsx
 │   │   │   │   ├── PrescriptionModal
@@ -197,10 +190,8 @@
 │   │   │   │   │   └── PrescriptionProgrammingInstruction.tsx
 │   │   │   │   ├── PrescriptionStages
 │   │   │   │   │   └── PrescriptionStages.tsx
-│   │   │   │   ├── PrescriptionSubstances
-│   │   │   │   │   └── PrescriptionSubstances.tsx
-│   │   │   │   └── RemovePrescriptionModal
-│   │   │   │       └── RemovePrescriptionModal.tsx
+│   │   │   │   └── PrescriptionSubstances
+│   │   │   │       └── PrescriptionSubstances.tsx
 │   │   │   ├── ProgrammingPlanNotification
 │   │   │   │   ├── ProgrammingPlanNotification.scss
 │   │   │   │   ├── ProgrammingPlanNotificationDepartmentalToSampler
@@ -257,6 +248,8 @@
 │   │   │   ├── YearSelector
 │   │   │   │   ├── YearSelector.scss
 │   │   │   │   └── YearSelector.tsx
+│   │   │   ├── YearTitle
+│   │   │   │   └── YearTitle.tsx
 │   │   │   └── _app
 │   │   │       ├── AppErrorAlert
 │   │   │       │   └── AppServiceErrorAlert.tsx
@@ -264,7 +257,8 @@
 │   │   │       │   ├── AppMultiSelect.stories.tsx
 │   │   │       │   └── AppMultiSelect.tsx
 │   │   │       ├── AppPage
-│   │   │       │   └── AppPage.tsx
+│   │   │       │   ├── AppPage.tsx
+│   │   │       │   └── AppPageWithYearTitle.tsx
 │   │   │       ├── AppRadioButtons
 │   │   │       │   ├── AppRadioButtons.scss
 │   │   │       │   └── AppRadioButtons.tsx
@@ -326,6 +320,7 @@
 │   │   │   ├── notification.service.ts
 │   │   │   ├── prescription.service.ts
 │   │   │   ├── programmingPlan.service.ts
+│   │   │   ├── programmingPlanDomain.service.ts
 │   │   │   ├── programmingSubPlanFields.service.ts
 │   │   │   ├── region.service.ts
 │   │   │   ├── sachaCommemoratifs.service.ts
@@ -437,6 +432,29 @@
 │   │       ├── NotificationsView
 │   │       │   ├── NotificationsView.scss
 │   │       │   └── NotificationsView.tsx
+│   │       ├── ProgrammingPlanSettingsView
+│   │       │   ├── ProgrammingPlanDomainAssignment
+│   │       │   │   └── ProgrammingPlanDomainAssignment.tsx
+│   │       │   ├── ProgrammingPlanDomainCreateModal.tsx
+│   │       │   ├── ProgrammingPlanDomainView
+│   │       │   │   ├── ProgrammingPlanDomainView.stories.tsx
+│   │       │   │   └── ProgrammingPlanDomainView.tsx
+│   │       │   ├── ProgrammingPlanSettingsActions
+│   │       │   │   ├── ProgrammingPlanSettingsActions.scss
+│   │       │   │   └── ProgrammingPlanSettingsActions.tsx
+│   │       │   ├── ProgrammingPlanSettingsBadge
+│   │       │   │   └── ProgrammingPlanSettingsBadge.tsx
+│   │       │   ├── ProgrammingPlanSettingsCard
+│   │       │   │   ├── ProgrammingPlanSettingsCard.stories.tsx
+│   │       │   │   └── ProgrammingPlanSettingsCard.tsx
+│   │       │   ├── ProgrammingPlanSettingsView.stories.tsx
+│   │       │   ├── ProgrammingPlanSettingsView.tsx
+│   │       │   ├── ProgrammingPlanView
+│   │       │   │   ├── ProgrammingPlanView.stories.tsx
+│   │       │   │   └── ProgrammingPlanView.tsx
+│   │       │   └── ProgrammingSubPlanList
+│   │       │       ├── ProgrammingSubPlanList.scss
+│   │       │       └── ProgrammingSubPlanList.tsx
 │   │       ├── ProgrammingView
 │   │       │   ├── ProgrammingCommentList
 │   │       │   │   └── ProgrammingCommentList.tsx
@@ -600,6 +618,7 @@
 │   │   ├── notificationController.ts
 │   │   ├── prescriptionController.ts
 │   │   ├── programmingPlanController.ts
+│   │   ├── programmingPlanDomainController.ts
 │   │   ├── sachaCommemoratifsController.ts
 │   │   ├── sampleController.integration.test.ts
 │   │   ├── sampleController.test.ts
@@ -741,7 +760,12 @@
 │   │   │   ├── 106-backfill-laboratory-residue-mappings.ts
 │   │   │   ├── 107-analysis-rai-states.ts
 │   │   │   ├── 108-prescription-sample-count.ts
-│   │   │   └── 109-lnr-residue-mappings.ts
+│   │   │   ├── 109-lnr-residue-mappings.ts
+│   │   │   ├── 110-user-stages.ts
+│   │   │   ├── 111-user-certified.ts
+│   │   │   ├── 112-administrator-maestro-role.ts
+│   │   │   ├── 113-programming-plan-domains.ts
+│   │   │   └── 114-programming-plan-domain-year.ts
 │   │   └── seeds
 │   │       ├── departments
 │   │       │   ├── departmentsSeed.ts
@@ -821,6 +845,8 @@
 │   │   ├── notificationRepository.ts
 │   │   ├── prescriptionRepository.ts
 │   │   ├── prescriptionSubstanceRepository.ts
+│   │   ├── programmingPlanDomainRepository.test.ts
+│   │   ├── programmingPlanDomainRepository.ts
 │   │   ├── programmingPlanRepository.ts
 │   │   ├── programmingSubPlanRepository.ts
 │   │   ├── residueAnalyteRepository.ts
@@ -850,6 +876,7 @@
 │   │   ├── routes.type.ts
 │   │   ├── sevesProtected.ts
 │   │   ├── test
+│   │   │   ├── administratorBGIR.router.test.ts
 │   │   │   ├── analysis.router.test.ts
 │   │   │   ├── analysisDai.router.test.ts
 │   │   │   ├── analysisRai.router.test.ts
@@ -866,6 +893,7 @@
 │   │   │   ├── notification.router.test.ts
 │   │   │   ├── prescription.router.test.ts
 │   │   │   ├── programmingPlan.router.test.ts
+│   │   │   ├── programmingPlanDomain.router.test.ts
 │   │   │   ├── sachaCommemoratifs.router.test.ts
 │   │   │   ├── sample.router.test.ts
 │   │   │   ├── seves.router.test.ts
@@ -1076,6 +1104,7 @@
 │   │   │   ├── SSD2Referential.ts
 │   │   │   └── SandreToSSD2.ts
 │   │   ├── Stage.ts
+│   │   ├── SubStage.ts
 │   │   └── region.test.ts
 │   ├── routes
 │   │   ├── analysis.routes.ts
@@ -1089,6 +1118,7 @@
 │   │   ├── notices.routes.ts
 │   │   ├── notifications.routes.ts
 │   │   ├── prescriptions.routes.ts
+│   │   ├── programmingPlanDomains.routes.ts
 │   │   ├── programmingPlans.routes.ts
 │   │   ├── routes.infer.ts
 │   │   ├── routes.ts
@@ -1207,10 +1237,12 @@
 │   │   │   ├── AuthUser.ts
 │   │   │   ├── FindUserOptions.ts
 │   │   │   ├── TokenPayload.ts
+│   │   │   ├── User.test.ts
 │   │   │   ├── User.ts
 │   │   │   ├── UserManagement.test.ts
 │   │   │   ├── UserManagement.ts
 │   │   │   ├── UserPermission.ts
+│   │   │   ├── UserRole.test.ts
 │   │   │   └── UserRole.ts
 │   │   └── commons
 │   │       └── Pagination.ts
@@ -1251,4 +1283,4 @@
     ├── express-jwt
     │   └── index.d.ts
     └── knex-stringcase.d.ts
-231 directories, 1022 files
+236 directories, 1049 files
