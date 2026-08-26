@@ -1,3 +1,52 @@
+# [4.1299.0](https://github.com/SocialGouv/fiches-travail-data/compare/v4.1298.0...v4.1299.0) (2026-08-25)
+
+
+### Features
+
+* **data:** 20260825_2122 update ([ebc5f73](https://github.com/SocialGouv/fiches-travail-data/commit/ebc5f7312a2d59fcd48ea38121e619c742695a36))
+
+# [4.1298.0](https://github.com/SocialGouv/fiches-travail-data/compare/v4.1297.0...v4.1298.0) (2026-08-24)
+
+
+### Features
+
+* **data:** 20260824_2123 update ([6998251](https://github.com/SocialGouv/fiches-travail-data/commit/69982518fedadf4a096ed579dd39f309cc13de6a))
+
+# [4.1297.0](https://github.com/SocialGouv/fiches-travail-data/compare/v4.1296.0...v4.1297.0) (2026-08-20)
+
+
+### Features
+
+* **data:** 20260820_2123 update ([e425e18](https://github.com/SocialGouv/fiches-travail-data/commit/e425e18c5d451c450d441fb70b03f3660e225723))
+
+# [4.1296.0](https://github.com/SocialGouv/fiches-travail-data/compare/v4.1295.0...v4.1296.0) (2026-08-18)
+
+
+### Features
+
+* **data:** 20260818_2118 update ([8a860e7](https://github.com/SocialGouv/fiches-travail-data/commit/8a860e728e18d110684579371ebad5751a5542d9))
+
+# [4.1295.0](https://github.com/SocialGouv/fiches-travail-data/compare/v4.1294.0...v4.1295.0) (2026-08-17)
+
+
+### Features
+
+* **data:** 20260817_2120 update ([64cae91](https://github.com/SocialGouv/fiches-travail-data/commit/64cae9119b2c3d7ce58dda3fb568848e7bc80e38))
+
+# [4.1294.0](https://github.com/SocialGouv/fiches-travail-data/compare/v4.1293.0...v4.1294.0) (2026-08-16)
+
+
+### Features
+
+* **data:** 20260816_2115 update ([72f6e2c](https://github.com/SocialGouv/fiches-travail-data/commit/72f6e2c89ef6474c98508c28688ed74701079410))
+
+# [4.1293.0](https://github.com/SocialGouv/fiches-travail-data/compare/v4.1292.0...v4.1293.0) (2026-08-15)
+
+
+### Features
+
+* **data:** 20260815_2116 update ([e52f2bc](https://github.com/SocialGouv/fiches-travail-data/commit/e52f2bc6f299f9c5785f936ecf032b8ac464043e))
+
 # [4.1292.0](https://github.com/SocialGouv/fiches-travail-data/compare/v4.1291.0...v4.1292.0) (2026-08-14)
 
 
