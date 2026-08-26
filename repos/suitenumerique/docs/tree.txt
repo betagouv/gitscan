@@ -131,6 +131,7 @@
 │   │   └── scalingo.md
 │   ├── instances.md
 │   ├── languages-configuration.md
+│   ├── profiling.md
 │   ├── release.md
 │   ├── resource_server.md
 │   ├── s3.md
@@ -191,8 +192,12 @@
     │   │   │   ├── __init__.py
     │   │   │   └── commands
     │   │   │       ├── __init__.py
+    │   │   │       ├── anonymize_database.py
     │   │   │       ├── clean_document.py
+    │   │   │       ├── generate_volumetry.py
     │   │   │       ├── index.py
+    │   │   │       ├── profile_volumetry.py
+    │   │   │       ├── purge_silk_profiles.py
     │   │   │       └── update_files_content_type_metadata.py
     │   │   ├── middleware.py
     │   │   ├── migrations
@@ -228,6 +233,7 @@
     │   │   │   ├── 0030_user_is_first_connection.py
     │   │   │   ├── 0031_clean_onboarding_accesses.py
     │   │   │   ├── 0032_remove_linktrace_is_masked.py
+    │   │   │   ├── 0033_document_document_attachments_gin.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── services
@@ -374,6 +380,7 @@
     │   │   │   ├── analytics.py
     │   │   │   ├── dicts.py
     │   │   │   ├── paths.py
+    │   │   │   ├── s3.py
     │   │   │   ├── s3_response_stream.py
     │   │   │   ├── treebeard.py
     │   │   │   ├── users.py
@@ -427,6 +434,9 @@
     │   │   │   └── LC_MESSAGES
     │   │   │       └── django.po
     │   │   ├── nl_NL
+    │   │   │   └── LC_MESSAGES
+    │   │   │       └── django.po
+    │   │   ├── pl_PL
     │   │   │   └── LC_MESSAGES
     │   │   │       └── django.po
     │   │   ├── pt_PT
@@ -558,14 +568,14 @@
     │   │       │   │   ├── logo-suite-numerique.png
     │   │       │   │   ├── mail-header-background.png
     │   │       │   │   └── on-boarding
-    │   │       │   │       ├── step_1_EN.gif
-    │   │       │   │       ├── step_1_FR.gif
-    │   │       │   │       ├── step_2_EN.gif
-    │   │       │   │       ├── step_2_FR.gif
-    │   │       │   │       ├── step_3_EN.png
-    │   │       │   │       ├── step_3_FR.png
-    │   │       │   │       ├── step_4_EN.png
-    │   │       │   │       └── step_4_FR.png
+    │   │       │   │       ├── step_1_EN.webm
+    │   │       │   │       ├── step_1_FR.webm
+    │   │       │   │       ├── step_2_EN.webm
+    │   │       │   │       ├── step_2_FR.webm
+    │   │       │   │       ├── step_3_EN.webp
+    │   │       │   │       ├── step_3_FR.webp
+    │   │       │   │       ├── step_4_EN.webp
+    │   │       │   │       └── step_4_FR.webp
     │   │       │   └── favicon.ico
     │   │       ├── scripts
     │   │       │   ├── copy-emoji.mjs
@@ -621,7 +631,9 @@
     │   │       │   │           ├── 7-circle-filled.svg
     │   │       │   │           ├── 8-circle-filled.svg
     │   │       │   │           ├── 9-circle-filled.svg
+    │   │       │   │           ├── Docs.svg
     │   │       │   │           ├── Rectangle 3467384.svg
+    │   │       │   │           ├── Subdocs.svg
     │   │       │   │           ├── Vector 736.svg
     │   │       │   │           ├── account_circle.svg
     │   │       │   │           ├── account_tree.svg
@@ -642,6 +654,7 @@
     │   │       │   │           ├── backup.svg
     │   │       │   │           ├── bar_chart-filled.svg
     │   │       │   │           ├── bento.svg
+    │   │       │   │           ├── bin.svg
     │   │       │   │           ├── block.svg
     │   │       │   │           ├── blur.svg
     │   │       │   │           ├── blur_on.svg
@@ -858,6 +871,7 @@
     │   │       │   │           ├── picture-filled.svg
     │   │       │   │           ├── picture-remove.svg
     │   │       │   │           ├── picture.svg
+    │   │       │   │           ├── pinned.svg
     │   │       │   │           ├── play.svg
     │   │       │   │           ├── play_arrow.svg
     │   │       │   │           ├── plus-dashed-edit.svg
@@ -1194,9 +1208,7 @@
     │   │       │   │   │   │   └── utils_print.ts
     │   │       │   │   │   ├── doc-header
     │   │       │   │   │   │   ├── __tests__
-    │   │       │   │   │   │   │   ├── DocHeaderEmoji.spec.tsx
-    │   │       │   │   │   │   │   ├── DocToolBoxLicence.spec.tsx
-    │   │       │   │   │   │   │   └── DocToolBoxLicenceMIT.spec.tsx
+    │   │       │   │   │   │   │   └── DocHeaderEmoji.spec.tsx
     │   │       │   │   │   │   ├── components
     │   │       │   │   │   │   │   ├── AlertNetwork.tsx
     │   │       │   │   │   │   │   ├── AlertRestore.tsx
@@ -1205,13 +1217,12 @@
     │   │       │   │   │   │   │   ├── DocHeaderInfo.tsx
     │   │       │   │   │   │   │   ├── DocLeftPanelCollapseButton.tsx
     │   │       │   │   │   │   │   ├── DocTitle.tsx
-    │   │       │   │   │   │   │   ├── DocToolBox.tsx
     │   │       │   │   │   │   │   └── index.ts
-    │   │       │   │   │   │   ├── hooks
-    │   │       │   │   │   │   │   └── useCopyCurrentEditorToClipboard.tsx
     │   │       │   │   │   │   └── index.tsx
     │   │       │   │   │   ├── doc-management
     │   │       │   │   │   │   ├── __tests__
+    │   │       │   │   │   │   │   ├── DocToolBoxLicence.spec.tsx
+    │   │       │   │   │   │   │   ├── DocToolBoxLicenceMIT.spec.tsx
     │   │       │   │   │   │   │   └── utils.test.tsx
     │   │       │   │   │   │   ├── api
     │   │       │   │   │   │   │   ├── index.ts
@@ -1241,6 +1252,7 @@
     │   │       │   │   │   │   ├── components
     │   │       │   │   │   │   │   ├── DocIcon.tsx
     │   │       │   │   │   │   │   ├── DocPage403.tsx
+    │   │       │   │   │   │   │   ├── DocToolBox.tsx
     │   │       │   │   │   │   │   ├── ModalRemoveDoc.tsx
     │   │       │   │   │   │   │   ├── NewDocButton.tsx
     │   │       │   │   │   │   │   ├── SimpleDocItem.tsx
@@ -1249,6 +1261,7 @@
     │   │       │   │   │   │   │   ├── __tests__
     │   │       │   │   │   │   │   │   └── useDocTitleUpdate.test.tsx
     │   │       │   │   │   │   │   ├── index.ts
+    │   │       │   │   │   │   │   ├── useCopyCurrentEditorToClipboard.tsx
     │   │       │   │   │   │   │   ├── useCopyDocLink.tsx
     │   │       │   │   │   │   │   ├── useCreateChildDocTree.tsx
     │   │       │   │   │   │   │   ├── useDocTitleUpdate.tsx
@@ -1387,26 +1400,23 @@
     │   │       │   │   │   └── docs-grid
     │   │       │   │   │       ├── api
     │   │       │   │   │       │   ├── index.ts
+    │   │       │   │   │       │   ├── useDocsGridQuery.tsx
     │   │       │   │   │       │   └── useDocsTrashbin.tsx
     │   │       │   │   │       ├── components
     │   │       │   │   │       │   ├── DocGridContentList.tsx
     │   │       │   │   │       │   ├── DocMoveModal.tsx
     │   │       │   │   │       │   ├── DocsGrid.tsx
     │   │       │   │   │       │   ├── DocsGridActions.tsx
+    │   │       │   │   │       │   ├── DocsGridColumnName.tsx
     │   │       │   │   │       │   ├── DocsGridItem.tsx
     │   │       │   │   │       │   ├── DocsGridItemSharedButton.tsx
-    │   │       │   │   │       │   ├── DocsGridLoader.tsx
-    │   │       │   │   │       │   ├── DocsGridTrashbinActions.tsx
-    │   │       │   │   │       │   ├── Draggable.tsx
-    │   │       │   │   │       │   ├── Droppable.tsx
     │   │       │   │   │       │   ├── ModalConfimationMoveDoc.tsx
     │   │       │   │   │       │   ├── __tests__
     │   │       │   │   │       │   │   └── DocsGridItemDate.test.tsx
     │   │       │   │   │       │   └── index.ts
     │   │       │   │   │       ├── conf.ts
     │   │       │   │   │       ├── hooks
-    │   │       │   │   │       │   ├── useDragAndDrop.tsx
-    │   │       │   │   │       │   └── useResponsiveDocGrid.tsx
+    │   │       │   │   │       │   └── useDragAndDrop.tsx
     │   │       │   │   │       └── index.ts
     │   │       │   │   ├── footer
     │   │       │   │   │   ├── Footer.tsx
@@ -1742,4 +1752,4 @@
         │   └── template.mjml
         ├── package.json
         └── yarn.lock
-306 directories, 1514 files
+307 directories, 1523 files
