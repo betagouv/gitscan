@@ -234,11 +234,9 @@
 │   │   │   │   │   └── api-entreprise.client.ts
 │   │   │   │   ├── api-referentiel-catalogue.fixture.ts
 │   │   │   │   ├── classification
+│   │   │   │   │   ├── classification-mistral.client.fixture.ts
 │   │   │   │   │   ├── classification-mistral.client.test.ts
-│   │   │   │   │   ├── classification-mistral.client.ts
-│   │   │   │   │   ├── classification.client.fixture.ts
-│   │   │   │   │   ├── classification.client.test.ts
-│   │   │   │   │   └── classification.client.ts
+│   │   │   │   │   └── classification-mistral.client.ts
 │   │   │   │   ├── client.ts
 │   │   │   │   ├── diagoriente
 │   │   │   │   │   ├── diagoriente.client.fixture.ts
@@ -750,7 +748,8 @@
 │   │   │   ├── 20260728150000-sanitize-offer-titles.ts
 │   │   │   ├── 20260811224141-add-offer-creation-index-jobs-partners.ts
 │   │   │   ├── 20260818182821-reseed-search-synonyms-generic-word-pollution.ts
-│   │   │   └── 20260818194937-backfill-search-queries-status.ts
+│   │   │   ├── 20260818194937-backfill-search-queries-status.ts
+│   │   │   └── 20260824100000-rename-search-queries-source.ts
 │   │   ├── security
 │   │   │   ├── access-log.service.ts
 │   │   │   ├── access-log.types.ts
@@ -780,9 +779,7 @@
 │   │       ├── clamav.service.ts
 │   │       ├── classification
 │   │       │   ├── classification-mistral-batch.service.test.ts
-│   │       │   ├── classification-mistral-batch.service.ts
-│   │       │   ├── compare-lab-mistral-classification.service.test.ts
-│   │       │   └── compare-lab-mistral-classification.service.ts
+│   │       │   └── classification-mistral-batch.service.ts
 │   │       ├── domainesmetiers.service.ts
 │   │       ├── eligible-trainings-for-appointment.service.test.ts
 │   │       ├── eligible-trainings-for-appointment.service.ts
@@ -931,8 +928,7 @@
 │   │   │   ├── mockApiBal.ts
 │   │   │   ├── mockApiEntreprise.ts
 │   │   │   ├── mockDiagoriente.ts
-│   │   │   ├── mockGeolocalisation.ts
-│   │   │   └── mockLab.ts
+│   │   │   └── mockGeolocalisation.ts
 │   │   ├── sdk
 │   │   │   ├── entrepriseSdk.ts
 │   │   │   └── jobsV3Sdk.ts
@@ -973,7 +969,8 @@
 │   │   │   ├── recruteur.ts
 │   │   │   ├── referers.ts
 │   │   │   ├── regex.ts
-│   │   │   └── search.ts
+│   │   │   ├── search.ts
+│   │   │   └── session.ts
 │   │   ├── fixtures
 │   │   │   ├── application.fixture.ts
 │   │   │   ├── appointment.fixture.ts
@@ -1989,6 +1986,7 @@
 │   ├── package.json
 │   ├── perf-budget.json
 │   ├── playwright.config.ts
+│   ├── proxy.test.ts
 │   ├── proxy.ts
 │   ├── public
 │   │   ├── assets
@@ -2625,4 +2623,4 @@
 │       └── use-search-params-record.ts
 ├── vitest.config.ts
 └── yarn.lock
-491 directories, 2704 files
+491 directories, 2702 files
