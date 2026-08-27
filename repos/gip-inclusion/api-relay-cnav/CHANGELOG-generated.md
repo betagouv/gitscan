@@ -1,7 +1,7 @@
-## Changelog : api-relay-cnav (30 derniers jours, au 18 août 2026)
+## Changelog : api-relay-cnav (30 derniers jours, au 24 août 2026)
 
 ### Résumé
-L'activité récente a été principalement consacrée à l'optimisation de l'infrastructure de développement et des processus de test, sans modification des fonctionnalités de l'API.
+L'activité de ce mois a été principalement concentrée sur l'optimisation de l'infrastructure de développement et de la chaîne d'intégration continue, sans modification des fonctionnalités de l'API.
 
 ### Évolutions techniques
-- Optimisation du pipeline d'intégration continue (CI) via la configuration du nettoyage du cache (`prune-cache`) pour l'action `setup-uv`.
+- Optimisation de la CI via la configuration de l'option `prune-cache` pour l'action `setup-uv`, permettant une meilleure gestion du cache lors des processus automatisés.
