@@ -184,6 +184,7 @@
 │   ├── 20260608151615_creationTableAuditAdminsOrganisations.js
 │   ├── 20260702121910_migreDonneesRisquesSpecifiquesV2AvecIdentifiantNumerique.js
 │   ├── 20260717130839_ajoutePixelDeSuiviDansTableUtilisateurs.js
+│   ├── 20260826142612_creationTableNotificationsTransactionnelles.js
 │   └── utilitaires
 │       └── pourChaqueLigne.js
 ├── package.json
@@ -405,17 +406,17 @@
 │   │   │   │   │   ├── indiceCyber.png
 │   │   │   │   │   ├── indiceCyberPersonnalise.png
 │   │   │   │   │   ├── lancementRoadmap.png
-│   │   │   │   │   ├── listeMesure.png
+│   │   │   │   │   ├── listeMesure-v2.png
 │   │   │   │   │   ├── mesServicesCyber.png
 │   │   │   │   │   ├── moduleRisquesV2.png
 │   │   │   │   │   ├── nouvelleDoctrineHomologation.png
 │   │   │   │   │   ├── prioritePlanAction.png
-│   │   │   │   │   ├── referentielsExternes.png
-│   │   │   │   │   ├── risquesV2.png
+│   │   │   │   │   ├── referentielsExternes-v2.png
+│   │   │   │   │   ├── risquesV2-v2.png
 │   │   │   │   │   ├── serviceImpactNational.png
 │   │   │   │   │   ├── tableauDeBordV2.png
-│   │   │   │   │   ├── televersementMesures.png
-│   │   │   │   │   └── televersementServices.png
+│   │   │   │   │   ├── televersementMesures-v2.png
+│   │   │   │   │   └── televersementServices-v2.png
 │   │   │   │   ├── nouveaute.svg
 │   │   │   │   └── tache.svg
 │   │   │   ├── partage-monservicesecurise.png
@@ -486,7 +487,6 @@
 │   │       ├── entites.css
 │   │       ├── erreur.css
 │   │       ├── erreurAccesRefuse.css
-│   │       ├── fonctionnalitesSegmentees.css
 │   │       ├── fond-blanc.css
 │   │       ├── fonts.css
 │   │       ├── formezVous.css
@@ -517,7 +517,6 @@
 │   ├── connexion.mjs
 │   ├── creation-compte.mjs
 │   ├── creationV2.mjs
-│   ├── fonctionnalitesSegmentees.js
 │   ├── header.js
 │   ├── home.js
 │   ├── listeMesures.mjs
@@ -542,6 +541,7 @@
 │   │   └── suggestion
 │   │       └── suggestionEntite.mjs
 │   ├── mssConnecte.mjs
+│   ├── preferences.mjs
 │   ├── profil.mjs
 │   ├── scripts
 │   │   ├── article.js
@@ -561,8 +561,8 @@
 │   │   ├── descriptionService.mjs
 │   │   └── pagesService.mjs
 │   ├── simulationV2.mjs
-│   ├── supervision.mjs
-│   └── tableauDeBord.mjs
+│   ├── tableauDeBord.mjs
+│   └── visiteGuideeSPA.mjs
 ├── scripts
 │   ├── clever-cloud
 │   │   ├── post-build-clever.sh
@@ -585,6 +585,7 @@
 │   │   └── transformeCSVPourVraisemblance.sh
 │   ├── referentielsMesuresExternes
 │   │   ├── transformeCorrespondanceAEEnTypescript.sh
+│   │   ├── transformeCorrespondanceCyFunEnTypescript.sh
 │   │   ├── transformeCorrespondanceISOEnTypescript.sh
 │   │   └── transformeCorrespondanceReCyfEnTypescript.sh
 │   ├── start.sh
@@ -637,7 +638,7 @@
 │   │   ├── adaptateurRechercheEntrepriseAPI.js
 │   │   ├── adaptateurStatistiques.interface.ts
 │   │   ├── adaptateurStatistiquesMemoire.ts
-│   │   ├── adaptateurStatistiquesMetabase.ts
+│   │   ├── adaptateurStatistiquesPostgres.ts
 │   │   ├── adaptateurSupervision.interface.ts
 │   │   ├── adaptateurSupervisionMetabase.ts
 │   │   ├── adaptateurTamponHomologation.configuration.ts
@@ -671,7 +672,8 @@
 │   │   ├── serviceAnnuaire.interface.ts
 │   │   └── serviceAnnuaire.js
 │   ├── bdd
-│   │   └── knex.ts
+│   │   ├── knex.ts
+│   │   └── knexJournal.ts
 │   ├── bus
 │   │   ├── abonnements
 │   │   │   ├── consigneAcceptationCguDansJournal.js
@@ -715,6 +717,7 @@
 │   │   │   ├── relieEntrepriseEtContactBrevo.js
 │   │   │   ├── relieServiceEtSuperviseurs.ts
 │   │   │   ├── sauvegardeEvolutionIndiceCyber.js
+│   │   │   ├── sauvegardeNotificationTransactionnelleContributeurMentionneDansMesure.ts
 │   │   │   ├── sauvegardeNotificationsExpirationHomologation.js
 │   │   │   ├── supprimeNotificationsExpirationHomologation.js
 │   │   │   ├── supprimeSuggestionsActions.js
@@ -723,6 +726,7 @@
 │   │   ├── busEvenements.js
 │   │   ├── cablage.js
 │   │   ├── evenementAccesUtilisateurAdministreRetires.ts
+│   │   ├── evenementActiviteMesureAjoutee.ts
 │   │   ├── evenementAdminNommeSurOrganisation.ts
 │   │   ├── evenementAdminRetireDeOrganisation.ts
 │   │   ├── evenementAutorisationsServiceModifiees.js
@@ -763,6 +767,7 @@
 │   │   ├── depotDonneesModelesMesureSpecifique.js
 │   │   ├── depotDonneesNotifications.js
 │   │   ├── depotDonneesNotificationsExpirationHomologation.js
+│   │   ├── depotDonneesNotificationsTransactionnelles.ts
 │   │   ├── depotDonneesParcoursUtilisateur.interface.ts
 │   │   ├── depotDonneesParcoursUtilisateur.ts
 │   │   ├── depotDonneesParrainages.js
@@ -784,13 +789,13 @@
 │   ├── erreurs.ts
 │   ├── fabriqueReferentiel.ts
 │   ├── http
+│   │   ├── cacheStatique.ts
 │   │   ├── configurationServeur.js
 │   │   ├── encodeEntitesHTML.ts
 │   │   ├── lecteurDeFormData.js
 │   │   ├── middleware.interface.ts
 │   │   ├── middleware.ts
 │   │   ├── redirection.js
-│   │   ├── requeteHttp.js
 │   │   ├── schemas
 │   │   │   ├── autorisation.schema.ts
 │   │   │   ├── date.schema.ts
@@ -798,16 +803,17 @@
 │   │   │   ├── risque.schema.ts
 │   │   │   ├── service.schema.ts
 │   │   │   ├── siret.schema.ts
-│   │   │   ├── suggestionAction.schema.ts
-│   │   │   └── visiteGuidee.schema.ts
+│   │   │   └── suggestionAction.schema.ts
 │   │   ├── seo.ts
 │   │   └── validePayloads.ts
 │   ├── mesures
 │   │   └── referentielsExternes
 │   │       ├── correspondanceMesuresReCyfVersAE2690.ts
+│   │       ├── correspondanceMesuresReCyfVersCyFun23.ts
 │   │       ├── correspondanceMesuresReCyfVersISO2700X.ts
 │   │       ├── correspondanceMesuresV2VersReCyf.ts
 │   │       ├── donneesReferentielMesuresAE2690.ts
+│   │       ├── donneesReferentielMesuresCyFun23.ts
 │   │       ├── donneesReferentielMesuresISO2700X.ts
 │   │       └── donneesReferentielMesuresReCyf.ts
 │   ├── modeles
@@ -900,6 +906,8 @@
 │   │   ├── mesuresSpecifiques.ts
 │   │   ├── niveauGravite.ts
 │   │   ├── notificationExpirationHomologation.js
+│   │   ├── notificationsTransactionnelles
+│   │   │   └── notificationTransactionnelle.ts
 │   │   ├── objetsApi
 │   │   │   ├── objetGetAutorisation.js
 │   │   │   ├── objetGetContactsUtiles.ts
@@ -1011,8 +1019,8 @@
 │   ├── notifications
 │   │   └── centreNotifications.js
 │   ├── oidc
-│   │   ├── cookies.ts
-│   │   └── serviceForceMFA.ts
+│   │   ├── acr.ts
+│   │   └── cookies.ts
 │   ├── referentiel.interface.ts
 │   ├── referentiel.ts
 │   ├── referentiel.types.ts
@@ -1124,6 +1132,7 @@
 │   │   ├── doctrineHomologation.pug
 │   │   ├── erreur.pug
 │   │   ├── erreurAccesRefuse.pug
+│   │   ├── erreurEchecAuthentification.pug
 │   │   ├── formezVous.pug
 │   │   ├── fragments
 │   │   │   ├── avancementEtape.pug
@@ -1136,12 +1145,12 @@
 │   │   │   │   ├── elementsAjoutablesAvis.pug
 │   │   │   │   └── elementsAjoutablesDescription.pug
 │   │   │   ├── entites.pug
-│   │   │   ├── fonctionnalitesSegmentees.pug
 │   │   │   ├── footer.pug
 │   │   │   ├── formulaireDescriptionService.pug
 │   │   │   ├── header.pug
 │   │   │   ├── inputChoix.pug
 │   │   │   ├── lienNouvelOnglet.pug
+│   │   │   ├── ressourceAvecVersion.pug
 │   │   │   └── texteTronque.pug
 │   │   ├── home
 │   │   │   └── temoignages.pug
@@ -1155,6 +1164,7 @@
 │   │   ├── mssDeconnecte.pug
 │   │   ├── mssDocumentation.pug
 │   │   ├── parcoursService.pug
+│   │   ├── preferences.pug
 │   │   ├── profil.pug
 │   │   ├── referentielMesures.pug
 │   │   ├── securisezServiceNumerique.pug
@@ -1167,10 +1177,9 @@
 │   │   │   ├── pagesService.pug
 │   │   │   └── simulation-referentiel-v2.pug
 │   │   ├── statistiques.pug
-│   │   ├── supervision.pug
 │   │   ├── tableauDeBord.pug
 │   │   └── visiteGuidee
-│   │       └── creationService.pug
+│   │       └── spa.pug
 │   └── vuesPdf
 │       ├── annexe.description.typ
 │       ├── annexe.mesures.typ
@@ -1213,6 +1222,11 @@
 │       └── syntheseSecurite.typ
 ├── svelte
 │   ├── CLAUDE.md
+│   ├── eslint
+│   │   └── regles
+│   │       ├── entrypointConforme.js
+│   │       ├── interditImportEntrypoint.js
+│   │       └── nomenclature.js
 │   ├── eslint.config.js
 │   ├── lib
 │   │   ├── accueilInscription
@@ -1245,13 +1259,16 @@
 │   │   │   └── adminEntites.types.ts
 │   │   ├── adminStatistiques
 │   │   │   ├── AdminStatistiques.svelte
+│   │   │   ├── CarteChiffreCle.svelte
 │   │   │   ├── adminStatistiques.api.ts
 │   │   │   ├── adminStatistiques.ts
 │   │   │   ├── adminStatistiques.types.ts
-│   │   │   └── charts
-│   │   │       ├── Chart.svelte
-│   │   │       ├── LineChart.svelte
-│   │   │       └── PieChart.svelte
+│   │   │   ├── charts
+│   │   │   │   ├── BarChart.svelte
+│   │   │   │   ├── Chart.svelte
+│   │   │   │   ├── LineChart.svelte
+│   │   │   │   └── PieChart.svelte
+│   │   │   └── donneesVisiteGuidee.ts
 │   │   ├── adminUtilisateurs
 │   │   │   ├── AdminUtilisateurs.svelte
 │   │   │   ├── BadgeAdmin.svelte
@@ -1277,7 +1294,6 @@
 │   │   │   └── bandeauReferentielV2.ts
 │   │   ├── centreNotifications
 │   │   │   ├── CentreNotifications.svelte
-│   │   │   ├── centreNotifications.d.ts
 │   │   │   ├── centreNotifications.ts
 │   │   │   └── kit
 │   │   │       ├── ListeNotifications.svelte
@@ -1361,16 +1377,10 @@
 │   │   │   ├── ExplicationNouveauReferentiel.svelte
 │   │   │   ├── donneesEvolutionQuestions.ts
 │   │   │   └── explicationNouveauReferentiel.ts
-│   │   ├── explicationUtilisationMFA
-│   │   │   ├── ExplicationUtilisationMFA.svelte
-│   │   │   └── explicationUtilisationMFA.ts
-│   │   ├── formatDate
-│   │   │   └── formatDate.ts
 │   │   ├── gestionContributeurs
 │   │   │   ├── GestionContributeurs.svelte
 │   │   │   ├── gestionContributeurs.d.ts
 │   │   │   ├── gestionContributeurs.store.ts
-│   │   │   ├── gestionContributeurs.ts
 │   │   │   ├── invitation
 │   │   │   │   ├── BoutonsActions.svelte
 │   │   │   │   ├── EnvoiEnCours.svelte
@@ -1398,15 +1408,13 @@
 │   │   │   ├── IndiceCyber.svelte
 │   │   │   ├── indiceCyber.api.ts
 │   │   │   ├── indiceCyber.d.ts
-│   │   │   ├── indiceCyber.ts
 │   │   │   └── svg
 │   │   │       ├── Fleche.svelte
 │   │   │       └── MasqueJauge.svelte
 │   │   ├── indiceCyberPersonnalise
 │   │   │   ├── IndiceCyberPersonnalise.svelte
 │   │   │   ├── indiceCyberPersonnalise.api.ts
-│   │   │   ├── indiceCyberPersonnalise.d.ts
-│   │   │   └── indiceCyberPersonnalise.ts
+│   │   │   └── indiceCyberPersonnalise.d.ts
 │   │   ├── inscription
 │   │   │   ├── Inscription.svelte
 │   │   │   ├── SelectionDepartement.svelte
@@ -1572,6 +1580,12 @@
 │   │   │   │   ├── pageDepuisURL.ts
 │   │   │   │   └── routeur.store.ts
 │   │   │   └── titresPages.donnees.ts
+│   │   ├── preferences
+│   │   │   ├── LignePreference.svelte
+│   │   │   ├── Preferences.svelte
+│   │   │   ├── preferences.api.ts
+│   │   │   ├── preferences.ts
+│   │   │   └── preferences.types.ts
 │   │   ├── profil
 │   │   │   ├── Profil.svelte
 │   │   │   ├── profil.d.ts
@@ -1604,11 +1618,12 @@
 │   │   │   ├── TiroirRisque.svelte
 │   │   │   ├── risque.api.ts
 │   │   │   ├── risques.d.ts
-│   │   │   └── risques.ts
+│   │   │   └── risques.utils.ts
 │   │   ├── risquesV2
 │   │   │   ├── RisquesV2.svelte
 │   │   │   ├── TableauAnciensRisques.svelte
 │   │   │   ├── TableauRisquesV2.svelte
+│   │   │   ├── donneesVisiteGuidee.ts
 │   │   │   ├── kit
 │   │   │   │   ├── CartoucheIdentifiantRisque.svelte
 │   │   │   │   ├── CartoucheIdentifiantRisqueSpecifiqueV2.svelte
@@ -1641,10 +1656,6 @@
 │   │   │   ├── simulationV2.d.ts
 │   │   │   ├── simulationV2.ts
 │   │   │   └── simulationv2.api.ts
-│   │   ├── supervision
-│   │   │   ├── Supervision.svelte
-│   │   │   ├── supervision.d.ts
-│   │   │   └── supervision.ts
 │   │   ├── tableauDeBord
 │   │   │   ├── ActionsDesServices.svelte
 │   │   │   ├── BandeauBlog.svelte
@@ -1654,6 +1665,7 @@
 │   │   │   ├── TableauDesServices.svelte
 │   │   │   ├── TableauVide.svelte
 │   │   │   ├── Tuiles.svelte
+│   │   │   ├── donneesVisiteGuidee.ts
 │   │   │   ├── elementsDeService
 │   │   │   │   ├── ActionRecommandee.svelte
 │   │   │   │   ├── EtiquetteCompletude.svelte
@@ -1711,8 +1723,7 @@
 │   │   │   │   ├── resultatsDeRecherche.store.ts
 │   │   │   │   └── volumetrieMesures.store.ts
 │   │   │   ├── tableauDesMesures.api.ts
-│   │   │   ├── tableauDesMesures.d.ts
-│   │   │   └── tableauDesMesures.ts
+│   │   │   └── tableauDesMesures.d.ts
 │   │   ├── tiroir
 │   │   │   ├── Tiroir.svelte
 │   │   │   └── tiroir.ts
@@ -1761,6 +1772,7 @@
 │   │   │   ├── Loader.svelte
 │   │   │   ├── MenuFlottant.svelte
 │   │   │   ├── Modale.svelte
+│   │   │   ├── NomEntite.svelte
 │   │   │   ├── Onglet.svelte
 │   │   │   ├── Onglets.svelte
 │   │   │   ├── Pastille.svelte
@@ -1787,6 +1799,8 @@
 │   │   │   ├── couleursStatutHomologation.ts
 │   │   │   ├── directives
 │   │   │   │   └── infobulle.ts
+│   │   │   ├── formatDate.ts
+│   │   │   ├── matomo.ts
 │   │   │   ├── rechercheOrganisation.ts
 │   │   │   ├── referentielNiveauxSecurite.ts
 │   │   │   ├── stores
@@ -1812,34 +1826,18 @@
 │   │   │   ├── types.d.ts
 │   │   │   └── ui.types.d.ts
 │   │   ├── ui-kit.d.ts
-│   │   ├── visiteGuidee
-│   │   │   ├── VisiteGuidee.svelte
+│   │   ├── visiteGuideeSPA
+│   │   │   ├── ModaleAccueilVisiteGuidee.svelte
+│   │   │   ├── ModaleChoixVisiteAvancee.svelte
+│   │   │   ├── ModaleExplicative.svelte
+│   │   │   ├── ModaleFinVisiteGuidee.svelte
+│   │   │   ├── VisiteGuideeSPA.svelte
 │   │   │   ├── ciblage.ts
-│   │   │   ├── etapes
-│   │   │   │   ├── decrire
-│   │   │   │   │   └── EtapeDecrireV2.svelte
-│   │   │   │   ├── homologuer
-│   │   │   │   │   └── EtapeHomologuer.svelte
-│   │   │   │   ├── initiale
-│   │   │   │   │   ├── EtapeBienvenue.svelte
-│   │   │   │   │   └── EtapePresentationMenuNavigation.svelte
-│   │   │   │   ├── piloter
-│   │   │   │   │   └── EtapePiloter.svelte
-│   │   │   │   └── securiser
-│   │   │   │       └── EtapeSecuriser.svelte
-│   │   │   ├── kit
-│   │   │   │   ├── IndicateurEtape.svelte
-│   │   │   │   ├── MenuNavigationVisiteGuidee.svelte
-│   │   │   │   ├── ModaleSousEtape.d.ts
-│   │   │   │   ├── ModaleSousEtape.svelte
-│   │   │   │   └── positionModale.ts
 │   │   │   ├── visiteGuidee.api.ts
-│   │   │   ├── visiteGuidee.d.ts
-│   │   │   ├── visiteGuidee.store.ts
-│   │   │   └── visiteGuidee.ts
-│   │   ├── visiteGuideeCreationService
-│   │   │   ├── VisiteGuideeCreationService.svelte
-│   │   │   └── visiteGuideeCreationService.ts
+│   │   │   ├── visiteGuidee.utils.ts
+│   │   │   ├── visiteGuideeSPA.d.ts
+│   │   │   ├── visiteGuideeSPA.donnees.ts
+│   │   │   └── visiteGuideeSPA.ts
 │   │   └── vite-env.d.ts
 │   ├── svelte.config.js
 │   ├── test
@@ -1867,6 +1865,8 @@
 │   │   │       ├── notifications.store.spec.ts
 │   │   │       ├── nouveautesPage.store.spec.ts
 │   │   │       └── vraisemblanceRisqueV2.store.spec.ts
+│   │   ├── visiteGuideeSPA
+│   │   │   └── visiteGuidee.utils.spec.ts
 │   │   └── vitest.config.ts
 │   ├── tsconfig.json
 │   ├── types.d.ts
@@ -1885,6 +1885,7 @@
 │   │   ├── adaptateurPostgres.spec.js
 │   │   ├── adaptateurPostgresTS.spec.ts
 │   │   ├── adaptateurRechercheEntrepriseAPI.spec.js
+│   │   ├── adaptateurStatistiquesPostgres.spec.ts
 │   │   ├── excel
 │   │   │   └── LecteurExcel.spec.ts
 │   │   └── serviceStatistiquesAdmin.spec.ts
@@ -1938,6 +1939,7 @@
 │   │   │   ├── relieEntrepriseEtContactBrevo.spec.js
 │   │   │   ├── relieServiceEtSuperviseurs.spec.ts
 │   │   │   ├── sauvegardeEvolutionIndiceCyber.spec.js
+│   │   │   ├── sauvegardeNotificationTransactionnelleContributeurMentionneDansMesure.spec.ts
 │   │   │   ├── sauvegardeNotificationsExpirationHomologation.spec.js
 │   │   │   ├── supprimeNotificationsExpirationHomologation.spec.js
 │   │   │   ├── supprimeSuggestionsActions.spec.js
@@ -2005,8 +2007,8 @@
 │   │   ├── depotDonneesUtilisateurs.spec.js
 │   │   └── depotVide.js
 │   ├── http
+│   │   ├── cacheStatique.spec.ts
 │   │   ├── middleware.spec.js
-│   │   ├── requeteHttp.spec.js
 │   │   └── seo.spec.ts
 │   ├── mocks
 │   │   ├── adaptateurChiffrement.js
@@ -2172,8 +2174,6 @@
 │   ├── mss.spec.js
 │   ├── notifications
 │   │   └── centreNotifications.spec.js
-│   ├── oidc
-│   │   └── serviceForceMFA.spec.ts
 │   ├── referentiel.spec.js
 │   ├── referentielV2.spec.ts
 │   ├── routes
@@ -2256,4 +2256,4 @@
 │       └── parametres.spec.mjs
 ├── tsconfig.json
 └── vitest.config.ts
-299 directories, 2089 files
+292 directories, 2096 files

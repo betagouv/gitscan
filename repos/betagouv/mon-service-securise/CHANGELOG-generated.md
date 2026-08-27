@@ -1,33 +1,32 @@
-## Changelog : mon-service-securise (30 derniers jours, au 30 juillet 2026)
+## Changelog : mon-service-securise (30 derniers jours, au 27 août 2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur l'amélioration des statistiques et du reporting, avec l'ajout d'une page de statistiques administratives, de graphiques et de données enrichies. Des améliorations significatives ont également été apportées à la gestion des référentiels externes et à la génération de documents, notamment l'implémentation de Typst pour les PDF. Des corrections et des optimisations diverses ont été apportées à l'interface utilisateur et au code.
+Ce mois-ci, le service a franchi une étape importante avec la refonte complète de son parcours d'accompagnement (visite guidée) et l'ajout d'outils de pilotage puissants via une nouvelle interface de statistiques pour les administrateurs et superviseurs. L'expérience utilisateur est également enrichie par un nouveau système de notifications et une gestion simplifiée des préférences personnelles et des consentements.
 
 ### Évolutions fonctionnelles
-- Ajout d'une page de statistiques pour les administrateurs, incluant des graphiques sur l'évolution du nombre de services et par type de service.
-- Possibilité de filtrer les statistiques par type de service.
-- Affichage des données des référentiels externes (ReCyf, ISO2700X) dans les listes de mesures et tiroirs.
-- Ajout d'une page publique répertoriant toutes les mesures du référentiel V2.
-- Implémentation de la première page du PDF "Annexes" en Typst, incluant les risques spécifiques.
-- Ajout d'une option pour accepter ou refuser le pixel de suivi dans le parcours d'inscription.
-- Amélioration de la recherche textuelle pour inclure les noms des responsables de mesures.
-- Ajout d'une page "Documents" et d'une page "Avis".
+- **Système de notifications** : Mise en place d'un nouveau système de notifications incluant les mentions, les nouveautés et les tâches à faire. Les notifications sont désormais regroupées par date et affichées avec des badges (ex: "Non lu") pour une meilleure lisibilité.
+- **Tableau de bord statistiques** : Création d'une nouvelle page de statistiques pour les administrateurs et superviseurs. Elle permet de visualiser l'évolution du nombre de services, les taux de complétude des mesures, les indices cyber moyens et la répartition des statuts, avec des options de filtrage et d'impression.
+- **Visite guidée** : Refonte majeure de la visite guidée pour offrir un parcours plus fluide et interactif (nouvelles modales, ciblage précis des éléments, mode avancé et meilleure gestion du défilement).
+- **Gestion des préférences** : Ajout d'une page dédiée permettant aux utilisateurs de gérer leurs consentements et leurs préférences de communication.
+- **Améliorations de l'interface** : 
+    - Déploiement d'une nouvelle page d'accueil (landing page).
+    - Mise à jour visuelle des niveaux de risque (couleurs) sur l'interface et dans les exports PDF.
+    - Affichage de nouvelles informations contextuelles (département de l'entité, SIRET, version des référentiels).
+- **Sécurité** : Amélioration de la gestion du MFA (Multi-Factor Authentication) et de la validation via ProConnect.
 
 ### Évolutions techniques
-- Conversion de plusieurs modèles de données métier en Typescript pour une meilleure typage et maintenabilité.
-- Refonte de la gestion des tiroirs, avec conversion du tiroir "Mesure" en un tiroir Svelte.
-- Utilisation de Typst pour la génération de documents PDF, remplaçant les anciennes méthodes.
-- Amélioration de la gestion des erreurs et des exceptions.
-- Mise à jour de nombreuses dépendances.
-- Ajout de tests unitaires et d'intégration.
-- Optimisation de la performance de certaines requêtes.
+- **Architecture des données** : 
+    - Implémentation d'un nouvel adaptateur de statistiques basé sur PostgreSQL.
+    - Mise en place de la persistance des notifications en base de données.
+    - Refactorisation de plusieurs adaptateurs en classes pour une meilleure structure.
+- **Optimisation de la visite guidée** : Utilisation de `ResizeObserver` pour une détection plus précise des éléments à mettre en avant et optimisation du calcul du scroll.
+- **Gestion des assets** : Mise en place d'une politique de cache et d'un système de versionnage pour les fichiers statiques.
+- **Refactoring et nettoyage** : 
+    - Suppression massive de code obsolète (anciens services, variables d'environnement, méthodes de visite guidée v1 et proxies inutiles).
+    - Extraction de composants utilitaires (ex: `PieChart`, gestion des risques).
+    - Optimisation des appels API et de la gestion des événements.
 
 ### Autres changements
-- Amélioration de la documentation et des commentaires dans le code.
-- Corrections de style et de mise en page.
-- Suppression de code obsolète et de dépendances inutilisées.
-- Ajout de nouvelles variables d'environnement et de configurations.
-- Amélioration de l'accessibilité de certains composants.
-- Ajout de données JSON+LD pour améliorer le référencement.
-- Ajout d'un script pour extraire les données ReCyf de Grist.
-- Ajout d'un script pour extraire les données ISO2700X du CSV.
+- **UI Kit** : Mises à jour régulières des composants pour s'aligner sur le Design System (DSFR).
+- **Qualité de code** : Corrections de règles ESLint et de types TypeScript.
+- **Contenu** : Ajustements de la rédaction (wording) pour les modules de risques et les formations.
