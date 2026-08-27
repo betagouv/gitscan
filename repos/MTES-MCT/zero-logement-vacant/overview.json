@@ -1,25 +1,25 @@
 {
   "url": "https://github.com/MTES-MCT/zero-logement-vacant",
   "name": "zero-logement-vacant",
-  "description": "Plateforme de gestion et d'analyse des logements vacants destinée aux collectivités territoriales. Elle permet de piloter des campagnes de contact et de visualiser des données géospatiales pour lutter contre l'habitat indigne ou vacant.",
+  "description": "Plateforme de gestion et d'analyse des logements vacants destinée aux collectivités territoriales. Elle permet de piloter des campagnes de contact, de visualiser des données cartographiques et de réaliser des analyses statistiques.",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
     "Visualisation de données & Cartographie",
     "Statistiques & Rapports",
-    "Administration & Backoffice",
-    "Suivi & Traçabilité"
+    "Gestion des utilisateurs & Permissions",
+    "Recherche & Filtres"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
+    "React",
+    "Node.js",
     "PostgreSQL",
     "PostGIS",
     "Redis",
     "Elasticsearch",
     "Dagster",
     "dbt",
-    "React",
-    "Node.js",
     "DuckDB",
     "Pandas"
   ],
@@ -31,13 +31,11 @@
     "Python (scripts & backend)",
     "Docker & Conteneurs",
     "SIG & Géospatial",
-    "Pipeline de données",
-    "Tests"
+    "Pipeline de données"
   ],
   "auth": {
     "methods": [
-      "session",
-      "mfa"
+      "session"
     ]
   },
   "tests": [
@@ -46,20 +44,21 @@
     "Vitest"
   ],
   "workflows": [
-    "e2e.yml"
+    "e2e.yml",
+    "review-app.yml"
   ],
-  "lastActivity": "2026-08-11T13:01:59+02:00",
+  "lastActivity": "2026-08-24T13:52:12+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
     "Données & Open Data",
+    "Écosystème beta.gouv / État",
+    "TypeScript",
+    "Python",
     "SIG & Géospatial",
     "Emploi, Social & Logement",
-    "Territoire & Collectivités",
-    "Python",
-    "TypeScript",
-    "Docker & Conteneurs",
-    "CI/CD & GitHub Actions"
+    "ETL & Pipelines de données",
+    "Docker & Conteneurs"
   ]
 }
