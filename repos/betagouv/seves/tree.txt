@@ -151,12 +151,14 @@
 │   │   ├── 0062_message_date_picked_and_more.py
 │   │   ├── 0063_auto_20260706_1125.py
 │   │   ├── 0064_auto_20260727_1357.py
+│   │   ├── 0065_create_sa_group.py
 │   │   └── __init__.py
 │   ├── mixins.py
 │   ├── model_mixins.py
 │   ├── models.py
 │   ├── notifications.py
 │   ├── pages.py
+│   ├── pdf.py
 │   ├── redirect.py
 │   ├── seeds
 │   │   └── codes-postaux.json
@@ -198,6 +200,8 @@
 │   │       ├── forms.mjs
 │   │       ├── free_links.js
 │   │       ├── has_sidebar.css
+│   │       ├── icons
+│   │       │   └── pig-line.svg
 │   │       ├── liens_libres.css
 │   │       ├── list.css
 │   │       ├── login.css
@@ -313,6 +317,7 @@
 │   │   ├── test_treeselect.py
 │   │   ├── test_update_contacts_structures_email.py
 │   │   ├── test_users.py
+│   │   ├── test_validators.py
 │   │   └── utils.py
 │   ├── urls.py
 │   ├── validators.py
@@ -333,24 +338,33 @@
 │   ├── admin.py
 │   ├── apps.py
 │   ├── context_processors.py
+│   ├── filters.py
 │   ├── forms
 │   │   ├── __init__.py
 │   │   ├── evenement.py
 │   │   └── fields.py
+│   ├── managers.py
 │   ├── migrations
 │   │   ├── 0001_initial.py
 │   │   ├── 0002_espece_evenementanimal_maladie_delete_evenement_and_more.py
 │   │   ├── 0003_evenementanimal_adresse_lieu_dit_and_more.py
 │   │   ├── 0004_evenementanimal_context_suspicion_and_more.py
+│   │   ├── 0005_evenementanimal_adresse_lieu_dit_etablissement_and_more.py
+│   │   ├── 0006_auto_20260825_1059.py
+│   │   ├── 0007_evenementanimal_date_apdi_evenementanimal_date_apms_and_more.py
 │   │   └── __init__.py
 │   ├── models
 │   │   ├── __init__.py
-│   │   └── evenement.py
+│   │   ├── evenement.py
+│   │   └── maladie.py
 │   ├── static
 │   │   └── sa
+│   │       ├── detenteur.mjs
+│   │       ├── evenement_animal_details.css
 │   │       └── evenement_animal_form.css
 │   ├── templates
 │   │   └── sa
+│   │       ├── _evenement_animal_badges.html
 │   │       ├── base.html
 │   │       ├── evenement_animal_details.html
 │   │       ├── evenement_animal_form.html
@@ -361,11 +375,16 @@
 │   │   ├── __init__.py
 │   │   ├── factories.py
 │   │   ├── pages.py
-│   │   └── test_evenement_animal_creation.py
+│   │   ├── test_evenement_animal_creation.py
+│   │   ├── test_evenement_animal_details.py
+│   │   ├── test_evenement_animal_list.py
+│   │   ├── test_evenement_animal_list_order.py
+│   │   └── test_models.py
 │   ├── urls.py
 │   └── views
 │       ├── __init__.py
-│       └── evenement.py
+│       ├── evenement.py
+│       └── mixins.py
 ├── scalingo.json
 ├── seves
 │   ├── __init__.py
@@ -395,7 +414,7 @@
 │   ├── maestro.py
 │   ├── management
 │   │   └── commands
-│   │       ├── refresh_evenement_produit_view.py
+│   │       ├── refresh_ssa_materialized_views.py
 │   │       └── send_document_emails_batch.py
 │   ├── managers.py
 │   ├── migrations
@@ -468,6 +487,7 @@
 │   │   ├── 0067_evenementproduit_maestro_reference.py
 │   │   ├── 0068_alter_evenementproduit_actions_engagees_and_more.py
 │   │   ├── 0069_auto_20260723_1713.py
+│   │   ├── 0070_ssa_materialized_views_structure_contact.py
 │   │   └── __init__.py
 │   ├── models
 │   │   ├── __init__.py
@@ -853,6 +873,11 @@
     ├── filters.py
     ├── forms.py
     ├── formsets.py
+    ├── management
+    │   ├── __init__.py
+    │   └── commands
+    │       ├── __init__.py
+    │       └── refresh_tiac_materialized_views.py
     ├── managers.py
     ├── migrations
     │   ├── 0001_initial.py
@@ -910,6 +935,7 @@
     │   ├── 0053_remove_investigationtiac_repas_aliment_only_if_conclusion_known_and_more.py
     │   ├── 0054_alter_investigationtiac_etat.py
     │   ├── 0055_alter_investigationtiac_conclusion_aliment_and_more.py
+    │   ├── 0056_tiac_materialized_views.py
     │   └── __init__.py
     ├── mixins.py
     ├── model_mixins.py
@@ -1015,4 +1041,4 @@
     │   └── test_models.py
     ├── urls.py
     └── views.py
-82 directories, 935 files
+85 directories, 958 files
