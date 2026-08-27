@@ -30,6 +30,37 @@
 │   ├── __init__.py
 │   ├── asgi.py
 │   ├── celery.py
+│   ├── chorus
+│   │   ├── __init__.py
+│   │   ├── apps.py
+│   │   ├── management
+│   │   │   ├── __init__.py
+│   │   │   └── commands
+│   │   │       ├── __init__.py
+│   │   │       └── extract_from_chorus.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── tests
+│   │   │   ├── __init__.py
+│   │   │   ├── test_extract_from_chorus.py
+│   │   │   └── test_utils.py
+│   │   └── utils.py
+│   ├── pages
+│   │   ├── __init__.py
+│   │   ├── apps.py
+│   │   ├── templates
+│   │   │   └── gsl_pages
+│   │   │       ├── accessibilite.html
+│   │   │       ├── no_perimetre.html
+│   │   │       └── user_help.html
+│   │   ├── tests
+│   │   │   ├── __init__.py
+│   │   │   ├── test_error_handlers.py
+│   │   │   └── test_urls.py
+│   │   ├── urls.py
+│   │   └── views.py
 │   ├── settings.py
 │   ├── settings_test.py
 │   ├── urls.py
@@ -89,12 +120,14 @@
 │   │   └── js
 │   │       ├── controllers
 │   │       │   ├── autoDismiss.js
+│   │       │   ├── cancelPollOnModalClose.js
 │   │       │   ├── commentArbitrage.js
+│   │       │   ├── conditionalField.js
 │   │       │   ├── doubleDotation.js
+│   │       │   ├── enableOnChange.js
 │   │       │   ├── formUtils.js
 │   │       │   ├── formatMontant.js
 │   │       │   ├── htmxError.js
-│   │       │   ├── projetForm.js
 │   │       │   ├── projetNoteCard.js
 │   │       │   ├── projetNotes.js
 │   │       │   └── radioNavigate.js
@@ -139,6 +172,7 @@
 │   │   ├── __init__.py
 │   │   ├── addstr.py
 │   │   ├── custom_pluralize.py
+│   │   ├── fragment_tags.py
 │   │   ├── gsl_filters.py
 │   │   └── tests
 │   │       └── test_gsl_filters.py
@@ -397,6 +431,10 @@
 │   │   ├── 0022_alter_lettrenotification_programmation_projet.py
 │   │   ├── 0023_alter_arrete_programmation_projet_and_more.py
 │   │   ├── 0024_arrete_with_qr_code_lettrenotification_with_qr_code_and_more.py
+│   │   ├── 0025_alter_exportjob_document_type.py
+│   │   ├── 0025_lettrerefussignee.py
+│   │   ├── 0026_alter_lettrerefussignee_options_alter_annexe_file_and_more.py
+│   │   ├── 0027_merge_20260826_0918.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── qr.py
@@ -430,15 +468,16 @@
 │   │   ├── gsl_notification
 │   │   │   ├── generated_document
 │   │   │   │   ├── change_document.html
-│   │   │   │   ├── multiple
-│   │   │   │   │   ├── modal_export_error_body.html
-│   │   │   │   │   ├── modal_export_progress_body.html
-│   │   │   │   │   ├── modal_form_step_body.html
-│   │   │   │   │   ├── modal_launch_error_body.html
-│   │   │   │   │   ├── modal_loading_body.html
-│   │   │   │   │   ├── modal_step2_body.html
+│   │   │   │   ├── multiple_wizard
+│   │   │   │   │   ├── modal_export_error.html
+│   │   │   │   │   ├── modal_export_progress.html
+│   │   │   │   │   ├── modal_form_step.html
+│   │   │   │   │   ├── modal_form_step_base.html
+│   │   │   │   │   ├── modal_launch.html
+│   │   │   │   │   ├── modal_loading.html
+│   │   │   │   │   ├── modal_modele_selection.html
 │   │   │   │   │   ├── modal_step_base.html
-│   │   │   │   │   └── modal_success_body.html
+│   │   │   │   │   └── modal_success.html
 │   │   │   │   └── select_modele.html
 │   │   │   ├── import
 │   │   │   │   ├── _import_progress_partial.html
@@ -473,8 +512,6 @@
 │   │       ├── _notification_message_form.html
 │   │       ├── _select_model_in_list.html
 │   │       └── _uploaded_document_form.html
-│   ├── templatetags
-│   │   └── notification_tags.py
 │   ├── tests
 │   │   ├── __init__.py
 │   │   ├── factories.py
@@ -490,6 +527,7 @@
 │   │   └── views
 │   │       ├── __init__.py
 │   │       ├── test_generate_document_for_multiple_projets_views.py
+│   │       ├── test_generate_refus_letters_for_multiple_projets_views.py
 │   │       ├── test_import_views.py
 │   │       ├── test_modele_views.py
 │   │       ├── test_notification_message.py
@@ -514,20 +552,6 @@
 │   ├── templates
 │   │   └── gsl_oidc
 │   │       └── login.html
-│   ├── urls.py
-│   └── views.py
-├── gsl_pages
-│   ├── __init__.py
-│   ├── apps.py
-│   ├── templates
-│   │   └── gsl_pages
-│   │       ├── accessibilite.html
-│   │       ├── no_perimetre.html
-│   │       └── user_help.html
-│   ├── tests
-│   │   ├── __init__.py
-│   │   ├── test_error_handlers.py
-│   │   └── test_urls.py
 │   ├── urls.py
 │   └── views.py
 ├── gsl_programmation
@@ -677,6 +701,7 @@
 │   │   │   │   ├── tab_notes.html
 │   │   │   │   ├── tab_projet.html
 │   │   │   │   ├── tab_simulations.html
+│   │   │   │   ├── tab_suivi_financier.html
 │   │   │   │   └── tabs.html
 │   │   │   ├── projet.html
 │   │   │   ├── projet_list.html
@@ -704,6 +729,7 @@
 │   │       │   ├── _boolean_fields_projet_form.html
 │   │       │   ├── _detr_avis_commission_form.html
 │   │       │   ├── _dotations_form.html
+│   │       │   ├── _htmx_fragment_form.html
 │   │       │   └── _is_budget_vert_form.html
 │   │       └── projet_detail
 │   │           ├── _dotation_projet_financial_informations.html
@@ -712,15 +738,15 @@
 │   │           ├── _projet_financial_informations.html
 │   │           └── dotation_montant_info.html
 │   ├── templatetags
-│   │   ├── __init__.py
-│   │   └── projet_tags.py
+│   │   └── __init__.py
 │   ├── tests
 │   │   ├── __init__.py
 │   │   ├── factories.py
 │   │   ├── forms
 │   │   │   ├── test_dotation_projet_form.py
 │   │   │   ├── test_projet_form.py
-│   │   │   └── test_projet_note_form.py
+│   │   │   ├── test_projet_note_form.py
+│   │   │   └── test_projet_zonage_form.py
 │   │   ├── models
 │   │   │   ├── test_categorie_detr.py
 │   │   │   ├── test_dotation_projet.py
@@ -748,8 +774,10 @@
 │   │   │   └── test_utils.py
 │   │   └── views
 │   │       ├── test_dotation_projet_views.py
+│   │       ├── test_projet_budget_vert_views.py
 │   │       ├── test_projet_detail.py
 │   │       ├── test_projet_notes_views.py
+│   │       ├── test_projet_suivi_financier.py
 │   │       └── test_revert_to_processing.py
 │   ├── urls.py
 │   ├── utils
@@ -932,4 +960,4 @@
 │       └── ui_tags.py
 ├── uv.lock
 └── vendorize.txt
-161 directories, 773 files
+165 directories, 797 files
