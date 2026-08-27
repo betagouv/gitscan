@@ -1,58 +1,64 @@
 {
   "url": "https://github.com/etalab-ia/OpenGateLLM",
   "name": "OpenGateLLM",
-  "description": "Une passerelle API open-source et prête pour la production pour l'IA générative. Elle permet de centraliser, sécuriser et gouverner l'accès aux modèles d'IA, en mettant l'accent sur l'hébergement autonome et la souveraineté des données.",
+  "description": "Une passerelle API open-source et prête pour la production pour l'IA générative. Elle permet de centraliser, sécuriser et gouverner l'accès aux modèles d'IA, avec une optimisation pour l'auto-hébergement.",
   "language": "Python",
   "features": [
     "Intelligence Artificielle & NLP",
     "Sécurité & Conformité",
     "API & Intégrations",
+    "Gestion des utilisateurs & Permissions",
     "Monitoring & Logs",
-    "Gestion des utilisateurs & Permissions"
+    "Infrastructure & Stockage"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "FastAPI",
-    "Pydantic",
-    "SQLAlchemy",
-    "Redis",
     "Celery",
+    "Redis",
+    "PostgreSQL",
+    "SQLAlchemy",
     "OpenAI",
     "MistralAI",
     "Langfuse",
-    "PostgreSQL",
-    "Uvicorn"
+    "Pydantic",
+    "Uvicorn",
+    "Alembic"
   ],
   "components": [
-    "API REST & GraphQL",
     "Python (scripts & backend)",
+    "API REST & GraphQL",
     "Intelligence Artificielle / ML",
+    "Celery & Queue asynchrone",
+    "PostgreSQL & SQL",
     "Docker & Conteneurs",
     "CI/CD & Déploiement",
-    "PostgreSQL & SQL",
-    "Celery & Queue asynchrone"
+    "Documentation & Schémas"
   ],
   "auth": {
     "methods": [
       "oauth2",
+      "sso",
       "api-key",
       "jwt"
+    ],
+    "providers": [
+      "oauth2-proxy"
     ]
   },
   "tests": [
     "pytest",
     "pytest-asyncio",
     "pytest-mock",
-    "factory-boy"
+    "factory-boy",
+    "responses",
+    "respx"
   ],
   "workflows": [
-    "CI/CD",
-    "Trivy security scan",
-    "coverage",
-    "e2e tests"
+    "github-actions"
   ],
-  "lastActivity": "2026-08-21T12:26:15+02:00",
-  "status": "maintained",
+  "lastActivity": "2026-08-27T09:58:16+02:00",
+  "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
@@ -60,7 +66,8 @@
     "Python",
     "NLP & ML",
     "Git & DevOps",
+    "CI/CD & GitHub Actions",
     "Docker & Conteneurs",
-    "CI/CD & GitHub Actions"
+    "Standards & Schémas"
   ]
 }
