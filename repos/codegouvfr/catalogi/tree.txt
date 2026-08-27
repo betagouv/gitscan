@@ -83,6 +83,7 @@
 │   │   │   │   │       ├── createPgSoftwareRepository.test.ts
 │   │   │   │   │       ├── createPgSoftwareRepository.ts
 │   │   │   │   │       ├── createPgSourceRepository.ts
+│   │   │   │   │       ├── createPgUiConfigRepository.ts
 │   │   │   │   │       ├── createPgUserAndReferentRepository.ts
 │   │   │   │   │       ├── createPgUserRepository.ts
 │   │   │   │   │       ├── kysely.database.ts
@@ -124,7 +125,9 @@
 │   │   │   │   │       │   ├── 1778168171859_add-user-role.ts
 │   │   │   │   │       │   ├── 1778676305325_add-editable-by-admin-only-to-custom-attributes.ts
 │   │   │   │   │       │   ├── 1779436823000_add-software-protections.ts
-│   │   │   │   │       │   └── 1779792794032_add-new-type.ts
+│   │   │   │   │       │   ├── 1779792794032_add-new-type.ts
+│   │   │   │   │       │   ├── 1781768391060_add-config-ui-table.ts
+│   │   │   │   │       │   └── 1785253130672_add-config-on-source copy.ts
 │   │   │   │   │       └── pgDbApi.integration.test.ts
 │   │   │   │   ├── doiResolver.ts
 │   │   │   │   ├── getCnllPrestatairesSill.ts
@@ -199,6 +202,7 @@
 │   │   │   ├── types
 │   │   │   │   ├── SoftwareTypes.ts
 │   │   │   │   └── index.ts
+│   │   │   ├── uiConfigDeploymentExamples.test.ts
 │   │   │   ├── uiConfigSchema.ts
 │   │   │   ├── usecases
 │   │   │   │   ├── auth
@@ -231,10 +235,9 @@
 │   │   │   │   └── updateSoftware.ts
 │   │   │   └── utils.ts
 │   │   ├── customization
-│   │   │   ├── translations
-│   │   │   │   ├── en.json
-│   │   │   │   └── fr.json
-│   │   │   └── ui-config.json
+│   │   │   └── translations
+│   │   │       ├── en.json
+│   │   │       └── fr.json
 │   │   ├── entrypoints
 │   │   │   ├── import-from-inner-identifiers.ts
 │   │   │   ├── import.ts
@@ -259,6 +262,7 @@
 │   │   │   │   ├── fr_default.json
 │   │   │   │   ├── getTranslations.ts
 │   │   │   │   └── schema.json
+│   │   │   ├── uiConfig.e2e.test.ts
 │   │   │   └── update.ts
 │   │   ├── tools
 │   │   │   ├── OptionalIfCanBeUndefined.ts
@@ -951,6 +955,7 @@
 │   │   └── start-e2e.ts
 │   ├── tests
 │   │   ├── add-software.auth.spec.ts
+│   │   ├── admin.auth.spec.ts
 │   │   ├── auth.setup.ts
 │   │   ├── declaration.auth.spec.ts
 │   │   ├── software-catalog.spec.ts
@@ -1189,6 +1194,7 @@
 │   │   │   │   ├── admin
 │   │   │   │   │   ├── Admin.tsx
 │   │   │   │   │   ├── AttributeDefinitionFormModal.tsx
+│   │   │   │   │   ├── UiConfigEditor.tsx
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   └── route.ts
 │   │   │   │   ├── declarationForm
@@ -1289,6 +1295,7 @@
 │   │   │   │   ├── SearchMultiInput.tsx
 │   │   │   │   ├── SelectNext.tsx
 │   │   │   │   ├── SmartLogo.tsx
+│   │   │   │   ├── SoftwareCreationRestrictedAlert.tsx
 │   │   │   │   ├── SoftwareProtectionModal.tsx
 │   │   │   │   ├── attributeIcons.ts
 │   │   │   │   └── osLabels.ts
@@ -1304,4 +1311,4 @@
 │   ├── tsconfig.json
 │   └── vite.config.ts
 └── yarn-error.log
-136 directories, 1211 files
+136 directories, 1218 files
