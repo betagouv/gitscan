@@ -1,39 +1,37 @@
-## Changelog : les-emplois (30 derniers jours, au 21 août 2026)
+## Changelog : les-emplois (30 derniers jours, au 27 août 2026)
 
 ### Résumé
-Ce mois a été marqué par le développement majeur du module d'**Insertion**, incluant la synchronisation des données avec l'outil Dora et de nouvelles interfaces de suivi. Nous avons également renforcé la **sécurité** via une gestion améliorée de la double authentification (2FA) et optimisé l'expérience de **gestion des candidats** grâce à des filtres plus précis et de meilleures performances d'affichage.
+Ce mois a été marqué par un développement important du module d'insertion, notamment avec la gestion détaillée des orientations et leur synchronisation avec Dora. L'expérience de gestion des candidats a été enrichie par de nouveaux filtres de recherche, tandis que le processus de candidature a été sécurisé par des contrôles plus stricts sur les dates de contrat.
 
 ### Évolutions fonctionnelles
-- **Module Insertion & Orientations** :
-    - Mise en place de la synchronisation automatique des statuts depuis Dora.
-    - Création de nouvelles vues de listes pour les orientations avec filtres avancés (par expéditeur, structure, statut ou bénéficiaire).
-    - Ajout d'une commande d'importation des orientations via les fichiers d'export Dora.
-- **Gestion des candidats (Job Seekers)** :
-    - Ajout de nouveaux filtres de recherche (acteurs IAE, membres d'organisations, fin de parcours imminente).
-    - Amélioration de la visibilité des informations de contact des conseillers.
-    - Clarification de l'interface : affichage d'alertes lors de la mise à jour d'identités certifiées et explications sur les champs en lecture seule.
-- **Processus de candidature** :
-    - Amélioration de l'interface de saisie des dates de contrat et de recrutement avec des composants d'information contextuels.
-    - Renforcement des contrôles de validation sur les dates de recrutement.
-- **Sécurité & Authentification** :
-    - Amélioration de l'expérience 2FA/OTP : ajout d'exemples d'applications d'authentification, d'un menu de configuration et de messages d'erreur plus explicites.
-    - Renommage du composant `PoleEmploiConnect` (devenu `ft_connect`) pour une meilleure cohérence terminologique.
-- **Expérience Utilisateur (UX)** :
-    - Mise à jour des modèles d'emails (suppression des liens vers les enquêtes).
-    - Mise en place d'une redirection automatique et d'un bandeau d'information lors du changement de domaine.
+- **Module Insertion & Orientations** : 
+    - Ajout d'une vue détaillée pour les orientations et gestion des pièces jointes associées.
+    - Mise en place de nouveaux filtres de recherche (expéditeurs, structures, statut, bénéficiaires).
+    - Amélioration de la synchronisation des statuts d'orientation depuis Dora.
+- **Gestion des Candidats** : 
+    - Ajout de nouveaux filtres de recherche (Handicap, fin de parcours IAE imminente, acteurs IAE).
+    - Meilleure visibilité des informations de contact des conseillers et alertes lors de la mise à jour de profils avec identité certifiée.
+- **Processus de Candidature** : 
+    - Renforcement des contrôles sur les dates d'embauche et ajout de composants d'aide à la saisie pour les dates de contrat.
+    - Priorisation des liens externes pour les services de diagnostic lors des orientations.
+- **Interface & Administration** : 
+    - Ajout d'une carte "Mon Récap" dans le tableau de bord des partenaires.
+    - Amélioration de l'interface d'administration (affichage des noms d'employés, association des orientations aux événements de mobilisation, gestion des commentaires sur les PASS annulés).
+    - Mise à jour des liens vers les formulaires de mise à jour de données ProConnect.
 
 ### Évolutions techniques
-- **Refactoring & Architecture** :
-    - Refonte majeure du composant `ft_connect` (renommage des modèles, tables et fonctions).
-    - Implémentation de la "soft-deletion" (suppression logique) pour les services et les structures.
-    - Refactorisation des vues de gestion des candidats pour une meilleure maintenabilité.
-- **Performances** :
-    - Optimisation des requêtes SQL (réduction des problèmes de type N+1) sur les listes de candidats et les recherches de conseillers.
-- **Tests & CI/CD** :
-    - Correction de tests instables (flaky tests) liés à Sentry.
-    - Amélioration de la couverture de tests, notamment sur la sécurité et les redirections.
-    - Mise à jour de la configuration CI/CD (setup-uv).
+- **Optimisation des performances** : 
+    - Amélioration significative de la vitesse de chargement des listes de candidats (correction de requêtes N+1).
+    - Refactorisation des templates pour favoriser leur réutilisation.
+- **Gestion des données** : 
+    - Automatisation du remplissage des champs de création et de mise à jour (`created_at`, `updated_at`).
+    - Amélioration de la gestion des transferts d'entreprises (maintien des évaluations GEIQ).
+    - Optimisation de l'utilisation des scopes pour l'API France Travail.
+- **Infrastructure & CI/CD** : 
+    - Améliorations de la configuration de la CI/CD (setup-uv) et gestion du middleware pour la redirection vers le nouveau domaine.
 
 ### Autres changements
-- **Documentation** : Ajout de documentation concernant l'utilisation de Podman comme alternative à Docker sur Debian.
-- **Maintenance** : Nettoyage général du code, suppression de templates et de tests inutilisés, et passage des commentaires techniques en anglais.
+- **Documentation & Sécurité** : 
+    - Ajout de documentation concernant l'alternative Podman à Docker.
+    - Conseils de sécurité intégrés pour la gestion des mots de passe lors de l'utilisation de l'authentification multi-facteurs (MFA).
+    - Nettoyage de code et renommage de variables pour une meilleure clarté métier.

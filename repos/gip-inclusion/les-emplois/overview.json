@@ -1,61 +1,63 @@
 {
   "url": "https://github.com/gip-inclusion/les-emplois",
   "name": "les-emplois",
-  "description": "Service numérique de délivrance des PASS IAE et de mise en relation d'employeurs inclusifs avec des candidats éloignés de l'emploi via des tiers ou en autoprescription.",
+  "description": "Service numérique de délivrance des PASS IAE et de mise en relation d'employeurs inclusifs avec des candidats éloignés de l'emploi via des prescripteurs ou en autoprescription.",
   "language": "Python",
   "features": [
-    "Authentification & Accès",
-    "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
+    "Recherche & Filtres",
     "Formulaires & Démarches",
     "Statistiques & Rapports",
+    "Authentification & Accès",
     "Gestion métier générale",
-    "Aides & Éligibilité",
-    "Tableaux & Affichage"
+    "Sécurité & Conformité"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Django",
     "PostgreSQL",
     "PostGIS",
-    "Redis",
     "MinIO",
+    "Redis",
     "GDAL",
-    "uv"
+    "GEOS",
+    "uv",
+    "pytest"
   ],
   "components": [
-    "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
     "Django",
     "Docker & Conteneurs",
-    "Tests",
-    "ORM & Accès aux données",
     "Authentification (composant)",
-    "HTML / CSS / Templates visuels"
+    "ORM & Accès aux données",
+    "Tests"
   ],
   "auth": {
     "methods": [
       "oauth2",
       "mfa",
-      "session"
+      "session",
+      "jwt"
     ],
     "providers": [
-      "FranceConnect",
-      "ProConnect"
+      "ProConnect",
+      "FranceConnect"
     ]
   },
   "tests": "pytest",
-  "lastActivity": "2026-08-20T00:00:00Z",
+  "workflows": [
+    "CI/CD (setup-uv)"
+  ],
+  "lastActivity": "2026-08-21T00:00:00Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
   "tags": [
     "Emploi, Social & Logement",
     "Python",
-    "Django & FastAPI",
     "Bases de données SQL",
     "Docker & Conteneurs",
-    "Accessibilité"
+    "Écosystème beta.gouv / État"
   ]
 }
