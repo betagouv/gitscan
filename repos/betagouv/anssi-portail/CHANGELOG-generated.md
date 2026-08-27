@@ -1,35 +1,39 @@
-## Changelog : anssi-portail (30 derniers jours, au 21 août 2026)
+## Changelog : anssi-portail (30 derniers jours, au 27 août 2026)
 
 ### Résumé
-Ce mois a été marqué par une refonte visuelle majeure du portail via l'application d'une nouvelle charte graphique (Design System) sur l'ensemble des pages. Le projet a également franchi une étape importante dans l'automatisation des parcours de sécurisation, notamment avec la génération automatique de récompenses (badges et attestations en PDF/ZIP) et l'amélioration de l'interactivité grâce à de nouvelles illustrations animées.
+Ce mois a été marqué par une transformation majeure de l'expérience utilisateur avec le déploiement du nouveau "Parcours de sécurisation" et une refonte visuelle globale (nouvelle Direction Artistique). Les utilisateurs bénéficient désormais de fonctionnalités de récompenses enrichies (téléchargement de badges et attestations) et d'une interface plus moderne et animée. Le projet a également bénéficié d'une consolidation technique importante pour soutenir ces évolutions.
 
 ### Évolutions fonctionnelles
-- **Refonte visuelle globale** : Application de la nouvelle direction artistique sur l'ensemble du portail (Accueil, pages NIS2, Collectivités, Associations, Entreprises, Test de maturité, etc.) avec l'utilisation de nouveaux composants et motifs de fond.
-- **Enrichissement des parcours de sécurisation** : 
-    - Création de nouvelles pages d'atterrissage (*landing pages*) pour les parcours "Basique" et "Complet".
-    - Mise en place de tutoriels interactifs via des fenêtres modales.
-    - Automatisation des récompenses : génération d'archives ZIP et de documents PDF (attestations, badges) incluant le nom de l'organisation et respectant la typographie officielle.
-- **Amélioration du Test de maturité** : Refonte complète de l'interface de test et de l'affichage des résultats (nouveaux graphiques, couleurs et composants DSFR).
-- **Expérience utilisateur et interactivité** :
-    - Intégration d'illustrations animées (marelle, dragon, etc.) et d'effets visuels (machine à écrire).
-    - Amélioration de la navigation grâce à l'ajout et l'unification du fil d'Ariane.
-    - Optimisation de l'affichage mobile et correction de divers problèmes de mise en page (menus, boutons, images).
-- **Corrections de contenu** : Mise à jour des termes non officiels (ex: remplacement de "CyFun23"), correction des textes (wording) et des informations de contact.
+- **Parcours de sécurisation** : 
+    - Mise en place des pages d'atterrissage pour les parcours "complet" et "basique".
+    - Nouveau système de récompenses permettant de télécharger une archive ZIP contenant le badge, l'attestation et la bannière de réussite.
+    - Amélioration du suivi de l'utilisateur (mémorisation du parcours et de la campagne d'origine).
+- **Refonte visuelle (Nouvelle DA)** :
+    - Déploiement d'un nouveau design sur l'ensemble du portail : page d'accueil, test de maturité, pages NIS 2, et modules de parcours.
+    - Introduction de nouveaux composants visuels tels que le "Héros riche" (avec effets de machine à écrire) et des illustrations animées.
+    - Mise à jour des graphiques et des indicateurs de niveau pour le test de maturité.
+- **Cyberdépart** : Ajout d'une page dédiée au partage du badge et intégration d'un badge "bêta".
+- **Navigation et Ergonomie** :
+    - Amélioration du fil d'Ariane pour une meilleure compréhension de la hiérarchie des pages.
+    - Optimisation de l'affichage mobile, notamment pour les animations et les textes.
+    - Mise à jour de la section "Guides et ressources" sur la page d'accueil.
 
 ### Évolutions techniques
-- **Refactorisation de l'architecture** :
-    - Réécriture de l'intégration Brevo pour utiliser une architecture par classes et un système piloté par les événements.
-    - Isolation de l'état d'exécution de Serena et amélioration de la gestion des middlewares.
-- **Sécurité et fiabilité** :
-    - Renforcement de la gestion des nonces et de la validation des URLs de redirection côté serveur.
-    - Implémentation du hachage des emails pour les communications via Brevo.
-    - Amélioration du suivi (*tracking*) des événements et des parcours utilisateurs.
-- **Expérience de développement (DX) et CI/CD** :
-    - Support du développement en réseau local (LAN).
-    - Mise à jour de la chaîne d'outils : Vite, Express, TypeScript, pnpm et ESLint.
-    - Optimisation de la CI/CD avec l'ajout de scans antivirus et de vérifications de formatage.
-    - Intégration d'outils d'IA pour le développement (configuration pour Claude/Codex et compétences d'intégration Figma).
+- **Pilotage des fonctionnalités** : Implémentation de *feature flags* pour contrôler le déploiement progressif des nouveaux parcours et de la nouvelle identité visuelle.
+- **Tracking et Analytics** : Intégration de l'outil Brevo pour le suivi des événements clés (complétion de parcours, déblocage de badges, changements de parcours).
+- **Architecture et Backend** :
+    - Refonte de la gestion des redirections d'URLs historiques et centralisation des chemins de ressources.
+    - Optimisation de l'API de statistiques (satisfaction utilisateur et diagnostics).
+    - Amélioration de la robustesse de la gestion des nonces et de la sécurité des en-têtes (rate-limiting).
+- **Infrastructure et CI/CD** :
+    - Migration de la gestion des paquets vers `pnpm`.
+    - Ajout de scans antivirus dans les workflows de CI/CD.
+    - Amélioration de la suite de tests (ajout de tests de snapshot pour les documents et bannières).
+- **Optimisation des performances** : 
+    - Gestion intelligente des animations (lecture uniquement lorsque l'élément est visible à l'écran).
+    - Optimisation du chargement des ressources et des composants Svelte.
 
 ### Autres changements
-- **Documentation** : Réorganisation du guide de développement et mise à jour de la documentation technique (toolchain, procédures d'exploitation).
-- **Nettoyage** : Suppression de pages obsolètes (ex: pages "promouvoir"), de dépendances inutilisées et de styles CSS redondants.
+- **Nettoyage du code** : Suppression massive de composants Svelte, de styles CSS/SCSS, d'images, de polices et de ressources TypeScript inutilisés.
+- **Documentation** : Mise à jour des guides de développement, des procédures d'exploitation et de la documentation de la toolchain.
+- **Qualité** : Renforcement des règles de linting et ajout de vérifications automatiques du formatage de code.

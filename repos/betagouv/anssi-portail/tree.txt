@@ -229,7 +229,6 @@
 │   │   │   ├── ressourceSanteGuides.ts
 │   │   │   ├── ressourceSitemapXml.ts
 │   │   │   ├── ressourceStatistiques.ts
-│   │   │   ├── ressourceStatistiquesDiagnostic.ts
 │   │   │   ├── ressourceUtilisateurs.schema.ts
 │   │   │   ├── ressourceUtilisateurs.ts
 │   │   │   ├── ressourceVisa.ts
@@ -262,7 +261,9 @@
 │   │   │   ├── consigneEvenementSimulationNis2TermineeDansJournal.ts
 │   │   │   ├── consigneEvenementTestRealiseDansJournal.ts
 │   │   │   ├── consigneEvenementUtilisateurConnecteDansJournal.ts
+│   │   │   ├── consigneParcoursAllegeTermineDansJournal.ts
 │   │   │   ├── consigneParcoursChangeDansJournal.ts
+│   │   │   ├── consigneParcoursCompletTermineDansJournal.ts
 │   │   │   ├── consigneParcoursRejointDansJournal.ts
 │   │   │   ├── creeContactBrevo.ts
 │   │   │   ├── envoieEmailCreationCompte.ts
@@ -274,7 +275,9 @@
 │   │   │   │   ├── mesureConsultee.ts
 │   │   │   │   ├── mesurePriseEnCompte.ts
 │   │   │   │   ├── moduleTermine.ts
+│   │   │   │   ├── parcoursAllegeTermine.ts
 │   │   │   │   ├── parcoursChange.ts
+│   │   │   │   ├── parcoursCompletTermine.ts
 │   │   │   │   ├── parcoursRejoint.ts
 │   │   │   │   ├── proprieteTestRevendiquee.ts
 │   │   │   │   ├── retourExperienceDonne.ts
@@ -505,7 +508,6 @@
 │   │   │   ├── ressourceRetoursExperience.spec.ts
 │   │   │   ├── ressourceSanteDesGuides.spec.ts
 │   │   │   ├── ressourceStatistiques.spec.ts
-│   │   │   ├── ressourceStatistiquesDiagnostic.spec.ts
 │   │   │   ├── ressourceUtilisateurs.spec.ts
 │   │   │   ├── ressourceVisa.spec.ts
 │   │   │   ├── routesPagesConnectees.spec.ts
@@ -533,7 +535,9 @@
 │   │   │   ├── consigneEvenementSimulationNis2TermineeDansJournal.spec.ts
 │   │   │   ├── consigneEvenementTestRealiseDansJournal.spec.ts
 │   │   │   ├── consigneEvenementUtilisateurConnecteDansJournal.spec.ts
+│   │   │   ├── consigneParcoursAllegeTermineDansJournal.spec.ts
 │   │   │   ├── consigneParcoursChangeDansJournal.spec.ts
+│   │   │   ├── consigneParcoursCompletTermineDansJournal.spec.ts
 │   │   │   ├── consigneParcoursRejointDansJournal.spec.ts
 │   │   │   ├── creeContactBrevo.spec.ts
 │   │   │   ├── envoieEmailCreationCompte.spec.ts
@@ -713,13 +717,13 @@
 │   ├── _includes
 │   │   ├── action-parcours-avec-items.html
 │   │   ├── avis-utilisateur.html
+│   │   ├── balises-meta-seo.html
 │   │   ├── bandeau-maintenance.html
 │   │   ├── carte-item.html
 │   │   ├── centre-aide.html
 │   │   ├── composant-svelte.html
 │   │   ├── contact-region.html
 │   │   ├── donnees-structurees-indexation.html
-│   │   ├── encart-cyberdepart.html
 │   │   ├── footer.html
 │   │   ├── head.html
 │   │   ├── header-sans-menu.html
@@ -732,6 +736,7 @@
 │   │   ├── guide.html
 │   │   ├── page-statique.html
 │   │   ├── parcours.html
+│   │   ├── partage-linkedin.html
 │   │   ├── sans-menu.html
 │   │   ├── service.html
 │   │   └── test-maturite.html
@@ -795,8 +800,6 @@
 │   │   │   ├── Marianne-Bold.woff2
 │   │   │   ├── Marianne-Bold_Italic.woff
 │   │   │   ├── Marianne-Bold_Italic.woff2
-│   │   │   ├── Marianne-ExtraBold.woff
-│   │   │   ├── Marianne-ExtraBold.woff2
 │   │   │   ├── Marianne-Light.woff
 │   │   │   ├── Marianne-Light.woff2
 │   │   │   ├── Marianne-Light_Italic.woff
@@ -811,9 +814,7 @@
 │   │   │   ├── Marianne-Regular_Italic.woff
 │   │   │   └── Marianne-Regular_Italic.woff2
 │   │   ├── icones
-│   │   │   ├── icone-check-line.svg
 │   │   │   ├── icone-danger.svg
-│   │   │   ├── icone-fleche-gauche.svg
 │   │   │   └── icone-recompense.svg
 │   │   ├── images
 │   │   │   ├── accueil
@@ -833,8 +834,7 @@
 │   │   │   │           └── risque-prioritaire.avif
 │   │   │   ├── apercu-faq-nis2-dans-laptop.avif
 │   │   │   ├── badge-nis2.svg
-│   │   │   ├── coche-jaune-sur-rond-noir.svg
-│   │   │   ├── coche-ronde-active-nouvelle-da.svg
+│   │   │   ├── banniere-cyberdepart-generique.png
 │   │   │   ├── coche-ronde-active.svg
 │   │   │   ├── coche-ronde-inactive.svg
 │   │   │   ├── coche-rouge-dans-cercle-bleu.svg
@@ -842,19 +842,13 @@
 │   │   │   ├── connexion
 │   │   │   │   └── animation
 │   │   │   │       └── connexion-inscription.avif
-│   │   │   ├── contacts-resultat-vide-nouvelle-da.svg
 │   │   │   ├── contacts-resultat-vide.svg
-│   │   │   ├── debuter-cyber.avif
 │   │   │   ├── decorations
 │   │   │   │   ├── boucle.svg
 │   │   │   │   ├── ellipse.svg
 │   │   │   │   └── fleur.svg
-│   │   │   ├── directive-nis2-avec-bulle-fond-gris.svg
-│   │   │   ├── directive-nis2.svg
 │   │   │   ├── dragon-coeur-entier.svg
 │   │   │   ├── dragon-coeur.svg
-│   │   │   ├── dragon-kart.svg
-│   │   │   ├── ecrans-virtuels-avec-femme-au-centre.svg
 │   │   │   ├── emoji-bulle.svg
 │   │   │   ├── emoji-crayon.svg
 │   │   │   ├── emoji-ordinateur.svg
@@ -862,19 +856,35 @@
 │   │   │   │   ├── encartHomologation.desktop.avif
 │   │   │   │   ├── encartHomologation.mobile.avif
 │   │   │   │   └── encartHomologation.tablette.avif
-│   │   │   ├── erreur-404.avif
 │   │   │   ├── erreur-404.svg
-│   │   │   ├── erreur-404.webp
 │   │   │   ├── erreur.svg
-│   │   │   ├── floriane-bizdev.avif
-│   │   │   ├── homme-cherchant-avec-loupe-nouvelle-da.svg
 │   │   │   ├── homme-cherchant-avec-loupe.svg
 │   │   │   ├── homme-regardant-webinaire.avif
-│   │   │   ├── homme-remplissant-ecran-login-nouvelle-da.svg
 │   │   │   ├── homme-remplissant-ecran-login.svg
-│   │   │   ├── icone-*.svg  (33 files)
-│   │   │   ├── illustration-*.svg  (20 files)
-│   │   │   ├── illustration-proteger-organisation.png
+│   │   │   ├── icone-chevron-bas.svg
+│   │   │   ├── icone-contact-adresse.svg
+│   │   │   ├── icone-contact-email.svg
+│   │   │   ├── icone-contact-nom.svg
+│   │   │   ├── icone-contact-site-web.svg
+│   │   │   ├── icone-contact-telephone.svg
+│   │   │   ├── icone-contenu.svg
+│   │   │   ├── icone-erreur-blanche.svg
+│   │   │   ├── icone-filtre-plein.svg
+│   │   │   ├── icone-filtre-vide.svg
+│   │   │   ├── icone-fleche-droite-cercle-plein.svg
+│   │   │   ├── icone-fleche-pleine.svg
+│   │   │   ├── icone-lien-externe.svg
+│   │   │   ├── icone-menu-lateral.svg
+│   │   │   ├── icone-outil.svg
+│   │   │   ├── icone-service.svg
+│   │   │   ├── icone-video.svg
+│   │   │   ├── illustration-dragon-aucun-resultat.svg
+│   │   │   ├── illustration-filtre-besoins-former.svg
+│   │   │   ├── illustration-filtre-besoins-reagir.svg
+│   │   │   ├── illustration-filtre-besoins-securiser.svg
+│   │   │   ├── illustration-filtre-besoins-sensibiliser.svg
+│   │   │   ├── illustration-filtre-besoins-tous.svg
+│   │   │   ├── illustration-organisations-concernees.svg
 │   │   │   ├── illustrations-services
 │   │   │   │   ├── ads
 │   │   │   │   │   └── active-directory-security.avif
@@ -969,18 +979,17 @@
 │   │   │   │   └── visa-secu
 │   │   │   │       └── visa-secu.avif
 │   │   │   ├── image-generique.avif
-│   │   │   ├── index-touchant-ecran-demandant-empreinte-digitale-nouvelle-da.svg
 │   │   │   ├── index-touchant-ecran-demandant-empreinte-digitale.svg
 │   │   │   ├── interlocuteurs
 │   │   │   │   └── animation
 │   │   │   │       ├── composition-biz-dev-2.avif
 │   │   │   │       └── composition-biz-dev.avif
-│   │   │   ├── jumelles-avec-bulle-fond-gris.svg
 │   │   │   ├── la-directive-NIS2.svg
 │   │   │   ├── localisation-france.svg
 │   │   │   ├── logo-afcdp.avif
 │   │   │   ├── logo-amrf.avif
 │   │   │   ├── logo-anct.svg
+│   │   │   ├── logo-anssi.png
 │   │   │   ├── logo-anssi.svg
 │   │   │   ├── logo-club-dpo.avif
 │   │   │   ├── logo-cyber-reunion.avif
@@ -990,9 +999,7 @@
 │   │   │   ├── logo-spiil.avif
 │   │   │   ├── logo-suite-territoriale.svg
 │   │   │   ├── logo-umih.svg
-│   │   │   ├── maintenance-nouvelle-da.svg
 │   │   │   ├── maintenance.svg
-│   │   │   ├── marelle-avec-bulle-fond-gris.svg
 │   │   │   ├── marianne-dark.svg
 │   │   │   ├── motif-fond-heros-bleu-clair.avif
 │   │   │   ├── motif-fond-heros-bleu-mobile.avif
@@ -1000,15 +1007,12 @@
 │   │   │   ├── motif-fond-heros-cafe-creme.avif
 │   │   │   ├── motif-fond-heros-vert-clair.avif
 │   │   │   ├── motif-fond-macaron.svg
-│   │   │   ├── motif-fond-opacite-30.avif
 │   │   │   ├── motif-fond-service-opacite-16.avif
-│   │   │   ├── motif-fond-service.avif
 │   │   │   ├── motif-mot-entoure-moutarde.svg
 │   │   │   ├── motif-mot-souligne-gribouillis-macaron.svg
 │   │   │   ├── motif-mot-souligne-petite-vague-macaron.svg
 │   │   │   ├── motif-mot-souligne-vague-macaron.svg
 │   │   │   ├── motif-mot-souligne-vague-moutarde.svg
-│   │   │   ├── motif-surlignage-cercle.svg
 │   │   │   ├── motif-titre-petales.svg
 │   │   │   ├── nis2-noir.svg
 │   │   │   ├── nis2.svg
@@ -1018,16 +1022,7 @@
 │   │   │   │   │   ├── heros-parcours-complet.avif
 │   │   │   │   │   └── section-pedagogique.avif
 │   │   │   │   ├── badge-cyberdepart.svg
-│   │   │   │   ├── hero-12-mesures-decor.svg
-│   │   │   │   ├── hero-12-mesures-illustration.jpg
 │   │   │   │   ├── illustration-diagnostic.png
-│   │   │   │   ├── illustration-parcours-basique-badge.svg
-│   │   │   │   ├── illustration-parcours-basique-comment.svg
-│   │   │   │   ├── illustration-parcours-basique-mots-de-passe.svg
-│   │   │   │   ├── illustration-parcours-basique-pourquoi.svg
-│   │   │   │   ├── illustration-parcours-complet-controler.svg
-│   │   │   │   ├── illustration-parcours-complet-modules.svg
-│   │   │   │   ├── illustration-parcours-complet-progression.svg
 │   │   │   │   ├── mesure-ANNUAIRE.1.svg
 │   │   │   │   ├── mesure-AUTH.1.svg
 │   │   │   │   ├── mesure-AUTH.4.svg
@@ -1047,16 +1042,9 @@
 │   │   │   │   ├── module-4.svg
 │   │   │   │   ├── module-5.svg
 │   │   │   │   └── module-6.svg
-│   │   │   ├── personne-avec-laptop-entoure-de-diagrammes.svg
-│   │   │   ├── personne-avec-micro-consultant-sites-cyber.svg
-│   │   │   ├── personne-qui-cogite.svg
-│   │   │   ├── personne-reflechissant-devant-un-ecran-nouvelle-da.svg
 │   │   │   ├── personne-reflechissant-devant-un-ecran.svg
 │   │   │   ├── photo-livret-nis2.avif
-│   │   │   ├── pile-de-pieces.svg
 │   │   │   ├── piles-de-pieces.svg
-│   │   │   ├── pro_connect.svg
-│   │   │   ├── pro_connect_hover.svg
 │   │   │   ├── protection
 │   │   │   │   └── animation
 │   │   │   │       ├── heros-associations.avif
@@ -1069,51 +1057,35 @@
 │   │   │   ├── test-maturite
 │   │   │   │   ├── comparaison-floue-md.avif
 │   │   │   │   ├── comparaison-floue-xs.avif
-│   │   │   │   ├── illustration-adoption-solutions-nouvelle-da.svg
 │   │   │   │   ├── illustration-adoption-solutions.svg
-│   │   │   │   ├── illustration-budget-nouvelle-da.svg
 │   │   │   │   ├── illustration-budget.svg
-│   │   │   │   ├── illustration-infos-complementaires-nouvelle-da.svg
 │   │   │   │   ├── illustration-infos-complementaires.svg
 │   │   │   │   ├── illustration-introduction.svg
-│   │   │   │   ├── illustration-pilotage-nouvelle-da.svg
 │   │   │   │   ├── illustration-pilotage.svg
-│   │   │   │   ├── illustration-posture-nouvelle-da.svg
 │   │   │   │   ├── illustration-posture.svg
-│   │   │   │   ├── illustration-prise-en-compte-risque-nouvelle-da.svg
 │   │   │   │   ├── illustration-prise-en-compte-risque.svg
-│   │   │   │   ├── illustration-ressources-humaines-nouvelle-da.svg
 │   │   │   │   ├── illustration-ressources-humaines.svg
 │   │   │   │   ├── niveaux
-│   │   │   │   │   ├── confirme-nouvelle-da.svg
 │   │   │   │   │   ├── confirme.svg
-│   │   │   │   │   ├── emergent-nouvelle-da.svg
 │   │   │   │   │   ├── emergent.svg
-│   │   │   │   │   ├── insuffisant-nouvelle-da.svg
 │   │   │   │   │   ├── insuffisant.svg
-│   │   │   │   │   ├── intermediaire-nouvelle-da.svg
 │   │   │   │   │   ├── intermediaire.svg
-│   │   │   │   │   ├── optimal-nouvelle-da.svg
 │   │   │   │   │   └── optimal.svg
-│   │   │   │   └── test-maturite.avif
+│   │   │   │   └── personne-avec-micro-consultant-des-sites-cyber.png
 │   │   │   ├── toasts
 │   │   │   │   ├── icone_alerte.svg
 │   │   │   │   ├── icone_erreur.svg
 │   │   │   │   ├── icone_info.svg
 │   │   │   │   └── icone_succes.svg
-│   │   │   ├── trois-mains-croisees-nouvelle-da.svg
-│   │   │   ├── trois-mains-croisees.svg
-│   │   │   └── trouver-parcours.avif
+│   │   │   └── trois-mains-croisees.svg
 │   │   └── styles
 │   │       ├── 404.scss
 │   │       ├── accueil.scss
-│   │       ├── boutons.scss
 │   │       ├── catalogue.scss
 │   │       ├── commun.scss
 │   │       ├── connexion.scss
 │   │       ├── contacts.scss
 │   │       ├── dsfr.scss
-│   │       ├── encart-cyberdepart.scss
 │   │       ├── fonts.scss
 │   │       ├── grille.scss
 │   │       ├── maintenance.scss
@@ -1253,7 +1225,6 @@
 │   │   │   │   ├── FoireAuxQuestions.svelte
 │   │   │   │   ├── FormulaireDemandeAide.svelte
 │   │   │   │   ├── FormulaireDemandeSimplifiee.svelte
-│   │   │   │   ├── IllustrationCyberDepart.svelte
 │   │   │   │   └── IllustrationDemandeAide.svelte
 │   │   │   ├── directives
 │   │   │   │   ├── actions.svelte.ts
@@ -1351,9 +1322,6 @@
 │   │   │   ├── navigation
 │   │   │   │   ├── ControleSegmente.svelte
 │   │   │   │   ├── ControleSegmenteAvecSections.svelte
-│   │   │   │   ├── LienNavigation.svelte
-│   │   │   │   ├── LienNavigationMobile.svelte
-│   │   │   │   ├── MenuBurger.svelte
 │   │   │   │   ├── Navigation.svelte
 │   │   │   │   ├── NavigationTertiaire.svelte
 │   │   │   │   └── fragmentDeNavigation.svelte.ts
@@ -1412,8 +1380,7 @@
 │   │   │   │   │   ├── EtapeTailleEntitePrivee.svelte
 │   │   │   │   │   ├── EtapeTypeStructure.svelte
 │   │   │   │   │   ├── PrecedentSuivant.svelte
-│   │   │   │   │   ├── TitresEtapes.ts
-│   │   │   │   │   └── etapes.types.ts
+│   │   │   │   │   └── TitresEtapes.ts
 │   │   │   │   ├── resultat
 │   │   │   │   │   ├── EtapeResultat.svelte
 │   │   │   │   │   ├── LigneEtMaintenant.svelte
@@ -1494,6 +1461,8 @@
 │   │   │   │       ├── ParcoursComplet.svelte
 │   │   │   │       ├── VueListeMesures.svelte
 │   │   │   │       └── VueModule.svelte
+│   │   │   ├── passerelles
+│   │   │   │   └── statistiquesMSC.ts
 │   │   │   ├── plateforme
 │   │   │   │   ├── aseptisationDuHtml.client.ts
 │   │   │   │   ├── aseptisationDuHtml.serveur.ts
@@ -1525,8 +1494,7 @@
 │   │   │   │   └── TableSanteGuides.svelte
 │   │   │   ├── statistiques
 │   │   │   │   ├── Statistiques.svelte
-│   │   │   │   ├── Tuile.svelte
-│   │   │   │   └── statistiques.type.ts
+│   │   │   │   └── Tuile.svelte
 │   │   │   ├── stores
 │   │   │   │   ├── favoris.store.ts
 │   │   │   │   └── profil.store.ts
@@ -1588,7 +1556,6 @@
 │   │   │   │   ├── BlocDiagnostic.svelte
 │   │   │   │   ├── Bouton.svelte
 │   │   │   │   ├── BoutonFermerModale.svelte
-│   │   │   │   ├── Bulle.svelte
 │   │   │   │   ├── CaseACocher.svelte
 │   │   │   │   ├── ChampRecherche.svelte
 │   │   │   │   ├── ChampTexte.svelte
@@ -1604,13 +1571,11 @@
 │   │   │   │   ├── HeroLandingPage.svelte
 │   │   │   │   ├── Heros.svelte
 │   │   │   │   ├── HerosRiche.svelte
-│   │   │   │   ├── Icone.svelte
 │   │   │   │   ├── IllustrationDragonPasDeResultat.svelte
 │   │   │   │   ├── IllustrationPasDeResultatDeRecherche.svelte
 │   │   │   │   ├── Lien.svelte
 │   │   │   │   ├── MachineAEcrire.svelte
 │   │   │   │   ├── MachineAEcrireCyclique.svelte
-│   │   │   │   ├── MenuFlottant.svelte
 │   │   │   │   ├── Modale.svelte
 │   │   │   │   ├── MotEnExergue.svelte
 │   │   │   │   ├── Notice.svelte
@@ -1687,6 +1652,8 @@
 │   │   │   │   ├── repartitions.spec.ts
 │   │   │   │   └── stores
 │   │   │   │       └── questionnaire.store.spec.ts
+│   │   │   ├── ui
+│   │   │   │   └── filAriane.spec.ts
 │   │   │   └── utils
 │   │   │       └── erreurApi.spec.ts
 │   │   ├── tsconfig.json
@@ -1709,6 +1676,7 @@
 │   ├── parcours-debuter.html
 │   ├── parcours-securisation-complet.html
 │   ├── parcours-securisation.html
+│   ├── partage-badge-cyberdepart.html
 │   ├── prestataires.html
 │   ├── resultats-session-groupe.html
 │   ├── robots.txt
@@ -1779,4 +1747,4 @@
 ├── scripts
 │   └── get-node-version.sh
 └── shell.nix
-260 directories, 1572 files
+262 directories, 1487 files

@@ -1,15 +1,15 @@
 {
   "url": "https://github.com/betagouv/anssi-portail",
   "name": "anssi-portail",
-  "description": "Portail de l'ANSSI proposant des parcours de sécurisation, des attestations et des ressources pour aider les organisations à protéger leurs systèmes d'information.",
+  "description": "Portail de l'ANSSI destiné à accompagner les organisations dans leur démarche de cybersécurité. Il propose des parcours de sécurisation, des tests de maturité et la génération de récompenses officielles.",
   "language": "TypeScript",
   "features": [
-    "Gestion documentaire & Fichiers",
     "Authentification & Accès",
+    "Formulaires & Démarches",
     "Sécurité & Conformité",
-    "Suivi & Traçabilité",
-    "Interface utilisateur & Design",
-    "Formulaires & Démarches"
+    "Statistiques & Rapports",
+    "Gestion des profils & Comptes",
+    "Gestion documentaire & Fichiers"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -18,11 +18,11 @@
     "PostgreSQL",
     "Svelte",
     "Jekyll",
-    "AWS S3",
-    "OpenID Connect",
+    "TypeScript",
+    "AWS SDK",
+    "OpenID Client",
     "Zod",
-    "Vitest",
-    "Playwright"
+    "Axios"
   ],
   "components": [
     "API REST & GraphQL",
@@ -31,33 +31,37 @@
     "Design System (DSFR & UI libs)",
     "Docker & Conteneurs",
     "Sites statiques & SSG",
-    "Tests",
+    "Node.js / NestJS",
     "Authentification (composant)"
   ],
   "auth": {
     "methods": [
+      "oauth2",
       "jwt",
       "session",
-      "oauth2"
+      "sso"
     ]
   },
   "tests": [
     "Vitest",
-    "Playwright",
     "Supertest"
   ],
   "workflows": [
-    "CI/CD avec scan antivirus"
+    "CI/CD",
+    "scans antivirus",
+    "vérifications de formatage"
   ],
-  "lastActivity": "2026-08-21T16:31:55+02:00",
+  "lastActivity": "2026-08-27T09:05:13+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
   "tags": [
-    "Sécurité & Auth",
+    "Écosystème beta.gouv / État",
     "TypeScript",
-    "Docker & Conteneurs",
+    "Sécurité & Auth",
     "Design System & UI",
-    "Écosystème beta.gouv / État"
+    "Docker & Conteneurs",
+    "CI/CD & GitHub Actions",
+    "HTML, CSS & Web"
   ]
 }
