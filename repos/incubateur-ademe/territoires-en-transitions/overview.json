@@ -1,28 +1,30 @@
 {
   "url": "https://github.com/incubateur-ademe/territoires-en-transitions",
   "name": "territoires-en-transitions",
-  "description": "Plateforme numérique destinée à accompagner les collectivités territoriales dans la mise en œuvre et le suivi de leurs actions de transition écologique.",
+  "description": "Plateforme numérique destinée à aider les collectivités territoriales à prioriser et à mettre en œuvre des actions de transition écologique à fort impact.",
   "language": "TypeScript",
   "features": [
     "Visualisation de données & Cartographie",
     "Statistiques & Rapports",
     "Recherche & Filtres",
-    "Gestion des utilisateurs & Permissions",
-    "Suivi & Traçabilité",
-    "Interface utilisateur & Design"
+    "Gestion métier générale",
+    "Collaboration & Workflow",
+    "Données & Schémas"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "React",
     "Next.js",
+    "NestJS",
     "Supabase",
     "PostgreSQL",
-    "Python",
-    "NestJS",
     "Redis",
     "Strapi",
     "Tailwind CSS",
-    "Zod"
+    "Nivo",
+    "Leaflet",
+    "Python",
+    "Docker"
   ],
   "components": [
     "API REST & GraphQL",
@@ -30,25 +32,27 @@
     "React / Next.js",
     "TypeScript / JavaScript",
     "Python (scripts & backend)",
-    "Design System (DSFR & UI libs)",
     "Docker & Conteneurs",
     "Node.js / NestJS",
-    "CMS (Strapi, Wagtail…)",
-    "Authentification (composant)",
     "SIG & Géospatial",
-    "Sites statiques & SSG"
+    "CMS (Strapi, Wagtail…)",
+    "Authentification (composant)"
   ],
   "auth": {
     "methods": [
       "oauth2",
       "jwt",
-      "session"
+      "sso"
+    ],
+    "providers": [
+      "ProConnect",
+      "MonCompteAdeme"
     ]
   },
   "tests": [
     "Vitest",
     "Playwright",
-    "Supertest",
+    "Nx",
     "Earthly"
   ],
   "workflows": [
@@ -63,8 +67,7 @@
     "React & Next.js",
     "TypeScript",
     "Environnement & Énergie",
-    "Territoire & Collectivités",
     "SIG & Géospatial",
-    "Docker & Conteneurs"
+    "Territoire & Collectivités"
   ]
 }

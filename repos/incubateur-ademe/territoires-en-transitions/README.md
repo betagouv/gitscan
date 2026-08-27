@@ -39,13 +39,13 @@ Chaque dossier à la racine contient son propre `README.md` et peut a priori fon
 
 Vous pouvez contribuer à notre projet [en suivant cette documentation](docs/workflows/contribuer-au-projet.md).
 
-# Conception
+## Conception
 
 La conception, des données au choix de la stack.
 
-## Données
+### Données
 
-### Les données métier
+#### Les données métier
 
 Les données métier suivantes sont stockées sur des spreadsheets partagés:
 
@@ -61,7 +61,7 @@ Cela permet de bénéficier des avantages suivants par rapport aux markdown empl
   - Validation directement dans le spreadsheet lorsque cela est faisable à travers des listes déroulantes par exemple.
   - Fonctionnalité de validitation du contenu faisant appel au backend intégrée sous forme de bouton.
 
-## Stack
+### Stack
 
 - Le `client` utilise React ce qui nous permet de bénéficier d'un écosystème riche. Il est développé en TypeScript.
 
@@ -82,7 +82,7 @@ Cela permet de bénéficier des avantages suivants par rapport aux markdown empl
 - `make`, point d'entrée de toutes les commandes du projet (`make help` pour la liste).
 - Node.js 24 et [pnpm](https://pnpm.io/) pour lancer les apps sur la machine hôte.
 
-Pour la première installation, une fois `.env.keys` en place (voir « Variables d'environnement »), lancez :
+Pour la première installation, une fois `.env.keys` en place (voir [Variables d'environnement](#variables-denvironnement)), lancez :
 
 ```sh
 make install    # dépendances node
@@ -95,7 +95,7 @@ make db-init    # services docker + migrations + référentiels + données de te
 - 🧑‍💻 **Mode hybride** (par défaut) : les services tournent en docker mais les apps tournent sur la machine hôte (`make dev`) — Node 24 local requis, TUI nx.
 
 > 🍏 Sur mac, le mode Docker nécessite Docker Desktop ≥ 4.34 avec *host networking* activé ; à défaut, utilisez le mode host. Si le HMR ne réagit pas (montages VirtioFS), exportez `WATCHPACK_POLLING=true` via `Makefile.local`.
-
+>
 > 🐧 **Linux** : les limites inotify du noyau sont partagées entre l'hôte (IDE, nx…) et les conteneurs. Avec les valeurs par défaut (`max_user_instances=128`, `max_user_watches=65536`), Turbopack plante au démarrage des apps (`OS file watch limit reached` → `Next.js app exited with code 1`) : le conteneur sort avant d'être *healthy* et `make up` replie alors toute la stack (échec obscur). `make up` refuse de démarrer les apps sous ces limites et affiche la marche à suivre ; pour les relever et les persister une fois pour toutes :
 >
 > ```sh
@@ -110,7 +110,7 @@ make db-init    # services docker + migrations + référentiels + données de te
 - **Sécurité**: résolution stricte des dépendances et `node_modules` non-plat
 - **Performance**: installation plus rapide et meilleure prise en charge des monorepos
 
-L'installation passe par le registre npm privé Bryntum. Le token (`BRYNTUM_ACCESS_TOKEN`) est chiffré dans le `.env` racine et le `.npmrc` du projet le référence par variable d'environnement : avec `.env.keys` en place (voir « Variables d'environnement »), il suffit de lancer :
+L'installation passe par le registre npm privé Bryntum. Le token (`BRYNTUM_ACCESS_TOKEN`) est chiffré dans le `.env` racine et le `.npmrc` du projet le référence par variable d'environnement : avec `.env.keys` en place (voir [Variables d'environnement](#variables-denvironnement)), il suffit de lancer :
 
 ```sh
 make install
@@ -134,6 +134,8 @@ Les fichiers `.env` du projet (racine **et** apps) sont **versionnés** et gér�
 - les secrets sont **chiffrés** dans les fichiers (valeurs préfixées par `encrypted:`) ; la config locale non confidentielle (ports, URLs localhost, variables `NEXT_PUBLIC_*` exposées au navigateur) peuvent rester en clair ;
 - **une seule paire de clés pour tout le monorepo** : la clé publique (`DOTENV_PUBLIC_KEY`) est en tête de chaque fichier, la clé privée est dans `.env.keys` (**non versionné**, à récupérer auprès de l'équipe et à placer à la racine).
 
+Pour créer `.env.keys` une fois son contenu récupéré auprès de l'équipe, lancez `make env-keys` à la racine du dépôt puis collez le contenu complet dans le terminal.
+
 Les fichiers ne se déchiffrent jamais à la main : `make dev` injecte les valeurs déchiffrées à la volée (via `dotenvx run`) avant de lancer nx. Les apps lisent leurs `.env` sans savoir les déchiffrer, mais n'écrasent jamais une variable déjà présente dans l'environnement — aucune modification du code des apps n'est nécessaire.
 
 ```sh
@@ -146,6 +148,47 @@ make env-get k=SMTP_KEY app=backend                # lire la valeur déchiffrée
 ```
 
 Le script [`make_dot_env.sh`](./make_dot_env.sh) (génération des `.env` depuis les `.env.sample`) n'est plus nécessaire en local — il reste utilisé par la CI.
+
+### Connexion SSO (ProConnect / MonCompteAdeme)
+
+Le backend joue le rôle de _relying party_ OIDC : il porte tout le protocole (login, callback, logout) sous `/api/v1/:provider/*`, puis ponte vers une session Supabase standard (le `client_secret` ne quitte jamais le serveur). Deux providers sont supportés, **activables indépendamment** :
+
+- **ProConnect** — variables `PRO_CONNECT_*` ;
+- **MonCompteAdeme** (adossé à ProConnect en coulisses) — variables `MON_COMPTE_ADEME_*`.
+
+Tant que le flag `*_ENABLED` est à `false`, les endpoints du provider sont inertes (404).
+
+#### Variables d'environnement (`apps/backend/.env`)
+
+Les identifiants (`CLIENT_ID`, `CLIENT_SECRET`) sont fournis par le provider et **chiffrés** dans le `.env` — on les pose avec `make env-set` (jamais à la main). Exemple pour MonCompteAdeme :
+
+| Variable | Rôle |
+| --- | --- |
+| `MON_COMPTE_ADEME_ENABLED` | Active les endpoints `/api/v1/moncompteademe/*` (inertes si `false`) |
+| `MON_COMPTE_ADEME_ISSUER` | Issuer OIDC (ex : `https://rec-fa.ademe.fr/auth/realms/integration`) |
+| `MON_COMPTE_ADEME_CLIENT_ID` | Client id fourni par l'ADEME (chiffré) |
+| `MON_COMPTE_ADEME_CLIENT_SECRET` | Client secret (chiffré, ne quitte jamais le serveur) |
+| `MON_COMPTE_ADEME_REDIRECT_URI` | URI de callback — **correspondance exacte** avec celle déclarée au provider (ex : `http://localhost:8080/api/v1/moncompteademe/callback`) |
+| `MON_COMPTE_ADEME_POST_LOGOUT_REDIRECT_URI` | _(optionnel)_ URI de retour après déconnexion |
+| `OIDC_TICKET_SECRET` | Secret de signature du ticket (commun à tous les providers, voir ci-dessous) |
+
+ProConnect se configure avec le jeu symétrique de variables `PRO_CONNECT_*`. En production, les URI de callback à déclarer aux providers sont de la forme `https://api.territoiresentransitions.fr/api/v1/{provider}/callback`.
+
+```sh
+# Poser un identifiant chiffré (idem pour CLIENT_ID, ISSUER, REDIRECT_URI…)
+make env-set k=MON_COMPTE_ADEME_CLIENT_SECRET v=<valeur> app=backend
+```
+
+#### Générer `OIDC_TICKET_SECRET`
+
+Le ticket est un JWT signé en **HS256** (secret symétrique) qui transporte les claims OIDC déjà vérifiés entre le callback et l'écran de bienvenue (parcours « aucun compte trouvé »). `OIDC_TICKET_SECRET` en est la clé de signature : il faut une **chaîne aléatoire à forte entropie**, propre à chaque environnement.
+
+```sh
+# Génère un secret et le pose (chiffré) dans apps/backend/.env
+make env-set k=OIDC_TICKET_SECRET v="$(openssl rand -base64 48)" app=backend
+```
+
+> La couche « connexion unifiée » (bouton MonCompteAdeme recommandé, bannière et modale incitant à lier son compte) s'active automatiquement dès que `MON_COMPTE_ADEME_ENABLED=true` — aucun feature flag à configurer.
 
 ### Stack locale
 
@@ -164,7 +207,7 @@ La stack locale est décrite dans [`docker-compose.yml`](./docker-compose.yml) e
 
 ```shell
 make db-init            # première installation : services + migrations + référentiels + données de test
-make up                 # sélecteur des conteneurs à lancer (services + apps, mémorisé)
+make up                 # relance la stack mémorisée (ask=1 pour re-choisir les composants)
 make down               # stoppe tout (les données sont conservées entre les sessions)
 make logs s=backend
 make tui                # tableau de bord interactif : statuts, URLs, logs navigables, start/stop/restart
@@ -174,6 +217,17 @@ make db-shell           # psql dans la base locale
 `make db-init` enchaîne : démarrage des services, migrations [sqitch](./data_layer/sqitch), import des définitions (indicateurs, questions de personnalisation, référentiels) via les tests backend — qui lisent les CSV du dépôt mais démarrent le backend complet, d'où le besoin de `.env.keys` — puis chargement des données de test ([`data_layer/seed`](./data_layer/seed)). La commande est idempotente : migrations et seeds déjà appliqués sont sautés. À noter : elle exécute les tests backend **sur l'hôte** (`make install` requis au préalable).
 
 En mode Docker, les dépendances vivent dans le volume `node-modules`, réinstallées incrémentalement par le service `deps` à chaque `make up` — après un changement de `pnpm-lock.yaml`, un simple `make up` suffit donc.
+
+`make up` est optimisé pour être rejoué en boucle : il ne redemande pas les composants (la sélection est mémorisée dans `.env.local`) et ne reconstruit rien qui n'ait changé. Ses options couvrent les cas restants :
+
+| Option | Effet |
+| --- | --- |
+| `make up ask=1` | rouvre le sélecteur de composants |
+| `make up p="<profile>"` | rejoue un profile nommé (sauvé par `x` dans `make tui`) |
+| `make up clean=1` | purge les caches de build avant de démarrer (`make cache-clean`) — utile après un rebase, au prix d'un rebuild Turbopack complet |
+| `make up build=1` | force la reconstruction des images à build local (strapi, sqitch) |
+
+Le socle des apps (`tet-node-dev`, cf. [`.docker/apps/base.Dockerfile`](./.docker/apps/base.Dockerfile)) porte l'empreinte de son Dockerfile et de l'UID/GID hôte. S'il a changé, `make up` **démarre d'abord** sur l'image existante puis reconstruit en tâche de fond (`.docker/node-base-build.log`) et recrée les conteneurs concernés dessus ; seule son absence totale bloque le démarrage.
 
 #### Git worktrees & agents
 
@@ -223,7 +277,7 @@ Celle-ci supprime le volume docker de la base puis relance `make db-init`.
 
 ### Lint et hook de pre-commit
 
-`make lint` reproduit le job CI `lint` sur l'ensemble des projets.
+`make lint` reproduit le job CI `lint` sur l'ensemble des projets. En mode hôte (`make dev`), la commande s'exécute localement ; en mode Docker (`make up`), elle passe par le conteneur `nx-daemon` déjà démarré.
 
 Pour éviter de découvrir une erreur de lint après le push, on peut activer le hook git
 livré dans le dépôt — il lance ESLint sur les seuls fichiers indexés (≈ 2 s) :
@@ -239,10 +293,17 @@ passer outre ponctuellement : `git commit --no-verify`.
 
 ### Lancer les tests
 
-Les trois services sont des projets indépendants qui peuvent-être testés en local sous reserve que les dépendances de
-développement soient installées.
+Depuis la racine du dépôt, le point d'entrée recommandé est la target `make test` :
 
-Néanmoins, on peut lancer les tests avec `earthly` en utilisant des conteneurs :
+```sh
+make test                  # lance tous les tests Nx du monorepo
+make test project=backend  # lance un seul projet Nx
+make test project=app
+```
+
+Comme `make lint`, la commande fonctionne dans les deux modes de développement : localement en mode hôte, ou via `nx-daemon` quand les apps tournent en conteneurs. Elle réutilise le même chargement d'environnement que les autres cibles de développement, puis exécute `nx test <project>` si `project=` est fourni, sinon `nx run-many -t test`.
+
+Pour exécuter les tests en conteneurs, on peut aussi utiliser `earthly` :
 
 ```shell
 # Lance le projet suivi de tout les tests.
