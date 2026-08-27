@@ -1,32 +1,28 @@
-## Changelog : mobilic-api (30 derniers jours, au 10 août 2026)
+## Changelog : mobilic-api (30 derniers jours, au 26/08/2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a franchi une étape importante avec l'introduction des demandes de détachement d'employés et des fonctionnalités de contestation. Les rapports d'activité (PDF/Excel) ont été nettement améliorés pour offrir une lecture plus précise des temps de pause et des activités scindées, tandis que les outils d'administration ont été renforcés par un mode impersonnalisation plus complet et une meilleure gestion des droits.
+Ce mois-ci, les efforts se sont concentrés sur le renforcement de la protection des données personnelles via un processus d'anonymisation plus robuste et conforme aux standards (WP29). Le projet a également bénéficié d'améliorations significatives de performance, notamment sur le tableau de bord et les traitements de données en masse, ainsi que de nouvelles fonctionnalités pour la gestion des activités scindées et une meilleure stabilité des sessions utilisateurs.
 
 ### Évolutions fonctionnelles
-- **Nouvelles fonctionnalités métier** :
-    - Mise en place du processus de demande de détachement d'employés, incluant l'envoi automatique d'emails [#731](https://github.com/MTES-MCT/mobilic-api/pull/731).
-    - Introduction de la possibilité pour les employés de formuler des contestations [#722](https://github.com/MTES-MCT/mobilic-api/pull/722).
-- **Amélioration des exports et rapports (PDF/Excel)** :
-    - Meilleure lisibilité des activités scindées (mention "scindé") et intégration des motifs d'activité dans l'historique des missions.
-    - Optimisation des colonnes de temps de pause et calcul des totaux dans les exports de jours travaillés.
-    - Correction des doublons de motifs de litige et meilleure gestion des fuseaux horaires pour les dates de contrôle.
-- **Administration et support** :
-    - Renforcement du mode impersonnalisation : possibilité de créer des missions et de tracer les actions de support dans les exports [#732](https://github.com/MTES-MCT/mobilic-api/pull/732), [#749](https://github.com/MTES-MCT/mobilic-api/pull/749).
-    - Amélioration du contenu, du formatage et de la fiabilité des emails de détachement.
-    - Sécurisation des calculs de réglementation en exigeant les droits d'administrateur entreprise [#741](https://github.com/MTES-MCT/mobilic-api/pull/741).
+- **Gestion des activités scindées** : Amélioration de l'affichage dans les exports PDF et Excel, incluant désormais la mention "scindé" et le décalage de l'heure de début pour plus de clarté. [#775](https://github.com/MTES-MCT/mobilic-api/pull/775), [#751](https://github.com/MTES-MCT/mobilic-api/pull/751)
+- **Protection de la vie privée** : Renforcement du processus d'anonymisation et masquage automatique des utilisateurs anonymisés dans les listes d'employés pour garantir la confidentialité. [#760](https://github.com/MTES-MCT/mobilic-api/pull/760), [#771](https://github.com/MTES-MCT/mobilic-api/pull/771)
+- **Suivi des missions** : Le statut d'une mission reste désormais "en cours" jusqu'à la fin effective de l'intervention du travailleur. [bc5f0f5]
 
 ### Évolutions techniques
-- **Performance et Base de données** :
-    - Optimisation des performances via la gestion des index (ajout d'index sur les calculs de réglementation et suppression des index redondants) [#740](https://github.com/MTES-MCT/mobilic-api/pull/740).
-    - Amélioration de la rapidité du tableau de bord pour le suivi des validations en attente.
+- **Performances et Optimisations** :
+    - Mise en cache des compteurs de validations en attente sur le tableau de bord via Redis pour accélérer le temps de chargement. [#764](https://github.com/MTES-MCT/mobilic-api/pull/764)
+    - Optimisation du processus d'anonymisation par l'implémentation de traitements par lots (batch processing). [#745](https://github.com/MTES-MCT/mobilic-api/pull/745)
+    - Optimisation de la base de données par l'ajout d'index stratégiques et la suppression d'index obsolètes. [7ec00d0], [407d660]
+- **Sécurité et API** :
+    - Amélioration de la rotation des jetons de session (refresh tokens) avec une période de grâce pour éviter les déconnexions intempestives. [#757](https://github.com/MTES-MCT/mobilic-api/pull/757)
+    - Optimisation de la pagination de l'API SIRENE via l'utilisation de curseurs. [#765](https://github.com/MTES-MCT/mobilic-api/pull/765)
+    - Restriction des droits d'accès : les calculs de régulation sont désormais réservés aux administrateurs de l'entreprise. [#741](https://github.com/MTES-MCT/mobilic-api/pull/741)
 - **Infrastructure et CI/CD** :
-    - Intégration des "Scalingo Review Apps" pour permettre des environnements de test temporaires par fonctionnalité [#737](https://github.com/MTES-MCT/mobilic-api/pull/737).
-- **Fiabilité et Maintenance** :
-    - Mise en place d'un système de cache pour les webinaires Livestorm afin d'optimiser les appels.
-    - Réduction du bruit d'alertes dans Sentry pour une meilleure surveillance des erreurs réelles [#724](https://github.com/MTES-MCT/mobilic-api/pull/724).
-    - Refactorisation du code de gestion de l'historique pour limiter la duplication de logique.
+    - Mise en place et stabilisation des "Review Apps" sur Scalingo pour permettre des tests isolés sur chaque branche de développement. [#737](https://github.com/MTES-MCT/mobilic-api/pull/737), [#770](https://github.com/MTES-MCT/mobilic-api/pull/770)
+- **Refactoring** :
+    - Centralisation du client Redis dans un helper dédié. [bb1210d]
+    - Nettoyage et simplification du code lié à l'historique et à la gestion des dates. [b256852], [6829470]
 
 ### Autres changements
-- Consolidation et nettoyage des branches de migration de la base de données.
-- Ajout de tests de sécurité (scope guards) pour le mode impersonnalisation.
+- **Intégrations tierces** : Corrections sur la synchronisation avec Brevo (gestion des noms de deals et des apostrophes) et mise à jour des dates de secours pour les webinaires Livestorm. [#755](https://github.com/MTES-MCT/mobilic-api/pull/755), [#752](https://github.com/MTES-MCT/mobilic-api/pull/752), [ff3ba5c]
+- **Corrections diverses** : Correction de la pagination pour la liste des missions supprimées. [#754](https://github.com/MTES-MCT/mobilic-api/pull/754)

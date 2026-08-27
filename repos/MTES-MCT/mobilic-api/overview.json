@@ -1,18 +1,18 @@
 {
   "url": "https://github.com/MTES-MCT/mobilic-api",
   "name": "mobilic-api",
-  "description": "API backend pour la startup d'État Mobilic, dédiée à la gestion de la mobilité et des activités professionnelles. Elle permet la gestion des employés, des missions, ainsi que la génération de rapports et le suivi réglementaire.",
+  "description": "API backend pour la startup d'État Mobilic, permettant la gestion des activités professionnelles, des demandes de détachement d'employés et la génération de rapports de conformité.",
   "language": "Python",
   "features": [
     "API & Intégrations",
-    "Authentification & Accès",
+    "Statistiques & Rapports",
     "Gestion des utilisateurs & Permissions",
     "Gestion métier générale",
+    "Sécurité & Conformité",
     "Notifications & Alertes",
-    "Statistiques & Rapports",
-    "Suivi & Traçabilité"
+    "Gestion des signalements"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": "Professionnels",
   "dependencies": [
     "Flask",
     "Graphene",
@@ -20,9 +20,11 @@
     "Celery",
     "Redis",
     "PostgreSQL",
+    "Alembic",
     "XlsxWriter",
     "Jinja",
-    "xhtml2pdf"
+    "xhtml2pdf",
+    "Mailjet"
   ],
   "components": [
     "API REST & GraphQL",
@@ -30,21 +32,19 @@
     "Python (scripts & backend)",
     "Docker & Conteneurs",
     "Celery & Queue asynchrone",
-    "ORM & Accès aux données",
-    "Authentification (composant)"
+    "ORM & Accès aux données"
   ],
   "auth": {
     "methods": [
       "jwt",
       "mfa"
-    ],
-    "providers": []
+    ]
   },
   "tests": "flask test",
   "workflows": [
     "Scalingo Review Apps"
   ],
-  "lastActivity": "2026-08-10T10:43:58+02:00",
+  "lastActivity": "2026-08-26T22:20:05+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -53,6 +53,8 @@
     "Bases de données SQL",
     "Docker & Conteneurs",
     "Transport & Mobilité",
-    "Écosystème beta.gouv / État"
+    "Écosystème beta.gouv / État",
+    "CI/CD & GitHub Actions",
+    "Sécurité & Auth"
   ]
 }

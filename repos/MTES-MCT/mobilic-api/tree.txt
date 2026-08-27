@@ -161,6 +161,7 @@
 │   │   │   ├── mission_details.py
 │   │   │   └── work_days.py
 │   │   ├── profiler.py
+│   │   ├── redis.py
 │   │   ├── regulations_utils.py
 │   │   ├── request_parser.py
 │   │   ├── s3.py
@@ -325,7 +326,8 @@
 │   │   │   │   ├── main.py
 │   │   │   │   └── user_anonymizer.py
 │   │   │   └── utilities
-│   │   │       └── clean_anon_tables.py
+│   │   │       ├── clean_anon_tables.py
+│   │   │       └── k_anonymity.py
 │   │   ├── brevo
 │   │   │   ├── __init__.py
 │   │   │   ├── _config.py
@@ -449,54 +451,7 @@
 │       │   ├── test_utils.py
 │       │   ├── test_weekly_rules.py
 │       │   └── test_work_day_break.py
-│       ├── test_account.py
-│       ├── test_activity_overlaps.py
-│       ├── test_anonymization_references.py
-│       ├── test_anonymization_warnings.py
-│       ├── test_api_admin_queries.py
-│       ├── test_api_employee_queries.py
-│       ├── test_api_employment_token.py
-│       ├── test_api_software_registration.py
-│       ├── test_api_sync_employment.py
-│       ├── test_authentication.py
-│       ├── test_authorization.py
-│       ├── test_base_anonymization.py
-│       ├── test_batch_invite.py
-│       ├── test_cancel_mission.py
-│       ├── test_cgu.py
-│       ├── test_company_get_admins.py
-│       ├── test_company_has_no_activity.py
-│       ├── test_create_mission.py
-│       ├── test_dashboard_summary.py
-│       ├── test_deleted_missions.py
-│       ├── test_deletion_target.py
-│       ├── test_edit_activities.py
-│       ├── test_employment.py
-│       ├── test_export_chunking.py
-│       ├── test_france_connect.py
-│       ├── test_graphql_dos_protection.py
-│       ├── test_helpers.py
-│       ├── test_holidays.py
-│       ├── test_idor_vulnerabilities.py
-│       ├── test_impersonation.py
-│       ├── test_invitations.py
-│       ├── test_livestorm.py
-│       ├── test_load_company_stats.py
-│       ├── test_log_activities.py
-│       ├── test_log_location.py
-│       ├── test_notifications.py
-│       ├── test_permission_activities.py
-│       ├── test_permission_missions.py
-│       ├── test_queries.py
-│       ├── test_read_activities.py
-│       ├── test_regulatory_alerts_summary.py
-│       ├── test_team.py
-│       ├── test_totp.py
-│       ├── test_transfers.py
-│       ├── test_validate_export_params.py
-│       ├── test_validate_mission_no_freeze_side_effect.py
-│       ├── test_validation.py
-│       └── test_vehicle_deduplication.py
+│       └── test_*.py  (56 files)
 ├── config.py
 ├── cron.json
 ├── data
@@ -650,6 +605,7 @@
 │       ├── a318018bd9fb_replace_context_with_dismiss_prop_and_.py
 │       ├── a482261c5eb9_add_team_id_in_employment_table.py
 │       ├── a4be56f6b1a8_non_nullable_mailing_lists.py
+│       ├── a7c1f2b9d4e6_refactor_anon_company_certification.py
 │       ├── a89502b9c0f3_mandatory_user_email.py
 │       ├── aa1096a64d0f_create_business_table.py
 │       ├── aa3c6ff8cdb7_add_surveys_table.py
@@ -670,6 +626,7 @@
 │       ├── b7270c163b14_update_controller_control_table.py
 │       ├── b7e4a9c1f2d3_drop_redundant_and_unused_indexes.py
 │       ├── b93eeb578bdd_clean_scenario_testing.py
+│       ├── b9c8a1d2e3f4_anonymization_privacy_hardening.py
 │       ├── bad3fdae2730_add_phone_number_to_user.py
 │       ├── bbacbf6d536b_remove_company_id_from_events.py
 │       ├── bc7abe3eb83c_ajout_des_temps_de_liaison_en_tant_que_.py
@@ -689,6 +646,7 @@
 │       ├── d2da23a44a8b_change_siren_to_string.py
 │       ├── d342aeb2a88f_add_note_to_control.py
 │       ├── d4f359418780_non_nullable_user_info.py
+│       ├── d4f8b2c6e1a9_add_refresh_token_rotation_columns.py
 │       ├── d510490daadf_non_nullable_expenditure_type.py
 │       ├── d81487be0922_add_control_bulletin_step_2_fields.py
 │       ├── dab7465f3667_add_activity_type_off.py
@@ -699,6 +657,7 @@
 │       ├── ded990280e06_add_first_and_last_names_to_user.py
 │       ├── e0608dcf0866_add_subscribed_mailing_lists.py
 │       ├── e0834912bc9c_remove_email_type_constraint.py
+│       ├── e1f2a3b4c5d6_merge_anon_certification_and_regulation_index.py
 │       ├── e688d06e7d2d_add_company_settings.py
 │       ├── e7e59e36d8f6_expenditures_vehicle_number_and_mission.py
 │       ├── e920e737ca5a_add_activity_range_constraints.py
@@ -730,4 +689,4 @@
 │       └── ff7bf9a10e57_add_comments_table.py
 ├── pyproject.toml
 └── scalingo.json
-49 directories, 683 files
+49 directories, 697 files
