@@ -6,13 +6,8 @@
 ├── AMI
 │   ├── Resources
 │   │   ├── Assets.xcassets
-│   │   │   ├── AppIcon.appiconset
-│   │   │   │   ├── Contents.json
-│   │   │   │   └── logo_marianne_square.png
 │   │   │   └── Contents.json
 │   │   ├── Colors.xcassets
-│   │   │   ├── BlueFranceSun113.colorset
-│   │   │   │   └── Contents.json
 │   │   │   └── Contents.json
 │   │   ├── Images.xcassets
 │   │   │   ├── AppIcon.appiconset
@@ -33,26 +28,42 @@
 │   │       └── Preview Assets.xcassets
 │   │           └── Contents.json
 │   └── Sources
-│       ├── AMIApp.swift
 │       ├── AMIAppState.swift
-│       ├── Api
-│       │   └── WebService.swift
-│       ├── AppDelegate.swift
+│       ├── App
+│       │   ├── AMIApp.swift
+│       │   └── AppDelegate.swift
 │       ├── Components
 │       │   ├── InformationBanner.swift
-│       │   ├── Tile.swift
 │       │   └── WebView
 │       │       ├── AMIWebView.swift
 │       │       ├── SwiftUIWebView.md
 │       │       ├── SwiftUIWebView.swift
+│       │       ├── WeakScriptMessageHandler.swift
 │       │       ├── WebView-ViewModel.swift
 │       │       ├── WebViewDelegate.swift
 │       │       └── WebViewUserScriptsProtocol.swift
-│       ├── Models
-│       │   └── ReviewApp.swift
+│       ├── Core
+│       │   └── AppLog.swift
+│       ├── Data
+│       │   ├── Persistence
+│       │   │   ├── KeychainErrorMapping.swift
+│       │   │   ├── KeychainStorage.swift
+│       │   │   ├── LocalStorageImplementationErrorType.swift
+│       │   │   └── UserDefaultsStorage.swift
+│       │   └── Repositories
+│       │       └── LocalStorageRepository.swift
+│       ├── Domain
+│       │   ├── Entities
+│       │   │   └── LocalStorage
+│       │   │       ├── LocalStorageErrorType.swift
+│       │   │       └── LocalStorageSecureLevelType.swift
+│       │   └── Interfaces
+│       │       └── Repositories
+│       │           └── LocalStorage
+│       │               └── LocalStorageRepositoryProtocol.swift
 │       ├── Presentation
-│       │   ├── ButtonDSFR.swift
 │       │   ├── Home
+│       │   │   ├── HomeView-NativeInfosScript.swift
 │       │   │   ├── HomeView-SpecialPages.swift
 │       │   │   ├── HomeView-UserScripts.swift
 │       │   │   ├── HomeView-ViewModel.swift
@@ -64,15 +75,13 @@
 │       │   │   ├── PartnerView-UserScripts.swift
 │       │   │   ├── PartnerView-ViewModel.swift
 │       │   │   └── PartnerView.swift
-│       │   ├── ReviewApp
-│       │   │   ├── ReviewApp-ViewModel.swift
-│       │   │   └── ReviewAppView.swift
 │       │   └── Settings
 │       │       ├── SettingsView-ViewModel.swift
 │       │       └── SettingsView.swift
 │       ├── Services
 │       │   ├── NetworkMonitor.swift
 │       │   └── NotificationManager
+│       │       ├── DeviceID.swift
 │       │       ├── NotificationManager.swift
 │       │       ├── NotificationStatus.swift
 │       │       └── RegisterDevice.swift
@@ -97,18 +106,36 @@
 ├── scripts
 │   ├── ami-configure-build-tools.sh
 │   ├── ami-generate-xcode.sh
+│   ├── ami-xcode-pass-generate-secrets.sh
+│   ├── ami-xcode-pass-sourcery.sh
 │   ├── ami-xcode-pass-swiftformat.sh
 │   ├── ami-xcode-pass-swiftgen.sh
 │   └── ami-xcode-pass-swiftlint.sh
 └── targets
     ├── production
     │   └── SupportingFiles
+    │       ├── .env.example
     │       ├── GoogleService-Info.plist
-    │       ├── Info.plist
-    │       └── ami.entitlements
-    └── staging
+    │       └── Info.plist
+    ├── staging
+    │   ├── Sources
+    │   │   ├── Domain
+    │   │   │   └── Entities
+    │   │   │       └── ReviewApp.swift
+    │   │   └── Presentation
+    │   │       └── ReviewApp
+    │   │           ├── ReviewApp-ViewModel.swift
+    │   │           └── ReviewAppView.swift
+    │   └── SupportingFiles
+    │       ├── .env.example
+    │       ├── GoogleService-Info.plist
+    │       └── Info.plist
+    └── unitTests
+        ├── Sources
+        │   └── Data
+        │       └── Persistence
+        │           ├── KeychainStorageTests.swift
+        │           └── UserDefaultsStorageTests.swift
         └── SupportingFiles
-            ├── GoogleService-Info.plist
-            ├── Info.plist
-            └── ami.entitlements
-40 directories, 73 files
+            └── Info.plist
+56 directories, 84 files
