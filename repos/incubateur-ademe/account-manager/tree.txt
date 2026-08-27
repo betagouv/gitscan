@@ -42,6 +42,7 @@
 ├── .dockerignore
 ├── .env.example
 ├── .github
+│   ├── pull_request_template.md
 │   └── workflows
 │       └── ci.yml
 ├── .gitignore
@@ -80,7 +81,12 @@
 │       ├── #13_participation-non-operateur.md
 │       ├── #14_page-perso.md
 │       ├── #15_derogations.md
-│       └── #16_references.md
+│       ├── #16_references.md
+│       ├── #26_agir-sur-un-constat.md
+│       ├── #27_annuler-un-depart.md
+│       ├── #28_metadonnees-de-compte.md
+│       ├── #29_startup-qui-s-arrete.md
+│       └── lot-1.5_interface.md
 ├── next.config.ts
 ├── package.json
 ├── pnpm-lock.yaml
@@ -99,6 +105,36 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260818161504_marche_a_suivre_figee
 │   │   │   └── migration.sql
+│   │   ├── 20260819083415_identifiant_fabrique
+│   │   │   └── migration.sql
+│   │   ├── 20260819084348_rattachement_manuel_a_une_startup
+│   │   │   └── migration.sql
+│   │   ├── 20260819085309_appartenance_forcee
+│   │   │   └── migration.sql
+│   │   ├── 20260821011318_metadonnees_de_compte
+│   │   │   └── migration.sql
+│   │   ├── 20260823175939_sortie_du_gardefou_de_chute
+│   │   │   └── migration.sql
+│   │   ├── 20260824124758_dossier_acces
+│   │   │   └── migration.sql
+│   │   ├── 20260824143000_sens_du_dossier
+│   │   │   └── migration.sql
+│   │   ├── 20260824153852_un_seul_dossier_vivant
+│   │   │   └── migration.sql
+│   │   ├── 20260824161541_un_seul_plan_courant_par_dossier
+│   │   │   └── migration.sql
+│   │   ├── 20260824174500_modeles_de_plan
+│   │   │   └── migration.sql
+│   │   ├── 20260825060000_constat_arrivee
+│   │   │   └── migration.sql
+│   │   ├── 20260825070000_cloture_datee
+│   │   │   └── migration.sql
+│   │   ├── 20260825080000_retour_date
+│   │   │   └── migration.sql
+│   │   ├── 20260825090000_octroi_et_profils
+│   │   │   └── migration.sql
+│   │   ├── 20260825100000_profil_du_dossier
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   └── schema.prisma
 ├── prisma.config.ts
@@ -110,6 +146,7 @@
 │   │   │           └── route.ts
 │   │   ├── collectes
 │   │   │   ├── BoutonCollecte.tsx
+│   │   │   ├── GardeFouBloque.tsx
 │   │   │   ├── actions.ts
 │   │   │   └── page.tsx
 │   │   ├── comptes-de-service
@@ -117,20 +154,26 @@
 │   │   │   ├── actions.ts
 │   │   │   └── page.tsx
 │   │   ├── comptes-isoles
+│   │   │   ├── FileDesComptesIsoles.tsx
 │   │   │   ├── Rattacher.tsx
 │   │   │   ├── actions.ts
 │   │   │   ├── creer.ts
 │   │   │   └── page.tsx
 │   │   ├── constats
 │   │   │   ├── ClotureConstat.tsx
+│   │   │   ├── FileDesConstats.tsx
 │   │   │   ├── actions.ts
 │   │   │   └── page.tsx
-│   │   ├── departs
+│   │   ├── dossiers
+│   │   │   ├── FormulaireOuverture.tsx
 │   │   │   ├── [id]
+│   │   │   │   ├── AnnulationDossier.tsx
 │   │   │   │   ├── Pointage.tsx
+│   │   │   │   ├── actions.test.ts
 │   │   │   │   ├── actions.ts
 │   │   │   │   └── page.tsx
-│   │   │   └── actions.ts
+│   │   │   ├── actions.ts
+│   │   │   └── page.tsx
 │   │   ├── error.tsx
 │   │   ├── global-error.tsx
 │   │   ├── healthz
@@ -148,43 +191,109 @@
 │   │   │   ├── LoginForm.tsx
 │   │   │   ├── actions.ts
 │   │   │   └── page.tsx
+│   │   ├── modeles
+│   │   │   ├── Editeur.tsx
+│   │   │   ├── actions.ts
+│   │   │   ├── incubateur
+│   │   │   │   └── page.tsx
+│   │   │   ├── lecture.ts
+│   │   │   ├── page.tsx
+│   │   │   └── startup
+│   │   │       └── [ghid]
+│   │   │           └── page.tsx
 │   │   ├── not-found.tsx
 │   │   ├── page.tsx
 │   │   ├── personnes
 │   │   │   ├── EnteteTri.tsx
 │   │   │   ├── Filtres.tsx
 │   │   │   ├── [username]
-│   │   │   │   ├── BoutonDepart.tsx
+│   │   │   │   ├── ActionsDePage.tsx
+│   │   │   │   ├── Appartenance.tsx
+│   │   │   │   ├── BoutonDossier.tsx
+│   │   │   │   ├── CeQuiAppelleUneAction.tsx
+│   │   │   │   ├── Champs.tsx
 │   │   │   │   ├── Detacher.tsx
+│   │   │   │   ├── FicheEditable.tsx
+│   │   │   │   ├── Identifiant.tsx
+│   │   │   │   ├── ModaleRattacherStartup.tsx
+│   │   │   │   ├── RattacherStartup.tsx
+│   │   │   │   ├── RetirerRattachement.tsx
+│   │   │   │   ├── SectionComptesExternes.tsx
+│   │   │   │   ├── SectionStartups.tsx
+│   │   │   │   ├── actions.ts
+│   │   │   │   ├── edit
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── edition.ts
+│   │   │   │   ├── libelles.ts
+│   │   │   │   ├── motifs.test.ts
+│   │   │   │   ├── motifs.ts
+│   │   │   │   ├── not-found.tsx
+│   │   │   │   └── page.tsx
+│   │   │   └── page.tsx
+│   │   ├── startups
+│   │   │   ├── Filtres.tsx
+│   │   │   ├── [ghid]
+│   │   │   │   ├── RattacherPersonne.tsx
+│   │   │   │   ├── SectionMembres.tsx
+│   │   │   │   ├── TraitementDuLot.tsx
 │   │   │   │   ├── actions.ts
 │   │   │   │   ├── not-found.tsx
 │   │   │   │   └── page.tsx
 │   │   │   └── page.tsx
 │   │   └── systemes
+│   │       ├── [cle]
+│   │       │   └── page.tsx
 │   │       └── page.tsx
 │   ├── cli
+│   │   ├── frontiere.test.ts
 │   │   ├── schema-politique.ts
 │   │   ├── sync.ts
 │   │   └── verifier-politique.ts
 │   ├── connectors
+│   │   ├── github.test.ts
 │   │   ├── github.ts
-│   │   └── index.ts
+│   │   ├── index.test.ts
+│   │   ├── index.ts
+│   │   ├── notion-scim.fixture.json
+│   │   ├── notion.contrat.test.ts
+│   │   ├── notion.test.ts
+│   │   └── notion.ts
 │   ├── core
+│   │   ├── appartenance.test.ts
+│   │   ├── appartenance.ts
 │   │   ├── audit.ts
 │   │   ├── collecte.test.ts
 │   │   ├── collecte.ts
+│   │   ├── comptes-isoles.test.ts
+│   │   ├── comptes-isoles.ts
+│   │   ├── configuration-connecteur.test.ts
+│   │   ├── configuration-connecteur.ts
 │   │   ├── connector.test.ts
 │   │   ├── connector.ts
+│   │   ├── constat-arrivee.test.ts
 │   │   ├── constat-verification.test.ts
 │   │   ├── constat.test.ts
 │   │   ├── constat.ts
-│   │   ├── depart.test.ts
-│   │   ├── depart.ts
+│   │   ├── dossier.test.ts
+│   │   ├── dossier.ts
+│   │   ├── execution.test.ts
+│   │   ├── execution.ts
+│   │   ├── fiche-manuelle.test.ts
+│   │   ├── fiche-manuelle.ts
 │   │   ├── identite.test.ts
 │   │   ├── identite.ts
+│   │   ├── inventaire.test.ts
+│   │   ├── inventaire.ts
+│   │   ├── lecture.ts
 │   │   ├── libelle-constat.ts
+│   │   ├── libelle-dossier.ts
+│   │   ├── libelle-startup.ts
 │   │   ├── membre.test.ts
 │   │   ├── membre.ts
+│   │   ├── modele-plan.test.ts
+│   │   ├── modele-plan.ts
+│   │   ├── octroi.test.ts
+│   │   ├── octroi.ts
 │   │   ├── perimetre.test.ts
 │   │   ├── perimetre.ts
 │   │   ├── plan.test.ts
@@ -192,36 +301,82 @@
 │   │   ├── policy.ts
 │   │   ├── rapprochement.test.ts
 │   │   ├── rapprochement.ts
+│   │   ├── rattachement-startup.test.ts
+│   │   ├── rattachement-startup.ts
 │   │   ├── revue.test.ts
 │   │   ├── revue.ts
+│   │   ├── startups.test.ts
+│   │   ├── startups.ts
 │   │   ├── statut.test.ts
 │   │   ├── statut.ts
+│   │   ├── suggestion-rattachement.test.ts
+│   │   ├── suggestion-rattachement.ts
 │   │   └── tri-personnes.ts
 │   ├── lib
 │   │   ├── actions.ts
+│   │   ├── appartenance.ts
+│   │   ├── arrivee.test.ts
+│   │   ├── arrivee.ts
 │   │   ├── audit.ts
 │   │   ├── auth.ts
+│   │   ├── comptes-isoles.ts
+│   │   ├── configuration-connecteur.test.ts
+│   │   ├── configuration-connecteur.ts
 │   │   ├── db.ts
-│   │   ├── depart.ts
+│   │   ├── dossier.test.ts
+│   │   ├── dossier.ts
 │   │   ├── env.ts
 │   │   ├── espace-membre.ts
+│   │   ├── execution.test.ts
+│   │   ├── execution.ts
+│   │   ├── inventaire.ts
+│   │   ├── modele-plan-edition.test.ts
+│   │   ├── modele-plan-edition.ts
+│   │   ├── modele-plan.ts
 │   │   ├── policy.ts
 │   │   ├── session.ts
 │   │   └── sync
+│   │       ├── collecte.test.ts
 │   │       ├── collecte.ts
 │   │       ├── comptes-service.ts
+│   │       ├── constats.test.ts
 │   │       ├── constats.ts
 │   │       ├── executer.ts
+│   │       ├── perimetre.test.ts
 │   │       ├── perimetre.ts
 │   │       └── rapprochement.ts
 │   ├── proxy.ts
 │   └── ui
+│       ├── Actions.module.css
+│       ├── Aide.tsx
+│       ├── ChampAvecListe.tsx
 │       ├── Deconnexion.tsx
+│       ├── ModeAide.tsx
 │       ├── Navigation.tsx
-│       └── dsfr
-│           ├── client.tsx
-│           ├── defaultColorScheme.ts
-│           └── server.tsx
+│       ├── TableCustom.module.css
+│       ├── TableCustom.tsx
+│       ├── connecteurs
+│       │   ├── FrontiereTuile.tsx
+│       │   ├── Tuiles.tsx
+│       │   ├── contrat.ts
+│       │   ├── github
+│       │   │   ├── Ecran.tsx
+│       │   │   └── tuiles.tsx
+│       │   ├── registre.test.ts
+│       │   ├── registre.ts
+│       │   ├── rendre-tuile.test.ts
+│       │   ├── rendre-tuile.ts
+│       │   ├── scope-attendu.test.ts
+│       │   └── scope-attendu.ts
+│       ├── dates.ts
+│       ├── dsfr
+│       │   ├── client.tsx
+│       │   ├── defaultColorScheme.ts
+│       │   └── server.tsx
+│       ├── modale.ts
+│       ├── profils.ts
+│       ├── severites.ts
+│       └── validation.ts
 ├── tsconfig.json
 └── vitest.config.ts
-50 directories, 176 files
+75 directories, 306 files

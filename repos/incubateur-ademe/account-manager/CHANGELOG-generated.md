@@ -1,29 +1,20 @@
-## Changelog : account-manager (30 derniers jours, au 18 août 2026)
+## Changelog : account-manager (30 derniers jours, au 25 août 2026)
 
 ### Résumé
-Le projet franchit une étape majeure avec son premier déploiement opérationnel. Les développements récents se sont concentrés sur l'automatisation du processus de départ des utilisateurs (offboarding), l'amélioration de la visibilité sur les capacités du système et la mise en place d'outils de collecte de données avec historique.
+Ce mois-ci, l'outil a franchi une étape majeure en automatisant les processus d'accueil et de départ des utilisateurs. Grâce à la mise en place de parcours structurés (plans d'arrivée et de départ) et d'un tableau de bord de suivi, l'administration peut désormais piloter les accès de manière plus fluide, sécurisée et prévisible, tout en bénéficiant d'une meilleure visibilité sur l'état des comptes et des entreprises.
 
 ### Évolutions fonctionnelles
-- **Gestion du cycle de départ (offboarding) :** mise en place des fonctionnalités de préparation du départ, suivi des tâches restantes, validation des plans d'action et clôture des dossiers.
-- **Pilotage de la collecte :** possibilité de lancer une collecte directement depuis l'interface et consultation de l'historique des exécutions.
-- **Audit et visibilité :** ajout d'un écran récapitulant les capacités de l'outil par système et mise en place d'un outil de confrontation entre l'état déclaré et l'état observé.
-- **Corrections de bugs :** 
-    - Amélioration de la précision des processus de départ (gestion des plans périmés).
-    - Masquage des commandes en échec lors de l'affichage en production.
-    - Renforcement de la sécurité et de la validation des fichiers de politique (refus des clés inconnues).
+- **Automatisation de l'onboarding et l'offboarding** : mise en place de plans d'arrivée et de départ avec des étapes concrètes, incluant une phase de simulation [#56](https://github.com/incubateur-ademe/account-manager/issues/56) et la possibilité d'annuler un départ en cours [#27](https://github.com/incubateur-ademe/account-manager/issues/27).
+- **Pilotage des accès** : les dossiers sont désormais utilisés pour gérer les mouvements d'accès [#51](https://github.com/incubateur-ademe/account-manager/issues/51) et les équipes sont traitées comme des entités de gestion des droits [#28](https://github.com/incubateur-ademe/account-manager/issues/28).
+- **Supervision et visibilité** : ajout d'un tableau de bord centralisant les données des connecteurs [#47](https://github.com/incubateur-ademe/account-manager/issues/47), d'un historique des exécutions [#8514bb6](https://github.com/incubateur-ademe/account-manager/issues/8514bb6) et d'un écran récapitulatif des capacités du système [#2c681e8](https://github.com/incubateur-ademe/account-manager/issues/2c681e8).
+- **Gestion des entités** : amélioration du traitement des membres de startups et de la gestion des comptes isolés [#41](https://github.com/incubateur-ademe/account-manager/issues/41), [#43](https://github.com/incubateur-ademe/account-manager/issues/43).
+- **Améliorations de l'interface** : possibilité d'agir sur un constat sans quitter la fiche utilisateur [#26](https://github.com/incubateur-ademe/account-manager/issues/26) et correction de l'affichage des messages d'obligation [#09061dd](https://github.com/incubateur-ademe/account-manager/issues/09061dd).
 
 ### Évolutions techniques
-- **Infrastructure et Déploiement :** 
-    - Activation du premier déploiement.
-    - Intégration de la récupération automatique de la politique depuis un dépôt privé lors du build.
-    - Optimisation de l'image Docker (nettoyage des dépendances Prisma inutiles et alignement avec les exigences de pnpm 11 et Coolify).
-- **Refactoring :** 
-    - Standardisation des variables de configuration SMTP.
-    - Renommage des variables système en anglais pour une meilleure compatibilité machine.
-- **CI/CD :** Mise à jour des workflows pour abandonner l'utilisation de Node 20.
+- **Architecture des connecteurs** : évolution du modèle pour permettre aux connecteurs de délivrer des accès basés sur les profils utilisateurs [#55](https://github.com/incubateur-ademe/account-manager/issues/55).
+- **Optimisation de l'infrastructure et CI/CD** : réduction de la taille de l'image Docker en optimisant les dépendances Prisma [f2149d7](https://github.com/incubateur-ademe/account-manager/issues/f2149d7), mise à jour des workflows pour les nouvelles versions de Node [52a00b9](https://github.com/incubateur-ademe/account-manager/issues/52a00b9) et automatisation de la récupération des politiques de sécurité lors du build [#2a1e6ba](https://github.com/incubateur-ademe/account-manager/issues/2a1e6ba).
+- **Refactoring et maintenance** : renommage de composants pour plus de cohérence (ex: passage du "dossier de départ" au "dossier d'accès" [#48](https://github.com/incubateur-ademe/account-manager/issues/48)) et standardisation des noms techniques en anglais [97de2b2](https://github.com/incubateur-ademe/account-manager/issues/97de2b2).
+- **Configuration** : refactorisation de la gestion des envois d'emails (SMTP) [9f5488b](https://github.com/incubateur-ademe/account-manager/issues/9f5488b).
 
 ### Autres changements
-- **Documentation :** 
-    - Rédaction des procédures de restauration de sauvegarde.
-    - Documentation technique des configurations spécifiques (variables Coolify, ports SMTP, variables d'environnement).
-    - Planification des prochains chantiers de développement.
+- **Documentation** : enrichissement important de la documentation technique, incluant les plans d'implémentation, les procédures de restauration de sauvegarde et les explications sur la configuration des variables d'environnement (Coolify, POLICY_DIR).
