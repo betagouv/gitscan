@@ -1,16 +1,15 @@
 {
   "url": "https://github.com/SocialGouv/domifa",
   "name": "domifa",
-  "description": "Plateforme numérique facilitant la gestion de la domiciliation pour les organismes agréés et l'accès aux droits pour les personnes sans domicile stable.",
+  "description": "Plateforme numérique facilitant la gestion de la domiciliation pour les organismes agréés et permettant aux personnes sans domicile stable d'accéder à leurs droits.",
   "language": "TypeScript",
   "features": [
-    "Gestion des utilisateurs & Permissions",
     "Authentification & Accès",
+    "Statistiques & Rapports",
+    "Gestion des utilisateurs & Permissions",
     "Administration & Backoffice",
-    "Formulaires & Démarches",
-    "Notifications & Alertes",
     "Sécurité & Conformité",
-    "Statistiques & Rapports"
+    "Notifications & Alertes"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -20,10 +19,9 @@
     "TypeORM",
     "Docker",
     "Pnpm",
-    "Lerna",
+    "Brevo",
     "Sentry",
-    "Matomo",
-    "Brevo"
+    "Matomo"
   ],
   "components": [
     "API REST & GraphQL",
@@ -31,36 +29,27 @@
     "TypeScript / JavaScript",
     "Docker & Conteneurs",
     "Node.js / NestJS",
-    "Angular / Svelte / Autres SPA",
     "ORM & Accès aux données",
     "Tests",
-    "CI/CD & Déploiement"
+    "Documentation & Schémas"
   ],
   "auth": {
     "methods": [
       "mfa",
-      "session"
+      "session",
+      "jwt"
     ]
   },
-  "tests": [
-    "Tests unitaires (Frontend, Backend, Portail)",
-    "Tests d'intégration (Backend)"
-  ],
-  "workflows": [
-    "Lerna",
-    "Pnpm"
-  ],
-  "lastActivity": "2026-08-15T00:00:00Z",
-  "status": "maintained",
-  "license": null,
+  "tests": "Tests unitaires et tests d'intégration",
+  "lastActivity": "2026-08-26T00:00:00Z",
+  "status": "active",
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "TypeScript",
     "Docker & Conteneurs",
     "Bases de données SQL",
-    "Node.js, NestJS & Express",
-    "Angular, Svelte & autres SPA",
+    "Sécurité & Auth",
     "Emploi, Social & Logement"
   ]
 }

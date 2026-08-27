@@ -1,3 +1,78 @@
+# [2.260.0](https://github.com/SocialGouv/domifa/compare/v2.259.0...v2.260.0) (2026-08-26)
+
+
+### Features
+
+* **front:** add communication kit tab ([cfe2af7](https://github.com/SocialGouv/domifa/commit/cfe2af750f6c6fa336b9c731eb5a39508d8572dc))
+
+# [2.259.0](https://github.com/SocialGouv/domifa/compare/v2.258.1...v2.259.0) (2026-08-25)
+
+
+### Features
+
+* **backend:** add stats portail ([ce7b962](https://github.com/SocialGouv/domifa/commit/ce7b962c5d1aceb2cb559cc8adfeb7a2b1580ca4))
+
+## [2.258.1](https://github.com/SocialGouv/domifa/compare/v2.258.0...v2.258.1) (2026-08-24)
+
+
+### Bug Fixes
+
+* **backend:** add OTP in logs for dev mode ([e2e700e](https://github.com/SocialGouv/domifa/commit/e2e700edf7ae7260dfe646b79ee00c6ff31e1778))
+* **frontend:** add news ([01c7860](https://github.com/SocialGouv/domifa/commit/01c7860fe9608efeb6d2021d05fade3676091744))
+
+# [2.258.0](https://github.com/SocialGouv/domifa/compare/v2.257.9...v2.258.0) (2026-08-24)
+
+
+### Features
+
+* **back, front:** fix code review ([58d23a0](https://github.com/SocialGouv/domifa/commit/58d23a053f478966408039f87274b2046b8e0f7a))
+* **backend, frontend:** structure can modify their emails ([b154e4a](https://github.com/SocialGouv/domifa/commit/b154e4acefda938ff3623bd0355b435b040fcc80))
+* **front, back:** fix code review ([000661b](https://github.com/SocialGouv/domifa/commit/000661bc1b0e4e4c271d2572b205dca7733ed745))
+* **frontend:** change hint on modify email form ([cc4b3a5](https://github.com/SocialGouv/domifa/commit/cc4b3a532b941cc460e03cff59785f0d10ef221a))
+
+## [2.257.9](https://github.com/SocialGouv/domifa/compare/v2.257.8...v2.257.9) (2026-08-20)
+
+
+### Bug Fixes
+
+* **frontend:** fix display of seconds ([40d1833](https://github.com/SocialGouv/domifa/commit/40d18332913663ec544b88e63fe67e89e60232aa))
+
+## [2.257.8](https://github.com/SocialGouv/domifa/compare/v2.257.7...v2.257.8) (2026-08-20)
+
+
+### Bug Fixes
+
+* **anon:** fix date for columns ([856c394](https://github.com/SocialGouv/domifa/commit/856c3948217b13bf9473172fe1cb1b4aefd724b7))
+
+## [2.257.7](https://github.com/SocialGouv/domifa/compare/v2.257.6...v2.257.7) (2026-08-20)
+
+
+### Bug Fixes
+
+* **anon:** fix greenmask ([fc4217d](https://github.com/SocialGouv/domifa/commit/fc4217d453a630be6048b9a2eedec30c1e9833c6))
+* **anon:** fix greenmask ([a7d4871](https://github.com/SocialGouv/domifa/commit/a7d48710b6d14ed56099b52ea7b317ffa4d61789))
+
+## [2.257.6](https://github.com/SocialGouv/domifa/compare/v2.257.5...v2.257.6) (2026-08-20)
+
+
+### Bug Fixes
+
+* **backend:** fix greenmask & text for otp ([bd24e46](https://github.com/SocialGouv/domifa/commit/bd24e46e656283fbf91f29fc21d76da26d9f52a6))
+
+## [2.257.5](https://github.com/SocialGouv/domifa/compare/v2.257.4...v2.257.5) (2026-08-20)
+
+
+### Bug Fixes
+
+* **frontend:** add counter & 5minutes to OTP ([1b9b766](https://github.com/SocialGouv/domifa/commit/1b9b766cefa613106e6182823462a453b5051a23))
+
+## [2.257.4](https://github.com/SocialGouv/domifa/compare/v2.257.3...v2.257.4) (2026-08-20)
+
+
+### Bug Fixes
+
+* **anon:** upgrade greenmask & add columns ([6f1657c](https://github.com/SocialGouv/domifa/commit/6f1657c2a80bb79792a5316bee217d4a4ae4a4d2))
+
 ## [2.257.3](https://github.com/SocialGouv/domifa/compare/v2.257.2...v2.257.3) (2026-08-15)
 
 
