@@ -1,53 +1,57 @@
 {
   "url": "https://github.com/IA-Generative/abrege",
   "name": "abrege",
-  "description": "Abrege est un outil de résumé de documents évolutif, capable de gérer des documents de toute longueur. Il supporte différents formats de fichiers et utilise une architecture Map-Reduce asynchrone pour fournir des résumés concis et de haute qualité.",
+  "description": "Outil de résumé de documents scalable utilisant une architecture Map-Reduce asynchrone pour traiter des fichiers volumineux. Il intègre l'OCR, le scraping web et la génération de questions-réponses via des LLM.",
   "language": "Python",
   "features": [
-    "Gestion documentaire & Fichiers",
     "Intelligence Artificielle & NLP",
-    "API & Intégrations"
+    "Gestion documentaire & Fichiers",
+    "API & Intégrations",
+    "Gestion des médias & Assets",
+    "Collaboration & Workflow"
   ],
   "audience": "Professionnels",
   "dependencies": [
-    "Redis",
-    "RabbitMQ",
-    "Docker",
+    "FastAPI",
     "Celery",
-    "Langfuse"
+    "Redis",
+    "OpenAI",
+    "Pydantic",
+    "MinIO",
+    "Keycloak",
+    "Langfuse",
+    "Vue.js"
   ],
   "components": [
     "API REST & GraphQL",
     "Python (scripts & backend)",
+    "Intelligence Artificielle / ML",
     "Docker & Conteneurs",
-    "Task Broker",
-    "Microservices & Architecture"
+    "Celery & Queue asynchrone",
+    "Authentification (composant)",
+    "TypeScript / JavaScript"
   ],
   "auth": {
     "methods": [
-      "oauth2",
-      "api-key"
+      "jwt",
+      "sso"
+    ],
+    "providers": [
+      "Keycloak"
     ]
   },
-  "tests": [
-    "Pytest"
-  ],
+  "tests": "Tests unitaires et de bout en bout via Makefile",
   "workflows": [
-    "CI/CD & Déploiement"
+    "CI/CD"
   ],
   "lastActivity": "2026-07-18T00:00:00Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
   "tags": [
-    "Données & Open Data",
     "Intelligence Artificielle & LLM",
-    "API & Intégrations"
+    "Python",
+    "Docker & Conteneurs",
+    "NLP & ML"
   ]
 }
