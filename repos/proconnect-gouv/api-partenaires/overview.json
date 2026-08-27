@@ -1,22 +1,25 @@
 {
   "url": "https://github.com/proconnect-gouv/api-partenaires",
   "name": "api-partenaires",
-  "description": "API permettant aux fournisseurs OIDC proches de ProConnect de modifier une partie limitée de leur configuration de production.",
+  "description": "API permettant aux fournisseurs OIDC de modifier une partie limitée de leur configuration de production pour ProConnect.",
   "language": "TypeScript",
   "features": [
-    "Authentification & Accès",
-    "API & Intégrations"
+    "API & Intégrations",
+    "Authentification & Accès"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "hono",
     "mongodb",
-    "zod"
+    "zod",
+    "bun"
   ],
   "components": [
     "API REST & GraphQL",
     "TypeScript / JavaScript",
-    "MongoDB & NoSQL"
+    "MongoDB & NoSQL",
+    "Docker & Conteneurs",
+    "Tests"
   ],
   "auth": {
     "methods": [
@@ -24,15 +27,13 @@
     ],
     "providers": []
   },
-  "tests": [
-    "bun test src"
-  ],
+  "tests": "Bun test, tests d'intégration avec Docker Compose",
   "workflows": [
     "ci.yml",
     "config-lint.yml",
     "docker.yml"
   ],
-  "lastActivity": "2026-07-29T01:05:20+00:00",
+  "lastActivity": "2026-08-26T22:27:48+09:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -45,6 +46,7 @@
   "tags": [
     "API & Intégrations",
     "TypeScript",
-    "Sécurité & Auth"
+    "Sécurité & Auth",
+    "Docker & Conteneurs"
   ]
 }
