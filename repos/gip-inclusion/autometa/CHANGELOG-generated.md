@@ -1,30 +1,14 @@
-## Changelog : autometa (30 derniers jours, au 22 juillet 2026)
+## Changelog : autometa (30 derniers jours, au 27 août 2026)
 
 ### Résumé
-Ce mois-ci, autometa a bénéficié d'améliorations significatives de l'interface utilisateur, notamment une refonte de la navigation et l'ajout de nouveaux boutons d'action. Des optimisations de performance ont été apportées pour réduire les temps de chargement et améliorer la stabilité. De plus, l'intégration avec Zendesk a été renforcée et des bases pour l'intégration de modèles de langage (embeddings) ont été posées.
+Les dernières évolutions renforcent les capacités d'analyse de l'assistant avec l'ajout de nouveaux outils de requêtage et une interface plus flexible. En parallèle, la stabilité et la fiabilité du système ont été nettement améliorées grâce à une optimisation des sauvegardes, une meilleure gestion des erreurs et une automatisation accrue des tests et du déploiement.
 
 ### Évolutions fonctionnelles
-- Refonte complète de la navigation principale (sidebar et page d'accueil) pour une meilleure expérience utilisateur. [#178]
-- Ajout d'un bouton "Créer un tableau de bord" pour faciliter la création de rapports personnalisés. [#178]
-- Rafraîchissement des conversations récentes dans la sidebar via htmx, corrigeant un bug existant. [#172]
-- Ajout de tooltips (infobulles) pour les sections Jobs, Cron et Tag Manager pour une meilleure compréhension des fonctionnalités. [#115fa66]
-- Intégration de l'Accueil Plateforme preprod (site 226) au Tag Manager pour un suivi plus précis. [#179]
-- Ajout d'une skill Zendesk pour interroger les données de support client. [#c39199f]
-- Anonymisation par défaut des numéros NIR français dans les tickets Zendesk pour la protection des données personnelles. [#f024047]
-- Création d'un glossaire métier (bizdev) pour une meilleure compréhension des termes utilisés. [#169]
+- Ajout d'une nouvelle capacité de requêtage via l'intégration Tally [#167](https://github.com/gip-inclusion/autometa/issues/167).
+- Personnalisation de la page d'accueil [#199](https://github.com/gip-inclusion/autometa/issues/199).
+- Corrections d'interface : sélection multi-lignes dans le champ de nouvelle conversation [#185](https://github.com/gip-inclusion/autometa/issues/185), erreurs de rendu Mermaid [#198](https://github.com/gip-inclusion/autometa/issues/198) et correction des doublons de création de conversation lors de la navigation.
 
 ### Évolutions techniques
-- Implémentation initiale des embeddings de messages avec le modèle model2vec, ouvrant la voie à l'utilisation de l'IA pour l'analyse sémantique. [#164]
-- Optimisation de la récupération de session S3 pour éviter les re-téléchargements redondants et améliorer les performances. [#161]
-- Amélioration de la gestion des erreurs lors de la sauvegarde S3, en traitant les erreurs temporaires sans interrompre le processus. [#160]
-- Mise en place d'une configuration Dependabot pour la gestion automatique des mises à jour de `uv` et `github-actions`. [#163]
-- Amélioration du selftest pour une meilleure détection des problèmes de configuration. [#165]
-- Correction d'un problème empêchant le démarrage de l'application sur une base de données fraîche. [#166]
-- Renforcement de la couverture de tests avec l'ajout de phases de tests progressives (gel du plancher de couverture, détection de tests creux, seuil de couverture sur les lignes modifiées). [#177, #176, #175, #174]
-- Simplification de l'objet `Environment` pour une meilleure gestion de la configuration. [#158, #156]
-
-### Autres changements
-- Correction de bugs et amélioration de la qualité du code. [#55f3f74]
-- Les erreurs détectées sont désormais enregistrées en base de données au lieu d'être envoyées sur Slack. [#170]
-- Mise à jour de la librairie Pillow en version 12.3.0 pour corriger des vulnérabilités de sécurité. [#f14d3d5]
-- Divers retours de revue implémentés pour améliorer l'interface utilisateur et corriger des problèmes d'accessibilité. [#620811a, #2f67103, #115fa66]
+- **Infrastructure & CI/CD** : Amélioration de la suite de tests (tests unitaires et intégration) [#181](https://github.com/gip-inclusion/autometa/issues/181), mise en place de "review apps" sur Scalingo pilotées par la CI [#191](https://github.com/gip-inclusion/autometa/issues/191) et optimisation de la compression des assets lors de la synchronisation vers les buckets publics [#197](https://github.com/gip-inclusion/autometa/issues/197).
+- **Données & Stockage** : Optimisation et sécurisation des sauvegardes S3 via l'activation du versioning [#186](https://github.com/gip-inclusion/autometa/issues/186) [#187](https://github.com/gip-inclusion/autometa/issues/187) et ajout d'une nouvelle source de données de test (Dora staging) [#202](https://github.com/gip-inclusion/autometa/issues/202).
+- **Fiabilité & Code** : Refactorisation des clients PostgreSQL pour simplifier l'accès aux données [#203](https://github.com/gip-inclusion/autometa/issues/203) et amélioration de la résilience des tâches planifiées (gestion des timeouts Metabase) [#182](https://github.com/gip-inclusion/autometa/issues/182).
