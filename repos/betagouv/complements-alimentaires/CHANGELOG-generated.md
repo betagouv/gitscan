@@ -1,30 +1,26 @@
 ## Changelog : complements-alimentaires (30 derniers jours, au 20/08/2026)
 
 ### Résumé
-Ce mois a été marqué par une modernisation majeure de l'infrastructure frontend avec la migration vers Vite, ainsi que par une série de corrections visant à stabiliser l'expérience utilisateur. Les améliorations portent principalement sur la fiabilité des filtres de recherche, l'affichage des données d'ingrédients et la correction des processus d'exportation (Excel et PDF).
+Ce mois a été marqué par une modernisation majeure de l'architecture frontend avec la migration vers Vite, visant à améliorer les performances de développement. Parallèlement, plusieurs correctifs ont été apportés pour stabiliser l'expérience utilisateur, notamment sur la gestion des filtres de recherche, la fiabilité des téléchargements de documents (PDF, Excel) et la navigation sur le site.
 
 ### Évolutions fonctionnelles
-- **Corrections de bugs** :
-    - Résolution des problèmes liés aux filtres de statut ([#3072](https://github.com/betagouv/complements-alimentaires/pull/3072)).
-    - Correction d'une erreur 404 survenant lors de l'accès à une déclaration sans déclarant ([#3071](https://github.com/betagouv/complements-alimentaires/pull/3071)).
-    - Correction des URLs de téléchargement pour les fichiers Excel ([#3064](https://github.com/betagouv/complements-alimentaires/pull/3064)) et pour les certificats PDF ([#3034](https://github.com/betagouv/complements-alimentaires/pull/3034)).
-    - Correction du composant de création d'entreprise.
-- **Améliorations de l'interface** :
-    - Optimisation de l'affichage des listes : possibilité de supprimer les filtres dans les tableaux d'entreprises et de compléments alimentaires ([#3066](https://github.com/betagouv/complements-alimentaires/pull/3066)).
-    - Amélioration de la lisibilité des ingrédients et substances (masquage des tableaux vides pour les substances non actives et mise à jour des labels).
+- **Amélioration de la gestion des filtres** : possibilité de réinitialiser les filtres sur les listes d'entreprises et de compléments alimentaires ([#3066](https://github.com/betagouv/complements-alimentaires/pull/3066)).
+- **Corrections des téléchargements** : résolution de bugs impactant l'URL de téléchargement des exports Excel ([#3064](https://github.com/betagouv/complements-alimentaires/pull/3064)) et la génération des certificats PDF ([#3034](https://github.com/betagouv/complements-alimentaires/pull/3034)).
+- **Fiabilisation de la navigation et de l'affichage** : 
+    - Correction d'erreurs 404 sur les déclarations sans déclarant ([#3071](https://github.com/betagouv/complements-alimentaires/pull/3071)).
+    - Résolution de problèmes liés aux filtres de statut ([#3072](https://github.com/betagouv/complements-alimentaires/pull/3072)).
+    - Correction du composant de création d'entreprise ([#3063](https://github.com/betagouv/complements-alimentaires/pull/3063)).
+- **Optimisation de l'affichage des données** : amélioration de la présentation des ingrédients et substances (affichage ciblé des substances actives et masquage des tableaux vides).
 
 ### Évolutions techniques
-- **Modernisation du Frontend** :
-    - Migration vers l'architecture Vite ([#3050](https://github.com/betagouv/complements-alimentaires/pull/3050)) et suppression des anciens processus de build npm ([#3052](https://github.com/betagouv/complements-alimentaires/pull/3052)).
-    - Mise en place d'un nouveau workflow GitHub Actions pour la construction (build) du frontend.
-    - Centralisation des appels API via l'utilisation de `createFetch`.
-- **Infrastructure et Déploiement** :
-    - Optimisation de la configuration Docker et intégration de Vite-Docker ([#3065](https://github.com/betagouv/complements-alimentaires/pull/3065)).
-    - Meilleure gestion de la configuration via l'utilisation de variables d'environnement pour les URLs de l'API et du backend.
-    - Exposition du frontend et ajustements des politiques de sécurité (CSP).
+- **Migration de l'architecture frontend** : passage à Vite pour moderniser le build et le développement ([#3050](https://github.com/betagouv/complements-alimentaires/pull/3050), [#3065](https://github.com/betagouv/complements-alimentaires/pull/3065)).
+- **Modernisation de la CI/CD** : ajout de nouveaux workflows GitHub Actions pour la construction (build) du frontend.
+- **Refactoring et infrastructure** :
+    - Centralisation des appels API et des credentials via l'utilisation de `createFetch`.
+    - Optimisation de l'image Docker et exposition du frontend.
+    - Passage au format `type:module` pour le JavaScript.
+    - Mise à jour de la gestion des variables d'environnement pour l'URL de l'API.
 
 ### Autres changements
-- **Documentation et Nettoyage** :
-    - Mise à jour du fichier README.
-    - Suppression de fichiers et de tags obsolètes (notamment `python.json` et certains tags redondants).
-    - Déplacement du fichier `robots.txt`.
+- **Nettoyage du code** : suppression de dépendances obsolètes, de fichiers de configuration inutilisés (`python.json`) et de tags de template redondants.
+- **Documentation et configuration** : mise à jour du README, ajout d'un fichier d'exemple pour les variables d'environnement (`env.example`) et ajustement du fichier `robots.txt`.
