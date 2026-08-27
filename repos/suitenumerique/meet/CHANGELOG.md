@@ -8,9 +8,32 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [1.29.0] - 2026-08-25
+
+### Added
+
+- ✨(any) let any authenticated user manage the lobby on trusted rooms
+
+### Changed
+
+- 📱(frontend) collapse mobile control bar items on narrow viewports
+- 📱(frontend) stack idle modal buttons in a column on mobile
+- 📱(frontend) improve feedback screen responsiveness on mobile
+- ⬆️(frontend) upgrade @fontsource-variable/atkinson-hyperlegible-next
+- ⬆️(frontend) upgrade i18next-resources-to-backend from 1.2.1 to 1.2.3
+- ⬆️(frontend) upgrade @tanstack/react-query from 5.101.1 to 5.101.4
+- ⬆️(frontend) upgrade @pandacss/preset-panda from 1.11.3 to 1.12.0
+- ⬆️(frontend) upgrade posthog-js from 1.404.1 to 1.409.5
+- ⚡️(frontend) apply frugal constraint to the active meeting audio track
+- ⚡️(backend) replace blocking Redis KEYS with cursor-based SCAN
+- ✨(summary) add hostname to analytics properties
+
+## [1.28.0] - 2026-08-24
+
 ### Added
 
 - 📈(frontend) track errors when starting or stopping a recording
+- 🚸(frontend) explain camera-in-use failures on the join screen
 
 ### Changed
 
@@ -31,6 +54,10 @@ and this project adheres to
 - 🐛(frontend) stop init_virtual_background from firing on blur updates
 - 🐛(frontend) hoist mute confirmation dialog to VideoConference level
 - 🐛(frontend) fix joined notification tile no longer rendering properly
+- 🐛(frontend) handle device-in-use errors on Chrome / Windows 10
+- 🐛(frontend) handle Firefox/Windows AbortError on device start
+- 🐛(frontend) treat "Timeout starting source" AbortError as device-in-use
+- 🔇(frontend) suppress leaked WebSocket error events from livekit-client
 
 ## [1.27.0] - 2026-08-14
 

@@ -330,6 +330,7 @@
     │   │   │   ├── lobby.py
     │   │   │   ├── marketing.py
     │   │   │   ├── participants_management.py
+    │   │   │   ├── presence.py
     │   │   │   ├── provisional_user_service.py
     │   │   │   ├── room_creation.py
     │   │   │   ├── room_management.py
@@ -411,6 +412,7 @@
     │   │   │   │   ├── test_api_rooms_invite.py
     │   │   │   │   ├── test_api_rooms_list.py
     │   │   │   │   ├── test_api_rooms_lobby.py
+    │   │   │   │   ├── test_api_rooms_lobby_trusted.py
     │   │   │   │   ├── test_api_rooms_participants_management.py
     │   │   │   │   ├── test_api_rooms_rename_toggle.py
     │   │   │   │   ├── test_api_rooms_retrieve.py
@@ -426,6 +428,7 @@
     │   │   │   │   ├── test_livekit_events.py
     │   │   │   │   ├── test_lobby.py
     │   │   │   │   ├── test_marketing.py
+    │   │   │   │   ├── test_presence.py
     │   │   │   │   ├── test_room_management.py
     │   │   │   │   ├── test_sip_management.py
     │   │   │   │   └── test_subtitle.py
@@ -860,6 +863,7 @@
     │   │   │   │   │   ├── InviteDialog.tsx
     │   │   │   │   │   ├── Join.tsx
     │   │   │   │   │   ├── Lobby.tsx
+    │   │   │   │   │   ├── LobbyProvider.tsx
     │   │   │   │   │   ├── MediaDeviceErrorAlert.tsx
     │   │   │   │   │   ├── Permissions.tsx
     │   │   │   │   │   ├── Rating.tsx
@@ -869,6 +873,7 @@
     │   │   │   │   ├── hooks
     │   │   │   │   │   ├── useLobby.ts
     │   │   │   │   │   ├── useWatchDeviceAvailability.ts
+    │   │   │   │   │   ├── useWatchDeviceReleased.ts
     │   │   │   │   │   └── useWatchPermissions.ts
     │   │   │   │   ├── index.ts
     │   │   │   │   ├── livekit
@@ -930,11 +935,13 @@
     │   │   │   │   │   │       ├── EffectsConfiguration.tsx
     │   │   │   │   │   │       └── FunnyEffects.tsx
     │   │   │   │   │   ├── hooks
+    │   │   │   │   │   │   ├── useCanManageLobby.ts
     │   │   │   │   │   │   ├── useCanMute.ts
     │   │   │   │   │   │   ├── useCanPublishTrack.ts
     │   │   │   │   │   │   ├── useCannotUseDevice.ts
     │   │   │   │   │   │   ├── useCopyRoomToClipboard.ts
     │   │   │   │   │   │   ├── useDeviceIcons.ts
+    │   │   │   │   │   │   ├── useDeviceInUse.ts
     │   │   │   │   │   │   ├── useDeviceMissing.ts
     │   │   │   │   │   │   ├── useDeviceShortcut.ts
     │   │   │   │   │   │   ├── useFocusToggleParticipant.ts
@@ -967,8 +974,11 @@
     │   │   │   │   │   │   │   ├── MoreOptions.tsx
     │   │   │   │   │   │   │   └── ResponsiveMenu.tsx
     │   │   │   │   │   │   └── VideoConference.tsx
-    │   │   │   │   │   └── processors
-    │   │   │   │   │       └── RnnNoiseProcessor.ts
+    │   │   │   │   │   ├── processors
+    │   │   │   │   │   │   └── RnnNoiseProcessor.ts
+    │   │   │   │   │   └── utils
+    │   │   │   │   │       ├── constants.ts
+    │   │   │   │   │       └── mediaPermissions.ts
     │   │   │   │   ├── routes
     │   │   │   │   │   ├── Feedback.tsx
     │   │   │   │   │   └── Room.tsx
@@ -1414,4 +1424,4 @@
             └── unit
                 ├── test_file_service.py
                 └── test_user_assign.py
-267 directories, 1149 files
+268 directories, 1158 files
