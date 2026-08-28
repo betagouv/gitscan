@@ -1,61 +1,61 @@
 {
   "url": "https://github.com/datagouv/apistration",
   "name": "apistration",
-  "description": "Plateforme de gestion d'API (APIM) et de documentation pour les API Entreprise et Particulier du gouvernement français. Elle permet l'administration des services, la gestion des clés d'accès et la fourniture de SDK officiels.",
+  "description": "Plateforme de gestion d'API (APIM) et de documentation pour les API Entreprise et Particulier de l'État français. Elle permet l'administration, la gestion des accès et la fourniture de SDK officiels.",
   "language": "Ruby",
   "features": [
     "API & Intégrations",
     "Authentification & Accès",
     "Administration & Backoffice",
-    "Sécurité & Conformité",
-    "Suivi & Traçabilité",
-    "Accessibilité & i18n"
+    "Gestion des utilisateurs & Permissions",
+    "Données & Schémas"
   ],
-  "audience": "Développeurs",
+  "audience": "Professionnels",
   "dependencies": [
-    "Ruby",
-    "Rails",
+    "Ruby on Rails",
     "PostgreSQL",
     "Redis",
     "Node.js",
     "TypeScript",
-    "Faraday"
+    "OpenAPI"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "Ruby on Rails",
-    "Documentation & Schémas",
-    "Webhooks & Événements",
-    "Authentification (composant)",
     "TypeScript / JavaScript",
+    "Documentation & Schémas",
+    "Authentification (composant)",
     "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
-      "api-key",
+      "oauth2",
       "jwt",
-      "oauth2"
+      "api-key"
+    ],
+    "providers": [
+      "HubEE"
     ]
   },
   "tests": [
     "RSpec",
-    "Vitest"
+    "Vitest",
+    "Webmock"
   ],
   "workflows": [
-    "CI/CD"
+    "CI/CD",
+    "GitHub Actions"
   ],
-  "lastActivity": "2026-08-10T14:44:18+02:00",
-  "status": "maintained",
+  "lastActivity": "2026-08-27T13:53:53+02:00",
+  "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
     "Données & Open Data",
-    "Standards & Schémas",
-    "Documentation",
-    "Git & DevOps",
+    "Écosystème beta.gouv / État",
     "TypeScript",
-    "JavaScript",
-    "Node.js, NestJS & Express"
+    "Git & DevOps",
+    "Standards & Schémas",
+    "CI/CD & GitHub Actions"
   ]
 }

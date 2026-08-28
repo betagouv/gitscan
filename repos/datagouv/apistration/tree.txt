@@ -397,7 +397,8 @@
 │   │   │   ├── insee.yml
 │   │   │   ├── men.yml
 │   │   │   ├── mesri.yml
-│   │   │   └── mi.yml
+│   │   │   ├── mi.yml
+│   │   │   └── siaf.yml
 │   │   ├── api_entreprise
 │   │   │   ├── 10_dgfip_chiffres_affaires.yml
 │   │   │   ├── 12_bdf_bilans.yml
@@ -434,7 +435,8 @@
 │   │   │   ├── datasubvention_subventions.yml
 │   │   │   ├── dgfip_liens_capitalistiques.yml
 │   │   │   ├── dgfip_numero_tva.yml
-│   │   │   └── gip_mds_effectifs.yml
+│   │   │   ├── gip_mds_effectifs.yml
+│   │   │   └── ministere_interieur_siaf_fondations.yml
 │   │   ├── api_particulier
 │   │   │   ├── ants_siv.yml
 │   │   │   ├── cnaf_msa_allocation_education_enfant_handicape.yml
@@ -495,9 +497,6 @@
 │   │   ├── generate_token.rb
 │   │   └── test_using_docker.sh
 │   ├── commons -> ../commons
-│   ├── future_payloads
-│   │   ├── README.md
-│   │   └── example.yml
 │   ├── lib
 │   │   ├── generate_code_sample_from_path.rb
 │   │   ├── generate_payload_readme.rb
@@ -582,6 +581,7 @@
 │   │   │   └── summary.csv
 │   │   ├── api_entreprise_v3_dgfip_tva
 │   │   │   ├── 200-single.yaml
+│   │   │   ├── 404.yaml
 │   │   │   ├── README.md
 │   │   │   └── summary.csv
 │   │   ├── api_entreprise_v3_european_commission_vies
@@ -641,6 +641,7 @@
 │   │   │   ├── README.md
 │   │   │   └── summary.csv
 │   │   ├── api_entreprise_v3_insee_adresses_etablissements
+│   │   │   ├── 404.yaml
 │   │   │   ├── README.md
 │   │   │   ├── association.yaml
 │   │   │   ├── association_regime_alsace_moselle.yaml
@@ -650,6 +651,7 @@
 │   │   │   ├── personne_physique_non-diffusible.yaml
 │   │   │   └── summary.csv
 │   │   ├── api_entreprise_v3_insee_adresses_etablissements_diffusables
+│   │   │   ├── 404.yaml
 │   │   │   ├── README.md
 │   │   │   ├── association.yaml
 │   │   │   ├── association_regime_alsace_moselle.yaml
@@ -670,6 +672,7 @@
 │   │   │   ├── personne_physique_non-diffusible.yaml
 │   │   │   └── summary.csv
 │   │   ├── api_entreprise_v3_insee_etablissements_diffusables
+│   │   │   ├── 404.yaml
 │   │   │   ├── README.md
 │   │   │   ├── association.yaml
 │   │   │   ├── association_regime_alsace_moselle.yaml
@@ -679,6 +682,7 @@
 │   │   │   ├── personne_physique_non-diffusible.yaml
 │   │   │   └── summary.csv
 │   │   ├── api_entreprise_v3_insee_sieges_diffusables_unites_legales
+│   │   │   ├── 404.yaml
 │   │   │   ├── README.md
 │   │   │   ├── association.yaml
 │   │   │   ├── association_regime_alsace_moselle.yaml
@@ -688,6 +692,7 @@
 │   │   │   ├── personne_physique_non-diffusible.yaml
 │   │   │   └── summary.csv
 │   │   ├── api_entreprise_v3_insee_sieges_unites_legales
+│   │   │   ├── 404.yaml
 │   │   │   ├── README.md
 │   │   │   ├── association.yaml
 │   │   │   ├── association_regime_alsace_moselle.yaml
@@ -705,6 +710,7 @@
 │   │   │   ├── README.md
 │   │   │   └── summary.csv
 │   │   ├── api_entreprise_v3_insee_unites_legales
+│   │   │   ├── 404.yaml
 │   │   │   ├── README.md
 │   │   │   ├── association.yaml
 │   │   │   ├── association_regime_alsace_moselle.yaml
@@ -714,6 +720,7 @@
 │   │   │   ├── personne_physique_non-diffusible.yaml
 │   │   │   └── summary.csv
 │   │   ├── api_entreprise_v3_insee_unites_legales_diffusables
+│   │   │   ├── 404.yaml
 │   │   │   ├── README.md
 │   │   │   ├── association.yaml
 │   │   │   ├── association_regime_alsace_moselle.yaml
@@ -729,6 +736,15 @@
 │   │   │   └── summary.csv
 │   │   ├── api_entreprise_v3_mi_documents_associations
 │   │   │   ├── 200.yaml
+│   │   │   ├── 404.yaml
+│   │   │   ├── README.md
+│   │   │   └── summary.csv
+│   │   ├── api_entreprise_v3_mi_siaf_fondations
+│   │   │   ├── 200_fdd.yaml
+│   │   │   ├── 200_fe.yaml
+│   │   │   ├── 200_frup.yaml
+│   │   │   ├── 200_frup_by_siren.yaml
+│   │   │   ├── 200_frup_by_siret.yaml
 │   │   │   ├── 404.yaml
 │   │   │   ├── README.md
 │   │   │   └── summary.csv
@@ -774,6 +790,7 @@
 │   │   │   ├── README.md
 │   │   │   └── summary.csv
 │   │   ├── api_entreprise_v4_acoss_attestations_sociales
+│   │   │   ├── 404.yaml
 │   │   │   ├── README.md
 │   │   │   ├── attestation_delivree.yaml
 │   │   │   ├── attestation_non_delivree.yaml
@@ -799,6 +816,7 @@
 │   │   │   ├── personne_physique_non-diffusible.yaml
 │   │   │   └── summary.csv
 │   │   ├── api_entreprise_v4_insee_etablissements_diffusables
+│   │   │   ├── 404.yaml
 │   │   │   ├── README.md
 │   │   │   ├── association.yaml
 │   │   │   ├── association_regime_alsace_moselle.yaml
@@ -808,6 +826,7 @@
 │   │   │   ├── personne_physique_non-diffusible.yaml
 │   │   │   └── summary.csv
 │   │   ├── api_entreprise_v4_insee_sieges_diffusables_unites_legales
+│   │   │   ├── 404.yaml
 │   │   │   ├── README.md
 │   │   │   ├── association.yaml
 │   │   │   ├── association_regime_alsace_moselle.yaml
@@ -817,6 +836,7 @@
 │   │   │   ├── personne_physique_non-diffusible.yaml
 │   │   │   └── summary.csv
 │   │   ├── api_entreprise_v4_insee_sieges_unites_legales
+│   │   │   ├── 404.yaml
 │   │   │   ├── README.md
 │   │   │   ├── association.yaml
 │   │   │   ├── association_regime_alsace_moselle.yaml
@@ -826,6 +846,7 @@
 │   │   │   ├── personne_physique_non-diffusible.yaml
 │   │   │   └── summary.csv
 │   │   ├── api_entreprise_v4_insee_unites_legales
+│   │   │   ├── 404.yaml
 │   │   │   ├── README.md
 │   │   │   ├── association.yaml
 │   │   │   ├── association_regime_alsace_moselle.yaml
@@ -835,6 +856,7 @@
 │   │   │   ├── personne_physique_non-diffusible.yaml
 │   │   │   └── summary.csv
 │   │   ├── api_entreprise_v4_insee_unites_legales_diffusables
+│   │   │   ├── 404.yaml
 │   │   │   ├── README.md
 │   │   │   ├── association.yaml
 │   │   │   ├── association_regime_alsace_moselle.yaml
@@ -844,6 +866,7 @@
 │   │   │   ├── personne_physique_non-diffusible.yaml
 │   │   │   └── summary.csv
 │   │   ├── api_entreprise_v4_mi_unites_legales
+│   │   │   ├── 404.yaml
 │   │   │   ├── README.md
 │   │   │   ├── association.yaml
 │   │   │   ├── association_regime_alsace_moselle.yaml
@@ -1248,6 +1271,7 @@
 │   │   │   ├── france_connect_cnaf.yaml
 │   │   │   └── summary.csv
 │   │   ├── api_particulier_v3_cnav_quotient_familial_with_civility
+│   │   │   ├── 200-1_parent_3_mineurs.yaml
 │   │   │   ├── 200-QF-150-CNAF.yaml
 │   │   │   ├── 200-QF-CNAF-etranger-pas-de-date-naissance.yaml
 │   │   │   ├── 200-aitali-leyna-4_enfants.yaml
@@ -1277,7 +1301,6 @@
 │   │   │   ├── 200-martin-pierre-3_enfants.yaml
 │   │   │   ├── 200-moreau-claire-3_enfants.yaml
 │   │   │   ├── 200-moreau-emma-3_enfants.yaml
-│   │   │   ├── 200-nom-usage-1_parent_3_mineurs.yaml
 │   │   │   ├── 200-nom-usage-femme-seule-qf_caf_800.yaml
 │   │   │   ├── 200-parent-1_enfant_non_scolarise.yaml
 │   │   │   ├── 200-parent-2_enfants.yaml
@@ -1393,6 +1416,7 @@
 │   │   │   ├── id_123460A_inscrit_toulouse_2025.yaml
 │   │   │   ├── id_123461A_desinscrit_toulouse_2025.yaml
 │   │   │   ├── id_123462A_desinscrit_toulouse_2025.yaml
+│   │   │   ├── id_123463A_inscrit_paris.yaml
 │   │   │   └── summary.csv
 │   │   ├── api_particulier_v3_gip_mds_service_civique_with_civility
 │   │   │   ├── 200-volontaire-actif-et-passe.yaml
@@ -1506,10 +1530,12 @@
 │   │   │   ├── 200_boursier.yaml
 │   │   │   ├── 200_boursier_campagne_anterieure.yaml
 │   │   │   ├── 200_non_boursier.yaml
+│   │   │   ├── 404.yaml
 │   │   │   ├── README.md
 │   │   │   └── summary.csv
 │   │   ├── api_particulier_v4_cnous_etudiant_boursier_with_france_connect
 │   │   │   ├── 200_boursier_campagne_anterieure.yaml
+│   │   │   ├── 404.yaml
 │   │   │   ├── README.md
 │   │   │   ├── fake_france_connect.yaml
 │   │   │   ├── france_connect.yaml
@@ -1531,6 +1557,7 @@
 │   │   │   ├── 200_boursier_riri_duck.yaml
 │   │   │   ├── 200_non_boursier_fifi_duck.yaml
 │   │   │   ├── 200_radie.yaml
+│   │   │   ├── 404.yaml
 │   │   │   ├── README.md
 │   │   │   └── summary.csv
 │   │   ├── api_particulier_v4_men_scolarites_with_civility
@@ -1545,10 +1572,12 @@
 │   │   │   ├── 200_boursier.yaml
 │   │   │   ├── 200_boursier_campagne_anterieure.yaml
 │   │   │   ├── 200_non_boursier.yaml
+│   │   │   ├── 404.yaml
 │   │   │   ├── README.md
 │   │   │   └── summary.csv
 │   │   ├── api_particulier_v5_cnous_etudiant_boursier_with_france_connect
 │   │   │   ├── 200_boursier_campagne_anterieure.yaml
+│   │   │   ├── 404.yaml
 │   │   │   ├── README.md
 │   │   │   ├── fake_france_connect.yaml
 │   │   │   ├── france_connect.yaml
@@ -1570,6 +1599,7 @@
 │   │   │   ├── 200_boursier_riri_duck.yaml
 │   │   │   ├── 200_non_boursier_fifi_duck.yaml
 │   │   │   ├── 200_radie.yaml
+│   │   │   ├── 404.yaml
 │   │   │   ├── README.md
 │   │   │   └── summary.csv
 │   │   ├── api_particulier_v5_men_scolarites_with_civility
@@ -1742,6 +1772,8 @@
 │   │   │   │       ├── mi
 │   │   │   │       │   ├── associations_controller.rb
 │   │   │   │       │   ├── documents_associations_controller.rb
+│   │   │   │       │   ├── siaf
+│   │   │   │       │   │   └── fondations_controller.rb
 │   │   │   │       │   ├── unites_legales_controller.rb
 │   │   │   │       │   └── unites_legales_open_data_controller.rb
 │   │   │   │       ├── msa
@@ -2277,15 +2309,18 @@
 │   │   │   │       └── with_ine
 │   │   │   │           └── make_request.rb
 │   │   │   ├── mi
-│   │   │   │   └── associations
-│   │   │   │       ├── build_resource.rb
-│   │   │   │       ├── documents
-│   │   │   │       │   ├── build_resource_collection.rb
-│   │   │   │       │   └── validate_response.rb
-│   │   │   │       ├── make_request.rb
-│   │   │   │       ├── payload_parser.rb
-│   │   │   │       ├── payload_parsing.rb
-│   │   │   │       └── validate_response.rb
+│   │   │   │   ├── associations
+│   │   │   │   │   ├── build_resource.rb
+│   │   │   │   │   ├── documents
+│   │   │   │   │   │   ├── build_resource_collection.rb
+│   │   │   │   │   │   └── validate_response.rb
+│   │   │   │   │   ├── make_request.rb
+│   │   │   │   │   ├── payload_parser.rb
+│   │   │   │   │   ├── payload_parsing.rb
+│   │   │   │   │   └── validate_response.rb
+│   │   │   │   └── siaf
+│   │   │   │       └── fondations
+│   │   │   │           └── make_request.rb
 │   │   │   ├── mocked_interactor.rb
 │   │   │   ├── msa
 │   │   │   │   └── conformites_cotisations
@@ -2350,6 +2385,7 @@
 │   │   │   ├── validate_siren.rb
 │   │   │   ├── validate_siren_or_rna.rb
 │   │   │   ├── validate_siren_or_siret_or_rna.rb
+│   │   │   ├── validate_siren_or_siret_or_rnf.rb
 │   │   │   ├── validate_siret.rb
 │   │   │   ├── validate_siret_or_eori.rb
 │   │   │   ├── validate_siret_or_rna.rb
@@ -2381,6 +2417,7 @@
 │   │   │   ├── editor_token.rb
 │   │   │   ├── resource.rb
 │   │   │   ├── rna_id.rb
+│   │   │   ├── rnf_id.rb
 │   │   │   ├── scope.rb
 │   │   │   ├── siren.rb
 │   │   │   ├── siret.rb
@@ -2541,7 +2578,11 @@
 │   │   │   ├── mi
 │   │   │   │   ├── associations
 │   │   │   │   │   └── documents.rb
-│   │   │   │   └── associations.rb
+│   │   │   │   ├── associations.rb
+│   │   │   │   └── siaf
+│   │   │   │       ├── fondations
+│   │   │   │       │   └── validate_params.rb
+│   │   │   │       └── fondations.rb
 │   │   │   ├── msa
 │   │   │   │   └── conformites_cotisations.rb
 │   │   │   ├── opqibi
@@ -2674,6 +2715,9 @@
 │   │   │   │   │   │   └── v3.rb
 │   │   │   │   │   ├── document_association_serializer
 │   │   │   │   │   │   └── v3.rb
+│   │   │   │   │   ├── siaf
+│   │   │   │   │   │   └── fondations_serializer
+│   │   │   │   │   │       └── v3.rb
 │   │   │   │   │   ├── unite_legale_open_data_serializer
 │   │   │   │   │   │   └── v4.rb
 │   │   │   │   │   └── unite_legale_serializer
@@ -2850,6 +2894,7 @@
 │   │   │       └── attestations_sociales_tool.rb
 │   │   ├── validators
 │   │   │   ├── rna_id_format_validator.rb
+│   │   │   ├── rnf_id_format_validator.rb
 │   │   │   ├── siren_format_validator.rb
 │   │   │   └── siret_format_validator.rb
 │   │   └── views
@@ -3896,14 +3941,17 @@
 │   │   │   │       └── with_ine
 │   │   │   │           └── make_request_spec.rb
 │   │   │   ├── mi
-│   │   │   │   └── associations
-│   │   │   │       ├── build_resource_spec.rb
-│   │   │   │       ├── documents
-│   │   │   │       │   ├── build_resource_collection_spec.rb
-│   │   │   │       │   └── validate_response_spec.rb
-│   │   │   │       ├── make_request_spec.rb
-│   │   │   │       ├── payload_parser_spec.rb
-│   │   │   │       └── validate_response_spec.rb
+│   │   │   │   ├── associations
+│   │   │   │   │   ├── build_resource_spec.rb
+│   │   │   │   │   ├── documents
+│   │   │   │   │   │   ├── build_resource_collection_spec.rb
+│   │   │   │   │   │   └── validate_response_spec.rb
+│   │   │   │   │   ├── make_request_spec.rb
+│   │   │   │   │   ├── payload_parser_spec.rb
+│   │   │   │   │   └── validate_response_spec.rb
+│   │   │   │   └── siaf
+│   │   │   │       └── fondations
+│   │   │   │           └── make_request_spec.rb
 │   │   │   ├── msa
 │   │   │   │   └── conformites_cotisations
 │   │   │   │       ├── build_resource_spec.rb
@@ -4148,7 +4196,11 @@
 │   │   │   ├── mi
 │   │   │   │   ├── associations
 │   │   │   │   │   └── documents_spec.rb
-│   │   │   │   └── associations_spec.rb
+│   │   │   │   ├── associations_spec.rb
+│   │   │   │   └── siaf
+│   │   │   │       ├── fondations
+│   │   │   │       │   └── validate_params_spec.rb
+│   │   │   │       └── fondations_spec.rb
 │   │   │   ├── msa
 │   │   │   │   └── conformites_cotisations_spec.rb
 │   │   │   ├── opqibi
@@ -4284,10 +4336,13 @@
 │   │   │   │       │       ├── v3_spec.rb
 │   │   │   │       │       └── v4_spec.rb
 │   │   │   │       ├── mi
-│   │   │   │       │   └── associations
-│   │   │   │       │       ├── documents
-│   │   │   │       │       │   └── v3_spec.rb
-│   │   │   │       │       └── v3_spec.rb
+│   │   │   │       │   ├── associations
+│   │   │   │       │   │   ├── documents
+│   │   │   │       │   │   │   └── v3_spec.rb
+│   │   │   │       │   │   └── v3_spec.rb
+│   │   │   │       │   └── siaf
+│   │   │   │       │       └── fondations
+│   │   │   │       │           └── v3_spec.rb
 │   │   │   │       ├── msa
 │   │   │   │       │   └── conformites_cotisations
 │   │   │   │       │       └── v3_spec.rb
@@ -4527,6 +4582,7 @@
 │   │   │   │   ├── remember_through_each_test_of_current_scope.rb
 │   │   │   │   ├── responses_helper.rb
 │   │   │   │   ├── rna_id.rb
+│   │   │   │   ├── rnf_id.rb
 │   │   │   │   ├── siren.rb
 │   │   │   │   ├── siret.rb
 │   │   │   │   └── tva_number.rb
@@ -5441,6 +5497,7 @@
     │   ├── clients
     │   │   ├── abstract_hubee_api_client.rb
     │   │   ├── abstract_insee_api_client.rb
+    │   │   ├── datagouv_api_client.rb
     │   │   ├── formulaire_qf_api_client.rb
     │   │   ├── hubee_api_authentication.rb
     │   │   ├── hubee_api_client.rb
@@ -5638,6 +5695,8 @@
     │   ├── jobs
     │   │   ├── application_job.rb
     │   │   ├── create_formulaire_qf_resources_job.rb
+    │   │   ├── datagouv
+    │   │   │   └── sync_fiches_job.rb
     │   │   ├── healthcheck_job.rb
     │   │   ├── schedule_authorization_request_email_job.rb
     │   │   ├── schedule_expiration_notice_email_job.rb
@@ -5773,6 +5832,11 @@
     │   │   ├── api_particulier
     │   │   │   ├── open_api_definition.rb
     │   │   │   └── open_api_definition_v2.rb
+    │   │   ├── datagouv
+    │   │   │   ├── dataservice_index.rb
+    │   │   │   ├── fiche_payload_builder.rb
+    │   │   │   ├── sync_fiche.rb
+    │   │   │   └── sync_runner.rb
     │   │   ├── markdown_interpolator.rb
     │   │   ├── metabase_embed_service.rb
     │   │   ├── migrate_legacy_token_service.rb
@@ -6258,6 +6322,7 @@
     │   │   ├── sentry.rb
     │   │   ├── sitemap_generator.rb
     │   │   ├── strong_migrations.rb
+    │   │   ├── sync_fiches_with_datagouv.rb
     │   │   └── wrap_parameters.rb
     │   ├── locales
     │   │   ├── admin_activities.fr.yml
@@ -7020,6 +7085,7 @@
     │   │   ├── datapass_webhooks_config_format_spec.rb
     │   │   └── expand_file_spec.rb
     │   ├── clients
+    │   │   ├── datagouv_api_client_spec.rb
     │   │   ├── formulaire_qf_api_client_spec.rb
     │   │   ├── hubee_api_authentication_spec.rb
     │   │   ├── hubee_api_client_spec.rb
@@ -7203,6 +7269,8 @@
     │   │       └── proconnect_login_spec.rb
     │   ├── jobs
     │   │   ├── create_formulaire_qf_resources_job_spec.rb
+    │   │   ├── datagouv
+    │   │   │   └── sync_fiches_job_spec.rb
     │   │   ├── healthcheck_job_spec.rb
     │   │   ├── schedule_authorization_request_email_job_spec.rb
     │   │   ├── schedule_expiration_notice_email_job_spec.rb
@@ -7244,6 +7312,7 @@
     │   │           ├── reporters_mailer_preview.rb
     │   │           └── token_mailer_preview.rb
     │   ├── models
+    │   │   ├── abstract_endpoint_spec.rb
     │   │   ├── abstract_fiche_pratique_spec.rb
     │   │   ├── access_log_spec.rb
     │   │   ├── admin_activity_spec.rb
@@ -7312,6 +7381,11 @@
     │   │   ├── abstract_open_api_definition_spec.rb
     │   │   ├── admin_api_token_spec.rb
     │   │   ├── announcement_banner_spec.rb
+    │   │   ├── datagouv
+    │   │   │   ├── dataservice_index_spec.rb
+    │   │   │   ├── fiche_payload_builder_spec.rb
+    │   │   │   ├── sync_fiche_spec.rb
+    │   │   │   └── sync_runner_spec.rb
     │   │   ├── metabase_embed_service_spec.rb
     │   │   ├── migrate_legacy_token_service_spec.rb
     │   │   ├── open_api_endpoint_spec.rb
@@ -7386,4 +7460,4 @@
     │   └── .gitkeep
     └── vendor
         └── .keep
-1486 directories, 6232 files
+1503 directories, 6289 files

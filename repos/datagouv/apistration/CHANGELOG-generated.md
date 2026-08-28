@@ -1,37 +1,30 @@
-## Changelog : apistration (30 derniers jours, au 10 août 2026)
+## Changelog : apistration (30 derniers jours, au 27 août 2026)
 
 ### Résumé
-Ce mois a été marqué par une évolution majeure de l'expérience "Éditeur", qui dispose désormais d'un espace dédié pour gérer ses propres accès, prolonger ses jetons (tokens) et configurer ses paramètres de sécurité en autonomie. Parallèlement, plusieurs API clés (CNOUS, Pass-Sport, Démarche numérique) ont été enrichies de nouvelles données ou fonctionnalités, tandis que la gestion interne des secrets et la précision des limitations de débit (throttling) ont été renforcées pour plus de robustesse.
+Ce mois-ci, Apistration a franchi une étape importante avec l'introduction de l'API "Fondations" (MI/SIAF) et la mise à jour de ses SDK (v0.3.0). Le projet a également bénéficié d'une refonte majeure de la gestion des identifiants pour renforcer la sécurité, ainsi que d'une automatisation accrue de la synchronisation des fiches avec data.gouv.fr.
 
 ### Évolutions fonctionnelles
-- **Autonomie des Éditeurs** : 
-    - Création d'un espace éditeur avec une page de paramètres dédiée et une navigation simplifiée.
-    - Mise en place du self-service pour la prolongation des jetons d'accès [#252](https://github.com/datagouv/apistration/pull/252).
-    - Possibilité pour les éditeurs de restreindre l'usage de leurs jetons à des plages d'adresses IP spécifiques [#307](https://github.com/datagouv/apistration/pull/307).
-    - Meilleure visibilité sur les habilitations et les délégations de ressources.
-- **Évolutions des API** :
-    - **CNOUS** : Passage à la version 5 de l'API étudiant boursier, incluant désormais l'explication et l'exposition du numéro INE [#285](https://github.com/datagouv/apistration/pull/285).
-    - **Pass-Sport** : Mise à jour des données concernant la civilité et le quotient familial (CNAF) pour les services CNAV [#320](https://github.com/datagouv/apistration/pull/320).
-    - **Démarche numérique** : Ajout d'un nouveau webhook pour l'API Particulier [#266](https://github.com/datagouv/apistration/pull/266).
-    - **DGFIP** : Clarification du titre de l'endpoint TVA pour préciser son périmètre intra-communautaire.
-- **Amélioration de l'expérience utilisateur** :
-    - Reclassification des erreurs CNAV (passage de 404 à 502) pour une meilleure interprétation technique [#321](https://github.com/datagouv/apistration/pull/321).
-    - Ajout de points de terminaison (endpoints) "ping" dans les SDK Ruby et Node.js pour faciliter le diagnostic de connectivité.
+- **Nouveaux services** : Ajout de l'API Fondations (MI/SIAF) en mode "prochainement disponible" et mise à jour de la documentation OpenAPI associée.
+- **Amélioration de l'expérience utilisateur** : 
+    - Clarification des libellés de civilité et passage de "nom de naissance" à "nom de famille" pour FranceConnect [#362](https://github.com/datagouv/apistration/pull/362), [#358](https://github.com/datagouv/apistration/pull/358).
+    - Clarification des modalités d'appel et des accès éditeurs [#331](https://github.com/datagouv/apistration/pull/331).
+- **Mises à jour métier** :
+    - Actualisation des données pour le service Pass Sport (civilité, âge et quotient familial CNAF) [#342](https://github.com/datagouv/apistration/pull/342), [#320](https://github.com/datagouv/apistration/pull/320).
+    - Support de l'année de campagne pour les services CNOUS [#360](https://github.com/datagouv/apistration/pull/360).
+    - Ajout d'un avertissement concernant la disponibilité de la base élèves durant le mois d'août.
 
 ### Évolutions techniques
-- **Gestion des secrets et sécurité** :
-    - Migration massive de l'utilisation des identifiants (HubEE, Mailjet, INSEE, etc.) vers une nouvelle source de gestion centralisée et sécurisée [#311](https://github.com/datagouv/apistration/pull/311).
-    - Correction d'une vulnérabilité (CVE) sur la gestion des fichiers via ActiveStorage [#312](https://github.com/datagouv/apistration/pull/312).
-- **Contrôle de flux (Throttling)** :
-    - Implémentation d'un système de limitation de débit granulaire permettant de définir des dépassements (overrides) par endpoint ou par utilisateur/habilitation [#294](https://github.com/datagouv/apistration/pull/294).
-- **Infrastructure et CI/CD** :
-    - Amélioration du workflow de tests : les tests de mocks sont désormais exécutés sur les pull requests provenant de forks [#329](https://github.com/datagouv/apistration/pull/329).
-    - Alignement du workflow de déploiement de l'environnement de staging avec celui du sandbox.
+- **Synchronisation data.gouv.fr** : Implémentation d'un nouveau service de synchronisation des fiches, incluant une exécution automatique au démarrage du système et une meilleure gestion des redirections HTTP [#264](https://github.com/datagouv/apistration/pull/264).
+- **Sécurité et Identifiants** : 
+    - Migration massive de tous les identifiants clients (HubEE, INSEE, Mailjet, etc.) vers une nouvelle source centralisée et sécurisée [#311](https://github.com/datagouv/apistration/pull/311).
+    - Renforcement de la sécurité des accès éditeurs via la restriction des adresses IP autorisées [#307](https://github.com/datagouv/apistration/pull/307).
+    - Correction d'une vulnérabilité (CVE) sur la gestion des fichiers (ActiveStorage) [#312](https://github.com/datagouv/apistration/pull/312).
+- **Fiabilité et Robustesse** :
+    - Optimisation de la gestion des erreurs réseau (TLS/SSL) et meilleure classification des erreurs de la CNAV [#321](https://github.com/datagouv/apistration/pull/321).
+    - Amélioration de la gestion des jetons (tokens) pour DataSubvention (mise en cache et tentatives de renouvellement automatique) [#357](https://github.com/datagouv/apistration/pull/357).
+    - Durcissement de la validation des prénoms et de la civilité pour éviter les données erronées.
+- **Infrastructure et CI/CD** : Extension de la suite de tests (mocks) pour inclure l'exécution automatique sur les pull requests, y compris celles provenant de forks [#329](https://github.com/datagouv/apistration/pull/329).
 
 ### Autres changements
-- **Documentation** :
-    - Enrichissement de la documentation sur l'intégration des éditeurs et sur la gestion des délégations.
-    - Ajout d'une entrée FAQ concernant la typologie des numéros de TVA pour la DGFIP.
-- **Maintenance** :
-    - Régénération régulière des spécifications OpenAPI (Swagger) et des SDK pour intégrer les nouveaux paramètres (notamment le `delegation_id`).
-    - Nettoyage du code via Rubocop.
+- **Documentation** : Mise à jour des listes d'API FranceConnect et nettoyage des descriptions Swagger.
+- **Maintenance** : Nettoyage des données de test obsolètes et optimisation des logs de synchronisation.
