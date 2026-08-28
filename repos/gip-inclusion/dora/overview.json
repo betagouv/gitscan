@@ -1,56 +1,67 @@
 {
   "url": "https://github.com/gip-inclusion/dora",
   "name": "dora",
-  "description": "Plateforme facilitant l'accompagnement des personnes en insertion et la gestion des services et structures sociales.",
+  "description": "Plateforme conçue pour faciliter l'accompagnement des personnes en insertion et la gestion des services et structures de soutien.",
   "language": "Python",
   "features": [
+    "Gestion métier générale",
+    "Visualisation de données & Cartographie",
+    "Administration & Backoffice",
     "Recherche & Filtres",
     "Statistiques & Rapports",
-    "Gestion des établissements & Structures",
-    "Formulaires & Démarches",
     "Notifications & Alertes",
-    "Visualisation de données & Cartographie"
+    "Gestion des utilisateurs & Permissions",
+    "Formulaires & Démarches"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Django",
-    "Svelte",
     "PostgreSQL",
     "PostGIS",
     "Redis",
-    "MinIO",
+    "SvelteKit",
     "dbt",
-    "Sentry"
+    "Sentry",
+    "MinIO",
+    "Slack"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "Angular / Svelte / Autres SPA",
+    "TypeScript / JavaScript",
     "Python (scripts & backend)",
     "Docker & Conteneurs",
-    "TypeScript / JavaScript",
-    "SIG & Géospatial"
+    "SIG & Géospatial",
+    "Authentification (composant)",
+    "ORM & Accès aux données",
+    "Webhooks & Événements"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "session"
+      "session",
+      "jwt"
     ]
   },
-  "tests": "Pytest",
+  "tests": [
+    "pytest",
+    "ruff"
+  ],
   "workflows": [
     "GitHub Actions"
   ],
-  "lastActivity": "2026-08-25T17:21:26+02:00",
+  "lastActivity": "2026-08-28T09:17:23+02:00",
   "status": "active",
+  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Données & Open Data",
-    "Python",
+    "Écosystème beta.gouv / État",
     "TypeScript",
-    "Docker & Conteneurs",
-    "SIG & Géospatial",
+    "Python",
     "Bases de données SQL",
+    "SIG & Géospatial",
+    "Docker & Conteneurs",
     "CI/CD & GitHub Actions"
   ]
 }
