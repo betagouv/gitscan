@@ -1,14 +1,11 @@
-## Changelog : euphrosyne (30 derniers jours, au 21 juillet 2026)
+## Changelog : euphrosyne (30 derniers jours, au 27 août 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'ajout de la visualisation et de la génération de notebooks HDF5, permettant une meilleure manipulation et exploration des données scientifiques. De nombreuses dépendances ont également été mises à jour pour bénéficier des dernières corrections et améliorations de sécurité.
+Les interventions récentes ont principalement porté sur la résolution d'un problème d'accès lié à l'authentification ORCID et sur la stabilisation des outils de vérification de la qualité du code.
 
 ### Évolutions fonctionnelles
-- Ajout de la visualisation et de la génération de notebooks HDF5 [#1920](https://github.com/betagouv/euphrosyne/pull/1920).
+- Correction d'une régression empêchant la connexion via le fournisseur ORCID [#1988](https://github.com/betagouv/euphrosyne/pull/1988).
 
 ### Évolutions techniques
-- Mise à jour de plusieurs dépendances Python (Django, pytest, pylint, sentry-sdk, pillow, reportlab, social-auth-app-django, ipython, django-stubs) vers leurs dernières versions stables.
-- Mise à jour des dépendances JavaScript (form-data, js-yaml, axios) vers leurs dernières versions stables.
-
-### Autres changements
-- Aucune information supplémentaire à signaler.
+- Rectification de la méthode de soumission de l'authentification ORCID (passage en POST) pour rétablir le service.
+- Résolution d'erreurs liées à l'outil de vérification de code `pylint-django`.
