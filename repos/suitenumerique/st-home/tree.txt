@@ -15,14 +15,13 @@
 ├── LICENSE
 ├── Makefile
 ├── NOTICE
-├── Process
 ├── Procfile
 ├── README.md
 ├── SECURITY.md
-├── Starting
 ├── cron.json
 ├── csp.config.mjs
 ├── data
+│   ├── .dockerignore
 │   ├── Dockerfile
 │   ├── __init__.py
 │   ├── broker.py
@@ -62,8 +61,9 @@
 │   └── rpnt-data-process.png
 ├── drizzle.config.ts
 ├── eslint.config.mjs
+├── instrumentation-client.ts
 ├── instrumentation.ts
-├── lint-staged.config.js
+├── knip.json
 ├── next-env.d.ts
 ├── next.config.mjs
 ├── package-lock.json
@@ -176,7 +176,6 @@
 │   ├── scalingo_run_web
 │   ├── seo-check.mjs
 │   └── warm-api.ts
-├── sentry.client.config.ts
 ├── sentry.server.config.ts
 ├── src
 │   ├── caddy
@@ -185,7 +184,6 @@
 │   │   ├── BackToTop.tsx
 │   │   ├── CommuneSearch.tsx
 │   │   ├── ContactUs.tsx
-│   │   ├── CopyToClipboard.tsx
 │   │   ├── CustomAlert.tsx
 │   │   ├── FaqList.tsx
 │   │   ├── FeedbackWidget.tsx
@@ -195,7 +193,6 @@
 │   │   ├── Share.tsx
 │   │   ├── StatsSlider.tsx
 │   │   ├── TrialContact.tsx
-│   │   ├── VerticalStepper.tsx
 │   │   ├── map
 │   │   │   ├── context
 │   │   │   │   ├── MapContext.tsx
@@ -223,9 +220,6 @@
 │   │   │   │   ├── useMapURLState.ts
 │   │   │   │   └── useNeighbourGeoJSON.ts
 │   │   │   ├── layers
-│   │   │   │   ├── HexbinLayer.tsx
-│   │   │   │   ├── TestDot.jsx
-│   │   │   │   ├── TestHexbin.jsx
 │   │   │   │   └── map_style.json
 │   │   │   ├── types
 │   │   │   │   └── index.ts
@@ -237,11 +231,9 @@
 │   │       ├── CommuneInfo.tsx
 │   │       ├── DepartmentPresenceView.tsx
 │   │       ├── ErrorView.tsx
-│   │       ├── MutualisationView.tsx
 │   │       ├── OPSNBasicView.tsx
 │   │       ├── OperatorServicesBlock.tsx
 │   │       ├── OrganisationPresenceView.tsx
-│   │       ├── OtherServicesView.tsx
 │   │       ├── ServiceIllustration.tsx
 │   │       ├── ServicePicker.tsx
 │   │       └── UsedServicesView.tsx
@@ -256,7 +248,6 @@
 │   │   │   ├── components.tsx
 │   │   │   └── server.tsx
 │   │   ├── hooks.ts
-│   │   ├── matomo.ts
 │   │   ├── schema.ts
 │   │   ├── scrollToHash.ts
 │   │   ├── string.ts
@@ -317,4 +308,4 @@
 └── webcomponents
     ├── demo.html
     └── st-collectivite-search.tsx
-48 directories, 360 files
+48 directories, 351 files
