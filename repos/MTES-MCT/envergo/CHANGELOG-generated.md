@@ -1,30 +1,27 @@
-## Changelog : envergo (30 derniers jours, au 25/08/2026)
+## Changelog : envergo (30 derniers jours, au 25 août 2026)
 
 ### Résumé
-Ce mois-ci, le projet a bénéficié d'une mise à jour majeure de son infrastructure pour garantir une meilleure stabilité, d'un renforcement important de la sécurité contre les failles XSS, et d'améliorations significatives de l'interface utilisateur. Ces évolutions visent notamment une meilleure utilisation sur mobile et une gestion plus intuitive des dossiers urgents et des formulaires de validation.
+Ce mois a été marqué par une mise à jour majeure de l'infrastructure technique pour améliorer la stabilité et la gestion des fichiers. Côté utilisateur, l'expérience a été enrichie par de nouveaux indicateurs visuels (badges d'urgence), une meilleure ergonomie sur mobile et une simplification des formulaires de vérification environnementale. La sécurité a également été renforcée pour protéger l'application contre les injections de données malveillantes.
 
 ### Évolutions fonctionnelles
-- **Interface et expérience utilisateur** :
-    - Ajout de badges d'urgence dans la liste des dossiers et les résumés pour une meilleure visibilité.
-    - Amélioration de l'ergonomie mobile, notamment via l'utilisation de fenêtres modales pour la saisie des données relatives aux haies.
-    - Optimisation de la navigation avec l'intégration d'un système de pagination (DSFR) et une meilleure gestion de l'accessibilité.
-    - Amélioration de la clarté des formulaires : nouveaux messages d'alerte, validation plus stricte des dates et des champs, et affichage des dates de demande de compléments.
-- **Nouvelles fonctionnalités et contenus** :
-    - Mise en place de nouveaux formulaires pour les vérifications "éviter/réduire" et les accusés de réception.
-    - Mise à jour des coefficients de compensation par type.
-    - Actualisation des informations de contact pour le CBN.
+- **Indicateurs visuels** : Ajout d'un badge "Urgence" dans les listes et résumés de dossiers pour faciliter le tri des priorités.
+- **Ergonomie mobile** : Amélioration de la saisie des données relatives aux haies avec une interface adaptée aux écrans mobiles.
+- **Simplification des formulaires** : 
+    - Refonte des contrôles "Éviter / Réduire" avec une séparation des formulaires pour plus de clarté.
+    - Amélioration de la gestion des procédures uniques lors du changement d'état.
+- **Affichage et navigation** :
+    - Intégration d'un nouveau composant de pagination (DSFR) [#1230](https://github.com/MTES-MCT/envergo/issues/1230).
+    - Meilleure visibilité des échéances et des dates de projets non clôturés.
+- **Contenu** : Mise à jour de la terminologie (wording) et des libellés pour une meilleure compréhension par les agents.
 
 ### Évolutions techniques
-- **Sécurité** :
-    - Correction de vulnérabilités XSS par l'échappement systématique des données soumises par les utilisateurs et renforcement de la validation côté backend [#1251](https://github.com/MTES-MCT/envergo/issues/1251).
-    - Mise en place d'une politique de sécurité du contenu (CSP).
-- **Infrastructure et Déploiement** :
-    - Mise à jour majeure de la stack de déploiement (Scalingo, Node.js LTS et buildpack GDAL) [#1252](https://github.com/MTES-MCT/envergo/issues/1252).
-    - Refonte complète du système de stockage des fichiers hébergés et optimisation des scripts de sauvegarde S3 [#1253](https://github.com/MTES-MCT/envergo/issues/1253).
-    - Configuration de Nginx en amont de Gunicorn pour une meilleure gestion du serveur web.
-- **Performance** :
-    - Optimisation des requêtes SQL pour la liste des dossiers afin d'éviter les doublons et réduire la charge de la base de données [#1241](https://github.com/MTES-MCT/envergo/issues/1241).
+- **Sécurité** : Correction de vulnérabilités XSS par l'échappement systématique des données utilisateur et renforcement de la validation des entrées en backend [#1251](https://github.com/MTES-MCT/envergo/issues/1251).
+- **Infrastructure & Déploiement** :
+    - Mise à jour majeure de la stack d'hébergement (Scalingo, Node.js LTS et mise à niveau de GDAL) [#1252](https://github.com/MTES-MCT/envergo/issues/1252).
+    - Refonte complète du système de stockage des fichiers via S3 et optimisation des chemins d'accès [#1253](https://github.com/MTES-MCT/envergo/issues/1253).
+    - Optimisation de la configuration serveur avec l'installation de Nginx en amont de Gunicorn.
+- **Performance** : Optimisation des requêtes de base de données, notamment pour la gestion des permissions et l'affichage des listes de dossiers, afin d'éviter les doublons de requêtes [#1241](https://github.com/MTES-MCT/envergo/issues/1241).
 
 ### Autres changements
-- **Tests** : Ajout de suites de tests dédiées pour la détection des vulnérabilités XSS et pour les tests de performance.
-- **Maintenance** : Nettoyage du projet avec la suppression de Gulp et du code non utilisé.
+- **Nettoyage** : Suppression de l'outil Gulp et simplification des scripts de build.
+- **Documentation** : Amélioration de la documentation interne via l'ajout de docstrings.

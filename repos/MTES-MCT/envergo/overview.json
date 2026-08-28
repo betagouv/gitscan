@@ -1,61 +1,65 @@
 {
   "url": "https://github.com/MTES-MCT/envergo",
   "name": "envergo",
-  "description": "Solution visant à améliorer la prise en compte de l'environnement dans les projets d'urbanisme. Elle permet de réaliser des simulations réglementaires et de gérer des demandes d'avis.",
+  "description": "Améliorer la prise en compte de l'environnement dans les projets d'urbanisme via des outils de simulation et de gestion de demandes d'avis réglementaires.",
   "language": "Python",
   "features": [
     "Simulation & Calcul",
     "Formulaires & Démarches",
     "Visualisation de données & Cartographie",
     "Gestion des utilisateurs & Permissions",
-    "Administration & Backoffice"
+    "Administration & Backoffice",
+    "Suivi & Traçabilité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
     "PostgreSQL",
     "PostGIS",
-    "Vue.js",
     "Leaflet",
+    "Vue.js",
+    "DSFR",
     "Playwright",
+    "pytest",
     "Scaleway S3"
   ],
   "components": [
-    "Python (scripts & backend)",
+    "Django",
     "PostgreSQL & SQL",
+    "Python (scripts & backend)",
     "Design System (DSFR & UI libs)",
     "Docker & Conteneurs",
+    "Tests",
     "SIG & Géospatial",
-    "Templates & Moteurs de rendu",
-    "Tests"
+    "Serveurs web & Proxy"
   ],
   "auth": {
     "methods": [
       "email-password",
       "session"
-    ]
+    ],
+    "providers": []
   },
   "tests": [
     "pytest",
-    "pytest-django",
-    "factory_boy",
     "Playwright"
   ],
   "workflows": [
-    "ci.yml",
-    "s3_backup.yml"
+    "GitHub Actions"
   ],
   "lastActivity": "2026-08-25T11:15:22+02:00",
   "status": "active",
+  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Environnement & Énergie",
     "SIG & Géospatial",
     "Python",
+    "Django & FastAPI",
     "Bases de données SQL",
     "Docker & Conteneurs",
     "CI/CD & GitHub Actions",
     "Design System & UI",
-    "Territoire & Collectivités"
+    "Écosystème beta.gouv / État"
   ]
 }
