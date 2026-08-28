@@ -1,61 +1,79 @@
 {
   "url": "https://github.com/dnum-mi/fabnum-cicd",
   "name": "fabnum-cicd",
-  "description": "Ce dépôt centralise les workflows GitHub Actions réutilisables et les git hooks pour maintenir la cohérence et la qualité du code dans tous les dépôts de la Fabrique Numérique.",
-  "language": "Shell",
+  "description": "Ce dépôt centralise les workflows GitHub Actions réutilisables et les git hooks pour la Fabrique Numérique. Il permet de maintenir la cohérence et la qualité du code à travers l'ensemble des projets.",
+  "language": "YAML",
   "features": [
-    "Gestion documentaire & Fichiers",
-    "API & Intégrations",
+    "Tests & QA",
     "Sécurité & Conformité",
-    "Tests"
+    "Infrastructure & Stockage",
+    "Suivi & Traçabilité",
+    "Collaboration & Workflow"
   ],
   "audience": "Développeurs",
   "dependencies": [
-    "GitHub Actions"
+    "GitHub Actions",
+    "Docker",
+    "Helm",
+    "SonarQube",
+    "Trivy",
+    "Gitleaks",
+    "NPM",
+    "ESLint",
+    "Cosign"
   ],
   "components": [
     "CI/CD & Déploiement",
     "Docker & Conteneurs",
-    "Tests"
+    "Kubernetes & Helm",
+    "Tests",
+    "Scripts & Utilitaires",
+    "Documentation & Schémas"
   ],
   "auth": {
     "methods": [
       "none"
-    ]
+    ],
+    "providers": []
   },
+  "tests": [
+    "chart-testing",
+    "Kind",
+    "shell-level test harness"
+  ],
   "workflows": [
-    "attest-image.yml",
-    "build-docker.yml",
-    "cd.yml",
-    "ci.yml",
-    "clean-cache.yml",
     "lint-commits.yml",
-    "lint-helm-schema.yml",
     "lint-helm.yml",
+    "lint-helm-schema.yml",
     "lint-yaml.yml",
-    "release-app.yml",
-    "release-helm.yml",
+    "test-helm.yml",
+    "test-docker.yml",
+    "build-docker.yml",
+    "attest-docker.yml",
     "scan-sonarqube.yml",
     "scan-trivy.yml",
-    "sync-cpin.yml",
-    "test-helm.yml",
-    "update-helm-chart.yml"
+    "scan-gitleaks.yml",
+    "release-app.yml",
+    "release-helm.yml",
+    "release-helm-local.yml",
+    "update-helm-chart.yml",
+    "dispatch-helm-chart.yml",
+    "release-npm.yml",
+    "attest-helm.yml",
+    "sync-prerelease-branch.yml",
+    "clean-cache.yml",
+    "clean-images.yml",
+    "sync-cpin.yml"
   ],
-  "lastActivity": "2026-06-22T16:46:15Z",
+  "lastActivity": "2026-08-25T17:22:21+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
-  "metrics": {
-    "stars": 1,
-    "forks": 0,
-    "contributors": 0,
-    "openIssues": 0
-  },
   "tags": [
-    "CI/CD",
-    "GitHub Actions",
-    "Docker",
-    "Tests",
-    "Shell"
+    "Git & DevOps",
+    "CI/CD & GitHub Actions",
+    "Docker & Conteneurs",
+    "Tests & Qualité",
+    "Déploiement & Hosting"
   ]
 }

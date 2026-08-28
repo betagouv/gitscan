@@ -1,28 +1,57 @@
 .
 ├── .github
 │   └── workflows
-│       ├── attest-image.yml
+│       ├── attest-docker.yml
+│       ├── attest-helm.yml
 │       ├── build-docker.yml
 │       ├── cd.yml
 │       ├── ci.yml
 │       ├── clean-cache.yml
+│       ├── clean-images.yml
+│       ├── dispatch-helm-chart.yml
 │       ├── lint-commits.yml
 │       ├── lint-helm-schema.yml
 │       ├── lint-helm.yml
 │       ├── lint-yaml.yml
 │       ├── release-app.yml
+│       ├── release-helm-local.yml
 │       ├── release-helm.yml
+│       ├── release-npm.yml
+│       ├── scan-gitleaks.yml
 │       ├── scan-sonarqube.yml
 │       ├── scan-trivy.yml
 │       ├── sync-cpin.yml
+│       ├── sync-prerelease-branch.yml
+│       ├── test-docker.yml
 │       ├── test-helm.yml
 │       └── update-helm-chart.yml
 ├── .release-please-manifest.json
 ├── CHANGELOG.md
 ├── README.md
 ├── ci
-│   └── configs
-│       └── yamllint.yaml
+│   ├── configs
+│   │   └── yamllint.yaml
+│   └── tests
+│       ├── app-token-mints.test.sh
+│       ├── attest-helm-charts.test.sh
+│       ├── build-docker-credentials.test.sh
+│       ├── clean-cache-refs.test.sh
+│       ├── clean-images-guard.test.sh
+│       ├── credential-validation.test.sh
+│       ├── dispatch-helm-chart.test.sh
+│       ├── lib.sh
+│       ├── permission-union.test.sh
+│       ├── release-app-automerge.test.sh
+│       ├── release-app-manifest-sync.test.sh
+│       ├── release-app-prerelease-sync-assert.test.sh
+│       ├── release-helm-channels.test.sh
+│       ├── release-helm-signing.test.sh
+│       ├── run.sh
+│       ├── sync-prerelease-branch.test.sh
+│       ├── update-helm-chart-automerge.test.sh
+│       ├── update-helm-chart-injection.test.sh
+│       ├── update-helm-chart-local-push.test.sh
+│       └── update-helm-chart-versioning.test.sh
 ├── docs
 │   ├── git-hooks
 │   │   ├── 01-introduction.md
@@ -30,21 +59,31 @@
 │   │   ├── 03-pre-commit.md
 │   │   └── 04-pre-push.md
 │   └── workflows
-│       ├── attest-image.md
-│       ├── build-docker.md
-│       ├── clean-cache.md
-│       ├── introduction.md
-│       ├── lint-commits.md
-│       ├── lint-helm-schema.md
-│       ├── lint-helm.md
-│       ├── lint-yaml.md
-│       ├── release-app.md
-│       ├── release-helm.md
-│       ├── scan-sonarqube.md
-│       ├── scan-trivy.md
-│       ├── sync-cpin.md
-│       ├── test-helm.md
-│       └── update-helm-chart.md
+│       ├── 01-introduction.md
+│       ├── 05-authentication.md
+│       ├── 10-lint-commits.md
+│       ├── 11-lint-helm.md
+│       ├── 12-lint-helm-schema.md
+│       ├── 14-lint-yaml.md
+│       ├── 20-test-helm.md
+│       ├── 24-test-docker.md
+│       ├── 30-build-docker.md
+│       ├── 31-attest-docker.md
+│       ├── 40-scan-sonarqube.md
+│       ├── 41-scan-trivy.md
+│       ├── 42-scan-gitleaks.md
+│       ├── 50-release-app.md
+│       ├── 51-release-helm.md
+│       ├── 52-release-helm-local.md
+│       ├── 53-update-helm-chart.md
+│       ├── 54-dispatch-helm-chart.md
+│       ├── 55-release-npm.md
+│       ├── 56-attest-helm.md
+│       ├── 57-sync-prerelease-branch.md
+│       ├── 70-clean-cache.md
+│       ├── 71-clean-images.md
+│       ├── 72-sync-cpin.md
+│       └── 90-monorepo-release.md
 ├── git-hooks
 │   ├── commit-msg
 │   │   └── conventional-commit
@@ -58,5 +97,6 @@
 │   │   └── yaml-lint
 │   └── pre-push
 │       └── signed-commit
-└── release-please-config.json
-13 directories, 48 files
+├── release-please-config.json
+└── renovate.json
+14 directories, 87 files

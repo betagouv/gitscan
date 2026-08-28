@@ -1,5 +1,231 @@
 # Changelog
 
+## [0.19.2](https://github.com/dnum-mi/fabnum-cicd/compare/v0.19.1...v0.19.2) (2026-08-25)
+
+
+### Bug Fixes
+
+* **scan-gitleaks:** bound the scan to the checked-out ref ([8f2f48f](https://github.com/dnum-mi/fabnum-cicd/commit/8f2f48f832f353268fc51c02fa78ec3ebd0f8659))
+
+## [0.19.1](https://github.com/dnum-mi/fabnum-cicd/compare/v0.19.0...v0.19.1) (2026-08-25)
+
+
+### Bug Fixes
+
+* **workflows:** drop the branch filter from the security tab link ([043d559](https://github.com/dnum-mi/fabnum-cicd/commit/043d559607a5bb80c9529d92accdd5d59b42d087))
+
+## [0.19.0](https://github.com/dnum-mi/fabnum-cicd/compare/v0.18.0...v0.19.0) (2026-08-24)
+
+
+### Features
+
+* **update-helm-chart:** let local mode push as the configured App ([e6407be](https://github.com/dnum-mi/fabnum-cicd/commit/e6407beffe09b52e7994b59d8b242671731959b0))
+
+## [0.18.0](https://github.com/dnum-mi/fabnum-cicd/compare/v0.17.0...v0.18.0) (2026-08-24)
+
+
+### Features
+
+* **build-docker:** default TAG_SHORT_SHA to false ([63d65c3](https://github.com/dnum-mi/fabnum-cicd/commit/63d65c335dfca155ed756a0abe40cbfeb083be78))
+* **build-docker:** make the short-sha tag optional ([aaeaa52](https://github.com/dnum-mi/fabnum-cicd/commit/aaeaa5208117e8fecf53b440ff4474989bb5b8c5))
+
+
+### Bug Fixes
+
+* **clean-images:** don't fail when a package's last tagged version can't be deleted ([17cbca9](https://github.com/dnum-mi/fabnum-cicd/commit/17cbca9d6c3f61b060de0fc09794e17c4ad20d2a))
+
+
+### Dependencies
+
+* **deps:** update docker/setup-buildx-action to v4.3.0 ([b6cfd1a](https://github.com/dnum-mi/fabnum-cicd/commit/b6cfd1aeeea53f5a3f2a29fc8dfb3903a730e944))
+* **deps:** update github/codeql-action to v4.37.8 ([496aeab](https://github.com/dnum-mi/fabnum-cicd/commit/496aeab4dbb220c72faaab6252618636c3c99546))
+
+## [0.17.0](https://github.com/dnum-mi/fabnum-cicd/compare/v0.16.1...v0.17.0) (2026-08-11)
+
+
+### Features
+
+* **update-helm-chart:** add 'auto' upgrade type deriving the bump from appVersion ([bb43be2](https://github.com/dnum-mi/fabnum-cicd/commit/bb43be284709569e9b0c2bf6357cb43e197d98b2))
+* **update-helm-chart:** make 'auto' the default upgrade type ([62eac1b](https://github.com/dnum-mi/fabnum-cicd/commit/62eac1ba2fd3c6de8a6954987d162e8c4a49243e))
+
+## [0.16.1](https://github.com/dnum-mi/fabnum-cicd/compare/v0.16.0...v0.16.1) (2026-08-11)
+
+
+### Bug Fixes
+
+* **sync-prerelease-branch:** make the bootstrap reachable on a shallow clone ([f367789](https://github.com/dnum-mi/fabnum-cicd/commit/f36778910edbee6c273db59fd047222b364e950c))
+
+## [0.16.0](https://github.com/dnum-mi/fabnum-cicd/compare/v0.15.0...v0.16.0) (2026-08-11)
+
+
+### Features
+
+* **release-npm:** publish packages to NPM-compatible registries ([8d86499](https://github.com/dnum-mi/fabnum-cicd/commit/8d86499c451d9e6c703290764fc2a2306e3d9009))
+
+
+### Bug Fixes
+
+* **security:** route inputs through env and harden credential handling ([e0aa23c](https://github.com/dnum-mi/fabnum-cicd/commit/e0aa23cdcf7d9643614306f919cd5d707fdc0c9d))
+* **sync-cpin:** validate inputs and keep the trigger token out of process arguments ([d01502c](https://github.com/dnum-mi/fabnum-cicd/commit/d01502ce0b956ecca92e4f8bd12a543a54f28c64))
+* **update-helm-chart:** parse back any prerelease identifier the validation accepts ([25d2733](https://github.com/dnum-mi/fabnum-cicd/commit/25d2733af1f0978fade8d158cd95b79ecf075077))
+
+## [0.15.0](https://github.com/dnum-mi/fabnum-cicd/compare/v0.14.0...v0.15.0) (2026-08-10)
+
+
+### Features
+
+* **release-helm:** publish through the classic channel by default ([67eae2c](https://github.com/dnum-mi/fabnum-cicd/commit/67eae2cc6cc8784dab8242641a89d7907a98d054))
+* **sync-prerelease-branch:** own the prerelease synchronisation in a dedicated workflow ([07a59fb](https://github.com/dnum-mi/fabnum-cicd/commit/07a59fbd5106b3c5cfd8c23b51040f0d4e21abda))
+
+## [0.14.0](https://github.com/dnum-mi/fabnum-cicd/compare/v0.13.0...v0.14.0) (2026-08-09)
+
+
+### Features
+
+* **release-helm:** sign and attest charts on both distribution channels ([27d58a6](https://github.com/dnum-mi/fabnum-cicd/commit/27d58a627c3f79b85c3710ebab027230f9e2cd53))
+
+## [0.13.0](https://github.com/dnum-mi/fabnum-cicd/compare/v0.12.0...v0.13.0) (2026-08-08)
+
+
+### Features
+
+* **release-helm:** make the OCI push an opt-in distribution channel ([63ff751](https://github.com/dnum-mi/fabnum-cicd/commit/63ff751aab511c2451e38c7c0e4785bc9115a32b))
+
+## [0.12.0](https://github.com/dnum-mi/fabnum-cicd/compare/v0.11.5...v0.12.0) (2026-08-08)
+
+
+### Features
+
+* **release-app:** support repositories with immutable releases ([91fcac1](https://github.com/dnum-mi/fabnum-cicd/commit/91fcac1b785702f227ed9f14931c408f70007545))
+
+## [0.11.5](https://github.com/dnum-mi/fabnum-cicd/compare/v0.11.4...v0.11.5) (2026-08-08)
+
+
+### Code Refactoring
+
+* **clean-cache:** move container image cleanup to clean-images.yml ([1134d51](https://github.com/dnum-mi/fabnum-cicd/commit/1134d51a9e5f709c8fc76864a6522550c897cd73))
+* **update-helm-chart:** move cross-repository dispatch to its own workflow ([850e018](https://github.com/dnum-mi/fabnum-cicd/commit/850e018f8b4e33b29006ad5e0facd03666fdcd02))
+
+## [0.11.4](https://github.com/dnum-mi/fabnum-cicd/compare/v0.11.3...v0.11.4) (2026-08-07)
+
+
+### Bug Fixes
+
+* **release-app:** unshallow before rebasing the prerelease branch onto the release branch ([12ee8c7](https://github.com/dnum-mi/fabnum-cicd/commit/12ee8c740d6aefa2b2668234ece1761ebfe0406d))
+
+## [0.11.3](https://github.com/dnum-mi/fabnum-cicd/compare/v0.11.2...v0.11.3) (2026-08-07)
+
+
+### Bug Fixes
+
+* **release-app:** neutralize checkout's credential before the manifest-sync push ([79d7010](https://github.com/dnum-mi/fabnum-cicd/commit/79d7010dc8bcbac92c4a43aa6c89932987a30bd8))
+
+## [0.11.2](https://github.com/dnum-mi/fabnum-cicd/compare/v0.11.1...v0.11.2) (2026-08-07)
+
+
+### Bug Fixes
+
+* **update-helm-chart:** drop the skip-ci marker from the local-mode chart-bump commit ([78da9c5](https://github.com/dnum-mi/fabnum-cicd/commit/78da9c5dce028ff14956e57df70da0bb77503e82))
+
+## [0.11.1](https://github.com/dnum-mi/fabnum-cicd/compare/v0.11.0...v0.11.1) (2026-08-07)
+
+
+### Bug Fixes
+
+* **update-helm-chart:** pass --ref explicitly in caller-mode dispatch ([76804ec](https://github.com/dnum-mi/fabnum-cicd/commit/76804ec42e2abd99f8aafc24de568028f3b0ced9))
+
+## [0.11.0](https://github.com/dnum-mi/fabnum-cicd/compare/v0.10.1...v0.11.0) (2026-08-07)
+
+
+### Features
+
+* **scan-gitleaks:** add gitleaks secret scanning workflow ([6529a5a](https://github.com/dnum-mi/fabnum-cicd/commit/6529a5a4d4880b20361002547afad2072cae72d9))
+
+
+### Code Refactoring
+
+* **build-docker:** drop built-in attestation, compose explicitly ([6435b61](https://github.com/dnum-mi/fabnum-cicd/commit/6435b6159f1ce8a0e103acf05444169282ce23a7))
+* **release-helm:** split local-mode release into a dedicated workflow ([d1ebf88](https://github.com/dnum-mi/fabnum-cicd/commit/d1ebf8879305581e8f986bb1a0f6050a4bc73c87))
+
+
+### Dependencies
+
+* **deps:** update actions/attest-build-provenance to v4.2.2 ([a23fc31](https://github.com/dnum-mi/fabnum-cicd/commit/a23fc31c6bb9aca38aa56f930b0d79e1fc6bb847))
+
+## [0.10.1](https://github.com/dnum-mi/fabnum-cicd/compare/v0.10.0...v0.10.1) (2026-08-06)
+
+
+### Bug Fixes
+
+* **lint-helm:** stop hardcoding 'charts' as the helm-docs scan directory ([82e5ec0](https://github.com/dnum-mi/fabnum-cicd/commit/82e5ec0fa378f02c2ecdbb73717ab9207704ddd1))
+
+## [0.10.0](https://github.com/dnum-mi/fabnum-cicd/compare/v0.9.0...v0.10.0) (2026-08-06)
+
+
+### Features
+
+* **build-docker:** expose BUILD_SECRET_GITHUB_TOKEN and GitHub App credential for build secrets ([cb4d51b](https://github.com/dnum-mi/fabnum-cicd/commit/cb4d51bb11e4bed9866a8386bb92d9ee6d507fdb))
+* **release-app:** add AUTOMERGE_METHOD, RELEASE_PR_AUTHOR and GitHub App authentication ([9864acf](https://github.com/dnum-mi/fabnum-cicd/commit/9864acf47a1e848204d612eec948bb5d0b4e2895))
+* **release-helm:** support GitHub App authentication for chart-releaser ([fbdf7f1](https://github.com/dnum-mi/fabnum-cicd/commit/fbdf7f1dff2be232f5efebe8c99a88310f6d790f))
+* **scan-trivy:** support GitHub App authentication for database downloads ([6ee9d84](https://github.com/dnum-mi/fabnum-cicd/commit/6ee9d84356ca0639c0d25219ec80aec4ac5943dd))
+* **update-helm-chart:** add HELM_DOCS_VERSION, AUTOMERGE_METHOD and GitHub App authentication ([e8eb8ec](https://github.com/dnum-mi/fabnum-cicd/commit/e8eb8ec4655ef44de2908c22b150b5232479befe))
+
+
+### Bug Fixes
+
+* **lint-commits:** quote shell expansions and escape commit subjects against step-summary injection ([f4b0d5c](https://github.com/dnum-mi/fabnum-cicd/commit/f4b0d5c3f440e79395cec754cfe859adeea5d018))
+* **sync-cpin:** reference REPOSITORY_NAME as an input, not a nonexistent secret ([45869a4](https://github.com/dnum-mi/fabnum-cicd/commit/45869a431419cc76a79c5fe59aa7ed25378234b9))
+* **test-docker:** avoid a false shellcheck directive parse in a comment ([6e2b886](https://github.com/dnum-mi/fabnum-cicd/commit/6e2b88628e56f649425555e2aa34ffcee4bf7deb))
+* **workflows:** quote shell expansions for shellcheck compliance ([827ce6b](https://github.com/dnum-mi/fabnum-cicd/commit/827ce6b542486dbd8af1a61e829c54cac076428c))
+
+
+### Dependencies
+
+* **deps:** update dorny/paths-filter to v4.0.3 ([3ec04c6](https://github.com/dnum-mi/fabnum-cicd/commit/3ec04c68dcb80594abaa463afb7e8276f3b231a0))
+* **deps:** update sonarsource/sonarqube-quality-gate-action to v1.2.1 ([538cc59](https://github.com/dnum-mi/fabnum-cicd/commit/538cc5957809ba4d283d23f40fc09d61bf3f310b))
+
+## [0.9.0](https://github.com/dnum-mi/fabnum-cicd/compare/v0.8.0...v0.9.0) (2026-08-04)
+
+
+### Features
+
+* **attest-docker:** attest SBOMs with cosign instead of actions/attest ([8680b8e](https://github.com/dnum-mi/fabnum-cicd/commit/8680b8ef51436fa3bd5f7936c652b6b3c4d52889))
+* **build-docker:** add CACHE_MODE and SIGN inputs ([1084a0d](https://github.com/dnum-mi/fabnum-cicd/commit/1084a0d9e74f92a6f3c5cff0566feeedb3b2bc14))
+* **scan-trivy:** add FAIL_ON_ERROR, SEVERITY, TIMEOUT, TRIVYIGNORES and CATEGORY inputs ([3ccc761](https://github.com/dnum-mi/fabnum-cicd/commit/3ccc7610dac2b30c5f8feb0d721b3c2de5a97175))
+* **test-docker:** introduce workflow to run a command inside a built image ([a688282](https://github.com/dnum-mi/fabnum-cicd/commit/a6882828dd58c7fa6d2eddc1e487a9906731b8a8))
+
+
+### Bug Fixes
+
+* **scan-sonarqube:** make FAIL_ON_ERROR actually gate the job ([6d00a48](https://github.com/dnum-mi/fabnum-cicd/commit/6d00a4804757996b004960c30064146a2e6a563f))
+
+
+### Dependencies
+
+* **deps:** update actions/attest to v4.2.2 ([4d8a27a](https://github.com/dnum-mi/fabnum-cicd/commit/4d8a27a38c6609c68f92340afc8709a1ee08be51))
+* **deps:** update github/codeql-action to v4.37.6 ([b7c721a](https://github.com/dnum-mi/fabnum-cicd/commit/b7c721a5a09f8cf58c586e70b71a44f98a387bf8))
+
+## [0.8.0](https://github.com/dnum-mi/fabnum-cicd/compare/v0.7.0...v0.8.0) (2026-08-03)
+
+
+### Features
+
+* **build-docker:** rename attest-image to attest-docker; add optional PUSH input ([30d1743](https://github.com/dnum-mi/fabnum-cicd/commit/30d1743078e08d296a99ef23b9f37e91d4e47459))
+* **release-helm:** add local mode for monorepo chart releases ([df2dd16](https://github.com/dnum-mi/fabnum-cicd/commit/df2dd161a5e6edf67189157f7092824d996949b8))
+* **update-helm-chart:** support chart-only local releases ([dffdd90](https://github.com/dnum-mi/fabnum-cicd/commit/dffdd90d9af7b161dc8ac20151fb168dc14b55c2))
+
+
+### Bug Fixes
+
+* **clean-cache:** improve orphaned image and manifest detection ([ef67583](https://github.com/dnum-mi/fabnum-cicd/commit/ef67583d66aad5a7f668c7d767e5fc00a35296a8))
+* **scan-sonarqube:** avoid shell injection via PR/branch refs ([98df78b](https://github.com/dnum-mi/fabnum-cicd/commit/98df78b4053e418b821d1abe96940cfc8d6cba15))
+* **scan-trivy:** fix failure detection, command substitution bug and add local tarball scanning ([4dd0f85](https://github.com/dnum-mi/fabnum-cicd/commit/4dd0f8565080439060b59fd1ade11ab8d8c9575a))
+
+
+### Dependencies
+
+* **workflows:** sync lint, test-helm and release-app workflows with upstream ([c6afc41](https://github.com/dnum-mi/fabnum-cicd/commit/c6afc4154355b6279dc9f372db0101d25f03e81a))
+
 ## [0.7.0](https://github.com/dnum-mi/fabnum-cicd/compare/v0.6.0...v0.7.0) (2026-06-22)
 
 
