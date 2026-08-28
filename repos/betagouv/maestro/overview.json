@@ -1,15 +1,18 @@
 {
   "url": "https://github.com/betagouv/maestro",
   "name": "maestro",
-  "description": "Maestro est une plateforme de gestion et de suivi des prélèvements et des analyses de laboratoire. Elle permet d'automatiser les échanges de données, de gérer les utilisateurs et de piloter l'activité via des tableaux de bord.",
+  "description": "Maestro est une plateforme de gestion de données de prélèvements et de rapports d'analyses. Elle permet de centraliser, automatiser et visualiser les flux de données entre différents acteurs et laboratoires.",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
+    "Visualisation de données & Cartographie",
+    "Authentification & Accès",
     "Statistiques & Rapports",
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
-    "Administration & Backoffice"
+    "Administration & Backoffice",
+    "Suivi & Traçabilité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -19,8 +22,8 @@
     "Dex",
     "Vitest",
     "Zod",
-    "Lodash-es",
-    "Browserless"
+    "Lodash",
+    "Date-fns"
   ],
   "components": [
     "API REST & GraphQL",
@@ -28,13 +31,16 @@
     "TypeScript / JavaScript",
     "Docker & Conteneurs",
     "Authentification (composant)",
-    "Tests",
-    "Stockage objet"
+    "Scripts & Utilitaires",
+    "CI/CD & Déploiement"
   ],
   "auth": {
     "methods": [
       "oauth2",
       "sso"
+    ],
+    "providers": [
+      "Dex"
     ]
   },
   "tests": "Vitest",
@@ -51,6 +57,6 @@
     "Docker & Conteneurs",
     "Bases de données SQL",
     "CI/CD & GitHub Actions",
-    "Sécurité & Auth"
+    "Données & Open Data"
   ]
 }
