@@ -1,14 +1,14 @@
 {
   "url": "https://github.com/MTES-MCT/acceslibre",
   "name": "acceslibre",
-  "description": "Plateforme de référencement de l'accessibilité des Établissements Recevant du Public (ERP) en France. Elle permet de consulter les données d'accessibilité et de gérer les signalements.",
+  "description": "Plateforme de référencement de l'accessibilité des Établissements Recevant du Public (ERP) en France. Elle permet la consultation de données géospatiales et le signalement d'informations liées à l'accessibilité.",
   "language": "Python",
   "features": [
     "Visualisation de données & Cartographie",
-    "Gestion des signalements",
     "Recherche & Filtres",
-    "Accessibilité & i18n",
-    "Administration & Backoffice"
+    "Formulaires & Démarches",
+    "Gestion des signalements",
+    "Accessibilité & i18n"
   ],
   "audience": "Grand public",
   "dependencies": [
@@ -19,9 +19,9 @@
     "Redis",
     "Celery",
     "Leaflet",
-    "Panoramax",
-    "@gouvfr/dsfr",
-    "Sentry"
+    "DSFR",
+    "Sentry",
+    "Parcel"
   ],
   "components": [
     "API REST & GraphQL",
@@ -30,31 +30,33 @@
     "Design System (DSFR & UI libs)",
     "Docker & Conteneurs",
     "Celery & Queue asynchrone",
-    "SIG & Géospatial"
+    "SIG & Géospatial",
+    "Authentification (composant)"
   ],
   "auth": {
     "methods": [
-      "email-password",
-      "mfa",
-      "api-key"
+      "api-key",
+      "session",
+      "mfa"
     ]
   },
   "tests": [
-    "pytest",
     "pytest-django",
     "pytest-mock",
-    "splinter"
+    "splinter",
+    "faker"
   ],
-  "lastActivity": "2026-08-03T07:35:22Z",
+  "lastActivity": "2026-08-28T09:26:07Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
     "Données & Open Data",
-    "SIG & Géospatial",
     "Accessibilité",
+    "SIG & Géospatial",
+    "Écosystème beta.gouv / État",
     "Python",
-    "Docker & Conteneurs",
-    "Écosystème beta.gouv / État"
+    "Django & FastAPI",
+    "Docker & Conteneurs"
   ]
 }

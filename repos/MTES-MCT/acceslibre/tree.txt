@@ -14,7 +14,6 @@
 │       └── lint.yml
 ├── .gitignore
 ├── .isort.cfg
-├── .npmrc
 ├── .pre-commit-config.yaml
 ├── .prettierignore
 ├── .prettierrc.json
@@ -40,6 +39,7 @@
 ├── api
 │   ├── __init__.py
 │   ├── apps.py
+│   ├── authentication.py
 │   ├── filters.py
 │   ├── migrations
 │   │   └── __init__.py
@@ -47,6 +47,7 @@
 │   ├── permissions.py
 │   ├── renderers.py
 │   ├── serializers.py
+│   ├── throttling.py
 │   ├── urls.py
 │   └── views.py
 ├── bin
@@ -77,6 +78,8 @@
 │   │   ├── 0006_userpreferences_newsletter_opt_in.py
 │   │   ├── 0007_alter_userpreferences_newsletter_opt_in.py
 │   │   ├── 0008_nb_erp_administrator.py
+│   │   ├── 0009_userapikey.py
+│   │   ├── 0010_auto_20260715_1512.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── resources.py
@@ -168,6 +171,7 @@
 │   │   ├── export.py
 │   │   ├── generate_schema.py
 │   │   ├── mappers.py
+│   │   ├── s3.py
 │   │   ├── static
 │   │   │   ├── base-schema.json
 │   │   │   ├── exemple-valide.csv
@@ -298,6 +302,7 @@
 │   │   ├── 0188_update_cheminement_ext_presence_constraint.py
 │   │   ├── 0189_merge_20260521_1520.py
 │   │   ├── 0190_rpa.py
+│   │   ├── 0191_remove_accessibilite_erp_accessibilite_sanitaires_presence_consistency_and_more.py
 │   │   └── __init__.py
 │   ├── models.py
 │   ├── provider
@@ -359,6 +364,7 @@
 ├── manage.py
 ├── package.json
 ├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
 ├── pyproject.toml
 ├── pytest.ini
 ├── ruff.toml
@@ -480,8 +486,10 @@
 │   │   │   ├── toilette-pmr.png
 │   │   │   ├── toilette-securisee.png
 │   │   │   ├── tourniquet.png
+│   │   │   ├── tribunes-places.png
 │   │   │   ├── unknown.png
-│   │   │   └── visiophone.png
+│   │   │   ├── visiophone.png
+│   │   │   └── zone-depose-pmr.png
 │   │   ├── contrib_v2
 │   │   │   ├── 1-1-a-entree_marches.jpg
 │   │   │   ├── 1-1-a-porte-sans-marche.jpg
@@ -689,6 +697,7 @@
 │   │   ├── ui
 │   │   │   ├── AsteriskField.js
 │   │   │   ├── AutocompleteActivity.js
+│   │   │   ├── BackButton.js
 │   │   │   ├── BtnToCopy.js
 │   │   │   ├── CloneFilter.js
 │   │   │   ├── ConditionalForm.js
@@ -1104,4 +1113,4 @@
 │   │   └── test_models.py
 │   └── utils.py
 └── uv.lock
-111 directories, 1001 files
+111 directories, 1010 files
