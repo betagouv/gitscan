@@ -90,6 +90,7 @@
 │       │   ├── autocomplete.scss
 │       │   ├── box.css
 │       │   ├── card.css
+│       │   ├── dashboard.css
 │       │   ├── draw-line-map.css
 │       │   ├── dropdown.css
 │       │   ├── dsfr-extensions
@@ -492,6 +493,7 @@
 │   │   │   ├── desserte-locale.svg
 │   │   │   ├── dimensions.svg
 │   │   │   ├── draw-line.svg
+│   │   │   ├── draw-zone.svg
 │   │   │   ├── emergency-services.svg
 │   │   │   ├── file-copy-line.svg
 │   │   │   ├── filter.svg
@@ -773,6 +775,8 @@
 │   │   │   │   ├── GetDuplicateIdentifierQueryHandler.php
 │   │   │   │   ├── GetGeneralInfoQuery.php
 │   │   │   │   ├── GetGeneralInfoQueryHandler.php
+│   │   │   │   ├── GetLatestRegulationsQuery.php
+│   │   │   │   ├── GetLatestRegulationsQueryHandler.php
 │   │   │   │   ├── GetNearbyStreetsQuery.php
 │   │   │   │   ├── GetNearbyStreetsQueryHandler.php
 │   │   │   │   ├── GetNewsNoticeQuery.php
@@ -781,6 +785,8 @@
 │   │   │   │   ├── GetOrganizationIdentifiersQueryHandler.php
 │   │   │   │   ├── GetOrganizationUuidByRegulationOrderRecordQuery.php
 │   │   │   │   ├── GetOrganizationUuidByRegulationOrderRecordQueryHandler.php
+│   │   │   │   ├── GetRegulationCountsByStatusQuery.php
+│   │   │   │   ├── GetRegulationCountsByStatusQueryHandler.php
 │   │   │   │   ├── GetRegulationOrderHistoryQuery.php
 │   │   │   │   ├── GetRegulationOrderHistoryQueryHandler.php
 │   │   │   │   ├── GetRegulationOrderIdentifierQuery.php
@@ -846,6 +852,7 @@
 │   │   │       ├── NumberedRoadView.php
 │   │   │       ├── PeriodView.php
 │   │   │       ├── RawGeoJSONView.php
+│   │   │       ├── RegulationCountsByStatusView.php
 │   │   │       ├── RegulationOrderDatexListItemView.php
 │   │   │       ├── RegulationOrderForApiView.php
 │   │   │       ├── RegulationOrderHistoryView.php
@@ -1077,6 +1084,7 @@
 │   │       │   ├── InvitationAlreadyExistsException.php
 │   │       │   ├── InvitationNotFoundException.php
 │   │       │   ├── InvitationNotOwnedException.php
+│   │       │   ├── OrganizationFetchFailedException.php
 │   │       │   ├── OrganizationMustHaveAtLeastOneOwnerException.php
 │   │       │   ├── OrganizationNotFoundException.php
 │   │       │   ├── OrganizationUserAlreadyExistException.php
@@ -1626,6 +1634,8 @@
 │   │   ├── pagination.html.twig
 │   │   └── skiplinks.html.twig
 │   ├── contact.html.twig
+│   ├── dashboard
+│   │   └── index.html.twig
 │   ├── details.html.twig
 │   ├── ecodesign_statement.html.twig
 │   ├── email
@@ -1891,6 +1901,7 @@
 │   │       │   └── Doctrine
 │   │       │       └── Repository
 │   │       │           ├── OrganizationRepositoryTest.php
+│   │       │           ├── RegulationOrderRecordRepositoryTest.php
 │   │       │           └── UserRepositoryTest.php
 │   │       ├── Repository
 │   │       │   ├── AdministratorRepositoryTest.php
@@ -2035,10 +2046,12 @@
 │   │   │   │   │   ├── GetCifsIncidentsQueryHandlerTest.php
 │   │   │   │   │   ├── GetDuplicateIdentifierQueryHandlerTest.php
 │   │   │   │   │   ├── GetGeneralInfoQueryHandlerTest.php
+│   │   │   │   │   ├── GetLatestRegulationsQueryHandlerTest.php
 │   │   │   │   │   ├── GetNearbyStreetsQueryHandlerTest.php
 │   │   │   │   │   ├── GetNewsNoticeQueryHandlerTest.php
 │   │   │   │   │   ├── GetOrganizationIdentifiersQueryHandlerTest.php
 │   │   │   │   │   ├── GetOrganizationUuidByRegulationOrderRecordQueryHandlerTest.php
+│   │   │   │   │   ├── GetRegulationCountsByStatusQueryHandlerTest.php
 │   │   │   │   │   ├── GetRegulationOrderHistoryQueryHandlerTest.php
 │   │   │   │   │   ├── GetRegulationOrderIdentifierQueryHandlerTest.php
 │   │   │   │   │   ├── GetRegulationOrderRecordByIdentifierQueryHandlerTest.php
@@ -2319,4 +2332,4 @@
 │   └── validators.fr.xlf
 ├── vitest.config.js
 └── webpack.config.js
-439 directories, 2043 files
+440 directories, 2055 files
