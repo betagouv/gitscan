@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/SocialGouv/iterion",
   "name": "iterion",
-  "description": "Iterion est un plan de contrôle pour les agents d'IA qui permet de définir des workflows complexes via un langage DSL déclaratif. Il facilite l'orchestration multi-agents, l'exécution sécurisée dans des environnements isolés et le suivi des coûts et des ressources.",
+  "description": "Iterion est un plan de contrôle pour les agents d'IA, permettant de définir des workflows complexes via des fichiers .bot. Il offre l'orchestration multi-agents, l'exécution dans des sandboxes isolées et une gestion fine des budgets et des ressources.",
   "language": "Go",
   "features": [
     "Intelligence Artificielle & NLP",
@@ -9,47 +9,49 @@
     "Interface utilisateur & Design",
     "Sécurité & Conformité",
     "Administration & Backoffice",
-    "Monitoring & Logs"
+    "Suivi & Traçabilité",
+    "Gestion des utilisateurs & Permissions"
   ],
   "audience": "Développeurs",
   "dependencies": [
-    "Go",
     "MongoDB",
-    "NATS",
+    "S3",
+    "NATS JetStream",
     "Docker",
     "Kubernetes",
     "Prometheus",
     "Grafana",
-    "Sentry",
-    "TypeScript"
+    "Helm"
   ],
   "components": [
-    "Intelligence Artificielle / ML",
+    "API REST & GraphQL",
     "Docker & Conteneurs",
     "Kubernetes & Helm",
-    "API REST & GraphQL",
-    "MongoDB & NoSQL",
     "TypeScript / JavaScript",
-    "CI/CD & Déploiement"
+    "MongoDB & NoSQL",
+    "CI/CD & Déploiement",
+    "Intelligence Artificielle / ML",
+    "Documentation & Schémas"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "api-key",
       "sso",
-      "jwt",
-      "session"
+      "api-key"
     ],
     "providers": [
       "GitHub",
       "GitLab"
     ]
   },
-  "tests": "Utilisation du framework 'Golden Master' (Goldy) pour garantir la non-régression comportementale des agents.",
+  "tests": [
+    "Goldy (non-régression)",
+    "Endy (e2e)"
+  ],
   "workflows": [
     "github-actions"
   ],
-  "lastActivity": "2026-08-24T22:54:47Z",
+  "lastActivity": "2026-08-28T07:20:41Z",
   "status": "experimental",
   "license": "MIT",
   "hasDocumentation": true,

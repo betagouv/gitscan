@@ -114,15 +114,18 @@
 │   │   ├── devbox.json
 │   │   ├── main.bot
 │   │   └── manifest.yaml
+│   ├── campaign_gate_commands_test.go
 │   ├── catalog_command_refs_test.go
 │   ├── catalog_expr_concat_test.go
 │   ├── catalog_freshness_test.go
 │   ├── catalog_model_specs_test.go
 │   ├── catalog_parse_compile_test.go
+│   ├── catalog_raw_refs_test.go
 │   ├── catalog_typing_test.go
 │   ├── catalog_universality_test.go
 │   ├── clean_tree_clause_test.go
 │   ├── dep-update-guard
+│   │   ├── README.md
 │   │   ├── devbox.json
 │   │   ├── devbox.lock
 │   │   ├── main.bot
@@ -203,7 +206,9 @@
 │   │       ├── fini.md
 │   │       ├── gap-vs-feature.md
 │   │       └── verify-build.md
+│   ├── feature_dev_supervisor_test.go
 │   ├── feed-watch
+│   │   ├── README.md
 │   │   ├── main.bot
 │   │   ├── manifest.yaml
 │   │   └── skills
@@ -251,6 +256,7 @@
 │   │       ├── tracing.md
 │   │       └── verify-build.md
 │   ├── issue-triage
+│   │   ├── README.md
 │   │   ├── iterion-bot-catalog-static.md
 │   │   ├── main.bot
 │   │   ├── manifest.yaml
@@ -268,9 +274,29 @@
 │   │       ├── modernize-lots.md
 │   │       ├── plan-contract.md
 │   │       └── upgrade-archetypes.md
+│   ├── modernize_plan_read_test.go
+│   ├── plan_phase_test.go
+│   ├── product-docs
+│   │   ├── README.md
+│   │   ├── deploy
+│   │   │   ├── gitbook_to_mkdocs.py
+│   │   │   └── onyxia-serve-init.sh
+│   │   ├── devbox.json
+│   │   ├── devbox.lock
+│   │   ├── main.bot
+│   │   ├── manifest.yaml
+│   │   └── skills
+│   │       ├── blocs-gitbook.md
+│   │       ├── forge-mr-create.md
+│   │       ├── glossaire-produit.md
+│   │       ├── modele-documentaire.md
+│   │       ├── product-docs.md
+│   │       └── ton-et-style.md
+│   ├── product_docs_gates_test.go
 │   ├── python_command_shell_safe_test.go
 │   ├── ratchet_clause_test.go
 │   ├── revi-converse
+│   │   ├── README.md
 │   │   ├── main.bot
 │   │   ├── manifest.yaml
 │   │   └── skills
@@ -287,6 +313,7 @@
 │   ├── review_pr_finding_id_test.go
 │   ├── review_pr_stale_anchor_test.go
 │   ├── rgaa-audit
+│   │   ├── README.md
 │   │   ├── main.bot
 │   │   ├── manifest.yaml
 │   │   └── skills
@@ -417,6 +444,11 @@
 │   ├── ultra11y_audit_args_test.go
 │   ├── verify_probe_wiring_test.go
 │   ├── verify_run_drift_test.go
+│   ├── vuln-watch
+│   │   ├── main.bot
+│   │   ├── manifest.yaml
+│   │   └── skills
+│   │       └── senti-config.md
 │   ├── whats-next
 │   │   ├── .gitignore
 │   │   ├── README.md
@@ -754,7 +786,9 @@
 │   │   ├── 087-cross-backend-model-fallback-chain.md
 │   │   ├── 088-error-tracking-via-sentry-dsn-protocol.md
 │   │   ├── 089-session-persist.md
-│   │   └── 090-runtime-operational-settings-db-backed.md
+│   │   ├── 090-runtime-operational-settings-db-backed.md
+│   │   ├── 091-fallback-skip-route-and-plan-peer-review.md
+│   │   └── 092-product-docs-editorial-sovereignty-and-git-native-source-deltas.md
 │   ├── architecture.md
 │   ├── asymptote-bench.md
 │   ├── async-interaction.md
@@ -785,6 +819,7 @@
 │   │   ├── issue-triage.md
 │   │   ├── keepalive.md
 │   │   ├── modernize.md
+│   │   ├── product-docs.md
 │   │   ├── review-pr.md
 │   │   ├── rgaa-audit.md
 │   │   ├── sec-audit-deps.md
@@ -794,6 +829,7 @@
 │   │   ├── supply-shield.md
 │   │   ├── test-coverage.md
 │   │   ├── ultra11y.md
+│   │   ├── vuln-watch.md
 │   │   ├── whats-next.md
 │   │   ├── whole-improve-loop.md
 │   │   └── wiki-gen.md
@@ -814,6 +850,7 @@
 │   ├── cloud-llm-credentials.md
 │   ├── cloud-overview.md
 │   ├── cloud-public-exposure-checklist.md
+│   ├── cloud-queue-schema-rollout.md
 │   ├── cloud-rest-api.md
 │   ├── cloud-troubleshooting.md
 │   ├── cloud-user.md
@@ -841,6 +878,7 @@
 │   ├── forge-conversations.md
 │   ├── forge-integrations.md
 │   ├── forge-permissions.md
+│   ├── forge-security-read.md
 │   ├── grammar
 │   │   ├── V1_SCOPE.md
 │   │   └── iterion_v1.ebnf
@@ -905,6 +943,7 @@
 │   ├── permissions.md
 │   ├── persisted-formats.md
 │   ├── philosophy.md
+│   ├── platform-bots.md
 │   ├── plugins.md
 │   ├── post-mortem-shell.md
 │   ├── privacy_filter.md
@@ -925,6 +964,7 @@
 │   ├── references-bootstrap.md
 │   ├── repo-scope.md
 │   ├── resume.md
+│   ├── revi-billy-loop.md
 │   ├── review-merge-gate.md
 │   ├── review-scope.md
 │   ├── reviews
@@ -1074,10 +1114,12 @@
 │   │           └── worker_test.go
 │   ├── handoff_publish_test.go
 │   ├── issue_triage_trigger_test.go
-│   ├── live_*.go  (41 files)
+│   ├── live_*.go  (42 files)
 │   ├── malware_fixture_test.go
 │   ├── mcp_server_test.go
+│   ├── plan_review_test.go
 │   ├── privacy_test.go
+│   ├── product_docs_test.go
 │   ├── review_topology_test.go
 │   ├── rewind_resume_test.go
 │   ├── rewind_workspace_test.go
@@ -1101,6 +1143,7 @@
 │   │   ├── claw_reasoning_effort.bot
 │   │   ├── claw_subagents.bot
 │   │   ├── claw_tool_coverage.bot
+│   │   ├── codex_web_search.bot
 │   │   ├── diagram_mini.bot
 │   │   ├── dogfood_editor_ui_loop.bot
 │   │   ├── dual_model_plan_implement_review.bot
@@ -1132,6 +1175,7 @@
 │   │   ├── llm_router_task_dispatch.bot
 │   │   ├── model_backend_override_mini.bot
 │   │   ├── model_override_claw_mini.bot
+│   │   ├── plan_review_mini.bot
 │   │   ├── playwright_visual_qa.bot
 │   │   ├── pr_refine_dual_model_parallel.bot
 │   │   ├── pr_refine_dual_model_parallel_compliance.bot
@@ -1159,6 +1203,7 @@
 │   ├── turing_countdown_test.go
 │   ├── verified_action_test.go
 │   ├── vision_attachments_live_test.go
+│   ├── vuln_watch_test.go
 │   ├── wait_test.go
 │   ├── whats_next_loop_test.go
 │   └── whole_improve_loop_test.go
@@ -1378,6 +1423,8 @@
 │   │   │   ├── codex_image_test.go
 │   │   │   ├── codex_output_discipline.txt
 │   │   │   ├── codex_sdk_compat_test.go
+│   │   │   ├── codex_web_search.go
+│   │   │   ├── codex_web_search_test.go
 │   │   │   ├── cursors_test.go
 │   │   │   ├── delegate.go
 │   │   │   ├── delegate_test.go
@@ -1475,6 +1522,7 @@
 │   │   │   ├── capabilities_public.go
 │   │   │   ├── capabilities_public_test.go
 │   │   │   ├── chain_dispatch_test.go
+│   │   │   ├── chain_skip_test.go
 │   │   │   ├── claw_backend.go
 │   │   │   ├── claw_backend_test.go
 │   │   │   ├── claw_registry_test.go
@@ -1488,7 +1536,7 @@
 │   │   │   ├── events.go
 │   │   │   ├── events_test.go
 │   │   │   ├── executor.go
-│   │   │   ├── executor_*.go  (34 files)
+│   │   │   ├── executor_*.go  (37 files)
 │   │   │   ├── fallback_prereq_test.go
 │   │   │   ├── generation.go
 │   │   │   ├── generation_*.go  (11 files)
@@ -1529,6 +1577,8 @@
 │   │   │   ├── secretguard_binding_hosts_test.go
 │   │   │   ├── secrets_materialize_test.go
 │   │   │   ├── session.go
+│   │   │   ├── session_continuity_modes_test.go
+│   │   │   ├── session_optional_degrade_test.go
 │   │   │   ├── session_test.go
 │   │   │   ├── settings_hooks.go
 │   │   │   ├── settings_hooks_test.go
@@ -1719,6 +1769,8 @@
 │   ├── botsource
 │   │   ├── botsource.go
 │   │   ├── botsource_test.go
+│   │   ├── materialize.go
+│   │   ├── materialize_test.go
 │   │   ├── memory.go
 │   │   ├── mongo.go
 │   │   └── mongo_test.go
@@ -1792,7 +1844,7 @@
 │   │   ├── plugin.go
 │   │   ├── read_secret_value_test.go
 │   │   ├── remote.go
-│   │   ├── remote_*.go  (10 files)
+│   │   ├── remote_*.go  (11 files)
 │   │   ├── report.go
 │   │   ├── report_test.go
 │   │   ├── resume.go
@@ -2011,6 +2063,7 @@
 │   │   │   ├── helpers.go
 │   │   │   ├── jsonenc.go
 │   │   │   ├── jsonenc_description_test.go
+│   │   │   ├── jsonenc_supervisor_test.go
 │   │   │   ├── jsonenc_test.go
 │   │   │   ├── jsonenc_var_enum_test.go
 │   │   │   └── pos.go
@@ -2030,7 +2083,7 @@
 │   │   │   ├── budget_override.go
 │   │   │   ├── budget_override_test.go
 │   │   │   ├── compile.go
-│   │   │   ├── compile_*.go  (6 files)
+│   │   │   ├── compile_*.go  (7 files)
 │   │   │   ├── compress_test.go
 │   │   │   ├── compute_when_test.go
 │   │   │   ├── cursor_resolve_test.go
@@ -2072,7 +2125,7 @@
 │   │   │   ├── uses_llm.go
 │   │   │   ├── uses_llm_test.go
 │   │   │   ├── validate.go
-│   │   │   ├── validate_*.go  (27 files)
+│   │   │   ├── validate_*.go  (28 files)
 │   │   │   ├── verified_action_test.go
 │   │   │   └── worktree_default_test.go
 │   │   ├── parser
@@ -2238,9 +2291,13 @@
 │   │   ├── repo_url.go
 │   │   ├── reviews.go
 │   │   ├── reviews_test.go
+│   │   ├── security_read.go
+│   │   ├── security_read_test.go
 │   │   ├── status.go
 │   │   ├── transport.go
-│   │   └── types.go
+│   │   ├── types.go
+│   │   ├── watch_only_exclusion_test.go
+│   │   └── watch_only_lifecycle_test.go
 │   ├── git
 │   │   ├── ancestor_test.go
 │   │   ├── callers_test.go
@@ -2383,6 +2440,10 @@
 │   │   ├── mongo_test.go
 │   │   ├── pat.go
 │   │   └── pat_test.go
+│   ├── platformcfg
+│   │   ├── platformcfg.go
+│   │   ├── platformcfg_test.go
+│   │   └── store.go
 │   ├── plugin
 │   │   ├── builtin
 │   │   │   ├── codeindex
@@ -2432,6 +2493,7 @@
 │   │   ├── pluginsource_test.go
 │   │   └── resolve.go
 │   ├── queue
+│   │   ├── envelope_test.go
 │   │   ├── nats
 │   │   │   ├── dlq.go
 │   │   │   ├── lock.go
@@ -2447,15 +2509,19 @@
 │   │   ├── policy.go
 │   │   └── policy_test.go
 │   ├── reviewtopology
+│   │   ├── plan_review_test.go
 │   │   ├── resolve.go
 │   │   └── resolve_test.go
 │   ├── runner
 │   │   ├── bank_test.go
+│   │   ├── botbundle.go
+│   │   ├── botbundle_test.go
 │   │   ├── budget_override_test.go
 │   │   ├── clone_test.go
 │   │   ├── contributions.go
 │   │   ├── contributions_test.go
 │   │   ├── credpool_spend_test.go
+│   │   ├── executor_spec_test.go
 │   │   ├── file_secret_refresh_test.go
 │   │   ├── git_credentials_test.go
 │   │   ├── git_identity.go
@@ -2469,16 +2535,7 @@
 │   │   ├── hostpin.go
 │   │   ├── hostpin_test.go
 │   │   ├── loop.go
-│   │   ├── loop_credentials.go
-│   │   ├── loop_gitws.go
-│   │   ├── loop_lock.go
-│   │   ├── loop_metrics.go
-│   │   ├── loop_nats.go
-│   │   ├── loop_secrets.go
-│   │   ├── loop_spend.go
-│   │   ├── loop_tenant.go
-│   │   ├── loop_test.go
-│   │   ├── loop_upload.go
+│   │   ├── loop_*.go  (10 files)
 │   │   ├── metrics_test.go
 │   │   ├── model_overrides_test.go
 │   │   ├── oauth_refresh.go
@@ -2490,14 +2547,11 @@
 │   │   ├── runlog_writer_test.go
 │   │   ├── sandbox_registry.go
 │   │   ├── sandbox_registry_test.go
+│   │   ├── schema_rollout_integration_test.go
 │   │   ├── secrets_mount_test.go
 │   │   ├── steer.go
 │   │   ├── steer_test.go
-│   │   ├── usage_cap.go
-│   │   ├── usage_cap_test.go
-│   │   ├── usage_retry.go
-│   │   ├── usage_retry_chain_test.go
-│   │   ├── usage_retry_test.go
+│   │   ├── usage_*.go  (5 files)
 │   │   └── workspace_reset_test.go
 │   ├── runshell
 │   │   ├── errors.go
@@ -2512,6 +2566,7 @@
 │   │   ├── branch.go
 │   │   ├── budget.go
 │   │   ├── budget_deadline_test.go
+│   │   ├── budget_exit_grace.go
 │   │   ├── budget_persist.go
 │   │   ├── budget_test.go
 │   │   ├── bundle.go
@@ -2545,6 +2600,8 @@
 │   │   ├── git_windows.go
 │   │   ├── hardening_test.go
 │   │   ├── human_interaction_iteration_test.go
+│   │   ├── incoming.go
+│   │   ├── incoming_test.go
 │   │   ├── library_skills.go
 │   │   ├── library_skills_mirror_test.go
 │   │   ├── library_skills_test.go
@@ -2561,6 +2618,7 @@
 │   │   ├── override_test.go
 │   │   ├── parallel_test.go
 │   │   ├── pause.go
+│   │   ├── pause_drain_scope_test.go
 │   │   ├── pause_test.go
 │   │   ├── permission_grants_test.go
 │   │   ├── persist_session.go
@@ -2642,6 +2700,7 @@
 │   │   ├── reattach_test.go
 │   │   ├── reconcile_k8s_test.go
 │   │   ├── reconcile_no_authority_test.go
+│   │   ├── resume_filler_test.go
 │   │   ├── rewind.go
 │   │   ├── rewind_auto.go
 │   │   ├── rewind_auto_test.go
@@ -2662,34 +2721,7 @@
 │   │   │   ├── tail.go
 │   │   │   └── tail_test.go
 │   │   ├── service.go
-│   │   ├── service_artifacts.go
-│   │   ├── service_artifacts_test.go
-│   │   ├── service_attachments.go
-│   │   ├── service_commands.go
-│   │   ├── service_commands_test.go
-│   │   ├── service_control.go
-│   │   ├── service_drain_test.go
-│   │   ├── service_eventsource.go
-│   │   ├── service_eventsource_test.go
-│   │   ├── service_interactions.go
-│   │   ├── service_launch.go
-│   │   ├── service_launch_budget_test.go
-│   │   ├── service_launch_dispatch_fields_test.go
-│   │   ├── service_launch_loop_budget_test.go
-│   │   ├── service_launch_operator_resume_test.go
-│   │   ├── service_launch_pause_test.go
-│   │   ├── service_lifecycle.go
-│   │   ├── service_lifecycle_reap_test.go
-│   │   ├── service_log.go
-│   │   ├── service_observe.go
-│   │   ├── service_resume_hash_test.go
-│   │   ├── service_runs.go
-│   │   ├── service_runs_records_test.go
-│   │   ├── service_runs_repo_test.go
-│   │   ├── service_runs_skip_log_test.go
-│   │   ├── service_stream.go
-│   │   ├── service_stream_test.go
-│   │   ├── service_test.go
+│   │   ├── service_*.go  (29 files)
 │   │   ├── skills.go
 │   │   ├── snapshot.go
 │   │   ├── snapshot_mongo_decode_test.go
@@ -2697,11 +2729,7 @@
 │   │   ├── source_kind_test.go
 │   │   ├── steer.go
 │   │   ├── subbot.go
-│   │   ├── subbot_child_control_test.go
-│   │   ├── subbot_human_gate_test.go
-│   │   ├── subbot_reattach_test.go
-│   │   ├── subbot_reconcile_test.go
-│   │   ├── subbot_restart_test.go
+│   │   ├── subbot_*.go  (5 files)
 │   │   ├── trigger_emit.go
 │   │   ├── trigger_emit_test.go
 │   │   ├── usagecap.go
@@ -2833,6 +2861,8 @@
 │   │       ├── httpdial.go
 │   │       └── httpdial_test.go
 │   ├── server
+│   │   ├── admin_bots_routes.go
+│   │   ├── admin_bots_routes_test.go
 │   │   ├── admin_llm_routes.go
 │   │   ├── admin_llm_routes_test.go
 │   │   ├── admin_orgs_routes.go
@@ -2866,6 +2896,8 @@
 │   │   ├── boarddispatch_test.go
 │   │   ├── bot_bindings_routes.go
 │   │   ├── bot_bindings_routes_test.go
+│   │   ├── bot_resolver.go
+│   │   ├── bot_resolver_sweep_test.go
 │   │   ├── bot_sources_routes.go
 │   │   ├── bot_sources_routes_test.go
 │   │   ├── bots_create.go
@@ -2887,12 +2919,14 @@
 │   │   │   ├── oauth_fallback_test.go
 │   │   │   ├── platform_tier_test.go
 │   │   │   ├── publisher.go
+│   │   │   ├── publisher_budget_overrides_test.go
 │   │   │   ├── publisher_cancel_test.go
 │   │   │   ├── publisher_model_overrides_test.go
 │   │   │   ├── publisher_orgid_test.go
 │   │   │   ├── publisher_resume_test.go
 │   │   │   ├── publisher_secrets_test.go
 │   │   │   ├── publisher_source_test.go
+│   │   │   ├── publisher_topology_test.go
 │   │   │   └── steer.go
 │   │   ├── config_*.go  (8 files)
 │   │   ├── cost_preview.go
@@ -2910,7 +2944,7 @@
 │   │   ├── filesystem_test.go
 │   │   ├── filter.go
 │   │   ├── filter_test.go
-│   │   ├── forge_*.go  (29 files)
+│   │   ├── forge_*.go  (31 files)
 │   │   ├── generic_secrets_routes.go
 │   │   ├── gosafe.go
 │   │   ├── gosafe_errtrack_test.go
@@ -2958,6 +2992,8 @@
 │   │   ├── pat_routes.go
 │   │   ├── pat_routes_test.go
 │   │   ├── pipeline_*.go  (18 files)
+│   │   ├── platform_settings.go
+│   │   ├── platform_settings_test.go
 │   │   ├── plugin_sources_routes.go
 │   │   ├── plugins.go
 │   │   ├── plugins_routes_test.go
@@ -3163,13 +3199,21 @@
 │   │   ├── claudesession_test.go
 │   │   ├── coordinator.go
 │   │   ├── coordinator_flow_test.go
+│   │   ├── coordinator_monitors_test.go
+│   │   ├── coordinator_round2_test.go
+│   │   ├── coordinator_selfheal_test.go
 │   │   ├── coordinator_test.go
+│   │   ├── declared.go
+│   │   ├── declared_test.go
+│   │   ├── enabled.go
+│   │   ├── enabled_test.go
 │   │   ├── format.go
 │   │   ├── hookinstall.go
 │   │   ├── hookinstall_more_test.go
 │   │   ├── injector_inbox.go
 │   │   ├── inproc.go
 │   │   ├── inproc_test.go
+│   │   ├── model_hint_test.go
 │   │   ├── observer_transcript.go
 │   │   ├── raw_session_test.go
 │   │   ├── supervise.go
@@ -3434,6 +3478,7 @@
 │   │   │   │   ├── secrets.helpers.test.ts
 │   │   │   │   └── webhooks.helpers.test.ts
 │   │   │   ├── admin.ts
+│   │   │   ├── adminBots.ts
 │   │   │   ├── audit.ts
 │   │   │   ├── auth.ts
 │   │   │   ├── backends.ts
@@ -3677,6 +3722,7 @@
 │   │   │   │   │   └── useExecutionEvents.ts
 │   │   │   │   ├── eventLog
 │   │   │   │   │   ├── EventRow.tsx
+│   │   │   │   │   ├── eventModel.test.ts
 │   │   │   │   │   ├── eventModel.ts
 │   │   │   │   │   ├── useAnnotatedEvents.ts
 │   │   │   │   │   ├── usePersistedEventFilters.ts
@@ -4385,6 +4431,7 @@
 │   │   │   │   ├── AuditAdminPage.tsx
 │   │   │   │   ├── DLQAdminPage.tsx
 │   │   │   │   ├── OrgsAdminPage.tsx
+│   │   │   │   ├── PlatformBotsPage.tsx
 │   │   │   │   ├── PlatformLlmCredsPage.tsx
 │   │   │   │   ├── UsersAdminPage.tsx
 │   │   │   │   └── orgs
@@ -11828,4 +11875,4 @@
                 ├── pbkdf.go
                 ├── pkcs12.go
                 └── safebags.go
-1661 directories, 11056 files
+1667 directories, 11151 files
