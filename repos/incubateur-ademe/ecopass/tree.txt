@@ -17,6 +17,7 @@
 ├── README.md
 ├── __mocks__
 │   └── uuid.ts
+├── cron.json
 ├── docker-compose.yml
 ├── e2e
 │   ├── admin.spec.ts
@@ -28,6 +29,7 @@
 │   ├── history.spec.ts
 │   ├── organisations.spec.ts
 │   ├── search.spec.ts
+│   ├── tiers.spec.ts
 │   ├── user.spec.ts
 │   └── utils
 │       ├── login.ts
@@ -119,6 +121,14 @@
 │   │   ├── 20260728145338_user_citoyen
 │   │   │   └── migration.sql
 │   │   ├── 20260729092626_optional_organization
+│   │   │   └── migration.sql
+│   │   ├── 20260804122432_confidence_level
+│   │   │   └── migration.sql
+│   │   ├── 20260806090618_mean_score
+│   │   │   └── migration.sql
+│   │   ├── 20260807081940_orga_role
+│   │   │   └── migration.sql
+│   │   ├── 20260827131548_product_url
 │   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   ├── schema.prisma
@@ -329,6 +339,9 @@
 │   │   │   ├── Loading.tsx
 │   │   │   ├── LoadingButton.tsx
 │   │   │   └── ProConnect.tsx
+│   │   ├── CategoryDropdown
+│   │   │   ├── CategoryDropdown.module.css
+│   │   │   └── CategoryDropdown.tsx
 │   │   ├── Declaration
 │   │   │   ├── BrandAutocomplete.module.css
 │   │   │   ├── BrandAutocomplete.tsx
@@ -379,10 +392,13 @@
 │   │   ├── Label
 │   │   │   └── Label.tsx
 │   │   ├── Login
+│   │   │   ├── CitoyenCredentials.tsx
 │   │   │   ├── LoginForm.module.css
 │   │   │   ├── LoginForm.tsx
+│   │   │   ├── ProCredentials.tsx
 │   │   │   ├── PublicLoginForm.tsx
-│   │   │   └── ResetPasswordForm.tsx
+│   │   │   ├── ResetPasswordForm.tsx
+│   │   │   └── messages.ts
 │   │   ├── Matomo
 │   │   │   └── Matomo.ts
 │   │   ├── Mentions
@@ -410,6 +426,7 @@
 │   │   │   │   ├── NewDelegation.tsx
 │   │   │   │   ├── NewDelegationModal.module.css
 │   │   │   │   ├── NewDelegationModal.tsx
+│   │   │   │   ├── OtherDelegations.module.css
 │   │   │   │   ├── OtherDelegations.tsx
 │   │   │   │   ├── SiretDelegation.tsx
 │   │   │   │   └── UniqueIdDelegation.tsx
@@ -420,12 +437,14 @@
 │   │   │   ├── Informations.tsx
 │   │   │   ├── Links.tsx
 │   │   │   ├── MyOrganization.tsx
+│   │   │   ├── OrganizationMembers.tsx
 │   │   │   ├── OrganizationName.module.css
 │   │   │   ├── OrganizationName.tsx
 │   │   │   ├── OtherOrganization.module.css
 │   │   │   └── OtherOrganization.tsx
 │   │   ├── Product
 │   │   │   ├── BrandSelection.tsx
+│   │   │   ├── ConfidenceLevelBadge.tsx
 │   │   │   ├── DownloadExport.tsx
 │   │   │   ├── DownloadScore.tsx
 │   │   │   ├── DownloadScores.tsx
@@ -521,7 +540,8 @@
 │   │   ├── recalculateHashes.ts
 │   │   ├── sendWelcomeMail.ts
 │   │   ├── siretInfo.ts
-│   │   └── updateCategorySlug.ts
+│   │   ├── updateCategorySlug.ts
+│   │   └── weeklyDeclarationNotifications.ts
 │   ├── serverFunctions
 │   │   ├── admin.ts
 │   │   ├── brand.ts
@@ -542,6 +562,9 @@
 │   │   │   ├── password.ts
 │   │   │   ├── redirect.ts
 │   │   │   └── user.ts
+│   │   ├── cron
+│   │   │   ├── weeklyDeclarationNotifications.test.ts
+│   │   │   └── weeklyDeclarationNotifications.ts
 │   │   ├── download.ts
 │   │   ├── emails
 │   │   │   ├── email.ts
@@ -551,6 +574,9 @@
 │   │   │       ├── test-upload-success.ejs
 │   │   │       ├── upload-error.ejs
 │   │   │       ├── upload-success.ejs
+│   │   │       ├── weekly-declaration-changed.ejs
+│   │   │       ├── weekly-owner-low-medium-alert.ejs
+│   │   │       ├── welcome-citoyen.ejs
 │   │   │       └── welcome.ejs
 │   │   ├── format.ts
 │   │   ├── stats
@@ -568,6 +594,7 @@
 │   │       ├── printing.ts
 │   │       ├── product.test.ts
 │   │       ├── product.ts
+│   │       ├── productCheckResult.ts
 │   │       └── zodValidationTest.ts
 │   ├── types
 │   │   ├── Ecobalyse.ts
@@ -624,6 +651,7 @@
 │   │   ├── product
 │   │   │   ├── category.test.ts
 │   │   │   ├── category.ts
+│   │   │   ├── confidence.ts
 │   │   │   └── impacts.ts
 │   │   ├── queue
 │   │   │   ├── exports.test.ts
@@ -681,4 +709,4 @@
 │       ├── SimplifiedDeclaration.tsx
 │       └── Statistics.tsx
 └── tsconfig.json
-167 directories, 516 files
+173 directories, 538 files

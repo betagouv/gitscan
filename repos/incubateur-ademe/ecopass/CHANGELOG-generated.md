@@ -1,26 +1,22 @@
-## Changelog : ecopass (30 derniers jours, au 29 juillet 2026)
+## Changelog : ecopass (30 derniers jours, au 28 août 2026)
 
 ### Résumé
-Les dernières mises à jour d'Ecopass se concentrent sur l'amélioration de l'expérience de déclaration des produits, notamment avec une première version d'une déclaration simplifiée et la gestion des composants multiples. Des corrections de bugs ont également été apportées pour améliorer la stabilité et la convivialité de la plateforme.
+Ce mois-ci, la plateforme a considérablement évolué pour offrir une gestion plus fine des utilisateurs et des données. L'introduction d'un profil "citoyen", l'amélioration de la gestion des organisations et le renforcement des contrôles de sécurité permettent une utilisation plus structurée. Parallèlement, la précision des informations produits a été enrichie (URL, catégories, niveaux de confiance) et la robustesse du système a été consolidée par l'ajout de nouveaux tests automatisés.
 
 ### Évolutions fonctionnelles
-- Ajout d'une première version de la déclaration simplifiée des produits. [#185](https://github.com/incubateur-ademe/ecopass/issues/185)
-- Remplacement du menu des marques pour une meilleure expérience utilisateur. [#184](https://github.com/incubateur-ademe/ecopass/issues/184)
-- Ajout d'une route pour afficher des statistiques. [#183](https://github.com/incubateur-ademe/ecopass/issues/183)
-- Possibilité d'ajouter des préfixes GTIN pour une identification plus précise des produits. [#181](https://github.com/incubateur-ademe/ecopass/issues/181)
-- Amélioration de la recherche pour afficher toutes les marques. [#178](https://github.com/incubateur-ademe/ecopass/issues/178)
-- Possibilité de spécifier les accessoires sur un produit multi-composants.
-- Prise en charge de la déclaration de produits avec plusieurs composants via l'API. [#182](https://github.com/incubateur-ademe/ecopass/issues/182)
-- Redirection après certaines actions. [#186](https://github.com/incubateur-ademe/ecopass/issues/186)
+- **Gestion des utilisateurs et accès** :
+    - Création du profil "citoyen" [#197](https://github.com/incubateur-ademe/ecopass/issues/197).
+    - Mise en place de la gestion des membres au sein d'une organisation [#191](https://github.com/incubateur-ademe/ecopass/issues/191).
+    - Ajout de la possibilité de s'inscrire directement via la page de connexion publique [#196](https://github.com/incubateur-ademe/ecopass/issues/196).
+    - Renforcement de la sécurité par la restriction des actions pour les profils "lecteurs" [#195](https://github.com/incubateur-ademe/ecopass/issues/195) et la limitation de l'accès aux déclarations récentes [#192](https://github.com/incubateur-ademe/ecopass/issues/192).
+- **Gestion et données produits** :
+    - Enrichissement des données produits avec l'ajout d'URL [#201](https://github.com/incubateur-ademe/ecopass/issues/201) et de sélecteurs de catégories [#198](https://github.com/incubateur-ademe/ecopass/issues/198).
+    - Amélioration de la précision des données via le calcul du score moyen [#189](https://github.com/incubateur-ademe/ecopass/issues/189) et l'ajout d'un niveau de confiance [#187](https://github.com/incubateur-ademe/ecopass/issues/187).
+    - Introduction d'une première version de déclaration simplifiée [#185](https://github.com/incubateur-ademe/ecopass/issues/185).
+    - Corrections et contraintes : correction de la recherche de produits [#190](https://github.com/incubateur-ademe/ecopass/issues/190), limitation de la masse lors des téléchargements [#188](https://github.com/incubateur-ademe/ecopass/issues/188) et gestion des redirections [#186](https://github.com/incubateur-ademe/ecopass/issues/186).
 
 ### Évolutions techniques
-- Correction d'un problème de buffer lors de la lecture de fichiers Excel. [#174](https://github.com/incubateur-ademe/ecopass/issues/174)
-- Correction de la version de maildev pour assurer la compatibilité. [#175](https://github.com/incubateur-ademe/ecopass/issues/175)
-- Amélioration des tests pour une meilleure couverture et fiabilité. [#174](https://github.com/incubateur-ademe/ecopass/issues/174)
-- Correction d'un problème lié au timing de suppression de l'environnement de test. [#1202144](https://github.com/incubateur-ademe/ecopass/commit/1202144)
-
-### Autres changements
-- Correction des messages d'erreur de connexion. [#179](https://github.com/incubateur-ademe/ecopass/issues/179)
-- Correction d'une date incorrecte dans les tests. [#180](https://github.com/incubateur-ademe/ecopass/issues/180)
-- Correction de l'affichage du composant principal lors de l'importation de fichiers CSV. [#176](https://github.com/incubateur-ademe/ecopass/issues/176)
-- Mise à jour de la documentation par défaut des trims. [#177](https://github.com/incubateur-ademe/ecopass/issues/177)
+- **Automatisation et infrastructure** :
+    - Implémentation d'une tâche planifiée (cron) pour la gestion des envois d'emails [#193](https://github.com/incubateur-ademe/ecopass/issues/193) et correction de la commande cron associée.
+- **Qualité et tests** :
+    - Renforcement de la fiabilité du code avec l'ajout de tests unitaires [#200](https://github.com/incubateur-ademe/ecopass/issues/200) et de tests de bout en bout (E2E) [#199](https://github.com/incubateur-ademe/ecopass/issues/199).
