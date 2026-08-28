@@ -1,25 +1,35 @@
-## Changelog : vizeau (30 derniers jours, au 11 août 2026)
+## Changelog : vizeau (30 derniers jours, au 27 août 2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a franchi une étape importante avec l'introduction d'une interface publique et d'une page de bienvenue pour améliorer l'accessibilité. La gestion des données est devenue plus flexible grâce au partage de projets entre territoires, tandis que la confidentialité a été renforcée par la personnalisation des commentaires de parcelles. Enfin, la stabilité de l'outil cartographique a été nettement améliorée pour éviter les interruptions de service.
+Ce mois a été marqué par une modernisation importante de l'infrastructure technique et une amélioration de l'expérience utilisateur. Les utilisateurs bénéficient désormais de nouvelles capacités d'exportation de données (calendrier, projets) et d'une interface plus stable et accueillante. En coulisses, la migration vers Inertia 3 et la refonte de la gestion cartographique assurent une base plus performante et évolutive pour la plateforme.
 
 ### Évolutions fonctionnelles
-- **Nouvelle interface publique** : Ajout d'une page d'accueil publique avec une page de bienvenue, des illustrations et des animations au défilement. [#482](https://github.com/MTES-MCT/vizeau/pull/482)
-- **Gestion des projets** : Les projets sont désormais partagés entre les différents territoires. [#481](https://github.com/MTES-MCT/vizeau/pull/481)
-- **Confidentialité des données** : Les commentaires sur les parcelles sont désormais individuels et propres à chaque utilisateur. [#474](https://github.com/MTES-MCT/vizeau/pull/474)
-- **Amélioration de la stabilité cartographique** : Un plantage lors de l'affichage de la carte n'entraîne plus l'arrêt de l'ensemble de l'application. [#484](https://github.com/MTES-MCT/vizeau/pull/484)
-- **Corrections de permissions et d'erreurs** : 
-    - Correction des droits de téléchargement pour les documents de journal de bord. [#477](https://github.com/MTES-MCT/vizeau/pull/477)
-    - Amélioration de l'affichage des messages d'erreur, notamment lors de l'authentification. [#472](https://github.com/MTES-MCT/vizeau/pull/472)
+- **Nouvelles capacités d'exportation** :
+    - Export des tâches au format calendrier (ICS) [#494](https://github.com/MTES-MCT/vizeau/pull/494).
+    - Export des données liées aux projets [#495](https://github.com/MTES-MCT/vizeau/pull/495).
+    - Export des entrées de journal pour une meilleure gestion du calendrier.
+- **Amélioration de l'interface et de l'expérience utilisateur** :
+    - Refonte de la page d'accueil et ajout d'une page de bienvenue [#482](https://github.com/MTES-MCT/vizeau/pull/482).
+    - Amélioration de la page publique.
+    - Mise en place de projets partagés [#481](https://github.com/MTES-MCT/vizeau/pull/481).
+    - Correction de fautes de frappe dans les descriptions des Aires d’Alimentation de Captage (AAC).
+- **Stabilité** :
+    - Amélioration de la gestion des erreurs : les plantages lors de l'affichage de la carte ne bloquent plus l'utilisation du reste de l'application.
 
 ### Évolutions techniques
-- **Optimisation de la cartographie** : Refactorisation des effets de réconciliation sur la carte principale et simplification de l'API pour améliorer les performances de synchronisation. [#487](https://github.com/MTES-MCT/vizeau/pull/487)
-- **Migration du routage** : Passage vers un nouveau système de routage pour l'application. [#478](https://github.com/MTES-MCT/vizeau/pull/478)
-- **Refactorisation de l'architecture** :
-    - Simplification des modèles et utilisation d'imports générés pour les contrôleurs et les politiques. [#475](https://github.com/MTES-MCT/vizeau/pull/475)
-    - Mise en place de "barrel controllers" pour une meilleure organisation du code. [#476](https://github.com/MTES-MCT/vizeau/pull/476)
-    - Modularisation de l'interface via la création de composants UI réutilisables (ex: `HomeSection`). [#479](https://github.com/MTES-MCT/vizeau/pull/479)
+- **Modernisation du framework** : Migration vers Inertia 3 pour améliorer la réactivité de l'application [#491](https://github.com/MTES-MCT/vizeau/pull/491).
+- **Optimisation cartographique et SIG** :
+    - Refonte de la gestion des fichiers PMTiles pour une meilleure performance [#498](https://github.com/MTES-MCT/vizeau/pull/498).
+    - Refactorisation des effets de réconciliation sur la carte principale [#487](https://github.com/MTES-MCT/vizeau/pull/487).
+- **Refactorisation du backend et des services** :
+    - Simplification et optimisation du service AAC, incluant l'externalisation de la gestion DuckDB [#488](https://github.com/MTES-MCT/vizeau/pull/488).
+    - Optimisation de l'API du réconciliateur et de ses mécanismes de synchronisation.
+- **Architecture Frontend** :
+    - Refonte de la structure de navigation du header et amélioration de la gestion du contexte sur les pages territoires/AAC et exploitations [#493](https://github.com/MTES-MCT/vizeau/pull/493).
+    - Mise à jour et nettoyage des composants UI (`SectionCard`, `CheckboxCard`).
 
 ### Autres changements
-- **Qualité du code** : Ajout du linting (`npm run lint`) dans le hook de pré-commit pour garantir la conformité du code.
-- **Maintenance** : Diverses corrections de typographies et de formatage (Prettier).
+- **Gestion du projet** : Déplacement du générateur de PMTiles dans un dépôt dédié.
+- **Configuration et CI/CD** :
+    - Mise à jour de la compatibilité `package-lock.json` pour Node 24.
+    - Ajout de l'étape de linting (`npm run lint`) au hook de pre-commit pour garantir la qualité du code.

@@ -98,6 +98,7 @@
 │   │   ├── aac_service.ts
 │   │   ├── base_csv_service.ts
 │   │   ├── base_document_upload_service.ts
+│   │   ├── duckdb_service.ts
 │   │   ├── event_logger_service.ts
 │   │   ├── exploitation_csv_service.ts
 │   │   ├── exploitation_service.ts
@@ -110,6 +111,7 @@
 │   │   ├── parcelle_csv_service.ts
 │   │   ├── parcelle_service.ts
 │   │   ├── project_service.ts
+│   │   ├── project_step_csv_service.ts
 │   │   ├── project_step_document_service.ts
 │   │   ├── project_step_service.ts
 │   │   ├── project_step_tag_service.ts
@@ -338,6 +340,7 @@
 │   │   │   │   ├── step-renderer.tsx
 │   │   │   │   ├── steps_config.ts
 │   │   │   │   └── territoires-step.tsx
+│   │   │   ├── projet-export-card.tsx
 │   │   │   ├── projet-infos-card.tsx
 │   │   │   ├── projet-installations-list.tsx
 │   │   │   ├── projet-parcelles-list.tsx
@@ -359,6 +362,7 @@
 │   │   ├── codes_NAF.json
 │   │   └── cultures.json
 │   ├── functions
+│   │   ├── calendar.ts
 │   │   ├── colors.ts
 │   │   ├── contacts.ts
 │   │   ├── cultures-group.tsx
@@ -414,6 +418,7 @@
 │   │   └── visualisation.tsx
 │   ├── ssr.tsx
 │   ├── tsconfig.json
+│   ├── types.ts
 │   ├── ui
 │   │   ├── AlertDrawer
 │   │   │   ├── alert-drawer.stories.tsx
@@ -549,22 +554,6 @@
 │       └── group-colors.tsx
 ├── package-lock.json
 ├── package.json
-├── pmtiles_generator
-│   ├── .env.example
-│   ├── AGENTS.md
-│   ├── README.md
-│   ├── config.yaml
-│   ├── llms.txt
-│   ├── pipeline.yaml
-│   ├── run.sh
-│   └── scripts
-│       ├── build.sh
-│       ├── convert.sh
-│       ├── discover.sh
-│       ├── download.sh
-│       ├── fetch-bio.sh
-│       ├── setup.py
-│       └── upload.sh
 ├── public
 │   ├── Illustration-hero.webp
 │   ├── Illustration-qualite-assolement.webp
@@ -621,8 +610,10 @@
 │   │   ├── project
 │   │   │   ├── project_step_tags.spec.ts
 │   │   │   ├── projects_destroy.spec.ts
+│   │   │   ├── projects_export.spec.ts
 │   │   │   ├── projects_show.spec.ts
 │   │   │   ├── projects_steps.spec.ts
+│   │   │   ├── projects_steps_export.spec.ts
 │   │   │   ├── projects_store.spec.ts
 │   │   │   └── projects_update.spec.ts
 │   │   ├── territoire
@@ -662,4 +653,4 @@
 ├── vite.config.ts
 ├── vitest.config.ts
 └── vitest.shims.d.ts
-124 directories, 540 files
+122 directories, 533 files
