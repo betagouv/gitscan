@@ -261,6 +261,9 @@
 │   │   │   │   ├── geo-api-gouv
 │   │   │   │   │   ├── geo-api-gouv.test.ts
 │   │   │   │   │   └── geo-api-gouv.ts
+│   │   │   │   ├── google-indexing
+│   │   │   │   │   ├── google-indexing.client.test.ts
+│   │   │   │   │   └── google-indexing.client.ts
 │   │   │   │   └── inserjeunes
 │   │   │   │       ├── inserjeunes.client.fixture.ts
 │   │   │   │       ├── inserjeunes.client.test.ts
@@ -269,6 +272,7 @@
 │   │   │   ├── logger.ts
 │   │   │   ├── sentry
 │   │   │   │   ├── sentry.fastify.ts
+│   │   │   │   ├── sentry.test.ts
 │   │   │   │   └── sentry.ts
 │   │   │   ├── territoires.test.ts
 │   │   │   ├── territoires.ts
@@ -300,6 +304,7 @@
 │   │   │       ├── sentry-utils.ts
 │   │   │       ├── session.service.ts
 │   │   │       ├── slack-utils.ts
+│   │   │       ├── stream-utils.test.ts
 │   │   │       ├── stream-utils.ts
 │   │   │       ├── string-utils.test.ts
 │   │   │       └── string-utils.ts
@@ -314,6 +319,8 @@
 │   │   │   │   │   │   ├── processor.admin.routes.test.ts
 │   │   │   │   │   │   └── processor.admin.routes.ts
 │   │   │   │   │   ├── geo.private.controller.ts
+│   │   │   │   │   ├── metiers.private.controller.test.ts
+│   │   │   │   │   ├── metiers.private.controller.ts
 │   │   │   │   │   └── seo.private.controller.ts
 │   │   │   │   ├── admin
 │   │   │   │   │   ├── eligible-trainings-for-appointment.controller.ts
@@ -328,9 +335,6 @@
 │   │   │   │   ├── etablissement-recruteur.controller.test.ts
 │   │   │   │   ├── etablissement-recruteur.controller.ts
 │   │   │   │   ├── etablissement.controller.ts
-│   │   │   │   ├── formation-region.controller.test.ts
-│   │   │   │   ├── formation-region.controller.ts
-│   │   │   │   ├── formation.controller.test.ts
 │   │   │   │   ├── formations.controller.ts
 │   │   │   │   ├── formulaire.controller.test.ts
 │   │   │   │   ├── formulaire.controller.ts
@@ -339,8 +343,6 @@
 │   │   │   │   ├── jobs.controller.test.ts
 │   │   │   │   ├── jobs.controller.ts
 │   │   │   │   ├── login.controller.ts
-│   │   │   │   ├── metiers.controller.test.ts
-│   │   │   │   ├── metiers.controller.ts
 │   │   │   │   ├── partners.controller.test.ts
 │   │   │   │   ├── partners.controller.ts
 │   │   │   │   ├── reported-company.controller.ts
@@ -400,6 +402,9 @@
 │   │   │   │   ├── schema-validation.ts
 │   │   │   │   ├── seed-search-synonyms.test.ts
 │   │   │   │   └── seed-search-synonyms.ts
+│   │   │   ├── deca
+│   │   │   │   ├── import-deca-contrats-par-annee.test.ts
+│   │   │   │   └── import-deca-contrats-par-annee.ts
 │   │   │   ├── diplomes-metiers
 │   │   │   │   └── update-diplomes-metiers.ts
 │   │   │   ├── domaines-metiers
@@ -413,7 +418,9 @@
 │   │   │   │   └── validate-domaine-metiers.ts
 │   │   │   ├── engagement-handicap
 │   │   │   │   ├── refresh-entreprise-engagement-jobs-partners.test.ts
-│   │   │   │   └── refresh-entreprise-engagement-jobs-partners.ts
+│   │   │   │   ├── refresh-entreprise-engagement-jobs-partners.ts
+│   │   │   │   ├── update-handi-engagement.test.ts
+│   │   │   │   └── update-handi-engagement.ts
 │   │   │   ├── formations-catalogue
 │   │   │   │   ├── formations-catalogue.ts
 │   │   │   │   └── update-parcoursup-and-affelnet-info-on-formation-catalogue.ts
@@ -721,6 +728,9 @@
 │   │   │   │   └── search-suggestion-criteria.ts
 │   │   │   ├── seo
 │   │   │   │   ├── data-metier-seo.ts
+│   │   │   │   ├── ping-google-indexing.ts
+│   │   │   │   ├── ping-indexnow.test.ts
+│   │   │   │   ├── ping-indexnow.ts
 │   │   │   │   └── update-seo.ts
 │   │   │   ├── simple-job-definitions.ts
 │   │   │   ├── update-brevo-blocked-emails
@@ -749,6 +759,7 @@
 │   │   │   ├── 20260811224141-add-offer-creation-index-jobs-partners.ts
 │   │   │   ├── 20260818182821-reseed-search-synonyms-generic-word-pollution.ts
 │   │   │   ├── 20260818194937-backfill-search-queries-status.ts
+│   │   │   ├── 20260821140000-add-hiring-count-engagement-indexes.ts
 │   │   │   └── 20260824100000-rename-search-queries-source.ts
 │   │   ├── security
 │   │   │   ├── access-log.service.ts
@@ -780,6 +791,8 @@
 │   │       ├── classification
 │   │       │   ├── classification-mistral-batch.service.test.ts
 │   │       │   └── classification-mistral-batch.service.ts
+│   │       ├── deca-contrats.service.test.ts
+│   │       ├── deca-contrats.service.ts
 │   │       ├── domainesmetiers.service.ts
 │   │       ├── eligible-trainings-for-appointment.service.test.ts
 │   │       ├── eligible-trainings-for-appointment.service.ts
@@ -820,7 +833,6 @@
 │   │       ├── opco.service.ts
 │   │       ├── organization.service.ts
 │   │       ├── partner-job.service.ts
-│   │       ├── query-validator.service.test.ts
 │   │       ├── query-validator.service.ts
 │   │       ├── query-validator.service.types.ts
 │   │       ├── recruteur-lba.service.test.ts
@@ -935,7 +947,6 @@
 │   │   ├── unit
 │   │   │   ├── external
 │   │   │   │   └── zod.test.ts
-│   │   │   ├── formation.test.ts
 │   │   │   ├── util.test.ts
 │   │   │   ├── utils
 │   │   │   │   └── isValidEmail.test.ts
@@ -963,6 +974,7 @@
 │   │   │   ├── error-codes.ts
 │   │   │   ├── geiq.ts
 │   │   │   ├── index.ts
+│   │   │   ├── indexnow.ts
 │   │   │   ├── lbaitem.ts
 │   │   │   ├── liste-cfa-entreprise.ts
 │   │   │   ├── rdva.ts
@@ -998,9 +1010,6 @@
 │   │   │   ├── dayjs.ts
 │   │   │   ├── generate-uri.test.ts
 │   │   │   ├── generate-uri.ts
-│   │   │   ├── openapi
-│   │   │   │   └── __snapshots__
-│   │   │   │       └── generateOpenapi.test.ts.snap
 │   │   │   ├── zod-helpers
 │   │   │   │   ├── setup-zod-error-map.ts
 │   │   │   │   ├── zod-primitives-light.ts
@@ -1034,6 +1043,7 @@
 │   │   │   ├── computed-user-access.model.ts
 │   │   │   ├── credentials.model.ts
 │   │   │   ├── custom-email-etfa.model.ts
+│   │   │   ├── deca-contrats.model.ts
 │   │   │   ├── diplomes-metiers.model.ts
 │   │   │   ├── domaines-metiers.model.ts
 │   │   │   ├── elligible-training.model.ts
@@ -1117,6 +1127,7 @@
 │   │   │   │   ├── admin
 │   │   │   │   │   └── processor.admin.routes.ts
 │   │   │   │   ├── geo.routes.ts
+│   │   │   │   ├── metiers.routes.ts
 │   │   │   │   └── seo.routes.ts
 │   │   │   ├── application.routes.ts
 │   │   │   ├── appointments.routes.ts
@@ -1125,7 +1136,6 @@
 │   │   │   ├── eligible-trainings-for-appointment.routes.ts
 │   │   │   ├── emails.routes.ts
 │   │   │   ├── etablissement.routes.ts
-│   │   │   ├── formations-par-region.routes.ts
 │   │   │   ├── formations.routes.ts
 │   │   │   ├── formulaire.route.ts
 │   │   │   ├── index.test.ts
@@ -1134,7 +1144,6 @@
 │   │   │   ├── jobs-partners-admin.routes.ts
 │   │   │   ├── jobs.routes.ts
 │   │   │   ├── login.routes.ts
-│   │   │   ├── metiers.routes.ts
 │   │   │   ├── params.ts
 │   │   │   ├── partners.routes.ts
 │   │   │   ├── recruiters.routes.ts
@@ -1848,6 +1857,7 @@
 │   │   │   ├── ItemDetailServices
 │   │   │   │   ├── ContratBlock.tsx
 │   │   │   │   ├── EmployeurPresentationBlock.tsx
+│   │   │   │   ├── HiringCountBox.tsx
 │   │   │   │   ├── ItemDetailApplicationStatus.tsx
 │   │   │   │   ├── ItemDetailCard.tsx
 │   │   │   │   ├── ItemDistanceToCenter.tsx
@@ -1889,7 +1899,9 @@
 │   │   │   ├── TagFormation.tsx
 │   │   │   ├── TagOffreEmploi.tsx
 │   │   │   ├── TagRecrutementUrgent.tsx
+│   │   │   ├── TrainingSchema.tsx
 │   │   │   └── ValorisationCandidatureSpontanee.tsx
+│   │   ├── JsonLdScript.tsx
 │   │   ├── MailCard.tsx
 │   │   ├── ModalReadOnly.tsx
 │   │   ├── RDV
@@ -1989,6 +2001,7 @@
 │   ├── proxy.test.ts
 │   ├── proxy.ts
 │   ├── public
+│   │   ├── 01232c8a2a1225367cfe22fe770c6385.txt
 │   │   ├── assets
 │   │   │   ├── checkbox-list.webp
 │   │   │   ├── exemple_integration_affelnet.webp
@@ -2293,6 +2306,7 @@
 │   │   │   │   ├── formation.svg
 │   │   │   │   ├── formation_large_shadow.png
 │   │   │   │   ├── goto.svg
+│   │   │   │   ├── hirings.png
 │   │   │   │   ├── info.svg
 │   │   │   │   ├── input_value_error.svg
 │   │   │   │   ├── job.png
@@ -2623,4 +2637,4 @@
 │       └── use-search-params-record.ts
 ├── vitest.config.ts
 └── yarn.lock
-491 directories, 2702 files
+491 directories, 2716 files
