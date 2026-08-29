@@ -1,17 +1,17 @@
-# Synthèse d'activité : refugies-info (du 06/08 au 13/08/2026)
+# Synthèse d'activité : refugies-info (du [Date de début] au [Date de fin])
 
 ## Résumé de l'activité
-L'activité de la période est marquée par une volonté d'automatisation des processus et d'amélioration de l'expérience utilisateur. La plateforme [playground](/repos/refugies-info/playground) franchit une étape clé dans la gestion éditoriale en intégrant des outils de communication (notifications Slack) et une assistance par intelligence artificielle pour faciliter les traductions. L'interface a également été modernisée pour rendre la gestion des contenus plus intuitive.
+L'activité de la semaine a été marquée par une amélioration de l'expérience utilisateur et de la richesse des données disponibles. Dans [playground](/repos/refugies-info/playground), l'accent a été mis sur l'intelligence artificielle avec des capacités de traduction enrichies et une interface de métadonnées plus complète, facilitant la gestion des informations pratiques. 
 
-En parallèle, [karfur](/repos/refugies-info/karfur) se concentre sur l'accessibilité et la précision de l'information, notamment grâce à une amélioration de la recherche multilingue et une meilleure visibilité des responsables de dispositifs pour les utilisateurs finaux.
+Parallèlement, [karfur](/repos/refugies-info/karfur) a progressé sur l'accessibilité de l'information grâce à une recherche multilingue optimisée et une meilleure visibilité des responsables et financeurs de dispositifs, améliorant ainsi la clarté pour les utilisateurs finaux.
 
 ## Sécurité
-- Intégration de GitLeaks dans le processus de développement pour la détection automatique de secrets lors des commits dans [karfur](/repos/refugies-info/karfur).
+- Renforcement de la sécurité lors des développements avec l'intégration de GitLeaks pour la détection de secrets dans [karfur](/repos/refugies-info/karfur).
 
 ## Autres changements notables
-- Modernisation de l'interface utilisateur de [playground](/repos/refugies-info/playground) via l'intégration de nouveaux composants de Design System et une refonte de la gestion des rôles.
-- Mise en place d'un système de synchronisation des données pour les opérateurs AGIR via Grist et Google Cloud Storage dans [karfur](/repos/refugies-info/karfur).
+- Refactorisation importante de la gestion des rôles utilisateurs dans [playground](/repos/refugies-info/playground).
+- Mise en place d'un nouveau flux de synchronisation pour les opérateurs AGIR via Grist et Google Cloud Storage dans [karfur](/repos/refugies-info/karfur).
 
 ## Dépôts les plus actifs
-- [playground](/repos/refugies-info/playground) : Activité intense centrée sur l'automatisation des workflows, l'intégration de l'IA et la refonte de l'interface utilisateur.
-- [karfur](/repos/refugies-info/karfur) : Évolutions axées sur l'amélioration de la recherche, de l'affichage des données et de la sécurité du code.
+- [playground](/repos/refugies-info/playground) : Évolutions majeures sur les fonctionnalités d'IA, l'interface de gestion des données et les outils de notification.
+- [karfur](/repos/refugies-info/karfur) : Améliorations de la recherche, de la visibilité des données et de l'infrastructure de synchronisation.

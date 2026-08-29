@@ -1,25 +1,30 @@
-# Synthèse d'activité : SocialGouv (du 14/08 au 21/08)
+# Synthèse d'activité : SocialGouv (du 01/08 au 28/08/2026)
 
 ## Résumé de l'activité
-L'activité de cette période est marquée par une accélération majeure sur l'intégration de l'intelligence artificielle et l'amélioration de l'analyse de code, notamment avec les évolutions de [iterion](/repos/SocialGouv/iterion) et [repo-falcon](/repos/SocialGouv/repo-falcon). Parallèlement, l'organisation concentre ses efforts sur la fiabilité des données et la stabilisation des parcours utilisateurs critiques, comme pour [egapro](/repos/SocialGouv/egapro) et [vao](/repos/SocialGouv/vao).
+L'activité récente de SocialGouv est marquée par une intégration croissante de l'intelligence artificielle, tant dans les outils de développement avec [iterion](/repos/SocialGouv/iterion) que dans l'analyse de données avec [questions-ecrites](/repos/SocialGouv/questions-ecrites). Ces évolutions visent à automatiser des tâches complexes tout en garantissant une précision accrue des informations extraites des sources officielles.
 
-L'infrastructure globale connaît une modernisation profonde, caractérisée par une migration massive vers le gestionnaire de paquets `pnpm` pour optimiser les déploiements et une centralisation des services de build via [buildkit-operator](/repos/SocialGouv/buildkit-operator).
+Parallèlement, l'organisation poursuit la modernisation de ses infrastructures et la sécurisation de ses services, notamment par la migration vers de nouveaux standards de gestion de paquets et d'authentification, ainsi que par le renforcement de la protection des données sensibles.
 
 ## Sécurité
-- **Protection des données et vie privée** : Mise en place d'une protection automatisée des données personnelles (PII) par pseudonymisation et d'un coffre-fort chiffré dans [doublure](/repos/SocialGouv/doublure), ainsi que de nouvelles politiques contre l'exfiltration de données vers des IA dans [smart-allow](/repos/SocialGouv/smart-allow).
-- **Correction de vulnérabilités critiques** : Résolution de failles d'injection SQL et de contournement d'authentification sur [infra-apps](/repos/SocialGouv/infra-apps) (Metabase), et corrections de vulnérabilités dans [nos1000jours-blues-epds-widget](/repos/SocialGouv/nos1000jours-blues-epds-widget) et [archifiltre-mails](/repos/SocialGouv/archifiltre-mails).
-- **Durcissement des accès et protocoles** : Migration vers une authentification exclusivement basée sur OIDC dans [buildkit-operator](/repos/SocialGouv/buildkit-operator) et sécurisation des appels via certificat mTLS dans [egapro](/repos/SocialGouv/egapro).
-- **Sécurisation des interfaces** : Protection renforcée contre les injections de commandes et les traversées de chemin dans [helmdex](/repos/SocialGouv/helmdex).
+- Protection contre l'exfiltration de données vers des fournisseurs d'IA externes dans [smart-allow](/repos/SocialGouv/smart-allow).
+- Protection et pseudonymisation automatique des données sensibles (PII) dans [doublure](/repos/SocialGouv/doublure).
+- Migration vers une authentification basée exclusivement sur OIDC pour [buildkit-operator](/repos/SocialGouv/buildkit-operator) et [buildkit-operator-example](/repos/SocialGouv/buildkit-operator-example).
+- Correction de vulnérabilités critiques (injection SQL, contournement OAuth) sur Metabase via [infra-apps](/repos/SocialGouv/infra-apps).
+- Durcissement de la sécurité contre les injections et les conditions de concurrence dans [helmdex](/repos/SocialGouv/helmdex).
+- Sécurisation des appels vers SUIT par l'implémentation du certificat client mTLS dans [egapro](/repos/SocialGouv/egapro).
+- Correction de vulnérabilités de sécurité dans [archifiltre-mails](/repos/SocialGouv/archifiltre-mails) et [nos1000jours-blues-epds-widget](/repos/SocialGouv/nos1000jours-blues-epds-widget).
 
 ## Autres changements notables
-- **Modernisation des outils de build** : Migration généralisée vers `pnpm` pour améliorer la performance et la gestion des dépendances ([revu](/repos/SocialGouv/revu), [matomo-next](/repos/SocialGouv/matomo-next), [jardinmental](/repos/SocialGouv/jardinmental), [enfants-du-spectacle](/repos/SocialGouv/enfants-du-spectacle)).
-- **Évolution de l'architecture et de l'observabilité** : Renforcement de l'isolation des processus par sandboxing et intégration de l'observabilité (Sentry) pour [iterion](/repos/SocialGouv/iterion) et [infra-apps](/repos/SocialGouv/infra-apps).
-- **Mises à jour technologiques majeures** : Migration de la stack vers Angular 20 et Node 22 pour [domifa](/repos/SocialGouv/domifa), et mise en place d'une architecture de déploiement Kubernetes/Helm robuste pour [mesure-impact](/repos/SocialGouv/mesure-impact).
+- Migration massive vers le gestionnaire de paquets `pnpm` pour améliorer la stabilité et la performance ([revu](/repos/SocialGouv/revu), [matomo-next](/repos/SocialGouv/matomo-next), [jardinmental](/repos/SocialGouv/jardinmental), [enfants-du-spectacle](/repos/SocialGouv/enfants-du-spectacle)).
+- Consolidation de l'infrastructure de build via la migration vers [buildkit-operator](/repos/SocialGouv/buildkit-operator) ([vao](/repos/SocialGouv/vao), [srdt](/repos/SocialGouv/srdt), [infra-apps](/repos/SocialGouv/infra-apps), [cdtn-admin](/repos/SocialGouv/cdtn-admin)).
+- Modernisation technologique majeure avec le passage à Angular 20 pour [domifa](/repos/SocialGouv/domifa) et l'adoption du modèle Albert pour l'IA dans [questions-ecrites](/repos/SocialGouv/questions-ecrites).
+- Refonte technique de [smart-allow](/repos/SocialGouv/smart-allow) avec un portage du classificateur en Go pour optimiser les performances.
+- Migration de l'environnement Python et Django pour [collecte-pro](/repos/SocialGouv/collecte-pro).
 
 ## Dépôts les plus actifs
-- [egapro](/repos/SocialGouv/egapro) : Stabilisation intensive des parcours de déclaration et alignement sur les maquettes de design.
-- [iterion](/repos/SocialGouv/iterion) : Avancées majeures sur l'orchestration d'agents IA et la gestion des ressources.
-- [buildkit-operator](/repos/SocialGouv/buildkit-operator) : Renforcement de la sécurité, de la gestion du cycle de vie des builds et de la flexibilité de configuration.
-- [vao](/repos/SocialGouv/vao) : Amélioration du processus de gestion des premiers agréments pour les utilisateurs DREETS.
-- [repo-falcon](/repos/SocialGouv/repo-falcon) : Évolutions significatives sur l'analyse de code et la génération de graphes de connaissances.
-- [doublure](/repos/SocialGouv/doublure) : Développement de fonctionnalités de protection de la confidentialité et de gestion des politiques de données.
+- [vao](/repos/SocialGouv/vao) : Stabilisation du processus d'agrément pour les DREETS et améliorations du back-office.
+- [domifa](/repos/SocialGouv/domifa) : Montée de version majeure vers Angular 20 et enrichissement de l'expérience utilisateur.
+- [questions-ecrites](/repos/SocialGouv/questions-ecrites) : Optimisation de l'extraction de données du Journal Officiel via l'IA et refonte de la base de données.
+- [iterion](/repos/SocialGouv/iterion) : Introduction de nouveaux agents IA et renforcement de la sécurité des sandboxes.
+- [buildkit-operator](/repos/SocialGouv/buildkit-operator) : Amélioration de la gestion des ressources et de la flexibilité des builds.
+- [cm2d](/repos/SocialGouv/cm2d) : Évolutions importantes de la cartographie (DROM) et de la granularité des données.

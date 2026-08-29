@@ -1,15 +1,19 @@
-# Synthèse d'activité : anct-cartographie-nationale (du 04/07 au 11/07)
+# Synthèse d'activité : anct-cartographie-nationale (du 22/06 au 28/08)
 
 ## Résumé de l'activité
-L'activité de la période est marquée par une mise à jour stratégique des référentiels de données dans [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli). L'intégration des nouvelles zones de revitalisation rurale (FRR), la migration vers les quartiers prioritaires (QPV) 2024 et l'ajout de la source "francilin" permettent d'assurer une précision accrue des analyses territoriales pour les utilisateurs.
+L'activité récente est principalement axée sur l'amélioration de la précision et de la fiabilité des données territoriales. L'organisation a procédé à une modernisation importante des référentiels géographiques (intégration des zones FRR et des nouveaux quartiers prioritaires 2024) via [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli) et a renforcé la qualité des informations grâce à de nouveaux mécanismes de déduplication dans [lieux-de-mediation-numerique](/repos/anct-cartographie-nationale/lieux-de-mediation-numerique). 
 
-Parallèlement, l'expérience utilisateur de la plateforme [cartographie](/repos/anct-cartographie-nationale/cartographie) a été affinée. Des corrections sur l'affichage des notifications et une meilleure gestion des messages d'erreur dans les formulaires de contact garantissent une navigation plus fluide et une compréhension immédiate des retours du système.
+Parallèlement, l'expérience utilisateur a été affinée sur la plateforme [cartographie](/repos/anct-cartographie-nationale/cartographie) pour offrir une meilleure gestion des notifications et une communication plus claire lors des erreurs de saisie, garantissant ainsi une utilisation plus fluide pour les agents et partenaires.
+
+## Sécurité
+- Sécurisation de la publication des paquets sur npm via l'implémentation du mécanisme "trusted publishing" dans [lieux-de-mediation-numerique](/repos/anct-cartographie-nationale/lieux-de-mediation-numerique).
 
 ## Autres changements notables
-- Optimisation de la gestion du cache des lieux dans [cartographie](/repos/anct-cartographie-nationale/cartographie) pour améliorer la cohérence des données et faciliter le diagnostic technique.
-- Amélioration de la robustesse du processus de déduplication des données et ajustement du planning de publication automatique dans [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli).
-- Refactorisation de l'accès aux variables d'environnement dans [cartographie](/repos/anct-cartographie-nationale/cartographie) pour une meilleure structure de code.
+- **Changement majeur (Breaking Change) :** Refonte complète du processus de déduplication et de validation des lieux dans [lieux-de-mediation-numerique](/repos/anct-cartographie-nationale/lieux-de-mediation-numerique).
+- **Optimisation technique :** Amélioration de l'architecture du cache et de l'observabilité (diagnostic des données) pour [cartographie](/repos/anct-cartographie-nationale/cartographie).
+- **Migration de données :** Mise à jour structurelle des sources de données nationales et remplacement des anciens référentiels (ZRR) par les nouveaux (FRR) dans [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli).
 
 ## Dépôts les plus actifs
-- [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli) : Mise à jour majeure des sources de données et amélioration de la stabilité de publication.
-- [cartographie](/repos/anct-cartographie-nationale/cartographie) : Améliorations de l'ergonomie utilisateur et optimisations techniques du cache.
+- [mednum-cli](/repos/anct-cartographie-nationale/mednum-cli) : Actualisation et modernisation des sources de données géographiques.
+- [lieux-de-mediation-numerique](/repos/anct-cartographie-nationale/lieux-de-mediation-numerique) : Amélioration de la qualité des données par la déduplication.
+- [cartographie](/repos/anct-cartographie-nationale/cartographie) : Optimisation de l'interface utilisateur et de la gestion technique du cache.

@@ -1,22 +1,27 @@
-# Synthèse d'activité : numerique-gouv (du 10/07 au 17/07)
+# Synthèse d'activité : numerique-gouv (du 01/08 au 31/08)
 
 ## Résumé de l'activité
-L'activité de la période est marquée par des avancées majeures sur l'expérience utilisateur et la modernisation des infrastructures. L'accent a été mis sur l'internationalisation des plateformes de création de sites [sites-faciles](/repos/numerique-gouv/sites-faciles) et [sites-faciles-fork-1](/repos/numerique-gouv/sites-faciles-fork-1), ainsi que sur l'amélioration de l'interface et des fonctionnalités de gestion pour les services de notification [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api) et de gestion de réunions [b3desk](/repos/numerique-gouv/b3desk).
+L'activité de la période est marquée par des transformations structurelles majeures, notamment la réécriture complète de [oots-france](/repos/numerique-gouv/oots-france) vers Ruby on Rails et le renforcement significatif de la sécurité de l'application mobile [ami-app-ios](/repos/numerique-gouv/ami-app-ios) via l'introduction des Passkeys et de la biométrie. Ces évolutions visent à moderniser les outils et à accroître la robustesse des services proposés.
 
-Parallèlement, des refontes architecturales importantes renforcent la robustesse des outils, notamment avec la migration vers Ruby on Rails pour [oots-france](/repos/numerique-gouv/oots-france) et l'évolution du modèle de données pour [statistiques-impact](/repos/numerique-gouv/statistiques-impact). Ces évolutions visent à offrir des outils plus performants, plus faciles à maintenir et mieux alignés sur les standards de design de l'État.
+Parallèlement, l'écosystème des sites web progresse vers une meilleure accessibilité internationale grâce à l'implémentation de l'internationalisation (i18n) sur les plateformes [sites-faciles](/repos/numerique-gouv/sites-faciles), [sites-faciles-fork-1](/repos/numerique-gouv/sites-faciles-fork-1) et [sites-conformes](/repos/numerique-gouv/sites-conformes). Ces changements améliorent l'expérience utilisateur et facilitent le déploiement de contenus multilingues.
 
 ## Sécurité
+- Renforcement de la sécurité mobile avec le support des Passkeys, de l'authentification FaceID et du chiffrement des données locales dans [ami-app-ios](/repos/numerique-gouv/ami-app-ios).
 - Correction de vulnérabilités critiques via la mise à jour de la bibliothèque `cryptography` dans [django-dsfr](/repos/numerique-gouv/django-dsfr).
-- Renforcement de la sécurité des accès avec la mise en place du *rate limiting* pour les clés d'accès dans [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api).
-- Mise à jour de secrets et d'images de base (Keycloak) pour garantir l'intégrité des services [francetransfert](/repos/numerique-gouv/francetransfert) et [dockerfiles](/repos/numerique-gouv/dockerfiles).
+- Amélioration de la protection contre les abus par la mise en place du *rate limiting* dans [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api).
+- Mise à jour de l'image de base Keycloak pour intégrer des correctifs de sécurité dans [dockerfiles](/repos/numerique-gouv/dockerfiles).
+- Optimisation de la gestion des erreurs et du flux d'authentification FranceConnect dans [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api).
+- Mise à jour de secrets pour assurer la sécurité du service [francetransfert](/repos/numerique-gouv/francetransfert).
 
 ## Autres changements notables
-- **Migrations architecturales majeures** : Transition complète de [oots-france](/repos/numerique-gouv/oots-france) vers le framework Ruby on Rails et migration de [statistiques-impact](/repos/numerique-gouv/statistiques-impact) vers Python 3.14.
-- **Évolution des API et des données** : Introduction d'une nouvelle API v2 pour [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api) et création d'un nouveau modèle de données "Record" pour [statistiques-impact](/repos/numerique-gouv/statistiques-impact).
-- **Optimisation du déploiement et de l'infrastructure** : Simplification de la mise en production sur Scalingo pour [sites-faciles](/repos/numerique-gouv/sites-faciles) et optimisation des processus de build avec Vite pour [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api).
+- **Migrations architecturales :** Transition majeure de [oots-france](/repos/numerique-gouv/oots-france) vers le framework Ruby on Rails, incluant une interface d'administration conforme au DSFR.
+- **Évolutions de données et de langage :** Migration vers Python 3.14 et introduction d'un nouveau modèle de données "Record" pour [statistiques-impact](/repos/numerique-gouv/statistiques-impact).
+- **Internationalisation :** Déploiement de la gestion multilingue pour les formulaires et les interfaces dans [sites-faciles](/repos/numerique-gouv/sites-faciles), [sites-faciles-fork-1](/repos/numerique-gouv/sites-faciles-fork-1) et [sites-conformes](/repos/numerique-gouv/sites-conformes).
+- **Refonte technique mobile :** Restructuration profonde de la couche de stockage (Keychain/UserDefaults) et de la stratégie de tests dans [ami-app-ios](/repos/numerique-gouv/ami-app-ios).
+- **Infrastructure et déploiement :** Optimisation des processus de déploiement sur Scalingo pour [sites-faciles](/repos/numerique-gouv/sites-faciles) et [ami-fc-proxy](/repos/numerique-gouv/ami-fc-proxy).
 
 ## Dépôts les plus actifs
-- [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api) : Évolutions majeures sur les services, l'administration et l'expérience utilisateur.
-- [sites-faciles](/repos/numerique-gouv/sites-faciles) : Travaux intensifs sur l'internationalisation et l'interface d'administration.
-- [oots-france](/repos/numerique-gouv/oots-france) : Réécriture complète de l'architecture et modernisation de l'interface.
-- [statistiques-impact](/repos/numerique-gouv/statistiques-impact) : Refonte de la gestion des indicateurs et mise à jour de l'environnement technique.
+- [ami-app-ios](/repos/numerique-gouv/ami-app-ios) : Travaux intensifs sur la sécurité biométrique, le stockage chiffré et l'architecture de test.
+- [oots-france](/repos/numerique-gouv/oots-france) : Réécriture complète du système vers Ruby on Rails et modernisation de l'interface.
+- [ami-notifications-api](/repos/numerique-gouv/ami-notifications-api) : Évolution fonctionnelle majeure avec l'introduction du module "Services" et l'amélioration de l'administration.
+- [sites-faciles](/repos/numerique-gouv/sites-faciles) : Améliorations centrées sur l'internationalisation et la simplification du déploiement.

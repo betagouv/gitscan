@@ -1,23 +1,25 @@
-# Synthèse d'activité : MTES-MCT (du [Date de début] au [Date de fin])
+# Synthèse d'activité : MTES-MCT (du 23/08 au 30/08)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation est marquée par un effort important sur l'accessibilité numérique (mise en conformité RGAA) et l'amélioration de l'expérience utilisateur via l'adoption des standards de design DSFR, notamment pour [resorption-bidonvilles](/repos/MTES-MCT/resorption-bidonvilles), [vizeau](/repos/MTES-MCT/vizeau) et [fonds-vert-espace-laureat](/repos/MTES-MCT/fonds-vert-espace-laureat). Ces évolutions visent à rendre les services plus inclusifs et intuitifs pour les agents et les citoyens.
+L'activité récente de l'organisation est marquée par une forte dynamique de modernisation des interfaces et une amélioration de l'accessibilité numérique (RGAA), notamment pour [vigieau](/repos/MTES-MCT/vigieau), [resorption-bidonvilles](/repos/MTES-MCT/resorption-bidonvilles) et [zero-logement-vacant](/repos/MTES-MCT/zero-logement-vacant). Les utilisateurs bénéficient de nouvelles capacités de pilotage, de reporting et d'exportation de données ([vizeau](/repos/MTES-MCT/vizeau), [verseau2](/repos/MTES-MCT/verseau2), [qualicharge](/repos/MTES-MCT/qualicharge)), facilitant ainsi la prise de décision et la gestion des processus métier.
 
-Parallèlement, de nouvelles capacités métier ont été déployées, comme la gestion des demandes de détachement dans [mobilic](/repos/MTES-MCT/mobilic) ou l'introduction de modes tutoriels dans [otelo](/repos/MTES-MCT/otelo). La fiabilité des données a également été renforcée par l'intégration de nouvelles sources (Matomo, API Enedis) et l'optimisation des processus de synchronisation pour [vigieau](/repos/MTES-MCT/vigieau) et [partageonsleau-orchestration](/repos/MTES-MCT/partageonsleau-orchestration).
+Parallèlement, des efforts importants ont été déployés pour fiabiliser les flux de données et moderniser les infrastructures. Cela inclut l'intégration de nouvelles sources statistiques ([fisheries-and-environment-data-warehouse](/repos/MTES-MCT/fisheries-and-environment-data-warehouse)) et une mise à jour majeure des environnements de formation vers R 4.6.0 ([parcours-r](/repos/MTES-MCT/parcours-r) et ses modules associés), garantissant la pérennité des outils pédagogiques.
 
 ## Sécurité
-- Renforcement de la gestion des accès et de la protection des données, notamment via l'implémentation de limites de requêtes (rate limiting) dans [histologe](/repos/MTES-MCT/histologe) et la restriction des accès aux impacts détaillés dans [ecobalyse](/repos/MTES-MCT/ecobalyse).
-- Sécurisation des échanges de données (webhooks) pour [dossierfacile-backend](/repos/MTES-MCT/dossierfacile-backend) et correction de vulnérabilités de dépendances pour [mon-devis-sans-oublis-backend-ocr](/repos/MTES-MCT/mon-devis-sans-oublis-backend-ocr).
-- Mise en place d'une authentification par token pour sécuriser l'accès à l'API de [ecobalyse-runner](/repos/MTES-MCT/ecobalyse-runner).
+- Correction de vulnérabilités XSS et renforcement de la validation des entrées dans [envergo](/repos/MTES-MCT/envergo).
+- Amélioration de la gestion des accès, de la rotation des jetons de session et de l'anonymisation des données dans [mobilic-api](/repos/MTES-MCT/mobilic-api) et [histologe](/repos/MTES-MCT/histologe).
+- Mise en place d'une authentification par token pour [ecobalyse-runner](/repos/MTES-MCT/ecobalyse-runner) et support de plusieurs clés API pour [mon-devis-sans-oublis-backend-ocr](/repos/MTES-MCT/mon-devis-sans-oublis-backend-ocr).
+- Correction de vulnérabilités liées aux webhooks dans [dossierfacile-backend](/repos/MTES-MCT/dossierfacile-backend).
 
 ## Autres changements notables
-- **Migrations technologiques majeures** : Passage à React 18 pour [partaj](/repos/MTES-MCT/partaj) et mise à jour vers Spring Boot 4.1.0 pour [rapportnav2](/repos/MTES-MCT/rapportnav2).
-- **Modernisation des environnements** : Mise à jour globale vers R 4.6.0 pour la suite [parcours-r](/repos/MTES-MCT/parcours-r) et optimisation des workflows de déploiement (Scaleway, Scalingo) pour [prelevements-deau-web](/repos/MTES-MCT/prelevements-deau-web) et [mobilic](/repos/MTES-MCT/mobilic).
-- **Qualité logicielle et CI/CD** : Intégration d'outils de suivi de qualité (SonarQube, Codecov) et de tests automatisés renforcés pour [monitor-field](/repos/MTES-MCT/monitor-field) et [monitorenv](/repos/MTES-MCT/monitorenv).
+- **Modernisation des frameworks et outils** : Migrations vers Inertia 3 ([vizeau](/repos/MTES-MCT/vizeau)), React 18 ([partaj](/repos/MTES-MCT/partaj)) et React Router 8 ([rapportnav2](/repos/MTES-MCT/rapportnav2)).
+- **Évolutions infrastructurelles et DevOps** : Mise à jour globale des environnements de développement vers R 4.6.0 pour l'ensemble des modules de formation ([parcours-r](/repos/MTES-MCT/parcours-r) et ses modules) et automatisation des déploiements mobiles via EAS ([monitor-field](/repos/MTES-MCT/monitor-field)).
+- **Optimisation de la donnée et des performances** : Refonte des pipelines d'ingestion et de stockage pour améliorer la performance et la traçabilité ([partageonsleau-orchestration](/repos/MTES-MCT/partageonsleau-orchestration), [qualicharge](/repos/MTES-MCT/qualicharge), [envergo](/repos/MTES-MCT/envergo)).
 
 ## Dépôts les plus actifs
-- [otelo](/repos/MTES-MCT/otelo) : Refonte de la page de résultats et ajout d'un mode tutoriel guidé.
-- [mobilic](/repos/MTES-MCT/mobilic) : Introduction de nouveaux processus métier (détachement, contestation) et amélioration des rapports.
-- [resorption-bidonvilles](/repos/MTES-MCT/resorption-bidonvilles) : Évolutions majeures sur l'accessibilité et la gestion des sites favoris.
-- [monitor-field](/repos/MTES-MCT/monitor-field) : Implémentation de la consultation des zones réglementaires et renforcement de la CI/CD.
-- [dahlia](/repos/MTES-MCT/dahlia) : Améliorations de la gestion documentaire et des outils d'administration.
+- [otelo](/repos/MTES-MCT/otelo) : Introduction d'un assistant de simulation (wizard) et refonte de l'interface d'administration.
+- [dossierfacile-backend](/repos/MTES-MCT/dossierfacile-backend) : Mise en place de l'autovalidation des dossiers et amélioration du moteur de traitement documentaire par IA.
+- [dialog](/repos/MTES-MCT/dialog) : Refonte complète du tableau de bord et enrichissement des fonctionnalités cartographiques.
+- [resorption-bidonvilles](/repos/MTES-MCT/resorption-bidonvilles) : Amélioration de l'accessibilité et ajout de la gestion des sites favoris.
+- [parcours-r](/repos/MTES-MCT/parcours-r) : Mise à jour majeure de l'infrastructure de formation vers R 4.6.0.
+- [trackdechets](/repos/MTES-MCT/trackdechets) : Évolutions sur la gestion des bordereaux et la visibilité du registre.
