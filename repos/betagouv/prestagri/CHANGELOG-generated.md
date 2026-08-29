@@ -1,12 +1,17 @@
-## Changelog : prestagri (30 derniers jours, au 21 août 2026)
+## Changelog : prestagri (30 derniers jours, au 28/08/2026)
 
 ### Résumé
-Ce mois a été marqué par une avancée significative dans la simplification des processus métier. Le projet a introduit des fonctionnalités de pilotage et d'instruction simplifiées, ainsi qu'un système complet de gestion des annotations. L'expérience utilisateur s'enrichit également avec le développement de l'interface dédiée à la phase de pré-instruction.
+Ce mois-ci, le projet a franchi des étapes importantes avec l'introduction de nouveaux outils métier, notamment une calculatrice et une interface de pré-instruction. Ces évolutions, accompagnées d'une amélioration de la clarté des textes de l'interface, visent à rendre l'outil plus intuitif pour les agents, tout en renforçant la fiabilité technique du système via de nouveaux tests automatisés.
 
 ### Évolutions fonctionnelles
-- **Gestion des dossiers** : Simplification des processus de pilotage et d'instruction des demandes.
-- **Système d'annotations** : Mise en place des fonctionnalités de création et de remplissage d'annotations.
-- **Interface utilisateur** : Développement de l'interface front-end pour la phase de pré-instruction.
+- Ajout d'une calculatrice pour faciliter les simulations.
+- Mise en place de l'interface de pré-instruction côté front-end.
+- Amélioration de l'expérience utilisateur via la mise à jour de plusieurs libellés.
 
 ### Évolutions techniques
-- **Qualité logicielle** : Renforcement de la fiabilité du système via l'ajout de nouveaux tests Python et de nouveaux tests Catala.
+- Renforcement de la fiabilité du système par l'ajout de tests Python et Catala.
+- Amélioration de la qualité et de la maintenabilité du code (ajout de typage).
+- Mise à jour de l'environnement front-end (Astro) et correction des dépendances CSS.
+
+### Autres changements
+- Travail sur la création et le remplissage des annotations.
