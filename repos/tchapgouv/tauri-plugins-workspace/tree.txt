@@ -1,0 +1,1968 @@
+.
+├── .cargo
+│   └── audit.toml
+├── .changes
+│   ├── android-consumer-rules.md
+│   ├── config.json
+│   ├── deep-link-platform.md
+│   ├── dialog-save-fix.md
+│   ├── feature-flags-docs.md
+│   ├── fix-fs-scopes.md
+│   ├── fs-deny-scope.md
+│   ├── http-system-proxy.md
+│   ├── nfc.md
+│   ├── notification-mobile-actions.md
+│   ├── readme.md
+│   ├── updater-check-shell-execute-result.md
+│   ├── updater-install-no-restart.md
+│   └── updater-system-proxy.md
+├── .github
+│   ├── CODEOWNERS
+│   ├── CONTRIBUTING.md
+│   ├── ISSUE_TEMPLATE
+│   │   ├── bug_report.yml
+│   │   ├── config.yml
+│   │   ├── docs_report.md
+│   │   └── feature_request.yml
+│   ├── sponsors
+│   │   ├── crabnebula.svg
+│   │   └── rescue.png
+│   ├── sync-to-mirrors.sh
+│   └── workflows
+│       ├── audit-javascript.yml
+│       ├── audit-rust.yml
+│       ├── check-change-files.yml
+│       ├── check-generated-files.yml
+│       ├── check-license-header.yml
+│       ├── covector-comment-on-fork.yml
+│       ├── covector-status.yml
+│       ├── covector-version-or-publish.yml
+│       ├── fmt.yml
+│       ├── integration-tests.yml
+│       ├── lint-javascript.yml
+│       ├── lint-rust.yml
+│       ├── sync.yml
+│       ├── test-android.yml
+│       └── test-rust.yml
+├── .gitignore
+├── .npmrc
+├── .prettierignore
+├── .prettierrc
+├── .scripts
+│   └── ci
+│       ├── check-change-files.js
+│       ├── check-license-header.js
+│       └── has-diff.sh
+├── .taurignore
+├── .vscode
+│   └── extensions.json
+├── Cargo.lock
+├── Cargo.toml
+├── LICENSE.spdx
+├── LICENSE_APACHE-2.0
+├── LICENSE_MIT
+├── README.md
+├── SECURITY.md
+├── eslint.config.js
+├── examples
+│   └── api
+│       ├── .setup-cross.sh
+│       ├── .taurignore
+│       ├── CHANGELOG.md
+│       ├── README.md
+│       ├── index.html
+│       ├── isolation-dist
+│       │   ├── index.html
+│       │   └── index.js
+│       ├── jsconfig.json
+│       ├── package.json
+│       ├── public
+│       │   └── tauri_logo.png
+│       ├── screenshot.png
+│       ├── src
+│       │   ├── App.svelte
+│       │   ├── app.css
+│       │   ├── lib
+│       │   │   ├── TitleBar.svelte
+│       │   │   └── utils.js
+│       │   ├── main.js
+│       │   └── views
+│       │       ├── Biometric.svelte
+│       │       ├── Cli.svelte
+│       │       ├── Clipboard.svelte
+│       │       ├── Communication.svelte
+│       │       ├── Dialog.svelte
+│       │       ├── FileSystem.svelte
+│       │       ├── Geolocation.svelte
+│       │       ├── Haptics.svelte
+│       │       ├── Http.svelte
+│       │       ├── Nfc.svelte
+│       │       ├── Notifications.svelte
+│       │       ├── Opener.svelte
+│       │       ├── Scanner.svelte
+│       │       ├── Shell.svelte
+│       │       ├── Shortcuts.svelte
+│       │       ├── Store.svelte
+│       │       ├── Updater.svelte
+│       │       ├── Upload.svelte
+│       │       ├── WebRTC.svelte
+│       │       └── Welcome.svelte
+│       ├── src-tauri
+│       │   ├── .gitignore
+│       │   ├── .taurignore
+│       │   ├── CHANGELOG.md
+│       │   ├── Cargo.toml
+│       │   ├── Cross.toml
+│       │   ├── Info.plist
+│       │   ├── build.rs
+│       │   ├── capabilities
+│       │   │   ├── base.json
+│       │   │   ├── desktop.json
+│       │   │   └── mobile.json
+│       │   ├── gen
+│       │   │   ├── android
+│       │   │   │   ├── .editorconfig
+│       │   │   │   ├── .gitignore
+│       │   │   │   ├── .idea
+│       │   │   │   │   ├── compiler.xml
+│       │   │   │   │   ├── gradle.xml
+│       │   │   │   │   ├── kotlinc.xml
+│       │   │   │   │   ├── misc.xml
+│       │   │   │   │   └── vcs.xml
+│       │   │   │   ├── app
+│       │   │   │   │   ├── .gitignore
+│       │   │   │   │   ├── build.gradle.kts
+│       │   │   │   │   ├── proguard-rules.pro
+│       │   │   │   │   └── src
+│       │   │   │   │       └── main
+│       │   │   │   │           ├── AndroidManifest.xml
+│       │   │   │   │           ├── java
+│       │   │   │   │           │   └── com
+│       │   │   │   │           │       └── tauri
+│       │   │   │   │           │           └── api
+│       │   │   │   │           │               └── MainActivity.kt
+│       │   │   │   │           └── res
+│       │   │   │   │               ├── drawable
+│       │   │   │   │               │   └── ic_launcher_background.xml
+│       │   │   │   │               ├── drawable-v24
+│       │   │   │   │               │   └── ic_launcher_foreground.xml
+│       │   │   │   │               ├── layout
+│       │   │   │   │               │   └── activity_main.xml
+│       │   │   │   │               ├── mipmap-hdpi
+│       │   │   │   │               │   ├── ic_launcher.png
+│       │   │   │   │               │   ├── ic_launcher_foreground.png
+│       │   │   │   │               │   └── ic_launcher_round.png
+│       │   │   │   │               ├── mipmap-mdpi
+│       │   │   │   │               │   ├── ic_launcher.png
+│       │   │   │   │               │   ├── ic_launcher_foreground.png
+│       │   │   │   │               │   └── ic_launcher_round.png
+│       │   │   │   │               ├── mipmap-xhdpi
+│       │   │   │   │               │   ├── ic_launcher.png
+│       │   │   │   │               │   ├── ic_launcher_foreground.png
+│       │   │   │   │               │   └── ic_launcher_round.png
+│       │   │   │   │               ├── mipmap-xxhdpi
+│       │   │   │   │               │   ├── ic_launcher.png
+│       │   │   │   │               │   ├── ic_launcher_foreground.png
+│       │   │   │   │               │   └── ic_launcher_round.png
+│       │   │   │   │               ├── mipmap-xxxhdpi
+│       │   │   │   │               │   ├── ic_launcher.png
+│       │   │   │   │               │   ├── ic_launcher_foreground.png
+│       │   │   │   │               │   └── ic_launcher_round.png
+│       │   │   │   │               ├── values
+│       │   │   │   │               │   ├── colors.xml
+│       │   │   │   │               │   ├── strings.xml
+│       │   │   │   │               │   └── themes.xml
+│       │   │   │   │               ├── values-night
+│       │   │   │   │               │   └── themes.xml
+│       │   │   │   │               └── xml
+│       │   │   │   │                   └── file_paths.xml
+│       │   │   │   ├── build.gradle.kts
+│       │   │   │   ├── buildSrc
+│       │   │   │   │   ├── build.gradle.kts
+│       │   │   │   │   └── src
+│       │   │   │   │       └── main
+│       │   │   │   │           └── java
+│       │   │   │   │               └── com
+│       │   │   │   │                   └── tauri
+│       │   │   │   │                       └── api
+│       │   │   │   │                           └── kotlin
+│       │   │   │   │                               ├── BuildTask.kt
+│       │   │   │   │                               └── RustPlugin.kt
+│       │   │   │   ├── gradle
+│       │   │   │   │   └── wrapper
+│       │   │   │   │       ├── gradle-wrapper.jar
+│       │   │   │   │       └── gradle-wrapper.properties
+│       │   │   │   ├── gradle.properties
+│       │   │   │   ├── gradlew
+│       │   │   │   ├── gradlew.bat
+│       │   │   │   └── settings.gradle
+│       │   │   └── apple
+│       │   │       ├── .gitignore
+│       │   │       ├── Assets.xcassets
+│       │   │       │   ├── AppIcon.appiconset
+│       │   │       │   │   ├── AppIcon-20x20@1x.png
+│       │   │       │   │   ├── AppIcon-20x20@2x-1.png
+│       │   │       │   │   ├── AppIcon-20x20@2x.png
+│       │   │       │   │   ├── AppIcon-20x20@3x.png
+│       │   │       │   │   ├── AppIcon-29x29@1x.png
+│       │   │       │   │   ├── AppIcon-29x29@2x-1.png
+│       │   │       │   │   ├── AppIcon-29x29@2x.png
+│       │   │       │   │   ├── AppIcon-29x29@3x.png
+│       │   │       │   │   ├── AppIcon-40x40@1x.png
+│       │   │       │   │   ├── AppIcon-40x40@2x-1.png
+│       │   │       │   │   ├── AppIcon-40x40@2x.png
+│       │   │       │   │   ├── AppIcon-40x40@3x.png
+│       │   │       │   │   ├── AppIcon-512@2x.png
+│       │   │       │   │   ├── AppIcon-60x60@2x.png
+│       │   │       │   │   ├── AppIcon-60x60@3x.png
+│       │   │       │   │   ├── AppIcon-76x76@1x.png
+│       │   │       │   │   ├── AppIcon-76x76@2x.png
+│       │   │       │   │   ├── AppIcon-83.5x83.5@2x.png
+│       │   │       │   │   └── Contents.json
+│       │   │       │   └── Contents.json
+│       │   │       ├── ExportOptions.plist
+│       │   │       ├── LaunchScreen.storyboard
+│       │   │       ├── Podfile
+│       │   │       ├── Sources
+│       │   │       │   └── api
+│       │   │       │       ├── bindings
+│       │   │       │       │   └── bindings.h
+│       │   │       │       └── main.mm
+│       │   │       ├── api.xcodeproj
+│       │   │       │   ├── project.pbxproj
+│       │   │       │   ├── project.xcworkspace
+│       │   │       │   │   ├── contents.xcworkspacedata
+│       │   │       │   │   └── xcshareddata
+│       │   │       │   │       └── WorkspaceSettings.xcsettings
+│       │   │       │   └── xcshareddata
+│       │   │       │       └── xcschemes
+│       │   │       │           └── api_iOS.xcscheme
+│       │   │       ├── api_iOS
+│       │   │       │   ├── Info.plist
+│       │   │       │   └── api_iOS.entitlements
+│       │   │       └── project.yml
+│       │   ├── icons
+│       │   │   ├── 128x128.png
+│       │   │   ├── 128x128@2x.png
+│       │   │   ├── 32x32.png
+│       │   │   ├── icon.icns
+│       │   │   ├── icon.ico
+│       │   │   ├── icon.png
+│       │   │   ├── tray_icon.png
+│       │   │   ├── tray_icon_with_transparency.ico
+│       │   │   └── tray_icon_with_transparency.png
+│       │   ├── locales
+│       │   │   └── pt-BR.wxl
+│       │   ├── src
+│       │   │   ├── cmd.rs
+│       │   │   ├── lib.rs
+│       │   │   ├── main.rs
+│       │   │   └── tray.rs
+│       │   └── tauri.conf.json
+│       ├── unocss.config.js
+│       ├── updater-test
+│       │   ├── .gitignore
+│       │   ├── README.md
+│       │   └── updater.json
+│       └── vite.config.js
+├── package.json
+├── plugins
+│   ├── autostart
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── LICENSE.spdx
+│   │   ├── LICENSE_APACHE-2.0
+│   │   ├── LICENSE_MIT
+│   │   ├── README.md
+│   │   ├── SECURITY.md
+│   │   ├── api-iife.js
+│   │   ├── banner.png
+│   │   ├── build.rs
+│   │   ├── guest-js
+│   │   │   └── index.ts
+│   │   ├── package.json
+│   │   ├── permissions
+│   │   │   ├── autogenerated
+│   │   │   │   ├── commands
+│   │   │   │   │   ├── disable.toml
+│   │   │   │   │   ├── enable.toml
+│   │   │   │   │   └── is_enabled.toml
+│   │   │   │   └── reference.md
+│   │   │   ├── default.toml
+│   │   │   └── schemas
+│   │   │       └── schema.json
+│   │   ├── rollup.config.js
+│   │   ├── src
+│   │   │   └── lib.rs
+│   │   └── tsconfig.json
+│   ├── barcode-scanner
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── LICENSE.spdx
+│   │   ├── LICENSE_APACHE-2.0
+│   │   ├── LICENSE_MIT
+│   │   ├── README.md
+│   │   ├── SECURITY.md
+│   │   ├── android
+│   │   │   ├── .gitignore
+│   │   │   ├── build.gradle.kts
+│   │   │   ├── consumer-rules.pro
+│   │   │   ├── settings.gradle
+│   │   │   └── src
+│   │   │       ├── androidTest
+│   │   │       │   └── java
+│   │   │       │       └── ExampleInstrumentedTest.kt
+│   │   │       ├── main
+│   │   │       │   ├── AndroidManifest.xml
+│   │   │       │   └── java
+│   │   │       │       ├── BarcodeScannerPlugin.kt
+│   │   │       │       └── GraphicOverlay.kt
+│   │   │       └── test
+│   │   │           └── java
+│   │   │               └── ExampleUnitTest.kt
+│   │   ├── api-iife.js
+│   │   ├── banner.png
+│   │   ├── build.rs
+│   │   ├── contributors
+│   │   │   ├── crabnebula.svg
+│   │   │   └── impierce.svg
+│   │   ├── guest-js
+│   │   │   └── index.ts
+│   │   ├── ios
+│   │   │   ├── .gitignore
+│   │   │   ├── Package.swift
+│   │   │   ├── README.md
+│   │   │   ├── Sources
+│   │   │   │   ├── BarcodeScannerPlugin.swift
+│   │   │   │   ├── CameraView.swift
+│   │   │   │   └── Utils.swift
+│   │   │   └── Tests
+│   │   │       └── PluginTests
+│   │   │           └── PluginTests.swift
+│   │   ├── package.json
+│   │   ├── permissions
+│   │   │   ├── autogenerated
+│   │   │   │   ├── commands
+│   │   │   │   │   ├── cancel.toml
+│   │   │   │   │   ├── check_permissions.toml
+│   │   │   │   │   ├── open_app_settings.toml
+│   │   │   │   │   ├── request_permissions.toml
+│   │   │   │   │   ├── scan.toml
+│   │   │   │   │   └── vibrate.toml
+│   │   │   │   └── reference.md
+│   │   │   ├── default.toml
+│   │   │   └── schemas
+│   │   │       └── schema.json
+│   │   ├── rollup.config.js
+│   │   ├── src
+│   │   │   ├── error.rs
+│   │   │   ├── lib.rs
+│   │   │   ├── mobile.rs
+│   │   │   └── models.rs
+│   │   └── tsconfig.json
+│   ├── biometric
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── LICENSE.spdx
+│   │   ├── LICENSE_APACHE-2.0
+│   │   ├── LICENSE_MIT
+│   │   ├── README.md
+│   │   ├── SECURITY.md
+│   │   ├── android
+│   │   │   ├── .gitignore
+│   │   │   ├── build.gradle.kts
+│   │   │   ├── consumer-rules.pro
+│   │   │   ├── settings.gradle
+│   │   │   └── src
+│   │   │       ├── androidTest
+│   │   │       │   └── java
+│   │   │       │       └── ExampleInstrumentedTest.kt
+│   │   │       ├── main
+│   │   │       │   ├── AndroidManifest.xml
+│   │   │       │   ├── java
+│   │   │       │   │   ├── BiometricActivity.kt
+│   │   │       │   │   └── BiometricPlugin.kt
+│   │   │       │   └── res
+│   │   │       │       ├── layout
+│   │   │       │       │   └── auth_activity.xml
+│   │   │       │       └── values
+│   │   │       │           └── styles.xml
+│   │   │       └── test
+│   │   │           └── java
+│   │   │               └── ExampleUnitTest.kt
+│   │   ├── api-iife.js
+│   │   ├── build.rs
+│   │   ├── contributors
+│   │   │   ├── crabnebula.svg
+│   │   │   └── impierce.svg
+│   │   ├── guest-js
+│   │   │   └── index.ts
+│   │   ├── ios
+│   │   │   ├── .gitignore
+│   │   │   ├── Package.swift
+│   │   │   ├── README.md
+│   │   │   ├── Sources
+│   │   │   │   └── BiometricPlugin.swift
+│   │   │   └── Tests
+│   │   │       └── PluginTests
+│   │   │           └── PluginTests.swift
+│   │   ├── package.json
+│   │   ├── permissions
+│   │   │   ├── autogenerated
+│   │   │   │   ├── commands
+│   │   │   │   │   ├── authenticate.toml
+│   │   │   │   │   └── status.toml
+│   │   │   │   └── reference.md
+│   │   │   ├── default.toml
+│   │   │   └── schemas
+│   │   │       └── schema.json
+│   │   ├── rollup.config.js
+│   │   ├── src
+│   │   │   ├── error.rs
+│   │   │   ├── lib.rs
+│   │   │   └── models.rs
+│   │   └── tsconfig.json
+│   ├── cli
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── LICENSE.spdx
+│   │   ├── LICENSE_APACHE-2.0
+│   │   ├── LICENSE_MIT
+│   │   ├── README.md
+│   │   ├── SECURITY.md
+│   │   ├── api-iife.js
+│   │   ├── banner.png
+│   │   ├── build.rs
+│   │   ├── guest-js
+│   │   │   └── index.ts
+│   │   ├── package.json
+│   │   ├── permissions
+│   │   │   ├── autogenerated
+│   │   │   │   ├── commands
+│   │   │   │   │   └── cli_matches.toml
+│   │   │   │   └── reference.md
+│   │   │   ├── default.toml
+│   │   │   └── schemas
+│   │   │       └── schema.json
+│   │   ├── rollup.config.js
+│   │   ├── src
+│   │   │   ├── config.rs
+│   │   │   ├── error.rs
+│   │   │   ├── lib.rs
+│   │   │   ├── parser
+│   │   │   │   └── macros.rs
+│   │   │   └── parser.rs
+│   │   └── tsconfig.json
+│   ├── clipboard-manager
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── LICENSE.spdx
+│   │   ├── LICENSE_APACHE-2.0
+│   │   ├── LICENSE_MIT
+│   │   ├── README.md
+│   │   ├── SECURITY.md
+│   │   ├── android
+│   │   │   ├── .gitignore
+│   │   │   ├── build.gradle.kts
+│   │   │   ├── consumer-rules.pro
+│   │   │   ├── settings.gradle
+│   │   │   └── src
+│   │   │       ├── androidTest
+│   │   │       │   └── java
+│   │   │       │       └── ExampleInstrumentedTest.kt
+│   │   │       ├── main
+│   │   │       │   ├── AndroidManifest.xml
+│   │   │       │   └── java
+│   │   │       │       └── ClipboardPlugin.kt
+│   │   │       └── test
+│   │   │           └── java
+│   │   │               └── ExampleUnitTest.kt
+│   │   ├── api-iife.js
+│   │   ├── banner.png
+│   │   ├── build.rs
+│   │   ├── guest-js
+│   │   │   └── index.ts
+│   │   ├── ios
+│   │   │   ├── .gitignore
+│   │   │   ├── Package.swift
+│   │   │   ├── README.md
+│   │   │   ├── Sources
+│   │   │   │   └── ClipboardPlugin.swift
+│   │   │   └── Tests
+│   │   │       └── PluginTests
+│   │   │           └── PluginTests.swift
+│   │   ├── package.json
+│   │   ├── permissions
+│   │   │   ├── autogenerated
+│   │   │   │   ├── commands
+│   │   │   │   │   ├── clear.toml
+│   │   │   │   │   ├── read_image.toml
+│   │   │   │   │   ├── read_text.toml
+│   │   │   │   │   ├── write_html.toml
+│   │   │   │   │   ├── write_image.toml
+│   │   │   │   │   └── write_text.toml
+│   │   │   │   └── reference.md
+│   │   │   ├── default.toml
+│   │   │   └── schemas
+│   │   │       └── schema.json
+│   │   ├── rollup.config.js
+│   │   ├── src
+│   │   │   ├── commands.rs
+│   │   │   ├── desktop.rs
+│   │   │   ├── error.rs
+│   │   │   ├── lib.rs
+│   │   │   └── mobile.rs
+│   │   └── tsconfig.json
+│   ├── deep-link
+│   │   ├── .test-server
+│   │   │   ├── .well-known
+│   │   │   │   └── apple-app-site-association
+│   │   │   └── server.js
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── LICENSE.spdx
+│   │   ├── LICENSE_APACHE-2.0
+│   │   ├── LICENSE_MIT
+│   │   ├── README.md
+│   │   ├── SECURITY.md
+│   │   ├── android
+│   │   │   ├── .gitignore
+│   │   │   ├── build.gradle.kts
+│   │   │   ├── consumer-rules.pro
+│   │   │   ├── settings.gradle
+│   │   │   └── src
+│   │   │       ├── androidTest
+│   │   │       │   └── java
+│   │   │       │       └── ExampleInstrumentedTest.kt
+│   │   │       ├── main
+│   │   │       │   ├── AndroidManifest.xml
+│   │   │       │   └── java
+│   │   │       │       └── DeepLinkPlugin.kt
+│   │   │       └── test
+│   │   │           └── java
+│   │   │               └── ExampleUnitTest.kt
+│   │   ├── api-iife.js
+│   │   ├── banner.png
+│   │   ├── build.rs
+│   │   ├── contributors
+│   │   │   ├── crabnebula.svg
+│   │   │   └── impierce.svg
+│   │   ├── examples
+│   │   │   └── app
+│   │   │       ├── .gitignore
+│   │   │       ├── CHANGELOG.md
+│   │   │       ├── README.md
+│   │   │       ├── index.html
+│   │   │       ├── package.json
+│   │   │       ├── public
+│   │   │       │   ├── svelte.svg
+│   │   │       │   ├── tauri.svg
+│   │   │       │   └── vite.svg
+│   │   │       ├── src
+│   │   │       │   ├── assets
+│   │   │       │   │   ├── tauri.svg
+│   │   │       │   │   ├── typescript.svg
+│   │   │       │   │   └── vite.svg
+│   │   │       │   ├── main.ts
+│   │   │       │   └── styles.css
+│   │   │       ├── src-tauri
+│   │   │       │   ├── .gitignore
+│   │   │       │   ├── Cargo.toml
+│   │   │       │   ├── apple-app-site-association
+│   │   │       │   ├── assetlinks.json.txt
+│   │   │       │   ├── build.rs
+│   │   │       │   ├── capabilities
+│   │   │       │   │   └── app.json
+│   │   │       │   ├── gen
+│   │   │       │   │   ├── android
+│   │   │       │   │   │   ├── .editorconfig
+│   │   │       │   │   │   ├── .gitignore
+│   │   │       │   │   │   ├── app
+│   │   │       │   │   │   │   ├── .gitignore
+│   │   │       │   │   │   │   ├── build.gradle.kts
+│   │   │       │   │   │   │   ├── proguard-rules.pro
+│   │   │       │   │   │   │   └── src
+│   │   │       │   │   │   │       └── main
+│   │   │       │   │   │   │           ├── AndroidManifest.xml
+│   │   │       │   │   │   │           ├── java
+│   │   │       │   │   │   │           │   └── com
+│   │   │       │   │   │   │           │       └── tauri
+│   │   │       │   │   │   │           │           └── deep_link_example
+│   │   │       │   │   │   │           │               └── MainActivity.kt
+│   │   │       │   │   │   │           └── res
+│   │   │       │   │   │   │               ├── drawable
+│   │   │       │   │   │   │               │   └── ic_launcher_background.xml
+│   │   │       │   │   │   │               ├── drawable-v24
+│   │   │       │   │   │   │               │   └── ic_launcher_foreground.xml
+│   │   │       │   │   │   │               ├── layout
+│   │   │       │   │   │   │               │   └── activity_main.xml
+│   │   │       │   │   │   │               ├── mipmap-hdpi
+│   │   │       │   │   │   │               │   ├── ic_launcher.png
+│   │   │       │   │   │   │               │   ├── ic_launcher_foreground.png
+│   │   │       │   │   │   │               │   └── ic_launcher_round.png
+│   │   │       │   │   │   │               ├── mipmap-mdpi
+│   │   │       │   │   │   │               │   ├── ic_launcher.png
+│   │   │       │   │   │   │               │   ├── ic_launcher_foreground.png
+│   │   │       │   │   │   │               │   └── ic_launcher_round.png
+│   │   │       │   │   │   │               ├── mipmap-xhdpi
+│   │   │       │   │   │   │               │   ├── ic_launcher.png
+│   │   │       │   │   │   │               │   ├── ic_launcher_foreground.png
+│   │   │       │   │   │   │               │   └── ic_launcher_round.png
+│   │   │       │   │   │   │               ├── mipmap-xxhdpi
+│   │   │       │   │   │   │               │   ├── ic_launcher.png
+│   │   │       │   │   │   │               │   ├── ic_launcher_foreground.png
+│   │   │       │   │   │   │               │   └── ic_launcher_round.png
+│   │   │       │   │   │   │               ├── mipmap-xxxhdpi
+│   │   │       │   │   │   │               │   ├── ic_launcher.png
+│   │   │       │   │   │   │               │   ├── ic_launcher_foreground.png
+│   │   │       │   │   │   │               │   └── ic_launcher_round.png
+│   │   │       │   │   │   │               ├── values
+│   │   │       │   │   │   │               │   ├── colors.xml
+│   │   │       │   │   │   │               │   ├── strings.xml
+│   │   │       │   │   │   │               │   └── themes.xml
+│   │   │       │   │   │   │               ├── values-night
+│   │   │       │   │   │   │               │   └── themes.xml
+│   │   │       │   │   │   │               └── xml
+│   │   │       │   │   │   │                   └── file_paths.xml
+│   │   │       │   │   │   ├── build.gradle.kts
+│   │   │       │   │   │   ├── buildSrc
+│   │   │       │   │   │   │   ├── build.gradle.kts
+│   │   │       │   │   │   │   └── src
+│   │   │       │   │   │   │       └── main
+│   │   │       │   │   │   │           └── java
+│   │   │       │   │   │   │               └── com
+│   │   │       │   │   │   │                   └── tauri
+│   │   │       │   │   │   │                       └── deep_link_example
+│   │   │       │   │   │   │                           └── kotlin
+│   │   │       │   │   │   │                               ├── BuildTask.kt
+│   │   │       │   │   │   │                               └── RustPlugin.kt
+│   │   │       │   │   │   ├── gradle
+│   │   │       │   │   │   │   └── wrapper
+│   │   │       │   │   │   │       ├── gradle-wrapper.jar
+│   │   │       │   │   │   │       └── gradle-wrapper.properties
+│   │   │       │   │   │   ├── gradle.properties
+│   │   │       │   │   │   ├── gradlew
+│   │   │       │   │   │   ├── gradlew.bat
+│   │   │       │   │   │   └── settings.gradle
+│   │   │       │   │   └── apple
+│   │   │       │   │       ├── .gitignore
+│   │   │       │   │       ├── Assets.xcassets
+│   │   │       │   │       │   ├── AppIcon.appiconset
+│   │   │       │   │       │   │   ├── AppIcon-20x20@1x.png
+│   │   │       │   │       │   │   ├── AppIcon-20x20@2x-1.png
+│   │   │       │   │       │   │   ├── AppIcon-20x20@2x.png
+│   │   │       │   │       │   │   ├── AppIcon-20x20@3x.png
+│   │   │       │   │       │   │   ├── AppIcon-29x29@1x.png
+│   │   │       │   │       │   │   ├── AppIcon-29x29@2x-1.png
+│   │   │       │   │       │   │   ├── AppIcon-29x29@2x.png
+│   │   │       │   │       │   │   ├── AppIcon-29x29@3x.png
+│   │   │       │   │       │   │   ├── AppIcon-40x40@1x.png
+│   │   │       │   │       │   │   ├── AppIcon-40x40@2x-1.png
+│   │   │       │   │       │   │   ├── AppIcon-40x40@2x.png
+│   │   │       │   │       │   │   ├── AppIcon-40x40@3x.png
+│   │   │       │   │       │   │   ├── AppIcon-512@2x.png
+│   │   │       │   │       │   │   ├── AppIcon-60x60@2x.png
+│   │   │       │   │       │   │   ├── AppIcon-60x60@3x.png
+│   │   │       │   │       │   │   ├── AppIcon-76x76@1x.png
+│   │   │       │   │       │   │   ├── AppIcon-76x76@2x.png
+│   │   │       │   │       │   │   ├── AppIcon-83.5x83.5@2x.png
+│   │   │       │   │       │   │   └── Contents.json
+│   │   │       │   │       │   └── Contents.json
+│   │   │       │   │       ├── ExportOptions.plist
+│   │   │       │   │       ├── LaunchScreen.storyboard
+│   │   │       │   │       ├── Podfile
+│   │   │       │   │       ├── Sources
+│   │   │       │   │       │   └── deep-link-example
+│   │   │       │   │       │       ├── bindings
+│   │   │       │   │       │       │   └── bindings.h
+│   │   │       │   │       │       └── main.mm
+│   │   │       │   │       ├── deep-link-example.xcodeproj
+│   │   │       │   │       │   ├── project.pbxproj
+│   │   │       │   │       │   ├── project.xcworkspace
+│   │   │       │   │       │   │   ├── contents.xcworkspacedata
+│   │   │       │   │       │   │   └── xcshareddata
+│   │   │       │   │       │   │       └── WorkspaceSettings.xcsettings
+│   │   │       │   │       │   └── xcshareddata
+│   │   │       │   │       │       └── xcschemes
+│   │   │       │   │       │           └── deep-link-example_iOS.xcscheme
+│   │   │       │   │       ├── deep-link-example_iOS
+│   │   │       │   │       │   ├── Info.plist
+│   │   │       │   │       │   └── deep-link-example_iOS.entitlements
+│   │   │       │   │       └── project.yml
+│   │   │       │   ├── icons
+│   │   │       │   │   ├── 128x128.png
+│   │   │       │   │   ├── 128x128@2x.png
+│   │   │       │   │   ├── 32x32.png
+│   │   │       │   │   ├── icon.icns
+│   │   │       │   │   ├── icon.ico
+│   │   │       │   │   └── icon.png
+│   │   │       │   ├── server.js
+│   │   │       │   ├── src
+│   │   │       │   │   ├── lib.rs
+│   │   │       │   │   └── main.rs
+│   │   │       │   └── tauri.conf.json
+│   │   │       ├── tsconfig.json
+│   │   │       └── vite.config.ts
+│   │   ├── guest-js
+│   │   │   └── index.ts
+│   │   ├── package.json
+│   │   ├── permissions
+│   │   │   ├── autogenerated
+│   │   │   │   ├── commands
+│   │   │   │   │   ├── get_current.toml
+│   │   │   │   │   ├── is_registered.toml
+│   │   │   │   │   ├── register.toml
+│   │   │   │   │   └── unregister.toml
+│   │   │   │   └── reference.md
+│   │   │   ├── default.toml
+│   │   │   └── schemas
+│   │   │       └── schema.json
+│   │   ├── rollup.config.js
+│   │   ├── src
+│   │   │   ├── commands.rs
+│   │   │   ├── config.rs
+│   │   │   ├── error.rs
+│   │   │   ├── lib.rs
+│   │   │   └── template.desktop
+│   │   └── tsconfig.json
+│   ├── dialog
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── LICENSE.spdx
+│   │   ├── LICENSE_APACHE-2.0
+│   │   ├── LICENSE_MIT
+│   │   ├── README.md
+│   │   ├── SECURITY.md
+│   │   ├── android
+│   │   │   ├── .gitignore
+│   │   │   ├── build.gradle.kts
+│   │   │   ├── consumer-rules.pro
+│   │   │   ├── settings.gradle
+│   │   │   └── src
+│   │   │       ├── androidTest
+│   │   │       │   └── java
+│   │   │       │       └── ExampleInstrumentedTest.kt
+│   │   │       ├── main
+│   │   │       │   ├── AndroidManifest.xml
+│   │   │       │   └── java
+│   │   │       │       ├── DialogPlugin.kt
+│   │   │       │       └── FilePickerUtils.kt
+│   │   │       └── test
+│   │   │           └── java
+│   │   │               └── ExampleUnitTest.kt
+│   │   ├── api-iife.js
+│   │   ├── banner.png
+│   │   ├── build.rs
+│   │   ├── guest-js
+│   │   │   ├── index.ts
+│   │   │   └── init.ts
+│   │   ├── ios
+│   │   │   ├── .gitignore
+│   │   │   ├── Package.swift
+│   │   │   ├── README.md
+│   │   │   ├── Sources
+│   │   │   │   ├── DialogPlugin.swift
+│   │   │   │   └── FilePickerController.swift
+│   │   │   └── Tests
+│   │   │       └── PluginTests
+│   │   │           └── PluginTests.swift
+│   │   ├── package.json
+│   │   ├── permissions
+│   │   │   ├── ask.toml
+│   │   │   ├── autogenerated
+│   │   │   │   ├── commands
+│   │   │   │   │   ├── message.toml
+│   │   │   │   │   ├── open.toml
+│   │   │   │   │   └── save.toml
+│   │   │   │   └── reference.md
+│   │   │   ├── confirm.toml
+│   │   │   ├── default.toml
+│   │   │   └── schemas
+│   │   │       └── schema.json
+│   │   ├── rollup.config.js
+│   │   ├── src
+│   │   │   ├── commands.rs
+│   │   │   ├── desktop.rs
+│   │   │   ├── error.rs
+│   │   │   ├── init-iife.js
+│   │   │   ├── lib.rs
+│   │   │   ├── mobile.rs
+│   │   │   └── models.rs
+│   │   ├── test
+│   │   │   └── tauri.conf.json
+│   │   └── tsconfig.json
+│   ├── fs
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── LICENSE.spdx
+│   │   ├── LICENSE_APACHE-2.0
+│   │   ├── LICENSE_MIT
+│   │   ├── README.md
+│   │   ├── SECURITY.md
+│   │   ├── android
+│   │   │   ├── .gitignore
+│   │   │   ├── build.gradle.kts
+│   │   │   ├── consumer-rules.pro
+│   │   │   ├── settings.gradle
+│   │   │   └── src
+│   │   │       ├── androidTest
+│   │   │       │   └── java
+│   │   │       │       └── ExampleInstrumentedTest.kt
+│   │   │       ├── main
+│   │   │       │   ├── AndroidManifest.xml
+│   │   │       │   └── java
+│   │   │       │       └── FsPlugin.kt
+│   │   │       └── test
+│   │   │           └── java
+│   │   │               └── ExampleUnitTest.kt
+│   │   ├── api-iife.js
+│   │   ├── banner.png
+│   │   ├── build.rs
+│   │   ├── guest-js
+│   │   │   └── index.ts
+│   │   ├── package.json
+│   │   ├── permissions
+│   │   │   ├── app.toml
+│   │   │   ├── autogenerated
+│   │   │   │   ├── base-directories
+│   │   │   │   │   ├── appcache.toml
+│   │   │   │   │   ├── appconfig.toml
+│   │   │   │   │   ├── appdata.toml
+│   │   │   │   │   ├── applocaldata.toml
+│   │   │   │   │   ├── applog.toml
+│   │   │   │   │   ├── audio.toml
+│   │   │   │   │   ├── cache.toml
+│   │   │   │   │   ├── config.toml
+│   │   │   │   │   ├── data.toml
+│   │   │   │   │   ├── desktop.toml
+│   │   │   │   │   ├── document.toml
+│   │   │   │   │   ├── download.toml
+│   │   │   │   │   ├── exe.toml
+│   │   │   │   │   ├── font.toml
+│   │   │   │   │   ├── home.toml
+│   │   │   │   │   ├── localdata.toml
+│   │   │   │   │   ├── log.toml
+│   │   │   │   │   ├── picture.toml
+│   │   │   │   │   ├── public.toml
+│   │   │   │   │   ├── resource.toml
+│   │   │   │   │   ├── runtime.toml
+│   │   │   │   │   ├── temp.toml
+│   │   │   │   │   ├── template.toml
+│   │   │   │   │   └── video.toml
+│   │   │   │   ├── commands
+│   │   │   │   │   ├── copy_file.toml
+│   │   │   │   │   ├── create.toml
+│   │   │   │   │   ├── exists.toml
+│   │   │   │   │   ├── fstat.toml
+│   │   │   │   │   ├── ftruncate.toml
+│   │   │   │   │   ├── lstat.toml
+│   │   │   │   │   ├── mkdir.toml
+│   │   │   │   │   ├── open.toml
+│   │   │   │   │   ├── read.toml
+│   │   │   │   │   ├── read_dir.toml
+│   │   │   │   │   ├── read_file.toml
+│   │   │   │   │   ├── read_text_file.toml
+│   │   │   │   │   ├── read_text_file_lines.toml
+│   │   │   │   │   ├── read_text_file_lines_next.toml
+│   │   │   │   │   ├── remove.toml
+│   │   │   │   │   ├── rename.toml
+│   │   │   │   │   ├── seek.toml
+│   │   │   │   │   ├── size.toml
+│   │   │   │   │   ├── start_accessing_security_scoped_resource.toml
+│   │   │   │   │   ├── stat.toml
+│   │   │   │   │   ├── stop_accessing_security_scoped_resource.toml
+│   │   │   │   │   ├── truncate.toml
+│   │   │   │   │   ├── unwatch.toml
+│   │   │   │   │   ├── watch.toml
+│   │   │   │   │   ├── write.toml
+│   │   │   │   │   ├── write_file.toml
+│   │   │   │   │   └── write_text_file.toml
+│   │   │   │   └── reference.md
+│   │   │   ├── create-app-specific-dirs.toml
+│   │   │   ├── default.toml
+│   │   │   ├── deny-default.toml
+│   │   │   ├── deny-webview-data.toml
+│   │   │   ├── read-all.toml
+│   │   │   ├── read-app-specific-dirs-recursive.toml
+│   │   │   ├── read-dirs.toml
+│   │   │   ├── read-files.toml
+│   │   │   ├── read-meta.toml
+│   │   │   ├── schemas
+│   │   │   │   └── schema.json
+│   │   │   ├── scope.toml
+│   │   │   ├── write-all.toml
+│   │   │   └── write-files.toml
+│   │   ├── rollup.config.js
+│   │   ├── src
+│   │   │   ├── android.rs
+│   │   │   ├── commands.rs
+│   │   │   ├── config.rs
+│   │   │   ├── desktop.rs
+│   │   │   ├── error.rs
+│   │   │   ├── file_path.rs
+│   │   │   ├── ios.rs
+│   │   │   ├── lib.rs
+│   │   │   ├── models.rs
+│   │   │   ├── scope.rs
+│   │   │   └── watcher.rs
+│   │   └── tsconfig.json
+│   ├── geolocation
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── LICENSE.spdx
+│   │   ├── LICENSE_APACHE-2.0
+│   │   ├── LICENSE_MIT
+│   │   ├── README.md
+│   │   ├── SECURITY.md
+│   │   ├── android
+│   │   │   ├── .gitignore
+│   │   │   ├── build.gradle.kts
+│   │   │   ├── consumer-rules.pro
+│   │   │   ├── settings.gradle
+│   │   │   └── src
+│   │   │       ├── androidTest
+│   │   │       │   └── java
+│   │   │       │       └── ExampleInstrumentedTest.kt
+│   │   │       ├── main
+│   │   │       │   ├── AndroidManifest.xml
+│   │   │       │   └── java
+│   │   │       │       ├── Geolocation.kt
+│   │   │       │       └── GeolocationPlugin.kt
+│   │   │       └── test
+│   │   │           └── java
+│   │   │               └── ExampleUnitTest.kt
+│   │   ├── api-iife.js
+│   │   ├── build.rs
+│   │   ├── contributors
+│   │   │   ├── crabnebula.svg
+│   │   │   └── rescue.png
+│   │   ├── guest-js
+│   │   │   └── index.ts
+│   │   ├── ios
+│   │   │   ├── .gitignore
+│   │   │   ├── Package.swift
+│   │   │   ├── README.md
+│   │   │   ├── Sources
+│   │   │   │   └── GeolocationPlugin.swift
+│   │   │   └── Tests
+│   │   │       └── PluginTests
+│   │   │           └── PluginTests.swift
+│   │   ├── package.json
+│   │   ├── permissions
+│   │   │   ├── autogenerated
+│   │   │   │   ├── commands
+│   │   │   │   │   ├── check_permissions.toml
+│   │   │   │   │   ├── clear_permissions.toml
+│   │   │   │   │   ├── clear_watch.toml
+│   │   │   │   │   ├── get_current_position.toml
+│   │   │   │   │   ├── request_permissions.toml
+│   │   │   │   │   └── watch_position.toml
+│   │   │   │   └── reference.md
+│   │   │   └── schemas
+│   │   │       └── schema.json
+│   │   ├── rollup.config.js
+│   │   ├── src
+│   │   │   ├── commands.rs
+│   │   │   ├── desktop.rs
+│   │   │   ├── error.rs
+│   │   │   ├── lib.rs
+│   │   │   ├── mobile.rs
+│   │   │   └── models.rs
+│   │   └── tsconfig.json
+│   ├── global-shortcut
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── LICENSE.spdx
+│   │   ├── LICENSE_APACHE-2.0
+│   │   ├── LICENSE_MIT
+│   │   ├── README.md
+│   │   ├── SECURITY.md
+│   │   ├── api-iife.js
+│   │   ├── banner.png
+│   │   ├── build.rs
+│   │   ├── guest-js
+│   │   │   └── index.ts
+│   │   ├── package.json
+│   │   ├── permissions
+│   │   │   ├── autogenerated
+│   │   │   │   ├── commands
+│   │   │   │   │   ├── is_registered.toml
+│   │   │   │   │   ├── register.toml
+│   │   │   │   │   ├── register_all.toml
+│   │   │   │   │   ├── unregister.toml
+│   │   │   │   │   └── unregister_all.toml
+│   │   │   │   └── reference.md
+│   │   │   ├── default.toml
+│   │   │   └── schemas
+│   │   │       └── schema.json
+│   │   ├── rollup.config.js
+│   │   ├── src
+│   │   │   ├── error.rs
+│   │   │   └── lib.rs
+│   │   └── tsconfig.json
+│   ├── haptics
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── LICENSE.spdx
+│   │   ├── LICENSE_APACHE-2.0
+│   │   ├── LICENSE_MIT
+│   │   ├── README.md
+│   │   ├── SECURITY.md
+│   │   ├── android
+│   │   │   ├── .gitignore
+│   │   │   ├── build.gradle.kts
+│   │   │   ├── consumer-rules.pro
+│   │   │   ├── settings.gradle
+│   │   │   └── src
+│   │   │       ├── androidTest
+│   │   │       │   └── java
+│   │   │       │       └── ExampleInstrumentedTest.kt
+│   │   │       ├── main
+│   │   │       │   ├── AndroidManifest.xml
+│   │   │       │   └── java
+│   │   │       │       ├── HapticsPlugin.kt
+│   │   │       │       └── patterns
+│   │   │       │           ├── Impact.kt
+│   │   │       │           ├── Notification.kt
+│   │   │       │           ├── Pattern.kt
+│   │   │       │           └── Selection.kt
+│   │   │       └── test
+│   │   │           └── java
+│   │   │               └── ExampleUnitTest.kt
+│   │   ├── api-iife.js
+│   │   ├── build.rs
+│   │   ├── contributors
+│   │   │   ├── crabnebula.svg
+│   │   │   └── rescue.png
+│   │   ├── guest-js
+│   │   │   ├── bindings.ts
+│   │   │   └── index.ts
+│   │   ├── ios
+│   │   │   ├── .gitignore
+│   │   │   ├── Package.swift
+│   │   │   ├── README.md
+│   │   │   ├── Sources
+│   │   │   │   └── HapticsPlugin.swift
+│   │   │   └── Tests
+│   │   │       └── PluginTests
+│   │   │           └── PluginTests.swift
+│   │   ├── package.json
+│   │   ├── permissions
+│   │   │   ├── autogenerated
+│   │   │   │   ├── commands
+│   │   │   │   │   ├── impact_feedback.toml
+│   │   │   │   │   ├── notification_feedback.toml
+│   │   │   │   │   ├── selection_feedback.toml
+│   │   │   │   │   └── vibrate.toml
+│   │   │   │   └── reference.md
+│   │   │   └── schemas
+│   │   │       └── schema.json
+│   │   ├── rollup.config.js
+│   │   ├── src
+│   │   │   ├── commands.rs
+│   │   │   ├── desktop.rs
+│   │   │   ├── error.rs
+│   │   │   ├── lib.rs
+│   │   │   ├── mobile.rs
+│   │   │   └── models.rs
+│   │   └── tsconfig.json
+│   ├── http
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── LICENSE.spdx
+│   │   ├── LICENSE_APACHE-2.0
+│   │   ├── LICENSE_MIT
+│   │   ├── README.md
+│   │   ├── SECURITY.md
+│   │   ├── api-iife.js
+│   │   ├── banner.png
+│   │   ├── build.rs
+│   │   ├── guest-js
+│   │   │   └── index.ts
+│   │   ├── package.json
+│   │   ├── permissions
+│   │   │   ├── autogenerated
+│   │   │   │   ├── commands
+│   │   │   │   │   ├── fetch.toml
+│   │   │   │   │   ├── fetch_cancel.toml
+│   │   │   │   │   ├── fetch_cancel_body.toml
+│   │   │   │   │   ├── fetch_read_body.toml
+│   │   │   │   │   └── fetch_send.toml
+│   │   │   │   └── reference.md
+│   │   │   ├── default.toml
+│   │   │   └── schemas
+│   │   │       └── schema.json
+│   │   ├── rollup.config.js
+│   │   ├── src
+│   │   │   ├── commands.rs
+│   │   │   ├── error.rs
+│   │   │   ├── lib.rs
+│   │   │   ├── reqwest_cookie_store.rs
+│   │   │   └── scope.rs
+│   │   └── tsconfig.json
+│   ├── localhost
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── LICENSE.spdx
+│   │   ├── LICENSE_APACHE-2.0
+│   │   ├── LICENSE_MIT
+│   │   ├── README.md
+│   │   ├── SECURITY.md
+│   │   ├── banner.png
+│   │   └── src
+│   │       └── lib.rs
+│   ├── log
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── LICENSE.spdx
+│   │   ├── LICENSE_APACHE-2.0
+│   │   ├── LICENSE_MIT
+│   │   ├── README.md
+│   │   ├── SECURITY.md
+│   │   ├── api-iife.js
+│   │   ├── banner.png
+│   │   ├── build.rs
+│   │   ├── guest-js
+│   │   │   └── index.ts
+│   │   ├── ios
+│   │   │   ├── .gitignore
+│   │   │   ├── Package.swift
+│   │   │   ├── README.md
+│   │   │   └── Sources
+│   │   │       └── LogPlugin.swift
+│   │   ├── package.json
+│   │   ├── permissions
+│   │   │   ├── autogenerated
+│   │   │   │   ├── commands
+│   │   │   │   │   └── log.toml
+│   │   │   │   └── reference.md
+│   │   │   ├── default.toml
+│   │   │   └── schemas
+│   │   │       └── schema.json
+│   │   ├── rollup.config.js
+│   │   ├── src
+│   │   │   ├── commands.rs
+│   │   │   └── lib.rs
+│   │   └── tsconfig.json
+│   ├── mirrors.txt
+│   ├── nfc
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── LICENSE.spdx
+│   │   ├── LICENSE_APACHE-2.0
+│   │   ├── LICENSE_MIT
+│   │   ├── README.md
+│   │   ├── SECURITY.md
+│   │   ├── android
+│   │   │   ├── .gitignore
+│   │   │   ├── build.gradle.kts
+│   │   │   ├── consumer-rules.pro
+│   │   │   ├── settings.gradle
+│   │   │   └── src
+│   │   │       ├── androidTest
+│   │   │       │   └── java
+│   │   │       │       └── ExampleInstrumentedTest.kt
+│   │   │       ├── main
+│   │   │       │   ├── AndroidManifest.xml
+│   │   │       │   ├── java
+│   │   │       │   │   └── NfcPlugin.kt
+│   │   │       │   └── res
+│   │   │       │       └── xml
+│   │   │       │           └── nfc_tech_filter.xml
+│   │   │       └── test
+│   │   │           └── java
+│   │   │               └── ExampleUnitTest.kt
+│   │   ├── api-iife.js
+│   │   ├── build.rs
+│   │   ├── contributors
+│   │   │   ├── crabnebula.svg
+│   │   │   └── impierce.svg
+│   │   ├── guest-js
+│   │   │   └── index.ts
+│   │   ├── ios
+│   │   │   ├── .gitignore
+│   │   │   ├── Package.swift
+│   │   │   ├── README.md
+│   │   │   ├── Sources
+│   │   │   │   └── NfcPlugin.swift
+│   │   │   └── Tests
+│   │   │       └── PluginTests
+│   │   │           └── PluginTests.swift
+│   │   ├── package.json
+│   │   ├── permissions
+│   │   │   ├── autogenerated
+│   │   │   │   ├── commands
+│   │   │   │   │   ├── is_available.toml
+│   │   │   │   │   ├── scan.toml
+│   │   │   │   │   └── write.toml
+│   │   │   │   └── reference.md
+│   │   │   ├── default.toml
+│   │   │   └── schemas
+│   │   │       └── schema.json
+│   │   ├── rollup.config.js
+│   │   ├── src
+│   │   │   ├── error.rs
+│   │   │   ├── lib.rs
+│   │   │   ├── mobile.rs
+│   │   │   └── models.rs
+│   │   └── tsconfig.json
+│   ├── notification
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── LICENSE.spdx
+│   │   ├── LICENSE_APACHE-2.0
+│   │   ├── LICENSE_MIT
+│   │   ├── README.md
+│   │   ├── SECURITY.md
+│   │   ├── android
+│   │   │   ├── .gitignore
+│   │   │   ├── build.gradle.kts
+│   │   │   ├── consumer-rules.pro
+│   │   │   ├── settings.gradle
+│   │   │   └── src
+│   │   │       ├── androidTest
+│   │   │       │   └── java
+│   │   │       │       └── ExampleInstrumentedTest.kt
+│   │   │       ├── main
+│   │   │       │   ├── AndroidManifest.xml
+│   │   │       │   ├── java
+│   │   │       │   │   ├── AssetUtils.kt
+│   │   │       │   │   ├── ChannelManager.kt
+│   │   │       │   │   ├── Notification.kt
+│   │   │       │   │   ├── NotificationAttachment.kt
+│   │   │       │   │   ├── NotificationPlugin.kt
+│   │   │       │   │   ├── NotificationSchedule.kt
+│   │   │       │   │   ├── NotificationStorage.kt
+│   │   │       │   │   └── TauriNotificationManager.kt
+│   │   │       │   └── res
+│   │   │       │       └── drawable
+│   │   │       │           └── ic_transparent.xml
+│   │   │       └── test
+│   │   │           └── java
+│   │   │               └── ExampleUnitTest.kt
+│   │   ├── api-iife.js
+│   │   ├── banner.png
+│   │   ├── build.rs
+│   │   ├── guest-js
+│   │   │   ├── index.ts
+│   │   │   └── init.ts
+│   │   ├── ios
+│   │   │   ├── .gitignore
+│   │   │   ├── Package.swift
+│   │   │   ├── README.md
+│   │   │   ├── Sources
+│   │   │   │   ├── Notification.swift
+│   │   │   │   ├── NotificationCategory.swift
+│   │   │   │   ├── NotificationHandler.swift
+│   │   │   │   ├── NotificationManager.swift
+│   │   │   │   └── NotificationPlugin.swift
+│   │   │   └── Tests
+│   │   │       └── PluginTests
+│   │   │           └── PluginTests.swift
+│   │   ├── package.json
+│   │   ├── permissions
+│   │   │   ├── autogenerated
+│   │   │   │   ├── commands
+│   │   │   │   │   ├── batch.toml
+│   │   │   │   │   ├── cancel.toml
+│   │   │   │   │   ├── check_permissions.toml
+│   │   │   │   │   ├── create_channel.toml
+│   │   │   │   │   ├── delete_channel.toml
+│   │   │   │   │   ├── get_active.toml
+│   │   │   │   │   ├── get_pending.toml
+│   │   │   │   │   ├── is_permission_granted.toml
+│   │   │   │   │   ├── list_channels.toml
+│   │   │   │   │   ├── notify.toml
+│   │   │   │   │   ├── permission_state.toml
+│   │   │   │   │   ├── register_action_types.toml
+│   │   │   │   │   ├── register_listener.toml
+│   │   │   │   │   ├── remove_active.toml
+│   │   │   │   │   ├── request_permission.toml
+│   │   │   │   │   └── show.toml
+│   │   │   │   └── reference.md
+│   │   │   ├── default.toml
+│   │   │   └── schemas
+│   │   │       └── schema.json
+│   │   ├── rollup.config.js
+│   │   ├── src
+│   │   │   ├── commands.rs
+│   │   │   ├── desktop.rs
+│   │   │   ├── error.rs
+│   │   │   ├── init-iife.js
+│   │   │   ├── lib.rs
+│   │   │   ├── mobile.rs
+│   │   │   └── models.rs
+│   │   ├── test
+│   │   │   └── tauri.conf.json
+│   │   └── tsconfig.json
+│   ├── opener
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── LICENSE.spdx
+│   │   ├── LICENSE_APACHE-2.0
+│   │   ├── LICENSE_MIT
+│   │   ├── README.md
+│   │   ├── SECURITY.md
+│   │   ├── android
+│   │   │   ├── .gitignore
+│   │   │   ├── build.gradle.kts
+│   │   │   ├── consumer-rules.pro
+│   │   │   ├── settings.gradle
+│   │   │   └── src
+│   │   │       └── main
+│   │   │           ├── AndroidManifest.xml
+│   │   │           └── java
+│   │   │               └── OpenerPlugin.kt
+│   │   ├── api-iife.js
+│   │   ├── build.rs
+│   │   ├── guest-js
+│   │   │   ├── index.ts
+│   │   │   └── init.ts
+│   │   ├── ios
+│   │   │   ├── Package.resolved
+│   │   │   ├── Package.swift
+│   │   │   └── Sources
+│   │   │       └── OpenerPlugin.swift
+│   │   ├── package.json
+│   │   ├── permissions
+│   │   │   ├── allow-default-urls.toml
+│   │   │   ├── autogenerated
+│   │   │   │   ├── commands
+│   │   │   │   │   ├── open_path.toml
+│   │   │   │   │   ├── open_url.toml
+│   │   │   │   │   └── reveal_item_in_dir.toml
+│   │   │   │   └── reference.md
+│   │   │   ├── default.toml
+│   │   │   └── schemas
+│   │   │       └── schema.json
+│   │   ├── rollup.config.js
+│   │   ├── src
+│   │   │   ├── commands.rs
+│   │   │   ├── config.rs
+│   │   │   ├── error.rs
+│   │   │   ├── init-iife.js
+│   │   │   ├── lib.rs
+│   │   │   ├── open.rs
+│   │   │   ├── reveal_item_in_dir.rs
+│   │   │   ├── scope.rs
+│   │   │   ├── scope_entry.rs
+│   │   │   └── windows_shell_path.rs
+│   │   └── tsconfig.json
+│   ├── os
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── LICENSE.spdx
+│   │   ├── LICENSE_APACHE-2.0
+│   │   ├── LICENSE_MIT
+│   │   ├── README.md
+│   │   ├── SECURITY.md
+│   │   ├── api-iife.js
+│   │   ├── banner.png
+│   │   ├── build.rs
+│   │   ├── guest-js
+│   │   │   └── index.ts
+│   │   ├── package.json
+│   │   ├── permissions
+│   │   │   ├── autogenerated
+│   │   │   │   ├── commands
+│   │   │   │   │   ├── arch.toml
+│   │   │   │   │   ├── exe_extension.toml
+│   │   │   │   │   ├── family.toml
+│   │   │   │   │   ├── hostname.toml
+│   │   │   │   │   ├── locale.toml
+│   │   │   │   │   ├── os_type.toml
+│   │   │   │   │   ├── platform.toml
+│   │   │   │   │   └── version.toml
+│   │   │   │   └── reference.md
+│   │   │   ├── default.toml
+│   │   │   └── schemas
+│   │   │       └── schema.json
+│   │   ├── rollup.config.js
+│   │   ├── src
+│   │   │   ├── commands.rs
+│   │   │   ├── error.rs
+│   │   │   ├── init.js
+│   │   │   └── lib.rs
+│   │   └── tsconfig.json
+│   ├── persisted-scope
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── LICENSE.spdx
+│   │   ├── LICENSE_APACHE-2.0
+│   │   ├── LICENSE_MIT
+│   │   ├── README.md
+│   │   ├── SECURITY.md
+│   │   ├── banner.png
+│   │   └── src
+│   │       └── lib.rs
+│   ├── positioner
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── LICENSE.spdx
+│   │   ├── LICENSE_APACHE-2.0
+│   │   ├── LICENSE_MIT
+│   │   ├── README.md
+│   │   ├── SECURITY.md
+│   │   ├── api-iife.js
+│   │   ├── banner.png
+│   │   ├── build.rs
+│   │   ├── guest-js
+│   │   │   └── index.ts
+│   │   ├── package.json
+│   │   ├── permissions
+│   │   │   ├── autogenerated
+│   │   │   │   ├── commands
+│   │   │   │   │   ├── move_window.toml
+│   │   │   │   │   ├── move_window_constrained.toml
+│   │   │   │   │   └── set_tray_icon_state.toml
+│   │   │   │   └── reference.md
+│   │   │   ├── default.toml
+│   │   │   └── schemas
+│   │   │       └── schema.json
+│   │   ├── rollup.config.js
+│   │   ├── src
+│   │   │   ├── ext.rs
+│   │   │   └── lib.rs
+│   │   └── tsconfig.json
+│   ├── process
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── LICENSE.spdx
+│   │   ├── LICENSE_APACHE-2.0
+│   │   ├── LICENSE_MIT
+│   │   ├── README.md
+│   │   ├── SECURITY.md
+│   │   ├── api-iife.js
+│   │   ├── banner.png
+│   │   ├── build.rs
+│   │   ├── guest-js
+│   │   │   └── index.ts
+│   │   ├── package.json
+│   │   ├── permissions
+│   │   │   ├── autogenerated
+│   │   │   │   ├── commands
+│   │   │   │   │   ├── exit.toml
+│   │   │   │   │   └── restart.toml
+│   │   │   │   └── reference.md
+│   │   │   ├── default.toml
+│   │   │   └── schemas
+│   │   │       └── schema.json
+│   │   ├── rollup.config.js
+│   │   ├── src
+│   │   │   ├── commands.rs
+│   │   │   └── lib.rs
+│   │   └── tsconfig.json
+│   ├── shell
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── LICENSE.spdx
+│   │   ├── LICENSE_APACHE-2.0
+│   │   ├── LICENSE_MIT
+│   │   ├── README.md
+│   │   ├── SECURITY.md
+│   │   ├── android
+│   │   │   ├── .gitignore
+│   │   │   ├── build.gradle.kts
+│   │   │   ├── consumer-rules.pro
+│   │   │   ├── settings.gradle
+│   │   │   └── src
+│   │   │       └── main
+│   │   │           ├── AndroidManifest.xml
+│   │   │           └── java
+│   │   │               └── ShellPlugin.kt
+│   │   ├── api-iife.js
+│   │   ├── banner.png
+│   │   ├── build.rs
+│   │   ├── guest-js
+│   │   │   ├── index.ts
+│   │   │   └── init.ts
+│   │   ├── ios
+│   │   │   ├── Package.resolved
+│   │   │   ├── Package.swift
+│   │   │   └── Sources
+│   │   │       └── ShellPlugin.swift
+│   │   ├── package.json
+│   │   ├── permissions
+│   │   │   ├── autogenerated
+│   │   │   │   ├── commands
+│   │   │   │   │   ├── execute.toml
+│   │   │   │   │   ├── kill.toml
+│   │   │   │   │   ├── open.toml
+│   │   │   │   │   ├── spawn.toml
+│   │   │   │   │   └── stdin_write.toml
+│   │   │   │   └── reference.md
+│   │   │   ├── default.toml
+│   │   │   └── schemas
+│   │   │       └── schema.json
+│   │   ├── rollup.config.js
+│   │   ├── src
+│   │   │   ├── commands.rs
+│   │   │   ├── config.rs
+│   │   │   ├── error.rs
+│   │   │   ├── init-iife.js
+│   │   │   ├── lib.rs
+│   │   │   ├── open.rs
+│   │   │   ├── process
+│   │   │   │   └── mod.rs
+│   │   │   ├── scope.rs
+│   │   │   └── scope_entry.rs
+│   │   ├── test
+│   │   │   └── test.txt
+│   │   └── tsconfig.json
+│   ├── single-instance
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── LICENSE.spdx
+│   │   ├── LICENSE_APACHE-2.0
+│   │   ├── LICENSE_MIT
+│   │   ├── README.md
+│   │   ├── SECURITY.md
+│   │   ├── banner.png
+│   │   ├── examples
+│   │   │   └── vanilla
+│   │   │       ├── .gitignore
+│   │   │       ├── dist
+│   │   │       │   └── .gitkeep
+│   │   │       ├── package.json
+│   │   │       ├── public
+│   │   │       │   └── index.html
+│   │   │       └── src-tauri
+│   │   │           ├── .gitignore
+│   │   │           ├── Cargo.toml
+│   │   │           ├── build.rs
+│   │   │           ├── icons
+│   │   │           │   ├── 128x128.png
+│   │   │           │   ├── 128x128@2x.png
+│   │   │           │   ├── 32x32.png
+│   │   │           │   ├── icon.icns
+│   │   │           │   ├── icon.ico
+│   │   │           │   └── icon.png
+│   │   │           ├── src
+│   │   │           │   └── main.rs
+│   │   │           └── tauri.conf.json
+│   │   └── src
+│   │       ├── lib.rs
+│   │       ├── platform_impl
+│   │       │   ├── linux.rs
+│   │       │   ├── macos.rs
+│   │       │   └── windows.rs
+│   │       └── semver_compat.rs
+│   ├── sql
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── LICENSE.spdx
+│   │   ├── LICENSE_APACHE-2.0
+│   │   ├── LICENSE_MIT
+│   │   ├── README.md
+│   │   ├── SECURITY.md
+│   │   ├── api-iife.js
+│   │   ├── banner.png
+│   │   ├── build.rs
+│   │   ├── guest-js
+│   │   │   └── index.ts
+│   │   ├── package.json
+│   │   ├── permissions
+│   │   │   ├── autogenerated
+│   │   │   │   ├── commands
+│   │   │   │   │   ├── close.toml
+│   │   │   │   │   ├── execute.toml
+│   │   │   │   │   ├── load.toml
+│   │   │   │   │   └── select.toml
+│   │   │   │   └── reference.md
+│   │   │   ├── default.toml
+│   │   │   └── schemas
+│   │   │       └── schema.json
+│   │   ├── rollup.config.js
+│   │   ├── src
+│   │   │   ├── commands.rs
+│   │   │   ├── decode
+│   │   │   │   ├── mod.rs
+│   │   │   │   ├── mysql.rs
+│   │   │   │   ├── postgres.rs
+│   │   │   │   └── sqlite.rs
+│   │   │   ├── error.rs
+│   │   │   ├── lib.rs
+│   │   │   └── wrapper.rs
+│   │   └── tsconfig.json
+│   ├── store
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── LICENSE.spdx
+│   │   ├── LICENSE_APACHE-2.0
+│   │   ├── LICENSE_MIT
+│   │   ├── README.md
+│   │   ├── SECURITY.md
+│   │   ├── api-iife.js
+│   │   ├── banner.png
+│   │   ├── build.rs
+│   │   ├── examples
+│   │   │   └── AppSettingsManager
+│   │   │       ├── .gitignore
+│   │   │       ├── .vscode
+│   │   │       │   └── extensions.json
+│   │   │       ├── README.md
+│   │   │       ├── dist
+│   │   │       │   └── .gitkeep
+│   │   │       ├── index.html
+│   │   │       ├── package.json
+│   │   │       ├── src
+│   │   │       │   ├── assets
+│   │   │       │   │   ├── tauri.svg
+│   │   │       │   │   ├── typescript.svg
+│   │   │       │   │   └── vite.svg
+│   │   │       │   ├── main.ts
+│   │   │       │   └── styles.css
+│   │   │       ├── src-tauri
+│   │   │       │   ├── .gitignore
+│   │   │       │   ├── Cargo.toml
+│   │   │       │   ├── build.rs
+│   │   │       │   ├── icons
+│   │   │       │   │   ├── 128x128.png
+│   │   │       │   │   ├── 128x128@2x.png
+│   │   │       │   │   ├── 32x32.png
+│   │   │       │   │   ├── Square107x107Logo.png
+│   │   │       │   │   ├── Square142x142Logo.png
+│   │   │       │   │   ├── Square150x150Logo.png
+│   │   │       │   │   ├── Square284x284Logo.png
+│   │   │       │   │   ├── Square30x30Logo.png
+│   │   │       │   │   ├── Square310x310Logo.png
+│   │   │       │   │   ├── Square44x44Logo.png
+│   │   │       │   │   ├── Square71x71Logo.png
+│   │   │       │   │   ├── Square89x89Logo.png
+│   │   │       │   │   ├── StoreLogo.png
+│   │   │       │   │   ├── icon.icns
+│   │   │       │   │   ├── icon.ico
+│   │   │       │   │   └── icon.png
+│   │   │       │   ├── src
+│   │   │       │   │   ├── app
+│   │   │       │   │   │   ├── mod.rs
+│   │   │       │   │   │   └── settings.rs
+│   │   │       │   │   └── main.rs
+│   │   │       │   └── tauri.conf.json
+│   │   │       ├── tsconfig.json
+│   │   │       └── vite.config.ts
+│   │   ├── guest-js
+│   │   │   └── index.ts
+│   │   ├── package.json
+│   │   ├── permissions
+│   │   │   ├── autogenerated
+│   │   │   │   ├── commands
+│   │   │   │   │   ├── clear.toml
+│   │   │   │   │   ├── delete.toml
+│   │   │   │   │   ├── entries.toml
+│   │   │   │   │   ├── get.toml
+│   │   │   │   │   ├── get_store.toml
+│   │   │   │   │   ├── has.toml
+│   │   │   │   │   ├── keys.toml
+│   │   │   │   │   ├── length.toml
+│   │   │   │   │   ├── load.toml
+│   │   │   │   │   ├── reload.toml
+│   │   │   │   │   ├── reset.toml
+│   │   │   │   │   ├── save.toml
+│   │   │   │   │   ├── set.toml
+│   │   │   │   │   └── values.toml
+│   │   │   │   └── reference.md
+│   │   │   ├── default.toml
+│   │   │   └── schemas
+│   │   │       └── schema.json
+│   │   ├── rollup.config.js
+│   │   ├── src
+│   │   │   ├── error.rs
+│   │   │   ├── lib.rs
+│   │   │   └── store.rs
+│   │   └── tsconfig.json
+│   ├── stronghold
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── LICENSE.spdx
+│   │   ├── LICENSE_APACHE-2.0
+│   │   ├── LICENSE_MIT
+│   │   ├── README.md
+│   │   ├── SECURITY.md
+│   │   ├── api-iife.js
+│   │   ├── banner.png
+│   │   ├── build.rs
+│   │   ├── guest-js
+│   │   │   └── index.ts
+│   │   ├── package.json
+│   │   ├── permissions
+│   │   │   ├── autogenerated
+│   │   │   │   ├── commands
+│   │   │   │   │   ├── create_client.toml
+│   │   │   │   │   ├── destroy.toml
+│   │   │   │   │   ├── execute_procedure.toml
+│   │   │   │   │   ├── get_store_record.toml
+│   │   │   │   │   ├── initialize.toml
+│   │   │   │   │   ├── load_client.toml
+│   │   │   │   │   ├── remove_secret.toml
+│   │   │   │   │   ├── remove_store_record.toml
+│   │   │   │   │   ├── save.toml
+│   │   │   │   │   ├── save_secret.toml
+│   │   │   │   │   └── save_store_record.toml
+│   │   │   │   └── reference.md
+│   │   │   ├── default.toml
+│   │   │   └── schemas
+│   │   │       └── schema.json
+│   │   ├── rollup.config.js
+│   │   ├── src
+│   │   │   ├── kdf.rs
+│   │   │   ├── lib.rs
+│   │   │   └── stronghold.rs
+│   │   └── tsconfig.json
+│   ├── updater
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── LICENSE.spdx
+│   │   ├── LICENSE_APACHE-2.0
+│   │   ├── LICENSE_MIT
+│   │   ├── README.md
+│   │   ├── SECURITY.md
+│   │   ├── api-iife.js
+│   │   ├── banner.png
+│   │   ├── build.rs
+│   │   ├── guest-js
+│   │   │   └── index.ts
+│   │   ├── package.json
+│   │   ├── permissions
+│   │   │   ├── autogenerated
+│   │   │   │   ├── commands
+│   │   │   │   │   ├── check.toml
+│   │   │   │   │   ├── download.toml
+│   │   │   │   │   ├── download_and_install.toml
+│   │   │   │   │   └── install.toml
+│   │   │   │   └── reference.md
+│   │   │   ├── default.toml
+│   │   │   └── schemas
+│   │   │       └── schema.json
+│   │   ├── rollup.config.js
+│   │   ├── src
+│   │   │   ├── commands.rs
+│   │   │   ├── config.rs
+│   │   │   ├── error.rs
+│   │   │   ├── lib.rs
+│   │   │   └── updater.rs
+│   │   ├── tests
+│   │   │   ├── app-updater
+│   │   │   │   ├── .gitignore
+│   │   │   │   ├── Cargo.toml
+│   │   │   │   ├── build.rs
+│   │   │   │   ├── icons
+│   │   │   │   │   ├── 128x128.png
+│   │   │   │   │   ├── 128x128@2x.png
+│   │   │   │   │   ├── 32x32.png
+│   │   │   │   │   ├── icon.icns
+│   │   │   │   │   ├── icon.ico
+│   │   │   │   │   └── icon.png
+│   │   │   │   ├── src
+│   │   │   │   │   └── main.rs
+│   │   │   │   ├── tauri.conf.json
+│   │   │   │   └── tests
+│   │   │   │       └── update.rs
+│   │   │   └── updater-migration
+│   │   │       ├── Cargo.toml
+│   │   │       ├── icons
+│   │   │       │   ├── 128x128.png
+│   │   │       │   ├── 128x128@2x.png
+│   │   │       │   ├── 32x32.png
+│   │   │       │   ├── icon.icns
+│   │   │       │   ├── icon.ico
+│   │   │       │   └── icon.png
+│   │   │       ├── tests
+│   │   │       │   └── update.rs
+│   │   │       ├── v1-app
+│   │   │       │   ├── .gitignore
+│   │   │       │   ├── Cargo.lock
+│   │   │       │   ├── Cargo.toml
+│   │   │       │   ├── build.rs
+│   │   │       │   ├── package.json
+│   │   │       │   ├── src
+│   │   │       │   │   └── main.rs
+│   │   │       │   └── tauri.conf.json
+│   │   │       └── v2-app
+│   │   │           ├── .gitignore
+│   │   │           ├── Cargo.toml
+│   │   │           ├── build.rs
+│   │   │           ├── src
+│   │   │           │   └── main.rs
+│   │   │           └── tauri.conf.json
+│   │   └── tsconfig.json
+│   ├── upload
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── LICENSE.spdx
+│   │   ├── LICENSE_APACHE-2.0
+│   │   ├── LICENSE_MIT
+│   │   ├── README.md
+│   │   ├── SECURITY.md
+│   │   ├── api-iife.js
+│   │   ├── banner.png
+│   │   ├── build.rs
+│   │   ├── guest-js
+│   │   │   └── index.ts
+│   │   ├── package.json
+│   │   ├── permissions
+│   │   │   ├── autogenerated
+│   │   │   │   ├── commands
+│   │   │   │   │   ├── download.toml
+│   │   │   │   │   └── upload.toml
+│   │   │   │   └── reference.md
+│   │   │   ├── default.toml
+│   │   │   └── schemas
+│   │   │       └── schema.json
+│   │   ├── rollup.config.js
+│   │   ├── src
+│   │   │   ├── lib.rs
+│   │   │   └── transfer_stats.rs
+│   │   ├── test
+│   │   │   ├── download.txt
+│   │   │   └── upload.txt
+│   │   └── tsconfig.json
+│   ├── websocket
+│   │   ├── CHANGELOG.md
+│   │   ├── Cargo.toml
+│   │   ├── LICENSE.spdx
+│   │   ├── LICENSE_APACHE-2.0
+│   │   ├── LICENSE_MIT
+│   │   ├── README.md
+│   │   ├── SECURITY.md
+│   │   ├── api-iife.js
+│   │   ├── banner.png
+│   │   ├── build.rs
+│   │   ├── examples
+│   │   │   └── tauri-app
+│   │   │       ├── .gitignore
+│   │   │       ├── dist
+│   │   │       │   └── .gitkeep
+│   │   │       ├── index.html
+│   │   │       ├── package.json
+│   │   │       ├── public
+│   │   │       │   └── vite.svg
+│   │   │       ├── src
+│   │   │       │   ├── main.ts
+│   │   │       │   ├── style.css
+│   │   │       │   ├── typescript.svg
+│   │   │       │   └── vite-env.d.ts
+│   │   │       ├── src-tauri
+│   │   │       │   ├── .gitignore
+│   │   │       │   ├── Cargo.toml
+│   │   │       │   ├── build.rs
+│   │   │       │   ├── icons
+│   │   │       │   │   ├── 128x128.png
+│   │   │       │   │   ├── 128x128@2x.png
+│   │   │       │   │   ├── 32x32.png
+│   │   │       │   │   ├── Square107x107Logo.png
+│   │   │       │   │   ├── Square142x142Logo.png
+│   │   │       │   │   ├── Square150x150Logo.png
+│   │   │       │   │   ├── Square284x284Logo.png
+│   │   │       │   │   ├── Square30x30Logo.png
+│   │   │       │   │   ├── Square310x310Logo.png
+│   │   │       │   │   ├── Square44x44Logo.png
+│   │   │       │   │   ├── Square71x71Logo.png
+│   │   │       │   │   ├── Square89x89Logo.png
+│   │   │       │   │   ├── StoreLogo.png
+│   │   │       │   │   ├── icon.icns
+│   │   │       │   │   ├── icon.ico
+│   │   │       │   │   └── icon.png
+│   │   │       │   ├── rustfmt.toml
+│   │   │       │   ├── src
+│   │   │       │   │   └── main.rs
+│   │   │       │   └── tauri.conf.json
+│   │   │       └── tsconfig.json
+│   │   ├── guest-js
+│   │   │   └── index.ts
+│   │   ├── package.json
+│   │   ├── permissions
+│   │   │   ├── autogenerated
+│   │   │   │   ├── commands
+│   │   │   │   │   ├── connect.toml
+│   │   │   │   │   └── send.toml
+│   │   │   │   └── reference.md
+│   │   │   ├── default.toml
+│   │   │   └── schemas
+│   │   │       └── schema.json
+│   │   ├── rollup.config.js
+│   │   ├── src
+│   │   │   └── lib.rs
+│   │   └── tsconfig.json
+│   └── window-state
+│       ├── CHANGELOG.md
+│       ├── Cargo.toml
+│       ├── LICENSE.spdx
+│       ├── LICENSE_APACHE-2.0
+│       ├── LICENSE_MIT
+│       ├── README.md
+│       ├── SECURITY.md
+│       ├── api-iife.js
+│       ├── banner.png
+│       ├── build.rs
+│       ├── guest-js
+│       │   └── index.ts
+│       ├── package.json
+│       ├── permissions
+│       │   ├── autogenerated
+│       │   │   ├── commands
+│       │   │   │   ├── filename.toml
+│       │   │   │   ├── restore_state.toml
+│       │   │   │   └── save_window_state.toml
+│       │   │   └── reference.md
+│       │   ├── default.toml
+│       │   └── schemas
+│       │       └── schema.json
+│       ├── rollup.config.js
+│       ├── src
+│       │   ├── cmd.rs
+│       │   └── lib.rs
+│       └── tsconfig.json
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
+├── renovate.json
+├── shared
+│   ├── rollup.config.js
+│   └── template
+│       ├── Cargo.toml
+│       ├── LICENSE.spdx
+│       ├── LICENSE_APACHE-2.0
+│       ├── LICENSE_MIT
+│       ├── README.md
+│       ├── SECURITY.md
+│       ├── android
+│       │   ├── .gitignore
+│       │   ├── build.gradle.kts
+│       │   ├── consumer-rules.pro
+│       │   ├── settings.gradle
+│       │   └── src
+│       │       ├── androidTest
+│       │       │   └── java
+│       │       │       └── ExampleInstrumentedTest.kt
+│       │       ├── main
+│       │       │   ├── AndroidManifest.xml
+│       │       │   └── java
+│       │       │       └── ExamplePlugin.kt
+│       │       └── test
+│       │           └── java
+│       │               └── ExampleUnitTest.kt
+│       ├── build.rs
+│       ├── guest-js
+│       │   └── index.ts
+│       ├── ios
+│       │   ├── .gitignore
+│       │   ├── Package.swift
+│       │   ├── README.md
+│       │   ├── Sources
+│       │   │   └── ExamplePlugin.swift
+│       │   └── Tests
+│       │       └── PluginTests
+│       │           └── PluginTests.swift
+│       ├── package.json
+│       ├── rollup.config.js
+│       ├── src
+│       │   ├── commands.rs
+│       │   ├── desktop.rs
+│       │   ├── error.rs
+│       │   ├── lib.rs
+│       │   ├── mobile.rs
+│       │   └── models.rs
+│       └── tsconfig.json
+├── taplo.toml
+└── tsconfig.base.json
+519 directories, 1448 files
