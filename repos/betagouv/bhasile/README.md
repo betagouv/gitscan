@@ -24,6 +24,20 @@ yarn dev
 
 Ouvrez [http://localhost:3000](http://localhost:3000) avec votre navigateur pour voir le résultat.
 
+### 🧑 Se connecter avec un rôle
+
+Le seed crée trois agents de test. Connectez-vous via ProConnect avec l'email voulu (n'importe quel mot de passe) :
+
+| Rôle          | Email                                   | Périmètre     |
+| ------------- | --------------------------------------- | ------------- |
+| National      | `national@test.proconnect.gouv.fr`      | Tout          |
+| Régional      | `regional@test.proconnect.gouv.fr`      | Île-de-France |
+| Départemental | `departemental@test.proconnect.gouv.fr` | Paris (75)    |
+
+Sur la page intermédiaire, restez en `eidas1` et cliquez sur "Se connecter"
+
+Pour changer de rôle, déconnectez-vous et reconnectez-vous avec un autre email.
+
 ## 🧪 Tests
 
 Pour lancer les tests, exécutez :
@@ -127,10 +141,9 @@ Les routes `/ajout-structure` et `/ajout-adresses` sont protégées par mot de p
 Pour définir un ou plusieurs mots de passe, il suffit d'ajouter la variable `OPERATEUR_PASSWORDS` dans le fichier `.env`. Les mots de passe devront être séparées par des virgules.
 `PAGE_PASSWORD` est une variable d'environnement legacy et sera bientôt supprimée.
 
-En mode développement, il est possible aussi de bypasser ces accès privés grace à la variable d'environnement `DEV_AUTH_BYPASS=1`
-Les pages sont ensuite accessibles via :
+Les pages sont accessibles via :
 
-- http://localhost:3000/ajout-structure/123abc pour créer une structure (ici `123abc`)
+- http://localhost:3000/ajout-structure pour créer une structure
 - http://localhost:3000/structures pour accéder au tableau de bord
 
 ## 🚀 Mise en production
