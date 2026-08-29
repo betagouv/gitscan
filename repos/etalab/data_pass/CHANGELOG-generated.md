@@ -1,33 +1,26 @@
-## Changelog : data_pass (30 derniers jours, au 24 août 2026)
+## Changelog : data_pass (30 derniers jours, au 28/08/2026)
 
 ### Résumé
-Ce mois-ci, data_pass s'enrichit de nouveaux éditeurs de données (Ianord, Nexys, Dinum) et de nouveaux formulaires. L'expérience utilisateur est simplifiée par une interface de consultation plus claire et une terminologie plus explicite, tandis que la sécurité et la gestion des journaux système ont été renforcées.
+Ce mois-ci, data_pass s'enrichit de nouveaux formulaires et cas d'usage (Nexys, Ianord, DINUM) et améliore l'expérience des agents avec un nouveau mode de consultation pour les formulaires d'instruction. La sécurité a été renforcée par la correction de vulnérabilités et une meilleure gestion des accès, tandis que l'infrastructure a été simplifiée.
 
 ### Évolutions fonctionnelles
-- **Nouveaux éditeurs et formulaires** :
-    - Intégration de l'éditeur Ianord et de ses formulaires pour les cantines lycées/collèges [#1710](https://github.com/etalab/data_pass/issues/1710).
-    - Ajout du formulaire API Entreprise Nexys Relation Usagers (MGDIS) [#1731](https://github.com/etalab/data_pass/issues/1731).
-    - Ajout du formulaire Dinum permettant de transmettre la convention aux contacts lors de la validation [#1691](https://github.com/etalab/data_pass/issues/1691).
-- **Améliorations des formulaires existants** :
-    - Ajout des scopes AEEH et régime pensionnat sur le formulaire CapDemat [#1709](https://github.com/etalab/data_pass/issues/1709).
-    - Ajout du scope INE [#1722](https://github.com/etalab/data_pass/issues/1722).
-- **Interface utilisateur (UI/UX)** :
-    - Simplification des formulaires d'instruction : passage en mode consultation (suppression des boutons de modification et du panneau latéral) pour éviter les erreurs de saisie.
-    - Amélioration de la visibilité : affichage des emails automatisés et explications sur les différents niveaux de droits.
-    - Clarification de la terminologie : le champ « Nom de naissance » est désormais nommé « Nom de famille » [#1738](https://github.com/etalab/data_pass/issues/1738).
-- **Corrections** :
-    - Correction de la proactivité CNOUS pour utiliser le contact métier via le bridge HubEE.
-    - Correction du paramètre par défaut des brouillons pour les instructeurs (désactivé par défaut).
+- **Nouveaux formulaires et cas d'usage** : intégration des formulaires Nexys (MGDIS) [#1731], Ianord (cantines lycées/collèges) [#1710] et des produits DINUM [#1677].
+- **Amélioration de l'API Particulier** : ajout de nouveaux périmètres (INE [#1722], AEEH et régime pensionnat [#1709]) et harmonisation des intitulés avec Simplifions [#1744].
+- **Interface utilisateur** : 
+    - Passage des formulaires d'instruction en mode "consultation" (suppression des boutons de modification et du panneau latéral) [#1701].
+    - Ajout d'une interface pour visualiser les emails automatisés [#1681].
+    - Clarification des libellés (ex: passage de "Nom de naissance" à "Nom de famille" [#1738]).
+- **Workflow** : transmission automatique de la convention aux contacts lors de la validation [#1691].
+- **Corrections** : résolution d'erreurs de navigation dans les tunnels de formulaires et correction de la proactivité CNOUS [#1716].
 
 ### Évolutions techniques
-- **Sécurité** : Mise à jour de Rails vers la version 8.1.3.1 pour corriger la vulnérabilité CVE-2026-66066 [#1715](https://github.com/etalab/data_pass/issues/1715).
-- **Infrastructure et Observabilité** :
-    - Migration de la production des journaux (logs) vers le format JSON via `logstasher`.
-    - Suppression des configurations d'environnement locales (prod, staging, sandbox) pour s'appuyer sur la gestion par Ansible.
-- **API et Documentation** :
-    - Mise à jour de la documentation de l'API (cadres juridiques Ianord, correction du compteur du Socle général) [#1736](https://github.com/etalab/data_pass/issues/1736).
-    - Clarification de la documentation des webhooks concernant la politique de retry [#1728](https://github.com/etalab/data_pass/issues/1728).
-- **Authentification** : Ajustement de la gestion des scopes OAuth pour HubEE.
+- **Sécurité** : 
+    - Correction d'une vulnérabilité d'injection SQL sur le tri du tableau de bord d'instruction [#1729].
+    - Mise à jour de Rails pour corriger une faille de sécurité (CVE-2026-66066) [#1715].
+- **Authentification** : rétablissement du scope OAuth HubEE spécifique à DataPass [#1725].
+- **Observabilité** : passage à la production de journaux (logs) au format JSON via logstasher [#1714].
+- **Infrastructure** : suppression des configurations d'environnement locales au profit d'une gestion centralisée par Ansible [#1717].
 
 ### Autres changements
-- **Nettoyage** : Remplacement de l'attribut `cnous_statut_bourse` par `_boursier` pour une meilleure cohérence du code.
+- **Documentation** : mise à jour des guides concernant la politique de retry des webhooks [#1728] et les cadres juridiques Ianord [#1736].
+- **Nettoyage** : renommage de variables internes pour une meilleure cohérence (statut boursier) [#1721].

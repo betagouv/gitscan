@@ -1,14 +1,15 @@
 {
   "url": "https://github.com/etalab/data_pass",
   "name": "data_pass",
-  "description": "Outil de gestion des habilitations juridiques pour les données à accès restreint. Il permet de gérer les demandes d'accès et les processus d'instruction pour divers éditeurs de données.",
+  "description": "Outil de gestion des habilitations juridiques pour les données à accès restreint. Il permet de gérer les demandes d'accès et l'instruction par les autorités compétentes.",
   "language": "Ruby",
   "features": [
     "Authentification & Accès",
-    "Gestion des utilisateurs & Permissions",
+    "API & Intégrations",
     "Formulaires & Démarches",
+    "Gestion des utilisateurs & Permissions",
     "Sécurité & Conformité",
-    "Administration & Backoffice"
+    "Suivi & Traçabilité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -16,18 +17,20 @@
     "Rails",
     "PostgreSQL",
     "Redis",
-    "GoodJob",
-    "OmniAuth",
-    "Pundit",
+    "Doorkeeper",
+    "Omniauth",
     "Stimulus",
-    "Turbo"
+    "Turbo",
+    "GoodJob",
+    "AWS S3"
   ],
   "components": [
+    "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Docker & Conteneurs",
     "Ruby on Rails",
-    "API REST & GraphQL",
     "Authentification (composant)",
+    "Webhooks & Événements",
     "Scripts & Utilitaires"
   ],
   "auth": {
@@ -37,27 +40,26 @@
       "sso"
     ],
     "providers": [
-      "ProConnect"
+      "ProConnect",
+      "HubEE"
     ]
   },
   "tests": [
     "RSpec",
     "Cucumber",
-    "Capybara",
-    "parallel_tests"
+    "Capybara"
   ],
   "workflows": [
     "continuous-deployment.yaml",
     "test.yaml"
   ],
-  "lastActivity": "2026-08-24T10:27:22+02:00",
-  "status": "active",
+  "lastActivity": "2026-08-28T15:51:37+02:00",
+  "status": "maintained",
   "license": null,
   "hasDocumentation": true,
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "Ruby",
     "Bases de données SQL",
     "Sécurité & Auth",
     "CI/CD & GitHub Actions",
