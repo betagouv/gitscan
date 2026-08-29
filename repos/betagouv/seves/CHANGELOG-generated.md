@@ -1,32 +1,17 @@
-## Changelog : seves (30 derniers jours, au 26 août 2026)
+## Changelog : seves (30 derniers jours, au 28/08/2026)
 
 ### Résumé
-Les évolutions de ce mois se concentrent sur l'enrichissement du module des Situations d'Alerte (SA) et des événements liés au domaine animal. L'expérience utilisateur a été considérablement améliorée par l'automatisation de la saisie de données (via les services SIRENE et BAN), une meilleure gestion de la cartographie et l'ajout de nouveaux composants d'interface pour sécuriser les actions critiques (modales de confirmation, alertes d'extraction).
+Ce mois-ci, la plateforme a bénéficié d'améliorations significatives pour la gestion des alertes sanitaires, notamment avec une meilleure visualisation cartographique (affichage des parcelles, vue satellite) et une saisie de données simplifiée grâce au pré-remplissage automatique des informations professionnelles. L'interface a également été affinée pour offrir une navigation plus fluide et une gestion des notifications plus pertinente.
 
 ### Évolutions fonctionnelles
-- **Gestion des Situations d'Alerte (SA) :**
-    - Création d'une vue détaillée incluant l'historique et des filtres de recherche [#2220].
-    - Ajout de nouveaux blocs d'information pour enrichir les dossiers (contexte, liste des maladies, bloc détenteur) [#2205].
-    - Intégration d'une nouvelle icône pour identifier plus facilement les SA dans les listes [#2214].
-- **Événements Animaux :** Ajout de blocs de mesures, de localisation et mise à jour de la numérotation spécifique.
-- **Cartographie & SIG :**
-    - Affichage des parcelles agricoles sur la carte [#2221].
-    - Possibilité de définir le style de carte initial (ex: vue satellite) directement dans les formulaires [#2213].
-- **Saisie et Expérience Utilisateur :**
-    - Pré-remplissage automatique des données des détenteurs (particuliers et entreprises) via les API SIRENE et BAN.
-    - Amélioration du composant de sélection hiérarchique (*treeselect*) avec gestion des messages "aucun résultat" et des mécanismes de champs obligatoires.
-    - Ajout d'infobulles sur le statut des animaux [#2211].
-    - Mise en place de modales de confirmation pour sécuriser le changement de type d'établissement [#2215] et d'alertes pour les extractions de données volumineuses [#2179].
-    - Optimisation des notifications : suppression des alertes de contact lors de la simple mise à jour d'événements pour réduire le bruit inutile [#2194, #2196].
+- **Gestion des alertes sanitaires (SA) :** création d'une vue détaillée avec accès à l'historique [#2220](https://github.com/betagouv/seves/issues/2220), ajout d'un bloc "détenteur" [#2205](https://github.com/betagouv/seves/issues/2205), intégration de la liste des maladies et mise à jour des icônes de domaine [#2214](https://github.com/betagouv/seves/issues/2214).
+- **Cartographie :** affichage des parcelles agricoles sur la carte [#2221](https://github.com/betagouv/seves/issues/2221) et possibilité de définir la vue satellite comme style de carte par défaut [#2213](https://github.com/betagouv/seves/issues/2213).
+- **Optimisation de la saisie :** pré-remplissage automatique des champs du détenteur via les API SIRENE et BAN, ajout de modales de confirmation lors du changement de type d'établissement [#2215](https://github.com/betagouv/seves/issues/2215) et réinitialisation automatique des champs lors d'un changement de type.
+- **Expérience utilisateur :** ajout d'infobulles sur le statut des animaux [#2211](https://github.com/betagouv/seves/issues/2211), amélioration de la validation des fichiers lors de l'upload et ajout de messages d'absence de résultat dans les sélecteurs.
+- **Gestion des contacts :** suppression des notifications d'ajout de contacts et des ajouts automents d'agents dans certains contextes pour éviter les doublons [#2194](https://github.com/betagouv/seves/issues/2194) [#2196](https://github.com/betagouv/seves/issues/2196).
 
 ### Évolutions techniques
-- **Architecture & Données :**
-    - Implémentation du domaine SA, incluant la configuration du système et la mise à jour des middlewares [#2216].
-    - Création de nouvelles vues matérialisées pour optimiser les performances des tableaux de bord Metabase.
-- **Sécurité :**
-    - Renforcement de la sécurité avec l'ajout du header `X-XSS-Protection`.
-    - Sécurisation du traitement des documents : suppression automatique du JavaScript des fichiers PDF avant leur analyse.
-    - Amélioration de la validation des fichiers lors de l'upload.
-- **Maintenance & Infrastructure :**
-    - Correction d'un problème de déploiement lié à la bibliothèque GDAL.
-    - Résolution de bugs d'interface sur le focus du composant *treeselect*.
+- **Architecture :** création et intégration du domaine "SA" dans les paramètres et les middlewares du système [#2216](https://github.com/betagouv/seves/issues/2216).
+- **Performance :** ajout de nouvelles vues matérialisées pour optimiser l'affichage des tableaux de bord Metabase.
+- **Sécurité :** ajout du header `X-XSS-Protection` et suppression du JavaScript des fichiers PDF avant leur analyse pour limiter les risques.
+- **Maintenance :** correction de bugs sur le focus des composants de recherche et résolution d'un incident de déploiement.
