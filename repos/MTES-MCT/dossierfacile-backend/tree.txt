@@ -28,6 +28,9 @@
 ├── .tessdata
 │   ├── digits.traineddata
 │   └── fra.traineddata
+├── .vscode
+│   ├── launch.json
+│   └── tasks.json
 ├── AGENTS.md
 ├── Aptfile
 ├── LICENSE
@@ -103,7 +106,9 @@
 │       │   │                   ├── DossierfacileApiOwnerApplication.java
 │       │   │                   ├── annotation
 │       │   │                   │   ├── ValidDpeDate.java
-│       │   │                   │   └── ValidDpeDateValidator.java
+│       │   │                   │   ├── ValidDpeDateValidator.java
+│       │   │                   │   ├── ValidDpeNumber.java
+│       │   │                   │   └── ValidDpeNumberValidator.java
 │       │   │                   ├── config
 │       │   │                   │   ├── ConnectionContextFilter.java
 │       │   │                   │   ├── GeneralConfig.java
@@ -190,6 +195,8 @@
 │           │           └── api
 │           │               └── dossierfacileapiowner
 │           │                   ├── TestApplication.java
+│           │                   ├── annotation
+│           │                   │   └── ValidDpeNumberValidatorTest.java
 │           │                   ├── config
 │           │                   │   └── WebhookFilterTest.java
 │           │                   ├── property
@@ -201,7 +208,8 @@
 │           │                   │   ├── PropertyServiceImplTest.java
 │           │                   │   └── PublicPropertyControllerTest.java
 │           │                   └── register
-│           │                       └── KeycloakServiceImplTest.java
+│           │                       ├── KeycloakServiceImplTest.java
+│           │                       └── RegisterServiceImplTest.java
 │           └── resources
 │               ├── application.properties
 │               └── logback-spring-delayed.xml
@@ -681,6 +689,7 @@
 │           │                   │   └── tenant
 │           │                   │       ├── ApplicationTest.java
 │           │                   │       ├── ApplicationV2Tests.java
+│           │                   │       ├── HonorDeclarationTest.java
 │           │                   │       ├── NameSaveStepTest.java
 │           │                   │       └── NamesTest.java
 │           │                   ├── repository
@@ -1456,6 +1465,7 @@
 │           │               │   ├── DocumentDeniedOptionsServiceTest.java
 │           │               │   ├── DocumentDeniedReasonsServiceTest.java
 │           │               │   ├── QuotaServiceTest.java
+│           │               │   ├── TenantLogServiceTest.java
 │           │               │   ├── TenantServiceDissociateTenantTest.java
 │           │               │   ├── TenantServiceFindNextTenantInCoupleTest.java
 │           │               │   ├── TenantServiceRegroupTenantTest.java
@@ -1689,6 +1699,7 @@
 │       │   │               │       ├── DocumentLogDetails.java
 │       │   │               │       ├── EditedStep.java
 │       │   │               │       ├── FileLogDetails.java
+│       │   │               │       ├── GuarantorNotifiedLogDetails.java
 │       │   │               │       └── UpdateMonthlySum.java
 │       │   │               ├── repository
 │       │   │               │   ├── ApartmentSharingLinkRepository.java
@@ -1804,8 +1815,10 @@
 │       │   │               │   └── TransactionalUtil.java
 │       │   │               └── validator
 │       │   │                   ├── SizeFileValidator.java
+│       │   │                   ├── ValidUrlValidator.java
 │       │   │                   └── annotation
-│       │   │                       └── SizeFile.java
+│       │   │                       ├── SizeFile.java
+│       │   │                       └── ValidUrl.java
 │       │   └── resources
 │       │       ├── META-INF
 │       │       │   └── additional-spring-configuration-metadata.json
@@ -2057,13 +2070,16 @@
 │           │               │   ├── LogServiceImplTest.java
 │           │               │   ├── MimeTypeDetectionServiceTest.java
 │           │               │   ├── PartnerCallBackServiceImplTest.java
+│           │               │   ├── RequestServiceImplTest.java
 │           │               │   └── TenantAutoValidationServiceImplTest.java
-│           │               └── utils
-│           │                   ├── DateBasedFeatureToggleTest.java
-│           │                   ├── FileExtensionValidationTest.java
-│           │                   ├── FileUtilityTest.java
-│           │                   ├── TestDocumentIdentity.java
-│           │                   └── TestHttpResponse.java
+│           │               ├── utils
+│           │               │   ├── DateBasedFeatureToggleTest.java
+│           │               │   ├── FileExtensionValidationTest.java
+│           │               │   ├── FileUtilityTest.java
+│           │               │   ├── TestDocumentIdentity.java
+│           │               │   └── TestHttpResponse.java
+│           │               └── validator
+│           │                   └── ValidUrlValidatorTest.java
 │           └── resources
 │               └── hello.txt
 ├── dossierfacile-common-test-library
@@ -2335,6 +2351,7 @@
 │           │           └── api
 │           │               └── pdfgenerator
 │           │                   ├── service
+│           │                   │   ├── ApartmentSharingPdfDossierFileGenerationServiceImplTest.java
 │           │                   │   ├── MinifyFileServiceImplTest.java
 │           │                   │   ├── PdfGeneratorServiceImplTest.java
 │           │                   │   ├── ProcessFileServiceImplTest.java
@@ -2472,4 +2489,4 @@
     │   ├── CMakeLists.txt
     │   └── zxing_wrapper.cpp
     └── docker-compose.yml
-608 directories, 1970 files
+611 directories, 1984 files
