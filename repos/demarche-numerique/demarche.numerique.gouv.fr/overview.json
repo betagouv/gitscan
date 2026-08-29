@@ -1,17 +1,19 @@
 {
   "url": "https://github.com/demarche-numerique/demarche.numerique.gouv.fr",
   "name": "demarche.numerique.gouv.fr",
-  "description": "Plateforme web conçue pour accompagner la dématérialisation des démarches administratives en France. Elle permet la gestion, le suivi et l'instruction de dossiers numériques de manière sécurisée et accessible.",
+  "description": "Plateforme web dédiée à la dématérialisation des démarches administratives françaises. Elle permet la gestion, l'instruction et le suivi des dossiers numériques par les services de l'État.",
   "language": "Ruby",
   "features": [
-    "Formulaires & Démarches",
-    "Recherche & Filtres",
+    "Gestion documentaire & Fichiers",
+    "API & Intégrations",
     "Visualisation de données & Cartographie",
+    "Authentification & Accès",
     "Statistiques & Rapports",
+    "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
-    "Accessibilité & i18n",
+    "Formulaires & Démarches",
     "Administration & Backoffice",
-    "Suivi & Traçabilité"
+    "Interface utilisateur & Design"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -21,8 +23,9 @@
     "React",
     "TypeScript",
     "Sidekiq",
-    "GraphQL",
     "Devise",
+    "GraphQL",
+    "AWS S3",
     "Playwright"
   ],
   "components": [
@@ -39,6 +42,7 @@
       "email-password",
       "oauth2",
       "jwt",
+      "session",
       "mfa",
       "sso"
     ],
@@ -49,9 +53,10 @@
   "tests": [
     "RSpec",
     "Playwright",
-    "Vitest"
+    "Vitest",
+    "Capybara"
   ],
-  "lastActivity": "2026-08-21T17:15:52+02:00",
+  "lastActivity": "2026-08-28T10:57:01+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
