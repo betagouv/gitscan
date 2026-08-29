@@ -14,6 +14,8 @@
 │       │   └── SKILL.md
 │       ├── nestjs-testing
 │       │   └── SKILL.md
+│       ├── pfas-controle
+│       │   └── SKILL.md
 │       ├── table-page
 │       │   └── SKILL.md
 │       └── test-front-component
@@ -90,6 +92,8 @@
 │   │   │   │   │   ├── metierv2
 │   │   │   │   │   │   ├── controleMetierV2.service.spec.ts
 │   │   │   │   │   │   ├── controleMetierV2.service.ts
+│   │   │   │   │   │   ├── controleMetierV2Pfas.spec.ts
+│   │   │   │   │   │   ├── controleMetierV2Pfas.ts
 │   │   │   │   │   │   ├── filterFctAssainissementForMetierV2.spec.ts
 │   │   │   │   │   │   └── filterFctAssainissementForMetierV2.ts
 │   │   │   │   │   └── technique
@@ -132,9 +136,11 @@
 │   │   │   │   │   ├── masa.schema.ts
 │   │   │   │   │   ├── masa.service.ts
 │   │   │   │   │   ├── masaApiKey.guard.ts
-│   │   │   │   │   └── masaIp.guard.ts
+│   │   │   │   │   ├── masaIp.guard.ts
+│   │   │   │   │   └── masaResponseHeader.middleware.ts
 │   │   │   │   └── rapport
 │   │   │   │       ├── generateDummyPdf.ts
+│   │   │   │       ├── rapportPdfGenerator.service.spec.ts
 │   │   │   │       └── rapportPdfGenerator.service.ts
 │   │   │   ├── indicateurs
 │   │   │   │   ├── indicateurs.controller.ts
@@ -160,6 +166,8 @@
 │   │   │   │   │   └── configuration.module.ts
 │   │   │   │   ├── database
 │   │   │   │   │   ├── database.module.ts
+│   │   │   │   │   ├── databasePoolSize.spec.ts
+│   │   │   │   │   ├── databasePoolSize.ts
 │   │   │   │   │   ├── migration.service.ts
 │   │   │   │   │   ├── migrationDatasource.ts
 │   │   │   │   │   ├── trim.transformer.ts
@@ -234,6 +242,7 @@
 │   │   │   │   │   │   └── vSteuSclItv.entity.ts
 │   │   │   │   │   ├── lanceleau.gateway.ts
 │   │   │   │   │   ├── lanceleau.model.ts
+│   │   │   │   │   ├── lanceleau.repository.spec.ts
 │   │   │   │   │   └── lanceleau.repository.ts
 │   │   │   │   ├── parametre
 │   │   │   │   │   └── parametre.gateway.ts
@@ -312,6 +321,7 @@
 │   │   │   │   │   ├── filename.schema.ts
 │   │   │   │   │   ├── filename.service.ts
 │   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── zodValidation.pipe.spec.ts
 │   │   │   │   │   └── zodValidation.pipe.ts
 │   │   │   │   ├── service
 │   │   │   │   │   └── string.service.ts
@@ -401,7 +411,8 @@
 │   │   │   │   ├── fctAssainissement.fixture.ts
 │   │   │   │   └── xml
 │   │   │   │       ├── ctl061-a3-a4-meme-date.xml
-│   │   │   │       └── ctl061-a4-sans-a3.xml
+│   │   │   │       ├── ctl061-a4-sans-a3.xml
+│   │   │   │       └── pfas_anonymized.xml
 │   │   │   ├── global-setup.ts
 │   │   │   ├── global-teardown.ts
 │   │   │   ├── indicateurs
@@ -455,6 +466,7 @@
 │       │   ├── api
 │       │   │   ├── apiClient.spec.ts
 │       │   │   ├── apiClient.ts
+│       │   │   ├── apiError.ts
 │       │   │   ├── bilan.ts
 │       │   │   ├── conformite.ts
 │       │   │   ├── depot.ts
@@ -482,6 +494,7 @@
 │       │   │   ├── Header.tsx
 │       │   │   ├── IndicateursTable.css
 │       │   │   ├── IndicateursTable.tsx
+│       │   │   ├── MasaIntegrationStatus.spec.tsx
 │       │   │   ├── MasaIntegrationStatus.tsx
 │       │   │   ├── MesuresGraph.tsx
 │       │   │   ├── ProtectedRoute.tsx
@@ -503,7 +516,9 @@
 │       │   │       ├── graph.css
 │       │   │       └── verticalLinePlugin.ts
 │       │   ├── contexts
-│       │   │   └── AuthContext.tsx
+│       │   │   ├── AuthContext.spec.tsx
+│       │   │   ├── AuthContext.tsx
+│       │   │   └── authContextDefinition.ts
 │       │   ├── example.env
 │       │   ├── helper
 │       │   │   ├── bilanTableData.tsx
@@ -554,12 +569,15 @@
 │       │   ├── index.css
 │       │   ├── main.tsx
 │       │   ├── monitoring
+│       │   │   ├── SentryErrorBoundary.tsx
 │       │   │   ├── sentry.spec.ts
-│       │   │   └── sentry.tsx
+│       │   │   └── sentry.ts
 │       │   ├── pages
 │       │   │   ├── CallbackPage.tsx
 │       │   │   ├── Controle.spec.tsx
 │       │   │   ├── Controle.tsx
+│       │   │   ├── Dashboard.css
+│       │   │   ├── Dashboard.spec.tsx
 │       │   │   ├── Dashboard.tsx
 │       │   │   ├── DepotDetails.spec.tsx
 │       │   │   ├── DepotDetails.tsx
@@ -726,9 +744,13 @@
 │       ├── jest.config.js
 │       ├── package.json
 │       ├── src
+│       │   ├── agentVerseauReportFormatter.spec.ts
+│       │   ├── agentVerseauReportFormatter.ts
 │       │   ├── date.service.spec.ts
 │       │   ├── date.service.ts
-│       │   └── index.ts
+│       │   ├── index.ts
+│       │   ├── textFormatter.spec.ts
+│       │   └── textFormatter.ts
 │       └── tsconfig.json
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
@@ -736,4 +758,4 @@
 │   └── upload_xml.js
 ├── test_charge.sh
 └── vitest.workspace.ts
-148 directories, 590 files
+149 directories, 611 files
