@@ -111,6 +111,17 @@
 │   │   │   └── action.yml
 │   │   ├── app-start
 │   │   │   └── action.yml
+│   │   ├── cache
+│   │   │   ├── apt-node-canvas
+│   │   │   │   └── action.yml
+│   │   │   ├── next-app-build
+│   │   │   │   └── action.yml
+│   │   │   ├── node-modules
+│   │   │   │   └── action.yml
+│   │   │   └── playwright-browsers
+│   │   │       └── action.yml
+│   │   ├── compute-affected-scope
+│   │   │   └── action.yml
 │   │   ├── db-exists
 │   │   │   └── action.yml
 │   │   ├── db-path
@@ -129,7 +140,9 @@
 │   │   │   └── action.yml
 │   │   ├── docker-pull
 │   │   │   └── action.yml
-│   │   ├── pnpm-install
+│   │   ├── node-canvas
+│   │   │   └── action.yml
+│   │   ├── pnpm-prepare
 │   │   │   └── action.yml
 │   │   ├── psql
 │   │   │   └── action.yml
@@ -156,6 +169,7 @@
 │   │   ├── .act.env.empty
 │   │   ├── .act.secrets.default
 │   │   └── .act.vars.default
+│   ├── dependabot.yml
 │   └── workflows
 │       ├── backup-database.yml
 │       ├── cd-app.yml
@@ -166,22 +180,18 @@
 │       ├── cd-site.yml
 │       ├── cd-test-app-destroy.yml
 │       ├── cd-tools.yml
-│       ├── ci-storybook.yml
 │       ├── ci.yml
 │       ├── dev.yml
-│       ├── init-db.yml
 │       ├── keep-alive-streamlit.yml
+│       ├── prepare-test-db.yml
 │       ├── retry-e2e.yml
 │       ├── scripts
 │       │   └── keep-alive-streamlit.ts
-│       ├── test-app.yml
-│       ├── test-backend.yml
-│       ├── test-build.yml
+│       ├── test-backend-api.yml
 │       ├── test-db-deploy.yml
-│       ├── test-e2e.yml
-│       ├── test-package-api.yml
-│       ├── test-syntax.yml
-│       └── test-tools.yml
+│       ├── test-end-to-end.yml
+│       ├── test-ui-storybook.yml
+│       └── validate-affected-projects.yml
 ├── .gitignore
 ├── .mcp.json
 ├── .npmrc
@@ -207,7 +217,8 @@
 │   │   │   ├── README.md
 │   │   │   ├── main.ts
 │   │   │   ├── preview.css
-│   │   │   └── preview.tsx
+│   │   │   ├── preview.tsx
+│   │   │   └── vitest.global.css
 │   │   ├── AGENTS.md
 │   │   ├── CLAUDE.md -> AGENTS.md
 │   │   ├── Earthfile
@@ -924,7 +935,6 @@
 │   │   │   │   │   ├── documents.table.stories.tsx
 │   │   │   │   │   ├── documents.table.tsx
 │   │   │   │   │   ├── fichier-depose.tsx
-│   │   │   │   │   ├── historique.section.tsx
 │   │   │   │   │   ├── pilotes-info.tooltip.tsx
 │   │   │   │   │   ├── pilotes.field.tsx
 │   │   │   │   │   ├── plan.section.tsx
@@ -933,33 +943,39 @@
 │   │   │   │   │   ├── section.tsx
 │   │   │   │   │   ├── shell.tsx
 │   │   │   │   │   ├── steps-nav.tsx
+│   │   │   │   │   ├── transmettre-pour-avis.modal.tsx
 │   │   │   │   │   └── use-avance-side-panel.tsx
 │   │   │   │   ├── data
 │   │   │   │   │   └── use-list-plan-links.ts
 │   │   │   │   ├── pcaet
 │   │   │   │   │   ├── assert-can-mutate.ts
 │   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── avis-deposes.list.tsx
 │   │   │   │   │   │   ├── contacts.modal.tsx
 │   │   │   │   │   │   ├── contacts.table.tsx
 │   │   │   │   │   │   ├── demarche-menu.button.tsx
-│   │   │   │   │   │   └── header
-│   │   │   │   │   │       ├── date-lancement-field.tsx
-│   │   │   │   │   │       ├── date-modification-item.tsx
-│   │   │   │   │   │       ├── depot-date-item.tsx
-│   │   │   │   │   │       ├── index.tsx
-│   │   │   │   │   │       ├── obligation-field.tsx
-│   │   │   │   │   │       ├── obligation-statut-badges.tsx
-│   │   │   │   │   │       ├── pilotes-field.tsx
-│   │   │   │   │   │       ├── separator.tsx
-│   │   │   │   │   │       └── statut-badges.tsx
+│   │   │   │   │   │   ├── header
+│   │   │   │   │   │   │   ├── date-lancement-field.tsx
+│   │   │   │   │   │   │   ├── date-modification-item.tsx
+│   │   │   │   │   │   │   ├── depot-date-item.tsx
+│   │   │   │   │   │   │   ├── index.tsx
+│   │   │   │   │   │   │   ├── obligation-field.tsx
+│   │   │   │   │   │   │   ├── obligation-statut-badges.tsx
+│   │   │   │   │   │   │   ├── pilotes-field.tsx
+│   │   │   │   │   │   │   ├── separator.tsx
+│   │   │   │   │   │   │   └── statut-badges.tsx
+│   │   │   │   │   │   ├── plans-contenu.tsx
+│   │   │   │   │   │   └── rappel-plan.section.tsx
 │   │   │   │   │   ├── constants.ts
 │   │   │   │   │   ├── create.page.tsx
 │   │   │   │   │   ├── data
+│   │   │   │   │   │   ├── use-avis-recus.ts
 │   │   │   │   │   │   ├── use-create-and-link-plan.ts
 │   │   │   │   │   │   ├── use-delete-demarche-pcaet.ts
 │   │   │   │   │   │   ├── use-demarche.ts
 │   │   │   │   │   │   ├── use-documents.ts
 │   │   │   │   │   │   ├── use-list-demarches-pcaet.ts
+│   │   │   │   │   │   ├── use-plans.ts
 │   │   │   │   │   │   └── use-transition-options.ts
 │   │   │   │   │   ├── diagnostic
 │   │   │   │   │   │   ├── data
@@ -992,11 +1008,9 @@
 │   │   │   │   │   │   │   ├── data
 │   │   │   │   │   │   │   │   ├── use-diagnostic-instruction.ts
 │   │   │   │   │   │   │   │   ├── use-dossier-instruction.ts
-│   │   │   │   │   │   │   │   ├── use-envoyer-avis.ts
 │   │   │   │   │   │   │   │   ├── use-upload-avis-file.ts
 │   │   │   │   │   │   │   │   ├── use-upsert-avis.ts
-│   │   │   │   │   │   │   │   ├── use-valider-avis.ts
-│   │   │   │   │   │   │   │   └── use-valider-partie-instruction.ts
+│   │   │   │   │   │   │   │   └── use-valider-avis.ts
 │   │   │   │   │   │   │   ├── dossier-instruction.page.tsx
 │   │   │   │   │   │   │   ├── dossier.header.tsx
 │   │   │   │   │   │   │   ├── etape-diagnostic.section.tsx
@@ -1005,8 +1019,7 @@
 │   │   │   │   │   │   │   ├── etapes-instruction.side-panel-content.tsx
 │   │   │   │   │   │   │   ├── finaliser-instruction.button.tsx
 │   │   │   │   │   │   │   ├── finaliser-instruction.modal.tsx
-│   │   │   │   │   │   │   ├── use-etapes-instruction-side-panel.tsx
-│   │   │   │   │   │   │   └── valider-partie.button.tsx
+│   │   │   │   │   │   │   └── use-etapes-instruction-side-panel.tsx
 │   │   │   │   │   │   └── instruction.constants.ts
 │   │   │   │   │   ├── list-demarches
 │   │   │   │   │   │   ├── demarche-pcaet-actions.menu.tsx
@@ -1113,6 +1126,7 @@
 │   │   │   ├── labels
 │   │   │   │   ├── catalog.spec.ts
 │   │   │   │   ├── catalog.ts
+│   │   │   │   ├── collectivites.labels.ts
 │   │   │   │   ├── indicateurs.labels.ts
 │   │   │   │   ├── plans.labels.ts
 │   │   │   │   ├── referentiels.labels.ts
@@ -1878,6 +1892,8 @@
 │   │   │   │   │   ├── mappers
 │   │   │   │   │   │   ├── audit-report-to-preuve.test.ts
 │   │   │   │   │   │   └── audit-report-to-preuve.ts
+│   │   │   │   │   ├── preuve-view.adapter.spec.ts
+│   │   │   │   │   ├── preuve-view.adapter.ts
 │   │   │   │   │   ├── upload
 │   │   │   │   │   │   ├── constants.ts
 │   │   │   │   │   │   ├── upload-file-to-bucket.ts
@@ -2284,7 +2300,8 @@
 │   │   ├── tsconfig.project.json
 │   │   ├── tsconfig.spec.json
 │   │   ├── tsconfig.storybook.json
-│   │   └── vitest.config.mts
+│   │   ├── vitest.config.mts
+│   │   └── vitest.storybook.config.mts
 │   ├── backend
 │   │   ├── .env
 │   │   ├── .swcrc
@@ -2360,6 +2377,7 @@
 │   │   │   │   │   │   ├── edit-preuve-document.router.e2e-spec.ts
 │   │   │   │   │   │   ├── edit-preuve-document.router.ts
 │   │   │   │   │   │   └── edit-preuve-document.service.ts
+│   │   │   │   │   ├── hide-confidentiel.utils.ts
 │   │   │   │   │   ├── models
 │   │   │   │   │   │   ├── annexe.table.ts
 │   │   │   │   │   │   ├── bibliotheque-fichier.table.ts
@@ -2608,14 +2626,16 @@
 │   │   │   │   │   │   ├── add-vulnerabilite-thematique.router.e2e-spec.ts
 │   │   │   │   │   │   ├── add-vulnerabilite-thematique.router.ts
 │   │   │   │   │   │   └── add-vulnerabilite-thematique.service.ts
-│   │   │   │   │   ├── adopter-demarche
-│   │   │   │   │   │   ├── adopter-demarche.errors.ts
-│   │   │   │   │   │   ├── adopter-demarche.router.ts
-│   │   │   │   │   │   └── adopter-demarche.service.ts
 │   │   │   │   │   ├── archiver-demarche
 │   │   │   │   │   │   ├── archiver-demarche.errors.ts
 │   │   │   │   │   │   ├── archiver-demarche.router.ts
 │   │   │   │   │   │   └── archiver-demarche.service.ts
+│   │   │   │   │   ├── clore-instruction
+│   │   │   │   │   │   ├── clore-instruction.errors.ts
+│   │   │   │   │   │   ├── clore-instruction.repository.ts
+│   │   │   │   │   │   ├── clore-instruction.router.e2e-spec.ts
+│   │   │   │   │   │   ├── clore-instruction.router.ts
+│   │   │   │   │   │   └── clore-instruction.service.ts
 │   │   │   │   │   ├── create-and-link-plan
 │   │   │   │   │   │   ├── create-and-link-plan.errors.ts
 │   │   │   │   │   │   ├── create-and-link-plan.input.ts
@@ -2694,6 +2714,13 @@
 │   │   │   │   │   │   ├── envoyer-avis.router.e2e-spec.ts
 │   │   │   │   │   │   ├── envoyer-avis.router.ts
 │   │   │   │   │   │   └── envoyer-avis.service.ts
+│   │   │   │   │   ├── get-avis-file-url
+│   │   │   │   │   │   ├── get-avis-file-url.errors.ts
+│   │   │   │   │   │   ├── get-avis-file-url.input.ts
+│   │   │   │   │   │   ├── get-avis-file-url.output.ts
+│   │   │   │   │   │   ├── get-avis-file-url.router.e2e-spec.ts
+│   │   │   │   │   │   ├── get-avis-file-url.router.ts
+│   │   │   │   │   │   └── get-avis-file-url.service.ts
 │   │   │   │   │   ├── get-demarche-pcaet
 │   │   │   │   │   │   ├── get-demarche-pcaet.errors.ts
 │   │   │   │   │   │   ├── get-demarche-pcaet.input.ts
@@ -2727,6 +2754,12 @@
 │   │   │   │   │   │   ├── get-dossier-instruction.router.e2e-spec.ts
 │   │   │   │   │   │   ├── get-dossier-instruction.router.ts
 │   │   │   │   │   │   └── get-dossier-instruction.service.ts
+│   │   │   │   │   ├── list-avis-recus
+│   │   │   │   │   │   ├── list-avis-recus.errors.ts
+│   │   │   │   │   │   ├── list-avis-recus.input.ts
+│   │   │   │   │   │   ├── list-avis-recus.output.ts
+│   │   │   │   │   │   ├── list-avis-recus.router.ts
+│   │   │   │   │   │   └── list-avis-recus.service.ts
 │   │   │   │   │   ├── list-demandes-avis
 │   │   │   │   │   │   ├── list-demandes-avis.errors.ts
 │   │   │   │   │   │   ├── list-demandes-avis.input.ts
@@ -2741,6 +2774,11 @@
 │   │   │   │   │   │   ├── list-demarches-pcaet.repository.ts
 │   │   │   │   │   │   ├── list-demarches-pcaet.router.ts
 │   │   │   │   │   │   └── list-demarches-pcaet.service.ts
+│   │   │   │   │   ├── list-plans
+│   │   │   │   │   │   ├── list-plans.errors.ts
+│   │   │   │   │   │   ├── list-plans.input.ts
+│   │   │   │   │   │   ├── list-plans.router.ts
+│   │   │   │   │   │   └── list-plans.service.ts
 │   │   │   │   │   ├── pcaet.module.ts
 │   │   │   │   │   ├── pcaet.router.ts
 │   │   │   │   │   ├── publier-demarche
@@ -2754,10 +2792,6 @@
 │   │   │   │   │   │   ├── remove-vulnerabilite-thematique.router.e2e-spec.ts
 │   │   │   │   │   │   ├── remove-vulnerabilite-thematique.router.ts
 │   │   │   │   │   │   └── remove-vulnerabilite-thematique.service.ts
-│   │   │   │   │   ├── reprendre-elaboration
-│   │   │   │   │   │   ├── reprendre-elaboration.errors.ts
-│   │   │   │   │   │   ├── reprendre-elaboration.router.ts
-│   │   │   │   │   │   └── reprendre-elaboration.service.ts
 │   │   │   │   │   ├── set-diagnostic-years
 │   │   │   │   │   │   ├── set-diagnostic-years.errors.ts
 │   │   │   │   │   │   ├── set-diagnostic-years.input.ts
@@ -2798,9 +2832,9 @@
 │   │   │   │   │   │   │   ├── demarche-pcaet.dto.ts
 │   │   │   │   │   │   │   ├── pcaet-avis.dto.ts
 │   │   │   │   │   │   │   ├── pcaet-avis.table.ts
-│   │   │   │   │   │   │   ├── pcaet-demande-avis.table.ts
-│   │   │   │   │   │   │   └── pcaet-instruction-validation.table.ts
-│   │   │   │   │   │   └── pcaet-avis.repository.ts
+│   │   │   │   │   │   │   └── pcaet-demande-avis.table.ts
+│   │   │   │   │   │   ├── pcaet-avis.repository.ts
+│   │   │   │   │   │   └── pcaet-instructeurs.repository.ts
 │   │   │   │   │   ├── transmettre-pour-avis
 │   │   │   │   │   │   ├── transmettre-pour-avis.errors.ts
 │   │   │   │   │   │   ├── transmettre-pour-avis.router.e2e-spec.ts
@@ -2825,22 +2859,16 @@
 │   │   │   │   │   │   ├── upsert-avis.router.e2e-spec.ts
 │   │   │   │   │   │   ├── upsert-avis.router.ts
 │   │   │   │   │   │   └── upsert-avis.service.ts
-│   │   │   │   │   ├── valider-avis
-│   │   │   │   │   │   ├── valider-avis.errors.ts
-│   │   │   │   │   │   ├── valider-avis.input.ts
-│   │   │   │   │   │   ├── valider-avis.router.e2e-spec.ts
-│   │   │   │   │   │   ├── valider-avis.router.ts
-│   │   │   │   │   │   └── valider-avis.service.ts
-│   │   │   │   │   └── valider-partie-instruction
-│   │   │   │   │       ├── valider-partie-instruction.errors.ts
-│   │   │   │   │       ├── valider-partie-instruction.input.ts
-│   │   │   │   │       ├── valider-partie-instruction.output.ts
-│   │   │   │   │       ├── valider-partie-instruction.router.e2e-spec.ts
-│   │   │   │   │       ├── valider-partie-instruction.router.ts
-│   │   │   │   │       └── valider-partie-instruction.service.ts
+│   │   │   │   │   └── valider-avis
+│   │   │   │   │       ├── valider-avis.errors.ts
+│   │   │   │   │       ├── valider-avis.input.ts
+│   │   │   │   │       ├── valider-avis.router.e2e-spec.ts
+│   │   │   │   │       ├── valider-avis.router.ts
+│   │   │   │   │       └── valider-avis.service.ts
 │   │   │   │   └── shared
 │   │   │   │       ├── demarche-documents.repository.ts
 │   │   │   │       ├── demarche-plan-actions.repository.ts
+│   │   │   │       ├── demarche-plans-contenu.repository.ts
 │   │   │   │       └── models
 │   │   │   │           ├── demarche-definition.table.ts
 │   │   │   │           ├── demarche-document-additional.table.ts
@@ -2849,6 +2877,7 @@
 │   │   │   │           ├── demarche-document.table.ts
 │   │   │   │           ├── demarche-pilote.table.ts
 │   │   │   │           ├── demarche-plan-action.table.ts
+│   │   │   │           ├── demarche-plan-contenu.dto.ts
 │   │   │   │           ├── demarche-status-history.table.ts
 │   │   │   │           └── demarche.table.ts
 │   │   │   ├── indicateurs
@@ -3569,6 +3598,7 @@
 │   │   │   │   │   ├── get-action.repository.ts
 │   │   │   │   │   └── get-action.service.ts
 │   │   │   │   ├── get-referentiel
+│   │   │   │   │   ├── get-referentiel.repository.ts
 │   │   │   │   │   ├── get-referentiel.service.spec.ts
 │   │   │   │   │   └── get-referentiel.service.ts
 │   │   │   │   ├── handle-mesure-pilotes
@@ -3829,7 +3859,9 @@
 │   │   │   │   │   ├── merge-commentaires
 │   │   │   │   │   │   ├── merge-commentaires.rules.e2e-spec.ts
 │   │   │   │   │   │   ├── merge-commentaires.rules.spec.ts
-│   │   │   │   │   │   └── merge-commentaires.rules.ts
+│   │   │   │   │   │   ├── merge-commentaires.rules.ts
+│   │   │   │   │   │   ├── normalize-explication-to-html.spec.ts
+│   │   │   │   │   │   └── normalize-explication-to-html.ts
 │   │   │   │   │   ├── merge-fiche-action-links
 │   │   │   │   │   │   ├── merge-fiche-action-links.rules.e2e-spec.ts
 │   │   │   │   │   │   ├── merge-fiche-action-links.rules.spec.ts
@@ -4872,6 +4904,8 @@
 │       │   │   ├── cron.config.ts
 │       │   │   ├── cron.module.ts
 │       │   │   └── cron.service.ts
+│       │   ├── demarches
+│       │   │   └── cron-clore-instructions.service.ts
 │       │   ├── indicateurs
 │       │   │   ├── tools-indicateurs.module.ts
 │       │   │   └── trajectoires
@@ -4991,6 +5025,8 @@
 │   │   │   ├── 25-insert_fake_demarche_pcaet.sql
 │   │   │   ├── 25-insert_fake_dreal.sql
 │   │   │   ├── 26-insert_fake_pcaet_avis.sql
+│   │   │   ├── 27-insert_fake_dreal_ara.sql
+│   │   │   ├── 28-insert_fake_instructeurs_region_ddt.sql
 │   │   │   └── README.md
 │   │   ├── geojson
 │   │   │   ├── commune_geojson.sql
@@ -5110,10 +5146,7 @@
 │   │   │   │   ├── toutes_les_collectivites@v2.67.0.sql
 │   │   │   │   ├── toutes_les_collectivites@v2.89.0.sql
 │   │   │   │   ├── type.sql
-│   │   │   │   ├── type_add_dreal.sql
-│   │   │   │   ├── type_add_prefectures.sql
-│   │   │   │   ├── type_add_service_public.sql
-│   │   │   │   └── type_add_structure_sans_statut_juridique.sql
+│   │   │   │   └── type_*.sql  (5 files)
 │   │   │   ├── creation_dune_table_instance_de_gouvernance.sql
 │   │   │   ├── cron
 │   │   │   │   ├── cron.sql
@@ -5147,7 +5180,9 @@
 │   │   │   │   ├── demarche_documents_etape.sql
 │   │   │   │   ├── demarche_documents_inclusion_declaree.sql
 │   │   │   │   ├── demarche_documents_inclusion_par_defaut.sql
+│   │   │   │   ├── demarche_documents_portee_both.sql
 │   │   │   │   ├── demarche_documents_substitution_unique.sql
+│   │   │   │   ├── pcaet_bilan_precedent_renomme.sql
 │   │   │   │   ├── pcaet_diagnostic.sql
 │   │   │   │   ├── pcaet_diagnostic_ordre_reglementaire.sql
 │   │   │   │   ├── pcaet_documents_amont.sql
@@ -5158,10 +5193,14 @@
 │   │   │   │   ├── pcaet_vulnerabilite_thematique_socle_recadre.sql
 │   │   │   │   ├── plan_action_exclusif.sql
 │   │   │   │   ├── plan_actions_multiples.sql
+│   │   │   │   ├── statut_instruit.sql
 │   │   │   │   └── statut_publication_fusionne.sql
 │   │   │   ├── demarches
 │   │   │   │   ├── pcaet_avis.sql
-│   │   │   │   └── pcaet_instruction_validation.sql
+│   │   │   │   ├── pcaet_avis_president_region.sql
+│   │   │   │   ├── pcaet_instructeurs_region_ddt.sql
+│   │   │   │   ├── pcaet_instruction_validation.sql
+│   │   │   │   └── pcaet_instruction_validation_supprimee.sql
 │   │   │   ├── evaluation
 │   │   │   │   ├── action_score.sql
 │   │   │   │   ├── add_personnalisation_question_competence.sql
@@ -5679,10 +5718,7 @@
 │   │   │   │   ├── toutes_les_collectivites@v2.67.0.sql
 │   │   │   │   ├── toutes_les_collectivites@v2.89.0.sql
 │   │   │   │   ├── type.sql
-│   │   │   │   ├── type_add_dreal.sql
-│   │   │   │   ├── type_add_prefectures.sql
-│   │   │   │   ├── type_add_service_public.sql
-│   │   │   │   └── type_add_structure_sans_statut_juridique.sql
+│   │   │   │   └── type_*.sql  (5 files)
 │   │   │   ├── creation_dune_table_instance_de_gouvernance.sql
 │   │   │   ├── cron
 │   │   │   │   ├── cron.sql
@@ -5716,7 +5752,9 @@
 │   │   │   │   ├── demarche_documents_etape.sql
 │   │   │   │   ├── demarche_documents_inclusion_declaree.sql
 │   │   │   │   ├── demarche_documents_inclusion_par_defaut.sql
+│   │   │   │   ├── demarche_documents_portee_both.sql
 │   │   │   │   ├── demarche_documents_substitution_unique.sql
+│   │   │   │   ├── pcaet_bilan_precedent_renomme.sql
 │   │   │   │   ├── pcaet_diagnostic.sql
 │   │   │   │   ├── pcaet_diagnostic_ordre_reglementaire.sql
 │   │   │   │   ├── pcaet_documents_amont.sql
@@ -5727,10 +5765,14 @@
 │   │   │   │   ├── pcaet_vulnerabilite_thematique_socle_recadre.sql
 │   │   │   │   ├── plan_action_exclusif.sql
 │   │   │   │   ├── plan_actions_multiples.sql
+│   │   │   │   ├── statut_instruit.sql
 │   │   │   │   └── statut_publication_fusionne.sql
 │   │   │   ├── demarches
 │   │   │   │   ├── pcaet_avis.sql
-│   │   │   │   └── pcaet_instruction_validation.sql
+│   │   │   │   ├── pcaet_avis_president_region.sql
+│   │   │   │   ├── pcaet_instructeurs_region_ddt.sql
+│   │   │   │   ├── pcaet_instruction_validation.sql
+│   │   │   │   └── pcaet_instruction_validation_supprimee.sql
 │   │   │   ├── evaluation
 │   │   │   │   ├── action_score.sql
 │   │   │   │   ├── add_personnalisation_question_competence.sql
@@ -6248,6 +6290,7 @@
 │   │       │   ├── toutes_les_collectivites@v2.67.0.sql
 │   │       │   ├── toutes_les_collectivites@v2.89.0.sql
 │   │       │   ├── type.sql
+│   │       │   ├── type_add_ddt.sql
 │   │       │   ├── type_add_dreal.sql
 │   │       │   ├── type_add_service_public.sql
 │   │       │   └── type_add_structure_sans_statut_juridique.sql
@@ -6284,7 +6327,9 @@
 │   │       │   ├── demarche_documents_etape.sql
 │   │       │   ├── demarche_documents_inclusion_declaree.sql
 │   │       │   ├── demarche_documents_inclusion_par_defaut.sql
+│   │       │   ├── demarche_documents_portee_both.sql
 │   │       │   ├── demarche_documents_substitution_unique.sql
+│   │       │   ├── pcaet_bilan_precedent_renomme.sql
 │   │       │   ├── pcaet_diagnostic.sql
 │   │       │   ├── pcaet_diagnostic_ordre_reglementaire.sql
 │   │       │   ├── pcaet_documents_amont.sql
@@ -6295,10 +6340,14 @@
 │   │       │   ├── pcaet_vulnerabilite_thematique_socle_recadre.sql
 │   │       │   ├── plan_action_exclusif.sql
 │   │       │   ├── plan_actions_multiples.sql
+│   │       │   ├── statut_instruit.sql
 │   │       │   └── statut_publication_fusionne.sql
 │   │       ├── demarches
 │   │       │   ├── pcaet_avis.sql
-│   │       │   └── pcaet_instruction_validation.sql
+│   │       │   ├── pcaet_avis_president_region.sql
+│   │       │   ├── pcaet_instructeurs_region_ddt.sql
+│   │       │   ├── pcaet_instruction_validation.sql
+│   │       │   └── pcaet_instruction_validation_supprimee.sql
 │   │       ├── evaluation
 │   │       │   ├── action_score.sql
 │   │       │   ├── add_personnalisation_question_competence.sql
@@ -6752,8 +6801,7 @@
 │       │   ├── pcaet_diagnostic.sql
 │       │   └── pcaet_vulnerabilite.sql
 │       ├── demarches
-│       │   ├── pcaet_avis.sql
-│       │   └── pcaet_instruction_validation.sql
+│       │   └── pcaet_avis.sql
 │       ├── evaluation
 │       │   ├── contenu_json.sql
 │       │   ├── score_service.sql
@@ -6817,7 +6865,8 @@
 │   │   ├── 0013-tests-e2e.md
 │   │   ├── 0014-notifications-email.md
 │   │   ├── 0015-generation-pptx.md
-│   │   └── 0016-strategie-backup-database.md
+│   │   ├── 0016-strategie-backup-database.md
+│   │   └── 0017-optimisation-ci-par-scope-affecte-et-parallelisation-ciblee.md
 │   ├── plans
 │   │   ├── 2026-04-08-001-refactor-e2e-tests-parallel-isolation-plan.md
 │   │   ├── 2026-04-28-001-feat-restore-staging-preprod-with-scrubbing-plan.md
@@ -7846,6 +7895,7 @@
 │       │   │   ├── Tooltip
 │       │   │   │   ├── InfoTooltip.stories.tsx
 │       │   │   │   ├── InfoTooltip.tsx
+│       │   │   │   ├── Tooltip.behavior.test.tsx
 │       │   │   │   ├── Tooltip.stories.tsx
 │       │   │   │   ├── Tooltip.tsx
 │       │   │   │   └── index.ts
@@ -8217,4 +8267,4 @@
 ├── tsconfig.json
 ├── vitest.config.ts
 └── vitest.workspace.ts
-1379 directories, 7101 files
+1388 directories, 7150 files

@@ -1,39 +1,37 @@
-## Changelog : territoires-en-transitions (30 derniers jours, au 26 août 2026)
+## Changelog : territoires-en-transitions (30 derniers jours, au 28 août 2026)
 
 ### Résumé
-Ce mois a été marqué par des évolutions majeures, notamment l'implémentation complète du nouveau parcours PCAET (diagnostic, gestion des documents et processus d'avis) et la modernisation du système d'authentification via les standards OIDC (ProConnect, MonCompteAdeme). L'interface utilisateur a également bénéficié d'une refonte importante pour améliorer la navigation et l'accessibilité, tandis que l'environnement de développement a été profondément optimisé pour faciliter le travail des contributeurs.
+Ce mois a été marqué par des évolutions majeures, notamment la mise en place du nouveau cycle de vie des démarches PCAET (du diagnostic à l'instruction) et la modernisation du système d'authentification via l'intégration de l'identité numérique (OIDC). L'interface utilisateur a également bénéficié d'une refonte de la navigation et de l'ajout de nouveaux outils de pilotage pour faciliter le suivi des actions de transition.
 
 ### Évolutions fonctionnelles
-- **Parcours PCAET** : 
-    - Mise en place d'un workflow complet incluant le diagnostic par thématiques, la gestion des vulnérabilités et le dépôt de documents.
-    - Introduction d'un processus d'instruction permettant aux services déconcentrés (DREAL) de consulter les dossiers, de demander des compléments et de déposer des avis.
-    - Ajout d'une navigation pas à pas pour accompagner l'élaboration des démarches.
-- **Authentification et accès** : 
-    - Intégration de la connexion et de l'inscription via les fournisseurs d'identité officiels (OIDC/SSO).
-    - Automatisation de la liaison d'identité et de la pré-sélection des collectivités via le SIRET.
-- **Labellisation et Référentiels** : 
-    - Déploiement de la bascule vers les nouveaux référentiels ([#PR18](https://github.com/incubateur-ademe/territoires-en-transitions/pull/18)).
-    - Amélioration du suivi de la complétude des audits et gestion plus fine des motifs d'indisponibilité.
-- **Interface et Expérience Utilisateur** : 
-    - Refonte de la navigation principale (menus déroulants, accès rapide aux collectivités).
-    - Amélioration de la lisibilité des tableaux (colonnes fixes, gestion des indicateurs, design plus clair).
-    - Ajout d'une bannière d'information mémorisée pour les annonces importantes.
-    - Mise à jour de la terminologie (ex: passage de "vulnérabilités" à "thématiques") pour plus de clarté métier.
+- **Démarches PCAET** : 
+    - Implémentation complète du nouveau workflow : création de la démarche, réalisation du diagnostic thématique, gestion des documents et processus d'instruction.
+    - Nouveau parcours d'avis permettant aux instructeurs (DREAL, Région) de déposer et valider des avis sur les dossiers.
+    - Amélioration du tableau de bord pour le suivi des demandes d'avis et de l'avancement des dossiers.
+- **Authentification & Accès** : 
+    - Intégration de la connexion et de l'inscription via les fournisseurs d'identité (OIDC), incluant ProConnect et MonCompteAdeme.
+    - Gestion automatisée de la liaison d'identité et de la création de comptes via l'identité numérique.
+- **Labellisation & Audits** : 
+    - Amélioration du parcours de demande d'audit et de labellisation avec des contrôles de complétude plus précis.
+    - Optimisation de la visibilité des statuts d'audit et des accès aux mesures.
+- **Interface Utilisateur (UI)** : 
+    - Refonte de la navigation principale pour une meilleure ergonomie.
+    - Ajout de nouveaux composants visuels : boutons "split", variantes de boutons "danger", et en-têtes de tableaux fixes (sticky) pour faciliter la lecture des données.
+    - Mise en place d'une bannière d'information persistante pour les messages importants.
 
 ### Évolutions techniques
-- **Architecture Backend** : 
-    - Migration de la gestion des démarches vers une API tRPC pour plus de robustesse.
-    - Refonte du modèle de données pour supporter l'héritage des types de démarches et l'historique des statuts.
-    - Mise en place d'un système de gestion des documents avec URLs signées pour la sécurité des pièces jointes.
+- **Architecture & Backend** : 
+    - Refonte profonde du modèle de données pour supporter les démarches PCAET et les nouveaux types de collectivités.
+    - Migration de plusieurs services vers tRPC pour une meilleure gestion des échanges API.
+    - Mise en place d'un système de gestion des documents via des URLs signées pour plus de sécurité.
 - **Environnement de développement (DevX)** : 
-    - Optimisation majeure de la stack locale avec le support des `worktrees` Git et une gestion intelligente des ports.
-    - Création d'un tableau de bord interactif en ligne de commande (`make tui`) pour piloter l'infrastructure.
-    - Amélioration des processus de build et de conteneurisation (un conteneur par application, partage du daemon Nx).
-- **Qualité et Tests** : 
-    - Renforcement de la couverture de tests E2E, notamment sur les nouveaux parcours d'authentification et de diagnostic.
-    - Intégration de nouveaux outils de linting et de vérification de types dans le workflow de développement.
+    - Optimisation majeure de la stack de développement locale avec un support amélioré de Docker et des *worktrees* Git.
+    - Création d'un tableau de bord interactif en ligne de commande (TUI) pour piloter l'infrastructure locale.
+    - Amélioration des scripts de déploiement et de gestion des bases de données locales.
+- **CI/CD & Qualité** : 
+    - Optimisation des pipelines de tests (streaming des sorties, exécution plus rapide des tests E2E).
+    - Renforcement de la couverture de tests sur les flux critiques (authentification, labellisation, PCAET).
 
 ### Autres changements
-- **Documentation** : Mise à jour de la documentation technique concernant le plan d'authentification et le fichier README.
-- **Design System** : Ajout de nouveaux composants (boutons split, variantes de badges, checkboxes) conformes au DSFR.
-- **Nettoyage** : Suppression de nombreux composants obsolètes, de labels inutilisés et de code mort suite aux refontes de navigation.
+- Mise à jour de la documentation technique (authentification, README).
+- Nettoyage général du code, suppression de composants obsolètes et harmonisation des libellés de l'interface.
