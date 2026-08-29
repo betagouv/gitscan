@@ -1,13 +1,7 @@
-## Changelog : dockerfiles (30 derniers jours, au 22 juillet 2026)
+## Changelog : dockerfiles (30 derniers jours, au 19 août 2026)
 
 ### Résumé
-Ce mois-ci, les mises à jour se concentrent sur l'amélioration de la sécurité des images Docker, notamment pour les jobs GitLab, en intégrant l'outil `debsecan` pour la détection de vulnérabilités dans les paquets Debian.
-
-### Évolutions fonctionnelles
-- Ajout de l'outil `debsecan` aux jobs GitLab pour la détection de vulnérabilités des paquets Debian. [#38](https://github.com/cloud-gouv/dockerfiles/issues/38)
+Les récentes mises à jour visent à maintenir la compatibilité des outils de gestion de configuration avec les nouveaux processus de construction d'images, garantissant ainsi la stabilité et la continuité des outils DevOps fournis.
 
 ### Évolutions techniques
-- Intégration de `debsecan` dans le processus de construction des images Docker pour les jobs GitLab.
-
-### Autres changements
-- Aucun changement significatif à signaler.
+- Mise à jour d'Ansible pour assurer la compatibilité avec la nouvelle version de l'outil de construction d'images ([#39](https://github.com/cloud-gouv/dockerfiles/pull/39)).
