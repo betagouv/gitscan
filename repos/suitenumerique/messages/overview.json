@@ -1,28 +1,29 @@
 {
   "url": "https://github.com/suitenumerique/messages",
   "name": "messages",
-  "description": "Une plateforme de messagerie collaborative permettant aux équipes de gérer des boîtes de réception partagées ou personnelles au sein de La Suite territoriale.",
+  "description": "Une plateforme de messagerie collaborative conçue pour La Suite territoriale. Elle permet la gestion d'inboxes partagées, le traitement d'emails avec l'aide de l'IA et l'intégration de standards comme JMAP et OIDC.",
   "language": "Python",
   "features": [
-    "Gestion documentaire & Fichiers",
-    "Authentification & Accès",
-    "Recherche & Filtres",
-    "Notifications & Alertes",
+    "Collaboration & Workflow",
     "Intelligence Artificielle & NLP",
-    "Collaboration & Workflow"
+    "Recherche & Filtres",
+    "Gestion des médias & Assets",
+    "Notifications & Alertes",
+    "Sécurité & Conformité",
+    "Gestion des utilisateurs & Permissions"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django Rest Framework",
+    "Postfix",
     "Vite",
     "TanStack Router",
     "BlockNote.js",
-    "Postfix",
     "Keycloak",
     "PostgreSQL",
     "Redis",
-    "OpenSearch",
-    "Celery"
+    "Celery",
+    "OpenSearch"
   ],
   "components": [
     "API REST & GraphQL",
@@ -30,32 +31,36 @@
     "TypeScript / JavaScript",
     "Python (scripts & backend)",
     "Docker & Conteneurs",
-    "Django",
-    "Celery & Queue asynchrone",
+    "Webhooks & Événements",
     "Authentification (composant)"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "sso"
+      "sso",
+      "jwt"
     ],
     "providers": [
       "Keycloak"
     ]
   },
-  "lastActivity": "2026-08-25T00:07:46+02:00",
+  "tests": "Makefile et Docker",
+  "workflows": [
+    "Docker Compose",
+    "Makefile"
+  ],
+  "lastActivity": "2026-08-29T01:23:24+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
     "Communication & Messagerie",
+    "Écosystème beta.gouv / État",
     "Python",
     "TypeScript",
-    "Django & FastAPI",
     "Docker & Conteneurs",
-    "Bases de données SQL",
-    "Intelligence Artificielle & LLM",
-    "SSO & Identité fédérée",
-    "Écosystème beta.gouv / État"
+    "Django & FastAPI",
+    "React & Next.js",
+    "Bases de données SQL"
   ]
 }
