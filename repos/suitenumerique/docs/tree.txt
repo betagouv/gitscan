@@ -560,6 +560,7 @@
     │   │       │   │   ├── icon-docs-dsfr-v2.png
     │   │       │   │   ├── icon-docs-dsfr-v2.svg
     │   │       │   │   ├── icon-docs-dsfr-v3.png
+    │   │       │   │   ├── icon-docs-dsfr-v4.png
     │   │       │   │   ├── icon-docs-dsfr.svg
     │   │       │   │   ├── icon-docs.svg
     │   │       │   │   ├── img-not-found.svg
@@ -598,7 +599,6 @@
     │   │       │   │   └── utils.ts
     │   │       │   ├── assets
     │   │       │   │   └── icons
-    │   │       │   │       ├── doc-all.svg
     │   │       │   │       ├── error-coffee.png
     │   │       │   │       ├── error-planetes.png
     │   │       │   │       ├── icon-401.png
@@ -707,6 +707,7 @@
     │   │       │   │           ├── cloud-arrow.svg
     │   │       │   │           ├── cloud_off.svg
     │   │       │   │           ├── co_present.svg
+    │   │       │   │           ├── color.svg
     │   │       │   │           ├── compress.svg
     │   │       │   │           ├── computer_arrow_up.svg
     │   │       │   │           ├── content_copy.svg
@@ -773,6 +774,7 @@
     │   │       │   │           ├── gear-rounded-filled.svg
     │   │       │   │           ├── gear-rounded-notif.svg
     │   │       │   │           ├── gear-rounded.svg
+    │   │       │   │           ├── globe-lock.svg
     │   │       │   │           ├── globe.svg
     │   │       │   │           ├── grade-filled.svg
     │   │       │   │           ├── grade.svg
@@ -877,6 +879,7 @@
     │   │       │   │           ├── plus-dashed-edit.svg
     │   │       │   │           ├── plus-dashed.svg
     │   │       │   │           ├── plus.svg
+    │   │       │   │           ├── present.svg
     │   │       │   │           ├── present_to_all.svg
     │   │       │   │           ├── print.svg
     │   │       │   │           ├── priority_high.svg
@@ -918,6 +921,8 @@
     │   │       │   │           ├── subdirectory_arrow_right.svg
     │   │       │   │           ├── summarize.svg
     │   │       │   │           ├── swap_vert.svg
+    │   │       │   │           ├── table-header-column.svg
+    │   │       │   │           ├── table-header-row.svg
     │   │       │   │           ├── terminal-filled.svg
     │   │       │   │           ├── thumb-down-filled.svg
     │   │       │   │           ├── thumb-down.svg
@@ -936,6 +941,7 @@
     │   │       │   │           ├── upload-arrow.svg
     │   │       │   │           ├── upload.svg
     │   │       │   │           ├── upload_file.svg
+    │   │       │   │           ├── user.svg
     │   │       │   │           ├── v.svg
     │   │       │   │           ├── video_file.svg
     │   │       │   │           ├── videocam-filled.svg
@@ -1120,7 +1126,6 @@
     │   │       │   │   │   │   │   │   ├── index.ts
     │   │       │   │   │   │   │   │   └── useAI.tsx
     │   │       │   │   │   │   │   ├── BlockNoteEditor.tsx
-    │   │       │   │   │   │   │   ├── BlockNoteSideMenu.tsx
     │   │       │   │   │   │   │   ├── BlockNoteSuggestionMenu.tsx
     │   │       │   │   │   │   │   ├── BlockNoteToolBar
     │   │       │   │   │   │   │   │   ├── BlockNoteToolbar.tsx
@@ -1128,6 +1133,10 @@
     │   │       │   │   │   │   │   │   ├── MarkdownButton.tsx
     │   │       │   │   │   │   │   │   └── ModalConfirmDownloadUnsafe.tsx
     │   │       │   │   │   │   │   ├── DocEditor.tsx
+    │   │       │   │   │   │   │   ├── DocsSideMenu
+    │   │       │   │   │   │   │   │   ├── DocsSideMenu.tsx
+    │   │       │   │   │   │   │   │   ├── LinkToBlockItem.tsx
+    │   │       │   │   │   │   │   │   └── TableHeaderSeparator.tsx
     │   │       │   │   │   │   │   ├── custom-blocks
     │   │       │   │   │   │   │   │   ├── CalloutBlock.tsx
     │   │       │   │   │   │   │   │   ├── PdfBlock.tsx
@@ -1151,6 +1160,7 @@
     │   │       │   │   │   │   │   ├── useCollaboration.tsx
     │   │       │   │   │   │   │   ├── useHeadings.tsx
     │   │       │   │   │   │   │   ├── useSaveDoc.tsx
+    │   │       │   │   │   │   │   ├── useScrollToBlockAnchor.tsx
     │   │       │   │   │   │   │   ├── useShortcuts.tsx
     │   │       │   │   │   │   │   └── useUploadFile.tsx
     │   │       │   │   │   │   ├── index.tsx
@@ -1193,6 +1203,9 @@
     │   │       │   │   │   │   ├── components
     │   │       │   │   │   │   │   ├── ModalExport.tsx
     │   │       │   │   │   │   │   └── index.ts
+    │   │       │   │   │   │   ├── hooks
+    │   │       │   │   │   │   │   ├── index.ts
+    │   │       │   │   │   │   │   └── useExportAGPL.tsx
     │   │       │   │   │   │   ├── index.ts
     │   │       │   │   │   │   ├── inline-content-mapping
     │   │       │   │   │   │   │   ├── index.ts
@@ -1206,6 +1219,15 @@
     │   │       │   │   │   │   ├── utils.ts
     │   │       │   │   │   │   ├── utils_html.ts
     │   │       │   │   │   │   └── utils_print.ts
+    │   │       │   │   │   ├── doc-find-replace
+    │   │       │   │   │   │   ├── components
+    │   │       │   │   │   │   │   └── FindReplace.tsx
+    │   │       │   │   │   │   ├── hooks
+    │   │       │   │   │   │   │   ├── useFindReplace.ts
+    │   │       │   │   │   │   │   └── useFindReplaceShortcut.tsx
+    │   │       │   │   │   │   ├── stores
+    │   │       │   │   │   │   │   └── useFindReplaceStore.tsx
+    │   │       │   │   │   │   └── styles.tsx
     │   │       │   │   │   ├── doc-header
     │   │       │   │   │   │   ├── __tests__
     │   │       │   │   │   │   │   └── DocHeaderEmoji.spec.tsx
@@ -1221,8 +1243,6 @@
     │   │       │   │   │   │   └── index.tsx
     │   │       │   │   │   ├── doc-management
     │   │       │   │   │   │   ├── __tests__
-    │   │       │   │   │   │   │   ├── DocToolBoxLicence.spec.tsx
-    │   │       │   │   │   │   │   ├── DocToolBoxLicenceMIT.spec.tsx
     │   │       │   │   │   │   │   └── utils.test.tsx
     │   │       │   │   │   │   ├── api
     │   │       │   │   │   │   │   ├── index.ts
@@ -1247,12 +1267,13 @@
     │   │       │   │   │   │   │   ├── child-document.svg
     │   │       │   │   │   │   │   ├── icon-doc.svg
     │   │       │   │   │   │   │   ├── icon-edit.svg
-    │   │       │   │   │   │   │   ├── pinned-document.svg
     │   │       │   │   │   │   │   └── simple-document.svg
     │   │       │   │   │   │   ├── components
     │   │       │   │   │   │   │   ├── DocIcon.tsx
+    │   │       │   │   │   │   │   ├── DocMoveModal.tsx
     │   │       │   │   │   │   │   ├── DocPage403.tsx
     │   │       │   │   │   │   │   ├── DocToolBox.tsx
+    │   │       │   │   │   │   │   ├── ModalConfimationMoveDoc.tsx
     │   │       │   │   │   │   │   ├── ModalRemoveDoc.tsx
     │   │       │   │   │   │   │   ├── NewDocButton.tsx
     │   │       │   │   │   │   │   ├── SimpleDocItem.tsx
@@ -1372,7 +1393,6 @@
     │   │       │   │   │   │   │   ├── useDocChildren.tsx
     │   │       │   │   │   │   │   └── useDocTree.tsx
     │   │       │   │   │   │   ├── assets
-    │   │       │   │   │   │   │   ├── doc-extract-bold.svg
     │   │       │   │   │   │   │   └── sub-page-logo.svg
     │   │       │   │   │   │   ├── components
     │   │       │   │   │   │   │   ├── DocSubPageItem.tsx
@@ -1404,13 +1424,11 @@
     │   │       │   │   │       │   └── useDocsTrashbin.tsx
     │   │       │   │   │       ├── components
     │   │       │   │   │       │   ├── DocGridContentList.tsx
-    │   │       │   │   │       │   ├── DocMoveModal.tsx
     │   │       │   │   │       │   ├── DocsGrid.tsx
     │   │       │   │   │       │   ├── DocsGridActions.tsx
     │   │       │   │   │       │   ├── DocsGridColumnName.tsx
     │   │       │   │   │       │   ├── DocsGridItem.tsx
     │   │       │   │   │       │   ├── DocsGridItemSharedButton.tsx
-    │   │       │   │   │       │   ├── ModalConfimationMoveDoc.tsx
     │   │       │   │   │       │   ├── __tests__
     │   │       │   │   │       │   │   └── DocsGridItemDate.test.tsx
     │   │       │   │   │       │   └── index.ts
@@ -1490,7 +1508,6 @@
     │   │       │   │   │   │   ├── LeftPanel.tsx
     │   │       │   │   │   │   ├── LeftPanelCollapseButton.tsx
     │   │       │   │   │   │   ├── LeftPanelContent.tsx
-    │   │       │   │   │   │   ├── LeftPanelFavorites.tsx
     │   │       │   │   │   │   ├── LeftPanelFooter.tsx
     │   │       │   │   │   │   ├── LeftPanelHeader.tsx
     │   │       │   │   │   │   ├── ResizableLeftPanel.tsx
@@ -1752,4 +1769,4 @@
         │   └── template.mjml
         ├── package.json
         └── yarn.lock
-307 directories, 1523 files
+313 directories, 1534 files
