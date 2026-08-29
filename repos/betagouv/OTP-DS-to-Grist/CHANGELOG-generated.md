@@ -1,14 +1,27 @@
-## Changelog : OTP-DS-to-Grist (30 derniers jours, au 06 août 2026)
+## Changelog : OTP-DS-to-Grist (30 derniers jours, au 24 août 2026)
 
 ### Résumé
-Ce mois-ci, le projet a franchi une étape importante avec l'introduction de la gestion multi-démarches, permettant de synchroniser plusieurs flux de données simultanément. L'interface utilisateur a été enrichie pour offrir un meilleur suivi (notifications, bannières de statut) et la fiabilité de la synchronisation a été renforcée par une meilleure détection des changements et des optimisations de traitement.
+Ce mois-ci, le projet a franchi une étape importante avec l'introduction de filtres multiples et d'une interface plus réactive, facilitant la gestion des données. Les capacités de suivi ont été enrichies et le moteur de synchronisation a été optimisé pour gagner en efficacité et en stabilité.
 
 ### Évolutions fonctionnelles
-- **Gestion multi-démarches** : Support de plusieurs processus de synchronisation, ajout de notifications, d'une bannière de statut et d'une nouvelle section DN ([#394](https://github.com/betagouv/OTP-DS-to-Grist/issues/394), [#403](https://github.com/betagouv/OTP-DS-to-Grist/issues/403), [#408](https://github.com/betagouv/OTP-DS-to-Grist/issues/408), [#434](https://github.com/betagouv/OTP-DS-to-Grist/issues/434)).
-- **Suivi et données** : Ajout de la colonne de correction instructeur ([#426](https://github.com/betagouv/OTP-DS-to-Grist/issues/426)), suivi de la date de dernière correction ([#411](https://github.com/betagouv/OTP-DS-to-Grist/issues/411)) et expérimentation sur la récupération des emails utilisateurs ([#435](https://github.com/betagouv/OTP-DS-to-Grist/issues/435)).
-- **Expérience utilisateur** : Amélioration de l'ergonomie (comportement des accordéons, réactivité de la configuration) et masquage automatique des colonnes d'identifiants techniques dans Grist ([#386](https://github.com/betagouv/OTP-DS-to-Grist/issues/386), [#439](https://github.com/betagouv/OTP-DS-to-Grist/issues/439), [#452](https://github.com/betagouv/OTP-DS-to-Grist/issues/452)).
-- **Corrections** : Résolution de bugs sur la connexion DN ([#391](https://github.com/betagouv/OTP-DS-to-Grist/issues/391)), le blocage des formulaires lors du rechargement ([#388](https://github.com/betagouv/OTP-DS-to-Grist/issues/388)) et les liens d'aide ([#410](https://github.com/betagouv/OTP-DS-to-Grist/issues/410), [#423](https://github.com/betagouv/OTP-DS-to-Grist/issues/423)).
+- **Nouvelles fonctionnalités :**
+  - Introduction de filtres multiples pour affiner la sélection des données ([#459](https://github.com/betagouv/OTP-DS-to-Grist/issues/459)).
+  - Ajout de la colonne `correction_instructeur` dans la table des dossiers ([#426](https://github.com/betagouv/OTP-DS-to-Grist/issues/426)).
+  - Mise en place de vérifications de configuration réactives ([#439](https://github.com/betagouv/OTP-DS-to-Grist/issues/439)).
+  - Exploration de la récupération des adresses e-mail des utilisateurs ([#435](https://github.com/betagouv/OTP-DS-to-Grist/issues/435)).
+- **Améliorations et corrections :**
+  - Optimisation du comportement des accordéons dans l'interface utilisateur ([#452](https://github.com/betagouv/OTP-DS-to-Grist/issues/452)).
+  - Correction de l'affichage des blocs répétables (suppression des colonnes vides) ([#468](https://github.com/betagouv/OTP-DS-to-Grist/issues/468)).
+  - Stabilisation des suffixes pour la gestion des doublons de champs ([#460](https://github.com/betagouv/OTP-DS-to-Grist/issues/460)).
+  - Amélioration de la logique d'exécution des tâches pour les dossiers non modifiés ([#430](https://github.com/betagouv/OTP-DS-to-Grist/issues/430)).
 
 ### Évolutions techniques
-- **Performance et logique de synchronisation** : Optimisation du processus de traitement des démarches ([#432](https://github.com/betagouv/OTP-DS-to-Grist/issues/432)), exécution de tâches sans modification de dossier ([#430](https://github.com/betagouv/OTP-DS-to-Grist/issues/430)) et détection automatique des dossiers supprimés via l'API ([#397](https://github.com/betagouv/OTP-DS-to-Grist/issues/397)).
-- **Qualité et maintenance** : Ajout de tests pour les WebSockets ([#449](https://github.com/betagouv/OTP-DS-to-Grist/issues/449)), regroupement des logs pour une meilleure lisibilité ([#395](https://github.com/betagouv/OTP-DS-to-Grist/issues/395)) et mise à jour des dépendances NPM ([#440](https://github.com/betagouv/OTP-DS-to-Grist/issues/440)).
+- **Optimisation et Refactoring :**
+  - Extraction de la classe `ColumnCache` pour une meilleure modularité ([#472](https://github.com/betagouv/OTP-DS-to-Grist/issues/472)).
+  - Remplacement du processus de traitement des démarches par une version optimisée ([#432](https://github.com/betagouv/OTP-DS-to-Grist/issues/432)).
+- **Tests :**
+  - Ajout de tests pour la gestion des WebSockets ([#449](https://github.com/betagouv/OTP-DS-to-Grist/issues/449)).
+
+### Autres changements
+- Nettoyage du code mort ([#477](https://github.com/betagouv/OTP-DS-to-Grist/issues/477)).
+- Mise à jour de la documentation (suppression de `technique.md`).
