@@ -1,0 +1,230 @@
+.
+├── .claude
+│   └── settings.json
+├── .dockerignore
+├── .env.template
+├── .gitattributes
+├── .github
+│   ├── pull_request_template.md
+│   └── workflows
+│       ├── ci.yml
+│       └── deploiement-demo.yml
+├── .gitignore
+├── .qlty
+│   ├── .gitignore
+│   └── qlty.toml
+├── AGENTS.md
+├── CLAUDE.md -> AGENTS.md
+├── Dockerfile
+├── README.md
+├── docker-compose.yml
+├── docs
+│   ├── adr
+│   │   ├── 0000-modele.md
+│   │   ├── 0001-harness-local.md
+│   │   └── README.md
+│   ├── architecture.md
+│   ├── deploiement-clever-cloud.md
+│   ├── harness
+│   │   ├── README.md
+│   │   ├── modeles
+│   │   │   └── fiche-de-tache.md
+│   │   └── taches
+│   │       ├── 2026-08-24-harness-qualite-local.md
+│   │       └── 2026-08-24-resorption-smells.md
+│   └── technique.md
+├── migrations
+│   ├── 001_init.sql
+│   ├── 002_identites.sql
+│   ├── 003_analyses_transcripts.sql
+│   ├── 004_fonctionnalites_transcripts.sql
+│   ├── 005_idees_featurebase.sql
+│   ├── 006_idees_sans_id_externe.sql
+│   ├── 007_embeddings_pgvector.sql
+│   ├── 008_verbatim_fonctionnalites.sql
+│   ├── 009_features_embeddables_avec_contexte.sql
+│   ├── 010_correspondances_calculees.sql
+│   ├── 011_retours_bizdev.sql
+│   ├── 012_besoins_detectes.sql
+│   ├── 013_nettoyage_exports.sql
+│   └── 014_sources_brutes_correspondances.sql
+├── pyproject.toml
+├── scripts
+│   ├── clever-cloud
+│   │   └── post-build-clever.sh
+│   └── harness.sh
+├── src
+│   ├── CLAUDE.md
+│   ├── __init__.py
+│   ├── adaptateurs
+│   │   ├── __init__.py
+│   │   └── albert.py
+│   ├── analyses
+│   │   ├── __init__.py
+│   │   ├── depot.py
+│   │   └── service.py
+│   ├── api
+│   │   ├── __init__.py
+│   │   ├── analyses.py
+│   │   ├── api.py
+│   │   ├── besoins.py
+│   │   ├── correspondances.py
+│   │   ├── fonctionnalites.py
+│   │   ├── idees.py
+│   │   ├── identites.py
+│   │   ├── produits.py
+│   │   ├── retours_bizdev.py
+│   │   └── transcripts.py
+│   ├── besoins
+│   │   ├── __init__.py
+│   │   ├── dependances.py
+│   │   ├── depot.py
+│   │   └── service.py
+│   ├── configuration.py
+│   ├── correspondance
+│   │   ├── __init__.py
+│   │   ├── depot.py
+│   │   └── service.py
+│   ├── depot_nomme.py
+│   ├── fonctionnalites
+│   │   ├── __init__.py
+│   │   ├── depot.py
+│   │   └── service.py
+│   ├── idees
+│   │   ├── __init__.py
+│   │   ├── depot.py
+│   │   └── service.py
+│   ├── identites
+│   │   ├── __init__.py
+│   │   └── depot.py
+│   ├── infra
+│   │   ├── __init__.py
+│   │   ├── connexion_base_de_donnees.py
+│   │   ├── memoire
+│   │   │   ├── __init__.py
+│   │   │   ├── depot_analyses_transcripts.py
+│   │   │   ├── depot_besoins_detectes.py
+│   │   │   ├── depot_correspondance.py
+│   │   │   ├── depot_correspondances_calculees.py
+│   │   │   ├── depot_fonctionnalites_transcripts.py
+│   │   │   ├── depot_idees.py
+│   │   │   ├── depot_identites.py
+│   │   │   ├── depot_nomme.py
+│   │   │   ├── depot_produits.py
+│   │   │   ├── depot_retours_bizdev.py
+│   │   │   └── depot_transcripts.py
+│   │   └── postgres
+│   │       ├── __init__.py
+│   │       ├── depot_analyses_transcripts.py
+│   │       ├── depot_besoins_detectes.py
+│   │       ├── depot_correspondance.py
+│   │       ├── depot_correspondances_calculees.py
+│   │       ├── depot_fonctionnalites_transcripts.py
+│   │       ├── depot_idees.py
+│   │       ├── depot_identites.py
+│   │       ├── depot_nomme.py
+│   │       ├── depot_produits.py
+│   │       ├── depot_retours_bizdev.py
+│   │       ├── depot_transcripts.py
+│   │       ├── execute_migrations.py
+│   │       └── migrations.py
+│   ├── nettoyage_texte.py
+│   ├── produits
+│   │   ├── __init__.py
+│   │   └── depot.py
+│   ├── prompts
+│   │   ├── analyse_transcript.md
+│   │   ├── besoin_bizdev.md
+│   │   ├── besoin_featurebase.md
+│   │   ├── fonctionnalites_transcript.md
+│   │   ├── libelle_cluster.md
+│   │   ├── validation_cluster.md
+│   │   └── validation_transcript.md
+│   ├── retours_bizdev
+│   │   ├── __init__.py
+│   │   ├── depot.py
+│   │   └── service.py
+│   ├── serveur.py
+│   ├── transcripts
+│   │   ├── __init__.py
+│   │   └── depot.py
+│   └── validation_transcript
+│       ├── __init__.py
+│       └── service.py
+├── tests
+│   ├── __init__.py
+│   ├── adaptateurs
+│   │   ├── __init__.py
+│   │   └── albert_de_test.py
+│   ├── api
+│   │   ├── __init__.py
+│   │   ├── conftest.py
+│   │   ├── test_analyses.py
+│   │   ├── test_besoins.py
+│   │   ├── test_correspondances.py
+│   │   ├── test_fonctionnalites.py
+│   │   ├── test_idees.py
+│   │   ├── test_identites.py
+│   │   ├── test_produits.py
+│   │   ├── test_retours_bizdev.py
+│   │   └── test_transcripts.py
+│   ├── test_api.py
+│   ├── test_configuration.py
+│   ├── test_connexion_base_de_donnees.py
+│   ├── test_migrations.py
+│   ├── test_nettoyage_texte.py
+│   ├── test_serveur.py
+│   ├── test_service_besoins.py
+│   ├── test_service_correspondance.py
+│   └── test_service_validation_transcript.py
+├── ui
+│   ├── .prettierignore
+│   ├── .prettierrc
+│   ├── CLAUDE.md
+│   ├── Dockerfile
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── package.json
+│   ├── pnpm-lock.yaml
+│   ├── src
+│   │   ├── App.svelte
+│   │   ├── analyses
+│   │   │   ├── ListeAnalyses.svelte
+│   │   │   └── PlaceholderAnalyses.svelte
+│   │   ├── api
+│   │   │   ├── analyses.ts
+│   │   │   ├── besoins.ts
+│   │   │   ├── correspondances.ts
+│   │   │   ├── fonctionnalites.ts
+│   │   │   ├── idees.ts
+│   │   │   ├── requete.ts
+│   │   │   ├── retours_bizdev.ts
+│   │   │   └── transcripts.ts
+│   │   ├── besoins
+│   │   │   └── ListeBesoinsDetectes.svelte
+│   │   ├── correspondance
+│   │   │   ├── ListeCorrespondance.svelte
+│   │   │   ├── cles.test.ts
+│   │   │   └── cles.ts
+│   │   ├── custom-elements.d.ts
+│   │   ├── fonctionnalites
+│   │   │   ├── DetailFeatureBase.svelte
+│   │   │   └── ListeFonctionnalites.svelte
+│   │   ├── main.ts
+│   │   ├── navigation
+│   │   │   ├── NavigationPrincipale.svelte
+│   │   │   ├── routage.test.ts
+│   │   │   └── routage.ts
+│   │   ├── retours
+│   │   │   ├── DetailRetourBizDev.svelte
+│   │   │   └── ListeRetoursBizDev.svelte
+│   │   ├── transcripts
+│   │   │   ├── DetailTranscript.svelte
+│   │   │   ├── FormulaireTranscript.svelte
+│   │   │   └── ListeTranscripts.svelte
+│   │   └── types.ts
+│   ├── svelte.config.js
+│   ├── tsconfig.json
+│   └── vite.config.ts
+└── uv.lock
+43 directories, 186 files
