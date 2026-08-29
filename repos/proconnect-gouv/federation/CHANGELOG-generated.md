@@ -1,19 +1,28 @@
-## Changelog : federation (30 derniers jours, au 19 août 2026)
+## Changelog : federation (30 derniers jours, au 28 août 2026)
 
 ### Résumé
-Ce mois a été marqué par une restructuration importante de l'architecture pour gagner en modularité, ainsi que par une amélioration significative de la sécurité et de l'expérience utilisateur autour de la vérification d'identité et du MFA (authentification multi-facteurs). Le projet est devenu plus robuste grâce à une meilleure gestion des erreurs et une séparation plus nette des composants de test et de simulation.
+Ce mois-ci, la plateforme a bénéficié d'importantes améliorations de sécurité, notamment sur la gestion des codes de vérification (OTP) et la robustesse des sessions MFA. Les processus d'authentification ont été affinés pour être plus fluides, tandis que l'infrastructure technique a été optimisée pour faciliter le déploiement et la maintenance.
 
 ### Évolutions fonctionnelles
-- **Amélioration de la vérification par email** : Clarification des messages et des sujets d'emails [#1425, #855942c], utilisation de templates dédiés avec des codes OTP plus courts pour plus de fluidité [#1477], et contrôle strict des renvois d'emails de vérification [#1458].
-- **Renforcement de la sécurité MFA** : Introduction d'un mode de secours (fallback) par email pour les fournisseurs d'identité ne supportant pas le MFA, et optimisation de la réutilisation des sessions MFA pour répondre aux exigences de sécurité (ACR) [#1450].
-- **Interface et API** : Renommage de "Fournisseur de données" en "Serveur de ressources" pour plus de clarté, blocage par défaut des emails de domaine lors de la création d'un fournisseur d'identité en administration [#1476], et ajout d'une capacité de suppression des clients OIDC via l'API [#1390].
+- **Amélioration de la gestion des codes OTP** : mise en place de modèles d'e-mails dédiés, raccourcissement de la longueur des codes et clarification des objets d'e-mails pour une meilleure expérience utilisateur ([#1477](https://github.com/proconnect-gouv/federation/issues/1477), [#1482](https://github.com/proconnect-gouv/federation/issues/1482)).
+- **Optimisation de la vérification d'e-mail** : le renvoi d'e-mail de vérification ne se fait désormais que sur demande explicite ([#1458](https://github.com/proconnect-gouv/federation/issues/1458)) et un seul jeton de vérification est autorisé par utilisateur ([#1446](https://github.com/proconnect-gouv/federation/issues/1446)).
+- **Améliorations de l'interface et de la clarté** : 
+    - Renommage de "Fournisseur de données" en "Serveur de ressources" pour une terminologie plus précise ([#1484](https://github.com/proconnect-gouv/federation/issues/1484)).
+    - Correction d'un problème de navigation bloquant le bouton "retour" suite à des restrictions de sécurité CSP ([#1544](https://github.com/proconnect-gouv/federation/issues/1544)).
+    - Correction du calcul du compte à rebours d'expiration ([#1528](https://github.com/proconnect-gouv/federation/issues/1528)).
+- **Administration** : les domaines d'e-mails sont désormais bloqués par défaut lors de la création d'un fournisseur d'identité (IdP) dans l'interface d'administration ([#1476](https://github.com/proconnect-gouv/federation/issues/1476)).
 
 ### Évolutions techniques
-- **Modularisation de l'architecture** : Extraction de plusieurs composants (notamment `csmr-rie`, `mock-data-provider` et les différents fournisseurs de services de mock) en applications autonomes pour simplifier la maintenance [#1428, #1424, #1416, #1413].
-- **Refactoring et nettoyage du code** : Migration de la gestion des erreurs vers les filtres d'exception NestJS, renommage technique de `fqdn` en `attachedEmailDomain` [#1485], et suppression des références et des méthodes de chiffrement obsolètes pour les serveurs de ressources.
-- **Optimisation des bases de données** : Refonte du processus de peuplement (seeding) de l'environnement de développement [#1455], exécution des migrations via un hook de démarrage plutôt qu'à l'initialisation [#1453], et correction des migrations liées aux domaines d'emails [#1508].
-- **DevOps et Qualité** : Simplification des builds Docker multi-étapes [#1452], ajout de points de contrôle de santé (healthchecks) pour l'administration [#1391], et optimisation des commandes de tests E2E.
+- **Sécurité et Protocoles** : 
+    - Réutilisation des sessions MFA lorsque les exigences d'authentification sont satisfaites ([#1450](https://github.com/proconnect-gouv/federation/issues/1450)).
+    - Simplification des serveurs de ressources par la suppression de l'encryption et de l'URL JWKS ([#1487](https://github.com/proconnect-gouv/federation/issues/1487)).
+- **Gestion des erreurs** : migration vers un système de filtres d'exceptions NestJS standardisé et nettoyage des préfixes de messages d'erreur pour plus de clarté ([#1438](https://github.com/proconnect-gouv/federation/issues/1438), [#1545](https://github.com/proconnect-gouv/federation/issues/1545)).
+- **Infrastructure et CI/CD** : 
+    - Optimisation des Dockerfiles (build multi-étapes) et intégration des assets/CSS dans l'image du backend ([#1452](https://github.com/proconnect-gouv/federation/issues/1452), [#1529](https://github.com/proconnect-gouv/federation/issues/1529)).
+    - Résolution d'erreurs de communication avec Grist lors des tests en CI ([#1546](https://github.com/proconnect-gouv/federation/issues/1546)).
+    - Amélioration de la gestion de la base de données pour les tests E2E (utilisation de `TRUNCATE` au lieu de clones) ([#1449](https://github.com/proconnect-gouv/federation/issues/1449)).
+- **Base de données et Migrations** : refonte du processus de seeding et de migration pour l'environnement de développement ([#1455](https://github.com/proconnect-gouv/federation/issues/1455)) et automatisation de l'exécution des migrations via un hook de démarrage ([#1453](https://github.com/proconnect-gouv/federation/issues/1453)).
+- **Refactoring** : amélioration de la lisibilité de l'algorithme de recherche d'utilisateurs ([#1478](https://github.com/proconnect-gouv/federation/issues/1478)) et restructuration de l'application `csmr-rie` en application autonome ([#1428](https://github.com/proconnect-gouv/federation/issues/1428)).
 
 ### Autres changements
-- **Documentation** : Mise à jour de la description du README [#1448] et ajout de documentation spécifique pour hyyyperbridge.
-- **Nettoyage** : Suppression de fonctions et de tests non utilisés pour alléger la base de code.
+- Mise à jour de la documentation du projet (README) ([#1448](https://github.com/proconnect-gouv/federation/issues/1448)).
