@@ -439,6 +439,9 @@
 │   │   │   │                   │   │   │   │   │   │   └── EnvActionDataInput.kt
 │   │   │   │                   │   │   │   │   │   ├── amps
 │   │   │   │                   │   │   │   │   │   │   └── AmpByIdsDataInput.kt
+│   │   │   │                   │   │   │   │   │   ├── controlUnits
+│   │   │   │                   │   │   │   │   │   │   ├── ControlUnitDataInput.kt
+│   │   │   │                   │   │   │   │   │   │   └── ControlUnitResourceDataInput.kt
 │   │   │   │                   │   │   │   │   │   ├── dashboards
 │   │   │   │                   │   │   │   │   │   │   ├── BriefInput.kt
 │   │   │   │                   │   │   │   │   │   │   ├── DashboardDataInput.kt
@@ -473,20 +476,8 @@
 │   │   │   │                   │   │   │   │   │       ├── VigilanceAreaDataPeriodInput.kt
 │   │   │   │                   │   │   │   │   │       └── VigilanceAreaSourceInput.kt
 │   │   │   │                   │   │   │   │   └── outputs
-│   │   │   │                   │   │   │   │       ├── AMPDataOutput.kt
-│   │   │   │                   │   │   │   │       ├── ApiError.kt
-│   │   │   │                   │   │   │   │       ├── AttachedReportingDataOutput.kt
 │   │   │   │                   │   │   │   │       ├── BackendUsageErrorDataOutput.kt
-│   │   │   │                   │   │   │   │       ├── DepartmentAreaDataOutput.kt
 │   │   │   │                   │   │   │   │       ├── HealthcheckDataOutput.kt
-│   │   │   │                   │   │   │   │       ├── LegacyControlUnitAndMissionSourcesDataOutput.kt
-│   │   │   │                   │   │   │   │       ├── LegacyControlUnitDataOutput.kt
-│   │   │   │                   │   │   │   │       ├── LegacyControlUnitResourceDataOutput.kt
-│   │   │   │                   │   │   │   │       ├── LocalizedAreasDataOutput.kt
-│   │   │   │                   │   │   │   │       ├── MissingParameterApiError.kt
-│   │   │   │                   │   │   │   │       ├── NatinfDataOutput.kt
-│   │   │   │                   │   │   │   │       ├── SemaphoreDataOutput.kt
-│   │   │   │                   │   │   │   │       ├── UserAuthorizationDataOutput.kt
 │   │   │   │                   │   │   │   │       ├── actions
 │   │   │   │                   │   │   │   │       │   ├── AwarenessDataOuput.kt
 │   │   │   │                   │   │   │   │       │   ├── AwarenessDetailsDataOutput.kt
@@ -495,15 +486,24 @@
 │   │   │   │                   │   │   │   │       │   ├── EnvActionDataOutput.kt
 │   │   │   │                   │   │   │   │       │   ├── EnvActionNoteDataOutput.kt
 │   │   │   │                   │   │   │   │       │   └── EnvActionSurveillanceDataOutput.kt
+│   │   │   │                   │   │   │   │       ├── amps
+│   │   │   │                   │   │   │   │       │   └── AMPDataOutput.kt
 │   │   │   │                   │   │   │   │       ├── controlUnits
+│   │   │   │                   │   │   │   │       │   ├── LegacyControlUnitAndMissionSourcesDataOutput.kt
+│   │   │   │                   │   │   │   │       │   ├── LegacyControlUnitDataOutput.kt
+│   │   │   │                   │   │   │   │       │   ├── LegacyControlUnitResourceDataOutput.kt
 │   │   │   │                   │   │   │   │       │   └── NearbyUnitOutput.kt
 │   │   │   │                   │   │   │   │       ├── dashboards
 │   │   │   │                   │   │   │   │       │   ├── DashboardDataOutput.kt
 │   │   │   │                   │   │   │   │       │   ├── DashboardImageDataOutput.kt
 │   │   │   │                   │   │   │   │       │   ├── DashboardsDataOutput.kt
 │   │   │   │                   │   │   │   │       │   └── ExtractedAreaDataOutput.kt
+│   │   │   │                   │   │   │   │       ├── departments
+│   │   │   │                   │   │   │   │       │   └── DepartmentAreaDataOutput.kt
 │   │   │   │                   │   │   │   │       ├── facades
 │   │   │   │                   │   │   │   │       │   └── SeaFrontDataOutput.kt
+│   │   │   │                   │   │   │   │       ├── localizedAreas
+│   │   │   │                   │   │   │   │       │   └── LocalizedAreasDataOutput.kt
 │   │   │   │                   │   │   │   │       ├── missions
 │   │   │   │                   │   │   │   │       │   ├── MissionAttachedReportingDataOutput.kt
 │   │   │   │                   │   │   │   │       │   ├── MissionDataOutput.kt
@@ -511,11 +511,13 @@
 │   │   │   │                   │   │   │   │       │   ├── MissionEnvActionControlPlanDataOutput.kt
 │   │   │   │                   │   │   │   │       │   ├── MissionTagDataOutput.kt
 │   │   │   │                   │   │   │   │       │   └── MissionsDataOutput.kt
+│   │   │   │                   │   │   │   │       ├── natinfs
+│   │   │   │                   │   │   │   │       │   └── NatinfDataOutput.kt
 │   │   │   │                   │   │   │   │       ├── positions
 │   │   │   │                   │   │   │   │       │   └── PositionOutput.kt
-│   │   │   │                   │   │   │   │       ├── recentActivity
+│   │   │   │                   │   │   │   │       ├── recentActivities
 │   │   │   │                   │   │   │   │       │   └── RecentControlsActivityDataOutput.kt
-│   │   │   │                   │   │   │   │       ├── regulatoryArea
+│   │   │   │                   │   │   │   │       ├── regulatoryAreas
 │   │   │   │                   │   │   │   │       │   ├── LayerNamesDataOutput.kt
 │   │   │   │                   │   │   │   │       │   ├── RegulatoryAreaDataOutput.kt
 │   │   │   │                   │   │   │   │       │   ├── RegulatoryAreaGroupDataOutput.kt
@@ -528,16 +530,20 @@
 │   │   │   │                   │   │   │   │       │   ├── ReportingMissionDataOutput.kt
 │   │   │   │                   │   │   │   │       │   ├── ReportingSourceDataOutput.kt
 │   │   │   │                   │   │   │   │       │   └── ReportingsDataOutput.kt
+│   │   │   │                   │   │   │   │       ├── semaphores
+│   │   │   │                   │   │   │   │       │   └── SemaphoreDataOutput.kt
 │   │   │   │                   │   │   │   │       ├── tags
 │   │   │   │                   │   │   │   │       │   └── TagOutput.kt
 │   │   │   │                   │   │   │   │       ├── themes
 │   │   │   │                   │   │   │   │       │   └── ThemeOutput.kt
+│   │   │   │                   │   │   │   │       ├── users
+│   │   │   │                   │   │   │   │       │   └── UserAuthorizationDataOutput.kt
 │   │   │   │                   │   │   │   │       ├── vessels
 │   │   │   │                   │   │   │   │       │   ├── VesselAdditionalInformationDataOutput.kt
 │   │   │   │                   │   │   │   │       │   ├── VesselDataOutput.kt
 │   │   │   │                   │   │   │   │       │   ├── VesselFileDataOutput.kt
 │   │   │   │                   │   │   │   │       │   └── VesselIdentityDataOutput.kt
-│   │   │   │                   │   │   │   │       └── vigilanceArea
+│   │   │   │                   │   │   │   │       └── vigilanceAreas
 │   │   │   │                   │   │   │   │           ├── VigilanceAreaDataOutput.kt
 │   │   │   │                   │   │   │   │           ├── VigilanceAreaImageDataOutput.kt
 │   │   │   │                   │   │   │   │           ├── VigilanceAreaPeriodDataOutput.kt
@@ -545,43 +551,58 @@
 │   │   │   │                   │   │   │   │           └── VigilanceAreasDataOutput.kt
 │   │   │   │                   │   │   │   └── publicapi
 │   │   │   │                   │   │   │       ├── inputs
-│   │   │   │                   │   │   │       │   ├── AddUserDataInput.kt
-│   │   │   │                   │   │   │       │   ├── CreateControlUnitContactDataInputV1.kt
-│   │   │   │                   │   │   │       │   ├── CreateOrUpdateAdministrationDataInput.kt
-│   │   │   │                   │   │   │       │   ├── CreateOrUpdateControlUnitContactDataInputV2.kt
-│   │   │   │                   │   │   │       │   ├── CreateOrUpdateControlUnitDataInput.kt
-│   │   │   │                   │   │   │       │   ├── CreateOrUpdateControlUnitResourceDataInput.kt
-│   │   │   │                   │   │   │       │   ├── CreateOrUpdateMissionDataInput.kt
-│   │   │   │                   │   │   │       │   ├── CreateOrUpdateStationDataInput.kt
-│   │   │   │                   │   │   │       │   ├── PatchableEnvActionDataInput.kt
-│   │   │   │                   │   │   │       │   └── PatchableMissionDataInput.kt
+│   │   │   │                   │   │   │       │   ├── actions
+│   │   │   │                   │   │   │       │   │   └── PatchableEnvActionDataInput.kt
+│   │   │   │                   │   │   │       │   ├── administrations
+│   │   │   │                   │   │   │       │   │   └── CreateOrUpdateAdministrationDataInput.kt
+│   │   │   │                   │   │   │       │   ├── controlUnits
+│   │   │   │                   │   │   │       │   │   ├── CreateControlUnitContactDataInputV1.kt
+│   │   │   │                   │   │   │       │   │   ├── CreateOrUpdateControlUnitContactDataInputV2.kt
+│   │   │   │                   │   │   │       │   │   ├── CreateOrUpdateControlUnitDataInput.kt
+│   │   │   │                   │   │   │       │   │   ├── CreateOrUpdateControlUnitResourceDataInput.kt
+│   │   │   │                   │   │   │       │   │   ├── LegacyControlUnitDataInput.kt
+│   │   │   │                   │   │   │       │   │   └── LegacyControlUnitResourceDataInput.kt
+│   │   │   │                   │   │   │       │   ├── missions
+│   │   │   │                   │   │   │       │   │   ├── CreateOrUpdateMissionDataInput.kt
+│   │   │   │                   │   │   │       │   │   └── PatchableMissionDataInput.kt
+│   │   │   │                   │   │   │       │   ├── stations
+│   │   │   │                   │   │   │       │   │   └── CreateOrUpdateStationDataInput.kt
+│   │   │   │                   │   │   │       │   └── users
+│   │   │   │                   │   │   │       │       └── AddUserDataInput.kt
 │   │   │   │                   │   │   │       └── outputs
-│   │   │   │                   │   │   │           ├── AdministrationDataOutput.kt
 │   │   │   │                   │   │   │           ├── BooleanDataOutput.kt
-│   │   │   │                   │   │   │           ├── ControlUnitContactDataOutput.kt
-│   │   │   │                   │   │   │           ├── ControlUnitDataOutput.kt
-│   │   │   │                   │   │   │           ├── ControlUnitResourceDataOutput.kt
-│   │   │   │                   │   │   │           ├── FullAdministrationDataOutput.kt
-│   │   │   │                   │   │   │           ├── FullControlUnitContactDataOutput.kt
-│   │   │   │                   │   │   │           ├── FullControlUnitDataOutput.kt
-│   │   │   │                   │   │   │           ├── FullControlUnitResourceDataOutput.kt
-│   │   │   │                   │   │   │           ├── FullStationDataOutput.kt
-│   │   │   │                   │   │   │           ├── LegacyControlUnitAndMissionSourcesDataOutput.kt
-│   │   │   │                   │   │   │           ├── MissionDataOutput.kt
-│   │   │   │                   │   │   │           ├── MissionEnvActionControlDataOutput.kt
-│   │   │   │                   │   │   │           ├── MissionEnvActionControlPlanDataOutput.kt
-│   │   │   │                   │   │   │           ├── MissionEnvActionDataOutput.kt
-│   │   │   │                   │   │   │           ├── MissionEnvActionNoteDataOutput.kt
-│   │   │   │                   │   │   │           ├── MissionEnvActionSurveillanceDataOutput.kt
-│   │   │   │                   │   │   │           ├── MissionOutput.kt
-│   │   │   │                   │   │   │           ├── MissionWithFishAndRapportNavActionsDataOutput.kt
-│   │   │   │                   │   │   │           ├── MissionWithRapportNavActionsDataOutput.kt
-│   │   │   │                   │   │   │           ├── StationDataOutput.kt
+│   │   │   │                   │   │   │           ├── actions
+│   │   │   │                   │   │   │           │   ├── MissionEnvActionControlDataOutput.kt
+│   │   │   │                   │   │   │           │   ├── MissionEnvActionControlPlanDataOutput.kt
+│   │   │   │                   │   │   │           │   ├── MissionEnvActionDataOutput.kt
+│   │   │   │                   │   │   │           │   ├── MissionEnvActionNoteDataOutput.kt
+│   │   │   │                   │   │   │           │   └── MissionEnvActionSurveillanceDataOutput.kt
+│   │   │   │                   │   │   │           ├── administrations
+│   │   │   │                   │   │   │           │   ├── AdministrationDataOutput.kt
+│   │   │   │                   │   │   │           │   └── FullAdministrationDataOutput.kt
 │   │   │   │                   │   │   │           ├── controlPlans
 │   │   │   │                   │   │   │           │   ├── ControlPlanDataOutput.kt
 │   │   │   │                   │   │   │           │   ├── ControlPlanSubThemeDataOutput.kt
 │   │   │   │                   │   │   │           │   ├── ControlPlanTagDataOutput.kt
 │   │   │   │                   │   │   │           │   └── ControlPlanThemeDataOutput.kt
+│   │   │   │                   │   │   │           ├── controlUnits
+│   │   │   │                   │   │   │           │   ├── ControlUnitContactDataOutput.kt
+│   │   │   │                   │   │   │           │   ├── ControlUnitDataOutput.kt
+│   │   │   │                   │   │   │           │   ├── ControlUnitResourceDataOutput.kt
+│   │   │   │                   │   │   │           │   ├── FullControlUnitContactDataOutput.kt
+│   │   │   │                   │   │   │           │   ├── FullControlUnitDataOutput.kt
+│   │   │   │                   │   │   │           │   ├── FullControlUnitResourceDataOutput.kt
+│   │   │   │                   │   │   │           │   ├── LegacyControlUnitAndMissionSourcesDataOutput.kt
+│   │   │   │                   │   │   │           │   ├── LegacyControlUnitDataOutput.kt
+│   │   │   │                   │   │   │           │   └── LegacyControlUnitResourceDataOutput.kt
+│   │   │   │                   │   │   │           ├── missions
+│   │   │   │                   │   │   │           │   ├── MissionDataOutput.kt
+│   │   │   │                   │   │   │           │   ├── MissionOutput.kt
+│   │   │   │                   │   │   │           │   ├── MissionWithFishAndRapportNavActionsDataOutput.kt
+│   │   │   │                   │   │   │           │   └── MissionWithRapportNavActionsDataOutput.kt
+│   │   │   │                   │   │   │           ├── stations
+│   │   │   │                   │   │   │           │   ├── FullStationDataOutput.kt
+│   │   │   │                   │   │   │           │   └── StationDataOutput.kt
 │   │   │   │                   │   │   │           ├── tags
 │   │   │   │                   │   │   │           │   └── TagOutput.kt
 │   │   │   │                   │   │   │           └── themes
@@ -628,8 +649,6 @@
 │   │   │   │                   │   │   │   │   ├── SentryTest.kt
 │   │   │   │                   │   │   │   │   ├── Spa.kt
 │   │   │   │                   │   │   │   │   ├── Version.kt
-│   │   │   │                   │   │   │   │   ├── actions
-│   │   │   │                   │   │   │   │   │   └── EnvAction.kt
 │   │   │   │                   │   │   │   │   ├── v1
 │   │   │   │                   │   │   │   │   │   ├── Administrations.kt
 │   │   │   │                   │   │   │   │   │   ├── ControlPlans.kt
@@ -639,6 +658,8 @@
 │   │   │   │                   │   │   │   │   │   ├── Stations.kt
 │   │   │   │                   │   │   │   │   │   ├── Themes.kt
 │   │   │   │                   │   │   │   │   │   ├── UserManagementController.kt
+│   │   │   │                   │   │   │   │   │   ├── actions
+│   │   │   │                   │   │   │   │   │   │   └── EnvAction.kt
 │   │   │   │                   │   │   │   │   │   └── missions
 │   │   │   │                   │   │   │   │   │       ├── LegacyMissions.kt
 │   │   │   │                   │   │   │   │   │       └── SSEMission.kt
@@ -1129,13 +1150,14 @@
 │   │       │                   │   │   │   ├── CreateOrUpdateAdministrationUTests.kt
 │   │       │                   │   │   │   ├── DeleteAdministrationUTests.kt
 │   │       │                   │   │   │   ├── GetAdministrationByIdUTests.kt
-│   │       │                   │   │   │   └── GetAdministrationsUTests.kt
-│   │       │                   │   │   ├── amp
+│   │       │                   │   │   │   ├── GetAdministrationsUTests.kt
 │   │       │                   │   │   │   └── fixtures
-│   │       │                   │   │   │       └── AmpFixture.kt
+│   │       │                   │   │   │       └── AdministrationFixture.kt
 │   │       │                   │   │   ├── amps
 │   │       │                   │   │   │   ├── GetAllAMPsByIdsUTest.kt
-│   │       │                   │   │   │   └── GetAllAMPsUTest.kt
+│   │       │                   │   │   │   ├── GetAllAMPsUTest.kt
+│   │       │                   │   │   │   └── fixtures
+│   │       │                   │   │   │       └── AmpFixture.kt
 │   │       │                   │   │   ├── authorization
 │   │       │                   │   │   │   ├── DeleteUserUTest.kt
 │   │       │                   │   │   │   ├── GetAuthorizedUserUTest.kt
@@ -1164,7 +1186,9 @@
 │   │       │                   │   │   │   ├── GetLegacyControlUnitsUTest.kt
 │   │       │                   │   │   │   ├── GetNearbyUnitsUTest.kt
 │   │       │                   │   │   │   └── fixtures
-│   │       │                   │   │   │       └── ControlUnitFixture.kt
+│   │       │                   │   │   │       ├── ControlUnitContactFixture.kt
+│   │       │                   │   │   │       ├── ControlUnitFixture.kt
+│   │       │                   │   │   │       └── ControlUnitResourceFixture.kt
 │   │       │                   │   │   ├── dashboard
 │   │       │                   │   │   │   ├── CreateBriefUTest.kt
 │   │       │                   │   │   │   ├── DeleteDashboardUTest.kt
@@ -1246,7 +1270,9 @@
 │   │       │                   │   │   │   ├── CreateOrUpdateStationUTests.kt
 │   │       │                   │   │   │   ├── DeleteStationUTests.kt
 │   │       │                   │   │   │   ├── GetStationByIdUTests.kt
-│   │       │                   │   │   │   └── GetStationsUTests.kt
+│   │       │                   │   │   │   ├── GetStationsUTests.kt
+│   │       │                   │   │   │   └── fixtures
+│   │       │                   │   │   │       └── StationFixture.kt
 │   │       │                   │   │   ├── tags
 │   │       │                   │   │   │   ├── GetTagsByRegulatoryAreasUTest.kt
 │   │       │                   │   │   │   ├── GetTagsUTest.kt
@@ -1850,7 +1876,6 @@
 │   │   │   ├── authorizationAPI.ts
 │   │   │   ├── beachesAPI.ts
 │   │   │   ├── constants.ts
-│   │   │   ├── controlThemesAPI.ts
 │   │   │   ├── controlUnitContactsAPI.ts
 │   │   │   ├── controlUnitResourcesAPI.ts
 │   │   │   ├── controlUnitsAPI.ts
@@ -3416,4 +3441,4 @@
 │       │   └── test_update_queries.py
 │       └── test_utils.py
 └── sonar-project.properties
-620 directories, 2798 files
+639 directories, 2804 files
