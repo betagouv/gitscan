@@ -1,22 +1,23 @@
 ## Changelog : doctorat-gouv (30 derniers jours, au 14 août 2026)
 
 ### Résumé
-Ce mois a été marqué par l'intégration majeure du flux EURAXESS. Cette évolution permet à la plateforme de diffuser automatiquement les offres de thèse vers ce réseau international via un flux XML standardisé, tout en garantissant la sécurité et la fiabilité des données transmises.
+Le développement récent a été quasi exclusivement consacré à l'intégration du flux international EURAXESS. La plateforme est désormais capable de générer et d'exporter automatiquement les offres de thèse au format XML requis, tout en sécurisant cet accès pour les partenaires externes.
 
 ### Évolutions fonctionnelles
-- **Exportation vers EURAXESS** : Mise en place de la génération et de la publication automatique des offres de thèse au format XML pour la plateforme EURAXESS.
-- **Accessibilité du flux** : Mise à disposition d'un point d'accès public sécurisé pour permettre la consultation des offres par les services tiers.
+- **Exportation internationale** : Mise en place de la génération automatique du flux XML pour les offres de thèse vers le réseau EURAXESS.
+- **Accessibilité du flux** : Création d'un point d'accès public permettant la consultation des offres via un endpoint dédié.
 
 ### Évolutions techniques
-- **Moteur de génération XML** : Implémentation de la technologie JAXB et intégration du schéma XSD officiel pour garantir la conformité du flux EURAXESS.
-- **Sécurisation** : Protection du flux de données via l'utilisation d'une clé API dédiée.
-- **Fiabilité et robustesse** :
-    - Correction de la conversion des dates pour assurer la compatibilité avec le format XML.
-    - Amélioration de la gestion des cas particuliers (réponse HTTP 204 en cas d'absence d'offres et logs d'alerte en cas de flux vide).
+- **Moteur d'intégration EURAXESS** :
+    - Implémentation de la génération de flux XML via JAXB et intégration du schéma de données officiel.
+    - Développement du moteur de mapping pour la conversion des offres de thèse vers le format EURAXESS.
+    - Sécurisation de l'endpoint de flux par une clé API dédiée.
+    - Optimisation de la gestion des réponses (retour d'un code 204 en cas d'absence d'offres) et ajout de logs de suivi pour les flux vides.
+    - Correction de la gestion des formats de date pour assurer la conformité avec les standards XML.
 - **Qualité et tests** :
-    - Ajout de tests d'intégration complets (services et contrôleurs).
-    - Mise en place de tests de validation de schéma (XSD) et de mapping des données.
-    - Configuration d'une base de données H2 pour les environnements de test.
+    - Ajout de tests d'intégration pour les services et contrôleurs EURAXESS.
+    - Mise en place de la validation automatique des schémas (XSD) et des mappings de données.
+    - Configuration d'un environnement de test avec une base de données H2.
 
 ### Autres changements
-- **Maintenance** : Préparation et mise à jour des versions pour la release 0.3.9.
+- **Gestion des versions** : Préparation et déploiement de la version 0.3.9 via les pull requests [#51](https://github.com/betagouv/doctorat-gouv/pull/51), [#52](https://github.com/betagouv/doctorat-gouv/pull/52) et [#53](https://github.com/betagouv/doctorat-gouv/pull/53).
