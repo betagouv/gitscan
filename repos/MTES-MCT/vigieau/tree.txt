@@ -60,6 +60,7 @@
 │   │   │   │   ├── cron.service.spec.ts
 │   │   │   │   └── cron.service.ts
 │   │   │   ├── data
+│   │   │   │   ├── certified-history-repair.spec.ts
 │   │   │   │   ├── data.controller.spec.ts
 │   │   │   │   ├── data.controller.ts
 │   │   │   │   ├── data.module.ts
@@ -71,8 +72,11 @@
 │   │   │   │   ├── statistic-cache-artifact.postgres.spec.ts
 │   │   │   │   ├── statistic-cache-artifact.service.spec.ts
 │   │   │   │   ├── statistic-cache-artifact.service.ts
+│   │   │   │   ├── statistic-cache-config.spec.ts
+│   │   │   │   ├── statistic-cache-config.ts
 │   │   │   │   ├── statistic-publication-freshness.spec.ts
 │   │   │   │   └── statistic-publication-freshness.ts
+│   │   │   ├── database-options.ts
 │   │   │   ├── departements
 │   │   │   │   ├── departements.controller.spec.ts
 │   │   │   │   ├── departements.controller.ts
@@ -94,6 +98,12 @@
 │   │   │   │   ├── mattermost.module.ts
 │   │   │   │   ├── mattermost.service.spec.ts
 │   │   │   │   └── mattermost.service.ts
+│   │   │   ├── statcache
+│   │   │   │   ├── statcache-worker.service.spec.ts
+│   │   │   │   ├── statcache-worker.service.ts
+│   │   │   │   ├── statcache.module.spec.ts
+│   │   │   │   └── statcache.module.ts
+│   │   │   ├── statcache.ts
 │   │   │   ├── statistics
 │   │   │   │   ├── statistics.controller.spec.ts
 │   │   │   │   ├── statistics.controller.ts
@@ -218,6 +228,7 @@
 │   │   │   │   └── bassin_versant.service.ts
 │   │   │   ├── clock.ts
 │   │   │   ├── commune
+│   │   │   │   ├── commune-departement-index.migration.spec.ts
 │   │   │   │   ├── commune.controller.ts
 │   │   │   │   ├── commune.module.ts
 │   │   │   │   ├── commune.service.spec.ts
@@ -228,10 +239,14 @@
 │   │   │   │   ├── config.module.ts
 │   │   │   │   ├── config.service.spec.ts
 │   │   │   │   ├── config.service.ts
+│   │   │   │   ├── historic-computation-invalidation.spec.ts
+│   │   │   │   ├── historic-computation-invalidation.ts
 │   │   │   │   ├── historic-config-schema-repair.migration.spec.ts
 │   │   │   │   ├── historic-cursor-generation.migration.spec.ts
 │   │   │   │   └── historic-cursor-progress.migration.spec.ts
 │   │   │   ├── core
+│   │   │   │   ├── database-pool.spec.ts
+│   │   │   │   ├── database-pool.ts
 │   │   │   │   ├── decorators
 │   │   │   │   │   ├── public.decorator.ts
 │   │   │   │   │   └── roles.decorator.ts
@@ -241,6 +256,8 @@
 │   │   │   │   │   ├── authenticated.guard.ts
 │   │   │   │   │   ├── dev.guard.ts
 │   │   │   │   │   └── roles.guard.ts
+│   │   │   │   ├── historic-geometry-replay.spec.ts
+│   │   │   │   ├── historic-geometry-replay.ts
 │   │   │   │   ├── interceptor
 │   │   │   │   │   └── logger.interceptor.ts
 │   │   │   │   ├── middleware
@@ -259,6 +276,7 @@
 │   │   │   │   ├── test
 │   │   │   │   │   └── data.ts
 │   │   │   │   └── utils.ts
+│   │   │   ├── current-zone-worker.ts
 │   │   │   ├── datagouv
 │   │   │   │   ├── datagouv-scheduler.service.spec.ts
 │   │   │   │   ├── datagouv-scheduler.service.ts
@@ -290,6 +308,34 @@
 │   │   │   │   ├── zone-publication-health.postgres.spec.ts
 │   │   │   │   ├── zone-publication-health.service.spec.ts
 │   │   │   │   └── zone-publication-health.service.ts
+│   │   │   ├── historic-artifact-worker.ts
+│   │   │   ├── historic-backfill-worker.ts
+│   │   │   ├── historic_backfill
+│   │   │   │   ├── historic-backfill-artifact-builder.service.spec.ts
+│   │   │   │   ├── historic-backfill-artifact-builder.service.ts
+│   │   │   │   ├── historic-backfill-artifact-queue.service.spec.ts
+│   │   │   │   ├── historic-backfill-artifact-queue.service.ts
+│   │   │   │   ├── historic-backfill-artifact-worker-loop.spec.ts
+│   │   │   │   ├── historic-backfill-artifact-worker-loop.ts
+│   │   │   │   ├── historic-backfill-finalizer.service.spec.ts
+│   │   │   │   ├── historic-backfill-finalizer.service.ts
+│   │   │   │   ├── historic-backfill-map-finalizer.service.spec.ts
+│   │   │   │   ├── historic-backfill-map-finalizer.service.ts
+│   │   │   │   ├── historic-backfill-postgres.integration.spec.ts
+│   │   │   │   ├── historic-backfill-queue.service.spec.ts
+│   │   │   │   ├── historic-backfill-queue.service.ts
+│   │   │   │   ├── historic-backfill-task-handler.spec.ts
+│   │   │   │   ├── historic-backfill-task-handler.ts
+│   │   │   │   ├── historic-backfill-task-providers.service.spec.ts
+│   │   │   │   ├── historic-backfill-task-providers.service.ts
+│   │   │   │   ├── historic-backfill-worker-loop.spec.ts
+│   │   │   │   ├── historic-backfill-worker-loop.ts
+│   │   │   │   ├── historic-backfill.config.spec.ts
+│   │   │   │   ├── historic-backfill.config.ts
+│   │   │   │   ├── historic-backfill.controller.spec.ts
+│   │   │   │   ├── historic-backfill.controller.ts
+│   │   │   │   ├── historic-backfill.module.ts
+│   │   │   │   └── historic-backfill.types.ts
 │   │   │   ├── instrument.ts
 │   │   │   ├── logger
 │   │   │   │   ├── logger.module.ts
@@ -330,7 +376,12 @@
 │   │   │   │   ├── 1786392000000-SandreZoneSchemaPrerequisites.ts
 │   │   │   │   ├── 1786395600000-SandreZoneDurability.ts
 │   │   │   │   ├── 1786744800000-StatisticCachePublication.ts
-│   │   │   │   └── 1786831200000-HistoricConfigSchemaRepair.ts
+│   │   │   │   ├── 1786831200000-HistoricConfigSchemaRepair.ts
+│   │   │   │   ├── 1787140800000-PublicSourceRevisionAndStatisticCandidate.ts
+│   │   │   │   ├── 1787144400000-HistoricBackfillControlPlane.ts
+│   │   │   │   ├── 1787824216000-CommuneDepartementIndex.ts
+│   │   │   │   ├── 1787910600000-CertifiedHistoryRepairAudit.ts
+│   │   │   │   └── historic-backfill-control-plane.migration.spec.ts
 │   │   │   ├── parametres
 │   │   │   │   ├── dto
 │   │   │   │   │   ├── create_update_parametres.dto.ts
@@ -344,12 +395,25 @@
 │   │   │   │   │   ├── create_update_restriction.dto.ts
 │   │   │   │   │   └── restriction.dto.ts
 │   │   │   │   ├── restriction.module.ts
+│   │   │   │   ├── restriction.service.spec.ts
 │   │   │   │   └── restriction.service.ts
 │   │   │   ├── schema-bootstrap.spec.ts
 │   │   │   ├── schema-bootstrap.ts
 │   │   │   ├── scripts
+│   │   │   │   ├── benchmark-historic-backfill.spec.ts
+│   │   │   │   ├── benchmark-historic-backfill.ts
+│   │   │   │   ├── build-certified-history-source.postgres.spec.ts
+│   │   │   │   ├── build-certified-history-source.spec.ts
+│   │   │   │   ├── build-certified-history-source.ts
+│   │   │   │   ├── certified-history-repair-audit.migration.spec.ts
+│   │   │   │   ├── certified-history-repair-audit.postgres.spec.ts
+│   │   │   │   ├── complete-certified-history-restoration.postgres.spec.ts
+│   │   │   │   ├── complete-certified-history-restoration.spec.ts
+│   │   │   │   ├── complete-certified-history-restoration.ts
 │   │   │   │   ├── confirm-open-ended-predecessor.spec.ts
 │   │   │   │   ├── confirm-open-ended-predecessor.ts
+│   │   │   │   ├── historic-backfill-operator.spec.ts
+│   │   │   │   ├── historic-backfill-operator.ts
 │   │   │   │   ├── publish-datagouv-communes.spec.ts
 │   │   │   │   ├── publish-datagouv-communes.ts
 │   │   │   │   ├── publish-datagouv-historique-communes.ts
@@ -357,12 +421,19 @@
 │   │   │   │   ├── recompute-commune-statistics.ts
 │   │   │   │   ├── reconcile-sandre-zones.spec.ts
 │   │   │   │   ├── reconcile-sandre-zones.ts
+│   │   │   │   ├── restore-certified-commune-history.postgres.spec.ts
+│   │   │   │   ├── restore-certified-commune-history.spec.ts
+│   │   │   │   ├── restore-certified-commune-history.ts
+│   │   │   │   ├── restore-missing-commune-history.spec.ts
+│   │   │   │   ├── restore-missing-commune-history.ts
 │   │   │   │   └── sandre-reconciliation-plans
 │   │   │   │       ├── 2026-08-15-prod-sandre-audit-blockers.json
 │   │   │   │       └── 2026-08-15-prod-sandre-unblock.json
 │   │   │   ├── shared
 │   │   │   │   ├── arrete-date-continuity.spec.ts
 │   │   │   │   ├── arrete-date-continuity.ts
+│   │   │   │   ├── arrete-public-update.spec.ts
+│   │   │   │   ├── arrete-public-update.ts
 │   │   │   │   ├── mail-rendering.spec.ts
 │   │   │   │   ├── services
 │   │   │   │   │   ├── mail.service.ts
@@ -440,12 +511,15 @@
 │   │   │   │   ├── sandre-zone-governance.migration.spec.ts
 │   │   │   │   ├── sandre-zone-governance.spec.ts
 │   │   │   │   ├── sandre-zone-governance.ts
+│   │   │   │   ├── sandre-zone-lkg-approvals.spec.ts
+│   │   │   │   ├── sandre-zone-lkg-approvals.ts
 │   │   │   │   ├── sandre-zone-reconciliation-actions.spec.ts
 │   │   │   │   ├── sandre-zone-reconciliation-actions.ts
 │   │   │   │   ├── sandre-zone-reconciliation.spec.ts
 │   │   │   │   ├── sandre-zone-reconciliation.ts
 │   │   │   │   ├── sandre-zone-sync-approvals.spec.ts
 │   │   │   │   ├── sandre-zone-sync-approvals.ts
+│   │   │   │   ├── sandre-zone-sync-approved-references.spec.ts
 │   │   │   │   ├── sandre-zone-sync-approved-references.ts
 │   │   │   │   ├── sandre-zone-sync.spec.ts
 │   │   │   │   ├── sandre-zone-sync.ts
@@ -459,6 +533,7 @@
 │   │   │   │   ├── historic-department-checkpoint.migration.spec.ts
 │   │   │   │   ├── historic-department-checkpoint.service.spec.ts
 │   │   │   │   ├── historic-department-checkpoint.service.ts
+│   │   │   │   ├── legacy-historic-empty-geometries.ts
 │   │   │   │   ├── pmtiles-generation.spec.ts
 │   │   │   │   ├── pmtiles-generation.ts
 │   │   │   │   ├── statistic-cache-boundary.postgres.spec.ts
@@ -467,9 +542,12 @@
 │   │   │   │   ├── zone_alerte_computed.service.ts
 │   │   │   │   └── zone_alerte_computed_historic.service.ts
 │   │   │   └── zone_publication
+│   │   │       ├── public-mutation.ts
+│   │   │       ├── public-source-revision.migration.spec.ts
 │   │   │       ├── statistic_publication_activation.migration.spec.ts
 │   │   │       ├── typeorm-query-result.spec.ts
 │   │   │       ├── typeorm-query-result.ts
+│   │   │       ├── zone_publication.config.spec.ts
 │   │   │       ├── zone_publication.config.ts
 │   │   │       ├── zone_publication.controller.ts
 │   │   │       ├── zone_publication.migration.spec.ts
@@ -541,7 +619,8 @@
 │   │   │   │   │   ├── CommuneTable.vue
 │   │   │   │   │   ├── DepartementChart.vue
 │   │   │   │   │   ├── DepartementTable.vue
-│   │   │   │   │   └── Filter.vue
+│   │   │   │   │   ├── Filter.vue
+│   │   │   │   │   └── StatisticDataStatus.vue
 │   │   │   │   ├── gestes
 │   │   │   │   │   ├── Callout.vue
 │   │   │   │   │   └── Card.vue
@@ -581,6 +660,7 @@
 │   │   │   │   ├── address.dto.ts
 │   │   │   │   ├── arrete.dto.ts
 │   │   │   │   ├── bassinVersant.dto.ts
+│   │   │   │   ├── data-status.dto.ts
 │   │   │   │   ├── departement.dto.ts
 │   │   │   │   ├── geo.dto.ts
 │   │   │   │   ├── niveauGravite.ts
@@ -589,6 +669,7 @@
 │   │   │   │   ├── restriction.dto.ts
 │   │   │   │   ├── subscription.dto.ts
 │   │   │   │   ├── usage.dto.ts
+│   │   │   │   ├── zone-availability.dto.ts
 │   │   │   │   ├── zone-publication.dto.ts
 │   │   │   │   └── zone.dto.ts
 │   │   │   ├── env.d.ts
@@ -669,21 +750,27 @@
 │   │   │   └── utils
 │   │   │       ├── address-combobox.ts
 │   │   │       ├── date-sort.ts
+│   │   │       ├── department-availability.ts
 │   │   │       ├── fetch-response.ts
 │   │   │       ├── focus-management.ts
 │   │   │       ├── form-validation.ts
+│   │   │       ├── historic-map-manifest.ts
 │   │   │       ├── index.ts
 │   │   │       ├── map-locale.ts
 │   │   │       ├── map-popup-content.ts
 │   │   │       ├── modal-scroll-lock.ts
 │   │   │       ├── new-window-links.ts
 │   │   │       ├── pmtiles.ts
+│   │   │       ├── png-download.ts
 │   │   │       ├── pwa-cache-policy.ts
+│   │   │       ├── restriction-conflicts.ts
 │   │   │       ├── retryable-initializer.ts
 │   │   │       ├── retryable-task.ts
+│   │   │       ├── statistic-data-status.ts
 │   │   │       ├── tab-navigation.ts
 │   │   │       ├── table-pagination.ts
 │   │   │       ├── tally-popup.ts
+│   │   │       ├── zone-availability.ts
 │   │   │       ├── zone-publication.ts
 │   │   │       └── zone-source-transition.ts
 │   │   ├── cypress
@@ -728,12 +815,15 @@
 │   │   ├── test
 │   │   │   ├── a11y-colors.test.mjs
 │   │   │   ├── address-combobox.test.mjs
+│   │   │   ├── degraded-data-contract.test.mjs
+│   │   │   ├── department-table-availability.test.mjs
 │   │   │   ├── document-pages-accessibility.test.mjs
 │   │   │   ├── faq-accessibility.test.mjs
 │   │   │   ├── fetch-response.test.mjs
 │   │   │   ├── focus-management.test.mjs
 │   │   │   ├── form-validation.test.mjs
 │   │   │   ├── gesture-semantics.test.mjs
+│   │   │   ├── historic-map-manifest.test.mjs
 │   │   │   ├── image-alternatives.test.mjs
 │   │   │   ├── map-locale.test.mjs
 │   │   │   ├── map-popup-safety.test.mjs
@@ -741,8 +831,10 @@
 │   │   │   ├── modal-accessibility.test.mjs
 │   │   │   ├── modal-scroll-lock.test.mjs
 │   │   │   ├── new-window-links.test.mjs
+│   │   │   ├── png-download.test.mjs
 │   │   │   ├── public-html-safety.test.mjs
 │   │   │   ├── pwa-cache-policy.test.mjs
+│   │   │   ├── restriction-conflicts.test.mjs
 │   │   │   ├── retryable-initializer.test.mjs
 │   │   │   ├── retryable-task.test.mjs
 │   │   │   ├── situation-selectors-accessibility.test.mjs
@@ -755,7 +847,6 @@
 │   └── frontend-admin
 │       ├── .buildpacks
 │       ├── .editorconfig
-│       ├── .eslintignore
 │       ├── .eslintrc.js
 │       ├── .gitignore
 │       ├── .npmrc
@@ -935,11 +1026,13 @@
 │       │   │   ├── regles_commune_yes_distinct.png
 │       │   │   ├── regles_commune_yes_except_aep.png
 │       │   │   └── regles_commune_yes_only_aep.png
-│       │   └── stores
-│       │       ├── alert.ts
-│       │       ├── auth.ts
-│       │       ├── context.ts
-│       │       └── refData.ts
+│       │   ├── stores
+│       │   │   ├── alert.ts
+│       │   │   ├── auth.ts
+│       │   │   ├── context.ts
+│       │   │   └── refData.ts
+│       │   └── utils
+│       │       └── restriction-usage.ts
 │       ├── cypress
 │       │   ├── e2e
 │       │   │   ├── arreteCadre
@@ -967,6 +1060,8 @@
 │       ├── package-lock.json
 │       ├── package.json
 │       ├── purgecss.config.js
+│       ├── test
+│       │   └── restriction-usage.test.mjs
 │       └── tsconfig.json
 ├── compose.yaml
 ├── docker
@@ -975,6 +1070,8 @@
 ├── docs
 │   ├── accessibilite
 │   │   └── RGAA_REMEDIATION_CODEX.md
+│   ├── current-statistics-rollout.md
+│   ├── historic-commune-backfill.md
 │   └── zone-publication-rollout.md
 ├── global_shared
 │   ├── entities
@@ -988,6 +1085,14 @@
 │   │   ├── config.entity.ts
 │   │   ├── departement.entity.ts
 │   │   ├── fichier.entity.ts
+│   │   ├── historic_backfill_artifact_task.entity.ts
+│   │   ├── historic_backfill_commune_segment.entity.ts
+│   │   ├── historic_backfill_commune_shadow.entity.ts
+│   │   ├── historic_backfill_department_revision.entity.ts
+│   │   ├── historic_backfill_department_segment.entity.ts
+│   │   ├── historic_backfill_map_manifest_outbox.entity.ts
+│   │   ├── historic_backfill_run.entity.ts
+│   │   ├── historic_backfill_task.entity.ts
 │   │   ├── parametres.entity.ts
 │   │   ├── region.entity.ts
 │   │   ├── restriction.entity.ts
@@ -1044,6 +1149,8 @@
     ├── smoke-statistics-policy.mjs
     ├── smoke-statistics.mjs
     ├── smoke-statistics.test.mjs
+    ├── validate-procfiles.mjs
+    ├── validate-procfiles.test.mjs
     ├── verify-admin-migrations.mjs
     └── verify-pwa-build.mjs
-199 directories, 849 files
+203 directories, 952 files

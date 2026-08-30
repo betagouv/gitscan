@@ -1,24 +1,35 @@
-## Changelog : vigieau (30 derniers jours, au 16 août 2026)
+## Changelog : vigieau (30 derniers jours, au 29/08/2026)
 
 ### Résumé
-Ce mois a été principalement consacré à la mise en conformité de la plateforme avec les normes d'accessibilité numérique (RGAA) et à la fiabilisation des flux de données. Les efforts ont porté sur la correction des erreurs de synchronisation avec les sources officielles (SANDRE, DataGouv) et sur la stabilisation des processus de publication des statistiques et des zones de restriction, garantissant ainsi une information plus précise et inclusive pour tous les utilisateurs.
+Ce mois-ci, les efforts se sont concentrés sur trois axes majeurs : la mise en conformité de l'interface avec les normes d'accessibilité (RGAA), la fiabilisation de l'historique des données de restrictions et l'optimisation des processus de synchronisation avec les sources externes (Sandre). Ces évolutions garantissent une plateforme plus inclusive, des données historiques plus robustes et une meilleure continuité de service lors des mises à jour.
 
 ### Évolutions fonctionnelles
-- **Accessibilité (RGAA) :** Amélioration majeure de l'expérience utilisateur pour les personnes en situation de handicap, incluant la navigation, la gestion du focus, la sémantique des formulaires, la lisibilité des tableaux de données et des cartes, ainsi que les contrastes visuels.
-- **Fiabilité des données :** Correction de l'historique des restrictions par commune et amélioration de la précision des données de zones de restriction.
-- **Suivi de service :** Ajout d'un indicateur de santé pour la synchronisation des publications.
+- **Accessibilité (RGAA) :** Améliorations significatives pour l'utilisation par tous les publics :
+    - Correction de la navigation, de la gestion du focus et de la hiérarchie du contenu.
+    - Mise en conformité des formulaires, des champs de recherche d'adresse et des messages de validation.
+    - Amélioration de l'accessibilité des cartes, des tableaux de données, des cartes de restriction et des boîtes de dialogue.
+    - Optimisation du contraste et de la sémantique des liens et images.
+- **Expérience utilisateur :**
+    - Garantie de l'affichage des dernières restrictions d'eau connues par les utilisateurs pendant les phases de mise à jour des données.
+    - Correction et amélioration de la fonction de téléchargement des fichiers GeoJSON.
 
 ### Évolutions techniques
-- **Synchronisation et intégrité des données :**
-    - Résolution des dérives de schémas (schema drift) lors de la synchronisation avec le SANDRE [#36](https://github.com/MTES-MCT/vigieau/pull/36) [#37](https://github.com/MTES-MCT/vigieau/pull/37).
-    - Sécurisation et atomisation des processus de publication des zones et des statistiques pour éviter toute corruption de données.
-    - Amélioration de la gestion des preuves et des délais de synchronisation MDM (Master Data Management) [#41](https://github.com/MTES-MCT/vigieau/pull/41) [#42](https://github.com/MTES-MCT/vigieau/pull/42).
-- **Infrastructure et CI/CD :**
-    - Mise en place de tests de fumée ("smoke tests") en production pour garantir la disponibilité et la fraîcheur des données [#32](https://github.com/MTES-MCT/vigieau/pull/32) [#33](https://github.com/MTES-MCT/vigieau/pull/33).
-    - Renforcement de la robustesse et de la durabilité des pipelines de déploiement.
-- **Performance et stabilité :**
-    - Optimisation de la reprise d'historique par département et gestion de la mémoire lors de la publication des zones.
-    - Correction de vulnérabilités de sécurité sur les dépendances npm.
+- **Gestion de l'historique et des statistiques :**
+    - Mise en place d'un système de "backfill" (reconstitution de données) distribué avec un plan de contrôle dédié pour gérer la charge de production.
+    - Amélioration de la résilience des processus de publication historique et de la gestion des snapshots statistiques.
+    - Optimisation des performances via la compaction des données de réparation et l'indexation des communes par département.
+- **Synchronisation et précision des données :**
+    - Amélioration de la précision géométrique lors de la synchronisation avec les données Sandre [#46](https://github.com/MTES-MCT/vigieau/pull/46).
+    - Renforcement de la fiabilité de la réconciliation des données Sandre (gestion des preuves MDM et des cas limites).
+    - Sécurisation de l'atomicité des publications de zones pour éviter les états de données incohérents.
+- **Infrastructure et performance :**
+    - Optimisation du traitement des fichiers cartographiques (PMTiles et Tippecanoe).
+    - Amélioration de la robustesse des pipelines de monitoring (smoke tests) en production.
 
 ### Autres changements
-- **Documentation :** Définition de la branche `master` comme branche canonique [#34](https://github.com/MTES-MCT/vigieau/pull/34) et établissement d'un plan de remédiation pour l'accessibilité.
+- **Documentation :**
+    - Établissement d'un plan de remédiation RGAA.
+    - Documentation des opérations de "backfill" historique et de la branche `master` comme branche canonique.
+- **CI/CD et Maintenance :**
+    - Renforcement des politiques de fraîcheur des données et des tests de santé (smoke tests) dans les pipelines CI/CD.
+    - Mise à jour des dépendances pour corriger des vulnérabilités de sécurité.
