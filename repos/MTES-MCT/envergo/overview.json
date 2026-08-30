@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/MTES-MCT/envergo",
   "name": "envergo",
-  "description": "Améliorer la prise en compte de l'environnement dans les projets d'urbanisme via des outils de simulation et de gestion de demandes d'avis réglementaires.",
+  "description": "Solution visant à améliorer la prise en compte de l'environnement dans les projets d'urbanisme. Elle permet de réaliser des simulations réglementaires et de gérer les avis environnementaux.",
   "language": "Python",
   "features": [
     "Simulation & Calcul",
@@ -16,50 +16,53 @@
     "Django",
     "PostgreSQL",
     "PostGIS",
+    "Scaleway S3",
     "Leaflet",
     "Vue.js",
     "DSFR",
     "Playwright",
-    "pytest",
-    "Scaleway S3"
+    "Gunicorn",
+    "Nginx"
   ],
   "components": [
-    "Django",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
     "Design System (DSFR & UI libs)",
     "Docker & Conteneurs",
-    "Tests",
+    "Django",
     "SIG & Géospatial",
-    "Serveurs web & Proxy"
+    "CI/CD & Déploiement",
+    "Tests",
+    "Serveurs web & Proxy",
+    "Stockage objet"
   ],
   "auth": {
     "methods": [
       "email-password",
       "session"
-    ],
-    "providers": []
+    ]
   },
   "tests": [
     "pytest",
+    "pytest-django",
+    "factory_boy",
     "Playwright"
   ],
   "workflows": [
-    "GitHub Actions"
+    "ci.yml",
+    "s3_backup.yml"
   ],
   "lastActivity": "2026-08-25T11:15:22+02:00",
   "status": "active",
-  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Environnement & Énergie",
     "SIG & Géospatial",
     "Python",
-    "Django & FastAPI",
     "Bases de données SQL",
     "Docker & Conteneurs",
     "CI/CD & GitHub Actions",
     "Design System & UI",
-    "Écosystème beta.gouv / État"
+    "Territoire & Collectivités"
   ]
 }
