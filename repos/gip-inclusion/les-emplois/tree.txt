@@ -493,8 +493,6 @@
 │   │   │   ├── employee_record__employee_record.json
 │   │   │   ├── geiq_assessments__assessment_campaign.json
 │   │   │   ├── geiq_assessments__label_infos.json
-│   │   │   ├── gps__follow_up_group.json
-│   │   │   ├── gps__follow_up_group_membership.json
 │   │   │   ├── insertion__genericreferenceitem.json
 │   │   │   ├── insertion__orientation.json
 │   │   │   ├── insertion__service.json
@@ -564,17 +562,10 @@
 │   │   └── utils.py
 │   ├── gps
 │   │   ├── __init__.py
-│   │   ├── admin.py
 │   │   ├── apps.py
-│   │   ├── management
-│   │   │   ├── __init__.py
-│   │   │   └── commands
-│   │   │       ├── __init__.py
-│   │   │       ├── archive_old_gps_memberships.py
-│   │   │       ├── export_beneficiaries_for_advisor.py
-│   │   │       └── import_advisor_information.py
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_remove_followupgroup_beneficiary_and_more.py
 │   │   │   └── __init__.py
 │   │   └── models.py
 │   ├── insertion
@@ -688,7 +679,6 @@
 │   │   │   ├── evaluated_job_applications.py
 │   │   │   ├── evaluated_siaes.py
 │   │   │   ├── evaluation_campaigns.py
-│   │   │   ├── gps.py
 │   │   │   ├── insee_codes.py
 │   │   │   ├── institutions.py
 │   │   │   ├── job_applications.py
@@ -806,6 +796,7 @@
 │   │   │   ├── 0001_initial.py
 │   │   │   ├── 0002_prescriberorganization_prevent_not_required_authorization_unless_other.py
 │   │   │   ├── 0003_prescriberorganization_prescriber_organization_siret_regex.py
+│   │   │   ├── 0004_remove_prescriberorganization_is_gps_authorized.py
 │   │   │   └── __init__.py
 │   │   └── models.py
 │   ├── rdv_insertion
@@ -962,7 +953,6 @@
 │   │   │   ├── duet_date_picker_widget.js
 │   │   │   ├── easymde_config.js
 │   │   │   ├── formset_add_remove_row.js
-│   │   │   ├── gps.js
 │   │   │   ├── hijack_hide.js
 │   │   │   ├── htmx_compat.js
 │   │   │   ├── htmx_dropdown_filter.js
@@ -1021,8 +1011,6 @@
 │   │   │   │   ├── email_inactive_user_body.txt
 │   │   │   │   ├── email_inactive_user_subject.txt
 │   │   │   │   ├── email_jobseeker_created_by_third_party_body.txt
-│   │   │   │   ├── email_jobseeker_created_by_third_party_for_gps_body.txt
-│   │   │   │   ├── email_jobseeker_created_by_third_party_for_gps_subject.txt
 │   │   │   │   ├── email_jobseeker_created_by_third_party_subject.txt
 │   │   │   │   ├── email_jobseeker_email_edited_body.txt
 │   │   │   │   ├── email_jobseeker_email_edited_subject.txt
@@ -1527,24 +1515,6 @@
 │   │   │   │   └── summary_document_box.html
 │   │   │   ├── list_for_geiq.html
 │   │   │   └── list_for_institution.html
-│   │   ├── gps
-│   │   │   ├── group_beneficiary.html
-│   │   │   ├── group_contribution.html
-│   │   │   ├── group_details_base.html
-│   │   │   ├── group_edition.html
-│   │   │   ├── group_list.html
-│   │   │   ├── group_memberships.html
-│   │   │   ├── includes
-│   │   │   │   ├── badge_ended_membership.html
-│   │   │   │   ├── badge_is_referent_certified_membership.html
-│   │   │   │   ├── badge_ongoing_membership.html
-│   │   │   │   ├── member_email.html
-│   │   │   │   ├── member_phone.html
-│   │   │   │   └── memberships_results.html
-│   │   │   ├── join_group.html
-│   │   │   ├── join_group_from_coworker.html
-│   │   │   ├── join_group_from_name_and_email.html
-│   │   │   └── join_group_from_nir.html
 │   │   ├── hijack
 │   │   │   └── notification.html
 │   │   ├── includes
@@ -1630,6 +1600,7 @@
 │   │   │   ├── merge_users.html
 │   │   │   └── merge_users_confirm.html
 │   │   ├── job_seekers_views
+│   │   │   ├── advisors.html
 │   │   │   ├── check_job_seeker_info.html
 │   │   │   ├── check_job_seeker_info_for_hire.html
 │   │   │   ├── contracts.html
@@ -1641,6 +1612,10 @@
 │   │   │   │   └── step_end.html
 │   │   │   ├── details.html
 │   │   │   ├── includes
+│   │   │   │   ├── advisor.html
+│   │   │   │   ├── badge_assignment_duration.html
+│   │   │   │   ├── button_display_advisor_contact_info.html
+│   │   │   │   ├── button_display_last_advisor_contact_info.html
 │   │   │   │   ├── detail_title_content.html
 │   │   │   │   ├── display_contact_info.html
 │   │   │   │   ├── eligibility_diagnosis.html
@@ -1653,7 +1628,7 @@
 │   │   │   │   │   ├── organization_members.html
 │   │   │   │   │   ├── single_checkbox.html
 │   │   │   │   │   └── top_filters.html
-│   │   │   │   ├── last_known_advisor.html
+│   │   │   │   ├── last_advisor.html
 │   │   │   │   ├── list_counter.html
 │   │   │   │   ├── list_job_applications.html
 │   │   │   │   ├── list_reset_filters.html
@@ -1937,6 +1912,7 @@
 │   │   │   ├── __init__.py
 │   │   │   └── commands
 │   │   │       ├── __init__.py
+│   │   │       ├── archive_old_assignments.py
 │   │   │       ├── auto_attribute_company_admins.py
 │   │   │       ├── deduplicate_job_seekers.py
 │   │   │       ├── delete_old_nir_modification_requests.py
@@ -1971,6 +1947,10 @@
 │   │   │   ├── 0056_identity_provider.py
 │   │   │   ├── 0057_jobseekerassignment_last_action_at_and_more.py
 │   │   │   ├── 0058_alter_jobseekerassignment_created_at_and_more.py
+│   │   │   ├── 0059_jobseekerassignment_end_reason_and_more.py
+│   │   │   ├── 0060_fill_jobseeker_assignments_from_gps.py
+│   │   │   ├── 0061_remove_jobseekerprofile_created_by_prescriber_organization.py
+│   │   │   ├── 0062_remove_jobseekerprofile_ft_gps_id.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── notifications.py
@@ -2195,13 +2175,6 @@
 │       ├── geiq_eligibility_views
 │       │   ├── __init__.py
 │       │   └── forms.py
-│       ├── gps
-│       │   ├── __init__.py
-│       │   ├── enums.py
-│       │   ├── forms.py
-│       │   ├── urls.py
-│       │   ├── utils.py
-│       │   └── views.py
 │       ├── home
 │       │   ├── __init__.py
 │       │   ├── urls.py
@@ -2534,15 +2507,6 @@
     │   ├── test_admin.py
     │   ├── test_qpv.py
     │   └── test_zrr.py
-    ├── gps
-    │   ├── __init__.py
-    │   ├── __snapshots__
-    │   │   └── test_views.ambr
-    │   ├── factories.py
-    │   ├── test_admin.py
-    │   ├── test_management_commands.py
-    │   ├── test_models.py
-    │   └── test_views.py
     ├── insertion
     │   ├── __init__.py
     │   ├── __snapshots__
@@ -3069,4 +3033,4 @@
         └── welcoming_tour
             ├── __init__.py
             └── tests.py
-515 directories, 2556 files
+508 directories, 2527 files
