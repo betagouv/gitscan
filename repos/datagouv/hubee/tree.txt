@@ -37,6 +37,7 @@
 │   ├── controllers
 │   │   ├── api
 │   │   │   ├── base_controller.rb
+│   │   │   ├── pings_controller.rb
 │   │   │   └── v1
 │   │   │       ├── data_packages
 │   │   │       │   └── subscriptions_controller.rb
@@ -96,6 +97,8 @@
 │   │       ├── hello_controller.js
 │   │       └── index.js
 │   ├── jobs
+│   │   ├── api
+│   │   │   └── purge_stale_tokens_job.rb
 │   │   ├── application_job.rb
 │   │   └── portail
 │   │       ├── purge_access_decisions_job.rb
@@ -207,6 +210,7 @@
 │   │   ├── active_record_encryption.rb
 │   │   ├── assets.rb
 │   │   ├── content_security_policy.rb
+│   │   ├── doorkeeper.rb
 │   │   ├── dsfr_assets.rb
 │   │   ├── event_subscribers.rb
 │   │   ├── filter_parameter_logging.rb
@@ -217,6 +221,7 @@
 │   │   ├── sentry.rb
 │   │   └── strong_migrations.rb
 │   ├── locales
+│   │   ├── doorkeeper.fr.yml
 │   │   ├── en.yml
 │   │   └── fr.yml
 │   ├── puma.rb
@@ -244,7 +249,9 @@
 │   │   ├── 20260805135858_add_civility_to_agents.rb
 │   │   ├── 20260805141431_add_profile_attributes_to_memberships.rb
 │   │   ├── 20260805141910_create_process_accesses.rb
-│   │   └── 20260806092109_create_access_decisions.rb
+│   │   ├── 20260806092109_create_access_decisions.rb
+│   │   ├── 20260826153010_add_insee_code_to_organization_links.rb
+│   │   └── 20260827133749_create_doorkeeper_tables.rb
 │   ├── queue_schema.rb
 │   ├── schema.rb
 │   └── seeds.rb
@@ -252,7 +259,8 @@
 │   ├── API.md
 │   ├── ARCHITECTURE.md
 │   ├── DATABASE.md
-│   └── OVERVIEW.md
+│   ├── OVERVIEW.md
+│   └── RUNBOOK.md
 ├── features
 │   ├── portail
 │   │   ├── accueil.feature
@@ -305,6 +313,8 @@
 │   │   ├── data_streams.rb
 │   │   ├── memberships.rb
 │   │   ├── notifications.rb
+│   │   ├── oauth_access_tokens.rb
+│   │   ├── oauth_applications.rb
 │   │   ├── organization_links.rb
 │   │   ├── organizations.rb
 │   │   ├── process_accesses.rb
@@ -334,6 +344,8 @@
 │   │           └── deny
 │   │               └── record_refusal_spec.rb
 │   ├── jobs
+│   │   ├── api
+│   │   │   └── purge_stale_tokens_job_spec.rb
 │   │   └── portail
 │   │       ├── purge_access_decisions_job_spec.rb
 │   │       └── purge_provider_sessions_job_spec.rb
@@ -365,6 +377,9 @@
 │   ├── rails_helper.rb
 │   ├── requests
 │   │   ├── api
+│   │   │   ├── oauth
+│   │   │   │   └── token_spec.rb
+│   │   │   ├── ping_spec.rb
 │   │   │   └── v1
 │   │   │       ├── data_packages
 │   │   │       │   └── subscriptions_spec.rb
@@ -379,6 +394,9 @@
 │   │   └── portail
 │   │       ├── dashboard_spec.rb
 │   │       └── sessions_spec.rb
+│   ├── routing
+│   │   └── api
+│   │       └── oauth_routes_spec.rb
 │   ├── spec_helper.rb
 │   ├── support
 │   │   ├── proconnect.rb
@@ -400,4 +418,4 @@
     ├── .keep
     └── javascript
         └── .keep
-115 directories, 287 files
+120 directories, 300 files
