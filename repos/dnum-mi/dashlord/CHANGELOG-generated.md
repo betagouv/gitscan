@@ -1,13 +1,15 @@
-## Changelog : dashlord (30 derniers jours, au 17 août 2026)
+## Changelog : dashlord (30 derniers jours, au 29 août 2026)
 
 ### Résumé
-L'activité de ce mois a été quasi exclusivement dédiée à l'actualisation du catalogue de sites web surveillés. Ces mises à jour garantissent que le tableau de bord continue de fournir des rapports de conformité et de sécurité précis et exhaustifs pour l'ensemble des services de l'État et des préfectures.
+Ce mois a été marqué par une mise à jour massive et exhaustive du périmètre de surveillance. Le tableau de bord a été enrichi et actualisé avec de nouveaux points de contrôle couvrant l'ensemble des préfectures, les services de l'ANTS et divers portails ministériels, garantissant ainsi la fiabilité du suivi de sécurité et de performance des services de l'État.
 
 ### Évolutions fonctionnelles
-- **Mise à jour du périmètre de surveillance** : Actualisation massive de la liste des URLs suivies pour assurer la continuité du monitoring, incluant notamment :
-    - Les services de l'ANTS (permis de conduire, immatriculation, passeport, etc.).
-    - L'ensemble des sites des préfectures de régions et de territoires.
-    - Les portails de services publics (service-public.fr) et les services de l'administration centrale (Sécurité routière, élections, etc.).
+- **Actualisation du catalogue de surveillance** : Mise à jour de la liste des URLs suivies pour inclure ou corriger les accès aux services suivants :
+    - L'ensemble des sites des préfectures (régionales et départementales).
+    - Les services de l'ANTS (permis de conduire, immatriculation, passeport, identité et cartes nationales d'identité).
+    - Les portails de Service-Public.fr.
+    - Divers services du Ministère de l'Intérieur (élections, sécurité routière, gestion des permis, etc.).
+    - Les services liés aux territoires d'outre-mer.
 
 ### Évolutions techniques
-- **Maintenance du reporting** : Mises à jour régulières du workflow GitHub Actions pour la génération et la mise à jour des rapports de conformité.
+- **Maintenance du reporting** : Exécution régulière de tâches de maintenance sur les workflows GitHub Actions pour assurer la mise à jour automatique des rapports de suivi.
