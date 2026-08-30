@@ -788,7 +788,9 @@
 │   │   ├── 089-session-persist.md
 │   │   ├── 090-runtime-operational-settings-db-backed.md
 │   │   ├── 091-fallback-skip-route-and-plan-peer-review.md
-│   │   └── 092-product-docs-editorial-sovereignty-and-git-native-source-deltas.md
+│   │   ├── 092-product-docs-editorial-sovereignty-and-git-native-source-deltas.md
+│   │   ├── 093-bot-vars-runtime-settings.md
+│   │   └── 093-model-spec-registry-as-a-leaf-package.md
 │   ├── architecture.md
 │   ├── asymptote-bench.md
 │   ├── async-interaction.md
@@ -1362,6 +1364,7 @@
 │   │   │   └── mirror_test.go
 │   │   ├── cost
 │   │   │   ├── cost.go
+│   │   │   ├── cost_specrate_test.go
 │   │   │   └── cost_test.go
 │   │   ├── delegate
 │   │   │   ├── ask_user_options_test.go
@@ -1554,9 +1557,8 @@
 │   │   │   ├── model_override.go
 │   │   │   ├── model_override_test.go
 │   │   │   ├── modelspec.go
-│   │   │   ├── modelspecs.go
-│   │   │   ├── modelspecs_consensus_test.go
-│   │   │   ├── modelspecs_test.go
+│   │   │   ├── modelspecs_merge.go
+│   │   │   ├── modelspecs_merge_test.go
 │   │   │   ├── network_retry_test.go
 │   │   │   ├── openai_forfait_ctx_test.go
 │   │   │   ├── permission_gate_test.go
@@ -1595,6 +1597,10 @@
 │   │   │   ├── validate.go
 │   │   │   ├── validate_test.go
 │   │   │   └── wire_model_test.go
+│   │   ├── modelspecs
+│   │   │   ├── consensus_test.go
+│   │   │   ├── modelspecs.go
+│   │   │   └── modelspecs_test.go
 │   │   ├── permission
 │   │   │   ├── grants_from_test.go
 │   │   │   ├── marker.go
@@ -1839,6 +1845,7 @@
 │   │   ├── migrate_run_paths_test.go
 │   │   ├── models.go
 │   │   ├── models_pricing.go
+│   │   ├── models_pricing_test.go
 │   │   ├── models_test.go
 │   │   ├── output.go
 │   │   ├── plugin.go
@@ -2091,6 +2098,7 @@
 │   │   │   ├── diag_codes_test.go
 │   │   │   ├── diagnostics_codes.go
 │   │   │   ├── env_expand_test.go
+│   │   │   ├── env_overlay_test.go
 │   │   │   ├── events_test.go
 │   │   │   ├── expand_groups.go
 │   │   │   ├── expand_groups_test.go
@@ -2441,6 +2449,7 @@
 │   │   ├── pat.go
 │   │   └── pat_test.go
 │   ├── platformcfg
+│   │   ├── botvars_liveness_test.go
 │   │   ├── platformcfg.go
 │   │   ├── platformcfg_test.go
 │   │   └── store.go
@@ -2921,6 +2930,7 @@
 │   │   │   ├── publisher.go
 │   │   │   ├── publisher_budget_overrides_test.go
 │   │   │   ├── publisher_cancel_test.go
+│   │   │   ├── publisher_fallback_test.go
 │   │   │   ├── publisher_model_overrides_test.go
 │   │   │   ├── publisher_orgid_test.go
 │   │   │   ├── publisher_resume_test.go
@@ -2944,7 +2954,7 @@
 │   │   ├── filesystem_test.go
 │   │   ├── filter.go
 │   │   ├── filter_test.go
-│   │   ├── forge_*.go  (31 files)
+│   │   ├── forge_*.go  (32 files)
 │   │   ├── generic_secrets_routes.go
 │   │   ├── gosafe.go
 │   │   ├── gosafe_errtrack_test.go
@@ -2974,6 +2984,8 @@
 │   │   ├── middleware_configshare.go
 │   │   ├── middleware_test.go
 │   │   ├── middleware_webhook.go
+│   │   ├── models_routes.go
+│   │   ├── models_routes_test.go
 │   │   ├── notifications_routes.go
 │   │   ├── notifications_routes_test.go
 │   │   ├── oauth_routes.go
@@ -3600,6 +3612,8 @@
 │   │   │   │   ├── LibraryItemCard.tsx
 │   │   │   │   └── LibraryPanel.tsx
 │   │   │   ├── MissingCLIBanner.tsx
+│   │   │   ├── ModelCapsCaption.test.tsx
+│   │   │   ├── ModelCapsCaption.tsx
 │   │   │   ├── Panels
 │   │   │   │   ├── BotMetadataForm.tsx
 │   │   │   │   ├── CommentsEditor.tsx
@@ -4034,6 +4048,8 @@
 │   │   │   ├── useInlineSubbotData.ts
 │   │   │   ├── useInspectorMode.ts
 │   │   │   ├── useLayoutPersistence.ts
+│   │   │   ├── useModelCapabilities.test.ts
+│   │   │   ├── useModelCapabilities.ts
 │   │   │   ├── useNow.ts
 │   │   │   ├── useProjectInfo.ts
 │   │   │   ├── useProjectScopeSync.ts
@@ -4096,6 +4112,8 @@
 │   │   │   ├── duration.ts
 │   │   │   ├── editorDeepLink.test.ts
 │   │   │   ├── editorDeepLink.ts
+│   │   │   ├── effectiveModel.test.ts
+│   │   │   ├── effectiveModel.ts
 │   │   │   ├── errorHints.test.ts
 │   │   │   ├── errorHints.ts
 │   │   │   ├── eventIter.ts
@@ -4129,6 +4147,8 @@
 │   │   │   ├── localStorageFlag.ts
 │   │   │   ├── loopLabel.test.ts
 │   │   │   ├── loopLabel.ts
+│   │   │   ├── modelCapsTooltip.test.ts
+│   │   │   ├── modelCapsTooltip.ts
 │   │   │   ├── modelLabel.test.ts
 │   │   │   ├── modelLabel.ts
 │   │   │   ├── nodeDetailGraph.test.ts
@@ -11875,4 +11895,4 @@
                 ├── pbkdf.go
                 ├── pkcs12.go
                 └── safebags.go
-1667 directories, 11151 files
+1668 directories, 11171 files
