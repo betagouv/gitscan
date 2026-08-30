@@ -1,77 +1,67 @@
 {
   "url": "https://github.com/betagouv/portail-rse",
   "name": "portail-rse",
-  "description": "Le portail RSE a pour objectif de simplifier la démarche de collecte et de suivi des informations relatives à la Responsabilité Sociétale des Entreprises (RSE). Il permet aux entreprises de répondre à leurs obligations en matière de RSE de manière centralisée et efficace.",
+  "description": "Un portail permettant aux entreprises de connaître et de répondre à leurs obligations en matière de Responsabilité Sociétale des Entreprises (RSE), notamment via la VSME.",
   "language": "Python",
   "features": [
-    "Gestion documentaire & Fichiers",
-    "API & Intégrations",
-    "Authentification & Accès",
-    "Statistiques & Rapports",
-    "Recherche & Filtres",
-    "Gestion des utilisateurs & Permissions",
     "Formulaires & Démarches",
-    "Notifications & Alertes",
-    "Sécurité & Conformité",
-    "Données & Schémas"
+    "Statistiques & Rapports",
+    "Authentification & Accès",
+    "Gestion des utilisateurs & Permissions",
+    "Administration & Backoffice",
+    "Visualisation de données & Cartographie"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": "Professionnels",
   "dependencies": [
     "Django",
+    "Svelte",
     "PostgreSQL",
-    "requests",
-    "psycopg",
-    "dj-database-url",
-    "whitenoise",
-    "sentry-sdk",
-    "django-vite",
-    "aiohttp",
-    "responses",
-    "geojson"
+    "Redis",
+    "MinIO",
+    "ProConnect",
+    "Metabase",
+    "Sentry"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
+    "Angular / Svelte / Autres SPA",
     "Python (scripts & backend)",
+    "Design System (DSFR & UI libs)",
     "Docker & Conteneurs",
-    "Django",
-    "HTML / CSS / Templates visuels"
+    "Authentification (composant)",
+    "ORM & Accès aux données",
+    "Stockage objet"
   ],
   "auth": {
     "methods": [
-      "email-password",
       "oauth2",
-      "sso"
+      "session"
     ],
     "providers": [
-      "Proconnect"
+      "ProConnect"
     ]
   },
   "tests": [
-    "pytest"
+    "pytest",
+    "pytest-django",
+    "pytest-mock"
   ],
   "workflows": [
     "test.yml"
   ],
-  "lastActivity": "2026-07-23T17:58:51+02:00",
+  "lastActivity": "2026-08-28T10:54:55+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
     "Python",
     "Bases de données SQL",
-    "Sécurité & Auth",
+    "Design System & UI",
+    "Docker & Conteneurs",
     "Environnement & Énergie",
-    "JavaScript",
-    "Reporting & BI",
-    "Git & DevOps"
+    "Accessibilité"
   ]
 }
