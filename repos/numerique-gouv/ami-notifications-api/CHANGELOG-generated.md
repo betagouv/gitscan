@@ -1,28 +1,31 @@
-## Changelog : ami-notifications-api (30 derniers jours, au 18 août 2026)
+## Changelog : ami-notifications-api (30 derniers jours, au 28 août 2026)
 
 ### Résumé
-Ce mois-ci, l'application a franchi une étape importante avec l'introduction d'un nouveau module de "Services" et d'un outil de gestion renforcé pour les administrateurs. L'expérience utilisateur a également été fluidifiée, notamment via une refonte de l'écran d'accueil et une gestion plus intuitive de l'authentification.
+Ce mois-ci, le projet a franchi des étapes majeures concernant la sécurité et l'expérience utilisateur. L'authentification a été modernisée avec l'intégration des Passkeys et un renforcement des processus FranceConnect. L'interface a également été enrichie par une refonte de l'affichage des notifications (suivis), une meilleure présentation des services (SOS, étapes) et une gestion plus fluide des consentements pour les partenaires.
 
 ### Évolutions fonctionnelles
-- **Nouveau module "Services"** : ajout d'un menu dédié, de pages de détails avec rendu Markdown et d'un système de déploiement progressif via des feature flags [#943](https://github.com/numerique-gouv/ami-notifications-api/issues/943).
-- **Administration renforcée** : nouveaux outils pour les agents permettant de gérer (ajouter, modifier, supprimer, lister) les services avec un suivi des modifications (audit logs) [#1054](https://github.com/numerique-gouv/ami-notifications-api/issues/1054).
-- **Amélioration des suivis (Followups)** : ajout de pages de détails et amélioration de l'affichage des informations partenaires [#266](https://github.com/numerique-gouv/ami-notifications-api/issues/266).
-- **Expérience utilisateur (UX)** :
-    - Refonte de l'écran de démarrage (mise en page, titres et liens d'aide) [#1098](https://github.com/numerique-gouv/ami-notifications-api/issues/1098).
-    - Affichage de promotions automatiques sur la page d'accueil liées aux vacances scolaires [#1001](https://github.com/numerique-gouv/ami-notifications-api/issues/1001).
-    - Optimisation du flux d'authentification (nouvelle page de connexion et meilleure gestion des erreurs FranceConnect) [#1152](https://github.com/numerique-gouv/ami-notifications-api/issues/1152).
+- **Authentification et accès** : 
+    - Support des Passkeys pour Android et iOS avec une gestion améliorée des erreurs et des redirections lors du processus d'authentification [#1088](https://github.com/numerique-gouv/ami-notifications-api/issues/1088), [#1185](https://github.com/numerique-gouv/ami-notifications-api/issues/1185), [#1179](https://github.com/numerique-gouv/ami-notifications-api/issues/1179).
+    - Amélioration du parcours de connexion avec une redirection automatique vers la page de login si l'utilisateur n'est pas connecté [#1152](https://github.com/numerique-gouv/ami-notifications-api/issues/1152).
+- **Interface utilisateur (UI/UX)** :
+    - Refonte complète de l'écran de démarrage pour améliorer la clarté et l'ergonomie [#1098](https://github.com/numerique-gouv/ami-notifications-api/issues/1098).
+    - Amélioration de l'affichage des notifications (suivis) avec une gestion de hiérarchie complexe (sous-éléments) [#825](https://github.com/numerique-gouv/ami-notifications-api/issues/825).
+    - Intégration de nouveaux services (SOS et étapes) avec des icônes et des catégories dédiées [#1048](https://github.com/numerique-gouv/ami-notifications-api/issues/1048).
+    - Ajout de fonctionnalités de promotion automatique pour les vacances scolaires sur la page d'accueil [#1001](https://github.com/numerique-gouv/ami-notifications-api/issues/1001).
     - Ajout de bannières informatives sur les pages d'édition [#769](https://github.com/numerique-gouv/ami-notifications-api/issues/769).
-    - Corrections diverses : boutons de préférences, initialisation des dates et corrections de textes [#1107](https://github.com/numerique-gouv/ami-notifications-api/issues/1107), [#1076](https://github.com/numerique-gouv/ami-notifications-api/issues/1076), [#1170](https://github.com/numerique-gouv/ami-notifications-api/issues/1170), [#1157](https://github.com/numerique-gouv/ami-notifications-api/issues/1157).
-- **Partenariat** : intégration du partenaire "RDV SP" [#1130](https://github.com/numerique-gouv/ami-notifications-api/issues/1130).
 
 ### Évolutions techniques
-- **Sécurité et API** : mise en place de la limitation de débit (rate limiting) pour les clés d'accès et ajout d'un endpoint de vérification [#1096](https://github.com/numerique-gouv/ami-notifications-api/issues/1096). Finalisation de la migration des champs de notification vers l'API v2 [#1005](https://github.com/numerique-gouv/ami-notifications-api/issues/1005).
-- **Infrastructure et Build** : optimisation du build avec Vite pour le proxying des URLs Django et simplification de la gestion des variables d'environnement [#1138](https://github.com/numerique-gouv/ami-notifications-api/issues/1138), [#1095](https://github.com/numerique-gouv/ami-notifications-api/issues/1095).
-- **CI/CD et Qualité** : ajout d'une action GitHub pour les tests système [#10](https://github.com/numerique-gouv/ami-notifications-api/issues/10) et d'une vérification des messages de commit en pré-commit [#157](https://github.com/numerique-gouv/ami-notifications-api/issues/157).
-- **Refactoring** : optimisation des composants frontend (modales, navigation et gestion des URLs de services) [#979](https://github.com/numerique-gouv/ami-notifications-api/issues/979), [#950](https://github.com/numerique-gouv/ami-notifications-api/issues/950), [#1063](https://github.com/numerique-gouv/ami-notifications-api/issues/1063).
-- **Tests** : amélioration de la gestion des secrets de test et suppression de tests obsolètes [#1154](https://github.com/numerique-gouv/ami-notifications-api/issues/1154), [#1165](https://github.com/numerique-gouv/ami-notifications-api/issues/1165).
+- **Sécurité et API** :
+    - Renforcement de la sécurité FranceConnect via la vérification des signatures des tokens et l'utilisation de l'algorithme ES256 [#1219](https://github.com/numerique-gouv/ami-notifications-api/issues/1219), [#1172](https://github.com/numerique-gouv/ami-notifications-api/issues/1172).
+    - Mise en place d'une limitation de débit (rate limiting) sur les endpoints de gestion des clés d'accès [#1096](https://github.com/numerique-gouv/ami-notifications-api/issues/1096).
+    - Création de nouveaux endpoints permettant aux partenaires de gérer et de consulter le consentement des utilisateurs [#1192](https://github.com/numerique-gouv/ami-notifications-api/issues/1192), [#1159](https://github.com/numerique-gouv/ami-notifications-api/issues/1159).
+    - Finalisation de la migration des champs de l'API de notification vers la version 2 [#1005](https://github.com/numerique-gouv/ami-notifications-api/issues/1005).
+- **Architecture et Infrastructure** :
+    - Transition vers Vite pour le proxying des URLs Django afin d'optimiser le développement frontend [#1138](https://github.com/numerique-gouv/ami-notifications-api/issues/1138).
+    - Publication des fichiers de configuration nécessaires au lien d'application mobile (Android/iOS) via les dossiers `.well-known` [#1088](https://github.com/numerique-gouv/ami-notifications-api/issues/1088).
+    - Ajout de logs d'audit pour suivre les modifications effectuées sur les services dans l'interface d'administration [#1054](https://github.com/numerique-gouv/ami-notifications-api/issues/1054).
+    - Intégration des tests système dans les workflows GitHub Actions [#10](https://github.com/numerique-gouv/ami-notifications-api/issues/10).
 
 ### Autres changements
-- **Nettoyage** : suppression d'icônes et de code inutilisés [#445](https://github.com/numerique-gouv/ami-notifications-api/issues/445), [#266](https://github.com/numerique-gouv/ami-notifications-api/issues/266).
-- **Standardisation** : passage à l'attribut de langue français et utilisation des apostrophes typographiques [#1118](https://github.com/numerique-gouv/ami-notifications-api/issues/1118), [#1161](https://github.com/numerique-gouv/ami-notifications-api/issues/1161).
-- **Documentation** : affinement du schéma de l'API [#876](https://github.com/numerique-gouv/ami-notifications-api/issues/876).
+- **Configuration** : Ajout d'un template pour les variables d'environnement (`.env.local.template`) [#1095](https://github.com/numerique-gouv/ami-notifications-api/issues/1095).
+- **Maintenance** : Nettoyage du code (suppression d'icônes inutilisées, correction de fautes de frappe et de typographie) et ajout de hooks de pré-commit pour la validation des messages de commit [#157](https://github.com/numerique-gouv/ami-notifications-api/issues/157).

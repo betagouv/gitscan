@@ -1,5 +1,6 @@
 .
 ├── .buildpacks
+├── .editorconfig
 ├── .env
 ├── .env.development
 ├── .env.local.template
@@ -183,15 +184,14 @@
 │   │   │   ├── test_all.py
 │   │   │   ├── test_check_auth.py
 │   │   │   ├── test_login.py
-│   │   │   ├── test_login_ami_fi.py
 │   │   │   ├── test_login_callback.py
 │   │   │   ├── test_login_callback_address.py
-│   │   │   ├── test_login_callback_ami_fi.py
 │   │   │   ├── test_login_callback_error.py
+│   │   │   ├── test_login_callback_relogin.py
 │   │   │   ├── test_login_callback_silent_ami_fi.py
 │   │   │   ├── test_login_silent_ami_fi.py
 │   │   │   ├── test_logout.py
-│   │   │   └── test_providers.py
+│   │   │   └── test_relogin.py
 │   │   ├── urls.py
 │   │   └── views.py
 │   ├── conftest.py
@@ -210,6 +210,7 @@
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
 │   │   │   ├── 0002_fi_session.py
+│   │   │   ├── 0003_user_passkey.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── serializers.py
@@ -218,10 +219,14 @@
 │   │   │       └── authorize.html
 │   │   ├── tests
 │   │   │   ├── __init__.py
+│   │   │   ├── conftest.py
 │   │   │   ├── test_authorize.py
 │   │   │   ├── test_delete-expired-fi-sessions_command.py
+│   │   │   ├── test_jwks.py
 │   │   │   ├── test_logout.py
 │   │   │   ├── test_models.py
+│   │   │   ├── test_passkey_authentication.py
+│   │   │   ├── test_passkey_registration.py
 │   │   │   ├── test_token.py
 │   │   │   └── test_userinfo.py
 │   │   ├── utils.py
@@ -344,6 +349,9 @@
 │   │   │   ├── 0002_service.py
 │   │   │   ├── 0003_charfields.py
 │   │   │   ├── 0004_restricted_to.py
+│   │   │   ├── 0005_service_kind.py
+│   │   │   ├── 0006_service_kind.py
+│   │   │   ├── 0007_service_icon.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── schemas.py
@@ -374,8 +382,9 @@
 │   │   ├── tests
 │   │   │   ├── __init__.py
 │   │   │   ├── test.csv
-│   │   │   ├── test_all.py
+│   │   │   ├── test_consent.py
 │   │   │   ├── test_create_hashes.py
+│   │   │   ├── test_get_fc_userinfo.py
 │   │   │   ├── test_registration.py
 │   │   │   ├── test_results.csv
 │   │   │   └── test_utils.py
@@ -386,6 +395,7 @@
 │   │   ├── api_views.py
 │   │   ├── apps.py
 │   │   ├── httpx.py
+│   │   ├── jwks_client.py
 │   │   ├── management
 │   │   │   ├── __init__.py
 │   │   │   └── commands
@@ -403,6 +413,13 @@
 │   │       ├── test_generate_identity_tokens_in_file.py
 │   │       ├── test_httpx.py
 │   │       └── test_schema.py
+│   ├── well_known
+│   │   ├── __init__.py
+│   │   ├── tests
+│   │   │   ├── __init__.py
+│   │   │   └── test_all.py
+│   │   ├── urls.py
+│   │   └── views.py
 │   └── wsgi.py
 ├── bin
 │   ├── check-no-vanilla-httpx-usage.sh
@@ -485,6 +502,12 @@
 │   │   │   │   │   ├── Followup.svelte.test.ts
 │   │   │   │   │   ├── FollowupItem.svelte
 │   │   │   │   │   ├── FollowupItem.svelte.test.ts
+│   │   │   │   │   ├── FollowupItemDetail.svelte
+│   │   │   │   │   ├── FollowupItemDetail.svelte.test.ts
+│   │   │   │   │   ├── FollowupItemDetailHeader.svelte
+│   │   │   │   │   ├── FollowupItemDetailHeader.svelte.test.ts
+│   │   │   │   │   ├── FollowupParentItemDetail.svelte
+│   │   │   │   │   ├── FollowupParentItemDetail.svelte.test.ts
 │   │   │   │   │   ├── Icon.svelte
 │   │   │   │   │   ├── NavWithBackButton.svelte
 │   │   │   │   │   ├── NavWithBackButton.svelte.test.ts
@@ -572,9 +595,6 @@
 │   │   │   │   ├── edit-preferred-username
 │   │   │   │   │   ├── +page.svelte
 │   │   │   │   │   └── page.svelte.test.ts
-│   │   │   │   ├── fi
-│   │   │   │   │   ├── +page.svelte
-│   │   │   │   │   └── page.svelte.test.ts
 │   │   │   │   ├── followup
 │   │   │   │   │   ├── +page.svelte
 │   │   │   │   │   ├── archived
@@ -587,7 +607,15 @@
 │   │   │   │   │   │               ├── +page.svelte
 │   │   │   │   │   │               ├── +page.ts
 │   │   │   │   │   │               ├── page.svelte.test.ts
-│   │   │   │   │   │               └── page.test.ts
+│   │   │   │   │   │               ├── page.test.ts
+│   │   │   │   │   │               └── subitem
+│   │   │   │   │   │                   └── [subpartner_id]
+│   │   │   │   │   │                       └── [subitem_type]
+│   │   │   │   │   │                           └── [subitem_external_id]
+│   │   │   │   │   │                               ├── +page.svelte
+│   │   │   │   │   │                               ├── +page.ts
+│   │   │   │   │   │                               ├── page.svelte.test.ts
+│   │   │   │   │   │                               └── page.test.ts
 │   │   │   │   │   └── page.svelte.test.ts
 │   │   │   │   ├── forbidden
 │   │   │   │   │   └── +page.svelte
@@ -608,6 +636,9 @@
 │   │   │   │   │   ├── +page.svelte
 │   │   │   │   │   └── page.svelte.test.ts
 │   │   │   │   ├── page.svelte.test.ts
+│   │   │   │   ├── passkey-authentication
+│   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   └── page.svelte.test.ts
 │   │   │   │   ├── preferences
 │   │   │   │   │   ├── +page.svelte
 │   │   │   │   │   ├── notifications
@@ -620,6 +651,9 @@
 │   │   │   │   ├── procedure-17cyber
 │   │   │   │   │   └── +page.svelte
 │   │   │   │   ├── profile
+│   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   └── page.svelte.test.ts
+│   │   │   │   ├── relogin
 │   │   │   │   │   ├── +page.svelte
 │   │   │   │   │   └── page.svelte.test.ts
 │   │   │   │   ├── services
@@ -666,12 +700,15 @@
 │   │   │   │   ├── city-search.svg
 │   │   │   │   ├── community.svg
 │   │   │   │   ├── custom
+│   │   │   │   │   ├── external-link-line.svg
+│   │   │   │   │   ├── flight-land-line.svg
 │   │   │   │   │   ├── infinity-line.svg
 │   │   │   │   │   ├── more-2-fill.svg
 │   │   │   │   │   ├── search-eye-fill.svg
 │   │   │   │   │   ├── search-eye-line.svg
 │   │   │   │   │   └── settings-3-line.svg
-│   │   │   │   └── otv-logo.svg
+│   │   │   │   ├── otv-logo.svg
+│   │   │   │   └── passkeys.svg
 │   │   │   ├── manifest.json
 │   │   │   ├── remixicons
 │   │   │   │   ├── calendar.svg
@@ -700,4 +737,4 @@
 ├── scalingo.json
 ├── uv.lock
 └── vapid_keys.py
-139 directories, 563 files
+146 directories, 593 files
