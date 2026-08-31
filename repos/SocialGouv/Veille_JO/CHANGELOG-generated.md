@@ -1,25 +1,18 @@
 ## Changelog : Veille_JO (30 derniers jours, au 10 août 2026)
 
 ### Résumé
-Ce mois-ci, l'outil de veille a franchi une étape importante dans son automatisation et sa facilité d'utilisation. Les rapports de veille sont désormais publiés automatiquement chaque jour, et la consultation des archives a été grandement simplifiée. La précision de l'extraction des données médicales (unités, tableaux) a également été renforcée pour garantir une fiabilité accrue des rapports.
+Ce mois-ci, l'outil a gagné en autonomie grâce à l'automatisation de la publication des rapports de veille et en offrant une navigation plus fluide dans les archives. La précision de l'extraction des données réglementaires et la flexibilité de l'outil ont également été renforcées.
 
 ### Évolutions fonctionnelles
-- **Amélioration de la consultation des archives** : ajout de filtres de recherche, optimisation de l'affichage des pages archivées et ajout d'un lien de retour vers l'accueil.
-- **Précision des données extraites** : 
-    - Meilleure gestion des nouvelles unités dans les noms de médicaments.
-    - Nettoyage des mots-clés (suppression du terme "spécialité").
-    - Correction de l'extraction des données pour éviter l'inclusion des titres dans les tableaux.
-- **Flexibilité de saisie** : support de plusieurs formats de date pour les recherches, rendant l'outil plus tolérant aux erreurs de saisie.
+- **Amélioration de la consultation des archives** : ajout de filtres, optimisation de l'affichage et intégration d'un lien de retour vers la page d'accueil.
+- **Précision des données extraites** : meilleure gestion des nouvelles unités dans les noms de médicaments, nettoyage des mots-clés et correction du traitement des titres dans les tableaux.
+- **Flexibilité de saisie** : l'outil accepte désormais plusieurs formats de date pour les commandes, évitant ainsi les erreurs d'exécution.
 
 ### Évolutions techniques
-- **Automatisation du déploiement** : mise en place d'une GitHub Action pour la publication quotidienne automatique des rapports de veille sur GitHub Pages.
-- **Distribution simplifiée** : génération de binaires autonomes (via Nuitka) pour Windows, Linux et macOS, facilitant l'installation sans environnement Python complexe.
-- **Robustesse de la CI/CD** : 
-    - Optimisation des workflows pour éviter les alertes d'échec lorsque le Journal Officiel n'est pas encore publié.
-    - Ajout de la possibilité de paramétrer la date de publication directement dans le workflow.
+- **Automatisation du déploiement** : mise en place d'une GitHub Action pour publier quotidiennement le rapport de veille sur GitHub Pages.
+- **Optimisation du CI/CD** : 
+    - Possibilité de spécifier une date précise pour le workflow de publication.
+    - Amélioration de la robustesse des workflows pour éviter les alertes d'échec lorsque le Journal Officiel n'est pas encore publié.
 
 ### Autres changements
-- **Documentation** : 
-    - Ajout des instructions d'installation spécifiques pour macOS.
-    - Centralisation des procédures de tests dans un fichier `TESTS.md`.
-    - Mise à jour de la présentation du projet.
+- **Documentation** : ajout des instructions d'installation pour macOS et réorganisation de la documentation de test dans le fichier `TESTS.md`.
