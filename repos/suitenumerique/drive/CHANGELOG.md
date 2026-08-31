@@ -8,6 +8,23 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [v0.21.2] - 2026-08-25
+
+### Added
+
+- 🔧(helm) schedule the malware detection reconciliation commands
+- ✨(admin) add actions to abandon malware analyses
+
+### Fixed
+
+- 🐛(backend) fix malware analysis processing slots exhaustion
+
+## [v0.21.1] - 2026-08-21
+
+### Fixed
+
+- 🐛(backend) fix malware re-analysis of a file already scanned
+
 ## [v0.21.0] - 2026-08-07
 
 ### Added
@@ -20,6 +37,7 @@ and this project adheres to
 - ✨(backend) add a quota_excluded flag on items
 - ✨(backend) apply per-audience attributes to external api items
 - ✨(backend) add a grant_unlimited_storage command
+- ✨(wopi) verify the WOPI request proof signature
 
 ### Changed
 
@@ -497,7 +515,9 @@ and this project adheres to
 - 🌐(front) add english translation for rename modal
 - 🐛(global) fix wrong Content-Type on specific s3 implementations
 
-[unreleased]: https://github.com/suitenumerique/drive/compare/v0.21.0...main
+[unreleased]: https://github.com/suitenumerique/drive/compare/v0.21.2...main
+[v0.21.2]: https://github.com/suitenumerique/drive/releases/v0.21.2
+[v0.21.1]: https://github.com/suitenumerique/drive/releases/v0.21.1
 [v0.21.0]: https://github.com/suitenumerique/drive/releases/v0.21.0
 [v0.20.0]: https://github.com/suitenumerique/drive/releases/v0.20.0
 [v0.19.0]: https://github.com/suitenumerique/drive/releases/v0.19.0

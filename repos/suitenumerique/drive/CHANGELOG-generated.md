@@ -1,35 +1,21 @@
-## Changelog : drive (30 derniers jours, au 07/08/2026)
+## Changelog : drive (30 derniers jours, au 25 août 2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a franchi une étape importante dans la gestion de l'espace de stockage et la simplification du partage de fichiers. Les utilisateurs bénéficient désormais d'outils plus visuels pour suivre leur quota et de méthodes plus rapides pour partager des documents (partage groupé, importation de contacts). Parallèlement, une attention particulière a été portée à la sécurité, notamment sur les opérations de modification de fichiers et la robustesse de l'infrastructure.
+Ce mois-ci, les efforts se sont concentrés sur le renforcement de la sécurité, notamment pour la détection de fichiers malveillants et la sécurisation de l'édition de documents en ligne. Des outils de gestion du stockage et des corrections d'interface ont également été déployés pour faciliter le travail des administrateurs et des utilisateurs.
 
 ### Évolutions fonctionnelles
-- **Gestion du stockage et des quotas** :
-    - Ajout d'une jauge de stockage visuelle et d'un modal de configuration pour suivre l'utilisation de l'espace.
-    - Amélioration de l'expérience utilisateur lors du dépassement de quota avec des messages d'erreur plus explicites.
-    - Mise à jour automatique de la jauge de stockage lors des actions de déplacement ou de duplication de fichiers.
-    - Possibilité d'exclure certains éléments du calcul du quota de stockage.
-- **Amélioration du partage** :
-    - Introduction du partage d'éléments en masse (batch share).
-    - Possibilité de partager un élément avec des contacts importés directement depuis un fichier.
-- **Interface utilisateur** :
-    - Intégration du widget de messages sur la page d'accueil et via le menu d'aide pour un accès plus rapide.
-    - Correction d'un bug empêchant la fermeture correcte du modal de partage lors d'événements de glisser-déposer.
+- **Administration** : possibilité d'interrompre manuellement une analyse de malware en cours.
+- **Gestion du stockage** : introduction d'un indicateur d'exclusion de quota sur les fichiers et d'une commande pour accorder un stockage illimité.
+- **Sécurité** : scan automatique des fichiers écrits via le protocole d'édition en ligne (WOPI) pour détecter d'éventuels malwares.
+- **Expérience utilisateur** : correction d'un bug de comportement lors du glisser-déposer dans la fenêtre de partage.
+- **API** : application des attributs par audience aux éléments de l'API externe.
 
 ### Évolutions techniques
-- **Sécurité et conformité** :
-    - Renforcement de la sécurité des opérations via WOPI (analyse systématique des fichiers écrits et rejet des cibles de renommage non sécurisées).
-    - Durcissement de la sécurité des images Docker et mise en place d'une liste blanche pour la résolution des fichiers de modèles.
-    - Amélioration de la gestion de la détection de malwares (suppression automatique des enregistrements lors de la purge d'un fichier).
-- **Architecture Backend** :
-    - Implémentation d'un nouveau système local de gestion des droits (entitlements) incluant des limites de stockage par utilisateur.
-    - Refactorisation de la synchronisation des accès des descendants vers un service dédié.
-    - Optimisation de la gestion du cache de stockage pour garantir la cohérence des données lors des écritures.
-    - Migration de l'API des favoris vers un nouvel endpoint (`/items/favorites/`).
-- **Infrastructure et CI/CD** :
-    - Mise à jour de l'environnement de build vers Node 22 pour plusieurs processus (workflows de traduction, construction des mails).
-    - Mise à jour des images de base (Alpine 3.24) et optimisation des Dockerfiles.
+- **Sécurité WOPI** : renforcement de la validation des signatures de requêtes, gestion des clés de preuve client et sécurisation des processus de renommage de fichiers.
+- **Sécurité Backend** : mise en place d'une liste blanche statique pour la résolution des fichiers de modèles.
+- **Infrastructure & CI/CD** : mise à jour des environnements de build vers Node 22 et passage de l'image Docker frontend sur Alpine 3.24.
+- **Automatisation** : planification des commandes de réconciliation pour la détection de malwares via Helm.
 
 ### Autres changements
-- Correction de fautes d'orthographe dans les messages d'erreur relatifs aux quotas.
-- Mise à jour de la documentation du changelog.
+- **Documentation** : mise à jour des notes de version concernant les fonctionnalités d'exclusion de quota.
+- **Maintenance** : normalisation des fins de ligne dans le fichier `yarn.lock`.
