@@ -1,14 +1,14 @@
 {
   "url": "https://github.com/betagouv/aides-agri",
   "name": "aides-agri",
-  "description": "Cette plateforme gère un catalogue des dispositifs d’aide publics destinés aux exploitations agricoles françaises. Elle propose un outil d'administration pour l'édition des aides et un parcours usager pour orienter les agriculteurs vers les dispositifs adaptés.",
+  "description": "Cette plateforme gère un catalogue des aides publiques destinées aux exploitations agricoles françaises. Elle propose un parcours usager pour orienter les agriculteurs et un outil d'administration pour la gestion des dispositifs.",
   "language": "Python",
   "features": [
     "Aides & Éligibilité",
     "Administration & Backoffice",
-    "Recherche & Filtres",
     "Statistiques & Rapports",
-    "Formulaires & Démarches"
+    "Recherche & Filtres",
+    "Données & Schémas"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -19,17 +19,15 @@
     "Sentry",
     "uv",
     "Docker",
-    "Gunicorn",
-    "Brevo"
+    "django-two-factor-auth",
+    "django-htmx"
   ],
   "components": [
-    "Python (scripts & backend)",
     "Django",
     "PostgreSQL & SQL",
+    "Python (scripts & backend)",
     "Docker & Conteneurs",
-    "CI/CD & Déploiement",
-    "Design System (DSFR & UI libs)",
-    "TypeScript / JavaScript"
+    "HTML / CSS / Templates visuels"
   ],
   "auth": {
     "methods": [
@@ -38,8 +36,7 @@
     ]
   },
   "tests": [
-    "pytest",
-    "pytest-django",
+    "Pytest",
     "Cypress",
     "BrowserStack"
   ],
@@ -50,15 +47,14 @@
   ],
   "lastActivity": "2026-08-26T19:04:38+02:00",
   "status": "maintained",
+  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "Python",
-    "Django & FastAPI",
     "Bases de données SQL",
     "Subventions & Finances publiques",
     "Données & Open Data",
-    "CI/CD & GitHub Actions",
     "Docker & Conteneurs",
     "Accessibilité"
   ]
