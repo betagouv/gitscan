@@ -1,46 +1,52 @@
 {
   "url": "https://github.com/gristgouv/grist-docker-image",
   "name": "grist-docker-image",
-  "description": "Ce dépôt contient l'image conteneur pour Grist.gouv, permettant de déployer facilement l'application Grist.",
-  "language": "CSS",
+  "description": "Ce dépôt fournit l'image de conteneur pour Grist.gouv, permettant un déploiement facilité et sécurisé de l'application Grist via Docker.",
+  "language": "Python",
   "features": [
-    "Gestion documentaire & Fichiers"
+    "Infrastructure & Stockage",
+    "Sécurité & Conformité"
   ],
-  "audience": "Professionnels",
-  "dependencies": [],
+  "audience": "Développeurs",
+  "dependencies": [
+    "Grist",
+    "Docker",
+    "Trivy",
+    "GVISOR"
+  ],
   "components": [
-    "Docker & Conteneurs"
+    "Docker & Conteneurs",
+    "CI/CD & Déploiement",
+    "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
       "none"
     ]
   },
-  "tests": [],
+  "tests": "Trivy (analyse de vulnérabilités)",
   "workflows": [
     "autoupdate-grist.yml",
     "docker-build-branches.yaml",
     "docker-build-dependabot.yaml",
-    "docker-build-gvisor.yaml",
     "docker-build-tags.yaml",
     "docker-build-template.yaml",
     "docker-security-scan.yaml"
   ],
-  "lastActivity": "2026-06-26T15:48:24+02:00",
-  "status": "active",
+  "lastActivity": "2026-08-25T10:11:19+02:00",
+  "status": "maintained",
   "license": null,
   "hasDocumentation": true,
   "metrics": {
     "stars": 5,
     "forks": 1,
     "contributors": 0,
-    "openIssues": 2
+    "openIssues": 3
   },
   "tags": [
-    "Docker",
-    "Conteneurs",
-    "Grist",
-    "Déploiement",
-    "CI/CD"
+    "Docker & Conteneurs",
+    "Git & DevOps",
+    "CI/CD & GitHub Actions",
+    "Déploiement & Hosting"
   ]
 }
