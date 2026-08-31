@@ -1,50 +1,50 @@
 {
   "url": "https://github.com/IA-Generative/ocr-api",
   "name": "ocr-api",
-  "description": "Cette API fournit un service d'extraction de texte à partir de fichiers PDF ou d'images via un pipeline de traitement asynchrone. Elle utilise PaddleOCR et propose un SDK Python pour faciliter l'intégration dans divers projets.",
+  "description": "Cette API fournit un service d'extraction de texte à partir de fichiers PDF ou d'images en utilisant un pipeline de traitement asynchrone. Elle intègre des technologies de reconnaissance optique de caractères (OCR) et des modèles de langage (LLM) pour un traitement avancé.",
   "language": "Python",
   "features": [
     "Intelligence Artificielle & NLP",
     "API & Intégrations",
     "Gestion documentaire & Fichiers",
-    "Infrastructure & Stockage"
+    "Authentification & Accès"
   ],
   "audience": "Développeurs",
   "dependencies": [
     "FastAPI",
     "Redis",
     "PaddleOCR",
+    "Celery",
     "PostgreSQL",
     "MinIO",
-    "Celery",
     "Keycloak",
     "Langfuse",
     "Sentry",
+    "OpenAI",
     "Pydantic"
   ],
   "components": [
     "API REST & GraphQL",
     "Python (scripts & backend)",
     "Docker & Conteneurs",
-    "Intelligence Artificielle / ML",
     "Celery & Queue asynchrone",
+    "Intelligence Artificielle / ML",
     "PostgreSQL & SQL",
-    "Microservices & Architecture"
+    "CI/CD & Déploiement",
+    "Authentification (composant)"
   ],
   "auth": {
     "methods": [
       "api-key",
-      "jwt",
-      "sso"
+      "oauth2"
     ],
     "providers": [
       "Keycloak"
     ]
   },
-  "tests": "Tests unitaires, tests d'intégration dans des conteneurs et tests E2E.",
+  "tests": "Tests unitaires, tests d'intégration et tests E2E.",
   "workflows": [
-    "GitHub Actions",
-    "release-please"
+    "GitHub Actions"
   ],
   "lastActivity": "2026-08-22T00:00:00Z",
   "status": "active",

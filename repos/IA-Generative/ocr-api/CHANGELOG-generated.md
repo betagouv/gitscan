@@ -1,17 +1,14 @@
 ## Changelog : ocr-api (30 derniers jours, au 22 août 2026)
 
 ### Résumé
-Les récentes évolutions se sont concentrées sur la stabilisation des capacités de traitement (vision, LLM) et sur un renforcement significatif de la sécurité et de l'automatisation de l'infrastructure de déploiement.
-
-### Évolutions fonctionnelles
-- Correction de bugs impactant les modules de vision et de traitement par LLM.
-- Fiabilisation du système d'authentification via les clés API.
+Les récentes évolutions se sont concentrées sur la sécurisation de l'infrastructure et l'optimisation des processus de déploiement automatisés. L'accent a été mis sur une meilleure observabilité des tâches et un renforcement de la sécurité des conteneurs pour garantir un environnement de production plus robuste.
 
 ### Évolutions techniques
-- **Infrastructure & Déploiement :** Intégration du chart Helm directement dans le dépôt et durcissement de la sécurité des conteneurs (implémentation de systèmes de fichiers en lecture seule et sécurisation des contextes pour PostgreSQL, Redis et RustFS).
-- **CI/CD & Sécurité :** Optimisation des pipelines GitHub Actions (utilisation de runners hébergés, adoption de workflows réutilisables, validation des messages de commit) et amélioration de la visibilité des scans de sécurité.
-- **Observabilité :** Amélioration de la précision du tracing via Langfuse (création d'observations réelles pour chaque tâche) et gestion plus robuste des échecs d'authentification du client.
-- **Maintenance système :** Corrections apportées à la gestion de la base de données (fallback) et au système de logging.
-
-### Autres changements
-- Mise à jour de la configuration de gestion automatique des versions (release-please).
+- **Observabilité**
+  - Amélioration du suivi des tâches via Langfuse : ouverture systématique d'observations pour chaque tâche et gestion propre de la fermeture du client en cas d'échec d'authentification.
+- **Infrastructure & Sécurité**
+  - Migration du chart Helm directement au sein du dépôt pour une meilleure gestion.
+  - Renforcement de la sécurité des conteneurs et des services (Postgres, Redis, RustFS) via l'application de contextes de sécurité et l'utilisation d'un système de fichiers en lecture seule.
+- **CI/CD**
+  - Optimisation des pipelines de déploiement : publication des charts via Cloud π Native, utilisation de runners GitHub-hosted et verrouillage des versions des actions pour plus de stabilité.
+  - Amélioration de la qualité et de la sécurité du code : intégration de contrôles de conformité des messages de commit (commitlint) et automatisation des scans de sécurité avec remontée des résultats dans l'interface GitHub.
