@@ -1,6 +1,11 @@
 .
 ├── .gitignore
+├── LICENSE
 ├── README.md
+├── doc
+│   ├── deploiement.md
+│   ├── maj.md
+│   └── podman.md
 ├── docker
 │   └── app
 │       └── Dockerfile
@@ -10,7 +15,6 @@
     ├── Dockerfile
     ├── Procfile
     ├── Procfile.dev
-    ├── README.md
     ├── Taskfile.yml
     ├── deploy.sh
     ├── docker-compose.yml
@@ -21,10 +25,32 @@
     │   ├── flask_app
     │   │   ├── __init__.py
     │   │   ├── app.py
-    │   │   └── tasks.py
-    │   └── helpers
-    │       ├── __init__.py
-    │       ├── extract.py
-    │       └── token.py
+    │   │   ├── tasks.py
+    │   │   ├── v1
+    │   │   │   └── __init__.py
+    │   │   └── v2
+    │   │       ├── __init__.py
+    │   │       ├── cli.py
+    │   │       ├── config.py
+    │   │       ├── data
+    │   │       │   ├── indicateurs_vsme.csv
+    │   │       │   └── table_codes_portail_rse.csv
+    │   │       ├── error_reporting.py
+    │   │       ├── extraction.py
+    │   │       ├── indicators.py
+    │   │       ├── llm_client.py
+    │   │       ├── logging_utils.py
+    │   │       ├── pdf_loader.py
+    │   │       ├── pipeline.py
+    │   │       ├── prompts.py
+    │   │       ├── retrieval.py
+    │   │       └── stats.py
+    │   ├── helpers
+    │   │   ├── __init__.py
+    │   │   ├── extract.py
+    │   │   ├── notifications.py
+    │   │   └── token.py
+    │   └── tests
+    │       └── test_app.py
     └── uv.lock
-7 directories, 22 files
+12 directories, 43 files
