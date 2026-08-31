@@ -1,32 +1,23 @@
-## Changelog : referentiel-applications (30 derniers jours, au 21 août 2026)
+## Changelog : referentiel-applications (30 derniers jours, au 30 août 2026)
 
 ### Résumé
-Cette période a été marquée par l'introduction d'un moteur de détection de corrélations entre applications et un renforcement significatif des outils d'administration et de sécurité (gestion des utilisateurs, traçabilité accrue). L'expérience utilisateur a également été affinée avec l'ajout de filtres sauvegardés et une amélioration de l'accessibilité, tandis que l'infrastructure a bénéficié d'une mise à jour majeure vers NestJS 11.
+Ce mois-ci, le référentiel a franchi une étape majeure avec l'introduction d'un moteur de détection de corrélations entre applications et la mise en place d'un centre de notifications. Un effort massif a également été porté sur la sécurisation des accès et la gestion proactive du cycle de vie des technologies, notamment via des alertes automatiques de fin de vie.
 
 ### Évolutions fonctionnelles
-- **Moteur de corrélation** : Mise en place d'un moteur de détection de corrélations avec scoring et tâches planifiées, incluant la gestion des suggestions (liste, acceptation et rejet) [#2318](https://github.com/dnum-mi/referentiel-applications/issues/2318), [#2319](https://github.com/dnum-mi/referentiel-applications/issues/2319), [#2324](https://github.com/dnum-mi/referentiel-applications/issues/2324).
-- **Administration et Sécurité** : 
-    - Possibilité pour les administrateurs de bannir des utilisateurs [#2240](https://github.com/dnum-mi/referentiel-applications/issues/2240).
-    - Gestion des directions métier et des rattachements aux organisations [#2218](https://github.com/dnum-mi/referentiel-applications/issues/2218).
-    - Sécurisation de l'impersonation : restriction au périmètre de l'administrateur local et traçabilité de l'administrateur réel lors des modifications [#2221](https://github.com/dnum-mi/referentiel-applications/issues/2221), [#2227](https://github.com/dnum-mi/referentiel-applications/issues/2227).
-    - Mise en place d'un mode maintenance en lecture seule [#2201](https://github.com/dnum-mi/referentiel-applications/issues/2201).
-- **Expérience Utilisateur (UX/UI)** :
-    - Ajout de filtres sauvegardés pour les applications [#2309](https://github.com/dnum-mi/referentiel-applications/issues/2309).
-    - Amélioration de l'accessibilité (score RGAA) [#2181](https://github.com/dnum-mi/referentiel-applications/issues/2181).
-    - Ajout d'info-bulles sur les cartes de dette technique [#2220](https://github.com/dnum-mi/referentiel-applications/issues/2220) et de nouveaux éléments visuels (CTA IQ, espacements, états de chargement) [#2325](https://github.com/dnum-mi/referentiel-applications/issues/2325), [#2124](https://github.com/dnum-mi/referentiel-applications/issues/2124), [#2155](https://github.com/dnum-mi/referentiel-applications/issues/2155).
-- **Gouvernance des données** : 
-    - Amélioration de la vérification des dates de fin de vie (EOL) des technologies [#2234](https://github.com/dnum-mi/referentiel-applications/issues/2234).
-    - Normalisation des tags et des entrées de stacks technologiques (insensibilité à la casse) [#2202](https://github.com/dnum-mi/referentiel-applications/issues/2202), [#2317](https://github.com/dnum-mi/referentiel-applications/issues/2317).
+- **Moteur de corrélation** : Détection automatique de liens entre applications, gestion des suggestions (acceptation/rejet) et nouvel onglet de revue dédié dans l'interface d'administration ([#2324](https://github.com/dnum-mi/referentiel-applications/issues/2324), [#2319](https://github.com/dnum-mi/referentiel-applications/issues/2319), [#2351](https://github.com/dnum-mi/referentiel-applications/issues/2351), [#2323](https://github.com/dnum-mi/referentiel-applications/issues/2323)).
+- **Notifications** : Création d'un centre de notifications avec système de rafraîchissement automatique (polling) ([#2328](https://github.com/dnum-mi/referentiel-applications/issues/2328), [#2360](https://github.com/dnum-mi/referentiel-applications/issues/2360)).
+- **Gestion du cycle de vie (EOL)** : Ajout d'une vue d'ensemble transversale des fins de vie technologiques et alertes automatiques pour les propriétaires d'applications ([#2356](https://github.com/dnum-mi/referentiel-applications/issues/2356), [#2357](https://github.com/dnum-mi/referentiel-applications/issues/2357), [#2234](https://github.com/dnum-mi/referentiel-applications/issues/2234)).
+- **Campagnes de qualité (IQ)** : Lancement de nouvelles campagnes IQ et ajout de boutons d'action dédiés ([#2350](https://github.com/dnum-mi/referentiel-applications/issues/2350), [#2325](https://github.com/dnum-mi/referentiel-applications/issues/2325)).
+- **Administration et gestion des utilisateurs** : Possibilité de bannir des utilisateurs, gestion des directions métier et des rattachements aux organisations, et création de types d'acteurs ([#2240](https://github.com/dnum-mi/referentiel-applications/issues/2240), [#2218](https://github.com/dnum-mi/referentiel-applications/issues/2218), [#2303](https://github.com/dnum-mi/referentiel-applications/issues/2303)).
+- **Expérience utilisateur (UX)** : Ajout de filtres enregistrés ([#2309](https://github.com/dnum-mi/referentiel-applications/issues/2309)), d'infobulles pour la dette technique ([#2220](https://github.com/dnum-mi/referentiel-applications/issues/2220)) et correction de comportements d'interface (toasts d'erreur, tri des colonnes) ([#2383](https://github.com/dnum-mi/referentiel-applications/issues/2383), [#2384](https://github.com/dnum-mi/referentiel-applications/issues/2384)).
+- **Traçabilité et historique** : Suivi de l'envoi des emails ([#2223](https://github.com/dnum-mi/referentiel-applications/issues/2223)) et historique des modifications de permissions et de rôles ([#2207](https://github.com/dnum-mi/referentiel-applications/issues/2207)).
 
 ### Évolutions techniques
-- **Architecture et Backend** : 
-    - Migration majeure vers NestJS 11 [#2153](https://github.com/dnum-mi/referentiel-applications/issues/2153).
-    - Centralisation des vérifications de permissions côté frontend via un hook dédié [#2245](https://github.com/dnum-mi/referentiel-applications/issues/2245).
-    - Refactoring du backend pour la déduplication du code et l'unification des labels (statuts et types de relations) entre le backend et le frontend [#2250](https://github.com/dnum-mi/referentiel-applications/issues/2250), [#2246](https://github.com/dnum-mi/referentiel-applications/issues/2246).
-- **Modèle de données** : Introduction de nouveaux modèles et types de relations pour supporter la détection de corrélation [#2323](https://github.com/dnum-mi/referentiel-applications/issues/2323).
-- **Qualité et Tests** : 
-    - Amélioration de l'isolation des tests pour éviter la pollution de la base de données de développement [#2117](https://github.com/dnum-mi/referentiel-applications/issues/2117).
-    - Correction de vulnérabilités et de problèmes de qualité de code (XSS, types "any") [#2275](https://github.com/dnum-mi/referentiel-applications/issues/2275).
+- **Sécurité et contrôle d'accès** : Renforcement massif de la sécurité incluant la protection contre les injections SQL ([#2366](https://github.com/dnum-mi/referentiel-applications/issues/2366)), les attaques SSRF ([#2373](https://github.com/dnum-mi/referentiel-applications/issues/2373)), et une gestion plus stricte de l'impersonification (traçabilité de l'administrateur réel et restriction au périmètre local) ([#2221](https://github.com/dnum-mi/referentiel-applications/issues/2221), [#2227](https://github.com/dnum-mi/referentiel-applications/issues/2227), [#2372](https://github.com/dnum-mi/referentiel-applications/issues/2372)).
+- **Architecture et Qualité du code** : Centralisation des vérifications de permissions côté frontend ([#2245](https://github.com/dnum-mi/referentiel-applications/issues/2245)), déduplication de la logique backend ([#2250](https://github.com/dnum-mi/referentiel-applications/issues/2250)) et correction de vulnérabilités XSS ([#2275](https://github.com/dnum-mi/referentiel-applications/issues/2275)).
+- **Fiabilité et CI/CD** : Alignement et validation systématique des contrats OpenAPI en CI ([#2349](https://github.com/dnum-mi/referentiel-applications/issues/2349)), amélioration de la validation des Pull Requests ([#2358](https://github.com/dnum-mi/referentiel-applications/issues/2358)) et stabilisation des tests E2E ([#2362](https://github.com/dnum-mi/referentiel-applications/issues/2362), [#2355](https://github.com/dnum-mi/referentiel-applications/issues/2355)).
+- **Optimisation et Infrastructure** : Utilisation de verrous optimistes pour garantir l'idempotence lors de l'envoi des campagnes de qualité ([#2376](https://github.com/dnum-mi/referentiel-applications/issues/2376)) et contrôle des tâches automatiques d'envoi d'emails ([#2216](https://github.com/dnum-mi/referentiel-applications/issues/2216)).
 
 ### Autres changements
-- Mise à jour de la documentation du projet [#2239](https://github.com/dnum-mi/referentiel-applications/issues/2239).
+- Publication des versions 1.87.0 et 1.88.0.
+- Mise à jour de la documentation du projet (README) ([#2239](https://github.com/dnum-mi/referentiel-applications/issues/2239)).

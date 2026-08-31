@@ -23,6 +23,8 @@
 │   │   ├── qa-signalements-abonnements.md
 │   │   ├── qa-time.md
 │   │   └── qa-transverse.md
+│   ├── scripts
+│   │   └── check-swagger-drift.mjs
 │   └── workflows
 │       ├── build.yml
 │       ├── commitlint.yml
@@ -357,6 +359,26 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260820100000_add_correlation_suggestion
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260820100717_add_notification
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260820123246_add_notification_email_log_link
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260821124224_add_quality_campaign
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260824094006_quality_campaign_sponsor_emails_list
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260824095518_add_campaign_quality_sponsor_report_notification
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260825092224_add_quality_campaign_manage_permission
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260825150000_add_technology_end_of_life_notification
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260826140615_add_report_impersonator
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260826144243_add_user_permission_log_impersonator
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260826150228_add_last_permission_change_impersonator
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   ├── schema
 │   │   │   ├── action-log.prisma
@@ -372,8 +394,10 @@
 │   │   │   ├── mdit-campaign.prisma
 │   │   │   ├── metadata.prisma
 │   │   │   ├── notification-log.prisma
+│   │   │   ├── notification.prisma
 │   │   │   ├── organization.prisma
 │   │   │   ├── permissions.prisma
+│   │   │   ├── quality-campaign.prisma
 │   │   │   ├── report.prisma
 │   │   │   ├── rgaa-compliance.prisma
 │   │   │   ├── schema.prisma
@@ -387,6 +411,12 @@
 │   │   ├── seed-qa.ts
 │   │   └── seed.ts
 │   ├── src
+│   │   ├── action-log
+│   │   │   ├── action-log.controller.ts
+│   │   │   ├── action-log.module.ts
+│   │   │   ├── action-log.service.ts
+│   │   │   └── dto
+│   │   │       └── action-log.dto.ts
 │   │   ├── actor
 │   │   │   ├── actor.controller.ts
 │   │   │   ├── actor.module.ts
@@ -433,6 +463,7 @@
 │   │   │   │       ├── application.repository.interface.ts
 │   │   │   │       └── application.repository.ts
 │   │   │   ├── map
+│   │   │   │   ├── application-export.map.spec.ts
 │   │   │   │   └── application-export.map.ts
 │   │   │   ├── prisma-query-builder.service.spec.ts
 │   │   │   ├── prisma-query-builder.service.ts
@@ -475,6 +506,7 @@
 │   │   │   │   ├── check-permissions.service.spec.ts
 │   │   │   │   ├── check-permissions.service.ts
 │   │   │   │   ├── excel-builder.service.ts
+│   │   │   │   ├── prisma-query-builder.service.spec.ts
 │   │   │   │   └── prisma-query-builder.service.ts
 │   │   │   └── utils
 │   │   │       ├── compliance-presence.utils.ts
@@ -495,6 +527,7 @@
 │   │   │   │   └── compliance.entity.ts
 │   │   │   └── utils
 │   │   │       ├── compliance.utils.ts
+│   │   │       ├── ecoindex-ssrf.spec.ts
 │   │   │       └── ecoindex.utils.ts
 │   │   ├── config
 │   │   │   ├── app-config.ts
@@ -508,7 +541,9 @@
 │   │   │   │   ├── database.config.ts
 │   │   │   │   ├── email.config.ts
 │   │   │   │   ├── index.ts
-│   │   │   │   └── oidc.config.ts
+│   │   │   │   ├── oidc.config.ts
+│   │   │   │   ├── technology.config.spec.ts
+│   │   │   │   └── technology.config.ts
 │   │   │   ├── domain
 │   │   │   │   └── configs.entity.ts
 │   │   │   └── dto
@@ -544,6 +579,7 @@
 │   │   │   ├── dto
 │   │   │   │   └── email-log.dto.ts
 │   │   │   ├── email-log.service.ts
+│   │   │   ├── email-templates.services.spec.ts
 │   │   │   ├── email-templates.services.ts
 │   │   │   ├── email.controller.ts
 │   │   │   ├── email.module.ts
@@ -558,6 +594,8 @@
 │   │   │       ├── application-validation-reminder.template.html
 │   │   │       ├── base.template.html
 │   │   │       ├── daily-digest.template.html
+│   │   │       ├── quality-campaign-actor-reminder.template.html
+│   │   │       ├── quality-campaign-sponsor-report.template.html
 │   │   │       ├── report-status-update.template.html
 │   │   │       ├── user-blocked.template.html
 │   │   │       ├── user-organization-changed.template.html
@@ -655,12 +693,23 @@
 │   │   │   │   └── metadata.repository.ts
 │   │   │   ├── metadatas.controller.ts
 │   │   │   ├── metadatas.module.ts
+│   │   │   ├── metadatas.service.spec.ts
 │   │   │   └── metadatas.service.ts
 │   │   ├── middlewares
 │   │   │   ├── action-log.middleware.ts
 │   │   │   ├── auth.middleware.spec.ts
 │   │   │   ├── auth.middleware.ts
 │   │   │   └── request-context.middleware.ts
+│   │   ├── notification
+│   │   │   ├── dto
+│   │   │   │   ├── delete-notifications.dto.ts
+│   │   │   │   ├── notification-filters.dto.ts
+│   │   │   │   ├── notification.dto.ts
+│   │   │   │   └── unread-count.dto.ts
+│   │   │   ├── notification.controller.ts
+│   │   │   ├── notification.module.ts
+│   │   │   ├── notification.service.spec.ts
+│   │   │   └── notification.service.ts
 │   │   ├── organization-maia-references
 │   │   │   ├── dto
 │   │   │   │   └── organization-maia-references.dto.ts
@@ -682,7 +731,9 @@
 │   │   │   ├── extensions
 │   │   │   │   ├── decimal-to-number.extension.ts
 │   │   │   │   ├── metadata-impersonator.extension.ts
-│   │   │   │   └── pagination.extension.ts
+│   │   │   │   ├── pagination.extension.ts
+│   │   │   │   ├── report-impersonator.extension.ts
+│   │   │   │   └── user-permission-log-impersonator.extension.ts
 │   │   │   ├── prisma.module.ts
 │   │   │   ├── prisma.service.spec.ts
 │   │   │   └── prisma.service.ts
@@ -690,6 +741,16 @@
 │   │   │   └── application
 │   │   │       └── dto
 │   │   │           └── relation-type.dto.ts
+│   │   ├── quality-campaign
+│   │   │   ├── cron
+│   │   │   │   └── quality-campaign-cron.service.ts
+│   │   │   ├── dto
+│   │   │   │   ├── create-quality-campaign.dto.ts
+│   │   │   │   └── quality-campaign.dto.ts
+│   │   │   ├── quality-campaign.controller.ts
+│   │   │   ├── quality-campaign.module.ts
+│   │   │   ├── quality-campaign.service.spec.ts
+│   │   │   └── quality-campaign.service.ts
 │   │   ├── relationship
 │   │   │   ├── application
 │   │   │   │   └── dto
@@ -728,6 +789,7 @@
 │   │   │   ├── report.controller.ts
 │   │   │   ├── report.module.ts
 │   │   │   ├── report.service.ts
+│   │   │   ├── user-notification.service.spec.ts
 │   │   │   └── user-notification.service.ts
 │   │   ├── rgaa
 │   │   │   ├── dto
@@ -798,16 +860,26 @@
 │   │   │   └── technical-debt.controller.ts
 │   │   ├── technology
 │   │   │   ├── dto
+│   │   │   │   ├── end-of-life.dto.ts
 │   │   │   │   └── technology.dto.ts
+│   │   │   ├── end-of-life.controller.ts
+│   │   │   ├── end-of-life.service.spec.ts
+│   │   │   ├── end-of-life.service.ts
 │   │   │   ├── entities
 │   │   │   │   └── technology.entity.ts
+│   │   │   ├── eol-notification.service.spec.ts
+│   │   │   ├── eol-notification.service.ts
+│   │   │   ├── eol-refresh.service.spec.ts
+│   │   │   ├── eol-refresh.service.ts
 │   │   │   ├── technology.controller.ts
 │   │   │   ├── technology.module.ts
 │   │   │   ├── technology.service.spec.ts
 │   │   │   ├── technology.service.ts
 │   │   │   └── utils
 │   │   │       ├── endoflife.utils.spec.ts
-│   │   │       └── endoflife.utils.ts
+│   │   │       ├── endoflife.utils.ts
+│   │   │       ├── eol-status.spec.ts
+│   │   │       └── eol-status.ts
 │   │   ├── token
 │   │   │   ├── domain
 │   │   │   │   ├── token-status.entity.ts
@@ -846,12 +918,15 @@
 │   │   │       └── maia.tools.ts
 │   │   └── utils
 │   │       ├── constants.util.ts
+│   │       ├── escape-html.util.spec.ts
+│   │       ├── escape-html.util.ts
 │   │       ├── functions.ts
 │   │       ├── request-size.util.ts
 │   │       ├── sanitize-headers.util.ts
 │   │       ├── typeguard-includes.ts
 │   │       └── types.util.ts
 │   ├── tests
+│   │   ├── action-log-controller.e2e-spec.ts
 │   │   ├── action-log.e2e-spec.ts
 │   │   ├── actor.e2e-spec.ts
 │   │   ├── app.e2e-spec.ts
@@ -859,6 +934,7 @@
 │   │   ├── business-division.e2e-spec.ts
 │   │   ├── compliances.e2e-spec.ts
 │   │   ├── config.e2e-spec.ts
+│   │   ├── cross-application-scoping.e2e-spec.ts
 │   │   ├── data-catalog.e2e-spec.ts
 │   │   ├── data-family.e2e-spec.ts
 │   │   ├── data-sensibility.e2e-spec.ts
@@ -893,10 +969,13 @@
 │   │   ├── label-source.e2e-spec.ts
 │   │   ├── labels.e2e-spec.ts
 │   │   ├── links.e2e-spec.ts
+│   │   ├── maia-sync-scope.e2e-spec.ts
 │   │   ├── mdit-campaign.e2e-spec.ts
 │   │   ├── metadata-impersonator.e2e-spec.ts
 │   │   ├── organization.e2e-spec.ts
+│   │   ├── permission-guard-sql-injection.e2e-spec.ts
 │   │   ├── relations.e2e-spec.ts
+│   │   ├── report-impersonator.e2e-spec.ts
 │   │   ├── reports.e2e-spec.ts
 │   │   ├── rgaa-compliances.e2e-spec.ts
 │   │   ├── scoped-permission.service.spec.ts
@@ -906,8 +985,10 @@
 │   │   ├── technical-debt-info.e2e-spec.ts
 │   │   ├── technologies.e2e-spec.ts
 │   │   ├── test-database.utils.ts
+│   │   ├── token-impersonation.e2e-spec.ts
 │   │   ├── user-block.e2e-spec.ts
 │   │   ├── user-list-scope.e2e-spec.ts
+│   │   ├── user-permission-log-impersonator.e2e-spec.ts
 │   │   └── user.e2e-spec.ts
 │   ├── tsconfig.build.json
 │   ├── tsconfig.json
@@ -964,6 +1045,7 @@
 │   │   ├── chrome.page.ts
 │   │   ├── create-application.page.ts
 │   │   ├── data-detail.page.ts
+│   │   ├── end-of-life.page.ts
 │   │   ├── history.page.ts
 │   │   ├── home.page.ts
 │   │   ├── index.ts
@@ -1069,6 +1151,7 @@
 │   │   │   ├── BlockedAccessScreen.vue
 │   │   │   ├── ColumnCustomization.vue
 │   │   │   ├── EditRelationModal.vue
+│   │   │   ├── EmailPreviewModal.vue
 │   │   │   ├── ImpersonationBanner.vue
 │   │   │   ├── InformationsGenerales.vue
 │   │   │   ├── LinksTab.vue
@@ -1096,15 +1179,19 @@
 │   │   │   │   ├── ActorForm.vue
 │   │   │   │   └── ActorTab.vue
 │   │   │   ├── admin
+│   │   │   │   ├── AdminActionLogsTab.vue
 │   │   │   │   ├── AdminActorActions.vue
 │   │   │   │   ├── AdminActorsTab.vue
 │   │   │   │   ├── AdminBatchData.vue
 │   │   │   │   ├── AdminBusinessDivisionsTab.vue
+│   │   │   │   ├── AdminCorrelationsTab.spec.ts
+│   │   │   │   ├── AdminCorrelationsTab.vue
 │   │   │   │   ├── AdminEmailLogsTab.vue
 │   │   │   │   ├── AdminLabelSourcesTab.vue
 │   │   │   │   ├── AdminMditCampaignsTab.vue
 │   │   │   │   ├── AdminOrganizationsTab.vue
 │   │   │   │   ├── AdminPermsMatrixTab.vue
+│   │   │   │   ├── AdminQualityCampaignsTab.vue
 │   │   │   │   ├── AdminTagsTab.vue
 │   │   │   │   ├── AdminTokensTab.vue
 │   │   │   │   ├── AdminUsersTab.vue
@@ -1115,11 +1202,14 @@
 │   │   │   │   ├── LabelSourceActions.vue
 │   │   │   │   ├── MditCampaignActions.vue
 │   │   │   │   ├── OrganizationActions.vue
+│   │   │   │   ├── QualityCampaignActions.vue
 │   │   │   │   ├── TagActions.vue
 │   │   │   │   ├── UserActions.spec.ts
 │   │   │   │   ├── UserActions.vue
 │   │   │   │   ├── UserPermissionLogHistory.vue
-│   │   │   │   └── UserPermissionsModal.vue
+│   │   │   │   ├── UserPermissionsModal.vue
+│   │   │   │   ├── admin-correlations.utils.spec.ts
+│   │   │   │   └── admin-correlations.utils.ts
 │   │   │   ├── business-division
 │   │   │   │   └── BusinessDivisionSearch.vue
 │   │   │   ├── common
@@ -1139,6 +1229,7 @@
 │   │   │   ├── form
 │   │   │   │   ├── ApplicationForm.vue
 │   │   │   │   ├── LinkForm.vue
+│   │   │   │   ├── SponsorEmailsInput.vue
 │   │   │   │   └── StatusForm.vue
 │   │   │   ├── hosting
 │   │   │   │   ├── HostingList.vue
@@ -1148,8 +1239,13 @@
 │   │   │   │   └── LabelModal.vue
 │   │   │   ├── modal
 │   │   │   │   ├── AddRelationModal.vue
+│   │   │   │   ├── CreateQualityCampaignModal.vue
 │   │   │   │   ├── DeleteConfirmationModal.vue
 │   │   │   │   └── ReportModal.vue
+│   │   │   ├── notification
+│   │   │   │   ├── NotificationBell.spec.ts
+│   │   │   │   ├── NotificationBell.vue
+│   │   │   │   └── NotificationListItem.vue
 │   │   │   ├── organization
 │   │   │   │   └── OgaLink.vue
 │   │   │   ├── search
@@ -1198,12 +1294,16 @@
 │   │   │   ├── use-d3-graph.ts
 │   │   │   ├── use-date.ts
 │   │   │   ├── use-filter-watcher.ts
+│   │   │   ├── use-graph-style.spec.ts
 │   │   │   ├── use-graph-style.ts
 │   │   │   ├── use-maintenance-mode.spec.ts
 │   │   │   ├── use-maintenance-mode.ts
 │   │   │   ├── use-mdit-campaigns.ts
 │   │   │   ├── use-mermaid.ts
 │   │   │   ├── use-modal.ts
+│   │   │   ├── use-notification-icon.ts
+│   │   │   ├── use-notification-polling.ts
+│   │   │   ├── use-relation-manager.spec.ts
 │   │   │   ├── use-relation-manager.ts
 │   │   │   ├── use-rgaa-a11y.ts
 │   │   │   ├── use-sanitize-utils.ts
@@ -1231,9 +1331,13 @@
 │   │   ├── stores
 │   │   │   ├── actorTypeStore.ts
 │   │   │   ├── applicationStore.ts
+│   │   │   ├── correlationStore.ts
+│   │   │   ├── endOfLifeStore.ts
 │   │   │   ├── hostingStore.ts
 │   │   │   ├── metadataStore.ts
+│   │   │   ├── notificationStore.ts
 │   │   │   ├── organizationStore.ts
+│   │   │   ├── qualityCampaignStore.ts
 │   │   │   ├── relationStore.ts
 │   │   │   ├── reportStore.ts
 │   │   │   ├── savedFilterStore.ts
@@ -1269,11 +1373,14 @@
 │   │   │   ├── ApplicationPage.vue
 │   │   │   ├── ApplicationSearchPage.vue
 │   │   │   ├── CreateApplicationPage.vue
+│   │   │   ├── EndOfLifePage.spec.ts
+│   │   │   ├── EndOfLifePage.vue
 │   │   │   ├── ErrorPage.vue
 │   │   │   ├── HomePage.vue
 │   │   │   ├── MetadataDetailPage.vue
 │   │   │   ├── MetadataPage.vue
 │   │   │   ├── NotFoundPage.vue
+│   │   │   ├── NotificationsPage.vue
 │   │   │   ├── QualityPage.vue
 │   │   │   ├── ReportsPage.vue
 │   │   │   ├── SiteMapPage.vue
@@ -1334,4 +1441,4 @@
 │       ├── campaign.mjs
 │       └── sync-issue.mjs
 └── release-please-config.json
-351 directories, 985 files
+370 directories, 1073 files
