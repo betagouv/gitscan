@@ -7,15 +7,13 @@
 ├── .git-blame-ignore-revs
 ├── .github
 │   ├── PULL_REQUEST_TEMPLATE
-│   ├── actions
-│   │   └── setup-e2e
-│   │       └── action.yml
 │   └── workflows
-│       ├── _e2e.yml
 │       ├── cd-docker.yml
+│       ├── ci-check-deps-audit.yml
+│       ├── ci-check-forbidden-paths.yml
 │       ├── ci-check-i18n.yml
 │       ├── ci-check-migrations.yml
-│       ├── ci-e2e.yml
+│       ├── ci-check-tarteaucitron.yml
 │       ├── ci-main.yml
 │       ├── ci-quality.yml
 │       ├── docs.yml
@@ -26,24 +24,26 @@
 │       └── validate-notifications.yml
 ├── .gitignore
 ├── .locales
+├── .markdownlint.json
+├── .npmrc
 ├── .pre-commit-config.yaml
 ├── .python-version
 ├── .slugignore
 ├── Aptfile
 ├── CONTRIBUTING.md
-├── DOD.md
 ├── Dockerfile
 ├── LICENSE
-├── NOTIFICATIONS.md
-├── ONBOARDING.md
 ├── Procfile
 ├── README.md
 ├── agreste_version.txt
+├── bin
+│   └── post_compile
 ├── config
 │   ├── __init__.py
 │   ├── api.py
 │   ├── settings.py
 │   ├── settings_test.py
+│   ├── test_runner.py
 │   ├── urls.py
 │   └── wsgi.py
 ├── content_manager
@@ -52,98 +52,82 @@
 │           └── LC_MESSAGES
 │               └── django.mo
 ├── cron.json.example
-├── demo
-│   ├── README.md
-│   ├── annuaire
-│   │   ├── __init__.py
-│   │   ├── api.py
-│   │   ├── apps.py
-│   │   ├── blocks.py
-│   │   ├── management
-│   │   │   ├── __init__.py
-│   │   │   └── commands
-│   │   │       ├── __init__.py
-│   │   │       └── seed_annuaire.py
-│   │   ├── migrations
-│   │   │   ├── 0001_initial.py
-│   │   │   └── __init__.py
-│   │   ├── models.py
-│   │   └── templates
-│   │       └── annuaire
-│   │           ├── annuaire_page.html
-│   │           └── blocks
-│   │               └── liste_psychologues.html
-│   ├── demo
-│   │   ├── __init__.py
-│   │   ├── api.py
-│   │   ├── apps.py
-│   │   ├── settings
-│   │   │   ├── __init__.py
-│   │   │   ├── base.py
-│   │   │   ├── dev.py
-│   │   │   └── production.py
-│   │   ├── templates
-│   │   │   ├── 404.html
-│   │   │   └── 500.html
-│   │   ├── urls.py
-│   │   └── wsgi.py
-│   ├── home
-│   │   ├── __init__.py
-│   │   ├── apps.py
-│   │   ├── migrations
-│   │   │   ├── 0001_initial.py
-│   │   │   ├── 0002_create_homepage.py
-│   │   │   └── __init__.py
-│   │   ├── models.py
-│   │   ├── templates
-│   │   │   └── home
-│   │   │       └── home_page.html
-│   │   └── tests.py
-│   ├── justfile
-│   ├── manage.py
-│   ├── pyproject.toml
-│   ├── search
-│   │   ├── __init__.py
-│   │   ├── templates
-│   │   │   └── search
-│   │   │       └── search.html
-│   │   └── views.py
-│   └── uv.lock
 ├── docker-compose.yml
 ├── docs
 │   ├── .gitignore
 │   ├── Makefile
 │   ├── README.md
 │   ├── _static
-│   │   └── .gitkeep
+│   │   ├── .gitkeep
+│   │   └── sites-conformes-schema.svg
+│   ├── _templates
+│   │   ├── breadcrumbs.html
+│   │   ├── searchbox.html
+│   │   └── source-buttons.html
 │   ├── changelog.md
 │   ├── conf.py
 │   ├── contrib
-│   │   └── git-blame-ignore-revs.md
-│   ├── guide
-│   │   ├── cas-pratique-annuaire.md
-│   │   ├── configuration.md
-│   │   ├── db-storage.md
-│   │   └── installation.md
+│   │   ├── architecture.md
+│   │   ├── definition-of-done.md
+│   │   ├── git-blame-ignore-revs.md
+│   │   ├── guide-contribution.md
+│   │   ├── index.md
+│   │   ├── installation-locale.md
+│   │   └── traductions.md
+│   ├── deploiement
+│   │   ├── docker.md
+│   │   ├── faq.md
+│   │   ├── index.md
+│   │   ├── introduction.md
+│   │   ├── migrer-hebergement.md
+│   │   ├── scalingo.md
+│   │   ├── serveur-linux.md
+│   │   └── variables-environnement.md
+│   ├── donnees
+│   │   ├── index.md
+│   │   ├── sauvegarde-restauration.md
+│   │   └── stockage-medias.md
+│   ├── fonctionnalites
+│   │   ├── 2fa.md
+│   │   ├── index.md
+│   │   └── notifications.md
 │   ├── index.md
-│   └── requirements.txt
-├── e2e
-│   ├── errors.spec.ts
-│   ├── fixtures.ts
-│   └── homepage.spec.ts
+│   ├── locales
+│   │   └── fr
+│   │       └── LC_MESSAGES
+│   │           ├── sphinx.mo
+│   │           └── sphinx.po
+│   ├── paquet
+│   │   ├── configuration.md
+│   │   ├── exemple-annuaire.md
+│   │   ├── index.md
+│   │   ├── installation.md
+│   │   └── recherche.md
+│   ├── requirements.txt
+│   └── wagtail-transfer
+│       ├── docker-compose.transfer-test.yml
+│       └── wagtail-transfer-two-runservers.md
 ├── entrypoint.sh
 ├── faceted_search
 │   ├── __init__.py
 │   ├── apps.py
 │   ├── demo
 │   │   └── facet_counts_demo.html
-│   ├── filters.py
+│   ├── facets.py
+│   ├── forms.py
 │   ├── locale
 │   │   └── fr
 │   │       └── LC_MESSAGES
 │   │           ├── django.mo
 │   │           └── django.po
+│   ├── migrations
+│   │   ├── 0001_enable_modelsearch_fuzzy.py
+│   │   ├── 0002_disable_modelsearch_fuzzy.py
+│   │   ├── 0003_ignore_modelsearch_fuzzy.py
+│   │   ├── 0004_french_unaccent_search_config.py
+│   │   └── __init__.py
 │   ├── result_counts.md
+│   ├── search.py
 │   ├── static
 │   │   └── faceted_search
 │   │       └── css
@@ -151,17 +135,17 @@
 │   ├── templates
 │   │   └── faceted_search
 │   │       ├── blocks
-│   │       │   ├── search_filters.html
-│   │       │   ├── search_result.html
-│   │       │   ├── taxonomy_list.html
-│   │       │   └── taxonomy_tree.html
+│   │       │   ├── facet_value_list.html
+│   │       │   ├── facet_value_tree.html
+│   │       │   ├── search_facets.html
+│   │       │   └── search_result.html
 │   │       └── search_results.html
 │   ├── templatetags
 │   │   ├── __init__.py
 │   │   └── faceted_search_tags.py
 │   ├── tests
 │   │   ├── __init__.py
-│   │   ├── test_filters.py
+│   │   ├── test_facets.py
 │   │   ├── test_tags.py
 │   │   └── test_views.py
 │   └── views.py
@@ -171,7 +155,10 @@
 ├── notifications.schema.json
 ├── package-lock.json
 ├── package.json
-├── playwright.config.ts
+├── patches
+│   ├── apply.sh
+│   ├── wagtail-transfer-0.11-bug1-router-model-attribute.patch
+│   └── wagtail-transfer-0.11-bug2-circular-dependency-pr167.patch
 ├── publications
 │   ├── __init__.py
 │   ├── api.py
@@ -192,6 +179,7 @@
 │   ├── migrations
 │   │   ├── 0001_initial.py
 │   │   ├── 0002_alter_collection_colophon_alter_theme_colophon.py
+│   │   ├── 0003_alter_collection_colophon_alter_theme_colophon.py
 │   │   ├── __init__.py
 │   │   └── data_migrations
 │   │       ├── __init__.py
@@ -230,11 +218,13 @@
 ├── scalingo.json
 ├── scripts
 │   ├── README.md
+│   ├── accept_deleted_by_us.sh
 │   ├── backup_local.sh
 │   ├── clear_local_db.sh
 │   ├── descend_prod_db.sh
 │   ├── descend_prod_medias.sh
 │   ├── fetch_scalingo_metrics.py
+│   ├── merge_sc_tag.sh
 │   ├── nginx_generate_config_file.sh
 │   ├── restore_local_db.sh
 │   ├── restore_local_medias.sh
@@ -242,6 +232,10 @@
 │   ├── restore_prod_medias.sh
 │   ├── sample_conf_files
 │   │   └── nginx.conf.template
+│   ├── scalingo
+│   │   ├── README.md
+│   │   └── web.sh
+│   ├── sync_tarteaucitron.sh
 │   └── track_requests_latency.py
 ├── sites_conformes
 │   ├── __init__.py
@@ -322,6 +316,8 @@
 │   │   │   ├── 0060_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
 │   │   │   ├── 0061_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
 │   │   │   ├── 0062_alter_blogentrypage_body_alter_blogindexpage_body.py
+│   │   │   ├── 0063_recent_blogs_block__see_all_posts_link.py
+│   │   │   ├── 0064_recent_events_block__see_all_events_link.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── templates
@@ -465,6 +461,8 @@
 │   │   │   ├── 0078_alter_catalogindexpage_body_alter_contentpage_body.py
 │   │   │   ├── 0079_alter_catalogindexpage_body_alter_contentpage_body.py
 │   │   │   ├── 0080_cmsdsfrconfig_iframe_allow_origins.py
+│   │   │   ├── 0081_recent_blogs_block__see_all_posts_link.py
+│   │   │   ├── 0082_recent_events_block__see_all_events_link.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── monkey_patches.py
@@ -600,13 +598,16 @@
 │   ├── dashboard
 │   │   ├── __init__.py
 │   │   ├── apps.py
+│   │   ├── forms.py
 │   │   ├── locale
 │   │   │   └── fr
 │   │   │       └── LC_MESSAGES
 │   │   │           ├── django.mo
 │   │   │           └── django.po
+│   │   ├── middleware.py
 │   │   ├── migrations
 │   │   │   └── __init__.py
+│   │   ├── monkey_patches.py
 │   │   ├── notifications.py
 │   │   ├── templates
 │   │   │   ├── admin_icons
@@ -614,6 +615,9 @@
 │   │   │   ├── sites_conformes_admin
 │   │   │   │   └── panels
 │   │   │   │       └── _notifications.html
+│   │   │   ├── wagtail_2fa
+│   │   │   │   ├── device_form.html
+│   │   │   │   └── otp_form_v6.html
 │   │   │   └── wagtailadmin
 │   │   │       ├── account
 │   │   │       │   └── password_reset
@@ -633,7 +637,11 @@
 │   │   │           └── base.html
 │   │   ├── tests
 │   │   │   ├── __init__.py
+│   │   │   ├── test_2fa_device_setup.py
+│   │   │   ├── test_2fa_login_form.py
+│   │   │   ├── test_middleware.py
 │   │   │   ├── test_notifications.py
+│   │   │   ├── test_password_reset_forms.py
 │   │   │   └── test_views.py
 │   │   ├── views.py
 │   │   └── wagtail_hooks.py
@@ -709,6 +717,8 @@
 │   │   │   ├── 0032_alter_evententrypage_body_alter_eventsindexpage_body.py
 │   │   │   ├── 0033_alter_evententrypage_body_alter_eventsindexpage_body.py
 │   │   │   ├── 0034_alter_evententrypage_body_alter_eventsindexpage_body.py
+│   │   │   ├── 0035_recent_blogs_block__see_all_posts_link.py
+│   │   │   ├── 0036_recent_events_block__see_all_events_link.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── static
@@ -850,103 +860,12 @@
 │   │   │   ├── Placeholder-Sites-Faciles.png
 │   │   │   ├── illustration-sites-faciles-femme-ordinateur.png
 │   │   │   └── illustration-sites-faciles-homme-nuages.png
-│   │   ├── js
-│   │   │   ├── admin_editor.js
-│   │   │   ├── hero-background-block.js
-│   │   │   ├── language-selector-admin.js
-│   │   │   ├── link-block.js
-│   │   │   └── open_preview_panel.js
-│   │   └── lib
-│   │       └── tarteaucitronjs
-│   │           ├── .github
-│   │           │   ├── FUNDING.yml
-│   │           │   ├── stale.yml
-│   │           │   └── workflows
-│   │           │       └── codeql-analysis.yml
-│   │           ├── LICENSE
-│   │           ├── README.md
-│   │           ├── SECURITY.md
-│   │           ├── advertising.js
-│   │           ├── advertising.min.js
-│   │           ├── css
-│   │           │   ├── tarteaucitron.css
-│   │           │   └── tarteaucitron.min.css
-│   │           ├── lang
-│   │           │   ├── tarteaucitron.ar.js
-│   │           │   ├── tarteaucitron.ar.min.js
-│   │           │   ├── tarteaucitron.bg.js
-│   │           │   ├── tarteaucitron.bg.min.js
-│   │           │   ├── tarteaucitron.ca.js
-│   │           │   ├── tarteaucitron.ca.min.js
-│   │           │   ├── tarteaucitron.cn.js
-│   │           │   ├── tarteaucitron.cn.min.js
-│   │           │   ├── tarteaucitron.cs.js
-│   │           │   ├── tarteaucitron.cs.min.js
-│   │           │   ├── tarteaucitron.da.js
-│   │           │   ├── tarteaucitron.da.min.js
-│   │           │   ├── tarteaucitron.de.js
-│   │           │   ├── tarteaucitron.de.min.js
-│   │           │   ├── tarteaucitron.el.js
-│   │           │   ├── tarteaucitron.el.min.js
-│   │           │   ├── tarteaucitron.en.js
-│   │           │   ├── tarteaucitron.en.min.js
-│   │           │   ├── tarteaucitron.es.js
-│   │           │   ├── tarteaucitron.es.min.js
-│   │           │   ├── tarteaucitron.et.js
-│   │           │   ├── tarteaucitron.et.min.js
-│   │           │   ├── tarteaucitron.fi.js
-│   │           │   ├── tarteaucitron.fi.min.js
-│   │           │   ├── tarteaucitron.fr.js
-│   │           │   ├── tarteaucitron.fr.min.js
-│   │           │   ├── tarteaucitron.hr.js
-│   │           │   ├── tarteaucitron.hr.min.js
-│   │           │   ├── tarteaucitron.hu.js
-│   │           │   ├── tarteaucitron.hu.min.js
-│   │           │   ├── tarteaucitron.it.js
-│   │           │   ├── tarteaucitron.it.min.js
-│   │           │   ├── tarteaucitron.ja.js
-│   │           │   ├── tarteaucitron.ja.min.js
-│   │           │   ├── tarteaucitron.kr.js
-│   │           │   ├── tarteaucitron.kr.min.js
-│   │           │   ├── tarteaucitron.lb.js
-│   │           │   ├── tarteaucitron.lb.min.js
-│   │           │   ├── tarteaucitron.lt.js
-│   │           │   ├── tarteaucitron.lt.min.js
-│   │           │   ├── tarteaucitron.lv.js
-│   │           │   ├── tarteaucitron.lv.min.js
-│   │           │   ├── tarteaucitron.nl.js
-│   │           │   ├── tarteaucitron.nl.min.js
-│   │           │   ├── tarteaucitron.no.js
-│   │           │   ├── tarteaucitron.no.min.js
-│   │           │   ├── tarteaucitron.oc.js
-│   │           │   ├── tarteaucitron.oc.min.js
-│   │           │   ├── tarteaucitron.pl.js
-│   │           │   ├── tarteaucitron.pl.min.js
-│   │           │   ├── tarteaucitron.pt.js
-│   │           │   ├── tarteaucitron.pt.min.js
-│   │           │   ├── tarteaucitron.ro.js
-│   │           │   ├── tarteaucitron.ro.min.js
-│   │           │   ├── tarteaucitron.ru.js
-│   │           │   ├── tarteaucitron.ru.min.js
-│   │           │   ├── tarteaucitron.se.js
-│   │           │   ├── tarteaucitron.se.min.js
-│   │           │   ├── tarteaucitron.sk.js
-│   │           │   ├── tarteaucitron.sk.min.js
-│   │           │   ├── tarteaucitron.sv.js
-│   │           │   ├── tarteaucitron.sv.min.js
-│   │           │   ├── tarteaucitron.tr.js
-│   │           │   ├── tarteaucitron.tr.min.js
-│   │           │   ├── tarteaucitron.uk.js
-│   │           │   ├── tarteaucitron.uk.min.js
-│   │           │   ├── tarteaucitron.vi.js
-│   │           │   ├── tarteaucitron.vi.min.js
-│   │           │   ├── tarteaucitron.zh.js
-│   │           │   └── tarteaucitron.zh.min.js
-│   │           ├── package.json
-│   │           ├── tarteaucitron.js
-│   │           ├── tarteaucitron.min.js
-│   │           ├── tarteaucitron.services.js
-│   │           └── tarteaucitron.services.min.js
+│   │   └── js
+│   │       ├── admin_editor.js
+│   │       ├── hero-background-block.js
+│   │       ├── language-selector-admin.js
+│   │       ├── link-block.js
+│   │       └── open_preview_panel.js
 │   ├── templates
 │   │   └── sites_conformes_core
 │   │       ├── 404.html
@@ -967,4 +886,4 @@
 │   └── utils
 │       └── __init__.py
 └── uv.lock
-177 directories, 792 files
+163 directories, 725 files

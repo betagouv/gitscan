@@ -1,34 +1,33 @@
-## Changelog : agreste (30 derniers jours, au 10 août 2026)
+## Changelog : agreste (30 derniers jours, au 28 août 2026)
 
 ### Résumé
-Ce mois-ci, l'expérience de recherche a été considérablement enrichie avec des filtres plus intuitifs, une meilleure gestion de la pagination et une interface plus ergonomique. Le système de notifications a été entièrement modernisé pour offrir plus de flexibilité, tandis que la stabilité technique du projet a été renforcée par l'introduction de tests automatisés de bout en bout et une mise à jour des technologies de base (Python et PostgreSQL).
+Ce mois-ci, agreste a franchi des étapes importantes en renforçant la sécurité des utilisateurs, notamment avec l'introduction de l'authentification à deux facteurs. L'expérience de recherche a été considérablement améliorée pour être plus intuitive et précise, tandis que l'infrastructure technique a été simplifiée et sécurisée pour garantir une meilleure stabilité et une maintenance facilitée.
 
 ### Évolutions fonctionnelles
-
-**Recherche et filtrage**
-- Amélioration de l'ergonomie de recherche : ajout de compteurs dans les filtres (et suppression automatique des filtres vides) [#65](https://github.com/betagouv/agreste/pull/65).
-- Interface de recherche enrichie : introduction de filtres repliables [#46](https://github.com/betagouv/agreste/pull/46), affichage de la hiérarchie des taxonomies dans la barre latérale [#45](https://github.com/betagouv/agreste/pull/45) et ajout de métadonnées dans les résultats [#48](https://github.com/betagouv/agreste/pull/48).
-- Navigation optimisée : ajout de la pagination en haut et en bas de page [#54](https://github.com/betagouv/agreste/pull/54), possibilité de sélectionner plusieurs valeurs dans les facettes [#43](https://github.com/betagouv/agreste/pull/43) et affichage de la requête actuelle dans la barre de recherche [#59](https://github.com/betagouv/agreste/pull/59).
-- Corrections de confort : suppression du saut automatique vers les résultats de recherche [#64](https://github.com/betagouv/agreste/pull/64) et réinitialisation de la page lors du changement de filtre [#54](https://github.com/betagouv/agreste/pull/54).
-
-**Interface utilisateur et blocs de contenu**
-- Correction des pages d'erreur (404 et 500) pour garantir un rendu conforme au design système (DSFR).
-- Correction d'un problème d'affichage (overflow) pour les noms de fichiers longs dans les tuiles de téléchargement [#40](https://github.com/betagouv/agreste/pull/40).
-- Évolution du bloc "Publications récentes" : ajout d'une option simple pour afficher ou masquer le lien "Voir tout".
-- Correction de l'affichage des couleurs des tags sélectionnés.
+- **Sécurité** : Mise en place de l'authentification à deux facteurs (MFA) pour sécuriser l'accès aux interfaces [#516](https://github.com/betagouv/agreste/issues/516).
+- **Améliorations de la recherche** :
+    - Ajout de compteurs sur les filtres de recherche et masquage automatique des filtres n'ayant aucun résultat [#65](https://github.com/betagouv/agreste/issues/65).
+    - Possibilité de trier les résultats par date en complément du tri par pertinence [#90](https://github.com/betagouv/agreste/issues/90).
+    - Support de la recherche insensible aux accents (unaccented) pour plus de souplesse [#78](https://github.com/betagouv/agreste/issues/78).
+    - Optimisation de l'interface de recherche : suppression de la double pagination et de la navigation automatique vers les résultats pour une navigation plus fluide [#91](https://github.com/betagouv/agreste/issues/91) [#64](https://github.com/betagouv/agreste/issues/64).
+    - Correction d'un bug empêchant la mise à jour des résultats lors de la suppression d'un filtre sur les pages CatalogIndex [#578](https://github.com/betagouv/agreste/issues/578).
+- **Gestion de contenu** :
+    - Personnalisation accrue des blocs "Articles récents" (Blog/Événements) : possibilité de modifier le texte et le lien du bouton "Voir tous les articles" [#542](https://github.com/betagouv/agreste/issues/542).
+    - Introduction de nouveaux hooks pour permettre une personnalisation plus fine des résultats de recherche [#561](https://github.com/betagouv/agreste/issues/561).
 
 ### Évolutions techniques
-
-**Infrastructure et CI/CD**
-- Mise à jour des environnements : passage aux dernières versions de Python et PostgreSQL [#58](https://github.com/betagouv/agreste/pull/58).
-- Qualité logicielle : mise en place de tests de bout en bout (E2E) avec Playwright, incluant des tests de régression visuelle.
-- Optimisation de la CI : les tests sont désormais exécutés uniquement sur les Pull Requests pour accélérer les cycles de développement.
-- Réorganisation de la structure des tests pour une meilleure maintenance.
-
-**Architecture et Refactoring**
-- Refonte majeure du système de notifications : séparation de la logique, ajout de logs et amélioration de la configuration.
-- Amélioration de la gestion des versions du logiciel pour une source de vérité unique.
+- **Sécurité et CI/CD** :
+    - Mise en place d'un contrôle automatique des vulnérabilités (CVE) lors de chaque changement de dépendance [#97](https://github.com/betagouv/agreste/issues/97).
+    - Instauration d'un délai de "refroidissement" (cooldown) de 7 jours pour les dépendances Python et JS afin de limiter l'impact des mises à jour instables [#98](https://github.com/betagouv/agreste/issues/98).
+    - Activation des contrôles de malwares pour l'outil de gestion de paquets `uv` [#82](https://github.com/betagouv/agreste/issues/82).
+    - Automatisation du processus de release via une commande en ligne de commande [#77](https://github.com/betagouv/agreste/issues/77).
+- **Architecture et maintenance** :
+    - Refonte majeure du système de recherche à facettes.
+    - Simplification de la stack technique par la suppression de toute dépendance à `npm` [#72](https://github.com/betagouv/agreste/issues/72).
+    - Suppression de la dépendance `modelsearch` [#94](https://github.com/betagouv/agreste/issues/94).
+    - Optimisation de la suite de tests pour réduire le temps d'exécution (tests plus rapides et fixtures allégées) [#80](https://github.com/betagouv/agreste/issues/80).
+    - Mise à jour de l'environnement de développement Docker vers Python 3.14.
 
 ### Autres changements
-- **Documentation** : mise à jour du README incluant les instructions de mise à jour et de déploiement.
-- **Internationalisation (i18n)** : amélioration de la gestion des traductions et indépendance accrue vis-à-vis du dépôt `sites_conformes`.
+- **Documentation** : Centralisation et réorganisation complète de la documentation technique via Sphinx [#558](https://github.com/betagouv/agreste/issues/558).
+- **Nettoyage** : Suppression de la démo d'intégration pour réduire la surface d'attaque et éliminer les alertes de sécurité inutiles [#87](https://github.com/betagouv/agreste/issues/87).
