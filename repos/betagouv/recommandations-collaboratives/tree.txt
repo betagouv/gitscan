@@ -526,6 +526,8 @@
 │   │   │   ├── adapters.py
 │   │   │   ├── admin.py
 │   │   │   ├── apps.py
+│   │   │   ├── config.py
+│   │   │   ├── context_processors.py
 │   │   │   ├── forms.py
 │   │   │   ├── management
 │   │   │   │   ├── __init__.py
@@ -534,6 +536,7 @@
 │   │   │   │       ├── clean_stale_notifications.py
 │   │   │   │       ├── cleanuporgs.py
 │   │   │   │       ├── create_site.py
+│   │   │   │       ├── import_validated_addresses_brevo.py
 │   │   │   │       ├── update_permissions.py
 │   │   │   │       ├── update_verbs.py
 │   │   │   │       └── warn_delete_users.py
@@ -586,6 +589,10 @@
 │   │   │   │   ├── 0044_setup_sesame_cookie_consent.py
 │   │   │   │   ├── 0045_siteconfiguration_plugin_fields.py
 │   │   │   │   ├── 0046_userprofile_login_with_code.py
+│   │   │   │   ├── 0047_alter_userprofile_options.py
+│   │   │   │   ├── 0047_embed_allowed_origins.py
+│   │   │   │   ├── 0048_merge_20260826_1002.py
+│   │   │   │   ├── 0049_remove_siteconfiguration_sender_email.py
 │   │   │   │   └── __init__.py
 │   │   │   ├── models.py
 │   │   │   ├── rest.py
@@ -641,6 +648,8 @@
 │   │   │   │   ├── 403.html
 │   │   │   │   └── home
 │   │   │   │       ├── accessibility.html
+│   │   │   │       ├── advisor-access-request-confirm-email.html
+│   │   │   │       ├── advisor-access-request-pending.html
 │   │   │   │       ├── advisor_access_request.html
 │   │   │   │       ├── advisor_access_request_moderator.html
 │   │   │   │       ├── contact.html
@@ -759,7 +768,11 @@
 │   │   │   │   │   │   ├── email-modal.html
 │   │   │   │   │   │   ├── form-project.html
 │   │   │   │   │   │   ├── form-user.html
+│   │   │   │   │   │   ├── onboarding-project-content.html
+│   │   │   │   │   │   ├── onboarding-signin-content.html
+│   │   │   │   │   │   ├── onboarding-signup-content.html
 │   │   │   │   │   │   └── survey.html
+│   │   │   │   │   ├── onboarding-email-confirm.html
 │   │   │   │   │   ├── onboarding-project.html
 │   │   │   │   │   ├── onboarding-signin.html
 │   │   │   │   │   ├── onboarding-signup.html
@@ -938,6 +951,8 @@
 │   │   │   │   ├── 0118_document_private.py
 │   │   │   │   ├── 0119_alter_project_sites.py
 │   │   │   │   ├── 0120_project_set_inactive.py
+│   │   │   │   ├── 0121_fill_set_inactive_by_history.py
+│   │   │   │   ├── 0122_alter_project_options_alter_project_managers.py
 │   │   │   │   └── __init__.py
 │   │   │   ├── models.py
 │   │   │   ├── serializers.py
@@ -1022,6 +1037,7 @@
 │   │   │   │       │   │   ├── navigation
 │   │   │   │       │   │   │   ├── display_select.html
 │   │   │   │       │   │   │   ├── list_tabs.html
+│   │   │   │       │   │   │   ├── list_tabs_full.html
 │   │   │   │       │   │   │   ├── tabs
 │   │   │   │       │   │   │   │   ├── conversation.html
 │   │   │   │       │   │   │   │   ├── files.html
@@ -1356,6 +1372,16 @@
 │   │   │   │       │   ├── rsvp_followup_thanks.html
 │   │   │   │       │   └── task_followup_update.html
 │   │   │   │       └── tasks
+│   │   │   │           ├── exploration_ia.html
+│   │   │   │           ├── fragments
+│   │   │   │           │   └── exploration_ia
+│   │   │   │           │       ├── header_search_bar.html
+│   │   │   │           │       ├── phase_1_results.html
+│   │   │   │           │       ├── phase_2_co_recommendations.html
+│   │   │   │           │       ├── phase_3_synthesis.html
+│   │   │   │           │       ├── resource_modal.html
+│   │   │   │           │       ├── stepper.html
+│   │   │   │           │       └── welcome_modal.html
 │   │   │   │           ├── recommendation_create.html
 │   │   │   │           ├── recommendation_delete_modal.html
 │   │   │   │           ├── recommendation_list.html
@@ -1367,6 +1393,7 @@
 │   │   │   │   └── __init__.py
 │   │   │   ├── tests
 │   │   │   │   ├── __init__.py
+│   │   │   │   ├── test_acra_proxy.py
 │   │   │   │   ├── test_rest.py
 │   │   │   │   ├── test_rest_task_followup.py
 │   │   │   │   └── test_tasks.py
@@ -1374,6 +1401,7 @@
 │   │   │   ├── utils.py
 │   │   │   └── views
 │   │   │       ├── __init__.py
+│   │   │       ├── acra_proxy.py
 │   │   │       ├── rest.py
 │   │   │       └── tasks.py
 │   │   ├── training
@@ -1732,6 +1760,7 @@
 │   │   │   │   ├── custom-bootstrap.scss
 │   │   │   │   ├── custom-icon.css
 │   │   │   │   ├── exceptions.css
+│   │   │   │   ├── exploration-ia.scss
 │   │   │   │   ├── flags.css
 │   │   │   │   ├── formInformation.scss
 │   │   │   │   ├── geocoderBAN.css
@@ -1877,6 +1906,7 @@
 │   │   │       │   ├── crm.js
 │   │   │       │   ├── documents.js
 │   │   │       │   ├── embedResource.js
+│   │   │       │   ├── explorationIA.js
 │   │   │       │   ├── featureAddContact.js
 │   │   │       │   ├── home.js
 │   │   │       │   ├── knowledge.js
@@ -1974,6 +2004,9 @@
 │   │   │       │   ├── Tutorial.js
 │   │   │       │   ├── User.js
 │   │   │       │   ├── WordCloud.js
+│   │   │       │   ├── exploration_ia
+│   │   │       │   │   ├── ExplorationIA.js
+│   │   │       │   │   └── ExplorationIAWelcomeModal.js
 │   │   │       │   └── onboarding-tutorials
 │   │   │       │       └── ProjectPageTutorial.js
 │   │   │       ├── config
@@ -1992,6 +2025,7 @@
 │   │   │       │   ├── crisp.js
 │   │   │       │   ├── djangoData.js
 │   │   │       │   ├── editor.js
+│   │   │       │   ├── explorationIA.js
 │   │   │       │   ├── geolocation.js
 │   │   │       │   ├── idbObjectStoreMgmt.js
 │   │   │       │   ├── onLeaveAlert.js
@@ -2024,6 +2058,7 @@
 │   │   │       │   ├── crm-results.css.js
 │   │   │       │   ├── crm_dashboard.css.js
 │   │   │       │   ├── departments-selector.css.js
+│   │   │       │   ├── exploration-ia.css.js
 │   │   │       │   ├── form-information.css.js
 │   │   │       │   ├── form-resources.css.js
 │   │   │       │   ├── header-menu-burger.css.js
@@ -2107,6 +2142,7 @@
 │   │   │           │   └── ext.js
 │   │   │           ├── htmx.js
 │   │   │           ├── isPlural.js
+│   │   │           ├── llmClient.js
 │   │   │           ├── localStorageMgmt.js
 │   │   │           ├── map.js
 │   │   │           ├── markdown.js
@@ -2114,6 +2150,7 @@
 │   │   │           ├── statusToText.js
 │   │   │           ├── stringToColor.js
 │   │   │           ├── taskStatus.js
+│   │   │           ├── text-parsing.js
 │   │   │           ├── tiptapParser.js
 │   │   │           ├── tooltipInitialization.js
 │   │   │           ├── trackingMatomo.js
@@ -2164,6 +2201,7 @@
 │   │   └── svg
 │   │       ├── bootstrap-icons.svg
 │   │       ├── empty-state.svg
+│   │       ├── marianne.svg
 │   │       ├── page-eaten.svg
 │   │       ├── picto-demarches_simplifiees--no-border.svg
 │   │       └── picto-demarches_simplifiees.svg
@@ -2185,15 +2223,19 @@
 │   │       │   │   └── unknown_account_subject.txt
 │   │       │   ├── email.html
 │   │       │   ├── fragments
+│   │       │   │   ├── accept_cgu.html
 │   │       │   │   ├── button_pending_advisor_request.html
+│   │       │   │   ├── confirm_email_form.html
 │   │       │   │   ├── confirm_login_code_form.html
 │   │       │   │   ├── departements_select_form.html
 │   │       │   │   ├── departements_select_form_moderator.html
+│   │       │   │   ├── email_confirm_content.html
 │   │       │   │   ├── naive_signup_redirect.html
 │   │       │   │   ├── no_account_action.html
 │   │       │   │   ├── pending_advisor_request_redirect.html
 │   │       │   │   ├── request_login_code_form.html
-│   │       │   │   └── signup_form.html
+│   │       │   │   ├── signup_form.html
+│   │       │   │   └── unvalidated_email_indicator.html
 │   │       │   ├── layout
 │   │       │   │   └── layout.html
 │   │       │   ├── login.html
@@ -2203,13 +2245,16 @@
 │   │       │   ├── password_reset_from_key_done.html
 │   │       │   ├── reauthenticate.html
 │   │       │   ├── request_login_code.html
-│   │       │   └── signup.html
+│   │       │   ├── signup.html
+│   │       │   └── verification_sent.html
 │   │       ├── actstream
 │   │       │   └── action.html
 │   │       ├── allauth
 │   │       │   └── layouts
 │   │       │       └── base.html
 │   │       ├── base.html
+│   │       ├── base_embed.html
+│   │       ├── base_full.html
 │   │       ├── consent
 │   │       │   └── banner.html
 │   │       ├── cookie_consent
@@ -2230,6 +2275,7 @@
 │   │       │   ├── dropdown-menu-notifications.html
 │   │       │   ├── fragments
 │   │       │   │   ├── offline_menu_marianne.html
+│   │       │   │   ├── offline_menu_marianne_customizable.html
 │   │       │   │   └── submenu_home.html
 │   │       │   ├── menu-burger.html
 │   │       │   ├── menu-top-logo-supp.html
@@ -2239,6 +2285,7 @@
 │   │       │   ├── menu-top-secondary.html
 │   │       │   ├── menu-top-user-tools.html
 │   │       │   ├── menu-top.html
+│   │       │   ├── menu-top_full.html
 │   │       │   ├── skip-links.html
 │   │       │   └── submenu_static_link.html
 │   │       ├── layout
@@ -2319,4 +2366,4 @@
 │   ├── stats-uv.sql
 │   └── stats.sql
 └── uv.lock
-372 directories, 1949 files
+375 directories, 1993 files
