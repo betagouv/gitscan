@@ -1,28 +1,31 @@
 {
   "url": "https://github.com/IA-Generative/mirai-mesreunions",
   "name": "mirai-mesreunions",
-  "description": "Une suite intelligente de gestion du cycle de vie des réunions, conçue pour traiter des données sensibles dans un périmètre de confiance souverain, de la préparation à la capitalisation.",
+  "description": "Une suite d'intelligence de la réunion conçue pour gérer tout le cycle de vie des sessions (préparation, capture, compréhension, capitalisation) dans un environnement sécurisé et souverain pour les données sensibles.",
   "language": "Python",
   "features": [
     "Intelligence Artificielle & NLP",
     "Gestion documentaire & Fichiers",
     "Authentification & Accès",
     "Recherche & Filtres",
+    "Sécurité & Conformité",
+    "Collaboration & Workflow",
+    "Interface utilisateur & Design",
     "Gestion des utilisateurs & Permissions",
-    "Suivi & Traçabilité",
-    "Gestion des médias & Assets",
-    "Collaboration & Workflow"
+    "Calendrier & Planification",
+    "Statistiques & Rapports"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "LiteLLM",
+    "Python",
     "Whisper",
     "pyannote",
+    "LiteLLM",
     "Keycloak",
     "RabbitMQ",
     "MinIO",
     "FFmpeg",
-    "SQLAlchemy",
+    "Docker",
     "Kubernetes"
   ],
   "components": [
@@ -31,38 +34,48 @@
     "TypeScript / JavaScript",
     "Python (scripts & backend)",
     "Docker & Conteneurs",
-    "Intelligence Artificielle / ML",
     "Kubernetes & Helm",
+    "Intelligence Artificielle / ML",
+    "Microservices & Architecture",
     "Authentification (composant)",
-    "ORM & Accès aux données",
+    "CI/CD & Déploiement",
+    "Stockage objet",
     "Webhooks & Événements"
   ],
   "auth": {
     "methods": [
+      "oauth2",
+      "jwt",
       "sso",
-      "jwt"
+      "session"
     ],
     "providers": [
       "Keycloak"
     ]
   },
-  "tests": "Tests unitaires Python, tests d'intégration et plan de tests de découverte E2E.",
-  "workflows": [
-    "Build in-cluster via BuildKit",
-    "Kubernetes deployment pipelines"
+  "tests": [
+    "Pytest",
+    "Discovery Test Plan",
+    "Unit tests"
   ],
-  "lastActivity": "2026-06-14T00:00:00Z",
+  "workflows": [
+    "CI/CD in-cluster with BuildKit",
+    "Kubernetes deployment with Kustomize"
+  ],
+  "lastActivity": "2026-08-29T20:48:47+02:00",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
   "tags": [
     "Intelligence Artificielle & LLM",
+    "NLP & ML",
     "Écosystème beta.gouv / État",
-    "Python",
-    "Docker & Conteneurs",
     "Sécurité & Auth",
-    "TypeScript",
+    "Docker & Conteneurs",
+    "Kubernetes & Helm",
+    "Python",
     "JavaScript",
+    "TypeScript",
     "CI/CD & GitHub Actions"
   ]
 }

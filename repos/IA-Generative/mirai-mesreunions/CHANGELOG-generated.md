@@ -1,11 +1,15 @@
-## Changelog : mirai-mesreunions (30 derniers jours, au 04 août 2026)
+## Changelog : mirai-mesreunions (30 derniers jours, au 29 août 2026)
 
 ### Résumé
-Les récentes évolutions se sont concentrées sur l'amélioration de la fiabilité de l'importation de contenus multimédias et sur l'optimisation majeure du processus de construction (build) du logiciel, désormais plus intégré et performant.
+Ce mois-ci, le projet s'est concentré sur la stabilisation de l'expérience utilisateur de la version bêta et sur une modernisation majeure de l'infrastructure de déploiement. Les utilisateurs bénéficieront d'une interface plus cohérente et d'une meilleure fiabilité lors des imports de contenus, tandis que l'équipe technique a optimisé les processus de construction pour une intégration plus fluide au sein du cluster.
 
 ### Évolutions fonctionnelles
-- **Amélioration de l'importation YouTube** : Le système est désormais plus résilient face aux mécanismes anti-bot ; en cas de blocage, l'importation tente automatiquement une nouvelle tentative au lieu de s'interrompre brutalement.
+- **Amélioration de l'interface utilisateur** : Intégration d'un menu commun pour la version bêta, incluant la gestion du profil utilisateur et la fonction de déconnexion.
+- **Fiabilisation des imports YouTube** : Les détections anti-bot ne bloquent plus l'importation ; le système tente désormais automatiquement de nouvelles tentatives (retry) pour assurer la continuité du processus.
+- **Correction de l'authentification** : Résolution d'un problème de boucle de connexion lié à la gestion des jetons OIDC dans les cookies.
 
 ### Évolutions techniques
-- **Optimisation de la CI/CD** : Migration du processus de construction vers un modèle "in-cluster" utilisant BuildKit (mode rootless). Cette évolution permet de supprimer la dépendance aux machines virtuelles (VM) externes pour les builds.
-- **Corrections du processus de build** : Résolution de bugs liés à l'identification du cluster et à des erreurs de variables lors de la phase de construction des images.
+- **Modernisation de la CI/CD** : Migration du processus de construction (build) directement dans le cluster via BuildKit rootless, supprimant la dépendance aux machines virtuelles (VM) externes.
+- **Optimisation de la robustesse du service** : Amélioration de la gestion du démarrage du service web pour éviter les conflits lors de l'initialisation de la base de données entre plusieurs instances (replicas).
+- **Maintenance de la chaîne de build** : Correction de plusieurs bugs dans les scripts de construction (gestion des destinations d'images, des variables et de la détection du cluster).
+- **Optimisation des logs** : Réduction du bruit dans les journaux du composant "bridge" en limitant les messages répétitifs liés aux connexions AMQP.
