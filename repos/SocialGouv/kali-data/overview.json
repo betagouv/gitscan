@@ -1,12 +1,11 @@
 {
   "url": "https://github.com/SocialGouv/kali-data",
   "name": "kali-data",
-  "description": "Ce projet fournit un dump JSON régulier des conventions collectives publiées par l'API DILA. Il est destiné à un usage interne et expérimental.",
+  "description": "Ce projet fournit un export régulier au format JSON des conventions collectives extraites de l'API DILA. Il utilise la structure unist pour permettre une manipulation structurée des données des accords.",
   "language": "TypeScript",
   "features": [
-    "Gestion documentaire & Fichiers",
-    "API & Intégrations",
-    "Données & Schémas"
+    "Données & Schémas",
+    "API & Intégrations"
   ],
   "audience": "Développeurs",
   "dependencies": [
@@ -14,37 +13,31 @@
     "node-xlsx",
     "unist-util-find",
     "unist-util-flat-filter",
-    "unist-util-parents",
-    "@socialgouv/dila-api-client"
+    "unist-util-parents"
   ],
   "components": [
-    "API REST & GraphQL",
     "TypeScript / JavaScript",
-    "Documentation & Schémas"
+    "Documentation & Schémas",
+    "Scripts & Utilitaires",
+    "Pipeline de données"
   ],
-  "auth": {
-    "methods": [
-      "none"
-    ]
-  },
-  "tests": "Jest",
+  "tests": [
+    "jest",
+    "eslint",
+    "tsc"
+  ],
   "workflows": [
-    "CI/CD & Déploiement"
+    "semantic-release"
   ],
-  "lastActivity": "2026-07-25T14:03:00Z",
-  "status": "active",
+  "lastActivity": "2026-08-28T22:18:00Z",
+  "status": "experimental",
   "license": "Apache-2.0",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
   "tags": [
     "Données & Open Data",
-    "Écosystème beta.gouv / État",
     "TypeScript",
-    "JavaScript"
+    "Standards & Schémas",
+    "ETL & Pipelines de données",
+    "Écosystème beta.gouv / État"
   ]
 }
