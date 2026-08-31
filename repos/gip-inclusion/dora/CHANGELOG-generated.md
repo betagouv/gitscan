@@ -1,18 +1,19 @@
 ## Changelog : dora (30 derniers jours, au 28 août 2026)
 
 ### Résumé
-Ce mois-ci, le projet a connu une phase importante de restructuration de ses données, notamment pour simplifier la gestion des services et des publics. Parallèlement, l'expérience de recherche a été affinée et de nouveaux outils de notification et d'export ont été ajoutés pour faciliter le travail des gestionnaires et des professionnels.
+Ce mois-ci, la plateforme a connu des évolutions structurelles importantes, notamment une refonte de la gestion des services et des publics pour gagner en cohérence et en fiabilité. Les utilisateurs bénéficieront d'une expérience de recherche améliorée, de nouvelles notifications Slack et d'exports de données plus complets.
 
 ### Évolutions fonctionnelles
-- **Recherche** : Amélioration de l'ergonomie avec la validation par touche Entrée [#1230], limitation du nombre de résultats pour éviter la surcharge [#1245] et suppression automatique des doublons [#1228].
-- **Services** : Enrichissement des informations disponibles (nouveaux champs de mobilisation, affichage des précisions sur les publics [#1264]), fusion algorithmique des descriptions de services [#1293] et filtrage du formatage Markdown [#1221].
-- **Gestion & Administration** : Mise en place de notifications Slack lors du passage d'une orientation en modération [#1296], accès facilité aux pages d'administration pour les GT [#1286], simplification du tableau de bord des gestionnaires de territoire [#1229] et amélioration de la gestion des erreurs (affichage d'une 404 pour les services inaccessibles [#1224]).
-- **Export & Statistiques** : Ajout de la colonne "Identifiant FT" dans les exports d'orientations [#1290] et intégration du stockage des zones géographiques pour les statistiques [#1216].
+- **Notifications & Accès** : Mise en place de notifications Slack lors du passage d'une orientation en modération [#1296](https://github.com/gip-inclusion/dora/issues/1296) et accès facilité aux pages d'administration pour les GT [#1286](https://github.com/gip-inclusion/dora/issues/1286).
+- **Recherche & Filtres** : Amélioration de la recherche textuelle [#1254](https://github.com/gip-inclusion/dora/issues/1254), limitation du nombre de résultats pour une meilleure lisibilité [#1245](https://github.com/gip-inclusion/dora/issues/1245) et correction des filtres de publics [#1261](https://github.com/gip-inclusion/dora/issues/1261).
+- **Gestion des Services** : Ajout de champs de mobilisation, suppression de la limite de catégories par service [#1289](https://github.com/gip-inclusion/dora/issues/1289) et affichage détaillé des précisions des publics dans les fiches services [#1264](https://github.com/gip-inclusion/dora/issues/1264).
+- **Exports & Corrections** : Ajout de l'identifiant FT dans les exports d'orientations reçues [#1290](https://github.com/gip-inclusion/dora/issues/1290), correction des URL d'administration [#1295](https://github.com/gip-inclusion/dora/issues/1295) et garantie de l'unicité des critères d'admission [#1243](https://github.com/gip-inclusion/dora/issues/1243).
 
 ### Évolutions techniques
-- **Refonte du modèle de données** : Migration majeure de la gestion des "Services" et des "Publics" vers un modèle simplifié (passage de relations complexes à des champs uniques ou des tableaux [#1247, #1249, #1252, #1266]) et suppression des anciens schémas et modèles obsolètes [#1279, #1283].
-- **Performance & Fiabilité** : Parallélisation des appels API pour accélérer l'édition des services et modèles [#1281], protection contre les suppressions d'objets en cascade [#1220] et renforcement de l'unicité des critères d'admission [#1243].
-- **Maintenance** : Correction des URLs vers l'administration Django [#1295], nettoyage des commandes et du code inutilisés [#1260, #1263, #1278, #1285] et ajout d'une commande de normalisation des mots de passe [#1271].
+- **Refonte du modèle Services** : Simplification majeure de la gestion des types de services via l'introduction d'un champ unique `kind` et suppression des anciennes relations complexes (M2M) [#1266](https://github.com/gip-inclusion/dora/issues/1266), [#1249](https://github.com/gip-inclusion/dora/issues/1249), [#1282](https://github.com/gip-inclusion/dora/issues/1282) et [#1257](https://github.com/gip-inclusion/dora/issues/1257).
+- **Migration des données (Publics)** : Transition vers le référentiel DI et restructuration de la lecture des publics pour assurer la cohérence des données [#1237](https://github.com/gip-inclusion/dora/issues/1237), [#1283](https://github.com/gip-inclusion/dora/issues/1283) et [#1252](https://github.com/gip-inclusion/dora/issues/1252).
+- **Optimisations & Intégrité** : Parallélisation des appels pour accélérer l'édition des services et modèles [#1281](https://github.com/gip-inclusion/dora/issues/1281), fusion algorithmique des descriptions pour éviter les doublons [#1293](https://github.com/gip-inclusion/dora/issues/1293) et migration des champs de recherche vers des formats plus performants (`ArrayField`) [#1247](https://github.com/gip-inclusion/dora/issues/1247).
 
 ### Autres changements
-- **Tests** : Augmentation de la couverture de tests sur les critères d'orientabilité des services [#1227].
+- **Nettoyage** : Suppression de commandes d'import/export obsolètes [#1260](https://github.com/gip-inclusion/dora/issues/1260), [#1285](https://github.com/gip-inclusion/dora/issues/1285) et de code devenu inutile [#1278](https://github.com/gip-inclusion/dora/issues/1278).
+- **Maintenance** : Ajout d'une commande de normalisation des mots de passe [#1271](https://github.com/gip-inclusion/dora/issues/1271).
