@@ -43,11 +43,17 @@ and this project adheres to
 - implement basic Resana API
 - add optional setting to cap migrated files per workspace.
 - add MFA/OTP support to Resana Keycloak login flow
+- add migration user email/name columns and search to workspace admin #143
+- add admin actions to reset a user's Resana or Drive connection #198
 
 ### Changed
 
+- add tooltip for cropped title
+- update zip archive download journey
+- specify logo fichiers
 - update cunningham tokens
 - replace unmaintained retry package with tenacity
+- switch Resana source auth to PKCE + bridge flow #190
 
 ### Fixed
 

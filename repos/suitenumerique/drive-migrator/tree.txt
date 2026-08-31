@@ -160,6 +160,7 @@
     │   │   │   ├── 0022_user_resana_access_token_user_resana_refresh_token_and_more.py
     │   │   │   ├── 0023_add_auto_validate_new_users_feature_flag.py
     │   │   │   ├── 0024_workspace_is_truncated_alter_user_language.py
+    │   │   │   ├── 0025_user_resana_csrf_token_and_more.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── osmose
@@ -190,6 +191,7 @@
     │   │   │       ├── __init__.py
     │   │   │       ├── backend.py
     │   │   │       ├── interstis_client.py
+    │   │   │       ├── migrator_auth.py
     │   │   │       ├── resana_members_client.py
     │   │   │       ├── token_manager.py
     │   │   │       └── urls.py
@@ -253,6 +255,7 @@
     │   │   │   │   ├── resana
     │   │   │   │   │   ├── __init__.py
     │   │   │   │   │   ├── test_interstis_client.py
+    │   │   │   │   │   ├── test_migrator_auth.py
     │   │   │   │   │   ├── test_resana_backend.py
     │   │   │   │   │   ├── test_resana_members_client.py
     │   │   │   │   │   └── test_token_manager.py
@@ -260,6 +263,7 @@
     │   │   │   ├── swagger
     │   │   │   │   ├── __init__.py
     │   │   │   │   └── test_openapi_schema.py
+    │   │   │   ├── test_admin.py
     │   │   │   ├── test_api_available_destinations.py
     │   │   │   ├── test_api_migration_config.py
     │   │   │   ├── test_api_resana_auth.py
@@ -268,6 +272,7 @@
     │   │   │   ├── test_api_workspaces_process.py
     │   │   │   ├── test_encryption.py
     │   │   │   ├── test_mails_manager.py
+    │   │   │   ├── test_migration_0025_clear_legacy_resana_tokens.py
     │   │   │   ├── test_models_user.py
     │   │   │   └── test_retry_utils.py
     │   │   ├── urls.py
@@ -301,6 +306,7 @@
     │   ├── pyproject.toml
     │   └── setup.py
     ├── frontend
+    │   ├── .prettierignore
     │   ├── .prettierrc.js
     │   ├── Dockerfile
     │   ├── apps
@@ -398,6 +404,7 @@
     │   │       │   │   │   ├── icon-marianne.svg
     │   │       │   │   │   ├── icon-user.svg
     │   │       │   │   │   ├── icon-zip.svg
+    │   │       │   │   │   ├── logo-fichiers.svg
     │   │       │   │   │   ├── logo-resana-full.svg
     │   │       │   │   │   ├── proconnect-logo.svg
     │   │       │   │   │   ├── resana-logo.svg
@@ -439,9 +446,6 @@
     │   │       │   │   ├── LogoGouv
     │   │       │   │   │   ├── LogoGouv.scss
     │   │       │   │   │   └── LogoGouv.tsx
-    │   │       │   │   ├── ResanaConnect
-    │   │       │   │   │   ├── ResanaConnectSection.scss
-    │   │       │   │   │   └── ResanaConnectSection.tsx
     │   │       │   │   ├── Workspace
     │   │       │   │   │   ├── Workspace.scss
     │   │       │   │   │   └── Workspace.tsx
@@ -538,4 +542,4 @@
         │   └── openapi-typescript-codegen
         │       └── generate_api_client_local.sh
         └── yarn.lock
-129 directories, 411 files
+128 directories, 416 files
