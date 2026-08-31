@@ -116,7 +116,8 @@
 │   │   │   │   │   ├── achevement
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   ├── listerProjetAvecAchevementATransmettre.handler.ts
-│   │   │   │   │   │   └── transmettreDateAchevement.handler.ts
+│   │   │   │   │   │   ├── transmettreDateAchevement.handler.ts
+│   │   │   │   │   │   └── transmettreDateAchevementParLot.handler.ts
 │   │   │   │   │   └── raccordement
 │   │   │   │   │       ├── index.ts
 │   │   │   │   │       ├── lister.handler.ts
@@ -209,6 +210,7 @@
 │   │   │   │   │   ├── projection
 │   │   │   │   │   │   └── rebuild.ts
 │   │   │   │   │   ├── raccordement
+│   │   │   │   │   │   ├── ajouter-taches.ts
 │   │   │   │   │   │   ├── notifier-gestionnaires-réseau.ts
 │   │   │   │   │   │   ├── qualifier-documents.ts
 │   │   │   │   │   │   └── transmettre-references.ts
@@ -1172,6 +1174,16 @@
 │   │   │   │   │   │   ├── optionalStringArray.ts
 │   │   │   │   │   │   ├── redirigerPageProjet.ts
 │   │   │   │   │   │   ├── récupérerChangementsPermisParLeCahierDesCharges.ts
+│   │   │   │   │   │   ├── searchParams
+│   │   │   │   │   │   │   ├── getSearchParamsEnumValue.test.ts
+│   │   │   │   │   │   │   ├── getSearchParamsEnumValue.ts
+│   │   │   │   │   │   │   ├── getSearchParamsMultipleValues.test.ts
+│   │   │   │   │   │   │   ├── getSearchParamsMultipleValues.ts
+│   │   │   │   │   │   │   ├── getSearchParamsSingleValue.test.ts
+│   │   │   │   │   │   │   ├── getSearchParamsSingleValue.ts
+│   │   │   │   │   │   │   ├── getSearchParamsValues.test.ts
+│   │   │   │   │   │   │   ├── getSearchParamsValues.ts
+│   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   ├── transformToOptionalEnumArray.ts
 │   │   │   │   │   │   └── vérifierQueLeCahierDesChargesPermetUnChangement.ts
 │   │   │   │   │   ├── api
@@ -1381,7 +1393,13 @@
 │   │   │   │   │   │   │   │   │   ├── HistoriqueLauréat.page.tsx
 │   │   │   │   │   │   │   │   │   ├── HistoriqueLauréatTimelineItem.tsx
 │   │   │   │   │   │   │   │   │   ├── _helpers
-│   │   │   │   │   │   │   │   │   │   └── catégories.ts
+│   │   │   │   │   │   │   │   │   │   ├── aUnRecoursAccordé.ts
+│   │   │   │   │   │   │   │   │   │   ├── catégories.ts
+│   │   │   │   │   │   │   │   │   │   ├── getHistoriqueTrié.ts
+│   │   │   │   │   │   │   │   │   │   ├── itemDoitEtreAffiché.ts
+│   │   │   │   │   │   │   │   │   │   ├── mapToTimelineItemProps.ts
+│   │   │   │   │   │   │   │   │   │   ├── trierParJourPuisOrdreDInsertion.test.ts
+│   │   │   │   │   │   │   │   │   │   └── trierParJourPuisOrdreDInsertion.ts
 │   │   │   │   │   │   │   │   │   ├── mapToÉtapeInconnueOuIgnoréeTimelineItemProps.ts
 │   │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   ├── imprimer
@@ -2428,7 +2446,8 @@
 │   │   │   │   │   │   │   ├── DemandeRejetée.tsx
 │   │   │   │   │   │   │   ├── DétailsChangement.tsx
 │   │   │   │   │   │   │   ├── DétailsDemande.tsx
-│   │   │   │   │   │   │   └── StatutDemandeBadge.tsx
+│   │   │   │   │   │   │   ├── StatutDemandeBadge.tsx
+│   │   │   │   │   │   │   └── TitrePageDemande.tsx
 │   │   │   │   │   │   ├── document
 │   │   │   │   │   │   │   ├── DocumentListItem.tsx
 │   │   │   │   │   │   │   └── DocumentsList.tsx
@@ -2923,6 +2942,7 @@
 │   │   │   │   │   ├── actionnaire
 │   │   │   │   │   │   ├── actionnaire.aggregate.ts
 │   │   │   │   │   │   ├── actionnaire.entity.ts
+│   │   │   │   │   │   ├── actionnaire.error.ts
 │   │   │   │   │   │   ├── actionnaire.event.ts
 │   │   │   │   │   │   ├── actionnaire.register.ts
 │   │   │   │   │   │   ├── changement
@@ -2963,7 +2983,6 @@
 │   │   │   │   │   │   ├── consulter
 │   │   │   │   │   │   │   └── consulterActionnaire.query.ts
 │   │   │   │   │   │   ├── documentActionnaire.valueType.ts
-│   │   │   │   │   │   ├── errors.ts
 │   │   │   │   │   │   ├── importer
 │   │   │   │   │   │   │   ├── importerActionnaire.event.ts
 │   │   │   │   │   │   │   └── importerActionnaire.options.ts
@@ -3485,7 +3504,6 @@
 │   │   │   │   │   │   │   │   └── transmettreDocumentRaccordement.usecase.ts
 │   │   │   │   │   │   │   └── typeDocumentsRaccordement.valueType.ts
 │   │   │   │   │   │   ├── dossierRaccordement.entity.ts
-│   │   │   │   │   │   ├── errors.ts
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   ├── lister
 │   │   │   │   │   │   │   ├── listerDossierRaccordement.query.ts
@@ -3512,6 +3530,7 @@
 │   │   │   │   │   │   │       └── modifierRéférenceDossierRaccordement.usecase.ts
 │   │   │   │   │   │   ├── raccordement.aggregate.ts
 │   │   │   │   │   │   ├── raccordement.entity.ts
+│   │   │   │   │   │   ├── raccordement.error.ts
 │   │   │   │   │   │   ├── raccordement.event.ts
 │   │   │   │   │   │   ├── raccordement.register.ts
 │   │   │   │   │   │   ├── rechercher
@@ -3835,7 +3854,6 @@
 │   │   │   │   ├── _helpers
 │   │   │   │   │   ├── getters
 │   │   │   │   │   │   ├── getAutorisation.ts
-│   │   │   │   │   │   ├── getCoordonnées.test.ts
 │   │   │   │   │   │   ├── getCoordonnées.ts
 │   │   │   │   │   │   ├── getDateConstitutionGarantiesFinancières.ts
 │   │   │   │   │   │   ├── getDateÉchéanceGarantiesFinancières.ts
@@ -4658,20 +4676,21 @@
 │       │   │   │   └── totalPuissanceParAppelOffre.statistic.ts
 │       │   │   ├── 02-avancement-des-projets
 │       │   │   │   ├── index.ts
-│       │   │   │   ├── nombreTotalProjetAyantTransmisAttestationConformité.statistic.ts
+│       │   │   │   ├── nombreTotalProjetAchevé.ts
 │       │   │   │   ├── pourcentageAttestationTéléchargée.statistic.ts
-│       │   │   │   └── pourcentageProjetAyantTransmisAttestationConformité.statistic.ts
+│       │   │   │   └── pourcentageProjetAchevé.statistic.ts
 │       │   │   ├── 03-demandes-de-modification
 │       │   │   │   ├── index.ts
 │       │   │   │   ├── nombreDeDemandeParCategorie.statistic.ts
 │       │   │   │   └── nombreTotalDemande.statistic.ts
 │       │   │   ├── 04-mise-en-service
 │       │   │   │   ├── index.ts
-│       │   │   │   ├── nombreTotalPTFDéposées.statistic.ts
+│       │   │   │   ├── nombreTotalProjetAvecDCRDéposée.statistic.ts
+│       │   │   │   ├── nombreTotalProjetAvecDossierRaccordementComplet.statistic.ts
 │       │   │   │   ├── nombreTotalProjetEnService.statistic.ts
 │       │   │   │   ├── nombreTotalRéférencesRaccordement.statistic.ts
-│       │   │   │   ├── pourcentagePTFDéposées.statistic.ts
-│       │   │   │   ├── pourcentageProjetAvecDCRQuiOntUnePTF.statistic.ts
+│       │   │   │   ├── pourcentageProjetAvecDCRDéposée.ts
+│       │   │   │   ├── pourcentageProjetAvecDossierRaccordementComplet.statistic.ts
 │       │   │   │   ├── pourcentageProjetEnService.statistic.ts
 │       │   │   │   ├── pourcentageRéférencesRaccordement.statistic.ts
 │       │   │   │   └── puissanceTotaleMiseEnService.stastistic.ts
@@ -4679,10 +4698,6 @@
 │       │   │   │   ├── index.ts
 │       │   │   │   ├── nombreTotalMainlevéeAccordée.statistic.ts
 │       │   │   │   └── totalPuissanceProjetAvecMainlevéeAccordée.statistic.ts
-│       │   │   ├── 06-par-cycle
-│       │   │   │   ├── computeNombreTotalProjetAyantTransmisAttestationConformitéParCycle.ts
-│       │   │   │   ├── computePourcentageProjetEnServiceParCycle.statistic.ts
-│       │   │   │   └── index.ts
 │       │   │   ├── 07-utilisateur
 │       │   │   │   ├── index.ts
 │       │   │   │   ├── nombrePorteurInscrit.statistic.ts
@@ -4690,12 +4705,15 @@
 │       │   │   ├── 08-carte
 │       │   │   │   ├── index.ts
 │       │   │   │   └── projetLauréatParDépartement.statistic.ts
-│       │   │   ├── _utils
+│       │   │   ├── helpers
 │       │   │   │   ├── cleanCamembertStatistic.ts
 │       │   │   │   ├── cleanCartoProjetStatistic.ts
 │       │   │   │   ├── cleanScalarStatistic.ts
 │       │   │   │   ├── cleanUtilisateurStatistic.ts
+│       │   │   │   ├── cycle.type.ts
 │       │   │   │   ├── getCountProjetsLauréatsNonAbandonnés.ts
+│       │   │   │   ├── getCountProjetsLauréatsNonAbandonnésSaufPPA.ts
+│       │   │   │   ├── getQueryParams.ts
 │       │   │   │   └── index.ts
 │       │   │   └── index.ts
 │       │   └── tsconfig.json
@@ -4707,4 +4725,4 @@
 ├── scalingo.json
 ├── turbo.json
 └── update-ts-references.yaml
-1142 directories, 3567 files
+1142 directories, 3585 files
