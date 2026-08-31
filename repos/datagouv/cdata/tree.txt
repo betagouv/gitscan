@@ -2,8 +2,7 @@
 ├── .dockerignore
 ├── .github
 │   └── workflows
-│       ├── ci.yml
-│       └── create-deploy-release.yml
+│       └── ci.yml
 ├── .gitignore
 ├── .husky
 │   └── pre-commit
@@ -141,7 +140,6 @@
 │   │   ├── AdminDatasetsPage.vue
 │   │   ├── AdminUpdateDatasetPage.vue
 │   │   ├── CompleteResourcePublicationStep.vue
-│   │   ├── DatasetsMetrics.vue
 │   │   ├── DescribeDataset.vue
 │   │   ├── DescribeResource.vue
 │   │   ├── FileEditModal.vue
@@ -189,8 +187,6 @@
 │   │   ├── ReuseCard.global.vue
 │   │   ├── SearchDataservice.global.vue
 │   │   └── SearchDataset.global.vue
-│   ├── Explore
-│   │   └── ExploreResourceView.vue
 │   ├── FileCard
 │   │   ├── FileCard.vue
 │   │   └── FileLoader.vue
@@ -223,6 +219,7 @@
 │   │   └── LinkedToAccordion.vue
 │   ├── LogoAsText.vue
 │   ├── LogoImage.vue
+│   ├── LogoNumeriqueGouv.vue
 │   ├── LogoOnly.vue
 │   ├── MarkdownEditor
 │   │   ├── EditorButton.vue
@@ -335,6 +332,9 @@
 │   ├── Posts
 │   │   ├── DescribePost.vue
 │   │   └── PostContentForm.vue
+│   ├── PreviewDashboard
+│   │   ├── DeltaIndicator.vue
+│   │   └── PercentageMeter.vue
 │   ├── ProducerSelect.vue
 │   ├── RadioButtons.vue
 │   ├── RecommendationExternal.vue
@@ -397,16 +397,22 @@
 │   └── dataset
 │       └── card-lg.vue
 ├── composables
+│   ├── showErrorWhenPageOutOfRange.ts
 │   ├── useAccessAudience.ts
 │   ├── useBlocSortable.ts
 │   ├── useCurrentOwned.ts
 │   ├── useDeleteMailto.ts
 │   ├── useForm.ts
+│   ├── useFrequencies.ts
 │   ├── useJobItems.ts
 │   ├── useMarkAsRead.ts
+│   ├── useNewExplorer.ts
+│   ├── useNoindexWhenFiltered.ts
 │   ├── useNotifications.client.ts
 │   ├── useOrganizationBlocs.ts
+│   ├── useOrganizationMetrics.ts
 │   ├── useRecommendationReason.ts
+│   ├── useSite.ts
 │   ├── useSiteBlocs.ts
 │   ├── useTranslation.ts
 │   └── useTwoFactorSetup.ts
@@ -623,6 +629,7 @@
 │   │   │   │   ├── SearchableSelect.vue
 │   │   │   │   ├── SelectGroup.vue
 │   │   │   │   └── TagSelect.vue
+│   │   │   ├── FormattedDate.vue
 │   │   │   ├── Icons
 │   │   │   │   ├── Archive.vue
 │   │   │   │   ├── Code.vue
@@ -676,6 +683,7 @@
 │   │   │   │   ├── MapContainer.client.vue
 │   │   │   │   ├── Metadata.vue
 │   │   │   │   ├── PdfPreview.client.vue
+│   │   │   │   ├── PdfSkeleton.vue
 │   │   │   │   ├── Pmtiles.client.vue
 │   │   │   │   ├── Preview.vue
 │   │   │   │   ├── PreviewLoader.vue
@@ -689,9 +697,14 @@
 │   │   │   │   └── france.svg
 │   │   │   ├── ResourceExplorer
 │   │   │   │   ├── ResourceExplorer.vue
+│   │   │   │   ├── ResourceExplorerHeader.vue
 │   │   │   │   ├── ResourceExplorerSidebar.vue
 │   │   │   │   ├── ResourceExplorerViewer.vue
-│   │   │   │   └── ResourceSelector.vue
+│   │   │   │   ├── ResourceMainAction.vue
+│   │   │   │   ├── ResourceSelector.vue
+│   │   │   │   ├── ResourceViewerHeader.vue
+│   │   │   │   └── ResourceViewerSkeleton.vue
+│   │   │   ├── ResourceListItem.vue
 │   │   │   ├── ReuseCard.vue
 │   │   │   ├── ReuseDetails.vue
 │   │   │   ├── ReuseHorizontalCard.vue
@@ -719,12 +732,22 @@
 │   │   │   │   ├── TabPanel.vue
 │   │   │   │   └── TabPanels.vue
 │   │   │   ├── TabularExplorer
+│   │   │   │   ├── TabularActiveFilters.vue
 │   │   │   │   ├── TabularCell.vue
 │   │   │   │   ├── TabularCellPopover.vue
+│   │   │   │   ├── TabularColumnsMenu.vue
 │   │   │   │   ├── TabularExplorer.vue
 │   │   │   │   ├── TabularFilterContent.vue
 │   │   │   │   ├── TabularFilterPopover.vue
-│   │   │   │   └── types.ts
+│   │   │   │   ├── TabularMobileFilterButton.vue
+│   │   │   │   ├── TabularMobileFilters.vue
+│   │   │   │   ├── TabularRowsInfo.vue
+│   │   │   │   ├── TabularSkeleton.vue
+│   │   │   │   ├── TabularTable.vue
+│   │   │   │   ├── TabularToolbar.vue
+│   │   │   │   ├── types.ts
+│   │   │   │   ├── useColumnMetadata.ts
+│   │   │   │   └── useTabularContext.ts
 │   │   │   ├── Tag.vue
 │   │   │   ├── Toggletip.vue
 │   │   │   ├── Tooltip.vue
@@ -734,9 +757,11 @@
 │   │   │   └── radioGroupContext.ts
 │   │   ├── composables
 │   │   │   ├── useActiveDescendant.ts
+│   │   │   ├── useDatasetResources.ts
 │   │   │   ├── useDebouncedRef.ts
 │   │   │   ├── useHasTabularData.ts
 │   │   │   ├── useMetrics.ts
+│   │   │   ├── useResizable.ts
 │   │   │   ├── useResourceCapabilities.ts
 │   │   │   ├── useReuseType.ts
 │   │   │   ├── useRouteQueryBoolean.ts
@@ -761,6 +786,7 @@
 │   │   │   ├── never.ts
 │   │   │   ├── organizations.ts
 │   │   │   ├── owned.ts
+│   │   │   ├── paginate.ts
 │   │   │   ├── resourceCapabilities.ts
 │   │   │   ├── resources.ts
 │   │   │   ├── reuses.ts
@@ -831,7 +857,11 @@
 │   ├── a-propos.vue
 │   ├── admin
 │   │   ├── beta
-│   │   │   └── chart.vue
+│   │   │   ├── chart.vue
+│   │   │   ├── preview-dashboard
+│   │   │   │   ├── fichiers.vue
+│   │   │   │   └── index.vue
+│   │   │   └── preview-dashboard.client.vue
 │   │   ├── community-resources
 │   │   │   └── new.vue
 │   │   ├── dataservices
@@ -1011,6 +1041,7 @@
 │   ├── events
 │   │   └── rentree-data-gouv.vue
 │   ├── explore
+│   │   ├── [did].vue
 │   │   ├── cada
 │   │   │   ├── [id].vue
 │   │   │   └── index.vue
@@ -1388,19 +1419,21 @@
 │   ├── routes
 │   │   ├── health.ts
 │   │   └── nuxt-api
+│   │       ├── access-type-reason-categories.get.ts
 │   │       ├── albert
 │   │       │   ├── generate-dataset-short-description.post.ts
 │   │       │   ├── generate-dataset-tags.post.ts
 │   │       │   ├── generate-reuse-tags.post.ts
 │   │       │   └── utils
 │   │       │       └── albert-helpers.ts
+│   │       ├── dataset-badges.get.ts
 │   │       ├── oembed.get.ts
 │   │       ├── pages
 │   │       │   └── [...slug].get.ts
 │   │       ├── send-message.post.ts
+│   │       ├── site.get.ts
 │   │       └── sitemaps
-│   │           ├── pages.ts
-│   │           └── urls.ts
+│   │           └── pages.ts
 │   ├── tsconfig.json
 │   └── utils
 │       └── albert-api-client.ts
@@ -1414,6 +1447,7 @@
 │   ├── api
 │   │   └── redirect_on_different_slug.spec.ts
 │   ├── auth
+│   │   ├── header-links.logged-out.spec.ts
 │   │   ├── login.logged-out.spec.ts
 │   │   ├── register.logged-out.spec.ts
 │   │   └── reset.logged-out.spec.ts
@@ -1422,6 +1456,7 @@
 │   ├── auth.setup.ts
 │   ├── base.ts
 │   ├── cada.spec.ts
+│   ├── contact-points.spec.ts
 │   ├── dataservices
 │   │   ├── [did].spec.ts
 │   │   ├── add-dataset.spec.ts
@@ -1434,10 +1469,13 @@
 │   │   ├── creation.spec.ts
 │   │   ├── datagouv-config-after-error.spec.ts
 │   │   ├── edition.spec.ts
+│   │   ├── explorer-toggle.spec.ts
 │   │   ├── files-management.spec.ts
 │   │   ├── lifecycle.spec.ts
 │   │   ├── resources.spec.ts
-│   │   └── search.spec.ts
+│   │   ├── search.spec.ts
+│   │   └── structured-publication.spec.ts
+│   ├── dates.spec.ts
 │   ├── discussions
 │   │   ├── discussions-lifecycle.spec.ts
 │   │   └── discussions.normal-user.spec.ts
@@ -1446,6 +1484,19 @@
 │   │   └── pages-editor.spec.ts-snapshots
 │   │       ├── edito-page-final-chromium-linux.png
 │   │       └── edito-page-final-firefox-linux.png
+│   ├── explore
+│   │   ├── [did].spec.ts
+│   │   └── index.spec.ts
+│   ├── fixtures
+│   │   └── structured-publication
+│   │       ├── lave-linge-point-virgule.csv
+│   │       ├── lave-linge-tabulation.csv
+│   │       ├── lave-linge-virgule.csv
+│   │       ├── lave-linge.ods
+│   │       ├── lave-linge.xlsx
+│   │       ├── schema-durabilite-lave-linge.json
+│   │       ├── schema-irve-statique.json
+│   │       └── schema-reparabilite.json
 │   ├── follow
 │   │   ├── follow.logged-out.spec.ts
 │   │   └── follow.spec.ts
@@ -1459,6 +1510,8 @@
 │   ├── legacy
 │   │   ├── edito_redirects_to_search.spec.ts
 │   │   └── redirect_trailing_slash.spec.ts
+│   ├── metrics.spec.ts
+│   ├── metricsApi.ts
 │   ├── moderation
 │   │   └── report.spec.ts
 │   ├── og-images.spec.ts
@@ -1474,14 +1527,17 @@
 │   │   ├── index.spec.ts
 │   │   ├── invitations.spec.ts
 │   │   ├── organizations.spec.ts
+│   │   ├── pagination.spec.ts
 │   │   ├── partial-editor.spec.ts
 │   │   └── presentation.spec.ts
 │   ├── pages
+│   │   ├── content.spec.ts
 │   │   ├── error-page-navigation.spec.ts
 │   │   └── not-found.spec.ts
 │   ├── posts
 │   │   ├── blocs.spec.ts
 │   │   └── kind.spec.ts
+│   ├── preview-dashboard.spec.ts
 │   ├── products
 │   │   └── roadmap.spec.ts
 │   ├── reuses
@@ -1506,18 +1562,23 @@
 │   ├── datagouv-components
 │   │   ├── charts.spec.ts
 │   │   ├── dates.spec.ts
+│   │   ├── formatted-date.spec.ts
 │   │   ├── helpers.spec.ts
 │   │   ├── markdown.spec.ts
 │   │   ├── organizations.spec.ts
+│   │   ├── paginate.spec.ts
 │   │   ├── resource-capabilities.spec.ts
 │   │   ├── resources.spec.ts
+│   │   ├── schemas-search.spec.ts
 │   │   ├── tabular-parsing-error.spec.ts
-│   │   └── tabular.spec.ts
+│   │   ├── tabular.spec.ts
+│   │   └── translation.spec.ts
 │   ├── setup.ts
 │   ├── shims
 │   │   └── datagouv-components.ts
 │   └── utils
 │       ├── api.spec.ts
+│       ├── auth.spec.ts
 │       ├── cada.spec.ts
 │       ├── charts.spec.ts
 │       ├── datasets.spec.ts
@@ -1525,7 +1586,7 @@
 │       ├── helpers.spec.ts
 │       ├── openapi-bouquet.spec.ts
 │       ├── openapi-extract.spec.ts
-│       ├── paginate.spec.ts
+│       ├── preview-dashboard.spec.ts
 │       └── send-file.spec.ts
 ├── tsconfig.json
 ├── types
@@ -1539,6 +1600,7 @@
 │   ├── notifications.ts
 │   ├── pages.ts
 │   ├── posts.ts
+│   ├── preview-dashboard.ts
 │   ├── recommendations.ts
 │   ├── schema.ts
 │   ├── shims.d.ts
@@ -1565,8 +1627,8 @@
 │   ├── organizations.ts
 │   ├── owner.ts
 │   ├── pages.ts
-│   ├── paginate.ts
 │   ├── posts.ts
+│   ├── previewDashboard.ts
 │   └── reuses.ts
 └── vitest.config.ts
-240 directories, 1331 files
+244 directories, 1389 files
