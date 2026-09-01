@@ -27,6 +27,9 @@
 │   │   ├── epic.yml
 │   │   ├── feature-request.yml
 │   │   └── task-request.yml
+│   ├── actions
+│   │   └── notify-slack
+│   │       └── action.yml
 │   ├── copilot-instructions.md
 │   ├── instructions
 │   │   ├── review-server-shared.instructions.md
@@ -154,6 +157,7 @@
 │       ├── mongo_keyfile
 │       ├── mongod.conf
 │       └── mongot.yml
+├── .node-version
 ├── .openpgp-keyid
 ├── .openpgp-pubkey
 ├── .vscode
@@ -535,6 +539,7 @@
 │   │   │   │   ├── fill-rome-for-partners.ts
 │   │   │   │   ├── fill-siret-infos-for-partners.test.ts
 │   │   │   │   ├── fill-siret-infos-for-partners.ts
+│   │   │   │   ├── format-text-fields-jobs-partners.test.ts
 │   │   │   │   ├── format-text-fields-jobs-partners.ts
 │   │   │   │   ├── france-travail
 │   │   │   │   │   ├── france-travail-mapper.test.ts
@@ -644,6 +649,7 @@
 │   │   │   │   │   ├── pass-mapper.ts
 │   │   │   │   │   └── process-pass.ts
 │   │   │   │   ├── process-fill-rome-standalone.ts
+│   │   │   │   ├── process-job-partners-for-api.test.ts
 │   │   │   │   ├── process-job-partners-for-api.ts
 │   │   │   │   ├── process-job-partners.ts
 │   │   │   │   ├── process-missing-rome-and-import-to-job-partners.test.ts
@@ -707,6 +713,7 @@
 │   │   │   │   ├── reprise-envoi-prdv.ts
 │   │   │   │   ├── reset-invitation-dates.ts
 │   │   │   │   ├── sync-etablissement-dates.ts
+│   │   │   │   ├── sync-etablissements-and-formations.test.ts
 │   │   │   │   └── sync-etablissements-and-formations.ts
 │   │   │   ├── recruiters
 │   │   │   │   ├── create-api-user.ts
@@ -760,7 +767,8 @@
 │   │   │   ├── 20260818182821-reseed-search-synonyms-generic-word-pollution.ts
 │   │   │   ├── 20260818194937-backfill-search-queries-status.ts
 │   │   │   ├── 20260821140000-add-hiring-count-engagement-indexes.ts
-│   │   │   └── 20260824100000-rename-search-queries-source.ts
+│   │   │   ├── 20260824100000-rename-search-queries-source.ts
+│   │   │   └── 20260828160000-add-rdv-sync-indexes.ts
 │   │   ├── security
 │   │   │   ├── access-log.service.ts
 │   │   │   ├── access-log.types.ts
@@ -779,6 +787,7 @@
 │   │       ├── application.service.ts
 │   │       ├── appointment.service.ts
 │   │       ├── bal.service.ts
+│   │       ├── brevo.service.test.ts
 │   │       ├── brevo.service.ts
 │   │       ├── cache-classification.service.test.ts
 │   │       ├── cache-classification.service.ts
@@ -1017,6 +1026,7 @@
 │   │   │   └── zod-with-open-api.ts
 │   │   ├── index.ts
 │   │   ├── interface
+│   │   │   ├── etablissement.types.test.ts
 │   │   │   └── etablissement.types.ts
 │   │   ├── metier
 │   │   │   ├── lbaitemutils.test.ts
@@ -1179,6 +1189,8 @@
 │   │   │   ├── index.ts
 │   │   │   ├── object-utils.ts
 │   │   │   ├── rate-limit-description.ts
+│   │   │   ├── search-url-compat.test.ts
+│   │   │   ├── search-url-compat.ts
 │   │   │   ├── sitemap-utils.ts
 │   │   │   ├── string-utils.test.ts
 │   │   │   └── string-utils.ts
@@ -1242,6 +1254,8 @@
 │   │   │   │       │   ├── recherche.metadata.utils_LEGACY.ts
 │   │   │   │       │   ├── recherche.route.utils.test.ts
 │   │   │   │       │   ├── recherche.route.utils.ts
+│   │   │   │       │   ├── search-legacy-utils.test.ts
+│   │   │   │       │   ├── search-legacy-utils.ts
 │   │   │   │       │   ├── search.params.utils.test.ts
 │   │   │   │       │   ├── search.params.utils.ts
 │   │   │   │       │   ├── search.tracking.utils.test.ts
@@ -1409,7 +1423,9 @@
 │   │   │   │   ├── const.ts
 │   │   │   │   ├── je-suis-employeur-public
 │   │   │   │   │   └── page.tsx
-│   │   │   │   └── page.tsx
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── recruter-un-alternant
+│   │   │   │       └── page.tsx
 │   │   │   ├── layout.tsx
 │   │   │   ├── metiers
 │   │   │   │   ├── [slug]
@@ -2163,7 +2179,6 @@
 │   │   │   │       └── selection.svg
 │   │   │   ├── femmeMontrantNavigateur.svg
 │   │   │   ├── financement_ue.png
-│   │   │   ├── france_relance.svg
 │   │   │   ├── fuseeDecollant.svg
 │   │   │   ├── glass.svg
 │   │   │   ├── glass_white.svg
@@ -2385,6 +2400,7 @@
 │   │   │   ├── logoIdea.svg
 │   │   │   ├── logo_LBA.svg
 │   │   │   ├── logo_fse.svg
+│   │   │   ├── logo_numerique_gouv.svg
 │   │   │   ├── logo_relance.svg
 │   │   │   ├── logo_sirius.svg
 │   │   │   ├── logosPartenaires
@@ -2612,6 +2628,7 @@
 │   │   └── svg.d.ts
 │   └── utils
 │       ├── address-utils.ts
+│       ├── api.prdv.test.ts
 │       ├── api.ts
 │       ├── api.utils.test.ts
 │       ├── api.utils.ts
@@ -2637,4 +2654,4 @@
 │       └── use-search-params-record.ts
 ├── vitest.config.ts
 └── yarn.lock
-491 directories, 2716 files
+494 directories, 2730 files
