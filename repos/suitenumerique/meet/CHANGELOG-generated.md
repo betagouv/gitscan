@@ -1,40 +1,34 @@
-## Changelog : meet (30 derniers jours, au 25 août 2026)
+## Changelog : meet (30 derniers jours, au 31 août 2026)
 
 ### Résumé
-Ce mois-ci, meet a franchi une étape importante dans la gestion des réunions et l'expérience utilisateur mobile. Les utilisateurs bénéficient désormais de fonctionnalités de gestion de rôles en direct (promotion/rétrogradation de participants) et d'outils de diagnostic audio et de connexion plus performants. L'interface a été considérablement optimisée pour les appareils mobiles et la stabilité globale a été renforcée par des optimisations techniques majeures.
+Ce mois-ci, meet a franchi une étape importante dans l'amélioration de l'expérience utilisateur et de la gestion des réunions. Les utilisateurs bénéficient désormais de nouveaux outils de test (connexion et son), d'un support pour l'espagnol et d'une interface mieux adaptée aux mobiles. Les fonctionnalités de gestion ont été renforcées, permettant aux utilisateurs authentifiés de mieux contrôler les salles de confiance. Parallèlement, une attention majeure a été portée à la robustesse technique, notamment via la sécurisation des processus de déploiement et la résolution de problèmes critiques liés à l'accès aux périphériques média.
 
 ### Évolutions fonctionnelles
-- **Gestion des participants et des réunions** :
-    - Possibilité de promouvoir ou de rétrograder des participants directement pendant une réunion.
-    - Les utilisateurs authentifiés peuvent désormais gérer le lobby dans les salles de confiance.
+- **Gestion et administration** :
+    - Possibilité pour les utilisateurs authentifiés de gérer le lobby dans les salles de confiance et de promouvoir des participants.
+    - Ajout d'une fenêtre de configuration de salle lors de la création de réunions.
     - Introduction de badges pour identifier les participants non authentifiés.
-    - Notification automatique des utilisateurs lors d'un changement de leur rôle dans la réunion.
-    - Possibilité de définir des configurations par défaut pour les liens de réunion générés.
-- **Expérience Mobile** :
-    - Optimisation de l'interface pour les petits écrans : barre de contrôle repliable, boutons empilés verticalement et écran de feedback plus réactif.
-    - Amélioration de l'affichage des éléments de contrôle sur les vues étroites.
-- **Diagnostic et aide à l'utilisateur** :
-    - Ajout d'un outil de test de connexion et de tests audio (jauge de microphone et test de haut-parleur).
-    - Amélioration de l'accompagnement des utilisateurs lorsque le système d'exploitation bloque l'accès à la caméra ou au micro.
-    - Meilleure gestion et communication des erreurs liées aux périphériques (caméra/micro déjà utilisés).
-- **Interface Utilisateur (UI)** :
-    - Amélioration visuelle des avatars (affichage de deux initiales en majuscules, centrage optimisé).
-    - Affichage de l'identifiant de la réunion dans le titre de la page de jonction.
+- **Expérience utilisateur et accessibilité** :
+    - Ajout du support de la langue espagnole et amélioration de la clarté des textes de l'interface.
+    - Nouveaux outils de diagnostic : tests de connexion et tests de sortie audio (haut-parleurs).
+    - Amélioration de l'accessibilité : fermeture des panneaux latéraux avec la touche `Échap` et meilleures notifications lors des changements de rôle.
+    - Optimisation de l'affichage mobile : meilleure réactivité des écrans de feedback et réorganisation des contrôles sur petits écrans.
+- **Interface** :
+    - Notifications visuelles lors du changement de rôle d'un participant.
+    - Amélioration de l'affichage des avatars (initiales en majuscules et gestion des caractères Unicode).
 
 ### Évolutions techniques
-- **Optimisation des performances** :
-    - Remplacement des commandes Redis bloquantes (`KEYS`) par une méthode basée sur les curseurs (`SCAN`) pour une meilleure scalabilité.
-    - Réduction des re-rendus de l'interface (React) sur les composants critiques comme les tuiles de participants et les mises en page.
-    - Application de contraintes de ressources ("frugal constraint") sur la piste audio active pour optimiser la consommation.
-- **Architecture et Backend** :
-    - Refactorisation de la gestion de la télémétrie pour encapsuler les appels PostHog.
-    - Amélioration de la sécurité et de la gestion des permissions via l'intégration des rôles et de l'état d'authentification directement dans les tokens LiveKit.
-    - Modularisation du code frontend (extraction de la logique du lobby et des sous-composants de participants).
-    - Support du format `form-urlencoded` pour l'endpoint de jeton utilisateur.
 - **Infrastructure et CI/CD** :
-    - Optimisation du workflow de linting et nettoyage de la dette technique (SonarCloud).
-    - Mise à jour de l'image Node pour les services d'envoi de mails.
+    - Renforcement de la sécurité et de la fiabilité du pipeline CI (utilisation de `uv` pour Python, verrouillage des versions des actions et sécurisation des téléchargements).
+- **Performance et stabilité** :
+    - Optimisation des performances backend via le remplacement des commandes Redis bloquantes par des scans basés sur curseurs.
+    - Correction massive de bugs liés à l'accès aux périphériques (caméra/micro) sur Chrome, Firefox et Windows, et gestion plus fluide des erreurs de partage d'écran.
+    - Optimisation de la gestion des pistes audio et réduction des re-rendus inutiles de l'interface.
+- **Architecture** :
+    - Refactorisation de composants clés du frontend (gestion des participants, processus d'entrée en réunion et panneaux latéraux).
+    - Restructuration de services backend (gestion SIP, client S3 et gestion des jetons utilisateurs).
+    - Amélioration de la télémétrie et du suivi des erreurs pour un meilleur diagnostic technique.
 
 ### Autres changements
-- **Documentation et Légal** : Mise à jour des conditions d'utilisation et correction de la documentation technique.
-- **Maintenance et Conformité** : Ajout du fichier `publiccode.yml` et nettoyage de code (suppression de fonctions et de variables inutilisées).
+- Mise à jour de la documentation technique et des conditions générales d'utilisation.
+- Ajout du fichier `publiccode.yml` pour la conformité.

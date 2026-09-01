@@ -8,6 +8,30 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Changed
+
+- ♿️(frontend) close side panel with Escape key #1507
+
+### Added
+
+- ✨(agent) support Voxtral realtime as inference engine
+- 🌐(i18n) add Spanish language support
+- ✨(frontend) expose publish permissions on the media state element #1661
+
+### Changed
+
+- 🔥(backend) remove the S3 storage-event webhook for recordings
+- ♻️(backend) always finalize recordings using the LiveKit egress_ended webhook
+- ⬆️(frontend) upgrade posthog-js from 1.409.5 to 1.414.0
+- ⬆️(frontend) upgrade @fontsource-variable/lexend from 5.2.11 to 5.3.0
+- ⬆️(frontend) upgrade @fontsource/opendyslexic from 5.2.5 to 5.3.0
+- ⬆️(addons) upgrade core-js from 3.49.0 to 3.50.0
+- ♻️(backend) factorize s3 client creation in utils
+
+### Fixed
+
+- 🐛(frontend) fix chat text-area bug
+
 ## [1.29.0] - 2026-08-25
 
 ### Added

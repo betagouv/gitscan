@@ -7,9 +7,9 @@
 │   │   └── Support_question.md
 │   ├── PULL_REQUEST_TEMPLATE.md
 │   └── workflows
+│       ├── ci.yml
 │       ├── crowdin-download.yml
 │       ├── docker-hub.yml
-│       ├── meet.yml
 │       └── release-helm-chart.yaml
 ├── .gitignore
 ├── .gitlint
@@ -228,7 +228,8 @@
     │   ├── observability.py
     │   ├── pyproject.toml
     │   ├── tasks.py
-    │   └── uv.lock
+    │   ├── uv.lock
+    │   └── voxtral_vllm_stt.py
     ├── backend
     │   ├── .pylintrc
     │   ├── MANIFEST.in
@@ -304,9 +305,7 @@
     │   │   │   ├── event
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── authentication.py
-    │   │   │   │   ├── exceptions.py
-    │   │   │   │   ├── notification.py
-    │   │   │   │   └── parsers.py
+    │   │   │   │   └── notification.py
     │   │   │   ├── services
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── metadata_collector.py
@@ -385,8 +384,7 @@
     │   │   │   │   ├── event
     │   │   │   │   │   ├── __init__.py
     │   │   │   │   │   ├── test_authentication.py
-    │   │   │   │   │   ├── test_notification.py
-    │   │   │   │   │   └── test_parsers.py
+    │   │   │   │   │   └── test_notification.py
     │   │   │   │   ├── service
     │   │   │   │   │   ├── __init__.py
     │   │   │   │   │   └── test_recording_events.py
@@ -395,7 +393,6 @@
     │   │   │   │   ├── test_api_recordings_list.py
     │   │   │   │   ├── test_api_recordings_media_auth.py
     │   │   │   │   ├── test_api_recordings_retrieve.py
-    │   │   │   │   ├── test_api_recordings_storage_hook.py
     │   │   │   │   └── worker
     │   │   │   │       ├── __init__.py
     │   │   │   │       ├── test_factories.py
@@ -476,6 +473,9 @@
     │   │   │   └── LC_MESSAGES
     │   │   │       └── django.po
     │   │   ├── en_US
+    │   │   │   └── LC_MESSAGES
+    │   │   │       └── django.po
+    │   │   ├── es_ES
     │   │   │   └── LC_MESSAGES
     │   │   │       └── django.po
     │   │   ├── fr_FR
@@ -1057,6 +1057,7 @@
     │   │   ├── hooks
     │   │   │   ├── useApplyA11yFonts.ts
     │   │   │   ├── useDelayUnmount.tsx
+    │   │   │   ├── useEscapeToClose.ts
     │   │   │   ├── useHumanizeDuration.ts
     │   │   │   ├── useLoginHint.ts
     │   │   │   ├── usePrevious.ts
@@ -1089,6 +1090,18 @@
     │   │   │   │   ├── settings.json
     │   │   │   │   └── termsOfService.json
     │   │   │   ├── en
+    │   │   │   │   ├── accessibility.json
+    │   │   │   │   ├── connectionTest.json
+    │   │   │   │   ├── global.json
+    │   │   │   │   ├── home.json
+    │   │   │   │   ├── legals.json
+    │   │   │   │   ├── notifications.json
+    │   │   │   │   ├── recording.json
+    │   │   │   │   ├── rooms.json
+    │   │   │   │   ├── sdk.json
+    │   │   │   │   ├── settings.json
+    │   │   │   │   └── termsOfService.json
+    │   │   │   ├── es
     │   │   │   │   ├── accessibility.json
     │   │   │   │   ├── connectionTest.json
     │   │   │   │   ├── global.json
@@ -1401,27 +1414,28 @@
         │   │   ├── user_assign.py
         │   │   └── webhook_service.py
         │   └── main.py
-        └── tests
-            ├── __init__.py
-            ├── api
-            │   ├── __init__.py
-            │   ├── test_api_health.py
-            │   └── test_api_tasks_v2.py
-            ├── assets
-            │   ├── audio-sample-android-chrome.webm
-            │   ├── audio-sample-android-firefox.ogg
-            │   ├── audio-sample-android.m4a
-            │   ├── audio-sample-chromium.webm
-            │   ├── audio-sample-firefox.ogg
-            │   ├── audio-sample-ios-browser.webm
-            │   ├── audio-sample-ios.m4a
-            │   ├── audio-sample-mac-os-safari.webm
-            │   └── video-sample-visio.mp4
-            ├── conftest.py
-            ├── models
-            │   ├── __init__.py
-            │   └── test_whisper_x_response.py
-            └── unit
-                ├── test_file_service.py
-                └── test_user_assign.py
-268 directories, 1158 files
+        ├── tests
+        │   ├── __init__.py
+        │   ├── api
+        │   │   ├── __init__.py
+        │   │   ├── test_api_health.py
+        │   │   └── test_api_tasks_v2.py
+        │   ├── assets
+        │   │   ├── audio-sample-android-chrome.webm
+        │   │   ├── audio-sample-android-firefox.ogg
+        │   │   ├── audio-sample-android.m4a
+        │   │   ├── audio-sample-chromium.webm
+        │   │   ├── audio-sample-firefox.ogg
+        │   │   ├── audio-sample-ios-browser.webm
+        │   │   ├── audio-sample-ios.m4a
+        │   │   ├── audio-sample-mac-os-safari.webm
+        │   │   └── video-sample-visio.mp4
+        │   ├── conftest.py
+        │   ├── models
+        │   │   ├── __init__.py
+        │   │   └── test_whisper_x_response.py
+        │   └── unit
+        │       ├── test_file_service.py
+        │       └── test_user_assign.py
+        └── uv.lock
+271 directories, 1169 files
