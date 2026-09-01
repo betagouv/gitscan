@@ -1,26 +1,18 @@
-## Changelog : data_pass (30 derniers jours, au 28/08/2026)
+## Changelog : data_pass (30 derniers jours, au 31/08/2026)
 
 ### Résumé
-Ce mois-ci, data_pass s'enrichit de nouveaux formulaires et cas d'usage (Nexys, Ianord, DINUM) et améliore l'expérience des agents avec un nouveau mode de consultation pour les formulaires d'instruction. La sécurité a été renforcée par la correction de vulnérabilités et une meilleure gestion des accès, tandis que l'infrastructure a été simplifiée.
+Ce mois-ci, data_pass a enrichi son catalogue de formulaires et de cadres juridiques, notamment avec l'intégration de nouveaux services comme Ianord et Nexys. L'outil a également bénéficié d'une meilleure cohérence de ses intitulés avec d'autres services de l'État (Simplifions) et d'un renforcement de la sécurité sur les tableaux de bord d'instruction.
 
 ### Évolutions fonctionnelles
-- **Nouveaux formulaires et cas d'usage** : intégration des formulaires Nexys (MGDIS) [#1731], Ianord (cantines lycées/collèges) [#1710] et des produits DINUM [#1677].
-- **Amélioration de l'API Particulier** : ajout de nouveaux périmètres (INE [#1722], AEEH et régime pensionnat [#1709]) et harmonisation des intitulés avec Simplifions [#1744].
-- **Interface utilisateur** : 
-    - Passage des formulaires d'instruction en mode "consultation" (suppression des boutons de modification et du panneau latéral) [#1701].
-    - Ajout d'une interface pour visualiser les emails automatisés [#1681].
-    - Clarification des libellés (ex: passage de "Nom de naissance" à "Nom de famille" [#1738]).
-- **Workflow** : transmission automatique de la convention aux contacts lors de la validation [#1691].
-- **Corrections** : résolution d'erreurs de navigation dans les tunnels de formulaires et correction de la proactivité CNOUS [#1716].
+- **Nouveaux formulaires et cas d'usage** : intégration de l'éditeur Ianord avec ses formulaires pour les cantines (lycées/collèges) [#1710](https://github.com/etalab/data_pass/issues/1710), ajout du formulaire API Entreprise Nexys (MGDIS) [#1731](https://github.com/etalab/data_pass/issues/1731) et création d'un nouveau cas d'usage pour un cadre juridique [#1745](https://github.com/etalab/data_pass/issues/1745).
+- **Extension des données et scopes** : ajout du scope INE [#1722](https://github.com/etalab/data_pass/issues/1722) et affichage des scopes AEEH et régime pensionnat sur les formulaires CapDemat [#1709](https://github.com/etalab/data_pass/issues/1709).
+- **Améliorations de l'interface et cohérence** : renommage du champ « Nom de naissance » en « Nom de famille » [#1738](https://github.com/etalab/data_pass/issues/1738) et harmonisation des intitulés (EAJE, stationnement résidentiel, noms de cas d'usage) pour correspondre à ceux de Simplifions [#1744](https://github.com/etalab/data_pass/issues/1744).
 
 ### Évolutions techniques
-- **Sécurité** : 
-    - Correction d'une vulnérabilité d'injection SQL sur le tri du tableau de bord d'instruction [#1729].
-    - Mise à jour de Rails pour corriger une faille de sécurité (CVE-2026-66066) [#1715].
-- **Authentification** : rétablissement du scope OAuth HubEE spécifique à DataPass [#1725].
-- **Observabilité** : passage à la production de journaux (logs) au format JSON via logstasher [#1714].
-- **Infrastructure** : suppression des configurations d'environnement locales au profit d'une gestion centralisée par Ansible [#1717].
+- **Sécurité** : protection du tri du tableau de bord d'instruction contre les injections SQL [#1729](https://github.com/etalab/data_pass/issues/1729).
+- **Authentification** : correction du scope OAuth pour HubEE afin d'utiliser le scope `DATAPASS` au lieu de `ADMIN` [#1723](https://github.com/etalab/data_pass/issues/1723).
+- **Corrections techniques** : résolution d'un problème d'import relatif en TypeScript [#1732](https://github.com/etalab/data_pass/issues/1732) et gestion des erreurs (404) sur les étapes de tunnel inexistantes.
 
 ### Autres changements
-- **Documentation** : mise à jour des guides concernant la politique de retry des webhooks [#1728] et les cadres juridiques Ianord [#1736].
-- **Nettoyage** : renommage de variables internes pour une meilleure cohérence (statut boursier) [#1721].
+- **Documentation** : mise à jour de la documentation sur la politique de retry des webhooks [#1728](https://github.com/etalab/data_pass/issues/1728) et actualisation des informations relatives aux cadres juridiques (Ianord, Socle général) [#1736](https://github.com/etalab/data_pass/issues/1736).
+- **Nettoyage** : simplification et renommage du champ de statut de bourse [#1721](https://github.com/etalab/data_pass/issues/1721).

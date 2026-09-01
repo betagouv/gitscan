@@ -1,15 +1,15 @@
 {
   "url": "https://github.com/etalab/data_pass",
   "name": "data_pass",
-  "description": "Outil de gestion des habilitations juridiques pour les données à accès restreint. Il permet de gérer les demandes d'accès et l'instruction par les autorités compétentes.",
+  "description": "Outil de gestion des habilitations juridiques pour les données à accès restreint. Il permet de gérer les demandes d'accès et l'instruction des dossiers par les administrations.",
   "language": "Ruby",
   "features": [
     "Authentification & Accès",
-    "API & Intégrations",
-    "Formulaires & Démarches",
     "Gestion des utilisateurs & Permissions",
+    "Formulaires & Démarches",
     "Sécurité & Conformité",
-    "Suivi & Traçabilité"
+    "API & Intégrations",
+    "Administration & Backoffice"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -17,27 +17,29 @@
     "Rails",
     "PostgreSQL",
     "Redis",
+    "GoodJob",
     "Doorkeeper",
-    "Omniauth",
+    "Pundit",
     "Stimulus",
     "Turbo",
-    "GoodJob",
-    "AWS S3"
+    "AWS S3",
+    "Mailjet"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Docker & Conteneurs",
-    "Ruby on Rails",
     "Authentification (composant)",
     "Webhooks & Événements",
-    "Scripts & Utilitaires"
+    "Documentation & Schémas",
+    "CI/CD & Déploiement",
+    "Templates & Moteurs de rendu"
   ],
   "auth": {
     "methods": [
       "email-password",
       "oauth2",
-      "sso"
+      "session"
     ],
     "providers": [
       "ProConnect",
@@ -53,17 +55,14 @@
     "continuous-deployment.yaml",
     "test.yaml"
   ],
-  "lastActivity": "2026-08-28T15:51:37+02:00",
-  "status": "maintained",
+  "lastActivity": "2026-08-31T10:07:43+02:00",
+  "status": "active",
   "license": null,
   "hasDocumentation": true,
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "Bases de données SQL",
-    "Sécurité & Auth",
-    "CI/CD & GitHub Actions",
-    "Docker & Conteneurs",
+    "Git & DevOps",
     "Standards & Schémas"
   ]
 }
