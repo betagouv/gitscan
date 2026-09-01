@@ -1,48 +1,21 @@
 ## Changelog : docs (30 derniers jours, au 28 août 2026)
 
 ### Résumé
-Cette période est marquée par l'enrichissement de l'expérience d'édition, avec l'arrivée de fonctions de recherche et de comptage de mots, ainsi qu'une amélioration significative de l'accessibilité. Le projet a également bénéficié d'optimisations de performance et d'une mise à jour majeure de l'infrastructure backend.
+Cette période a été marquée par l'enrichissement de l'expérience d'édition avec l'ajout d'outils de recherche, de comptage de mots et de liens directs vers les blocs. Le projet a également franchi une étape importante en matière d'accessibilité et de performance, tout en modernisant son infrastructure avec le passage à Python 3.14.
 
 ### Évolutions fonctionnelles
-- **Édition et contenu**
-  - Ajout de la fonction "Rechercher et remplacer" dans l'éditeur.
-  - Ajout d'un compteur de mots dans la barre d'outils de l'en-tête.
-  - Possibilité de copier un lien direct vers un bloc spécifique.
-  - Nouvelle fonctionnalité permettant de lancer une présentation à partir d'un bloc.
-  - Ajout de notifications par e-mail conditionnelles pour l'API de serveur à serveur.
-- **Interface et navigation**
-  - Amélioration des options de document (déplacement de document, impression).
-  - Ajout du tri par nom dans la liste des documents.
-  - Affichage des documents importés dans la grille de liste.
-  - Réinitialisation de l'état du panneau latéral lors du changement de document.
-  - Changement de l'icône "Favoris" par une étoile pour plus de clarté.
-- **Accessibilité**
-  - Amélioration de la navigation au clavier pour les liens entre sous-documents.
-  - Annonce de l'état de chargement de la recherche pour les lecteurs d'écran.
-  - Application d'un style de focus global pour améliorer la navigation au clavier.
-- **Corrections**
-  - Correction de l'affichage de la barre d'outils de formatage dans le compositeur de commentaires.
-  - Correction de l'exportation des images (utilisation d'URLs relatives).
-  - Correction de la gestion des épingles après la suppression ou la restauration d'un document.
+- **Nouvelles fonctionnalités d'édition** : ajout de la recherche et du remplacement dans l'éditeur [#2570](https://github.com/suitenumerique/docs/issues/2570), d'un compteur de mots dans l'en-tête [#2549](https://github.com/suitenumerique/docs/issues/2549), de la possibilité de copier un lien vers un bloc [#2547](https://github.com/suitenumerique/docs/issues/2547), et de la fonction de présentation à partir d'un bloc.
+- **Gestion documentaire** : ajout de l'option de déplacement de document [#2555](https://github.com/suitenumerique/docs/issues/2555), de la possibilité d'imprimer depuis le menu des options, et du tri par nom dans la liste des documents.
+- **Améliorations de l'interface** : passage du système de "favoris" aux "étoiles" [#2539](https://github.com/suitenumerique/docs/issues/2539), réinitialisation de l'état du panneau latéral entre les documents [#2583](https://github.com/suitenumerique/docs/issues/2583), et mise à jour de la barre d'outils documentaire.
+- **Accessibilité** : amélioration de la navigation au clavier pour les liens inter-documents [#2391](https://github.com/suitenumerique/docs/issues/2391), annonce de l'état de chargement de la recherche pour les lecteurs d'écran [#2526](https://github.com/suitenumerique/docs/issues/2526), et application d'un style de focus global.
+- **Corrections** : résolution du problème de barre d'outils tronquée dans les commentaires [#2585](https://github.com/suitenumerique/docs/issues/2585), correction de l'affichage des documents importés, rafraîchissement des épingles après suppression/restauration [#2581](https://github.com/suitenumerique/docs/issues/2581), et correction de l'export d'images avec des URLs relatives [#2573](https://github.com/suitenumerique/docs/issues/2573).
 
 ### Évolutions techniques
-- **Performance et optimisation**
-  - Optimisation de l'utilisation CPU et des requêtes SQL pour l'authentification des médias.
-  - Mise en place du profilage de l'API via `django-silk`.
-  - Optimisation de la réactivité de l'interface via l'utilisation du *throttling* au lieu du *debouncing*.
-- **Infrastructure et Backend**
-  - Mise à jour de l'environnement Docker vers Python 3.14.
-  - Amélioration de la gestion des erreurs de base de données dans les jobs Helm.
-  - Optimisation du linting backend avec l'intégration de `ruff`.
-  - Gestion insensible à la casse des clés de métadonnées pour le stockage d'objets.
-- **Refactoring**
-  - Migration de la bibliothèque `ui-kit` vers `ui-components`.
-  - Refonte de la structure de la grille d'affichage des documents.
+- **Optimisation des performances** : réduction de la consommation CPU et optimisation des requêtes SQL pour l'authentification des médias [#2594](https://github.com/suitenumerique/docs/issues/2594) et profilage de l'API via `django-silk`.
+- **Refactoring et architecture** : transition de `ui-kit` vers `ui-components`, refonte de la grille de documents, et passage du *debouncing* au *throttling* pour améliorer la réactivité de l'interface.
+- **Infrastructure et Backend** : montée de version vers Python 3.14, mise à jour des outils de linting (Ruff, Pylint), et correction des variables d'environnement Keycloak pour les déploiements en auto-hébergement.
+- **Sécurité et stabilité** : correction de l'initialisation de Sentry, résolution de vulnérabilités de sécurité et correction des erreurs de base de données dans les jobs Helm.
 
 ### Autres changements
-- **Internationalisation (i18n)**
-  - Ajout du support de la langue polonaise.
-  - Mise à jour et correction des chaînes de caractères traduites, notamment pour l'export.
-- **Design et Assets**
-  - Remplacement des assets d'onboarding par des formats plus légers (WebM et WebP).
-  - Mise à jour du logo de l'interface.
+- **Internationalisation** : ajout de la langue polonaise et mise à jour des chaînes de traduction.
+- **Design et Assets** : mise à jour du logo et passage des assets d'onboarding au format WebM/WebP pour optimiser le chargement.
