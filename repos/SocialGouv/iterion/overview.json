@@ -1,53 +1,59 @@
 {
   "url": "https://github.com/SocialGouv/iterion",
   "name": "iterion",
-  "description": "Iterion est un plan de contrôle pour les agents d'IA, permettant de définir des flux de travail complexes via un langage DSL déclaratif. Il propose l'orchestration multi-agents, l'exécution dans des environnements isolés et une interface visuelle de conception.",
+  "description": "Un plan de contrôle déclaratif pour l'orchestration d'agents d'IA. Il permet de définir des workflows complexes via des fichiers .bot, tout en gérant le budget, l'isolation et l'auditabilité des exécutions.",
   "language": "Go",
   "features": [
     "Intelligence Artificielle & NLP",
     "Collaboration & Workflow",
-    "Interface utilisateur & Design",
     "Sécurité & Conformité",
+    "Administration & Backoffice",
+    "Interface utilisateur & Design",
     "Suivi & Traçabilité",
-    "Monitoring & Logs"
+    "Infrastructure & Stockage",
+    "Gestion des utilisateurs & Permissions"
   ],
   "audience": "Développeurs",
   "dependencies": [
     "Go",
+    "MongoDB",
+    "NATS JetStream",
     "Docker",
     "Kubernetes",
-    "MongoDB",
-    "NATS",
     "Prometheus",
     "Grafana",
+    "S3",
     "TypeScript"
   ],
   "components": [
-    "Intelligence Artificielle / ML",
+    "API REST & GraphQL",
     "Docker & Conteneurs",
     "Kubernetes & Helm",
     "TypeScript / JavaScript",
-    "API REST & GraphQL",
     "MongoDB & NoSQL",
-    "CI/CD & Déploiement",
-    "Documentation & Schémas",
-    "Rust & Go"
+    "Intelligence Artificielle / ML",
+    "Webhooks & Événements",
+    "Authentification (composant)",
+    "Rust & Go",
+    "Microservices & Architecture"
   ],
   "auth": {
     "methods": [
+      "oauth2",
+      "api-key",
       "sso",
       "jwt",
-      "api-key"
+      "session"
     ],
     "providers": [
       "GitHub",
-      "GitLab"
+      "GitLab",
+      "OpenAI",
+      "Anthropic"
     ]
   },
-  "workflows": [
-    "github-actions"
-  ],
-  "lastActivity": "2026-08-29T21:30:09Z",
+  "tests": "Tests de bout en bout (e2e) et tests de lancement.",
+  "lastActivity": "2026-08-31T00:00:00Z",
   "status": "experimental",
   "license": "MIT",
   "hasDocumentation": true,
@@ -56,8 +62,6 @@
     "TypeScript",
     "Docker & Conteneurs",
     "Git & DevOps",
-    "CI/CD & GitHub Actions",
-    "Kubernetes & Helm",
     "Standards & Schémas"
   ]
 }

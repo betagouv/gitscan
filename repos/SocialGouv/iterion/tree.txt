@@ -29,8 +29,9 @@
 ├── .graphifyignore
 ├── .node-version
 ├── .npmrc
-├── .release-it.json
+├── .release-it.mjs
 ├── .trivyignore
+├── CHANGELOG.md
 ├── CLAUDE.md
 ├── Cask
 │   └── iterion-desktop.rb
@@ -433,6 +434,7 @@
 │   │       ├── test-types.md
 │   │       ├── verify-build.md
 │   │       └── verify-tests.md
+│   ├── testmain_test.go
 │   ├── ultra11y
 │   │   ├── README.md
 │   │   ├── main.bot
@@ -555,6 +557,7 @@
 │   │   ├── bundle.go
 │   │   ├── claude_hook_drain.go
 │   │   ├── claw_runner.go
+│   │   ├── claw_runner_permission_test.go
 │   │   ├── claw_runner_proxy.go
 │   │   ├── claw_runner_proxy_test.go
 │   │   ├── clean.go
@@ -839,6 +842,11 @@
 │   ├── bundles.md
 │   ├── byok.md
 │   ├── c082-board-emit-fix-plan.md
+│   ├── changelog
+│   │   ├── v0.md
+│   │   ├── v1.md
+│   │   └── v2.md
+│   ├── changelog.md
 │   ├── ci-performance-buildkit-operator.md
 │   ├── ci-pipeline-topology.md
 │   ├── cli-permission-seam-spike.md
@@ -1526,10 +1534,7 @@
 │   │   │   ├── capabilities_public_test.go
 │   │   │   ├── chain_dispatch_test.go
 │   │   │   ├── chain_skip_test.go
-│   │   │   ├── claw_backend.go
-│   │   │   ├── claw_backend_test.go
-│   │   │   ├── claw_registry_test.go
-│   │   │   ├── claw_sandbox_env_test.go
+│   │   │   ├── claw_*.go  (5 files)
 │   │   │   ├── cursors.go
 │   │   │   ├── cursors_test.go
 │   │   │   ├── delegate_observability_test.go
@@ -3023,7 +3028,7 @@
 │   │   ├── retry_sweeper_test.go
 │   │   ├── route_recorder.go
 │   │   ├── runs.go
-│   │   ├── runs_*.go  (58 files)
+│   │   ├── runs_*.go  (59 files)
 │   │   ├── safe_origin_test.go
 │   │   ├── schedules_gate.go
 │   │   ├── schedules_routes.go
@@ -3358,6 +3363,8 @@
 │   │   └── ci-build-bench.sh
 │   ├── build.sh
 │   ├── bump-claw.sh
+│   ├── changelog-gen.mjs
+│   ├── changelog-writer.mjs
 │   ├── desktop
 │   │   ├── Dockerfile.appimage
 │   │   ├── build-appimage-in-docker.sh
@@ -11895,4 +11902,4 @@
                 ├── pbkdf.go
                 ├── pkcs12.go
                 └── safebags.go
-1668 directories, 11171 files
+1669 directories, 11182 files
