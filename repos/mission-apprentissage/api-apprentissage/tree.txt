@@ -11,9 +11,13 @@
 │   │   └── sentry-release.sh
 │   └── shared
 ├── .dockerignore
+├── .git-blame-ignore-revs
 ├── .gitattributes
 ├── .github
 │   ├── CODEOWNERS
+│   ├── actions
+│   │   └── notify-slack
+│   │       └── action.yml
 │   ├── release.yml
 │   └── workflows
 │       ├── _build.yml
@@ -101,7 +105,6 @@
 ├── .node-version
 ├── .openpgp-keyid
 ├── .openpgp-pubkey
-├── .prettierignore
 ├── .talismanrc
 ├── .vscode
 │   ├── extensions.json
@@ -122,6 +125,7 @@
 ├── Dockerfile
 ├── LICENSE
 ├── README.md
+├── biome.json
 ├── docker-bake.json
 ├── docker-compose.yml
 ├── docs
@@ -139,7 +143,6 @@
 │   │   └── preview.md
 │   ├── infrastructure.md
 │   └── jobs.md
-├── eslint.config.mjs
 ├── package.json
 ├── sdk
 │   ├── README.md
@@ -481,6 +484,7 @@
 │   │   ├── index.ts
 │   │   ├── internal.ts
 │   │   ├── jwt
+│   │   │   ├── jwtAuthToken.test.ts
 │   │   │   └── jwtAuthToken.ts
 │   │   ├── models
 │   │   │   ├── certification
@@ -813,6 +817,12 @@
 │   │   │   │       └── kitApprentissage.source.indicateur.ts
 │   │   │   ├── jobs.ts
 │   │   │   └── migrations
+│   │   │       ├── fixtures
+│   │   │       │   ├── 20230101000000-applied-require-shutdown.js
+│   │   │       │   ├── 20240101000000-pending-no-shutdown.js
+│   │   │       │   ├── 20240201000000-pending-require-shutdown.js
+│   │   │       │   └── 20240301000000-pending-default-shutdown.js
+│   │   │       ├── migrations.test.ts
 │   │   │       └── migrations.ts
 │   │   ├── main.ts
 │   │   ├── migrations
@@ -857,7 +867,8 @@
 │   │   │   ├── 20250219094006-personne_physique.ts
 │   │   │   ├── 20250219120014-cache_entreprise_validation.ts
 │   │   │   ├── 20250523140713-key-notif-expire.ts
-│   │   │   └── 20260204163600-import-mission-locale.ts
+│   │   │   ├── 20260204163600-import-mission-locale.ts
+│   │   │   └── 20260825120000-api-key-env.ts
 │   │   ├── server
 │   │   │   ├── middlewares
 │   │   │   │   ├── apiKeyUsageMiddleware.test.ts
@@ -869,6 +880,7 @@
 │   │   │   │   ├── _private
 │   │   │   │   │   ├── admin
 │   │   │   │   │   │   ├── importer.routes.ts
+│   │   │   │   │   │   ├── organisations.route.test.ts
 │   │   │   │   │   │   ├── organisations.routes.ts
 │   │   │   │   │   │   ├── processor.admin.routes.ts
 │   │   │   │   │   │   └── user.routes.ts
@@ -968,6 +980,7 @@
 │   │   │   │   └── inactiveAccounts.service.ts
 │   │   │   ├── logger.ts
 │   │   │   ├── mailer
+│   │   │   │   ├── mailer.test.ts
 │   │   │   │   └── mailer.ts
 │   │   │   ├── mongodb
 │   │   │   │   ├── mongodbService.ts
@@ -992,14 +1005,18 @@
 │   │   │   │   └── authorisationService.ts
 │   │   │   └── sentry
 │   │   │       ├── sentry.fastify.ts
+│   │   │       ├── sentry.test.ts
 │   │   │       └── sentry.ts
 │   │   └── utils
 │   │       ├── apiUtils.test.ts
 │   │       ├── apiUtils.ts
 │   │       ├── asyncUtils.ts
 │   │       ├── cryptoUtils.ts
+│   │       ├── csvUtils.ts
 │   │       ├── getStaticFilePath.ts
 │   │       ├── jwtUtils.ts
+│   │       ├── regexUtils.test.ts
+│   │       ├── regexUtils.ts
 │   │       ├── streamUtils.ts
 │   │       └── xml
 │   │           ├── __snapshots__
@@ -1266,8 +1283,7 @@
 │   │   │   │   └── profil
 │   │   │   │       ├── components
 │   │   │   │       │   ├── ApiKeyAction.tsx
-│   │   │   │       │   ├── GenerateApiKey.tsx
-│   │   │   │       │   └── ManageApiKeysBanner.tsx
+│   │   │   │       │   └── GenerateApiKey.tsx
 │   │   │   │       ├── hooks
 │   │   │   │       │   ├── useApiKeys.ts
 │   │   │   │       │   ├── useCreateApiKeyMutation.ts
@@ -1381,6 +1397,8 @@
 │   │   ├── notion
 │   │   │   ├── NotionDocClientSide.tsx
 │   │   │   └── NotionPage.tsx
+│   │   ├── popoverMenu
+│   │   │   └── PopoverMenu.tsx
 │   │   ├── section
 │   │   │   └── Section.tsx
 │   │   ├── select
@@ -1400,9 +1418,9 @@
 │   │   └── NotFound.tsx
 │   ├── instrumentation-client.ts
 │   ├── instrumentation.ts
-│   ├── middleware.ts
 │   ├── next.config.mjs
 │   ├── package.json
+│   ├── proxy.ts
 │   ├── public
 │   │   ├── apple-touch-icon.png
 │   │   ├── asset
@@ -1485,8 +1503,9 @@
 │       ├── api.utils.ts
 │       ├── date.utils.ts
 │       ├── query.utils.ts
+│       ├── routes.paths.ts
 │       ├── routes.utils.test.ts
 │       └── routes.utils.ts
 ├── vitest.config.ts
 └── yarn.lock
-400 directories, 1091 files
+404 directories, 1106 files
