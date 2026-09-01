@@ -1,17 +1,24 @@
 {
   "url": "https://github.com/codegouvfr/sill-deploy",
   "name": "sill-deploy",
-  "description": "Ceci est le déploiement SILL de catalogi. Il forke le dépôt pour quelques ajustements, mais doit être maintenu à jour avec l'upstream.",
+  "description": "Application web de gestion de catalogues de logiciels, conçue pour le SILL (Liste de logiciels libres recommandés pour les administrations françaises). Elle permet l'importation, la gestion et la visualisation de catalogues de logiciels.",
   "language": "TypeScript",
   "features": [
-    "Gestion documentaire & Fichiers",
-    "API & Intégrations",
-    "Authentification & Accès"
+    "Gestion métier générale",
+    "Administration & Backoffice",
+    "Recherche & Filtres",
+    "Authentification & Accès",
+    "Données & Schémas"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
+    "Express",
+    "Kysely",
     "PostgreSQL",
-    "Docker",
+    "Zod",
+    "tRPC",
+    "Sentry",
+    "Playwright",
     "Keycloak"
   ],
   "components": [
@@ -19,39 +26,40 @@
     "PostgreSQL & SQL",
     "TypeScript / JavaScript",
     "Docker & Conteneurs",
-    "Frontend React"
+    "CI/CD & Déploiement",
+    "Authentification (composant)",
+    "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
-      "oauth2",
-      "saml"
+      "jwt",
+      "session",
+      "sso"
     ],
-    "providers": []
+    "providers": [
+      "Keycloak"
+    ]
   },
   "tests": [
-    "Playwright",
-    "Testcontainers"
+    "Vitest",
+    "Playwright"
   ],
   "workflows": [
-    "CI/CD"
+    "CI/CD deployment workflows",
+    "Sync-upstream",
+    "Helm chart publishing"
   ],
-  "lastActivity": "2026-06-12T10:54:38Z",
+  "lastActivity": "2026-08-30T12:27:47Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
   "tags": [
-    "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "React & Next.js",
     "TypeScript",
     "Déploiement & Hosting",
-    "Python",
-    "Bases de données SQL"
+    "Docker & Conteneurs",
+    "Git & DevOps",
+    "CI/CD & GitHub Actions",
+    "Données & Open Data"
   ]
 }
