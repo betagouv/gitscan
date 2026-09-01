@@ -90,9 +90,12 @@
 │       ├── 7b7df556b6d0_publication_refresh_columns.py
 │       ├── 87e9b1ca66b8_dashboard_publications.py
 │       ├── a1b2c3d4e5f6_text_to_datetime.py
+│       ├── a1c4e77b21d9_tag_vocabulary_facets.py
 │       ├── b12cbac64ff9_enforce_not_null_on_default_backed_.py
 │       ├── c4d72e1f9a8b_usage_events.py
+│       ├── c7d2b90e4f31_deactivate_legacy_tags.py
 │       ├── c89f7601677b_cron_schedule_default_to_crontab.py
+│       ├── d3f5a8c1b607_pending_tags.py
 │       ├── df20b48b49c5_drop_wishlist_table.py
 │       ├── e3f1a9c27b54_drop_pm_tables.py
 │       └── f45e6ddef488_user_favorites.py
@@ -115,10 +118,13 @@
 │   ├── cleanup-dashboards
 │   │   ├── CRON.md
 │   │   └── cron.py
-│   ├── index-autometa-tables
+│   ├── refresh-rpe
 │   │   ├── CRON.md
 │   │   └── cron.py
-│   └── refresh-rpe
+│   ├── suggest-tags
+│   │   ├── CRON.md
+│   │   └── cron.py
+│   └── sync-tags
 │       ├── CRON.md
 │       └── cron.py
 ├── cron.json
@@ -242,7 +248,10 @@
 │   ├── rpe_gwt.py
 │   ├── slack.py
 │   ├── sources.py
+│   ├── tag_suggestions.py
+│   ├── tag_sync.py
 │   ├── tally.py
+│   ├── taxonomy.py
 │   ├── tool_taxonomy.py
 │   ├── webinaires.py
 │   └── zendesk.py
@@ -351,7 +360,7 @@
 ├── tests
 │   ├── __init__.py
 │   ├── conftest.py
-│   └── test_*.py  (100 files)
+│   └── test_*.py  (105 files)
 ├── uv.lock
 └── web
     ├── __init__.py
@@ -430,6 +439,9 @@
     │   └── tags.py
     ├── sync_to_s3.py
     ├── templates
+    │   ├── _dashboard_tags.html
+    │   ├── _dashboard_tags_oob.html
+    │   ├── _dashboard_tags_summary.html
     │   ├── _favorite_button.html
     │   ├── _flag_button.html
     │   ├── _sidebar_tools.html
@@ -449,4 +461,4 @@
     │   └── tag_manager.html
     ├── uploads.py
     └── warmup.py
-102 directories, 448 files
+103 directories, 464 files
