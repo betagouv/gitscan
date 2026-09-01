@@ -1,11 +1,12 @@
 ## Changelog : people (30 derniers jours, au 19 août 2026)
 
 ### Résumé
-Les récentes interventions se sont concentrées sur le renforcement de la sécurité de l'application et l'optimisation de la maintenance technique, notamment via la mise à jour de composants critiques et l'ajustement de certaines tâches automatiques.
+Les récentes interventions se sont concentrées sur le renforcement de la sécurité de l'application et l'optimisation de la maintenance automatique du système.
 
 ### Évolutions techniques
-- Sécurité : Mise à jour des bibliothèques `cryptography`, `django` et `pillow` pour corriger des vulnérabilités.
-- Optimisation : Ajustement de la fréquence de vérification automatique des domaines.
-- Maintenance :
-  - Alignement des dépendances avec les autres produits de l'écosystème La Suite.
-  - Correction de tests instables pour améliorer la fiabilité des processus de validation.
+- Renforcement de la sécurité via la mise à jour de bibliothèques critiques (`cryptography`, `django`, `pillow`).
+- Optimisation de la fréquence des tâches automatiques (cron) pour la vérification des domaines.
+- Mise à jour des dépendances pour assurer l'alignement avec les autres produits de l'écosystème La Suite.
+
+### Autres changements
+- Correction de tests unitaires présentant des instabilités intermittentes.
