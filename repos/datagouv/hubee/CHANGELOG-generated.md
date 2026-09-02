@@ -1,34 +1,40 @@
-## Changelog : hubee (30 derniers jours, au 27 août 2026)
+## Changelog : hubee (30 derniers jours, au 01/09/2026)
 
 ### Résumé
-Ce mois a été marqué par une refonte majeure du système d'authentification et le lancement de la version 2 de l'API. Les évolutions se concentrent sur la sécurisation des accès via ProConnect (support de l'authentification multi-facteurs et du standard OIDC), l'amélioration de l'expérience utilisateur sur le portail et le renforcement de la traçabilité des décisions d'accès.
+Ce mois a été marqué par une refonte majeure du système d'authentification et le lancement de la version 2 de l'API. La sécurité a été considérablement renforcée, notamment par l'intégration de la double authentification (MFA) et une meilleure traçabilité des accès. L'expérience utilisateur sur le portail a également été améliorée pour offrir des messages d'erreur plus clairs et une navigation plus intuitive.
 
 ### Évolutions fonctionnelles
-- **Amélioration de la connexion :** Intégration native du protocole OIDC avec ProConnect et prise en compte de l'authentification multi-facteurs (MFA) imposée par le fournisseur d'identité.
-- **Gestion des sessions :** Renforcement de la sécurité des sessions par l'imposition de limites d'inactivité et de durées de connexion maximales.
-- **Expérience utilisateur (Portail) :** 
-    - Déplacement des éléments d'identité et de déconnexion dans l'en-tête pour une meilleure ergonomie.
-    - Amélioration de la clarté des messages d'erreur et ajout d'options de recours en cas d'échec de connexion.
-- **Gestion des agents :** 
-    - Enrichissement des profils (ajout de la civilité, du rôle, de la fonction et normalisation internationale des numéros de téléphone).
-    - Amélioration du système de rattachement des agents à leurs organisations via le SIRET.
+- **Sécurité et Authentification** :
+    - Support de la double authentification (MFA) imposée par le fournisseur d'identité.
+    - Exigence systématique d'un second facteur pour les comptes à privilèges.
+    - Gestion des sessions par durée d'inactivité et durée absolue.
+- **Expérience Utilisateur (Portail)** :
+    - Refonte de l'interface : l'identité et la déconnexion sont désormais regroupées dans l'en-tête.
+    - Amélioration des messages d'erreur : les motifs de refus de rattachement et les erreurs de connexion sont désormais explicites.
+    - Ajout d'options de recours sur les pages d'échec de connexion.
+- **Gestion des Agents** :
+    - Enrichissement des profils agents : ajout de la civilité, du rôle, de la fonction et des habilitations aux processus.
+    - Normalisation des numéros de téléphone au format international.
 
 ### Évolutions techniques
-- **Lancement de l'API V2 :** 
+- **API V2** :
     - Mise en place du socle OAuth2 (flux `client_credentials`).
-    - Protection des points d'accès par jetons avec attribution des appels.
+    - Protection des points d'accès par jetons (tokens) avec attribution des appels.
     - Automatisation de la purge quotidienne des jetons expirés.
-    - Uniformisation des réponses d'erreur (standardisation du code 401).
-- **Sécurité et Authentification :**
-    - Migration de la gestion ProConnect vers une implémentation OIDC native (sortie d'OmniAuth).
-    - Chiffrement des jetons ProConnect au repos en base de données.
-    - Renforcement de la sécurité pour les comptes à privilèges (exigence systématique d'un second facteur).
+- **Authentification & OIDC** :
+    - Migration de la gestion de ProConnect vers une implémentation native OIDC (sortie d'OmniAuth).
+    - Renforcement de la sécurité des échanges : vérification des signatures, nonces et claims des jetons, et chiffrement des jetons au repos.
     - Amélioration de la résilience face aux indisponibilités du fournisseur d'identité.
-- **Traçabilité et Modélisation :**
-    - Mise en place d'un système d'enregistrement et de rétention des décisions d'accès en base de données.
-    - Création des nouveaux modèles de données `Agent` et `ProviderSession`.
+- **Audit et Traçabilité** :
+    - Mise en place d'un système de consignation des décisions d'accès en base de données (avec politique de rétention).
+    - Suivi systématique du fournisseur d'identité pour chaque décision d'accès.
+    - Sécurisation des logs par le filtrage des données sensibles (codes d'autorisation).
+- **Architecture et Maintenance** :
+    - Nouveau modèle de données pour le rattachement des agents aux organisations (via le couple SIRET/INSEE).
+    - Mise à jour de l'outil de scan de sécurité Brakeman [#131](https://github.com/datagouv/hubee/issues/131).
 
 ### Autres changements
-- **Documentation :** Publication d'un guide d'utilisation (runbook) pour les clients de l'API et mise à jour de la documentation concernant la reprise de l'API V2.
-- **Internationalisation :** Traduction des messages du framework en français.
-- **Sécurité des logs :** Filtrage des données sensibles (codes d'autorisation) dans les journaux système.
+- **Documentation** :
+    - Publication d'un guide d'utilisation (runbook) pour les clients de l'API.
+    - Documentation de la transition vers l'API V2.
+- **Internationalisation** : Traduction des messages du framework en français.
