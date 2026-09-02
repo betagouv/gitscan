@@ -1,14 +1,15 @@
-## Changelog : schema.data.gouv.fr (30 derniers jours, au 28 août 2026)
+## Changelog : schema.data.gouv.fr (30 derniers jours, au 02 septembre 2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a été enrichie par l'ajout de nouveaux schémas de données et une mise à jour régulière de ses contenus de recommandation. Des corrections ont été apportées pour fiabiliser l'accès aux jeux de données et le processus de déploiement automatique a été ajusté.
+La plateforme a été enrichie par l'ajout d'un nouveau schéma de données et a bénéficié de corrections visant à fiabiliser l'accès aux jeux de données. Parallèlement, un travail important de mise à jour du contenu documentaire et des recommandations a été effectué pour maintenir la pertinence des informations proposées.
 
 ### Évolutions fonctionnelles
-- Ajout du schéma "star-eau" ([#350](https://github.com/datagouv/schema.data.gouv.fr/pull/350))
-- Correction des liens pointant vers les jeux de données ([#351](https://github.com/datagouv/schema.data.gouv.fr/pull/351))
+- Ajout du schéma "star-eau" [#350](https://github.com/datagouv/schema.data.gouv.fr/pull/350).
+- Correction des liens pointant vers les jeux de données [#351](https://github.com/datagouv/schema.data.gouv.fr/pull/351).
 
 ### Évolutions techniques
-- Optimisation du workflow de construction et de déploiement ([#352](https://github.com/datagouv/schema.data.gouv.fr/pull/352))
+- Mise à jour du workflow de build [#352](https://github.com/datagouv/schema.data.gouv.fr/pull/352).
+- Ajustements sur le workflow de déploiement des releases (tests et retour à la configuration initiale concernant l'utilisation de runners auto-hébergés).
 
 ### Autres changements
-- Mises à jour fréquentes du contenu du site web et des documents de recommandations.
+- Mises à jour régulières du contenu du site web et des sections de recommandations.
