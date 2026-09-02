@@ -1,42 +1,40 @@
-## Changelog : demarche.numerique.gouv.fr (30 derniers jours, au 28 août 2026)
+## Changelog : demarche.numerique.gouv.fr (30 derniers jours, au 01/09/2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a bénéficié d'une modernisation majeure de son infrastructure technique avec le passage à Rails 8.1 et une refonte profonde de la gestion des formulaires pour garantir plus de fiabilité. Les utilisateurs et administrateurs profiteront d'une meilleure continuité de service lors des fusions de comptes, d'outils d'édition enrichis et d'une gestion plus robuste des fichiers et des données cartographiques.
+Ce mois-ci, la plateforme a bénéficié d'une modernisation structurelle majeure, marquée par la migration vers Rails 8.1 et une refonte profonde de la gestion des types de champs. Ces évolutions techniques renforcent la stabilité et les performances du système. Pour les utilisateurs, les changements se traduisent par une interface d'administration plus ergonomique, une meilleure précision des rapports de révision et une gestion plus fiable des données lors de la fusion de comptes.
 
 ### Évolutions fonctionnelles
-- **Gestion des dossiers et affectations**
-  - Exposition de l'historique des affectations de dossiers via l'API v2 [#13742](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13742).
-  - Nouvelles capacités d'affectation de dossiers via l'API [#13744](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13744).
-- **Administration et édition**
-  - Amélioration de l'éditeur d'attestations et d'emails avec l'ajout d'un bouton "paragraphe" et une harmonisation des infobulles [#13625](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13625).
-  - Possibilité de laisser le libellé d'une explication de champ vide pour plus de flexibilité [#13639](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13639).
-- **Transferts et fusion de comptes**
-  - Amélioration de la continuité lors des fusions de comptes : transfert automatique des dossiers, des rendez-vous, des notifications, des paramètres de procédure et des avis pour les experts [#12/08 commits].
-  - Renommage de "demande de transfert" en "offre de transfert" pour une meilleure clarté sémantique [#13620](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13620).
-- **Gestion des fichiers et cartographie**
-  - Amélioration de la gestion des dossiers vides via la mise en cache des PDF générés [#13625](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13625).
-  - Meilleure assistance lors des échecs d'upload (messages d'aide pour débloquer un envoi de fichier vide) [#13664](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13664).
-  - Corrections sur les couches cartographiques (cadastres et RPG) et les filtres de recherche [#19/08 commits].
-- **Messagerie**
-  - Sécurisation de la traçabilité : impossibilité de supprimer les messages de modification de dossier [#13740](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13740).
+- **Administration et Édition** : 
+    - Amélioration de l'interface d'édition avec l'ajout d'un bouton "paragraphe" dans les éditeurs d'attestations et d'emails.
+    - Optimisation de la visibilité des tableaux de procédures pour éviter les problèmes d'affichage avec les libellés longs [#13769](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13769).
+    - Harmonisation des infobulles dans l'éditeur d'attestation.
+- **Gestion des dossiers et formulaires** :
+    - Amélioration de la clarté et de la précision des rapports de révision (wording et détails des changements effectués).
+    - Corrections sur le comportement des champs complexes (champs de type "répétition", listes déroulantes et pré-remplissage).
+    - Amélioration de la gestion des PDF de dossiers vides via un système de mise en cache.
+- **Cartographie** : Corrections sur l'affichage et l'exclusion mutuelle des couches de données (cadastre et RPG).
+- **API et Intégrations** : 
+    - Nouvelles capacités d'affectation de dossiers et exposition de l'historique des affectations via l'API v2.
+- **Fusion de comptes** : Amélioration de la continuité de service lors de la fusion de comptes, garantissant le transfert des notifications, des rendez-vous, des suivis et des paramètres de procédure.
 
 ### Évolutions techniques
-- **Mise à jour majeure du framework**
-  - Migration complète de l'application vers **Rails 8.1** [#13612](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13612).
-- **Refonte de l'architecture des formulaires**
-  - Refactorisation massive de la gestion des "types de champs" via l'utilisation du polymorphisme (STI). Cette modification permet d'isoler et de sécuriser la logique propre à chaque type de champ (date, nombre, texte, etc.) [#13662](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13662).
-- **Optimisation des performances**
-  - Résolution de nombreux problèmes de requêtes N+1, notamment sur les données géographiques et les appels GraphQL [#475698539, bb1793a0e].
-  - Segmentation du trafic GraphQL pour un monitoring plus fin via Skylight [#13657](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13657).
-- **Modernisation et nettoyage du code**
-  - Migration massive des composants de l'interface utilisateur de HAML vers **ERB** [#13742](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13742).
-  - Nettoyage de la base de données : suppression de colonnes obsolètes et retrait de la gestion des tâches via `delayed_job` [#13682](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13682).
-- **Sécurité et robustesse**
-  - Renforcement de la sécurité sur les téléchargements d'exports pour prévenir les attaques par traversée de chemin (path traversal) [#13669](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13669).
-  - Durcissement de la gestion des images et des décodeurs (libvips) [#13626](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13626).
+- **Architecture et Framework** :
+    - Migration majeure de l'application vers **Rails 8.1** [#13612](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13612).
+    - Refonte complète de la gestion des types de champs via l'implémentation du polymorphisme (STI - Single Table Inheritance) pour une architecture plus robuste [#13662](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13662).
+    - Migration massive des templates de la technologie HAML vers ERB pour une meilleure maintenance.
+- **Performance et GraphQL** :
+    - Optimisations des requêtes GraphQL pour réduire les problèmes de performance (N+1) sur les adresses et les zones géographiques.
+    - Segmentation du trafic GraphQL pour une meilleure observabilité et monitoring.
+    - Exposition publique de nouveaux descripteurs de démarches et du nombre de dossiers.
+- **Sécurité et Robustesse** :
+    - Renforcement de la sécurité lors de l'exportation de fichiers ZIP (protection contre les traversées de chemin/path traversal) [#13674](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13674).
+    - Durcissement du traitement des images (libvips) et des décodeurs.
+    - Amélioration du filtrage des erreurs Sentry (notamment pour les scripts injectés par des navigateurs mobiles).
+- **Maintenance et Nettoyage** :
+    - Suppression de la dépendance à `delayed_job` [#13682](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13682).
+    - Nettoyage important du code : suppression de nombreuses fonctions obsolètes, de colonnes de base de données inutilisées et de flags de fonctionnalités (feature flags) périmés.
+    - Refonte du système de modèles d'emails vers une structure basée sur une table dédiée.
 
 ### Autres changements
-- **Internationalisation (i18n)**
-  - Extraction massive de chaînes de caractères codées en dur vers les fichiers de traduction pour faciliter la maintenance et la correction des textes [#13729](https://github.com/demarche-numerique/demarche.numerique.gouv.fr/pull/13729).
-- **Documentation**
-  - Mise à jour de la documentation technique concernant les dépendances système (libvips) et les spécificités de l'API [#40c4a4, 12/08].
+- **Internationalisation (i18n)** : Travail important d'extraction des chaînes de caractères codées en dur vers les fichiers de traduction pour faciliter la maintenance et la localisation.
+- **Documentation** : Mise à jour de la documentation concernant les dépendances système requises (libvips, zip).
