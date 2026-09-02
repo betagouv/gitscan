@@ -77,6 +77,7 @@
 │       │   └── assertSessionVerificationDisplayed.yaml
 │       ├── init.yaml
 │       ├── roomList
+│       │   ├── cleanUpRoomList.yaml
 │       │   ├── createAndDeleteDM.yaml
 │       │   ├── createAndDeleteRoom.yaml
 │       │   ├── roomContextMenu.yaml
@@ -544,7 +545,7 @@
 │           └── en-US
 │               ├── changelogs
 │               │   ├── 1001000.txt
-│               │   ├── 2*.txt  (52 files)
+│               │   ├── 2*.txt  (58 files)
 │               │   └── 4*.txt  (45 files)
 │               ├── full_description.txt
 │               ├── images
@@ -1095,6 +1096,47 @@
 │   │                                       └── test
 │   │                                           ├── FakeCurrentCallService.kt
 │   │                                           └── FakeElementCallEntryPoint.kt
+│   ├── contentscanner
+│   │   ├── api
+│   │   │   ├── build.gradle.kts
+│   │   │   └── src
+│   │   │       └── main
+│   │   │           └── kotlin
+│   │   │               └── io
+│   │   │                   └── element
+│   │   │                       └── android
+│   │   │                           └── features
+│   │   │                               └── contentscanner
+│   │   │                                   └── api
+│   │   │                                       └── ContentScannerService.kt
+│   │   └── impl
+│   │       ├── build.gradle.kts
+│   │       └── src
+│   │           ├── main
+│   │           │   └── kotlin
+│   │           │       └── io
+│   │           │           └── element
+│   │           │               └── android
+│   │           │                   └── features
+│   │           │                       └── contentscanner
+│   │           │                           └── impl
+│   │           │                               ├── DefaultContentScannerService.kt
+│   │           │                               ├── DefaultEventContentValidationCache.kt
+│   │           │                               └── di
+│   │           │                                   ├── AlwaysValidContentScannerService.kt
+│   │           │                                   └── ContentScannerModule.kt
+│   │           └── test
+│   │               └── kotlin
+│   │                   └── io
+│   │                       └── element
+│   │                           └── android
+│   │                               └── features
+│   │                                   └── contentscanner
+│   │                                       └── impl
+│   │                                           ├── DefaultContentScannerServiceTest.kt
+│   │                                           ├── DefaultEventContentValidationCacheTest.kt
+│   │                                           └── di
+│   │                                               └── ContentScannerModuleTest.kt
 │   ├── createroom
 │   │   ├── api
 │   │   │   ├── build.gradle.kts
@@ -1395,7 +1437,10 @@
 │   │   │                                   └── api
 │   │   │                                       ├── BugReportUrl.kt
 │   │   │                                       ├── EnterpriseService.kt
-│   │   │                                       └── SessionEnterpriseService.kt
+│   │   │                                       ├── SessionEnterpriseService.kt
+│   │   │                                       └── remoteconfig
+│   │   │                                           ├── RemoteEnterpriseConfig.kt
+│   │   │                                           └── RemoteEnterpriseConfigProvider.kt
 │   │   ├── impl-foss
 │   │   │   ├── build.gradle.kts
 │   │   │   └── src
@@ -1408,7 +1453,11 @@
 │   │   │       │                       └── enterprise
 │   │   │       │                           └── impl
 │   │   │       │                               ├── DefaultEnterpriseService.kt
-│   │   │       │                               └── DefaultSessionEnterpriseService.kt
+│   │   │       │                               ├── DefaultSessionEnterpriseService.kt
+│   │   │       │                               ├── remoteconfig
+│   │   │       │                               │   └── DefaultRemoteEnterpriseConfigProvider.kt
+│   │   │       │                               └── scanner
+│   │   │       │                                   └── DefaultContentScannerUrlProvider.kt
 │   │   │       └── test
 │   │   │           └── kotlin
 │   │   │               └── io
@@ -1431,7 +1480,10 @@
 │   │                                   └── enterprise
 │   │                                       └── test
 │   │                                           ├── FakeEnterpriseService.kt
-│   │                                           └── FakeSessionEnterpriseService.kt
+│   │                                           ├── FakeSessionEnterpriseService.kt
+│   │                                           └── remoteconfig
+│   │                                               ├── FakeRemoteEnterpriseConfigProvider.kt
+│   │                                               └── FakeRemoteEnterpriseConfigProviderFactory.kt
 │   ├── forward
 │   │   ├── api
 │   │   │   ├── build.gradle.kts
@@ -1866,6 +1918,7 @@
 │   │                                           ├── model
 │   │                                           │   └── RoomListBaseRoomSummaryTest.kt
 │   │                                           ├── roomlist
+│   │                                           │   ├── FakeMarkRoomAsRead.kt
 │   │                                           │   ├── RoomListContextMenuTest.kt
 │   │                                           │   ├── RoomListDeclineInviteMenuTest.kt
 │   │                                           │   ├── RoomListPresenterTest.kt
@@ -2704,6 +2757,7 @@
 │   │   │       │   │                               │   ├── ShowQrCodeStateProvider.kt
 │   │   │       │   │                               │   └── ShowQrCodeView.kt
 │   │   │       │   │                               ├── root
+│   │   │       │   │                               │   ├── LinkDeviceType.kt
 │   │   │       │   │                               │   ├── LinkNewDeviceRootEvent.kt
 │   │   │       │   │                               │   ├── LinkNewDeviceRootNode.kt
 │   │   │       │   │                               │   ├── LinkNewDeviceRootPresenter.kt
@@ -2902,9 +2956,7 @@
 │   │   │       │   │                           ├── common
 │   │   │       │   │                           │   ├── LocationConstraintsCheck.kt
 │   │   │       │   │                           │   ├── MapDefaults.kt
-│   │   │       │   │                           │   ├── PlatformLocationProvider.kt
 │   │   │       │   │                           │   ├── SendLiveLocationPermissions.kt
-│   │   │       │   │                           │   ├── UserLocationState.kt
 │   │   │       │   │                           │   ├── actions
 │   │   │       │   │                           │   │   ├── AndroidLocationActions.kt
 │   │   │       │   │                           │   │   └── LocationActions.kt
@@ -2913,14 +2965,19 @@
 │   │   │       │   │                           │   │   ├── PermissionsEvents.kt
 │   │   │       │   │                           │   │   ├── PermissionsPresenter.kt
 │   │   │       │   │                           │   │   └── PermissionsState.kt
-│   │   │       │   │                           │   └── ui
-│   │   │       │   │                           │       ├── LocationConstraintsDialog.kt
-│   │   │       │   │                           │       ├── LocationFloatingActionButton.kt
-│   │   │       │   │                           │       ├── LocationPinMarkers.kt
-│   │   │       │   │                           │       ├── LocationShareRow.kt
-│   │   │       │   │                           │       ├── MapBottomSheetScaffold.kt
-│   │   │       │   │                           │       ├── SimpleLocationTrackingEffect.kt
-│   │   │       │   │                           │       └── UserLocationPuck.kt
+│   │   │       │   │                           │   ├── ui
+│   │   │       │   │                           │   │   ├── LocationConstraintsDialog.kt
+│   │   │       │   │                           │   │   ├── LocationFloatingActionButton.kt
+│   │   │       │   │                           │   │   ├── LocationPinMarkers.kt
+│   │   │       │   │                           │   │   ├── LocationShareRow.kt
+│   │   │       │   │                           │   │   ├── MapBottomSheetScaffold.kt
+│   │   │       │   │                           │   │   └── UserLocationPuck.kt
+│   │   │       │   │                           │   └── userlocation
+│   │   │       │   │                           │       ├── DefaultUserLocationStateFactory.kt
+│   │   │       │   │                           │       ├── Location.kt
+│   │   │       │   │                           │       ├── PlatformLocationProvider.kt
+│   │   │       │   │                           │       ├── UserLocationState.kt
+│   │   │       │   │                           │       └── UserLocationTrackingEffect.kt
 │   │   │       │   │                           ├── di
 │   │   │       │   │                           │   └── LocationBindings.kt
 │   │   │       │   │                           ├── live
@@ -2971,11 +3028,15 @@
 │   │   │       │       │   └── translations.xml
 │   │   │       │       ├── values-hu
 │   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-in
+│   │   │       │       │   └── translations.xml
 │   │   │       │       ├── values-it
 │   │   │       │       │   └── translations.xml
 │   │   │       │       ├── values-ja
 │   │   │       │       │   └── translations.xml
 │   │   │       │       ├── values-ko
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-nb
 │   │   │       │       │   └── translations.xml
 │   │   │       │       ├── values-pl
 │   │   │       │       │   └── translations.xml
@@ -3002,6 +3063,7 @@
 │   │   │                                       ├── DefaultLocationServiceTest.kt
 │   │   │                                       ├── PermissionsStateFactory.kt
 │   │   │                                       ├── common
+│   │   │                                       │   ├── FakeUserLocationStateFactory.kt
 │   │   │                                       │   ├── LocationConstraintsCheckTest.kt
 │   │   │                                       │   ├── actions
 │   │   │                                       │   │   ├── AndroidLocationActionsTest.kt
@@ -3049,6 +3111,7 @@
 │   │   │                           └── features
 │   │   │                               └── lockscreen
 │   │   │                                   └── api
+│   │   │                                       ├── DeviceUnlockEntryPoint.kt
 │   │   │                                       ├── LockScreenEntryPoint.kt
 │   │   │                                       ├── LockScreenLockState.kt
 │   │   │                                       └── LockScreenService.kt
@@ -3064,6 +3127,7 @@
 │   │   │       │   │               └── features
 │   │   │       │   │                   └── lockscreen
 │   │   │       │   │                       └── impl
+│   │   │       │   │                           ├── DefaultDeviceUnlockEntryPoint.kt
 │   │   │       │   │                           ├── DefaultLockScreenEntryPoint.kt
 │   │   │       │   │                           ├── DefaultLockScreenService.kt
 │   │   │       │   │                           ├── LockScreenConfig.kt
@@ -3076,6 +3140,12 @@
 │   │   │       │   │                           │   └── DefaultBiometricUnlockCallback.kt
 │   │   │       │   │                           ├── components
 │   │   │       │   │                           │   └── PinEntryTextField.kt
+│   │   │       │   │                           ├── device
+│   │   │       │   │                           │   ├── DeviceUnlockCallbackHolder.kt
+│   │   │       │   │                           │   ├── DeviceUnlockEvent.kt
+│   │   │       │   │                           │   ├── DeviceUnlockNode.kt
+│   │   │       │   │                           │   ├── DeviceUnlockPresenter.kt
+│   │   │       │   │                           │   └── DeviceUnlockState.kt
 │   │   │       │   │                           ├── pin
 │   │   │       │   │                           │   ├── DefaultPinCodeManager.kt
 │   │   │       │   │                           │   ├── DefaultPinCodeManagerCallback.kt
@@ -3222,6 +3292,8 @@
 │   │   │                                       ├── biometric
 │   │   │                                       │   ├── FakeBiometricAuthenticator.kt
 │   │   │                                       │   └── FakeBiometricAuthenticatorManager.kt
+│   │   │                                       ├── device
+│   │   │                                       │   └── DeviceUnlockPresenterTest.kt
 │   │   │                                       ├── fixtures
 │   │   │                                       │   ├── LockScreenConfig.kt
 │   │   │                                       │   └── PinCodeManager.kt
@@ -3255,6 +3327,8 @@
 │   │                               └── features
 │   │                                   └── lockscreen
 │   │                                       └── test
+│   │                                           ├── FakeDeviceUnlockEntryPoint.kt
+│   │                                           ├── FakeDeviceUnlockEntryPointCallback.kt
 │   │                                           ├── FakeLockScreenEntryPoint.kt
 │   │                                           └── FakeLockScreenService.kt
 │   ├── login
@@ -3333,9 +3407,15 @@
 │   │   │       │   │                           │   ├── ChangeServerError.kt
 │   │   │       │   │                           │   ├── ChangeServerErrorProvider.kt
 │   │   │       │   │                           │   └── ErrorFormatter.kt
+│   │   │       │   │                           ├── localnetwork
+│   │   │       │   │                           │   ├── LocalNetworkPermissionGate.kt
+│   │   │       │   │                           │   └── LocalNetworkPermissionGateState.kt
 │   │   │       │   │                           ├── login
 │   │   │       │   │                           │   ├── LoginHelper.kt
-│   │   │       │   │                           │   ├── LoginMode.kt
+│   │   │       │   │                           │   ├── LoginModeEvent.kt
+│   │   │       │   │                           │   ├── LoginModePresenter.kt
+│   │   │       │   │                           │   ├── LoginModeState.kt
+│   │   │       │   │                           │   ├── LoginModeStateProvider.kt
 │   │   │       │   │                           │   ├── LoginModeView.kt
 │   │   │       │   │                           │   └── LoginModeViewErrorProvider.kt
 │   │   │       │   │                           ├── qrcode
@@ -3577,6 +3657,8 @@
 │   │   │                                       │   ├── DefaultQrCodeLoginManagerTest.kt
 │   │   │                                       │   ├── FakeQrCodeLoginManager.kt
 │   │   │                                       │   └── QrCodeLoginFlowNodeTest.kt
+│   │   │                                       ├── resolver
+│   │   │                                       │   └── HomeserverResolverTest.kt
 │   │   │                                       ├── screens
 │   │   │                                       │   ├── changeaccountprovider
 │   │   │                                       │   │   └── ChangeAccountProviderPresenterTest.kt
@@ -3819,15 +3901,6 @@
 │   │   │       ├── main
 │   │   │       │   ├── AndroidManifest.xml
 │   │   │       │   ├── kotlin
-│   │   │       │   │   ├── de.bwi.messenger.features.messages.impl.timeline.components.event
-│   │   │       │   │   │   ├── BwiTimelineItemAttachmentView.kt
-│   │   │       │   │   │   ├── BwiTimelineItemAudioView.kt
-│   │   │       │   │   │   ├── BwiTimelineItemContentView.kt
-│   │   │       │   │   │   ├── BwiTimelineItemContentWithoutThumbnailView.kt
-│   │   │       │   │   │   ├── BwiTimelineItemFileView.kt
-│   │   │       │   │   │   ├── BwiTimelineItemImageView.kt
-│   │   │       │   │   │   ├── BwiTimelineItemVideoView.kt
-│   │   │       │   │   │   └── BwiTimelineItemVoiceView.kt
 │   │   │       │   │   └── io
 │   │   │       │   │       └── element
 │   │   │       │   │           └── android
@@ -3865,6 +3938,7 @@
 │   │   │       │   │                           │   │   ├── AttachmentsPreviewStateProvider.kt
 │   │   │       │   │                           │   │   ├── AttachmentsPreviewView.kt
 │   │   │       │   │                           │   │   ├── OnDoneListener.kt
+│   │   │       │   │                           │   │   ├── SampleMediaRenderer.kt
 │   │   │       │   │                           │   │   ├── error
 │   │   │       │   │                           │   │   │   └── ErrorFormatter.kt
 │   │   │       │   │                           │   │   └── imageeditor
@@ -3977,6 +4051,7 @@
 │   │   │       │   │                           │   │   └── Reactions.kt
 │   │   │       │   │                           │   ├── components
 │   │   │       │   │                           │   │   ├── ATimelineItemEventRow.kt
+│   │   │       │   │                           │   │   ├── ActiveCallTimelineItemView.kt
 │   │   │       │   │                           │   │   ├── CallMenuItem.kt
 │   │   │       │   │                           │   │   ├── ContentPadding.kt
 │   │   │       │   │                           │   │   ├── FloatingDateBadge.kt
@@ -3987,10 +4062,13 @@
 │   │   │       │   │                           │   │   ├── ReplySwipeIndicator.kt
 │   │   │       │   │                           │   │   ├── TimelineEventTimestampView.kt
 │   │   │       │   │                           │   │   ├── TimelineItemCallNotifyView.kt
+│   │   │       │   │                           │   │   ├── TimelineItemContentScannerPreviews.kt
+│   │   │       │   │                           │   │   ├── TimelineItemEventContentForGalleryViewProvider.kt
 │   │   │       │   │                           │   │   ├── TimelineItemEventForTimestampViewProvider.kt
 │   │   │       │   │                           │   │   ├── TimelineItemEventRow.kt
 │   │   │       │   │                           │   │   ├── TimelineItemEventRowDisambiguatedPreview.kt
 │   │   │       │   │                           │   │   ├── TimelineItemEventRowForDirectRoomPreview.kt
+│   │   │       │   │                           │   │   ├── TimelineItemEventRowGalleryPreview.kt
 │   │   │       │   │                           │   │   ├── TimelineItemEventRowLongSenderNamePreview.kt
 │   │   │       │   │                           │   │   ├── TimelineItemEventRowShieldPreview.kt
 │   │   │       │   │                           │   │   ├── TimelineItemEventRowTimestampPreview.kt
@@ -4012,24 +4090,19 @@
 │   │   │       │   │                           │   │   │   ├── CustomReactionBottomSheet.kt
 │   │   │       │   │                           │   │   │   ├── CustomReactionEvent.kt
 │   │   │       │   │                           │   │   │   ├── CustomReactionPresenter.kt
-│   │   │       │   │                           │   │   │   ├── CustomReactionState.kt
-│   │   │       │   │                           │   │   │   ├── EmojiItem.kt
-│   │   │       │   │                           │   │   │   ├── EmojibaseExtensions.kt
-│   │   │       │   │                           │   │   │   └── picker
-│   │   │       │   │                           │   │   │       ├── EmojiPicker.kt
-│   │   │       │   │                           │   │   │       ├── EmojiPickerEvent.kt
-│   │   │       │   │                           │   │   │       ├── EmojiPickerPresenter.kt
-│   │   │       │   │                           │   │   │       ├── EmojiPickerState.kt
-│   │   │       │   │                           │   │   │       └── EmojiPickerStateProvider.kt
+│   │   │       │   │                           │   │   │   └── CustomReactionState.kt
 │   │   │       │   │                           │   │   ├── event
 │   │   │       │   │                           │   │   │   ├── ElementTimelineItemPreview.kt
 │   │   │       │   │                           │   │   │   ├── TimelineItemAspectRatioBox.kt
-│   │   │       │   │                           │   │   │   ├── TimelineItemAttachmentCaptionView.kt
 │   │   │       │   │                           │   │   │   ├── TimelineItemAttachmentView.kt
+│   │   │       │   │                           │   │   │   ├── TimelineItemAttachmentsContentProvider.kt
+│   │   │       │   │                           │   │   │   ├── TimelineItemAttachmentsListView.kt
 │   │   │       │   │                           │   │   │   ├── TimelineItemAudioView.kt
 │   │   │       │   │                           │   │   │   ├── TimelineItemEncryptedView.kt
 │   │   │       │   │                           │   │   │   ├── TimelineItemEventContentView.kt
 │   │   │       │   │                           │   │   │   ├── TimelineItemFileView.kt
+│   │   │       │   │                           │   │   │   ├── TimelineItemGalleryContentProvider.kt
+│   │   │       │   │                           │   │   │   ├── TimelineItemGalleryView.kt
 │   │   │       │   │                           │   │   │   ├── TimelineItemImageView.kt
 │   │   │       │   │                           │   │   │   ├── TimelineItemInformativeView.kt
 │   │   │       │   │                           │   │   │   ├── TimelineItemLegacyCallInviteView.kt
@@ -4119,6 +4192,7 @@
 │   │   │       │   │                           │   │   │   ├── BubbleState.kt
 │   │   │       │   │                           │   │   │   └── BubbleStateProvider.kt
 │   │   │       │   │                           │   │   ├── event
+│   │   │       │   │                           │   │   │   ├── TimelineItemAttachmentsContent.kt
 │   │   │       │   │                           │   │   │   ├── TimelineItemAudioContent.kt
 │   │   │       │   │                           │   │   │   ├── TimelineItemAudioContentProvider.kt
 │   │   │       │   │                           │   │   │   ├── TimelineItemEmoteContent.kt
@@ -4128,6 +4202,7 @@
 │   │   │       │   │                           │   │   │   ├── TimelineItemEventContentProvider.kt
 │   │   │       │   │                           │   │   │   ├── TimelineItemFileContent.kt
 │   │   │       │   │                           │   │   │   ├── TimelineItemFileContentProvider.kt
+│   │   │       │   │                           │   │   │   ├── TimelineItemGalleryContent.kt
 │   │   │       │   │                           │   │   │   ├── TimelineItemImageContent.kt
 │   │   │       │   │                           │   │   │   ├── TimelineItemImageContentProvider.kt
 │   │   │       │   │                           │   │   │   ├── TimelineItemLegacyCallInviteContent.kt
@@ -4152,7 +4227,6 @@
 │   │   │       │   │                           │   │   │   ├── TimelineItemVoiceContent.kt
 │   │   │       │   │                           │   │   │   └── TimelineItemVoiceContentProvider.kt
 │   │   │       │   │                           │   │   └── virtual
-│   │   │       │   │                           │   │       ├── TimelineItemBwiScanStateChangedModel.kt
 │   │   │       │   │                           │   │       ├── TimelineItemDaySeparatorModel.kt
 │   │   │       │   │                           │   │       ├── TimelineItemDaySeparatorModelProvider.kt
 │   │   │       │   │                           │   │       ├── TimelineItemLastForwardIndicatorModel.kt
@@ -4169,8 +4243,10 @@
 │   │   │       │   │                           │   │   ├── TimelineProtectionEvent.kt
 │   │   │       │   │                           │   │   ├── TimelineProtectionPresenter.kt
 │   │   │       │   │                           │   │   ├── TimelineProtectionState.kt
-│   │   │       │   │                           │   │   └── TimelineProtectionStateProvider.kt
+│   │   │       │   │                           │   │   ├── TimelineProtectionStateProvider.kt
+│   │   │       │   │                           │   │   └── TimelineProtectionStore.kt
 │   │   │       │   │                           │   └── util
+│   │   │       │   │                           │       ├── AsyncImageStateHandler.kt
 │   │   │       │   │                           │       └── Modifiers.kt
 │   │   │       │   │                           ├── topbars
 │   │   │       │   │                           │   ├── MessagesViewTopBar.kt
@@ -4198,7 +4274,6 @@
 │   │   │       │   │                                   └── VoiceMessagePresenter.kt
 │   │   │       │   └── res
 │   │   │       │       ├── values
-│   │   │       │       │   ├── bwi_strings.xml
 │   │   │       │       │   ├── localazy.xml
 │   │   │       │       │   └── strings_tchap.xml
 │   │   │       │       ├── values-be
@@ -4214,7 +4289,6 @@
 │   │   │       │       ├── values-da
 │   │   │       │       │   └── translations.xml
 │   │   │       │       ├── values-de
-│   │   │       │       │   ├── bwi_strings.xml
 │   │   │       │       │   └── translations.xml
 │   │   │       │       ├── values-el
 │   │   │       │       │   └── translations.xml
@@ -4231,7 +4305,6 @@
 │   │   │       │       ├── values-fi
 │   │   │       │       │   └── translations.xml
 │   │   │       │       ├── values-fr
-│   │   │       │       │   ├── bwi_strings.xml
 │   │   │       │       │   ├── strings_tchap.xml
 │   │   │       │       │   └── translations.xml
 │   │   │       │       ├── values-hr
@@ -4353,6 +4426,7 @@
 │   │   │                                       ├── threads
 │   │   │                                       │   └── ThreadsListPresenterTest.kt
 │   │   │                                       ├── timeline
+│   │   │                                       │   ├── CollapseRedactedRunsTest.kt
 │   │   │                                       │   ├── DefaultHtmlConverterProviderTest.kt
 │   │   │                                       │   ├── DefaultMarkAsFullyReadTest.kt
 │   │   │                                       │   ├── FakeMarkAsFullyRead.kt
@@ -4363,8 +4437,7 @@
 │   │   │                                       │   ├── components
 │   │   │                                       │   │   ├── customreaction
 │   │   │                                       │   │   │   ├── CustomReactionPresenterTest.kt
-│   │   │                                       │   │   │   └── picker
-│   │   │                                       │   │   │       └── EmojiPickerPresenterTest.kt
+│   │   │                                       │   │   │   └── ExpandSheetWhenImeIsVisibleTest.kt
 │   │   │                                       │   │   ├── event
 │   │   │                                       │   │   │   ├── TimelineItemPollViewTest.kt
 │   │   │                                       │   │   │   └── TimelineTextViewTest.kt
@@ -4377,13 +4450,16 @@
 │   │   │                                       │   │   └── event
 │   │   │                                       │   │       └── TimelineItemContentMessageFactoryTest.kt
 │   │   │                                       │   ├── groups
+│   │   │                                       │   │   ├── GroupabilityTest.kt
 │   │   │                                       │   │   └── TimelineItemGrouperTest.kt
 │   │   │                                       │   ├── model
 │   │   │                                       │   │   └── AggregatedReactionTest.kt
-│   │   │                                       │   └── protection
-│   │   │                                       │       ├── ProtectedViewTest.kt
-│   │   │                                       │       ├── TimelineProtectionPresenterTest.kt
-│   │   │                                       │       └── TimelineProtectionStateTest.kt
+│   │   │                                       │   ├── protection
+│   │   │                                       │   │   ├── ProtectedViewTest.kt
+│   │   │                                       │   │   ├── TimelineProtectionPresenterTest.kt
+│   │   │                                       │   │   └── TimelineProtectionStateTest.kt
+│   │   │                                       │   └── util
+│   │   │                                       │       └── AsyncImageStateHandlerTest.kt
 │   │   │                                       ├── typing
 │   │   │                                       │   └── TypingNotificationPresenterTest.kt
 │   │   │                                       ├── utils
@@ -4795,6 +4871,7 @@
 │   │   │                               └── preferences
 │   │   │                                   └── api
 │   │   │                                       ├── CacheService.kt
+│   │   │                                       ├── ExtraDeveloperOptionsRenderer.kt
 │   │   │                                       └── PreferencesEntryPoint.kt
 │   │   ├── impl
 │   │   │   ├── build.gradle.kts
@@ -4845,6 +4922,7 @@
 │   │   │       │   │                           │   ├── DeveloperSettingsState.kt
 │   │   │       │   │                           │   ├── DeveloperSettingsStateProvider.kt
 │   │   │       │   │                           │   ├── DeveloperSettingsView.kt
+│   │   │       │   │                           │   ├── NoopExtraDeveloperOptionsRenderer.kt
 │   │   │       │   │                           │   ├── appsettings
 │   │   │       │   │                           │   │   ├── AppDeveloperSettingsEvent.kt
 │   │   │       │   │                           │   │   ├── AppDeveloperSettingsNode.kt
@@ -4896,6 +4974,8 @@
 │   │   │       │   │                           ├── tasks
 │   │   │       │   │                           │   ├── ClearCacheUseCase.kt
 │   │   │       │   │                           │   ├── ComputeCacheSizeUseCase.kt
+│   │   │       │   │                           │   ├── MarkAllRoomsAsRead.kt
+│   │   │       │   │                           │   ├── MarkRoomAsRead.kt
 │   │   │       │   │                           │   └── VacuumStoresUseCase.kt
 │   │   │       │   │                           ├── user
 │   │   │       │   │                           │   ├── UserPreferences.kt
@@ -4907,6 +4987,13 @@
 │   │   │       │   │                           │       ├── EditUserProfileState.kt
 │   │   │       │   │                           │       ├── EditUserProfileStateProvider.kt
 │   │   │       │   │                           │       └── EditUserProfileView.kt
+│   │   │       │   │                           ├── userstatus
+│   │   │       │   │                           │   ├── UserStatusBindingContainer.kt
+│   │   │       │   │                           │   ├── UserStatusEvent.kt
+│   │   │       │   │                           │   ├── UserStatusPresenter.kt
+│   │   │       │   │                           │   ├── UserStatusState.kt
+│   │   │       │   │                           │   ├── UserStatusStateProvider.kt
+│   │   │       │   │                           │   └── UserStatusView.kt
 │   │   │       │   │                           └── utils
 │   │   │       │   │                               └── ShowDeveloperSettingsProvider.kt
 │   │   │       │   └── res
@@ -5046,12 +5133,18 @@
 │   │   │                                       ├── tasks
 │   │   │                                       │   ├── DefaultClearCacheUseCaseTest.kt
 │   │   │                                       │   ├── FakeClearCacheUseCase.kt
-│   │   │                                       │   └── FakeComputeCacheSizeUseCase.kt
-│   │   │                                       └── user
-│   │   │                                           └── editprofile
-│   │   │                                               ├── EditUserProfilePresenterTest.kt
-│   │   │                                               ├── EditUserProfileViewTest.kt
-│   │   │                                               └── FakeEditUserProfileNavigator.kt
+│   │   │                                       │   ├── FakeComputeCacheSizeUseCase.kt
+│   │   │                                       │   ├── FakeMarkAllRoomsAsRead.kt
+│   │   │                                       │   ├── FakeMarkRoomAsRead.kt
+│   │   │                                       │   ├── MarkAllRoomsAsReadTest.kt
+│   │   │                                       │   └── MarkRoomAsReadTest.kt
+│   │   │                                       ├── user
+│   │   │                                       │   └── editprofile
+│   │   │                                       │       ├── EditUserProfilePresenterTest.kt
+│   │   │                                       │       ├── EditUserProfileViewTest.kt
+│   │   │                                       │       └── FakeEditUserProfileNavigator.kt
+│   │   │                                       └── userstatus
+│   │   │                                           └── UserStatusPresenterTest.kt
 │   │   └── test
 │   │       ├── build.gradle.kts
 │   │       └── src
@@ -5708,6 +5801,8 @@
 │   │           │       │   └── translations.xml
 │   │           │       ├── values-et
 │   │           │       │   └── translations.xml
+│   │           │       ├── values-fa
+│   │           │       │   └── translations.xml
 │   │           │       ├── values-fi
 │   │           │       │   └── translations.xml
 │   │           │       ├── values-fr
@@ -5872,7 +5967,8 @@
 │   │           │   └── res
 │   │           │       ├── values
 │   │           │       │   ├── localazy.xml
-│   │           │       │   └── strings_tchap.xml
+│   │           │       │   ├── strings_tchap.xml
+│   │           │       │   └── temporary.xml
 │   │           │       ├── values-be
 │   │           │       │   └── translations.xml
 │   │           │       ├── values-bg
@@ -6362,7 +6458,8 @@
 │   │   │                           └── features
 │   │   │                               └── securebackup
 │   │   │                                   └── api
-│   │   │                                       └── SecureBackupEntryPoint.kt
+│   │   │                                       ├── SecureBackupEntryPoint.kt
+│   │   │                                       └── SecureBackupSetupEntryPoint.kt
 │   │   └── impl
 │   │       ├── build.gradle.kts
 │   │       └── src
@@ -6375,6 +6472,7 @@
 │   │           │   │                   └── securebackup
 │   │           │   │                       └── impl
 │   │           │   │                           ├── DefaultSecureBackupEntryPoint.kt
+│   │           │   │                           ├── DefaultSecureBackupSetupEntryPoint.kt
 │   │           │   │                           ├── LoggerTag.kt
 │   │           │   │                           ├── SecureBackupFlowNode.kt
 │   │           │   │                           ├── di
@@ -6521,6 +6619,7 @@
 │   │                                   └── securebackup
 │   │                                       └── impl
 │   │                                           ├── DefaultSecureBackupEntryPointTest.kt
+│   │                                           ├── DefaultSecureBackupSetupEntryPointTest.kt
 │   │                                           ├── disable
 │   │                                           │   └── SecureBackupDisablePresenterTest.kt
 │   │                                           ├── enter
@@ -7749,6 +7848,9 @@
 │   │       │   │                       │   └── VideoCompressorHelper.kt
 │   │       │   │                       ├── metadata
 │   │       │   │                       │   └── IsInDebug.kt
+│   │       │   │                       ├── network
+│   │       │   │                       │   ├── DnsResolver.kt
+│   │       │   │                       │   └── LocalNetworkAddressClassifier.kt
 │   │       │   │                       ├── preferences
 │   │       │   │                       │   └── DefaultPreferencesCorruptionHandlerFactory.kt
 │   │       │   │                       ├── service
@@ -7860,6 +7962,9 @@
 │   │                                   │   └── AndroidFileSizeFormatterTest.kt
 │   │                                   ├── media
 │   │                                   │   └── VideoCompressorHelperTest.kt
+│   │                                   ├── network
+│   │                                   │   ├── FakeDnsResolver.kt
+│   │                                   │   └── LocalNetworkAddressClassifierTest.kt
 │   │                                   ├── text
 │   │                                   │   └── LinkifierHelperTest.kt
 │   │                                   └── throttler
@@ -7952,20 +8057,6 @@
 │   │                                   └── mediaplayer
 │   │                                       └── test
 │   │                                           └── FakeAudioFocus.kt
-│   ├── bwi
-│   │   └── api
-│   │       ├── .gitignore
-│   │       ├── build.gradle.kts
-│   │       └── src
-│   │           └── main
-│   │               └── kotlin
-│   │                   └── de
-│   │                       └── bwi
-│   │                           └── messenger
-│   │                               └── libraries
-│   │                                   └── matrix
-│   │                                       └── api
-│   │                                           └── BwiContentScannerScanState.kt
 │   ├── cachestore
 │   │   ├── api
 │   │   │   ├── build.gradle.kts
@@ -8489,18 +8580,17 @@
 │   │       │   │                       │   │   ├── ComposerAlertMoleculeParamsProvider.kt
 │   │       │   │                       │   │   ├── IconTitlePlaceholdersRowMolecule.kt
 │   │       │   │                       │   │   ├── IconTitleSubtitleMolecule.kt
-│   │       │   │                       │   │   ├── InfoListItemMolecule.kt
 │   │       │   │                       │   │   ├── InviteButtonsRowMolecule.kt
 │   │       │   │                       │   │   ├── MatrixBadgeRowMolecule.kt
 │   │       │   │                       │   │   ├── MembersCountMolecule.kt
 │   │       │   │                       │   │   ├── NumberedListMolecule.kt
 │   │       │   │                       │   │   └── TextWithLabelMolecule.kt
 │   │       │   │                       │   ├── organisms
-│   │       │   │                       │   │   ├── InfoListOrganism.kt
 │   │       │   │                       │   │   ├── NumberedListOrganism.kt
 │   │       │   │                       │   │   └── RoomPreviewOrganism.kt
 │   │       │   │                       │   └── pages
 │   │       │   │                       │       ├── FlowStepPage.kt
+│   │       │   │                       │       ├── HeaderFooterLayout.kt
 │   │       │   │                       │       ├── HeaderFooterPage.kt
 │   │       │   │                       │       ├── OnBoardingPage.kt
 │   │       │   │                       │       └── SunsetPage.kt
@@ -8524,6 +8614,7 @@
 │   │       │   │                       │   ├── SimpleModalBottomSheet.kt
 │   │       │   │                       │   ├── TopAppBarScrollBehaviorLayout.kt
 │   │       │   │                       │   ├── async
+│   │       │   │                       │   │   ├── AsyncActionIndicator.kt
 │   │       │   │                       │   │   ├── AsyncActionProvider.kt
 │   │       │   │                       │   │   ├── AsyncActionView.kt
 │   │       │   │                       │   │   ├── AsyncFailure.kt
@@ -8602,10 +8693,14 @@
 │   │       │   │                       │   │   └── components
 │   │       │   │                       │   │       ├── ImageVectorProvider.kt
 │   │       │   │                       │   │       └── PreferenceIcon.kt
-│   │       │   │                       │   └── tooltip
-│   │       │   │                       │       ├── ElementTooltipDefaults.kt
-│   │       │   │                       │       ├── PlainTooltip.kt
-│   │       │   │                       │       └── TooltipBox.kt
+│   │       │   │                       │   ├── tooltip
+│   │       │   │                       │   │   ├── ElementTooltipDefaults.kt
+│   │       │   │                       │   │   ├── PlainTooltip.kt
+│   │       │   │                       │   │   └── TooltipBox.kt
+│   │       │   │                       │   └── visuallist
+│   │       │   │                       │       ├── VisualList.kt
+│   │       │   │                       │       ├── VisualListItem.kt
+│   │       │   │                       │       └── VisualListItemData.kt
 │   │       │   │                       ├── icons
 │   │       │   │                       │   ├── CompoundDrawables.kt
 │   │       │   │                       │   ├── IconsList.kt
@@ -8613,6 +8708,7 @@
 │   │       │   │                       ├── modifiers
 │   │       │   │                       │   ├── ApplyIf.kt
 │   │       │   │                       │   ├── Blur.kt
+│   │       │   │                       │   ├── BringIntoViewOnImeVisible.kt
 │   │       │   │                       │   ├── ClearFocusOnTap.kt
 │   │       │   │                       │   ├── Clickable.kt
 │   │       │   │                       │   ├── CornerBorder.kt
@@ -8680,6 +8776,7 @@
 │   │       │   │                       │       ├── NavigationBarIcon.kt
 │   │       │   │                       │       ├── NavigationBarItem.kt
 │   │       │   │                       │       ├── NavigationBarText.kt
+│   │       │   │                       │       ├── PasswordVisibilityToggle.kt
 │   │       │   │                       │       ├── RadioButton.kt
 │   │       │   │                       │       ├── Scaffold.kt
 │   │       │   │                       │       ├── SearchBar.kt
@@ -8707,6 +8804,7 @@
 │   │       │   │                           ├── ForceOrientation.kt
 │   │       │   │                           ├── ForceOrientationInMobileDevices.kt
 │   │       │   │                           ├── HideKeyboardWhenDisposed.kt
+│   │       │   │                           ├── Insets.kt
 │   │       │   │                           ├── KeepScreenOn.kt
 │   │       │   │                           ├── LazyListState.kt
 │   │       │   │                           ├── LocalUiTestMode.kt
@@ -8728,12 +8826,14 @@
 │   │       │       │   ├── onboarding_legacy_bg.png
 │   │       │       │   ├── pin.xml
 │   │       │       │   ├── sample_avatar.xml
-│   │       │       │   └── sample_background.webp
+│   │       │       │   ├── sample_background.webp
+│   │       │       │   └── sample_map.png
 │   │       │       ├── drawable-night
 │   │       │       │   ├── bg_migration.png
 │   │       │       │   ├── onboarding_bg.png
 │   │       │       │   ├── onboarding_legacy_bg.png
-│   │       │       │   └── pin.xml
+│   │       │       │   ├── pin.xml
+│   │       │       │   └── sample_map.png
 │   │       │       ├── drawable-night-xxhdpi
 │   │       │       │   └── element_logo.png
 │   │       │       └── drawable-xxhdpi
@@ -8749,10 +8849,13 @@
 │   │                                   │   └── AvatarColorsTest.kt
 │   │                                   ├── component
 │   │                                   │   └── async
+│   │                                   │       ├── AsyncActionIndicatorTest.kt
 │   │                                   │       └── AsyncIndicatorTest.kt
 │   │                                   ├── components
-│   │                                   │   └── avatar
-│   │                                   │       └── AvatarDataTest.kt
+│   │                                   │   ├── avatar
+│   │                                   │   │   └── AvatarDataTest.kt
+│   │                                   │   └── media
+│   │                                   │       └── WaveformNormalisationTest.kt
 │   │                                   └── utils
 │   │                                       └── snackbar
 │   │                                           └── SnackbarDispatcherTest.kt
@@ -8780,6 +8883,158 @@
 │   │                                   └── identifiers
 │   │                                       ├── SentryDsn.kt
 │   │                                       └── SentrySdkDsn.kt
+│   ├── emoji
+│   │   ├── api
+│   │   │   ├── build.gradle.kts
+│   │   │   └── src
+│   │   │       └── main
+│   │   │           └── kotlin
+│   │   │               └── io
+│   │   │                   └── element
+│   │   │                       └── android
+│   │   │                           └── libraries
+│   │   │                               └── emoji
+│   │   │                                   └── api
+│   │   │                                       ├── picker
+│   │   │                                       │   ├── EmojiPickerPresenter.kt
+│   │   │                                       │   ├── EmojiPickerRenderer.kt
+│   │   │                                       │   └── EmojiPickerState.kt
+│   │   │                                       └── recentemojis
+│   │   │                                           ├── AddRecentEmoji.kt
+│   │   │                                           └── GetRecentEmojis.kt
+│   │   ├── impl
+│   │   │   ├── build.gradle.kts
+│   │   │   └── src
+│   │   │       ├── main
+│   │   │       │   ├── kotlin
+│   │   │       │   │   └── io
+│   │   │       │   │       └── element
+│   │   │       │   │           └── android
+│   │   │       │   │               └── libraries
+│   │   │       │   │                   └── emoji
+│   │   │       │   │                       └── impl
+│   │   │       │   │                           ├── DefaultEmojibaseProvider.kt
+│   │   │       │   │                           ├── EmojibaseProvider.kt
+│   │   │       │   │                           ├── picker
+│   │   │       │   │                           │   ├── DefaultEmojiPickerPresenter.kt
+│   │   │       │   │                           │   ├── DefaultEmojiPickerRenderer.kt
+│   │   │       │   │                           │   ├── DefaultEmojiPickerState.kt
+│   │   │       │   │                           │   ├── DefaultEmojiPickerStateProvider.kt
+│   │   │       │   │                           │   ├── EmojiItem.kt
+│   │   │       │   │                           │   ├── EmojiPickerEvent.kt
+│   │   │       │   │                           │   ├── EmojiPickerView.kt
+│   │   │       │   │                           │   ├── EmojibaseExtensions.kt
+│   │   │       │   │                           │   └── SkinTonePicker.kt
+│   │   │       │   │                           └── recentemojis
+│   │   │       │   │                               ├── DefaultAddRecentEmoji.kt
+│   │   │       │   │                               └── DefaultGetRecentEmojis.kt
+│   │   │       │   └── res
+│   │   │       │       ├── values
+│   │   │       │       │   └── localazy.xml
+│   │   │       │       ├── values-be
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-bg
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-ca
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-cs
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-cy
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-da
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-de
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-el
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-es
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-et
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-eu
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-fa
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-fi
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-fr
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-hr
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-hu
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-in
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-it
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-ja
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-ka
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-ko
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-lt
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-nb
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-nl
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-pl
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-pt
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-pt-rBR
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-ro
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-ru
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-sk
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-sv
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-tr
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-uk
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-ur
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-uz
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-vi
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-zh
+│   │   │       │       │   └── translations.xml
+│   │   │       │       └── values-zh-rTW
+│   │   │       │           └── translations.xml
+│   │   │       └── test
+│   │   │           └── kotlin
+│   │   │               └── io
+│   │   │                   └── element
+│   │   │                       └── android
+│   │   │                           └── libraries
+│   │   │                               └── emoji
+│   │   │                                   └── impl
+│   │   │                                       ├── fixtures
+│   │   │                                       │   └── FakeEmojibaseProvider.kt
+│   │   │                                       ├── picker
+│   │   │                                       │   ├── EmojiPickerPresenterTest.kt
+│   │   │                                       │   └── EmojiPickerViewTest.kt
+│   │   │                                       └── recentemojis
+│   │   │                                           └── DefaultGetRecentEmojisTest.kt
+│   │   └── test
+│   │       ├── build.gradle.kts
+│   │       └── src
+│   │           └── main
+│   │               └── kotlin
+│   │                   └── io
+│   │                       └── element
+│   │                           └── android
+│   │                               └── libraries
+│   │                                   └── emoji
+│   │                                       └── test
+│   │                                           ├── FakeEmojiPickerPresenter.kt
+│   │                                           └── FakeEmojiPickerState.kt
 │   ├── encrypted-db
 │   │   ├── build.gradle.kts
 │   │   ├── consumer-proguard-rules.pro
@@ -9101,7 +9356,6 @@
 │   │   │   ├── build.gradle.kts
 │   │   │   └── src
 │   │   │       ├── main
-│   │   │       │   ├── AndroidManifest.xml
 │   │   │       │   └── kotlin
 │   │   │       │       └── io
 │   │   │       │           └── element
@@ -9113,6 +9367,9 @@
 │   │   │       │                               ├── MatrixClient.kt
 │   │   │       │                               ├── MatrixClientProvider.kt
 │   │   │       │                               ├── SdkMetadata.kt
+│   │   │       │                               ├── TemporaryMatrixClient.kt
+│   │   │       │                               ├── TemporaryMatrixClientFactory.kt
+│   │   │       │                               ├── UrlContentFetcher.kt
 │   │   │       │                               ├── analytics
 │   │   │       │                               │   ├── GetDatabaseSizesUseCase.kt
 │   │   │       │                               │   ├── SdkStoreSizes.kt
@@ -9162,6 +9419,7 @@
 │   │   │       │                               │   ├── BackupUploadState.kt
 │   │   │       │                               │   ├── EnableRecoveryProgress.kt
 │   │   │       │                               │   ├── EncryptionService.kt
+│   │   │       │                               │   ├── PasswordStrengthEstimator.kt
 │   │   │       │                               │   ├── RecoveryException.kt
 │   │   │       │                               │   ├── RecoveryState.kt
 │   │   │       │                               │   ├── SteadyStateException.kt
@@ -9170,10 +9428,12 @@
 │   │   │       │                               │       └── IdentityStateChange.kt
 │   │   │       │                               ├── exception
 │   │   │       │                               │   ├── ClientException.kt
+│   │   │       │                               │   ├── ContentScannerErrorReason.kt
 │   │   │       │                               │   ├── ErrorKind.kt
 │   │   │       │                               │   └── NotificationResolverException.kt
 │   │   │       │                               ├── linknewdevice
 │   │   │       │                               │   ├── CheckCodeSender.kt
+│   │   │       │                               │   ├── ContinuationMessageSender.kt
 │   │   │       │                               │   ├── ErrorType.kt
 │   │   │       │                               │   ├── LinkDesktopHandler.kt
 │   │   │       │                               │   └── LinkMobileHandler.kt
@@ -9183,6 +9443,7 @@
 │   │   │       │                               │   ├── AudioDetails.kt
 │   │   │       │                               │   ├── AudioInfo.kt
 │   │   │       │                               │   ├── FileInfo.kt
+│   │   │       │                               │   ├── GalleryItemInfo.kt
 │   │   │       │                               │   ├── ImageInfo.kt
 │   │   │       │                               │   ├── MatrixMediaLoader.kt
 │   │   │       │                               │   ├── MediaFile.kt
@@ -9202,6 +9463,8 @@
 │   │   │       │                               │   └── NotificationSettingsService.kt
 │   │   │       │                               ├── oauth
 │   │   │       │                               │   └── AccountManagementAction.kt
+│   │   │       │                               ├── paths
+│   │   │       │                               │   └── SessionPaths.kt
 │   │   │       │                               ├── permalink
 │   │   │       │                               │   ├── MatrixToConverter.kt
 │   │   │       │                               │   ├── PermalinkBuilder.kt
@@ -9292,6 +9555,14 @@
 │   │   │       │                               │   ├── RoomListFilter.kt
 │   │   │       │                               │   ├── RoomListService.kt
 │   │   │       │                               │   └── RoomSummary.kt
+│   │   │       │                               ├── scanner
+│   │   │       │                               │   ├── ContentScanner.kt
+│   │   │       │                               │   └── ContentScannerUrlProvider.kt
+│   │   │       │                               ├── search
+│   │   │       │                               │   ├── MessageSearch.kt
+│   │   │       │                               │   ├── MessageSearchPaginationState.kt
+│   │   │       │                               │   ├── MessageSearchResult.kt
+│   │   │       │                               │   └── MessageSearchService.kt
 │   │   │       │                               ├── server
 │   │   │       │                               │   └── UserServerResolver.kt
 │   │   │       │                               ├── spaces
@@ -9344,8 +9615,10 @@
 │   │   │       │                               │   ├── TracingService.kt
 │   │   │       │                               │   └── WriteToFilesConfiguration.kt
 │   │   │       │                               ├── user
+│   │   │       │                               │   ├── DisplayedStatus.kt
 │   │   │       │                               │   ├── MatrixSearchUserResults.kt
-│   │   │       │                               │   └── MatrixUser.kt
+│   │   │       │                               │   ├── MatrixUser.kt
+│   │   │       │                               │   └── UserStatus.kt
 │   │   │       │                               ├── verification
 │   │   │       │                               │   ├── SessionVerificationData.kt
 │   │   │       │                               │   ├── SessionVerificationRequestDetails.kt
@@ -9396,6 +9669,8 @@
 │   │   │       │                               ├── RustMatrixClient.kt
 │   │   │       │                               ├── RustMatrixClientFactory.kt
 │   │   │       │                               ├── RustSdkMetadata.kt
+│   │   │       │                               ├── RustTemporaryMatrixClient.kt
+│   │   │       │                               ├── RustTemporaryMatrixClientFactory.kt
 │   │   │       │                               ├── analytics
 │   │   │       │                               │   ├── DefaultGetDatabaseSizesUseCase.kt
 │   │   │       │                               │   ├── JoinedRoomExt.kt
@@ -9414,9 +9689,6 @@
 │   │   │       │                               │       ├── QrLoginProgressExtensions.kt
 │   │   │       │                               │       ├── RustQrCodeLoginDataFactory.kt
 │   │   │       │                               │       └── SdkQrCodeLoginData.kt
-│   │   │       │                               ├── certificates
-│   │   │       │                               │   ├── DefaultUserCertificatesProvider.kt
-│   │   │       │                               │   └── UserCertificatesProvider.kt
 │   │   │       │                               ├── core
 │   │   │       │                               │   ├── ProgressWatcherWrapper.kt
 │   │   │       │                               │   ├── RustSendHandle.kt
@@ -9433,9 +9705,11 @@
 │   │   │       │                               │   ├── RecoveryStateMapper.kt
 │   │   │       │                               │   ├── RustEncryptionService.kt
 │   │   │       │                               │   ├── RustIdentityResetHandle.kt
+│   │   │       │                               │   ├── RustPasswordStrengthEstimator.kt
 │   │   │       │                               │   └── SteadyStateExceptionMapper.kt
 │   │   │       │                               ├── exception
 │   │   │       │                               │   ├── ClientException.kt
+│   │   │       │                               │   ├── ContentScannerErrorReason.kt
 │   │   │       │                               │   └── ErrorKind.kt
 │   │   │       │                               ├── keys
 │   │   │       │                               │   ├── DefaultSecretGenerator.kt
@@ -9444,16 +9718,18 @@
 │   │   │       │                               │   ├── HumanQrGrantLoginExceptionExtension.kt
 │   │   │       │                               │   ├── QrCodeDataParser.kt
 │   │   │       │                               │   ├── RustCheckCodeSender.kt
+│   │   │       │                               │   ├── RustContinuationMessageSender.kt
 │   │   │       │                               │   ├── RustLinkDesktopHandler.kt
 │   │   │       │                               │   └── RustLinkMobileHandler.kt
 │   │   │       │                               ├── mapper
 │   │   │       │                               │   ├── IdentityState.kt
-│   │   │       │                               │   ├── Session.kt
-│   │   │       │                               │   └── UserProfileMapper.kt
+│   │   │       │                               │   └── Session.kt
 │   │   │       │                               ├── media
 │   │   │       │                               │   ├── AudioDetails.kt
 │   │   │       │                               │   ├── AudioInfo.kt
 │   │   │       │                               │   ├── FileInfo.kt
+│   │   │       │                               │   ├── GalleryItemInfoMapper.kt
+│   │   │       │                               │   ├── GalleryMediaUploadHandlerImpl.kt
 │   │   │       │                               │   ├── ImageInfo.kt
 │   │   │       │                               │   ├── MediaSource.kt
 │   │   │       │                               │   ├── MediaUploadHandlerImpl.kt
@@ -9554,6 +9830,14 @@
 │   │   │       │                               │   ├── RoomSummaryListProcessor.kt
 │   │   │       │                               │   ├── RustDynamicRoomList.kt
 │   │   │       │                               │   └── RustRoomListService.kt
+│   │   │       │                               ├── scanner
+│   │   │       │                               │   └── RustContentScanner.kt
+│   │   │       │                               ├── search
+│   │   │       │                               │   ├── MessageSearchResultMapper.kt
+│   │   │       │                               │   ├── MessageSearchResultsProcessor.kt
+│   │   │       │                               │   ├── RustMessageSearch.kt
+│   │   │       │                               │   ├── RustMessageSearchService.kt
+│   │   │       │                               │   └── TantivyQueryEscaper.kt
 │   │   │       │                               ├── server
 │   │   │       │                               │   └── DefaultUserServerResolver.kt
 │   │   │       │                               ├── spaces
@@ -9590,8 +9874,6 @@
 │   │   │       │                               │   │   └── virtual
 │   │   │       │                               │   │       └── VirtualTimelineItemMapper.kt
 │   │   │       │                               │   ├── postprocessor
-│   │   │       │                               │   │   ├── FilterEmptyDayPostProcessor.kt
-│   │   │       │                               │   │   ├── FilterPublicMembershipChangesPostProcessor.kt
 │   │   │       │                               │   │   ├── LastForwardIndicatorsPostProcessor.kt
 │   │   │       │                               │   │   ├── LoadingIndicatorsPostProcessor.kt
 │   │   │       │                               │   │   ├── RoomBeginningPostProcessor.kt
@@ -9603,14 +9885,15 @@
 │   │   │       │                               │   ├── RustTracingService.kt
 │   │   │       │                               │   ├── RustTracingTree.kt
 │   │   │       │                               │   └── TraceLogPacksMapping.kt
-│   │   │       │                               ├── usersearch
-│   │   │       │                               │   └── UserSearchResultMapper.kt
+│   │   │       │                               ├── user
+│   │   │       │                               │   ├── UserProfileMapper.kt
+│   │   │       │                               │   ├── UserSearchResultMapper.kt
+│   │   │       │                               │   └── UserStatus.kt
 │   │   │       │                               ├── util
 │   │   │       │                               │   ├── CallbackFlow.kt
 │   │   │       │                               │   ├── Disposables.kt
 │   │   │       │                               │   ├── Error.kt
 │   │   │       │                               │   ├── MessageEventContent.kt
-│   │   │       │                               │   ├── SessionPathsProvider.kt
 │   │   │       │                               │   ├── TaskHandle.kt
 │   │   │       │                               │   └── Token.kt
 │   │   │       │                               ├── verification
@@ -9637,6 +9920,7 @@
 │   │   │                                       ├── RustHomeserverCapabilitiesProviderTest.kt
 │   │   │                                       ├── RustMatrixClientFactoryTest.kt
 │   │   │                                       ├── RustMatrixClientTest.kt
+│   │   │                                       ├── RustTemporaryMatrixClientFactoryTest.kt
 │   │   │                                       ├── analytics
 │   │   │                                       │   ├── JoinedExtKtTest.kt
 │   │   │                                       │   └── UtdTrackerTest.kt
@@ -9644,7 +9928,6 @@
 │   │   │                                       │   ├── AuthenticationExceptionMappingTest.kt
 │   │   │                                       │   ├── FakeProxyProvider.kt
 │   │   │                                       │   ├── FakeSecretGenerator.kt
-│   │   │                                       │   ├── FakeUserCertificatesProvider.kt
 │   │   │                                       │   ├── HomeserverDetailsKtTest.kt
 │   │   │                                       │   ├── OAuthConfigurationProviderTest.kt
 │   │   │                                       │   ├── RustHomeserverLoginCompatibilityCheckerTest.kt
@@ -9659,7 +9942,8 @@
 │   │   │                                       │   ├── BackupStateMapperTest.kt
 │   │   │                                       │   ├── BackupUploadStateMapperTest.kt
 │   │   │                                       │   ├── EnableRecoveryProgressMapperTest.kt
-│   │   │                                       │   └── RecoveryStateMapperTest.kt
+│   │   │                                       │   ├── RecoveryStateMapperTest.kt
+│   │   │                                       │   └── RustPasswordStrengthEstimatorTest.kt
 │   │   │                                       ├── fixtures
 │   │   │                                       │   ├── factories
 │   │   │                                       │   │   ├── EventTimelineItem.kt
@@ -9672,6 +9956,7 @@
 │   │   │                                       │   │   ├── RoomNotificationSettings.kt
 │   │   │                                       │   │   ├── RoomPowerLevelsValues.kt
 │   │   │                                       │   │   ├── RoomPreviewInfo.kt
+│   │   │                                       │   │   ├── SearchServiceResult.kt
 │   │   │                                       │   │   ├── SearchUsersResults.kt
 │   │   │                                       │   │   ├── Session.kt
 │   │   │                                       │   │   ├── SpaceRoom.kt
@@ -9683,11 +9968,13 @@
 │   │   │                                       │       ├── FakeFfiCheckCodeSender.kt
 │   │   │                                       │       ├── FakeFfiClient.kt
 │   │   │                                       │       ├── FakeFfiClientBuilder.kt
+│   │   │                                       │       ├── FakeFfiContinuationMessageSender.kt
 │   │   │                                       │       ├── FakeFfiEncryption.kt
 │   │   │                                       │       ├── FakeFfiGrantLoginWithQrCodeHandler.kt
 │   │   │                                       │       ├── FakeFfiHomeserverCapabilities.kt
 │   │   │                                       │       ├── FakeFfiHomeserverLoginDetails.kt
 │   │   │                                       │       ├── FakeFfiLazyTimelineItemProvider.kt
+│   │   │                                       │       ├── FakeFfiMediaSource.kt
 │   │   │                                       │       ├── FakeFfiNotificationClient.kt
 │   │   │                                       │       ├── FakeFfiNotificationSettings.kt
 │   │   │                                       │       ├── FakeFfiQrCodeData.kt
@@ -9697,6 +9984,7 @@
 │   │   │                                       │       ├── FakeFfiRoomListService.kt
 │   │   │                                       │       ├── FakeFfiRoomMembersIterator.kt
 │   │   │                                       │       ├── FakeFfiRoomPowerLevels.kt
+│   │   │                                       │       ├── FakeFfiSearchService.kt
 │   │   │                                       │       ├── FakeFfiSessionVerificationController.kt
 │   │   │                                       │       ├── FakeFfiSpaceRoomList.kt
 │   │   │                                       │       ├── FakeFfiSpaceService.kt
@@ -9711,6 +9999,7 @@
 │   │   │                                       ├── keys
 │   │   │                                       │   └── DefaultSecretGeneratorTest.kt
 │   │   │                                       ├── linknewdevice
+│   │   │                                       │   ├── FakeContinuationMessageSender.kt
 │   │   │                                       │   ├── FakeQrCodeDataParser.kt
 │   │   │                                       │   ├── RustCheckCodeSenderTest.kt
 │   │   │                                       │   ├── RustLinkDesktopHandlerTest.kt
@@ -9763,6 +10052,13 @@
 │   │   │                                       │   ├── RoomListFactoryTest.kt
 │   │   │                                       │   ├── RoomSummaryListProcessorTest.kt
 │   │   │                                       │   └── RustBaseRoomListServiceTest.kt
+│   │   │                                       ├── scanner
+│   │   │                                       │   ├── FakeFfiContentScanner.kt
+│   │   │                                       │   └── RustContentScannerTest.kt
+│   │   │                                       ├── search
+│   │   │                                       │   ├── MessageSearchResultsProcessorTest.kt
+│   │   │                                       │   ├── RustMessageSearchTest.kt
+│   │   │                                       │   └── TantivyQueryEscaperTest.kt
 │   │   │                                       ├── server
 │   │   │                                       │   └── DefaultUserServerResolverTest.kt
 │   │   │                                       ├── spaces
@@ -9778,17 +10074,16 @@
 │   │   │                                       │   ├── ReceiptTypeMapperKtTest.kt
 │   │   │                                       │   ├── RustTimelineTest.kt
 │   │   │                                       │   ├── TimelineItemsSubscriberTest.kt
+│   │   │                                       │   ├── item
+│   │   │                                       │   │   └── event
+│   │   │                                       │   │       └── EventMessageMapperTest.kt
 │   │   │                                       │   └── postprocessor
-│   │   │                                       │       ├── FilterEmptyDayPostProcessorTest.kt
-│   │   │                                       │       ├── FilterPublicMembershipChangesPostProcessorTest.kt
 │   │   │                                       │       ├── Fixtures.kt
 │   │   │                                       │       ├── LastForwardIndicatorsPostProcessorTest.kt
 │   │   │                                       │       ├── LoadingIndicatorsPostProcessorTest.kt
 │   │   │                                       │       └── RoomBeginningPostProcessorTest.kt
-│   │   │                                       ├── usersearch
-│   │   │                                       │   └── UserSearchResultMapperTest.kt
-│   │   │                                       └── util
-│   │   │                                           └── SessionPathsProviderTest.kt
+│   │   │                                       └── usersearch
+│   │   │                                           └── UserSearchResultMapperTest.kt
 │   │   └── test
 │   │       ├── build.gradle.kts
 │   │       └── src
@@ -9805,6 +10100,8 @@
 │   │                                           ├── FakeMatrixClient.kt
 │   │                                           ├── FakeMatrixClientProvider.kt
 │   │                                           ├── FakeSdkMetadata.kt
+│   │                                           ├── FakeTemporaryMatrixClient.kt
+│   │                                           ├── FakeTemporaryMatrixClientFactory.kt
 │   │                                           ├── TestData.kt
 │   │                                           ├── analytics
 │   │                                           │   └── FakeAnalyticsSdkManager.kt
@@ -9820,7 +10117,8 @@
 │   │                                           │   └── FakeSendHandle.kt
 │   │                                           ├── encryption
 │   │                                           │   ├── FakeEncryptionService.kt
-│   │                                           │   └── FakeIdentityResetHandle.kt
+│   │                                           │   ├── FakeIdentityResetHandle.kt
+│   │                                           │   └── FakePasswordStrengthEstimator.kt
 │   │                                           ├── linknewdevice
 │   │                                           │   ├── FakeCheckCodeSender.kt
 │   │                                           │   ├── FakeLinkDesktopHandler.kt
@@ -9871,6 +10169,11 @@
 │   │                                           ├── roomlist
 │   │                                           │   ├── FakeDynamicRoomList.kt
 │   │                                           │   └── FakeRoomListService.kt
+│   │                                           ├── scanner
+│   │                                           │   └── FakeContentScanner.kt
+│   │                                           ├── search
+│   │                                           │   ├── FakeMessageSearch.kt
+│   │                                           │   └── FakeMessageSearchService.kt
 │   │                                           ├── spaces
 │   │                                           │   ├── FakeLeaveSpaceHandle.kt
 │   │                                           │   ├── FakeSpaceRoomList.kt
@@ -9975,6 +10278,7 @@
 │   │       │   │                           │   ├── AvatarPickerView.kt
 │   │       │   │                           │   ├── CheckableUserRow.kt
 │   │       │   │                           │   ├── CreateDmConfirmationBottomSheet.kt
+│   │       │   │                           │   ├── DisplayNameWithStatus.kt
 │   │       │   │                           │   ├── EditableOrgAvatar.kt
 │   │       │   │                           │   ├── InviteSenderView.kt
 │   │       │   │                           │   ├── JoinButton.kt
@@ -9996,7 +10300,15 @@
 │   │       │   │                           │   ├── UnresolvedUserRow.kt
 │   │       │   │                           │   └── UserRow.kt
 │   │       │   │                           ├── media
-│   │       │   │                           │   └── AvatarAction.kt
+│   │       │   │                           │   ├── AvatarAction.kt
+│   │       │   │                           │   └── contentvalidation
+│   │       │   │                           │       ├── ContentErrorView.kt
+│   │       │   │                           │       ├── ContentValidationState.kt
+│   │       │   │                           │       ├── EventContentValidationCache.kt
+│   │       │   │                           │       ├── InMemoryEventContentValidationCache.kt
+│   │       │   │                           │       ├── InvalidContentView.kt
+│   │       │   │                           │       ├── LocalEventContentValidationState.kt
+│   │       │   │                           │       └── NotFoundContentView.kt
 │   │       │   │                           ├── messages
 │   │       │   │                           │   ├── RoomMemberProfilesCache.kt
 │   │       │   │                           │   ├── RoomNamesCache.kt
@@ -10012,6 +10324,7 @@
 │   │       │   │                           │       ├── SenderNameDataProvider.kt
 │   │       │   │                           │       └── SenderNameMode.kt
 │   │       │   │                           ├── model
+│   │       │   │                           │   ├── DisplayedStatusExtention.kt
 │   │       │   │                           │   ├── InviteSender.kt
 │   │       │   │                           │   ├── MatrixUserExtensions.kt
 │   │       │   │                           │   ├── RoomInfoExtension.kt
@@ -10262,6 +10575,7 @@
 │   │   │       │                               ├── DefaultMediaSender.kt
 │   │   │       │                               ├── ImageCompressor.kt
 │   │   │       │                               ├── MimeTypeUtil.kt
+│   │   │       │                               ├── SvgDimensionExtractor.kt
 │   │   │       │                               ├── ThumbnailFactory.kt
 │   │   │       │                               ├── VideoCompressor.kt
 │   │   │       │                               └── VideoCompressorConfig.kt
@@ -10270,6 +10584,7 @@
 │   │   │           │   ├── animated_gif.gif
 │   │   │           │   ├── image.jpeg
 │   │   │           │   ├── image.png
+│   │   │           │   ├── image.svg
 │   │   │           │   ├── sample3s.mp3
 │   │   │           │   ├── text.txt
 │   │   │           │   └── video.mp4
@@ -10310,6 +10625,7 @@
 │   │   │                           └── libraries
 │   │   │                               └── mediaviewer
 │   │   │                                   └── api
+│   │   │                                       ├── GalleryItemData.kt
 │   │   │                                       ├── MediaGalleryEntryPoint.kt
 │   │   │                                       ├── MediaInfo.kt
 │   │   │                                       ├── MediaViewerEntryPoint.kt
@@ -10325,6 +10641,7 @@
 │   │   │   ├── build.gradle.kts
 │   │   │   └── src
 │   │   │       ├── main
+│   │   │       │   ├── AndroidManifest.xml
 │   │   │       │   ├── kotlin
 │   │   │       │   │   └── io
 │   │   │       │   │       └── element
@@ -10369,6 +10686,7 @@
 │   │   │       │   │                           │   │   ├── CaptionView.kt
 │   │   │       │   │                           │   │   ├── DateItemView.kt
 │   │   │       │   │                           │   │   ├── FileItemView.kt
+│   │   │       │   │                           │   │   ├── GalleryFileListItem.kt
 │   │   │       │   │                           │   │   ├── ImageItemView.kt
 │   │   │       │   │                           │   │   ├── MediaItemAudioProvider.kt
 │   │   │       │   │                           │   │   ├── MediaItemDateSeparatorProvider.kt
@@ -10423,6 +10741,7 @@
 │   │   │       │   │                           │   ├── Colors.kt
 │   │   │       │   │                           │   └── FileExtensionExtractorWithValidation.kt
 │   │   │       │   │                           └── viewer
+│   │   │       │   │                               ├── GalleryMediaGalleryDataSource.kt
 │   │   │       │   │                               ├── MediaViewerDataSource.kt
 │   │   │       │   │                               ├── MediaViewerEvent.kt
 │   │   │       │   │                               ├── MediaViewerFlickToDismiss.kt
@@ -10439,6 +10758,8 @@
 │   │   │       │       │   └── ic_apk_install.xml
 │   │   │       │       ├── values
 │   │   │       │       │   └── localazy.xml
+│   │   │       │       ├── values-be
+│   │   │       │       │   └── translations.xml
 │   │   │       │       ├── values-bg
 │   │   │       │       │   └── translations.xml
 │   │   │       │       ├── values-ca
@@ -10516,8 +10837,8 @@
 │   │   │                                       ├── DefaultMediaGalleryEntryPointTest.kt
 │   │   │                                       ├── DefaultMediaViewerEntryPointTest.kt
 │   │   │                                       ├── datasource
-│   │   │                                       │   ├── DefaultEventItemFactoryTest.kt
 │   │   │                                       │   ├── DefaultFocusedTimelineMediaGalleryDataSourceFactoryTest.kt
+│   │   │                                       │   ├── EventItemFactoryTest.kt
 │   │   │                                       │   ├── FakeMediaGalleryDataSource.kt
 │   │   │                                       │   ├── FocusedMediaTimelineTest.kt
 │   │   │                                       │   ├── LiveMediaTimelineTest.kt
@@ -10539,6 +10860,7 @@
 │   │   │                                       │   └── FileExtensionExtractorWithValidationTest.kt
 │   │   │                                       └── viewer
 │   │   │                                           ├── FakeMediaViewerNavigator.kt
+│   │   │                                           ├── GalleryMediaGalleryDataSourceTest.kt
 │   │   │                                           ├── MediaViewerDataSourceTest.kt
 │   │   │                                           ├── MediaViewerPresenterTest.kt
 │   │   │                                           ├── MediaViewerViewTest.kt
@@ -10669,7 +10991,11 @@
 │   │   │           │                           ├── PermissionsStateProvider.kt
 │   │   │           │                           ├── PermissionsStore.kt
 │   │   │           │                           ├── PermissionsView.kt
-│   │   │           │                           └── Util.kt
+│   │   │           │                           ├── Util.kt
+│   │   │           │                           └── localnetwork
+│   │   │           │                               ├── LocalNetworkPermissionAdvisor.kt
+│   │   │           │                               ├── LocalNetworkPermissionDialog.kt
+│   │   │           │                               └── LocalNetworkPermissionDialogView.kt
 │   │   │           └── res
 │   │   │               ├── values
 │   │   │               │   └── localazy.xml
@@ -10763,6 +11089,8 @@
 │   │   │       │   │                           ├── action
 │   │   │       │   │                           │   ├── AndroidPermissionActions.kt
 │   │   │       │   │                           │   └── PermissionActions.kt
+│   │   │       │   │                           ├── localnetwork
+│   │   │       │   │                           │   └── DefaultLocalNetworkPermissionAdvisor.kt
 │   │   │       │   │                           └── troubleshoot
 │   │   │       │   │                               └── NotificationTroubleshootCheckPermissionTest.kt
 │   │   │       │   └── res
@@ -10854,6 +11182,8 @@
 │   │   │                                       ├── FakeComposablePermissionStateProvider.kt
 │   │   │                                       ├── action
 │   │   │                                       │   └── FakePermissionActions.kt
+│   │   │                                       ├── localnetwork
+│   │   │                                       │   └── DefaultLocalNetworkPermissionAdvisorTest.kt
 │   │   │                                       └── troubleshoot
 │   │   │                                           └── NotificationTroubleshootCheckPermissionTestTest.kt
 │   │   ├── noop
@@ -10888,6 +11218,7 @@
 │   │                               └── libraries
 │   │                                   └── permissions
 │   │                                       └── test
+│   │                                           ├── FakeLocalNetworkPermissionAdvisor.kt
 │   │                                           ├── FakePermissionStateProvider.kt
 │   │                                           ├── FakePermissionsPresenter.kt
 │   │                                           ├── FakePermissionsPresenterFactory.kt
@@ -11127,7 +11458,8 @@
 │   │   │       │   │   │   ├── element_fade.mp3
 │   │   │       │   │   │   └── message.mp3
 │   │   │       │   │   ├── values
-│   │   │       │   │   │   └── localazy.xml
+│   │   │       │   │   │   ├── localazy.xml
+│   │   │       │   │   │   └── temporary.xml
 │   │   │       │   │   ├── values-be
 │   │   │       │   │   │   └── translations.xml
 │   │   │       │   │   ├── values-bg
@@ -11373,21 +11705,23 @@
 │   │   │       │   │                       └── firebase
 │   │   │       │   │                           ├── FirebaseConfig.kt
 │   │   │       │   │                           ├── FirebaseGatewayProvider.kt
-│   │   │       │   │                           ├── FirebaseNewTokenHandler.kt
+│   │   │       │   │                           ├── FirebaseNewInstallationIdHandler.kt
 │   │   │       │   │                           ├── FirebasePushParser.kt
 │   │   │       │   │                           ├── FirebasePushProvider.kt
 │   │   │       │   │                           ├── FirebaseStore.kt
-│   │   │       │   │                           ├── FirebaseTokenDeleter.kt
-│   │   │       │   │                           ├── FirebaseTokenGetter.kt
-│   │   │       │   │                           ├── FirebaseTokenRotator.kt
 │   │   │       │   │                           ├── FirebaseTroubleshooter.kt
 │   │   │       │   │                           ├── IsPlayServiceAvailable.kt
 │   │   │       │   │                           ├── PushDataFirebase.kt
+│   │   │       │   │                           ├── RegisterFirebaseSession.kt
+│   │   │       │   │                           ├── RotateFirebaseSession.kt
+│   │   │       │   │                           ├── UnregisterFirebaseSession.kt
 │   │   │       │   │                           ├── VectorFirebaseMessagingService.kt
 │   │   │       │   │                           ├── VectorFirebaseMessagingServiceBindings.kt
-│   │   │       │   │                           └── troubleshoot
-│   │   │       │   │                               ├── FirebaseAvailabilityTest.kt
-│   │   │       │   │                               └── FirebaseTokenTest.kt
+│   │   │       │   │                           ├── troubleshoot
+│   │   │       │   │                           │   ├── FirebaseAvailabilityTest.kt
+│   │   │       │   │                           │   └── FirebaseTokenTest.kt
+│   │   │       │   │                           └── util
+│   │   │       │   │                               └── RunFirebaseTask.kt
 │   │   │       │   └── res
 │   │   │       │       ├── values
 │   │   │       │       │   ├── firebase.xml
@@ -11413,6 +11747,8 @@
 │   │   │       │       ├── values-et
 │   │   │       │       │   └── translations.xml
 │   │   │       │       ├── values-eu
+│   │   │       │       │   └── translations.xml
+│   │   │       │       ├── values-fa
 │   │   │       │       │   └── translations.xml
 │   │   │       │       ├── values-fi
 │   │   │       │       │   └── translations.xml
@@ -11470,12 +11806,12 @@
 │   │   │                           └── libraries
 │   │   │                               └── pushproviders
 │   │   │                                   └── firebase
-│   │   │                                       ├── DefaultFirebaseNewTokenHandlerTest.kt
+│   │   │                                       ├── DefaultFirebaseNewInstallationIdHandlerTest.kt
 │   │   │                                       ├── FakeFirebaseGatewayProvider.kt
-│   │   │                                       ├── FakeFirebaseNewTokenHandler.kt
-│   │   │                                       ├── FakeFirebaseTokenRotator.kt
+│   │   │                                       ├── FakeFirebaseNewInstallationIdHandler.kt
 │   │   │                                       ├── FakeFirebaseTroubleshooter.kt
 │   │   │                                       ├── FakeIsPlayServiceAvailable.kt
+│   │   │                                       ├── FakeRotateFirebaseSession.kt
 │   │   │                                       ├── FirebasePushParserTest.kt
 │   │   │                                       ├── FirebasePushProviderTest.kt
 │   │   │                                       ├── InMemoryFirebaseStore.kt
@@ -11509,7 +11845,6 @@
 │   │           │   │                   └── pushproviders
 │   │           │   │                       └── unifiedpush
 │   │           │   │                           ├── DefaultPushGatewayHttpUrlProvider.kt
-│   │           │   │                           ├── GuardServiceStarter.kt
 │   │           │   │                           ├── KeepInternalDistributor.kt
 │   │           │   │                           ├── PushDataUnifiedPush.kt
 │   │           │   │                           ├── RegisterUnifiedPushUseCase.kt
@@ -11559,6 +11894,8 @@
 │   │           │       ├── values-et
 │   │           │       │   └── translations.xml
 │   │           │       ├── values-eu
+│   │           │       │   └── translations.xml
+│   │           │       ├── values-fa
 │   │           │       │   └── translations.xml
 │   │           │       ├── values-fi
 │   │           │       │   └── translations.xml
@@ -11728,56 +12065,6 @@
 │   │                                   ├── QRCodeAnalyzer.kt
 │   │                                   ├── QrCodeCameraView.kt
 │   │                                   └── QrCodeImage.kt
-│   ├── recentemojis
-│   │   ├── api
-│   │   │   ├── build.gradle.kts
-│   │   │   └── src
-│   │   │       └── main
-│   │   │           └── kotlin
-│   │   │               └── io
-│   │   │                   └── element
-│   │   │                       └── android
-│   │   │                           └── libraries
-│   │   │                               └── recentemojis
-│   │   │                                   └── api
-│   │   │                                       ├── AddRecentEmoji.kt
-│   │   │                                       ├── EmojibaseProvider.kt
-│   │   │                                       └── GetRecentEmojis.kt
-│   │   ├── impl
-│   │   │   ├── build.gradle.kts
-│   │   │   └── src
-│   │   │       ├── main
-│   │   │       │   └── kotlin
-│   │   │       │       └── io
-│   │   │       │           └── element
-│   │   │       │               └── android
-│   │   │       │                   └── libraries
-│   │   │       │                       └── recentemojis
-│   │   │       │                           └── impl
-│   │   │       │                               ├── DefaultAddRecentEmoji.kt
-│   │   │       │                               ├── DefaultEmojibaseProvider.kt
-│   │   │       │                               └── DefaultGetRecentEmojis.kt
-│   │   │       └── test
-│   │   │           └── kotlin
-│   │   │               └── io
-│   │   │                   └── element
-│   │   │                       └── android
-│   │   │                           └── libraries
-│   │   │                               └── recentemojis
-│   │   │                                   └── impl
-│   │   │                                       └── DefaultGetRecentEmojisTest.kt
-│   │   └── test
-│   │       ├── build.gradle.kts
-│   │       └── src
-│   │           └── main
-│   │               └── kotlin
-│   │                   └── io
-│   │                       └── element
-│   │                           └── android
-│   │                               └── libraries
-│   │                                   └── recentemojis
-│   │                                       └── test
-│   │                                           └── FakeEmojibaseProvider.kt
 │   ├── roomselect
 │   │   ├── api
 │   │   │   ├── build.gradle.kts
@@ -11804,7 +12091,7 @@
 │   │   │       │                       └── roomselect
 │   │   │       │                           └── impl
 │   │   │       │                               ├── DefaultRoomSelectEntryPoint.kt
-│   │   │       │                               ├── RoomSelectEvents.kt
+│   │   │       │                               ├── RoomSelectEvent.kt
 │   │   │       │                               ├── RoomSelectNode.kt
 │   │   │       │                               ├── RoomSelectPresenter.kt
 │   │   │       │                               ├── RoomSelectSearchDataSource.kt
@@ -11820,7 +12107,8 @@
 │   │   │                               └── roomselect
 │   │   │                                   └── impl
 │   │   │                                       ├── DefaultRoomSelectEntryPointTest.kt
-│   │   │                                       └── RoomSelectPresenterTest.kt
+│   │   │                                       ├── RoomSelectPresenterTest.kt
+│   │   │                                       └── RoomSelectViewTest.kt
 │   │   └── test
 │   │       ├── build.gradle.kts
 │   │       └── src
@@ -12378,7 +12666,8 @@
 │   │           └── res
 │   │               ├── values
 │   │               │   ├── localazy.xml
-│   │               │   └── strings_tchap.xml
+│   │               │   ├── strings_tchap.xml
+│   │               │   └── temporary.xml
 │   │               ├── values-be
 │   │               │   └── translations.xml
 │   │               ├── values-bg
@@ -12479,6 +12768,8 @@
 │   │       │                               │   └── DrawInLayer.kt
 │   │       │                               ├── strings
 │   │       │                               │   └── Plurals.kt
+│   │       │                               ├── text
+│   │       │                               │   └── TextDirection.kt
 │   │       │                               ├── time
 │   │       │                               │   ├── DurationExt.kt
 │   │       │                               │   └── KeyEventExt.kt
@@ -12611,6 +12902,7 @@
 │   │   │   ├── build.gradle.kts
 │   │   │   └── src
 │   │   │       ├── main
+│   │   │       │   ├── AndroidManifest.xml
 │   │   │       │   └── kotlin
 │   │   │       │       └── io
 │   │   │       │           └── element
@@ -12679,8 +12971,11 @@
 │   │   │                           └── libraries
 │   │   │                               └── wellknown
 │   │   │                                   └── api
+│   │   │                                       ├── CustomRecoveryPassphrase.kt
 │   │   │                                       ├── ElementWellKnown.kt
-│   │   │                                       ├── SessionWellknownRetriever.kt
+│   │   │                                       ├── ElementWellKnownParser.kt
+│   │   │                                       ├── ElementWellknownStore.kt
+│   │   │                                       ├── EnterpriseRemoteConfigSource.kt
 │   │   │                                       ├── WellknownRetriever.kt
 │   │   │                                       └── WellknownRetrieverResult.kt
 │   │   ├── impl
@@ -12694,12 +12989,14 @@
 │   │   │       │                   └── libraries
 │   │   │       │                       └── wellknown
 │   │   │       │                           └── impl
-│   │   │       │                               ├── DefaultSessionWellknownRetriever.kt
+│   │   │       │                               ├── DefaultElementWellKnownParser.kt
+│   │   │       │                               ├── DefaultWellKnownStore.kt
 │   │   │       │                               ├── DefaultWellknownRetriever.kt
 │   │   │       │                               ├── InternalElementWellKnown.kt
 │   │   │       │                               ├── InternalWellKnown.kt
 │   │   │       │                               ├── InternalWellKnownBaseConfig.kt
 │   │   │       │                               ├── Mapper.kt
+│   │   │       │                               ├── SessionWellknownModule.kt
 │   │   │       │                               └── WellknownAPI.kt
 │   │   │       └── test
 │   │   │           └── kotlin
@@ -12708,8 +13005,11 @@
 │   │   │                       └── android
 │   │   │                           └── libraries
 │   │   │                               └── wellknown
+│   │   │                                   ├── api
+│   │   │                                   │   └── CustomRecoveryPassphraseTest.kt
 │   │   │                                   └── impl
-│   │   │                                       └── DefaultSessionWellknownRetrieverTest.kt
+│   │   │                                       ├── DefaultWellKnownStoreTest.kt
+│   │   │                                       └── DefaultWellknownRetrieverTest.kt
 │   │   └── test
 │   │       ├── build.gradle.kts
 │   │       └── src
@@ -12721,8 +13021,9 @@
 │   │                               └── features
 │   │                                   └── wellknown
 │   │                                       └── test
-│   │                                           ├── FakeSessionWellknownRetriever.kt
+│   │                                           ├── FakeElementWellknownStore.kt
 │   │                                           ├── FakeWellknownRetriever.kt
+│   │                                           ├── FakeWellknownRetrieverFactory.kt
 │   │                                           └── Fixtures.kt
 │   └── workmanager
 │       ├── api
@@ -12810,6 +13111,8 @@
 │   │   ├── appnav.loggedin_LoggedInView_Day_1_de.png
 │   │   ├── appnav.loggedin_LoggedInView_Day_2_de.png
 │   │   ├── appnav.loggedin_LoggedInView_Day_3_de.png
+│   │   ├── appnav.loggedin_LoggedInView_Day_4_de.png
+│   │   ├── appnav.loggedin_LoggedInView_Day_5_de.png
 │   │   ├── appnav.loggedin_SyncStateView_Day_0_de.png
 │   │   ├── appnav.room.joined_LoadingRoomNodeView_Day_1_de.png
 │   │   ├── appnav.root_RootView_Day_0_de.png
@@ -12920,6 +13223,7 @@
 │   │   ├── features.invite.impl.declineandblock_DeclineAndBlockView_Day_4_de.png
 │   │   ├── features.invitepeople.impl_InvitePeopleView_Day_0_de.png
 │   │   ├── features.invitepeople.impl_InvitePeopleView_Day_10_de.png
+│   │   ├── features.invitepeople.impl_InvitePeopleView_Day_11_de.png
 │   │   ├── features.invitepeople.impl_InvitePeopleView_Day_1_de.png
 │   │   ├── features.invitepeople.impl_InvitePeopleView_Day_4_de.png
 │   │   ├── features.invitepeople.impl_InvitePeopleView_Day_5_de.png
@@ -13003,6 +13307,8 @@
 │   │   ├── features.linknewdevice.impl.screens.scan_ScanQrCodeView_Day_3_de.png
 │   │   ├── features.location.api.internal_StaticMapPlaceholder_Day_0_de.png
 │   │   ├── features.location.api_LiveLocationSharingBanner_Day_0_de.png
+│   │   ├── features.location.api_RenderingMapsNotSupportedDialog_Day_0_de.png
+│   │   ├── features.location.impl.common.ui_LocationShareRow_Day_0_de.png
 │   │   ├── features.location.impl.share_ShareLocationView_Day_0_de.png
 │   │   ├── features.location.impl.share_ShareLocationView_Day_1_de.png
 │   │   ├── features.location.impl.share_ShareLocationView_Day_2_de.png
@@ -13021,7 +13327,6 @@
 │   │   ├── features.location.impl.show_ShowLocationView_Day_5_de.png
 │   │   ├── features.location.impl.show_ShowLocationView_Day_6_de.png
 │   │   ├── features.location.impl.show_ShowLocationView_Day_7_de.png
-│   │   ├── features.location.impl.show_ShowLocationView_Day_8_de.png
 │   │   ├── features.lockscreen.impl.settings_LockScreenSettingsView_Day_0_de.png
 │   │   ├── features.lockscreen.impl.settings_LockScreenSettingsView_Day_1_de.png
 │   │   ├── features.lockscreen.impl.settings_LockScreenSettingsView_Day_2_de.png
@@ -13031,7 +13336,10 @@
 │   │   ├── features.lockscreen.impl.setup.pin_SetupPinView_Day_2_de.png
 │   │   ├── features.lockscreen.impl.setup.pin_SetupPinView_Day_3_de.png
 │   │   ├── features.lockscreen.impl.setup.pin_SetupPinView_Day_4_de.png
+│   │   ├── features.lockscreen.impl.unlock_PinUnlockViewCompact_0_de.png
+│   │   ├── features.lockscreen.impl.unlock_PinUnlockViewCompact_1_de.png
 │   │   ├── features.lockscreen.impl.unlock_PinUnlockViewInApp_Day_0_de.png
+│   │   ├── features.lockscreen.impl.unlock_PinUnlockViewInApp_Day_10_de.png
 │   │   ├── features.lockscreen.impl.unlock_PinUnlockViewInApp_Day_1_de.png
 │   │   ├── features.lockscreen.impl.unlock_PinUnlockViewInApp_Day_2_de.png
 │   │   ├── features.lockscreen.impl.unlock_PinUnlockViewInApp_Day_3_de.png
@@ -13042,6 +13350,7 @@
 │   │   ├── features.lockscreen.impl.unlock_PinUnlockViewInApp_Day_8_de.png
 │   │   ├── features.lockscreen.impl.unlock_PinUnlockViewInApp_Day_9_de.png
 │   │   ├── features.lockscreen.impl.unlock_PinUnlockView_Day_0_de.png
+│   │   ├── features.lockscreen.impl.unlock_PinUnlockView_Day_10_de.png
 │   │   ├── features.lockscreen.impl.unlock_PinUnlockView_Day_1_de.png
 │   │   ├── features.lockscreen.impl.unlock_PinUnlockView_Day_2_de.png
 │   │   ├── features.lockscreen.impl.unlock_PinUnlockView_Day_3_de.png
@@ -13057,6 +13366,7 @@
 │   │   ├── features.login.impl.changeserver_ChangeServerView_Day_3_de.png
 │   │   ├── features.login.impl.changeserver_ChangeServerView_Day_4_de.png
 │   │   ├── features.login.impl.changeserver_ChangeServerView_Day_5_de.png
+│   │   ├── features.login.impl.changeserver_ChangeServerView_Day_6_de.png
 │   │   ├── features.login.impl.dialogs_SlidingSyncNotSupportedDialog_Day_0_de.png
 │   │   ├── features.login.impl.login_LoginModeView_Day_0_de.png
 │   │   ├── features.login.impl.login_LoginModeView_Day_1_de.png
@@ -13072,6 +13382,7 @@
 │   │   ├── features.login.impl.screens.chooseaccountprovider_ChooseAccountProviderView_Day_2_de.png
 │   │   ├── features.login.impl.screens.classic.loginwithclassic_LoginWithClassicView_Day_0_de.png
 │   │   ├── features.login.impl.screens.classic.loginwithclassic_LoginWithClassicView_Day_1_de.png
+│   │   ├── features.login.impl.screens.classic.missingkeybackup_MissingKeyBackupView_Day_0_de.png
 │   │   ├── features.login.impl.screens.confirmaccountprovider_ConfirmAccountProviderView_Day_0_de.png
 │   │   ├── features.login.impl.screens.confirmaccountprovider_ConfirmAccountProviderView_Day_1_de.png
 │   │   ├── features.login.impl.screens.confirmaccountprovider_ConfirmAccountProviderView_Day_2_de.png
@@ -13148,6 +13459,9 @@
 │   │   ├── features.messages.impl.attachments.preview.imageeditor_AttachmentImageEditorView_3_de.png
 │   │   ├── features.messages.impl.attachments.preview.imageeditor_AttachmentImageEditorView_4_de.png
 │   │   ├── features.messages.impl.attachments.preview.imageeditor_AttachmentImageEditorView_5_de.png
+│   │   ├── features.messages.impl.attachments.preview.imageeditor_AttachmentImageEditorView_6_de.png
+│   │   ├── features.messages.impl.attachments.preview.imageeditor_AttachmentImageEditorView_7_de.png
+│   │   ├── features.messages.impl.attachments.preview_AttachmentsPreviewGalleryView_de.png
 │   │   ├── features.messages.impl.attachments.preview_AttachmentsPreviewView_0_de.png
 │   │   ├── features.messages.impl.attachments.preview_AttachmentsPreviewView_1_de.png
 │   │   ├── features.messages.impl.attachments.preview_AttachmentsPreviewView_2_de.png
@@ -13168,7 +13482,7 @@
 │   │   ├── features.messages.impl.crypto.sendfailure.resolve_ResolveVerifiedUserSendFailureView_Day_2_de.png
 │   │   ├── features.messages.impl.link_LinkView_Day_1_de.png
 │   │   ├── features.messages.impl.messagecomposer.suggestions_SuggestionsPickerView_Day_0_de.png
-│   │   ├── features.messages.impl.messagecomposer_AttachmentSourcePickerMenu_Day_0_de.png
+│   │   ├── features.messages.impl.messagecomposer_AttachmentsBottomSheet_Day_0_de.png
 │   │   ├── features.messages.impl.messagecomposer_MessageComposerView_Day_0_de.png
 │   │   ├── features.messages.impl.pinned.banner_PinnedMessagesBannerView_Day_10_de.png
 │   │   ├── features.messages.impl.pinned.banner_PinnedMessagesBannerView_Day_1_de.png
@@ -13190,8 +13504,7 @@
 │   │   ├── features.messages.impl.report_ReportMessageView_Day_3_de.png
 │   │   ├── features.messages.impl.report_ReportMessageView_Day_4_de.png
 │   │   ├── features.messages.impl.report_ReportMessageView_Day_5_de.png
-│   │   ├── features.messages.impl.timeline.components.customreaction.picker_EmojiPicker_Day_0_de.png
-│   │   ├── features.messages.impl.timeline.components.customreaction.picker_EmojiPicker_Day_1_de.png
+│   │   ├── features.messages.impl.timeline.components.event_ATimelineItemEventRow_Day_0_de.png
 │   │   ├── features.messages.impl.timeline.components.event_TimelineItemEncryptedView_Day_0_de.png
 │   │   ├── features.messages.impl.timeline.components.event_TimelineItemEncryptedView_Day_1_de.png
 │   │   ├── features.messages.impl.timeline.components.event_TimelineItemEncryptedView_Day_2_de.png
@@ -13222,6 +13535,8 @@
 │   │   ├── features.messages.impl.timeline.components.receipt.bottomsheet_ReadReceiptBottomSheet_Day_5_de.png
 │   │   ├── features.messages.impl.timeline.components.virtual_TimelineItemReadMarkerView_Day_0_de.png
 │   │   ├── features.messages.impl.timeline.components.virtual_TimelineItemRoomBeginningView_Day_0_de.png
+│   │   ├── features.messages.impl.timeline.components_ActiveCallTimelineItemView_Day_0_de.png
+│   │   ├── features.messages.impl.timeline.components_ActiveCallTimelineItemView_de.png
 │   │   ├── features.messages.impl.timeline.components_CallMenuItem_Day_3_de.png
 │   │   ├── features.messages.impl.timeline.components_CallMenuItem_Day_4_de.png
 │   │   ├── features.messages.impl.timeline.components_CallMenuItem_Day_6_de.png
@@ -13230,6 +13545,7 @@
 │   │   ├── features.messages.impl.timeline.components_TimelineEventTimestampView_Day_3_de.png
 │   │   ├── features.messages.impl.timeline.components_TimelineEventTimestampView_Day_4_de.png
 │   │   ├── features.messages.impl.timeline.components_TimelineItemCallNotifyView_Day_0_de.png
+│   │   ├── features.messages.impl.timeline.components_TimelineItemEventRowRtlContent_de.png
 │   │   ├── features.messages.impl.timeline.components_TimelineItemEventRowTimestamp_Day_3_de.png
 │   │   ├── features.messages.impl.timeline.components_TimelineItemEventRowTimestamp_Day_4_de.png
 │   │   ├── features.messages.impl.timeline.components_TimelineItemEventRowTimestamp_Day_7_de.png
@@ -13237,8 +13553,17 @@
 │   │   ├── features.messages.impl.timeline.components_TimelineItemEventRowWithManyReactions_Day_0_de.png
 │   │   ├── features.messages.impl.timeline.components_TimelineItemEventRowWithReplyInformative_Day_0_de.png
 │   │   ├── features.messages.impl.timeline.components_TimelineItemEventRowWithReplyInformative_Day_1_de.png
+│   │   ├── features.messages.impl.timeline.components_TimelineItemEventRowWithReplyOther_Day_0_de.png
+│   │   ├── features.messages.impl.timeline.components_TimelineItemEventRowWithReplyOther_Day_1_de.png
+│   │   ├── features.messages.impl.timeline.components_TimelineItemEventRowWithReply_Day_0_de.png
+│   │   ├── features.messages.impl.timeline.components_TimelineItemEventRowWithReply_Day_11_de.png
+│   │   ├── features.messages.impl.timeline.components_TimelineItemEventRowWithReply_Day_1_de.png
+│   │   ├── features.messages.impl.timeline.components_TimelineItemEventRowWithReply_Day_3_de.png
 │   │   ├── features.messages.impl.timeline.components_TimelineItemEventRowWithReply_Day_4_de.png
+│   │   ├── features.messages.impl.timeline.components_TimelineItemEventRowWithReply_Day_5_de.png
+│   │   ├── features.messages.impl.timeline.components_TimelineItemEventRowWithReply_Day_7_de.png
 │   │   ├── features.messages.impl.timeline.components_TimelineItemEventRowWithReply_Day_8_de.png
+│   │   ├── features.messages.impl.timeline.components_TimelineItemEventRowWithReply_Day_9_de.png
 │   │   ├── features.messages.impl.timeline.components_TimelineItemEventRowWithThreadSummary_Day_0_de.png
 │   │   ├── features.messages.impl.timeline.components_TimelineItemEventTimestampBelow_de.png
 │   │   ├── features.messages.impl.timeline.components_TimelineItemGroupedEventsRowContentCollapse_Day_0_de.png
@@ -13389,16 +13714,20 @@
 │   │   ├── features.preferences.impl.root_PreferencesRootViewDark_3_de.png
 │   │   ├── features.preferences.impl.root_PreferencesRootViewDark_4_de.png
 │   │   ├── features.preferences.impl.root_PreferencesRootViewDark_5_de.png
+│   │   ├── features.preferences.impl.root_PreferencesRootViewDark_6_de.png
 │   │   ├── features.preferences.impl.root_PreferencesRootViewLight_0_de.png
 │   │   ├── features.preferences.impl.root_PreferencesRootViewLight_1_de.png
 │   │   ├── features.preferences.impl.root_PreferencesRootViewLight_2_de.png
 │   │   ├── features.preferences.impl.root_PreferencesRootViewLight_3_de.png
 │   │   ├── features.preferences.impl.root_PreferencesRootViewLight_4_de.png
 │   │   ├── features.preferences.impl.root_PreferencesRootViewLight_5_de.png
+│   │   ├── features.preferences.impl.root_PreferencesRootViewLight_6_de.png
 │   │   ├── features.preferences.impl.user.editprofile_EditUserProfileView_Day_0_de.png
 │   │   ├── features.preferences.impl.user.editprofile_EditUserProfileView_Day_1_de.png
 │   │   ├── features.preferences.impl.user.editprofile_EditUserProfileView_Day_2_de.png
 │   │   ├── features.preferences.impl.user.editprofile_EditUserProfileView_Day_3_de.png
+│   │   ├── features.preferences.impl.userstatus_UserStatusView_Day_5_de.png
+│   │   ├── features.preferences.impl.userstatus_UserStatusView_Day_6_de.png
 │   │   ├── features.rageshake.api.crash_CrashDetectionView_Day_0_de.png
 │   │   ├── features.rageshake.api.detection_RageshakeDialogContent_Day_0_de.png
 │   │   ├── features.rageshake.api.preferences_RageshakePreferencesView_Day_0_de.png
@@ -13776,6 +14105,8 @@
 │   │   ├── libraries.designsystem.theme.components.previews_TimePickerVerticalDark_DateTime_pickers_de.png
 │   │   ├── libraries.designsystem.theme.components.previews_TimePickerVerticalLight_DateTime_pickers_de.png
 │   │   ├── libraries.designsystem.theme.components_SearchBarActiveWithNoResults_Search_views_de.png
+│   │   ├── libraries.emoji.impl.picker_EmojiPickerView_Day_0_de.png
+│   │   ├── libraries.emoji.impl.picker_EmojiPickerView_Day_1_de.png
 │   │   ├── libraries.matrix.ui.components_AvatarActionBottomSheet_Day_0_de.png
 │   │   ├── libraries.matrix.ui.components_CheckableUnresolvedUserRow_de.png
 │   │   ├── libraries.matrix.ui.components_CreateDmConfirmationBottomSheet_Day_0_de.png
@@ -13803,6 +14134,7 @@
 │   │   ├── libraries.mediaviewer.impl.details_MediaDetailsBottomSheet_Day_1_de.png
 │   │   ├── libraries.mediaviewer.impl.details_MediaDetailsBottomSheet_Day_2_de.png
 │   │   ├── libraries.mediaviewer.impl.details_MediaDetailsBottomSheet_Day_3_de.png
+│   │   ├── libraries.mediaviewer.impl.details_MediaDetailsBottomSheet_Day_4_de.png
 │   │   ├── libraries.mediaviewer.impl.gallery_MediaGalleryView_Day_0_de.png
 │   │   ├── libraries.mediaviewer.impl.gallery_MediaGalleryView_Day_10_de.png
 │   │   ├── libraries.mediaviewer.impl.gallery_MediaGalleryView_Day_11_de.png
@@ -13816,15 +14148,22 @@
 │   │   ├── libraries.mediaviewer.impl.gallery_MediaGalleryView_Day_7_de.png
 │   │   ├── libraries.mediaviewer.impl.gallery_MediaGalleryView_Day_8_de.png
 │   │   ├── libraries.mediaviewer.impl.gallery_MediaGalleryView_Day_9_de.png
+│   │   ├── libraries.mediaviewer.impl.local.file_MediaFileView_Day_0_de.png
+│   │   ├── libraries.mediaviewer.impl.local.file_MediaFileView_Day_1_de.png
+│   │   ├── libraries.mediaviewer.impl.local.file_MediaFileView_Day_2_de.png
 │   │   ├── libraries.mediaviewer.impl.local.pdf_PdfPagesErrorView_Day_0_de.png
 │   │   ├── libraries.mediaviewer.impl.viewer_MediaViewerViewLandscape_11_de.png
 │   │   ├── libraries.mediaviewer.impl.viewer_MediaViewerViewLandscape_12_de.png
 │   │   ├── libraries.mediaviewer.impl.viewer_MediaViewerViewLandscape_14_de.png
 │   │   ├── libraries.mediaviewer.impl.viewer_MediaViewerViewLandscape_2_de.png
+│   │   ├── libraries.mediaviewer.impl.viewer_MediaViewerViewLandscape_6_de.png
+│   │   ├── libraries.mediaviewer.impl.viewer_MediaViewerViewLandscape_7_de.png
 │   │   ├── libraries.mediaviewer.impl.viewer_MediaViewerView_11_de.png
 │   │   ├── libraries.mediaviewer.impl.viewer_MediaViewerView_12_de.png
 │   │   ├── libraries.mediaviewer.impl.viewer_MediaViewerView_14_de.png
 │   │   ├── libraries.mediaviewer.impl.viewer_MediaViewerView_2_de.png
+│   │   ├── libraries.mediaviewer.impl.viewer_MediaViewerView_6_de.png
+│   │   ├── libraries.mediaviewer.impl.viewer_MediaViewerView_7_de.png
 │   │   ├── libraries.permissions.api_PermissionsView_Day_0_de.png
 │   │   ├── libraries.permissions.api_PermissionsView_Day_1_de.png
 │   │   ├── libraries.permissions.api_PermissionsView_Day_2_de.png
@@ -13835,6 +14174,7 @@
 │   │   ├── libraries.roomselect.impl_RoomSelectView_Day_3_de.png
 │   │   ├── libraries.roomselect.impl_RoomSelectView_Day_4_de.png
 │   │   ├── libraries.roomselect.impl_RoomSelectView_Day_5_de.png
+│   │   ├── libraries.roomselect.impl_RoomSelectView_Day_6_de.png
 │   │   ├── libraries.textcomposer_CaptionWarningBottomSheet_Day_0_de.png
 │   │   ├── libraries.textcomposer_ComposerModeView_Day_0_de.png
 │   │   ├── libraries.textcomposer_MarkdownTextComposerEdit_Day_0_de.png
@@ -15606,7 +15946,6 @@
 │   │                                   ├── KonsistConfigTest.kt
 │   │                                   ├── KonsistContentTest.kt
 │   │                                   ├── KonsistDiTest.kt
-│   │                                   ├── KonsistFieldTest.kt
 │   │                                   ├── KonsistFlowTest.kt
 │   │                                   ├── KonsistImmutableTest.kt
 │   │                                   ├── KonsistImportTest.kt
@@ -15630,6 +15969,7 @@
 │   │                                   ├── EnsureCalledOnce.kt
 │   │                                   ├── EnsureNeverCalled.kt
 │   │                                   ├── EventsRecorder.kt
+│   │                                   ├── ExpectedResult.kt
 │   │                                   ├── InstrumentationStringProvider.kt
 │   │                                   ├── LongTask.kt
 │   │                                   ├── MutablePresenter.kt
@@ -15651,8 +15991,11 @@
 │   │                                   │   ├── Error.kt
 │   │                                   │   ├── LambdaRecorder.kt
 │   │                                   │   └── ParameterMatcher.kt
-│   │                                   └── node
-│   │                                       └── TestParentNode.kt
+│   │                                   ├── node
+│   │                                   │   └── TestParentNode.kt
+│   │                                   └── robolectric
+│   │                                       ├── RobolectricTest.kt
+│   │                                       └── RobolectricTestParameter.kt
 │   └── uitests
 │       ├── .gitignore
 │       ├── build.gradle.kts
@@ -15667,6 +16010,7 @@
 │               │   ├── translations
 │               │   │   └── TranslationsScreenshotTest.kt
 │               │   └── ui
+│               │       ├── LayoutLibErrorFilterStatement.kt
 │               │       ├── PreviewA11yTest.kt
 │               │       ├── PreviewShard1Test.kt
 │               │       ├── PreviewShard2Test.kt
@@ -15689,10 +16033,14 @@
 │                       ├── appnav.loggedin_LoggedInView_Day_1_en.png
 │                       ├── appnav.loggedin_LoggedInView_Day_2_en.png
 │                       ├── appnav.loggedin_LoggedInView_Day_3_en.png
+│                       ├── appnav.loggedin_LoggedInView_Day_4_en.png
+│                       ├── appnav.loggedin_LoggedInView_Day_5_en.png
 │                       ├── appnav.loggedin_LoggedInView_Night_0_en.png
 │                       ├── appnav.loggedin_LoggedInView_Night_1_en.png
 │                       ├── appnav.loggedin_LoggedInView_Night_2_en.png
 │                       ├── appnav.loggedin_LoggedInView_Night_3_en.png
+│                       ├── appnav.loggedin_LoggedInView_Night_4_en.png
+│                       ├── appnav.loggedin_LoggedInView_Night_5_en.png
 │                       ├── appnav.loggedin_SyncStateView_Day_0_en.png
 │                       ├── appnav.loggedin_SyncStateView_Night_0_en.png
 │                       ├── appnav.room.joined_LoadingRoomNodeView_Day_0_en.png
@@ -15797,6 +16145,8 @@
 │                       ├── features.home.impl.components_HomeTopBarSpaces_Night_0_en.png
 │                       ├── features.home.impl.components_HomeTopBarWithIndicator_Day_0_en.png
 │                       ├── features.home.impl.components_HomeTopBarWithIndicator_Night_0_en.png
+│                       ├── features.home.impl.components_HomeTopBarWithStatus_Day_0_en.png
+│                       ├── features.home.impl.components_HomeTopBarWithStatus_Night_0_en.png
 │                       ├── features.home.impl.components_HomeTopBar_Day_0_en.png
 │                       ├── features.home.impl.components_HomeTopBar_Night_0_en.png
 │                       ├── features.home.impl.components_NewNotificationSoundBanner_Day_0_en.png
@@ -16202,7 +16552,6 @@
 │                       ├── features.location.impl.show_ShowLocationView_Day_5_en.png
 │                       ├── features.location.impl.show_ShowLocationView_Day_6_en.png
 │                       ├── features.location.impl.show_ShowLocationView_Day_7_en.png
-│                       ├── features.location.impl.show_ShowLocationView_Day_8_en.png
 │                       ├── features.location.impl.show_ShowLocationView_Night_0_en.png
 │                       ├── features.location.impl.show_ShowLocationView_Night_1_en.png
 │                       ├── features.location.impl.show_ShowLocationView_Night_2_en.png
@@ -16211,7 +16560,6 @@
 │                       ├── features.location.impl.show_ShowLocationView_Night_5_en.png
 │                       ├── features.location.impl.show_ShowLocationView_Night_6_en.png
 │                       ├── features.location.impl.show_ShowLocationView_Night_7_en.png
-│                       ├── features.location.impl.show_ShowLocationView_Night_8_en.png
 │                       ├── features.lockscreen.impl.components_PinEntryTextField_Day_0_en.png
 │                       ├── features.lockscreen.impl.components_PinEntryTextField_Night_0_en.png
 │                       ├── features.lockscreen.impl.settings_LockScreenSettingsView_Day_0_en.png
@@ -16234,7 +16582,10 @@
 │                       ├── features.lockscreen.impl.setup.pin_SetupPinView_Night_4_en.png
 │                       ├── features.lockscreen.impl.unlock.keypad_PinKeypad_Day_0_en.png
 │                       ├── features.lockscreen.impl.unlock.keypad_PinKeypad_Night_0_en.png
+│                       ├── features.lockscreen.impl.unlock_PinUnlockViewCompact_0_en.png
+│                       ├── features.lockscreen.impl.unlock_PinUnlockViewCompact_1_en.png
 │                       ├── features.lockscreen.impl.unlock_PinUnlockViewInApp_Day_0_en.png
+│                       ├── features.lockscreen.impl.unlock_PinUnlockViewInApp_Day_10_en.png
 │                       ├── features.lockscreen.impl.unlock_PinUnlockViewInApp_Day_1_en.png
 │                       ├── features.lockscreen.impl.unlock_PinUnlockViewInApp_Day_2_en.png
 │                       ├── features.lockscreen.impl.unlock_PinUnlockViewInApp_Day_3_en.png
@@ -16245,6 +16596,7 @@
 │                       ├── features.lockscreen.impl.unlock_PinUnlockViewInApp_Day_8_en.png
 │                       ├── features.lockscreen.impl.unlock_PinUnlockViewInApp_Day_9_en.png
 │                       ├── features.lockscreen.impl.unlock_PinUnlockViewInApp_Night_0_en.png
+│                       ├── features.lockscreen.impl.unlock_PinUnlockViewInApp_Night_10_en.png
 │                       ├── features.lockscreen.impl.unlock_PinUnlockViewInApp_Night_1_en.png
 │                       ├── features.lockscreen.impl.unlock_PinUnlockViewInApp_Night_2_en.png
 │                       ├── features.lockscreen.impl.unlock_PinUnlockViewInApp_Night_3_en.png
@@ -16255,6 +16607,7 @@
 │                       ├── features.lockscreen.impl.unlock_PinUnlockViewInApp_Night_8_en.png
 │                       ├── features.lockscreen.impl.unlock_PinUnlockViewInApp_Night_9_en.png
 │                       ├── features.lockscreen.impl.unlock_PinUnlockView_Day_0_en.png
+│                       ├── features.lockscreen.impl.unlock_PinUnlockView_Day_10_en.png
 │                       ├── features.lockscreen.impl.unlock_PinUnlockView_Day_1_en.png
 │                       ├── features.lockscreen.impl.unlock_PinUnlockView_Day_2_en.png
 │                       ├── features.lockscreen.impl.unlock_PinUnlockView_Day_3_en.png
@@ -16265,6 +16618,7 @@
 │                       ├── features.lockscreen.impl.unlock_PinUnlockView_Day_8_en.png
 │                       ├── features.lockscreen.impl.unlock_PinUnlockView_Day_9_en.png
 │                       ├── features.lockscreen.impl.unlock_PinUnlockView_Night_0_en.png
+│                       ├── features.lockscreen.impl.unlock_PinUnlockView_Night_10_en.png
 │                       ├── features.lockscreen.impl.unlock_PinUnlockView_Night_1_en.png
 │                       ├── features.lockscreen.impl.unlock_PinUnlockView_Night_2_en.png
 │                       ├── features.lockscreen.impl.unlock_PinUnlockView_Night_3_en.png
@@ -16290,12 +16644,14 @@
 │                       ├── features.login.impl.changeserver_ChangeServerView_Day_3_en.png
 │                       ├── features.login.impl.changeserver_ChangeServerView_Day_4_en.png
 │                       ├── features.login.impl.changeserver_ChangeServerView_Day_5_en.png
+│                       ├── features.login.impl.changeserver_ChangeServerView_Day_6_en.png
 │                       ├── features.login.impl.changeserver_ChangeServerView_Night_0_en.png
 │                       ├── features.login.impl.changeserver_ChangeServerView_Night_1_en.png
 │                       ├── features.login.impl.changeserver_ChangeServerView_Night_2_en.png
 │                       ├── features.login.impl.changeserver_ChangeServerView_Night_3_en.png
 │                       ├── features.login.impl.changeserver_ChangeServerView_Night_4_en.png
 │                       ├── features.login.impl.changeserver_ChangeServerView_Night_5_en.png
+│                       ├── features.login.impl.changeserver_ChangeServerView_Night_6_en.png
 │                       ├── features.login.impl.dialogs_SlidingSyncNotSupportedDialog_Day_0_en.png
 │                       ├── features.login.impl.dialogs_SlidingSyncNotSupportedDialog_Night_0_en.png
 │                       ├── features.login.impl.login_LoginModeView_Day_0_en.png
@@ -16484,6 +16840,7 @@
 │                       ├── features.messages.impl.attachments.preview.imageeditor_AttachmentImageEditorView_5_en.png
 │                       ├── features.messages.impl.attachments.preview.imageeditor_AttachmentImageEditorView_6_en.png
 │                       ├── features.messages.impl.attachments.preview.imageeditor_AttachmentImageEditorView_7_en.png
+│                       ├── features.messages.impl.attachments.preview_AttachmentsPreviewGalleryView_en.png
 │                       ├── features.messages.impl.attachments.preview_AttachmentsPreviewView_0_en.png
 │                       ├── features.messages.impl.attachments.preview_AttachmentsPreviewView_10_en.png
 │                       ├── features.messages.impl.attachments.preview_AttachmentsPreviewView_1_en.png
@@ -16521,8 +16878,8 @@
 │                       ├── features.messages.impl.link_LinkView_Night_1_en.png
 │                       ├── features.messages.impl.messagecomposer.suggestions_SuggestionsPickerView_Day_0_en.png
 │                       ├── features.messages.impl.messagecomposer.suggestions_SuggestionsPickerView_Night_0_en.png
-│                       ├── features.messages.impl.messagecomposer_AttachmentSourcePickerMenu_Day_0_en.png
-│                       ├── features.messages.impl.messagecomposer_AttachmentSourcePickerMenu_Night_0_en.png
+│                       ├── features.messages.impl.messagecomposer_AttachmentsBottomSheet_Day_0_en.png
+│                       ├── features.messages.impl.messagecomposer_AttachmentsBottomSheet_Night_0_en.png
 │                       ├── features.messages.impl.messagecomposer_DisabledComposerView_Day_0_en.png
 │                       ├── features.messages.impl.messagecomposer_DisabledComposerView_Night_0_en.png
 │                       ├── features.messages.impl.messagecomposer_MessageComposerViewVoice_Day_0_en.png
@@ -16575,32 +16932,20 @@
 │                       ├── features.messages.impl.threads.list_ThreadListItemRow_Night_0_en.png
 │                       ├── features.messages.impl.threads.list_ThreadsListView_Day_0_en.png
 │                       ├── features.messages.impl.threads.list_ThreadsListView_Night_0_en.png
-│                       ├── features.messages.impl.timeline.components.customreaction.picker_EmojiPicker_Day_0_en.png
-│                       ├── features.messages.impl.timeline.components.customreaction.picker_EmojiPicker_Day_1_en.png
-│                       ├── features.messages.impl.timeline.components.customreaction.picker_EmojiPicker_Day_2_en.png
-│                       ├── features.messages.impl.timeline.components.customreaction.picker_EmojiPicker_Day_3_en.png
-│                       ├── features.messages.impl.timeline.components.customreaction.picker_EmojiPicker_Night_0_en.png
-│                       ├── features.messages.impl.timeline.components.customreaction.picker_EmojiPicker_Night_1_en.png
-│                       ├── features.messages.impl.timeline.components.customreaction.picker_EmojiPicker_Night_2_en.png
-│                       ├── features.messages.impl.timeline.components.customreaction.picker_EmojiPicker_Night_3_en.png
-│                       ├── features.messages.impl.timeline.components.customreaction_EmojiItem_Day_0_en.png
-│                       ├── features.messages.impl.timeline.components.customreaction_EmojiItem_Night_0_en.png
 │                       ├── features.messages.impl.timeline.components.event_ATimelineItemEventRow_Day_0_en.png
 │                       ├── features.messages.impl.timeline.components.event_ATimelineItemEventRow_Night_0_en.png
 │                       ├── features.messages.impl.timeline.components.event_ProgressButton_Day_0_en.png
 │                       ├── features.messages.impl.timeline.components.event_ProgressButton_Night_0_en.png
-│                       ├── features.messages.impl.timeline.components.event_TimelineImageWithCaptionRow_Day_0_en.png
-│                       ├── features.messages.impl.timeline.components.event_TimelineImageWithCaptionRow_Night_0_en.png
+│                       ├── features.messages.impl.timeline.components.event_TimelineItemAttachmentsListView_Day_0_en.png
+│                       ├── features.messages.impl.timeline.components.event_TimelineItemAttachmentsListView_Day_1_en.png
+│                       ├── features.messages.impl.timeline.components.event_TimelineItemAttachmentsListView_Night_0_en.png
+│                       ├── features.messages.impl.timeline.components.event_TimelineItemAttachmentsListView_Night_1_en.png
 │                       ├── features.messages.impl.timeline.components.event_TimelineItemAudioView_Day_0_en.png
 │                       ├── features.messages.impl.timeline.components.event_TimelineItemAudioView_Day_1_en.png
 │                       ├── features.messages.impl.timeline.components.event_TimelineItemAudioView_Day_2_en.png
-│                       ├── features.messages.impl.timeline.components.event_TimelineItemAudioView_Day_3_en.png
-│                       ├── features.messages.impl.timeline.components.event_TimelineItemAudioView_Day_4_en.png
 │                       ├── features.messages.impl.timeline.components.event_TimelineItemAudioView_Night_0_en.png
 │                       ├── features.messages.impl.timeline.components.event_TimelineItemAudioView_Night_1_en.png
 │                       ├── features.messages.impl.timeline.components.event_TimelineItemAudioView_Night_2_en.png
-│                       ├── features.messages.impl.timeline.components.event_TimelineItemAudioView_Night_3_en.png
-│                       ├── features.messages.impl.timeline.components.event_TimelineItemAudioView_Night_4_en.png
 │                       ├── features.messages.impl.timeline.components.event_TimelineItemEncryptedView_Day_0_en.png
 │                       ├── features.messages.impl.timeline.components.event_TimelineItemEncryptedView_Day_1_en.png
 │                       ├── features.messages.impl.timeline.components.event_TimelineItemEncryptedView_Day_2_en.png
@@ -16622,13 +16967,29 @@
 │                       ├── features.messages.impl.timeline.components.event_TimelineItemFileView_Day_0_en.png
 │                       ├── features.messages.impl.timeline.components.event_TimelineItemFileView_Day_1_en.png
 │                       ├── features.messages.impl.timeline.components.event_TimelineItemFileView_Day_2_en.png
-│                       ├── features.messages.impl.timeline.components.event_TimelineItemFileView_Day_3_en.png
-│                       ├── features.messages.impl.timeline.components.event_TimelineItemFileView_Day_4_en.png
 │                       ├── features.messages.impl.timeline.components.event_TimelineItemFileView_Night_0_en.png
 │                       ├── features.messages.impl.timeline.components.event_TimelineItemFileView_Night_1_en.png
 │                       ├── features.messages.impl.timeline.components.event_TimelineItemFileView_Night_2_en.png
-│                       ├── features.messages.impl.timeline.components.event_TimelineItemFileView_Night_3_en.png
-│                       ├── features.messages.impl.timeline.components.event_TimelineItemFileView_Night_4_en.png
+│                       ├── features.messages.impl.timeline.components.event_TimelineItemGalleryView_Day_0_en.png
+│                       ├── features.messages.impl.timeline.components.event_TimelineItemGalleryView_Day_1_en.png
+│                       ├── features.messages.impl.timeline.components.event_TimelineItemGalleryView_Day_2_en.png
+│                       ├── features.messages.impl.timeline.components.event_TimelineItemGalleryView_Day_3_en.png
+│                       ├── features.messages.impl.timeline.components.event_TimelineItemGalleryView_Day_4_en.png
+│                       ├── features.messages.impl.timeline.components.event_TimelineItemGalleryView_Day_5_en.png
+│                       ├── features.messages.impl.timeline.components.event_TimelineItemGalleryView_Day_6_en.png
+│                       ├── features.messages.impl.timeline.components.event_TimelineItemGalleryView_Day_7_en.png
+│                       ├── features.messages.impl.timeline.components.event_TimelineItemGalleryView_Day_8_en.png
+│                       ├── features.messages.impl.timeline.components.event_TimelineItemGalleryView_Day_9_en.png
+│                       ├── features.messages.impl.timeline.components.event_TimelineItemGalleryView_Night_0_en.png
+│                       ├── features.messages.impl.timeline.components.event_TimelineItemGalleryView_Night_1_en.png
+│                       ├── features.messages.impl.timeline.components.event_TimelineItemGalleryView_Night_2_en.png
+│                       ├── features.messages.impl.timeline.components.event_TimelineItemGalleryView_Night_3_en.png
+│                       ├── features.messages.impl.timeline.components.event_TimelineItemGalleryView_Night_4_en.png
+│                       ├── features.messages.impl.timeline.components.event_TimelineItemGalleryView_Night_5_en.png
+│                       ├── features.messages.impl.timeline.components.event_TimelineItemGalleryView_Night_6_en.png
+│                       ├── features.messages.impl.timeline.components.event_TimelineItemGalleryView_Night_7_en.png
+│                       ├── features.messages.impl.timeline.components.event_TimelineItemGalleryView_Night_8_en.png
+│                       ├── features.messages.impl.timeline.components.event_TimelineItemGalleryView_Night_9_en.png
 │                       ├── features.messages.impl.timeline.components.event_TimelineItemImageViewHideMediaContent_Day_0_en.png
 │                       ├── features.messages.impl.timeline.components.event_TimelineItemImageViewHideMediaContent_Night_0_en.png
 │                       ├── features.messages.impl.timeline.components.event_TimelineItemImageView_Day_0_en.png
@@ -16695,10 +17056,12 @@
 │                       ├── features.messages.impl.timeline.components.event_TimelineItemVideoView_Day_1_en.png
 │                       ├── features.messages.impl.timeline.components.event_TimelineItemVideoView_Day_2_en.png
 │                       ├── features.messages.impl.timeline.components.event_TimelineItemVideoView_Day_3_en.png
+│                       ├── features.messages.impl.timeline.components.event_TimelineItemVideoView_Day_4_en.png
 │                       ├── features.messages.impl.timeline.components.event_TimelineItemVideoView_Night_0_en.png
 │                       ├── features.messages.impl.timeline.components.event_TimelineItemVideoView_Night_1_en.png
 │                       ├── features.messages.impl.timeline.components.event_TimelineItemVideoView_Night_2_en.png
 │                       ├── features.messages.impl.timeline.components.event_TimelineItemVideoView_Night_3_en.png
+│                       ├── features.messages.impl.timeline.components.event_TimelineItemVideoView_Night_4_en.png
 │                       ├── features.messages.impl.timeline.components.event_TimelineItemVoiceViewUnified_Day_0_en.png
 │                       ├── features.messages.impl.timeline.components.event_TimelineItemVoiceViewUnified_Night_0_en.png
 │                       ├── features.messages.impl.timeline.components.event_TimelineItemVoiceView_Day_0_en.png
@@ -16731,8 +17094,6 @@
 │                       ├── features.messages.impl.timeline.components.event_TimelineItemVoiceView_Night_7_en.png
 │                       ├── features.messages.impl.timeline.components.event_TimelineItemVoiceView_Night_8_en.png
 │                       ├── features.messages.impl.timeline.components.event_TimelineItemVoiceView_Night_9_en.png
-│                       ├── features.messages.impl.timeline.components.event_TimelineVideoWithCaptionRow_Day_0_en.png
-│                       ├── features.messages.impl.timeline.components.event_TimelineVideoWithCaptionRow_Night_0_en.png
 │                       ├── features.messages.impl.timeline.components.group_GroupHeaderView_Day_0_en.png
 │                       ├── features.messages.impl.timeline.components.group_GroupHeaderView_Night_0_en.png
 │                       ├── features.messages.impl.timeline.components.reactionsummary_ReactionSummaryViewContent_Day_0_en.png
@@ -16775,6 +17136,9 @@
 │                       ├── features.messages.impl.timeline.components.virtual_TimelineItemRoomBeginningView_Night_0_en.png
 │                       ├── features.messages.impl.timeline.components.virtual_TimelineLoadingMoreIndicator_Day_0_en.png
 │                       ├── features.messages.impl.timeline.components.virtual_TimelineLoadingMoreIndicator_Night_0_en.png
+│                       ├── features.messages.impl.timeline.components_ActiveCallTimelineItemView_Day_0_en.png
+│                       ├── features.messages.impl.timeline.components_ActiveCallTimelineItemView_Night_0_en.png
+│                       ├── features.messages.impl.timeline.components_ActiveCallTimelineItemView_en.png
 │                       ├── features.messages.impl.timeline.components_CallMenuItem_Day_0_en.png
 │                       ├── features.messages.impl.timeline.components_CallMenuItem_Day_1_en.png
 │                       ├── features.messages.impl.timeline.components_CallMenuItem_Day_2_en.png
@@ -16847,6 +17211,10 @@
 │                       ├── features.messages.impl.timeline.components_TimelineEventTimestampView_Night_5_en.png
 │                       ├── features.messages.impl.timeline.components_TimelineEventTimestampView_Night_6_en.png
 │                       ├── features.messages.impl.timeline.components_TimelineEventTimestampView_Night_7_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemAttachmentsViewScanningContentFailed_Day_0_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemAttachmentsViewScanningContentFailed_Night_0_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemAudioViewScanningContent_Day_0_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemAudioViewScanningContent_Night_0_en.png
 │                       ├── features.messages.impl.timeline.components_TimelineItemCallNotifyView_Day_0_en.png
 │                       ├── features.messages.impl.timeline.components_TimelineItemCallNotifyView_Night_0_en.png
 │                       ├── features.messages.impl.timeline.components_TimelineItemEventRowDisambiguated_Day_0_en.png
@@ -16854,6 +17222,7 @@
 │                       ├── features.messages.impl.timeline.components_TimelineItemEventRowForDirectRoom_Day_0_en.png
 │                       ├── features.messages.impl.timeline.components_TimelineItemEventRowForDirectRoom_Night_0_en.png
 │                       ├── features.messages.impl.timeline.components_TimelineItemEventRowLongSenderName_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemEventRowRtlContent_en.png
 │                       ├── features.messages.impl.timeline.components_TimelineItemEventRowShield_Day_0_en.png
 │                       ├── features.messages.impl.timeline.components_TimelineItemEventRowShield_Night_0_en.png
 │                       ├── features.messages.impl.timeline.components_TimelineItemEventRowTimestamp_Day_0_en.png
@@ -16874,6 +17243,24 @@
 │                       ├── features.messages.impl.timeline.components_TimelineItemEventRowTimestamp_Night_7_en.png
 │                       ├── features.messages.impl.timeline.components_TimelineItemEventRowUtd_Day_0_en.png
 │                       ├── features.messages.impl.timeline.components_TimelineItemEventRowUtd_Night_0_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemEventRowWithGallery_Day_0_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemEventRowWithGallery_Day_1_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemEventRowWithGallery_Day_2_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemEventRowWithGallery_Day_3_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemEventRowWithGallery_Day_4_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemEventRowWithGallery_Day_5_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemEventRowWithGallery_Day_6_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemEventRowWithGallery_Day_7_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemEventRowWithGallery_Day_8_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemEventRowWithGallery_Night_0_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemEventRowWithGallery_Night_1_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemEventRowWithGallery_Night_2_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemEventRowWithGallery_Night_3_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemEventRowWithGallery_Night_4_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemEventRowWithGallery_Night_5_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemEventRowWithGallery_Night_6_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemEventRowWithGallery_Night_7_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemEventRowWithGallery_Night_8_en.png
 │                       ├── features.messages.impl.timeline.components_TimelineItemEventRowWithManyReactions_Day_0_en.png
 │                       ├── features.messages.impl.timeline.components_TimelineItemEventRowWithManyReactions_Night_0_en.png
 │                       ├── features.messages.impl.timeline.components_TimelineItemEventRowWithRR_Day_0_en.png
@@ -16919,10 +17306,16 @@
 │                       ├── features.messages.impl.timeline.components_TimelineItemEventRow_Day_0_en.png
 │                       ├── features.messages.impl.timeline.components_TimelineItemEventRow_Night_0_en.png
 │                       ├── features.messages.impl.timeline.components_TimelineItemEventTimestampBelow_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemFileViewScanningContent_Day_0_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemFileViewScanningContent_Night_0_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemGalleryViewScanningContentFailed_Day_0_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemGalleryViewScanningContentFailed_Night_0_en.png
 │                       ├── features.messages.impl.timeline.components_TimelineItemGroupedEventsRowContentCollapse_Day_0_en.png
 │                       ├── features.messages.impl.timeline.components_TimelineItemGroupedEventsRowContentCollapse_Night_0_en.png
 │                       ├── features.messages.impl.timeline.components_TimelineItemGroupedEventsRowContentExpanded_Day_0_en.png
 │                       ├── features.messages.impl.timeline.components_TimelineItemGroupedEventsRowContentExpanded_Night_0_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemImageViewScanningContent_Day_0_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemImageViewScanningContent_Night_0_en.png
 │                       ├── features.messages.impl.timeline.components_TimelineItemReactionsLayout_Day_0_en.png
 │                       ├── features.messages.impl.timeline.components_TimelineItemReactionsLayout_Night_0_en.png
 │                       ├── features.messages.impl.timeline.components_TimelineItemReactionsViewFew_Day_0_en.png
@@ -16933,8 +17326,24 @@
 │                       ├── features.messages.impl.timeline.components_TimelineItemReactionsViewOutgoing_Night_0_en.png
 │                       ├── features.messages.impl.timeline.components_TimelineItemReactionsView_Day_0_en.png
 │                       ├── features.messages.impl.timeline.components_TimelineItemReactionsView_Night_0_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemRedactedMessagesGroup_Day_0_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemRedactedMessagesGroup_Night_0_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemScanningContentFailed_Day_0_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemScanningContentFailed_Night_0_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemScanningContentNotFound_Day_0_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemScanningContentNotFound_Night_0_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemScanningContentWithInvalidReplies_Day_0_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemScanningContentWithInvalidReplies_Night_0_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemScanningContentWithRepliesFailed_Day_0_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemScanningContentWithRepliesFailed_Night_0_en.png
 │                       ├── features.messages.impl.timeline.components_TimelineItemStateEventRow_Day_0_en.png
 │                       ├── features.messages.impl.timeline.components_TimelineItemStateEventRow_Night_0_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemStickerViewScanningContent_Day_0_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemStickerViewScanningContent_Night_0_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemVideoViewScanningContent_Day_0_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemVideoViewScanningContent_Night_0_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemVoiceViewScanningContent_Day_0_en.png
+│                       ├── features.messages.impl.timeline.components_TimelineItemVoiceViewScanningContent_Night_0_en.png
 │                       ├── features.messages.impl.timeline.debug_EventDebugInfoView_Day_0_en.png
 │                       ├── features.messages.impl.timeline.debug_EventDebugInfoView_Night_0_en.png
 │                       ├── features.messages.impl.timeline.focus_FocusRequestStateView_Day_0_en.png
@@ -16955,6 +17364,10 @@
 │                       ├── features.messages.impl.timeline.protection_ProtectedView_Night_3_en.png
 │                       ├── features.messages.impl.timeline_TimelineViewMessageShield_Day_0_en.png
 │                       ├── features.messages.impl.timeline_TimelineViewMessageShield_Night_0_en.png
+│                       ├── features.messages.impl.timeline_TimelineViewWithReadMarkerBothIndicators_Day_0_en.png
+│                       ├── features.messages.impl.timeline_TimelineViewWithReadMarkerBothIndicators_Night_0_en.png
+│                       ├── features.messages.impl.timeline_TimelineViewWithReadMarkerJumpToUnreadIndicatorOnly_Day_0_en.png
+│                       ├── features.messages.impl.timeline_TimelineViewWithReadMarkerJumpToUnreadIndicatorOnly_Night_0_en.png
 │                       ├── features.messages.impl.timeline_TimelineView_Day_0_en.png
 │                       ├── features.messages.impl.timeline_TimelineView_Day_10_en.png
 │                       ├── features.messages.impl.timeline_TimelineView_Day_11_en.png
@@ -17221,12 +17634,14 @@
 │                       ├── features.preferences.impl.root_PreferencesRootViewDark_3_en.png
 │                       ├── features.preferences.impl.root_PreferencesRootViewDark_4_en.png
 │                       ├── features.preferences.impl.root_PreferencesRootViewDark_5_en.png
+│                       ├── features.preferences.impl.root_PreferencesRootViewDark_6_en.png
 │                       ├── features.preferences.impl.root_PreferencesRootViewLight_0_en.png
 │                       ├── features.preferences.impl.root_PreferencesRootViewLight_1_en.png
 │                       ├── features.preferences.impl.root_PreferencesRootViewLight_2_en.png
 │                       ├── features.preferences.impl.root_PreferencesRootViewLight_3_en.png
 │                       ├── features.preferences.impl.root_PreferencesRootViewLight_4_en.png
 │                       ├── features.preferences.impl.root_PreferencesRootViewLight_5_en.png
+│                       ├── features.preferences.impl.root_PreferencesRootViewLight_6_en.png
 │                       ├── features.preferences.impl.user.editprofile_EditUserProfileView_Day_0_en.png
 │                       ├── features.preferences.impl.user.editprofile_EditUserProfileView_Day_1_en.png
 │                       ├── features.preferences.impl.user.editprofile_EditUserProfileView_Day_2_en.png
@@ -17237,8 +17652,24 @@
 │                       ├── features.preferences.impl.user.editprofile_EditUserProfileView_Night_3_en.png
 │                       ├── features.preferences.impl.user_UserPreferences_Day_0_en.png
 │                       ├── features.preferences.impl.user_UserPreferences_Day_1_en.png
+│                       ├── features.preferences.impl.user_UserPreferences_Day_2_en.png
 │                       ├── features.preferences.impl.user_UserPreferences_Night_0_en.png
 │                       ├── features.preferences.impl.user_UserPreferences_Night_1_en.png
+│                       ├── features.preferences.impl.user_UserPreferences_Night_2_en.png
+│                       ├── features.preferences.impl.userstatus_UserStatusView_Day_0_en.png
+│                       ├── features.preferences.impl.userstatus_UserStatusView_Day_1_en.png
+│                       ├── features.preferences.impl.userstatus_UserStatusView_Day_2_en.png
+│                       ├── features.preferences.impl.userstatus_UserStatusView_Day_3_en.png
+│                       ├── features.preferences.impl.userstatus_UserStatusView_Day_4_en.png
+│                       ├── features.preferences.impl.userstatus_UserStatusView_Day_5_en.png
+│                       ├── features.preferences.impl.userstatus_UserStatusView_Day_6_en.png
+│                       ├── features.preferences.impl.userstatus_UserStatusView_Night_0_en.png
+│                       ├── features.preferences.impl.userstatus_UserStatusView_Night_1_en.png
+│                       ├── features.preferences.impl.userstatus_UserStatusView_Night_2_en.png
+│                       ├── features.preferences.impl.userstatus_UserStatusView_Night_3_en.png
+│                       ├── features.preferences.impl.userstatus_UserStatusView_Night_4_en.png
+│                       ├── features.preferences.impl.userstatus_UserStatusView_Night_5_en.png
+│                       ├── features.preferences.impl.userstatus_UserStatusView_Night_6_en.png
 │                       ├── features.rageshake.api.crash_CrashDetectionView_Day_0_en.png
 │                       ├── features.rageshake.api.crash_CrashDetectionView_Night_0_en.png
 │                       ├── features.rageshake.api.detection_RageshakeDialogContent_Day_0_en.png
@@ -17940,12 +18371,8 @@
 │                       ├── libraries.designsystem.atomic.molecules_IconTitlePlaceholdersRowMolecule_Night_0_en.png
 │                       ├── libraries.designsystem.atomic.molecules_IconTitleSubtitleMolecule_Day_0_en.png
 │                       ├── libraries.designsystem.atomic.molecules_IconTitleSubtitleMolecule_Night_0_en.png
-│                       ├── libraries.designsystem.atomic.molecules_InfoListItemMolecule_Day_0_en.png
-│                       ├── libraries.designsystem.atomic.molecules_InfoListItemMolecule_Night_0_en.png
 │                       ├── libraries.designsystem.atomic.molecules_MembersCountMolecule_Day_0_en.png
 │                       ├── libraries.designsystem.atomic.molecules_MembersCountMolecule_Night_0_en.png
-│                       ├── libraries.designsystem.atomic.organisms_InfoListOrganism_Day_0_en.png
-│                       ├── libraries.designsystem.atomic.organisms_InfoListOrganism_Night_0_en.png
 │                       ├── libraries.designsystem.atomic.pages_FlowStepPage_Day_0_en.png
 │                       ├── libraries.designsystem.atomic.pages_FlowStepPage_Night_0_en.png
 │                       ├── libraries.designsystem.atomic.pages_HeaderFooterPageScrollable_Day_0_en.png
@@ -18088,6 +18515,10 @@
 │                       ├── libraries.designsystem.components.preferences_PreferenceRow_Preferences_en.png
 │                       ├── libraries.designsystem.components.preferences_PreferenceSlide_Preferences_en.png
 │                       ├── libraries.designsystem.components.preferences_PreferenceSwitch_Preferences_en.png
+│                       ├── libraries.designsystem.components.visuallist_VisualListItem_Day_0_en.png
+│                       ├── libraries.designsystem.components.visuallist_VisualListItem_Night_0_en.png
+│                       ├── libraries.designsystem.components.visuallist_VisualList_Day_0_en.png
+│                       ├── libraries.designsystem.components.visuallist_VisualList_Night_0_en.png
 │                       ├── libraries.designsystem.components_Announcement_Day_0_en.png
 │                       ├── libraries.designsystem.components_Announcement_Night_0_en.png
 │                       ├── libraries.designsystem.components_Badge_Day_0_en.png
@@ -18255,6 +18686,20 @@
 │                       ├── libraries.designsystem.theme.components_TopAppBar_App_Bars_en.png
 │                       ├── libraries.designsystem.theme_ColorAliases_Day_0_en.png
 │                       ├── libraries.designsystem.theme_ColorAliases_Night_0_en.png
+│                       ├── libraries.emoji.impl.picker_EmojiItemWithPopup_Day_0_en.png
+│                       ├── libraries.emoji.impl.picker_EmojiItemWithPopup_Night_0_en.png
+│                       ├── libraries.emoji.impl.picker_EmojiItem_Day_0_en.png
+│                       ├── libraries.emoji.impl.picker_EmojiItem_Night_0_en.png
+│                       ├── libraries.emoji.impl.picker_EmojiPickerView_Day_0_en.png
+│                       ├── libraries.emoji.impl.picker_EmojiPickerView_Day_1_en.png
+│                       ├── libraries.emoji.impl.picker_EmojiPickerView_Day_2_en.png
+│                       ├── libraries.emoji.impl.picker_EmojiPickerView_Day_3_en.png
+│                       ├── libraries.emoji.impl.picker_EmojiPickerView_Night_0_en.png
+│                       ├── libraries.emoji.impl.picker_EmojiPickerView_Night_1_en.png
+│                       ├── libraries.emoji.impl.picker_EmojiPickerView_Night_2_en.png
+│                       ├── libraries.emoji.impl.picker_EmojiPickerView_Night_3_en.png
+│                       ├── libraries.emoji.impl.picker_SkinTonePicker_Day_0_en.png
+│                       ├── libraries.emoji.impl.picker_SkinTonePicker_Night_0_en.png
 │                       ├── libraries.featureflag.ui_FeatureListView_Day_0_en.png
 │                       ├── libraries.featureflag.ui_FeatureListView_Night_0_en.png
 │                       ├── libraries.matrix.ui.components_AttachmentThumbnail_Day_0_en.png
@@ -18297,12 +18742,16 @@
 │                       ├── libraries.matrix.ui.components_InviteSenderView_Night_0_en.png
 │                       ├── libraries.matrix.ui.components_MatrixUserHeader_Day_0_en.png
 │                       ├── libraries.matrix.ui.components_MatrixUserHeader_Day_1_en.png
+│                       ├── libraries.matrix.ui.components_MatrixUserHeader_Day_2_en.png
 │                       ├── libraries.matrix.ui.components_MatrixUserHeader_Night_0_en.png
 │                       ├── libraries.matrix.ui.components_MatrixUserHeader_Night_1_en.png
+│                       ├── libraries.matrix.ui.components_MatrixUserHeader_Night_2_en.png
 │                       ├── libraries.matrix.ui.components_MatrixUserRow_Day_0_en.png
 │                       ├── libraries.matrix.ui.components_MatrixUserRow_Day_1_en.png
+│                       ├── libraries.matrix.ui.components_MatrixUserRow_Day_2_en.png
 │                       ├── libraries.matrix.ui.components_MatrixUserRow_Night_0_en.png
 │                       ├── libraries.matrix.ui.components_MatrixUserRow_Night_1_en.png
+│                       ├── libraries.matrix.ui.components_MatrixUserRow_Night_2_en.png
 │                       ├── libraries.matrix.ui.components_OrganizationHeader_Day_0_en.png
 │                       ├── libraries.matrix.ui.components_OrganizationHeader_Night_0_en.png
 │                       ├── libraries.matrix.ui.components_SelectedRoomRtl_Day_0_en.png
@@ -18358,6 +18807,10 @@
 │                       ├── libraries.matrix.ui.components_SpaceRoomItemView_Night_7_en.png
 │                       ├── libraries.matrix.ui.components_SpaceRoomItemView_Night_8_en.png
 │                       ├── libraries.matrix.ui.components_UnresolvedUserRow_en.png
+│                       ├── libraries.matrix.ui.media.contentvalidation_InvalidContentView_Day_0_en.png
+│                       ├── libraries.matrix.ui.media.contentvalidation_InvalidContentView_Night_0_en.png
+│                       ├── libraries.matrix.ui.media.contentvalidation_NotFoundContentView_Day_0_en.png
+│                       ├── libraries.matrix.ui.media.contentvalidation_NotFoundContentView_Night_0_en.png
 │                       ├── libraries.matrix.ui.media_InitialsAvatarBitmapGenerator_Day_0_en.png
 │                       ├── libraries.matrix.ui.media_InitialsAvatarBitmapGenerator_Night_0_en.png
 │                       ├── libraries.matrix.ui.messages.reply_InReplyToView_Day_0_en.png
@@ -18384,6 +18837,10 @@
 │                       ├── libraries.matrix.ui.messages.reply_InReplyToView_Night_7_en.png
 │                       ├── libraries.matrix.ui.messages.reply_InReplyToView_Night_8_en.png
 │                       ├── libraries.matrix.ui.messages.reply_InReplyToView_Night_9_en.png
+│                       ├── libraries.matrix.ui.messages.reply_ReplyToInvalidContent_Day_0_en.png
+│                       ├── libraries.matrix.ui.messages.reply_ReplyToInvalidContent_Night_0_en.png
+│                       ├── libraries.matrix.ui.messages.reply_ReplyToNotFoundContent_Day_0_en.png
+│                       ├── libraries.matrix.ui.messages.reply_ReplyToNotFoundContent_Night_0_en.png
 │                       ├── libraries.matrix.ui.messages.sender_SenderName_Day_0_en.png
 │                       ├── libraries.matrix.ui.messages.sender_SenderName_Day_1_en.png
 │                       ├── libraries.matrix.ui.messages.sender_SenderName_Day_2_en.png
@@ -18529,6 +18986,8 @@
 │                       ├── libraries.mediaviewer.impl.viewer_MediaViewerViewLandscape_20_en.png
 │                       ├── libraries.mediaviewer.impl.viewer_MediaViewerViewLandscape_21_en.png
 │                       ├── libraries.mediaviewer.impl.viewer_MediaViewerViewLandscape_22_en.png
+│                       ├── libraries.mediaviewer.impl.viewer_MediaViewerViewLandscape_23_en.png
+│                       ├── libraries.mediaviewer.impl.viewer_MediaViewerViewLandscape_24_en.png
 │                       ├── libraries.mediaviewer.impl.viewer_MediaViewerViewLandscape_2_en.png
 │                       ├── libraries.mediaviewer.impl.viewer_MediaViewerViewLandscape_3_en.png
 │                       ├── libraries.mediaviewer.impl.viewer_MediaViewerViewLandscape_4_en.png
@@ -18552,6 +19011,8 @@
 │                       ├── libraries.mediaviewer.impl.viewer_MediaViewerView_20_en.png
 │                       ├── libraries.mediaviewer.impl.viewer_MediaViewerView_21_en.png
 │                       ├── libraries.mediaviewer.impl.viewer_MediaViewerView_22_en.png
+│                       ├── libraries.mediaviewer.impl.viewer_MediaViewerView_23_en.png
+│                       ├── libraries.mediaviewer.impl.viewer_MediaViewerView_24_en.png
 │                       ├── libraries.mediaviewer.impl.viewer_MediaViewerView_2_en.png
 │                       ├── libraries.mediaviewer.impl.viewer_MediaViewerView_3_en.png
 │                       ├── libraries.mediaviewer.impl.viewer_MediaViewerView_4_en.png
@@ -18575,12 +19036,14 @@
 │                       ├── libraries.roomselect.impl_RoomSelectView_Day_3_en.png
 │                       ├── libraries.roomselect.impl_RoomSelectView_Day_4_en.png
 │                       ├── libraries.roomselect.impl_RoomSelectView_Day_5_en.png
+│                       ├── libraries.roomselect.impl_RoomSelectView_Day_6_en.png
 │                       ├── libraries.roomselect.impl_RoomSelectView_Night_0_en.png
 │                       ├── libraries.roomselect.impl_RoomSelectView_Night_1_en.png
 │                       ├── libraries.roomselect.impl_RoomSelectView_Night_2_en.png
 │                       ├── libraries.roomselect.impl_RoomSelectView_Night_3_en.png
 │                       ├── libraries.roomselect.impl_RoomSelectView_Night_4_en.png
 │                       ├── libraries.roomselect.impl_RoomSelectView_Night_5_en.png
+│                       ├── libraries.roomselect.impl_RoomSelectView_Night_6_en.png
 │                       ├── libraries.textcomposer.components.markdown_MarkdownTextInput_Day_0_en.png
 │                       ├── libraries.textcomposer.components.markdown_MarkdownTextInput_Night_0_en.png
 │                       ├── libraries.textcomposer.components_FormattingOption_Day_0_en.png
@@ -18773,6 +19236,11 @@
     │   ├── formatXmlResourcesFile.py
     │   ├── generateLocalazyConfig.py
     │   └── importSupportedLocalesFromLocalazy.py
+    ├── manifest
+    │   ├── aaptDump.sh
+    │   └── gplay
+    │       └── release
+    │           └── aaptDump.txt
     ├── quality
     │   └── check.sh
     ├── release
@@ -18812,4 +19280,4 @@
         ├── generateWorldScreenshots.py
         ├── invalid_screenshot.png
         └── util.py
-6643 directories, 12563 files
+6749 directories, 12931 files
