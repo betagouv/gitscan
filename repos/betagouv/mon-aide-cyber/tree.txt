@@ -31,7 +31,6 @@
 │   ├── src
 │   │   ├── adaptateurs
 │   │   │   ├── Adaptateur.ts
-│   │   │   ├── AdaptateurAPIMetabase.ts
 │   │   │   ├── AdaptateurAseptisation.ts
 │   │   │   ├── AdaptateurAseptisationMAC.ts
 │   │   │   ├── AdaptateurCmsCrispMAC.ts
@@ -51,7 +50,6 @@
 │   │   │   ├── AdaptateurEnvoiMail.ts
 │   │   │   ├── AdaptateurGeographie.ts
 │   │   │   ├── AdaptateurGestionnaireErreurs.ts
-│   │   │   ├── AdaptateurMetabase.ts
 │   │   │   ├── AdaptateurSignatureRequete.ts
 │   │   │   ├── AdaptateurSignatureRequeteHTTP.ts
 │   │   │   ├── AdaptateurTranscripteur.ts
@@ -153,7 +151,6 @@
 │   │   │   ├── gestionnaires
 │   │   │   │   └── erreurs.ts
 │   │   │   ├── hateoas
-│   │   │   │   ├── afficherStatistiques.ts
 │   │   │   │   ├── aidant.ts
 │   │   │   │   ├── annuaireAidants.ts
 │   │   │   │   ├── articles.ts
@@ -190,8 +187,6 @@
 │   │   │   ├── routesAPIDiagnostic.ts
 │   │   │   ├── routesAPIMonEspace.ts
 │   │   │   ├── routesAPIUtilisateur.ts
-│   │   │   ├── statistiques
-│   │   │   │   └── routesAPIStatistiques.ts
 │   │   │   ├── tableau-de-bord
 │   │   │   │   └── routesAPITableauDeBord.ts
 │   │   │   ├── validateurs
@@ -311,14 +306,12 @@
 │   │   │   │   ├── AdaptateurMessagerieMattermost.ts
 │   │   │   │   ├── AdaptateurMessagerieMemoire.ts
 │   │   │   │   ├── AdaptateurMesures.ts
-│   │   │   │   ├── AdaptateurMetabaseMemoire.ts
 │   │   │   │   ├── AdaptateurReferentielMAC.ts
 │   │   │   │   ├── AdaptateurRepertoireDeContactsBrevo.ts
 │   │   │   │   ├── AdaptateurRepertoireDeContactsMemoire.ts
 │   │   │   │   ├── ConsignateurErreursMemoire.ts
 │   │   │   │   ├── ConsignateurErreursSentry.ts
 │   │   │   │   ├── adaptateurDeRequeteHTTP.ts
-│   │   │   │   ├── adaptateurMetabase.ts
 │   │   │   │   ├── adaptateurPThrottle.ts
 │   │   │   │   ├── adaptateurRechercheEntreprise.ts
 │   │   │   │   ├── adaptateurServiceChiffrement.ts
@@ -707,7 +700,6 @@
 │   │   └── statistiques
 │   │       ├── aidant
 │   │       │   └── StastistiquesAidant.ts
-│   │       ├── statistiques.ts
 │   │       └── utilisateur-inscrit
 │   │           └── StatistiquesUtilisateurInscrit.ts
 │   ├── test
@@ -810,8 +802,6 @@
 │   │   │   ├── routesAPIAuthentification.spec.ts
 │   │   │   ├── routesAPIDiagnostic.spec.ts
 │   │   │   ├── routesAPIUtilisateur.spec.ts
-│   │   │   ├── statistiques
-│   │   │   │   └── routesStatistiques.spec.ts
 │   │   │   ├── tableau-de-bord
 │   │   │   │   └── routesAPITableauDeBord.spec.ts
 │   │   │   ├── testeurIntegration.ts
@@ -1017,10 +1007,6 @@
 │   │       │   ├── guillemets.svg
 │   │       │   ├── icone-aide.svg
 │   │       │   ├── icone-menu-lateral.svg
-│   │       │   ├── icone-statistique-nombre-aidants.svg
-│   │       │   ├── icone-statistiques-mesures-appliquees.svg
-│   │       │   ├── icone-statistiques-nombre-diagnostics.svg
-│   │       │   ├── icone-statistiques-satisfaction-diagnostic.svg
 │   │       │   ├── icone-telecharger.svg
 │   │       │   ├── interet-general.svg
 │   │       │   ├── mail-send-line.svg
@@ -1053,7 +1039,6 @@
 │   │       ├── illustration-qui-est-concerne.svg
 │   │       ├── illustration-securite-des-acces.svg
 │   │       ├── illustration-securite-des-postes.svg
-│   │       ├── illustration-statistiques.svg
 │   │       ├── illustration-suivi.svg
 │   │       ├── illustration-tornade.svg
 │   │       ├── logo_acyma.svg
@@ -1205,6 +1190,7 @@
 │   │   │   │       ├── ComposantDiagnostics.tsx
 │   │   │   │       └── TableauDeBord.tsx
 │   │   │   ├── formulaires
+│   │   │   │   ├── AutorisationPixelDeSuivi.tsx
 │   │   │   │   └── ChampValidationCGUs.tsx
 │   │   │   ├── intercepteurs
 │   │   │   │   └── ComposantIntercepteur.tsx
@@ -1398,7 +1384,7 @@
 │   │   │   │   ├── EcranValidationSignatureCGU.tsx
 │   │   │   │   ├── FormulaireValidationSignatureCGU.tsx
 │   │   │   │   ├── ecran-validation-cgu.scss
-│   │   │   │   └── reducteurValidationCGU.tsx
+│   │   │   │   └── reducteurValidationConditionsMAC.tsx
 │   │   │   └── vitrine
 │   │   │       ├── ecran-annuaire
 │   │   │       │   ├── AidantAnnuaire.ts
@@ -1420,11 +1406,6 @@
 │   │   │       ├── ecran-securite
 │   │   │       │   ├── EcranSecurite.tsx
 │   │   │       │   └── ecran-securite.scss
-│   │   │       ├── ecran-statistiques
-│   │   │       │   ├── EcranStatistiques.tsx
-│   │   │       │   ├── composants
-│   │   │       │   │   └── HeroStatistiques.tsx
-│   │   │       │   └── ecran-statistiques.scss
 │   │   │       ├── mot-de-passe-oublie
 │   │   │       │   ├── EcranMotDePasseOublie.tsx
 │   │   │       │   ├── ecran-mot-de-passe-oublie.scss
@@ -1546,7 +1527,7 @@
 │   │   │   │       ├── reducteurInformationsAidant.spec.ts
 │   │   │   │       └── reducteurMonEspaceDemandeDevenirAidant.spec.ts
 │   │   │   ├── validation-cgu
-│   │   │   │   └── reducteurValidationCGU.spec.tsx
+│   │   │   │   └── reducteurValidationConditionsMAC.spec.tsx
 │   │   │   └── vitrine
 │   │   │       ├── ecran-annuaire
 │   │   │       │   └── composants
@@ -1573,5 +1554,6 @@
 │   └── vitest.config.ts
 ├── package.json
 ├── pnpm-lock.yaml
-└── pnpm-workspace.yaml
-355 directories, 1221 files
+├── pnpm-workspace.yaml
+└── renovate.json
+351 directories, 1207 files
