@@ -1,24 +1,20 @@
-## Changelog : aides-jeunes (30 derniers jours, au 12 août 2026)
+## Changelog : aides-jeunes (30 derniers jours, au 26 août 2026)
 
 ### Résumé
-Cette période a été marquée par un important travail de maintenance des données pour garantir la fiabilité des informations proposées. De nombreux liens obsolètes ou dispositifs devenus privés ont été nettoyés. Parallèlement, des correctifs importants ont été apportés au moteur de calcul (Openfisca) pour améliorer la précision des simulations et la stabilité du service en production.
+Ce mois-ci, l'activité a été principalement concentrée sur la mise à jour et la fiabilisation des informations relatives aux aides. De nombreux dispositifs ont vu leurs conditions ou montants actualisés, et une campagne importante de correction de liens et de gestion de la confidentialité a été menée pour garantir la qualité de l'expérience utilisateur. Parallèlement, le moteur de calcul a bénéficié d'optimisations techniques pour gagner en précision et en stabilité.
 
 ### Évolutions fonctionnelles
-- Amélioration de l'identification des dispositifs spécifiques pour Paris Cité [#5160](https://github.com/betagouv/aides-jeunes/issues/5160).
-- Correction de l'affichage des résultats pour les usagers déclarant un taux d'incapacité [#5212](https://github.com/betagouv/aides-jeunes/issues/5212).
+- **Mise à jour des informations d'aides** : Actualisation des montants, des conditions d'éligibilité et des descriptions pour divers dispositifs (Permis de conduire/Pass'Permis [#5227, #5243, #5247], stages à l'étranger [#5226, #5246], aides régionales [#5257, #5248], BAFA/BAFD [#5236, #5190, #5189, #5188, #5187, #5185, #5186], et autres aides comme le Ticket Sport [#5240] ou la rémunération des stagiaires [#5245]).
+- **Fiabilisation de l'accès aux informations** : Correction massive de liens rompus et passage de plusieurs dispositifs en mode "privé" pour assurer la cohérence des données (ex: Pass ZOU [#5249], Prêt d'études PER [#5216], Pass pass [#5215], et diverses bourses communales [#5217, #5218, #5219, #5220, #5194]).
+- **Nouvelle fonctionnalité** : Mise en place d'un système d'identification spécifique pour les dispositifs de Paris Cité [#5160].
 
 ### Évolutions techniques
-- **Moteur Openfisca** :
-  - Optimisation du calcul des coûts réels sur les tracés [#5211](https://github.com/betagouv/aides-jeunes/issues/5211).
-  - Amélioration de la fiabilité des chemins d'erreur et limitation de la durée des calculs [#5205](https://github.com/betagouv/aides-jeunes/issues/5205).
-  - Résolution d'incidents de production (erreurs 504) suite à une mise à jour du moteur [#5204](https://github.com/betagouv/aides-jeunes/issues/5204), [#5207](https://github.com/betagouv/aides-jeunes/issues/5207).
-- **Sécurité & Infrastructure** :
-  - Correction de l'authentification par jeton pour les appels échouant en iframe [#5210](https://github.com/betagouv/aides-jeunes/issues/5210).
-- **Outils & Tests** :
-  - Mise à jour des outils de test (Cypress) et de gestion des emails (Nodemailer, MJML) [#5148](https://github.com/betagouv/aides-jeunes/issues/5148), [#5146](https://github.com/betagouv/aides-jeunes/issues/5146).
+- **Optimisations du moteur Openfisca** : 
+    - Amélioration du rendu des résultats pour les usagers déclarant un taux d'incapacité [#5212].
+    - Précision du calcul des coûts réels sur les axes budgétaires [#5211].
+    - Fiabilisation des chemins d'erreur et limitation de la durée des calculs [#5205].
+- **Corrections de bugs** : Résolution d'un problème d'authentification par jeton lors d'appels échouant dans une iframe [#5210].
+- **Maintenance et stabilité** : Gestion et résolution d'incidents de production liés aux mises à jour du moteur de calcul [#5204, #5207].
 
 ### Autres changements
-- **Maintenance de la veille** :
-  - Nettoyage massif des aides dont les liens étaient cassés ou dont l'accès est devenu privé (notamment les aides au BAFA, les aides au permis de conduire, les prêts étudiants et divers dispositifs locaux).
-  - Mise à jour des montants et conditions pour les stages à l'étranger [#5246](https://github.com/betagouv/aides-jeunes/issues/5246).
-  - Correction des liens pour la bourse du secteur sanitaire et social en région Grand Est [#5173](https://github.com/betagouv/aides-jeunes/issues/5173).
+- **Configuration** : Mise à jour de la liste des réviseurs dans le système d'assignation automatique [#5254].
