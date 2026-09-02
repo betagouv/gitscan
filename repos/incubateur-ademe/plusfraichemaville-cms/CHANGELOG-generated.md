@@ -1,13 +1,19 @@
-## Changelog : plusfraichemaville-cms (30 derniers jours, au 25 mai 2026)
+## Changelog : plusfraichemaville-cms (30 derniers jours, au 01/09/2026)
 
 ### Résumé
-Ce changelog présente l'ajout d'un nouveau type de bouton pour les webinaires, améliorant ainsi la flexibilité de la présentation des événements. Des efforts ont également été déployés pour améliorer la robustesse du processus de construction et de déploiement sur la plateforme Scalingo.
+Ce mois a été marqué par une mise à jour majeure de l'infrastructure technique du CMS, avec la migration vers Strapi 5 pour garantir la pérennité et la performance de l'outil. Côté contenu, les fiches solutions ont été simplifiées par le retrait des informations relatives aux aides régionales.
 
 ### Évolutions fonctionnelles
-- Ajout d'un bouton secondaire pour les webinaires, offrant une option de style supplémentaire pour les appels à l'action liés aux événements. [#29](https://github.com/incubateur-ademe/plusfraichemaville-cms/pull/29)
+- Simplification des fiches solutions par la suppression des sections concernant les aides régionales.
 
 ### Évolutions techniques
-- Amélioration du processus de construction pour résoudre des problèmes de build sur la plateforme Scalingo. Plusieurs tentatives ont été faites pour stabiliser ce processus.
+- **Migration majeure** : Passage à Strapi 5 ([#30](https://github.com/incubateur-ademe/plusfraichemaville-cms/pull/30)) pour assurer la compatibilité avec les dernières versions du framework.
+- **Gestion des paquets** : Migration de l'outil de gestion des dépendances de `npm` vers `pnpm` pour des installations plus rapides et efficaces.
+- **Édition de contenu** : Passage à la version "Community Edition" du plugin CKEditor.
+- **Base de données & Stockage** : 
+    - Amélioration de la gestion du schéma de la base de données.
+    - Correction d'un avertissement de dépréciation concernant les identifiants du fournisseur AWS S3.
+- **Nettoyage et compatibilité** : Suppression du plugin de versionnement de contenu, devenu incompatible avec la nouvelle version de Strapi.
 
 ### Autres changements
-- Fusion des branches `main` et `prod` pour synchroniser les environnements.
+- Mise à jour de la documentation (README) pour intégrer les nouvelles instructions d'utilisation avec `pnpm`.

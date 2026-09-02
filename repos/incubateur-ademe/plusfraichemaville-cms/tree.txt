@@ -5,6 +5,7 @@
 │   └── workflows
 │       └── deploy-prod.yml
 ├── .gitignore
+├── .npmrc
 ├── .strapi
 │   └── client
 │       ├── app.js
@@ -22,8 +23,9 @@
 │   └── migrations
 │       └── .gitkeep
 ├── favicon.png
-├── package-lock.json
 ├── package.json
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
 ├── public
 │   ├── robots.txt
 │   └── uploads
@@ -31,6 +33,7 @@
 ├── src
 │   ├── admin
 │   │   ├── app.example.tsx
+│   │   ├── app.tsx
 │   │   ├── tsconfig.json
 │   │   └── webpack.config.example.js
 │   ├── api
@@ -173,7 +176,6 @@
 │   │   │   ├── etape-mise-en-oeuvre.json
 │   │   │   └── utilite-methode.json
 │   │   ├── fiche-solution
-│   │   │   ├── aide-regionale.json
 │   │   │   ├── etape-diagnostic.json
 │   │   │   ├── etape-entretien.json
 │   │   │   ├── etape-mise-en-oeuvre.json
@@ -185,41 +187,8 @@
 │   ├── extensions
 │   │   └── .gitkeep
 │   ├── index.ts
-│   ├── middlewares
-│   │   └── sentry.ts
-│   └── plugins
-│       └── strapi-plugin-ckeditor
-│           ├── .editorconfig
-│           ├── LICENSE.md
-│           ├── README.md
-│           ├── admin
-│           │   └── src
-│           │       ├── CKEditorIcon.js
-│           │       ├── components
-│           │       │   ├── CKEditorInput
-│           │       │   │   ├── Configurator.js
-│           │       │   │   ├── GlobalStyling.js
-│           │       │   │   ├── index.js
-│           │       │   │   ├── plugins
-│           │       │   │   │   └── StrapiMediaLib.js
-│           │       │   │   ├── styles
-│           │       │   │   │   ├── common.js
-│           │       │   │   │   ├── dark.js
-│           │       │   │   │   └── light.js
-│           │       │   │   └── utils
-│           │       │   │       └── utils.js
-│           │       │   └── MediaLib
-│           │       │       └── index.js
-│           │       ├── index.js
-│           │       └── translations
-│           │           └── en.json
-│           ├── package.json
-│           ├── server
-│           │   ├── index.js
-│           │   └── register.js
-│           ├── strapi-admin.js
-│           ├── strapi-server.js
-│           └── yarn.lock
+│   └── middlewares
+│       └── sentry.ts
 ├── tsconfig.json
 └── types
     ├── api
@@ -252,7 +221,6 @@
     │   │   ├── EtapeMiseEnOeuvre.ts
     │   │   └── UtiliteMethode.ts
     │   ├── fiche-solution
-    │   │   ├── AideRegionale.ts
     │   │   ├── EtapeDiagnostic.ts
     │   │   ├── EtapeEntretien.ts
     │   │   ├── EtapeMiseEnOeuvre.ts
@@ -264,4 +232,4 @@
     └── generated
         ├── components.d.ts
         └── contentTypes.d.ts
-119 directories, 147 files
+107 directories, 127 files
