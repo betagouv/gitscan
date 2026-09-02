@@ -37,6 +37,7 @@
 │   ├── 0008-oidc-proxy-pour-tests-cypress.md
 │   ├── 0009-navigating-in-trips.md
 │   ├── 0010-migration-eslint-vers-oxlint.md
+│   ├── 0011-enregistrement-automatique-des-formulaires.md
 │   ├── adrs.iml
 │   └── images
 │       └── pno_types_architecture.png
@@ -1642,6 +1643,7 @@
 │   │       │                   │   │   │   ├── VesselControllerITests.kt
 │   │       │                   │   │   │   └── VesselGroupControllerITests.kt
 │   │       │                   │   │   ├── input
+│   │       │                   │   │   │   ├── ThreatHierarchyDataInputUTests.kt
 │   │       │                   │   │   │   └── UpdateReportingDataInputUTests.kt
 │   │       │                   │   │   ├── outputs
 │   │       │                   │   │   │   ├── DisplayedReportingDataOutputUTests.kt
@@ -1877,6 +1879,7 @@
 │   │   │   │   │   ├── action_list.spec.ts
 │   │   │   │   │   ├── air_control.spec.ts
 │   │   │   │   │   ├── air_surveillance.spec.ts
+│   │   │   │   │   ├── auto_save_races.spec.ts
 │   │   │   │   │   ├── land_control.spec.ts
 │   │   │   │   │   ├── main_form.spec.ts
 │   │   │   │   │   ├── observation.spec.ts
@@ -2533,11 +2536,13 @@
 │   ├── puppeteer
 │   │   ├── README.md
 │   │   ├── e2e
-│   │   │   ├── missions.spec.ts
+│   │   │   ├── mission_form_synchronization.spec.ts
+│   │   │   ├── mission_side_window.spec.ts
 │   │   │   └── utils.ts
 │   │   ├── global.d.ts
 │   │   ├── puppeteer_environment.ts
 │   │   ├── setup.ts
+│   │   ├── setupAfterEnv.ts
 │   │   ├── teardown.ts
 │   │   ├── tsconfig.json
 │   │   └── typings
@@ -2568,7 +2573,7 @@
 │   │   │   ├── foreignFmc.ts
 │   │   │   ├── gear.ts
 │   │   │   ├── gearCode.ts
-│   │   │   ├── geoserver.tsx
+│   │   │   ├── geoserver.ts
 │   │   │   ├── geoserverApi.ts
 │   │   │   ├── legacyControlUnit.ts
 │   │   │   ├── port.ts
@@ -2749,7 +2754,9 @@
 │   │   │   │   │   ├── AlertSpecificationSchema.ts
 │   │   │   │   │   ├── EditedAlertSpecificationSchema.ts
 │   │   │   │   │   ├── PendingAlertValueSchema.ts
-│   │   │   │   │   └── SilencedAlertSchema.ts
+│   │   │   │   │   ├── SilencedAlertSchema.ts
+│   │   │   │   │   └── __tests__
+│   │   │   │   │       └── PendingAlertValueSchema.test.ts
 │   │   │   │   ├── types.ts
 │   │   │   │   ├── useCases
 │   │   │   │   │   ├── addSilencedAlert.ts
@@ -2976,7 +2983,7 @@
 │   │   │   │   ├── layers
 │   │   │   │   │   ├── InterestPointLayer.tsx
 │   │   │   │   │   ├── constants.ts
-│   │   │   │   │   ├── interestPoint.style.tsx
+│   │   │   │   │   ├── interestPoint.style.ts
 │   │   │   │   │   └── interestPointLine.js
 │   │   │   │   ├── slice.ts
 │   │   │   │   ├── types.ts
@@ -3264,9 +3271,9 @@
 │   │   │   │   │   │   │   │   ├── VesselField.tsx
 │   │   │   │   │   │   │   │   ├── VesselFleetSegmentsField.tsx
 │   │   │   │   │   │   │   │   ├── __tests__
-│   │   │   │   │   │   │   │   │   └── ControlQualityField.test.tsx
+│   │   │   │   │   │   │   │   │   ├── ControlQualityField.test.tsx
+│   │   │   │   │   │   │   │   │   └── utils.test.ts
 │   │   │   │   │   │   │   │   ├── constants.ts
-│   │   │   │   │   │   │   │   ├── styles.ts
 │   │   │   │   │   │   │   │   └── utils.ts
 │   │   │   │   │   │   │   └── utils.ts
 │   │   │   │   │   │   ├── ActionList
@@ -3275,7 +3282,8 @@
 │   │   │   │   │   │   │   ├── EnvActionCard.tsx
 │   │   │   │   │   │   │   ├── FishActionCard.tsx
 │   │   │   │   │   │   │   ├── __tests__
-│   │   │   │   │   │   │   │   └── formatDateLabel.test.ts
+│   │   │   │   │   │   │   │   ├── formatDateLabel.test.ts
+│   │   │   │   │   │   │   │   └── getDuplicatedMissionActionFormValues.test.ts
 │   │   │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   │   │   ├── styles.ts
 │   │   │   │   │   │   │   └── utils.tsx
@@ -3293,6 +3301,8 @@
 │   │   │   │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   │   │   │   └── utils.ts
 │   │   │   │   │   │   │   ├── FormikSyncMissionFields.tsx
+│   │   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   │   └── FormikSyncMissionFields.test.tsx
 │   │   │   │   │   │   │   ├── constants.tsx
 │   │   │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   │   │   └── schemas.ts
@@ -3310,6 +3320,7 @@
 │   │   │   │   │   │   │   ├── useIsMissionEnded.ts
 │   │   │   │   │   │   │   ├── useListenToAllMissionEventsUpdates.ts
 │   │   │   │   │   │   │   ├── useListenToMissionEventUpdatesById.ts
+│   │   │   │   │   │   │   ├── useMissionFormAutoSave.ts
 │   │   │   │   │   │   │   ├── useUpdateFreezedActionFormValues.ts
 │   │   │   │   │   │   │   └── useUpdateFreezedMainFormValues.ts
 │   │   │   │   │   │   ├── index.tsx
@@ -3324,7 +3335,6 @@
 │   │   │   │   │   │   │   ├── FieldsetGroupSeparator.tsx
 │   │   │   │   │   │   │   ├── FormBody.tsx
 │   │   │   │   │   │   │   ├── FormHead.ts
-│   │   │   │   │   │   │   ├── FormikIsValidEffect.tsx
 │   │   │   │   │   │   │   └── MissionStatusTag.tsx
 │   │   │   │   │   │   ├── slice.ts
 │   │   │   │   │   │   ├── sse.ts
@@ -3420,6 +3430,9 @@
 │   │   │   │   │   └── ThreatSchema.ts
 │   │   │   │   ├── types.ts
 │   │   │   │   ├── useCases
+│   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   ├── autoSaveMissionAction.test.ts
+│   │   │   │   │   │   └── saveMission.test.ts
 │   │   │   │   │   ├── addMission.ts
 │   │   │   │   │   ├── addOrEditControlCoordinates.ts
 │   │   │   │   │   ├── addOrEditMissionZone.ts
@@ -3867,6 +3880,10 @@
 │   │   │   │   │   ├── confirmSideWindowDraftCancellationAndProceed.ts
 │   │   │   │   │   └── openSideWindowPath.ts
 │   │   │   │   └── utils.ts
+│   │   │   ├── StartupNotification
+│   │   │   │   ├── components
+│   │   │   │   │   └── SurveyModal.tsx
+│   │   │   │   └── slice.ts
 │   │   │   ├── Station
 │   │   │   │   ├── components
 │   │   │   │   │   ├── HoveredStationOverlay.tsx
@@ -3889,6 +3906,8 @@
 │   │   │   │   ├── components
 │   │   │   │   │   ├── AISVesselCardOverlay
 │   │   │   │   │   │   ├── AISVesselCard.tsx
+│   │   │   │   │   │   ├── __tests__
+│   │   │   │   │   │   │   └── utils.test.ts
 │   │   │   │   │   │   ├── constants.ts
 │   │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   │   └── utils.ts
@@ -4192,8 +4211,8 @@
 │   │   │   │   ├── MapPropertyTrigger.tsx
 │   │   │   │   └── StyledModalHeader.tsx
 │   │   │   ├── commonStyles
-│   │   │   │   ├── Backoffice.style.tsx
-│   │   │   │   ├── Buttons.style.tsx
+│   │   │   │   ├── Backoffice.style.ts
+│   │   │   │   ├── Buttons.style.ts
 │   │   │   │   ├── Circle.style.ts
 │   │   │   │   ├── FishingPeriod.style.tsx
 │   │   │   │   ├── HiddenText.tsx
@@ -4206,8 +4225,7 @@
 │   │   │   │       ├── EditIcon.style.ts
 │   │   │   │       ├── HideIcon.style.ts
 │   │   │   │       ├── REGPaperIcon.style.ts
-│   │   │   │       ├── ShowIcon.style.ts
-│   │   │   │       └── VesselListSVG.tsx
+│   │   │   │       └── ShowIcon.style.ts
 │   │   │   └── icons
 │   │   │       ├── Attention_controles.svg
 │   │   │       ├── Avarie_*.svg  (5 files)
@@ -4389,6 +4407,7 @@
 │   │   │   │   ├── assertNotNullish.test.ts
 │   │   │   │   ├── capitalizeFirstLetter.test.ts
 │   │   │   │   ├── cleanInputString.test.ts
+│   │   │   │   ├── createLatestOnlySaver.test.ts
 │   │   │   │   ├── deleteListItems.test.ts
 │   │   │   │   ├── downloadAsCsv.test.TOFIX.ts
 │   │   │   │   ├── encodeUriObject.test.ts
@@ -4402,6 +4421,7 @@
 │   │   │   │   ├── isCypress.test.ts
 │   │   │   │   ├── isNumeric.test.ts
 │   │   │   │   ├── isObject.test.ts
+│   │   │   │   ├── isPuppeteer.test.ts
 │   │   │   │   ├── nullify.test.ts
 │   │   │   │   ├── parseResponseOrReturn.test.ts
 │   │   │   │   ├── pushToObjectAtIndex.ts
@@ -4416,6 +4436,7 @@
 │   │   │   ├── assertNotNullish.ts
 │   │   │   ├── capitalizeFirstLetter.ts
 │   │   │   ├── cleanInputString.ts
+│   │   │   ├── createLatestOnlySaver.ts
 │   │   │   ├── deleteListItems.ts
 │   │   │   ├── downloadAsCsv.ts
 │   │   │   ├── downloadFile.ts
@@ -4425,6 +4446,7 @@
 │   │   │   ├── getDefinedObject.ts
 │   │   │   ├── getDialogOverlayOffsetFromFeature.ts
 │   │   │   ├── getDialogWindowPositionFromFeature.ts
+│   │   │   ├── getEnvironmentBorderStyle.ts
 │   │   │   ├── getEnvironmentData.ts
 │   │   │   ├── getLocalstorageProperty.ts
 │   │   │   ├── getOptionsFromStrings.ts
@@ -4439,6 +4461,7 @@
 │   │   │   ├── isNotNullish.ts
 │   │   │   ├── isNumeric.ts
 │   │   │   ├── isObject.ts
+│   │   │   ├── isPuppeteer.ts
 │   │   │   ├── logInDev.ts
 │   │   │   ├── logSoftError.ts
 │   │   │   ├── mapToProp.ts
@@ -5349,6 +5372,7 @@
 │   │   │   ├── position_alert.py
 │   │   │   ├── position_alerts.py
 │   │   │   ├── recompute_controls_segments.py
+│   │   │   ├── recompute_mission_actions_facade.py
 │   │   │   ├── refresh_materialized_view.py
 │   │   │   ├── regulations.py
 │   │   │   ├── regulations_checkup.py
@@ -5509,6 +5533,7 @@
 │   │   │   │   ├── malfunctions_to_notify.sql
 │   │   │   │   ├── missing_deps.sql
 │   │   │   │   ├── missing_trip_numbers.sql
+│   │   │   │   ├── mission_actions_of_year.sql
 │   │   │   │   ├── mission_actions_to_email.sql
 │   │   │   │   ├── non_archived_reportings_of_type.sql
 │   │   │   │   ├── pending_alerts.sql
@@ -5631,15 +5656,19 @@
 │       │   │   └── prior_notifications
 │       │   │       ├── expected_email_body_1.html
 │       │   │       ├── expected_email_body_2.html
+│       │   │       ├── expected_email_body_2_no_previous_notification_date.html
 │       │   │       ├── expected_email_body_zero_1.html
 │       │   │       ├── expected_pno_1.html
 │       │   │       ├── expected_pno_1.pdf
 │       │   │       ├── expected_pno_2.html
 │       │   │       ├── expected_pno_2.pdf
+│       │   │       ├── expected_pno_2_no_previous_notification_date.html
+│       │   │       ├── expected_pno_2_no_previous_notification_date.pdf
 │       │   │       ├── expected_pno_zero_1.html
 │       │   │       ├── expected_pno_zero_1.pdf
 │       │   │       ├── expected_sms_1.txt
 │       │   │       ├── expected_sms_2.txt
+│       │   │       ├── expected_sms_2_no_previous_notification_date.txt
 │       │   │       └── expected_sms_zero_1.txt
 │       │   ├── external
 │       │   │   └── README.md
@@ -5894,6 +5923,7 @@
 │       │   ├── test_position_alert.py
 │       │   ├── test_position_alerts.py
 │       │   ├── test_recompute_controls_segments.py
+│       │   ├── test_recompute_mission_actions_facade.py
 │       │   ├── test_refresh_materialized_views.py
 │       │   ├── test_regulations.py
 │       │   ├── test_regulations_checkup.py
@@ -5941,4 +5971,4 @@
 ├── pull_request_template.md
 ├── settings.gradle.kts
 └── sonar-project.properties
-801 directories, 5456 files
+807 directories, 5480 files

@@ -1,38 +1,20 @@
-## Changelog : monitorfish (30 derniers jours, au 30 juillet 2026)
+## Changelog : monitorfish (30 derniers jours, au 01/09/2026)
 
 ### Résumé
-Cette période a été marquée par des améliorations significatives sur les formulaires de contrôle (M1 et M3), notamment en termes d'ergonomie et de gestion des champs facultatifs. Des corrections de bugs ont été apportées concernant l'affichage des groupes de navires, la gestion des alertes de position et la performance des requêtes AIS. De nouvelles fonctionnalités ont été implémentées, comme la duplication de signalements et l'ajout de la prise en compte des navires sous charte dans les groupes prioritaires.
+Ce mois-ci, les efforts se sont concentrés sur la fiabilisation de la saisie des rapports de contrôle, notamment grâce à une gestion plus fluide de l'auto-sauvegarde et la correction de divers bugs de formulaires. L'expérience utilisateur a également été enrichie par l'affichage des pavillons de navires et l'introduction de questionnaires destinés aux utilisateurs externes.
 
 ### Évolutions fonctionnelles
-- Possibilité de dupliquer un signalement (#5290).
-- Ajout de la prise en compte des navires sous charte dans les groupes prioritaires (#5289, #5270).
-- Correction du problème de troncature du calendrier de fin de mission (#5269).
-- Amélioration de l'affichage des groupes de navires et des signalements dans le contrôle report.
-- Correction de bugs concernant l'archivage automatique des alertes de position (#5322).
-- Correction de bugs sur les use-cases backend et assainissement du `ControllersExceptionHandler` (#5323).
-- Correction de plusieurs bugs concernant les missions, le rafraîchissement des préavis, les avaries et les couleurs des groupes de navires (#5320).
-- Correction du comportement du bouton "centrer sur la carte" dans la vue liste des signalements (#5128).
-- Correction d'un bug lié aux clics multiples pour saisir le poids des espèces dans le tableau (#5317).
-- Correction de l'affichage des groupes prioritaires pour les unités externes (#5314).
-- Ajout d'une case "cibles prioritaires" au formulaire de création et de modification d'un groupe (#5310).
-- Correction d'un crash dans le gestionnaire de survol des lignes d'espèces (#5271).
-- Amélioration du comportement du bouton "afficher sur la carte" pour les signalements (#5273).
-- Correction de bugs sur les formulaires M1 et M3 (e-ISR) : affichage des champs facultatifs, logique d'applicabilité, ajout des champs armateur (#5257, #5168, #5245).
-- Mise à jour de la REG UE pour les avaries VMS (#5241).
+- **Rapports de contrôle & Missions** : Amélioration de l'expérience de saisie avec une auto-sauvegarde plus fluide [#5368], correction de bugs de saisie (poids des espèces [#5362], coordonnées [#fb703aaa], doublons [#5368]) et gestion dynamique de l'affichage des champs (affichage du champ INN [#2203889e] et masquage des maillages [#5367]).
+- **Signalements & Profils** : Correction du formulaire de signalement lors du changement de type [#5356], ajout de la possibilité de dupliquer un signalement [#5369] et amélioration de l'affichage des profils de navires (types de segments et familles d'infractions) [#5330].
+- **Navigation & AIS** : Affichage du pavillon du navire sur les données AIS [#5410].
+- **Utilisateurs externes** : Introduction d'un système de questionnaire via une fenêtre contextuelle (pop-up) pour les utilisateurs externes [#5385, #5387].
+- **Préavis** : Correction de l'affichage des diffusions de préavis [#5081] et des notes de correction [#5371].
+- **Divers** : Désactivation de l'alerte de suspicion de sous-déclaration [#5382].
 
 ### Évolutions techniques
-- Optimisation de la requête des dernières positions AIS pour améliorer les performances (#5300).
-- Correction du scraper Legipeche pour gérer les pages non visitées (#5268).
-- Suppression de la dépendance `ktlint` et correction des violations restantes (#5261).
-- Remplacement des imports wildcard par des imports explicites.
-- Suppression de code obsolète et amélioration de la structure du code.
-- Refactoring du code pour améliorer la lisibilité et la maintenabilité.
-- Mise à jour de la librairie `postcss` dans le frontend (#5302).
+- **Backend & Données** : Recalcul des façades pour les contrôles passés et ajout des façades OM [#5359, #5363], correction des erreurs de timeout JDBC et d'encodage [#5326], et fiabilisation du flux `enrich_lobook_flow` [#5418].
+- **Frontend & Tests** : Optimisation de la fréquence des requêtes d'auto-sauvegarde pour réduire la charge serveur [#5368], nettoyage des effets React (timers et listeners) [#5365] et renforcement de la couverture de tests (E2E, Puppeteer, tests de fenêtres latérales) [#2954, #5368].
+- **Infrastructure** : Mise à jour de Docker-compose et ajout de clés pour les couches CARTO [#5384].
 
 ### Autres changements
-- Ajout de commentaires et documentation pour clarifier le code.
-- Amélioration des tests Cypress pour une meilleure couverture et fiabilité.
-- Mise à jour des descriptions des nouvelles fonctionnalités.
-- Corrections de linting et de style de code.
-- Ajout d'une section sur le box-sizing dans le fichier `CONTRIBUTING.md`.
-- Suppression de fichiers de configuration inutiles.
+- Mise à jour de l'adresse e-mail de contact [#5366].
