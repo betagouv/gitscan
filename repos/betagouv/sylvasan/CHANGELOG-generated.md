@@ -1,26 +1,36 @@
-## Changelog : sylvasan (30 derniers jours, au 07/08/2026)
+## Changelog : sylvasan (30 derniers jours, au 01 septembre 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se sont concentrées sur l'amélioration de la précision des données géographiques, l'enrichissement des exports de données et l'optimisation de l'expérience de saisie sur le terrain. L'interface a été affinée pour rendre les formulaires plus lisibles et les actions plus explicites pour les agents.
+Ce mois-ci, sylvasan a bénéficié d'améliorations significatives pour faciliter la saisie de données sur le terrain, notamment via une meilleure gestion des formulaires et des images. La cartographie est devenue plus lisible grâce au regroupement de points (clustering), et les capacités d'exportation de données ont été enrichies pour offrir plus de contexte aux utilisateurs.
 
 ### Évolutions fonctionnelles
-- **Exports de données** : Amélioration de la richesse des exports qui incluent désormais le titre de l'enquête, les suivis (*follow-ups*) et l'identifiant externe des répondants [#516](https://github.com/betagouv/sylvasan/pull/516).
-- **Cartographie et Géolocalisation** :
-    - Ajout d'indicateurs de précision GPS (cercle de précision et échelle) pour une meilleure fiabilité des relevés [#497](https://github.com/betagouv/sylvasan/pull/497).
-    - Amélioration de la carte avec l'ajout du clustering et de la visibilité des suivis sur l'observation [#515](https://github.com/betagouv/sylvasan/pull/515).
-    - Le bouton de géolocalisation est désormais disponible sur l'ensemble des cartes.
-- **Saisie et Formulaires** :
-    - Amélioration de la visibilité des champs obligatoires (ajustement des labels, des icônes et des styles) [#514](https://github.com/betagouv/sylvasan/pull/514).
-    - Optimisation de la gestion des images (affichage en plein écran et nouveau composant dédié sur le web).
-    - Clarification des libellés pour les actions de sauvegarde en brouillon et d'envoi d'enquête [#499](https://github.com/betagouv/sylvasan/pull/499), [#496](https://github.com/betagouv/sylvasan/pull/496).
-- **Gestion des données** :
-    - Ajout de filtres (notamment par organisation) et de la pagination pour la liste des enquêtes [#494](https://github.com/betagouv/sylvasan/pull/494).
-    - Mise en place de mécanismes de prévention pour éviter les doublons d'observations et dans les modales de sous-enquêtes [#517](https://github.com/betagouv/sylvasan/pull/517).
-- **Application Mobile** : Correction de l'ordre d'affichage des champs dans les formulaires mobiles [#500](https://github.com/betagouv/sylvasan/pull/500).
+- **Saisie et formulaires** : 
+    - Possibilité de réordonner les éléments au sein d'un champ de type liste (arrayfield) [#541](https://github.com/betagouv/sylvasan/pull/541).
+    - Amélioration de la visibilité des champs obligatoires (labels, icônes et espacements) [#514](https://github.com/betagouv/sylvasan/pull/514).
+    - Correction de l'affichage des résumés de formulaires contenant des images [#498](https://github.com/betagouv/sylvasan/pull/498).
+- **Cartographie** : 
+    - Ajout du clustering (regroupement de points) et intégration des suivis (*follow-ups*) directement sur la carte des observations [#515](https://github.com/betagouv/sylvasan/pull/515).
+- **Gestion des images** : 
+    - Correction de problèmes liés à la compression des images [#577](https://github.com/betagouv/sylvasan/pull/577).
+    - Amélioration de l'affichage permettant de visualiser l'image complète [#498](https://github.com/betagouv/sylvasan/pull/498).
+- **Exports** : 
+    - Enrichissement des exports incluant désormais les suivis, le titre de l'enquête et les identifiants externes des répondants [#516](https://github.com/betagouv/sylvasan/pull/516).
+- **Interface et UX** : 
+    - Mise en place de filtres sur l'application mobile [#559](https://github.com/betagouv/sylvasan/pull/559).
+    - Ajustement de l'interface Android pour intégrer l'espace des boutons de navigation [#542](https://github.com/betagouv/sylvasan/pull/542).
+    - Sauvegarde automatique des données lors de la fermeture des fenêtres modales [#540](https://github.com/betagouv/sylvasan/pull/540).
+    - Modification du libellé du bouton d'envoi d'enquête pour plus de clarté [#499](https://github.com/betagouv/sylvasan/pull/499).
 
 ### Évolutions techniques
-- **Optimisation du stockage** : Passage d'un stockage en Base64 à un stockage par ID pour les champs de type tableau (*array fields*), améliorant la performance.
-- **Qualité et Accessibilité** :
-    - Renforcement de l'accessibilité numérique via l'ajout d'attributs ARIA.
-    - Augmentation de la couverture de tests, notamment sur la gestion des adhésions (*memberships*) [#469](https://github.com/betagouv/sylvasan/pull/469).
-- **Déploiement Mobile** : Nouvelles versions et releases de l'application Android (environnements de test et préproduction).
+- **Mobile** : Mises à jour de la version Android et des icônes de l'application.
+- **Backend** : 
+    - Optimisation du stockage des données en utilisant des identifiants plutôt que du format base64 pour les champs complexes.
+    - Amélioration de la robustesse face aux conditions de concurrence (*race conditions*).
+- **Frontend (Web)** : 
+    - Mise à jour de la gestion de la navigation (Vue-router).
+    - Résolution de problèmes de compatibilité entre les composants de l'interface (Pinia et Vue-dsfr).
+- **Qualité et Tests** : 
+    - Ajout de nouveaux tests et mise à jour des outils de contrôle de code (Ruff).
+
+### Autres changements
+- Mise à jour des mentions de licence pour le composant DSFR.
