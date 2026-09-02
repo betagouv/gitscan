@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/maestro",
   "name": "maestro",
-  "description": "Maestro est une plateforme de gestion de données de prélèvements et de suivi de domaines, permettant l'importation de rapports, la gestion des utilisateurs et la visualisation cartographique.",
+  "description": "Maestro est une plateforme de gestion et de suivi de prélèvements et de données de laboratoire. Elle permet la cartographie des domaines, la gestion des utilisateurs et l'automatisation de l'importation de rapports.",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
@@ -13,52 +13,57 @@
     "Gestion des utilisateurs & Permissions",
     "Données & Schémas",
     "Administration & Backoffice",
+    "Interface utilisateur & Design",
     "Suivi & Traçabilité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "PostgreSQL",
-    "PostGIS",
     "KnexJS",
-    "Dex",
     "S3",
+    "Dex",
+    "Vite",
+    "React",
+    "MUI",
+    "Zod",
     "Vitest",
-    "Node.js"
+    "Biome"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
+    "React / Next.js",
     "TypeScript / JavaScript",
     "Docker & Conteneurs",
     "Authentification (composant)",
-    "Scripts & Utilitaires",
-    "Documentation & Schémas",
-    "CI/CD & Déploiement"
+    "ORM & Accès aux données",
+    "Documentation & Schémas"
   ],
   "auth": {
     "methods": [
       "oauth2",
       "sso"
-    ],
-    "providers": [
-      "Dex"
     ]
   },
-  "tests": "Vitest",
+  "tests": [
+    "Vitest",
+    "Playwright"
+  ],
   "workflows": [
     "Semantic-release"
   ],
-  "lastActivity": "2026-08-25T15:16:43+02:00",
+  "lastActivity": "2026-09-01T12:26:23+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "TypeScript",
+    "React & Next.js",
     "Docker & Conteneurs",
     "Bases de données SQL",
     "CI/CD & GitHub Actions",
     "SIG & Géospatial",
-    "Données & Open Data"
+    "Tests & Qualité"
   ]
 }

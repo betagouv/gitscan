@@ -1,15 +1,29 @@
-## Changelog : maestro (30 derniers jours, au 25/08/2026)
+## Changelog : maestro (30 derniers jours, au 01/09/2026)
 
 ### Résumé
-Ce mois-ci, Maestro a franchi une étape importante avec la mise en place complète de la gestion des domaines (création, consultation et cartographie). La gestion des utilisateurs a été renforcée par l'introduction de nouveaux rôles et de permissions plus fines, tandis que plusieurs corrections ont été apportées pour fiabiliser l'importation des données et l'affichage des tableaux de bord.
+Ce mois-ci, Maestro a franchi une étape majeure avec l'intégration complète de la gestion des domaines dans la base de données. La plateforme a également été enrichie par de nouvelles capacités de gestion des utilisateurs et des permissions, ainsi que par une amélioration significative de l'automatisation et de la fiabilité des imports de données (LNR, Cereco, Girpa, SFTP).
 
 ### Évolutions fonctionnelles
-- **Gestion des domaines** : Possibilité de créer, consulter et cartographier les domaines, avec l'ajout de l'année et l'assignation temporaire aux plans ([#1373](https://github.com/betagouv/maestro/issues/1373), [#1372](https://github.com/betagouv/maestro/issues/1372), [#1349](https://github.com/betagouv/maestro/issues/1349), [#1344](https://github.com/betagouv/maestro/issues/1344), [#1343](https://github.com/betagouv/maestro/issues/1343)).
-- **Utilisateurs et accès** : Introduction du rôle administrateur BGIR ([#1337](https://github.com/betagouv/maestro/issues/1337)), gestion des utilisateurs par les coordinateurs ([#1280](https://github.com/betagouv/maestro/issues/1280)), nouvelle condition de formation pour les préleveurs ([#1335](https://github.com/betagouv/maestro/issues/1335)), et améliorations de l'affichage et de la recherche dans la liste des utilisateurs ([#1366](https://github.com/betagouv/maestro/issues/1366), [#1350](https://github.com/betagouv/maestro/issues/1350), [#1324](https://github.com/betagouv/maestro/issues/1324)).
-- **Paramétrage et navigation** : Ajout de la liste des sous-plans ([#1365](https://github.com/betagouv/maestro/issues/1365)), intégration d'un fil d'ariane ([#1351](https://github.com/betagouv/maestro/issues/1351)), remplacement des plans par les stades de prélèvements ([#1311](https://github.com/betagouv/maestro/issues/1311)) et suppression de la version cartes dans la programmation ([#1325](https://github.com/betagouv/maestro/issues/1325)).
-- **Importation et traitement de données** : Lecture des rapports PDF des LNR ([#1304](https://github.com/betagouv/maestro/issues/1304)), gestion des fichiers déclencheurs SFTP pour les DAI ([#1289](https://github.com/betagouv/maestro/issues/1289)), ajout de la substance cyprosulfamide ([#1246](https://github.com/betagouv/maestro/issues/1246)) et résolution de divers problèmes d'importation (Cereco, Girpa, Inovalys) ([#1306](https://github.com/betagouv/maestro/issues/1306), [#1276](https://github.com/betagouv/maestro/issues/1276), [#1275](https://github.com/betagouv/maestro/issues/1275), [#1265](https://github.com/betagouv/maestro/issues/1265), [#1264](https://github.com/betagouv/maestro/issues/1264)).
-- **Dashboard et communication** : Correction de l'affichage des conformités et des détails de prélèvements sur le tableau de bord ([#1288](https://github.com/betagouv/maestro/issues/1288), [#1262](https://github.com/betagouv/maestro/issues/1262)) et automatisation des réponses en cas d'erreur d'email laboratoire ([#1305](https://github.com/betagouv/maestro/issues/1305)).
+- **Gestion des domaines** : Mise en place complète du cycle de vie des domaines (ajout, consultation, cartographie des informations et liaison avec les plans) [#1343, #1344, #1349, #1372, #1373, #1387].
+- **Paramétrage et navigation** : Gestion des sous-plans, ajout d'un fil d'ariane et nouvelle interface de configuration des champs spécifiques [#1351, #1365, #1399, #1400].
+- **Utilisateurs et accès** : 
+    - Introduction du nouveau rôle d'administrateur BGIR et possibilité pour les coordinateurs de gérer leurs propres utilisateurs [#1280, #1337].
+    - Mise en place de l'obligation de formation pour les préleveurs [#1335].
+    - Améliorations de l'interface utilisateur : affichage des laboratoires dans la liste, gestion optimisée des stades de prélèvement et correction de la recherche [#1311, #1324, #1350, #1366].
+- **Traitement des données et imports** : 
+    - Lecture des rapports PDF des LNR [#1304] et gestion des fichiers déclencheurs SFTP pour les envois de DAI [#1289].
+    - Corrections et améliorations sur les imports Cereco, Girpa, Inovalys et le nettoyage des références de données [#1263, #1264, #1265, #1275, #1276, #1306].
+- **Notifications et tableau de bord** : 
+    - Ajout de notifications par email institutionnel pour les détections [#1388] et réponse automatique en cas d'email incorrect [#1305].
+    - Corrections des statistiques de conformité et de l'affichage des détails dans le tableau de bord [#1262, #1288, #1384].
+- **Référentiel** : Ajout de la substance active cyprosulfamide [#1246].
+- **Interface** : Suppression de la version "cartes" de la programmation [#1325].
 
 ### Évolutions techniques
-- **Architecture et données** : Migration de la gestion des domaines vers la base de données ([#1342](https://github.com/betagouv/maestro/issues/1342)), refactorisation de l'extraction des références laboratoires ([#1247](https://github.com/betagouv/maestro/issues/1247)) et optimisation de la récupération des données utilisateurs ([#1336](https://github.com/betagouv/maestro/issues/1336)).
-- **Performance et infrastructure** : Optimisation de la consommation de mémoire RAM lors de la mise à jour des départements ([#1260](https://github.com/betagouv/maestro/issues/1260)), nettoyage des avertissements de build Vite ([#1261](https://github.com/betagouv/maestro/issues/1261)) et initialisation des données de test sur les environnements de revue ([#1367](https://github.com/betagouv/maestro/issues/1367)).
+- **Architecture et performance** : 
+    - Migration de la gestion des domaines vers la base de données [#1342].
+    - Refactorisation du code d'extraction des références laboratoires pour une meilleure maintenance [#1247].
+    - Optimisation de la consommation de mémoire lors de la mise à jour des départements [#1260].
+- **Fiabilité et DevOps** : 
+    - Amélioration de la robustesse du script de sauvegarde en cas d'erreur [#1386].
+    - Initialisation automatique des départements sur les environnements de revue (review apps) [#1367].
