@@ -735,7 +735,10 @@
 │   │   │   │   ├── 30000110-01-alter-table-action_metrics_history-sync-scolaire-columns.js
 │   │   │   │   ├── 30000112-01-update-table-preparatory_phases_toward_resorption-date_label.js
 │   │   │   │   ├── 30000113-01-add-technical-diagnosis-phase.js
+│   │   │   │   ├── 30000113-01-drop-questions-answers-tables.js
 │   │   │   │   ├── 30000113-02-initialize-technical-diagnosis-phase-for-existing-sites.js
+│   │   │   │   ├── 30000114-01-alter-table-action_metrics-remove-residual-scolaire-mediation-constraint.js
+│   │   │   │   ├── 30000114-02-alter-table-action_metrics-remove-obsolete-scolaire-niveau-constraints.js
 │   │   │   │   └── common
 │   │   │   │       ├── create_covid_comment_permissions.js
 │   │   │   │       ├── create_plan_finances_permissions.js
@@ -1086,43 +1089,6 @@
 │   │   │   │   │   └── list
 │   │   │   │   │       ├── poi.list.route.ts
 │   │   │   │   │       └── poi.list.ts
-│   │   │   │   ├── question
-│   │   │   │   │   ├── create
-│   │   │   │   │   │   ├── question.create.route.ts
-│   │   │   │   │   │   ├── question.create.ts
-│   │   │   │   │   │   └── question.create.validator.ts
-│   │   │   │   │   ├── createAnswer
-│   │   │   │   │   │   ├── question.createAnswer.route.ts
-│   │   │   │   │   │   ├── question.createAnswer.ts
-│   │   │   │   │   │   └── question.createAnswer.validator.ts
-│   │   │   │   │   ├── delete
-│   │   │   │   │   │   ├── question.delete.route.ts
-│   │   │   │   │   │   ├── question.delete.spec.ts
-│   │   │   │   │   │   ├── question.delete.ts
-│   │   │   │   │   │   └── question.delete.validator.ts
-│   │   │   │   │   ├── get
-│   │   │   │   │   │   ├── question.get.route.ts
-│   │   │   │   │   │   └── question.get.ts
-│   │   │   │   │   ├── list
-│   │   │   │   │   │   ├── question.list.route.ts
-│   │   │   │   │   │   └── question.list.ts
-│   │   │   │   │   ├── moderateAnswer
-│   │   │   │   │   │   ├── question.moderateAnswer.route.ts
-│   │   │   │   │   │   ├── question.moderateAnswer.spec.ts
-│   │   │   │   │   │   ├── question.moderateAnswer.ts
-│   │   │   │   │   │   └── question.moderateAnswer.validator.ts
-│   │   │   │   │   ├── subscribe
-│   │   │   │   │   │   ├── question.subscribe.route.ts
-│   │   │   │   │   │   ├── question.subscribe.ts
-│   │   │   │   │   │   └── question.subscribe.validator.ts
-│   │   │   │   │   ├── unsubscribe
-│   │   │   │   │   │   ├── question.unsubscribe.route.ts
-│   │   │   │   │   │   ├── question.unsubscribe.ts
-│   │   │   │   │   │   └── question.unsubscribe.validator.ts
-│   │   │   │   │   └── update
-│   │   │   │   │       ├── question.update.route.ts
-│   │   │   │   │       ├── question.update.ts
-│   │   │   │   │       └── question.update.validator.ts
 │   │   │   │   ├── rolePermission
 │   │   │   │   │   └── list
 │   │   │   │   │       ├── rolePermission.list.route.ts
@@ -1401,13 +1367,6 @@
 │   │   │   │   │   ├── activity_summary.text
 │   │   │   │   │   ├── admin_*.html  (9 files)
 │   │   │   │   │   ├── admin_*.text  (18 files)
-│   │   │   │   │   ├── answer_deletion_notification.html
-│   │   │   │   │   ├── answer_deletion_notification.subject.text
-│   │   │   │   │   ├── answer_deletion_notification.text
-│   │   │   │   │   ├── community_new_answer_for_author.html
-│   │   │   │   │   ├── community_*.text  (6 files)
-│   │   │   │   │   ├── community_new_answer_for_observers.html
-│   │   │   │   │   ├── community_new_question.html
 │   │   │   │   │   ├── contact_newsletter_registration.html
 │   │   │   │   │   ├── contact_newsletter_registration.subject.text
 │   │   │   │   │   ├── contact_newsletter_registration.text
@@ -1432,8 +1391,8 @@
 │   │   │   │   │   ├── shantytown_actor_notification.html
 │   │   │   │   │   ├── shantytown_actor_notification.subject.text
 │   │   │   │   │   ├── shantytown_actor_notification.text
-│   │   │   │   │   ├── user_*.html  (20 files)
-│   │   │   │   │   └── user_*.text  (40 files)
+│   │   │   │   │   ├── user_*.html  (19 files)
+│   │   │   │   │   └── user_*.text  (38 files)
 │   │   │   │   ├── generateTrackingUTM.ts
 │   │   │   │   ├── mails.ts
 │   │   │   │   ├── preview
@@ -1452,7 +1411,6 @@
 │   │   │   │       ├── admin_request_pending_reminder_2.mjml
 │   │   │   │       ├── admin_shantytown_reporting.mjml
 │   │   │   │       ├── admin_welcome.mjml
-│   │   │   │       ├── answer_deletion_notification.mjml
 │   │   │   │       ├── common
 │   │   │   │       │   ├── admin_access_request_info.mjml
 │   │   │   │       │   ├── attributes.mjml
@@ -1467,19 +1425,12 @@
 │   │   │   │       │   ├── formation_text_other.mjml
 │   │   │   │       │   ├── hello.mjml
 │   │   │   │       │   ├── hero.mjml
-│   │   │   │       │   ├── question.mjml
-│   │   │   │       │   ├── question_summary.mjml
-│   │   │   │       │   ├── question_summary_with_answers.mjml
-│   │   │   │       │   ├── question_summary_without_answers.mjml
 │   │   │   │       │   ├── styles.mjml
 │   │   │   │       │   ├── subscribe_newsletter-cta.mjml
 │   │   │   │       │   ├── summary.mjml
 │   │   │   │       │   ├── summary_footer.mjml
 │   │   │   │       │   ├── summary_full_activities.mjml
 │   │   │   │       │   └── unsubscribe_push_mails.mjml
-│   │   │   │       ├── community_new_answer_for_author.mjml
-│   │   │   │       ├── community_new_answer_for_observers.mjml
-│   │   │   │       ├── community_new_question.mjml
 │   │   │   │       ├── contact_newsletter_registration.mjml
 │   │   │   │       ├── demo_invitation.mjml
 │   │   │   │       ├── inactive_user_alert.mjml
@@ -1499,7 +1450,6 @@
 │   │   │   │       ├── user_comment_deletion.mjml
 │   │   │   │       ├── user_deactivation_by_admin_alert.mjml
 │   │   │   │       ├── user_deactivation_confirmation.mjml
-│   │   │   │       ├── user_entraide_invitation.mjml
 │   │   │   │       ├── user_features.mjml
 │   │   │   │       ├── user_new_action_comment.mjml
 │   │   │   │       ├── user_new_comment.mjml
@@ -1631,22 +1581,10 @@
 │   │   │   │   │       └── updateComment.ts
 │   │   │   │   ├── activityModel
 │   │   │   │   │   ├── get.ts
-│   │   │   │   │   ├── getQuestions.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   └── types
 │   │   │   │   │       ├── ActivityDepartementalSummary.ts
-│   │   │   │   │       ├── ActivityNationalSummary.ts
-│   │   │   │   │       └── QuestionNationalSummary.ts
-│   │   │   │   ├── answerModel
-│   │   │   │   │   ├── AnswerRow.d.ts
-│   │   │   │   │   ├── _common
-│   │   │   │   │   │   └── serializeAnswer.ts
-│   │   │   │   │   ├── create.ts
-│   │   │   │   │   ├── delete.ts
-│   │   │   │   │   ├── findAll.ts
-│   │   │   │   │   ├── findOne.ts
-│   │   │   │   │   ├── getHistory.ts
-│   │   │   │   │   └── index.ts
+│   │   │   │   │       └── ActivityNationalSummary.ts
 │   │   │   │   ├── attachmentModel
 │   │   │   │   │   ├── archiveAttachment.ts
 │   │   │   │   │   ├── create.ts
@@ -1800,23 +1738,6 @@
 │   │   │   │   ├── preparatoryPhasesTowardResorptionModel
 │   │   │   │   │   ├── getAll.ts
 │   │   │   │   │   ├── getSome.ts
-│   │   │   │   │   └── index.ts
-│   │   │   │   ├── questionModel
-│   │   │   │   │   ├── QuestionInput.d.ts
-│   │   │   │   │   ├── QuestionRow.d.ts
-│   │   │   │   │   ├── _common
-│   │   │   │   │   │   ├── getAnswers.ts
-│   │   │   │   │   │   └── queryString.ts
-│   │   │   │   │   ├── create.ts
-│   │   │   │   │   ├── delete.ts
-│   │   │   │   │   ├── findAll.ts
-│   │   │   │   │   ├── findOne.ts
-│   │   │   │   │   ├── getHistory.ts
-│   │   │   │   │   ├── index.ts
-│   │   │   │   │   ├── serializeQuestion.ts
-│   │   │   │   │   └── update.ts
-│   │   │   │   ├── questionTagModel
-│   │   │   │   │   ├── findAll.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── regionModel
 │   │   │   │   │   ├── findAll.ts
@@ -2093,8 +2014,6 @@
 │   │   │   │   │   ├── getAdminsFor.ts
 │   │   │   │   │   ├── getHistory.ts
 │   │   │   │   │   ├── getLocationWatchers.ts
-│   │   │   │   │   ├── getQuestionSubscribers.ts
-│   │   │   │   │   ├── getQuestionWatchers.ts
 │   │   │   │   │   ├── getShantytownWatchers.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── isTracked.ts
@@ -2108,14 +2027,10 @@
 │   │   │   │   │   ├── setPermissionOptions.ts
 │   │   │   │   │   ├── update.ts
 │   │   │   │   │   └── upgradeLocalAdmin.ts
-│   │   │   │   ├── userNavigationLogsModel
-│   │   │   │   │   ├── getAllForWebappSessions.ts
-│   │   │   │   │   ├── index.ts
-│   │   │   │   │   └── insertWebapp.ts
-│   │   │   │   └── userQuestionSubscriptionModel
-│   │   │   │       ├── createSubscription.ts
+│   │   │   │   └── userNavigationLogsModel
+│   │   │   │       ├── getAllForWebappSessions.ts
 │   │   │   │       ├── index.ts
-│   │   │   │       └── setSubscriptionState.ts
+│   │   │   │       └── insertWebapp.ts
 │   │   │   ├── permissions_description.ts
 │   │   │   ├── services
 │   │   │   │   ├── accessRequest
@@ -2167,12 +2082,6 @@
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── sendAll.ts
 │   │   │   │   │   └── sendSummary.ts
-│   │   │   │   ├── answer
-│   │   │   │   │   ├── createAnswer.spec.ts
-│   │   │   │   │   ├── createAnswer.ts
-│   │   │   │   │   ├── deleteAnswer.spec.ts
-│   │   │   │   │   ├── deleteAnswer.ts
-│   │   │   │   │   └── index.ts
 │   │   │   │   ├── attachment
 │   │   │   │   │   ├── Attachment.d.ts
 │   │   │   │   │   ├── archiveAttachment.spec.ts
@@ -2266,22 +2175,6 @@
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── listByRoles.spec.ts
 │   │   │   │   │   └── listByRoles.ts
-│   │   │   │   ├── question
-│   │   │   │   │   ├── common
-│   │   │   │   │   │   └── enrichQuestion.ts
-│   │   │   │   │   ├── create.spec.ts
-│   │   │   │   │   ├── create.ts
-│   │   │   │   │   ├── delete.spec.ts
-│   │   │   │   │   ├── delete.ts
-│   │   │   │   │   ├── findAll.ts
-│   │   │   │   │   ├── findOne.spec.ts
-│   │   │   │   │   ├── findOne.ts
-│   │   │   │   │   ├── index.ts
-│   │   │   │   │   ├── subscribe.ts
-│   │   │   │   │   ├── unsubscribe.ts
-│   │   │   │   │   ├── update.int.spec.ts
-│   │   │   │   │   ├── update.spec.ts
-│   │   │   │   │   └── update.ts
 │   │   │   │   ├── shantytown
 │   │   │   │   │   ├── _common
 │   │   │   │   │   │   ├── baseShantytown.ts
@@ -2509,8 +2402,6 @@
 │   │   │       ├── actionFinancesReader.ts
 │   │   │       ├── actionInput.ts
 │   │   │       ├── activity.ts
-│   │   │       ├── answer.ts
-│   │   │       ├── answerSerialized.ts
 │   │   │       ├── attachmentKeys.ts
 │   │   │       ├── changelog.ts
 │   │   │       ├── contactBody.ts
@@ -2520,8 +2411,6 @@
 │   │   │       ├── location.ts
 │   │   │       ├── organization.ts
 │   │   │       ├── parcelOwners.ts
-│   │   │       ├── question.ts
-│   │   │       ├── questionSubscriber.ts
 │   │   │       ├── shantytown.ts
 │   │   │       ├── shantytownCommentInput.ts
 │   │   │       ├── shantytownWatcher.ts
@@ -2543,9 +2432,6 @@
 │   │       │   ├── ActionFinance.d.ts
 │   │       │   ├── ActionLocationType.d.ts
 │   │       │   ├── Activity.d.ts
-│   │       │   ├── AnswerEnriched.d.ts
-│   │       │   ├── AnswerGeneric.d.ts
-│   │       │   ├── AnswerRaw.d.ts
 │   │       │   ├── Blog.d.ts
 │   │       │   ├── Changelog.d.ts
 │   │       │   ├── CharteEngagement.d.ts
@@ -2572,9 +2458,6 @@
 │   │       │   ├── Permission.d.ts
 │   │       │   ├── PreparatoryPhaseTowardResorption.d.ts
 │   │       │   ├── PublicEstablishment.d.ts
-│   │       │   ├── QuestionEnriched.d.ts
-│   │       │   ├── QuestionGeneric.d.ts
-│   │       │   ├── QuestionRaw.d.ts
 │   │       │   ├── Region.d.ts
 │   │       │   ├── Role.d.ts
 │   │       │   ├── Shantytown.d.ts
@@ -2918,7 +2801,6 @@
 │       │   │   │   ├── organizations.api.js
 │       │   │   │   ├── password_tokens.api.js
 │       │   │   │   ├── pois.api.js
-│       │   │   │   ├── questions.api.js
 │       │   │   │   ├── refresh_token.api.js
 │       │   │   │   ├── role_permissions.api.js
 │       │   │   │   ├── shantytown_comments.api.js
@@ -2990,7 +2872,6 @@
 │       │   │   │   │   │   ├── bidonville-2560.webp
 │       │   │   │   │   │   ├── bidonville-3249.webp
 │       │   │   │   │   │   ├── bidonville_dessin.png
-│       │   │   │   │   │   ├── communaute.svg
 │       │   │   │   │   │   ├── erreur.svg
 │       │   │   │   │   │   ├── interdit.svg
 │       │   │   │   │   │   ├── vide.svg
@@ -3060,7 +2941,6 @@
 │       │   │   │   ├── CarteCommentaire
 │       │   │   │   │   ├── CarteCommentaire.vue
 │       │   │   │   │   ├── CarteCommentaireAction.vue
-│       │   │   │   │   ├── CarteCommentaireReponse.vue
 │       │   │   │   │   └── CarteCommentaireSite.vue
 │       │   │   │   ├── CarteHistoriqueDetaillee
 │       │   │   │   │   ├── CarteGroupeHistorique.vue
@@ -3068,8 +2948,6 @@
 │       │   │   │   │   ├── CarteHistoriqueDetaillee.vue
 │       │   │   │   │   ├── CarteHistoriqueDetailleeHeader.vue
 │       │   │   │   │   ├── CarteHistoriqueIcone.vue
-│       │   │   │   │   ├── CarteHistoriqueQuestion.vue
-│       │   │   │   │   ├── CarteHistoriqueReponse.vue
 │       │   │   │   │   ├── CarteHistoriqueSite.vue
 │       │   │   │   │   ├── ColonneCartesHistorique.vue
 │       │   │   │   │   └── ColonneDateHistorique.vue
@@ -3079,11 +2957,6 @@
 │       │   │   │   │   └── CarteIntervenantSelfTag.vue
 │       │   │   │   ├── CartePhaseResorption
 │       │   │   │   │   └── CartePhaseResorption.vue
-│       │   │   │   ├── CarteQuestion
-│       │   │   │   │   ├── CarteQuestion.vue
-│       │   │   │   │   ├── CarteQuestionDateCreation.vue
-│       │   │   │   │   ├── CarteQuestionFooter.vue
-│       │   │   │   │   └── CarteQuestionQuestion.vue
 │       │   │   │   ├── CarteSite
 │       │   │   │   │   └── CarteSite.vue
 │       │   │   │   ├── CarteSiteDetaillee
@@ -3292,17 +3165,6 @@
 │       │   │   │   │   └── DragZone.vue
 │       │   │   │   ├── DsfrTagCopy
 │       │   │   │   │   └── DsfrTagCopy.vue
-│       │   │   │   ├── Entraide
-│       │   │   │   │   ├── Entraide.vue
-│       │   │   │   │   ├── EntraideBanniere.vue
-│       │   │   │   │   ├── EntraideErreur.vue
-│       │   │   │   │   ├── EntraideHeader.vue
-│       │   │   │   │   ├── EntraideInputNouvellequestion.vue
-│       │   │   │   │   ├── ListeDesQuestions.sort.js
-│       │   │   │   │   ├── ListeDesQuestions.vue
-│       │   │   │   │   ├── ListeDesQuestionsFiltres.vue
-│       │   │   │   │   ├── ListeDesQuestionsRecherche.vue
-│       │   │   │   │   └── ListeDesQuestionsVide.vue
 │       │   │   │   ├── FicheAcces
 │       │   │   │   │   ├── FicheAcces.vue
 │       │   │   │   │   ├── FicheAccesActions
@@ -3398,34 +3260,6 @@
 │       │   │   │   │       └── FicheActionLocalisationSites.vue
 │       │   │   │   ├── FicheJournalLayout
 │       │   │   │   │   └── FicheJournalLayout.vue
-│       │   │   │   ├── FicheQuestion
-│       │   │   │   │   ├── FicheQuestion.vue
-│       │   │   │   │   ├── FicheQuestionAttachments
-│       │   │   │   │   │   └── FicheQuestionAttachments.vue
-│       │   │   │   │   ├── FicheQuestionDate
-│       │   │   │   │   │   └── FicheQuestionDate.vue
-│       │   │   │   │   ├── FicheQuestionDeleteButton
-│       │   │   │   │   │   └── FicheQuestionDeleteButton.vue
-│       │   │   │   │   ├── FicheQuestionDetails
-│       │   │   │   │   │   └── FicheQuestionDetails.vue
-│       │   │   │   │   ├── FicheQuestionHeader
-│       │   │   │   │   │   └── FicheQuestionHeader.vue
-│       │   │   │   │   ├── FicheQuestionModificationButton
-│       │   │   │   │   │   └── FicheQuestionModificationButton.vue
-│       │   │   │   │   ├── FicheQuestionReponses
-│       │   │   │   │   │   ├── FicheQuestionListeDesReponses.vue
-│       │   │   │   │   │   ├── FicheQuestionNouvelleReponse
-│       │   │   │   │   │   │   ├── FicheQuestionNouvelleReponse.labels.js
-│       │   │   │   │   │   │   ├── FicheQuestionNouvelleReponse.schema.js
-│       │   │   │   │   │   │   ├── FicheQuestionNouvelleReponse.vue
-│       │   │   │   │   │   │   └── inputs
-│       │   │   │   │   │   │       ├── FicheQuestionNouvelleReponseInputAttachments.vue
-│       │   │   │   │   │   │       └── FicheQuestionNouvelleReponseInputReponse.vue
-│       │   │   │   │   │   └── FicheQuestionReponses.vue
-│       │   │   │   │   ├── FicheQuestionSubscriptionButton
-│       │   │   │   │   │   └── FicheQuestionSubscriptionButton.vue
-│       │   │   │   │   └── FicheQuestionTags
-│       │   │   │   │       └── FicheQuestionTags.vue
 │       │   │   │   ├── FicheRubrique
 │       │   │   │   │   ├── FicheGrille.vue
 │       │   │   │   │   ├── FicheRubrique.vue
@@ -3743,17 +3577,6 @@
 │       │   │   │   │   ├── FormMotDePasseOublie.vue
 │       │   │   │   │   └── inputs
 │       │   │   │   │       └── FormMotDePasseOublieInputEmail.vue
-│       │   │   │   ├── FormNouvelleQuestion
-│       │   │   │   │   ├── FormNouvelleQuestion.labels.js
-│       │   │   │   │   ├── FormNouvelleQuestion.schema.js
-│       │   │   │   │   ├── FormNouvelleQuestion.vue
-│       │   │   │   │   └── inputs
-│       │   │   │   │       ├── FormNouvelleQuestionInputAttachments.vue
-│       │   │   │   │       ├── FormNouvelleQuestionInputDetails.vue
-│       │   │   │   │       ├── FormNouvelleQuestionInputOtherTag.vue
-│       │   │   │   │       ├── FormNouvelleQuestionInputPeopleAffected.vue
-│       │   │   │   │       ├── FormNouvelleQuestionInputQuestion.vue
-│       │   │   │   │       └── FormNouvelleQuestionInputTags.vue
 │       │   │   │   ├── FormPublic
 │       │   │   │   │   └── FormPublic.vue
 │       │   │   │   ├── FormSection
@@ -3861,8 +3684,6 @@
 │       │   │   │   │   └── InputZoneInterventionVide.vue
 │       │   │   │   ├── Layout
 │       │   │   │   │   └── Layout.vue
-│       │   │   │   ├── LayoutCommunaute
-│       │   │   │   │   └── LayoutCommunaute.vue
 │       │   │   │   ├── LayoutError
 │       │   │   │   │   └── LayoutError.vue
 │       │   │   │   ├── LayoutForm
@@ -3941,10 +3762,6 @@
 │       │   │   │   │   └── ModaleMajSiteSansModification.vue
 │       │   │   │   ├── ModaleModerationCommentaire
 │       │   │   │   │   └── ModaleModerationCommentaire.vue
-│       │   │   │   ├── ModaleModerationQuestion
-│       │   │   │   │   └── ModaleModerationQuestion.vue
-│       │   │   │   ├── ModaleModerationReponse
-│       │   │   │   │   └── ModaleModerationReponse.vue
 │       │   │   │   ├── NavBar
 │       │   │   │   │   └── NavBar.vue
 │       │   │   │   ├── NombreHabitants
@@ -3989,8 +3806,6 @@
 │       │   │   │   │   │       └── FormSujetsInputSujetsInteret.vue
 │       │   │   │   │   ├── ProfilUtilisateur.tabs.js
 │       │   │   │   │   └── ProfilUtilisateur.vue
-│       │   │   │   ├── QuestionTag
-│       │   │   │   │   └── QuestionTag.vue
 │       │   │   │   ├── RefusedUserAccount
 │       │   │   │   │   └── RefusedUserAccount.vue
 │       │   │   │   ├── SolutionsDeFermeture
@@ -4084,7 +3899,6 @@
 │       │   │   │   ├── navigation.store.js
 │       │   │   │   ├── notification.store.js
 │       │   │   │   ├── poi.store.js
-│       │   │   │   ├── questions.store.js
 │       │   │   │   ├── signinLogs.store.js
 │       │   │   │   ├── towns.store.js
 │       │   │   │   └── user.store.js
@@ -4118,7 +3932,6 @@
 │       │   │   │   ├── excluded_roles.js
 │       │   │   │   ├── filterActions.js
 │       │   │   │   ├── filterMetrics.js
-│       │   │   │   ├── filterQuestions.js
 │       │   │   │   ├── filterShantytowns.js
 │       │   │   │   ├── filterShantytownsForMap.js
 │       │   │   │   ├── focusFirstErrorField.js
@@ -4194,7 +4007,6 @@
 │       │   │       ├── ChargementView.vue
 │       │   │       ├── CharteEngagementView.vue
 │       │   │       ├── ChoixDesSujetsExpertise.vue
-│       │   │       ├── CommunauteView.vue
 │       │   │       ├── CompteDesactiveView.vue
 │       │   │       ├── ConnexionView.vue
 │       │   │       ├── CreerStructureView.vue
@@ -4208,7 +4020,6 @@
 │       │   │       ├── ExceptionsDePermissionView.vue
 │       │   │       ├── FermetureDeSiteView.vue
 │       │   │       ├── FicheActionView.vue
-│       │   │       ├── FicheQuestionView.vue
 │       │   │       ├── FicheSiteView.vue
 │       │   │       ├── FicheStructureView.vue
 │       │   │       ├── HistoriqueActivitesView.vue
@@ -4219,14 +4030,12 @@
 │       │   │       ├── LogsConnexionView.vue
 │       │   │       ├── MentionsLegales.vue
 │       │   │       ├── MiseAJourActionView.vue
-│       │   │       ├── MiseAJourDeQuestionView.vue
 │       │   │       ├── MiseAJourDeSiteView.vue
 │       │   │       ├── MiseAjourTerritoiresView.vue
 │       │   │       ├── MonCompteView.vue
 │       │   │       ├── MotDePasseOublieView.vue
 │       │   │       ├── NotFoundView.vue
 │       │   │       ├── NouveautesView.vue
-│       │   │       ├── NouvelleQuestionCommunauteView.vue
 │       │   │       ├── PageInterditeView.vue
 │       │   │       ├── PermissionsParDefautView.vue
 │       │   │       ├── PlanDuSiteView.vue
@@ -4323,4 +4132,4 @@
 ├── scripts
 │   └── checkout.sh
 └── yarn.lock
-756 directories, 3919 files
+717 directories, 3759 files
