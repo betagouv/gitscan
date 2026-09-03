@@ -1,14 +1,7 @@
 .
 ├── .changeset
 │   ├── README.md
-│   ├── config.json
-│   ├── migrate-authenticator-repository.md
-│   ├── migrate-email-deliverability-whitelist-repository.md
-│   ├── migrate-moderation-repository.md
-│   ├── migrate-oidc-client-repository.md
-│   ├── migrate-organization-getters-remainder.md
-│   ├── migrate-user-repository-remainder.md
-│   └── wire-organization-setters-through-context.md
+│   └── config.json
 ├── .editorconfig
 ├── .env
 ├── .env.development
@@ -101,6 +94,10 @@
 │   │   │   ├── fixtures.sql
 │   │   │   └── index.cy.ts
 │   │   ├── delete_totp
+│   │   │   ├── env.conf
+│   │   │   ├── fixtures.sql
+│   │   │   └── index.cy.ts
+│   │   ├── disconnect_franceconnect_account
 │   │   │   ├── env.conf
 │   │   │   ├── fixtures.sql
 │   │   │   └── index.cy.ts
@@ -811,6 +808,8 @@
 │   │   │   │   └── user
 │   │   │   │       ├── create.test.ts
 │   │   │   │       ├── create.ts
+│   │   │   │       ├── delete-franceconnect-userinfo.test.ts
+│   │   │   │       ├── delete-franceconnect-userinfo.ts
 │   │   │   │       ├── delete.test.ts
 │   │   │   │       ├── delete.ts
 │   │   │   │       ├── find-by-email.test.ts
@@ -1304,4 +1303,4 @@
 │   └── symmetric-encryption.test.ts
 ├── tsconfig.json
 └── vite.config.mjs
-223 directories, 1165 files
+224 directories, 1163 files
