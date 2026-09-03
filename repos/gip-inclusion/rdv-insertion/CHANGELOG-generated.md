@@ -1,15 +1,15 @@
-## Changelog : rdv-insertion (30 derniers jours, au 04 août 2026)
+## Changelog : rdv-insertion (30 derniers jours, au 02/09/2026)
 
 ### Résumé
-Cette période a été marquée par des optimisations de performance pour rendre l'application plus fluide, des corrections sur le formatage des documents envoyés (lettres de convocation) et une attention particulière portée à l'accessibilité et à la sécurité du service.
+Les récentes évolutions améliorent la précision du suivi des participations pour France Travail et corrigent l'affichage des courriers. Des optimisations techniques ont également été réalisées pour simplifier la gestion des rôles et stabiliser la compilation des styles.
 
 ### Évolutions fonctionnelles
-- Correction du formatage des instructions de rendez-vous dans les lettres de convocation [#3349](https://github.com/gip-inclusion/rdv-insertion/pull/3349)
-- Mise à jour de la déclaration d'accessibilité de l'interface [#3355](https://github.com/gip-inclusion/rdv-insertion/pull/3355)
+- Intégration d'un nouveau statut d'absence justifiée pour la gestion des participations France Travail ([#3362](https://github.com/gip-inclusion/rdv-insertion/pull/3362)).
+- Harmonisation de l'espacement des noms de direction dans les courriers pour assurer une meilleure cohérence avec l'adresse de l'utilisateur ([#3369](https://github.com/gip-inclusion/rdv-insertion/pull/3369)).
 
 ### Évolutions techniques
-- Amélioration de la vitesse de chargement de la liste des utilisateurs [#3358](https://github.com/gip-inclusion/rdv-insertion/pull/3358)
-- Optimisation du processus d'expiration des invitations en le rendant asynchrone pour améliorer la réactivité du système [#3357](https://github.com/gip-inclusion/rdv-insertion/pull/3357)
+- Refactorisation de la gestion des rôles agents via la suppression d'une colonne de base de données devenue obsolète ([#3366](https://github.com/gip-inclusion/rdv-insertion/pull/3366)).
+- Résolution d'un problème de compilation CSS lié à l'encodage des fichiers Sass ([#3367](https://github.com/gip-inclusion/rdv-insertion/pull/3367)).
 
 ### Autres changements
-- Mise à jour de plusieurs dépendances suite à des scans de sécurité [#3354](https://github.com/gip-inclusion/rdv-insertion/pull/3354), [#3348](https://github.com/gip-inclusion/rdv-insertion/pull/3348)
+- Correction d'une dépendance liée à la gestion des navigateurs (`browserslist`) ([#3371](https://github.com/gip-inclusion/rdv-insertion/pull/3371)).
