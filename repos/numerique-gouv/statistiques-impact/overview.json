@@ -1,38 +1,41 @@
 {
   "url": "https://github.com/numerique-gouv/statistiques-impact",
   "name": "statistiques-impact",
-  "description": "Ce site répertorie les produits opérés par l'Opérateur de Produits Interministériels (OPI), ainsi que leurs statistiques d'usage. Il permet de suivre l'impact des services publics numériques.",
+  "description": "Ce site répertorie les produits opérés par l'Opérateur de Produits Interministériels (OPI) ainsi que leurs statistiques d'usage pour suivre l'impact des services publics numériques.",
   "language": "Python",
   "features": [
     "Statistiques & Rapports",
     "Visualisation de données & Cartographie",
-    "Gestion des utilisateurs & Permissions"
+    "Gestion des utilisateurs & Permissions",
+    "API & Intégrations"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
-    "djangorestframework",
-    "psycopg2-binary",
-    "pandas",
-    "dj-database-url",
-    "datagouv_client"
+    "Django REST Framework",
+    "PostgreSQL",
+    "Pandas",
+    "datagouv-client",
+    "drf-spectacular",
+    "django-dsfr"
   ],
   "components": [
     "API REST & GraphQL",
     "Django",
     "PostgreSQL & SQL",
-    "Python (scripts & backend)"
+    "Python (scripts & backend)",
+    "Templates & Moteurs de rendu"
   ],
-  "auth.methods": [
-    "none"
-  ],
-  "tests": [
-    "pytest"
-  ],
+  "auth": {
+    "methods": [
+      "api-key"
+    ]
+  },
+  "tests": "pytest",
   "workflows": [
     "tests.yml"
   ],
-  "lastActivity": "2026-07-16T18:31:31Z",
+  "lastActivity": "2026-09-02T12:15:45+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -40,12 +43,13 @@
     "stars": 3,
     "forks": 1,
     "contributors": 0,
-    "openIssues": 5
+    "openIssues": 20
   },
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
     "Python",
-    "Bases de données SQL"
+    "Bases de données SQL",
+    "Reporting & BI"
   ]
 }
