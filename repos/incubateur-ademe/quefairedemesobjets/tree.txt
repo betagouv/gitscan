@@ -1,4 +1,5 @@
 .
+├── .buildpacks
 ├── .git-blame-ignore-revs
 ├── .github
 │   ├── CODEOWNERS
@@ -42,18 +43,27 @@
 │       ├── scaleway_container_registry_delete_old_tags.yml
 │       └── sync_databases.yml
 ├── .gitignore
+├── .npmrc
 ├── .pre-commit-config.yaml
+├── .python-version
 ├── .secrets.baseline
+├── .slugignore
 ├── .tool-versions
 ├── .vscode
 │   ├── extensions.json
 │   └── settings.json
 ├── AGENTS.md
+├── Aptfile
 ├── CLAUDE.md -> AGENTS.md
 ├── LICENSE
 ├── Makefile
+├── Procfile
 ├── README.md
 ├── SECURITY.md
+├── bin
+│   ├── post_compile
+│   ├── post_deploy
+│   └── start
 ├── data-platform
 │   ├── .gitignore
 │   ├── .sqlfluffignore
@@ -605,6 +615,7 @@
 │   │   │   │   │   │   └── schema.yml
 │   │   │   │   │   ├── opendata
 │   │   │   │   │   │   ├── exposure_opendata_acteur.sql
+│   │   │   │   │   │   ├── exposure_opendata_acteur_published.sql
 │   │   │   │   │   │   └── schema.yml
 │   │   │   │   │   └── sample
 │   │   │   │   │       ├── exposure_sample_displayedacteur.sql
@@ -772,6 +783,7 @@
 │   │   └── tests
 │   │       ├── .gitkeep
 │   │       └── generic
+│   │           ├── test_at_least_one_not_empty.sql
 │   │           └── test_not_empty_string.sql
 │   ├── notebooks
 │   │   ├── 20241031_acteurs_inactifs_reparation_lvao_ancien_cma.ipynb
@@ -999,6 +1011,8 @@
 │           ├── main.tf
 │           ├── outputs.tf
 │           └── variables.tf
+├── package-lock.json
+├── package.json
 ├── pyproject.toml
 ├── scripts
 │   ├── db_restore.sh
@@ -1024,27 +1038,21 @@
 │       ├── create_schema.sql
 │       ├── create_webapp_sample_db.sql
 │       └── drop_all_tables.sql
+├── servers.conf.erb
 ├── uv.lock
 └── webapp
-    ├── .buildpacks
     ├── .dockerignore
     ├── .env.template
     ├── .eslintrc.js
     ├── .gitignore
-    ├── .npmrc
     ├── .parcelrc
     ├── .postcssrc
     ├── .python-version
     ├── .slugignore
-    ├── Aptfile
     ├── Dockerfile
     ├── Makefile
-    ├── Procfile
     ├── bin
-    │   ├── entrypoint.sh
-    │   ├── post_compile
-    │   ├── post_deploy
-    │   └── start
+    │   └── entrypoint.sh
     ├── core
     │   ├── __init__.py
     │   ├── admin.py
@@ -1231,7 +1239,6 @@
     │   ├── entrypoint.sh
     │   ├── nginx.conf
     │   └── test_nginx.py
-    ├── package-lock.json
     ├── package.json
     ├── parcel-transformers
     │   └── remove-ie-hack.ts
@@ -1311,6 +1318,8 @@
     │   │   ├── 0085_add_break_block_to_streamfield.py
     │   │   ├── 0086_rename_produitindexpage_legacyproduitindexpage.py
     │   │   ├── 0087_produitindexpage.py
+    │   │   ├── 0088_search_settings.py
+    │   │   ├── 0089_rename_search_placeholder_searchsettings_home_search_placeholder.py
     │   │   ├── __init__.py
     │   │   └── sql
     │   │       └── create_wagtail_french_config.sql
@@ -1465,7 +1474,6 @@
     │   ├── models.py
     │   ├── score_breakdown.py
     │   └── wagtail_hooks.py
-    ├── servers.conf.erb
     ├── settings
     │   ├── __init__.py
     │   ├── airflow.py
@@ -1924,8 +1932,7 @@
     │       │   ├── produit_index_page.html
     │       │   └── produit_page.html
     │       ├── snippets
-    │       │   ├── share_and_embed.html
-    │       │   └── share_and_embed_produit.html
+    │       │   └── share_and_embed.html
     │       └── tests
     │           ├── carte_config_bounding_box.html
     │           ├── carte_mode_liste_switch.html
@@ -1954,89 +1961,88 @@
     │           ├── t_7_copy_controller.html
     │           └── t_9_bonus_legacy_parameter_iframe.html
     ├── tsconfig.json
-    ├── unit_tests
-    │   ├── conftest.py
-    │   ├── core
-    │   │   ├── templatetags
-    │   │   │   ├── test_acteur_tags.py
-    │   │   │   ├── test_carte_tag.py
-    │   │   │   └── test_qfdmo_tags.py
-    │   │   ├── test_accessibilite_mineurs_previews.py
-    │   │   ├── test_accessibilite_previews.py
-    │   │   ├── test_healthz.py
-    │   │   ├── test_robots.py
-    │   │   ├── test_url_utils.py
-    │   │   └── test_utils.py
-    │   ├── data
-    │   │   ├── models
-    │   │   │   ├── apply_models
-    │   │   │   │   ├── __init__.py
-    │   │   │   │   └── test_source_apply_model.py
-    │   │   │   ├── changes
-    │   │   │   │   ├── test_acteur_create_as_parent.py
-    │   │   │   │   ├── test_acteur_delete_as_parent.py
-    │   │   │   │   ├── test_acteur_keep_as_parent.py
-    │   │   │   │   ├── test_acteur_revision_change_nothing.py
-    │   │   │   │   ├── test_acteur_rgpd_anonymize.py
-    │   │   │   │   ├── test_acteur_update.py
-    │   │   │   │   ├── test_acteur_update_parent_id.py
-    │   │   │   │   └── test_acteur_update_revision.py
-    │   │   │   ├── suggestion_factory.py
-    │   │   │   ├── test_change.py
-    │   │   │   └── test_suggestion.py
-    │   │   ├── test_admin_actions.py
-    │   │   ├── test_suggestion_models.py
-    │   │   └── test_suggestion_views.py
-    │   ├── qfdmd
-    │   │   ├── qfdmod_factory.py
-    │   │   ├── test_genre_nombre_model.py
-    │   │   ├── test_import_legacy_synonymes.py
-    │   │   ├── test_legacy_synonyme_redirection.py
-    │   │   ├── test_lien.py
-    │   │   ├── test_middleware.py
-    │   │   ├── test_produit.py
-    │   │   ├── test_produit_page.py
-    │   │   ├── test_qfdmd_utils.py
-    │   │   ├── test_signals.py
-    │   │   └── test_synonyme.py
-    │   ├── qfdmo
-    │   │   ├── acteur_factory.py
-    │   │   ├── action_factory.py
-    │   │   ├── admin
-    │   │   │   └── test_source_export.py
-    │   │   ├── carte_config_factory.py
-    │   │   ├── sscatobj_factory.py
-    │   │   ├── test_acteur.py
-    │   │   ├── test_acteur_methods.py
-    │   │   ├── test_acteur_properties.py
-    │   │   ├── test_acteur_service.py
-    │   │   ├── test_acteur_type.py
-    │   │   ├── test_action.py
-    │   │   ├── test_addresses_view.py
-    │   │   ├── test_adresse_get_object_list.py
-    │   │   ├── test_auto_submit_mixin.py
-    │   │   ├── test_autocomplete_address_view.py
-    │   │   ├── test_carte_address_widget.py
-    │   │   ├── test_carte_config.py
-    │   │   ├── test_categorie.py
-    │   │   ├── test_get_form_mixin.py
-    │   │   ├── test_label_qualite.py
-    │   │   ├── test_map_form.py
-    │   │   ├── test_natural_key.py
-    │   │   ├── test_open_source_displayedacteur_ressource.py
-    │   │   ├── test_proposition_service.py
-    │   │   ├── test_source.py
-    │   │   ├── test_sous_categorie.py
-    │   │   ├── test_views.py
-    │   │   └── views
-    │   │       └── test_carte_icon_display.py
-    │   ├── search_tests
-    │   │   ├── __init__.py
-    │   │   ├── test_purge_orphan_searchterm_index.py
-    │   │   ├── test_score_breakdown.py
-    │   │   ├── test_search_term.py
-    │   │   └── test_search_view.py
-    │   └── stats
-    │       └── test_stats_utils.py
-    └── uv.lock
-373 directories, 1668 files
+    └── unit_tests
+        ├── conftest.py
+        ├── core
+        │   ├── templatetags
+        │   │   ├── test_acteur_tags.py
+        │   │   ├── test_carte_tag.py
+        │   │   └── test_qfdmo_tags.py
+        │   ├── test_accessibilite_mineurs_previews.py
+        │   ├── test_accessibilite_previews.py
+        │   ├── test_healthz.py
+        │   ├── test_robots.py
+        │   ├── test_url_utils.py
+        │   └── test_utils.py
+        ├── data
+        │   ├── models
+        │   │   ├── apply_models
+        │   │   │   ├── __init__.py
+        │   │   │   └── test_source_apply_model.py
+        │   │   ├── changes
+        │   │   │   ├── test_acteur_create_as_parent.py
+        │   │   │   ├── test_acteur_delete_as_parent.py
+        │   │   │   ├── test_acteur_keep_as_parent.py
+        │   │   │   ├── test_acteur_revision_change_nothing.py
+        │   │   │   ├── test_acteur_rgpd_anonymize.py
+        │   │   │   ├── test_acteur_update.py
+        │   │   │   ├── test_acteur_update_parent_id.py
+        │   │   │   └── test_acteur_update_revision.py
+        │   │   ├── suggestion_factory.py
+        │   │   ├── test_change.py
+        │   │   └── test_suggestion.py
+        │   ├── test_admin_actions.py
+        │   ├── test_suggestion_models.py
+        │   └── test_suggestion_views.py
+        ├── qfdmd
+        │   ├── qfdmod_factory.py
+        │   ├── test_genre_nombre_model.py
+        │   ├── test_import_legacy_synonymes.py
+        │   ├── test_legacy_synonyme_redirection.py
+        │   ├── test_lien.py
+        │   ├── test_middleware.py
+        │   ├── test_produit.py
+        │   ├── test_produit_page.py
+        │   ├── test_qfdmd_utils.py
+        │   ├── test_signals.py
+        │   └── test_synonyme.py
+        ├── qfdmo
+        │   ├── acteur_factory.py
+        │   ├── action_factory.py
+        │   ├── admin
+        │   │   └── test_source_export.py
+        │   ├── carte_config_factory.py
+        │   ├── sscatobj_factory.py
+        │   ├── test_acteur.py
+        │   ├── test_acteur_methods.py
+        │   ├── test_acteur_properties.py
+        │   ├── test_acteur_service.py
+        │   ├── test_acteur_type.py
+        │   ├── test_action.py
+        │   ├── test_addresses_view.py
+        │   ├── test_adresse_get_object_list.py
+        │   ├── test_auto_submit_mixin.py
+        │   ├── test_autocomplete_address_view.py
+        │   ├── test_carte_address_widget.py
+        │   ├── test_carte_config.py
+        │   ├── test_categorie.py
+        │   ├── test_get_form_mixin.py
+        │   ├── test_label_qualite.py
+        │   ├── test_map_form.py
+        │   ├── test_natural_key.py
+        │   ├── test_open_source_displayedacteur_ressource.py
+        │   ├── test_proposition_service.py
+        │   ├── test_source.py
+        │   ├── test_sous_categorie.py
+        │   ├── test_views.py
+        │   └── views
+        │       └── test_carte_icon_display.py
+        ├── search_tests
+        │   ├── __init__.py
+        │   ├── test_purge_orphan_searchterm_index.py
+        │   ├── test_score_breakdown.py
+        │   ├── test_search_term.py
+        │   └── test_search_view.py
+        └── stats
+            └── test_stats_utils.py
+374 directories, 1673 files
