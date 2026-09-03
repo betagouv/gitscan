@@ -110,6 +110,7 @@
 │   │   │   │   │   │   ├── create.usecase.ts
 │   │   │   │   │   │   ├── export-portal-contact-lines.usecase.ts
 │   │   │   │   │   │   ├── find-portal-contact-lines.usecase.ts
+│   │   │   │   │   │   ├── get-public-statistics.usecase.ts
 │   │   │   │   │   │   ├── group-by-brs-knowledge.usecase.ts
 │   │   │   │   │   │   ├── group-by-departements.usecase.ts
 │   │   │   │   │   │   ├── group-by-eligibility-stats.usecase.ts
@@ -259,7 +260,8 @@
 │   │   │   │   │   └── distributor.repository.interface.ts
 │   │   │   │   ├── eligibility-simulation
 │   │   │   │   │   ├── eligibility-simulation.interface.ts
-│   │   │   │   │   └── eligibility-simulation.repository.interface.ts
+│   │   │   │   │   ├── eligibility-simulation.repository.interface.ts
+│   │   │   │   │   └── public-statistics-privacy.ts
 │   │   │   │   ├── geocoder
 │   │   │   │   │   └── geocoder.service.interface.ts
 │   │   │   │   ├── google-sheets
@@ -396,9 +398,11 @@
 │   │   │   │   │   │       ├── get-eligibility-simulations-grouped-by-regions.controller.ts
 │   │   │   │   │   │       ├── get-eligibility-simulations-monthly-summary.controller.ts
 │   │   │   │   │   │       ├── get-eligibility-simulations-real-estate-situation.controller.ts
+│   │   │   │   │   │       ├── get-public-eligibility-statistics.controller.ts
 │   │   │   │   │   │       └── update-eligibility-simulation.controller.ts
 │   │   │   │   │   ├── dtos
 │   │   │   │   │   │   ├── create.dto.ts
+│   │   │   │   │   │   ├── public-statistics.dto.ts
 │   │   │   │   │   │   └── update.dto.ts
 │   │   │   │   │   ├── eligibility-simulation.entity.ts
 │   │   │   │   │   ├── eligibility-simulation.module.ts
@@ -463,6 +467,7 @@
 │   │   │   │   │   │   └── send-portal-lead-notifications.ts
 │   │   │   │   │   ├── distributor-eligibility-simulation.entity.ts
 │   │   │   │   │   ├── dtos
+│   │   │   │   │   │   ├── admin-ofss-filters.dto.ts
 │   │   │   │   │   │   ├── create.dto.ts
 │   │   │   │   │   │   ├── find-my-ofs.dto.ts
 │   │   │   │   │   │   ├── getOfss.dto.ts
@@ -505,7 +510,9 @@
 │   │   │   │   │   │   ├── 1775000000000-add_user_last_login_at.ts
 │   │   │   │   │   │   ├── 1775000000000-create_ofs_eligibility_simulation_table.ts
 │   │   │   │   │   │   ├── 1776000000000-add_commercialisateur_transmissions.ts
-│   │   │   │   │   │   └── 1777000000000-create_portal_lead_notification_preference.ts
+│   │   │   │   │   │   ├── 1777000000000-create_portal_lead_notification_preference.ts
+│   │   │   │   │   │   ├── 1778000000000-assign_metropole_de_lyon_locations.ts
+│   │   │   │   │   │   └── 1780000000000-add_distributor_and_housing_type_to_brs_diffusion_website.ts
 │   │   │   │   │   ├── seeds
 │   │   │   │   │   │   ├── brs-diffusion-website
 │   │   │   │   │   │   │   ├── data.ts
@@ -691,6 +698,7 @@
 │   │   │   │   │       ├── calculate-conversion-funnel.usecase.unit-spec.ts
 │   │   │   │   │       ├── count-simulations.usecase.unit-spec.ts
 │   │   │   │   │       ├── create.usecase.unit-spec.ts
+│   │   │   │   │       ├── get-public-statistics.usecase.unit-spec.ts
 │   │   │   │   │       ├── group-by-brs-knowledge.usecase.unit-spec.ts
 │   │   │   │   │       ├── group-by-departements.usecase.unit-spec.ts
 │   │   │   │   │       ├── group-by-eligibility-stats.usecase.unit-spec.ts
@@ -737,7 +745,8 @@
 │   │   │   │   ├── common
 │   │   │   │   │   └── paginationProps.unit-spec.ts
 │   │   │   │   └── eligibility-simulation
-│   │   │   │       └── eligibility-simulation.interface.unit-spec.ts
+│   │   │   │       ├── eligibility-simulation.interface.unit-spec.ts
+│   │   │   │       └── public-statistics-privacy.unit-spec.ts
 │   │   │   ├── infrastructure
 │   │   │   │   ├── acquisition-simulation
 │   │   │   │   │   ├── acquisition-simulation.entity.unit-spec.ts
@@ -788,6 +797,7 @@
 │   │   │   │   │   │       ├── create-eligibility-simulation.controller.e2e-spec.ts
 │   │   │   │   │   │       ├── get-eligibility-simulations-conversion-funnel.controller.e2e-spec.ts
 │   │   │   │   │   │       ├── get-eligibility-simulations-grouped-by-eligibility.controller.e2e-spec.ts
+│   │   │   │   │   │       ├── get-public-eligibility-statistics.controller.e2e-spec.ts
 │   │   │   │   │   │       └── update-eligibility-simulation.controller.e2e-spec.ts
 │   │   │   │   │   ├── dtos
 │   │   │   │   │   │   ├── create.dto.unit-spec.ts
@@ -1047,15 +1057,17 @@
 │   │   │   │   │       │       └── Synthesis
 │   │   │   │   │       │           ├── Synthesis.svelte
 │   │   │   │   │       │           └── SynthesisContent.svelte
-│   │   │   │   │       └── statistiques
-│   │   │   │   │           ├── AcquisitionSimulationsConversionFunnel.svelte
-│   │   │   │   │           ├── ConversionFunnel.svelte
-│   │   │   │   │           ├── DepartementalConnectionCount.svelte
-│   │   │   │   │           ├── HousingTypesRepartition.svelte
-│   │   │   │   │           ├── RegionalConnectionCount.svelte
-│   │   │   │   │           ├── SimulationsCount.svelte
-│   │   │   │   │           ├── StatisticBox.svelte
-│   │   │   │   │           └── Stats.svelte
+│   │   │   │   │       ├── statistiques
+│   │   │   │   │       │   ├── AcquisitionSimulationsConversionFunnel.svelte
+│   │   │   │   │       │   ├── ConversionFunnel.svelte
+│   │   │   │   │       │   ├── DepartementalConnectionCount.svelte
+│   │   │   │   │       │   ├── HousingTypesRepartition.svelte
+│   │   │   │   │       │   ├── RegionalConnectionCount.svelte
+│   │   │   │   │       │   ├── SimulationsCount.svelte
+│   │   │   │   │       │   ├── StatisticBox.svelte
+│   │   │   │   │       │   └── Stats.svelte
+│   │   │   │   │       └── statistiques-eligibilite
+│   │   │   │   │           └── DistributionCard.svelte
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── managers
 │   │   │   │   │   ├── acquisition-simulator.svelte.ts
@@ -1113,6 +1125,8 @@
 │   │   │       │   │   │   └── +server.ts
 │   │   │       │   │   ├── eligibility
 │   │   │       │   │   │   └── +server.ts
+│   │   │       │   │   ├── public-statistics
+│   │   │       │   │   │   └── +server.ts
 │   │   │       │   │   ├── real-estate-situation
 │   │   │       │   │   │   └── +server.ts
 │   │   │       │   │   └── simulations
@@ -1134,6 +1148,8 @@
 │   │   │       ├── blog
 │   │   │       │   ├── +page.svelte
 │   │   │       │   ├── 5-idees-recues-sur-le-bail-reel-solidaire-brs
+│   │   │       │   │   └── +page.svelte
+│   │   │       │   ├── achat-logement-social-bail-reel-solidaire-brs
 │   │   │       │   │   └── +page.svelte
 │   │   │       │   ├── acheter-son-logement-sans-se-ruiner-3-solutions-a-connaitre-absolument
 │   │   │       │   │   └── +page.svelte
@@ -1192,6 +1208,9 @@
 │   │   │       ├── sitemap.xml
 │   │   │       │   └── +server.ts
 │   │   │       ├── statistiques
+│   │   │       │   ├── +page.server.ts
+│   │   │       │   └── +page.svelte
+│   │   │       ├── statistiques-eligibilite
 │   │   │       │   ├── +page.server.ts
 │   │   │       │   └── +page.svelte
 │   │   │       └── tout-savoir-sur-le-bail-reel-solidaire-brs
@@ -1305,7 +1324,8 @@
 │       │       └── src
 │       │           └── lib
 │       │               └── server
-│       │                   └── auth.spec.ts
+│       │                   ├── auth.spec.ts
+│       │                   └── backend.spec.ts
 │       ├── tsconfig.json
 │       └── vite.config.ts
 ├── docker-compose.yml
@@ -1322,4 +1342,4 @@
 │   └── start.sh
 └── scripts
     └── create-metabase-eligibility-dashboard.mjs
-389 directories, 935 files
+393 directories, 951 files
