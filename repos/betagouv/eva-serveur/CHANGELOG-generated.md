@@ -1,29 +1,34 @@
-## Changelog : eva-serveur (30 derniers jours, au 19 août 2026)
+## Changelog : eva-serveur (30 derniers jours, au 03/09/2026)
 
 ### Résumé
-Cette période a été marquée par une restructuration importante du code pour mieux séparer les fonctionnalités spécifiques à l'outil Evapro du cœur du système. Parallèlement, l'expérience utilisateur a été affinée grâce à des améliorations de l'interface, une gestion des droits plus précise pour les conseillers et la résolution de plusieurs bugs d'affichage et de génération de documents.
+Cette période a été marquée par une modernisation majeure de l'infrastructure technique (passage à Rails 8 et Ruby 4) et une restructuration profonde du code pour mieux distinguer les fonctionnalités "eva" et "evapro". Les utilisateurs bénéficieront d'une meilleure stabilité lors de la génération de documents, de performances accrues pour le traitement des images et de nouvelles capacités de modification pour les conseillers.
 
 ### Évolutions fonctionnelles
-- **Gestion des accès et permissions** : 
-    - Ajustement des droits pour les utilisateurs Evapro (possibilité de lancer des campagnes sans pouvoir les lire).
-    - Rétablissement de l'accès aux campagnes de structure pour les conseillers Evapro.
-- **Améliorations de l'interface (UI)** :
-    - Optimisation de la lisibilité des tableaux (campagnes, bénéficiaires) et de l'affichage des événements.
-    - Ajout de fils d'Ariane pour faciliter la navigation et affichage des coordonnées (email/téléphone) sur les pages de structures.
-    - Simplification du nommage automatique des campagnes Evapro.
-    - Ajout de la colonne "structure" dans l'index des superadministrateurs pour les évaluations Evapro.
-- **Corrections de bugs** :
-    - Résolution de problèmes d'affichage de données (doublons de bénéficiaires, erreurs de redirection, affichage des coûts et des événements d'abandon).
-    - Correction de la génération de fichiers PDF.
-    - Suppression du formatage automatique sur les champs de saisie de numéros de téléphone pour éviter les erreurs de saisie.
+- **Nouvelle fonctionnalité** : Les conseillers ont désormais la possibilité de modifier les bénéficiaires.
+- **Accessibilité et UX** :
+    - Amélioration de l'accessibilité pour les lecteurs d'écran (identification explicite des champs email).
+    - Optimisation de l'affichage : correction du défilement horizontal sur le tableau des comptes et passage du tableau des bénéficiaires en mode multiligne.
+    - Tri automatique des structures par date de création.
+- **Corrections et traductions** :
+    - Correction des traductions pour diverses métriques (eva et evapro).
+    - Résolution de bugs d'affichage (métriques d'impact de coûts) et de redirection après suppression d'une évaluation.
+    - Amélioration de la logique de restitution pour les situations non diagnostiques (retour au dernier essai).
 
 ### Évolutions techniques
-- **Refonte de l'architecture** : 
-    - Restructuration majeure du modèle `Evaluation` pour isoler les concepts propres à l'application Eva (données sociodémographiques, statuts de suivi, mises en action) et améliorer la maintenabilité du code.
-- **Optimisation et maintenance** :
-    - Réduction du bruit dans les logs en ignorant les requêtes de bots (scans WordPress/PHP et ASP.NET).
-    - Nettoyage du code (suppression de méthodes d'aide inutilisées, de routes obsolètes et de code mort).
-    - Refactorisation de la logique de lancement des campagnes et des helpers de vue.
+- **Mises à jour majeures** : Migration de l'environnement vers Ruby 4.0.6 et Rails 8.0.5.
+- **Refactoring architectural** :
+    - Séparation structurelle et logique des composants "eva" et "evapro" (calculs de complétude, restitutions et organisation des répertoires).
+    - Réorganisation de l'ordre d'inclusion des modules pour résoudre des problèmes de callbacks.
+- **Optimisation des performances et stabilité** :
+    - **Traitement d'images** : Optimisation du redimensionnement via une limitation de la concurrence et une répartition des tâches par question.
+    - **Génération de PDF** : Sécurisation de l'utilisation de Chrome Headless (utilisation de mutex et gestion de la concurrence) pour éviter les conflits lors des exports.
+    - **Requêtes** : Regroupement des requêtes pour le composant `StandardisateurGlissant` et optimisation de la configuration du serveur Puma.
+- **Intégrations et sécurité** :
+    - Ajout d'un User-Agent pour les requêtes vers l'API Sirene.
+    - Filtrage des logs pour ignorer les scans de bots malveillants (WordPress, PHP, ASP.NET).
 
 ### Autres changements
-- **Traductions** : Mise à jour des textes pour les métriques de synthèse Evapro et les messages d'aide (hints) de saisie.
+- **Maintenance et DevOps** :
+    - Correction du script d'initialisation des `reviewapp`.
+    - Nettoyage du code (suppression de helpers obsolètes et renommage de fichiers de vue).
+    - Documentation de notes techniques internes.
