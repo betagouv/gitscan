@@ -1,57 +1,58 @@
 {
   "url": "https://github.com/proconnect-gouv/hyyypertool",
   "name": "hyyypertool",
-  "description": "Outil de modération backoffice pour MonComptePro, permettant la gestion des utilisateurs, des organisations et le traitement des demandes de modération.",
+  "description": "Outil de modération backoffice pour MonComptePro, permettant la gestion des utilisateurs, des organisations et la vérification des informations de domaine.",
   "language": "TypeScript",
   "features": [
-    "Administration & Backoffice",
-    "Gestion des utilisateurs & Permissions",
     "Gestion documentaire & Fichiers",
+    "Authentification & Accès",
     "Recherche & Filtres",
+    "Gestion des utilisateurs & Permissions",
+    "Sécurité & Conformité",
+    "Administration & Backoffice",
     "Suivi & Traçabilité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
+    "Bun",
     "Preact",
-    "Hono",
     "HTMX",
-    "Tailwind CSS",
+    "Hono",
     "Zod",
     "Drizzle ORM",
-    "PostgreSQL",
-    "Bun"
+    "Tailwind CSS",
+    "PostgreSQL"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "TypeScript / JavaScript",
-    "Design System (DSFR & UI libs)",
     "Docker & Conteneurs",
     "CI/CD & Déploiement",
-    "Scripts & Utilitaires"
+    "Design System (DSFR & UI libs)",
+    "Tests"
   ],
   "auth": {
     "methods": [
-      "oauth2"
-    ],
-    "providers": []
+      "oauth2",
+      "jwt"
+    ]
   },
-  "tests": [
-    "Cypress",
-    "Bun test"
-  ],
+  "tests": "Cypress (E2E), Bun test",
   "workflows": [
-    "GitHub Actions"
+    "Automated Release",
+    "Release it!"
   ],
-  "lastActivity": "2026-08-06T00:00:00Z",
+  "lastActivity": "2026-09-02T00:00:00Z",
   "status": "maintained",
-  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "TypeScript",
-    "Bases de données SQL",
     "Docker & Conteneurs",
-    "CI/CD & GitHub Actions"
+    "CI/CD & GitHub Actions",
+    "Design System & UI",
+    "Bases de données SQL",
+    "HTML, CSS & Web"
   ]
 }
