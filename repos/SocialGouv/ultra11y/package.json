@@ -1,0 +1,111 @@
+{
+  "name": "ultra11y",
+  "version": "5.42.1",
+  "description": "Audit HTML/CSS/JSX against WCAG 2.2 AA and produce a dated compliance report, or author/review accessible markup (native-HTML-first). A skills.sh agent skill: an install-free static engine (bundled, no npm install) plus the agent's judgment, with check/verify gates against hallucinated non-conformities, and pluggable in-repo standards packs (RGAA France first; Section 508 & EN 301 549 next).",
+  "type": "module",
+  "packageManager": "pnpm@10.33.0",
+  "bin": {
+    "ultra11y": "scripts/ultra11y.mjs"
+  },
+  "exports": {
+    ".": "./.opencode/plugins/ultra11y.js",
+    "./playwright": {
+      "types": "./dist/playwright.d.ts",
+      "import": "./dist/playwright.mjs",
+      "default": "./dist/playwright.mjs"
+    },
+    "./cypress": {
+      "types": "./dist/cypress.d.ts",
+      "import": "./dist/cypress.mjs",
+      "default": "./dist/cypress.mjs"
+    },
+    "./cypress/plugin": {
+      "types": "./dist/cypress-plugin.d.ts",
+      "import": "./dist/cypress-plugin.mjs",
+      "default": "./dist/cypress-plugin.mjs"
+    },
+    "./scripts/ultra11y.mjs": "./scripts/ultra11y.mjs",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "scripts",
+    "src",
+    "dist",
+    "skills",
+    "docker",
+    ".claude-plugin",
+    ".codex-plugin",
+    ".agents",
+    ".opencode",
+    "hooks"
+  ],
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "scripts": {
+    "build": "tsup && node scripts/copy-bundle.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:perf": "vitest run --config vitest.perf.config.ts",
+    "test:browser": "vitest run --config vitest.browser.config.ts",
+    "bench": "node scripts/bench.mjs",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome ci .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write .",
+    "verify:bundle": "node scripts/verify-skill-bundle.mjs",
+    "check:build": "tsup && node scripts/copy-bundle.mjs && git diff --exit-code -- scripts/ultra11y.mjs skills/ultra11y/scripts/ultra11y.mjs skills/review-a11y/scripts/ultra11y.mjs dist && node scripts/build-extension-icons.mjs --check && node scripts/verify-skill-bundle.mjs",
+    "build:wcag": "node scripts/build-standards.mjs",
+    "check:standards": "node scripts/build-standards.mjs --check",
+    "build:pack:rgaa": "node scripts/build-pack-rgaa.mjs",
+    "check:pack:rgaa": "node scripts/build-pack-rgaa.mjs --check",
+    "build:guidance:wcag": "node scripts/build-guidance-wcag.mjs",
+    "check:guidance:wcag": "node scripts/build-guidance-wcag.mjs --check",
+    "build:criteria": "node scripts/ultra11y.mjs criteria --generate > skills/ultra11y/references/criteria.md",
+    "build:act": "UPDATE_ACT_MATRIX=1 vitest run tests/act-matrix-sync.test.ts",
+    "build:act:refresh": "node scripts/build-act-corpus.mjs --refresh",
+    "build:adjudication": "node scripts/build-adjudication.mjs && UPDATE_ADJUDICATION_MD=1 vitest run tests/adjudication-md-sync.test.ts",
+    "check:adjudication": "node scripts/build-adjudication.mjs --check",
+    "demo": "node scripts/ultra11y.mjs audit tests/fixtures/non-conforming/bad.html --out /tmp/ultra11y-demo --json > /dev/null && node scripts/ultra11y.mjs report --in /tmp/ultra11y-demo/audit-latest.json --out /tmp/ultra11y-demo && node scripts/ultra11y.mjs check --report /tmp/ultra11y-demo/wcag-*.md && node scripts/ultra11y.mjs criteria --list",
+    "release": "semantic-release",
+    "build:icons": "node scripts/build-extension-icons.mjs"
+  },
+  "license": "MIT",
+  "author": "maxgfr",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxgfr/ultra11y"
+  },
+  "dependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@babel/parser": "^8.0.0",
+    "@playwright/test": "^1.62.1",
+    "domhandler": "^6.0.1",
+    "htmlparser2": "^12.0.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.1",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/exec": "^7.1.0",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/npm": "^13.1.5",
+    "@types/node": "^26.0.1",
+    "@vitest/coverage-v8": "^4.1.9",
+    "jsdom": "^29.1.1",
+    "semantic-release": "^25.0.8",
+    "tsup": "^8.5.1",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.9",
+    "yaml": "^2.9.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": ".opencode/plugins/ultra11y.js"
+}
