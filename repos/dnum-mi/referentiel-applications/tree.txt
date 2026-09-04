@@ -379,6 +379,16 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260826150228_add_last_permission_change_impersonator
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260828071934_add_quality_campaign_status_and_action_log
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260831155720_add_email_log_was_sent
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260903014730_add_technology_eol_cycle
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260903030000_recheck_eol_rows_without_cycle
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260903140000_add_technology_eol_source
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   ├── schema
 │   │   │   ├── action-log.prisma
@@ -501,6 +511,9 @@
 │   │   │   │   └── pagination.dto.ts
 │   │   │   ├── guards
 │   │   │   │   └── permission.guard.ts
+│   │   │   ├── http
+│   │   │   │   ├── outbound-dispatcher.spec.ts
+│   │   │   │   └── outbound-dispatcher.ts
 │   │   │   ├── request-context.ts
 │   │   │   ├── service
 │   │   │   │   ├── check-permissions.service.spec.ts
@@ -512,6 +525,9 @@
 │   │   │       ├── compliance-presence.utils.ts
 │   │   │       ├── enum.utils.ts
 │   │   │       ├── excel.utils.ts
+│   │   │       ├── organization-scope.utils.spec.ts
+│   │   │       ├── organization-scope.utils.ts
+│   │   │       ├── quality-actions.utils.ts
 │   │   │       ├── quality.utils.ts
 │   │   │       └── types.ts
 │   │   ├── compliances
@@ -528,6 +544,7 @@
 │   │   │   └── utils
 │   │   │       ├── compliance.utils.ts
 │   │   │       ├── ecoindex-ssrf.spec.ts
+│   │   │       ├── ecoindex.utils.spec.ts
 │   │   │       └── ecoindex.utils.ts
 │   │   ├── config
 │   │   │   ├── app-config.ts
@@ -583,6 +600,7 @@
 │   │   │   ├── email-templates.services.ts
 │   │   │   ├── email.controller.ts
 │   │   │   ├── email.module.ts
+│   │   │   ├── email.service.spec.ts
 │   │   │   ├── email.service.ts
 │   │   │   ├── error
 │   │   │   │   └── mail-send.exception.ts
@@ -1272,7 +1290,9 @@
 │   │   │   │   ├── TechnicalDebtChart.vue
 │   │   │   │   └── TechnicalDebtModal.vue
 │   │   │   ├── technology
+│   │   │   │   ├── TechnologyForm.spec.ts
 │   │   │   │   ├── TechnologyForm.vue
+│   │   │   │   ├── TechnologyTab.spec.ts
 │   │   │   │   └── TechnologyTab.vue
 │   │   │   └── users
 │   │   │       ├── UserInfoTab.vue
@@ -1333,7 +1353,9 @@
 │   │   │   ├── applicationStore.ts
 │   │   │   ├── correlationStore.ts
 │   │   │   ├── endOfLifeStore.ts
+│   │   │   ├── hostingStore.spec.ts
 │   │   │   ├── hostingStore.ts
+│   │   │   ├── metadataStore.spec.ts
 │   │   │   ├── metadataStore.ts
 │   │   │   ├── notificationStore.ts
 │   │   │   ├── organizationStore.ts
@@ -1351,6 +1373,7 @@
 │   │   ├── utils
 │   │   │   ├── chart.ts
 │   │   │   ├── cssVars.ts
+│   │   │   ├── email.ts
 │   │   │   ├── fieldComparison.ts
 │   │   │   ├── generator-utils.ts
 │   │   │   ├── get-ecoindex-grade.ts
@@ -1360,6 +1383,8 @@
 │   │   │   ├── quality-next-actions.ts
 │   │   │   ├── quality.ts
 │   │   │   ├── regex.ts
+│   │   │   ├── relation-update.spec.ts
+│   │   │   ├── relation-update.ts
 │   │   │   ├── roles-utils.ts
 │   │   │   ├── stale-chunk.spec.ts
 │   │   │   ├── stale-chunk.ts
@@ -1369,6 +1394,7 @@
 │   │   ├── views
 │   │   │   ├── AccessibilityPage.spec.ts
 │   │   │   ├── AccessibilityPage.vue
+│   │   │   ├── AdminPage.spec.ts
 │   │   │   ├── AdminPage.vue
 │   │   │   ├── ApplicationPage.vue
 │   │   │   ├── ApplicationSearchPage.vue
@@ -1441,4 +1467,4 @@
 │       ├── campaign.mjs
 │       └── sync-issue.mjs
 └── release-please-config.json
-370 directories, 1073 files
+376 directories, 1093 files
