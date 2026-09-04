@@ -1,62 +1,63 @@
 {
   "url": "https://github.com/betagouv/pitchou",
   "name": "pitchou",
-  "description": "Pitchou permet de mieux contrôler les dérogations d'espèces protégées. Il récupère les données des dossiers via l'API Démarche Numérique et en fait une sauvegarde régulière.",
+  "description": "Outil de gestion et de contrôle des dérogations pour les espèces protégées, permettant la synchronisation des données avec Démarche Simplifiée.",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
-    "API & Intégrations",
+    "Visualisation de données & Cartographie",
     "Authentification & Accès",
+    "Statistiques & Rapports",
     "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
-    "Notifications & Alertes",
-    "Sécurité & Conformité",
-    "Visualisation de données & Cartographie"
+    "Administration & Backoffice",
+    "Formulaires & Démarches"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
+    "Svelte",
     "Node.js",
     "PostgreSQL",
-    "Svelte",
-    "Fastify",
-    "knex",
-    "pg",
-    "jose",
-    "just"
+    "Knex",
+    "MapLibre GL",
+    "Playwright",
+    "Scalingo",
+    "AWS S3",
+    "ProConnect"
   ],
   "components": [
-    "Frontend React",
     "API REST & GraphQL",
-    "Base de données PostgreSQL",
+    "PostgreSQL & SQL",
     "TypeScript / JavaScript",
-    "Docker & Conteneurs"
+    "Docker & Conteneurs",
+    "Node.js / NestJS",
+    "Design System (DSFR & UI libs)",
+    "Tests",
+    "CI/CD & Déploiement"
   ],
   "auth": {
     "methods": [
-      "oauth2",
-      "session"
+      "sso"
     ],
-    "providers": []
+    "providers": [
+      "ProConnect"
+    ]
   },
-  "tests": "Playwright",
-  "workflows": [],
-  "lastActivity": "2026-07-28T09:17:14+02:00",
+  "tests": [
+    "Playwright",
+    "Vitest"
+  ],
+  "lastActivity": "2026-08-27T17:43:49+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
   "tags": [
-    "Données & Open Data",
     "Écosystème beta.gouv / État",
     "TypeScript",
-    "Déploiement & Hosting",
-    "JavaScript",
+    "Docker & Conteneurs",
     "Bases de données SQL",
-    "Sécurité & Auth"
+    "Design System & UI",
+    "SIG & Géospatial",
+    "CI/CD & GitHub Actions"
   ]
 }

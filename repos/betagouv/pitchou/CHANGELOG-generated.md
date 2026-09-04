@@ -1,48 +1,33 @@
-## Changelog : pitchou (30 derniers jours, au 28 juillet 2026)
+## Changelog : pitchou (30 derniers jours, au 27 août 2026)
 
 ### Résumé
-Cette période a été marquée par d'importantes améliorations de l'interface utilisateur, notamment pour les instructeurs, avec l'ajout de nouvelles fonctionnalités de visualisation de données (cartographie, informations porteur de projet), de gestion des pièces jointes et de filtres. Des corrections et des améliorations de la sécurité ont également été apportées, ainsi que des mises à jour de la documentation et de la configuration.
+Ce mois-ci, les évolutions se sont concentrées sur l'amélioration de la gestion des espèces protégées et de leurs impacts, tant au niveau de l'interface utilisateur que de la fiabilité des données. Les capacités d'administration ont été renforcées pour faciliter les revues annuelles et la gestion des dossiers, tandis que la génération de documents a été simplifiée et sécurisée.
 
 ### Évolutions fonctionnelles
-- **Instructeur :** Ajout de la possibilité de contacter le dépositaire du dossier directement depuis l'entête du dossier. [#630](https://github.com/betagouv/pitchou/issues/630)
-- **Instructeur :** Ajout d'un onglet "Porteur de projet" pour afficher les informations relatives au porteur de projet. [#627](https://github.com/betagouv/pitchou/issues/627)
-- **Instructeur :** Affichage et téléchargement de la cartographie associée au dossier. [#629](https://github.com/betagouv/pitchou/issues/629)
-- **Instructeur :** Amélioration de la réactivité de la date des prescriptions et de l'interface utilisateur. [#649](https://github.com/betagouv/pitchou/issues/649)
-- **Instructeur :** Rafraîchissement du dossier en cache pour assurer l'affichage des données les plus récentes. [#648](https://github.com/betagouv/pitchou/issues/648)
-- **Instructeur :** Ajout de suivi d'audience avec Matomo. [#656](https://github.com/betagouv/pitchou/issues/656)
-- **Instructeur :** Activation de la saisie de date typée. [#658](https://github.com/betagouv/pitchou/issues/658)
-- **Dossier :** Ajout de nouveaux filtres pour faciliter la recherche et le tri des dossiers. [#645](https://github.com/betagouv/pitchou/issues/645)
-- **Dossier :** Remplacement de "representative" par "identite_dossier" pour une meilleure clarté. [#651](https://github.com/betagouv/pitchou/issues/651)
-- **Avis :** Ajout de directives pour la prise de décision du CNPN. [#643](https://github.com/betagouv/pitchou/issues/643)
-- **Pièces jointes :** Ajout d'une modale pour la gestion des pièces jointes. [#634](https://github.com/betagouv/pitchou/issues/634)
-- **Authentification :** Autorisation de domaines de préfecture supplémentaires pour l'accès. [#637](https://github.com/betagouv/pitchou/issues/637), [#641](https://github.com/betagouv/pitchou/issues/641), [#655](https://github.com/betagouv/pitchou/issues/655), [#657](https://github.com/betagouv/pitchou/issues/657)
-- **Admin :** Ajout d'une page de suivi des événements. [#664](https://github.com/betagouv/pitchou/issues/664)
-- **Admin :** Ajout de liens vers les fichiers et Google Drive dans le tableau de bord. [#660](https://github.com/betagouv/pitchou/issues/660)
-- **Admin :** Ajout de la gestion des groupes d'instructeurs. [#633](https://github.com/betagouv/pitchou/issues/633), [#664](https://github.com/betagouv/pitchou/issues/664)
-- **Génération de documents :** Ajout du nom du département dans les tags de génération de documents. [#668](https://github.com/betagouv/pitchou/issues/668)
-- **Génération de documents :** Mise à jour des modèles de documents et ajout de nouveaux fichiers de saisine. [#652](https://github.com/betagouv/pitchou/issues/652)
+- **Gestion des espèces et impacts** : Amélioration de l'interface utilisateur pour les espèces impactées et ajout de liens directs vers le référentiel des types d'impact.
+- **Suivi des anomalies** : Harmonisation de l'affichage des anomalies entre les logs de synchronisation et l'onglet projet pour une meilleure cohérence.
+- **Gestion documentaire** : 
+    - Possibilité de générer plusieurs fichiers simultanément [#678](https://github.com/betagouv/pitchou/issues/678).
+    - Clarification des libellés dans les modèles de documents [#677](https://github.com/betagouv/pitchou/issues/677).
+    - Correction permettant la génération de documents même sans espèces listées [#676](https://github.com/betagouv/pitchou/issues/676).
+- **Administration et dossiers** :
+    - Ajout de catégories d'activités [#688](https://github.com/betagouv/pitchou/issues/688).
+    - Possibilité d'assigner des "followers" à un dossier [#671](https://github.com/betagouv/pitchou/issues/671).
+    - Suivi de la source explicite des dossiers [#679](https://github.com/betagouv/pitchou/issues/679).
+    - Nouvel outil permettant aux administrateurs de télécharger les données des dossiers pour les revues annuelles [#684](https://github.com/betagouv/pitchou/issues/684).
+    - Possibilité de créer et mettre à jour des dossiers depuis l'extérieur de la DN [#669](https://github.com/betagouv/pitchou/issues/669).
+    - Possibilité de déclencher manuellement la synchronisation DN [#687](https://github.com/betagouv/pitchou/issues/687).
+- **Corrections** : Rectification de l'affichage de la zone cadastral sur la carte du projet [#674](https://github.com/betagouv/pitchou/issues/674).
 
 ### Évolutions techniques
-- **Architecture :** Déplacement des pages admin vers l'application Admin. [#622](https://github.com/betagouv/pitchou/issues/622)
-- **Authentification :** Implémentation de l'authentification avec ProConnect. [#613](https://github.com/betagouv/pitchou/issues/613)
-- **Base de données :** Traduction du schéma de la base de données. [#652](https://github.com/betagouv/pitchou/issues/652)
-- **Build :** Mise à jour des dépendances Node.js et pnpm. [#666](https://github.com/betagouv/pitchou/issues/666)
-- **Build :** Utilisation des dépendances natives de Just pour éviter les exécutions imbriquées redondantes. [#667](https://github.com/betagouv/pitchou/issues/667)
-- **Frontend :** Mise en place de Tailwind CSS en parallèle du DSFR et portage des fichiers. [#665](https://github.com/betagouv/pitchou/issues/665)
-- **Frontend :** Application du modèle DSFR à la page de connexion. [#659](https://github.com/betagouv/pitchou/issues/659)
-- **Monitoring :** Mise en place de Sentry pour les applications instructeur et admin.
-- **Staging :** Réinitialisation de la base de données et de S3 à chaque déploiement. [#621](https://github.com/betagouv/pitchou/issues/621)
-- **Refactoring :** Code en anglais avec termes métier français sans accents. [#647](https://github.com/betagouv/pitchou/issues/647)
+- **Fiabilisation des données** : Migration du référentiel des types d'impact vers la base de données (au lieu d'un fichier externe) pour plus de robustesse [#670](https://github.com/betagouv/pitchou/issues/670) et [#691](https://github.com/betagouv/pitchou/issues/691).
+- **Automatisation** : Peuplement automatique de la base de données avec les données des espèces impactées lors de la création de nouveaux fichiers [#683](https://github.com/betagouv/pitchou/issues/683).
+- **Refactoring** : Renommage de la phase de recevabilité pour plus de clarté [#690](https://github.com/betagouv/pitchou/issues/690).
+- **Observabilité** : Ajout d'un déclencheur de test Sentry pour l'administration [#675](https://github.com/betagouv/pitchou/issues/675).
 
 ### Autres changements
-- Mise à jour de la documentation des premiers pas.
-- Ajout de l'adresse email de contact sur la page 404. [#661](https://github.com/betagouv/pitchou/issues/661)
-- Ajout de mentions légales. [#638](https://github.com/betagouv/pitchou/issues/638)
-- Mise à jour du délégué à la protection des données (DPO). [#624](https://github.com/betagouv/pitchou/issues/624)
-- Nettoyage du code après la migration vers S3. [#598](https://github.com/betagouv/pitchou/issues/598)
-- Suppression de la personne qui suit le dossier lorsque celle-ci n'a plus accès au dossier. [#625](https://github.com/betagouv/pitchou/issues/625)
-- Correction de la sélection GraphQL geometry pour la synchronisation des données. [#632](https://github.com/betagouv/pitchou/issues/632)
-- Correction d'un bug lié à la date des avis. [#653](https://github.com/betagouv/pitchou/issues/653)
-- Correction d'un bug lié au déposant/mandataire en personne morale. [#650](https://github.com/betagouv/pitchou/issues/650)
-- Ajout de suivi des clics sur les liens de navigation. [#663](https://github.com/betagouv/pitchou/issues/663)
-- Ajout du support des fichiers .xlsx. [#628](https://github.com/betagouv/pitchou/issues/628)
+- **Documentation** : Ajout d'une ADR (Architecture Decision Record) détaillant la structuration des espèces protégées en base de données.
+- **Maintenance du code** : 
+    - Mise en place d'un changelog interne [#686](https://github.com/betagouv/pitchou/issues/686).
+    - Suppression des outils d'import obsolètes [#682](https://github.com/betagouv/pitchou/issues/682).
+    - Application d'une règle de limitation de taille des fichiers (200 lignes) pour améliorer la lisibilité [#680](https://github.com/betagouv/pitchou/issues/680).
