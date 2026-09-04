@@ -156,6 +156,7 @@
 │   │   │   ├── commands.py
 │   │   │   ├── constants.py
 │   │   │   ├── csv_user_import.py
+│   │   │   ├── di_v1.py
 │   │   │   ├── emails.py
 │   │   │   ├── exceptions_handler.py
 │   │   │   ├── file_upload_validators.py
@@ -163,6 +164,7 @@
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── commands
 │   │   │   │       ├── __init__.py
+│   │   │   │       ├── backfill_di_v1.py
 │   │   │   │       ├── delete_orphaned_uploads.py
 │   │   │   │       ├── generate_security_report.py
 │   │   │   │       ├── import_ft_users.py
@@ -194,6 +196,7 @@
 │   │   │   │   ├── test_csv_user_import.py
 │   │   │   │   ├── test_datanymizer_config.py
 │   │   │   │   ├── test_delete_orphaned_uploads.py
+│   │   │   │   ├── test_di_v1.py
 │   │   │   │   ├── test_emails.py
 │   │   │   │   ├── test_file_upload_validators.py
 │   │   │   │   ├── test_mixins.py
@@ -496,10 +499,10 @@
 │   │   │   │   ├── 0014_mobilisation_fields.py
 │   │   │   │   ├── 0015_service_full_desc.py
 │   │   │   │   ├── 0016_service_description.py
+│   │   │   │   ├── 0017_service_zone_eligibilite.py
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── data
 │   │   │   │       └── assignation-thematiques.csv
-│   │   │   ├── mobilisation.py
 │   │   │   ├── models.py
 │   │   │   ├── search.py
 │   │   │   ├── serializers.py
@@ -523,7 +526,6 @@
 │   │   │   │   ├── test_import_services.py
 │   │   │   │   ├── test_label_services.py
 │   │   │   │   ├── test_logs.py
-│   │   │   │   ├── test_mobilisation_sync.py
 │   │   │   │   ├── test_models.py
 │   │   │   │   ├── test_search.py
 │   │   │   │   ├── test_serializers.py
@@ -593,9 +595,11 @@
 │   │   │   │   ├── 0001_initial.py
 │   │   │   │   ├── 0002_seed_data.py
 │   │   │   │   ├── 0003_protect_structure_fks.py
+│   │   │   │   ├── 0004_structure_reseaux_porteurs.py
 │   │   │   │   └── __init__.py
 │   │   │   ├── models.py
 │   │   │   ├── permissions.py
+│   │   │   ├── reseaux_porteurs_mappings.py
 │   │   │   ├── serializers.py
 │   │   │   ├── templates
 │   │   │   │   ├── admin
@@ -700,6 +704,7 @@
 │       ├── delete-old-closed-orientation-attachments.sh
 │       ├── delete-orphaned-uploads.sh
 │       ├── import-decoupage-administratif.sh
+│       ├── import-sirene.sh
 │       ├── reset-database.sh
 │       ├── run-notification-tasks.sh
 │       ├── send-orientations-reminders-emails.sh
@@ -1464,4 +1469,4 @@
 └── tools
     ├── create-review-apps.sh
     └── release.sh
-276 directories, 1190 files
+276 directories, 1195 files
