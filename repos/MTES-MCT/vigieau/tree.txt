@@ -243,7 +243,9 @@
 │   │   │   │   ├── historic-computation-invalidation.ts
 │   │   │   │   ├── historic-config-schema-repair.migration.spec.ts
 │   │   │   │   ├── historic-cursor-generation.migration.spec.ts
-│   │   │   │   └── historic-cursor-progress.migration.spec.ts
+│   │   │   │   ├── historic-cursor-progress.migration.spec.ts
+│   │   │   │   ├── historic-range-aware-certified-repair.migration.spec.ts
+│   │   │   │   └── historic-range-aware-certified-repair.postgres.spec.ts
 │   │   │   ├── core
 │   │   │   │   ├── database-pool.spec.ts
 │   │   │   │   ├── database-pool.ts
@@ -285,7 +287,9 @@
 │   │   │   │   ├── datagouv.service.ts
 │   │   │   │   ├── external-publication-registry.migration.spec.ts
 │   │   │   │   ├── external-publication-registry.service.spec.ts
-│   │   │   │   └── external-publication-registry.service.ts
+│   │   │   │   ├── external-publication-registry.service.ts
+│   │   │   │   ├── historic-export-readiness.service.spec.ts
+│   │   │   │   └── historic-export-readiness.service.ts
 │   │   │   ├── departement
 │   │   │   │   ├── departement-geometry.spec.ts
 │   │   │   │   ├── departement-geometry.ts
@@ -381,6 +385,7 @@
 │   │   │   │   ├── 1787144400000-HistoricBackfillControlPlane.ts
 │   │   │   │   ├── 1787824216000-CommuneDepartementIndex.ts
 │   │   │   │   ├── 1787910600000-CertifiedHistoryRepairAudit.ts
+│   │   │   │   ├── 1788199200000-HistoricRangeAwareCertifiedRepair.ts
 │   │   │   │   └── historic-backfill-control-plane.migration.spec.ts
 │   │   │   ├── parametres
 │   │   │   │   ├── dto
@@ -412,10 +417,12 @@
 │   │   │   │   ├── complete-certified-history-restoration.ts
 │   │   │   │   ├── confirm-open-ended-predecessor.spec.ts
 │   │   │   │   ├── confirm-open-ended-predecessor.ts
+│   │   │   │   ├── datagouv-historic-export-operator.ts
 │   │   │   │   ├── historic-backfill-operator.spec.ts
 │   │   │   │   ├── historic-backfill-operator.ts
 │   │   │   │   ├── publish-datagouv-communes.spec.ts
 │   │   │   │   ├── publish-datagouv-communes.ts
+│   │   │   │   ├── publish-datagouv-historique-communes.spec.ts
 │   │   │   │   ├── publish-datagouv-historique-communes.ts
 │   │   │   │   ├── recompute-commune-statistics.spec.ts
 │   │   │   │   ├── recompute-commune-statistics.ts
@@ -1132,6 +1139,7 @@
 ├── package-lock.json
 ├── package.json
 └── scripts
+    ├── collect-production-health.mjs
     ├── inspect-zip-dates.mjs
     ├── lint-changed.mjs
     ├── smoke-admin-zone-publication.mjs
@@ -1142,15 +1150,26 @@
     ├── smoke-browser-tarbes.mjs
     ├── smoke-browser-tarbes.test.mjs
     ├── smoke-browser.mjs
+    ├── smoke-certified-history-policy.mjs
+    ├── smoke-certified-history-policy.test.mjs
     ├── smoke-datagouv.mjs
     ├── smoke-public-zone-publication.mjs
     ├── smoke-public.mjs
     ├── smoke-public.test.mjs
+    ├── smoke-sandre-policy.mjs
+    ├── smoke-sandre-policy.test.mjs
+    ├── smoke-sandre.mjs
     ├── smoke-statistics-policy.mjs
     ├── smoke-statistics.mjs
     ├── smoke-statistics.test.mjs
     ├── validate-procfiles.mjs
     ├── validate-procfiles.test.mjs
     ├── verify-admin-migrations.mjs
-    └── verify-pwa-build.mjs
-203 directories, 952 files
+    ├── verify-pwa-build.mjs
+    ├── wait-external-publications-policy.mjs
+    ├── wait-external-publications-policy.test.mjs
+    ├── wait-external-publications.mjs
+    ├── wait-zone-publication-policy.mjs
+    ├── wait-zone-publication-policy.test.mjs
+    └── wait-zone-publication.mjs
+203 directories, 971 files
