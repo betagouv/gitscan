@@ -1,4 +1,4 @@
-## Changelog : inclusion-connect (30 derniers jours, au 2026-08-24)
+## Changelog : inclusion-connect (30 derniers jours, au 01/09/2026)
 
 ### Résumé
-Aucune évolution fonctionnelle ou technique majeure n'a été enregistrée au cours des 30 derniers jours. L'activité récente se limite exclusivement à des mises à jour de routine des dépendances.
+L'activité récente du projet s'est limitée à la maintenance de routine des dépendances. Aucun changement fonctionnel ou technique majeur n'a été apporté au cours des 30 derniers jours.
