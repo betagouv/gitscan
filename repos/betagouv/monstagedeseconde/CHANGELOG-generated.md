@@ -1,15 +1,19 @@
-## Changelog : monstagedeseconde (30 derniers jours, au 17 août 2026)
+## Changelog : monstagedeseconde (30 derniers jours, au 03/09/2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a bénéficié d'améliorations significatives pour la gestion des élèves et l'affichage des partenaires. Nous avons également procédé à un nettoyage technique important en supprimant des modules obsolètes et en renforçant la stabilité de nos processus de déploiement et de tests automatisés.
+Cette période est marquée par l'introduction de la nouvelle interface chatMD, l'amélioration de la précision cartographique pour les détails des offres et un nettoyage important de l'interface (FAQ, modules tiers) afin de simplifier l'expérience utilisateur.
 
 ### Évolutions fonctionnelles
-- **Gestion des élèves** : Mise en place d'une nouvelle interface de gestion des élèves [#914](https://github.com/betagouv/monstagedeseconde/pull/914) et mise à jour de la page profil élève [#941](https://github.com/betagouv/monstagedeseconde/pull/941).
-- **Partenaires** : Ajout d'un carrousel pour l'affichage des logos des partenaires [#944](https://github.com/betagouv/monstagedeseconde/pull/944).
-- **Accessibilité** : Correction de plusieurs problèmes d'accessibilité, notamment des liens morts et des images sans description textuelle (alt), afin de garantir une meilleure expérience utilisateur.
+- Intégration de la nouvelle interface chatMD [#964](https://github.com/betagouv/monstagedeseconde/pull/964).
+- Amélioration de la cartographie des offres grâce à l'utilisation de tuiles OSM France.
+- Simplification de la FAQ par la suppression des anciens blocs de contenu [#966](https://github.com/betagouv/monstagedeseconde/pull/966).
+- Refonte de l'organisation des espaces de la plateforme [#949](https://github.com/betagouv/monstagedeseconde/pull/949).
 
 ### Évolutions techniques
-- **Nettoyage du code** : Suppression complète du module Tally et de ses liens associés [#950](https://github.com/betagouv/monstagedeseconde/pull/950).
-- **Fiabilité des tests** : Correction de nombreux tests automatisés "instables" (flaky tests) concernant les candidatures d'équipe, la recherche d'établissements et la signature de groupe [#940](https://github.com/betagouv/monstagedeseconde/pull/940).
-- **Déploiement et CI/CD** : Optimisation du processus de déploiement sur l'environnement de staging (rendu non-bloquant) et mise à jour du client SSH pour les déploiements vers Clever Cloud.
-- **Mode maintenance** : Amélioration de la gestion du mode maintenance, permettant de maintenir l'accès aux administrateurs et de normaliser la recherche par email.
+- Mise en place d'un "feature flip" pour permettre un déploiement contrôlé de chatMD.
+- Correction d'un bug provoquant un plantage du helper de texte structuré Prismic sur la bannière supérieure.
+- Refactorisation de la page des ressources.
+
+### Autres changements
+- Suppression du module Tally [#950](https://github.com/betagouv/monstagedeseconde/pull/950).
+- Nettoyage de l'infrastructure et de l'environnement de test (suppression de Mailtrap et mise à jour de la clé CI).

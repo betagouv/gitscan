@@ -356,6 +356,7 @@
 │   │   │   ├── char_counter_controller.js
 │   │   │   ├── character_count_controller.js
 │   │   │   ├── chart_controller.js
+│   │   │   ├── chatmd_controller.js
 │   │   │   ├── checkbox_svg_icon_controller.js
 │   │   │   ├── confirm_modal_controller.js
 │   │   │   ├── daily_hours_controller.js
@@ -708,6 +709,7 @@
 │   │   │   │   ├── backgrounds.scss
 │   │   │   │   ├── badges.scss
 │   │   │   │   ├── borders.scss
+│   │   │   │   ├── chatmd.scss
 │   │   │   │   ├── fa.scss
 │   │   │   │   ├── form.scss
 │   │   │   │   ├── help.scss
@@ -909,6 +911,7 @@
 │   │   │   ├── multi_coordinator.rb
 │   │   │   ├── operator.rb
 │   │   │   ├── prefecture_statistician.rb
+│   │   │   ├── pro_resources.rb
 │   │   │   ├── reporting
 │   │   │   │   ├── base_dimension.rb
 │   │   │   │   ├── dimension_by_group.rb
@@ -1478,6 +1481,7 @@
 │       ├── layouts
 │       │   ├── _analytics.html.erb
 │       │   ├── _breadcrumb.html.slim
+│       │   ├── _chatmd.html.slim
 │       │   ├── _crisp.html.erb
 │       │   ├── _dashboards_with_menu.html.slim
 │       │   ├── _extra_for_devs.html.slim
@@ -1618,6 +1622,9 @@
 │       │   ├── contact.html.slim
 │       │   ├── documents_utiles.html.slim
 │       │   ├── educonnect_logout_responsible.html.slim
+│       │   ├── faq_eleves.html.slim
+│       │   ├── faq_etablissements.html.slim
+│       │   ├── faq_offreurs.html.slim
 │       │   ├── home
 │       │   │   ├── _1_2_3.html.slim
 │       │   │   ├── _dispositif.html.slim
@@ -1634,6 +1641,7 @@
 │       │   │   ├── _partners_carousel.html.slim
 │       │   │   ├── _people_card.html.slim
 │       │   │   ├── _resource_card.html.slim
+│       │   │   ├── _resource_media_card.html.slim
 │       │   │   ├── _search_top_nav.html.slim
 │       │   │   ├── _social_network.html.slim
 │       │   │   ├── _sponsors.html.slim
@@ -1642,7 +1650,6 @@
 │       │   │   ├── everyone
 │       │   │   │   ├── _BO.html.slim
 │       │   │   │   ├── _everyone_resources.html.slim
-│       │   │   │   ├── _faq_in_cards.html.slim
 │       │   │   │   ├── _hero_everyone.html.slim
 │       │   │   │   ├── _hero_everyone_cards.html.slim
 │       │   │   │   ├── _onisep.html.slim
@@ -1651,33 +1658,30 @@
 │       │   │   │   ├── _contact_form.html.slim
 │       │   │   │   └── _hero.html.slim
 │       │   │   ├── pros
-│       │   │   │   ├── _faq.html.slim
 │       │   │   │   ├── _hero_pro.html.slim
 │       │   │   │   ├── _login.html.slim
 │       │   │   │   ├── _partners_header.html.slim
 │       │   │   │   ├── _pro_events.html.slim
+│       │   │   │   ├── _resources.html.slim
 │       │   │   │   ├── _sub_hero_pro.html.slim
 │       │   │   │   └── _videos.html.slim
 │       │   │   ├── school_management
-│       │   │   │   ├── _faq_school_management.html.slim
 │       │   │   │   ├── _hero.html.slim
 │       │   │   │   ├── _howitworks.html.slim
-│       │   │   │   └── _login.html.slim
+│       │   │   │   ├── _login.html.slim
+│       │   │   │   └── _resources.html.slim
 │       │   │   ├── statisticians
-│       │   │   │   ├── _faq_statistician.html.slim
 │       │   │   │   ├── _hero_statistician.html.slim
 │       │   │   │   ├── _howitworks_statistician.html.slim
 │       │   │   │   ├── _login.html.slim
-│       │   │   │   └── _usefull_resources.html.slim
+│       │   │   │   └── _resources.html.slim
 │       │   │   └── students
 │       │   │       ├── _discover_video.html.slim
-│       │   │       ├── _faq.html.slim
 │       │   │       ├── _hero_companies.html.slim
 │       │   │       ├── _hero_student.html.slim
 │       │   │       ├── _howitworks.html.slim
 │       │   │       ├── _last_offers.html.slim
 │       │   │       ├── _login.html.slim
-│       │   │       ├── _resource_faq_card.html.slim
 │       │   │       └── _resources.html.slim
 │       │   ├── home.html.slim
 │       │   ├── javascript_required.html.slim
@@ -2750,6 +2754,7 @@
 │   │   ├── application_controller_test.rb
 │   │   ├── boarding_houses_controller_test.rb
 │   │   ├── callbacks_controller_test.rb
+│   │   ├── chatmd_test.rb
 │   │   ├── dashboard
 │   │   │   ├── corporation_internship_agreements
 │   │   │   │   ├── index_test.rb
@@ -2929,6 +2934,7 @@
 │   │   ├── sectors.yml
 │   │   └── weeks.yml
 │   ├── helpers
+│   │   ├── application_helper_test.rb
 │   │   └── internship_offers_helper_test.rb
 │   ├── jobs
 │   │   ├── anonymize_user_job_test.rb
@@ -2966,6 +2972,7 @@
 │   │   │   ├── internship_agreement_test.rb
 │   │   │   ├── internship_application
 │   │   │   │   └── human_state_test.rb
+│   │   │   ├── pro_resources_test.rb
 │   │   │   ├── school_test.rb
 │   │   │   ├── user_management_role_test.rb
 │   │   │   ├── user_test.rb
@@ -3171,4 +3178,4 @@
 ├── vendor
 │   └── .keep
 └── yarn.lock
-438 directories, 2743 files
+438 directories, 2750 files
