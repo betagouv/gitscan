@@ -1,56 +1,64 @@
 {
   "url": "https://github.com/betagouv/anssi-recommandations-cyber-data",
   "name": "anssi-recommandations-cyber-data",
-  "description": "Une interface permettant d'évaluer le bot de l'ANSSI, basé sur Albert, et d'y indexer de nouveaux documents pour le RAG (Retrieval-Augmented Generation).",
+  "description": "Une interface permettant d'évaluer les réponses du bot de l'ANSSI (Albert) et d'indexer de nouveaux documents pour les systèmes de RAG (Retrieval-Augmented Generation).",
   "language": "Python",
   "features": [
-    "Gestion documentaire & Fichiers",
-    "Sécurité & Conformité",
-    "Recherche & Filtres",
     "Intelligence Artificielle & NLP",
-    "Données & Schémas"
+    "Gestion documentaire & Fichiers",
+    "Administration & Backoffice",
+    "Sécurité & Conformité",
+    "Recherche & Filtres"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "FastAPI",
+    "Uvicorn",
+    "Pydantic",
     "Pandas",
     "OpenAI",
     "Docling",
-    "Uvicorn",
+    "PyJWT",
+    "WebAuthn",
+    "Pytest",
+    "Ruff",
+    "Mypy",
     "Aiohttp",
-    "Pydantic",
-    "Puppeteer"
+    "Httpx"
   ],
   "components": [
     "API REST & GraphQL",
     "Python (scripts & backend)",
-    "Docker & Conteneurs",
     "Intelligence Artificielle / ML",
-    "Scripts & Utilitaires"
+    "Docker & Conteneurs",
+    "Scripts & Utilitaires",
+    "Documentation & Schémas"
   ],
   "auth": {
     "methods": [
       "jwt",
-      "session"
+      "session",
+      "mfa"
     ]
   },
   "tests": [
     "pytest",
+    "ruff",
     "mypy"
   ],
   "workflows": [
     "GitHub Actions"
   ],
-  "lastActivity": "2026-08-12T14:43:52+02:00",
-  "status": "maintained",
+  "lastActivity": "2026-09-03T11:01:55+02:00",
+  "status": "active",
   "license": null,
   "hasDocumentation": true,
   "tags": [
-    "Données & Open Data",
     "Intelligence Artificielle & LLM",
+    "Sécurité & Auth",
     "Python",
     "Docker & Conteneurs",
-    "CI/CD & GitHub Actions",
+    "Données & Open Data",
     "Documentation"
   ]
 }
