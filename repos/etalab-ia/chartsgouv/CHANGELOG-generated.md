@@ -1,16 +1,12 @@
-## Changelog : chartsgouv (30 derniers jours, au 23 juillet 2026)
+## Changelog : chartsgouv (30 derniers jours, au 04/09/2026)
 
 ### Résumé
-Ce mois-ci, le projet ChartsGouv a simplifié sa stratégie de publication et de gestion du dépôt. Des améliorations ont également été apportées aux scripts de linting et aux tests pour assurer une meilleure qualité du code.
-
-### Évolutions fonctionnelles
-Aucune évolution fonctionnelle visible pour les utilisateurs n'a été apportée durant cette période.
+Les évolutions récentes se concentrent sur l'optimisation de la maintenance automatisée et la fiabilisation des processus de déploiement (CI/CD), tout en ajustant l'intégration du thème DSFR.
 
 ### Évolutions techniques
-- Simplification de la structure du dépôt et de la stratégie de publication. [#99](https://github.com/etalab-ia/chartsgouv/pull/99)
-- Mise à jour du Dockerfile pour corriger des problèmes de linting. [#102](https://github.com/etalab-ia/chartsgouv/pull/102)
-- Amélioration du workflow de linting Helm pour s'assurer que le chart Superset est récupéré avant le linting. [#101](https://github.com/etalab-ia/chartsgouv/pull/101)
-- Correction des scripts shell pour passer les tests `shellcheck`. [#100](https://github.com/etalab-ia/chartsgouv/pull/100)
+- Mise à jour du workflow de construction des images ([#103](https://github.com/etalab-ia/chartsgouv/issues/103)).
+- Amélioration de l'intégration du DSFR ([#105](https://github.com/etalab-ia/chartsgouv/issues/105)).
+- Optimisation de la gestion des dépendances via Dependabot (correction du nommage des écosystèmes et passage à des mises à jour quotidiennes).
 
 ### Autres changements
-Aucun autre changement significatif à signaler.
+- Nettoyage de la configuration Dependabot (suppression de l'écosystème `uv`).

@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/etalab-ia/chartsgouv",
   "name": "chartsgouv",
-  "description": "ChartsGouv est une distribution d’Apache Superset intégrant le thème DSFR (Design Système de l’État Français). Elle vise à fournir un Superset DSFR prêt à l’emploi pour les administrations publiques.",
+  "description": "Distribution d'Apache Superset intégrant le thème DSFR (Design Système de l'État Français) pour fournir un outil de visualisation de données prêt à l'emploi pour les administrations publiques.",
   "language": "Python",
   "features": [
     "Visualisation de données & Cartographie",
@@ -12,7 +12,7 @@
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Apache Superset",
-    "psycopg2",
+    "psycopg2-binary",
     "openpyxl",
     "duckdb"
   ],
@@ -27,21 +27,24 @@
       "none"
     ]
   },
-  "tests": null,
+  "tests": "Linting via shellcheck, linting Python, Helm et Dockerfile",
   "workflows": [
     "build-img",
-    "pre-release",
+    "lint-dockerfile",
+    "lint-helm",
+    "lint-python",
+    "lint-shell",
     "release",
-    "translate"
+    "translation-check"
   ],
-  "lastActivity": "2026-07-23T08:52:40Z",
+  "lastActivity": "2026-09-04T22:22:21+02:00",
   "status": "active",
-  "license": "Other",
+  "license": "EUPL-1.2",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 32,
-    "forks": 6,
-    "openIssues": 5
+    "stars": 33,
+    "forks": 5,
+    "openIssues": 4
   },
   "tags": [
     "Design System & UI",
