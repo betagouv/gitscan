@@ -1,14 +1,18 @@
-## Changelog : code-du-travail-numerique (30 derniers jours, au 20 août 2026)
+## Changelog : code-du-travail-numerique (30 derniers jours, au 04/09/2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se sont concentrées sur l'amélioration de l'expérience de contribution et de la navigation (SEO), tout en affinant la gestion des enquêtes de satisfaction pour être moins intrusif. Sur le plan technique, la plateforme a gagné en fiabilité grâce à une meilleure validation des données et une gestion plus robuste des processus de déploiement.
+Ce mois-ci, les évolutions se sont concentrées sur la fluidification des parcours de simulation, notamment pour l'indemnité de précarité, et sur l'amélioration de la navigation et de l'affichage. Les capacités de suivi statistique et le référencement (SEO) ont également été renforcés.
 
 ### Évolutions fonctionnelles
-- **Expérience de contribution** : ajout de tags thématiques et de sous-thèmes ([#7393](https://github.com/SocialGouv/code-du-travail-numerique/issues/7393)), intégration de liens vers des pages personnalisées ([#7434](https://github.com/SocialGouv/code-du-travail-numerique/issues/7434)), optimisation de l'affichage des titres ([#7439](https://github.com/SocialGouv/code-du-travail-numerique/issues/7439) / [#7440](https://github.com/SocialGouv/code-du-travail-numerique/issues/7440)) et amélioration du comportement des modales de conventions collectives ([#7389](https://github.com/SocialGouv/code-du-travail-numerique/issues/7389)).
-- **Navigation et SEO** : mise en place d'un nouveau fil d'Ariane pour les contenus natifs ([#7378](https://github.com/SocialGouv/code-du-travail-numerique/issues/7378) / [#7443](https://github.com/SocialGouv/code-du-travail-numerique/issues/7443)).
-- **Contact** : ajout d'un nouveau questionnaire de contact dédié au canal téléphonique ([#7418](https://github.com/SocialGouv/code-du-travail-numerique/issues/7418)).
-- **Expérience utilisateur (UX)** : correction d'un bug bloquant le bouton "Suivant" dans les outils ([#7445](https://github.com/SocialGouv/code-du-travail-numerique/issues/7445)) et optimisation de la fréquence des enquêtes de satisfaction (NPS) pour limiter les sollicitations automatiques ([#7433](https://github.com/SocialGouv/code-du-travail-numerique/issues/7433) / [#7416](https://github.com/SocialGouv/code-du-travail-numerique/issues/7416) / [#7406](https://github.com/SocialGouv/code-du-travail-numerique/issues/7406)).
+- Refonte du parcours de simulation de l'indemnité de précarité pour supprimer les points de blocage ([#7285](https://github.com/SocialGouv/code-du-travail-numerique/issues/7285)).
+- Améliorations de la navigation et de l'affichage :
+    - Mise en place d'un nouveau fil d'Ariane pour les contenus natifs ([#7378](https://github.com/SocialGouv/code-du-travail-numerique/issues/7378), [#7443](https://github.com/SocialGouv/code-du-travail-numerique/issues/7443)).
+    - Ajout de liens vers des pages personnalisées dans les contenus de contributions ([#7434](https://github.com/SocialGouv/code-du-travail-numerique/issues/7434)).
+    - Correction de la hiérarchie et de la taille des titres dans les réponses de contributions ([#7468](https://github.com/SocialGouv/code-du-travail-numerique/issues/7468), [#7439](https://github.com/SocialGouv/code-du-travail-numerique/issues/7439), [#7440](https://github.com/SocialGouv/code-du-travail-numerique/issues/7440)).
+- Correction d'un bug sur le bouton "Suivant" dans l'outil de simulation ([#7445](https://github.com/SocialGouv/code-du-travail-numerique/issues/7445)).
 
 ### Évolutions techniques
-- **Analyse et suivi (Analytics)** : enrichissement des données Matomo avec le suivi du nombre de conventions collectives trouvées ([#7428](https://github.com/SocialGouv/code-du-travail-numerique/issues/7428) / [#7442](https://github.com/SocialGouv/code-du-travail-numerique/issues/7442)), amélioration du suivi de complétion des contributions ([#7426](https://github.com/SocialGouv/code-du-travail-numerique/issues/7426) / [#7427](https://github.com/SocialGouv/code-du-travail-numerique/issues/7427)) et nettoyage des URLs trackées ([#7409](https://github.com/SocialGouv/code-du-travail-numerique/issues/7409) / [#7414](https://github.com/SocialGouv/code-du-travail-numerique/issues/7414)).
-- **Fiabilité et sécurité** : implémentation de la validation des entrées d'API via la bibliothèque Zod ([#7407](https://github.com/SocialGouv/code-du-travail-numerique/issues/7407)) et ajout d'un mécanisme de relance (retry) lors de la publication NPM pour absorber les erreurs de signature ([#7420](https://github.com/SocialGouv/code-du-travail-numerique/issues/7420)).
+- Optimisation du suivi analytique (Matomo) :
+    - Correction d'un problème de perte de données lors de l'envoi d'événements ([#7449](https://github.com/SocialGouv/code-du-travail-numerique/issues/7449)).
+    - Ajout du suivi du nombre de conventions collectives trouvées ([#7428](https://github.com/SocialGouv/code-du-travail-numerique/issues/7428), [#7442](https://github.com/SocialGouv/code-du-travail-numerique/issues/7442)).
+- Refactorisation du composant de fil d'Ariane pour une meilleure maintenance ([#7378](https://github.com/SocialGouv/code-du-travail-numerique/issues/7378), [#7443](https://github.com/SocialGouv/code-du-travail-numerique/issues/7443)).

@@ -1196,6 +1196,7 @@
 │   │   │       │   │   │   ├── RadioQuestion.tsx
 │   │   │       │   │   │   ├── SelectQuestion.tsx
 │   │   │       │   │   │   ├── SimulatorLayout
+│   │   │       │   │   │   │   ├── SimulatorTitleContext.ts
 │   │   │       │   │   │   │   ├── index.tsx
 │   │   │       │   │   │   │   ├── tracking.ts
 │   │   │       │   │   │   │   └── types.ts
@@ -1737,41 +1738,19 @@
 │   │   │       │   │   │   │   ├── 843.test.tsx
 │   │   │       │   │   │   │   └── 86.test.tsx
 │   │   │       │   │   │   ├── bug-selection-type-contrat.test.tsx
+│   │   │       │   │   │   ├── changement-convention.test.tsx
 │   │   │       │   │   │   ├── sans-cc.test.tsx
-│   │   │       │   │   │   └── ui.ts
+│   │   │       │   │   │   ├── tracking.test.tsx
+│   │   │       │   │   │   ├── ui.ts
+│   │   │       │   │   │   └── warning-variant.test.ts
 │   │   │       │   │   ├── agreements
-│   │   │       │   │   │   ├── 1486-bureaux-etudes-techniques
-│   │   │       │   │   │   │   ├── Informations.tsx
-│   │   │       │   │   │   │   └── index.ts
-│   │   │       │   │   │   ├── 1516-organismes-formation
-│   │   │       │   │   │   │   ├── Informations.tsx
-│   │   │       │   │   │   │   └── index.ts
-│   │   │       │   │   │   ├── 2511-sport
-│   │   │       │   │   │   │   ├── Informations.tsx
-│   │   │       │   │   │   │   └── index.ts
-│   │   │       │   │   │   ├── 3127-entreprises-services-a-la-personne
-│   │   │       │   │   │   │   ├── Informations.tsx
-│   │   │       │   │   │   │   └── index.ts
-│   │   │       │   │   │   ├── AgreementsInjector.tsx
-│   │   │       │   │   │   ├── cddTypesFactory.ts
-│   │   │       │   │   │   ├── index.ts
-│   │   │       │   │   │   └── validator.ts
+│   │   │       │   │   │   ├── contractTypesFactory.ts
+│   │   │       │   │   │   └── index.ts
+│   │   │       │   │   ├── events
+│   │   │       │   │   │   └── useResultTracking.ts
 │   │   │       │   │   ├── index.ts
 │   │   │       │   │   ├── steps
 │   │   │       │   │   │   ├── Agreement
-│   │   │       │   │   │   │   ├── index.tsx
-│   │   │       │   │   │   │   └── store
-│   │   │       │   │   │   │       ├── index.ts
-│   │   │       │   │   │   │       ├── store.ts
-│   │   │       │   │   │   │       ├── types.ts
-│   │   │       │   │   │   │       └── validator.ts
-│   │   │       │   │   │   ├── Informations
-│   │   │       │   │   │   │   ├── components
-│   │   │       │   │   │   │   │   ├── CDDQuestions.tsx
-│   │   │       │   │   │   │   │   ├── CTTQuestions.tsx
-│   │   │       │   │   │   │   │   ├── ContractTypeQuestion.tsx
-│   │   │       │   │   │   │   │   ├── CriteriaQuestions.tsx
-│   │   │       │   │   │   │   │   └── index.ts
 │   │   │       │   │   │   │   ├── index.tsx
 │   │   │       │   │   │   │   └── store
 │   │   │       │   │   │   │       ├── index.ts
@@ -1794,6 +1773,7 @@
 │   │   │       │   │   │   │       └── validator.ts
 │   │   │       │   │   │   ├── Result
 │   │   │       │   │   │   │   ├── components
+│   │   │       │   │   │   │   │   ├── NoIndemnityMessage.tsx
 │   │   │       │   │   │   │   │   ├── ShowResult.tsx
 │   │   │       │   │   │   │   │   ├── Situation.tsx
 │   │   │       │   │   │   │   │   ├── Warning.tsx
@@ -1803,6 +1783,28 @@
 │   │   │       │   │   │   │       ├── index.ts
 │   │   │       │   │   │   │       ├── store.ts
 │   │   │       │   │   │   │       └── types.ts
+│   │   │       │   │   │   ├── TermeContrat
+│   │   │       │   │   │   │   ├── components
+│   │   │       │   │   │   │   │   ├── IssueQuestion.tsx
+│   │   │       │   │   │   │   │   ├── TermeQuestion.tsx
+│   │   │       │   │   │   │   │   └── index.ts
+│   │   │       │   │   │   │   ├── index.tsx
+│   │   │       │   │   │   │   ├── issues.ts
+│   │   │       │   │   │   │   └── store
+│   │   │       │   │   │   │       ├── index.ts
+│   │   │       │   │   │   │       ├── store.ts
+│   │   │       │   │   │   │       ├── types.ts
+│   │   │       │   │   │   │       └── validator.ts
+│   │   │       │   │   │   ├── TypeContrat
+│   │   │       │   │   │   │   ├── components
+│   │   │       │   │   │   │   │   ├── ContractTypeQuestion.tsx
+│   │   │       │   │   │   │   │   └── index.ts
+│   │   │       │   │   │   │   ├── index.tsx
+│   │   │       │   │   │   │   └── store
+│   │   │       │   │   │   │       ├── index.ts
+│   │   │       │   │   │   │       ├── store.ts
+│   │   │       │   │   │   │       ├── types.ts
+│   │   │       │   │   │   │       └── validator.ts
 │   │   │       │   │   │   ├── index.ts
 │   │   │       │   │   │   └── store.ts
 │   │   │       │   │   └── types.ts
@@ -2135,6 +2137,7 @@
 │   │   │       │   │   ├── SearchBar.test.tsx
 │   │   │       │   │   ├── SearchPageClient.test.tsx
 │   │   │       │   │   ├── SearchWidgetDisplay.test.tsx
+│   │   │       │   │   ├── tracking.test.ts
 │   │   │       │   │   └── utils.test.ts
 │   │   │       │   ├── api
 │   │   │       │   │   ├── fetchHints.ts
@@ -2296,6 +2299,7 @@
 │   │   │   │   │   │   │   └── salaire-ref.spec.ts
 │   │   │   │   │   │   ├── indemnite-precarite
 │   │   │   │   │   │   │   ├── calculate.spec.ts
+│   │   │   │   │   │   │   ├── ineligibility-conventions.spec.ts
 │   │   │   │   │   │   │   └── ineligibility.spec.ts
 │   │   │   │   │   │   ├── preavis-demission
 │   │   │   │   │   │   │   └── calculate.spec.ts
@@ -2336,7 +2340,6 @@
 │   │   │   │   │   │   ├── dismissal-reasons.ts
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   ├── ineligibility-indemnite-licenciement.ts
-│   │   │   │   │   │   ├── ineligibility-indemnite-precarite.ts
 │   │   │   │   │   │   ├── ineligibility-rupture-conventionnelle.ts
 │   │   │   │   │   │   ├── salary.ts
 │   │   │   │   │   │   └── seniority.ts
@@ -2634,7 +2637,6 @@
 │   │   │   │   │   │   ├── indemnite-licenciement.yaml
 │   │   │   │   │   │   ├── indemnite-precarite.yaml
 │   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   ├── ineligibility-indemnite-precarite.ts
 │   │   │   │   │   │   ├── preavis-demission.yaml
 │   │   │   │   │   │   ├── preavis-licenciement.yaml
 │   │   │   │   │   │   ├── preavis-retraite.yaml
@@ -2724,7 +2726,6 @@
 │   │   │   │   │   │   ├── indemnite-licenciement.yaml
 │   │   │   │   │   │   ├── indemnite-precarite.yaml
 │   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   ├── ineligibility-indemnite-precarite.ts
 │   │   │   │   │   │   ├── preavis-demission.yaml
 │   │   │   │   │   │   ├── preavis-licenciement.yaml
 │   │   │   │   │   │   ├── preavis-retraite.yaml
@@ -3161,7 +3162,6 @@
 │   │   │   │   │   │   ├── indemnite-licenciement.yaml
 │   │   │   │   │   │   ├── indemnite-precarite.yaml
 │   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   ├── ineligibility-indemnite-precarite.ts
 │   │   │   │   │   │   ├── preavis-demission.yaml
 │   │   │   │   │   │   ├── preavis-licenciement.yaml
 │   │   │   │   │   │   ├── preavis-retraite.yaml
@@ -3319,7 +3319,6 @@
 │   │   │   │   │   │   ├── indemnite-licenciement.yaml
 │   │   │   │   │   │   ├── indemnite-precarite.yaml
 │   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   ├── ineligibility-indemnite-precarite.ts
 │   │   │   │   │   │   ├── preavis-demission.yaml
 │   │   │   │   │   │   ├── preavis-licenciement.yaml
 │   │   │   │   │   │   ├── preavis-retraite.yaml
@@ -3569,7 +3568,6 @@
 │   │   │   │   │   │   ├── heures-recherche-emploi.yaml
 │   │   │   │   │   │   ├── indemnite-licenciement.yaml
 │   │   │   │   │   │   ├── indemnite-precarite.yaml
-│   │   │   │   │   │   ├── ineligibility-indemnite-precarite.ts
 │   │   │   │   │   │   ├── preavis-demission.yaml
 │   │   │   │   │   │   ├── preavis-licenciement.yaml
 │   │   │   │   │   │   └── preavis-retraite.yaml
@@ -3972,4 +3970,4 @@
 │       └── tsconfig.json
 ├── pnpm-lock.yaml
 └── pnpm-workspace.yaml
-964 directories, 3010 files
+964 directories, 3008 files
