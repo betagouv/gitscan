@@ -11,6 +11,10 @@ and this project adheres to
 ### Added
 
 - 💄(settings) move analytics settings to general
+- 📈(posthog) track projects, Docs export, summarization and co2 footprint
+- 👷(ci) audit GitHub Actions workflows with zizmor on push and pull request
+- 🔒️(back) throttle conversation and project creation per user
+- 🚸(front) explain the wait when a creation rate limit is reached
 
 ### Changed
 
@@ -20,12 +24,26 @@ and this project adheres to
 - 💬(back) rewrite the default agent instructions and tool descriptions
 - 💄(front) correct icon Docs button
 - ♻️(back) use httpx as the single HTTP client for outbound calls
+- ⬆️(back) update django, pypdf, sqlparse and pydantic-settings
+- 🔒️(ci) pin CI actions and installed packages to immutable versions
+- ⚡️(ci) run e2e tests in parallel across browsers and shards
+- ✨(back) sort conversations by stored size in the admin list
+- 🚸(back) show 200 conversations per admin list page for bulk actions
+- ♻️(back) split the settings module into per-domain configuration mixins
+- ⬆️(chat) upgrade the Vercel AI SDK from v4 to v5
 
+### Fixed
+
+- 🐛(front) fix the frontend dev container failing to start
+- 🐛(back) read the OIDC_CREATE_USER setting from its documented env var
+ 
 ### Removed
 
 - 🔥(back) remove the unused Albert web search manager and its tool
 - 🔥(back) remove the unused RAG_WEB_SEARCH_PROMPT_UPDATE setting
 - 🔥(back) remove the unused Tavily web search tool
+- 🔥(back) remove the activation code gate, keeping past records for history
+- 🔥(back) remove the unused text streaming protocol
 
 ## [0.0.22] - 2026-08-10
 
@@ -151,6 +169,7 @@ and this project adheres to
 
 ### Added
 
+- ✨(sources) add source panel
 - ✨(onboarding) add onboarding modal
 - ✨(back) add ODT parsing support
 - ✨(back) add self-documentation tool

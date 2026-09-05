@@ -18,7 +18,8 @@
 │       ├── dependencies.yml
 │       ├── docker-hub.yml
 │       ├── helmfile-linter.yaml
-│       └── release-helm-chart.yaml
+│       ├── release-helm-chart.yaml
+│       └── security.yml
 ├── .gitignore
 ├── .gitlint
 ├── CHANGELOG.md
@@ -118,22 +119,14 @@
     │   ├── activation_codes
     │   │   ├── __init__.py
     │   │   ├── admin.py
-    │   │   ├── exceptions.py
     │   │   ├── factories.py
     │   │   ├── migrations
     │   │   │   ├── 0001_initial.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
-    │   │   ├── permissions.py
-    │   │   ├── serializers.py
-    │   │   ├── tests
-    │   │   │   ├── __init__.py
-    │   │   │   ├── test_integration.py
-    │   │   │   ├── test_models.py
-    │   │   │   ├── test_permissions.py
-    │   │   │   ├── test_serializers.py
-    │   │   │   └── test_viewsets.py
-    │   │   └── viewsets.py
+    │   │   └── tests
+    │   │       ├── __init__.py
+    │   │       └── test_models.py
     │   ├── chat
     │   │   ├── __init__.py
     │   │   ├── admin.py
@@ -205,6 +198,7 @@
     │   │   ├── model_health.py
     │   │   ├── model_routing.py
     │   │   ├── models.py
+    │   │   ├── prompts.py
     │   │   ├── providers
     │   │   │   ├── __init__.py
     │   │   │   └── albert_models.py
@@ -252,6 +246,7 @@
     │   │   │   │   │   ├── test_langfuse_tracing.py
     │   │   │   │   │   ├── test_message_history_v1_compatibility.py
     │   │   │   │   │   ├── test_parse_input_documents.py
+    │   │   │   │   │   ├── test_prepare_update_conversation.py
     │   │   │   │   │   ├── test_project_instructions.py
     │   │   │   │   │   ├── test_reindex_conversation.py
     │   │   │   │   │   ├── test_run_agent_summary.py
@@ -283,9 +278,11 @@
     │   │   │   │   └── test_chat_project_serializer.py
     │   │   │   ├── test_admin.py
     │   │   │   ├── test_ai_agent_service_co2.py
+    │   │   │   ├── test_ai_sdk_upconvert.py
     │   │   │   ├── test_assistant_health.py
     │   │   │   ├── test_docs_client.py
     │   │   │   ├── test_document_context_builder.py
+    │   │   │   ├── test_legacy_message_formats.py
     │   │   │   ├── test_llm_configuration.py
     │   │   │   ├── test_local_media_url_processors.py
     │   │   │   ├── test_malware_detection.py
@@ -304,6 +301,9 @@
     │   │   │   │   ├── test_utils.py
     │   │   │   │   └── test_web_search_brave.py
     │   │   │   ├── utils.py
+    │   │   │   ├── vercel_ai_sdk
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   └── test_v4_to_v5.py
     │   │   │   └── views
     │   │   │       ├── __init__.py
     │   │   │       ├── attachments
@@ -341,6 +341,7 @@
     │   │   │       │   └── test_update.py
     │   │   │       ├── projects
     │   │   │       │   ├── __init__.py
+    │   │   │       │   ├── test_analytics.py
     │   │   │       │   ├── test_create.py
     │   │   │       │   ├── test_delete.py
     │   │   │       │   ├── test_list.py
@@ -373,7 +374,8 @@
     │   │   │   │   └── types.py
     │   │   │   └── encoder
     │   │   │       ├── __init__.py
-    │   │   │       └── encoder.py
+    │   │   │       ├── encoder.py
+    │   │   │       └── v4_to_v5.py
     │   │   └── views
     │   │       ├── __init__.py
     │   │       ├── attachments.py
@@ -391,12 +393,15 @@
     │   │   ├── asgi.py
     │   │   ├── brave_settings.py
     │   │   ├── celery_app.py
+    │   │   ├── celery_settings.py
     │   │   ├── configuration
     │   │   │   ├── llm
     │   │   │   │   ├── default.e2e.json
     │   │   │   │   └── default.json
     │   │   │   └── theme
     │   │   │       └── default.json
+    │   │   ├── observability_settings.py
+    │   │   ├── oidc_settings.py
     │   │   ├── settings.py
     │   │   ├── tests
     │   │   │   ├── __init__.py
@@ -408,6 +413,7 @@
     │   ├── core
     │   │   ├── __init__.py
     │   │   ├── admin.py
+    │   │   ├── analytics.py
     │   │   ├── api
     │   │   │   ├── __init__.py
     │   │   │   ├── serializers.py
@@ -429,6 +435,7 @@
     │   │   │   ├── enums.py
     │   │   │   ├── exceptions.py
     │   │   │   ├── malware_detection.py
+    │   │   │   ├── mime_types.py
     │   │   │   ├── mixins.py
     │   │   │   ├── serializers.py
     │   │   │   └── utils.py
@@ -566,11 +573,13 @@
     │   │   │   │   │   │   ├── config.test.ts
     │   │   │   │   │   │   ├── fetchApi.test.tsx
     │   │   │   │   │   │   ├── helpers.test.tsx
+    │   │   │   │   │   │   ├── rateLimit.test.ts
     │   │   │   │   │   │   └── utils.test.ts
     │   │   │   │   │   ├── config.ts
     │   │   │   │   │   ├── fetchApi.ts
     │   │   │   │   │   ├── helpers.tsx
     │   │   │   │   │   ├── index.ts
+    │   │   │   │   │   ├── rateLimit.ts
     │   │   │   │   │   ├── types.ts
     │   │   │   │   │   └── utils.ts
     │   │   │   │   ├── assets
@@ -586,11 +595,15 @@
     │   │   │   │   │   │   ├── new-message-bold.svg
     │   │   │   │   │   │   └── uikit-custom
     │   │   │   │   │   │       ├── arrow-up-right.svg
+    │   │   │   │   │   │       ├── attached-document.svg
     │   │   │   │   │   │       ├── book-filled.svg
+    │   │   │   │   │   │       ├── book.svg
     │   │   │   │   │   │       ├── bookmark-filled.svg
     │   │   │   │   │   │       ├── car-filled.svg
     │   │   │   │   │   │       ├── chart-filled.svg
     │   │   │   │   │   │       ├── checkmark-filled.svg
+    │   │   │   │   │   │       ├── checkmark.svg
+    │   │   │   │   │   │       ├── clipboard.svg
     │   │   │   │   │   │       ├── doc.svg
     │   │   │   │   │   │       ├── euro-filled.svg
     │   │   │   │   │   │       ├── file-doc.svg
@@ -613,6 +626,7 @@
     │   │   │   │   │   │       ├── picture-filled.svg
     │   │   │   │   │   │       ├── puzzle-filled.svg
     │   │   │   │   │   │       ├── question-mark-circle.svg
+    │   │   │   │   │   │       ├── sources.svg
     │   │   │   │   │   │       ├── star-filled.svg
     │   │   │   │   │   │       ├── terminal-filled.svg
     │   │   │   │   │   │       └── warning-filled.svg
@@ -705,9 +719,7 @@
     │   │   │   │   │   │   ├── api
     │   │   │   │   │   │   │   ├── index.ts
     │   │   │   │   │   │   │   ├── types.ts
-    │   │   │   │   │   │   │   ├── useActivationStatus.tsx
-    │   │   │   │   │   │   │   ├── useAuthQuery.tsx
-    │   │   │   │   │   │   │   └── useRegisterNotification.tsx
+    │   │   │   │   │   │   │   └── useAuthQuery.tsx
     │   │   │   │   │   │   ├── assets
     │   │   │   │   │   │   │   ├── assistant-code.svg
     │   │   │   │   │   │   │   ├── button-proconnect.svg
@@ -717,7 +729,6 @@
     │   │   │   │   │   │   │   └── visio.svg
     │   │   │   │   │   │   ├── authUrl.ts
     │   │   │   │   │   │   ├── components
-    │   │   │   │   │   │   │   ├── ActivationPage.tsx
     │   │   │   │   │   │   │   ├── Auth.tsx
     │   │   │   │   │   │   │   ├── ButtonLogin.tsx
     │   │   │   │   │   │   │   ├── UserInfo.tsx
@@ -795,6 +806,7 @@
     │   │   │   │   │   │   │   ├── WelcomeMessage.tsx
     │   │   │   │   │   │   │   ├── __tests__
     │   │   │   │   │   │   │   │   ├── AttachmentList.test.tsx
+    │   │   │   │   │   │   │   │   ├── Chat.test.tsx
     │   │   │   │   │   │   │   │   ├── ChatError.test.tsx
     │   │   │   │   │   │   │   │   ├── ImageProcessingUnavailableBanner.test.tsx
     │   │   │   │   │   │   │   │   ├── InputChat.test.tsx
@@ -836,6 +848,7 @@
     │   │   │   │   │   │       │   ├── getMessageCo2Impact.test.ts
     │   │   │   │   │   │       │   └── impactCo2.test.ts
     │   │   │   │   │   │       ├── getMessageCo2Impact.ts
+    │   │   │   │   │   │       ├── getMessageText.ts
     │   │   │   │   │   │       ├── impactCo2.ts
     │   │   │   │   │   │       └── shiki.ts
     │   │   │   │   │   ├── feedback
@@ -944,12 +957,15 @@
     │   │   │   │   │   │   │   └── __tests__
     │   │   │   │   │   │   │       └── OnboardingButton.test.tsx
     │   │   │   │   │   │   └── index.ts
-    │   │   │   │   │   └── settings
-    │   │   │   │   │       ├── assets
-    │   │   │   │   │       │   └── settings.svg
-    │   │   │   │   │       ├── components
-    │   │   │   │   │       │   ├── SettingsButton.tsx
-    │   │   │   │   │       │   └── SettingsModal.tsx
+    │   │   │   │   │   ├── settings
+    │   │   │   │   │   │   ├── assets
+    │   │   │   │   │   │   │   └── settings.svg
+    │   │   │   │   │   │   ├── components
+    │   │   │   │   │   │   │   ├── SettingsButton.tsx
+    │   │   │   │   │   │   │   └── SettingsModal.tsx
+    │   │   │   │   │   │   └── index.ts
+    │   │   │   │   │   └── sources-panel
+    │   │   │   │   │       ├── SourcePanel.tsx
     │   │   │   │   │       └── index.ts
     │   │   │   │   ├── globals.css
     │   │   │   │   ├── hook
@@ -973,8 +989,6 @@
     │   │   │   │   │   ├── 401.tsx
     │   │   │   │   │   ├── 403.tsx
     │   │   │   │   │   ├── 404.tsx
-    │   │   │   │   │   ├── activation
-    │   │   │   │   │   │   └── index.tsx
     │   │   │   │   │   ├── chat
     │   │   │   │   │   │   ├── conversation.tsx
     │   │   │   │   │   │   └── index.tsx
@@ -985,6 +999,8 @@
     │   │   │   │   │   └── unauthorized.tsx
     │   │   │   │   ├── services
     │   │   │   │   │   ├── PosthogAnalytic.tsx
+    │   │   │   │   │   ├── __tests__
+    │   │   │   │   │   │   └── PosthogAnalytic.test.tsx
     │   │   │   │   │   └── index.ts
     │   │   │   │   ├── stores
     │   │   │   │   │   ├── index.ts
@@ -1124,4 +1140,4 @@
         │       └── header.mjml
         ├── package.json
         └── yarn.lock
-225 directories, 901 files
+227 directories, 915 files

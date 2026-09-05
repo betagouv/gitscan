@@ -5,14 +5,13 @@
   "language": "Python",
   "features": [
     "Intelligence Artificielle & NLP",
+    "Commentaires & Discussions",
     "Gestion documentaire & Fichiers",
-    "Recherche & Filtres",
     "Authentification & Accès",
+    "Recherche & Filtres",
     "Administration & Backoffice",
-    "Collaboration & Workflow",
-    "Accessibilité & i18n",
-    "Personnalisation & Thèmes",
-    "Gestion des médias & Assets"
+    "Interface utilisateur & Design",
+    "Temps réel & WebSocket"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -23,7 +22,9 @@
     "Celery",
     "Redis",
     "Docker",
-    "Helm"
+    "Helm",
+    "httpx",
+    "pypdf"
   ],
   "components": [
     "API REST & GraphQL",
@@ -33,25 +34,20 @@
     "Python (scripts & backend)",
     "Docker & Conteneurs",
     "Celery & Queue asynchrone",
-    "Authentification (composant)"
+    "Authentification (composant)",
+    "Kubernetes & Helm"
   ],
   "auth": {
     "methods": [
-      "email-password",
-      "oauth2",
-      "jwt",
+      "sso",
       "session"
     ]
   },
-  "tests": [
-    "Pytest",
-    "E2E tests"
-  ],
+  "tests": "Tests E2E multi-navigateurs et tests de composants frontend",
   "workflows": [
-    "Helm",
-    "Docker Compose"
+    "GitHub Actions"
   ],
-  "lastActivity": "2026-08-13T14:51:47+02:00",
+  "lastActivity": "2026-09-02T23:04:23+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -62,6 +58,7 @@
     "Python",
     "TypeScript",
     "Docker & Conteneurs",
+    "CI/CD & GitHub Actions",
     "Accessibilité",
     "Design System & UI"
   ]
