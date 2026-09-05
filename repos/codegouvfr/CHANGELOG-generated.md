@@ -1,20 +1,18 @@
-# Synthèse d'activité : codegouvfr (du 16/04 au 27/08)
+# Synthèse d'activité : codegouvfr (du 25/08 au 31/08)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation se concentre sur le renforcement de la fiabilité des données et la simplification de l'administration des catalogues de logiciels. Les outils [catalogi](/repos/codegouvfr/catalogi) et [sill-deploy](/repos/codegouvfr/sill-deploy) ont bénéficié de capacités accrues d'importation automatique et de recherche d'organisations (via Wikidata, ROR ou HAL), facilitant ainsi la gestion et la visibilité des actifs numériques.
+L'activité récente est marquée par un renforcement significatif des outils d'administration et de gestion des données. L'introduction d'un nouvel éditeur de configuration d'interface et l'optimisation des processus d'importation massive (notamment pour Zenodo et HAL) permettent de fiabiliser les catalogues de logiciels et d'offrir plus de flexibilité aux administrateurs ([sill-deploy](/repos/codegouvfr/sill-deploy), [catalogi](/repos/codegouvfr/catalogi)).
 
-L'expérience utilisateur est également optimisée grâce à des améliorations d'accessibilité et de performance dans [react-dsfr](/repos/codegouvfr/react-dsfr), tandis que [cartonum](/repos/codegouvfr/cartonum) étend ses capacités de gestion documentaire et d'infrastructure. Enfin, le lancement de [floss-criteria](/repos/codegouvfr/floss-criteria) marque une étape clé dans la structuration de l'évaluation des logiciels libres pour l'administration.
-
-## Sécurité
-- Ajout de fonctionnalités de gestion des mots de passe et de coffres-forts partagés dans [cartonum](/repos/codegouvfr/cartonum).
-- Amélioration de la robustesse du thème [keycloak-theme-dsfr](/repos/codegouvfr/keycloak-theme-dsfr) pour éviter des erreurs de redirection lors de l'absence de clients spécifiés.
+Parallèlement, l'expérience utilisateur est améliorée grâce à des optimisations de performance sur les composants graphiques ([react-dsfr](/repos/codegouvfr/react-dsfr)) et une meilleure localisation des interfaces ([keycloak-theme-dsfr](/repos/codegouvfr/keycloak-theme-dsfr)). Enfin, l'organisation pose les bases de nouveaux cadres d'évaluation pour les logiciels libres ([floss-criteria](/repos/codegouvfr/floss-criteria)).
 
 ## Autres changements notables
-- **Optimisation et refactoring** : Introduction d'un chargement sélectif du CSS pour améliorer les performances de [react-dsfr](/repos/codegouvfr/react-dsfr) et passage d'un filtrage applicatif à un filtrage SQL dans [sill-deploy](/repos/codegouvfr/sill-deploy).
-- **Évolutions d'infrastructure** : Migration de la configuration de l'interface vers PostgreSQL dans [catalogi](/repos/codegouvfr/catalogi) pour permettre une gestion dynamique via API, et extension du périmètre technique de [cartonum](/repos/codegouvfr/cartonum) (conteneurisation, stockage objet).
+- **Optimisation de la performance web** : Réduction de l'empreinte CSS en permettant de ne charger que les composants réellement utilisés ([react-dsfr](/repos/codegouvfr/react-dsfr)).
+- **Évolutions d'infrastructure et de gestion** : Migration de la configuration de l'interface vers PostgreSQL pour une gestion dynamique ([catalogi](/repos/codegouvfr/catalogi), [sill-deploy](/repos/codegouvfr/sill-deploy)) et ajout de fonctionnalités de gestion documentaire et de coffres-forts de mots de passe ([cartonum](/repos/codegouvfr/cartonum)).
+- **Structuration de projet** : Initialisation de la structure et des premiers critères d'évaluation pour les logiciels libres ([floss-criteria](/repos/codegouvfr/floss-criteria)).
 
 ## Dépôts les plus actifs
-- [catalogi](/repos/codegouvfr/catalogi) : Renforcement majeur des outils d'administration et fiabilisation des processus d'importation de données.
-- [sill-deploy](/repos/codegouvfr/sill-deploy) : Évolutions fonctionnelles sur la gestion des organisations et nouveaux workflows de déploiement.
-- [react-dsfr](/repos/codegouvfr/react-dsfr) : Améliorations de l'accessibilité et optimisation des performances de rendu.
-- [cartonum](/repos/codegouvfr/cartonum) : Enrichissement des fonctionnalités de cartographie, de gestion documentaire et d'infrastructure.
+- [sill-deploy](/repos/codegouvfr/sill-deploy) : Amélioration de l'administration et de la fiabilité des processus d'importation de données.
+- [catalogi](/repos/codegouvfr/catalogi) : Optimisation de la gestion des catalogues et de la configuration de l'interface.
+- [react-dsfr](/repos/codegouvfr/react-dsfr) : Optimisation des performances CSS et renforcement de l'accessibilité.
+- [cartonum](/repos/codegouvfr/cartonum) : Enrichissement des fonctionnalités de cartographie et de gestion documentaire.
+- [floss-criteria](/repos/codegouvfr/floss-criteria) : Mise en place des bases de l'évaluation des logiciels libres.

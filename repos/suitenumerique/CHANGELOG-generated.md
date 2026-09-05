@@ -1,27 +1,33 @@
-# Synthèse d'activité : suitenumerique (du 01/08 au 31/08/2026)
+# Synthèse d'activité : suitenumerique (août 2026)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation est marquée par une montée en maturité majeure, tant sur l'expérience utilisateur que sur la robustesse de l'infrastructure. Les utilisateurs bénéficient de fonctionnalités enrichies pour la gestion de fichiers et de quotas dans [drive](/repos/suitenumerique/drive), d'une messagerie temps réel intégrée via Matrix dans [hub](/repos/suitenumerique/hub), et d'une intelligence artificielle plus performante dans [conversations](/repos/suitenumerique/conversations).
+L'activité de cette période est marquée par une montée en puissance des capacités de communication et de collaboration, notamment avec l'intégration de la messagerie Matrix dans [hub](/repos/suitenumerique/hub) et l'évolution de l'intelligence artificielle dans [conversations](/repos/suitenumerique/conversations). Ces évolutions permettent aux utilisateurs de bénéficier d'échanges en temps réel plus riches et d'assistants plus pertinents.
 
-Parallèlement, l'organisation consolide ses fondations techniques avec la migration de plusieurs interfaces vers des technologies plus rapides (Vite, Astro), la refonte de [ui-kit](/repos/suitenumerique/ui-kit) en monorepo, et l'initialisation de nouveaux services essentiels comme [encryption](/repos/suitenumerique/encryption) et [interop](/repos/suitenumerique/interop). Ces évolutions garantissent une suite plus fluide, sécurisée et évolutive pour l'ensemble des utilisateurs.
+Parallèlement, l'organisation renforce la sécurité et la fiabilité de ses services de gestion de fichiers ([transfers](/repos/suitenumerique/transfers), [drive](/repos/suitenumerique/drive)) et modernise ses fondations techniques. Les migrations vers des technologies plus performantes comme Vite ou Astro, ainsi que le passage en monorepo pour [ui-kit](/repos/suitenumerique/ui-kit), garantissent une meilleure réactivité des interfaces et une maintenance simplifiée pour les développeurs.
 
 ## Sécurité
-- Renforcement de la confidentialité avec l'introduction du chiffrement de bout en bout (E2EE) dans [transfers](/repos/suitenumerique/transfers) et de liens de téléchargement à usage unique dans [st-transfers](/repos/suitenumerique/st-transfers).
-- Protection accrue contre les vulnérabilités (SSRF, fichiers malveillants, attaques de parsing) dans [file-scanner](/repos/suitenumerique/file-scanner), [conversations](/repos/suitenumerique/conversations), [messages](/repos/suitenumerique/messages) et [drive](/repos/suitenumerique/drive).
-- Mise à jour des composants critiques et durcissement des protocoles d'authentification et de gestion des sessions dans [people](/repos/suitenumerique/people), [menshen](/repos/suitenumerique/menshen), [meet](/repos/suitenumerique/meet) et [accounts](/repos/suitenumerique/accounts).
+- [transfers](/repos/suitenumerique/transfers) : Introduction du chiffrement de bout en bout (E2EE) en option pour les transferts.
+- [file-scanner](/repos/suitenumerique/file-scanner) : Blocage des vulnérabilités de type SSRF lors de l'analyse d'URL.
+- [drive](/repos/suitenumerique/drive) : Renforcement de la validation des signatures de requêtes WOPI et mise en place du scan automatique des fichiers édités en ligne.
+- [messages](/repos/suitenumerique/messages) : Durcissement des protocoles email (SPF, DKIM) et sécurisation du parsing des messages.
+- [people](/repos/suitenumerique/people) : Mise à jour de bibliothèques critiques pour la sécurité (cryptography, django, pillow).
+- [meet-whisperx](/repos/suitenumerique/meet-whisperx) : Correction d'une fuite potentielle de fichiers temporaires.
+- [calendars](/repos/suitenumerique/calendars) : Amélioration de la sécurité lors du traitement des données ICS.
+- [st-transfers](/repos/suitenumerique/st-transfers) : Création de liens de téléchargement uniques s'auto-désactivant après usage.
+- [drive-migrator](/repos/suitenumerique/drive-migrator) : Modernisation du flux d'authentification via l'implémentation du module PKCE.
 
 ## Autres changements notables
-- Migrations technologiques majeures vers des frameworks modernes (Vite, Django-Ninja, Astro) pour optimiser les performances dans [conversations](/repos/suitenumerique/conversations), [calendars](/repos/suitenumerique/calendars), [menshen](/repos/suitenumerique/menshen) et [docs-website](/repos/suitenumerique/docs-website).
-- Évolutions structurelles importantes, notamment la transition de [ui-kit](/repos/suitenumerique/ui-kit) vers une architecture monorepo et la migration de [docs](/repos/suitenumerique/docs) vers `ui-components`.
-- Optimisations de performance et de fiabilité, comme le traitement vidéo en temps réel dans [meet-matting](/repos/suitenumerique/meet-matting) et la gestion des processus audio dans [dictaphone](/repos/suitenumerique/dictaphone).
-- Lancement de nouveaux projets fondamentaux tels que [gallene-sdk](/repos/suitenumerique/gallene-sdk), [interop](/repos/suitenumerique/interop) et [encryption](/repos/suitenumerique/encryption).
+- [ui-kit](/repos/suitenumerique/ui-kit) : Migration vers une structure monorepo gérée par Yarn et Turborepo.
+- [conversations](/repos/suitenumerique/conversations) et [calendars](/repos/suitenumerique/calendars) : Migration majeure du frontend de Next.js vers Vite pour améliorer les performances.
+- [docs-website](/repos/suitenumerique/docs-website) : Reconstruction complète du site web avec le framework Astro.
+- [accounts](/repos/suitenumerique/accounts) : Migration des clés primaires vers le format UUID v7.
+- [hub](/repos/suitenumerique/hub) : Refonte de la couche de mapping du driver Matrix pour plus de modularité.
+- [meet](/repos/suitenumerique/meet) : Restructuration des services backend (gestion SIP, client S3).
 
 ## Dépôts les plus actifs
-- [ui-kit](/repos/suitenumerique/ui-kit) : Refonte architecturale majeure vers un monorepo et enrichissement de la bibliothèque de composants.
-- [drive](/repos/suitenumerique/drive) : Améliorations significatives de la gestion des quotas, du partage et de la sécurité.
-- [messages](/repos/suitenumerique/messages) : Renforcement des protocoles email et optimisation de l'expérience mobile.
-- [hub](/repos/suitenumerique/hub) : Intégration complète et refonte de la couche de messagerie Matrix.
-- [conversations](/repos/suitenumerique/conversations) : Migration vers Vite et intégration de l'IA générative.
-- [docs](/repos/suitenumerique/docs) : Amélioration de l'éditeur de contenu et de l'accessibilité.
-- [meet-matting](/repos/suitenumerique/meet-matting) : Optimisation massive des performances de traitement vidéo.
-- [dictaphone](/repos/suitenumerique/dictaphone) : Amélioration de la fiabilité du traitement audio et de l'usage mobile.
+- [hub](/repos/suitenumerique/hub) : Intégration massive de la messagerie Matrix (temps réel, threads, réactions).
+- [drive-migrator](/repos/suitenumerique/drive-migrator) : Amélioration de la résilience des exports et enrichissement de l'interface d'administration.
+- [dictaphone](/repos/suitenumerique/dictaphone) : Optimisation du traitement audio et enrichissement de l'expérience mobile (téléchargements en arrière-plan).
+- [meet-matting](/repos/suitenumerique/meet-matting) : Optimisations majeures de performance (temps d'inférence divisé par deux) et nouveaux pipelines de traitement.
+- [messages](/repos/suitenumerique/messages) : Évolutions importantes sur les protocoles email, l'interface mobile et l'administration DNS.
+- [conversations](/repos/suitenumerique/conversations) : Modernisation de la stack frontend et mise à jour des outils d'intelligence artificielle.

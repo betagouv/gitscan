@@ -1,24 +1,24 @@
-# Synthèse d'activité : betagouv (du DD/MM au DD/MM)
+# Synthèse d'activité : betagouv (du 25/08 au 03/09)
 
 ## Résumé de l'activité
-L'activité récente de betagouv se concentre sur trois piliers majeurs : la modernisation des outils de santé et de suivi sanitaire ([seves](/repos/betagouv/seves), [sylvasan](/repos/betagouv/sylvasan), [zacharie](/repos/betagouv/zacharie)), l'amélioration de l'accompagnement des publics étudiants ([monlogementetudiant](/repos/betagouv/monlogementetudiant), [sante-psy](/repos/betagouv/sante-psy), [sante-mentale-etudiant](/repos/betagouv/sante-mentale-etudiant)), et le renforcement de la sécurité des infrastructures et des données ([lab-anssi-ui-kit](/repos/betagouv/lab-anssi-ui-kit), [pass-sport](/repos/betagouv/pass-sport)).
+L'activité récente de l'organisation est marquée par une forte dynamique de modernisation des services publics et une amélioration significative de l'expérience utilisateur (UX). Plusieurs plateformes clés, telles que [pass-sport](/repos/betagouv/pass-sport) et [monlogementetudiant](/repos/betagouv/monlogementetudiant), ont bénéficié de refontes majeures pour simplifier les parcours usagers et renforcer la fiabilité des données.
 
-Ces évolutions visent à offrir une meilleure précision des données (géolocalisation, calculs de taux), une expérience utilisateur plus fluide sur mobile et une fiabilité accrue des services grâce à des refontes architecturales et des automatisations de maintenance.
+On observe également une montée en puissance de l'intégration de l'intelligence artificielle pour l'aide à la création de contenu ([science-infuse](/repos/betagouv/science-infuse)) et une optimisation des outils de gestion de terrain ([sylvasan](/repos/betagouv/sylvasan), [seves](/repos/betagouv/seves)). L'organisation continue de stabiliser ses infrastructures tout en publiant des versions majeures de ses standards de qualité.
 
 ## Sécurité
-- **Protection des accès et authentification** : Mise en place du MFA et de l'authentification ProConnect ([mon-service-securise](/repos/betagouv/mon-service-securise), [pitchou](/repos/betagouv/pitchou)), implémentation de l'authentification par certificat TLS ([lab-anssi-antivirus](/repos/betagouv/lab-anssi-antivirus)) et activation de l'authentification à deux facteurs (2FA) pour les administrateurs ([recommandations-collaboratives](/repos/betagouv/recommandations-collaboratives)).
-- **Correction de vulnérabilités** : Résolution de failles critiques liées à la gestion des sessions ([mon-suivi-justice](/repos/betagouv/mon-suivi-justice)), de vulnérabilités XSS ([nitrates](/repos/betagouv/nitrates)) et mise à jour de dépendances de sécurité ([mon-profil-anssi](/repos/betagouv/mon-profil-anssi), [lab-anssi-lib](/repos/betagouv/lab-anssi-lib)).
-- **Sécurisation des infrastructures** : Activation d'un pare-feu applicatif (WAF) ([pass-sport](/repos/betagouv/pass-sport)), renforcement de la vérification des certificats pour les sauvegardes ([lab-anssi-admin](/repos/betagouv/lab-anssi-admin)) et intégration d'outils d'analyse de configuration dans les pipelines CI/CD ([mon-aide-cyber](/repos/betagouv/mon-aide-cyber), [mon-aide-cyber-journal](/repos/betagouv/mon-aide-cyber-journal)).
+- **Corrections de vulnérabilités** : Résolution de failles critiques (XSS, gestion de session et dépendances) dans [nitrates](/repos/betagouv/nitrates), [mon-suivi-justice](/repos/betagouv/mon-suivi-justice) et [mon-profil-anssi](/repos/betagouv/mon-profil-anssi).
+- **Renforcement de l'authentification et de la protection** : Implémentation de la double authentification (2FA) pour [ma-cantine](/repos/betagouv/ma-cantine), intégration de ProConnect pour [stage-direct](/repos/betagouv/stage-direct) et [mon-service-securise](/repos/betagouv/mon-service-securise), et sécurisation des communications par certificat et TLS dans [lab-anssi-antivirus](/repos/betagouv/lab-anssi-antivirus).
+- **Sécurisation des processus** : Intégration d'outils d'analyse de sécurité (checkov, zizmor) dans les pipelines CI/CD ([mon-aide-cyber-journal](/repos/betagouv/mon-aide-cyber-journal)) et renforcement de la sécurité des sauvegardes ([lab-anssi-admin](/repos/betagouv/lab-anssi-admin)).
 
 ## Autres changements notables
-- **Migrations et refontes architecturales** : Passage à Rails 8 ([rdv-service-public](/repos/betagouv/rdv-service-public)), refonte majeure du système de simulation ([mon-entreprise](/repos/betagouv/mon-entreprise)), et restructuration profonde du simulateur de transports ([transports-sanitaires](/repos/betagouv/transports-sanitaires)).
-- **Évolutions des standards et outils de design** : Publication de la version 2.0 des standards ([standards](/repos/betagouv/standards)) et mise en conformité majeure des composants avec le DSFR ([lab-anssi-ui-kit](/repos/betagouv/lab-anssi-ui-kit), [penpot-dsfr](/repos/betagouv/penpot-dsfr)).
-- **Innovations et nouveaux services** : Lancement du connecteur Brevo-Sekoia ([sekoia-brevo-connector](/repos/betagouv/sekoia-brevo-connector)) et intégration de l'IA pour la génération de contenus pédagogiques ([science-infuse](/repos/betagouv/science-infuse)).
+- **Modernisation des architectures et des socles techniques** : Passage à Rails 8 ([rdv-service-public](/repos/betagouv/rdv-service-public)), migration vers Vite 8 ([lab-anssi-ui-kit](/repos/betagouv/lab-anssi-ui-kit)) et refonte profonde des systèmes de simulation ([mon-entreprise](/repos/betagouv/mon-entreprise), [transports-sanitaires](/repos/betagouv/transports-sanitaires)).
+- **Évolutions majeures des produits** : Publication de la version 2.0 des [standards](/repos/betagouv/standards), intégration d'un nouveau moteur d'IA v2 ([portail-rse-externe](/repos/betagouv/portail-rse-externe)) et lancement du connecteur [sekoia-brevo-connector](/repos/betagouv/sekoia-brevo-connector).
+- **Optimisation de l'infrastructure** : Mise en place de "Review Apps" pour automatiser les tests ([mon-entreprise](/repos/betagouv/mon-entreprise)) et initialisation de l'infrastructure en tant que code ([nitrates-iac](/repos/betagouv/nitrates-iac)).
 
 ## Dépôts les plus actifs
-- [sylvasan](/repos/betagouv/sylvasan) : Amélioration de la précision cartographique, de l'expérience de saisie terrain et de l'accessibilité.
-- [monlogementetudiant](/repos/betagouv/monlogementetudiant) : Refonte de l'interface utilisateur (DSFR), fiabilisation du géocodage et automatisation de la gestion des données.
-- [seves](/repos/betagouv/seves) : Optimisation de la gestion des alertes sanitaires, de la cartographie et de la saisie via les API SIRENE/BAN.
-- [nitrates](/repos/betagouv/nitrates) : Refonte des formulaires pour le mobile, renforcement de la sécurité et mise en place d'une infrastructure GitOps.
-- [lab-anssi-ui-kit](/repos/betagouv/lab-anssi-ui-kit) : Mise en conformité DSFR des composants et migration vers Vite 8.
-- [ma-cantine](/repos/betagouv/ma-cantine) : Refonte de l'espace établissement et enrichissement des indicateurs de diagnostic.
+- [sylvasan](/repos/betagouv/sylvasan) : Améliorations de la saisie de données terrain, de la cartographie et de l'interface mobile.
+- [seves](/repos/betagouv/seves) : Évolutions sur la gestion des alertes sanitaires et l'optimisation de l'interface.
+- [monlogementetudiant](/repos/betagouv/monlogementetudiant) : Refonte de l'expérience utilisateur (DSFR) et fiabilisation du géocodage.
+- [nitrates](/repos/betagouv/nitrates) : Refonte des formulaires mobiles et renforcement de la sécurité.
+- [mon-entreprise](/repos/betagouv/mon-entreprise) : Refonte de l'architecture des simulateurs et optimisation du workflow de développement.
+- [recommandations-collaboratives](/repos/betagouv/recommandations-collaboratives) : Refonte du CRM et optimisation des performances de la base de données.

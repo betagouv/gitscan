@@ -1,24 +1,25 @@
-# Synthèse d'activité : cloud-gouv (du 14/08 au 21/08)
+# Synthèse d'activité : cloud-gouv (du 21/08 au 28/08/2026)
 
 ## Résumé de l'activité
-L'activité de cette période est marquée par un renforcement significatif de la robustesse et de la sécurité des composants critiques de l'infrastructure. L'intégration de [securix](/repos/cloud-gouv/securix) avec le [portail](/repos/cloud-gouv/portail) et l'ajout du support de l'authentification matérielle offrent une gestion plus centralisée et sécurisée pour les utilisateurs finaux.
+L'activité de cette période est marquée par un renforcement de la fiabilité opérationnelle et une extension des capacités de gestion et de sécurité. L'intégration de [securix](/repos/cloud-gouv/securix) au [portail](/repos/cloud-gouv/portail) permet désormais une gestion centralisée du système, tandis que l'introduction du support pour les puces de sécurité matérielles améliore l'expérience d'authentification des utilisateurs.
 
-Parallèlement, l'organisation consolide ses capacités de déploiement et d'observabilité, tout en étendant son écosystème avec l'initialisation de nouveaux projets dédiés à l'expérimentation et au déploiement Kubernetes. Ces évolutions garantissent une infrastructure plus résiliente, plus performante et plus facile à administrer.
+Parallèlement, l'organisation consolide ses bases d'infrastructure avec l'initialisation de nouveaux projets comme [openproject](/repos/cloud-gouv/openproject) pour le déploiement Kubernetes et [playground-public](/repos/cloud-gouv/playground-public) pour l'expérimentation. Les efforts sur [portail](/repos/cloud-gouv/portail) et [common-helm-charts](/repos/cloud-gouv/common-helm-charts) visent à offrir une meilleure observabilité et une gestion plus fine des accès et des ressources pour les utilisateurs finaux.
 
 ## Sécurité
-- Renforcement de la sécurité des protocoles (validation HTTP et détection TLS) et durcissement des mécanismes d'accès (ACL) dans [portail](/repos/cloud-gouv/portail).
-- Correction de vulnérabilités via la mise à jour de dépendances critiques (Go, OpenTelemetry) dans [openbao](/repos/cloud-gouv/openbao).
-- Introduction du support de l'authentification matérielle via des puces de sécurité dans [securix](/repos/cloud-gouv/securix).
-- Sécurisation de la gestion des journaux (permissions restreintes et rechargement dynamique) dans [portail](/repos/cloud-gouv/portail).
+- Mise à jour de sécurité critique pour Go et OpenTelemetry dans [openbao](/repos/cloud-gouv/openbao).
+- Durcissement de l'évaluateur d'ACL et de la gestion des connexions (timeouts, limites de connexions simultanées) dans [portail](/repos/cloud-gouv/portail).
+- Correction de la gestion de la liste noire des ressources au niveau des projets dans [common-helm-charts](/repos/cloud-gouv/common-helm-charts).
+- Support de l'authentification matérielle via les puces de sécurité P14SG6 dans [securix](/repos/cloud-gouv/securix).
 
 ## Autres changements notables
-- **Optimisation des performances et du réseau** : Amélioration de la réactivité DNS (algorithme Happy Eyeballs v2) et refactorisation de la logique de routage dans [portail](/repos/cloud-gouv/portail).
-- **Modernisation des outils de déploiement** : Mise à jour des versions d'API pour la compatibilité avec l'opérateur Cluster API dans [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts) et introduction de la gestion de versions individuelles par chart dans [common-helm-charts](/repos/cloud-gouv/common-helm-charts).
-- **Évolutions système et infrastructure** : Amélioration de la compatibilité avec le compilateur GCC 15 dans [nixpkgs](/repos/cloud-gouv/nixpkgs) et mise à jour d'Ansible pour la construction d'images dans [dockerfiles](/repos/cloud-gouv/dockerfiles).
-- **Expansion de l'écosystème** : Initialisation de nouveaux dépôts pour l'expérimentation ([playground-public](/repos/cloud-gouv/playground-public)) et pour le déploiement de services via Kubernetes ([openproject](/repos/cloud-gouv/openproject)).
+- Refactorisation majeure de la logique de routage (HTTP/SOCKS5) et de la détection des protocoles dans [portail](/repos/cloud-gouv/portail).
+- Mise à jour des charts Helm pour assurer la compatibilité avec l'opérateur Cluster API et la correction des ressources OpenStack dans [k8s-cluster-api-helm-charts](/repos/cloud-gouv/k8s-cluster-api-helm-charts).
+- Migrations techniques vers `finalAttrs` et amélioration de la compatibilité avec GCC 15 dans [nixpkgs](/repos/cloud-gouv/nixpkgs).
+- Optimisation des pipelines CI/CD et amélioration des tableaux de bord de monitoring (Grafana) dans [common-helm-charts](/repos/cloud-gouv/common-helm-charts).
+- Mise en place de la structure de déploiement Kubernetes et Helm pour [openproject](/repos/cloud-gouv/openproject).
 
 ## Dépôts les plus actifs
-- [portail](/repos/cloud-gouv/portail) : Travaux intensifs sur la robustesse, la sécurité et l'observabilité du proxy.
-- [securix](/repos/cloud-gouv/securix) : Évolutions fonctionnelles majeures incluant l'intégration au portail et le support de nouveaux matériels.
-- [openbao](/repos/cloud-gouv/openbao) : Maintenance corrective et mises à jour de sécurité importantes.
-- [common-helm-charts](/repos/cloud-gouv/common-helm-charts) : Améliorations de la gestion des secrets et des configurations de déploiement.
+- [portail](/repos/cloud-gouv/portail) : Améliorations majeures de la connectivité, de la gestion des logs et de la résilience du routage.
+- [openbao](/repos/cloud-gouv/openbao) : Corrections de bugs critiques, mises à jour de sécurité et enrichissement des bibliothèques clientes.
+- [securix](/repos/cloud-gouv/securix) : Évolutions vers la gestion centralisée et support de nouveaux matériels et systèmes.
+- [common-helm-charts](/repos/cloud-gouv/common-helm-charts) : Améliorations de l'observabilité, de la gestion des accès et de la CI/CD.
