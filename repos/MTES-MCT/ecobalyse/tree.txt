@@ -3,6 +3,7 @@
 ├── .editorconfig
 ├── .env.sample
 ├── .gitattributes
+├── .gitconfig
 ├── .github
 │   ├── ISSUE_TEMPLATE
 │   │   ├── bug_template.md
@@ -193,6 +194,7 @@
 │   │   ├── export_bw_db.py
 │   │   ├── export_datagouv.py
 │   │   ├── export_lcia.py
+│   │   ├── generate_taxonomy_with_aliases.py
 │   │   ├── json_formatter.py
 │   │   └── lcia_info.py
 │   ├── common
@@ -214,8 +216,7 @@
 │   │   ├── export.py
 │   │   ├── impacts.py
 │   │   ├── import_.py
-│   │   ├── infer_metadata.py
-│   │   └── sync_datapackages.py
+│   │   └── infer_metadata.py
 │   ├── compose.yaml
 │   ├── config.py
 │   ├── create_activities.py
@@ -258,28 +259,29 @@
 │   │   └── processes_legacy.json
 │   ├── food
 │   │   ├── __init__.py
-│   │   ├── base_ingredients.json
 │   │   ├── ecosystemic_services
 │   │   │   ├── README.md
 │   │   │   ├── ecosystemic_factors.csv
 │   │   │   ├── ecs_transformations.png
 │   │   │   ├── feed.json
 │   │   │   └── raw_to_transformed_ratios.json
-│   │   └── metadata
-│   │       ├── README.md
-│   │       ├── agb_inedible.csv
-│   │       ├── cooked_to_raw.csv
-│   │       ├── cropgroup.csv
-│   │       ├── density.csv
-│   │       ├── fao_density.csv
-│   │       ├── food_type.csv
-│   │       ├── food_type_cooked_to_raw.csv
-│   │       ├── food_type_density.csv
-│   │       ├── food_type_inedible_part.csv
-│   │       ├── inedible_part.csv
-│   │       ├── nova_classification.csv
-│   │       ├── processing_state.csv
-│   │       └── transport_cooling.csv
+│   │   ├── metadata
+│   │   │   ├── README.md
+│   │   │   ├── agb_inedible.csv
+│   │   │   ├── cooked_to_raw.csv
+│   │   │   ├── cropgroup.csv
+│   │   │   ├── density.csv
+│   │   │   ├── fao_density.csv
+│   │   │   ├── food_type.csv
+│   │   │   ├── food_type_cooked_to_raw.csv
+│   │   │   ├── food_type_density.csv
+│   │   │   ├── food_type_inedible_part.csv
+│   │   │   ├── inedible_part.csv
+│   │   │   ├── nova_classification.csv
+│   │   │   ├── processing_state.csv
+│   │   │   └── transport_cooling.csv
+│   │   ├── taxonomy.json
+│   │   └── taxonomy_with_aliases.json
 │   ├── impacts.json
 │   ├── import_bafu.py
 │   ├── import_ecoinvent.py
@@ -1242,7 +1244,8 @@
 │   ├── migrations
 │   │   ├── 2026-06-03-add-food-type-cereals-legumes.py
 │   │   ├── 2026-06-22-use-kwh-instead-of-mj.py
-│   │   └── 2026-07-15-infer-raw-to-cooked-ratio.py
+│   │   ├── 2026-07-15-infer-raw-to-cooked-ratio.py
+│   │   └── 2026-08-25-generate-taxonomy.py
 │   ├── models
 │   │   └── process.py
 │   ├── settings.toml
@@ -1285,8 +1288,9 @@
 │   │   │   ├── processes_legacy_impacts_full.json
 │   │   │   └── textile
 │   │   │       └── materials.json
-│   │   ├── test_base_ingredient.py
 │   │   ├── test_bin_scripts.py
+│   │   ├── test_colliding_cfs.py
+│   │   ├── test_dropped_cfs.py
 │   │   ├── test_dynaconf.py
 │   │   ├── test_ecosystemic_services.py
 │   │   ├── test_export.py
@@ -1294,7 +1298,8 @@
 │   │   ├── test_json_consistency.py
 │   │   ├── test_json_format_encoder.py
 │   │   ├── test_process_relationships.py
-│   │   └── test_raw_to_transformed_ratios.py
+│   │   ├── test_raw_to_transformed_ratios.py
+│   │   └── test_taxonomy.py
 │   └── textile
 │       ├── README.md
 │       └── __init__.py
@@ -1310,6 +1315,7 @@
 ├── e2e
 │   ├── auth.spec.js
 │   ├── food-simulator.spec.js
+│   ├── global-setup.js
 │   ├── homepage.spec.js
 │   ├── lib.js
 │   ├── object-simulator.spec.js
@@ -1416,9 +1422,7 @@
 │   │   ├── maj.md
 │   │   ├── mentions-légales.md
 │   │   └── politique-de-confidentialite.md
-│   ├── robots.txt
-│   └── vendor
-│       └── rapidoc-9.3.4.min.js
+│   └── robots.txt
 ├── pyproject.toml
 ├── review
 │   ├── .gitignore
@@ -1678,4 +1682,4 @@
 │   ├── rate-limiting.spec.js
 │   └── server.spec.js
 └── uv.lock
-134 directories, 1908 files
+133 directories, 1913 files

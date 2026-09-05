@@ -1,31 +1,18 @@
-## Changelog : ecobalyse (30 derniers jours, au 26 août 2026)
+## Changelog : ecobalyse (30 derniers jours, au 04 septembre 2026)
 
 ### Résumé
-Cette période a été marquée par un enrichissement important des bases de données, notamment pour les catégories de véhicules et de produits alimentaires. L'application gagne également en flexibilité grâce à l'introduction de nouvelles fonctionnalités génériques permettant de mieux gérer les assemblages et les catégories de produits.
+Ce mois-ci, le projet a franchi une étape importante vers une plus grande polyvalence grâce à l'implémentation de catégories de produits génériques. Cela permet de traiter plus uniformément différents types de produits (aliments, véhicules, objets). Parallèlement, une refonte majeure de la structure des données (introduction d'une taxonomie) a été réalisée pour améliorer la précision des calculs et la maintenance du système.
 
 ### Évolutions fonctionnelles
-- **Nouvelles fonctionnalités** :
-    - Mise en place des opérations d'assemblage ([#2683](https://github.com/MTES-MCT/ecobalyse/issues/2683)).
-    - Introduction de catégories de produits génériques ([#2714](https://github.com/MTES-MCT/ecobalyse/issues/2714)) et de leurs consommations par défaut ([#2744](https://github.com/MTES-MCT/ecobalyse/issues/2744)).
-- **Enrichissement des données** :
-    - Ajout de nouvelles catégories, matériaux et processus pour les véhicules ([#2689](https://github.com/MTES-MCT/ecobalyse/issues/2689), [#2724](https://github.com/MTES-MCT/ecobalyse/issues/2724), [#2725](https://github.com/MTES-MCT/ecobalyse/issues/2725), [#2687](https://github.com/MTES-MCT/ecobalyse/issues/2687)).
-    - Ajout d'exemples alimentaires (mangues, haricots verts) ([#2711](https://github.com/MTES-MCT/ecobalyse/issues/2711), [#2712](https://github.com/MTES-MCT/ecobalyse/issues/2712)).
-- **Interface utilisateur** :
-    - Correction de l'affichage : masquage des onglets et du sélecteur de catégorie lors de requêtes vides ([#2750](https://github.com/MTES-MCT/ecobalyse/issues/2750)).
+- **Modélisation et calcul** : Implémentation de catégories de produits génériques ([#2714](https://github.com/MTES-MCT/ecobalyse/issues/2714)), gestion des opérations et des consommations par défaut ([#2753](https://github.com/MTES-MCT/ecobalyse/issues/2753), [#2744](https://github.com/MTES-MCT/ecobalyse/issues/2744)) et application des quantités d'articles aux transports d'assemblage ([#2755](https://github.com/MTES-MCT/ecobalyse/issues/2755)).
+- **Interface utilisateur** : Affichage de la masse unitaire des produits de production ([#2766](https://github.com/MTES-MCT/ecobalyse/issues/2766)) et des éléments de ligne de composants ([#2772](https://github.com/MTES-MCT/ecobalyse/issues/2772)). Amélioration de l'ergonomie en masquant les sélecteurs lors de requêtes vides ([#2750](https://github.com/MTES-MCT/ecobalyse/issues/2750)).
+- **Données et exemples** : Enrichissement des exemples pour les véhicules (nouvelles catégories et matériaux) ([#2724](https://github.com/MTES-MCT/ecobalyse/issues/2724), [#2689](https://github.com/MTES-MCT/ecobalyse/issues/2689)) et l'alimentation (ex: mangues, haricots verts) ([#2711](https://github.com/MTES-MCT/ecobalyse/issues/2711), [#2712](https://github.com/MTES-MCT/ecobalyse/issues/2712)). Chargement automatique d'exemples dans le simulateur ([#2782](https://github.com/MTES-MCT/ecobalyse/issues/2782)).
 
 ### Évolutions techniques
-- **Refactorisation et architecture** :
-    - Amélioration de la généricité du code et du partage des stratégies SimaPro ([#2745](https://github.com/MTES-MCT/ecobalyse/issues/2745), [#2721](https://github.com/MTES-MCT/ecobalyse/issues/2721)).
-    - Optimisation du schéma des processus pour éviter les duplications ([#2680](https://github.com/MTES-MCT/ecobalyse/issues/2680)).
-    - Migration de `msgspec` vers `pydantic` ([#2686](https://github.com/MTES-MCT/ecobalyse/issues/2686)).
-- **Backend et données** :
-    - Correction de la sérialisation JSON pour les types `jsonb` ([#2713](https://github.com/MTES-MCT/ecobalyse/issues/2713)).
-    - Résolution de problèmes de synchronisation lors de l'export de données ([#2707](https://github.com/MTES-MCT/ecobalyse/issues/2707)).
-- **Stabilité et maintenance** :
-    - Correction des tests de bout en bout (E2E) ([#2741](https://github.com/MTES-MCT/ecobalyse/issues/2741)).
-    - Retour à une version stable de Highcharts ([#2739](https://github.com/MTES-MCT/ecobalyse/issues/2739)).
-    - Ajustement des délais d'affichage pour améliorer la fiabilité de l'interface ([#2748](https://github.com/MTES-MCT/ecobalyse/issues/2748)).
+- **Architecture des données** : Transition vers un nouveau système de taxonomie (`taxonomy.json`) remplaçant l'ancien format d'ingrédients ([#2746](https://github.com/MTES-MCT/ecobalyse/issues/2746)). Optimisation du partage des stratégies SimaPro ([#2745](https://github.com/MTES-MCT/ecobalyse/issues/2745)) et synchronisation des méthodes avec les données de biosphère ([#2761](https://github.com/MTES-MCT/ecobalyse/issues/2761)).
+- **Qualité du code** : Renforcement du typage via l'outil `ty` ([#2728](https://github.com/MTES-MCT/ecobalyse/issues/2728), [#2731](https://github.com/MTES-MCT/ecobalyse/issues/2731)), correction d'erreurs de linting (Ruff) ([#2706](https://github.com/MTES-MCT/ecobalyse/issues/2706)) et refactorisation pour une généricité explicite ([#2721](https://github.com/MTES-MCT/ecobalyse/issues/2721)).
+- **Infrastructure et maintenance** : Mise à jour de sécurité de Maildev ([#2771](https://github.com/MTES-MCT/ecobalyse/issues/2771)), correction de compatibilité avec Scalingo ([#2776](https://github.com/MTES-MCT/ecobalyse/issues/2776)), ajustement de la version de Highcharts ([#2739](https://github.com/MTES-MCT/ecobalyse/issues/2739)) et correction de la sérialisation JSON ([#2713](https://github.com/MTES-MCT/ecobalyse/issues/2713)). Stabilisation des tests de bout en bout (E2E) ([#2741](https://github.com/MTES-MCT/ecobalyse/issues/2741)).
 
 ### Autres changements
-- **Qualité du code** : Intégration du typechecker `ty` ([#2728](https://github.com/MTES-MCT/ecobalyse/issues/2728), [#2731](https://github.com/MTES-MCT/ecobalyse/issues/2731)) et correction d'erreurs de linting Ruff ([#2706](https://github.com/MTES-MCT/ecobalyse/issues/2706)).
-- **Nettoyage** : Suppression d'activités de données obsolètes ou vides ([#2743](https://github.com/MTES-MCT/ecobalyse/issues/2743)).
+- Nettoyage des données obsolètes ou vides (alimentation et lait) ([#2759](https://github.com/MTES-MCT/ecobalyse/issues/2759), [#2743](https://github.com/MTES-MCT/ecobalyse/issues/2743)).
+- Corrections de nommage et maintenance des branches ([#2752](https://github.com/MTES-MCT/ecobalyse/issues/2752), [#2735](https://github.com/MTES-MCT/ecobalyse/issues/2735)).
