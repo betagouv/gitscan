@@ -51,12 +51,14 @@ and this project adheres to
 - add tooltip for cropped title
 - update zip archive download journey
 - specify logo fichiers
+- derive DRIVE_API_BASE_URL and DRIVE_FRONTEND_URL from DRIVE_BASE_URL #103
 - update cunningham tokens
 - replace unmaintained retry package with tenacity
 - switch Resana source auth to PKCE + bridge flow #190
 
 ### Fixed
 
+- fix illustration page finish
 - fix CI checks (self-hosted runner deps, gitlint job, test-back env vars)
 - fix Resana access token refresh crashing with KeyError: 'access_token'
 - fix HTML entities not decoded in Resana workspace/folder/file names
@@ -64,7 +66,9 @@ and this project adheres to
 - secure archive ZIP download link
 - fix export crash on folder/file names containing "/" #165
 - fix lint-git print() check matching removed lines instead of only added ones
+- fix error modal looping infinitely on connect page #138
 - retry Drive upload-ended notification on transient network timeouts #176
+- retry Resana file download and skip failing files instead of aborting #175
 
 ### Removed
 
