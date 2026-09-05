@@ -1,33 +1,26 @@
-## Changelog : mobilic (30 derniers jours, au 26/08/2026)
+## Changelog : mobilic (30 derniers jours, au 4 septembre 2026)
 
 ### Résumé
-Ce mois-ci, les développements ont principalement porté sur l'amélioration de la fluidité de saisie pour les utilisateurs et la précision de l'affichage des données. Les fonctionnalités de fractionnement d'activité ont été affinées, la gestion des notifications a été corrigée pour une meilleure visibilité, et l'expérience de saisie des dates a été optimisée. Côté infrastructure, l'introduction de nouveaux outils de test automatisés permet une validation plus rapide des changements.
+Ce mois-ci, la plateforme a franchi une étape majeure avec l'introduction des notifications push et une gestion améliorée des campagnes de communication. L'expérience utilisateur a été fluidifiée, notamment lors de la création de missions et de la saisie des données personnelles, tandis que la stabilité de l'application (PWA) et la précision des statistiques ont été renforcées.
 
 ### Évolutions fonctionnelles
-- **Gestion des activités et fractionnement** :
-  - Amélioration de la gestion du fractionnement d'activité avec l'ajout d'un tag "MODIFICATION" pour identifier les changements [#912](https://github.com/MTES-MCT/mobilic/pull/912).
-  - Correction de l'affichage de l'historique des activités pour garantir la cohérence avec les exports PDF [#930](https://github.com/MTES-MCT/mobilic/pull/930).
-  - Optimisation de la gestion des pauses et de la modification des temps de pause [#897](https://github.com/MTES-MCT/mobilic/pull/897).
-- **Interface et Notifications** :
-  - Correction de l'affichage et de la mise en page de la barre de notifications pour une meilleure lisibilité [#932](https://github.com/MTES-MCT/mobilic/pull/932).
-  - Suppression de la fenêtre modale de mission longue pour simplifier le parcours utilisateur [#908](https://github.com/MTES-MCT/mobilic/pull/908).
-- **Formulaires** :
-  - Optimisation de la saisie de la date de naissance avec un système de focus automatique amélioré sur les champs mois/jour [#924](https://github.com/MTES-MCT/mobilic/pull/924).
-- **Administration** :
-  - Amélioration de la précision des statuts de mission, notamment pour la gestion des pauses et la priorité des statuts administrateur [#913](https://github.com/MTES-MCT/mobilic/pull/913).
-- **Nouvelle fonctionnalité** :
-  - Intégration de la fonctionnalité MEP (05/08/2026) [#916](https://github.com/MTES-MCT/mobilic/pull/916).
+- **Notifications** : Mise en place des notifications push, gestion des campagnes de communication et ajout d'une bannière d'acceptation (opt-in) pour les utilisateurs. [#920](https://github.com/MTES-MCT/mobilic/pull/920)
+- **Navigation & UX** : 
+    - Simplification du parcours de création de mission, désormais accessible directement depuis le menu de navigation et avec une redirection optimisée. [#938](https://github.com/MTES-MCT/mobilic/pull/938)
+    - Amélioration de la saisie des dates de naissance grâce à un système d'autofocus et une validation plus intuitive. [#924](https://github.com/MTES-MCT/mobilic/pull/924)
+- **Historique & Activités** : 
+    - Optimisation de l'affichage des libellés d'activité dans l'historique et meilleure gestion des activités fractionnées (split). [#944](https://github.com/MTES-MCT/mobilic/pull/944), [#930](https://github.com/MTES-MCT/mobilic/pull/930)
+    - Correction de l'affichage du bouton "Conduite" en mode PWA lorsque des tâches alternatives sont autorisées. [#44b1af77](https://github.com/MTES-MCT/mobilic/commit/44b1af77)
+- **Conformité & Partenaires** : 
+    - Correction de la référence légale concernant la définition de la semaine civile. [#939](https://github.com/MTES-MCT/mobilic/pull/939)
+    - Ajustement du calcul des statistiques de mission pour exclure les activités rejetées. [#927](https://github.com/MTES-MCT/mobilic/pull/927)
+    - Ajout du logo Rota dans la section des partenaires (logiciels autorisés). [#940](https://github.com/MTES-MCT/mobilic/pull/940)
 
 ### Évolutions techniques
-- **Infrastructure et CI/CD** :
-  - Mise en place des "Review Apps" sur Scalingo, permettant de tester chaque modification dans un environnement isolé avant fusion [#904](https://github.com/MTES-MCT/mobilic/pull/904).
-  - Amélioration de la robustesse des scripts de détection de branche dans le pipeline CI.
-- **Observabilité et Maintenance** :
-  - Amélioration de la capture et du suivi des erreurs liées aux jetons de rafraîchissement (refresh tokens) via Sentry [#914](https://github.com/MTES-MCT/mobilic/pull/914).
-- **Refactoring** :
-  - Centralisation de la logique de calcul des statuts de mission pour assurer une cohérence totale entre les différentes vues administratives.
-  - Simplification du code lié au fractionnement d'activité et nettoyage des fonctions de calcul de statut.
-
-### Autres changements
-- Nettoyage du code (suppression de code mort, renommage de propriétés pour plus de clarté).
-- Corrections de style et de syntaxe sur le front-end.
+- **Architecture & PWA** : 
+    - Rendre le contexte d'actions (`ActionsContext`) disponible globalement pour stabiliser l'application. [#949](https://github.com/MTES-MCT/mobilic/pull/949)
+    - Résolution de problèmes d'écran blanc lors du chargement de l'application suite à un déploiement (gestion du cache PWA). [#12d012bc](https://github.com/MTES-MCT/mobilic/commit/12d012bc)
+- **Observabilité & CI/CD** : 
+    - Amélioration de la capture des erreurs de jeton de rafraîchissement (refresh token) dans Sentry. [#914](https://github.com/MTES-MCT/mobilic/pull/914)
+    - Corrections sur les environnements de revue (review apps) et les permissions de workflow. [#3bdb6788](https://github.com/MTES-MCT/mobilic/commit/3bdb6788)
+- **Qualité de code** : Intégration des recommandations SonarCloud et améliorations de l'accessibilité. [#b15cd3dd](https://github.com/MTES-MCT/mobilic/commit/b15cd3dd)
