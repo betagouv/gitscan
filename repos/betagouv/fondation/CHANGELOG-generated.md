@@ -1,37 +1,33 @@
-## Changelog : fondation (30 derniers jours, au 24 août 2026)
+## Changelog : fondation (30 derniers jours, au 04/09/2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a franchi des étapes importantes dans le suivi des carrières des magistrats, notamment avec l'ajout de nouveaux outils de visibilité sur les évaluations et les détails de carrière. La gestion documentaire a également été renforcée par l'amélioration de l'éditeur d'agenda et la fiabilisation de la génération de rapports officiels. L'interface utilisateur a été affinée pour offrir une navigation plus fluide et une meilleure accessibilité.
+Cette période a été marquée par une amélioration significative de la fiabilité de l'ingestion des données et de l'accessibilité de l'interface. Les utilisateurs bénéficient de fonctionnalités enrichies pour la gestion des documents et un suivi plus précis des évaluations des magistrats.
 
 ### Évolutions fonctionnelles
-- **Gestion des magistrats et évaluations** :
-    - Ajout d'une liste permettant d'identifier les magistrats n'ayant pas encore fait l'objet d'une évaluation [#572].
-    - Mise en place d'alertes pour les auditions et les évaluations [#559].
-    - Création d'une page dédiée aux détails du magistrat [#513].
-    - Ajout d'un indicateur de manque d'évaluation sur les dossiers de nomination [#551].
-- **Gestion documentaire et agenda** :
-    - Déploiement d'un éditeur d'agenda côté client et gestion des éditions de documents [#541, #539].
-    - Possibilité de taguer les fichiers joints à une proposition [#562].
-    - Amélioration de la gestion des rapports officiels (ordre des fichiers et préparation des sessions) [#538, #548].
-- **Améliorations de l'interface (UI/UX)** :
-    - Ajout d'alertes concernant les juridictions exclues lors des affectations manuelles [#535].
-    - Amélioration de la lisibilité des tableaux (colonnes de statut, infobulles et gestion de l'espace pour les signatures) [#560, #561, #547].
-    - Uniformisation de l'affichage des juridictions exclues sur l'ensemble de la plateforme [#570].
-    - Correction de l'affichage des auditions sur les dossiers qui n'en acceptent plus [#568].
+- **Gestion des documents et des ordres du jour** : 
+    - Amélioration de la préparation des ordres du jour via la sélection directe de fichiers dans les tableaux [#580](https://github.com/betagouv/fondation/issues/580).
+    - Intégration automatique des polices et des en-têtes dans les documents générés [#588](https://github.com/betagouv/fondation/issues/588).
+    - Automatisation de l'invalidation des rapports officiels lors de modifications de l'agenda (changement de date ou suppression de fichier) [#601](https://github.com/betagouv/fondation/issues/601) [#603](https://github.com/betagouv/fondation/issues/603).
+    - Ajout de colonnes de statut pour les documents et possibilité de taguer les fichiers liés à une proposition [#560](https://github.com/betagouv/fondation/issues/560) [#562](https://github.com/betagouv/fondation/issues/562).
+    - Correction du téléchargement des pièces jointes pour récupérer le fichier réel plutôt que la page de l'application [#583](https://github.com/betagouv/fondation/issues/583).
+- **Suivi métier et évaluations** : 
+    - Ajout de la possibilité de lister les magistrats dont l'évaluation est manquante [#572](https://github.com/betagouv/fondation/issues/572) et intégration d'un indicateur spécifique sur les dossiers de nomination [#551](https://github.com/betagouv/fondation/issues/551).
+    - Correction de l'affectation des fiches de juridiction, désormais rattachées au magistrat plutôt qu'à la session [#591](https://github.com/betagouv/fondation/issues/591).
+- **Expérience utilisateur et accessibilité** : 
+    - Refonte des composants modaux et des notifications (passage aux "toasts") pour une meilleure accessibilité [#579](https://github.com/betagouv/fondation/issues/579) [#582](https://github.com/betagouv/fondation/issues/582).
+    - Améliorations diverses suite aux revues UX (écrans de transparence, typographie, positionnement des validations) [#592](https://github.com/betagouv/fondation/issues/592) [#600](https://github.com/betagouv/fondation/issues/600) [#590](https://github.com/betagouv/fondation/issues/590) [#589](https://github.com/betagouv/fondation/issues/589).
+    - Optimisation de l'accessibilité pour les lecteurs d'écran (étiquetage de l'éditeur de texte riche) [#587](https://github.com/betagouv/fondation/issues/587).
 
 ### Évolutions techniques
-- **Architecture et Refactoring** :
-    - Refonte des composants de fenêtres modales pour garantir une meilleure accessibilité [#579].
-    - Optimisation de la gestion des fichiers et restructuration des routages (layouts et guards de sécurité) [#340, #528, #527].
-    - Introduction de `nestjs-cls` pour une meilleure gestion du contexte en backend [#534].
-    - Refonte du modèle de vue pour l'éditeur de rapports officiels [#523].
-- **Infrastructure et Performance** :
-    - Migration de la génération de PDF de Puppeteer vers Gotenberg pour une plus grande fiabilité [#520, #522].
-    - Amélioration de la gestion des erreurs lors de la génération de documents via Gotenberg [#573].
-- **Qualité et Tests** :
-    - Renforcement de la fiabilité avec l'ajout de tests unitaires frontend dans les cycles d'intégration [#544].
-    - Utilisation de MSW pour simuler les appels API dans l'environnement Storybook [#557].
+- **Fiabilité de l'ingestion de données (Lolfi)** : 
+    - Renforcement de la surveillance de l'ingestion avec de nouvelles alertes en cas d'arrêt ou d'échec de l'import [#609](https://github.com/betagouv/fondation/issues/609) [#608](https://github.com/betagouv/fondation/issues/608).
+    - Amélioration de la détection des scripts de relais divergents [#612](https://github.com/betagouv/fondation/issues/612) et résolution des blocages de jobs d'ingestion [#604](https://github.com/betagouv/fondation/issues/604).
+    - Découplage de la synchronisation des sessions Lolfi du cycle de traitement des fichiers pour plus de robustesse [#611](https://github.com/betagouv/fondation/issues/611).
+- **Infrastructure et CI/CD** : 
+    - Optimisation du déploiement des assets documentaires sur Scalingo [#593](https://github.com/betagouv/fondation/issues/593).
+    - Synchronisation automatique des clients OpenAPI [#585](https://github.com/betagouv/fondation/issues/585).
+    - Amélioration de la gestion des échecs de génération de documents via Gotenberg [#573](https://github.com/betagouv/fondation/issues/573).
 
 ### Autres changements
-- Mise à jour de la documentation technique (README) et unification des commandes de configuration du projet [#571].
-- Optimisation des stories Storybook pour le développement des composants [#569].
+- **Documentation** : Mise à jour du README et unification des commandes de configuration du projet [#571](https://github.com/betagouv/fondation/issues/571).
+- **Développement** : Amélioration de l'environnement de test et de Storybook [#569](https://github.com/betagouv/fondation/issues/569) [#557](https://github.com/betagouv/fondation/issues/557).
