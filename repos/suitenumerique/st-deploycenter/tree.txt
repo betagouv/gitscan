@@ -40,7 +40,9 @@
 │   ├── assets
 │   │   ├── data-flow.svg
 │   │   └── data-model.svg
-│   └── auto_join.md
+│   ├── auto_join.md
+│   ├── domains.md
+│   └── proconnect_domains.md
 ├── env.d
 │   └── development
 │       ├── backend.defaults
@@ -48,6 +50,8 @@
 │       ├── frontend.defaults
 │       ├── keycloak.defaults
 │       └── postgresql.defaults
+├── scripts
+│   └── validate_proconnect_allowlist.py
 └── src
     ├── backend
     │   ├── .pylintrc
@@ -60,17 +64,20 @@
     │   │   │   ├── __init__.py
     │   │   │   ├── fields.py
     │   │   │   ├── filters.py
+    │   │   │   ├── openapi.json
     │   │   │   ├── permissions.py
     │   │   │   ├── serializers.py
     │   │   │   └── viewsets
     │   │   │       ├── __init__.py
     │   │   │       ├── accounts.py
     │   │   │       ├── config.py
+    │   │   │       ├── domains.py
     │   │   │       ├── entitlements.py
     │   │   │       ├── lagaufre.py
     │   │   │       ├── metrics.py
     │   │   │       ├── operator.py
     │   │   │       ├── organization.py
+    │   │   │       ├── proconnect.py
     │   │   │       ├── service.py
     │   │   │       ├── task.py
     │   │   │       └── user.py
@@ -95,7 +102,6 @@
     │   │   │       ├── messages_storage_entitlement_resolver.py
     │   │   │       ├── piggyback_access_entitlement_resolver.py
     │   │   │       └── transfers_access_entitlement_resolver.py
-    │   │   ├── enums.py
     │   │   ├── factories.py
     │   │   ├── forms.py
     │   │   ├── management
@@ -105,7 +111,12 @@
     │   │   │       ├── demo_data.py
     │   │   │       ├── drop_all_tables.py
     │   │   │       ├── print_sessions.py
-    │   │   │       └── run_task.py
+    │   │   │       ├── proconnect_detect_drift.py
+    │   │   │       ├── proconnect_fetch_prevalidated.py
+    │   │   │       ├── proconnect_regen_candidate_domains.py
+    │   │   │       ├── proconnect_sync.py
+    │   │   │       ├── run_task.py
+    │   │   │       └── subscribe_bulk.py
     │   │   ├── migrations
     │   │   │   ├── 0001_initial.py
     │   │   │   ├── 0002_operatorserviceconfig_service_operators_and_more.py
@@ -127,12 +138,19 @@
     │   │   │   ├── 0018_operator_org_role_admin_flag.py
     │   │   │   ├── 0019_external_management_api_key.py
     │   │   │   ├── 0020_service_hidden.py
+    │   │   │   ├── 0021_organization_proconnect_domains.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── services
     │   │   │   ├── __init__.py
+    │   │   │   ├── dns.py
+    │   │   │   ├── domainnames.py
+    │   │   │   ├── domains.py
+    │   │   │   ├── domains_candidates.py
     │   │   │   ├── drive_service_handler.py
+    │   │   │   ├── locks.py
     │   │   │   ├── messages_service_handler.py
+    │   │   │   ├── proconnect.py
     │   │   │   └── service_handler.py
     │   │   ├── servicetypes
     │   │   │   └── __init__.py
@@ -168,7 +186,9 @@
     │   │   │   │   ├── conftest.py
     │   │   │   │   ├── test_accounts_filtering.py
     │   │   │   │   ├── test_accounts_reconciliation.py
+    │   │   │   │   ├── test_api_key_auth_security.py
     │   │   │   │   ├── test_config.py
+    │   │   │   │   ├── test_domains.py
     │   │   │   │   ├── test_entitlements.py
     │   │   │   │   ├── test_entitlements_adc.py
     │   │   │   │   ├── test_entitlements_admin.py
@@ -203,8 +223,11 @@
     │   │   │   │   ├── test_operator_service_config.py
     │   │   │   │   ├── test_organization.py
     │   │   │   │   └── test_users.py
+    │   │   │   ├── test_domains_candidates.py
     │   │   │   ├── test_dpnt_import.py
     │   │   │   ├── test_metrics_scraping.py
+    │   │   │   ├── test_proconnect_allowlist.py
+    │   │   │   ├── test_proconnect_push.py
     │   │   │   ├── test_settings.py
     │   │   │   ├── test_usage_metrics_scraping.py
     │   │   │   ├── test_webhooks.py
@@ -287,22 +310,29 @@
     │   │   │           │   ├── Breadcrumbs.tsx
     │   │   │           │   ├── Parts.tsx
     │   │   │           │   └── index.scss
+    │   │   │           ├── copy
+    │   │   │           │   ├── CopyableValue.scss
+    │   │   │           │   └── CopyableValue.tsx
     │   │   │           ├── feedback-widget
     │   │   │           │   └── index.tsx
     │   │   │           ├── organization
     │   │   │           │   └── RpntBadge.tsx
     │   │   │           ├── service
+    │   │   │           │   ├── DomainMultiSelectModal.tsx
     │   │   │           │   ├── DomainSelectorModal.tsx
+    │   │   │           │   ├── DomainsModal.tsx
     │   │   │           │   ├── ServiceAdminsFooter.tsx
     │   │   │           │   ├── ServiceAttribute.tsx
     │   │   │           │   ├── ServiceBlock.tsx
     │   │   │           │   ├── ServiceBlockDispatcher.tsx
+    │   │   │           │   ├── domainName.ts
     │   │   │           │   ├── entitlements
     │   │   │           │   │   ├── ServiceBlockEntitlements.tsx
     │   │   │           │   │   └── fields
     │   │   │           │   │       ├── StoragePickerEntitlementField.scss
     │   │   │           │   │       └── StoragePickerEntitlementField.tsx
     │   │   │           │   └── implementations
+    │   │   │           │       ├── DomainsServiceBlock.tsx
     │   │   │           │       ├── DriveServiceBlock.tsx
     │   │   │           │       ├── ExtendedAdminServiceBlock.tsx
     │   │   │           │       ├── MessagesServiceBlock.tsx
@@ -343,4 +373,4 @@
     │   └── realm.json
     └── nginx
         └── servers.conf.erb
-77 directories, 268 files
+79 directories, 296 files

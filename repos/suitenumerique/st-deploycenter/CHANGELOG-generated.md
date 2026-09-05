@@ -1,13 +1,14 @@
-## Changelog : st-deploycenter (30 derniers jours, au 24 juillet 2026)
+## Changelog : st-deploycenter (30 derniers jours, au 04/09/2026)
 
 ### Résumé
-Cette mise à jour apporte des améliorations à l'interface utilisateur pour la recherche d'organisations et renforce les capacités de l'API pour la gestion des cartes.  Des améliorations ont également été apportées à la gestion des métriques d'utilisation des droits et à l'allègement des réponses de l'API pour les droits.
+Les récentes évolutions ont principalement porté sur l'extension des capacités du système avec l'introduction de nouveaux services pour ProConnect et la gestion des domaines. Des corrections ont également été apportées pour améliorer la stabilité de l'interface utilisateur et la fiabilité du suivi des métriques.
 
 ### Évolutions fonctionnelles
-- Ajout d'une route permettant de rechercher une organisation par son nom ou son SIRET dans l'interface utilisateur. [#15282d2](https://github.com/suitenumerique/st-deploycenter/commit/15282d2)
-- Amélioration des liens d'administration et des capacités de l'API pour les cartes. [#e90d23f](https://github.com/suitenumerique/st-deploycenter/commit/e90d23f)
+- Ajout de la nouvelle API ProConnect et du service de gestion des domaines [#60](https://github.com/suitenumerique/st-deploycenter/pull/60)
+- Correction de problèmes d'affichage (UI) au sein du bloc ProConnect
 
 ### Évolutions techniques
-- Implémentation de la réception des métriques d'utilisation poussées pour les droits. [#971d692](https://github.com/suitenumerique/st-deploycenter/commit/971d692)
-- Ajout de tests pour la transmission des métriques d'utilisation des droits. [#b1cc265](https://github.com/suitenumerique/st-deploycenter/commit/b1cc265)
-- Allègement des réponses de l'API pour les droits afin d'améliorer les performances. [#27e309b](https://github.com/suitenumerique/st-deploycenter/commit/27e309b)
+- Amélioration de la gestion des métriques pour éviter le partage indésirable des configurations et des mesures d'utilisation
+
+### Autres changements
+- Mise en conformité du formatage du code (Prettier) pour la liste d'autorisation (allowlist) de ProConnect
