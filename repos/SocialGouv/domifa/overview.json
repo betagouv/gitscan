@@ -1,15 +1,15 @@
 {
   "url": "https://github.com/SocialGouv/domifa",
   "name": "domifa",
-  "description": "Plateforme numérique facilitant la gestion de la domiciliation pour les organismes agréés et permettant aux personnes sans domicile stable d'accéder à leurs droits.",
+  "description": "Plateforme numérique facilitant la gestion de la domiciliation pour les organismes agréés et l'accès aux droits pour les personnes sans domicile stable.",
   "language": "TypeScript",
   "features": [
-    "Authentification & Accès",
-    "Statistiques & Rapports",
     "Gestion des utilisateurs & Permissions",
+    "Statistiques & Rapports",
+    "Formulaires & Démarches",
+    "Authentification & Accès",
     "Administration & Backoffice",
-    "Sécurité & Conformité",
-    "Notifications & Alertes"
+    "Gestion métier générale"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -19,9 +19,8 @@
     "TypeORM",
     "Docker",
     "Pnpm",
-    "Brevo",
-    "Sentry",
-    "Matomo"
+    "Lerna",
+    "Brevo"
   ],
   "components": [
     "API REST & GraphQL",
@@ -29,27 +28,28 @@
     "TypeScript / JavaScript",
     "Docker & Conteneurs",
     "Node.js / NestJS",
-    "ORM & Accès aux données",
-    "Tests",
-    "Documentation & Schémas"
+    "Angular / Svelte / Autres SPA"
   ],
   "auth": {
     "methods": [
-      "mfa",
+      "jwt",
       "session",
-      "jwt"
+      "mfa"
     ]
   },
   "tests": "Tests unitaires et tests d'intégration",
-  "lastActivity": "2026-08-26T00:00:00Z",
-  "status": "active",
+  "workflows": [
+    "Lerna",
+    "Lefthook"
+  ],
+  "lastActivity": "2026-09-04T00:00:00Z",
+  "status": "maintained",
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "TypeScript",
     "Docker & Conteneurs",
     "Bases de données SQL",
-    "Sécurité & Auth",
-    "Emploi, Social & Logement"
+    "Node.js, NestJS & Express"
   ]
 }

@@ -1,3 +1,118 @@
+## [2.266.2](https://github.com/SocialGouv/domifa/compare/v2.266.1...v2.266.2) (2026-09-04)
+
+
+### Bug Fixes
+
+* **backend:** fix templates email ([3d8e89e](https://github.com/SocialGouv/domifa/commit/3d8e89ea767eb3f0e606cf864cdd2b7a4e402d52))
+
+## [2.266.1](https://github.com/SocialGouv/domifa/compare/v2.266.0...v2.266.1) (2026-09-04)
+
+
+### Bug Fixes
+
+* **backend:** delete useless migration ([782ab3a](https://github.com/SocialGouv/domifa/commit/782ab3a31372cbf1a0fe1980d961a7be5968ca39))
+
+# [2.266.0](https://github.com/SocialGouv/domifa/compare/v2.265.0...v2.266.0) (2026-09-03)
+
+
+### Features
+
+* **front:** fix label menu ([063c876](https://github.com/SocialGouv/domifa/commit/063c87638492d8503f4450cfbffc21762fc59d7b))
+
+# [2.265.0](https://github.com/SocialGouv/domifa/compare/v2.264.2...v2.265.0) (2026-09-01)
+
+
+### Bug Fixes
+
+* code review ([3bdc130](https://github.com/SocialGouv/domifa/commit/3bdc13028fc8bca209757f328a9a9b40f7c6fe38))
+
+
+### Features
+
+* **front:** fix code review ([d23f306](https://github.com/SocialGouv/domifa/commit/d23f306fe3021b704faea74150c799a2006d2a65))
+* **front, back:** fix code review ([bb53f94](https://github.com/SocialGouv/domifa/commit/bb53f94899199d44e38fb6ea2952ed5e4df241da))
+* **frontend, back:** secure update email process ([7572e0f](https://github.com/SocialGouv/domifa/commit/7572e0fe72e6ca813f6b45a9bcc6f3f5375a8b28))
+* **frontend, back:** secure update email process ([b6a0558](https://github.com/SocialGouv/domifa/commit/b6a0558eb947af499257faf5086a1a8a85c551e9))
+
+## [2.264.2](https://github.com/SocialGouv/domifa/compare/v2.264.1...v2.264.2) (2026-09-01)
+
+
+### Bug Fixes
+
+* **backend:** start migration ([7478372](https://github.com/SocialGouv/domifa/commit/7478372898f601d339b3a357e44981b950c28304))
+
+## [2.264.1](https://github.com/SocialGouv/domifa/compare/v2.264.0...v2.264.1) (2026-09-01)
+
+
+### Bug Fixes
+
+* **backend:** fix delete useless migration ([b0e3857](https://github.com/SocialGouv/domifa/commit/b0e38574a7c8bd196e60fec2cc6b924c5329445e))
+
+# [2.264.0](https://github.com/SocialGouv/domifa/compare/v2.263.0...v2.264.0) (2026-09-01)
+
+
+### Features
+
+* **back; front:** adding select contact form ([f13aefc](https://github.com/SocialGouv/domifa/commit/f13aefc4e67c27754f6f43575cf66295deb0e692))
+* **front:** fix code review ([ba189f6](https://github.com/SocialGouv/domifa/commit/ba189f60d8f14cf459b3bb4b134eeb019c03c1ce))
+
+# [2.263.0](https://github.com/SocialGouv/domifa/compare/v2.262.0...v2.263.0) (2026-09-01)
+
+
+### Bug Fixes
+
+* **portail-admins:** ship robots.txt in build assets ([99520be](https://github.com/SocialGouv/domifa/commit/99520becec9df19a4ec0e0e6b91f5f2d741ed86f))
+* **portail-admins:** store supervisor portal flag only for DGCS DDETS DREETS roles ([7d5abab](https://github.com/SocialGouv/domifa/commit/7d5abab5e064327485bc49aa3785bd7fbd7a2c83))
+* **portail-stats:** ship robots.txt in build assets ([66f969e](https://github.com/SocialGouv/domifa/commit/66f969ed012e15392301be029ded7a50270af877))
+
+
+### Features
+
+* **frontend:** replace admin link with pilotage link in navbar menu ([94bb3e2](https://github.com/SocialGouv/domifa/commit/94bb3e2695ffa93925821abf60ef75ab664a3b1e))
+* **portail-admins:** redirect DGCS DDETS DREETS members to pilotage portal on login ([6e30729](https://github.com/SocialGouv/domifa/commit/6e30729fe36e44c1ab985a51703fde6eac6dafe7))
+
+# [2.262.0](https://github.com/SocialGouv/domifa/compare/v2.261.2...v2.262.0) (2026-08-31)
+
+
+### Features
+
+* **backend:** merge structure 957 into 891 on preprod ([59b31ce](https://github.com/SocialGouv/domifa/commit/59b31cedf794a891ad2bd7bfa06947653d354530))
+
+## [2.261.2](https://github.com/SocialGouv/domifa/compare/v2.261.1...v2.261.2) (2026-08-31)
+
+
+### Bug Fixes
+
+* **backend:** enforce DTO validation and sanitizing, align import and frontends ([c434730](https://github.com/SocialGouv/domifa/commit/c434730e49337cc92c118337f42e0a884601103e))
+
+## [2.261.1](https://github.com/SocialGouv/domifa/compare/v2.261.0...v2.261.1) (2026-08-31)
+
+
+### Bug Fixes
+
+* **backend:** update migration ([43176d5](https://github.com/SocialGouv/domifa/commit/43176d53b6c1bdc5621e502e4d9e43627731331c))
+
+# [2.261.0](https://github.com/SocialGouv/domifa/compare/v2.260.2...v2.261.0) (2026-08-31)
+
+
+### Features
+
+* **front:** fix code review ([566d1ff](https://github.com/SocialGouv/domifa/commit/566d1ff5da701e2adf2328c75b4fbe35b69f9983))
+
+## [2.260.2](https://github.com/SocialGouv/domifa/compare/v2.260.1...v2.260.2) (2026-08-30)
+
+
+### Bug Fixes
+
+* **backend:** fix brevo & migration test ([7ffac88](https://github.com/SocialGouv/domifa/commit/7ffac888e9c0e5336bbf68b7862db3deaba92ffe))
+
+## [2.260.1](https://github.com/SocialGouv/domifa/compare/v2.260.0...v2.260.1) (2026-08-30)
+
+
+### Bug Fixes
+
+* **backend:** migrate of structure ([723e01e](https://github.com/SocialGouv/domifa/commit/723e01e2fdeb68ff42403fef45575766907ed661))
+
 # [2.260.0](https://github.com/SocialGouv/domifa/compare/v2.259.0...v2.260.0) (2026-08-26)
 
 

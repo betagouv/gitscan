@@ -143,6 +143,7 @@
 │   │   │   │   │   ├── IsValidPasswordDecorator.ts
 │   │   │   │   │   ├── IsValidPhoneDecorator.ts
 │   │   │   │   │   ├── MatchFieldDecorator.ts
+│   │   │   │   │   ├── ValidateIfElseNullDecorator.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── parse-pipes
 │   │   │   │   │   │   ├── ParseRegion.pipe.ts
@@ -154,13 +155,16 @@
 │   │   │   │   │   │   └── parse-token-pipe.spec.ts
 │   │   │   │   │   └── transformers
 │   │   │   │   │       ├── LowerCaseDecorator.ts
-│   │   │   │   │       ├── PhoneTransformDecorator.ts
 │   │   │   │   │       ├── StripTagsDecorator.ts
 │   │   │   │   │       ├── TrimDecorator.ts
 │   │   │   │   │       ├── TrimOrNullDecorator.ts
 │   │   │   │   │       ├── UpperCaseDecorator.ts
 │   │   │   │   │       ├── index.ts
 │   │   │   │   │       └── isSiretDecorator.ts
+│   │   │   │   ├── dto
+│   │   │   │   │   ├── telephone.dto.ts
+│   │   │   │   │   └── tests
+│   │   │   │   │       └── telephone.dto.spec.ts
 │   │   │   │   ├── mocks
 │   │   │   │   │   ├── POST_USER_STRUCTURE_BODY.mock.ts
 │   │   │   │   │   ├── POST_USER_STRUCTURE_BODY_WITH_MISSING_ATTRIBUTES.mock.ts
@@ -249,7 +253,6 @@
 │   │   │   │               ├── UserUsagerAuthenticated.type.ts
 │   │   │   │               └── index.ts
 │   │   │   ├── _migrations
-│   │   │   │   ├── 1786366757476-backfill-user-structure-password-last-update.ts
 │   │   │   │   └── _init-db
 │   │   │   │       ├── 1603812391580-pr-env-create-database.ts
 │   │   │   │       └── domifa_test_schema.sql
@@ -597,7 +600,9 @@
 │   │   │   │   ├── interactions
 │   │   │   │   │   ├── dto
 │   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   └── interactions.dto.ts
+│   │   │   │   │   │   ├── interactions.dto.ts
+│   │   │   │   │   │   └── tests
+│   │   │   │   │   │       └── interactions.dto.spec.ts
 │   │   │   │   │   ├── interactions.controller.security-tests.ts
 │   │   │   │   │   ├── interactions.controller.spec.ts
 │   │   │   │   │   ├── interactions.controller.ts
@@ -767,6 +772,8 @@
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   ├── structure-edit-portail-usager.dto.ts
 │   │   │   │   │   │   ├── structure-information.dto.ts
+│   │   │   │   │   │   ├── tests
+│   │   │   │   │   │   │   └── structure-information.dto.spec.ts
 │   │   │   │   │   │   └── update-portail-usagers-options.dto.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── portail-usagers.module.ts
@@ -853,7 +860,8 @@
 │   │   │   │   │   └── stats.module.ts
 │   │   │   │   ├── structures
 │   │   │   │   │   ├── constants
-│   │   │   │   │   │   └── STRUCTURE_DTO_KEYS.const.ts
+│   │   │   │   │   │   ├── STRUCTURE_DTO_KEYS.const.ts
+│   │   │   │   │   │   └── STRUCTURE_MERGE_TABLES.const.ts
 │   │   │   │   │   ├── controllers
 │   │   │   │   │   │   ├── structure-doc.controller.security-tests.ts
 │   │   │   │   │   │   ├── structure-doc.controller.ts
@@ -873,21 +881,29 @@
 │   │   │   │   │   │   ├── structure-registration-data.dto.ts
 │   │   │   │   │   │   ├── structure-responsable.dto.ts
 │   │   │   │   │   │   ├── structure-with-user.dto.ts
-│   │   │   │   │   │   └── structure.dto.ts
+│   │   │   │   │   │   ├── structure.dto.ts
+│   │   │   │   │   │   └── tests
+│   │   │   │   │   │       ├── structure-conditional-fields.dto.spec.ts
+│   │   │   │   │   │       └── structure.dto.spec.ts
 │   │   │   │   │   ├── services
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   ├── location.service.ts
 │   │   │   │   │   │   ├── structureCreator.service.ts
 │   │   │   │   │   │   ├── structureHardReset.service.ts
-│   │   │   │   │   │   └── structures.service.ts
+│   │   │   │   │   │   ├── structures.service.ts
+│   │   │   │   │   │   ├── structuresMerge.service.spec.ts
+│   │   │   │   │   │   └── structuresMerge.service.ts
 │   │   │   │   │   ├── structure.module.ts
-│   │   │   │   │   └── structures.creation-full.spec.ts
+│   │   │   │   │   ├── structures.creation-full.spec.ts
+│   │   │   │   │   └── types
+│   │   │   │   │       └── structures-merge.types.ts
 │   │   │   │   └── users
 │   │   │   │       ├── controllers
 │   │   │   │       │   ├── users-supervisor.controller.ts
 │   │   │   │       │   ├── users.controller.security-tests.ts
 │   │   │   │       │   ├── users.controller.spec.ts
 │   │   │   │       │   ├── users.controller.ts
+│   │   │   │       │   ├── users.edit-email-update.spec.ts
 │   │   │   │       │   ├── users.public.controller.spec.ts
 │   │   │   │       │   └── users.public.controller.ts
 │   │   │   │       ├── dto
@@ -954,6 +970,7 @@
 │   │   │   │   │   │   ├── parseAndValidateImportFile.ts
 │   │   │   │   │   │   ├── step1-parse-excel
 │   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   ├── usagersImportExcelParser.service.test.ts
 │   │   │   │   │   │   │   └── usagersImportExcelParser.service.ts
 │   │   │   │   │   │   ├── step2-validate-row
 │   │   │   │   │   │   │   ├── index.ts
@@ -992,6 +1009,7 @@
 │   │   │   │   │   │   │   └── usagersImportValidator.service.valid.test.ts
 │   │   │   │   │   │   ├── step3-create
 │   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   ├── usagersImportBuilder.service.test.ts
 │   │   │   │   │   │   │   ├── usagersImportBuilder.service.ts
 │   │   │   │   │   │   │   └── usagersImportCreator.service.ts
 │   │   │   │   │   │   ├── usagersImportRunner.service.spec.ts
@@ -1035,7 +1053,10 @@
 │   │   │   │   │   │   ├── create-usager.dto.ts
 │   │   │   │   │   │   ├── decision.dto.ts
 │   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   └── rdv.dto.ts
+│   │   │   │   │   │   ├── rdv.dto.ts
+│   │   │   │   │   │   └── tests
+│   │   │   │   │   │       ├── create-usager.dto.spec.ts
+│   │   │   │   │   │       └── decision.dto.spec.ts
 │   │   │   │   │   ├── entretien.dto.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── pagination
@@ -1043,6 +1064,9 @@
 │   │   │   │   │   │   └── page-options.dto.ts
 │   │   │   │   │   ├── procuration.dto.ts
 │   │   │   │   │   ├── search-usager.dto.ts
+│   │   │   │   │   ├── tests
+│   │   │   │   │   │   ├── create-note.dto.spec.ts
+│   │   │   │   │   │   └── entretien.dto.spec.ts
 │   │   │   │   │   ├── transfert.dto.ts
 │   │   │   │   │   └── usager-doc
 │   │   │   │   │       ├── index.ts
@@ -1213,6 +1237,14 @@
 │   │   │   │   ├── BrevoContactStatus.type.ts
 │   │   │   │   ├── BrevoEmailEvent.type.ts
 │   │   │   │   └── index.ts
+│   │   │   ├── contact-support
+│   │   │   │   ├── constants
+│   │   │   │   │   ├── CONTACT_SUPPORT_SUBJECT_LABELS.const.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── types
+│   │   │   │       ├── ContactSupportSubject.type.ts
+│   │   │   │       └── index.ts
 │   │   │   ├── import
 │   │   │   │   ├── constants
 │   │   │   │   │   ├── USAGERS_IMPORT_COLUMNS.const.ts
@@ -2063,7 +2095,6 @@
 │   │   │   │   │   │   │   ├── full-name.pipe.ts
 │   │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   │   ├── nl2br.pipe.ts
-│   │   │   │   │   │   │   ├── safe-html.pipe.ts
 │   │   │   │   │   │   │   └── sort-array.pipe.ts
 │   │   │   │   │   │   ├── services
 │   │   │   │   │   │   │   ├── auth.service.spec.ts
@@ -2448,7 +2479,8 @@
 │   │   │   │   │   │   │   │   ├── entretien-form.component.css
 │   │   │   │   │   │   │   │   ├── entretien-form.component.html
 │   │   │   │   │   │   │   │   ├── entretien-form.component.spec.ts
-│   │   │   │   │   │   │   │   └── entretien-form.component.ts
+│   │   │   │   │   │   │   │   ├── entretien-form.component.ts
+│   │   │   │   │   │   │   │   └── entretien-form.constants.ts
 │   │   │   │   │   │   │   ├── etat-civil-parent-form
 │   │   │   │   │   │   │   │   ├── etat-civil-parent-form.component.html
 │   │   │   │   │   │   │   │   ├── etat-civil-parent-form.component.spec.ts
@@ -2532,6 +2564,9 @@
 │   │   │   │   │   └── users
 │   │   │   │   │       ├── PASSWORD_VALIDATOR.const.ts
 │   │   │   │   │       ├── components
+│   │   │   │   │       │   ├── confirm-email-update
+│   │   │   │   │       │   │   ├── confirm-email-update.component.html
+│   │   │   │   │       │   │   └── confirm-email-update.component.ts
 │   │   │   │   │       │   └── reset-password
 │   │   │   │   │       │       ├── reset-password.component.css
 │   │   │   │   │       │       ├── reset-password.component.html
@@ -2809,6 +2844,7 @@
 │   │   │   │   │   │   └── types
 │   │   │   │   │   │       ├── PASSWORD_VALIDATOR.const.ts
 │   │   │   │   │   │       ├── PortailAdminAuthLoginForm.type.ts
+│   │   │   │   │   │       ├── SUPERVISOR_PORTAL.const.ts
 │   │   │   │   │   │       ├── UserStructureWithSecurity.type.ts
 │   │   │   │   │   │       └── index.ts
 │   │   │   │   │   ├── admin-structures
@@ -3743,4 +3779,4 @@
 ├── pnpm-workspace.yaml
 ├── sonar-project.properties
 └── tech.yaml
-866 directories, 2879 files
+878 directories, 2903 files
