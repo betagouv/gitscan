@@ -1,14 +1,16 @@
 ## Changelog : ocr-api (30 derniers jours, au 22 août 2026)
 
 ### Résumé
-Les récentes évolutions se sont concentrées sur la sécurisation de l'infrastructure et l'optimisation des processus de déploiement automatisés. L'accent a été mis sur une meilleure observabilité des tâches et un renforcement de la sécurité des conteneurs pour garantir un environnement de production plus robuste.
+Les récentes évolutions se concentrent sur la robustesse de l'infrastructure et la fiabilité des processus de déploiement. L'accent a été mis sur le renforcement de la sécurité des conteneurs, l'optimisation des pipelines d'intégration continue (CI) et l'amélioration de la visibilité technique sur l'exécution des tâches via un meilleur traçage.
 
 ### Évolutions techniques
-- **Observabilité**
-  - Amélioration du suivi des tâches via Langfuse : ouverture systématique d'observations pour chaque tâche et gestion propre de la fermeture du client en cas d'échec d'authentification.
-- **Infrastructure & Sécurité**
-  - Migration du chart Helm directement au sein du dépôt pour une meilleure gestion.
-  - Renforcement de la sécurité des conteneurs et des services (Postgres, Redis, RustFS) via l'application de contextes de sécurité et l'utilisation d'un système de fichiers en lecture seule.
-- **CI/CD**
-  - Optimisation des pipelines de déploiement : publication des charts via Cloud π Native, utilisation de runners GitHub-hosted et verrouillage des versions des actions pour plus de stabilité.
-  - Amélioration de la qualité et de la sécurité du code : intégration de contrôles de conformité des messages de commit (commitlint) et automatisation des scans de sécurité avec remontée des résultats dans l'interface GitHub.
+- **Observabilité** : 
+    - Amélioration du traçage avec Langfuse pour garantir une observation réelle et précise pour chaque tâche.
+    - Correction de la gestion du client Langfuse pour assurer une fermeture propre en cas d'échec d'authentification.
+- **Infrastructure & Déploiement (Helm)** :
+    - Intégration directe du chart Helm au sein du dépôt.
+    - Renforcement de la sécurité des sous-charts (Postgres, Redis, Rustfs) et durcissement de la configuration des conteneurs (système de fichiers en lecture seule, gestion des GID).
+- **CI/CD** :
+    - Modernisation des pipelines de CI via l'adoption de workflows réutilisables et l'utilisation de runners hébergés par GitHub.
+    - Sécurisation des processus de build (fixation des versions d'actions et amélioration de la gestion des scans de sécurité/Gitleaks).
+    - Optimisation de la configuration de publication des charts et des processus de release.
