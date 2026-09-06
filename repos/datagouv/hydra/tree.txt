@@ -1,11 +1,8 @@
 .
 ├── .benchmarks
-│   └── benchmarks.csv
+│   └── benchmarks.history.csv
 ├── .circleci
 │   └── config.yml
-├── .github
-│   └── workflows
-│       └── benchmark.yml
 ├── .gitignore
 ├── .pre-commit-config.yaml
 ├── CHANGELOG.md
@@ -48,6 +45,7 @@
 │   │   ├── test_api_resources.py
 │   │   ├── test_api_resources_exceptions.py
 │   │   └── test_api_statuses.py
+│   ├── test_benchmark.py
 │   ├── test_cli
 │   │   ├── __init__.py
 │   │   ├── test_analysis.py
@@ -72,6 +70,7 @@
 │       ├── test_compute_checksum_from_file.py
 │       ├── test_csv_headers.py
 │       ├── test_file.py
+│       ├── test_gz.py
 │       ├── test_queue.py
 │       ├── test_s3_client.py
 │       └── test_sentry_error.py
@@ -115,6 +114,7 @@
 │   │   ├── geojson
 │   │   │   ├── __init__.py
 │   │   │   └── to_pmtiles.py
+│   │   ├── gz.py
 │   │   ├── ogc
 │   │   │   └── __init__.py
 │   │   ├── parquet
@@ -202,4 +202,4 @@
 │   │   └── timer.py
 │   └── worker.py
 └── uv.lock
-35 directories, 169 files
+33 directories, 171 files

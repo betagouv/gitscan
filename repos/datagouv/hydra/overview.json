@@ -1,64 +1,59 @@
 {
   "url": "https://github.com/datagouv/hydra",
   "name": "hydra",
-  "description": "`udata-hydra` est un crawler de métadonnées asynchrone pour data.gouv.fr. Il analyse les ressources distantes, détecte les changements, convertit les fichiers et envoie les informations à une instance udata.",
+  "description": "Un crawler de métadonnées asynchrone pour data.gouv.fr qui analyse les ressources, convertit les données tabulaires en tables PostgreSQL ou Parquet, et transforme les GeoJSON en PMTiles.",
   "language": "Python",
   "features": [
-    "Gestion documentaire & Fichiers",
     "API & Intégrations",
     "Données & Schémas",
-    "Sécurité & Conformité",
-    "Gestion des utilisateurs & Permissions",
-    "Notifications & Alertes",
-    "Visualisation de données & Cartographie"
+    "Statistiques & Rapports",
+    "Infrastructure & Stockage",
+    "Suivi & Traçabilité",
+    "Monitoring & Logs"
   ],
-  "audience": "Professionnels",
+  "audience": "Développeurs",
   "dependencies": [
     "aiohttp",
-    "PostgreSQL",
-    "libmagic",
-    "uv",
+    "asyncpg",
+    "boto3",
     "redis",
     "rq",
-    "boto3",
-    "csv-detective",
+    "sqlalchemy",
+    "pyarrow",
     "python-magic",
-    "owslib",
-    "pyarrow"
+    "tippecanoe",
+    "uv"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
     "Docker & Conteneurs",
-    "RQ",
-    "Microservices & Architecture"
+    "Pipeline de données",
+    "Tests",
+    "Webhooks & Événements"
   ],
   "auth": {
     "methods": [
       "api-key"
     ]
   },
-  "tests": "Pytest is used for testing, with coverage reports. Docker Compose is used to launch a test database.",
+  "tests": "pytest",
   "workflows": [
-    "CI/CD with CircleCI and GitHub Actions"
+    "CircleCI"
   ],
-  "lastActivity": "2026-07-08T00:00:00Z",
+  "lastActivity": "2026-09-04T00:00:00Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
   "tags": [
     "Données & Open Data",
-    "Écosystème beta.gouv / État",
     "Python",
     "Bases de données SQL",
-    "Sécurité & Auth",
-    "Intelligence Artificielle & NLP"
+    "Git & DevOps",
+    "Docker & Conteneurs",
+    "CI/CD & GitHub Actions",
+    "ETL & Pipelines de données",
+    "Standards & Schémas"
   ]
 }
