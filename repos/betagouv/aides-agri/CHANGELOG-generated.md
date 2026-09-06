@@ -1,19 +1,14 @@
-## Changelog : aides-agri (30 derniers jours, au 26 août 2026)
+## Changelog : aides-agri (30 derniers jours, au 04/09/2026)
 
 ### Résumé
-Ce mois-ci, les développements se sont concentrés sur l'amélioration de l'outil d'administration (back-office) pour faciliter la gestion et la relecture des aides. Un effort majeur a été réalisé pour automatiser et fiabiliser la diffusion des données vers data.gouv.fr, tout en renforçant la stabilité de la chaîne de tests techniques.
+Les récentes évolutions se concentrent sur l'amélioration de l'expérience utilisateur (accessibilité, corrections d'affichage) et le renforcement des outils d'administration. La plateforme a également bénéficié d'une mise à jour de ses données statistiques et d'une optimisation des exports de données publiques.
 
 ### Évolutions fonctionnelles
-- **Administration (Back-office) :**
-    - Affichage du champ description dans les fiches mères d'aides [#720](https://github.com/betagouv/aides-agri/issues/720).
-    - Ajout d'un indicateur visuel pour les aides clôturées dans la vue liste [#715](https://github.com/betagouv/aides-agri/issues/715).
-    - Optimisation du processus de relecture : autorisation d'accès aux bureaux valideurs [#700](https://github.com/betagouv/aides-agri/issues/700) et affichage systématique du lien de partage, même pour les aides publiées en mode minimal [#699](https://github.com/betagouv/aides-agri/issues/699).
-- **Données & Open Data :**
-    - Mise en place de l'export hebdomadaire automatique vers data.gouv.fr [#620](https://github.com/betagouv/aides-agri/issues/620) et série de correctifs pour fiabiliser ces exports [#716](https://github.com/betagouv/aides-agri/issues/716), [#714](https://github.com/betagouv/aides-agri/issues/714), [#707](https://github.com/betagouv/aides-agri/issues/707).
-- **Expérience utilisateur & Statistiques :**
-    - Correction d'un bug empêchant l'ouverture des liens externes [#696](https://github.com/betagouv/aides-agri/issues/696).
-    - Mise à jour des statistiques pour le mois de juillet 2026 [#697](https://github.com/betagouv/aides-agri/issues/697).
+- Amélioration de l'accessibilité et de l'ergonomie de la modale d'envoi des résultats par email [#772](https://github.com/betagouv/aides-agri/issues/772).
+- Ajustement de la logique d'affichage du bandeau d'information concernant les aides locales indisponibles [#773](https://github.com/betagouv/aides-agri/issues/773).
+- Correction de l'affichage de la liste des régions sur la page d'accueil [#774](https://github.com/betagouv/aides-agri/issues/774).
+- Optimisation du back-office : ajout du champ description pour les fiches mères [#720](https://github.com/betagouv/aides-agri/issues/720) et signalement visuel des aides clôturées dans la vue liste [#715](https://github.com/betagouv/aides-agri/issues/715).
+- Actualisation des données statistiques pour le mois d'août 2026 [#755](https://github.com/betagouv/aides-agri/issues/755) et correction de la date de mise à jour des statistiques produit [#767](https://github.com/betagouv/aides-agri/issues/767).
 
 ### Évolutions techniques
-- **CI/CD :**
-    - Consolidation de la chaîne d'intégration continue (CI) pour améliorer la stabilité des déploiements [#702](https://github.com/betagouv/aides-agri/issues/702).
+- Amélioration des mécanismes d'exportation des données vers la plateforme data.gouv.fr [#716](https://github.com/betagouv/aides-agri/issues/716).
