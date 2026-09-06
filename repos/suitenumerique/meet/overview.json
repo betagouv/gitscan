@@ -1,16 +1,16 @@
 {
   "url": "https://github.com/suitenumerique/meet",
   "name": "meet",
-  "description": "Une solution de visioconférence open-source et sécurisée, offrant des performances de haute qualité pour les réunions en ligne directement depuis le navigateur.",
-  "language": "TypeScript",
+  "description": "Une solution de visioconférence simple et performante basée sur LiveKit. Elle permet de réaliser des réunions avec partage d'écran, chat sécurisé, enregistrement et transcription automatique.",
+  "language": "Python",
   "features": [
-    "Authentification & Accès",
     "Collaboration & Workflow",
     "Temps réel & WebSocket",
-    "Sécurité & Conformité",
+    "Authentification & Accès",
+    "Gestion des médias & Assets",
+    "Communication & Messagerie",
     "Intelligence Artificielle & NLP",
-    "Interface utilisateur & Design",
-    "Gestion des médias & Assets"
+    "Interface utilisateur & Design"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -21,24 +21,22 @@
     "Redis",
     "PostgreSQL",
     "S3",
-    "Celery",
-    "PostHog"
+    "Celery"
   ],
   "components": [
     "API REST & GraphQL",
+    "PostgreSQL & SQL",
     "React / Next.js",
     "TypeScript / JavaScript",
     "Python (scripts & backend)",
     "Docker & Conteneurs",
     "Kubernetes & Helm",
-    "Authentification (composant)",
-    "Webhooks & Événements",
-    "Design System (DSFR & UI libs)"
+    "Celery & Queue asynchrone",
+    "Webhooks & Événements"
   ],
   "auth": {
     "methods": [
       "jwt",
-      "session",
       "sso"
     ],
     "providers": [
@@ -46,8 +44,11 @@
     ]
   },
   "tests": "BrowserStack",
-  "lastActivity": "2026-08-25T00:00:00Z",
-  "status": "active",
+  "workflows": [
+    "CI/CD pipeline"
+  ],
+  "lastActivity": "2026-09-01T00:00:00Z",
+  "status": "maintained",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
@@ -55,8 +56,9 @@
     "TypeScript",
     "Python",
     "Docker & Conteneurs",
-    "Kubernetes & Helm",
-    "Design System & UI",
+    "CI/CD & GitHub Actions",
+    "React & Next.js",
+    "Intelligence Artificielle & LLM",
     "Accessibilité"
   ]
 }

@@ -8,9 +8,24 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
+- ✨(frontend) add 1080p sending resolution option #1660
+- ✨(backend) add Traefik support via configurable media-auth url header #1649
+- ✨(backend) update a room's attributes from the external API
+
 ### Changed
 
-- ♿️(frontend) close side panel with Escape key #1507
+- ⬆️(dev) pin LiveKit server to v1.13.6
+
+### Fixed
+
+- 🐛(backend) allow any printable ASCII characters in user sub field #1673
+- 🐛(frontend) keep the sending resolution picked while the camera is off #1667
+- 🐛(frontend) restore automatic lower-hand on speaking
+- 🐛(frontend) center Avatar initials with a font-aware cap-height ratio
+
+## [1.30.0] - 2026-09-01
 
 ### Added
 
@@ -27,6 +42,7 @@ and this project adheres to
 - ⬆️(frontend) upgrade @fontsource/opendyslexic from 5.2.5 to 5.3.0
 - ⬆️(addons) upgrade core-js from 3.49.0 to 3.50.0
 - ♻️(backend) factorize s3 client creation in utils
+- ♿️(frontend) close side panel with Escape key #1507
 
 ### Fixed
 

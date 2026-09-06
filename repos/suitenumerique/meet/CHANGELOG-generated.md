@@ -1,34 +1,36 @@
-## Changelog : meet (30 derniers jours, au 31 août 2026)
+## Changelog : meet (30 derniers jours, au 05/09/2026)
 
 ### Résumé
-Ce mois-ci, meet a franchi une étape importante dans l'amélioration de l'expérience utilisateur et de la gestion des réunions. Les utilisateurs bénéficient désormais de nouveaux outils de test (connexion et son), d'un support pour l'espagnol et d'une interface mieux adaptée aux mobiles. Les fonctionnalités de gestion ont été renforcées, permettant aux utilisateurs authentifiés de mieux contrôler les salles de confiance. Parallèlement, une attention majeure a été portée à la robustesse technique, notamment via la sécurisation des processus de déploiement et la résolution de problèmes critiques liés à l'accès aux périphériques média.
+Les récentes évolutions se concentrent sur l'amélioration de la qualité vidéo avec l'introduction du 1080p, l'expansion linguistique avec l'ajout de l'espagnol et une optimisation de l'expérience sur mobile. Le projet a également bénéficié d'un renforcement significatif de sa sécurité et de ses outils de développement pour garantir une plateforme plus stable et performante.
 
 ### Évolutions fonctionnelles
-- **Gestion et administration** :
-    - Possibilité pour les utilisateurs authentifiés de gérer le lobby dans les salles de confiance et de promouvoir des participants.
-    - Ajout d'une fenêtre de configuration de salle lors de la création de réunions.
-    - Introduction de badges pour identifier les participants non authentifiés.
-- **Expérience utilisateur et accessibilité** :
-    - Ajout du support de la langue espagnole et amélioration de la clarté des textes de l'interface.
-    - Nouveaux outils de diagnostic : tests de connexion et tests de sortie audio (haut-parleurs).
-    - Amélioration de l'accessibilité : fermeture des panneaux latéraux avec la touche `Échap` et meilleures notifications lors des changements de rôle.
-    - Optimisation de l'affichage mobile : meilleure réactivité des écrans de feedback et réorganisation des contrôles sur petits écrans.
-- **Interface** :
-    - Notifications visuelles lors du changement de rôle d'un participant.
-    - Amélioration de l'affichage des avatars (initiales en majuscules et gestion des caractères Unicode).
+- **Nouvelles fonctionnalités**
+    - Ajout d'une option de résolution d'envoi en 1080p [#1660](https://github.com/suitenumerique/meet/issues/1660).
+    - Support de l'espagnol pour l'interface utilisateur.
+    - Intégration du moteur d'inférence Voxtral en temps réel pour les agents.
+    - Possibilité pour les utilisateurs authentifiés de gérer le lobby dans les salles de confiance.
+    - Nouveaux outils audio : indicateur de niveau (gauge) pour le micro et testeur de son pour la sortie.
+- **Améliorations et Accessibilité**
+    - Optimisation de l'interface mobile (réactivité des écrans de retour et de la barre de contrôle).
+    - Améliorations de l'accessibilité : fermeture des panneaux latéraux avec la touche `Échap` [#1507](https://github.com/suitenumerique/meet/issues/1507) et guides pour la gestion des permissions de médias par le navigateur.
+    - Améliorations visuelles : intensité du flou d'arrière-plan accrue et centrage des initiales des avatars.
+- **Corrections**
+    - Résolution de bugs liés au partage d'écran et à la gestion des périphériques (erreurs de type "device-in-use").
+    - Correction du champ de saisie du chat et de l'affichage des notifications de connexion.
 
 ### Évolutions techniques
-- **Infrastructure et CI/CD** :
-    - Renforcement de la sécurité et de la fiabilité du pipeline CI (utilisation de `uv` pour Python, verrouillage des versions des actions et sécurisation des téléchargements).
-- **Performance et stabilité** :
-    - Optimisation des performances backend via le remplacement des commandes Redis bloquantes par des scans basés sur curseurs.
-    - Correction massive de bugs liés à l'accès aux périphériques (caméra/micro) sur Chrome, Firefox et Windows, et gestion plus fluide des erreurs de partage d'écran.
-    - Optimisation de la gestion des pistes audio et réduction des re-rendus inutiles de l'interface.
-- **Architecture** :
-    - Refactorisation de composants clés du frontend (gestion des participants, processus d'entrée en réunion et panneaux latéraux).
-    - Restructuration de services backend (gestion SIP, client S3 et gestion des jetons utilisateurs).
-    - Amélioration de la télémétrie et du suivi des erreurs pour un meilleur diagnostic technique.
+- **Backend & Performance**
+    - Ajout du support du proxy inverse Traefik pour l'authentification des médias [#1649](https://github.com/suitenumerique/meet/issues/1649).
+    - Optimisation des performances Redis via l'utilisation de `SCAN` au lieu de `KEYS`.
+    - Mise à jour dynamique des attributs de salle via l'API externe.
+- **Infrastructure & CI/CD**
+    - Durcissement de la pipeline CI/CD (utilisation de `uv`, verrouillage des versions des actions GitHub et sécurisation des téléchargages).
+    - Mise à jour du serveur LiveKit vers la version 1.13.6.
+    - Amélioration de l'expérience de développement avec l'ajout d'un serveur TURN local et d'outils de diagnostic WebRTC/réseau.
+- **Sécurité**
+    - Correction de vulnérabilités critiques (CVE) dans la bibliothèque `libexpat`.
 
 ### Autres changements
-- Mise à jour de la documentation technique et des conditions générales d'utilisation.
-- Ajout du fichier `publiccode.yml` pour la conformité.
+- **Documentation & Internationalisation**
+    - Mise à jour de la documentation de montée de version (`UPGRADE.md`).
+    - Amélioration des traductions backend et de la clarté du langage de l'interface.
