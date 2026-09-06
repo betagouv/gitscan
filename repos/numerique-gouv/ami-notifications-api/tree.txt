@@ -8,7 +8,12 @@
 │   └── workflows
 │       ├── check_push.yml
 │       ├── pytest.yml
-│       └── workflow-e2e-webapp.yml
+│       ├── workflow-e2e-trigger-after-deploy.yml
+│       ├── workflow-e2e-webapp-manual.yml
+│       ├── workflow-e2e-webapp-merge.yml
+│       ├── workflow-e2e-webapp-pr.yml
+│       ├── workflow-e2e-webapp-shared.yml
+│       └── workflow-e2e-webapp-tag.yml
 ├── .gitignore
 ├── .pre-commit-config.yaml
 ├── .python-version
@@ -99,9 +104,11 @@
 │   │   │       ├── home.html
 │   │   │       ├── login.html
 │   │   │       └── manage
+│   │   │           ├── add_edit_partner.html
 │   │   │           ├── add_edit_service.html
 │   │   │           ├── detail_user.html
 │   │   │           ├── list_access.html
+│   │   │           ├── list_partners.html
 │   │   │           ├── list_services.html
 │   │   │           ├── search_user.html
 │   │   │           └── send_notification.html
@@ -112,6 +119,7 @@
 │   │   │   ├── manage
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── test_access.py
+│   │   │   │   ├── test_partner.py
 │   │   │   │   ├── test_send_notification.py
 │   │   │   │   ├── test_service.py
 │   │   │   │   └── test_user.py
@@ -131,6 +139,7 @@
 │   │           ├── __init__.py
 │   │           ├── access_views.py
 │   │           ├── notification_views.py
+│   │           ├── partner_views.py
 │   │           ├── service_views.py
 │   │           └── user_views.py
 │   ├── amidsfr
@@ -282,6 +291,11 @@
 │   │   │   ├── 0017_apiv2_fields.py
 │   │   │   ├── 0018_content_subheading.py
 │   │   │   ├── 0019_apiv2_fields.py
+│   │   │   ├── 0020_partner.py
+│   │   │   ├── 0021_partner.py
+│   │   │   ├── 0022_partner.py
+│   │   │   ├── 0023_partner.py
+│   │   │   ├── 0024_partner.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── push.py
@@ -297,6 +311,7 @@
 │   │       │       ├── __init__.py
 │   │       │       └── test_partner_events.py
 │   │       ├── test_delete-published-scheduled-notifications_command.py
+│   │       ├── test_migrations.py
 │   │       ├── test_publish-scheduled-notifications_command.py
 │   │       └── test_websocket.py
 │   ├── partner
@@ -306,6 +321,9 @@
 │   │   ├── apps.py
 │   │   ├── auth.py
 │   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   ├── 0002_partner.py
+│   │   │   ├── 0003_partner.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── serializers.py
@@ -330,6 +348,8 @@
 │   │   │   ├── 0008_user.py
 │   │   │   ├── 0009_apiv2_fields.py
 │   │   │   ├── 0010_content_subheading.py
+│   │   │   ├── 0011_partner.py
+│   │   │   ├── 0012_partner.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── router.py
@@ -352,6 +372,10 @@
 │   │   │   ├── 0005_service_kind.py
 │   │   │   ├── 0006_service_kind.py
 │   │   │   ├── 0007_service_icon.py
+│   │   │   ├── 0008_partner.py
+│   │   │   ├── 0009_partner.py
+│   │   │   ├── 0010_partner.py
+│   │   │   ├── 0011_partner.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── schemas.py
@@ -360,6 +384,7 @@
 │   │       ├── __init__.py
 │   │       ├── test_all.py
 │   │       ├── test_internal.py
+│   │       ├── test_migrations.py
 │   │       └── test_services_item_parameters.py
 │   ├── settings.py
 │   ├── tests
@@ -376,6 +401,10 @@
 │   │   │   ├── 0001_initial.py
 │   │   │   ├── 0002_remove_sa_orm_sentinel.py
 │   │   │   ├── 0003_consent.py
+│   │   │   ├── 0004_partner.py
+│   │   │   ├── 0005_partner.py
+│   │   │   ├── 0006_partner.py
+│   │   │   ├── 0007_partner.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── serializers.py
@@ -385,6 +414,7 @@
 │   │   │   ├── test_consent.py
 │   │   │   ├── test_create_hashes.py
 │   │   │   ├── test_get_fc_userinfo.py
+│   │   │   ├── test_migrations.py
 │   │   │   ├── test_registration.py
 │   │   │   ├── test_results.csv
 │   │   │   └── test_utils.py
@@ -454,7 +484,7 @@
 │   │   ├── src
 │   │   │   ├── app.d.ts
 │   │   │   ├── app.html
-│   │   │   ├── demo.spec.ts
+│   │   │   ├── hooks.client.ts
 │   │   │   ├── lib
 │   │   │   │   ├── ConnectedHomepage.svelte
 │   │   │   │   ├── ConnectedHomepage.svelte.test.ts
@@ -466,10 +496,12 @@
 │   │   │   │   ├── addressesFromBAN.ts
 │   │   │   │   ├── agenda.test.ts
 │   │   │   │   ├── agenda.ts
-│   │   │   │   ├── ami-goto.test.ts
-│   │   │   │   ├── ami-goto.ts
+│   │   │   │   ├── ami-navigation.test.ts
+│   │   │   │   ├── ami-navigation.ts
 │   │   │   │   ├── api-agenda.test.ts
 │   │   │   │   ├── api-agenda.ts
+│   │   │   │   ├── api-consents.test.ts
+│   │   │   │   ├── api-consents.ts
 │   │   │   │   ├── api-followup.test.ts
 │   │   │   │   ├── api-followup.ts
 │   │   │   │   ├── api-services.test.ts
@@ -481,7 +513,7 @@
 │   │   │   │   │       ├── ecran_accueil.png
 │   │   │   │   │       ├── nom_app.png
 │   │   │   │   │       └── partager.png
-│   │   │   │   ├── auth.test.js
+│   │   │   │   ├── auth.test.ts
 │   │   │   │   ├── auth.ts
 │   │   │   │   ├── auto-promo.test.ts
 │   │   │   │   ├── auto-promo.ts
@@ -492,22 +524,13 @@
 │   │   │   │   ├── components
 │   │   │   │   │   ├── AgendaItem.svelte
 │   │   │   │   │   ├── AgendaItem.svelte.test.ts
+│   │   │   │   │   ├── AutoPromo.svelte
 │   │   │   │   │   ├── AutoPromoItem.svelte
 │   │   │   │   │   ├── BackButton.svelte
 │   │   │   │   │   ├── BackButton.svelte.test.ts
 │   │   │   │   │   ├── Banner.svelte
 │   │   │   │   │   ├── Banner.svelte.test.ts
 │   │   │   │   │   ├── Card.svelte
-│   │   │   │   │   ├── Followup.svelte
-│   │   │   │   │   ├── Followup.svelte.test.ts
-│   │   │   │   │   ├── FollowupItem.svelte
-│   │   │   │   │   ├── FollowupItem.svelte.test.ts
-│   │   │   │   │   ├── FollowupItemDetail.svelte
-│   │   │   │   │   ├── FollowupItemDetail.svelte.test.ts
-│   │   │   │   │   ├── FollowupItemDetailHeader.svelte
-│   │   │   │   │   ├── FollowupItemDetailHeader.svelte.test.ts
-│   │   │   │   │   ├── FollowupParentItemDetail.svelte
-│   │   │   │   │   ├── FollowupParentItemDetail.svelte.test.ts
 │   │   │   │   │   ├── Icon.svelte
 │   │   │   │   │   ├── NavWithBackButton.svelte
 │   │   │   │   │   ├── NavWithBackButton.svelte.test.ts
@@ -516,11 +539,25 @@
 │   │   │   │   │   ├── NotificationIcon.svelte
 │   │   │   │   │   ├── NotificationIcon.svelte.test.ts
 │   │   │   │   │   ├── PageWrapper.svelte
+│   │   │   │   │   ├── SideMenu.svelte
 │   │   │   │   │   ├── Toast.svelte
 │   │   │   │   │   ├── Toast.svelte.test.ts
 │   │   │   │   │   ├── Toasts.svelte
 │   │   │   │   │   ├── Toasts.svelte.test.ts
 │   │   │   │   │   ├── Toggle.svelte
+│   │   │   │   │   ├── followup
+│   │   │   │   │   │   ├── Followup.svelte
+│   │   │   │   │   │   ├── Followup.svelte.test.ts
+│   │   │   │   │   │   ├── FollowupInformation.svelte
+│   │   │   │   │   │   ├── FollowupItem.svelte
+│   │   │   │   │   │   ├── FollowupItem.svelte.test.ts
+│   │   │   │   │   │   ├── FollowupItemDetail.svelte
+│   │   │   │   │   │   ├── FollowupItemDetail.svelte.test.ts
+│   │   │   │   │   │   ├── FollowupItemDetailHeader.svelte
+│   │   │   │   │   │   ├── FollowupItemDetailHeader.svelte.test.ts
+│   │   │   │   │   │   ├── FollowupNoConsent.svelte
+│   │   │   │   │   │   ├── FollowupParentItemDetail.svelte
+│   │   │   │   │   │   └── FollowupParentItemDetail.svelte.test.ts
 │   │   │   │   │   └── modal
 │   │   │   │   │       ├── AgendaItemModal.svelte
 │   │   │   │   │       ├── AgendaItemModal.svelte.test.ts
@@ -536,6 +573,8 @@
 │   │   │   │   │       ├── ZonePreferences.svelte
 │   │   │   │   │       ├── ZonePreferences.svelte.test.ts
 │   │   │   │   │       └── ZonePreferencesFooter.svelte
+│   │   │   │   ├── consents.test.ts
+│   │   │   │   ├── consents.ts
 │   │   │   │   ├── dsfr-icon.test.ts
 │   │   │   │   ├── dsfr-icon.ts
 │   │   │   │   ├── dsfr.ts
@@ -554,11 +593,11 @@
 │   │   │   │   ├── nativeInfos.ts
 │   │   │   │   ├── notifications.test.ts
 │   │   │   │   ├── notifications.ts
-│   │   │   │   ├── prettyDate.test.js
+│   │   │   │   ├── prettyDate.test.ts
 │   │   │   │   ├── prettyDate.ts
 │   │   │   │   ├── procedure.test.ts
 │   │   │   │   ├── procedure.ts
-│   │   │   │   ├── registration.test.js
+│   │   │   │   ├── registration.test.ts
 │   │   │   │   ├── registration.ts
 │   │   │   │   ├── scheduled-notifications.test.ts
 │   │   │   │   ├── scheduled-notifications.ts
@@ -583,6 +622,8 @@
 │   │   │   │   ├── agenda
 │   │   │   │   │   ├── +page.svelte
 │   │   │   │   │   └── page.svelte.test.ts
+│   │   │   │   ├── checklist
+│   │   │   │   │   └── +page.svelte
 │   │   │   │   ├── contact
 │   │   │   │   │   ├── +page.svelte
 │   │   │   │   │   └── page.svelte.test.ts
@@ -641,6 +682,9 @@
 │   │   │   │   │   └── page.svelte.test.ts
 │   │   │   │   ├── preferences
 │   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   ├── consents
+│   │   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   │   └── page.svelte.test.ts
 │   │   │   │   │   ├── notifications
 │   │   │   │   │   │   ├── +page.svelte
 │   │   │   │   │   │   └── page.svelte.test.ts
@@ -667,6 +711,10 @@
 │   │   │   │   ├── silent-login
 │   │   │   │   │   ├── +page.svelte
 │   │   │   │   │   └── page.svelte.test.ts
+│   │   │   │   ├── step
+│   │   │   │   │   └── +page.svelte
+│   │   │   │   ├── step-form
+│   │   │   │   │   └── +page.svelte
 │   │   │   │   ├── technical-error
 │   │   │   │   │   └── +page.svelte
 │   │   │   │   └── welcome
@@ -685,6 +733,7 @@
 │   │   │       ├── components
 │   │   │       │   ├── _badge.scss
 │   │   │       │   ├── _button.scss
+│   │   │       │   ├── _stepper.scss
 │   │   │       │   └── _tile.scss
 │   │   │       └── layout
 │   │   │           └── _header.scss
@@ -737,4 +786,4 @@
 ├── scalingo.json
 ├── uv.lock
 └── vapid_keys.py
-146 directories, 593 files
+151 directories, 637 files
