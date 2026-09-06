@@ -38,6 +38,7 @@
 │   ├── 2026-03-17-integration-test-isolation.md
 │   ├── 2026-05-28-refactoring-model-forwarding.md
 │   ├── 2026-07-01-split-rag.md
+│   ├── 2026-08-27-datetime-handling.md
 │   ├── README.md
 │   └── scripts
 │       ├── 2026-01-30-es-migration.py
@@ -86,7 +87,8 @@
 │   │       ├── 2026_06_17_1518-5138304df5f5_add_unique_constraint_on_key_name.py
 │   │       ├── 2026_07_15_1826-50ddc08e9202_add_claims_column.py
 │   │       ├── 2026_07_30_1805-c83449930fe2_update_constraint_name.py
-│   │       └── 2026_08_19_1239-b2d58fce4b3c_remove_create_public_collection_.py
+│   │       ├── 2026_08_19_1239-b2d58fce4b3c_remove_create_public_collection_.py
+│   │       └── 2026_09_04_1000-a7f3c91b2e04_rename_providercarbonfootprintzone_to_hostingzone.py
 │   ├── alembic.ini
 │   ├── app.py
 │   ├── clients
@@ -125,9 +127,11 @@
 │   │   ├── model
 │   │   │   ├── __init__.py
 │   │   │   ├── _modelenvironmentalimpactscomputer.py
+│   │   │   ├── _modelquery.py
 │   │   │   ├── _modeltokenizer.py
 │   │   │   ├── entities.py
-│   │   │   └── errors.py
+│   │   │   ├── errors.py
+│   │   │   └── views.py
 │   │   ├── ocr
 │   │   │   ├── __init__.py
 │   │   │   └── entities.py
@@ -177,9 +181,6 @@
 │   │       └── views.py
 │   ├── endpoints
 │   │   ├── __init__.py
-│   │   ├── admin
-│   │   │   ├── __init__.py
-│   │   │   └── organizations.py
 │   │   ├── chat.py
 │   │   └── monitoring.py
 │   ├── helpers
@@ -370,6 +371,7 @@
 │   │   │   ├── _postgresauthenticateduserquery.py
 │   │   │   ├── _postgreskeyrepository.py
 │   │   │   ├── _postgreslimitrepository.py
+│   │   │   ├── _postgresmodelquery.py
 │   │   │   ├── _postgresorganizationrepository.py
 │   │   │   ├── _postgrespermissionrepository.py
 │   │   │   ├── _postgresproviderrepository.py
@@ -392,8 +394,6 @@
 │   │   ├── admin
 │   │   │   ├── __init__.py
 │   │   │   ├── organizations.py
-│   │   │   ├── providers.py
-│   │   │   ├── roles.py
 │   │   │   ├── routers.py
 │   │   │   ├── tokens.py
 │   │   │   └── users.py
@@ -472,7 +472,10 @@
 │   │   │   │   │   ├── organizations
 │   │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   │   ├── test_create_organization.py
-│   │   │   │   │   │   └── test_delete_organization.py
+│   │   │   │   │   │   ├── test_delete_organization.py
+│   │   │   │   │   │   ├── test_get_organization.py
+│   │   │   │   │   │   ├── test_get_organizations.py
+│   │   │   │   │   │   └── test_update_organization.py
 │   │   │   │   │   ├── provider
 │   │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   │   ├── test_create_provider.py
@@ -519,6 +522,7 @@
 │   │   │   │   ├── test_health.py
 │   │   │   │   ├── test_models.py
 │   │   │   │   ├── test_ocr.py
+│   │   │   │   ├── test_post_response_hooks.py
 │   │   │   │   ├── test_rerank.py
 │   │   │   │   ├── usage
 │   │   │   │   │   ├── __init__.py
@@ -557,6 +561,7 @@
 │   │   │   │   ├── test_postgresauthenticateduserquery.py
 │   │   │   │   ├── test_postgreskeyrepository.py
 │   │   │   │   ├── test_postgreslimitrepository.py
+│   │   │   │   ├── test_postgresmodelquery.py
 │   │   │   │   ├── test_postgresorganizationrepository.py
 │   │   │   │   ├── test_postgrespermissionrepository.py
 │   │   │   │   ├── test_postgresproviderrepository.py
@@ -599,6 +604,7 @@
 │   │       │   ├── router
 │   │       │   │   ├── __init__.py
 │   │       │   │   └── test_routerentities.py
+│   │       │   ├── test_utcdatetime.py
 │   │       │   ├── usage
 │   │       │   │   ├── __init__.py
 │   │       │   │   └── test_usageentities.py
@@ -611,14 +617,15 @@
 │   │       │   ├── factories.py
 │   │       │   ├── fastapi
 │   │       │   │   ├── __init__.py
-│   │       │   │   └── endpoints
-│   │       │   │       ├── __init__.py
-│   │       │   │       └── admin
-│   │       │   │           ├── __init__.py
-│   │       │   │           └── keys
-│   │       │   │               ├── __init__.py
-│   │       │   │               ├── test_get_key.py
-│   │       │   │               └── test_get_keys.py
+│   │       │   │   ├── endpoints
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   └── admin
+│   │       │   │   │       ├── __init__.py
+│   │       │   │   │       └── keys
+│   │       │   │   │           ├── __init__.py
+│   │       │   │   │           ├── test_get_key.py
+│   │       │   │   │           └── test_get_keys.py
+│   │       │   │   └── test_decorators.py
 │   │       │   ├── http
 │   │       │   │   ├── __init__.py
 │   │       │   │   ├── adapters
@@ -661,7 +668,10 @@
 │   │           │   ├── organizations
 │   │           │   │   ├── __init__.py
 │   │           │   │   ├── test_createorganizationusecase.py
-│   │           │   │   └── test_deleteorganizationusecase.py
+│   │           │   │   ├── test_deleteorganizationusecase.py
+│   │           │   │   ├── test_getoneorganizationusecase.py
+│   │           │   │   ├── test_getorganizationsusecase.py
+│   │           │   │   └── test_updateorganizationusecase.py
 │   │           │   ├── providers
 │   │           │   │   ├── __init__.py
 │   │           │   │   ├── test_createproviderusecase.py
@@ -742,7 +752,10 @@
 │   │   │   ├── organizations
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── _createorganizationusecase.py
-│   │   │   │   └── _deleteorganizationusecase.py
+│   │   │   │   ├── _deleteorganizationusecase.py
+│   │   │   │   ├── _getoneorganizationusecase.py
+│   │   │   │   ├── _getorganizationsusecase.py
+│   │   │   │   └── _updateorganizationusecase.py
 │   │   │   ├── providers
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── _createproviderusecase.py
@@ -1049,9 +1062,12 @@
 │   │       ├── models
 │   │       │   ├── __init__.py
 │   │       │   └── entities.py
-│   │       └── states
+│   │       ├── states
+│   │       │   ├── __init__.py
+│   │       │   └── entity_state.py
+│   │       └── utils
 │   │           ├── __init__.py
-│   │           └── entity_state.py
+│   │           └── timestamps.py
 │   ├── assets
 │   │   ├── favicon.svg
 │   │   └── logo.svg
@@ -1075,4 +1091,4 @@
     ├── manage_docs_dns.py
     ├── startup_api.sh
     └── startup_worker.sh
-228 directories, 849 files
+228 directories, 865 files
