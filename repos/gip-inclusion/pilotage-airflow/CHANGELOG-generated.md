@@ -1,17 +1,27 @@
-## Changelog : pilotage-airflow (30 derniers jours, au 24/08/2026)
+## Changelog : pilotage-airflow (30 derniers jours, au 04/09/2026)
 
 ### Résumé
-Ce mois a été marqué par une mise à jour majeure de l'infrastructure vers Airflow 3 et par un enrichissement significatif des modèles de données. Les processus de traitement des enquêtes (ESAT, FAGERH, IMER) ont été affinés pour garantir une meilleure précision des indicateurs et une orchestration plus robuste.
+Ce mois-ci a été marqué par une extension significative des capacités d'analyse grâce à l'intégration de nouveaux modèles de données dédiés aux "actes métier" (emplois, inclusion). Parallèlement, le projet a franchi une étape majeure de modernisation avec la migration complète de l'infrastructure d'orchestration vers Airflow 3.
 
 ### Évolutions fonctionnelles
-- **Enquêtes ESAT** : Amélioration de la clarté des données via le renommage de colonnes, ajustement des seuils de complétude et fiabilisation du mapping des réponses.
-- **Enquêtes FAGERH** : Ajout de nouveaux modèles pour le calcul du taux d'emploi, mise à jour du mapping des prestations et intégration du suivi des bénéficiaires directs.
-- **Enquête IMER** : Mise en place de l'orchestration et ajustement de la planification des tâches.
-- **Reporting** : Ajout de colonnes de comptage des préconisations dans les tables de données finales (marts).
+- **Nouveaux indicateurs "Actes Métier"** : Intégration de nouveaux modèles de données (DBT) couvrant les domaines de l'emploi, de "lemarché", "monrecap" et "gps" pour enrichir les calculs d'inclusion.
+- **Nouveau flux de données** : Mise en place d'un DAG dédié pour la construction et l'inclusion des données "actes-métier".
+- **Amélioration de la qualité des données** :
+    - Correction de jointures erronées sur le modèle des contrats.
+    - Nettoyage des doublons dans les données sources ESAT.
+    - Renommage de colonnes ESAT pour une meilleure clarté métier et ajustement des seuils de complétude.
+    - Correction de la logique de mapping des réponses pour les enquêtes ESAT.
 
 ### Évolutions techniques
-- **Infrastructure** : Migration complète vers Airflow 3, incluant la mise à jour des DAGs et l'implémentation d'un nouveau gestionnaire d'authentification (`simpleAuthManager`).
-- **CI/CD** : Optimisation des pipelines de tests pour éviter les exécutions inutiles et amélioration de la gestion du cache pour l'outil `setup-uv`.
+- **Migration vers Airflow 3** : Mise à jour majeure de l'infrastructure d'orchestration, incluant l'adaptation des DAGs et la mise en œuvre du nouveau gestionnaire d'authentification (`simpleAuthManager`).
+- **Optimisation des pipelines** : 
+    - Ajout de nouveaux calendriers d'exécution (scheduling) pour `dbt_daily` et `imer`.
+    - Optimisation de la suite de tests pour éviter l'exécution de tests inutiles.
+- **Maintenance et stabilité** :
+    - Application de correctifs de sécurité.
+    - Ajustements de compatibilité (notamment pour Pandas 3 et les types de colonnes).
+    - Amélioration de la gestion des erreurs (exceptions sur les noms manquants).
 
 ### Autres changements
-- **Documentation** : Amélioration de la qualité rédactionnelle et mise à jour des définitions des modèles de données DBT.
+- **Documentation** : Amélioration de la rédaction des contenus documentaires.
+- **Qualité du code** : Ajustements de la configuration de linting (`sqlfluff`).

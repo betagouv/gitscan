@@ -24,7 +24,7 @@
 ├── dag-variables.json
 ├── dags
 │   ├── __init__.py
-│   ├── actes_metier_matomo.py
+│   ├── actes_metier.py
 │   ├── asp_processed_data.py
 │   ├── common
 │   │   ├── __init__.py
@@ -157,6 +157,7 @@
 │   │   ├── intermediate
 │   │   │   ├── data_inclusion
 │   │   │   │   ├── _models.yml
+│   │   │   │   ├── int_data_inclusion__actes_metier.sql
 │   │   │   │   ├── int_di__structure_source_mapping.sql
 │   │   │   │   └── int_thematiques_clpe.sql
 │   │   │   ├── dora
@@ -167,6 +168,9 @@
 │   │   │   │   ├── int_dora__orientation_user_service.sql
 │   │   │   │   ├── int_dora__service_structure.sql
 │   │   │   │   ├── int_dora__structure_members.sql
+│   │   │   │   └── properties.yml
+│   │   │   ├── emplois
+│   │   │   │   ├── int_emplois__actes_metier.sql
 │   │   │   │   └── properties.yml
 │   │   │   ├── esat
 │   │   │   │   ├── int_esat__completed_answers.sql
@@ -181,11 +185,20 @@
 │   │   │   │   ├── int_fagerh__prestations_details_names.sql
 │   │   │   │   ├── int_fagerh__prestations_publics.sql
 │   │   │   │   └── properties.yml
+│   │   │   ├── gps
+│   │   │   │   ├── int_gps__actes_metier.sql
+│   │   │   │   └── properties.yml
 │   │   │   ├── int_communes_base.sql
 │   │   │   ├── int_communes_code_postal.sql
 │   │   │   ├── int_matomo__actes_metier.sql
 │   │   │   ├── int_metiers_derniere_candidature_fdp_par_candidat.sql
 │   │   │   ├── int_origine_derniere_candidature_par_candidat.sql
+│   │   │   ├── marche
+│   │   │   │   ├── int_marche__actes_metier.sql
+│   │   │   │   └── properties.yml
+│   │   │   ├── monrecap
+│   │   │   │   ├── int_monrecap__actes_metier.sql
+│   │   │   │   └── properties.yml
 │   │   │   ├── oneshot
 │   │   │   │   ├── france_travail
 │   │   │   │   │   ├── int_nombre_freins_agg.sql
@@ -377,6 +390,7 @@
 │   │   └── staging
 │   │       ├── data_inclusion
 │   │       │   ├── _models.yml
+│   │       │   ├── stg_actes_metier__data_inclusion.sql
 │   │       │   ├── stg_di__services.sql
 │   │       │   ├── stg_di__structures.sql
 │   │       │   └── stg_di__structures_deduplicated.sql
@@ -397,6 +411,7 @@
 │   │       │   └── stg_dsn_siae_sexe.sql
 │   │       ├── emplois
 │   │       │   ├── _properties.yml
+│   │       │   ├── stg_emplois__fiches_de_poste.sql
 │   │       │   └── stg_emplois__imer.sql
 │   │       ├── esat
 │   │       │   ├── properties.yml
@@ -422,6 +437,13 @@
 │   │       │   ├── stg_insee_zone_emploi.sql
 │   │       │   ├── stg_insee_zone_emploi_commune.sql
 │   │       │   └── stg_insee_zones_emploi.sql
+│   │       ├── marche
+│   │       │   ├── properties.yml
+│   │       │   ├── stg_marche__perimeters.sql
+│   │       │   ├── stg_marche__siae_offers.sql
+│   │       │   ├── stg_marche__siaes.sql
+│   │       │   ├── stg_marche__tenders.sql
+│   │       │   └── stg_marche__users.sql
 │   │       ├── matomo
 │   │       │   ├── stg_matomo__monthly_department_visits.sql
 │   │       │   ├── stg_matomo__monthly_visits.sql
@@ -608,4 +630,4 @@
     ├── test_common_dates.py
     ├── test_common_db.py
     └── test_dags.py
-88 directories, 607 files
+93 directories, 624 files
