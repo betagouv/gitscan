@@ -1,7 +1,11 @@
-## Changelog : dockerfiles (30 derniers jours, au 19 août 2026)
+## Changelog : dockerfiles (30 derniers jours, au 04/09/2026)
 
 ### Résumé
-Les récentes mises à jour visent à maintenir la compatibilité des outils de gestion de configuration avec les nouveaux processus de construction d'images, garantissant ainsi la stabilité et la continuité des outils DevOps fournis.
+Ce mois-ci, le projet a introduit une nouvelle image dédiée à l'auto-correction ("autofix") et a procédé à une optimisation de la taille des images existantes pour les rendre plus légères et performantes.
+
+### Évolutions fonctionnelles
+- Ajout d'une nouvelle image "autofix" permettant d'automatiser certaines tâches de correction. [#40](https://github.com/cloud-gouv/dockerfiles/pull/40)
 
 ### Évolutions techniques
-- Mise à jour d'Ansible pour assurer la compatibilité avec la nouvelle version de l'outil de construction d'images ([#39](https://github.com/cloud-gouv/dockerfiles/pull/39)).
+- Optimisation de la taille des images pour réduire leur poids (leaner images).
+- Mise à jour d'Ansible pour garantir la compatibilité avec la nouvelle version de l'outil de construction d'images (image builder). [#39](https://github.com/cloud-gouv/dockerfiles/pull/39)
