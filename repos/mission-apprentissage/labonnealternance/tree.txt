@@ -768,7 +768,10 @@
 │   │   │   ├── 20260818194937-backfill-search-queries-status.ts
 │   │   │   ├── 20260821140000-add-hiring-count-engagement-indexes.ts
 │   │   │   ├── 20260824100000-rename-search-queries-source.ts
-│   │   │   └── 20260828160000-add-rdv-sync-indexes.ts
+│   │   │   ├── 20260828160000-add-rdv-sync-indexes.ts
+│   │   │   ├── 20260831155536-remove-engagement-handicap-email-from-rolemanagements.ts
+│   │   │   ├── 20260901120000-reindex-delegated-offers-cfa-name.ts
+│   │   │   └── 20260901163000-normalize-naf-jobs-partners.ts
 │   │   ├── security
 │   │   │   ├── access-log.service.ts
 │   │   │   ├── access-log.types.ts
@@ -791,6 +794,7 @@
 │   │       ├── brevo.service.ts
 │   │       ├── cache-classification.service.test.ts
 │   │       ├── cache-classification.service.ts
+│   │       ├── cache-diagoriente.service.test.ts
 │   │       ├── cache-diagoriente.service.ts
 │   │       ├── cache-geolocation.service.ts
 │   │       ├── cache-infos-siret.service.ts
@@ -822,7 +826,6 @@
 │   │       ├── ftjob.service.ts
 │   │       ├── ftjob.service.types.ts
 │   │       ├── geolocation.service.ts
-│   │       ├── handi-engagement.service.ts
 │   │       ├── job-opportunity.service.types.ts
 │   │       ├── jobs
 │   │       │   └── job-opportunity
@@ -840,6 +843,7 @@
 │   │       │   ├── mistralai.service.test.ts
 │   │       │   └── mistralai.service.ts
 │   │       ├── opco.service.ts
+│   │       ├── organization.service.test.ts
 │   │       ├── organization.service.ts
 │   │       ├── partner-job.service.ts
 │   │       ├── query-validator.service.ts
@@ -935,16 +939,17 @@
 │   │       ├── mail-offre-seuil-candidatures.mjml.ejs
 │   │       ├── mail-rdva-optout-unsubscription-question.mjml.ejs
 │   │       ├── mail-relance-opco.mjml.ejs
-│   │       ├── mail-reponse-cfa.mjml.ejs
-│   │       └── mail-sensibilisation-handi-engagement.mjml.ejs
+│   │       └── mail-reponse-cfa.mjml.ejs
 │   ├── tests
 │   │   ├── fixture
 │   │   │   ├── connectedUser.fixture.ts
 │   │   │   ├── givenSomeComputedJobPartners.ts
 │   │   │   └── givenSomeJobPartners.ts
 │   │   ├── integration
-│   │   │   └── common
-│   │   │       └── model.test.ts
+│   │   │   ├── common
+│   │   │   │   └── model.test.ts
+│   │   │   └── migrations
+│   │   │       └── normalize-naf-jobs-partners.test.ts
 │   │   ├── mocks
 │   │   │   ├── mockApiBal.ts
 │   │   │   ├── mockApiEntreprise.ts
@@ -1181,12 +1186,16 @@
 │   │   │   └── is-geiq-entreprise.ts
 │   │   ├── utils
 │   │   │   ├── assert-unreachable.ts
+│   │   │   ├── contact-details.test.ts
+│   │   │   ├── contact-details.ts
 │   │   │   ├── detect-url-and-emails.test.ts
 │   │   │   ├── detect-url-and-emails.ts
 │   │   │   ├── enum-utils.ts
 │   │   │   ├── get-last-status-event.test.ts
 │   │   │   ├── get-last-status-event.ts
 │   │   │   ├── index.ts
+│   │   │   ├── naf-utils.test.ts
+│   │   │   ├── naf-utils.ts
 │   │   │   ├── object-utils.ts
 │   │   │   ├── rate-limit-description.ts
 │   │   │   ├── search-url-compat.test.ts
@@ -1465,6 +1474,7 @@
 │   │   │   │   ├── DepotRapideFin.tsx
 │   │   │   │   ├── FieldWithValue.tsx
 │   │   │   │   ├── FollowLinkedIn.tsx
+│   │   │   │   ├── HandiEngagementSelect.tsx
 │   │   │   │   ├── InfoToolTip.tsx
 │   │   │   │   ├── LoadingEmptySpace.tsx
 │   │   │   │   ├── MiseEnRelation.tsx
@@ -1473,7 +1483,8 @@
 │   │   │   │   ├── Table.tsx
 │   │   │   │   ├── TableWithPagination.tsx
 │   │   │   │   ├── VirtualTable.tsx
-│   │   │   │   └── promoRessources.tsx
+│   │   │   │   ├── promoRessources.tsx
+│   │   │   │   └── table-styles.ts
 │   │   │   └── espace-pro
 │   │   │       ├── (connected)
 │   │   │       │   ├── _components
@@ -1686,6 +1697,7 @@
 │   │   │   │   ├── DepotSimplifieCreationOffre.tsx
 │   │   │   │   ├── InformationCreationCompte
 │   │   │   │   │   └── InformationCreationCompte.tsx
+│   │   │   │   ├── InformationHandiEngagement.tsx
 │   │   │   │   └── InformationOpco.tsx
 │   │   │   └── espace-pro
 │   │   │       ├── creation
@@ -1771,10 +1783,12 @@
 │   │   │   ├── AuthWatcher.tsx
 │   │   │   ├── Breadcrumb.tsx
 │   │   │   ├── ClientOnly.tsx
+│   │   │   ├── ContactInfoFields.tsx
 │   │   │   ├── CustomDSFRInput.tsx
 │   │   │   ├── CustomFormControl.tsx
 │   │   │   ├── CustomInput.tsx
 │   │   │   ├── CustomRadio.tsx
+│   │   │   ├── DeclarationExactCheckbox.tsx
 │   │   │   ├── ErrorComponent.tsx
 │   │   │   ├── Footer.tsx
 │   │   │   ├── FormComponents
@@ -1794,8 +1808,10 @@
 │   │   │   │   └── RechercheFormTitle.tsx
 │   │   │   ├── Title
 │   │   │   │   └── ModalTitle.tsx
+│   │   │   ├── TwoColumnFormLayout.tsx
 │   │   │   ├── WidgetAwareHeader.tsx
-│   │   │   └── WidgetTester.tsx
+│   │   │   ├── WidgetTester.tsx
+│   │   │   └── submit-with-focus-on-error.ts
 │   │   ├── client_only_providers.tsx
 │   │   ├── dsfr-setup
 │   │   │   ├── default-color-scheme.ts
@@ -1809,6 +1825,7 @@
 │   │   ├── hooks
 │   │   │   ├── use-disclosure.ts
 │   │   │   ├── use-formation-prdv-tracker.ts
+│   │   │   ├── use-handi-engagement-state.ts
 │   │   │   ├── use-is-mobile-device.ts
 │   │   │   ├── use-is-widget.ts
 │   │   │   ├── use-jobs-partners-admin-actions.ts
@@ -2110,7 +2127,6 @@
 │   │   │   ├── dosearch.svg
 │   │   │   ├── eclair.svg
 │   │   │   ├── emails
-│   │   │   │   ├── handimatch.png
 │   │   │   │   ├── icone_bin.png
 │   │   │   │   ├── icone_candidat.png
 │   │   │   │   ├── icone_check.png
@@ -2649,9 +2665,11 @@
 │       ├── robots.utils.ts
 │       ├── routes.metadata.utils.ts
 │       ├── routes.utils.ts
+│       ├── sentry-filters.utils.test.ts
+│       ├── sentry-filters.utils.ts
 │       ├── strutils.ts
 │       ├── tools.ts
 │       └── use-search-params-record.ts
 ├── vitest.config.ts
 └── yarn.lock
-494 directories, 2730 files
+495 directories, 2747 files
