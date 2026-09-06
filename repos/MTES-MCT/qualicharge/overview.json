@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/MTES-MCT/qualicharge",
   "name": "qualicharge",
-  "description": "Ce projet vise à améliorer la qualité du service de recharge pour les véhicules électriques en analysant les données de supervision. Il propose une API, un dashboard et des outils de visualisation pour le suivi des indicateurs de performance.",
+  "description": "Ce projet vise à améliorer la qualité du service de recharge pour les véhicules électriques en analysant les données de supervision. Il permet de calculer des indicateurs de performance et de visualiser les données via un dashboard et Metabase.",
   "language": "Python",
   "features": [
     "API & Intégrations",
@@ -22,28 +22,32 @@
     "Terraform",
     "Locust",
     "Django",
-    "FastAPI"
+    "FastAPI",
+    "uv"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
     "Docker & Conteneurs",
-    "CI/CD & Déploiement",
-    "Authentification (composant)",
     "Reporting & BI",
-    "Infrastructure & Stockage"
+    "Authentification (composant)",
+    "Scripts & Utilitaires",
+    "Ansible & IaC"
   ],
   "auth": {
     "methods": [
-      "oauth2",
       "jwt",
-      "sso"
+      "oauth2",
+      "session"
+    ],
+    "providers": [
+      "Keycloak"
     ]
   },
   "tests": [
-    "pytest",
-    "locust"
+    "Locust",
+    "Pytest"
   ],
   "workflows": [
     "GitHub Actions"
@@ -53,12 +57,14 @@
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
-    "Données & Open Data",
     "Environnement & Énergie",
+    "Données & Open Data",
     "Python",
     "Docker & Conteneurs",
     "Bases de données SQL",
     "Reporting & BI",
-    "CI/CD & GitHub Actions"
+    "Git & DevOps",
+    "CI/CD & GitHub Actions",
+    "Standards & Schémas"
   ]
 }

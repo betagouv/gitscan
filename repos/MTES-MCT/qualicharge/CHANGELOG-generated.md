@@ -1,7 +1,7 @@
-## Changelog : qualicharge (30 derniers jours, au 10 août 2026)
+## Changelog : qualicharge (30 derniers jours, au 10/08/2026)
 
 ### Résumé
-Les récentes évolutions se sont concentrées sur l'optimisation du moteur de calcul afin d'accélérer la disponibilité et la génération des indicateurs de performance.
+Les récentes interventions ont porté sur l'optimisation des processus de calcul, permettant un traitement plus rapide et plus efficace des indicateurs de performance du système.
 
 ### Évolutions techniques
-- Optimisation des performances pour le calcul des indicateurs e2 et e3 via l'orchestrateur Prefect.
+- Optimisation des performances pour le calcul des indicateurs e2 et e3 via l'outil d'orchestration Prefect.
