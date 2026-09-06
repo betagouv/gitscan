@@ -55,6 +55,7 @@
 │       ├── main-pipeline.yml
 │       ├── pr-title-lint.yml
 │       ├── release.yml
+│       ├── security.yml
 │       ├── terraform-deploy.yml
 │       └── tests.yml
 ├── .gitignore
@@ -116,7 +117,8 @@
 │   │       ├── 20260602131500_drop_user_scoring_expires_at.sql
 │   │       ├── 20260623113922_add_publisher_diffusion_rule.sql
 │   │       ├── 20260625101014_drop_publisher_diffusion_exclusion.sql
-│   │       └── 20260626140956_add_tracking_event.sql
+│   │       ├── 20260626140956_add_tracking_event.sql
+│   │       └── 20260813124830_add_mission_diffusion.sql
 │   ├── dbt
 │   │   └── analytics
 │   │       ├── .sqlfluff
@@ -137,6 +139,7 @@
 │   │       │   │   │   ├── int_mission_active_range.sql
 │   │       │   │   │   ├── int_mission_address.sql
 │   │       │   │   │   ├── int_mission_click_apply_metrics.sql
+│   │       │   │   │   ├── int_mission_diffusion.sql
 │   │       │   │   │   └── int_mission_moderation_status.sql
 │   │       │   │   ├── organization
 │   │       │   │   │   └── int_organization_active_range.sql
@@ -151,6 +154,7 @@
 │   │       │   │   ├── tracking
 │   │       │   │   │   ├── __models.yml
 │   │       │   │   │   ├── int_internal_distinct_ids.sql
+│   │       │   │   │   ├── int_tracking_backend_conversion.sql
 │   │       │   │   │   ├── int_tracking_mission_click.sql
 │   │       │   │   │   ├── int_tracking_page_view.sql
 │   │       │   │   │   ├── int_tracking_quiz_backend.sql
@@ -182,6 +186,7 @@
 │   │       │   │   │   ├── mission_active_department_monthly.sql
 │   │       │   │   │   ├── mission_active_monthly.sql
 │   │       │   │   │   ├── mission_address.sql
+│   │       │   │   │   ├── mission_diffusion.sql
 │   │       │   │   │   ├── mission_enrichment.sql
 │   │       │   │   │   ├── mission_enrichment_daily.sql
 │   │       │   │   │   ├── mission_enrichment_value.sql
@@ -215,6 +220,7 @@
 │   │       │   │   │   ├── apply_jva_attrs.sql
 │   │       │   │   │   ├── apply_service_civique_attrs.sql
 │   │       │   │   │   ├── click.sql
+│   │       │   │   │   ├── click_pde_attrs.sql
 │   │       │   │   │   └── impression.sql
 │   │       │   │   ├── stats
 │   │       │   │   │   ├── __models.yml
@@ -228,8 +234,10 @@
 │   │       │   │   │   ├── __models.yml
 │   │       │   │   │   ├── tracking_engagement_kpi_daily.sql
 │   │       │   │   │   ├── tracking_funnel_step_daily.sql
+│   │       │   │   │   ├── tracking_matching_engine_ranking_daily.sql
 │   │       │   │   │   ├── tracking_mission_click.sql
 │   │       │   │   │   ├── tracking_page_view_daily.sql
+│   │       │   │   │   ├── tracking_publisher_stock_share.sql
 │   │       │   │   │   ├── tracking_quiz_session.sql
 │   │       │   │   │   ├── tracking_recommendation.sql
 │   │       │   │   │   └── tracking_scoring_kpi_daily.sql
@@ -270,6 +278,7 @@
 │   │       │       │   ├── stg_mission.sql
 │   │       │       │   ├── stg_mission_activity.sql
 │   │       │       │   ├── stg_mission_address.sql
+│   │       │       │   ├── stg_mission_diffusion.sql
 │   │       │       │   ├── stg_mission_enrichment.sql
 │   │       │       │   ├── stg_mission_enrichment_value.sql
 │   │       │       │   ├── stg_mission_event.sql
@@ -328,6 +337,7 @@
 │   │       │   └── .gitkeep
 │   │       └── tests
 │   │           ├── .gitkeep
+│   │           ├── assert_backend_conversion_apply_consistency.sql
 │   │           ├── assert_mission_click_matched_has_backend_rank.sql
 │   │           └── assert_results_click_implies_has_click.sql
 │   ├── docker-entrypoint.sh
@@ -609,6 +619,8 @@
 │   │   │   ├── 20260717123043_add_mission_diffusion_table
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260722120000_add_mission_diffusion_created_at
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260813132806_add_mission_diffusion_soft_delete
 │   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
@@ -1672,7 +1684,8 @@
 │   │   │   ├── missions
 │   │   │   │   ├── filters.tsx
 │   │   │   │   ├── match-mission-card.tsx
-│   │   │   │   └── mission-card.tsx
+│   │   │   │   ├── mission-card.tsx
+│   │   │   │   └── mission-tag.tsx
 │   │   │   ├── quiz
 │   │   │   │   ├── back-button.tsx
 │   │   │   │   ├── checkbox-group-rich.tsx
@@ -1689,8 +1702,8 @@
 │   │   │   │   ├── matching-debug-modal.css
 │   │   │   │   ├── matching-debug-modal.tsx
 │   │   │   │   ├── mission-map.tsx
-│   │   │   │   ├── other-missions.tsx
-│   │   │   │   └── pinned-missions.tsx
+│   │   │   │   ├── profile-modal.tsx
+│   │   │   │   └── results-missions.tsx
 │   │   │   └── ui
 │   │   │       ├── combobox.tsx
 │   │   │       ├── gradient-bg.tsx
@@ -1985,4 +1998,4 @@
         ├── sentry.ts
         ├── store.ts
         └── utils.ts
-455 directories, 1618 files
+456 directories, 1630 files
