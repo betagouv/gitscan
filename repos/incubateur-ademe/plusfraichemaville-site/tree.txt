@@ -282,6 +282,14 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260616164942_add_mail_template_for_annuaire
 │   │   │   └── migration.sql
+│   │   ├── 20260817124249_creer_is_agent_public_boolean
+│   │   │   └── migration.sql
+│   │   ├── 20260822203103_utilisation_document_id_de_strapi
+│   │   │   └── migration.sql
+│   │   ├── 20260901075520_remove_unused_columns
+│   │   │   └── migration.sql
+│   │   ├── 20260901084749_drop_estimations_aides_table
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   └── schema.prisma
 ├── public
@@ -360,6 +368,7 @@
 │   │   │   ├── estimation.svg
 │   │   │   ├── financement.svg
 │   │   │   ├── services
+│   │   │   │   ├── annuaire-disabled.svg
 │   │   │   │   ├── annuaire.svg
 │   │   │   │   ├── besoin-aide.svg
 │   │   │   │   ├── carte.svg
@@ -568,6 +577,7 @@
 │   │   ├── fill-lcz-infos.tsx
 │   │   ├── fill-user-etablissement-field.tsx
 │   │   ├── migrate-estimation-materiaux.ts
+│   │   ├── migrate-strapi5-document-ids.ts
 │   │   └── update-climadiag-population.tsx
 │   ├── connect-sync.ts
 │   ├── csm-mail-batch.ts
@@ -936,7 +946,6 @@
 │   │   │   ├── CustomTodoStep.tsx
 │   │   │   ├── FilterButton.tsx
 │   │   │   ├── InputFormField.tsx
-│   │   │   ├── MonthPickerFormField.tsx
 │   │   │   ├── ObjectifsDeveloppementDurable.tsx
 │   │   │   ├── RedAsterisk.tsx
 │   │   │   ├── SelectFormField.tsx
@@ -976,7 +985,8 @@
 │   │   │   │   ├── generic-save-modal-unauthenticated.tsx
 │   │   │   │   ├── generic-save-modal.tsx
 │   │   │   │   ├── helpers.ts
-│   │   │   │   └── index.tsx
+│   │   │   │   ├── index.tsx
+│   │   │   │   └── tsc-errors.txt
 │   │   │   ├── hidden.tsx
 │   │   │   ├── image-loader.tsx
 │   │   │   ├── lecteur-mode-label.tsx
@@ -1036,6 +1046,7 @@
 │   │   │   │   └── espace-projet-breadcurmb-list.tsx
 │   │   │   ├── besoin-aide
 │   │   │   │   └── besoin-aide-page.tsx
+│   │   │   ├── notice-entreprise-privee.tsx
 │   │   │   ├── recherche-solutions
 │   │   │   │   ├── aide-decision-container.tsx
 │   │   │   │   ├── aide-decision-etape-card.tsx
@@ -1351,9 +1362,6 @@
 │   │           ├── libquery_engine-debian-openssl-3.0.x.so.node
 │   │           ├── package.json
 │   │           ├── query_engine-windows.dll.node
-│   │           ├── query_engine-windows.dll.node.tmp25644
-│   │           ├── query_engine-windows.dll.node.tmp26896
-│   │           ├── query_engine-windows.dll.node.tmp9728
 │   │           ├── runtime
 │   │           │   ├── edge-esm.js
 │   │           │   ├── edge.js
@@ -1560,4 +1568,4 @@
 │       └── nextAuth.d.ts
 ├── tailwind.config.js
 └── tsconfig.json
-390 directories, 1172 files
+394 directories, 1176 files
