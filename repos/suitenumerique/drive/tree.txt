@@ -121,6 +121,32 @@
 │       └── postgresql.e2e
 ├── gitlint
 │   └── gitlint_emoji.py
+├── load-tests
+│   ├── .gitignore
+│   ├── README.md
+│   ├── drive-session-read-heavy.jmx
+│   ├── drive-session.jmx
+│   ├── files
+│   │   ├── chantier.mp4
+│   │   ├── conseil_municipal.pdf
+│   │   ├── logo.png
+│   │   ├── mon_dossier
+│   │   │   ├── 1er Janvier 2024
+│   │   │   │   └── Le Matin
+│   │   │   │       └── file-identifier (1).svg
+│   │   │   ├── chantier.mp4
+│   │   │   └── logo.png
+│   │   ├── record_screen copie.mov
+│   │   └── record_screen.mov
+│   ├── run.sh
+│   ├── scripts
+│   │   ├── plan_upload.groovy
+│   │   ├── prep_file.groovy
+│   │   ├── prep_login_email.groovy
+│   │   ├── prep_subfolder.groovy
+│   │   ├── reset_browse_vars.groovy
+│   │   └── store_subfolder_id.groovy
+│   └── user.properties.example
 ├── renovate.json
 └── src
     ├── backend
@@ -203,8 +229,16 @@
     │   │   │   ├── 0026_item_item_creator_size_not_hdel_idx.py
     │   │   │   ├── 0027_item_quota_excluded.py
     │   │   │   ├── 0028_item_creator_size_quota_idx.py
+    │   │   │   ├── 0030_item_add_restriction_target.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
+    │   │   ├── permissions
+    │   │   │   ├── __init__.py
+    │   │   │   ├── backends
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── base.py
+    │   │   │   │   └── role.py
+    │   │   │   └── factory.py
     │   │   ├── services
     │   │   │   ├── __init__.py
     │   │   │   ├── accesses.py
@@ -277,10 +311,13 @@
     │   │   │   │   ├── test_api_items_list.py
     │   │   │   │   ├── test_api_items_list_filters.py
     │   │   │   │   ├── test_api_items_list_ordering.py
+    │   │   │   │   ├── test_api_items_list_restricted.py
     │   │   │   │   ├── test_api_items_media_auth.py
     │   │   │   │   ├── test_api_items_move.py
     │   │   │   │   ├── test_api_items_recents.py
     │   │   │   │   ├── test_api_items_restore.py
+    │   │   │   │   ├── test_api_items_restrict.py
+    │   │   │   │   ├── test_api_items_restrictions.py
     │   │   │   │   ├── test_api_items_retrieve.py
     │   │   │   │   ├── test_api_items_search.py
     │   │   │   │   ├── test_api_items_search_fulltext.py
@@ -324,6 +361,8 @@
     │   │   │   ├── test_models_item_accesses.py
     │   │   │   ├── test_models_items.py
     │   │   │   ├── test_models_items_indexer.py
+    │   │   │   ├── test_models_items_restricted.py
+    │   │   │   ├── test_models_items_restrictions.py
     │   │   │   ├── test_models_items_root.py
     │   │   │   ├── test_models_user_reconciliation.py
     │   │   │   ├── test_models_users.py
@@ -1087,4 +1126,4 @@
     │   └── yarn.lock
     └── nginx
         └── servers.conf.erb
-249 directories, 840 files
+257 directories, 871 files

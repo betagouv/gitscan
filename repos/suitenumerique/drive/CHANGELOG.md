@@ -8,6 +8,17 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
+- 📈(backend) add a Sentry performance monitoring sample rate setting
+- ♻️(backend) route permission decisions through a swappable backend
+- ✨(backend) add restricted access on folders, detached behind a restriction
+
+### Fixed
+
+- 🐛(backend) prevent item deletion by a creator whose access was revoked
+- 🐛(backend) resolve the direct parent by exact path after a move
+
 ## [v0.21.2] - 2026-08-25
 
 ### Added
@@ -29,6 +40,7 @@ and this project adheres to
 
 ### Added
 
+- ✨(load-tests) add JMeter load-testing scenarios and a LoadTest configuration
 - ✨(backend) make the upload ACL configurable to support GCS based storages
 - ✨(frontend) show the messages widget button on the homepage
 - ✨(frontend) open the messages widget from the help menu

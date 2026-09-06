@@ -1,21 +1,21 @@
-## Changelog : drive (30 derniers jours, au 25 août 2026)
+## Changelog : drive (30 derniers jours, au 04/09/2026)
 
 ### Résumé
-Ce mois-ci, les efforts se sont concentrés sur le renforcement de la sécurité, notamment pour la détection de fichiers malveillants et la sécurisation de l'édition de documents en ligne. Des outils de gestion du stockage et des corrections d'interface ont également été déployés pour faciliter le travail des administrateurs et des utilisateurs.
+Ce mois-ci, LaSuite Drive a considérablement renforcé la gestion de la confidentialité grâce à un nouveau système de restrictions d'accès plus flexible et granulaire. La sécurité a également été consolidée, notamment sur les flux d'édition de documents (WOPI) et la gestion des droits de suppression, tandis que la robustesse du système a été améliorée par l'intégration de nouveaux outils de tests de charge et de monitoring de performance.
 
 ### Évolutions fonctionnelles
-- **Administration** : possibilité d'interrompre manuellement une analyse de malware en cours.
-- **Gestion du stockage** : introduction d'un indicateur d'exclusion de quota sur les fichiers et d'une commande pour accorder un stockage illimité.
-- **Sécurité** : scan automatique des fichiers écrits via le protocole d'édition en ligne (WOPI) pour détecter d'éventuels malwares.
-- **Expérience utilisateur** : correction d'un bug de comportement lors du glisser-déposer dans la fenêtre de partage.
-- **API** : application des attributs par audience aux éléments de l'API externe.
+- **Nouveau système de gestion des restrictions** : possibilité d'activer ou désactiver des restrictions, de les gérer par le déplacement de dossiers ou de cibler spécifiquement d'autres éléments.
+- **Confidentialité accrue** : les éléments faisant l'objet d'une restriction sont désormais masqués dans les listes de premier niveau et sont systématiquement exclus des résultats de recherche, des exports et de l'indexation.
+- **Sécurité des droits d'accès** : blocage de la suppression d'un élément par son créateur si ses droits d'accès ont été révoqués.
+- **Administration** : ajout d'une fonctionnalité permettant d'abandonner manuellement une analyse de logiciel malveillant (malware) en cours.
 
 ### Évolutions techniques
-- **Sécurité WOPI** : renforcement de la validation des signatures de requêtes, gestion des clés de preuve client et sécurisation des processus de renommage de fichiers.
-- **Sécurité Backend** : mise en place d'une liste blanche statique pour la résolution des fichiers de modèles.
-- **Infrastructure & CI/CD** : mise à jour des environnements de build vers Node 22 et passage de l'image Docker frontend sur Alpine 3.24.
-- **Automatisation** : planification des commandes de réconciliation pour la détection de malwares via Helm.
+- **Refonte du moteur de permissions** : restructuration du calcul des capacités (abilities) et de la résolution des rôles pour une meilleure modularité et performance.
+- **Sécurisation du protocole WOPI** : implémentation de la validation de signature des requêtes, du stockage des clés de preuve client et du scan systématique des fichiers écrits via ce protocole.
+- **Fiabilité et performance** : mise en place d'une suite de tests de charge (scénarios JMeter) et intégration de Sentry pour le monitoring des performances.
+- **Infrastructure et CI/CD** : automatisation de la détection de malware via Helm et mise à jour des workflows de traduction (Crowdin) sur Node 22.
 
 ### Autres changements
-- **Documentation** : mise à jour des notes de version concernant les fonctionnalités d'exclusion de quota.
-- **Maintenance** : normalisation des fins de ligne dans le fichier `yarn.lock`.
+- Mise à jour de la documentation du changelog.
+- Alignement des mots de passe de démonstration avec la configuration Keycloak.
+- Nettoyage et normalisation de certains fichiers de configuration (yarn.lock).
