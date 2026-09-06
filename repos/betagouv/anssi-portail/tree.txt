@@ -126,6 +126,16 @@
 │   │   ├── 20260721140439_creeTableTutoriels.ts
 │   │   ├── 20260804091048_ajouteDescriptionModules.ts
 │   │   ├── 20260811093629_rendDeferrableContrainteEmailUtilisateurHachePrisesEnCompte.ts
+│   │   ├── 20260826151019_metsAJourMesuresReferentielSecurisation.ts
+│   │   ├── 20260826155327_peupleTutorielsMesures.ts
+│   │   ├── 20260831090000_deplaceMentionsBonneNouvelleVersActionFacileAFaire.ts
+│   │   ├── 20260831132810_supprimeLienInterne.ts
+│   │   ├── 20260831133741_corrigeMiseEnFormeTutoriels.ts
+│   │   ├── 20260831142500_corrigeLigatureOeuvreMesures.ts
+│   │   ├── 20260831145804_corrigeContenuMesures.ts
+│   │   ├── 20260831150000_corrigeLigatureOeuvreEtApostrophesTutoriels.ts
+│   │   ├── 20260901152059_creeTableReactionsMiniTests.ts
+│   │   ├── 20260903082507_corrigeContenuMesures.ts
 │   │   └── README.md
 │   ├── package.json
 │   ├── src
@@ -182,6 +192,14 @@
 │   │   │   │   ├── attributionParcoursMesure.ts
 │   │   │   │   ├── middleware.ts
 │   │   │   │   └── publieMesureConsultee.ts
+│   │   │   ├── mini-tests
+│   │   │   │   ├── ressourceInfoMiniTests.ts
+│   │   │   │   ├── ressourceReactionMiniTest.schema.ts
+│   │   │   │   ├── ressourceReactionMiniTest.ts
+│   │   │   │   └── vrai-faux
+│   │   │   │       ├── ressourceReponsesVraiFaux.schemas.ts
+│   │   │   │       ├── ressourceReponsesVraiFaux.ts
+│   │   │   │       └── ressourceVraiFaux.ts
 │   │   │   ├── mon-aide-cyber
 │   │   │   │   ├── ressourceDemandesAide.schema.ts
 │   │   │   │   └── ressourceDemandesAide.ts
@@ -242,12 +260,15 @@
 │   │   │   │   ├── ressourceResultatsDeTest.schema.ts
 │   │   │   │   ├── ressourceResultatsDeTest.ts
 │   │   │   │   ├── ressourceResultatsSessionDeGroupe.ts
+│   │   │   │   ├── ressourceRetourTestMaturite.schema.ts
+│   │   │   │   ├── ressourceRetourTestMaturite.ts
 │   │   │   │   ├── ressourceSessionDeGroupe.ts
 │   │   │   │   └── ressourceSessionsDeGroupe.ts
 │   │   │   └── zod.ts
 │   │   ├── bus
 │   │   │   ├── busEvenements.ts
 │   │   │   ├── cablage.ts
+│   │   │   ├── consigeRetourTestMaturiteDonne.ts
 │   │   │   ├── consigneAvisMesureDonneDansJournal.ts
 │   │   │   ├── consigneBadgeCyberdepartDebloqueDansJournal.ts
 │   │   │   ├── consigneEvenementAvisUtilisateurDonneDansJournal.ts
@@ -265,6 +286,8 @@
 │   │   │   ├── consigneParcoursChangeDansJournal.ts
 │   │   │   ├── consigneParcoursCompletTermineDansJournal.ts
 │   │   │   ├── consigneParcoursRejointDansJournal.ts
+│   │   │   ├── consigneQuestionnaireVraiFauxReponseSoumiseDansJournal.ts
+│   │   │   ├── consigneQuestionnaireVraiFauxTermineDansJournal.ts
 │   │   │   ├── creeContactBrevo.ts
 │   │   │   ├── envoieEmailCreationCompte.ts
 │   │   │   ├── evenements
@@ -280,12 +303,16 @@
 │   │   │   │   ├── parcoursCompletTermine.ts
 │   │   │   │   ├── parcoursRejoint.ts
 │   │   │   │   ├── proprieteTestRevendiquee.ts
+│   │   │   │   ├── questionnaireVraiFauxReponseSoumise.ts
+│   │   │   │   ├── questionnaireVraiFauxTermine.ts
 │   │   │   │   ├── retourExperienceDonne.ts
+│   │   │   │   ├── retourTestMaturiteDonne.ts
 │   │   │   │   ├── simulationNis2Terminee.ts
 │   │   │   │   ├── testRealise.ts
 │   │   │   │   └── utilisateurConnecte.ts
 │   │   │   ├── miseAJourFavorisUtilisateur.ts
-│   │   │   └── notifieCommentaireAvisMesureDonneDansMessagerie.ts
+│   │   │   ├── notifieCommentaireAvisMesureDonneDansMessagerie.ts
+│   │   │   └── notifieRetourNegatifSurTestMaturite.ts
 │   │   ├── entrepotModulePostgres.ts
 │   │   ├── express.d.ts
 │   │   ├── infra
@@ -308,6 +335,8 @@
 │   │   │   ├── adaptateurProfilAnssi.ts
 │   │   │   ├── adaptateurProfilAnssiVide.ts
 │   │   │   ├── adaptateurRechercheEntreprise.ts
+│   │   │   ├── adaptateurStatistiqueMiniTestsMémoire.ts
+│   │   │   ├── adaptateurStatistiqueMiniTestsPostgres.ts
 │   │   │   ├── cache.ts
 │   │   │   ├── clientHttp.ts
 │   │   │   ├── donneesEvenement.ts
@@ -335,6 +364,8 @@
 │   │   │   ├── entrepotGuideTravailGrist.ts
 │   │   │   ├── entrepotMesurePostgres.ts
 │   │   │   ├── entrepotPriseEnComptePostgres.ts
+│   │   │   ├── entrepotQuestionVraieFausseStatique.ts
+│   │   │   ├── entrepotReactionMiniTestPostgres.ts
 │   │   │   ├── entrepotResultatTestPostgres.ts
 │   │   │   ├── entrepotSecretHachagePostgres.ts
 │   │   │   ├── entrepotUtilisateurMPAPostgres.ts
@@ -352,6 +383,7 @@
 │   │   │   ├── EntrepotModule.ts
 │   │   │   ├── PriseEnCompte.ts
 │   │   │   ├── adaptateurEmail.ts
+│   │   │   ├── adaptateurStatistiqueMiniTests.ts
 │   │   │   ├── besoinCyber.ts
 │   │   │   ├── entrepotFavori.ts
 │   │   │   ├── entrepotFinancement.ts
@@ -368,6 +400,13 @@
 │   │   │   ├── guide.ts
 │   │   │   ├── messagerieInstantanee.ts
 │   │   │   ├── mesure.ts
+│   │   │   ├── mini-tests
+│   │   │   │   ├── entrepotReactionMiniTest.ts
+│   │   │   │   ├── reactionMiniTest.ts
+│   │   │   │   └── vrai-faux
+│   │   │   │       ├── entrepotQuestionVraieFausse.ts
+│   │   │   │       ├── questionVraieFausse.ts
+│   │   │   │       └── questionnaireVraiFaux.ts
 │   │   │   ├── module.ts
 │   │   │   ├── nis2
 │   │   │   │   ├── entrepotExigence.ts
@@ -471,6 +510,13 @@
 │   │   │   │   ├── attributionParcours.spec.ts
 │   │   │   │   ├── attributionParcoursMesure.spec.ts
 │   │   │   │   └── middleware.spec.ts
+│   │   │   ├── mini-tests
+│   │   │   │   ├── ressourceInfoMiniTests.spec.ts
+│   │   │   │   ├── ressourceReactionMiniTest.spec.ts
+│   │   │   │   └── vrai-faux
+│   │   │   │       ├── constructeurDeQuestionVraieFausse.ts
+│   │   │   │       ├── ressourceReponsesVraiFaux.spec.ts
+│   │   │   │       └── ressourceVraiFaux.spec.ts
 │   │   │   ├── mon-aide-cyber
 │   │   │   │   └── ressourceDemandesAide.spec.ts
 │   │   │   ├── msc.spec.ts
@@ -517,6 +563,7 @@
 │   │   │       ├── ressourceResultatDeTest.spec.ts
 │   │   │       ├── ressourceResultatsDeTest.spec.ts
 │   │   │       ├── ressourceResultatsSessionDeGroupe.spec.ts
+│   │   │       ├── ressourceRetourTestMaturite.spec.ts
 │   │   │       ├── ressourceSessionDeGroupe.spec.ts
 │   │   │       └── ressourceSessionsDeGroupe.spec.ts
 │   │   ├── bus
@@ -539,9 +586,13 @@
 │   │   │   ├── consigneParcoursChangeDansJournal.spec.ts
 │   │   │   ├── consigneParcoursCompletTermineDansJournal.spec.ts
 │   │   │   ├── consigneParcoursRejointDansJournal.spec.ts
+│   │   │   ├── consigneQuestionnaireVraiFauxReponseSoumiseDansJournal.spec.ts
+│   │   │   ├── consigneQuestionnaireVraiFauxTermineDansJournal.spec.ts
+│   │   │   ├── consigneRetourTestMaturiteDonne.spec.ts
 │   │   │   ├── creeContactBrevo.spec.ts
 │   │   │   ├── envoieEmailCreationCompte.spec.ts
-│   │   │   └── notifieCommentaireAvisMesureDonneDansMessagerie.spec.ts
+│   │   │   ├── notifieCommentaireAvisMesureDonneDansMessagerie.spec.ts
+│   │   │   └── notifieRetourTestMaturiteDonne.spec.ts
 │   │   ├── infra
 │   │   │   ├── EntrepotGristGenerique.ts
 │   │   │   ├── RechercheEntrepriseAvecCache.spec.ts
@@ -568,6 +619,9 @@
 │   │   │   ├── ResultatTestMaturiteCreateur.ts
 │   │   │   ├── generateurCodeSessionDeGroupe.spec.ts
 │   │   │   ├── guide.spec.ts
+│   │   │   ├── mini-tests
+│   │   │   │   └── vrai-faux
+│   │   │   │       └── questionnaireVraiFaux.spec.ts
 │   │   │   ├── module.spec.ts
 │   │   │   ├── nis2-simulateur
 │   │   │   │   └── questionnaire
@@ -604,6 +658,8 @@
 │   │   │   ├── entrepotGuideTravailMemoire.ts
 │   │   │   ├── entrepotMemoire.ts
 │   │   │   ├── entrepotMesureMemoire.ts
+│   │   │   ├── entrepotQuestionVraieFausseMemoire.ts
+│   │   │   ├── entrepotReactionMiniTestMemoire.ts
 │   │   │   ├── entrepotResultatTestMemoire.ts
 │   │   │   └── entrepotUtilisateurMemoire.ts
 │   │   └── ressources
@@ -739,7 +795,8 @@
 │   │   ├── partage-linkedin.html
 │   │   ├── sans-menu.html
 │   │   ├── service.html
-│   │   └── test-maturite.html
+│   │   ├── test-maturite.html
+│   │   └── vide.html
 │   ├── _plugins
 │   │   └── package_json.rb
 │   ├── _ressources
@@ -843,6 +900,7 @@
 │   │   │   │   └── animation
 │   │   │   │       └── connexion-inscription.avif
 │   │   │   ├── contacts-resultat-vide.svg
+│   │   │   ├── cotillons-100-pourcents.svg
 │   │   │   ├── decorations
 │   │   │   │   ├── boucle.svg
 │   │   │   │   ├── ellipse.svg
@@ -858,6 +916,7 @@
 │   │   │   │   └── encartHomologation.tablette.avif
 │   │   │   ├── erreur-404.svg
 │   │   │   ├── erreur.svg
+│   │   │   ├── groupe-regardant-test-maturite.avif
 │   │   │   ├── homme-cherchant-avec-loupe.svg
 │   │   │   ├── homme-regardant-webinaire.avif
 │   │   │   ├── homme-remplissant-ecran-login.svg
@@ -1001,6 +1060,17 @@
 │   │   │   ├── logo-umih.svg
 │   │   │   ├── maintenance.svg
 │   │   │   ├── marianne-dark.svg
+│   │   │   ├── mini-tests
+│   │   │   │   ├── animation
+│   │   │   │   │   └── scene-hero-mini-test.avif
+│   │   │   │   └── vrai-faux
+│   │   │   │       ├── boucle.svg
+│   │   │   │       ├── curseur.svg
+│   │   │   │       ├── emoji-lunettes.png
+│   │   │   │       ├── emoji-reflexion.png
+│   │   │   │       ├── emoji-surpris.png
+│   │   │   │       ├── pouce-bas.svg
+│   │   │   │       └── pouce-haut.svg
 │   │   │   ├── motif-fond-heros-bleu-clair.avif
 │   │   │   ├── motif-fond-heros-bleu-mobile.avif
 │   │   │   ├── motif-fond-heros-bleu.avif
@@ -1023,25 +1093,8 @@
 │   │   │   │   │   └── section-pedagogique.avif
 │   │   │   │   ├── badge-cyberdepart.svg
 │   │   │   │   ├── illustration-diagnostic.png
-│   │   │   │   ├── mesure-ANNUAIRE.1.svg
-│   │   │   │   ├── mesure-AUTH.1.svg
-│   │   │   │   ├── mesure-AUTH.4.svg
-│   │   │   │   ├── mesure-AUTH.5.svg
-│   │   │   │   ├── mesure-COMPADMIN.10.svg
-│   │   │   │   ├── mesure-CONTINU.1.svg
-│   │   │   │   ├── mesure-CRISE.8.svg
-│   │   │   │   ├── mesure-EXO.1.svg
-│   │   │   │   ├── mesure-FILTRE.8.svg
-│   │   │   │   ├── mesure-MALWARE.3.svg
-│   │   │   │   ├── mesure-MCO_MCS.5.svg
-│   │   │   │   ├── mesure-RECENSEMENT.1.svg
-│   │   │   │   ├── mesure-RH.2.svg
-│   │   │   │   ├── module-1.svg
-│   │   │   │   ├── module-2.svg
-│   │   │   │   ├── module-3.svg
-│   │   │   │   ├── module-4.svg
-│   │   │   │   ├── module-5.svg
-│   │   │   │   └── module-6.svg
+│   │   │   │   ├── mesure-*.avif  (58 files)
+│   │   │   │   └── module-*.svg  (6 files)
 │   │   │   ├── personne-reflechissant-devant-un-ecran.svg
 │   │   │   ├── photo-livret-nis2.avif
 │   │   │   ├── piles-de-pieces.svg
@@ -1051,7 +1104,7 @@
 │   │   │   │       ├── heros-collectivites.avif
 │   │   │   │       └── heros-entreprises.avif
 │   │   │   ├── stat-diagnostics-cyber.svg
-│   │   │   ├── stat-test-maturite.svg
+│   │   │   ├── stat-test-cyber.svg
 │   │   │   ├── stat-utilisateurs-inscrits.svg
 │   │   │   ├── surligne-gauche-droite-vert-clair.svg
 │   │   │   ├── test-maturite
@@ -1269,57 +1322,27 @@
 │   │   │   │   └── animation
 │   │   │   │       ├── CompositionBizDev.svelte
 │   │   │   │       └── IllustrationCompositionBizDev.svelte
-│   │   │   ├── main-abonnement-infolettre.ts
-│   │   │   ├── main-associations.ts
-│   │   │   ├── main-avis-utilisateur.ts
-│   │   │   ├── main-badge-agent-anssi.ts
-│   │   │   ├── main-bandeau-maintenance.ts
-│   │   │   ├── main-barometre-simplifie.ts
-│   │   │   ├── main-bouton-favori.ts
-│   │   │   ├── main-carrousel-des-interlocuteurs.ts
-│   │   │   ├── main-catalogue.ts
-│   │   │   ├── main-centre-aide.ts
-│   │   │   ├── main-collectivites.ts
-│   │   │   ├── main-composants-ui.ts
-│   │   │   ├── main-confirmation-abonnement-infolettre.ts
-│   │   │   ├── main-contacts.ts
-│   │   │   ├── main-creation-compte.ts
-│   │   │   ├── main-demande-aide-mon-aide-cyber.ts
-│   │   │   ├── main-demande-diagnostic.ts
-│   │   │   ├── main-entreprises.ts
-│   │   │   ├── main-equipe-biz-dev.ts
-│   │   │   ├── main-favoris-partages.ts
-│   │   │   ├── main-favoris.ts
-│   │   │   ├── main-fil-ariane.ts
-│   │   │   ├── main-financements.ts
-│   │   │   ├── main-gestion-guides.ts
-│   │   │   ├── main-guide.ts
-│   │   │   ├── main-heros-accueil.ts
-│   │   │   ├── main-identification.ts
-│   │   │   ├── main-illustration-connexion-inscription.ts
-│   │   │   ├── main-maturite-utilisateur.ts
-│   │   │   ├── main-mesure.ts
-│   │   │   ├── main-module-cyberdepart.ts
-│   │   │   ├── main-module.ts
-│   │   │   ├── main-navigation.ts
-│   │   │   ├── main-niveaux-maturite.ts
-│   │   │   ├── main-page-crisp.ts
-│   │   │   ├── main-page-directive-nis2.ts
-│   │   │   ├── main-parcours-complet.ts
-│   │   │   ├── main-parcours-cyberdepart.ts
-│   │   │   ├── main-parcours-securisation-complet.ts
-│   │   │   ├── main-parcours-securisation.ts
-│   │   │   ├── main-proteger-organisation.ts
-│   │   │   ├── main-resultats-session-groupe.ts
-│   │   │   ├── main-sante.ts
-│   │   │   ├── main-sentry.ts
-│   │   │   ├── main-session-groupe.ts
-│   │   │   ├── main-simulateur-nis2.ts
-│   │   │   ├── main-statistiques.ts
-│   │   │   ├── main-test-maturite.ts
+│   │   │   ├── main-*.ts  (52 files)
 │   │   │   ├── maintenance
 │   │   │   │   └── BandeauMaintenance.svelte
+│   │   │   ├── mini-tests
+│   │   │   │   ├── CarteTest.svelte
+│   │   │   │   ├── IllustrationHeroMiniTest.svelte
+│   │   │   │   ├── MiniTests.svelte
+│   │   │   │   ├── PlanteAnimee.svelte
+│   │   │   │   ├── SceneHeroMiniTest.svelte
+│   │   │   │   ├── TestVraiFauxAnime.svelte
+│   │   │   │   └── vrai-faux
+│   │   │   │       ├── IllustrationHerosVraiFaux.svelte
+│   │   │   │       ├── LandingVraiFaux.svelte
+│   │   │   │       ├── SceneHerosVraiFaux.svelte
+│   │   │   │       └── moteur-de-jeu
+│   │   │   │           ├── QuizVraiFaux.svelte
+│   │   │   │           └── question
+│   │   │   │               ├── BoutonDeVote.svelte
+│   │   │   │               └── Question.svelte
 │   │   │   ├── navigation
+│   │   │   │   ├── ApresAuthentification.svelte
 │   │   │   │   ├── ControleSegmente.svelte
 │   │   │   │   ├── ControleSegmenteAvecSections.svelte
 │   │   │   │   ├── Navigation.svelte
@@ -1422,6 +1445,7 @@
 │   │   │   │   ├── LandingParcoursCyberdepart.svelte
 │   │   │   │   ├── LandingParcoursSecurisation.svelte
 │   │   │   │   ├── LandingParcoursSecurisationComplet.svelte
+│   │   │   │   ├── LienRetourAuxModules.svelte
 │   │   │   │   ├── MesuresDeModule.svelte
 │   │   │   │   ├── Module.svelte
 │   │   │   │   ├── ModuleCyberdepart.svelte
@@ -1447,7 +1471,6 @@
 │   │   │   │   │   ├── SectionProgression.svelte
 │   │   │   │   │   ├── SectionRecyf.svelte
 │   │   │   │   │   └── SectionTuto.svelte
-│   │   │   │   ├── avisUtilisateur.store.ts
 │   │   │   │   ├── mesure
 │   │   │   │   │   ├── Mesure.svelte
 │   │   │   │   │   ├── ModaleTutoriel.svelte
@@ -1455,7 +1478,9 @@
 │   │   │   │   ├── mesure.ts
 │   │   │   │   ├── modales
 │   │   │   │   │   ├── ModaleBadgeCyberdepartDebloque.svelte
-│   │   │   │   │   └── ModaleModuleCyberdepartTermine.svelte
+│   │   │   │   │   ├── ModaleModuleCyberdepartTermine.svelte
+│   │   │   │   │   ├── ModaleModuleTermine.svelte
+│   │   │   │   │   └── ModaleParcoursTermine.svelte
 │   │   │   │   ├── moduleReponseApi.ts
 │   │   │   │   └── parcours-complet
 │   │   │   │       ├── ParcoursComplet.svelte
@@ -1500,7 +1525,7 @@
 │   │   │   │   └── profil.store.ts
 │   │   │   ├── test-maturite
 │   │   │   │   ├── BarometreSimplifie.svelte
-│   │   │   │   ├── BoutonsPartageTest.svelte
+│   │   │   │   ├── BoutonsPartagePage.svelte
 │   │   │   │   ├── CarteTestMaturite.svelte
 │   │   │   │   ├── ComparaisonTest.svelte
 │   │   │   │   ├── EncartDeRecommandationMaturiteFaible.svelte
@@ -1556,6 +1581,7 @@
 │   │   │   │   ├── BlocDiagnostic.svelte
 │   │   │   │   ├── Bouton.svelte
 │   │   │   │   ├── BoutonFermerModale.svelte
+│   │   │   │   ├── CanonAConfetti.svelte
 │   │   │   │   ├── CaseACocher.svelte
 │   │   │   │   ├── ChampRecherche.svelte
 │   │   │   │   ├── ChampTexte.svelte
@@ -1579,6 +1605,8 @@
 │   │   │   │   ├── Modale.svelte
 │   │   │   │   ├── MotEnExergue.svelte
 │   │   │   │   ├── Notice.svelte
+│   │   │   │   ├── Reactions.svelte
+│   │   │   │   ├── RetourUtilisateurSurContenu.svelte
 │   │   │   │   ├── Separateur.svelte
 │   │   │   │   ├── Surlignage.svelte
 │   │   │   │   ├── Tuile.svelte
@@ -1589,6 +1617,7 @@
 │   │   │   │   │   ├── SelectionOrganisation.svelte
 │   │   │   │   │   └── SelectionOrganisation.types.ts
 │   │   │   │   ├── quiScroll.attachment.ts
+│   │   │   │   ├── retourUtilisateurSurContenu.store.ts
 │   │   │   │   └── toasts
 │   │   │   │       ├── Toast.svelte
 │   │   │   │       ├── Toaster.svelte
@@ -1665,6 +1694,9 @@
 │   ├── maintenance.html
 │   ├── mentions-legales.html
 │   ├── mesure.html
+│   ├── mini-test-vrai-faux-quiz.html
+│   ├── mini-test-vrai-faux.html
+│   ├── mini-tests.html
 │   ├── module-cyberdepart.html
 │   ├── module.html
 │   ├── nis2.html
@@ -1682,7 +1714,6 @@
 │   ├── robots.txt
 │   ├── sante.html
 │   ├── scripts
-│   │   ├── apres-authentification.js
 │   │   ├── connexion.js
 │   │   ├── matomo.js
 │   │   ├── matomoTagManager.js
@@ -1747,4 +1778,4 @@
 ├── scripts
 │   └── get-node-version.sh
 └── shell.nix
-262 directories, 1487 files
+277 directories, 1616 files
