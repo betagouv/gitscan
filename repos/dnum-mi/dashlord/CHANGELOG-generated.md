@@ -1,15 +1,12 @@
-## Changelog : dashlord (30 derniers jours, au 29 août 2026)
+## Changelog : dashlord (30 derniers jours, au 07/09/2026)
 
 ### Résumé
-Ce mois a été marqué par une mise à jour massive et exhaustive du périmètre de surveillance. Le tableau de bord a été enrichi et actualisé avec de nouveaux points de contrôle couvrant l'ensemble des préfectures, les services de l'ANTS et divers portails ministériels, garantissant ainsi la fiabilité du suivi de sécurité et de performance des services de l'État.
+L'activité récente a été quasi exclusivement dédiée à l'élargissement et à l'actualisation du périmètre de surveillance. Le tableau de bord intègre désormais un nombre important de nouveaux services administratifs et sites institutionnels, garantissant un suivi continu de la sécurité et des performances de l'État.
 
 ### Évolutions fonctionnelles
-- **Actualisation du catalogue de surveillance** : Mise à jour de la liste des URLs suivies pour inclure ou corriger les accès aux services suivants :
-    - L'ensemble des sites des préfectures (régionales et départementales).
-    - Les services de l'ANTS (permis de conduire, immatriculation, passeport, identité et cartes nationales d'identité).
-    - Les portails de Service-Public.fr.
-    - Divers services du Ministère de l'Intérieur (élections, sécurité routière, gestion des permis, etc.).
-    - Les services liés aux territoires d'outre-mer.
+- **Extension du monitoring des services de l'ANTS** : Intégration et mise à jour des URLs relatives au permis de conduire, à l'immatriculation, ainsi qu'aux demandes de passeport et de carte d'identité.
+- **Mise à jour du suivi des préfectures** : Actualisation massive des URLs pour les sites des préfectures de régions et de départements.
+- **Élargissement du périmètre de l'État** : Ajout et mise à jour de nombreux services publics, notamment Service-Public.fr, la sécurité routière, la gestion des titres de séjour et les services de l'administration intérieure.
 
 ### Évolutions techniques
-- **Maintenance du reporting** : Exécution régulière de tâches de maintenance sur les workflows GitHub Actions pour assurer la mise à jour automatique des rapports de suivi.
+- **Maintenance du reporting** : Mise à jour des processus de génération de rapports via les workflows GitHub Actions.
