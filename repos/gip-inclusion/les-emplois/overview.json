@@ -1,18 +1,19 @@
 {
   "url": "https://github.com/gip-inclusion/les-emplois",
   "name": "les-emplois",
-  "description": "Service numérique de délivrance des PASS IAE et de mise en relation d'employeurs inclusifs avec des candidats éloignés de l'emploi via des prescripteurs ou en autoprescription.",
+  "description": "Service numérique de délivrance des PASS IAE et de mise en relation d'employeurs inclusifs avec des candidats éloignés de l'emploi via des tiers ou en autoprescription.",
   "language": "Python",
   "features": [
-    "Authentification & Accès",
-    "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
+    "Recherche & Filtres",
     "Statistiques & Rapports",
     "Formulaires & Démarches",
-    "Administration & Backoffice",
+    "Notifications & Alertes",
+    "Tableaux & Affichage",
+    "Authentification & Accès",
     "Gestion métier générale"
   ],
-  "audience": "Professionnels",
+  "audience": "Professionnels et Agents de l'Administration",
   "dependencies": [
     "Django",
     "PostgreSQL",
@@ -20,47 +21,48 @@
     "MinIO",
     "Redis",
     "GDAL",
-    "GEOS",
     "uv",
-    "psycopg",
-    "pytest"
+    "pytest",
+    "Metabase"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
-    "Django",
     "Docker & Conteneurs",
     "Authentification (composant)",
-    "Intégrations services externes",
-    "Tests",
+    "Templates & Moteurs de rendu",
+    "Scripts & Utilitaires",
     "ORM & Accès aux données"
   ],
   "auth": {
     "methods": [
-      "email-password",
       "oauth2",
-      "api-key",
       "mfa",
-      "jwt",
-      "session"
+      "sso"
     ],
     "providers": [
-      "ProConnect"
+      "ProConnect",
+      "FranceConnect"
     ]
   },
-  "tests": "pytest",
-  "lastActivity": "2026-08-28T00:00:00Z",
+  "tests": [
+    "pytest"
+  ],
+  "workflows": [
+    "CI/CD via GitHub Actions"
+  ],
+  "lastActivity": "2026-08-10T00:00:00Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
   "tags": [
     "Emploi, Social & Logement",
-    "Données & Open Data",
     "Python",
-    "Django & FastAPI",
     "Bases de données SQL",
     "Docker & Conteneurs",
+    "CI/CD & GitHub Actions",
+    "Design System & UI",
     "Accessibilité"
   ]
 }

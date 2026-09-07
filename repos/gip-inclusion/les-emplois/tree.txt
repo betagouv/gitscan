@@ -194,6 +194,7 @@
 │   │   │   ├── 0007_approval_approval_origin_siae_siret_regex.py
 │   │   │   ├── 0008_cancelledapproval_cancelledapproval_origin_siae_siret_regex.py
 │   │   │   ├── 0009_alter_approval_origin_sender_kind_and_more.py
+│   │   │   ├── 0010_approval_update_employee_record_watched_data_updated_at.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── notifications.py
@@ -440,6 +441,7 @@
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
 │   │   │   ├── 0002_employeerecord_ntt_and_more.py
+│   │   │   ├── 0003_employeerecord_watched_data_updated_at.py
 │   │   │   └── __init__.py
 │   │   ├── mocks
 │   │   │   ├── __init__.py
@@ -507,7 +509,6 @@
 │   │   │   ├── rdv_insertion__invitation_request.json
 │   │   │   ├── rdv_insertion__location.json
 │   │   │   ├── rdv_insertion__participation.json
-│   │   │   ├── recommendations__beneficiary.json
 │   │   │   ├── users__job_seeker_assignment.json
 │   │   │   ├── users__jobseeker_profile.json
 │   │   │   └── users__user.json
@@ -560,14 +561,6 @@
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   └── utils.py
-│   ├── gps
-│   │   ├── __init__.py
-│   │   ├── apps.py
-│   │   ├── migrations
-│   │   │   ├── 0001_initial.py
-│   │   │   ├── 0002_remove_followupgroup_beneficiary_and_more.py
-│   │   │   └── __init__.py
-│   │   └── models.py
 │   ├── insertion
 │   │   ├── __init__.py
 │   │   ├── admin.py
@@ -812,15 +805,12 @@
 │   │   └── models.py
 │   ├── recommendations
 │   │   ├── __init__.py
-│   │   ├── _mock_data.py
 │   │   ├── apps.py
-│   │   ├── enums.py
 │   │   ├── helpers.py
-│   │   ├── migrations
-│   │   │   ├── 0001_initial.py
-│   │   │   └── __init__.py
-│   │   ├── models.py
-│   │   └── services.py
+│   │   └── migrations
+│   │       ├── 0001_initial.py
+│   │       ├── 0002_delete_beneficiary.py
+│   │       └── __init__.py
 │   ├── scripts
 │   │   ├── __init__.py
 │   │   ├── management
@@ -962,7 +952,6 @@
 │   │   │   ├── modal_control.js
 │   │   │   ├── notifications_center.js
 │   │   │   ├── nps_popup.js
-│   │   │   ├── recommendations_map.js
 │   │   │   ├── siae_evaluations_sample_selection.js
 │   │   │   ├── sliding_search.js
 │   │   │   ├── sliding_tabs.js
@@ -1565,7 +1554,8 @@
 │   │   │   │   │   │   ├── structures.html
 │   │   │   │   │   │   └── top_filters.html
 │   │   │   │   │   ├── list_counter.html
-│   │   │   │   │   └── list_orientations.html
+│   │   │   │   │   ├── list_orientations.html
+│   │   │   │   │   └── tmp_banner.html
 │   │   │   │   ├── register_mobilization_event.html
 │   │   │   │   ├── structure_card_tab_description.html
 │   │   │   │   ├── structure_card_tab_services.html
@@ -1621,6 +1611,8 @@
 │   │   │   │   ├── detail_title_content.html
 │   │   │   │   ├── display_contact_info.html
 │   │   │   │   ├── eligibility_diagnosis.html
+│   │   │   │   ├── end_of_contract_card_banner.html
+│   │   │   │   ├── end_of_contracts_banner.html
 │   │   │   │   ├── job_seekers_filters
 │   │   │   │   │   ├── approval_state.html
 │   │   │   │   │   ├── end_of_journey.html
@@ -1710,19 +1702,6 @@
 │   │   │   └── includes
 │   │   │       ├── button.html
 │   │   │       └── description.html
-│   │   ├── recommendations
-│   │   │   ├── beneficiary_actions.html
-│   │   │   ├── beneficiary_base.html
-│   │   │   ├── beneficiary_profile.html
-│   │   │   ├── includes
-│   │   │   │   ├── list_reset_filters.html
-│   │   │   │   ├── list_results.html
-│   │   │   │   ├── nav_tabs.html
-│   │   │   │   ├── recommendation_card.html
-│   │   │   │   ├── recommendation_filters
-│   │   │   │   │   └── offcanvas.html
-│   │   │   │   └── top_filters.html
-│   │   │   └── list.html
 │   │   ├── releases
 │   │   │   └── list.html
 │   │   ├── search
@@ -1819,7 +1798,8 @@
 │   │   │   │   ├── list_item.html
 │   │   │   │   ├── recommendations_box.html
 │   │   │   │   ├── recommendations_modal.html
-│   │   │   │   └── siae_infos.html
+│   │   │   │   ├── siae_infos.html
+│   │   │   │   └── submit_proofs_box.html
 │   │   │   ├── institution_evaluated_siae_list.html
 │   │   │   ├── institution_evaluated_siae_notify_step1.html
 │   │   │   ├── institution_evaluated_siae_notify_step2.html
@@ -1981,6 +1961,7 @@
 │   │   ├── apps.py
 │   │   ├── asp.py
 │   │   ├── auth.py
+│   │   ├── brand.py
 │   │   ├── brevo.py
 │   │   ├── cache.py
 │   │   ├── choices.py
@@ -2063,6 +2044,7 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── approvals.py
 │   │   │   ├── badges.py
+│   │   │   ├── branding.py
 │   │   │   ├── buttons_form.py
 │   │   │   ├── components.py
 │   │   │   ├── datetime_filters.py
@@ -2243,16 +2225,6 @@
 │       │   ├── __init__.py
 │       │   ├── urls.py
 │       │   └── views.py
-│       ├── recommendations
-│       │   ├── __init__.py
-│       │   ├── enums.py
-│       │   ├── forms.py
-│       │   ├── urls.py
-│       │   └── views
-│       │       ├── __init__.py
-│       │       ├── beneficiary_views.py
-│       │       ├── common.py
-│       │       └── list_views.py
 │       ├── releases
 │       │   ├── __init__.py
 │       │   ├── urls.py
@@ -2640,7 +2612,6 @@
     │   └── tests.py
     ├── recommendations
     │   ├── __init__.py
-    │   ├── factories.py
     │   └── test_helpers.py
     ├── scripts
     │   ├── __init__.py
@@ -2723,6 +2694,7 @@
     │   ├── storage
     │   │   └── __init__.py
     │   ├── test_admin.py
+    │   ├── test_brand.py
     │   ├── test_brevo.py
     │   ├── test_cache.py
     │   ├── test_check_inconsistencies.py
@@ -2974,15 +2946,6 @@
         ├── rdv_insertion
         │   ├── __init__.py
         │   └── tests.py
-        ├── recommendations
-        │   ├── __init__.py
-        │   ├── __snapshots__
-        │   │   └── test_views.ambr
-        │   ├── conftest.py
-        │   ├── test_models.py
-        │   ├── test_nav.py
-        │   ├── test_services.py
-        │   └── test_views.py
         ├── releases
         │   ├── __init__.py
         │   └── tests.py
@@ -3035,4 +2998,4 @@
         └── welcoming_tour
             ├── __init__.py
             └── tests.py
-508 directories, 2529 files
+499 directories, 2501 files
