@@ -1,0 +1,70 @@
+2026-09-02T16:47:19+02:00 - 39c52fc - Nicolas : essai de test android avec un apk buildé.
+2026-09-02T16:47:19+02:00 - b599972 - Nicolas : make a target to generate result only so CI does not try to run a website and remove dead code on static website
+2026-09-02T16:47:19+02:00 - 03b9bba - Nicolas : on checkout une branche system-test de même nom que celle du repo source si elle existe, main sinon.
+2026-09-02T16:47:19+02:00 - 06986c4 - Nicolas : make justfile able to open github allure reports
+2026-09-02T16:47:19+02:00 - 516757d - Nicolas : retrait de l'attente de Scalingo, code mort depuis qu'on démarre après un déploiement en succès ou en l'absence de déploiement
+2026-09-02T16:47:19+02:00 - 4fc378f - Nicolas : ref_name ne sera utile que lorsque l'on souhaitera avoir des github action en build (staging et preprod) et en run (prod). code mort aujourd'hui
+2026-09-02T16:47:19+02:00 - 4b87849 - Nicolas : communication du nom de la branche en plus du numéro de PR
+2026-08-27T15:38:23+02:00 - 0e32b82 - Nicolas : Documente le découplage E2E/gate Scalingo par on: status dans l'ADR CI GitHub Actions
+2026-08-27T15:38:23+02:00 - 44f659a - Nicolas : Met à jour le sample notification-api.pull-request.yml pour le découplage e2e/Scalingo
+2026-08-27T15:38:23+02:00 - 562fed9 - Nicolas : Relève le timeout par défaut de wait-for-scalingo-status à 900s
+2026-08-27T15:38:23+02:00 - d8f7876 - Nicolas : Rend la restauration d'historique Allure tolérante à l'absence/l'expiration de l'artifact
+2026-08-27T15:38:23+02:00 - 8b926fe - Nicolas : Documente l'adoption d'Allure 3 dans l'ADR CI GitHub Actions
+2026-08-27T15:38:23+02:00 - 53fe4dc - Nicolas : Ajoute historique et isolation par PR au job Allure, promeut le cleanup en workflow actif
+2026-08-27T15:38:23+02:00 - cab27e9 - Nicolas : Enrichit les tests mobiles de métadonnées Allure (epic, story, tag)
+2026-08-27T15:38:23+02:00 - fe148a8 - Nicolas : Migre l'outillage Allure vers Allure 3 (allure-action attend summary.json à la racine)
+2026-08-27T15:38:23+02:00 - d47f773 - Nicolas : l'access code est contourné en posant le cookie que le prompt aurait mis si il fonctionnait
+2026-08-27T15:38:23+02:00 - 892bb9b - Nicolas : l'access code est toujours flaky, je met des retry
+2026-08-27T15:38:23+02:00 - 545c8b7 - Nicolas : l'access code est toujours flaky, je ralenti les ré-essais
+2026-08-27T15:38:23+02:00 - 539c6ff - Nicolas : home page testait ce qu'il y a après les # en incluant le #...
+2026-08-27T15:38:23+02:00 - b18838d - Nicolas : Ne conditionne plus l'accueil au texte de bienvenue "Bonjour ..."
+2026-08-27T15:38:23+02:00 - d023c39 - Nicolas : Adapte les sélecteurs de la tuile "Suivi" : lien devenu bouton
+2026-08-27T15:38:23+02:00 - e8e6b6e - Nicolas : Désactive temporairement scrollIntoView sur le formulaire credentials FCP-LOW
+2026-08-27T15:38:23+02:00 - 72e30e7 - Nicolas : Tolère l'apostrophe typographique dans le matching de texte FR
+2026-08-27T15:38:23+02:00 - bd9bf57 - Nicolas : quelques refacto
+2026-08-27T15:38:23+02:00 - b45ee18 - Nicolas : quelques refacto
+2026-08-27T15:38:23+02:00 - a9ce3e0 - Nicolas : aligner la fenête chrome headless sur la taille de la SPA
+2026-08-27T15:38:23+02:00 - 608d99c - Nicolas : amélioration de logs.
+2026-08-27T15:38:23+02:00 - b90c261 - Nicolas : Pointe la bonne infra en webapp aussi...
+2026-08-27T15:38:23+02:00 - f6fb306 - Nicolas : target just pour règler un bug de téléchargement de chromedriver sur mac
+2026-08-27T15:38:23+02:00 - 247491c - Nicolas : retrait ou échappeemnt des \(\) et des quotes non matchées dans les echo du shell
+2026-08-27T15:38:23+02:00 - 56c3783 - Nicolas : retrait ou échappeemnt des \(\) dans les echo du shell
+2026-08-27T15:38:23+02:00 - 77afdc5 - Nicolas : config to skip scalingo on manual trigger
+2026-08-27T15:38:23+02:00 - 8a04417 - Nicolas : give debug command in logs.
+2026-08-27T15:38:23+02:00 - f17647c - Nicolas : give debug command in logs.
+2026-08-27T15:38:23+02:00 - ebbfbf3 - Nicolas : Do not fail when no deployements have been triggered
+2026-08-21T16:32:52+02:00 - 483dc97 - Nicolas : utiliser l'api github de voir le status du check de déploiement scalingo au lieu de demander à Scalingo
+2026-08-21T16:32:52+02:00 - dbabd90 - Nicolas : eviter les faux positifs quand on vérifie qu'on est sur la page d'accueil
+2026-08-21T16:32:52+02:00 - 3b09da3 - Nicolas : re handle access code as it seem to appear late
+2026-08-21T16:32:52+02:00 - 7b50910 - Nicolas : re handle access code as it seem to appear late
+2026-08-21T16:32:52+02:00 - 3ad8859 - Nicolas : re handle access code as it seem to come again.
+2026-08-21T16:32:52+02:00 - 9b1d528 - Nicolas : make the test suite to run configurable
+2026-08-21T16:32:52+02:00 - d5fa184 - Nicolas : run tests on branch's environnement
+2026-08-21T16:32:52+02:00 - ac9c52d - Nicolas : try to report
+2026-08-21T16:32:52+02:00 - 95396f1 - Nicolas : try to report
+2026-08-21T16:32:52+02:00 - 2c2eacb - Nicolas : try to report
+2026-08-21T16:32:52+02:00 - 3ba9ba2 - Nicolas : make tests quick, now they work. and try to publish their results.
+2026-08-21T16:32:52+02:00 - 831ffea - Nicolas : wire more secrets
+2026-08-21T16:32:52+02:00 - 2f4343a - Nicolas : wire more secrets
+2026-08-21T16:32:52+02:00 - 5eea5a2 - Nicolas : wire secrets
+2026-08-21T16:32:52+02:00 - e78abc9 - Nicolas : monte la version des actions github
+2026-08-21T16:32:52+02:00 - 903383f - Nicolas : utilise les définitions de users
+2026-08-21T16:32:52+02:00 - a8f0d64 - Nicolas : utilise un nom de branche donné en paramètre
+2026-08-21T16:32:52+02:00 - 4ee7481 - Nicolas : try to run a webapp test suite
+2026-08-20T14:56:42+02:00 - e5567ad - Nicolas : make the test suite to run configurable
+2026-08-20T14:56:42+02:00 - 7f20350 - Nicolas : run tests on branch's environnement
+2026-08-20T14:56:42+02:00 - 9d7c768 - Nicolas : try to report
+2026-08-20T14:56:42+02:00 - 9dc4d33 - Nicolas : try to report
+2026-08-20T14:56:42+02:00 - 8e3bdf8 - Nicolas : try to report
+2026-08-20T14:56:42+02:00 - 7f1b245 - Nicolas : make tests quick, now they work. and try to publish their results.
+2026-08-20T14:56:42+02:00 - 8b92dd5 - Nicolas : wire more secrets
+2026-08-20T14:56:42+02:00 - 8c87249 - Nicolas : wire more secrets
+2026-08-20T14:56:42+02:00 - 940ba10 - Nicolas : Fix sélecteur FranceConnect webapp
+2026-08-20T14:56:42+02:00 - 0309d18 - Nicolas : webapp: gestion du popup de code d'accès
+2026-08-20T14:56:42+02:00 - 6931015 - Nicolas : wire secrets
+2026-08-20T14:56:42+02:00 - ee2219d - Nicolas : monte la version des actions github
+2026-08-20T14:56:42+02:00 - c451c05 - Nicolas : utilise les définitions de users
+2026-08-20T14:56:42+02:00 - 2cfb69f - Nicolas : utilise un nom de branche donné en paramètre
+2026-08-20T14:56:42+02:00 - cf99ace - Nicolas : try to run a webapp test suite
+2026-08-20T14:56:42+02:00 - e734c6d - Nicolas : try to run a webapp test suite
+2026-08-18T11:50:16+02:00 - 16642b5 - Nicolas : initial commit before going public
