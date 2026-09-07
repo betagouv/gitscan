@@ -167,7 +167,6 @@
 │   │   │   │   │   │   │   ├── login.fixture.ts
 │   │   │   │   │   │   │   └── verification-codes.fixture.ts
 │   │   │   │   │   │   ├── login.spec.ts
-│   │   │   │   │   │   ├── logout.spec.ts
 │   │   │   │   │   │   └── reconcile-simulations-after-login.spec.ts
 │   │   │   │   │   ├── authentication.controller.ts
 │   │   │   │   │   ├── authentication.service.ts
@@ -379,6 +378,7 @@
 │   │   │   │   │   └── sync-notion-actions.spec.ts
 │   │   │   │   ├── cleanup-expired-tokens.ts
 │   │   │   │   ├── compute-poll-stats.ts
+│   │   │   │   ├── ensure-sedd-event.ts
 │   │   │   │   ├── helpers
 │   │   │   │   │   ├── __tests__
 │   │   │   │   │   │   ├── convert-notion-rich-text-to-md.spec.ts
@@ -386,6 +386,7 @@
 │   │   │   │   │   └── convert-notion-rich-text-to-md.ts
 │   │   │   │   ├── recover-matomo-stats.ts
 │   │   │   │   ├── recover-newsletter-stats.ts
+│   │   │   │   ├── refresh-event-computation.ts
 │   │   │   │   ├── sync-brevo-contacts.ts
 │   │   │   │   └── sync-notion-actions.ts
 │   │   │   ├── logger.ts
@@ -988,7 +989,8 @@
 │       │   │   │   │   │   │   └── BlogHero.tsx
 │       │   │   │   │   │   ├── layout.tsx
 │       │   │   │   │   │   └── page.tsx
-│       │   │   │   │   └── layout.tsx
+│       │   │   │   │   ├── layout.tsx
+│       │   │   │   │   └── page.tsx
 │       │   │   │   ├── [...notFound]
 │       │   │   │   │   └── page.tsx
 │       │   │   │   ├── _components
@@ -1142,7 +1144,6 @@
 │       │   │   │   │   │   └── NewsletterSuccessMessage.tsx
 │       │   │   │   │   ├── layout.tsx
 │       │   │   │   │   └── page.tsx
-│       │   │   │   ├── page.tsx
 │       │   │   │   ├── partenaire
 │       │   │   │   │   ├── __tests__
 │       │   │   │   │   │   └── PartnerPage.test.tsx
@@ -1897,7 +1898,6 @@
 │       │   │   │   └── getMetadataObject.ts
 │       │   │   ├── modelFetching
 │       │   │   │   ├── getCachedRules.ts
-│       │   │   │   ├── getInitialExtendedSituation.ts
 │       │   │   │   ├── getPersonas.ts
 │       │   │   │   ├── getRules.ts
 │       │   │   │   ├── importPreviewFile.ts
@@ -1940,12 +1940,12 @@
 │       │   │   │   │   ├── simulationResult.ts
 │       │   │   │   │   ├── simulations.ts
 │       │   │   │   │   └── utils
-│       │   │   │   │       ├── getTendency.ts
-│       │   │   │   │       └── setDefaultExtendedSituation.ts
+│       │   │   │   │       └── getTendency.ts
 │       │   │   │   ├── proxy
 │       │   │   │   │   ├── auth.middleware.ts
 │       │   │   │   │   ├── feature-flags.middleware.ts
 │       │   │   │   │   ├── migrate-legacy-sessions.middleware.ts
+│       │   │   │   │   ├── purge-legacy-cookie-domains.middleware.ts
 │       │   │   │   │   ├── region.middleware.ts
 │       │   │   │   │   └── types.ts
 │       │   │   │   └── revalidate.ts
@@ -2425,6 +2425,8 @@
 │       │   │   │   └── migration.sql
 │       │   │   ├── 20260622120000_anon_user_remove_name_add_simulations
 │       │   │   │   └── migration.sql
+│       │   │   ├── 20260702000000_add_event_and_event_computation
+│       │   │   │   └── migration.sql
 │       │   │   ├── 20260716120000_add_action_translation
 │       │   │   │   └── migration.sql
 │       │   │   ├── 20260723093738_add_action_translation_slug_index
@@ -2436,6 +2438,10 @@
 │       │   │   ├── 20260821114944_add_action_translation_description
 │       │   │   │   └── migration.sql
 │       │   │   ├── 20260824134657_add_foreign_key_for_verified_user
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20260831155448_drop_simulation_state
+│       │   │   │   └── migration.sql
+│       │   │   ├── 20260831155624_remove_extended_situation
 │       │   │   │   └── migration.sql
 │       │   │   └── migration_lock.toml
 │       │   ├── schema
@@ -2535,11 +2541,39 @@
 │       │   │   │   └── types
 │       │   │   │       ├── refresh-token.ts
 │       │   │   │       └── session.ts
+│       │   │   ├── events
+│       │   │   │   ├── constants
+│       │   │   │   │   ├── podium.ts
+│       │   │   │   │   └── sedd-event.ts
+│       │   │   │   ├── factories
+│       │   │   │   │   ├── event.factory.ts
+│       │   │   │   │   └── index.ts
+│       │   │   │   ├── helpers
+│       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   └── podium.spec.ts
+│       │   │   │   │   └── podium.ts
+│       │   │   │   ├── repositories
+│       │   │   │   │   ├── event.mapper.ts
+│       │   │   │   │   └── event.repository.ts
+│       │   │   │   ├── services
+│       │   │   │   │   ├── __tests__
+│       │   │   │   │   │   ├── ensure-sedd-event.service.spec.ts
+│       │   │   │   │   │   └── get-event-info.service.spec.ts
+│       │   │   │   │   ├── ensure-sedd-event.service.ts
+│       │   │   │   │   └── get-event-info.service.ts
+│       │   │   │   └── types
+│       │   │   │       ├── event-info.ts
+│       │   │   │       └── podium.ts
 │       │   │   ├── geo
 │       │   │   │   └── types
 │       │   │   │       └── language.ts
 │       │   │   ├── logger
 │       │   │   │   └── index.ts
+│       │   │   ├── organisations
+│       │   │   │   └── factories
+│       │   │   │       ├── index.ts
+│       │   │   │       ├── organisation.factory.ts
+│       │   │   │       └── poll.factory.ts
 │       │   │   ├── region
 │       │   │   │   └── region.schema.ts
 │       │   │   ├── simulation-computation
@@ -2617,4 +2651,4 @@
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 └── tsconfig.json
-675 directories, 1989 files
+689 directories, 2009 files
