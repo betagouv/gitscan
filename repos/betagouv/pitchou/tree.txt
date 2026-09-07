@@ -41,6 +41,7 @@
 │   │   │   │   │   ├── adminEspeces.ts
 │   │   │   │   │   ├── adminEvenements.ts
 │   │   │   │   │   └── errors.ts
+│   │   │   │   ├── activiteIcon.test.ts
 │   │   │   │   ├── activiteReferentiel.ts
 │   │   │   │   ├── components
 │   │   │   │   │   ├── ActiviteIcon.svelte
@@ -148,10 +149,10 @@
 │   │   │   │   │   │   │       └── [fichierId]
 │   │   │   │   │   │   │           └── +server.ts
 │   │   │   │   │   │   ├── dossierCreationUpload.ts
-│   │   │   │   │   │   ├── export-csv
+│   │   │   │   │   │   ├── export-xlsx
 │   │   │   │   │   │   │   ├── +server.ts
-│   │   │   │   │   │   │   ├── format.test.ts
-│   │   │   │   │   │   │   └── format.ts
+│   │   │   │   │   │   │   ├── workbook.test.ts
+│   │   │   │   │   │   │   └── workbook.ts
 │   │   │   │   │   │   └── minimal
 │   │   │   │   │   │       └── +server.ts
 │   │   │   │   │   ├── especes-protegees
@@ -351,6 +352,10 @@
 │   │   │   │   │   ├── EvenementsFilterPanel.svelte
 │   │   │   │   │   ├── ListEvenements.svelte
 │   │   │   │   │   └── TableEvenements.svelte
+│   │   │   │   ├── mails
+│   │   │   │   │   ├── +page.server.ts
+│   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   └── page.test.ts
 │   │   │   │   └── tech
 │   │   │   │       ├── +page.svelte
 │   │   │   │       ├── SyncDemarcheNumeriqueSection
@@ -388,7 +393,8 @@
 │       │   │   │   ├── CartographieProjet.svelte
 │       │   │   │   ├── CartographieProjet.svelte.test.ts
 │       │   │   │   ├── DSFR
-│       │   │   │   │   └── ModalButton.svelte
+│       │   │   │   │   ├── ModalButton.svelte
+│       │   │   │   │   └── Pictogramme.svelte
 │       │   │   │   ├── DossierFollowerAssignment
 │       │   │   │   │   ├── AssignDossierFollowersFooter.svelte
 │       │   │   │   │   ├── AssignDossierFollowersModal.svelte
@@ -396,6 +402,9 @@
 │       │   │   │   │   ├── DossierActionsMenu.svelte
 │       │   │   │   │   └── DossierFollowerCombobox.svelte
 │       │   │   │   ├── DownloadButton.svelte
+│       │   │   │   ├── EmailRichTextEditor.svelte
+│       │   │   │   ├── EmailRichTextEditor.svelte.test.ts
+│       │   │   │   ├── EmailToolbarIcon.svelte
 │       │   │   │   ├── EspecesProtegeesGroupedByTypeImpact.svelte
 │       │   │   │   ├── ListDossiers
 │       │   │   │   │   ├── BadgePhase.svelte
@@ -536,10 +545,15 @@
 │       │       │   │   └── +server.ts
 │       │       │   ├── stats-publiques
 │       │       │   │   └── +server.ts
-│       │       │   └── taxref
-│       │       │       ├── +server.ts
-│       │       │       └── filtres
-│       │       │           └── +server.ts
+│       │       │   ├── taxref
+│       │       │   │   ├── +server.ts
+│       │       │   │   └── filtres
+│       │       │   │       └── +server.ts
+│       │       │   └── webhooks
+│       │       │       └── brevo
+│       │       │           ├── +server.ts
+│       │       │           ├── brevoWebhook.test.ts
+│       │       │           └── environment.test.ts
 │       │       ├── attachment-autre
 │       │       │   ├── +server.ts
 │       │       │   └── fichier
@@ -607,6 +621,22 @@
 │       │       │       │   │   ├── AvisExpertFields.svelte
 │       │       │       │   │   ├── FormAvisExpert.svelte
 │       │       │       │   │   └── FormAvisExpert.svelte.test.ts
+│       │       │       │   ├── CnpnAttachmentPicker.svelte
+│       │       │       │   ├── CnpnCcPicker.svelte
+│       │       │       │   ├── CnpnCcPicker.svelte.test.ts
+│       │       │       │   ├── CnpnCcRecipients.svelte
+│       │       │       │   ├── CnpnEmailForm.svelte
+│       │       │       │   ├── CnpnEmailLoadingSkeleton.svelte
+│       │       │       │   ├── CnpnEmailModal
+│       │       │       │   │   ├── CnpnEmailSuccess.svelte
+│       │       │       │   │   ├── countdown.svelte.test.ts
+│       │       │       │   │   ├── fixtures.ts
+│       │       │       │   │   ├── setup.ts
+│       │       │       │   │   └── submission.svelte.ts
+│       │       │       │   ├── CnpnEmailModal.svelte
+│       │       │       │   ├── CnpnEmailModal.svelte.test.ts
+│       │       │       │   ├── CnpnEmailModalFooter.svelte
+│       │       │       │   ├── CnpnEmailModalHeader.svelte
 │       │       │       │   ├── Controles
 │       │       │       │   │   ├── CardDecisionAdministrative.svelte
 │       │       │       │   │   ├── DecisionAdministrative.svelte
@@ -667,14 +697,22 @@
 │       │       │       │   ├── anomaliesFichierEspeces.ts
 │       │       │       │   ├── avisExpert.test.ts
 │       │       │       │   ├── avisExpert.ts
+│       │       │       │   ├── cnpnEmailDraft.test.ts
+│       │       │       │   ├── cnpnEmailDraft.ts
 │       │       │       │   ├── displayValues.ts
 │       │       │       │   ├── dossierPorteurDeProjet.ts
 │       │       │       │   ├── dossierTabs.ts
 │       │       │       │   ├── otherAttachment.ts
 │       │       │       │   ├── ouvrirModaleAjouterPieceJointe.svelte.test.ts
-│       │       │       │   └── ouvrirModaleAjouterPieceJointe.testHelpers.ts
+│       │       │       │   ├── ouvrirModaleAjouterPieceJointe.testHelpers.ts
+│       │       │       │   ├── piecesJointes.test.ts
+│       │       │       │   ├── piecesJointes.ts
+│       │       │       │   └── sendCnpnEmail.ts
 │       │       │       ├── Dossier.svelte
 │       │       │       ├── TagResultatControle.svelte
+│       │       │       ├── cnpn-email
+│       │       │       │   ├── +server.ts
+│       │       │       │   └── request.ts
 │       │       │       ├── followers
 │       │       │       │   └── +server.ts
 │       │       │       └── messages
@@ -795,6 +833,8 @@
 │       │           ├── +page.ts
 │       │           └── TousLesDossiers.svelte
 │       ├── static
+│       │   ├── artwork
+│       │   │   └── mail-send.svg
 │       │   ├── declaration-accessibilite_2025-07-07.html
 │       │   ├── favicon
 │       │   │   ├── android-chrome-192x192.png
@@ -840,6 +880,7 @@
 │       │   ├── helpers
 │       │   │   └── reactive.svelte.ts
 │       │   ├── integration
+│       │   │   ├── activite-alluvionnaires.test.ts
 │       │   │   ├── admin-dossier-creation.test.ts
 │       │   │   ├── admin-dossier-especes-impactees.test.ts
 │       │   │   ├── admin-dossier-field-parity.test.ts
@@ -852,6 +893,11 @@
 │       │   │   ├── caps.test.ts
 │       │   │   ├── controle-notification-http.test.ts
 │       │   │   ├── declaration-accessibilite.test.ts
+│       │   │   ├── dossier-cnpn-email
+│       │   │   │   ├── persistence.test.ts
+│       │   │   │   ├── setup.ts
+│       │   │   │   └── webhooks.test.ts
+│       │   │   ├── dossier-cnpn-email.test.ts
 │       │   │   ├── dossier-especes-impactees.test.ts
 │       │   │   ├── dossier-followers-http.test.ts
 │       │   │   ├── dossier-http.test.ts
@@ -1582,6 +1628,8 @@
 │   │   │   ├── DateToJSON.ts
 │   │   │   ├── activiteCodes.ts
 │   │   │   ├── constants.ts
+│   │   │   ├── createWorkbook.test.ts
+│   │   │   ├── createWorkbook.ts
 │   │   │   ├── decisionAdministrative.ts
 │   │   │   ├── departements.test.ts
 │   │   │   ├── departements.ts
@@ -1728,7 +1776,11 @@
 │   │   │   ├── 20260819100000_create-table-changelog.ts
 │   │   │   ├── 20260819130000_create-tables-activite-referentiel.ts
 │   │   │   ├── 20260819220000_create-table-activite-groupe.ts
-│   │   │   └── 20260820120000_renommer-phase-etude-recevabilite.ts
+│   │   │   ├── 20260820120000_renommer-phase-etude-recevabilite.ts
+│   │   │   ├── 20260901120000_add-dossier-cnpn-email-sent-event.ts
+│   │   │   ├── 20260902173000_add-cnpn-email-delivery-tracking.ts
+│   │   │   ├── 20260904130000_add-cnpn-email-read-receipt-tracking.ts
+│   │   │   └── 20260906120000_add-carrieres-alluvionnaires-activite.ts
 │   │   ├── package.json
 │   │   ├── referentielTypeImpactMethodeMoyenDePoursuite.test.ts
 │   │   ├── scripts
@@ -1791,6 +1843,10 @@
 │   │   │   ├── bdcStatut.ts
 │   │   │   ├── changelogMedia.test.ts
 │   │   │   ├── changelogMedia.ts
+│   │   │   ├── cnpnEmail.test.ts
+│   │   │   ├── cnpnEmail.ts
+│   │   │   ├── cnpnEmailBrevo.test.ts
+│   │   │   ├── cnpnEmailBrevo.ts
 │   │   │   ├── database
 │   │   │   │   ├── aarri
 │   │   │   │   │   ├── acquis.ts
@@ -1849,6 +1905,10 @@
 │   │   │   │   ├── dossier_admin_files.ts
 │   │   │   │   ├── dossier_admin_list.ts
 │   │   │   │   ├── dossier_admin_relations.ts
+│   │   │   │   ├── dossier_cnpn_email
+│   │   │   │   │   ├── brevo.ts
+│   │   │   │   │   └── files.ts
+│   │   │   │   ├── dossier_cnpn_email.ts
 │   │   │   │   ├── dossier_search.ts
 │   │   │   │   ├── edge_dossier__fichier_pieces_jointes_petitionnaire.ts
 │   │   │   │   ├── especes_impactees.ts
@@ -1900,6 +1960,8 @@
 │   │   │   │   │   └── mutations.ts
 │   │   │   │   ├── graphQLqueries.ts
 │   │   │   │   └── queryGraphQL.ts
+│   │   │   ├── emailEnvironment.test.ts
+│   │   │   ├── emails.test.ts
 │   │   │   ├── emails.ts
 │   │   │   ├── especeProtegee.ts
 │   │   │   ├── especeProtegeeModification.ts
@@ -1930,6 +1992,7 @@
 │   │   │   ├── GeoAPI.ts
 │   │   │   ├── apiPitchou
 │   │   │   │   ├── aarri.ts
+│   │   │   │   ├── cnpnEmail.ts
 │   │   │   │   ├── dossierBase.ts
 │   │   │   │   ├── dossierDetails.ts
 │   │   │   │   └── stats.ts
@@ -2027,6 +2090,7 @@
 │   │   │   │       ├── amenagements-fonciers.svg
 │   │   │   │       ├── autre.svg
 │   │   │   │       ├── batiments-services-publics.svg
+│   │   │   │       ├── carrieres-alluvionnaires.svg
 │   │   │   │       ├── carrieres.svg
 │   │   │   │       ├── conservation-especes.svg
 │   │   │   │       ├── defense-contre-la-mer.svg
@@ -2127,4 +2191,4 @@
 │   └── tsconfig.json
 ├── tsconfig.base.json
 └── tsconfig.json
-285 directories, 1885 files
+293 directories, 1941 files

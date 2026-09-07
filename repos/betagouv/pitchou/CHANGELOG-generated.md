@@ -1,33 +1,27 @@
-## Changelog : pitchou (30 derniers jours, au 27 août 2026)
+## Changelog : pitchou (30 derniers jours, au 06/09/2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se sont concentrées sur l'amélioration de la gestion des espèces protégées et de leurs impacts, tant au niveau de l'interface utilisateur que de la fiabilité des données. Les capacités d'administration ont été renforcées pour faciliter les revues annuelles et la gestion des dossiers, tandis que la génération de documents a été simplifiée et sécurisée.
+Ce mois-ci, Pitchou a principalement évolué pour offrir de meilleurs outils d'administration, notamment via des capacités d'exportation de données enrichies et la possibilité de déclencher manuellement les synchronisations. La gestion des espèces protégées a également été fluidifiée grâce à des améliorations de l'interface utilisateur et une meilleure cohérence dans l'affichage des anomalies.
 
 ### Évolutions fonctionnelles
-- **Gestion des espèces et impacts** : Amélioration de l'interface utilisateur pour les espèces impactées et ajout de liens directs vers le référentiel des types d'impact.
-- **Suivi des anomalies** : Harmonisation de l'affichage des anomalies entre les logs de synchronisation et l'onglet projet pour une meilleure cohérence.
-- **Gestion documentaire** : 
-    - Possibilité de générer plusieurs fichiers simultanément [#678](https://github.com/betagouv/pitchou/issues/678).
-    - Clarification des libellés dans les modèles de documents [#677](https://github.com/betagouv/pitchou/issues/677).
-    - Correction permettant la génération de documents même sans espèces listées [#676](https://github.com/betagouv/pitchou/issues/676).
-- **Administration et dossiers** :
-    - Ajout de catégories d'activités [#688](https://github.com/betagouv/pitchou/issues/688).
-    - Possibilité d'assigner des "followers" à un dossier [#671](https://github.com/betagouv/pitchou/issues/671).
-    - Suivi de la source explicite des dossiers [#679](https://github.com/betagouv/pitchou/issues/679).
-    - Nouvel outil permettant aux administrateurs de télécharger les données des dossiers pour les revues annuelles [#684](https://github.com/betagouv/pitchou/issues/684).
-    - Possibilité de créer et mettre à jour des dossiers depuis l'extérieur de la DN [#669](https://github.com/betagouv/pitchou/issues/669).
-    - Possibilité de déclencher manuellement la synchronisation DN [#687](https://github.com/betagouv/pitchou/issues/687).
-- **Corrections** : Rectification de l'affichage de la zone cadastral sur la carte du projet [#674](https://github.com/betagouv/pitchou/issues/674).
+- **Administration & Dossiers** :
+    - Amélioration des capacités d'exportation : téléchargement des tableaux d'avis d'experts, inclusion de la date de phase et possibilité d'exporter l'historique complet des dossiers (au lieu de l'année en cours) [#684](https://github.com/betagouv/pitchou/issues/684), [#689](https://github.com/betagouv/pitchou/issues/689).
+    - Ajout de la possibilité de déclencher manuellement la synchronisation avec Démarche Numérique [#687](https://github.com/betagouv/pitchou/issues/687).
+- **Gestion des espèces & Projets** :
+    - Amélioration de l'interface utilisateur pour la gestion des espèces impactées et la visualisation de leurs anomalies [#691](https://github.com/betagouv/pitchou/issues/691).
+    - Meilleure cohérence de l'affichage des anomalies entre les logs de synchronisation et l'interface du projet.
+    - Ajout de liens vers le référentiel des types d'impact pour faciliter la consultation lors de la saisie.
+- **Nouvelles fonctionnalités** :
+    - Ajout de l'activité "carrière alluviale" [#696](https://github.com/betagouv/pitchou/issues/696) et de nouvelles catégories d'activités [#688](https://github.com/betagouv/pitchou/issues/688).
+    - Envoi d'e-mails CNPN directement depuis l'application instructeur [#692](https://github.com/betagouv/pitchou/issues/692).
 
 ### Évolutions techniques
-- **Fiabilisation des données** : Migration du référentiel des types d'impact vers la base de données (au lieu d'un fichier externe) pour plus de robustesse [#670](https://github.com/betagouv/pitchou/issues/670) et [#691](https://github.com/betagouv/pitchou/issues/691).
-- **Automatisation** : Peuplement automatique de la base de données avec les données des espèces impactées lors de la création de nouveaux fichiers [#683](https://github.com/betagouv/pitchou/issues/683).
-- **Refactoring** : Renommage de la phase de recevabilité pour plus de clarté [#690](https://github.com/betagouv/pitchou/issues/690).
-- **Observabilité** : Ajout d'un déclencheur de test Sentry pour l'administration [#675](https://github.com/betagouv/pitchou/issues/675).
+- **Données & Architecture** :
+    - Optimisation de la gestion des données d'impact des espèces en s'appuyant exclusivement sur les données de la base de données [#691](https://github.com/betagouv/pitchou/issues/691).
+    - Automatisation du peuplement de la base de données pour les fichiers d'espèces impactées lors de leur création [#683](https://github.com/betagouv/pitchou/issues/683).
+    - Refactorisation du nommage de la phase de recevabilité pour plus de clarté [#690](https://github.com/betagouv/pitchou/issues/690).
 
 ### Autres changements
-- **Documentation** : Ajout d'une ADR (Architecture Decision Record) détaillant la structuration des espèces protégées en base de données.
-- **Maintenance du code** : 
-    - Mise en place d'un changelog interne [#686](https://github.com/betagouv/pitchou/issues/686).
-    - Suppression des outils d'import obsolètes [#682](https://github.com/betagouv/pitchou/issues/682).
-    - Application d'une règle de limitation de taille des fichiers (200 lignes) pour améliorer la lisibilité [#680](https://github.com/betagouv/pitchou/issues/680).
+- Mise en place d'un système de changelog pour le projet [#686](https://github.com/betagouv/pitchou/issues/686).
+- Documentation : ajout de la première ADR (Architecture Decision Record) concernant la structuration des données d'espèces protégées.
+- Maintenance : suppression d'outils obsolètes [#682](https://github.com/betagouv/pitchou/issues/682) et application de nouvelles règles de qualité de code (limite de 200 lignes par fichier) [#680](https://github.com/betagouv/pitchou/issues/680).
