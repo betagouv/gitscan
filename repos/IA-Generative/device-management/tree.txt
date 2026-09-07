@@ -16,6 +16,7 @@
 │   └── versions
 │       ├── 001_initial_schema.py
 │       ├── 002_extension_update_metadata.py
+│       ├── 003_experiment_versions.py
 │       ├── 003_runtime_config.py
 │       └── 004_llm_quota.py
 ├── alembic.ini
@@ -99,9 +100,12 @@
 │   ├── s3.py
 │   ├── services
 │   │   ├── __init__.py
+│   │   ├── binaries.py
 │   │   ├── crypto.py
 │   │   ├── db.py
-│   │   └── health.py
+│   │   ├── health.py
+│   │   ├── parc_export.py
+│   │   └── parc_mapping.py
 │   ├── settings.py
 │   └── worker_main.py
 ├── config
@@ -184,6 +188,9 @@
 │   │   │   │   └── 62-llm-proxy-hpa.yaml
 │   │   │   └── secrets
 │   │   │       └── all-secrets.yaml
+│   │   ├── buildkit
+│   │   │   ├── README.md
+│   │   │   └── buildkit-build-job.yaml
 │   │   └── overlays
 │   │       ├── dgx
 │   │       │   ├── env-secrets.yaml.example
@@ -230,6 +237,8 @@
 │   │   ├── adr-0001-vue-densemble.md
 │   │   ├── adr-0002-proxy-llm-relais.md
 │   │   ├── adr-0003-modele-embedding.md
+│   │   ├── adr-0004-branches-experimentation.md
+│   │   ├── adr-0005-build-in-cluster.md
 │   │   ├── adr-dgx-deployment.md
 │   │   └── adr-product-architecture.md
 │   ├── operations
@@ -247,8 +256,8 @@
 │       ├── mirai-catalog-snippet.html
 │       ├── mirai-integration-README.md
 │       ├── packaging-guide.md
-│       ├── plugin-dm-protocol-update-features.md
-│       └── plugin-integration-2-4-5.md
+│       └── plugin-dm-protocol-update-features.md
+├── hygiene-log.md
 ├── keycloak
 │   ├── keycloak-bootstrap-client-example.json
 │   └── pkce-test.sh
@@ -258,6 +267,7 @@
 ├── requirements-dev.txt
 ├── requirements.txt
 ├── scripts
+│   ├── build-incluster.sh
 │   ├── build-k8s.sh
 │   ├── build-local.sh
 │   ├── dgx-deploy
@@ -269,6 +279,7 @@
 │   │   └── dumb-deploy.sh
 │   ├── dm4-slug-migration.sql
 │   ├── e2e-feature-flags-matrix.sh
+│   ├── e2e-parallel-versions.py
 │   ├── k8s
 │   │   ├── create-registry-secret.sh
 │   │   ├── deploy.sh
@@ -280,7 +291,16 @@
 │   ├── reset-from-scratch.sh
 │   ├── setup-wireguard.sh
 │   ├── test-all.sh
-│   └── test-scaleway-key.py
+│   ├── test-scaleway-key.py
+│   └── validation
+│       └── issue5
+│           ├── README.md
+│           ├── banc.yaml
+│           ├── carryover.py
+│           ├── concordance.py
+│           ├── docker-compose.repro.yml
+│           ├── multi_replicas.py
+│           └── scenario.py
 └── tests
     ├── conftest.py
     ├── llm_utils.py
@@ -289,11 +309,15 @@
     ├── test_audit_plugin.py
     ├── test_binaries_storage.py
     ├── test_bootstrap_urls.py
+    ├── test_campaign_plugin_scoping.py
     ├── test_dashboard_telemetry.py
     ├── test_dashboard_version.py
     ├── test_e2e_deployment.py
     ├── test_enriched_config.py
     ├── test_enroll.py
+    ├── test_experiment_campaigns_pg.py
+    ├── test_experiment_versions.py
+    ├── test_extract_version.py
     ├── test_feature_flags_v2.py
     ├── test_llm_config_override.py
     ├── test_llm_pipeline.py
@@ -305,6 +329,7 @@
     ├── test_observability.py
     ├── test_observability_request_id.py
     ├── test_ops_metrics.py
+    ├── test_parc_export.py
     ├── test_pathsafe.py
     ├── test_plugin_installations_fk.py
     ├── test_post_deploy.py
@@ -321,4 +346,4 @@
     ├── test_security_suggest.py
     ├── test_telemetry.py
     └── test_worker_heartbeat.py
-45 directories, 278 files
+48 directories, 300 files

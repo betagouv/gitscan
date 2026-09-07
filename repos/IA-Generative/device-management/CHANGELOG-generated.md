@@ -1,32 +1,28 @@
-## Changelog : device-management (30 derniers jours, au 15 juillet 2026)
+## Changelog : device-management (30 derniers jours, au 06/09/2026)
 
 ### Résumé
-Les dernières mises à jour de device-management se concentrent sur l'amélioration de la gestion des configurations, l'ajout de fonctionnalités de proxy LLM, l'amélioration de l'observabilité et de la sécurité, ainsi que la préparation du déploiement cloud-native. Plusieurs correctifs ont été apportés pour améliorer la stabilité et la fiabilité du système.
+Cette période a été marquée par un renforcement significatif de la fiabilité du système de distribution des fichiers et une amélioration des outils d'administration. Les utilisateurs bénéficieront de nouvelles capacités d'exportation de données pour le suivi de parc, tandis que la stabilité technique a été consolidée par une meilleure gestion des caches et une sécurisation des processus de déploiement.
 
 ### Évolutions fonctionnelles
-- Ajout d'un proxy LLM compatible OpenAI via l'endpoint `/llm/v1` avec possibilité de surcharger l'endpoint LLM. [#27](https://github.com/IA-Generative/device-management/pull/27)
-- Implémentation de la gestion des feature flags avec un état tri-valeur (transparent, activé, désactivé). [#62c09c4](https://github.com/IA-Generative/device-management/commit/62c09c4)
-- Ajout d'un tableau de bord avec des histogrammes du trafic LLM (chat vs embeddings). [#d5705bb](https://github.com/IA-Generative/device-management/commit/d5705bb)
-- Affichage de la version du device-management et du modèle d'embedding sur le tableau de bord. [#d3a2fd3](https://github.com/IA-Generative/device-management/commit/d3a2fd3)
-- Amélioration du journal d'audit avec des filtres en direct, une recherche détaillée et un défilement infini. [#a8f1e0a](https://github.com/IA-Generative/device-management/commit/a8f1e0a)
-- Ajout de la possibilité de basculer entre l'affichage des appareils et des utilisateurs sur le widget d'adoption du tableau de bord. [#b759bdb](https://github.com/IA-Generative/device-management/commit/b759bdb)
-- Redirections automatiques de la racine `/` vers `/catalog/` et de `/admin` vers `/admin/`. [#b673c7b](https://github.com/IA-Generative/device-management/commit/b673c7b)
-- Possibilité d'éditer les informations d'identification (Keycloak, relais) et d'importer des overrides de configuration au démarrage. [#5e60baa](https://github.com/IA-Generative/device-management/commit/5e60baa)
-- Ajout de légendes et d'infobulles sur les statuts de configuration dans l'interface d'administration. [#fe7b2ea](https://github.com/IA-Generative/device-management/commit/fe7b2ea)
+- **Gestion du parc et suivi** : Introduction d'une nouvelle fonctionnalité d'exportation des agrégats d'usage vers le bus de suivi (version bêta), incluant des exports manuels et une section dédiée dans l'interface d'administration [#29](https://github.com/IA-Generative/device-management/pull/29).
+- **Interface d'administration** : 
+    - Amélioration de la visibilité de la version du système dans l'interface [#33](https://github.com/IA-Generative/device-management/pull/33).
+    - Correction d'un bug d'affichage dans l'activité des appareils lié à une colonne inexistante.
+- **Résolution de catalogue** : Amélioration de la recherche de catalogue qui accepte désormais la résolution par nom d'export et par slug.
 
 ### Évolutions techniques
-- Mise en place d'un chart Helm pour faciliter le déploiement. [#12](https://github.com/IA-Generative/device-management/pull/12)
-- Préparation pour un déploiement cloud-native avec S3, observabilité, résilience et arrêt gracieux. [#fc3ab55](https://github.com/IA-Generative/device-management/commit/fc3ab55)
-- Utilisation d'images Docker non-root pour renforcer la sécurité. [#5f4cd9e](https://github.com/IA-Generative/device-management/commit/5f4cd9e)
-- Amélioration de la gestion des logs avec filtrage des sondes et des accès Nginx. [#c176e41](https://github.com/IA-Generative/device-management/commit/c176e41)
-- Implémentation d'un verrou consultatif PostgreSQL pour la migration du schéma. [#cba003d](https://github.com/IA-Generative/device-management/commit/cba003d)
-- Correction de la persistance de l'identifiant du plugin dans les logs d'audit. [#7cc5ba4](https://github.com/IA-Generative/device-management/commit/7cc5ba4)
-- Correction d'un problème avec les installations fantômes sans version. [#970c0ca](https://github.com/IA-Generative/device-management/commit/970c0ca)
-- Correction d'un problème de propagation des flags d'administration. [#9a72394](https://github.com/IA-Generative/device-management/commit/9a72394)
-- Amélioration de la gestion des identités pour la télémétrie avec l'utilisation de CUID. [#a478617](https://github.com/IA-Generative/device-management/commit/a478617)
+- **Intégrité des données et cache** : Correction d'un problème critique de vérification des sommes de contrôle (checksum) : le système vérifie désormais l'intégrité des fichiers binaires et du catalogue stockés en cache avant de les servir, garantissant qu'aucun fichier corrompu n'est distribué [#5](https://github.com/IA-Generative/device-management/issues/5).
+- **Sécurité et Authentification** : 
+    - Renforcement de la sécurité des sessions en excluant le `id_token` des cookies de session.
+    - Correction de la gestion des cookies d'état OIDC lors de l'expiration des appels API.
+- **Déploiement et CI/CD** : 
+    - Optimisation du processus de build pour que les images Docker déclarent automatiquement leur version au lieu d'utiliser des valeurs fixes.
+    - Amélioration de la propagation des tags d'image lors des déploiements en cluster.
+- **Infrastructure et Base de données** : 
+    - Passage en mode "opt-in" pour la création automatique des rôles, bases de données et schémas au démarrage afin de mieux contrôler l'initialisation.
+    - Amélioration de l'extraction de la version via le manifeste `dm-manifest.json`.
+- **Télémétrie** : Mise en place d'attributs typés pour les données de télémétrie [#34](https://github.com/IA-Generative/device-management/pull/34).
 
 ### Autres changements
-- Mise à jour de la documentation avec les nouvelles fonctionnalités et les changements d'architecture.
-- Correction de bugs mineurs et améliorations de la qualité du code.
-- Plusieurs mises à jour de version (0.9.3 à 0.9.12).
-- Amélioration du linting du code. [#5e60baa](https://github.com/IA-Generative/device-management/commit/5e60baa)
+- **Documentation** : Clarification des procédures concernant la cohabitation entre le déploiement général (rollout) et les branches d'expérimentation.
+- **Qualité du code** : Diverses corrections de tests et nettoyage de la syntaxe (linting) pour améliorer la maintenabilité.
