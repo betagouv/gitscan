@@ -1134,11 +1134,13 @@
     │   │       │   │   │   │   │   │   └── ModalConfirmDownloadUnsafe.tsx
     │   │       │   │   │   │   │   ├── DocEditor.tsx
     │   │       │   │   │   │   │   ├── DocsSideMenu
+    │   │       │   │   │   │   │   │   ├── DocsDragHandleMenu.tsx
     │   │       │   │   │   │   │   │   ├── DocsSideMenu.tsx
     │   │       │   │   │   │   │   │   ├── LinkToBlockItem.tsx
-    │   │       │   │   │   │   │   │   └── TableHeaderSeparator.tsx
+    │   │       │   │   │   │   │   │   └── SideMenuSeparator.tsx
     │   │       │   │   │   │   │   ├── custom-blocks
     │   │       │   │   │   │   │   │   ├── CalloutBlock.tsx
+    │   │       │   │   │   │   │   │   ├── CodeBlock.tsx
     │   │       │   │   │   │   │   │   ├── PdfBlock.tsx
     │   │       │   │   │   │   │   │   ├── UploadLoaderBlock.tsx
     │   │       │   │   │   │   │   │   └── index.ts
@@ -1177,7 +1179,8 @@
     │   │       │   │   │   │   │   ├── TablePDF.test.tsx
     │   │       │   │   │   │   │   ├── exportResolveFileUrl.test.ts
     │   │       │   │   │   │   │   ├── utilsHtmlAccessibility.test.ts
-    │   │       │   │   │   │   │   └── utilsMediaFilename.test.ts
+    │   │       │   │   │   │   │   ├── utilsMediaFilename.test.ts
+    │   │       │   │   │   │   │   └── utilsPrint.test.ts
     │   │       │   │   │   │   ├── api
     │   │       │   │   │   │   │   ├── exportResolveFileUrl.tsx
     │   │       │   │   │   │   │   └── index.ts
@@ -1299,14 +1302,19 @@
     │   │       │   │   │   │   └── utils.ts
     │   │       │   │   │   ├── doc-presenter
     │   │       │   │   │   │   ├── __tests__
+    │   │       │   │   │   │   │   ├── PresenterPrintDocument.spec.tsx
     │   │       │   │   │   │   │   ├── useBrowserFullscreen.spec.ts
     │   │       │   │   │   │   │   ├── useFitScale.spec.ts
     │   │       │   │   │   │   │   ├── usePresenterShortcuts.spec.ts
     │   │       │   │   │   │   │   └── useSlides.spec.ts
+    │   │       │   │   │   │   ├── assets
+    │   │       │   │   │   │   │   └── logo-docs-mono.svg
     │   │       │   │   │   │   ├── components
     │   │       │   │   │   │   │   ├── PresentBlockItem.tsx
+    │   │       │   │   │   │   │   ├── PresenterDocsLogo.tsx
     │   │       │   │   │   │   │   ├── PresenterFloatingBar.tsx
     │   │       │   │   │   │   │   ├── PresenterOverlay.tsx
+    │   │       │   │   │   │   │   ├── PresenterPrintDocument.tsx
     │   │       │   │   │   │   │   ├── PresenterRoot.tsx
     │   │       │   │   │   │   │   ├── PresenterSlide.tsx
     │   │       │   │   │   │   │   ├── PresenterSlideContent.tsx
@@ -1322,7 +1330,8 @@
     │   │       │   │   │   │   ├── stores
     │   │       │   │   │   │   │   ├── index.ts
     │   │       │   │   │   │   │   └── usePresenterStore.tsx
-    │   │       │   │   │   │   └── types.ts
+    │   │       │   │   │   │   ├── types.ts
+    │   │       │   │   │   │   └── utils_print.tsx
     │   │       │   │   │   ├── doc-search
     │   │       │   │   │   │   ├── api
     │   │       │   │   │   │   │   └── useSearchDocs.tsx
@@ -1398,7 +1407,11 @@
     │   │       │   │   │   │   │   ├── DocSubPageItem.tsx
     │   │       │   │   │   │   │   ├── DocTree.tsx
     │   │       │   │   │   │   │   ├── DocTreeItemActions.tsx
+    │   │       │   │   │   │   │   ├── DocTreeRoot.tsx
+    │   │       │   │   │   │   │   ├── DocTreeSubpages.tsx
     │   │       │   │   │   │   │   └── index.ts
+    │   │       │   │   │   │   ├── hooks
+    │   │       │   │   │   │   │   └── useTreeItemActions.ts
     │   │       │   │   │   │   ├── index.ts
     │   │       │   │   │   │   └── utils.ts
     │   │       │   │   │   ├── doc-versioning
@@ -1769,4 +1782,4 @@
         │   └── template.mjml
         ├── package.json
         └── yarn.lock
-313 directories, 1534 files
+315 directories, 1545 files
