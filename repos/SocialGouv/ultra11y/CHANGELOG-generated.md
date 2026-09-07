@@ -1,27 +1,34 @@
-## Changelog : ultra11y (30 derniers jours, au 3 septembre 2026)
+## Changelog : ultra11y (30 derniers jours, au 06/09/2026)
 
 ### Résumé
-Ce mois-ci, ultra11y a franchi une étape majeure dans la précision et la fiabilité de ses audits d'accessibilité. Les utilisateurs bénéficient désormais de rapports beaucoup plus détaillés, avec une visibilité accrue par page et par critère. En coulisses, l'utilisation de l'intelligence artificielle a été optimisée pour être plus robuste et économique, tandis que l'intégration continue (CI) a été considérablement renforcée pour permettre des tests plus profonds grâce à l'introduction d'un mode "navigateur" intégré.
+Cette période a été marquée par une montée en puissance de la précision des audits et de la granularité des rapports. Les évolutions majeures concernent l'amélioration de l'intelligence artificielle pour l'arbitrage des critères d'accessibilité, ainsi que l'introduction de rapports détaillés par page. L'outil est désormais plus robuste dans ses environnements d'intégration continue (CI), offrant une meilleure gestion des coûts et des ressources lors des analyses complexes.
 
 ### Évolutions fonctionnelles
-- **Amélioration de la visibilité des résultats** : les rapports publient désormais le taux de conformité officiel du référentiel (RGAA/WCAG) et proposent des vues compactes par page pour une lecture rapide dans les flux de travail.
-- **Regroupement intelligent des erreurs** : les non-conformités sont désormais regroupées par critère dans les commentaires de Pull Request, facilitant ainsi le travail de correction des développeurs.
-- **Précision accrue du diagnostic** : meilleure gestion des critères "Non Applicable" et possibilité de sélectionner un référentiel (RGAA ou WCAG) de manière globale pour l'ensemble de l'audit.
-- **Nouvelles mesures** : ajout de la capacité de mesurer le critère 2.4.11.
+- **Amélioration du reporting :**
+  - Publication de rapports de statut compacts par page pour une lecture rapide dans les flux de CI.
+  - Regroupement des non-conformités par critère dans les commentaires de Pull Request pour faciliter les corrections.
+  - Mise à jour du tableau de bord pour assurer une cohérence parfaite avec les rapports d'exécution.
+  - Publication du taux de conformité basé sur le référentiel officiel plutôt que sur les capacités brutes du moteur.
+- **Gestion des standards :**
+  - Sélection globale du standard (WCAG ou RGAA) qui s'applique désormais de manière cohérente à l'ensemble des commandes de l'outil.
+  - Extension de la couverture déterministe pour les critères du RGAA.
 
 ### Évolutions techniques
-- **Optimisation de l'adjudication par IA** : 
-    - Introduction de différents "tiers" (API, Agent, Browser) pour moduler la profondeur de l'audit et le coût associé.
-    - Amélioration de la gestion des budgets de jetons (tokens) et de l'effort de raisonnement des modèles (Claude).
-    - Refactoring du moteur pour rendre l'adjudication indépendante du mode de transport des données.
-- **Renforcement de la CI/CD** :
-    - Intégration d'un "browser tier" complet directement dans la GitHub Action ([#31](https://github.com/SocialGouv/ultra11y/pull/31)).
-    - Mise en place de "keyed passes" pour permettre des exécutions ciblées et plus efficaces ([#28](https://github.com/SocialGouv/ultra11y/pull/28)).
-    - Optimisation des performances via la mise en cache des navigateurs Playwright et la réduction de la taille des artefacts de rapport.
-- **Fiabilisation du moteur de scan** :
-    - Amélioration du crawling pour mieux gérer les URLs canoniques ([#27](https://github.com/SocialGouv/ultra11y/pull/27)) et les erreurs 404 ([#26](https://github.com/SocialGouv/ultra11y/pull/26)).
-    - Mise à jour régulière des sources de référence (WCAG et RGAA) intégrées au moteur.
+- **Intelligence Artificielle & Arbitrage (Adjudication) :**
+  - Optimisation de la gestion des budgets de jetons (tokens) et des échecs de modèles pour éviter l'interruption complète des audits.
+  - Amélioration de la logique de raisonnement de l'agent pour mieux traiter les cas d'incertitude et les refus de critères.
+  - Refactorisation du moteur d'arbitrage pour le rendre agnostique au mode de transport des données.
+  - Meilleure distinction et gestion entre les différents niveaux de service (tiers API vs tiers Agent).
+- **CI/CD & Automatisation :**
+  - Création d'un nouveau canal (lane) de Pull Request dédié aux tests RGAA déterministes.
+  - Optimisation des workflows GitHub Actions, incluant la mise en cache des navigateurs Playwright et une meilleure gestion du "browser tier".
+  - Amélioration de l'efficacité des audits via un système de "ledger" permettant le rejeu des résultats validés.
+- **Moteur d'audit & Sondes (Probes) :**
+  - Renforcement des sondes de détection pour éviter les faux positifs sur les indicateurs de focus et les pièges au clavier.
+  - Amélioration du crawler pour une meilleure gestion des erreurs de pages (404) et des adresses multiples.
+  - Optimisation du moteur de scan pour permettre des mesures plus précises sur les éléments animés.
 
 ### Autres changements
-- **Documentation** : mise à jour du README et des guides techniques concernant la couverture déterministe, les commandes de la CI et l'utilisation des "skills".
-- **Nettoyage** : suppression de fichiers de configuration obsolètes et optimisation du processus de build.
+- Mise à jour régulière des sources de référence pour les standards WCAG et RGAA.
+- Nettoyage de la documentation technique et des fichiers de configuration.
+- Optimisation de la taille des artefacts produits lors des rapports compacts.
