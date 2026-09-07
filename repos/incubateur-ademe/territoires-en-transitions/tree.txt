@@ -467,8 +467,6 @@
 │   │   │   │   │   │   │       └── users-header.tsx
 │   │   │   │   │   │   ├── (instruction)
 │   │   │   │   │   │   │   ├── demandes-avis
-│   │   │   │   │   │   │   │   ├── [demandeAvisId]
-│   │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   └── layout.tsx
 │   │   │   │   │   │   ├── accueil
@@ -476,6 +474,10 @@
 │   │   │   │   │   │   ├── affichage-referentiels
 │   │   │   │   │   │   │   ├── layout.tsx
 │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   ├── instruction
+│   │   │   │   │   │   │   └── [demandeAvisId]
+│   │   │   │   │   │   │       ├── layout.tsx
+│   │   │   │   │   │   │       └── page.tsx
 │   │   │   │   │   │   ├── layout.tsx
 │   │   │   │   │   │   ├── modifier
 │   │   │   │   │   │   │   ├── layout.tsx
@@ -564,6 +566,9 @@
 │   │   │   └── third-party-providers.tsx
 │   │   ├── content-security-policy.config.ts
 │   │   ├── cors.config.ts
+│   │   ├── eslint
+│   │   │   ├── no-hardcoded-ui-copy.mjs
+│   │   │   └── no-hardcoded-ui-copy.spec.mjs
 │   │   ├── eslint.config.mjs
 │   │   ├── instrumentation-client.ts
 │   │   ├── instrumentation.ts
@@ -979,19 +984,24 @@
 │   │   │   │   │   │   └── use-transition-options.ts
 │   │   │   │   │   ├── diagnostic
 │   │   │   │   │   │   ├── data
-│   │   │   │   │   │   │   ├── use-diagnostic.ts
+│   │   │   │   │   │   │   ├── use-get-pcaet-diagnostic.ts
+│   │   │   │   │   │   │   ├── use-set-diagnostic-reference-year.ts
 │   │   │   │   │   │   │   ├── use-source-labels.ts
+│   │   │   │   │   │   │   ├── use-update-diagnostic-indicateurs-valeurs.ts
 │   │   │   │   │   │   │   └── use-vulnerabilite.ts
-│   │   │   │   │   │   ├── diagnostic-topics-section.tsx
 │   │   │   │   │   │   ├── diagnostic.page.tsx
+│   │   │   │   │   │   ├── diagnostic.tab-content.tsx
+│   │   │   │   │   │   ├── diagnostic.tabs.tsx
+│   │   │   │   │   │   ├── diagnostic.tabs.utils.ts
 │   │   │   │   │   │   ├── indicateurs-grid
-│   │   │   │   │   │   │   ├── topic-grid.adapter.spec.ts
-│   │   │   │   │   │   │   ├── topic-grid.adapter.ts
-│   │   │   │   │   │   │   ├── topic-grid.view.tsx
-│   │   │   │   │   │   │   └── use-topic-grid.ts
-│   │   │   │   │   │   ├── topic-diagnostic-panel-content.tsx
+│   │   │   │   │   │   │   ├── diagnostic.indicateur-valeurs.table.tsx
+│   │   │   │   │   │   │   ├── diagnostic.indicateur.tab-content.tsx
+│   │   │   │   │   │   │   ├── diagnostic.vulnerabilite.tab.tsx
+│   │   │   │   │   │   │   ├── indicateur-tab.layout.spec.ts
+│   │   │   │   │   │   │   ├── indicateur-tab.layout.ts
+│   │   │   │   │   │   │   └── use-diagnostic-indicateur-valeurs-table.ts
 │   │   │   │   │   │   ├── topic-tab.tsx
-│   │   │   │   │   │   ├── use-topic-param.ts
+│   │   │   │   │   │   ├── use-pcaet-diagnostic-tab-query-state.ts
 │   │   │   │   │   │   ├── vulnerabilite-table.rules.spec.ts
 │   │   │   │   │   │   ├── vulnerabilite-table.rules.ts
 │   │   │   │   │   │   └── vulnerabilite-table.tsx
@@ -1000,7 +1010,9 @@
 │   │   │   │   │   │   ├── erreur-acces.page.spec.tsx
 │   │   │   │   │   │   └── erreur-acces.page.tsx
 │   │   │   │   │   ├── instruction
+│   │   │   │   │   │   ├── contexte-instruction.banner.tsx
 │   │   │   │   │   │   ├── data
+│   │   │   │   │   │   │   ├── use-contexte-instruction.ts
 │   │   │   │   │   │   │   └── use-list-demandes-avis.ts
 │   │   │   │   │   │   ├── demandes-avis.page.tsx
 │   │   │   │   │   │   ├── demandes-avis.table.tsx
@@ -1020,6 +1032,8 @@
 │   │   │   │   │   │   │   ├── finaliser-instruction.button.tsx
 │   │   │   │   │   │   │   ├── finaliser-instruction.modal.tsx
 │   │   │   │   │   │   │   └── use-etapes-instruction-side-panel.tsx
+│   │   │   │   │   │   ├── dossier-instruction-path.spec.ts
+│   │   │   │   │   │   ├── dossier-instruction-path.ts
 │   │   │   │   │   │   └── instruction.constants.ts
 │   │   │   │   │   ├── list-demarches
 │   │   │   │   │   │   ├── demarche-pcaet-actions.menu.tsx
@@ -1053,53 +1067,26 @@
 │   │   │   │   └── valeurs
 │   │   │   │       ├── grid
 │   │   │   │       │   ├── __tests__
-│   │   │   │       │   │   ├── add-year-column-header.spec.tsx
-│   │   │   │       │   │   ├── cell-references.stories.tsx
 │   │   │   │       │   │   ├── grid-fixtures.ts
-│   │   │   │       │   │   ├── grid-model.spec.ts
 │   │   │   │       │   │   ├── indicateur-valeur.cell.spec.tsx
 │   │   │   │       │   │   ├── indicateur-values-grid.stories.tsx
-│   │   │   │       │   │   ├── parse-cell-key.spec.ts
 │   │   │   │       │   │   ├── parse-cell-number.spec.ts
-│   │   │   │       │   │   ├── render-smoke.spec.tsx
-│   │   │   │       │   │   └── year-column-header-remove.spec.tsx
-│   │   │   │       │   ├── adapters
-│   │   │   │       │   │   ├── indicateur-grid-adapter.spec.ts
-│   │   │   │       │   │   └── indicateur-grid-adapter.ts
-│   │   │   │       │   ├── add-year-column-header.tsx
+│   │   │   │       │   │   └── render-smoke.spec.tsx
 │   │   │   │       │   ├── cell-editability.spec.ts
 │   │   │   │       │   ├── cell-editability.ts
-│   │   │   │       │   ├── cell-input.tsx
-│   │   │   │       │   ├── cell-props.ts
-│   │   │   │       │   ├── cell-references.tsx
-│   │   │   │       │   ├── column-has-values.spec.ts
-│   │   │   │       │   ├── column-has-values.ts
-│   │   │   │       │   ├── grid-body.tsx
-│   │   │   │       │   ├── grid-context.tsx
-│   │   │   │       │   ├── grid-frame.tsx
-│   │   │   │       │   ├── grid-head.tsx
-│   │   │   │       │   ├── grid-legend.tsx
-│   │   │   │       │   ├── grid-model.ts
-│   │   │   │       │   ├── grid-row.tsx
-│   │   │   │       │   ├── group-body.tsx
-│   │   │   │       │   ├── group-parent-row.tsx
 │   │   │   │       │   ├── index.ts
-│   │   │   │       │   ├── indicateur-grid-shape.spec.ts
-│   │   │   │       │   ├── indicateur-grid-shape.ts
 │   │   │   │       │   ├── indicateur-title.cell.tsx
 │   │   │   │       │   ├── indicateur-title.header-cell.tsx
+│   │   │   │       │   ├── indicateur-valeur-requise.marker.tsx
 │   │   │   │       │   ├── indicateur-valeur-type.badge.tsx
 │   │   │   │       │   ├── indicateur-valeur-year.header-cell.tsx
 │   │   │   │       │   ├── indicateur-valeur.cell.tsx
+│   │   │   │       │   ├── indicateur-valeurs.table-body.tsx
+│   │   │   │       │   ├── indicateur-valeurs.table-head.tsx
+│   │   │   │       │   ├── indicateur-valeurs.table-legend.tsx
+│   │   │   │       │   ├── indicateur-valeurs.table-row.tsx
 │   │   │   │       │   ├── indicateur-valeurs.table.tsx
-│   │   │   │       │   ├── parse-add-year.spec.ts
-│   │   │   │       │   ├── parse-add-year.ts
 │   │   │   │       │   ├── parse-cell-number.ts
-│   │   │   │       │   ├── paste
-│   │   │   │       │   │   ├── grid-paste.spec.tsx
-│   │   │   │       │   │   ├── paste-values.spec.ts
-│   │   │   │       │   │   ├── paste-values.ts
-│   │   │   │       │   │   └── use-grid-copy-paste.ts
 │   │   │   │       │   ├── reference-year
 │   │   │   │       │   │   ├── parse-reference-year.spec.ts
 │   │   │   │       │   │   ├── parse-reference-year.ts
@@ -1111,22 +1098,17 @@
 │   │   │   │       │   ├── types.ts
 │   │   │   │       │   ├── use-cell-edit.spec.ts
 │   │   │   │       │   ├── use-cell-edit.ts
-│   │   │   │       │   ├── use-get-table.tsx
 │   │   │   │       │   ├── use-horizontal-scroll-edges.ts
-│   │   │   │       │   ├── use-indicateur-grid-data.ts
-│   │   │   │       │   ├── use-indicateur-grid-write-actions.ts
 │   │   │   │       │   ├── use-list-indicateur-valeurs-table-columns.tsx
 │   │   │   │       │   ├── use-table-head-height.ts
-│   │   │   │       │   └── variation
-│   │   │   │       │       ├── variation-hint.tsx
-│   │   │   │       │       ├── variation.spec.ts
-│   │   │   │       │       └── variation.ts
+│   │   │   │       │   └── utils.ts
 │   │   │   │       ├── use-list-indicateur-valeurs.ts
 │   │   │   │       └── use-upsert-indicateur-valeur.ts
 │   │   │   ├── labels
 │   │   │   │   ├── catalog.spec.ts
 │   │   │   │   ├── catalog.ts
 │   │   │   │   ├── collectivites.labels.ts
+│   │   │   │   ├── demarches.labels.ts
 │   │   │   │   ├── indicateurs.labels.ts
 │   │   │   │   ├── plans.labels.ts
 │   │   │   │   ├── referentiels.labels.ts
@@ -1366,8 +1348,7 @@
 │   │   │   │   │   │   ├── data
 │   │   │   │   │   │   │   ├── useAddAnnexe.ts
 │   │   │   │   │   │   │   ├── useAnnexesFicheAction.ts
-│   │   │   │   │   │   │   ├── useFichesActionLiees.ts
-│   │   │   │   │   │   │   └── usePlanActionProfondeur.tsx
+│   │   │   │   │   │   │   └── useFichesActionLiees.ts
 │   │   │   │   │   │   ├── fiche.view.tsx
 │   │   │   │   │   │   ├── header
 │   │   │   │   │   │   │   ├── actions
@@ -1471,11 +1452,12 @@
 │   │   │   │   │   ├── plan-types-to-options.ts
 │   │   │   │   │   ├── show-plan
 │   │   │   │   │   │   ├── actions
+│   │   │   │   │   │   │   ├── axe-node.adapter.spec.ts
+│   │   │   │   │   │   │   ├── axe-node.adapter.ts
 │   │   │   │   │   │   │   ├── delete-axe-or-plan.modal.tsx
 │   │   │   │   │   │   │   ├── duplicate-plan.modal.tsx
 │   │   │   │   │   │   │   ├── move-axe.modal.tsx
 │   │   │   │   │   │   │   ├── move-fiche.modal.tsx
-│   │   │   │   │   │   │   ├── plan-node-to-profondeur-axe.adapter.ts
 │   │   │   │   │   │   │   ├── update-fiche-visibility.modal.tsx
 │   │   │   │   │   │   │   ├── use-move-fiche.ts
 │   │   │   │   │   │   │   └── use-set-fiches-private.ts
@@ -1570,7 +1552,6 @@
 │   │   │   │   │   ├── Row.tsx
 │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   ├── styles.css
-│   │   │   │   │   ├── use-row-expanded-reducer.ts
 │   │   │   │   │   ├── useModifierStateRef.ts
 │   │   │   │   │   └── useReferentiel.ts
 │   │   │   │   ├── Historique
@@ -1813,6 +1794,8 @@
 │   │   │   │   │   ├── AddRapportVisite.tsx
 │   │   │   │   │   ├── PreuveLabellisation.tsx
 │   │   │   │   │   ├── PreuvesTable.tsx
+│   │   │   │   │   ├── data
+│   │   │   │   │   │   └── use-list-documents-referentiel.ts
 │   │   │   │   │   ├── documents.view.tsx
 │   │   │   │   │   ├── groupeParDemande.test.ts
 │   │   │   │   │   ├── groupeParDemande.tsx
@@ -1838,7 +1821,6 @@
 │   │   │   │   │   │   ├── request-audit.modal.tsx
 │   │   │   │   │   │   ├── target-star.field.spec.tsx
 │   │   │   │   │   │   └── target-star.field.tsx
-│   │   │   │   │   ├── types.ts
 │   │   │   │   │   ├── useAddPreuveToDemande.ts
 │   │   │   │   │   ├── useCycleLabellisation.ts
 │   │   │   │   │   ├── useLabellisationParcours.ts
@@ -1847,6 +1829,7 @@
 │   │   │   │   ├── preuves
 │   │   │   │   │   ├── AddPreuveComplementaire.tsx
 │   │   │   │   │   ├── AddPreuveModal
+│   │   │   │   │   │   ├── AddFile.spec.tsx
 │   │   │   │   │   │   ├── AddFile.stories.tsx
 │   │   │   │   │   │   ├── AddFile.tsx
 │   │   │   │   │   │   ├── AddFromLib.stories.tsx
@@ -1854,6 +1837,7 @@
 │   │   │   │   │   │   ├── AddLink.tsx
 │   │   │   │   │   │   ├── AddPreuveModal.stories.tsx
 │   │   │   │   │   │   ├── CheckboxConfidentiel.tsx
+│   │   │   │   │   │   ├── FileItem.spec.tsx
 │   │   │   │   │   │   ├── FileItem.stories.tsx
 │   │   │   │   │   │   ├── FileItem.tsx
 │   │   │   │   │   │   ├── FileItemsList.stories.tsx
@@ -1877,7 +1861,11 @@
 │   │   │   │   │   │   ├── PreuveReglementaire.stories.tsx
 │   │   │   │   │   │   ├── PreuveReglementaire.tsx
 │   │   │   │   │   │   ├── canUserUpdateAuditReport.ts
+│   │   │   │   │   │   ├── carte-document-action.spec.ts
+│   │   │   │   │   │   ├── carte-document-action.ts
 │   │   │   │   │   │   ├── download-fichier.ts
+│   │   │   │   │   │   ├── duplicated-document.alert.spec.tsx
+│   │   │   │   │   │   ├── duplicated-document.alert.tsx
 │   │   │   │   │   │   ├── fixture.ts
 │   │   │   │   │   │   ├── openPreuve.ts
 │   │   │   │   │   │   ├── saveBlob.ts
@@ -1886,14 +1874,17 @@
 │   │   │   │   │   │   ├── useEditState.ts
 │   │   │   │   │   │   ├── useFichiers.ts
 │   │   │   │   │   │   ├── useReplaceAuditReportFile.ts
+│   │   │   │   │   │   ├── utils.spec.ts
 │   │   │   │   │   │   └── utils.ts
 │   │   │   │   │   ├── PreuvesAction.stories.tsx
 │   │   │   │   │   ├── PreuvesAction.tsx
+│   │   │   │   │   ├── data
+│   │   │   │   │   │   └── use-list-documents-mesure.ts
+│   │   │   │   │   ├── duplicated-document-state.utils.spec.ts
+│   │   │   │   │   ├── duplicated-document-state.utils.ts
 │   │   │   │   │   ├── mappers
 │   │   │   │   │   │   ├── audit-report-to-preuve.test.ts
 │   │   │   │   │   │   └── audit-report-to-preuve.ts
-│   │   │   │   │   ├── preuve-view.adapter.spec.ts
-│   │   │   │   │   ├── preuve-view.adapter.ts
 │   │   │   │   │   ├── upload
 │   │   │   │   │   │   ├── constants.ts
 │   │   │   │   │   │   ├── upload-file-to-bucket.ts
@@ -1904,8 +1895,7 @@
 │   │   │   │   │   │   └── validate-file.ts
 │   │   │   │   │   ├── use-action-preuves-count.ts
 │   │   │   │   │   ├── useAddPreuveToAction.ts
-│   │   │   │   │   ├── useAddPreuves.ts
-│   │   │   │   │   └── usePreuves.ts
+│   │   │   │   │   └── useAddPreuves.ts
 │   │   │   │   ├── referentiel-context.tsx
 │   │   │   │   ├── referentiel-mode
 │   │   │   │   │   ├── get-referentiel-mode-banner-props.ts
@@ -2020,8 +2010,6 @@
 │   │   │   │       ├── mesures.module-page.tsx
 │   │   │   │       └── mesures.module.tsx
 │   │   │   ├── tailwind-design-tokens.test.ts
-│   │   │   ├── types
-│   │   │   │   └── alias.ts
 │   │   │   ├── ui
 │   │   │   │   ├── Markdown
 │   │   │   │   │   └── index.tsx
@@ -2105,6 +2093,7 @@
 │   │   │   │   │   │   │   │   ├── make-collectivite-nav.ts
 │   │   │   │   │   │   │   │   ├── make-role-edition-actions-indicateurs-nav.ts
 │   │   │   │   │   │   │   │   └── make-service-deconcentre-nav.ts
+│   │   │   │   │   │   │   ├── make-main-nav.spec.tsx
 │   │   │   │   │   │   │   └── make-main-nav.ts
 │   │   │   │   │   │   ├── make-secondary-nav.tsx
 │   │   │   │   │   │   └── use-logout.ts
@@ -2377,6 +2366,7 @@
 │   │   │   │   │   │   ├── edit-preuve-document.router.e2e-spec.ts
 │   │   │   │   │   │   ├── edit-preuve-document.router.ts
 │   │   │   │   │   │   └── edit-preuve-document.service.ts
+│   │   │   │   │   ├── file-info.utils.ts
 │   │   │   │   │   ├── hide-confidentiel.utils.ts
 │   │   │   │   │   ├── models
 │   │   │   │   │   │   ├── annexe.table.ts
@@ -2558,6 +2548,7 @@
 │   │   │   │   │   ├── recherches.service.ts
 │   │   │   │   │   └── referentiels.response.ts
 │   │   │   │   ├── services
+│   │   │   │   │   ├── collectivites.service.spec.ts
 │   │   │   │   │   ├── collectivites.service.ts
 │   │   │   │   │   ├── groupements.service.ts
 │   │   │   │   │   └── personnes.service.ts
@@ -2668,7 +2659,20 @@
 │   │   │   │   │   │   ├── depublier-demarche.router.ts
 │   │   │   │   │   │   └── depublier-demarche.service.ts
 │   │   │   │   │   ├── diagnostic
-│   │   │   │   │   │   └── pcaet-diagnostic.router.ts
+│   │   │   │   │   │   ├── pcaet-diagnostic.router.ts
+│   │   │   │   │   │   ├── set-diagnostic-reference-year
+│   │   │   │   │   │   │   ├── set-diagnostic-reference-year.errors.ts
+│   │   │   │   │   │   │   ├── set-diagnostic-reference-year.input.ts
+│   │   │   │   │   │   │   ├── set-diagnostic-reference-year.repository.ts
+│   │   │   │   │   │   │   ├── set-diagnostic-reference-year.router.e2e-spec.ts
+│   │   │   │   │   │   │   ├── set-diagnostic-reference-year.router.ts
+│   │   │   │   │   │   │   └── set-diagnostic-reference-year.service.ts
+│   │   │   │   │   │   └── update-diagnostic-indicateurs-valeurs
+│   │   │   │   │   │       ├── update-diagnostic-indicateurs-valeurs.errors.ts
+│   │   │   │   │   │       ├── update-diagnostic-indicateurs-valeurs.input.ts
+│   │   │   │   │   │       ├── update-diagnostic-indicateurs-valeurs.router.e2e-spec.ts
+│   │   │   │   │   │       ├── update-diagnostic-indicateurs-valeurs.router.ts
+│   │   │   │   │   │       └── update-diagnostic-indicateurs-valeurs.service.ts
 │   │   │   │   │   ├── documents
 │   │   │   │   │   │   ├── add-document
 │   │   │   │   │   │   │   ├── add-document.errors.ts
@@ -2721,6 +2725,12 @@
 │   │   │   │   │   │   ├── get-avis-file-url.router.e2e-spec.ts
 │   │   │   │   │   │   ├── get-avis-file-url.router.ts
 │   │   │   │   │   │   └── get-avis-file-url.service.ts
+│   │   │   │   │   ├── get-contexte-instruction
+│   │   │   │   │   │   ├── get-contexte-instruction.errors.ts
+│   │   │   │   │   │   ├── get-contexte-instruction.input.ts
+│   │   │   │   │   │   ├── get-contexte-instruction.router.e2e-spec.ts
+│   │   │   │   │   │   ├── get-contexte-instruction.router.ts
+│   │   │   │   │   │   └── get-contexte-instruction.service.ts
 │   │   │   │   │   ├── get-demarche-pcaet
 │   │   │   │   │   │   ├── get-demarche-pcaet.errors.ts
 │   │   │   │   │   │   ├── get-demarche-pcaet.input.ts
@@ -2792,12 +2802,6 @@
 │   │   │   │   │   │   ├── remove-vulnerabilite-thematique.router.e2e-spec.ts
 │   │   │   │   │   │   ├── remove-vulnerabilite-thematique.router.ts
 │   │   │   │   │   │   └── remove-vulnerabilite-thematique.service.ts
-│   │   │   │   │   ├── set-diagnostic-years
-│   │   │   │   │   │   ├── set-diagnostic-years.errors.ts
-│   │   │   │   │   │   ├── set-diagnostic-years.input.ts
-│   │   │   │   │   │   ├── set-diagnostic-years.router.e2e-spec.ts
-│   │   │   │   │   │   ├── set-diagnostic-years.router.ts
-│   │   │   │   │   │   └── set-diagnostic-years.service.ts
 │   │   │   │   │   ├── set-vulnerabilite-ligne
 │   │   │   │   │   │   ├── set-vulnerabilite-ligne.errors.ts
 │   │   │   │   │   │   ├── set-vulnerabilite-ligne.input.ts
@@ -2806,11 +2810,11 @@
 │   │   │   │   │   │   └── set-vulnerabilite-ligne.service.ts
 │   │   │   │   │   ├── shared
 │   │   │   │   │   │   ├── demarche-pcaet-access.service.ts
-│   │   │   │   │   │   ├── demarche-pcaet-diagnostic.repository.ts
 │   │   │   │   │   │   ├── demarche-pcaet-diagnostic.service.ts
 │   │   │   │   │   │   ├── demarche-pcaet-guards.service.ts
 │   │   │   │   │   │   ├── demarche-pcaet-pilotes.repository.ts
 │   │   │   │   │   │   ├── demarche-pcaet-ref.repository.ts
+│   │   │   │   │   │   ├── demarche-pcaet-source-metadonnee.repository.ts
 │   │   │   │   │   │   ├── demarche-pcaet-transition.errors.ts
 │   │   │   │   │   │   ├── demarche-pcaet-transition.input.ts
 │   │   │   │   │   │   ├── demarche-pcaet-transition.repository.ts
@@ -2823,10 +2827,7 @@
 │   │   │   │   │   │   ├── depot-permissions.service.e2e-spec.ts
 │   │   │   │   │   │   ├── depot-permissions.service.ts
 │   │   │   │   │   │   ├── models
-│   │   │   │   │   │   │   ├── demarche-pcaet-diagnostic-snapshot.table.ts
-│   │   │   │   │   │   │   ├── demarche-pcaet-diagnostic-state.table.ts
-│   │   │   │   │   │   │   ├── demarche-pcaet-topic-row.table.ts
-│   │   │   │   │   │   │   ├── demarche-pcaet-topic.table.ts
+│   │   │   │   │   │   │   ├── demarche-pcaet-source-metadonnee.table.ts
 │   │   │   │   │   │   │   ├── demarche-pcaet-vulnerabilite-thematique.table.ts
 │   │   │   │   │   │   │   ├── demarche-pcaet-vulnerabilite-valeur.table.ts
 │   │   │   │   │   │   │   ├── demarche-pcaet.dto.ts
@@ -2866,7 +2867,9 @@
 │   │   │   │   │       ├── valider-avis.router.ts
 │   │   │   │   │       └── valider-avis.service.ts
 │   │   │   │   └── shared
+│   │   │   │       ├── demarche-document-applicabilite.service.ts
 │   │   │   │       ├── demarche-documents.repository.ts
+│   │   │   │       ├── demarche-historique.repository.ts
 │   │   │   │       ├── demarche-plan-actions.repository.ts
 │   │   │   │       ├── demarche-plans-contenu.repository.ts
 │   │   │   │       └── models
@@ -3056,6 +3059,103 @@
 │   │   │   │       ├── users-metrics.service.ts
 │   │   │   │       └── users-modules.service.ts
 │   │   │   ├── plans
+│   │   │   │   ├── ai-plan-import
+│   │   │   │   │   ├── adapters
+│   │   │   │   │   │   ├── extracted-action-to-import-action.spec.ts
+│   │   │   │   │   │   └── extracted-action-to-import-action.ts
+│   │   │   │   │   ├── ai-plan-import-job.repository.ts
+│   │   │   │   │   ├── ai-plan-import.constants.ts
+│   │   │   │   │   ├── ai-plan-import.errors.ts
+│   │   │   │   │   ├── ai-plan-import.full-flow.e2e-spec.ts
+│   │   │   │   │   ├── ai-plan-import.module.ts
+│   │   │   │   │   ├── ai-plan-import.queue.ts
+│   │   │   │   │   ├── ai-plan-import.trpc-errors.ts
+│   │   │   │   │   ├── enqueue-import
+│   │   │   │   │   │   ├── detect-source-mime-type.spec.ts
+│   │   │   │   │   │   ├── detect-source-mime-type.ts
+│   │   │   │   │   │   ├── enqueue-import.controller.e2e-spec.ts
+│   │   │   │   │   │   ├── enqueue-import.controller.ts
+│   │   │   │   │   │   ├── enqueue-import.input.spec.ts
+│   │   │   │   │   │   ├── enqueue-import.input.ts
+│   │   │   │   │   │   ├── enqueue-import.service.spec.ts
+│   │   │   │   │   │   ├── enqueue-import.service.ts
+│   │   │   │   │   │   ├── validate-xlsx-archive.spec.ts
+│   │   │   │   │   │   └── validate-xlsx-archive.ts
+│   │   │   │   │   ├── generate-import-draft
+│   │   │   │   │   │   ├── draft-to-import-plan-input.spec.ts
+│   │   │   │   │   │   ├── draft-to-import-plan-input.ts
+│   │   │   │   │   │   ├── generate-import-draft.service.spec.ts
+│   │   │   │   │   │   ├── generate-import-draft.service.ts
+│   │   │   │   │   │   ├── generate-import-draft.worker.spec.ts
+│   │   │   │   │   │   └── generate-import-draft.worker.ts
+│   │   │   │   │   ├── get-import-status
+│   │   │   │   │   │   ├── get-import-status.input.ts
+│   │   │   │   │   │   ├── get-import-status.output.ts
+│   │   │   │   │   │   ├── get-import-status.router.ts
+│   │   │   │   │   │   ├── get-import-status.service.spec.ts
+│   │   │   │   │   │   └── get-import-status.service.ts
+│   │   │   │   │   ├── models
+│   │   │   │   │   │   ├── ai-plan-import-job.table.ts
+│   │   │   │   │   │   ├── ai-plan-import-job.ts
+│   │   │   │   │   │   ├── disableable-field.ts
+│   │   │   │   │   │   ├── extracted-action.ts
+│   │   │   │   │   │   └── plan-draft.ts
+│   │   │   │   │   ├── pipeline
+│   │   │   │   │   │   ├── __fixtures__
+│   │   │   │   │   │   │   └── sample.pdf
+│   │   │   │   │   │   ├── consolidate-actions
+│   │   │   │   │   │   │   ├── consolidate-actions.prompt.ts
+│   │   │   │   │   │   │   ├── consolidate-actions.schema.ts
+│   │   │   │   │   │   │   ├── consolidate-actions.spec.ts
+│   │   │   │   │   │   │   ├── consolidate-actions.ts
+│   │   │   │   │   │   │   ├── select-low-score-actions.spec.ts
+│   │   │   │   │   │   │   ├── select-low-score-actions.ts
+│   │   │   │   │   │   │   ├── update-actions-with-consolidated-entries.spec.ts
+│   │   │   │   │   │   │   └── update-actions-with-consolidated-entries.ts
+│   │   │   │   │   │   ├── enrich-sous-actions
+│   │   │   │   │   │   │   ├── apply-enrichments.spec.ts
+│   │   │   │   │   │   │   ├── apply-enrichments.ts
+│   │   │   │   │   │   │   ├── enrich-sous-actions.prompt.ts
+│   │   │   │   │   │   │   ├── enrich-sous-actions.schema.ts
+│   │   │   │   │   │   │   ├── enrich-sous-actions.spec.ts
+│   │   │   │   │   │   │   ├── enrich-sous-actions.ts
+│   │   │   │   │   │   │   ├── index-sous-actions.spec.ts
+│   │   │   │   │   │   │   └── index-sous-actions.ts
+│   │   │   │   │   │   ├── extract-actions
+│   │   │   │   │   │   │   ├── extract-actions.prompt.spec.ts
+│   │   │   │   │   │   │   ├── extract-actions.prompt.ts
+│   │   │   │   │   │   │   ├── extract-actions.schema.ts
+│   │   │   │   │   │   │   ├── extract-actions.spec.ts
+│   │   │   │   │   │   │   ├── extract-actions.ts
+│   │   │   │   │   │   │   ├── extraction-response-to-extracted-actions.spec.ts
+│   │   │   │   │   │   │   └── extraction-response-to-extracted-actions.ts
+│   │   │   │   │   │   ├── extract-text.spec.ts
+│   │   │   │   │   │   ├── extract-text.ts
+│   │   │   │   │   │   ├── qualitative-review
+│   │   │   │   │   │   │   ├── qualitative-review.prompt.ts
+│   │   │   │   │   │   │   ├── qualitative-review.schema.ts
+│   │   │   │   │   │   │   ├── qualitative-review.spec.ts
+│   │   │   │   │   │   │   ├── qualitative-review.ts
+│   │   │   │   │   │   │   ├── render-actions-compact.spec.ts
+│   │   │   │   │   │   │   └── render-actions-compact.ts
+│   │   │   │   │   │   ├── run-import-pipeline.spec.ts
+│   │   │   │   │   │   ├── run-import-pipeline.ts
+│   │   │   │   │   │   └── score-actions
+│   │   │   │   │   │       ├── apply-scores.spec.ts
+│   │   │   │   │   │       ├── apply-scores.ts
+│   │   │   │   │   │       ├── render-actions-text.spec.ts
+│   │   │   │   │   │       ├── render-actions-text.ts
+│   │   │   │   │   │       ├── score-actions.prompt.ts
+│   │   │   │   │   │       ├── score-actions.schema.ts
+│   │   │   │   │   │       ├── score-actions.spec.ts
+│   │   │   │   │   │       └── score-actions.ts
+│   │   │   │   │   └── prompts
+│   │   │   │   │       ├── consolidation.prompt.ts
+│   │   │   │   │       ├── enrichment.prompt.ts
+│   │   │   │   │       ├── extraction.prompt.ts
+│   │   │   │   │       ├── ignore-directive.ts
+│   │   │   │   │       ├── qualitative-review.prompt.ts
+│   │   │   │   │       └── scoring.prompt.ts
 │   │   │   │   ├── axes
 │   │   │   │   │   ├── axe.module.ts
 │   │   │   │   │   ├── axes.router.ts
@@ -3285,105 +3385,6 @@
 │   │   │   │   │   └── shared
 │   │   │   │   │       └── panier.repository.ts
 │   │   │   │   ├── plans
-│   │   │   │   │   ├── ai-plan-import
-│   │   │   │   │   │   ├── adapters
-│   │   │   │   │   │   │   ├── extracted-action-to-import-action.spec.ts
-│   │   │   │   │   │   │   └── extracted-action-to-import-action.ts
-│   │   │   │   │   │   ├── ai-plan-import-job.repository.ts
-│   │   │   │   │   │   ├── ai-plan-import.constants.ts
-│   │   │   │   │   │   ├── ai-plan-import.errors.ts
-│   │   │   │   │   │   ├── ai-plan-import.full-flow.e2e-spec.ts
-│   │   │   │   │   │   ├── ai-plan-import.module.ts
-│   │   │   │   │   │   ├── ai-plan-import.queue.ts
-│   │   │   │   │   │   ├── ai-plan-import.trpc-errors.ts
-│   │   │   │   │   │   ├── enqueue-import
-│   │   │   │   │   │   │   ├── detect-source-mime-type.spec.ts
-│   │   │   │   │   │   │   ├── detect-source-mime-type.ts
-│   │   │   │   │   │   │   ├── enqueue-import.controller.e2e-spec.ts
-│   │   │   │   │   │   │   ├── enqueue-import.controller.ts
-│   │   │   │   │   │   │   ├── enqueue-import.input.spec.ts
-│   │   │   │   │   │   │   ├── enqueue-import.input.ts
-│   │   │   │   │   │   │   ├── enqueue-import.service.spec.ts
-│   │   │   │   │   │   │   ├── enqueue-import.service.ts
-│   │   │   │   │   │   │   ├── validate-xlsx-archive.spec.ts
-│   │   │   │   │   │   │   └── validate-xlsx-archive.ts
-│   │   │   │   │   │   ├── generate-import-draft
-│   │   │   │   │   │   │   ├── draft-to-import-plan-input.spec.ts
-│   │   │   │   │   │   │   ├── draft-to-import-plan-input.ts
-│   │   │   │   │   │   │   ├── generate-import-draft.service.spec.ts
-│   │   │   │   │   │   │   ├── generate-import-draft.service.ts
-│   │   │   │   │   │   │   ├── generate-import-draft.worker.spec.ts
-│   │   │   │   │   │   │   └── generate-import-draft.worker.ts
-│   │   │   │   │   │   ├── get-import-status
-│   │   │   │   │   │   │   ├── get-import-status.input.ts
-│   │   │   │   │   │   │   ├── get-import-status.output.ts
-│   │   │   │   │   │   │   ├── get-import-status.router.ts
-│   │   │   │   │   │   │   ├── get-import-status.service.spec.ts
-│   │   │   │   │   │   │   └── get-import-status.service.ts
-│   │   │   │   │   │   ├── models
-│   │   │   │   │   │   │   ├── ai-plan-import-job.table.ts
-│   │   │   │   │   │   │   ├── ai-plan-import-job.ts
-│   │   │   │   │   │   │   ├── disableable-field.ts
-│   │   │   │   │   │   │   ├── extracted-action.ts
-│   │   │   │   │   │   │   └── plan-draft.ts
-│   │   │   │   │   │   ├── pipeline
-│   │   │   │   │   │   │   ├── __fixtures__
-│   │   │   │   │   │   │   │   └── sample.pdf
-│   │   │   │   │   │   │   ├── consolidate-actions
-│   │   │   │   │   │   │   │   ├── consolidate-actions.prompt.ts
-│   │   │   │   │   │   │   │   ├── consolidate-actions.schema.ts
-│   │   │   │   │   │   │   │   ├── consolidate-actions.spec.ts
-│   │   │   │   │   │   │   │   ├── consolidate-actions.ts
-│   │   │   │   │   │   │   │   ├── select-low-score-actions.spec.ts
-│   │   │   │   │   │   │   │   ├── select-low-score-actions.ts
-│   │   │   │   │   │   │   │   ├── update-actions-with-consolidated-entries.spec.ts
-│   │   │   │   │   │   │   │   └── update-actions-with-consolidated-entries.ts
-│   │   │   │   │   │   │   ├── enrich-sous-actions
-│   │   │   │   │   │   │   │   ├── apply-enrichments.spec.ts
-│   │   │   │   │   │   │   │   ├── apply-enrichments.ts
-│   │   │   │   │   │   │   │   ├── enrich-sous-actions.prompt.ts
-│   │   │   │   │   │   │   │   ├── enrich-sous-actions.schema.ts
-│   │   │   │   │   │   │   │   ├── enrich-sous-actions.spec.ts
-│   │   │   │   │   │   │   │   ├── enrich-sous-actions.ts
-│   │   │   │   │   │   │   │   ├── index-sous-actions.spec.ts
-│   │   │   │   │   │   │   │   └── index-sous-actions.ts
-│   │   │   │   │   │   │   ├── extract-actions
-│   │   │   │   │   │   │   │   ├── extract-actions.prompt.spec.ts
-│   │   │   │   │   │   │   │   ├── extract-actions.prompt.ts
-│   │   │   │   │   │   │   │   ├── extract-actions.schema.ts
-│   │   │   │   │   │   │   │   ├── extract-actions.spec.ts
-│   │   │   │   │   │   │   │   ├── extract-actions.ts
-│   │   │   │   │   │   │   │   ├── extraction-response-to-extracted-actions.spec.ts
-│   │   │   │   │   │   │   │   └── extraction-response-to-extracted-actions.ts
-│   │   │   │   │   │   │   ├── extract-text.spec.ts
-│   │   │   │   │   │   │   ├── extract-text.ts
-│   │   │   │   │   │   │   ├── qualitative-review
-│   │   │   │   │   │   │   │   ├── qualitative-review.prompt.ts
-│   │   │   │   │   │   │   │   ├── qualitative-review.schema.ts
-│   │   │   │   │   │   │   │   ├── qualitative-review.spec.ts
-│   │   │   │   │   │   │   │   ├── qualitative-review.ts
-│   │   │   │   │   │   │   │   ├── render-actions-compact.spec.ts
-│   │   │   │   │   │   │   │   └── render-actions-compact.ts
-│   │   │   │   │   │   │   ├── run-import-pipeline.spec.ts
-│   │   │   │   │   │   │   ├── run-import-pipeline.ts
-│   │   │   │   │   │   │   └── score-actions
-│   │   │   │   │   │   │       ├── apply-scores.spec.ts
-│   │   │   │   │   │   │       ├── apply-scores.ts
-│   │   │   │   │   │   │       ├── render-actions-text.spec.ts
-│   │   │   │   │   │   │       ├── render-actions-text.ts
-│   │   │   │   │   │   │       ├── score-actions.prompt.ts
-│   │   │   │   │   │   │       ├── score-actions.schema.ts
-│   │   │   │   │   │   │       ├── score-actions.spec.ts
-│   │   │   │   │   │   │       └── score-actions.ts
-│   │   │   │   │   │   └── prompts
-│   │   │   │   │   │       ├── consolidation.prompt.ts
-│   │   │   │   │   │       ├── enrichment.prompt.ts
-│   │   │   │   │   │       ├── extraction.prompt.ts
-│   │   │   │   │   │       ├── ignore-directive.ts
-│   │   │   │   │   │       ├── prompt-template.spec.ts
-│   │   │   │   │   │       ├── prompt-template.ts
-│   │   │   │   │   │       ├── qualitative-review.prompt.ts
-│   │   │   │   │   │       └── scoring.prompt.ts
 │   │   │   │   │   ├── compute-budget
 │   │   │   │   │   │   ├── compute-budget.rules.spec.ts
 │   │   │   │   │   │   └── compute-budget.rules.ts
@@ -3549,6 +3550,14 @@
 │   │   │   │   │   │   └── list-action-explications.repository.ts
 │   │   │   │   │   └── list-action-statuts
 │   │   │   │   │       └── list-action-statuts.repository.ts
+│   │   │   │   ├── add-preuve
+│   │   │   │   │   ├── add-preuve.input.ts
+│   │   │   │   │   ├── add-preuve.output.ts
+│   │   │   │   │   ├── add-preuve.repository.ts
+│   │   │   │   │   ├── add-preuve.router.e2e-spec.ts
+│   │   │   │   │   ├── add-preuve.router.ts
+│   │   │   │   │   ├── add-preuve.service.spec.ts
+│   │   │   │   │   └── add-preuve.service.ts
 │   │   │   │   ├── compute-score
 │   │   │   │   │   ├── action-statut-history.service.ts
 │   │   │   │   │   ├── action-statuts-by-action-id.dto.ts
@@ -3584,6 +3593,42 @@
 │   │   │   │   │       ├── get-referentiel-definition.service.ts
 │   │   │   │   │       ├── get-referentiel.controller.e2e-spec.ts
 │   │   │   │   │       └── get-referentiel.controller.ts
+│   │   │   │   ├── documents
+│   │   │   │   │   ├── documents-labellisation.test-fixture.ts
+│   │   │   │   │   ├── list-documents-audit
+│   │   │   │   │   │   ├── list-documents-audit.errors.ts
+│   │   │   │   │   │   ├── list-documents-audit.input.ts
+│   │   │   │   │   │   ├── list-documents-audit.repository.ts
+│   │   │   │   │   │   ├── list-documents-audit.router.e2e-spec.ts
+│   │   │   │   │   │   ├── list-documents-audit.router.ts
+│   │   │   │   │   │   ├── list-documents-audit.service.spec.ts
+│   │   │   │   │   │   └── list-documents-audit.service.ts
+│   │   │   │   │   ├── list-documents-demande-labellisation
+│   │   │   │   │   │   ├── list-documents-demande-labellisation.errors.ts
+│   │   │   │   │   │   ├── list-documents-demande-labellisation.input.ts
+│   │   │   │   │   │   ├── list-documents-demande-labellisation.repository.ts
+│   │   │   │   │   │   ├── list-documents-demande-labellisation.router.e2e-spec.ts
+│   │   │   │   │   │   ├── list-documents-demande-labellisation.router.ts
+│   │   │   │   │   │   ├── list-documents-demande-labellisation.service.spec.ts
+│   │   │   │   │   │   └── list-documents-demande-labellisation.service.ts
+│   │   │   │   │   ├── list-documents-mesure
+│   │   │   │   │   │   ├── list-documents-mesure.adapter.ts
+│   │   │   │   │   │   ├── list-documents-mesure.errors.ts
+│   │   │   │   │   │   ├── list-documents-mesure.input.ts
+│   │   │   │   │   │   ├── list-documents-mesure.output.ts
+│   │   │   │   │   │   ├── list-documents-mesure.repository.ts
+│   │   │   │   │   │   ├── list-documents-mesure.router.e2e-spec.ts
+│   │   │   │   │   │   ├── list-documents-mesure.router.ts
+│   │   │   │   │   │   └── list-documents-mesure.service.ts
+│   │   │   │   │   ├── list-documents-referentiel
+│   │   │   │   │   │   ├── list-documents-referentiel.errors.ts
+│   │   │   │   │   │   ├── list-documents-referentiel.input.ts
+│   │   │   │   │   │   ├── list-documents-referentiel.output.ts
+│   │   │   │   │   │   ├── list-documents-referentiel.repository.ts
+│   │   │   │   │   │   ├── list-documents-referentiel.router.e2e-spec.ts
+│   │   │   │   │   │   ├── list-documents-referentiel.router.ts
+│   │   │   │   │   │   └── list-documents-referentiel.service.ts
+│   │   │   │   │   └── referentiel-documents-access.service.ts
 │   │   │   │   ├── export-score
 │   │   │   │   │   ├── build-columns.spec.ts
 │   │   │   │   │   ├── build-columns.ts
@@ -3679,14 +3724,6 @@
 │   │   │   │   │   ├── list-labellisations.controller.spec.ts
 │   │   │   │   │   ├── list-labellisations.controller.ts
 │   │   │   │   │   ├── list-labellisations.service.ts
-│   │   │   │   │   ├── list-preuves
-│   │   │   │   │   │   ├── list-preuves-audit.errors.ts
-│   │   │   │   │   │   ├── list-preuves-audit.input.ts
-│   │   │   │   │   │   ├── list-preuves-labellisation.errors.ts
-│   │   │   │   │   │   ├── list-preuves-labellisation.input.ts
-│   │   │   │   │   │   ├── list-preuves.router.e2e-spec.ts
-│   │   │   │   │   │   ├── list-preuves.router.ts
-│   │   │   │   │   │   └── list-preuves.service.ts
 │   │   │   │   │   ├── post-audit-scores.table.ts
 │   │   │   │   │   ├── pre-audit-scores.table.ts
 │   │   │   │   │   ├── request-labellisation
@@ -3767,6 +3804,11 @@
 │   │   │   │   │   │   ├── build-liens-csv.ts
 │   │   │   │   │   │   ├── prepare-archive-entries.spec.ts
 │   │   │   │   │   │   └── prepare-archive-entries.ts
+│   │   │   │   │   ├── collect-audit-preuves
+│   │   │   │   │   │   ├── collect-audit-preuves.service.spec.ts
+│   │   │   │   │   │   ├── collect-audit-preuves.service.ts
+│   │   │   │   │   │   ├── collect-preuves.repository.e2e-spec.ts
+│   │   │   │   │   │   └── collect-preuves.repository.ts
 │   │   │   │   │   ├── delete-preuves-archive
 │   │   │   │   │   │   ├── delete-preuves-archive.service.spec.ts
 │   │   │   │   │   │   ├── delete-preuves-archive.service.ts
@@ -3785,11 +3827,6 @@
 │   │   │   │   │   │   ├── get-preuves-archive.router.ts
 │   │   │   │   │   │   ├── get-preuves-archive.service.spec.ts
 │   │   │   │   │   │   └── get-preuves-archive.service.ts
-│   │   │   │   │   ├── list-audit-preuves
-│   │   │   │   │   │   ├── collect-preuves.repository.e2e-spec.ts
-│   │   │   │   │   │   ├── collect-preuves.repository.ts
-│   │   │   │   │   │   ├── list-audit-preuves.service.spec.ts
-│   │   │   │   │   │   └── list-audit-preuves.service.ts
 │   │   │   │   │   ├── list-preuves-archive
 │   │   │   │   │   │   ├── list-preuves-archive.input.ts
 │   │   │   │   │   │   ├── list-preuves-archive.output.ts
@@ -4147,6 +4184,7 @@
 │   │   │       │   ├── export-excel.utils.spec.ts
 │   │   │       │   └── export-excel.utils.ts
 │   │   │       ├── expression-parser
+│   │   │       │   ├── evaluate-demarche.ts
 │   │   │       │   ├── evaluate-identite.ts
 │   │   │       │   ├── expression-parser.spec.ts
 │   │   │       │   ├── expression-parser.ts
@@ -4174,6 +4212,8 @@
 │   │   │       │   ├── llm.service.ts
 │   │   │       │   ├── parse-json-response.spec.ts
 │   │   │       │   ├── parse-json-response.ts
+│   │   │       │   ├── prompt-template.spec.ts
+│   │   │       │   ├── prompt-template.ts
 │   │   │       │   └── token-usage.ts
 │   │   │       ├── log
 │   │   │       │   ├── custom-logger.service.ts
@@ -4947,6 +4987,11 @@
 │       │   │   │       ├── crisp-session.sample.ts
 │       │   │   │       └── ticket-database.sample.ts
 │       │   │   └── notion.module.ts
+│       │   ├── posthog
+│       │   │   ├── posthog-client.service.ts
+│       │   │   ├── posthog-collectivites-sync.service.spec.ts
+│       │   │   ├── posthog-collectivites-sync.service.ts
+│       │   │   └── posthog.module.ts
 │       │   ├── sentry
 │       │   │   ├── controllers
 │       │   │   │   └── sentry-notification.controller.ts
@@ -5027,6 +5072,7 @@
 │   │   │   ├── 26-insert_fake_pcaet_avis.sql
 │   │   │   ├── 27-insert_fake_dreal_ara.sql
 │   │   │   ├── 28-insert_fake_instructeurs_region_ddt.sql
+│   │   │   ├── 29-insert_fake_dr_ademe_service_national.sql
 │   │   │   └── README.md
 │   │   ├── geojson
 │   │   │   ├── commune_geojson.sql
@@ -5042,7 +5088,8 @@
 │   │   │   ├── 05-competence_banatic.sql
 │   │   │   ├── 06-complete_collectivite_with_import.sql
 │   │   │   ├── 07-banatic_2025_competence_par_collectivite.sql
-│   │   │   └── 08-code_siren_commune.sql
+│   │   │   ├── 08-code_siren_commune.sql
+│   │   │   └── ListeServices.xlsx
 │   │   ├── seed.sh
 │   │   ├── test
 │   │   │   ├── 00-pgtap.sql
@@ -5146,7 +5193,7 @@
 │   │   │   │   ├── toutes_les_collectivites@v2.67.0.sql
 │   │   │   │   ├── toutes_les_collectivites@v2.89.0.sql
 │   │   │   │   ├── type.sql
-│   │   │   │   └── type_*.sql  (5 files)
+│   │   │   │   └── type_*.sql  (6 files)
 │   │   │   ├── creation_dune_table_instance_de_gouvernance.sql
 │   │   │   ├── cron
 │   │   │   │   ├── cron.sql
@@ -5177,16 +5224,21 @@
 │   │   │   │   ├── demarche.sql
 │   │   │   │   ├── demarche_documents.sql
 │   │   │   │   ├── demarche_documents_additional.sql
+│   │   │   │   ├── demarche_documents_applicabilite.sql
 │   │   │   │   ├── demarche_documents_etape.sql
 │   │   │   │   ├── demarche_documents_inclusion_declaree.sql
 │   │   │   │   ├── demarche_documents_inclusion_par_defaut.sql
 │   │   │   │   ├── demarche_documents_portee_both.sql
 │   │   │   │   ├── demarche_documents_substitution_unique.sql
 │   │   │   │   ├── pcaet_bilan_precedent_renomme.sql
+│   │   │   │   ├── pcaet_bilan_renouvellement.sql
 │   │   │   │   ├── pcaet_diagnostic.sql
+│   │   │   │   ├── pcaet_diagnostic_drop_referentiel_tables.sql
+│   │   │   │   ├── pcaet_diagnostic_indicateur_source_metadonnee.sql
 │   │   │   │   ├── pcaet_diagnostic_ordre_reglementaire.sql
 │   │   │   │   ├── pcaet_documents_amont.sql
 │   │   │   │   ├── pcaet_documents_aval.sql
+│   │   │   │   ├── pcaet_documents_plans_annexes.sql
 │   │   │   │   ├── pcaet_programme_actions.sql
 │   │   │   │   ├── pcaet_vulnerabilite.sql
 │   │   │   │   ├── pcaet_vulnerabilite_thematique.sql
@@ -5198,6 +5250,7 @@
 │   │   │   ├── demarches
 │   │   │   │   ├── pcaet_avis.sql
 │   │   │   │   ├── pcaet_avis_president_region.sql
+│   │   │   │   ├── pcaet_destinataires_dr_ademe_service_national.sql
 │   │   │   │   ├── pcaet_instructeurs_region_ddt.sql
 │   │   │   │   ├── pcaet_instruction_validation.sql
 │   │   │   │   └── pcaet_instruction_validation_supprimee.sql
@@ -5315,6 +5368,7 @@
 │   │   │   │   ├── audit@v4.27.1.sql
 │   │   │   │   ├── audit@v4.51.0.sql
 │   │   │   │   ├── audit@v4.58.0.sql
+│   │   │   │   ├── bibliotheque_fichier_not_null.sql
 │   │   │   │   ├── comparaison_*.sql  (6 files)
 │   │   │   │   ├── cot.sql
 │   │   │   │   ├── cot@v2.21.0.sql
@@ -5323,6 +5377,7 @@
 │   │   │   │   ├── demande@v2.11.0.sql
 │   │   │   │   ├── demande@v2.30.0.sql
 │   │   │   │   ├── demande@v2.95.0.sql
+│   │   │   │   ├── drop_add_bibliotheque_fichier.sql
 │   │   │   │   ├── drop_preuve_count.sql
 │   │   │   │   ├── export.sql
 │   │   │   │   ├── fichier_preuve.sql
@@ -5380,6 +5435,7 @@
 │   │   │   │   ├── confidentialite.sql
 │   │   │   │   ├── drop_create_fiche.sql
 │   │   │   │   ├── drop_plan_action_chemin_view.sql
+│   │   │   │   ├── drop_plan_action_profondeur.sql
 │   │   │   │   ├── drop_private_plan_action_functions.sql
 │   │   │   │   ├── export.sql
 │   │   │   │   ├── export@v2.29.0.sql
@@ -5718,7 +5774,7 @@
 │   │   │   │   ├── toutes_les_collectivites@v2.67.0.sql
 │   │   │   │   ├── toutes_les_collectivites@v2.89.0.sql
 │   │   │   │   ├── type.sql
-│   │   │   │   └── type_*.sql  (5 files)
+│   │   │   │   └── type_*.sql  (6 files)
 │   │   │   ├── creation_dune_table_instance_de_gouvernance.sql
 │   │   │   ├── cron
 │   │   │   │   ├── cron.sql
@@ -5749,16 +5805,21 @@
 │   │   │   │   ├── demarche.sql
 │   │   │   │   ├── demarche_documents.sql
 │   │   │   │   ├── demarche_documents_additional.sql
+│   │   │   │   ├── demarche_documents_applicabilite.sql
 │   │   │   │   ├── demarche_documents_etape.sql
 │   │   │   │   ├── demarche_documents_inclusion_declaree.sql
 │   │   │   │   ├── demarche_documents_inclusion_par_defaut.sql
 │   │   │   │   ├── demarche_documents_portee_both.sql
 │   │   │   │   ├── demarche_documents_substitution_unique.sql
 │   │   │   │   ├── pcaet_bilan_precedent_renomme.sql
+│   │   │   │   ├── pcaet_bilan_renouvellement.sql
 │   │   │   │   ├── pcaet_diagnostic.sql
+│   │   │   │   ├── pcaet_diagnostic_drop_referentiel_tables.sql
+│   │   │   │   ├── pcaet_diagnostic_indicateur_source_metadonnee.sql
 │   │   │   │   ├── pcaet_diagnostic_ordre_reglementaire.sql
 │   │   │   │   ├── pcaet_documents_amont.sql
 │   │   │   │   ├── pcaet_documents_aval.sql
+│   │   │   │   ├── pcaet_documents_plans_annexes.sql
 │   │   │   │   ├── pcaet_programme_actions.sql
 │   │   │   │   ├── pcaet_vulnerabilite.sql
 │   │   │   │   ├── pcaet_vulnerabilite_thematique.sql
@@ -5770,6 +5831,7 @@
 │   │   │   ├── demarches
 │   │   │   │   ├── pcaet_avis.sql
 │   │   │   │   ├── pcaet_avis_president_region.sql
+│   │   │   │   ├── pcaet_destinataires_dr_ademe_service_national.sql
 │   │   │   │   ├── pcaet_instructeurs_region_ddt.sql
 │   │   │   │   ├── pcaet_instruction_validation.sql
 │   │   │   │   └── pcaet_instruction_validation_supprimee.sql
@@ -5887,6 +5949,7 @@
 │   │   │   │   ├── audit@v4.27.1.sql
 │   │   │   │   ├── audit@v4.51.0.sql
 │   │   │   │   ├── audit@v4.58.0.sql
+│   │   │   │   ├── bibliotheque_fichier_not_null.sql
 │   │   │   │   ├── comparaison_*.sql  (6 files)
 │   │   │   │   ├── cot.sql
 │   │   │   │   ├── cot@v2.21.0.sql
@@ -5895,6 +5958,7 @@
 │   │   │   │   ├── demande@v2.11.0.sql
 │   │   │   │   ├── demande@v2.30.0.sql
 │   │   │   │   ├── demande@v2.95.0.sql
+│   │   │   │   ├── drop_add_bibliotheque_fichier.sql
 │   │   │   │   ├── drop_preuve_count.sql
 │   │   │   │   ├── export.sql
 │   │   │   │   ├── fichier_preuve.sql
@@ -5952,6 +6016,7 @@
 │   │   │   │   ├── confidentialite.sql
 │   │   │   │   ├── drop_create_fiche.sql
 │   │   │   │   ├── drop_plan_action_chemin_view.sql
+│   │   │   │   ├── drop_plan_action_profondeur.sql
 │   │   │   │   ├── drop_private_plan_action_functions.sql
 │   │   │   │   ├── export.sql
 │   │   │   │   ├── export@v2.29.0.sql
@@ -6290,10 +6355,7 @@
 │   │       │   ├── toutes_les_collectivites@v2.67.0.sql
 │   │       │   ├── toutes_les_collectivites@v2.89.0.sql
 │   │       │   ├── type.sql
-│   │       │   ├── type_add_ddt.sql
-│   │       │   ├── type_add_dreal.sql
-│   │       │   ├── type_add_service_public.sql
-│   │       │   └── type_add_structure_sans_statut_juridique.sql
+│   │       │   └── type_*.sql  (5 files)
 │   │       ├── creation_dune_table_instance_de_gouvernance.sql
 │   │       ├── cron
 │   │       │   ├── cron.sql
@@ -6324,16 +6386,21 @@
 │   │       │   ├── demarche.sql
 │   │       │   ├── demarche_documents.sql
 │   │       │   ├── demarche_documents_additional.sql
+│   │       │   ├── demarche_documents_applicabilite.sql
 │   │       │   ├── demarche_documents_etape.sql
 │   │       │   ├── demarche_documents_inclusion_declaree.sql
 │   │       │   ├── demarche_documents_inclusion_par_defaut.sql
 │   │       │   ├── demarche_documents_portee_both.sql
 │   │       │   ├── demarche_documents_substitution_unique.sql
 │   │       │   ├── pcaet_bilan_precedent_renomme.sql
+│   │       │   ├── pcaet_bilan_renouvellement.sql
 │   │       │   ├── pcaet_diagnostic.sql
+│   │       │   ├── pcaet_diagnostic_drop_referentiel_tables.sql
+│   │       │   ├── pcaet_diagnostic_indicateur_source_metadonnee.sql
 │   │       │   ├── pcaet_diagnostic_ordre_reglementaire.sql
 │   │       │   ├── pcaet_documents_amont.sql
 │   │       │   ├── pcaet_documents_aval.sql
+│   │       │   ├── pcaet_documents_plans_annexes.sql
 │   │       │   ├── pcaet_programme_actions.sql
 │   │       │   ├── pcaet_vulnerabilite.sql
 │   │       │   ├── pcaet_vulnerabilite_thematique.sql
@@ -6345,6 +6412,7 @@
 │   │       ├── demarches
 │   │       │   ├── pcaet_avis.sql
 │   │       │   ├── pcaet_avis_president_region.sql
+│   │       │   ├── pcaet_destinataires_dr_ademe_service_national.sql
 │   │       │   ├── pcaet_instructeurs_region_ddt.sql
 │   │       │   ├── pcaet_instruction_validation.sql
 │   │       │   └── pcaet_instruction_validation_supprimee.sql
@@ -6462,6 +6530,7 @@
 │   │       │   ├── audit@v4.27.1.sql
 │   │       │   ├── audit@v4.51.0.sql
 │   │       │   ├── audit@v4.58.0.sql
+│   │       │   ├── bibliotheque_fichier_not_null.sql
 │   │       │   ├── comparaison_*.sql  (6 files)
 │   │       │   ├── cot.sql
 │   │       │   ├── cot@v2.21.0.sql
@@ -6470,6 +6539,7 @@
 │   │       │   ├── demande@v2.11.0.sql
 │   │       │   ├── demande@v2.30.0.sql
 │   │       │   ├── demande@v2.95.0.sql
+│   │       │   ├── drop_add_bibliotheque_fichier.sql
 │   │       │   ├── drop_preuve_count.sql
 │   │       │   ├── export.sql
 │   │       │   ├── fichier_preuve.sql
@@ -6527,6 +6597,7 @@
 │   │       │   ├── confidentialite.sql
 │   │       │   ├── drop_create_fiche.sql
 │   │       │   ├── drop_plan_action_chemin_view.sql
+│   │       │   ├── drop_plan_action_profondeur.sql
 │   │       │   ├── drop_private_plan_action_functions.sql
 │   │       │   ├── export.sql
 │   │       │   ├── export@v2.29.0.sql
@@ -6796,9 +6867,9 @@
 │       │   ├── bucket_rls_auditeur_edit_window.sql
 │       │   ├── bucket_rls_super_admin.sql
 │       │   ├── collectivite_test.sql
-│       │   └── identite.sql
+│       │   ├── identite.sql
+│       │   └── services_etat.sql
 │       ├── demarche
-│       │   ├── pcaet_diagnostic.sql
 │       │   └── pcaet_vulnerabilite.sql
 │       ├── demarches
 │       │   └── pcaet_avis.sql
@@ -6813,7 +6884,6 @@
 │       │   ├── audit.sql
 │       │   ├── comparaison_audit.sql
 │       │   ├── demande.sql
-│       │   ├── fichier_preuve.sql
 │       │   ├── labellisation.sql
 │       │   └── preuve_v2.sql
 │       ├── plan_action
@@ -6939,9 +7009,12 @@
 │   │   ├── demarches
 │   │   │   └── pcaet
 │   │   │       ├── demarche-pcaet-documents-additional.spec.ts
+│   │   │       ├── demarche-pcaet-documents-conditionnels.spec.ts
 │   │   │       ├── demarche-pcaet-vulnerabilite.spec.ts
 │   │   │       ├── demarche-pcaet-workflow.spec.ts
-│   │   │       └── demarche-pcaet.pom.ts
+│   │   │       ├── demarche-pcaet.pom.ts
+│   │   │       ├── instruction-contexte.spec.ts
+│   │   │       └── instruction.pom.ts
 │   │   ├── indicateurs
 │   │   │   ├── export-indicateurs
 │   │   │   │   ├── export-indicateurs.pom.ts
@@ -6967,6 +7040,7 @@
 │   │   │   │       ├── contributeur.spec.ts
 │   │   │   │       ├── financeurs-draft.spec.ts
 │   │   │   │       ├── lecteur-readonly-description.spec.ts
+│   │   │   │       ├── mutualiser-action.spec.ts
 │   │   │   │       └── sous-actions.pom.ts
 │   │   │   └── plans
 │   │   │       ├── create-plan
@@ -7226,6 +7300,7 @@
 │   │   │   │   ├── demarche.schema.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   └── pcaet
+│   │   │   │       ├── contexte-instruction.schema.ts
 │   │   │   │       ├── demarche-pcaet-modifiable.rules.spec.ts
 │   │   │   │       ├── demarche-pcaet-modifiable.rules.ts
 │   │   │   │       ├── demarche-pcaet-obligation.enum.schema.ts
@@ -7233,6 +7308,8 @@
 │   │   │   │       ├── demarche-pcaet-status.enum.schema.ts
 │   │   │   │       ├── demarche-pcaet.schema.ts
 │   │   │   │       ├── diagnostic
+│   │   │   │       │   ├── demarche-pcaet-diagnostic.config.spec.ts
+│   │   │   │       │   ├── demarche-pcaet-diagnostic.config.ts
 │   │   │   │       │   ├── demarche-pcaet-diagnostic.rules.spec.ts
 │   │   │   │       │   ├── demarche-pcaet-diagnostic.rules.ts
 │   │   │   │       │   ├── demarche-pcaet-diagnostic.schema.ts
@@ -7292,6 +7369,7 @@
 │   │   │   │   ├── valeurs
 │   │   │   │   │   ├── indicateur-valeur-type.enum.ts
 │   │   │   │   │   ├── indicateur-valeur.schema.ts
+│   │   │   │   │   ├── iso-date.utils.ts
 │   │   │   │   │   └── values.constants.ts
 │   │   │   │   └── verification-trajectoire-status.ts
 │   │   │   ├── metrics
@@ -7447,6 +7525,7 @@
 │   │   │   │   │   ├── is-referentiel-mutation-operation.spec.ts
 │   │   │   │   │   ├── is-referentiel-mutation-operation.ts
 │   │   │   │   │   ├── permission-operation.enum.schema.ts
+│   │   │   │   │   ├── permission.models.spec.ts
 │   │   │   │   │   ├── permission.models.ts
 │   │   │   │   │   ├── resource-type.enum.schema.ts
 │   │   │   │   │   ├── user-permission.rule.spec.ts
@@ -8267,4 +8346,4 @@
 ├── tsconfig.json
 ├── vitest.config.ts
 └── vitest.workspace.ts
-1388 directories, 7150 files
+1396 directories, 7227 files

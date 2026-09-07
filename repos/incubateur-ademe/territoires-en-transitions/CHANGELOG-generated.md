@@ -1,37 +1,35 @@
-## Changelog : territoires-en-transitions (30 derniers jours, au 28 août 2026)
+## Changelog : territoires-en-transitions (30 derniers jours, au 04 septembre 2026)
 
 ### Résumé
-Ce mois a été marqué par des évolutions majeures, notamment la mise en place du nouveau cycle de vie des démarches PCAET (du diagnostic à l'instruction) et la modernisation du système d'authentification via l'intégration de l'identité numérique (OIDC). L'interface utilisateur a également bénéficié d'une refonte de la navigation et de l'ajout de nouveaux outils de pilotage pour faciliter le suivi des actions de transition.
+Ce mois a été marqué par une avancée majeure sur le parcours PCAET, avec l'automatisation de l'instruction et une gestion plus fine des diagnostics (vulnérabilités, documents, avis). L'authentification a été modernisée grâce à l'intégration du protocole OIDC (ProConnect/MonCompteAdeme), et l'interface utilisateur a bénéficié d'une refonte importante pour améliorer la clarté des parcours de labellisation et de transition écologique.
 
 ### Évolutions fonctionnelles
-- **Démarches PCAET** : 
-    - Implémentation complète du nouveau workflow : création de la démarche, réalisation du diagnostic thématique, gestion des documents et processus d'instruction.
-    - Nouveau parcours d'avis permettant aux instructeurs (DREAL, Région) de déposer et valider des avis sur les dossiers.
-    - Amélioration du tableau de bord pour le suivi des demandes d'avis et de l'avancement des dossiers.
-- **Authentification & Accès** : 
-    - Intégration de la connexion et de l'inscription via les fournisseurs d'identité (OIDC), incluant ProConnect et MonCompteAdeme.
-    - Gestion automatisée de la liaison d'identité et de la création de comptes via l'identité numérique.
-- **Labellisation & Audits** : 
-    - Amélioration du parcours de demande d'audit et de labellisation avec des contrôles de complétude plus précis.
-    - Optimisation de la visibilité des statuts d'audit et des accès aux mesures.
-- **Interface Utilisateur (UI)** : 
-    - Refonte de la navigation principale pour une meilleure ergonomie.
-    - Ajout de nouveaux composants visuels : boutons "split", variantes de boutons "danger", et en-têtes de tableaux fixes (sticky) pour faciliter la lecture des données.
-    - Mise en place d'une bannière d'information persistante pour les messages importants.
+- **Parcours PCAET & Démarches** :
+    - Mise en place d'un parcours d'instruction complet : dépôt d'avis, notification des contacts, et gestion des étapes de validation par les services instructeurs (DREAL, Régions, DDT).
+    - Amélioration du diagnostic : ajout d'une étape de saisie des vulnérabilités (obligatoire pour clôturer le diagnostic) et navigation pas à pas facilitée.
+    - Gestion documentaire enrichie : possibilité de lier plusieurs plans à une démarche, accès sécurisé via des URLs signées et gestion plus intuitive des documents de la démarche.
+    - Nouveau tableau de bord pour le suivi des demandes d'avis et statistiques associées.
+- **Labellisation & Référentiels** :
+    - Déploiement de la bascule "Transition Écologique" (TE) de bout en bout.
+    - Ajout de nouveaux onglets dans les référentiels : bibliothèque de documents, journal d'activité et synthèse de l'état des lieux.
+    - Extension des droits : les super-administrateurs peuvent désormais remplacer un rapport d'audit.
+- **Authentification & Profils** :
+    - Intégration de la connexion via OIDC (ProConnect et MonCompteAdeme) avec gestion automatique de la liaison d'identité et des profils utilisateurs.
+- **Interface Utilisateur (UI)** :
+    - Amélioration de la navigation et de la clarté : mise à jour massive des libellés (wording), ajout de boutons "split" et de variantes de boutons (danger, lien).
+    - Optimisation de l'affichage : en-têtes de tableaux fixes (sticky), gestion des bannières d'information mémorisées et amélioration de l'accessibilité clavier.
 
 ### Évolutions techniques
-- **Architecture & Backend** : 
-    - Refonte profonde du modèle de données pour supporter les démarches PCAET et les nouveaux types de collectivités.
-    - Migration de plusieurs services vers tRPC pour une meilleure gestion des échanges API.
-    - Mise en place d'un système de gestion des documents via des URLs signées pour plus de sécurité.
-- **Environnement de développement (DevX)** : 
-    - Optimisation majeure de la stack de développement locale avec un support amélioré de Docker et des *worktrees* Git.
-    - Création d'un tableau de bord interactif en ligne de commande (TUI) pour piloter l'infrastructure locale.
-    - Amélioration des scripts de déploiement et de gestion des bases de données locales.
-- **CI/CD & Qualité** : 
-    - Optimisation des pipelines de tests (streaming des sorties, exécution plus rapide des tests E2E).
-    - Renforcement de la couverture de tests sur les flux critiques (authentification, labellisation, PCAET).
+- **Architecture & Backend** :
+    - Refonte profonde des modules "Référentiels", "Plans" et "Diagnostic" pour une meilleure séparation des responsabilités (utilisation de repositories et de services dédiés).
+    - Migration et normalisation des données (passage au camelCase pour de nombreux modèles et types).
+    - Optimisation de la gestion des fichiers et des accès aux documents via le backend.
+- **Infrastructure & DevOps** :
+    - Optimisation de la CI/CD : accélération des tests E2E, exécution des tests par périmètre affecté et amélioration de la configuration Dependabot.
+    - Amélioration de l'expérience de développement (DevX) : nouveaux scripts de configuration locale, optimisation de la construction des images Docker et gestion améliorée des variables d'environnement.
+- **Observabilité** :
+    - Automatisation de la synchronisation quotidienne des groupes utilisateurs avec PostHog via un job cron.
 
 ### Autres changements
-- Mise à jour de la documentation technique (authentification, README).
-- Nettoyage général du code, suppression de composants obsolètes et harmonisation des libellés de l'interface.
+- **Documentation** : Mise à jour des guides d'utilisation (authentification, règles de wording pour les agents).
+- **Qualité du code** : Nettoyage important des composants obsolètes, suppression de code mort et renforcement de la couverture de tests (Vitest et Playwright).

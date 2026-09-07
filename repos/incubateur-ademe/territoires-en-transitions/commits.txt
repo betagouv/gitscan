@@ -1,3 +1,121 @@
+2026-09-04T20:02:12+02:00 - f82a119 - Fred Arnoux : refactor(diagnostic): remove pcaet diagnostic indicateurs tables
+2026-09-04T20:02:12+02:00 - d84e7dc - Fred Arnoux : feat(diagnostic): implement update functionality for diagnostic indicators values
+2026-09-04T20:02:12+02:00 - 89b3b10 - Fred Arnoux : refactor(diagnostic): simplify diagnostic indicateurs structure
+2026-09-04T20:02:12+02:00 - 83c3984 - Fred Arnoux : feat(diagnostic): implement set diagnostic reference year functionality
+2026-09-04T20:02:12+02:00 - 581fd88 - Fred Arnoux : feat(diagnostic): enhance PCAET completion logic and validation
+2026-09-04T20:02:12+02:00 - 516841e - Fred Arnoux : fix(diagnostic): isole les valeurs PCAET par métadonnée de démarche
+2026-09-04T20:02:12+02:00 - 4fda94f - Fred Arnoux : fix(ci): exclude pcaet-collectivite from indicateur moyennes
+2026-09-04T20:02:12+02:00 - 4e79a7e - Fred Arnoux : fix(labels): update instruction title for clarity in DREAL responsibilities
+2026-09-04T20:02:12+02:00 - 3235eba - Fred Arnoux : fix(next-env): update import paths for route and root-params types to use dev directory
+2026-09-04T20:02:12+02:00 - 244b1aa - Fred Arnoux : fix(ci): fill every required PCAET diagnostic leaf in test fixture
+2026-09-04T14:28:30+02:00 - 21073cc - Fred Arnoux : chore(referentiels): remove unused useTable from DEPRECATED_ReferentielTable
+2026-09-04T14:19:42+02:00 - 8ecfc2a - Leny Bernard : feat(demarches): open the PCAET instruction to the DR ADEME and national services
+2026-09-04T12:01:10+02:00 - c5db160 - Marc Rutkowski : feat(tools): synchronise le groupe PostHog "collectivite" via un cron quotidien
+2026-09-04T10:54:08+02:00 - b5a04f4 - Fred Arnoux : chore(deps): upgrade Supabase to latest version
+2026-09-04T10:12:16+02:00 - fec3c4e - Leny Bernard : docs(demarches): trim the instruction context comments
+2026-09-04T10:12:16+02:00 - 97f3efd - Leny Bernard : fix(demarches): read the instruction collectivite ids from the url
+2026-09-04T10:12:16+02:00 - 46130f5 - Leny Bernard : fix(demarches): apply review suggestions
+2026-09-04T10:12:16+02:00 - 2bf3b91 - Leny Bernard : feat(demarches): bascule le contexte sur la collectivite instruite
+2026-09-03T17:10:26+02:00 - 6691628 - Gaël Servaud : refactor(plans): applique la convention ServiceSecondArg aux services du domaine
+2026-09-03T16:30:42+02:00 - da74b58 - Gaël Servaud : fix(labellisation): purge la derniere assertion morte du verify de preuve_v2
+2026-09-03T16:30:42+02:00 - 0d37921 - Gaël Servaud : fix(labellisation): aligne le verify du retrait et purge l'assertion devenue fausse
+2026-09-03T16:30:42+02:00 - 07d1408 - Gaël Servaud : chore(labellisation): retire la RPC add_bibliotheque_fichier
+2026-09-03T15:08:55+02:00 - 9c2b059 - Gaël Servaud : fix(collectivites): borne le verrou de la migration et rend son defaut au modele
+2026-09-03T15:08:55+02:00 - 8ffba62 - Gaël Servaud : refactor(collectivites): rend non nuls collectivite_id, hash et filename des fichiers
+2026-09-03T14:35:52+02:00 - ef96f19 - Gaël Servaud : test(llm): expose l'absence de diagnostic sur un echec de validation zod
+2026-09-03T14:35:52+02:00 - 73fde02 - Gaël Servaud : fix(llm): conserve le chemin et le code de l'issue zod dans invalid_json
+2026-09-03T13:59:44+02:00 - 7a86f8b - Gaël Servaud : fix(referentiels): cloisonne par collectivite la lecture des documents d'audit et de demande
+2026-09-03T13:59:18+02:00 - b7d34a5 - Gaël Servaud : refactor(referentiels): fait lire l'archive par les helpers de fichier partages
+2026-09-03T13:59:18+02:00 - 8570a8e - Gaël Servaud : fix(referentiels): consigne les documents absents du stockage dans le manifeste
+2026-09-03T13:59:18+02:00 - 4c58933 - Gaël Servaud : test(referentiels): interdit qu'un fichier d'une autre collectivite entre dans l'archive
+2026-09-03T12:29:51+02:00 - 38074d1 - Gaël Servaud : refactor(llm): sort le moteur de template de prompt dans utils/llm
+2026-09-03T12:22:36+02:00 - d66499c - Gaël Servaud : revert(referentiels): retire le reclassement de l'objet d'un document
+2026-09-03T12:11:22+02:00 - b85aa18 - Gaël Servaud : refactor(plans): remonte ai-plan-import au niveau du domaine plans
+2026-09-03T11:32:36+02:00 - 32bfccd - Gaël Servaud : chore(plans): supprime la vue et la fonction plan_action_profondeur
+2026-09-03T11:31:14+02:00 - 4267a29 - Gaël Servaud : feat(labellisations): autorise le super admin à remplacer un rapport d'audit
+2026-09-03T10:37:47+02:00 - 81eb522 - Gaël Servaud : refactor(referentiels): un dossier par endpoint de documents de labellisation
+2026-09-03T10:09:32+02:00 - 75d5d93 - Gaël Servaud : refactor(referentiels): nomme les deux endpoints de documents d'apres leur filtre
+2026-09-03T10:09:32+02:00 - 50f464d - Gaël Servaud : refactor(referentiels): regroupe les lectures de documents sous un seul namespace
+2026-09-03T10:01:38+02:00 - d363e04 - Gaël Servaud : test(labellisations): montre qu'un remplacement de rapport ne trace pas son auteur
+2026-09-03T10:01:38+02:00 - 1102b60 - Gaël Servaud : fix(labellisations): enregistre l'auteur et la date du remplacement d'un rapport d'audit
+2026-09-03T09:44:59+02:00 - f794612 - Gaël Servaud : test(plans): couvre en e2e la mutualisation vers un axe sans sous-axe
+2026-09-03T09:44:59+02:00 - 3d8ddc3 - Gaël Servaud : refactor(plans): lit l'arborescence des plans via tRPC au lieu de la vue Supabase
+2026-09-03T08:41:52+02:00 - 94f7f22 - Gaël Servaud : refactor(referentiels): sort les requetes de list-preuves dans un repository
+2026-09-03T08:41:52+02:00 - 4fe4b45 - Gaël Servaud : refactor(referentiels): une seule forme d'absence pour l'etat du cycle
+2026-09-03T08:41:52+02:00 - 4a5635c - Gaël Servaud : fix(referentiels): fait valider sa sortie par list-preuves
+2026-09-03T08:41:52+02:00 - 3d7ea04 - Gaël Servaud : test(referentiels): expose les preuves hors contrat rendues par list-preuves
+2026-09-03T08:41:52+02:00 - 1f9d28c - Gaël Servaud : refactor(referentiels): derive les types de useFichiers de ce que le select demande
+2026-09-03T08:41:40+02:00 - 77f3165 - Gaël Servaud : chore(referentiels): nomme le collecteur de preuves d'audit d'apres ce qu'il fait
+2026-09-02T20:36:37+02:00 - d15d9c8 - Gaël Servaud : chore(referentiels): supprime le type de parcours orphelin du front
+2026-09-02T20:36:37+02:00 - 9abe84e - Gaël Servaud : refactor(referentiels): nomme les documents d'une mesure par ce qu'ils sont
+2026-09-02T20:36:37+02:00 - 82335bb - Gaël Servaud : refactor(referentiels): rend le parcours de labellisation en camelCase
+2026-09-02T20:36:37+02:00 - 6eb55b0 - Gaël Servaud : refactor(referentiels): type les fixtures de parcours sans cast
+2026-09-02T20:36:37+02:00 - 6e5dcb3 - Gaël Servaud : refactor(referentiels): applique la seconde passe de revue de style
+2026-09-02T20:36:37+02:00 - 0a2ec2d - Gaël Servaud : refactor(referentiels): supprime les orphelins laisses par la migration
+2026-09-02T20:34:53+02:00 - fe26319 - Gaël Servaud : chore(referentiels): supprime le code commente du parcours de labellisation
+2026-09-02T20:34:53+02:00 - ecadf77 - Gaël Servaud : refactor(plans): rend le mappeur d'annexe fidele a ce qu'il produit
+2026-09-02T20:34:53+02:00 - e7d625c - Gaël Servaud : refactor(referentiels): aligne le modele de document du front sur les contrats
+2026-09-02T20:34:53+02:00 - cd7faf5 - Gaël Servaud : chore(referentiels): retire les types de sortie de listDocuments sans importeur
+2026-09-02T20:34:53+02:00 - c61ace7 - Gaël Servaud : refactor(referentiels): nomme modifiedByNom l'auteur des documents listes
+2026-09-02T20:34:53+02:00 - a10af8e - Gaël Servaud : refactor(referentiels): rend l'audit d'une preuve d'audit non nullable
+2026-09-02T20:34:53+02:00 - 89a3c94 - Gaël Servaud : refactor(referentiels): rend les rapports d'audit en camelCase
+2026-09-02T20:34:53+02:00 - 8600bbe - Gaël Servaud : refactor(referentiels): discrimine l'action de CarteDocument par preuveType
+2026-09-02T20:34:53+02:00 - 859e864 - Gaël Servaud : refactor(referentiels): rend le contrat des documents d'un referentiel en camelCase
+2026-09-02T20:34:53+02:00 - 7a9771c - Gaël Servaud : refactor(referentiels): retire le rembourrage nul des contrats de list-preuves
+2026-09-02T20:34:53+02:00 - 448e44a - Gaël Servaud : test(referentiels): expose la demande perdue par le mappeur de rapport d'audit
+2026-09-02T20:34:53+02:00 - 20e2ce8 - Gaël Servaud : refactor(referentiels): rend les documents de candidature en camelCase
+2026-09-02T20:34:53+02:00 - 18a7988 - Gaël Servaud : refactor(referentiels): rend l'etat du cycle de labellisation en camelCase
+2026-09-02T20:34:53+02:00 - 06edb02 - Gaël Servaud : fix(referentiels): propage la demande du rapport d'audit au modele de preuve
+2026-09-02T17:28:16+02:00 - 7b0f7c6 - Fred Arnoux : fix(next): force-include @swc/helpers ESM variant in standalone output
+2026-09-02T17:28:16+02:00 - 6907441 - Fred Arnoux : chore(deps): bump next to latest version
+2026-09-02T17:28:16+02:00 - 27e1c87 - Fred Arnoux : fix(next): disable useTypeScriptCli to restore tsconfig paths resolution
+2026-09-02T14:32:14+02:00 - 74a4c2d - Leny Bernard : fix(ui): aligne les extremites du header sur la gouttiere des pages
+2026-09-02T11:05:52+02:00 - fea4ec9 - Gaël Servaud : feat(referentiels): lit les documents d'une mesure depuis le backend
+2026-09-02T11:05:52+02:00 - 3c5c6cc - Gaël Servaud : refactor(referentiels): retire la prop qui coupait le chargement des documents
+2026-09-02T11:05:52+02:00 - 0070b64 - Gaël Servaud : fix(referentiels): rafraichit le panneau d'une mesure apres un ajout
+2026-09-02T10:47:04+02:00 - b3686da - Gaël Servaud : test(referentiels): decrit la date affichee sur une carte document
+2026-09-02T10:47:04+02:00 - 8f6257c - Gaël Servaud : fix(referentiels): annonce une modification et non un ajout sur une carte document
+2026-09-01T17:46:54+02:00 - 6e759cf - Gaël Servaud : refactor(referentiels): retire le prefixe T des types du domaine preuves
+2026-09-01T17:29:22+02:00 - f0ff7ab - Gaël Servaud : refactor(referentiels): retire le badge de mesure non concernee jamais affiche
+2026-09-01T17:11:54+02:00 - 29183e2 - Gaël Servaud : feat(referentiels): expose les documents d'une mesure via un endpoint
+2026-09-01T16:37:51+02:00 - 2fd0a3c - Gaël Servaud : feat(referentiels): permet de reclasser un document depuis l'onglet Documents
+2026-09-01T16:37:51+02:00 - 2884f2f - Gaël Servaud : refactor(referentiels): rend au caller le choix des actions de CarteDocument
+2026-09-01T11:56:26+02:00 - 14f7477 - Emilien Escalle : fix: update duplicate file message and add corresponding test
+2026-09-01T10:26:19+02:00 - 9222c7c - Gaël Servaud : fix(collectivites): teste le refus de l'objet hors labellisation via le schema
+2026-09-01T10:26:19+02:00 - 3492711 - Gaël Servaud : feat(collectivites): autorise le super-admin a reclasser l'objet d'un document
+2026-09-01T09:50:55+02:00 - 95f3d91 - Gaël Servaud : refactor(referentiels): lit les documents de l'onglet Documents depuis le backend
+2026-08-31T19:21:37+02:00 - bcde83d - Leny Bernard : test(demarches): cover the renewal-only document
+2026-08-31T19:21:37+02:00 - 6edcf2a - Leny Bernard : fix(expressions): reject inherited properties as identite and demarche fields
+2026-08-31T19:21:37+02:00 - 652ac85 - Leny Bernard : feat(expressions): let a rule ask whether the demarche renews a previous one
+2026-08-31T19:21:37+02:00 - 5c6d391 - Leny Bernard : feat(backend): tell the catalogue whether the collectivite already published a pcaet
+2026-08-31T19:21:37+02:00 - 0ec662b - Leny Bernard : feat(db): expect the previous pcaet review only from renewals
+2026-08-31T18:07:15+02:00 - d2f7c09 - Arthur Molinos : fix: test e2e
+2026-08-31T18:07:15+02:00 - 8641909 - Arthur Molinos : refactor: Update labels
+2026-08-31T18:07:15+02:00 - 8056a76 - Arthur Molinos : feat: Implement ESLint rule to disallow hardcoded UI copy in JSX props
+2026-08-31T18:07:15+02:00 - 74a6940 - Arthur Molinos : refactor: Simplify no-hardcoded-ui-copy ESLint rule and remove unused tests
+2026-08-31T18:07:15+02:00 - 62cfbf7 - Arthur Molinos : feat: update labels
+2026-08-31T18:07:15+02:00 - 35d0937 - Arthur Molinos : fix: test e2e
+2026-08-31T18:07:15+02:00 - 29e5e54 - Arthur Molinos : feat: Update labels
+2026-08-31T18:07:15+02:00 - 0e3cc4f - Arthur Molinos : refactor: Réduit le texte utilisé dans AGENTS.md sur l'utilisation de wording dans l'app
+2026-08-31T18:07:15+02:00 - 01b4810 - Arthur Molinos : feat: Ajoute des règle de wording dans app/AGENTS.md
+2026-08-31T17:50:29+02:00 - 82f5eda - Gaël Servaud : fix(referentiels): refuse un fichier d'une autre collectivité au dépôt d'une preuve
+2026-08-31T17:50:29+02:00 - 5703045 - Gaël Servaud : test(referentiels): expose le rattachement d'un fichier hors collectivité à une preuve
+2026-08-31T17:44:04+02:00 - c7ede72 - Leny Bernard : feat(db): add the qualite de l'air and chaleur froid plans to the pcaet catalogue
+2026-08-31T17:44:04+02:00 - 881299c - Leny Bernard : test(demarches): cover the documents expected only from concerned collectivites
+2026-08-31T17:44:04+02:00 - 8746c14 - Leny Bernard : fix(expressions): stop identite from crashing on a numeric argument
+2026-08-31T17:44:04+02:00 - 75923f4 - Leny Bernard : feat(backend): serve only the documents that concern the collectivite
+2026-08-31T17:44:04+02:00 - 7349b1f - Leny Bernard : test(e2e): cover the conditional documents from the collectivite screen
+2026-08-31T17:44:04+02:00 - 5b2a0fe - Leny Bernard : feat(collectivites): add the 45 000 inhabitants population tranche
+2026-08-31T17:44:04+02:00 - 4e456fa - Leny Bernard : test(demarches): fail the build on an unevaluable document condition
+2026-08-31T17:44:04+02:00 - 27b578e - Leny Bernard : feat(db): make an expected document conditional on the collectivite
+2026-08-31T17:44:04+02:00 - 1b7fc67 - Leny Bernard : fix(e2e): locate the conditional documents by id rather than by label
+2026-08-31T10:36:12+02:00 - e14f867 - Arthur Molinos : fix: tests e2e
+2026-08-31T10:36:12+02:00 - d6d3b65 - Arthur Molinos : feat: clean labels
+2026-08-31T10:36:12+02:00 - c66d9fc - Arthur Molinos : fix: tests e2e
+2026-08-31T10:36:12+02:00 - b6d6625 - Arthur Molinos : fix: tests e2e
+2026-08-31T10:36:12+02:00 - a4fcb3c - Arthur Molinos : feat: clean labels
+2026-08-31T10:36:12+02:00 - 224f744 - Arthur Molinos : feat: uptdate labels
+2026-08-31T10:36:12+02:00 - 048245a - Arthur Molinos : fex: tests e2e
 2026-08-28T17:00:28+02:00 - c438ac9 - Leny Bernard : feat(db): rename the PCAET previous-bilan piece after the plan it reports on
 2026-08-28T17:00:28+02:00 - b49e23d - Leny Bernard : fix(demarches): apply the PCAET recette fixes on the DREAL board and the avis flow
 2026-08-28T17:00:28+02:00 - 05ba79b - Leny Bernard : fix(ds): keep an empty tooltip from opening on its arrow alone
