@@ -1,19 +1,23 @@
-## Changelog : recommandations-collaboratives (30 derniers jours, au 28/08/2026)
+## Changelog : recommandations-collaboratives (30 derniers jours, au 04/09/2026)
 
 ### Résumé
-Ce mois-ci, l'accent a été mis sur l'amélioration de l'expérience de gestion via une refonte visuelle du CRM et une meilleure précision des données affichées (comptages, noms d'organisations). La sécurité de l'application a été renforcée et les performances globales ont été optimisées pour garantir une navigation plus fluide et rapide.
+Cette période a été principalement consacrée au renforcement de la sécurité du logiciel et à l'optimisation de ses performances. Les outils d'administration (CRM) ont été améliorés pour offrir une meilleure visibilité sur les données, et la gestion des communications par email a été stabilisée pour garantir une expérience plus fiable.
 
 ### Évolutions fonctionnelles
-- **Refonte de l'interface CRM** : Amélioration de l'affichage de la page d'accueil, des cartes d'administration (espacement et texte) et des cartes de projets pour inclure le nom de l'organisation. [#2282](https://github.com/betagouv/recommandations-collaboratives/pull/2282), [#2316](https://github.com/betagouv/recommandations-collaboratives/pull/2316)
-- **Fiabilisation des données de gestion** : Correction du comptage des membres et des projets par organisation, et résolution des problèmes de troncature des noms d'organisations. [#2317](https://github.com/betagouv/recommandations-collaboratives/pull/2317)
-- **Gestion des accès et inscriptions** : Correction des erreurs lors des demandes d'accès pour les conseillers dont le compte existe déjà ou est présent sur un autre site. [#2334](https://github.com/betagouv/recommandations-collaboratives/pull/2334)
-- **Notifications et emails** : Amélioration de la configuration de l'expéditeur pour les emails (via Brevo) et correction des doublons de notifications de modération. [#2327](https://github.com/betagouv/recommandations-collaboratives/pull/2327), [#2335](https://github.com/betagouv/recommandations-collaboratives/pull/2335)
+- **Amélioration du CRM** : Refonte de la page d'administration du CRM [#2316](https://github.com/betagouv/recommandations-collaboratives/pull/2316) et correction de l'affichage des comptes de projets et de membres pour plus de cohérence.
+- **Nouveaux outils de filtrage** : Ajout de filtres dans l'interface d'administration pour identifier plus facilement les utilisateurs supprimés et les organisations "mystérieuses" [#2343](https://github.com/betagouv/recommandations-collaboratives/pull/2343).
+- **Optimisation des flux RSS** : Mise en place d'un système d'authentification pour les flux et filtrage automatique des ressources en mode "brouillon" pour ne proposer que du contenu publié [#2360](https://github.com/betagouv/recommandations-collaboratives/pull/2360).
+- **Gestion des emails** : Amélioration de l'intégration avec Brevo (gestion du nom de l'expéditeur) et renforcement de la validation des adresses email [#2256](https://github.com/betagouv/recommandations-collaboratives/pull/2256).
+- **Expérimentation** : Introduction d'une expérimentation liée à l'intelligence artificielle sur le frontend [#1939](https://github.com/betagouv/recommandations-collaboratives/pull/1939).
 
 ### Évolutions techniques
-- **Sécurité** : Implémentation d'une politique de sécurité du contenu (CSP) pour renforcer la protection de l'application, notamment lors de son intégration dans d'autres interfaces. [#2330](https://github.com/betagouv/recommandations-collaboratives/pull/2330)
-- **Optimisation des performances** : Réduction massive des requêtes à la base de données (problème de requêtes N+1) via l'utilisation de `prefetch` sur les modules projets, CRM et utilisateurs. [#2325](https://github.com/betagouv/recommandations-collaboratives/pull/2325)
-- **Optimisation de la mémoire** : Mise en cache des permissions des utilisateurs pour accélérer les vérifications de droits.
+- **Sécurité renforcée** : 
+    - Implémentation d'une politique de sécurité de contenu (CSP) pour protéger l'application tout en permettant l'usage d'outils tiers (Matomo, Crisp) [#2342](https://github.com/betagouv/recommandations-collaboratives/pull/2342).
+    - Assainissement des données (sanitization) pour l'historique et les descriptions de projets afin de prévenir les failles d'injection [#2361](https://github.com/betagouv/recommandations-collaboratives/pull/2361).
+    - Durcissement des contrôles de permissions sur les API et les flux de données.
+- **Optimisation des performances** : Réduction massive des requêtes SQL inutiles (problème de N+1) via l'utilisation de `prefetch` sur les projets, les départements et les détails utilisateurs.
+- **Fiabilité et tests** : Augmentation significative de la couverture de tests, particulièrement sur la gestion des droits d'accès et les permissions des utilisateurs (advisors vs members).
 
 ### Autres changements
-- **Nettoyage du code** : Suppression de code mort, de variables inutilisées et de l'ancienne configuration d'envoi d'emails.
-- **Maintenance** : Mise à jour de la version du projet vers la v3.10.x.
+- **Nettoyage du code** : Suppression de code mort et de variables inutilisées pour améliorer la maintenabilité.
+- **Documentation** : Corrections de syntaxe dans les tutoriels.
