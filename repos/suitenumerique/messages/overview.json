@@ -1,29 +1,36 @@
 {
   "url": "https://github.com/suitenumerique/messages",
   "name": "messages",
-  "description": "Une plateforme de messagerie collaborative conçue pour La Suite territoriale. Elle permet la gestion d'inboxes partagées, le traitement d'emails avec l'aide de l'IA et l'intégration de standards comme JMAP et OIDC.",
+  "description": "Une boîte de réception collaborative tout-en-un pour La Suite territoriale. Elle permet aux équipes de collaborer sur des emails via des boîtes aux lettres partagées ou personnelles.",
   "language": "Python",
   "features": [
-    "Collaboration & Workflow",
-    "Intelligence Artificielle & NLP",
+    "Gestion documentaire & Fichiers",
+    "API & Intégrations",
+    "Authentification & Accès",
     "Recherche & Filtres",
-    "Gestion des médias & Assets",
+    "Gestion des utilisateurs & Permissions",
     "Notifications & Alertes",
     "Sécurité & Conformité",
-    "Gestion des utilisateurs & Permissions"
+    "Collaboration & Workflow",
+    "Intelligence Artificielle & NLP",
+    "Gestion des médias & Assets"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django Rest Framework",
-    "Postfix",
     "Vite",
     "TanStack Router",
     "BlockNote.js",
+    "Postfix",
     "Keycloak",
-    "PostgreSQL",
-    "Redis",
     "Celery",
-    "OpenSearch"
+    "Redis",
+    "PostgreSQL",
+    "OpenSearch",
+    "Docker",
+    "Caddy",
+    "uv",
+    "jmap-email"
   ],
   "components": [
     "API REST & GraphQL",
@@ -31,25 +38,25 @@
     "TypeScript / JavaScript",
     "Python (scripts & backend)",
     "Docker & Conteneurs",
+    "Celery & Queue asynchrone",
+    "Authentification (composant)",
     "Webhooks & Événements",
-    "Authentification (composant)"
+    "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "sso",
-      "jwt"
+      "sso"
     ],
     "providers": [
       "Keycloak"
     ]
   },
-  "tests": "Makefile et Docker",
+  "tests": "Tests de fumée (smoke tests) et tests d'intégration Keycloak via Makefile",
   "workflows": [
-    "Docker Compose",
-    "Makefile"
+    "GitHub Actions"
   ],
-  "lastActivity": "2026-08-29T01:23:24+02:00",
+  "lastActivity": "2026-09-06T20:50:32+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -59,8 +66,9 @@
     "Python",
     "TypeScript",
     "Docker & Conteneurs",
-    "Django & FastAPI",
-    "React & Next.js",
-    "Bases de données SQL"
+    "CI/CD & GitHub Actions",
+    "Bases de données SQL",
+    "Sécurité & Auth",
+    "Intelligence Artificielle & LLM"
   ]
 }
