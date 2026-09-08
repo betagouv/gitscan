@@ -1,20 +1,14 @@
-## Changelog : accounts (30 derniers jours, au 24 août 2026)
+## Changelog : accounts (30 derniers jours, au 07/09/2026)
 
 ### Résumé
-Les récentes évolutions se concentrent sur l'amélioration de l'expérience de déconnexion des utilisateurs, la modernisation de la structure des données via l'adoption de l'UUID v7, et le renforcement de la fiabilité des déploiements et des tests automatisés.
+Les récentes évolutions se concentrent sur l'amélioration du parcours utilisateur lors des phases de connexion et de déconnexion, tout en renforçant la fiabilité technique du protocole d'authentification OIDC.
 
 ### Évolutions fonctionnelles
-- **Authentification** : Amélioration du processus de déconnexion (OIDC) en transmettant la confirmation de déconnexion initiée par le client (RP) vers l'interface utilisateur.
+- Amélioration de l'interface de connexion avec l'ajout d'une page intermédiaire.
+- Optimisation du processus de déconnexion : la confirmation de déconnexion (RP-Initiated logout) est désormais transmise au frontend pour une meilleure expérience utilisateur.
 
 ### Évolutions techniques
-- **Base de données** : Migration des clés primaires vers le format UUID Version 7 pour une meilleure gestion des identifiants.
-- **Infrastructure et Déploiement** :
-    - Optimisation des déploiements Helm (mise à jour des valeurs de développement et restriction du déploiement à la branche principale).
-    - Correction de la configuration Docker pour le composant `link-collector` afin d'éviter l'écrasement du répertoire `/app`.
-- **Tests** :
-    - Renforcement de la robustesse des tests (gestion de l'invalidation du cache, tests de repli lors d'erreurs d'introspection).
-    - Automatisation du marquage de la base de données Django pour les tests `pytest`.
+- Amélioration de la gestion du protocole OIDC : réécriture de la réponse d'introspection lors du recours aux backends PSA et correction du nommage des paramètres d'indice d'introspection.
 
 ### Autres changements
-- **Nettoyage** : Suppression de configurations et de fichiers d'environnement inutilisés et réorganisation des clés de configuration.
-- **Documentation** : Mise à jour et correction du fichier changelog.
+- Stabilisation de l'environnement de développement par le verrouillage de la version Node.js (v22) pour l'outil de parsing des traductions (`i18next-parser`).
