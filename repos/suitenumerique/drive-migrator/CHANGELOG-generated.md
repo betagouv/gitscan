@@ -1,29 +1,20 @@
 ## Changelog : drive-migrator (30 derniers jours, au 04/09/2026)
 
 ### Résumé
-Les récentes évolutions se concentrent sur la fiabilité des processus de migration et la robustesse du système. Les utilisateurs bénéficieront d'une meilleure gestion des erreurs lors des exports (le processus ne s'arrête plus au premier fichier défectueux) et d'une interface d'administration enrichie. Parallèlement, le système d'authentification a été modernisé pour renforcer la sécurité.
+Les récentes évolutions se concentrent sur la fiabilité des migrations et la sécurité. L'outil est désormais plus résilient face aux erreurs de téléchargement et propose une gestion administrative plus complète, tout en modernisant ses protocoles d'authentification.
 
 ### Évolutions fonctionnelles
-- **Administration :** 
-    - Ajout de nouvelles actions permettant de réinitialiser les connexions Resana ou Drive [#198](https://github.com/suitenumerique/drive-migrator/issues/198).
-    - Amélioration de la gestion des utilisateurs dans l'interface admin (ajout de l'email et du nom dans les listes et la recherche).
-    - Correction d'un plantage de l'interface d'administration lors de la modification du nom d'un utilisateur de migration.
-- **Migration et Export :** 
-    - Amélioration de la résilience des exports : le système ignore désormais les fichiers en échec au lieu d'interrompre l'intégralité de l'opération, tout en permettant de suivre les erreurs par fichier.
-    - L'export échoue désormais correctement si la totalité des téléchargements de fichiers échoue.
-- **Expérience Utilisateur (UX/UI) :** 
-    - Refonte du parcours de téléchargement des archives ZIP [#194](https://github.com/suitenumerique/drive-migrator/issues/194).
-    - Amélioration de la clarté visuelle : ajout de tooltips pour les titres tronqués [#195](https://github.com/suitenumerique/drive-migrator/issues/195) et précision de la cible de migration (Fichiers/Drive) [#193](https://github.com/suitenumerique/drive-migrator/issues/193).
-    - Corrections diverses : résolution d'une boucle infinie sur la page de connexion, correction de l'affichage de la page de fin [#207](https://github.com/suitenumerique/drive-migrator/issues/207) et ajustements des messages d'erreur [#140](https://github.com/suitenumerique/drive-migrator/issues/140).
+- **Administration renforcée** : ajout de la recherche par nom/email dans la liste des utilisateurs et nouvelles actions pour réinitialiser les connexions Resana ou Drive [#198].
+- **Expérience utilisateur améliorée** : nouveau parcours de téléchargement des archives ZIP [#194], ajout d'infobulles pour les titres longs [#195] et clarification des messages d'erreur et des cibles de migration [#140, #193].
+- **Résilience des exports** : en cas d'échec du téléchargement d'un fichier, le processus d'exportation continue désormais au lieu de s'interrompre, tout en enregistrant les erreurs pour suivi.
+- **Correction d'interface** : résolution d'un problème de boucle infinie sur la modale d'erreur lors de la connexion.
 
 ### Évolutions techniques
-- **Authentification et Sécurité :** 
-    - Modernisation du flux d'authentification Resana via l'implémentation du module PKCE (connect/callback).
-    - Suppression du scraping HTML pour la gestion du CSRF dans le client Resana.
-    - Suppression de l'en-tête `x-amz-acl` non signé lors des uploads S3 présignés.
-- **Robustesse et Performance :** 
-    - Mise en place de mécanismes de tentatives automatiques (retries) pour les téléchargements de fichiers Resana en cas d'erreurs réseau transitoires.
-    - Optimisation de la gestion des tokens Resana (sérialisation par utilisateur et stockage de session bridge).
-- **Configuration :** 
-    - Rendre l'URL du frontend Drive configurable [#103](https://github.com/suitenumerique/drive-migrator/issues/103).
-    - Correction de la lecture de la variable d'environnement pour les fichiers statiques.
+- **Sécurité et Authentification** : implémentation du protocole PKCE pour sécuriser et stabiliser les connexions avec le client Resana.
+- **Fiabilité du système** : ajout de mécanismes de tentatives automatiques (retries) lors des téléchargements de fichiers en cas d'erreurs réseau temporaires.
+- **Maintenance et Refactoring** : optimisation de la gestion des jetons (tokens), correction de plantages dans l'interface d'administration et résolution de problèmes de configuration des variables d'environnement.
+- **Optimisation S3** : suppression des en-têtes non signés lors des téléchargements via des liens présignés S3.
+
+### Autres changements
+- Corrections de fautes de frappe dans les modèles d'emails de notification.
+- Ajustements visuels sur la page de fin de processus [#207].
