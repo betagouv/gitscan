@@ -1,34 +1,18 @@
-## Changelog : bhasile (30 derniers jours, au 03/09/2026)
+## Changelog : bhasile (30 derniers jours, au 07/09/2026)
 
 ### Résumé
-Ce mois-ci, l'application a considérablement renforcé ses capacités d'extraction de données avec l'ajout de nouveaux exports (Excel, PDF) et a amélioré la visibilité des anomalies grâce à un nouveau bloc dédié dans le tableau de bord. Une refonte technique majeure a été réalisée pour accélérer le chargement des pages et améliorer la fiabilité globale du système.
+Ce mois-ci, l'application a considérablement enrichi ses capacités d'extraction de données avec l'ajout de nouveaux exports (Excel, PDF) et a amélioré le pilotage via un nouveau bloc dédié aux anomalies dans le tableau de bord. Une refonte technique majeure a également été réalisée pour optimiser la vitesse de chargement des pages grâce à une nouvelle méthode de récupération des données.
 
 ### Évolutions fonctionnelles
-- **Exports de données** : Ajout de l'export Excel pour les statistiques [#1640], d'une interface d'export PDF [#1632], et de nouveaux téléchargements de feuilles de calcul pour les types de lieux [#1625, #1614].
-- **Interface et Expérience Utilisateur** : 
-    - Amélioration de la navigation avec la mémorisation des paramètres de recherche dans la liste des opérateurs [#1613].
-    - Corrections visuelles sur les accordéons [#1636], le style des fiches fermées [#1591] et l'interactivité des contrôles de la carte [#1596].
-    - Correction de l'affichage des en-têtes lors des transformations [#1623].
-- **Nouveautés et Corrections métier** :
-    - Ajout d'un bloc de tableau de bord pour le suivi des anomalies [#1578].
-    - Correction de l'authentification pour les transformations [#1571].
-    - Résolution de divers bugs d'affichage et de calcul (graphiques d'évaluation [#1598], évaluations à zéro [#1594], récupération des codes DNA [#1628] et règles d'état des structures [#1600]).
-    - Amélioration du filtrage des opérateurs sans structure associée [#1593].
+- **Exportation de données** : Ajout de l'export Excel pour les statistiques [#1640], de nouveaux téléchargements de feuilles de calcul [#1625], d'un module d'export PDF [#1632] et de l'export des types de lieux [#1614].
+- **Tableau de bord et interface** : Intégration d'un bloc dédié aux anomalies [#1578], affichage des anomalies directement dans les formulaires [#1599], amélioration de l'interactivité de la carte [#1596] et corrections visuelles sur les accordéons et les fiches [#1636, #1591].
+- **Corrections et métier** : Résolution de bugs sur les graphiques d'évaluation [#1598], les cartes de dernière visite [#1597] et les évaluations à zéro [#1594] ; ajustement de la logique de tolérance pour la durée des actes [#1622] et correction de la récupération des codes DNA [#1628].
+- **Expérience utilisateur** : Mémorisation des paramètres de recherche dans la liste des opérateurs [#1613] et filtrage des opérateurs sans structure associée [#1593].
 
 ### Évolutions techniques
-- **Architecture** : Migration massive vers le chargement de données via les *React Server Components* (RSC) pour optimiser les performances de l'application (listes de structures, fiches opérateurs, transformations, CPOM, etc. [#1633, #1629, #1626, #1608, #1576, #1611]).
-- **Qualité et Tests** : 
-    - Intégration de tests de bout en bout (E2E) dans la chaîne de déploiement (CI) [#1587, #1570].
-    - Correction et stabilisation des tests unitaires [#1621, #1604].
-- **Infrastructure et Performance** : 
-    - Mise à jour de l'environnement vers Node 26 [#1605].
-    - Optimisation de la base de données via l'ajout d'index [#1577].
-    - Ajustement des tâches planifiées (crons) [#1573].
-- **Maintenance et Refactoring** : 
-    - Refonte complète du système de génération de données de test (*seeders*) pour garantir des données cohérentes [#1585, #1620, #1619, #1606, #1617, #1616].
-    - Refactorisation de la gestion des paramètres de recherche [#1615] et renommage de classes internes [#1627].
-    - Mise en place du suivi (tracking) des exports et des statistiques simples [#1630, #1603].
+- **Optimisation des performances** : Migration massive de la récupération de données vers les *React Server Components* (RSC) pour accélérer le chargement des listes et des fiches (structures, opérateurs, CPOM, transformations) [#1633, #1629, #1626, #1608, #1576, #1611].
+- **Infrastructure et qualité** : Passage à Node 26 [#1605], intégration de tests de bout en bout (E2E) dans la chaîne de CI [#1587, #1570] et optimisation de la base de données par l'ajout d'index [#1577].
+- **Maintenance et suivi** : Refonte complète des données de test (*seeders*) [#1585], amélioration du suivi analytique des exports et des statistiques [#1630, #1603] et refactorisation de la gestion des paramètres de recherche [#1615].
 
 ### Autres changements
-- Mise à jour de la documentation (README) [#1638].
-- Nettoyage de la configuration (linting) [#1584] et corrections de coquilles [#1572].
+- Mise à jour de la documentation (README) [#1638] et de la configuration du linting [#1584].
