@@ -64,6 +64,7 @@
 │   │   └── site_csv_export.rb
 │   ├── helpers
 │   │   ├── application_helper.rb
+│   │   ├── audits_helper.rb
 │   │   ├── check_helper.rb
 │   │   ├── dsfr_helper.rb
 │   │   ├── error_helper.rb
@@ -101,7 +102,7 @@
 │   │   ├── application_record.rb
 │   │   ├── audit.rb
 │   │   ├── audit_batch.rb
-│   │   ├── axe_violation.rb
+│   │   ├── axe_rule.rb
 │   │   ├── browser.rb
 │   │   ├── check.rb
 │   │   ├── check_state_machine.rb
@@ -141,16 +142,16 @@
 │   │   ├── email_validator.rb
 │   │   └── url_validator.rb
 │   └── views
-│       ├── checks
-│       │   ├── _accessibility_mention.html.erb
-│       │   ├── _accessibility_page_heading.html.erb
-│       │   ├── _analyze_accessibility_page.html.erb
-│       │   ├── _analyze_plan.html.erb
-│       │   ├── _analyze_schema.html.erb
-│       │   ├── _find_accessibility_page.html.erb
-│       │   ├── _language_indication.html.erb
-│       │   ├── _reachable.html.erb
-│       │   └── _run_axe_on_homepage.html.erb
+│       ├── audits
+│       │   ├── _automated_tests.html.erb
+│       │   ├── _declaration_not_found.html.erb
+│       │   ├── _declaration_quality.html.erb
+│       │   ├── _declared_level.html.erb
+│       │   ├── _legal_obligations.html.erb
+│       │   ├── _obligations.html.erb
+│       │   ├── _summary.html.erb
+│       │   ├── _unreachable.html.erb
+│       │   └── show.html.erb
 │       ├── errors
 │       │   ├── internal_server_error.html.erb
 │       │   └── not_found.html.erb
@@ -445,6 +446,7 @@
 │   │   ├── audits_controller_spec.rb
 │   │   ├── authentication_spec.rb
 │   │   ├── jdma_widget_spec.rb
+│   │   ├── sessions_controller_spec.rb
 │   │   ├── sites_controller_spec.rb
 │   │   ├── tags_controller_spec.rb
 │   │   └── users_controller_spec.rb
@@ -476,4 +478,4 @@
         ├── axe.fr.json
         ├── axe.min.js
         └── stealth.min.js
-78 directories, 400 files
+78 directories, 402 files
