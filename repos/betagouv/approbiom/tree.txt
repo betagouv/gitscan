@@ -1,107 +1,261 @@
 .
-├── .editorconfig
-├── .gitattributes
 ├── .github
 │   └── workflows
-│       └── ci-cd.yml
+│       ├── cd-prod.yml
+│       └── ci-cd-staging.yml
 ├── .gitignore
-├── .prettierrc.json
-├── .vscode
-│   └── extensions.json
-├── LICENSE
+├── .npmrc
+├── .nvmrc
+├── .prettierignore
+├── .prettierrc
 ├── README.md
-├── dev
-│   └── index.html
-├── doc
+├── docs
 │   └── adr
-│       ├── 0001-e2e-testing-with-playwright.md
-│       └── 0002-grist-dev-instance-via-vite-plugin.md
-├── e2e
-│   ├── README.md
-│   ├── barre-de-recherche
-│   │   └── barre-de-recherche.spec.ts
-│   ├── carte-departement
-│   │   └── carte-departement.spec.ts
-│   ├── fixtures.ts
-│   ├── liste-deroulante-riche-selecteur
-│   │   └── liste-deroulante-riche-selecteur.spec.ts
-│   ├── mocks
-│   │   └── grist-plugin-api.js
-│   ├── selecteur-editeur
-│   │   └── selecteur-editeur.spec.ts
-│   ├── selecteur-multiple-editeur
-│   │   └── selecteur-multiple-editeur.spec.ts
-│   ├── tableau
-│   │   └── tableau.spec.ts
-│   └── tableau-selecteur
-│       └── tableau-selecteur.spec.ts
-├── env.d.ts
-├── eslint.config.ts
-├── grist-widget
-│   ├── barre-de-recherche
-│   │   ├── App.vue
-│   │   ├── ConfigPanel.vue
-│   │   ├── TagFilterBar.vue
-│   │   ├── index.html
-│   │   └── main.ts
-│   ├── carte-departement
-│   │   ├── App.vue
-│   │   ├── CarteDepartement.vue
-│   │   ├── data
-│   │   │   └── departements.geojson
-│   │   ├── index.html
-│   │   ├── main.ts
-│   │   └── types
-│   │       └── departement.d.ts
-│   ├── liste-deroulante-riche-selecteur
-│   │   ├── App.vue
-│   │   ├── ConfigPanel.vue
-│   │   ├── ListeDeroulanteRicheSelecteur.vue
-│   │   ├── index.html
-│   │   └── main.ts
-│   ├── selecteur-editeur
-│   │   ├── App.vue
-│   │   ├── ConfigPanel.vue
-│   │   ├── index.html
-│   │   └── main.ts
-│   ├── selecteur-multiple-editeur
-│   │   ├── App.vue
-│   │   ├── ConfigPanel.vue
-│   │   ├── SelecteurMultiple.vue
-│   │   ├── index.html
-│   │   └── main.ts
-│   ├── tableau-selecteur
-│   │   ├── App.vue
-│   │   ├── ConfigPanel.vue
-│   │   ├── index.html
-│   │   └── main.ts
-│   ├── titre
-│   │   ├── App.vue
-│   │   ├── index.html
-│   │   └── main.ts
-│   ├── vue-tableau
-│   │   ├── App.vue
-│   │   ├── ConfigPanel.vue
-│   │   ├── VueTableau.vue
-│   │   ├── index.html
-│   │   └── main.ts
-│   └── widget-two
-│       ├── App.vue
-│       ├── index.html
-│       └── main.ts
+│       ├── 0001-multi-widget-frontend-architecture.md
+│       ├── 0002-grist-desktop-as-local-integration-environment.md
+│       ├── 0003-leaflet-for-map.md
+│       └── template-nygard.md
+├── eslint.config.js
 ├── index.html
 ├── package.json
-├── playwright.config.ts
 ├── pnpm-lock.yaml
-├── public
-│   └── favicon.ico
+├── pytest.ini
+├── scripts
+│   ├── deploy
+│   │   ├── build.mjs
+│   │   └── promote.mjs
+│   └── import
+│       ├── BCIAT_test_Plan_dapprovisionnement.xlsx
+│       ├── bciat_bcib.py
+│       ├── provenance
+│       │   ├── __init__.py
+│       │   ├── reference_data.py
+│       │   ├── test_reference_data.py
+│       │   ├── test_transform_provenance_data.py
+│       │   └── transform_provenance_data.py
+│       ├── requirements-dev.txt
+│       ├── requirements.txt
+│       └── test_bciat_bcib.py
 ├── shared
-│   ├── types
-│   │   └── grist-plugin-api.d.ts
-│   └── utils
-│       └── grist.ts
-├── tsconfig.app.json
+│   ├── core
+│   │   ├── application
+│   │   │   ├── ports
+│   │   │   │   ├── approvisionnement.ts
+│   │   │   │   ├── attachment.ts
+│   │   │   │   ├── crb.ts
+│   │   │   │   ├── demande-subvention.ts
+│   │   │   │   ├── entreprise.ts
+│   │   │   │   ├── installation.ts
+│   │   │   │   ├── instruction.ts
+│   │   │   │   ├── localization.ts
+│   │   │   │   ├── plan-d-approvisionnement.ts
+│   │   │   │   ├── programme-aide.ts
+│   │   │   │   └── ressource.ts
+│   │   │   └── services
+│   │   │       ├── approvisionnement-stats.test.ts
+│   │   │       ├── approvisionnement-stats.ts
+│   │   │       ├── get-update-instruction.ts
+│   │   │       ├── plan-detail.test.ts
+│   │   │       ├── plan-detail.ts
+│   │   │       └── update-is-plan-laureat-for-programme-aide.ts
+│   │   ├── domain
+│   │   │   ├── entities
+│   │   │   │   ├── approvisionnement.ts
+│   │   │   │   ├── attachment.ts
+│   │   │   │   ├── crb.ts
+│   │   │   │   ├── demande-subvention.ts
+│   │   │   │   ├── entreprise.ts
+│   │   │   │   ├── installation.ts
+│   │   │   │   ├── instruction.test.ts
+│   │   │   │   ├── instruction.ts
+│   │   │   │   ├── plan-d-approvisionnement.ts
+│   │   │   │   ├── programme-aide.ts
+│   │   │   │   └── ressource.ts
+│   │   │   └── value-objects
+│   │   │       ├── avis-crb.ts
+│   │   │       ├── avis-prefet.ts
+│   │   │       ├── commune.ts
+│   │   │       ├── departement.test.ts
+│   │   │       ├── departement.ts
+│   │   │       ├── pays.ts
+│   │   │       ├── phase-instruction.ts
+│   │   │       ├── provenance.ts
+│   │   │       ├── region.ts
+│   │   │       └── usage.ts
+│   │   └── errors.ts
+│   ├── infrastructure
+│   │   ├── grist
+│   │   │   ├── adapters
+│   │   │   │   ├── grist-adapter-approvisionnement.test.ts
+│   │   │   │   ├── grist-adapter-approvisionnement.ts
+│   │   │   │   ├── grist-adapter-attachment.ts
+│   │   │   │   ├── grist-adapter-crb.ts
+│   │   │   │   ├── grist-adapter-demande-subvention.ts
+│   │   │   │   ├── grist-adapter-entreprise.ts
+│   │   │   │   ├── grist-adapter-installation.test.ts
+│   │   │   │   ├── grist-adapter-installation.ts
+│   │   │   │   ├── grist-adapter-instruction.ts
+│   │   │   │   ├── grist-adapter-localization.ts
+│   │   │   │   ├── grist-adapter-plan.test.ts
+│   │   │   │   ├── grist-adapter-plan.ts
+│   │   │   │   ├── grist-adapter-programme-aide.ts
+│   │   │   │   └── grist-adapter-ressource.ts
+│   │   │   ├── grist-helpers.test.ts
+│   │   │   ├── grist-helpers.ts
+│   │   │   ├── grist-plugin-api.d.ts
+│   │   │   ├── grist-ready.ts
+│   │   │   └── grist-tables.ts
+│   │   ├── insee
+│   │   │   └── generate-departements-contours.ts
+│   │   └── localization
+│   │       ├── communes.json
+│   │       ├── countries-contours.json
+│   │       ├── departements-contours.json
+│   │       ├── generate-communes.ts
+│   │       ├── generate-countries-contours.ts
+│   │       ├── generate-departements-contours.ts
+│   │       ├── localization-adapter.test.ts
+│   │       └── localization-adapter.ts
+│   └── react
+│       ├── AsyncGate.tsx
+│       ├── components
+│       │   ├── Alert
+│       │   │   ├── Alert.tsx
+│       │   │   └── index.ts
+│       │   ├── Badge
+│       │   │   ├── Badge.test.tsx
+│       │   │   ├── Badge.tsx
+│       │   │   ├── Badge.types.ts
+│       │   │   └── index.ts
+│       │   ├── DataTable
+│       │   │   ├── DataTable.css
+│       │   │   ├── DataTable.test.tsx
+│       │   │   ├── DataTable.tsx
+│       │   │   ├── DataTable.types.ts
+│       │   │   └── index.ts
+│       │   ├── Map
+│       │   │   ├── Map.css
+│       │   │   ├── Map.test.tsx
+│       │   │   ├── Map.tsx
+│       │   │   ├── Map.types.ts
+│       │   │   └── index.ts
+│       │   ├── MultiSelect
+│       │   │   ├── MultiSelect.css
+│       │   │   ├── MultiSelect.test.tsx
+│       │   │   ├── MultiSelect.tsx
+│       │   │   ├── MultiSelect.types.ts
+│       │   │   └── index.ts
+│       │   ├── Radio
+│       │   │   ├── Radio.test.tsx
+│       │   │   ├── Radio.tsx
+│       │   │   ├── Radio.types.ts
+│       │   │   ├── RadioGroup.test.tsx
+│       │   │   ├── RadioGroup.tsx
+│       │   │   └── index.ts
+│       │   ├── Ressource
+│       │   │   ├── ProvenanceMap.test.tsx
+│       │   │   ├── ProvenanceMap.tsx
+│       │   │   ├── Ressource.css
+│       │   │   ├── Ressource.tsx
+│       │   │   └── index.ts
+│       │   ├── SearchBar
+│       │   │   ├── SearchBar.css
+│       │   │   ├── SearchBar.test.tsx
+│       │   │   ├── SearchBar.tsx
+│       │   │   ├── SearchBar.types.ts
+│       │   │   └── index.ts
+│       │   ├── Select
+│       │   │   ├── Select.test.tsx
+│       │   │   ├── Select.tsx
+│       │   │   ├── Select.types.ts
+│       │   │   └── index.ts
+│       │   ├── TabNav
+│       │   │   ├── TabNav.css
+│       │   │   ├── TabNav.test.tsx
+│       │   │   ├── TabNav.tsx
+│       │   │   ├── TabNav.types.ts
+│       │   │   └── index.ts
+│       │   ├── Tabs
+│       │   │   ├── Tabs.css
+│       │   │   ├── Tabs.test.tsx
+│       │   │   ├── Tabs.tsx
+│       │   │   ├── Tabs.types.ts
+│       │   │   └── index.ts
+│       │   ├── Tag
+│       │   │   ├── Tag.css
+│       │   │   ├── Tag.tsx
+│       │   │   ├── Tag.types.ts
+│       │   │   └── index.ts
+│       │   └── Toggle
+│       │       ├── Toggle.test.tsx
+│       │       ├── Toggle.tsx
+│       │       ├── Toggle.types.ts
+│       │       └── index.ts
+│       ├── getOptions.ts
+│       ├── render-error.tsx
+│       ├── useAsyncData.test.ts
+│       └── useAsyncData.ts
 ├── tsconfig.json
-├── tsconfig.node.json
-└── vite.config.ts
-32 directories, 74 files
+├── vite.config.js
+└── widgets
+    ├── accueil
+    │   ├── index.html
+    │   └── src
+    │       ├── App.test.tsx
+    │       ├── App.tsx
+    │       ├── components
+    │       │   ├── BadgeAvis.tsx
+    │       │   ├── PageAccueil
+    │       │   │   ├── PageAccueil.css
+    │       │   │   └── PageAccueil.tsx
+    │       │   ├── Plan
+    │       │   │   ├── Plan.css
+    │       │   │   ├── Plan.tsx
+    │       │   │   └── tabs
+    │       │   │       ├── FilInstruction
+    │       │   │       │   ├── Chronologie.css
+    │       │   │       │   ├── Chronologie.tsx
+    │       │   │       │   ├── FilInstruction.css
+    │       │   │       │   ├── FilInstruction.test.tsx
+    │       │   │       │   └── FilInstruction.tsx
+    │       │   │       ├── PiecesJointes.css
+    │       │   │       ├── PiecesJointes.tsx
+    │       │   │       └── TabUpdate
+    │       │   │           ├── TabUpdate.css
+    │       │   │           ├── TabUpdate.test.tsx
+    │       │   │           └── TabUpdate.tsx
+    │       │   ├── TagNature.tsx
+    │       │   ├── TagStatut.tsx
+    │       │   ├── TagType.tsx
+    │       │   └── TagUsage.tsx
+    │       ├── index.css
+    │       ├── load-accueil.ts
+    │       ├── main.tsx
+    │       ├── utils.test.ts
+    │       └── utils.ts
+    ├── concurrence
+    │   ├── index.html
+    │   └── src
+    │       ├── App.tsx
+    │       ├── components
+    │       │   ├── Concurrence.css
+    │       │   ├── Concurrence.test.tsx
+    │       │   └── Concurrence.tsx
+    │       ├── index.css
+    │       ├── load-concurrence.ts
+    │       └── main.tsx
+    ├── playground
+    │   ├── index.html
+    │   └── src
+    │       ├── App.tsx
+    │       ├── index.css
+    │       └── main.tsx
+    └── ressource
+        ├── index.html
+        └── src
+            ├── App.tsx
+            ├── components
+            │   ├── RechercheDePlan.css
+            │   └── RechercheDePlan.tsx
+            └── main.tsx
+54 directories, 206 files

@@ -1,46 +1,58 @@
 {
-  "name": "approbiom",
-  "version": "0.0.0",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "run-p type-check \"build-only {@}\" --",
-    "preview": "vite preview",
-    "build-only": "vite build",
-    "type-check": "vue-tsc --build",
-    "lint": "eslint . --fix --cache",
-    "lint:ci": "eslint .",
-    "format": "prettier --write --experimental-cli grist-widget/",
-    "test:e2e": "playwright test"
-  },
-  "dependencies": {
-    "@gouvfr/dsfr": "^1.14.4",
-    "@gouvminint/vue-dsfr": "^8.17.0",
-    "@types/leaflet": "^1.9.21",
-    "leaflet": "^1.9.4",
-    "vue": "^3.5.32"
-  },
-  "devDependencies": {
-    "@playwright/test": "^1.60.0",
-    "@tsconfig/node24": "^24.0.4",
-    "@types/geojson": "^7946.0.16",
-    "@types/node": "^24.12.2",
-    "@vitejs/plugin-vue": "^6.0.6",
-    "@vue/eslint-config-typescript": "^14.7.0",
-    "@vue/tsconfig": "^0.9.1",
-    "eslint": "^10.2.1",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-vue": "~10.8.0",
-    "jiti": "^2.6.1",
-    "npm-run-all2": "^8.0.4",
-    "prettier": "3.8.3",
-    "typescript": "~6.0.0",
-    "vite": "^8.0.8",
-    "vite-plugin-vue-devtools": "^8.1.1",
-    "vue-tsc": "^3.2.6"
-  },
-  "engines": {
-    "node": ">=24.0.0"
-  }
+    "name": "approbiom",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "packageManager": "pnpm@10.27.0",
+    "engines": {
+        "node": "^20.19.0 || >=22.12.0",
+        "pnpm": ">=10"
+    },
+    "scripts": {
+        "dev": "vite",
+        "build:staging": "node scripts/deploy/build.mjs",
+        "build:prod": "node scripts/deploy/promote.mjs",
+        "py:setup": "python3 -m venv .venv && .venv/bin/pip install -r scripts/import/requirements-dev.txt",
+        "import:bciat": ".venv/bin/python scripts/import/bciat_bcib.py",
+        "py:test": ".venv/bin/pytest",
+        "generate:communes": "node --experimental-strip-types shared/infrastructure/localization/generate-communes.ts",
+        "generate:departements-contours": "node --experimental-strip-types shared/infrastructure/localization/generate-departements-contours.ts",
+        "generate:countries-contours": "node --experimental-strip-types shared/infrastructure/localization/generate-countries-contours.ts",
+        "typecheck": "tsc --noEmit",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix",
+        "format": "prettier --write .",
+        "format:check": "prettier --check .",
+        "test": "vitest",
+        "test:run": "vitest run",
+        "ci": "pnpm run format:check && pnpm run lint && pnpm run typecheck && pnpm run test:run"
+    },
+    "dependencies": {
+        "@gouvfr/dsfr": "1.14.4",
+        "leaflet": "^1.9.4",
+        "react": "^19.2.7",
+        "react-dom": "^19.2.7"
+    },
+    "devDependencies": {
+        "@eslint/js": "^10.0.1",
+        "@eslint/markdown": "^8.0.3",
+        "@testing-library/dom": "^10.4.1",
+        "@testing-library/react": "^16.3.2",
+        "@types/leaflet": "^1.9.22",
+        "@types/node": "^26.2.0",
+        "@types/react": "^19.2.17",
+        "@types/react-dom": "^19.2.3",
+        "@vitejs/plugin-react": "^6.0.3",
+        "eslint": "^10.7.0",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-react": "^7.37.5",
+        "eslint-plugin-react-hooks": "^7.1.1",
+        "globals": "^17.7.0",
+        "jsdom": "^29.1.1",
+        "prettier": "3.9.5",
+        "typescript": "^5.9.3",
+        "typescript-eslint": "^8.64.0",
+        "vite": "^8.1.1",
+        "vitest": "^4.1.10"
+    }
 }

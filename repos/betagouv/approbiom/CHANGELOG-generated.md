@@ -1,31 +1,30 @@
-## Changelog : approbiom (30 derniers jours, au 16 juin 2026)
+## Changelog : approbiom (30 derniers jours, au 02/09/2026)
 
 ### Résumé
-Le projet approbiom a connu un développement rapide au cours des 30 derniers jours, passant d'un dépôt initialisé à une base solide pour la création de widgets personnalisés pour Grist. L'accent a été mis sur la construction de widgets interactifs, notamment des tableaux, des barres de recherche, des sélecteurs et une carte interactive, avec une attention particulière à l'intégration de l'esthétique DSFR et à la configuration des widgets via l'interface de Grist. L'infrastructure de build et de déploiement a également été mise en place.
+Ce mois-ci, le projet a franchi des étapes importantes dans l'automatisation et la visualisation des données. L'ajout de nouvelles fonctionnalités cartographiques, l'automatisation de l'importation de fichiers externes (BCIB/BCIAT) et une refonte de l'interface utilisateur permettent une navigation plus intuitive et une exploitation plus efficace des plans d'approvisionnement.
 
 ### Évolutions fonctionnelles
-- Ajout d'un widget de tableau avec possibilité de choisir les colonnes à afficher et leur ordre d'affichage. [#10](https://github.com/betagouv/approbiom/issues/10)
-- Implémentation d'une barre de recherche avec filtre par tags. [#13](https://github.com/betagouv/approbiom/issues/13)
-- Création d'un sélecteur unique et multiple pour l'édition de cellules. [#12](https://github.com/betagouv/approbiom/issues/12)
-- Ajout d'un widget de carte interactive affichant les départements. [#8](https://github.com/betagouv/approbiom/issues/8)
-- Possibilité de configurer les libellés des sélecteurs et de la barre de recherche depuis l'interface de configuration de Grist.
-- Ajout d'un total pour les colonnes de type entier dans le sélecteur de tableau.
-- Amélioration de l'affichage des valeurs par défaut dans les sélecteurs d'édition.
-- Ajout de barres de défilement au sélecteur de tableau pour une meilleure lisibilité.
-- Ajout d'un titre configurable au widget tableau.
-- Ajout d'une liste déroulante personnalisable.
+- **Nouveaux outils** : Introduction du widget "Concurrence" [#17](https://github.com/betagouv/approbiom/issues/17).
+- **Enrichissement du widget Accueil** : 
+    - Ajout de filtres multicritères (fournisseurs, programmes d'aide, départements et régions).
+    - Ajout d'un onglet "Ressources" et gestion des pièces jointes [#21](https://github.com/betagouv/approbiom/issues/21).
+    - Amélioration de la clarté avec l'affichage des noms de plans plutôt que des départements.
+- **Visualisation cartographique** : Intégration de cartes affichant des polygones de provenance et des marqueurs d'installation.
+- **Optimisation de l'interface (UI)** : 
+    - Remplacement des tags par des badges pour la chronologie.
+    - Organisation des tableaux de ventilation sous forme d'onglets.
+    - Changement de terminologie pour plus de cohérence (remplacement de "Dossier" par "Plan").
+- **Performance** : Accélération du temps de mise à jour des données dans l'onglet Accueil.
 
 ### Évolutions techniques
-- Mise en place d'une infrastructure de build avec Vite pour la création de widgets multi-pages.
-- Configuration d'un workflow CI/CD avec GitHub Actions pour la construction et le déploiement sur GitHub Pages.
-- Utilisation des types Grist Plugin API pour une meilleure intégration avec la plateforme.
-- Intégration de l'esthétique DSFR pour les widgets.
-- Refactoring du code pour améliorer la lisibilité et la maintenabilité.
-- Initialisation de tests E2E avec Playwright pour le widget carte.
+- **Automatisation des imports** : Développement d'un script Python permettant l'extraction, la transformation et l'exportation automatisée des données depuis les fichiers Excel (BCIB/BCIAT) vers le format CSV.
+- **Refonte architecturale** : Application de l'architecture hexagonale aux widgets "Accueil" et "Ressource" [#18](https://github.com/betagouv/approbiom/issues/18), [#19](https://github.com/betagouv/approbiom/issues/19).
+- **Qualité et structure du code** : 
+    - Refactorisation globale de la structure du code [#16](https://github.com/betagouv/approbiom/issues/16).
+    - Création d'un environnement de développement ("playground") dédié aux composants cartographiques [#18](https://github.com/betagouv/approbiom/issues/18).
+    - Implémentation d'une fonction de nettoyage et de standardisation des données de provenance [#19](https://github.com/betagouv/approbiom/issues/19).
+- **Maintenance CI/CD** : Correction des scripts de déploiement et de la configuration de formatage (Prettier).
 
 ### Autres changements
-- Amélioration de l'expérience de développement avec la configuration d'un environnement de développement local avec Grist.
-- Suppression de fichiers et dossiers inutiles.
-- Correction de problèmes de linting.
-- Ajout d'un fichier `.nojekyll` pour éviter les problèmes de déploiement sur GitHub Pages.
-- Initialisation du projet et premiers commits.
+- Mise à jour de la documentation relative aux décisions d'architecture.
+- Nettoyage général du dépôt (suppression de fichiers inutilisés et réorganisation des dossiers).
