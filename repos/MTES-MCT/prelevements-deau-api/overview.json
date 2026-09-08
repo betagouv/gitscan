@@ -1,13 +1,14 @@
 {
   "url": "https://github.com/MTES-MCT/prelevements-deau-api",
   "name": "prelevements-deau-api",
-  "description": "Ce projet permet de collecter, organiser et analyser les données de prélèvement d'eau provenant de Démarche Simplifiée. Il fournit une API REST et des workers asynchrones pour la synchronisation, la validation et le traitement des dossiers.",
+  "description": "Ce projet permet de collecter, organiser et analyser les données de prélèvement d'eau provenant de Démarche Simplifiée. Il fournit une API REST et des workers pour la synchronisation et le traitement automatisé des dossiers.",
   "language": "JavaScript",
   "features": [
     "API & Intégrations",
     "Données & Schémas",
     "Statistiques & Rapports",
-    "Administration & Backoffice"
+    "Administration & Backoffice",
+    "Suivi & Traçabilité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -20,21 +21,22 @@
   ],
   "components": [
     "API REST & GraphQL",
+    "MongoDB & NoSQL",
     "Node.js / NestJS",
     "Docker & Conteneurs",
-    "MongoDB & NoSQL",
+    "Webhooks & Événements",
     "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
-      "api-key",
-      "magic-link"
+      "magic-link",
+      "api-key"
     ]
   },
   "tests": [
     "AVA",
     "Supertest",
-    "mongodb-memory-server"
+    "MongoDB Memory Server"
   ],
   "workflows": [
     "openapi-lint.yml"
@@ -46,10 +48,10 @@
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "Node.js, NestJS & Express",
+    "JavaScript",
     "Docker & Conteneurs",
+    "Node.js, NestJS & Express",
     "Bases de données NoSQL",
-    "CI/CD & GitHub Actions",
-    "Environnement & Énergie"
+    "CI/CD & GitHub Actions"
   ]
 }
