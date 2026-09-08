@@ -1,24 +1,24 @@
-## Changelog : conversations (30 derniers jours, au 2 septembre 2026)
+## Changelog : conversations (30 derniers jours, au 07/09/2026)
 
 ### Résumé
-Ce mois a été marqué par des changements structurels majeurs, notamment la migration du frontend vers Vite et la mise à jour des outils d'intelligence artificielle. L'expérience de discussion a été considérablement fluidifiée pour l'utilisateur, tandis que la sécurité et la robustesse du système ont été renforcées par l'introduction de limitations de débit et une optimisation des processus de test.
+Ce mois-ci, le projet a franchi une étape importante avec une refonte majeure de son interface utilisateur et une modernisation profonde de son architecture technique. L'expérience de discussion a été considérablement fluidifiée pour les utilisateurs, tandis que la robustesse et la sécurité du système ont été renforcées pour garantir une utilisation stable et protégée.
 
 ### Évolutions fonctionnelles
-- **Amélioration de l'expérience de chat** : gestion plus fluide du streaming des réponses, prévention des doubles envois de messages et meilleure gestion des erreurs lors du chargement de l'historique.
-- **Nouvelles interfaces** : ajout d'un panneau de sources pour les réponses et amélioration de l'interface d'administration (affichage de la taille des conversations et augmentation de la liste à 200 éléments par page).
-- **Optimisation de l'assistant** : mise à jour des instructions de l'agent pour une meilleure pertinence avec l'écosystème DINUM.
-- **Simplification de l'accès** : suppression de la page et de la barrière du code d'activation.
-- **Suivi et métriques** : intégration du suivi des projets, des exports de documents, des résumés et de l'empreinte carbone.
-- **Interface utilisateur** : corrections visuelles (icônes) et déplacement des paramètres d'analyse vers la section générale.
+- **Amélioration de l'expérience de chat** : gestion plus fluide de l'envoi des messages (prévention des doubles envois), maintien des messages en cas d'erreur de connexion et affichage plus naturel des réponses de l'IA.
+- **Nouvelles fonctionnalités d'interface** : ajout d'un panneau de sources pour les réponses de l'IA et intégration de nouveaux outils de suivi de l'empreinte carbone.
+- **Simplification du parcours utilisateur** : suppression de la page de code d'activation pour un accès plus direct.
+- **Optimisation de l'assistant** : mise à jour des instructions de l'agent pour une meilleure pertinence des réponses de l'assistant DINUM.
+- **Améliorations de l'administration** : affichage de la taille des conversations et augmentation du nombre de conversations visibles par page (200) pour faciliter les actions groupées.
+- **Retour utilisateur** : ajout de messages explicatifs lorsqu'une limite de création est atteinte.
 
 ### Évolutions techniques
-- **Migration majeure du frontend** : passage de Next.js vers Vite et React Router pour plus de légèreté et de flexibilité.
-- **Mise à jour de la stack IA** : migration vers Pydantic-AI 2.x et Vercel AI SDK v5.
-- **Sécurité et stabilité** : mise en place de limitations de débit (*throttling*) pour la création de conversations et de projets, et sécurisation de la chaîne d'approvisionnement (pinning des actions GitHub).
-- **Refactorisation** : unification du client HTTP autour de `httpx` et restructuration du module de configuration par domaines.
-- **Optimisation CI/CD** : parallélisation des tests E2E entre les navigateurs et optimisation de la construction des images de test.
-- **Nettoyage** : suppression des outils de recherche web inutilisés (Tavily et Albert).
+- **Migration majeure du frontend** : passage de Next.js vers une architecture basée sur Vite et React Router pour plus de légèreté et de rapidité.
+- **Modernisation de l'IA** : montée de version vers le Vercel AI SDK v5 et Pydantic-AI 2.x, incluant un nouveau format de stockage et de streaming des messages.
+- **Sécurité renforcée** : mise en place de limitations de débit (throttling) pour la création de projets et de conversations, et sécurisation de la chaîne d'approvisionnement en verrouillant les versions des actions GitHub.
+- **Optimisation de la CI/CD** : parallélisation des tests E2E (sharding) et optimisation du processus de build des images pour accélérer les déploiements.
+- **Refactoring backend** : remplacement de la bibliothèque `requests` par `httpx` et restructuration du module de configuration pour une meilleure modularité.
+- **Observabilité** : intégration de PostHog pour le suivi des indicateurs clés (utilisation des projets, exports de documents, résumés).
 
 ### Autres changements
-- **Documentation** : ajout de la documentation concernant les réglages de limitation de débit de l'API.
-- **Internationalisation** : mise à jour des chaînes de caractères traduites.
+- **Documentation** : refonte de la procédure de release et ajout de la documentation concernant les paramètres de limitation de l'API.
+- **Internationalisation** : mise à jour des chaînes de traduction [#711](https://github.com/suitenumerique/conversations/pull/711).
