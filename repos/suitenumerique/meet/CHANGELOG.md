@@ -8,15 +8,25 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Fixed
+
+- 🔒️(backend) enforce display name setting on rename API
+
+## [1.31.0] - 2026-09-08
+
 ### Added
 
 - ✨(frontend) add 1080p sending resolution option #1660
 - ✨(backend) add Traefik support via configurable media-auth url header #1649
 - ✨(backend) update a room's attributes from the external API
+- 🔊(backend) log request duration in Gunicorn workers
+- 📈(frontend) track missing lobby participant on accept/reject
+- ✨(backend) sort waiting participants by their arrival time
 
 ### Changed
 
 - ⬆️(dev) pin LiveKit server to v1.13.6
+- 🔒(frontend) upgrade base image to 1.30.4-alpine3.24
 
 ### Fixed
 
@@ -24,6 +34,12 @@ and this project adheres to
 - 🐛(frontend) keep the sending resolution picked while the camera is off #1667
 - 🐛(frontend) restore automatic lower-hand on speaking
 - 🐛(frontend) center Avatar initials with a font-aware cap-height ratio
+- 🐛(frontend) keep feedback buttons on one line for fr/es/en
+- ⚡️(frontend) increase lobby polling interval on both sides
+- ⚡️(frontend) add trailing slash on the /me endpoint call
+- ⚡️(backend) refactor lobby storage to bound key lookups per room
+- ⚡️(backend) refactor presence cache to bound key lookups per room
+- 💄(frontend) position the login hint dynamically next to the button
 
 ## [1.30.0] - 2026-09-01
 
