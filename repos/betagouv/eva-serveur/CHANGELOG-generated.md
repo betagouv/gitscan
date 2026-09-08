@@ -1,34 +1,34 @@
-## Changelog : eva-serveur (30 derniers jours, au 03/09/2026)
+## Changelog : eva-serveur (30 derniers jours, au 07/09/2026)
 
 ### Résumé
-Cette période a été marquée par une modernisation majeure de l'infrastructure technique (passage à Rails 8 et Ruby 4) et une restructuration profonde du code pour mieux distinguer les fonctionnalités "eva" et "evapro". Les utilisateurs bénéficieront d'une meilleure stabilité lors de la génération de documents, de performances accrues pour le traitement des images et de nouvelles capacités de modification pour les conseillers.
+Ce mois a été marqué par une mise à jour majeure de l'infrastructure technique (passage à Rails 8) et une séparation plus nette des processus entre les modules "eva" et "evapro". Les travaux ont également permis d'améliorer la performance du traitement des images et la stabilité de la génération de documents PDF, tout en affinant l'expérience utilisateur via des corrections d'affichage et une meilleure accessibilité.
 
 ### Évolutions fonctionnelles
-- **Nouvelle fonctionnalité** : Les conseillers ont désormais la possibilité de modifier les bénéficiaires.
-- **Accessibilité et UX** :
-    - Amélioration de l'accessibilité pour les lecteurs d'écran (identification explicite des champs email).
-    - Optimisation de l'affichage : correction du défilement horizontal sur le tableau des comptes et passage du tableau des bénéficiaires en mode multiligne.
-    - Tri automatique des structures par date de création.
-- **Corrections et traductions** :
-    - Correction des traductions pour diverses métriques (eva et evapro).
-    - Résolution de bugs d'affichage (métriques d'impact de coûts) et de redirection après suppression d'une évaluation.
-    - Amélioration de la logique de restitution pour les situations non diagnostiques (retour au dernier essai).
+- **Nouvelles fonctionnalités** : les conseillers peuvent désormais modifier les bénéficiaires.
+- **Expérience utilisateur et interface** :
+    - Amélioration de l'accessibilité (indications pour les lecteurs d'écran sur les champs email).
+    - Optimisation de l'affichage : tri des structures par date de création, correction du défilement horizontal dans les tableaux de comptes et amélioration de la mise en page des listes de bénéficiaires.
+- **Corrections de bugs** :
+    - Résolution d'un problème de redirection après la suppression d'une évaluation.
+    - Correction de la logique de restitution pour les situations non diagnostiques (affichage du dernier essai).
+    - Masquage automatique des métriques d'impact de coûts lorsqu'elles ne sont pas disponibles.
+- **Localisation** : corrections et ajouts de traductions pour les métriques de synthèse (notamment pour evapro).
 
 ### Évolutions techniques
-- **Mises à jour majeures** : Migration de l'environnement vers Ruby 4.0.6 et Rails 8.0.5.
-- **Refactoring architectural** :
-    - Séparation structurelle et logique des composants "eva" et "evapro" (calculs de complétude, restitutions et organisation des répertoires).
-    - Réorganisation de l'ordre d'inclusion des modules pour résoudre des problèmes de callbacks.
+- **Montée de version majeure** : migration vers Rails 8.0.5 et Ruby 4.0.6.
 - **Optimisation des performances et stabilité** :
-    - **Traitement d'images** : Optimisation du redimensionnement via une limitation de la concurrence et une répartition des tâches par question.
-    - **Génération de PDF** : Sécurisation de l'utilisation de Chrome Headless (utilisation de mutex et gestion de la concurrence) pour éviter les conflits lors des exports.
-    - **Requêtes** : Regroupement des requêtes pour le composant `StandardisateurGlissant` et optimisation de la configuration du serveur Puma.
-- **Intégrations et sécurité** :
+    - Amélioration du traitement des images : limitation de la concurrence et division du travail de redimensionnement par question.
+    - Stabilisation de la génération de PDF : gestion de la concurrence pour l'instance Chrome headless via un mutex pour éviter les conflits lors d'exports simultanés.
+    - Optimisation des requêtes de calcul (StandardisateurGlissant).
+- **Refactorisation et architecture** :
+    - Séparation structurelle des modules "eva" et "evapro" (restitution, calcul de complétude et organisation des répertoires).
+    - Nettoyage et réorganisation du code (suppression de helpers obsolètes et réécriture de méthodes).
+- **Infrastructure et intégrations** :
+    - Configuration de la concurrence du serveur Puma.
     - Ajout d'un User-Agent pour les requêtes vers l'API Sirene.
-    - Filtrage des logs pour ignorer les scans de bots malveillants (WordPress, PHP, ASP.NET).
+    - Amélioration de la gestion des logs en ignorant les erreurs 404 générées par des bots (WordPress, ASP.NET, etc.).
+    - Correction du script d'initialisation des environnements de test (reviewapps).
 
 ### Autres changements
-- **Maintenance et DevOps** :
-    - Correction du script d'initialisation des `reviewapp`.
-    - Nettoyage du code (suppression de helpers obsolètes et renommage de fichiers de vue).
-    - Documentation de notes techniques internes.
+- Documentation d'une investigation technique sur l'ordre d'exécution des rappels de transactions (callbacks).
+- Renommage de fichiers de vue pour une meilleure clarté des formats de templates.
