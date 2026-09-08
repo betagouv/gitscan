@@ -1,7 +1,7 @@
-## Changelog : qualicharge (30 derniers jours, au 10/08/2026)
+## Changelog : qualicharge (30 derniers jours, au 07/09/2026)
 
 ### Résumé
-Les récentes interventions ont porté sur l'optimisation des processus de calcul, permettant un traitement plus rapide et plus efficace des indicateurs de performance du système.
+Les récentes évolutions se sont concentrées sur l'optimisation des processus de calcul de données, visant à accélérer la génération des indicateurs de performance liés à la qualité de recharge.
 
 ### Évolutions techniques
-- Optimisation des performances pour le calcul des indicateurs e2 et e3 via l'outil d'orchestration Prefect.
+- Optimisation des performances des indicateurs e2 et e3 au sein des workflows Prefect, notamment via l'utilisation de segments de données étendus (*extended chunks*).
