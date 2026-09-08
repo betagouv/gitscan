@@ -1,27 +1,29 @@
 {
   "url": "https://github.com/proconnect-gouv/proconnect-test-client",
   "name": "proconnect-test-client",
-  "description": "Ce client de test ProConnect minimal, basé sur NodeJS, est conçu pour les tests de bout en bout. Il utilise la bibliothèque node-openid-client pour la logique OIDC et permet de tester le flux d'autorisation traditionnel.",
+  "description": "Client ProConnect minimal basé sur Node.js, conçu pour effectuer des tests de bout en bout du flux d'autorisation OIDC.",
   "language": "JavaScript",
   "features": [
-    "Authentification & Accès",
-    "Tests de bout en bout"
+    "Authentification & Accès"
   ],
   "audience": "Développeurs",
   "dependencies": [
     "Express",
-    "node-openid-client",
-    "dotenv-flow",
+    "openid-client",
     "ejs",
+    "dotenv-flow",
+    "Cypress",
     "body-parser",
-    "express-session",
-    "lodash-es",
-    "morgan",
-    "Cypress"
+    "express-session"
   ],
   "components": [
-    "API REST & GraphQL",
-    "Microservices & Architecture"
+    "Node.js / NestJS",
+    "TypeScript / JavaScript",
+    "Tests",
+    "Docker & Conteneurs",
+    "HTML / CSS / Templates visuels",
+    "Authentification (composant)",
+    "API REST & GraphQL"
   ],
   "auth": {
     "methods": [
@@ -29,29 +31,26 @@
     ]
   },
   "tests": [
-    "Cypress",
-    "Tests E2E"
+    "Cypress"
   ],
   "workflows": [
-    "CI",
-    "Publish"
+    "ci.yml",
+    "publish.yml"
   ],
-  "lastActivity": "2026-07-16T00:27:18+02:00",
+  "lastActivity": "2026-07-27T17:08:51+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
   "metrics": {
     "stars": 4,
     "forks": 2,
-    "contributors": null,
-    "openIssues": 2
+    "openIssues": 9
   },
   "tags": [
     "SSO & Identité fédérée",
     "Tests & Qualité",
-    "Client",
     "Node.js, NestJS & Express",
-    "Cypress",
-    "Sécurité & Auth"
+    "Sécurité & Auth",
+    "Docker & Conteneurs"
   ]
 }
