@@ -1,50 +1,53 @@
 {
   "url": "https://github.com/incubateur-ademe/dashlord",
   "name": "dashlord",
-  "description": "Tableau de bord automatisé pour le suivi des bonnes pratiques techniques. Il utilise GitHub Actions pour scanner des URLs et générer des rapports de conformité et de sécurité sous forme de site statique.",
+  "description": "DashLord est un tableau de bord automatisé permettant de surveiller les bonnes pratiques techniques et la sécurité de sites web. Il utilise GitHub Actions pour collecter des données de scan et générer des rapports web statiques.",
   "language": "TypeScript",
   "features": [
     "Visualisation de données & Cartographie",
     "Statistiques & Rapports",
     "Sécurité & Conformité",
     "Monitoring & Logs",
-    "Interface utilisateur & Design",
     "Tests & QA"
   ],
-  "audience": "Professionnels",
+  "audience": "Développeurs",
   "dependencies": [
     "GitHub Actions",
+    "Wappalyzer",
     "Lighthouse",
     "Trivy",
     "Nmap",
-    "Wappalyzer",
-    "Dependabot",
-    "CodeQL"
+    "Updown.io"
   ],
   "components": [
     "CI/CD & Déploiement",
-    "Sites statiques & SSG",
+    "HTML / CSS / Templates visuels",
     "Scripts & Utilitaires",
-    "TypeScript / JavaScript"
+    "Documentation & Schémas"
   ],
   "auth": {
     "methods": [
       "none"
     ]
   },
-  "tests": "Scans automatisés de sécurité, d'accessibilité et de performance via GitHub Actions",
-  "workflows": [
-    "DashLord scans",
-    "DashLord report"
+  "tests": [
+    "Lighthouse",
+    "Trivy",
+    "CodeQL",
+    "Wappalyzer"
   ],
-  "lastActivity": "2026-08-30T07:41:42Z",
-  "status": "maintained",
+  "workflows": [
+    "scans.yml",
+    "report.yml"
+  ],
+  "lastActivity": "2026-09-06T07:03:43Z",
+  "status": "active",
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "CI/CD & GitHub Actions",
     "Reporting & BI",
     "Sécurité & Auth",
-    "Design System & UI"
+    "Tests & Qualité"
   ]
 }

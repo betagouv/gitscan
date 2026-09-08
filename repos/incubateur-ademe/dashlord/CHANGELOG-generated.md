@@ -1,8 +1,10 @@
-## Changelog : dashlord (30 derniers jours, au 30/08/2026)
+## Changelog : dashlord (30 derniers jours, au 06/09/2026)
 
 ### Résumé
-L'activité de ce mois a été principalement consacrée à la maintenance des données de suivi, garantissant que les rapports reflètent l'état actuel des services et sites web surveillés par la plateforme.
+L'activité de ce mois a été principalement consacrée à la maintenance du périmètre de surveillance, en actualisant la liste des sites web suivis par le tableau de bord pour garantir la pertinence des rapports.
+
+### Évolutions fonctionnelles
+- Mise à jour du périmètre de monitoring : actualisation de la liste des sites web surveillés (notamment pour les services liés à la transition écologique et aux plateformes de l'ADEME).
 
 ### Autres changements
-- Mise à jour régulière de la liste des sites web monitorés (notamment les services liés à l'ADEME et à la transition écologique).
-- Actualisation périodique des rapports de conformité.
+- Maintenance régulière des processus de génération de rapports.
