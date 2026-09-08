@@ -1,23 +1,9 @@
-## Changelog : monitor-ui (30 derniers jours, au 30 juillet 2026)
+## Changelog : monitor-ui (30 derniers jours, au 03/09/2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives au composant `CheckTreePicker`, notamment en termes de performance et d'affichage des données, particulièrement pour les ensembles de données volumineux. Des corrections de bugs ont également été apportées pour améliorer l'expérience utilisateur et la stabilité de la bibliothèque. Enfin, quelques ajustements techniques ont été effectués pour optimiser le code et la configuration.
+Les dernières mises à jour ont principalement porté sur l'amélioration de l'accessibilité visuelle et l'ajustement de l'apparence de certains composants de l'interface utilisateur.
 
 ### Évolutions fonctionnelles
-- Le composant `CheckTreePicker` affiche désormais tous les enfants, même ceux qui ne correspondent pas directement à la requête de recherche, grâce à la nouvelle propriété `withAllChildrenInResults`.
-- Amélioration de l'affichage des éléments tronqués dans `CheckTreePicker` : le libellé complet est maintenant visible au survol.
-- Correction du comportement du `CheTreePicker` avec de grands ensembles de données lorsque `withAllChildrenInResults` est activé.
-- Renommage de la propriété `isMultiSelect` en `canSelectMultipleParents` pour plus de clarté.
-- Le bouton de suppression est maintenant implémenté en tant que bouton standard.
-
-### Évolutions techniques
-- Optimisation de la recherche Fuse dans `CustomSearch` pour éviter une complexité O(n²).
-- Suppression d'une dépendance inutile à `react-router-dom`.
-- Correction d'un problème d'arrondi avant l'extraction de sous-chaînes de caractères.
-- Correction d'un problème d'affichage de l'icône d'expansion qui bloquait l'info-bulle du titre de la ligne.
-- Correction pour empêcher le téléchargement de fichiers si le type MIME ne correspond pas au mode.
-- Export des types pour une meilleure compatibilité.
-
-### Autres changements
-- Mises à jour de la configuration CI/CD pour les versions 24.57.1, 24.57.0, 24.56.1, 24.56.0, 24.55.6, 24.55.5 et 24.55.4.
-- Ajustement du padding interne de certains composants.
+- **Accessibilité :** Amélioration du contraste de la couleur `slate-gray` pour garantir une meilleure lisibilité sur les fonds colorés. ([4371ed7](https://github.com/MTES-MCT/monitor-ui/commit/4371ed7360286014fcd920731b967168d04c5961))
+- **Composants UI :** Mise à jour du composant `LinkButton`. ([05609d7](https://github.com/MTES-MCT/monitor-ui/commit/05609d7f306774a83ddc0ffb2c5b3ce2fb3b7288))
+- **Typographie :** Ajustement de la taille de police sur certains composants. ([bf4b1d8](https://github.com/MTES-MCT/monitor-ui/commit/bf4b1d8))

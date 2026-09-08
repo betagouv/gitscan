@@ -1,3 +1,33 @@
+## [24.60.1](https://github.com/MTES-MCT/monitor-ui/compare/v24.60.0...v24.60.1) (2026-09-01)
+
+### Bug Fixes
+
+* **global:** modify slate-gray to make it accessible with background ([a4aa186](https://github.com/MTES-MCT/monitor-ui/commit/a4aa1865ac07c911e0c3e0d848512325e4077d72))
+
+## [24.60.0](https://github.com/MTES-MCT/monitor-ui/compare/v24.59.0...v24.60.0) (2026-09-01)
+
+### Features
+
+* **components:** modify slate-gray to make it accessible with background ([4371ed7](https://github.com/MTES-MCT/monitor-ui/commit/4371ed7360286014fcd920731b967168d04c5961))
+
+## [24.59.0](https://github.com/MTES-MCT/monitor-ui/compare/v24.58.0...v24.59.0) (2026-09-01)
+
+### Features
+
+* **components:** modify slate-gray to make it accessible with background ([88c46d2](https://github.com/MTES-MCT/monitor-ui/commit/88c46d28451062125ee89874541a341ba2d40a18))
+
+## [24.58.0](https://github.com/MTES-MCT/monitor-ui/compare/v24.57.2...v24.58.0) (2026-08-31)
+
+### Features
+
+* **components:** modify UI LinkButton.tsx ([05609d7](https://github.com/MTES-MCT/monitor-ui/commit/05609d7f306774a83ddc0ffb2c5b3ce2fb3b7288))
+
+## [24.57.2](https://github.com/MTES-MCT/monitor-ui/compare/v24.57.1...v24.57.2) (2026-08-03)
+
+### Bug Fixes
+
+* **fields:** fix parent title ([53f72cc](https://github.com/MTES-MCT/monitor-ui/commit/53f72cc3b1b02e893539cdc0c4fe4ee547beccfe))
+
 ## [24.57.1](https://github.com/MTES-MCT/monitor-ui/compare/v24.57.0...v24.57.1) (2026-07-30)
 
 ### Bug Fixes
