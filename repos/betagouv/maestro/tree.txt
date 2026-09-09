@@ -3,6 +3,7 @@
 ├── .env.example
 ├── .github
 │   ├── dependabot.yml
+│   ├── semanticReleaseTchap.mjs
 │   └── workflows
 │       ├── codeql-analysis.yml
 │       └── github-actions.yml
@@ -440,9 +441,14 @@
 │   │       │   ├── ProgrammingPlanSamplerFormSettings
 │   │       │   │   ├── AddFieldToProgrammingSubPlanModal.tsx
 │   │       │   │   ├── ProgrammingPlanSamplerFormSettings.tsx
+│   │       │   │   ├── ProgrammingSubPlanFieldActiveOptions.scss
 │   │       │   │   ├── ProgrammingSubPlanFieldActiveOptions.tsx
+│   │       │   │   ├── ProgrammingSubPlanFieldItem.scss
 │   │       │   │   ├── ProgrammingSubPlanFieldItem.tsx
 │   │       │   │   └── ProgrammingSubPlanFieldList.tsx
+│   │       │   ├── ProgrammingPlanSettingInheritance
+│   │       │   │   ├── ProgrammingPlanSettingInheritance.scss
+│   │       │   │   └── ProgrammingPlanSettingInheritance.tsx
 │   │       │   ├── ProgrammingPlanSettingsActions
 │   │       │   │   ├── ProgrammingPlanSettingsActions.scss
 │   │       │   │   └── ProgrammingPlanSettingsActions.tsx
@@ -451,6 +457,8 @@
 │   │       │   ├── ProgrammingPlanSettingsCard
 │   │       │   │   ├── ProgrammingPlanSettingsCard.stories.tsx
 │   │       │   │   └── ProgrammingPlanSettingsCard.tsx
+│   │       │   ├── ProgrammingPlanSettingsTabs
+│   │       │   │   └── ProgrammingPlanSettingsTabs.tsx
 │   │       │   ├── ProgrammingPlanSettingsView.stories.tsx
 │   │       │   ├── ProgrammingPlanSettingsView.tsx
 │   │       │   ├── ProgrammingPlanView
@@ -459,9 +467,12 @@
 │   │       │   ├── ProgrammingSubPlanActionBar
 │   │       │   │   ├── ProgrammingSubPlanActionBar.scss
 │   │       │   │   └── ProgrammingSubPlanActionBar.tsx
-│   │       │   └── ProgrammingSubPlanList
-│   │       │       ├── ProgrammingSubPlanList.scss
-│   │       │       └── ProgrammingSubPlanList.tsx
+│   │       │   ├── ProgrammingSubPlanList
+│   │       │   │   ├── ProgrammingSubPlanList.scss
+│   │       │   │   └── ProgrammingSubPlanList.tsx
+│   │       │   └── SettingInheritanceLockButton
+│   │       │       ├── SettingInheritanceLockButton.scss
+│   │       │       └── SettingInheritanceLockButton.tsx
 │   │       ├── ProgrammingView
 │   │       │   ├── ProgrammingCommentList
 │   │       │   │   └── ProgrammingCommentList.tsx
@@ -772,7 +783,8 @@
 │   │   │   ├── 112-administrator-maestro-role.ts
 │   │   │   ├── 113-programming-plan-domains.ts
 │   │   │   ├── 114-programming-plan-domain-year.ts
-│   │   │   └── 115-programming-plan-domain-id-not-nullable.ts
+│   │   │   ├── 115-programming-plan-domain-id-not-nullable.ts
+│   │   │   └── 116-programming-plan-setting-inheritance.ts
 │   │   └── seeds
 │   │       ├── departments
 │   │       │   ├── departmentsSeed.ts
@@ -1006,12 +1018,15 @@
 │   │   │   ├── index.ts
 │   │   │   ├── mailService.ts
 │   │   │   └── nodemailerService.ts
-│   │   ├── mattermostService.ts
 │   │   ├── notificationService.ts
 │   │   ├── pdfService
 │   │   │   └── pdfService.ts
+│   │   ├── programmingPlanSettingsService.integration.test.ts
+│   │   ├── programmingPlanSettingsService.ts
 │   │   ├── s3Service.ts
 │   │   ├── supportDocumentProcessor.ts
+│   │   ├── tchapService.test.ts
+│   │   ├── tchapService.ts
 │   │   ├── userService.ts
 │   │   └── zipService.ts
 │   ├── templates
@@ -1215,6 +1230,9 @@
 │   │   │   ├── FindProgrammingSubPlanOptions.ts
 │   │   │   ├── ProgrammingPlanDomain.ts
 │   │   │   ├── ProgrammingPlanLocalStatus.ts
+│   │   │   ├── ProgrammingPlanSettings.test.ts
+│   │   │   ├── ProgrammingPlanSettings.ts
+│   │   │   ├── ProgrammingPlanSettingsForm.ts
 │   │   │   ├── ProgrammingPlanStatus.ts
 │   │   │   ├── ProgrammingPlans.ts
 │   │   │   └── ProgrammingSubPlan.ts
@@ -1235,6 +1253,7 @@
 │   │   │   └── Seves.ts
 │   │   ├── SpecificData
 │   │   │   ├── FieldConfigInput.ts
+│   │   │   ├── FieldInheritance.ts
 │   │   │   ├── ProgrammingSubPlanFieldConfig.ts
 │   │   │   ├── SpecificData.ts
 │   │   │   ├── buildSpecificDataSchema.ts
@@ -1291,4 +1310,4 @@
     ├── express-jwt
     │   └── index.d.ts
     └── knex-stringcase.d.ts
-239 directories, 1054 files
+242 directories, 1070 files
