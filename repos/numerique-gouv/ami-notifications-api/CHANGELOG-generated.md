@@ -1,36 +1,18 @@
-## Changelog : ami-notifications-api (30 derniers jours, au 04/09/2026)
+## Changelog : ami-notifications-api (30 derniers jours, au 08/09/2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se sont concentrées sur la modernisation de l'expérience utilisateur et le renforcement de la sécurité. Les principaux changements incluent l'intégration des Passkeys pour une connexion simplifiée, une refonte majeure du système de suivi (followup) pour gérer des contenus plus complexes, et une amélioration de la navigation globale sur l'application.
+Ce mois-ci, l'API a franchi une étape majeure avec l'introduction de l'authentification par Passkey (WebAuthn), offrant une connexion plus simple et sécurisée. L'expérience de notification a été optimisée pour éviter les doublons et améliorer le support sur ordinateur, tandis que de nouveaux éléments visuels, comme le carrousel "AutoPromo", enrichissent l'interface utilisateur.
 
 ### Évolutions fonctionnelles
-- **Authentification et sécurité :**
-    - Introduction du support des Passkeys, incluant une intégration optimisée pour les appareils mobiles iOS et Android [#1088].
-    - Amélioration de la gestion de FranceConnect, notamment la correction du processus de déconnexion [#1288, #1241] et une meilleure gestion des erreurs [#1152].
-    - Mise en place d'un système de gestion des consentements utilisateurs (stockage et nouveaux points d'accès API) [#911].
-- **Expérience utilisateur et interface :**
-    - Refonte complète du système de "suivi" (followup) permettant désormais de gérer des structures hiérarchiques complexes avec des sous-éléments [#825].
-    - Amélioration de la navigation avec un nouveau comportement pour le bouton "retour" [#1200] et l'ajout d'une vue de reconnexion [#1179].
-    - Ajout de nouveaux services (SOS et "Steps") avec des icônes dédiées [#1048].
-    - Mise en place de nouveaux composants visuels : carrousels pour les promotions automatiques [#1142, #1001] et une nouvelle checklist [#1140].
-    - Corrections diverses sur l'affichage des dates de vacances et des badges [#672, #1203].
+- **Authentification** : Introduction des Passkeys (WebAuthn) pour une connexion simplifiée et sécurisée [#1088](https://github.com/numerique-gouv/ami-notifications-api/issues/1088), gestion améliorée des erreurs de connexion et nouvelle vue de reconnexion [#1179](https://github.com/numerique-gouv/ami-notifications-api/issues/1179).
+- **Notifications** : Suppression des doublons pour les notifications programmées [#839](https://github.com/numerique-gouv/ami-notifications-api/issues/839) et amélioration de la gestion des abonnements pour les appareils mobiles et les ordinateurs [#939](https://github.com/numerique-gouv/ami-notifications-api/issues/939).
+- **Contenu et affichage** : Intégration d'un carrousel "AutoPromo" sur la page d'accueil [#1142](https://github.com/numerique-gouv/ami-notifications-api/issues/1142) et amélioration de la hiérarchie d'affichage pour le suivi des informations (follow-up) [#825](https://github.com/numerique-gouv/ami-notifications-api/issues/825).
+- **Expérience utilisateur** : Amélioration de la navigation avec un nouveau bouton de retour [#1200](https://github.com/numerique-gouv/ami-notifications-api/issues/1200), gestion plus fluide des consentements [#911](https://github.com/numerique-gouv/ami-notifications-api/issues/911) et enrichissement visuel des services via l'ajout d'icônes [#1048](https://github.com/numerique-gouv/ami-notifications-api/issues/1048).
 
 ### Évolutions techniques
-- **Architecture et routage :**
-    - Optimisation du routage via l'utilisation de proxies pour les WebSockets [#1292], les fichiers statiques [#1189] et les URLs Django via Vite [#1138].
-    - Migration et restructuration de la gestion des partenaires dans l'API [#1131].
-- **Sécurité et gestion des données :**
-    - Amélioration de la gestion des tokens avec le support du format JWT et l'utilisation de la signature ES256 [#1219].
-    - Renforcement de la vérification des signatures pour les jetons FranceConnect [#1172].
-- **Qualité et Observabilité :**
-    - Intégration de Sentry pour un meilleur suivi des erreurs en production [#1240].
-    - Amélioration de la chaîne CI/CD, notamment avec l'ajout de workflows pour les tests iOS et Android [#1176].
-    - Unification de la configuration des tests et amélioration de la couverture des tests pour l'agenda et les notifications [#672, #1269].
+- **Sécurité** : Renforcement de la validation des jetons FranceConnect, support du format JWT pour les informations utilisateur [#1219](https://github.com/numerique-gouv/ami-notifications-api/issues/1219) et ajout du suivi Matomo pour les événements liés aux Passkeys [#1187](https://github.com/numerique-gouv/ami-notifications-api/issues/1187).
+- **Architecture** : Migration de la base de données pour les champs partenaires [#1131](https://github.com/numerique-gouv/ami-notifications-api/issues/1131) et optimisation du routage (WebSockets, fichiers statiques et URLs de clés de notification) via Vite [#1138](https://github.com/numerique-gouv/ami-notifications-api/issues/1138).
+- **Observabilité et CI/CD** : Intégration de Sentry pour le suivi des erreurs en production [#1240](https://github.com/numerique-gouv/ami-notifications-api/issues/1240) et automatisation du déclenchement des tests système dans les workflows GitHub Actions [#10](https://github.com/numerique-gouv/ami-notifications-api/issues/10).
 
 ### Autres changements
-- **Nettoyage et maintenance :**
-    - Suppression de fichiers d'icônes inutilisés [#445] et de logs de console superflus [#1312].
-    - Renommage de la bibliothèque interne `ami-goto` [#1200].
-    - Corrections orthographiques et typographiques dans l'interface et la documentation [#1208, #876, #1161].
-- **Développement :**
-    - Ajout d'une vérification automatique des messages de commit via `pre-commit` [#157].
+- **Maintenance** : Nettoyage du code (suppression de logs et de tests obsolètes) et corrections typographiques diverses.

@@ -10,10 +10,7 @@
 │       ├── pytest.yml
 │       ├── workflow-e2e-trigger-after-deploy.yml
 │       ├── workflow-e2e-webapp-manual.yml
-│       ├── workflow-e2e-webapp-merge.yml
-│       ├── workflow-e2e-webapp-pr.yml
-│       ├── workflow-e2e-webapp-shared.yml
-│       └── workflow-e2e-webapp-tag.yml
+│       └── workflow-e2e-webapp-shared.yml
 ├── .gitignore
 ├── .pre-commit-config.yaml
 ├── .python-version
@@ -329,7 +326,8 @@
 │   │   ├── serializers.py
 │   │   └── tests
 │   │       ├── __init__.py
-│   │       └── test_api_views.py
+│   │       ├── test_api_views.py
+│   │       └── test_models.py
 │   ├── replication
 │   │   ├── app.py
 │   │   ├── management
@@ -405,6 +403,8 @@
 │   │   │   ├── 0005_partner.py
 │   │   │   ├── 0006_partner.py
 │   │   │   ├── 0007_partner.py
+│   │   │   ├── 0008_device_id.py
+│   │   │   ├── 0009_device_id.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── serializers.py
@@ -619,6 +619,7 @@
 │   │   │   │   ├── +layout.svelte
 │   │   │   │   ├── +layout.ts
 │   │   │   │   ├── +page.svelte
+│   │   │   │   ├── +page.ts
 │   │   │   │   ├── agenda
 │   │   │   │   │   ├── +page.svelte
 │   │   │   │   │   └── page.svelte.test.ts
@@ -638,8 +639,10 @@
 │   │   │   │   │   └── page.svelte.test.ts
 │   │   │   │   ├── followup
 │   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   ├── +page.ts
 │   │   │   │   │   ├── archived
 │   │   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   │   ├── +page.ts
 │   │   │   │   │   │   └── page.svelte.test.ts
 │   │   │   │   │   ├── item
 │   │   │   │   │   │   └── [partner_id]
@@ -786,4 +789,4 @@
 ├── scalingo.json
 ├── uv.lock
 └── vapid_keys.py
-151 directories, 637 files
+151 directories, 640 files
