@@ -12,7 +12,8 @@
 │       │       └── fr
 │       │           └── gouv
 │       │               └── ami
-│       │                   └── ExampleInstrumentedTest.kt
+│       │                   ├── PrivateStorageTest.kt
+│       │                   └── SecureStorageTest.kt
 │       ├── debug
 │       │   └── java
 │       │       └── fr
@@ -35,6 +36,7 @@
 │       │   │               │   ├── ApiService.kt
 │       │   │               │   └── NetworkService.kt
 │       │   │               ├── components
+│       │   │               │   ├── AmiBiometricPrompt.kt
 │       │   │               │   ├── BackBar.kt
 │       │   │               │   ├── Buttons.kt
 │       │   │               │   ├── DownloadLogsButton.kt
@@ -75,7 +77,8 @@
 │       │   │               │   ├── HomeScreen.kt
 │       │   │               │   ├── NotificationPermissionHandler.kt
 │       │   │               │   ├── WebViewScreen.kt
-│       │   │               │   └── WebViewViewModel.kt
+│       │   │               │   ├── WebViewViewModel.kt
+│       │   │               │   └── WebviewScripts.kt
 │       │   │               ├── networkManager
 │       │   │               │   └── WifiErrorScreen.kt
 │       │   │               ├── notifications
@@ -91,9 +94,19 @@
 │       │   │               │       ├── Theme.kt
 │       │   │               │       └── Type.kt
 │       │   │               └── utils
+│       │   │                   ├── DeviceIdUtils.kt
 │       │   │                   ├── LogsExporter.kt
-│       │   │                   ├── ManagerLocalStorage.kt
-│       │   │                   └── NetworkMonitor.kt
+│       │   │                   ├── NetworkMonitor.kt
+│       │   │                   ├── Result.kt
+│       │   │                   └── storage
+│       │   │                       ├── CipherManager.kt
+│       │   │                       ├── ILocalStorageRepository.kt
+│       │   │                       ├── KeyStoreManager.kt
+│       │   │                       ├── LocalStorageError.kt
+│       │   │                       ├── LocalStorageRepositoryProtocol.kt
+│       │   │                       ├── LowStorageManager.kt
+│       │   │                       ├── PrivateStorage.kt
+│       │   │                       └── SecureStorage.kt
 │       │   └── res
 │       │       ├── drawable
 │       │       │   ├── connection_lost.xml
@@ -143,24 +156,25 @@
 │       │       └── xml
 │       │           ├── backup_rules.xml
 │       │           ├── data_extraction_rules.xml
-│       │           ├── file_paths.xml
-│       │           └── network_security_config.xml
-│       ├── release
-│       │   └── java
-│       │       └── fr
-│       │           └── gouv
-│       │               └── ami
-│       │                   ├── api
-│       │                   │   └── OkHttpClientBuilderExt.kt
-│       │                   └── components
-│       │                       └── SslErrorHandlerExt.kt
-│       └── test
+│       │           └── file_paths.xml
+│       └── release
 │           └── java
 │               └── fr
 │                   └── gouv
 │                       └── ami
-│                           └── ExampleUnitTest.kt
+│                           ├── api
+│                           │   └── OkHttpClientBuilderExt.kt
+│                           └── components
+│                               └── SslErrorHandlerExt.kt
 ├── build.gradle.kts
+├── buildSrc
+│   ├── build.gradle.kts
+│   └── src
+│       └── main
+│           └── kotlin
+│               └── GenerateNetworkSecurityConfigTask.kt
+├── config
+│   └── .env.example
 ├── gradle
 │   ├── libs.versions.toml
 │   └── wrapper
@@ -170,4 +184,4 @@
 ├── gradlew
 ├── gradlew.bat
 └── settings.gradle.kts
-65 directories, 516 files
+66 directories, 529 files
