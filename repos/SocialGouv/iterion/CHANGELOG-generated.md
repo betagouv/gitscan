@@ -1,39 +1,37 @@
-## Changelog : iterion (30 derniers jours, au 31 août 2026)
+## Changelog : iterion (30 derniers jours, au 08/09/2026)
 
 ### Résumé
-Ce mois a été marqué par une montée en puissance de la fiabilité et de la sécurité de la plateforme. Les évolutions majeures concernent l'amélioration de la résilience des agents (capacité à basculer automatiquement d'un modèle d'IA à un autre en cas de besoin), un renforcement massif de la couverture de tests pour garantir la stabilité, et une gestion plus fine des budgets et des permissions. L'expérience utilisateur dans l'interface Studio a également été enrichie pour offrir une meilleure visibilité sur les changements et les coûts.
+Ce mois a été marqué par un renforcement significatif de la résilience et de l'observabilité du plan de contrôle. Les capacités de récupération des agents ont été améliorées (points de contrôle, reprises de sessions), et de nouveaux outils de surveillance ont été introduits, notamment pour la détection de vulnérabilités et l'accessibilité. La gestion des budgets et des ressources est devenue plus fine, offrant un meilleur contrôle sur l'exécution des flux de travail complexes.
 
 ### Évolutions fonctionnelles
-- **Intelligence Artificielle & Modèles** :
-    - Introduction de mécanismes de repli (fallback) entre différents modèles d'IA pour assurer la continuité des tâches ([#365](https://github.com/SocialGouv/iterion/issues/365)).
-    - Affichage des capacités des modèles, incluant les tarifs et les limites de sortie maximum ([#575](https://github.com/SocialGouv/iterion/issues/575)).
-    - Extension de la phase de planification des bots pour inclure la détection de lacunes de fonctionnalités et la couverture de tests ([#578](https://github.com/SocialGouv/iterion/issues/578)).
-    - Mise en place de "Senti", un sentinelle de vulnérabilités capable d'inventorier les risques sans recours systématique aux LLM ([#515](https://github.com/SocialGouv/iterion/issues/515)).
-    - Introduction de "Themis", un juge basé sur des doctrines pour arbitrer les cas de divergence bloquants ([#371](https://github.com/SocialGouv/iterion/issues/371)).
-- **Interface Studio & CLI** :
-    - Amélioration de la visibilité lors des étapes de validation humaine avec la prévisualisation du JSON, du Markdown et du texte ([#425](https://github.com/SocialGouv/iterion/issues/425)).
-    - Affichage des changements de fichiers effectués par un nœud directement dans la console d'exécution ([#352](https://github.com/SocialGouv/iterion/issues/352)).
-    - Les portes de revue affichent désormais l'intégralité des changements depuis la revue précédente ([#351](https://github.com/SocialGouv/iterion/issues/351)).
-- **Gestion des exécutions** :
-    - Possibilité de "rembobiner" (rewind) une exécution à un nœud antérieur pour reprendre le travail ([#348](https://github.com/SocialGouv/iterion/issues/348)).
-    - Ajout de l'option `auto_memory` pour permettre à un nœud de gérer son propre fichier de mémoire ([#450](https://github.com/SocialGouv/iterion/issues/450)).
+- **Nouvelles capacités d'agents et de surveillance :**
+    - Introduction de **Senti**, une sentinelle de vulnérabilités basée sur l'inventaire sans recours systématique aux LLM ([#515](https://github.com/SocialGouv/iterion/issues/515)).
+    - Ajout d'un auditeur d'accessibilité (**Ultra11y**) pour garantir la conformité des résultats ([#409](https://github.com/SocialGouv/iterion/issues/409)).
+    - Exposition de la recherche web native via les outils du DSL ([#550](https://github.com/SocialGouv/iterion/issues/550)).
+    - Mise en place de niveaux de revue par dépôt (glance / guard / audit) ([#742](https://github.com/SocialGouv/iterion/issues/742)).
+- **Améliorations de l'expérience utilisateur :**
+    - Possibilité de forcer un redémarrage complet ("Retry from zero") depuis le tableau de bord ([#954](https://github.com/SocialGouv/iterion/issues/954)).
+    - Synchronisation des tableaux GitHub Projects v2 avec le tableau natif d'Iterion ([#745](https://github.com/SocialGouv/iterion/issues/745)).
+    - Visibilité accrue sur les capacités des modèles (prix et limites de sortie) ([#575](https://github.com/SocialGouv/iterion/issues/575)).
+    - Aperçu du contenu (JSON, Markdown, texte) directement sur les interfaces de validation humaine dans le Studio ([#425](https://github.com/SocialGouv/iterion/issues/425)).
+- **Gestion des ressources :**
+    - Possibilité de définir des limites de consommation (usage caps) basées sur un pourcentage de la limite du fournisseur ([#438](https://github.com/SocialGouv/iterion/issues/438)).
 
 ### Évolutions techniques
-- **Infrastructure & Résilience** :
-    - Configuration de la réplication des flux JetStream pour garantir la haute disponibilité des données (data-HA) ([#592](https://github.com/SocialGouv/iterion/issues/592)).
-    - Migration des configurations critiques (identifiants LLM, rôles de bots, overrides) vers une base de données pour permettre des mises à jour sans redéploiement ([#466](https://github.com/SocialGouv/iterion/issues/466), [#535](https://github.com/SocialGouv/iterion/issues/535)).
-    - Renforcement de la gestion des budgets : les exécutions respectent désormais plus strictement les limites de consommation et gèrent mieux les dépassements ([#529](https://github.com/SocialGouv/iterion/issues/529), [#532](https://github.com/SocialGouv/iterion/issues/532)).
-- **Sécurité & Sandbox** :
-    - Durcissement des politiques de sécurité dans les environnements isolés (sandbox), notamment sur les règles réseau et la gestion des secrets ([#566](https://github.com/SocialGouv/iterion/issues/566), [#531](https://github.com/SocialGouv/iterion/issues/531)).
-    - Correction de la propagation des politiques de permission à travers l'IPC ([#589](https://github.com/SocialGouv/iterion/issues/589)).
-- **Observabilité** :
-    - Intégration de Sentry/GlitchTip pour le suivi des erreurs et standardisation des logs au format JSON ([#459](https://github.com/SocialGouv/iterion/issues/459), [#458](https://github.com/SocialGouv/iterion/issues/458)).
-    - Meilleure traçabilité en enregistrant précisément le modèle utilisé lors de chaque appel ([#501](https://github.com/SocialGouv/iterion/issues/501)).
-- **Qualité & Tests** :
-    - Campagne massive d'augmentation de la couverture de tests de bout en bout (e2e) via le bot "Endy" ([#506](https://github.com/SocialGouv/iterion/issues/506)).
-    - Avancement des frameworks "Golden Master" et "Modernize" pour automatiser les tests adverses et la validation des standards ([#528](https://github.com/SocialGouv/iterion/issues/528), [#524](https://github.com/SocialGouv/iterion/issues/524)).
+- **Résilience et exécution (Runtime & Sandbox) :**
+    - Amélioration de la récupération des points de contrôle (checkpoints) des espaces de travail pour les exécutions interrompues ([#988](https://github.com/SocialGouv/iterion/issues/988)).
+    - Optimisation de la gestion des processus : annulation complète des groupes de processus et meilleure gestion des reprises de session ([#935](https://github.com/SocialGouv/iterion/issues/935), [#470](https://github.com/SocialGouv/iterion/issues/470)).
+    - Amélioration de l'isolation sur Kubernetes : gestion des demandes de ressources et répartition des nœuds (soft node spread) pour les pods d'exécution ([#694](https://github.com/SocialGouv/iterion/issues/694)).
+    - Correction des fuites de processus et de la gestion des répertoires de travail lors des exécutions en sandbox ([#822](https://github.com/SocialGouv/iterion/issues/822), [#766](https://github.com/SocialGouv/iterion/issues/766)).
+- **Sécurité et Identité :**
+    - Support des jetons de configuration Claude bruts et empreinte numérique des jetons ([#948](https://github.com/SocialGouv/iterion/issues/948)).
+    - Migration des identifiants LLM de la plateforme vers une gestion basée sur la base de données pour permettre la rotation sans redéploiement ([#466](https://github.com/SocialGouv/iterion/issues/466)).
+    - Renforcement de l'autorisation des écritures liées aux équipes pour éviter les erreurs de tenant ([#997](https://github.com/SocialGouv/iterion/issues/997)).
+- **Observabilité et Infrastructure :**
+    - Intégration de **Sentry/GlitchTip** pour le suivi des erreurs et la standardisation des logs ([#459](https://github.com/SocialGouv/iterion/issues/459)).
+    - Mise en place de la réplication des flux JetStream pour assurer la haute disponibilité des données ([#592](https://github.com/SocialGouv/iterion/issues/592)).
+    - Accélération de la CI en exécutant la suite de tests E2E en parallèle ([#880](https://github.com/SocialGouv/iterion/issues/880)).
 
 ### Autres changements
-- Mise à jour importante de la documentation technique (ADR, guides d'utilisation, bilans d'incidents et de campagnes) ([#591](https://github.com/SocialGouv/iterion/issues/591), [#582](https://github.com/SocialGouv/iterion/issues/582)).
-- Automatisation de la génération du changelog pour plus de cohérence ([#579](https://github.com/SocialGouv/iterion/issues/579), [#584](https://github.com/SocialGouv/iterion/issues/584)).
-- Nettoyage des répertoires temporaires du projet ([#469](https://github.com/SocialGouv/iterion/issues/469)).
+- **Documentation :** Mise à jour massive de la documentation technique, incluant les bilans d'exploitation (dogfooding), les procédures de déploiement Cloud et les guides sur les limites de consommation ([#756](https://github.com/SocialGouv/iterion/issues/756), [#832](https://github.com/SocialGouv/iterion/issues/832), [#403](https://github.com/SocialGouv/iterion/issues/403)).
+- **Tests :** Amélioration des frameworks de test *Golden Master* et *Modernize* pour une meilleure détection des dérives de code ([#882](https://github.com/SocialGouv/iterion/issues/882), [#750](https://github.com/SocialGouv/iterion/issues/750)).
