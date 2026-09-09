@@ -1,5 +1,65 @@
 # Journal des modifications
 
+## 2026-09-07
+
+### Ajouté
+
+- [Employeur : Repérer les salariés en fin de contrat et suggérer une suite de parcours](https://github.com/gip-inclusion/les-emplois/pull/8628)
+- [GEIQ : Tableau de bord pilotage (pour la FFGEIQ et la DGEFP)](https://github.com/gip-inclusion/les-emplois/pull/8646)
+- [Insertion : Ajout d’une bannière mentionnant un récent problème technique autour des orientations](https://github.com/gip-inclusion/les-emplois/pull/8713)
+- [Prescripteur : Permettre de demander un bilan d'accompagnement à la SIAE](https://github.com/gip-inclusion/les-emplois/pull/8632)
+
+### Modifié
+
+- [Contrôle a posteriori : Améliorations UI/UX](https://github.com/gip-inclusion/les-emplois/pull/8573)
+- [Contrôle a posteriori : Certification des critères de niveau 2](https://github.com/gip-inclusion/les-emplois/pull/8536)
+- [Interface : Renommage et réorganisation des items du menu "Structure" des employeurs](https://github.com/gip-inclusion/les-emplois/pull/8709)
+- [Marque : Préparer le changement de nom de l'application](https://github.com/gip-inclusion/les-emplois/pull/8453)
+- [PASS IAE : Renommage de la rubrique "Salariés et PASS IAE" en "PASS IAE"](https://github.com/gip-inclusion/les-emplois/pull/8648)
+
+### Supprimé
+
+- [Prescripteur : Suppression de la bêta SPS abandonnée](https://github.com/gip-inclusion/les-emplois/pull/8695)
+
+## 2026-08-31
+
+### Ajouté
+
+- [Accompagnements : Ajout d'un champ `last_action_at`](https://github.com/gip-inclusion/les-emplois/pull/8627)
+- [Admin : Ajout d'un champ texte pour commenter les passe IAE annulés](https://github.com/gip-inclusion/les-emplois/pull/8617)
+- [Nouveau filtre “handicap” pour afficher les offres EA/EATT et offres des employeurs handi-engagés publiées sur le site de France Travail](https://github.com/gip-inclusion/les-emplois/pull/8607)
+- [Page d'accueil : Ajout d'une carte présentant Mon Récap sur l'accueil connecté](https://github.com/gip-inclusion/les-emplois/pull/8599)
+
+### Modifié
+
+- [Accompagnateurs : Évolution de l'affichage des accompagnateurs](https://github.com/gip-inclusion/les-emplois/pull/8505)
+- [Candidature : Ajout de vérifications sur la date de début de contrat en IAE](https://github.com/gip-inclusion/les-emplois/pull/8521)
+- [Contrôle a posteriori : Ne contrôler que les SIAE conventionnées](https://github.com/gip-inclusion/les-emplois/pull/8608)
+- [Interface : Nouvelle alerte pour date max de PASS réalisées au plus tard le jour de l’embauche](https://github.com/gip-inclusion/les-emplois/pull/8641)
+- [Tech : Nettoyage post évolution de l'affichage des accompagnateurs](https://github.com/gip-inclusion/les-emplois/pull/8616)
+
+## 2026-08-24
+
+### Modifié
+
+- [Accompagnateur : Ajout de la page "Accompagnements" pour les GEIQ et OPCS](https://github.com/gip-inclusion/les-emplois/pull/8584)
+- [Employeur : Rendre obligatoire la saisie du commentaire de mise en attente de candidature](https://github.com/gip-inclusion/les-emplois/pull/8456)
+- [Prescripteur habilité : Ajout d'un filtre "Fin de parcours IAE à venir" dans la page "Mes accompagnements"](https://github.com/gip-inclusion/les-emplois/pull/8500)
+
+## 2026-08-17
+
+### Ajouté
+
+- [Interface : Indiquer que la modification d’un candidat qui utilise un SSO est à faire sur les sites fournisseurs du SSO](https://github.com/gip-inclusion/les-emplois/pull/8464)
+
+### Supprimé
+
+- [Notifications : Retirer les mentions relatives aux enquêtes de satisfaction dans les emails transactionnels](https://github.com/gip-inclusion/les-emplois/pull/8569)
+
+### Tech
+
+- [Tech : Ajout des contrôles a posteriori et des bilans d'exécution à la commande `move_company_data`](https://github.com/gip-inclusion/les-emplois/pull/8433)
+
 ## 2026-08-10
 
 ### Ajouté

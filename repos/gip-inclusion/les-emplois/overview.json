@@ -1,68 +1,65 @@
 {
   "url": "https://github.com/gip-inclusion/les-emplois",
   "name": "les-emplois",
-  "description": "Service numérique de délivrance des PASS IAE et de mise en relation d'employeurs inclusifs avec des candidats éloignés de l'emploi via des tiers ou en autoprescription.",
+  "description": "Service numérique de délivrance des PASS IAE et de mise en relation d'employeurs inclusifs avec des candidats éloignés de l'emploi via des prescripteurs ou en autoprescription.",
   "language": "Python",
   "features": [
+    "API & Intégrations",
+    "Authentification & Accès",
+    "Formulaires & Démarches",
     "Gestion des utilisateurs & Permissions",
+    "Gestion métier générale",
+    "Notifications & Alertes",
     "Recherche & Filtres",
     "Statistiques & Rapports",
-    "Formulaires & Démarches",
-    "Notifications & Alertes",
-    "Tableaux & Affichage",
-    "Authentification & Accès",
-    "Gestion métier générale"
+    "Tableaux & Affichage"
   ],
-  "audience": "Professionnels et Agents de l'Administration",
+  "audience": "Professionnels",
   "dependencies": [
     "Django",
     "PostgreSQL",
     "PostGIS",
-    "MinIO",
     "Redis",
+    "MinIO",
     "GDAL",
+    "GEOS",
     "uv",
-    "pytest",
-    "Metabase"
+    "pytest"
   ],
   "components": [
     "API REST & GraphQL",
-    "PostgreSQL & SQL",
-    "Python (scripts & backend)",
-    "Docker & Conteneurs",
     "Authentification (composant)",
-    "Templates & Moteurs de rendu",
-    "Scripts & Utilitaires",
-    "ORM & Accès aux données"
+    "Django",
+    "Docker & Conteneurs",
+    "Intégrations services externes",
+    "ORM & Accès aux données",
+    "Python (scripts & backend)",
+    "SIG & Géospatial"
   ],
   "auth": {
     "methods": [
       "oauth2",
       "mfa",
-      "sso"
+      "sso",
+      "session"
     ],
     "providers": [
-      "ProConnect",
-      "FranceConnect"
+      "ProConnect"
     ]
   },
-  "tests": [
-    "pytest"
-  ],
-  "workflows": [
-    "CI/CD via GitHub Actions"
-  ],
-  "lastActivity": "2026-08-10T00:00:00Z",
+  "tests": "pytest",
+  "workflows": [],
+  "lastActivity": "2026-09-07T00:00:00Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
   "tags": [
+    "Données & Open Data",
+    "Docker & Conteneurs",
     "Emploi, Social & Logement",
     "Python",
+    "SIG & Géospatial",
     "Bases de données SQL",
-    "Docker & Conteneurs",
-    "CI/CD & GitHub Actions",
-    "Design System & UI",
     "Accessibilité"
   ]
 }

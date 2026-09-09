@@ -432,6 +432,7 @@
 │   │   │   └── commands
 │   │   │       ├── __init__.py
 │   │   │       ├── archive_employee_records.py
+│   │   │       ├── detect_missing_asp_files.py
 │   │   │       ├── employee_record.py
 │   │   │       ├── employee_records_status.py
 │   │   │       ├── resend_employee_records.py
@@ -481,6 +482,7 @@
 │   │   ├── django
 │   │   │   ├── account__email_address.json
 │   │   │   ├── approvals__approval.json
+│   │   │   ├── approvals__suspension.json
 │   │   │   ├── companies__company.json
 │   │   │   ├── companies__company_membership.json
 │   │   │   ├── companies__contract.json
@@ -803,14 +805,6 @@
 │   │   │   ├── 0001_initial.py
 │   │   │   └── __init__.py
 │   │   └── models.py
-│   ├── recommendations
-│   │   ├── __init__.py
-│   │   ├── apps.py
-│   │   ├── helpers.py
-│   │   └── migrations
-│   │       ├── 0001_initial.py
-│   │       ├── 0002_delete_beneficiary.py
-│   │       └── __init__.py
 │   ├── scripts
 │   │   ├── __init__.py
 │   │   ├── management
@@ -1214,10 +1208,14 @@
 │   │   │       └── internal_transfer.html
 │   │   ├── approvals
 │   │   │   ├── base_details.html
+│   │   │   ├── close.html
 │   │   │   ├── contracts.html
 │   │   │   ├── declare_prolongation.html
 │   │   │   ├── details.html
 │   │   │   ├── email
+│   │   │   │   ├── closed
+│   │   │   │   │   ├── jobseeker_body.txt
+│   │   │   │   │   └── jobseeker_subject.txt
 │   │   │   │   ├── deliver_body.txt
 │   │   │   │   ├── deliver_subject.txt
 │   │   │   │   ├── manual_delivery_required_notification_body.txt
@@ -1950,6 +1948,7 @@
 │   │   │   ├── dora.py
 │   │   │   ├── enums.py
 │   │   │   ├── exceptions.py
+│   │   │   ├── france_travail_agent.py
 │   │   │   ├── geiq_label.py
 │   │   │   ├── geocoding.py
 │   │   │   ├── github.py
@@ -2351,6 +2350,7 @@
     │   ├── test_notify_pole_emploi.py
     │   ├── test_perms.py
     │   ├── test_prolongation_requests.py
+    │   ├── test_utils.py
     │   └── tests.py
     ├── archive
     │   ├── __init__.py
@@ -2441,6 +2441,7 @@
     │   ├── __snapshots__
     │   │   ├── test_admin.ambr
     │   │   ├── test_archive_employee_records.ambr
+    │   │   ├── test_detect_missing_asp_files.ambr
     │   │   ├── test_sanitize_employee_records.ambr
     │   │   ├── test_serializers.ambr
     │   │   ├── test_transfer_employee_records.ambr
@@ -2448,6 +2449,7 @@
     │   ├── factories.py
     │   ├── test_admin.py
     │   ├── test_archive_employee_records.py
+    │   ├── test_detect_missing_asp_files.py
     │   ├── test_employee_record_command.py
     │   ├── test_mocks.py
     │   ├── test_models.py
@@ -2610,9 +2612,6 @@
     │   ├── __init__.py
     │   ├── factories.py
     │   └── tests.py
-    ├── recommendations
-    │   ├── __init__.py
-    │   └── test_helpers.py
     ├── scripts
     │   ├── __init__.py
     │   ├── test_move_job_applications.py
@@ -2674,6 +2673,7 @@
     │   │   ├── test_datadog_api.py
     │   │   ├── test_dora.py
     │   │   ├── test_entreprise_api.py
+    │   │   ├── test_france_travail_agent.py
     │   │   ├── test_geiq_label.py
     │   │   ├── test_geocoding_api.py
     │   │   ├── test_github.py
@@ -2781,6 +2781,7 @@
         │   │   ├── test_prolongation_requests.ambr
         │   │   └── test_suspend.ambr
         │   ├── test_approval_box.py
+        │   ├── test_close.py
         │   ├── test_detail.py
         │   ├── test_display.py
         │   ├── test_list.py
@@ -2998,4 +2999,4 @@
         └── welcoming_tour
             ├── __init__.py
             └── tests.py
-499 directories, 2501 files
+497 directories, 2504 files
