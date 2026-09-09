@@ -1,70 +1,60 @@
 {
   "url": "https://github.com/betagouv/mon-aide-cyber",
   "name": "mon-aide-cyber",
-  "description": "MonAideCyber est un service numérique développé par l'ANSSI pour aider les entités publiques et privées à renforcer leur cybersécurité de manière proportionnée et concrète.",
+  "description": "Service numérique développé par l'ANSSI pour accompagner les entités publiques et privées dans le renforcement de leur cybersécurité via une démarche proportionnée.",
   "language": "TypeScript",
   "features": [
-    "Formulaires & Démarches",
-    "Sécurité & Conformité",
-    "Statistiques & Rapports",
     "Authentification & Accès",
-    "Aides & Éligibilité",
-    "Gestion des utilisateurs & Permissions"
+    "Sécurité & Conformité",
+    "Gestion des profils & Comptes",
+    "Aides & Éligibilité"
   ],
   "audience": "Professionnels",
   "dependencies": [
+    "React",
     "Express",
     "PostgreSQL",
-    "React",
     "Knex",
-    "jsonwebtoken",
-    "Zod",
     "Vite",
-    "Vitest",
+    "TypeScript",
+    "TanStack Query",
     "DSFR"
   ],
   "components": [
-    "React / Next.js",
     "API REST & GraphQL",
     "PostgreSQL & SQL",
+    "React / Next.js",
     "TypeScript / JavaScript",
     "Docker & Conteneurs",
     "Design System (DSFR & UI libs)"
   ],
   "auth": {
     "methods": [
-      "email-password",
+      "jwt",
+      "session",
       "oauth2"
     ]
   },
   "tests": [
     "Vitest",
-    "Playwright"
+    "Playwright",
+    "Storybook"
   ],
-  "workflows": [
-    "codeql.yml",
-    "deploiement.yml",
-    "nodejs.yml",
-    "securite-ci.yml",
-    "storybook-tests.yml"
-  ],
-  "lastActivity": "2026-09-01T16:24:52+02:00",
-  "status": "active",
+  "lastActivity": "2026-09-08T15:50:57+02:00",
+  "status": "maintained",
   "license": "Apache-2.0",
   "hasDocumentation": true,
   "metrics": {
     "stars": 17,
     "forks": 7,
-    "contributors": null,
-    "openIssues": 3
+    "openIssues": 5
   },
   "tags": [
-    "Sécurité & Auth",
     "Écosystème beta.gouv / État",
     "TypeScript",
     "React & Next.js",
-    "Bases de données SQL",
-    "Design System & UI",
-    "CI/CD & GitHub Actions"
+    "Sécurité & Auth",
+    "Docker & Conteneurs",
+    "Design System & UI"
   ]
 }
