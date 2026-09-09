@@ -1,15 +1,19 @@
-## Changelog : claw-code-go (30 derniers jours, au 5 septembre 2026)
+## Changelog : claw-code-go (30 derniers jours, au 22 mai 2024)
 
 ### Résumé
-Les récentes évolutions se concentrent sur l'amélioration de la précision des agents et l'intégration de la nouvelle génération de modèles Claude 5. Le système est désormais capable de produire des résultats structurés et validés, tout en offrant une gestion plus robuste et automatisée des modèles d'intelligence artificielle.
+Les récentes évolutions renforcent la capacité du système à orchestrer des agents intelligents en améliorant la gestion des nouveaux modèles d'IA (notamment la famille Claude 5) et en permettant des interactions plus précises. Les utilisateurs peuvent désormais compter sur des agents capables de fournir des résultats structurés et validés, rendant les automatisations plus fiables.
 
 ### Évolutions fonctionnelles
-- **Amélioration du workflow d'agent** : L'outil `agent` peut désormais retourner des résultats structurés et validés selon un schéma défini, permettant une meilleure intégration des données produites par les sous-agents.
-- **Correction du runtime** : Résolution d'un problème où des sorties structurées étaient sollicitées avant que l'agent n'ait effectué le travail nécessaire [#1](https://github.com/SocialGouv/claw-code-go/issues/1).
+- **Amélioration des workflows d'agents** : Les agents peuvent désormais retourner des résultats structurés et validés via un schéma lors de l'exécution de tâches, garantissant une meilleure intégration des données produites.
 
 ### Évolutions techniques
-- **Mise à jour du registre de modèles** : 
-    - Intégration de la famille de modèles Claude 5.
-    - Les alias de modèles pointent désormais automatiquement vers la version la plus récente de leur lignée.
-- **Optimisation de la gestion des modèles** : Implémentation d'une stratégie "copy-then-swap" pour les entrées de modèles rafraîchies en direct, évitant ainsi les mutations d'objets en place et garantissant une meilleure stabilité.
-- **Tests et Fixtures** : Mise à jour des tests de l'API et des "golden fixtures" pour assurer la compatibilité avec les modèles Claude 5 (Opus et Sonnet).
+- **Gestion des modèles d'IA** :
+    - Intégration de la famille de modèles Claude 5 dans le registre de modèles, avec une résolution automatique des alias vers les versions les plus récentes.
+    - Amélioration de la gestion des versions pour ChatGPT-Codex, permettant une configuration spécifique par modèle.
+    - Optimisation de la compatibilité avec les nouveaux modèles via le backend OpenAI.
+- **API et Runtime** :
+    - Extension du support des schémas JSON pour accepter des types définis sous forme de tableaux.
+    - Optimisation de la gestion de la concurrence dans le registre de modèles via une stratégie de remplacement sécurisée ("copy-then-swap") pour éviter les mutations en place.
+    - Correction d'un problème de logique exigeant un travail préalable avant de générer une sortie structurée [#1](https://github.com/SocialGouv/claw-code-go/issues/1).
+- **Tests** :
+    - Mise à jour des tests de l'API et des fixtures de référence pour s'aligner sur les dernières versions des modèles Claude (Opus et Sonnet).
