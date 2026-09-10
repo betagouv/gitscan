@@ -1,13 +1,13 @@
 {
   "url": "https://github.com/betagouv/reva",
   "name": "reva",
-  "description": "Plateforme de gestion de la Validation des Acquis de l'Expérience (VAE) en France. Elle permet le dépôt de candidatures, le suivi des dossiers de faisabilité et la gestion administrative par les organismes et certificateurs.",
+  "description": "Plateforme monorepo dédiée à la gestion de la Validation des Acquis de l'Expérience (VAE). Elle regroupe des API et des applications web pour les candidats, les organismes et l'administration.",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
     "Authentification & Accès",
-    "Statistiques & Rapports",
+    "Gestion des utilisateurs & Permissions",
     "Formulaires & Démarches",
     "Administration & Backoffice"
   ],
@@ -17,13 +17,14 @@
     "Next.js",
     "Prisma",
     "Keycloak",
-    "Metabase",
     "Strapi",
+    "PostgreSQL",
     "Traefik",
     "Vitest",
     "Cypress",
     "Playwright",
-    "PostgreSQL",
+    "Metabase",
+    "Datadog",
     "Brevo"
   ],
   "components": [
@@ -31,20 +32,15 @@
     "PostgreSQL & SQL",
     "React / Next.js",
     "TypeScript / JavaScript",
-    "Node.js / NestJS",
     "Authentification (composant)",
     "CMS (Strapi, Wagtail…)",
-    "Reporting & BI",
-    "Tests",
-    "Documentation & Schémas",
-    "Serveurs web & Proxy",
-    "ORM & Accès aux données"
+    "Tests"
   ],
   "auth": {
     "methods": [
-      "sso",
+      "oauth2",
       "jwt",
-      "session"
+      "mfa"
     ],
     "providers": [
       "Keycloak"
@@ -55,21 +51,17 @@
     "Cypress",
     "Playwright"
   ],
-  "workflows": [
-    "deploy.sh",
-    "deploy-preprod.sh"
-  ],
-  "lastActivity": "2026-08-21T14:19:36+02:00",
+  "lastActivity": "2026-09-08T16:37:45+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
-    "TypeScript",
     "React & Next.js",
+    "TypeScript",
     "Bases de données SQL",
-    "Docker & Conteneurs",
-    "Design System & UI",
-    "Sécurité & Auth"
+    "Sécurité & Auth",
+    "Node.js, NestJS & Express",
+    "Documentation"
   ]
 }

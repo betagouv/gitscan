@@ -939,9 +939,12 @@
     │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   ├── general-information
     │   │   │   │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   │   │   │   ├── AccountInfoRows.tsx
     │   │   │   │   │   │   │   │   │   ├── AdminToggleGestionBranch.tsx
     │   │   │   │   │   │   │   │   │   ├── AttestationReferencement.tsx
+    │   │   │   │   │   │   │   │   │   ├── InfoRow.tsx
     │   │   │   │   │   │   │   │   │   ├── LegalInformationTile.tsx
+    │   │   │   │   │   │   │   │   │   ├── SiretInformationCard.tsx
     │   │   │   │   │   │   │   │   │   └── legal-information-update-block
     │   │   │   │   │   │   │   │   │       ├── LegalInformationUpdateBlock.tsx
     │   │   │   │   │   │   │   │   │       └── LegalInformationUpdateForm.tsx
@@ -949,7 +952,9 @@
     │   │   │   │   │   │   │   │   ├── legal-information
     │   │   │   │   │   │   │   │   │   ├── _components
     │   │   │   │   │   │   │   │   │   │   ├── LegalInformationBreadcrumb.tsx
+    │   │   │   │   │   │   │   │   │   │   ├── LegalInformationTutorialHelp.tsx
     │   │   │   │   │   │   │   │   │   │   ├── TotalUpdateRequestModal.tsx
+    │   │   │   │   │   │   │   │   │   │   ├── UpdatePreparation.tsx
     │   │   │   │   │   │   │   │   │   │   └── useLegalInformationUpdateRequest.ts
     │   │   │   │   │   │   │   │   │   ├── layout.tsx
     │   │   │   │   │   │   │   │   │   ├── page.tsx
@@ -958,7 +963,9 @@
     │   │   │   │   │   │   │   │   │       │   ├── AdministratorStep.tsx
     │   │   │   │   │   │   │   │   │       │   ├── BlockSelectionStep.tsx
     │   │   │   │   │   │   │   │   │       │   ├── ContactStep.tsx
-    │   │   │   │   │   │   │   │   │       │   └── SiretAndManagerStep.tsx
+    │   │   │   │   │   │   │   │   │       │   ├── DocumentsStep.tsx
+    │   │   │   │   │   │   │   │   │       │   ├── SiretAndManagerStep.tsx
+    │   │   │   │   │   │   │   │   │       │   └── requiredDocuments.ts
     │   │   │   │   │   │   │   │   │       └── page.tsx
     │   │   │   │   │   │   │   │   ├── legal-information-update
     │   │   │   │   │   │   │   │   │   └── page.tsx
@@ -1494,7 +1501,9 @@
     │   │   │   │   │   ├── maisonMereAAPs
     │   │   │   │   │   │   └── [maisonMereAAPId]
     │   │   │   │   │   │       ├── (components)
+    │   │   │   │   │   │       │   ├── MandatairesSociauxCard.tsx
     │   │   │   │   │   │       │   ├── ValidationDecisionForm.tsx
+    │   │   │   │   │   │       │   ├── nonConformityMotives.ts
     │   │   │   │   │   │       │   ├── useUpdateMaisonMereAAPLegalValidationDecision.ts
     │   │   │   │   │   │       │   └── validationDecisionFormSchema.ts
     │   │   │   │   │   │       └── page.tsx
@@ -1909,7 +1918,8 @@
     │   │   │   │   ├── LayoutNotice.tsx
     │   │   │   │   └── _components
     │   │   │   │       ├── AppCgu.component.tsx
-    │   │   │   │       └── AppCgu.hooks.ts
+    │   │   │   │       ├── AppCgu.hooks.ts
+    │   │   │   │       └── GeneralInformationUpdateNotice.component.tsx
     │   │   │   ├── legal-document-list
     │   │   │   │   └── LegalDocumentList.tsx
     │   │   │   ├── logo
@@ -1927,10 +1937,6 @@
     │   │   │   │       └── empty-state-polygon.svg
     │   │   │   ├── not-authorized
     │   │   │   │   └── index.tsx
-    │   │   │   ├── organism-summary
-    │   │   │   │   ├── Info.tsx
-    │   │   │   │   ├── OrganismSummary.tsx
-    │   │   │   │   └── OrganismSummaryLegalInformationDocumentsDecisions.tsx
     │   │   │   ├── pagination
     │   │   │   │   └── Pagination.tsx
     │   │   │   ├── password-input
@@ -2030,6 +2036,11 @@
     │   │   │   │   │   ├── collaborateur.spec.ts
     │   │   │   │   │   └── informations-connexion
     │   │   │   │   │       └── information-connexion.spec.ts
+    │   │   │   │   ├── general-information
+    │   │   │   │   │   ├── general-information.spec.ts
+    │   │   │   │   │   ├── generalInformation.handlers.ts
+    │   │   │   │   │   ├── legal-information-update-aap.spec.ts
+    │   │   │   │   │   └── legal-information-update-admin.spec.ts
     │   │   │   │   ├── organisms
     │   │   │   │   │   ├── on-site
     │   │   │   │   │   │   ├── certifications.spec.ts
@@ -2127,14 +2138,16 @@
     │   │   │   │   │       └── certifications.spec.ts
     │   │   │   │   └── certification-registry-manager
     │   │   │   │       └── certification-registry-manager.spec.ts
-    │   │   │   └── certifications
-    │   │   │       ├── [certificationId]
-    │   │   │       │   └── structure
-    │   │   │       │       └── update-certification-structure.spec.ts
-    │   │   │       ├── add-certification
-    │   │   │       │   └── description
-    │   │   │       │       └── add-certification-description.spec.ts
-    │   │   │       └── certification-details.spec.ts
+    │   │   │   ├── certifications
+    │   │   │   │   ├── [certificationId]
+    │   │   │   │   │   └── structure
+    │   │   │   │   │       └── update-certification-structure.spec.ts
+    │   │   │   │   ├── add-certification
+    │   │   │   │   │   └── description
+    │   │   │   │   │       └── add-certification-description.spec.ts
+    │   │   │   │   └── certification-details.spec.ts
+    │   │   │   └── maisonMereAAPs
+    │   │   │       └── legal-information-verification.spec.ts
     │   │   ├── (certificateur)
     │   │   │   ├── candidacies
     │   │   │   │   ├── annuaire
@@ -2426,7 +2439,7 @@
     │   │   │   │   ├── getReferentOrganismFromCandidacyId.ts
     │   │   │   │   ├── manuallyUpdateCandidacyCertificationAuthority.test.ts
     │   │   │   │   ├── manuallyUpdateCandidacyCertificationAuthority.ts
-    │   │   │   │   ├── markFeasibilityFileResourceFirstAsRead.ts
+    │   │   │   │   ├── markFeasibilityFileDematAutonomeResourceAsHidden.ts
     │   │   │   │   ├── searchOrganismsForCandidacy.test.ts
     │   │   │   │   ├── searchOrganismsForCandidacy.ts
     │   │   │   │   ├── searchOrganismsForCandidacyAsAdmin.ts
@@ -2582,7 +2595,6 @@
     │   │   │       ├── createCertificationAuthorityStructure.ts
     │   │   │       ├── createCertificationRegistryManager.ts
     │   │   │       ├── deleteCertificationAuthorityLocalAccount.ts
-    │   │   │       ├── getAccountByCertificationAuthorityId.ts
     │   │   │       ├── getCandidacyCertificationAuthorityLocalAccounts.test.ts
     │   │   │       ├── getCandidacyCertificationAuthorityLocalAccounts.ts
     │   │   │       ├── getCertificationAuthorities.ts
@@ -2609,8 +2621,11 @@
     │   │   │       ├── getCertificationsByCertificationStructureId.ts
     │   │   │       ├── getDepartmentRelationsByCertificationAuthorityLocalAccountIds.ts
     │   │   │       ├── getDepartmentsByCertificationAuthorityId.ts
+    │   │   │       ├── getHumanAccountByCertificationAuthorityId.ts
+    │   │   │       ├── getHumanAccountByCertificationAuthorityLocalAccountId.ts
     │   │   │       ├── getLastProfessionalCguCertificateur.ts
     │   │   │       ├── getMetabaseIframeUrl.ts
+    │   │   │       ├── getMetabaseIframeUrlForRegistryManager.ts
     │   │   │       ├── getOrganismsByAccountId.ts
     │   │   │       ├── getPaginatedCertifications.ts
     │   │   │       ├── getParcoursForCertificationAndCertificationAuthority.ts
@@ -2780,6 +2795,7 @@
     │   │   │   │   ├── revokeCertificationAuthorityDecision.test.ts
     │   │   │   │   ├── revokeCertificationAuthorityDecision.ts
     │   │   │   │   ├── throwErrorOnFeasibilitySubmissionWarning.ts
+    │   │   │   │   ├── updateFeasibilityFileDematAutonomeFirstOpeningAt.ts
     │   │   │   │   ├── updateFeasibilityFileTemplateFirstReadAt.ts
     │   │   │   │   └── validateFeasibility.ts
     │   │   │   └── utils
@@ -2902,6 +2918,7 @@
     │   │   │   │   ├── adminUpdateMaisonMereAAP.ts
     │   │   │   │   ├── assertNoDuplicateLieuAccueilAddress.ts
     │   │   │   │   ├── assignMaisonMereAAPToOrganism.ts
+    │   │   │   │   ├── buildLegalInformationAapComment.ts
     │   │   │   │   ├── createLieuAccueilInfo.test.ts
     │   │   │   │   ├── createLieuAccueilInfo.ts
     │   │   │   │   ├── createMaisonMereAAP.ts
@@ -2939,10 +2956,13 @@
     │   │   │   │   ├── getPaginatedComptesCollaborateursByMaisonMereAAPId.ts
     │   │   │   │   ├── getPaginatedOrganismsByMaisonMereAAPId.ts
     │   │   │   │   ├── getRemoteZonesByOrganismId.ts
+    │   │   │   │   ├── getRequiredLegalInformationDocuments.test.ts
+    │   │   │   │   ├── getRequiredLegalInformationDocuments.ts
     │   │   │   │   ├── isCompanySiretAlreadyUsed.ts
     │   │   │   │   ├── isOrganismAttachedToCertifications.test.ts
     │   │   │   │   ├── isOrganismAttachedToCertifications.ts
     │   │   │   │   ├── isOrganismVisibleInCandidateSearchResults.ts
+    │   │   │   │   ├── isPendingGestionnaireEmailAlreadyUsed.ts
     │   │   │   │   ├── isUserGestionnaireMaisonMereAAPOfMaisonMereAAP.ts
     │   │   │   │   ├── isUserGestionnaireMaisonMereAAPOfOrganism.ts
     │   │   │   │   ├── isUserOwnerOfOrganism.ts
@@ -2966,6 +2986,8 @@
     │   │   │   │   └── updatePositionnementCollaborateur.ts
     │   │   │   ├── organism.authorization.test.ts
     │   │   │   ├── organism.graphql
+    │   │   │   ├── organism.legalInformationDecision.test.ts
+    │   │   │   ├── organism.legalInformationSubmission.test.ts
     │   │   │   ├── organism.resolvers.ts
     │   │   │   ├── organism.routes.ts
     │   │   │   ├── organism.test.ts
@@ -3029,6 +3051,7 @@
     │   │   │   │   ├── searchCertificationsForCandidate.ts
     │   │   │   │   ├── searchCertificationsV2ForRegistryManager.ts
     │   │   │   │   ├── sendCertificationToRegistryManager.ts
+    │   │   │   │   ├── setCertificationsVisibleOrNotUsingStatusAndAvailabilityDate.test.ts
     │   │   │   │   ├── setCertificationsVisibleOrNotUsingStatusAndAvailabilityDate.ts
     │   │   │   │   ├── updateCertificationAdditionalInfo.test.ts
     │   │   │   │   ├── updateCertificationAdditionalInfo.ts
@@ -3036,10 +3059,13 @@
     │   │   │   │   ├── updateCertificationDescription.test.ts
     │   │   │   │   ├── updateCertificationDescription.ts
     │   │   │   │   ├── updateCertificationPrerequisites.ts
+    │   │   │   │   ├── updateCertificationStructureAndCertificationAuthorities.test.ts
     │   │   │   │   ├── updateCertificationStructureAndCertificationAuthorities.ts
     │   │   │   │   ├── updateCertificationWithPrerequisitesFromFC.ts
     │   │   │   │   ├── updateCertificationWithRncpFields.ts
     │   │   │   │   ├── updateCertificationWithRncpFieldsAndSubDomains.ts
+    │   │   │   │   ├── updateCertificationsVisibility.test.ts
+    │   │   │   │   ├── updateCertificationsVisibility.ts
     │   │   │   │   ├── updateCompetenceBlocsByCertificationId.ts
     │   │   │   │   ├── validateCertification.test.ts
     │   │   │   │   └── validateCertification.ts
@@ -3123,6 +3149,8 @@
     │   │   │       │   ├── isFeasibilityManager.ts
     │   │   │       │   ├── isGestionnaireOfCohorteVaeCollective.ts
     │   │   │       │   ├── isGestionnaireOfCommanditaireVaeCollective.ts
+    │   │   │       │   ├── isGestionnaireOfSousCompteVaeCollective.test.ts
+    │   │   │       │   ├── isGestionnaireOfSousCompteVaeCollective.ts
     │   │   │       │   ├── isUserOwnerOfCandidate.ts
     │   │   │       │   ├── whenHasRole.ts
     │   │   │       │   └── whenHasRoleButNotOthers.ts
@@ -3150,8 +3178,10 @@
     │   │   │   └── subscription.resolvers.ts
     │   │   └── vae-collective
     │   │       ├── features
+    │   │       │   ├── canSousCompteCreateCohorteVaeCollective.ts
     │   │       │   ├── createCohorteVaeCollective.ts
     │   │       │   ├── createCommanditaireVaeCollective.ts
+    │   │       │   ├── createSousCompteVaeCollective.ts
     │   │       │   ├── deleteCohorteVAECollective.ts
     │   │       │   ├── getCertificationCohortesByCohorteId.ts
     │   │       │   ├── getCohorteVAECollectiveByCodeInscription.ts
@@ -3164,12 +3194,16 @@
     │   │       │   ├── getCommanditaireVaeCollectives.ts
     │   │       │   ├── getMetabaseDashboardIframeUrlVaeCollective.ts
     │   │       │   ├── getPermissionsForRole.ts
+    │   │       │   ├── getSousCompteVaeCollectiveById.ts
+    │   │       │   ├── getSousComptesByCommanditaireVaeCollectiveId.ts
     │   │       │   ├── getUserPermissions.ts
+    │   │       │   ├── getUserPermissionsSpecifictoSousCompte.ts
     │   │       │   ├── getVaeCollectiveRolesFromKeycloakRoles.ts
     │   │       │   ├── publishCohorteVAECollective.ts
     │   │       │   ├── updateCohorteVAECollectiveCertification.ts
     │   │       │   ├── updateCohorteVAECollectiveOrganism.ts
-    │   │       │   └── updateNomCohorteVaeCollective.ts
+    │   │       │   ├── updateNomCohorteVaeCollective.ts
+    │   │       │   └── updateSousCompteVaeCollective.ts
     │   │       ├── security
     │   │       │   ├── hasVaeCollectivePermission.test.ts
     │   │       │   └── hasVaeCollectivePermission.ts
@@ -3180,14 +3214,19 @@
     │   │       ├── vae-collective.commanditaireVaeCollectives.test.ts
     │   │       ├── vae-collective.createCohorteVaeCollective.test.ts
     │   │       ├── vae-collective.createCommanditaireVaeCollective.test.ts
+    │   │       ├── vae-collective.createSousCompteVaeCollective.test.ts
     │   │       ├── vae-collective.deleteCohorteVaeCollective.test.ts
     │   │       ├── vae-collective.getCohorteVaeCollective.test.ts
     │   │       ├── vae-collective.getCommanditaireVaeCollective.test.ts
+    │   │       ├── vae-collective.getSousCompteVaeCollective.test.ts
     │   │       ├── vae-collective.getUserPermissions.test.ts
     │   │       ├── vae-collective.graphql
     │   │       ├── vae-collective.publishCohorteVaeCollective.test.ts
     │   │       ├── vae-collective.resolvers.ts
-    │   │       └── vae-collective.updateCohorteVaeCollective.test.ts
+    │   │       ├── vae-collective.sousCompte.canCreateCohorteVaeCollective.test.ts
+    │   │       ├── vae-collective.sousComptes.test.ts
+    │   │       ├── vae-collective.updateCohorteVaeCollective.test.ts
+    │   │       └── vae-collective.updateSousCompteVaeCollective.test.ts
     │   ├── package-lock.json
     │   ├── package.json
     │   ├── prisma
@@ -4651,6 +4690,46 @@
     │   │   │   │   └── migration.sql
     │   │   │   ├── 20260814094040_make_aap_updated_documents_at_nullable
     │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260819090000_add_pending_values_to_legal_information_documents
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260824120000_add_total_update_request_decision
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260824120100_make_legal_information_documents_optional
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260826081835_add_is_api_user_flag
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260826085350_add_voir_liste_sous_comptes_value_to_permission_vae_collective_enum
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260826090000_add_is_total_update_to_legal_information_documents
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260826092004_add_voir_liste_sous_comptes_to_the_administrateur_porteur_de_projet_role
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260826095024_add_compte_local_vae_collective_table
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260831120000_allow_multiple_accounts_on_certification_authority_local_account
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260901121115_add_feasibility_file_demat_autonome_resource_hidden_at_and_feasibility_file_demat_autonome_first_opening_at_columns_to_candidacy_table
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260901132254_add_permission_specific_to_sous_compte_vae_collective_table
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260903121800_added_voir_sous_compte_to_the_vae_collective_permission_list
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260903131341_add_unique_contraint_jury_id_competence_bloc_id
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260903140000_add_voir_sous_compte_to_the_administrateur_porteur_de_projet_role
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260907123313_add_france_competences_rncp_v4_feature_flag
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260907130854_fixed_prisma_migration
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260907133902_add_registry_manager_dashboard_feature
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260907135523_add_modifier_acces_cohorte_value_to_permission_vae_collective_enum
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260907135524_add_modifier_acces_cohorte_to_the_administrateur_porteur_de_projet_role
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260908091813_add_enable_email_otp_on_account_creation_feature_flag
+    │   │   │   │   └── migration.sql
     │   │   │   └── migration_lock.toml
     │   │   ├── schema.prisma
     │   │   └── seed
@@ -4686,6 +4765,7 @@
     │   │       │   └── types-diplome.csv
     │   │       └── seed.ts
     │   ├── scripts
+    │   │   ├── addAndSendCertificationsToRegistryManager.ts
     │   │   ├── anonymization
     │   │   │   ├── anonymize-keycloak-db.sql
     │   │   │   └── anonymize-reva-db.sql
@@ -4745,12 +4825,14 @@
     │   │   │   │   ├── create-funding-request-unifvae-helper.ts
     │   │   │   │   ├── create-jury-helper.ts
     │   │   │   │   ├── create-maison-mere-aap-helper.ts
+    │   │   │   │   ├── create-maison-mere-aap-legal-information-documents-helper.ts
     │   │   │   │   ├── create-organism-helper.ts
     │   │   │   │   ├── create-organism-on-convention-collective-helper.ts
     │   │   │   │   ├── create-parcours-certification-helper.ts
     │   │   │   │   ├── create-payment-request-unifvae-helper.ts
     │   │   │   │   ├── create-payment-request-unireva-helper.ts
     │   │   │   │   ├── create-reorientation-reason-helper.ts
+    │   │   │   │   ├── create-sous-compte-vae-collective-helper.ts
     │   │   │   │   ├── create-vae-collective-helper.ts
     │   │   │   │   ├── fc-claims-helper.ts
     │   │   │   │   └── get-candidate-department-id-or-throw.ts
@@ -5773,6 +5855,8 @@
     │   │   │   │   │   │   ├── cohortes
     │   │   │   │   │   │   │   ├── [cohorteVaeCollectiveId]
     │   │   │   │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   │   │   │   ├── access-rights-card
+    │   │   │   │   │   │   │   │   │   │   └── AccessRightsCard.tsx
     │   │   │   │   │   │   │   │   │   ├── certifications-card
     │   │   │   │   │   │   │   │   │   │   └── CertificationsCard.tsx
     │   │   │   │   │   │   │   │   │   ├── delete-cohorte-button
@@ -5836,6 +5920,21 @@
     │   │   │   │   │   │   │   │   ├── actions.ts
     │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   ├── comptes-utilisateur
+    │   │   │   │   │   │   │   ├── [sousCompteVaeCollectiveId]
+    │   │   │   │   │   │   │   │   ├── actions.ts
+    │   │   │   │   │   │   │   │   ├── form.tsx
+    │   │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   │   │   └── SousCompteCard.tsx
+    │   │   │   │   │   │   │   ├── aucun-compte-utilisateur
+    │   │   │   │   │   │   │   │   ├── assets
+    │   │   │   │   │   │   │   │   │   └── ecosystem-polygon.svg
+    │   │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   ├── nouveau-compte-utilisateur
+    │   │   │   │   │   │   │   │   ├── actions.ts
+    │   │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   └── dashboard
     │   │   │   │   │   │       └── page.tsx
     │   │   │   │   │   └── page.tsx
@@ -5855,7 +5954,9 @@
     │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   ├── login
     │   │   │   │   │   │   ├── _components
+    │   │   │   │   │   │   │   ├── AuthenticatorOtpStep.tsx
     │   │   │   │   │   │   │   ├── CredentialsStep.tsx
+    │   │   │   │   │   │   │   ├── EmailOtpStep.tsx
     │   │   │   │   │   │   │   └── OtpStep.tsx
     │   │   │   │   │   │   ├── actions.ts
     │   │   │   │   │   │   └── page.tsx
@@ -5903,6 +6004,8 @@
     │   │   │   │   └── server-only-index.tsx
     │   │   │   ├── footer
     │   │   │   │   └── Footer.tsx
+    │   │   │   ├── form-optional-fields-disclaimer
+    │   │   │   │   └── FormOptionalFieldsDisclaimer.tsx
     │   │   │   ├── multi-select-list
     │   │   │   │   ├── MultiSelectList.tsx
     │   │   │   │   ├── MultiSelectListEmptyState.tsx
@@ -5946,6 +6049,7 @@
     │   │   │   │   │   │   │   └── certifications.spec.ts
     │   │   │   │   │   │   ├── certifications-selectionnees
     │   │   │   │   │   │   │   └── certifications-selectionnees.spec.ts
+    │   │   │   │   │   │   ├── cohorte.accessRightsCard.spec.ts
     │   │   │   │   │   │   ├── cohorte.certificationsCard.spec.ts
     │   │   │   │   │   │   ├── cohorte.deleteCohorteButton.spec.ts
     │   │   │   │   │   │   ├── cohorte.generateCodeInscriptionButton.spec.ts
@@ -5959,6 +6063,14 @@
     │   │   │   │   │   ├── cohortes.spec.ts
     │   │   │   │   │   └── nouvelle-cohorte
     │   │   │   │   │       └── nouvelleCohorte.spec.ts
+    │   │   │   │   ├── comptes-utilisateur
+    │   │   │   │   │   ├── aucun-compte-utilisateur
+    │   │   │   │   │   │   └── aucunCompteUtilisateur.spec.ts
+    │   │   │   │   │   ├── compte-utilisateur
+    │   │   │   │   │   │   └── compteUtilisateur.spec.ts
+    │   │   │   │   │   ├── comptesUtilisateur.spec.ts
+    │   │   │   │   │   └── nouveau-compte-utilisateur
+    │   │   │   │   │       └── nouveauCompteUtilisateur.spec.ts
     │   │   │   │   └── dashboard
     │   │   │   │       └── dashboard.spec.ts
     │   │   │   └── commanditaires.spec.ts
@@ -6371,4 +6483,4 @@
         ├── tsconfig.json
         └── types
             └── primitives.d.ts
-2133 directories, 4240 files
+2166 directories, 4319 files

@@ -1,35 +1,22 @@
-## Changelog : reva (30 derniers jours, au 21 août 2026)
+## Changelog : reva (30 derniers jours, au 08/09/2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a franchi des étapes importantes dans la gestion des AAPs avec l'introduction de la sélection des "formacodes" (v2) et un nouveau parcours de mise à jour des informations légales pour les structures. Le module "VAE Collective" est également enrichi avec une gestion plus fine des sous-comptes et des permissions. Parallèlement, une refonte profonde du système d'autorisation a été réalisée pour renforcer la sécurité et la fiabilité de l'accès aux données.
+Ce mois a été marqué par deux évolutions majeures : l'introduction de la gestion des "sous-comptes" pour la VAE Collective, permettant une délégation de gestion plus fine, et la refonte du processus de mise à jour des informations légales pour les organismes, visant à accroître leur autonomie tout en renforçant le contrôle administratif.
 
 ### Évolutions fonctionnelles
-- **Gestion des AAPs et structures** :
-    - Introduction de la sélection des "formacodes" (v2) dans les composants de certification et de périmètre d'accompagnement.
-    - Mise en place d'un nouveau parcours de mise à jour des informations légales pour les structures AAP.
-    - Ajout d'un bloc d'information légale sur la page "maison mère" des AAP.
-- **VAE Collective** :
-    - Ajout d'un onglet de gestion des comptes utilisateurs dans l'en-tête.
-    - Implémentation de permissions affinées pour la gestion des cohortes (création, modification, suppression, consultation des statistiques).
-- **Expérience Candidat** :
-    - Amélioration de l'interface avec l'ajout de modales de confirmation lors de l'envoi de documents à l'autorité de certification.
-    - Pré-sélection automatique de l'autorité de certification dans les fichiers PDF de décision de faisabilité lorsque celle-ci est renseignée.
-    - Renforcement de la validation des formulaires (exigence du code postal pour l'adresse).
-- **Corrections diverses** :
-    - Correction de l'affichage de l'historique des décisions lorsque la date de mise à jour de l'AAP est manquante.
-    - Résolution de bugs sur la mise à jour des autorités de certification et la préservation des données de formulaire lors des rafraîchissements de données.
+- **VAE Collective** : Mise en place complète de la gestion des sous-comptes, incluant la création, la liste des comptes, l'attribution de droits spécifiques et une interface de gestion dédiée.
+- **Gestion des organismes (AAP)** : Nouveau parcours de mise à jour des informations légales permettant aux structures de modifier leurs données en autonomie. Les administrateurs disposent désormais d'outils pour valider ces changements ou notifier des motifs de non-conformité.
+- **Tableaux de bord** : Possibilité d'afficher des tableaux de bord intégrés pour les gestionnaires de registres.
+- **Sécurité** : Activation par défaut de l'authentification à deux facteurs (2FA) via code email lors de la création de compte.
+- **Expérience Candidat** : Amélioration de la clarté des formulaires, de la terminologie et de l'affichage des données relatives aux organismes.
 
 ### Évolutions techniques
-- **Sécurité et Autorisation** :
-    - Refonte majeure de l'API : migration massive des "resolvers" (candidatures, certifications, logs, rendez-vous, etc.) vers un nouveau système de gestion des politiques (`withPolicies`).
-    - Renforcement de la couverture de tests de sécurité pour valider les droits d'accès sur l'ensemble du cycle de vie d'une candidature (jury, expérience, transfert de dossier, etc.).
-    - Implémentation d'un nouveau modèle de rôles et de permissions spécifique au module "VAE Collective".
-- **Infrastructure et Performance** :
-    - Sécurisation de l'accès à Metabase via une restriction au niveau du reverse proxy (Traefik).
-    - Optimisation des performances de l'interface d'administration via l'utilisation de requêtes GraphQL conditionnelles selon le profil utilisateur.
-    - Optimisation des scripts de mise à jour de données par l'introduction du traitement par lots (batch processing).
-- **Tests** :
-    - Extension significative de la suite de tests d'intégration HTTP pour le package `reva-interop` (couverture des routes candidatures, jury, faisabilité, etc.).
+- **Architecture API** : Migration massive des résolveurs (candidatures, certifications, autorités) vers un nouveau système de gestion des politiques d'autorisation (`withPolicies`) pour une sécurité accrue.
+- **Interopérabilité** : Migration de l'API France Compétences (RNCP) vers la version 4 et enrichissement des données d'identité avec l'intégration des codes pays INSEE.
+- **Infrastructure & Sécurité** : Renforcement de la sécurité de Metabase (accès restreint au réseau privé) et mise à jour des configurations de buildpack pour Keycloak.
+- **Qualité logicielle** : Augmentation significative de la couverture de tests, avec un focus particulier sur les règles d'autorisation complexes et les parcours de validation des données.
+- **Base de données** : Correction de migrations Prisma.
 
 ### Autres changements
-- **Maintenance** : Mise à jour des compatibilités navigateurs et nettoyage de constantes codées en dur dans l'API.
+- Ajustements cosmétiques de l'interface utilisateur (espacements, mise en page des cartes de certification).
+- Nettoyage du code et optimisation de l'ordre des imports.

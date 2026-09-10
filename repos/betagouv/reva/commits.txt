@@ -1,3 +1,150 @@
+2026-09-08T16:37:45+02:00 - 1fec691 - Alexandre Garbe : feat(vae-collective): ported 2fa via email code from the admin app.
+2026-09-08T11:43:52+02:00 - 81f17bd - Alexandre Garbe : feat(api): email otp is now enabled by default on account creation (when the feature flag is enabled) except for the vae collective users
+2026-09-08T11:26:50+02:00 - 4e344df - Alexandre Garbe : feat(api): added an optional emailOtpEnabled param to the createAccount function
+2026-09-08T11:26:50+02:00 - 248fcf5 - Alexandre Garbe : feat(api): added ENABLE_EMAIL_OTP_ON_ACCOUNT_CREATION feature
+2026-09-07T17:00:14+02:00 - f470e19 - Alexandre Garbe : feat(vae-collective): only show access right card in cohorte details page if the VAE_COLLECTIVE_ACCOUNTS feature is active
+2026-09-07T16:51:34+02:00 - e174dac - Alexandre Garbe : feat(vae-collective): added the AccesRightsCard component to the cohorte details page
+2026-09-07T16:51:34+02:00 - 08f8fea - Alexandre Garbe : feat(api): created the MODIFIER_ACCES_COHORTE permission for vae collective and added it to the ADMINISTRATEUR_PORTEUR_DE_PROJET role
+2026-09-07T16:14:33+02:00 - d1c0edc - Florian Bonniec : feat(vae-collective): updated aap selection advice metabase link
+2026-09-07T15:56:47+02:00 - 83bc95b - Pierre A : feat(api):allow enabling registry manager dashboard per user
+2026-09-07T15:51:57+02:00 - cc4c79e - Pierre A : feat(admin):show embadded dashboard for registry managers
+2026-09-07T15:51:36+02:00 - 56664c6 - Pierre A : feat(api):add registry manager dashboard url generation feature
+2026-09-07T15:25:59+02:00 - fa131e5 - Florian Bonniec : fix(prisma): fixed prisma migration
+2026-09-07T15:08:17+02:00 - 72c58cc - Florian Bonniec : feat(candidate): improved wording
+2026-09-07T14:55:51+02:00 - 7f74020 - Florian Bonniec : feat(api): migrated france competences rncp api from v2 to v4
+2026-09-07T11:30:37+02:00 - dd9a114 - Alexandre Garbe : feat(api): added a vaeCollective_updateSousCompteVaeCollective mutation
+2026-09-07T11:30:37+02:00 - 201d0ff - Alexandre Garbe : feat(vae-collective): user can now update the canCreateCohorteVaeCollective flag on a sous compte
+2026-09-04T12:44:46+02:00 - 3a07135 - Florian Bonniec : feat(api,admin): assign organismId to candidacy based on vae collective while creating a new candidacy from cohort code
+2026-09-04T11:11:34+02:00 - dc0ea4b - Florian Bonniec : fix(admin): fixed width of certification pages
+2026-09-04T10:57:02+02:00 - 3b4fae8 - Alexandre Garbe : feat(vae-collective): added the view sous compte page
+2026-09-04T09:54:47+02:00 - e86c0a9 - Alexandre Garbe : feat(api): edded the 'VOIR_SOUS_COMPTE' permission to the vae collective 'ADMINISTRATEUR_PORTEUR_DE_PROJET' role
+2026-09-04T09:54:47+02:00 - c4d11bd - Alexandre Garbe : feat(api): added VOIR_SOUS_COMPTE permission to vae_collective
+2026-09-04T09:54:47+02:00 - 9c8c9b1 - Alexandre Garbe : feat(api): added a vaeCollective_getSousCompteVaeCollective query
+2026-09-04T09:54:47+02:00 - 71ac510 - Alexandre Garbe : feat(api): added a createSousCompteVaeCollectiveHelper test helper
+2026-09-04T09:54:47+02:00 - 2ea60ed - Alexandre Garbe : feat(api): updated hasVaeCollectivePermission to check for "sous compte" permissions
+2026-09-04T09:54:47+02:00 - 25a2e6c - Alexandre Garbe : feat(api): added a isGestionnaireOfSousCompteVaeCollective security middleware
+2026-09-03T22:47:45+02:00 - 50f7622 - fbonniec : Merge pull request #1111 from betagouv/dependabot/npm_and_yarn/infra/strapi/browserslist-4.28.8
+2026-09-03T21:38:40+02:00 - 5efdec7 - fbonniec : Merge pull request #1110 from betagouv/dependabot/npm_and_yarn/packages/reva-admin-react/humanfs/node-0.16.8
+2026-09-03T21:27:28+02:00 - e0d7bd3 - fbonniec : Merge pull request #1109 from betagouv/dependabot/npm_and_yarn/packages/reva-api/humanfs/node-0.16.8
+2026-09-03T21:11:36+02:00 - 9adee6a - fbonniec : Merge pull request #1108 from betagouv/dependabot/npm_and_yarn/packages/reva-api/faker-js/faker-10.5.0
+2026-09-03T20:49:18+02:00 - 1948532 - fbonniec : Merge pull request #1107 from betagouv/dependabot/npm_and_yarn/packages/reva-admin-react/fflate-0.8.3
+2026-09-03T20:07:24+02:00 - 0cc5bda - fbonniec : Merge pull request #1106 from betagouv/dependabot/npm_and_yarn/packages/reva-website/humanfs/node-0.16.8
+2026-09-03T19:55:10+02:00 - 8975dec - fbonniec : Merge pull request #1105 from betagouv/dependabot/npm_and_yarn/packages/reva-vae-collective/browserslist-4.28.8
+2026-09-03T19:42:14+02:00 - cb22866 - fbonniec : Merge pull request #1104 from betagouv/dependabot/npm_and_yarn/packages/reva-interop/fast-uri-3.1.7
+2026-09-03T19:38:18+02:00 - 01b5fbd - fbonniec : Merge pull request #1103 from betagouv/dependabot/npm_and_yarn/packages/reva-interop/fastify-5.12.1
+2026-09-03T19:37:36+02:00 - cfe3587 - fbonniec : Merge pull request #1102 from betagouv/dependabot/npm_and_yarn/infra/strapi/fast-uri-3.1.7
+2026-09-03T19:28:41Z - 35729c5 - dependabot[bot] : chore(deps): bump browserslist from 4.28.2 to 4.28.8 in /infra/strapi
+2026-09-03T19:22:15+02:00 - 83a5a11 - fbonniec : Merge pull request #1101 from betagouv/dependabot/npm_and_yarn/packages/reva-api/fastify-5.12.1
+2026-09-03T19:18:07+02:00 - 7804801 - fbonniec : Merge pull request #1100 from betagouv/dependabot/npm_and_yarn/packages/reva-website/postcss-selector-parser-6.1.4
+2026-09-03T19:15:12+02:00 - c06dd75 - fbonniec : Merge pull request #1099 from betagouv/dependabot/npm_and_yarn/infra/strapi/postcss-selector-parser-7.1.5
+2026-09-03T18:51:47Z - 5aed1dc - dependabot[bot] : chore(deps-dev): bump @humanfs/node in /packages/reva-api
+2026-09-03T18:08:43Z - 29898d8 - dependabot[bot] : chore(deps-dev): bump @humanfs/node in /packages/reva-admin-react
+2026-09-03T17:43:14Z - 161c527 - dependabot[bot] : chore(deps): bump @faker-js/faker in /packages/reva-api
+2026-09-03T17:02:34+02:00 - 71c6107 - Pierre A : fix(candidate):remove duplicate previouslyValidatedBlocks for past juries in result view
+2026-09-03T16:12:35+02:00 - 77c01fe - Pierre A : feat(api):allow a temporary jury result to be updated
+2026-09-03T15:58:37Z - 7951a1f - dependabot[bot] : chore(deps): bump fflate in /packages/reva-admin-react
+2026-09-03T12:54:46+02:00 - 4d79da2 - Florian Bonniec : fix(candidate): fixed back button url in SendFeasibilityForm component
+2026-09-03T01:34:02Z - 765dde8 - dependabot[bot] : chore(deps-dev): bump @humanfs/node in /packages/reva-website
+2026-09-03T01:33:57Z - 91ca830 - dependabot[bot] : chore(deps-dev): bump browserslist in /packages/reva-vae-collective
+2026-09-03T01:33:45Z - 26f25d8 - dependabot[bot] : chore(deps): bump fast-uri from 3.1.5 to 3.1.7 in /packages/reva-interop
+2026-09-03T00:43:15Z - a129738 - dependabot[bot] : chore(deps): bump fastify from 5.8.5 to 5.12.1 in /packages/reva-interop
+2026-09-02T23:47:45Z - 32d98da - dependabot[bot] : chore(deps): bump fast-uri from 3.1.5 to 3.1.7 in /infra/strapi
+2026-09-02T17:26:18+02:00 - ee92e37 - Alexandre Garbe : fix(vae-collective): fixed sous compte card tests broken by the firstname and lastname swap
+2026-09-02T16:56:57+02:00 - d6281fb - Florian Bonniec : feat(candidate): added a card to display data of an organism vae-collective/[codeInscription] page
+2026-09-02T16:44:22Z - db88362 - dependabot[bot] : chore(deps): bump fastify from 5.8.5 to 5.12.1 in /packages/reva-api
+2026-09-02T16:21:02+02:00 - e2674e4 - Alexandre Garbe : feat(api): added permissionSpecificToSousCompteVaeCollective to the list of permissions returned by getUserPermissions
+2026-09-02T16:21:02+02:00 - 913dc9a - Alexandre Garbe : fix(vae-collective): reversed the lasname and firstname on the SousCompteCard component
+2026-09-02T16:21:02+02:00 - 5bab682 - Alexandre Garbe : feat(api): added a SousCompteVaeCollective->canCreateCohorteVaeCollective resolver
+2026-09-02T16:21:02+02:00 - 2b572b3 - Alexandre Garbe : feat(vae-collective): added the canCreateCohorteVaeCollective tag to the sous compte card
+2026-09-02T16:21:02+02:00 - 28cc247 - Alexandre Garbe : fix(api): added sort by lastname and firstname for getSousComptesByCommanditaireVaeCollectiveId
+2026-09-02T14:58:09+02:00 - fa745d5 - Pierre A : feat(admin,api,candidate):allow spaces in phone inputs - sanitize before saving
+2026-09-02T14:39:13+02:00 - da443f3 - Alexandre Garbe : feat(vae-collective): added the sous comptes list and the add sous compte button to the sous comptes page when there is one or more sous comptes
+2026-09-02T11:29:19+02:00 - c4fc613 - Pierre A : feat(traefik):re-disable metabase password reset
+2026-09-02T09:47:50+02:00 - b0b866e - Pierre A : feat(traefik):reenable metabase paswword reset
+2026-09-02T02:50:15Z - dffc706 - dependabot[bot] : chore(deps-dev): bump postcss-selector-parser in /packages/reva-website
+2026-09-01T22:41:50Z - 3e73346 - dependabot[bot] : chore(deps): bump postcss-selector-parser in /infra/strapi
+2026-09-01T16:36:21+02:00 - db79a53 - Alexandre Garbe : feat(api): added permission_specific_to_sous_compte_vae_collective table
+2026-09-01T16:36:21+02:00 - 8c69a53 - Alexandre Garbe : feat(api+vae-collective): added a canCreateCohorteVaeCollective param to the vaeCollective_createSousCompteVaeCollective mutation
+2026-09-01T16:36:21+02:00 - 0277d9e - Alexandre Garbe : feat(vae-collective): added cohort creation toggle switch in "sous-compte" creation page and wired it to the vaeCollective_createSousCompteVaeCollective mutation
+2026-09-01T15:59:24+02:00 - 970ae0f - Florian Bonniec : feat(api,candidate): updated feasibility-demat-autonome-resources page to support updateFeasibilityFileDematAutonomeFirstOpeningAt feature + reword of feature markFeasibilityFileResourceFirstAsRead into markFeasibilityFileDematAutonomeResourceAsHidden
+2026-09-01T14:48:49+02:00 - 90ecc89 - Pierre A : feat(api):allow certification authority local accounts to have multiple accounts. Align behavior with CertificationAuthority accounts. Allows to create API accounts for local accounts too, not only CertificationAuthority admins.
+2026-09-01T14:20:32+02:00 - 1f59196 - Alexandre Garbe : feat(api): added a script for creating and sending certification to the registry manager for validation.
+2026-09-01T11:50:02+02:00 - 957d684 - Alexandre Garbe : feat(api): A certification now only turns visible if it has at least one certification authority associated with it
+2026-08-31T17:02:23+02:00 - e5c7460 - Alexandre Garbe : feat(vae-collective): added the FormOptionalFieldsDisclaimer
+2026-08-31T17:02:23+02:00 - dcf6206 - Alexandre Garbe : feat(api): added a vaeCollective_createSousCompteVaeCollective mutation
+2026-08-31T17:02:23+02:00 - c17f0e7 - Alexandre Garbe : feat(api): added "sous compte" creation email
+2026-08-31T17:02:23+02:00 - aa48548 - Alexandre Garbe : feat(api): added sous_compte_vae_collective keycloak group
+2026-08-31T17:02:23+02:00 - 235cc0e - Alexandre Garbe : feat(vae-collective): added the "nouveau compte utilisateur" page
+2026-08-31T09:38:21+02:00 - 104c927 - Pierre A : feat(traefik):re-disable password reset route for metabase
+2026-08-31T09:34:10+02:00 - 1a87910 - dependabot[bot] : chore(deps): bump tar and @strapi/strapi in /infra/strapi
+2026-08-28T14:02:22+02:00 - dca308e - ThomasDos : test(admin): force the checkbox clicks of the update journeys
+2026-08-28T13:07:00+02:00 - 0b1aa8b - ThomasDos : test(api): cover authorization on legal information documents and decision
+2026-08-28T13:06:59+02:00 - a0200eb - ThomasDos : test(api): cover the legal information decision resolver
+2026-08-28T13:06:49+02:00 - 25aa87c - ThomasDos : test(api): cover the legal information submission route
+2026-08-28T13:06:47+02:00 - 6760cc6 - ThomasDos : test(api): cover the required documents rule of a general information update
+2026-08-28T13:06:37+02:00 - a8f465f - ThomasDos : test(api): add a maison mere legal information documents helper
+2026-08-28T13:06:36+02:00 - ff39812 - ThomasDos : test(admin): cover the legal information verification sheet
+2026-08-28T13:06:26+02:00 - 78464db - ThomasDos : test(admin): cover the admin general information update journey
+2026-08-28T13:06:25+02:00 - ece07da - ThomasDos : test(admin): cover the general information page pending states
+2026-08-28T13:06:15+02:00 - 29502d1 - ThomasDos : test(admin): cover the AAP general information update journey
+2026-08-28T13:06:05+02:00 - de48bd0 - ThomasDos : chore(admin): expose a test id on the general information info rows
+2026-08-28T13:05:55+02:00 - fcacecb - ThomasDos : fix(api): stop requiring a delegation letter when administrator names are omitted
+2026-08-28T13:05:42+02:00 - d53c072 - ThomasDos : fix(api): return the taken decision from the legal information decision mutation
+2026-08-27T15:20:06+02:00 - a114421 - ThomasDos : fix(admin): let the first legal information step be cancelled by admins too
+2026-08-27T10:04:13+02:00 - 1e38b27 - ThomasDos : fix(admin): avoid a div nested in a p in the certification card detail
+2026-08-27T10:04:12+02:00 - 25b142a - ThomasDos : fix(admin): validate each legal information step before enabling the next one
+2026-08-27T10:03:53+02:00 - 6396a36 - ThomasDos : fix(admin): show the legal information stepper only on the form steps
+2026-08-26T15:13:20+02:00 - 71a634d - Pierre A : fix(api):make to sure only update human user account from backoffice
+2026-08-26T14:59:02+02:00 - bf62a10 - Alexandre Garbe : feat(api): added a CommanditaireVaeCollective->sousComptes resolver
+2026-08-26T14:59:02+02:00 - 2114c20 - Alexandre Garbe : feat(vae-collective): added "comptes utilisateur" page skeleton
+2026-08-26T14:59:02+02:00 - 120d80f - Alexandre Garbe : feat(vae-collective): added the "aucun-compte-utilisateur" page
+2026-08-26T14:33:50+02:00 - 5d1b49b - ThomasDos : feat(api): log legal information decisions with their internal comment
+2026-08-26T14:33:50+02:00 - 1ad89de - ThomasDos : feat(api): keep the account up to date when a self-service request is refused
+2026-08-26T14:33:49+02:00 - eb34e75 - ThomasDos : fix(admin, api): require the manager identity document when the delegate is removed
+2026-08-26T14:33:49+02:00 - 35fdf4a - ThomasDos : feat(admin): show the account settings tutorial link on the block selection screen
+2026-08-26T14:33:49+02:00 - 3279eda - ThomasDos : feat(admin): count the block selection screen as the first stepper step
+2026-08-26T14:33:48+02:00 - 5c578f0 - ThomasDos : fix(admin): normalize the legal information step spacing to 48px
+2026-08-26T14:03:27+02:00 - c3a9e27 - Alexandre Garbe : feat(api): added compte_local_vae_collective table
+2026-08-26T14:02:50+02:00 - c848aad - Alexandre Garbe : feat(vae-collective): use VOIR_LISTE_SOUS_COMPTES permission for displaying the accounts page
+2026-08-26T14:02:50+02:00 - a8a985d - Alexandre Garbe : feat(api): added the VOIR_LISTE_SOUS_COMPTES value to the PermissionVaeCollective enum
+2026-08-26T14:02:50+02:00 - 38cb13c - Alexandre Garbe : feat(api): added VOIR_LISTE_SOUS_COMPTES to ADMINISTRATEUR_PORTEUR_DE_PROJET role
+2026-08-26T11:08:43+02:00 - f9ca0ae - Pierre A : chore(api):lint import order
+2026-08-26T11:07:24+02:00 - ee7175d - Pierre A : feat(interop):explicitly create API users with corresponding flag
+2026-08-26T11:07:24+02:00 - 01dee60 - Pierre A : feat(api):add isApiUser flag to accounts - explicitly fetch human accounts for backoffice screens
+2026-08-26T09:38:47+02:00 - bc495c9 - ThomasDos : chore(admin, candidate, vae-collective, website): bump next to 16.3.3
+2026-08-25T17:11:07+02:00 - b160667 - Pierre A : feat(interop):add complement addresse
+2026-08-25T16:57:24+02:00 - a10476e - Pierre A : tests(interop):udpate tests for new country fields and values
+2026-08-25T16:44:16+02:00 - 0737d98 - Pierre A : feat(api):add insee code to graphql schema
+2026-08-25T16:43:39+02:00 - e9cfe54 - Pierre A : feat(interop):correctly populate birth country, nationality, and add INSEE country code
+2026-08-25T15:47:54+02:00 - 287281d - ThomasDos : fix(admin): spacing, banner and tutorial link on the general information journey
+2026-08-25T15:47:53+02:00 - bab0bd2 - ThomasDos : feat(admin): drop the update tile from the verification sheet
+2026-08-25T15:47:53+02:00 - 3e408bf - ThomasDos : feat(admin): verify the targeted siret and flag conflicts on the verification sheet
+2026-08-25T15:47:52+02:00 - da210ed - ThomasDos : fix(admin): keep the update journey stable while the maison mere reloads
+2026-08-25T15:47:52+02:00 - 1aafa35 - ThomasDos : feat(admin): send non-conformity motives with the validation decision
+2026-08-25T15:47:52+02:00 - 0c85cb3 - ThomasDos : feat(admin): let AAPs update their general information on their own
+2026-08-25T15:47:51+02:00 - f8fd53e - ThomasDos : feat(admin): show a loading skeleton while the company lookup runs
+2026-08-25T15:47:51+02:00 - 7b14fb9 - ThomasDos : feat(api): make legal information documents optional and derive the required ones
+2026-08-25T15:47:50+02:00 - f68fa4d - ThomasDos : feat(api): make the structure invisible from the decision mutation
+2026-08-25T15:47:50+02:00 - 2b3db91 - ThomasDos : feat(api): send the total update and non-conformity templates
+2026-08-25T15:47:49+02:00 - ec3fd8c - ThomasDos : feat(api): add a dedicated decision for admin-initiated total update requests
+2026-08-25T15:47:49+02:00 - 3ff8a6f - ThomasDos : fix(api): compare account emails case-insensitively when looking for duplicates
+2026-08-25T15:47:49+02:00 - 3918d85 - ThomasDos : feat(api): expose siret and login email conflicts on pending legal information
+2026-08-24T13:34:47+02:00 - 3b4cec3 - Alexandre Garbe : fix(keycloak): updated the checksum code for the keycloak buildpack since a sha1 is no longer provided
+2026-08-24T12:39:42+02:00 - c327d0a - ThomasDos : test(admin): assert the general information badge follows the legal file status
+2026-08-24T12:08:29+02:00 - c206a44 - ThomasDos : feat(admin): flag pending general information updates on the AAP settings
+2026-08-24T12:08:28+02:00 - d9dd832 - ThomasDos : feat(admin): add non-conformity motives to the validation decision form
+2026-08-24T12:08:28+02:00 - 026a248 - ThomasDos : feat(admin): rework the verifications list layout and cards
+2026-08-24T12:08:27+02:00 - f3ea235 - ThomasDos : feat(admin): redesign the general information screen with pending values
+2026-08-24T12:08:27+02:00 - 98c0942 - ThomasDos : feat(admin): open the legal information update journey to AAPs
+2026-08-24T12:08:27+02:00 - 532dc21 - ThomasDos : feat(admin): rebuild the maison mere verification sheet
+2026-08-24T12:08:26+02:00 - 7fb24bb - ThomasDos : feat(api): store pending legal information values and apply them on validation
+2026-08-24T12:08:26+02:00 - 26b3fe8 - ThomasDos : feat(api): accept pending values and jpg/png on the legal information upload route
+2026-08-24T12:08:25+02:00 - d16a9e6 - ThomasDos : fix(api): exclude the structure itself from the siret uniqueness check
+2026-08-24T11:37:41+02:00 - 6b80899 - Pierre A : fix(infra):temporarily reallow password change
+2026-08-24T11:25:12+02:00 - 0a2eb05 - Pierre A : chore(infra):fix typo
+2026-08-24T11:14:26+02:00 - a3e303f - Pierre A : feat(infra):set listening port
+2026-08-24T11:06:30+02:00 - c416f0a - Pierre A : feat(infra):join metabase on internal network from proxy
+2026-08-24T10:55:36+02:00 - 39baaab - Pierre A : feat(infra):make metabase available only in private network
 2026-08-21T14:19:36+02:00 - dbd3956 - Alexandre Garbe : chore(api): use existing constants instead of hardcoded ones in refreshCandidacyCertificationAuthorityId script
 2026-08-21T14:19:36+02:00 - 962427d - Alexandre Garbe : fix(api): updated refreshCandidacyCertificationAuthorityId to process by batches.
 2026-08-21T14:19:36+02:00 - 538da1b - Alexandre Garbe : feat(api): updated organism resolver withPolicies helper conf
