@@ -1,35 +1,54 @@
-## Changelog : territoires-en-transitions (30 derniers jours, au 04 septembre 2026)
+## Changelog : territoires-en-transitions (30 derniers jours, au 09 septembre 2026)
 
 ### Résumé
-Ce mois a été marqué par une avancée majeure sur le parcours PCAET, avec l'automatisation de l'instruction et une gestion plus fine des diagnostics (vulnérabilités, documents, avis). L'authentification a été modernisée grâce à l'intégration du protocole OIDC (ProConnect/MonCompteAdeme), et l'interface utilisateur a bénéficié d'une refonte importante pour améliorer la clarté des parcours de labellisation et de transition écologique.
+Ce mois a été marqué par des évolutions majeures concernant le parcours de réalisation des diagnostics (notamment pour le PCAET) et la gestion des référentiels. La plateforme propose désormais un processus plus structuré pour les diagnostics et les avis, ainsi qu'une transition facilitée entre les différents référentiels (passage du TE au CR). L'expérience utilisateur est également renforcée par l'intégration complète de l'authentification unique (SSO) et une refonte de la navigation pour une utilisation plus fluide.
 
 ### Évolutions fonctionnelles
-- **Parcours PCAET & Démarches** :
-    - Mise en place d'un parcours d'instruction complet : dépôt d'avis, notification des contacts, et gestion des étapes de validation par les services instructeurs (DREAL, Régions, DDT).
-    - Amélioration du diagnostic : ajout d'une étape de saisie des vulnérabilités (obligatoire pour clôturer le diagnostic) et navigation pas à pas facilitée.
-    - Gestion documentaire enrichie : possibilité de lier plusieurs plans à une démarche, accès sécurisé via des URLs signées et gestion plus intuitive des documents de la démarche.
-    - Nouveau tableau de bord pour le suivi des demandes d'avis et statistiques associées.
-- **Labellisation & Référentiels** :
-    - Déploiement de la bascule "Transition Écologique" (TE) de bout en bout.
-    - Ajout de nouveaux onglets dans les référentiels : bibliothèque de documents, journal d'activité et synthèse de l'état des lieux.
-    - Extension des droits : les super-administrateurs peuvent désormais remplacer un rapport d'audit.
-- **Authentification & Profils** :
-    - Intégration de la connexion via OIDC (ProConnect et MonCompteAdeme) avec gestion automatique de la liaison d'identité et des profils utilisateurs.
-- **Interface Utilisateur (UI)** :
-    - Amélioration de la navigation et de la clarté : mise à jour massive des libellés (wording), ajout de boutons "split" et de variantes de boutons (danger, lien).
-    - Optimisation de l'affichage : en-têtes de tableaux fixes (sticky), gestion des bannières d'information mémorisées et amélioration de l'accessibilité clavier.
+
+**Parcours PCAET et Démarches**
+- Mise en place d'un nouveau parcours de diagnostic étape par étape, plus guidé pour les collectivités.
+- Introduction d'un système d'avis structuré nécessitant la validation de trois parties pour finaliser une instruction.
+- Ajout d'un module dédié aux thématiques de vulnérabilité au sein des diagnostics.
+- Amélioration de la gestion documentaire : les documents attendus sont désormais mieux segmentés (amont/aval) et peuvent être liés à plusieurs plans.
+- Automatisation de la clôture nocturne des instructions PCAET.
+
+**Gestion des Référentiels et Labellisation**
+- Implémentation de la bascule complète entre les référentiels (ex: passage de TE vers CR) avec conservation des commentaires et des données.
+- Gestion des référentiels archivés : ils restent visibles dans la navigation avec un indicateur spécifique, mais certaines actions sont désactivées.
+- Amélioration du processus de labellisation : les administrateurs peuvent désormais remplacer des rapports d'audit et les règles de complétude sont plus strictes.
+- Possibilité de reclasser des documents directement depuis l'onglet dédié.
+
+**Authentification et Utilisateurs**
+- Intégration complète du SSO via OIDC (ProConnect, MonCompteAdeme) permettant la création et la liaison automatique des comptes.
+- Amélioration de l'onboarding des agents avec une nouvelle modale de bienvenue respectant le design system.
+- Meilleure gestion des profils et des invitations via les identités officielles.
+
+**Interface et Expérience Utilisateur (UI/UX)**
+- Refonte de la navigation principale et des panneaux latéraux pour une meilleure clarté.
+- Ajout d'un système de bannière d'information mémorisée par l'utilisateur.
+- Améliorations ergonomiques diverses : en-têtes de tableaux fixes (sticky), nouveaux composants de boutons (split buttons, variantes "danger"), et amélioration de la lisibilité des filtres.
+
+**Collectivités**
+- Intégration des données Banatic pour une meilleure gestion des périmètres géographiques (EPCI) et des compétences déléguées.
 
 ### Évolutions techniques
-- **Architecture & Backend** :
-    - Refonte profonde des modules "Référentiels", "Plans" et "Diagnostic" pour une meilleure séparation des responsabilités (utilisation de repositories et de services dédiés).
-    - Migration et normalisation des données (passage au camelCase pour de nombreux modèles et types).
-    - Optimisation de la gestion des fichiers et des accès aux documents via le backend.
-- **Infrastructure & DevOps** :
-    - Optimisation de la CI/CD : accélération des tests E2E, exécution des tests par périmètre affecté et amélioration de la configuration Dependabot.
-    - Amélioration de l'expérience de développement (DevX) : nouveaux scripts de configuration locale, optimisation de la construction des images Docker et gestion améliorée des variables d'environnement.
-- **Observabilité** :
-    - Automatisation de la synchronisation quotidienne des groupes utilisateurs avec PostHog via un job cron.
+
+**Intelligence Artificielle**
+- Automatisation de la classification des plans par levier grâce à des jobs d'analyse IA.
+- Optimisation du moteur de templates pour les prompts et meilleure gestion des erreurs de réponse des modèles de langage (LLM).
+
+**Infrastructure et CI/CD**
+- Optimisation des pipelines de tests avec l'implémentation du sharding pour les tests E2E et l'utilisation de Nx Cloud.
+- Amélioration de la visibilité des logs et de la gestion des échecs de tâches dans les workflows CI.
+- Automatisation de la mise en place de l'environnement de test avec des scripts de démarrage Supabase.
+
+**Architecture et Backend**
+- Sécurisation des échanges de fichiers : les téléchargements de documents passent désormais par le backend via des URLs signées.
+- Refactorisation massive vers le pattern Repository pour une meilleure séparation des responsabilités (notamment sur les référentiels et les indicateurs).
+- Migration importante de la nomenclature des modèles et des types vers le format `camelCase`.
+- Amélioration du tracking utilisateur via une synchronisation quotidienne des groupes PostHog.
 
 ### Autres changements
-- **Documentation** : Mise à jour des guides d'utilisation (authentification, règles de wording pour les agents).
-- **Qualité du code** : Nettoyage important des composants obsolètes, suppression de code mort et renforcement de la couverture de tests (Vitest et Playwright).
+- Mise à jour de la documentation technique, notamment sur les processus d'authentification et les spécifications de géocodage.
+- Amélioration des outils de développement (Makefile, scripts de restauration de sauvegardes locales).
+- Nettoyage du code et application de nouvelles règles ESLint pour garantir la cohérence du texte (wording) dans l'interface.

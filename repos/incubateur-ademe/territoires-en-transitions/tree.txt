@@ -160,7 +160,8 @@
 │   │   ├── supabase-is-started
 │   │   │   └── action.yml
 │   │   ├── supabase-start
-│   │   │   └── action.yml
+│   │   │   ├── action.yml
+│   │   │   └── start-supabase.sh
 │   │   ├── truncate
 │   │   │   └── action.yml
 │   │   └── wait-for-url
@@ -184,7 +185,7 @@
 │       ├── dev.yml
 │       ├── keep-alive-streamlit.yml
 │       ├── prepare-test-db.yml
-│       ├── retry-e2e.yml
+│       ├── retry-flaky-jobs.yml
 │       ├── scripts
 │       │   └── keep-alive-streamlit.ts
 │       ├── test-backend-api.yml
@@ -802,6 +803,7 @@
 │   │   │   │   │       └── presentation
 │   │   │   │   │           ├── info-administratives.tsx
 │   │   │   │   │           └── presentation.page.tsx
+│   │   │   │   ├── paths.spec.ts
 │   │   │   │   ├── paths.ts
 │   │   │   │   ├── static
 │   │   │   │   │   ├── favicons
@@ -858,6 +860,7 @@
 │   │   │   │   ├── personnalisations
 │   │   │   │   │   ├── data
 │   │   │   │   │   │   ├── transform-reponse.ts
+│   │   │   │   │   │   ├── use-highlighted-question-id.ts
 │   │   │   │   │   │   ├── use-list-opened-thematiques.tsx
 │   │   │   │   │   │   ├── use-list-personnalisation-questions-reponses.ts
 │   │   │   │   │   │   ├── use-list-personnalisation-regles.ts
@@ -1709,8 +1712,7 @@
 │   │   │   │   │   │           ├── download-preuve-button.tsx
 │   │   │   │   │   │           ├── preuves-list.tsx
 │   │   │   │   │   │           ├── rename-preuve-button.tsx
-│   │   │   │   │   │           ├── upload-preuve-button.tsx
-│   │   │   │   │   │           └── use-download-preuve.ts
+│   │   │   │   │   │           └── upload-preuve-button.tsx
 │   │   │   │   │   ├── checklist-page-header
 │   │   │   │   │   │   ├── checklist-page-header.tsx
 │   │   │   │   │   │   ├── conseiller-referent.item.tsx
@@ -1723,7 +1725,9 @@
 │   │   │   │   │   │   ├── use-get-sous-action-of-tache.ts
 │   │   │   │   │   │   └── use-role-mesure.ts
 │   │   │   │   │   ├── checklist-view-model.ts
+│   │   │   │   │   ├── checklist.context.spec.tsx
 │   │   │   │   │   ├── checklist.context.tsx
+│   │   │   │   │   ├── checklist.test-fixture.ts
 │   │   │   │   │   ├── criteres-labellisation.view.tsx
 │   │   │   │   │   ├── parcours-to-checklist.spec.ts
 │   │   │   │   │   ├── parcours-to-checklist.ts
@@ -1860,16 +1864,14 @@
 │   │   │   │   │   │   ├── PreuveDoc.tsx
 │   │   │   │   │   │   ├── PreuveReglementaire.stories.tsx
 │   │   │   │   │   │   ├── PreuveReglementaire.tsx
-│   │   │   │   │   │   ├── canUserUpdateAuditReport.ts
 │   │   │   │   │   │   ├── carte-document-action.spec.ts
 │   │   │   │   │   │   ├── carte-document-action.ts
-│   │   │   │   │   │   ├── download-fichier.ts
 │   │   │   │   │   │   ├── duplicated-document.alert.spec.tsx
 │   │   │   │   │   │   ├── duplicated-document.alert.tsx
 │   │   │   │   │   │   ├── fixture.ts
-│   │   │   │   │   │   ├── openPreuve.ts
-│   │   │   │   │   │   ├── saveBlob.ts
 │   │   │   │   │   │   ├── types.ts
+│   │   │   │   │   │   ├── use-open-preuve.spec.ts
+│   │   │   │   │   │   ├── use-open-preuve.ts
 │   │   │   │   │   │   ├── useEditPreuve.ts
 │   │   │   │   │   │   ├── useEditState.ts
 │   │   │   │   │   │   ├── useFichiers.ts
@@ -1879,6 +1881,7 @@
 │   │   │   │   │   ├── PreuvesAction.stories.tsx
 │   │   │   │   │   ├── PreuvesAction.tsx
 │   │   │   │   │   ├── data
+│   │   │   │   │   │   ├── use-download-document.ts
 │   │   │   │   │   │   └── use-list-documents-mesure.ts
 │   │   │   │   │   ├── duplicated-document-state.utils.spec.ts
 │   │   │   │   │   ├── duplicated-document-state.utils.ts
@@ -1898,7 +1901,9 @@
 │   │   │   │   │   └── useAddPreuves.ts
 │   │   │   │   ├── referentiel-context.tsx
 │   │   │   │   ├── referentiel-mode
-│   │   │   │   │   ├── get-referentiel-mode-banner-props.ts
+│   │   │   │   │   ├── mode-banner-alert.tsx
+│   │   │   │   │   ├── referentiel-mode-archived.banner.tsx
+│   │   │   │   │   ├── referentiel-mode-readonly.banner.tsx
 │   │   │   │   │   ├── referentiel-mode.banner.tsx
 │   │   │   │   │   └── use-referentiel-mode.ts
 │   │   │   │   ├── referentiel.table
@@ -1943,6 +1948,24 @@
 │   │   │   │   │   ├── score.progress-bar.tsx
 │   │   │   │   │   ├── score.ratio-badge.tsx
 │   │   │   │   │   └── score.show.tsx
+│   │   │   │   ├── switch-to-te-confirm.modal
+│   │   │   │   │   ├── bullet-list.tsx
+│   │   │   │   │   ├── switch-to-te-confirm.modal.tsx
+│   │   │   │   │   ├── switch-to-te-confirmation-footer.tsx
+│   │   │   │   │   ├── switch-to-te-confirmation-step.tsx
+│   │   │   │   │   ├── switch-to-te-error-step.tsx
+│   │   │   │   │   ├── switch-to-te-info-step.tsx
+│   │   │   │   │   ├── switch-to-te-progress-step.tsx
+│   │   │   │   │   ├── switch-to-te-success-step.tsx
+│   │   │   │   │   ├── use-switch-to-te-confirm-state.ts
+│   │   │   │   │   └── use-switch-to-te.ts
+│   │   │   │   ├── switch-to-te.banner
+│   │   │   │   │   ├── switch-to-te-blocked.banner.tsx
+│   │   │   │   │   ├── switch-to-te-info.button.tsx
+│   │   │   │   │   ├── switch-to-te-ready.banner.tsx
+│   │   │   │   │   ├── switch-to-te-unauthorized.banner.tsx
+│   │   │   │   │   ├── switch-to-te.banner.tsx
+│   │   │   │   │   └── use-switch-to-te-status.ts
 │   │   │   │   ├── synthese
 │   │   │   │   │   └── synthese-referentiel.view.tsx
 │   │   │   │   ├── tableau-de-bord
@@ -2160,6 +2183,10 @@
 │   │   │   │   │   │   ├── use-login-state.ts
 │   │   │   │   │   │   └── warning-step2-message.tsx
 │   │   │   │   │   ├── oidc
+│   │   │   │   │   │   ├── auto-attachment
+│   │   │   │   │   │   │   ├── auto-attachment.landing.spec.ts
+│   │   │   │   │   │   │   ├── auto-attachment.landing.ts
+│   │   │   │   │   │   │   └── auto-attachment.welcome.modal.tsx
 │   │   │   │   │   │   ├── create-user-with-oidc
 │   │   │   │   │   │   │   ├── create-user-with-oidc.urls.spec.ts
 │   │   │   │   │   │   │   └── create-user-with-oidc.urls.ts
@@ -2263,6 +2290,7 @@
 │   │   │       │   └── use-is-feature-flag-enabled.ts
 │   │   │       ├── react-query
 │   │   │       │   └── use-mutation-cache-subscriber.tsx
+│   │   │       ├── save-blob.ts
 │   │   │       ├── scroll-reset.tsx
 │   │   │       ├── sentry
 │   │   │       │   ├── sentry-client.lazy.tsx
@@ -2272,6 +2300,7 @@
 │   │   │       ├── to-locale-fixed.ts
 │   │   │       ├── to-percent-string.ts
 │   │   │       ├── toast
+│   │   │       │   ├── download-file-mutation-options.ts
 │   │   │       │   ├── toast-context.tsx
 │   │   │       │   ├── toast-liaison-comptes.tsx
 │   │   │       │   ├── use-base-toast.tsx
@@ -2354,6 +2383,16 @@
 │   │   │   │   │       ├── discussion.router.ts
 │   │   │   │   │       └── discussion.schemas.ts
 │   │   │   │   ├── documents
+│   │   │   │   │   ├── collectivite-bucket.repository.ts
+│   │   │   │   │   ├── create-upload-token
+│   │   │   │   │   │   ├── create-upload-token.errors.ts
+│   │   │   │   │   │   ├── create-upload-token.input.ts
+│   │   │   │   │   │   ├── create-upload-token.output.ts
+│   │   │   │   │   │   ├── create-upload-token.repository.ts
+│   │   │   │   │   │   ├── create-upload-token.router.e2e-spec.ts
+│   │   │   │   │   │   ├── create-upload-token.router.ts
+│   │   │   │   │   │   ├── create-upload-token.service.spec.ts
+│   │   │   │   │   │   └── create-upload-token.service.ts
 │   │   │   │   │   ├── document.controller.e2e-spec.ts
 │   │   │   │   │   ├── document.controller.ts
 │   │   │   │   │   ├── document.service.ts
@@ -2367,6 +2406,15 @@
 │   │   │   │   │   │   ├── edit-preuve-document.router.ts
 │   │   │   │   │   │   └── edit-preuve-document.service.ts
 │   │   │   │   │   ├── file-info.utils.ts
+│   │   │   │   │   ├── get-download-url
+│   │   │   │   │   │   ├── get-download-url.errors.ts
+│   │   │   │   │   │   ├── get-download-url.input.ts
+│   │   │   │   │   │   ├── get-download-url.output.ts
+│   │   │   │   │   │   ├── get-download-url.repository.ts
+│   │   │   │   │   │   ├── get-download-url.router.e2e-spec.ts
+│   │   │   │   │   │   ├── get-download-url.router.ts
+│   │   │   │   │   │   ├── get-download-url.service.spec.ts
+│   │   │   │   │   │   └── get-download-url.service.ts
 │   │   │   │   │   ├── hide-confidentiel.utils.ts
 │   │   │   │   │   ├── models
 │   │   │   │   │   │   ├── annexe.table.ts
@@ -2386,8 +2434,10 @@
 │   │   │   │   │   │   ├── document_test.pdf
 │   │   │   │   │   │   └── document_test_2.pdf
 │   │   │   │   │   ├── store-document
+│   │   │   │   │   │   ├── calculate-document-hash.utils.ts
 │   │   │   │   │   │   ├── store-document.errors.ts
 │   │   │   │   │   │   ├── store-document.router.ts
+│   │   │   │   │   │   ├── store-document.service.spec.ts
 │   │   │   │   │   │   └── store-document.service.ts
 │   │   │   │   │   └── update-document
 │   │   │   │   │       ├── update-document.errors.ts
@@ -2401,6 +2451,7 @@
 │   │   │   │   │   └── list-categories.service.ts
 │   │   │   │   ├── import-collectivite-relations
 │   │   │   │   │   ├── epci-perimetre.schema.ts
+│   │   │   │   │   ├── epci-perimetre.source.ts
 │   │   │   │   │   ├── import-collectivite-relations.request.ts
 │   │   │   │   │   ├── import-collectivite-relations.response.ts
 │   │   │   │   │   ├── import-collectivite-relations.router.e2e-spec.ts
@@ -2409,6 +2460,11 @@
 │   │   │   │   │   ├── perimetre-epci-a-fp.csv
 │   │   │   │   │   ├── perimetres_epci_syndicats.csv
 │   │   │   │   │   └── syndicat-epci.schema.ts
+│   │   │   │   ├── import-perimetres-epci
+│   │   │   │   │   ├── import-perimetres-epci.response.ts
+│   │   │   │   │   ├── import-perimetres-epci.router.e2e-spec.ts
+│   │   │   │   │   ├── import-perimetres-epci.router.ts
+│   │   │   │   │   └── import-perimetres-epci.service.ts
 │   │   │   │   ├── list-collectivites
 │   │   │   │   │   ├── get-collectivite.input.ts
 │   │   │   │   │   ├── list-collectivites-fields-mode.enum.ts
@@ -2556,10 +2612,12 @@
 │   │   │   │   │   └── models
 │   │   │   │   │       ├── collectivite-api.constants.ts
 │   │   │   │   │       ├── collectivite-banatic-2025-competence.table.ts
+│   │   │   │   │       ├── collectivite-banatic-2025-perimetre.table.ts
 │   │   │   │   │       ├── collectivite-banatic-2025-transfert.table.ts
 │   │   │   │   │       ├── collectivite-banatic-competence.table.ts
 │   │   │   │   │       ├── collectivite-banatic-type.table.ts
 │   │   │   │   │       ├── collectivite-bucket.table.ts
+│   │   │   │   │       ├── collectivite-perimetre-secondaire.table.ts
 │   │   │   │   │       ├── collectivite-relations.table.ts
 │   │   │   │   │       ├── collectivite.table.ts
 │   │   │   │   │       ├── groupement-collectivite.table.ts
@@ -2568,6 +2626,7 @@
 │   │   │   │   │       ├── imports-banatic.table.ts
 │   │   │   │   │       ├── imports-commune.table.ts
 │   │   │   │   │       ├── imports-departement.table.ts
+│   │   │   │   │       ├── imports-epci-commune.table.ts
 │   │   │   │   │       └── imports-region.table.ts
 │   │   │   │   └── tags
 │   │   │   │       ├── categorie-tag.fixture.ts
@@ -2835,7 +2894,8 @@
 │   │   │   │   │   │   │   ├── pcaet-avis.table.ts
 │   │   │   │   │   │   │   └── pcaet-demande-avis.table.ts
 │   │   │   │   │   │   ├── pcaet-avis.repository.ts
-│   │   │   │   │   │   └── pcaet-instructeurs.repository.ts
+│   │   │   │   │   │   ├── pcaet-instructeurs.repository.ts
+│   │   │   │   │   │   └── perimetre-instructeur.columns.ts
 │   │   │   │   │   ├── transmettre-pour-avis
 │   │   │   │   │   │   ├── transmettre-pour-avis.errors.ts
 │   │   │   │   │   │   ├── transmettre-pour-avis.router.e2e-spec.ts
@@ -2978,6 +3038,7 @@
 │   │   │   │   │   ├── get-trajectoire-leviers-data.response.ts
 │   │   │   │   │   ├── samples
 │   │   │   │   │   │   └── get-trajectoire-leviers-data.response-sample.ts
+│   │   │   │   │   ├── trajectoire-leviers.config.spec.ts
 │   │   │   │   │   ├── trajectoire-leviers.config.ts
 │   │   │   │   │   ├── trajectoire-leviers.controller.e2e-spec.ts
 │   │   │   │   │   ├── trajectoire-leviers.controller.ts
@@ -3281,6 +3342,7 @@
 │   │   │   │   │   │   ├── completion.ts
 │   │   │   │   │   │   ├── list-fiches-belonging-to-plans.repository.ts
 │   │   │   │   │   │   ├── list-fiches-budget.repository.ts
+│   │   │   │   │   │   ├── list-fiches-confidentialite.router.e2e-spec.ts
 │   │   │   │   │   │   ├── list-fiches.request.ts
 │   │   │   │   │   │   ├── list-fiches.router.e2e-spec.ts
 │   │   │   │   │   │   ├── list-fiches.router.ts
@@ -3504,6 +3566,57 @@
 │   │   │   │   │       └── upsert-plan.service.ts
 │   │   │   │   ├── plans-main.module.ts
 │   │   │   │   ├── plans-main.router.ts
+│   │   │   │   ├── priorisation
+│   │   │   │   │   ├── classification-leviers-job.repository.ts
+│   │   │   │   │   ├── classification-leviers.errors.ts
+│   │   │   │   │   ├── classification-leviers.queue.ts
+│   │   │   │   │   ├── classification-leviers.trpc-errors.ts
+│   │   │   │   │   ├── enqueue-classification
+│   │   │   │   │   │   ├── enqueue-classification.input.ts
+│   │   │   │   │   │   ├── enqueue-classification.output.ts
+│   │   │   │   │   │   ├── enqueue-classification.service.ts
+│   │   │   │   │   │   └── enqueue-classification.spec.ts
+│   │   │   │   │   ├── fiche-leviers.errors.ts
+│   │   │   │   │   ├── fiche-leviers.repository.e2e-spec.ts
+│   │   │   │   │   ├── fiche-leviers.repository.ts
+│   │   │   │   │   ├── generate-classification
+│   │   │   │   │   │   ├── generate-classification.service.ts
+│   │   │   │   │   │   ├── generate-classification.spec.ts
+│   │   │   │   │   │   ├── generate-classification.worker.spec.ts
+│   │   │   │   │   │   └── generate-classification.worker.ts
+│   │   │   │   │   ├── get-classification-status
+│   │   │   │   │   │   ├── get-classification-status.adapter.spec.ts
+│   │   │   │   │   │   ├── get-classification-status.adapter.ts
+│   │   │   │   │   │   ├── get-classification-status.input.ts
+│   │   │   │   │   │   ├── get-classification-status.output.ts
+│   │   │   │   │   │   └── get-classification-status.service.ts
+│   │   │   │   │   ├── models
+│   │   │   │   │   │   ├── classification-draft.ts
+│   │   │   │   │   │   ├── classification-leviers-job.table.ts
+│   │   │   │   │   │   ├── classification-leviers-job.ts
+│   │   │   │   │   │   ├── fiche-action-levier.e2e-spec.ts
+│   │   │   │   │   │   └── fiche-action-levier.table.ts
+│   │   │   │   │   ├── pipeline
+│   │   │   │   │   │   ├── classify-fiches
+│   │   │   │   │   │   │   ├── apply-classification.spec.ts
+│   │   │   │   │   │   │   ├── apply-classification.ts
+│   │   │   │   │   │   │   ├── classify-fiches.prompt.spec.ts
+│   │   │   │   │   │   │   ├── classify-fiches.prompt.ts
+│   │   │   │   │   │   │   ├── classify-fiches.schema.spec.ts
+│   │   │   │   │   │   │   ├── classify-fiches.schema.ts
+│   │   │   │   │   │   │   ├── classify-fiches.spec.ts
+│   │   │   │   │   │   │   ├── classify-fiches.ts
+│   │   │   │   │   │   │   ├── render-fiches-text.spec.ts
+│   │   │   │   │   │   │   └── render-fiches-text.ts
+│   │   │   │   │   │   ├── run-classification.spec.ts
+│   │   │   │   │   │   └── run-classification.ts
+│   │   │   │   │   ├── priorisation.module.ts
+│   │   │   │   │   ├── priorisation.router.e2e-spec.ts
+│   │   │   │   │   ├── priorisation.router.ts
+│   │   │   │   │   └── prompts
+│   │   │   │   │       ├── classification.prompt.ts
+│   │   │   │   │       ├── levier-definitions.ts
+│   │   │   │   │       └── leviers-text.ts
 │   │   │   │   ├── reports
 │   │   │   │   │   ├── generate-plan-report-pptx
 │   │   │   │   │   │   ├── docs
@@ -3632,6 +3745,8 @@
 │   │   │   │   ├── export-score
 │   │   │   │   │   ├── build-columns.spec.ts
 │   │   │   │   │   ├── build-columns.ts
+│   │   │   │   │   ├── build-personnalisation-rows.spec.ts
+│   │   │   │   │   ├── build-personnalisation-rows.ts
 │   │   │   │   │   ├── build-rows.ts
 │   │   │   │   │   ├── export-score-comparison.controller.e2e-spec.ts
 │   │   │   │   │   ├── export-score-comparison.controller.ts
@@ -3856,6 +3971,7 @@
 │   │   │   │   ├── reset-display-preferences
 │   │   │   │   │   ├── compute-referentiel-display.rules.spec.ts
 │   │   │   │   │   ├── compute-referentiel-display.rules.ts
+│   │   │   │   │   ├── compute-referentiel-engagement.service.ts
 │   │   │   │   │   ├── reset-display-preferences.router.e2e-spec.ts
 │   │   │   │   │   ├── reset-display-preferences.router.ts
 │   │   │   │   │   ├── reset-display-preferences.service.ts
@@ -4002,6 +4118,9 @@
 │   │   │   │   │   └── user-api-keys.table.ts
 │   │   │   │   ├── authentications
 │   │   │   │   │   └── oidc
+│   │   │   │   │       ├── attach-user-to-organisation
+│   │   │   │   │       │   ├── attach-user-to-organisation.errors.ts
+│   │   │   │   │       │   └── attach-user-to-organisation.service.ts
 │   │   │   │   │       ├── confirm-oidc-identity-linked-to-user
 │   │   │   │   │       │   ├── confirm-oidc-identity-linked-to-user.errors.ts
 │   │   │   │   │       │   ├── confirm-oidc-identity-linked-to-user.router.e2e-spec.ts
@@ -4014,6 +4133,8 @@
 │   │   │   │   │       │   ├── create-user-oidc-identity.controller.ts
 │   │   │   │   │       │   ├── create-user-oidc-identity.service.e2e-spec.ts
 │   │   │   │   │       │   └── create-user-oidc-identity.service.ts
+│   │   │   │   │       ├── get-collectivite-by-siret
+│   │   │   │   │       │   └── get-collectivite-by-siret.service.ts
 │   │   │   │   │       ├── get-oidc-status
 │   │   │   │   │       │   ├── get-oidc-status.router.ts
 │   │   │   │   │       │   ├── get-oidc-status.service.spec.ts
@@ -4034,6 +4155,7 @@
 │   │   │   │   │       │   ├── invite-user-to-link-oidc-identity.router.ts
 │   │   │   │   │       │   └── invite-user-to-link-oidc-identity.service.ts
 │   │   │   │   │       ├── link-oidc-identity-to-user
+│   │   │   │   │       │   ├── link-oidc-identity-to-user.service.e2e-spec.ts
 │   │   │   │   │       │   └── link-oidc-identity-to-user.service.ts
 │   │   │   │   │       ├── link-oidc-identity-to-user-session
 │   │   │   │   │       │   ├── link-oidc-identity-to-user-session.errors.ts
@@ -4914,6 +5036,8 @@
 │       │   │   ├── calendly.module.ts
 │       │   │   ├── calendy-api.dto.ts
 │       │   │   └── demo-sessions.ts
+│       │   ├── collectivites
+│       │   │   └── cron-import-perimetres-epci.service.ts
 │       │   ├── config
 │       │   │   ├── configuration.model.ts
 │       │   │   ├── configuration.module.ts
@@ -4952,6 +5076,11 @@
 │       │   │       └── cron-compute-trajectoire.service.ts
 │       │   ├── main.ts
 │       │   ├── migrations
+│       │   │   ├── backfill-oidc-linked-events
+│       │   │   │   ├── README.md
+│       │   │   │   ├── index.ts
+│       │   │   │   ├── utils.test.ts
+│       │   │   │   └── utils.ts
 │       │   │   ├── banatic2025
 │       │   │   │   ├── README.md
 │       │   │   │   ├── collectivite-db.ts
@@ -4964,6 +5093,12 @@
 │       │   │   │   ├── import-banatic-2025-crosswalk
 │       │   │   │   │   ├── __fixtures__
 │       │   │   │   │   │   └── crosswalk.csv
+│       │   │   │   │   ├── index.ts
+│       │   │   │   │   ├── utils.test.ts
+│       │   │   │   │   └── utils.ts
+│       │   │   │   ├── import-banatic-2025-perimetre
+│       │   │   │   │   ├── __fixtures__
+│       │   │   │   │   │   └── perimetre-sample.csv
 │       │   │   │   │   ├── index.ts
 │       │   │   │   │   ├── utils.test.ts
 │       │   │   │   │   └── utils.ts
@@ -5043,6 +5178,8 @@
 │   │   └── restore.sh
 │   ├── scripts
 │   │   ├── generate_code_siren_commune.py
+│   │   ├── generate_epci_commune.py
+│   │   ├── generate_service_etat.py
 │   │   └── run_tests.sh
 │   ├── seed
 │   │   ├── README.md
@@ -5089,8 +5226,21 @@
 │   │   │   ├── 06-complete_collectivite_with_import.sql
 │   │   │   ├── 07-banatic_2025_competence_par_collectivite.sql
 │   │   │   ├── 08-code_siren_commune.sql
-│   │   │   └── ListeServices.xlsx
+│   │   │   ├── 09-service_etat.sql
+│   │   │   ├── 10-service_etat_perimetre_secondaire.sql
+│   │   │   └── 11-epci_commune.sql
 │   │   ├── seed.sh
+│   │   ├── sources
+│   │   │   ├── epci-perimetre
+│   │   │   │   └── README.md
+│   │   │   └── service-etat
+│   │   │       ├── README.md
+│   │   │       ├── conseil-regional.csv
+│   │   │       ├── ddt.csv
+│   │   │       ├── dr-ademe.csv
+│   │   │       ├── dreal-contacts.csv
+│   │   │       ├── dreal.csv
+│   │   │       └── service-national.csv
 │   │   ├── test
 │   │   │   ├── 00-pgtap.sql
 │   │   │   ├── 01a-schema.sql
@@ -5162,6 +5312,7 @@
 │   │   │   │   ├── departement.sql
 │   │   │   │   ├── departement@v2.55.0.sql
 │   │   │   │   ├── dreal_unique_region_code.sql
+│   │   │   │   ├── epci_perimetre_secondaire.sql
 │   │   │   │   ├── fusion.sql
 │   │   │   │   ├── historique.sql
 │   │   │   │   ├── historique@v1.14.0.sql
@@ -5177,6 +5328,7 @@
 │   │   │   │   ├── imports@v4.9.0.sql
 │   │   │   │   ├── mes_*.sql  (8 files)
 │   │   │   │   ├── nic.sql
+│   │   │   │   ├── perimetre_secondaire.sql
 │   │   │   │   ├── preferences.sql
 │   │   │   │   ├── preferences_referentiel_mode.sql
 │   │   │   │   ├── region.sql
@@ -5186,6 +5338,7 @@
 │   │   │   │   ├── remove_supprimer_commentaire_via_table_trigger.sql
 │   │   │   │   ├── rename_commentaire_to_discussion.sql
 │   │   │   │   ├── rls.sql
+│   │   │   │   ├── service_etat_import.sql
 │   │   │   │   ├── structure_sans_statut_juridique_unique_nom.sql
 │   │   │   │   ├── tableau_de_bord.sql
 │   │   │   │   ├── tableau_de_bord@v4.36.0.sql
@@ -5253,7 +5406,8 @@
 │   │   │   │   ├── pcaet_destinataires_dr_ademe_service_national.sql
 │   │   │   │   ├── pcaet_instructeurs_region_ddt.sql
 │   │   │   │   ├── pcaet_instruction_validation.sql
-│   │   │   │   └── pcaet_instruction_validation_supprimee.sql
+│   │   │   │   ├── pcaet_instruction_validation_supprimee.sql
+│   │   │   │   └── pcaet_saisine_perimetre.sql
 │   │   │   ├── evaluation
 │   │   │   │   ├── action_score.sql
 │   │   │   │   ├── add_personnalisation_question_competence.sql
@@ -5432,6 +5586,7 @@
 │   │   │   │   ├── axe_indicateur.sql
 │   │   │   │   ├── budget.sql
 │   │   │   │   ├── budget@v4.50.0.sql
+│   │   │   │   ├── classification_leviers_job.sql
 │   │   │   │   ├── confidentialite.sql
 │   │   │   │   ├── drop_create_fiche.sql
 │   │   │   │   ├── drop_plan_action_chemin_view.sql
@@ -5442,6 +5597,7 @@
 │   │   │   │   ├── export@v2.30.0.sql
 │   │   │   │   ├── export@v2.49.0.sql
 │   │   │   │   ├── fiche_action_etape.sql
+│   │   │   │   ├── fiche_action_levier.sql
 │   │   │   │   ├── fiche_note.sql
 │   │   │   │   ├── fiche_note@v4.28.1.sql
 │   │   │   │   ├── fiches.sql
@@ -5517,6 +5673,7 @@
 │   │   │   │   ├── add_thematique_sgpe.sql
 │   │   │   │   ├── audit_preuves_archive.sql
 │   │   │   │   ├── banatic_2025.sql
+│   │   │   │   ├── banatic_2025_perimetre.sql
 │   │   │   │   ├── business_update.sql
 │   │   │   │   ├── clean-import-json-table.sql
 │   │   │   │   ├── clean_vues_rpc.sql
@@ -5742,6 +5899,7 @@
 │   │   │   │   ├── departement.sql
 │   │   │   │   ├── departement@v2.55.0.sql
 │   │   │   │   ├── dreal_unique_region_code.sql
+│   │   │   │   ├── epci_perimetre_secondaire.sql
 │   │   │   │   ├── fusion.sql
 │   │   │   │   ├── historique.sql
 │   │   │   │   ├── historique@v1.14.0.sql
@@ -5757,6 +5915,7 @@
 │   │   │   │   ├── imports@v4.9.0.sql
 │   │   │   │   ├── mes_*.sql  (8 files)
 │   │   │   │   ├── nic.sql
+│   │   │   │   ├── perimetre_secondaire.sql
 │   │   │   │   ├── preferences.sql
 │   │   │   │   ├── preferences_referentiel_mode.sql
 │   │   │   │   ├── region.sql
@@ -5767,6 +5926,7 @@
 │   │   │   │   ├── remove_supprimer_commentaire_via_table_trigger.sql
 │   │   │   │   ├── rename_commentaire_to_discussion.sql
 │   │   │   │   ├── rls.sql
+│   │   │   │   ├── service_etat_import.sql
 │   │   │   │   ├── structure_sans_statut_juridique_unique_nom.sql
 │   │   │   │   ├── tableau_de_bord.sql
 │   │   │   │   ├── tableau_de_bord@v4.36.0.sql
@@ -5834,7 +5994,8 @@
 │   │   │   │   ├── pcaet_destinataires_dr_ademe_service_national.sql
 │   │   │   │   ├── pcaet_instructeurs_region_ddt.sql
 │   │   │   │   ├── pcaet_instruction_validation.sql
-│   │   │   │   └── pcaet_instruction_validation_supprimee.sql
+│   │   │   │   ├── pcaet_instruction_validation_supprimee.sql
+│   │   │   │   └── pcaet_saisine_perimetre.sql
 │   │   │   ├── evaluation
 │   │   │   │   ├── action_score.sql
 │   │   │   │   ├── add_personnalisation_question_competence.sql
@@ -6013,6 +6174,7 @@
 │   │   │   │   ├── axe_indicateur.sql
 │   │   │   │   ├── budget.sql
 │   │   │   │   ├── budget@v4.50.0.sql
+│   │   │   │   ├── classification_leviers_job.sql
 │   │   │   │   ├── confidentialite.sql
 │   │   │   │   ├── drop_create_fiche.sql
 │   │   │   │   ├── drop_plan_action_chemin_view.sql
@@ -6023,6 +6185,7 @@
 │   │   │   │   ├── export@v2.30.0.sql
 │   │   │   │   ├── export@v2.49.0.sql
 │   │   │   │   ├── fiche_action_etape.sql
+│   │   │   │   ├── fiche_action_levier.sql
 │   │   │   │   ├── fiche_note.sql
 │   │   │   │   ├── fiche_note@v4.28.1.sql
 │   │   │   │   ├── fiches.sql
@@ -6098,6 +6261,7 @@
 │   │   │   │   ├── add_thematique_sgpe.sql
 │   │   │   │   ├── audit_preuves_archive.sql
 │   │   │   │   ├── banatic_2025.sql
+│   │   │   │   ├── banatic_2025_perimetre.sql
 │   │   │   │   ├── business_update.sql
 │   │   │   │   ├── clean-import-json-table.sql
 │   │   │   │   ├── clean_vues_rpc.sql
@@ -6324,6 +6488,7 @@
 │   │       │   ├── departement.sql
 │   │       │   ├── departement@v2.55.0.sql
 │   │       │   ├── dreal_unique_region_code.sql
+│   │       │   ├── epci_perimetre_secondaire.sql
 │   │       │   ├── fusion.sql
 │   │       │   ├── historique.sql
 │   │       │   ├── historique@v1.14.0.sql
@@ -6339,6 +6504,7 @@
 │   │       │   ├── imports@v4.9.0.sql
 │   │       │   ├── mes_*.sql  (8 files)
 │   │       │   ├── nic.sql
+│   │       │   ├── perimetre_secondaire.sql
 │   │       │   ├── preferences.sql
 │   │       │   ├── preferences_referentiel_mode.sql
 │   │       │   ├── region.sql
@@ -6348,6 +6514,7 @@
 │   │       │   ├── remove_supprimer_commentaire_via_table_tigger.sql
 │   │       │   ├── rename_commentaire_to_discussion.sql
 │   │       │   ├── rls.sql
+│   │       │   ├── service_etat_import.sql
 │   │       │   ├── structure_sans_statut_juridique_unique_nom.sql
 │   │       │   ├── tableau_de_bord.sql
 │   │       │   ├── tableau_de_bord@v4.36.0.sql
@@ -6415,7 +6582,8 @@
 │   │       │   ├── pcaet_destinataires_dr_ademe_service_national.sql
 │   │       │   ├── pcaet_instructeurs_region_ddt.sql
 │   │       │   ├── pcaet_instruction_validation.sql
-│   │       │   └── pcaet_instruction_validation_supprimee.sql
+│   │       │   ├── pcaet_instruction_validation_supprimee.sql
+│   │       │   └── pcaet_saisine_perimetre.sql
 │   │       ├── evaluation
 │   │       │   ├── action_score.sql
 │   │       │   ├── add_personnalisation_question_competence.sql
@@ -6594,6 +6762,7 @@
 │   │       │   ├── axe_indicateur.sql
 │   │       │   ├── budget.sql
 │   │       │   ├── budget@v4.50.0.sql
+│   │       │   ├── classification_leviers_job.sql
 │   │       │   ├── confidentialite.sql
 │   │       │   ├── drop_create_fiche.sql
 │   │       │   ├── drop_plan_action_chemin_view.sql
@@ -6604,6 +6773,7 @@
 │   │       │   ├── export@v2.30.0.sql
 │   │       │   ├── export@v2.49.0.sql
 │   │       │   ├── fiche_action_etape.sql
+│   │       │   ├── fiche_action_levier.sql
 │   │       │   ├── fiche_note.sql
 │   │       │   ├── fiche_note@v4.28.1.sql
 │   │       │   ├── fiches.sql
@@ -6679,6 +6849,7 @@
 │   │       │   ├── add_thematique_sgpe.sql
 │   │       │   ├── audit_preuves_archive.sql
 │   │       │   ├── banatic_2025.sql
+│   │       │   ├── banatic_2025_perimetre.sql
 │   │       │   ├── business_update.sql
 │   │       │   ├── clean-import-json-table.sql
 │   │       │   ├── clean_vues_rpc.sql
@@ -6867,7 +7038,10 @@
 │       │   ├── bucket_rls_auditeur_edit_window.sql
 │       │   ├── bucket_rls_super_admin.sql
 │       │   ├── collectivite_test.sql
+│       │   ├── epci_perimetre_secondaire.sql
 │       │   ├── identite.sql
+│       │   ├── perimetre_secondaire.sql
+│       │   ├── service_etat_import.sql
 │       │   └── services_etat.sql
 │       ├── demarche
 │       │   └── pcaet_vulnerabilite.sql
@@ -6959,6 +7133,7 @@
 │   │   ├── 2026-06-11-013-feat-bascule-referentiel-te-pr18-plan.md
 │   │   ├── 2026-06-24-001-refactor-auth-into-app-plan.md
 │   │   ├── 2026-06-25-001-fix-export-indicateurs-tous-resultats-filtre-plan.md
+│   │   ├── 2026-06-30-001-feat-delegation-totale-banatic-inference-plan.md
 │   │   ├── 2026-07-13-001-refactor-snapshots-service-result-pattern-plan.md
 │   │   └── 2026-07-21-001-feat-connexion-proconnect-puis-moncompteademe-plan.md
 │   └── solutions
@@ -6980,6 +7155,7 @@
 ├── e2e
 │   ├── README.md
 │   ├── eslint.config.mjs
+│   ├── load-local-env.mjs
 │   ├── package.json
 │   ├── playwright.config.mjs
 │   ├── run-apps.sh
@@ -7061,6 +7237,7 @@
 │   │   │   │   └── historique.pom.ts
 │   │   │   ├── labellisations
 │   │   │   │   ├── acte-engagement-auditeur.spec.ts
+│   │   │   │   ├── acte-engagement-verrou.spec.ts
 │   │   │   │   ├── audit-badge-tab.spec.ts
 │   │   │   │   ├── audit-conduct-tabs-auditeur.spec.ts
 │   │   │   │   ├── audit-labellisation-to-action-scroll.spec.ts
@@ -7083,7 +7260,8 @@
 │   │   │   │   ├── premiere-etoile-pieces-attendues.spec.ts
 │   │   │   │   ├── premiere-etoile-referents-obligatoires.spec.ts
 │   │   │   │   ├── rapport-audit-bibliotheque.spec.ts
-│   │   │   │   └── request-labellisation-from-new-checklist.spec.ts
+│   │   │   │   ├── request-labellisation-from-new-checklist.spec.ts
+│   │   │   │   └── telecharger-document-checklist.spec.ts
 │   │   │   ├── referentiel-mode
 │   │   │   │   ├── referentiel-mode-banner.pom.ts
 │   │   │   │   └── referentiel-mode-banner.spec.ts
@@ -7232,6 +7410,8 @@
 │   │   ├── package.json
 │   │   ├── src
 │   │   │   ├── collectivites
+│   │   │   │   ├── auto-attachment.rules.spec.ts
+│   │   │   │   ├── auto-attachment.rules.ts
 │   │   │   │   ├── can-mutate-referentiel.rules.spec.ts
 │   │   │   │   ├── can-mutate-referentiel.rules.ts
 │   │   │   │   ├── categorie-tag.schema.ts
@@ -7248,6 +7428,7 @@
 │   │   │   │   ├── discussion.schema.ts
 │   │   │   │   ├── documents
 │   │   │   │   │   ├── annexe.schema.ts
+│   │   │   │   │   ├── bibliotheque-fichier.schema.spec.ts
 │   │   │   │   │   ├── bibliotheque-fichier.schema.ts
 │   │   │   │   │   ├── document-fichier.schema.ts
 │   │   │   │   │   ├── document-lien.schema.ts
@@ -7272,6 +7453,7 @@
 │   │   │   │   │   ├── invitation.schema.ts
 │   │   │   │   │   └── membre.schema.ts
 │   │   │   │   ├── partenaire-tag.schema.ts
+│   │   │   │   ├── perimetre-secondaire.enum.ts
 │   │   │   │   ├── personnalisation-reponses-payload.schema.ts
 │   │   │   │   ├── personnalisations
 │   │   │   │   │   ├── competence-banatic.schema.ts
@@ -7325,6 +7507,7 @@
 │   │   │   │       ├── pcaet-instructeur.rules.spec.ts
 │   │   │   │       ├── pcaet-instructeur.rules.ts
 │   │   │   │       ├── pcaet-instruction-partie.enum.schema.ts
+│   │   │   │       ├── pcaet-perimetre-saisine.enum.schema.ts
 │   │   │   │       └── workflow
 │   │   │   │           ├── demarche-pcaet-state.spec.ts
 │   │   │   │           ├── demarche-pcaet-state.ts
@@ -7453,15 +7636,12 @@
 │   │   │   │   │   ├── audit-type-options
 │   │   │   │   │   │   ├── audit-type-options.rules.spec.ts
 │   │   │   │   │   │   └── audit-type-options.rules.ts
-│   │   │   │   │   ├── can-modify-candidature-documents
-│   │   │   │   │   │   ├── can-modify-candidature-documents.rule.spec.ts
-│   │   │   │   │   │   └── can-modify-candidature-documents.rule.ts
 │   │   │   │   │   ├── can-update-audit-report
 │   │   │   │   │   │   ├── can-update-audit-report.rule.spec.ts
 │   │   │   │   │   │   └── can-update-audit-report.rule.ts
-│   │   │   │   │   ├── can-user-update-candidature-documents
-│   │   │   │   │   │   ├── can-user-update-candidature-documents.rule.spec.ts
-│   │   │   │   │   │   └── can-user-update-candidature-documents.rule.ts
+│   │   │   │   │   ├── can-update-candidature-documents
+│   │   │   │   │   │   ├── can-update-candidature-documents.rule.spec.ts
+│   │   │   │   │   │   └── can-update-candidature-documents.rule.ts
 │   │   │   │   │   ├── etoile-action-condition-definition.schema.ts
 │   │   │   │   │   ├── expected-documents
 │   │   │   │   │   │   ├── expected-documents.rule.spec.ts
@@ -7508,12 +7688,15 @@
 │   │   │   │       ├── score-snapshot.schema.ts
 │   │   │   │       └── snapshot-jalon.enum.ts
 │   │   │   ├── shared
+│   │   │   │   ├── categorie-action.enum.ts
 │   │   │   │   ├── categorie-fnv.schema.ts
 │   │   │   │   ├── departement.schema.ts
 │   │   │   │   ├── effet-attendu.schema.ts
 │   │   │   │   ├── filtre-ressource-liees.schema.ts
 │   │   │   │   ├── id-name.schema.ts
 │   │   │   │   ├── index.ts
+│   │   │   │   ├── levier.enum.spec.ts
+│   │   │   │   ├── levier.enum.ts
 │   │   │   │   ├── region.schema.ts
 │   │   │   │   ├── sous-thematique.schema.ts
 │   │   │   │   ├── temps-de-mise-en-oeuvre.schema.ts
@@ -7759,6 +7942,7 @@
 │       │   │       ├── posthog-events.ts
 │       │   │       ├── posthog-identify-user.tsx
 │       │   │       ├── posthog-pageview.tsx
+│       │   │       ├── posthog-provider.behavior.test.tsx
 │       │   │       ├── posthog-provider.tsx
 │       │   │       ├── use-event-tracker.ts
 │       │   │       ├── use-get-default-event-properties.ts
@@ -8346,4 +8530,4 @@
 ├── tsconfig.json
 ├── vitest.config.ts
 └── vitest.workspace.ts
-1396 directories, 7227 files
+1418 directories, 7389 files
