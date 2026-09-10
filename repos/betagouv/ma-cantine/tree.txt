@@ -24,13 +24,13 @@
 │   ├── launch.json
 │   └── settings.json
 ├── 2024-frontend
-│   ├── .eslintrc.cjs
 │   ├── .gitignore
 │   ├── .prettierrc.json
 │   ├── .vscode
 │   │   └── extensions.json
 │   ├── Dockerfile
 │   ├── README.md
+│   ├── eslint.config.js
 │   ├── index.html
 │   ├── package-lock.json
 │   ├── package.json
@@ -265,6 +265,7 @@
 │   │   ├── communityevent.py
 │   │   ├── diagnostic.py
 │   │   ├── diagnostic_teledeclaration.py
+│   │   ├── diagnostic_teledeclaration_dates.py
 │   │   ├── message.py
 │   │   ├── partner.py
 │   │   ├── partnertype.py
@@ -470,6 +471,7 @@
 │   │   ├── test_canteens_update_import.py
 │   │   ├── test_community_events.py
 │   │   ├── test_diagnostic_teledeclaration.py
+│   │   ├── test_diagnostic_teledeclaration_dates.py
 │   │   ├── test_diagnostics.py
 │   │   ├── test_diagnostics_complete_import.py
 │   │   ├── test_diagnostics_complete_schema_import.py
@@ -493,7 +495,6 @@
 │   │   ├── test_reviews.py
 │   │   ├── test_sectors.py
 │   │   ├── test_subscription.py
-│   │   ├── test_teledeclaration.py
 │   │   ├── test_user.py
 │   │   ├── test_vegetarian_expe.py
 │   │   ├── test_video_tutorial.py
@@ -519,6 +520,7 @@
 │       ├── diagnostic.py
 │       ├── diagnostic_import.py
 │       ├── diagnostic_teledeclaration.py
+│       ├── diagnostic_teledeclaration_dates.py
 │       ├── initial.py
 │       ├── inquiry.py
 │       ├── message.py
@@ -535,7 +537,6 @@
 │       ├── sector.py
 │       ├── statistics.py
 │       ├── subscription.py
-│       ├── teledeclaration.py
 │       ├── user.py
 │       ├── utils.py
 │       ├── vegetarianexpe.py
@@ -543,7 +544,6 @@
 │       ├── wasteaction.py
 │       └── wastemeasurement.py
 ├── clevercloud
-│   ├── manifest.json
 │   ├── pre-build-hook.sh
 │   ├── pre-build-review-app-hook.sh
 │   └── test-build-with-vue3.sh
@@ -592,11 +592,16 @@
 │   ├── models.py
 │   └── utils
 │       ├── __init__.py
+│       ├── camelize.py
 │       ├── commands.py
+│       ├── dates.py
 │       ├── file_import.py
+│       ├── images.py
 │       ├── siret.py
 │       ├── tests
 │       │   ├── __init__.py
+│       │   ├── test_camelize.py
+│       │   ├── test_images.py
 │       │   └── test_utils.py
 │       └── utils.py
 ├── compose.yaml
@@ -979,6 +984,7 @@
 │   │   ├── communityevent.py
 │   │   ├── creation_source.py
 │   │   ├── diagnostic.py
+│   │   ├── diagnostic_teledeclaration_dates.py
 │   │   ├── geo.py
 │   │   ├── historyauthenticationmethod.py
 │   │   ├── importfailure.py
@@ -1042,6 +1048,7 @@
 │   │   ├── test_canteen_action.py
 │   │   ├── test_diagnostic.py
 │   │   ├── test_diagnostic_teledeclaration.py
+│   │   ├── test_diagnostic_teledeclaration_dates.py
 │   │   ├── test_fixtures.py
 │   │   ├── test_history.py
 │   │   ├── test_manager_invitation.py
@@ -1060,6 +1067,43 @@
 │       ├── purchase.py
 │       ├── user.py
 │       └── wastemeasurement.py
+├── dbt
+│   ├── .gitignore
+│   ├── README.md
+│   ├── dbt_project.yml
+│   ├── models
+│   │   ├── intermediate
+│   │   │   ├── int_canteens_enriched.sql
+│   │   │   ├── int_spe_inscriptions.sql
+│   │   │   └── int_spe_waste.sql
+│   │   ├── marts
+│   │   │   ├── mart_canteens.sql
+│   │   │   ├── mart_spe_bilan.sql
+│   │   │   ├── mart_spe_bilan_ate.sql
+│   │   │   ├── mart_spe_bilan_iso.sql
+│   │   │   ├── mart_teledeclarations.sql
+│   │   │   ├── mart_waste.sql
+│   │   │   └── schema.yml
+│   │   └── staging
+│   │       ├── referentiels
+│   │       │   ├── ref_communes.sql
+│   │       │   ├── ref_departements.sql
+│   │       │   ├── ref_epci.sql
+│   │       │   ├── ref_pats.sql
+│   │       │   ├── ref_regions.sql
+│   │       │   └── schema.yml
+│   │       ├── schema.yml
+│   │       ├── sources.yml
+│   │       ├── stg_canteen_managers.sql
+│   │       ├── stg_canteens.sql
+│   │       ├── stg_diagnostics.sql
+│   │       ├── stg_teledeclarations.sql
+│   │       ├── stg_teledeclarations_invalides.sql
+│   │       ├── stg_users.sql
+│   │       └── stg_waste_measurements.sql
+│   ├── package-lock.yml
+│   ├── packages.yml
+│   └── profiles.yml
 ├── docs
 │   ├── ONBOARDING.md
 │   ├── api.html
@@ -1075,13 +1119,9 @@
 │   └── teledeclaration_versions.md
 ├── frontend
 │   ├── .dockerignore
-│   ├── .eslintrc.js
 │   ├── .gitignore
-│   ├── .prettierrc
 │   ├── Dockerfile
 │   ├── README.md
-│   ├── babel.config.js
-│   ├── jest.config.js
 │   ├── package-lock.json
 │   ├── package.json
 │   ├── src
@@ -1328,12 +1368,7 @@
 │   │           ├── WasteActionsHome.vue
 │   │           ├── WasteActionsListView.vue
 │   │           └── index.vue
-│   ├── tests
-│   │   ├── setup.js
-│   │   └── unit
-│   │       ├── AppHeader.spec.js
-│   │       └── PublishedCanteenCard.spec.js
-│   └── vue.config.js
+│   └── vite.config.js
 ├── local-build.sh
 ├── macantine
 │   ├── __init__.py
@@ -1791,4 +1826,4 @@
     │   └── test_sitemaps.py
     ├── urls.py
     └── views.py
-143 directories, 1723 files
+147 directories, 1754 files

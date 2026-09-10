@@ -6,6 +6,58 @@ Ressources :
 - [release-please](https://github.com/google-github-actions/release-please-action) (automated releases)
 - [Semantic Versioning](https://semver.org/) & [Calendar Versioning](https://calver.org/)
 
+## [2026.47.1](https://github.com/betagouv/ma-cantine/compare/v2026.47.0...v2026.47.1) (2026-09-07)
+
+
+### Améliorations
+
+* **Accueil:** supprime les redirections automatiques ([#7087](https://github.com/betagouv/ma-cantine/issues/7087)) ([6808d1c](https://github.com/betagouv/ma-cantine/commit/6808d1c4d8a7d55c7d98f277d3cbb200823ec440))
+* **Diagnostics:** Règles métiers: s'assurer que les nouveaux valeur_label sont toujours supérieur à chaque valeur_famille_label & à la somme des valeur_famille_label ([#7030](https://github.com/betagouv/ma-cantine/issues/7030)) ([7d3e9c6](https://github.com/betagouv/ma-cantine/commit/7d3e9c6d0eb6c2f49d4fc2bbbc406a58507e3af0))
+* **Télédéclaration:** CAMPAIGN_DATES: rajouter les dates APPROXIMATIVES de 2026 (on en a besoin pour nos tests) ([#7011](https://github.com/betagouv/ma-cantine/issues/7011)) ([ee3c79a](https://github.com/betagouv/ma-cantine/commit/ee3c79a823dcd12d378564c25b60e801e0c614d7))
+
+
+### Corrections (bugs, typos...)
+
+* **Gaspillage Alimentaire:** corrige la redirection ([#7086](https://github.com/betagouv/ma-cantine/issues/7086)) ([5435325](https://github.com/betagouv/ma-cantine/commit/5435325b36033f1c3b875a822e46c17f56c5c19d))
+* **Utilisateurs:** Admin: corrige l'erreur 500 (suite à [#7058](https://github.com/betagouv/ma-cantine/issues/7058)) ([#7091](https://github.com/betagouv/ma-cantine/issues/7091)) ([74c246f](https://github.com/betagouv/ma-cantine/commit/74c246fca05c67f20c683ec69ea8dbbcf35f1c05))
+
+
+### Technique
+
+* **Backend:** bouger la logique camelize dans un fichier dédié (et gérer des strings) (et ajouter des tests) ([#7097](https://github.com/betagouv/ma-cantine/issues/7097)) ([30070c7](https://github.com/betagouv/ma-cantine/commit/30070c7ea723539c1cb454502e496f361e6b1b38))
+* **Backend:** bouger la logique pillow/images dans un fichier dédié (et ajouter des tests) ([#7095](https://github.com/betagouv/ma-cantine/issues/7095)) ([1356f5d](https://github.com/betagouv/ma-cantine/commit/1356f5d80af6bad04c0fa088b3f6d2f83443abba))
+* **deps:** Backend: ajouter pip-audit pour voir les packets à mettre à jour en priorité ([#7092](https://github.com/betagouv/ma-cantine/issues/7092)) ([d1b9312](https://github.com/betagouv/ma-cantine/commit/d1b931220a05e5fffe42cfc7e7fb33e62a2a88de))
+* **deps:** Backend: mise à jour des dépendances ([#7093](https://github.com/betagouv/ma-cantine/issues/7093)) ([7a40088](https://github.com/betagouv/ma-cantine/commit/7a40088190a11523a9c67f87267323638ecf2f39))
+* **deps:** migre les frontend sur django-vite (enlève django-vite-plugin & webpack) ([#7084](https://github.com/betagouv/ma-cantine/issues/7084)) ([aa2cb7a](https://github.com/betagouv/ma-cantine/commit/aa2cb7aaf7c663b2fb43bd79ddeba1c5171d0537))
+
+## [2026.47.0](https://github.com/betagouv/ma-cantine/compare/v2026.46.0...v2026.47.0) (2026-09-04)
+
+
+### Nouveautés
+
+* **Admin:** mettre en place du 2FA (connexion seulement possible grâce à un TOTP) 🔒 ([#7040](https://github.com/betagouv/ma-cantine/issues/7040)) ([1253be3](https://github.com/betagouv/ma-cantine/commit/1253be30efee9866d710ce8fa66b1b64d3c7a4b5))
+
+
+### Améliorations
+
+* **Établissement:** ajoute un bandeau d'information sur la nouvelle page ([#7048](https://github.com/betagouv/ma-cantine/issues/7048)) ([d087d9d](https://github.com/betagouv/ma-cantine/commit/d087d9de5a74d1e07d2099efc3257690c5ac8791))
+* **Utilisateurs:** Admin: indiquer si l'utilisateur a un "TOTP Device" ([#7058](https://github.com/betagouv/ma-cantine/issues/7058)) ([d96c839](https://github.com/betagouv/ma-cantine/commit/d96c839d2c857782267e3fe2552c93c30131f810))
+* **Utilisateurs:** Admin: pouvoir filtrer par 'email confirmé', 'super-utilisateur' et 'groups' ([#7080](https://github.com/betagouv/ma-cantine/issues/7080)) ([9a59b81](https://github.com/betagouv/ma-cantine/commit/9a59b8185a3677048c3640ceaedbbe2e49a4ea28))
+* **Utilisateurs:** seul les utilisateurs staff peuvent avoir un 2FA. Les utilisateurs superuser doivent être staff ([#7046](https://github.com/betagouv/ma-cantine/issues/7046)) ([456dcb8](https://github.com/betagouv/ma-cantine/commit/456dcb8b6d3b237b062cb35581646207cc399926))
+
+
+### Corrections (bugs, typos...)
+
+* **Utilisateurs:** Inscription: répare la façon d'empecher qu'un email soit utilisé comme username (security alert) ([#7081](https://github.com/betagouv/ma-cantine/issues/7081)) ([f689470](https://github.com/betagouv/ma-cantine/commit/f689470b1c7ef6af5d6d633e4c51ccedf4426b45))
+
+
+### Technique
+
+* **Admin:** restreindre le 2FA aux seuls superuser (v1) ([#7044](https://github.com/betagouv/ma-cantine/issues/7044)) ([b4f6f95](https://github.com/betagouv/ma-cantine/commit/b4f6f95c755a57c5ea1352af46ff6f8ba5e54db2))
+* **deps:** bump djangorestframework from 3.16.1 to 3.17.2 ([#7076](https://github.com/betagouv/ma-cantine/issues/7076)) ([8b6cc19](https://github.com/betagouv/ma-cantine/commit/8b6cc1953434f0ddc1f90e33291839a56c5be1a7))
+* **deps:** mets à jour des dépendances du frontend vue2 ([#7083](https://github.com/betagouv/ma-cantine/issues/7083)) ([9ab722b](https://github.com/betagouv/ma-cantine/commit/9ab722b87fcab6ad80c21215b25e109a3bcc4a9c))
+* **deps:** mise à jour des packages frontend vue3 ([#7074](https://github.com/betagouv/ma-cantine/issues/7074)) ([7f694f8](https://github.com/betagouv/ma-cantine/commit/7f694f8fcbdd1b6d2f4861d297703ae189b35269))
+
 ## [2026.46.0](https://github.com/betagouv/ma-cantine/compare/v2026.45.0...v2026.46.0) (2026-08-19)
 
 

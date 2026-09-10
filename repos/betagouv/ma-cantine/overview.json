@@ -1,25 +1,27 @@
 {
   "url": "https://github.com/betagouv/ma-cantine",
   "name": "ma-cantine",
-  "description": "Plateforme destinée à accompagner les acteurs de la restauration collective pour promouvoir une alimentation de qualité, saine et durable.",
+  "description": "Plateforme destinée à accompagner les acteurs de la restauration collective pour promouvoir une alimentation de qualité, saine et durable. Elle permet notamment la réalisation de diagnostics et de bilans alimentaires.",
   "language": "Python",
   "features": [
     "Gestion des établissements & Structures",
     "Statistiques & Rapports",
+    "Authentification & Accès",
     "Recherche & Filtres",
-    "Administration & Backoffice",
     "Formulaires & Démarches",
-    "Visualisation de données & Cartographie"
+    "Administration & Backoffice",
+    "Interface utilisateur & Design",
+    "Données & Schémas"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Django",
+    "Django REST Framework",
     "Vue.js",
     "Celery",
-    "Redis",
-    "PostgreSQL",
     "Wagtail",
-    "Django REST Framework",
+    "PostgreSQL",
+    "Redis",
     "Metabase",
     "Matomo"
   ],
@@ -30,14 +32,14 @@
     "Python (scripts & backend)",
     "Design System (DSFR & UI libs)",
     "Celery & Queue asynchrone",
-    "Authentification (composant)",
-    "Documentation & Schémas"
+    "ORM & Accès aux données"
   ],
   "auth": {
     "methods": [
-      "magic-link",
       "oauth2",
+      "magic-link",
       "mfa",
+      "jwt",
       "session"
     ]
   },
@@ -48,16 +50,17 @@
   "workflows": [
     "GitHub Actions"
   ],
-  "lastActivity": "2026-08-19T00:00:00Z",
-  "status": "active",
+  "lastActivity": "2026-09-07T00:00:00Z",
+  "status": "maintained",
+  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "Python",
     "Vue.js & Nuxt",
-    "Django & FastAPI",
-    "Données & Open Data",
+    "Bases de données SQL",
+    "CI/CD & GitHub Actions",
     "Design System & UI",
-    "CI/CD & GitHub Actions"
+    "Données & Open Data"
   ]
 }
