@@ -185,6 +185,9 @@
 │   ├── 20260702121910_migreDonneesRisquesSpecifiquesV2AvecIdentifiantNumerique.js
 │   ├── 20260717130839_ajoutePixelDeSuiviDansTableUtilisateurs.js
 │   ├── 20260826142612_creationTableNotificationsTransactionnelles.js
+│   ├── 20260827070434_ajouteEtatLectureNotificationsTransactionnelles.js
+│   ├── 20260902142327_ajouteDateSuppressionNotificationsNouveaute.js
+│   ├── 20260907133254_ajouteDateExpirationNotificationTransactionnelle.js
 │   └── utilitaires
 │       └── pourChaqueLigne.js
 ├── package.json
@@ -590,6 +593,8 @@
 │   │   └── transformeCorrespondanceReCyfEnTypescript.sh
 │   ├── start.sh
 │   ├── taches
+│   │   ├── tacheEnvoiRapportHebdomadaire.sh
+│   │   ├── tacheEnvoiRapportHebdomadaire.ts
 │   │   ├── tacheEnvoieMailsNotificationExpiration.js
 │   │   └── tacheEnvoieMailsNotificationExpiration.sh
 │   ├── tests.sh
@@ -636,6 +641,8 @@
 │   │   ├── adaptateurProtection.js
 │   │   ├── adaptateurRechercheEntreprise.interface.ts
 │   │   ├── adaptateurRechercheEntrepriseAPI.js
+│   │   ├── adaptateurReporting.interface.ts
+│   │   ├── adaptateurReporting.webhookMattermost.ts
 │   │   ├── adaptateurStatistiques.interface.ts
 │   │   ├── adaptateurStatistiquesMemoire.ts
 │   │   ├── adaptateurStatistiquesPostgres.ts
@@ -676,6 +683,7 @@
 │   │   └── knexJournal.ts
 │   ├── bus
 │   │   ├── abonnements
+│   │   │   ├── comparateurMesures.ts
 │   │   │   ├── consigneAcceptationCguDansJournal.js
 │   │   │   ├── consigneAccesUtilisateurAdministreRetiresDansJournal.ts
 │   │   │   ├── consigneActiviteMesure.js
@@ -685,6 +693,11 @@
 │   │   │   ├── consigneCompletudeDansJournal.js
 │   │   │   ├── consigneConnexionUtilisateurDansJournal.ts
 │   │   │   ├── consigneModificationMesureEnMasseDansJournal.js
+│   │   │   ├── consigneNotificationEcheanceMesureBientotExpiree.ts
+│   │   │   ├── consigneNotificationInvitationsServices.ts
+│   │   │   ├── consigneNotificationModificationResponsable.ts
+│   │   │   ├── consigneNotificationTransactionnelleModifieeDansJournal.ts
+│   │   │   ├── consigneNotificationsExpirationHomologation.ts
 │   │   │   ├── consigneNouveauParrainage.js
 │   │   │   ├── consigneNouveauServiceDansJournal.ts
 │   │   │   ├── consigneNouvelUtilisateurInscritDansJournal.js
@@ -720,6 +733,7 @@
 │   │   │   ├── sauvegardeNotificationTransactionnelleContributeurMentionneDansMesure.ts
 │   │   │   ├── sauvegardeNotificationsExpirationHomologation.js
 │   │   │   ├── supprimeNotificationsExpirationHomologation.js
+│   │   │   ├── supprimeNotificationsTransactionnellesService.ts
 │   │   │   ├── supprimeSuggestionsActions.js
 │   │   │   ├── supprimeSuggestionsSurDesChampsObligatoires.js
 │   │   │   └── traceEvenementsAuditAdministrationOrganisations.ts
@@ -731,6 +745,7 @@
 │   │   ├── evenementAdminRetireDeOrganisation.ts
 │   │   ├── evenementAutorisationsServiceModifiees.js
 │   │   ├── evenementCguAccepteesParUtilisateur.js
+│   │   ├── evenementContributeurAjoute.ts
 │   │   ├── evenementDescriptionServiceModifiee.js
 │   │   ├── evenementDossierHomologationFinalise.js
 │   │   ├── evenementDossierHomologationImporte.js
@@ -739,6 +754,7 @@
 │   │   ├── evenementMesureServiceModifiee.js
 │   │   ├── evenementMesureServiceSupprimee.js
 │   │   ├── evenementModelesMesureSpecifiqueImportes.js
+│   │   ├── evenementNotificationTransactionnelleModifiee.ts
 │   │   ├── evenementNouveauServiceCree.ts
 │   │   ├── evenementNouvelleConnexionUtilisateur.ts
 │   │   ├── evenementRisqueServiceModifie.ts
@@ -882,6 +898,7 @@
 │   │   │   ├── evenementConnexionUtilisateur.ts
 │   │   │   ├── evenementMesureModifieeEnMasse.js
 │   │   │   ├── evenementModelesMesureSpecifiqueImportes.js
+│   │   │   ├── evenementNotificationTransactionnelleModifiee.ts
 │   │   │   ├── evenementNouveauServiceCree.ts
 │   │   │   ├── evenementNouvelUtilisateurInscrit.js
 │   │   │   ├── evenementNouvelleHomologationCreee.js
@@ -1017,7 +1034,15 @@
 │   │       └── vraisemblanceRisque.ts
 │   ├── mss.js
 │   ├── notifications
-│   │   └── centreNotifications.js
+│   │   ├── centreNotifications.ts
+│   │   ├── formatteursNotifications.ts
+│   │   ├── notification.types.ts
+│   │   ├── rapportHebdomadaire.ts
+│   │   └── sources
+│   │       ├── sourceNotificationsTransactionnelles.ts
+│   │       ├── sourceNouveautes.ts
+│   │       ├── sourceTachesProfil.ts
+│   │       └── sourceTachesService.ts
 │   ├── oidc
 │   │   ├── acr.ts
 │   │   └── cookies.ts
@@ -1037,7 +1062,8 @@
 │   │   │   ├── routesConnecteApiExplicationNouveauReferentiel.ts
 │   │   │   ├── routesConnecteApiExplicationRisquesV2.ts
 │   │   │   ├── routesConnecteApiModeleMesureSpecifique.ts
-│   │   │   ├── routesConnecteApiNotifications.js
+│   │   │   ├── routesConnecteApiNotifications.schema.ts
+│   │   │   ├── routesConnecteApiNotifications.ts
 │   │   │   ├── routesConnecteApiService.js
 │   │   │   ├── routesConnecteApiService.schema.ts
 │   │   │   ├── routesConnecteApiServiceActivitesMesure.js
@@ -1583,6 +1609,11 @@
 │   │   ├── preferences
 │   │   │   ├── LignePreference.svelte
 │   │   │   ├── Preferences.svelte
+│   │   │   ├── blocsPreferences
+│   │   │   │   ├── BlocPreferences.svelte
+│   │   │   │   ├── PreferencesConsentements.svelte
+│   │   │   │   ├── PreferencesNotificationsParEmail.svelte
+│   │   │   │   └── PreferencesRecapitulatifHebdomadaire.svelte
 │   │   │   ├── preferences.api.ts
 │   │   │   ├── preferences.ts
 │   │   │   └── preferences.types.ts
@@ -1907,6 +1938,11 @@
 │   │   │   ├── consigneCompletudeDansJournal.spec.js
 │   │   │   ├── consigneConnexionUtilisateurDansJournal.spec.ts
 │   │   │   ├── consigneModificationMesureEnMasseDansJournal.spec.js
+│   │   │   ├── consigneNotificationEcheanceMesureBientotExpiree.spec.ts
+│   │   │   ├── consigneNotificationInvitationsServices.spec.ts
+│   │   │   ├── consigneNotificationModificationResponsable.spec.ts
+│   │   │   ├── consigneNotificationTransactionnelleModifieeDansJournal.spec.ts
+│   │   │   ├── consigneNotificationsExpirationHomologation.spec.ts
 │   │   │   ├── consigneNouveauParrainage.spec.js
 │   │   │   ├── consigneNouveauServiceDansJournal.spec.ts
 │   │   │   ├── consigneNouvelUtilisateurInscritDansJournal.spec.js
@@ -1942,6 +1978,7 @@
 │   │   │   ├── sauvegardeNotificationTransactionnelleContributeurMentionneDansMesure.spec.ts
 │   │   │   ├── sauvegardeNotificationsExpirationHomologation.spec.js
 │   │   │   ├── supprimeNotificationsExpirationHomologation.spec.js
+│   │   │   ├── supprimeNotificationsTransactionnellesService.spec.ts
 │   │   │   ├── supprimeSuggestionsActions.spec.js
 │   │   │   ├── supprimeSuggestionsSurDesChampsObligatoires.spec.js
 │   │   │   └── traceEvenementsAuditAdministrationOrganisations.spec.ts
@@ -1949,6 +1986,7 @@
 │   │   │   └── busPourLesTests.js
 │   │   ├── busEvenements.spec.js
 │   │   ├── evenementAutorisationsServiceModifiees.spec.js
+│   │   ├── evenementContributeurAjoute.spec.ts
 │   │   ├── evenementDescriptionServiceModifiee.spec.js
 │   │   ├── evenementDossierHomologationFinalise.spec.js
 │   │   ├── evenementDossierHomologationImporte.spec.js
@@ -1994,6 +2032,7 @@
 │   │   ├── depotDonneesModelesMesureSpecifique.spec.js
 │   │   ├── depotDonneesNotifications.spec.js
 │   │   ├── depotDonneesNotificationsExpirationHomologation.spec.js
+│   │   ├── depotDonneesNotificationsTransactionnelles.spec.ts
 │   │   ├── depotDonneesParcoursUtilisateur.spec.ts
 │   │   ├── depotDonneesParrainages.spec.js
 │   │   ├── depotDonneesSelsDeHachage.spec.js
@@ -2069,6 +2108,7 @@
 │   │   │   ├── evenementConnexionUtilisateur.spec.ts
 │   │   │   ├── evenementMesureModifieeEnMasse.spec.js
 │   │   │   ├── evenementModelesMesureSpecifiqueImportes.spec.js
+│   │   │   ├── evenementNotificationTransactionnelleModifiee.spec.ts
 │   │   │   ├── evenementNouveauServiceCree.spec.ts
 │   │   │   ├── evenementNouvelUtilisateurInscrit.spec.js
 │   │   │   ├── evenementNouvelleHomologationCreee.spec.js
@@ -2089,6 +2129,8 @@
 │   │   ├── mesuresGenerales.spec.ts
 │   │   ├── mesuresSpecifiques.spec.ts
 │   │   ├── notificationExpirationHomologation.spec.js
+│   │   ├── notificationsTransactionnelles
+│   │   │   └── notificationTransactionnelle.spec.ts
 │   │   ├── objetsApi
 │   │   │   ├── objetGetContactsUtiles.spec.ts
 │   │   │   ├── objetGetIndicesCyber.spec.js
@@ -2173,7 +2215,13 @@
 │   │       └── vraisemblanceRisque.spec.ts
 │   ├── mss.spec.js
 │   ├── notifications
-│   │   └── centreNotifications.spec.js
+│   │   ├── centreNotifications.spec.ts
+│   │   ├── rapportHebdomadaire.spec.ts
+│   │   └── sources
+│   │       ├── sourceNotificationsTransactionnelles.spec.ts
+│   │       ├── sourceNouveautes.spec.ts
+│   │       ├── sourceTachesProfil.spec.ts
+│   │       └── sourceTachesService.spec.ts
 │   ├── referentiel.spec.js
 │   ├── referentielV2.spec.ts
 │   ├── routes
@@ -2184,7 +2232,7 @@
 │   │   │   ├── routesConnecteApiExplicationNouveauReferentiel.spec.ts
 │   │   │   ├── routesConnecteApiExplicationRisquesV2.spec.ts
 │   │   │   ├── routesConnecteApiModeleMesureSpecifique.spec.ts
-│   │   │   ├── routesConnecteApiNotifications.spec.js
+│   │   │   ├── routesConnecteApiNotifications.spec.ts
 │   │   │   ├── routesConnecteApiService.spec.js
 │   │   │   ├── routesConnecteApiServiceActivitesMesure.spec.js
 │   │   │   ├── routesConnecteApiServiceDescription.spec.ts
@@ -2256,4 +2304,4 @@
 │       └── parametres.spec.mjs
 ├── tsconfig.json
 └── vitest.config.ts
-292 directories, 2096 files
+296 directories, 2140 files

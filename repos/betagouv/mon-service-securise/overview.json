@@ -1,15 +1,16 @@
 {
   "url": "https://github.com/betagouv/mon-service-securise",
   "name": "mon-service-securise",
-  "description": "Service numérique conçu pour accompagner les collectivités territoriales et les entités publiques dans la sécurisation et l'homologation de leurs services publics numériques.",
+  "description": "Ce service aide les collectivités territoriales et les entités publiques à sécuriser et à homologuer leurs services publics numériques, tels que les sites web, les applications mobiles et les API.",
   "language": "TypeScript",
   "features": [
     "Authentification & Accès",
     "Statistiques & Rapports",
+    "Notifications & Alertes",
     "Sécurité & Conformité",
-    "Formulaires & Démarches",
-    "Gestion des utilisateurs & Permissions",
-    "Gestion documentaire & Fichiers"
+    "Gestion des profils & Comptes",
+    "Administration & Backoffice",
+    "Interface utilisateur & Design"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -18,30 +19,26 @@
     "PostgreSQL",
     "Knex",
     "TypeScript",
-    "Vite",
-    "Playwright",
-    "Vitest",
-    "OpenID Connect",
+    "Pug",
     "Zod",
-    "Pug"
+    "OpenID Connect"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "Angular / Svelte / Autres SPA",
     "TypeScript / JavaScript",
     "Design System (DSFR & UI libs)",
     "Docker & Conteneurs",
     "Authentification (composant)",
-    "Tests"
+    "HTML / CSS / Templates visuels"
   ],
   "auth": {
     "methods": [
-      "jwt",
-      "session",
       "mfa",
       "sso",
-      "oauth2"
+      "jwt",
+      "session",
+      "email-password"
     ],
     "providers": [
       "ProConnect"
@@ -57,7 +54,7 @@
     "codeql-analysis.yml",
     "deploiement.yml"
   ],
-  "lastActivity": "2026-08-27T09:21:51+02:00",
+  "lastActivity": "2026-09-09T17:18:37+02:00",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
@@ -65,8 +62,8 @@
     "Écosystème beta.gouv / État",
     "TypeScript",
     "Sécurité & Auth",
-    "Design System & UI",
     "Docker & Conteneurs",
+    "Design System & UI",
     "CI/CD & GitHub Actions",
     "Accessibilité"
   ]
