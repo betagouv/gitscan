@@ -196,6 +196,7 @@
 │   │   │   │   ├── ressourceInfoMiniTests.ts
 │   │   │   │   ├── ressourceReactionMiniTest.schema.ts
 │   │   │   │   ├── ressourceReactionMiniTest.ts
+│   │   │   │   ├── ressourceRetourMiniTest.ts
 │   │   │   │   └── vrai-faux
 │   │   │   │       ├── ressourceReponsesVraiFaux.schemas.ts
 │   │   │   │       ├── ressourceReponsesVraiFaux.ts
@@ -233,6 +234,7 @@
 │   │   │   ├── ressourceFinancements.ts
 │   │   │   ├── ressourceInformationsCreationCompte.ts
 │   │   │   ├── ressourceInfosSite.ts
+│   │   │   ├── ressourceLlmsTxt.ts
 │   │   │   ├── ressourcePageConnexion.ts
 │   │   │   ├── ressourcePageContact.ts
 │   │   │   ├── ressourcePageCrisp.ts
@@ -261,14 +263,13 @@
 │   │   │   │   ├── ressourceResultatsDeTest.ts
 │   │   │   │   ├── ressourceResultatsSessionDeGroupe.ts
 │   │   │   │   ├── ressourceRetourTestMaturite.schema.ts
-│   │   │   │   ├── ressourceRetourTestMaturite.ts
 │   │   │   │   ├── ressourceSessionDeGroupe.ts
 │   │   │   │   └── ressourceSessionsDeGroupe.ts
 │   │   │   └── zod.ts
 │   │   ├── bus
 │   │   │   ├── busEvenements.ts
 │   │   │   ├── cablage.ts
-│   │   │   ├── consigeRetourTestMaturiteDonne.ts
+│   │   │   ├── consigeRetourMiniTestDonne.ts
 │   │   │   ├── consigneAvisMesureDonneDansJournal.ts
 │   │   │   ├── consigneBadgeCyberdepartDebloqueDansJournal.ts
 │   │   │   ├── consigneEvenementAvisUtilisateurDonneDansJournal.ts
@@ -306,13 +307,13 @@
 │   │   │   │   ├── questionnaireVraiFauxReponseSoumise.ts
 │   │   │   │   ├── questionnaireVraiFauxTermine.ts
 │   │   │   │   ├── retourExperienceDonne.ts
-│   │   │   │   ├── retourTestMaturiteDonne.ts
+│   │   │   │   ├── retourMiniTestDonne.ts
 │   │   │   │   ├── simulationNis2Terminee.ts
 │   │   │   │   ├── testRealise.ts
 │   │   │   │   └── utilisateurConnecte.ts
 │   │   │   ├── miseAJourFavorisUtilisateur.ts
 │   │   │   ├── notifieCommentaireAvisMesureDonneDansMessagerie.ts
-│   │   │   └── notifieRetourNegatifSurTestMaturite.ts
+│   │   │   └── notifieRetourNegatifSurMiniTest.ts
 │   │   ├── entrepotModulePostgres.ts
 │   │   ├── express.d.ts
 │   │   ├── infra
@@ -402,6 +403,7 @@
 │   │   │   ├── mesure.ts
 │   │   │   ├── mini-tests
 │   │   │   │   ├── entrepotReactionMiniTest.ts
+│   │   │   │   ├── mini-test.ts
 │   │   │   │   ├── reactionMiniTest.ts
 │   │   │   │   └── vrai-faux
 │   │   │   │       ├── entrepotQuestionVraieFausse.ts
@@ -513,6 +515,7 @@
 │   │   │   ├── mini-tests
 │   │   │   │   ├── ressourceInfoMiniTests.spec.ts
 │   │   │   │   ├── ressourceReactionMiniTest.spec.ts
+│   │   │   │   ├── ressourceRetourMiniTest.spec.ts
 │   │   │   │   └── vrai-faux
 │   │   │   │       ├── constructeurDeQuestionVraieFausse.ts
 │   │   │   │       ├── ressourceReponsesVraiFaux.spec.ts
@@ -563,12 +566,12 @@
 │   │   │       ├── ressourceResultatDeTest.spec.ts
 │   │   │       ├── ressourceResultatsDeTest.spec.ts
 │   │   │       ├── ressourceResultatsSessionDeGroupe.spec.ts
-│   │   │       ├── ressourceRetourTestMaturite.spec.ts
 │   │   │       ├── ressourceSessionDeGroupe.spec.ts
 │   │   │       └── ressourceSessionsDeGroupe.spec.ts
 │   │   ├── bus
 │   │   │   ├── busEvenements.spec.ts
 │   │   │   ├── busPourLesTests.ts
+│   │   │   ├── consigeRetourMiniTestDonne.spec.ts
 │   │   │   ├── consigneAvisMesureDansJournal.spec.ts
 │   │   │   ├── consigneBadgeCyberdepartDebloqueDansJournal.spec.ts
 │   │   │   ├── consigneEvenementAvisUtilisateurDonneDansJournal.spec.ts
@@ -588,11 +591,10 @@
 │   │   │   ├── consigneParcoursRejointDansJournal.spec.ts
 │   │   │   ├── consigneQuestionnaireVraiFauxReponseSoumiseDansJournal.spec.ts
 │   │   │   ├── consigneQuestionnaireVraiFauxTermineDansJournal.spec.ts
-│   │   │   ├── consigneRetourTestMaturiteDonne.spec.ts
 │   │   │   ├── creeContactBrevo.spec.ts
 │   │   │   ├── envoieEmailCreationCompte.spec.ts
 │   │   │   ├── notifieCommentaireAvisMesureDonneDansMessagerie.spec.ts
-│   │   │   └── notifieRetourTestMaturiteDonne.spec.ts
+│   │   │   └── notifieRetourNegatifSurMiniTest.spec.ts
 │   │   ├── infra
 │   │   │   ├── EntrepotGristGenerique.ts
 │   │   │   ├── RechercheEntrepriseAvecCache.spec.ts
@@ -871,8 +873,16 @@
 │   │   │   ├── Marianne-Regular_Italic.woff
 │   │   │   └── Marianne-Regular_Italic.woff2
 │   │   ├── icones
+│   │   │   ├── bulle-discussion.avif
+│   │   │   ├── cadenas.avif
+│   │   │   ├── coche-verte.svg
+│   │   │   ├── croix-rouge.svg
 │   │   │   ├── icone-danger.svg
-│   │   │   └── icone-recompense.svg
+│   │   │   ├── icone-recompense.svg
+│   │   │   ├── liasse-de-billets-aillee.avif
+│   │   │   ├── megaphone.avif
+│   │   │   ├── poignee-de-mains.avif
+│   │   │   └── regard-de-cote.avif
 │   │   ├── images
 │   │   │   ├── accueil
 │   │   │   │   └── animation
@@ -944,6 +954,7 @@
 │   │   │   ├── illustration-filtre-besoins-sensibiliser.svg
 │   │   │   ├── illustration-filtre-besoins-tous.svg
 │   │   │   ├── illustration-organisations-concernees.svg
+│   │   │   ├── illustration-tests-exposition.svg
 │   │   │   ├── illustrations-services
 │   │   │   │   ├── ads
 │   │   │   │   │   └── active-directory-security.avif
@@ -1161,6 +1172,7 @@
 │   ├── creation-compte.html
 │   ├── demande-aide-mon-aide-cyber.html
 │   ├── entreprises.html
+│   ├── exposition.html
 │   ├── favicon.ico
 │   ├── favoris-partages.html
 │   ├── favoris.html
@@ -1322,7 +1334,7 @@
 │   │   │   │   └── animation
 │   │   │   │       ├── CompositionBizDev.svelte
 │   │   │   │       └── IllustrationCompositionBizDev.svelte
-│   │   │   ├── main-*.ts  (52 files)
+│   │   │   ├── main-*.ts  (53 files)
 │   │   │   ├── maintenance
 │   │   │   │   └── BandeauMaintenance.svelte
 │   │   │   ├── mini-tests
@@ -1332,12 +1344,20 @@
 │   │   │   │   ├── PlanteAnimee.svelte
 │   │   │   │   ├── SceneHeroMiniTest.svelte
 │   │   │   │   ├── TestVraiFauxAnime.svelte
+│   │   │   │   ├── exposition
+│   │   │   │   │   ├── CarteRisqueExposition.svelte
+│   │   │   │   │   ├── EvaluationExposition.svelte
+│   │   │   │   │   ├── ExpositionCyberattaques.svelte
+│   │   │   │   │   ├── FormulaireExposition.svelte
+│   │   │   │   │   └── expositionCyberattaques.ts
 │   │   │   │   └── vrai-faux
 │   │   │   │       ├── IllustrationHerosVraiFaux.svelte
 │   │   │   │       ├── LandingVraiFaux.svelte
 │   │   │   │       ├── SceneHerosVraiFaux.svelte
 │   │   │   │       └── moteur-de-jeu
 │   │   │   │           ├── QuizVraiFaux.svelte
+│   │   │   │           ├── ReponseVraiFaux.svelte
+│   │   │   │           ├── ScoreFinalQuizVraiFaux.svelte
 │   │   │   │           └── question
 │   │   │   │               ├── BoutonDeVote.svelte
 │   │   │   │               └── Question.svelte
@@ -1487,6 +1507,8 @@
 │   │   │   │       ├── VueListeMesures.svelte
 │   │   │   │       └── VueModule.svelte
 │   │   │   ├── passerelles
+│   │   │   │   ├── mini-tests
+│   │   │   │   │   └── publicationRéponses.ts
 │   │   │   │   └── statistiquesMSC.ts
 │   │   │   ├── plateforme
 │   │   │   │   ├── aseptisationDuHtml.client.ts
@@ -1531,6 +1553,7 @@
 │   │   │   │   ├── EncartDeRecommandationMaturiteFaible.svelte
 │   │   │   │   ├── EncartDeRecommandationMaturiteForte.svelte
 │   │   │   │   ├── EncartDeRecommandationSelonMaturite.svelte
+│   │   │   │   ├── EncartInvitationARenforcerCybersecurite.svelte
 │   │   │   │   ├── GraphiqueAnneau.svelte
 │   │   │   │   ├── HistoriqueTests.svelte
 │   │   │   │   ├── IntroductionTestMaturite.svelte
@@ -1629,6 +1652,7 @@
 │   │   │   │   ├── erreurApi.ts
 │   │   │   │   ├── injecteNonce.plugin.ts
 │   │   │   │   ├── mouvementReduit.svelte.ts
+│   │   │   │   ├── rendu.svelte.ts
 │   │   │   │   └── visibilite.svelte.ts
 │   │   │   └── vite-env.d.ts
 │   │   ├── svelte.config.js
@@ -1690,6 +1714,7 @@
 │   │   ├── vite.config.ssr.ts
 │   │   ├── vite.config.ts
 │   │   └── vitest.config.js
+│   ├── llms.txt
 │   ├── ma-maturite.html
 │   ├── maintenance.html
 │   ├── mentions-legales.html
@@ -1778,4 +1803,4 @@
 ├── scripts
 │   └── get-node-version.sh
 └── shell.nix
-277 directories, 1616 files
+279 directories, 1640 files

@@ -1,29 +1,38 @@
-## Changelog : anssi-portail (30 derniers jours, au 04 septembre 2026)
+## Changelog : anssi-portail (30 derniers jours, au 09/09/2026)
 
 ### Résumé
-Ce mois a été marqué par une transformation majeure de l'expérience utilisateur, avec le lancement de nouveaux contenus interactifs sous forme de "mini-tests" (quiz vrai/faux) et une refonte visuelle globale du portail. Parallèlement, une modernisation technique profonde a été opérée pour améliorer les performances et la maintenabilité de l'application.
+Ce mois a été marqué par une transformation majeure du portail, tant sur le plan visuel que fonctionnel. L'évolution principale concerne le lancement de nouveaux mini-tests interactifs (notamment le format "Vrai-Faux") et une refonte graphique globale (nouvelle direction artistique) visant à moderniser l'expérience utilisateur. Parallèlement, une migration technique profonde vers Svelte 5 a été entreprise pour garantir la pérennité et la performance de l'application.
 
 ### Évolutions fonctionnelles
-- **Nouveaux Mini-tests :** Introduction de quiz interactifs de type "Vrai/Faux" incluant des animations (confettis), des écrans de succès/erreur, et la possibilité pour les utilisateurs de laisser des réactions.
-- **Refonte de la Direction Artistique (DA) :** Mise à jour globale de l'identité visuelle avec de nouveaux motifs de fond, des illustrations animées, une nouvelle palette de couleurs et une typographie optimisée pour une meilleure lisibilité.
-- **Amélioration du Parcours de Sécurisation :** 
-    - Création de nouvelles pages d'accueil (landings) pour les parcours "basique" et "complet".
-    - Ajout de fils d'Ariane pour faciliter la navigation.
-    - Intégration de pictogrammes et d'animations pour illustrer les étapes.
-- **Évolutions des Tests de Maturité :** Amélioration de l'affichage des résultats, ajout de nouveaux graphiques et mise en place d'un système de retour utilisateur (satisfaction) directement sur les pages de résultats.
-- **Statistiques :** Enrichissement du tableau de bord des statistiques, incluant désormais le nombre de tests réalisés et les indicateurs de satisfaction utilisateur.
+- **Nouveaux Mini-tests** : 
+    - Introduction du format de quiz "Vrai-Faux" avec affichage des scores, animations de succès (confettis) et possibilité de laisser un avis.
+    - Amélioration de l'interactivité des tests avec des animations de choix et des estimations de temps de complétion.
+    - Mise en place d'un système de statistiques permettant de voir le nombre de tests réalisés.
+- **Parcours de Sécurisation** : 
+    - Amélioration du suivi de progression (déblocage de badges, comptabilisation des mesures prises en compte).
+    - Optimisation de l'expérience mobile et ajout de nouveaux éléments visuels (illustrations animées, nouveaux héros).
+    - Meilleure intégration du suivi utilisateur via l'outil Brevo pour les événements de complétion.
+- **Nouvelle page "Exposition"** : Création d'une page dédiée permettant de mesurer son exposition avec des cartes interactives et des règles conformes aux spécifications.
+- **Contenus et Navigation** :
+    - Mise à jour des contenus relatifs à la directive NIS2 et aux référentiels (ReCyF, CyFun).
+    - Amélioration de la navigation via l'harmonisation des fils d'Ariane sur l'ensemble du site.
+    - Refonte visuelle globale : nouvelles illustrations, palettes de couleurs modernisées et utilisation accrue des composants du Design System (DSFR).
 
 ### Évolutions techniques
-- **Migration Svelte 5 :** Migration massive de l'ensemble des composants du projet vers Svelte 5 (utilisation du mode "runes") pour optimiser la réactivité et les performances.
-- **Suivi et Événements :** 
-    - Intégration poussée de l'outil Brevo pour le suivi des événements (complétion de parcours, déblocage de badges).
-    - Amélioration de la persistance du parcours utilisateur et de la mémorisation des campagnes d'origine.
-- **Architecture API :** 
-    - Création de nouvelles routes backend dédiées à la gestion des mini-tests (récupération des questions, soumission des réponses et gestion des réactions).
-    - Refonte de l'API de statistiques pour une consommation plus efficace des données.
-- **Développement :** Amélioration de l'environnement de développement local (support LAN, optimisation de la configuration Nix).
+- **Migration Framework** : Migration massive de la majorité des composants vers **Svelte 5** (utilisation des *runes*) pour améliorer la réactivité et la maintenabilité.
+- **Architecture et API** :
+    - Refonte de la logique métier des mini-tests (utilisation d'entrepôts de données et d'objets métier).
+    - Enrichissement de l'API de statistiques pour inclure la satisfaction utilisateur.
+    - Centralisation et optimisation de la gestion des redirections d'URLs historiques.
+- **SEO et Performance** :
+    - Optimisation du référencement naturel par la suppression des extensions `.html` dans les URLs des services, ressources et contacts.
+    - Mise à jour du sitemap pour inclure les nouvelles pages de landing.
+- **Infrastructure et Toolchain** :
+    - Migration vers **pnpm 11**.
+    - Amélioration de l'environnement de développement local (support LAN, configuration Nix).
+    - Mise à jour des workflows CI/CD et des outils de test (Playwright, Vitest).
 
 ### Autres changements
-- **Nettoyage du code :** Travail important de suppression des composants, styles CSS, images et dépendances inutilisés pour alléger l'application.
-- **Documentation :** Mise à jour du guide de développement et des procédures d'exploitation.
-- **Design System :** Mises à jour régulières du kit UI interne (`@lab-anssi/ui-kit`).
+- **Nettoyage du code** : Suppression massive de composants, de styles CSS, d'images et de variables inutilisés pour alléger l'application.
+- **Documentation** : Mise à jour des guides de développement et des procédures d'exploitation.
+- **Qualité** : Renforcement des règles de linting et de formatage du code.
