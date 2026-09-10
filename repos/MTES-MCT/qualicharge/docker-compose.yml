@@ -101,7 +101,7 @@ services:
       - ./bin/kc-init:/usr/local/bin/kc-init
 
   metabase:
-    image: metabase/metabase:v0.63.1
+    image: metabase/metabase:v0.63.16
     ports:
       - 3000:3000
     env_file:
@@ -276,7 +276,7 @@ services:
 
   # -- tools
   curl:
-    image: curlimages/curl:8.21.0
+    image: curlimages/curl:8.22.0
     user: ${DOCKER_USER:-1000}
     env_file:
       - env.d/metabase
@@ -297,7 +297,7 @@ services:
       - env.d/metabase
 
   terraform:
-    image: hashicorp/terraform:1.15.8
+    image: hashicorp/terraform:1.16.2
     env_file:
       - env.d/terraform
     user: ${DOCKER_USER:-1000}
