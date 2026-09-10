@@ -1,15 +1,17 @@
 {
   "url": "https://github.com/gip-inclusion/la-communaute",
   "name": "la-communaute",
-  "description": "Plateforme communautaire dédiée à l'inclusion, permettant l'échange via des forums, la consultation de fiches pratiques et la gestion de partenariats.",
+  "description": "Plateforme communautaire dédiée à l'inclusion, offrant des espaces d'échange, des fiches pratiques et des outils de gestion pour les partenaires et les utilisateurs.",
   "language": "Python",
   "features": [
     "Authentification & Accès",
-    "Commentaires & Discussions",
+    "Collaboration & Workflow",
     "Contenu éditorial",
     "Gestion des utilisateurs & Permissions",
+    "Notifications & Alertes",
+    "Recherche & Filtres",
+    "Gestion des médias & Assets",
     "Statistiques & Rapports",
-    "Gestion des établissements & Structures",
     "Sécurité & Conformité"
   ],
   "audience": "Grand public",
@@ -18,28 +20,30 @@
     "PostgreSQL",
     "Minio",
     "Sentry",
-    "Matomo",
     "HTMX",
     "uv"
   ],
   "components": [
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
-    "Django",
     "Docker & Conteneurs",
     "Authentification (composant)",
-    "Templates & Moteurs de rendu"
+    "Templates & Moteurs de rendu",
+    "Intégrations services externes"
   ],
   "auth": {
     "methods": [
       "magic-link",
-      "oauth2"
+      "sso"
     ],
     "providers": [
       "ProConnect"
     ]
   },
-  "tests": "pytest, pytest-django, pytest-xdist",
+  "tests": [
+    "pytest",
+    "pytest-django"
+  ],
   "workflows": [
     "review_app_creation.yml",
     "review_app_removal.yml"
@@ -55,6 +59,7 @@
     "Django & FastAPI",
     "CI/CD & GitHub Actions",
     "Docker & Conteneurs",
-    "Accessibilité"
+    "Accessibilité",
+    "Documentation"
   ]
 }
