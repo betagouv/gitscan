@@ -1,26 +1,17 @@
-## Changelog : mobilic (30 derniers jours, au 4 septembre 2026)
+## Changelog : mobilic (30 derniers jours, au 08/09/2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a franchi une étape majeure avec l'introduction des notifications push et une gestion améliorée des campagnes de communication. L'expérience utilisateur a été fluidifiée, notamment lors de la création de missions et de la saisie des données personnelles, tandis que la stabilité de l'application (PWA) et la précision des statistiques ont été renforcées.
+Ce mois-ci, la plateforme a franchi une étape importante avec l'introduction des notifications push et l'amélioration du parcours de création de mission. Les outils de suivi des activités et des statistiques ont également été affinés pour garantir une meilleure précision des données et une expérience utilisateur plus fluide.
 
 ### Évolutions fonctionnelles
-- **Notifications** : Mise en place des notifications push, gestion des campagnes de communication et ajout d'une bannière d'acceptation (opt-in) pour les utilisateurs. [#920](https://github.com/MTES-MCT/mobilic/pull/920)
-- **Navigation & UX** : 
-    - Simplification du parcours de création de mission, désormais accessible directement depuis le menu de navigation et avec une redirection optimisée. [#938](https://github.com/MTES-MCT/mobilic/pull/938)
-    - Amélioration de la saisie des dates de naissance grâce à un système d'autofocus et une validation plus intuitive. [#924](https://github.com/MTES-MCT/mobilic/pull/924)
-- **Historique & Activités** : 
-    - Optimisation de l'affichage des libellés d'activité dans l'historique et meilleure gestion des activités fractionnées (split). [#944](https://github.com/MTES-MCT/mobilic/pull/944), [#930](https://github.com/MTES-MCT/mobilic/pull/930)
-    - Correction de l'affichage du bouton "Conduite" en mode PWA lorsque des tâches alternatives sont autorisées. [#44b1af77](https://github.com/MTES-MCT/mobilic/commit/44b1af77)
-- **Conformité & Partenaires** : 
-    - Correction de la référence légale concernant la définition de la semaine civile. [#939](https://github.com/MTES-MCT/mobilic/pull/939)
-    - Ajustement du calcul des statistiques de mission pour exclure les activités rejetées. [#927](https://github.com/MTES-MCT/mobilic/pull/927)
-    - Ajout du logo Rota dans la section des partenaires (logiciels autorisés). [#940](https://github.com/MTES-MCT/mobilic/pull/940)
+- **Notifications & PWA** : Mise en place des notifications push [#920](https://github.com/MTES-MCT/mobilic/pull/920) et optimisation de l'affichage (gestion de la langue française dans le manifeste, ajustement de la largeur des barres de notification et amélioration du défilement).
+- **Gestion des missions** : Accès direct au tunnel de création de mission depuis le menu de navigation et amélioration de la redirection automatique après la création d'une mission.
+- **Suivi des activités** : Introduction de la fonctionnalité de division d'activité (split) [#930](https://github.com/MTES-MCT/mobilic/pull/930) et correction de l'affichage des libellés d'activité dans l'historique.
+- **Statistiques & Données** : Correction du calcul des statistiques de mission en excluant les activités rejetées [#927](https://github.com/MTES-MCT/mobilic/pull/927) et mise à jour des références légales concernant la définition de la semaine civile.
+- **Expérience utilisateur (UX)** : Amélioration de la saisie des dates (auto-focus optimisé) et désactivation du bouton de sauvegarde lorsque le texte de la bannière n'a pas été modifié.
 
 ### Évolutions techniques
-- **Architecture & PWA** : 
-    - Rendre le contexte d'actions (`ActionsContext`) disponible globalement pour stabiliser l'application. [#949](https://github.com/MTES-MCT/mobilic/pull/949)
-    - Résolution de problèmes d'écran blanc lors du chargement de l'application suite à un déploiement (gestion du cache PWA). [#12d012bc](https://github.com/MTES-MCT/mobilic/commit/12d012bc)
-- **Observabilité & CI/CD** : 
-    - Amélioration de la capture des erreurs de jeton de rafraîchissement (refresh token) dans Sentry. [#914](https://github.com/MTES-MCT/mobilic/pull/914)
-    - Corrections sur les environnements de revue (review apps) et les permissions de workflow. [#3bdb6788](https://github.com/MTES-MCT/mobilic/commit/3bdb6788)
-- **Qualité de code** : Intégration des recommandations SonarCloud et améliorations de l'accessibilité. [#b15cd3dd](https://github.com/MTES-MCT/mobilic/commit/b15cd3dd)
+- **Architecture** : Généralisation du contexte d'actions (`ActionsContext`) pour assurer sa disponibilité sur l'ensemble de l'application et non plus seulement sur la partie `/app` [#949](https://github.com/MTES-MCT/mobilic/pull/949).
+- **Fiabilité & Monitoring** : Amélioration de la capture des erreurs de jeton de rafraîchissement (refresh token) dans Sentry [#914](https://github.com/MTES-MCT/mobilic/pull/914) et résolution de problèmes d'écran blanc lors du chargement ou du déploiement de la PWA.
+- **Qualité du code** : Traitement des alertes SonarCloud concernant la qualité du code (code smells) et l'accessibilité.
+- **Infrastructure & CI/CD** : Optimisation des environnements de revue (review apps) et ajustement des permissions des workflows de déploiement [#919](https://github.com/MTES-MCT/mobilic/pull/919).
