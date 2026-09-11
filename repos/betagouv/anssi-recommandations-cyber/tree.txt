@@ -1,4 +1,12 @@
 .
+├── .agents
+│   └── skills
+│       ├── git
+│       │   └── SKILL.md
+│       └── tdd
+│           └── SKILL.md
+├── .claude
+│   └── skills -> ../.agents/skills
 ├── .env.template
 ├── .githooks
 │   └── pre-commit
@@ -11,11 +19,15 @@
 │       ├── renovate.yaml
 │       └── securite-ci.yml
 ├── .gitignore
+├── AGENTS.md
+├── CLAUDE.md -> AGENTS.md
 ├── Dockerfile
 ├── LICENSE
 ├── README.md
 ├── docker-compose.yml
-├── documentation
+├── docs
+│   ├── ARCHITECTURE.md
+│   ├── C4.puml
 │   └── interactions_albert.md
 ├── donnees
 │   └── faq_reponses_maitrisees.mapping.json
@@ -42,8 +54,10 @@
 │   │   ├── adaptateur_base_de_donnees_memoire.py
 │   │   ├── adaptateur_base_de_donnees_postgres.py
 │   │   ├── adaptateur_executeur_de_requetes.py
+│   │   ├── bus_evenements.py
 │   │   ├── chiffrement.py
 │   │   ├── connecteur.py
+│   │   ├── consommateur_sentry.py
 │   │   ├── horloge.py
 │   │   ├── journal.py
 │   │   ├── migrateur.py
@@ -100,9 +114,12 @@
 │   ├── prompt_reclassement_llm.txt
 │   └── prompt_reformulation.txt
 ├── tests
+│   ├── AGENTS.md
+│   ├── CLAUDE.md -> AGENTS.md
 │   ├── adaptateurs
 │   │   ├── test_adaptateur_chiffrement.py
-│   │   └── test_adaptateur_sentry.py
+│   │   ├── test_adaptateur_sentry.py
+│   │   └── test_consommateur_sentry.py
 │   ├── api
 │   │   ├── conftest.py
 │   │   ├── test_avis_utilisateurice.py
@@ -153,7 +170,8 @@
 │   ├── test_adaptateur_base_de_donnees.py
 │   ├── test_configuration.py
 │   ├── test_migrateur.py
-│   └── test_modeles_retour_utilisatrice.py
+│   ├── test_modeles_retour_utilisatrice.py
+│   └── test_serveur.py
 ├── ui
 │   ├── .dockerignore
 │   ├── .env.template
@@ -249,6 +267,8 @@
 │   │       └── conversation.store.ts
 │   ├── svelte.config.js
 │   ├── tests
+│   │   ├── AGENTS.md
+│   │   ├── CLAUDE.md -> AGENTS.md
 │   │   ├── client.api.spec.ts
 │   │   ├── composants
 │   │   │   └── ValidateurQuestionUtilisateur.spec.ts
@@ -263,4 +283,4 @@
 │   ├── vitest.config.ts
 │   └── vitest.setup.ts
 └── uv.lock
-48 directories, 217 files
+54 directories, 231 files
