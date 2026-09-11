@@ -1,14 +1,12 @@
 .
-├── .cursor
-│   ├── instructions.json
-│   ├── links.md
-│   ├── product-context.md
-│   ├── rules
-│   │   ├── integration-tests.md
-│   │   ├── typescript-best-practices.mdc
-│   │   └── unit-tests.md
+├── .claude
+│   ├── product.md
 │   └── skills
-│       └── branch-review
+│       ├── branch-review
+│       │   └── SKILL.md
+│       ├── write-integration-tests
+│       │   └── SKILL.md
+│       └── write-unit-tests
 │           └── SKILL.md
 ├── .dockerignore
 ├── .editorconfig
@@ -53,6 +51,7 @@
 │   │   │   │   ├── cron.configmap.yaml
 │   │   │   │   ├── external-api.configmap.yaml
 │   │   │   │   ├── frontend.sealed-secret.yaml
+│   │   │   │   ├── maildev-basic-auth.sealed.secret.yaml
 │   │   │   │   ├── pg.configmap.yaml
 │   │   │   │   ├── pg.sealed.secret.yaml
 │   │   │   │   ├── smtp.sealed.secret.yaml
@@ -66,6 +65,7 @@
 │   │   │   │   ├── cron.configmap.yaml
 │   │   │   │   ├── external-api.configmap.yaml
 │   │   │   │   ├── frontend.sealed-secret.yaml
+│   │   │   │   ├── maildev-basic-auth.sealed.secret.yaml
 │   │   │   │   ├── oauth2-proxy.sealed-secret.yaml
 │   │   │   │   ├── pg.configmap.yaml
 │   │   │   │   ├── pg.sealed.secret.yaml
@@ -93,6 +93,7 @@
 ├── .vscode
 │   ├── settings.json
 │   └── tasks.json
+├── AGENTS.md
 ├── LICENSE
 ├── README.md
 ├── TODO.md
@@ -1433,6 +1434,7 @@
 │   │   │   │   ├── logger.js
 │   │   │   │   ├── ofetch.js
 │   │   │   │   ├── sentry.client.js
+│   │   │   │   ├── vcalendar.client.ts
 │   │   │   │   └── vue-matomo.js
 │   │   │   ├── public
 │   │   │   │   └── favicon.png
@@ -1673,6 +1675,7 @@
 │   │   │   │   ├── ofetch.js
 │   │   │   │   ├── personne-actions-cell.ts
 │   │   │   │   ├── sentry.client.js
+│   │   │   │   ├── vcalendar.client.ts
 │   │   │   │   └── vue-matomo.js
 │   │   │   ├── public
 │   │   │   │   └── favicon.png
@@ -1715,6 +1718,7 @@
 │   │   │       ├── informationsPersonnel.js
 │   │   │       ├── informationsPersonnelListe.js
 │   │   │       ├── informationsVacanciers.js
+│   │   │       ├── isPorteurAgrement.ts
 │   │   │       ├── logger.js
 │   │   │       ├── organisme.js
 │   │   │       ├── organismeMenus.js
@@ -1822,7 +1826,9 @@
 │   │   │   │   ├── 20260522135301_front.agrement__update_all_statuts.js
 │   │   │   │   ├── 20260601141044_users_add_otp_attemps.js
 │   │   │   │   ├── 20260615174703_public.__add__featureflag_otp.js
-│   │   │   │   └── 20260717103727_front.declaration__add_correlated_subquery_indexes.js
+│   │   │   │   ├── 20260717103727_front.declaration__add_correlated_subquery_indexes.js
+│   │   │   │   ├── 20260902153134_add_feature-flag_module_hebergement.js
+│   │   │   │   └── 20260927113215_add_site_unite_hebergement.js
 │   │   │   ├── scripts
 │   │   │   │   ├── migrate-files-to-s3.js
 │   │   │   │   └── reset-s3.js
@@ -1843,6 +1849,7 @@
 │   │   │   │   ├── errors.ts
 │   │   │   │   ├── featureFlags.ts
 │   │   │   │   ├── file.ts
+│   │   │   │   ├── hebergement.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── organisme.ts
 │   │   │   │   ├── tracking.ts
@@ -2028,6 +2035,7 @@
 │       │   │       └── UserStatusBadge.vue
 │       │   ├── composables
 │       │   │   ├── index.ts
+│       │   │   ├── pagination.spec.ts
 │       │   │   ├── pagination.ts
 │       │   │   ├── useAgrementPageTitle.ts
 │       │   │   ├── useAuthentication.ts
@@ -2045,6 +2053,7 @@
 │       │   ├── index.js
 │       │   ├── models
 │       │   │   ├── api.ts
+│       │   │   ├── eig.spec.ts
 │       │   │   ├── eig.ts
 │       │   │   ├── index.ts
 │       │   │   ├── informations-personnel.ts
@@ -2064,10 +2073,12 @@
 │       │   │   ├── index.ts
 │       │   │   └── toaster.type.ts
 │       │   └── utils
+│       │       ├── auth.spec.ts
 │       │       ├── auth.ts
 │       │       ├── columnsTable.ts
 │       │       ├── createLogger.ts
 │       │       ├── displayInputType.ts
+│       │       ├── eigUtils.spec.ts
 │       │       ├── eigUtils.ts
 │       │       ├── fetchBackend.ts
 │       │       ├── file.ts
@@ -2078,7 +2089,8 @@
 │       │       ├── regex.ts
 │       │       ├── status.ts
 │       │       └── statusUser.ts
-│       └── tsconfig.json
+│       ├── tsconfig.json
+│       └── vitest.config.mts
 ├── pg
 │   ├── Dockerfile
 │   ├── entrypoint.sh
@@ -2105,4 +2117,4 @@
 ├── renovate.json
 ├── script.sh
 └── sonar-project.properties
-304 directories, 1808 files
+305 directories, 1819 files
