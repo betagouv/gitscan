@@ -29,7 +29,8 @@
     }
   },
   "scripts": {
-    "build": "tsc --build tsconfig.lib.json && node dist/scripts/copy-json.js",
+    "build": "tsx src/scripts/copy-json.ts && tsc --build tsconfig.lib.json",
+    "dev": "npm run build -- --watch --preserveWatchOutput",
     "dev:test": "tsx --watch --test src/**/*.test.ts tests/**/*.test.ts",
     "test": "npm run test:unit",
     "test:unit": "tsx --test --test-reporter=spec src/**/*.test.ts tests/**/*.test.ts"
@@ -38,7 +39,7 @@
     "@hono/node-server": "^2.0.10",
     "@hono/zod-validator": "^0.7.2",
     "@proconnect-gouv/proconnect.api_entreprise": "2.2.0",
-    "hono": "^4.12.34"
+    "hono": "^4.13.5"
   },
   "devDependencies": {
     "@proconnect-gouv/proconnect.devtools.typescript": "1.0.0",
