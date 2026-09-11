@@ -1,22 +1,25 @@
-## Changelog : catalogi (30 derniers jours, au 27 août 2026)
+## Changelog : catalogi (30 derniers jours, au 10 septembre 2026)
 
 ### Résumé
-Cette période a été marquée par un renforcement des outils d'administration, notamment pour la gestion de l'interface, et une amélioration significative de la fiabilité et de la performance des processus d'importation de données provenant de sources externes (HAL, Zenodo, GitHub).
+Les récentes évolutions se concentrent sur le renforcement des capacités d'administration et l'optimisation des processus d'importation. L'application dispose désormais de nouveaux outils pour configurer l'interface utilisateur et gère plus efficacement les flux de données provenant de sources externes comme Zenodo, HAL ou GitHub.
 
 ### Évolutions fonctionnelles
-- **Administration de l'interface** : Ajout d'un éditeur de configuration de l'interface utilisateur pour les administrateurs.
-- **Gestion des logiciels** : Mise en place de contrôles sur la création de logiciels et ajout de raccourcis de navigation pour l'administration.
-- **Suivi des données** : Ajout de la date de dernier import sur les sources pour une meilleure traçabilité.
-- **Importation Zenodo** : Amélioration du processus d'importation massive des données issues de Zenodo.
+- **Administration de l'interface** : Ajout d'un éditeur de configuration de l'interface utilisateur (UI) accessible via l'API d'administration, permettant de modifier l'apparence de l'outil sans déploiement technique.
+- **Gestion des droits** : Restriction de la création de logiciels et ajout de raccourcis dédiés pour les administrateurs.
 
 ### Évolutions techniques
-- **Optimisation des performances** : Amélioration des processus d'importation massive de données [#516](https://github.com/codegouvfr/catalogi/issues/516).
-- **Architecture de configuration** : La configuration de l'interface utilisateur est désormais stockée en base de données (PostgreSQL) et pilotable via l'API d'administration.
-- **Fiabilisation des imports de données externes** :
-    - Correction des flux de données **HAL** (gestion des identifiants ROR/RNSR, des URLs de sites et des descriptions).
-    - Correction de la récupération des organisations via **Wikidata**.
-    - Correction de l'importation des utilisateurs et de la gestion des identifiants depuis **GitHub**.
-- **Correction de données** : Passage à l'utilisation de `conceptrecid` au lieu de l'ID de record pour assurer la cohérence des données.
+- **Optimisation des imports** : Amélioration des performances pour les imports massifs, notamment pour la source Zenodo [#516](https://github.com/codegouvfr/catalogi/issues/516).
+- **Fiabilisation des flux de données** : Correction de plusieurs bugs liés à l'importation de données externes :
+    - Correction des imports de données HAL [#549](https://github.com/codegouvfr/catalogi/issues/549).
+    - Correction de l'importation des utilisateurs depuis GitHub [#550](https://github.com/codegouvfr/catalogi/issues/550).
+    - Amélioration de la récupération des organisations via Wikidata.
+    - Correction de la gestion des identifiants GitHub et des données ROR (Research Organization Registry).
+- **Gestion des données** : 
+    - Ajout du champ `lastimport` sur les sources pour un meilleur suivi.
+    - Correction de la sauvegarde des descriptions et des données externes en base de données.
+- **Maintenance et tests** : 
+    - Refactorisation des migrations de base de données.
+    - Découplage et amélioration des tests liés à la configuration de l'interface utilisateur.
 
 ### Autres changements
-- Réorganisation de l'ordre des migrations de la base de données.
+- Mises à jour de la version et du build du projet.
