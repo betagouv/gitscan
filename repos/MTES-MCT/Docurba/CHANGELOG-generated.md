@@ -1,22 +1,32 @@
-## Changelog : Docurba (30 derniers jours, au 18 août 2026)
+## Changelog : Docurba (30 derniers jours, au 10 septembre 2026)
 
 ### Résumé
-Ce mois-ci, Docurba a connu une phase importante de consolidation technique, marquée par la migration de plusieurs services de données vers le backend pour renforcer la fiabilité du système. L'expérience utilisateur est enrichie par le support du format Markdown pour les descriptions et une meilleure gestion des types d'événements réglementaires.
+Ce mois-ci, les développements ont principalement porté sur le renforcement de la sécurité des comptes utilisateurs, avec une mise en conformité des politiques de mots de passe (recommandations CNIL) et une gestion plus robuste des sessions. L'expérience de communication a également été améliorée grâce à une intégration plus fiable des services d'envoi d'emails et de notifications Slack.
 
 ### Évolutions fonctionnelles
-- **Support du format Markdown** : les descriptions de procédures et d'événements acceptent désormais le format Markdown, avec une gestion automatique des liens externes.
-- **Nouveaux types d'événements** : intégration des types d'événements liés à la loi Huwart (PP et PPI).
-- **Amélioration de l'administration** : possibilité d'archiver ou de désarchiver des événements directement depuis l'interface Django et ajout de nouveaux filtres pour les procédures.
-- **Interface utilisateur** : ajout d'une bannière d'information pour signaler les périodes de congés.
-- **Fiabilité du partage** : amélioration de la gestion des adresses email lors du partage de procédures pour éviter les erreurs de formatage.
+- **Gestion des accès et sécurité** :
+    - Refonte complète du processus de réinitialisation et de mise à jour des mots de passe.
+    - Mise en place de validations de sécurité renforcées lors de la création ou du changement de mot de passe.
+    - Amélioration de la clarté des messages d'erreur lors de la tentative de connexion.
+- **Interface d'administration** :
+    - Ajout de nouveaux filtres et de colonnes de données (dates de création) pour faciliter la gestion des procédures et des profils.
+- **Notifications** :
+    - Amélioration de la lisibilité des sujets d'emails et des messages Slack pour une meilleure identification des contextes.
 
 ### Évolutions techniques
-- **Migration de l'architecture** : transfert majeur de la logique de données (communes, collectivités, intercommunalités, etc.) de l'interface Nuxt vers l'API Django pour centraliser le traitement métier.
-- **Optimisation des performances** : correction de problèmes de requêtes N+1 dans l'API interne et amélioration de la vitesse des tests.
-- **Refonte du système utilisateur** : renommage du modèle utilisateur (`SupabaseUser`) et intégration d'une gestion par profils.
-- **Amélioration du filtrage** : optimisation de la recherche par codes INSEE et SIREN et enrichissement des filtres de recherche sur les collectivités.
-- **Gestion des environnements** : renforcement de la configuration des variables d'environnement et suppression des bannières de développement en production.
-- **Nettoyage du code** : suppression de composants, de fonctions SQL et de répertoires de tests (E2E) obsolètes.
+- **Sécurité et API** :
+    - Migration des vues API Django vers Django Rest Framework (DRF) pour une meilleure standardisation.
+    - Sécurisation des API par défaut (déclaration comme privées).
+    - Centralisation de la logique d'envoi d'emails dans le backend (Django) via l'intégration de Sendgrid.
+    - Optimisation de la gestion des sessions pour éviter les durées de connexion infinies.
+- **Architecture et Intégration** :
+    - Consolidation de l'architecture en remplaçant les endpoints Nuxt par l'utilisation systématique de l'API interne.
+    - Optimisation de l'intégration avec Supabase (gestion des clés de service et des tokens).
+- **Infrastructure et Performance** :
+    - Optimisation de la configuration Nginx pour améliorer les taux de transfert.
+    - Amélioration de l'efficacité des scripts de sauvegarde (réduction de la consommation de RAM et de disque).
+    - Mise à niveau des plans d'infrastructure (Scalingo) pour supporter les besoins de déploiement.
 
 ### Autres changements
-- **Documentation** : ajout de nouvelles ressources métier, notamment une fiche technique DGALN-OAP ([#2307](https://github.com/MTES-MCT/Docurba/issues/2307)) et un guide pour la rédaction de cahiers des charges ([#2298](https://github.com/MTES-MCT/Docurba/issues/2298)).
+- **Nettoyage du code** : Suppression de composants frontend et de répertoires de tests obsolètes.
+- **CI/CD** : Mise à jour des outils de déploiement et de la CLI Supabase dans les workflows GitHub Actions.

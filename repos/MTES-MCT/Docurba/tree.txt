@@ -35,6 +35,13 @@
 │   │   └── wsgi.py
 │   ├── docurba
 │   │   ├── __init__.py
+│   │   ├── api
+│   │   │   ├── __init__.py
+│   │   │   ├── apps.py
+│   │   │   ├── migrations
+│   │   │   │   └── __init__.py
+│   │   │   ├── urls.py
+│   │   │   └── views.py
 │   │   ├── core
 │   │   │   ├── __init__.py
 │   │   │   ├── admin.py
@@ -118,8 +125,7 @@
 │   │   │   │       ├── drop_table_procedures_perimetres.sql
 │   │   │   │       └── drop_table_projects.sql
 │   │   │   ├── models.py
-│   │   │   ├── utils.py
-│   │   │   └── views.py
+│   │   │   └── utils.py
 │   │   ├── history
 │   │   │   ├── __init__.py
 │   │   │   ├── admin.py
@@ -175,16 +181,29 @@
 │   │   │   ├── admin.py
 │   │   │   ├── apps.py
 │   │   │   ├── enums.py
+│   │   │   ├── management
+│   │   │   │   └── commands
+│   │   │   │       ├── __init__.py
+│   │   │   │       └── rotate_passwords.py
 │   │   │   ├── migrations
 │   │   │   │   ├── 0001_squashed_0006_user.py
 │   │   │   │   ├── 0002_user_profile.py
 │   │   │   │   ├── 0003_enable_track_functions.py
 │   │   │   │   ├── 0004_disable_track_functions.py
+│   │   │   │   ├── 0005_enable_rls.py
+│   │   │   │   ├── 0006_add_colum_profile_must_update_password.py
+│   │   │   │   ├── 0007_fill_profile_must_reset_password.py
+│   │   │   │   ├── 0008_delete_session.py
 │   │   │   │   └── __init__.py
 │   │   │   └── models.py
 │   │   └── utils
 │   │       ├── __init__.py
-│   │       └── enums.py
+│   │       ├── api
+│   │       │   ├── __init__.py
+│   │       │   └── views.py
+│   │       ├── emails.py
+│   │       ├── enums.py
+│   │       └── password_validation.py
 │   ├── exports
 │   │   └── README.md
 │   ├── manage.py
@@ -201,6 +220,11 @@
 │   ├── supervisord.conf
 │   ├── tests
 │   │   ├── __init__.py
+│   │   ├── api
+│   │   │   ├── __init__.py
+│   │   │   ├── __snapshots__
+│   │   │   │   └── test_views.ambr
+│   │   │   └── test_views.py
 │   │   ├── conftest.py
 │   │   ├── core
 │   │   │   ├── __init__.py
@@ -216,8 +240,7 @@
 │   │   │   │       ├── test_event_type_add_scope_pplh_ppilh.py
 │   │   │   │       └── test_link_events_with_event_types.py
 │   │   │   ├── test_admin.py
-│   │   │   ├── test_models.py
-│   │   │   └── test_views.py
+│   │   │   └── test_models.py
 │   │   ├── history
 │   │   │   ├── __init__.py
 │   │   │   └── test_admin.py
@@ -233,11 +256,15 @@
 │   │   ├── surveys
 │   │   │   ├── __init__.py
 │   │   │   └── test_models.py
-│   │   └── users
+│   │   ├── users
+│   │   │   ├── __init__.py
+│   │   │   ├── factories.py
+│   │   │   ├── test_admin.py
+│   │   │   ├── test_models.py
+│   │   │   └── test_rotate_passwords_management_command.py
+│   │   └── utils
 │   │       ├── __init__.py
-│   │       ├── factories.py
-│   │       ├── test_admin.py
-│   │       └── test_models.py
+│   │       └── test_validators.py
 │   └── uv.lock
 ├── docker
 │   └── test_db
@@ -1066,4 +1093,4 @@
 └── supabase
     ├── .gitignore
     └── config.toml
-209 directories, 901 files
+217 directories, 920 files
