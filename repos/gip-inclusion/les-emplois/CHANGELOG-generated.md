@@ -1,20 +1,23 @@
-## Changelog : les-emplois (30 derniers jours, au 2026-09-08)
+## Changelog : les-emplois (30 derniers jours, au 10 septembre 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se sont concentrées sur l'amélioration du suivi des parcours (PASS IAE) grâce à l'intégration d'outils de gestion internes et de notifications automatiques. L'expérience utilisateur a été enrichie par de nouveaux indicateurs pour anticiper les fins de contrat (pour les employeurs et les accompagnateurs) et par une refonte de l'identité visuelle de la plateforme pour garantir une meilleure cohérence.
+Ce mois-ci, la plateforme a considérablement renforcé ses outils de gestion des parcours. Les évolutions majeures concernent la refonte de la gestion des accompagnements (création, modification, archivage) et l'internalisation de la clôture des dossiers PASS IAE, qui ne dépendent plus d'outils tiers. L'expérience utilisateur est également enrichie par un meilleur suivi de la fin des contrats et une identité visuelle affinée.
 
 ### Évolutions fonctionnelles
-- **Gestion des PASS IAE (Approvals) :** Remplacement des outils externes (Tally) par un formulaire interne pour la clôture des dossiers, mise en place de notifications automatiques pour les candidats lors de la clôture, et possibilité pour le support de générer des liens de prolongation hors délais.
-- **Accompagnement et suivi des candidats :** Création d'un onglet "Accompagnateurs" dans la vue candidat, ajout de bannières d'alerte et de compteurs pour anticiper les fins de contrat, et nouveaux filtres de recherche spécifiques aux acteurs IAE.
-- **Interface et Expérience Utilisateur :** Refonte globale de l'identité visuelle (branding), réorganisation du menu "Structure" pour les employeurs, et amélioration de l'affichage des candidatures (tri par nom, meilleure gestion des espaces).
-- **Insertion et Offres :** Importation des offres d'emploi des employeurs "Handi Engagés" via France Travail, sauvegarde automatique des pièces jointes lors des orientations, et ajout d'un filtre "handicap" pour les offres d'emploi.
+- **Gestion des accompagnements** : Mise en place de nouvelles fonctionnalités pour créer, modifier et archiver les dossiers d'accompagnement. Un nouvel onglet "Conseillers" et des boîtes de revue ont été ajoutés pour améliorer le suivi des candidats.
+- **Clôture des PASS IAE** : Les employeurs peuvent désormais clôturer un dossier PASS IAE via un formulaire interne (remplaçant l'usage de Tally), avec une notification automatique envoyée au candidat.
+- **Suivi de fin de parcours** : Ajout de bannières d'alerte et de compteurs pour signaler la fin prochaine d'un contrat ou d'un parcours, incluant des suggestions de prochaines étapes pour les candidats.
+- **Recherche et filtrage** : Évolution de la recherche "prescripteur" vers une recherche par "accompagnement" et ajout de nouveaux filtres (Handicap, GEIQ, OPCS).
+- **Interface et Branding** : Mise à jour de la terminologie et de l'identité visuelle de l'application pour une meilleure cohérence.
+- **Alertes** : Ajout de bannières pour annoncer des webinaires thématiques sur le tableau de bord.
 
 ### Évolutions techniques
-- **Architecture et Refactoring :** Suppression de modules obsolètes (`gps`, `recommendations`, `SPS`) et centralisation de la logique métier (éligibilité, clôture) dans des utilitaires pour faciliter la maintenance.
-- **Données et API :** Optimisation des performances des requêtes pour les vues candidats, ajout de nouveaux champs de suivi (dates de dernière action), extension des droits d'accès (scopes) des API, et création de nouvelles tables pour le tableau de bord GEIQ.
-- **Automatisation et Maintenance :** Mise en place de nouvelles commandes de gestion pour la détection de fichiers manquants ou perdus et la mise à jour automatique des affectations des candidats.
+- **Automatisation (Cron)** : Introduction de nouveaux processus automatiques pour l'archivage des anciens accompagnements et la détection de fichiers manquants dans les dossiers.
+- **Modèle de données** : Enrichissement du modèle d'accompagnement (nouveaux champs `is_active`, `last_action_at`) et création de nouvelles tables pour le suivi des évaluations GEIQ.
+- **API et Sécurité** : Mise à jour des périmètres d'accès (scopes) des API et ajout d'un cookie d'identifiant de navigateur pour améliorer la traçabilité des journaux d'audit.
+- **Performance** : Optimisation de la vitesse de migration des CV vers le mode privé.
+- **Tests** : Amélioration significative de la couverture de tests, notamment via la création de nouvelles usines de données (factories) pour les professionnels et les accompagnements.
 
 ### Autres changements
-- Amélioration significative de la couverture et de la robustesse des tests automatisés.
-- Mise à jour de la documentation technique (notamment sur l'alternative Podman à Docker).
-- Optimisation des workflows CI/CD et de la cohérence du formatage du code.
+- **Documentation** : Mise à jour des instructions d'installation locale et correction des liens de la documentation.
+- **Qualité du code** : Nettoyage massif de la typographie et des espaces dans les templates pour assurer une présentation visuelle homogène.

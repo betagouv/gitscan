@@ -1,46 +1,44 @@
 {
   "url": "https://github.com/gip-inclusion/les-emplois",
   "name": "les-emplois",
-  "description": "Service numérique de délivrance des PASS IAE et de mise en relation d'employeurs inclusifs avec des candidats éloignés de l'emploi via des prescripteurs ou en autoprescription.",
+  "description": "Service numérique de délivrance des PASS IAE et de mise en relation d'employeurs inclusifs avec des candidats éloignés de l'emploi via des tiers ou en autoprescription.",
   "language": "Python",
   "features": [
-    "API & Intégrations",
-    "Authentification & Accès",
-    "Formulaires & Démarches",
     "Gestion des utilisateurs & Permissions",
-    "Gestion métier générale",
-    "Notifications & Alertes",
     "Recherche & Filtres",
+    "Formulaires & Démarches",
+    "Notifications & Alertes",
     "Statistiques & Rapports",
-    "Tableaux & Affichage"
+    "Gestion métier générale",
+    "Authentification & Accès"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Django",
     "PostgreSQL",
     "PostGIS",
-    "Redis",
     "MinIO",
+    "Redis",
     "GDAL",
     "GEOS",
     "uv",
-    "pytest"
+    "pytest",
+    "pip-tools"
   ],
   "components": [
     "API REST & GraphQL",
-    "Authentification (composant)",
-    "Django",
-    "Docker & Conteneurs",
-    "Intégrations services externes",
-    "ORM & Accès aux données",
+    "PostgreSQL & SQL",
     "Python (scripts & backend)",
-    "SIG & Géospatial"
+    "Docker & Conteneurs",
+    "Tests",
+    "Authentification (composant)",
+    "ORM & Accès aux données"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "mfa",
       "sso",
+      "mfa",
       "session"
     ],
     "providers": [
@@ -48,18 +46,19 @@
     ]
   },
   "tests": "pytest",
-  "workflows": [],
+  "workflows": [
+    "CI/CD"
+  ],
   "lastActivity": "2026-09-07T00:00:00Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
   "tags": [
-    "Données & Open Data",
-    "Docker & Conteneurs",
     "Emploi, Social & Logement",
     "Python",
-    "SIG & Géospatial",
     "Bases de données SQL",
-    "Accessibilité"
+    "Docker & Conteneurs",
+    "CI/CD & GitHub Actions",
+    "Écosystème beta.gouv / État"
   ]
 }
