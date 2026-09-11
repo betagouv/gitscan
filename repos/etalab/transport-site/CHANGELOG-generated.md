@@ -1,24 +1,26 @@
-## Changelog : transport-site (30 derniers jours, au 02/09/2026)
+## Changelog : transport-site (30 derniers jours, au 08/09/2026)
 
 ### Résumé
-Les récentes évolutions se concentrent sur la fiabilisation du traitement des données NeTEx et l'amélioration de la précision des rapports de consolidation (notamment pour l'IRVE). L'interface utilisateur a également été enrichie et optimisée pour offrir une meilleure visibilité lors de la gestion des données.
+Ce mois-ci, les efforts se sont concentrés sur l'amélioration de la fiabilité du traitement des données de transport (notamment les formats NeTEx et IRVE), le renforcement de la sécurité et la correction de plusieurs problèmes d'affichage pour garantir une interface plus stable et cohérente.
 
 ### Évolutions fonctionnelles
-- **Amélioration des rapports IRVE** : ajout du statut des ressources dans les rapports de consolidation [#5565](https://github.com/etalab/transport-site/issues/5565).
-- **Correction de données** : rectification du mapping des données GBFS pour Leo&Go [#5593](https://github.com/etalab/transport-site/issues/5593).
-- **Interface utilisateur** : 
-    - Ajout de nouvelles variantes pour les boutons colorés [#5603](https://github.com/etalab/transport-site/issues/5603).
-    - Amélioration de l'affichage de l'interface en cas d'invalidité des données NeTEx [#5606](https://github.com/etalab/transport-site/issues/5606).
-- **Extraction de données** : mise en place de l'extraction des téléchargements pour l'ART [#5590](https://github.com/etalab/transport-site/issues/5590).
+- **Interface utilisateur** :
+    - Correction de problèmes d'affichage, notamment des boutons manquants ou des erreurs de mise en page [#5616](https://github.com/etalab/transport-site/issues/5616), [#5606](https://github.com/etalab/transport-site/issues/5606).
+    - Enrichissement de la bibliothèque de composants avec de nouvelles variantes de boutons [#5603](https://github.com/etalab/transport-site/issues/5603).
+- **Données et rapports** :
+    - Amélioration des rapports de consolidation IRVE avec l'ajout du statut des ressources [#5565](https://github.com/etalab/transport-site/issues/5565).
+    - Ajout de l'extraction des données de téléchargement pour l'ART [#5590](https://github.com/etalab/transport-site/issues/5590).
+    - Correction du mapping des données GBFS pour Leo&Go [#5593](https://github.com/etalab/transport-site/issues/5593).
 
 ### Évolutions techniques
-- **Optimisation du moteur NeTEx** : 
-    - Automatisation du choix de la version XSD en fonction de la date de publication des données [#5602](https://github.com/etalab/transport-site/issues/5602), [#5600](https://github.com/etalab/transport-site/issues/5600).
-    - Amélioration des performances via le stockage direct des validations en DataFrame [#5577](https://github.com/etalab/transport-site/issues/5577).
-    - Uniformisation du stockage et des versions du validateur [#5576](https://github.com/etalab/transport-site/issues/5576).
-    - Extraction optimisée de la date de publication dans les métadonnées [#5599](https://github.com/etalab/transport-site/issues/5599).
-- **Optimisation de traitement** : réduction du nombre de passes pour la correction des coordonnées lors de la consolidation IRVE [#5560](https://github.com/etalab/transport-site/issues/5560).
-- **Maintenance et sécurité** : 
-    - Application de mises à jour de sécurité [#5581](https://github.com/etalab/transport-site/issues/5581).
-    - Stabilisation de la suite de tests [#5587](https://github.com/etalab/transport-site/issues/5587).
-    - Correction de remontées d'erreurs via Sentry [#5610](https://github.com/etalab/transport-site/issues/5610).
+- **Sécurité** :
+    - Renforcement de la protection des sessions via le chiffrement des cookies [#5619](https://github.com/etalab/transport-site/issues/5619).
+    - Application de diverses mises à jour de sécurité globales [#5581](https://github.com/etalab/transport-site/issues/5581).
+- **Traitement des données (NeTEx & GTFS)** :
+    - Optimisation majeure du validateur NeTEx : gestion dynamique des schémas XSD selon la date de publication [#5602](https://github.com/etalab/transport-site/issues/5602), [#5600](https://github.com/etalab/transport-site/issues/5600), extraction des dates de publication dans les métadonnées [#5599](https://github.com/etalab/transport-site/issues/5599) et uniformisation du stockage [#5576](https://github.com/etalab/transport-site/issues/5576).
+    - Amélioration des performances de validation NeTEx via un stockage direct en DataFrame [#5577](https://github.com/etalab/transport-site/issues/5577).
+    - Mise à jour du fichier de définition (.proto) pour le format GTFS-RT [#5617](https://github.com/etalab/transport-site/issues/5617).
+- **Maintenance et optimisation** :
+    - Refactoring du code pour réduire la duplication et améliorer la maintenabilité [#5618](https://github.com/etalab/transport-site/issues/5618).
+    - Optimisation du processus de correction des coordonnées pour la consolidation IRVE [#5560](https://github.com/etalab/transport-site/issues/5560).
+    - Stabilisation de la suite de tests et correction d'erreurs de monitoring (Sentry) [#5587](https://github.com/etalab/transport-site/issues/5587), [#5610](https://github.com/etalab/transport-site/issues/5610).
