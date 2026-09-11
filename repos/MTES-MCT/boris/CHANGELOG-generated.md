@@ -1,11 +1,14 @@
-## Changelog : boris (30 derniers jours, au 02/09/2026)
+## Changelog : boris (30 derniers jours, au 10 septembre 2026)
 
 ### Résumé
-Les récentes mises à jour renforcent les capacités d'analyse de la plateforme grâce à l'ajout de statistiques d'éligibilité et optimisent l'interface du portail ainsi que la gestion des données.
+Ce mois-ci, la plateforme a été enrichie de nouveaux outils de statistiques sur l'éligibilité et de modifications du portail utilisateur pour améliorer l'expérience de gestion. La sécurité de l'application a également été renforcée afin de mieux protéger les sessions et de limiter les tentatives d'accès abusives.
 
 ### Évolutions fonctionnelles
-- Ajout de nouvelles statistiques relatives à l'éligibilité [#523](https://github.com/MTES-MCT/boris/issues/523)
-- Modifications et ajustements sur le portail [#521](https://github.com/MTES-MCT/boris/issues/521)
+- Amélioration et modification du portail utilisateur ([#521](https://github.com/MTES-MCT/boris/issues/521))
+- Ajout de nouvelles statistiques d'éligibilité et optimisation des rapports existants ([#523](https://github.com/MTES-MCT/boris/issues/523))
+- Gestion et mapping de nouvelles colonnes de données ([#522](https://github.com/MTES-MCT/boris/issues/522))
+- Déploiement d'améliorations spécifiques pour les besoins de La Poste
+- Diverses corrections de bugs et améliorations d'usage
 
 ### Évolutions techniques
-- Amélioration de la gestion des données via l'ajout et le mapping de nouvelles colonnes [#522](https://github.com/MTES-MCT/boris/issues/522)
+- Renforcement de la sécurité : durcissement de la validation des données, de la gestion des sessions et mise en place du rate limiting ([#524](https://github.com/MTES-MCT/boris/issues/524))
