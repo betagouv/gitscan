@@ -14,6 +14,7 @@
 │       ├── cd-docker.yml
 │       ├── ci-check-i18n.yml
 │       ├── ci-check-migrations.yml
+│       ├── ci-check-tarteaucitron.yml
 │       ├── ci-e2e.yml
 │       ├── ci-main.yml
 │       ├── ci-quality.yml
@@ -24,16 +25,14 @@
 │       └── validate-notifications.yml
 ├── .gitignore
 ├── .locales
+├── .markdownlint.json
 ├── .pre-commit-config.yaml
 ├── .python-version
 ├── .slugignore
 ├── Aptfile
 ├── CONTRIBUTING.md
-├── DOD.md
 ├── Dockerfile
 ├── LICENSE
-├── NOTIFICATIONS.md
-├── ONBOARDING.md
 ├── Procfile
 ├── README.md
 ├── config
@@ -112,17 +111,51 @@
 │   ├── Makefile
 │   ├── README.md
 │   ├── _static
-│   │   └── .gitkeep
+│   │   ├── .gitkeep
+│   │   └── sites-conformes-schema.svg
+│   ├── _templates
+│   │   ├── breadcrumbs.html
+│   │   ├── searchbox.html
+│   │   └── source-buttons.html
 │   ├── changelog.md
 │   ├── conf.py
 │   ├── contrib
-│   │   └── git-blame-ignore-revs.md
-│   ├── guide
-│   │   ├── cas-pratique-annuaire.md
-│   │   ├── configuration.md
-│   │   ├── db-storage.md
-│   │   └── installation.md
+│   │   ├── architecture.md
+│   │   ├── definition-of-done.md
+│   │   ├── git-blame-ignore-revs.md
+│   │   ├── guide-contribution.md
+│   │   ├── index.md
+│   │   ├── installation-locale.md
+│   │   └── traductions.md
+│   ├── deploiement
+│   │   ├── docker.md
+│   │   ├── faq.md
+│   │   ├── index.md
+│   │   ├── introduction.md
+│   │   ├── migrer-hebergement.md
+│   │   ├── scalingo.md
+│   │   ├── serveur-linux.md
+│   │   └── variables-environnement.md
+│   ├── donnees
+│   │   ├── index.md
+│   │   ├── sauvegarde-restauration.md
+│   │   └── stockage-medias.md
+│   ├── fonctionnalites
+│   │   ├── 2fa.md
+│   │   ├── index.md
+│   │   └── notifications.md
 │   ├── index.md
+│   ├── locales
+│   │   └── fr
+│   │       └── LC_MESSAGES
+│   │           ├── sphinx.mo
+│   │           └── sphinx.po
+│   ├── paquet
+│   │   ├── configuration.md
+│   │   ├── exemple-annuaire.md
+│   │   ├── index.md
+│   │   ├── installation.md
+│   │   └── recherche.md
 │   └── requirements.txt
 ├── e2e
 │   ├── errors.spec.ts
@@ -150,8 +183,9 @@
 │   ├── restore_local_medias.sh
 │   ├── restore_prod_db.sh
 │   ├── restore_prod_medias.sh
-│   └── sample_conf_files
-│       └── nginx.conf.template
+│   ├── sample_conf_files
+│   │   └── nginx.conf.template
+│   └── sync_tarteaucitron.sh
 ├── sites_conformes
 │   ├── __init__.py
 │   ├── _version.py
@@ -231,6 +265,8 @@
 │   │   │   ├── 0060_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
 │   │   │   ├── 0061_alter_blogentrypage_body_alter_blogindexpage_body_and_more.py
 │   │   │   ├── 0062_alter_blogentrypage_body_alter_blogindexpage_body.py
+│   │   │   ├── 0063_recent_blogs_block__see_all_posts_link.py
+│   │   │   ├── 0064_recent_events_block__see_all_events_link.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── templates
@@ -374,6 +410,8 @@
 │   │   │   ├── 0078_alter_catalogindexpage_body_alter_contentpage_body.py
 │   │   │   ├── 0079_alter_catalogindexpage_body_alter_contentpage_body.py
 │   │   │   ├── 0080_cmsdsfrconfig_iframe_allow_origins.py
+│   │   │   ├── 0081_recent_blogs_block__see_all_posts_link.py
+│   │   │   ├── 0082_recent_events_block__see_all_events_link.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── monkey_patches.py
@@ -391,6 +429,7 @@
 │   │   │   │   ├── undraw_female_avatar_efig.svg
 │   │   │   │   └── undraw_male_avatar_g98d.svg
 │   │   │   └── pages_data.json
+│   │   ├── search_view_loader.py
 │   │   ├── services
 │   │   │   ├── __init__.py
 │   │   │   ├── accessors.py
@@ -492,6 +531,7 @@
 │   │   │   ├── test_iframe_middleware.py
 │   │   │   ├── test_managers.py
 │   │   │   ├── test_search.py
+│   │   │   ├── test_search_view_loader.py
 │   │   │   ├── test_services_accessors.py
 │   │   │   ├── test_services_import_export.py
 │   │   │   ├── test_translation.py
@@ -507,13 +547,16 @@
 │   ├── dashboard
 │   │   ├── __init__.py
 │   │   ├── apps.py
+│   │   ├── forms.py
 │   │   ├── locale
 │   │   │   └── fr
 │   │   │       └── LC_MESSAGES
 │   │   │           ├── django.mo
 │   │   │           └── django.po
+│   │   ├── middleware.py
 │   │   ├── migrations
 │   │   │   └── __init__.py
+│   │   ├── monkey_patches.py
 │   │   ├── notifications.py
 │   │   ├── templates
 │   │   │   ├── admin_icons
@@ -521,6 +564,9 @@
 │   │   │   ├── sites_conformes_admin
 │   │   │   │   └── panels
 │   │   │   │       └── _notifications.html
+│   │   │   ├── wagtail_2fa
+│   │   │   │   ├── device_form.html
+│   │   │   │   └── otp_form_v6.html
 │   │   │   └── wagtailadmin
 │   │   │       ├── account
 │   │   │       │   └── password_reset
@@ -540,7 +586,11 @@
 │   │   │           └── base.html
 │   │   ├── tests
 │   │   │   ├── __init__.py
+│   │   │   ├── test_2fa_device_setup.py
+│   │   │   ├── test_2fa_login_form.py
+│   │   │   ├── test_middleware.py
 │   │   │   ├── test_notifications.py
+│   │   │   ├── test_password_reset_forms.py
 │   │   │   └── test_views.py
 │   │   ├── views.py
 │   │   └── wagtail_hooks.py
@@ -616,6 +666,8 @@
 │   │   │   ├── 0032_alter_evententrypage_body_alter_eventsindexpage_body.py
 │   │   │   ├── 0033_alter_evententrypage_body_alter_eventsindexpage_body.py
 │   │   │   ├── 0034_alter_evententrypage_body_alter_eventsindexpage_body.py
+│   │   │   ├── 0035_recent_blogs_block__see_all_posts_link.py
+│   │   │   ├── 0036_recent_events_block__see_all_events_link.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── static
@@ -813,8 +865,8 @@
 │   │           │   ├── tarteaucitron.it.min.js
 │   │           │   ├── tarteaucitron.ja.js
 │   │           │   ├── tarteaucitron.ja.min.js
-│   │           │   ├── tarteaucitron.kr.js
-│   │           │   ├── tarteaucitron.kr.min.js
+│   │           │   ├── tarteaucitron.ko.js
+│   │           │   ├── tarteaucitron.ko.min.js
 │   │           │   ├── tarteaucitron.lb.js
 │   │           │   ├── tarteaucitron.lb.min.js
 │   │           │   ├── tarteaucitron.lt.js
@@ -839,6 +891,8 @@
 │   │           │   ├── tarteaucitron.se.min.js
 │   │           │   ├── tarteaucitron.sk.js
 │   │           │   ├── tarteaucitron.sk.min.js
+│   │           │   ├── tarteaucitron.sq.js
+│   │           │   ├── tarteaucitron.sq.min.js
 │   │           │   ├── tarteaucitron.sv.js
 │   │           │   ├── tarteaucitron.sv.min.js
 │   │           │   ├── tarteaucitron.tr.js
@@ -874,4 +928,4 @@
 │   └── utils
 │       └── __init__.py
 └── uv.lock
-147 directories, 729 files
+155 directories, 775 files

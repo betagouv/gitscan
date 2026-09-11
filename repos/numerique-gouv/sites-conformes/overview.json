@@ -1,64 +1,66 @@
 {
   "url": "https://github.com/numerique-gouv/sites-conformes",
   "name": "sites-conformes",
-  "description": "Permet la création simplifiée de sites internet conformes aux normes numériques de l'État français, utilisant le Système de design de l'État (DSFR). Basé sur Django et Wagtail, il facilite la gestion de contenus pour les domaines en .gouv.fr.",
+  "description": "Permet la création simplifiée de sites internet conformes aux normes numériques de l'État français. Il utilise le Système de design de l'État (DSFR) et le CMS Wagtail pour construire des pages rapidement et de manière accessible.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
-    "Authentification & Accès",
     "Recherche & Filtres",
-    "Contenu éditorial",
     "Sécurité & Conformité",
+    "Administration & Backoffice",
     "Interface utilisateur & Design",
-    "Notifications & Alertes",
-    "Formulaires & Démarches",
-    "Calendrier & Planification"
+    "Accessibilité & i18n"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
     "Wagtail",
     "PostgreSQL",
-    "django-dsfr",
-    "Playwright",
-    "Sentry",
-    "Boto3"
+    "DSFR",
+    "django-storages",
+    "boto3",
+    "mozilla-django-oidc"
   ],
   "components": [
+    "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
     "Design System (DSFR & UI libs)",
     "Docker & Conteneurs",
     "CMS (Strapi, Wagtail…)",
-    "Templates & Moteurs de rendu",
-    "Scripts & Utilitaires",
-    "Authentification (composant)"
+    "Authentification (composant)",
+    "Templates & Moteurs de rendu"
   ],
   "auth": {
     "methods": [
-      "sso"
+      "mfa",
+      "sso",
+      "jwt",
+      "session"
     ],
     "providers": [
-      "ProConnect"
+      "OIDC"
     ]
   },
-  "tests": "Playwright pour les tests end-to-end (e2e) et tests unitaires Django.",
-  "workflows": [
-    "CI/CD via GitHub Actions"
+  "tests": [
+    "Playwright",
+    "coverage"
   ],
-  "lastActivity": "2026-08-18T16:15:36+02:00",
+  "workflows": [
+    "GitHub Actions"
+  ],
+  "lastActivity": "2026-09-10T10:22:26+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "Python",
-    "Bases de données SQL",
-    "Design System & UI",
-    "CI/CD & GitHub Actions",
+    "Django & FastAPI",
     "Wagtail, CMS & générateurs statiques",
+    "Design System & UI",
     "Accessibilité",
-    "Legal & Conformité",
-    "HTML, CSS & Web"
+    "CI/CD & GitHub Actions",
+    "Docker & Conteneurs"
   ]
 }
