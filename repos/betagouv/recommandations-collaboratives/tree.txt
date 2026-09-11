@@ -239,6 +239,7 @@
 │   │   │   │   │   │   ├── project
 │   │   │   │   │   │   │   └── project_card.html
 │   │   │   │   │   │   ├── sidebar.html
+│   │   │   │   │   │   ├── th_info.html
 │   │   │   │   │   │   └── user
 │   │   │   │   │   │       └── user_card.html
 │   │   │   │   │   ├── note.html
@@ -1499,7 +1500,6 @@
 │   │   │   │   │   │   ├── canSeeEmailReminderAsOwner.cy.js
 │   │   │   │   │   │   ├── canSeeGeneralInformation.cy.js
 │   │   │   │   │   │   ├── canSeeProjectActiveStatus.cy.js
-│   │   │   │   │   │   ├── cantAccessInlineTasks.cy.js
 │   │   │   │   │   │   ├── cantChangeTopics.cy.js
 │   │   │   │   │   │   ├── cantInviteASwitchtender.cy.js
 │   │   │   │   │   │   ├── cantQuitProjectAsProjectOwner.cy.js
@@ -1575,12 +1575,12 @@
 │   │   │   │   │   │   │   └── canReadOnlyRecommandations.cy.js
 │   │   │   │   │   │   ├── readOnly
 │   │   │   │   │   │   │   ├── canReadOnlyOverviewPage.cy.js
-│   │   │   │   │   │   │   ├── canReadOnlyPublicNotes.cy.js
-│   │   │   │   │   │   │   └── canReadOnlyRecommandations.cy.js
+│   │   │   │   │   │   │   └── canReadOnlyPublicNotes.cy.js
 │   │   │   │   │   │   └── regionalUnassigned
 │   │   │   │   │   │       ├── adviseOrObserveAProject.cy.js
 │   │   │   │   │   │       └── cantAccessPrivateNotes.cy.js
 │   │   │   │   │   └── tasks
+│   │   │   │   │       ├── canChangeDraftTaskOrder.cy.js
 │   │   │   │   │       ├── canDeleteTask.cy.js
 │   │   │   │   │       ├── canPublishDraftTask.cy.js
 │   │   │   │   │       ├── canPublishTaskWithRessource.cy.js
@@ -1591,10 +1591,8 @@
 │   │   │   │   │       │   ├── canEditAndShareContact.cy.js
 │   │   │   │   │       │   ├── canSuppressContact.cy.js
 │   │   │   │   │       │   └── canclickToSeeContact.cy.js
-│   │   │   │   │       ├── content
-│   │   │   │   │       │   └── canSeeTaskResourceInitialCommentTitleAndSubtitle.cy.js
-│   │   │   │   │       └── topic
-│   │   │   │   │           └── canSeeKabanAndInlineTaskTopic.cy.js
+│   │   │   │   │       └── content
+│   │   │   │   │           └── canSeeTaskResourceInitialCommentTitleAndSubtitle.cy.js
 │   │   │   │   ├── public
 │   │   │   │   │   └── canAccessAWayToContactTheTeam.cy.js
 │   │   │   │   ├── resource
@@ -1608,6 +1606,7 @@
 │   │   │   │   └── tools
 │   │   │   │       ├── conversation
 │   │   │   │       │   ├── canAddAFileInMessage.cy.js
+│   │   │   │       │   ├── canReplyToAMessage.cy.js
 │   │   │   │       │   └── cantSendAnEmptyMessage.cy.js
 │   │   │   │       ├── documents
 │   │   │   │       │   ├── canAddALink.cy.js
@@ -1625,7 +1624,6 @@
 │   │   │   │       │   ├── canUpdateContactOfAResource.cy.js
 │   │   │   │       │   └── canUpdateDeparmentsOfAResource.cy.js
 │   │   │   │       ├── task
-│   │   │   │       │   ├── canAddAfileInTask.cy.js
 │   │   │   │       │   └── canEditTaskComments.cy.js
 │   │   │   │       └── tutorial
 │   │   │   │           ├── externalResourceTutorial.cy.js
@@ -1634,6 +1632,8 @@
 │   │   │   │   ├── addressbook
 │   │   │   │   │   ├── contacts.json
 │   │   │   │   │   └── organizations.json
+│   │   │   │   ├── conversations
+│   │   │   │   │   └── conversations.json
 │   │   │   │   ├── documents
 │   │   │   │   │   ├── documents.json
 │   │   │   │   │   ├── file.json
@@ -1644,6 +1644,7 @@
 │   │   │   │   │   └── region.json
 │   │   │   │   ├── images
 │   │   │   │   │   └── ui-screenshot.png
+│   │   │   │   ├── index.js
 │   │   │   │   ├── profiles
 │   │   │   │   │   └── profiles.json
 │   │   │   │   ├── projects
@@ -1659,11 +1660,12 @@
 │   │   │   │   ├── settings
 │   │   │   │   │   ├── challenge.json
 │   │   │   │   │   ├── challengeDefinition.json
+│   │   │   │   │   ├── featureFlags.json
 │   │   │   │   │   ├── siteWithOnboardingAndSurvey.json
 │   │   │   │   │   └── tag.json
 │   │   │   │   ├── users
+│   │   │   │   │   ├── accountEmailAddress.json
 │   │   │   │   │   ├── advisorAccessRequest.json
-│   │   │   │   │   ├── collectivity.json
 │   │   │   │   │   ├── contact.json
 │   │   │   │   │   └── users.json
 │   │   │   │   └── utils
@@ -1676,8 +1678,11 @@
 │   │   │       │   └── forms.tools.js
 │   │   │       ├── e2e.js
 │   │   │       ├── tools
+│   │   │       │   ├── actionPusher.js
 │   │   │       │   ├── editor.js
-│   │   │       │   └── geolocation.js
+│   │   │       │   ├── geolocation.js
+│   │   │       │   ├── resourcePreviewPanel.js
+│   │   │       │   └── sharedContentsPanel.js
 │   │   │       └── views
 │   │   │           └── project.js
 │   │   ├── cypress.config.js
@@ -2155,6 +2160,7 @@
 │   │   │           ├── stringToColor.js
 │   │   │           ├── taskStatus.js
 │   │   │           ├── text-parsing.js
+│   │   │           ├── tiptapExtensions.js
 │   │   │           ├── tiptapParser.js
 │   │   │           ├── tooltipInitialization.js
 │   │   │           ├── trackingMatomo.js
@@ -2370,4 +2376,4 @@
 │   ├── stats-uv.sql
 │   └── stats.sql
 └── uv.lock
-375 directories, 1997 files
+375 directories, 2003 files

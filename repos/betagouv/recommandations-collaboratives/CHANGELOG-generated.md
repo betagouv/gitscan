@@ -1,23 +1,21 @@
-## Changelog : recommandations-collaboratives (30 derniers jours, au 04/09/2026)
+## Changelog : recommandations-collaboratives (30 derniers jours, au 10 septembre 2026)
 
 ### Résumé
-Cette période a été principalement consacrée au renforcement de la sécurité du logiciel et à l'optimisation de ses performances. Les outils d'administration (CRM) ont été améliorés pour offrir une meilleure visibilité sur les données, et la gestion des communications par email a été stabilisée pour garantir une expérience plus fiable.
+Ce mois-ci, l'effort s'est concentré sur la sécurisation massive de la plateforme, notamment pour garantir que les données restent strictement cloisonnées entre les différents sites et projets. Des améliorations de performance et de l'interface d'administration ont également été apportées pour fluidifier l'expérience des gestionnaires.
 
 ### Évolutions fonctionnelles
-- **Amélioration du CRM** : Refonte de la page d'administration du CRM [#2316](https://github.com/betagouv/recommandations-collaboratives/pull/2316) et correction de l'affichage des comptes de projets et de membres pour plus de cohérence.
-- **Nouveaux outils de filtrage** : Ajout de filtres dans l'interface d'administration pour identifier plus facilement les utilisateurs supprimés et les organisations "mystérieuses" [#2343](https://github.com/betagouv/recommandations-collaboratives/pull/2343).
-- **Optimisation des flux RSS** : Mise en place d'un système d'authentification pour les flux et filtrage automatique des ressources en mode "brouillon" pour ne proposer que du contenu publié [#2360](https://github.com/betagouv/recommandations-collaboratives/pull/2360).
-- **Gestion des emails** : Amélioration de l'intégration avec Brevo (gestion du nom de l'expéditeur) et renforcement de la validation des adresses email [#2256](https://github.com/betagouv/recommandations-collaboratives/pull/2256).
-- **Expérimentation** : Introduction d'une expérimentation liée à l'intelligence artificielle sur le frontend [#1939](https://github.com/betagouv/recommandations-collaboratives/pull/1939).
+- **Administration :** Ajout de filtres dans l'interface Nimda pour identifier plus facilement les utilisateurs supprimés et les organisations spécifiques [#2343](https://github.com/betagouv/recommandations-collaboratives/issues/2343).
+- **CRM :** Amélioration de la précision des compteurs (projets, membres) et de la visibilité des données selon les rôles des utilisateurs.
+- **Flux RSS :** Sécurisation des flux via un système d'authentification et filtrage automatique des ressources en mode brouillon.
+- **Expérience utilisateur :** Corrections sur le système de notifications (cloche de modération), les demandes d'accès pour les conseillers et l'intégration des portails embarqués.
 
 ### Évolutions techniques
-- **Sécurité renforcée** : 
-    - Implémentation d'une politique de sécurité de contenu (CSP) pour protéger l'application tout en permettant l'usage d'outils tiers (Matomo, Crisp) [#2342](https://github.com/betagouv/recommandations-collaboratives/pull/2342).
-    - Assainissement des données (sanitization) pour l'historique et les descriptions de projets afin de prévenir les failles d'injection [#2361](https://github.com/betagouv/recommandations-collaboratives/pull/2361).
-    - Durcissement des contrôles de permissions sur les API et les flux de données.
-- **Optimisation des performances** : Réduction massive des requêtes SQL inutiles (problème de N+1) via l'utilisation de `prefetch` sur les projets, les départements et les détails utilisateurs.
-- **Fiabilité et tests** : Augmentation significative de la couverture de tests, particulièrement sur la gestion des droits d'accès et les permissions des utilisateurs (advisors vs members).
+- **Sécurité :** Correction de plusieurs vulnérabilités critiques de type IDOR pour empêcher l'accès non autorisé à des ressources, projets ou documents appartenant à d'autres entités [#2380](https://github.com/betagouv/recommandations-collaboratives/issues/2380), [#2397](https://github.com/betagouv/recommandations-collaboratives/issues/2397), [#2378](https://github.com/betagouv/recommandations-collaboratives/issues/2378), [#2376](https://github.com/betagouv/recommandations-collaboratives/issues/2376).
+- **Sécurité :** Mise en place d'une politique de sécurité du contenu (CSP) et renforcement de la désinfection (sanitization) des contenus HTML et Markdown pour prévenir les injections.
+- **Performance :** Optimisation des requêtes de base de données (prefetching) pour accélérer l'affichage des projets et des détails utilisateurs.
+- **Refactoring :** Migration de composants vers la version 3 et amélioration de la gestion des listes et tableaux [#2319](https://github.com/betagouv/recommandations-collaboratives/issues/2319).
+- **Communication :** Sécurisation de l'envoi d'emails via Brevo (protection contre l'injection de paramètres dans les templates).
 
 ### Autres changements
-- **Nettoyage du code** : Suppression de code mort et de variables inutilisées pour améliorer la maintenabilité.
-- **Documentation** : Corrections de syntaxe dans les tutoriels.
+- **Tests :** Renforcement significatif de la couverture de tests, particulièrement sur les scénarios de régression liés à la sécurité.
+- **Maintenance :** Nettoyage du code (suppression de code mort) et mise en conformité du style (linting).
