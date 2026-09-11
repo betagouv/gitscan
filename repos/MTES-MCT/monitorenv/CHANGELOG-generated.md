@@ -1,18 +1,35 @@
-## Changelog : monitorenv (30 derniers jours, au 27 août 2026)
+## Changelog : monitorenv (30 derniers jours, au 10 septembre 2026)
 
 ### Résumé
-Ce mois-ci, les efforts se sont concentrés sur l'amélioration de la gestion des zones réglementaires et la fiabilisation de l'interface utilisateur. Les utilisateurs bénéficieront d'outils de recherche plus précis et d'une saisie de données plus intuitive, tandis que la stabilité globale du système a été renforcée par une amélioration significative des tests automatisés.
+Cette période a été marquée par un renforcement des capacités d'administration, notamment avec la gestion des zones réglementaires et l'import d'utilisateurs, ainsi que par une amélioration de l'ergonomie de l'interface et de l'interactivité de la cartographie.
 
 ### Évolutions fonctionnelles
-- **Gestion des zones réglementaires** : introduction de groupes réglementaires avec de nouveaux formulaires, simplification de la saisie (tags désormais optionnels) et renforcement des contrôles (type et localisation obligatoires).
-- **Recherche et navigation** : amélioration des capacités de recherche par localisation et affichage enrichi des options incluses dans les requêtes de recherche.
-- **Expérience utilisateur (UX/UI)** : corrections ergonomiques sur les boutons et les sélecteurs d'arborescence, et résolution de problèmes d'affichage liés aux noms de couches et aux caractères spéciaux.
-- **Précision des données** : correction de l'arrondi des coordonnées de longitude pour garantir la précision géographique.
+- **Administration & Backoffice** : 
+    - Mise en place de la première version de la gestion des zones réglementaires.
+    - Ajout du code FAO dans les tags du backoffice.
+    - Création d'une fonctionnalité d'import d'utilisateurs via des fichiers CSV (format Cerbere).
+- **Interface Utilisateur (UI/UX)** :
+    - Amélioration de l'ergonomie avec l'ajout d'un en-tête fixe (sticky header).
+    - Optimisation de l'interaction avec la carte : maintien de l'affichage des zones pendant le tracé et suppression des effets de survol perturbateurs.
+    - Affichage plus précis des jours de début et de fin pour les fréquences hebdomadaires.
+- **Corrections** :
+    - Rectification du tri de la colonne de mise à jour sur le tableau de bord.
+    - Correction de l'affichage des contacts des unités de contrôle dans l'API publique des missions.
+    - Suppression de messages d'avertissement inutiles dans l'interface.
 
 ### Évolutions techniques
-- **Architecture et données** : restructuration des classes de données, optimisation des flux de données pour les zones réglementaires et gestion des migrations SQL.
-- **Tests** : renforcement important de la suite de tests de bout en bout (E2E) pour assurer la stabilité des fonctionnalités de navigation et de couches.
-- **Infrastructure et outils** : intégration de la clé API Carto et mise à jour de la syntaxe pour l'orchestrateur Prefect.
+- **API & Flux de données** :
+    - Ajout d'un endpoint de mise à jour (patch) pour les unités de ressources (incluant l'ID d'enregistrement et la radiofréquence).
+    - Mise à jour du flux de données provenant de data.gouv pour les zones réglementaires.
+    - Amélioration du traitement des données JSON pour les références réglementaires.
+- **Performance & Architecture** :
+    - Virtualisation de l'affichage du code FAO pour optimiser les performances.
+    - Refactorisation des classes de données et de la structure des packages.
+    - Mise à jour de la syntaxe des pipelines de données (migration Prefect).
+- **Observabilité & Infrastructure** :
+    - Renforcement du logging sur les flux de données ouvertes (open data).
+    - Ajout de la clé API Carto pour les services cartographiques.
 
 ### Autres changements
-- **Maintenance** : nettoyage du code et mise à jour des outils de formatage et de qualité (Prettier, Lint).
+- **Accessibilité** : Ajustement de la palette de couleurs pour améliorer l'accessibilité (A11Y).
+- **Maintenance** : Nettoyage du code et mise à jour des fichiers de migration de base de données.

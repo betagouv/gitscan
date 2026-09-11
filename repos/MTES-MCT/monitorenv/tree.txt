@@ -96,7 +96,8 @@
 │   │   │   │                   │   │   │   ├── ControlUnitResourceEntity.kt
 │   │   │   │                   │   │   │   ├── ControlUnitResourceType.kt
 │   │   │   │                   │   │   │   ├── LegacyControlUnitEntity.kt
-│   │   │   │                   │   │   │   └── LegacyControlUnitResourceEntity.kt
+│   │   │   │                   │   │   │   ├── LegacyControlUnitResourceEntity.kt
+│   │   │   │                   │   │   │   └── PatchableControlUnitResourceEntity.kt
 │   │   │   │                   │   │   ├── dashboard
 │   │   │   │                   │   │   │   ├── BriefEntity.kt
 │   │   │   │                   │   │   │   ├── BriefFileEntity.kt
@@ -186,6 +187,8 @@
 │   │   │   │                   │   │   │   └── SeaFrontEntity.kt
 │   │   │   │                   │   │   ├── semaphore
 │   │   │   │                   │   │   │   └── SemaphoreEntity.kt
+│   │   │   │                   │   │   ├── species
+│   │   │   │                   │   │   │   └── SpecyEntity.kt
 │   │   │   │                   │   │   ├── station
 │   │   │   │                   │   │   │   └── StationEntity.kt
 │   │   │   │                   │   │   ├── tags
@@ -211,6 +214,8 @@
 │   │   │   │                   │   │   ├── BackendUsageErrorCode.kt
 │   │   │   │                   │   │   └── BackendUsageException.kt
 │   │   │   │                   │   ├── file
+│   │   │   │                   │   │   ├── csv
+│   │   │   │                   │   │   │   └── ICsvImportUser.kt
 │   │   │   │                   │   │   └── dashboard
 │   │   │   │                   │   │       └── IDashboardFile.kt
 │   │   │   │                   │   ├── mappers
@@ -244,6 +249,7 @@
 │   │   │   │                   │   │   ├── IReportingSourceRepository.kt
 │   │   │   │                   │   │   ├── ISeaFrontRepository.kt
 │   │   │   │                   │   │   ├── ISemaphoreRepository.kt
+│   │   │   │                   │   │   ├── ISpeciesRepository.kt
 │   │   │   │                   │   │   ├── IStationRepository.kt
 │   │   │   │                   │   │   ├── ITagRepository.kt
 │   │   │   │                   │   │   ├── IThemeRepository.kt
@@ -272,6 +278,7 @@
 │   │   │   │                   │   │   │   ├── DeleteUser.kt
 │   │   │   │                   │   │   │   ├── GetAuthorizedUser.kt
 │   │   │   │                   │   │   │   ├── GetIsAuthorizedUser.kt
+│   │   │   │                   │   │   │   ├── ImportUsers.kt
 │   │   │   │                   │   │   │   └── SaveUser.kt
 │   │   │   │                   │   │   ├── controlPlan
 │   │   │   │                   │   │   │   ├── GetControlPlans.kt
@@ -295,6 +302,7 @@
 │   │   │   │                   │   │   │   ├── GetControlUnits.kt
 │   │   │   │                   │   │   │   ├── GetLegacyControlUnits.kt
 │   │   │   │                   │   │   │   ├── GetNearbyUnits.kt
+│   │   │   │                   │   │   │   ├── PatchControlUnitResource.kt
 │   │   │   │                   │   │   │   └── dtos
 │   │   │   │                   │   │   │       ├── FullControlUnitContactDTO.kt
 │   │   │   │                   │   │   │       ├── FullControlUnitDTO.kt
@@ -311,6 +319,7 @@
 │   │   │   │                   │   │   │   ├── GetDepartmentAreaByInseeCode.kt
 │   │   │   │                   │   │   │   └── GetDepartmentAreas.kt
 │   │   │   │                   │   │   ├── facade
+│   │   │   │                   │   │   │   ├── ComputeSeaFrontFromGeometry.kt
 │   │   │   │                   │   │   │   └── GetSeaFronts.kt
 │   │   │   │                   │   │   ├── healthcheck
 │   │   │   │                   │   │   │   └── GetHealthcheck.kt
@@ -365,7 +374,8 @@
 │   │   │   │                   │   │   │   ├── GetRegulatoryAreaByIds.kt
 │   │   │   │                   │   │   │   ├── GetRegulatoryAreasGroupById.kt
 │   │   │   │                   │   │   │   └── dtos
-│   │   │   │                   │   │   │       └── RegulatoryAreaGroupDTO.kt
+│   │   │   │                   │   │   │       ├── RegulatoryAreaGroupDTO.kt
+│   │   │   │                   │   │   │       └── RegulatoryAreaGroupWithTotalDTO.kt
 │   │   │   │                   │   │   ├── reportings
 │   │   │   │                   │   │   │   ├── ArchiveOutdatedReportings.kt
 │   │   │   │                   │   │   │   ├── ArchiveReportings.kt
@@ -387,6 +397,8 @@
 │   │   │   │                   │   │   ├── semaphores
 │   │   │   │                   │   │   │   ├── GetAllSemaphores.kt
 │   │   │   │                   │   │   │   └── GetSemaphoreById.kt
+│   │   │   │                   │   │   ├── species
+│   │   │   │                   │   │   │   └── GetSpecies.kt
 │   │   │   │                   │   │   ├── station
 │   │   │   │                   │   │   │   ├── CanDeleteStation.kt
 │   │   │   │                   │   │   │   ├── CreateOrUpdateStation.kt
@@ -478,6 +490,7 @@
 │   │   │   │                   │   │   │   │   └── outputs
 │   │   │   │                   │   │   │   │       ├── BackendUsageErrorDataOutput.kt
 │   │   │   │                   │   │   │   │       ├── HealthcheckDataOutput.kt
+│   │   │   │                   │   │   │   │       ├── SeaFrontDataOutput.kt
 │   │   │   │                   │   │   │   │       ├── actions
 │   │   │   │                   │   │   │   │       │   ├── AwarenessDataOuput.kt
 │   │   │   │                   │   │   │   │       │   ├── AwarenessDetailsDataOutput.kt
@@ -532,6 +545,8 @@
 │   │   │   │                   │   │   │   │       │   └── ReportingsDataOutput.kt
 │   │   │   │                   │   │   │   │       ├── semaphores
 │   │   │   │                   │   │   │   │       │   └── SemaphoreDataOutput.kt
+│   │   │   │                   │   │   │   │       ├── species
+│   │   │   │                   │   │   │   │       │   └── SpecyDataOutput.kt
 │   │   │   │                   │   │   │   │       ├── tags
 │   │   │   │                   │   │   │   │       │   └── TagOutput.kt
 │   │   │   │                   │   │   │   │       ├── themes
@@ -561,7 +576,8 @@
 │   │   │   │                   │   │   │       │   │   ├── CreateOrUpdateControlUnitDataInput.kt
 │   │   │   │                   │   │   │       │   │   ├── CreateOrUpdateControlUnitResourceDataInput.kt
 │   │   │   │                   │   │   │       │   │   ├── LegacyControlUnitDataInput.kt
-│   │   │   │                   │   │   │       │   │   └── LegacyControlUnitResourceDataInput.kt
+│   │   │   │                   │   │   │       │   │   ├── LegacyControlUnitResourceDataInput.kt
+│   │   │   │                   │   │   │       │   │   └── PatchableControlUnitResourceDataInput.kt
 │   │   │   │                   │   │   │       │   ├── missions
 │   │   │   │                   │   │   │       │   │   ├── CreateOrUpdateMissionDataInput.kt
 │   │   │   │                   │   │   │       │   │   └── PatchableMissionDataInput.kt
@@ -598,6 +614,7 @@
 │   │   │   │                   │   │   │           ├── missions
 │   │   │   │                   │   │   │           │   ├── MissionDataOutput.kt
 │   │   │   │                   │   │   │           │   ├── MissionOutput.kt
+│   │   │   │                   │   │   │           │   ├── MissionTagDataOutput.kt
 │   │   │   │                   │   │   │           │   ├── MissionWithFishAndRapportNavActionsDataOutput.kt
 │   │   │   │                   │   │   │           │   └── MissionWithRapportNavActionsDataOutput.kt
 │   │   │   │                   │   │   │           ├── stations
@@ -631,6 +648,7 @@
 │   │   │   │                   │   │   │   │       ├── RegulatoryAreas.kt
 │   │   │   │                   │   │   │   │       ├── SeaFront.kt
 │   │   │   │                   │   │   │   │       ├── Semaphores.kt
+│   │   │   │                   │   │   │   │       ├── Species.kt
 │   │   │   │                   │   │   │   │       ├── Tags.kt
 │   │   │   │                   │   │   │   │       ├── Vessels.kt
 │   │   │   │                   │   │   │   │       ├── VigilanceAreas.kt
@@ -712,6 +730,7 @@
 │   │   │   │                   │   │   │   ├── ReportingSourceModel.kt
 │   │   │   │                   │   │   │   ├── ReportingsControlPlanSubThemeModel.kt
 │   │   │   │                   │   │   │   ├── SemaphoreModel.kt
+│   │   │   │                   │   │   │   ├── SpecyModel.kt
 │   │   │   │                   │   │   │   ├── StationModel.kt
 │   │   │   │                   │   │   │   ├── TagEnvActionModel.kt
 │   │   │   │                   │   │   │   ├── TagModel.kt
@@ -757,6 +776,7 @@
 │   │   │   │                   │   │       ├── JpaReportingSourceRepository.kt
 │   │   │   │                   │   │       ├── JpaSeaFrontRepository.kt
 │   │   │   │                   │   │       ├── JpaSemaphoreRepository.kt
+│   │   │   │                   │   │       ├── JpaSpecyRepository.kt
 │   │   │   │                   │   │       ├── JpaStationRepository.kt
 │   │   │   │                   │   │       ├── JpaTagRepository.kt
 │   │   │   │                   │   │       ├── JpaThemeRepository.kt
@@ -795,6 +815,7 @@
 │   │   │   │                   │   │       │   ├── IDBReportingRepository.kt
 │   │   │   │                   │   │       │   ├── IDBReportingSourceRepository.kt
 │   │   │   │                   │   │       │   ├── IDBSemaphoreRepository.kt
+│   │   │   │                   │   │       │   ├── IDBSpecyRepository.kt
 │   │   │   │                   │   │       │   ├── IDBStationRepository.kt
 │   │   │   │                   │   │       │   ├── IDBTagEnvActionRepository.kt
 │   │   │   │                   │   │       │   ├── IDBTagRegulatoryAreaRepository.kt
@@ -816,8 +837,11 @@
 │   │   │   │                   │   │       │   ├── IDBVigilanceAreaRepository.kt
 │   │   │   │                   │   │       │   └── IDBVigilanceAreaSourceRepository.kt
 │   │   │   │                   │   │       └── projections
-│   │   │   │                   │   │           └── EnvActionControlWithInfractions.kt
+│   │   │   │                   │   │           ├── EnvActionControlWithInfractions.kt
+│   │   │   │                   │   │           └── RegulatoryAreaGroupWithTotal.kt
 │   │   │   │                   │   ├── file
+│   │   │   │                   │   │   ├── csv
+│   │   │   │                   │   │   │   └── CsvImportUser.kt
 │   │   │   │                   │   │   ├── dashboard
 │   │   │   │                   │   │   │   ├── AmpFile.kt
 │   │   │   │                   │   │   │   ├── AttachmentFile.kt
@@ -1042,7 +1066,10 @@
 │   │   │       │   │   │   ├── V0.226__add_table_vessel_additional_informations_and_vessel_files.sql
 │   │   │       │   │   │   ├── V0.227__compute_new_facade.sql
 │   │   │       │   │   │   ├── V0.228__add_regulatory_areas_group.sql
-│   │   │       │   │   │   └── V0.229__re_add_regulatory_areas_group.sql
+│   │   │       │   │   │   ├── V0.229__re_add_regulatory_areas_group.sql
+│   │   │       │   │   │   ├── V0.230__add_control_unit_resources_registrationid_and_radiofrequency.sql
+│   │   │       │   │   │   ├── V0.231__update_refReg_regulatory_area_group.sql
+│   │   │       │   │   │   └── V0.232__create_table_species.sql
 │   │   │       │   │   └── layers
 │   │   │       │   │       ├── V0.001__create_fao_areas.sql
 │   │   │       │   │       ├── V0.002__create_eez_areas.sql
@@ -1119,7 +1146,9 @@
 │   │   │       │       ├── V666.27__insert_last_positions.sql
 │   │   │       │       ├── V666.29__insert_themes_natinfs.sql
 │   │   │       │       ├── V666.30__insert_mission_tags.sql
-│   │   │       │       └── V666.31__insert_regulatory_areas_group.sql
+│   │   │       │       ├── V666.31__insert_regulatory_areas_group.sql
+│   │   │       │       ├── V666.32__update_refReg_regulatory_area_group.sql
+│   │   │       │       └── V666.33__insert_species.sql
 │   │   │       ├── log4j2-spring.xml
 │   │   │       └── template_export_brief.docx
 │   │   └── test
@@ -1135,6 +1164,7 @@
 │   │       │                   ├── domain
 │   │       │                   │   ├── mappers
 │   │       │                   │   │   ├── EnvActionMapperUTest.kt
+│   │       │                   │   │   ├── PatchControlUnitResourceEntityUTest.kt
 │   │       │                   │   │   ├── PatchEnvActionEntityUTest.kt
 │   │       │                   │   │   └── PatchMissionEntityUTest.kt
 │   │       │                   │   ├── use_cases
@@ -1162,6 +1192,7 @@
 │   │       │                   │   │   │   ├── DeleteUserUTest.kt
 │   │       │                   │   │   │   ├── GetAuthorizedUserUTest.kt
 │   │       │                   │   │   │   ├── GetIsAuthorizedUserUTests.kt
+│   │       │                   │   │   │   ├── ImportUsersUTest.kt
 │   │       │                   │   │   │   └── SaveUserUTest.kt
 │   │       │                   │   │   ├── controlPlan
 │   │       │                   │   │   │   ├── GetControlPlansByYearUTest.kt
@@ -1185,6 +1216,7 @@
 │   │       │                   │   │   │   ├── GetControlUnitsUTests.kt
 │   │       │                   │   │   │   ├── GetLegacyControlUnitsUTest.kt
 │   │       │                   │   │   │   ├── GetNearbyUnitsUTest.kt
+│   │       │                   │   │   │   ├── PatchControlUnitResourceUTest.kt
 │   │       │                   │   │   │   └── fixtures
 │   │       │                   │   │   │       ├── ControlUnitContactFixture.kt
 │   │       │                   │   │   │       ├── ControlUnitFixture.kt
@@ -1265,6 +1297,10 @@
 │   │       │                   │   │   │   ├── GetSemaphoreByIdUTest.kt
 │   │       │                   │   │   │   └── fixtures
 │   │       │                   │   │   │       └── SemaphoreFixture.kt
+│   │       │                   │   │   ├── species
+│   │       │                   │   │   │   ├── GetSpeciesUTest.kt
+│   │       │                   │   │   │   └── fixtures
+│   │       │                   │   │   │       └── SpecyFixture.kt
 │   │       │                   │   │   ├── station
 │   │       │                   │   │   │   ├── CanDeleteStationUTests.kt
 │   │       │                   │   │   │   ├── CreateOrUpdateStationUTests.kt
@@ -1335,6 +1371,7 @@
 │   │       │                       │       │   │   ├── ReportingsITests.kt
 │   │       │                       │       │   │   ├── SeaFrontITest.kt
 │   │       │                       │       │   │   ├── SemaphoresITests.kt
+│   │       │                       │       │   │   ├── SpeciesITest.kt
 │   │       │                       │       │   │   ├── TagsITest.kt
 │   │       │                       │       │   │   ├── TestUtils.kt
 │   │       │                       │       │   │   ├── VesselsITest.kt
@@ -1390,11 +1427,15 @@
 │   │       │                       │       ├── JpaReportingSourceRepositoryITest.kt
 │   │       │                       │       ├── JpaSeaFrontRepositoryITests.kt
 │   │       │                       │       ├── JpaSemaphoreRepositoryITests.kt
+│   │       │                       │       ├── JpaSpecyRepositoryITest.kt
 │   │       │                       │       ├── JpaStationRepositoryITests.kt
 │   │       │                       │       ├── JpaTagRepositoryITest.kt
 │   │       │                       │       ├── JpaThemeRepositoryITest.kt
 │   │       │                       │       ├── JpaVesselRepositoryITest.kt
 │   │       │                       │       └── JpaVigilanceAreaRepositoryITests.kt
+│   │       │                       ├── file
+│   │       │                       │   └── csv
+│   │       │                       │       └── CsvImportUserUTest.kt
 │   │       │                       ├── kafka
 │   │       │                       │   └── AISListenerITests.kt
 │   │       │                       ├── monitorfish
@@ -1515,6 +1556,7 @@
 │   │   │       ├── createMissionWithAttachedReportingAndAttachedAction.ts
 │   │   │       ├── createPendingMission.ts
 │   │   │       ├── createRegulatoryArea.ts
+│   │   │       ├── createRegulatoryAreaGroup.ts
 │   │   │       ├── createReporting.ts
 │   │   │       ├── createReportingOnSideWindow.ts
 │   │   │       ├── customDayjs.ts
@@ -1899,6 +1941,7 @@
 │   │   │   ├── reportingsAPI.ts
 │   │   │   ├── seaFrontsAPI.ts
 │   │   │   ├── semaphoresAPI.ts
+│   │   │   ├── speciesAPI.ts
 │   │   │   ├── stationsAPI.ts
 │   │   │   ├── tagsAPI.ts
 │   │   │   ├── themesAPI.ts
@@ -2026,6 +2069,7 @@
 │   │   │       │   ├── centerOnMap.ts
 │   │   │       │   ├── closeAllOverlays.ts
 │   │   │       │   ├── closeAreaOverlay.ts
+│   │   │       │   ├── closeOverlay.ts
 │   │   │       │   ├── setOpenedOverlay.ts
 │   │   │       │   └── updateMapInteractionListeners.ts
 │   │   │       └── measurement
@@ -2400,7 +2444,6 @@
 │   │   │   │   │   │   │   │   └── index.tsx
 │   │   │   │   │   │   │   ├── Tags
 │   │   │   │   │   │   │   │   └── ActionTags.tsx
-│   │   │   │   │   │   │   ├── TagsWarningMessage.tsx
 │   │   │   │   │   │   │   ├── Themes
 │   │   │   │   │   │   │   │   └── ActionThemes.tsx
 │   │   │   │   │   │   │   ├── index.tsx
@@ -2576,6 +2619,12 @@
 │   │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   │   └── style.ts
 │   │   │   │   │   ├── RegulatoryAreaGroupForm
+│   │   │   │   │   │   ├── DuplicateWarningMessage.tsx
+│   │   │   │   │   │   ├── OtherRefRegForm.tsx
+│   │   │   │   │   │   ├── ReadOnlyOtherRefRegText.tsx
+│   │   │   │   │   │   ├── ReadOnlyRefRegText.tsx
+│   │   │   │   │   │   ├── RefRegForm.tsx
+│   │   │   │   │   │   ├── RegulatoryTexts.tsx
 │   │   │   │   │   │   ├── Schema.ts
 │   │   │   │   │   │   └── index.tsx
 │   │   │   │   │   ├── RegulatoryAreaList
@@ -2599,7 +2648,7 @@
 │   │   │   │   ├── useCases
 │   │   │   │   │   ├── createOrUpdateRegulatoryArea.ts
 │   │   │   │   │   └── createOrUpdateRegulatoryAreaGroup.ts
-│   │   │   │   └── utils.ts
+│   │   │   │   └── utils.tsx
 │   │   │   ├── Reportings
 │   │   │   │   ├── Filters
 │   │   │   │   │   ├── Map
@@ -2778,6 +2827,7 @@
 │   │   │   │       ├── Table
 │   │   │   │       │   ├── Cells
 │   │   │   │       │   │   ├── EditableDateCell.tsx
+│   │   │   │       │   │   ├── EditableSelectCell.tsx
 │   │   │   │       │   │   └── EditableTextCell.tsx
 │   │   │   │       │   ├── Columns
 │   │   │   │       │   │   └── constants.tsx
@@ -3177,6 +3227,7 @@
 │   │       ├── isPartOfThemes.ts
 │   │       ├── isPuppeteer.ts
 │   │       ├── normalizeRtkBaseQuery.ts
+│   │       ├── removeAccents.tsx
 │   │       ├── routes.ts
 │   │       ├── sha256.ts
 │   │       ├── sortCollectionByLocalizedProps.ts
@@ -3285,6 +3336,7 @@
 │   │   │   ├── regulatory_areas_open_data.py
 │   │   │   ├── remove_broken_missions_resources_links.py
 │   │   │   ├── semaphores.py
+│   │   │   ├── species.py
 │   │   │   ├── themes_natinfs.py
 │   │   │   ├── three_hundred_meters_areas.py
 │   │   │   ├── update_cacem_regulatory_areas.py
@@ -3313,7 +3365,6 @@
 │   │   │   │   │   ├── regulatory_areas.sql
 │   │   │   │   │   ├── regulatory_areas_hashes_for_cacem.sql
 │   │   │   │   │   ├── regulatory_areas_hashes_for_env.sql
-│   │   │   │   │   ├── regulatory_areas_open_data.sql
 │   │   │   │   │   ├── semaphore.sql
 │   │   │   │   │   ├── straight_baseline.sql
 │   │   │   │   │   ├── territorial_seas.sql
@@ -3328,6 +3379,7 @@
 │   │   │   │       ├── facade_areas.sql
 │   │   │   │       ├── facade_areas_unextended.sql
 │   │   │   │       ├── saltwater_limit_areas.sql
+│   │   │   │       ├── species.sql
 │   │   │   │       └── transversal_sea_limit_areas.sql
 │   │   │   ├── fmc
 │   │   │   │   ├── control_units.sql
@@ -3347,6 +3399,7 @@
 │   │   │       ├── regulatory_areas_groups_for_cacem.sql
 │   │   │       ├── regulatory_areas_hashes_for_cacem.sql
 │   │   │       ├── regulatory_areas_hashes_for_env.sql
+│   │   │       ├── regulatory_areas_open_data.sql
 │   │   │       ├── remove_broken_missions_resources_links.sql
 │   │   │       ├── themes.sql
 │   │   │       ├── update_actions_departments.sql
@@ -3441,4 +3494,4 @@
 │       │   └── test_update_queries.py
 │       └── test_utils.py
 └── sonar-project.properties
-639 directories, 2804 files
+648 directories, 2848 files

@@ -1,56 +1,54 @@
 {
   "url": "https://github.com/MTES-MCT/monitorenv",
   "name": "monitorenv",
-  "description": "Application destinée au CACEM pour centraliser les outils de protection de l'environnement marin. Elle permet le suivi des missions de contrôle, l'analyse des données et l'aide à la décision pour la biodiversité marine.",
+  "description": "Application destinée au CACEM pour centraliser les outils de protection de l'environnement marin et de contrôle des activités à risque. Elle permet le suivi des missions, l'analyse des données et l'aide à la décision.",
   "language": "Java",
   "features": [
     "Visualisation de données & Cartographie",
     "Statistiques & Rapports",
     "Suivi & Traçabilité",
-    "Administration & Backoffice",
-    "Données & Schémas"
+    "Recherche & Filtres",
+    "Administration & Backoffice"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "PostgreSQL",
     "TimescaleDB",
     "GeoServer",
-    "Kafka",
     "Keycloak",
-    "Cypress",
+    "Kafka",
+    "Carto",
     "Mapbox",
     "Google Maps",
+    "Metabase",
     "Sentry",
-    "Metabase"
+    "Matomo",
+    "Prefect",
+    "Cypress",
+    "Wiremock"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Docker & Conteneurs",
-    "TypeScript / JavaScript",
-    "Python (scripts & backend)",
     "SIG & Géospatial",
     "Authentification (composant)",
+    "TypeScript / JavaScript",
+    "Python (scripts & backend)",
+    "Tests",
     "Webhooks & Événements"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "jwt",
       "sso"
     ],
     "providers": [
       "Keycloak"
     ]
   },
-  "tests": [
-    "Cypress",
-    "Pytest"
-  ],
-  "workflows": [
-    "dependabot"
-  ],
-  "lastActivity": "2026-08-27T15:19:13+02:00",
+  "tests": "Cypress pour les tests de bout en bout (E2E), Wiremock pour le mock des services externes, et Pytest pour le pipeline de données.",
+  "lastActivity": "2026-09-10T16:30:00+02:00",
   "status": "active",
   "hasDocumentation": true,
   "tags": [
@@ -60,6 +58,7 @@
     "Docker & Conteneurs",
     "Monitoring & Observabilité",
     "Python",
+    "Bases de données SQL",
     "TypeScript"
   ]
 }
