@@ -381,7 +381,8 @@
 │   │   │           └── transform_df.py
 │   │   ├── stats
 │   │   │   └── dags
-│   │   │       └── compute_stats.py
+│   │   │       ├── compute_stats.py
+│   │   │       └── posthog_pageview_alert.py
 │   │   ├── suggestions
 │   │   │   ├── dags
 │   │   │   │   ├── apply_suggestions.py
@@ -485,6 +486,8 @@
 │   │   │   │       └── transform
 │   │   │   │           ├── test_transform_column.py
 │   │   │   │           └── test_transform_df.py
+│   │   │   ├── stats
+│   │   │   │   └── test_posthog_pageview_alert.py
 │   │   │   └── utils
 │   │   │       ├── test_airflow_params_dropdown.py
 │   │   │       ├── test_cmd.py
@@ -848,7 +851,8 @@
 │   │   ├── infrastructure
 │   │   │   ├── README.md
 │   │   │   ├── create_db.md
-│   │   │   └── monitoring.md
+│   │   │   ├── monitoring.md
+│   │   │   └── rotate_db_passwords.md
 │   │   ├── team
 │   │   │   ├── README.md
 │   │   │   └── onboarding-offboarding.md
@@ -931,6 +935,10 @@
 │   │   │   │   ├── .terraform.lock.hcl
 │   │   │   │   ├── terraform.tfvars.example
 │   │   │   │   └── terragrunt.hcl
+│   │   │   ├── metabase_containers
+│   │   │   │   ├── .terraform.lock.hcl
+│   │   │   │   ├── terraform.tfvars.example
+│   │   │   │   └── terragrunt.hcl
 │   │   │   └── object_storage
 │   │   │       ├── .terraform.lock.hcl
 │   │   │       ├── terraform.tfvars.example
@@ -962,6 +970,9 @@
 │   │   │   │   ├── .terraform.lock.hcl
 │   │   │   │   ├── terraform.tfvars.example
 │   │   │   │   └── terragrunt.hcl
+│   │   │   ├── metabase_containers
+│   │   │   │   ├── terraform.tfvars.example
+│   │   │   │   └── terragrunt.hcl
 │   │   │   └── object_storage
 │   │   │       ├── .terraform.lock.hcl
 │   │   │       ├── terraform.tfvars.example
@@ -990,6 +1001,11 @@
 │       │   └── variables.tf
 │       ├── database_sample
 │       │   ├── main.tf
+│       │   ├── outputs.tf
+│       │   └── variables.tf
+│       ├── metabase_containers
+│       │   ├── metabase.tf
+│       │   ├── namespace.tf
 │       │   ├── outputs.tf
 │       │   └── variables.tf
 │       ├── object_storage
@@ -1320,6 +1336,10 @@
     │   │   ├── 0087_produitindexpage.py
     │   │   ├── 0088_search_settings.py
     │   │   ├── 0089_rename_search_placeholder_searchsettings_home_search_placeholder.py
+    │   │   ├── 0090_carte_block.py
+    │   │   ├── 0090_conversionimmediatepage.py
+    │   │   ├── 0091_migrate_carte_sur_mesure_to_carte.py
+    │   │   ├── 0092_merge_20260910_0833.py
     │   │   ├── __init__.py
     │   │   └── sql
     │   │       └── create_wagtail_french_config.sql
@@ -1665,7 +1685,7 @@
     │       │   ├── posthog_data_attributes.html
     │       │   └── sentry_data_attributes.html
     │       ├── blocks
-    │       │   ├── carte.html
+    │       │   ├── carte_block.html
     │       │   └── liens.html
     │       ├── components
     │       │   ├── README.md
@@ -1996,6 +2016,7 @@
         │   └── test_suggestion_views.py
         ├── qfdmd
         │   ├── qfdmod_factory.py
+        │   ├── test_conversion_immediate_page.py
         │   ├── test_genre_nombre_model.py
         │   ├── test_import_legacy_synonymes.py
         │   ├── test_legacy_synonyme_redirection.py
@@ -2045,4 +2066,4 @@
         │   └── test_search_view.py
         └── stats
             └── test_stats_utils.py
-374 directories, 1673 files
+378 directories, 1690 files
