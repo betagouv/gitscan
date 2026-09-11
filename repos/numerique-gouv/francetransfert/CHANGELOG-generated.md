@@ -1,7 +1,17 @@
-## Changelog : francetransfert (30 derniers jours, au 10 juillet 2026)
+## Changelog : francetransfert (30 derniers jours, au 10 septembre 2026)
 
 ### Résumé
-Cette mise à jour comprend une modification de secret pour assurer la sécurité du service. Aucune nouvelle fonctionnalité ou changement visible pour les utilisateurs n'est inclus dans cette version.
+Les récentes évolutions se concentrent sur l'amélioration de l'expérience utilisateur sur mobile et la fiabilisation de l'infrastructure. Un effort particulier a été porté sur l'observabilité du système afin de faciliter le diagnostic technique et la maintenance.
+
+### Évolutions fonctionnelles
+- **Compatibilité mobile :** Amélioration de la détection et de la compatibilité avec les appareils iOS (iPhone).
+- **Expérience d'envoi :** Optimisation du processus d'envoi de fichiers grâce à l'introduction d'un délai de grâce lors de l'upload.
 
 ### Évolutions techniques
-- Mise à jour d'un secret de l'application. [#non applicable](https://github.com/numerique-gouv/francetransfert/commit/5e52cee)
+- **Observabilité :** Renforcement de la traçabilité via l'ajout de logs contextuels et de journaux détaillés pour les composants clés (Redis, Dex, gestion des erreurs).
+- **Infrastructure & Déploiement :** 
+    - Mise à jour des images de conteneurs.
+    - Gestion des versions de Redis et ajustements de la passerelle (gateway).
+    - Ajustement des seuils de réussite (success threshold).
+- **Sécurité :** Mise à jour et gestion des secrets et des configurations réseau.
+- **Gestion de version :** Préparation et mise à jour des versions pour le prochain cycle de déploiement.

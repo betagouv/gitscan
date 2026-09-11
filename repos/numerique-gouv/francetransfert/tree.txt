@@ -83,8 +83,13 @@
 │       │   │                       └── utils
 │       │   │                           ├── AmazonS3Utils.java
 │       │   │                           ├── Base64CryptoService.java
+│       │   │                           ├── CorrelationIdResolver.java
 │       │   │                           ├── DateUtils.java
+│       │   │                           ├── EnclosureRecipientMdcResolver.java
 │       │   │                           ├── FTFileUtils.java
+│       │   │                           ├── MdcKeys.java
+│       │   │                           ├── MdcScope.java
+│       │   │                           ├── MdcValueSanitizer.java
 │       │   │                           ├── RedisUtils.java
 │       │   │                           ├── SanitizerUtil.java
 │       │   │                           └── StringUploadUtils.java
@@ -131,6 +136,7 @@
 │       │   │                   ├── application
 │       │   │                   │   ├── configuration
 │       │   │                   │   │   ├── CorrelationIdMdcFilter.java
+│       │   │                   │   │   ├── EnclosureRecipientMdcAspect.java
 │       │   │                   │   │   ├── LoadDataOnStartUp.java
 │       │   │                   │   │   └── SecurityConfiguration.java
 │       │   │                   │   ├── error
@@ -290,6 +296,7 @@
 │       │   │                   ├── configuration
 │       │   │                   │   ├── CorrelationIdMdcFilter.java
 │       │   │                   │   ├── CustomHealthIndicator.java
+│       │   │                   │   ├── EnclosureRecipientMdcAspect.java
 │       │   │                   │   ├── ExtensionProperties.java
 │       │   │                   │   ├── LoadDataOnStartUp.java
 │       │   │                   │   ├── RestTemplateConfig.java
@@ -682,6 +689,8 @@
 │   │   │   │   ├── responsive
 │   │   │   │   │   ├── responsive.service.spec.ts
 │   │   │   │   │   └── responsive.service.ts
+│   │   │   │   ├── sessions
+│   │   │   │   │   └── sessions.service.ts
 │   │   │   │   ├── tarteaucitron
 │   │   │   │   │   ├── tarteaucitron.service.spec.ts
 │   │   │   │   │   └── tarteaucitron.service.ts
@@ -711,6 +720,7 @@
 │   │   │       │   ├── auth-interceptor.ts
 │   │   │       │   ├── correlation-id-interceptor.ts
 │   │   │       │   └── index.ts
+│   │   │       ├── is-ios.ts
 │   │   │       ├── pipes
 │   │   │       │   ├── FilterPipe.pipe.ts
 │   │   │       │   ├── FilterQuestionsPipe.pipe.ts
@@ -1034,7 +1044,10 @@
     │       │   ├── hpa.yaml
     │       │   ├── pdb.yaml
     │       │   └── service.yaml
+    │       ├── gateway-policies.yaml
+    │       ├── httproute.yaml
     │       ├── ingress.yaml
+    │       ├── listenerset.yaml
     │       ├── lockenclosure.yaml
     │       ├── mailhog
     │       │   ├── deployment.yaml
@@ -1055,6 +1068,7 @@
     │       │   ├── pdb.yaml
     │       │   ├── service.yaml
     │       │   └── servicemonitor.yaml
+    │       ├── waf.yaml
     │       └── worker
     │           ├── configMap.yaml
     │           ├── cspheader.yaml
@@ -1068,4 +1082,4 @@
     │           └── sts.yaml
     ├── helmfile.yaml
     └── helmfile.yaml.gotmpl
-274 directories, 796 files
+275 directories, 809 files
