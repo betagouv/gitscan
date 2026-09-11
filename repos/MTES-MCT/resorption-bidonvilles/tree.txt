@@ -983,6 +983,9 @@
 │   │   │   │   │       ├── invitation.create.ts
 │   │   │   │   │       └── invitation.create.validator.ts
 │   │   │   │   ├── location
+│   │   │   │   │   ├── epciDepartements
+│   │   │   │   │   │   ├── location.epciDepartements.route.ts
+│   │   │   │   │   │   └── location.epciDepartements.ts
 │   │   │   │   │   ├── get
 │   │   │   │   │   │   ├── location.get.route.ts
 │   │   │   │   │   │   └── location.get.ts
@@ -1649,6 +1652,7 @@
 │   │   │   │   ├── geoModel
 │   │   │   │   │   ├── Location.d.ts
 │   │   │   │   │   ├── LocationType.d.ts
+│   │   │   │   │   ├── getDepartementsForEpci.ts
 │   │   │   │   │   ├── getLocation.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   └── search.ts
@@ -2183,6 +2187,8 @@
 │   │   │   │   │   │   ├── enrichShantytownWithALeastOneActionFinanced.ts
 │   │   │   │   │   │   ├── formatDate.ts
 │   │   │   │   │   │   ├── formatDateSince.ts
+│   │   │   │   │   │   ├── formatPreparatoryPhase.spec.ts
+│   │   │   │   │   │   ├── formatPreparatoryPhase.ts
 │   │   │   │   │   │   ├── getSince.ts
 │   │   │   │   │   │   ├── livingConditionsStatusLabels
 │   │   │   │   │   │   │   ├── electricityAccessStatusLabels.ts
@@ -2193,8 +2199,11 @@
 │   │   │   │   │   │   │   └── waterAccessStatusLabels.ts
 │   │   │   │   │   │   ├── populationStatus.ts
 │   │   │   │   │   │   ├── sendMailForClosedTown.ts
+│   │   │   │   │   │   ├── serializeExportProperties.preparatoryPhases.spec.ts
 │   │   │   │   │   │   ├── serializeExportProperties.ts
-│   │   │   │   │   │   └── serializeReport.ts
+│   │   │   │   │   │   ├── serializeReport.ts
+│   │   │   │   │   │   ├── sortPreparatoryPhases.spec.ts
+│   │   │   │   │   │   └── sortPreparatoryPhases.ts
 │   │   │   │   │   ├── anonymizeOwners.ts
 │   │   │   │   │   ├── close.spec.ts
 │   │   │   │   │   ├── close.ts
@@ -2230,6 +2239,7 @@
 │   │   │   │   │   │   │   └── changelog.ts
 │   │   │   │   │   │   ├── option_section_changelog.ts
 │   │   │   │   │   │   ├── option_section_comments.ts
+│   │   │   │   │   │   ├── option_section_resorption_phases.spec.ts
 │   │   │   │   │   │   ├── option_section_resorption_phases.ts
 │   │   │   │   │   │   ├── section_logos.ts
 │   │   │   │   │   │   ├── section_people
@@ -4132,4 +4142,4 @@
 ├── scripts
 │   └── checkout.sh
 └── yarn.lock
-717 directories, 3759 files
+718 directories, 3768 files

@@ -1,17 +1,23 @@
-## Changelog : resorption-bidonvilles (30 derniers jours, au 12/08/2026)
+## Changelog : resorption-bidonvilles (30 derniers jours, au 03/09/2026)
 
 ### Résumé
-Cette période a été marquée par une simplification majeure de la plateforme avec le retrait de la fonctionnalité de questions/réponses et le renommage de l'espace "Entraide" en "Annuaire". Des améliorations ont également été apportées pour renforcer l'accessibilité de l'interface et la précision des indicateurs de données.
+Les récentes évolutions se concentrent sur l'amélioration des capacités d'exportation de données et la stabilisation de l'interface utilisateur. Les utilisateurs bénéficient désormais d'une meilleure continuité de navigation lors des changements de périodes et de fonctionnalités d'export enrichies pour les recherches par commune ou EPCI.
 
 ### Évolutions fonctionnelles
-- **Simplification de l'interface** : suppression de la section Questions/Réponses et renommage de l'onglet "Entraide" en "Annuaire" [#2728](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2728).
-- **Améliorations de l'expérience utilisateur** : correction du placement du fil d'ariane, amélioration de l'accessibilité générale et correction des interactions de clic dans les tableaux [#2738](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2738).
-- **Gestion des données** : correction permettant de saisir un nombre de ménages égal à zéro dans les indicateurs d'action.
+- Ajout de l'option d'export des phases de résorption lors des recherches par commune ou EPCI [#1527](https://github.com/MTES-MCT/resorption-bidonvilles/pull/1527).
+- Correction de l'affichage des dates (valeurs "NaN") dans les exports des phases de résorption [#1526](https://github.com/MTES-MCT/resorption-bidonvilles/pull/1526).
+- Mémorisation de l'onglet actif lors du changement de période de temps pour une navigation plus fluide [#1525](https://github.com/MTES-MCT/resorption-bidonvilles/pull/1525).
+- Amélioration de la stabilité des composants de la carte et du sélecteur de dates (datepicker) [#1525](https://github.com/MTES-MCT/resorption-bidonvilles/pull/1525).
 
 ### Évolutions techniques
-- **Refonte du système de questions/réponses** : suppression complète de la logique métier (contrôleurs, services, modèles), des tables de base de données et des migrations associées [#2728](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2728).
-- **Optimisation de l'API** : réduction de la duplication de code, normalisation des indicateurs non renseignés (NULL) et suppression de contraintes SQL obsolètes [#2728](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2728).
-- **Maintenance et stabilité** : correction de la compatibilité des UUID avec CommonJS, mise à jour des tests unitaires suite aux refontes et stabilisation du fichier `yarn.lock`.
+- **API** :
+  - Amélioration de la gestion des indicateurs d'action (autorisation du zéro et normalisation des valeurs nulles avant insertion) [#1527](https://github.com/MTES-MCT/resorption-bidonvilles/pull/1527).
+  - Nettoyage de la base de données via la suppression de contraintes SQL obsolètes [#1527](https://github.com/MTES-MCT/resorption-bidonvilles/pull/1527).
+  - Refactorisation du code pour réduire la duplication et corriger les alertes de qualité (linting) [#1527](https://github.com/MTES-MCT/resorption-bidonvilles/pull/1527).
+- **Frontend** :
+  - Optimisation de l'affichage pour éviter le clignotement du bandeau lors du chargement initial de la page [#1525](https://github.com/MTES-MCT/resorption-bidonvilles/pull/1525).
+  - Renforcement du typage TypeScript et sécurisation de l'initialisation des composants (carte, spinner, datepicker) [#1525](https://github.com/MTES-MCT/resorption-bidonvilles/pull/1525).
+  - Simplification et optimisation des tests unitaires [#1525](https://github.com/MTES-MCT/resorption-bidonvilles/pull/1525).
 
 ### Autres changements
-- **Nettoyage du projet** : suppression de packages inutilisés (matermost), de métadonnées de routes orphelines et d'illustrations non utilisées [#2728](https://github.com/MTES-MCT/resorption-bidonvilles/issues/2728).
+- Suppression du paquetage `node/matermost`.
