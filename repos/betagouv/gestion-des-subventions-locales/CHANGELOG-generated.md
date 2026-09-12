@@ -1,33 +1,18 @@
-## Changelog : gestion-des-subventions-locales (30 derniers jours, au 27 août 2026)
+## Changelog : gestion-des-subventions-locales (30 derniers jours, au 11 septembre 2026)
 
 ### Résumé
-Ce mois-ci, l'outil a été enrichi de fonctionnalités de gestion de masse, notamment pour la génération de lettres de refus, et d'un système de notification plus visible et sécurisé. L'interface utilisateur a également été modernisée pour offrir une navigation plus fluide et une meilleure accessibilité.
+Cette période est marquée par une amélioration majeure des processus de notification et de gestion documentaire. L'outil permet désormais de générer massivement des lettres de refus, de télécharger l'ensemble des documents en un clic et d'automatiser le suivi des documents signés via QR code. L'interface a également été modernisée pour être plus fluide et accessible.
 
 ### Évolutions fonctionnelles
-- **Gestion des notifications** : 
-    - Ajout de badges et de statuts de notification directement dans les listes de projets et l'onglet dédié pour une meilleure visibilité.
-    - Sécurisation du workflow : empêche désormais la génération ou l'import de documents lorsqu'un projet est en cours de notification [#790].
-- **Automatisation documentaire** :
-    - Possibilité de générer et de télécharger en masse des lettres de refus ou de classement sans suite [#833].
-    - Ajout de la possibilité d'uploader des documents lors de la génération de lettres de refus [#832].
-    - Nouveau bouton permettant de télécharger l'ensemble des documents générés en une seule fois [#802].
-- **Expérience utilisateur** :
-    - Amélioration de la réactivité des formulaires (zonage, budgets) grâce à l'intégration de HTMX.
-    - Ajout d'indicateurs de chargement lors de la sauvegarde des formulaires pour une meilleure perception du traitement.
+- **Notifications et gestion des refus** : Mise en place de la génération en masse des lettres de refus ou de classement sans suite [#833], intégration du scan de QR codes pour rattacher automatiquement les lettres signées [#850] et amélioration de l'affichage des informations de notification [#857].
+- **Gestion documentaire** : Ajout d'un bouton pour télécharger tous les documents générés simultanément [#802], possibilité d'uploader des documents pour les lettres de refus [#832] et introduction d'un onglet de suivi financier (en phase de test) [#815].
+- **Expérience utilisateur (UX) et Accessibilité** : Fluidification des formulaires (zonage, budget vert, avis de commission) grâce à l'utilisation de HTMX [#812, #809, #807], ajout de retours visuels (loaders) lors de la sauvegarde et renforcement de l'accessibilité (gestion des icônes et emojis) [#778].
+- **Corrections** : Résolution de problèmes d'affichage des menus déroulants en bas de page [#884] et correction de bugs sur les actions de "retour en construction" [#874].
 
 ### Évolutions techniques
-- **Performances** :
-    - Optimisation de l'onglet de notification par la suppression de requêtes SQL redondantes (problème de N+1) [#840].
-    - Allègement du contexte de données chargé pour les différents onglets de la page projet [#842].
-- **Accessibilité (A11y)** :
-    - Amélioration de l'accessibilité pour les lecteurs d'écran via la protection des emojis et des icônes décoratives avec l'attribut `aria-hidden` [#778].
-- **Architecture et Refactoring** :
-    - Migration de plusieurs formulaires vers une infrastructure de fragments partagés utilisant HTMX.
-    - Réorganisation de la structure des fichiers du projet (déplacement de modules vers des sous-répertoires dédiés).
-    - Refactorisation de plusieurs composants pour utiliser des "inclusion tags" et des mixins, améliorant la maintenabilité du code.
+- **Architecture et Refactoring** : Réorganisation profonde de la structure du projet (déplacement de modules vers des sous-packages dédiés comme `gsl.projet`, `gsl.simulation`, `gsl.oidc`, etc.) et migration vers une nouvelle infrastructure de fragments pour les vues [#859].
+- **Optimisation et Traitement** : Amélioration des performances de l'onglet Notification par l'optimisation des requêtes SQL (suppression des requêtes N+1) [#840] et refonte de la logique de traitement des fichiers PDF et des QR codes [#879].
 
 ### Autres changements
-- **Configuration et outils** :
-    - Mise en place de Dependabot pour l'automatisation de la mise à jour des dépendances.
-    - Ajustements de l'environnement de développement (outils `uv` et `precommit`).
-    - Nettoyage de scripts internes et de la structure de fichiers.
+- Nettoyage du code mort et suppression de dépendances inutilisées [#861].
+- Standardisation du formatage des fichiers HTML.
