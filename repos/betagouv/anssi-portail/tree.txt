@@ -136,6 +136,8 @@
 │   │   ├── 20260831150000_corrigeLigatureOeuvreEtApostrophesTutoriels.ts
 │   │   ├── 20260901152059_creeTableReactionsMiniTests.ts
 │   │   ├── 20260903082507_corrigeContenuMesures.ts
+│   │   ├── 20260910125401_ajouteFicheGestionIdentitesAuxMesures.ts
+│   │   ├── 20260910130640_nettoieLibellesLiensMesures.ts
 │   │   └── README.md
 │   ├── package.json
 │   ├── src
@@ -193,6 +195,9 @@
 │   │   │   │   ├── middleware.ts
 │   │   │   │   └── publieMesureConsultee.ts
 │   │   │   ├── mini-tests
+│   │   │   │   ├── exposition
+│   │   │   │   │   ├── ressourceTestsExposition.schema.ts
+│   │   │   │   │   └── ressourceTestsExposition.ts
 │   │   │   │   ├── ressourceInfoMiniTests.ts
 │   │   │   │   ├── ressourceReactionMiniTest.schema.ts
 │   │   │   │   ├── ressourceReactionMiniTest.ts
@@ -269,7 +274,6 @@
 │   │   ├── bus
 │   │   │   ├── busEvenements.ts
 │   │   │   ├── cablage.ts
-│   │   │   ├── consigeRetourMiniTestDonne.ts
 │   │   │   ├── consigneAvisMesureDonneDansJournal.ts
 │   │   │   ├── consigneBadgeCyberdepartDebloqueDansJournal.ts
 │   │   │   ├── consigneEvenementAvisUtilisateurDonneDansJournal.ts
@@ -281,6 +285,7 @@
 │   │   │   ├── consigneEvenementProprieteTestRevendiqueeDansJournal.ts
 │   │   │   ├── consigneEvenementRetourExperienceDonneDansJournal.ts
 │   │   │   ├── consigneEvenementSimulationNis2TermineeDansJournal.ts
+│   │   │   ├── consigneEvenementTestExpositionRealiseDansJournal.ts
 │   │   │   ├── consigneEvenementTestRealiseDansJournal.ts
 │   │   │   ├── consigneEvenementUtilisateurConnecteDansJournal.ts
 │   │   │   ├── consigneParcoursAllegeTermineDansJournal.ts
@@ -289,9 +294,11 @@
 │   │   │   ├── consigneParcoursRejointDansJournal.ts
 │   │   │   ├── consigneQuestionnaireVraiFauxReponseSoumiseDansJournal.ts
 │   │   │   ├── consigneQuestionnaireVraiFauxTermineDansJournal.ts
+│   │   │   ├── consigneRetourMiniTestDonneDansJournal.ts
 │   │   │   ├── creeContactBrevo.ts
 │   │   │   ├── envoieEmailCreationCompte.ts
 │   │   │   ├── evenements
+│   │   │   │   ├── TestExpositionRealise.ts
 │   │   │   │   ├── avisMesureDonne.ts
 │   │   │   │   ├── avisUtilisateurDonne.ts
 │   │   │   │   ├── badgeCyberdepartDebloque.ts
@@ -318,7 +325,6 @@
 │   │   ├── express.d.ts
 │   │   ├── infra
 │   │   │   ├── EntrepotSessionDeGroupePostgres.ts
-│   │   │   ├── RechercheEntrepriseAvecCache.ts
 │   │   │   ├── adaptateurCellar.ts
 │   │   │   ├── adaptateurChiffrement.ts
 │   │   │   ├── adaptateurCompression.ts
@@ -336,6 +342,7 @@
 │   │   │   ├── adaptateurProfilAnssi.ts
 │   │   │   ├── adaptateurProfilAnssiVide.ts
 │   │   │   ├── adaptateurRechercheEntreprise.ts
+│   │   │   ├── adaptateurRechercheEntrepriseGouv.ts
 │   │   │   ├── adaptateurStatistiqueMiniTestsMémoire.ts
 │   │   │   ├── adaptateurStatistiqueMiniTestsPostgres.ts
 │   │   │   ├── cache.ts
@@ -403,6 +410,8 @@
 │   │   │   ├── mesure.ts
 │   │   │   ├── mini-tests
 │   │   │   │   ├── entrepotReactionMiniTest.ts
+│   │   │   │   ├── exposition
+│   │   │   │   │   └── exposition.ts
 │   │   │   │   ├── mini-test.ts
 │   │   │   │   ├── reactionMiniTest.ts
 │   │   │   │   └── vrai-faux
@@ -513,6 +522,8 @@
 │   │   │   │   ├── attributionParcoursMesure.spec.ts
 │   │   │   │   └── middleware.spec.ts
 │   │   │   ├── mini-tests
+│   │   │   │   ├── exposition
+│   │   │   │   │   └── ressourceTestsExposition.spec.ts
 │   │   │   │   ├── ressourceInfoMiniTests.spec.ts
 │   │   │   │   ├── ressourceReactionMiniTest.spec.ts
 │   │   │   │   ├── ressourceRetourMiniTest.spec.ts
@@ -571,7 +582,6 @@
 │   │   ├── bus
 │   │   │   ├── busEvenements.spec.ts
 │   │   │   ├── busPourLesTests.ts
-│   │   │   ├── consigeRetourMiniTestDonne.spec.ts
 │   │   │   ├── consigneAvisMesureDansJournal.spec.ts
 │   │   │   ├── consigneBadgeCyberdepartDebloqueDansJournal.spec.ts
 │   │   │   ├── consigneEvenementAvisUtilisateurDonneDansJournal.spec.ts
@@ -583,6 +593,7 @@
 │   │   │   ├── consigneEvenementProprieteTestRevendiqueeDansJournal.spec.ts
 │   │   │   ├── consigneEvenementRetourExperienceDonneDansJournal.spec.ts
 │   │   │   ├── consigneEvenementSimulationNis2TermineeDansJournal.spec.ts
+│   │   │   ├── consigneEvenementTestExpositionRealiseDansJournal.spec.ts
 │   │   │   ├── consigneEvenementTestRealiseDansJournal.spec.ts
 │   │   │   ├── consigneEvenementUtilisateurConnecteDansJournal.spec.ts
 │   │   │   ├── consigneParcoursAllegeTermineDansJournal.spec.ts
@@ -591,16 +602,17 @@
 │   │   │   ├── consigneParcoursRejointDansJournal.spec.ts
 │   │   │   ├── consigneQuestionnaireVraiFauxReponseSoumiseDansJournal.spec.ts
 │   │   │   ├── consigneQuestionnaireVraiFauxTermineDansJournal.spec.ts
+│   │   │   ├── consigneRetourMiniTestDonneDansJournal.spec.ts
 │   │   │   ├── creeContactBrevo.spec.ts
 │   │   │   ├── envoieEmailCreationCompte.spec.ts
 │   │   │   ├── notifieCommentaireAvisMesureDonneDansMessagerie.spec.ts
 │   │   │   └── notifieRetourNegatifSurMiniTest.spec.ts
 │   │   ├── infra
 │   │   │   ├── EntrepotGristGenerique.ts
-│   │   │   ├── RechercheEntrepriseAvecCache.spec.ts
 │   │   │   ├── adaptateurEmailBrevo.spec.ts
 │   │   │   ├── adaptateurEnvironnement.spec.ts
 │   │   │   ├── adaptateurHachage.spec.ts
+│   │   │   ├── adaptateurRechercheEntreprise.spec.ts
 │   │   │   ├── cache.spec.ts
 │   │   │   ├── enrichissement
 │   │   │   │   ├── adaptateurEnrichissement.spec.ts
@@ -828,7 +840,6 @@
 │   │   ├── visa-secu-produit.md
 │   │   └── visa-secu.md
 │   ├── _services
-│   │   ├── NIS2.md
 │   │   ├── ads.md
 │   │   ├── assistance-reponse-incidents.md
 │   │   ├── conseil-technique.md
@@ -840,6 +851,7 @@
 │   │   ├── mon-aide-cyber.md
 │   │   ├── mon-service-securise.md
 │   │   ├── mooc-ebios-rm.md
+│   │   ├── nis2.md
 │   │   ├── pack-parcours-secu.md
 │   │   ├── pix.md
 │   │   ├── secnum-academie.md
@@ -954,7 +966,6 @@
 │   │   │   ├── illustration-filtre-besoins-sensibiliser.svg
 │   │   │   ├── illustration-filtre-besoins-tous.svg
 │   │   │   ├── illustration-organisations-concernees.svg
-│   │   │   ├── illustration-tests-exposition.svg
 │   │   │   ├── illustrations-services
 │   │   │   │   ├── ads
 │   │   │   │   │   └── active-directory-security.avif
@@ -1342,6 +1353,7 @@
 │   │   │   │   ├── IllustrationHeroMiniTest.svelte
 │   │   │   │   ├── MiniTests.svelte
 │   │   │   │   ├── PlanteAnimee.svelte
+│   │   │   │   ├── RadarMenaceAnime.svelte
 │   │   │   │   ├── SceneHeroMiniTest.svelte
 │   │   │   │   ├── TestVraiFauxAnime.svelte
 │   │   │   │   ├── exposition
@@ -1349,6 +1361,7 @@
 │   │   │   │   │   ├── EvaluationExposition.svelte
 │   │   │   │   │   ├── ExpositionCyberattaques.svelte
 │   │   │   │   │   ├── FormulaireExposition.svelte
+│   │   │   │   │   ├── RadarExpositionAnime.svelte
 │   │   │   │   │   └── expositionCyberattaques.ts
 │   │   │   │   └── vrai-faux
 │   │   │   │       ├── IllustrationHerosVraiFaux.svelte
@@ -1803,4 +1816,4 @@
 ├── scripts
 │   └── get-node-version.sh
 └── shell.nix
-279 directories, 1640 files
+282 directories, 1650 files

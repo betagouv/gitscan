@@ -1,38 +1,35 @@
-## Changelog : anssi-portail (30 derniers jours, au 09/09/2026)
+## Changelog : anssi-portail (30 derniers jours, au 11 septembre 2026)
 
 ### Résumé
-Ce mois a été marqué par une transformation majeure du portail, tant sur le plan visuel que fonctionnel. L'évolution principale concerne le lancement de nouveaux mini-tests interactifs (notamment le format "Vrai-Faux") et une refonte graphique globale (nouvelle direction artistique) visant à moderniser l'expérience utilisateur. Parallèlement, une migration technique profonde vers Svelte 5 a été entreprise pour garantir la pérennité et la performance de l'application.
+Ce mois a été marqué par une transformation majeure du portail. Nous avons lancé de nouveaux outils interactifs, notamment le test d'exposition et des mini-tests (type "Vrai ou Faux"), permettant aux utilisateurs d'évaluer leur niveau de cybersécurité de manière ludique. Parallèlement, l'ensemble du site a bénéficié d'une refonte visuelle complète et d'une modernisation technologique profonde pour offrir une expérience plus fluide et performante.
 
 ### Évolutions fonctionnelles
-- **Nouveaux Mini-tests** : 
-    - Introduction du format de quiz "Vrai-Faux" avec affichage des scores, animations de succès (confettis) et possibilité de laisser un avis.
-    - Amélioration de l'interactivité des tests avec des animations de choix et des estimations de temps de complétion.
-    - Mise en place d'un système de statistiques permettant de voir le nombre de tests réalisés.
-- **Parcours de Sécurisation** : 
-    - Amélioration du suivi de progression (déblocage de badges, comptabilisation des mesures prises en compte).
-    - Optimisation de l'expérience mobile et ajout de nouveaux éléments visuels (illustrations animées, nouveaux héros).
-    - Meilleure intégration du suivi utilisateur via l'outil Brevo pour les événements de complétion.
-- **Nouvelle page "Exposition"** : Création d'une page dédiée permettant de mesurer son exposition avec des cartes interactives et des règles conformes aux spécifications.
-- **Contenus et Navigation** :
-    - Mise à jour des contenus relatifs à la directive NIS2 et aux référentiels (ReCyF, CyFun).
-    - Amélioration de la navigation via l'harmonisation des fils d'Ariane sur l'ensemble du site.
-    - Refonte visuelle globale : nouvelles illustrations, palettes de couleurs modernisées et utilisation accrue des composants du Design System (DSFR).
+- **Nouveau test d'exposition** : Mise en ligne d'une page dédiée comprenant un radar d'exposition animé, des badges de progression et la possibilité pour les utilisateurs de laisser des réactions et des avis.
+- **Nouveaux mini-tests** : Introduction de tests rapides (notamment le format "Vrai ou Faux") avec affichage du score final, animations de célébration (confettis) et suivi des statistiques de réalisation.
+- **Amélioration du parcours de sécurisation** : 
+    - Ajout de modales de félicitations lors de la complétion de modules ou du parcours complet.
+    - Intégration de tutoriels et de nouveaux éléments visuels (pictogrammes, illustrations animées).
+    - Meilleure gestion de la progression avec l'attribution de badges.
+- **Refonte visuelle (Design System)** : Application d'une nouvelle charte graphique sur l'ensemble du portail (nouveaux motifs de fond, nouveaux composants "Héros", et mise à jour de l'interface utilisateur).
+- **Navigation et contenu** : 
+    - Amélioration du fil d'Ariane pour une meilleure orientation.
+    - Mise à jour des contenus relatifs à la directive NIS2 et aux guides de bonnes pratiques.
+    - Optimisation de l'affichage sur mobile pour les parcours et les tests.
 
 ### Évolutions techniques
-- **Migration Framework** : Migration massive de la majorité des composants vers **Svelte 5** (utilisation des *runes*) pour améliorer la réactivité et la maintenabilité.
-- **Architecture et API** :
-    - Refonte de la logique métier des mini-tests (utilisation d'entrepôts de données et d'objets métier).
-    - Enrichissement de l'API de statistiques pour inclure la satisfaction utilisateur.
-    - Centralisation et optimisation de la gestion des redirections d'URLs historiques.
-- **SEO et Performance** :
-    - Optimisation du référencement naturel par la suppression des extensions `.html` dans les URLs des services, ressources et contacts.
-    - Mise à jour du sitemap pour inclure les nouvelles pages de landing.
-- **Infrastructure et Toolchain** :
-    - Migration vers **pnpm 11**.
-    - Amélioration de l'environnement de développement local (support LAN, configuration Nix).
-    - Mise à jour des workflows CI/CD et des outils de test (Playwright, Vitest).
+- **Migration vers Svelte 5** : Refonte massive de l'architecture front-end avec la migration de la quasi-totalité des composants vers Svelte 5 et l'activation du mode "runes".
+- **Refonte de l'API et du suivi** : 
+    - Création de nouvelles routes API pour la gestion des tests, des réponses et des réactions utilisateurs.
+    - Mise en place d'un système de suivi des événements (via Brévo) pour analyser les parcours et les complétions de modules.
+- **Optimisation et nettoyage** : 
+    - Nettoyage approfondi du code : suppression de nombreux composants, styles CSS, images et dépendances inutilisés.
+    - Amélioration de la gestion des erreurs et de la robustesse des middlewares.
+    - Optimisation des performances de rendu et de la gestion des animations.
+- **Infrastructure et CI/CD** : Mise à jour des outils de build (pnpm, Vite) et amélioration des processus de vérification de la qualité du code.
 
 ### Autres changements
-- **Nettoyage du code** : Suppression massive de composants, de styles CSS, d'images et de variables inutilisés pour alléger l'application.
-- **Documentation** : Mise à jour des guides de développement et des procédures d'exploitation.
-- **Qualité** : Renforcement des règles de linting et de formatage du code.
+- **SEO et visibilité** : 
+    - Optimisation des URLs (suppression des extensions `.html`).
+    - Mise à jour du sitemap et ajout de dates de modification pour améliorer le référencement.
+    - Harmonisation des balises méta pour le partage social.
+- **Documentation** : Ajout du fichier `llms.txt` pour les outils d'IA.
