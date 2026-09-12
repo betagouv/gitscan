@@ -1,19 +1,21 @@
-## Changelog : passemarche (30 derniers jours, au 17 août 2026)
+## Changelog : passemarche (30 derniers jours, au 10 septembre 2026)
 
 ### Résumé
-Ce mois-ci, passemarche introduit une évolution majeure : la possibilité pour plusieurs entreprises de candidater ensemble grâce à la gestion des groupements. Le parcours de candidature a également été fluidifié avec des textes plus précis et une gestion automatisée des exigences liées aux lots sélectionnés par l'utilisateur.
+Les récentes évolutions se concentrent sur l'amélioration du parcours de candidature, notamment en permettant aux utilisateurs de choisir explicitement leur mode de candidature (seul ou en groupement) et de définir le type juridique de leur groupement. L'expérience est fluidifiée par un nouveau système de navigation assistée (wizard) et l'ajout d'un mode de relecture pour valider les choix effectués.
 
 ### Évolutions fonctionnelles
-- **Gestion des candidatures en groupement** : ajout de la possibilité de choisir entre une candidature seule ou en groupement, et de définir le type juridique du groupement ([#484](https://github.com/datagouv/passemarche/pull/484), [#489](https://github.com/datagouv/passemarche/pull/489)).
-- **Amélioration du parcours utilisateur** : intégration d'une modale sur le règlement de consultation en début de parcours et mise à jour des libellés concernant les motifs d'exclusion pour une meilleure clarté et conformité ([#486](https://github.com/datagouv/passemarche/pull/486)).
-- **Optimisation de la gestion des lots** : les exigences sont désormais automatiquement ajustées lors de la modification des types de lots, et ces informations sont désormais incluses dans les webhooks de candidature ([#465](https://github.com/datagouv/passemarche/pull/465), [#475](https://github.com/datagouv/passemarche/pull/475)).
-- **Corrections d'interface et de saisie** : correction de la mémorisation des réponses "non" dans les formulaires, ajustements de l'espacement et de la largeur des boutons ([#482](https://github.com/datagouv/passemarche/pull/482), [#492](https://github.com/datagouv/passemarche/pull/492)).
+- Choix du mode de candidature (seul ou en groupement) via un nouvel écran dédié [#484](https://github.com/datagouv/passemarche/pull/484).
+- Ajout d'une étape pour définir le type juridique du groupement au cours du parcours [#489](https://github.com/datagouv/passemarche/pull/489).
+- Mise en place d'un mode "lecture seule" permettant de revoir et valider le mode de candidature choisi [#489](https://github.com/datagouv/passemarche/pull/489).
+- Amélioration de l'interface visuelle lors de la sélection du mode de candidature [#484](https://github.com/datagouv/passemarche/pull/484).
+- Correction permettant de rendre l'adresse email optionnelle pour le mandataire d'un groupement [#484](https://github.com/datagouv/passemarche/pull/484).
 
 ### Évolutions techniques
-- **Sécurité** : mise à jour de Rails vers la version 8.1.3.1 pour corriger une vulnérabilité ([#485](https://github.com/datagouv/passemarche/pull/485)).
-- **Performance de la CI** : parallélisation des tests (RSpec et Cucumber) pour réduire les temps d'exécution des cycles d'intégration continue ([#451](https://github.com/datagouv/passemarche/pull/451)).
-- **Évolutions structurelles** : mise en place de nouveaux modèles de données pour les groupements et déploiement via un système de "feature flags" ([#483](https://github.com/datagouv/passemarche/pull/483)).
-- **Fiabilité de l'API** : correction de la régénération automatique du PDF de synthèse lors des mises à jour de données via l'API ([#474](https://github.com/datagouv/passemarche/pull/474)).
+- Refonte de la navigation du parcours (wizard) pour centraliser la logique de progression et améliorer la stabilité [#493](https://github.com/datagouv/passemarche/pull/493).
+- Optimisation de l'architecture en extrayant les requêtes de lecture des contrôleurs vers des *presenters* dédiés.
+- Amélioration de la structure du code en déplaçant la logique métier (`already_mandataire?`) du présentateur vers le modèle [#493](https://github.com/datagouv/passemarche/pull/493).
+- Renforcement de la fiabilité des tests avec l'ajout de nouveaux scénarios Cucumber et la correction de l'ordre de certains tests de versioning.
+- Correction de la propagation de l'utilisateur lors des connexions différées en mode mixte.
 
 ### Autres changements
-- **Documentation** : simplification de la gestion documentaire en supprimant la synchronisation locale des guides ([#473](https://github.com/datagouv/passemarche/pull/473)).
+- Ajout d'une tâche de maintenance (Rake task) pour permettre la conversion des anciennes candidatures vers le mode "solo".
