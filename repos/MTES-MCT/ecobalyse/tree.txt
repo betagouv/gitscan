@@ -3,7 +3,6 @@
 ├── .editorconfig
 ├── .env.sample
 ├── .gitattributes
-├── .gitconfig
 ├── .github
 │   ├── ISSUE_TEMPLATE
 │   │   ├── bug_template.md
@@ -28,6 +27,7 @@
 │       ├── score_history.yml
 │       └── semantic-pr.yml
 ├── .gitignore
+├── .jsonformatignore
 ├── .justfile
 ├── .npmrc
 ├── .pre-commit-config.yaml
@@ -172,6 +172,7 @@
 │   ├── encrypt
 │   ├── generate-crypto-key
 │   ├── get_tag_for_commit.py
+│   ├── json_formatter.py
 │   ├── load-fixtures.sh
 │   ├── playwright-webserver.sh
 │   ├── reset-docker-db.sh
@@ -195,7 +196,6 @@
 │   │   ├── export_datagouv.py
 │   │   ├── export_lcia.py
 │   │   ├── generate_taxonomy_with_aliases.py
-│   │   ├── json_formatter.py
 │   │   └── lcia_info.py
 │   ├── common
 │   │   ├── __init__.py
@@ -250,6 +250,7 @@
 │   │   │   ├── process.py
 │   │   │   ├── textile.py
 │   │   │   └── utils.py
+│   │   ├── json.py
 │   │   ├── logging.py
 │   │   ├── s3.py
 │   │   ├── tests.py
@@ -327,7 +328,6 @@
 │   │   │   ├── biscuit-200g-shortbread-proxy-pack-plastic-film.json
 │   │   │   ├── biscuits-100g-proxy-pack-plastic-film.json
 │   │   │   ├── biscuits-150g-proxy-pack-plastic-film.json
-│   │   │   ├── black-currant-fr.json
 │   │   │   ├── black-mulberry-default.json
 │   │   │   ├── black-pepper.json
 │   │   │   ├── blinis-200g-proxy-pack-rigid-plastic-other-than-bottles.json
@@ -576,6 +576,7 @@
 │   │   │   ├── pates-*.json  (6 files)
 │   │   │   ├── peach-eu.json
 │   │   │   ├── peach-fr.json
+│   │   │   ├── peach-organic.json
 │   │   │   ├── peach.json
 │   │   │   ├── peanut-350g-butter-proxy-pack-glass.json
 │   │   │   ├── peanut-non-eu.json
@@ -664,7 +665,7 @@
 │   │   │   ├── snail-default.json
 │   │   │   ├── snail-fr.json
 │   │   │   ├── snail-wild.json
-│   │   │   ├── soft-*.json  (16 files)
+│   │   │   ├── soft-*.json  (17 files)
 │   │   │   ├── soluble-200g-powder-proxy-pack-glass.json
 │   │   │   ├── sorghum-fr.json
 │   │   │   ├── soup-dehydrated-fr.json
@@ -676,12 +677,12 @@
 │   │   │   ├── sparkling-75cl-wine-glass-bottle-green-cork-stopper-560g.json
 │   │   │   ├── sparkling-75cl-wine-glass-bottle-green-cork-stopper-775g.json
 │   │   │   ├── sparkling-75cl-wine-glass-bottle-green-cork-stopper-835g.json
-│   │   │   ├── spinach-non-eu.json
+│   │   │   ├── spinach.json
 │   │   │   ├── spring-*.json  (5 files)
 │   │   │   ├── squid-fr.json
 │   │   │   ├── starters-280g-exotic-products-proxy-pack-rigid-plastic-other.json
 │   │   │   ├── still-*.json  (11 files)
-│   │   │   ├── strawberry-*.json  (5 files)
+│   │   │   ├── strawberry-*.json  (6 files)
 │   │   │   ├── sugar-1000g-proxy-pack-cardboard.json
 │   │   │   ├── sugar-beet-default.json
 │   │   │   ├── sugar-beet-fr.json
@@ -725,7 +726,6 @@
 │   │   │   ├── water-3000g-proxy-pack-plastic-bottles.json
 │   │   │   ├── water-extraction-container-filling-and-grouping-at-water-factory.json
 │   │   │   ├── wheat-grain-row.json
-│   │   │   ├── wheat-grain.json
 │   │   │   ├── whey.json
 │   │   │   ├── white-250g-black-pudding-pp-pe-evoh-pe-tray.json
 │   │   │   ├── white-cabbage-non-eu.json
@@ -1052,7 +1052,6 @@
 │   │   │   ├── rice-basmati.json
 │   │   │   ├── sesame-seed.json
 │   │   │   ├── sorghum-default.json
-│   │   │   ├── spinach.json
 │   │   │   ├── strawberry.json
 │   │   │   ├── sweet-corn.json
 │   │   │   ├── tea-dried-default.json
@@ -1174,7 +1173,6 @@
 │   │   │   ├── palm-fruit-organic.json
 │   │   │   ├── papaya-organic.json
 │   │   │   ├── pea-with-pod-organic.json
-│   │   │   ├── peach-organic.json
 │   │   │   ├── peanut-organic.json
 │   │   │   ├── pear-organic.json
 │   │   │   ├── pineapple-organic.json
@@ -1244,7 +1242,6 @@
 │   ├── migrations
 │   │   ├── 2026-06-03-add-food-type-cereals-legumes.py
 │   │   ├── 2026-06-22-use-kwh-instead-of-mj.py
-│   │   ├── 2026-07-15-infer-raw-to-cooked-ratio.py
 │   │   └── 2026-08-25-generate-taxonomy.py
 │   ├── models
 │   │   └── process.py
@@ -1349,6 +1346,8 @@
 │           └── ecobalyse
 │               ├── __init__.py
 │               ├── github.py
+│               ├── json.py
+│               ├── logging.py
 │               ├── logging_config.py
 │               ├── scalingo.py
 │               └── tests
@@ -1673,6 +1672,7 @@
 │   ├── conftest.py
 │   ├── e2e-food.json
 │   ├── e2e-textile.json
+│   ├── json_formatter_test.py
 │   ├── lib
 │   │   ├── http.spec.js
 │   │   ├── index.spec.js
@@ -1682,4 +1682,4 @@
 │   ├── rate-limiting.spec.js
 │   └── server.spec.js
 └── uv.lock
-133 directories, 1913 files
+133 directories, 1915 files
