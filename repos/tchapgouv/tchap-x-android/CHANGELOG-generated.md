@@ -1,34 +1,39 @@
-## Changelog : tchap-x-android (30 derniers jours, au 31 août 2026)
+## Changelog : tchap-x-android (30 derniers jours, au 11 septembre 2026)
 
 ### Résumé
-Ce mois a été marqué par une amélioration significative de l'expérience utilisateur, notamment grâce à une meilleure gestion des statuts de profil (emojis) et une simplification du processus de connexion. La sécurité a été renforcée avec l'intégration de nouveaux mécanismes de scan, tandis que la stabilité de l'application a été consolidée par de nombreuses corrections sur les appels, la gestion des médias et l'interface utilisateur.
+Ce mois-ci, l'application a bénéficié d'améliorations majeures concernant la gestion des médias, la recherche et la sécurité. Les utilisateurs peuvent désormais envoyer plusieurs fichiers ou images à la fois, utiliser une recherche globale plus performante et profiter d'une expérience plus fluide lors de la connexion. Des correctifs importants ont également été apportés pour stabiliser l'application et améliorer la clarté de l'interface, notamment en mode sombre.
 
 ### Évolutions fonctionnelles
-- **Profil et Statut** : Ajout de badges d'emoji pour afficher le statut de l'utilisateur sur son avatar et synchronisation automatique des changements de profil via le SDK Rust.
-- **Appels et Communication** : 
-    - Affichage des participants actifs dans la liste des personnes lors d'un appel [#7199](https://github.com/tchapgouv/tchap-x-android/pull/7300).
-    - Ajout du menu "ajouter des réactions" dans l'écran des fils de discussion (threads) [#7388](https://github.com/tchapgouv/tchap-x-android/pull/7388).
-    - Amélioration de la lecture des messages vocaux (maintien de la lecture même quand l'écran s'éteint).
-- **Connexion et Sécurité** :
-    - Possibilité de se connecter via l'email partagé par Tchap Classique.
-    - Amélioration du processus de liaison d'un nouvel appareil (gestion du timer pour le scan de QR Code et corrections de la biométrie) [#7303](https://github.com/tchapgouv/tchap-x-android/pull/7303).
-    - Intégration de fonctionnalités de scan anti-virus et récupération de l'URL du scanner depuis le serveur.
-- **Interface Utilisateur** :
-    - Amélioration de l'affichage de l'emoji picker et de la galerie média.
-    - Affichage d'un indicateur "Message non trouvé" lorsqu'une réponse pointe vers un message chargé impossible à récupérer [#7376](https://github.com/tchapgouv/tchap-x-android/pull/7376).
-    - Affichage de l'ID Matrix dans le sélecteur de salon pour les messages directs.
+- **Gestion des médias** : 
+    - Support de l'envoi multiple de fichiers et d'images.
+    - Amélioration de l'affichage des images en cours d'envoi et de la gestion des légendes.
+    - Correction de la transparence lors du partage de fichiers avec des types MIME imprécis.
+- **Communication et Recherche** :
+    - Introduction d'une recherche globale permettant de chercher à la fois dans les salons et dans les messages ([#7410](https://github.com/tchapgouv/tchap-x-android/pull/7410)).
+    - Amélioration des sondages avec la possibilité de sélectionner plusieurs réponses.
+    - Optimisation de la suggestion de mentions dans les discussions.
+- **Expérience Utilisateur (UX)** :
+    - Correction de l'affichage des couleurs de la snackbar en mode sombre.
+    - Amélioration de la fluidité de l'écran de sélection du fournisseur de compte (rendu scrollable).
+    - Meilleure gestion des notifications, notamment pour garantir leur caractère "bruyant" même lorsque le contenu est masqué par un code PIN.
+    - Correction de divers problèmes d'affichage (tailles de texte, champs de saisie sous le clavier).
+- **Onboarding et Comptes** :
+    - Possibilité de se connecter via l'adresse email partagée par Tchap Classique.
+    - Amélioration du processus de création de compte et de la gestion des identifiants.
 
 ### Évolutions techniques
-- **Architecture et SDK** : 
-    - Refonte majeure de la gestion de la configuration d'entreprise (`WellknownRetriever`) et de la récupération d'URL pour une meilleure modularité.
-    - Correction du SDK Rust pour assurer la compatibilité avec les architectures arm64.
-- **Performance et Build** :
-    - Activation de la synchronisation parallèle sur Gradle pour accélérer les temps de compilation.
-    - Mise à jour des outils de déploiement (Fastlane).
-- **Maintenance et Correctifs** :
-    - Corrections de l'accessibilité [#7136](https://github.com/tchapgouv/tchap-x-android/pull/7136).
-    - Résolution de divers problèmes de mise en page (layout) et de gestion du débit vidéo (bitrate).
+- **Noyau et Performance** :
+    - Intégration et optimisation du SDK Rust, incluant des corrections pour les architectures arm64.
+    - Activation du scan de contenu et intégration du scan antivirus.
+    - Optimisation des processus de synchronisation et de la gestion de la base de données lors des mises à jour.
+- **Architecture et Code** :
+    - Refactorisation massive pour améliorer la maintenabilité : renommage des classes d'événements (singularisation), réorganisation des packages (session, DI) et nettoyage des imports.
+    - Ajout d'une documentation technique exhaustive (KDoc) sur l'ensemble des interfaces de l'API.
+    - Amélioration de la gestion des erreurs (dialogues d'erreur lors de l'échec d'envoi de message [#7470](https://github.com/tchapgouv/tchap-x-android/pull/7470)).
+- **DevOps et CI/CD** :
+    - Automatisation des processus de release via Fastlane et de nouveaux scripts de déploiement.
+    - Activation des statistiques analytiques PostHog.
 
 ### Autres changements
-- **Documentation et Support** : Remplacement des liens vers l'aide d'Element par la FAQ officielle de Tchap.
-- **Maintenance du code** : Nettoyage général (Linter, suppression de TODOs) et mise à jour des captures d'écran de l'application.
+- **Documentation** : Ajout de guides d'utilisation (notamment pour la sauvegarde automatique de Tchap Classique) et mise à jour de la documentation technique.
+- **Maintenance** : Nettoyage régulier du linter et mise à jour des captures d'écran pour les boutiques d'applications.
