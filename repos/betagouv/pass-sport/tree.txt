@@ -113,15 +113,13 @@
 │   │       ├── cnaf
 │   │       │   ├── clean_cnaf_1_before_qf_batch.ipynb
 │   │       │   ├── clean_cnaf_2_after_qf_batch.ipynb
+│   │       │   ├── clean_cnaf_2a_aah_aeeh.ipynb
 │   │       │   ├── clean_cnaf_lib.py
 │   │       │   └── test_clean_cnaf_lib.py
 │   │       ├── cnous
 │   │       │   ├── clean_cnous.ipynb
-│   │       │   ├── deduplication_cnous.ipynb
-│   │       │   ├── deduplication_cnous_for_occitanie.ipynb
-│   │       │   └── fss
-│   │       │       └── clean_fss.ipynb
-│   │       ├── csv_to_parquet.ipynb
+│   │       │   ├── clean_cnous_lib.py
+│   │       │   └── test_clean_cnous_lib.py
 │   │       ├── franceconnect
 │   │       │   ├── README.md
 │   │       │   ├── check_writeback.sql
@@ -139,6 +137,7 @@
 │   │       ├── msa
 │   │       │   ├── clean_msa_1_before_qf_batch.ipynb
 │   │       │   ├── clean_msa_2_after_qf_batch.ipynb
+│   │       │   ├── clean_msa_2a_aah_aeeh.ipynb
 │   │       │   ├── clean_msa_lib.py
 │   │       │   └── test_clean_msa_lib.py
 │   │       ├── partners_lib.py
@@ -230,8 +229,6 @@
 │   ├── eslint.config.mjs
 │   ├── fonts.d.ts
 │   ├── global.d.ts
-│   ├── instrumentation-client.ts
-│   ├── instrumentation.ts
 │   ├── jest.config.js
 │   ├── next.config.mjs
 │   ├── package.json
@@ -245,39 +242,38 @@
 │   │   ├── assets
 │   │   │   └── partenaires
 │   │   │       ├── affiches
-│   │   │       │   ├── partenaires_affiche_destination_des_jeunes.pdf
-│   │   │       │   ├── partenaires_affiche_destination_des_parents.pdf
-│   │   │       │   ├── structures_sportives_affiche_destination_des_jeunes.pdf
-│   │   │       │   └── structures_sportives_affiche_destination_des_parents.pdf
+│   │   │       │   ├── affiche-boursiers.pdf
+│   │   │       │   ├── affiche-clubs.pdf
+│   │   │       │   ├── affiche-generique.pdf
+│   │   │       │   └── affiche-situation-handicap.pdf
+│   │   │       ├── audios
+│   │   │       │   └── pass-sport-audio.mp3
 │   │   │       ├── charte-lsm-2026.pdf
 │   │   │       ├── flyers
-│   │   │       │   └── flyer_pass_sport_2025.pdf
-│   │   │       ├── kakemono
-│   │   │       │   └── kakemono_pass_sport_2025.pdf
-│   │   │       ├── logos
-│   │   │       │   ├── charte_utilisation_des_logos_pass_sport.pdf
-│   │   │       │   ├── logo_blanc_secondaire.png
-│   │   │       │   └── logo_bleu_principal.png
-│   │   │       ├── notice-lsm-2025.pdf
-│   │   │       ├── notice-pass-sport-2025.pdf
+│   │   │       │   └── flyer.pdf
 │   │   │       ├── publications-pretes-a-l-emploi-pour-accompagner-les-visuels-pass-sport.pdf
 │   │   │       ├── reseaux-sociaux
-│   │   │       │   ├── structures_sportives_visuel_pour_communiquer_aupres_des_jeunes.jpg
-│   │   │       │   ├── structures_sportives_visuel_pour_communiquer_aupres_des_parents.jpg
-│   │   │       │   ├── visuel_pour_communiquer_aupres_des_etudiants_boursiers.jpg
-│   │   │       │   ├── visuel_pour_communiquer_aupres_des_jeunes.jpg
-│   │   │       │   ├── visuel_pour_communiquer_aupres_des_parents.jpg
-│   │   │       │   ├── visuel_pour_les_beneficiaires_aah.jpg
-│   │   │       │   └── visuel_pour_les_parents_de_beneficiaires_aeeh.jpg
+│   │   │       │   ├── pass-sport-video-generique.mp4
+│   │   │       │   ├── texte-pret-a-l-emploi-accompagnement-visuels-et-video.docx
+│   │   │       │   ├── visuel-6-17-ans.jpg
+│   │   │       │   ├── visuel-aah.jpg
+│   │   │       │   ├── visuel-aeeh.jpg
+│   │   │       │   ├── visuel-boursiers.jpg
+│   │   │       │   ├── visuel-club-1.jpg
+│   │   │       │   ├── visuel-club-2.jpg
+│   │   │       │   ├── visuel-club-3.jpg
+│   │   │       │   ├── visuel-generique.jpg
+│   │   │       │   ├── visuel-pass-sport-reconduit-story-banniere.jpg
+│   │   │       │   └── visuel-pass-sport-reconduit.jpg
 │   │   │       ├── tableau-federations.pdf
-│   │   │       └── videos
-│   │   │           ├── video-14-17-ans-ars.mp4
-│   │   │           ├── video-aah.mp4
-│   │   │           ├── video-etudiants-boursiers.mp4
-│   │   │           ├── video-presentation-30-secondes.mp4
-│   │   │           ├── video-presentation-50-secondes.mp4
-│   │   │           ├── video-presentation-standard.mp4
-│   │   │           └── video-salles-de-sport.mp4
+│   │   │       ├── videos
+│   │   │       │   ├── capsule-boursiers.mp4
+│   │   │       │   ├── capsule-handicap.mp4
+│   │   │       │   ├── capsule-salles-de-sport.mp4
+│   │   │       │   ├── video-anime-16-9.mp4
+│   │   │       │   └── video-anime-9-16.mp4
+│   │   │       └── whatsapp
+│   │   │           └── whatsapp-club.jpg
 │   │   ├── default-logo.svg
 │   │   ├── google8425ffe110f23ef4.html
 │   │   ├── home.svg
@@ -335,6 +331,7 @@
 │   │           ├── pass_sport_not_existing_error.png
 │   │           └── simon-running.webp
 │   ├── scripts
+│   │   ├── generate-communes-dataset.mjs
 │   │   ├── scalingo-cleanup.sh
 │   │   ├── send-in-mass-aeeh.mjs
 │   │   ├── send-in-mass-code-pas-recu.mjs
@@ -349,7 +346,9 @@
 │   │   │   │   └── page.tsx
 │   │   │   ├── _variables.scss
 │   │   │   ├── api
-│   │   │   │   ├── code.ts
+│   │   │   │   ├── communes
+│   │   │   │   │   ├── route.ts
+│   │   │   │   │   └── schema.ts
 │   │   │   │   ├── contact
 │   │   │   │   │   ├── route.ts
 │   │   │   │   │   └── schema.ts
@@ -455,10 +454,12 @@
 │   │   │   │   │   ├── use-update-list.tsx
 │   │   │   │   │   └── use-update-title-iframe.ts
 │   │   │   │   ├── use-append-query-string.tsx
+│   │   │   │   ├── use-city-search.ts
 │   │   │   │   ├── use-eligibility-test-storage.ts
 │   │   │   │   ├── use-get-clubs.tsx
 │   │   │   │   ├── use-is-not-found.tsx
 │   │   │   │   ├── use-remove-query-string.tsx
+│   │   │   │   ├── use-simplified-eligibility-test-usage.ts
 │   │   │   │   ├── useLeafletAccessibility.tsx
 │   │   │   │   └── useRemoveAttributeById.tsx
 │   │   │   ├── layout.tsx
@@ -471,6 +472,9 @@
 │   │   │   │   ├── __snapshots__
 │   │   │   │   │   └── eligibility-test.spec.ts.snap
 │   │   │   │   ├── applications.ts
+│   │   │   │   ├── communes-client.ts
+│   │   │   │   ├── communes.spec.ts
+│   │   │   │   ├── communes.ts
 │   │   │   │   ├── eligibility-job.ts
 │   │   │   │   ├── eligibility-test.spec.ts
 │   │   │   │   ├── eligibility-test.ts
@@ -526,15 +530,6 @@
 │   │   │       ├── mentions-legales
 │   │   │       │   ├── page.tsx
 │   │   │       │   └── style.module.scss
-│   │   │       ├── partenaires
-│   │   │       │   ├── components
-│   │   │       │   │   ├── AccordionKakemono.tsx
-│   │   │       │   │   ├── AccordionsCommunicationKit.tsx
-│   │   │       │   │   ├── AccordionsLogos.tsx
-│   │   │       │   │   ├── AccordionsSocialMediasVisuals.tsx
-│   │   │       │   │   └── AccordionsWebsites.tsx
-│   │   │       │   ├── page.tsx
-│   │   │       │   └── styles.module.scss
 │   │   │       ├── plan-du-site
 │   │   │       │   ├── page.tsx
 │   │   │       │   └── style.module.scss
@@ -543,12 +538,9 @@
 │   │   │       │   └── style.module.scss
 │   │   │       ├── structures
 │   │   │       │   ├── components
-│   │   │       │   │   ├── AccordionsBecomePartner.tsx
 │   │   │       │   │   ├── AccordionsFaq.tsx
 │   │   │       │   │   ├── AccordionsKitCommunication.tsx
-│   │   │       │   │   ├── AccordionsLogos.tsx
-│   │   │       │   │   ├── AccordionsSocialMediasVisuals.tsx
-│   │   │       │   │   └── AccordionsTools.tsx
+│   │   │       │   │   └── AccordionsSocialMediasVisuals.tsx
 │   │   │       │   ├── constants
 │   │   │       │   │   └── anchors.ts
 │   │   │       │   ├── page.tsx
@@ -556,14 +548,8 @@
 │   │   │       ├── test-eligibilite
 │   │   │       │   ├── agent.ts
 │   │   │       │   ├── components
-│   │   │       │   │   ├── BeneficiaryRecap.ct.tsx
-│   │   │       │   │   ├── BeneficiaryRecap.test.tsx
-│   │   │       │   │   ├── BeneficiaryRecap.tsx
 │   │   │       │   │   ├── FranceConnectSection.tsx
 │   │   │       │   │   ├── NoFranceConnectSection.tsx
-│   │   │       │   │   ├── PostLoginFlow.tsx
-│   │   │       │   │   ├── PostLoginInfoForm.tsx
-│   │   │       │   │   ├── ResultPanel.tsx
 │   │   │       │   │   ├── allowance-step
 │   │   │       │   │   │   ├── AllowanceStep.tsx
 │   │   │       │   │   │   └── styles.module.scss
@@ -586,7 +572,8 @@
 │   │   │       │   │   ├── eligibility-test-forms
 │   │   │       │   │   │   └── EligibilityTestForms.tsx
 │   │   │       │   │   ├── error-alert
-│   │   │       │   │   │   └── ErrorAlert.tsx
+│   │   │       │   │   │   ├── ErrorAlert.tsx
+│   │   │       │   │   │   └── styles.module.scss
 │   │   │       │   │   ├── panels
 │   │   │       │   │   │   ├── email-sent
 │   │   │       │   │   │   │   ├── EmailSentAlert.tsx
@@ -595,6 +582,14 @@
 │   │   │       │   │   │   │   ├── NotEligibleAlert.tsx
 │   │   │       │   │   │   │   └── NotEligiblePanel.tsx
 │   │   │       │   │   │   └── styles.module.scss
+│   │   │       │   │   ├── post-login-flow
+│   │   │       │   │   │   ├── BeneficiaryRecap.ct.tsx
+│   │   │       │   │   │   ├── BeneficiaryRecap.test.tsx
+│   │   │       │   │   │   ├── BeneficiaryRecap.tsx
+│   │   │       │   │   │   ├── PostLoginFlow.tsx
+│   │   │       │   │   │   ├── PostLoginInfoForm.tsx
+│   │   │       │   │   │   ├── ResultPanel.tsx
+│   │   │       │   │   │   └── style.module.scss
 │   │   │       │   │   ├── radio-buttons-group
 │   │   │       │   │   │   ├── RadioButtonsGroup.tsx
 │   │   │       │   │   │   └── styles.module.scss
@@ -721,10 +716,14 @@
 │   │   │           ├── page.tsx
 │   │   │           ├── server-agent.ts
 │   │   │           └── styles.module.scss
+│   │   ├── data
+│   │   │   └── communes.json
 │   │   ├── dsfr
 │   │   │   ├── DsfrHead.tsx
 │   │   │   ├── DsfrProvider.tsx
 │   │   │   └── defaultColorScheme.ts
+│   │   ├── instrumentation-client.ts
+│   │   ├── instrumentation.ts
 │   │   ├── proxy.ts
 │   │   └── store
 │   │       ├── eligibilityTestContext.ts
@@ -769,6 +768,8 @@
 │       ├── eligibility-test.ts
 │       ├── email.ts
 │       ├── faq.ts
+│       ├── simplified-eligibility-test-usage.spec.ts
+│       ├── simplified-eligibility-test-usage.ts
 │       ├── string.spec.ts
 │       └── string.ts
 └── worker
@@ -844,7 +845,8 @@
     │       ├── qf-batch-workdir -> ../../../data/2026/partners/qf-batch-workdir/
     │       ├── qf-batch.ts
     │       ├── rate-pacer.ts
-    │       └── run-qf-batch.sh
+    │       ├── run-qf-batch.sh
+    │       └── split-csv.sh
     ├── test
     │   ├── e2e
     │   │   ├── atomicity.e2e.test.ts
@@ -857,8 +859,10 @@
     │   │   └── stale-job-requeue.e2e.test.ts
     │   └── unit
     │       ├── candidates.test.ts
+    │       ├── cnous-params.test.ts
+    │       ├── qf-params.test.ts
     │       └── rate-pacer.test.ts
     ├── tsconfig.build.json
     ├── tsconfig.json
     └── vitest.config.ts
-222 directories, 641 files
+222 directories, 645 files
