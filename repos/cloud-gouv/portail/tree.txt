@@ -3,14 +3,17 @@
 │   ├── renovate.json
 │   └── workflows
 │       ├── cargo.yaml
+│       ├── docs.yaml
 │       └── test.yaml
 ├── .gitignore
+├── CONTRIBUTING.md
 ├── Cargo.lock
 ├── Cargo.toml
 ├── LICENSE
 ├── README.md
 ├── benches
 │   └── acl.rs
+├── build.rs
 ├── contrib
 │   ├── vim
 │   │   └── acl.vim
@@ -22,37 +25,77 @@
 │           ├── syntaxes
 │           │   └── acl.tmLanguage.json
 │           └── vscode-acl-syntax-0.1.0.vsix
+├── default.nix
 ├── docs
-│   └── ACL_DESIGN.md
+│   ├── ACL_DESIGN.md
+│   ├── book-en
+│   │   └── book.toml
+│   ├── book-fr
+│   │   └── book.toml
+│   ├── src
+│   │   ├── en
+│   │   │   ├── SUMMARY.md
+│   │   │   ├── api.md
+│   │   │   ├── configuration.md
+│   │   │   ├── contributing.md
+│   │   │   ├── introduction.md
+│   │   │   ├── quick-start
+│   │   │   │   ├── best-practices.md
+│   │   │   │   ├── routing.md
+│   │   │   │   ├── syntax.md
+│   │   │   │   └── use-cases.md
+│   │   │   ├── quick-start.md
+│   │   │   └── roadmap.md
+│   │   └── fr
+│   │       ├── SUMMARY.md
+│   │       ├── api.md
+│   │       ├── configuration.md
+│   │       ├── contributing.md
+│   │       ├── demarrage-rapide
+│   │       │   ├── bonnes-pratiques.md
+│   │       │   ├── cas-usage.md
+│   │       │   ├── routage.md
+│   │       │   └── syntaxe.md
+│   │       ├── demarrage-rapide.md
+│   │       ├── introduction.md
+│   │       └── roadmap.md
+│   └── theme
+│       └── head.hbs
 ├── examples
 │   ├── config.toml
 │   ├── filter.acl
 │   └── h2_proxy_multiplex.rs
+├── locales
+│   └── fr.po
 ├── nix
 │   ├── ci-shell.nix
 │   ├── default.nix
+│   ├── docs.nix
 │   ├── module.nix
 │   ├── overlay.nix
 │   ├── package.nix
 │   ├── portail-examples.nix
 │   ├── release.nix
-│   └── tests
-│       ├── certs
-│       │   ├── hello.corp
-│       │   │   ├── ca.cert.pem
-│       │   │   ├── ca.key.pem
-│       │   │   ├── hello.corp.example.com.cert.pem
-│       │   │   ├── hello.corp.example.com.key.pem
-│       │   │   └── snakeoil-certs.nix
-│       │   ├── portail.corp
-│       │   │   ├── ca.cert.pem
-│       │   │   ├── ca.key.pem
-│       │   │   ├── portail.corp.example.com.cert.pem
-│       │   │   ├── portail.corp.example.com.key.pem
-│       │   │   └── snakeoil-certs.nix
-│       │   └── snakeoil-certs.nix
-│       └── default.nix
+│   ├── shell.nix
+│   ├── tests
+│   │   ├── certs
+│   │   │   ├── hello.corp
+│   │   │   │   ├── ca.cert.pem
+│   │   │   │   ├── ca.key.pem
+│   │   │   │   ├── hello.corp.example.com.cert.pem
+│   │   │   │   ├── hello.corp.example.com.key.pem
+│   │   │   │   └── snakeoil-certs.nix
+│   │   │   ├── portail.corp
+│   │   │   │   ├── ca.cert.pem
+│   │   │   │   ├── ca.key.pem
+│   │   │   │   ├── portail.corp.example.com.cert.pem
+│   │   │   │   ├── portail.corp.example.com.key.pem
+│   │   │   │   └── snakeoil-certs.nix
+│   │   │   └── snakeoil-certs.nix
+│   │   └── default.nix
+│   └── xtr.nix
 ├── run.sh
+├── shell.nix
 └── src
     ├── acl
     │   ├── ast.rs
@@ -101,6 +144,8 @@
     ├── backend_routing.rs
     ├── config.rs
     ├── dns.rs
+    ├── events.rs
+    ├── i18n.rs
     ├── lib.rs
     ├── logging
     │   ├── mod.rs
@@ -121,4 +166,4 @@
     │   └── mod.rs
     ├── state.rs
     └── systemd.rs
-23 directories, 100 files
+32 directories, 136 files
