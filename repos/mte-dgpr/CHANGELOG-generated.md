@@ -1,14 +1,12 @@
 # Synthèse d'activité : mte-dgpr (du 19/06 au 30/07)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation s'est concentrée sur l'amélioration de l'intelligence et de la précision du traitement des documents réglementaires. Grâce à [ocapi](/repos/mte-dgpr/ocapi), la génération de permis est plus robuste et bénéficie de nouvelles capacités de traitement du langage naturel via l'intégration de l'IA Deepseek. 
-
-Parallèlement, [arretify](/repos/mte-dgpr/arretify) progresse significativement dans sa capacité à convertir des arrêtés en formats numériques (HTML) de haute qualité. L'outil identifie désormais avec une plus grande précision des éléments complexes tels que les tableaux et les prescriptions annexées, garantissant une restitution plus fidèle des documents pour les utilisateurs finaux.
+L'activité récente est marquée par une montée en puissance des outils de traitement de documents réglementaires. Les efforts se sont portés sur la précision de la génération de permis avec [ocapi](/repos/mte-dgpr/ocapi), qui intègre désormais de nouvelles capacités d'intelligence artificielle pour le traitement du langage naturel, et sur la fiabilité de la conversion des arrêtés en format HTML avec [arretify](/repos/mte-dgpr/arretify), qui gère désormais mieux les structures complexes comme les tableaux et les annexes.
 
 ## Autres changements notables
-- Optimisation de la gestion des configurations et de la structure du projet dans [ocapi](/repos/mte-dgpr/ocapi) pour une meilleure gestion des templates.
-- Amélioration de la robustesse technique et de la chaîne d'intégration continue (CI) dans [arretify](/repos/mte-dgpr/arretify), incluant un refactoring des identifiants pour une meilleure cohérence du code.
+- Refactorisation de la gestion des configurations et des templates dans [ocapi](/repos/mte-dgpr/ocapi) pour améliorer la robustesse du système.
+- Optimisation de la chaîne d'intégration continue (CI) et harmonisation du code dans [arretify](/repos/mte-dgpr/arretify).
 
 ## Dépôts les plus actifs
-- [ocapi](/repos/mte-dgpr/ocapi) : Évolution des capacités de rendu des permis et intégration de nouveaux fournisseurs d'IA.
-- [arretify](/repos/mte-dgpr/arretify) : Amélioration de la détection structurelle pour une conversion plus précise des arrêtés.
+- [ocapi](/repos/mte-dgpr/ocapi) : Amélioration de la génération de permis et intégration de nouveaux modèles d'IA.
+- [arretify](/repos/mte-dgpr/arretify) : Renforcement de la détection des éléments structuraux (tableaux, annexes) dans les arrêtés.

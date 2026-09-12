@@ -1,20 +1,27 @@
-# Synthèse d'activité : demarche-numerique (du 14/08 au 21/08)
+# Synthèse d'activité : demarche-numerique (du 01/09 au 07/09)
 
 ## Résumé de l'activité
-L'activité de la période est marquée par des avancées significatives en matière d'automatisation et de robustesse des services. L'outil d'extraction de données [la_taupe](/repos/demarche-numerique/la_taupe) franchit un cap technologique avec un nouveau moteur de reconnaissance de texte, permettant un traitement par lots plus précis et rapide des documents bancaires. 
+L'activité récente de l'organisation se concentre sur l'amélioration de la précision des outils de traitement et la modernisation des infrastructures. [la_taupe](/repos/demarche-numerique/la_taupe) gagne en efficacité grâce à un nouveau moteur d'OCR et une capacité de traitement par lots, facilitant l'extraction automatisée et robuste de données bancaires (RIB). [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) évolue également avec une interface plus fluide et de nouvelles capacités d'API pour une meilleure gestion des dossiers et de l'historique.
 
-Parallèlement, la plateforme [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) bénéficie d'une mise à jour majeure de son infrastructure et d'améliorations de l'expérience utilisateur, notamment sur la gestion des comptes. Enfin, [ds_proxy](/repos/demarche-numerique/ds_proxy) gagne en flexibilité pour les infrastructures de stockage, facilitant l'intégration de nouveaux services cloud.
+Enfin, l'écosystème gagne en flexibilité avec l'extension des capacités de stockage via [ds_proxy](/repos/demarche-numerique/ds_proxy) et pose les bases de la documentation de demain avec le lancement du projet [doc-v2.demarche.numerique.gouv.fr](/repos/demarche-numerique/doc-v2.demarche.numerique.gouv.fr).
 
 ## Sécurité
-- Renforcement de la sécurité lors de l'exportation de fichiers ZIP sur [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
+- Renforcement de la sécurité contre les attaques par traversée de chemin (path traversal) lors de l'exportation de fichiers ZIP dans [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
 
 ## Autres changements notables
-- **Migrations et architecture :** Migration majeure de l'application [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) vers Rails 8.1 et refonte de l'architecture des types de champs.
-- **Évolutions technologiques :** Passage à un nouveau moteur OCR (PP-OCR v6) et mise en place d'outils de mesure de performance sur [la_taupe](/repos/demarche-numerique/la_taupe).
-- **Infrastructure et stockage :** Extension des capacités de [ds_proxy](/repos/demarche-numerique/ds_proxy) pour supporter les protocoles S3 et Swift, accompagnée d'une simplification des dépendances.
-- **Optimisation des performances :** Réduction de la latence de traitement sur [la_taupe](/repos/demarche-numerique/la_taupe) et optimisation des requêtes GraphQL sur [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
+- **Migrations et architecture :**
+    - Migration majeure de l'application principale vers Rails 8.1 dans [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
+    - Refonte de l'architecture des champs via l'implémentation du polymorphisme (STI) dans [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
+    - Optimisation des performances GraphQL pour réduire les requêtes N+1 dans [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
+- **Traitement de données et OCR :**
+    - Passage au moteur PP-OCR v6 tiny pour une extraction de texte plus performante dans [la_taupe](/repos/demarche-numerique/la_taupe).
+    - Mise en place d'un banc de mesure et d'outils de benchmarking pour évaluer la précision et la latence dans [la_taupe](/repos/demarche-numerique/la_taupe).
+- **Infrastructure et stockage :**
+    - Ajout de la prise en charge des protocoles de stockage S3 et Swift dans [ds_proxy](/repos/demarche-numerique/ds_proxy).
+    - Simplification et allégement des dépendances pour améliorer la stabilité de [ds_proxy](/repos/demarche-numerique/ds_proxy).
 
 ## Dépôts les plus actifs
-- [la_taupe](/repos/demarche-numerique/la_taupe) : Amélioration majeure de la précision de l'extraction de données et ajout du traitement par lots.
-- [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) : Mise à jour structurelle de la plateforme et optimisation des fonctionnalités de gestion de dossiers.
-- [ds_proxy](/repos/demarche-numerique/ds_proxy) : Élargissement des options de stockage et optimisation de la configuration.
+- [la_taupe](/repos/demarche-numerique/la_taupe) : Amélioration majeure de l'extraction de données RIB et de l'OCR.
+- [ds_proxy](/repos/demarche-numerique/ds_proxy) : Extension des capacités de stockage et optimisation des dépendances.
+- [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) : Migration vers Rails 8.1 et évolutions fonctionnelles de l'API et de l'interface.
+- [doc-v2.demarche.numerique.gouv.fr](/repos/demarche-numerique/doc-v2.demarche.numerique.gouv.fr) : Initialisation de la nouvelle documentation.
