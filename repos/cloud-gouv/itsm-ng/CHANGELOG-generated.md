@@ -1,7 +1,7 @@
 ## Changelog : itsm-ng (30 derniers jours, au 07/09/2026)
 
 ### Résumé
-Les activités récentes ont porté sur la mise en place de la documentation initiale du projet afin de faciliter sa compréhension et son utilisation.
+Le projet a débuté sa phase de documentation avec l'ajout d'un fichier README pour faciliter la prise en main du dépôt.
 
 ### Autres changements
-- Ajout d'un fichier README pour documenter le dépôt.
+- Ajout d'un fichier README pour la documentation initiale.
