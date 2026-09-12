@@ -39,6 +39,8 @@
 │   ├── 2026-05-28-refactoring-model-forwarding.md
 │   ├── 2026-07-01-split-rag.md
 │   ├── 2026-08-27-datetime-handling.md
+│   ├── 2026-09-02-qos.md
+│   ├── 2026-09-04-response-schema-mapping.md
 │   ├── README.md
 │   └── scripts
 │       ├── 2026-01-30-es-migration.py
@@ -88,7 +90,8 @@
 │   │       ├── 2026_07_15_1826-50ddc08e9202_add_claims_column.py
 │   │       ├── 2026_07_30_1805-c83449930fe2_update_constraint_name.py
 │   │       ├── 2026_08_19_1239-b2d58fce4b3c_remove_create_public_collection_.py
-│   │       └── 2026_09_04_1000-a7f3c91b2e04_rename_providercarbonfootprintzone_to_hostingzone.py
+│   │       ├── 2026_09_04_1000-a7f3c91b2e04_rename_providercarbonfootprintzone_to_hostingzone.py
+│   │       └── 2026_09_11_1340-c8e1a04b7f12_drop_provider_qos_columns.py
 │   ├── alembic.ini
 │   ├── app.py
 │   ├── clients
@@ -142,8 +145,6 @@
 │   │   │   └── errors.py
 │   │   ├── provider
 │   │   │   ├── __init__.py
-│   │   │   ├── _provideradapter.py
-│   │   │   ├── _provideradapterbuilder.py
 │   │   │   ├── _providerclient.py
 │   │   │   ├── _providerloadbalancer.py
 │   │   │   ├── _providermetricslogger.py
@@ -262,6 +263,8 @@
 │   │   │   ├── _httpauthssosessionvalidator.py
 │   │   │   ├── _httpprovideradapterbuilder.py
 │   │   │   ├── _httpproviderclient.py
+│   │   │   ├── _httpproviderrequest.py
+│   │   │   ├── _httpproviderresponse.py
 │   │   │   └── adapters
 │   │   │       ├── __init__.py
 │   │   │       ├── _httpprovideradapter.py
@@ -412,10 +415,6 @@
 │   │   └── usage.py
 │   ├── sql
 │   │   └── models.py
-│   ├── tasks
-│   │   ├── __init__.py
-│   │   ├── _celery.py
-│   │   └── routing.py
 │   ├── tests
 │   │   ├── __init__.py
 │   │   ├── helpers.py
@@ -652,8 +651,7 @@
 │   │       │   │   ├── test_roles.py
 │   │       │   │   ├── test_tokens.py
 │   │       │   │   └── test_users.py
-│   │       │   ├── test_limiter.py
-│   │       │   └── test_qos.py
+│   │       │   └── test_limiter.py
 │   │       ├── test_configuration.py
 │   │       └── use_case
 │   │           ├── __init__.py
@@ -830,7 +828,6 @@
 │       ├── load_balancing.py
 │       ├── logging.py
 │       ├── monitoring.py
-│       ├── qos.py
 │       ├── redis.py
 │       ├── routing.py
 │       └── variables.py
@@ -1089,6 +1086,5 @@
     ├── encrypt_vault.sh
     ├── gunicorn.conf.py
     ├── manage_docs_dns.py
-    ├── startup_api.sh
-    └── startup_worker.sh
-228 directories, 865 files
+    └── startup_api.sh
+227 directories, 862 files
