@@ -85,6 +85,7 @@
 │   ├── interoperabilities.md
 │   ├── llm-configuration.md
 │   ├── model-fallback.md
+│   ├── presentations.md
 │   ├── project-file-indexing.md
 │   ├── release.md
 │   ├── service_status.md
@@ -151,6 +152,7 @@
     │   │   │   ├── conversation.py
     │   │   │   ├── history_processors.py
     │   │   │   ├── local_media_url_processors.py
+    │   │   │   ├── presentation.py
     │   │   │   └── summarize.py
     │   │   ├── ai_sdk_types.py
     │   │   ├── apps.py
@@ -168,7 +170,51 @@
     │   │   ├── docs_client.py
     │   │   ├── document_context_builder.py
     │   │   ├── enums.py
+    │   │   ├── evals
+    │   │   │   ├── README.md
+    │   │   │   ├── __init__.py
+    │   │   │   ├── baselines
+    │   │   │   │   ├── .gitkeep
+    │   │   │   │   ├── main.json
+    │   │   │   │   └── main_run.json
+    │   │   │   ├── compare.py
+    │   │   │   ├── configs
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── base.py
+    │   │   │   │   ├── faithfulness_rag.py
+    │   │   │   │   ├── incertitude.py
+    │   │   │   │   ├── tool_selection.py
+    │   │   │   │   └── url_hallucination.py
+    │   │   │   ├── dashboard
+    │   │   │   │   ├── .gitkeep
+    │   │   │   │   └── template.html
+    │   │   │   ├── dashboard.py
+    │   │   │   ├── datasets
+    │   │   │   │   ├── faithfulness_rag.yaml
+    │   │   │   │   ├── incertitude.yaml
+    │   │   │   │   ├── tool_selection.yaml
+    │   │   │   │   └── url_hallucination.yaml
+    │   │   │   ├── evaluators
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── span.py
+    │   │   │   │   └── url_regex.py
+    │   │   │   ├── production_agent.py
+    │   │   │   ├── report_builder.py
+    │   │   │   ├── runs
+    │   │   │   │   └── .gitkeep
+    │   │   │   ├── storage.py
+    │   │   │   ├── tool_output.py
+    │   │   │   └── tool_stub_responses.py
     │   │   ├── factories.py
+    │   │   ├── file_generation
+    │   │   │   ├── __init__.py
+    │   │   │   ├── builder.py
+    │   │   │   ├── entities.py
+    │   │   │   ├── renderer.py
+    │   │   │   └── templates
+    │   │   │       ├── __init__.py
+    │   │   │       ├── generic.pptx
+    │   │   │       └── generic.py
     │   │   ├── keepalive.py
     │   │   ├── llm_configuration.py
     │   │   ├── malware_detection.py
@@ -176,8 +222,13 @@
     │   │   │   ├── __init__.py
     │   │   │   └── commands
     │   │   │       ├── __init__.py
+    │   │   │       ├── compare_evals.py
+    │   │   │       ├── create_eval_baseline.py
     │   │   │       ├── deindex_inactive_collections.py
-    │   │   │       └── fetch_model_health.py
+    │   │   │       ├── fetch_model_health.py
+    │   │   │       ├── generate_eval_dashboard.py
+    │   │   │       ├── reset_evals.py
+    │   │   │       └── run_evals.py
     │   │   ├── mcp_servers.py
     │   │   ├── migrations
     │   │   │   ├── 0001_initial.py
@@ -247,6 +298,7 @@
     │   │   │   │   │   ├── test_message_history_v1_compatibility.py
     │   │   │   │   │   ├── test_parse_input_documents.py
     │   │   │   │   │   ├── test_prepare_update_conversation.py
+    │   │   │   │   │   ├── test_presentation_tool.py
     │   │   │   │   │   ├── test_project_instructions.py
     │   │   │   │   │   ├── test_reindex_conversation.py
     │   │   │   │   │   ├── test_run_agent_summary.py
@@ -260,10 +312,27 @@
     │   │   │   │   │   └── test_ui_message_to_user_content.py
     │   │   │   │   └── test_error_classification.py
     │   │   │   ├── conftest.py
+    │   │   │   ├── evals
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── test_compare.py
+    │   │   │   │   ├── test_configs.py
+    │   │   │   │   ├── test_dashboard.py
+    │   │   │   │   ├── test_production_agent.py
+    │   │   │   │   ├── test_report_builder.py
+    │   │   │   │   ├── test_reset_evals.py
+    │   │   │   │   ├── test_run_evals.py
+    │   │   │   │   ├── test_storage.py
+    │   │   │   │   ├── test_tool_selection.py
+    │   │   │   │   ├── test_tool_stub_responses.py
+    │   │   │   │   └── test_url_regex.py
     │   │   │   ├── factories
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── test_chat_conversation_factory.py
     │   │   │   │   └── test_chat_project_factory.py
+    │   │   │   ├── file_generation
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── test_builder.py
+    │   │   │   │   └── test_renderer.py
     │   │   │   ├── management
     │   │   │   │   ├── __init__.py
     │   │   │   │   └── commands
@@ -297,6 +366,7 @@
     │   │   │   │   ├── test_document_generic_search_rag.py
     │   │   │   │   ├── test_document_search_rag.py
     │   │   │   │   ├── test_document_summarize.py
+    │   │   │   │   ├── test_generate_presentation.py
     │   │   │   │   ├── test_self_documentation.py
     │   │   │   │   ├── test_utils.py
     │   │   │   │   └── test_web_search_brave.py
@@ -362,6 +432,7 @@
     │   │   │   ├── document_summarize.py
     │   │   │   ├── exceptions.py
     │   │   │   ├── fake_current_weather.py
+    │   │   │   ├── generate_presentation.py
     │   │   │   ├── self_documentation.py
     │   │   │   ├── utils.py
     │   │   │   └── web_search_brave.py
@@ -493,6 +564,7 @@
     │   │   │   ├── test_brevo.py
     │   │   │   ├── test_enums.py
     │   │   │   ├── test_maintenance.py
+    │   │   │   ├── test_middleware_async.py
     │   │   │   ├── test_models_access_bypass_email.py
     │   │   │   ├── test_models_users.py
     │   │   │   └── test_settings.py
@@ -1140,4 +1212,4 @@
         │       └── header.mjml
         ├── package.json
         └── yarn.lock
-227 directories, 915 files
+238 directories, 976 files

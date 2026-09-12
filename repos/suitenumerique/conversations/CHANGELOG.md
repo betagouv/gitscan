@@ -6,6 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Fixed
+
+- 🐛(ci) fix the CHANGELOG check failing when a pull request is opened
+- 🐛(back) replace whitenoise with servestatic for async-capable serving
+
+## [0.0.24] - 2026-09-08
+
+### Fixed
+
+- 🐛(front) fix translation hide source
+
 ## [0.0.23] - 2026-09-07
 
 ### Added
@@ -78,6 +91,7 @@ and this project adheres to
 ### Added
 
 - 💄(front) add tooltip co2
+- ✨(back) add slide deck generation tool
 - ✨(back) add model fallback mechanism
 - ✨(back) add celery for running background tasks
 - 🧱(helm) add celery worker and beat deployments
@@ -462,8 +476,11 @@ and this project adheres to
 - ✨(langfuse) allow user to score messages from LLM #6
 - ✨(onboarding) add activation code logic for launch #62
 - 💄(chat) add code highlighting for LLM responses #67
+- 🔧(evals) add run_evals management command
 
-[unreleased]: https://github.com/suitenumerique/conversations/compare/v0.0.23...main
+[unreleased]: https://github.com/suitenumerique/conversations/compare/v0.0.24...main
+
+[0.0.24]: https://github.com/suitenumerique/conversations/compare/v0.0.23...v0.0.24
 
 [0.0.23]: https://github.com/suitenumerique/conversations/compare/v0.0.22...v0.0.23
 

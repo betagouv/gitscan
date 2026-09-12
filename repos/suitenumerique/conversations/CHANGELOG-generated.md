@@ -1,24 +1,34 @@
-## Changelog : conversations (30 derniers jours, au 07/09/2026)
+## Changelog : conversations (30 derniers jours, au 10 septembre 2026)
 
 ### Résumé
-Ce mois-ci, le projet a franchi une étape importante avec une refonte majeure de son interface utilisateur et une modernisation profonde de son architecture technique. L'expérience de discussion a été considérablement fluidifiée pour les utilisateurs, tandis que la robustesse et la sécurité du système ont été renforcées pour garantir une utilisation stable et protégée.
+Ce mois-ci, le projet a franchi une étape importante avec l'amélioration de l'expérience de chat et l'ajout de nouveaux outils, comme la génération de présentations et un panneau de sources pour plus de transparence. Nous avons également renforcé la robustesse technique du système, notamment via une mise à jour majeure de la gestion de l'IA et une optimisation des processus de test et de sécurité.
 
 ### Évolutions fonctionnelles
-- **Amélioration de l'expérience de chat** : gestion plus fluide de l'envoi des messages (prévention des doubles envois), maintien des messages en cas d'erreur de connexion et affichage plus naturel des réponses de l'IA.
-- **Nouvelles fonctionnalités d'interface** : ajout d'un panneau de sources pour les réponses de l'IA et intégration de nouveaux outils de suivi de l'empreinte carbone.
-- **Simplification du parcours utilisateur** : suppression de la page de code d'activation pour un accès plus direct.
-- **Optimisation de l'assistant** : mise à jour des instructions de l'agent pour une meilleure pertinence des réponses de l'assistant DINUM.
-- **Améliorations de l'administration** : affichage de la taille des conversations et augmentation du nombre de conversations visibles par page (200) pour faciliter les actions groupées.
-- **Retour utilisateur** : ajout de messages explicatifs lorsqu'une limite de création est atteinte.
+- **Nouveaux outils et fonctionnalités** :
+    - Ajout d'un outil de génération de présentations (slide decks).
+    - Introduction d'un panneau de sources pour améliorer la transparence des réponses de l'IA.
+    - Amélioration des capacités de l'assistant DINUM via l'optimisation des instructions (prompts).
+- **Amélioration de l'expérience utilisateur (UX)** :
+    - Optimisation de l'interface de chat : meilleure gestion du streaming des réponses, prévention des doubles envois de messages et gestion plus fluide des erreurs de chargement de l'historique.
+    - Ajout d'explications claires pour l'utilisateur lorsqu'une limite de création est atteinte.
+    - Suppression de la page et de la barrière du code d'activation.
+- **Administration et Analytics** :
+    - Amélioration de la gestion administrative : affichage de la taille des conversations et augmentation du nombre d'éléments par page pour les actions groupées.
+    - Mise en place du suivi analytique (projets, export de documents, résumé et empreinte CO2).
 
 ### Évolutions techniques
-- **Migration majeure du frontend** : passage de Next.js vers une architecture basée sur Vite et React Router pour plus de légèreté et de rapidité.
-- **Modernisation de l'IA** : montée de version vers le Vercel AI SDK v5 et Pydantic-AI 2.x, incluant un nouveau format de stockage et de streaming des messages.
-- **Sécurité renforcée** : mise en place de limitations de débit (throttling) pour la création de projets et de conversations, et sécurisation de la chaîne d'approvisionnement en verrouillant les versions des actions GitHub.
-- **Optimisation de la CI/CD** : parallélisation des tests E2E (sharding) et optimisation du processus de build des images pour accélérer les déploiements.
-- **Refactoring backend** : remplacement de la bibliothèque `requests` par `httpx` et restructuration du module de configuration pour une meilleure modularité.
-- **Observabilité** : intégration de PostHog pour le suivi des indicateurs clés (utilisation des projets, exports de documents, résumés).
+- **Intelligence Artificielle** :
+    - Migration vers le Vercel AI SDK v5 et mise à jour du format de stockage des messages.
+    - Mise en place d'un nouveau framework d'évaluation comportementale pour tester la qualité des réponses de l'IA.
+- **Infrastructure et CI/CD** :
+    - Optimisation des tests E2E : parallélisation des tests sur plusieurs navigateurs et réduction du temps de build.
+    - Renforcement de la sécurité de la chaîne d'approvisionnement par le verrouillage des versions des actions GitHub.
+    - Audit de sécurité des workflows GitHub Actions.
+- **Backend et Performance** :
+    - Renforcement de la sécurité via l'implémentation de limitations de débit (throttling) sur la création de projets et de conversations.
+    - Refactorisation du code : passage à `httpx` comme client HTTP unique et restructuration du module de configuration.
+    - Correction de bruits de logs sous ASGI et résolution de problèmes de démarrage de l'environnement de développement (Vite).
 
 ### Autres changements
-- **Documentation** : refonte de la procédure de release et ajout de la documentation concernant les paramètres de limitation de l'API.
-- **Internationalisation** : mise à jour des chaînes de traduction [#711](https://github.com/suitenumerique/conversations/pull/711).
+- **Internationalisation** : Mise à jour des chaînes de traduction ([#717](https://github.com/suitenumerique/conversations/pull/717), [#711](https://github.com/suitenumerique/conversations/pull/711)).
+- **Documentation** : Refonte de la procédure de release et documentation des paramètres de limitation de débit de l'API.
