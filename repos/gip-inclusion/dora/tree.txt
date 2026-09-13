@@ -168,8 +168,7 @@
 │   │   │   │       ├── delete_orphaned_uploads.py
 │   │   │   │       ├── generate_security_report.py
 │   │   │   │       ├── import_ft_users.py
-│   │   │   │       ├── import_users.py
-│   │   │   │       └── sync_migration_history.py
+│   │   │   │       └── import_users.py
 │   │   │   ├── migrations
 │   │   │   │   ├── 0001_initial.py
 │   │   │   │   ├── 0002_initial.py
@@ -246,7 +245,8 @@
 │   │   │   │   ├── test_importer.py
 │   │   │   │   ├── test_management_commands.py
 │   │   │   │   ├── test_reverse_search.py
-│   │   │   │   └── test_search.py
+│   │   │   │   ├── test_search.py
+│   │   │   │   └── test_search_epcis_and_cities.py
 │   │   │   ├── utils.py
 │   │   │   └── views.py
 │   │   ├── emplois
@@ -479,7 +479,6 @@
 │   │   │   │       ├── fix_missing_geom.py
 │   │   │   │       ├── import_services.py
 │   │   │   │       ├── label_services.py
-│   │   │   │       ├── merge_service_descriptions.py
 │   │   │   │       └── send_saved_searches_notifications.py
 │   │   │   ├── migration_utils.py
 │   │   │   ├── migrations
@@ -500,6 +499,8 @@
 │   │   │   │   ├── 0015_service_full_desc.py
 │   │   │   │   ├── 0016_service_description.py
 │   │   │   │   ├── 0017_service_zone_eligibilite.py
+│   │   │   │   ├── 0018_service_conditions_acces_and_more.py
+│   │   │   │   ├── 0019_service_horaires_accueil.py
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── data
 │   │   │   │       └── assignation-thematiques.csv
@@ -579,17 +580,12 @@
 │   │   │   ├── admin.py
 │   │   │   ├── constants.py
 │   │   │   ├── csv_import.py
-│   │   │   ├── data
-│   │   │   │   └── drdt.csv
 │   │   │   ├── emails.py
 │   │   │   ├── fixtures
 │   │   │   │   └── 01_structure_national_labels.json.gz
 │   │   │   ├── management
 │   │   │   │   └── commands
-│   │   │   │       ├── clean_mobin_label.py
 │   │   │   │       ├── delete_orphan_structures.py
-│   │   │   │       ├── import_dr_dt_ft.py
-│   │   │   │       ├── import_ft_agencies.py
 │   │   │   │       └── import_structures.py
 │   │   │   ├── migrations
 │   │   │   │   ├── 0001_initial.py
@@ -627,7 +623,6 @@
 │   │   │   │   ├── conftest.py
 │   │   │   │   ├── test_admin_import_view.py
 │   │   │   │   ├── test_admin_url.py
-│   │   │   │   ├── test_clean_mobin_label.py
 │   │   │   │   ├── test_delete_orphan_structures.py
 │   │   │   │   ├── test_emails.py
 │   │   │   │   ├── test_import_structures.py
@@ -698,6 +693,7 @@
 │   │               └── change_form.html
 │   └── tools
 │       ├── anonymize-orientations.sh
+│       ├── anonymized_db.py
 │       ├── clock.sh
 │       ├── close-expired-orientations.sh
 │       ├── datanymizer-config.yml
@@ -709,7 +705,6 @@
 │       ├── run-notification-tasks.sh
 │       ├── send-orientations-reminders-emails.sh
 │       ├── send-saved-searches-notifications.sh
-│       ├── send-services-reminders-emails.sh
 │       └── sync-nexus.sh
 ├── docs
 │   ├── adr
@@ -1469,4 +1464,4 @@
 └── tools
     ├── create-review-apps.sh
     └── release.sh
-276 directories, 1195 files
+275 directories, 1191 files
