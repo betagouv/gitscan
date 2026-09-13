@@ -1,15 +1,15 @@
 {
   "url": "https://github.com/betagouv/complements-alimentaires",
   "name": "complements-alimentaires",
-  "description": "Plateforme de gestion et de consultation des déclarations de compléments alimentaires. Elle permet le suivi des déclarations des entreprises et la mise à disposition de données en open data.",
+  "description": "Plateforme de gestion et de consultation des déclarations de compléments alimentaires, permettant aux entreprises de déclarer leurs produits et au public d'accéder aux données.",
   "language": "Python",
   "features": [
     "Recherche & Filtres",
-    "Données & Schémas",
-    "Administration & Backoffice",
-    "Tableaux & Affichage",
+    "Gestion documentaire & Fichiers",
     "Formulaires & Démarches",
-    "API & Intégrations"
+    "Tableaux & Affichage",
+    "Authentification & Accès",
+    "Données & Schémas"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -19,10 +19,7 @@
     "Redis",
     "Celery",
     "Vite",
-    "Docker",
-    "Brevo",
-    "Matomo",
-    "Sentry"
+    "Docker"
   ],
   "components": [
     "API REST & GraphQL",
@@ -31,27 +28,35 @@
     "Python (scripts & backend)",
     "Docker & Conteneurs",
     "Celery & Queue asynchrone",
-    "Scripts & Utilitaires"
+    "CI/CD & Déploiement"
   ],
   "auth": {
     "methods": [
+      "oauth2",
+      "jwt",
       "session"
+    ],
+    "providers": [
+      "ProConnect"
     ]
   },
-  "tests": "python manage.py test",
+  "tests": [
+    "pytest",
+    "Django test suite"
+  ],
   "workflows": [
     "GitHub Actions"
   ],
-  "lastActivity": "2026-08-20T11:16:25+02:00",
-  "status": "maintained",
+  "lastActivity": "2026-09-11T17:55:16+02:00",
+  "status": "active",
   "hasDocumentation": true,
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
     "Python",
-    "JavaScript",
+    "Bases de données SQL",
     "Docker & Conteneurs",
     "CI/CD & GitHub Actions",
-    "Bases de données SQL"
+    "JavaScript"
   ]
 }
