@@ -1,16 +1,16 @@
 {
   "url": "https://github.com/betagouv/bhasile",
   "name": "bhasile",
-  "description": "Application de pilotage du parc de logements pour les demandeurs d'asile, permettant la gestion des structures, le suivi statistique et la cartographie.",
+  "description": "Outil de pilotage du parc de logements pour les demandeurs d'asile. Il permet la gestion des structures, le suivi des transformations et l'analyse statistique via des tableaux de bord et des cartes.",
   "language": "TypeScript",
   "features": [
     "Gestion métier générale",
-    "Statistiques & Rapports",
     "Visualisation de données & Cartographie",
-    "Gestion documentaire & Fichiers",
-    "Authentification & Accès",
-    "Gestion des utilisateurs & Permissions",
-    "Tableaux & Affichage"
+    "Statistiques & Rapports",
+    "Tableaux & Affichage",
+    "Formulaires & Démarches",
+    "Administration & Backoffice",
+    "Suivi & Traçabilité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -19,23 +19,24 @@
     "Prisma",
     "Tailwind CSS",
     "MapLibre GL",
-    "Chartist",
     "NextAuth.js",
     "Zod",
+    "Chartist",
     "MinIO"
   ],
   "components": [
     "React / Next.js",
     "TypeScript / JavaScript",
     "PostgreSQL & SQL",
-    "Design System (DSFR & UI libs)",
     "ORM & Accès aux données",
+    "Design System (DSFR & UI libs)",
     "Tests"
   ],
   "auth": {
     "methods": [
       "sso",
-      "session"
+      "session",
+      "jwt"
     ],
     "providers": [
       "ProConnect"
@@ -46,11 +47,10 @@
     "Playwright"
   ],
   "workflows": [
-    "ci.yml"
+    "GitHub Actions"
   ],
-  "lastActivity": "2026-09-07T09:46:43+02:00",
-  "status": "active",
-  "license": null,
+  "lastActivity": "2026-09-11T12:14:40+02:00",
+  "status": "maintained",
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
@@ -58,7 +58,7 @@
     "TypeScript",
     "Bases de données SQL",
     "Design System & UI",
-    "SIG & Géospatial",
-    "CI/CD & GitHub Actions"
+    "CI/CD & GitHub Actions",
+    "SIG & Géospatial"
   ]
 }

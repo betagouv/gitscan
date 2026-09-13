@@ -1,18 +1,18 @@
-## Changelog : bhasile (30 derniers jours, au 07/09/2026)
+## Changelog : bhasile (30 derniers jours, au 11 septembre 2026)
 
 ### Résumé
-Ce mois-ci, l'application a considérablement enrichi ses capacités d'extraction de données avec l'ajout de nouveaux exports (Excel, PDF) et a amélioré le pilotage via un nouveau bloc dédié aux anomalies dans le tableau de bord. Une refonte technique majeure a également été réalisée pour optimiser la vitesse de chargement des pages grâce à une nouvelle méthode de récupération des données.
+Cette période est marquée par un renforcement des capacités d'extraction de données (exports Excel et PDF) et une amélioration de l'expérience utilisateur via de nouveaux éléments d'accessibilité et des corrections d'interface. En coulisses, le projet bénéficie d'une modernisation technique importante pour optimiser le chargement des données grâce aux composants serveurs de React.
 
 ### Évolutions fonctionnelles
-- **Exportation de données** : Ajout de l'export Excel pour les statistiques [#1640], de nouveaux téléchargements de feuilles de calcul [#1625], d'un module d'export PDF [#1632] et de l'export des types de lieux [#1614].
-- **Tableau de bord et interface** : Intégration d'un bloc dédié aux anomalies [#1578], affichage des anomalies directement dans les formulaires [#1599], amélioration de l'interactivité de la carte [#1596] et corrections visuelles sur les accordéons et les fiches [#1636, #1591].
-- **Corrections et métier** : Résolution de bugs sur les graphiques d'évaluation [#1598], les cartes de dernière visite [#1597] et les évaluations à zéro [#1594] ; ajustement de la logique de tolérance pour la durée des actes [#1622] et correction de la récupération des codes DNA [#1628].
-- **Expérience utilisateur** : Mémorisation des paramètres de recherche dans la liste des opérateurs [#1613] et filtrage des opérateurs sans structure associée [#1593].
+- **Exportation de données** : Ajout de nouvelles options d'exportation, notamment en format Excel pour les statistiques [#1640], via une nouvelle modale PDF [#1632], ainsi que l'ajout de téléchargements de feuilles de calcul supplémentaires [#1625] et l'export des types de lieux [#1614].
+- **Expérience utilisateur et accessibilité** : Création d'une page dédiée à l'accessibilité [#1649], amélioration de la mémorisation des paramètres de recherche dans la liste des opérateurs [#1613], et affichage des anomalies directement au sein des formulaires [#1599].
+- **Corrections d'interface et de logique** : Correction de l'affichage des bordures d'accordéons [#1636], gestion des chevauchements d'en-têtes [#1623], ajustement de la tolérance pour la durée des actes dans les anomalies [#1622] et correction de la récupération des codes DNA pour les structures [#1628].
 
 ### Évolutions techniques
-- **Optimisation des performances** : Migration massive de la récupération de données vers les *React Server Components* (RSC) pour accélérer le chargement des listes et des fiches (structures, opérateurs, CPOM, transformations) [#1633, #1629, #1626, #1608, #1576, #1611].
-- **Infrastructure et qualité** : Passage à Node 26 [#1605], intégration de tests de bout en bout (E2E) dans la chaîne de CI [#1587, #1570] et optimisation de la base de données par l'ajout d'index [#1577].
-- **Maintenance et suivi** : Refonte complète des données de test (*seeders*) [#1585], amélioration du suivi analytique des exports et des statistiques [#1630, #1603] et refactorisation de la gestion des paramètres de recherche [#1615].
+- **Optimisation des performances** : Migration de la récupération de données vers les *React Server Components* (RSC) pour la liste des structures [#1633], les fiches structures [#1629] et les CPOM [#1626].
+- **Refactorisation et nettoyage** : Simplification de la manipulation des paramètres de recherche [#1615], clarification de l'usage des départements pour les structures [#1601], suppression de références obsolètes (prahdas [#1645]) et renommage de classes internes [#1627].
+- **Outils de développement et tests** : Refonte complète et amélioration de la cohérence des données de test (*seeders*) [#1585, #1606, #1616, #1617, #1619, #1620] et correction des tests unitaires [#1621].
+- **Analytique** : Mise en place du suivi des exports [#1630] et remplacement de l'outil de suivi Matomo [#1618].
 
 ### Autres changements
-- Mise à jour de la documentation (README) [#1638] et de la configuration du linting [#1584].
+- **Documentation** : Mise à jour du fichier README en supprimant les instructions opérateurs obsolètes [#1638].
