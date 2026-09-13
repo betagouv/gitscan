@@ -200,6 +200,19 @@
 │   │   │   └── test_relogin.py
 │   │   ├── urls.py
 │   │   └── views.py
+│   ├── checklist
+│   │   ├── __init__.py
+│   │   ├── management
+│   │   │   ├── __init__.py
+│   │   │   └── commands
+│   │   │       ├── __init__.py
+│   │   │       └── create_checklist_from_doc.py
+│   │   ├── tests
+│   │   │   ├── __init__.py
+│   │   │   ├── test_command.py
+│   │   │   ├── test_node_to_markdown.py
+│   │   │   └── test_structure.py
+│   │   └── utils.py
 │   ├── conftest.py
 │   ├── fi
 │   │   ├── __init__.py
@@ -500,6 +513,7 @@
 │   │   │   │   ├── ami-navigation.ts
 │   │   │   │   ├── api-agenda.test.ts
 │   │   │   │   ├── api-agenda.ts
+│   │   │   │   ├── api-checklist.ts
 │   │   │   │   ├── api-consents.test.ts
 │   │   │   │   ├── api-consents.ts
 │   │   │   │   ├── api-followup.test.ts
@@ -519,6 +533,8 @@
 │   │   │   │   ├── auto-promo.ts
 │   │   │   │   ├── banner.test.ts
 │   │   │   │   ├── banner.ts
+│   │   │   │   ├── checklist.test.ts
+│   │   │   │   ├── checklist.ts
 │   │   │   │   ├── citiesFromGeoAPIAndBAN.test.ts
 │   │   │   │   ├── citiesFromGeoAPIAndBAN.ts
 │   │   │   │   ├── components
@@ -540,6 +556,7 @@
 │   │   │   │   │   ├── NotificationIcon.svelte.test.ts
 │   │   │   │   │   ├── PageWrapper.svelte
 │   │   │   │   │   ├── SideMenu.svelte
+│   │   │   │   │   ├── SideMenu.svelte.test.ts
 │   │   │   │   │   ├── Toast.svelte
 │   │   │   │   │   ├── Toast.svelte.test.ts
 │   │   │   │   │   ├── Toasts.svelte
@@ -575,6 +592,11 @@
 │   │   │   │   │       └── ZonePreferencesFooter.svelte
 │   │   │   │   ├── consents.test.ts
 │   │   │   │   ├── consents.ts
+│   │   │   │   ├── data
+│   │   │   │   │   └── checklists
+│   │   │   │   │       ├── CNMSS001.json
+│   │   │   │   │       ├── F16225.json
+│   │   │   │   │       └── F3109.json
 │   │   │   │   ├── dsfr-icon.test.ts
 │   │   │   │   ├── dsfr-icon.ts
 │   │   │   │   ├── dsfr.ts
@@ -585,6 +607,7 @@
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── initializeDataFromAPI.test.ts
 │   │   │   │   ├── initializeDataFromAPI.ts
+│   │   │   │   ├── markdown-truncate.d.ts
 │   │   │   │   ├── markdown.test.ts
 │   │   │   │   ├── markdown.ts
 │   │   │   │   ├── matomo.ts
@@ -603,6 +626,7 @@
 │   │   │   │   ├── scheduled-notifications.ts
 │   │   │   │   ├── services.test.ts
 │   │   │   │   ├── services.ts
+│   │   │   │   ├── side-menu.ts
 │   │   │   │   ├── state
 │   │   │   │   │   ├── User.svelte.test.ts
 │   │   │   │   │   ├── User.svelte.ts
@@ -624,7 +648,17 @@
 │   │   │   │   │   ├── +page.svelte
 │   │   │   │   │   └── page.svelte.test.ts
 │   │   │   │   ├── checklist
-│   │   │   │   │   └── +page.svelte
+│   │   │   │   │   └── [checklist_id]
+│   │   │   │   │       ├── +page.svelte
+│   │   │   │   │       ├── checks
+│   │   │   │   │       │   └── [section_id]
+│   │   │   │   │       │       ├── +page.svelte
+│   │   │   │   │       │       ├── item
+│   │   │   │   │       │       │   └── [item_id]
+│   │   │   │   │       │       │       ├── +page.svelte
+│   │   │   │   │       │       │       └── page.svelte.test.ts
+│   │   │   │   │       │       └── page.svelte.test.ts
+│   │   │   │   │       └── page.svelte.test.ts
 │   │   │   │   ├── contact
 │   │   │   │   │   ├── +page.svelte
 │   │   │   │   │   └── page.svelte.test.ts
@@ -789,4 +823,4 @@
 ├── scalingo.json
 ├── uv.lock
 └── vapid_keys.py
-151 directories, 640 files
+162 directories, 663 files
