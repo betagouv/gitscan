@@ -16,7 +16,6 @@
 │   ├── dependabot.yml
 │   ├── release.yml
 │   ├── scripts
-│   │   ├── .gitignore
 │   │   ├── cleanup-pr.cjs
 │   │   ├── commit-and-tag.cjs
 │   │   ├── create-release-branch.cjs
@@ -27,6 +26,7 @@
 │   │   └── update-unstable-tag.cjs
 │   └── workflows
 │       ├── build.yaml
+│       ├── build_tchap.yaml
 │       ├── ci.yaml
 │       ├── coverage.yaml
 │       ├── docs.yaml
@@ -37,6 +37,7 @@
 │       ├── translations-download.yaml
 │       └── translations-upload.yaml
 ├── .gitignore
+├── .node-version
 ├── .rustfmt.toml
 ├── CONTRIBUTING.md
 ├── Cargo.lock
@@ -60,6 +61,7 @@
 │   │       ├── jwt.rs
 │   │       ├── language_detection.rs
 │   │       ├── lib.rs
+│   │       ├── log_context.rs
 │   │       ├── sentry.rs
 │   │       ├── session.rs
 │   │       └── user_authorization.rs
@@ -103,6 +105,7 @@
 │   │       │   ├── http.rs
 │   │       │   ├── matrix.rs
 │   │       │   ├── mod.rs
+│   │       │   ├── oauth.rs
 │   │       │   ├── passwords.rs
 │   │       │   ├── policy.rs
 │   │       │   ├── rate_limiting.rs
@@ -181,6 +184,10 @@
 │   │       │       │   ├── list.rs
 │   │       │       │   └── mod.rs
 │   │       │       ├── mod.rs
+│   │       │       ├── oauth2_clients
+│   │       │       │   ├── get.rs
+│   │       │       │   ├── list.rs
+│   │       │       │   └── mod.rs
 │   │       │       ├── oauth2_sessions
 │   │       │       │   ├── finish.rs
 │   │       │       │   ├── get.rs
@@ -247,6 +254,7 @@
 │   │       │   └── graphql-schema.rs
 │   │       ├── captcha.rs
 │   │       ├── cleanup_tests.rs
+│   │       ├── client_ip.rs
 │   │       ├── compat
 │   │       │   ├── login.rs
 │   │       │   ├── login_sso_complete.rs
@@ -833,7 +841,18 @@
 │   │   │   ├── 20260123090000_idx_oauth2_sessions_inactive_ips.sql
 │   │   │   ├── 20260123090001_idx_compat_sessions_inactive_ips.sql
 │   │   │   ├── 20260123090002_idx_user_sessions_inactive_ips.sql
-│   │   │   └── 20260324000001_queue_schedules_last_job_set_null.sql
+│   │   │   ├── 20260324000001_queue_schedules_last_job_set_null.sql
+│   │   │   ├── 20260403000001_authz_grant_user_session_id.sql
+│   │   │   ├── 20260403144138_upstream_oauth2_providers_registration_token_required.sql
+│   │   │   ├── 20260513103411_oauth2_authorization_grant_raw_parameters.sql
+│   │   │   ├── 20260528100001_idx_oauth2_clients_client_name_trgm.sql
+│   │   │   ├── 20260528100002_idx_oauth2_clients_client_uri_trgm.sql
+│   │   │   ├── 20260528134948_idx_oauth2_sessions_active_user_client.sql
+│   │   │   ├── 20260528135303_idx_compat_sessions_active_user.sql
+│   │   │   ├── 20260529100001_idx_oauth2_sessions_active_client.sql
+│   │   │   ├── 20260623100001_oauth2_device_code_grant_locale.sql
+│   │   │   ├── 20260716100001_upstream_oauth_links_human_account_name_trgm_idx.sql
+│   │   │   └── 20260720134722_idx_oauth2_authorization_grants_user_session_id.sql
 │   │   └── src
 │   │       ├── app_session.rs
 │   │       ├── compat
@@ -868,6 +887,7 @@
 │   │       ├── repository.rs
 │   │       ├── telemetry.rs
 │   │       ├── tracing.rs
+│   │       ├── ulid_at.rs
 │   │       ├── upstream_oauth2
 │   │       │   ├── link.rs
 │   │       │   ├── mod.rs
@@ -1038,6 +1058,7 @@
 │   │   │   ├── templates.md
 │   │   │   └── worker.md
 │   │   ├── configuration.md
+│   │   ├── request-log.md
 │   │   └── scopes.md
 │   ├── rustdoc
 │   │   └── mas_handlers
@@ -1058,12 +1079,11 @@
 │       ├── access-token.md
 │       ├── admin-api.md
 │       ├── authorization.md
+│       ├── data-retention.md
 │       └── policy.md
 ├── frontend
 │   ├── .browserlistrc
 │   ├── .gitignore
-│   ├── .npmrc
-│   ├── .postcssrc.json
 │   ├── .storybook
 │   │   ├── locales.ts
 │   │   ├── main.ts
@@ -1077,26 +1097,8 @@
 │   ├── index.html
 │   ├── knip.config.ts
 │   ├── locales
-│   │   ├── cs.json
-│   │   ├── da.json
-│   │   ├── de.json
 │   │   ├── en.json
-│   │   ├── et.json
-│   │   ├── fi.json
-│   │   ├── fr.json
-│   │   ├── hu.json
-│   │   ├── nb-NO.json
-│   │   ├── nl.json
-│   │   ├── pl.json
-│   │   ├── pt-BR.json
-│   │   ├── pt.json
-│   │   ├── ru.json
-│   │   ├── sk.json
-│   │   ├── sv.json
-│   │   ├── uk.json
-│   │   ├── uz.json
-│   │   └── zh-Hans.json
-│   ├── package-lock.json
+│   │   └── fr.json
 │   ├── package.json
 │   ├── schema.graphql
 │   ├── src
@@ -1177,6 +1179,7 @@
 │   │   │   ├── NavItem
 │   │   │   │   ├── NavItem.module.css
 │   │   │   │   ├── NavItem.tsx
+│   │   │   │   ├── NavItemErrorIcon.tsx
 │   │   │   │   ├── __snapshots__
 │   │   │   │   │   └── NavItem.test.tsx.snap
 │   │   │   │   └── index.ts
@@ -1272,7 +1275,8 @@
 │   │   │   ├── shared.css
 │   │   │   ├── swagger.ts
 │   │   │   ├── templates.css
-│   │   │   └── templates.ts
+│   │   │   ├── templates.ts
+│   │   │   └── vendor.css
 │   │   ├── gql
 │   │   │   ├── fragment-masking.ts
 │   │   │   ├── gql.ts
@@ -1305,6 +1309,7 @@
 │   │   │   ├── reset-cross-signing.tsx
 │   │   │   └── sessions.$id.tsx
 │   │   ├── styles
+│   │   │   ├── cpd-alert.css
 │   │   │   ├── cpd-button.css
 │   │   │   ├── cpd-checkbox-control.css
 │   │   │   ├── cpd-form.css
@@ -1321,6 +1326,7 @@
 │   │   │   ├── deviceIdFromScope.ts
 │   │   │   ├── password_complexity
 │   │   │   │   ├── enwiki.json
+│   │   │   │   ├── index.test.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── namesf.json
 │   │   │   │   ├── namesm.json
@@ -1334,7 +1340,6 @@
 │   │       ├── app.tsx
 │   │       ├── index.stories.tsx
 │   │       └── reset-cross-signing.stories.tsx
-│   ├── tailwind.config.cjs
 │   ├── tchap
 │   │   ├── components
 │   │   │   ├── Footer
@@ -1356,8 +1361,10 @@
 │   │       │   └── reset-cross-signing.test.tsx.snap
 │   │       ├── account
 │   │       │   ├── __snapshots__
-│   │       │   │   └── index.test.tsx.snap
-│   │       │   └── index.test.tsx
+│   │       │   │   ├── index.test.tsx.snap
+│   │       │   │   └── sessions.test.tsx.snap
+│   │       │   ├── index.test.tsx
+│   │       │   └── sessions.test.tsx
 │   │       ├── render.tsx
 │   │       ├── reset-cross-signing.test.tsx
 │   │       └── types.d.ts
@@ -1372,6 +1379,9 @@
 │   ├── device-code-grant.sh
 │   ├── sqlx_update.sh
 │   └── update.sh
+├── package.json
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
 ├── policies
 │   ├── .gitignore
 │   ├── .regal
@@ -1509,23 +1519,6 @@
 │       ├── doc.html
 │       └── oauth2-redirect.html
 └── translations
-    ├── cs.json
-    ├── da.json
-    ├── de.json
     ├── en.json
-    ├── et.json
-    ├── fi.json
-    ├── fr.json
-    ├── hu.json
-    ├── nb-NO.json
-    ├── nl.json
-    ├── pl.json
-    ├── pt-BR.json
-    ├── pt.json
-    ├── ru.json
-    ├── sk.json
-    ├── sv.json
-    ├── uk.json
-    ├── uz.json
-    └── zh-Hans.json
-257 directories, 1462 files
+    └── fr.json
+258 directories, 1454 files
