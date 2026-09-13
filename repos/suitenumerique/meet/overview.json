@@ -1,17 +1,16 @@
 {
   "url": "https://github.com/suitenumerique/meet",
   "name": "meet",
-  "description": "Une plateforme de visioconférence sécurisée et performante basée sur LiveKit. Elle propose des fonctionnalités de transcription, d'enregistrement et de partage d'écran pour des réunions de grande envergure.",
+  "description": "Une solution de visioconférence open-source et sécurisée, basée sur LiveKit, conçue pour offrir des performances de haute qualité sans installation requise.",
   "language": "TypeScript",
   "features": [
-    "Temps réel & WebSocket",
     "Collaboration & Workflow",
-    "Sécurité & Conformité",
-    "Gestion des utilisateurs & Permissions",
-    "Communication & Messagerie",
-    "Intelligence Artificielle & NLP",
+    "Temps réel & WebSocket",
+    "Authentification & Accès",
+    "Gestion des médias & Assets",
     "Interface utilisateur & Design",
-    "Gestion des médias & Assets"
+    "Accessibilité & i18n",
+    "Communication & Messagerie"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -19,43 +18,49 @@
     "Django Rest Framework",
     "Vite.js",
     "React Aria",
-    "Redis",
     "PostHog",
-    "BrowserStack"
+    "Sentry",
+    "Redis",
+    "Kubernetes",
+    "Docker"
   ],
   "components": [
-    "React / Next.js",
-    "Python (scripts & backend)",
     "API REST & GraphQL",
+    "React / Next.js",
+    "TypeScript / JavaScript",
+    "Python (scripts & backend)",
     "Docker & Conteneurs",
     "Kubernetes & Helm",
-    "TypeScript / JavaScript",
     "Authentification (composant)",
-    "Webhooks & Événements"
+    "Webhooks & Événements",
+    "Celery & Queue asynchrone"
   ],
   "auth": {
     "methods": [
       "jwt",
-      "sso",
-      "session"
+      "sso"
+    ],
+    "providers": [
+      "ProConnect"
     ]
   },
-  "tests": "BrowserStack",
+  "tests": "BrowserStack, tests unitaires",
   "workflows": [
     "CI/CD"
   ],
   "lastActivity": "2026-09-08T00:00:00Z",
-  "status": "maintained",
+  "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
     "Communication & Messagerie",
     "TypeScript",
     "React & Next.js",
-    "Python",
     "Docker & Conteneurs",
-    "Kubernetes & Helm",
-    "Sécurité & Auth",
-    "CI/CD & GitHub Actions"
+    "Python",
+    "CI/CD & GitHub Actions",
+    "Accessibilité",
+    "Design System & UI",
+    "Écosystème beta.gouv / État"
   ]
 }
