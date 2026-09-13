@@ -1,5 +1,6 @@
 .
 ├── .buildpacks
+├── .dsfr.yml
 ├── .env
 ├── .env.ci
 ├── .env.test
@@ -23,6 +24,7 @@
 │   │   └── husky.sh
 │   └── pre-commit
 ├── .php-cs-fixer.dist.php
+├── .slugignore
 ├── Aptfile
 ├── CONTRIBUTING.md
 ├── LICENSE
@@ -50,6 +52,7 @@
 │   │   ├── house_number_input_controller.js
 │   │   ├── location_preview_map_controller.js
 │   │   ├── matomo_event_controller.js
+│   │   ├── matomo_event_controller.test.js
 │   │   ├── mirror_value_controller.js
 │   │   ├── modal_close_controller.js
 │   │   ├── notice_controller.js
@@ -108,6 +111,7 @@
 │       │   ├── map-filter-icons.css
 │       │   ├── modal.css
 │       │   ├── notification-dot.css
+│       │   ├── pagination.css
 │       │   ├── regulation
 │       │   │   ├── index.scss
 │       │   │   ├── table.css
@@ -468,6 +472,8 @@
 │   └── server.locations
 ├── package-lock.json
 ├── package.json
+├── phpstan-baseline.neon
+├── phpstan.dist.neon
 ├── phpunit.xml.dist
 ├── public
 │   ├── api
@@ -509,7 +515,6 @@
 │   │   │   ├── police.svg
 │   │   │   ├── restriction.svg
 │   │   │   ├── road-maintenance-or-construction.svg
-│   │   │   ├── speed-limitation-circle.svg
 │   │   │   ├── spinner.svg
 │   │   │   ├── taxi.svg
 │   │   │   └── youtube-line.svg
@@ -589,7 +594,8 @@
 │   │   │   ├── LaneGeocodingFailureException.php
 │   │   │   ├── OrganizationCannotInterveneOnGeometryException.php
 │   │   │   ├── RoadGeocodingFailureException.php
-│   │   │   └── StartAbscissaOutOfRangeException.php
+│   │   │   ├── StartAbscissaOutOfRangeException.php
+│   │   │   └── ZoneWithoutStreetsException.php
 │   │   ├── GeocoderInterface.php
 │   │   ├── HouseNumberGeocoderInterface.php
 │   │   ├── IdFactoryInterface.php
@@ -799,6 +805,8 @@
 │   │   │   │   ├── GetRegulationOrderTemplatesQueryHandler.php
 │   │   │   │   ├── GetRegulationOrdersForApiQuery.php
 │   │   │   │   ├── GetRegulationOrdersForApiQueryHandler.php
+│   │   │   │   ├── GetRegulationOrdersForCsvExportQuery.php
+│   │   │   │   ├── GetRegulationOrdersForCsvExportQueryHandler.php
 │   │   │   │   ├── GetRegulationOrdersToDatexFormatQuery.php
 │   │   │   │   ├── GetRegulationOrdersToDatexFormatQueryHandler.php
 │   │   │   │   ├── GetRegulationsQuery.php
@@ -806,6 +814,7 @@
 │   │   │   │   ├── GetStorageRegulationOrderQuery.php
 │   │   │   │   ├── GetStorageRegulationOrderQueryHandler.php
 │   │   │   │   ├── Location
+│   │   │   │   │   ├── ExceptionsSignature.php
 │   │   │   │   │   ├── GetLocationByUuidQuery.php
 │   │   │   │   │   ├── GetLocationByUuidQueryHandler.php
 │   │   │   │   │   ├── GetNamedStreetGeometryQuery.php
@@ -828,6 +837,7 @@
 │   │   │   │   └── RegulationOrderTemplate
 │   │   │   │       ├── GetRegulationOrderTemplateQuery.php
 │   │   │   │       └── GetRegulationOrderTemplateQueryHandler.php
+│   │   │   ├── RegulationExportCsvGeneratorInterface.php
 │   │   │   └── View
 │   │   │       ├── AddressView.php
 │   │   │       ├── CifsIncidentView.php
@@ -853,6 +863,7 @@
 │   │   │       ├── PeriodView.php
 │   │   │       ├── RawGeoJSONView.php
 │   │   │       ├── RegulationCountsByStatusView.php
+│   │   │       ├── RegulationCsvRowView.php
 │   │   │       ├── RegulationOrderDatexListItemView.php
 │   │   │       ├── RegulationOrderForApiView.php
 │   │   │       ├── RegulationOrderHistoryView.php
@@ -1090,10 +1101,12 @@
 │   │       │   ├── OrganizationUserAlreadyExistException.php
 │   │       │   ├── OrganizationUserNotFoundException.php
 │   │       │   ├── SiretMissingException.php
+│   │       │   ├── TokenAlreadyUsedException.php
 │   │       │   ├── TokenExpiredException.php
 │   │       │   ├── TokenNotFoundException.php
 │   │       │   ├── UserAlreadyRegisteredException.php
 │   │       │   ├── UserCannotBeDeletedException.php
+│   │       │   ├── UserCannotBeOwnerAndMandataireException.php
 │   │       │   └── UserNotFoundException.php
 │   │       ├── Feedback.php
 │   │       ├── Invitation.php
@@ -1153,6 +1166,7 @@
 │   │   │   ├── OrganizationAdministrativeBoundariesGeometry.php
 │   │   │   ├── PasswordHasher.php
 │   │   │   ├── QueryBus.php
+│   │   │   ├── RegulationExportCsvGenerator.php
 │   │   │   ├── RegulationMapImageMaker.php
 │   │   │   ├── RegulationMeasureLegendBuilder.php
 │   │   │   ├── RoadSectionMaker.php
@@ -1186,6 +1200,7 @@
 │   │   │   │   │   ├── GetOrganizationIdentifiersController.php
 │   │   │   │   │   ├── GetRegulationController.php
 │   │   │   │   │   ├── GetRegulationsController.php
+│   │   │   │   │   ├── GetRegulationsCsvController.php
 │   │   │   │   │   ├── PublishRegulationController.php
 │   │   │   │   │   ├── SearchRegulationsController.php
 │   │   │   │   │   └── UpdateRegulationController.php
@@ -1485,7 +1500,7 @@
 │   │   │       │   ├── Version20260129110000.php
 │   │   │       │   └── Version20260312100001.php
 │   │   │       ├── Migrations
-│   │   │       │   └── Version*.php  (162 files)
+│   │   │       │   └── Version*.php  (165 files)
 │   │   │       ├── PostGIS
 │   │   │       │   ├── Event
 │   │   │       │   │   └── ORMSchemaEventListener.php
@@ -1553,6 +1568,8 @@
 │   │   │   └── Voter
 │   │   │       ├── OrganizationVoter.php
 │   │   │       └── RegulationOrderRecordVoter.php
+│   │   ├── Serializer
+│   │   │   └── TimeSlotApiViewNormalizer.php
 │   │   ├── Symfony
 │   │   │   ├── Command
 │   │   │   │   ├── AnonymizeDatabaseCommand.php
@@ -1560,6 +1577,7 @@
 │   │   │   │   ├── BdTopoSetupIndexesCommand.php
 │   │   │   │   ├── DeleteRegulationsFromCsvCommand.php
 │   │   │   │   ├── EudonetParisImportCommand.php
+│   │   │   │   ├── GenerateRegulationsCsvExportCommand.php
 │   │   │   │   ├── IgnSyncReportStatusesCommand.php
 │   │   │   │   ├── JOPImportCommand.php
 │   │   │   │   ├── LitteralisImportCommand.php
@@ -1792,6 +1810,7 @@
 │   │       │   │   ├── GetOrganizationIdentifiersControllerTest.php
 │   │       │   │   ├── GetRegulationControllerTest.php
 │   │       │   │   ├── GetRegulationsControllerTest.php
+│   │       │   │   ├── GetRegulationsCsvControllerTest.php
 │   │       │   │   ├── PublishRegulationControllerTest.php
 │   │       │   │   ├── SearchRegulationsControllerTest.php
 │   │       │   │   ├── Statistics
@@ -1905,7 +1924,8 @@
 │   │       │           └── UserRepositoryTest.php
 │   │       ├── Repository
 │   │       │   ├── AdministratorRepositoryTest.php
-│   │       │   └── RegulationOrderRecordRepositoryTest.php
+│   │       │   ├── RegulationOrderRecordRepositoryTest.php
+│   │       │   └── StorageRegulationOrderRepositoryTest.php
 │   │       ├── Symfony
 │   │       │   └── Command
 │   │       │       ├── DatabaseValidateCommandTest.php
@@ -2058,6 +2078,7 @@
 │   │   │   │   │   ├── GetRegulationOrderRecordByUuidQueryHandlerTest.php
 │   │   │   │   │   ├── GetRegulationOrderTemplatesQueryHandlerTest.php
 │   │   │   │   │   ├── GetRegulationOrdersForApiQueryHandlerTest.php
+│   │   │   │   │   ├── GetRegulationOrdersForCsvExportQueryHandlerTest.php
 │   │   │   │   │   ├── GetRegulationOrdersToDatexFormatQueryHandlerTest.php
 │   │   │   │   │   ├── GetRegulationsQueryHandlerTest.php
 │   │   │   │   │   ├── GetStorageRegulationOrderQueryHandlerTest.php
@@ -2065,6 +2086,7 @@
 │   │   │   │   │   │   ├── GetLocationByUuidQueryHandlerTest.php
 │   │   │   │   │   │   ├── GetNamedStreetGeometryQueryHandlerTest.php
 │   │   │   │   │   │   ├── GetNumberedRoadGeometryQueryHandlerTest.php
+│   │   │   │   │   │   ├── GetRawGeoJSONGeometryQueryHandlerTest.php
 │   │   │   │   │   │   ├── GetStorageAreasByRoadNumbersQueryHandlerTest.php
 │   │   │   │   │   │   ├── GetWholeCityGeometryQueryHandlerTest.php
 │   │   │   │   │   │   └── GetZoneGeometryQueryHandlerTest.php
@@ -2202,6 +2224,7 @@
 │   │       │   ├── IgnReportClientTest.php
 │   │       │   ├── LaneSectionMakerTest.php
 │   │       │   ├── MattermostTest.php
+│   │       │   ├── RegulationExportCsvGeneratorTest.php
 │   │       │   ├── RegulationMapImageMakerTest.php
 │   │       │   ├── RoadSectionMakerTest.php
 │   │       │   ├── StorageTest.php
@@ -2225,6 +2248,9 @@
 │   │       ├── Data
 │   │       │   └── StorageArea
 │   │       │       └── StorageAreaMigrationGeneratorTest.php
+│   │       ├── Form
+│   │       │   └── Regulation
+│   │       │       └── WholeCityFormTypeTest.php
 │   │       ├── Integration
 │   │       │   ├── BacIdf
 │   │       │   │   ├── BacIdfCityProcessorTest.php
@@ -2279,6 +2305,7 @@
 │   │       │   │   ├── BdTopoSetupIndexesCommandTest.php
 │   │       │   │   ├── DeleteRegulationsFromCsvCommandTest.php
 │   │       │   │   ├── EudonetParisImportCommandTest.php
+│   │       │   │   ├── GenerateRegulationsCsvExportCommandTest.php
 │   │       │   │   ├── IgnSyncReportStatusesCommandTest.php
 │   │       │   │   ├── JOPImportCommandTest.php
 │   │       │   │   ├── LitteralisImportCommandTest.php
@@ -2332,4 +2359,4 @@
 │   └── validators.fr.xlf
 ├── vitest.config.js
 └── webpack.config.js
-440 directories, 2055 files
+443 directories, 2082 files

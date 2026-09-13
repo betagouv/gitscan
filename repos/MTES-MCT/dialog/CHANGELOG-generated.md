@@ -1,21 +1,36 @@
-## Changelog : dialog (30 derniers jours, au 27/08/2026)
+## Changelog : dialog (30 derniers jours, au 11 septembre 2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a bénéficié d'une refonte visuelle importante avec l'arrivée d'un nouveau tableau de bord et une mise à jour de l'interface (header, footer, navigation). Les capacités cartographiques ont été enrichies par une meilleure gestion des zones de restriction et l'ajout de nouveaux points d'intérêt. L'expérience utilisateur a également été fluidifiée grâce à de meilleures alertes dans les formulaires et un système d'emails plus complet.
+Ce mois-ci, la plateforme a bénéficié d'améliorations majeures sur les outils de cartographie, notamment pour le tracé libre et l'utilisation de filtres. L'expérience utilisateur est enrichie par un nouveau tableau de bord, l'export de données en format CSV et une navigation plus fluide. La sécurité et la fiabilité de l'API ont également été renforcées.
 
 ### Évolutions fonctionnelles
-- **Interface et Navigation** : Mise en place d'un nouveau tableau de bord [#2032], refonte du header [#2016] et extension du footer [#2015], et ajout du lien d'accueil dans le fil d'Ariane (breadcrumb) sur l'ensemble des pages [#2048].
-- **Cartographie** : Ajout de points PR sur la carte [#2005], migration des polygones en zones de restriction [#2006] et application de restrictions sur une zone [#1998], ainsi qu'une amélioration de l'interface de tracé libre [#2033].
-- **Formulaires et Expérience Utilisateur** : Ajout d'une alerte en cas de modifications non sauvegardées dans les formulaires d'arrêté [#2007], validation immédiate des numéros de rue côté client [#1999] et amélioration de la visibilité des organisations dans les formulaires [#2023, #2037].
-- **Communication** : Mise en place d'emails de suivi après abonnement [#2003] et ajout de l'option "répondre à" (reply-to) utilisant l'utilisateur actuel pour les envois d'emails [#2019].
-- **Administration** : Ajout d'un bouton dans le back-office pour l'envoi de rapports IGN [#1995].
+- **Cartographie et tracé** :
+  - Amélioration de l'interface et de la gestion des erreurs lors du tracé libre ([#2033](https://github.com/MTES-MCT/dialog/issues/2033), [#2040](https://github.com/MTES-MCT/dialog/issues/2040)).
+  - Ajout de la vérification de présence de rue dans les zones tracées librement ([#2057](https://github.com/MTES-MCT/dialog/issues/2057)).
+  - Amélioration des filtres cartographiques (gestion via l'URL [#2052](https://github.com/MTES-MCT/dialog/issues/2052) et correction de l'affichage du filtre "publié" [#2058](https://github.com/MTES-MCT/dialog/issues/2058)).
+  - Intégration d'icônes dynamiques pour les limitations de vitesse ([#2077](https://github.com/MTES-MCT/dialog/issues/2077)).
+- **Nouvelles fonctionnalités** :
+  - Mise en place d'un nouveau tableau de bord ([#2032](https://github.com/MTES-MCT/dialog/issues/2032)).
+  - Possibilité d'exporter l'ensemble des réglementations au format CSV ([#2036](https://github.com/MTES-MCT/dialog/issues/2036)).
+  - Gestion des inscriptions des mandataires ([#2047](https://github.com/MTES-MCT/dialog/issues/2047)).
+- **Interface et navigation** :
+  - Ajout du lien "Accueil" dans le fil d'Ariane sur l'ensemble des pages ([#2048](https://github.com/MTES-MCT/dialog/issues/2048)).
+  - Affichage du nombre total d'arrêtés dans les pages de listes ([#2059](https://github.com/MTES-MCT/dialog/issues/2059)).
+  - Amélioration de la visibilité des organisations dans les formulaires et l'interface ([#2037](https://github.com/MTES-MCT/dialog/issues/2037), [#2023](https://github.com/MTES-MCT/dialog/issues/2023)).
+- **Administration et sécurité** :
+  - Conservation des logs pour les demandes de réinitialisation de mot de passe ([#2068](https://github.com/MTES-MCT/dialog/issues/2068)).
+  - Correction du contenu des adresses de signalement dans l'interface d'administration ([#2038](https://github.com/MTES-MCT/dialog/issues/2038)).
 
 ### Évolutions techniques
-- **API** : Amélioration générale de l'API [#2041], ajout de la recherche de réglementation par code ville [#2008] et passage des données JSON de la réglementation de "privé" à "public" [#1997].
-- **Données et Synchronisation** : Correction des processus de synchronisation vers Grist [#2002] et la base BDTopo [#2030], et intégration de mesures SOGELINK dans le transformateur Litteralis [#2026].
-- **Monitoring et Sécurité** : Optimisation du suivi Matomo avec le tracking des téléchargements [#2004] et la protection des données locales [#2046], et renforcement de la gestion des erreurs (try/catch) pour l'API des organisations [#2050].
+- **API** :
+  - Amélioration globale de l'API ([#2041](https://github.com/MTES-MCT/dialog/issues/2041)).
+  - Correction des erreurs de fuseaux horaires ([#2049](https://github.com/MTES-MCT/dialog/issues/2049)) et renforcement de la gestion des exceptions ([#2050](https://github.com/MTES-MCT/dialog/issues/2050)).
+- **Données et Analytics** :
+  - Intégration d'événements Matomo ([#2061](https://github.com/MTES-MCT/dialog/issues/2061)) et correction de l'envoi de données locales vers l'outil d'analyse ([#2046](https://github.com/MTES-MCT/dialog/issues/2046)).
+  - Ajout des mesures SOGELINK dans le transformateur Litteralis ([#2026](https://github.com/MTES-MCT/dialog/issues/2026)).
+- **Infrastructure et Build** :
+  - Utilisation de Chromium comme shell headless pour les tests ([#2073](https://github.com/MTES-MCT/dialog/issues/2073)).
+  - Correction de la génération des URLs publiques via la variable `BASE_URL` ([#2072](https://github.com/MTES-MCT/dialog/issues/2072)).
 
 ### Autres changements
-- Amélioration du processus de mise à jour des statuts IGN [#2039].
-- Suppression des notifications d'avertissement pour les organisations incomplètes [#2018].
-- Correction de l'affichage (padding) pour les exceptions de ville entière [#2021] et du pictogramme de filtre poids lourd sur la carte [#2020].
+- Amélioration de la mise à jour du statut IGN ([#2039](https://github.com/MTES-MCT/dialog/issues/2039)).

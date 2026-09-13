@@ -1,46 +1,53 @@
 {
   "url": "https://github.com/MTES-MCT/dialog",
   "name": "dialog",
-  "description": "Plateforme de digitalisation et de diffusion de l'information réglementaire de logistique et de circulation.",
+  "description": "Plateforme permettant de digitaliser, diagnostiquer et diffuser l'information réglementaire liée à la logistique et à la circulation.",
   "language": "PHP",
   "features": [
     "Visualisation de données & Cartographie",
     "API & Intégrations",
     "Formulaires & Démarches",
+    "Notifications & Alertes",
     "Administration & Backoffice",
     "Données & Schémas",
-    "Notifications & Alertes"
+    "Gestion des utilisateurs & Permissions"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Symfony",
+    "Twig",
     "PostgreSQL",
     "PostGIS",
     "Redis",
     "Docker",
-    "Twig",
     "Stimulus",
     "Turbo",
-    "DSFR"
+    "@gouvfr/dsfr"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "PHP",
     "Docker & Conteneurs",
-    "Design System (DSFR & UI libs)",
     "Templates & Moteurs de rendu",
-    "SIG & Géospatial"
+    "SIG & Géospatial",
+    "TypeScript / JavaScript"
   ],
+  "auth": {
+    "methods": [
+      "email-password",
+      "session"
+    ]
+  },
   "tests": [
-    "Playwright",
-    "Vitest"
+    "Vitest",
+    "Playwright"
   ],
   "workflows": [
     "ci.yml"
   ],
-  "lastActivity": "2026-08-27T15:18:59Z",
-  "status": "active",
+  "lastActivity": "2026-09-11T19:26:47+02:00",
+  "status": "maintained",
   "license": null,
   "hasDocumentation": true,
   "metrics": {
@@ -49,9 +56,9 @@
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
-    "SIG & Géospatial",
+    "Bases de données SQL",
     "Docker & Conteneurs",
-    "PHP",
-    "Bases de données SQL"
+    "SIG & Géospatial",
+    "HTML, CSS & Web"
   ]
 }
