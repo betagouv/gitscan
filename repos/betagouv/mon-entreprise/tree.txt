@@ -14,6 +14,8 @@
 │   │   └── reopen-issue-with-comment
 │   │       ├── action.yaml
 │   │       └── main.js
+│   ├── ai-review
+│   │   └── instructions.md
 │   └── workflows
 │       ├── _build-and-deploy-prod.yaml
 │       ├── check-links-validity.yaml
@@ -23,6 +25,7 @@
 │       ├── master-tests.yaml
 │       ├── npm-publish.yaml
 │       ├── on-release.yaml
+│       ├── pr-ai-review.yaml
 │       ├── pr-check.yaml
 │       ├── pr-cleanup.yaml
 │       ├── pr-deploy.yaml
@@ -40,6 +43,7 @@
 │       └── 3f500af6.yml
 ├── .yarnclean
 ├── .yarnrc.yml
+├── CLAUDE.md
 ├── CONTRIBUTING.md
 ├── LICENSE
 ├── Procfile
@@ -123,6 +127,9 @@
 │   │   │   └── établissement.publicodes
 │   │   ├── exonérations.publicodes
 │   │   ├── impôt.publicodes
+│   │   ├── protection-sociale
+│   │   │   ├── retraite-base.publicodes
+│   │   │   └── retraite-complémentaire.publicodes
 │   │   ├── protection-sociale.publicodes
 │   │   └── rémunération.publicodes
 │   └── tsconfig.json
@@ -636,12 +643,15 @@
 │   │   │   │   │   ├── BoutonDétail.tsx
 │   │   │   │   │   ├── BoutonPartage.tsx
 │   │   │   │   │   └── BoutonReset.tsx
+│   │   │   │   ├── ChoixPeriodeDeCalcul.test.tsx
+│   │   │   │   ├── ChoixPeriodeDeCalcul.tsx
 │   │   │   │   ├── LienDocumentation.tsx
 │   │   │   │   ├── Questions
 │   │   │   │   │   ├── ComposantQuestionFournie.tsx
 │   │   │   │   │   ├── ListeQuestions.test.tsx
 │   │   │   │   │   ├── ListeQuestions.tsx
 │   │   │   │   │   ├── QuestionCourante.tsx
+│   │   │   │   │   ├── QuestionFournie.tsx
 │   │   │   │   │   ├── QuestionPublicodes.tsx
 │   │   │   │   │   └── QuestionsPrincipales.tsx
 │   │   │   │   ├── Simulateur.tsx
@@ -792,27 +802,20 @@
 │   │   │       ├── normalizeRuleName.tsx
 │   │   │       └── persistState.ts
 │   │   ├── contextes
-│   │   │   ├── cmg
+│   │   │   ├── comparateur
 │   │   │   │   ├── domaine
-│   │   │   │   │   ├── Mois.ts
-│   │   │   │   │   ├── calcul.test.ts
-│   │   │   │   │   ├── calcul.ts
-│   │   │   │   │   ├── constantes.ts
-│   │   │   │   │   ├── déclaration-de-garde.ts
-│   │   │   │   │   ├── déclarationDeGardeFactory.ts
-│   │   │   │   │   ├── enfant.ts
-│   │   │   │   │   ├── enfantFactory.ts
-│   │   │   │   │   ├── mode-de-garde.ts
-│   │   │   │   │   ├── résultat.ts
-│   │   │   │   │   ├── salariée.ts
-│   │   │   │   │   ├── salariéeFactory.ts
-│   │   │   │   │   ├── situation.ts
-│   │   │   │   │   ├── typologie-de-garde.ts
-│   │   │   │   │   ├── éligibilité.test.ts
-│   │   │   │   │   └── éligibilité.ts
+│   │   │   │   │   ├── ModeleAssimileSalarie.test.ts
+│   │   │   │   │   ├── ModeleAssimileSalarie.tsx
+│   │   │   │   │   ├── ModeleAutoEntrepreneur.tsx
+│   │   │   │   │   ├── ModeleTravailleurIndependant.tsx
+│   │   │   │   │   ├── activite.ts
+│   │   │   │   │   ├── imposition.ts
+│   │   │   │   │   ├── modeleComparable.ts
+│   │   │   │   │   ├── situation.test.ts
+│   │   │   │   │   └── situation.ts
 │   │   │   │   ├── hooks
-│   │   │   │   │   ├── CMGContext.tsx
-│   │   │   │   │   └── useCMG.ts
+│   │   │   │   │   ├── ComparaisonStatutsContext.tsx
+│   │   │   │   │   └── useComparateur.ts
 │   │   │   │   └── index.ts
 │   │   │   ├── frontalier-suisse
 │   │   │   │   ├── domaine
@@ -1110,6 +1113,9 @@
 │   │   │   ├── IndépendantContexte.ts
 │   │   │   ├── Montant.test.ts
 │   │   │   ├── Montant.ts
+│   │   │   ├── MontantPonctuel.ts
+│   │   │   ├── MontantRecurrent.test.ts
+│   │   │   ├── MontantRecurrent.ts
 │   │   │   ├── OuiNon.ts
 │   │   │   ├── PublicodesSimulationConfig.ts
 │   │   │   ├── Quantite.ts
@@ -1188,7 +1194,6 @@
 │   │   │   ├── useEngineFromModèle.ts
 │   │   │   ├── useFetchData.ts
 │   │   │   ├── useGetFullURL.ts
-│   │   │   ├── useGetPath.ts
 │   │   │   ├── useInitialRender.tsx
 │   │   │   ├── useInversionFail.ts
 │   │   │   ├── useIsEmbedded.tsx
@@ -1270,8 +1275,14 @@
 │   │   │   │   │   ├── SeoExplanations.tsx
 │   │   │   │   │   ├── _components
 │   │   │   │   │   │   ├── ActivitéNonDisponible.tsx
+│   │   │   │   │   │   ├── Comparaison.tsx
+│   │   │   │   │   │   ├── DetailsRowCards.tsx
 │   │   │   │   │   │   ├── Layout.tsx
+│   │   │   │   │   │   ├── ModifierOptions.tsx
 │   │   │   │   │   │   ├── Navigation.tsx
+│   │   │   │   │   │   ├── RevenuEstimé.tsx
+│   │   │   │   │   │   ├── RevenuTable.tsx
+│   │   │   │   │   │   ├── StatutChoice.tsx
 │   │   │   │   │   │   ├── StatutsPossibles.tsx
 │   │   │   │   │   │   ├── useIsEmbeddedBPI.tsx
 │   │   │   │   │   │   └── useSteps.ts
@@ -1289,50 +1300,6 @@
 │   │   │   │   │   ├── simulationConfig.ts
 │   │   │   │   │   ├── siret.jpg
 │   │   │   │   │   └── siret.png
-│   │   │   │   ├── cmg
-│   │   │   │   │   ├── components
-│   │   │   │   │   │   ├── AMA
-│   │   │   │   │   │   │   ├── AMA.tsx
-│   │   │   │   │   │   │   ├── AMAInput.tsx
-│   │   │   │   │   │   │   ├── AideSaisieAMA.tsx
-│   │   │   │   │   │   │   ├── AideSaisieEnfants.tsx
-│   │   │   │   │   │   │   ├── DéclarationAMAInput.tsx
-│   │   │   │   │   │   │   └── EnfantsGardésInput.tsx
-│   │   │   │   │   │   ├── DeleteButton.tsx
-│   │   │   │   │   │   ├── GED
-│   │   │   │   │   │   │   ├── AideSaisieGED.tsx
-│   │   │   │   │   │   │   ├── DéclarationGEDInput.tsx
-│   │   │   │   │   │   │   ├── GED.tsx
-│   │   │   │   │   │   │   └── GEDInput.tsx
-│   │   │   │   │   │   ├── Navigation.tsx
-│   │   │   │   │   │   ├── déclaration
-│   │   │   │   │   │   │   ├── AideSaisieCMG.tsx
-│   │   │   │   │   │   │   ├── AideSaisieHeuresDeGarde.tsx
-│   │   │   │   │   │   │   ├── AideSaisieRémunération.tsx
-│   │   │   │   │   │   │   ├── CMGPerçuInput.tsx
-│   │   │   │   │   │   │   ├── HeuresDeGardeInput.tsx
-│   │   │   │   │   │   │   ├── QuestionModesDeGarde.tsx
-│   │   │   │   │   │   │   └── RémunérationInput.tsx
-│   │   │   │   │   │   ├── enfants
-│   │   │   │   │   │   │   ├── DateDeNaissanceInput.tsx
-│   │   │   │   │   │   │   ├── EnfantInput.tsx
-│   │   │   │   │   │   │   ├── PrénomInput.tsx
-│   │   │   │   │   │   │   └── QuestionsAeeH.tsx
-│   │   │   │   │   │   ├── informations-générales
-│   │   │   │   │   │   │   ├── QuestionCMGPerçu.tsx
-│   │   │   │   │   │   │   ├── QuestionNombreMoisDéclarationsSuffisant.tsx
-│   │   │   │   │   │   │   ├── QuestionRessources.tsx
-│   │   │   │   │   │   │   └── QuestionSituationFamiliale.tsx
-│   │   │   │   │   │   └── styled-components.ts
-│   │   │   │   │   ├── index.tsx
-│   │   │   │   │   ├── metadata.ts
-│   │   │   │   │   └── pages
-│   │   │   │   │       ├── Accueil.tsx
-│   │   │   │   │       ├── Déclarations.tsx
-│   │   │   │   │       ├── Enfants.tsx
-│   │   │   │   │       ├── InformationsGénérales.tsx
-│   │   │   │   │       ├── NonÉligible.tsx
-│   │   │   │   │       └── Résultat.tsx
 │   │   │   │   ├── declaration-charges-sociales-independant
 │   │   │   │   │   └── index.tsx
 │   │   │   │   ├── declaration-revenu-independants
@@ -1380,10 +1347,8 @@
 │   │   │   │   ├── Spreadsheet.tsx
 │   │   │   │   ├── components
 │   │   │   │   │   ├── CasParticuliers.tsx
-│   │   │   │   │   └── StepByStep.tsx
+│   │   │   │   │   └── EtapesPourReproduireUnCalcul.tsx
 │   │   │   │   ├── iframe.css
-│   │   │   │   ├── images
-│   │   │   │   │   └── cci.png
 │   │   │   │   └── index.tsx
 │   │   │   ├── nouveautés
 │   │   │   │   └── index.tsx
@@ -1456,31 +1421,38 @@
 │   │   │   │   │   ├── metadata.ts
 │   │   │   │   │   └── simulationConfig.ts
 │   │   │   │   ├── comparaison-statuts
+│   │   │   │   │   ├── ComparateurDeStatuts.test.tsx
 │   │   │   │   │   ├── ComparateurDeStatuts.tsx
 │   │   │   │   │   ├── EngineComparison.tsx
 │   │   │   │   │   ├── NamedEngine.tsx
+│   │   │   │   │   ├── Objectifs.tsx
 │   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── CartesStatuts.tsx
 │   │   │   │   │   │   ├── ChoixImposition.tsx
-│   │   │   │   │   │   ├── ChoixVersementLibératoire.tsx
-│   │   │   │   │   │   ├── Comparaison.tsx
-│   │   │   │   │   │   ├── DetailsRowCards.tsx
-│   │   │   │   │   │   ├── DétailSimulation.tsx
+│   │   │   │   │   │   ├── ChoixVersementLiberatoire.tsx
+│   │   │   │   │   │   ├── ComparaisonElement.tsx
+│   │   │   │   │   │   ├── ComparaisonListe.tsx
+│   │   │   │   │   │   ├── DetailSimulation.tsx
 │   │   │   │   │   │   ├── ItemTitle.tsx
-│   │   │   │   │   │   ├── ModifierOptions.tsx
-│   │   │   │   │   │   ├── MontantsASaisir.tsx
-│   │   │   │   │   │   ├── RevenuEstimé.tsx
-│   │   │   │   │   │   ├── RevenuTable.tsx
-│   │   │   │   │   │   ├── StatutChoice.tsx
-│   │   │   │   │   │   ├── TableRow.tsx
+│   │   │   │   │   │   ├── TableauRevenus.tsx
 │   │   │   │   │   │   └── WarningTooltip.tsx
 │   │   │   │   │   ├── metadata.ts
 │   │   │   │   │   ├── questions
-│   │   │   │   │   │   ├── questionsPrincipales.ts
-│   │   │   │   │   │   ├── réponseActivité.ts
-│   │   │   │   │   │   ├── réponseFoyerFiscal.ts
-│   │   │   │   │   │   ├── réponseImpôt.ts
-│   │   │   │   │   │   └── utils.ts
-│   │   │   │   │   ├── simulationConfig.ts
+│   │   │   │   │   │   ├── AcreQuestion.tsx
+│   │   │   │   │   │   ├── ActiviteRéglementeeQuestion.tsx
+│   │   │   │   │   │   ├── AutresRevenusQuestion.tsx
+│   │   │   │   │   │   ├── EnfantsQuestion.tsx
+│   │   │   │   │   │   ├── MethodeImpotQuestion.tsx
+│   │   │   │   │   │   ├── NatureActivitéQuestion.tsx
+│   │   │   │   │   │   ├── ParentIsoleQuestion.tsx
+│   │   │   │   │   │   ├── ReponseActivite.tsx
+│   │   │   │   │   │   ├── ReponseFoyerFiscal.tsx
+│   │   │   │   │   │   ├── ReponseImpot.tsx
+│   │   │   │   │   │   ├── SituationFamilialeQuestion.tsx
+│   │   │   │   │   │   ├── TVAQuestion.tsx
+│   │   │   │   │   │   ├── TauxImpositionQuestion.tsx
+│   │   │   │   │   │   ├── TypeActiviteQuestion.tsx
+│   │   │   │   │   │   └── index.ts
 │   │   │   │   │   └── utils.ts
 │   │   │   │   ├── cotisation-maladie-frontalier-suisse
 │   │   │   │   │   ├── CotisationMaladieFrontalierSuisse.test.tsx
@@ -1891,7 +1863,6 @@
 │   │   │   │   ├── SASU.test.ts.snap
 │   │   │   │   ├── artiste-auteur.test.ts.snap
 │   │   │   │   ├── auto-entrepreneur.test.ts.snap
-│   │   │   │   ├── comparateur-statuts.test.ts.snap
 │   │   │   │   ├── convention-collective.test.ts.snap
 │   │   │   │   ├── dividendes.test.ts.snap
 │   │   │   │   ├── impôt-société.test.ts.snap
@@ -1902,8 +1873,6 @@
 │   │   │   ├── artiste-auteur.yaml
 │   │   │   ├── auto-entrepreneur.test.ts
 │   │   │   ├── auto-entrepreneur.yaml
-│   │   │   ├── comparateur-statuts.test.ts
-│   │   │   ├── comparateur-statuts.yaml
 │   │   │   ├── convention-collective.test.ts
 │   │   │   ├── convention-collective.yaml
 │   │   │   ├── dividendes.test.ts
@@ -1914,7 +1883,6 @@
 │   │   │   ├── indépendant.yaml
 │   │   │   ├── professions-libérales.test.ts
 │   │   │   ├── professions-libérales.yaml
-│   │   │   ├── retraite-complémentaire-comparateur.test.ts
 │   │   │   ├── salarié.test.ts
 │   │   │   ├── salarié.yaml
 │   │   │   └── utils.ts
@@ -1925,4 +1893,4 @@
 │   ├── vite.config.ts
 │   └── vitest-setup.ts
 └── yarn.lock
-334 directories, 1593 files
+327 directories, 1568 files

@@ -1,36 +1,30 @@
-## Changelog : mon-entreprise (30 derniers jours, au 24 août 2026)
+## Changelog : mon-entreprise (30 derniers jours, au 11 septembre 2026)
 
 ### Résumé
-Ce mois a été marqué par une refonte profonde de l'architecture interne pour rendre la gestion des simulateurs plus robuste et évolutive. Parallèlement, l'expérience de développement a été grandement améliorée grâce à l'automatisation des environnements de test pour chaque modification. Côté utilisateur, la précision des calculs (notamment sur la RGDU et les retraites 2026) a été renforcée et l'interface a bénéficié de plusieurs améliorations visuelles.
+Ce mois-ci est marqué par une évolution majeure : l'introduction d'un comparateur de modèles permettant d'opposer différentes situations de gestion. Le projet intègre également les spécificités sociales et fiscales de Mayotte et renforce ses processus de développement grâce à l'automatisation des tests et des déploiements de révision.
 
 ### Évolutions fonctionnelles
-- **Précision des calculs** :
-  - Correction de la valeur du SMIC utilisée pour le calcul de la RGDU.
-  - Mise à jour des taux de la retraite complémentaire (CARMF et CARCDSF) pour l'année 2026.
-- **Interface et design** :
-  - Ajout du header et du footer sur la page d'accueil (version Next.js).
-  - Amélioration de l'aspect visuel avec de nouvelles images de prévisualisation pour les simulateurs et de nouvelles illustrations (ex: page demande-mobilité).
-  - Corrections de coquilles dans les messages de contact du pied de page et ajustements de mise en page (centrage de boutons).
+- **Nouveau comparateur de modèles** : 
+    - Mise en place d'un outil permettant de comparer plusieurs simulations.
+    - Ajout de questions spécifiques, de cartes de statut et d'info-bulles pour faciliter la saisie du CA et des charges.
+    - Gestion des résultats déficitaires et des objectifs fiscaux (IR/IS, versement libératoire).
+    - Possibilité de définir une période de calcul (mensuelle ou annuelle).
+- **Prise en compte de Mayotte** : Mise à jour complète des règles pour les salariés et employeurs mahorais (plafond de sécurité sociale, cotisations chômage, CSG-CRDS, allocations familiales, etc.).
+- **Corrections de simulateurs** :
+    - **Lodeom** : Résolution de problèmes liés aux questions "fantômes", correction de l'affichage des tooltips et de la régularisation annuelle.
+    - **TI (Travailleur Indépendant)** : Amélioration du calcul basé sur les dividendes et correction des liens entre le CA/charges et la rémunération brute.
+    - **SASU** : Correction des unités d'exonération de cotisations sur les fiches de paie.
+- **Accessibilité** : Amélioration du nommage des champs de date pour une meilleure compatibilité avec les lecteurs d'écran.
 
 ### Évolutions techniques
-- **Refonte de l'architecture des simulateurs** :
-  - Migration vers un système de routage explicite, remplaçant l'ancien système de dispatch par configuration.
-  - Séparation stricte entre les métadonnées (données pures pour le SEO, le plan du site, etc.) et les configurations de pages (composants React, paramètres de simulation).
-  - Nettoyage massif du code obsolète et des fichiers de configuration redondants.
-- **Optimisation du workflow CI/CD** :
-  - Mise en place de "Review Apps" sur Clever Cloud : chaque Pull Request génère désormais un environnement de test temporaire avec un lien direct dans le commentaire de la PR.
-  - Amélioration de la gestion des déploiements et de la durée des jobs sur Clever Cloud.
-- **Performances et outils** :
-  - Optimisation du temps de chargement via le chargement à la demande (*lazy loading*) du bouton de suggestion de réponses.
-  - Mise à jour de la chaîne de développement : TypeScript, Vite, Vitest et Prettier.
-  - Amélioration de la gestion des assets et normalisation de l'importation des ressources entre les environnements Vite et Next.js.
-  - Refactorisation des composants d'intégration (Iframe) pour une meilleure gestion des propriétés.
+- **CI/CD et DevOps** :
+    - Mise en place de "Review Apps" sur Clever Cloud : chaque Pull Request génère désormais un environnement de test déployé automatiquement.
+    - Introduction d'une revue automatique par IA pour les Pull Requests.
+- **Performance** : Optimisation du chargement de l'interface via le chargement à la demande (*lazy loading*) de certains composants.
+- **Refactoring** : 
+    - Refonte de la gestion des montants (distinction entre montants récurrents et ponctuels) pour plus de robustesse.
+    - Nettoyage et restructuration du code du comparateur.
 
 ### Autres changements
-- **Documentation** :
-  - Précisions apportées sur l'utilisation du SMIC dans les calculs.
-  - Documentation mise à jour concernant l'infrastructure Clever Cloud et la gestion des métadonnées des simulateurs.
-  - Amélioration de la rédaction du README.
-- **Maintenance** :
-  - Nettoyage du dépôt (suppression d'images et de dossiers inutilisés).
-  - Suppression de commentaires et de types de code obsolètes.
+- **Documentation** : Mise à jour importante de la documentation de l'API, des liens d'intégration (Iframe) et des guides de reproduction de calcul pour les développeurs.
+- **Nettoyage** : Suppression de l'assistant transitoire pour le complément CMG et de certaines règles de calcul obsolètes.
