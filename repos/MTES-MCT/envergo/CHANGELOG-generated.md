@@ -1,33 +1,32 @@
-## Changelog : envergo (30 derniers jours, au 25 août 2026)
+## Changelog : envergo (30 derniers jours, au 11 septembre 2026)
 
 ### Résumé
-Ce mois a été marqué par un renforcement majeur de la sécurité du système et une refonte importante de l'infrastructure de stockage. Parallèlement, l'expérience utilisateur a été affinée grâce à des améliorations sur les formulaires de saisie, une meilleure gestion de l'affichage mobile et une optimisation des performances de navigation.
+Ce mois a été marqué par un effort important sur la sécurisation de la plateforme (protection contre les failles XSS et renforcement des droits d'accès) et la modernisation de l'infrastructure de déploiement. Les performances ont été optimisées via de nouveaux mécanismes de cache et de préchargement de données, tandis que l'expérience utilisateur a été affinée, notamment sur la cartographie et l'affichage mobile.
 
 ### Évolutions fonctionnelles
-- **Formulaires et saisie de données** :
-    - Scission du formulaire "moulinette" en deux entités distinctes (RU / HRU).
-    - Amélioration de la saisie des haies, avec une gestion optimisée des modales sur mobile pour éviter les affichages encombrants sur grand écran [#1229](https://github.com/MTES-MCT/envergo/pull/1229).
-    - Ajout de nouvelles propriétés pour les contrôles "éviter / réduire" [#1235](https://github.com/MTES-MCT/envergo/pull/1235).
-    - Mise à jour des choix de procédures lors des changements d'état [#1228](https://github.com/MTES-MCT/envergo/pull/1228).
-- **Interface utilisateur (UI) et Ergonomie** :
-    - Intégration d'un nouveau composant de pagination conforme au DSFR [#1230](https://github.com/MTES-MCT/envergo/pull/1230).
-    - Optimisation de l'affichage du résumé (déplacement de la section "lecture seule" en bas de page).
-    - Améliorations visuelles (CSS) et de l'affichage des échéances [#1226](https://github.com/MTES-MCT/envergo/pull/1226).
-- **Contenu et métier** :
-    - Mise à jour de la terminologie (wording) et des informations de contact de la CBN [#1242](https://github.com/MTES-MCT/envergo/pull/1242).
-    - Ajustement de la logique de bascule entre les états "décision" et "attente de compléments".
+- **Interface cartographique :** Amélioration de l'expérience utilisateur avec l'ajout d'infobulles sur la carte [#1232](https://github.com/MTES-MCT/envergo/pull/1232) et de nouveaux filtres par catégorie [#1231](https://github.com/MTES-MCT/envergo/pull/1231).
+- **Expérience mobile :** Optimisation du style des filtres pour une meilleure utilisation sur petits écrans.
+- **Identité visuelle :** Intégration du nouveau logo DN [#1233](https://github.com/MTES-MCT/envergo/pull/1233).
+- **Simulations :** Évolutions apportées aux fonctionnalités de simulation (Nawalt) [#1243](https://github.com/MTES-MCT/envergo/pull/1243).
+- **Corrections :** Résolution de problèmes lors de l'import des fichiers d'habitats [#1258](https://github.com/MTES-MCT/envergo/pull/1258).
 
 ### Évolutions techniques
-- **Sécurité** :
-    - Correction de vulnérabilités XSS par l'échappement systématique des données soumises par les utilisateurs et renforcement de la validation des données en backend [#1251](https://github.com/MTES-MCT/envergo/pull/1251).
-- **Infrastructure et Stockage** :
-    - Refonte complète de la gestion du stockage des fichiers via S3 et mise en place de nouveaux mécanismes pour la diffusion des fichiers hébergés [#1253](https://github.com/MTES-MCT/envergo/pull/1253).
-    - Mise à jour de la pile de déploiement (Stack Scalingo) et passage à une version LTS de Node.js [#1252](https://github.com/MTES-MCT/envergo/pull/1252).
-    - Optimisation de la configuration Nginx et de la gestion des assets de build.
-- **Performance et Base de données** :
-    - Optimisation des requêtes de permissions et réduction des requêtes redondantes lors de l'affichage des listes de dossiers [#1241](https://github.com/MTES-MCT/envergo/pull/1241).
-    - Refactorisation de la logique de réimplantation [#1219](https://github.com/MTES-MCT/envergo/pull/1219).
+- **Sécurité :** 
+    - Correction de vulnérabilités XSS par l'échappement des données soumises par les utilisateurs [#1251](https://github.com/MTES-MCT/envergo/pull/1251).
+    - Amélioration de l'API d'autorisation et gestion plus fine des accès [#1244](https://github.com/MTES-MCT/envergo/pull/1244).
+    - Sécurisation de la base de données de statistiques [#1265](https://github.com/MTES-MCT/envergo/pull/1265).
+- **Performance :** 
+    - Optimisation des requêtes de données (HRU) [#1266](https://github.com/MTES-MCT/envergo/pull/1266).
+    - Mise en place d'un cache pour les calculs de densité [#1238](https://github.com/MTES-MCT/envergo/pull/1238).
+    - Implémentation du préchargement (prefetch) des zones.
+- **Infrastructure & Déploiement :** 
+    - Mise à jour majeure de la stack de déploiement (Scalingo) [#1252](https://github.com/MTES-MCT/envergo/pull/1252).
+    - Migration vers un nouveau système de stockage pour les fichiers hébergés (S3) [#1253](https://github.com/MTES-MCT/envergo/pull/1253).
+    - Mise à jour des dépendances système (GDAL) et de la version Node.js.
+- **CI/CD & Données :** 
+    - Ajout d'un contrôle automatique des migrations de base de données dans le pipeline CI pour éviter les erreurs de déploiement [#1259](https://github.com/MTES-MCT/envergo/pull/1259).
+    - Automatisation du processus de synchronisation des données de production vers la base de statistiques.
 
 ### Autres changements
-- **Tests** : Ajout de nouvelles suites de tests pour valider la protection contre les failles XSS et mesurer la performance des requêtes SQL.
-- **Maintenance** : Nettoyage du projet (suppression de Gulp), mise à jour de la documentation interne (docstrings) et correction des erreurs de pré-commit.
+- **Documentation :** Mise à jour du README concernant les procédures d'anonymisation des données.
+- **Maintenance :** Refactorisation de plusieurs modules pour améliorer la lisibilité et la maintenabilité du code.

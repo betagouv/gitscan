@@ -23,6 +23,7 @@
 ├── Procfile
 ├── README.md
 ├── bin
+│   ├── anonymize_db.sh
 │   ├── build_assets.sh
 │   ├── copy_catchmentarea.sh
 │   ├── copy_maps.sh
@@ -32,7 +33,8 @@
 │   ├── post_compile
 │   ├── post_deploy.sh
 │   ├── start_celery_worker.sh
-│   └── start_web.sh
+│   ├── start_web.sh
+│   └── sync_stats_db.sh
 ├── compose
 │   ├── django
 │   │   ├── Dockerfile
@@ -127,6 +129,7 @@
 │   │   │   ├── 0007_repopulate_evaluation_visit.py
 │   │   │   ├── 0008_merge_20251215_1042.py
 │   │   │   ├── 0009_event_unique_id.py
+│   │   │   ├── 0010_rename_user_type_metadata.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── tests
@@ -174,7 +177,6 @@
 │   │   │   └── commands
 │   │   │       ├── __init__.py
 │   │   │       ├── admin_notifications.py
-│   │   │       ├── anonymize_database.py
 │   │   │       └── deploy_environment.py
 │   │   ├── middleware.py
 │   │   └── sites
@@ -383,6 +385,7 @@
 │   │   ├── admin.py
 │   │   ├── apps.py
 │   │   ├── conftest.py
+│   │   ├── density.py
 │   │   ├── forms.py
 │   │   ├── management
 │   │   │   ├── __init__.py
@@ -432,6 +435,9 @@
 │   │   │   ├── 0037_alter_species_highly_sensitive_and_more.py
 │   │   │   ├── 0038_alter_species_adhoc_group_alter_species_group.py
 │   │   │   ├── 0039_drop_legacy_density_cache.py
+│   │   │   ├── 0040_alter_species_level_of_concern.py
+│   │   │   ├── 0040_remove_hedgedata_density.py
+│   │   │   ├── 0041_merge_20260908_1518.py
 │   │   │   ├── __init__.py
 │   │   │   └── ep_aisne.csv
 │   │   ├── models.py
@@ -645,6 +651,7 @@
 │   │   │   ├── 0131_merge_20260710_0750.py
 │   │   │   ├── 0131_migrate_coeff_compensation_hedge_types.py
 │   │   │   ├── 0132_merge_20260729_1142.py
+│   │   │   ├── 0133_alter_moulinettetemplate_key.py
 │   │   │   ├── __init__.py
 │   │   │   ├── haie_department_configs.json
 │   │   │   ├── moulinette_haie.json
@@ -915,6 +922,7 @@
 │   │   │   ├── calendar_light.svg
 │   │   │   ├── capture_cerfa.png
 │   │   │   ├── city-hall.svg
+│   │   │   ├── dn_logo.svg
 │   │   │   ├── document-icon.png
 │   │   │   ├── done.gif
 │   │   │   ├── envergo_logo.svg
@@ -982,6 +990,7 @@
 │   │   │   │   ├── data_event_attributes_analytics.js
 │   │   │   │   ├── data_sql_event_attributes_analytics.js
 │   │   │   │   ├── department_combobox.js
+│   │   │   │   ├── dossier_list_filters.js
 │   │   │   │   ├── eval_request_department.js
 │   │   │   │   ├── evaluation_analytics.js
 │   │   │   │   ├── eviter_reduire.js
@@ -1395,7 +1404,10 @@
 │   │   │   │   ├── 403.html
 │   │   │   │   ├── 403_token_expired.html
 │   │   │   │   ├── _alternatives_table.html
+│   │   │   │   ├── _dn_logo.html
 │   │   │   │   ├── _dossier_followers.html
+│   │   │   │   ├── _dossier_list_filters.html
+│   │   │   │   ├── _dossier_list_results.html
 │   │   │   │   ├── _follow_form.html
 │   │   │   │   ├── _hedge_category.html
 │   │   │   │   ├── _hedges_compensation_details.html
@@ -1918,6 +1930,7 @@
 │   │   │   ├── 0009_remove_user_is_confirmed_by_admin.py
 │   │   │   ├── 0010_user_is_instructor.py
 │   │   │   ├── 0011_rename_is_instructor_for_departments_user_is_instructor.py
+│   │   │   ├── 0012_rename_is_instructor_user_is_coordinator.py
 │   │   │   └── __init__.py
 │   │   ├── mixins.py
 │   │   ├── models.py
@@ -1962,11 +1975,13 @@
 │       ├── mattermost.py
 │       ├── models.py
 │       ├── storages.py
+│       ├── tchap.py
 │       ├── templatetags
 │       │   ├── __init__.py
 │       │   └── admin.py
 │       ├── tests
 │       │   ├── __init__.py
+│       │   ├── test_tchap.py
 │       │   ├── test_tools.py
 │       │   └── test_validators.py
 │       ├── tools.py
@@ -2009,4 +2024,4 @@
                 │   ├── favicon.ico
                 │   └── favicon.svg
                 └── index.html
-254 directories, 1776 files
+254 directories, 1791 files
