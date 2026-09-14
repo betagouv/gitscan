@@ -1025,6 +1025,7 @@
 │   │   │   │   ├── accueil-picto-justice-scales.svg
 │   │   │   │   ├── accueil-picto-search.svg
 │   │   │   │   ├── accueil-picto-self-training.svg
+│   │   │   │   ├── magnifying_glass.svg
 │   │   │   │   └── simplifions-logo.svg
 │   │   │   └── solutions
 │   │   │       ├── annuaire-des-entreprises.png
@@ -1038,6 +1039,7 @@
 │   │   └── stylesheets
 │   │       ├── application.css
 │   │       ├── articles.css
+│   │       ├── demarches.css
 │   │       ├── dsfr-utility.css
 │   │       └── dsfr.css
 │   ├── components
@@ -1069,15 +1071,30 @@
 │   │   ├── articles_controller.rb
 │   │   ├── concerns
 │   │   │   └── .keep
-│   │   └── pages_controller.rb
+│   │   ├── demarches_controller.rb
+│   │   ├── pages_controller.rb
+│   │   └── solutions_controller.rb
 │   ├── helpers
 │   │   ├── application_helper.rb
 │   │   └── articles_helper.rb
+│   ├── interactors
+│   │   ├── application_interactor.rb
+│   │   └── grist
+│   │       ├── attach_images.rb
+│   │       ├── fetch_tables.rb
+│   │       ├── import_entites.rb
+│   │       ├── import_integrations.rb
+│   │       ├── import_recommandations.rb
+│   │       ├── import_step.rb
+│   │       └── prune_disparus.rb
 │   ├── javascript
 │   │   ├── application.js
 │   │   └── controllers
 │   │       ├── application.js
+│   │       ├── endpoints_controller.js
+│   │       ├── form_controller.js
 │   │       ├── index.js
+│   │       ├── integratrices_controller.js
 │   │       ├── sirene_demo_controller.js
 │   │       └── toc_controller.js
 │   ├── jobs
@@ -1087,9 +1104,32 @@
 │   ├── models
 │   │   ├── application_record.rb
 │   │   ├── article.rb
-│   │   └── concerns
-│   │       └── .keep
+│   │   ├── concerns
+│   │   │   └── .keep
+│   │   ├── demarche.rb
+│   │   ├── integration.rb
+│   │   ├── organisation.rb
+│   │   ├── recommandation.rb
+│   │   ├── solution.rb
+│   │   ├── type_acteur.rb
+│   │   └── vocabulaire.rb
+│   ├── organizers
+│   │   ├── application_organizer.rb
+│   │   └── grist
+│   │       ├── import.rb
+│   │       └── persist_catalogue.rb
 │   └── views
+│       ├── application
+│       │   ├── _badge_operateur.html.erb
+│       │   ├── _bloc_modification.html.erb
+│       │   ├── _breadcrumb.html.erb
+│       │   ├── _contenu.html.erb
+│       │   ├── _entete_page.html.erb
+│       │   ├── _pagination.html.erb
+│       │   ├── _public_vise.html.erb
+│       │   ├── _solution_integratrice.html.erb
+│       │   ├── _sommaire.html.erb
+│       │   └── index.html.erb
 │       ├── articles
 │       │   ├── anticiper_le_parcours_usager_avant_d_integrer_vos_api.html.erb
 │       │   ├── apis_franceconnectees.html.erb
@@ -1098,6 +1138,9 @@
 │       │   ├── prerequis_et_etapes_integration_api.html.erb
 │       │   ├── qu_est_ce_qu_une_api.html.erb
 │       │   └── vos_interlocuteurs_selon_le_type_d_api.html.erb
+│       ├── demarches
+│       │   ├── _recommandation.html.erb
+│       │   └── show.html.erb
 │       ├── layouts
 │       │   ├── _footer.html.erb
 │       │   ├── _header.html.erb
@@ -1106,10 +1149,20 @@
 │       │   └── mailer.text.erb
 │       ├── pages
 │       │   ├── about.html.erb
-│       │   └── home.html.erb
-│       └── pwa
-│           ├── manifest.json.erb
-│           └── service-worker.js
+│       │   ├── accessibility.html.erb
+│       │   ├── doctrine_cas_usages.html.erb
+│       │   ├── doctrine_solutions.html.erb
+│       │   ├── home.html.erb
+│       │   ├── niveaux_simplification.html.erb
+│       │   ├── sitemap.html.erb
+│       │   ├── sitemap.xml.erb
+│       │   └── terms.html.erb
+│       ├── pwa
+│       │   ├── manifest.json.erb
+│       │   └── service-worker.js
+│       └── solutions
+│           ├── _integratrice.html.erb
+│           └── show.html.erb
 ├── bin
 │   ├── brakeman
 │   ├── bundler-audit
@@ -1153,18 +1206,33 @@
 │   │   ├── filter_parameter_logging.rb
 │   │   └── inflections.rb
 │   ├── locales
-│   │   └── en.yml
+│   │   ├── en.yml
+│   │   └── fr.yml
 │   ├── puma.rb
 │   ├── routes.rb
 │   └── storage.yml
 ├── config.ru
 ├── db
 │   ├── cache_schema.rb
+│   ├── grist
+│   │   └── topics_snapshot.json
+│   ├── migrate
+│   │   ├── 20260806173750_create_active_storage_tables.active_storage.rb
+│   │   ├── 20260806174000_create_catalogue.rb
+│   │   ├── 20260810194434_create_active_storage_db_files.active_storage_db.rb
+│   │   ├── 20260813120000_fusionner_utilites_dans_recommandations.rb
+│   │   ├── 20260813130000_supprimer_notes_des_integrations.rb
+│   │   ├── 20260826140500_ajouter_cree_le_aux_demarches.rb
+│   │   ├── 20260826142000_renommer_le_slug_suivi_des_tiers_aides.rb
+│   │   ├── 20260831160500_ajouter_cree_le_aux_solutions.rb
+│   │   ├── 20260831165000_normaliser_les_urls_des_solutions.rb
+│   │   └── 20260901153000_ajouter_les_slugs_des_acteurs_et_unaccent.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── lib
 │   └── tasks
-│       └── .keep
+│       ├── .keep
+│       └── grist.rake
 ├── log
 │   └── .keep
 ├── public
@@ -1176,15 +1244,56 @@
 │   ├── favicon.ico
 │   └── robots.txt
 ├── script
-│   └── .keep
+│   ├── .keep
+│   └── recette_parite.rb
 ├── spec
 │   ├── components
+│   │   ├── dataservice_card_component_spec.rb
 │   │   └── solution_card_component_spec.rb
+│   ├── fixtures
+│   │   └── grist
+│   │       ├── API_et_datasets_fournis.json
+│   │       ├── API_et_datasets_integres.json
+│   │       ├── API_et_datasets_utiles.json
+│   │       ├── APIs_et_datasets.json
+│   │       ├── Cas_d_usages.json
+│   │       ├── Categories_de_solution.json
+│   │       ├── Fournisseurs_de_services.json
+│   │       ├── Operateurs.json
+│   │       ├── Recommandations.json
+│   │       ├── Solutions.json
+│   │       ├── Types_de_simplification.json
+│   │       └── Usagers.json
+│   ├── helpers
+│   │   ├── application_helper_spec.rb
+│   │   └── articles_helper_spec.rb
+│   ├── interactors
+│   │   └── grist
+│   │       ├── attach_images_spec.rb
+│   │       └── fetch_tables_spec.rb
+│   ├── models
+│   │   ├── demarche_spec.rb
+│   │   ├── integration_spec.rb
+│   │   ├── recommandation_spec.rb
+│   │   ├── solution_spec.rb
+│   │   └── vocabulaire_spec.rb
+│   ├── organizers
+│   │   └── grist
+│   │       └── import_spec.rb
 │   ├── rails_helper.rb
 │   ├── requests
 │   │   ├── articles_spec.rb
-│   │   └── pages_spec.rb
-│   └── spec_helper.rb
+│   │   ├── demarches_spec.rb
+│   │   ├── pages_spec.rb
+│   │   ├── seo_spec.rb
+│   │   └── solutions_spec.rb
+│   ├── script
+│   │   └── recette_parite_spec.rb
+│   ├── spec_helper.rb
+│   ├── support
+│   │   └── grist_stubs.rb
+│   └── tasks
+│       └── grist_import_spec.rb
 ├── storage
 │   └── .keep
 ├── tmp
@@ -1197,4 +1306,4 @@
     ├── .keep
     └── javascript
         └── .keep
-84 directories, 1332 files
+104 directories, 1421 files
