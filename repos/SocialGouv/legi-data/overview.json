@@ -1,43 +1,44 @@
 {
   "url": "https://github.com/SocialGouv/legi-data",
   "name": "legi-data",
-  "description": "Ce projet extrait quotidiennement les codes de loi de la base LEGI via l'API legifrance.gouv.fr. Les données sont disponibles au format JSON ou via une API TypeScript.",
+  "description": "Ce projet permet l'extraction quotidienne des codes de loi de la base LEGI via l'API Légifrance. Les données sont mises à disposition au format JSON ou via une API TypeScript.",
   "language": "TypeScript",
   "features": [
     "API & Intégrations",
-    "Données & Schémas"
+    "Données & Schémas",
+    "Recherche & Filtres"
   ],
   "audience": "Développeurs",
   "dependencies": [
     "unist-util-find",
-    "unist-util-parents"
+    "unist-util-parents",
+    "@socialgouv/dila-api-client"
   ],
   "components": [
-    "API REST & GraphQL",
-    "TypeScript / JavaScript"
+    "TypeScript / JavaScript",
+    "Documentation & Schémas",
+    "Scripts & Utilitaires",
+    "Pipeline de données"
   ],
   "auth": {
     "methods": [
       "none"
     ]
   },
-  "tests": [
-    "Jest"
+  "tests": "Jest",
+  "workflows": [
+    "husky",
+    "data:update pipeline"
   ],
-  "workflows": [],
-  "lastActivity": "2026-08-01T00:00:00Z",
-  "status": "active",
+  "lastActivity": "2026-09-12T00:00:00Z",
+  "status": "experimental",
   "license": "Apache-2.0",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": null,
-    "forks": null,
-    "contributors": null,
-    "openIssues": null
-  },
   "tags": [
     "Données & Open Data",
     "TypeScript",
-    "API & Intégrations"
+    "Standards & Schémas",
+    "ETL & Pipelines de données",
+    "Legal & Conformité"
   ]
 }
