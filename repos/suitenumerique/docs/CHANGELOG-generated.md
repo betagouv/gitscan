@@ -1,20 +1,21 @@
-## Changelog : docs (30 derniers jours, au 2026-09-04)
+## Changelog : docs (30 derniers jours, au 11 septembre 2026)
 
 ### Résumé
-Ce mois-ci, la suite a considérablement enrichi ses capacités d'édition avec l'ajout de blocs mathématiques et de diagrammes, ainsi que de nouveaux outils de recherche et d'exportation PDF. Les efforts se sont également concentrés sur l'amélioration de l'accessibilité, l'optimisation des performances du backend et la modernisation de l'interface utilisateur.
+Cette période a été marquée par un enrichissement significatif des capacités d'édition, notamment avec l'introduction de blocs mathématiques, de diagrammes et d'une fonction de recherche et remplacement. L'expérience utilisateur a été renforcée par de nouvelles options d'exportation (PDF, images) et une attention accrue portée à l'accessibilité. En parallèle, des optimisations techniques importantes ont été réalisées pour améliorer les performances des requêtes SQL et la stabilité de l'infrastructure.
 
 ### Évolutions fonctionnelles
-- **Nouvelles fonctionnalités** : Ajout de blocs de mathématiques et de diagrammes, fonction de recherche et remplacement, compteur de mots et possibilité de copier un lien direct vers un bloc.
-- **Expérience utilisateur** : Exportation de présentations en PDF (avec filigrane), tri des documents par nom, déplacement de fichiers et passage du système de favoris aux "étoiles".
-- **Accessibilité** : Amélioration de la navigation au clavier (interliens), annonce des états de chargement pour les lecteurs d'écran et gestion globale des styles de focus.
-- **Corrections** : Résolution de bugs concernant les blocs de code, l'exportation d'images, la duplication de documents vides et l'affichage des options de session pour les utilisateurs non authentifiés.
+- **Nouvelles fonctionnalités d'édition** : Ajout de blocs pour les mathématiques et les diagrammes, intégration de la fonction "Rechercher et remplacer", et ajout d'un compteur de mots.
+- **Exportation et partage** : Possibilité d'exporter les présentations en PDF (avec option de filigrane), export de n'importe quelle image raster vers PDF, et ajout de la fonctionnalité "Copier le lien vers un bloc".
+- **Améliorations de l'interface (UI/UX)** : Refonte de la page de confirmation d'email, unification de la barre d'outils, passage du système de "favoris" à des "étoiles", et amélioration de l'affichage de la liste des documents (tri par nom, grille améliorée).
+- **Accessibilité** : Amélioration de la navigation au clavier pour les liens inter-documents, annonces pour lecteurs d'écran lors du chargement de la recherche, et gestion des éléments décoratifs (emojis) pour les outils d'assistance.
+- **Corrections** : Résolution de bugs concernant la duplication de documents vides, la préservation des titres lors de l'ajout d'emojis, et les erreurs de rendu dans les blocs de code.
 
 ### Évolutions techniques
-- **Architecture & Refactoring** : Migration vers Blocknote 0.54.0, remplacement de `ui-kit` par `ui-components` et suppression de la dépendance `whitenoise`.
-- **Performance** : Optimisation de l'utilisation CPU et des requêtes SQL pour l'authentification des médias, et passage au "throttling" réactif pour l'interface.
-- **Infrastructure & Backend** : Configuration de la limite de mémoire d'upload, support asynchrone pour les middlewares personnalisés et corrections sur les déploiements Helm et Keycloak.
-- **Qualité & Sécurité** : Stabilisation des tests E2E, ajout de la couverture de tests pour l'export PDF et correction de vulnérabilités JS.
+- **Optimisation des performances** : Amélioration des requêtes SQL (suppression de fonctions coûteuses), optimisation de l'utilisation CPU pour l'authentification des médias, et ajustement des options de cache Redis.
+- **Architecture et Refactoring** : Mise à jour majeure vers Blocknote 0.54.0, extraction de composants UI partagés (header et footer), et transition du kit d'interface vers un système de composants unifié.
+- **Infrastructure et DevOps** : Optimisation des sondes de disponibilité Docker (liveness/readiness), changement de l'image docspec vers GHCR, et configuration de la gestion de la mémoire pour les uploads de données.
+- **Stabilité et Tests** : Renforcement de la couverture de tests E2E (notamment pour les exports PNG, WebP et PDF) et correction de tests instables.
 
 ### Autres changements
-- **Internationalisation** : Ajout de la langue polonaise et mise à jour des chaînes de traduction.
-- **Design** : Mise à jour des logos et modernisation des assets d'onboarding (passage aux formats webm et webp).
+- **Internationalisation** : Ajout de la langue polonaise et mise à jour des chaînes de caractères traduites.
+- **Documentation** : Ajout de docstrings pour améliorer la clarté du code frontend.

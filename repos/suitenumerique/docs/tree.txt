@@ -351,6 +351,7 @@
     │   │   │   ├── test_api_utils_nest_tree.py
     │   │   │   ├── test_api_utils_parse_http_conditional_headers.py
     │   │   │   ├── test_malware_detection.py
+    │   │   │   ├── test_middleware.py
     │   │   │   ├── test_models_comment.py
     │   │   │   ├── test_models_document_accesses.py
     │   │   │   ├── test_models_documents.py
@@ -481,12 +482,14 @@
     │   │   │   │   │   │   ├── base-content-test-pdf.txt
     │   │   │   │   │   │   ├── doc-export-PDF-browser-regressions.pdf
     │   │   │   │   │   │   ├── doc-export-regressions.pdf
+    │   │   │   │   │   │   ├── issue-860-complex-image.png
     │   │   │   │   │   │   ├── logo-suite-numerique.png
     │   │   │   │   │   │   ├── test-pdf.pdf
     │   │   │   │   │   │   ├── test.html
     │   │   │   │   │   │   ├── test.svg
     │   │   │   │   │   │   ├── test_import.docx
-    │   │   │   │   │   │   └── test_import.md
+    │   │   │   │   │   │   ├── test_import.md
+    │   │   │   │   │   │   └── webp-image.webp
     │   │   │   │   │   ├── auth.setup.ts
     │   │   │   │   │   ├── config.spec.ts
     │   │   │   │   │   ├── doc-ai.spec.ts
@@ -1061,7 +1064,8 @@
     │   │       │   │   │   │   └── useUserReconciliations.tsx
     │   │       │   │   │   ├── assets
     │   │       │   │   │   │   ├── button-proconnect.svg
-    │   │       │   │   │   │   └── mail-check-filled.svg
+    │   │       │   │   │   │   ├── email-confirmation.svg
+    │   │       │   │   │   │   └── email-validation-error.svg
     │   │       │   │   │   ├── components
     │   │       │   │   │   │   ├── Auth.tsx
     │   │       │   │   │   │   ├── AvatarSvg.tsx
@@ -1178,6 +1182,8 @@
     │   │       │   │   │   │   │   ├── ExportMIT.test.tsx
     │   │       │   │   │   │   │   ├── TablePDF.test.tsx
     │   │       │   │   │   │   │   ├── exportResolveFileUrl.test.ts
+    │   │       │   │   │   │   │   ├── imagePDF.test.tsx
+    │   │       │   │   │   │   │   ├── utils.test.ts
     │   │       │   │   │   │   │   ├── utilsHtmlAccessibility.test.ts
     │   │       │   │   │   │   │   ├── utilsMediaFilename.test.ts
     │   │       │   │   │   │   │   └── utilsPrint.test.ts
@@ -1233,7 +1239,8 @@
     │   │       │   │   │   │   └── styles.tsx
     │   │       │   │   │   ├── doc-header
     │   │       │   │   │   │   ├── __tests__
-    │   │       │   │   │   │   │   └── DocHeaderEmoji.spec.tsx
+    │   │       │   │   │   │   │   ├── DocHeaderEmoji.spec.tsx
+    │   │       │   │   │   │   │   └── DocHeaderInfo.spec.tsx
     │   │       │   │   │   │   ├── components
     │   │       │   │   │   │   │   ├── AlertNetwork.tsx
     │   │       │   │   │   │   │   ├── AlertRestore.tsx
@@ -1453,15 +1460,22 @@
     │   │       │   │   │   ├── Footer.tsx
     │   │       │   │   │   ├── assets
     │   │       │   │   │   │   └── external-link.svg
+    │   │       │   │   │   ├── components
+    │   │       │   │   │   │   ├── FooterActions.tsx
+    │   │       │   │   │   │   ├── FooterBar.tsx
+    │   │       │   │   │   │   └── index.ts
     │   │       │   │   │   ├── index.tsx
     │   │       │   │   │   └── types.ts
     │   │       │   │   ├── header
     │   │       │   │   │   ├── assets
     │   │       │   │   │   │   └── DocsLoader.gif
     │   │       │   │   │   ├── components
+    │   │       │   │   │   │   ├── HeaderBar.tsx
     │   │       │   │   │   │   ├── HeaderFloatingBar.tsx
     │   │       │   │   │   │   ├── HeaderIcon.tsx
+    │   │       │   │   │   │   ├── HeaderLogoLink.tsx
     │   │       │   │   │   │   └── index.ts
+    │   │       │   │   │   ├── conf.ts
     │   │       │   │   │   ├── hooks
     │   │       │   │   │   │   └── useHideOnScroll.ts
     │   │       │   │   │   └── index.ts
@@ -1586,6 +1600,7 @@
     │   │       │   ├── layouts
     │   │       │   │   ├── MainLayout.tsx
     │   │       │   │   ├── PageLayout.tsx
+    │   │       │   │   ├── StandalonePageLayout.tsx
     │   │       │   │   ├── conf.ts
     │   │       │   │   ├── index.ts
     │   │       │   │   ├── usePanelCoordination.tsx
@@ -1687,6 +1702,7 @@
     │   │       ├── __tests__
     │   │       │   ├── collaborationBackend.test.ts
     │   │       │   ├── collaborationResetConnections.test.ts
+    │   │       │   ├── collaborationWSHandler.test.ts
     │   │       │   ├── convert.test.ts
     │   │       │   ├── getDocumentConnectionInfoHandler.test.ts
     │   │       │   ├── hocuspocusWS.test.ts
@@ -1782,4 +1798,4 @@
         │   └── template.mjml
         ├── package.json
         └── yarn.lock
-315 directories, 1545 files
+316 directories, 1560 files

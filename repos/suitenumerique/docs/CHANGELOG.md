@@ -6,11 +6,31 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
+- 🔧(backend) fine tune redis cache options
+- ✨(frontend) make the full last-update date available #1215
+
+### Changed
+
+- ⬆️(backend) upgrade celery to version 5.6.3
+- ⚡️(backend) stop using LEFT(value, LENGTH(path)) in sql queries
+- 🚚(project) switch docspec image to ghcr.io/docspec/api #2553
+
+### Fixed
+
+- 🐛(backend) skip session creation for the liveness probe
+- 🐛(frontend) preserve page titles when adding an emoji #2586
+- 🐛(frontend) hide the selection highlight on presenter images #2665
+- 🐛(y-provider) prevent process crash on malformed websocket frames #2673
+- ♿️(frontend) restore presenter focus trapping after share links #2533
+
 ## [v5.6.1] - 2026-09-04
 
 ### Added
 
 - ✨(frontend) export presenter slides as PDF #2487
+- 💄(frontend) redesign email confirmation standalone page #2601
 
 ### Fixed
 
@@ -43,8 +63,9 @@ and this project adheres to
 - 🐛(backend) fix duplicating a document that has no content #2609
 - 📄(frontend) allowed partially export when MIT #2551
 - 🐛(backend) manage async support for Docs custom middleware #2619
-- 🐛(frontend) save the doc with a keepalive 
+- 🐛(frontend) save the doc with a keepalive
   request when leaving the page #2619
+- 🐛(frontend) export any raster image supported by the browser to a PDF #2530
 
 ### Removed
 
