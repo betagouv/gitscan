@@ -43,6 +43,7 @@
 │               └── rapport.md
 ├── .cz-config.js
 ├── .dockerignore
+├── .dsfr.yml
 ├── .eslintignore
 ├── .github
 │   ├── PULL_REQUEST_TEMPLATE.md
@@ -969,6 +970,8 @@
 │   │   │   │       ├── local.ts
 │   │   │   │       └── scaleway.ts
 │   │   │   ├── brevo
+│   │   │   │   ├── __tests__
+│   │   │   │   │   └── mission-content.test.ts
 │   │   │   │   ├── attachment.ts
 │   │   │   │   ├── client.ts
 │   │   │   │   ├── contact.ts
@@ -1309,12 +1312,16 @@
 │   │   │   │   │   └── import-missions.handler.test.ts
 │   │   │   │   ├── letudiant
 │   │   │   │   │   └── letudiant.handler.test.ts
+│   │   │   │   ├── linkedin
+│   │   │   │   │   └── linkedin.handler.test.ts
 │   │   │   │   ├── mission-diffusion
 │   │   │   │   │   └── rebuild.handler.test.ts
 │   │   │   │   ├── moderation
 │   │   │   │   │   └── moderation.handler.test.ts
-│   │   │   │   └── report
-│   │   │   │       └── report.handler.test.ts
+│   │   │   │   ├── report
+│   │   │   │   │   └── report.handler.test.ts
+│   │   │   │   └── talent
+│   │   │   │       └── talent.handler.test.ts
 │   │   │   └── services
 │   │   │       ├── mission.test.ts
 │   │   │       └── publisher.test.ts
@@ -1647,6 +1654,11 @@
 │   │   │   ├── images
 │   │   │   │   ├── asc-logo.png
 │   │   │   │   ├── jva-logo.png
+│   │   │   │   ├── landings
+│   │   │   │   │   └── defis-engagement
+│   │   │   │   │       ├── temoignage-1.jpg
+│   │   │   │   │       ├── temoignage-2.jpg
+│   │   │   │   │       └── temoignage-3.jpg
 │   │   │   │   ├── people-landing.png
 │   │   │   │   ├── roc-logo.png
 │   │   │   │   ├── spv-logo.png
@@ -1655,8 +1667,10 @@
 │   │   │   │   ├── testimonial-seb.jpg
 │   │   │   │   └── testimonial-sophie.jpg
 │   │   │   └── svg
+│   │   │       ├── double-quotes.svg
 │   │   │       ├── long-trace.svg
 │   │   │       ├── trace.svg
+│   │   │       ├── ttm-logo.svg
 │   │   │       └── zig-zag-arrow.svg
 │   │   ├── components
 │   │   │   ├── landing
@@ -1665,6 +1679,15 @@
 │   │   │   │   ├── mission-examples.tsx
 │   │   │   │   ├── pro-space.tsx
 │   │   │   │   └── testimonials.tsx
+│   │   │   ├── landings
+│   │   │   │   └── defis-engagement
+│   │   │   │       ├── cadre-mineurs.tsx
+│   │   │   │       ├── etapes.tsx
+│   │   │   │       ├── hero.tsx
+│   │   │   │       ├── histoires.tsx
+│   │   │   │       ├── missions.tsx
+│   │   │   │       ├── questions.tsx
+│   │   │   │       └── terrain-de-jeu.tsx
 │   │   │   ├── layout
 │   │   │   │   ├── cookie-consent-manager.tsx
 │   │   │   │   ├── footer.tsx
@@ -1698,13 +1721,17 @@
 │   │   │   │   └── radio-group.tsx
 │   │   │   ├── results
 │   │   │   │   ├── email-missions-modal.tsx
+│   │   │   │   ├── filter-option-rows.tsx
 │   │   │   │   ├── lazy-mission-map.tsx
 │   │   │   │   ├── matching-debug-modal.css
 │   │   │   │   ├── matching-debug-modal.tsx
 │   │   │   │   ├── mission-map.tsx
 │   │   │   │   ├── profile-modal.tsx
+│   │   │   │   ├── results-filters-modal.tsx
+│   │   │   │   ├── results-filters.tsx
 │   │   │   │   └── results-missions.tsx
 │   │   │   └── ui
+│   │   │       ├── carousel.tsx
 │   │   │       ├── combobox.tsx
 │   │   │       ├── gradient-bg.tsx
 │   │   │       ├── highlight.tsx
@@ -1712,12 +1739,16 @@
 │   │   │       ├── mail-illustration.tsx
 │   │   │       └── pagination.tsx
 │   │   ├── config
+│   │   │   ├── __tests__
+│   │   │   │   └── quiz-flow.test.ts
 │   │   │   ├── quiz-flow
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── q1.ts
 │   │   │   │   ├── q2.ts
+│   │   │   │   ├── q3.ts
 │   │   │   │   └── types.ts
-│   │   │   └── quiz-options.ts
+│   │   │   ├── quiz-options.ts
+│   │   │   └── results-filters.ts
 │   │   ├── entry.client.tsx
 │   │   ├── entry.server.tsx
 │   │   ├── hooks
@@ -1736,6 +1767,8 @@
 │   │   │   ├── api.newsletter.ts
 │   │   │   ├── api.user-scoring.$id.ts
 │   │   │   ├── api.user-scoring.ts
+│   │   │   ├── landings
+│   │   │   │   └── defis-engagement.tsx
 │   │   │   ├── mentions-legales.tsx
 │   │   │   ├── mission-detail.tsx
 │   │   │   ├── missions.tsx
@@ -1818,6 +1851,7 @@
 │   │       │   ├── layout.test.ts
 │   │       │   ├── mission.test.ts
 │   │       │   ├── quiz.test.ts
+│   │       │   ├── results-filters.test.ts
 │   │       │   └── string.test.ts
 │   │       ├── campaign-attribution.ts
 │   │       ├── conditions.ts
@@ -1827,6 +1861,7 @@
 │   │       ├── mission.ts
 │   │       ├── motion.ts
 │   │       ├── quiz.ts
+│   │       ├── results-filters.ts
 │   │       └── string.ts
 │   ├── eslint.config.cjs
 │   ├── package.json
@@ -1998,4 +2033,4 @@
         ├── sentry.ts
         ├── store.ts
         └── utils.ts
-456 directories, 1630 files
+465 directories, 1656 files
