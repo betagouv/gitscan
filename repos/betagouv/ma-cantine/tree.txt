@@ -8,7 +8,6 @@
 │   │   └── config.yml
 │   ├── auto_add_assignees.yml
 │   ├── auto_add_reviewers.yml
-│   ├── copilot-instructions.md
 │   ├── dependabot.yml
 │   └── workflows
 │       ├── clever-cloud-review-app.yml
@@ -39,15 +38,20 @@
 │   ├── src
 │   │   ├── App.vue
 │   │   ├── components
+│   │   │   ├── AppBadgeCanteen.vue
+│   │   │   ├── AppBadgeSiretSiren.vue
 │   │   │   ├── AppBanners.vue
+│   │   │   ├── AppBlueCard.vue
 │   │   │   ├── AppBreadcrumb.vue
 │   │   │   ├── AppCode.vue
 │   │   │   ├── AppDropdownMenu.vue
+│   │   │   ├── AppErrorList.vue
 │   │   │   ├── AppFieldDisplay.vue
 │   │   │   ├── AppFooter.vue
 │   │   │   ├── AppFormImage.vue
 │   │   │   ├── AppFormSendInquiry.vue
 │   │   │   ├── AppHeader.vue
+│   │   │   ├── AppHelpCard.vue
 │   │   │   ├── AppJeDonneMonAvis.vue
 │   │   │   ├── AppLinkMailto.vue
 │   │   │   ├── AppLinkRouter.vue
@@ -80,6 +84,9 @@
 │   │   │   ├── CanteenTeledeclarationPdf.vue
 │   │   │   ├── CanteensTable.vue
 │   │   │   ├── CanteensTableSatellites.vue
+│   │   │   ├── DiagnosticEgalimSimple.vue
+│   │   │   ├── DiagnosticPurchasesLinked.vue
+│   │   │   ├── DiagnosticSatellitesLinked.vue
 │   │   │   ├── DsfrBooleanRadio.vue
 │   │   │   ├── EdibleChart.vue
 │   │   │   ├── EmphasiseText.vue
@@ -130,6 +137,12 @@
 │   │   │   ├── PurchaseFormSuccessModal.vue
 │   │   │   ├── PurchaseInvoice.vue
 │   │   │   ├── SourceChart.vue
+│   │   │   ├── TunnelTeledeclarationAccordions.vue
+│   │   │   ├── TunnelTeledeclarationErrors.vue
+│   │   │   ├── TunnelTeledeclarationField.vue
+│   │   │   ├── TunnelTeledeclarationModal.vue
+│   │   │   ├── TunnelTeledeclarationSidebar.vue
+│   │   │   ├── TunnelTeledeclarationTopNav.vue
 │   │   │   ├── WasteMeasurementDetail.vue
 │   │   │   ├── WasteMeasurementSteps
 │   │   │   │   ├── BreakdownBySource.vue
@@ -159,18 +172,22 @@
 │   │   │   ├── documentation.json
 │   │   │   ├── epcis.json
 │   │   │   ├── pats.json
-│   │   │   └── regions.json
+│   │   │   ├── regions.json
+│   │   │   └── teledeclaration.json
 │   │   ├── i18n.js
 │   │   ├── layouts
 │   │   │   ├── LayoutOneColumn.vue
-│   │   │   └── LayoutSidebarCanteen.vue
+│   │   │   ├── LayoutSidebarCanteen.vue
+│   │   │   └── LayoutTunnelTeledeclaration.vue
 │   │   ├── locales
 │   │   │   └── fr.json
 │   │   ├── main.js
 │   │   ├── router
 │   │   │   ├── authenticated-routes.js
+│   │   │   ├── cantine-routes.js
 │   │   │   ├── index.js
 │   │   │   ├── public-routes.js
+│   │   │   ├── tunnel-routes.js
 │   │   │   ├── vue2.js
 │   │   │   └── vue3.js
 │   │   ├── services
@@ -181,6 +198,7 @@
 │   │   │   ├── canteensTable.js
 │   │   │   ├── diagnostics.js
 │   │   │   ├── diagnosticsBadge.js
+│   │   │   ├── diagnosticsFields.js
 │   │   │   ├── filters.js
 │   │   │   ├── imports.js
 │   │   │   ├── managers.js
@@ -196,7 +214,9 @@
 │   │   ├── stores
 │   │   │   ├── canteen.js
 │   │   │   ├── filters.js
-│   │   │   └── root.js
+│   │   │   ├── purchaseSummary.js
+│   │   │   ├── root.js
+│   │   │   └── teledeclaration.js
 │   │   ├── utils.js
 │   │   ├── validators.js
 │   │   └── views
@@ -217,6 +237,7 @@
 │   │       ├── GestionnaireCantinePagePublique.vue
 │   │       ├── GestionnaireCantineRestaurantAjouter.vue
 │   │       ├── GestionnaireCantineRestaurantModifier.vue
+│   │       ├── GestionnaireCantineTeledeclarationEnCours.vue
 │   │       ├── GestionnaireCantineTeledeclarations.vue
 │   │       ├── GestionnaireGaspillageAlimentaire.vue
 │   │       ├── GestionnaireGaspillageAlimentaireModifier.vue
@@ -232,13 +253,25 @@
 │   │       ├── GestionnaireImportCantinesGestionnaires.vue
 │   │       ├── GestionnaireImportCantinesModifier.vue
 │   │       ├── GestionnaireTableauDeBord.vue
+│   │       ├── GestionnaireTunnelApproCouverts.vue
+│   │       ├── GestionnaireTunnelApproEgalim.vue
+│   │       ├── GestionnaireTunnelApproInformations.vue
+│   │       ├── GestionnaireTunnelApproLocalCircuitCourt.vue
+│   │       ├── GestionnaireTunnelApproOrigine.vue
+│   │       ├── GestionnaireTunnelApproRecapitulatif.vue
+│   │       ├── GestionnaireTunnelApproSaisie.vue
+│   │       ├── GestionnaireTunnelConvives.vue
+│   │       ├── GestionnaireTunnelGaspillage.vue
+│   │       ├── GestionnaireTunnelPlastique.vue
+│   │       ├── GestionnaireTunnelVegetarien.vue
 │   │       ├── MentionsLegales.vue
 │   │       ├── Observatoire.vue
 │   │       ├── PlanDuSite.vue
 │   │       └── Statistiques.vue
 │   └── vite.config.js
+├── AGENTS.md
 ├── CHANGELOG.md
-├── CLAUDE.md
+├── CLAUDE.md -> AGENTS.md
 ├── Dockerfile
 ├── LICENSE
 ├── Makefile
@@ -1069,6 +1102,7 @@
 │       └── wastemeasurement.py
 ├── dbt
 │   ├── .gitignore
+│   ├── .sqlfluff
 │   ├── README.md
 │   ├── dbt_project.yml
 │   ├── models
@@ -1427,6 +1461,7 @@
 │   │   ├── test_canteen_migrate_central_to_groupe.py
 │   │   ├── test_canteen_update_geolocation_data_using_siret.py
 │   │   ├── test_canteen_update_pat_data_using_city_insee_code.py
+│   │   ├── test_dbt_run.py
 │   │   ├── test_diagnostic_fill_computed_fields.py
 │   │   ├── test_diagnostic_fill_invalid_warning_reason_list.py
 │   │   ├── test_etl_analysis.py
@@ -1760,6 +1795,8 @@
     │   │   │   ├── flow-list.svg
     │   │   │   ├── food.svg
     │   │   │   ├── money.svg
+    │   │   │   ├── saisie-automatique.svg
+    │   │   │   ├── saisie-simplifiee.svg
     │   │   │   ├── school.svg
     │   │   │   ├── search.svg
     │   │   │   ├── self-training.svg
@@ -1769,7 +1806,12 @@
     │   │   │   ├── IGP.png
     │   │   │   ├── Logo-AOC-AOP.png
     │   │   │   ├── STG.png
+    │   │   │   ├── bio-dont-commerce-equitable.jpg
     │   │   │   ├── commerce-equitable.jpg
+    │   │   │   ├── egalim-autres.jpg
+    │   │   │   ├── egalim-bio.jpg
+    │   │   │   ├── egalim-siqo.jpg
+    │   │   │   ├── environnement.jpg
     │   │   │   ├── hve.png
     │   │   │   ├── label-rouge.png
     │   │   │   ├── logo_bio_eurofeuille.png
@@ -1813,6 +1855,8 @@
     │   │   ├── magicauth_email.html
     │   │   ├── magicauth_email.txt
     │   │   └── magicauth_email_sent.html
+    │   ├── robots-noindex.txt
+    │   ├── robots.txt
     │   ├── vue-app.html
     │   └── vue3-app.html
     ├── templatetags
@@ -1823,7 +1867,8 @@
     ├── tests
     │   ├── __init__.py
     │   ├── test_registration.py
-    │   └── test_sitemaps.py
+    │   ├── test_robots.py
+    │   └── test_sitemap.py
     ├── urls.py
     └── views.py
-147 directories, 1754 files
+147 directories, 1799 files

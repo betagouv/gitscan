@@ -1,17 +1,31 @@
-## Changelog : ma-cantine (30 derniers jours, au 09/09/2026)
+## Changelog : ma-cantine (30 derniers jours, au 11 septembre 2026)
 
 ### Résumé
-Ce mois a été marqué par une refonte majeure de l'espace dédié aux établissements, offrant une interface plus complète et intuitive avec de nouvelles pages de gestion. La sécurité a été renforcée par l'introduction de la double authentification (2FA) pour les administrateurs. Enfin, les outils de diagnostic ont été enrichis de nouvelles données et de règles de contrôle plus strictes pour garantir la qualité des bilans alimentaires.
+Ce mois-ci est marqué par une refonte majeure du processus de télédéclaration, désormais structuré sous forme de tunnel guidé pour faciliter la saisie des données. La sécurité de la plateforme a également été renforcée avec l'introduction de l'authentification à deux facteurs (2FA) pour les administrateurs, et les capacités d'analyse de données ont été consolidées grâce à l'intégration de nouveaux outils de modélisation (dbt).
 
 ### Évolutions fonctionnelles
-- **Espace Établissement :** Refonte complète de l'interface incluant de nouvelles pages : "Mes informations" ([#6902](https://github.com/betagouv/ma-cantine/issues/6902)), "Ma page publique" ([#6921](https://github.com/betagouv/ma-cantine/issues/6921)), "Cantine du groupe" ([#3542588](https://github.com/betagouv/ma-cantine/issues/3542588)) et "Mes gestionnaires" ([#6909](https://github.com/betagouv/ma-cantine/issues/6909)).
-- **Expérience Utilisateur (UX) :** Amélioration de l'accessibilité, du design responsive, de la pagination dynamique des tableaux et de la visibilité des erreurs de saisie ([#6948](https://github.com/betagouv/ma-cantine/issues/6948), [#6950](https://github.com/betagouv/ma-cantine/issues/6950), [#6934](https://github.com/betagouv/ma-cantine/issues/6934)).
-- **Sécurité :** Mise en place de l'authentification à deux facteurs (2FA) via TOTP pour les administrateurs ([#7040](https://github.com/betagouv/ma-cantine/issues/7040)) et correction d'une faille de sécurité sur l'inscription ([#7081](https://github.com/betagouv/ma-cantine/issues/7081)).
-- **Diagnostics & Télédéclarations :** Ajout de nouveaux champs de données (origines France, Europe, circuit court, etc.) et de nouvelles règles métier pour assurer la cohérence des bilans ([#7005](https://github.com/betagouv/ma-cantine/issues/7005), [#7019](https://github.com/betagouv/ma-cantine/issues/7019), [#7030](https://github.com/betagouv/ma-cantine/issues/7030)). Ajout de liens vers les arrêtés Legifrance pour faciliter les télédéclarations ([#7014](https://github.com/betagouv/ma-cantine/issues/7014)).
-- **Administration :** Amélioration de la gestion des utilisateurs avec de nouveaux filtres (email confirmé, super-utilisateur, groupes) ([#7080](https://github.com/betagouv/ma-cantine/issues/7080)).
-- **Corrections :** Résolution d'erreurs d'affichage, de problèmes de redirection sur l'accueil et de l'erreur 500 en administration ([#7087](https://github.com/betagouv/ma-cantine/issues/7087), [#7086](https://github.com/betagouv/ma-cantine/issues/7086), [#7091](https://github.com/betagouv/ma-cantine/issues/7091)).
+- **Télédéclaration :**
+    - Mise en place d'un nouveau tunnel de saisie structuré avec plusieurs étapes clés : sélection du mode de saisie ([#7051](https://github.com/betagouv/ma-cantine/issues/7051)), origine des produits ([#7055](https://github.com/betagouv/ma-cantine/issues/7055)), circuits courts et local ([#7056](https://github.com/betagouv/ma-cantine/issues/7056)), et couverture annuelle ([#7050](https://github.com/betagouv/ma-cantine/issues/7050)).
+    - Ajout d'un volet "EGalim" simplifié ([#7053](https://github.com/betagouv/ma-cantine/issues/7053)) et d'écrans de récapitulatif avant validation ([#7102](https://github.com/betagouv/ma-cantine/issues/7102), [#7106](https://github.com/betagouv/ma-cantine/issues/7106)).
+    - Amélioration de l'expérience utilisateur avec l'affichage des erreurs du bilan ([#7096](https://github.com/betagouv/ma-cantine/issues/7096)) et des informations de la cantine ([#7038](https://github.com/betagouv/ma-cantine/issues/7038)).
+- **Établissement :** Création d'une page dédiée à la "Télédéclaration de l'année" ([#7020](https://github.com/betagouv/ma-cantine/issues/7020)).
+- **Diagnostics :** Ajout de nouveaux indicateurs de provenance pour les données (France, Europe, circuit court, local) ([#7019](https://github.com/betagouv/ma-cantine/issues/7019), [#7021](https://github.com/betagouv/ma-cantine/issues/7021)).
+- **Gestion des utilisateurs & Administration :**
+    - Renforcement de la sécurité à l'inscription en bloquant les adresses emails jetables ([#7060](https://github.com/betagouv/ma-cantine/issues/7060)).
+    - Amélioration des outils d'administration : nouveaux filtres (email confirmé, super-utilisateur, groupes) ([#7080](https://github.com/betagouv/ma-cantine/issues/7080)) et indicateur de présence d'un dispositif 2FA ([#7058](https://github.com/betagouv/ma-cantine/issues/7058)).
 
 ### Évolutions techniques
-- **Architecture Backend :** Refactorisation de plusieurs modules pour améliorer la maintenance (gestion des images, logique de nommage, validation des dates de campagne) ([#7097](https://github.com/betagouv/ma-cantine/issues/7097), [#7095](https://github.com/betagouv/ma-cantine/issues/7095), [#7104](https://github.com/betagouv/ma-cantine/issues/7104)) et réorganisation des configurations d'applications ([#7033](https://github.com/betagouv/ma-cantine/issues/7033)).
-- **API & Data :** Création d'un projet dbt pour la modélisation des données Metabase ([#6421](https://github.com/betagouv/ma-cantine/issues/6421)) et optimisation des endpoints API (Achats, Diagnostics, Établissements) ([#7042](https://github.com/betagouv/ma-cantine/issues/7042), [#6991](https://github.com/betagouv/ma-cantine/issues/6991)).
-- **Infrastructure & Tooling :** Migration du frontend vers `django-vite` ([#7084](https://github.com/betagouv/ma-cantine/issues/7084)), ajout de `pip-audit` pour la sécurité des dépendances ([#7092](https://github.com/betagouv/ma-cantine/issues/7092)) et correction de la configuration du stockage S3 ([#7039](https://github.com/betagouv/ma-cantine/issues/7039)).
+- **Sécurité :** Implémentation de l'authentification à deux facteurs (2FA) via TOTP pour les utilisateurs staff et superuser ([#7040](https://github.com/betagouv/ma-cantine/issues/7040), [#7046](https://github.com/betagouv/ma-cantine/issues/7046)).
+- **Data & Analytics :** 
+    - Création du projet dbt pour la modélisation des données destinée à Metabase ([#6421](https://github.com/betagouv/ma-cantine/issues/6421)).
+    - Automatisation des tâches dbt via des processus asynchrones nocturnes ([#7118](https://github.com/betagouv/ma-cantine/issues/7118)) et intégration de tests de qualité SQL (sqlfluff) ([#7117](https://github.com/betagouv/ma-cantine/issues/7117)).
+- **Backend & API :**
+    - Refactorisation de la gestion du cache ([#7116](https://github.com/betagouv/ma-cantine/issues/7116)) et de l'organisation des paramètres de l'application ([#7033](https://github.com/betagouv/ma-cantine/issues/7033)).
+    - Optimisation et séparation de l'endpoint d'achats `/summary` ([#7042](https://github.com/betagouv/ma-cantine/issues/7042)).
+- **Infrastructure & Web :**
+    - Migration du frontend vers `django-vite` pour améliorer le workflow de développement ([#7084](https://github.com/betagouv/ma-cantine/issues/7084)).
+    - Optimisation du SEO via la gestion du sitemap et du fichier robots.txt ([#7111](https://github.com/betagouv/ma-cantine/issues/7111), [#7099](https://github.com/betagouv/ma-cantine/issues/7099)).
+    - Correction de la configuration de stockage S3 suite à des mises à jour de dépendances ([#7039](https://github.com/betagouv/ma-cantine/issues/7039)).
+
+### Autres changements
+- **Documentation :** Mise à jour des instructions pour les agents d'IA (AGENTS.md) ([#7112](https://github.com/betagouv/ma-cantine/issues/7112)).

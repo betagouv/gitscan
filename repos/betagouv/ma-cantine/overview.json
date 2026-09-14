@@ -1,29 +1,28 @@
 {
   "url": "https://github.com/betagouv/ma-cantine",
   "name": "ma-cantine",
-  "description": "Plateforme destinée à accompagner les acteurs de la restauration collective pour promouvoir une alimentation de qualité, saine et durable. Elle permet notamment la réalisation de diagnostics et de bilans alimentaires.",
+  "description": "Plateforme destinée à accompagner les acteurs de la restauration collective pour promouvoir une alimentation de qualité, saine et durable. Elle permet notamment la gestion des bilans alimentaires et les télédéclarations.",
   "language": "Python",
   "features": [
     "Gestion des établissements & Structures",
+    "Formulaires & Démarches",
     "Statistiques & Rapports",
     "Authentification & Accès",
-    "Recherche & Filtres",
-    "Formulaires & Démarches",
-    "Administration & Backoffice",
-    "Interface utilisateur & Design",
-    "Données & Schémas"
+    "Gestion des médias & Assets",
+    "Tableaux & Affichage"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Django",
-    "Django REST Framework",
     "Vue.js",
     "Celery",
-    "Wagtail",
-    "PostgreSQL",
     "Redis",
+    "PostgreSQL",
+    "Wagtail",
+    "dbt",
     "Metabase",
-    "Matomo"
+    "Sentry",
+    "Brevo"
   ],
   "components": [
     "API REST & GraphQL",
@@ -31,17 +30,22 @@
     "Vue.js / Nuxt",
     "Python (scripts & backend)",
     "Design System (DSFR & UI libs)",
+    "CI/CD & Déploiement",
+    "TypeScript / JavaScript",
+    "Tests",
     "Celery & Queue asynchrone",
-    "ORM & Accès aux données"
+    "ORM & Accès aux données",
+    "Authentification (composant)"
   ],
   "auth": {
     "methods": [
+      "email-password",
       "oauth2",
       "magic-link",
       "mfa",
-      "jwt",
       "session"
-    ]
+    ],
+    "providers": []
   },
   "tests": [
     "pytest",
@@ -50,17 +54,19 @@
   "workflows": [
     "GitHub Actions"
   ],
-  "lastActivity": "2026-09-07T00:00:00Z",
+  "lastActivity": "2026-09-11T00:00:00Z",
   "status": "maintained",
   "license": null,
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "Python",
+    "Django & FastAPI",
     "Vue.js & Nuxt",
-    "Bases de données SQL",
+    "Données & Open Data",
     "CI/CD & GitHub Actions",
     "Design System & UI",
-    "Données & Open Data"
+    "Accessibilité",
+    "JavaScript"
   ]
 }
