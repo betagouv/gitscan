@@ -1,6 +1,7 @@
 .
 ├── .changeset
 │   ├── README.md
+│   ├── big-tools-bet.md
 │   └── config.json
 ├── .editorconfig
 ├── .env
@@ -370,7 +371,8 @@
 │   ├── 1779975576903_add-end-user-reason-and-allow-editing-to-moderations.ts
 │   ├── 1780326942627_set-allow-editing-on-rejection-reason-moderations.ts
 │   ├── 1780924063334_allow-editing-default-to-false-in-moderation.ts
-│   └── 1781180683383_add-user-id-created-at-index-to-users-oidc-clients.ts
+│   ├── 1781180683383_add-user-id-created-at-index-to-users-oidc-clients.ts
+│   └── 1788769258662_add-official-contact-email-verification-table.ts
 ├── migrations.md
 ├── package-lock.json
 ├── package.json
@@ -744,8 +746,8 @@
 │   │   │   │   │   ├── delete-authenticator.ts
 │   │   │   │   │   ├── find-authenticator.test.ts
 │   │   │   │   │   ├── find-authenticator.ts
-│   │   │   │   │   ├── get-authenticators-by-user-id.test.ts
-│   │   │   │   │   ├── get-authenticators-by-user-id.ts
+│   │   │   │   │   ├── find-authenticators-by-user-id.test.ts
+│   │   │   │   │   ├── find-authenticators-by-user-id.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── update-authenticator.test.ts
 │   │   │   │   │   └── update-authenticator.ts
@@ -761,6 +763,14 @@
 │   │   │   │   │   ├── find-email-domains-by-organization-id.test.ts
 │   │   │   │   │   ├── find-email-domains-by-organization-id.ts
 │   │   │   │   │   └── index.ts
+│   │   │   │   ├── franceconnect_userinfo
+│   │   │   │   │   ├── delete-franceconnect-userinfo.test.ts
+│   │   │   │   │   ├── delete-franceconnect-userinfo.ts
+│   │   │   │   │   ├── find-franceconnect-userinfo.test.ts
+│   │   │   │   │   ├── find-franceconnect-userinfo.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── upsert-franceconnect-userinfo.test.ts
+│   │   │   │   │   └── upsert-franceconnect-userinfo.ts
 │   │   │   │   ├── moderation
 │   │   │   │   │   ├── create-moderation.test.ts
 │   │   │   │   │   ├── create-moderation.ts
@@ -777,6 +787,14 @@
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── reopen-moderation.test.ts
 │   │   │   │   │   └── reopen-moderation.ts
+│   │   │   │   ├── official-contact-email-verification
+│   │   │   │   │   ├── delete-official-contact-email-verification.test.ts
+│   │   │   │   │   ├── delete-official-contact-email-verification.ts
+│   │   │   │   │   ├── find-official-contact-email-verification.test.ts
+│   │   │   │   │   ├── find-official-contact-email-verification.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── upsert-official-contact-email-verification.test.ts
+│   │   │   │   │   └── upsert-official-contact-email-verification.ts
 │   │   │   │   ├── oidc-client
 │   │   │   │   │   ├── add-connection.test.ts
 │   │   │   │   │   ├── add-connection.ts
@@ -784,10 +802,6 @@
 │   │   │   │   │   ├── find-by-client-id.ts
 │   │   │   │   │   └── index.ts
 │   │   │   │   ├── organization
-│   │   │   │   │   ├── delete-user-organization.test.ts
-│   │   │   │   │   ├── delete-user-organization.ts
-│   │   │   │   │   ├── find-by-id.test.ts
-│   │   │   │   │   ├── find-by-id.ts
 │   │   │   │   │   ├── find-by-siret.test.ts
 │   │   │   │   │   ├── find-by-siret.ts
 │   │   │   │   │   ├── find-by-user-id.test.ts
@@ -795,45 +809,47 @@
 │   │   │   │   │   ├── find-by-user-id.ts
 │   │   │   │   │   ├── find-by-verified-email-domain.test.ts
 │   │   │   │   │   ├── find-by-verified-email-domain.ts
+│   │   │   │   │   ├── find-organization-by-id.test.ts
+│   │   │   │   │   ├── find-organization-by-id.ts
 │   │   │   │   │   ├── find-pending-by-user-id.test.ts
 │   │   │   │   │   ├── find-pending-by-user-id.ts
-│   │   │   │   │   ├── get-user-organization-link.test.ts
-│   │   │   │   │   ├── get-user-organization-link.ts
-│   │   │   │   │   ├── get-users-by-organization.test.ts
-│   │   │   │   │   ├── get-users-by-organization.test.ts.snapshot
-│   │   │   │   │   ├── get-users-by-organization.ts
+│   │   │   │   │   ├── find-users-by-organization.test.ts
+│   │   │   │   │   ├── find-users-by-organization.test.ts.snapshot
+│   │   │   │   │   ├── find-users-by-organization.ts
+│   │   │   │   │   ├── get-organization-by-id.test.ts
+│   │   │   │   │   ├── get-organization-by-id.ts
 │   │   │   │   │   ├── index.ts
-│   │   │   │   │   ├── link-user-to-organization.test.ts
-│   │   │   │   │   ├── link-user-to-organization.test.ts.snapshot
-│   │   │   │   │   ├── link-user-to-organization.ts
 │   │   │   │   │   ├── upsert.ts
 │   │   │   │   │   └── upset.test.ts
-│   │   │   │   └── user
-│   │   │   │       ├── create.test.ts
-│   │   │   │       ├── create.ts
-│   │   │   │       ├── delete-franceconnect-userinfo.test.ts
-│   │   │   │       ├── delete-franceconnect-userinfo.ts
-│   │   │   │       ├── delete.test.ts
-│   │   │   │       ├── delete.ts
-│   │   │   │       ├── find-by-email.test.ts
-│   │   │   │       ├── find-by-email.ts
-│   │   │   │       ├── find-by-id.test.ts
-│   │   │   │       ├── find-by-id.ts
-│   │   │   │       ├── find-by-magic-link-token.test.ts
-│   │   │   │       ├── find-by-magic-link-token.ts
-│   │   │   │       ├── find-by-reset-password-token.test.ts
-│   │   │   │       ├── find-by-reset-password-token.ts
-│   │   │   │       ├── get-by-id.test.ts
-│   │   │   │       ├── get-by-id.ts
-│   │   │   │       ├── get-franceconnect-user-info.test.ts
-│   │   │   │       ├── get-franceconnect-user-info.ts
+│   │   │   │   ├── user
+│   │   │   │   │   ├── create.test.ts
+│   │   │   │   │   ├── create.ts
+│   │   │   │   │   ├── delete.test.ts
+│   │   │   │   │   ├── delete.ts
+│   │   │   │   │   ├── find-by-email.test.ts
+│   │   │   │   │   ├── find-by-email.ts
+│   │   │   │   │   ├── find-by-id.test.ts
+│   │   │   │   │   ├── find-by-id.ts
+│   │   │   │   │   ├── find-by-magic-link-token.test.ts
+│   │   │   │   │   ├── find-by-magic-link-token.ts
+│   │   │   │   │   ├── find-by-reset-password-token.test.ts
+│   │   │   │   │   ├── find-by-reset-password-token.ts
+│   │   │   │   │   ├── get-by-id.test.ts
+│   │   │   │   │   ├── get-by-id.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── update.test.ts
+│   │   │   │   │   └── update.ts
+│   │   │   │   └── user_organisation
+│   │   │   │       ├── create-user-organization.test.ts
+│   │   │   │       ├── create-user-organization.test.ts.snapshot
+│   │   │   │       ├── create-user-organization.ts
+│   │   │   │       ├── delete-user-organization.test.ts
+│   │   │   │       ├── delete-user-organization.ts
+│   │   │   │       ├── find-user-organization.test.ts
+│   │   │   │       ├── find-user-organization.ts
 │   │   │   │       ├── index.ts
-│   │   │   │       ├── update-user-organization-link.test.ts
-│   │   │   │       ├── update-user-organization-link.ts
-│   │   │   │       ├── update.test.ts
-│   │   │   │       ├── update.ts
-│   │   │   │       ├── upsert-franceconnect-userinfo.test.ts
-│   │   │   │       └── upsert-franceconnect-userinfo.ts
+│   │   │   │       ├── update-user-organization.test.ts
+│   │   │   │       └── update-user-organization.ts
 │   │   │   ├── services
 │   │   │   │   ├── organization
 │   │   │   │   │   ├── compute-service-public-info.test.ts
@@ -859,6 +875,7 @@
 │   │   │       ├── identity-vector.ts
 │   │   │       ├── index.ts
 │   │   │       ├── moderation.ts
+│   │   │       ├── official-contact-email-verification.ts
 │   │   │       ├── oidc-client.ts
 │   │   │       ├── organization-info.ts
 │   │   │       ├── organization.ts
@@ -1308,4 +1325,4 @@
 │   └── symmetric-encryption.test.ts
 ├── tsconfig.json
 └── vite.config.mjs
-225 directories, 1167 files
+228 directories, 1181 files
