@@ -97,7 +97,7 @@
 │   │       └── 99-roles.sql
 │   └── strapi
 │       └── Dockerfile
-├── .earthlyignore
+├── .dockerignore
 ├── .editorconfig
 ├── .env
 ├── .env.staging
@@ -110,6 +110,8 @@
 │   │   ├── app-env
 │   │   │   └── action.yml
 │   │   ├── app-start
+│   │   │   └── action.yml
+│   │   ├── build-metadata
 │   │   │   └── action.yml
 │   │   ├── cache
 │   │   │   ├── apt-node-canvas
@@ -132,6 +134,8 @@
 │   │   │   └── action.yml
 │   │   ├── db-seed
 │   │   │   └── action.yml
+│   │   ├── docker-build-push
+│   │   │   └── action.yml
 │   │   ├── docker-image-available
 │   │   │   └── action.yml
 │   │   ├── docker-image-path
@@ -139,6 +143,8 @@
 │   │   ├── docker-login
 │   │   │   └── action.yml
 │   │   ├── docker-pull
+│   │   │   └── action.yml
+│   │   ├── koyeb-cli
 │   │   │   └── action.yml
 │   │   ├── node-canvas
 │   │   │   └── action.yml
@@ -162,6 +168,8 @@
 │   │   ├── supabase-start
 │   │   │   ├── action.yml
 │   │   │   └── start-supabase.sh
+│   │   ├── test-app-name
+│   │   │   └── action.yml
 │   │   ├── truncate
 │   │   │   └── action.yml
 │   │   └── wait-for-url
@@ -174,7 +182,6 @@
 │   └── workflows
 │       ├── backup-database.yml
 │       ├── cd-app.yml
-│       ├── cd-auth.yml
 │       ├── cd-backend.yml
 │       ├── cd-panier.yml
 │       ├── cd-restore-preprod.yml
@@ -206,7 +213,6 @@
 ├── AGENTS.md
 ├── CLAUDE.md -> AGENTS.md
 ├── DISCOVERED.md
-├── Earthfile
 ├── LICENSE
 ├── Makefile
 ├── README.md
@@ -222,7 +228,7 @@
 │   │   │   └── vitest.global.css
 │   │   ├── AGENTS.md
 │   │   ├── CLAUDE.md -> AGENTS.md
-│   │   ├── Earthfile
+│   │   ├── Dockerfile
 │   │   ├── README.md
 │   │   ├── app
 │   │   │   ├── (authed)
@@ -823,6 +829,11 @@
 │   │   │   │   ├── acces-restreint.guard.tsx
 │   │   │   │   ├── collectivites
 │   │   │   │   │   └── use-get-collectivite.ts
+│   │   │   │   ├── documents
+│   │   │   │   │   └── upload
+│   │   │   │   │       ├── hash-file.utils.ts
+│   │   │   │   │       ├── upload-to-storage.ts
+│   │   │   │   │       └── use-upload-file.ts
 │   │   │   │   ├── membres
 │   │   │   │   │   ├── invite-membre
 │   │   │   │   │   │   ├── invite-membre.button.tsx
@@ -1016,9 +1027,7 @@
 │   │   │   │   │   │   ├── contexte-instruction.banner.tsx
 │   │   │   │   │   │   ├── data
 │   │   │   │   │   │   │   ├── use-contexte-instruction.ts
-│   │   │   │   │   │   │   └── use-list-demandes-avis.ts
-│   │   │   │   │   │   ├── demandes-avis.page.tsx
-│   │   │   │   │   │   ├── demandes-avis.table.tsx
+│   │   │   │   │   │   │   └── use-list-dossiers-instruction.ts
 │   │   │   │   │   │   ├── dossier
 │   │   │   │   │   │   │   ├── data
 │   │   │   │   │   │   │   │   ├── use-diagnostic-instruction.ts
@@ -1037,6 +1046,11 @@
 │   │   │   │   │   │   │   └── use-etapes-instruction-side-panel.tsx
 │   │   │   │   │   │   ├── dossier-instruction-path.spec.ts
 │   │   │   │   │   │   ├── dossier-instruction-path.ts
+│   │   │   │   │   │   ├── dossiers-instruction.cells.tsx
+│   │   │   │   │   │   ├── dossiers-instruction.header-filters.tsx
+│   │   │   │   │   │   ├── dossiers-instruction.metrics.tsx
+│   │   │   │   │   │   ├── dossiers-instruction.page.tsx
+│   │   │   │   │   │   ├── dossiers-instruction.table.tsx
 │   │   │   │   │   │   └── instruction.constants.ts
 │   │   │   │   │   ├── list-demarches
 │   │   │   │   │   │   ├── demarche-pcaet-actions.menu.tsx
@@ -1849,8 +1863,7 @@
 │   │   │   │   │   │   ├── filesToUploadList.tsx
 │   │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   │   ├── types.ts
-│   │   │   │   │   │   ├── use-file-upload-list.ts
-│   │   │   │   │   │   └── useUploader.ts
+│   │   │   │   │   │   └── use-file-upload-list.ts
 │   │   │   │   │   ├── AddPreuveReglementaire.tsx
 │   │   │   │   │   ├── Bibliotheque
 │   │   │   │   │   │   ├── AlerteSuppression.tsx
@@ -1890,10 +1903,6 @@
 │   │   │   │   │   │   └── audit-report-to-preuve.ts
 │   │   │   │   │   ├── upload
 │   │   │   │   │   │   ├── constants.ts
-│   │   │   │   │   │   ├── upload-file-to-bucket.ts
-│   │   │   │   │   │   ├── use-upload-file-to-collectivite-library.ts
-│   │   │   │   │   │   ├── useAddFileToLib.ts
-│   │   │   │   │   │   ├── useCollectiviteBucketId.ts
 │   │   │   │   │   │   ├── validate-file.spec.ts
 │   │   │   │   │   │   └── validate-file.ts
 │   │   │   │   │   ├── use-action-preuves-count.ts
@@ -2325,7 +2334,7 @@
 │   │   ├── .swcrc
 │   │   ├── AGENTS.md
 │   │   ├── CLAUDE.md -> AGENTS.md
-│   │   ├── Earthfile
+│   │   ├── Dockerfile
 │   │   ├── QuickstartApi.md
 │   │   ├── README.md
 │   │   ├── eslint.config.mjs
@@ -2384,6 +2393,8 @@
 │   │   │   │   │       └── discussion.schemas.ts
 │   │   │   │   ├── documents
 │   │   │   │   │   ├── collectivite-bucket.repository.ts
+│   │   │   │   │   ├── collectivite-documents-access.service.spec.ts
+│   │   │   │   │   ├── collectivite-documents-access.service.ts
 │   │   │   │   │   ├── create-upload-token
 │   │   │   │   │   │   ├── create-upload-token.errors.ts
 │   │   │   │   │   │   ├── create-upload-token.input.ts
@@ -2393,8 +2404,6 @@
 │   │   │   │   │   │   ├── create-upload-token.router.ts
 │   │   │   │   │   │   ├── create-upload-token.service.spec.ts
 │   │   │   │   │   │   └── create-upload-token.service.ts
-│   │   │   │   │   ├── document.controller.e2e-spec.ts
-│   │   │   │   │   ├── document.controller.ts
 │   │   │   │   │   ├── document.service.ts
 │   │   │   │   │   ├── documents.router.ts
 │   │   │   │   │   ├── documents.test-fixture.ts
@@ -2416,6 +2425,14 @@
 │   │   │   │   │   │   ├── get-download-url.service.spec.ts
 │   │   │   │   │   │   └── get-download-url.service.ts
 │   │   │   │   │   ├── hide-confidentiel.utils.ts
+│   │   │   │   │   ├── list-bibliotheque-documents
+│   │   │   │   │   │   ├── list-bibliotheque-documents.errors.ts
+│   │   │   │   │   │   ├── list-bibliotheque-documents.input.ts
+│   │   │   │   │   │   ├── list-bibliotheque-documents.output.ts
+│   │   │   │   │   │   ├── list-bibliotheque-documents.repository.ts
+│   │   │   │   │   │   ├── list-bibliotheque-documents.router.e2e-spec.ts
+│   │   │   │   │   │   ├── list-bibliotheque-documents.router.ts
+│   │   │   │   │   │   └── list-bibliotheque-documents.service.ts
 │   │   │   │   │   ├── models
 │   │   │   │   │   │   ├── annexe.table.ts
 │   │   │   │   │   │   ├── bibliotheque-fichier.table.ts
@@ -2437,6 +2454,7 @@
 │   │   │   │   │   │   ├── calculate-document-hash.utils.ts
 │   │   │   │   │   │   ├── store-document.errors.ts
 │   │   │   │   │   │   ├── store-document.router.ts
+│   │   │   │   │   │   ├── store-document.service.e2e-spec.ts
 │   │   │   │   │   │   ├── store-document.service.spec.ts
 │   │   │   │   │   │   └── store-document.service.ts
 │   │   │   │   │   └── update-document
@@ -2475,6 +2493,19 @@
 │   │   │   │   │   ├── list-collectivites.router.ts
 │   │   │   │   │   └── list-collectivites.service.ts
 │   │   │   │   ├── membres
+│   │   │   │   │   ├── import-correspondants
+│   │   │   │   │   │   ├── correspondant-csv.schema.ts
+│   │   │   │   │   │   ├── import-correspondants.errors.ts
+│   │   │   │   │   │   ├── import-correspondants.input.ts
+│   │   │   │   │   │   ├── import-correspondants.output.ts
+│   │   │   │   │   │   ├── import-correspondants.router.e2e-spec.ts
+│   │   │   │   │   │   ├── import-correspondants.router.ts
+│   │   │   │   │   │   ├── import-correspondants.service.ts
+│   │   │   │   │   │   ├── invitation-correspondant.email.tsx
+│   │   │   │   │   │   ├── resolve-service.repository.ts
+│   │   │   │   │   │   ├── resolve-service.rules.spec.ts
+│   │   │   │   │   │   ├── resolve-service.rules.ts
+│   │   │   │   │   │   └── send-invitation-correspondant.service.ts
 │   │   │   │   │   ├── invitation.table.ts
 │   │   │   │   │   ├── invite-membre
 │   │   │   │   │   │   ├── send-invitation.email.tsx
@@ -2713,10 +2744,6 @@
 │   │   │   │   │   │   ├── delete-demarche-pcaet.router.ts
 │   │   │   │   │   │   └── delete-demarche-pcaet.service.ts
 │   │   │   │   │   ├── demarches-pcaet.test-fixture.ts
-│   │   │   │   │   ├── depublier-demarche
-│   │   │   │   │   │   ├── depublier-demarche.errors.ts
-│   │   │   │   │   │   ├── depublier-demarche.router.ts
-│   │   │   │   │   │   └── depublier-demarche.service.ts
 │   │   │   │   │   ├── diagnostic
 │   │   │   │   │   │   ├── pcaet-diagnostic.router.ts
 │   │   │   │   │   │   ├── set-diagnostic-reference-year
@@ -2829,20 +2856,25 @@
 │   │   │   │   │   │   ├── list-avis-recus.output.ts
 │   │   │   │   │   │   ├── list-avis-recus.router.ts
 │   │   │   │   │   │   └── list-avis-recus.service.ts
-│   │   │   │   │   ├── list-demandes-avis
-│   │   │   │   │   │   ├── list-demandes-avis.errors.ts
-│   │   │   │   │   │   ├── list-demandes-avis.input.ts
-│   │   │   │   │   │   ├── list-demandes-avis.output.ts
-│   │   │   │   │   │   ├── list-demandes-avis.repository.ts
-│   │   │   │   │   │   ├── list-demandes-avis.router.e2e-spec.ts
-│   │   │   │   │   │   ├── list-demandes-avis.router.ts
-│   │   │   │   │   │   └── list-demandes-avis.service.ts
 │   │   │   │   │   ├── list-demarches-pcaet
 │   │   │   │   │   │   ├── list-demarches-pcaet.errors.ts
 │   │   │   │   │   │   ├── list-demarches-pcaet.input.ts
 │   │   │   │   │   │   ├── list-demarches-pcaet.repository.ts
 │   │   │   │   │   │   ├── list-demarches-pcaet.router.ts
 │   │   │   │   │   │   └── list-demarches-pcaet.service.ts
+│   │   │   │   │   ├── list-dossiers-instruction
+│   │   │   │   │   │   ├── list-dossiers-instruction.adapter.ts
+│   │   │   │   │   │   ├── list-dossiers-instruction.counters.spec.ts
+│   │   │   │   │   │   ├── list-dossiers-instruction.counters.ts
+│   │   │   │   │   │   ├── list-dossiers-instruction.errors.ts
+│   │   │   │   │   │   ├── list-dossiers-instruction.input.ts
+│   │   │   │   │   │   ├── list-dossiers-instruction.output.ts
+│   │   │   │   │   │   ├── list-dossiers-instruction.repository.ts
+│   │   │   │   │   │   ├── list-dossiers-instruction.router.e2e-spec.ts
+│   │   │   │   │   │   ├── list-dossiers-instruction.router.ts
+│   │   │   │   │   │   ├── list-dossiers-instruction.rules.spec.ts
+│   │   │   │   │   │   ├── list-dossiers-instruction.rules.ts
+│   │   │   │   │   │   └── list-dossiers-instruction.service.ts
 │   │   │   │   │   ├── list-plans
 │   │   │   │   │   │   ├── list-plans.errors.ts
 │   │   │   │   │   │   ├── list-plans.input.ts
@@ -2868,6 +2900,7 @@
 │   │   │   │   │   │   ├── set-vulnerabilite-ligne.router.ts
 │   │   │   │   │   │   └── set-vulnerabilite-ligne.service.ts
 │   │   │   │   │   ├── shared
+│   │   │   │   │   │   ├── collectivite-contacts.repository.ts
 │   │   │   │   │   │   ├── demarche-pcaet-access.service.ts
 │   │   │   │   │   │   ├── demarche-pcaet-diagnostic.service.ts
 │   │   │   │   │   │   ├── demarche-pcaet-guards.service.ts
@@ -2895,7 +2928,8 @@
 │   │   │   │   │   │   │   └── pcaet-demande-avis.table.ts
 │   │   │   │   │   │   ├── pcaet-avis.repository.ts
 │   │   │   │   │   │   ├── pcaet-instructeurs.repository.ts
-│   │   │   │   │   │   └── perimetre-instructeur.columns.ts
+│   │   │   │   │   │   ├── perimetre-instructeur.columns.ts
+│   │   │   │   │   │   └── perimetre-instructeur.repository.ts
 │   │   │   │   │   ├── transmettre-pour-avis
 │   │   │   │   │   │   ├── transmettre-pour-avis.errors.ts
 │   │   │   │   │   │   ├── transmettre-pour-avis.router.e2e-spec.ts
@@ -3251,6 +3285,60 @@
 │   │   │   │   │       ├── upsert-axe.router.e2e-spec.ts
 │   │   │   │   │       ├── upsert-axe.router.ts
 │   │   │   │   │       └── upsert-axe.service.ts
+│   │   │   │   ├── classification
+│   │   │   │   │   ├── classification-enjeux.spec.ts
+│   │   │   │   │   ├── classification-enjeux.ts
+│   │   │   │   │   ├── classification-volets-job.repository.ts
+│   │   │   │   │   ├── classification-volets.errors.ts
+│   │   │   │   │   ├── classification-volets.queue.ts
+│   │   │   │   │   ├── classification-volets.trpc-errors.ts
+│   │   │   │   │   ├── classification.module.ts
+│   │   │   │   │   ├── classification.router.e2e-spec.ts
+│   │   │   │   │   ├── classification.router.ts
+│   │   │   │   │   ├── enqueue-classification
+│   │   │   │   │   │   ├── enqueue-classification.input.ts
+│   │   │   │   │   │   ├── enqueue-classification.output.ts
+│   │   │   │   │   │   ├── enqueue-classification.service.ts
+│   │   │   │   │   │   └── enqueue-classification.spec.ts
+│   │   │   │   │   ├── fiche-action-volet-ges.errors.ts
+│   │   │   │   │   ├── fiche-action-volet-ges.repository.e2e-spec.ts
+│   │   │   │   │   ├── fiche-action-volet-ges.repository.ts
+│   │   │   │   │   ├── generate-classification
+│   │   │   │   │   │   ├── generate-classification.service.ts
+│   │   │   │   │   │   ├── generate-classification.spec.ts
+│   │   │   │   │   │   ├── generate-classification.worker.spec.ts
+│   │   │   │   │   │   └── generate-classification.worker.ts
+│   │   │   │   │   ├── get-classification-status
+│   │   │   │   │   │   ├── get-classification-status.adapter.spec.ts
+│   │   │   │   │   │   ├── get-classification-status.adapter.ts
+│   │   │   │   │   │   ├── get-classification-status.input.ts
+│   │   │   │   │   │   ├── get-classification-status.output.ts
+│   │   │   │   │   │   └── get-classification-status.service.ts
+│   │   │   │   │   ├── models
+│   │   │   │   │   │   ├── classification-draft.ts
+│   │   │   │   │   │   ├── classification-volets-job.table.ts
+│   │   │   │   │   │   ├── classification-volets-job.ts
+│   │   │   │   │   │   ├── fiche-action-volet-ges.e2e-spec.ts
+│   │   │   │   │   │   └── fiche-action-volet-ges.table.ts
+│   │   │   │   │   ├── pipeline
+│   │   │   │   │   │   ├── classification-enjeu.ts
+│   │   │   │   │   │   ├── classify-fiches
+│   │   │   │   │   │   │   ├── apply-classification.spec.ts
+│   │   │   │   │   │   │   ├── apply-classification.ts
+│   │   │   │   │   │   │   ├── classify-fiches.prompt.spec.ts
+│   │   │   │   │   │   │   ├── classify-fiches.prompt.ts
+│   │   │   │   │   │   │   ├── classify-fiches.schema.spec.ts
+│   │   │   │   │   │   │   ├── classify-fiches.schema.ts
+│   │   │   │   │   │   │   ├── classify-fiches.spec.ts
+│   │   │   │   │   │   │   ├── classify-fiches.ts
+│   │   │   │   │   │   │   ├── render-fiches-text.spec.ts
+│   │   │   │   │   │   │   └── render-fiches-text.ts
+│   │   │   │   │   │   ├── run-classification.spec.ts
+│   │   │   │   │   │   └── run-classification.ts
+│   │   │   │   │   └── prompts
+│   │   │   │   │       ├── classification.prompt.ts
+│   │   │   │   │       ├── levier-definitions.ts
+│   │   │   │   │       └── leviers-text.ts
 │   │   │   │   ├── fiches
 │   │   │   │   │   ├── add-annexe
 │   │   │   │   │   │   ├── add-annexe.errors.ts
@@ -3566,57 +3654,6 @@
 │   │   │   │   │       └── upsert-plan.service.ts
 │   │   │   │   ├── plans-main.module.ts
 │   │   │   │   ├── plans-main.router.ts
-│   │   │   │   ├── priorisation
-│   │   │   │   │   ├── classification-leviers-job.repository.ts
-│   │   │   │   │   ├── classification-leviers.errors.ts
-│   │   │   │   │   ├── classification-leviers.queue.ts
-│   │   │   │   │   ├── classification-leviers.trpc-errors.ts
-│   │   │   │   │   ├── enqueue-classification
-│   │   │   │   │   │   ├── enqueue-classification.input.ts
-│   │   │   │   │   │   ├── enqueue-classification.output.ts
-│   │   │   │   │   │   ├── enqueue-classification.service.ts
-│   │   │   │   │   │   └── enqueue-classification.spec.ts
-│   │   │   │   │   ├── fiche-leviers.errors.ts
-│   │   │   │   │   ├── fiche-leviers.repository.e2e-spec.ts
-│   │   │   │   │   ├── fiche-leviers.repository.ts
-│   │   │   │   │   ├── generate-classification
-│   │   │   │   │   │   ├── generate-classification.service.ts
-│   │   │   │   │   │   ├── generate-classification.spec.ts
-│   │   │   │   │   │   ├── generate-classification.worker.spec.ts
-│   │   │   │   │   │   └── generate-classification.worker.ts
-│   │   │   │   │   ├── get-classification-status
-│   │   │   │   │   │   ├── get-classification-status.adapter.spec.ts
-│   │   │   │   │   │   ├── get-classification-status.adapter.ts
-│   │   │   │   │   │   ├── get-classification-status.input.ts
-│   │   │   │   │   │   ├── get-classification-status.output.ts
-│   │   │   │   │   │   └── get-classification-status.service.ts
-│   │   │   │   │   ├── models
-│   │   │   │   │   │   ├── classification-draft.ts
-│   │   │   │   │   │   ├── classification-leviers-job.table.ts
-│   │   │   │   │   │   ├── classification-leviers-job.ts
-│   │   │   │   │   │   ├── fiche-action-levier.e2e-spec.ts
-│   │   │   │   │   │   └── fiche-action-levier.table.ts
-│   │   │   │   │   ├── pipeline
-│   │   │   │   │   │   ├── classify-fiches
-│   │   │   │   │   │   │   ├── apply-classification.spec.ts
-│   │   │   │   │   │   │   ├── apply-classification.ts
-│   │   │   │   │   │   │   ├── classify-fiches.prompt.spec.ts
-│   │   │   │   │   │   │   ├── classify-fiches.prompt.ts
-│   │   │   │   │   │   │   ├── classify-fiches.schema.spec.ts
-│   │   │   │   │   │   │   ├── classify-fiches.schema.ts
-│   │   │   │   │   │   │   ├── classify-fiches.spec.ts
-│   │   │   │   │   │   │   ├── classify-fiches.ts
-│   │   │   │   │   │   │   ├── render-fiches-text.spec.ts
-│   │   │   │   │   │   │   └── render-fiches-text.ts
-│   │   │   │   │   │   ├── run-classification.spec.ts
-│   │   │   │   │   │   └── run-classification.ts
-│   │   │   │   │   ├── priorisation.module.ts
-│   │   │   │   │   ├── priorisation.router.e2e-spec.ts
-│   │   │   │   │   ├── priorisation.router.ts
-│   │   │   │   │   └── prompts
-│   │   │   │   │       ├── classification.prompt.ts
-│   │   │   │   │       ├── levier-definitions.ts
-│   │   │   │   │       └── leviers-text.ts
 │   │   │   │   ├── reports
 │   │   │   │   │   ├── generate-plan-report-pptx
 │   │   │   │   │   │   ├── docs
@@ -3909,16 +3946,6 @@
 │   │   │   │   │       ├── simple-referentiel-scoring.sample.ts
 │   │   │   │   │       └── simple-referentiel.ts
 │   │   │   │   ├── preuves-archive
-│   │   │   │   │   ├── build-archive
-│   │   │   │   │   │   ├── build-archive-manifests.spec.ts
-│   │   │   │   │   │   ├── build-archive-manifests.ts
-│   │   │   │   │   │   ├── build-archive-path.spec.ts
-│   │   │   │   │   │   ├── build-archive-path.ts
-│   │   │   │   │   │   ├── build-archive.service.ts
-│   │   │   │   │   │   ├── build-liens-csv.spec.ts
-│   │   │   │   │   │   ├── build-liens-csv.ts
-│   │   │   │   │   │   ├── prepare-archive-entries.spec.ts
-│   │   │   │   │   │   └── prepare-archive-entries.ts
 │   │   │   │   │   ├── collect-audit-preuves
 │   │   │   │   │   │   ├── collect-audit-preuves.service.spec.ts
 │   │   │   │   │   │   ├── collect-audit-preuves.service.ts
@@ -4240,6 +4267,23 @@
 │   │   │       ├── api
 │   │   │       │   ├── api-usage-type.enum.ts
 │   │   │       │   └── api-usage.decorator.ts
+│   │   │       ├── archive
+│   │   │       │   ├── archive-arborescence.types.ts
+│   │   │       │   ├── archive-assembly.errors.ts
+│   │   │       │   ├── archive-assembly.service.spec.ts
+│   │   │       │   ├── archive-assembly.service.ts
+│   │   │       │   ├── build-archive-manifests.utils.spec.ts
+│   │   │       │   ├── build-archive-manifests.utils.ts
+│   │   │       │   ├── build-archive-path.utils.spec.ts
+│   │   │       │   ├── build-archive-path.utils.ts
+│   │   │       │   ├── build-links-csv.utils.spec.ts
+│   │   │       │   ├── build-links-csv.utils.ts
+│   │   │       │   ├── check-archive-limits.utils.spec.ts
+│   │   │       │   ├── check-archive-limits.utils.ts
+│   │   │       │   ├── prepare-archive-entries.utils.spec.ts
+│   │   │       │   ├── prepare-archive-entries.utils.ts
+│   │   │       │   ├── triage-archive-files.utils.spec.ts
+│   │   │       │   └── triage-archive-files.utils.ts
 │   │   │       ├── banner
 │   │   │       │   ├── banner-info.table.ts
 │   │   │       │   ├── banner.errors.ts
@@ -4270,6 +4314,8 @@
 │   │   │       │   ├── database-service.interface.ts
 │   │   │       │   ├── database.module.ts
 │   │   │       │   ├── database.service.ts
+│   │   │       │   ├── like-pattern.utils.spec.ts
+│   │   │       │   ├── like-pattern.utils.ts
 │   │   │       │   ├── supabase.service.ts
 │   │   │       │   └── transaction.utils.ts
 │   │   │       ├── drizzle.utils.ts
@@ -4427,7 +4473,7 @@
 │   │   └── vitest.config.mts
 │   ├── panier
 │   │   ├── .env
-│   │   ├── Earthfile
+│   │   ├── Dockerfile
 │   │   ├── README.md
 │   │   ├── app
 │   │   │   ├── global.css
@@ -4525,7 +4571,7 @@
 │   │   └── tsconfig.json
 │   ├── site
 │   │   ├── .env
-│   │   ├── Earthfile
+│   │   ├── Dockerfile
 │   │   ├── README.md
 │   │   ├── app
 │   │   │   ├── accessibilite
@@ -5005,7 +5051,7 @@
 │   │   └── tsconfig.json
 │   └── tools
 │       ├── .env
-│       ├── Earthfile
+│       ├── Dockerfile
 │       ├── eslint.config.mjs
 │       ├── nest-cli.json
 │       ├── package.json
@@ -5110,10 +5156,16 @@
 │       │   │   │       ├── index.ts
 │       │   │   │       ├── utils.test.ts
 │       │   │   │       └── utils.ts
+│       │   │   ├── import-correspondants-service-etat
+│       │   │   │   ├── README.md
+│       │   │   │   └── index.ts
 │       │   │   ├── import-statut-emt.ts
 │       │   │   ├── ingest-instance-gouvernance-migration-output.ts
 │       │   │   ├── migrate-instance-gouvernance-to-tags.ts
-│       │   │   └── migrate-notes-complementaires.ts
+│       │   │   ├── migrate-notes-complementaires.ts
+│       │   │   └── rattraper-saisines-pcaet
+│       │   │       ├── README.md
+│       │   │       └── index.ts
 │       │   ├── notion
 │       │   │   ├── notion-bug-creator
 │       │   │   │   ├── notion-bug-creator.service.spec.ts
@@ -5238,7 +5290,6 @@
 │   │   │       ├── conseil-regional.csv
 │   │   │       ├── ddt.csv
 │   │   │       ├── dr-ademe.csv
-│   │   │       ├── dreal-contacts.csv
 │   │   │       ├── dreal.csv
 │   │   │       └── service-national.csv
 │   │   ├── test
@@ -5338,6 +5389,7 @@
 │   │   │   │   ├── remove_supprimer_commentaire_via_table_trigger.sql
 │   │   │   │   ├── rename_commentaire_to_discussion.sql
 │   │   │   │   ├── rls.sql
+│   │   │   │   ├── service_etat_acces_restreint.sql
 │   │   │   │   ├── service_etat_import.sql
 │   │   │   │   ├── structure_sans_statut_juridique_unique_nom.sql
 │   │   │   │   ├── tableau_de_bord.sql
@@ -5403,6 +5455,7 @@
 │   │   │   ├── demarches
 │   │   │   │   ├── pcaet_avis.sql
 │   │   │   │   ├── pcaet_avis_president_region.sql
+│   │   │   │   ├── pcaet_avis_un_titre_par_emetteur.sql
 │   │   │   │   ├── pcaet_destinataires_dr_ademe_service_national.sql
 │   │   │   │   ├── pcaet_instructeurs_region_ddt.sql
 │   │   │   │   ├── pcaet_instruction_validation.sql
@@ -5587,6 +5640,8 @@
 │   │   │   │   ├── budget.sql
 │   │   │   │   ├── budget@v4.50.0.sql
 │   │   │   │   ├── classification_leviers_job.sql
+│   │   │   │   ├── classification_volets.sql
+│   │   │   │   ├── classification_volets_enjeu.sql
 │   │   │   │   ├── confidentialite.sql
 │   │   │   │   ├── drop_create_fiche.sql
 │   │   │   │   ├── drop_plan_action_chemin_view.sql
@@ -5801,7 +5856,7 @@
 │   │   │   │   ├── dcp@v2.2.2.sql
 │   │   │   │   ├── dcp@v2.28.0.sql
 │   │   │   │   ├── dcp@v2.60.0.sql
-│   │   │   │   ├── dcp_*.sql  (5 files)
+│   │   │   │   ├── dcp_*.sql  (6 files)
 │   │   │   │   ├── droits.sql
 │   │   │   │   ├── droits_*.sql  (9 files)
 │   │   │   │   ├── drop_claim_collectivite.sql
@@ -5926,6 +5981,7 @@
 │   │   │   │   ├── remove_supprimer_commentaire_via_table_trigger.sql
 │   │   │   │   ├── rename_commentaire_to_discussion.sql
 │   │   │   │   ├── rls.sql
+│   │   │   │   ├── service_etat_acces_restreint.sql
 │   │   │   │   ├── service_etat_import.sql
 │   │   │   │   ├── structure_sans_statut_juridique_unique_nom.sql
 │   │   │   │   ├── tableau_de_bord.sql
@@ -5991,6 +6047,7 @@
 │   │   │   ├── demarches
 │   │   │   │   ├── pcaet_avis.sql
 │   │   │   │   ├── pcaet_avis_president_region.sql
+│   │   │   │   ├── pcaet_avis_un_titre_par_emetteur.sql
 │   │   │   │   ├── pcaet_destinataires_dr_ademe_service_national.sql
 │   │   │   │   ├── pcaet_instructeurs_region_ddt.sql
 │   │   │   │   ├── pcaet_instruction_validation.sql
@@ -6175,6 +6232,8 @@
 │   │   │   │   ├── budget.sql
 │   │   │   │   ├── budget@v4.50.0.sql
 │   │   │   │   ├── classification_leviers_job.sql
+│   │   │   │   ├── classification_volets.sql
+│   │   │   │   ├── classification_volets_enjeu.sql
 │   │   │   │   ├── confidentialite.sql
 │   │   │   │   ├── drop_create_fiche.sql
 │   │   │   │   ├── drop_plan_action_chemin_view.sql
@@ -6389,7 +6448,7 @@
 │   │   │   │   ├── dcp@v2.2.2.sql
 │   │   │   │   ├── dcp@v2.28.0.sql
 │   │   │   │   ├── dcp@v2.60.0.sql
-│   │   │   │   ├── dcp_*.sql  (5 files)
+│   │   │   │   ├── dcp_*.sql  (6 files)
 │   │   │   │   ├── droits.sql
 │   │   │   │   ├── droits_*.sql  (9 files)
 │   │   │   │   ├── drop_claim_collectivite.sql
@@ -6514,6 +6573,7 @@
 │   │       │   ├── remove_supprimer_commentaire_via_table_tigger.sql
 │   │       │   ├── rename_commentaire_to_discussion.sql
 │   │       │   ├── rls.sql
+│   │       │   ├── service_etat_acces_restreint.sql
 │   │       │   ├── service_etat_import.sql
 │   │       │   ├── structure_sans_statut_juridique_unique_nom.sql
 │   │       │   ├── tableau_de_bord.sql
@@ -6579,6 +6639,7 @@
 │   │       ├── demarches
 │   │       │   ├── pcaet_avis.sql
 │   │       │   ├── pcaet_avis_president_region.sql
+│   │       │   ├── pcaet_avis_un_titre_par_emetteur.sql
 │   │       │   ├── pcaet_destinataires_dr_ademe_service_national.sql
 │   │       │   ├── pcaet_instructeurs_region_ddt.sql
 │   │       │   ├── pcaet_instruction_validation.sql
@@ -6763,6 +6824,8 @@
 │   │       │   ├── budget.sql
 │   │       │   ├── budget@v4.50.0.sql
 │   │       │   ├── classification_leviers_job.sql
+│   │       │   ├── classification_volets.sql
+│   │       │   ├── classification_volets_enjeu.sql
 │   │       │   ├── confidentialite.sql
 │   │       │   ├── drop_create_fiche.sql
 │   │       │   ├── drop_plan_action_chemin_view.sql
@@ -6977,7 +7040,7 @@
 │   │       │   ├── dcp@v2.2.2.sql
 │   │       │   ├── dcp@v2.28.0.sql
 │   │       │   ├── dcp@v2.60.0.sql
-│   │       │   ├── dcp_*.sql  (5 files)
+│   │       │   ├── dcp_*.sql  (6 files)
 │   │       │   ├── droits.sql
 │   │       │   ├── droits_*.sql  (9 files)
 │   │       │   ├── drop_claim_collectivite.sql
@@ -7110,7 +7173,8 @@
 │   │   ├── 0014-notifications-email.md
 │   │   ├── 0015-generation-pptx.md
 │   │   ├── 0016-strategie-backup-database.md
-│   │   └── 0017-optimisation-ci-par-scope-affecte-et-parallelisation-ciblee.md
+│   │   ├── 0017-optimisation-ci-par-scope-affecte-et-parallelisation-ciblee.md
+│   │   └── 0018-periodicite-des-indicateurs.md
 │   ├── plans
 │   │   ├── 2026-04-08-001-refactor-e2e-tests-parallel-isolation-plan.md
 │   │   ├── 2026-04-28-001-feat-restore-staging-preprod-with-scrubbing-plan.md
@@ -7168,6 +7232,7 @@
 │   │   │   │   ├── discussions.spec.ts
 │   │   │   │   └── filter-discussions.pom.ts
 │   │   │   ├── documents
+│   │   │   │   ├── depot-par-jeton-signe.spec.ts
 │   │   │   │   ├── documents.pom.ts
 │   │   │   │   └── preuve-storage-access.spec.ts
 │   │   │   ├── membres
@@ -7190,6 +7255,7 @@
 │   │   │       ├── demarche-pcaet-workflow.spec.ts
 │   │   │       ├── demarche-pcaet.pom.ts
 │   │   │       ├── instruction-contexte.spec.ts
+│   │   │       ├── instruction-liste.spec.ts
 │   │   │       └── instruction.pom.ts
 │   │   ├── indicateurs
 │   │   │   ├── export-indicateurs
@@ -7312,7 +7378,6 @@
 ├── eslint-frontend.config.mjs
 ├── eslint-nextjs.config.mjs
 ├── eslint.config.mjs
-├── make_dot_env.sh
 ├── nx.json
 ├── package.json
 ├── packages
@@ -7498,8 +7563,9 @@
 │   │   │   │       │   ├── demarche-pcaet-topic-kind.enum.schema.ts
 │   │   │   │       │   ├── demarche-pcaet-vulnerabilite-niveau.enum.schema.ts
 │   │   │   │       │   └── demarche-pcaet-vulnerabilite.schema.ts
+│   │   │   │       ├── pcaet-assujettissement.rules.spec.ts
+│   │   │   │       ├── pcaet-assujettissement.rules.ts
 │   │   │   │       ├── pcaet-avis-au-titre-de.enum.schema.ts
-│   │   │   │       ├── pcaet-avis-sens.enum.schema.ts
 │   │   │   │       ├── pcaet-demande-avis-etat.rules.spec.ts
 │   │   │   │       ├── pcaet-demande-avis-etat.rules.ts
 │   │   │   │       ├── pcaet-depot-permissions.rules.spec.ts
@@ -7508,6 +7574,8 @@
 │   │   │   │       ├── pcaet-instructeur.rules.ts
 │   │   │   │       ├── pcaet-instruction-partie.enum.schema.ts
 │   │   │   │       ├── pcaet-perimetre-saisine.enum.schema.ts
+│   │   │   │       ├── pcaet-statut-instruction.rules.spec.ts
+│   │   │   │       ├── pcaet-statut-instruction.rules.ts
 │   │   │   │       └── workflow
 │   │   │   │           ├── demarche-pcaet-state.spec.ts
 │   │   │   │           ├── demarche-pcaet-state.ts
@@ -7692,6 +7760,7 @@
 │   │   │   │   ├── categorie-fnv.schema.ts
 │   │   │   │   ├── departement.schema.ts
 │   │   │   │   ├── effet-attendu.schema.ts
+│   │   │   │   ├── enjeu.enum.ts
 │   │   │   │   ├── filtre-ressource-liees.schema.ts
 │   │   │   │   ├── id-name.schema.ts
 │   │   │   │   ├── index.ts
@@ -8483,7 +8552,6 @@
 │       └── generated
 │           ├── components.d.ts
 │           └── contentTypes.d.ts
-├── subdirs_hash.sh
 ├── supabase
 │   ├── .gitignore
 │   ├── config.toml
@@ -8530,4 +8598,4 @@
 ├── tsconfig.json
 ├── vitest.config.ts
 └── vitest.workspace.ts
-1418 directories, 7389 files
+1427 directories, 7451 files

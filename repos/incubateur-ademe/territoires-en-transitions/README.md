@@ -147,8 +147,6 @@ make env-set k=SMTP_KEY v=<valeur> app=backend     # idem, forme longue k=/v=
 make env-get k=SMTP_KEY app=backend                # lire la valeur déchiffrée d'une clé
 ```
 
-Le script [`make_dot_env.sh`](./make_dot_env.sh) (génération des `.env` depuis les `.env.sample`) n'est plus nécessaire en local — il reste utilisé par la CI.
-
 ### Connexion SSO (ProConnect / MonCompteAdeme)
 
 Le backend joue le rôle de _relying party_ OIDC : il porte tout le protocole (login, callback, logout) sous `/api/v1/:provider/*`, puis ponte vers une session Supabase standard (le `client_secret` ne quitte jamais le serveur). Deux providers sont supportés, **activables indépendamment** :
@@ -273,7 +271,7 @@ make db-reset
 
 Celle-ci supprime le volume docker de la base puis relance `make db-init`.
 
-> ℹ️ L'ancien workflow basé sur [act](https://nektosact.com/) (`act -j db-init`…) reste documenté dans le [README de la CI](./.github/README.md) — la CI continue de fonctionner ainsi.
+> ℹ️ L'ancien workflow basé sur [act](https://nektosact.com/) (`act -j prepare-dev-db`…) reste documenté dans le [README de la CI](./.github/README.md) — la CI continue de fonctionner ainsi.
 
 ### Lint et hook de pre-commit
 
@@ -309,18 +307,13 @@ Les tests de bout en bout (Playwright) sont à part : ils se jouent contre la st
 pnpm exec playwright test --config ./e2e/playwright.config.mjs
 ```
 
-Pour exécuter les tests en conteneurs, on peut aussi utiliser `earthly` :
+Les tests pgTAP de [`data_layer/tests`](./data_layer/tests) n'ont pas d'équivalent Nx. En local, après avoir démarré la stack et installé `pg_prove` (voir [`data_layer/README.md`](./data_layer/README.md)) :
 
 ```shell
-# Lance le projet suivi de tout les tests.
-earthly +dev
-
-# Lance les tests indépendamment
-earthly --push +db-test
-earthly --push +app-test
-earthly --push +api-test
-earthly --push +deploy-test
+cd data_layer/scripts && sh run_tests.sh
 ```
+
+L'aller-retour deploy/revert/verify des migrations sqitch est couvert en CI par le workflow [`test-db-deploy.yml`](./.github/workflows/test-db-deploy.yml).
 
 ## Déploiement
 
