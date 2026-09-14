@@ -1,16 +1,18 @@
 {
   "url": "https://github.com/suitenumerique/drive",
   "name": "drive",
-  "description": "Plateforme open-source de partage de fichiers collaboratif permettant le stockage sécurisé, l'édition de documents et une gestion granulaire des accès.",
+  "description": "Une plateforme open-source de partage de fichiers collaboratif permettant le stockage, l'édition et la gestion granulaire des accès.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
     "Authentification & Accès",
-    "Sécurité & Conformité",
+    "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
+    "Sécurité & Conformité",
     "Infrastructure & Stockage",
-    "Collaboration & Workflow"
+    "Collaboration & Workflow",
+    "Gestion des médias & Assets"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -18,15 +20,16 @@
     "Next.js",
     "Kubernetes",
     "Docker",
-    "Collabora",
-    "OnlyOffice",
-    "Sentry",
     "Playwright",
     "JMeter",
-    "Keycloak"
+    "Sentry",
+    "PostHog",
+    "Collabora",
+    "OnlyOffice"
   ],
   "components": [
     "API REST & GraphQL",
+    "PostgreSQL & SQL",
     "React / Next.js",
     "TypeScript / JavaScript",
     "Python (scripts & backend)",
@@ -40,34 +43,31 @@
     "methods": [
       "oauth2",
       "jwt",
+      "session",
       "sso"
     ],
     "providers": [
-      "Keycloak"
+      "ProConnect"
     ]
   },
-  "tests": [
-    "Playwright",
-    "JMeter",
-    "Jest"
-  ],
+  "tests": "Playwright (E2E), JMeter (Load testing)",
   "workflows": [
     "Docker Hub workflow",
-    "Crowdin workflows"
+    "CI/CD"
   ],
   "lastActivity": "2026-09-11T10:35:22+02:00",
-  "status": "active",
+  "status": "maintained",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
-    "Données & Open Data",
     "Écosystème beta.gouv / État",
     "React & Next.js",
     "TypeScript",
     "Python",
+    "Bases de données SQL",
+    "Sécurité & Auth",
     "Docker & Conteneurs",
     "CI/CD & GitHub Actions",
-    "Sécurité & Auth",
     "Self-hosting & Infrastructure réseau"
   ]
 }
