@@ -1,23 +1,43 @@
-## Changelog : les-emplois (30 derniers jours, au 10 septembre 2026)
+## Changelog : les-emplois (30 derniers jours, au 11 septembre 2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a considérablement renforcé ses outils de gestion des parcours. Les évolutions majeures concernent la refonte de la gestion des accompagnements (création, modification, archivage) et l'internalisation de la clôture des dossiers PASS IAE, qui ne dépendent plus d'outils tiers. L'expérience utilisateur est également enrichie par un meilleur suivi de la fin des contrats et une identité visuelle affinée.
+Ce mois-ci, le projet a franchi des étapes importantes dans la gestion des parcours d'accompagnement, notamment avec l'ajout de fonctionnalités de création, d'édition et d'archivage des missions. L'interface a été largement modernisée et réorganisée pour mieux servir les différents acteurs (GEIQ, OPCS, employeurs), tandis que les outils de pilotage (Metabase) ont été enrichis pour offrir une meilleure visibilité sur les données.
 
 ### Évolutions fonctionnelles
-- **Gestion des accompagnements** : Mise en place de nouvelles fonctionnalités pour créer, modifier et archiver les dossiers d'accompagnement. Un nouvel onglet "Conseillers" et des boîtes de revue ont été ajoutés pour améliorer le suivi des candidats.
-- **Clôture des PASS IAE** : Les employeurs peuvent désormais clôturer un dossier PASS IAE via un formulaire interne (remplaçant l'usage de Tally), avec une notification automatique envoyée au candidat.
-- **Suivi de fin de parcours** : Ajout de bannières d'alerte et de compteurs pour signaler la fin prochaine d'un contrat ou d'un parcours, incluant des suggestions de prochaines étapes pour les candidats.
-- **Recherche et filtrage** : Évolution de la recherche "prescripteur" vers une recherche par "accompagnement" et ajout de nouveaux filtres (Handicap, GEIQ, OPCS).
-- **Interface et Branding** : Mise à jour de la terminologie et de l'identité visuelle de l'application pour une meilleure cohérence.
-- **Alertes** : Ajout de bannières pour annoncer des webinaires thématiques sur le tableau de bord.
+- **Gestion des accompagnements :**
+    - Mise en place d'un cycle de vie complet pour les missions (création, modification, archivage et gestion des fins de contrat).
+    - Ajout de nouveaux filtres pour faciliter la recherche (fin de parcours, fin de contrat, membres de l'organisation).
+    - Création d'onglets dédiés pour les conseillers et amélioration de l'affichage des informations de contact.
+- **Nouveaux acteurs et périmètres :**
+    - Intégration de fonctionnalités spécifiques pour les GEIQ et les OPCS (affichage des missions et filtres dédiés).
+    - Ajout de nouveaux éléments de navigation pour les organisations accréditées.
+- **Expérience utilisateur et Interface :**
+    - Réorganisation complète des menus de navigation et de la structure de l'interface.
+    - Mise à jour de l'identité visuelle (branding) et harmonisation des libellés.
+    - Ajout de nouveaux éléments au tableau de bord (cartes "Mon Récap", alertes thématiques, compteurs de fin de contrat).
+- **Processus métier et Administration :**
+    - Amélioration de la gestion des orientations (utilisation de liens magiques, gestion des pièces jointes et des erreurs).
+    - Optimisation du processus de clôture des PASS IAE (formulaires internes, notifications aux candidats).
+    - Ajout de la géolocalisation des structures dans l'annuaire professionnel (interface admin).
+- **Pilotage et Statistiques :**
+    - Enrichissement des tableaux de bord Metabase avec de nouvelles métriques (délais de transition, données GEIQ, identifiants uniques).
 
 ### Évolutions techniques
-- **Automatisation (Cron)** : Introduction de nouveaux processus automatiques pour l'archivage des anciens accompagnements et la détection de fichiers manquants dans les dossiers.
-- **Modèle de données** : Enrichissement du modèle d'accompagnement (nouveaux champs `is_active`, `last_action_at`) et création de nouvelles tables pour le suivi des évaluations GEIQ.
-- **API et Sécurité** : Mise à jour des périmètres d'accès (scopes) des API et ajout d'un cookie d'identifiant de navigateur pour améliorer la traçabilité des journaux d'audit.
-- **Performance** : Optimisation de la vitesse de migration des CV vers le mode privé.
-- **Tests** : Amélioration significative de la couverture de tests, notamment via la création de nouvelles usines de données (factories) pour les professionnels et les accompagnements.
+- **Architecture et Backend :**
+    - Refactorisation de la logique métier (approbations, règles IAE, recommandations) pour plus de modularité.
+    - Automatisation de tâches via des jobs cron (archivage des missions, détection de fichiers manquants).
+    - Optimisation des performances (réduction des appels en templates, accélération des tâches de migration).
+    - Amélioration de la gestion des données (horodatages automatiques, verrouillage des enregistrements pour les réponses ASP).
+- **Sécurité et Accès :**
+    - Généralisation de l'authentification via ProConnect pour les professionnels et les institutions.
+    - Renforcement de la sécurité des API (ajout de nouveaux scopes pour les endpoints h2a et RQTH).
+    - Amélioration de la traçabilité via l'ajout d'un identifiant de navigateur dans les logs d'audit.
+- **Qualité logicielle :**
+    - Refonte importante de la suite de tests (utilisation de factories, paramétrage des tests).
+    - Amélioration de la robustesse des tests de rendu et de typographie.
 
 ### Autres changements
-- **Documentation** : Mise à jour des instructions d'installation locale et correction des liens de la documentation.
-- **Qualité du code** : Nettoyage massif de la typographie et des espaces dans les templates pour assurer une présentation visuelle homogène.
+- **Documentation :** Amélioration des instructions de configuration pour l'environnement de développement local.
+- **Maintenance et Nettoyage :**
+    - Nettoyage intensif des templates (correction des espacements, de la typographie et des caractères spéciaux).
+    - Suppression de modules et d'applications obsolètes (GPS, recommandations).

@@ -590,6 +590,7 @@
 │   │   │   ├── 0011_orientation_dora_status_updated_at.py
 │   │   │   ├── 0012_alter_orientation_status_orientationtransitionlog.py
 │   │   │   ├── 0013_orientation_documents.py
+│   │   │   ├── 0014_orientationprocesslink.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── opening_hours.py
@@ -1043,6 +1044,8 @@
 │   │   │   │   └── mailjet_status.html
 │   │   │   ├── employee_records
 │   │   │   │   └── employeerecord_change_form.html
+│   │   │   ├── insertion
+│   │   │   │   └── change_orientation_form.html
 │   │   │   ├── job_applications
 │   │   │   │   └── jobapplication_change_form.html
 │   │   │   ├── prescribers
@@ -1537,6 +1540,8 @@
 │   │   │   │   ├── orientation_disclaimer_alert.html
 │   │   │   │   ├── orientation_external_link_button.html
 │   │   │   │   ├── orientation_service_info.html
+│   │   │   │   ├── orientation_sidebar_for_sender.html
+│   │   │   │   ├── orientation_sidebar_for_service_provider.html
 │   │   │   │   ├── orientation_wizard_form_buttons.html
 │   │   │   │   ├── orientation_wizard_stepper.html
 │   │   │   │   ├── orientations
@@ -1578,8 +1583,7 @@
 │   │   │   ├── includes
 │   │   │   │   └── pending_invitations.html
 │   │   │   ├── invitation_errors.html
-│   │   │   ├── new_pro_connect_user.html
-│   │   │   └── new_user.html
+│   │   │   └── new_pro_connect_user.html
 │   │   ├── itou_staff_views
 │   │   │   ├── export_job_applications_unknown_to_ft.html
 │   │   │   ├── import_aci_convergence_phc.html
@@ -1612,12 +1616,14 @@
 │   │   │   │   ├── end_of_contracts_banner.html
 │   │   │   │   ├── job_seekers_filters
 │   │   │   │   │   ├── approval_state.html
+│   │   │   │   │   ├── assignments.html
 │   │   │   │   │   ├── end_of_journey.html
 │   │   │   │   │   ├── offcanvas.html
 │   │   │   │   │   ├── offcanvas_body.html
 │   │   │   │   │   ├── offcanvas_footer.html
 │   │   │   │   │   ├── organization_members.html
 │   │   │   │   │   ├── single_checkbox.html
+│   │   │   │   │   ├── single_radiobutton.html
 │   │   │   │   │   └── top_filters.html
 │   │   │   │   ├── last_advisor.html
 │   │   │   │   ├── list_counter.html
@@ -2505,6 +2511,7 @@
     │   │       ├── reference-data.json
     │   │       └── services.json
     │   ├── factories.py
+    │   ├── test_admin.py
     │   ├── test_import_emplois_orientations.py
     │   ├── test_import_structures_and_services.py
     │   ├── test_models.py
@@ -2999,4 +3006,4 @@
         └── welcoming_tour
             ├── __init__.py
             └── tests.py
-496 directories, 2505 files
+497 directories, 2511 files
