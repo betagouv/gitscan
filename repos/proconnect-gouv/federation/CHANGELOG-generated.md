@@ -1,28 +1,27 @@
-## Changelog : federation (30 derniers jours, au 28 août 2026)
+## Changelog : federation (30 derniers jours, au 2026-09-11)
 
 ### Résumé
-Ce mois-ci, la plateforme a bénéficié d'importantes améliorations de sécurité, notamment sur la gestion des codes de vérification (OTP) et la robustesse des sessions MFA. Les processus d'authentification ont été affinés pour être plus fluides, tandis que l'infrastructure technique a été optimisée pour faciliter le déploiement et la maintenance.
+Les récentes évolutions renforcent la fiabilité de la plateforme face aux indisponibilités de services tiers (API Entreprise, SIRENE) grâce à l'ajout de mécanismes de secours et d'une meilleure gestion des erreurs. Le projet a également bénéficié d'un nettoyage technique important et d'une optimisation de l'environnement de développement.
 
 ### Évolutions fonctionnelles
-- **Amélioration de la gestion des codes OTP** : mise en place de modèles d'e-mails dédiés, raccourcissement de la longueur des codes et clarification des objets d'e-mails pour une meilleure expérience utilisateur ([#1477](https://github.com/proconnect-gouv/federation/issues/1477), [#1482](https://github.com/proconnect-gouv/federation/issues/1482)).
-- **Optimisation de la vérification d'e-mail** : le renvoi d'e-mail de vérification ne se fait désormais que sur demande explicite ([#1458](https://github.com/proconnect-gouv/federation/issues/1458)) et un seul jeton de vérification est autorisé par utilisateur ([#1446](https://github.com/proconnect-gouv/federation/issues/1446)).
-- **Améliorations de l'interface et de la clarté** : 
-    - Renommage de "Fournisseur de données" en "Serveur de ressources" pour une terminologie plus précise ([#1484](https://github.com/proconnect-gouv/federation/issues/1484)).
-    - Correction d'un problème de navigation bloquant le bouton "retour" suite à des restrictions de sécurité CSP ([#1544](https://github.com/proconnect-gouv/federation/issues/1544)).
-    - Correction du calcul du compte à rebours d'expiration ([#1528](https://github.com/proconnect-gouv/federation/issues/1528)).
-- **Administration** : les domaines d'e-mails sont désormais bloqués par défaut lors de la création d'un fournisseur d'identité (IdP) dans l'interface d'administration ([#1476](https://github.com/proconnect-gouv/federation/issues/1476)).
+- **Résilience accrue** : mise en place d'un système de secours (fallback) utilisant des données en cache lorsque l'API Entreprise est indisponible [#1549](https://github.com/proconnect-gouv/federation/issues/1549).
+- **Amélioration de l'expérience utilisateur** : les erreurs liées aux services externes (SIRENE, Grist) sont désormais mieux exposées et gérées pour informer l'utilisateur [#1577](https://github.com/proconnect-gouv/federation/issues/1577).
+- **Corrections de bugs** : 
+    - Résolution d'un problème de navigation (bouton retour) causé par les restrictions de sécurité CSP [#1544](https://github.com/proconnect-gouv/federation/issues/1544).
+    - Correction du calcul du compte à rebours pour les emails [#1528](https://github.com/proconnect-gouv/federation/issues/1528).
 
 ### Évolutions techniques
-- **Sécurité et Protocoles** : 
-    - Réutilisation des sessions MFA lorsque les exigences d'authentification sont satisfaites ([#1450](https://github.com/proconnect-gouv/federation/issues/1450)).
-    - Simplification des serveurs de ressources par la suppression de l'encryption et de l'URL JWKS ([#1487](https://github.com/proconnect-gouv/federation/issues/1487)).
-- **Gestion des erreurs** : migration vers un système de filtres d'exceptions NestJS standardisé et nettoyage des préfixes de messages d'erreur pour plus de clarté ([#1438](https://github.com/proconnect-gouv/federation/issues/1438), [#1545](https://github.com/proconnect-gouv/federation/issues/1545)).
-- **Infrastructure et CI/CD** : 
-    - Optimisation des Dockerfiles (build multi-étapes) et intégration des assets/CSS dans l'image du backend ([#1452](https://github.com/proconnect-gouv/federation/issues/1452), [#1529](https://github.com/proconnect-gouv/federation/issues/1529)).
-    - Résolution d'erreurs de communication avec Grist lors des tests en CI ([#1546](https://github.com/proconnect-gouv/federation/issues/1546)).
-    - Amélioration de la gestion de la base de données pour les tests E2E (utilisation de `TRUNCATE` au lieu de clones) ([#1449](https://github.com/proconnect-gouv/federation/issues/1449)).
-- **Base de données et Migrations** : refonte du processus de seeding et de migration pour l'environnement de développement ([#1455](https://github.com/proconnect-gouv/federation/issues/1455)) et automatisation de l'exécution des migrations via un hook de démarrage ([#1453](https://github.com/proconnect-gouv/federation/issues/1453)).
-- **Refactoring** : amélioration de la lisibilité de l'algorithme de recherche d'utilisateurs ([#1478](https://github.com/proconnect-gouv/federation/issues/1478)) et restructuration de l'application `csmr-rie` en application autonome ([#1428](https://github.com/proconnect-gouv/federation/issues/1428)).
+- **Sécurité** : adoption de l'algorithme RS256 par défaut pour la sélection des algorithmes de réponse signée [#1548](https://github.com/proconnect-gouv/federation/issues/1548).
+- **Infrastructure & Docker** : optimisation de la construction de l'image Docker du backend pour inclure les assets et le CSS [#1529](https://github.com/proconnect-gouv/federation/issues/1529).
+- **Refactoring** : 
+    - Simplification des exceptions en supprimant le préfixe `CoreFca` [#1545](https://github.com/proconnect-gouv/federation/issues/1545).
+    - Ajout de dossiers de vues manquants [#1527](https://github.com/proconnect-gouv/federation/issues/1527).
+- **Environnement de développement** : refonte du processus de seeding et des migrations pour la stack de développement locale [#1455](https://github.com/proconnect-gouv/federation/issues/1455).
+- **CI/CD & Observabilité** : 
+    - Correction des erreurs de communication avec Grist lors des tests automatisés en CI [#1546](https://github.com/proconnect-gouv/federation/issues/1546).
+    - Ajout de logs pour le suivi des mises à jour Grist [#1551](https://github.com/proconnect-gouv/federation/issues/1551).
+- **Maintenance** : mise à jour des packages internes `@proconnect-gouv` [#1585](https://github.com/proconnect-gouv/federation/issues/1585).
 
 ### Autres changements
-- Mise à jour de la documentation du projet (README) ([#1448](https://github.com/proconnect-gouv/federation/issues/1448)).
+- **Nettoyage** : suppression de plusieurs packages inutilisés pour alléger le projet [#1590](https://github.com/proconnect-gouv/federation/issues/1590).
+- **Documentation** : réécriture et clarification de certains éléments du code [#1550](https://github.com/proconnect-gouv/federation/issues/1550).
