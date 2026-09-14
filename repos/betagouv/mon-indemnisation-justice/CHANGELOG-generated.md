@@ -1,19 +1,19 @@
-## Changelog : mon-indemnisation-justice (30 derniers jours, au 04/09/2026)
+## Changelog : mon-indemnisation-justice (30 derniers jours, au 11 septembre 2026)
 
 ### Résumé
-Ce mois-ci, les développements ont principalement porté sur la fiabilisation du parcours de demande d'indemnisation (notamment pour les dossiers de bris de porte) et la correction d'anomalies liées à la gestion des dates et des affectations. Parallèlement, une mise à jour majeure de l'environnement technique a été réalisée pour garantir la pérennité et la performance de l'application.
+Ce mois-ci, l'application a franchi des étapes importantes, notamment sur le parcours de gestion des bris de porte avec l'ajout de nouveaux formulaires et d'exports PDF. Une refonte technique majeure a été opérée pour simplifier le code et renforcer la fiabilité du système, accompagnée d'une mise à jour complète des technologies de base (PHP, Symfony, Node.js).
 
 ### Évolutions fonctionnelles
-- Correction des doublons lors de l'affectation des dossiers [#163](https://github.com/betagouv/mon-indemnisation-justice/pull/163).
-- Amélioration du module "bris de porte" : correction des trames de documents [#154](https://github.com/betagouv/mon-indemnisation-justice/pull/154) et optimisation de la gestion des pièces justificatives [#160](https://github.com/betagouv/mon-indemnisation-justice/pull/160).
-- Détection et remontée d'erreurs lors de l'impression de documents [#162](https://github.com/betagouv/mon-indemnisation-justice/pull/162).
-- Résolution de dysfonctionnements liés aux tests d'éligibilité [#151](https://github.com/betagouv/mon-indemnisation-justice/pull/151).
-- Fiabilisation de la gestion des dates lors du marquage d'un dossier comme "indemnisé".
-- Amélioration de l'ergonomie pour les agents FDO avec la possibilité de se déconnecter directement depuis la modale d'affectation.
-- Uniformisation des paragraphes relatifs à la responsabilité.
+- **Gestion des dossiers et formulaires** : Introduction du formulaire de déclaration et du téléversement de la DA ([#169](https://github.com/betagouv/mon-indemnisation-justice/pull/169)) et possibilité d'exporter les dossiers FIP3 au format PDF ([#170](https://github.com/betagouv/mon-indemnisation-justice/pull/170)).
+- **Amélioration de la gestion documentaire** : Conversion automatique des documents requis en PDF et gestion intelligente des fichiers incompatibles pour garantir la génération des dossiers.
+- **Nouvelles capacités de consultation** : Ajout de la prévisualisation des fichiers signés, affichage des motifs de clôture et enrichissement de la recherche par type de dossier.
+- **Corrections d'expérience utilisateur** : Résolution de problèmes d'affichage des PDF sur Edge, correction des doublons lors de l'affectation et intégration des codes départements dans les courriers.
 
 ### Évolutions techniques
-- Mise à jour majeure de l'infrastructure logicielle : passage à PHP 8.5, Symfony 8.1 et Node.js v24 [#158](https://github.com/betagouv/mon-indemnisation-justice/pull/158).
-- Actualisation des versions des GitHub Actions.
-- Correction d'un problème de remontée de données (Sentry) concernant l'exactitude des dates.
-- Ajustement des tests unitaires suite aux montées de version des composants.
+- **Refonte de l'architecture frontend** : Migration vers une architecture sans MobX, Valtio ou date-fns. La logique métier (signature, décision, clôture, attribution) est désormais déléguée à l'API pour plus de robustesse.
+- **Mise à jour de la stack technologique** : Montée de version majeure vers PHP 8.5, Symfony 8.1 et Node.js 24.
+- **Optimisation de la génération de documents** : Stabilisation du moteur de rendu via l'utilisation de Firefox (via Puppeteer) et amélioration des performances grâce à une meilleure gestion du cache et des tentatives de reconnexion (retries).
+- **Infrastructure** : Mise à jour des GitHub Actions pour la CI/CD.
+
+### Autres changements
+- **Contenu et conformité** : Uniformisation des paragraphes de responsabilité et correction des trames de documents.

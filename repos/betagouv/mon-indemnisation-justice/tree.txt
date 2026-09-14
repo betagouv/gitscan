@@ -16,7 +16,6 @@
 │   ├── php
 │   │   ├── Dockerfile
 │   │   ├── README.md
-│   │   ├── dev.dockerfile
 │   │   ├── fichiers
 │   │   │   └── .gitignore
 │   │   └── scripts
@@ -135,7 +134,8 @@
 │   │   ├── Version20260702144847.php
 │   │   ├── Version20260708210430.php
 │   │   ├── Version20260724092141.php
-│   │   └── Version20260724130358.php
+│   │   ├── Version20260724130358.php
+│   │   └── Version20260910133740.php
 │   ├── package.json
 │   ├── phpcs.xml.dist
 │   ├── phpunit.xml.dist
@@ -219,11 +219,15 @@
 │   │   │   │       │   │   └── RenseignerMetaDonneesAttestationInput.php
 │   │   │   │       │   └── Dossier
 │   │   │   │       │       ├── AjouterPieceJointeEndpoint.php
+│   │   │   │       │       ├── AnnoterDossierEndpoint.php
+│   │   │   │       │       ├── AnnoterDossierInput.php
 │   │   │   │       │       ├── AttribuerDossierEndpoint.php
 │   │   │   │       │       ├── AttribuerDossierInput.php
 │   │   │   │       │       ├── CloturerDossierEndpoint.php
 │   │   │   │       │       ├── CloturerDossierInput.php
 │   │   │   │       │       ├── ConsulterDossierEndpoint.php
+│   │   │   │       │       ├── DeciderDossierEndpoint.php
+│   │   │   │       │       ├── DeciderDossierInput.php
 │   │   │   │       │       ├── DecompterDossierEndpoint.php
 │   │   │   │       │       ├── DemarrerInstructionDossierEndpoint.php
 │   │   │   │       │       ├── GenererArretePaiementEndpoint.php
@@ -232,6 +236,7 @@
 │   │   │   │       │       ├── GenererCourrierRejetEndpoint.php
 │   │   │   │       │       ├── GenererCourrierRejetInput.php
 │   │   │   │       │       ├── GenererDeclarationAcceptationEndpoint.php
+│   │   │   │       │       ├── InitierArretePaiementEndpoint.php
 │   │   │   │       │       ├── ListerDossierAAttribuerEndpoint.php
 │   │   │   │       │       ├── ListerDossierACategoriserEndpoint.php
 │   │   │   │       │       ├── ListerDossierAInstruireEndpoint.php
@@ -246,7 +251,10 @@
 │   │   │   │       │       ├── MarquerDossierIndemniseEndpoint.php
 │   │   │   │       │       ├── RechercherDossiersEndpoint.php
 │   │   │   │       │       ├── RechercherDossiersInput.php
-│   │   │   │       │       └── TransmettreAFIP3Endpoint.php
+│   │   │   │       │       ├── SignerArretePaiementEndpoint.php
+│   │   │   │       │       ├── TransmettreAFIP3Endpoint.php
+│   │   │   │       │       ├── ValiderDecisionEndpoint.php
+│   │   │   │       │       └── ValiderDecisionInput.php
 │   │   │   │       ├── Output
 │   │   │   │       │   ├── AdresseOutput.php
 │   │   │   │       │   ├── AgentOutput.php
@@ -501,6 +509,7 @@
 │   │   │   ├── DateConvertisseur.php
 │   │   │   ├── DocumentManager.php
 │   │   │   ├── DossierManager.php
+│   │   │   ├── FusionneurDocuments.php
 │   │   │   ├── GenerateurReferenceCourte.php
 │   │   │   ├── ImprimanteCourrier.php
 │   │   │   ├── Mailer.php
@@ -639,15 +648,18 @@
 │   │   │   │       └── Dossier
 │   │   │   │           └── Endpoint
 │   │   │   │               ├── AjouterPieceJointeEndpointTest.php
+│   │   │   │               ├── AnnoterDossierEndpointTest.php
 │   │   │   │               ├── AttribuerDossierEndpointTest.php
 │   │   │   │               ├── CloturerDossierEndpointTest.php
 │   │   │   │               ├── ConsulterDossierEndpointTest.php
+│   │   │   │               ├── DeciderDossierEndpointTest.php
 │   │   │   │               ├── DecompterDossierEndpointTest.php
 │   │   │   │               ├── DemarrerInstructionDossierEndpointTest.php
 │   │   │   │               ├── GenererArretePaiementEndpointTest.php
 │   │   │   │               ├── GenererCourrierPropositionIndemnisationEndpointTest.php
 │   │   │   │               ├── GenererCourrierRejetEndpointTest.php
 │   │   │   │               ├── GenererDeclarationAcceptationEndpointTest.php
+│   │   │   │               ├── InitierArretePaiementEndpointTest.php
 │   │   │   │               ├── ListeDossierPropositionASignerEndpointTest.php
 │   │   │   │               ├── ListeDossierRejetASignerEndpointTest.php
 │   │   │   │               ├── ListerDossierAAttribuerEndpointTest.php
@@ -661,7 +673,8 @@
 │   │   │   │               ├── ListerDossierUsagerEndpointTest.php
 │   │   │   │               ├── MarquerDossierIndemniseEndpointTest.php
 │   │   │   │               ├── RechercherDossierEndpointTest.php
-│   │   │   │               └── TransmettreAFIP3EndpointTest.php
+│   │   │   │               ├── TransmettreAFIP3EndpointTest.php
+│   │   │   │               └── ValiderDecisionEndpointTest.php
 │   │   │   ├── Public
 │   │   │   │   └── Dysfonctionnement
 │   │   │   │       └── SauvegarderTestEligibiliteDysfonctionnementEndpointTest.php
@@ -691,14 +704,18 @@
 │   │   │   │   └── ImporteurGeoCodeTest.php
 │   │   │   ├── DocumentManagerTest.php
 │   │   │   ├── DossierManagerTest.php
+│   │   │   ├── FusionneurDocumentsTest.php
 │   │   │   └── MontantAfficheurTest.php
 │   │   ├── bootstrap.php
 │   │   └── ressources
+│   │       ├── documents
+│   │       │   └── declaration_acceptation.pdf
 │   │       └── pieces_jointes
 │   │           ├── Facture 1.png
 │   │           ├── Facture 2.pdf
 │   │           ├── photo-1.jpg
-│   │           └── photo-2.jpg
+│   │           ├── photo-2.jpg
+│   │           └── photo-3.webp
 │   └── yarn.lock
 ├── compose.yaml
 ├── docs
@@ -717,14 +734,19 @@
 │   │   │   │   ├── affecter-agent.e2e.test.ts
 │   │   │   │   └── declarer-bris-de-porte.e2e.test.ts
 │   │   │   └── fip6
+│   │   │       ├── annoter-dossier.e2e.test.ts
+│   │   │       ├── attribuer-dossier.e2e.test.ts
+│   │   │       ├── cloturer-dossier.e2e.test.ts
 │   │   │       ├── expect.ts
+│   │   │       ├── generer-arrete-paiement.e2e.test.ts
 │   │   │       ├── lister-dossiers-a-attribuer.e2e.test.ts
 │   │   │       ├── lister-dossiers-a-categoriser.e2e.test.ts
 │   │   │       ├── lister-dossiers-a-instruire.e2e.test.ts
 │   │   │       ├── lister-dossiers-a-transmettre.e2e.test.ts
 │   │   │       ├── lister-dossiers-en-intruction.e2e.test.ts
 │   │   │       ├── lister-dossiers-rejet-a-signer.e2e.test.ts
-│   │   │       └── rechercher-un-dossier.e2e.test.ts
+│   │   │       ├── rechercher-un-dossier.e2e.test.ts
+│   │   │       └── signer-arrete-paiement.e2e.test.ts
 │   │   ├── connexion.e2e.test.ts
 │   │   ├── depot-dossier.e2e.test.ts
 │   │   ├── helpers
@@ -735,6 +757,7 @@
 │   │   │   └── titre.ts
 │   │   ├── ressources
 │   │   │   ├── acte_de_propriete.pdf
+│   │   │   ├── arrete_de_paiement.pdf
 │   │   │   ├── attestation_completee_par_les_forces_de_l_ordre.pdf
 │   │   │   ├── cni.jpg
 │   │   │   ├── contrat_location.pdf
@@ -856,6 +879,7 @@
     │   │   │       │       │       ├── AjoutPieceJointe.tsx
     │   │   │       │       │       ├── ChampPieceJointe.tsx
     │   │   │       │       │       ├── MenuPieceJointe.tsx
+    │   │   │       │       │       ├── PrevisualiserPieceJointe.tsx
     │   │   │       │       │       ├── SuppressionPieceJointe.tsx
     │   │   │       │       │       ├── TelechargerPieceJointe.tsx
     │   │   │       │       │       └── index.ts
@@ -913,6 +937,7 @@
     │   │   │       │   └── routeur-fip6.ts
     │   │   │       ├── services
     │   │   │       │   ├── agent.ts
+    │   │   │       │   ├── dossier.d.ts
     │   │   │       │   └── dossier.ts
     │   │   │       └── tsconfig.json
     │   │   ├── public
@@ -1150,4 +1175,4 @@
     ├── vite.config.ts
     ├── vitest.config.js
     └── yarn.lock
-258 directories, 894 files
+259 directories, 918 files
