@@ -1,59 +1,65 @@
 {
   "url": "https://github.com/betagouv/csplab",
   "name": "csplab",
-  "description": "Plateforme destinée à accompagner les employeurs de la fonction publique dans la gestion de leurs processus de recrutement et de leurs offres d'emploi.",
+  "description": "Plateforme destinée à accompagner les employeurs de la fonction publique dans la gestion de leurs processus de recrutement et de leurs organismes.",
   "language": "Python",
   "features": [
-    "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
     "Gestion métier générale",
-    "Tableaux & Affichage",
-    "API & Intégrations",
-    "Authentification & Accès"
+    "Recherche & Filtres",
+    "Collaboration & Workflow",
+    "Administration & Backoffice",
+    "Données & Schémas"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
     "PostgreSQL",
-    "Redis",
+    "pgvector",
     "Qdrant",
-    "Pinia",
+    "Redis",
+    "Scaleway Secret Manager",
     "pnpm",
-    "Scaleway",
+    "mise",
     "Tesseract",
     "Poppler"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "TypeScript / JavaScript",
     "Python (scripts & backend)",
     "Docker & Conteneurs",
     "Intelligence Artificielle / ML",
-    "Documentation & Schémas"
+    "Pipeline de données",
+    "Authentification (composant)",
+    "TypeScript / JavaScript"
   ],
   "auth": {
     "methods": [
       "jwt",
-      "api-key"
+      "api-key",
+      "session"
     ]
   },
-  "tests": "Playwright, Django tests",
-  "workflows": [
-    "GitHub Actions"
+  "tests": [
+    "Playwright",
+    "factory-boy"
   ],
-  "lastActivity": "2026-09-07T15:03:30Z",
+  "workflows": [
+    "github-actions"
+  ],
+  "lastActivity": "2026-09-12T08:18:34Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "Python",
-    "TypeScript",
-    "Docker & Conteneurs",
+    "Django & FastAPI",
     "Bases de données SQL",
-    "CI/CD & GitHub Actions",
+    "Docker & Conteneurs",
     "Intelligence Artificielle & LLM",
-    "Documentation"
+    "CI/CD & GitHub Actions",
+    "Données & Open Data"
   ]
 }
