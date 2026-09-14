@@ -5,19 +5,10 @@
 │   ├── MAINTENANCE.md
 │   ├── agents
 │   │   └── tech-debt.md
-│   ├── commands
-│   │   ├── speckit.analyze.md
-│   │   ├── speckit.checklist.md
-│   │   ├── speckit.clarify.md
-│   │   ├── speckit.constitution.md
-│   │   ├── speckit.implement.md
-│   │   ├── speckit.plan.md
-│   │   ├── speckit.specify.md
-│   │   ├── speckit.tasks.md
-│   │   └── speckit.taskstoissues.md
 │   ├── hooks
 │   │   ├── check_env_on_tag.py
 │   │   ├── check_python.py
+│   │   ├── guard_bash.py
 │   │   ├── guard_write_paths.py
 │   │   ├── hook_env.py
 │   │   ├── ruff_edited.py
@@ -26,6 +17,7 @@
 │   │   ├── api.md
 │   │   ├── code.md
 │   │   ├── review.md
+│   │   ├── securite.md
 │   │   ├── sql.md
 │   │   ├── tests.md
 │   │   └── zones-critiques.md
@@ -33,7 +25,10 @@
 │   └── skills -> ../skills
 ├── .dockerignore
 ├── .env.example
+├── .githooks
+│   └── pre-push
 ├── .github
+│   ├── CODEOWNERS
 │   ├── codeql-config.yml
 │   ├── dependabot.yml
 │   ├── pull_request_template.md
@@ -42,32 +37,13 @@
 │       ├── ci.yml
 │       ├── deploy-prod.yml
 │       ├── deploy-staging.yml
+│       ├── e2e.yml
 │       └── review-app-teardown.yml
 ├── .gitignore
 ├── .gitleaks.toml
 ├── .gitleaksignore
 ├── .pre-commit-config.yaml
 ├── .python-version
-├── .specify
-│   ├── init-options.json
-│   ├── memory
-│   │   └── constitution.md
-│   ├── scripts
-│   │   └── bash
-│   │       ├── check-prerequisites.sh
-│   │       ├── common.sh
-│   │       ├── create-new-feature.sh
-│   │       ├── setup-plan.sh
-│   │       └── update-agent-context.sh
-│   └── templates
-│       ├── agent-file-template.md
-│       ├── checklist-template.md
-│       ├── constitution-template.md
-│       ├── overrides
-│       │   └── spec-template.md
-│       ├── plan-template.md
-│       ├── spec-template.md
-│       └── tasks-template.md
 ├── AGENT.md
 ├── CLAUDE.md
 ├── CONTRIBUTING.md
@@ -84,6 +60,7 @@
 │       ├── 0d4871663bfd_initial_schema.py
 │       ├── 1ab3818607f7_add_dashboard_cron_columns.py
 │       ├── 1eec43dc9e46_add_conversation_message_embeddings.py
+│       ├── 385f7fb3f2f8_source_inventory_items_and_runs.py
 │       ├── 5759bd430b2e_add_conversation_flag_columns.py
 │       ├── 7397f669848c_drop_unused_schema_version_table.py
 │       ├── 7946c9c555a4_dashboards_schema.py
@@ -93,6 +70,7 @@
 │       ├── a1c4e77b21d9_tag_vocabulary_facets.py
 │       ├── b12cbac64ff9_enforce_not_null_on_default_backed_.py
 │       ├── c4d72e1f9a8b_usage_events.py
+│       ├── c7a2e9b4d1f0_cron_runs_index_started_at_desc.py
 │       ├── c7d2b90e4f31_deactivate_legacy_tags.py
 │       ├── c89f7601677b_cron_schedule_default_to_crontab.py
 │       ├── d3f5a8c1b607_pending_tags.py
@@ -107,7 +85,12 @@
 │   ├── card_retrieval.py
 │   └── card_retrieval_results.json
 ├── bin
-│   └── post_compile
+│   ├── post_compile
+│   └── with_review_app_auth.sh
+├── biome.json
+├── browser
+│   ├── conftest.py
+│   └── test_socle.py
 ├── config
 │   ├── sources.yaml
 │   └── sources.yaml.example
@@ -118,10 +101,22 @@
 │   ├── cleanup-dashboards
 │   │   ├── CRON.md
 │   │   └── cron.py
+│   ├── facade-audit
+│   │   ├── CRON.md
+│   │   └── cron.py
+│   ├── generate-conversation-embeddings
+│   │   ├── CRON.md
+│   │   └── cron.py
 │   ├── refresh-rpe
 │   │   ├── CRON.md
 │   │   └── cron.py
+│   ├── slack-feedback
+│   │   ├── CRON.md
+│   │   └── cron.py
 │   ├── suggest-tags
+│   │   ├── CRON.md
+│   │   └── cron.py
+│   ├── sync-connectors
 │   │   ├── CRON.md
 │   │   └── cron.py
 │   └── sync-tags
@@ -142,6 +137,15 @@
 │   │   └── favoris-personnels
 │   │       └── definition-of-done.md
 │   ├── interactive-dashboards.md
+│   ├── paved-road
+│   │   ├── l0-definition-of-done.md
+│   │   ├── l1-attestation.md
+│   │   ├── l2-quality-gates.md
+│   │   ├── l3-e2e.md
+│   │   ├── l4-smoke.md
+│   │   ├── l5-design-coherence.md
+│   │   ├── l6-fitness-functions.md
+│   │   └── retrait-spec-kit.md
 │   ├── plans
 │   │   ├── 2026-01-10-architecture-audit.md
 │   │   ├── 2026-01-11-gemini-backend.md
@@ -153,7 +157,9 @@
 │   │   ├── 2026-03-02-chat-velocity-signals.md
 │   │   ├── 2026-03-20-autometa-rebrand-infrastructure.md
 │   │   ├── 2026-08-11-review-apps-ci-design.md
-│   │   └── 2026-08-12-review-apps-ci-implementation.md
+│   │   ├── 2026-08-12-paved-road-baseline.md
+│   │   ├── 2026-08-12-review-apps-ci-implementation.md
+│   │   └── 2026-08-22-paved-road-workflow.md
 │   ├── remarques-victor-2026-03-19.md
 │   ├── scaling-recommendations.md
 │   └── tally-integration.md
@@ -163,6 +169,7 @@
 │   ├── compare.py
 │   ├── questions.py
 │   └── run_eval.py
+├── gates.toml
 ├── infra
 │   └── scaleway
 │       └── s3_backup
@@ -229,10 +236,14 @@
 ├── lib
 │   ├── __init__.py
 │   ├── api_signals.py
+│   ├── attestation.py
 │   ├── certs
 │   │   └── rpe_ca.pem
+│   ├── dashboard_api.py
 │   ├── dashboards.py
 │   ├── data_inclusion.py
+│   ├── datadog.py
+│   ├── facade_imports.py
 │   ├── failure_detection.py
 │   ├── job_inputs.py
 │   ├── jobs.py
@@ -241,12 +252,14 @@
 │   ├── metabase.py
 │   ├── migrate.py
 │   ├── notion.py
+│   ├── paved_road.py
 │   ├── pg.py
 │   ├── pii.py
 │   ├── query.py
 │   ├── rpe.py
 │   ├── rpe_gwt.py
 │   ├── slack.py
+│   ├── source_inventory.py
 │   ├── sources.py
 │   ├── tag_suggestions.py
 │   ├── tag_sync.py
@@ -255,13 +268,66 @@
 │   ├── tool_taxonomy.py
 │   ├── webinaires.py
 │   └── zendesk.py
+├── package-lock.json
+├── package.json
+├── paved-road
+│   └── telecharger-rapport-markdown
+│       ├── attestations
+│       │   ├── DOD-1.md
+│       │   ├── DOD-2.md
+│       │   ├── DOD-3.md
+│       │   ├── DOD-4.md
+│       │   └── DOD-5.md
+│       ├── definition-of-done.md
+│       └── journal
+│           ├── 20260827T173209771862Z-7758a76e.md
+│           ├── 20260827T173216973864Z-1ebc4a8c.md
+│           ├── 20260827T173222041394Z-6b27e1df.md
+│           ├── 20260827T173227525702Z-427e4be0.md
+│           ├── 20260827T173233383128Z-b625896a.md
+│           ├── 20260827T174259219001Z-1d2676e9.md
+│           ├── 20260827T174301786524Z-30cce222.md
+│           ├── 20260827T174304250472Z-ba413054.md
+│           ├── 20260827T174306813302Z-ef93285f.md
+│           ├── 20260827T174309231849Z-0930025c.md
+│           ├── 20260827T180542742370Z-4af2a3f2.md
+│           ├── 20260827T180545242506Z-cf1d2c0a.md
+│           ├── 20260827T180547686140Z-88127885.md
+│           ├── 20260827T180550202276Z-ff62bb8e.md
+│           └── 20260827T180552681131Z-6abab2f1.md
+├── plugins
+│   └── paved-road
+│       ├── .claude-plugin
+│       │   └── plugin.json
+│       ├── agents
+│       │   ├── design-coherence.md
+│       │   └── gap-hunter.md
+│       └── skills
+│           ├── paved-road
+│           │   ├── SKILL.md
+│           │   ├── align.md
+│           │   ├── build.md
+│           │   ├── pr.md
+│           │   ├── prove.md
+│           │   └── review.md
+│           └── smoke
+│               └── SKILL.md
 ├── postdeploy.sh
 ├── pyproject.toml
 ├── pytest.ini
 ├── scalingo.json
 ├── scripts
+│   ├── check_http_timeouts.py
+│   ├── check_lint_baseline.py
+│   ├── check_migration_backfill.py
+│   ├── check_required_checks.py
+│   ├── check_route_auth.py
 │   ├── check_test_quality.py
-│   └── review_app.py
+│   ├── doctor.py
+│   ├── paved_road_baseline.py
+│   ├── paved_road_cli.py
+│   ├── review_app.py
+│   └── smoke.py
 ├── skills
 │   ├── autometa_tables_db
 │   │   └── SKILL.md
@@ -275,6 +341,10 @@
 │   │       └── create_dashboard.py
 │   ├── data_inclusion
 │   │   └── SKILL.md
+│   ├── datadog_logs
+│   │   ├── SKILL.md
+│   │   └── scripts
+│   │       └── query.py
 │   ├── debug_matomo_ui
 │   │   ├── SKILL.md
 │   │   └── scripts
@@ -354,13 +424,10 @@
 │       ├── SKILL.md
 │       └── scripts
 │           └── __init__.py
-├── specs
-│   └── 002-fix-deps-security
-│       └── spec.md
 ├── tests
 │   ├── __init__.py
 │   ├── conftest.py
-│   └── test_*.py  (105 files)
+│   └── test_*.py  (132 files)
 ├── uv.lock
 └── web
     ├── __init__.py
@@ -407,6 +474,7 @@
     │   ├── knowledge.py
     │   ├── query.py
     │   ├── reports.py
+    │   ├── sources.py
     │   └── tag_manager.py
     ├── runner.py
     ├── s3.py
@@ -415,6 +483,9 @@
     ├── sentry.py
     ├── session_sync.py
     ├── slack_feedback.py
+    ├── source_checks.py
+    ├── source_inventories.py
+    ├── sources_registry.py
     ├── static
     │   ├── css
     │   │   └── style.css
@@ -445,11 +516,12 @@
     │   ├── _favorite_button.html
     │   ├── _flag_button.html
     │   ├── _sidebar_tools.html
+    │   ├── _source_access.html
+    │   ├── _source_access_slot.html
     │   ├── _tag_manager_tags.html
     │   ├── _tag_manager_triggers.html
     │   ├── accueil.html
     │   ├── base.html
-    │   ├── connaissances.html
     │   ├── conversations.html
     │   ├── cron.html
     │   ├── dashboard_detail.html
@@ -457,8 +529,11 @@
     │   ├── explorations.html
     │   ├── job_run.html
     │   ├── jobs.html
+    │   ├── knowledge.html
     │   ├── rapports.html
+    │   ├── source_detail.html
+    │   ├── sources.html
     │   └── tag_manager.html
     ├── uploads.py
     └── warmup.py
-103 directories, 464 files
+114 directories, 555 files
