@@ -1,37 +1,36 @@
-## Changelog : account-manager (30 derniers jours, au 31 août 2026)
+## Changelog : account-manager (30 derniers jours, au 14 septembre 2026)
 
 ### Résumé
-Le projet a franchi une étape majeure avec le déploiement des fonctionnalités de gestion des cycles de vie des utilisateurs (arrivées et départs) et la mise en place d'un système de collecte de données. L'outil permet désormais de piloter l'onboarding et l'offboarding de manière structurée, tout en offrant une visibilité accrue sur les accès et les activités via un nouveau tableau de bord.
+Ce mois a été marqué par une évolution majeure du cœur de métier de l'outil : la gestion complète des cycles d'arrivée et de départ (onboarding/offboarding) via des "plans" d'actions. Le système de contrôle a été considérablement renforcé avec l'introduction de mécanismes de double validation, de gestion des dérogations et d'une meilleure traçabilité des décisions. L'interface a également été enrichie d'un tableau de bord pour piloter l'activité.
 
 ### Évolutions fonctionnelles
-- **Gestion des cycles de vie (Onboarding/Offboarding) :**
-    - Mise en place de plans d'arrivée et de départ avec exécution d'étapes et possibilité d'annulation [#27](https://github.com/incubateur-ademe/account-manager/issues/27), [#31](https://github.com/incubateur-ademe/account-manager/issues/31).
-    - Capacité de confirmer un plan de départ, de pointer les étapes réalisées et de clore les dossiers [#e3abee6].
-    - Gestion spécifique des membres et des startups lors des processus de fin d'activité [#43](https://github.com/incubateur-ademe/account-manager/issues/43).
-- **Pilotage et visibilité :**
-    - Création d'un tableau de bord centralisant les données issues des connecteurs [#47](https://github.com/incubateur-ademe/account-manager/issues/47).
-    - Interface permettant de lancer des collectes de données et de consulter l'historique des exécutions [#8514bb6].
-    - Nouveau système de gestion des "fiches" et des rattachements [#17](https://github.com/incubateur-ademe/account-manager/issues/17).
-    - Écran de visibilité sur les capacités opérationnelles de chaque système connecté [#2c681e8].
-- **Corrections et améliorations de l'expérience utilisateur :**
-    - Sécurisation des actions serveur par une vérification systématique de la session [#74](https://github.com/incubateur-ademe/account-manager/issues/74).
-    - Résolution de problèmes d'intégrité des données (échéances, verdicts ou étapes effacés par erreur lors de processus automatiques) [#60](https://github.com/incubateur-ademe/account-manager/issues/60), [#64](https://github.com/incubateur-ademe/account-manager/issues/64).
-    - Amélioration de l'interface (gestion de l'hydratation des pages, mode aide et messages d'obligation de saisie) [#22426ef](https://github.com/incubateur-ademe/account-manager/issues/22426ef), [#09061dd].
-    - Correction de la gestion des noms composés et des identités.
+- **Gestion du cycle de vie (Arrivée/Départ) :**
+    - Mise en place de plans d'arrivée et de départ, incluant la simulation d'étapes et l'annulation de départs en cours [#27](https://github.com/incubateur-ademe/account-manager/issues/27).
+    - Unification des mécanismes de gestion pour les dossiers d'arrivée et de départ [#51](https://github.com/incubateur-ademe/account-manager/issues/51).
+    - Capacité de lancer des collectes de données directement depuis l'interface avec suivi de l'historique.
+- **Contrôle et Conformité :**
+    - Introduction de la gestion des dérogations (demande et levée) depuis les constats [#94](https://github.com/incubateur-ademe/account-manager/issues/94) et masquage automatique des écarts couverts par ces dérogations [#92](https://github.com/incubateur-ademe/account-manager/issues/92).
+    - Renforcement de la sécurité via la double validation pour l'écartement d'étapes contrôlées [#73](https://github.com/incubateur-ademe/account-manager/issues/73).
+    - Attribution précise des responsabilités (qui doit agir et qui doit valider) pour chaque étape [#57](https://github.com/incubateur-ademe/account-manager/issues/57).
+    - Comparaison systématique entre les actions déclarées et les observations réelles.
+- **Gestion des accès et utilisateurs :**
+    - Nouveaux modes d'accès par équipe [#28](https://github.com/incubateur-ademe/account-manager/issues/28) et gestion des profils pour l'ouverture automatique d'accès [#55](https://github.com/incubateur-ademe/account-manager/issues/55).
+    - Gestion des dossiers nominatifs pour les utilisateurs non-opérateurs [#75](https://github.com/incubateur-ademe/account-manager/issues/75) et gestion des comptes isolés [#41](https://github.com/incubateur-ademe/account-manager/issues/41).
+- **Pilotage et Expérience Utilisateur :**
+    - Nouveau tableau de bord intégrant les indicateurs de données provenant des connecteurs [#47](https://github.com/incubateur-ademe/account-manager/issues/47).
+    - Améliorations de l'ergonomie : obligation de saisir un motif lors de l'écartement d'une étape [#50](https://github.com/incubateur-ademe/account-manager/issues/50), clarification des liens d'accès [#82](https://github.com/incubateur-ademe/account-manager/issues/82) et rafraîchissement automatique des données lors de la modification de fiches.
 
 ### Évolutions techniques
-- **Architecture et données :**
-    - Refactorisation des structures de données : passage du "dossier de départ" au "dossier d'accès" [#48](https://github.com/incubateur-ademe/account-manager/issues/48).
-    - Optimisation de la gestion des accès : les équipes sont désormais traitées comme des accès et le reste est géré en métadonnées [#28](https://github.com/incubateur-ademe/account-manager/issues/28), [#32](https://github.com/incubateur-ademe/account-manager/issues/32).
-    - Amélioration de la logique des connecteurs pour la gestion des droits d'accès et la remontée de données [#55](https://github.com/incubateur-ademe/account-manager/issues/55).
+- **Refonte architecturale :**
+    - Transformation du concept de "dossier de départ" en "dossier d'accès" pour une meilleure cohérence métier [#48](https://github.com/incubateur-ademe/account-manager/issues/48).
+    - Centralisation de la configuration SMTP et uniformisation du vocabulaire de l'interface.
 - **Infrastructure et CI/CD :**
-    - Optimisation de l'image Docker (réduction de la taille en retirant les composants Prisma inutiles) [#f2149d7].
-    - Mise à jour de la CI pour supporter les nouvelles versions de Node.js [#52a00b9].
-    - Stabilisation de l'environnement de déploiement (configuration SMTP, variables Coolify et récupération de la politique au build) [#9f5488b], [#3ee2b18], [#2a1e6ba].
-- **Refactoring :**
-    - Standardisation du nommage (utilisation de l'anglais pour les éléments techniques et machines) [#97de2b2].
-    - Centralisation de la configuration des fournisseurs de périmètre [#09b4fdc].
+    - Optimisation de l'image Docker (réduction de la taille via le nettoyage du CLI Prisma).
+    - Automatisation de la récupération de la politique de sécurité depuis un dépôt privé lors du build.
+    - Mise à jour de l'environnement de build (Next.js, Node.js, Vitest).
+- **Qualité et Tests :**
+    - Renforcement de la stratégie de tests avec une approche multi-étages [#83](https://github.com/incubateur-ademe/account-manager/issues/83).
+    - Amélioration de la fidélité des tests unitaires et mutualisation des mocks de session [#89](https://github.com/incubateur-ademe/account-manager/issues/89).
 
 ### Autres changements
-- **Documentation :** Mise à jour massive de la documentation technique couvrant l'architecture, les plans d'implémentation, les procédures de sauvegarde et les configurations d'environnement [#71](https://github.com/incubateur-ademe/account-manager/issues/71), [#70](https://github.com/incubateur-ademe/account-manager/issues/70), [#69](https://github.com/incubateur-ademe/account-manager/issues/69), [#3203df0].
-- **Processus :** Conventionnalisation des messages de commit/squash pour les Pull Requests [#2696d95].
+- **Documentation :** Mise à jour massive de la documentation technique et fonctionnelle pour assurer la cohérence avec le code (architecture, procédures de sauvegarde, variables d'environnement et politiques de sécurité).

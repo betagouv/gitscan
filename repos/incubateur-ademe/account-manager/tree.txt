@@ -87,8 +87,12 @@
 │       ├── #28_metadonnees-de-compte.md
 │       ├── #29_startup-qui-s-arrete.md
 │       └── lot-1.5_interface.md
+├── e2e
+│   ├── participant.spec.ts
+│   └── session.ts
 ├── next.config.ts
 ├── package.json
+├── playwright.config.ts
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
 ├── prisma
@@ -139,6 +143,14 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260830090000_acteur_et_controleur_declares
 │   │   │   └── migration.sql
+│   │   ├── 20260831210000_participation_a_un_dossier
+│   │   │   └── migration.sql
+│   │   ├── 20260910132123_nombres_montres_a_qui_autorise
+│   │   │   └── migration.sql
+│   │   ├── 20260910141927_ce_que_la_datation_toucherait
+│   │   │   └── migration.sql
+│   │   ├── 20260914191616_derogations_levables
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   └── schema.prisma
 ├── prisma.config.ts
@@ -147,12 +159,17 @@
 │   │   ├── api
 │   │   │   └── auth
 │   │   │       └── [...nextauth]
+│   │   │           ├── route.test.ts
 │   │   │           └── route.ts
 │   │   ├── collectes
 │   │   │   ├── BoutonCollecte.tsx
 │   │   │   ├── GardeFouBloque.tsx
+│   │   │   ├── actions.test.ts
 │   │   │   ├── actions.ts
-│   │   │   └── page.tsx
+│   │   │   ├── blocages.ts
+│   │   │   ├── page.tsx
+│   │   │   ├── redaction.test.ts
+│   │   │   └── redaction.ts
 │   │   ├── comptes-de-service
 │   │   │   ├── BoutonRevue.tsx
 │   │   │   ├── actions.ts
@@ -165,23 +182,36 @@
 │   │   │   └── page.tsx
 │   │   ├── constats
 │   │   │   ├── ClotureConstat.tsx
+│   │   │   ├── EcartsToleres.tsx
 │   │   │   ├── FileDesConstats.tsx
+│   │   │   ├── ToleranceConstat.tsx
 │   │   │   ├── actions.ts
 │   │   │   └── page.tsx
 │   │   ├── dossiers
 │   │   │   ├── FormulaireOuverture.tsx
 │   │   │   ├── [id]
 │   │   │   │   ├── AnnulationDossier.tsx
+│   │   │   │   ├── Etape.tsx
+│   │   │   │   ├── Participations.tsx
 │   │   │   │   ├── Pointage.tsx
 │   │   │   │   ├── actions.test.ts
 │   │   │   │   ├── actions.ts
-│   │   │   │   └── page.tsx
+│   │   │   │   ├── ecran-du-dossier.test.ts
+│   │   │   │   ├── page.tsx
+│   │   │   │   ├── participation.test.ts
+│   │   │   │   ├── participation.ts
+│   │   │   │   ├── redaction-execution.test.ts
+│   │   │   │   ├── redaction-execution.ts
+│   │   │   │   ├── redaction-participation.test.ts
+│   │   │   │   └── redaction-participation.ts
 │   │   │   ├── actions.ts
 │   │   │   └── page.tsx
 │   │   ├── error.tsx
+│   │   ├── files-de-travail.test.tsx
 │   │   ├── global-error.tsx
 │   │   ├── healthz
 │   │   │   └── route.ts
+│   │   ├── inventaire-des-systemes.test.ts
 │   │   ├── journal
 │   │   │   ├── DetailJson.tsx
 │   │   │   ├── Filtres.tsx
@@ -193,19 +223,33 @@
 │   │   ├── layout.tsx
 │   │   ├── login
 │   │   │   ├── LoginForm.tsx
+│   │   │   ├── actions.test.ts
 │   │   │   ├── actions.ts
 │   │   │   └── page.tsx
 │   │   ├── modeles
+│   │   │   ├── Editeur.test.tsx
 │   │   │   ├── Editeur.tsx
+│   │   │   ├── ListeDesEtapes.test.tsx
 │   │   │   ├── actions.test.ts
 │   │   │   ├── actions.ts
 │   │   │   ├── incubateur
 │   │   │   │   └── page.tsx
 │   │   │   ├── lecture.ts
 │   │   │   ├── page.tsx
+│   │   │   ├── redaction.test.ts
+│   │   │   ├── redaction.ts
 │   │   │   └── startup
 │   │   │       └── [ghid]
 │   │   │           └── page.tsx
+│   │   ├── moi
+│   │   │   ├── [...reste]
+│   │   │   │   └── page.tsx
+│   │   │   ├── dossiers
+│   │   │   │   └── [id]
+│   │   │   │       └── page.tsx
+│   │   │   ├── espace-du-participant.test.ts
+│   │   │   ├── not-found.tsx
+│   │   │   └── page.tsx
 │   │   ├── not-found.tsx
 │   │   ├── page.tsx
 │   │   ├── personnes
@@ -229,6 +273,8 @@
 │   │   │   │   ├── edit
 │   │   │   │   │   └── page.tsx
 │   │   │   │   ├── edition.ts
+│   │   │   │   ├── fiche-et-modales.test.tsx
+│   │   │   │   ├── fusion.test.ts
 │   │   │   │   ├── libelles.ts
 │   │   │   │   ├── motifs.test.ts
 │   │   │   │   ├── motifs.ts
@@ -240,10 +286,13 @@
 │   │   │   ├── [ghid]
 │   │   │   │   ├── RattacherPersonne.tsx
 │   │   │   │   ├── SectionMembres.tsx
+│   │   │   │   ├── TraitementDuLot.test.tsx
 │   │   │   │   ├── TraitementDuLot.tsx
 │   │   │   │   ├── actions.ts
 │   │   │   │   ├── not-found.tsx
-│   │   │   │   └── page.tsx
+│   │   │   │   ├── page.tsx
+│   │   │   │   ├── redaction-lot.test.ts
+│   │   │   │   └── redaction-lot.ts
 │   │   │   └── page.tsx
 │   │   └── systemes
 │   │       ├── [cle]
@@ -254,6 +303,7 @@
 │   │   ├── schema-politique.ts
 │   │   ├── sync.ts
 │   │   └── verifier-politique.ts
+│   ├── collision-d-unicite.test.ts
 │   ├── connectors
 │   │   ├── github.test.ts
 │   │   ├── github.ts
@@ -279,6 +329,8 @@
 │   │   ├── constat-verification.test.ts
 │   │   ├── constat.test.ts
 │   │   ├── constat.ts
+│   │   ├── derogation.test.ts
+│   │   ├── derogation.ts
 │   │   ├── dossier.test.ts
 │   │   ├── dossier.ts
 │   │   ├── execution.test.ts
@@ -290,6 +342,8 @@
 │   │   ├── inventaire.test.ts
 │   │   ├── inventaire.ts
 │   │   ├── lecture.ts
+│   │   ├── lexique.test.ts
+│   │   ├── lexique.ts
 │   │   ├── libelle-constat.ts
 │   │   ├── libelle-dossier.ts
 │   │   ├── libelle-startup.ts
@@ -299,11 +353,14 @@
 │   │   ├── modele-plan.ts
 │   │   ├── octroi.test.ts
 │   │   ├── octroi.ts
+│   │   ├── participation.test.ts
+│   │   ├── participation.ts
 │   │   ├── perimetre.test.ts
 │   │   ├── perimetre.ts
 │   │   ├── plan.test.ts
 │   │   ├── plan.ts
 │   │   ├── policy.ts
+│   │   ├── politique-exemple.test.ts
 │   │   ├── rapprochement.test.ts
 │   │   ├── rapprochement.ts
 │   │   ├── rattachement-startup.test.ts
@@ -317,43 +374,66 @@
 │   │   ├── suggestion-rattachement.test.ts
 │   │   ├── suggestion-rattachement.ts
 │   │   └── tri-personnes.ts
+│   ├── etages-de-test.test.ts
 │   ├── garde-de-session.test.ts
+│   ├── identifiant-reserve.test.ts
 │   ├── lib
+│   │   ├── actions.test.ts
 │   │   ├── actions.ts
 │   │   ├── appartenance.ts
 │   │   ├── arrivee.test.ts
 │   │   ├── arrivee.ts
 │   │   ├── audit.ts
 │   │   ├── auth.ts
+│   │   ├── collision.ts
 │   │   ├── comptes-isoles.ts
 │   │   ├── configuration-connecteur.test.ts
 │   │   ├── configuration-connecteur.ts
+│   │   ├── connexion.test.ts
+│   │   ├── connexion.ts
 │   │   ├── db.ts
+│   │   ├── derogation.ts
 │   │   ├── dossier.test.ts
 │   │   ├── dossier.ts
 │   │   ├── env.ts
 │   │   ├── espace-membre.ts
 │   │   ├── execution.test.ts
 │   │   ├── execution.ts
+│   │   ├── fournisseurs.test.ts
+│   │   ├── fournisseurs.ts
 │   │   ├── inventaire.ts
 │   │   ├── modele-plan-edition.test.ts
 │   │   ├── modele-plan-edition.ts
 │   │   ├── modele-plan.ts
+│   │   ├── participation.ts
 │   │   ├── policy.ts
+│   │   ├── rappels-connexion.test.ts
+│   │   ├── rappels-connexion.ts
+│   │   ├── session.test.ts
 │   │   ├── session.ts
 │   │   └── sync
+│   │       ├── collecte.integration.test.ts
 │   │       ├── collecte.test.ts
 │   │       ├── collecte.ts
 │   │       ├── comptes-service.ts
 │   │       ├── constats.test.ts
 │   │       ├── constats.ts
+│   │       ├── derogation.integration.test.ts
 │   │       ├── executer.ts
+│   │       ├── gardefou.ts
 │   │       ├── perimetre-battement.test.ts
 │   │       ├── perimetre-echeance.test.ts
 │   │       ├── perimetre.test.ts
 │   │       ├── perimetre.ts
 │   │       └── rapprochement.ts
+│   ├── mots-de-l-interface.test.ts
+│   ├── proxy.test.ts
 │   ├── proxy.ts
+│   ├── test
+│   │   └── doubles
+│   │       ├── db.test.ts
+│   │       ├── db.ts
+│   │       └── session.ts
 │   └── ui
 │       ├── Actions.module.css
 │       ├── Aide.tsx
@@ -380,11 +460,16 @@
 │       ├── dsfr
 │       │   ├── client.tsx
 │       │   ├── defaultColorScheme.ts
+│       │   ├── server.test.tsx
 │       │   └── server.tsx
+│       ├── formulaire.ts
+│       ├── modale.test.tsx
 │       ├── modale.ts
 │       ├── profils.ts
 │       ├── severites.ts
 │       └── validation.ts
 ├── tsconfig.json
-└── vitest.config.ts
-77 directories, 312 files
+├── vitest.config.ts
+├── vitest.setup.integration.ts
+└── vitest.setup.unite.ts
+88 directories, 386 files
