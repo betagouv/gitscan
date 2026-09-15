@@ -562,10 +562,10 @@
 │   │   │   │   │   └── mock-geoloc-api.ts
 │   │   │   │   ├── hellowork
 │   │   │   │   │   ├── __snapshots__
-│   │   │   │   │   │   ├── import-hello-work.test.ts.snap
-│   │   │   │   │   │   └── importHelloWork.test.ts.snap
+│   │   │   │   │   │   └── import-hello-work.test.ts.snap
 │   │   │   │   │   ├── hello-work-mapper.test.ts
 │   │   │   │   │   ├── hello-work-mapper.ts
+│   │   │   │   │   ├── import-hello-work.new-format.test.input.xml
 │   │   │   │   │   ├── import-hello-work.test.input.xml
 │   │   │   │   │   ├── import-hello-work.test.ts
 │   │   │   │   │   └── import-hello-work.ts
@@ -589,6 +589,7 @@
 │   │   │   │   ├── import-from-stream-in-xml.test.ts
 │   │   │   │   ├── import-from-stream-in-xml.ts
 │   │   │   │   ├── import-from-url-in-csv.ts
+│   │   │   │   ├── import-from-url-in-xml.test.ts
 │   │   │   │   ├── import-from-url-in-xml.ts
 │   │   │   │   ├── is-company-in-blocked-cfa-list.test.ts
 │   │   │   │   ├── is-company-in-blocked-cfa-list.ts
@@ -666,6 +667,7 @@
 │   │   │   │   │   ├── import-recruteurs-lba-raw.ts
 │   │   │   │   │   ├── process-recruteurs-lba.test.ts
 │   │   │   │   │   ├── process-recruteurs-lba.ts
+│   │   │   │   │   ├── recruteurs-lba-mapper.test.ts
 │   │   │   │   │   └── recruteurs-lba-mapper.ts
 │   │   │   │   ├── rh-alternance
 │   │   │   │   │   ├── __snapshots__
@@ -771,7 +773,8 @@
 │   │   │   ├── 20260828160000-add-rdv-sync-indexes.ts
 │   │   │   ├── 20260831155536-remove-engagement-handicap-email-from-rolemanagements.ts
 │   │   │   ├── 20260901120000-reindex-delegated-offers-cfa-name.ts
-│   │   │   └── 20260901163000-normalize-naf-jobs-partners.ts
+│   │   │   ├── 20260901163000-normalize-naf-jobs-partners.ts
+│   │   │   └── 20260911180000-backfill-search-items-admin-codes.ts
 │   │   ├── security
 │   │   │   ├── access-log.service.ts
 │   │   │   ├── access-log.types.ts
@@ -825,6 +828,9 @@
 │   │       ├── formulaire.service.ts
 │   │       ├── ftjob.service.ts
 │   │       ├── ftjob.service.types.ts
+│   │       ├── geo-administrative
+│   │       │   ├── admin-area.test.ts
+│   │       │   └── admin-area.ts
 │   │       ├── geolocation.service.ts
 │   │       ├── job-opportunity.service.types.ts
 │   │       ├── jobs
@@ -862,6 +868,9 @@
 │   │       ├── rome.service.ts
 │   │       ├── rome.service.types.ts
 │   │       ├── search
+│   │       │   ├── search-items-admin-codes.test.ts
+│   │       │   ├── search-items-admin-codes.ts
+│   │       │   ├── search-items-formation-location.test.ts
 │   │       │   ├── search-items-keywords.service.test.ts
 │   │       │   ├── search-items-keywords.service.ts
 │   │       │   ├── search-items.service.test.ts
@@ -1185,6 +1194,8 @@
 │   │   │   ├── is-cfa-entreprise.ts
 │   │   │   └── is-geiq-entreprise.ts
 │   │   ├── utils
+│   │   │   ├── admin-area.test.ts
+│   │   │   ├── admin-area.ts
 │   │   │   ├── assert-unreachable.ts
 │   │   │   ├── contact-details.test.ts
 │   │   │   ├── contact-details.ts
@@ -1211,6 +1222,14 @@
 │   │       ├── siret-validator.test.ts
 │   │       └── siret-validator.ts
 │   └── tsconfig.json
+├── tools
+│   └── geo-781
+│       ├── README.md
+│       ├── admin-areas-bbox.json
+│       ├── bench.mjs
+│       ├── build-bbox.mjs
+│       ├── compass.md
+│       └── lib.mjs
 ├── tsconfig.json
 ├── ui
 │   ├── .env.test
@@ -1246,8 +1265,7 @@
 │   │   │   │       │   ├── SearchPageClient.tsx
 │   │   │   │       │   ├── SearchResultsList.tsx
 │   │   │   │       │   ├── SearchSortSelect.tsx
-│   │   │   │       │   ├── SearchTypeRechercheSelect.tsx
-│   │   │   │       │   └── is-offer-active.ts
+│   │   │   │       │   └── SearchTypeRechercheSelect.tsx
 │   │   │   │       ├── _hooks
 │   │   │   │       │   ├── use-auto-radius.ts
 │   │   │   │       │   ├── use-detail-navigation.test.ts
@@ -1270,25 +1288,29 @@
 │   │   │   │       │   ├── search.tracking.utils.test.ts
 │   │   │   │       │   └── search.tracking.utils.ts
 │   │   │   │       └── page.tsx
+│   │   │   ├── _components
+│   │   │   │   └── DetailZoneLayout.tsx
 │   │   │   ├── detail-rendez-vous
 │   │   │   │   └── [id]
 │   │   │   │       ├── DetailRendezVousRendererClient.tsx
 │   │   │   │       ├── layout.tsx
 │   │   │   │       └── page.tsx
 │   │   │   ├── emploi
-│   │   │   │   └── [type]
-│   │   │   │       └── [id]
-│   │   │   │           └── [intitule-offre]
-│   │   │   │               ├── CandidaterButton.tsx
-│   │   │   │               ├── JobDetailRendererClient.tsx
-│   │   │   │               ├── loading.tsx
-│   │   │   │               └── page.tsx
+│   │   │   │   ├── [type]
+│   │   │   │   │   └── [id]
+│   │   │   │   │       └── [intitule-offre]
+│   │   │   │   │           ├── CandidaterButton.tsx
+│   │   │   │   │           ├── JobDetailRendererClient.tsx
+│   │   │   │   │           ├── loading.tsx
+│   │   │   │   │           └── page.tsx
+│   │   │   │   └── layout.tsx
 │   │   │   ├── formation
-│   │   │   │   └── [id]
-│   │   │   │       └── [intitule-formation]
-│   │   │   │           ├── TrainingDetailRendererClient.tsx
-│   │   │   │           ├── loading.tsx
-│   │   │   │           └── page.tsx
+│   │   │   │   ├── [id]
+│   │   │   │   │   └── [intitule-formation]
+│   │   │   │   │       ├── TrainingDetailRendererClient.tsx
+│   │   │   │   │       ├── loading.tsx
+│   │   │   │   │       └── page.tsx
+│   │   │   │   └── layout.tsx
 │   │   │   ├── formulaire-intention
 │   │   │   │   ├── FormulaireIntentionPage.tsx
 │   │   │   │   ├── layout.tsx
@@ -1811,7 +1833,8 @@
 │   │   │   ├── TwoColumnFormLayout.tsx
 │   │   │   ├── WidgetAwareHeader.tsx
 │   │   │   ├── WidgetTester.tsx
-│   │   │   └── submit-with-focus-on-error.ts
+│   │   │   ├── submit-with-focus-on-error.ts
+│   │   │   └── zone-ids.ts
 │   │   ├── client_only_providers.tsx
 │   │   ├── dsfr-setup
 │   │   │   ├── default-color-scheme.ts
@@ -2589,6 +2612,7 @@
 │   ├── sentry.server.config.ts
 │   ├── services
 │   │   ├── arrondissements.ts
+│   │   ├── base-adresse.test.ts
 │   │   ├── base-adresse.ts
 │   │   ├── fetch-inser-jeune-stats.test.ts
 │   │   ├── fetch-inser-jeune-stats.ts
@@ -2654,6 +2678,7 @@
 │       ├── get-item-id.ts
 │       ├── get-session.ts
 │       ├── get-static-data.ts
+│       ├── is-offer-active.ts
 │       ├── is-widget.utils.ts
 │       ├── lba-item.types.ts
 │       ├── local-storage.ts
@@ -2672,4 +2697,4 @@
 │       └── use-search-params-record.ts
 ├── vitest.config.ts
 └── yarn.lock
-495 directories, 2747 files
+499 directories, 2768 files
