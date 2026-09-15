@@ -123,7 +123,8 @@
     │   │   │   ├── __init__.py
     │   │   │   ├── e2e
     │   │   │   │   ├── __init__.py
-    │   │   │   │   └── test_oidc_auth_flow.py
+    │   │   │   │   ├── test_oidc_auth_flow.py
+    │   │   │   │   └── test_oidc_logout_flow.py
     │   │   │   ├── test_backends.py
     │   │   │   ├── test_strategies.py
     │   │   │   └── test_views.py
@@ -169,8 +170,15 @@
     │   │   │   │   └── test_openapi_schema.py
     │   │   │   ├── test_api_config.py
     │   │   │   ├── test_api_users.py
-    │   │   │   └── test_models_users.py
+    │   │   │   ├── test_models_users.py
+    │   │   │   └── utils
+    │   │   │       ├── __init__.py
+    │   │   │       ├── test_state.py
+    │   │   │       └── test_urls.py
     │   │   ├── urls.py
+    │   │   ├── utils
+    │   │   │   ├── state.py
+    │   │   │   └── urls.py
     │   │   └── validators.py
     │   ├── demo
     │   │   ├── __init__.py
@@ -233,6 +241,7 @@
     │   │   │   ├── 0002_non_nullable_full_name_and_short_name.py
     │   │   │   ├── 0003_remove_user_metadata.py
     │   │   │   ├── 0004_uuid7_pk.py
+    │   │   │   ├── 0005_accounts_sub.py
     │   │   │   └── __init__.py
     │   │   └── models.py
     │   └── uv.lock
@@ -253,8 +262,11 @@
     │   │   │   ├── public
     │   │   │   │   ├── assets
     │   │   │   │   │   ├── lasuite-logomark.svg
+    │   │   │   │   │   ├── lasuite-mark.svg
     │   │   │   │   │   ├── logout-exit-icon.svg
     │   │   │   │   │   ├── logout-illustration.svg
+    │   │   │   │   │   ├── moncompte-logo.svg
+    │   │   │   │   │   ├── proconnect-logo.svg
     │   │   │   │   │   └── union.svg
     │   │   │   │   ├── favicon.ico
     │   │   │   │   └── favicon.png
@@ -273,6 +285,14 @@
     │   │   │   │   │       ├── LaSuiteLogo.scss
     │   │   │   │   │       └── LaSuiteLogo.tsx
     │   │   │   │   ├── features
+    │   │   │   │   │   ├── account
+    │   │   │   │   │   │   ├── AccountLayout.tsx
+    │   │   │   │   │   │   ├── AccountNavIcons.tsx
+    │   │   │   │   │   │   ├── AccountPage.scss
+    │   │   │   │   │   │   ├── AccountPage.tsx
+    │   │   │   │   │   │   ├── AccountSidebar.tsx
+    │   │   │   │   │   │   ├── PersonalInformationPanel.tsx
+    │   │   │   │   │   │   └── SecurityPanel.tsx
     │   │   │   │   │   ├── api
     │   │   │   │   │   │   ├── APIError.ts
     │   │   │   │   │   │   ├── fetchApi.ts
@@ -399,4 +419,4 @@
         │   └── template.mjml
         ├── package.json
         └── yarn.lock
-110 directories, 291 files
+113 directories, 308 files

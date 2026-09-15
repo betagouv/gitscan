@@ -8,6 +8,7 @@ and this project adheres to
 
 ### Added
 
+- 💄(frontend) add profile home page
 - 💄(frontend) add intermediate login page
 - ✨(frontend) init the frontend app (webapp + e2e)
 - ✨(authentication) support multiple identity providers
@@ -22,5 +23,12 @@ and this project adheres to
 - 👽(authentication) handle Social Auth's login views requiring POST requests
 - 🦖(OIDC Provider) make introspection endpoint fall back to PSA backends
 - ✨(OIDC Provider) relay RP-Initiated logout confirmation to the frontend
+- 🏗️ (authentication) generate our own `sub`
+- ✨(auth) also logout from the upstream OIDC Provider when logging out
+
+
+### Fixed
+
+- 🩹(frontend) enable trailingSlash to fix static export routes
 
 [unreleased]: https://github.com/suitenumerique/accounts/compare/main
