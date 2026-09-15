@@ -1,13 +1,10 @@
-## Changelog : upptime (30 derniers jours, au 10 septembre 2026)
+## Changelog : upptime (30 derniers jours, au 15 septembre 2026)
 
 ### Résumé
-Le projet a bénéficié de plusieurs mises à jour de son moteur de surveillance et a été simplifié par le retrait d'un service précédemment monitoré. La maintenance automatisée assure la fraîcheur constante des indicateurs de disponibilité.
+Le projet a bénéficié d'une mise à jour de son moteur de surveillance et d'un ajustement de sa configuration. La liste des services suivis a été simplifiée par le retrait d'un site de monitoring.
 
 ### Évolutions fonctionnelles
-- Retrait du suivi de disponibilité pour le service "Laboratoire La bonne alternance" [#2662](https://github.com/mission-apprentissage/upptime/pull/2662).
+- Retrait du service "Laboratoire La bonne alternance" de la liste des services surveillés [#2662](https://github.com/mission-apprentissage/upptime/pull/2662).
 
 ### Évolutions techniques
-- Mise à jour du moteur Upptime vers la version 1.44.0.
-
-### Autres changements
-- Maintenance automatisée des graphiques de performance et des résumés de statut dans le README.
+- Mise à jour du moteur Upptime vers la version v1.44.0.
