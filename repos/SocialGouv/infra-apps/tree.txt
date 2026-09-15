@@ -11,6 +11,7 @@
 │   ├── arc-system.yaml
 │   ├── buildkit-operator.yaml
 │   ├── charon.yaml
+│   ├── ci-secrets.yaml
 │   ├── clamav.yaml
 │   ├── cnpg.yaml
 │   ├── eck-operator.yaml
@@ -54,10 +55,6 @@
 ├── charon
 │   ├── charon.yaml
 │   └── projects
-│       ├── charon-carnets
-│       │   ├── config-map.yaml
-│       │   ├── ingress.yaml
-│       │   └── sealed-secret.yaml
 │       ├── charon-egapro
 │       │   ├── config-map.yaml
 │       │   ├── ingress.yaml
@@ -147,6 +144,44 @@
 │       │   ├── ingress.yaml
 │       │   └── service.yaml
 │       └── values.yaml
+├── ci-secrets
+│   ├── README.md
+│   ├── ovh-dev
+│   │   ├── ci-1j1s.git-auth.sealedsecret.yaml
+│   │   ├── ci-archifiltre.git-auth.sealedsecret.yaml
+│   │   ├── ci-carnets-standup.git-auth.sealedsecret.yaml
+│   │   ├── ci-carnets.git-auth.sealedsecret.yaml
+│   │   ├── ci-cdtn.git-auth.sealedsecret.yaml
+│   │   ├── ci-domifa.git-auth.sealedsecret.yaml
+│   │   ├── ci-egapro.git-auth.sealedsecret.yaml
+│   │   ├── ci-enfants-du-spectacle.git-auth.sealedsecret.yaml
+│   │   ├── ci-fabrique.git-auth.sealedsecret.yaml
+│   │   ├── ci-fce.git-auth.sealedsecret.yaml
+│   │   ├── ci-graal.git-auth.sealedsecret.yaml
+│   │   ├── ci-monsuivipsy.git-auth.sealedsecret.yaml
+│   │   ├── ci-nos1000jours.git-auth.sealedsecret.yaml
+│   │   ├── ci-recosante.git-auth.sealedsecret.yaml
+│   │   ├── ci-reva.git-auth.sealedsecret.yaml
+│   │   ├── ci-secretariat.git-auth.sealedsecret.yaml
+│   │   ├── ci-srdt.git-auth.sealedsecret.yaml
+│   │   ├── ci-startup-bootstrap.git-auth.sealedsecret.yaml
+│   │   └── ci-vao.git-auth.sealedsecret.yaml
+│   └── ovh-prod
+│       ├── ci-1j1s.git-auth.sealedsecret.yaml
+│       ├── ci-archifiltre.git-auth.sealedsecret.yaml
+│       ├── ci-cdtn.git-auth.sealedsecret.yaml
+│       ├── ci-domifa.git-auth.sealedsecret.yaml
+│       ├── ci-egapro.git-auth.sealedsecret.yaml
+│       ├── ci-fabrique.git-auth.sealedsecret.yaml
+│       ├── ci-fce.git-auth.sealedsecret.yaml
+│       ├── ci-graal.git-auth.sealedsecret.yaml
+│       ├── ci-monsuivipsy.git-auth.sealedsecret.yaml
+│       ├── ci-nos1000jours.git-auth.sealedsecret.yaml
+│       ├── ci-recosante.git-auth.sealedsecret.yaml
+│       ├── ci-reva.git-auth.sealedsecret.yaml
+│       ├── ci-srdt.git-auth.sealedsecret.yaml
+│       ├── ci-startup-bootstrap.git-auth.sealedsecret.yaml
+│       └── ci-vao.git-auth.sealedsecret.yaml
 ├── clamav
 │   ├── Chart.yaml
 │   ├── templates
@@ -174,7 +209,7 @@
 │   ├── Chart.lock
 │   ├── Chart.yaml
 │   ├── charts
-│   │   ├── iterion-3.21.0.tgz
+│   │   ├── iterion-3.112.2.tgz
 │   │   ├── minio-5.4.0.tgz
 │   │   ├── mongodb-0.7.8.tgz
 │   │   └── valkey-0.10.3.tgz
@@ -365,12 +400,16 @@
 │   │           ├── charts
 │   │           │   ├── final-appset -> ../../../../../charts/final-appset/
 │   │           │   ├── metabase -> ../../../../../charts/metabase
-│   │           │   └── metabase-matomo-sync -> ../../../../../charts/metabase-matomo-sync/
+│   │           │   ├── metabase-matomo-sync -> ../../../../../charts/metabase-matomo-sync/
+│   │           │   └── oauth2-proxy -> ../../../../../charts/oauth2-proxy
 │   │           ├── envs
 │   │           │   └── prod
 │   │           │       ├── config.yaml
 │   │           │       ├── templates
-│   │           │       │   └── metabase.sealedsecret.yaml
+│   │           │       │   ├── metabase.sealedsecret.yaml
+│   │           │       │   ├── metabase.traefik.yaml
+│   │           │       │   ├── oauth2-proxy.configmap.yml
+│   │           │       │   └── oauth2-proxy.sealed-secret.yaml
 │   │           │       └── values.yaml
 │   │           ├── templates
 │   │           │   └── appset-env.yaml
@@ -424,12 +463,16 @@
 │   │       │   ├── charts
 │   │       │   │   ├── final-appset -> ../../../../../charts/final-appset/
 │   │       │   │   ├── metabase -> ../../../../../charts/metabase
-│   │       │   │   └── metabase-matomo-sync -> ../../../../../charts/metabase-matomo-sync/
+│   │       │   │   ├── metabase-matomo-sync -> ../../../../../charts/metabase-matomo-sync/
+│   │       │   │   └── oauth2-proxy -> ../../../../../charts/oauth2-proxy
 │   │       │   ├── envs
 │   │       │   │   └── prod
 │   │       │   │       ├── config.yaml
 │   │       │   │       ├── templates
 │   │       │   │       │   ├── metabase.sealedsecret.yaml
+│   │       │   │       │   ├── metabase.traefik.yaml
+│   │       │   │       │   ├── oauth2-proxy.configmap.yml
+│   │       │   │       │   ├── oauth2-proxy.sealed-secret.yaml
 │   │       │   │       │   ├── ovh-database.sealedsecret.yaml
 │   │       │   │       │   └── refresh-views.cronjob.yaml
 │   │       │   │       └── values.yaml
@@ -548,12 +591,16 @@
 │   │           ├── charts
 │   │           │   ├── final-appset -> ../../../../../charts/final-appset/
 │   │           │   ├── metabase -> ../../../../../charts/metabase
-│   │           │   └── metabase-matomo-sync -> ../../../../../charts/metabase-matomo-sync/
+│   │           │   ├── metabase-matomo-sync -> ../../../../../charts/metabase-matomo-sync/
+│   │           │   └── oauth2-proxy -> ../../../../../charts/oauth2-proxy
 │   │           ├── envs
 │   │           │   └── prod
 │   │           │       ├── config.yaml
 │   │           │       ├── templates
 │   │           │       │   ├── metabase.sealedsecret.yaml
+│   │           │       │   ├── metabase.traefik.yaml
+│   │           │       │   ├── oauth2-proxy.configmap.yml
+│   │           │       │   ├── oauth2-proxy.sealed-secret.yaml
 │   │           │       │   └── refresh-views.cronjob.yaml
 │   │           │       └── values.yaml
 │   │           ├── templates
@@ -568,6 +615,7 @@
 │   │   │       │   ├── final-appset -> ../../../../../charts/final-appset/
 │   │   │       │   ├── metabase -> ../../../../../charts/metabase
 │   │   │       │   ├── metabase-matomo-sync -> ../../../../../charts/metabase-matomo-sync/
+│   │   │       │   ├── oauth2-proxy -> ../../../../../charts/oauth2-proxy
 │   │   │       │   └── pastek-mirror
 │   │   │       │       ├── Chart.yaml
 │   │   │       │       ├── charts
@@ -581,6 +629,9 @@
 │   │   │       │       ├── config.yaml
 │   │   │       │       ├── templates
 │   │   │       │       │   ├── metabase.sealedsecret.yaml
+│   │   │       │       │   ├── metabase.traefik.yaml
+│   │   │       │       │   ├── oauth2-proxy.configmap.yml
+│   │   │       │       │   ├── oauth2-proxy.sealed-secret.yaml
 │   │   │       │       │   └── psql-init.sealedsecret.yaml
 │   │   │       │       └── values.yaml
 │   │   │       ├── templates
@@ -603,30 +654,9 @@
 │   │               ├── allow-namespace-metabase-access.netpol.yaml
 │   │               └── uploads.pvc.yaml
 │   ├── recosante
-│   │   ├── apps
-│   │   │   └── metabase
-│   │   │       ├── Chart.lock
-│   │   │       ├── Chart.yaml
-│   │   │       ├── charts
-│   │   │       │   ├── final-appset -> ../../../../../charts/final-appset
-│   │   │       │   ├── metabase -> ../../../../../charts/metabase
-│   │   │       │   ├── metabase-matomo-sync -> ../../../../../charts/metabase-matomo-sync
-│   │   │       │   └── oauth2-proxy -> ../../../../../charts/oauth2-proxy
-│   │   │       ├── envs
-│   │   │       │   └── prod
-│   │   │       │       ├── config.yaml
-│   │   │       │       ├── templates
-│   │   │       │       │   ├── metabase.sealedsecret.yaml
-│   │   │       │       │   ├── oauth2-proxy.configmap.yml
-│   │   │       │       │   └── oauth2-proxy.sealed-secret.yaml
-│   │   │       │       └── values.yaml
-│   │   │       ├── templates
-│   │   │       │   └── appset-env.yaml
-│   │   │       └── values.yaml
 │   │   └── raw
 │   │       └── clusters
 │   │           └── ovh-prod
-│   │               ├── recosante.netpol.yaml
 │   │               └── redis.pvc.yaml
 │   ├── srdt
 │   │   └── apps
@@ -655,13 +685,17 @@
 │   │           ├── charts
 │   │           │   ├── final-appset -> ../../../../../charts/final-appset/
 │   │           │   ├── metabase -> ../../../../../charts/metabase
-│   │           │   └── metabase-matomo-sync -> ../../../../../charts/metabase-matomo-sync
+│   │           │   ├── metabase-matomo-sync -> ../../../../../charts/metabase-matomo-sync
+│   │           │   └── oauth2-proxy -> ../../../../../charts/oauth2-proxy
 │   │           ├── envs
 │   │           │   └── prod
 │   │           │       ├── config.yaml
 │   │           │       ├── templates
 │   │           │       │   ├── allow-ns-metabase-access.netpol.yaml
-│   │           │       │   └── metabase.sealedsecret.yaml
+│   │           │       │   ├── metabase.sealedsecret.yaml
+│   │           │       │   ├── metabase.traefik.yaml
+│   │           │       │   ├── oauth2-proxy.configmap.yml
+│   │           │       │   └── oauth2-proxy.sealed-secret.yaml
 │   │           │       └── values.yaml
 │   │           ├── templates
 │   │           │   └── appset-env.yaml
@@ -709,13 +743,17 @@
 │       │       ├── charts
 │       │       │   ├── final-appset -> ../../../../../charts/final-appset/
 │       │       │   ├── metabase -> ../../../../../charts/metabase
-│       │       │   └── metabase-matomo-sync -> ../../../../../charts/metabase-matomo-sync/
+│       │       │   ├── metabase-matomo-sync -> ../../../../../charts/metabase-matomo-sync/
+│       │       │   └── oauth2-proxy -> ../../../../../charts/oauth2-proxy
 │       │       ├── envs
 │       │       │   └── prod
 │       │       │       ├── config.yaml
 │       │       │       ├── templates
 │       │       │       │   ├── allow-ns-metabase-access.netpol.yaml
-│       │       │       │   └── metabase.sealedsecret.yaml
+│       │       │       │   ├── metabase.sealedsecret.yaml
+│       │       │       │   ├── metabase.traefik.yaml
+│       │       │       │   ├── oauth2-proxy.configmap.yml
+│       │       │       │   └── oauth2-proxy.sealed-secret.yaml
 │       │       │       └── values.yaml
 │       │       ├── templates
 │       │       │   └── appset-env.yaml
@@ -756,4 +794,4 @@
     │   ├── s3-creds.sealedsecret.yaml
     │   └── smtp-creds.sealedsecret.yaml
     └── values.yaml
-301 directories, 457 files
+298 directories, 498 files

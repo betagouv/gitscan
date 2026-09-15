@@ -1,58 +1,54 @@
 {
   "url": "https://github.com/SocialGouv/infra-apps",
   "name": "infra-apps",
-  "description": "Ce dépôt permet de positionner des ressources Kubernetes via ArgoCD. Il contient les configurations pour déployer et gérer diverses applications et services au sein de l'infrastructure.",
+  "description": "Ce dépôt contient les manifestes Kubernetes permettant de déployer et de gérer l'infrastructure des applications de SocialGouv via ArgoCD.",
   "language": "YAML",
   "features": [
-    "API & Intégrations",
+    "Infrastructure & Stockage",
     "Sécurité & Conformité",
-    "Administration & Backoffice",
-    "Infrastructure & Stockage"
+    "Monitoring & Logs",
+    "Gestion des utilisateurs & Permissions"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": "Développeurs",
   "dependencies": [
     "Kubernetes",
     "ArgoCD",
     "Helm",
-    "Metabase",
+    "Buildkit-operator",
+    "KEDA",
+    "MinIO",
     "Elasticsearch",
-    "CNPG",
-    "Vaultwarden",
-    "KEDA"
+    "Metabase"
   ],
   "components": [
-    "Kubernetes & Helm",
     "CI/CD & Déploiement",
-    "Docker & Conteneurs"
+    "Docker & Conteneurs",
+    "Kubernetes & Helm",
+    "Stockage objet",
+    "Ansible & IaC"
   ],
   "auth": {
     "methods": [
-      "oauth2"
+      "oauth2",
+      "jwt",
+      "sso"
     ],
     "providers": [
       "GitHub"
     ]
   },
+  "tests": "E2E",
   "workflows": [
-    "CI/CD via GitHub Actions"
+    "ArgoCD"
   ],
-  "lastActivity": "2026-08-20T12:15:32+02:00",
+  "lastActivity": "2026-09-13T15:07:24+02:00",
   "status": "active",
-  "license": null,
   "hasDocumentation": true,
-  "metrics": {
-    "stars": 0,
-    "forks": 2,
-    "contributors": null,
-    "openIssues": 11
-  },
   "tags": [
-    "Kubernetes & Helm",
-    "CI/CD & GitHub Actions",
     "Git & DevOps",
-    "Reporting & BI",
-    "Bases de données NoSQL",
-    "Bases de données SQL",
-    "Sécurité & Auth"
+    "Docker & Conteneurs",
+    "CI/CD & GitHub Actions",
+    "Kubernetes & Helm",
+    "Déploiement & Hosting"
   ]
 }

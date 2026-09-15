@@ -1,3 +1,67 @@
+2026-09-13T15:07:24+02:00 - ede0f0f - devthejo : fix(iterion): reload Studio for run sign-in return
+2026-09-11T12:18:13+02:00 - 9212146 - devthejo : chore(charon): decommission charon-carnets
+2026-09-10T20:43:41+02:00 - a131c03 - devthejo : feat(iterion): start the legacy refresh-cookie soak on ovh-prod (#1076)
+2026-09-10T14:17:49+02:00 - 461ca14 - devthejo : feat(iterion): enable the board claim reaper on ovh-prod (ADR-096)
+2026-09-10T12:51:54+02:00 - 02571f4 - devthejo : feat(iterion): runner to bad861c7 (bot devbox on copy drivers), epoch 5
+2026-09-09T19:54:26+02:00 - 4a6a741 - devthejo : feat(iterion): runner to a7db190e (workspace_checkpoint), epoch 4
+2026-09-09T19:41:05+02:00 - bdab463 - devthejo : fix(iterion): runner to the schema-14 build, epoch 3
+2026-09-09T13:59:52+02:00 - 0274066 - devthejo : feat(iterion): iterion.cloud becomes the canonical public URL
+2026-09-09T13:11:00+02:00 - cbbef20 - devthejo : feat(iterion): runner to v3.123.1 code, epoch 2
+2026-09-08T22:41:05+02:00 - 200e38a - devthejo : feat(iterion): serve iterion.cloud alongside the fabrique host
+2026-09-08T22:39:33+02:00 - 3beaa6d - devthejo : feat(iterion): the deployment can actually send mail
+2026-09-08T21:21:29+02:00 - 976ec47 - devthejo : docs(iterion): the runner drain note described a configuration that is gone
+2026-09-08T18:46:32+02:00 - 3a1166f - devthejo : fix(iterion): the codex version override is the one gpt-6-astra requires
+2026-09-08T16:22:21+02:00 - 740d668 - devthejo : fix(arc-runners): the runners take upstream's image, pinned and current
+2026-09-08T12:59:25+02:00 - 216f0d8 - devthejo : chore(iterion): bump the prod runner to v3.119.0
+2026-09-07T23:08:25+02:00 - a0e4f5d - devthejo : chore(iterion): bump the prod runner to v3.115.2 — the kubectl regression is fixed
+2026-09-07T20:49:39+02:00 - 1430445 - devthejo : revert(iterion): roll the prod runner back to v3.112.19 — kubectl --request-timeout breaks in-cluster config
+2026-09-07T20:26:44+02:00 - 144d3b3 - devthejo : chore(iterion): bump the prod runner to v3.113.2
+2026-09-07T08:38:41+02:00 - bfec83a - devthejo : chore(iterion): bump the prod runner to v3.112.19 (a stale LAUNCH redelivery never restarts a requeued run, the resumed budget is re-stamped post-clamp, the kubernetes post_create phase is bounded — #822; the App client per connection — #846; the gate on board-dispatched launches — #850)
+2026-09-06T21:22:31+02:00 - 4621f80 - devthejo : chore(iterion): bump the prod runner to ba3db5361 (v3.112.14 — Billy 1.6.0 with the variadic min/max its delivery reserve needs, #830; App client per connection, #846; publish grant bound to the run's tenant, #849)
+2026-09-06T19:44:34+02:00 - c5acacb - devthejo : chore(iterion): bump the prod runner to 1734a3340 (v3.112.12 — carries #815: the oracle report leaves the phantom run-files directory, an oracle that never ran is typed ORACLE_NOT_RUN — the server already serves f5176376a)
+2026-09-06T14:03:04+02:00 - 31a87e1 - devthejo : chore(iterion): bump the prod runner to c3647e703 (v3.112.7 — a sandboxed claw node meters on the credential that served it, #805; the board dispatcher never claims a card it cannot launch, #798; run.*/typed compute/outputs.* in tool commands, #791 #792 #797)
+2026-09-06T08:59:33+02:00 - e955eff - devthejo : chore(iterion): the platform pods outrank the run pods — PriorityClass resource-burstable on server and runner (SocialGouv/iterion#732)
+2026-09-06T01:33:08+02:00 - 58d9f6e - devthejo : chore(iterion): bump the prod runner to 2ecc75b1 (v3.111.0 — runner aligned with the server that a restart pulled from :edge — a runner five releases behind failed to compile the server's IR (3 diagnostics) on 8/8 deliveries and parked five runs on the DLQ with no event)
+2026-09-06T01:18:40+02:00 - 486ccfa - devthejo : chore(iterion): bound run-pod memory at 8Gi, no CPU limit (SocialGouv/iterion#732)
+2026-09-05T19:02:59+02:00 - e99cf44 - devthejo : chore(iterion): bump the prod runner to 6f007d767 (v3.106.1 — a subbot child executes in its parent's sandbox #766; extend.bot counts only real additions and a refusal is not converged #765; typed refusals #757)
+2026-09-05T15:15:55+02:00 - 63fcda7 - devthejo : chore(iterion): bump the prod runner to 58c25c9b5 (v3.104.0 — gate_timeout_s read from the contract and a gate expiry ends the run failed without retry; typed only_lot refusals — #734)
+2026-09-05T14:22:06+02:00 - 8a55b1e - devthejo : chore(iterion): bump the prod runner to edd5b9dcf (v3.103.0 — the run's forfait crosses the sandbox boundary, #736)
+2026-09-05T13:27:39+02:00 - 45236c0 - devthejo : chore(iterion): retire the pod-level Claude forfait secret (iterion-forfait)
+2026-09-05T11:47:08+02:00 - 9643186 - devthejo : chore(iterion): bump runner digest to 8727674c (engine 7d8d81cd5 — an Anthropic forfait authenticates claw on the pod; SocialGouv/iterion#698, proof for #687)
+2026-09-05T11:03:58+02:00 - 3e068a5 - devthejo : chore(iterion): bump runner digest to 35918209 (engine 70da3d9c — the run pod's Ready wait defaults to 10 min, was 180 s; SocialGouv/iterion#707)
+2026-09-05T08:41:49+02:00 - c5da3ce - devthejo : chore(iterion): Release B — runner epoch 0 → 1
+2026-09-05T08:41:48+02:00 - 45144df - devthejo : chore(iterion): drop the dead OPENAI_API_KEY from the prod iterion-llm secret
+2026-09-05T04:08:30+02:00 - 8467924 - devthejo : chore(iterion): bump runner digest to bdc35390 + chart 3.53.0→3.102.0 (engine 06e2fe2d2 v3.102.0 — run pods carry requests + node spread; drain back to the chart's 8h)
+2026-09-04T22:46:59+02:00 - 9d3d38c - devthejo : Revert "chore(iterion): kyverno policy — run pods get CPU/memory requests and a node spread (five runs piled on one 8-core worker, 89% CPU, oracle boot 459s vs 300s budget)"
+2026-09-04T22:31:30+02:00 - 4cecfc6 - devthejo : chore(iterion): kyverno policy — run pods get CPU/memory requests and a node spread (five runs piled on one 8-core worker, 89% CPU, oracle boot 459s vs 300s budget)
+2026-09-04T19:24:40+02:00 - a4f0256 - devthejo : chore(iterion): bump runner digest to 07c0f041 (engine e1786cc3 — moitié runner de #678 : le classifier NOMME la fenêtre hebdo dans un refus relayé en texte)
+2026-09-04T12:31:34+02:00 - a1c9ad6 - devthejo : chore(iterion): bump runner digest to 0fd5f2dc (engine ea2b27481 v3.100.2 — resume restores the banked chain #652)
+2026-09-04T08:55:55+02:00 - 674f8b6 - devthejo : chore(iterion): bump runner digest to 46eb7af7 (engine e81efa2bc v3.100.0 — Revi cost pass: mid-node usage_progress + pacer expansion + sync debounce engine side)
+2026-09-03T22:26:24+02:00 - a1237a5 - devthejo : chore(iterion): bump runner digest to 3a84365f (engine e194aebe0 v3.99.0 — board claim lease + fenced watchdog ADR-096, reaper OFF)
+2026-09-03T15:22:30+02:00 - a94b00d - devthejo : chore(iterion): bump runner digest to 349edbc1 (engine cca3d20d v3.96.1 — quota refusal classified + visible)
+2026-09-03T11:13:03+02:00 - 86af24b - devthejo : chore(iterion): bump runner digest to e22c63ef (engine fc937122 v3.94.1 — ambient MCP degrade)
+2026-09-03T11:08:08+02:00 - 911468a - devthejo : feat(ci-secrets): seal a forge token into every ci- namespace
+2026-09-02T22:52:44+02:00 - e86faa4 - devthejo : chore(iterion): bump runner digest to ff9967db (engine 53c4b61e wire v12 + rollout epoch)
+2026-09-02T13:15:35+02:00 - 12a5bcd - devthejo : chore(iterion): bump runner digest to 2c8f9cfe (engine a08f2b57 fallback chain)
+2026-09-02T12:38:15+02:00 - 1adeca4 - devthejo : fix(metabase): point the six IngressRoutes at their own certificate
+2026-09-02T12:30:38+02:00 - b9a7404 - devthejo : feat(metabase): put oauth2-proxy in front of the six unprotected instances
+2026-09-02T10:33:14+02:00 - 15f2dc9 - devthejo : chore(recosante): decommission metabase — unused since 2025-07-31
+2026-09-02T10:25:52+02:00 - 1164015 - devthejo : fix(oauth2-proxy): stop pinning the github scope, it drops read:org
+2026-09-01T23:52:24+02:00 - bf6b9d6 - devthejo : chore(iterion): bump prod runner digest to v3.86.0 (outcome-reactor series #595/#597/#598/#599, router ships OFF)
+2026-09-01T20:34:04+02:00 - 788cd0b - devthejo : chore(iterion): bump prod runner digest to the v3.84.x train (merge 097de77f2)
+2026-09-01T17:16:13+02:00 - bcf635a - devthejo : chore(iterion): bump prod runner digest to v3.82.0 build (ADR-095 terminal-state contract)
+2026-09-01T16:34:23+02:00 - acdde28 - devthejo : chore(iterion): runner pool 8 -> 12 — five campaign lanes plus eight concurrent PR reviews exceed 8 slots
+2026-09-01T15:34:37+02:00 - 0065dab - devthejo : fix(iterion): size the frozen runner pool at 8 — at 5 a campaign starved the instance's own CI
+2026-09-01T11:49:30+02:00 - b16771f - devthejo : chore(oauth2-proxy): bump shared chart image to v7.15.4
+2026-09-01T11:49:30+02:00 - 4d74c69 - devthejo : fix(oauth2-proxy): flag the session cookie Secure on the metabase proxies
+2026-09-01T10:42:08+02:00 - 7a4f9a8 - devthejo : feat(iterion): wire ITERION_ALERTS_WEBHOOK_URL (Mattermost ops alerts) on prod server
+2026-09-01T10:08:32+02:00 - 6828efc - devthejo : fix(iterion): pin the runner image to a digest — every merge on main was killing all in-flight runs
+2026-08-31T22:41:29+02:00 - 9b932ff - devthejo : fix(iterion): freeze the runner pool at 5/5 — KEDA scale-in kills multi-hour runs
+2026-08-31T22:06:14+02:00 - fe68c31 - devthejo : feat(iterion): JetStream stream replication R3 on prod — data-HA, not just connection-HA
+2026-08-27T21:13:31+02:00 - c0aa740 - devthejo : feat(iterion): codex OAuth client id on prod — start the refresh worker, keep the team ChatGPT forfait alive
+2026-08-27T20:56:04+02:00 - bb33735 - devthejo : feat(iterion): ITERION_CODEX_VERSION on prod — unlock gpt-5.6 on the ChatGPT-forfait wire
+2026-08-26T16:41:44+02:00 - fc33c31 - devthejo : fix(iterion): unstick the minio-mkbucket sync (Replace alone cannot recreate a TTL'd Job)
+2026-08-21T07:47:53+02:00 - 940d540 - devthejo : chore(iterion): bump chart 3.21.0 → 3.53.0 — the graceful-shutdown pass
 2026-08-20T12:15:32+02:00 - 33a077d - devthejo : feat(iterion): enable tracing on prod at 0.1
 2026-08-20T07:36:11+02:00 - c814296 - devthejo : feat(iterion): wire prod error tracking to the sentry2 iterion project
 2026-08-19T19:24:41+02:00 - 6e88f6a - devthejo : fix(metabase): stop skipping OAuth on the whole /api/session tree

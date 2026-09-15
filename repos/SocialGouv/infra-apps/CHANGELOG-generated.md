@@ -1,29 +1,29 @@
-## Changelog : infra-apps (30 derniers jours, au 20/08/2026)
+## Changelog : infra-apps (30 derniers jours, au 13/09/2026)
 
 ### Résumé
-Ce mois-ci a été marqué par une consolidation majeure de l'infrastructure et un renforcement de la sécurité. Les efforts se sont concentrés sur la migration des services de build vers une architecture centralisée (Buildkit-operator), l'amélioration de l'isolation et de l'observabilité du service Iterion, ainsi que la correction de vulnérabilités critiques sur Metabase.
+Ce mois a été principalement consacré à la stabilisation et à la professionnalisation de la plateforme Iterion. Les évolutions majeures incluent l'adoption d'une URL publique officielle, le renforcement de la haute disponibilité des données et une amélioration significative de la gestion des ressources de calcul pour éviter l'interruption des tâches de longue durée.
 
 ### Évolutions fonctionnelles
-- **Token-Bureau** : Amélioration de la gestion des permissions (application des overrides par dépôt) et extension des droits pour la CI egapro [#49](https://github.com/SocialGouv/infra-apps/issues/49).
-- **Metabase** : Fiabilisation du processus d'authentification OAuth pour les sessions utilisateurs.
-- **Iterion** : Autorisation de l'utilisation de l'OAuth pour les SDK tiers en environnement de production.
+- **Nouvelle identité web** : `iterion.cloud` devient l'URL publique canonique de la plateforme.
+- **Communications** : Le déploiement est désormais capable d'envoyer des emails.
+- **Expérience utilisateur** : Correction du flux de retour après la connexion (sign-in) dans l'interface Studio.
 
 ### Évolutions techniques
-- **Iterion** : 
-    - Mise en place de l'observabilité via le traçage et le suivi d'erreurs (Sentry).
-    - Déploiement de l'isolation par pods (sandboxing) pour les runners en production (ADR-082).
-    - Optimisation de la gestion des ressources et des forfaits [#51](https://github.com/SocialGouv/infra-apps/issues/51).
-- **Metabase** : 
-    - Correction de vulnérabilités de sécurité critiques (injection SQL non authentifiée et contournement OAuth).
-    - Mise à jour de la gestion des certificats SSL.
-- **Buildkit-Operator** : 
-    - Migration complète des services de build vers l'opérateur et décommissionnement du service buildkit indépendant.
-    - Gestion automatisée du cycle de vie du cache S3 et durcissement de la sécurité post-revue.
-    - Configuration explicite des spécificités de stockage et de Load Balancing sur OVH.
-- **Architecture** : 
-    - Migration de la veille (Huginn) vers Iterion.
-    - Décommissionnement de plusieurs composants obsolètes (buildkit-service, huginn).
+- **Stabilité et mise à l'échelle d'Iterion** :
+    - Optimisation du pool de runners (passage de 8 à 12 instances) pour absorber la charge des campagnes et des revues de PR.
+    - Correction des problèmes de mise à l'échelle (KEDA) qui interrompaient les processus de calcul de longue durée.
+    - Verrouillage des images de runners par digest pour éviter les ruptures de service lors des déploiements.
+    - Ajustement de la gestion des ressources (mémoire et `PriorityClass`) pour garantir la priorité des pods de la plateforme sur les pods de calcul.
+- **Fiabilité et Observabilité** :
+    - Mise en place de la réplication de flux JetStream pour assurer la haute disponibilité des données (Data-HA).
+    - Activation du traçage et intégration du suivi d'erreurs via Sentry pour une meilleure réactivité opérationnelle.
+- **Sécurité et Authentification** :
+    - Sécurisation des instances Metabase par l'ajout d'un proxy OAuth2 et correction de la gestion des certificats.
+    - Nettoyage des secrets obsolètes (clés API OpenAI et Claude) et des secrets de forfait au niveau des pods.
+    - Amélioration de la sécurité des pipelines CI/CD via l'isolation des tokens de forge dans les namespaces dédiés.
+- **Maintenance des composants** :
+    - Série de mises à jour critiques du runner de production pour corriger diverses régressions (notamment sur `kubectl`, la gestion des timeouts et les politiques de ressources) [[#822](https://github.com/SocialGouv/infra-apps/issues/822)], [[#846](https://github.com/SocialGouv/infra-apps/issues/846)], [[#850](https://github.com/SocialGouv/infra-apps/issues/850)].
 
 ### Autres changements
-- **Documentation** : Mise à jour des guides concernant l'utilisation des tokens pour le Buildkit-operator.
-- **Nettoyage** : Suppression de fonctionnalités et de configurations obsolètes (IA Metabase, variables de déploiement dépréciées) et optimisation des charts Helm.
+- **Nettoyage de l'infrastructure** : Déclassement et suppression des composants obsolètes `charon-carnets` et `metabase`.
+- **Documentation** : Mise à jour de la documentation concernant la configuration des runners.
