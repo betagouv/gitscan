@@ -15,6 +15,7 @@
 ├── .demo
 │   ├── demo.dump
 │   ├── exampleCandidatsCRE4.csv
+│   ├── exempleCandidatsAPIEDFOA.csv
 │   ├── exempleCandidatsPPE2.csv
 │   ├── exempleCandidatsPPE2BatimentPériode6.csv
 │   ├── exempleCandidatsPetitPV.csv
@@ -1120,7 +1121,7 @@
 │   │   │   ├── .gitignore
 │   │   │   ├── next.config.ts
 │   │   │   ├── package.json
-│   │   │   ├── postcss.config.js
+│   │   │   ├── postcss.config.cjs
 │   │   │   ├── public
 │   │   │   │   ├── illustrations
 │   │   │   │   │   ├── check.png
@@ -1140,6 +1141,7 @@
 │   │   │   │   │   │   ├── InscriptionConnexion.tsx
 │   │   │   │   │   │   ├── PropositionDeValeur.tsx
 │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   ├── EnvBadge.tsx
 │   │   │   │   │   ├── Providers.tsx
 │   │   │   │   │   ├── _helpers
 │   │   │   │   │   │   ├── afficherBooleanValue.ts
@@ -1155,6 +1157,7 @@
 │   │   │   │   │   │   ├── getCahierDesCharges.ts
 │   │   │   │   │   │   ├── getCandidature.ts
 │   │   │   │   │   │   ├── getFeatureFlag.ts
+│   │   │   │   │   │   ├── getFiltersFromSearch.ts
 │   │   │   │   │   │   ├── getFiltresActifs.test.ts
 │   │   │   │   │   │   ├── getFiltresActifs.ts
 │   │   │   │   │   │   ├── getNatureDeLExploitationTypeLabel.ts
@@ -1172,7 +1175,6 @@
 │   │   │   │   │   │   │   ├── getLauréatSansAbandon.ts
 │   │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   │   ├── optionalStringArray.ts
-│   │   │   │   │   │   ├── redirigerPageProjet.ts
 │   │   │   │   │   │   ├── récupérerChangementsPermisParLeCahierDesCharges.ts
 │   │   │   │   │   │   ├── searchParams
 │   │   │   │   │   │   │   ├── getSearchParamsEnumValue.test.ts
@@ -1225,9 +1227,7 @@
 │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   ├── layout.tsx
 │   │   │   │   │   │   │   ├── page.tsx
-│   │   │   │   │   │   │   ├── previsualiser-attestation
-│   │   │   │   │   │   │   │   └── route.ts
-│   │   │   │   │   │   │   └── telecharger-attestation
+│   │   │   │   │   │   │   └── previsualiser-attestation
 │   │   │   │   │   │   │       └── route.ts
 │   │   │   │   │   │   ├── _helpers
 │   │   │   │   │   │   │   ├── getCandidatureActions.ts
@@ -1388,6 +1388,111 @@
 │   │   │   │   │   │   │   │   │   │   └── ÉvaluationCarboneSimplifiée.section.tsx
 │   │   │   │   │   │   │   │   │   ├── page.tsx
 │   │   │   │   │   │   │   │   │   └── ÉvaluationCarbone.page.tsx
+│   │   │   │   │   │   │   │   ├── garanties-financieres
+│   │   │   │   │   │   │   │   │   ├── (historique)
+│   │   │   │   │   │   │   │   │   │   ├── GarantiesFinancièresTimelineItemContent.tsx
+│   │   │   │   │   │   │   │   │   │   ├── events
+│   │   │   │   │   │   │   │   │   │   │   ├── actuelles
+│   │   │   │   │   │   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   │   │   │   │   │   ├── mapToAttestationGarantiesFinancièresEnregistréeTimelineItemsProps.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   ├── mapToGarantiesFinancièresDemandéesTimelineItemsProps.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   ├── mapToGarantiesFinancièresEnregistréesTimelineItemsProps.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   ├── mapToGarantiesFinancièresImportéesTimelineItemsProps.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   ├── mapToGarantiesFinancièresModifiéesTimelineItemsProps.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   ├── mapToGarantiesFinancièresÉchuesTimelineItemsProps.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   └── mapToTypeGarantiesFinancièresImportéTimelineItemsProps.tsx
+│   │   │   │   │   │   │   │   │   │   │   ├── dépôt
+│   │   │   │   │   │   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   │   │   │   │   │   ├── mapToDépôtGarantiesFinancièresEnCoursModifiéTimelineItemsProps.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   ├── mapToDépôtGarantiesFinancièresEnCoursSuppriméTimelineItemsProps.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   ├── mapToDépôtGarantiesFinancièresEnCoursValidéTimelineItemsProps.tsx
+│   │   │   │   │   │   │   │   │   │   │   │   └── mapToDépôtGarantiesFinancièresSoumisTimelineItemsProps.tsx
+│   │   │   │   │   │   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   │   │   │   │   │   └── mainlevée
+│   │   │   │   │   │   │   │   │   │   │       ├── index.ts
+│   │   │   │   │   │   │   │   │   │   │       ├── mapToDemandeMainlevéeGarantiesFinancièresAccordéeTimelineItemsProps.tsx
+│   │   │   │   │   │   │   │   │   │   │       ├── mapToDemandeMainlevéeGarantiesFinancièresAnnuléeTimelineItemsProps.tsx
+│   │   │   │   │   │   │   │   │   │   │       ├── mapToDemandeMainlevéeGarantiesFinancièresRejetéeTimelineItemsProps.tsx
+│   │   │   │   │   │   │   │   │   │   │       ├── mapToInstructionDemandeMainlevéeGarantiesFinancièresDémarréeTimelineItemsProps.tsx
+│   │   │   │   │   │   │   │   │   │   │       └── mapToMainlevéeGarantiesFinancièresDemandéeTimelineItemsProps.tsx
+│   │   │   │   │   │   │   │   │   │   └── mapToGarantiesFinancièresTimelineItemProps.tsx
+│   │   │   │   │   │   │   │   │   ├── DétailsGarantiesFinancières.page.tsx
+│   │   │   │   │   │   │   │   │   ├── _helpers
+│   │   │   │   │   │   │   │   │   │   ├── addGarantiesFinancièresToSchema.ts
+│   │   │   │   │   │   │   │   │   │   ├── getGarantiesFinancièresAttestationLabel.ts
+│   │   │   │   │   │   │   │   │   │   ├── getGarantiesFinancièresDateLabel.ts
+│   │   │   │   │   │   │   │   │   │   ├── getGarantiesFinancièresMotifLabel.ts
+│   │   │   │   │   │   │   │   │   │   ├── getGarantiesFinancièresTypeLabel.ts
+│   │   │   │   │   │   │   │   │   │   ├── getMotifMainlevéeLabel.ts
+│   │   │   │   │   │   │   │   │   │   ├── récupérerGarantiesFinancièresActuelles.ts
+│   │   │   │   │   │   │   │   │   │   ├── statutMainlevéeLabels.ts
+│   │   │   │   │   │   │   │   │   │   ├── vérifierAppelOffreSoumisAuxGarantiesFinancières.ts
+│   │   │   │   │   │   │   │   │   │   └── vérifierProjetNonExemptDeGarantiesFinancières.ts
+│   │   │   │   │   │   │   │   │   ├── actuelles
+│   │   │   │   │   │   │   │   │   │   ├── enregistrer
+│   │   │   │   │   │   │   │   │   │   │   ├── EnregistrerGarantiesFinancières.page.tsx
+│   │   │   │   │   │   │   │   │   │   │   ├── enregistrerGarantiesFinancières.action.ts
+│   │   │   │   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │   │   │   ├── enregistrer-attestation
+│   │   │   │   │   │   │   │   │   │   │   ├── EnregistrerAttestationGarantiesFinancières.form.tsx
+│   │   │   │   │   │   │   │   │   │   │   ├── EnregistrerAttestationGarantiesFinancières.page.tsx
+│   │   │   │   │   │   │   │   │   │   │   ├── enregistrerAttestationGarantiesFinancières.action.ts
+│   │   │   │   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │   │   │   └── modifier
+│   │   │   │   │   │   │   │   │   │       ├── ModifierGarantiesFinancièresActuelles.form.tsx
+│   │   │   │   │   │   │   │   │   │       ├── ModifierGarantiesFinancièresActuelles.page.tsx
+│   │   │   │   │   │   │   │   │   │       ├── modifierGarantiesFinancièresActuelles.action.ts
+│   │   │   │   │   │   │   │   │   │       └── page.tsx
+│   │   │   │   │   │   │   │   │   ├── components
+│   │   │   │   │   │   │   │   │   │   ├── ArchivesGarantiesFinancières.tsx
+│   │   │   │   │   │   │   │   │   │   ├── GarantiesFinancières.tsx
+│   │   │   │   │   │   │   │   │   │   ├── GarantiesFinancièresFormInputs.tsx
+│   │   │   │   │   │   │   │   │   │   └── StatutGarantiesFinancièresBadge.tsx
+│   │   │   │   │   │   │   │   │   ├── depot
+│   │   │   │   │   │   │   │   │   │   ├── DétailsDépôtGarantiesFinancièresPage.tsx
+│   │   │   │   │   │   │   │   │   │   ├── modifier
+│   │   │   │   │   │   │   │   │   │   │   ├── ModifierDépôtGarantiesFinancières.page.tsx
+│   │   │   │   │   │   │   │   │   │   │   ├── modifierDépôtGarantiesFinancières.action.ts
+│   │   │   │   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │   │   │   ├── page.tsx
+│   │   │   │   │   │   │   │   │   │   ├── soumettre
+│   │   │   │   │   │   │   │   │   │   │   ├── SoumettreDépôtGarantiesFinancières.form.tsx
+│   │   │   │   │   │   │   │   │   │   │   ├── SoumettreDépôtGarantiesFinancières.page.tsx
+│   │   │   │   │   │   │   │   │   │   │   ├── page.tsx
+│   │   │   │   │   │   │   │   │   │   │   └── soumettreDépôtGarantiesFinancières.action.ts
+│   │   │   │   │   │   │   │   │   │   ├── supprimer
+│   │   │   │   │   │   │   │   │   │   │   └── supprimerDépôtGarantiesFinancières.action.ts
+│   │   │   │   │   │   │   │   │   │   └── valider
+│   │   │   │   │   │   │   │   │   │       └── validerDépôtGarantiesFinancières.action.ts
+│   │   │   │   │   │   │   │   │   ├── garantiesFinancières.type.ts
+│   │   │   │   │   │   │   │   │   ├── mainlevee
+│   │   │   │   │   │   │   │   │   │   ├── DétailsMainlevée.page.tsx
+│   │   │   │   │   │   │   │   │   │   ├── HistoriqueMainlevéeRejetée.tsx
+│   │   │   │   │   │   │   │   │   │   ├── MainlevéeEnCours.tsx
+│   │   │   │   │   │   │   │   │   │   ├── StatutMainlevéeBadge.tsx
+│   │   │   │   │   │   │   │   │   │   ├── accorder
+│   │   │   │   │   │   │   │   │   │   │   ├── AccorderDemandeMainlevée.form.tsx
+│   │   │   │   │   │   │   │   │   │   │   └── accorderDemandeMainlevée.action.ts
+│   │   │   │   │   │   │   │   │   │   ├── annuler
+│   │   │   │   │   │   │   │   │   │   │   └── annulerDemandeMainlevée.action.ts
+│   │   │   │   │   │   │   │   │   │   ├── demander
+│   │   │   │   │   │   │   │   │   │   │   ├── ChecklistMainlevée.tsx
+│   │   │   │   │   │   │   │   │   │   │   ├── DemanderMainlevée.form.tsx
+│   │   │   │   │   │   │   │   │   │   │   ├── DemanderMainlevée.page.tsx
+│   │   │   │   │   │   │   │   │   │   │   ├── demanderMainlevée.action.ts
+│   │   │   │   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   │   │   │   ├── modele-mise-en-demeure
+│   │   │   │   │   │   │   │   │   │   │   └── route.ts
+│   │   │   │   │   │   │   │   │   │   ├── modele-reponse-mainlevee
+│   │   │   │   │   │   │   │   │   │   │   └── route.ts
+│   │   │   │   │   │   │   │   │   │   ├── page.tsx
+│   │   │   │   │   │   │   │   │   │   ├── passerEnInstruction
+│   │   │   │   │   │   │   │   │   │   │   └── passerDemandeMainlevéeEnInstruction.action.ts
+│   │   │   │   │   │   │   │   │   │   └── rejeter
+│   │   │   │   │   │   │   │   │   │       ├── RejeterDemandeMainlevée.form.tsx
+│   │   │   │   │   │   │   │   │   │       └── rejeterDemandeMainlevée.action.ts
+│   │   │   │   │   │   │   │   │   ├── page.tsx
+│   │   │   │   │   │   │   │   │   └── typesGarantiesFinancièresPourFormulaire.ts
 │   │   │   │   │   │   │   │   ├── historique
 │   │   │   │   │   │   │   │   │   ├── CatégorieFilter.tsx
 │   │   │   │   │   │   │   │   │   ├── HistoriqueLauréat.page.tsx
@@ -1502,6 +1607,7 @@
 │   │   │   │   │   │   │   │   │   │   ├── components
 │   │   │   │   │   │   │   │   │   │   │   ├── AccuséRéceptionInput.tsx
 │   │   │   │   │   │   │   │   │   │   │   ├── AucunDossierDeRaccordementAlert.tsx
+│   │   │   │   │   │   │   │   │   │   │   ├── BadgeDossierRaccordement.tsx
 │   │   │   │   │   │   │   │   │   │   │   ├── DocumentRaccordementAlert.tsx
 │   │   │   │   │   │   │   │   │   │   │   ├── DossierRaccordement.tsx
 │   │   │   │   │   │   │   │   │   │   │   ├── FormatFichierInvalide.tsx
@@ -1547,7 +1653,7 @@
 │   │   │   │   │   │   │   │   │   └── (raccordement-du-projet)
 │   │   │   │   │   │   │   │   │       ├── (détails)
 │   │   │   │   │   │   │   │   │       │   ├── DossiersRaccordement.section.tsx
-│   │   │   │   │   │   │   │   │       │   ├── DétailsRaccordementDuProjetPage.tsx
+│   │   │   │   │   │   │   │   │       │   ├── DétailsRaccordementDuProjet.page.tsx
 │   │   │   │   │   │   │   │   │       │   ├── GestionnaireRéseau.section.tsx
 │   │   │   │   │   │   │   │   │       │   ├── ModifierGestionnaireRéseauDuRaccordement.tsx
 │   │   │   │   │   │   │   │   │       │   ├── _helpers
@@ -1755,6 +1861,7 @@
 │   │   │   │   │   │   │   │   │   │   ├── mapToDélaiAccordéTimelineItemProps.tsx
 │   │   │   │   │   │   │   │   │   │   └── mapToDélaiDemandéTimelineItemProps.tsx
 │   │   │   │   │   │   │   │   │   └── mapToDélaiTimelineItemProps.ts
+│   │   │   │   │   │   │   │   ├── InfoBoxDateAchèvementPrévisionnel.tsx
 │   │   │   │   │   │   │   │   ├── InfoBoxDemandeDélai.tsx
 │   │   │   │   │   │   │   │   ├── [date]
 │   │   │   │   │   │   │   │   │   ├── DétailsDemandeDélai.page.tsx
@@ -1812,111 +1919,6 @@
 │   │   │   │   │   │   │   │   │   └── typeFournisseurLabel.ts
 │   │   │   │   │   │   │   │   └── modifier
 │   │   │   │   │   │   │   │       └── page.tsx
-│   │   │   │   │   │   │   ├── garanties-financieres
-│   │   │   │   │   │   │   │   ├── (historique)
-│   │   │   │   │   │   │   │   │   ├── GarantiesFinancièresTimelineItemContent.tsx
-│   │   │   │   │   │   │   │   │   ├── events
-│   │   │   │   │   │   │   │   │   │   ├── actuelles
-│   │   │   │   │   │   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   │   │   │   │   │   ├── mapToAttestationGarantiesFinancièresEnregistréeTimelineItemsProps.tsx
-│   │   │   │   │   │   │   │   │   │   │   ├── mapToGarantiesFinancièresDemandéesTimelineItemsProps.tsx
-│   │   │   │   │   │   │   │   │   │   │   ├── mapToGarantiesFinancièresEnregistréesTimelineItemsProps.tsx
-│   │   │   │   │   │   │   │   │   │   │   ├── mapToGarantiesFinancièresImportéesTimelineItemsProps.tsx
-│   │   │   │   │   │   │   │   │   │   │   ├── mapToGarantiesFinancièresModifiéesTimelineItemsProps.tsx
-│   │   │   │   │   │   │   │   │   │   │   ├── mapToGarantiesFinancièresÉchuesTimelineItemsProps.tsx
-│   │   │   │   │   │   │   │   │   │   │   └── mapToTypeGarantiesFinancièresImportéTimelineItemsProps.tsx
-│   │   │   │   │   │   │   │   │   │   ├── dépôt
-│   │   │   │   │   │   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   │   │   │   │   │   ├── mapToDépôtGarantiesFinancièresEnCoursModifiéTimelineItemsProps.tsx
-│   │   │   │   │   │   │   │   │   │   │   ├── mapToDépôtGarantiesFinancièresEnCoursSuppriméTimelineItemsProps.tsx
-│   │   │   │   │   │   │   │   │   │   │   ├── mapToDépôtGarantiesFinancièresEnCoursValidéTimelineItemsProps.tsx
-│   │   │   │   │   │   │   │   │   │   │   └── mapToDépôtGarantiesFinancièresSoumisTimelineItemsProps.tsx
-│   │   │   │   │   │   │   │   │   │   ├── index.ts
-│   │   │   │   │   │   │   │   │   │   └── mainlevée
-│   │   │   │   │   │   │   │   │   │       ├── index.ts
-│   │   │   │   │   │   │   │   │   │       ├── mapToDemandeMainlevéeGarantiesFinancièresAccordéeTimelineItemsProps.tsx
-│   │   │   │   │   │   │   │   │   │       ├── mapToDemandeMainlevéeGarantiesFinancièresAnnuléeTimelineItemsProps.tsx
-│   │   │   │   │   │   │   │   │   │       ├── mapToDemandeMainlevéeGarantiesFinancièresRejetéeTimelineItemsProps.tsx
-│   │   │   │   │   │   │   │   │   │       ├── mapToInstructionDemandeMainlevéeGarantiesFinancièresDémarréeTimelineItemsProps.tsx
-│   │   │   │   │   │   │   │   │   │       └── mapToMainlevéeGarantiesFinancièresDemandéeTimelineItemsProps.tsx
-│   │   │   │   │   │   │   │   │   └── mapToGarantiesFinancièresTimelineItemProps.tsx
-│   │   │   │   │   │   │   │   ├── DétailsGarantiesFinancières.page.tsx
-│   │   │   │   │   │   │   │   ├── _helpers
-│   │   │   │   │   │   │   │   │   ├── addGarantiesFinancièresToSchema.ts
-│   │   │   │   │   │   │   │   │   ├── getGarantiesFinancièresAttestationLabel.ts
-│   │   │   │   │   │   │   │   │   ├── getGarantiesFinancièresDateLabel.ts
-│   │   │   │   │   │   │   │   │   ├── getGarantiesFinancièresMotifLabel.ts
-│   │   │   │   │   │   │   │   │   ├── getGarantiesFinancièresTypeLabel.ts
-│   │   │   │   │   │   │   │   │   ├── getMotifMainlevéeLabel.ts
-│   │   │   │   │   │   │   │   │   ├── récupérerGarantiesFinancièresActuelles.ts
-│   │   │   │   │   │   │   │   │   ├── statutMainlevéeLabels.ts
-│   │   │   │   │   │   │   │   │   ├── vérifierAppelOffreSoumisAuxGarantiesFinancières.ts
-│   │   │   │   │   │   │   │   │   └── vérifierProjetNonExemptDeGarantiesFinancières.ts
-│   │   │   │   │   │   │   │   ├── actuelles
-│   │   │   │   │   │   │   │   │   ├── enregistrer
-│   │   │   │   │   │   │   │   │   │   ├── EnregistrerGarantiesFinancières.page.tsx
-│   │   │   │   │   │   │   │   │   │   ├── enregistrerGarantiesFinancières.action.ts
-│   │   │   │   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │   ├── enregistrer-attestation
-│   │   │   │   │   │   │   │   │   │   ├── EnregistrerAttestationGarantiesFinancières.form.tsx
-│   │   │   │   │   │   │   │   │   │   ├── EnregistrerAttestationGarantiesFinancières.page.tsx
-│   │   │   │   │   │   │   │   │   │   ├── enregistrerAttestationGarantiesFinancières.action.ts
-│   │   │   │   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │   └── modifier
-│   │   │   │   │   │   │   │   │       ├── ModifierGarantiesFinancièresActuelles.form.tsx
-│   │   │   │   │   │   │   │   │       ├── ModifierGarantiesFinancièresActuelles.page.tsx
-│   │   │   │   │   │   │   │   │       ├── modifierGarantiesFinancièresActuelles.action.ts
-│   │   │   │   │   │   │   │   │       └── page.tsx
-│   │   │   │   │   │   │   │   ├── components
-│   │   │   │   │   │   │   │   │   ├── ArchivesGarantiesFinancières.tsx
-│   │   │   │   │   │   │   │   │   ├── GarantiesFinancières.tsx
-│   │   │   │   │   │   │   │   │   ├── GarantiesFinancièresFormInputs.tsx
-│   │   │   │   │   │   │   │   │   └── StatutGarantiesFinancièresBadge.tsx
-│   │   │   │   │   │   │   │   ├── depot
-│   │   │   │   │   │   │   │   │   ├── DétailsDépôtGarantiesFinancièresPage.tsx
-│   │   │   │   │   │   │   │   │   ├── modifier
-│   │   │   │   │   │   │   │   │   │   ├── ModifierDépôtGarantiesFinancières.page.tsx
-│   │   │   │   │   │   │   │   │   │   ├── modifierDépôtGarantiesFinancières.action.ts
-│   │   │   │   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │   ├── page.tsx
-│   │   │   │   │   │   │   │   │   ├── soumettre
-│   │   │   │   │   │   │   │   │   │   ├── SoumettreDépôtGarantiesFinancières.form.tsx
-│   │   │   │   │   │   │   │   │   │   ├── SoumettreDépôtGarantiesFinancières.page.tsx
-│   │   │   │   │   │   │   │   │   │   ├── page.tsx
-│   │   │   │   │   │   │   │   │   │   └── soumettreDépôtGarantiesFinancières.action.ts
-│   │   │   │   │   │   │   │   │   ├── supprimer
-│   │   │   │   │   │   │   │   │   │   └── supprimerDépôtGarantiesFinancières.action.ts
-│   │   │   │   │   │   │   │   │   └── valider
-│   │   │   │   │   │   │   │   │       └── validerDépôtGarantiesFinancières.action.ts
-│   │   │   │   │   │   │   │   ├── garantiesFinancières.type.ts
-│   │   │   │   │   │   │   │   ├── mainlevee
-│   │   │   │   │   │   │   │   │   ├── DétailsMainlevée.page.tsx
-│   │   │   │   │   │   │   │   │   ├── HistoriqueMainlevéeRejetée.tsx
-│   │   │   │   │   │   │   │   │   ├── MainlevéeEnCours.tsx
-│   │   │   │   │   │   │   │   │   ├── StatutMainlevéeBadge.tsx
-│   │   │   │   │   │   │   │   │   ├── accorder
-│   │   │   │   │   │   │   │   │   │   ├── AccorderDemandeMainlevée.form.tsx
-│   │   │   │   │   │   │   │   │   │   └── accorderDemandeMainlevée.action.ts
-│   │   │   │   │   │   │   │   │   ├── annuler
-│   │   │   │   │   │   │   │   │   │   └── annulerDemandeMainlevée.action.ts
-│   │   │   │   │   │   │   │   │   ├── demander
-│   │   │   │   │   │   │   │   │   │   ├── ChecklistMainlevée.tsx
-│   │   │   │   │   │   │   │   │   │   ├── DemanderMainlevée.form.tsx
-│   │   │   │   │   │   │   │   │   │   ├── DemanderMainlevée.page.tsx
-│   │   │   │   │   │   │   │   │   │   ├── demanderMainlevée.action.ts
-│   │   │   │   │   │   │   │   │   │   └── page.tsx
-│   │   │   │   │   │   │   │   │   ├── modele-mise-en-demeure
-│   │   │   │   │   │   │   │   │   │   └── route.ts
-│   │   │   │   │   │   │   │   │   ├── modele-reponse-mainlevee
-│   │   │   │   │   │   │   │   │   │   └── route.ts
-│   │   │   │   │   │   │   │   │   ├── page.tsx
-│   │   │   │   │   │   │   │   │   ├── passerEnInstruction
-│   │   │   │   │   │   │   │   │   │   └── passerDemandeMainlevéeEnInstruction.action.ts
-│   │   │   │   │   │   │   │   │   └── rejeter
-│   │   │   │   │   │   │   │   │       ├── RejeterDemandeMainlevée.form.tsx
-│   │   │   │   │   │   │   │   │       └── rejeterDemandeMainlevée.action.ts
-│   │   │   │   │   │   │   │   ├── page.tsx
-│   │   │   │   │   │   │   │   └── typesGarantiesFinancièresPourFormulaire.ts
 │   │   │   │   │   │   │   ├── installation
 │   │   │   │   │   │   │   │   ├── (historique)
 │   │   │   │   │   │   │   │   │   ├── events
@@ -2098,7 +2100,6 @@
 │   │   │   │   │   │   │   │   │   │   ├── DemanderChangementPuissance.form.tsx
 │   │   │   │   │   │   │   │   │   │   ├── DemanderChangementPuissance.page.tsx
 │   │   │   │   │   │   │   │   │   │   ├── DemanderChangementPuissanceFormErrors.tsx
-│   │   │   │   │   │   │   │   │   │   ├── InfoxBoxDemandePuissance.tsx
 │   │   │   │   │   │   │   │   │   │   ├── demanderChangementPuissance.action.ts
 │   │   │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   │   └── modele-reponse
@@ -4685,14 +4686,14 @@
 │       │   │   │   └── nombreTotalDemande.statistic.ts
 │       │   │   ├── 04-mise-en-service
 │       │   │   │   ├── index.ts
+│       │   │   │   ├── nombreProjetQuiOntAuMoinsUneRéférenceDeRaccordement.statistic.ts
 │       │   │   │   ├── nombreTotalProjetAvecDCRDéposée.statistic.ts
 │       │   │   │   ├── nombreTotalProjetAvecDossierRaccordementComplet.statistic.ts
 │       │   │   │   ├── nombreTotalProjetEnService.statistic.ts
-│       │   │   │   ├── nombreTotalRéférencesRaccordement.statistic.ts
 │       │   │   │   ├── pourcentageProjetAvecDCRDéposée.ts
 │       │   │   │   ├── pourcentageProjetAvecDossierRaccordementComplet.statistic.ts
 │       │   │   │   ├── pourcentageProjetEnService.statistic.ts
-│       │   │   │   ├── pourcentageRéférencesRaccordement.statistic.ts
+│       │   │   │   ├── pourcentageProjetQuiOntAuMoinsUneRéférenceDeRaccordement.statistic.ts
 │       │   │   │   └── puissanceTotaleMiseEnService.stastistic.ts
 │       │   │   ├── 05-garanties-financieres
 │       │   │   │   ├── index.ts
@@ -4725,4 +4726,4 @@
 ├── scalingo.json
 ├── turbo.json
 └── update-ts-references.yaml
-1142 directories, 3585 files
+1141 directories, 3587 files
