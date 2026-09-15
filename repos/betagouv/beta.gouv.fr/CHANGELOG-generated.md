@@ -1,11 +1,10 @@
-## Changelog : beta.gouv.fr (30 derniers jours, au 10 septembre 2026)
+## Changelog : beta.gouv.fr (30 derniers jours, au 14 septembre 2026)
 
 ### Résumé
-Les récentes évolutions permettent d'enrichir la gestion des projets de l'incubateur en introduisant la possibilité de co-incuber des produits. En parallèle, des travaux de maintenance régulière ont été effectués sur la base de données et l'environnement technique pour garantir la stabilité et la performance de la plateforme.
-
-### Évolutions fonctionnelles
-- Prise en charge de la co-incubation pour les produits de l'incubateur [#21649](https://github.com/betagouv/beta.gouv.fr/pull/21649)
+L'activité récente est principalement concentrée sur la maintenance technique et la stabilité du système. Aucune nouvelle fonctionnalité n'a été déployée pour les utilisateurs durant cette période.
 
 ### Évolutions techniques
-- Mise à jour de l'environnement Ruby (version 4.0.6) et des dépendances associées [#21670](https://github.com/betagouv/beta.gouv.fr/pull/21670)
-- Maintenance régulière et mise à jour du schéma de la base de données via des processus automatisés
+- Mise à jour de l'environnement d'exécution Ruby (passage à la version 4.0.6) et de certaines dépendances ([#21670](https://github.com/betagouv/beta.gouv.fr/issues/21670))
+
+### Autres changements
+- Maintenance régulière de la base de données via des mises à jour automatisées ([#21677](https://github.com/betagouv/beta.gouv.fr/issues/21677), [#21675](https://github.com/betagouv/beta.gouv.fr/issues/21675), [#21674](https://github.com/betagouv/beta.gouv.fr/issues/21674), [#21673](https://github.com/betagouv/beta.gouv.fr/issues/21673), [#21672](https://github.com/betagouv/beta.gouv.fr/issues/21672), [#21667](https://github.com/betagouv/beta.gouv.fr/issues/21667), [#21658](https://github.com/betagouv/beta.gouv.fr/issues/21658), [#21656](https://github.com/betagouv/beta.gouv.fr/issues/21656))
