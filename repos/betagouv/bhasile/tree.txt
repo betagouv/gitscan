@@ -558,9 +558,12 @@
 │   │   │   │   ├── statistiques
 │   │   │   │   │   ├── _components
 │   │   │   │   │   │   ├── AnnualDataNote.tsx
+│   │   │   │   │   │   ├── FiltersNotice.tsx
 │   │   │   │   │   │   ├── StatistiquesCartographie.tsx
 │   │   │   │   │   │   ├── StatistiquesContent.tsx
 │   │   │   │   │   │   ├── StatistiquesHeader.tsx
+│   │   │   │   │   │   ├── StatistiquesPdfExportDocument.tsx
+│   │   │   │   │   │   ├── StatistiquesPdfHeader.tsx
 │   │   │   │   │   │   ├── activite
 │   │   │   │   │   │   │   ├── ActiviteBlock.tsx
 │   │   │   │   │   │   │   ├── ActiviteStatsChart.tsx
@@ -590,7 +593,8 @@
 │   │   │   │   │   │   │   ├── FinanceCards.tsx
 │   │   │   │   │   │   │   ├── FinanceTypeSelector.tsx
 │   │   │   │   │   │   │   ├── FinancesBlock.tsx
-│   │   │   │   │   │   │   └── FinancesStatsTable.tsx
+│   │   │   │   │   │   │   ├── FinancesStatsTable.tsx
+│   │   │   │   │   │   │   └── FinancesTablePresenter.tsx
 │   │   │   │   │   │   ├── rmu
 │   │   │   │   │   │   │   ├── RMUBlock.tsx
 │   │   │   │   │   │   │   ├── RMUChart.tsx
@@ -599,6 +603,7 @@
 │   │   │   │   │   │   │   ├── GenericTypeChart.tsx
 │   │   │   │   │   │   │   ├── StructuresBlock.tsx
 │   │   │   │   │   │   │   ├── StructuresStatsTable.tsx
+│   │   │   │   │   │   │   ├── TypeChartPresenter.tsx
 │   │   │   │   │   │   │   ├── TypesBatis.tsx
 │   │   │   │   │   │   │   └── TypesStructures.tsx
 │   │   │   │   │   │   └── type-places
@@ -607,6 +612,7 @@
 │   │   │   │   │   ├── cartographie
 │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   ├── error.tsx
+│   │   │   │   │   ├── getStatistiques.ts
 │   │   │   │   │   └── page.tsx
 │   │   │   │   └── structures
 │   │   │   │       ├── StructuresContent.tsx
@@ -670,18 +676,16 @@
 │   │   │   │       │   │   │   ├── AutoSaveStatus.tsx
 │   │   │   │       │   │   │   ├── FinalisationHeader.tsx
 │   │   │   │       │   │   │   ├── HeaderMainContent.tsx
-│   │   │   │       │   │   │   ├── PdfExportDocument.tsx
-│   │   │   │       │   │   │   ├── PdfExportModal.tsx
 │   │   │   │       │   │   │   ├── StructureCallToActionHeader.tsx
 │   │   │   │       │   │   │   ├── StructureHeader.tsx
 │   │   │   │       │   │   │   ├── StructureHeaderActions.tsx
 │   │   │   │       │   │   │   ├── StructureHeaderModals.tsx
-│   │   │   │       │   │   │   └── StructureMenu.tsx
+│   │   │   │       │   │   │   ├── StructureMenu.tsx
+│   │   │   │       │   │   │   └── StructurePdfExportDocument.tsx
 │   │   │   │       │   │   ├── _notes
 │   │   │   │       │   │   │   └── NotesBlock.tsx
 │   │   │   │       │   │   ├── _pdf-export
 │   │   │   │       │   │   │   ├── ExportActiviteBlock.tsx
-│   │   │   │       │   │   │   ├── ExportAdressesBlock.tsx
 │   │   │   │       │   │   │   ├── ExportDescriptionBlock.tsx
 │   │   │   │       │   │   │   └── PdfHeader.tsx
 │   │   │   │       │   │   └── _type-places
@@ -1090,6 +1094,7 @@
 │   │   │   ├── MenuFooter.tsx
 │   │   │   ├── MultiInformationCard.tsx
 │   │   │   ├── NoDataAccordion.tsx
+│   │   │   ├── PrintableContainer.tsx
 │   │   │   ├── QueryPersister.tsx
 │   │   │   ├── SearchBar.tsx
 │   │   │   ├── StructureCard.tsx
@@ -1367,6 +1372,7 @@
 │   │   │   ├── useSaveMutation.ts
 │   │   │   ├── useSearchParamsNavigation.ts
 │   │   │   ├── useSpreadsheetParse.ts
+│   │   │   ├── useStatistiquesPdfExport.ts
 │   │   │   ├── useStoredQueryParams.ts
 │   │   │   ├── useStructureAdresseExistence.ts
 │   │   │   ├── useStructureSelections.ts
@@ -1974,6 +1980,8 @@
 │   │   │       └── places.rule.test.ts
 │   │   └── casl
 │   │       └── abilities.test.ts
+│   ├── proxy
+│   │   └── proxy.test.ts
 │   ├── schemas
 │   │   └── forms
 │   │       ├── base
@@ -2056,4 +2064,4 @@
 ├── tsconfig.json
 ├── vitest.config.mts
 └── yarn.lock
-523 directories, 1535 files
+524 directories, 1542 files
