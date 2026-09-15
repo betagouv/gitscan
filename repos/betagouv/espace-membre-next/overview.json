@@ -1,14 +1,15 @@
 {
   "url": "https://github.com/betagouv/espace-membre-next",
   "name": "espace-membre-next",
-  "description": "Plateforme de gestion de l'espace membre pour l'incubateur de beta.gouv.fr, permettant la gestion des membres, des missions, des produits et de la communauté.",
+  "description": "Plateforme de gestion de la communauté de l'incubateur beta.gouv.fr, permettant la gestion des membres, des missions, des produits et des équipes.",
   "language": "TypeScript",
   "features": [
+    "Authentification & Accès",
     "Gestion des utilisateurs & Permissions",
     "Gestion des profils & Comptes",
-    "Gestion des équipes & Partenaires",
-    "Authentification & Accès",
-    "Administration & Backoffice"
+    "Gestion métier générale",
+    "Notifications & Alertes",
+    "Calendrier & Planification"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -27,32 +28,37 @@
     "TypeScript / JavaScript",
     "PostgreSQL & SQL",
     "API REST & GraphQL",
-    "Design System (DSFR & UI libs)",
     "Docker & Conteneurs",
     "Authentification (composant)"
   ],
   "auth": {
     "methods": [
-      "magic-link",
-      "sso"
+      "sso",
+      "magic-link"
     ],
     "providers": [
       "ProConnect"
     ]
   },
   "tests": [
-    "Playwright",
     "ts-mocha",
-    "Chai",
-    "Sinon"
+    "chai",
+    "sinon",
+    "playwright"
   ],
   "workflows": [
     "Scalingo Scheduler",
-    "n8n"
+    "n8n workflows"
   ],
   "lastActivity": "2026-08-31T23:29:20+02:00",
   "status": "active",
+  "license": "MIT",
   "hasDocumentation": true,
+  "metrics": {
+    "stars": 4,
+    "forks": 8,
+    "openIssues": 50
+  },
   "tags": [
     "Écosystème beta.gouv / État",
     "React & Next.js",
