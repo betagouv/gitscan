@@ -29,6 +29,7 @@
 ├── README.md
 ├── apps
 │   ├── api
+│   │   ├── .c8rc.json
 │   │   ├── .env.e2e
 │   │   ├── .env.example
 │   │   ├── .gitignore
@@ -73,6 +74,8 @@
 │   │   │   │   │   └── migration.sql
 │   │   │   │   ├── 20260831130000_official_report_updated_at_column
 │   │   │   │   │   └── migration.sql
+│   │   │   │   ├── 20260908090000_lolfi_transparence_anomaly
+│   │   │   │   │   └── migration.sql
 │   │   │   │   └── migration_lock.toml
 │   │   │   ├── schema.prisma
 │   │   │   ├── schemas
@@ -86,6 +89,7 @@
 │   │   │   │   ├── observation.prisma
 │   │   │   │   └── reports.prisma
 │   │   │   └── sql
+│   │   │       ├── countLolfiSessionDesignations.sql
 │   │   │       ├── countNominationFilesByStatusRawQuery.sql
 │   │   │       ├── countUnreportedNominationFiles.sql
 │   │   │       ├── deleteReportsAfterAffectationPublicationRawQuery.sql
@@ -177,12 +181,15 @@
 │   │   │   │   │   │   ├── domain
 │   │   │   │   │   │   │   ├── agenda-doc-block.ts
 │   │   │   │   │   │   │   ├── agenda-nomination-file.ts
+│   │   │   │   │   │   │   ├── agenda-snapshot.spec.ts
 │   │   │   │   │   │   │   ├── agenda-snapshot.ts
 │   │   │   │   │   │   │   ├── agenda.spec.ts
 │   │   │   │   │   │   │   └── agenda.ts
 │   │   │   │   │   │   └── infrastructure
 │   │   │   │   │   │       ├── agendas.dto.ts
 │   │   │   │   │   │       ├── agendas.filter.ts
+│   │   │   │   │   │       ├── events
+│   │   │   │   │   │       │   └── on-agenda-invalidated.event-handler.ts
 │   │   │   │   │   │       ├── finders
 │   │   │   │   │   │       │   └── agenda-render-context.finder.ts
 │   │   │   │   │   │       ├── queries
@@ -194,13 +201,15 @@
 │   │   │   │   │   │       │   └── find-agenda-document.query.ts
 │   │   │   │   │   │       ├── repositories
 │   │   │   │   │   │       │   └── agenda.repository.ts
-│   │   │   │   │   │       └── services
-│   │   │   │   │   │           └── renderers
-│   │   │   │   │   │               ├── __snapshots__
-│   │   │   │   │   │               │   └── agenda.html.spec.ts.snap
-│   │   │   │   │   │               ├── agenda.html.spec.ts
-│   │   │   │   │   │               ├── agenda.html.ts
-│   │   │   │   │   │               └── agenda.renderer.ts
+│   │   │   │   │   │       ├── services
+│   │   │   │   │   │       │   └── renderers
+│   │   │   │   │   │       │       ├── __snapshots__
+│   │   │   │   │   │       │       │   └── agenda.html.spec.ts.snap
+│   │   │   │   │   │       │       ├── agenda.html.spec.ts
+│   │   │   │   │   │       │       ├── agenda.html.ts
+│   │   │   │   │   │       │       └── agenda.renderer.ts
+│   │   │   │   │   │       └── use-cases
+│   │   │   │   │   │           └── invalidate-agenda.use-case.ts
 │   │   │   │   │   ├── docs.module.ts
 │   │   │   │   │   ├── docs.service.ts
 │   │   │   │   │   ├── official-report
@@ -380,6 +389,8 @@
 │   │   │   │   │   │   ├── divergent-script.ts
 │   │   │   │   │   │   ├── expired-job.spec.ts
 │   │   │   │   │   │   ├── expired-job.ts
+│   │   │   │   │   │   ├── incomplete-transparence.spec.ts
+│   │   │   │   │   │   ├── incomplete-transparence.ts
 │   │   │   │   │   │   ├── requirements.spec.ts
 │   │   │   │   │   │   ├── requirements.ts
 │   │   │   │   │   │   ├── stale-ingestion.spec.ts
@@ -390,8 +401,9 @@
 │   │   │   │   │   │   ├── ingest.controller.ts
 │   │   │   │   │   │   ├── ingest.dto.ts
 │   │   │   │   │   │   ├── ingest.service.ts
-│   │   │   │   │   │   └── queries
-│   │   │   │   │   │       └── internal-details-lolfi-session.query.ts
+│   │   │   │   │   │   ├── queries
+│   │   │   │   │   │   │   └── internal-details-lolfi-session.query.ts
+│   │   │   │   │   │   └── transparence-anomalies.repository.ts
 │   │   │   │   │   ├── ingest-cli.module.ts
 │   │   │   │   │   ├── ingest.module.ts
 │   │   │   │   │   ├── jobs
@@ -573,6 +585,7 @@
 │   │   │   │   │       │   │   ├── lolfi-nomination-files.finder.ts
 │   │   │   │   │       │   │   ├── lolfi-nomination-session.finder.ts
 │   │   │   │   │       │   │   ├── nomination-file-jurisdictions.finder.ts
+│   │   │   │   │       │   │   ├── synchronised-lolfi-sessions.finder.ts
 │   │   │   │   │       │   │   ├── transparence-files.finder.ts
 │   │   │   │   │       │   │   ├── transparence-session.finder.ts
 │   │   │   │   │       │   │   ├── unaffected-files.finder.ts
@@ -760,11 +773,13 @@
 │   │   │   │   ├── lolfi.e2e-spec.ts
 │   │   │   │   ├── magistrat.e2e-spec.ts
 │   │   │   │   ├── members.e2e-spec.ts
+│   │   │   │   ├── outcome.e2e-spec.ts
 │   │   │   │   ├── report.e2e-spec.ts
 │   │   │   │   ├── session.e2e-spec.ts
 │   │   │   │   └── simple-auth.e2e-spec.ts
 │   │   │   ├── steps.ts
 │   │   │   ├── utils
+│   │   │   │   ├── e2e-tokens.ts
 │   │   │   │   ├── files.ts
 │   │   │   │   ├── seed.ts
 │   │   │   │   └── wait-for.ts
@@ -859,13 +874,11 @@
 │       │   │   │   │   ├── agenda
 │       │   │   │   │   │   ├── AgendaBreadcrumb.tsx
 │       │   │   │   │   │   ├── AgendaChairmanSelect.tsx
-│       │   │   │   │   │   ├── AgendaFileSearch.tsx
-│       │   │   │   │   │   ├── AgendaFilesSelection.tsx
+│       │   │   │   │   │   ├── AgendaFilesSelectionTable.stories.tsx
+│       │   │   │   │   │   ├── AgendaFilesSelectionTable.test.tsx
+│       │   │   │   │   │   ├── AgendaFilesSelectionTable.tsx
 │       │   │   │   │   │   ├── AgendaMetadataForm.tsx
 │       │   │   │   │   │   ├── AgendaMetadataStep.tsx
-│       │   │   │   │   │   ├── AgendaNominationFile.css
-│       │   │   │   │   │   ├── AgendaNominationFile.test.tsx
-│       │   │   │   │   │   ├── AgendaNominationFile.tsx
 │       │   │   │   │   │   ├── AgendaNominationFilesStep.tsx
 │       │   │   │   │   │   └── editor
 │       │   │   │   │   │       ├── AgendaDocumentEditor.stories.tsx
@@ -925,9 +938,6 @@
 │       │   │   │   │   ├── presentation-plan.context.ts
 │       │   │   │   │   └── presentation-plan.type.ts
 │       │   │   │   └── hooks
-│       │   │   │       ├── useAgendaBasket.hook.ts
-│       │   │   │       ├── useAgendaBasket.test.ts
-│       │   │   │       ├── useScrollDownIndicator.hook.ts
 │       │   │   │       └── useSelection.ts
 │       │   │   ├── jobs
 │       │   │   │   ├── components
@@ -980,15 +990,17 @@
 │       │   │   │   │   ├── MemberExclusionSelector.tsx
 │       │   │   │   │   ├── MemberSessionFilesTable.stories.tsx
 │       │   │   │   │   ├── MemberSessionFilesTable.tsx
-│       │   │   │   │   ├── NominationFilesAgendaBasket.test.tsx
-│       │   │   │   │   ├── NominationFilesAgendaBasket.tsx
 │       │   │   │   │   ├── NominationFilesAutoAffectationButton.tsx
+│       │   │   │   │   ├── NominationFilesBulkActions.test.tsx
+│       │   │   │   │   ├── NominationFilesBulkActions.tsx
 │       │   │   │   │   ├── NominationFilesExportButton.tsx
 │       │   │   │   │   ├── NominationFilesPublishButton.tsx
 │       │   │   │   │   ├── NominationFilesSelectionBar.test.tsx
 │       │   │   │   │   ├── NominationFilesSelectionBar.tsx
 │       │   │   │   │   ├── NominationFilesSelectionModeButton.tsx
 │       │   │   │   │   ├── NominationFilesStatusBadges.tsx
+│       │   │   │   │   ├── RequiredOutcomeCommentsModal.test.tsx
+│       │   │   │   │   ├── RequiredOutcomeCommentsModal.tsx
 │       │   │   │   │   ├── SessionFilesTable.tsx
 │       │   │   │   │   ├── SgSessionFilesTable.stories.tsx
 │       │   │   │   │   ├── SgSessionFilesTable.tsx
@@ -1124,7 +1136,8 @@
 │       │   │   │   │   └── member-reports.ts
 │       │   │   │   └── hooks
 │       │   │   │       ├── useExportFailure.ts
-│       │   │   │       └── useSessionFilesFilters.ts
+│       │   │   │       ├── useSessionFilesFilters.ts
+│       │   │   │       └── useSessionFilesTable.ts
 │       │   │   ├── observations
 │       │   │   │   ├── components
 │       │   │   │   │   ├── ObservationCard.tsx
@@ -1145,7 +1158,6 @@
 │       │   │   │   │   ├── Card.tsx
 │       │   │   │   │   ├── HeaderReportList.tsx
 │       │   │   │   │   ├── Identity.tsx
-│       │   │   │   │   ├── MemberSessionToolbar.tsx
 │       │   │   │   │   ├── Observers.tsx
 │       │   │   │   │   ├── ReportAlerts.test.tsx
 │       │   │   │   │   ├── ReportAlerts.tsx
@@ -1211,8 +1223,9 @@
 │       │   │       │   ├── UploadExcelFailedAlert.tsx
 │       │   │       │   ├── attachments
 │       │   │       │   │   ├── ImportAttachmentModal.tsx
-│       │   │       │   │   ├── NominationSessionAttachmentList.tsx
-│       │   │       │   │   ├── SessionAttachmentsTable.stories.tsx
+│       │   │       │   │   ├── SessionAttachmentsTab.stories.tsx
+│       │   │       │   │   ├── SessionAttachmentsTab.test.tsx
+│       │   │       │   │   ├── SessionAttachmentsTab.tsx
 │       │   │       │   │   ├── SessionAttachmentsTable.test.tsx
 │       │   │       │   │   └── SessionAttachmentsTable.tsx
 │       │   │       │   ├── documents
@@ -1282,6 +1295,8 @@
 │       │   │       └── ManageSessionsLink.tsx
 │       │   ├── main.tsx
 │       │   ├── pages
+│       │   │   ├── accessibility
+│       │   │   │   └── AccessibilityPage.tsx
 │       │   │   ├── auth
 │       │   │   │   └── LoginPage.tsx
 │       │   │   ├── documents
@@ -1316,8 +1331,11 @@
 │       │   │   ├── observations
 │       │   │   │   └── ObservationDetailsPage.tsx
 │       │   │   ├── reports
+│       │   │   │   ├── MemberAttachmentsTab.tsx
+│       │   │   │   ├── MemberSessionLayout.tsx
 │       │   │   │   ├── ReportListPage.tsx
-│       │   │   │   └── ReportOverviewPage.tsx
+│       │   │   │   ├── ReportOverviewPage.tsx
+│       │   │   │   └── member-session-outlet-context.type.ts
 │       │   │   ├── sessions
 │       │   │   │   ├── ArchivedSessionsPage.tsx
 │       │   │   │   ├── LolfiRedirectMagistratPage.tsx
@@ -1449,6 +1467,9 @@
 │       │   │   │   ├── useScrollToTop
 │       │   │   │   │   ├── index.ts
 │       │   │   │   │   └── useScrollToTop.ts
+│       │   │   │   ├── useSecondBreadcrumbLinkOffset
+│       │   │   │   │   ├── index.ts
+│       │   │   │   │   └── useSecondBreadcrumbLinkOffset.ts
 │       │   │   │   ├── useSelection
 │       │   │   │   │   ├── index.ts
 │       │   │   │   │   └── useSelection.hook.ts
@@ -1560,7 +1581,6 @@
 │       │   │       │   ├── new-table.types.d.ts
 │       │   │       │   └── rowCell.tsx
 │       │   │       ├── ovoid.tsx
-│       │   │       ├── popover.tsx
 │       │   │       ├── required-label
 │       │   │       │   ├── RequiredLabel.stories.tsx
 │       │   │       │   ├── RequiredLabel.tsx
@@ -1648,6 +1668,8 @@
 │       │   │   ├── http-exception.ts
 │       │   │   ├── http.config.test.ts
 │       │   │   ├── http.config.ts
+│       │   │   ├── matomo.test.ts
+│       │   │   ├── matomo.ts
 │       │   │   ├── multipart-json.ts
 │       │   │   ├── position.utils.ts
 │       │   │   ├── route-path.utils.test.ts
@@ -1754,4 +1776,4 @@
 └── vendor
     ├── .gitkeep
     └── xlsx-0.20.3.tgz
-377 directories, 1379 files
+382 directories, 1396 files

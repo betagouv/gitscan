@@ -101,7 +101,7 @@ pnpm --filter api exec dotenvx run -f .env.e2e -f .env -- prisma migrate deploy
 4. Générer le code
 
 ```bash
-pnpm --filter api prisma generate --sql   # client Prisma + requêtes TypedSQL
+pnpm --filter api prisma:generate   # client Prisma + requêtes TypedSQL
 ```
 
 > [!IMPORTANT]
@@ -148,6 +148,15 @@ Rôles disponibles : `MEMBRE_DU_SIEGE`, `MEMBRE_DU_PARQUET`, `MEMBRE_COMMUN`,
 Il est recommandé de créer un membre commun et un agent du secrétariat général.
 
 8. Accès à l'application : [http://localhost:5173](http://localhost:5173)
+
+## Mesure d'audience
+
+Le client envoie ses vues de page au Matomo mutualisé de beta.gouv, site `273`. Les URL sont
+anonymisées avant l'envoi : les identifiants sont remplacés par le nom du paramètre de route
+(`/magistrats/:magistratId`), voir [apps/client/src/utils/matomo.ts](./apps/client/src/utils/matomo.ts).
+
+Sans les variables `VITE_MATOMO_*`, la mesure est désactivée. Elles ne sont renseignées que dans
+l'environnement `production` de GitHub. Rien n'est donc envoyé en local ni en recette.
 
 ## Tests
 
