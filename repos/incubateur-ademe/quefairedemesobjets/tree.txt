@@ -296,7 +296,6 @@
 │   │   │   ├── config
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── airflow.py
-│   │   │   │   ├── dag_names.py
 │   │   │   │   ├── dbt_commands.py
 │   │   │   │   ├── models.py
 │   │   │   │   ├── schedules.py
@@ -555,6 +554,7 @@
 │   │   │   │   │   ├── base_acteur_labels.sql
 │   │   │   │   │   ├── base_acteur_type.sql
 │   │   │   │   │   ├── base_acteurservice.sql
+│   │   │   │   │   ├── base_action.sql
 │   │   │   │   │   ├── base_displayedacteur.sql
 │   │   │   │   │   ├── base_displayedacteur_acteur_services.sql
 │   │   │   │   │   ├── base_displayedacteur_labels.sql
@@ -589,7 +589,6 @@
 │   │   │   │   │   ├── base_koumoul_epci.sql
 │   │   │   │   │   └── schema.yml
 │   │   │   │   └── stats
-│   │   │   │       ├── base_action.sql
 │   │   │   │       ├── base_random_position.sql
 │   │   │   │       ├── base_vueacteur.sql
 │   │   │   │       ├── base_vueacteur_visible.sql
@@ -971,6 +970,7 @@
 │   │   │   │   ├── terraform.tfvars.example
 │   │   │   │   └── terragrunt.hcl
 │   │   │   ├── metabase_containers
+│   │   │   │   ├── .terraform.lock.hcl
 │   │   │   │   ├── terraform.tfvars.example
 │   │   │   │   └── terragrunt.hcl
 │   │   │   └── object_storage
@@ -1902,7 +1902,11 @@
     │       │   ├── service
     │       │   │   └── service_tag.html
     │       │   ├── spinner.html
-    │       │   └── spinner.md
+    │       │   ├── spinner.md
+    │       │   └── surfooter
+    │       │       ├── base.html
+    │       │       ├── base.iframe.html
+    │       │       └── surfooter.html
     │       ├── forms
     │       │   └── widgets
     │       │       ├── _spinner.html
@@ -2066,4 +2070,4 @@
         │   └── test_search_view.py
         └── stats
             └── test_stats_utils.py
-378 directories, 1690 files
+379 directories, 1693 files
