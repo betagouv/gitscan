@@ -432,12 +432,17 @@
 │   │       │   ├── NotificationsView.scss
 │   │       │   └── NotificationsView.tsx
 │   │       ├── ProgrammingPlanSettingsView
+│   │       │   ├── ProgrammingPlanDeleteModal
+│   │       │   │   └── ProgrammingPlanDeleteModal.tsx
 │   │       │   ├── ProgrammingPlanDomainCreateModal.tsx
 │   │       │   ├── ProgrammingPlanDomainView
 │   │       │   │   ├── ProgrammingPlanDomainView.stories.tsx
 │   │       │   │   └── ProgrammingPlanDomainView.tsx
 │   │       │   ├── ProgrammingPlanGlobalSettings
+│   │       │   │   ├── ProgrammingPlanGlobalSettings.scss
 │   │       │   │   └── ProgrammingPlanGlobalSettings.tsx
+│   │       │   ├── ProgrammingPlanNationalCoordinators
+│   │       │   │   └── ProgrammingPlanNationalCoordinators.tsx
 │   │       │   ├── ProgrammingPlanSamplerFormSettings
 │   │       │   │   ├── AddFieldToProgrammingSubPlanModal.tsx
 │   │       │   │   ├── ProgrammingPlanSamplerFormSettings.tsx
@@ -455,9 +460,11 @@
 │   │       │   ├── ProgrammingPlanSettingsBadge
 │   │       │   │   └── ProgrammingPlanSettingsBadge.tsx
 │   │       │   ├── ProgrammingPlanSettingsCard
+│   │       │   │   ├── ProgrammingPlanSettingsCard.scss
 │   │       │   │   ├── ProgrammingPlanSettingsCard.stories.tsx
 │   │       │   │   └── ProgrammingPlanSettingsCard.tsx
 │   │       │   ├── ProgrammingPlanSettingsTabs
+│   │       │   │   ├── ProgrammingPlanSettingsTabs.scss
 │   │       │   │   └── ProgrammingPlanSettingsTabs.tsx
 │   │       │   ├── ProgrammingPlanSettingsView.stories.tsx
 │   │       │   ├── ProgrammingPlanSettingsView.tsx
@@ -784,7 +791,12 @@
 │   │   │   ├── 113-programming-plan-domains.ts
 │   │   │   ├── 114-programming-plan-domain-year.ts
 │   │   │   ├── 115-programming-plan-domain-id-not-nullable.ts
-│   │   │   └── 116-programming-plan-setting-inheritance.ts
+│   │   │   ├── 116-programming-plan-setting-inheritance.ts
+│   │   │   ├── 117-programming-plan-settings-completed.ts
+│   │   │   ├── 118-programming-plan-national-coordinators.ts
+│   │   │   ├── 119-national-coordinators-without-stages.ts
+│   │   │   ├── 120-sub-plan-settings-cascade.ts
+│   │   │   └── 121-substance-kinds-managed.ts
 │   │   └── seeds
 │   │       ├── departments
 │   │       │   ├── departmentsSeed.ts
@@ -1021,6 +1033,7 @@
 │   │   ├── notificationService.ts
 │   │   ├── pdfService
 │   │   │   └── pdfService.ts
+│   │   ├── programmingPlanDeletionService.ts
 │   │   ├── programmingPlanSettingsService.integration.test.ts
 │   │   ├── programmingPlanSettingsService.ts
 │   │   ├── s3Service.ts
@@ -1107,6 +1120,7 @@
 │   ├── package.json
 │   ├── referential
 │   │   ├── Department.ts
+│   │   ├── Laboratory.test.ts
 │   │   ├── Laboratory.ts
 │   │   ├── LegalContext.ts
 │   │   ├── Matrix
@@ -1226,14 +1240,19 @@
 │   │   ├── ProgrammingPlan
 │   │   │   ├── Context.ts
 │   │   │   ├── DistributionKind.ts
+│   │   │   ├── FindProgrammingPlanOptions.test.ts
 │   │   │   ├── FindProgrammingPlanOptions.ts
 │   │   │   ├── FindProgrammingSubPlanOptions.ts
 │   │   │   ├── ProgrammingPlanDomain.ts
 │   │   │   ├── ProgrammingPlanLocalStatus.ts
+│   │   │   ├── ProgrammingPlanNationalCoordinator.test.ts
+│   │   │   ├── ProgrammingPlanNationalCoordinator.ts
 │   │   │   ├── ProgrammingPlanSettings.test.ts
 │   │   │   ├── ProgrammingPlanSettings.ts
+│   │   │   ├── ProgrammingPlanSettingsForm.test.ts
 │   │   │   ├── ProgrammingPlanSettingsForm.ts
 │   │   │   ├── ProgrammingPlanStatus.ts
+│   │   │   ├── ProgrammingPlans.test.ts
 │   │   │   ├── ProgrammingPlans.ts
 │   │   │   └── ProgrammingSubPlan.ts
 │   │   ├── SachaCommemoratif
@@ -1310,4 +1329,4 @@
     ├── express-jwt
     │   └── index.d.ts
     └── knex-stringcase.d.ts
-242 directories, 1070 files
+244 directories, 1087 files
