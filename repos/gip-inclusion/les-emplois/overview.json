@@ -4,24 +4,23 @@
   "description": "Service numérique de délivrance des PASS IAE et de mise en relation d'employeurs inclusifs avec des candidats éloignés de l'emploi via des tiers ou en autoprescription.",
   "language": "Python",
   "features": [
+    "Authentification & Accès",
     "Recherche & Filtres",
-    "Gestion des utilisateurs & Permissions",
     "Formulaires & Démarches",
     "Statistiques & Rapports",
-    "Notifications & Alertes",
-    "Gestion métier générale",
-    "Authentification & Accès",
-    "Tableaux & Affichage"
+    "Gestion des utilisateurs & Permissions",
+    "Collaboration & Workflow",
+    "Tableaux & Affichage",
+    "Gestion des établissements & Structures"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "Django",
     "PostgreSQL",
     "PostGIS",
-    "MinIO",
     "Redis",
+    "MinIO",
     "GDAL",
-    "GEOS",
     "uv",
     "pytest"
   ],
@@ -33,15 +32,13 @@
     "Django",
     "Authentification (composant)",
     "Scripts & Utilitaires",
-    "ORM & Accès aux données",
-    "Templates & Moteurs de rendu",
-    "Stockage objet"
+    "ORM & Accès aux données"
   ],
   "auth": {
     "methods": [
       "oauth2",
+      "magic-link",
       "mfa",
-      "sso",
       "session"
     ],
     "providers": [
@@ -49,14 +46,17 @@
     ]
   },
   "tests": "pytest",
-  "lastActivity": "2026-09-07T00:00:00Z",
+  "lastActivity": "2026-09-14T00:00:00Z",
   "status": "active",
+  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Emploi, Social & Logement",
     "Python",
+    "Django & FastAPI",
     "Bases de données SQL",
     "Docker & Conteneurs",
-    "Django & FastAPI"
+    "Écosystème beta.gouv / État",
+    "Accessibilité"
   ]
 }

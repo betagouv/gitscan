@@ -279,6 +279,18 @@
 │   │   │   └── ref_type_voie_v3.csv
 │   │   ├── typing.py
 │   │   └── utils.py
+│   ├── audit_trail
+│   │   ├── __init__.py
+│   │   ├── apps.py
+│   │   ├── management
+│   │   │   └── commands
+│   │   │       └── cleanup_audit_trails.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── receivers.py
+│   │   └── utils.py
 │   ├── cities
 │   │   ├── __init__.py
 │   │   ├── admin.py
@@ -776,6 +788,7 @@
 │   │   │   ├── 0004_remove_itoutotpdevice_unique_name_per_user_and_more.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
+│   │   ├── signals.py
 │   │   └── utils.py
 │   ├── prescribers
 │   │   ├── __init__.py
@@ -1560,7 +1573,6 @@
 │   │   │   │   ├── structure_card_tab_description.html
 │   │   │   │   ├── structure_card_tab_services.html
 │   │   │   │   └── structure_card_tabs.html
-│   │   │   ├── orientation_confirmation.html
 │   │   │   ├── orientation_select_job_seeker.html
 │   │   │   ├── orientation_wizard.html
 │   │   │   ├── orientations
@@ -2378,6 +2390,10 @@
     │   ├── test_models.py
     │   ├── test_sync_communes.py
     │   └── test_utils.py
+    ├── audit_trail
+    │   ├── __init__.py
+    │   ├── factories.py
+    │   └── tests.py
     ├── cities
     │   ├── __init__.py
     │   ├── __snapshots__
@@ -3006,4 +3022,4 @@
         └── welcoming_tour
             ├── __init__.py
             └── tests.py
-497 directories, 2511 files
+502 directories, 2522 files
