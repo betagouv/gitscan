@@ -67,7 +67,7 @@
 │   ├── dbt_dora.py
 │   ├── dbt_dsn.py
 │   ├── dbt_france_travail.py
-│   ├── dbt_imer.py
+│   ├── dbt_geiq.py
 │   ├── dbt_manual.py
 │   ├── dbt_offre_insertion.py
 │   ├── dbt_oneshot.py
@@ -166,8 +166,10 @@
 │   │   │   │   ├── int_dora__mobilisation_to_orientation.sql
 │   │   │   │   ├── int_dora__mobilisationevent_user.sql
 │   │   │   │   ├── int_dora__orientation_user_service.sql
+│   │   │   │   ├── int_dora__orientations_enriched.sql
 │   │   │   │   ├── int_dora__service_structure.sql
 │   │   │   │   ├── int_dora__structure_members.sql
+│   │   │   │   ├── int_dora__structure_non_obsolete.sql
 │   │   │   │   └── properties.yml
 │   │   │   ├── emplois
 │   │   │   │   ├── int_emplois__actes_metier.sql
@@ -226,6 +228,7 @@
 │   │   │       ├── fluxIAE_AnnexeFinanciere_v2.sql
 │   │   │       └── fluxIAE_DateDerniereMiseAJour.sql
 │   │   ├── marts
+│   │   │   ├── actes_metier.sql
 │   │   │   ├── daily
 │   │   │   │   ├── candidats.sql
 │   │   │   │   ├── candidats_*.sql  (5 files)
@@ -260,6 +263,11 @@
 │   │   │   │   ├── utilisateurs_jamais_venus.sql
 │   │   │   │   └── visites_ft.sql
 │   │   │   ├── data_inclusion__structures_sans_dedupliquer.sql
+│   │   │   ├── dora
+│   │   │   │   ├── dim_dora__services.sql
+│   │   │   │   ├── dim_dora__structures.sql
+│   │   │   │   ├── dim_dora__users.sql
+│   │   │   │   └── properties.yml
 │   │   │   ├── esat
 │   │   │   │   ├── esat__answer_documents_falclist.sql
 │   │   │   │   ├── esat__answer_insertion_staff_funding.sql
@@ -277,10 +285,16 @@
 │   │   │   │   ├── fagerh__rh_etp_dispositif_etablissement.sql
 │   │   │   │   ├── fagerh__rh_metiers.sql
 │   │   │   │   └── properties.yml
+│   │   │   ├── geiq
+│   │   │   │   ├── _properties.yml
+│   │   │   │   ├── dim_geiq.sql
+│   │   │   │   ├── fct_geiq__assessments.sql
+│   │   │   │   └── fct_geiq__contracts.sql
 │   │   │   ├── marts_core
 │   │   │   │   ├── bridge_commune_code_postal.sql
 │   │   │   │   ├── daily
-│   │   │   │   │   ├── fct_imer.sql
+│   │   │   │   │   ├── fct_dora__imer.sql
+│   │   │   │   │   ├── fct_dora__orientations.sql
 │   │   │   │   │   └── fct_logins_utilisateurs_emplois.sql
 │   │   │   │   ├── data_inclusion
 │   │   │   │   │   ├── dim_data_inclusion__services.sql
@@ -383,10 +397,12 @@
 │   │   │   │   ├── structures_v1.sql
 │   │   │   │   └── structures_v1_dpt.sql
 │   │   │   ├── properties.yml
+│   │   │   ├── rpt_dora__imer.sql
 │   │   │   ├── rpt_esat__answer_coverage_by_region.sql
 │   │   │   ├── rpt_esat__low_confidence_potential_answers.sql
 │   │   │   ├── rpt_esat__survey_answers.sql
-│   │   │   └── rpt_imer.sql
+│   │   │   ├── rpt_geiq__assessments_contracts.sql
+│   │   │   └── rpt_geiq__contracts.sql
 │   │   └── staging
 │   │       ├── data_inclusion
 │   │       │   ├── _models.yml
@@ -396,10 +412,12 @@
 │   │       │   └── stg_di__structures_deduplicated.sql
 │   │       ├── dora
 │   │       │   ├── properties.yml
+│   │       │   ├── stg_dora__emplois_orientation_data.sql
 │   │       │   ├── stg_dora__mobilisationevent.sql
 │   │       │   ├── stg_dora__orientation.sql
 │   │       │   ├── stg_dora__service.sql
 │   │       │   ├── stg_dora__structure.sql
+│   │       │   ├── stg_dora__structure_member.sql
 │   │       │   └── stg_dora__user.sql
 │   │       ├── dsn
 │   │       │   ├── stg_dsn_geographie_nature_contrat.sql
@@ -424,6 +442,10 @@
 │   │       │   ├── properties.yml
 │   │       │   ├── stg_ft_clpe_commune.sql
 │   │       │   └── stg_ft_data_diag.sql
+│   │       ├── geiq
+│   │       │   ├── _properties.yml
+│   │       │   ├── stg_geiq__assessments.sql
+│   │       │   └── stg_geiq__contracts.sql
 │   │       ├── insee
 │   │       │   ├── properties.yml
 │   │       │   ├── stg_insee_arrondissements.sql
@@ -539,6 +561,7 @@
 │       ├── test_doublons_structures_fluxIAE.sql
 │       ├── test_etp_conventionnes.sql
 │       ├── test_etp_realises.sql
+│       ├── test_fct_dora__imer_rowcount_matches_sources.sql
 │       ├── test_fdp_tension.sql
 │       ├── test_fluxIAE_EtatMensuelIndiv_v2_sum_etp.sql
 │       ├── test_fluxIAE_salarie.sql
@@ -630,4 +653,4 @@
     ├── test_common_dates.py
     ├── test_common_db.py
     └── test_dags.py
-93 directories, 624 files
+96 directories, 644 files
