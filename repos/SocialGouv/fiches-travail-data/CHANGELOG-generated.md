@@ -1,7 +1,7 @@
-## Changelog : fiches-travail-data (30 derniers jours, au 2026-09-06)
+## Changelog : fiches-travail-data (30 derniers jours, au 15 septembre 2026)
 
 ### Résumé
-Le projet a bénéficié de cycles de mise à jour réguliers et automatisés. Ces interventions garantissent que les données structurées (fiches d'information sur le travail et l'emploi) restent synchronisées avec les informations publiées sur le site officiel travail-emploi.gouv.fr.
+Le projet a maintenu une activité de synchronisation quasi quotidienne. L'essentiel des évolutions concerne la mise à jour régulière des données pour garantir que les fiches d'information extraites du site officiel travail-emploi.gouv.fr sont toujours à jour et conformes aux sources.
 
 ### Évolutions fonctionnelles
-- Actualisation fréquente du jeu de données pour assurer la fraîcheur et l'exactitude des informations disponibles pour les utilisateurs.
+- Mise à jour régulière et automatisée des données (fiches de travail et d'emploi) pour refléter les dernières informations publiées sur le site source.
