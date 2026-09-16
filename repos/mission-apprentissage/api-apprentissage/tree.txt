@@ -214,10 +214,14 @@
 │   │   │   │   │   ├── depot-offre.doc.ts
 │   │   │   │   │   ├── en
 │   │   │   │   │   │   ├── apply.description.md
-│   │   │   │   │   │   └── apply.description.md.ts
+│   │   │   │   │   │   ├── apply.description.md.ts
+│   │   │   │   │   │   ├── workplace.location.description.md
+│   │   │   │   │   │   └── workplace.location.description.md.ts
 │   │   │   │   │   └── fr
 │   │   │   │   │       ├── apply.description.md
-│   │   │   │   │       └── apply.description.md.ts
+│   │   │   │   │       ├── apply.description.md.ts
+│   │   │   │   │       ├── workplace.location.description.md
+│   │   │   │   │       └── workplace.location.description.md.ts
 │   │   │   │   ├── generation-lien-prise-rdv-formation
 │   │   │   │   │   └── generation-lien-prise-rdv-formation.doc.ts
 │   │   │   │   ├── internal.ts
@@ -576,6 +580,7 @@
 │   │   │   └── security
 │   │   │       └── permissions.ts
 │   │   └── utils
+│   │       ├── contact.ts
 │   │       ├── date.primitives.test.ts
 │   │       ├── date.primitives.ts
 │   │       ├── esmUtils.ts
@@ -868,7 +873,8 @@
 │   │   │   ├── 20250219120014-cache_entreprise_validation.ts
 │   │   │   ├── 20250523140713-key-notif-expire.ts
 │   │   │   ├── 20260204163600-import-mission-locale.ts
-│   │   │   └── 20260825120000-api-key-env.ts
+│   │   │   ├── 20260825120000-api-key-env.ts
+│   │   │   └── 20260826150000-user-fields.ts
 │   │   ├── server
 │   │   │   ├── middlewares
 │   │   │   │   ├── apiKeyUsageMiddleware.test.ts
@@ -883,6 +889,7 @@
 │   │   │   │   │   │   ├── organisations.route.test.ts
 │   │   │   │   │   │   ├── organisations.routes.ts
 │   │   │   │   │   │   ├── processor.admin.routes.ts
+│   │   │   │   │   │   ├── user.route.test.ts
 │   │   │   │   │   │   └── user.routes.ts
 │   │   │   │   │   ├── auth.route.test.ts
 │   │   │   │   │   ├── auth.routes.ts
@@ -954,9 +961,6 @@
 │   │   │   │   └── unml
 │   │   │   │       ├── unml.test.ts
 │   │   │   │       └── unml.ts
-│   │   │   ├── documentation
-│   │   │   │   ├── checkDocumentationSync.ts
-│   │   │   │   └── expectedDocumentationDelta.ts
 │   │   │   ├── errors
 │   │   │   │   └── withCause.ts
 │   │   │   ├── excel
@@ -1035,7 +1039,6 @@
 │   │   │   │   ├── header.ejs
 │   │   │   │   └── signature.ejs
 │   │   │   ├── magic-link.mjml.ejs
-│   │   │   ├── register-feedback.mjml.ejs
 │   │   │   └── register.mjml.ejs
 │   │   ├── kit_apprentissage
 │   │   │   ├── Kit apprentissage et RNCP v1.0.csv
@@ -1176,6 +1179,7 @@
 │   │   │   │   │   └── source.npec.normalized.model.ts
 │   │   │   │   └── referentiel
 │   │   │   │       └── source.referentiel.model.ts
+│   │   │   ├── user.model.test.ts
 │   │   │   └── user.model.ts
 │   │   ├── openapi
 │   │   │   ├── __snapshots__
@@ -1270,9 +1274,7 @@
 │   │   │   │       │   └── UserList.tsx
 │   │   │   │       └── page.tsx
 │   │   │   ├── auth
-│   │   │   │   ├── inscription
-│   │   │   │   │   └── page.tsx
-│   │   │   │   └── refus-inscription
+│   │   │   │   └── inscription
 │   │   │   │       └── page.tsx
 │   │   │   ├── cgu
 │   │   │   │   ├── components
@@ -1508,4 +1510,4 @@
 │       └── routes.utils.ts
 ├── vitest.config.ts
 └── yarn.lock
-404 directories, 1106 files
+402 directories, 1110 files
