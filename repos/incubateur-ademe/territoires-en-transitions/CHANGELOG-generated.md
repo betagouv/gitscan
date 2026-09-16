@@ -1,38 +1,47 @@
-## Changelog : territoires-en-transitions (30 derniers jours, au 11 septembre 2026)
+## Changelog : territoires-en-transitions (30 derniers jours, au 15 septembre 2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a franchi des étapes majeures avec l'intégration de l'authentification SSO (OIDC), la refonte complète du processus d'instruction des PCAET et l'introduction d'un nouveau système de référentiels. L'expérience utilisateur a également été largement modernisée grâce à une nouvelle navigation et un système de gestion documentaire plus robuste et sécurisé.
+Ce mois a été marqué par une montée en puissance majeure des fonctionnalités liées au pilotage des plans PCAET et à la sécurisation des échanges. Les évolutions se concentrent sur l'automatisation du workflow d'instruction (avis et validation), l'intégration complète de l'authentification via les fournisseurs d'identité (OIDC/ProConnect) et une refonte de la navigation pour faciliter l'accès aux différents espaces (collectivités vs services instructeurs). La gestion documentaire a également été profondément sécurisée grâce à l'utilisation de jetons signés.
 
 ### Évolutions fonctionnelles
-- **Instruction des PCAET** : 
-    - Mise en place d'un nouveau cycle complet pour les "avis" (rapports d'instruction), incluant la soumission, la validation par plusieurs parties et la notification automatique des collectivités.
-    - Amélioration du diagnostic avec de nouvelles tables de vulnérabilités et des règles de complétude renforcées.
-    - Possibilité de lier plusieurs plans à une même démarche.
-- **Authentification et accès** : 
-    - Implémentation de la connexion via les fournisseurs d'identité OIDC (ProConnect et MonCompteAdeme), permettant une création de compte et une liaison d'identité automatisées.
-    - Gestion améliorée des rôles et des accès pour les services déconcentrés (DREAL, etc.).
-- **Gestion des référentiels et documents** : 
-    - Introduction du nouveau référentiel "CR" et mise en place d'un mécanisme de bascule entre les référentiels.
-    - Nouveau système de dépôt de documents sécurisé utilisant des jetons signés et permettant des transferts résumables.
-    - Amélioration de la bibliothèque de documents avec un meilleur contrôle des droits de lecture.
-- **Interface utilisateur (UI)** : 
-    - Refonte majeure de la navigation principale pour faciliter l'accès aux tableaux de bord et aux collectivités.
-    - Améliorations ergonomiques : indicateurs de tri dans les tableaux, nouveaux composants (boutons split, variantes de cartes pour les onglets) et amélioration de la lisibilité sur mobile.
-    - Harmonisation des libellés et du vocabulaire métier sur l'ensemble de l'application.
+
+**Pilotage des plans (PCAET) et Instruction**
+- Mise en place du workflow complet d'instruction : dépôt, validation et gestion des avis par les services instructeurs.
+- Introduction de l'analyse par IA pour la classification automatique des fiches et des leviers d'action.
+- Intégration de la gestion des vulnérabilités au sein du diagnostic PCAET.
+- Amélioration du suivi de complétude du diagnostic et des indicateurs associés.
+
+**Authentification et Gestion des Utilisateurs**
+- Support complet de l'authentification via OIDC (ProConnect, MonCompteAdeme) avec gestion automatique de la liaison d'identité et des profils.
+- Création d'espaces dédiés pour les services déconcentrés (ex: DREAL) permettant d'instruire les dossiers des collectivités.
+- Amélioration de la gestion des membres et des correspondants des services de l'État.
+
+**Référentiels et Indicateurs**
+- Implémentation de la bascule vers le nouveau référentiel CR (avec gestion des commentaires et des données historiques).
+- Gestion des référentiels archivés : affichage spécifique dans la navigation et limitation des actions possibles.
+- Amélioration de la visualisation des scores et des indicateurs de performance.
+
+**Gestion Documentaire et Interface**
+- Nouveau système de dépôt de documents sécurisé via des jetons signés et un transport résumable.
+- Refonte de la navigation principale et de l'ergonomie des tableaux pour une meilleure lisibilité.
+- Amélioration de l'accessibilité des composants UI (tableaux, modales, boutons).
+- Ajout d'une bannière d'information mémorisée pour les communications importantes.
 
 ### Évolutions techniques
-- **Infrastructure et CI/CD** : 
-    - Migration de la chaîne de déploiement : abandon d'Earthly au profit de Dockerfiles natifs et de Makefile.
-    - Mise en place et optimisation de Nx Cloud pour accélérer les workflows de CI.
-    - Renforcement de la robustesse des migrations de base de données (Sqitch) et des jobs de maintenance.
-- **Architecture Backend** : 
-    - Refonte du pipeline de gestion des documents et du service de contrôle d'accès.
-    - Optimisation des performances de la CI via le partitionnement (sharding) des tests E2E.
-    - Amélioration de l'intégration de l'IA pour la classification automatique des leviers et des plans.
-- **Qualité logicielle** : 
-    - Intégration de règles ESLint pour interdire l'utilisation de textes en dur dans l'interface (UI copy).
-    - Augmentation de la couverture de tests, notamment sur les flux d'instruction et les parcours d'authentification.
+
+**Architecture et Backend**
+- Refactoring massif des services de gestion documentaire pour séparer les droits de lecture et d'écriture.
+- Optimisation de la gestion des fichiers : détection de doublons au dépôt et gestion centralisée des signatures.
+- Amélioration de la gestion des sessions (distinction entre sessions anonymes, en cours et connectées).
+- Refonte de la structure des services de référentiels pour une meilleure modularité.
+
+**Infrastructure et CI/CD**
+- Migration de l'outil de build d'Earthly vers des Dockerfile natifs et des workflows GitHub Actions optimisés.
+- Mise en place de Nx Cloud pour accélérer les temps de build et de test.
+- Optimisation des tests de bout en bout (e2e) via le sharding pour réduire les temps de cycle.
+- Renforcement des processus de maintenance de la base de données (Sqitch).
 
 ### Autres changements
-- **Documentation** : Mise à jour importante des ADR (*Architecture Decision Records*) concernant les choix de déploiement, la périodicité des indicateurs et les décisions d'architecture liées aux graphiques.
-- **Nettoyage** : Suppression de nombreux composants obsolètes, de routes mortes et de code non utilisé suite à la refonte de la navigation.
+- **Documentation** : Mise à jour importante des ADR (Architecture Decision Records) concernant les choix d'infrastructure et l'architecture des indicateurs.
+- **Qualité de code** : Mise en place de règles ESLint pour garantir la cohérence du "wording" et interdire le texte en dur dans l'interface.
+- **Nettoyage** : Suppression de nombreux composants obsolètes, de workflows morts et de code non utilisé suite à la refonte de la navigation.

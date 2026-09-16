@@ -909,6 +909,7 @@
 │   │   │   │   ├── preferences
 │   │   │   │   │   ├── affichage-referentiels.page.tsx
 │   │   │   │   │   └── use-update-collectivite-preferences.ts
+│   │   │   │   ├── standard-only.layout.spec.tsx
 │   │   │   │   ├── standard-only.layout.tsx
 │   │   │   │   └── tags
 │   │   │   │       ├── financeur-tag.dropdown.tsx
@@ -1863,6 +1864,8 @@
 │   │   │   │   │   │   ├── filesToUploadList.tsx
 │   │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   │   ├── types.ts
+│   │   │   │   │   │   ├── upload-file-result-to-status.ts
+│   │   │   │   │   │   ├── use-file-upload-list.spec.ts
 │   │   │   │   │   │   └── use-file-upload-list.ts
 │   │   │   │   │   ├── AddPreuveReglementaire.tsx
 │   │   │   │   │   ├── Bibliotheque
@@ -2392,6 +2395,7 @@
 │   │   │   │   │       ├── discussion.router.ts
 │   │   │   │   │       └── discussion.schemas.ts
 │   │   │   │   ├── documents
+│   │   │   │   │   ├── bibliotheque-fichier.repository.ts
 │   │   │   │   │   ├── collectivite-bucket.repository.ts
 │   │   │   │   │   ├── collectivite-documents-access.service.spec.ts
 │   │   │   │   │   ├── collectivite-documents-access.service.ts
@@ -2399,7 +2403,6 @@
 │   │   │   │   │   │   ├── create-upload-token.errors.ts
 │   │   │   │   │   │   ├── create-upload-token.input.ts
 │   │   │   │   │   │   ├── create-upload-token.output.ts
-│   │   │   │   │   │   ├── create-upload-token.repository.ts
 │   │   │   │   │   │   ├── create-upload-token.router.e2e-spec.ts
 │   │   │   │   │   │   ├── create-upload-token.router.ts
 │   │   │   │   │   │   ├── create-upload-token.service.spec.ts
@@ -3300,7 +3303,6 @@
 │   │   │   │   │   │   ├── enqueue-classification.output.ts
 │   │   │   │   │   │   ├── enqueue-classification.service.ts
 │   │   │   │   │   │   └── enqueue-classification.spec.ts
-│   │   │   │   │   ├── fiche-action-volet-ges.errors.ts
 │   │   │   │   │   ├── fiche-action-volet-ges.repository.e2e-spec.ts
 │   │   │   │   │   ├── fiche-action-volet-ges.repository.ts
 │   │   │   │   │   ├── generate-classification
@@ -3335,10 +3337,12 @@
 │   │   │   │   │   │   │   └── render-fiches-text.ts
 │   │   │   │   │   │   ├── run-classification.spec.ts
 │   │   │   │   │   │   └── run-classification.ts
-│   │   │   │   │   └── prompts
-│   │   │   │   │       ├── classification.prompt.ts
-│   │   │   │   │       ├── levier-definitions.ts
-│   │   │   │   │       └── leviers-text.ts
+│   │   │   │   │   ├── prompts
+│   │   │   │   │   │   ├── classification.prompt.ts
+│   │   │   │   │   │   ├── levier-definitions.ts
+│   │   │   │   │   │   └── leviers-text.ts
+│   │   │   │   │   ├── volet.errors.ts
+│   │   │   │   │   └── volet.repository.ts
 │   │   │   │   ├── fiches
 │   │   │   │   │   ├── add-annexe
 │   │   │   │   │   │   ├── add-annexe.errors.ts
@@ -3691,6 +3695,8 @@
 │   │   │   │   ├── action-definitions
 │   │   │   │   │   ├── action-definitions.module.ts
 │   │   │   │   │   └── action-definitions.repository.ts
+│   │   │   │   ├── action-or-descendant.utils.spec.ts
+│   │   │   │   ├── action-or-descendant.utils.ts
 │   │   │   │   ├── action-personnalisations
 │   │   │   │   │   ├── action-personnalisations.router.e2e-spec.ts
 │   │   │   │   │   ├── action-personnalisations.router.ts
@@ -4004,15 +4010,27 @@
 │   │   │   │   │   ├── reset-display-preferences.service.ts
 │   │   │   │   │   └── reset-display-preferences.test-fixture.ts
 │   │   │   │   ├── score-indicatif
-│   │   │   │   │   ├── format-score-indicatif.utils.ts
+│   │   │   │   │   ├── build-evaluation-context.service.ts
+│   │   │   │   │   ├── compute-score-indicatif.rules.spec.ts
+│   │   │   │   │   ├── compute-score-indicatif.rules.ts
+│   │   │   │   │   ├── get-indicateurs-associes.service.ts
 │   │   │   │   │   ├── get-score-indicatif.request.ts
 │   │   │   │   │   ├── get-valeurs-utilisables.request.ts
 │   │   │   │   │   ├── get-valeurs-utilisees.request.ts
+│   │   │   │   │   ├── indicateurs-associes.rules.spec.ts
+│   │   │   │   │   ├── indicateurs-associes.rules.ts
+│   │   │   │   │   ├── score-indicatif-payload.rules.spec.ts
+│   │   │   │   │   ├── score-indicatif-payload.rules.ts
 │   │   │   │   │   ├── score-indicatif.errors.ts
+│   │   │   │   │   ├── score-indicatif.module.ts
+│   │   │   │   │   ├── score-indicatif.repository.ts
 │   │   │   │   │   ├── score-indicatif.router.e2e-spec.ts
 │   │   │   │   │   ├── score-indicatif.router.ts
+│   │   │   │   │   ├── score-indicatif.rules.ts
 │   │   │   │   │   ├── score-indicatif.service.ts
-│   │   │   │   │   └── set-valeurs-utilisees.request.ts
+│   │   │   │   │   ├── set-valeurs-utilisees.request.ts
+│   │   │   │   │   ├── valeurs-utilisables.rules.spec.ts
+│   │   │   │   │   └── valeurs-utilisables.rules.ts
 │   │   │   │   ├── snapshots
 │   │   │   │   │   ├── compute-score-mode.enum.ts
 │   │   │   │   │   ├── list-snapshots
@@ -5585,6 +5603,7 @@
 │   │   │   │   ├── demande@v2.30.0.sql
 │   │   │   │   ├── demande@v2.95.0.sql
 │   │   │   │   ├── drop_add_bibliotheque_fichier.sql
+│   │   │   │   ├── drop_bibliotheque_fichier_views.sql
 │   │   │   │   ├── drop_preuve_count.sql
 │   │   │   │   ├── export.sql
 │   │   │   │   ├── fichier_preuve.sql
@@ -5642,6 +5661,7 @@
 │   │   │   │   ├── classification_leviers_job.sql
 │   │   │   │   ├── classification_volets.sql
 │   │   │   │   ├── classification_volets_enjeu.sql
+│   │   │   │   ├── classification_volets_par_collectivite.sql
 │   │   │   │   ├── confidentialite.sql
 │   │   │   │   ├── drop_create_fiche.sql
 │   │   │   │   ├── drop_plan_action_chemin_view.sql
@@ -6177,6 +6197,7 @@
 │   │   │   │   ├── demande@v2.30.0.sql
 │   │   │   │   ├── demande@v2.95.0.sql
 │   │   │   │   ├── drop_add_bibliotheque_fichier.sql
+│   │   │   │   ├── drop_bibliotheque_fichier_views.sql
 │   │   │   │   ├── drop_preuve_count.sql
 │   │   │   │   ├── export.sql
 │   │   │   │   ├── fichier_preuve.sql
@@ -6234,6 +6255,7 @@
 │   │   │   │   ├── classification_leviers_job.sql
 │   │   │   │   ├── classification_volets.sql
 │   │   │   │   ├── classification_volets_enjeu.sql
+│   │   │   │   ├── classification_volets_par_collectivite.sql
 │   │   │   │   ├── confidentialite.sql
 │   │   │   │   ├── drop_create_fiche.sql
 │   │   │   │   ├── drop_plan_action_chemin_view.sql
@@ -6769,6 +6791,7 @@
 │   │       │   ├── demande@v2.30.0.sql
 │   │       │   ├── demande@v2.95.0.sql
 │   │       │   ├── drop_add_bibliotheque_fichier.sql
+│   │       │   ├── drop_bibliotheque_fichier_views.sql
 │   │       │   ├── drop_preuve_count.sql
 │   │       │   ├── export.sql
 │   │       │   ├── fichier_preuve.sql
@@ -6826,6 +6849,7 @@
 │   │       │   ├── classification_leviers_job.sql
 │   │       │   ├── classification_volets.sql
 │   │       │   ├── classification_volets_enjeu.sql
+│   │       │   ├── classification_volets_par_collectivite.sql
 │   │       │   ├── confidentialite.sql
 │   │       │   ├── drop_create_fiche.sql
 │   │       │   ├── drop_plan_action_chemin_view.sql
@@ -7284,6 +7308,10 @@
 │   │   │   │       ├── lecteur-readonly-description.spec.ts
 │   │   │   │       ├── mutualiser-action.spec.ts
 │   │   │   │       └── sous-actions.pom.ts
+│   │   │   ├── paniers
+│   │   │   │   ├── creer-plan-depuis-panier.spec.ts
+│   │   │   │   ├── paniers.fixture.ts
+│   │   │   │   └── rattachement-collectivite.spec.ts
 │   │   │   └── plans
 │   │   │       ├── create-plan
 │   │   │       │   ├── create-plan.pom.ts
@@ -8245,6 +8273,7 @@
 │       │   │       │   ├── table-editing.stories.tsx
 │       │   │       │   ├── table-full.tsx
 │       │   │       │   ├── table-full.with-editing.tsx
+│       │   │       │   ├── table-full.with-filters.tsx
 │       │   │       │   └── table.stories.tsx
 │       │   │       ├── table.cell-rich-text-editor.tsx
 │       │   │       ├── table.cell-textarea.tsx
@@ -8598,4 +8627,4 @@
 ├── tsconfig.json
 ├── vitest.config.ts
 └── vitest.workspace.ts
-1427 directories, 7451 files
+1428 directories, 7479 files
