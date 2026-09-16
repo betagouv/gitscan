@@ -1,18 +1,18 @@
 {
   "url": "https://github.com/demarche-numerique/demarche.numerique.gouv.fr",
   "name": "demarche.numerique.gouv.fr",
-  "description": "Plateforme web dédiée à la dématérialisation des procédures administratives françaises. Elle permet la gestion complète des dossiers, des formulaires et des flux de travail pour l'administration.",
+  "description": "Plateforme web conçue pour accompagner la dématérialisation des démarches administratives françaises. Elle permet la gestion complète de formulaires, de dossiers et de procédures en ligne pour les usagers et l'administration.",
   "language": "Ruby",
   "features": [
     "Formulaires & Démarches",
     "Gestion des utilisateurs & Permissions",
-    "Administration & Backoffice",
+    "Authentification & Accès",
     "API & Intégrations",
-    "Visualisation de données & Cartographie",
-    "Suivi & Traçabilité",
-    "Authentification & Accès"
+    "Accessibilité & i18n",
+    "Administration & Backoffice",
+    "Notifications & Alertes"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": "Grand public",
   "dependencies": [
     "Ruby on Rails",
     "React",
@@ -21,9 +21,9 @@
     "Sidekiq",
     "GraphQL",
     "Devise",
-    "MapLibre GL",
     "Playwright",
-    "AWS S3"
+    "TypeScript",
+    "Vite"
   ],
   "components": [
     "API REST & GraphQL",
@@ -31,19 +31,17 @@
     "React / Next.js",
     "TypeScript / JavaScript",
     "Design System (DSFR & UI libs)",
-    "Tests"
+    "Authentification (composant)",
+    "Templates & Moteurs de rendu"
   ],
   "auth": {
     "methods": [
+      "email-password",
       "oauth2",
       "jwt",
       "session",
       "mfa",
       "sso"
-    ],
-    "providers": [
-      "FranceConnect",
-      "RDV Service Public"
     ]
   },
   "tests": [
@@ -52,7 +50,7 @@
     "Vitest",
     "Capybara"
   ],
-  "lastActivity": "2026-09-01T17:27:22+02:00",
+  "lastActivity": "2026-09-16T00:03:12Z",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -61,7 +59,10 @@
     "React & Next.js",
     "TypeScript",
     "Bases de données SQL",
+    "Sécurité & Auth",
     "Design System & UI",
-    "Accessibilité"
+    "JavaScript",
+    "Accessibilité",
+    "Documentation"
   ]
 }
