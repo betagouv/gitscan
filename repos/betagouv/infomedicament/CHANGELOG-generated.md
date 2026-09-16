@@ -1,22 +1,29 @@
-## Changelog : infomedicament (30 derniers jours, au 22 juillet 2026)
+## Changelog : infomedicament (30 derniers jours, au 15 septembre 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se concentrent sur l'amélioration de l'affichage des informations des médicaments, notamment pour les médicaments centralisés avec l'ajout de l'affichage des notices et RCP. Une importante mise à jour des données de l'ANSM a été intégrée via de nouvelles migrations, enrichissant ainsi la base de données. Des améliorations de l'expérience utilisateur ont également été apportées, comme la redirection de la page racine ATC vers le premier élément de la liste.
+Les récentes évolutions se concentrent sur l'enrichissement de l'information médicale et l'amélioration de l'expérience utilisateur. Le service propose désormais des informations de stock détaillées, l'intégration de vidéos sur les pages de spécialités et un affichage plus direct des notices. Parallèlement, la robustesse technique a été renforcée par la mise en place de nouveaux tests et une optimisation des mécanismes de recherche.
 
 ### Évolutions fonctionnelles
-- Ajout de tags "Usage hospitalier" et "Remboursé" pour faciliter la recherche et le filtrage des médicaments. [#282](https://github.com/betagouv/infomedicament/issues/282)
-- Redirection de la page racine pour un code ATC vers le premier élément de la liste, améliorant la navigation. [#282](https://github.com/betagouv/infomedicament/issues/282) et [#65b2a0f](https://github.com/betagouv/infomedicament/commit/65b2a0f)
-- Affichage des notices et RCP (Résumés des Caractéristiques du Produit) pour les médicaments centralisés lorsque le contenu est disponible.
-- Amélioration de l'affichage du titre de la page en cas de métadonnées manquantes.
-- Ajout des indications et des médicaments dans le résumé des données importées. [#5391c4b](https://github.com/betagouv/infomedicament/commit/5391c4b)
+- **Enrichissement du contenu** :
+    - Gestion et affichage des informations de stock pour les spécialités.
+    - Ajout de vidéos sur les pages de spécialités.
+    - Rendu direct des notices et des RCP au format HTML [#290](https://github.com/betagouv/infomedicament/issues/290).
+- **Améliorations de l'interface (UI)** :
+    - Correction de l'affichage des icônes dans le menu mobile [#305](https://github.com/betagouv/infomedicament/issues/305).
+    - Ajustements du sous-menu et des indications dans l'en-tête [#298](https://github.com/betagouv/infomedicament/issues/298).
+    - Amélioration visuelle des blocs de stock (ajout de bordures).
+    - Optimisation de l'affichage des lignes CIP (agrégation intelligente selon les dates et statuts).
+- **Qualité des données** :
+    - Nettoyage des données relatives à la pédiatrie.
 
 ### Évolutions techniques
-- Mise à jour des données de l'ANSM via de nouvelles migrations, incluant l'ajout de nombreuses tables (bdpm_caracteristique, bdpm_document, bdpm_recipient, etc.).
-- Refactorisation des migrations BDPM pour les consolider en une seule migration `ansm_opendata_tables`.
-- Correction d'une duplication de fichier de migration. [#284](https://github.com/betagouv/infomedicament/issues/284)
-- Ajout de `"use client"` dans tous les composants client pour éviter les erreurs.
-- Clarification de l'utilisation de la clé Albert et amélioration de la documentation.
-
-### Autres changements
-- Documentation du processus actuel de mise à jour des données.
-- Amélioration de la documentation générale.
+- **Optimisation des performances et de la recherche** :
+    - Refonte de l'autocomplétion avec la création d'un endpoint et d'une logique dédiés [#279](https://github.com/betagouv/infomedicament/issues/279).
+- **Qualité logicielle et tests** :
+    - Initialisation des tests de bout en bout (E2E) [#281](https://github.com/betagouv/infomedicament/issues/281).
+    - Ajout de tests pour les codes CIS.
+- **Infrastructure et maintenance** :
+    - Amélioration du proxy [#301](https://github.com/betagouv/infomedicament/issues/301).
+    - Ajout de scripts de restauration [#299](https://github.com/betagouv/infomedicament/issues/299) et d'un système de journalisation (logger) [#292](https://github.com/betagouv/infomedicament/issues/292).
+    - Nettoyage de la base de données via la suppression de tables de contenu inutilisées [#297](https://github.com/betagouv/infomedicament/issues/297).
+    - Correction de la gestion des valeurs nulles pour les stocks.

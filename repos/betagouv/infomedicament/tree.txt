@@ -10,6 +10,7 @@
 ├── .eslintrc.json
 ├── .github
 │   └── workflows
+│       ├── e2e.yml
 │       ├── lighthouse.yml
 │       └── tests.yml
 ├── .gitignore
@@ -23,12 +24,16 @@
 │   ├── DEPLOYMENT.md
 │   ├── dump-bdpm-scalingo.md
 │   └── import-notices-rcp.md
+├── e2e
+│   ├── homepage.spec.ts
+│   └── medicine-information.spec.ts
 ├── esbuild.scripts.mjs
 ├── eslint.config.mjs
 ├── kysely.config.ts
 ├── next.config.mjs
 ├── package-lock.json
 ├── package.json
+├── playwright.config.ts
 ├── public
 │   ├── googleac4490d520987202.html
 │   ├── icons
@@ -64,11 +69,11 @@
 ├── scalingo.json
 ├── scripts
 │   ├── aggregatePathoClasseClinique.ts
-│   ├── importNoticeRCP.integration.test.ts
-│   ├── importNoticeRCP.ts
 │   ├── populateSpecMetadataTable.ts
 │   ├── scalingo
-│   │   └── import_pdbm.sh
+│   │   ├── download_db_backup.sh
+│   │   ├── import_pdbm.sh
+│   │   └── restore_db.sh
 │   ├── seedInteractionsSearch.ts
 │   ├── seedReviewApp.ts
 │   ├── seedSearchIndex.ts
@@ -79,8 +84,6 @@
 │   │   └── sample_rcp.jsonl
 │   ├── updateResumeData.ts
 │   └── utils
-│       ├── contentParser.test.ts
-│       ├── contentParser.ts
 │       ├── htmlParser.test.ts
 │       └── htmlParser.ts
 ├── sentry.client.config.ts
@@ -140,7 +143,6 @@
 │   │   │   │   └── [CIS]
 │   │   │   │       ├── notice-search
 │   │   │   │       │   ├── route.integration.test.ts
-│   │   │   │       │   ├── route.test.ts
 │   │   │   │       │   └── route.ts
 │   │   │   │       └── page.tsx
 │   │   │   ├── mentions-legales
@@ -152,6 +154,8 @@
 │   │   │   │   ├── route.test.ts
 │   │   │   │   └── route.ts
 │   │   │   ├── rechercher
+│   │   │   │   ├── autocomplete
+│   │   │   │   │   └── route.ts
 │   │   │   │   ├── page.tsx
 │   │   │   │   └── results
 │   │   │   │       └── route.ts
@@ -183,8 +187,6 @@
 │   │   └── sitemap.ts
 │   ├── components
 │   │   ├── AlphabeticNav.tsx
-│   │   ├── AutocompleteSearch.test.tsx
-│   │   ├── AutocompleteSearch.tsx
 │   │   ├── ClientHeader.tsx
 │   │   ├── DefinitionBanner.tsx
 │   │   ├── GenericAccordion.tsx
@@ -229,28 +231,34 @@
 │   │   │   └── MarrResumeList.tsx
 │   │   ├── medicaments
 │   │   │   ├── AdvancedContent.tsx
+│   │   │   ├── DocumentHtml.test.tsx
+│   │   │   ├── DocumentHtml.tsx
 │   │   │   ├── MedicamentContent.tsx
 │   │   │   ├── NoticeContent.tsx
 │   │   │   ├── advanced
 │   │   │   │   ├── DetailedSubMenu.tsx
 │   │   │   │   ├── DocumentHas.tsx
 │   │   │   │   ├── GeneralInformations.tsx
+│   │   │   │   ├── RcpBlock.test.tsx
 │   │   │   │   └── RcpBlock.tsx
 │   │   │   ├── blocks
 │   │   │   │   ├── CentraliseBlock.tsx
 │   │   │   │   ├── DesktopTitleBlock.tsx
 │   │   │   │   ├── GenericBlocks.tsx
+│   │   │   │   ├── IndicationsBlock.test.tsx
 │   │   │   │   ├── IndicationsBlock.tsx
 │   │   │   │   ├── MedicamentContentHeaderBlock.tsx
 │   │   │   │   └── SwitchNoticeAdvancedBlock.tsx
 │   │   │   └── notice
+│   │   │       ├── NoticeBlock.test.tsx
 │   │   │       ├── NoticeBlock.tsx
 │   │   │       ├── NoticeChunkResultsBox.test.ts
 │   │   │       ├── NoticeChunkResultsBox.tsx
 │   │   │       ├── PresentationsList.tsx
 │   │   │       ├── QuestionKeyword.tsx
 │   │   │       ├── QuestionKeywordsBox.tsx
-│   │   │       └── QuestionsBox.tsx
+│   │   │       ├── QuestionsBox.tsx
+│   │   │       └── VideosBlock.tsx
 │   │   ├── medicamentsGeneriques
 │   │   │   └── MedicamentGeneriqueContainer.tsx
 │   │   ├── rating
@@ -262,6 +270,9 @@
 │   │   ├── search
 │   │   │   ├── SearchPage.tsx
 │   │   │   ├── SearchResultsList.tsx
+│   │   │   ├── autocomplete
+│   │   │   │   ├── AutocompleteSearch.test.tsx
+│   │   │   │   └── AutocompleteSearch.tsx
 │   │   │   └── blocks
 │   │   │       ├── SearchFilterBlock.tsx
 │   │   │       └── SearchFilterLabel.tsx
@@ -277,6 +288,7 @@
 │   │       ├── PregnancyPlanTag.tsx
 │   │       ├── PrescriptionTag.tsx
 │   │       ├── ReimbursableTag.tsx
+│   │       ├── StockTag.tsx
 │   │       ├── SubstanceTag.tsx
 │   │       ├── TagContainer.tsx
 │   │       └── dsfr-custom-tags.css
@@ -318,12 +330,18 @@
 │   │   │   ├── 20260615000000_search_index_spec_id.ts
 │   │   │   ├── 20260616000000_search_synonyms.ts
 │   │   │   ├── 20260623000001_ansm_opendata_tables.ts
-│   │   │   └── 20260624000001_url_has.ts
+│   │   │   ├── 20260624000001_url_has.ts
+│   │   │   ├── 20260717000000_add_notice_content_html.ts
+│   │   │   ├── 20260717000001_add_rcp_content_html.ts
+│   │   │   ├── 20260829193918_add_specs_videos.ts
+│   │   │   ├── 20260830163243_stock_management.ts
+│   │   │   ├── 20260907000000_drop_notice_rcp_content_tables.ts
+│   │   │   ├── 20260907000001_drop_leaflet_images.ts
+│   │   │   └── 20260911123755_clean_pediatrics_infos.ts
 │   │   ├── pdbmMySQL
 │   │   │   ├── index.ts
 │   │   │   └── types.ts
 │   │   ├── seeds
-│   │   │   ├── 1722418158859_leaftletImages.ts
 │   │   │   ├── 1725439927263_searchIndex.ts
 │   │   │   └── 1775001600000_interactionsSearch.ts
 │   │   ├── types.d.ts
@@ -331,6 +349,8 @@
 │   │       ├── articles.test.ts
 │   │       ├── articles.ts
 │   │       ├── atc.ts
+│   │       ├── autocomplete.test.ts
+│   │       ├── autocomplete.ts
 │   │       ├── composants.ts
 │   │       ├── ficheInfos.ts
 │   │       ├── generics.integration.test.ts
@@ -355,17 +375,22 @@
 │   │       ├── searchScoring.ts
 │   │       ├── searchSynonyms.test.ts
 │   │       ├── searchSynonyms.ts
+│   │       ├── searchTerms.ts
 │   │       ├── specialities.integration.test.ts
 │   │       ├── specialities.ts
+│   │       ├── stocks.ts
 │   │       ├── substances.integration.test.ts
 │   │       ├── substances.ts
+│   │       ├── videos.ts
 │   │       └── warmup.ts
 │   ├── displayUtils.test.ts
 │   ├── displayUtils.ts
 │   ├── instrumentation.ts
 │   ├── lib
 │   │   ├── albert.test.ts
-│   │   └── albert.ts
+│   │   ├── albert.ts
+│   │   └── logger.ts
+│   ├── proxy.test.ts
 │   ├── proxy.ts
 │   ├── services
 │   │   ├── matomo.ts
@@ -390,13 +415,15 @@
 │   │   ├── PresentationTypes.tsx
 │   │   ├── RatingTypes.tsx
 │   │   ├── SearchTypes.tsx
-│   │   └── SpecialiteTypes.tsx
+│   │   ├── SpecialiteTypes.tsx
+│   │   └── StockTypes.tsx
 │   └── utils
 │       ├── alphabeticNav.ts
 │       ├── atc.ts
 │       ├── glossary.tsx
 │       ├── network.tsx
-│       ├── notices.test.ts
+│       ├── noticeHtml.test.ts
+│       ├── noticeHtml.ts
 │       ├── notices.test.tsx
 │       ├── notices.tsx
 │       ├── pediatrics.ts
@@ -411,4 +438,4 @@
 ├── utils
 │   └── network.tsx
 └── vitest.config.mts
-97 directories, 316 files
+100 directories, 340 files
