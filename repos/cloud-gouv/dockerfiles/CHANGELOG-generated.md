@@ -1,11 +1,12 @@
-## Changelog : dockerfiles (30 derniers jours, au 04/09/2026)
+## Changelog : dockerfiles (30 derniers jours, au 14 septembre 2026)
 
 ### Résumé
-Ce mois-ci, le projet a introduit une nouvelle image dédiée à l'auto-correction ("autofix") et a procédé à une optimisation de la taille des images existantes pour les rendre plus légères et performantes.
+Ce mois-ci, le dépôt s'est enrichi d'un nouvel outil pour la gestion des ressources Outscale. Les efforts se sont également concentrés sur l'optimisation de la taille des images et la mise à jour des outils de déploiement pour garantir une meilleure compatibilité et une utilisation plus efficace des ressources.
 
 ### Évolutions fonctionnelles
-- Ajout d'une nouvelle image "autofix" permettant d'automatiser certaines tâches de correction. [#40](https://github.com/cloud-gouv/dockerfiles/pull/40)
+- Ajout d'un nouveau Dockerfile dédié à la gestion de la puissance des machines virtuelles Outscale ([#41](https://github.com/cloud-gouv/dockerfiles/pull/41)).
 
 ### Évolutions techniques
-- Optimisation de la taille des images pour réduire leur poids (leaner images).
-- Mise à jour d'Ansible pour garantir la compatibilité avec la nouvelle version de l'outil de construction d'images (image builder). [#39](https://github.com/cloud-gouv/dockerfiles/pull/39)
+- Introduction d'une image "autofix" pour automatiser certaines corrections ([#40](https://github.com/cloud-gouv/dockerfiles/pull/40)).
+- Optimisation de la taille des images pour les rendre plus légères et rapides à déployer.
+- Mise à jour d'Ansible pour assurer la compatibilité avec la nouvelle version du constructeur d'images ([#39](https://github.com/cloud-gouv/dockerfiles/pull/39)).
