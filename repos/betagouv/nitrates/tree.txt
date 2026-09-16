@@ -11,10 +11,18 @@
 │   │   ├── deploy_dev_code.sh
 │   │   ├── deploy_dev_reload.sh
 │   │   ├── deploy_dev_smoke.sh
-│   │   └── deploy_dev_snapshot.sh
+│   │   ├── deploy_dev_snapshot.sh
+│   │   ├── deploy_release_code.sh
+│   │   ├── deploy_release_smoke.sh
+│   │   └── gate_ci_green.sh
 │   └── workflows
 │       ├── ci.yml
 │       ├── deploy-dev.yml
+│       ├── deploy-prod.yml
+│       ├── deploy-staging.yml
+│       ├── e2e.yml
+│       ├── restart-nightly.yml
+│       ├── rollback.yml
 │       └── s3_backup.yml
 ├── .gitignore
 ├── .npmrc
@@ -43,6 +51,7 @@
 │   ├── merge_production_dotenvs_in_dotenv.py
 │   ├── post_compile
 │   ├── post_deploy.sh
+│   ├── probe_experiment.sh
 │   ├── start_celery_worker.sh
 │   └── start_web.sh
 ├── compose
@@ -67,6 +76,7 @@
 ├── config
 │   ├── __init__.py
 │   ├── celery_app.py
+│   ├── gunicorn.conf.py
 │   ├── settings
 │   │   ├── __init__.py
 │   │   ├── base.py
@@ -83,6 +93,7 @@
 │   ├── urls_nitrates.py
 │   └── wsgi.py
 ├── conftest.py
+├── cron.README.md
 ├── cron.json
 ├── crop_svg_viewbox.mjs
 ├── docker-compose.e2e.yml
@@ -110,19 +121,25 @@
 │   │   └── petitions
 │   │       └── instructor.spec.ts
 │   └── nitrates
+│       ├── README_root_public.md
 │       ├── branche_autres_cultures.spec.ts
 │       ├── branche_colza.spec.ts
 │       ├── branche_culture_hiver_hors_colza.spec.ts
 │       ├── branche_culture_printemps.spec.ts
 │       ├── branche_luzerne.spec.ts
 │       ├── branche_prairie_plus_6_mois.spec.ts
+│       ├── calendrier_bords_186.spec.ts
 │       ├── capture_couvert.spec.ts
 │       ├── capture_par_ge.spec.ts
 │       ├── capture_zar.spec.ts
+│       ├── carte_430_fertilisant_choix_unique.spec.ts
+│       ├── carte_430_q1_sur_vs_juste_avant.spec.ts
 │       ├── debug_view.spec.ts
+│       ├── definitions_glossaire.spec.ts
 │       ├── map_overlays.spec.ts
 │       ├── refactor_272_flow_couvert.spec.ts
 │       ├── reset_form.spec.ts
+│       ├── root_public_lockdown.spec.ts
 │       └── simulateur.spec.ts
 ├── envergo
 │   ├── __init__.py
@@ -191,6 +208,7 @@
 │   ├── conftest.py
 │   ├── contrib
 │   │   ├── __init__.py
+│   │   ├── apps.py
 │   │   ├── management
 │   │   │   ├── __init__.py
 │   │   │   └── commands
@@ -199,17 +217,18 @@
 │   │   │       ├── anonymize_database.py
 │   │   │       └── deploy_environment.py
 │   │   ├── middleware.py
-│   │   └── sites
-│   │       ├── __init__.py
-│   │       ├── migrations
-│   │       │   ├── 0001_initial.py
-│   │       │   ├── 0002_add_haie.py
-│   │       │   ├── 0003_add_nitrates.py
-│   │       │   ├── 0004_set_nitrates_domain_from_settings.py
-│   │       │   └── __init__.py
-│   │       └── tests
-│   │           ├── __init__.py
-│   │           └── factories.py
+│   │   ├── sites
+│   │   │   ├── __init__.py
+│   │   │   ├── migrations
+│   │   │   │   ├── 0001_initial.py
+│   │   │   │   ├── 0002_add_haie.py
+│   │   │   │   ├── 0003_add_nitrates.py
+│   │   │   │   ├── 0004_set_nitrates_domain_from_settings.py
+│   │   │   │   └── __init__.py
+│   │   │   └── tests
+│   │   │       ├── __init__.py
+│   │   │       └── factories.py
+│   │   └── sites_from_settings.py
 │   ├── decorators
 │   │   ├── __init__.py
 │   │   ├── csp.py
@@ -698,11 +717,13 @@
 │   │   ├── contenu_rich
 │   │   │   ├── __init__.py
 │   │   │   ├── compilateur.py
+│   │   │   ├── glossaire.py
 │   │   │   └── loader.py
 │   │   ├── fixtures
 │   │   │   └── initial_referentiels.json
 │   │   ├── form_backfill.py
 │   │   ├── forms.py
+│   │   ├── forms_retour.py
 │   │   ├── management
 │   │   │   ├── __init__.py
 │   │   │   └── commands
@@ -730,16 +751,20 @@
 │   │   │       ├── ingest_miro_widget_ids_zar.py
 │   │   │       ├── load_arbres_actifs.py
 │   │   │       ├── nettoyer_residus_calculatrice.py
+│   │   │       ├── nuclei_scan.py
 │   │   │       ├── provision_admin.py
 │   │   │       ├── provision_carte_98.py
 │   │   │       ├── provision_zones_est.py
+│   │   │       ├── rapport_resolution_pc.py
 │   │   │       ├── seed_branches_validation.py
 │   │   │       ├── seed_branches_validation_couvert.py
 │   │   │       ├── seed_branches_validation_par_ge.py
 │   │   │       ├── seed_branches_validation_zar_ge.py
 │   │   │       ├── seed_contenus_rich.py
+│   │   │       ├── seed_geodata_e2e.py
 │   │   │       ├── seed_referentiels.py
 │   │   │       └── validate_arbres_actifs.py
+│   │   ├── middleware.py
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
 │   │   │   ├── 0002_setup_moulinette_pattern.py
@@ -768,12 +793,20 @@
 │   │   │   ├── 0025_branchevalidation_nature.py
 │   │   │   ├── 0026_code_pc_miro_max_300.py
 │   │   │   ├── 0027_alter_branchevalidation_scope.py
+│   │   │   ├── 0028_codeprescription_plafond.py
+│   │   │   ├── 0029_retourutilisateur.py
+│   │   │   ├── 0030_codeprescription_zone_application.py
+│   │   │   ├── 0031_codeprescription_remplir_zone_application.py
+│   │   │   ├── 0032_contenurichdsfr_glossaire.py
+│   │   │   ├── 0033_retour_type_bug.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── models_contenu_rich.py
 │   │   ├── models_ouverture.py
 │   │   ├── models_referentiels.py
+│   │   ├── models_retour.py
 │   │   ├── permissions.py
+│   │   ├── probe.py
 │   │   ├── regions.py
 │   │   ├── regulations
 │   │   │   ├── __init__.py
@@ -857,6 +890,11 @@
 │   │   │   │           ├── index.yaml
 │   │   │   │           └── types_fertilisant.pdf
 │   │   │   └── zones_est_par_grand_est.xlsx
+│   │   ├── telemetry.py
+│   │   ├── templates
+│   │   │   └── nitrates
+│   │   │       ├── nuclei_admin_index.html
+│   │   │       └── nuclei_report.html
 │   │   ├── templatetags
 │   │   │   ├── __init__.py
 │   │   │   ├── nitrates_tags.py
@@ -864,14 +902,17 @@
 │   │   ├── tests
 │   │   │   ├── __init__.py
 │   │   │   ├── conftest.py
-│   │   │   └── test_*.py  (91 files)
+│   │   │   └── test_*.py  (101 files)
 │   │   ├── urls.py
 │   │   ├── views.py
+│   │   ├── views_admin_nuclei.py
 │   │   ├── views_admin_ouverture.py
 │   │   ├── views_admin_validation.py
 │   │   ├── views_admin_yaml.py
 │   │   ├── views_admin_yaml_edit.py
 │   │   ├── views_contenu_rich_preview.py
+│   │   ├── views_probe.py
+│   │   ├── views_retour.py
 │   │   ├── views_yaml_browser.py
 │   │   ├── yaml_admin
 │   │   │   ├── __init__.py
@@ -892,6 +933,7 @@
 │   │   │   ├── loader.py
 │   │   │   ├── loader_db.py
 │   │   │   ├── parcours.py
+│   │   │   ├── prescriptions.py
 │   │   │   ├── schema.py
 │   │   │   └── validator.py
 │   │   ├── zonage_montagne.py
@@ -913,6 +955,7 @@
 │   │   │   └── utils.py
 │   │   ├── tests
 │   │   │   ├── __init__.py
+│   │   │   ├── test_security_txt.py
 │   │   │   ├── test_templatetags.py
 │   │   │   └── test_views.py
 │   │   ├── urls_amenagement.py
@@ -1170,6 +1213,8 @@
 │   │   │   └── vendors
 │   │   │       └── geojson-rewind.js
 │   │   ├── nitrates
+│   │   │   ├── bug_floater.css
+│   │   │   ├── bug_floater.js
 │   │   │   ├── calculatrice-calendrier.js
 │   │   │   ├── calculatrice-calendrier.test.js
 │   │   │   ├── calendrier.css
@@ -1177,17 +1222,35 @@
 │   │   │   ├── cascade.js
 │   │   │   ├── construction.css
 │   │   │   ├── construction.js
+│   │   │   ├── definitions.css
+│   │   │   ├── definitions.js
 │   │   │   ├── drawer_conditions.js
+│   │   │   ├── feedback_popup.css
+│   │   │   ├── feedback_popup.js
+│   │   │   ├── feedback_vers.css
+│   │   │   ├── feedback_vers.js
 │   │   │   ├── form_autoscroll.js
+│   │   │   ├── glossaire.css
+│   │   │   ├── glossaire.js
+│   │   │   ├── glossaire.test.js
 │   │   │   ├── home.css
 │   │   │   ├── home.js
+│   │   │   ├── icones_definitions
+│   │   │   │   ├── document.svg
+│   │   │   │   ├── environment.svg
+│   │   │   │   ├── leaf.svg
+│   │   │   │   └── map.svg
 │   │   │   ├── illu_nitrates.png
 │   │   │   ├── illu_nitrates_dark.svg
+│   │   │   ├── nav.css
+│   │   │   ├── nitrates_analytics.js
 │   │   │   ├── progress.js
 │   │   │   ├── question_couvert_flow.js
+│   │   │   ├── question_couvert_flow.test.js
 │   │   │   ├── question_reformat.js
 │   │   │   ├── question_reformat.test.js
 │   │   │   ├── recap_choix.js
+│   │   │   ├── region_alerte.js
 │   │   │   ├── reset_form.js
 │   │   │   ├── reset_form.test.js
 │   │   │   ├── scroll_resultat.js
@@ -1208,7 +1271,8 @@
 │   │   │   │       ├── editorjs.umd.min.js
 │   │   │   │       ├── header.umd.min.js
 │   │   │   │       ├── list.umd.min.js
-│   │   │   │       └── quote.umd.min.js
+│   │   │   │       ├── quote.umd.min.js
+│   │   │   │       └── table.umd.min.js
 │   │   │   └── yaml_tree.css
 │   │   ├── pdfs
 │   │   │   ├── annexe_1_cerfa_14734_3.pdf
@@ -1951,23 +2015,32 @@
 │   │   │   ├── _bandeau_construction.html
 │   │   │   ├── _footer.html
 │   │   │   ├── _header.html
+│   │   │   ├── _nav.html
+│   │   │   ├── accessibilite.html
 │   │   │   ├── admin
 │   │   │   │   └── contenu_rich_preview.html
 │   │   │   ├── base.html
 │   │   │   ├── contact_us.html
+│   │   │   ├── definitions.html
+│   │   │   ├── donnees_personnelles.html
 │   │   │   ├── form.html
 │   │   │   ├── fragments
+│   │   │   │   ├── _bug_floater.html
 │   │   │   │   ├── _calculatrice_calendrier.html
 │   │   │   │   ├── _calendrier.html
 │   │   │   │   ├── _debug_parcours.html
 │   │   │   │   ├── _drawer_conditions.html
+│   │   │   │   ├── _feedback_popup.html
 │   │   │   │   ├── _form_hidden_passthrough.html
+│   │   │   │   ├── _panneau_definition.html
 │   │   │   │   ├── _panneau_form.html
 │   │   │   │   ├── _panneau_resultat.html
 │   │   │   │   ├── _qc_question_item.html
 │   │   │   │   ├── _qc_sous_form.html
 │   │   │   │   └── _questions_complementaires.html
 │   │   │   ├── home.html
+│   │   │   ├── mentions_legales.html
+│   │   │   ├── prescription_detail.html
 │   │   │   ├── result.html
 │   │   │   ├── simulateur.html
 │   │   │   └── yaml_browser
@@ -2159,4 +2232,4 @@
                 │   ├── favicon.ico
                 │   └── favicon.svg
                 └── index.html
-277 directories, 1974 files
+280 directories, 2054 files

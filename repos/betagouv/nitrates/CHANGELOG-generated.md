@@ -1,28 +1,27 @@
-## Changelog : nitrates (30 derniers jours, au 31 juillet 2026)
+## Changelog : nitrates (30 derniers jours, au 14 septembre 2026)
 
 ### Résumé
-Cette version apporte des améliorations significatives à l'expérience utilisateur, notamment sur mobile, avec une refonte du formulaire de couvert végétal et une meilleure gestion des dates. Des corrections de sécurité importantes ont également été implémentées, ainsi qu'une amélioration de l'infrastructure CI/CD et des outils d'administration.
+Ce mois-ci, nitrates a bénéficié d'une amélioration significative de son ergonomie et de son interface, notamment grâce à un alignement renforcé sur le Design System de l'État (DSFR). Le parcours utilisateur a été fluidifié par une gestion plus intelligente des questions de saisie. En parallèle, des travaux importants ont été menés sur la surveillance et la stabilité de l'infrastructure pour garantir une meilleure fiabilité du service.
 
 ### Évolutions fonctionnelles
-- **Formulaire couvert végétal :** Refonte complète du formulaire pour une meilleure expérience utilisateur, notamment sur mobile, avec des dates plus accessibles et une navigation simplifiée [#272].
-- **Calendrier :** Amélioration du récapitulatif du calendrier avec des sections plus claires et des justifications plus précises [#159].
-- **Simulation :** Possibilité de relancer une simulation après avoir modifié des paramètres [#175].
-- **Cartographie :** Correction de bugs et améliorations de l'affichage de la carte [#271, #193].
-- **Administration :** Ajout d'un filtre rapide pour les conditions dans l'interface d'administration et amélioration de la recherche et de l'édition des textes conditionnés [#222, #218, #219].
-- **Validation :** Amélioration de l'interface de validation avec un comparateur d'images et un panel de détails en auto-save.
-- **Ouverture géographique :** Application correcte de l'ouverture géographique sur la page publique.
+- **Amélioration de l'interface (UI) :** Alignement des champs de dates sur les standards DSFR [#252], ajout de badges pour les rappels de période dans le volet de conditions [#487] et refonte visuelle de l'encart récapitulatif (couleurs, mise en page et espacements) [#408].
+- **Optimisation de l'expérience utilisateur (UX) :** 
+    - Simplification du questionnaire en sautant automatiquement les questions de sous-fertilisants lorsqu'un seul choix est disponible [#430].
+    - Accès facilité aux définitions en rendant toute la surface des labels cliquable [#436].
+    - Amélioration de la gestion de l'encart d'avis (affichage latéral lors de l'intention de sortie) [#435].
+- **Données et contenus :** Mise à jour des référentiels réglementaires et ajustement des blocs de calcul pour les plafonds [#0d7a9fc9].
+- **Corrections :** Rectification des libellés pour les questions complémentaires et correction de l'affichage des types de fertilisants dans les encarts [#408].
 
 ### Évolutions techniques
-- **Sécurité :** Correction de plusieurs vulnérabilités de sécurité, notamment une faille XSS et des problèmes liés à l'authentification admin [#150, #197].
-- **CI/CD :** Mise en place d'une infrastructure CI/CD plus robuste avec des workflows GitOps et des tests automatisés [#50].
-- **Infrastructure :** Amélioration de la gestion des dépendances et des environnements de déploiement.
-- **Tests :** Adaptation des tests pour couvrir les nouvelles fonctionnalités et les modifications apportées.
-- **Refactoring :** Refactorisation du code pour améliorer la maintenabilité et la performance.
-- **Gestion des données :** Normalisation des données et amélioration de la gestion des référentiels.
-
-### Autres changements
-- **Documentation :** Mise à jour de la documentation pour refléter les changements apportés.
-- **Contenus :** Mise à jour des textes et des libellés pour une meilleure clarté et une meilleure cohérence [#160].
-- **Accessibilité :** Amélioration de l'accessibilité du simulateur au clavier [#247].
-- **Dark Mode :** Corrections d'affichage en mode sombre [#189].
-- **Divers :** Corrections de bugs mineurs et améliorations diverses de l'interface utilisateur.
+- **Observabilité et monitoring :** 
+    - Mise en place d'une télémétrie continue de l'infrastructure vers Sentry [#476].
+    - Ajout de sondes de surveillance sur l'environnement de staging pour mieux détecter les ralentissements.
+    - Amélioration des protocoles de mesure de performance.
+- **Infrastructure et Ops :** 
+    - Optimisation de la configuration Gunicorn pour résoudre des problèmes de performance sur l'environnement de staging [#456].
+    - Automatisation et ajustement des redémarrages nocturnes pour stabiliser l'exécution des tâches planifiées (crons).
+    - Amélioration de la résilience des tâches ponctuelles (*one-offs*).
+- **Sécurité :** Mise en conformité avec la RFC 9116 via l'implémentation du fichier `security.txt` [#443].
+- **Tests et Analytics :** 
+    - Alignement des tests de bout en bout (E2E) sur les comportements réels de l'application [#493].
+    - Ajout de suivi analytique Matomo sur les champs de dates du calendrier [#252].
