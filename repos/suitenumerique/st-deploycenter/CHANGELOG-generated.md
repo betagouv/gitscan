@@ -1,14 +1,15 @@
-## Changelog : st-deploycenter (30 derniers jours, au 04/09/2026)
+## Changelog : st-deploycenter (30 derniers jours, au 14 septembre 2026)
 
 ### Résumé
-Les récentes évolutions ont principalement porté sur l'extension des capacités du système avec l'introduction de nouveaux services pour ProConnect et la gestion des domaines. Des corrections ont également été apportées pour améliorer la stabilité de l'interface utilisateur et la fiabilité du suivi des métriques.
+Ce mois-ci, le projet a franchi une étape importante avec l'introduction de nouveaux services liés à ProConnect et à la gestion des domaines. Parallèlement, la sécurité et la fiabilité du processus de déploiement ont été considérablement renforcées.
 
 ### Évolutions fonctionnelles
-- Ajout de la nouvelle API ProConnect et du service de gestion des domaines [#60](https://github.com/suitenumerique/st-deploycenter/pull/60)
-- Correction de problèmes d'affichage (UI) au sein du bloc ProConnect
+- Introduction d'une nouvelle API ProConnect et d'un service dédié à la gestion des domaines [#60](https://github.com/suitenumerique/st-deploycenter/pull/60).
+- Correction de plusieurs problèmes d'affichage de l'interface utilisateur (UI) sur les blocs ProConnect.
 
 ### Évolutions techniques
-- Amélioration de la gestion des métriques pour éviter le partage indésirable des configurations et des mesures d'utilisation
+- Optimisation majeure du processus de déploiement incluant l'utilisation de Caddy, de builds "distroless", le filtrage par adresse IP et le support de la double authentification (2FA) [#61](https://github.com/suitenumerique/st-deploycenter/pull/61).
+- Amélioration des scripts de gestion des listes d'autorisation (allowlist) pour ProConnect.
 
 ### Autres changements
-- Mise en conformité du formatage du code (Prettier) pour la liste d'autorisation (allowlist) de ProConnect
+- Mise en conformité du formatage du code (Prettier) pour les fichiers de listes d'autorisation.

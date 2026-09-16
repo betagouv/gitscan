@@ -30,6 +30,7 @@
 │   ├── scalingo_postcompile
 │   ├── scalingo_postfrontend
 │   ├── scalingo_run_web
+│   ├── smoke_test_front
 │   ├── update_app_cacert.sh
 │   └── update_openapi_schema
 ├── compose.yaml
@@ -40,7 +41,9 @@
 │   ├── assets
 │   │   ├── data-flow.svg
 │   │   └── data-model.svg
+│   ├── authentication.md
 │   ├── auto_join.md
+│   ├── deployment.md
 │   ├── domains.md
 │   └── proconnect_domains.md
 ├── env.d
@@ -51,9 +54,11 @@
 │       ├── keycloak.defaults
 │       └── postgresql.defaults
 ├── scripts
+│   ├── filter_proconnect_allowlist.py
 │   └── validate_proconnect_allowlist.py
 └── src
     ├── backend
+    │   ├── .dockerignore
     │   ├── .pylintrc
     │   ├── Dockerfile
     │   ├── __init__.py
@@ -85,6 +90,7 @@
     │   │   ├── authentication
     │   │   │   ├── __init__.py
     │   │   │   ├── backends.py
+    │   │   │   ├── middleware.py
     │   │   │   ├── urls.py
     │   │   │   └── views.py
     │   │   ├── entitlements
@@ -215,7 +221,9 @@
     │   │   │   │   └── test_utils_flat_to_nested.py
     │   │   │   ├── authentication
     │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── test_api_bearer_mfa.py
     │   │   │   │   ├── test_backends.py
+    │   │   │   │   ├── test_middleware.py
     │   │   │   │   └── test_views.py
     │   │   │   ├── conftest.py
     │   │   │   ├── models
@@ -247,8 +255,11 @@
     │   ├── poetry.lock
     │   └── pyproject.toml
     ├── frontend
+    │   ├── .dockerignore
     │   ├── .gitignore
     │   ├── Dockerfile
+    │   ├── caddy
+    │   │   └── Caddyfile
     │   ├── cunningham.ts
     │   ├── eslint.config.mjs
     │   ├── next.config.ts
@@ -369,8 +380,6 @@
     │   │       ├── cunningham-tokens.ts
     │   │       └── globals.scss
     │   └── tsconfig.json
-    ├── keycloak
-    │   └── realm.json
-    └── nginx
-        └── servers.conf.erb
-79 directories, 296 files
+    └── keycloak
+        └── realm.json
+79 directories, 305 files
