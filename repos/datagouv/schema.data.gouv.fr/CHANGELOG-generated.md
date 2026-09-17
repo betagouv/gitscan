@@ -1,15 +1,14 @@
-## Changelog : schema.data.gouv.fr (30 derniers jours, au 11 septembre 2026)
+## Changelog : schema.data.gouv.fr (30 derniers jours, au 17/09/2026)
 
 ### Résumé
-L'activité de ce mois a principalement porté sur l'actualisation régulière des contenus du site et des recommandations. Des améliorations ont également été apportées au processus automatisé de déploiement, parallèlement à une correction des liens vers les jeux de données.
+Les activités récentes ont principalement porté sur la mise à jour régulière du contenu du site et des recommandations. Des corrections ont été apportées pour fiabiliser l'accès aux jeux de données et des améliorations ont été effectuées sur les processus automatisés de construction du projet.
 
 ### Évolutions fonctionnelles
-- Correction des liens vers les jeux de données ([#351](https://github.com/datagouv/schema.data.gouv.fr/pull/351))
+- Correction des liens permettant d'accéder aux jeux de données ([#351](https://github.com/datagouv/schema.data.gouv.fr/issues/351)).
 
 ### Évolutions techniques
-- Mise à jour et optimisation du workflow de build ([#352](https://github.com/datagouv/schema.data.gouv.fr/pull/352))
-- Tests et ajustements sur l'utilisation de runners auto-hébergés pour le déploiement des releases
+- Amélioration du workflow de construction (build) ([#352](https://github.com/datagouv/schema.data.gouv.fr/issues/352)).
+- Mise à jour du fichier de consolidation de la configuration.
 
 ### Autres changements
-- Mises à jour fréquentes du contenu du site web et de la section "Recommendations"
-- Consolidation des fichiers de configuration
+- Mises à jour fréquentes du contenu du site web et des pages de recommandations.
