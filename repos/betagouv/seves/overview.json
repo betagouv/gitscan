@@ -1,16 +1,16 @@
 {
   "url": "https://github.com/betagouv/seves",
   "name": "seves",
-  "description": "Plateforme de gestion mutualisée des événements sanitaires permettant le suivi des situations d'alerte et la gestion des données de santé animale et humaine. Elle intègre des outils de cartographie, de gestion documentaire et de reporting.",
+  "description": "Plateforme de gestion mutualisée des événements sanitaires permettant le suivi, la cartographie et la gestion des alertes.",
   "language": "Python",
   "features": [
-    "Gestion métier générale",
     "Visualisation de données & Cartographie",
     "Formulaires & Démarches",
-    "Gestion documentaire & Fichiers",
+    "Notifications & Alertes",
+    "Suivi & Traçabilité",
     "Statistiques & Rapports",
-    "Recherche & Filtres",
-    "Notifications & Alertes"
+    "Sécurité & Conformité",
+    "Gestion métier générale"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -18,11 +18,11 @@
     "PostgreSQL",
     "Redis",
     "Celery",
-    "Sentry",
-    "Playwright",
     "Pytest",
-    "Stimulus",
+    "Playwright",
+    "Sentry",
     "AlpineJS",
+    "Stimulus",
     "Minio"
   ],
   "components": [
@@ -30,36 +30,36 @@
     "Django",
     "PostgreSQL & SQL",
     "Celery & Queue asynchrone",
-    "SIG & Géospatial",
     "HTML / CSS / Templates visuels",
-    "TypeScript / JavaScript",
-    "Docker & Conteneurs",
+    "Design System (DSFR & UI libs)",
     "Tests",
-    "Stockage objet"
+    "Stockage objet",
+    "Serveurs web & Proxy"
   ],
   "auth": {
     "methods": [
-      "oauth2"
-    ],
-    "providers": [
-      "Agricoll"
+      "oauth2",
+      "session"
     ]
   },
-  "tests": "Pytest pour les tests unitaires et Playwright pour les tests E2E.",
-  "workflows": [
-    "CI/CD Scalingo"
+  "tests": [
+    "Pytest",
+    "Playwright"
   ],
-  "lastActivity": "2026-08-28T10:29:12+02:00",
+  "workflows": [
+    "Déploiement automatique vers recette et production via CI/CD"
+  ],
+  "lastActivity": "2026-09-16T18:08:19+02:00",
   "status": "active",
-  "license": null,
   "hasDocumentation": true,
   "tags": [
-    "Écosystème beta.gouv / État",
     "Python",
+    "Django & FastAPI",
     "Bases de données SQL",
-    "SIG & Géospatial",
-    "Docker & Conteneurs",
     "CI/CD & GitHub Actions",
+    "Docker & Conteneurs",
+    "JavaScript",
+    "SIG & Géospatial",
     "Santé & Épidémiologie"
   ]
 }

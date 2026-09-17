@@ -14,6 +14,7 @@
 ├── .talismanrc
 ├── ARCHITECTURE.md
 ├── Aptfile
+├── Caddyfile
 ├── LICENSE
 ├── Procfile
 ├── README.md
@@ -53,6 +54,9 @@
 │   ├── post_deploy.sh
 │   └── start.sh
 ├── biome.jsonc
+├── cmd
+│   └── caddy
+│       └── main.go
 ├── conftest.py
 ├── core
 │   ├── __init__.py
@@ -86,6 +90,7 @@
 │   │       ├── scan_documents.py
 │   │       └── update_contacts_structures_email.py
 │   ├── managers.py
+│   ├── metabase.py
 │   ├── migrations
 │   │   ├── 0001_initial.py
 │   │   ├── 0002_alter_contact_complement_fonction.py
@@ -152,6 +157,7 @@
 │   │   ├── 0063_auto_20260706_1125.py
 │   │   ├── 0064_auto_20260727_1357.py
 │   │   ├── 0065_create_sa_group.py
+│   │   ├── 0066_remove_contact_contact_agent_email_only_and_more.py
 │   │   └── __init__.py
 │   ├── mixins.py
 │   ├── model_mixins.py
@@ -327,6 +333,8 @@
 ├── cron.json
 ├── fake_contacts.csv
 ├── fake_contacts_structures.csv
+├── go.mod
+├── go.sum
 ├── manage.py
 ├── package.json
 ├── pytest.ini
@@ -341,8 +349,13 @@
 │   ├── filters.py
 │   ├── forms
 │   │   ├── __init__.py
+│   │   ├── analyse.py
+│   │   ├── especes_concernees.py
 │   │   ├── evenement.py
-│   │   └── fields.py
+│   │   ├── fields.py
+│   │   ├── message.py
+│   │   └── veterinaire.py
+│   ├── formsets.py
 │   ├── managers.py
 │   ├── migrations
 │   │   ├── 0001_initial.py
@@ -352,37 +365,88 @@
 │   │   ├── 0005_evenementanimal_adresse_lieu_dit_etablissement_and_more.py
 │   │   ├── 0006_auto_20260825_1059.py
 │   │   ├── 0007_evenementanimal_date_apdi_evenementanimal_date_apms_and_more.py
+│   │   ├── 0008_laboratoire.py
+│   │   ├── 0009_alter_evenementanimal_type_lieu_and_more.py
+│   │   ├── 0010_maladie_is_highlighted.py
+│   │   ├── 0011_evenementanimal_date_d_zero_evenementanimal_date_nd1_and_more.py
+│   │   ├── 0012_methode_analyse.py
+│   │   ├── 0013_analyse.py
+│   │   ├── 0014_populate_laboratoire_methode_mapping.py
+│   │   ├── 0015_evenementanimal_date_cloture_adis_and_more.py
+│   │   ├── 0016_populate_espece.py
+│   │   ├── 0017_evenementanimal_contacts.py
+│   │   ├── 0018_veterinaire.py
+│   │   ├── 0019_evenementanimal_commentaire.py
+│   │   ├── 0020_espececoncernee.py
+│   │   ├── 0021_alter_evenementanimal_context_suspicion.py
+│   │   ├── 0022_evenementanimal_date_nd.py
+│   │   ├── 0023_espece_is_highlighted_maladie_especes_concernees.py
+│   │   ├── 0023_remove_evenementanimal_evenementanimal_detenteur_etablissement_or_particulier_and_more.py
+│   │   ├── 0024_populate_espece_is_highlighted.py
+│   │   ├── 0025_populate_maladie_especes_concernees.py
+│   │   ├── 0026_merge_20260916_1739.py
 │   │   └── __init__.py
 │   ├── models
 │   │   ├── __init__.py
+│   │   ├── analyse.py
+│   │   ├── especes_concernees.py
 │   │   ├── evenement.py
-│   │   └── maladie.py
+│   │   ├── laboratoire.py
+│   │   ├── maladie.py
+│   │   ├── methode_analyse.py
+│   │   └── veterinaire.py
 │   ├── static
 │   │   └── sa
+│   │       ├── adis.mjs
+│   │       ├── analyse.mjs
 │   │       ├── detenteur.mjs
+│   │       ├── espece_grouping.mjs
+│   │       ├── especes_concernees.mjs
 │   │       ├── evenement_animal_details.css
-│   │       └── evenement_animal_form.css
+│   │       ├── evenement_animal_form.css
+│   │       ├── localisation_from_detenteur.mjs
+│   │       ├── maladie_description_message.mjs
+│   │       └── veterinaire.mjs
 │   ├── templates
 │   │   └── sa
+│   │       ├── _analyse_modal.html
+│   │       ├── _evenement_analyses.html
+│   │       ├── _evenement_animal_actions_navigation.html
 │   │       ├── _evenement_animal_badges.html
+│   │       ├── _evenement_veterinaires.html
+│   │       ├── _veterinaire_modal.html
 │   │       ├── base.html
 │   │       ├── evenement_animal_details.html
 │   │       ├── evenement_animal_form.html
 │   │       ├── evenementanimal_list.html
+│   │       ├── forms
+│   │       │   ├── analyse.html
+│   │       │   ├── analyse_base_set.html
+│   │       │   ├── especes_concernees_base_set.html
+│   │       │   ├── veterinaire.html
+│   │       │   └── veterinaire_base_set.html
 │   │       └── widgets
 │   │           └── latlon.html
 │   ├── tests
 │   │   ├── __init__.py
 │   │   ├── factories.py
 │   │   ├── pages.py
+│   │   ├── test_espece.py
+│   │   ├── test_evenement_animal_actions.py
+│   │   ├── test_evenement_animal_analyse.py
+│   │   ├── test_evenement_animal_bloc_commun.py
 │   │   ├── test_evenement_animal_creation.py
 │   │   ├── test_evenement_animal_details.py
+│   │   ├── test_evenement_animal_especes_concernees.py
+│   │   ├── test_evenement_animal_fin_de_suivi.py
 │   │   ├── test_evenement_animal_list.py
 │   │   ├── test_evenement_animal_list_order.py
+│   │   ├── test_evenement_animal_veterinaire.py
 │   │   └── test_models.py
 │   ├── urls.py
 │   └── views
 │       ├── __init__.py
+│       ├── api.py
 │       ├── evenement.py
 │       └── mixins.py
 ├── scalingo.json
@@ -512,7 +576,9 @@
 │   │       ├── evenement_produit_list.css
 │   │       ├── evenement_produit_list.js
 │   │       ├── free_links.mjs
-│   │       └── investigation_cas_humain_detail.js
+│   │       ├── investigation_cas_humain_detail.js
+│   │       ├── stats.css
+│   │       └── stats.mjs
 │   ├── tasks.py
 │   ├── templates
 │   │   └── ssa
@@ -537,7 +603,8 @@
 │   │       │   ├── etablissement.html
 │   │       │   ├── etablissement_formset.html
 │   │       │   └── investigation_cas_humain.html
-│   │       └── investigation_cas_humain_detail.html
+│   │       ├── investigation_cas_humain_detail.html
+│   │       └── stats.html
 │   ├── tests
 │   │   ├── __init__.py
 │   │   ├── conftest.py
@@ -1041,4 +1108,4 @@
     │   └── test_models.py
     ├── urls.py
     └── views.py
-85 directories, 958 files
+88 directories, 1022 files

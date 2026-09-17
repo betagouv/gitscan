@@ -1,17 +1,30 @@
-## Changelog : seves (30 derniers jours, au 28/08/2026)
+## Changelog : seves (30 derniers jours, au 16 septembre 2026)
 
 ### Résumé
-Ce mois-ci, la plateforme a bénéficié d'améliorations significatives pour la gestion des alertes sanitaires, notamment avec une meilleure visualisation cartographique (affichage des parcelles, vue satellite) et une saisie de données simplifiée grâce au pré-remplissage automatique des informations professionnelles. L'interface a également été affinée pour offrir une navigation plus fluide et une gestion des notifications plus pertinente.
+Ce mois-ci, le projet a connu une évolution majeure centrée sur le module de Santé Animale (SA). Les utilisateurs bénéficient de formulaires plus intelligents, de nouveaux blocs d'informations (enquêtes, vétérinaires, mesures) et d'une meilleure gestion du cycle de vie des événements (clôture, publication). La visualisation a également été enrichie avec des cartes plus précises et de nouveaux tableaux de bord de pilotage.
 
 ### Évolutions fonctionnelles
-- **Gestion des alertes sanitaires (SA) :** création d'une vue détaillée avec accès à l'historique [#2220](https://github.com/betagouv/seves/issues/2220), ajout d'un bloc "détenteur" [#2205](https://github.com/betagouv/seves/issues/2205), intégration de la liste des maladies et mise à jour des icônes de domaine [#2214](https://github.com/betagouv/seves/issues/2214).
-- **Cartographie :** affichage des parcelles agricoles sur la carte [#2221](https://github.com/betagouv/seves/issues/2221) et possibilité de définir la vue satellite comme style de carte par défaut [#2213](https://github.com/betagouv/seves/issues/2213).
-- **Optimisation de la saisie :** pré-remplissage automatique des champs du détenteur via les API SIRENE et BAN, ajout de modales de confirmation lors du changement de type d'établissement [#2215](https://github.com/betagouv/seves/issues/2215) et réinitialisation automatique des champs lors d'un changement de type.
-- **Expérience utilisateur :** ajout d'infobulles sur le statut des animaux [#2211](https://github.com/betagouv/seves/issues/2211), amélioration de la validation des fichiers lors de l'upload et ajout de messages d'absence de résultat dans les sélecteurs.
-- **Gestion des contacts :** suppression des notifications d'ajout de contacts et des ajouts automents d'agents dans certains contextes pour éviter les doublons [#2194](https://github.com/betagouv/seves/issues/2194) [#2196](https://github.com/betagouv/seves/issues/2196).
+*   **Gestion de la Santé Animale (SA) :**
+    *   Enrichissement des formulaires avec de nouveaux blocs de saisie : espèces concernées, enquête épidémiologique, vétérinaire, ADIS et mesures.
+    *   Amélioration de l'expérience de saisie : utilisation de sélecteurs optimisés (TreeSelect) pour les espèces et les maladies, et pré-remplissage automatique des données de détenteurs via les API SIRENE et BAN.
+    *   Nouveaux contrôles de gestion : possibilité de clôturer, publier ou supprimer des événements animaux.
+    *   Interface utilisateur : création d'une nouvelle vue détaillée pour la SA incluant l'historique et des filtres [#2220], ajout de bulles d'aide (tooltips) sur le statut des animaux [#2211] et intégration de nouveaux icônes pour la SA [#2214].
+*   **Cartographie et Visualisation :**
+    *   Amélioration de la cartographie : affichage par défaut en mode satellite, affichage des parcelles agricoles [#2221] et gestion optimisée des marqueurs de localisation.
+    *   Pilotage : intégration de nouveaux tableaux de bord Metabase pour le suivi SSA et TIAC.
 
 ### Évolutions techniques
-- **Architecture :** création et intégration du domaine "SA" dans les paramètres et les middlewares du système [#2216](https://github.com/betagouv/seves/issues/2216).
-- **Performance :** ajout de nouvelles vues matérialisées pour optimiser l'affichage des tableaux de bord Metabase.
-- **Sécurité :** ajout du header `X-XSS-Protection` et suppression du JavaScript des fichiers PDF avant leur analyse pour limiter les risques.
-- **Maintenance :** correction de bugs sur le focus des composants de recherche et résolution d'un incident de déploiement.
+*   **Architecture et Données :**
+    *   Mise en place d'un domaine dédié à la SA et mise à jour des middlewares associés [#2216].
+    *   Refonte de la gestion des méthodes d'analyse et intégration de nouveaux jeux de données.
+    *   Optimisation des performances via la création de vues matérialisées pour alimenter les tableaux de bord.
+    *   Nettoyage et résolution des conflits de migrations de la base de données.
+*   **Sécurité et Infrastructure :**
+    *   Renforcement de la sécurité avec l'ajout d'un WAF (Web Application Firewall) et du header X-XSS-Protection.
+    *   Ajustement de la version de Go pour garantir la compatibilité avec l'infrastructure de déploiement (scalingo).
+*   **Performance :**
+    *   Optimisation de la vitesse du composant TreeSelect lors de l'affichage de listes volumineuses.
+
+### Autres changements
+*   Corrections de diverses coquilles dans l'interface utilisateur et les tests.
+*   Nettoyage des fichiers PDF (suppression du JavaScript) avant numérisation.
