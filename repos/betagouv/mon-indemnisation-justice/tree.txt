@@ -251,6 +251,8 @@
 │   │   │   │       │       ├── MarquerDossierIndemniseEndpoint.php
 │   │   │   │       │       ├── RechercherDossiersEndpoint.php
 │   │   │   │       │       ├── RechercherDossiersInput.php
+│   │   │   │       │       ├── RevenirArreteDossierEndpoint.php
+│   │   │   │       │       ├── RevenirInstructionDossierEndpoint.php
 │   │   │   │       │       ├── SignerArretePaiementEndpoint.php
 │   │   │   │       │       ├── TransmettreAFIP3Endpoint.php
 │   │   │   │       │       ├── ValiderDecisionEndpoint.php
@@ -586,12 +588,12 @@
 │   │   │   ├── _macros.twig
 │   │   │   ├── agent
 │   │   │   │   └── fip6
-│   │   │   │       ├── dossier_a_attribuer.twig
-│   │   │   │       ├── dossier_a_instruire.twig
-│   │   │   │       ├── dossier_a_transmettre.twig
-│   │   │   │       ├── dossier_arrete_a_signer.twig
-│   │   │   │       ├── dossier_proposition_a_signer.twig
-│   │   │   │       └── dossier_proposition_acceptee.twig
+│   │   │   │       ├── dossier_a_attribuer.html.twig
+│   │   │   │       ├── dossier_a_instruire.html.twig
+│   │   │   │       ├── dossier_a_transmettre.html.twig
+│   │   │   │       ├── dossier_arrete_a_signer.html.twig
+│   │   │   │       ├── dossier_proposition_a_signer.html.twig
+│   │   │   │       └── dossier_proposition_acceptee.html.twig
 │   │   │   ├── agent_indemnisation_approuvee.twig
 │   │   │   ├── base_email.html.twig
 │   │   │   ├── inscription_a_finaliser.html.twig
@@ -599,10 +601,13 @@
 │   │   │   ├── mot_de_passe_oublie.html.twig
 │   │   │   └── requerant
 │   │   │       ├── dossier_cloture.html.twig
-│   │   │       ├── dossier_decide.twig
+│   │   │       ├── dossier_decide.html.twig
+│   │   │       ├── dossier_declaration_recue.html.twig
 │   │   │       ├── dossier_depose.html.twig
 │   │   │       ├── dossier_en_instruction.html.twig
-│   │   │       └── dossier_indemnise.twig
+│   │   │       ├── dossier_indemnise.html.twig
+│   │   │       ├── dossier_retour_en_instruction.html.twig
+│   │   │       └── dossier_transmis_a_fip3.html.twig
 │   │   ├── faq.html.twig
 │   │   ├── index.html.twig
 │   │   ├── mentions-legales.html.twig
@@ -673,6 +678,8 @@
 │   │   │   │               ├── ListerDossierUsagerEndpointTest.php
 │   │   │   │               ├── MarquerDossierIndemniseEndpointTest.php
 │   │   │   │               ├── RechercherDossierEndpointTest.php
+│   │   │   │               ├── RevenirArreteDossierEndpointTest.php
+│   │   │   │               ├── RevenirInstructionDossierEndpointTest.php
 │   │   │   │               ├── TransmettreAFIP3EndpointTest.php
 │   │   │   │               └── ValiderDecisionEndpointTest.php
 │   │   │   ├── Public
@@ -724,7 +731,9 @@
 │   ├── 003-Base de données.md
 │   ├── 004-Cycle de vie d'un dossier.md
 │   ├── 005-Tests.md
-│   └── 006-Manipulations diverses.md
+│   ├── 006-CI et déploiement.md
+│   ├── 007-Outils opérationnels.md
+│   └── 008-Manipulations diverses.md
 ├── end2end
 │   ├── package.json
 │   ├── playwright.config.ts
@@ -867,6 +876,8 @@
     │   │   │       │       │   │   ├── EnvoyerPourIndemnisationActionModale.tsx
     │   │   │       │       │   │   ├── GenererArretePaiementAction.tsx
     │   │   │       │       │   │   ├── MarquerIndemniseActionModale.tsx
+    │   │   │       │       │   │   ├── RevenirArreteAction.tsx
+    │   │   │       │       │   │   ├── RevenirInstructionAction.tsx
     │   │   │       │       │   │   ├── SignerArretePaiementAction.tsx
     │   │   │       │       │   │   ├── SignerCourrierAction.tsx
     │   │   │       │       │   │   └── index.ts
@@ -1175,4 +1186,4 @@
     ├── vite.config.ts
     ├── vitest.config.js
     └── yarn.lock
-259 directories, 918 files
+259 directories, 929 files

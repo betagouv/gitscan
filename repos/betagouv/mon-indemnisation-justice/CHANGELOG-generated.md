@@ -1,19 +1,30 @@
-## Changelog : mon-indemnisation-justice (30 derniers jours, au 11 septembre 2026)
+## Changelog : mon-indemnisation-justice (30 derniers jours, au 16 septembre 2026)
 
 ### Résumé
-Ce mois-ci, l'application a franchi des étapes importantes, notamment sur le parcours de gestion des bris de porte avec l'ajout de nouveaux formulaires et d'exports PDF. Une refonte technique majeure a été opérée pour simplifier le code et renforcer la fiabilité du système, accompagnée d'une mise à jour complète des technologies de base (PHP, Symfony, Node.js).
+Cette période a été marquée par une amélioration significative de la gestion documentaire (génération de PDF, nouveaux formulaires) et de l'expérience de clôture des dossiers. Parallèlement, une refonte technique majeure a permis de simplifier l'application en déplaçant la logique métier vers le serveur et en modernisant l'ensemble de l'environnement technologique.
 
 ### Évolutions fonctionnelles
-- **Gestion des dossiers et formulaires** : Introduction du formulaire de déclaration et du téléversement de la DA ([#169](https://github.com/betagouv/mon-indemnisation-justice/pull/169)) et possibilité d'exporter les dossiers FIP3 au format PDF ([#170](https://github.com/betagouv/mon-indemnisation-justice/pull/170)).
-- **Amélioration de la gestion documentaire** : Conversion automatique des documents requis en PDF et gestion intelligente des fichiers incompatibles pour garantir la génération des dossiers.
-- **Nouvelles capacités de consultation** : Ajout de la prévisualisation des fichiers signés, affichage des motifs de clôture et enrichissement de la recherche par type de dossier.
-- **Corrections d'expérience utilisateur** : Résolution de problèmes d'affichage des PDF sur Edge, correction des doublons lors de l'affectation et intégration des codes départements dans les courriers.
+- **Gestion des dossiers et clôture** : 
+    - Introduction d'une nouvelle interface (modale) pour la clôture des dossiers, incluant la saisie de motifs et d'explications.
+    - Possibilité pour les agents de la PN de s'affecter directement à un bâtiment de la PP.
+    - Amélioration du système de notifications (envoi à la DA et à la FIP3) [\#175](https://github.com/betagouv/mon-indemnisation-justice/pull/175).
+- **Documents et impressions** :
+    - Amélioration de la génération de PDF : conversion automatique des documents requis, gestion des fichiers incompatibles et export FIP3 en PDF [\#170](https://github.com/betagouv/mon-indemnisation-justice/pull/170).
+    - Utilisation des codes départements (ex: 2A, 976) dans les courriers officiels.
+    - Amélioration de la prévisualisation des fichiers signés et correction des problèmes d'affichage de PDF sur le navigateur Edge.
+    - Mise en place d'un système de détection et de remontée d'erreurs lors de l'impression [\#162](https://github.com/betagouv/mon-indemnisation-justice/pull/162).
+- **Formulaires** : Mise en place de nouveaux formulaires de déclaration et de téléversement de la DA [\#169](https://github.com/betagouv/mon-indemnisation-justice/pull/169).
+- **Corrections** : 
+    - Résolution de problèmes de doublons lors de l'affectation [\#163](https://github.com/betagouv/mon-indemnisation-justice/pull/163).
+    - Correction de bugs liés aux dates de marquage d'indemnisation et aux décalages de données entre le frontend et le backend.
 
 ### Évolutions techniques
-- **Refonte de l'architecture frontend** : Migration vers une architecture sans MobX, Valtio ou date-fns. La logique métier (signature, décision, clôture, attribution) est désormais déléguée à l'API pour plus de robustesse.
-- **Mise à jour de la stack technologique** : Montée de version majeure vers PHP 8.5, Symfony 8.1 et Node.js 24.
-- **Optimisation de la génération de documents** : Stabilisation du moteur de rendu via l'utilisation de Firefox (via Puppeteer) et amélioration des performances grâce à une meilleure gestion du cache et des tentatives de reconnexion (retries).
-- **Infrastructure** : Mise à jour des GitHub Actions pour la CI/CD.
+- **Refonte de l'architecture frontend** : Simplification majeure du code par la suppression de librairies de gestion d'état (MobX, Valtio) et de date-fns, en déléguant davantage de logique métier vers l'API.
+- **Modernisation de la stack** : Montée de version globale des composants critiques : PHP 8.5, Symfony 8.1, Node 24 et mise à jour des GitHub Actions.
+- **Fiabilisation de la génération de documents** : Migration vers l'utilisation de Firefox via Puppeteer pour assurer une meilleure stabilité des rendus PDF [\#166](https://github.com/betagouv/mon-indemnisation-justice/pull/166).
+- **Optimisations et tests** : 
+    - Amélioration des performances en optimisant les mécanismes de tentatives (retries) et la gestion du cache.
+    - Renforcement de la couverture de tests avec l'ajout de nouveaux tests unitaires.
 
 ### Autres changements
-- **Contenu et conformité** : Uniformisation des paragraphes de responsabilité et correction des trames de documents.
+- Mise à jour de la documentation technique.
