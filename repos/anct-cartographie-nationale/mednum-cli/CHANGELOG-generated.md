@@ -1,15 +1,18 @@
-## Changelog : mednum-cli (30 derniers jours, au 29 juin 2026)
+## Changelog : mednum-cli (30 derniers jours, au 16 septembre 2026)
 
 ### Résumé
-Cette version apporte des mises à jour importantes des sources de données utilisées par `mednum-cli`. Les zones "ZRR" ont été remplacées par les zones "France Ruralités Revitalisation (FRR)", la source QPV a été migrée vers le jeu de données des quartiers prioritaires ANCT 2024, et une nouvelle source, "francilin", a été ajoutée. Des améliorations de la stabilité et de la publication des données ont également été implémentées.
+Ce mois-ci, l'outil a bénéficié d'un enrichissement de ses sources de données et d'une meilleure précision dans la gestion des horaires et des adresses. Parallèlement, une refonte de l'architecture interne et une sécurisation des processus de publication renforcent la fiabilité et la maintenabilité du projet.
 
 ### Évolutions fonctionnelles
-- Ajout de la source de données "francilin" [#357](https://github.com/anct-cartographie-nationale/mednum-cli/issues/357).
-- Remplacement des zones "ZRR" par les zones "France Ruralités Revitalisation (FRR)" [#360](https://github.com/anct-cartographie-nationale/mednum-cli/issues/360).
-- Migration de la source QPV vers le jeu de données des quartiers prioritaires ANCT 2024 [#359](https://github.com/anct-cartographie-nationale/mednum-cli/issues/359).
-- Publication du jeu de données national à partir des données dédupliquées [#354](https://github.com/anct-cartographie-nationale/mednum-cli/issues/354).
-- Suppression des ressources DI et renommage en "national" [#355](https://github.com/anct-cartographie-nationale/mednum-cli/issues/355).
+- **Enrichissement des données** : Ajout de la source de données pour la Manche [#361](https://github.com/anct-cartographie-nationale/mednum-cli/pull/361).
+- **Gestion des horaires** : Possibilité d'ajouter des commentaires pour les horaires d'ouverture liés à des occurrences mensuelles spécifiques [#362](https://github.com/anct-cartographie-nationale/mednum-cli/pull/362).
+- **Règles de gestion des adresses** : Mise en place d'une fonctionnalité pour exclure les adresses vérifiées [#368](https://github.com/anct-cartographie-nationale/mednum-cli/pull/368).
+- **Correction de données** : Exclusion de certains lieux spécifiques (Dora et Les Landes) pour garantir la conformité des données [#366](https://github.com/anct-cartographie-nationale/mednum-cli/pull/366).
 
 ### Évolutions techniques
-- Amélioration de la stabilité de l'ordre de fusion des doublons internes avec une règle de départage par ID [#358](https://github.com/anct-cartographie-nationale/mednum-cli/issues/358).
-- Modification du planning de la publication nocturne pour éviter la congestion des Actions (passage à 22h48 UTC) [#356](https://github.com/anct-cartographie-nationale/mednum-cli/issues/356).
+- **Architecture** : Refonte de l'architecture des capacités de fonctionnalités (*feature ability architecture*) [#367](https://github.com/anct-cartographie-nationale/mednum-cli/pull/367).
+- **Qualité des données** : Optimisation de la détection des doublons grâce à l'application d'une règle de déduplication partagée [#364](https://github.com/anct-cartographie-nationale/mednum-cli/pull/364).
+- **CI/CD et Tooling** : 
+    - Migration vers Biome pour le linting et le formatage du code [#365](https://github.com/anct-cartographie-nationale/mednum-cli/pull/365).
+    - Sécurisation des processus de publication via le *trusted publishing* [#365](https://github.com/anct-cartographie-nationale/mednum-cli/pull/365).
+- **Maintenance** : Correction du mécanisme de réinitialisation du cache des adresses pour éviter les données obsolètes [#363](https://github.com/anct-cartographie-nationale/mednum-cli/pull/363).
