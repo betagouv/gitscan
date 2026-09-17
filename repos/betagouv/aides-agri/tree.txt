@@ -40,13 +40,19 @@
 │   ├── agri
 │   │   ├── README.md
 │   │   ├── __init__.py
+│   │   ├── admin.py
 │   │   ├── apps.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
 │   │   ├── signals
 │   │   │   ├── __init__.py
 │   │   │   └── handlers.py
 │   │   ├── sitemap.py
 │   │   ├── static
 │   │   │   └── agri
+│   │   │       ├── about.css
 │   │   │       ├── home.css
 │   │   │       ├── images
 │   │   │       │   └── home
@@ -60,6 +66,7 @@
 │   │   │       │   ├── more_results_from_type.html
 │   │   │       │   ├── results_less.html
 │   │   │       │   └── send-results-by-mail-ok.html
+│   │   │       ├── about.html
 │   │   │       ├── blocks
 │   │   │       │   └── home
 │   │   │       │       └── themes.html
@@ -74,6 +81,7 @@
 │   │   ├── tests
 │   │   │   ├── __init__.py
 │   │   │   ├── conftest.py
+│   │   │   ├── factories.py
 │   │   │   ├── test_prepare_e2e.py
 │   │   │   ├── test_signal_handlers.py
 │   │   │   ├── test_tasks.py
@@ -100,7 +108,8 @@
 │   │   │       ├── aides_publish_illustrations_from_db.py
 │   │   │       ├── aides_send_daily_admin_notifications.py
 │   │   │       ├── aides_set_organisme_illustration.py
-│   │   │       └── aides_unpublish_aides_having_invalid_link.py
+│   │   │       ├── aides_unpublish_aides_having_invalid_link.py
+│   │   │       └── aides_update_ddt_from_service_public_api.py
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
 │   │   │   ├── 0002_alter_aide_nom_alter_operateur_nom_alter_sujet_nom_and_more.py
@@ -172,6 +181,10 @@
 │   │   │   ├── 0074_alter_zonegeographique_options_and_more.py
 │   │   │   ├── 0075_organisme_sous_famille.py
 │   │   │   ├── 0076_remove_basejuridique_aide_remove_aide_base_juridique_and_more.py
+│   │   │   ├── 0077_aide_organisme_instructeur.py
+│   │   │   ├── 0078_organisme_adresse_organisme_telephone.py
+│   │   │   ├── 0079_organisme_parent.py
+│   │   │   ├── 0080_organisme_horaires_organisme_siren.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── signals
@@ -200,11 +213,11 @@
 │   │   │   │       ├── aide
 │   │   │   │       │   ├── change_form_object_tools.html
 │   │   │   │       │   ├── dashboard.html
-│   │   │   │       │   ├── derive_for_departements.html
 │   │   │   │       │   ├── duplicate.html
 │   │   │   │       │   └── submit_line.html
 │   │   │   │       ├── organisme
-│   │   │   │       │   └── change_form.html
+│   │   │   │       │   ├── change_form.html
+│   │   │   │       │   └── change_form_object_tools.html
 │   │   │   │       ├── sujet
 │   │   │   │       │   └── change_form.html
 │   │   │   │       ├── theme
@@ -357,7 +370,10 @@
 │       │   └── ui_tags.py
 │       ├── tests
 │       │   ├── __init__.py
-│       │   └── test_context_processors.py
+│       │   ├── conftest.py
+│       │   ├── factories.py
+│       │   ├── test_context_processors.py
+│       │   └── test_middlewares.py
 │       ├── urls.py
 │       └── views.py
 ├── conf
@@ -377,6 +393,7 @@
 │   │   │   ├── datagouv.py
 │   │   │   ├── dsfr.py
 │   │   │   ├── matomo.py
+│   │   │   ├── phonenumber.py
 │   │   │   ├── sentry.py
 │   │   │   └── ui.py
 │   │   ├── base.py
@@ -413,7 +430,8 @@
 │   │   ├── decision-0003-django-tasks.md
 │   │   ├── decision-0004-illustrations-en-base-de-donnees.md
 │   │   ├── decision-0005-utiliser-django-comme-base-de-donnees-principale-et-interface-d-edition-des-aides.md
-│   │   └── decision-0006-admin-concurrency.md
+│   │   ├── decision-0006-admin-concurrency.md
+│   │   └── decision-0007-django-admin-ordering.md
 │   └── dat
 │       ├── README.md
 │       ├── architecture-logicielle.md
@@ -428,6 +446,13 @@
 │   ├── chefs-sea
 │   │   ├── .gitignore
 │   │   └── extract.py
+│   ├── create-annuaire-chambres-agriculture
+│   │   ├── README.md
+│   │   ├── create-ca.py
+│   │   ├── data
+│   │   │   └── .gitignore
+│   │   ├── main.py
+│   │   └── pyproject.toml
 │   ├── create-releases-history
 │   │   ├── README.md
 │   │   └── main.py
@@ -461,6 +486,8 @@
 │   │   ├── pyproject.toml
 │   │   └── uv.lock
 │   ├── rebase-all-upgrade-branches.sh
+│   ├── set-ddt-id-service-public
+│   │   └── main.py
 │   ├── stress-test
 │   │   ├── main.py
 │   │   ├── pyproject.toml
@@ -503,4 +530,4 @@
     ├── favicon.ico
     ├── robots-non-prod.txt
     └── robots-prod.txt
-132 directories, 373 files
+136 directories, 396 files
