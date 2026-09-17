@@ -112,6 +112,7 @@
 │       └── Dockerfile
 ├── docker-compose.yml
 ├── docs
+│   ├── import_arrete_dpe.md
 │   ├── import_qpv.md
 │   └── potentiels_de_raccordement_par_territoire.md
 ├── knip.json
@@ -810,7 +811,9 @@
 │   │   │   ├── index.tsx
 │   │   │   └── usePostHog.tsx
 │   │   ├── ContributionForm
-│   │   │   └── ContributionForm.tsx
+│   │   │   ├── ContributionForm.tsx
+│   │   │   ├── ContributionNetworkSncuField.tsx
+│   │   │   └── schema.ts
 │   │   ├── Coproprietaire
 │   │   │   ├── Advantages.styles.ts
 │   │   │   ├── Advantages.tsx
@@ -1085,6 +1088,8 @@
 │   │   ├── withSecurityHeaders.ts
 │   │   └── withSentry.ts
 │   ├── data
+│   │   ├── arrete-dpe
+│   │   │   └── 2026.csv
 │   │   ├── contents
 │   │   │   ├── 1.5-million-dadresses-testees-par-des-professionnels.md
 │   │   │   ├── 1600-reseaux-a-creer-ou-etendre.md
@@ -1327,7 +1332,8 @@
 │   │   │   │   ├── DemandFCRForm.tsx
 │   │   │   │   ├── DemandesChaleurRenouvelableAdminPage.tsx
 │   │   │   │   ├── FranceRenovAdvisorCallout.tsx
-│   │   │   │   ├── OutdoorSpaceSelect.tsx
+│   │   │   │   ├── OutdoorSpaceCheckboxes.spec.ts
+│   │   │   │   ├── OutdoorSpaceCheckboxes.tsx
 │   │   │   │   ├── ParamsForm.tsx
 │   │   │   │   ├── SettingsTopFields.tsx
 │   │   │   │   ├── heating-mode-rules.ts
@@ -1348,6 +1354,7 @@
 │   │   │   │   ├── params-form-draft.ts
 │   │   │   │   ├── results
 │   │   │   │   │   └── ui
+│   │   │   │   │       ├── CoolingPossibleTag.tsx
 │   │   │   │   │       ├── DpeProgression.tsx
 │   │   │   │   │       ├── DpeTag.tsx
 │   │   │   │   │       ├── GainVsGazBadge.tsx
@@ -1361,14 +1368,22 @@
 │   │   │   │   │       ├── ResultsSection.tsx
 │   │   │   │   │       ├── SolutionConsumptionPanel.tsx
 │   │   │   │   │       ├── SolutionCta.tsx
+│   │   │   │   │       ├── Stars.tsx
 │   │   │   │   │       └── UsageTags.tsx
 │   │   │   │   ├── simulation-situation.spec.ts
 │   │   │   │   └── simulation-situation.ts
 │   │   │   ├── constants.ts
 │   │   │   ├── server
+│   │   │   │   ├── altimetry.spec.ts
+│   │   │   │   ├── altimetry.ts
+│   │   │   │   ├── france-renov-spaces.spec.ts
+│   │   │   │   ├── france-renov-spaces.ts
+│   │   │   │   ├── network-eligibility-coordinates.spec.ts
+│   │   │   │   ├── network-eligibility-coordinates.ts
 │   │   │   │   ├── service.ts
 │   │   │   │   ├── trpc-routes.integration.spec.ts
 │   │   │   │   └── trpc-routes.ts
+│   │   │   ├── simulation-prefill.spec.ts
 │   │   │   └── simulation-prefill.ts
 │   │   ├── config
 │   │   │   ├── AGENTS.md
@@ -1397,6 +1412,9 @@
 │   │   │       ├── import-utils.ts
 │   │   │       ├── import.ts
 │   │   │       ├── imports
+│   │   │       │   ├── arrete-dpe.integration.spec.ts
+│   │   │       │   ├── arrete-dpe.spec.ts
+│   │   │       │   ├── arrete-dpe.ts
 │   │   │       │   ├── consommations-gaz.ts
 │   │   │       │   ├── donnees-reseaux-bibliotheque-fedene.ts
 │   │   │       │   ├── donnees-reseaux-sdes.ts
@@ -1458,9 +1476,12 @@
 │   │   │   │   ├── public-api.ts
 │   │   │   │   ├── relances.ts
 │   │   │   │   ├── stats.ts
+│   │   │   │   ├── status-update.integration.spec.ts
 │   │   │   │   ├── tiles.ts
 │   │   │   │   ├── trpc-routes.integration.spec.ts
 │   │   │   │   ├── trpc-routes.ts
+│   │   │   │   ├── unrealizable-email.spec.ts
+│   │   │   │   ├── unrealizable-email.ts
 │   │   │   │   └── user-tracking.ts
 │   │   │   └── types.ts
 │   │   ├── diagnostic
@@ -1538,7 +1559,8 @@
 │   │   │           ├── demandeur
 │   │   │           │   ├── confirmation-demande.tsx
 │   │   │           │   ├── enquete-satisfaction.tsx
-│   │   │           │   └── message-gestionnaire.tsx
+│   │   │           │   ├── message-gestionnaire.tsx
+│   │   │           │   └── raccordement-non-realisable.tsx
 │   │   │           ├── equipe-fcu
 │   │   │           │   └── nouvelle-demande-chaleur-renouvelable.tsx
 │   │   │           └── gestionnaire
@@ -1735,7 +1757,6 @@
 │   │   │   │   │   │   ├── reseauxEnConstruction.tsx
 │   │   │   │   │   │   ├── ressourcesGeothermalesNappes.legend.tsx
 │   │   │   │   │   │   ├── ressourcesGeothermalesNappes.tsx
-│   │   │   │   │   │   ├── testsAdresses.tsx
 │   │   │   │   │   │   ├── tools
 │   │   │   │   │   │   │   ├── buildingsDataExtraction.ts
 │   │   │   │   │   │   │   ├── distancesMeasurement.ts
@@ -1828,7 +1849,9 @@
 │   │   │   ├── constants.ts
 │   │   │   └── server
 │   │   │       ├── simulation-service.spec.ts
-│   │   │       └── simulation-service.ts
+│   │   │       ├── simulation-service.ts
+│   │   │       ├── tracking-service.spec.ts
+│   │   │       └── tracking-service.ts
 │   │   ├── partner-api
 │   │   │   ├── AGENTS.md
 │   │   │   ├── client
@@ -1901,6 +1924,7 @@
 │   │   │   │   ├── dev
 │   │   │   │   │   └── ExplanationDemo.tsx
 │   │   │   │   └── explanation-navigation.ts
+│   │   │   ├── explanation-model.spec.ts
 │   │   │   ├── explanation-model.ts
 │   │   │   └── format.ts
 │   │   ├── reseaux
@@ -1909,11 +1933,15 @@
 │   │   │   │   └── admin
 │   │   │   │       ├── AdminReseauxPage.tsx
 │   │   │   │       ├── DeleteNetworkDialog.tsx
+│   │   │   │       ├── EditNetworkDialog.tsx
+│   │   │   │       ├── NetworkLinksField.tsx
 │   │   │   │       ├── NotesCell.tsx
+│   │   │   │       ├── ParentReseauField.tsx
 │   │   │   │       └── RemindersCell.tsx
 │   │   │   ├── commands
 │   │   │   │   └── ecoreseau.ts
 │   │   │   ├── commands.ts
+│   │   │   ├── constants.spec.ts
 │   │   │   ├── constants.ts
 │   │   │   ├── server
 │   │   │   │   ├── download-network.ts
@@ -1922,6 +1950,8 @@
 │   │   │   │   ├── geometry-identify.ts
 │   │   │   │   ├── geometry-operations.ts
 │   │   │   │   ├── geometry-updates.ts
+│   │   │   │   ├── linked-fields-sync.integration.spec.ts
+│   │   │   │   ├── linked-fields-sync.ts
 │   │   │   │   ├── reminders.ts
 │   │   │   │   ├── service.integration.spec.ts
 │   │   │   │   ├── service.ts
@@ -1950,8 +1980,7 @@
 │   │   │       ├── api.ts
 │   │   │       ├── generation-configs
 │   │   │       │   ├── batiments-raccordes-reseaux-chaleur-froid.ts
-│   │   │       │   ├── reseaux-de-chaleur.ts
-│   │   │       │   └── tests-adresses.ts
+│   │   │       │   └── reseaux-de-chaleur.ts
 │   │   │       ├── generation-import.ts
 │   │   │       ├── generation-run.ts
 │   │   │       ├── generation-strategies.ts
@@ -2058,6 +2087,8 @@
 │   │   │   │   │       └── [fileId].ts
 │   │   │   │   └── search.ts
 │   │   │   ├── pac
+│   │   │   │   ├── events.ts
+│   │   │   │   ├── france-renov-space.ts
 │   │   │   │   ├── income-options.ts
 │   │   │   │   └── simulation.ts
 │   │   │   ├── pro
@@ -2221,6 +2252,13 @@
 │   │   │       ├── 20260716000000_simplify_etudes_en_cours.ts
 │   │   │       ├── 20260720000000_add_comment_user_to_demands.ts
 │   │   │       ├── 20260727000000_rename_comparateur_publicodes_rules.ts
+│   │   │       ├── 20260730000000_network_links_and_operator_fields.ts
+│   │   │       ├── 20260826110000_normalize_chaleur_renouvelable_outdoor_space.ts
+│   │   │       ├── 20260901000000_construction_created_at.ts
+│   │   │       ├── 20260902000000_remove_national_permission.ts
+│   │   │       ├── 20260902100000_normalize_zero_network_prices.ts
+│   │   │       ├── 20260903150000_add_project_state_to_demands_chaleur_renouvelable.ts
+│   │   │       ├── 20260915160000_drop_tests_adresses_tiles.ts
 │   │   │       └── migrator.ts
 │   │   ├── helpers
 │   │   │   ├── db-errors.ts
@@ -2334,4 +2372,4 @@
 ├── vendor
 │   └── xlsx-0.20.3.tgz
 └── vitest.config.mts
-320 directories, 2344 files
+321 directories, 2381 files
