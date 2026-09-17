@@ -1,17 +1,18 @@
 {
   "url": "https://github.com/betagouv/reva",
   "name": "reva",
-  "description": "Plateforme monorepo dédiée à la gestion de la Validation des Acquis de l'Expérience (VAE). Elle regroupe des API et des applications web pour les candidats, les organismes et l'administration.",
+  "description": "Plateforme monorepo pour la gestion de la Validation des Acquis de l'Expérience (VAE) en France, incluant des API GraphQL/REST et des applications web pour les candidats, les organismes et l'administration.",
   "language": "TypeScript",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
     "Authentification & Accès",
+    "Statistiques & Rapports",
     "Gestion des utilisateurs & Permissions",
     "Formulaires & Démarches",
     "Administration & Backoffice"
   ],
-  "audience": "Agents de l'Administration",
+  "audience": "Agents de l'Administration, Professionnels et Grand public",
   "dependencies": [
     "Fastify",
     "Next.js",
@@ -20,21 +21,24 @@
     "Strapi",
     "PostgreSQL",
     "Traefik",
+    "Metabase",
     "Vitest",
     "Cypress",
     "Playwright",
-    "Metabase",
-    "Datadog",
-    "Brevo"
+    "Mercurius",
+    "URQL"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "React / Next.js",
     "TypeScript / JavaScript",
+    "Design System (DSFR & UI libs)",
     "Authentification (composant)",
     "CMS (Strapi, Wagtail…)",
-    "Tests"
+    "Tests",
+    "Docker & Conteneurs",
+    "CI/CD & Déploiement"
   ],
   "auth": {
     "methods": [
@@ -51,7 +55,11 @@
     "Cypress",
     "Playwright"
   ],
-  "lastActivity": "2026-09-08T16:37:45+02:00",
+  "workflows": [
+    "deploy",
+    "deploy-preprod"
+  ],
+  "lastActivity": "2026-09-16T16:20:50+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
@@ -62,6 +70,7 @@
     "Bases de données SQL",
     "Sécurité & Auth",
     "Node.js, NestJS & Express",
+    "Design System & UI",
     "Documentation"
   ]
 }

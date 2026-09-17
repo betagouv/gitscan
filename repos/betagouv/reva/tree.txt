@@ -1593,6 +1593,8 @@
     │   │   │   │   │   │   │   │       ├── juryResultPageLogic.ts
     │   │   │   │   │   │   │   │       └── page.tsx
     │   │   │   │   │   │   │   ├── layout.tsx
+    │   │   │   │   │   │   │   ├── logs-certificateur
+    │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   ├── transfer
     │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   ├── transfer-to-certification-authority
@@ -3194,6 +3196,7 @@
     │   │       │   ├── getCommanditaireVaeCollectives.ts
     │   │       │   ├── getMetabaseDashboardIframeUrlVaeCollective.ts
     │   │       │   ├── getPermissionsForRole.ts
+    │   │       │   ├── getRolesSpecificToSousCompteAndCohorteVaeCollective.ts
     │   │       │   ├── getSousCompteVaeCollectiveById.ts
     │   │       │   ├── getSousComptesByCommanditaireVaeCollectiveId.ts
     │   │       │   ├── getUserPermissions.ts
@@ -3203,6 +3206,7 @@
     │   │       │   ├── updateCohorteVAECollectiveCertification.ts
     │   │       │   ├── updateCohorteVAECollectiveOrganism.ts
     │   │       │   ├── updateNomCohorteVaeCollective.ts
+    │   │       │   ├── updateRolesSpecificToCohorteOfSousCompteVaeCollective.ts
     │   │       │   └── updateSousCompteVaeCollective.ts
     │   │       ├── security
     │   │       │   ├── hasVaeCollectivePermission.test.ts
@@ -3224,8 +3228,10 @@
     │   │       ├── vae-collective.publishCohorteVaeCollective.test.ts
     │   │       ├── vae-collective.resolvers.ts
     │   │       ├── vae-collective.sousCompte.canCreateCohorteVaeCollective.test.ts
+    │   │       ├── vae-collective.sousCompte.rolesSpecificToCohorte.test.ts
     │   │       ├── vae-collective.sousComptes.test.ts
     │   │       ├── vae-collective.updateCohorteVaeCollective.test.ts
+    │   │       ├── vae-collective.updateRolesSpecificToCohorteOfSousCompteVaeCollective.test.ts
     │   │       └── vae-collective.updateSousCompteVaeCollective.test.ts
     │   ├── package-lock.json
     │   ├── package.json
@@ -4730,6 +4736,20 @@
     │   │   │   │   └── migration.sql
     │   │   │   ├── 20260908091813_add_enable_email_otp_on_account_creation_feature_flag
     │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260908120000_add_certification_authority_local_account_on_account_table
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260911081516_refactored_role_specific_to_sous_compte_vae_collective_to_use_role_instead_of_permissions
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260911081746_add_createur_cohorte_role_vae_collective_and_map_it_to_the_creer_cohorte_permission
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260914151054_remove_role_permission_specific_to_cohorte_vae_collective_table
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260914151615_add_role_specific_to_sous_compte_and_cohorte_vae_collective_table
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260916081226_add_cohorte_specific_roles_to_RoleVaeCollective
+    │   │   │   │   └── migration.sql
+    │   │   │   ├── 20260916081403_add_permissions_to_new_lecteur_cohorte_and_editeur_cohorte_vae_collective_roles
+    │   │   │   │   └── migration.sql
     │   │   │   └── migration_lock.toml
     │   │   ├── schema.prisma
     │   │   └── seed
@@ -4768,6 +4788,7 @@
     │   │   ├── addAndSendCertificationsToRegistryManager.ts
     │   │   ├── anonymization
     │   │   │   ├── anonymize-keycloak-db.sql
+    │   │   │   ├── anonymize-reva-db-full.sql
     │   │   │   └── anonymize-reva-db.sql
     │   │   ├── csvToJSON.ts
     │   │   ├── document.pdf
@@ -4784,7 +4805,7 @@
     │   │   ├── resetSandboxDb.sh
     │   │   ├── seedFeasibilities.ts
     │   │   ├── seedSandboxDb.ts
-    │   │   ├── sendEmailPaymentRequestBefore2025ToAAP.ts
+    │   │   ├── sendEmailPaymentRequestBefore2026ToAAP.ts
     │   │   ├── sendUniformationPaymentReminderToAAP.ts
     │   │   ├── syncOutcsaleBucketToBackup.ts
     │   │   ├── uniformation_num_actions.json
@@ -5900,6 +5921,11 @@
     │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   ├── certifications-selectionnees
     │   │   │   │   │   │   │   │   │   └── page.tsx
+    │   │   │   │   │   │   │   │   ├── droits-acces
+    │   │   │   │   │   │   │   │   │   ├── AccessRightsForm.tsx
+    │   │   │   │   │   │   │   │   │   ├── actions.ts
+    │   │   │   │   │   │   │   │   │   ├── constants.ts
+    │   │   │   │   │   │   │   │   │   └── page.tsx
     │   │   │   │   │   │   │   │   ├── modifier-intitule
     │   │   │   │   │   │   │   │   │   ├── actions.ts
     │   │   │   │   │   │   │   │   │   ├── form.tsx
@@ -6056,6 +6082,8 @@
     │   │   │   │   │   │   ├── cohorte.global.spec.ts
     │   │   │   │   │   │   ├── cohorte.organismCard.spec.ts
     │   │   │   │   │   │   ├── cohorte.registrationCodeDisplay.spec.ts
+    │   │   │   │   │   │   ├── droits-acces
+    │   │   │   │   │   │   │   └── droitsAcces.spec.ts
     │   │   │   │   │   │   ├── modifier-intitule
     │   │   │   │   │   │   │   └── modifier-intitule.spec.ts
     │   │   │   │   │   │   └── selection-certifications
@@ -6483,4 +6511,4 @@
         ├── tsconfig.json
         └── types
             └── primitives.d.ts
-2166 directories, 4319 files
+2176 directories, 4337 files

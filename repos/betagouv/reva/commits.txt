@@ -1,3 +1,47 @@
+2026-09-16T16:20:50+02:00 - eca7686 - Florian Bonniec : fix(api): updated updateCandidacyTypeAccompagnement feature to set ccn and typology if df demat autonome is active
+2026-09-16T15:54:25+02:00 - 2620b44 - Florian Bonniec : fix(api): updated createCandidacy feature to set ccn and typology if df demat autonome is active
+2026-09-16T15:11:08+02:00 - 6500c9c - Alexandre Garbe : feat(vae-collective): added a search bar for the cohorte's sous comptes list
+2026-09-16T15:11:08+02:00 - 5cd917c - Alexandre Garbe : feat(vae-collective): refactor access rights page to keep page number and search filter as url params
+2026-09-16T15:11:08+02:00 - 3787f63 - Alexandre Garbe : feat(api): added an optional searchFilter param to the CommanditaireVaeCollective->sousComptes resolver
+2026-09-16T14:01:40+02:00 - 0267394 - Pierre A : feat(traefik):temp reallow password reset
+2026-09-16T14:00:33+02:00 - d815bfb - Florian Bonniec : feat(api): updated setCandidacyTypeAccompagnementToAutonome feature to support dematerialized df on autonome candidacies
+2026-09-16T13:56:07+02:00 - 26e0a72 - Florian Bonniec : fix(candidate): added tests to check feasibility url for df demat autonome on NextActionTiles component
+2026-09-16T13:56:06+02:00 - fb2fd5c - Florian Bonniec : Reapply "fix(candidate): fixed feasibility url for df demat autonome on NextActionTiles component"
+2026-09-16T11:47:13+02:00 - bc72829 - Alexandre Garbe : feat(api): added a vaeCollective_updateRolesSpecificToCohorteOfSousCompteVaeCollective mutation
+2026-09-16T11:47:13+02:00 - 9939b70 - Alexandre Garbe : feat(vae-collective): wired "droits d'accès" page to the vaeCollective_updateRolesSpecificToCohorteOfSousCompteVaeCollective mutation
+2026-09-16T11:42:26+02:00 - fc54572 - Alexandre Garbe : feat(api): added MODIFIER_DROITS_ACCES_COHORTE to the cohorte scoped permissions
+2026-09-16T11:42:26+02:00 - 87e4aaf - Alexandre Garbe : feat(api): added the LECTEUR_COHORTE and LECTEUR_COHORTE vae collective roles
+2026-09-16T10:24:36+02:00 - 3dbba0c - Florian Bonniec : Revert "fix(candidate): fixed feasibility url for df demat autonome on NextActionTiles component"
+2026-09-16T10:20:06+02:00 - 37a7a3f - Florian Bonniec : fix(candidate): fixed feasibility url for df demat autonome on NextActionTiles component
+2026-09-15T19:02:36+02:00 - e9dd864 - Florian Bonniec : feat(api,candidate): updated df demat autonome to support the editing of goals and experiences if df is incomplete
+2026-09-15T14:39:48+02:00 - e15a21e - Alexandre Garbe : feat(vae-collective): added the "droits d'accès" page
+2026-09-15T11:14:44+02:00 - cfc473f - Alexandre Garbe : fix(website): fixed flaky test
+2026-09-14T17:47:59+02:00 - 9812134 - Alexandre Garbe : feat(api): added role_specific_to_sous_compte_and_cohorte_vae_collective table
+2026-09-14T17:47:59+02:00 - 8ded326 - Alexandre Garbe : feat(api): added a resolver for getting a sous compte vae collective specific role for a given cohorte
+2026-09-14T17:47:58+02:00 - d553ff4 - Alexandre Garbe : feat(api): added script to fully anonymize the database
+2026-09-14T17:47:58+02:00 - 49881cc - Alexandre Garbe : feat(api): removed role_permission_specific_to_cohorte_vae_collective table
+2026-09-14T15:34:47+02:00 - 1052ef5 - Pierre A : refacto(api):use many to many relationship between certificationAuthorityLocalAccount and account
+2026-09-14T12:13:33+02:00 - 6bf8b9f - Florian Bonniec : feat(api): updated script sendEmailPaymentRequestBefore2025ToAAP.ts for sendEmailPaymentRequestBefore2026ToAAP.ts
+2026-09-11T15:52:46+02:00 - 3b43a58 - fbonniec : Merge pull request #1118 from betagouv/dependabot/npm_and_yarn/infra/strapi/js-yaml-4.3.2
+2026-09-11T15:45:11+02:00 - b2a551c - fbonniec : Merge pull request #1117 from betagouv/dependabot/npm_and_yarn/packages/reva-vae-collective/js-yaml-4.3.2
+2026-09-11T15:14:00+02:00 - 6d0061f - fbonniec : Merge pull request #1116 from betagouv/dependabot/npm_and_yarn/packages/reva-website/baseline-browser-mapping-2.11.21
+2026-09-11T15:00:21+02:00 - 25cb3d7 - fbonniec : Merge pull request #1115 from betagouv/dependabot/npm_and_yarn/packages/reva-interop/vitest-4.1.11
+2026-09-11T14:28:22+02:00 - d24433f - fbonniec : Merge pull request #1114 from betagouv/dependabot/npm_and_yarn/packages/reva-api/multi-93bce68db2
+2026-09-11T14:11:59+02:00 - 5f64286 - fbonniec : Merge pull request #1113 from betagouv/dependabot/npm_and_yarn/packages/reva-admin-react/joi-18.2.8
+2026-09-11T14:11:17+02:00 - f55ca51 - fbonniec : Merge pull request #1112 from betagouv/dependabot/npm_and_yarn/infra/strapi/react-router-dom-6.30.6
+2026-09-11T11:58:47+02:00 - 50dc826 - Florian Bonniec : feat(admin): added logs-certificateur page
+2026-09-11T11:25:58+02:00 - 4f85c44 - Florian Bonniec : feat(api,admin): added active candidacies filter to getCandidaciesForAAP feature
+2026-09-11T11:07:36+02:00 - 080d07f - Alexandre Garbe : feat(api): replaced permissionSpecificToSousCompteVaeCollective code with roleSpecificToSousCompteVaeCollective
+2026-09-11T10:19:14+02:00 - ce190f4 - Alexandre Garbe : feat(api): added the CREATEUR_COHORTE vae collective role
+2026-09-11T10:16:45+02:00 - f467758 - Alexandre Garbe : feat(api): refactored permission_specific_to_sous_compte_vae_collective table to use role instead of permissions
+2026-09-11T09:52:11+02:00 - 5d938d7 - Alexandre Garbe : feat(api): vae collective accounts now have 2fa enabled like other accounts when the corresponding feature flag is up
+2026-09-10T14:21:31Z - a489373 - dependabot[bot] : chore(deps): bump js-yaml from 4.3.1 to 4.3.2 in /infra/strapi
+2026-09-10T03:55:34Z - ae1fa86 - dependabot[bot] : chore(deps-dev): bump js-yaml in /packages/reva-vae-collective
+2026-09-10T03:55:31Z - d907854 - dependabot[bot] : chore(deps): bump baseline-browser-mapping in /packages/reva-website
+2026-09-10T03:55:28Z - c8f5afb - dependabot[bot] : chore(deps-dev): bump vitest in /packages/reva-interop
+2026-09-09T23:31:11Z - 1fd966d - dependabot[bot] : chore(deps): bump @vitest/mocker, @vitest/coverage-v8, @vitest/ui and vitest
+2026-09-09T02:57:07Z - d96babe - dependabot[bot] : chore(deps-dev): bump joi in /packages/reva-admin-react
+2026-09-08T17:01:52Z - 067c3e2 - dependabot[bot] : chore(deps): bump react-router-dom in /infra/strapi
 2026-09-08T16:37:45+02:00 - 1fec691 - Alexandre Garbe : feat(vae-collective): ported 2fa via email code from the admin app.
 2026-09-08T11:43:52+02:00 - 81f17bd - Alexandre Garbe : feat(api): email otp is now enabled by default on account creation (when the feature flag is enabled) except for the vae collective users
 2026-09-08T11:26:50+02:00 - 4e344df - Alexandre Garbe : feat(api): added an optional emailOtpEnabled param to the createAccount function

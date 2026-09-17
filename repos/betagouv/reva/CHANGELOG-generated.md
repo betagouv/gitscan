@@ -1,22 +1,35 @@
-## Changelog : reva (30 derniers jours, au 08/09/2026)
+## Changelog : reva (30 derniers jours, au 16 septembre 2026)
 
 ### Résumé
-Ce mois a été marqué par deux évolutions majeures : l'introduction de la gestion des "sous-comptes" pour la VAE Collective, permettant une délégation de gestion plus fine, et la refonte du processus de mise à jour des informations légales pour les organismes, visant à accroître leur autonomie tout en renforçant le contrôle administratif.
+Ce mois-ci, la plateforme a franchi une étape majeure avec le déploiement des fonctionnalités de gestion des "VAE Collectives", incluant la création de sous-comptes et une gestion fine des droits d'accès. L'expérience des candidats a été améliorée, notamment pour les dossiers dématérialisés, tandis que les outils d'administration ont été renforcés pour offrir plus d'autonomie aux organismes et une meilleure gestion des informations légales.
 
 ### Évolutions fonctionnelles
-- **VAE Collective** : Mise en place complète de la gestion des sous-comptes, incluant la création, la liste des comptes, l'attribution de droits spécifiques et une interface de gestion dédiée.
-- **Gestion des organismes (AAP)** : Nouveau parcours de mise à jour des informations légales permettant aux structures de modifier leurs données en autonomie. Les administrateurs disposent désormais d'outils pour valider ces changements ou notifier des motifs de non-conformité.
-- **Tableaux de bord** : Possibilité d'afficher des tableaux de bord intégrés pour les gestionnaires de registres.
-- **Sécurité** : Activation par défaut de l'authentification à deux facteurs (2FA) via code email lors de la création de compte.
-- **Expérience Candidat** : Amélioration de la clarté des formulaires, de la terminologie et de l'affichage des données relatives aux organismes.
+- **Gestion des VAE Collectives** : 
+    - Mise en place de la gestion des sous-comptes (création, consultation, recherche et gestion des droits d'accès par cohorte).
+    - Ajout de nouvelles pages dédiées à la gestion des comptes utilisateurs et aux droits d'accès.
+- **Parcours Candidat** : 
+    - Amélioration du parcours de dématérialisation permettant de modifier les objectifs et les expériences si le dossier est incomplet.
+    - Corrections sur le parcours de faisabilité et amélioration de la clarté des libellés.
+- **Administration & Organismes (AAP)** : 
+    - Autonomie accrue des organismes pour la mise à jour de leurs informations générales.
+    - Nouveaux tableaux de bord pour les gestionnaires de registre.
+    - Amélioration du processus de validation des informations légales, incluant la possibilité de notifier des motifs de non-conformité.
+- **Sécurité** : 
+    - Généralisation de l'authentification à deux facteurs (2FA) par email pour les comptes.
 
 ### Évolutions techniques
-- **Architecture API** : Migration massive des résolveurs (candidatures, certifications, autorités) vers un nouveau système de gestion des politiques d'autorisation (`withPolicies`) pour une sécurité accrue.
-- **Interopérabilité** : Migration de l'API France Compétences (RNCP) vers la version 4 et enrichissement des données d'identité avec l'intégration des codes pays INSEE.
-- **Infrastructure & Sécurité** : Renforcement de la sécurité de Metabase (accès restreint au réseau privé) et mise à jour des configurations de buildpack pour Keycloak.
-- **Qualité logicielle** : Augmentation significative de la couverture de tests, avec un focus particulier sur les règles d'autorisation complexes et les parcours de validation des données.
-- **Base de données** : Correction de migrations Prisma.
+- **API & Données** : 
+    - Migration de l'API France Compétences (RNCP) de la version 2 vers la version 4.
+    - Intégration des codes INSEE et des codes pays dans les schémas GraphQL.
+    - Ajout d'un script pour l'anonymisation complète de la base de données.
+- **Architecture** : 
+    - Refonte du système de gestion des droits pour les collectifs (passage d'un modèle de permissions à un modèle de rôles).
+    - Migration des résolveurs d'autorisation vers une nouvelle logique centralisée (`withPolicies`).
+- **Infrastructure** : 
+    - Sécurisation de l'accès à Metabase via un réseau privé et un proxy.
+    - Ajustements de la configuration Traefik et Keycloak (gestion des checksums).
 
 ### Autres changements
-- Ajustements cosmétiques de l'interface utilisateur (espacements, mise en page des cartes de certification).
-- Nettoyage du code et optimisation de l'ordre des imports.
+- Augmentation significative de la couverture de tests (API, Administration et Candidat).
+- Améliorations de l'interface utilisateur (espacements, design des cartes, gestion des états de chargement).
+- Nettoyage du code et réorganisation de l'ordre des imports.
