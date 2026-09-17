@@ -1,48 +1,49 @@
 {
   "url": "https://github.com/SocialGouv/infra-apps",
   "name": "infra-apps",
-  "description": "Ce dépôt contient les manifestes Kubernetes permettant de déployer et de gérer l'infrastructure des applications de SocialGouv via ArgoCD.",
+  "description": "Ce dépôt permet de gérer le positionnement des ressources Kubernetes via ArgoCD. Il sert principalement à l'orchestration de la plateforme Iterion et de ses composants d'infrastructure.",
   "language": "YAML",
   "features": [
     "Infrastructure & Stockage",
     "Sécurité & Conformité",
     "Monitoring & Logs",
-    "Gestion des utilisateurs & Permissions"
+    "Collaboration & Workflow",
+    "Administration & Backoffice"
   ],
   "audience": "Développeurs",
   "dependencies": [
     "Kubernetes",
     "ArgoCD",
     "Helm",
-    "Buildkit-operator",
     "KEDA",
+    "NATS",
     "MinIO",
-    "Elasticsearch",
+    "Sentry",
     "Metabase"
   ],
   "components": [
     "CI/CD & Déploiement",
     "Docker & Conteneurs",
     "Kubernetes & Helm",
-    "Stockage objet",
-    "Ansible & IaC"
+    "Authentification (composant)",
+    "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "jwt",
       "sso"
     ],
     "providers": [
       "GitHub"
     ]
   },
-  "tests": "E2E",
+  "tests": "Tests E2E mentionnés dans les commits",
   "workflows": [
     "ArgoCD"
   ],
-  "lastActivity": "2026-09-13T15:07:24+02:00",
+  "lastActivity": "2026-09-16T09:18:24+02:00",
   "status": "active",
+  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Git & DevOps",
