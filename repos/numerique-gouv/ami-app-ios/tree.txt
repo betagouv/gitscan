@@ -38,9 +38,12 @@
 │       │       ├── AMIWebView.swift
 │       │       ├── SwiftUIWebView.md
 │       │       ├── SwiftUIWebView.swift
+│       │       ├── ViewModel
+│       │       │   ├── WebView-ViewModel-Downloader.swift
+│       │       │   └── WebView-ViewModel.swift
 │       │       ├── WeakScriptMessageHandler.swift
-│       │       ├── WebView-ViewModel.swift
 │       │       ├── WebViewDelegate.swift
+│       │       ├── WebViewNavigateToNewWindowProtocol.swift
 │       │       └── WebViewUserScriptsProtocol.swift
 │       ├── Core
 │       │   └── AppLog.swift
@@ -68,13 +71,15 @@
 │       │   │   ├── HomeView-UserScripts.swift
 │       │   │   ├── HomeView-ViewModel.swift
 │       │   │   └── HomeView.swift
+│       │   ├── Models
+│       │   │   └── ServiceLinkViewModel.swift
 │       │   ├── Onboarding
 │       │   │   ├── OnboardingView.swift
 │       │   │   └── OnboardingViewModel.swift
-│       │   ├── Partner
-│       │   │   ├── PartnerView-UserScripts.swift
-│       │   │   ├── PartnerView-ViewModel.swift
-│       │   │   └── PartnerView.swift
+│       │   ├── Service
+│       │   │   ├── ServiceView-UserScripts.swift
+│       │   │   ├── ServiceView-ViewModel.swift
+│       │   │   └── ServiceView.swift
 │       │   └── Settings
 │       │       ├── SettingsView-ViewModel.swift
 │       │       └── SettingsView.swift
@@ -112,6 +117,10 @@
 │   ├── ami-xcode-pass-swiftgen.sh
 │   └── ami-xcode-pass-swiftlint.sh
 └── targets
+    ├── preproduction
+    │   └── SupportingFiles
+    │       ├── .env.example
+    │       └── GoogleService-Info.plist
     ├── production
     │   └── SupportingFiles
     │       ├── .env.example
@@ -138,4 +147,4 @@
         │           └── UserDefaultsStorageTests.swift
         └── SupportingFiles
             └── Info.plist
-56 directories, 84 files
+60 directories, 89 files

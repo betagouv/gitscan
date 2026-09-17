@@ -1,25 +1,24 @@
-## Changelog : ami-app-ios (30 derniers jours, au 26 août 2026)
+## Changelog : ami-app-ios (30 derniers jours, au 15 septembre 2026)
 
 ### Résumé
-Ce mois a été marqué par un renforcement significatif de la sécurité et de la stabilité de l'application. Les efforts se sont concentrés sur la sécurisation du stockage des données locales (via la biométrie et le chiffrement), l'amélioration de l'expérience d'authentification avec le support des Passkeys dans les vues web, et une refonte profonde de la structure de test et de configuration du projet pour garantir une meilleure qualité de code.
+Cette période a été marquée par l'amélioration de l'expérience utilisateur avec l'ajout du téléchargement de fichiers et la possibilité de lancer des démarches en ligne. L'infrastructure a également évolué avec la création d'un environnement de pré-production et le renforcement de la sécurité via l'activation des Passkeys sur l'environnement de staging.
 
 ### Évolutions fonctionnelles
-- **Support des Passkeys :** Configuration des WebViews pour permettre l'utilisation des Passkeys, facilitant ainsi l'authentification sécurisée ([#150](https://github.com/numerique-gouv/ami-app-ios/pull/150)).
-- **Sécurité biométrique :** Introduction de l'authentification par FaceID pour protéger l'accès aux données sensibles stockées sur l'appareil.
-- **Identification de l'appareil :** Mise en place d'un identifiant de terminal (Device ID) stable pour améliorer la reconnaissance du dispositif.
-- **Gestion fine de la confidentialité :** Implémentation de différents niveaux de sécurité pour le stockage local (privé, chiffré et authentifié).
+- Possibilité de lancer une démarche en ligne ([#165](https://github.com/numerique-gouv/ami-app-ios/pull/165)).
+- Support du téléchargement de fichiers directement depuis la WebView ([#173](https://github.com/numerique-gouv/ami-app-ios/pull/173)).
+- Correction d'un bug provoquant une page blanche lors d'un second accès à une même application de revue ([#166](https://github.com/numerique-gouv/ami-app-ios/pull/166)).
+- Amélioration de l'ouverture des vues de destination depuis la vue partenaire.
+- Activation du support des Passkeys sur l'environnement de staging ([#171](https://github.com/numerique-gouv/ami-app-ios/pull/171)).
 
 ### Évolutions techniques
-- **Architecture de stockage :** Implémentation d'une nouvelle couche de données (`LocalStorage`) utilisant le Keychain et UserDefaults, avec une gestion asynchrone et une meilleure gestion des erreurs.
-- **Optimisation des WebViews :** Refonte du mécanisme de chargement des pages initiales et de l'injection de scripts natifs pour une communication plus fluide entre l'application et le contenu web.
-- **Intégration du Design System :** Mise à jour vers la version 0.2 de l'**Ami Design System** pour l'utilisation des couleurs officielles et des composants de boutons (DsfrButtonStyle).
-- **Qualité et Tests :** 
-    - Refonte de la stratégie de tests unitaires en supprimant la dépendance à Sourcery au profit de tests plus simples et directs.
-    - Correction de nombreux avertissements de compilation et de linter.
-- **Gestion de la configuration et des secrets :** 
-    - Automatisation de la génération des secrets via un nouveau build phase `generate-secrets`.
-    - Amélioration de la gestion du projet via XcodeGen ([#148](https://github.com/numerique-gouv/ami-app-ios/pull/148)) et nettoyage des fichiers d'entitlements.
+- Création d'un environnement de pré-production (Preprod) dédié ([#161](https://github.com/numerique-gouv/ami-app-ios/pull/161)).
+- Refonte de la navigation dans la WebView via l'introduction d'un nouveau protocole de gestion des fenêtres.
+- Amélioration du système de téléchargement pour permettre le stockage local des fichiers sur l'appareil.
+- Optimisation de la gestion de la mémoire en supprimant le cache des ViewModels.
+- Mise à jour des configurations de sécurité et d'infrastructure (Firebase, domaines associés, gestion des secrets et des entitlements).
+- Migration de la gestion de la fermeture des vues (dismissal) vers SwiftUI.
 
 ### Autres changements
-- **Documentation :** Mise à jour de la documentation technique, notamment sur l'utilisation des fichiers d'environnement (`.env.example`) et le fonctionnement du stockage local.
-- **Nettoyage du projet :** Suppression de composants inutilisés (Tile), de ressources en double (AppIcon) et optimisation des fichiers `.gitignore`.
+- Nettoyage des configurations de targets ([#162](https://github.com/numerique-gouv/ami-app-ios/pull/162)).
+- Refactorisation sémantique du code (renommage de plusieurs classes et méthodes pour une meilleure clarté, ex: `Partner` vers `Service` ou `Destination`).
+- Corrections de typos et amélioration de la documentation interne.
