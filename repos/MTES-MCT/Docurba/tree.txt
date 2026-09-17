@@ -4,6 +4,7 @@
 │   ├── ISSUE_TEMPLATE
 │   │   ├── anomalie.md
 │   │   └── fonctionnalité.md
+│   ├── SECURITY.md
 │   ├── dependabot.yml
 │   └── workflows
 │       ├── lint_test.yml
@@ -38,10 +39,8 @@
 │   │   ├── api
 │   │   │   ├── __init__.py
 │   │   │   ├── apps.py
-│   │   │   ├── migrations
-│   │   │   │   └── __init__.py
-│   │   │   ├── urls.py
-│   │   │   └── views.py
+│   │   │   ├── auth.py
+│   │   │   └── paginators.py
 │   │   ├── core
 │   │   │   ├── __init__.py
 │   │   │   ├── admin.py
@@ -142,17 +141,6 @@
 │   │   │   │   ├── 0009_alter_eventsnapshot_event_type_blank.py
 │   │   │   │   └── __init__.py
 │   │   │   └── models.py
-│   │   ├── internal_api
-│   │   │   ├── __init__.py
-│   │   │   ├── apps.py
-│   │   │   ├── auth.py
-│   │   │   ├── filters.py
-│   │   │   ├── migrations
-│   │   │   │   └── __init__.py
-│   │   │   ├── paginators.py
-│   │   │   ├── serializers.py
-│   │   │   ├── urls.py
-│   │   │   └── views.py
 │   │   ├── surveys
 │   │   │   ├── __init__.py
 │   │   │   ├── admin.py
@@ -174,8 +162,11 @@
 │   │   │   │   │       └── change_event_form.html
 │   │   │   │   └── users
 │   │   │   │       └── change_user_form.html
-│   │   │   └── core
-│   │   │       └── collectivite.html
+│   │   │   ├── core
+│   │   │   │   └── collectivite.html
+│   │   │   └── static
+│   │   │       └── security
+│   │   │           └── security.txt
 │   │   ├── users
 │   │   │   ├── __init__.py
 │   │   │   ├── admin.py
@@ -194,16 +185,33 @@
 │   │   │   │   ├── 0006_add_colum_profile_must_update_password.py
 │   │   │   │   ├── 0007_fill_profile_must_reset_password.py
 │   │   │   │   ├── 0008_delete_session.py
+│   │   │   │   ├── 0009_drop_rls_profiles.py
 │   │   │   │   └── __init__.py
 │   │   │   └── models.py
-│   │   └── utils
+│   │   ├── utils
+│   │   │   ├── __init__.py
+│   │   │   ├── api
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── views.py
+│   │   │   ├── emails.py
+│   │   │   ├── enums.py
+│   │   │   └── password_validation.py
+│   │   └── www
 │   │       ├── __init__.py
 │   │       ├── api
 │   │       │   ├── __init__.py
+│   │       │   ├── urls.py
 │   │       │   └── views.py
-│   │       ├── emails.py
-│   │       ├── enums.py
-│   │       └── password_validation.py
+│   │       ├── internal_api
+│   │       │   ├── __init__.py
+│   │       │   ├── filters.py
+│   │       │   ├── serializers.py
+│   │       │   ├── urls.py
+│   │       │   └── views.py
+│   │       └── security
+│   │           ├── __init__.py
+│   │           ├── urls.py
+│   │           └── views.py
 │   ├── exports
 │   │   └── README.md
 │   ├── manage.py
@@ -222,9 +230,8 @@
 │   │   ├── __init__.py
 │   │   ├── api
 │   │   │   ├── __init__.py
-│   │   │   ├── __snapshots__
-│   │   │   │   └── test_views.ambr
-│   │   │   └── test_views.py
+│   │   │   ├── test_auth.py
+│   │   │   └── test_paginators.py
 │   │   ├── conftest.py
 │   │   ├── core
 │   │   │   ├── __init__.py
@@ -244,15 +251,6 @@
 │   │   ├── history
 │   │   │   ├── __init__.py
 │   │   │   └── test_admin.py
-│   │   ├── internal_api
-│   │   │   ├── __init__.py
-│   │   │   ├── test_auth.py
-│   │   │   ├── test_paginators.py
-│   │   │   └── test_views
-│   │   │       ├── __init__.py
-│   │   │       ├── __snapshots__
-│   │   │       │   └── test_views.ambr
-│   │   │       └── test_views.py
 │   │   ├── surveys
 │   │   │   ├── __init__.py
 │   │   │   └── test_models.py
@@ -262,9 +260,24 @@
 │   │   │   ├── test_admin.py
 │   │   │   ├── test_models.py
 │   │   │   └── test_rotate_passwords_management_command.py
-│   │   └── utils
+│   │   ├── utils
+│   │   │   ├── __init__.py
+│   │   │   └── test_validators.py
+│   │   └── www
 │   │       ├── __init__.py
-│   │       └── test_validators.py
+│   │       ├── api
+│   │       │   ├── __init__.py
+│   │       │   ├── __snapshots__
+│   │       │   │   └── test_views.ambr
+│   │       │   └── test_views.py
+│   │       ├── internal_api
+│   │       │   ├── __init__.py
+│   │       │   ├── __snapshots__
+│   │       │   │   └── test_views.ambr
+│   │       │   └── test_views.py
+│   │       └── security
+│   │           ├── __init__.py
+│   │           └── test_security.py
 │   └── uv.lock
 ├── docker
 │   └── test_db
@@ -1093,4 +1106,4 @@
 └── supabase
     ├── .gitignore
     └── config.toml
-217 directories, 920 files
+222 directories, 928 files

@@ -1,26 +1,27 @@
 {
   "url": "https://github.com/MTES-MCT/Docurba",
   "name": "Docurba",
-  "description": "Plateforme de gestion et de suivi des procédures et événements réglementaires, notamment pour la loi Huwart. Elle permet la centralisation des données métier et la gestion des collectivités.",
+  "description": "Plateforme de gestion documentaire et de suivi de procédures pour les collectivités, incluant des fonctionnalités de notification et de gestion sécurisée des accès.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
+    "Authentification & Accès",
+    "Notifications & Alertes",
     "Gestion des utilisateurs & Permissions",
-    "Recherche & Filtres",
     "Administration & Backoffice",
-    "Suivi & Traçabilité",
-    "Gestion métier générale"
+    "Suivi & Traçabilité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django",
+    "Django Rest Framework",
     "Nuxt 3",
     "Supabase",
     "PostgreSQL",
-    "Django Rest Framework",
-    "Pytest",
-    "Docker",
-    "Sendgrid"
+    "Sendgrid",
+    "Slack",
+    "Nginx",
+    "Docker"
   ],
   "components": [
     "API REST & GraphQL",
@@ -28,33 +29,32 @@
     "Vue.js / Nuxt",
     "Python (scripts & backend)",
     "Docker & Conteneurs",
-    "Django",
     "Authentification (composant)",
-    "ORM & Accès aux données"
+    "Tests"
   ],
   "auth": {
     "methods": [
+      "email-password",
       "jwt",
       "session"
-    ]
+    ],
+    "providers": []
   },
-  "tests": [
-    "Pytest",
-    "Syrupy",
-    "Docker"
+  "tests": "Pytest",
+  "workflows": [
+    "GitHub Actions"
   ],
-  "lastActivity": "2026-09-10T17:28:21+02:00",
+  "lastActivity": "2026-09-15T18:18:41+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
   "tags": [
+    "Écosystème beta.gouv / État",
     "Python",
-    "Django & FastAPI",
     "Vue.js & Nuxt",
     "Bases de données SQL",
     "Docker & Conteneurs",
     "CI/CD & GitHub Actions",
-    "Territoire & Collectivités",
-    "Données & Open Data"
+    "Django & FastAPI"
   ]
 }

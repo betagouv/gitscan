@@ -1,32 +1,24 @@
-## Changelog : Docurba (30 derniers jours, au 10 septembre 2026)
+## Changelog : Docurba (30 derniers jours, au 15 septembre 2026)
 
 ### Résumé
-Ce mois-ci, les développements ont principalement porté sur le renforcement de la sécurité des comptes utilisateurs, avec une mise en conformité des politiques de mots de passe (recommandations CNIL) et une gestion plus robuste des sessions. L'expérience de communication a également été améliorée grâce à une intégration plus fiable des services d'envoi d'emails et de notifications Slack.
+Ce mois-ci, les efforts se sont concentrés sur le renforcement de la sécurité des accès et la fiabilisation des communications. Les utilisateurs bénéficient d'un système de gestion des mots de passe plus robuste et conforme aux recommandations de la CNIL, ainsi que d'un service d'envoi d'emails plus stable. En parallèle, l'architecture technique a été restructurée pour mieux isoler les données sensibles et optimiser les performances de l'infrastructure.
 
 ### Évolutions fonctionnelles
-- **Gestion des accès et sécurité** :
-    - Refonte complète du processus de réinitialisation et de mise à jour des mots de passe.
-    - Mise en place de validations de sécurité renforcées lors de la création ou du changement de mot de passe.
-    - Amélioration de la clarté des messages d'erreur lors de la tentative de connexion.
-- **Interface d'administration** :
-    - Ajout de nouveaux filtres et de colonnes de données (dates de création) pour faciliter la gestion des procédures et des profils.
-- **Notifications** :
-    - Amélioration de la lisibilité des sujets d'emails et des messages Slack pour une meilleure identification des contextes.
+- **Gestion des mots de passe** : Mise en place d'un cycle complet de sécurité incluant la validation des mots de passe (normes CNIL), la réinitialisation globale, et la gestion des mises à jour obligatoires pour les utilisateurs.
+- **Expérience d'authentification** : Amélioration des messages d'erreur lors de la connexion et de l'inscription pour plus de clarté, et meilleure gestion des cas de doublons d'emails.
+- **Communications** : Intégration de Sendgrid pour garantir la délivrabilité des emails et personnalisation des messages selon l'environnement utilisé.
 
 ### Évolutions techniques
-- **Sécurité et API** :
-    - Migration des vues API Django vers Django Rest Framework (DRF) pour une meilleure standardisation.
-    - Sécurisation des API par défaut (déclaration comme privées).
-    - Centralisation de la logique d'envoi d'emails dans le backend (Django) via l'intégration de Sendgrid.
-    - Optimisation de la gestion des sessions pour éviter les durées de connexion infinies.
-- **Architecture et Intégration** :
-    - Consolidation de l'architecture en remplaçant les endpoints Nuxt par l'utilisation systématique de l'API interne.
-    - Optimisation de l'intégration avec Supabase (gestion des clés de service et des tokens).
-- **Infrastructure et Performance** :
-    - Optimisation de la configuration Nginx pour améliorer les taux de transfert.
-    - Amélioration de l'efficacité des scripts de sauvegarde (réduction de la consommation de RAM et de disque).
-    - Mise à niveau des plans d'infrastructure (Scalingo) pour supporter les besoins de déploiement.
+- **Sécurité et protection des données** : 
+    - Renforcement des politiques de sécurité de la base de données via l'activation et la correction des permissions RLS (Row Level Security).
+    - Ajout d'un fichier `security.txt` pour faciliter le signalement de vulnérabilités.
+    - Isolation des API : Restructuration de l'architecture Django pour séparer strictement les API publiques des API internes et migration vers Django Rest Framework (DRF).
+- **Infrastructure et CI/CD** :
+    - Optimisation des environnements de test et de revue (mise à jour des configurations Supabase et Scalingo).
+    - Amélioration de la configuration Nginx pour augmenter les limites de débit (rate limiting).
+    - Mise à jour des actions GitHub pour une meilleure intégration de Supabase.
+- **Optimisation des performances** : Refonte du script de sauvegarde pour réduire la consommation de mémoire vive (RAM) et d'espace disque.
 
 ### Autres changements
-- **Nettoyage du code** : Suppression de composants frontend et de répertoires de tests obsolètes.
-- **CI/CD** : Mise à jour des outils de déploiement et de la CLI Supabase dans les workflows GitHub Actions.
+- **Outils de développement** : Ajout de commandes Makefile pour accélérer les tests et mise à jour des règles de formatage du code (Ruff).
+- **Maintenance** : Nettoyage de fonctions inutilisées et harmonisation des configurations de l'application.
