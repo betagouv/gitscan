@@ -1,25 +1,27 @@
-## Changelog : just-code (30 derniers jours, au 10 septembre 2026)
+## Changelog : just-code (30 derniers jours, au 16 septembre 2026)
 
 ### Résumé
-Le projet a considérablement évolué, passant d'une expérimentation initiale basée sur Docker à un environnement de test multi-runtimes plus flexible. Il permet désormais de choisir entre différents types d'environnements isolés (sandboxes), incluant l'ajout du support pour macOS, ce qui ouvre de nouvelles possibilités de tests pour les agents de code.
+Ce mois a marqué une étape majeure avec la transition de l'outil vers une version entièrement développée en Go, remplaçant les anciens scripts par un binaire unique et plus robuste. Le projet a considérablement élargi sa compatibilité en intégrant un support complet pour Windows et en ajoutant de nouveaux environnements d'exécution (macOS et Lima). La sécurité a également été renforcée par l'ajout de contrôles automatiques pour empêcher l'utilisation de secrets dans les espaces de travail.
 
 ### Évolutions fonctionnelles
-- **Multi-runtimes :** Possibilité de sélectionner explicitement le runtime de la sandbox à utiliser (Microsandbox, Tart, etc.) [#2](https://github.com/etalab-ia/just-code/pull/2).
-- **Support macOS :** Ajout du runtime macOS via Tart, permettant notamment des tests liés à Xcode [#4](https://github.com/etalab-ia/just-code/pull/4).
-- **Amélioration de l'expérience utilisateur :**
-    - Passage par défaut sur macOS Tahoe avec un système de nommage plus stable.
-    - Ajout de la possibilité de configurer la MTU pour assurer la compatibilité avec les connexions VPN.
+- **Support de Windows :** Compatibilité étendue via le runtime Microsandbox, incluant des correctifs pour la gestion des chemins et des processus sous Windows.
+- **Nouveaux environnements d'exécution :** 
+    - Ajout du runtime `agent-vm` basé sur Lima.
+    - Ajout du runtime macOS via Tart, permettant l'exécution d'environnements Xcode.
+- **Sécurité des données :** Le démarrage est désormais refusé si des secrets sont détectés dans l'espace de travail [#42](https://github.com/etalab-ia/just-code/issues/42).
+- **Amélioration de l'expérience CLI :** Ajout d'une commande `version` et alignement de l'interface sur la version TypeScript.
 
 ### Évolutions techniques
-- **Nouveaux environnements :** Intégration de Microsandbox comme alternative à Docker [#2](https://github.com/etalab-ia/just-code/pull/2).
-- **Stabilité du runtime Tart :**
-    - Correction de la gestion des mots de passe et des requêtes réseau (curl).
-    - Optimisation de la fiabilité du backend (gestion des sondes de santé, rafraîchissement du bootstrap et cycle de vie des VM).
-    - Résolution de problèmes de réseau et de partage restreint suite aux revues de code.
-- **Refactorisation :**
-    - Simplification du nommage des machines virtuelles Tart.
-    - Renommage de la commande de démarrage (la recette `up` devient `start`).
+- **Refonte logicielle (Portage Go) :** Migration complète de la logique de gestion des runtimes (Docker, Microsandbox, Tart) vers le langage Go, permettant la suppression des dépendances aux scripts shell et au `justfile`.
+- **Optimisation du déploiement :** Intégration directe des ressources de runtime à l'intérieur du binaire Go pour simplifier l'installation.
+- **Sécurité et Intégrité :**
+    - Mise en place de la vérification d'attestation pour garantir l'intégrité des composants [#40](https://github.com/etalab-ia/just-code/issues/40).
+    - Intégration d'un hook de pré-commit (Gitleaks) pour prévenir les fuites de secrets.
+- **Simplification de l'architecture :** Suppression progressive du runtime Docker au profit de solutions d'isolation plus modernes (Microsandbox, Tart, Lima).
+- **CI/CD et Release :** 
+    - Automatisation du versionnage et de la publication des binaires via `release-please`.
+    - Optimisation des workflows de build, notamment pour les artefacts macOS.
 
 ### Autres changements
-- **Identité du projet :** Renommage officiel du dépôt en `just-code`, ajout d'une licence MIT et mise à jour du README.
-- **Documentation :** Mise à jour des instructions d'installation pour le composant Tart.
+- **Documentation :** Refonte complète du README pour mieux accompagner l'utilisateur dans son parcours et ajout de guides de démarrage rapide pour Windows.
+- **Nettoyage :** Suppression des anciens workflows de CI et des commandes de build obsolètes.

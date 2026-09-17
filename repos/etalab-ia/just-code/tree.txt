@@ -1,13 +1,64 @@
 .
 ├── .env.example
+├── .gitattributes
+├── .github
+│   └── workflows
+│       ├── ci.yml
+│       ├── msb-runtime-watch.yml
+│       └── release-please.yml
 ├── .gitignore
-├── Dockerfile
+├── .pre-commit-config.yaml
+├── .release-please-manifest.json
+├── CHANGELOG.md
 ├── LICENSE
 ├── README.md
-├── docker-compose.yml
-├── justfile
-├── microsandbox.yaml
-├── tart-bootstrap.sh
-└── tests
-    └── test_tart_mtu.py
-2 directories, 10 files
+├── assets
+│   ├── assets.go
+│   ├── assets_test.go
+│   ├── opencode-config.json
+│   └── start-script.sh
+├── cmd
+│   └── just-code
+│       ├── main.go
+│       ├── main_test.go
+│       └── version.go
+├── docs
+│   └── development.md
+├── go.mod
+├── go.sum
+├── internal
+│   └── justcode
+│       ├── agentvm.go
+│       ├── agentvm_test.go
+│       ├── config.go
+│       ├── config_test.go
+│       ├── detach_unix.go
+│       ├── detach_windows.go
+│       ├── dispatcher.go
+│       ├── dispatcher_test.go
+│       ├── exec.go
+│       ├── exec_test.go
+│       ├── guest.go
+│       ├── guest_test.go
+│       ├── health.go
+│       ├── health_test.go
+│       ├── legacy_docker.go
+│       ├── legacy_docker_test.go
+│       ├── microsandbox.go
+│       ├── microsandbox_sdk.go
+│       ├── microsandbox_test.go
+│       ├── msb_runtime_install.go
+│       ├── msb_runtime_install_test.go
+│       ├── mtu.go
+│       ├── mtu_test.go
+│       ├── name.go
+│       ├── name_test.go
+│       ├── paths.go
+│       ├── runtime.go
+│       ├── runtime_test.go
+│       ├── tart.go
+│       ├── tart_test.go
+│       ├── workspace.go
+│       └── workspace_test.go
+└── release-please-config.json
+9 directories, 54 files

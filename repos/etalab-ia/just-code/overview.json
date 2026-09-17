@@ -1,53 +1,43 @@
 {
   "url": "https://github.com/etalab-ia/just-code",
   "name": "just-code",
-  "description": "Bac à sable de R&D pour évaluer l'exécution distante d'agents de code via l'API Albert. Ce projet permet de tester l'isolation et l'expérience utilisateur avec différents runtimes comme Docker, Microsandbox ou Tart.",
-  "language": "Just",
+  "description": "Bac à sable de R&D pour évaluer l'exécution distante d'agents de code avec l'API Albert. Il permet d'isoler l'exécution dans des microVMs ou des VM macOS pour tester l'UX et les limites d'isolation.",
+  "language": "Go",
   "features": [
     "Intelligence Artificielle & NLP",
     "Infrastructure & Stockage",
-    "Sécurité & Conformité",
-    "API & Intégrations"
+    "Sécurité & Conformité"
   ],
   "audience": "Développeurs",
   "dependencies": [
-    "Docker",
+    "Albert API",
     "Microsandbox",
     "Tart",
-    "Albert API",
-    "just",
+    "Lima",
     "OpenCode CLI"
   ],
   "components": [
-    "Docker & Conteneurs",
-    "Scripts & Utilitaires",
     "Intelligence Artificielle / ML",
-    "Tests"
+    "Scripts & Utilitaires",
+    "API REST & GraphQL"
   ],
   "auth": {
     "methods": [
-      "api-key"
-    ],
-    "providers": [
-      "Albert API"
+      "api-key",
+      "session"
     ]
   },
-  "tests": [
-    "Pytest"
+  "tests": "Go test suite",
+  "workflows": [
+    "ci.yml"
   ],
-  "lastActivity": "2026-09-10T17:49:31+02:00",
+  "lastActivity": "2026-09-16T17:41:17+02:00",
   "status": "experimental",
   "license": "MIT",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": 0,
-    "forks": 0,
-    "openIssues": 5
-  },
   "tags": [
     "Intelligence Artificielle & LLM",
-    "Docker & Conteneurs",
     "Git & DevOps",
-    "Python"
+    "Docker & Conteneurs"
   ]
 }
