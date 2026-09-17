@@ -1,27 +1,37 @@
-## Changelog : plateforme-accueil (30 derniers jours, au 10 août 2026)
+## Changelog : plateforme-accueil (30 derniers jours, au 16 septembre 2026)
 
 ### Résumé
-Le projet a franchi une étape majeure avec la refonte complète de la page d'accueil et la transition vers une architecture Django robuste. L'accent a été mis sur une intégration fluide et sécurisée via iframe, ainsi que sur la mise en place d'une infrastructure de déploiement automatisée pour garantir la stabilité de la plateforme.
+Ce mois a été marqué par une refonte majeure de l'interface d'édition (back-office) pour offrir une gestion de contenu plus intuitive et simplifiée. Parallèlement, l'expérience utilisateur a été affinée grâce à de nouveaux contenus visuels et une terminologie plus adaptée, tandis que la sécurité et les performances de l'application intégrée ont été renforcées.
 
 ### Évolutions fonctionnelles
-- **Refonte de la page d'accueil** : Mise en place de la nouvelle maquette visuelle pour la landing page. [#3](https://github.com/gip-inclusion/plateforme-accueil/pull/3)
-- **Aperçu intégré** : Ajout d'un exemple de rendu de la maquette directement sur la page d'accueil pour faciliter la visualisation.
+- **Nouvelles sections de contenu** : Ajout de sections pour l'introduction, les accompagnateurs, une frise chronologique et un menu déroulant thématique.
+- **Refonte de l'interface d'édition (Back-office)** :
+    - Mise en place d'une interface d'édition dédiée, plus ergonomique que l'administration Django standard.
+    - Possibilité d'éditer directement les en-têtes de section et d'utiliser des listes répétables avec téléchargement d'illustrations [#18].
+    - Amélioration du flux de travail : sélection d'icônes avec redirection automatique après duplication [#29] et rafraîchissement immédiat de la page après sauvegarde.
+- **Améliorations de l'expérience utilisateur (UX) et du design** :
+    - Mise à jour visuelle du "Hero" avec des visuels haute résolution et un nouveau montage photographique.
+    - Unification du formulaire de recherche dans la zone "Hero" [#26].
+    - Optimisation des textes : passage du terme "candidat" à "usager" [#43], reformulation des libellés des chiffres clés et des en-têtes Emplois/Services, et suppression des tirets cadratins dans les témoignages.
+    - Ajustements graphiques : retrait des chiffres de la frise de parcours [#41] et amélioration de l'espacement des éléments.
+- **Corrections mineures** : Ajout d'un lien vers le bouton de changement de mot de passe [#36] et ajustement de l'affichage de la boîte de dialogue de sélection de ville.
 
 ### Évolutions techniques
-- **Architecture & Framework** : 
-    - Migration d'un bundle HTML unique vers une structure Django complète (templates, fichiers statiques et gestion des assets).
-    - Extraction d'un template de base pour uniformiser le rendu de toutes les pages.
-- **Optimisation de l'intégration (Iframe)** :
-    - Amélioration du système de redimensionnement automatique pour assurer un affichage fluide du contenu sans décalage de la vue.
-    - Intégration d'un script côté hôte pour faciliter l'inclusion de la plateforme.
-    - Optimisation de la gestion des icônes (SVG inline) pour garantir leur affichage dans des environnements d'iframe sécurisés (sandboxed).
-- **Sécurité & Analytics** :
-    - Mise en place d'une politique de sécurité (CSP) adaptée à l'intégration en iframe, configurable via variable d'environnement.
-    - Intégration du gestionnaire de balises Matomo pour le suivi de l'audience.
-- **Infrastructure & DevOps** :
-    - Mise en place de la conteneurisation avec Docker et automatisation des tâches via un Makefile.
-    - Configuration des workflows de CI/CD (GitHub Actions) pour les tests et le déploiement.
+- **Sécurité renforcée** :
+    - Durcissement de la politique CSP (`frame-ancestors`) en listant explicitement les hôtes autorisés.
+    - Ajout de headers CORS pour les ressources requises [#23].
+    - Sécurisation de l'iframe via un bac à sable (sandbox) permettant l'utilisation de formulaires [#25].
+    - Interdiction stricte de l'encapsulation (framing) de l'interface d'administration.
+- **Authentification** : Intégration complète du SSO via Authentik [#24] et sécurisation de l'accès à l'interface d'édition via ce système.
+- **Analyses et suivi** :
+    - Amélioration de la remontée des événements d'analyse vers la page hôte pour un suivi plus précis.
+    - Alignement de l'identité et du consentement Matomo sur ceux de la page hôte [#31].
+    - Mise en place de mesures d'utilisation par section via le Tag Manager [#20].
+- **Performance et Architecture** :
+    - Mise en place d'un système de cache sur la page d'accueil pour accélérer le chargement.
+    - Modernisation du chargement des scripts via l'utilisation des modules ES.
+    - Refonte de la structure des données : les sections (frise, témoignages, parcours) sont désormais gérées comme des données structurées pour plus de flexibilité.
+    - Optimisation du déploiement : automatisation des migrations et séparation des dépendances de développement du processus de production.
 
 ### Autres changements
-- **Documentation** : Initialisation de la documentation du projet (README, CLAUDE.md).
-- **Standardisation** : Passage des commentaires de code en anglais et nettoyage des fichiers de notes locaux.
+- **Documentation** : Mise à jour de la documentation concernant la configuration des hôtes autorisés [#30], le contenu des sections et l'utilisation des scripts de suivi.

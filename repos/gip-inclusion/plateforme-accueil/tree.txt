@@ -13,49 +13,141 @@
 ├── README.md
 ├── accueil
 │   ├── __init__.py
+│   ├── admin.py
+│   ├── cities.py
+│   ├── content.py
+│   ├── editing.py
+│   ├── forms.py
+│   ├── key_figures.py
+│   ├── lists.py
+│   ├── management
+│   │   ├── __init__.py
+│   │   └── commands
+│   │       ├── __init__.py
+│   │       └── sync_sections.py
+│   ├── middleware.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── platform_urls.py
+│   ├── previews.py
+│   ├── sections
+│   │   ├── __init__.py
+│   │   ├── advisors.py
+│   │   ├── base.py
+│   │   ├── features.py
+│   │   ├── figures.py
+│   │   ├── hero.py
+│   │   ├── jobs.py
+│   │   ├── profiles.py
+│   │   ├── search.py
+│   │   ├── services.py
+│   │   └── testimonials.py
 │   ├── static
-│   │   └── accueil
-│   │       ├── css
-│   │       │   └── main.css
-│   │       ├── fonts
-│   │       │   ├── Marianne-Bold.woff2
-│   │       │   ├── Marianne-Medium.woff2
-│   │       │   └── Marianne-Regular.woff2
-│   │       ├── img
-│   │       │   ├── ASSETS.md
-│   │       │   ├── emploi-batiment.jpg
-│   │       │   ├── emploi-restauration.jpg
-│   │       │   ├── hero.webp
-│   │       │   ├── service-mobilite.jpg
-│   │       │   ├── service-numerique.jpg
-│   │       │   ├── stat-emploi.webp
-│   │       │   ├── stat-insertion.webp
-│   │       │   ├── stat-prescripteurs.webp
-│   │       │   └── temoignages-illustration.webp
-│   │       └── js
-│   │           ├── hero.js
-│   │           ├── iframe-embed.js
-│   │           ├── matomo.js
-│   │           ├── profils.js
-│   │           ├── resize-reporter.js
-│   │           ├── select-theme.js
-│   │           └── villes.js
+│   │   ├── accueil
+│   │   │   ├── css
+│   │   │   │   └── main.css
+│   │   │   ├── fonts
+│   │   │   │   ├── Marianne-Bold.woff2
+│   │   │   │   ├── Marianne-Medium.woff2
+│   │   │   │   └── Marianne-Regular.woff2
+│   │   │   ├── img
+│   │   │   │   ├── ASSETS.md
+│   │   │   │   ├── emploi-batiment.jpg
+│   │   │   │   ├── emploi-restauration.jpg
+│   │   │   │   ├── hero.webp
+│   │   │   │   ├── service-mobilite.jpg
+│   │   │   │   ├── service-numerique.jpg
+│   │   │   │   ├── stat-emploi.webp
+│   │   │   │   ├── stat-insertion.webp
+│   │   │   │   ├── stat-prescripteurs.webp
+│   │   │   │   └── temoignages-illustration.webp
+│   │   │   └── js
+│   │   │       ├── analytics.js
+│   │   │       ├── cities.js
+│   │   │       ├── profiles.js
+│   │   │       ├── resize-reporter.js
+│   │   │       └── select-theme.js
+│   │   ├── edition
+│   │   │   └── edition.css
+│   │   └── vendor
+│   │       └── theme-inclusion
+│   │           ├── PROVENANCE.md
+│   │           ├── fonts
+│   │           │   └── marianne
+│   │           │       ├── Marianne-Bold.woff2
+│   │           │       ├── Marianne-Bold_Italic.woff2
+│   │           │       ├── Marianne-ExtraBold.woff2
+│   │           │       ├── Marianne-Light.woff2
+│   │           │       ├── Marianne-Light_Italic.woff2
+│   │           │       ├── Marianne-Medium.woff2
+│   │           │       ├── Marianne-Medium_Italic.woff2
+│   │           │       ├── Marianne-Regular.woff2
+│   │           │       └── Marianne-Regular_Italic.woff2
+│   │           └── stylesheets
+│   │               └── app.css
 │   ├── templates
-│   │   └── accueil
+│   │   ├── accueil
+│   │   │   ├── base.html
+│   │   │   ├── icones.svg
+│   │   │   ├── index.html
+│   │   │   ├── modale-ville.html
+│   │   │   └── sections
+│   │   │       ├── _search-cards.html
+│   │   │       ├── _search-shortcuts.html
+│   │   │       ├── advisors.html
+│   │   │       ├── features.html
+│   │   │       ├── figures.html
+│   │   │       ├── hero.html
+│   │   │       ├── profiles.html
+│   │   │       ├── search_block.html
+│   │   │       └── testimonials.html
+│   │   └── edition
+│   │       ├── _champ.html
+│   │       ├── _items.html
 │   │       ├── base.html
-│   │       ├── icones.svg
-│   │       └── index.html
+│   │       ├── item.html
+│   │       ├── password.html
+│   │       ├── plan.html
+│   │       ├── section.html
+│   │       └── widgets
+│   │           ├── icon.html
+│   │           ├── icon_option.html
+│   │           └── illustration.html
+│   ├── templatetags
+│   │   ├── __init__.py
+│   │   ├── illustrations.py
+│   │   └── platform.py
+│   ├── uploads.py
 │   └── views.py
 ├── config
 │   ├── __init__.py
 │   ├── settings.py
 │   ├── urls.py
+│   ├── urls_edition.py
 │   └── wsgi.py
+├── docker-compose.yml
+├── docs
+│   └── embed-test
+│       ├── host.css
+│       ├── host.js
+│       ├── index.html
+│       └── sans-script.html
 ├── manage.py
 ├── pyproject.toml
 ├── tests
 │   ├── __init__.py
 │   ├── conftest.py
-│   └── test_rendering.py
+│   ├── test_auth.py
+│   ├── test_cms.py
+│   ├── test_editing.py
+│   ├── test_icons.py
+│   ├── test_illustrations.py
+│   ├── test_platform_origin.py
+│   ├── test_rendering.py
+│   ├── test_repeater.py
+│   ├── test_sections.py
+│   └── test_uploads.py
 └── uv.lock
-14 directories, 46 files
+30 directories, 122 files
