@@ -56,12 +56,12 @@
 ├── TODO.md
 ├── biome.jsonc
 ├── config
-│   ├── accounts.exemple.yaml
-│   ├── accounts.schema.json
 │   ├── config.exemple.yaml
 │   └── config.schema.json
 ├── docker-compose.yml
 ├── docs
+│   ├── adr
+│   │   └── 0001-configuration-a-trois-niveaux.md
 │   ├── architecture.md
 │   ├── co-incubation-em-1498.md
 │   ├── deploiement.md
@@ -151,6 +151,10 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260914191616_derogations_levables
 │   │   │   └── migration.sql
+│   │   ├── 20260916101030_configuration_reglee_depuis_l_outil
+│   │   │   └── migration.sql
+│   │   ├── 20260916140111_compte_de_service_porte_son_systeme
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   └── schema.prisma
 ├── prisma.config.ts
@@ -172,6 +176,7 @@
 │   │   │   └── redaction.ts
 │   │   ├── comptes-de-service
 │   │   │   ├── BoutonRevue.tsx
+│   │   │   ├── Declarer.tsx
 │   │   │   ├── actions.ts
 │   │   │   └── page.tsx
 │   │   ├── comptes-isoles
@@ -179,6 +184,11 @@
 │   │   │   ├── Rattacher.tsx
 │   │   │   ├── actions.ts
 │   │   │   ├── creer.ts
+│   │   │   ├── declaration-machine.integration.test.ts
+│   │   │   └── page.tsx
+│   │   ├── configuration
+│   │   │   ├── Reglage.tsx
+│   │   │   ├── actions.ts
 │   │   │   └── page.tsx
 │   │   ├── constats
 │   │   │   ├── ClotureConstat.tsx
@@ -312,17 +322,24 @@
 │   │   ├── notion-scim.fixture.json
 │   │   ├── notion.contrat.test.ts
 │   │   ├── notion.test.ts
-│   │   └── notion.ts
+│   │   ├── notion.ts
+│   │   ├── scalingo.contrat.test.ts
+│   │   ├── scalingo.test.ts
+│   │   └── scalingo.ts
 │   ├── core
 │   │   ├── appartenance.test.ts
 │   │   ├── appartenance.ts
 │   │   ├── audit.ts
 │   │   ├── collecte.test.ts
 │   │   ├── collecte.ts
+│   │   ├── compte-de-service.test.ts
+│   │   ├── compte-de-service.ts
 │   │   ├── comptes-isoles.test.ts
 │   │   ├── comptes-isoles.ts
 │   │   ├── configuration-connecteur.test.ts
 │   │   ├── configuration-connecteur.ts
+│   │   ├── configuration.test.ts
+│   │   ├── configuration.ts
 │   │   ├── connector.test.ts
 │   │   ├── connector.ts
 │   │   ├── constat-arrivee.test.ts
@@ -389,6 +406,7 @@
 │   │   ├── comptes-isoles.ts
 │   │   ├── configuration-connecteur.test.ts
 │   │   ├── configuration-connecteur.ts
+│   │   ├── configuration.integration.test.ts
 │   │   ├── connexion.test.ts
 │   │   ├── connexion.ts
 │   │   ├── db.ts
@@ -401,6 +419,7 @@
 │   │   ├── execution.ts
 │   │   ├── fournisseurs.test.ts
 │   │   ├── fournisseurs.ts
+│   │   ├── gel-des-tolerances.integration.test.ts
 │   │   ├── inventaire.ts
 │   │   ├── modele-plan-edition.test.ts
 │   │   ├── modele-plan-edition.ts
@@ -411,6 +430,7 @@
 │   │   ├── rappels-connexion.ts
 │   │   ├── session.test.ts
 │   │   ├── session.ts
+│   │   ├── surcharges.ts
 │   │   └── sync
 │   │       ├── collecte.integration.test.ts
 │   │       ├── collecte.test.ts
@@ -454,6 +474,8 @@
 │       │   ├── registre.ts
 │       │   ├── rendre-tuile.test.ts
 │       │   ├── rendre-tuile.ts
+│       │   ├── scalingo
+│       │   │   └── tuiles.tsx
 │       │   ├── scope-attendu.test.ts
 │       │   └── scope-attendu.ts
 │       ├── dates.ts
@@ -467,9 +489,10 @@
 │       ├── modale.ts
 │       ├── profils.ts
 │       ├── severites.ts
+│       ├── tolerance.ts
 │       └── validation.ts
 ├── tsconfig.json
 ├── vitest.config.ts
 ├── vitest.setup.integration.ts
 └── vitest.setup.unite.ts
-88 directories, 386 files
+93 directories, 404 files
