@@ -15,7 +15,6 @@
     "format": "prettier --write .",
     "pretest": "npm-run-all --parallel typecheck lint",
     "test": "vitest run",
-    "test:ci": "vitest run",
     "typecheck": "tsc --noEmit && svelte-check --fail-on-warnings",
     "watch": "npm-run-all --parallel dev",
     "watch:serveur": "vite build --ssr --config vite.config.ssr.ts --watch"
@@ -34,7 +33,7 @@
     "svelte": "catalog:",
     "svelte-check": "^4.4.5",
     "vite": "^8.2.1",
-    "vitest": "^4.1.7",
+    "vitest": "catalog:",
     "vitest-localstorage-mock": "^0.1.2"
   },
   "dependencies": {

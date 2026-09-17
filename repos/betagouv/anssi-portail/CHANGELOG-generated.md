@@ -1,35 +1,39 @@
-## Changelog : anssi-portail (30 derniers jours, au 11 septembre 2026)
+## Changelog : anssi-portail (30 derniers jours, au 16 septembre 2026)
 
 ### Résumé
-Ce mois a été marqué par une transformation majeure du portail. Nous avons lancé de nouveaux outils interactifs, notamment le test d'exposition et des mini-tests (type "Vrai ou Faux"), permettant aux utilisateurs d'évaluer leur niveau de cybersécurité de manière ludique. Parallèlement, l'ensemble du site a bénéficié d'une refonte visuelle complète et d'une modernisation technologique profonde pour offrir une expérience plus fluide et performante.
+Ce mois-ci, le portail a connu une évolution majeure avec le déploiement de nouveaux outils interactifs, notamment les mini-tests (Réflexes Cyber, Vrai/Faux) et une refonte du test d'Exposition. L'expérience utilisateur a été enrichie par des animations et un meilleur suivi de progression. En parallèle, une modernisation profonde de l'infrastructure technique a été opérée, incluant une migration vers Svelte 5 et un renforcement des mesures de sécurité.
 
 ### Évolutions fonctionnelles
-- **Nouveau test d'exposition** : Mise en ligne d'une page dédiée comprenant un radar d'exposition animé, des badges de progression et la possibilité pour les utilisateurs de laisser des réactions et des avis.
-- **Nouveaux mini-tests** : Introduction de tests rapides (notamment le format "Vrai ou Faux") avec affichage du score final, animations de célébration (confettis) et suivi des statistiques de réalisation.
-- **Amélioration du parcours de sécurisation** : 
-    - Ajout de modales de félicitations lors de la complétion de modules ou du parcours complet.
-    - Intégration de tutoriels et de nouveaux éléments visuels (pictogrammes, illustrations animées).
-    - Meilleure gestion de la progression avec l'attribution de badges.
-- **Refonte visuelle (Design System)** : Application d'une nouvelle charte graphique sur l'ensemble du portail (nouveaux motifs de fond, nouveaux composants "Héros", et mise à jour de l'interface utilisateur).
-- **Navigation et contenu** : 
-    - Amélioration du fil d'Ariane pour une meilleure orientation.
+- **Mini-tests et simulations** : 
+    - Lancement et amélioration des mini-tests (Réflexes Cyber, Vrai/Faux) avec gestion des scores, des scénarios de simulation et des rôles.
+    - Ajout de fonctionnalités de feedback permettant aux utilisateurs de laisser des réactions et des avis.
+    - Intégration d'animations (confettis, transitions) pour rendre les parcours plus engageants.
+- **Test d'Exposition** : 
+    - Création d'une nouvelle interface dédiée incluant des cartes interactives, des radars animés et des badges de statistiques.
+    - Mise en place de la collecte des retours utilisateurs et des réponses au questionnaire.
+- **Parcours de sécurisation** : 
+    - Amélioration de la navigation avec des fils d'Ariane plus complets et une meilleure gestion du mobile.
+    - Ajout d'animations de progression et de modales de félicitations lors de la complétion des modules.
+- **Outils et contenus** : 
+    - Ajout d'un comparateur de financements pour aider les organisations dans leurs démarches.
     - Mise à jour des contenus relatifs à la directive NIS2 et aux guides de bonnes pratiques.
-    - Optimisation de l'affichage sur mobile pour les parcours et les tests.
 
 ### Évolutions techniques
-- **Migration vers Svelte 5** : Refonte massive de l'architecture front-end avec la migration de la quasi-totalité des composants vers Svelte 5 et l'activation du mode "runes".
-- **Refonte de l'API et du suivi** : 
-    - Création de nouvelles routes API pour la gestion des tests, des réponses et des réactions utilisateurs.
-    - Mise en place d'un système de suivi des événements (via Brévo) pour analyser les parcours et les complétions de modules.
-- **Optimisation et nettoyage** : 
-    - Nettoyage approfondi du code : suppression de nombreux composants, styles CSS, images et dépendances inutilisés.
-    - Amélioration de la gestion des erreurs et de la robustesse des middlewares.
-    - Optimisation des performances de rendu et de la gestion des animations.
-- **Infrastructure et CI/CD** : Mise à jour des outils de build (pnpm, Vite) et amélioration des processus de vérification de la qualité du code.
+- **Modernisation du framework** : Migration massive de l'ensemble des composants vers **Svelte 5** (utilisation des "runes") pour améliorer la réactivité et la maintenance.
+- **Tests et Qualité** : 
+    - Migration complète du moteur de tests vers **Vitest**.
+    - Amélioration de la couverture de tests (backend et frontend) et optimisation de la gestion des mocks.
+- **Sécurité** : 
+    - Renforcement de la protection contre les attaques par force brute via l'ajout de *rate limiting* sur les routes de connexion.
+    - Amélioration de la gestion du MFA (Multi-Factor Authentication) et du contrôle d'identité.
+- **Infrastructure et DevOps** : 
+    - Optimisation du processus de déploiement (gestion de pnpm et intégration avec CleverCloud).
+    - Mise à jour des workflows CI/CD (Nix, Ruby, Playwright).
+    - Amélioration de l'expérience de développement (support du développement en LAN).
+- **Optimisation du code** : 
+    - Nettoyage important du projet : suppression de nombreux composants, styles CSS, images et dépendances inutilisés.
+    - Refactorisation de l'architecture des composants pour favoriser la réutilisation.
 
 ### Autres changements
-- **SEO et visibilité** : 
-    - Optimisation des URLs (suppression des extensions `.html`).
-    - Mise à jour du sitemap et ajout de dates de modification pour améliorer le référencement.
-    - Harmonisation des balises méta pour le partage social.
-- **Documentation** : Ajout du fichier `llms.txt` pour les outils d'IA.
+- **SEO et visibilité** : Optimisation du référencement naturel via la simplification des URLs (suppression des extensions `.html`) et la mise à jour du sitemap.
+- **Documentation** : Mise à jour des fichiers de configuration et ajout de la page `llms.txt`.

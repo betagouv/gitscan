@@ -51,6 +51,7 @@
 │       ├── deploiement-node.yml
 │       ├── deploiement-wc-demande-diag.yml
 │       ├── deploiement.yml
+│       ├── grist-deploiement-financements.yml
 │       ├── grist-deploiement-guides.yml
 │       ├── grist-deploiement.yml
 │       ├── integration-continue.yml
@@ -82,7 +83,8 @@
 │   ├── tests
 │   │   └── index.spec.ts
 │   ├── tsconfig.build.json
-│   └── tsconfig.json
+│   ├── tsconfig.json
+│   └── vitest.config.ts
 ├── back
 │   ├── AGENTS.md
 │   ├── CLAUDE.md -> AGENTS.md
@@ -138,6 +140,7 @@
 │   │   ├── 20260903082507_corrigeContenuMesures.ts
 │   │   ├── 20260910125401_ajouteFicheGestionIdentitesAuxMesures.ts
 │   │   ├── 20260910130640_nettoieLibellesLiensMesures.ts
+│   │   ├── 20260915125321_ajouteDonneeReactionExpositionReflexesCyber.ts
 │   │   └── README.md
 │   ├── package.json
 │   ├── src
@@ -198,6 +201,9 @@
 │   │   │   │   ├── exposition
 │   │   │   │   │   ├── ressourceTestsExposition.schema.ts
 │   │   │   │   │   └── ressourceTestsExposition.ts
+│   │   │   │   ├── reflexes-cyber
+│   │   │   │   │   ├── ressourceReponsesReflexesCyber.schema.ts
+│   │   │   │   │   └── ressourceReponsesReflexesCyber.ts
 │   │   │   │   ├── ressourceInfoMiniTests.ts
 │   │   │   │   ├── ressourceReactionMiniTest.schema.ts
 │   │   │   │   ├── ressourceReactionMiniTest.ts
@@ -218,6 +224,7 @@
 │   │   │   │   ├── ressourceSimulateurNis2.ts
 │   │   │   │   └── strategieExportCsvUneLigneParExigence.ts
 │   │   │   ├── oidc
+│   │   │   │   ├── acr.ts
 │   │   │   │   ├── adaptateurOIDC.ts
 │   │   │   │   ├── ressourceApresAuthentificationOIDC.ts
 │   │   │   │   ├── ressourceApresDeconnexionOIDC.ts
@@ -294,6 +301,8 @@
 │   │   │   ├── consigneParcoursRejointDansJournal.ts
 │   │   │   ├── consigneQuestionnaireVraiFauxReponseSoumiseDansJournal.ts
 │   │   │   ├── consigneQuestionnaireVraiFauxTermineDansJournal.ts
+│   │   │   ├── consigneReflexesCyberReponseSoumiseDansJournal.ts
+│   │   │   ├── consigneReflexesCyberReponseTermineDansJournal.ts
 │   │   │   ├── consigneRetourMiniTestDonneDansJournal.ts
 │   │   │   ├── creeContactBrevo.ts
 │   │   │   ├── envoieEmailCreationCompte.ts
@@ -316,6 +325,8 @@
 │   │   │   │   ├── retourExperienceDonne.ts
 │   │   │   │   ├── retourMiniTestDonne.ts
 │   │   │   │   ├── simulationNis2Terminee.ts
+│   │   │   │   ├── simulationReflexesCyberReponseSoumise.ts
+│   │   │   │   ├── simulationReflexesCyberTermine.ts
 │   │   │   │   ├── testRealise.ts
 │   │   │   │   └── utilisateurConnecte.ts
 │   │   │   ├── miseAJourFavorisUtilisateur.ts
@@ -414,6 +425,8 @@
 │   │   │   │   │   └── exposition.ts
 │   │   │   │   ├── mini-test.ts
 │   │   │   │   ├── reactionMiniTest.ts
+│   │   │   │   ├── reflexes-cyber
+│   │   │   │   │   └── reflexesCyber.ts
 │   │   │   │   └── vrai-faux
 │   │   │   │       ├── entrepotQuestionVraieFausse.ts
 │   │   │   │       ├── questionVraieFausse.ts
@@ -524,6 +537,8 @@
 │   │   │   ├── mini-tests
 │   │   │   │   ├── exposition
 │   │   │   │   │   └── ressourceTestsExposition.spec.ts
+│   │   │   │   ├── reflexes-cyber
+│   │   │   │   │   └── ressourceReponsesReflexesCyber.spec.ts
 │   │   │   │   ├── ressourceInfoMiniTests.spec.ts
 │   │   │   │   ├── ressourceReactionMiniTest.spec.ts
 │   │   │   │   ├── ressourceRetourMiniTest.spec.ts
@@ -602,6 +617,8 @@
 │   │   │   ├── consigneParcoursRejointDansJournal.spec.ts
 │   │   │   ├── consigneQuestionnaireVraiFauxReponseSoumiseDansJournal.spec.ts
 │   │   │   ├── consigneQuestionnaireVraiFauxTermineDansJournal.spec.ts
+│   │   │   ├── consigneReflexesCyberReponseSoumiseDansJournal.spec.ts
+│   │   │   ├── consigneReflexesCyberTermineDansJournal.spec.ts
 │   │   │   ├── consigneRetourMiniTestDonneDansJournal.spec.ts
 │   │   │   ├── creeContactBrevo.spec.ts
 │   │   │   ├── envoieEmailCreationCompte.spec.ts
@@ -623,7 +640,6 @@
 │   │   │   ├── entrepotGuideGrist.spec.ts
 │   │   │   ├── entrepotGuideTravailGrist.spec.ts
 │   │   │   ├── fournisseurClientHttp.ts
-│   │   │   ├── fournisseurHorlogeDeTest.ts
 │   │   │   ├── generateurDocument.spec.ts
 │   │   │   ├── markdown.spec.ts
 │   │   │   ├── nis2
@@ -684,7 +700,8 @@
 │   │       ├── factice.html
 │   │       ├── factice.typ
 │   │       └── snapshot-attestation-cyberdepart.pdf
-│   └── tsconfig.json
+│   ├── tsconfig.json
+│   └── vitest.config.ts
 ├── comparaison-grist
 │   ├── .env.template
 │   ├── AGENTS.md
@@ -692,14 +709,22 @@
 │   ├── eslint.config.mjs
 │   ├── package.json
 │   ├── src
+│   │   ├── financements.ts
 │   │   ├── guides.ts
 │   │   ├── infrastructure
 │   │   │   ├── adaptateurEnvironnement.ts
+│   │   │   ├── financements
+│   │   │   │   ├── consignateurDeComparaisonDeFinancements.ts
+│   │   │   │   └── entrepotFinancementGrist.ts
 │   │   │   └── guides
 │   │   │       ├── consignateurDeComparaisonDeGuides.ts
 │   │   │       └── entrepotGuideGrist.ts
 │   │   └── metier
 │   │       ├── clientHttp.ts
+│   │       ├── financements
+│   │       │   ├── comparateurDeFinancements.ts
+│   │       │   ├── entrepotFinancement.ts
+│   │       │   └── financement.type.ts
 │   │       └── guides
 │   │           ├── comparateurDeGuides.ts
 │   │           ├── entrepotGuide.ts
@@ -745,6 +770,7 @@
 │       └── rotation-cle-chiffrement.md
 ├── eslint.config.base.mjs
 ├── front
+│   ├── 403.html
 │   ├── 404.html
 │   ├── AGENTS.md
 │   ├── CLAUDE.md -> AGENTS.md
@@ -1085,6 +1111,17 @@
 │   │   │   ├── mini-tests
 │   │   │   │   ├── animation
 │   │   │   │   │   └── scene-hero-mini-test.avif
+│   │   │   │   ├── reflexe-cyber
+│   │   │   │   │   ├── evenement-1.avif
+│   │   │   │   │   ├── illustration-reflexe-cyber-animee.svg
+│   │   │   │   │   ├── role-communication.avif
+│   │   │   │   │   ├── role-direction.avif
+│   │   │   │   │   ├── role-juridique.avif
+│   │   │   │   │   ├── role-relations.avif
+│   │   │   │   │   ├── role-rh.avif
+│   │   │   │   │   ├── role-si.avif
+│   │   │   │   │   ├── scenario-collectivite.avif
+│   │   │   │   │   └── scenario-entreprise.avif
 │   │   │   │   └── vrai-faux
 │   │   │   │       ├── boucle.svg
 │   │   │   │       ├── curseur.svg
@@ -1154,6 +1191,7 @@
 │   │   │   │   └── icone_succes.svg
 │   │   │   └── trois-mains-croisees.svg
 │   │   └── styles
+│   │       ├── 403.scss
 │   │       ├── 404.scss
 │   │       ├── accueil.scss
 │   │       ├── catalogue.scss
@@ -1345,7 +1383,7 @@
 │   │   │   │   └── animation
 │   │   │   │       ├── CompositionBizDev.svelte
 │   │   │   │       └── IllustrationCompositionBizDev.svelte
-│   │   │   ├── main-*.ts  (53 files)
+│   │   │   ├── main-*.ts  (55 files)
 │   │   │   ├── maintenance
 │   │   │   │   └── BandeauMaintenance.svelte
 │   │   │   ├── mini-tests
@@ -1363,6 +1401,21 @@
 │   │   │   │   │   ├── FormulaireExposition.svelte
 │   │   │   │   │   ├── RadarExpositionAnime.svelte
 │   │   │   │   │   └── expositionCyberattaques.ts
+│   │   │   │   ├── reflexe-cyber
+│   │   │   │   │   ├── IllustrationHerosReflexeCyber.svelte
+│   │   │   │   │   ├── LandingReflexeCyber.svelte
+│   │   │   │   │   └── moteur-de-jeu
+│   │   │   │   │       ├── ChoixRole.svelte
+│   │   │   │   │       ├── ChoixScenario.svelte
+│   │   │   │   │       ├── MiseEnSituation.svelte
+│   │   │   │   │       ├── ParcoursReflexeCyber.svelte
+│   │   │   │   │       ├── roles.ts
+│   │   │   │   │       ├── scenarios.ts
+│   │   │   │   │       └── simulation
+│   │   │   │   │           ├── Evenement.svelte
+│   │   │   │   │           ├── Simulation.svelte
+│   │   │   │   │           ├── evenements.ts
+│   │   │   │   │           └── reflexes.ts
 │   │   │   │   └── vrai-faux
 │   │   │   │       ├── IllustrationHerosVraiFaux.svelte
 │   │   │   │       ├── LandingVraiFaux.svelte
@@ -1732,6 +1785,8 @@
 │   ├── maintenance.html
 │   ├── mentions-legales.html
 │   ├── mesure.html
+│   ├── mini-test-reflexe-cyber-parcours.html
+│   ├── mini-test-reflexe-cyber.html
 │   ├── mini-test-vrai-faux-quiz.html
 │   ├── mini-test-vrai-faux.html
 │   ├── mini-tests.html
@@ -1797,7 +1852,8 @@
 │   │   │   └── fauxAdaptateurEnvironnement.ts
 │   │   └── metier
 │   │       └── comparateurFinancement.spec.ts
-│   └── tsconfig.json
+│   ├── tsconfig.json
+│   └── vitest.config.ts
 ├── npins
 │   ├── default.nix
 │   └── sources.json
@@ -1816,4 +1872,4 @@
 ├── scripts
 │   └── get-node-version.sh
 └── shell.nix
-282 directories, 1650 files
+291 directories, 1699 files
