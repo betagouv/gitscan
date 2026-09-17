@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/anssi-recommandations-cyber",
   "name": "anssi-recommandations-cyber",
-  "description": "Interface permettant d'interroger le modèle d'intelligence artificielle Albert, chargé avec les guides de l'ANSSI, pour obtenir des recommandations de cybersécurité.",
+  "description": "Interface permettant d'interroger le modèle d'intelligence artificielle Albert pour obtenir des recommandations de cybersécurité basées sur les guides de l'ANSSI.",
   "language": "Python",
   "features": [
     "Recherche & Filtres",
@@ -12,37 +12,44 @@
   "audience": "Professionnels",
   "dependencies": [
     "FastAPI",
-    "OpenAI",
-    "PostgreSQL",
     "Svelte",
+    "PostgreSQL",
+    "OpenAI",
+    "Sentry",
+    "Uvicorn",
     "uv",
-    "pnpm",
-    "Docker"
+    "pnpm"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
+    "TypeScript / JavaScript",
     "Docker & Conteneurs",
-    "Intelligence Artificielle / ML"
+    "Documentation & Schémas",
+    "Tests"
   ],
-  "tests": [
-    "pytest",
-    "mypy",
-    "ruff",
-    "pnpm run test"
-  ],
+  "auth": {
+    "methods": [
+      "none"
+    ],
+    "providers": []
+  },
+  "tests": "Pytest, Mypy, Ruff (Python); Vitest, Svelte check (Frontend)",
   "workflows": [
     "GitHub Actions"
   ],
-  "lastActivity": "2026-09-10T12:06:51+02:00",
+  "lastActivity": "2026-09-16T10:06:12+02:00",
   "status": "active",
+  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Intelligence Artificielle & LLM",
-    "Python",
     "Sécurité & Auth",
+    "Python",
     "Documentation",
-    "Docker & Conteneurs"
+    "Git & DevOps",
+    "Docker & Conteneurs",
+    "Écosystème beta.gouv / État"
   ]
 }

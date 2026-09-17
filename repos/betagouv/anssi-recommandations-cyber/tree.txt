@@ -107,7 +107,8 @@
 │       ├── exceptions.py
 │       ├── fabrique_service_albert.py
 │       ├── reclasseur.py
-│       └── service_albert.py
+│       ├── service_albert.py
+│       └── strategie_enrichissement_paragraphes.py
 ├── templates
 │   ├── prompt_assistant_cyber.txt
 │   ├── prompt_reclassement.txt
@@ -138,7 +139,8 @@
 │   │   ├── albert
 │   │   │   ├── conftest.py
 │   │   │   ├── test_client_albert_api.py
-│   │   │   └── test_fabrique_client_albert.py
+│   │   │   ├── test_fabrique_client_albert.py
+│   │   │   └── test_recupere_chunks_document.py
 │   │   ├── chiffrement
 │   │   │   └── test_chiffrement.py
 │   │   └── test_mapping_reponses_maitrisees.py
@@ -161,11 +163,13 @@
 │   ├── services
 │   │   ├── test_fabrique_service_albert.py
 │   │   ├── test_filtre_reponses_maitrisees.py
+│   │   ├── test_par_page_precedente_et_suivante.py
 │   │   ├── test_reclasseur_bge.py
 │   │   ├── test_reclasseur_llm.py
 │   │   ├── test_reclasseurs.py
 │   │   ├── test_service_albert.py
 │   │   ├── test_service_albert_chunk_api.py
+│   │   ├── test_service_albert_enrichissement.py
 │   │   └── test_service_albert_jeopardy.py
 │   ├── test_adaptateur_base_de_donnees.py
 │   ├── test_configuration.py
@@ -283,4 +287,4 @@
 │   ├── vitest.config.ts
 │   └── vitest.setup.ts
 └── uv.lock
-54 directories, 231 files
+54 directories, 235 files
