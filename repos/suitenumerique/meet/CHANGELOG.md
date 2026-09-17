@@ -8,18 +8,28 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
+- ✨(backend) make the LiveKit default video codec configurable
+
 ### Changed
 
 - 📈(frontend) include LiveKit SIDs in the connection analytics event
 - 🔇(backend) silence expected 401 warnings on /me
 - 🔇(backend) silence noisy request summary info logs
 - ⚡️(frontend) defer loading the Crisp script until idle
+- ⬆️(frontend) upgrade react-i18next from 17.0.10 to 17.0.12
+- ⬆️(frontend) upgrade posthog-js from 1.414.0 to 1.418.10
+- ⬆️(addons) upgrade i18next from 26.3.6 to 26.4.0
+- ⬆️(frontend) upgrade humanize-duration from 3.33.2 to 3.34.1
 
 ### Fixed
 
+- 🐛(backend) report the app release to Sentry instead of "NA"
 - 🐛(backend) acknowledge unknown LiveKit webhook events instead of 422
 - 🔒️(backend) enforce display name setting on rename API
 - 🔒️(backend) reject inactive users in resource server backend
+- 🐛(frontend) fix file permissions in the Docker image
 
 ## [1.31.0] - 2026-09-08
 
