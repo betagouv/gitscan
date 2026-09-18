@@ -338,6 +338,7 @@
 │   │   │   │   ├── source_ecopae.py
 │   │   │   │   ├── source_ecosystem.py
 │   │   │   │   ├── source_generic.py
+│   │   │   │   ├── source_leko.py
 │   │   │   │   ├── source_ocab.py
 │   │   │   │   ├── source_ocad3e.py
 │   │   │   │   ├── source_pharmacies.py
@@ -1040,12 +1041,13 @@
 │   │   ├── schemas_generate_validate.py
 │   │   └── tests
 │   │       └── test_schemas.py
+│   ├── e2e_prepare.sh
+│   ├── e2e_run_sample_dag.sh
 │   ├── infrastructure
 │   │   ├── backup-db.sh
 │   │   └── delete_old_images.py
 │   ├── restore_prod_locally.sh
 │   ├── restore_prod_to_preprod.sh
-│   ├── restore_sample_locally.sh
 │   └── sql
 │       ├── create_databases.sql
 │       ├── create_extensions.sql
@@ -1244,6 +1246,8 @@
     │   │   └── test_sharer.py
     │   ├── formulaire
     │   │   └── test_routes.py
+    │   ├── qfdmd
+    │   │   └── test_sync_from_legacy.py
     │   └── stats
     │       └── test_stats_api.py
     ├── jest.config.ts
@@ -1271,6 +1275,8 @@
     │   │   ├── produits.json
     │   │   └── synonymes.json
     │   ├── forms.py
+    │   ├── genre_nombre.csv
+    │   ├── legacy_migration.py
     │   ├── management
     │   │   ├── __init__.py
     │   │   └── commands
@@ -1281,7 +1287,8 @@
     │   │       ├── import_data_ademe.py
     │   │       ├── import_infos_tris.py
     │   │       ├── import_redirects_from_legacy_website.py
-    │   │       └── migrate_legacy_produit_index_page.py
+    │   │       ├── migrate_legacy_produit_index_page.py
+    │   │       └── migrate_produits_legacy.py
     │   ├── middleware.py
     │   ├── migrations
     │   │   ├── 0001_initial_squashed_0036_delete_cmspage_alter_produit_id.py
@@ -1340,6 +1347,7 @@
     │   │   ├── 0090_conversionimmediatepage.py
     │   │   ├── 0091_migrate_carte_sur_mesure_to_carte.py
     │   │   ├── 0092_merge_20260910_0833.py
+    │   │   ├── 0093_produit_legacy_imported_as_produit_page_and_more.py
     │   │   ├── __init__.py
     │   │   └── sql
     │   │       └── create_wagtail_french_config.sql
@@ -1627,7 +1635,11 @@
     │   │   ├── input_filter.html
     │   │   ├── nav_sidebar.html
     │   │   ├── qfdmd
+    │   │   │   ├── confirm_finalize_migration.html
     │   │   │   ├── confirm_import_synonymes.html
+    │   │   │   ├── confirm_migrate_produit.html
+    │   │   │   ├── confirm_revert_produit.html
+    │   │   │   ├── confirm_sync_produit.html
     │   │   │   └── produit
     │   │   │       └── change_form.html
     │   │   ├── qfdmo
@@ -1666,6 +1678,10 @@
     │   │   ├── global_css.html
     │   │   ├── global_js.html
     │   │   └── pagination.html
+    │   ├── qfdmd
+    │   │   └── bulk_actions
+    │   │       ├── confirm_bulk_migrate.html
+    │   │       └── confirm_bulk_revert.html
     │   ├── robots.txt
     │   ├── sites_conformes_content_manager
     │   │   └── blocks
@@ -1685,6 +1701,7 @@
     │       │   ├── posthog_data_attributes.html
     │       │   └── sentry_data_attributes.html
     │       ├── blocks
+    │       │   ├── carte.html
     │       │   ├── carte_block.html
     │       │   └── liens.html
     │       ├── components
@@ -2019,13 +2036,17 @@
         │   ├── test_suggestion_models.py
         │   └── test_suggestion_views.py
         ├── qfdmd
+        │   ├── fixtures
+        │   │   └── produits_legacy.json
         │   ├── qfdmod_factory.py
         │   ├── test_conversion_immediate_page.py
         │   ├── test_genre_nombre_model.py
         │   ├── test_import_legacy_synonymes.py
+        │   ├── test_legacy_migration_service.py
         │   ├── test_legacy_synonyme_redirection.py
         │   ├── test_lien.py
         │   ├── test_middleware.py
+        │   ├── test_migrate_produits_legacy.py
         │   ├── test_produit.py
         │   ├── test_produit_page.py
         │   ├── test_qfdmd_utils.py
@@ -2070,4 +2091,4 @@
         │   └── test_search_view.py
         └── stats
             └── test_stats_utils.py
-379 directories, 1693 files
+383 directories, 1710 files
