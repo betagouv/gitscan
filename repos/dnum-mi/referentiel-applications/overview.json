@@ -1,16 +1,16 @@
 {
   "url": "https://github.com/dnum-mi/referentiel-applications",
   "name": "referentiel-applications",
-  "description": "Catalogue et outil de gouvernance des métadonnées pour les applications du ministère de l'Intérieur. Il permet de centraliser les informations sur le statut, les acteurs, la conformité et la dette technique des applications.",
+  "description": "RefApp est un catalogue et un outil de gouvernance pour les applications du ministère de l'Intérieur. Il permet de centraliser les métadonnées (statut, acteurs, conformité, dette technique) pour fournir un point de vérité unique.",
   "language": "TypeScript",
   "features": [
     "Gestion métier générale",
-    "Gestion des utilisateurs & Permissions",
+    "Administration & Backoffice",
     "Notifications & Alertes",
     "Suivi & Traçabilité",
-    "Sécurité & Conformité",
     "Données & Schémas",
-    "Administration & Backoffice"
+    "Sécurité & Conformité",
+    "Recherche & Filtres"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -25,29 +25,28 @@
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
+    "Vue.js / Nuxt",
     "TypeScript / JavaScript",
-    "Design System (DSFR & UI libs)",
     "Docker & Conteneurs",
-    "Node.js / NestJS",
     "Authentification (composant)",
-    "Documentation & Schémas",
-    "CI/CD & Déploiement",
-    "Vue.js / Nuxt"
+    "Design System (DSFR & UI libs)",
+    "Documentation & Schémas"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "jwt"
+      "jwt",
+      "sso"
     ],
     "providers": [
       "Keycloak"
     ]
   },
-  "tests": "Tests E2E",
+  "tests": "Tests end-to-end (e2e)",
   "workflows": [
     "GitHub Actions"
   ],
-  "lastActivity": "2026-09-03T00:00:00Z",
+  "lastActivity": "2026-09-14T00:00:00Z",
   "status": "maintained",
   "license": "MIT",
   "hasDocumentation": true,

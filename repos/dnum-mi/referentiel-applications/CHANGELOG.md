@@ -1,5 +1,54 @@
 # Changelog
 
+## [1.91.0](https://github.com/dnum-mi/referentiel-applications/compare/v1.90.3...v1.91.0) (2026-09-14)
+
+
+### Features
+
+* add alert when user has no all read data rights on application ([#2633](https://github.com/dnum-mi/referentiel-applications/issues/2633)) ([1a12df7](https://github.com/dnum-mi/referentiel-applications/commit/1a12df7e160c8f3f06fc7e4742972288b1ee620d))
+* **auth:** enforce strong authentication for elevated rights ([#2625](https://github.com/dnum-mi/referentiel-applications/issues/2625)) ([05aefc8](https://github.com/dnum-mi/referentiel-applications/commit/05aefc8f4203e6d0066775647586c0362ee2a597))
+
+
+### Bug Fixes
+
+* **auth:** require strong authentication for all access ([#2630](https://github.com/dnum-mi/referentiel-applications/issues/2630)) ([0373698](https://github.com/dnum-mi/referentiel-applications/commit/037369817853ddb820c2e7e3ddf5b3c01c84b6bb))
+* normalize scoped administration paths ([#2632](https://github.com/dnum-mi/referentiel-applications/issues/2632)) ([7d40414](https://github.com/dnum-mi/referentiel-applications/commit/7d404148d74b6cfe80dc96734bdde9a02a6421ad))
+
+## [1.90.3](https://github.com/dnum-mi/referentiel-applications/compare/v1.90.2...v1.90.3) (2026-09-09)
+
+
+### Bug Fixes
+
+* **a11y:** point search skip link to #app-search instead of #header-search ([#2566](https://github.com/dnum-mi/referentiel-applications/issues/2566)) ([a7f71cb](https://github.com/dnum-mi/referentiel-applications/commit/a7f71cb1db56813c3ca0fe2df2fc63571767676c))
+* need capabilities for campagne admin ([#2619](https://github.com/dnum-mi/referentiel-applications/issues/2619)) ([54963ea](https://github.com/dnum-mi/referentiel-applications/commit/54963ea1193f4e5fe010a639ba31b1cc17fef74a))
+* number of application show was wrong ([#2616](https://github.com/dnum-mi/referentiel-applications/issues/2616)) ([104f3ed](https://github.com/dnum-mi/referentiel-applications/commit/104f3ed242716160178d0705721fe3221e2c6469))
+* number of application show was wrong ([#2616](https://github.com/dnum-mi/referentiel-applications/issues/2616)) ([5946ac0](https://github.com/dnum-mi/referentiel-applications/commit/5946ac041b04139e393df83fcdabf05bbbe8d775))
+* replace label for snapvisu ([#2620](https://github.com/dnum-mi/referentiel-applications/issues/2620)) ([e4c1900](https://github.com/dnum-mi/referentiel-applications/commit/e4c190031c2494660cb09e5d23ee4ca0f3fa1ccc))
+* restrict scoped admins to users and actors of their perimeter ([#2615](https://github.com/dnum-mi/referentiel-applications/issues/2615)) ([da03953](https://github.com/dnum-mi/referentiel-applications/commit/da03953f80e4f92fd5f965bf5cfe714b08b936cd))
+
+## [1.90.2](https://github.com/dnum-mi/referentiel-applications/compare/v1.90.1...v1.90.2) (2026-09-08)
+
+
+### Bug Fixes
+
+* null quality index sorting, catalogue total and the Technologies menu entry ([#2570](https://github.com/dnum-mi/referentiel-applications/issues/2570)) ([6ba7915](https://github.com/dnum-mi/referentiel-applications/commit/6ba7915cd8a191140e53d1f6fe7522a019c94970))
+
+## [1.90.1](https://github.com/dnum-mi/referentiel-applications/compare/v1.90.0...v1.90.1) (2026-09-07)
+
+
+### Bug Fixes
+
+* create migration for app deleted or decommissioned to null ([#2563](https://github.com/dnum-mi/referentiel-applications/issues/2563)) ([eaff8b8](https://github.com/dnum-mi/referentiel-applications/commit/eaff8b8586d8942242a20aca8c7be44c4b4b4d3d))
+* **permissions:** rebuild PRM-10/PRM-11 e2e provisioning after additionalPermissions lockdown ([#2564](https://github.com/dnum-mi/referentiel-applications/issues/2564)) ([36e83e4](https://github.com/dnum-mi/referentiel-applications/commit/36e83e43e0aa5b48ce21ae7ae36d2c1c9f8183cd))
+* remove some idor failure ([#2496](https://github.com/dnum-mi/referentiel-applications/issues/2496)) ([a724b93](https://github.com/dnum-mi/referentiel-applications/commit/a724b93aa3e24937d71edb26a94d4fba4c65a709))
+* **rights:** harden user administration and delegated permissions ([#2529](https://github.com/dnum-mi/referentiel-applications/issues/2529)) ([2fe3b8d](https://github.com/dnum-mi/referentiel-applications/commit/2fe3b8ddb852b12106a766346ecdcbfe25d3ad6c))
+* **rights:** match actors and users by e-mail regardless of case ([#2540](https://github.com/dnum-mi/referentiel-applications/issues/2540)) ([5b4c05f](https://github.com/dnum-mi/referentiel-applications/commit/5b4c05f9b54784137c5aef0a12271c6f3e16ec6e)), closes [#2501](https://github.com/dnum-mi/referentiel-applications/issues/2501) [#2511](https://github.com/dnum-mi/referentiel-applications/issues/2511)
+* **rights:** wire DeleteApplication, drop dead config, explicit my-perms, docs 06 ([#2533](https://github.com/dnum-mi/referentiel-applications/issues/2533)) ([2406944](https://github.com/dnum-mi/referentiel-applications/commit/2406944126cbb93aee9d50b0a3a75a4e5ff0ec02)), closes [#2506](https://github.com/dnum-mi/referentiel-applications/issues/2506) [#2507](https://github.com/dnum-mi/referentiel-applications/issues/2507) [#2510](https://github.com/dnum-mi/referentiel-applications/issues/2510) [#2511](https://github.com/dnum-mi/referentiel-applications/issues/2511)
+* **technology:** dated alert keys, own notification cron, catalog dedup and cache ([#2535](https://github.com/dnum-mi/referentiel-applications/issues/2535)) ([60bfe28](https://github.com/dnum-mi/referentiel-applications/commit/60bfe28c64a02145d736f254f584fc1fa0f147c8)), closes [#2518](https://github.com/dnum-mi/referentiel-applications/issues/2518) [#2519](https://github.com/dnum-mi/referentiel-applications/issues/2519) [#2520](https://github.com/dnum-mi/referentiel-applications/issues/2520)
+* **technology:** surface HTTP errors, circuit-break endoflife.date, exclude deleted apps ([#2530](https://github.com/dnum-mi/referentiel-applications/issues/2530)) ([701a579](https://github.com/dnum-mi/referentiel-applications/commit/701a57968b6fcb751866d500e97a993342195d95))
+* **technology:** tab error state, focus and labels, chronological sort, summary and links ([#2537](https://github.com/dnum-mi/referentiel-applications/issues/2537)) ([1899eba](https://github.com/dnum-mi/referentiel-applications/commit/1899eba7ed917223e3dc7b8713156c4a5384265a)), closes [#2521](https://github.com/dnum-mi/referentiel-applications/issues/2521) [#2522](https://github.com/dnum-mi/referentiel-applications/issues/2522) [#2528](https://github.com/dnum-mi/referentiel-applications/issues/2528)
+* **technology:** validate DTOs, 409 on index conflict, cron lock, Java versions, tests and docs ([#2539](https://github.com/dnum-mi/referentiel-applications/issues/2539)) ([9218ddd](https://github.com/dnum-mi/referentiel-applications/commit/9218ddd8102609079e4b24194af27ac42674e680)), closes [#2525](https://github.com/dnum-mi/referentiel-applications/issues/2525) [#2526](https://github.com/dnum-mi/referentiel-applications/issues/2526) [#2527](https://github.com/dnum-mi/referentiel-applications/issues/2527)
+
 ## [1.90.0](https://github.com/dnum-mi/referentiel-applications/compare/v1.89.0...v1.90.0) (2026-09-03)
 
 

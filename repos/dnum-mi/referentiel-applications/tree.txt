@@ -24,6 +24,7 @@
 │   │   ├── qa-time.md
 │   │   └── qa-transverse.md
 │   ├── scripts
+│   │   ├── board-sync.mjs
 │   │   └── check-swagger-drift.mjs
 │   └── workflows
 │       ├── build.yml
@@ -389,6 +390,26 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260903140000_add_technology_eol_source
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260903190000_backfill_quality_null_retired_apps
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260904090000_lowercase_emails
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260904100000_single_default_actor_type
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260904110000_drop_redundant_technology_index
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260908090000_add_global_admin_manage_permission
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260908120000_add_mdit_campaign_manage_permission
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260908120100_explicit_admin_campaign_manage_permissions
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260910210000_add_auth_level_to_user_connexion_log
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260911120000_backfill_data_read_permission
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260911120000_preserve_auth_contexts
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   ├── schema
 │   │   │   ├── action-log.prisma
@@ -463,6 +484,7 @@
 │   │   │   │   └── status-groups.ts
 │   │   │   ├── dto
 │   │   │   │   ├── application-rights.dto.ts
+│   │   │   │   ├── contact-admin.dto.ts
 │   │   │   │   ├── create-application.dto.ts
 │   │   │   │   ├── get-application.dto.ts
 │   │   │   │   ├── search-application.dto.ts
@@ -485,6 +507,15 @@
 │   │   │   ├── usecases
 │   │   │   │   └── application-export.usecase.ts
 │   │   │   └── view.service.ts
+│   │   ├── auth-level
+│   │   │   ├── auth-level.dto.ts
+│   │   │   ├── auth-level.spec.ts
+│   │   │   ├── auth-level.ts
+│   │   │   ├── step-down.exception.ts
+│   │   │   ├── userinfo-claims.spec.ts
+│   │   │   ├── userinfo-claims.ts
+│   │   │   ├── userinfo-jwt-verifier.spec.ts
+│   │   │   └── userinfo-jwt-verifier.ts
 │   │   ├── business-division
 │   │   │   ├── business-division.controller.ts
 │   │   │   ├── business-division.module.ts
@@ -523,6 +554,8 @@
 │   │   │   │   └── prisma-query-builder.service.ts
 │   │   │   └── utils
 │   │   │       ├── compliance-presence.utils.ts
+│   │   │       ├── email.utils.spec.ts
+│   │   │       ├── email.utils.ts
 │   │   │       ├── enum.utils.ts
 │   │   │       ├── excel.utils.ts
 │   │   │       ├── organization-scope.utils.spec.ts
@@ -550,14 +583,19 @@
 │   │   │   ├── app-config.ts
 │   │   │   ├── config.controller.ts
 │   │   │   ├── config.module.ts
+│   │   │   ├── config.service.spec.ts
 │   │   │   ├── config.service.ts
 │   │   │   ├── configs
 │   │   │   │   ├── app.config.ts
+│   │   │   │   ├── auth-level.config.spec.ts
+│   │   │   │   ├── auth-level.config.ts
 │   │   │   │   ├── correlation.config.spec.ts
 │   │   │   │   ├── correlation.config.ts
 │   │   │   │   ├── database.config.ts
 │   │   │   │   ├── email.config.ts
 │   │   │   │   ├── index.ts
+│   │   │   │   ├── jwt-validation.config.spec.ts
+│   │   │   │   ├── jwt-validation.config.ts
 │   │   │   │   ├── oidc.config.ts
 │   │   │   │   ├── technology.config.spec.ts
 │   │   │   │   └── technology.config.ts
@@ -875,6 +913,7 @@
 │   │   │   ├── technical-debt-info.controller.ts
 │   │   │   ├── technical-debt-info.module.ts
 │   │   │   ├── technical-debt-info.service.ts
+│   │   │   ├── technical-debt.controller.spec.ts
 │   │   │   └── technical-debt.controller.ts
 │   │   ├── technology
 │   │   │   ├── dto
@@ -894,6 +933,7 @@
 │   │   │   ├── technology.service.spec.ts
 │   │   │   ├── technology.service.ts
 │   │   │   └── utils
+│   │   │       ├── endoflife-network.spec.ts
 │   │   │       ├── endoflife.utils.spec.ts
 │   │   │       ├── endoflife.utils.ts
 │   │   │       ├── eol-status.spec.ts
@@ -906,6 +946,7 @@
 │   │   │   │   └── token.dto.ts
 │   │   │   ├── token.controller.ts
 │   │   │   ├── token.module.ts
+│   │   │   ├── token.service.spec.ts
 │   │   │   ├── token.service.ts
 │   │   │   └── use-cases.ts
 │   │   │       ├── token-control.use-case.spec.ts
@@ -916,7 +957,9 @@
 │   │   │   │   ├── maia-organization-suggestion.dto.ts
 │   │   │   │   ├── sync-organizations-response.dto.ts
 │   │   │   │   ├── sync-organizations.dto.ts
+│   │   │   │   ├── update-user.dto.spec.ts
 │   │   │   │   ├── update-user.dto.ts
+│   │   │   │   ├── user-connexion-log.dto.ts
 │   │   │   │   ├── user-permission-log.dto.ts
 │   │   │   │   └── user.error.dto.ts
 │   │   │   ├── entities
@@ -926,6 +969,7 @@
 │   │   │   ├── scope-permission
 │   │   │   │   ├── scoped-permission.service.spec.ts
 │   │   │   │   └── scoped-permission.service.ts
+│   │   │   ├── user-connexion-log.service.spec.ts
 │   │   │   ├── user-connexion-log.service.ts
 │   │   │   ├── user-permission-log.service.ts
 │   │   │   ├── user-permissions.interceptor.ts
@@ -946,9 +990,12 @@
 │   ├── tests
 │   │   ├── action-log-controller.e2e-spec.ts
 │   │   ├── action-log.e2e-spec.ts
+│   │   ├── actor-email-case.e2e-spec.ts
 │   │   ├── actor.e2e-spec.ts
 │   │   ├── app.e2e-spec.ts
 │   │   ├── applications.e2e-spec.ts
+│   │   ├── auth-level-userinfo.e2e-spec.ts
+│   │   ├── auth-level.e2e-spec.ts
 │   │   ├── business-division.e2e-spec.ts
 │   │   ├── compliances.e2e-spec.ts
 │   │   ├── config.e2e-spec.ts
@@ -990,23 +1037,30 @@
 │   │   ├── maia-sync-scope.e2e-spec.ts
 │   │   ├── mdit-campaign.e2e-spec.ts
 │   │   ├── metadata-impersonator.e2e-spec.ts
+│   │   ├── migration-recheck-eol.e2e-spec.ts
 │   │   ├── organization.e2e-spec.ts
 │   │   ├── permission-guard-sql-injection.e2e-spec.ts
 │   │   ├── relations.e2e-spec.ts
 │   │   ├── report-impersonator.e2e-spec.ts
 │   │   ├── reports.e2e-spec.ts
 │   │   ├── rgaa-compliances.e2e-spec.ts
+│   │   ├── rights-cleanup.e2e-spec.ts
+│   │   ├── scoped-admin-perimeter.e2e-spec.ts
 │   │   ├── scoped-permission.service.spec.ts
 │   │   ├── setup.ts
 │   │   ├── swagger.e2e-spec.ts
 │   │   ├── tag.e2e-spec.ts
 │   │   ├── technical-debt-info.e2e-spec.ts
+│   │   ├── technologies-contract.e2e-spec.ts
 │   │   ├── technologies.e2e-spec.ts
 │   │   ├── test-database.utils.ts
 │   │   ├── token-impersonation.e2e-spec.ts
 │   │   ├── user-block.e2e-spec.ts
+│   │   ├── user-connexion-log.e2e-spec.ts
+│   │   ├── user-list-scope-format.e2e-spec.ts
 │   │   ├── user-list-scope.e2e-spec.ts
 │   │   ├── user-permission-log-impersonator.e2e-spec.ts
+│   │   ├── user-rights-hardening.e2e-spec.ts
 │   │   └── user.e2e-spec.ts
 │   ├── tsconfig.build.json
 │   ├── tsconfig.json
@@ -1021,6 +1075,7 @@
 │       ├── 0005-authentification-oidc.md
 │       ├── 0006-dsfr-primevue-client-openapi.md
 │       ├── 0007-permissions-trois-couches-secrets.md
+│       ├── 0008-niveau-authentification-carte-agent-2fa.md
 │       └── README.md
 ├── docker-compose.ci.yml
 ├── docker-compose.grist.yml
@@ -1040,6 +1095,7 @@
 │   ├── 10-accessibilite-rgaa.md
 │   ├── 11-contribution.md
 │   ├── 12-exploitation-deploiement.md
+│   ├── 13-integration-iap.md
 │   ├── README.md
 │   ├── assets
 │   │   ├── database-erd-full.svg
@@ -1152,6 +1208,7 @@
 │   │   ├── App.vue
 │   │   ├── api
 │   │   │   ├── index.ts
+│   │   │   ├── init-clients.spec.ts
 │   │   │   └── init-clients.ts
 │   │   ├── chart
 │   │   │   └── time-chart.builder.ts
@@ -1193,6 +1250,8 @@
 │   │   │   ├── ReportPermissionSelect.vue
 │   │   │   ├── StatusTab.vue
 │   │   │   ├── SuggestionsInput.vue
+│   │   │   ├── WeakAuthBanner.spec.ts
+│   │   │   ├── WeakAuthBanner.vue
 │   │   │   ├── actor
 │   │   │   │   ├── ActorForm.vue
 │   │   │   │   └── ActorTab.vue
@@ -1224,6 +1283,8 @@
 │   │   │   │   ├── TagActions.vue
 │   │   │   │   ├── UserActions.spec.ts
 │   │   │   │   ├── UserActions.vue
+│   │   │   │   ├── UserConnexionLogHistory.spec.ts
+│   │   │   │   ├── UserConnexionLogHistory.vue
 │   │   │   │   ├── UserPermissionLogHistory.vue
 │   │   │   │   ├── UserPermissionsModal.vue
 │   │   │   │   ├── admin-correlations.utils.spec.ts
@@ -1309,6 +1370,8 @@
 │   │   │   ├── use-app-update.spec.ts
 │   │   │   ├── use-app-update.ts
 │   │   │   ├── use-application-search.ts
+│   │   │   ├── use-auth-level.spec.ts
+│   │   │   ├── use-auth-level.ts
 │   │   │   ├── use-blocked-access.ts
 │   │   │   ├── use-column-preferences.ts
 │   │   │   ├── use-d3-graph.ts
@@ -1343,8 +1406,11 @@
 │   │   │   └── user.ts
 │   │   ├── router
 │   │   │   ├── index.ts
+│   │   │   ├── nav-items.spec.ts
+│   │   │   ├── nav-items.ts
 │   │   │   └── route-names.ts
 │   │   ├── services
+│   │   │   ├── authentication.spec.ts
 │   │   │   ├── authentication.ts
 │   │   │   ├── config.ts
 │   │   │   └── impersonation.ts
@@ -1363,17 +1429,23 @@
 │   │   │   ├── relationStore.ts
 │   │   │   ├── reportStore.ts
 │   │   │   ├── savedFilterStore.ts
+│   │   │   ├── statisticsStore.spec.ts
 │   │   │   ├── statisticsStore.ts
 │   │   │   ├── toasterStore.ts
+│   │   │   ├── userStore.spec.ts
 │   │   │   └── userStore.ts
 │   │   ├── types
 │   │   │   ├── columns.ts
 │   │   │   ├── relation-type-filter.ts
 │   │   │   └── table.ts
 │   │   ├── utils
+│   │   │   ├── api-error.spec.ts
+│   │   │   ├── api-error.ts
 │   │   │   ├── chart.ts
 │   │   │   ├── cssVars.ts
 │   │   │   ├── email.ts
+│   │   │   ├── eol-status.spec.ts
+│   │   │   ├── eol-status.ts
 │   │   │   ├── fieldComparison.ts
 │   │   │   ├── generator-utils.ts
 │   │   │   ├── get-ecoindex-grade.ts
@@ -1417,6 +1489,7 @@
 │   │   ├── adminAccess.spec.ts
 │   │   ├── adminLabelSource.spec.ts
 │   │   ├── applicationsView.spec.ts
+│   │   ├── authLevelAccess.spec.ts
 │   │   ├── complianceFilters.spec.ts
 │   │   ├── createApplication.spec.ts
 │   │   ├── navigation.spec.ts
@@ -1467,4 +1540,4 @@
 │       ├── campaign.mjs
 │       └── sync-issue.mjs
 └── release-please-config.json
-376 directories, 1093 files
+387 directories, 1155 files
