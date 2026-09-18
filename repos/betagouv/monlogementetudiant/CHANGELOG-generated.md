@@ -1,33 +1,33 @@
-## Changelog : monlogementetudiant (30 derniers jours, au 25 août 2026)
+## Changelog : monlogementetudiant (30 derniers jours, au 15 septembre 2026)
 
 ### Résumé
-Ce mois a été marqué par une amélioration significative de l'expérience utilisateur grâce à une refonte de l'interface et l'ajout de nouveaux espaces (espace étudiant, mode gestionnaire). Parallèlement, des travaux importants ont été menés sur la fiabilité des données (géocodage et adresses) et sur l'automatisation de la maintenance des données (archivage et purges automatiques).
+Ce mois-ci, la plateforme a franchi une étape importante avec le lancement de l'espace étudiant, permettant désormais de sauvegarder des simulations de budget et de les télécharger en PDF. Les outils de gestion pour les administrateurs et gestionnaires ont été considérablement enrichis avec de nouvelles capacités d'exportation de données, un meilleur suivi des statistiques et une gestion des permissions plus fine et sécurisée.
 
 ### Évolutions fonctionnelles
-- **Nouvelles fonctionnalités** :
-    - Création d'un espace dédié pour les étudiants.
-    - Mise en place d'un mode de contact pour les gestionnaires.
-    - Ajout de la gestion des préférences de notifications sur la page des favoris.
-    - Amélioration de l'administration avec l'affichage de la part d'étudiants boursiers.
-- **Interface et Expérience Utilisateur (UI/UX)** :
-    - Refonte visuelle utilisant les composants du Design System (DSFR) : passage aux boutons radio, menus latéraux, et utilisation d'alertes plutôt que de "toasters".
-    - Amélioration de la navigation et de l'affichage (menus, icônes de simulation, grille d'images).
-    - Optimisation des formulaires (pré-remplissage du numéro de téléphone, suppression de certains champs obligatoires).
-- **Corrections** :
-    - Correction de la mise à jour des informations utilisateurs [#372](https://github.com/betagouv/monlogementetudiant/pull/372).
-    - Correction des typologies dans l'administration [#369](https://github.com/betagouv/monlogementetudiant/pull/369).
-    - Correction de noms d'établissements (fac habitat).
+- **Espace Étudiant** : 
+    - Création d'un espace de travail permettant de sauvegarder les calculs de budget et de les exporter au format PDF.
+    - Gestion des favoris et des préférences de notifications.
+- **Gestion & Administration** :
+    - **Permissions** : Simplification et affinement des droits des gestionnaires (gestion des contacts par résidence spécifique et conditionnement de la gestion des candidats au parcours).
+    - **Exports de données** : Ajout de nouveaux exports CSV incluant les statistiques des résidences, les informations de contact des gestionnaires et les URLs de présentation des propriétaires.
+    - **Pilotage** : Amélioration du tableau de bord avec le suivi des connexions des gestionnaires, la visibilité sur la part d'étudiants boursiers et de nouveaux outils de pré-audit.
+- **Recherche & Interface** :
+    - **Recherche** : Correction des limites de recherche par département et des redirections de slugs de villes.
+    - **Expérience utilisateur** : Amélioration de l'accessibilité (a11y), alignement des résultats de recherche et mise à jour des composants d'interface vers les standards DSFR (champs de saisie, menus latéraux, alertes).
+- **Alertes** : Optimisation de l'ordre de déclenchement des alertes (expiration avant détection de nouvelles disponibilités) et ajout d'une commande pour désactiver des campagnes d'alerte.
 
 ### Évolutions techniques
-- **Gestion et qualité des données** :
-    - Fiabilisation du géocodage : amélioration de la validation des adresses (gestion des CEDEX, validation via le BAN) et nouveau système de rapport pour identifier les adresses incohérentes.
-    - Automatisation du cycle de vie des données : mise en place de politiques de rétention (purges mensuelles, archivage automatique sur S3 des données supprimées) et de sauvegardes quotidiennes/mensuelles de la base de données.
-- **Performance et Infrastructure** :
-    - Optimisation des performances via la mise en cache des images.
-    - Optimisation des ressources Scalingo en fusionnant certaines tâches de détection d'alertes pour respecter les limites de jobs.
-    - Résolution de fuites de mémoire sur les processus de fermeture de base de données [#365](https://github.com/betagouv/monlogementetudiant/pull/365).
-    - Optimisation des index de la base de données.
+- **Données & Archivage** : 
+    - Mise en place d'une politique de rétention automatique (7 mois pour les événements de suivi) avec purge mensuelle et archivage sécurisé sur S3.
+    - Automatisation des sauvegardes quotidiennes et mensuelles de la base de données sur S3.
+- **Performance & Infrastructure** :
+    - Mise en cache des images pour accélérer le chargement.
+    - Optimisation des tâches de fond (cron) pour respecter les limites de ressources (fusion des jobs de détection d'alertes).
+    - Optimisation des connexions à la base de données.
+- **Analytics** : Amélioration du suivi des visites provenant de widgets partenaires via Matomo et optimisation du marquage des appels à l'action (CTA).
+- **Maintenance du code** : Refactorisation de la gestion des dates avec `dayjs` et correction de problèmes de rendu côté serveur (SSR) avec `dompurify`.
 
 ### Autres changements
-- **Documentation** : Mise à jour de la politique de confidentialité, documentation de la commande de backfill de géocodage dans le README et ajout de notes sur les procédures de restauration d'archives S3.
-- **Maintenance** : Nettoyage du code (linting, suppression de `console.log`) et mise à jour des tests.
+- Mise à jour de la politique de confidentialité.
+- Amélioration de la documentation technique concernant les procédures de restauration et la visibilité des archives S3.
+- Nettoyage général du code (formatage Biome, suppression de code mort et de commentaires inutiles).
