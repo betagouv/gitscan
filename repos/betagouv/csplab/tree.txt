@@ -38,7 +38,6 @@
 ├── LICENSE
 ├── README.md
 ├── bin
-│   ├── backup-db-to-scaleway.sh
 │   ├── cz
 │   ├── git-commit-msg-hook
 │   ├── git-pre-commit-hook
@@ -93,6 +92,7 @@
 │   ├── ocr-example
 │   ├── postgresql-example
 │   ├── redis-example
+│   ├── rustfs-example
 │   └── web-example
 ├── infra
 │   └── postgres
@@ -192,6 +192,7 @@
 │   │       ├── nor.py
 │   │       ├── offer_conditions.py
 │   │       ├── offer_criteria.py
+│   │       ├── radius.py
 │   │       ├── region.py
 │   │       ├── siret.py
 │   │       ├── source_type.py
@@ -244,6 +245,7 @@
     │   │       └── save_webhook.py
     │   ├── bin
     │   │   ├── archive_offers.py
+    │   │   ├── backup-db-to-scaleway.sh
     │   │   ├── clean_publish_organismes.py
     │   │   ├── clean_raw_organismes.py
     │   │   ├── import_offers.py
@@ -545,6 +547,9 @@
         │   ├── exceptions.py
         │   ├── identite
         │   │   ├── __init__.py
+        │   │   ├── context_services
+        │   │   │   ├── __init__.py
+        │   │   │   └── organisme_permission_service.py
         │   │   ├── dtos
         │   │   │   ├── __init__.py
         │   │   │   └── organisme_read_models.py
@@ -572,6 +577,7 @@
         │   │   │   ├── list_offers_input.py
         │   │   │   ├── load_documents_input.py
         │   │   │   ├── load_operation_type.py
+        │   │   │   ├── supprimer_organismes_input.py
         │   │   │   ├── upsert_offers_input.py
         │   │   │   └── upsert_organismes_input.py
         │   │   └── usecases
@@ -584,11 +590,15 @@
         │   │       ├── list_offers.py
         │   │       ├── list_sources.py
         │   │       ├── load_documents.py
+        │   │       ├── supprimer_organismes.py
         │   │       ├── upsert_offers.py
         │   │       ├── upsert_organismes.py
         │   │       └── vectorize_documents.py
         │   └── recruteur
         │       ├── __init__.py
+        │       ├── context_services
+        │       │   ├── __init__.py
+        │       │   └── recrutement_agent_service.py
         │       ├── dtos
         │       │   ├── __init__.py
         │       │   ├── agent_organisme_read_models.py
@@ -600,12 +610,14 @@
         │       ├── services
         │       │   ├── __init__.py
         │       │   ├── add_recrutement_agent.py
+        │       │   ├── list_motifs_refus.py
         │       │   ├── list_recrutement_agents.py
         │       │   ├── note_query_service_interface.py
         │       │   ├── organisme_agent_query_service_interface.py
         │       │   ├── recrutement_query_service_interface.py
         │       │   ├── revoke_recrutement_agent.py
         │       │   ├── search_agent_by_email.py
+        │       │   ├── set_recrutements_responsable.py
         │       │   └── update_recrutement_agent.py
         │       └── usecases
         │           ├── attach_organisme_agent.py
@@ -628,6 +640,7 @@
         │           ├── update_organisme_steps.py
         │           └── update_recrutement_etapes.py
         ├── bin
+        │   ├── backup-db-to-scaleway.sh
         │   ├── inject_scaleway_env.sh
         │   ├── postdeploy.sh
         │   ├── run_worker.sh
@@ -646,6 +659,7 @@
         │   │   ├── schema_internal.py
         │   │   └── test.py
         │   ├── setup-qdrant.py
+        │   ├── setup-s3.py
         │   ├── storages.py
         │   ├── urls.py
         │   └── wsgi.py
@@ -725,10 +739,10 @@
         │   │   │   ├── organisme_repository_interface.py
         │   │   │   └── utilisateur_repository_interface.py
         │   │   ├── services
-        │   │   │   ├── __init__.py
-        │   │   │   └── organisme_permission_service.py
+        │   │   │   └── __init__.py
         │   │   └── value_objects
         │   │       ├── __init__.py
+        │   │       ├── email.py
         │   │       ├── organisme_action.py
         │   │       └── organisme_role.py
         │   ├── ingestion
@@ -1043,6 +1057,26 @@
         │   │   │   │       ├── CandidaturesKanbanView.vue
         │   │   │   │       ├── CandidaturesListeView.vue
         │   │   │   │       └── CandidaturesView.vue
+        │   │   │   ├── equipe-recrutement
+        │   │   │   │   ├── api.ts
+        │   │   │   │   ├── columns.ts
+        │   │   │   │   ├── components
+        │   │   │   │   │   ├── AjoutMembreEquipeDrawer.test.ts
+        │   │   │   │   │   ├── AjoutMembreEquipeDrawer.vue
+        │   │   │   │   │   ├── EquipeRecrutementSection.vue
+        │   │   │   │   │   └── cells
+        │   │   │   │   │       └── MembreActionsCell.vue
+        │   │   │   │   ├── composables
+        │   │   │   │   │   ├── useAjoutMembreEquipe.test.ts
+        │   │   │   │   │   ├── useAjoutMembreEquipe.ts
+        │   │   │   │   │   ├── useEquipeRecrutement.test.ts
+        │   │   │   │   │   ├── useEquipeRecrutement.ts
+        │   │   │   │   │   └── useMembreEquipeActions.ts
+        │   │   │   │   ├── constants
+        │   │   │   │   │   └── equipe-recrutement.ts
+        │   │   │   │   ├── format.ts
+        │   │   │   │   ├── queries.ts
+        │   │   │   │   └── types.ts
         │   │   │   ├── etapes-recrutement
         │   │   │   │   ├── api.ts
         │   │   │   │   ├── components
@@ -1161,6 +1195,10 @@
         │   │   │   ├── fonts.css
         │   │   │   ├── index.css
         │   │   │   └── theme.css
+        │   │   ├── test
+        │   │   │   ├── browser.ts
+        │   │   │   ├── render.ts
+        │   │   │   └── setup.ts
         │   │   ├── types
         │   │   │   └── api.d.ts
         │   │   ├── utils
@@ -1211,6 +1249,9 @@
         │   │   │   ├── __init__.py
         │   │   │   ├── admin.py
         │   │   │   ├── apps.py
+        │   │   │   ├── enums
+        │   │   │   │   ├── __init__.py
+        │   │   │   │   └── type_document.py
         │   │   │   ├── migrations
         │   │   │   │   ├── 0001_initial.py
         │   │   │   │   ├── 0002_cvmetadatamodel_status_cvmetadatamodel_updated_at_and_more.py
@@ -1221,11 +1262,14 @@
         │   │   │   │   ├── 0007_candidaturemodel_updated_by_candidate_and_more.py
         │   │   │   │   ├── 0008_alter_candidaturemodel_candidat.py
         │   │   │   │   ├── 0009_alter_candidaturemodel_candidat.py
+        │   │   │   │   ├── 0010_candidaturemodel_motif_refus.py
+        │   │   │   │   ├── 0011_documentmodel.py
         │   │   │   │   └── __init__.py
         │   │   │   └── models
         │   │   │       ├── __init__.py
         │   │   │       ├── candidature.py
-        │   │   │       └── cv_metadata.py
+        │   │   │       ├── cv_metadata.py
+        │   │   │       └── document.py
         │   │   ├── commons
         │   │   │   ├── __init__.py
         │   │   │   ├── admin.py
@@ -1283,6 +1327,9 @@
         │   │   │   ├── __init__.py
         │   │   │   ├── admin.py
         │   │   │   ├── apps.py
+        │   │   │   ├── enums
+        │   │   │   │   ├── __init__.py
+        │   │   │   │   └── motif_refus.py
         │   │   │   ├── management
         │   │   │   │   ├── __init__.py
         │   │   │   │   └── commands
@@ -1299,7 +1346,11 @@
         │   │   │   │   ├── 0008_alter_notemodel_publie_par_and_more.py
         │   │   │   │   ├── 0009_organismeagentmodel_date_revocation.py
         │   │   │   │   ├── 0010_alter_organismemodel_date_creation_and_more.py
+        │   │   │   │   ├── 0011_organisme_soft_delete.py
         │   │   │   │   ├── 0011_recrutementagentmodel_date_revocation.py
+        │   │   │   │   ├── 0012_alter_organismeagentmodel_role.py
+        │   │   │   │   ├── 0012_merge_20260915_0936.py
+        │   │   │   │   ├── 0013_merge_20260915_1401.py
         │   │   │   │   └── __init__.py
         │   │   │   └── models
         │   │   │       ├── __init__.py
@@ -1373,6 +1424,7 @@
         │   │   │   │   ├── 0006_profilcandidatmodel.py
         │   │   │   │   ├── 0007_merge_20260612_1624.py
         │   │   │   │   ├── 0008_alter_usermodel_username.py
+        │   │   │   │   ├── 0009_lowercase_emails.py
         │   │   │   │   └── __init__.py
         │   │   │   └── models.py
         │   │   └── utils
@@ -1405,7 +1457,8 @@
         │   │   │   ├── __init__.py
         │   │   │   ├── candidature_django_factory.py
         │   │   │   ├── candidature_factory.py
-        │   │   │   └── cv_metadata_factory.py
+        │   │   │   ├── cv_metadata_factory.py
+        │   │   │   └── document_django_factory.py
         │   │   ├── commons
         │   │   │   ├── __init__.py
         │   │   │   ├── audit_log_django_factory.py
@@ -1820,6 +1873,9 @@
         │   │   │   └── test_calculate_daily_stats.py
         │   │   ├── identite
         │   │   │   ├── __init__.py
+        │   │   │   ├── context_services
+        │   │   │   │   ├── __init__.py
+        │   │   │   │   └── test_organisme_permission_service.py
         │   │   │   ├── test_create_agent.py
         │   │   │   ├── test_create_organisme.py
         │   │   │   ├── test_get_organisme.py
@@ -1831,6 +1887,7 @@
         │   │   │   ├── test_get_offers_by_source.py
         │   │   │   ├── test_list_sources.py
         │   │   │   ├── test_load_documents.py
+        │   │   │   ├── test_supprimer_organismes.py
         │   │   │   ├── test_upsert_offers.py
         │   │   │   ├── test_upsert_organismes.py
         │   │   │   └── test_vectorize_documents.py
@@ -1844,6 +1901,7 @@
         │   │       ├── test_get_recrutement_kanban.py
         │   │       ├── test_get_recrutement_liste.py
         │   │       ├── test_init_recrutement_etapes.py
+        │   │       ├── test_list_motifs_refus.py
         │   │       ├── test_list_recrutement_agents.py
         │   │       ├── test_lister_mes_recrutements.py
         │   │       ├── test_lister_note_usecases.py
@@ -1851,8 +1909,12 @@
         │   │       ├── test_organisme_steps.py
         │   │       ├── test_revoke_recrutement_agent.py
         │   │       ├── test_search_agent_by_email.py
+        │   │       ├── test_set_recrutements_responsable.py
         │   │       ├── test_update_recrutement_agent.py
         │   │       └── test_update_recrutement_etapes.py
+        │   ├── config
+        │   │   ├── __init__.py
+        │   │   └── test_storages.py
         │   ├── conftest.py
         │   ├── domain
         │   │   ├── __init__.py
@@ -1864,7 +1926,6 @@
         │   │   │   ├── test_agent.py
         │   │   │   ├── test_candidat.py
         │   │   │   ├── test_organisme_identite.py
-        │   │   │   ├── test_organisme_permission_service.py
         │   │   │   └── test_utilisateurs.py
         │   │   └── recruteur
         │   │       ├── __init__.py
@@ -1879,6 +1940,7 @@
         │   │   │   └── test_api_key_authentication.py
         │   │   ├── candidate
         │   │   │   ├── __init__.py
+        │   │   │   ├── test_document_model.py
         │   │   │   ├── test_get_opportunity_details.py
         │   │   │   ├── test_initialize_cv_metadata.py
         │   │   │   ├── test_match_cv_to_opportunities.py
@@ -1888,17 +1950,22 @@
         │   │   │   ├── __init__.py
         │   │   │   ├── test_calculate_daily_stats.py
         │   │   │   └── test_postgres_audit_log_repository.py
+        │   │   ├── factories
+        │   │   │   ├── __init__.py
+        │   │   │   └── test_seed_recruteur_datas.py
         │   │   ├── identite
         │   │   │   ├── __init__.py
         │   │   │   ├── test_create_agent.py
         │   │   │   ├── test_create_candidat.py
         │   │   │   ├── test_create_organisme.py
+        │   │   │   ├── test_email_normalisation.py
         │   │   │   ├── test_get_utilisateurs_details.py
         │   │   │   ├── test_list_organismes.py
         │   │   │   ├── test_log_utilisateur_connexion.py
         │   │   │   ├── test_postgres_organisme_repository.py
         │   │   │   ├── test_proconnect_backend.py
         │   │   │   ├── test_proconnect_client.py
+        │   │   │   ├── test_supprimer_organismes.py
         │   │   │   └── test_update_organisme.py
         │   │   ├── ingestion
         │   │   │   ├── __init__.py
@@ -2027,6 +2094,7 @@
         │   │   │       ├── test_offer_summaries.py
         │   │   │       ├── test_offers_by_source.py
         │   │   │       ├── test_referentials.py
+        │   │   │       ├── test_supprimer_organismes.py
         │   │   │       ├── test_upsert_offers.py
         │   │   │       ├── test_upsert_organismes.py
         │   │   │       └── test_views.py
@@ -2045,7 +2113,8 @@
         │   │       ├── test_views_recrutement_agents.py
         │   │       ├── test_views_recrutement_detail.py
         │   │       ├── test_views_recrutement_listes.py
-        │   │       └── test_views_recrutement_params.py
+        │   │       ├── test_views_recrutement_params.py
+        │   │       └── test_views_recrutements_responsable.py
         │   ├── shared
         │   │   └── presentation
         │   │       └── api
@@ -2067,4 +2136,4 @@
         │       └── test_storages.py
         ├── uv.lock
         └── vite.config.ts
-380 directories, 1689 files
+393 directories, 1745 files
