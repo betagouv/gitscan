@@ -1,5 +1,52 @@
 # Changelog
 
+## [2026.9.2](https://github.com/proconnect-gouv/hyyypertool/compare/2026.9.1...2026.9.2) (2026-09-14)
+
+### Changements
+
+- ⬆️ Mise à jour des dépendances @proconnect-gouv/* (identite 10.1.0, identite.database 1.8.0, annuaire_entreprises 3.0.3)
+
+### Dépendances
+
+- ⬆️ bump @proconnect-gouv/* dependencies (#1792) (f9a75e54)
+- :arrow_upper_right: [patch](deps): Bump the sentry group with 4 updates (#1788) (0ddd8e89)
+- :arrow_upper_right: [patch](deps-dev): Bump @electric-sql/pglite from 0.5.3 to 0.5.8 (#1781) (5ba834b9)
+- :arrow_upper_right: [patch](deps): Bump tailwind-variants (#1767) (0fb99cd8)
+- :arrow_upper_right: [patch](deps): Bump preact from 10.29.2 to 10.29.8 (#1770) (1a73cbbc)
+- ⬆️ bump bun to 1.4.2 (#1790) (dac19523)
+- ⬆️ update to bun 1.3.24 (#1772) (8d6a0626)
+- :arrow_upper_right: [patch](deps): Bump @preact/signals (#1777) (af8af38f)
+- ⬆️ Bump hono from 4.13.2 to 4.13.5 in /bin (#1789) (c56b6353)
+- :arrow_upper_right: [patch](deps-dev): Bump @types/node in /e2e (#1787) (e9bd517b)
+
+### Divers
+
+- ♻ extract DSFR tailwind theme into its own workspace package (#1791) (93b440ee)
+
+## [2026.9.1](https://github.com/proconnect-gouv/hyyypertool/compare/2026.9.0...2026.9.1) (2026-09-08)
+
+### Changements
+
+- ✨ Retirer les noms de domaine refusés des RT Hyypertool
+
+### Ajouté
+
+- ✨ Function GetDomains returns approved email domains (#1782) (e97a7be3)
+
+### Modifié
+
+- 🔧 add nix flake for sudoless dev shell (#1783) (5dfb04b8)
+
+### Dépendances
+
+- :arrow_upper_right: [patch](deps): Bump the sentry group across 1 directory with 4 updates (#1780) (9b264a08)
+- :arrow_upper_right: [patch](deps-dev): Bump @types/node in /e2e (#1784) (358553e1)
+- :arrow_upper_right: [patch](deps): Bump cypress in /e2e (#1778) (ad505a7e)
+
+### Divers
+
+- 🧪 try cypress 16 (#1786) (b5bfa30e)
+
 ## [2026.9.0](https://github.com/proconnect-gouv/hyyypertool/compare/2026.8.0...2026.9.0) (2026-09-02)
 
 ### Ajouté
