@@ -1,5 +1,6 @@
 .
 ├── .dockerignore
+├── .editorconfig
 ├── .env
 ├── .env.local
 ├── .github
@@ -19,8 +20,7 @@
 │       └── unit-tests.yml
 ├── .gitignore
 ├── .gitlab-ci-dso.yml
-├── .gitleaksignore
-├── .gitmodules
+├── .gitleaks.toml
 ├── .husky
 │   ├── commit-msg
 │   └── pre-commit
@@ -32,7 +32,7 @@
 ├── alembic.ini
 ├── apps
 │   ├── client
-│   │   ├── .editorconfig
+│   │   ├── .dockerignore
 │   │   ├── .gitignore
 │   │   ├── CHANGELOG.md
 │   │   ├── Dockerfile
@@ -67,6 +67,8 @@
 │   │   ├── src
 │   │   │   ├── App.vue
 │   │   │   ├── api
+│   │   │   │   ├── __tests__
+│   │   │   │   │   └── http-client.spec.ts
 │   │   │   │   ├── http-client.ts
 │   │   │   │   └── types
 │   │   │   │       └── api.schema.d.ts
@@ -93,6 +95,8 @@
 │   │   │   │   └── ZoneSelectionModal.vue
 │   │   │   ├── components.d.ts
 │   │   │   ├── composables
+│   │   │   │   ├── __tests__
+│   │   │   │   │   └── use-toaster.spec.ts
 │   │   │   │   ├── use-backend-health.ts
 │   │   │   │   └── use-toaster.ts
 │   │   │   ├── interfaces
@@ -102,14 +106,18 @@
 │   │   │   ├── router
 │   │   │   │   └── index.ts
 │   │   │   ├── stores
+│   │   │   │   ├── __tests__
+│   │   │   │   │   ├── ocr.spec.ts
+│   │   │   │   │   └── tasks.spec.ts
 │   │   │   │   ├── ocr.ts
 │   │   │   │   ├── tasks.ts
 │   │   │   │   └── user.ts
 │   │   │   ├── utils
+│   │   │   │   ├── __tests__
+│   │   │   │   │   └── methods.spec.ts
+│   │   │   │   ├── auth.ts
 │   │   │   │   ├── constants.ts
-│   │   │   │   ├── keycloak.ts
-│   │   │   │   ├── methods.ts
-│   │   │   │   └── uniqueId.ts
+│   │   │   │   └── methods.ts
 │   │   │   └── views
 │   │   │       ├── AboutUs.vue
 │   │   │       ├── AppHome.vue
@@ -199,7 +207,6 @@
 │       │   │       └── youtube_worker.py
 │       │   └── paddleocr2
 │       │       ├── Dockerfile
-│       │       ├── Dockerfile.gpu
 │       │       ├── __init__.py
 │       │       ├── configs
 │       │       │   ├── __init__.py
@@ -274,11 +281,15 @@
 │       │   │   ├── __init__.py
 │       │   │   └── security
 │       │   │       ├── __init__.py
+│       │   │       ├── claims.py
 │       │   │       ├── factory.py
+│       │   │       ├── keycloak_client.py
+│       │   │       ├── session.py
 │       │   │       └── token.py
 │       │   ├── main.py
 │       │   └── routers
 │       │       ├── __init__.py
+│       │       ├── auth.py
 │       │       ├── collections.py
 │       │       ├── health.py
 │       │       ├── jobs.py
@@ -316,6 +327,7 @@
 │       │   ├── config
 │       │   │   ├── __init__.py
 │       │   │   ├── celery.py
+│       │   │   ├── keycloak.py
 │       │   │   ├── llm.py
 │       │   │   ├── ocr_model.py
 │       │   │   ├── redis.py
@@ -460,8 +472,12 @@
 │       │   ├── ocr_backend
 │       │   │   ├── core
 │       │   │   │   └── security
-│       │   │   │       └── test_security_token.py
+│       │   │   │       ├── conftest.py
+│       │   │   │       ├── test_security_factory.py
+│       │   │   │       ├── test_security_token.py
+│       │   │   │       └── test_session.py
 │       │   │   ├── routers
+│       │   │   │   ├── test_auth.py
 │       │   │   │   ├── test_collections.py
 │       │   │   │   ├── test_health_route.py
 │       │   │   │   ├── test_jobs_route.py
@@ -502,6 +518,9 @@
 │   └── configs
 │       └── ct.yaml
 ├── commitlint.config.js
+├── docker
+│   └── keycloak
+│       └── realm-mirai.json
 ├── docker-compose-liteparse-test.override.yaml
 ├── docker-compose-test.yaml
 ├── docker-compose.frontend.yaml
@@ -509,13 +528,16 @@
 ├── docs
 │   ├── images
 │   │   ├── Diagrame.drawio.png
-│   │   └── demo-ocr.gif
+│   │   ├── demo-ocr.gif
+│   │   └── tasks-tile-list.png
+│   ├── keycloak-setup.md
 │   ├── security
 │   │   ├── readme.md
 │   │   └── strix.md
 │   ├── server
 │   │   └── asyncronus.md
 │   └── variables.md
+├── eslint.config.js
 ├── helm
 │   ├── .helmignore
 │   ├── Chart.lock
@@ -597,44 +619,62 @@
 │   │       └── triggerauthentication.yaml
 │   ├── test-values.yaml
 │   └── values.yaml
-├── infra
 ├── kind
 │   └── config.yaml
 ├── package.json
 ├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
 └── sdk
-    ├── .gitignore
-    ├── CHANGELOG.md
-    ├── QUICKSTART.md
-    ├── README.md
-    ├── USAGE_GUIDE.md
-    ├── examples
-    │   ├── async_example.py
-    │   └── sync_example.py
-    ├── ocr_sdk
-    │   ├── __init__.py
-    │   ├── client_async.py
-    │   ├── client_sync.py
-    │   ├── exceptions.py
-    │   ├── models.py
-    │   └── schemas
-    │       ├── __init__.py
-    │       ├── audio.py
-    │       ├── box.py
-    │       ├── health.py
-    │       ├── input.py
-    │       ├── layout.py
-    │       ├── output.py
-    │       ├── prediction.py
-    │       ├── task.py
-    │       ├── template.py
-    │       ├── vector.py
-    │       └── video.py
-    ├── pyproject.toml
-    ├── tests
-    │   └── ocr_sdk
-    │       ├── conftest.py
-    │       ├── test_client_sync.py
-    │       └── test_models.py
-    └── uv.lock
-150 directories, 489 files
+    ├── js
+    │   ├── .gitignore
+    │   ├── README.md
+    │   ├── eslint.config.js
+    │   ├── package.json
+    │   ├── pnpm-lock.yaml
+    │   ├── pnpm-workspace.yaml
+    │   ├── src
+    │   │   ├── client.ts
+    │   │   ├── errors.ts
+    │   │   ├── index.ts
+    │   │   └── types.ts
+    │   ├── tests
+    │   │   └── client.test.ts
+    │   ├── tsconfig.json
+    │   └── vitest.config.ts
+    └── python
+        ├── .gitignore
+        ├── CHANGELOG.md
+        ├── QUICKSTART.md
+        ├── README.md
+        ├── USAGE_GUIDE.md
+        ├── examples
+        │   ├── async_example.py
+        │   └── sync_example.py
+        ├── ocr_sdk
+        │   ├── __init__.py
+        │   ├── client_async.py
+        │   ├── client_sync.py
+        │   ├── exceptions.py
+        │   ├── models.py
+        │   └── schemas
+        │       ├── __init__.py
+        │       ├── audio.py
+        │       ├── box.py
+        │       ├── health.py
+        │       ├── input.py
+        │       ├── layout.py
+        │       ├── output.py
+        │       ├── pagination.py
+        │       ├── prediction.py
+        │       ├── task.py
+        │       ├── template.py
+        │       ├── vector.py
+        │       └── video.py
+        ├── pyproject.toml
+        ├── tests
+        │   └── ocr_sdk
+        │       ├── conftest.py
+        │       ├── test_client_sync.py
+        │       └── test_models.py
+        └── uv.lock
+159 directories, 520 files

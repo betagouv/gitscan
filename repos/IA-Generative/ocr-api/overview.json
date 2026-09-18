@@ -1,60 +1,63 @@
 {
   "url": "https://github.com/IA-Generative/ocr-api",
   "name": "ocr-api",
-  "description": "Cette API fournit un service d'extraction de texte à partir de fichiers PDF, d'images et de vidéos. Elle utilise un pipeline asynchrone basé sur Redis, Celery et PaddleOCR pour le traitement de documents.",
+  "description": "Cette API fournit un service d'extraction de texte à partir de fichiers PDF ou d'images. Elle repose sur un pipeline de traitement asynchrone utilisant Redis, S3 et PaddleOCR pour la reconnaissance de texte.",
   "language": "Python",
   "features": [
     "Intelligence Artificielle & NLP",
     "API & Intégrations",
     "Gestion documentaire & Fichiers",
-    "Gestion des médias & Assets"
+    "Authentification & Accès"
   ],
   "audience": "Développeurs",
   "dependencies": [
     "FastAPI",
     "Redis",
     "PaddleOCR",
-    "Celery",
-    "PostgreSQL",
-    "MinIO",
     "Keycloak",
-    "Langfuse",
-    "Sentry",
-    "Pydantic"
+    "Vue.js",
+    "Pydantic",
+    "Playwright",
+    "Docker",
+    "Helm"
   ],
   "components": [
     "API REST & GraphQL",
     "Python (scripts & backend)",
-    "Docker & Conteneurs",
     "Intelligence Artificielle / ML",
-    "Celery & Queue asynchrone",
-    "PostgreSQL & SQL",
-    "CI/CD & Déploiement"
+    "Docker & Conteneurs",
+    "CI/CD & Déploiement",
+    "Authentification (composant)",
+    "Stockage objet"
   ],
   "auth": {
     "methods": [
       "api-key",
-      "sso"
+      "jwt",
+      "session",
+      "oauth2"
     ],
     "providers": [
       "Keycloak"
     ]
   },
-  "tests": "Tests unitaires, tests d'intégration dans des conteneurs et tests E2E.",
-  "workflows": [
-    "GitHub Actions",
-    "Helm"
+  "tests": [
+    "pytest",
+    "vitest",
+    "Playwright"
   ],
-  "lastActivity": "2026-08-14T00:00:00Z",
+  "workflows": [
+    "GitHub Actions"
+  ],
+  "lastActivity": "2026-09-16T00:00:00Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
   "tags": [
     "Intelligence Artificielle & LLM",
     "Python",
-    "Docker & Conteneurs",
     "NLP & ML",
-    "Git & DevOps",
-    "CI/CD & GitHub Actions"
+    "Docker & Conteneurs",
+    "Git & DevOps"
   ]
 }
