@@ -1,4 +1,10 @@
 .
+├── .claude
+│   └── skills
+│       ├── fiche-classe-plugin
+│       │   └── SKILL.md
+│       └── installer-modele-plugin
+│           └── SKILL.md
 ├── .githooks
 │   ├── pre-push
 │   └── pre-push.cmd
@@ -8,37 +14,101 @@
 ├── LICENSE.txt
 ├── README.md
 ├── __init__.py
-├── config.json
+├── config.example.json
 ├── conftest.py
 ├── data
+│   ├── demo_catalogue
+│   │   ├── catalogue.json
+│   │   └── thumbs
+│   │       ├── COUVERTURE.png
+│   │       ├── CVAT.png
+│   │       ├── DENSITE.png
+│   │       ├── HS.png
+│   │       ├── LD.png
+│   │       ├── MNT.png
+│   │       ├── MSTP.png
+│   │       ├── M_HS.png
+│   │       ├── SLO.png
+│   │       ├── SLRM.png
+│   │       ├── SVF.png
+│   │       ├── VAT.png
+│   │       └── thumbs.json
 │   ├── entities_catalog.json
 │   ├── icon.png
-│   └── models
-│       └── .gitkeep
+│   ├── indices_fiches.json
+│   ├── indices_vignettes
+│   │   ├── COUVERTURE.jpg
+│   │   ├── CRIM.jpg
+│   │   ├── CVAT.jpg
+│   │   ├── DENSITE.jpg
+│   │   ├── HS.jpg
+│   │   ├── LD.jpg
+│   │   ├── MNT.jpg
+│   │   ├── MSTP.jpg
+│   │   ├── M_HS.jpg
+│   │   ├── PRISM.jpg
+│   │   ├── SLO.jpg
+│   │   ├── SLRM.jpg
+│   │   ├── SVF.jpg
+│   │   └── VAT.jpg
+│   ├── models
+│   │   └── .gitkeep
+│   └── third_party
+│       └── cv_runner_onnx
+│           └── windows
+│               └── build_info.json
 ├── dev
-│   ├── docs
-│   │   ├── documentation_utilisateur_v1.docx
-│   │   └── generate_doc.py
+│   ├── build_quadrillage_index.py
+│   ├── demo_comite
+│   │   ├── README.md
+│   │   ├── build_catalogue.py
+│   │   ├── build_thumbs.py
+│   │   ├── run_pipeline.py
+│   │   ├── smoke_dialog.py
+│   │   └── smoke_visu.py
+│   ├── deploy.config.example.json
+│   ├── fiches
+│   │   ├── README.md
+│   │   ├── ajouter_vignettes.py
+│   │   ├── appliquer_choix.py
+│   │   ├── appliquer_choix_indices.py
+│   │   ├── bundles_drive.json
+│   │   ├── candidats_corpus.py
+│   │   ├── candidats_indices.py
+│   │   ├── comparer_drive.py
+│   │   ├── injecter_cadrages.py
+│   │   ├── injecter_fiches.py
+│   │   ├── page_choix.py
+│   │   ├── page_choix_indices.py
+│   │   └── reporter_sur_drive.py
+│   ├── make_htpasswd.py
 │   ├── package_plugin.py
 │   ├── requirements
+│   │   ├── build.lock
 │   │   ├── build.txt
 │   │   ├── export.txt
 │   │   └── test.txt
 │   ├── requirements.txt
-│   └── runner_onnx
-│       ├── README.md
-│       ├── build.py
-│       ├── cv_runner_onnx.spec
-│       ├── cv_runner_onnx_cli.py
-│       └── export_to_onnx.py
+│   ├── runner_onnx
+│   │   ├── README.md
+│   │   ├── build.py
+│   │   ├── cv_runner_onnx.spec
+│   │   ├── cv_runner_onnx_cli.py
+│   │   └── export_to_onnx.py
+│   └── sync_skills_training.py
 ├── docs
+│   ├── img
+│   │   └── README.md
 │   ├── model_contract.md
+│   ├── reference-parametres-briques.html
 │   └── superpowers
 │       └── specs
-│           └── 2026-05-25-zones-extraction-cible-derivee-design.md
+│           ├── 2026-05-25-zones-extraction-cible-derivee-design.md
+│           └── 2026-06-12-couleurs-detections-design.md
 ├── main.py
 ├── metadata.txt
 ├── pytest.ini
+├── ruff.toml
 ├── run_tests.py
 ├── scripts
 │   ├── _apply_notebook_standardization.py
@@ -67,11 +137,25 @@
 │   │   │   └── registry.py
 │   │   ├── services
 │   │   │   ├── __init__.py
+│   │   │   ├── cache_guard.py
+│   │   │   ├── class_fiche.py
+│   │   │   ├── config_store.py
 │   │   │   ├── cv_post_service.py
+│   │   │   ├── detection_symbology.py
+│   │   │   ├── fiabilite.py
 │   │   │   ├── finalize_service.py
+│   │   │   ├── grid_view.py
+│   │   │   ├── indice_fiche.py
 │   │   │   ├── indices_model.py
+│   │   │   ├── layer_purge.py
 │   │   │   ├── model_orchestrator.py
-│   │   │   └── source_modes.py
+│   │   │   ├── proxy_config.py
+│   │   │   ├── reglages_defaut.py
+│   │   │   ├── rvt_kernel_context.py
+│   │   │   ├── source_modes.py
+│   │   │   ├── tile_selection.py
+│   │   │   ├── visu_catalogue.py
+│   │   │   └── vocabulaire_modele.py
 │   │   ├── structured_logger.py
 │   │   ├── text_slug.py
 │   │   └── user_narrator.py
@@ -80,20 +164,30 @@
 │   │   └── config_manager.py
 │   ├── pipeline
 │   │   ├── __init__.py
+│   │   ├── batch.py
 │   │   ├── cancellation.py
 │   │   ├── constants.py
 │   │   ├── coords.py
+│   │   ├── coverage_math.py
+│   │   ├── coverage_polygons.py
 │   │   ├── cv
 │   │   │   ├── __init__.py
+│   │   │   ├── alignment.py
+│   │   │   ├── class_color_registry.py
 │   │   │   ├── class_utils.py
 │   │   │   ├── clustering.py
+│   │   │   ├── clustering_bounds.py
+│   │   │   ├── color_palette.py
 │   │   │   ├── computer_vision_onnx.py
+│   │   │   ├── conversion_outcome.py
 │   │   │   ├── conversion_shp.py
 │   │   │   ├── cv_output.py
+│   │   │   ├── enclosure.py
 │   │   │   ├── external_runner.py
 │   │   │   ├── model_config.py
 │   │   │   ├── model_profile.py
 │   │   │   ├── postprocessing.py
+│   │   │   ├── recentrage.py
 │   │   │   ├── runner.py
 │   │   │   ├── runner_cache.py
 │   │   │   ├── runner_inference.py
@@ -109,22 +203,26 @@
 │   │   │   ├── preprocess.py
 │   │   │   ├── products
 │   │   │   │   ├── __init__.py
-│   │   │   │   ├── convert_tif_to_jpg.py
 │   │   │   │   ├── convert_tif_to_png.py
+│   │   │   │   ├── coverage.py
+│   │   │   │   ├── crim.py
 │   │   │   │   ├── crop.py
+│   │   │   │   ├── cvat.py
 │   │   │   │   ├── density.py
 │   │   │   │   ├── indices.py
 │   │   │   │   ├── mnt.py
 │   │   │   │   ├── qgis_processing.py
 │   │   │   │   ├── results.py
 │   │   │   │   └── rvt_naming.py
+│   │   │   ├── quadrillage_paths.py
 │   │   │   └── tile_resolver.py
 │   │   ├── ingest_plan.py
 │   │   ├── modes
 │   │   │   ├── __init__.py
 │   │   │   ├── existing_mnt.py
 │   │   │   ├── existing_rvt.py
-│   │   │   └── local_laz.py
+│   │   │   ├── local_laz.py
+│   │   │   └── neighbor_halo.py
 │   │   ├── output_paths.py
 │   │   ├── preflight.py
 │   │   ├── subprocess_utils.py
@@ -132,14 +230,20 @@
 │   │   └── types.py
 │   └── ui
 │       ├── __init__.py
-│       ├── config_widget_adapter.py
 │       ├── dialogs
 │       │   ├── __init__.py
 │       │   ├── _model_info_data.py
+│       │   ├── class_info_dialog.py
+│       │   ├── config_dialogs.py
+│       │   ├── indice_info_dialog.py
 │       │   └── model_info_dialog.py
 │       ├── icons.py
 │       ├── layer_loader.py
 │       ├── log_bridge.py
+│       ├── map_tools
+│       │   ├── __init__.py
+│       │   ├── grid_layer.py
+│       │   └── tile_picker_tool.py
 │       ├── qgs_writer.py
 │       ├── run_view.py
 │       ├── steps
@@ -152,6 +256,7 @@
 │       │   ├── icons
 │       │   │   ├── arrow-left.svg
 │       │   │   ├── arrow-right.svg
+│       │   │   ├── check-white.svg
 │       │   │   ├── check.svg
 │       │   │   ├── chevron-right.svg
 │       │   │   ├── detection.svg
@@ -170,16 +275,19 @@
 │       │   │   ├── stop.svg
 │       │   │   └── warning.svg
 │       │   └── v2.qss
+│       ├── visualisation_tab.py
 │       ├── widgets
 │       │   ├── __init__.py
 │       │   ├── card.py
 │       │   ├── collapsible.py
 │       │   ├── entity_card.py
+│       │   ├── indice_card.py
 │       │   ├── no_wheel.py
 │       │   ├── stage_button.py
 │       │   ├── stepper_rail.py
 │       │   ├── toast.py
-│       │   └── toggle_switch.py
+│       │   ├── toggle_switch.py
+│       │   └── vignette.py
 │       └── wizard_dialog.py
 └── tests
     ├── TESTS_MANUELS_QGIS.md
@@ -191,47 +299,16 @@
     ├── integration
     │   ├── __init__.py
     │   ├── conftest.py
+    │   ├── test_conversion_empty_vs_failure.py
+    │   ├── test_existing_mnt_runner_finalize.py
+    │   ├── test_existing_rvt_runner_isolation.py
+    │   ├── test_ign_runner_finalize.py
+    │   ├── test_pipeline_controller_failure.py
     │   ├── test_pipeline_controller_integration.py
     │   ├── test_preflight.py
     │   ├── test_run_context_integration.py
     │   └── test_runners_integration.py
     └── unit
         ├── __init__.py
-        ├── test_cancel_token.py
-        ├── test_cancellation.py
-        ├── test_confidence_bins.py
-        ├── test_config_manager.py
-        ├── test_config_widget_adapter.py
-        ├── test_dedup_extent.py
-        ├── test_detection.py
-        ├── test_existing_mnt.py
-        ├── test_existing_rvt.py
-        ├── test_existing_rvt_runner.py
-        ├── test_external_runner.py
-        ├── test_finalize_service.py
-        ├── test_geometry_pipeline.py
-        ├── test_helpers.py
-        ├── test_indices_model.py
-        ├── test_ingest_plan.py
-        ├── test_model_config.py
-        ├── test_model_info_dialog_data.py
-        ├── test_model_orchestrator.py
-        ├── test_model_profile.py
-        ├── test_models_connectivity.py
-        ├── test_models_metadata.py
-        ├── test_output_paths.py
-        ├── test_plugin_metadata.py
-        ├── test_preflight.py
-        ├── test_progress_plan.py
-        ├── test_progress_reporter.py
-        ├── test_progress_stages.py
-        ├── test_registry.py
-        ├── test_run_context.py
-        ├── test_rvt_naming_suffix.py
-        ├── test_source_modes.py
-        ├── test_structured_logger.py
-        ├── test_subprocess_utils.py
-        ├── test_text_slug.py
-        ├── test_tilespec.py
-        └── test_user_narrator.py
-32 directories, 204 files
+        └── test_*.py  (114 files)
+45 directories, 381 files

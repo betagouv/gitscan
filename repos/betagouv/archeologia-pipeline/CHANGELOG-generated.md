@@ -1,25 +1,31 @@
-## Changelog : archeologia-pipeline (30 derniers jours, au 28 mai 2026)
+## Changelog : archeologia-pipeline (30 derniers jours, au 17 septembre 2026)
 
 ### Résumé
-Ce mois-ci, le pipeline a subi une refonte majeure de son interface utilisateur, passant à une nouvelle version du "wizard" (assistant de configuration). Cette refonte vise à améliorer l'expérience utilisateur en guidant l'utilisateur à travers les différentes étapes du traitement des données LiDAR, de la source aux détections d'éléments archéologiques. Des améliorations significatives ont également été apportées à la gestion des modèles de détection et à la gestion des annulations de traitements.
+Ce mois a été marqué par une montée en puissance importante du plugin, avec le passage de la version 0.8.0 à la version 0.11.0. Les utilisateurs bénéficient désormais de nouvelles méthodes de visualisation des données LiDAR et d'une interface plus intuitive pour consulter les résultats de détection. La fiabilité des analyses a été renforcée par une meilleure gestion des limites de traitement et une présentation plus claire des niveaux de confiance des objets détectés.
 
 ### Évolutions fonctionnelles
-- **Nouvelle interface utilisateur (wizard V2):** Refonte complète de l'interface utilisateur pour une expérience plus intuitive et guidée. L'interface est divisée en quatre étapes : source, indices, détection par entités et lancement. [#d9c3f3d](https://github.com/betagouv/archeologia-pipeline/commit/d9c3f3d)
-- **Gestion des seuils de confiance:** Possibilité de définir un seuil de confiance par entité pour filtrer les détections et améliorer la symbologie.
-- **Nommage des indices paramétré:**  Possibilité de personnaliser le nommage des indices calculés.
-- **Annulation des traitements:** Amélioration de la gestion de l'annulation des traitements, avec une annulation propre et fine à chaque étape du pipeline.
-- **Informations sur les modèles IA:** Ajout d'une icône d'information (ⓘ) pour afficher des détails sur les modèles d'intelligence artificielle programmés. [#7a6037b](https://github.com/betagouv/archeologia-pipeline/commit/7a6037b)
-- **Validation du workflow:** Ajout d'une validation bloquante à l'étape de lancement pour s'assurer que tous les paramètres sont correctement configurés.
-- **Barre de progression améliorée:** La barre de progression a été rendue plus lisible avec une épaisseur accrue et un affichage centré du pourcentage.
-- **Gestion des fichiers ASC:** Acceptation des fichiers ASC en mode "existing_mnt". [#e398e0e](https://github.com/betagouv/archeologia-pipeline/commit/e398e0e)
+- **Nouvelles visualisations** : Ajout de deux nouveaux produits de visualisation pour l'étape 2 : le relief coloré (CRIM) et l'ouverture prismatique (PRISM).
+- **Amélioration de la lecture des résultats** : 
+    - Remplacement des scores numériques de détection par une échelle de confiance textuelle plus compréhensible (Douteux, Possible, Probable, Très probable).
+    - Amélioration de la présentation des fiches de structures (illustrations, provenance des données, etc.).
+- **Gestion du catalogue d'entités** : 
+    - Intégration de nouveaux modèles de détection (notamment pour les tranchées).
+    - Nettoyage du catalogue avec le retrait de certaines classes obsolètes (talus, fosse, abri et axes linéaires de parcellaires).
+- **Expérience utilisateur (UI)** : 
+    - Correction des problèmes de défilement de la fenêtre et de l'affichage des libellés d'onglets.
+    - Amélioration du cadrage des icônes et des vignettes de cartes.
+- **Gestion de projet** : Ajout d'une bibliothèque de configurations permettant de sauvegarder et de recharger les réglages spécifiques d'un chantier.
 
 ### Évolutions techniques
-- **Refonte de l'orchestrateur de modèles:**  Nouvel orchestrateur de modèles par entités avec un catalogue et une configuration V2. [#d84fedd](https://github.com/betagouv/archeologia-pipeline/commit/d84fedd)
-- **Refactoring de l'annulation:**  Refactorisation du code pour une gestion plus propre et plus efficace de l'annulation des traitements.
-- **Régénération de l'index VRT:** L'index VRT est maintenant régénéré systématiquement pour garantir sa cohérence. [#cc0cc82](https://github.com/betagouv/archeologia-pipeline/commit/cc0cc82)
-- **Bascule sur le nouveau wizard:** Le code principal a été mis à jour pour utiliser le nouveau wizard V2 et l'ancienne interface utilisateur a été supprimée. [#e3449f5](https://github.com/betagouv/archeologia-pipeline/commit/e3449f5)
+- **Optimisation du traitement** : 
+    - Parallélisation de la préparation des images pour le mode `existing_rvt`.
+    - Mise en place d'une règle de centroïde : chaque dalle de traitement ne rapporte désormais que les objets centrés dans sa cellule, améliorant la précision de l'attribution.
+- **Fiabilisation de la vision par ordinateur** : 
+    - Implémentation d'un "halo inter-dalles" pour mieux traiter les objets situés aux limites des zones de calcul.
+    - Durcissement de la chaîne de traitement (parité ONNX et gestion stricte des fichiers annexes) pour garantir la reproductibilité des résultats.
+- **Automatisation** : Création d'un lanceur "headless" (sans interface graphique) pour permettre l'exécution automatisée du pipeline sur des jeux de données denses.
+- **Robustesse** : Correction de l'orchestrateur pour une meilleure gestion des noms de modèles et des erreurs de processus.
 
 ### Autres changements
-- **Documentation:** Mise à jour de la documentation README et CLAUDE.md pour refléter les changements apportés. [#74c6c28](https://github.com/betagouv/archeologia-pipeline/commit/74c6c28)
-- **Mise à jour des checksums:** Mise à jour des checksums pour les fichiers de configuration et de documentation.
-- **Bump de version:** Le pipeline a été mis à jour vers la version 0.3.0 puis 0.5.0. [#11298af](https://github.com/betagouv/archeologia-pipeline/commit/11298af)
+- **Intégrité des données** : Mise en place massive de sommes de contrôle (checksums) via Talisman pour garantir l'intégrité des fichiers de configuration, de documentation et de visualisation.
+- **Documentation** : Mise à jour du README et des guides d'utilisation concernant les mesures parcellaires et la provenance des données.
