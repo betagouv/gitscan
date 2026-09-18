@@ -1,3 +1,65 @@
+2026-09-17T15:10:14+02:00 - 3d46e9f - Claire Dhénin : chore: update dev dependencies major versions
+2026-09-17T10:59:23+02:00 - 4f287ec - Claire Dhénin : chore(api): upgrade major versions of cookie and nodemailer dependencies
+2026-09-17T10:18:33+02:00 - d541652 - Claire Dhénin : chore: update minor versions of all dependencies
+2026-09-16T21:30:32+02:00 - 60ec1b5 - stephane-ruhlmann : feat(api): backfill CRM contacts for users created during the Connect CRM outage
+2026-09-16T16:01:07+02:00 - 0d9cb7e - stephane-ruhlmann : fix(api): validate CONNECT_CRM_BASE_URL via NestJS OnModuleInit instead of main.ts
+2026-09-16T15:48:34+02:00 - cdecbc5 - Claire Dhénin : feat(api): do not compute localPropertyIncrease if annualRateOfPopulationChange is too low and do not compute avoidedKilometers if shareOfWorkTripsByPublicTransport is too low
+2026-09-16T15:38:00+02:00 - 58819b5 - stephane-ruhlmann : fix(api): move CONNECT_CRM_BASE_URL validation out of ConfigModule.forRoot
+2026-09-16T14:53:01+02:00 - 7ca07e8 - stephane-ruhlmann : fix(api): stop duplicating /api/v1 in Connect CRM requests
+2026-09-16T14:30:43+02:00 - 9a051e0 - Claire Dhénin : fix(api): update header with new columns in read city stats csv script
+2026-09-16T13:55:24+02:00 - f506075 - Claire Dhénin : feat(api): add anct stats from 'observatoire des territoires' columns in cityStats
+2026-09-16T11:20:15+02:00 - af4ae4a - Claire Dhénin : feat(api): update dvf data with 2025 transactions and add dvf 'terrains' rows in cityStats
+2026-09-16T10:16:41+02:00 - b8d20b3 - Claire Dhénin : chore: move cities csv scripts in cities subfolder
+2026-09-15T16:31:16+02:00 - 01754da - Claire Dhénin : feat(api): update condition to compute localPropertyIncrease impact with ABC city zonage
+2026-09-15T16:16:10+02:00 - 054593e - Claire Dhénin : chore: update read-cities-csv path to sqlCities.csv
+2026-09-15T10:34:04+02:00 - cfc3f81 - Claire Dhénin : chore: update minor dependencies
+2026-09-15T09:20:44+02:00 - d7cf932 - Claire Dhénin : feat(api): build a new sqlCities.csv file to update cities database with aldo and abc zonage and the latest list of cities in France
+2026-09-08T20:15:01+02:00 - 43445a2 - stephane-ruhlmann : fix(web): stop navigation blocker from swallowing the post-creation link
+2026-09-08T13:43:37+02:00 - 0727791 - stephane-ruhlmann : fix(e2e): use combobox role for address field in site-update test
+2026-09-07T18:44:24+02:00 - 6330525 - stephane-ruhlmann : feat(e2e): add site-update flows and ineligibility e2e coverage (ticket 14)
+2026-09-07T18:37:18+02:00 - d1d527e - stephane-ruhlmann : feat(web): add 'Modifier' edit-links to site summary steps
+2026-09-07T18:37:18+02:00 - 95eb54d - stephane-ruhlmann : feat(web): warn on unsaved changes when leaving update-site wizard
+2026-09-07T18:37:18+02:00 - 4df1aa4 - stephane-ruhlmann : feat(web): add save-state UI to update-site wizard
+2026-09-07T18:37:17+02:00 - cb79c9b - stephane-ruhlmann : feat(web): support editing custom urban-zone sites in update wizard
+2026-09-07T17:51:32+02:00 - bf2bdbe - stephane-ruhlmann : fix(e2e): update address field role to combobox after Autocomplete fix
+2026-09-07T17:30:59+02:00 - a55a9f6 - stephane-ruhlmann : fix(web): route HeadlessUI Combobox wiring to the real native input in Autocomplete
+2026-09-01T20:45:00+02:00 - b7d3d13 - stephane-ruhlmann : feat(web): add 'Modifier le site' entry point to site page and evaluations
+2026-09-01T17:00:25+02:00 - d47f4cd - stephane-ruhlmann : docs(api): merge scheduled and manual scripts into one generic scripts doc
+2026-09-01T17:00:25+02:00 - 8c1ff52 - stephane-ruhlmann : feat(adw): Revoke pending auth tokens (ticket 01)
+2026-09-01T17:00:25+02:00 - 59f038b - stephane-ruhlmann : refactor(api): drop expiry filter from token revocation, rename to RevokeUnusedAuthTokens
+2026-09-01T17:00:25+02:00 - 29c03ed - stephane-ruhlmann : docs(adw): Revoke pending auth tokens (ticket 01)
+2026-09-01T15:27:56+02:00 - 5fb793e - stephane-ruhlmann : feat(web): update wizard for legacy-nature sites, with fixes from QA
+2026-09-01T14:48:13+02:00 - bc453eb - stephane-ruhlmann : feat(web): cascade address city changes to stakeholder steps in custom site flow
+2026-09-01T09:43:00+02:00 - 2fbef42 - stephane-ruhlmann : feat(api): expose isEditable/notEditableReason on site view and evaluations
+2026-08-31T18:04:34+02:00 - 523d53a - stephane-ruhlmann : tools: prevent Claude from reading .env files
+2026-08-31T18:03:28+02:00 - 0bd67cb - stephane-ruhlmann : tools(skills): get rid of validation commands in to-tickets skill and improve acceptance criterion part
+2026-08-31T18:02:00+02:00 - a6684c5 - stephane-ruhlmann : refacto(web): port legacy custom site creation flow onto wizard-form engine
+2026-08-31T18:02:00+02:00 - 8bf2bfa - stephane-ruhlmann : refacto(web): introduce site-form context hooks and step-component maps
+2026-08-31T18:02:00+02:00 - 78ae543 - stephane-ruhlmann : feat(api): add PUT /sites/:siteId endpoint to update a custom site
+2026-08-31T18:01:59+02:00 - b001030 - stephane-ruhlmann : feat(web): track per-step answers map in legacy site creation flow
+2026-08-31T16:50:54+02:00 - 17d4663 - stephane-ruhlmann : feat(api): raise rate limit to 5 requests per second per IP
+2026-08-31T09:53:19+02:00 - b0dcb38 - stephane-ruhlmann : fix(e2e-tests): ignore playwright aria snapshots in prettier
+2026-08-27T10:48:25+02:00 - 2c9195d - stephane-ruhlmann : Merge branch 'worktree-allow-site-update'
+2026-08-26T22:18:49+02:00 - 0911c0e - stephane-ruhlmann : refacto(web): port urban-zone site creation flow onto wizard-form engine
+2026-08-26T22:18:29+02:00 - be56088 - stephane-ruhlmann : fix(web): keep selected address visible in search input on back navigation
+2026-08-26T22:16:31+02:00 - d6e8f27 - stephane-ruhlmann : fix(web): use correct French article per land parcel type in step titles
+2026-08-26T22:15:04+02:00 - e5638d4 - stephane-ruhlmann : fix(web): remove invalid nested paragraphs in soils contamination introduction
+2026-08-26T22:14:46+02:00 - 7e34294 - stephane-ruhlmann : fix(web): remove stray "$" in land parcel buildings floor area hint
+2026-08-26T17:37:42+02:00 - 8b805a6 - stephane-ruhlmann : refacto(web): port express site creation flow onto wizard-form engine
+2026-08-26T17:16:55+02:00 - 10bf8c2 - Claire Dhénin : refacto(web): move each tab of impacts page in their own folder
+2026-08-26T16:53:19+02:00 - 99d93da - Claire Dhénin : fix(web): make ImpactModalDescriptionProvider usable non dependant of app router to be used in embed page
+2026-08-26T16:53:19+02:00 - 6e46d3f - Claire Dhénin : feat(web): use query params to handle impacts modal description content and remove in progress modals
+2026-08-26T16:53:19+02:00 - 090c928 - Claire Dhénin : refacto(web): move impacts description modals in separate folder outside of project-page
+2026-08-26T11:03:51+02:00 - c7061f4 - stephane-ruhlmann : docs: fix specs after core folder rename
+2026-08-26T11:03:23+02:00 - 961da94 - stephane-ruhlmann : chore(e2e): route remaining callers through the Makefile targets
+2026-08-26T11:03:23+02:00 - 69810a4 - stephane-ruhlmann : fix(e2e): give web a real healthcheck, replace polling script with docker compose --wait
+2026-08-26T11:03:23+02:00 - 01a5ed2 - stephane-ruhlmann : chore(e2e): add quiet build+wait target, use it for local e2e-test runs
+2026-08-25T17:23:04+02:00 - d9eb7b2 - stephane-ruhlmann : test(web): add behaviour-net regression suite for site creation
+2026-08-25T17:03:29+02:00 - ccf2fcf - Claire Dhénin : chore(web): use environment on build-and-deploy-web-artifact to add google verification only on production
+2026-08-25T16:43:53+02:00 - 5423c3a - stephane-ruhlmann : test(e2e): add aria-snapshot regression net across site-creation flows
+2026-08-25T16:11:54+02:00 - cec5ced - stephane-ruhlmann : docs: fix outdated node ts type-stripping flag note
+2026-08-25T15:48:35+02:00 - f7b8cee - Claire Dhénin : chore(web): add google site verification env var to github action for google search console
+2026-08-25T14:14:49+02:00 - 66341ce - Claire Dhénin : chore(web): add meta tag google site verification for google search console
 2026-08-14T17:57:02+02:00 - ff60170 - Claire Dhénin : feat(web): add break even level column chart
 2026-08-13T17:21:15+02:00 - 1cd6a40 - Claire Dhénin : feat(web): remove break even level row from urban sprawl comparison tab
 2026-08-13T16:51:40+02:00 - 3bfaff8 - Claire Dhénin : fix(web): call react lazy function on mdx files in config objects instead of calling it at render time

@@ -1,31 +1,31 @@
-## Changelog : benefriches (30 derniers jours, au 14 août 2026)
+## Changelog : benefriches (30 derniers jours, au 17 septembre 2026)
 
 ### Résumé
-Ce mois a été marqué par une amélioration significative de l'analyse économique et de l'expérience utilisateur. L'outil propose désormais des vues plus détaillées pour le bilan économique et une navigation plus fluide lors de la modification de projets (notamment photovoltaïques). Parallèlement, une refonte technique majeure a été entreprise pour stabiliser et harmoniser les formulaires de saisie.
+Ce mois-ci, les évolutions se sont concentrées sur l'amélioration de la gestion des sites existants, permettant aux utilisateurs de modifier leurs données plus facilement et en toute sécurité. Parallèlement, la précision des outils a été renforcée grâce à l'intégration de données statistiques plus récentes (ANCT, DVF 2025) et à l'ajustement des algorithmes de calcul d'impact pour garantir des résultats plus pertinents.
 
 ### Évolutions fonctionnelles
-- **Analyse économique et impacts** :
-    - Ajout de nouvelles fenêtres d'information (modals) pour détailler le bilan économique (revente de site, aides financières, installations photovoltaïques et projets urbains).
-    - Amélioration de la visualisation des impacts : regroupement des données immobilières et passage à une classification par "bénéficiaires" pour plus de clarté.
-    - Ajout de nouveaux graphiques (colonnes) pour le seuil de rentabilité et de modales descriptives sur les graphiques d'analyse.
-- **Expérience utilisateur (UX)** :
-    - Optimisation du parcours de modification des projets photovoltaïques : navigation simplifiée, ajout de liens d'édition par section et gestion des mises à jour en cascade.
-    - Amélioration des formulaires guidés (wizards) : affichage d'étapes imbriquées et ajout d'infobulles pour guider la saisie.
-- **Corrections** :
-    - Résolution de plantages lors de la mise à jour de projets photovoltaïques.
-    - Correction de l'affichage de certains labels, couleurs et contenus dans les modales d'impact.
+- **Amélioration de l'édition des sites** :
+    - Ajout de points d'entrée "Modifier" sur les pages de résumé et d'évaluation.
+    - Mise en place d'un système de sauvegarde d'état (save-state) et d'alertes en cas de modifications non enregistrées dans l'assistant de modification.
+    - Prise en charge de l'édition des sites en zones urbaines personnalisées.
+- **Précision des données et des calculs** :
+    - Enrichissement des statistiques communales avec les données de l'ANCT (Observatoire des territoires).
+    - Mise à jour des données foncières (DVF) incluant les transactions de 2025 et les données relatives aux terrains.
+    - Actualisation de la base de données des communes françaises et intégration des zonages ALDO et ABC.
+    - Affinement des seuils de calcul pour l'augmentation de la valeur foncière et les kilomètres évités afin d'éviter des calculs non significatifs.
+- **Optimisation de l'expérience utilisateur (UX)** :
+    - Amélioration de l'autocomplétion des adresses et synchronisation automatique de la ville lors de la saisie d'une adresse.
+    - Meilleure visibilité des informations de modification (statut éditable/non éditable) sur les vues de sites et d'évaluations.
 
 ### Évolutions techniques
-- **Architecture et Refactoring** :
-    - Renforcement de la structure logicielle via l'implémentation de règles de "Clean Architecture" (Oxlint).
-    - Refactorisation majeure du moteur de formulaires (*wizard-form*) pour mutualiser la logique entre la création et la modification de projets.
-    - Unification des passerelles de données (*gateways*) pour les sols et les données municipales afin d'éviter les duplications.
-- **API** :
-    - Ajout d'un endpoint de statistiques avec gestion de la périodicité.
-    - Extension de l'export CSV des projets personnalisés vers le référentiel ADEME.
-- **Tests** :
-    - Augmentation significative de la couverture des tests de bout en bout (E2E) pour couvrir les scénarios réels de mise à jour de projets et de transformation de sols.
+- **Sécurité et Authentification** :
+    - Implémentation de la révocation des jetons d'authentification en attente [#01](https://github.com/incubateur-ademe/benefriches/issues/1).
+- **Fiabilité de l'API et des données** :
+    - Récupération (backfill) des contacts CRM pour les utilisateurs créés durant une interruption de service du CRM Connect.
+    - Renforcement de la validation des configurations de l'API (URL de base du CRM).
+- **Qualité et Tests** :
+    - Extension de la couverture de tests de bout en bout (E2E) pour les flux de mise à jour de site et les scénarios d'inéligibilité [#14](https://github.com/incubateur-ademe/benefriches/issues/14).
 
 ### Autres changements
-- Mise à jour de la documentation technique (ADR) concernant le moteur de formulaires.
-- Nettoyage de la structure des dossiers et de la configuration Git.
+- **Documentation** : Fusion et simplification de la documentation relative aux scripts (manuels et programmés).
+- **Organisation** : Restructuration des scripts de gestion des données communales pour une meilleure maintenance.
