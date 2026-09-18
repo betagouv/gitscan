@@ -1,40 +1,45 @@
 {
   "url": "https://github.com/gip-inclusion/la-communaute",
   "name": "la-communaute",
-  "description": "Plateforme communautaire dédiée à l'inclusion, offrant des espaces d'échange, des fiches pratiques et des outils de gestion pour les partenaires et les utilisateurs.",
+  "description": "Plateforme communautaire dédiée à l'inclusion, permettant l'échange via des forums, la consultation de fiches pratiques et la gestion de partenaires.",
   "language": "Python",
   "features": [
     "Authentification & Accès",
-    "Collaboration & Workflow",
+    "Commentaires & Discussions",
     "Contenu éditorial",
     "Gestion des utilisateurs & Permissions",
+    "Gestion des établissements & Structures",
+    "Statistiques & Rapports",
     "Notifications & Alertes",
     "Recherche & Filtres",
-    "Gestion des médias & Assets",
-    "Statistiques & Rapports",
-    "Sécurité & Conformité"
+    "Sécurité & Conformité",
+    "Administration & Backoffice"
   ],
-  "audience": "Grand public",
+  "audience": "Grand public, Professionnels, Associations",
   "dependencies": [
     "Django",
     "PostgreSQL",
     "Minio",
+    "htmx",
     "Sentry",
-    "HTMX",
+    "Matomo",
     "uv"
   ],
   "components": [
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
+    "Django",
     "Docker & Conteneurs",
     "Authentification (composant)",
-    "Templates & Moteurs de rendu",
-    "Intégrations services externes"
+    "Documentation & Schémas",
+    "Tests",
+    "HTML / CSS / Templates visuels"
   ],
   "auth": {
     "methods": [
+      "email-password",
       "magic-link",
-      "sso"
+      "oauth2"
     ],
     "providers": [
       "ProConnect"
@@ -42,7 +47,8 @@
   },
   "tests": [
     "pytest",
-    "pytest-django"
+    "pytest-django",
+    "pytest-xdist"
   ],
   "workflows": [
     "review_app_creation.yml",
@@ -50,16 +56,15 @@
   ],
   "lastActivity": "2025-11-18T00:00:00Z",
   "status": "maintained",
-  "license": "ETALAB 2.0",
+  "license": "ETALAB-2.0",
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "Python",
     "Bases de données SQL",
     "Django & FastAPI",
-    "CI/CD & GitHub Actions",
     "Docker & Conteneurs",
-    "Accessibilité",
-    "Documentation"
+    "CI/CD & GitHub Actions",
+    "Territoire & Collectivités"
   ]
 }
