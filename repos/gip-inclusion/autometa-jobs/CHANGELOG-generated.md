@@ -1,10 +1,12 @@
-## Changelog : autometa-jobs (30 derniers jours, au 24 juillet 2026)
+## Changelog : autometa-jobs (30 derniers jours, au 09/09/2026)
 
 ### Résumé
-Ce mois-ci, les efforts de développement se sont concentrés sur la mise en place de Dependabot pour automatiser les mises à jour de dépendances du projet. Cela permettra de maintenir la sécurité et la stabilité de l'application en intégrant rapidement les correctifs et les améliorations des librairies utilisées.
+Les récentes évolutions se concentrent sur le renforcement de la sécurité des accès et l'automatisation complète du cycle de déploiement, garantissant une plateforme plus stable et une meilleure isolation des clients.
+
+### Évolutions fonctionnelles
+- Amélioration de la gestion de l'authentification permettant l'utilisation de clés "bearer" spécifiques par client via la configuration `PIPOMETA_EXTRA_API_KEYS` [#79](https://github.com/gip-inclusion/autometa-jobs/pull/79).
 
 ### Évolutions techniques
-- Ajout de la configuration Dependabot pour les dépendances `uv`, `pip` et `github-actions` [#1](https://github.com/gip-inclusion/autometa-jobs/pull/1).
-
-### Autres changements
-Aucun autre changement significatif à signaler.
+- Automatisation du pipeline CI/CD pour inclure le build, le push et le redéploiement automatique lors des mises à jour de la branche principale [#81](https://github.com/gip-inclusion/autometa-jobs/pull/81).
+- Optimisation de la gestion des dépendances et de la reproductibilité des environnements grâce à l'adoption de l'outil `uv` [#80](https://github.com/gip-inclusion/autometa-jobs/pull/80).
+- Mise à jour des bibliothèques critiques pour assurer la stabilité du système (alembic, uvicorn, scaleway et boto3).

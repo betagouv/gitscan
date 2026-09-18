@@ -11,6 +11,7 @@
 ├── ARCHITECTURE.md
 ├── CLAUDE.md
 ├── EXPLAINER.md
+├── N8N.md
 ├── README.md
 ├── RESOURCES.md
 ├── bin
@@ -39,24 +40,25 @@
 │   │       └── 0001_initial.py
 │   ├── alembic.ini
 │   ├── pyproject.toml
-│   └── src
-│       └── orchestrator
-│           ├── __init__.py
-│           ├── auth.py
-│           ├── config.py
-│           ├── db.py
-│           ├── dispatch.py
-│           ├── main.py
-│           ├── models.py
-│           ├── reconcile.py
-│           ├── routes
-│           │   ├── __init__.py
-│           │   ├── admin.py
-│           │   ├── pipelines.py
-│           │   └── runs.py
-│           ├── s3.py
-│           ├── scaleway.py
-│           └── schemas.py
+│   ├── src
+│   │   └── orchestrator
+│   │       ├── __init__.py
+│   │       ├── auth.py
+│   │       ├── config.py
+│   │       ├── db.py
+│   │       ├── dispatch.py
+│   │       ├── main.py
+│   │       ├── models.py
+│   │       ├── reconcile.py
+│   │       ├── routes
+│   │       │   ├── __init__.py
+│   │       │   ├── admin.py
+│   │       │   ├── pipelines.py
+│   │       │   └── runs.py
+│   │       ├── s3.py
+│   │       ├── scaleway.py
+│   │       └── schemas.py
+│   └── uv.lock
 ├── pipelines
 │   ├── di-discover.json
 │   ├── di-extract-strict-haiku.json
@@ -90,10 +92,11 @@
 └── worker
     ├── Dockerfile
     ├── pyproject.toml
-    └── src
-        └── worker
-            ├── __init__.py
-            ├── __main__.py
-            ├── client.py
-            └── runner.py
-19 directories, 79 files
+    ├── src
+    │   └── worker
+    │       ├── __init__.py
+    │       ├── __main__.py
+    │       ├── client.py
+    │       └── runner.py
+    └── uv.lock
+19 directories, 82 files
