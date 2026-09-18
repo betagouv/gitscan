@@ -1,44 +1,45 @@
 {
   "url": "https://github.com/datagouv/hubee",
   "name": "hubee",
-  "description": "Plateforme d'échange sécurisé de fichiers gouvernementaux conçue pour répondre aux exigences SecNumCloud et RGS de niveau élevé.",
+  "description": "Plateforme d'échange sécurisé de fichiers gouvernementaux conforme aux standards SecNumCloud et RGS. Elle permet la gestion de flux de données sensibles et l'authentification forte pour les agents de l'État.",
   "language": "Ruby",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
     "Authentification & Accès",
+    "Suivi & Traçabilité",
+    "Notifications & Alertes",
     "Gestion des utilisateurs & Permissions",
     "Sécurité & Conformité",
-    "Notifications & Alertes",
-    "Suivi & Traçabilité"
+    "Administration & Backoffice"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
+    "Ruby",
     "Rails",
     "PostgreSQL",
     "Solid Queue",
     "Active Storage",
-    "S3",
-    "RSpec",
-    "Cucumber",
-    "Sentry",
-    "ProConnect",
-    "Doorkeeper"
+    "Doorkeeper",
+    "Pundit",
+    "OpenID Connect",
+    "DSFR"
   ],
   "components": [
-    "Ruby on Rails",
-    "PostgreSQL & SQL",
     "API REST & GraphQL",
+    "PostgreSQL & SQL",
     "Authentification (composant)",
-    "Tests",
-    "Design System (DSFR & UI libs)",
-    "Stockage objet"
+    "ORM & Accès aux données",
+    "Bibliothèques & Packages",
+    "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
       "oauth2",
+      "jwt",
+      "mfa",
       "sso",
-      "mfa"
+      "session"
     ],
     "providers": [
       "ProConnect"
@@ -46,28 +47,25 @@
   },
   "tests": [
     "RSpec",
-    "Cucumber"
+    "Cucumber",
+    "StandardRB",
+    "Brakeman",
+    "bundler-audit"
   ],
   "workflows": [
     "ci.yml"
   ],
-  "lastActivity": "2026-09-01T09:59:41+02:00",
-  "status": "maintained",
+  "lastActivity": "2026-09-15T15:59:41+02:00",
+  "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
-  "metrics": {
-    "stars": 0,
-    "forks": 1,
-    "openIssues": 29
-  },
   "tags": [
     "Données & Open Data",
     "Écosystème beta.gouv / État",
+    "Ruby",
     "Bases de données SQL",
     "Sécurité & Auth",
-    "Ruby on Rails",
     "CI/CD & GitHub Actions",
-    "SSO & Identité fédérée",
-    "Documentation"
+    "Standards & Schémas"
   ]
 }
