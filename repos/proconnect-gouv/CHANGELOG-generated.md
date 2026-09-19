@@ -1,24 +1,23 @@
-# Synthèse d'activité : proconnect-gouv (du 01/09 au 07/09)
+# Synthèse d'activité : proconnect-gouv (du 07/09 au 14/09)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation se concentre sur l'amélioration de l'expérience utilisateur et la robustesse des services d'identité. Les évolutions majeures concernent l'optimisation des flux d'authentification (intégration des Passkeys, gestion du MFA et du mode "full acr"), l'enrichissement des outils de modération et la mise à jour de la cartographie des identités. 
+L'activité de la période est marquée par une montée en maturité des services d'identité et une refonte structurelle majeure visant à accroître la modularité de l'organisation. Les utilisateurs bénéficieront d'une expérience plus fluide grâce à l'automatisation des Passkeys et à une gestion optimisée des flux d'authentification dans [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) et [proconnect-test-client](/repos/proconnect-gouv/proconnect-test-client).
 
-Parallèlement, l'écosystème s'élargit avec l'initialisation de nouveaux services techniques et outils de déploiement, tout en renforçant la fiabilité des tests et la qualité de la documentation pour les partenaires.
+Parallèlement, l'écosystème s'enrichit de nouveaux outils et services, notamment le thème visuel [tailwindcss-dsfr-theme](/repos/proconnect-gouv/tailwindcss-dsfr-theme) pour l'intégration des standards de l'État, le service de résolution DNS [mx-resolver](/repos/proconnect-gouv/mx-resolver), ainsi que le buildpack [bun-buildpack](/repos/proconnect-gouv/bun-buildpack) pour faciliter les déploiements.
 
 ## Sécurité
-- Correction d'une faille de contournement et renforcement du rate limiting dans [proconnect-identite](/repos/proconnect-gouv/proconnect-identite).
-- Amélioration de la sécurité via la réutilisation des sessions MFA et l'optimisation de la vérification d'e-mail dans [federation](/repos/proconnect-gouv/federation).
-- Correction de vulnérabilités de dépendances dans [class-validator](/repos/proconnect-gouv/class-validator).
+- Correction d'une faille permettant le contournement du code de vérification des contacts officiels dans [proconnect-identite](/repos/proconnect-gouv/proconnect-identite).
+- Mise à jour des dépendances pour corriger des vulnérabilités dans [class-validator](/repos/proconnect-gouv/class-validator).
+- Renforcement de la sécurité par l'adoption de l'algorithme RS256 par défaut dans [federation](/repos/proconnect-gouv/federation).
 
 ## Autres changements notables
-- Migration vers une nouvelle architecture de "connecteurs" et changement de méthode de synchronisation des données dans [proconnect-identite](/repos/proconnect-gouv/proconnect-identite).
-- Transformation de `csmr-rie` en application autonome dans [federation](/repos/proconnect-gouv/federation).
-- Extension du support de l'architecture `arm64` et refactorisation de la gestion des domaines dans [api-partenaires](/repos/proconnect-gouv/api-partenaires).
-- Amélioration de la fiabilité des tests E2E via l'intégration d'un fournisseur simulé dans [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires).
-- Initialisation de nouveaux projets : [proconnect-test-idp](/repos/proconnect-gouv/proconnect-test-idp), [mx-resolver](/repos/proconnect-gouv/mx-resolver) et [bun-buildpack](/repos/proconnect-gouv/bun-buildpack).
+- **Refonte architecturale** : Migration massive de la logique métier vers un nouveau système de "connecteurs" pour améliorer la modularité dans [proconnect-identite](/repos/proconnect-gouv/proconnect-identite).
+- **Résilience du système** : Mise en place de mécanismes de secours (fallback) utilisant des données en cache pour pallier l'indisponibilité des API externes (Entreprise, SIRENE) dans [federation](/repos/proconnect-gouv/federation).
+- **Modernisation technique** : Introduction d'un environnement de développement sans privilèges via Nix dans [hyyypertool](/repos/proconnect-gouv/hyyypertool) et extension du support de l'architecture arm64 dans [api-partenaires](/repos/proconnect-gouv/api-partenaires).
+- **Nouveaux projets** : Initialisation de [proconnect-test-idp](/repos/proconnect-gouv/proconnect-test-idp) pour les tests OIDC et de [mx-resolver](/repos/proconnect-gouv/mx-resolver) pour la résolution de domaines.
 
 ## Dépôts les plus actifs
-- [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) : Refonte architecturale majeure et renforcement de la sécurité.
-- [federation](/repos/proconnect-gouv/federation) : Optimisation des protocoles d'authentification et de la gestion des sessions.
-- [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires) : Amélioration de l'ergonomie mobile et de la documentation.
-- [class-validator](/repos/proconnect-gouv/class-validator) : Extension des capacités de validation de données.
+- [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) : Refonte architecturale majeure et enrichissement des fonctionnalités d'identité.
+- [federation](/repos/proconnect-gouv/federation) : Amélioration de la résilience face aux services tiers et renforcement de la sécurité.
+- [hyyypertool](/repos/proconnect-gouv/hyyypertool) : Optimisation de la gestion des organisations et modernisation de l'infrastructure.
+- [class-validator](/repos/proconnect-gouv/class-validator) : Extension des capacités de validation de données et maintenance de sécurité.

@@ -1,23 +1,23 @@
-# Synthèse d'activité : IA-Generative (du 20/08 au 27/08)
+# Synthèse d'activité : IA-Generative (du DD/MM au DD/MM)
 
 ## Résumé de l'activité
-L'activité de l'organisation a été dominée par un double objectif : la sécurisation accrue des services et l'enrichissement des capacités d'intelligence artificielle. Les développements ont permis de renforcer la protection contre les attaques (injections de prompts, fuites de données) et de déployer des mécanismes d'authentification robustes (2FA, SSO). 
+L'activité de l'organisation a été intensément portée par deux axes majeurs : la sécurisation accrue des services d'IA et l'enrichissement des capacités fonctionnelles des produits. Les efforts de développement ont permis de renforcer la protection contre les attaques (injections de prompts, fuites de données) et d'améliorer la fiabilité des échanges via des protocoles d'authentification et de validation plus robustes.
 
-En parallèle, l'écosystème s'est enrichi de nouvelles fonctionnalités d'IA (RAG, génération de questions-réponses, intégration des modèles Scaleway) et de l'expansion de l'offre d'automatisation via n8n. Enfin, une cohérence visuelle a été renforcée à travers l'adoption de la nouvelle mascotte Mirai sur plusieurs interfaces.
+En parallèle, l'expérience utilisateur a franchi un nouveau cap avec l'intégration de fonctionnalités avancées comme le RAG (Retrieval-Augmented Generation) dans [Stirling-PDF](/repos/IA-Generative/Stirling-PDF), la génération de questions/réponses dans [abrege](/repos/IA-Generative/abrege), et la modernisation des interfaces et des SDK pour [ocr-api](/repos/IA-Generative/ocr-api). Ces évolutions visent à offrir des outils plus intelligents, plus simples à intégrer et plus sûrs pour les utilisateurs finaux.
 
 ## Sécurité
-- **Protection contre les attaques LLM et fuites de données** : Mise en place de garde-fous contre les injections de prompts (OWASP LLM01) et de mécanismes anti-leak ([owuiapps-agents](/repos/IA-Generative/owuiapps-agents), [myvault](/repos/IA-Generative/myvault), [mycollections](/repos/IA-Generative/mycollections)).
-- **Renforcement de l'authentification** : Introduction de l'authentification à deux facteurs (2FA/TOTP), gestion fine des niveaux de sécurité eIDAS et support SSO ([myvault](/repos/IA-Generative/myvault), [keycloak-jar-test](/repos/IA-Generative/keycloak-jar-test), [owuiapps-agents](/repos/IA-Generative/owuiapps-agents), [dictaphone](/repos/IA-Generative/dictaphone)).
-- **Sécurisation des échanges et des infrastructures** : Durcissement des conteneurs, vérification systématique des signatures WOPI, protection contre les attaques SSRF/CORS et sécurisation des jetons de session ([drive](/repos/IA-Generative/drive), [mycollections](/repos/IA-Generative/mycollections), [ocr-api](/repos/IA-Generative/ocr-api), [device-management](/repos/IA-Generative/device-management)).
+- Protection contre les injections de prompts (OWASP LLM01) ([owuiapps-agents](/repos/IA-Generative/owuiapps-agents)).
+- Renforcement de l'authentification (implémentation de la 2FA/TOTP, gestion des jetons OIDC, clés API et protocoles JWT/PKCE) ([myvault](/repos/IA-Generative/myvault), [keycloak-jar-test](/repos/IA-Generative/keycloak-jar-test), [ocr-api](/repos/IA-Generative/ocr-api), [dictaphone](/repos/IA-Generative/dictaphone)).
+- Sécurisation des données et des flux (garde-fous anti-leak, chiffrement des notes, validation d'URL, signatures WOPI et vérification d'intégrité des fichiers par checksum) ([myvault](/repos/IA-Generative/myvault), [mycollections](/repos/IA-Generative/mycollections), [drive](/repos/IA-Generative/drive), [device-management](/repos/IA-Generative/device-management)).
 
 ## Autres changements notables
-- **Évolutions architecturales majeures** : Migration vers un modèle de microservices ([mcr](/repos/IA-Generative/mcr)) et changement d'infrastructure de files d'attente de Kafka vers Redis ([kevent-ai](/repos/IA-Generative/kevent-ai)).
-- **Modernisation DevOps et CI/CD** : Optimisation des pipelines de déploiement, intégration de Helm et passage à BuildKit rootless pour les processus de construction en cluster ([ocr-api](/repos/IA-Generative/ocr-api), [mirai-mesreunions](/repos/IA-Generative/mirai-mesreunions), [device-management](/repos/IA-Generative/device-management), [claim-controller](/repos/IA-Generative/claim-controller)).
+- Évolutions architecturales majeures (passage vers une architecture microservices et migration de la gestion des files d'attente de Kafka vers Redis) ([mcr](/repos/IA-Generative/mcr), [kevent-ai](/repos/IA-Generative/kevent-ai)).
+- Modernisation de l'infrastructure et de la CI/CD (utilisation de BuildKit rootless, durcissement des images Docker, intégration de Helm et optimisation des builds) ([mirai-mesreunions](/repos/IA-Generative/mirai-mesreunions), [ocr-api](/repos/IA-Generative/ocr-api), [claim-controller](/repos/IA-Generative/claim-controller)).
+- Nouvelles capacités produit (support des modèles Scaleway, intégration RAG, scraping web et génération de questions/réponses) ([claude-code-scaleway](/repos/IA-Generative/claude-code-scaleway), [Stirling-PDF](/repos/IA-Generative/Stirling-PDF), [abrege](/repos/IA-Generative/abrege)).
 
 ## Dépôts les plus actifs
-- [myvault](/repos/IA-Generative/myvault) : Travaux intensifs sur la sécurité, le chiffrement des données et l'authentification 2FA.
-- [mycollections](/repos/IA-Generative/mycollections) : Améliorations de l'interface utilisateur, du playground IA et de la sécurité des accès.
-- [drive](/repos/IA-Generative/drive) : Évolutions sur le partage collaboratif et le renforcement de la sécurité des intégrations WOPI.
-- [abrege](/repos/IA-Generative/abrege) : Ajout de fonctionnalités de scraping web et de génération de questions-réponses.
-- [mcr](/repos/IA-Generative/mcr) : Refactorisation majeure vers les microservices et amélioration de l'expérience d'import de fichiers.
-- [n8n-nodes-async-api](/repos/IA-Generative/n8n-nodes-async-api) : Développement des premiers nœuds dédiés aux services IA BRIO.
+- [ocr-api](/repos/IA-Generative/ocr-api) : Passage à la version 0.20.0 avec un nouveau SDK TypeScript et une interface modernisée.
+- [myvault](/repos/IA-Generative/myvault) : Travaux intensifs sur la sécurité, la protection des données et l'authentification multi-facteurs.
+- [mcr](/repos/IA-Generative/mcr) : Refonte vers une architecture microservices et optimisation du pipeline de transcription.
+- [abrege](/repos/IA-Generative/abrege) : Ajout de capacités de scraping web et de génération de questions/réponses.
+- [drive](/repos/IA-Generative/drive) : Amélioration du partage collaboratif et sécurisation de l'intégration WOPI.

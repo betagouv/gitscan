@@ -1,24 +1,25 @@
-# Synthèse d'activité : incubateur-ademe (du DD/MM au DD/MM)
+# Synthèse d'activité : incubateur-ademe (période récente)
 
 ## Résumé de l'activité
-L'activité récente est marquée par une montée en maturité des outils de diagnostic et de calcul d'impact environnemental, avec des améliorations de précision pour [publicodes-empreinte-carbone-chauffage](/repos/incubateur-ademe/publicodes-empreinte-carbone-chauffage) et [nosgestesclimat](/repos/incubateur-ademe/nosgestesclimat). L'organisation élargit également ses horizons en ouvrant ses plateformes à de nouveaux publics, comme les entreprises privées pour [plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site) ou les citoyens pour [ecopass](/repos/incubateur-ademe/ecopass).
+L'activité récente de l'organisation est marquée par une modernisation profonde des interfaces et une amélioration significative de la précision des données environnementales. Plusieurs outils majeurs, tels que [nosgestesclimat-app](/repos/incubateur-ademe/nosgestesclimat-app) et [plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site), ont bénéficié de refontes ergonomiques et de nouveaux parcours utilisateurs (catalogue d'actions, aide à la décision) pour faciliter l'engagement des citoyens et des professionnels.
 
-Parallèlement, une forte dynamique de modernisation des interfaces utilisateur est observée, notamment pour faciliter la navigation et le partage de résultats dans [france-chaleur-urbaine-pac](/repos/incubateur-ademe/france-chaleur-urbaine-pac) et [benefriches](/repos/incubateur-ademe/benefriches), améliorant ainsi l'accessibilité et l'engagement des utilisateurs finaux.
+Parallèlement, l'enrichissement des modèles de calcul, notamment pour l'empreinte carbone avec [publicodes-empreinte-carbone-chauffage](/repos/incubateur-ademe/publicodes-empreinte-carbone-chauffage) et les données foncières dans [benefriches](/repos/incubateur-ademe/benefriches), renforce la fiabilité des outils mis à disposition. Ces évolutions visent à offrir une expérience plus fluide, plus précise et mieux adaptée aux nouveaux usages de la transition écologique.
 
 ## Sécurité
-- **Authentification et accès** : Intégration du SSO/OIDC pour [territoires-en-transitions](/repos/incubateur-ademe/territoires-en-transitions) et [roadmaps-faciles](/repos/incubateur-ademe/roadmaps-faciles), et mise en place d'une authentification consolidée via FGP pour [grafana](/repos/incubateur-ademe/grafana).
-- **Protection des sessions et des données** : Renforcement de la sécurité des sessions pour [account-manager](/repos/incubateur-ademe/account-manager) et [nosgestesclimat-app](/repos/incubateur-ademe/nosgestesclimat-app), et amélioration des contrôles d'accès pour [ecopass](/repos/incubateur-ademe/ecopass).
-- **Sécurisation des infrastructures** : Renforcement de la protection de l'origine des requêtes dans [mutafriches](/repos/incubateur-ademe/mutafriches) et rotation des mots de passe pour [quefairedemesobjets](/repos/incubateur-ademe/quefairedemesobjets).
+- Renforcement de la sécurité des accès via l'intégration de l'authentification SSO et OIDC ([territoires-en-transitions](/repos/incubateur-ademe/territoires-en-transitions), [roadmaps-faciles](/repos/incubateur-ademe/roadmaps-faciles)).
+- Amélioration de la protection des données, de la gestion des sessions et de la rotation des mots de passe ([account-manager](/repos/incubateur-ademe/account-manager), [benefriches](/repos/incubateur-ademe/benefriches), [quefairedemesobjets](/repos/incubateur-ademe/quefairedemesobjets)).
+- Mise en place de mécanismes de protection de l'origine des requêtes ([mutafriches](/repos/incubateur-ademe/mutafriches)).
 
 ## Autres changements notables
-- **Migrations majeures de CMS et de Backend** : Passage à Strapi 5 pour [plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site) et [plusfraichemaville-cms](/repos/incubateur-ademe/plusfraichemaville-cms), et migration vers Wagtail pour [plusfraisautravail](/repos/incubateur-ademe/plusfraisautravail).
-- **Refontes architecturales** : Adoption de la "Clean Architecture" dans [benefriches](/repos/incubateur-ademe/benefriches), passage au pattern Repository dans [territoires-en-transitions](/repos/incubateur-ademe/territoires-en-transitions) et modularisation en TypeScript pour [fine-grained-proxy](/repos/incubateur-ademe/fine-grained-proxy).
-- **Modernisation du développement** : Migration massive vers TypeScript pour [dsfr-override](/repos/incubateur-ademe/dsfr-override) et optimisation des processus de déploiement (Terraform, pnpm) pour [plusfraisautravail](/repos/incubateur-ademe/plusfraisautravail) et [ngc-scalingo-buildpack](/repos/incubateur-ademe/ngc-scalingo-buildpack).
-- **Évolutions de données** : Migration vers MariaDB pour [tacct](/repos/incubateur-ademe/tacct) et mise à jour des modèles de calcul pour [nosgestesclimat](/repos/incubateur-ademe/nosgestesclimat).
+- **Migrations de CMS et Backend** : Passage massif vers de nouvelles technologies pour améliorer la gestion de contenu et la performance, notamment avec Wagtail ([quefairedemesobjets](/repos/incubateur-ademe/quefairedemesobjets), [plusfraisautravail](/repos/incubateur-ademe/plusfraisautravail)) et Strapi 5 ([plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site), [plusfraichemaville-cms](/repos/incubateur-ademe/plusfraichemaville-cms)).
+- **Modernisation technique et architecture** : Migration vers TypeScript pour une meilleure robustesse ([dsfr-override](/repos/incubateur-ademe/dsfr-override), [fine-grained-proxy](/repos/incubateur-ademe/fine-grained-proxy)) et refonte des infrastructures de déploiement vers Scalingo ([metabase](/repos/incubateur-ademe/metabase), [tacct](/repos/incubateur-ademe/tacct)).
+- **Optimisation de l'observabilité** : Intégration poussée d'outils de suivi, de monitoring et de gestion des erreurs (PostHog, Sentry, OpenTelemetry) pour garantir la stabilité des services ([nosgestesclimat-app](/repos/incubateur-ademe/nosgestesclimat-app), [roadmaps-faciles](/repos/incubateur-ademe/roadmaps-faciles), [tacct](/repos/incubateur-ademe/tacct)).
 
 ## Dépôts les plus actifs
-- [nosgestesclimat](/repos/incubateur-ademe/nosgestesclimat) (et ses composants app, server, site) : Évolutions majeures du modèle de calcul, de l'interface et de la gestion des résultats.
-- [tacct](/repos/incubateur-ademe/tacct) (et tacct-legacy-nextjs) : Amélioration de la gestion des comptes utilisateurs et migration de la base de données.
-- [plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site) : Ouverture aux entreprises et refonte de l'outil d'aide à la décision.
-- [ecopass](/repos/incubateur-ademe/ecopass) : Structuration de la gestion des organisations et enrichissement des données produits.
-- [benefriches](/repos/incubateur-ademe/benefriches) : Amélioration de l'analyse économique et refonte du moteur de formulaires.
+- [nosgestesclimat-app](/repos/incubateur-ademe/nosgestesclimat-app) : Optimisation majeure de l'infrastructure, de la performance et de la découverte des actions climatiques.
+- [ecopass](/repos/incubateur-ademe/ecopass) : Évolution vers une gestion plus fine des profils utilisateurs et des données produits.
+- [quefairedemesobjets](/repos/incubateur-ademe/quefairedemesobjets) : Migration vers Wagtail et lancement de nouveaux portails.
+- [plusfraichemaville-site](/repos/incubateur-ademe/plusfraichemaville-site) : Ouverture aux entreprises privées et migration vers Strapi 5.
+- [benefriches](/repos/incubateur-ademe/benefriches) : Enrichissement des données statistiques et amélioration de l'édition des sites.
+- [dsfr-override](/repos/incubateur-ademe/dsfr-override) : Création d'une interface visuelle pour la personnalisation du Design System.
+- [territoires-en-transitions](/repos/incubateur-ademe/territoires-en-transitions) : Intégration de l'IA et refonte de l'architecture de données.

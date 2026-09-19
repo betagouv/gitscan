@@ -1,20 +1,16 @@
-# Synthèse d'activité : gristgouv (du 10/07 au 17/07)
+# Synthèse d'activité : gristgouv (du 01/03 au 07/09)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation se concentre sur l'enrichissement des capacités de visualisation et l'amélioration de l'expérience utilisateur. L'introduction de nouveaux widgets basés sur la librairie D3.js via [widgets-config](/repos/gristgouv/widgets-config) et la refonte majeure de l'ergonomie de [grist-widget-grouped-view](/repos/gristgouv/grist-widget-grouped-view) offrent des possibilités de présentation de données plus riches, personnalisables et accessibles.
+L'activité récente de l'organisation se concentre sur l'enrichissement des capacités de visualisation et l'amélioration de l'ergonomie globale des outils. L'introduction de nouveaux widgets basés sur la librairie D3.js ([widgets-config](/repos/gristgouv/widgets-config)) et la refonte majeure du widget de vue groupée ([grist-widget-grouped-view](/repos/gristgouv/grist-widget-grouped-view)) permettent aux utilisateurs de manipuler et de présenter des données de manière plus intuitive, personnalisée et accessible.
 
-Parallèlement, l'expérience de travail est optimisée par des ajustements de l'interface dans [grist-core](/repos/gristgouv/grist-core) et une mise à jour des ressources pédagogiques dans [grist-mooc](/repos/gristgouv/grist-mooc) pour faciliter l'auto-formation des utilisateurs.
-
-## Sécurité
-- Amélioration de la robustesse de l'affichage via la sanitisation des titres et le rendu en texte brut des données pour éviter les erreurs d'interprétation HTML ([gristlabs-widgets](/repos/gristgouv/gristlabs-widgets)).
+En parallèle, des efforts constants sont portés sur la stabilité et la qualité de l'expérience utilisateur, notamment via des améliorations de la saisie de données dans [grist-core](/repos/gristgouv/grist-core) et la mise à jour des environnements de déploiement avec [grist-docker-image](/repos/gristgouv/grist-docker-image). L'offre pédagogique est également renforcée par la mise à jour des ressources de formation dans [grist-mooc](/repos/gristgouv/grist-mooc).
 
 ## Autres changements notables
-- Mise en conformité avec les standards d'accessibilité WCAG 2.1 AA ([grist-widget-grouped-view](/repos/gristgouv/grist-widget-grouped-view)).
-- Optimisation de la gestion du trafic via l'introduction du proxying Grist Fleet ([grist-core](/repos/gristgouv/grist-core)).
-- Mise en place de tests automatisés (smoke tests) pour assurer la stabilité du code ([grist-cw-intra-form](/repos/gristgouv/grist-cw-intra-form)).
-- Mise à jour des images Docker vers les dernières versions stables de l'application ([grist-docker-image](/repos/gristgouv/grist-docker-image)).
+- **Accessibilité et ergonomie** : Mise en conformité avec les standards WCAG 2.1 AA et refonte de la sémantique HTML pour le widget de vue groupée ([grist-widget-grouped-view](/repos/gristgouv/grist-widget-grouped-view)).
+- **Optimisation infrastructure** : Introduction du proxying Grist Fleet pour optimiser la gestion du trafic entre les serveurs ([grist-core](/repos/gristgouv/grist-core)).
+- **Qualité logicielle** : Mise en place de tests automatisés (smoke tests) via Vitest pour garantir la stabilité des formulaires ([grist-cw-intra-form](/repos/gristgouv/grist-cw-intra-form)).
 
 ## Dépôts les plus actifs
-- [grist-widget-grouped-view](/repos/gristgouv/grist-widget-grouped-view) : Refonte majeure incluant l'internationalisation, l'accessibilité et de nouvelles options de personnalisation.
-- [grist-core](/repos/gristgouv/grist-core) : Évolutions de l'interface utilisateur, de la gestion du trafic et de la documentation.
-- [gristlabs-widgets](/repos/gristgouv/gristlabs-widgets) : Amélioration de la robustesse de l'affichage et de la gestion des erreurs.
+- [grist-core](/repos/gristgouv/grist-core) : Évolutions de l'interface utilisateur, support linguistique étendu et optimisations de l'infrastructure.
+- [grist-widget-grouped-view](/repos/gristgouv/grist-widget-grouped-view) : Mise à jour majeure axée sur l'accessibilité, l'internationalisation et la personnalisation visuelle.
+- [gristlabs-widgets](/repos/gristgouv/gristlabs-widgets) : Amélioration de la robustesse de l'affichage et de la gestion des messages d'erreur.
