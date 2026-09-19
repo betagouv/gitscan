@@ -18,7 +18,11 @@
 │   ├── changelog.yaml
 │   ├── config.yaml
 │   └── fragments
-│       └── .gitkeep
+│       ├── .gitkeep
+│       ├── bump-drive-0.22.0.yml
+│       ├── cli-next-flag.yml
+│       ├── cli-rebootstrap.yml
+│       └── drive-caddy-front.yml
 ├── cli
 │   ├── .dockerignore
 │   ├── CLAUDE.md
@@ -41,13 +45,16 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── appmeta.py
 │   │   │   ├── drift.py
+│   │   │   ├── envblob.py
 │   │   │   ├── envrender.py
 │   │   │   ├── errors.py
 │   │   │   ├── generate.py
 │   │   │   ├── manifest.py
 │   │   │   ├── models.py
 │   │   │   ├── paths.py
+│   │   │   ├── pin.py
 │   │   │   ├── prompts.py
+│   │   │   ├── recover.py
 │   │   │   ├── resources
 │   │   │   │   ├── apps
 │   │   │   │   │   ├── docs.yml
@@ -56,28 +63,31 @@
 │   │   │   │   │   ├── meet.yml
 │   │   │   │   │   ├── messages.yml
 │   │   │   │   │   └── projects.yml
-│   │   │   │   └── templates
-│   │   │   │       ├── env
-│   │   │   │       │   ├── base.django.env.j2
-│   │   │   │       │   ├── docs.backend.env.j2
-│   │   │   │       │   ├── docs.caddy.env.j2
-│   │   │   │       │   ├── drive.backend.env.j2
-│   │   │   │       │   ├── keycloak.env.j2
-│   │   │   │       │   ├── meet.backend.env.j2
-│   │   │   │       │   ├── meet.caddy.env.j2
-│   │   │   │       │   ├── messages.backend.env.j2
-│   │   │   │       │   ├── messages.frontend.env.j2
-│   │   │   │       │   └── projects.env.j2
-│   │   │   │       └── scaffold
-│   │   │   │           ├── ansible.cfg.j2
-│   │   │   │           ├── galaxy-requirements.yml.j2
-│   │   │   │           └── playbook.yml.j2
+│   │   │   │   ├── templates
+│   │   │   │   │   ├── env
+│   │   │   │   │   │   ├── base.django.env.j2
+│   │   │   │   │   │   ├── docs.backend.env.j2
+│   │   │   │   │   │   ├── docs.caddy.env.j2
+│   │   │   │   │   │   ├── drive.backend.env.j2
+│   │   │   │   │   │   ├── drive.caddy.env.j2
+│   │   │   │   │   │   ├── keycloak.env.j2
+│   │   │   │   │   │   ├── meet.backend.env.j2
+│   │   │   │   │   │   ├── meet.caddy.env.j2
+│   │   │   │   │   │   ├── messages.backend.env.j2
+│   │   │   │   │   │   ├── messages.frontend.env.j2
+│   │   │   │   │   │   └── projects.env.j2
+│   │   │   │   │   └── scaffold
+│   │   │   │   │       ├── ansible.cfg.j2
+│   │   │   │   │       ├── galaxy-requirements.yml.j2
+│   │   │   │   │       └── playbook.yml.j2
+│   │   │   │   └── upgrades.yml
 │   │   │   ├── runner.py
 │   │   │   ├── secretbackend.py
 │   │   │   ├── secrets.py
 │   │   │   ├── sshuser.py
 │   │   │   ├── tree.py
 │   │   │   ├── ui.py
+│   │   │   ├── upgrades.py
 │   │   │   ├── upstream.py
 │   │   │   ├── vault.py
 │   │   │   └── writer.py
@@ -89,10 +99,15 @@
 │       ├── test_bootstrap.py
 │       ├── test_deploy.py
 │       ├── test_drift.py
+│       ├── test_envblob.py
 │       ├── test_envrender.py
 │       ├── test_generate.py
 │       ├── test_manifest.py
 │       ├── test_packaging.py
+│       ├── test_pin.py
+│       ├── test_prompts.py
+│       ├── test_rebootstrap_flow.py
+│       ├── test_recover.py
 │       ├── test_remote.py
 │       ├── test_runner.py
 │       ├── test_secretbackend.py
@@ -101,8 +116,10 @@
 │       ├── test_tree.py
 │       ├── test_ui.py
 │       ├── test_upgrade.py
+│       ├── test_upgrades.py
 │       ├── test_upstream.py
 │       ├── test_vault.py
+│       ├── test_version.py
 │       └── test_writer.py
 ├── docs
 │   ├── 00-getting-started
@@ -268,10 +285,11 @@
     │       │   ├── compose.yaml.j2
     │       │   └── env.j2
     │       ├── drive
+    │       │   ├── Caddyfile.j2
     │       │   ├── backend_env.j2
+    │       │   ├── caddy_env.j2
     │       │   ├── compose.yaml.j2
-    │       │   ├── frontend_env.j2
-    │       │   └── nginx.conf.j2
+    │       │   └── frontend_env.j2
     │       ├── monitoring
     │       │   └── compose_cadvisor.yaml.j2
     │       └── workers
@@ -450,4 +468,4 @@
             ├── files.j2
             ├── forget.service.j2
             └── forget.timer.j2
-121 directories, 331 files
+121 directories, 349 files
