@@ -34,7 +34,6 @@
 │   ├── buildpack_postcompile.sh
 │   ├── buildpack_postfrontend.sh
 │   ├── buildpack_start.sh
-│   ├── compose
 │   ├── install-external-secrets.sh
 │   ├── install-hooks.sh
 │   ├── manage
@@ -52,9 +51,15 @@
 ├── deploy
 │   └── paas
 │       └── servers.conf.erb
+├── devenv.lock
+├── devenv.nix
+├── devenv.yaml
 ├── docker
 │   ├── auth
 │   │   └── realm.json
+│   ├── compose.d
+│   │   ├── compose.bureautix.yml
+│   │   └── compose.podman.yml
 │   ├── dinum-frontend
 │   │   ├── Dockerfile
 │   │   ├── assets
@@ -1449,4 +1454,4 @@
         │       ├── test_file_service.py
         │       └── test_user_assign.py
         └── uv.lock
-272 directories, 1179 files
+273 directories, 1183 files

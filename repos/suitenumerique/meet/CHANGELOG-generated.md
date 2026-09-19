@@ -1,21 +1,41 @@
-## Changelog : meet (30 derniers jours, au 16 septembre 2026)
+## Changelog : meet (30 derniers jours, au 18 septembre 2026)
 
 ### Résumé
-Les récentes évolutions se concentrent sur l'amélioration de l'expérience utilisateur (nouvelle résolution vidéo, support de l'espagnol et ergonomie mobile) et sur un renforcement significatif de la sécurité et de la stabilité de l'infrastructure (optimisation des performances backend et durcissement des pipelines CI/CD).
+Cette période a été marquée par une amélioration significative de l'expérience utilisateur, notamment grâce à l'ajout de la langue espagnole, une interface mobile optimisée et l'introduction de la résolution vidéo 1080p. Le projet a également renforcé sa robustesse technique avec des optimisations de performance (Redis, gestion des caches) et un durcissement des processus de déploiement et de sécurité.
 
 ### Évolutions fonctionnelles
-- **Qualité vidéo et média** : Ajout de l'option de résolution 1080p [#1660](https://github.com/suitenumerique/meet/pull/1660), meilleure gestion des erreurs lors de l'utilisation des caméras et clarification des textes liés à l'enregistrement vidéo.
-- **Gestion des réunions** : Les utilisateurs authentifiés peuvent désormais gérer le lobby dans les salles de confiance ; les participants en attente sont désormais triés par ordre d'arrivée.
-- **Internationalisation et UX** : Ajout du support de la langue espagnole, interface plus naturelle et amélioration de la réactivité des écrans de feedback sur mobile.
-- **Accessibilité** : Possibilité de fermer les panneaux latéraux avec la touche Échap et annonces vocales pour les indices de fermeture.
+- **Nouvelles fonctionnalités** :
+    - Ajout du support de la langue espagnole.
+    - Introduction d'une option de résolution d'envoi en 1080p.
+    - Support du moteur d'inférence Voxtral en temps réel pour les agents.
+    - Possibilité pour les utilisateurs authentifiés de gérer le lobby dans les salles de confiance.
+- **Améliorations de l'expérience utilisateur** :
+    - Optimisation de l'interface mobile (boutons empilés, barre de contrôle repliée, meilleure réactivité des écrans de feedback).
+    - Amélioration de l'accessibilité : fermeture des panneaux latéraux avec la touche Échap et annonces sonores pour les arrivées en salle d'attente.
+    - Clarification de la terminologie concernant l'enregistrement vidéo.
+    - Tri des participants en salle d'attente par heure d'arrivée.
+- **Corrections** :
+    - Résolution de problèmes liés à l'utilisation des périphériques (caméra/micro) sur Chrome et Firefox.
+    - Correction du comportement du champ de texte dans le chat.
+    - Correction de l'affichage des initiales des avatars.
 
 ### Évolutions techniques
-- **Performances et optimisation** : Refactoring du cache de présence et du stockage du lobby pour limiter les recherches de clés ; remplacement des commandes Redis bloquantes par des scans basés sur curseur.
-- **Sécurité** : Renforcement de la validation des utilisateurs (rejet des utilisateurs inactifs, contrôle du nom d'affichage) et correction de vulnérabilités critiques dans `libexpat`.
-- **Infrastructure et CI/CD** : Durcissement des workflows GitHub Actions (utilisation de `uv`, verrouillage des versions des actions, sécurisation des téléchargements) et migration des images MinIO vers `quay.io`.
-- **Observabilité** : Amélioration du suivi des erreurs d'enregistrement, intégration des SIDs LiveKit dans l'analytics et meilleure gestion de la configuration Sentry.
-- **Architecture** : Ajout du support de Traefik pour l'authentification média et support de l'agent Voxtral realtime.
+- **Performance et optimisation** :
+    - Remplacement des requêtes Redis bloquantes par l'utilisation de `SCAN`.
+    - Refactorisation des caches de présence et du stockage du lobby pour limiter les recherches par salle.
+    - Chargement différé (lazy loading) du script Crisp pour améliorer le temps de chargement initial.
+- **Sécurité et stabilité** :
+    - Durcissement de la CI/CD : verrouillage des actions sur des hashs de commit complets et utilisation de `uv` pour la gestion des dépendances Python.
+    - Correction de vulnérabilités critiques (CVE) dans les images de base.
+    - Amélioration de la gestion des webhooks LiveKit pour éviter les erreurs 422.
+    - Rejet des utilisateurs inactifs au niveau du serveur de ressources.
+- **Expérience de développement (DevX) et Infrastructure** :
+    - Support de Podman en mode "rootless" (sans privilèges root).
+    - Ajout d'un environnement de développement basé sur Nix.
+    - Mise en place d'outils de diagnostic WebRTC et de limitation de bande passante pour les tests locaux.
+    - Support de Traefik pour l'authentification des médias.
+    - Configuration d'un serveur TURN pour les environnements de développement locaux.
 
 ### Autres changements
-- **Documentation** : Mise à jour du guide de montée de version pour la v1.30.0.
-- **Maintenance** : Nettoyage des logs pour réduire le bruit et optimisation de la configuration des outils de développement (WebRTC stats, TURN server local).
+- **Documentation** : Mise à jour du fichier `UPGRADE.md` pour documenter la version 1.30.0.
+- **Internationalisation** : Amélioration et nettoyage des fichiers de traduction backend.
