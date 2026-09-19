@@ -118,7 +118,13 @@
 │   │       ├── queries
 │   │       │   ├── data_warehouse
 │   │       │   │   ├── analytics_missions_full_data.sql
+│   │       │   │   ├── dim_unit_reference.sql
 │   │       │   │   ├── missions_aem.sql
+│   │       │   │   ├── rapport_pam_ulam_action.sql
+│   │       │   │   ├── rapport_pam_ulam_cible.sql
+│   │       │   │   ├── rapport_pam_ulam_controle_croise.sql
+│   │       │   │   ├── rapport_pam_ulam_mission.sql
+│   │       │   │   ├── rapport_pam_ulam_moyen.sql
 │   │       │   │   └── vessels.sql
 │   │       │   ├── monitorenv_remote
 │   │       │   │   ├── actions_infractions.sql
@@ -258,7 +264,14 @@
 │       │   │       ├── V777.01__dummy_amp_cacem.sql
 │       │   │       ├── V777.02__dummy_env_actions.sql
 │       │   │       ├── V777.03__dummy_missions_aem_test.sql
-│       │   │       └── V777.04__dummy_env_actions_aem_test.sql
+│       │   │       ├── V777.04__dummy_env_actions_aem_test.sql
+│       │   │       ├── V777.05__dummy_missions_ulam.sql
+│       │   │       ├── V777.06__dummy_control_units_ulam.sql
+│       │   │       ├── V777.07__dummy_missions_control_units_ulam.sql
+│       │   │       ├── V777.08__dummy_bases_ulam.sql
+│       │   │       ├── V777.09__dummy_control_unit_resources_ulam.sql
+│       │   │       ├── V777.10__dummy_control_units_pam_joint_mission.sql
+│       │   │       └── V777.11__dummy_missions_control_units_pam_joint_mission.sql
 │       │   ├── monitorfish
 │       │   │   └── remote_database
 │       │   │       ├── V777.01__dummy_rectangles_stat_areas.sql
@@ -273,14 +286,22 @@
 │       │   │       ├── V777.10__dummy_species_groups.sql
 │       │   │       ├── V777.11__dummy_species_codes_groups.sql
 │       │   │       ├── V777.12__dummy_sales_notes.sql
-│       │   │       └── V777.13__dummy_mission_actions_aem_test.sql
+│       │   │       ├── V777.13__dummy_mission_actions_aem_test.sql
+│       │   │       └── V777.14__dummy_beacon_malfunction_comments.sql
 │       │   └── rapportnav
 │       │       └── remote_database
 │       │           ├── V777.01__dummy_mission_actions.sql
 │       │           ├── V777.02__dummy_service_aem_test.sql
 │       │           ├── V777.03__dummy_mission_general_info_aem_test.sql
 │       │           ├── V777.04__dummy_mission_uuid_table.sql
-│       │           └── V777.05__dummy_target_control_infraction_aem_test.sql
+│       │           ├── V777.05__dummy_target_control_infraction_aem_test.sql
+│       │           ├── V777.07__dummy_mission_general_info_ulam.sql
+│       │           ├── V777.08__dummy_mission_actions_ulam.sql
+│       │           ├── V777.09__dummy_mission_action_resource_ulam.sql
+│       │           ├── V777.10__dummy_inter_ministerial_service_ulam.sql
+│       │           ├── V777.11__dummy_target_control_infraction_ulam.sql
+│       │           ├── V777.12__dummy_service_control_unit_pam_ulam.sql
+│       │           └── V777.13__dummy_inquiry_pam_ulam.sql
 │       └── test_pipeline
 │           ├── __init__.py
 │           ├── test_flows
@@ -333,4 +354,4 @@
 │       ├── docker-compose-dev-metabase.yml
 │       └── docker-compose-test-data.yml
 └── sonar-project.properties
-69 directories, 266 files
+69 directories, 287 files

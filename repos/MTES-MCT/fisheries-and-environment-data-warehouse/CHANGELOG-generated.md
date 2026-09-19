@@ -1,29 +1,23 @@
-## Changelog : fisheries-and-environment-data-warehouse (30 derniers jours, au 12 août 2026)
+## Changelog : fisheries-and-environment-data-warehouse (30 derniers jours, au 15/09/2026)
 
 ### Résumé
-Ce mois-ci, l'entrepôt de données s'enrichit de nouvelles sources statistiques (notamment via l'intégration de données Matomo) et de données relatives aux infractions environnementales. Les développements ont également permis de renforcer la fiabilité des indicateurs liés à l'environnement marin (AEM) et d'améliorer la robustesse des tests automatisés pour garantir la qualité des données intégrées.
+Ce mois-ci, les efforts se sont concentrés sur l'amélioration de la précision des rapports de contrôle (PAM/ULAM) et l'enrichissement des indicateurs de suivi des missions de terrain. Le projet a également bénéficié d'une mise à jour majeure de son environnement technique et d'une stabilisation de ses processus d'intégration continue.
 
 ### Évolutions fonctionnelles
-- **Nouvelles données disponibles** : 
-    - Intégration des statistiques Matomo, incluant les utilisateurs mensuels et le suivi quotidien des visiteurs uniques [#233](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/233).
-    - Ajout de la table des infractions environnementales (`actions_infractions`) [#226](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/226).
-    - Ajout de la table `eof`.
-- **Indicateurs et rapports** : 
-    - Rétablissement et amélioration des indicateurs pour l'AEM (Analytics Environnement Marin) via de nouvelles requêtes SQL dédiées [#224](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/224).
-    - Ajout de nouvelles entrées de données pour la DGTM Guyane.
+- **Amélioration de la fiabilité des rapports** : Correction de bugs impactant les rapports de contrôle environnemental et PAM/ULAM.
+- **Enrichissement des données de mission** : Ajout de nouveaux indicateurs incluant le suivi des absences d'équipage, des stagiaires, de la durée des missions, des jours de mer et du statut des navires.
+- **Précision accrue des infractions** : Passage d'une approximation à un décompte exact pour les infractions de pêche (FISH).
+- **Correction des classifications** : Rectification des erreurs de catégorisation pour les types de missions, les types de contrôle (notamment les contrôles administratifs) et les types de surveillance.
 
 ### Évolutions techniques
-- **Pipelines de données** : 
-    - Mise en place et enregistrement du nouveau flux de données `matomo_stats` [#220](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/220).
-    - Optimisation du processus de synchronisation des tables depuis la base de données (mise à jour des configurations et des champs).
-- **Architecture et organisation** : 
-    - Réorganisation du stockage des requêtes avec le déplacement des fichiers SQL vers le répertoire `queries/data_warehouse`.
-- **Qualité et Tests** : 
-    - Refactorisation massive des jeux de données de test (fixtures SQL) pour les missions, les contrôles de pêche et les fichiers RPN.
-    - Correction de plusieurs régressions dans les tests suite aux changements de structure de données.
+- **Mise à jour de l'environnement** : Passage à Python 3.13.15 ([#251](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/251)).
+- **Optimisation des performances** : Amélioration des requêtes SQL et de la CI, notamment par la réduction des sous-requêtes imbriquées et l'optimisation des calculs de bordée.
+- **Résolution de bugs critiques** : Correction d'un plantage lié à un dépassement de capacité (overflow) lors de l'expansion des jours de mer ([#253](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/253)).
+- **Stabilisation de la CI** : Résolution de plusieurs échecs de l'intégration continue liés à la gestion des dates, des clés de tri et de l'absence de certaines tables analytiques.
+- **Évolution du schéma de données** : 
+    - Création d'une nouvelle table dédiée aux rapports ULAM ([#231](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/231)).
+    - Ajustements des champs nullables dans la table des zones EEZ et corrections des requêtes d'infractions ([#250](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/250), [#248](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/248)).
 
 ### Autres changements
-- **Maintenance et nettoyage** : 
-    - Renommage systématique des fichiers de test SQL pour assurer une meilleure cohérence dans le projet.
-    - Amélioration de la traçabilité grâce à l'ajout de logs de débogage pour les requêtes analytiques de mission.
-    - Mise à jour de la configuration de sécurité (`trivyignore`).
+- **Nettoyage du code** : Suppression des blocs de débogage (print) et des commentaires SQL obsolètes.
+- **Sécurité** : Mise à jour de la configuration d'exclusion pour les scans de sécurité Trivy ([#252](https://github.com/MTES-MCT/fisheries-and-environment-data-warehouse/pull/252)).

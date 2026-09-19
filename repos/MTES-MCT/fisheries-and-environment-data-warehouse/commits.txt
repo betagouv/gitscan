@@ -1,11 +1,87 @@
+2026-09-15T13:37:22+02:00 - db30ba0 - Sixtine Vervial : Merge pull request #257 from MTES-MCT/claude/pam-ulam-controls-fixes-258xpt
+2026-09-09T09:37:36+02:00 - 5781307 - Claude : Minimize inline SQL comments in PAM/ULAM reporting fixes
+2026-09-01T13:19:50Z - 193c43d - Claude : Fix CI: compute bordee once after UNION ALL, not 3x per source
+2026-09-01T13:10:43Z - bcbe578 - Claude : Fix CI: split status_action_durations into flat CTEs, no nested subquery
+2026-09-01T12:43:01Z - 393601e - Claude : Fix stale comment on SURVEILLANCE nb_operations in missions_aem.sql
+2026-09-01T11:39:10Z - db3544d - Claude : Fix PAM/ULAM and env control reporting bugs
+2026-08-31T17:47:07+02:00 - 0f2b4a4 - Vincent Chéry : Merge pull request #255 from MTES-MCT/vincet/fix_acknowledgement_logic
+2026-08-31T17:40:05+02:00 - d578b68 - Vincent : Correct queries
+2026-08-31T17:39:49+02:00 - 0f337bf - Vincent : Add failing tests
+2026-08-31T17:24:08+02:00 - 19aa3d3 - Sixtine Vervial : Merge pull request #253 from MTES-MCT/fix-pam-ulam-range-overflow
+2026-08-27T09:24:13+02:00 - fd8dc11 - Sixtine Vervial : Fix range() overflow crash in jours_de_mer day-expansion
+2026-08-26T14:35:48+02:00 - efa78e6 - Vincent Chéry : Merge pull request #252 from MTES-MCT/vincent/update_trivy_ignore
+2026-08-26T13:55:08+02:00 - 9246f31 - Vincent : Update trivy ignore
+2026-08-26T13:32:11+02:00 - a541972 - Vincent Chéry : Merge pull request #251 from MTES-MCT/vincent/upgrade_python
+2026-08-26T11:07:23+02:00 - f29cd7c - Vincent : Remove implicit dependency from spec
+2026-08-26T11:03:23+02:00 - fd71129 - Vincent : Update trivyignore
+2026-08-26T10:55:39+02:00 - 277af04 - Vincent : Upgrade python to 3.13.15
+2026-08-26T10:09:43+02:00 - def5bf9 - Vincent Chéry : Merge pull request #231 from MTES-MCT/229-creation-table-pour-rapport-ulam
+2026-08-25T17:18:34+02:00 - 4bf3a5b - Sixtine Vervial : Merge branch 'main' into 229-creation-table-pour-rapport-ulam
+2026-08-25T16:52:14+02:00 - e02ccf2 - Vincent Chéry : Merge pull request #250 from MTES-MCT/vincent/fix_eez_areas_table
+2026-08-25T16:52:03+02:00 - c5e5b46 - Vincent Chéry : Merge pull request #248 from MTES-MCT/vincent/fix_actions_infractions_query
+2026-08-25T16:51:56+02:00 - edee160 - Sixtine Vervial : Drop nb_infractions_sans_pv_fiable now that all 3 sources are reliable
+2026-08-25T16:35:56+02:00 - 0561c77 - Vincent : Update order by key
+2026-08-25T16:29:45+02:00 - b292eec - Sixtine Vervial : Add exact FISH infraction counts, replacing the 0/1 approximation
+2026-08-25T16:18:00+02:00 - 8983d28 - Sixtine Vervial : Fix control_type='ADMINISTRATIVE' mapped to 'Autres' instead of its own policy
+2026-08-25T14:54:26+02:00 - a3782d0 - Vincent : Update nullable fields in eez_areas table
+2026-08-25T14:42:18+02:00 - 61a2eca - Vincent : Fix actions_infractions query
+2026-08-25T14:30:09+02:00 - 711d184 - Sixtine Vervial : Add crew absence and trainee tracking to fact_mission_pam_ulam
+2026-08-25T14:21:43+02:00 - 8274d79 - Sixtine Vervial : Sort mission_terrain_types so [LAND,SEA]/[SEA,LAND] group together
+2026-08-25T13:56:51+02:00 - 7504dc1 - Sixtine Vervial : Add is_during_baaem_permanence flag and expose mission open_by
+2026-08-25T13:39:30+02:00 - 00293a0 - Sixtine Vervial : Fix AIR_SURVEILLANCE misclassified as CONTROL in FISH rows
+2026-08-25T13:00:01+02:00 - e739000 - Sixtine Vervial : Redefine mission_terrain_types, blank heures moteur, add mission_duration_h
+2026-08-25T09:48:10+02:00 - ff64f86 - Sixtine Vervial : Remove now-unneeded DEBUG print blocks from pam_ulam CI troubleshooting
+2026-08-20T14:12:55+02:00 - d07155f - Sixtine Vervial : Attempt fix for fact_controle_croise_pam_ulam CI failure: DateTime pushdown
+2026-08-20T13:24:03+02:00 - f4c85f3 - Sixtine Vervial : Fix fact_controle_croise_pam_ulam CI failure: nullable mois sort key
+2026-08-20T11:01:04+02:00 - 16c8008 - Sixtine Vervial : Fix pushdown crash in fact_cible_pam_ulam debug print (has_been_done = true)
+2026-08-20T10:48:41+02:00 - 4839e5e - Sixtine Vervial : Fix fact_cible_pam_ulam CI failure: missing monitorfish/monitorenv analytics tables
+2026-08-20T10:26:04+02:00 - 00cf3af - Sixtine Vervial : Add jours de mer / statut navire, fix dim_unit_reference CI coverage gap
+2026-08-19T22:47:05+02:00 - 5462763 - Sixtine Vervial : Close 6 PAM/ULAM maquette gaps: STATUS as action subtype, bordée, contrôles croisés, ENV surveillance, mer/terre, 4 missing action types
+2026-08-19T20:16:07+02:00 - fd3ab50 - Sixtine Vervial : Derive politique_publique from control_2.control_type instead of a generic mapping
+2026-08-19T19:17:31+02:00 - 4298c13 - Sixtine Vervial : Union fact_cible_pam_ulam/fact_moyen_pam_ulam across nav/fish/env, fix control_type filter bug
+2026-08-19T17:51:03+02:00 - 73c15c9 - Sixtine Vervial : Restructure NAV action_type/subtype into a 3-level hierarchy, cut 7 columns
+2026-08-19T16:29:27+02:00 - dd5950d - Sixtine Vervial : Merge fact_action_pam_ulam and fact_controle_pam_ulam into one unified table
+2026-08-19T15:42:54+02:00 - 6325843 - Sixtine Vervial : Verify test fixtures against real Postgres/ClickHouse schemas, not guesses
+2026-08-19T15:32:55+02:00 - b110645 - Sixtine Vervial : Wire fact_controle_pam_ulam into sync_table_from_db_connection.csv with real test coverage
+2026-08-19T15:29:19+02:00 - fb176b0 - Sixtine Vervial : Verify fact_controle_pam_ulam assumptions against cloned MonitorFish/MonitorEnv
+2026-08-19T15:16:48+02:00 - 117cc68 - Sixtine Vervial : Add geoloc/target-detail fields to fact_action_pam_ulam; draft fact_controle_pam_ulam (nav+fish+env)
+2026-08-19T11:45:54+02:00 - 84b9f02 - Sixtine Vervial : Change fact_moyen_pam_ulam grain and add fact_cible_pam_ulam
+2026-08-19T11:15:23+02:00 - 523ec4e - Sixtine Vervial : Fix target/control/infraction logic against the real rapportnav2 schema
+2026-08-19T11:03:57+02:00 - a60ce96 - Sixtine Vervial : Add target/control/infraction chain to fact_action_pam_ulam
+2026-08-18T12:07:23+02:00 - 91defc2 - Sixtine Vervial : Centralize the PAM/ULAM unit reference (facade/zone/unit_type) into a single table
+2026-08-18T11:45:59+02:00 - 05ee577 - Sixtine Vervial : Generalize the ULAM report queries to cover PAM and ULAM in shared tables
+2026-08-18T11:21:56+02:00 - f5da417 - Sixtine Vervial : Add French label / politique publique / thématique mapping to fact_action_ulam
+2026-08-18T09:55:03+02:00 - 85e644f - Sixtine Vervial : Simplify Makefile to rely on main's migration-sentinel service
+2026-08-18T09:54:52+02:00 - 83fd578 - Sixtine Vervial : Merge remote-tracking branch 'origin/main'
+2026-08-18T09:39:48+02:00 - cc3322f - Sixtine Vervial : Wait for flyway migration containers before running tests (fixes race)
+2026-08-17T15:51:57+02:00 - 12be83e - Sixtine Vervial : Filter the 3 ULAM queries to ULAM-type units only
+2026-08-17T15:31:03+02:00 - 03c05c5 - Sixtine Vervial : Add facade, renfort/JDP hours, and clarify heures-en-mer definitions
+2026-08-14T09:13:18+02:00 - 2f79571 - Vincent Chéry : Merge pull request #235 from MTES-MCT/vincent/add_malfunctions_data
+2026-08-12T17:50:14+02:00 - 2970e26 - Vincent : Add beacon malfunction data tables
+2026-08-12T17:49:06+02:00 - 8b14b64 - Vincent : Fix migrations
+2026-08-12T17:48:43+02:00 - fc569d5 - Vincent : Add migration sentinel service in test suite
+2026-08-12T17:15:29+02:00 - 3ea6a35 - Sixtine Vervial : Avoid the freshly-added RAPPORT_NAV enum value in the ULAM missions fixture
+2026-08-12T17:08:46+02:00 - 94aaa1c - Sixtine Vervial : Split monitorenv ULAM fixture into one file per table
+2026-08-12T16:22:17+02:00 - 84a2aea - Sixtine Vervial : Add is_mission_reportable flag and administration names (v2 scope)
+2026-08-12T15:38:22+02:00 - 0fe92e6 - Sixtine Vervial : Add per-table debug prints for V777.05 monitorenv fixture (fact_moyen_ulam)
+2026-08-12T15:23:51+02:00 - c21cf1e - Sixtine Vervial : Add debug prints for fact_moyen_ulam test (empty table on last CI run)
+2026-08-12T15:16:03+02:00 - 866e3af - Sixtine Vervial : Merge remote-tracking branch 'origin/main'
 2026-08-12T14:47:03+02:00 - 8761a47 - Vincent Chéry : Merge pull request #233 from MTES-MCT/vincent/update_matomo_stats
 2026-08-12T14:46:26+02:00 - fff3795 - Vincent : Add matomo monthly_users table
 2026-08-12T14:46:26+02:00 - 360a50f - Vincent : Switch unique visitors metrics from monthly to daily
 2026-08-12T14:46:03+02:00 - def70a1 - Vincent Chéry : Merge pull request #224 from MTES-MCT/221-rétablissement-rapport-aem
+2026-08-12T14:01:49+02:00 - 683aa9a - Sixtine Vervial : Fix ClickHouse alias collision in fact_mission_ulam debug query
+2026-08-12T12:47:27+02:00 - da32c42 - Sixtine Vervial : Fix V777.03 monitorenv fixture: schema drift caused silent Flyway failure
+2026-08-12T12:20:07+02:00 - ade0ffa - Sixtine Vervial : Add debug prints for fact_mission_ulam test (empty table on last CI run)
 2026-08-12T12:19:07+02:00 - cc0ce61 - Sixtine Vervial : Move analytics_missions_full_data.sql to queries/data_warehouse
 2026-08-12T12:09:06+02:00 - 8922dca - Sixtine Vervial : Fix dangling target_2.action_id reference in AEM test fixtures
 2026-08-12T12:04:47+02:00 - 11ba4a5 - Sixtine Vervial : Fix stale vessels.sql path in test fixture after data_warehouse move
 2026-08-12T12:04:22+02:00 - 14bd82d - Sixtine Vervial : Address review feedback from VincentAntoine on PR #224
+2026-08-12T11:31:55+02:00 - f1dadc5 - Sixtine Vervial : Order fact_mission_ulam by start_datetime_utc instead of mission_id
+2026-08-12T11:30:12+02:00 - 5932dc1 - Sixtine Vervial : Fix nullable ORDER BY key on fact_mission_ulam (CI failure)
+2026-08-12T11:04:56+02:00 - 510fd89 - Sixtine Vervial : Fix nullable-boolean bug in fact_mission_ulam flags
+2026-08-12T10:58:55+02:00 - c2f709f - Sixtine Vervial : Add rapport ULAM tables (fact_mission_ulam, fact_action_ulam, fact_moyen_ulam)
+2026-08-12T10:11:32+02:00 - 013974a - Sixtine Vervial : add pycharm idea to gitignore
 2026-08-11T20:11:25+02:00 - d9402e5 - Sixtine Vervial : Merge branch 'main' into 221-rétablissement-rapport-aem
 2026-08-11T20:09:04+02:00 - 960a30a - Sixtine Vervial : Add new unit entry for DGTM Guyane
 2026-08-11T20:01:46+02:00 - 3e2c9d1 - Sixtine Vervial : Remove debug prints from test_sync_table_from_db_connection
