@@ -1,0 +1,164 @@
+.
+├── .env.example
+├── .github
+│   └── workflows
+│       ├── cd.yml
+│       └── ci.yml
+├── .gitignore
+├── .idea
+│   ├── .gitignore
+│   ├── inspectionProfiles
+│   │   ├── Project_Default.xml
+│   │   └── profiles_settings.xml
+│   ├── misc.xml
+│   ├── modules.xml
+│   ├── pyProjectModel.xml
+│   ├── slack2tchap-core.iml
+│   ├── slack2tchap-stateless.iml
+│   ├── slack2tchap-workspace.iml
+│   └── slack2tchap.iml
+├── .python-version
+├── AGENTS.md
+├── README.md
+├── conftest.py
+├── docker-compose-dev.yaml
+├── docs
+│   ├── API_KEYS_SECURITY.md
+│   ├── CREDENTIALS_ENCRYPTION.md
+│   ├── DATABASE_AND_ALEMBIC.md
+│   ├── DEPLOY_STATELESS_SCALINGO.md
+│   └── STATELESS_MATRIX_SCALINGO.md
+├── pyproject.toml
+├── pyrightconfig.json
+├── scripts
+│   └── build_binaries.sh
+├── slack2tchap
+│   ├── README.md
+│   ├── alembic
+│   │   ├── env.py
+│   │   ├── script.py.mako
+│   │   └── versions
+│   │       └── 0001_initial_schema.py
+│   ├── alembic.ini
+│   ├── pyproject.toml
+│   ├── scripts
+│   │   └── generate_api_key.py
+│   ├── src
+│   │   └── slack2tchap
+│   │       ├── __init__.py
+│   │       ├── application
+│   │       │   ├── __init__.py
+│   │       │   ├── dtos.py
+│   │       │   └── use_cases.py
+│   │       ├── core
+│   │       │   ├── __init__.py
+│   │       │   ├── config.py
+│   │       │   └── logging.py
+│   │       ├── domain
+│   │       │   ├── __init__.py
+│   │       │   ├── exceptions.py
+│   │       │   ├── models.py
+│   │       │   └── ports.py
+│   │       ├── infrastructure
+│   │       │   ├── __init__.py
+│   │       │   ├── database
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── migrator.py
+│   │       │   │   ├── models.py
+│   │       │   │   ├── seeder.py
+│   │       │   │   └── session.py
+│   │       │   ├── matrix
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── adapter.py
+│   │       │   │   ├── manager.py
+│   │       │   │   └── patches.py
+│   │       │   ├── parsers
+│   │       │   │   ├── __init__.py
+│   │       │   │   └── slack_parser.py
+│   │       │   ├── repositories
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── matrix_account_repository.py
+│   │       │   │   ├── user_repository.py
+│   │       │   │   └── webhook_repository.py
+│   │       │   └── security
+│   │       │       ├── __init__.py
+│   │       │       ├── api_key.py
+│   │       │       └── cipher.py
+│   │       ├── interfaces
+│   │       │   ├── __init__.py
+│   │       │   └── api
+│   │       │       ├── __init__.py
+│   │       │       ├── dependencies.py
+│   │       │       ├── routes.py
+│   │       │       └── schemas.py
+│   │       └── main.py
+│   └── tests
+│       ├── conftest.py
+│       ├── fakes.py
+│       ├── test_access_control.py
+│       ├── test_alembic_migration.py
+│       ├── test_api.py
+│       ├── test_api_webhooks_and_admin.py
+│       ├── test_matrix_manager_persistence.py
+│       ├── test_matrix_patches.py
+│       ├── test_repositories_integration.py
+│       ├── test_settings_security.py
+│       ├── test_use_cases.py
+│       └── test_webhook_use_cases.py
+├── slack2tchap-core
+│   ├── README.md
+│   ├── pyproject.toml
+│   ├── src
+│   │   └── slack2tchap_core
+│   │       ├── __init__.py
+│   │       ├── cli.py
+│   │       ├── domain
+│   │       │   ├── exceptions.py
+│   │       │   ├── models.py
+│   │       │   └── ports.py
+│   │       ├── infrastructure
+│   │       │   ├── parsers
+│   │       │   │   └── slack_parser.py
+│   │       │   └── security
+│   │       │       ├── api_key.py
+│   │       │       └── cipher.py
+│   │       ├── logging.py
+│   │       └── matrix
+│   │           └── helpers.py
+│   └── tests
+│       ├── test_domain_models.py
+│       ├── test_security.py
+│       └── test_slack_parser.py
+├── slack2tchap-stateless
+│   ├── .buildpacks
+│   ├── .python-version
+│   ├── Procfile
+│   ├── README.md
+│   ├── pyproject.toml
+│   ├── scalingo.json
+│   ├── scripts
+│   │   └── generate_stateless_url.py
+│   ├── src
+│   │   └── slack2tchap_stateless
+│   │       ├── __init__.py
+│   │       ├── application
+│   │       │   ├── dtos.py
+│   │       │   └── use_cases.py
+│   │       ├── core
+│   │       │   ├── config.py
+│   │       │   └── logging.py
+│   │       ├── infrastructure
+│   │       │   └── matrix
+│   │       │       └── messenger.py
+│   │       ├── interfaces
+│   │       │   └── api
+│   │       │       ├── dependencies.py
+│   │       │       └── routes.py
+│   │       └── main.py
+│   ├── tests
+│   │   ├── conftest.py
+│   │   ├── stateless_fakes.py
+│   │   └── test_stateless_webhook.py
+│   └── uv.lock -> ../uv.lock
+└── uv.lock
+45 directories, 118 files
