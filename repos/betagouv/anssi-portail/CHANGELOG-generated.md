@@ -1,39 +1,23 @@
-## Changelog : anssi-portail (30 derniers jours, au 16 septembre 2026)
+## Changelog : anssi-portail (30 derniers jours, au 18/09/2026)
 
 ### Résumé
-Ce mois-ci, le portail a connu une évolution majeure avec le déploiement de nouveaux outils interactifs, notamment les mini-tests (Réflexes Cyber, Vrai/Faux) et une refonte du test d'Exposition. L'expérience utilisateur a été enrichie par des animations et un meilleur suivi de progression. En parallèle, une modernisation profonde de l'infrastructure technique a été opérée, incluant une migration vers Svelte 5 et un renforcement des mesures de sécurité.
+Ce mois a été marqué par un enrichissement important des outils interactifs, notamment avec le lancement d'un nouveau mini-test "Vrai ou Faux" et l'amélioration de l'expérience utilisateur sur les parcours de sécurisation et le test d'exposition. Parallèlement, une modernisation technique majeure a été opérée avec la migration de l'interface vers Svelte 5 et une refonte complète de la suite de tests.
 
 ### Évolutions fonctionnelles
-- **Mini-tests et simulations** : 
-    - Lancement et amélioration des mini-tests (Réflexes Cyber, Vrai/Faux) avec gestion des scores, des scénarios de simulation et des rôles.
-    - Ajout de fonctionnalités de feedback permettant aux utilisateurs de laisser des réactions et des avis.
-    - Intégration d'animations (confettis, transitions) pour rendre les parcours plus engageants.
-- **Test d'Exposition** : 
-    - Création d'une nouvelle interface dédiée incluant des cartes interactives, des radars animés et des badges de statistiques.
-    - Mise en place de la collecte des retours utilisateurs et des réponses au questionnaire.
-- **Parcours de sécurisation** : 
-    - Amélioration de la navigation avec des fils d'Ariane plus complets et une meilleure gestion du mobile.
-    - Ajout d'animations de progression et de modales de félicitations lors de la complétion des modules.
-- **Outils et contenus** : 
-    - Ajout d'un comparateur de financements pour aider les organisations dans leurs démarches.
-    - Mise à jour des contenus relatifs à la directive NIS2 et aux guides de bonnes pratiques.
+- **Nouveaux mini-tests** : Lancement du test "Vrai ou Faux" incluant un système de score, des animations (confettis), et la possibilité pour les utilisateurs de laisser des réactions/avis.
+- **Parcours de sécurisation** : Amélioration de l'engagement utilisateur via des animations de progression, des modales de félicitations lors de la complétion de modules/parcours, et une meilleure ergonomie sur mobile.
+- **Test d'exposition** : Création d'une page dédiée, ajout de nouvelles animations, et mise en place d'un système de collecte des résultats et des avis utilisateurs.
+- **Outils de financement** : Ajout d'un outil de comparaison des financements et automatisation de la publication des informations.
+- **Contenus et guides** : Mise à jour des informations relatives à la directive NIS2 (référentiel ReCyF) et amélioration de la clarté des guides pratiques.
 
 ### Évolutions techniques
-- **Modernisation du framework** : Migration massive de l'ensemble des composants vers **Svelte 5** (utilisation des "runes") pour améliorer la réactivité et la maintenance.
-- **Tests et Qualité** : 
-    - Migration complète du moteur de tests vers **Vitest**.
-    - Amélioration de la couverture de tests (backend et frontend) et optimisation de la gestion des mocks.
-- **Sécurité** : 
-    - Renforcement de la protection contre les attaques par force brute via l'ajout de *rate limiting* sur les routes de connexion.
-    - Amélioration de la gestion du MFA (Multi-Factor Authentication) et du contrôle d'identité.
-- **Infrastructure et DevOps** : 
-    - Optimisation du processus de déploiement (gestion de pnpm et intégration avec CleverCloud).
-    - Mise à jour des workflows CI/CD (Nix, Ruby, Playwright).
-    - Amélioration de l'expérience de développement (support du développement en LAN).
-- **Optimisation du code** : 
-    - Nettoyage important du projet : suppression de nombreux composants, styles CSS, images et dépendances inutilisés.
-    - Refactorisation de l'architecture des composants pour favoriser la réutilisation.
+- **Migration Framework** : Migration massive de la bibliothèque de composants vers Svelte 5 (utilisation du mode Runes) pour améliorer les performances et la maintenabilité.
+- **Tests et Qualité** : Migration complète de la suite de tests (frontend et backend) vers Vitest et amélioration de la couverture via des mocks plus robustes.
+- **Infrastructure et CI/CD** : Transition vers `pnpm` pour la gestion des dépendances et optimisation des workflows de déploiement (mise en cache, gestion des versions Ruby/Nix).
+- **Sécurité** : Renforcement de la protection des routes d'authentification par l'ajout de limites de débit (*rate limiting*) et amélioration des flux MFA (authentification multi-facteurs).
+- **Architecture** : Refonte de l'adaptateur Brevo pour une meilleure gestion des événements de parcours et des statistiques utilisateurs.
 
 ### Autres changements
-- **SEO et visibilité** : Optimisation du référencement naturel via la simplification des URLs (suppression des extensions `.html`) et la mise à jour du sitemap.
-- **Documentation** : Mise à jour des fichiers de configuration et ajout de la page `llms.txt`.
+- **Optimisation SEO** : Nettoyage des URLs (suppression des extensions `.html`) et ajout de métadonnées de modification pour les services et ressources.
+- **Maintenance et Nettoyage** : Suppression importante de composants, de styles CSS et d'images inutilisés pour alléger le projet.
+- **Documentation** : Mise à jour de la politique de confidentialité et ajout du fichier `llms.txt`.

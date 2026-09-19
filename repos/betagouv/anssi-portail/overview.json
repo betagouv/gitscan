@@ -1,15 +1,15 @@
 {
   "url": "https://github.com/betagouv/anssi-portail",
   "name": "anssi-portail",
-  "description": "Portail de l'ANSSI proposant des outils interactifs pour évaluer la cybersécurité, tels que des tests d'exposition et des mini-tests. Il offre également des guides de bonnes pratiques et des ressources pour la sécurisation des organisations.",
+  "description": "Portail de l'ANSSI proposant des outils interactifs de cybersécurité, tels que des mini-tests, des simulations et des parcours de sécurisation pour les organisations.",
   "language": "TypeScript",
   "features": [
     "Simulation & Calcul",
     "Sécurité & Conformité",
+    "Formulaires & Démarches",
     "Contenu éditorial",
-    "Interface utilisateur & Design",
-    "Statistiques & Rapports",
-    "Authentification & Accès"
+    "Recherche & Filtres",
+    "Statistiques & Rapports"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -17,45 +17,46 @@
     "Express",
     "PostgreSQL",
     "Knex",
-    "Jekyll",
-    "Zod",
     "Axios",
-    "AWS SDK",
-    "Sentry",
-    "OpenID Client",
-    "@lab-anssi/ui-kit"
+    "Zod",
+    "Jekyll"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
+    "Angular / Svelte / Autres SPA",
     "TypeScript / JavaScript",
-    "Design System (DSFR & UI libs)",
     "Docker & Conteneurs",
-    "Node.js / NestJS",
-    "Sites statiques & SSG",
     "Authentification (composant)",
-    "Tests"
+    "Design System (DSFR & UI libs)",
+    "Sites statiques & SSG"
   ],
   "auth": {
     "methods": [
       "jwt",
+      "mfa",
       "session",
-      "oauth2",
-      "mfa"
+      "sso"
     ]
   },
-  "tests": "Vitest, Supertest",
-  "lastActivity": "2026-09-16T16:31:57+02:00",
+  "tests": [
+    "Vitest",
+    "Supertest",
+    "Playwright"
+  ],
+  "workflows": [
+    "CI/CD (Nix, Ruby, Playwright)"
+  ],
+  "lastActivity": "2026-09-18T14:57:04+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
   "tags": [
     "Sécurité & Auth",
-    "TypeScript",
     "Design System & UI",
+    "TypeScript",
     "Docker & Conteneurs",
-    "Node.js, NestJS & Express",
-    "Bases de données SQL",
-    "Écosystème beta.gouv / État"
+    "Écosystème beta.gouv / État",
+    "HTML, CSS & Web"
   ]
 }
