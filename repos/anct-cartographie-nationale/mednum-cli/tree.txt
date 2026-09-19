@@ -144,8 +144,15 @@
 ├── package.json
 ├── pnpm-lock.yaml
 ├── pnpm-workspace.yaml
+├── scripts
+│   └── lint-architecture.mjs
 ├── src
 │   ├── cli
+│   │   ├── annuaire
+│   │   │   ├── annuaire.command.ts
+│   │   │   ├── annuaire.options.ts
+│   │   │   ├── annuaire.providers.ts
+│   │   │   └── index.ts
 │   │   ├── data-inclusion
 │   │   │   ├── data-inclusion.command.ts
 │   │   │   ├── data-inclusion.options.ts
@@ -195,6 +202,21 @@
 │   │   │   │   │       ├── fetch-remote-source.key.ts
 │   │   │   │   │       ├── index.ts
 │   │   │   │   │       └── read-local-source.key.ts
+│   │   │   │   ├── construire-annuaire
+│   │   │   │   │   ├── construire-annuaire.ts
+│   │   │   │   │   ├── domain
+│   │   │   │   │   │   ├── adresses-des-lieux.spec.ts
+│   │   │   │   │   │   ├── adresses-des-lieux.ts
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── implementations
+│   │   │   │   │   │   ├── ecrire-annuaire-dans-un-fichier.ts
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   └── lire-les-lieux-depuis-des-fichiers.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── keys
+│   │   │   │   │       ├── ecrire-annuaire.key.ts
+│   │   │   │   │       ├── index.ts
+│   │   │   │   │       └── lire-les-lieux.key.ts
 │   │   │   │   └── extraire-data-inclusion
 │   │   │   │       ├── domain
 │   │   │   │       │   ├── data-inclusion-merged.ts
@@ -387,7 +409,6 @@
 │   │       │   │   │   ├── clean-code-postal.ts
 │   │       │   │   │   ├── clean-commune.spec.ts
 │   │       │   │   │   ├── clean-commune.ts
-│   │       │   │   │   ├── clean-operations.ts
 │   │       │   │   │   ├── clean-voie.spec.ts
 │   │       │   │   │   └── clean-voie.ts
 │   │       │   │   ├── autres-formations-labels
@@ -395,7 +416,6 @@
 │   │       │   │   │   ├── autres-formations-labels.field.ts
 │   │       │   │   │   └── index.ts
 │   │       │   │   ├── contact
-│   │       │   │   │   ├── clean-operations.ts
 │   │       │   │   │   ├── contact.field.spec.ts
 │   │       │   │   │   └── contact.field.ts
 │   │       │   │   ├── date
@@ -405,8 +425,11 @@
 │   │       │   │   │   ├── dispositifs-programmes-nationaux.field.spec.ts
 │   │       │   │   │   └── dispositifs-programmes-nationaux.field.ts
 │   │       │   │   ├── fiche-acces-libre
+│   │       │   │   │   ├── adresse-exacte.ts
+│   │       │   │   │   ├── attribution.ts
 │   │       │   │   │   ├── fiche-acces-libre.field.spec.ts
-│   │       │   │   │   └── fiche-acces-libre.field.ts
+│   │       │   │   │   ├── fiche-acces-libre.field.ts
+│   │       │   │   │   └── rattachement.spec.ts
 │   │       │   │   ├── formations-labels
 │   │       │   │   │   ├── formations-labels.field.spec.ts
 │   │       │   │   │   └── formations-labels.field.ts
@@ -445,6 +468,8 @@
 │   │       │   │   │   ├── nom.field.spec.ts
 │   │       │   │   │   └── nom.field.ts
 │   │       │   │   ├── pivot
+│   │       │   │   │   ├── determination.spec.ts
+│   │       │   │   │   ├── determination.ts
 │   │       │   │   │   ├── pivot.field.spec.ts
 │   │       │   │   │   └── pivot.field.ts
 │   │       │   │   ├── presentation
@@ -484,6 +509,7 @@
 │   │       │   ├── index.ts
 │   │       │   ├── matching.ts
 │   │       │   ├── merge-hours-ranges
+│   │       │   │   ├── invalid-hours-range-error.ts
 │   │       │   │   ├── merge-hours-ranges.spec.ts
 │   │       │   │   └── merge-hours-ranges.ts
 │   │       │   ├── report
@@ -498,8 +524,11 @@
 │   │       │   │   └── to-osm-hours.ts
 │   │       │   └── transformation-repository.ts
 │   │       ├── implementations
+│   │       │   ├── acces-libre-from-file.spec.ts
+│   │       │   ├── acces-libre-from-file.ts
 │   │       │   ├── address-storage-from-file.ts
 │   │       │   ├── address.write.ts
+│   │       │   ├── annuaire-from-file.ts
 │   │       │   ├── error-report.write.ts
 │   │       │   ├── index.ts
 │   │       │   ├── localisation-from-geo.spec.ts
@@ -516,11 +545,21 @@
 │   │           └── transformation.key.ts
 │   ├── index.ts
 │   └── libraries
+│       ├── acces-libre
+│       │   ├── acces-libre.ts
+│       │   ├── acces-libre.types.ts
+│       │   └── index.ts
+│       ├── annuaire-entreprises
+│       │   ├── annuaire-entreprises.spec.ts
+│       │   ├── annuaire-entreprises.ts
+│       │   ├── annuaire-entreprises.types.ts
+│       │   └── index.ts
 │       ├── ban
 │       │   ├── ban.ts
 │       │   ├── ban.types.ts
 │       │   └── index.ts
 │       ├── collectivites
+│       │   ├── commune.spec.ts
 │       │   ├── commune.ts
 │       │   ├── index.ts
 │       │   └── zonage.ts
@@ -546,8 +585,6 @@
 │       │   ├── geo-api.ts
 │       │   └── index.ts
 │       ├── geometry
-│       │   ├── distance.spec.ts
-│       │   ├── distance.ts
 │       │   ├── index.ts
 │       │   ├── point-in-polygon.ts
 │       │   └── projection.ts
@@ -582,9 +619,10 @@
 │       │   └── index.ts
 │       └── text
 │           ├── index.ts
+│           ├── similarity.spec.ts
 │           └── similarity.ts
 ├── tsconfig.json
 ├── tsdown.config.ts
 ├── vitest.config.ts
 └── vitest.global-setup.ts
-167 directories, 422 files
+175 directories, 452 files

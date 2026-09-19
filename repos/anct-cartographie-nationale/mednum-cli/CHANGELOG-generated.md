@@ -1,18 +1,18 @@
-## Changelog : mednum-cli (30 derniers jours, au 16 septembre 2026)
+## Changelog : mednum-cli (30 derniers jours, au 19 septembre 2026)
 
 ### Résumé
-Ce mois-ci, l'outil a bénéficié d'un enrichissement de ses sources de données et d'une meilleure précision dans la gestion des horaires et des adresses. Parallèlement, une refonte de l'architecture interne et une sécurisation des processus de publication renforcent la fiabilité et la maintenabilité du projet.
+Les récentes évolutions renforcent la précision et la richesse des données traitées, notamment grâce à une meilleure gestion de l'accessibilité et à un filtrage plus fin des informations géographiques. L'outil gagne également en fiabilité et en modernité grâce à une refonte de son architecture et à l'adoption de nouveaux standards de développement.
 
 ### Évolutions fonctionnelles
-- **Enrichissement des données** : Ajout de la source de données pour la Manche [#361](https://github.com/anct-cartographie-nationale/mednum-cli/pull/361).
-- **Gestion des horaires** : Possibilité d'ajouter des commentaires pour les horaires d'ouverture liés à des occurrences mensuelles spécifiques [#362](https://github.com/anct-cartographie-nationale/mednum-cli/pull/362).
-- **Règles de gestion des adresses** : Mise en place d'une fonctionnalité pour exclure les adresses vérifiées [#368](https://github.com/anct-cartographie-nationale/mednum-cli/pull/368).
-- **Correction de données** : Exclusion de certains lieux spécifiques (Dora et Les Landes) pour garantir la conformité des données [#366](https://github.com/anct-cartographie-nationale/mednum-cli/pull/366).
+- Ajout de la gestion des pivots confirmés [#373](https://github.com/anct-cartographie-nationale/mednum-cli/issues/373).
+- Possibilité de rattacher les fiches d'accessibilité "Accès Libre" [#372](https://github.com/anct-cartographie-nationale/mednum-cli/issues/372).
+- Adoption de la version 4 de la bibliothèque de données [#370](https://github.com/anct-cartographie-nationale/mednum-cli/issues/370).
+- Amélioration de la qualité des données par l'exclusion des adresses vérifiées [#368](https://github.com/anct-cartographie-nationale/mednum-cli/issues/368) et de certains lieux spécifiques (Dora, FS, Les Landes) [#369](https://github.com/anct-cartographie-nationale/mednum-cli/issues/369), [#366](https://github.com/anct-cartographie-nationale/mednum-cli/issues/366).
+- Harmonisation de l'interface de la ligne de commande [#371](https://github.com/anct-cartographie-nationale/mednum-cli/issues/371).
 
 ### Évolutions techniques
-- **Architecture** : Refonte de l'architecture des capacités de fonctionnalités (*feature ability architecture*) [#367](https://github.com/anct-cartographie-nationale/mednum-cli/pull/367).
-- **Qualité des données** : Optimisation de la détection des doublons grâce à l'application d'une règle de déduplication partagée [#364](https://github.com/anct-cartographie-nationale/mednum-cli/pull/364).
-- **CI/CD et Tooling** : 
-    - Migration vers Biome pour le linting et le formatage du code [#365](https://github.com/anct-cartographie-nationale/mednum-cli/pull/365).
-    - Sécurisation des processus de publication via le *trusted publishing* [#365](https://github.com/anct-cartographie-nationale/mednum-cli/pull/365).
-- **Maintenance** : Correction du mécanisme de réinitialisation du cache des adresses pour éviter les données obsolètes [#363](https://github.com/anct-cartographie-nationale/mednum-cli/pull/363).
+- Refonte de l'architecture pour la gestion des capacités de fonctionnalités (*feature abilities*) [#367](https://github.com/anct-cartographie-nationale/mednum-cli/issues/367).
+- Optimisation de la détection des doublons via l'application de règles de déduplication partagées [#364](https://github.com/anct-cartographie-nationale/mednum-cli/issues/364).
+
+### Autres changements
+- Modernisation de la chaîne de développement avec le passage à Biome et la mise en place du *Trusted Publishing* [#365](https://github.com/anct-cartographie-nationale/mednum-cli/issues/365).
