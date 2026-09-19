@@ -53,7 +53,8 @@
 ├── assets
 │   └── brand
 │       ├── iterion-bot-circle.png
-│       └── iterion-bot.png
+│       ├── iterion-bot.png
+│       └── positioning.md
 ├── bots
 │   ├── adr-cartograph
 │   │   ├── README.md
@@ -137,6 +138,7 @@
 │   ├── catalog_units_test.go
 │   ├── catalog_universality_test.go
 │   ├── clean_tree_clause_test.go
+│   ├── commit_scaffold_test.go
 │   ├── copilot
 │   │   ├── main.bot
 │   │   ├── manifest.yaml
@@ -221,6 +223,7 @@
 │   │       ├── iterion-board.md
 │   │       ├── repo-maturity-assessment.md
 │   │       └── session-continuity.md
+│   ├── examples_cursors_test.go
 │   ├── extension_provenance_test.go
 │   ├── feature-dev
 │   │   ├── README.md
@@ -284,6 +287,7 @@
 │   ├── golden_master_gate_workspace_dirty_test.go
 │   ├── golden_master_harness_sync_test.go
 │   ├── golden_master_holdout_preflight_test.go
+│   ├── golden_master_mutant_loader_test.go
 │   ├── golden_master_runner_parity_test.go
 │   ├── golden_master_selftest_fixture_test.go
 │   ├── golden_master_sync_harness_bot_test.go
@@ -328,8 +332,10 @@
 │   ├── modernize_plan_read_test.go
 │   ├── modernize_rebaseline_doctrine_test.go
 │   ├── modernize_tools_test.go
+│   ├── new_test_detector_test.go
 │   ├── plan_phase_split_test.go
 │   ├── plan_phase_test.go
+│   ├── porcelain_scaffold_test.go
 │   ├── product-docs
 │   │   ├── README.md
 │   │   ├── deploy
@@ -375,6 +381,7 @@
 │   │       └── ticket-context.md
 │   ├── review_pr_concise_test.go
 │   ├── review_pr_finding_id_test.go
+│   ├── review_pr_glm_route_test.go
 │   ├── review_pr_review_base_test.go
 │   ├── review_pr_run_details_test.go
 │   ├── review_pr_scope_gate_test.go
@@ -445,6 +452,7 @@
 │   │       ├── vuln-matchers-guide.md
 │   │       └── vuln-scan.md
 │   ├── sec_audit_deepsec_bank_test.go
+│   ├── sec_audit_deepsec_coverage_test.go
 │   ├── sec_audit_deepsec_report_test.go
 │   ├── sec_audit_deepsec_retry_test.go
 │   ├── sec_audit_inline_findings_test.go
@@ -652,6 +660,8 @@
 │   │   ├── diagram.go
 │   │   ├── dispatch.go
 │   │   ├── dsl.go
+│   │   ├── fix.go
+│   │   ├── fmt.go
 │   │   ├── fork.go
 │   │   ├── group_args_test.go
 │   │   ├── import.go
@@ -912,7 +922,9 @@
 │   │   ├── 097-github-projects-v2-board-sync.md
 │   │   ├── 098-connector-catalog.md
 │   │   ├── 098-dsl-versioning-and-authoring-surface.md
-│   │   └── 099-public-contracts.md
+│   │   ├── 099-public-contracts.md
+│   │   ├── 100-dry-run-at-the-executor-seam.md
+│   │   └── README.md
 │   ├── agents
 │   │   ├── README.md
 │   │   ├── adversarial-review-loop.md
@@ -942,6 +954,7 @@
 │   │   ├── adr-cartograph.md
 │   │   ├── adr-rechallenge.md
 │   │   ├── app-dev.md
+│   │   ├── arbitrate.md
 │   │   ├── bmady.md
 │   │   ├── branch-improve-loop.md
 │   │   ├── campaign.md
@@ -963,6 +976,7 @@
 │   │   ├── modernize.md
 │   │   ├── product-docs.md
 │   │   ├── revi-converse.md
+│   │   ├── review-env.md
 │   │   ├── review-pr.md
 │   │   ├── rgaa-audit.md
 │   │   ├── sec-audit-deps.md
@@ -1039,6 +1053,7 @@
 │   ├── development.md
 │   ├── dispatcher.md
 │   ├── dsl-totality-and-tc.md
+│   ├── dsl-whats-new.md
 │   ├── dsl.md
 │   ├── e2e-coverage-matrix.md
 │   ├── e2e_coverage.md
@@ -1132,7 +1147,8 @@
 │   │   │   └── logos-sources.json
 │   │   ├── favicon.ico
 │   │   ├── iterion-logo.png
-│   │   └── og.png
+│   │   ├── og.png
+│   │   └── og.png.sha
 │   ├── quickstart.md
 │   ├── quotas-and-limits.md
 │   ├── recipes.md
@@ -1183,6 +1199,7 @@
 │   ├── thinking-metrics.md
 │   ├── ticket-context.md
 │   ├── ultracode.md
+│   ├── url-layout.md
 │   ├── usage-caps.md
 │   ├── visual-editor.md
 │   ├── web-search.md
@@ -1195,6 +1212,7 @@
 │   └── worktree-pool.md
 ├── e2e
 │   ├── SCENARIOS.md
+│   ├── app_dev_interview_exhaustion_test.go
 │   ├── async_interaction_test.go
 │   ├── board_dispatcher_test.go
 │   ├── bot_golden_master_extend_test.go
@@ -1226,6 +1244,7 @@
 │   ├── cli_skill_test.go
 │   ├── cli_validate_duplicate_fanout_test.go
 │   ├── connector_action_test.go
+│   ├── copilot_handoff_exits_test.go
 │   ├── copilot_loop_test.go
 │   ├── dispatcher_test.go
 │   ├── docs_refresh_test.go
@@ -1337,6 +1356,7 @@
 │   ├── sec_audit_cap_findings_test.go
 │   ├── sec_audit_deps_heuristics_test.go
 │   ├── sec_audit_scan_health_test.go
+│   ├── secured_renovacy_exits_test.go
 │   ├── secured_renovacy_test.go
 │   ├── testdata
 │   │   ├── asymptote_mini.bot
@@ -1488,6 +1508,9 @@
 │   ├── ciguard
 │   │   ├── doc.go
 │   │   └── routing_test.go
+│   ├── docsguard
+│   │   ├── adr_numbers_test.go
+│   │   └── doc.go
 │   ├── fswatch
 │   │   ├── resources_linux.go
 │   │   ├── resources_linux_test.go
@@ -1822,6 +1845,7 @@
 │   │   │   ├── fallback_prereq_test.go
 │   │   │   ├── generation.go
 │   │   │   ├── generation_*.go  (13 files)
+│   │   │   ├── group_output_template_test.go
 │   │   │   ├── hooks.go
 │   │   │   ├── hooks_secretguard_test.go
 │   │   │   ├── hooks_thinking_test.go
@@ -1879,7 +1903,7 @@
 │   │   │   ├── subagent.go
 │   │   │   ├── system_reminder.go
 │   │   │   ├── system_reminder_test.go
-│   │   │   ├── template_ctx.go
+│   │   │   ├── template_*.go  (5 files)
 │   │   │   ├── tool_attachment.go
 │   │   │   ├── tool_attachment_test.go
 │   │   │   ├── turn_backend_label_test.go
@@ -2248,6 +2272,10 @@
 │   │   ├── errors.go
 │   │   ├── extra_skills.go
 │   │   ├── extra_skills_test.go
+│   │   ├── fix.go
+│   │   ├── fix_test.go
+│   │   ├── fmt.go
+│   │   ├── fmt_test.go
 │   │   ├── import.go
 │   │   ├── import_test.go
 │   │   ├── inspect.go
@@ -2324,6 +2352,7 @@
 │   │   ├── validate_contract_subbot_test.go
 │   │   ├── validate_contract_test.go
 │   │   ├── validate_diagnostics_test.go
+│   │   ├── validate_exec_test.go
 │   │   ├── validate_include_test.go
 │   │   ├── validate_manifest_not_read_test.go
 │   │   ├── validate_order_test.go
@@ -2333,7 +2362,9 @@
 │   │   ├── validate_unit_test.go
 │   │   ├── version.go
 │   │   ├── workspace_studio.go
-│   │   └── workspace_studio_test.go
+│   │   ├── workspace_studio_test.go
+│   │   ├── write_atomic.go
+│   │   └── write_atomic_test.go
 │   ├── clock
 │   │   ├── clock.go
 │   │   └── clock_test.go
@@ -2430,6 +2461,7 @@
 │   │   ├── credpool_test.go
 │   │   ├── memory.go
 │   │   ├── mongo.go
+│   │   ├── pledge_audience_test.go
 │   │   ├── preview.go
 │   │   ├── preview_test.go
 │   │   └── store.go
@@ -2438,6 +2470,9 @@
 │   │   ├── credusage.go
 │   │   ├── memory.go
 │   │   └── mongo.go
+│   ├── deeplink
+│   │   ├── deeplink.go
+│   │   └── deeplink_test.go
 │   ├── dispatcher
 │   │   ├── boardmongo
 │   │   │   ├── admin.go
@@ -2617,6 +2652,13 @@
 │   │   │   └── validate.go
 │   │   ├── workspace.go
 │   │   └── workspace_test.go
+│   ├── dryrun
+│   │   ├── dryrun_test.go
+│   │   ├── executor.go
+│   │   ├── report.go
+│   │   ├── run.go
+│   │   ├── shell.go
+│   │   └── synth.go
 │   ├── dsl
 │   │   ├── ast
 │   │   │   ├── ast.go
@@ -2640,9 +2682,10 @@
 │   │   │   ├── jsonenc_var_enum_test.go
 │   │   │   ├── pos.go
 │   │   │   ├── provenance.go
-│   │   │   ├── provenance_test.go
-│   │   │   ├── race_off_test.go
-│   │   │   └── race_on_test.go
+│   │   │   └── provenance_test.go
+│   │   ├── canon
+│   │   │   ├── canon.go
+│   │   │   └── canon_test.go
 │   │   ├── expr
 │   │   │   ├── arity_test.go
 │   │   │   ├── combinators_test.go
@@ -2650,9 +2693,15 @@
 │   │   │   ├── expr_test.go
 │   │   │   ├── overflow_test.go
 │   │   │   └── snapshot.go
+│   │   ├── fix
+│   │   │   ├── fix.go
+│   │   │   └── fix_test.go
 │   │   ├── internal
-│   │   │   └── dsltest
-│   │   │       └── dsltest.go
+│   │   │   ├── dsltest
+│   │   │   │   └── dsltest.go
+│   │   │   └── rewrite
+│   │   │       ├── rewrite.go
+│   │   │       └── rewrite_test.go
 │   │   ├── ir
 │   │   │   ├── artifact_labels_test.go
 │   │   │   ├── async_backend_test.go
@@ -2696,12 +2745,16 @@
 │   │   │   ├── feedwatch_shape_test.go
 │   │   │   ├── foreach_test.go
 │   │   │   ├── full_access_test.go
+│   │   │   ├── group_expansion.go
+│   │   │   ├── group_expansion_test.go
 │   │   │   ├── images_test.go
 │   │   │   ├── included_files_test.go
+│   │   │   ├── int_division_warning_test.go
 │   │   │   ├── ir.go
 │   │   │   ├── literal_template_test.go
 │   │   │   ├── loop_cap.go
 │   │   │   ├── loop_cap_expression_test.go
+│   │   │   ├── loop_exit_warning_test.go
 │   │   │   ├── memory_validate_test.go
 │   │   │   ├── memory_visibility_test.go
 │   │   │   ├── mermaid.go
@@ -2711,6 +2764,7 @@
 │   │   │   ├── post_create_escape_test.go
 │   │   │   ├── presets_test.go
 │   │   │   ├── prompt_*.go  (7 files)
+│   │   │   ├── quoted_ref_severity_test.go
 │   │   │   ├── ref.go
 │   │   │   ├── ref_test.go
 │   │   │   ├── repo_devbox_test.go
@@ -2728,10 +2782,11 @@
 │   │   │   ├── uses_llm.go
 │   │   │   ├── uses_llm_test.go
 │   │   │   ├── validate.go
-│   │   │   ├── validate_*.go  (31 files)
+│   │   │   ├── validate_*.go  (32 files)
 │   │   │   ├── value_diag_positions_test.go
 │   │   │   ├── var_value.go
 │   │   │   ├── verified_action_test.go
+│   │   │   ├── with_refs_test.go
 │   │   │   ├── workspace_checkpoint_test.go
 │   │   │   ├── worktree_default_test.go
 │   │   │   └── worktree_value_test.go
@@ -3360,7 +3415,7 @@
 │   │   ├── bundle_test.go
 │   │   ├── chaos_test.go
 │   │   ├── checkpoint.go
-│   │   ├── child_*.go  (6 files)
+│   │   ├── child_*.go  (8 files)
 │   │   ├── commit_uncommitted.go
 │   │   ├── compute_failure_code_test.go
 │   │   ├── conflict.go
@@ -3378,7 +3433,7 @@
 │   │   ├── edges.go
 │   │   ├── else_edge_test.go
 │   │   ├── engine.go
-│   │   ├── engine_*.go  (12 files)
+│   │   ├── engine_*.go  (13 files)
 │   │   ├── errors.go
 │   │   ├── events.go
 │   │   ├── events_test.go
@@ -3389,6 +3444,7 @@
 │   │   ├── fan_*.go  (6 files)
 │   │   ├── fixer_delivery_preflight_test.go
 │   │   ├── foreach_test.go
+│   │   ├── group_expansion_test.go
 │   │   ├── hardening_test.go
 │   │   ├── human_interaction_iteration_test.go
 │   │   ├── incoming.go
@@ -3401,7 +3457,7 @@
 │   │   ├── library_skills_test.go
 │   │   ├── literal_template_test.go
 │   │   ├── llm_router_test.go
-│   │   ├── loop_*.go  (5 files)
+│   │   ├── loop_*.go  (6 files)
 │   │   ├── main_test.go
 │   │   ├── mirrored_skills_wiring_test.go
 │   │   ├── node_fields.go
@@ -3423,6 +3479,7 @@
 │   │   ├── plugin_hooks.go
 │   │   ├── plugin_hooks_test.go
 │   │   ├── plugin_skills.go
+│   │   ├── plugin_skills_test.go
 │   │   ├── presets_test.go
 │   │   ├── recipe_test.go
 │   │   ├── recorded_sources_test.go
@@ -3456,6 +3513,8 @@
 │   │   ├── settled_floor_test.go
 │   │   ├── setup_failure_event_test.go
 │   │   ├── setup_failure_status_test.go
+│   │   ├── simulation.go
+│   │   ├── simulation_test.go
 │   │   ├── snapshot.go
 │   │   ├── special_node.go
 │   │   ├── spendcap.go
@@ -3539,7 +3598,7 @@
 │   │   ├── resume_bundle_dir_test.go
 │   │   ├── resume_filler_test.go
 │   │   ├── rewind.go
-│   │   ├── rewind_*.go  (8 files)
+│   │   ├── rewind_*.go  (9 files)
 │   │   ├── run_version_test.go
 │   │   ├── run_wait_test.go
 │   │   ├── runlog.go
@@ -3556,7 +3615,7 @@
 │   │   │   ├── tail.go
 │   │   │   └── tail_test.go
 │   │   ├── service.go
-│   │   ├── service_*.go  (36 files)
+│   │   ├── service_*.go  (38 files)
 │   │   ├── settled_floor_test.go
 │   │   ├── skills.go
 │   │   ├── snapshot.go
@@ -3687,7 +3746,7 @@
 │   │   ├── bindings.go
 │   │   ├── bindings_test.go
 │   │   ├── byok.go
-│   │   ├── byok_*.go  (5 files)
+│   │   ├── byok_*.go  (6 files)
 │   │   ├── codex_loadfrom_test.go
 │   │   ├── credential_shape.go
 │   │   ├── credential_shape_test.go
@@ -3703,7 +3762,7 @@
 │   │   ├── masterkey.go
 │   │   ├── masterkey_test.go
 │   │   ├── oauth.go
-│   │   ├── oauth_*.go  (20 files)
+│   │   ├── oauth_*.go  (22 files)
 │   │   ├── org_tier_scope_test.go
 │   │   ├── required.go
 │   │   ├── required_test.go
@@ -3722,7 +3781,7 @@
 │   ├── server
 │   │   ├── admin_*.go  (10 files)
 │   │   ├── agent_binding_cookie_test.go
-│   │   ├── assistant_*.go  (43 files)
+│   │   ├── assistant_*.go  (44 files)
 │   │   ├── audit_helper.go
 │   │   ├── audit_routes_test.go
 │   │   ├── auth_*.go  (13 files)
@@ -3730,6 +3789,8 @@
 │   │   ├── author_trust_test.go
 │   │   ├── backends_routes.go
 │   │   ├── backends_routes_test.go
+│   │   ├── background.go
+│   │   ├── background_join_test.go
 │   │   ├── board_*.go  (19 files)
 │   │   ├── boarddispatch.go
 │   │   ├── boarddispatch_*.go  (7 files)
@@ -3737,14 +3798,13 @@
 │   │   ├── bots_*.go  (8 files)
 │   │   ├── brand_routes.go
 │   │   ├── brand_routes_test.go
-│   │   ├── byok_alive_runs_test.go
-│   │   ├── byok_refusal_view_test.go
-│   │   ├── byok_routes.go
-│   │   ├── byok_routes_test.go
+│   │   ├── byok_*.go  (5 files)
 │   │   ├── cloudpublisher
 │   │   │   ├── account_forfait_test.go
 │   │   │   ├── apikey_skip_test.go
 │   │   │   ├── app_committer_test.go
+│   │   │   ├── audience.go
+│   │   │   ├── audience_test.go
 │   │   │   ├── bundle_snapshot.go
 │   │   │   ├── bundle_snapshot_test.go
 │   │   │   ├── contributions.go
@@ -3768,22 +3828,7 @@
 │   │   │   ├── platform_tier_test.go
 │   │   │   ├── plugin_source_quarantine_test.go
 │   │   │   ├── publisher.go
-│   │   │   ├── publisher_auto_resume_test.go
-│   │   │   ├── publisher_budget_overrides_test.go
-│   │   │   ├── publisher_budget_wire_test.go
-│   │   │   ├── publisher_cancel_test.go
-│   │   │   ├── publisher_entry_test.go
-│   │   │   ├── publisher_fallback_test.go
-│   │   │   ├── publisher_include_test.go
-│   │   │   ├── publisher_launch_rollback_test.go
-│   │   │   ├── publisher_modeloverrides_test.go
-│   │   │   ├── publisher_orgid_test.go
-│   │   │   ├── publisher_permission_test.go
-│   │   │   ├── publisher_resume_test.go
-│   │   │   ├── publisher_retry_test.go
-│   │   │   ├── publisher_secrets_test.go
-│   │   │   ├── publisher_source_test.go
-│   │   │   ├── publisher_topology_test.go
+│   │   │   ├── publisher_*.go  (18 files)
 │   │   │   ├── require_llm_credential_test.go
 │   │   │   ├── skipped_reopens_test.go
 │   │   │   ├── stamp_narrowing_test.go
@@ -3817,7 +3862,7 @@
 │   │   ├── filesystem_test.go
 │   │   ├── filter.go
 │   │   ├── filter_test.go
-│   │   ├── forge_*.go  (70 files)
+│   │   ├── forge_*.go  (71 files)
 │   │   ├── generic_secrets_routes.go
 │   │   ├── gosafe.go
 │   │   ├── gosafe_errtrack_test.go
@@ -3889,6 +3934,9 @@
 │   │   ├── retry_resolve.go
 │   │   ├── retry_sweeper.go
 │   │   ├── retry_sweeper_test.go
+│   │   ├── rewind_stored_source.go
+│   │   ├── rewind_stored_source_http_test.go
+│   │   ├── rewind_stored_source_test.go
 │   │   ├── route_recorder.go
 │   │   ├── run_delegation.go
 │   │   ├── run_delegation_test.go
@@ -3901,16 +3949,19 @@
 │   │   ├── schedules_routes.go
 │   │   ├── schedules_routes_test.go
 │   │   ├── server.go
-│   │   ├── server_*.go  (21 files)
+│   │   ├── server_*.go  (22 files)
 │   │   ├── settings_preview.go
 │   │   ├── settings_preview_test.go
 │   │   ├── spa.go
+│   │   ├── spa_social_image_test.go
 │   │   ├── spa_test.go
 │   │   ├── sso_login_ux_test.go
 │   │   ├── sso_resolver.go
 │   │   ├── static
 │   │   │   └── .gitkeep
 │   │   ├── stuckcard_sites_test.go
+│   │   ├── studio_legacy_redirect.go
+│   │   ├── studio_legacy_redirect_test.go
 │   │   ├── superseded_test.go
 │   │   ├── team_lifecycle_routes.go
 │   │   ├── team_lifecycle_routes_test.go
@@ -4061,6 +4112,7 @@
 │   │   ├── run.go
 │   │   ├── run_env.go
 │   │   ├── run_env_test.go
+│   │   ├── run_listing.go
 │   │   ├── run_test.go
 │   │   ├── run_version_test.go
 │   │   ├── runlog.go
@@ -4284,7 +4336,9 @@
 │   ├── bench
 │   │   └── ci-build-bench.sh
 │   ├── brand
-│   │   └── generate.sh
+│   │   ├── generate.sh
+│   │   ├── og-check.sh
+│   │   └── positioning-check.sh
 │   ├── brew-tap-pr.sh
 │   ├── build.sh
 │   ├── bump-claw.sh
@@ -4348,6 +4402,9 @@
 │       ├── tsconfig.json
 │       ├── tsconfig.test.json
 │       └── vitest.config.ts
+├── skills
+│   └── adversarial-review-loop
+│       └── SKILL.md
 ├── studio
 │   ├── README.md
 │   ├── docs
@@ -4371,6 +4428,7 @@
 │   │   │           └── manifest.yaml
 │   │   ├── guard.mjs
 │   │   ├── lib
+│   │   │   ├── paths.ts
 │   │   │   └── state.ts
 │   │   ├── mock-openai.mjs
 │   │   ├── mock-openai.test.mjs
@@ -4433,7 +4491,9 @@
 │   │   │   │   ├── source-discipline.test.ts
 │   │   │   │   ├── stacking.test.ts
 │   │   │   │   └── views.test.tsx
+│   │   │   ├── configShareArm.test.tsx
 │   │   │   ├── desktopBridge.test.ts
+│   │   │   ├── rootRecovers.test.tsx
 │   │   │   └── runSignIn.test.tsx
 │   │   ├── api
 │   │   │   ├── __tests__
@@ -4521,6 +4581,8 @@
 │   │   │   └── iterion-mark.png
 │   │   ├── auth
 │   │   │   ├── AuthContext.tsx
+│   │   │   ├── __tests__
+│   │   │   │   └── identitySwap.test.tsx
 │   │   │   ├── returnTo.test.ts
 │   │   │   └── returnTo.ts
 │   │   ├── components
@@ -4777,6 +4839,7 @@
 │   │   │   │   │   ├── launchHints.ts
 │   │   │   │   │   ├── useAttachmentUploads.ts
 │   │   │   │   │   ├── useBotPresets.ts
+│   │   │   │   │   ├── useLaunchDoc.salvage.test.tsx
 │   │   │   │   │   ├── useLaunchDoc.ts
 │   │   │   │   │   ├── useLaunchServerInfo.ts
 │   │   │   │   │   ├── useLaunchSubmit.ts
@@ -4892,10 +4955,12 @@
 │   │   │   ├── Settings
 │   │   │   │   └── ApiKeysEditor.tsx
 │   │   │   ├── SourceView
+│   │   │   │   ├── SourceView.salvage.test.tsx
 │   │   │   │   └── SourceView.tsx
 │   │   │   ├── Toolbar
 │   │   │   │   ├── Toolbar.tsx
 │   │   │   │   ├── ToolbarGroup.tsx
+│   │   │   │   ├── useDocumentFileOps.salvage.test.tsx
 │   │   │   │   └── useDocumentFileOps.ts
 │   │   │   ├── WhatsNext
 │   │   │   │   ├── AssistantApprovalComposer.test.tsx
@@ -4947,6 +5012,7 @@
 │   │   │   │   ├── CronField.tsx
 │   │   │   │   ├── DeliveriesDrawer.tsx
 │   │   │   │   ├── DispatcherControlBar.tsx
+│   │   │   │   ├── EditorTabHost.binding.test.tsx
 │   │   │   │   ├── EditorTabHost.draft.test.tsx
 │   │   │   │   ├── EditorTabHost.toast.test.tsx
 │   │   │   │   ├── EditorTabHost.tsx
@@ -5248,6 +5314,8 @@
 │   │   │   ├── nodeModelSpecs.ts
 │   │   │   ├── openExample.test.ts
 │   │   │   ├── openExample.ts
+│   │   │   ├── openedFile.test.ts
+│   │   │   ├── openedFile.ts
 │   │   │   ├── personas.test.ts
 │   │   │   ├── personas.ts
 │   │   │   ├── promptHighlight.test.ts
@@ -5268,6 +5336,8 @@
 │   │   │   │   └── useScrollPin.ts
 │   │   │   ├── runErrorHints.ts
 │   │   │   ├── runResume.ts
+│   │   │   ├── salvage.test.ts
+│   │   │   ├── salvage.ts
 │   │   │   ├── scope.ts
 │   │   │   ├── sharedBundle.test.ts
 │   │   │   ├── sharedBundle.ts
@@ -5349,6 +5419,8 @@
 │   │   │   ├── theme.test.ts
 │   │   │   ├── theme.ts
 │   │   │   └── ui.ts
+│   │   ├── test
+│   │   │   └── setup.ts
 │   │   ├── views
 │   │   │   ├── Board
 │   │   │   │   ├── ApproveTriage.tsx
@@ -5441,6 +5513,7 @@
 │   │   │   │   ├── PlatformFeatures.tsx
 │   │   │   │   ├── StackCompatibility.tsx
 │   │   │   │   ├── cloud-home.css
+│   │   │   │   ├── definition.test.tsx
 │   │   │   │   └── index.tsx
 │   │   │   ├── CloudLanding.test.tsx
 │   │   │   ├── CloudLanding.tsx
@@ -13041,4 +13114,4 @@
                 ├── pbkdf.go
                 ├── pkcs12.go
                 └── safebags.go
-1752 directories, 12676 files
+1762 directories, 12778 files

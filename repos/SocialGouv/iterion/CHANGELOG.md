@@ -3,6 +3,405 @@
 Generated from Conventional Commits at each release. Older majors are archived
 under [docs/changelog/](https://github.com/SocialGouv/iterion/tree/main/docs/changelog).
 
+## [3.167.0](https://github.com/SocialGouv/iterion/compare/v3.166.0...v3.167.0) (2026-09-18)
+
+### Features
+
+* **brand:** the brand gate blocks, the short form is guarded, and a shared link gets its card ([#1440](https://github.com/SocialGouv/iterion/issues/1440)) ([aadec80](https://github.com/SocialGouv/iterion/commit/aadec80a53bca16acd275b7cd0b2677f437d0292)), references [#1437](https://github.com/SocialGouv/iterion/issues/1437) [#1437](https://github.com/SocialGouv/iterion/issues/1437)
+
+    <details><summary>why</summary>
+
+    Four decisions, each arbitrated rather than assumed.
+
+    </details>
+
+## [3.166.0](https://github.com/SocialGouv/iterion/compare/v3.165.0...v3.166.0) (2026-09-18)
+
+### Features
+
+* **examples:** the 25 examples read as dsl profile 2, with the three example bundles' floors ([#1344](https://github.com/SocialGouv/iterion/issues/1344) wave 5) ([#1436](https://github.com/SocialGouv/iterion/issues/1436)) ([d06cc04](https://github.com/SocialGouv/iterion/commit/d06cc04ed1b558b2664dc0fabe1554b9af567d0e)), references [#1349](https://github.com/SocialGouv/iterion/issues/1349)
+
+    <details><summary>why</summary>
+
+    `iterion dsl migrate --to 2 --floor 3.141.0` on every workflow under examples/: the `dsl: 2` header and nothing else — no quoted literal in an example holds a backslash, so no value was re-spelled. Eight named prompts in six files now keep the 19 paragraph breaks profile 1 dropped before the text reached the model or the studio's form; each was read, each separates prose (a heading, a list, a templated value) from prose.
+
+    </details>
+
+## [3.165.0](https://github.com/SocialGouv/iterion/compare/v3.164.0...v3.165.0) (2026-09-18)
+
+### Features
+
+* **studio:** / serves the product home, the studio moves under /studio, and iterion says what it is ([#1433](https://github.com/SocialGouv/iterion/issues/1433)) ([e6dfbda](https://github.com/SocialGouv/iterion/commit/e6dfbdafcc60c9e2078967b442465477086138aa))
+
+    <details><summary>why</summary>
+
+    Two things nobody could read off a URL or a page.
+
+    </details>
+
+## [3.164.0](https://github.com/SocialGouv/iterion/compare/v3.163.0...v3.164.0) (2026-09-18)
+
+### Features
+
+* **bots:** app-dev, copilot and secured-renovacy read as dsl profile 2, with their loops' exhaustion exits ([#1344](https://github.com/SocialGouv/iterion/issues/1344) wave 4, [#1293](https://github.com/SocialGouv/iterion/issues/1293)) ([#1383](https://github.com/SocialGouv/iterion/issues/1383)) ([424c933](https://github.com/SocialGouv/iterion/commit/424c933f88f8161c39b93f6c6cd64285fc7867f3)), references [#1349](https://github.com/SocialGouv/iterion/issues/1349) [#1420](https://github.com/SocialGouv/iterion/issues/1420)
+
+    <details><summary>why</summary>
+
+    Wave 4 of the catalogue's move to the `dsl: 2` profile: the three heaviest bundles, by the migrator and nothing else. 54 prompts / 290 blank lines the authors wrote now reach the models as paragraph breaks (app-dev 19/84, copilot 6/80, secured-renovacy 29/126), every one read; four quoted literals re-spelled with their value unchanged (the deploy fail_log, copilot's two expr trailers, the files_lines join — the expression lexer interprets \n itself, so both profiles hand the compute the same…
+
+    </details>
+
+## [3.163.0](https://github.com/SocialGouv/iterion/compare/v3.162.3...v3.163.0) (2026-09-18)
+
+### Features
+
+* **review-pr:** the claude reviewer has somewhere to go ([#1388](https://github.com/SocialGouv/iterion/issues/1388)) ([0f694e6](https://github.com/SocialGouv/iterion/commit/0f694e680716d7512ec4c78149044cba64e1ac0f)), references [#1221](https://github.com/SocialGouv/iterion/issues/1221) [#1221](https://github.com/SocialGouv/iterion/issues/1221)
+
+    <details><summary>why</summary>
+
+    review-pr declared no `fallbacks:` route at all — one of the 28 bundles that declared none, and the only required merge gate among them. So when this instance's Anthropic credential could not serve, the claude reviewer simply failed, on the bot every PR in this repo crosses.
+
+    </details>
+
+## [3.162.3](https://github.com/SocialGouv/iterion/compare/v3.162.2...v3.162.3) (2026-09-18)
+
+### Bug Fixes
+
+* **modernize:** name the path that spent the extension certificate ([#1387](https://github.com/SocialGouv/iterion/issues/1387)) ([dc4a9fc](https://github.com/SocialGouv/iterion/commit/dc4a9fc477811923e9e4796f8b72b93c601a8155))
+
+    <details><summary>why</summary>
+
+    The exemption is correct and unchanged: a path outside the certified surface (additions under refs/ and corpus.json) spends the WHOLE certificate, because the exemption is safe only on "an addition cannot mask an existing divergence", and a change elsewhere under the net is not an addition.
+
+    </details>
+
+## [3.162.2](https://github.com/SocialGouv/iterion/compare/v3.162.1...v3.162.2) (2026-09-17)
+
+### Bug Fixes
+
+* **bots:** the campaign gates and the whole-tree commits leave iterion's .claude/ scaffold out ([#1364](https://github.com/SocialGouv/iterion/issues/1364)) ([#1377](https://github.com/SocialGouv/iterion/issues/1377)) ([b040a98](https://github.com/SocialGouv/iterion/commit/b040a98c57357b1e46c358513af1ea4df252d180)), references [#1344](https://github.com/SocialGouv/iterion/issues/1344)
+
+    <details><summary>why</summary>
+
+    iterion mirrors a bundle's skills and plugin files into <workspace>/.claude/ before the first node. On a repository that does not ignore .claude/, the ten campaign gates read the untracked mirror as the pass's uncommitted work and refused every pass (net_dirty, four times in wave 3b of #1344), and the deterministic commits that stage the whole tree committed it (16 of bmady's 43 files in one feature commit).
+
+    </details>
+
+## [3.162.1](https://github.com/SocialGouv/iterion/compare/v3.162.0...v3.162.1) (2026-09-17)
+
+### Bug Fixes
+
+* **runtime:** a driver with no bind mount has a workspace, and the reset must find it ([#1365](https://github.com/SocialGouv/iterion/issues/1365)) ([ab57dde](https://github.com/SocialGouv/iterion/commit/ab57ddea8a79ea2b0b64b9f94dccb4d2999fc8ba)), references [#1195](https://github.com/SocialGouv/iterion/issues/1195)
+
+    <details><summary>why</summary>
+
+    A shared sandbox whose WorkspaceFolder is empty is not a sandbox without a workspace. containerWorkspaceFolder already states the rule — "an explicit Spec.WorkspaceFolder wins, an empty one means the same absolute path as on the host" — and engine_resolve.go already applies it. A driver with no host filesystem cannot bind-mount anything, so it copies the workspace to that same absolute path and leaves the field empty. That is the shape every cloud run takes.
+
+    </details>
+
+## [3.162.0](https://github.com/SocialGouv/iterion/compare/v3.161.1...v3.162.0) (2026-09-17)
+
+### Features
+
+* **agents:** publish the adversarial review loop as a skill, and require it here ([#1372](https://github.com/SocialGouv/iterion/issues/1372)) ([c6538b7](https://github.com/SocialGouv/iterion/commit/c6538b7aa68184bbed2cd2b69305009ccbf92a33))
+
+    <details><summary>why</summary>
+
+    iterion mirrors a plugin's contributed markdown into a run workspace's .claude/<kind>/ at run start, naming each file by its base name. That is right for the flat shape every builtin ships (skills/graphify.md) and wrong for the two shapes where the base name is the constant "SKILL.md" and the real name lives elsewhere: the Agent Skills DIRECTORY form <name>/SKILL.md — what `npx skills add` publishes and what claude_code's Skill tool discovers — and a root-form pack whose whole tree is one…
+
+    </details>
+
+### Bug Fixes
+
+* **cloud:** rewind --auto compares two sides, and cloud broke both ([#1376](https://github.com/SocialGouv/iterion/issues/1376)) ([a586284](https://github.com/SocialGouv/iterion/commit/a586284274f889b26261bddd62eed309d5525704)), closes [#1381](https://github.com/SocialGouv/iterion/issues/1381), references [#1352](https://github.com/SocialGouv/iterion/issues/1352) [#1226](https://github.com/SocialGouv/iterion/issues/1226) [#1352](https://github.com/SocialGouv/iterion/issues/1352) [#1352](https://github.com/SocialGouv/iterion/issues/1352) [#1226](https://github.com/SocialGouv/iterion/issues/1226)
+
+    <details><summary>why</summary>
+
+    INCOMPLETE — committed to survive a session break, not to be pushed.
+
+    </details>
+
+## [3.161.1](https://github.com/SocialGouv/iterion/compare/v3.161.0...v3.161.1) (2026-09-17)
+
+### Bug Fixes
+
+* **studio:** Testing Library's 1 s async budget is a wall clock, not a work budget ([#1378](https://github.com/SocialGouv/iterion/issues/1378)) ([402e843](https://github.com/SocialGouv/iterion/commit/402e843f560c4484fe96d173c67acc54c1df906a))
+
+    <details><summary>why</summary>
+
+    `CredentialPreview.test.tsx` went red on CI with "Unable to find role=option and name 'Revi (review-pr)'" on a head whose only change was a markdown file, while the same tests pass locally in ~200 ms and passed on the previous head with byte-identical studio code (zero studio commits on main since that base). findBy* and waitFor give up after 1 s by default, and that second is wall clock: a loaded runner spends it (the job took 13m50s for 239 files) and the failure then reads exactly like a…
+
+    </details>
+
+## [3.161.0](https://github.com/SocialGouv/iterion/compare/v3.160.0...v3.161.0) (2026-09-17)
+
+### Features
+
+* **secrets:** a team's own LLM key can name the workloads it funds ([#1370](https://github.com/SocialGouv/iterion/issues/1370)) ([1f73589](https://github.com/SocialGouv/iterion/commit/1f73589ea4ea6172660b2b45c4a6117991d8158c)), references [#1363](https://github.com/SocialGouv/iterion/issues/1363) [#1368](https://github.com/SocialGouv/iterion/issues/1368) [#1368](https://github.com/SocialGouv/iterion/issues/1368) [#1368](https://github.com/SocialGouv/iterion/issues/1368)
+
+    <details><summary>why</summary>
+
+    A key for provider P, once on a team, funded whatever that team ran. The only dials were scope (who may SEE it) and a concurrency ceiling; nothing said what a key was FOR. `is_default: false` reads like a reserve and is not one — keyRank is a preference order, and rank 3 is selected whenever it is the only visible key of its provider. Measured: a key added for one bot served two runs of a different bot within four hours.
+
+    </details>
+
+## [3.160.0](https://github.com/SocialGouv/iterion/compare/v3.159.1...v3.160.0) (2026-09-17)
+
+### Features
+
+* **bots:** wave 3b of the catalogue on dsl: 2 — fourteen small bundles ([#1344](https://github.com/SocialGouv/iterion/issues/1344)) ([#1369](https://github.com/SocialGouv/iterion/issues/1369)) ([4c00b5c](https://github.com/SocialGouv/iterion/commit/4c00b5c4985bb226bceac0f69f234521cf4cc104)), references [#1293](https://github.com/SocialGouv/iterion/issues/1293) [#1367](https://github.com/SocialGouv/iterion/issues/1367) [#1364](https://github.com/SocialGouv/iterion/issues/1364) [#1366](https://github.com/SocialGouv/iterion/issues/1366) [#1367](https://github.com/SocialGouv/iterion/issues/1367)
+
+    <details><summary>why</summary>
+
+    bmady, evolve, golden-master (its four files), instrument, product-docs, adr-rechallenge, e2e-coverage, test-coverage, feature-gap-fill, supply-shield, supply-shield-cve, rgaa-audit, ultra11y and dep-update-guard declare profile 2: the paragraph breaks their authors wrote inside 127 prompts (572 blank lines) now reach the models. The migrator changed nothing else (no backslash literal to re-spell); every manifest gets a patch bump, a changelog line and the >= 3.141.0 engine floor.
+
+    </details>
+
+## [3.159.1](https://github.com/SocialGouv/iterion/compare/v3.159.0...v3.159.1) (2026-09-17)
+
+### Bug Fixes
+
+* **secrets:** a credential field that omitempty drops can be set but never cleared ([#1223](https://github.com/SocialGouv/iterion/issues/1223)) ([6dcc5e4](https://github.com/SocialGouv/iterion/commit/6dcc5e49c33a503f5aab02085e36161444b424cf)), references [#1220](https://github.com/SocialGouv/iterion/issues/1220)
+
+    <details><summary>why</summary>
+
+    MongoOAuthStore commits a record through $set, where an omitted key keeps the OLD value, while Upsert is a FULL replace — the connect/paste path builds the record from the blob it was handed and stores the whole thing. A bson `omitempty` therefore makes a field ONE-WAY: writable when non-zero, impossible to clear. The memory twin replaces its map entry outright and clears correctly, which is exactly why no in-memory test sees it.
+
+    </details>
+
+## [3.159.0](https://github.com/SocialGouv/iterion/compare/v3.158.0...v3.159.0) (2026-09-17)
+
+### Features
+
+* **bots:** wave 3a of the catalogue on dsl: 2 — nine small bundles ([#1344](https://github.com/SocialGouv/iterion/issues/1344)) ([#1361](https://github.com/SocialGouv/iterion/issues/1361)) ([7e67663](https://github.com/SocialGouv/iterion/commit/7e67663f5e803903c1f6e499a9cb20d74202fa4f)), references [#1349](https://github.com/SocialGouv/iterion/issues/1349) [#1282](https://github.com/SocialGouv/iterion/issues/1282) [#1010](https://github.com/SocialGouv/iterion/issues/1010) [#1282](https://github.com/SocialGouv/iterion/issues/1282)
+
+    <details><summary>why</summary>
+
+    vuln-watch, issue-triage, arbitrate, feed-watch, devbox-setup, review-env, revi-converse, wiki-gen and modernize move to profile 2, by the migrator and nothing else: `dsl: 2` at the head of nine files, no literal re-spelled, the program proven unchanged by the migrator apart from the one change of meaning the profile carries — the blank lines the authors wrote inside 17 prompts (66 in all: wiki-gen 14, modernize 12, revi-converse 10, review-env 8, arbitrate 6, feed-watch 6, devbox-setup 6,…
+
+    </details>
+
+## [3.158.0](https://github.com/SocialGouv/iterion/compare/v3.157.0...v3.158.0) (2026-09-17)
+
+### Features
+
+* **cloud:** record on the run what a cloud launch compiled ([#1226](https://github.com/SocialGouv/iterion/issues/1226), step 2/3) ([#1357](https://github.com/SocialGouv/iterion/issues/1357)) ([3371fdb](https://github.com/SocialGouv/iterion/commit/3371fdbc4ac10838c72861ab5ea3a8bb0fcb5932)), references [#1351](https://github.com/SocialGouv/iterion/issues/1351)
+
+    <details><summary>why</summary>
+
+    The queue message carries the compiled IR and the identity hash, never the text, and a runner pod has no filesystem the launch touched — so a cloud run recorded no workflow_source and `rewind --auto` had nothing to diff against. The cloud branch of Launch already held the compile result and kept only its hash.
+
+    </details>
+
+## [3.157.0](https://github.com/SocialGouv/iterion/compare/v3.156.0...v3.157.0) (2026-09-17)
+
+### Features
+
+* **bots:** wave 2 of the catalogue on dsl: 2 — whole-improve-loop, branch-improve-loop, sec-audit-source, sec-audit-deps, campaign ([#1344](https://github.com/SocialGouv/iterion/issues/1344)) ([#1358](https://github.com/SocialGouv/iterion/issues/1358)) ([6426aa6](https://github.com/SocialGouv/iterion/commit/6426aa68f4ae7d2fe49cf8f7023fb5ec396f3849)), references [#1349](https://github.com/SocialGouv/iterion/issues/1349) [#1293](https://github.com/SocialGouv/iterion/issues/1293) [#1282](https://github.com/SocialGouv/iterion/issues/1282) [#1010](https://github.com/SocialGouv/iterion/issues/1010) [#1293](https://github.com/SocialGouv/iterion/issues/1293)
+
+    <details><summary>why</summary>
+
+    The dispatcher-mirrored bots and the campaign supervisor move to profile 2, by the migrator and nothing else: `dsl: 2` at the head of five files, no literal re-spelled, the program proven unchanged by the migrator apart from the one change of meaning the profile carries — the blank lines the authors wrote inside 52 prompts (sec-audit-source 19 / 129, branch-improve-loop 15 / 65, whole-improve-loop 13 / 47, sec-audit-deps 3 / 20, campaign 2 / 3) now reach the models as paragraph breaks instead…
+
+    </details>
+
+## [3.156.0](https://github.com/SocialGouv/iterion/compare/v3.155.0...v3.156.0) (2026-09-17)
+
+### Features
+
+* **sec-audit-source:** let the operator choose which agent the deep scan runs on ([#1347](https://github.com/SocialGouv/iterion/issues/1347)) ([ccc6490](https://github.com/SocialGouv/iterion/commit/ccc6490407d60646fbac261352386d42f149370a))
+
+    <details><summary>why</summary>
+
+    deepsec has its own backend system, unrelated to iterion's: it drives `claude`, `codex` or `pi` from inside this tool node, each resolving its own credentials. The node hardcoded that choice -- gateway if a key happened to be in the environment, `--agent claude` otherwise -- with no override. That is a constant bounding operator work with no escape hatch.
+
+    </details>
+
+### Performance Improvements
+
+* **runview:** a run listing no longer carries the source its runs executed ([#1355](https://github.com/SocialGouv/iterion/issues/1355)) ([aa0ce3f](https://github.com/SocialGouv/iterion/commit/aa0ce3f0242d68d703236bf9aa1987a28bfc572c)), closes [#1351](https://github.com/SocialGouv/iterion/issues/1351)
+
+    <details><summary>why</summary>
+
+    ListRunRecordsCtx lists ids then loads every run WHOLE, and its own Limit truncates only afterwards — so the heaviest field on the document decides what a request costs. That field is the recorded workflow source: the text of the unit the run executed, 100-520 KB for the real bots in this catalog. No consumer of a listing reads it; they all become RunHeaders, which carry neither field. One caller, the board projection, lists with no limit and retains every record. The finished-forks index is…
+
+    </details>
+
+## [3.155.0](https://github.com/SocialGouv/iterion/compare/v3.154.2...v3.155.0) (2026-09-17)
+
+### Features
+
+* **bots:** wave 1 of the catalogue on dsl: 2 — review-pr, whats-next, feature-dev ([#1344](https://github.com/SocialGouv/iterion/issues/1344)) ([#1353](https://github.com/SocialGouv/iterion/issues/1353)) ([c1fe2a0](https://github.com/SocialGouv/iterion/commit/c1fe2a020039b6dc041949ec347ada7d52698e42)), references [#1206](https://github.com/SocialGouv/iterion/issues/1206) [#1159](https://github.com/SocialGouv/iterion/issues/1159) [#1293](https://github.com/SocialGouv/iterion/issues/1293) [#1301](https://github.com/SocialGouv/iterion/issues/1301) [#1282](https://github.com/SocialGouv/iterion/issues/1282) [#1010](https://github.com/SocialGouv/iterion/issues/1010) [#1293](https://github.com/SocialGouv/iterion/issues/1293) [#1293](https://github.com/SocialGouv/iterion/issues/1293) [#1349](https://github.com/SocialGouv/iterion/issues/1349) [#1349](https://github.com/SocialGouv/iterion/issues/1349)
+
+    <details><summary>why</summary>
+
+    The dry run over the corpus required every file to change, which was true while no shipped bot declared `dsl: 2`. The catalogue now migrates wave by wave (#1344), so a file already on profile 2 must come back byte-identical, with no change and no prompt reported — the same lines the first prepared lot (#1206) wrote, so the two rebase cleanly.
+
+    </details>
+
+## [3.154.2](https://github.com/SocialGouv/iterion/compare/v3.154.1...v3.154.2) (2026-09-17)
+
+### Bug Fixes
+
+* **server:** join the background loops the shutdown cancels ([#1346](https://github.com/SocialGouv/iterion/issues/1346)) ([819d6a5](https://github.com/SocialGouv/iterion/commit/819d6a5ea89b814ac1c3226770147006cfe8722e)), closes [#1257](https://github.com/SocialGouv/iterion/issues/1257)
+
+    <details><summary>why</summary>
+
+    A loop stopped by a cancel alone returns after its cancel did, so the process could exit between a claim and its release, or mid-write into a store already being torn down — a write the grace period never covered.
+
+    </details>
+
+## [3.154.1](https://github.com/SocialGouv/iterion/compare/v3.154.0...v3.154.1) (2026-09-17)
+
+### Bug Fixes
+
+* **studio:** a file that does not parse is not bound to its path ([#1327](https://github.com/SocialGouv/iterion/issues/1327)) ([21dd205](https://github.com/SocialGouv/iterion/commit/21dd205eea477c393ae06addd0d272dbfa7b2af1)), closes [#1251](https://github.com/SocialGouv/iterion/issues/1251), references [#1251](https://github.com/SocialGouv/iterion/issues/1251) [#1251](https://github.com/SocialGouv/iterion/issues/1251) [#1326](https://github.com/SocialGouv/iterion/issues/1326)
+
+    <details><summary>why</summary>
+
+    A `.bot` the parser could not read whole opened as the document it SALVAGED — the file minus the region it could not read — bound to its own path and marked saved. The first Save wrote that document back, and what the author wrote was gone. Silently, and totally, for the unreadable part.
+
+    </details>
+
+## [3.154.0](https://github.com/SocialGouv/iterion/compare/v3.153.1...v3.154.0) (2026-09-16)
+
+### Features
+
+* **cli,mcp,dsl:** the dry run takes its launch values (validate --var/--preset, the MCP tool's vars); the skill names the loop namespace (lot 4 follow-up) ([#1336](https://github.com/SocialGouv/iterion/issues/1336)) ([d812f44](https://github.com/SocialGouv/iterion/commit/d812f444f01e66899f0318722927bc88c83ac68a)), closes [#1332](https://github.com/SocialGouv/iterion/issues/1332), references [#1289](https://github.com/SocialGouv/iterion/issues/1289) [#1292](https://github.com/SocialGouv/iterion/issues/1292) [#1110](https://github.com/SocialGouv/iterion/issues/1110) [#1010](https://github.com/SocialGouv/iterion/issues/1010) [pre-#1332](https://github.com/pre-/issues/1332) [#1332](https://github.com/SocialGouv/iterion/issues/1332)
+
+    <details><summary>why</summary>
+
+    Follow-up of lot 4 (#1289, PR #1292), from the F20 re-probe of 2026-09-16 with a mid-size model (#1110).
+
+    </details>
+
+## [3.153.1](https://github.com/SocialGouv/iterion/compare/v3.153.0...v3.153.1) (2026-09-16)
+
+### Bug Fixes
+
+* **sec-audit-source:** a pass that refuses to run must destroy nothing ([#1331](https://github.com/SocialGouv/iterion/issues/1331)) ([85bff66](https://github.com/SocialGouv/iterion/commit/85bff66c90be7b3e24931160dbf77696c443e361))
+
+    <details><summary>why</summary>
+
+    R24f9d8 from the gate, and it is my own fix from the round before. Removing the stale export on entry is what makes "nothing came out" mean "nothing came out of THIS pass" — but I put it at the top of the body, above the graceful-degrade probes. A pass that never gets as far as running deepsec (no binary, no usable run id, unreadable workspace) then destroyed a CONCURRENT pass's already-exported findings, and that neighbour kept claiming json_paths.deepsec while its coverage still read…
+
+    </details>
+
+## [3.153.0](https://github.com/SocialGouv/iterion/compare/v3.152.4...v3.153.0) (2026-09-16)
+
+### Features
+
+* **dsl:** dry-run validation — validate --exec, fmt/fix, the loop warnings (lot 4, [#1289](https://github.com/SocialGouv/iterion/issues/1289)) ([#1292](https://github.com/SocialGouv/iterion/issues/1292)) ([e652e78](https://github.com/SocialGouv/iterion/commit/e652e78ed914c0336eae1dce5a6b1eeda6d2797e)), references [#1282](https://github.com/SocialGouv/iterion/issues/1282) [#1307](https://github.com/SocialGouv/iterion/issues/1307) [#1325](https://github.com/SocialGouv/iterion/issues/1325)
+
+    <details><summary>why</summary>
+
+    A NodeExecutor that renders what each node would send through the production renderers and answers with the node's fixture or a schema-shaped output (an enum's first value then its last, a bool the pass's bias, 1, 1.0, "x", one element, an empty object), holds shell text to the interpreter's own parser (bash -n, sh -n; other interpreters are said unchecked), and reports every {{…}} kept as written — the prompt renderer now tells a listener what it keeps (model.TemplateResolver, the one…
+
+    </details>
+
+## [3.152.4](https://github.com/SocialGouv/iterion/compare/v3.152.3...v3.152.4) (2026-09-16)
+
+### Bug Fixes
+
+* **sec-audit-source:** say when a deep scan cannot be shown to have covered the tree ([#1321](https://github.com/SocialGouv/iterion/issues/1321)) ([badbacb](https://github.com/SocialGouv/iterion/commit/badbacb487d54c3fe79bdf7968b8d604e635bf40))
+
+    <details><summary>why</summary>
+
+    A deepsec pass that was capped, or cut short, exports the findings it did produce, exits through the same path as a complete pass, and leaves finding_count looking healthy — on a busy tree a truncated pass outnumbers a complete pass on a clean one. Nothing said which one you were reading, so a partial audit could be transmitted to a product team as a full one. That is the defect this closes, and it is the same class that cost the pilot five reports built on 13% of a repository.
+
+    </details>
+
+## [3.152.3](https://github.com/SocialGouv/iterion/compare/v3.152.2...v3.152.3) (2026-09-16)
+
+### Bug Fixes
+
+* **golden-master:** a mutant that lost its meta.json refuses, it no longer shrinks the set in silence ([#1306](https://github.com/SocialGouv/iterion/issues/1306)) ([a92cd3d](https://github.com/SocialGouv/iterion/commit/a92cd3d7fbbf9bbd669e57f5cfcc7dbea0aa9380))
+
+    <details><summary>why</summary>
+
+    load_mutants skipped any directory without a meta.json and said nothing. The gate then compared `detected == total` over whatever the loader had been willing to return, so a held-out set of 7 that loses 3 meta.json reports a green 4/4. That is the vacuity trap of `holdout 0/0` with a different number, and the conjunction cannot see it because both sides shrink together.
+
+    </details>
+* **subbotsource:** a relative subbot source names the file the OS reaches ([#1312](https://github.com/SocialGouv/iterion/issues/1312)) ([596e032](https://github.com/SocialGouv/iterion/commit/596e032e1364125ed427962225bbd551abb71cd5)), closes [#1283](https://github.com/SocialGouv/iterion/issues/1283), references [#1283](https://github.com/SocialGouv/iterion/issues/1283)
+
+    <details><summary>why</summary>
+
+    Two readers resolve one `subbot source:`. The bundle walk resolves the parent's directory before joining; the runtime resolver joined lexically. So through `link/parent -> real/parent`, a source `../sib/main.bot` folded to `link/sib/main.bot` — a path the kernel never produces, since it resolves the link first and only then walks `..`. A bundle that validated clean could run a different file, or none.
+
+    </details>
+
+## [3.152.2](https://github.com/SocialGouv/iterion/compare/v3.152.1...v3.152.2) (2026-09-16)
+
+### Bug Fixes
+
+* **dsl:** a node's with: values are references like any other ([#1311](https://github.com/SocialGouv/iterion/issues/1311)) ([7ddbb79](https://github.com/SocialGouv/iterion/commit/7ddbb790c2e95cdbed2026b09da7b3f252db9d3a)), references [#1281](https://github.com/SocialGouv/iterion/issues/1281) [#1281](https://github.com/SocialGouv/iterion/issues/1281)
+
+    <details><summary>why</summary>
+
+    `collectAllRefs` walked prompts, edge with-mappings, tool commands, scripts and action params, fail messages and compute exprs — every template family except the one a NODE carries. A subbot handing its child `{{vars.depth}}` where no `depth` is declared compiled clean, and the child started with the literal text as its value.
+
+    </details>
+
+## [3.152.1](https://github.com/SocialGouv/iterion/compare/v3.152.0...v3.152.1) (2026-09-16)
+
+### Bug Fixes
+
+* **review-pr:** the repo says whether it has a fixer; the reviewer stops assuming ([#1313](https://github.com/SocialGouv/iterion/issues/1313)) ([6a669dc](https://github.com/SocialGouv/iterion/commit/6a669dc5281d111bab4f2c40d7d3b4acc02f99a9)), closes [#1232](https://github.com/SocialGouv/iterion/issues/1232), references [#1232](https://github.com/SocialGouv/iterion/issues/1232)
+
+    <details><summary>why</summary>
+
+    Revi published `Correction : /billy` on every review carrying a finding — at the moment and in the place a developer reads the findings, which makes it the highest-traffic instruction the gate emits. On this repo it says the opposite of the contract: the zero-touch lane is off for cost, findings are the developer's through the local loop.
+
+    </details>
+
+## [3.152.0](https://github.com/SocialGouv/iterion/compare/v3.151.0...v3.152.0) (2026-09-16)
+
+### Features
+
+* **connectors:** a contract reference may declare itself nullable ([#1302](https://github.com/SocialGouv/iterion/issues/1302)) ([9a531c1](https://github.com/SocialGouv/iterion/commit/9a531c141ec48e75fc9c9164f707d8ff9b7c12ea)), closes [#1269](https://github.com/SocialGouv/iterion/issues/1269)
+
+    <details><summary>why</summary>
+
+    A response contract generated from a Swagger 2 description refused the null that go-swagger services send for an absent relation. Forgejo sends one for assignee, milestone and merged_by on every unassigned issue, so --validate-responses on that description produced contracts refusing ordinary answers - and the cost is not a red diagnostic: a contract violation on a 2xx is marked ambiguous, has its Data cleared and is NOT retryable, so a mutation parks its run and a read fails its node, for an…
+
+    </details>
+
+## [3.151.0](https://github.com/SocialGouv/iterion/compare/v3.150.2...v3.151.0) (2026-09-16)
+
+### Features
+
+* **dsl:** refuse two edges that disagree about what a foreach iterates (C269) ([#1299](https://github.com/SocialGouv/iterion/issues/1299)) ([38326be](https://github.com/SocialGouv/iterion/commit/38326bea57204895af329fccaeeb7c0b72d5f13f)), closes [#1290](https://github.com/SocialGouv/iterion/issues/1290)
+
+    <details><summary>why</summary>
+
+    compileEdges registers a foreach by name and keeps the FIRST declaration, so a second edge declaring the same name over a different collection or element binding was discarded in silence: the edge carried the name, the name resolved to the other definition, and the run walked a collection its author never wrote. No error, no warning.
+
+    </details>
+
+## [3.150.2](https://github.com/SocialGouv/iterion/compare/v3.150.1...v3.150.2) (2026-09-16)
+
+### Bug Fixes
+
+* **runtime:** a loop cap expression must produce a number, not a concatenation ([#1294](https://github.com/SocialGouv/iterion/issues/1294)) ([cdd871c](https://github.com/SocialGouv/iterion/commit/cdd871c0f806bfe3a4e1c1934e4b0ba4dc81b754)), closes [#1271](https://github.com/SocialGouv/iterion/issues/1271)
+
+    <details><summary>why</summary>
+
+    `+` concatenates as soon as one operand is a string, and loopCapInteger accepts a numeric string - deliberately, for the LEGACY single-reference template form. The two tolerances composed: a cap written `outputs.gate.remaining + 1` over an unschema'd field holding "3" evaluated to "31" and bounded the loop at 31 instead of 4, against the run budget, with no diagnostic. Measured end to end before the fix: 32 passes where 4 was written.
+
+    </details>
+
+## [3.150.1](https://github.com/SocialGouv/iterion/compare/v3.150.0...v3.150.1) (2026-09-16)
+
+### Bug Fixes
+
+* **dsl:** bind group members and parameters per instance ([#1191](https://github.com/SocialGouv/iterion/issues/1191)) ([557e901](https://github.com/SocialGouv/iterion/commit/557e901c3714420b50e2ce9acd35e66c021126e7))
+
+    <details><summary>why</summary>
+
+    A prompt whose source cannot be resolved refuses its {{include}} for a reason that belongs to the declaration and cannot differ between the group instances binding it, so a group of N members landed N identical diagnostics on one span. The budget refusals beside it already stop at the first; this one now does too.
+
+    </details>
+
 ## [3.150.0](https://github.com/SocialGouv/iterion/compare/v3.149.4...v3.150.0) (2026-09-16)
 
 ### Features
