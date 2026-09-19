@@ -218,6 +218,8 @@
 │           └── sentry.png
 ├── scalingo-dev-seed.sh
 ├── scalingo.json
+├── scripts
+│   └── import-images-formations.mjs
 ├── sonar-project.properties
 ├── src
 │   ├── @types
@@ -259,7 +261,9 @@
 │   │   │       ├── formations
 │   │   │       │   ├── [id]
 │   │   │       │   │   └── page.tsx
-│   │   │       │   └── page.tsx
+│   │   │       │   ├── page.tsx
+│   │   │       │   └── proposer
+│   │   │       │       └── page.tsx
 │   │   │       ├── incubators
 │   │   │       │   ├── [id]
 │   │   │       │   │   ├── info-form
@@ -306,8 +310,6 @@
 │   │   ├── (public)
 │   │   │   ├── accessibilite
 │   │   │   │   └── page.tsx
-│   │   │   ├── components
-│   │   │   │   └── page.tsx
 │   │   │   ├── keskispasse
 │   │   │   │   └── page.tsx
 │   │   │   ├── layout.tsx
@@ -329,6 +331,11 @@
 │   │   │   ├── demandes
 │   │   │   │   └── segur
 │   │   │   │       └── actions.ts
+│   │   │   ├── formations
+│   │   │   │   ├── actions.ts
+│   │   │   │   └── image
+│   │   │   │       └── [attachmentId]
+│   │   │   │           └── route.ts
 │   │   │   ├── image
 │   │   │   │   ├── route.ts
 │   │   │   │   └── utils.ts
@@ -440,7 +447,18 @@
 │   │   ├── FichePicture.tsx
 │   │   ├── Formation
 │   │   │   ├── FormationCard.tsx
-│   │   │   └── FormationList.tsx
+│   │   │   ├── FormationDateTimeFields.tsx
+│   │   │   ├── FormationImagePicker.tsx
+│   │   │   ├── FormationList.tsx
+│   │   │   ├── FormationManagePanel.tsx
+│   │   │   ├── FormationOtherDates.tsx
+│   │   │   ├── FormationPendingMenu.tsx
+│   │   │   ├── FormationProposalForm.tsx
+│   │   │   ├── FormationRegisterButton.tsx
+│   │   │   ├── FormationScheduleForm.tsx
+│   │   │   ├── FormationSessionEditForm.tsx
+│   │   │   ├── FormationSessionsParticipants.tsx
+│   │   │   └── FormationUpcomingBanner.tsx
 │   │   ├── GenderSelect.tsx
 │   │   ├── Header.tsx
 │   │   ├── IncubatorCreatePage
@@ -603,6 +621,7 @@
 │   │   ├── canEditMember.ts
 │   │   ├── canEditStartup.spec.ts
 │   │   ├── canEditStartup.ts
+│   │   ├── canManageFormation.ts
 │   │   ├── canValidateRestrictedChecklistItem.spec.ts
 │   │   ├── canValidateRestrictedChecklistItem.ts
 │   │   ├── checklists
@@ -614,6 +633,7 @@
 │   │   │   ├── offboarding.yml
 │   │   │   ├── onboarding.yml
 │   │   │   └── restrictedItems.spec.ts
+│   │   ├── computeWaitingListChanges.spec.ts
 │   │   ├── config.ts
 │   │   ├── copyToClipBoard.ts
 │   │   ├── date.ts
@@ -638,12 +658,22 @@
 │   │   ├── error.ts
 │   │   ├── events.ts
 │   │   ├── file.ts
+│   │   ├── formationOrder.spec.ts
+│   │   ├── formationOrder.ts
+│   │   ├── formationRecurrence.spec.ts
+│   │   ├── formationRecurrence.ts
+│   │   ├── formationSeats.spec.ts
+│   │   ├── formationSeats.ts
+│   │   ├── formationSessionLock.spec.ts
+│   │   ├── formationSessionLock.ts
+│   │   ├── formationsGrist.ts
 │   │   ├── frontConfig
 │   │   │   └── index.ts
 │   │   ├── grist.ts
 │   │   ├── hstore.ts
 │   │   ├── htmlbuilder.ts
 │   │   ├── ical.ts
+│   │   ├── isAnimationTeamMember.ts
 │   │   ├── kysely
 │   │   │   ├── index.ts
 │   │   │   ├── queries
@@ -665,7 +695,12 @@
 │   │   ├── member.utils.ts
 │   │   ├── memberPageProps.ts
 │   │   ├── openapi.ts
+│   │   ├── parseParticipantsCsv.spec.ts
+│   │   ├── parseParticipantsCsv.ts
+│   │   ├── pgAdpter.spec.ts
 │   │   ├── pgAdpter.ts
+│   │   ├── rateLimit.spec.ts
+│   │   ├── rateLimit.ts
 │   │   ├── routes.ts
 │   │   ├── s3.ts
 │   │   ├── searchCommune.ts
@@ -682,6 +717,7 @@
 │   │   │   ├── actionEvent.ts
 │   │   │   └── index.ts
 │   │   ├── actions
+│   │   │   ├── formationProposal.ts
 │   │   │   ├── image.ts
 │   │   │   ├── incubator.ts
 │   │   │   ├── member.ts
@@ -700,6 +736,7 @@
 │   │   ├── common.ts
 │   │   ├── competences.ts
 │   │   ├── formation.ts
+│   │   ├── formationsGrist.ts
 │   │   ├── incubator.ts
 │   │   ├── jobs
 │   │   │   ├── maintenance.ts
@@ -783,4 +820,4 @@
 │                   │   └── memberValidationEmail.ts
 │                   └── updateSecondaryEmail.ejs
 └── tsconfig.json
-175 directories, 610 files
+179 directories, 643 files
