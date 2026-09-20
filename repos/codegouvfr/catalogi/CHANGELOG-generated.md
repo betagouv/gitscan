@@ -1,23 +1,22 @@
-## Changelog : catalogi (30 derniers jours, au 10 septembre 2026)
+## Changelog : catalogi (30 derniers jours, au 19 septembre 2026)
 
 ### Résumé
-Cette période a été marquée par un renforcement des capacités d'administration et une optimisation significative des processus d'importation de données. Les outils de gestion de l'interface utilisateur ont été modernisés pour les administrateurs, tandis que la fiabilité des données provenant de sources externes (HAL, Wikidata, GitHub) a été grandement améliorée.
+Les récentes évolutions se concentrent sur le renforcement des outils d'administration et l'optimisation de l'importation de données. L'interface utilisateur est désormais plus flexible grâce à une nouvelle gestion de sa configuration, tandis que la fiabilité des données importées (HAL, Wikidata, GitHub) et la documentation de l'API ont été significativement améliorées.
 
 ### Évolutions fonctionnelles
-- **Gestion de l'interface (UI) :** Introduction d'un éditeur de configuration de l'interface utilisateur pour les administrateurs. Cette configuration est désormais stockée en base de données et modifiable via l'API d'administration.
-- **Contrôle d'accès :** Mise en place de restrictions sur la création de logiciels et ajout de raccourcis dédiés pour les administrateurs.
+- **Administration** : Introduction d'un éditeur de configuration de l'interface utilisateur (UI) via l'API d'administration, permettant de modifier l'apparence et le comportement de l'interface directement depuis la base de données.
+- **Administration** : Ajout d'un raccourci pour la création de logiciels et mise en place de restrictions d'accès à cette fonctionnalité.
+- **API** : Mise à disposition d'une documentation interactive (Swagger UI) pour l'export public v2, facilitant l'intégration par des tiers.
+- **Données** : Ajout de la mention de la date de dernière importation sur les sources de données.
 
 ### Évolutions techniques
-- **Optimisation des imports :**
-    - Amélioration des performances lors des imports massifs, notamment pour la source Zenodo [#516](https://github.com/codegouvfr/catalogi/issues/516).
-    - Ajout d'un indicateur `lastimport` sur les sources pour un meilleur suivi.
-- **Fiabilisation des données :**
-    - Correction de plusieurs erreurs d'importation de données provenant de sources externes : corrections sur les identifiants et URLs pour HAL, la récupération des organisations via Wikidata, et la gestion des identifiants et descriptions utilisateurs depuis GitHub [#549](https://github.com/codegouvfr/catalogi/issues/549) [#550](https://github.com/codegouvfr/catalogi/issues/550).
-- **Architecture et base de données :**
-    - Migration de la configuration de l'interface utilisateur vers PostgreSQL.
-    - Refactorisation des migrations de base de données et ajustement de l'utilisation des identifiants (conceptrecid).
-- **Qualité logicielle :**
-    - Amélioration de la suite de tests, notamment par le découplage des données de test de la configuration UI et une meilleure gestion des fixtures.
+- **Optimisation des imports** : Amélioration des performances pour les imports massifs, notamment pour les données Zenodo et via une optimisation globale des processus ([#516](https://github.com/codegouvfr/catalogi/issues/516)).
+- **Fiabilisation de l'ingestion de données** : Correction de nombreux bugs lors de l'importation de données externes (HAL, Wikidata, GitHub) concernant la gestion des identifiants, des organisations et des URLs ROR.
+- **API & Sécurité** :
+    - Correction du préfixe de documentation lors de l'utilisation de proxys.
+    - Sécurisation des URLs pour empêcher la déclaration d'URLs exécutables ou d'instances non autorisées.
+    - Refactorisation pour assurer la stricte conformité des schémas publics avec les types de logiciels originaux.
+- **Tests** : Amélioration de la robustesse des tests unitaires sur les schémas générés et la gestion des données de test pour la configuration de l'UI.
 
 ### Autres changements
-- Ajustements de la configuration de build et de la nomenclature du projet.
+- Maintenance technique : Correction du nom du build, réorganisation des migrations de base de données et mises à jour de version.
