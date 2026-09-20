@@ -232,14 +232,16 @@
 │   │   │   ├── 0009_alter_habilitation_invitation.py
 │   │   │   ├── 0010_habilitation_is_conseiller_rse.py
 │   │   │   ├── 0011_remove_habilitation_confirmed_at.py
+│   │   │   ├── 0012_alter_habilitation_role.py
+│   │   │   ├── 0013_migrate_roles_data.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── templates
 │   │   │   └── snippets
-│   │   │       ├── contributeurs.html
 │   │   │       ├── formulaire_invitation.html
 │   │   │       ├── modale_modifier_habilitation.html
-│   │   │       └── modale_retirer_habilitation.html
+│   │   │       ├── modale_retirer_habilitation.html
+│   │   │       └── utilisateurs.html
 │   │   ├── tests
 │   │   │   ├── test_commands.py
 │   │   │   ├── test_decorators.py
@@ -270,6 +272,7 @@
 │   │   │   ├── 0006_alter_invitation_role.py
 │   │   │   ├── 0007_invitation_est_invitation_proprietaire_tiers.py
 │   │   │   ├── 0008_remove_invitation_est_invitation_proprietaire_tiers.py
+│   │   │   ├── 0009_alter_invitation_role.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   └── tests
@@ -728,7 +731,11 @@
 │   │   │   ├── portail-1920.png
 │   │   │   ├── simulation.png
 │   │   │   ├── social-2x3.png
-│   │   │   └── spinner.svg
+│   │   │   ├── spinner.svg
+│   │   │   └── stats
+│   │   │       ├── stats-1.png
+│   │   │       ├── stats-2.png
+│   │   │       └── stats-3.png
 │   │   ├── js
 │   │   │   ├── htmx.min.js
 │   │   │   ├── idiomorph-ext.min.js
@@ -797,7 +804,7 @@
 │   │   │       └── tableau_de_bord_conseiller.html
 │   │   ├── tests
 │   │   │   ├── __init__.py
-│   │   │   ├── test_accepter_role_proprietaire.py
+│   │   │   ├── test_accepter_invitation.py
 │   │   │   ├── test_choix_type_utilisateur.py
 │   │   │   ├── test_commands.py
 │   │   │   ├── test_creer_entreprise_pour_tiers.py
@@ -916,4 +923,4 @@
 ├── servers.conf.erb
 ├── start.sh
 └── uv.lock
-134 directories, 784 files
+135 directories, 790 files

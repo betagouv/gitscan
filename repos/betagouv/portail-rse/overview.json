@@ -1,14 +1,14 @@
 {
   "url": "https://github.com/betagouv/portail-rse",
   "name": "portail-rse",
-  "description": "Un portail permettant aux entreprises de connaître et de répondre à leurs obligations en matière de Responsabilité Sociétale des Entreprises (RSE), notamment via la VSME.",
+  "description": "Un portail permettant aux entreprises de connaître et de répondre à leurs obligations en matière de Responsabilité Sociétale des Entreprises (RSE). Il propose des outils de simulation réglementaire et d'export de rapports.",
   "language": "Python",
   "features": [
-    "Formulaires & Démarches",
-    "Statistiques & Rapports",
+    "Gestion documentaire & Fichiers",
     "Authentification & Accès",
-    "Gestion des utilisateurs & Permissions",
-    "Administration & Backoffice",
+    "Statistiques & Rapports",
+    "Simulation & Calcul",
+    "Formulaires & Démarches",
     "Visualisation de données & Cartographie"
   ],
   "audience": "Professionnels",
@@ -18,28 +18,30 @@
     "PostgreSQL",
     "Redis",
     "MinIO",
-    "ProConnect",
-    "Metabase",
-    "Sentry"
+    "Vite",
+    "Sentry",
+    "ProConnect"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Angular / Svelte / Autres SPA",
+    "TypeScript / JavaScript",
     "Python (scripts & backend)",
     "Design System (DSFR & UI libs)",
     "Docker & Conteneurs",
     "Authentification (composant)",
-    "ORM & Accès aux données",
-    "Stockage objet"
+    "Stockage objet",
+    "Templates & Moteurs de rendu"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "session"
+      "sso"
     ],
     "providers": [
-      "ProConnect"
+      "ProConnect",
+      "France Connect"
     ]
   },
   "tests": [
@@ -50,9 +52,8 @@
   "workflows": [
     "test.yml"
   ],
-  "lastActivity": "2026-08-28T10:54:55+02:00",
+  "lastActivity": "2026-09-16T11:29:12+02:00",
   "status": "active",
-  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Données & Open Data",
@@ -61,6 +62,7 @@
     "Bases de données SQL",
     "Design System & UI",
     "Docker & Conteneurs",
+    "CI/CD & GitHub Actions",
     "Environnement & Énergie",
     "Accessibilité"
   ]
