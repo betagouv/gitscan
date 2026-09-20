@@ -1,0 +1,525 @@
+.
+├── .github
+│   ├── releases
+│   │   ├── .release-please-manifest-prerelease.json
+│   │   ├── .release-please-manifest.json
+│   │   ├── release-please-config-prerelease.json
+│   │   └── release-please-config-release.json
+│   └── workflows
+│       ├── cd.yml
+│       ├── ci.yml
+│       ├── clean-cache.yml
+│       ├── lint.yml
+│       └── unit-tests.yml
+├── .gitignore
+├── .gitlab-ci-dso.yml
+├── .gitleaks.toml
+├── .pre-commit-config.yaml
+├── .trivyignore.yaml
+├── CHANGELOG.md
+├── LICENSE
+├── Makefile
+├── README.md
+├── backend
+│   ├── .dockerignore
+│   ├── Dockerfile
+│   ├── README.md
+│   ├── alembic.ini
+│   ├── app
+│   │   ├── __init__.py
+│   │   ├── config
+│   │   │   ├── __init__.py
+│   │   │   ├── database.py
+│   │   │   ├── keycloak.py
+│   │   │   ├── llm.py
+│   │   │   ├── logging.py
+│   │   │   ├── meilisearch.py
+│   │   │   ├── redis.py
+│   │   │   ├── rustfs.py
+│   │   │   ├── sharing.py
+│   │   │   └── worker.py
+│   │   ├── connectors.py
+│   │   ├── core
+│   │   │   ├── __init__.py
+│   │   │   ├── security
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── claims.py
+│   │   │   │   ├── factory.py
+│   │   │   │   ├── keycloak_client.py
+│   │   │   │   ├── session.py
+│   │   │   │   └── worker_auth.py
+│   │   │   ├── sharing.py
+│   │   │   ├── storage.py
+│   │   │   └── tasks.py
+│   │   ├── db.py
+│   │   ├── logger.py
+│   │   ├── main.py
+│   │   ├── models
+│   │   │   ├── __init__.py
+│   │   │   ├── app_settings.py
+│   │   │   ├── base.py
+│   │   │   ├── chunk.py
+│   │   │   ├── collection.py
+│   │   │   ├── conversation.py
+│   │   │   ├── discussion_feedback.py
+│   │   │   ├── discussion_score.py
+│   │   │   ├── document.py
+│   │   │   ├── entity.py
+│   │   │   ├── evaluation.py
+│   │   │   ├── feedback.py
+│   │   │   ├── message.py
+│   │   │   ├── qa.py
+│   │   │   ├── run.py
+│   │   │   ├── source.py
+│   │   │   └── task.py
+│   │   ├── repositories
+│   │   │   ├── __init__.py
+│   │   │   ├── app_settings_repository.py
+│   │   │   ├── chunk_repository.py
+│   │   │   ├── collection_repository.py
+│   │   │   ├── conversation_repository.py
+│   │   │   ├── discussion_feedback_repository.py
+│   │   │   ├── discussion_score_repository.py
+│   │   │   ├── document_repository.py
+│   │   │   ├── entity_repository.py
+│   │   │   ├── evaluation_repository.py
+│   │   │   ├── feedback_repository.py
+│   │   │   ├── qa_pair_repository.py
+│   │   │   ├── run_repository.py
+│   │   │   ├── source_repository.py
+│   │   │   └── task_repository.py
+│   │   ├── routers
+│   │   │   ├── __init__.py
+│   │   │   ├── admin_settings.py
+│   │   │   ├── auth.py
+│   │   │   ├── collections.py
+│   │   │   ├── conversations.py
+│   │   │   ├── documents.py
+│   │   │   ├── health.py
+│   │   │   ├── internal_collections.py
+│   │   │   ├── internal_conversations.py
+│   │   │   ├── internal_documents.py
+│   │   │   ├── internal_evaluation.py
+│   │   │   ├── internal_llm.py
+│   │   │   ├── internal_pipeline.py
+│   │   │   ├── internal_runs.py
+│   │   │   ├── internal_tasks.py
+│   │   │   ├── models.py
+│   │   │   ├── quality.py
+│   │   │   ├── runs.py
+│   │   │   └── tasks.py
+│   │   ├── schemas
+│   │   │   ├── __init__.py
+│   │   │   ├── app_settings.py
+│   │   │   ├── collection.py
+│   │   │   ├── conversation.py
+│   │   │   ├── discussion_feedback.py
+│   │   │   ├── discussion_score.py
+│   │   │   ├── document.py
+│   │   │   ├── evaluation.py
+│   │   │   ├── feedback.py
+│   │   │   ├── health.py
+│   │   │   ├── internal_discussion_score.py
+│   │   │   ├── internal_document.py
+│   │   │   ├── internal_evaluation.py
+│   │   │   ├── internal_pipeline.py
+│   │   │   ├── internal_run.py
+│   │   │   ├── models.py
+│   │   │   ├── pagination.py
+│   │   │   ├── quality.py
+│   │   │   ├── run.py
+│   │   │   └── task.py
+│   │   └── services
+│   │       ├── __init__.py
+│   │       ├── app_settings_service.py
+│   │       ├── collection_service.py
+│   │       ├── conversation_service.py
+│   │       ├── document_service.py
+│   │       ├── document_upload_service.py
+│   │       ├── embedding_model_lookup.py
+│   │       ├── evaluation_service.py
+│   │       ├── quality_service.py
+│   │       ├── run_service.py
+│   │       ├── search_service.py
+│   │       ├── task_service.py
+│   │       └── vector_store.py
+│   ├── docs
+│   │   └── db-schema.png
+│   ├── migrations
+│   │   ├── README
+│   │   ├── env.py
+│   │   ├── script.py.mako
+│   │   └── versions
+│   │       ├── 20260917_0016_789d7fc786d5_add_worker_fields_document_storage_key_.py
+│   │       ├── 20260917_0050_18103bc9f998_initial_schema.py
+│   │       ├── 20260917_0551_ccc2c83495f1_add_generation_models_to_collection_.py
+│   │       ├── 20260917_0619_02ab8ea16bbb_add_instructions_summary_and_pipeline_.py
+│   │       ├── 20260917_0637_927645173e27_add_tasks_table.py
+│   │       ├── 20260917_0701_bd4dc87d7efa_add_task_parent_logs_and_document_error_.py
+│   │       ├── 20260917_0809_a378c3ad577e_add_app_settings_and_collection_.py
+│   │       ├── 20260917_1103_3632c0e81a2a_add_runs_and_run_events_tables.py
+│   │       ├── 20260917_1830_a1b2c3d4e5f6_add_title_generated_to_conversations.py
+│   │       ├── 20260917_2215_b2c3d4e5f6a7_add_run_id_to_messages.py
+│   │       ├── 20260918_1130_c3d4e5f6a7b8_add_document_scoping_to_entities_relations.py
+│   │       ├── 20260918_1500_d4e5f6a7b8c9_add_pinned_collection_ids_to_runs.py
+│   │       ├── 20260918_2300_41712b4708f0_add_collection_visibility_and_hashed_.py
+│   │       ├── 20260919_0759_b2e1c851b57c_add_user_groups_snapshot_to_runs.py
+│   │       ├── 20260919_0927_74d4601fff9f_add_grounding_result_to_runs.py
+│   │       ├── 20260919_0944_9c08ea420680_add_web_search_enabled_to_runs.py
+│   │       ├── 20260919_1248_3803fa42d989_add_value_polarity_to_feedbacks.py
+│   │       ├── 20260919_1330_99551a95a5dc_extend_sources_for_citation_materialization.py
+│   │       ├── 20260919_1459_516194aecb9b_add_validated_qa_breakdown_to_.py
+│   │       ├── 20260919_1530_5e9f8378ec61_add_discussion_scores_and_task_.py
+│   │       ├── 20260919_1600_49defa648bf4_add_discussion_feedbacks_and_hash.py
+│   │       ├── 20260919_2100_45e67f238e78_add_content_hash_to_evaluation_runs.py
+│   │       └── 20260919_2200_a1b2c3d4e8f9_add_latency_and_tokens_to_discussion_scores.py
+│   ├── pyproject.toml
+│   ├── tests
+│   │   ├── .env.testing
+│   │   ├── __init__.py
+│   │   ├── conftest.py
+│   │   ├── core
+│   │   │   ├── __init__.py
+│   │   │   └── security
+│   │   │       ├── __init__.py
+│   │   │       ├── conftest.py
+│   │   │       ├── test_factory.py
+│   │   │       ├── test_session.py
+│   │   │       └── test_worker_auth.py
+│   │   └── routers
+│   │       ├── __init__.py
+│   │       ├── test_admin_settings.py
+│   │       ├── test_auth.py
+│   │       ├── test_collection_sharing.py
+│   │       ├── test_collections.py
+│   │       ├── test_conversations.py
+│   │       ├── test_documents.py
+│   │       ├── test_health.py
+│   │       ├── test_internal_conversations.py
+│   │       ├── test_internal_documents.py
+│   │       ├── test_internal_evaluation.py
+│   │       ├── test_internal_llm.py
+│   │       ├── test_internal_pipeline.py
+│   │       ├── test_internal_runs.py
+│   │       ├── test_internal_tasks.py
+│   │       ├── test_models.py
+│   │       ├── test_runs.py
+│   │       └── test_tasks.py
+│   └── uv.lock
+├── ci
+│   └── configs
+│       └── ct.yaml
+├── docker
+│   ├── keycloak
+│   │   └── realm-muffin.json
+│   └── searxng
+│       └── settings.yml
+├── docker-compose-test.yaml
+├── docker-compose.yaml
+├── docs
+│   ├── collection-sharing.md
+│   ├── environment-variables.md
+│   └── research-agent-plan.md
+├── frontend
+│   ├── .dockerignore
+│   ├── .gitignore
+│   ├── .vscode
+│   │   └── extensions.json
+│   ├── Dockerfile
+│   ├── README.md
+│   ├── docker
+│   │   └── nginx.conf
+│   ├── index.html
+│   ├── package.json
+│   ├── pnpm-lock.yaml
+│   ├── public
+│   │   ├── favicon.svg
+│   │   └── icons.svg
+│   ├── scripts
+│   │   ├── screenshot.mjs
+│   │   ├── test-keycloak-login.mjs
+│   │   ├── test-keycloak-logout.mjs
+│   │   └── verify-run-e2e.mjs
+│   ├── src
+│   │   ├── App.vue
+│   │   ├── components
+│   │   │   ├── AdminSettingsView.vue
+│   │   │   ├── ChatMessage.vue
+│   │   │   ├── ChatSidebar.vue
+│   │   │   ├── ChatView.vue
+│   │   │   ├── ChatWindow.vue
+│   │   │   ├── CollectionChunksTab.vue
+│   │   │   ├── CollectionDetailView.vue
+│   │   │   ├── CollectionDocumentsTab.vue
+│   │   │   ├── CollectionEvaluationTab.vue
+│   │   │   ├── CollectionPicker.vue
+│   │   │   ├── CollectionQaTab.vue
+│   │   │   ├── CollectionRelationsTab.vue
+│   │   │   ├── CollectionSettingsTab.vue
+│   │   │   ├── CollectionsView.vue
+│   │   │   ├── ConfirmDeleteModal.vue
+│   │   │   ├── ConversationMenu.vue
+│   │   │   ├── DiscussionFeedbackPrompt.vue
+│   │   │   ├── DiscussionScorePanel.vue
+│   │   │   ├── DocumentDetailModal.vue
+│   │   │   ├── ExecutionPanel.vue
+│   │   │   ├── FeedbackModal.vue
+│   │   │   ├── ModelSelector.vue
+│   │   │   ├── PaginationControls.vue
+│   │   │   ├── QualityDashboardView.vue
+│   │   │   ├── SettingsModal.vue
+│   │   │   ├── SourceDocumentModal.vue
+│   │   │   ├── SourcesPanel.vue
+│   │   │   ├── TaskRow.vue
+│   │   │   ├── TaskTableRow.vue
+│   │   │   └── TasksView.vue
+│   │   ├── composables
+│   │   │   ├── useAdminSettings.ts
+│   │   │   ├── useChat.ts
+│   │   │   ├── useCollections.ts
+│   │   │   ├── useCollectionsBrowser.ts
+│   │   │   ├── useCurrentUser.ts
+│   │   │   ├── useEmbeddingModels.ts
+│   │   │   ├── useModels.ts
+│   │   │   ├── usePagination.ts
+│   │   │   ├── useQuality.ts
+│   │   │   ├── useTasks.ts
+│   │   │   └── useTheme.ts
+│   │   ├── data
+│   │   │   └── qualityMetrics.ts
+│   │   ├── main.ts
+│   │   ├── router
+│   │   │   └── index.ts
+│   │   └── types
+│   │       ├── chat.ts
+│   │       ├── collection.ts
+│   │       ├── model.ts
+│   │       └── user.ts
+│   ├── tsconfig.app.json
+│   ├── tsconfig.json
+│   ├── tsconfig.node.json
+│   └── vite.config.ts
+├── helm
+│   ├── Chart.lock
+│   ├── Chart.yaml
+│   ├── README.md
+│   ├── README.md.gotmpl
+│   ├── charts
+│   │   ├── cluster-0.8.1.tgz
+│   │   ├── meilisearch-0.39.0.tgz
+│   │   ├── postgres-0.19.6.tgz
+│   │   ├── redis-0.27.9.tgz
+│   │   ├── rustfs-0.10.0.tgz
+│   │   └── searxng-1.1.4.tgz
+│   ├── templates
+│   │   ├── NOTES.txt
+│   │   ├── _helpers.tpl
+│   │   ├── agent_execution
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── grpcroute.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── httproute.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── metrics.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pullsecret.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── statefulset.yaml
+│   │   ├── backend
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── grpcroute.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── httproute.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── metrics.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pullsecret.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── statefulset.yaml
+│   │   ├── cronjobs.yaml
+│   │   ├── document_process
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── grpcroute.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── httproute.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── metrics.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pullsecret.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── statefulset.yaml
+│   │   ├── extra-objects.yaml
+│   │   ├── frontend
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── grpcroute.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── httproute.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── metrics.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pullsecret.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── statefulset.yaml
+│   │   ├── gateway.yaml
+│   │   ├── httproute.yaml
+│   │   ├── ingress.yaml
+│   │   ├── jobs.yaml
+│   │   ├── pullsecret.yaml
+│   │   ├── validation.yaml
+│   │   └── worker_evaluation
+│   │       ├── clusterrole.yaml
+│   │       ├── clusterrolebinding.yaml
+│   │       ├── configmap.yaml
+│   │       ├── daemonset.yaml
+│   │       ├── deployment.yaml
+│   │       ├── grpcroute.yaml
+│   │       ├── hpa.yaml
+│   │       ├── httproute.yaml
+│   │       ├── ingress.yaml
+│   │       ├── metrics.yaml
+│   │       ├── networkpolicy.yaml
+│   │       ├── pdb.yaml
+│   │       ├── pullsecret.yaml
+│   │       ├── role.yaml
+│   │       ├── rolebinding.yaml
+│   │       ├── secret.yaml
+│   │       ├── service.yaml
+│   │       ├── serviceaccount.yaml
+│   │       ├── servicemonitor.yaml
+│   │       └── statefulset.yaml
+│   ├── test-values-daemonset.yaml
+│   ├── test-values-statefulset.yaml
+│   ├── test-values.yaml
+│   ├── values-searxng.example.yaml
+│   ├── values.schema.json
+│   └── values.yaml
+└── worker
+    ├── agent_execution
+    │   ├── Dockerfile
+    │   ├── README.md
+    │   ├── app
+    │   │   ├── __init__.py
+    │   │   ├── agent_service.py
+    │   │   ├── backend_client.py
+    │   │   ├── celery_app.py
+    │   │   ├── config.py
+    │   │   ├── graph
+    │   │   │   ├── __init__.py
+    │   │   │   ├── graph.py
+    │   │   │   ├── nodes
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── analyze_query.py
+    │   │   │   │   ├── build_answer_context.py
+    │   │   │   │   ├── build_research_plan.py
+    │   │   │   │   ├── decompose_query.py
+    │   │   │   │   ├── evaluate_coverage.py
+    │   │   │   │   ├── generate_answer.py
+    │   │   │   │   ├── load_accessible_vdbs.py
+    │   │   │   │   ├── load_context.py
+    │   │   │   │   ├── merge_evidence.py
+    │   │   │   │   ├── replan_research.py
+    │   │   │   │   ├── request_clarification.py
+    │   │   │   │   ├── research_task.py
+    │   │   │   │   ├── targeted_research.py
+    │   │   │   │   └── validate_grounding.py
+    │   │   │   ├── routing
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   └── conditions.py
+    │   │   │   ├── services
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── document_resolver.py
+    │   │   │   │   ├── events.py
+    │   │   │   │   ├── evidence.py
+    │   │   │   │   ├── llm.py
+    │   │   │   │   ├── planning.py
+    │   │   │   │   ├── time_tool.py
+    │   │   │   │   └── vdb_router.py
+    │   │   │   └── state.py
+    │   │   ├── searxng_client.py
+    │   │   └── tasks.py
+    │   ├── pyproject.toml
+    │   ├── tests
+    │   │   ├── __init__.py
+    │   │   ├── conftest.py
+    │   │   ├── test_agent_service.py
+    │   │   └── test_graph.py
+    │   └── uv.lock
+    ├── document_process
+    │   ├── Dockerfile
+    │   ├── README.md
+    │   ├── app
+    │   │   ├── __init__.py
+    │   │   ├── backend_client.py
+    │   │   ├── celery_app.py
+    │   │   ├── chunking.py
+    │   │   ├── config.py
+    │   │   ├── parsing.py
+    │   │   ├── scraping.py
+    │   │   ├── storage.py
+    │   │   ├── task_logging.py
+    │   │   ├── tasks.py
+    │   │   └── windows.py
+    │   ├── pyproject.toml
+    │   ├── tests
+    │   │   ├── __init__.py
+    │   │   └── test_tasks.py
+    │   └── uv.lock
+    └── evaluation
+        ├── Dockerfile
+        ├── README.md
+        ├── app
+        │   ├── __init__.py
+        │   ├── backend_client.py
+        │   ├── celery_app.py
+        │   ├── config.py
+        │   ├── metrics.py
+        │   ├── task_logging.py
+        │   └── tasks.py
+        ├── pyproject.toml
+        ├── tests
+        │   ├── __init__.py
+        │   ├── test_discussion.py
+        │   ├── test_metrics.py
+        │   └── test_tasks.py
+        └── uv.lock
+60 directories, 464 files
