@@ -1,17 +1,26 @@
-## Changelog : depots-sauvages (30 derniers jours, au 12 août 2026)
+## Changelog : depots-sauvages (30 derniers jours, au 16/09/2026)
 
 ### Résumé
-Ce mois-ci, l'application s'est enrichie de nouveaux outils pour mieux accompagner les utilisateurs, notamment via la création de pages d'information et de mécanismes de recueil de feedback. La gestion des signalements est également optimisée avec l'ajout de photos dans les rapports et une meilleure visualisation cartographique des procédures.
+Cette période a été marquée par un changement d'identité visuelle de l'application, l'ajout d'une section d'actualités et de nombreuses améliorations de l'interface. L'accent a été mis sur la fluidité du travail des agents, notamment via l'optimisation des processus de constatation et la correction de divers comportements de l'interface et du backoffice.
 
 ### Évolutions fonctionnelles
-- **Gestion des signalements** : Ajout de la possibilité d'inclure des photos dans les rapports de constatation [#214], simplification du processus de démarrage d'une constatation [#196] et amélioration de la visualisation cartographique des procédures sur l'interface "Mes procédures" [#201].
-- **Information et accompagnement** : Création de la page "Comment agir", refonte de la page webinaire [#194], mise à jour de la page contact [#205] et amélioration de la page d'accueil [#199].
-- **Feedback et suivi** : Intégration de formulaires d'utilisabilité en fin de constatation [#202] et d'un popup de mesure d'utilité [#204], ainsi que l'ajout de logs d'activité pour le suivi [#213].
-- **Corrections de contenu** : Ajustements de la terminologie (genre) et de l'orthographe pour une meilleure clarté des textes [#212, #200].
+- **Identité visuelle** : Changement du nom de l'application et mise à jour des éléments de l'en-tête ([#223](https://github.com/betagouv/depots-sauvages/issues/223), [#227](https://github.com/betagouv/depots-sauvages/issues/227)).
+- **Nouvelle fonctionnalité** : Ajout d'une section blog/actualités ([#220](https://github.com/betagouv/depots-sauvages/issues/220)).
+- **Améliorations de l'expérience utilisateur** :
+  - Optimisation du parcours de procédure avec l'ajout d'une option de report ("defer") ([#231](https://github.com/betagouv/depots-sauvages/issues/231)).
+  - Remplacement des bandeaux de notification par des badges pour une interface plus légère ([#225](https://github.com/betagouv/depots-sauvages/issues/225)).
+  - Correction de la hiérarchie des boutons sur la page de démarrage de constatation ([#222](https://github.com/betagouv/depots-sauvages/issues/222)).
+  - Amélioration des filtres de recherche dans le backoffice ([#218](https://github.com/betagouv/depots-sauvages/issues/218)).
+- **Corrections de bugs** :
+  - Correction des liens de téléchargement ([#228](https://github.com/betagouv/depots-sauvages/issues/228)).
+  - Correction du format des images dans les rapports de constatation ([#216](https://github.com/betagouv/depots-sauvages/issues/216)).
+  - Correction de la pagination dans le backoffice ([#219](https://github.com/betagouv/depots-sauvages/issues/219)).
+  - Correction du comportement de l'enregistrement automatique qui réinitialisait l'état des brouillons ([#215](https://github.com/betagouv/depots-sauvages/issues/215)).
 
 ### Évolutions techniques
-- **Statistiques** : Déploiement d'un système de statistiques comprenant une base de données dédiée [#206], les migrations nécessaires [#209] et l'automatisation par tâches planifiées (cron jobs) [#210].
-- **Maintenance et sécurité** : Améliorations de la sécurité de l'application [#195] et optimisations du code et des imports [#198, #211].
-
-### Autres changements
-- **Référencement** : Optimisation du SEO (titres et descriptions) pour les pages d'information [#203].
+- **Performances** :
+  - Optimisation de l'affichage du listing des constatations ([#229](https://github.com/betagouv/depots-sauvages/issues/229)).
+  - Optimisations générales du backoffice ([#217](https://github.com/betagouv/depots-sauvages/issues/217)).
+- **Architecture et maintenance** :
+  - Refactorisation et simplification du code ([#221](https://github.com/betagouv/depots-sauvages/issues/221)).
+  - Ajout des scopes ProConnect pour l'authentification ([#226](https://github.com/betagouv/depots-sauvages/issues/226)).
