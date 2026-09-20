@@ -5,6 +5,7 @@
 ├── .circleci
 │   └── config.yml
 ├── .codeclimate.yml
+├── .dsfr.yml
 ├── .env.example
 ├── .erdconfig
 ├── .github
@@ -44,7 +45,6 @@
 │   │   ├── cooperation.rb
 │   │   ├── diagnosis.rb
 │   │   ├── duplicate_user.rb
-│   │   ├── email_retentions.rb
 │   │   ├── expert.rb
 │   │   ├── facility.rb
 │   │   ├── feedback.rb
@@ -62,6 +62,7 @@
 │   │   ├── need.rb
 │   │   ├── patches
 │   │   │   ├── data_access.rb
+│   │   │   ├── flash_messages.rb
 │   │   │   ├── head_style.rb
 │   │   │   └── scopes.rb
 │   │   ├── profil_picture.rb
@@ -371,6 +372,7 @@
 │   │   ├── cooperations_helper.rb
 │   │   ├── diagnosis_helper.rb
 │   │   ├── experts_helper.rb
+│   │   ├── home_emphasis_helper.rb
 │   │   ├── images_helper.rb
 │   │   ├── institutions_helper.rb
 │   │   ├── landings_seo_helper.rb
@@ -457,7 +459,6 @@
 │   │   ├── archive_expired_matches_job.rb
 │   │   ├── company_emails
 │   │   │   ├── not_yet_taken_care_job.rb
-│   │   │   ├── send_intelligent_retention_emails_job.rb
 │   │   │   ├── send_retention_emails_job.rb
 │   │   │   ├── send_satisfaction_emails_job.rb
 │   │   │   ├── send_status_notification_job.rb
@@ -490,8 +491,11 @@
 │   │   ├── company.rb
 │   │   ├── company_satisfaction.rb
 │   │   ├── concerns
+│   │   │   ├── activity.rb
 │   │   │   ├── archivable.rb
 │   │   │   ├── categorie_juridique.rb
+│   │   │   ├── duplicate_user.rb
+│   │   │   ├── home_emphasis.rb
 │   │   │   ├── involvement_concern.rb
 │   │   │   ├── mandatory_answers.rb
 │   │   │   ├── monitoring.rb
@@ -509,7 +513,6 @@
 │   │   ├── cooperation.rb
 │   │   ├── cooperation_theme.rb
 │   │   ├── diagnosis.rb
-│   │   ├── email_retention.rb
 │   │   ├── expert.rb
 │   │   ├── expert_subject.rb
 │   │   ├── facility.rb
@@ -528,6 +531,7 @@
 │   │   ├── record_extensions
 │   │   │   ├── human_attribute_value.rb
 │   │   │   ├── human_count.rb
+│   │   │   ├── in_batches_with_progress.rb
 │   │   │   └── random.rb
 │   │   ├── reminders_action.rb
 │   │   ├── reminders_register.rb
@@ -592,6 +596,7 @@
 │   │   │   ├── generator_base.rb
 │   │   │   ├── notify_antenne_managers.rb
 │   │   │   └── notify_cooperation_managers.rb
+│   │   ├── anonymization.rb
 │   │   ├── antenne_hierarchy.rb
 │   │   ├── api
 │   │   │   ├── api_entreprise
@@ -704,6 +709,7 @@
 │   │   │   │   ├── base.rb
 │   │   │   │   ├── by_new_companies.rb
 │   │   │   │   ├── needs_base.rb
+│   │   │   │   ├── needs_scope.rb
 │   │   │   │   ├── overall_distribution_needs_done_with_help.rb
 │   │   │   │   ├── overall_distribution_needs_done_with_help_column.rb
 │   │   │   │   ├── overall_distribution_needs_transmitted.rb
@@ -716,6 +722,9 @@
 │   │   │   │   ├── by_employees.rb
 │   │   │   │   ├── by_naf_code.rb
 │   │   │   │   └── diagnosis_completed.rb
+│   │   │   ├── concerns
+│   │   │   │   ├── filtered_aggregates.rb
+│   │   │   │   └── partitioned_category.rb
 │   │   │   ├── filters
 │   │   │   │   ├── base.rb
 │   │   │   │   ├── companies.rb
@@ -773,8 +782,6 @@
 │   │   │       └── invitation_accepted.rb
 │   │   ├── temoignage_generator.rb
 │   │   ├── temoignages_experts.rb
-│   │   ├── utilities
-│   │   │   └── arrays.rb
 │   │   ├── xlsx_export
 │   │   │   ├── annuaire_user_exporter.rb
 │   │   │   ├── antenne_stats_exporter.rb
@@ -994,13 +1001,14 @@
 │       │   │   ├── _card.html.haml
 │       │   │   └── show.haml
 │       │   └── landings
+│       │       ├── _home_emphasis_item.html.erb
 │       │       ├── _index_institutions.html.haml
 │       │       ├── _information_banner.html.haml
 │       │       ├── _logos.html.haml
-│       │       ├── _multiple_steps.html.haml
+│       │       ├── _multiple_steps.html.erb
 │       │       ├── _pde_partnership_mention.html.haml
 │       │       ├── _single_page.html.haml
-│       │       ├── home.haml
+│       │       ├── home.html.erb
 │       │       ├── paused.haml
 │       │       └── show.haml
 │       ├── layouts
@@ -1023,7 +1031,6 @@
 │       │   ├── company_mailer
 │       │   │   ├── confirmation_solicitation.mjml
 │       │   │   ├── failed_need.mjml
-│       │   │   ├── intelligent_retention.mjml
 │       │   │   ├── not_yet_taken_care.mjml
 │       │   │   ├── notify_not_reachable.mjml
 │       │   │   ├── notify_taking_care.mjml
@@ -1082,7 +1089,7 @@
 │       │       └── index.html.haml
 │       ├── needs
 │       │   ├── _additional_experts.haml
-│       │   ├── _admin_need.html.haml
+│       │   ├── _admin_need.html.erb
 │       │   ├── _empty_placeholder.html.haml
 │       │   ├── _focus_search_content.html.erb
 │       │   ├── _header.html.haml
@@ -1102,7 +1109,7 @@
 │       │   ├── _cta_button.haml
 │       │   ├── _faq.html.haml
 │       │   ├── _flashes.haml
-│       │   ├── _footer.haml
+│       │   ├── _footer.html.erb
 │       │   ├── _how_it_works_long.html.haml
 │       │   ├── _how_it_works_short.html.haml
 │       │   ├── _navbar.haml
@@ -1294,7 +1301,10 @@
 │   │   ├── 20260518121930_seed_solicitation_mail_templates.rb
 │   │   ├── 20260522133821_add_title_to_solicitation_mail_templates.rb
 │   │   ├── 20260609134557_add_position_to_solicitation_mail_templates.rb
-│   │   └── 20260717131234_add_subject_can_be_automated.rb
+│   │   ├── 20260717131234_add_subject_can_be_automated.rb
+│   │   ├── 20260826135034_remove_intelligent_retention.rb
+│   │   ├── 20260901142450_add_landing_subject_emphasis.rb
+│   │   └── 20260903080706_add_user_last_active_at.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── doc
@@ -1323,8 +1333,6 @@
 │   ├── sidekiq_job.rb
 │   └── tasks
 │       ├── annotate_rb.rake
-│       ├── anonymize.rake
-│       ├── anonymize_old_diagnoses.rake
 │       ├── auto_generate_diagram.rake
 │       ├── import_dump.rake
 │       ├── import_prod_to_staging.rake
@@ -1426,7 +1434,6 @@
 │   │   ├── cooperation.rb
 │   │   ├── cooperation_themes.rb
 │   │   ├── diagnoses.rb
-│   │   ├── email_retention.rb
 │   │   ├── experts.rb
 │   │   ├── experts_subjects.rb
 │   │   ├── facilities.rb
@@ -1537,7 +1544,6 @@
 │   │   ├── archive_expired_matches_job_spec.rb
 │   │   ├── company_emails
 │   │   │   ├── not_yet_taken_care_job_spec.rb
-│   │   │   ├── send_intelligent_retention_emails_job_spec.rb
 │   │   │   ├── send_retention_emails_job_spec.rb
 │   │   │   ├── send_satisfaction_emails_job_spec.rb
 │   │   │   ├── send_status_notification_job_spec.rb
@@ -1569,8 +1575,11 @@
 │   │   ├── company_satisfaction_spec.rb
 │   │   ├── company_spec.rb
 │   │   ├── concerns
+│   │   │   ├── activity_spec.rb
 │   │   │   ├── archivable_spec.rb
 │   │   │   ├── categorie_juridique_spec.rb
+│   │   │   ├── duplicate_user_spec.rb
+│   │   │   ├── home_emphasis_spec.rb
 │   │   │   ├── involvement_concern_spec.rb
 │   │   │   ├── monitoring_spec.rb
 │   │   │   ├── naf_code_spec.rb
@@ -1645,6 +1654,7 @@
 │   │   │   ├── generator_base_spec.rb
 │   │   │   ├── notify_antenne_managers_spec.rb
 │   │   │   └── notify_cooperation_managers_spec.rb
+│   │   ├── anonymization_spec.rb
 │   │   ├── antenne_hierarchy_spec.rb
 │   │   ├── api
 │   │   │   ├── api_entreprise
@@ -1713,12 +1723,18 @@
 │   │   ├── send_solicitation_generic_email_spec.rb
 │   │   ├── solicitations_relaunch_service_spec.rb
 │   │   ├── stats
+│   │   │   ├── acquisitions
+│   │   │   │   ├── by_new_companies_spec.rb
+│   │   │   │   └── overall_distribution_spec.rb
 │   │   │   └── filters
 │   │   │       ├── companies_spec.rb
 │   │   │       ├── matches_spec.rb
 │   │   │       ├── needs_spec.rb
 │   │   │       └── solicitations_spec.rb
 │   │   └── xlsx_export
+│   │       ├── antenne_stats_worksheet_generator
+│   │       │   ├── by_antenne_spec.rb
+│   │       │   └── by_region_spec.rb
 │   │       └── cooperation_exporter_spec.rb
 │   ├── spec_helper.rb
 │   ├── support
@@ -1729,6 +1745,7 @@
 │   │   ├── controller_macros.rb
 │   │   ├── feature_macros.rb
 │   │   ├── pundit_spec_helper.rb
+│   │   ├── query_counter.rb
 │   │   ├── reminders_spec_helper.rb
 │   │   └── tasks.rb
 │   ├── swagger_helper.rb
@@ -1747,8 +1764,6 @@
 │   │       ├── invitations_controller_spec.rb
 │   │       └── passwords_controller_spec.rb
 │   ├── system_helper.rb
-│   ├── tasks
-│   │   └── anonymize_old_companies_spec.rb
 │   └── views
 │       ├── companies
 │       │   ├── needs.html.haml_spec.rb
@@ -1776,4 +1791,4 @@
 ├── tmp
 │   └── .keep
 └── yarn.lock
-296 directories, 1491 files
+297 directories, 1505 files
