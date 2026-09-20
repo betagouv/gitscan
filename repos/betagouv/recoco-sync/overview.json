@@ -4,8 +4,8 @@
   "description": "Recoco-sync est une application qui permet la synchronisation des portails de Recommandations Collaboratives avec des applications tierces. Elle utilise des webhooks pour notifier les modifications et permet de configurer des connecteurs pour pousser les données vers des applications externes.",
   "language": "Python",
   "features": [
-    "Données & Schémas",
     "API & Intégrations",
+    "Données & Schémas",
     "Administration & Backoffice"
   ],
   "audience": "Agents de l'Administration",
@@ -13,22 +13,24 @@
     "Django",
     "PostgreSQL",
     "Celery",
-    "Redis"
+    "Redis",
+    "Django Ninja",
+    "httpx"
   ],
   "components": [
-    "Django",
+    "API REST & GraphQL",
     "PostgreSQL & SQL",
+    "Python (scripts & backend)",
     "Celery & Queue asynchrone",
-    "API REST & GraphQL"
+    "Docker & Conteneurs",
+    "Django"
   ],
   "auth": {
     "methods": [
       "none"
     ]
   },
-  "tests": [
-    "pytest"
-  ],
+  "tests": "pytest",
   "workflows": [
     "push_main.yml",
     "push_pr.yml",
@@ -36,7 +38,7 @@
     "run_check.yml",
     "run_tests.yml"
   ],
-  "lastActivity": "2026-05-13T10:09:42+00:00",
+  "lastActivity": "2026-09-16T16:51:35+02:00",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -44,14 +46,13 @@
     "stars": 0,
     "forks": 0,
     "contributors": 0,
-    "openIssues": 13
+    "openIssues": 4
   },
   "tags": [
-    "synchronisation",
     "Données & Open Data",
     "Django & FastAPI",
     "Bases de données SQL",
-    "celery",
-    "recommandations collaboratives"
+    "ETL & Pipelines de données",
+    "Git & DevOps"
   ]
 }

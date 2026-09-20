@@ -1,12 +1,14 @@
-## Changelog : recoco-sync (30 derniers jours, au 2026-05-13)
+## Changelog : recoco-sync (30 derniers jours, au 16 septembre 2026)
 
 ### Résumé
-Ce changelog couvre une période de maintenance technique sur recoco-sync. Les modifications apportées concernent principalement la mise à jour des dépendances du projet, notamment pour renforcer la sécurité et bénéficier des dernières corrections. Aucune nouvelle fonctionnalité ou modification impactant directement l'utilisateur n'a été déployée durant cette période.
+Les récentes évolutions se sont concentrées sur le renforcement de la sécurité et de la confidentialité des données, ainsi que sur l'amélioration de la fiabilité du traitement des tâches en arrière-plan.
 
 ### Évolutions techniques
-- Mise à jour des dépendances via Dependabot pour corriger des vulnérabilités de sécurité et bénéficier des dernières améliorations. Ces mises à jour concernent les actions GitHub utilisées dans les workflows CI/CD ([#120](https://github.com/betagouv/recoco-sync/pull/120), [#113](https://github.com/betagouv/recoco-sync/pull/113), [#115](https://github.com/betagouv/recoco-sync/pull/115), [#104](https://github.com/betagouv/recoco-sync/pull/104), [#339e863](https://github.com/betagouv/recoco-sync/commit/339e863)).
-- Mise à jour de la dépendance `astral-sh/setup-uv` ([#104](https://github.com/betagouv/recoco-sync/pull/104)).
-- Mise à jour de l'action `actions/checkout` ([#113](https://github.com/betagouv/recoco-sync/pull/113)).
+- **Gestion des tâches** : Optimisation de la gestion des tâches asynchrones via l'utilisation de Celery.
+- **Sécurité et Authentification** : 
+    - Renforcement de la sécurité de l'authentification en sécurisant les horodatages (timestamps) pour empêcher leur réutilisation.
+    - Amélioration de la configuration de sécurité concernant les hôtes autorisés (`ALLOWED_HOSTS`).
+- **Confidentialité** : Protection des données personnelles en empêchant leur transmission vers l'outil de suivi d'erreurs Sentry.
 
 ### Autres changements
-Aucun autre changement significatif n'a été apporté durant cette période.
+- **Base de données** : Amélioration de la clarté des migrations en ajoutant des descriptions manquantes.
