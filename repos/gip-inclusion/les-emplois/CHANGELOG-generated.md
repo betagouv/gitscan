@@ -1,34 +1,37 @@
-## Changelog : les-emplois (30 derniers jours, au 15 septembre 2026)
+## Changelog : les-emplois (30 derniers jours, au 18 septembre 2026)
 
 ### Résumé
-Ce mois a été marqué par un changement d'identité majeur avec le passage du nom du service à "La plateforme de l'inclusion". Les évolutions se sont concentrées sur l'amélioration de la gestion des accompagnements (création, modification et archivage des affectations), le renforcement de la sécurité et de la traçabilité des données, ainsi que l'ajout d'outils de pilotage pour les employeurs afin d'anticiper les fins de contrat.
+Ce mois a été marqué par une refonte de l'identité visuelle de la plateforme (rebranding) et une amélioration significative de l'expérience utilisateur. Les bénéficiaires disposent désormais d'un nouvel onglet "Aperçu" pour centraliser leurs informations clés, et les professionnels bénéficient d'outils de suivi plus précis, notamment via des alertes de fin de contrat et une gestion simplifiée des accompagnements.
 
 ### Évolutions fonctionnelles
-- **Identité visuelle et terminologie** : Changement de nom pour "La plateforme de l'inclusion", mise à jour des logos, des images de partage et de la terminologie (notamment autour des PASS IAE).
-- **Gestion des accompagnements** : 
-    - Nouvelles capacités pour créer, modifier et archiver les affectations des demandeurs d'emploi.
-    - Amélioration de l'interface des conseillers avec de nouveaux filtres et une meilleure organisation des vues.
-    - Possibilité pour les prescripteurs de demander un bilan d'accompagnement à une structure (SIAE).
-- **Pilotage employeur et structures** :
-    - Ajout de compteurs et de bannières pour identifier les salariés en fin de contrat et suggérer des parcours de suite.
-    - Possibilité pour les employeurs de clôturer un PASS IAE directement via un formulaire interne.
-    - Réorganisation des menus de navigation pour les prescripteurs, les employeurs et les structures.
-- **Recherche et navigation** :
-    - Amélioration des moteurs de recherche et ajout de nouveaux filtres (notamment sur le handicap et les acteurs IAE).
-    - Optimisation de l'expérience utilisateur (UX) : utilisation de notifications temporaires (toasts) au lieu de pages de confirmation, et meilleur tri des candidatures.
+- **Identité et interface** :
+    - Refonte de l'identité visuelle (rebranding) incluant le changement de nom, la mise à jour des logos et l'actualisation des pages légales et d'accessibilité.
+    - Refonte de la page d'accueil (landing page).
+    - Réorganisation des menus pour les employeurs et les prescripteurs afin de faciliter la navigation.
+- **Suivi des bénéficiaires (Job Seekers)** :
+    - Création d'un nouvel onglet "Aperçu" centralisant les informations sur les conseillers, les contrats et la dernière candidature.
+    - Mise en place de bannières et de compteurs d'alerte pour signaler les fins de contrat imminentes aux employeurs et prescripteurs.
+    - Amélioration de la gestion des accompagnements : possibilité de créer, modifier ou archiver des affectations directement depuis l'interface.
+- **Gestion des PASS IAE** :
+    - Internalisation du processus de clôture des PASS IAE via un formulaire interne (remplaçant l'outil Tally) et ajout de notifications automatiques pour les bénéficiaires.
+- **Recherche et Administration** :
+    - Amélioration des filtres de recherche pour les villes et les structures.
+    - Ajout de fonctionnalités de gestion des liens magiques d'orientation pour l'administration.
 
 ### Évolutions techniques
-- **Sécurité et confidentialité** : 
-    - Mise en place d'une piste d'audit (audit trail) pour tracer les actions.
-    - Renforcement de la protection de la vie privée en s'assurant que l'identité des demandeurs d'emploi n'est pas transmise aux outils de suivi d'erreurs (Sentry).
-- **Authentification** : Généralisation de l'utilisation de ProConnect pour l'ensemble des profils professionnels (institutionnels, prescripteurs, employeurs).
-- **Données et Analytics** : 
-    - Enrichissement des tableaux de bord Metabase (données GEIQ, analyse des délais de transition par état).
-    - Amélioration du suivi statistique via Matomo.
-- **Optimisation et maintenance** : 
-    - Optimisation des performances des tâches automatisées (cron jobs).
-    - Refactorisation de plusieurs composants pour supprimer des requêtes redondantes et améliorer la rapidité de l'application.
+- **Traçabilité et Audit** :
+    - Implémentation d'une piste d'audit (audit trail) de base et ajout d'un identifiant de navigateur pour améliorer la précision des logs.
+- **Reporting et Données (Metabase)** :
+    - Optimisation des tableaux de bord Metabase, incluant la création de nouvelles tables pour le suivi GEIQ et l'amélioration des requêtes de transition.
+    - Organisation du schéma de données pour le reporting.
+- **API et Sécurité** :
+    - Affinement des périmètres de sécurité (scopes) des API.
+    - Renforcement de la protection des données personnelles en filtrant les identités des bénéficiaires dans les logs Sentry.
+- **Automatisation et Maintenance** :
+    - Ajout de commandes de gestion (management commands) pour la détection de fichiers manquants et la récupération de pièces jointes.
+    - Optimisation de certaines tâches planifiées (cron jobs) pour améliorer les performances de traitement.
 
 ### Autres changements
-- **Documentation** : Amélioration des guides d'installation locale et ajout de documentation sur le fonctionnement du SSO.
-- **Nettoyage** : Suppression de modules obsolètes (GPS, recommandations) et corrections massives de formatage (espacements, typographie) pour harmoniser le code et l'interface.
+- **Documentation** : Mise à jour de la documentation technique, notamment sur le SSO et la configuration de l'environnement local.
+- **Qualité et UI** : Nettoyage important de la typographie, des espaces et de la formulation des messages d'erreur et d'aide sur l'ensemble de la plateforme.
+- **Accessibilité** : Ajout d'une déclaration d'accessibilité détaillant les non-conformités et exemptions.

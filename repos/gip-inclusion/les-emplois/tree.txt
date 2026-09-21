@@ -139,6 +139,9 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── serializers.py
 │   │   │   └── views.py
+│   │   ├── insertion
+│   │   │   ├── serializers.py
+│   │   │   └── views.py
 │   │   ├── job_application_api
 │   │   │   ├── __init__.py
 │   │   │   ├── perms.py
@@ -294,6 +297,8 @@
 │   ├── cities
 │   │   ├── __init__.py
 │   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── cache.py
 │   │   ├── management
 │   │   │   ├── __init__.py
 │   │   │   └── commands
@@ -304,6 +309,7 @@
 │   │   │   ├── 0001_initial.py
 │   │   │   ├── 0002_city_last_synced_at.py
 │   │   │   ├── 0003_city_siren_epci.py
+│   │   │   ├── 0004_directoryactivecity.py
 │   │   │   └── __init__.py
 │   │   └── models.py
 │   ├── common_apps
@@ -484,8 +490,7 @@
 │   │   │   └── commands
 │   │   │       ├── __init__.py
 │   │   │       ├── configure_buckets.py
-│   │   │       ├── delete_unused_files.py
-│   │   │       └── migrate_resume_to_private.py
+│   │   │       └── delete_unused_files.py
 │   │   ├── migrations
 │   │   │   ├── 0001_initial.py
 │   │   │   └── __init__.py
@@ -692,6 +697,7 @@
 │   │   │   ├── institutions.py
 │   │   │   ├── job_applications.py
 │   │   │   ├── job_descriptions.py
+│   │   │   ├── job_seeker_assignments.py
 │   │   │   ├── job_seekers.py
 │   │   │   ├── memberships.py
 │   │   │   ├── mobilization_events.py
@@ -960,6 +966,9 @@
 │   │   │   ├── modal_control.js
 │   │   │   ├── notifications_center.js
 │   │   │   ├── nps_popup.js
+│   │   │   ├── overview_survey_control_popup.js
+│   │   │   ├── overview_survey_test_popup.js
+│   │   │   ├── plateforme_accueil_embed.js
 │   │   │   ├── siae_evaluations_sample_selection.js
 │   │   │   ├── sliding_search.js
 │   │   │   ├── sliding_tabs.js
@@ -1433,6 +1442,7 @@
 │   │   │   ├── disable.html
 │   │   │   ├── includes
 │   │   │   │   ├── _regularize_nir_button.html
+│   │   │   │   ├── _siret_changed_alert.html
 │   │   │   │   ├── _status.html
 │   │   │   │   ├── create_step_1.html
 │   │   │   │   ├── create_step_2.html
@@ -1642,11 +1652,16 @@
 │   │   │   │   ├── list_job_applications.html
 │   │   │   │   ├── list_reset_filters.html
 │   │   │   │   ├── list_results.html
-│   │   │   │   └── nav_tabs.html
+│   │   │   │   ├── nav_tabs.html
+│   │   │   │   ├── overview_approval.html
+│   │   │   │   ├── overview_assignment.html
+│   │   │   │   ├── overview_contract.html
+│   │   │   │   └── overview_jobapp.html
 │   │   │   ├── job_applications.html
 │   │   │   ├── list.html
 │   │   │   ├── nir_modification_request.html
 │   │   │   ├── nir_modification_success.html
+│   │   │   ├── overview.html
 │   │   │   ├── step_check_job_seeker_nir.html
 │   │   │   ├── step_search_job_seeker_by_email.html
 │   │   │   └── submit_base_two_columns.html
@@ -1731,7 +1746,6 @@
 │   │   │   │   │   ├── offcanvas_body.html
 │   │   │   │   │   ├── offcanvas_footer.html
 │   │   │   │   │   └── structure_kind.html
-│   │   │   │   ├── generic_search_home.html
 │   │   │   │   ├── new_saved_search_modal_content.html
 │   │   │   │   ├── prescribers_search_form.html
 │   │   │   │   ├── prescribers_search_results.html
@@ -1748,16 +1762,14 @@
 │   │   │   │   ├── siaes_search_tabs.html
 │   │   │   │   ├── siaes_search_title.html
 │   │   │   │   └── siaes_search_top.html
-│   │   │   ├── prescribers_search_home.html
 │   │   │   ├── prescribers_search_results.html
+│   │   │   ├── search_home.html
 │   │   │   ├── services
-│   │   │   │   ├── home.html
 │   │   │   │   ├── includes
 │   │   │   │   │   ├── form.html
 │   │   │   │   │   ├── results.html
 │   │   │   │   │   └── summary.html
 │   │   │   │   └── results.html
-│   │   │   ├── siaes_search_home.html
 │   │   │   └── siaes_search_results.html
 │   │   ├── siae_evaluations
 │   │   │   ├── campaign_calendar.html
@@ -1884,8 +1896,7 @@
 │   │   │   ├── templatetags
 │   │   │   │   ├── approval_box.html
 │   │   │   │   ├── buttons_form.html
-│   │   │   │   ├── nav.html
-│   │   │   │   └── nav_anonymous.html
+│   │   │   │   └── nav.html
 │   │   │   ├── toasts.html
 │   │   │   └── widgets
 │   │   │       ├── duet_date_picker_widget.html
@@ -2317,6 +2328,7 @@
     │   ├── __init__.py
     │   ├── __snapshots__
     │   │   ├── test_geiq.ambr
+    │   │   ├── test_insertion.ambr
     │   │   └── test_marche_api.ambr
     │   ├── applicants_api
     │   │   ├── __init__.py
@@ -2348,6 +2360,7 @@
     │   │   └── tests.py
     │   ├── test_error.py
     │   ├── test_geiq.py
+    │   ├── test_insertion.py
     │   ├── test_marche_api.py
     │   ├── test_nexus.py
     │   ├── test_spectacular.py
@@ -2486,7 +2499,6 @@
     │   ├── __init__.py
     │   ├── factories.py
     │   ├── test_forms.py
-    │   ├── test_migrate_resume.py
     │   └── tests.py
     ├── geiq
     │   ├── __init__.py
@@ -3022,4 +3034,4 @@
         └── welcoming_tour
             ├── __init__.py
             └── tests.py
-502 directories, 2522 files
+503 directories, 2533 files
