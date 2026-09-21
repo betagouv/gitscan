@@ -3,6 +3,191 @@
 Generated from Conventional Commits at each release. Older majors are archived
 under [docs/changelog/](https://github.com/SocialGouv/iterion/tree/main/docs/changelog).
 
+## [3.175.2](https://github.com/SocialGouv/iterion/compare/v3.175.1...v3.175.2) (2026-09-20)
+
+### Bug Fixes
+
+* **resume:** the launch's decisions travel with the run — sandbox mode, merge target and branch name survive a resume, and answers survive a failed one ([#1490](https://github.com/SocialGouv/iterion/issues/1490)) ([f3223b8](https://github.com/SocialGouv/iterion/commit/f3223b85a00fc210aeafb5fa8a7967881bb05db9)), references [#1435](https://github.com/SocialGouv/iterion/issues/1435) [#1366](https://github.com/SocialGouv/iterion/issues/1366) [#1435](https://github.com/SocialGouv/iterion/issues/1435) [#1366](https://github.com/SocialGouv/iterion/issues/1366) [#1366](https://github.com/SocialGouv/iterion/issues/1366) [#3](https://github.com/SocialGouv/iterion/issues/3) [#1366](https://github.com/SocialGouv/iterion/issues/1366) [#1366](https://github.com/SocialGouv/iterion/issues/1366) [#1366](https://github.com/SocialGouv/iterion/issues/1366)
+
+    <details><summary>why</summary>
+
+    The class: every launch-time override iterion run accepts must either be persisted on the run and replayed on resume, or recomputed on purpose (documented). Two facets of one class were paying the ticket tax: --sandbox at launch was silently ignored by resume (docker on a host that saw one), and --merge-into / --branch-name / auto-merge choices were dropped between the CLI launch and the studio's resume. A third, smaller one on the way: answers of a resume that failed AFTER recording them (a…
+
+    </details>
+
+## [3.175.1](https://github.com/SocialGouv/iterion/compare/v3.175.0...v3.175.1) (2026-09-19)
+
+### Bug Fixes
+
+* **dsl:** a with: mapping refuses what the runtime cannot resolve — {{input.*}} on a subbot or emit, secrets and attachments, and a literal that cannot be its target's type ([#1497](https://github.com/SocialGouv/iterion/issues/1497)) ([543f876](https://github.com/SocialGouv/iterion/commit/543f876d9abf2de85e882ac89479e79a6e68499d)), references [#1308](https://github.com/SocialGouv/iterion/issues/1308) [#1310](https://github.com/SocialGouv/iterion/issues/1310) [#1420](https://github.com/SocialGouv/iterion/issues/1420) [#1505](https://github.com/SocialGouv/iterion/issues/1505)
+
+    <details><summary>why</summary>
+
+    A data mapping — an edge `-> dst with { ... }`, a subbot / emit node's own `with:`, or a `fail message:` — is resolved through `pkg/runtime.engine.resolveMapping`, whose `resolveRef` has no arm for the `secrets` / `attachments` namespaces and reads `input.*` against the parent's run inputs for subbot / emit where the kind has no `input:` surface. A compute node's `expr:` runs through `pkg/dsl/expr`, whose `evalNamespaces` (snapshot.go) excludes `secrets` and `attachments` deliberately — so a…
+
+    </details>
+
+## [3.175.0](https://github.com/SocialGouv/iterion/compare/v3.174.1...v3.175.0) (2026-09-19)
+
+### Features
+
+* **server:** /api/v1/runs/stats honours team_id with authorisation, and a schedule record carries the outcome of its last run ([#1510](https://github.com/SocialGouv/iterion/issues/1510)) ([e00bd4d](https://github.com/SocialGouv/iterion/commit/e00bd4d304625c4f98fc3ca3d0f3e669f2b1c406)), references [#1419](https://github.com/SocialGouv/iterion/issues/1419) [pre-#1419](https://github.com/pre-/issues/1419) [#1419](https://github.com/SocialGouv/iterion/issues/1419) [#1426](https://github.com/SocialGouv/iterion/issues/1426) [#1425](https://github.com/SocialGouv/iterion/issues/1425) [#1426](https://github.com/SocialGouv/iterion/issues/1426) [#1477](https://github.com/SocialGouv/iterion/issues/1477) [#1477](https://github.com/SocialGouv/iterion/issues/1477) [#1345](https://github.com/SocialGouv/iterion/issues/1345) [#1477](https://github.com/SocialGouv/iterion/issues/1477) [#1419](https://github.com/SocialGouv/iterion/issues/1419) [#1419](https://github.com/SocialGouv/iterion/issues/1419) [#1425](https://github.com/SocialGouv/iterion/issues/1425) [#1425](https://github.com/SocialGouv/iterion/issues/1425) [#1425](https://github.com/SocialGouv/iterion/issues/1425) [#1477](https://github.com/SocialGouv/iterion/issues/1477)
+
+    <details><summary>why</summary>
+
+    The ticket measured `GET /api/v1/runs/stats?team_id=<id>` as "accept-and-drop": called with three different tenant ids, the endpoint returned byte-identical numbers for the caller's active team. The adversarial round on the framing found something stricter: net/http.ServeMux silently discards every unknown query parameter, so `team_id` was never "accepted" and dropped — it was never SEEN. The user-facing result is the same (an operator comparing tenants sees the wrong answer with no error), so…
+
+    </details>
+
+## [3.174.1](https://github.com/SocialGouv/iterion/compare/v3.174.0...v3.174.1) (2026-09-19)
+
+### Bug Fixes
+
+* four one-site defects — the zai hint suppresses every ambient Anthropic channel, the operator MCP refuses unknown arguments, a bot's shell finds the engine's own binary, and the dry-run report is ordered ([#1487](https://github.com/SocialGouv/iterion/issues/1487)) ([ee80560](https://github.com/SocialGouv/iterion/commit/ee805603d310e17c9ce3aed7d0c93ede0e9be41f)), references [#1390](https://github.com/SocialGouv/iterion/issues/1390) [#1505](https://github.com/SocialGouv/iterion/issues/1505) [#1335](https://github.com/SocialGouv/iterion/issues/1335) [#1384](https://github.com/SocialGouv/iterion/issues/1384) [#1434](https://github.com/SocialGouv/iterion/issues/1434) [#1505](https://github.com/SocialGouv/iterion/issues/1505)
+
+    <details><summary>why</summary>
+
+    anthropicCredEnvForCLI's providerHint=="zai" no-key branch used to clear ANTHROPIC_BASE_URL and ANTHROPIC_AUTH_TOKEN only, so on a host carrying an ambient ANTHROPIC_API_KEY the CLI silently routed the node to api.anthropic.com and 404'd on the GLM id, exactly the "silently falling back to a different provider" the code's own comment promised to prevent.
+
+    </details>
+
+## [3.174.0](https://github.com/SocialGouv/iterion/compare/v3.173.0...v3.174.0) (2026-09-19)
+
+### Features
+
+* **map:** a repository map, a deterministic graph, and what discovery costs ([#1505](https://github.com/SocialGouv/iterion/issues/1505)) ([09bd1d0](https://github.com/SocialGouv/iterion/commit/09bd1d0b1460404981b7650f8f41a9d3e2af3241)), references [#1482](https://github.com/SocialGouv/iterion/issues/1482) [#1480](https://github.com/SocialGouv/iterion/issues/1480) [#1482](https://github.com/SocialGouv/iterion/issues/1482) [#1483](https://github.com/SocialGouv/iterion/issues/1483) [#1484](https://github.com/SocialGouv/iterion/issues/1484) [#1485](https://github.com/SocialGouv/iterion/issues/1485) [#1335](https://github.com/SocialGouv/iterion/issues/1335) [#1482](https://github.com/SocialGouv/iterion/issues/1482) [#1486](https://github.com/SocialGouv/iterion/issues/1486) [#1488](https://github.com/SocialGouv/iterion/issues/1488) [#1481](https://github.com/SocialGouv/iterion/issues/1481)
+
+    <details><summary>why</summary>
+
+    `iterion bench discovery` classifies a run's tool calls into orientation (read, search, list), change (write, commit) and neither, and reports the token spend of the nodes that never wrote a byte — the only split the event stream supports without imputing one.
+
+    </details>
+
+## [3.173.0](https://github.com/SocialGouv/iterion/compare/v3.172.3...v3.173.0) (2026-09-19)
+
+### Features
+
+* **webhooks:** l'App retire la demande de review après publication, pour rendre le geste répétable ([#1382](https://github.com/SocialGouv/iterion/issues/1382)) ([ed8cbbe](https://github.com/SocialGouv/iterion/commit/ed8cbbec4c7d7fef61dba1b8cff6e82cbd55a332))
+
+    <details><summary>why</summary>
+
+    GitHub lifts a review request only when the REQUESTED account submits the review. On a github_app connection the review is posted by <app_slug>[bot], and an App cannot be a reviewer at all — so the request armed through webhooks.Config.ReviewRequestLogins survives the review answering it: the "review requested" pastille stays pending forever and re-adding the reviewer is not a repeatable gesture.
+
+    </details>
+
+## [3.172.3](https://github.com/SocialGouv/iterion/compare/v3.172.2...v3.172.3) (2026-09-19)
+
+### Bug Fixes
+
+* **runtime:** the repo devbox install at run start leaves the tracked devbox.lock what the run found it ([#1459](https://github.com/SocialGouv/iterion/issues/1459)) ([#1465](https://github.com/SocialGouv/iterion/issues/1465)) ([ce459ec](https://github.com/SocialGouv/iterion/commit/ce459ec2c5008c66f3953e9b16c9a4f079ef812e)), references [#1344](https://github.com/SocialGouv/iterion/issues/1344) [#1364](https://github.com/SocialGouv/iterion/issues/1364) [#1464](https://github.com/SocialGouv/iterion/issues/1464) [#1451](https://github.com/SocialGouv/iterion/issues/1451) [#1450](https://github.com/SocialGouv/iterion/issues/1450) [#1344](https://github.com/SocialGouv/iterion/issues/1344) [#828](https://github.com/SocialGouv/iterion/issues/828)
+
+    <details><summary>why</summary>
+
+    `provisionHostDevbox` installs the TARGET REPO's devbox project in place, in the run's worktree. On a host whose devbox plugin registry is newer than the repository's pin, `devbox install` rewrites the tracked lock — one line, `nodejs_24@latest` `plugin_version` 0.0.4 → 0.0.5 on this machine — so the worktree differs on a tracked file before the first node runs, and every gate that reads the tree as the pass's own work (a campaign's scope gate, a clean-tree precheck, a whole-tree commit)…
+
+    </details>
+
+## [3.172.2](https://github.com/SocialGouv/iterion/compare/v3.172.1...v3.172.2) (2026-09-19)
+
+### Bug Fixes
+
+* **eventbus,server:** a bus cancel waits for its in-flight callback, and the forge-board projection is joined at the same budget ([#1477](https://github.com/SocialGouv/iterion/issues/1477)) ([14b573a](https://github.com/SocialGouv/iterion/commit/14b573ac8908bddb9c6ea18b40560c7e3c03016c)), references [#1343](https://github.com/SocialGouv/iterion/issues/1343) [#1257](https://github.com/SocialGouv/iterion/issues/1257) [#1345](https://github.com/SocialGouv/iterion/issues/1345) [post-#1257](https://github.com/post-/issues/1257) [#1474](https://github.com/SocialGouv/iterion/issues/1474) [#1343](https://github.com/SocialGouv/iterion/issues/1343) [#1345](https://github.com/SocialGouv/iterion/issues/1345) [#1257](https://github.com/SocialGouv/iterion/issues/1257)
+
+    <details><summary>why</summary>
+
+    #1343 — the two eventbus.Bus implementations disagreed on what the unsubscribe returned by Subscribe guarantees. InProcBus cancelled the handler's context and waited unbounded; NATSBus neither cancelled nor waited (sub.Unsubscribe() alone, callback on context.Background()). Under SIGTERM in a pod, five server subscribers — userNotifyCancel, opsAlertsCancel, gateReconcileCancel, forgePublishExpiryCancel, gateAutofixCancel — could be cut mid-store-write, and pkg/server/assistant_run_watch.go:289…
+
+    </details>
+
+## [3.172.1](https://github.com/SocialGouv/iterion/compare/v3.172.0...v3.172.1) (2026-09-19)
+
+### Bug Fixes
+
+* **runtime:** plugin skills land in both discovery shapes, and a same-name plugin collision is loud on the cloud mirror too ([#1479](https://github.com/SocialGouv/iterion/issues/1479)) ([407b719](https://github.com/SocialGouv/iterion/commit/407b719da091ebd45a7027668275335bc35dc4dd)), closes [#1372](https://github.com/SocialGouv/iterion/issues/1372), references [#1373](https://github.com/SocialGouv/iterion/issues/1373) [#1374](https://github.com/SocialGouv/iterion/issues/1374) [#1373](https://github.com/SocialGouv/iterion/issues/1373) [#1374](https://github.com/SocialGouv/iterion/issues/1374)
+
+    <details><summary>why</summary>
+
+    ## #1373 — plugin skills were reachable only by claw
+
+    </details>
+
+## [3.172.0](https://github.com/SocialGouv/iterion/compare/v3.171.0...v3.172.0) (2026-09-19)
+
+### Features
+
+* **studio:** credential spend admin screen ([#1444](https://github.com/SocialGouv/iterion/issues/1444)) ([#1463](https://github.com/SocialGouv/iterion/issues/1463)) ([5905af0](https://github.com/SocialGouv/iterion/commit/5905af01e71437a60376ef28f9c352be7b227583)), references [#1441](https://github.com/SocialGouv/iterion/issues/1441) [#641](https://github.com/SocialGouv/iterion/issues/641) [#1441](https://github.com/SocialGouv/iterion/issues/1441) [#1087](https://github.com/SocialGouv/iterion/issues/1087) [#1441](https://github.com/SocialGouv/iterion/issues/1441)
+
+    <details><summary>why</summary>
+
+    The cloud super-admin console exposes six pages, but several requireSuperAdmin endpoints exist and are tested with no client to reach them. This adds the API/client layer the remaining admin screens (T2–T5) depend on, schema-first so the wrappers carry the generated OpenAPI types rather than hand-rolled shapes.
+
+    </details>
+
+## [3.171.0](https://github.com/SocialGouv/iterion/compare/v3.170.0...v3.171.0) (2026-09-19)
+
+### Features
+
+* **studio:** org → teams drill-down in the admin org drawer ([#1446](https://github.com/SocialGouv/iterion/issues/1446)) ([#1468](https://github.com/SocialGouv/iterion/issues/1468)) ([e690be8](https://github.com/SocialGouv/iterion/commit/e690be89fc666a003a1345d6360ffcf468a74976)), references [#1441](https://github.com/SocialGouv/iterion/issues/1441) [#1441](https://github.com/SocialGouv/iterion/issues/1441)
+
+    <details><summary>why</summary>
+
+    The cloud super-admin console exposes six pages, but several requireSuperAdmin endpoints exist and are tested with no client to reach them. This adds the API/client layer the remaining admin screens (T2–T5) depend on, schema-first so the wrappers carry the generated OpenAPI types rather than hand-rolled shapes.
+
+    </details>
+* **studio:** platform usage-caps admin screen ([#1442](https://github.com/SocialGouv/iterion/issues/1442)) ([#1460](https://github.com/SocialGouv/iterion/issues/1460)) ([4f591d1](https://github.com/SocialGouv/iterion/commit/4f591d1a409995fda216ead7ff018cdd1bf12263)), references [#1441](https://github.com/SocialGouv/iterion/issues/1441) [#1441](https://github.com/SocialGouv/iterion/issues/1441) [#1441](https://github.com/SocialGouv/iterion/issues/1441)
+
+    <details><summary>why</summary>
+
+    The cloud super-admin console exposes six pages, but several requireSuperAdmin endpoints exist and are tested with no client to reach them. This adds the API/client layer the remaining admin screens (T2–T5) depend on, schema-first so the wrappers carry the generated OpenAPI types rather than hand-rolled shapes.
+
+    </details>
+
+## [3.170.0](https://github.com/SocialGouv/iterion/compare/v3.169.0...v3.170.0) (2026-09-19)
+
+### Features
+
+* **bots:** docs-refresh and adr-cartograph read as dsl profile 2, and the ADR survey gets the inventory its prompt reads ([#1344](https://github.com/SocialGouv/iterion/issues/1344) wave 6) ([#1462](https://github.com/SocialGouv/iterion/issues/1462)) ([34bb532](https://github.com/SocialGouv/iterion/commit/34bb53299ce383be357a7840b56a89d551d828f3)), references [#1349](https://github.com/SocialGouv/iterion/issues/1349) [#1455](https://github.com/SocialGouv/iterion/issues/1455) [#1456](https://github.com/SocialGouv/iterion/issues/1456) [#1457](https://github.com/SocialGouv/iterion/issues/1457) [#1459](https://github.com/SocialGouv/iterion/issues/1459)
+
+    <details><summary>why</summary>
+
+    The last two catalogue bundles on profile 1. `iterion dsl migrate --to 2 --floor 3.141.0` wrote the `dsl: 2` header and nothing else (no quoted literal holds a backslash in either file); the paragraph breaks the authors wrote inside 10 prompts — 72 in all: docs-refresh 33 across 4 prompts, adr-cartograph 39 across 6 — now reach the models as blank lines instead of being folded away by the profile-1 lexer. Both manifests carry the `requires: iterion: ">= 3.141.0"` floor and a changelog line…
+
+    </details>
+
+## [3.169.0](https://github.com/SocialGouv/iterion/compare/v3.168.0...v3.169.0) (2026-09-19)
+
+### Features
+
+* **studio:** admin API client layer for platform settings, credential spend & usage-readings ([#1441](https://github.com/SocialGouv/iterion/issues/1441)) ([#1454](https://github.com/SocialGouv/iterion/issues/1454)) ([fc80e91](https://github.com/SocialGouv/iterion/commit/fc80e91b951aec85f134d5956f3f2fb4233faa47))
+
+    <details><summary>why</summary>
+
+    The cloud super-admin console exposes six pages, but several requireSuperAdmin endpoints exist and are tested with no client to reach them. This adds the API/client layer the remaining admin screens (T2–T5) depend on, schema-first so the wrappers carry the generated OpenAPI types rather than hand-rolled shapes.
+
+    </details>
+
+## [3.168.0](https://github.com/SocialGouv/iterion/compare/v3.167.0...v3.168.0) (2026-09-19)
+
+### Features
+
+* **dsl:** the last loose workflows read as profile 2, and the routing fields resolve {{vars.…}} ([#1344](https://github.com/SocialGouv/iterion/issues/1344) tail) ([#1451](https://github.com/SocialGouv/iterion/issues/1451)) ([07d7837](https://github.com/SocialGouv/iterion/commit/07d7837ebd0fb1b2d85931b9741b03ae0ab969b3)), references [#1206](https://github.com/SocialGouv/iterion/issues/1206) [#1367](https://github.com/SocialGouv/iterion/issues/1367) [#1450](https://github.com/SocialGouv/iterion/issues/1450) [#1450](https://github.com/SocialGouv/iterion/issues/1450)
+
+    <details><summary>why</summary>
+
+    A census of every tracked .bot after wave 5 found two shipped workflows the waves never listed: pkg/cli/templates/dispatch_bots_default.bot, the `default` assignee `iterion dispatch` embeds in the binary (copied into templates/dispatch_bots/default/main.bot at build), and bots/smoke/board_smoke.bot, the hand-run board smoke; the local round then named the two runnable scripts under scripts/adhoc/. `iterion dsl migrate --to 2` on all four: the header and nothing else. Seven prompts keep the…
+
+    </details>
+
+### Bug Fixes
+
+* **runtime:** the simulation sweep reads the repo's source, not the operator's run store ([4e8d925](https://github.com/SocialGouv/iterion/commit/4e8d925ed66c47f135ddb44026f4980387b4668e))
+
+    <details><summary>why</summary>
+
+    TestNoProductionPackagePassesWithSimulation walked the tree skipping four dot-directories by name. `.iterion/` was not among them — and `.iterion/worktrees/<run-id>/` holds whole COPIES of the source tree, so the sweep found pkg/dryrun/run.go and pkg/runtime/simulation.go once per kept run and reported them as production launchers. Measured on a working checkout: 12 offences, every one of them a copy of a file the sweep deliberately excludes at its real path.
+
+    </details>
+
 ## [3.167.0](https://github.com/SocialGouv/iterion/compare/v3.166.0...v3.167.0) (2026-09-18)
 
 ### Features

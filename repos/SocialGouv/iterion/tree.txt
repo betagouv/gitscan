@@ -130,6 +130,7 @@
 │   ├── catalog_command_refs_test.go
 │   ├── catalog_expr_concat_test.go
 │   ├── catalog_freshness_test.go
+│   ├── catalog_input_mapping_test.go
 │   ├── catalog_model_specs_test.go
 │   ├── catalog_parse_compile_test.go
 │   ├── catalog_raw_refs_test.go
@@ -516,6 +517,18 @@
 │   │       ├── test-types.md
 │   │       ├── verify-build.md
 │   │       └── verify-tests.md
+│   ├── testdata
+│   │   └── input_mapping
+│   │       ├── action_params.bot
+│   │       ├── agent_prompt.bot
+│   │       ├── compute_expr.bot
+│   │       ├── human_prompt.bot
+│   │       ├── judge_prompt.bot
+│   │       ├── llm_router.bot
+│   │       ├── mapped.bot
+│   │       ├── review_url.bot
+│   │       ├── tool_command.bot
+│   │       └── tool_script.bot
 │   ├── testmain_test.go
 │   ├── typed_fail_test.go
 │   ├── ultra11y
@@ -668,6 +681,7 @@
 │   │   ├── inspect.go
 │   │   ├── issue.go
 │   │   ├── main.go
+│   │   ├── map.go
 │   │   ├── marketplace.go
 │   │   ├── mcp.go
 │   │   ├── mcp_*.go  (7 files)
@@ -924,6 +938,7 @@
 │   │   ├── 098-dsl-versioning-and-authoring-surface.md
 │   │   ├── 099-public-contracts.md
 │   │   ├── 100-dry-run-at-the-executor-seam.md
+│   │   ├── 101-review-request-withdrawal-after-publish.md
 │   │   └── README.md
 │   ├── agents
 │   │   ├── README.md
@@ -1153,15 +1168,20 @@
 │   ├── quotas-and-limits.md
 │   ├── recipes.md
 │   ├── references
+│   │   ├── context-retrieval-state-of-the-art.md
 │   │   ├── diagnostics.md
 │   │   ├── dsl-authoring-probe.md
 │   │   ├── dsl-grammar.md
 │   │   ├── dsl-properties.md
 │   │   ├── external-methodologies.md
+│   │   ├── map-bots.md
+│   │   ├── map-docs.md
+│   │   ├── map-packages.md
 │   │   ├── patterns.md
 │   │   ├── productive-session-patterns.md
 │   │   └── workspace-service.md
 │   ├── references-bootstrap.md
+│   ├── repo-map-and-graph.md
 │   ├── repo-scope.md
 │   ├── resume.md
 │   ├── revi-billy-loop.md
@@ -1882,6 +1902,7 @@
 │   │   │   ├── retry_resumes_session_test.go
 │   │   │   ├── review_companion.go
 │   │   │   ├── review_companion_test.go
+│   │   │   ├── routing_template_test.go
 │   │   │   ├── run_namespace_template_test.go
 │   │   │   ├── sandbox_relay.go
 │   │   │   ├── sandbox_relay_test.go
@@ -2014,6 +2035,12 @@
 │   │   │   ├── report.go
 │   │   │   └── types.go
 │   │   ├── benchmark_test.go
+│   │   ├── discovery
+│   │   │   ├── classify.go
+│   │   │   ├── classify_test.go
+│   │   │   ├── profile.go
+│   │   │   ├── profile_test.go
+│   │   │   └── report.go
 │   │   ├── metrics.go
 │   │   ├── otlp.go
 │   │   ├── otlp_test.go
@@ -2308,10 +2335,7 @@
 │   │   ├── report.go
 │   │   ├── report_test.go
 │   │   ├── resume.go
-│   │   ├── resume_file_answers.go
-│   │   ├── resume_file_answers_test.go
-│   │   ├── resume_helpers.go
-│   │   ├── resume_subbot_test.go
+│   │   ├── resume_*.go  (5 files)
 │   │   ├── run.go
 │   │   ├── run_*.go  (8 files)
 │   │   ├── runs_prune.go
@@ -2782,7 +2806,7 @@
 │   │   │   ├── uses_llm.go
 │   │   │   ├── uses_llm_test.go
 │   │   │   ├── validate.go
-│   │   │   ├── validate_*.go  (32 files)
+│   │   │   ├── validate_*.go  (37 files)
 │   │   │   ├── value_diag_positions_test.go
 │   │   │   ├── var_value.go
 │   │   │   ├── verified_action_test.go
@@ -2929,6 +2953,7 @@
 │   │   └── tracing_test.go
 │   ├── eventbus
 │   │   ├── bus.go
+│   │   ├── bus_conformance_test.go
 │   │   ├── inproc.go
 │   │   ├── inproc_test.go
 │   │   ├── nats.go
@@ -3005,6 +3030,7 @@
 │   │   │   ├── reviews.go
 │   │   │   ├── reviews_app_test.go
 │   │   │   ├── reviews_test.go
+│   │   │   ├── reviews_withdraw_test.go
 │   │   │   ├── status.go
 │   │   │   ├── status_assert_test.go
 │   │   │   └── token_permissions_test.go
@@ -3123,6 +3149,7 @@
 │   │   │   └── mongoutil_test.go
 │   │   ├── proc
 │   │   │   ├── iterion_binary.go
+│   │   │   ├── iterion_binary_test.go
 │   │   │   ├── proc.go
 │   │   │   ├── proc_unix.go
 │   │   │   ├── proc_unix_test.go
@@ -3213,6 +3240,8 @@
 │   │   ├── spawn_windows.go
 │   │   ├── tools_local.go
 │   │   ├── tools_local_board.go
+│   │   ├── tools_local_map.go
+│   │   ├── tools_local_map_test.go
 │   │   ├── tools_local_test.go
 │   │   ├── tools_remote.go
 │   │   └── tools_remote_test.go
@@ -3306,6 +3335,18 @@
 │   ├── reliability
 │   │   ├── rollout.go
 │   │   └── rollout_test.go
+│   ├── repograph
+│   │   ├── build.go
+│   │   ├── cache.go
+│   │   ├── graph.go
+│   │   ├── query.go
+│   │   └── repograph_test.go
+│   ├── repomap
+│   │   ├── botsmap.go
+│   │   ├── docsmap.go
+│   │   ├── fresh_test.go
+│   │   ├── gopkg.go
+│   │   └── repomap.go
 │   ├── retrycoord
 │   │   ├── circuit.go
 │   │   └── circuit_test.go
@@ -3397,6 +3438,7 @@
 │   ├── runtime
 │   │   ├── admission.go
 │   │   ├── admission_test.go
+│   │   ├── answered_human_advance_test.go
 │   │   ├── artifact_contract.go
 │   │   ├── artifact_contract_forge_test.go
 │   │   ├── artifact_contract_test.go
@@ -3428,6 +3470,7 @@
 │   │   ├── convergence_freshness_test.go
 │   │   ├── copy_outputs_test.go
 │   │   ├── devbox_host.go
+│   │   ├── devbox_host_lock_test.go
 │   │   ├── devbox_host_test.go
 │   │   ├── edge_input_ref_test.go
 │   │   ├── edges.go
@@ -3449,6 +3492,7 @@
 │   │   ├── human_interaction_iteration_test.go
 │   │   ├── incoming.go
 │   │   ├── incoming_test.go
+│   │   ├── launch_overrides_persist_test.go
 │   │   ├── legacy_digest.go
 │   │   ├── legacy_digest_test.go
 │   │   ├── library_skills.go
@@ -3505,7 +3549,7 @@
 │   │   ├── run_namespace_test.go
 │   │   ├── run_started_provenance_test.go
 │   │   ├── sandbox.go
-│   │   ├── sandbox_*.go  (21 files)
+│   │   ├── sandbox_*.go  (22 files)
 │   │   ├── scratch_sweep.go
 │   │   ├── session_test.go
 │   │   ├── settled_contract_resume_test.go
@@ -3808,6 +3852,7 @@
 │   │   │   ├── bundle_snapshot.go
 │   │   │   ├── bundle_snapshot_test.go
 │   │   │   ├── contributions.go
+│   │   │   ├── contributions_dedup_test.go
 │   │   │   ├── contributions_test.go
 │   │   │   ├── credential_plan.go
 │   │   │   ├── credential_preview.go
@@ -3833,6 +3878,7 @@
 │   │   │   ├── skipped_reopens_test.go
 │   │   │   ├── stamp_narrowing_test.go
 │   │   │   ├── steer.go
+│   │   │   ├── testmain_test.go
 │   │   │   └── wants_failopen_test.go
 │   │   ├── cloudsched_forge_test.go
 │   │   ├── config_*.go  (8 files)
@@ -3862,7 +3908,7 @@
 │   │   ├── filesystem_test.go
 │   │   ├── filter.go
 │   │   ├── filter_test.go
-│   │   ├── forge_*.go  (71 files)
+│   │   ├── forge_*.go  (72 files)
 │   │   ├── generic_secrets_routes.go
 │   │   ├── gosafe.go
 │   │   ├── gosafe_errtrack_test.go
@@ -3941,9 +3987,11 @@
 │   │   ├── run_delegation.go
 │   │   ├── run_delegation_test.go
 │   │   ├── runs.go
-│   │   ├── runs_*.go  (74 files)
+│   │   ├── runs_*.go  (75 files)
 │   │   ├── runview_fixture_test.go
 │   │   ├── safe_origin_test.go
+│   │   ├── schedule_outcome.go
+│   │   ├── schedule_outcome_test.go
 │   │   ├── schedules_gate.go
 │   │   ├── schedules_launch_gate_test.go
 │   │   ├── schedules_routes.go
@@ -3967,6 +4015,8 @@
 │   │   ├── team_lifecycle_routes_test.go
 │   │   ├── team_path_tenant_test.go
 │   │   ├── tenant_ctx.go
+│   │   ├── tenant_scope.go
+│   │   ├── tenant_scope_test.go
 │   │   ├── timefmt.go
 │   │   ├── tracing.go
 │   │   ├── tracing_test.go
@@ -3980,7 +4030,7 @@
 │   │   ├── watch_coordinator.go
 │   │   ├── watch_coordinator_test.go
 │   │   ├── watcher.go
-│   │   ├── webhooks_*.go  (39 files)
+│   │   ├── webhooks_*.go  (40 files)
 │   │   ├── workspace.go
 │   │   ├── workspace_handoff.go
 │   │   ├── workspace_handoff_test.go
@@ -4501,6 +4551,12 @@
 │   │   │   │   └── webhooks.helpers.test.ts
 │   │   │   ├── admin.ts
 │   │   │   ├── adminBots.ts
+│   │   │   ├── adminCredUsage.test.ts
+│   │   │   ├── adminCredUsage.ts
+│   │   │   ├── adminSettings.test.ts
+│   │   │   ├── adminSettings.ts
+│   │   │   ├── adminUsageReadings.test.ts
+│   │   │   ├── adminUsageReadings.ts
 │   │   │   ├── assistantAuthoring.test.ts
 │   │   │   ├── assistantAuthoring.ts
 │   │   │   ├── assistantContext.ts
@@ -5651,17 +5707,26 @@
 │   │   │   │   ├── PlatformBotsPage.tsx
 │   │   │   │   ├── PlatformLlmCredsPage.tsx
 │   │   │   │   ├── UsersAdminPage.tsx
-│   │   │   │   └── orgs
-│   │   │   │       ├── CreateOrgForm.tsx
-│   │   │   │       ├── OrgDangerZone.tsx
-│   │   │   │       ├── OrgDrawer.tsx
-│   │   │   │       ├── OrgQuotasSection.tsx
-│   │   │   │       ├── OrgStatusSection.tsx
-│   │   │   │       ├── OrgUsageStats.tsx
-│   │   │   │       ├── OrgsTable.tsx
-│   │   │   │       ├── orgFields.tsx
-│   │   │   │       ├── orgStatusMeta.ts
-│   │   │   │       └── useOrgsAdmin.ts
+│   │   │   │   ├── orgs
+│   │   │   │   │   ├── CreateOrgForm.tsx
+│   │   │   │   │   ├── OrgDangerZone.tsx
+│   │   │   │   │   ├── OrgDrawer.tsx
+│   │   │   │   │   ├── OrgQuotasSection.tsx
+│   │   │   │   │   ├── OrgStatusSection.tsx
+│   │   │   │   │   ├── OrgTeamsSection.tsx
+│   │   │   │   │   ├── OrgUsageStats.tsx
+│   │   │   │   │   ├── OrgsTable.tsx
+│   │   │   │   │   ├── orgFields.tsx
+│   │   │   │   │   ├── orgStatusMeta.ts
+│   │   │   │   │   └── useOrgsAdmin.ts
+│   │   │   │   ├── settings
+│   │   │   │   │   ├── UsageCapsPage.test.tsx
+│   │   │   │   │   ├── UsageCapsPage.tsx
+│   │   │   │   │   └── usageCaps.ts
+│   │   │   │   └── spend
+│   │   │   │       ├── CredentialSpendPage.tsx
+│   │   │   │       ├── credentialSpend.test.ts
+│   │   │   │       └── credentialSpend.ts
 │   │   │   ├── auth
 │   │   │   │   ├── AcceptInvitation.tsx
 │   │   │   │   ├── ForcedPasswordChange.tsx
@@ -13114,4 +13179,4 @@
                 ├── pbkdf.go
                 ├── pkcs12.go
                 └── safebags.go
-1762 directories, 12778 files
+1769 directories, 12849 files
