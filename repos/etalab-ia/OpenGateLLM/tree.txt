@@ -91,7 +91,9 @@
 │   │       ├── 2026_07_30_1805-c83449930fe2_update_constraint_name.py
 │   │       ├── 2026_08_19_1239-b2d58fce4b3c_remove_create_public_collection_.py
 │   │       ├── 2026_09_04_1000-a7f3c91b2e04_rename_providercarbonfootprintzone_to_hostingzone.py
-│   │       └── 2026_09_11_1340-c8e1a04b7f12_drop_provider_qos_columns.py
+│   │       ├── 2026_09_11_1340-c8e1a04b7f12_drop_provider_qos_columns.py
+│   │       ├── 2026_09_14_1100-f4b7c2a91e30_require_user_organization.py
+│   │       └── 2026_09_18_1000-e7a1c4d8b902_replace_image_text_to_text_with_text_generation.py
 │   ├── alembic.ini
 │   ├── app.py
 │   ├── clients
@@ -182,7 +184,6 @@
 │   │       └── views.py
 │   ├── endpoints
 │   │   ├── __init__.py
-│   │   ├── chat.py
 │   │   └── monitoring.py
 │   ├── helpers
 │   │   ├── __init__.py
@@ -190,8 +191,6 @@
 │   │   ├── _identityaccessmanager.py
 │   │   ├── _langfusemanager.py
 │   │   ├── _limiter.py
-│   │   ├── _searchtool.py
-│   │   ├── _streamingresponsewithstatuscode.py
 │   │   ├── _usagetokenizer.py
 │   │   ├── load_balancing
 │   │   │   ├── __init__.py
@@ -213,6 +212,7 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── _requestcontext.py
 │   │   │   ├── _requestcontextusagerecorder.py
+│   │   │   ├── _streamingresponsewithstatuscode.py
 │   │   │   ├── accesscontroller.py
 │   │   │   ├── decorators.py
 │   │   │   ├── dependencies.py
@@ -229,6 +229,7 @@
 │   │   │   │   │   └── users.py
 │   │   │   │   ├── audio.py
 │   │   │   │   ├── auth.py
+│   │   │   │   ├── chat.py
 │   │   │   │   ├── embeddings.py
 │   │   │   │   ├── exceptions.py
 │   │   │   │   ├── health.py
@@ -250,6 +251,7 @@
 │   │   │       │   └── users.py
 │   │   │       ├── audio.py
 │   │   │       ├── auth.py
+│   │   │       ├── chat.py
 │   │   │       ├── embeddings.py
 │   │   │       ├── health.py
 │   │   │       ├── keys.py
@@ -517,6 +519,7 @@
 │   │   │   │   ├── test_audiotranscriptions.py
 │   │   │   │   ├── test_auth_login.py
 │   │   │   │   ├── test_auth_sso_login.py
+│   │   │   │   ├── test_chatcompletions.py
 │   │   │   │   ├── test_embeddings.py
 │   │   │   │   ├── test_health.py
 │   │   │   │   ├── test_models.py
@@ -538,7 +541,8 @@
 │   │   │   │   └── vllm.py
 │   │   │   ├── fastapi
 │   │   │   │   ├── __init__.py
-│   │   │   │   └── test_accesscontroller.py
+│   │   │   │   ├── test_accesscontroller.py
+│   │   │   │   └── test_usagerecordedonclientdisconnect.py
 │   │   │   ├── http
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── test_httpauthssosessionvalidator.py
@@ -591,6 +595,9 @@
 │   │       ├── __init__.py
 │   │       ├── domain
 │   │       │   ├── __init__.py
+│   │       │   ├── chat
+│   │       │   │   ├── __init__.py
+│   │       │   │   └── test_chatentities.py
 │   │       │   ├── embeddings
 │   │       │   │   ├── __init__.py
 │   │       │   │   └── test_embeddingsentities.py
@@ -624,7 +631,11 @@
 │   │       │   │   │           ├── __init__.py
 │   │       │   │   │           ├── test_get_key.py
 │   │       │   │   │           └── test_get_keys.py
-│   │       │   │   └── test_decorators.py
+│   │       │   │   ├── schemas
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   └── test_chat.py
+│   │       │   │   ├── test_decorators.py
+│   │       │   │   └── test_streamingresponsewithstatuscode.py
 │   │       │   ├── http
 │   │       │   │   ├── __init__.py
 │   │       │   │   ├── adapters
@@ -707,6 +718,9 @@
 │   │           │   ├── __init__.py
 │   │           │   ├── test_authloginusecase.py
 │   │           │   └── test_authssologinusecase.py
+│   │           ├── chat
+│   │           │   ├── __init__.py
+│   │           │   └── test_createchatcompletionsusecase.py
 │   │           ├── embeddings
 │   │           │   ├── __init__.py
 │   │           │   └── test_createembeddingsusecase.py
@@ -789,6 +803,9 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── _authloginusecase.py
 │   │   │   └── _authssologinusecase.py
+│   │   ├── chat
+│   │   │   ├── __init__.py
+│   │   │   └── _createchatcompletionsusecase.py
 │   │   ├── embeddings
 │   │   │   ├── __init__.py
 │   │   │   └── _createembeddingsusecase.py
@@ -1087,4 +1104,4 @@
     ├── gunicorn.conf.py
     ├── manage_docs_dns.py
     └── startup_api.sh
-227 directories, 862 files
+231 directories, 875 files
