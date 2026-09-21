@@ -1,7 +1,6 @@
 .
 ├── .changeset
 │   ├── README.md
-│   ├── big-tools-bet.md
 │   └── config.json
 ├── .editorconfig
 ├── .env
@@ -372,7 +371,8 @@
 │   ├── 1780326942627_set-allow-editing-on-rejection-reason-moderations.ts
 │   ├── 1780924063334_allow-editing-default-to-false-in-moderation.ts
 │   ├── 1781180683383_add-user-id-created-at-index-to-users-oidc-clients.ts
-│   └── 1788769258662_add-official-contact-email-verification-table.ts
+│   ├── 1788769258662_add-official-contact-email-verification-table.ts
+│   └── 1788769258663_add-denomination-usuelle-etablissement-principal.ts
 ├── migrations.md
 ├── package-lock.json
 ├── package.json
@@ -671,6 +671,7 @@
 │   │   │   │           ├── 78824266700020.ts
 │   │   │   │           ├── 81104725700019.ts
 │   │   │   │           ├── 82271212100018.ts
+│   │   │   │           ├── 84951084700015.ts
 │   │   │   │           ├── 94957325700019.ts
 │   │   │   │           └── index.ts
 │   │   │   └── types
@@ -727,7 +728,8 @@
 │   │   │   │   │   │   ├── api_entreprise.test.ts
 │   │   │   │   │   │   ├── api_entreprise.test.ts.snapshot
 │   │   │   │   │   │   ├── api_entreprise.ts
-│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   └── rne.ts
 │   │   │   │   │   ├── get-organization-info.test.ts
 │   │   │   │   │   ├── get-organization-info.test.ts.snapshot
 │   │   │   │   │   ├── get-organization-info.ts
@@ -933,6 +935,7 @@
 │   │   ├── package.json
 │   │   ├── src
 │   │   │   ├── api
+│   │   │   │   ├── find-company-by-siren.ts
 │   │   │   │   ├── find-pouvoirs-by-siren.test.ts
 │   │   │   │   ├── find-pouvoirs-by-siren.ts
 │   │   │   │   ├── get-rne-access-token.test.ts
@@ -942,6 +945,9 @@
 │   │   │   │   └── index.ts
 │   │   │   ├── testing
 │   │   │   │   └── seed
+│   │   │   │       ├── companies
+│   │   │   │       │   ├── 849510847.ts
+│   │   │   │       │   └── index.ts
 │   │   │   │       ├── index.ts
 │   │   │   │       └── pouvoirs.ts
 │   │   │   └── types
@@ -998,7 +1004,7 @@
 │       │   │       │   │   ├── 66204244933106.json
 │       │   │       │   │   ├── 77730636600058.json
 │       │   │       │   │   ├── 79271377800019.json
-│       │   │       │   │   ├── 8*.json  (10 files)
+│       │   │       │   │   ├── 8*.json  (11 files)
 │       │   │       │   │   ├── 94957325700019.json
 │       │   │       │   │   ├── discover.page.tsx
 │       │   │       │   │   └── index.ts
@@ -1026,14 +1032,21 @@
 │       │   │           │   ├── 552032534.json
 │       │   │           │   ├── 792713778.json
 │       │   │           │   ├── 807612296.json
+│       │   │           │   ├── 849510847.json
 │       │   │           │   ├── discover.page.tsx
 │       │   │           │   └── index.ts
 │       │   │           └── index.ts
 │       │   ├── cli
 │       │   │   ├── annuaire
 │       │   │   │   └── index.ts
-│       │   │   └── entreprise
-│       │   │       ├── etablissements
+│       │   │   ├── entreprise
+│       │   │   │   ├── etablissements
+│       │   │   │   │   ├── add.ts
+│       │   │   │   │   └── index.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   └── options.ts
+│       │   │   └── rne
+│       │   │       ├── companies
 │       │   │       │   ├── add.ts
 │       │   │       │   └── index.ts
 │       │   │       ├── index.ts
@@ -1325,4 +1338,4 @@
 │   └── symmetric-encryption.test.ts
 ├── tsconfig.json
 └── vite.config.mjs
-228 directories, 1181 files
+231 directories, 1192 files
