@@ -1,13 +1,12 @@
 {
   "url": "https://github.com/codegouvfr/sill-deploy",
   "name": "sill-deploy",
-  "description": "Application web de gestion de catalogues de logiciels, conçue pour le SILL (Liste de logiciels libres recommandés pour les administrations françaises). Elle permet l'importation, la gestion et la visualisation de catalogues de logiciels.",
+  "description": "Application web de gestion de catalogues de logiciels, conçue pour administrer le SILL (logiciels libres recommandés pour les administrations françaises). Elle permet l'importation de données, la gestion de sources et la publication de listes de logiciels.",
   "language": "TypeScript",
   "features": [
     "Gestion métier générale",
     "Administration & Backoffice",
     "Recherche & Filtres",
-    "Authentification & Accès",
     "Données & Schémas"
   ],
   "audience": "Agents de l'Administration",
@@ -17,8 +16,10 @@
     "PostgreSQL",
     "Zod",
     "tRPC",
-    "Sentry",
+    "Vitest",
     "Playwright",
+    "Docker",
+    "Nginx",
     "Keycloak"
   ],
   "components": [
@@ -26,15 +27,14 @@
     "PostgreSQL & SQL",
     "TypeScript / JavaScript",
     "Docker & Conteneurs",
-    "CI/CD & Déploiement",
-    "Authentification (composant)",
+    "Node.js / NestJS",
+    "ORM & Accès aux données",
     "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
-      "jwt",
-      "session",
-      "sso"
+      "sso",
+      "oauth2"
     ],
     "providers": [
       "Keycloak"
@@ -46,20 +46,18 @@
   ],
   "workflows": [
     "CI/CD deployment workflows",
-    "Sync-upstream",
-    "Helm chart publishing"
+    "sync-upstream"
   ],
-  "lastActivity": "2026-08-30T12:27:47Z",
+  "lastActivity": "2026-09-19T13:51:22+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "TypeScript",
-    "Déploiement & Hosting",
     "Docker & Conteneurs",
-    "Git & DevOps",
+    "Bases de données SQL",
     "CI/CD & GitHub Actions",
-    "Données & Open Data"
+    "Déploiement & Hosting"
   ]
 }
