@@ -1,14 +1,15 @@
 {
   "url": "https://github.com/MTES-MCT/monitorenv",
   "name": "monitorenv",
-  "description": "Application destinée au CACEM pour centraliser les outils de protection de l'environnement marin et de contrôle des activités à risque. Elle permet le suivi des missions, l'analyse des données et l'aide à la décision.",
+  "description": "Application destinée au CACEM pour centraliser les outils de protection de l'environnement marin. Elle permet la coordination des contrôles, le suivi des missions et l'analyse des données pour l'aide à la décision.",
   "language": "Java",
   "features": [
+    "Administration & Backoffice",
     "Visualisation de données & Cartographie",
     "Statistiques & Rapports",
     "Suivi & Traçabilité",
-    "Recherche & Filtres",
-    "Administration & Backoffice"
+    "Gestion des utilisateurs & Permissions",
+    "Monitoring & Logs"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -17,25 +18,24 @@
     "GeoServer",
     "Keycloak",
     "Kafka",
-    "Carto",
+    "Flyway",
+    "Sentry",
+    "Metabase",
     "Mapbox",
     "Google Maps",
-    "Metabase",
-    "Sentry",
-    "Matomo",
+    "Carto",
     "Prefect",
-    "Cypress",
-    "Wiremock"
+    "Cypress"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Docker & Conteneurs",
-    "SIG & Géospatial",
-    "Authentification (composant)",
     "TypeScript / JavaScript",
     "Python (scripts & backend)",
-    "Tests",
+    "Authentification (composant)",
+    "SIG & Géospatial",
+    "Pipeline de données",
     "Webhooks & Événements"
   ],
   "auth": {
@@ -47,18 +47,21 @@
       "Keycloak"
     ]
   },
-  "tests": "Cypress pour les tests de bout en bout (E2E), Wiremock pour le mock des services externes, et Pytest pour le pipeline de données.",
-  "lastActivity": "2026-09-10T16:30:00+02:00",
-  "status": "active",
+  "tests": [
+    "Cypress",
+    "Pytest"
+  ],
+  "lastActivity": "2026-09-16T12:52:13+02:00",
+  "status": "maintained",
   "hasDocumentation": true,
   "tags": [
     "Environnement & Énergie",
     "SIG & Géospatial",
     "Données & Open Data",
     "Docker & Conteneurs",
-    "Monitoring & Observabilité",
     "Python",
     "Bases de données SQL",
-    "TypeScript"
+    "Monitoring & Observabilité",
+    "Écosystème beta.gouv / État"
   ]
 }

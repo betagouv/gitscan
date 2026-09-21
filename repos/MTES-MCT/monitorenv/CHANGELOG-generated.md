@@ -1,35 +1,32 @@
-## Changelog : monitorenv (30 derniers jours, au 10 septembre 2026)
+## Changelog : monitorenv (30 derniers jours, au 16 septembre 2026)
 
 ### Résumé
-Cette période a été marquée par un renforcement des capacités d'administration, notamment avec la gestion des zones réglementaires et l'import d'utilisateurs, ainsi que par une amélioration de l'ergonomie de l'interface et de l'interactivité de la cartographie.
+Les récentes évolutions se concentrent sur l'amélioration de la gestion des zones réglementaires et des tags (notamment les codes FAO) via le backoffice. L'interface utilisateur a été affinée pour offrir une navigation plus fluide et une meilleure accessibilité, tandis que les processus d'importation de données et de gestion des utilisateurs ont été renforcés pour faciliter le travail des agents.
 
 ### Évolutions fonctionnelles
-- **Administration & Backoffice** : 
-    - Mise en place de la première version de la gestion des zones réglementaires.
-    - Ajout du code FAO dans les tags du backoffice.
-    - Création d'une fonctionnalité d'import d'utilisateurs via des fichiers CSV (format Cerbere).
-- **Interface Utilisateur (UI/UX)** :
-    - Amélioration de l'ergonomie avec l'ajout d'un en-tête fixe (sticky header).
-    - Optimisation de l'interaction avec la carte : maintien de l'affichage des zones pendant le tracé et suppression des effets de survol perturbateurs.
-    - Affichage plus précis des jours de début et de fin pour les fréquences hebdomadaires.
-- **Corrections** :
-    - Rectification du tri de la colonne de mise à jour sur le tableau de bord.
-    - Correction de l'affichage des contacts des unités de contrôle dans l'API publique des missions.
-    - Suppression de messages d'avertissement inutiles dans l'interface.
+- **Gestion des zones et tags** : 
+    - Déploiement de la version 1 du backoffice pour la gestion des zones réglementaires.
+    - Ajout de la recherche et de la gestion des codes FAO dans le backoffice.
+    - Amélioration de l'affichage des périodes de vigilance et des fréquences de répétition.
+- **Expérience utilisateur (UI/UX)** :
+    - Optimisation de l'interaction avec la carte (maintien de l'affichage des zones lors du tracé et suppression des effets de survol perturbateurs).
+    - Amélioration de l'ergonomie globale : ajout d'un en-tête fixe (sticky header) et correction de l'affichage des tableaux de bord.
+    - Mise en conformité de l'accessibilité (ajustement des contrastes de couleurs).
+- **Administration et Missions** :
+    - Nouvelle fonctionnalité d'importation d'utilisateurs via un fichier CSV (format Cerbere).
+    - Inclusion des contacts des unités de contrôle dans les sorties de l'API publique des missions.
+    - Ajout de nouveaux champs pour les unités de ressources (ID d'enregistrement et fréquence radio).
 
 ### Évolutions techniques
-- **API & Flux de données** :
-    - Ajout d'un endpoint de mise à jour (patch) pour les unités de ressources (incluant l'ID d'enregistrement et la radiofréquence).
-    - Mise à jour du flux de données provenant de data.gouv pour les zones réglementaires.
-    - Amélioration du traitement des données JSON pour les références réglementaires.
-- **Performance & Architecture** :
-    - Virtualisation de l'affichage du code FAO pour optimiser les performances.
-    - Refactorisation des classes de données et de la structure des packages.
-    - Mise à jour de la syntaxe des pipelines de données (migration Prefect).
-- **Observabilité & Infrastructure** :
-    - Renforcement du logging sur les flux de données ouvertes (open data).
-    - Ajout de la clé API Carto pour les services cartographiques.
+- **Flux de données** : Mise à jour et fiabilisation des flux de données provenant d'Open Data et de data.gouv (notamment pour les zones réglementaires).
+- **Performances** : Implémentation de la virtualisation pour le composant de recherche des codes FAO afin d'optimiser l'affichage.
+- **Backend & API** : 
+    - Création de nouveaux points de terminaison (endpoints) pour la mise à jour des unités de ressources et l'import d'utilisateurs.
+    - Corrections sur les flux de données en temps réel (SSE) et sur les filtres de requêtes de groupe.
+- **Infrastructure** : 
+    - Mise à jour de la syntaxe Prefect.
+    - Intégration de la clé API Carto.
+    - Ajout de logs pour le suivi des flux de données ouvertes.
 
 ### Autres changements
-- **Accessibilité** : Ajustement de la palette de couleurs pour améliorer l'accessibilité (A11Y).
-- **Maintenance** : Nettoyage du code et mise à jour des fichiers de migration de base de données.
+- **Maintenance** : Nettoyage du code (suppression de paramètres de log et de messages d'alerte obsolètes) et mise à jour des fichiers de migration de la base de données.
