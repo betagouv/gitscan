@@ -44,8 +44,10 @@
 │   │   ├── misc.py
 │   │   ├── mission.py
 │   │   ├── notification.py
+│   │   ├── notification_campaign.py
 │   │   ├── oauth_client.py
 │   │   ├── oauth_token.py
+│   │   ├── push_subscription.py
 │   │   ├── team.py
 │   │   ├── third_party_company.py
 │   │   ├── third_party_employment.py
@@ -68,6 +70,7 @@
 │   │   ├── employment.py
 │   │   ├── mission.py
 │   │   ├── notification.py
+│   │   ├── notification_campaign.py
 │   │   ├── regulation_check.py
 │   │   ├── regulation_computation.py
 │   │   ├── regulatory_alert.py
@@ -102,6 +105,7 @@
 │   │   ├── notifications.py
 │   │   ├── oauth_token.py
 │   │   ├── permissions.py
+│   │   ├── push_notification.py
 │   │   ├── regulation_computations.py
 │   │   ├── regulations.py
 │   │   ├── regulations_helper.py
@@ -171,6 +175,7 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── rsa_keys.py
 │   │   │   └── signature.py
+│   │   ├── tchap.py
 │   │   ├── time.py
 │   │   ├── validation.py
 │   │   ├── xls
@@ -199,26 +204,29 @@
 │   ├── jobs
 │   │   ├── __init__.py
 │   │   ├── auto_validations.py
-│   │   └── emails
-│   │       ├── bizdev
-│   │       │   ├── __init__.py
-│   │       │   ├── send_activation_reminder_employee_emails.py
-│   │       │   ├── send_activation_reminder_manager_emails.py
-│   │       │   ├── send_companies_with_employees_but_without_activities_emails.py
-│   │       │   ├── send_companies_with_pending_invitation_emails.py
-│   │       │   ├── send_companies_without_activity_reminder_emails.py
-│   │       │   ├── send_companies_without_any_employee_invitation_emails.py
-│   │       │   ├── send_invitation_emails.py
-│   │       │   ├── send_onboarding_emails.py
-│   │       │   └── send_reminder_no_invitation_emails.py
-│   │       ├── certificate
-│   │       │   ├── __init__.py
-│   │       │   └── send_about_to_lose_certificate_emails.py
-│   │       ├── cgu
-│   │       │   ├── __init__.py
-│   │       │   ├── send_email_to_last_company_suspended_admins.py
-│   │       │   └── send_expiry_warning_email.py
-│   │       └── send_anonymization_warnings.py
+│   │   ├── break_alert.py
+│   │   ├── emails
+│   │   │   ├── bizdev
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── send_activation_reminder_employee_emails.py
+│   │   │   │   ├── send_activation_reminder_manager_emails.py
+│   │   │   │   ├── send_companies_with_employees_but_without_activities_emails.py
+│   │   │   │   ├── send_companies_with_pending_invitation_emails.py
+│   │   │   │   ├── send_companies_without_activity_reminder_emails.py
+│   │   │   │   ├── send_companies_without_any_employee_invitation_emails.py
+│   │   │   │   ├── send_invitation_emails.py
+│   │   │   │   ├── send_onboarding_emails.py
+│   │   │   │   └── send_reminder_no_invitation_emails.py
+│   │   │   ├── certificate
+│   │   │   │   ├── __init__.py
+│   │   │   │   └── send_about_to_lose_certificate_emails.py
+│   │   │   ├── cgu
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── send_email_to_last_company_suspended_admins.py
+│   │   │   │   └── send_expiry_warning_email.py
+│   │   │   └── send_anonymization_warnings.py
+│   │   ├── notification_campaign.py
+│   │   └── software_compliance_report.py
 │   ├── models
 │   │   ├── __init__.py
 │   │   ├── activity.py
@@ -274,12 +282,17 @@
 │   │   │   └── user_resolver.py
 │   │   ├── naf_code.py
 │   │   ├── notification.py
+│   │   ├── notification_campaign.py
+│   │   ├── push_banner_config.py
+│   │   ├── push_subscription.py
 │   │   ├── queries.py
 │   │   ├── refresh_token.py
 │   │   ├── regulation_check.py
 │   │   ├── regulation_computation.py
 │   │   ├── regulatory_alert.py
 │   │   ├── scenario_testing.py
+│   │   ├── software_compliance_alert_state.py
+│   │   ├── software_compliance_snapshot.py
 │   │   ├── support_action_log.py
 │   │   ├── team.py
 │   │   ├── team_association_tables.py
@@ -352,6 +365,8 @@
 │   │       │   ├── badge-diamond.png
 │   │       │   ├── badge-gold.png
 │   │       │   └── badge-silver.png
+│   │       ├── create_account_tuto_android.gif
+│   │       ├── create_account_tuto_ios.gif
 │   │       ├── invite_employees.gif
 │   │       ├── invite_employees_v2.gif
 │   │       ├── step1_account_creation.jpg
@@ -451,7 +466,7 @@
 │       │   ├── test_utils.py
 │       │   ├── test_weekly_rules.py
 │       │   └── test_work_day_break.py
-│       └── test_*.py  (56 files)
+│       └── test_*.py  (63 files)
 ├── config.py
 ├── cron.json
 ├── data
@@ -538,6 +553,7 @@
 │       ├── 475ecb05cb24_change_base_validation_status_enum.py
 │       ├── 4af1a795b88b_add_bdc_s_download_time.py
 │       ├── 4bea3bfdd457_allow_manual_addresses.py
+│       ├── 4ca13e06a9b5_refresh_regulation_check_variables_for_.py
 │       ├── 4d83f466b18c_update_mission_validation_auto_.py
 │       ├── 4daee978090a_add_nb_bad_password_tries_et_status_in_.py
 │       ├── 4e97be9e4efd_add_vehicle_termination.py
@@ -567,11 +583,14 @@
 │       ├── 72fba41df82f_remove_unicity_constraint_for_greco_id.py
 │       ├── 749ceabbea95_employment_model.py
 │       ├── 74b82d635596_update_validation_status.py
+│       ├── 74b8a795d8f5_merge_migration_heads.py
 │       ├── 75b8081a1c9c_add_mission_end_id_to_existing_mission_.py
 │       ├── 76530c01c430_make_context_a_set_field.py
 │       ├── 76a8e05f8fee_add_vehicle_id_relation_on_mission.py
 │       ├── 771c404ddbc2_persist_invite_tokens.py
+│       ├── 7868983570ba_add_targeted_count_to_notification_.py
 │       ├── 7ad58d6c287d_refactor_start_and_action_times.py
+│       ├── 7b5105df37d1_add_notification_campaign_table.py
 │       ├── 7e8f71c49544_add_gender_to_user.py
 │       ├── 7f8c48727acf_add_user_read.py
 │       ├── 80dfc91bbd27_third_party_client_employment_.py
@@ -584,6 +603,7 @@
 │       ├── 88948031a878_add_no_lic_regulation_check.py
 │       ├── 890469f396e6_admin_over_validation_justification.py
 │       ├── 8bc3c981ee6a_auto_validations_table.py
+│       ├── 8cd5e17e0bce_add_push_banner_config_table.py
 │       ├── 8fde055f9d29_add_driver_switch_activity_status.py
 │       ├── 8fe63e4276dc_add_driver_index_field_on_activity.py
 │       ├── 9027a1881082_unique_sirets.py
@@ -619,6 +639,7 @@
 │       ├── af5f8595458a_rename_sanction_in_control_history.py
 │       ├── b00eb3b480ac_fix_control_bulletin_column.py
 │       ├── b05231a3afda_add_expenditure_setting.py
+│       ├── b1c2d3e4f567_add_software_compliance_snapshot.py
 │       ├── b29f8f5e455b_create_controller_tables.py
 │       ├── b448927b940a_team_enrollment_model.py
 │       ├── b5afcd504879_add_third_party_client_employment_table.py
@@ -635,6 +656,7 @@
 │       ├── bde869cbd775_add_company_certificate_badge_request_.py
 │       ├── c00e60380604_add_password_update_time_in_user.py
 │       ├── c1e0cfacea5a_add_exports_table.py
+│       ├── c2d3e4f56789_add_suspended_at_to_oauth2_client.py
 │       ├── c3408857bc31_optimize_employments_query_performance.py
 │       ├── c452a761d31a_add_phone_number_to_company.py
 │       ├── c5192b34d875_activation_email_token.py
@@ -658,9 +680,11 @@
 │       ├── e0608dcf0866_add_subscribed_mailing_lists.py
 │       ├── e0834912bc9c_remove_email_type_constraint.py
 │       ├── e1f2a3b4c5d6_merge_anon_certification_and_regulation_index.py
+│       ├── e5d78113a5ac_add_moving_transport_type.py
 │       ├── e688d06e7d2d_add_company_settings.py
 │       ├── e7e59e36d8f6_expenditures_vehicle_number_and_mission.py
 │       ├── e920e737ca5a_add_activity_range_constraints.py
+│       ├── e94bdf997f02_merge_push_notifications_and_master_.py
 │       ├── e9e9adb7e801_add_parameter_to_enable_disable_support_.py
 │       ├── eb2980d5acfe_update_employment_constraint.py
 │       ├── ec4e193da96a_adding_vehicle_and_company_columns_in_.py
@@ -675,10 +699,12 @@
 │       ├── f2128b73734b_update_mission_validation.py
 │       ├── f2e6fb409232_activity_start_time_before_event_time.py
 │       ├── f3aa24f6aa1c_add_context_to_mission_validation.py
+│       ├── f3fe9f865a11_add_push_subscription_table.py
 │       ├── f61f00cde16f_remove_expenditure_and_team_enrollment.py
 │       ├── f62872528474_remove_no_successive_types_constraint.py
 │       ├── f628bed57b6c_add_control_location_table.py
 │       ├── f690b917edae_no_lic_nb_controlled_days.py
+│       ├── f7c4a3ecdff9_add_bizdev_role_to_user.py
 │       ├── f8a1b2c3d4e5_update_no_lic_regulation_check_label.py
 │       ├── fa96dfc8237d_add_disabled_warnings.py
 │       ├── fc7fb77ff350_add_performance_indexes_for_invitations.py
@@ -689,4 +715,4 @@
 │       └── ff7bf9a10e57_add_comments_table.py
 ├── pyproject.toml
 └── scalingo.json
-49 directories, 697 files
+49 directories, 730 files
