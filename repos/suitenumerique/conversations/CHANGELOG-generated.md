@@ -1,34 +1,31 @@
-## Changelog : conversations (30 derniers jours, au 10 septembre 2026)
+## Changelog : conversations (30 derniers jours, au 21 septembre 2026)
 
 ### Résumé
-Ce mois-ci, le projet a franchi une étape importante avec l'amélioration de l'expérience de chat et l'ajout de nouveaux outils, comme la génération de présentations et un panneau de sources pour plus de transparence. Nous avons également renforcé la robustesse technique du système, notamment via une mise à jour majeure de la gestion de l'IA et une optimisation des processus de test et de sécurité.
+Ce mois-ci, conversations a considérablement enrichi ses capacités avec l'arrivée d'un connecteur data.gouv et d'un outil de génération de présentations. L'expérience de chat a été stabilisée pour offrir une interaction plus fluide, tandis que l'infrastructure de test et de déploiement a été renforcée pour garantir une meilleure fiabilité et sécurité des réponses de l'IA.
 
 ### Évolutions fonctionnelles
-- **Nouveaux outils et fonctionnalités** :
-    - Ajout d'un outil de génération de présentations (slide decks).
-    - Introduction d'un panneau de sources pour améliorer la transparence des réponses de l'IA.
-    - Amélioration des capacités de l'assistant DINUM via l'optimisation des instructions (prompts).
-- **Amélioration de l'expérience utilisateur (UX)** :
-    - Optimisation de l'interface de chat : meilleure gestion du streaming des réponses, prévention des doubles envois de messages et gestion plus fluide des erreurs de chargement de l'historique.
-    - Ajout d'explications claires pour l'utilisateur lorsqu'une limite de création est atteinte.
-    - Suppression de la page et de la barrière du code d'activation.
-- **Administration et Analytics** :
-    - Amélioration de la gestion administrative : affichage de la taille des conversations et augmentation du nombre d'éléments par page pour les actions groupées.
-    - Mise en place du suivi analytique (projets, export de documents, résumé et empreinte CO2).
+- **Nouvelles fonctionnalités** : ajout d'un connecteur pour data.gouv et d'un outil de génération de présentations (slide decks).
+- **Amélioration de l'interface utilisateur** :
+    - Nouveau menu déroulant "+" pour les actions de saisie.
+    - Interface d'administration optimisée (affichage de la taille des conversations et augmentation du nombre d'éléments par page).
+    - Suppression de la barrière du code d'activation pour simplifier l'accès.
+- **Expérience de chat améliorée** :
+    - Meilleure gestion de la stabilité (prévention des doubles envois, gestion robuste de l'historique et des échecs de chargement).
+    - Fluidité visuelle accrue lors du streaming des réponses.
+    - Messages d'explication clairs lorsqu'une limite de création est atteinte.
+- **Corrections** : résolution de problèmes d'affichage liés aux traductions.
 
 ### Évolutions techniques
-- **Intelligence Artificielle** :
-    - Migration vers le Vercel AI SDK v5 et mise à jour du format de stockage des messages.
-    - Mise en place d'un nouveau framework d'évaluation comportementale pour tester la qualité des réponses de l'IA.
-- **Infrastructure et CI/CD** :
-    - Optimisation des tests E2E : parallélisation des tests sur plusieurs navigateurs et réduction du temps de build.
-    - Renforcement de la sécurité de la chaîne d'approvisionnement par le verrouillage des versions des actions GitHub.
-    - Audit de sécurité des workflows GitHub Actions.
-- **Backend et Performance** :
-    - Renforcement de la sécurité via l'implémentation de limitations de débit (throttling) sur la création de projets et de conversations.
-    - Refactorisation du code : passage à `httpx` comme client HTTP unique et restructuration du module de configuration.
-    - Correction de bruits de logs sous ASGI et résolution de problèmes de démarrage de l'environnement de développement (Vite).
+- **Intelligence Artificielle** : migration vers le SDK Vercel AI v5 et mise à jour du format de stockage des messages en conséquence.
+- **Qualité et Tests** :
+    - Implémentation d'un framework d'évaluation comportementale pour mesurer la qualité des réponses de l'IA.
+    - Optimisation de la CI/CD avec la parallélisation et le découpage (sharding) des tests E2E.
+- **Sécurité et Performance** :
+    - Mise en place de limitations de débit (throttling) pour la création de projets et de conversations.
+    - Sécurisation des workflows GitHub Actions contre les risques de corruption de la chaîne d'approvisionnement.
+    - Optimisation des requêtes de la liste des projets pour garantir un tri stable.
+- **Maintenance** : refactoring du module de configuration et nettoyage des logs (ASGI).
 
 ### Autres changements
-- **Internationalisation** : Mise à jour des chaînes de traduction ([#717](https://github.com/suitenumerique/conversations/pull/717), [#711](https://github.com/suitenumerique/conversations/pull/711)).
-- **Documentation** : Refonte de la procédure de release et documentation des paramètres de limitation de débit de l'API.
+- **Internationalisation** : mises à jour des chaînes de traduction ([#717](https://github.com/suitenumerique/conversations/pull/717), [#711](https://github.com/suitenumerique/conversations/pull/711)).
+- **Documentation** : révision de la procédure de release et de la documentation des paramètres de limitation de l'API.
