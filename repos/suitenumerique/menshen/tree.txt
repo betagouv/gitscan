@@ -41,6 +41,8 @@
 │           └── local
 │               └── bin
 │                   └── entrypoint
+├── docs
+│   └── la-suite.md
 ├── env.d
 │   └── development
 │       ├── common
@@ -87,6 +89,8 @@
     │   │   ├── migrations
     │   │   │   ├── 0001_initial.py
     │   │   │   ├── 0002_alter_exchangedtoken_token.py
+    │   │   │   ├── 0003_alter_exchangedtoken_token_type.py
+    │   │   │   ├── 0004_alter_serviceprovidercredentials_client_secret.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── schemas.py
@@ -107,10 +111,13 @@
     │   │   │   │   ├── test_request.py
     │   │   │   │   ├── test_revocation.py
     │   │   │   │   └── test_token.py
+    │   │   │   ├── test_admin.py
     │   │   │   ├── test_api.py
     │   │   │   ├── test_models.py
-    │   │   │   └── test_schemas.py
-    │   │   └── urls.py
+    │   │   │   ├── test_schemas.py
+    │   │   │   └── test_utils.py
+    │   │   ├── urls.py
+    │   │   └── utils.py
     │   └── uv.lock
     ├── client
     │   ├── .python-version
@@ -234,4 +241,4 @@
             ├── templates
             │   └── base.html
             └── uv.lock
-62 directories, 174 files
+63 directories, 180 files
