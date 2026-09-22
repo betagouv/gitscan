@@ -1036,8 +1036,9 @@
 │   │   │   ├── authorization_or_request_context.rb
 │   │   │   ├── authorization_requests_flashes.rb
 │   │   │   ├── impersonation_tracking_management.rb
-│   │   │   └── instruction
-│   │   │       └── message_templates_loader.rb
+│   │   │   ├── instruction
+│   │   │   │   └── message_templates_loader.rb
+│   │   │   └── local_sign_in_protection.rb
 │   │   ├── dashboard_controller.rb
 │   │   ├── developers
 │   │   │   ├── oauth_applications_controller.rb
@@ -1687,6 +1688,7 @@
 │   │   ├── insee_api_authentication.rb
 │   │   ├── insee_sirene_api_client.rb
 │   │   ├── je_clique_ou_pas_api_client.rb
+│   │   ├── local_sign_in_policy.rb
 │   │   ├── markdown_renderer.rb
 │   │   ├── message_template_interpolator.rb
 │   │   ├── message_template_preview_renderer.rb
@@ -2062,7 +2064,9 @@
 │       │   │   │   ├── _supporting_documents.html.erb
 │       │   │   │   ├── _technical_team.html.erb
 │       │   │   │   └── _volumetrie.html.erb
-│       │   │   └── edit.html.erb
+│       │   │   ├── edit.html.erb
+│       │   │   └── produits_dinum
+│       │   │       └── _legal.html.erb
 │       │   ├── closed_organization.html.erb
 │       │   ├── eligibility_check.html.erb
 │       │   ├── new
@@ -2642,7 +2646,8 @@
 │   │   ├── 20260513000001_create_form_templates.rb
 │   │   ├── 20260608193914_enforce_single_default_form_template_per_habilitation_type.rb
 │   │   ├── 20260615100802_backfill_default_form_templates.rb
-│   │   └── 20260619070911_migrate_api_entreprise_tva_scope_from_vies_to_dgfip.rb
+│   │   ├── 20260619070911_migrate_api_entreprise_tva_scope_from_vies_to_dgfip.rb
+│   │   └── 20260909164402_add_read_webhooks_scope_to_oauth_applications.rb
 │   ├── rails_pulse_migrate
 │   │   └── .keep
 │   ├── rails_pulse_schema.rb
@@ -2691,7 +2696,8 @@
 │   │   ├── pre_remplissage_query_params.md
 │   │   ├── scopes_config.md
 │   │   ├── templates_messages.md
-│   │   └── tests_paralleles.md
+│   │   ├── tests_paralleles.md
+│   │   └── tokens_local_sign_in.md
 │   └── webhooks.md
 ├── features
 │   ├── acces_espaces_en_fonction_des_roles.feature
@@ -3216,6 +3222,8 @@
 │   │   ├── application_helper_spec.rb
 │   │   ├── concerns
 │   │   │   └── skip_links_spec.rb
+│   │   ├── dsfr
+│   │   │   └── stepper_spec.rb
 │   │   ├── page_title_helper_spec.rb
 │   │   └── tabs_helper_spec.rb
 │   ├── i18n_spec.rb
@@ -3484,12 +3492,15 @@
 │   │   │       ├── authorizations_controller_spec.rb
 │   │   │       ├── credentials_controller_spec.rb
 │   │   │       └── webhook_attempts_controller_spec.rb
+│   │   ├── authorization_request_forms_render_spec.rb
+│   │   ├── authorization_request_forms_resume_spec.rb
 │   │   ├── authorization_requests_access_spec.rb
 │   │   ├── dashboard_spec.rb
 │   │   ├── instruction
 │   │   │   ├── authorization_requests_spec.rb
 │   │   │   └── forms_spec.rb
 │   │   ├── instruction_access_spec.rb
+│   │   ├── local_sign_in_spec.rb
 │   │   ├── notification_unsubscriptions_spec.rb
 │   │   └── stats_spec.rb
 │   ├── serializers
@@ -3520,6 +3531,7 @@
 │   │   ├── hubee_api_client_spec.rb
 │   │   ├── insee_sirene_api_client_spec.rb
 │   │   ├── je_clique_ou_pas_api_client_spec.rb
+│   │   ├── local_sign_in_policy_spec.rb
 │   │   ├── markdown_renderer_spec.rb
 │   │   ├── message_template_interpolator_spec.rb
 │   │   ├── message_template_preview_renderer_spec.rb
@@ -3582,4 +3594,4 @@
     ├── .keep
     └── javascript
         └── .keep
-509 directories, 3214 files
+511 directories, 3224 files
