@@ -1,27 +1,25 @@
-## Changelog : api-particulier-demonstrateur (30 derniers jours, au 14 septembre 2026)
+## Changelog : api-particulier-demonstrateur (30 derniers jours, au 14/09/2026)
 
 ### Résumé
-Les récentes évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment par l'ajout de messages d'information contextuels et l'optimisation de l'affichage des éléments d'interface (boutons, panneaux d'aide et alertes). Parallèlement, la stabilité du projet a été renforcée par une meilleure gestion des dépendances et une mise à jour de l'environnement de déploiement.
+Les récentes évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment via une meilleure gestion des messages d'information et une interface plus fluide pour les cas d'usage "Cantine" et "Transport". La stabilité technique est également renforcée par une mise à jour de l'environnement de développement et de la chaîne de tests.
 
 ### Évolutions fonctionnelles
-- **Information et guidage utilisateur** :
-    - Ajout de messages d'information concernant la récupération automatique des justificatifs avant l'étape FranceConnect ([#6944](https://github.com/betagouv/api-particulier-demonstrateur/issues/6944)).
-    - Déplacement du panneau d'information FranceConnect de la section "éligibilité" vers la page de "connexion" pour une meilleure pertinence.
-    - Masquage automatique du panneau d'information FranceConnect pour les profils (personas) n'utilisant pas ce mode d'authentification.
-- **Améliorations de l'interface (UI)** :
-    - Correction de l'affichage des alertes pour éviter qu'elles ne soient masquées par le pied de page.
-    - Ajustement de la largeur des boîtes d'aide (COG) pour assurer un alignement correct dans les colonnes.
-    - Optimisation des espacements (boutons FranceConnect, textes d'aide au téléchargement) et correction de la ponctuation.
+- **Amélioration du parcours utilisateur** :
+    - Ajout de messages d'information concernant la récupération automatique des justificatifs avant l'étape FranceConnect ([#99](https://github.com/betagouv/api-particulier-demonstrateur/issues/99)).
+    - Optimisation de la page de connexion : déplacement du panneau d'information FranceConnect vers la connexion et masquage automatique pour les profils (personas) non concernés.
+- **Corrections d'interface (UI)** :
+    - Ajustements visuels dans le cas d'usage "Cantine" pour garantir la visibilité des alertes et un espacement correct des boutons.
+    - Correction de l'affichage des boîtes d'aide (Transport/COG) pour respecter la largeur des colonnes.
+    - Nettoyage de la typographie (suppression d'espaces superflus dans les textes d'aide).
 
 ### Évolutions techniques
 - **Infrastructure et CI/CD** :
-    - Mise à jour de l'environnement d'intégration continue pour utiliser Node 24.
-    - Automatisation des mises à jour de dépendances via un calendrier hebdomadaire.
-    - Mise en place d'un gel des versions majeures des dépendances pour garantir la stabilité du projet.
-- **Architecture et logique** :
-    - Optimisation de la résolution des cas d'usage via le segment de l'URL (pathname).
-    - Migration automatique des configurations suite à l'installation des paquets npm.
+    - Mise à jour de l'environnement de CI pour utiliser Node 24 avec `npm ci`.
+- **Logique applicative** :
+    - Correction de la méthode de résolution des cas d'usage basée sur le segment de l'URL (pathname).
 
 ### Autres changements
-- **Qualité du code et style** :
-    - Mise à jour et reformatage de plusieurs layouts pour assurer la compatibilité avec Prettier 3.9.
+- **Maintenance et qualité du code** :
+    - Mise à jour de Prettier (3.9) et reformatage de plusieurs layouts pour assurer la cohérence du style.
+    - Stabilisation de l'environnement via le verrouillage des versions majeures des dépendances.
+    - Automatisation des mises à jour de dépendances sur un cycle hebdomadaire.
