@@ -101,7 +101,6 @@
 │   │   │       ├── findMemberCurrentYearWorkloadRawQuery.sql
 │   │   │       ├── findNominationFileJurisdictionsRawQuery.sql
 │   │   │       ├── findReportedInAgendaNominationFilesRawQuery.sql
-│   │   │       ├── findReportedSessionIds.sql
 │   │   │       ├── insertAdministrativePositionsRawQuery.sql
 │   │   │       ├── insertCandidateWishesRawQuery.sql
 │   │   │       ├── insertCandidatesRawQuery.sql
@@ -291,10 +290,8 @@
 │   │   │   │   │       ├── domain
 │   │   │   │   │       │   ├── doc-file-name.ts
 │   │   │   │   │       │   ├── doc-nomination-file-outcome.ts
-│   │   │   │   │       │   ├── invalidation
-│   │   │   │   │       │   │   └── official-report-invalidated.integration-event.ts
-│   │   │   │   │       │   ├── reported-nomination-file-collection.spec.ts
-│   │   │   │   │       │   └── reported-nomination-file-collection.ts
+│   │   │   │   │       │   └── invalidation
+│   │   │   │   │       │       └── official-report-invalidated.integration-event.ts
 │   │   │   │   │       └── infrastructure
 │   │   │   │   │           ├── docs.controller.ts
 │   │   │   │   │           ├── docs.dto.ts
@@ -532,15 +529,6 @@
 │   │   │   │   │   └── report.service.ts
 │   │   │   │   ├── root.module.ts
 │   │   │   │   ├── session
-│   │   │   │   │   ├── shared
-│   │   │   │   │   │   ├── policies
-│   │   │   │   │   │   │   ├── nomination-file.policies.spec.ts
-│   │   │   │   │   │   │   └── nomination-file.policies.ts
-│   │   │   │   │   │   └── types
-│   │   │   │   │   │       ├── nomination-file-outcome.spec.ts
-│   │   │   │   │   │       ├── nomination-file-outcome.ts
-│   │   │   │   │   │       ├── nomination-file.ts
-│   │   │   │   │   │       └── statut-affectation.enum.ts
 │   │   │   │   │   ├── summaries
 │   │   │   │   │   │   ├── domain
 │   │   │   │   │   │   │   └── summary.ts
@@ -568,6 +556,7 @@
 │   │   │   │   │       │   │   └── index.ts
 │   │   │   │   │       │   ├── lodam-xlsx-to-nomination-session.spec.ts
 │   │   │   │   │       │   ├── lodam-xlsx-to-nomination-session.ts
+│   │   │   │   │       │   ├── nomination-file-snapshot.ts
 │   │   │   │   │       │   ├── session-transparence-file-status.spec.ts
 │   │   │   │   │       │   ├── session-transparence-file-status.ts
 │   │   │   │   │       │   ├── session-transparence.spec.ts
@@ -585,11 +574,11 @@
 │   │   │   │   │       │   │   ├── lolfi-nomination-files.finder.ts
 │   │   │   │   │       │   │   ├── lolfi-nomination-session.finder.ts
 │   │   │   │   │       │   │   ├── nomination-file-jurisdictions.finder.ts
+│   │   │   │   │       │   │   ├── reported-sessions.finder.ts
 │   │   │   │   │       │   │   ├── synchronised-lolfi-sessions.finder.ts
 │   │   │   │   │       │   │   ├── transparence-files.finder.ts
 │   │   │   │   │       │   │   ├── transparence-session.finder.ts
-│   │   │   │   │       │   │   ├── unaffected-files.finder.ts
-│   │   │   │   │       │   │   └── unreported-transparence-files-count.finder.ts
+│   │   │   │   │       │   │   └── unaffected-files.finder.ts
 │   │   │   │   │       │   ├── helpers
 │   │   │   │   │       │   │   ├── magistrat.helper.spec.ts
 │   │   │   │   │       │   │   └── magistrat.helper.ts
@@ -638,13 +627,19 @@
 │   │   │   │   │   │   ├── statut-affectation.mapper.ts
 │   │   │   │   │   │   └── type-de-saisine-enum.mapper.ts
 │   │   │   │   │   ├── nomination-file-attachment-type.enum.ts
+│   │   │   │   │   ├── nomination-file-lock.enum.ts
+│   │   │   │   │   ├── nomination-file-outcome.enum.spec.ts
+│   │   │   │   │   ├── nomination-file-outcome.enum.ts
 │   │   │   │   │   ├── policies
 │   │   │   │   │   │   ├── auditioned-position.policy.spec.ts
-│   │   │   │   │   │   └── auditioned-position.policy.ts
+│   │   │   │   │   │   ├── auditioned-position.policy.ts
+│   │   │   │   │   │   ├── nomination-file.policies.spec.ts
+│   │   │   │   │   │   └── nomination-file.policies.ts
 │   │   │   │   │   ├── priority.enum.ts
 │   │   │   │   │   ├── report-file-usage.enum.ts
 │   │   │   │   │   ├── report-state.enum.ts
 │   │   │   │   │   ├── role.enum.ts
+│   │   │   │   │   ├── statut-affectation.enum.ts
 │   │   │   │   │   └── type-de-saisine.enum.ts
 │   │   │   │   └── simple-auth
 │   │   │   │       ├── domain
@@ -825,12 +820,6 @@
 │       │   ├── check-tailwind-colors.sh
 │       │   └── install-fonts.sh
 │       ├── src
-│       │   ├── assets
-│       │   │   └── react.svg
-│       │   ├── constants
-│       │   │   ├── files.constants.ts
-│       │   │   ├── icons.constants.ts
-│       │   │   └── labels.constants.ts
 │       │   ├── features
 │       │   │   ├── administration
 │       │   │   │   ├── components
@@ -873,7 +862,6 @@
 │       │   │   │   │   │   └── presentation-notice.main.html
 │       │   │   │   │   ├── agenda
 │       │   │   │   │   │   ├── AgendaBreadcrumb.tsx
-│       │   │   │   │   │   ├── AgendaChairmanSelect.tsx
 │       │   │   │   │   │   ├── AgendaFilesSelectionTable.stories.tsx
 │       │   │   │   │   │   ├── AgendaFilesSelectionTable.test.tsx
 │       │   │   │   │   │   ├── AgendaFilesSelectionTable.tsx
@@ -902,6 +890,7 @@
 │       │   │   │   │   ├── document-content.ts
 │       │   │   │   │   ├── document.fixture.ts
 │       │   │   │   │   ├── official-report
+│       │   │   │   │   │   ├── AgendaSelectProposal.stories.tsx
 │       │   │   │   │   │   ├── OfficialReportBreadCrumb.tsx
 │       │   │   │   │   │   ├── OfficialReportForm.tsx
 │       │   │   │   │   │   └── editor
@@ -997,7 +986,6 @@
 │       │   │   │   │   ├── NominationFilesPublishButton.tsx
 │       │   │   │   │   ├── NominationFilesSelectionBar.test.tsx
 │       │   │   │   │   ├── NominationFilesSelectionBar.tsx
-│       │   │   │   │   ├── NominationFilesSelectionModeButton.tsx
 │       │   │   │   │   ├── NominationFilesStatusBadges.tsx
 │       │   │   │   │   ├── RequiredOutcomeCommentsModal.test.tsx
 │       │   │   │   │   ├── RequiredOutcomeCommentsModal.tsx
@@ -1008,25 +996,13 @@
 │       │   │   │   │       ├── MemberReportStateCell.tsx
 │       │   │   │   │       ├── NominationFileStatusCell.test.tsx
 │       │   │   │   │       ├── NominationFileStatusCell.tsx
+│       │   │   │   │       ├── ObservantsCell.tsx
 │       │   │   │   │       ├── magistrat-side-panel
 │       │   │   │   │       │   ├── components
 │       │   │   │   │       │   │   ├── MagistratSidePanel.tsx
 │       │   │   │   │       │   │   ├── MagistratSidePanelContent.tsx
 │       │   │   │   │       │   │   ├── SidePanelTrigger.test.tsx
 │       │   │   │   │       │   │   ├── SidePanelTrigger.tsx
-│       │   │   │   │       │   │   ├── attachments
-│       │   │   │   │       │   │   │   ├── AddNominationFileAttachmentModal.test.tsx
-│       │   │   │   │       │   │   │   ├── AddNominationFileAttachmentModal.tsx
-│       │   │   │   │       │   │   │   ├── Attachments.stories.tsx
-│       │   │   │   │       │   │   │   ├── Attachments.test.tsx
-│       │   │   │   │       │   │   │   ├── Attachments.tsx
-│       │   │   │   │       │   │   │   ├── NominationFileAttachmentTypeTag.tsx
-│       │   │   │   │       │   │   │   ├── attachments-section.test.ts
-│       │   │   │   │       │   │   │   ├── attachments-section.ts
-│       │   │   │   │       │   │   │   ├── context
-│       │   │   │   │       │   │   │   │   ├── AddNominationFileAttachmentModalContext.ts
-│       │   │   │   │       │   │   │   │   └── AddNominationFileAttachmentModalProvider.tsx
-│       │   │   │   │       │   │   │   └── nomination-file-attachment-type.ts
 │       │   │   │   │       │   │   ├── audition-date
 │       │   │   │   │       │   │   │   ├── AuditionBanner.tsx
 │       │   │   │   │       │   │   │   ├── AuditionDate.stories.tsx
@@ -1056,26 +1032,16 @@
 │       │   │   │   │       │   │   ├── missing-evaluation
 │       │   │   │   │       │   │   │   ├── MissingEvaluation.test.tsx
 │       │   │   │   │       │   │   │   └── MissingEvaluation.tsx
-│       │   │   │   │       │   │   ├── observations
-│       │   │   │   │       │   │   │   ├── Observations.stories.tsx
-│       │   │   │   │       │   │   │   ├── Observations.test.tsx
-│       │   │   │   │       │   │   │   └── Observations.tsx
 │       │   │   │   │       │   │   ├── outcome
 │       │   │   │   │       │   │   │   ├── Outcome.stories.tsx
 │       │   │   │   │       │   │   │   ├── Outcome.test.tsx
 │       │   │   │   │       │   │   │   ├── Outcome.tsx
 │       │   │   │   │       │   │   │   ├── OutcomeSelect.test.tsx
 │       │   │   │   │       │   │   │   └── OutcomeSelect.tsx
-│       │   │   │   │       │   │   ├── sg-comment
-│       │   │   │   │       │   │   │   ├── SgComment.stories.tsx
-│       │   │   │   │       │   │   │   ├── SgComment.test.tsx
-│       │   │   │   │       │   │   │   └── SgComment.tsx
-│       │   │   │   │       │   │   └── summary
-│       │   │   │   │       │   │       ├── Summary.stories.tsx
-│       │   │   │   │       │   │       ├── Summary.tsx
-│       │   │   │   │       │   │       ├── SummaryButton.tsx
-│       │   │   │   │       │   │       ├── summary-text.test.ts
-│       │   │   │   │       │   │       └── summary-text.ts
+│       │   │   │   │       │   │   └── sg-comment
+│       │   │   │   │       │   │       ├── SgComment.stories.tsx
+│       │   │   │   │       │   │       ├── SgComment.test.tsx
+│       │   │   │   │       │   │       └── SgComment.tsx
 │       │   │   │   │       │   ├── context
 │       │   │   │   │       │   │   ├── SidePanelProvider.test.tsx
 │       │   │   │   │       │   │   ├── SidePanelProvider.tsx
@@ -1099,21 +1065,7 @@
 │       │   │   │   │       │   ├── NominationFileOutcomeCommentModalProvider.tsx
 │       │   │   │   │       │   ├── OutcomeCommentModalContext.ts
 │       │   │   │   │       │   └── nomination-file-outcome.utils.ts
-│       │   │   │   │       ├── observations
-│       │   │   │   │       │   ├── MagistratCombobox.tsx
-│       │   │   │   │       │   ├── ObservantsCell.tsx
-│       │   │   │   │       │   ├── ObservationExistingFiles.tsx
-│       │   │   │   │       │   ├── ObservationForm.test.tsx
-│       │   │   │   │       │   ├── ObservationForm.tsx
-│       │   │   │   │       │   ├── ObservationLinkableAttachments.tsx
-│       │   │   │   │       │   ├── ObservationsList.test.tsx
-│       │   │   │   │       │   ├── ObservationsList.tsx
-│       │   │   │   │       │   └── context
-│       │   │   │   │       │       ├── ObservationsModalContext.ts
-│       │   │   │   │       │       ├── ObservationsModalProvider.reducer.test.ts
-│       │   │   │   │       │       └── ObservationsModalProvider.tsx
 │       │   │   │   │       ├── reporters
-│       │   │   │   │       │   ├── RapporteursDropdownBase.tsx
 │       │   │   │   │       │   ├── ReportersCell.test.tsx
 │       │   │   │   │       │   └── ReportersCell.tsx
 │       │   │   │   │       └── targeted-position
@@ -1122,7 +1074,9 @@
 │       │   │   │   │           ├── NominationFileTargetPositionContext.ts
 │       │   │   │   │           ├── NominationFileTargetPositionModal.test.tsx
 │       │   │   │   │           ├── NominationFileTargetPositionModal.tsx
-│       │   │   │   │           └── NominationFileTargetPositionProvider.tsx
+│       │   │   │   │           ├── NominationFileTargetPositionProvider.tsx
+│       │   │   │   │           ├── jurisdiction-sheet-rule.test.ts
+│       │   │   │   │           └── jurisdiction-sheet-rule.ts
 │       │   │   │   ├── context
 │       │   │   │   │   ├── ExcludedJurisdictionsProvider.tsx
 │       │   │   │   │   ├── MemberReportsProvider.tsx
@@ -1140,51 +1094,55 @@
 │       │   │   │       └── useSessionFilesTable.ts
 │       │   │   ├── observations
 │       │   │   │   ├── components
+│       │   │   │   │   ├── MagistratCombobox.tsx
 │       │   │   │   │   ├── ObservationCard.tsx
 │       │   │   │   │   ├── ObservationDescription.tsx
 │       │   │   │   │   ├── ObservationDetailsContent.tsx
+│       │   │   │   │   ├── ObservationExistingFiles.tsx
 │       │   │   │   │   ├── ObservationFollowUpCommentDialog.tsx
 │       │   │   │   │   ├── ObservationFollowUpSelector.tsx
-│       │   │   │   │   └── ObservationLinks.tsx
-│       │   │   │   └── context
-│       │   │   │       ├── ObservationFollowUpCommentContext.ts
-│       │   │   │       └── ObservationFollowUpCommentDialogProvider.tsx
+│       │   │   │   │   ├── ObservationForm.test.tsx
+│       │   │   │   │   ├── ObservationForm.tsx
+│       │   │   │   │   ├── ObservationLinkableAttachments.tsx
+│       │   │   │   │   ├── ObservationLinks.tsx
+│       │   │   │   │   ├── ObservationsList.test.tsx
+│       │   │   │   │   ├── ObservationsList.tsx
+│       │   │   │   │   └── observations-section
+│       │   │   │   │       ├── Observations.stories.tsx
+│       │   │   │   │       ├── Observations.test.tsx
+│       │   │   │   │       └── Observations.tsx
+│       │   │   │   ├── context
+│       │   │   │   │   ├── ObservationFollowUpCommentContext.ts
+│       │   │   │   │   ├── ObservationFollowUpCommentDialogProvider.tsx
+│       │   │   │   │   ├── ObservationsModalContext.ts
+│       │   │   │   │   ├── ObservationsModalProvider.reducer.test.ts
+│       │   │   │   │   └── ObservationsModalProvider.tsx
+│       │   │   │   └── utils
+│       │   │   │       └── split-lodam-observers.ts
 │       │   │   ├── reports
 │       │   │   │   ├── components
-│       │   │   │   │   ├── AttachedFileUpload.tsx
 │       │   │   │   │   ├── AttachedFilesList.tsx
 │       │   │   │   │   ├── AutoSaveNotice.tsx
-│       │   │   │   │   ├── Biography.tsx
-│       │   │   │   │   ├── Card.tsx
 │       │   │   │   │   ├── HeaderReportList.tsx
-│       │   │   │   │   ├── Identity.tsx
-│       │   │   │   │   ├── Observers.tsx
 │       │   │   │   │   ├── ReportAlerts.test.tsx
 │       │   │   │   │   ├── ReportAlerts.tsx
+│       │   │   │   │   ├── ReportAttachmentsCard.stories.tsx
+│       │   │   │   │   ├── ReportAttachmentsCard.tsx
+│       │   │   │   │   ├── ReportCommentCard.stories.tsx
+│       │   │   │   │   ├── ReportCommentCard.tsx
+│       │   │   │   │   ├── ReportDetailsHeader.stories.tsx
+│       │   │   │   │   ├── ReportDetailsHeader.tsx
 │       │   │   │   │   ├── ReportEditor.tsx
 │       │   │   │   │   ├── ReportListViewToggle.tsx
-│       │   │   │   │   ├── ReportOverview.tsx
-│       │   │   │   │   ├── ReportOverviewFileComment.tsx
-│       │   │   │   │   ├── ReportOverviewState.tsx
-│       │   │   │   │   ├── ReportSummaryCard.css
-│       │   │   │   │   ├── ReportSummaryCard.tsx
-│       │   │   │   │   ├── Summary.tsx
-│       │   │   │   │   └── TextareaCard.tsx
+│       │   │   │   │   ├── ReportMagistratCard.stories.tsx
+│       │   │   │   │   ├── ReportMagistratCard.tsx
+│       │   │   │   │   ├── ReportNavigation.test.tsx
+│       │   │   │   │   ├── ReportNavigation.tsx
+│       │   │   │   │   └── ReportOverview.tsx
 │       │   │   │   ├── constants
-│       │   │   │   │   ├── html-ids.constants.ts
-│       │   │   │   │   └── summary-sections.constants.ts
-│       │   │   │   ├── hooks
-│       │   │   │   │   ├── useMyFilesFilter.ts
-│       │   │   │   │   └── useObservedSections.ts
-│       │   │   │   ├── labels
-│       │   │   │   │   ├── report-list-table-labels.ts
-│       │   │   │   │   ├── state-filter-labels.ts
-│       │   │   │   │   └── summary-labels.ts
-│       │   │   │   └── utils
-│       │   │   │       ├── formatters.ts
-│       │   │   │       ├── scroll-to-summary-section.ts
-│       │   │   │       ├── summary-scroll-listeners.ts
-│       │   │   │       └── summary-section-observer-factory.ts
+│       │   │   │   │   └── html-ids.constants.ts
+│       │   │   │   └── hooks
+│       │   │   │       └── useMyFilesFilter.ts
 │       │   │   ├── sessions
 │       │   │   │   └── components
 │       │   │   │       ├── ManageArchivedSessions.tsx
@@ -1207,7 +1165,13 @@
 │       │   │   │   │   ├── SummarySectionEditor.tsx
 │       │   │   │   │   ├── SummarySectionMagistrat.tsx
 │       │   │   │   │   ├── SummarySectionObservations.tsx
-│       │   │   │   │   └── SummarySideNav.tsx
+│       │   │   │   │   ├── SummarySideNav.tsx
+│       │   │   │   │   └── summary-section
+│       │   │   │   │       ├── Summary.stories.tsx
+│       │   │   │   │       ├── Summary.tsx
+│       │   │   │   │       ├── SummaryButton.tsx
+│       │   │   │   │       ├── summary-text.test.ts
+│       │   │   │   │       └── summary-text.ts
 │       │   │   │   ├── context
 │       │   │   │   │   └── SummaryContext.ts
 │       │   │   │   └── hooks
@@ -1249,15 +1213,30 @@
 │       │   │       │   │   ├── MissingEvaluationDoneButton.test.tsx
 │       │   │       │   │   ├── MissingEvaluationDoneButton.tsx
 │       │   │       │   │   └── MissingEvaluationsTable.tsx
+│       │   │       │   ├── nomination-file-attachments
+│       │   │       │   │   ├── AddNominationFileAttachmentModal.test.tsx
+│       │   │       │   │   ├── AddNominationFileAttachmentModal.tsx
+│       │   │       │   │   ├── Attachments.stories.tsx
+│       │   │       │   │   ├── Attachments.test.tsx
+│       │   │       │   │   ├── Attachments.tsx
+│       │   │       │   │   ├── NominationFileAttachmentTypeTag.tsx
+│       │   │       │   │   ├── attachments-section.test.ts
+│       │   │       │   │   ├── attachments-section.ts
+│       │   │       │   │   ├── context
+│       │   │       │   │   │   ├── AddNominationFileAttachmentModalContext.ts
+│       │   │       │   │   │   └── AddNominationFileAttachmentModalProvider.tsx
+│       │   │       │   │   └── nomination-file-attachment-type.ts
 │       │   │       │   └── session
 │       │   │       │       ├── SessionTabs.test.tsx
 │       │   │       │       ├── SessionTabs.tsx
 │       │   │       │       ├── SessionValidationBanner.tsx
 │       │   │       │       ├── TableauDeBordEditTransparenceModal.test.tsx
 │       │   │       │       ├── TableauDeBordEditTransparenceModal.tsx
+│       │   │       │       ├── TableauDeBordResume.stories.tsx
 │       │   │       │       ├── TableauDeBordResume.tsx
 │       │   │       │       ├── TableauDeBordResumeDetails.tsx
-│       │   │       │       └── TransparenceActionsMenu.tsx
+│       │   │       │       ├── TransparenceActions.test.tsx
+│       │   │       │       └── TransparenceActions.tsx
 │       │   │       └── labels
 │       │   │           └── labels-mappers.ts
 │       │   ├── generated
@@ -1349,8 +1328,7 @@
 │       │   │   │   │   ├── IngestLolfiArchivePage.tsx
 │       │   │   │   │   └── jobs-page-outlet-context.type.ts
 │       │   │   │   ├── member
-│       │   │   │   │   ├── MemberContentLayout.tsx
-│       │   │   │   │   └── MemberReportOverviewLayout.tsx
+│       │   │   │   │   └── MemberContentLayout.tsx
 │       │   │   │   └── secretariat-general
 │       │   │   │       └── SecretariatGeneralPage.tsx
 │       │   │   ├── summary
@@ -1449,6 +1427,17 @@
 │       │   │   │       ├── ConfirmModalProvider.tsx
 │       │   │   │       ├── confirm-modal.context.ts
 │       │   │   │       └── index.ts
+│       │   │   ├── enums
+│       │   │   │   ├── formation.enum.ts
+│       │   │   │   ├── grade.enum.ts
+│       │   │   │   ├── job-status.enum.ts
+│       │   │   │   ├── nomination-file-lock.enum.ts
+│       │   │   │   ├── nomination-file-outcome.enum.ts
+│       │   │   │   ├── observation-follow-up.enum.ts
+│       │   │   │   ├── priorite.enum.ts
+│       │   │   │   ├── report-status.enum.ts
+│       │   │   │   ├── role.enum.ts
+│       │   │   │   └── type-de-saisine.enum.ts
 │       │   │   ├── hooks
 │       │   │   │   ├── useAwaitableModal
 │       │   │   │   │   ├── index.ts
@@ -1464,6 +1453,10 @@
 │       │   │   │   │   ├── index.ts
 │       │   │   │   │   ├── useLocallyStoredState.hook.ts
 │       │   │   │   │   └── useLocallyStoredState.test.ts
+│       │   │   │   ├── usePinnedBar
+│       │   │   │   │   ├── index.ts
+│       │   │   │   │   ├── useFoldWithScroll.ts
+│       │   │   │   │   └── usePinnedBar.ts
 │       │   │   │   ├── useScrollToTop
 │       │   │   │   │   ├── index.ts
 │       │   │   │   │   └── useScrollToTop.ts
@@ -1489,8 +1482,6 @@
 │       │   │       ├── DeleteFileButton.tsx
 │       │   │       ├── DropdownFilter.tsx
 │       │   │       ├── DropdownMenu.tsx
-│       │   │       ├── DropdownSelect.tsx
-│       │   │       ├── DropdownSelectMultiple.tsx
 │       │   │       ├── Marked.tsx
 │       │   │       ├── PageContentLayout.tsx
 │       │   │       ├── ScrollToTop.tsx
@@ -1502,6 +1493,9 @@
 │       │   │       │   ├── Card.stories.tsx
 │       │   │       │   ├── Card.test.tsx
 │       │   │       │   ├── Card.tsx
+│       │   │       │   └── index.ts
+│       │   │       ├── collapse
+│       │   │       │   ├── Collapse.tsx
 │       │   │       │   └── index.ts
 │       │   │       ├── combobox.tsx
 │       │   │       ├── comment-editor
@@ -1528,9 +1522,12 @@
 │       │   │       │   │   ├── useDataTablePaginationItemLabel.ts
 │       │   │       │   │   ├── useDataTableState.ts
 │       │   │       │   │   └── useQueryDataTableState.ts
-│       │   │       │   └── index.ts
+│       │   │       │   ├── index.ts
+│       │   │       │   └── page-sizes.ts
 │       │   │       ├── details
 │       │   │       │   ├── DetailsCard.tsx
+│       │   │       │   ├── DetailsHeader.stories.tsx
+│       │   │       │   ├── DetailsHeader.tsx
 │       │   │       │   ├── DetailsPageLayout.tsx
 │       │   │       │   └── index.ts
 │       │   │       ├── dropdown
@@ -1552,6 +1549,7 @@
 │       │   │       │   ├── IconLink.test.tsx
 │       │   │       │   ├── IconLink.tsx
 │       │   │       │   └── index.ts
+│       │   │       ├── icons.ts
 │       │   │       ├── indeterminate-checkbox
 │       │   │       │   ├── IndeterminateCheckbox.css
 │       │   │       │   ├── IndeterminateCheckbox.tsx
@@ -1642,6 +1640,7 @@
 │       │   │       └── upload
 │       │   │           ├── Upload.stories.tsx
 │       │   │           ├── Upload.tsx
+│       │   │           ├── file-types.ts
 │       │   │           └── index.ts
 │       │   ├── styles
 │       │   │   ├── Colors.mdx
@@ -1652,11 +1651,6 @@
 │       │   │   └── factories
 │       │   │       ├── session-nomination-file.factory.ts
 │       │   │       └── session-outcomes.factory.ts
-│       │   ├── types
-│       │   │   ├── enums.types.ts
-│       │   │   ├── icons.types.ts
-│       │   │   ├── table.types.ts
-│       │   │   └── utils.types.ts
 │       │   ├── utils
 │       │   │   ├── InvalidMimeType.error.ts
 │       │   │   ├── audition-expectation.util.test.ts
@@ -1694,6 +1688,7 @@
 │       │   │   ├── nomination-file-attachment.spec.ts
 │       │   │   ├── observations.spec.ts
 │       │   │   └── sg-auth.setup.ts
+│       │   ├── empty-database.ts
 │       │   ├── fixtures
 │       │   │   ├── api.fixture.ts
 │       │   │   └── auth.fixture.ts
@@ -1776,4 +1771,4 @@
 └── vendor
     ├── .gitkeep
     └── xlsx-0.20.3.tgz
-382 directories, 1396 files
+376 directories, 1397 files
