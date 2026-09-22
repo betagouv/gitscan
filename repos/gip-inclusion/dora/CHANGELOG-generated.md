@@ -1,26 +1,19 @@
-## Changelog : dora (30 derniers jours, au 17 septembre 2026)
+## Changelog : dora (30 derniers jours, au 21 septembre 2026)
 
 ### Résumé
-Ce mois-ci, Dora a principalement progressé sur la fiabilisation et la synchronisation de ses données, notamment grâce à la mise en place d'un nouveau cadre de migration pour faciliter l'échange avec Data Inclusion. Les utilisateurs bénéficient d'une information plus riche sur les services (horaires, descriptions améliorées) et de nouvelles capacités de recherche. Des optimisations de performance et de nouveaux outils de notification (Slack) viennent renforcer l'efficacité de la plateforme.
+Ce mois-ci, les développements se sont concentrés sur l'enrichissement des informations relatives aux services (horaires, descriptions plus précises) et sur l'amélioration de la fiabilité des données synchronisées avec les partenaires. L'expérience utilisateur a été fluidifiée par l'ajout de nouvelles capacités de recherche géographique et de notifications automatiques pour le suivi des orientations.
 
 ### Évolutions fonctionnelles
-- **Amélioration des services** : Ajout des horaires d'accueil et optimisation des descriptions via une fusion algorithmique pour plus de clarté [#1293](https://github.com/gip-inclusion/dora/issues/1293) ([#1306](https://github.com/gip-inclusion/dora/issues/1306)).
-- **Recherche et navigation** : Ajout d'une route de recherche pour les communes et les EPCI [#1340](https://github.com/gip-inclusion/dora/issues/1340) et suppression de la limite du nombre de catégories par service [#1289](https://github.com/gip-inclusion/dora/issues/1289).
-- **Notifications et alertes** : Mise en place de notifications Slack lors du passage d'une orientation en modération [#1296](https://github.com/gip-inclusion/dora/issues/1296).
-- **Gestion administrative** : Accès facilité aux pages d'administration des structures pour les Groupes Territoriaux (GT) [#1286](https://github.com/gip-inclusion/dora/issues/1286) et correction des URL de l'administration Django [#1295](https://github.com/gip-inclusion/dora/issues/1295).
-- **Exports de données** : Enrichissement de l'export des orientations avec l'identifiant FT [#1290](https://github.com/gip-inclusion/dora/issues/1290).
-- **Corrections d'interface** : Résolution de problèmes de doublons de formulaires pour les services [#1354](https://github.com/gip-inclusion/dora/issues/1354).
+- **Amélioration des informations services** : ajout des horaires d'accueil, gestion optimisée des descriptions via une fusion algorithmique [#1293](https://github.com/gip-inclusion/dora/issues/1293) et une double écriture pour plus de cohérence [#1306](https://github.com/gip-inclusion/dora/issues/1306), et intégration des champs de mobilisation.
+- **Recherche et données** : mise à disposition d'une nouvelle route pour la recherche par communes et EPCI [#1340](https://github.com/gip-inclusion/dora/issues/1340) et ajout de champs supplémentaires pour la synchronisation avec Data Inclusion [#1345](https://github.com/gip-inclusion/dora/issues/1345).
+- **Gestion des orientations** : mise en place de notifications Slack lors du passage d'une orientation en modération [#1296](https://github.com/gip-inclusion/dora/issues/1296) et ajout de l'identifiant FT dans les exports des orientations reçues [#1290](https://github.com/gip-inclusion/dora/issues/1290).
+- **Corrections d'expérience utilisateur** : résolution des doublons de formulaires pour les services [#1354](https://github.com/gip-inclusion/dora/issues/1354) et optimisation du chargement des structures pour le personnel afin d'éviter les surcharges [#1353](https://github.com/gip-inclusion/dora/issues/1353).
 
 ### Évolutions techniques
-- **Synchronisation de données (Data Inclusion)** : Déploiement d'un nouveau framework de migration (`di_v1`) permettant la synchronisation et le remplissage automatique (backfill) des champs vers Data Inclusion (zones d'éligibilité, réseaux porteurs, mobilisation, etc.) [#913886b](https://github.com/gip-inclusion/dora/issues/913886b) ([#1345](https://github.com/gip-inclusion/dora/issues/1345)).
-- **Optimisation des performances** : Parallélisation des appels pour l'édition des services et des modèles [#1281](https://github.com/gip-inclusion/dora/issues/1281) et optimisation du chargement des structures pour le personnel afin d'éviter les surcharges [#1353](https://github.com/gip-inclusion/dora/issues/1353).
-- **Automatisation** : Création d'une tâche mensuelle pour la mise à jour automatique de la base Sirene [#1310](https://github.com/gip-inclusion/dora/issues/1310).
-- **Outils de maintenance** : Ajout d'une commande d'anonymisation des données [#1321](https://github.com/gip-inclusion/dora/issues/1321).
-- **Refactorisation et infrastructure** : 
-    - Renommage et restructuration des champs de description des services [#1282](https://github.com/gip-inclusion/dora/issues/1282).
-    - Mise à jour de l'image Minio dans la CI [#1355](https://github.com/gip-inclusion/dora/issues/1355).
-    - Rollback de la version Django pour assurer la stabilité [#1313](https://github.com/gip-inclusion/dora/issues/1313).
+- **Framework de données** : implémentation d'un nouveau cadre de migration (`di_v1`) pour sécuriser la synchronisation des données et gestion de la double écriture pour les zones d'éligibilité et les conditions d'accès [#1318](https://github.com/gip-inclusion/dora/issues/1318).
+- **Automatisation et outils** : ajout d'une tâche mensuelle pour la mise à jour automatique de la base Sirene [#1310](https://github.com/gip-inclusion/dora/issues/1310) et création d'une commande d'anonymisation des données [#1321](https://github.com/gip-inclusion/dora/issues/1321).
+- **Infrastructure et maintenance** : mise à jour de l'image Minio dans la CI [#1355](https://github.com/gip-inclusion/dora/issues/1355), rollback vers Django 6.0.8 [#1313](https://github.com/gip-inclusion/dora/issues/1313) et nettoyage de plusieurs scripts et commandes de gestion obsolètes.
 
 ### Autres changements
-- **Nettoyage** : Suppression de plusieurs commandes de gestion (management commands) et scripts obsolètes pour alléger le projet.
-- **Documentation** : Amélioration de la documentation concernant les données d'orientation [#85d0072](https://github.com/gip-inclusion/dora/issues/85d0072).
+- **Documentation** : amélioration de la documentation relative aux données d'orientation.
+- **Nettoyage** : suppression de la colonne `orientation_reasons` [#1317](https://github.com/gip-inclusion/dora/issues/1317).
