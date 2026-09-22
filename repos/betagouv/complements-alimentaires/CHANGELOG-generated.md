@@ -1,20 +1,28 @@
-## Changelog : complements-alimentaires (30 derniers jours, au 11 septembre 2026)
+## Changelog : complements-alimentaires (30 derniers jours, au 16 septembre 2026)
 
 ### Résumé
-Cette période a été marquée par une stabilisation importante de la plateforme. Les efforts se sont concentrés sur la correction de bugs critiques (erreurs 404, problèmes de vérification d'email et de téléchargement de fichiers) et sur l'amélioration de l'expérience de navigation via des filtres plus souples. Parallèlement, l'infrastructure a été renforcée pour garantir une meilleure fiabilité des services, notamment pour l'envoi des emails et l'authentification.
+Ce mois-ci, les évolutions se sont concentrées sur la fiabilisation du parcours de visa (automatisation de certains champs et correction d'erreurs d'affichage) et l'amélioration de la qualité des données exportées. Des optimisations techniques ont également été réalisées pour rendre l'envoi d'e-mails plus fluide et renforcer la sécurité de la plateforme.
 
 ### Évolutions fonctionnelles
-- **Correction de bugs de navigation** : Résolution des erreurs 404 sur les pages d'instruction, de visa et de contrôle lorsqu'aucun déclarant n'est associé à une déclaration ([#3081](https://github.com/betagouv/complements-alimentaires/pull/3081), [#3071](https://github.com/betagouv/complements-alimentaires/pull/3071)).
-- **Amélioration des filtres** : Possibilité de réinitialiser les filtres dans le tableau des entreprises et dans la liste des compléments alimentaires ([#3066](https://github.com/betagouv/complements-alimentaires/pull/3066)).
-- **Fiabilisation des processus utilisateurs** : Correction du bug lié à la vérification de l'adresse email ([#3095](https://github.com/betagouv/complements-alimentaires/pull/3095)) et du filtre de statut ([#3072](https://github.com/betagouv/complements-alimentaires/pull/3072)).
-- **Gestion des documents** : Correction des liens de téléchargement pour les exports Excel ([#3064](https://github.com/betagouv/complements-alimentaires/pull/3064)) et les certificats PDF ([#3034](https://github.com/betagouv/complements-alimentaires/pull/3034)).
-- **Interface utilisateur** : Mise à jour des graphiques à barres et réintégration de certaines statistiques via le composant DSFR ([#3073](https://github.com/betagouv/complements-alimentaires/pull/3073)).
+- **Gestion des visas** : 
+    - Mise en place de valeurs par défaut automatiques pour faciliter la saisie des visas.
+    - Correction d'erreurs 404 sur les pages d'instruction et de visa survenant lorsqu'aucun auteur n'est renseigné pour une déclaration.
+    - Intégration de la gestion des jours de retard de visa [#3105](https://github.com/betagouv/complements-alimentaires/pull/3105).
+- **Données & Open Data** :
+    - Correction du vocabulaire utilisé dans les exports de données Open Data pour une meilleure précision.
+    - Évolution du jeu de données ETL concernant les décisions [#3115](https://github.com/betagouv/complements-alimentaires/pull/3115).
+- **Corrections de bugs** :
+    - Résolution d'un problème bloquant lors de la vérification de l'adresse e-mail [#3095](https://github.com/betagouv/complements-alimentaires/pull/3095).
+- **Interface utilisateur** :
+    - Mise à jour des composants graphiques (charts) via le Design System (DSFR) [#3073](https://github.com/betagouv/complements-alimentaires/pull/3073).
 
 ### Évolutions techniques
-- **Optimisation de la messagerie** : Passage à un envoi d'emails asynchrone (via Brevo), mise en place de mécanismes de tentatives automatiques (retry) et journalisation des échecs dans Sentry ([#3074](https://github.com/betagouv/complements-alimentaires/pull/3074)).
-- **Évolution de l'authentification** : Refonte de l'architecture liée à ProConnect, incluant la gestion de la date de dernière connexion ([#3023](https://github.com/betagouv/complements-alimentaires/pull/3023)).
-- **Infrastructure et DevOps** : Intégration de Redis et Celery dans l'environnement Docker et mise à jour de la configuration Vite ([#3065](https://github.com/betagouv/complements-alimentaires/pull/3065)).
+- **Performance & Backend** :
+    - Passage en mode asynchrone pour l'envoi d'e-mails via Brevo afin d'améliorer la réactivité du système [#3074](https://github.com/betagouv/complements-alimentaires/pull/3074).
+- **Authentification** :
+    - Mise à jour et intégration du composant ProConnect [#3023](https://github.com/betagouv/complements-alimentaires/pull/3023).
 
 ### Autres changements
-- **Sécurité** : Ajout du fichier `security.txt` pour informer sur les politiques de signalement de vulnérabilités ([#3106](https://github.com/betagouv/complements-alimentaires/pull/3106)).
-- **Documentation** : Ajout de nouveaux éléments de documentation technique et fonctionnelle.
+- **Sécurité** : Ajout du fichier `security.txt` pour faciliter le signalement de vulnérabilités [#3106](https://github.com/betagouv/complements-alimentaires/pull/3106).
+- **Documentation** : Ajout de nouvelles documentations pour le projet.
+- **Qualité de code** : Mise à jour de la configuration de l'outil de linting vers ESLint 10.
