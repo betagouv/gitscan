@@ -7,8 +7,9 @@
 ├── .gitignore
 ├── .talismanrc
 ├── Dockerfile
-├── MCPs.md
 ├── README.md
+├── n8n
+│   └── betabot-liste-membre.json
 ├── package-lock.json
 ├── package.json
 ├── scripts
@@ -18,20 +19,31 @@
 │   │   ├── created-rooms.ts
 │   │   ├── emails.ts
 │   │   ├── history.ts
+│   │   ├── invite.ts
 │   │   ├── notice.ts
+│   │   ├── rappels.ts
 │   │   └── rooms.ts
 │   ├── config.ts
 │   ├── connectors
-│   │   └── matrix.ts
+│   │   ├── caldav.ts
+│   │   ├── grist.ts
+│   │   ├── matrix.ts
+│   │   └── n8n.ts
 │   ├── index.ts
 │   └── tools
 │       ├── dimail.ts
-│       └── help.ts
+│       ├── help.ts
+│       ├── rappels-scheduler.ts
+│       └── rappels-store.ts
 ├── test
+│   ├── caldav-parse.test.ts
 │   ├── emails-no-domain.test.ts
 │   ├── emails.test.ts
 │   ├── history.test.ts
+│   ├── invite.test.ts
+│   ├── n8n-reply.test.ts
 │   ├── notice.test.ts
+│   ├── rappels.test.ts
 │   └── rooms-parse.test.ts
 └── tsconfig.json
-9 directories, 27 files
+10 directories, 38 files
