@@ -1,13 +1,12 @@
 {
   "url": "https://github.com/suitenumerique/drive",
   "name": "drive",
-  "description": "Une plateforme open-source de partage de fichiers collaboratif permettant le stockage, l'édition et la gestion granulaire des accès.",
+  "description": "Une plateforme open-source de partage de fichiers collaboratif permettant le stockage, l'édition et la gestion granulaire des accès aux documents.",
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
     "API & Intégrations",
     "Authentification & Accès",
-    "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
     "Sécurité & Conformité",
     "Infrastructure & Stockage",
@@ -20,10 +19,10 @@
     "Next.js",
     "Kubernetes",
     "Docker",
+    "Celery",
     "Playwright",
-    "JMeter",
     "Sentry",
-    "PostHog",
+    "JMeter",
     "Collabora",
     "OnlyOffice"
   ],
@@ -36,27 +35,28 @@
     "Docker & Conteneurs",
     "Kubernetes & Helm",
     "Authentification (composant)",
-    "Stockage objet",
-    "Tests"
+    "Tests",
+    "Celery & Queue asynchrone"
   ],
   "auth": {
     "methods": [
       "oauth2",
       "jwt",
-      "session",
       "sso"
     ],
     "providers": [
-      "ProConnect"
+      "Keycloak"
     ]
   },
-  "tests": "Playwright (E2E), JMeter (Load testing)",
-  "workflows": [
-    "Docker Hub workflow",
-    "CI/CD"
+  "tests": [
+    "Playwright",
+    "JMeter"
   ],
-  "lastActivity": "2026-09-11T10:35:22+02:00",
-  "status": "maintained",
+  "workflows": [
+    "Docker Hub workflow"
+  ],
+  "lastActivity": "2026-09-15T18:02:24+02:00",
+  "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
@@ -65,9 +65,8 @@
     "TypeScript",
     "Python",
     "Bases de données SQL",
-    "Sécurité & Auth",
     "Docker & Conteneurs",
     "CI/CD & GitHub Actions",
-    "Self-hosting & Infrastructure réseau"
+    "Sécurité & Auth"
   ]
 }

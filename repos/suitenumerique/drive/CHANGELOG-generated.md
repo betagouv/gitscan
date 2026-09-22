@@ -1,22 +1,21 @@
-## Changelog : drive (30 derniers jours, au 11 septembre 2026)
+## Changelog : drive (30 derniers jours, au 15 septembre 2026)
 
 ### Résumé
-Cette période a été marquée par l'introduction d'un système de restrictions d'accès plus puissant et flexible, ainsi que par une refonte majeure de la gestion des permissions en arrière-plan. La plateforme bénéficie également de nouveaux outils de monitoring et de tests de charge pour garantir une meilleure stabilité et performance.
+Cette période a été marquée par l'introduction d'un système de restriction d'accès avancé, permettant de sécuriser et d'isoler des dossiers ou fichiers de manière granulaire. Le projet a également bénéficié d'une refonte majeure de son moteur de permissions et de l'ajout de tests de charge pour garantir la stabilité et la performance de la plateforme.
 
 ### Évolutions fonctionnelles
-- **Nouveau système de restrictions** : gestion granulaire de l'accès aux dossiers, permettant d'activer ou désactiver des restrictions, d'isoler certains contenus des recherches et de mieux contrôler la visibilité dans les listes de premier niveau.
-- **Amélioration de la prévisualisation** : correction et amélioration du rendu des documents PDF.
-- **Interface utilisateur** : la vue "Récents" se rafraîchit désormais correctement après la modification d'un élément.
-- **Administration** : ajout de la possibilité d'abandonner une analyse de logiciel malveillant en cours.
-- **Sécurité** : renforcement des règles de suppression pour empêcher un créateur de supprimer un élément s'il n'en a plus l'accès.
+- **Nouveau système de restriction d'accès** : gestion granulaire permettant d'activer ou désactiver des restrictions sur des dossiers, d'isoler certains éléments de la recherche et de l'indexation, et de gérer l'accès via le déplacement de dossiers dans l'arborescence.
+- **Sécurité renforcée** : blocage de la suppression de fichiers par un créateur dont les droits ont été révoqués et contrôle strict des droits de création à la racine du drive.
+- **Améliorations de l'expérience utilisateur** : correction de l'affichage de la vue "Récents", meilleure gestion des langues de navigateur et optimisation du rendu des documents PDF.
+- **Administration** : ajout de la possibilité d'abandonner manuellement les analyses de malwares en cours.
 
 ### Évolutions techniques
-- **Refonte de l'architecture des permissions** : migration de la logique de calcul des droits et de résolution des rôles vers un composant backend dédié pour une meilleure modularité.
-- **Monitoring et performance** : intégration du suivi des performances via Sentry et ajout de scénarios de tests de charge (JMeter) pour simuler des sessions utilisateurs et des lectures intensives.
-- **Frontend** : migration vers la bibliothèque de composants unifiée `@gouvfr-lasuite/ui-components`.
-- **Tests** : amélioration de l'environnement de tests de bout en bout (E2E) et optimisation des tests unitaires sur les exceptions.
-- **Infrastructure et DevOps** : optimisation des scripts de base de données (psql), du Makefile et de la planification des tâches de détection de malwares via Helm.
+- **Refonte du moteur de permissions** : restructuration du backend pour séparer les capacités (*abilities*) en méthodes distinctes et déportation du calcul des permissions vers un composant dédié.
+- **Tests et performance** : intégration d'une suite de tests de charge avec JMeter (scénarios de session utilisateur et de lecture intensive) et amélioration de l'environnement de tests de bout en bout (E2E).
+- **Frontend** : migration vers la bibliothèque de composants `@gouvfr-lasuite/ui-components`.
+- **Infrastructure et DevOps** : optimisation des processus de build (Makefile, Docker), mise à jour des sources d'images (Minio) et planification des tâches de détection de malwares via Helm.
+- **Observabilité** : intégration du suivi de performance via Sentry.
 
 ### Autres changements
-- **Documentation** : ajout de la documentation concernant les paramètres de configuration du backend des permissions.
-- **Nettoyage** : suppression de variables d'environnement inutilisées.
+- **Documentation** : ajout de la documentation sur les paramètres de permissions backend et mise à jour du changelog.
+- **Projet** : ajout du badge DPG dans le README.
