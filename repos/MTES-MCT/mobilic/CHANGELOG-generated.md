@@ -1,28 +1,36 @@
-## Changelog : mobilic (30 derniers jours, au 11 septembre 2026)
+## Changelog : mobilic (30 derniers jours, au 21/09/2026)
 
 ### Résumé
-Cette période a été marquée par l'ajout de fonctionnalités clés telles que les notifications push et une nouvelle page dédiée au schéma pluriannuel. Nous avons également amélioré l'expérience utilisateur en fluidifiant la création de missions et en affinant la précision des statistiques et de l'historique des activités.
+Ce mois-ci, Mobilic a renforcé ses capacités de suivi et d'alerte, notamment via l'introduction de nouveaux avertissements en temps réel pour les saisies et une meilleure visibilité des seuils de repos pour les gestionnaires. L'interface a été enrichie de nouvelles pages d'information et modernisée pour offrir une meilleure expérience utilisateur et une conformité accrue aux standards d'accessibilité.
 
 ### Évolutions fonctionnelles
-- **Nouvelles fonctionnalités** :
-    - Ajout d'une page dédiée au schéma pluriannuel, incluant des améliorations d'accessibilité [#955](https://github.com/MTES-MCT/mobilic/pull/955).
-    - Implémentation des notifications push [#920](https://github.com/MTES-MCT/mobilic/pull/920).
-    - Ajout du logo Rota dans la section des partenaires [#940](https://github.com/MTES-MCT/mobilic/pull/940).
-- **Améliorations de l'expérience utilisateur** :
-    - Optimisation du parcours de création de mission via un accès direct depuis le menu de navigation et une redirection améliorée [#938](https://github.com/MTES-MCT/mobilic/pull/938).
-    - Amélioration de la gestion des activités (division d'activités et correction de l'affichage des labels dans l'historique) [#930](https://github.com/MTES-MCT/mobilic/pull/930).
-    - Optimisation de la saisie des dates de naissance (gestion de l'auto-focus).
-    - Désactivation automatique du bouton de sauvegarde si le texte de la bannière n'a pas été modifié.
-- **Corrections de bugs** :
-    - Amélioration de l'affichage et du comportement des notifications (largeur, langue de l'application et cohérence visuelle) [#932](https://github.com/MTES-MCT/mobilic/pull/932).
-    - Correction du calcul des statistiques de mission pour exclure les activités rejetées [#927](https://github.com/MTES-MCT/mobilic/pull/927).
-    - Rectification de la référence légale concernant la définition de la semaine civile [#939](https://github.com/MTES-MCT/mobilic/pull/939).
+- **Alertes et Notifications**
+    - Mise en place de bannières d'alerte pour les saisies en temps réel, avec une gestion améliorée de l'empilement et la possibilité de les masquer [#964](https://github.com/MTES-MCT/mobilic/pull/964).
+    - Introduction des notifications push pour améliorer le suivi des utilisateurs [#920](https://github.com/MTES-MCT/mobilic/pull/920).
+    - Amélioration de la visibilité et de la mise en forme des barres de notification.
+- **Interface Administrateur**
+    - Ajout d'une colonne de repos et d'alertes de seuil dans les vues hebdomadaires et mensuelles pour faciliter le pilotage.
+    - Amélioration de la gestion des employés (détection des utilisateurs inactifs, gestion des types de transport et d'activités).
+    - Migration du menu latéral vers le composant SideMenu du DSFR [#953](https://github.com/MTES-MCT/mobilic/pull/953).
+- **Nouvelles pages et contenus**
+    - Ajout d'une page dédiée au schéma pluriannuel et mise à jour de la déclaration d'accessibilité.
+    - Création d'une page "Partenaires" incluant le logo de Rota.
+- **Expérience Utilisateur (PWA & Mobile)**
+    - Optimisation du tunnel de création de mission, désormais accessible directement depuis le menu de navigation.
+    - Correction de bugs critiques, notamment l'écran blanc au chargement de l'application [#926](https://github.com/MTES-MCT/mobilic/pull/926).
+    - Correction des références légales concernant la définition de la semaine civile.
+    - Amélioration de la précision des données d'historique et des labels d'activité.
 
 ### Évolutions techniques
-- **Robustesse de la PWA** : Résolution des problèmes d'écrans blancs lors du chargement ou après un déploiement (gestion du cache) et application des recommandations SonarCloud.
-- **Architecture** : Refactorisation pour rendre le `ActionsContext` disponible globalement dans l'application [#949](https://github.com/MTES-MCT/mobilic/pull/949).
-- **Observabilité** : Amélioration du suivi des erreurs avec la capture des jetons de rafraîchissement invalides dans Sentry [#914](https://github.com/MTES-MCT/mobilic/pull/914).
-- **Stabilité** : Correction d'un problème d'écran blanc survenant lors du chargement initial de l'application [#926](https://github.com/MTES-MCT/mobilic/pull/926).
+- **Architecture et Refactoring**
+    - Migration de la récupération des seuils hebdomadaires du client vers le backend pour garantir la cohérence des données.
+    - Refactorisation de la gestion des types d'activités et du contexte d'actions pour une meilleure stabilité globale.
+    - Nettoyage du code (suppression de code mort et de gardes inutilisées).
+- **Accessibilité et Qualité**
+    - Amélioration de l'accessibilité via l'utilisation de composants natifs et une structure DOM optimisée.
+    - Résolution de nombreux avertissements et erreurs de linting sur l'ensemble du projet.
+    - Amélioration de la capture d'erreurs Sentry concernant les jetons de rafraîchissement (refresh tokens).
 
 ### Autres changements
-- Réécriture de la déclaration d'accessibilité.
+- Corrections de fautes de frappe sur la page d'accueil et les labels de l'interface.
+- Ajustements cosmétiques du header et de la navigation.
