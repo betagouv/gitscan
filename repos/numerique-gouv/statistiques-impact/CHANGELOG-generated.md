@@ -1,12 +1,14 @@
-## Changelog : statistiques-impact (30 derniers jours, au 02/09/2026)
+## Changelog : statistiques-impact (30 derniers jours, au 15 septembre 2026)
 
 ### Résumé
-Les récentes évolutions se sont concentrées sur la maintenance technique et l'alignement de l'environnement de démonstration avec la nouvelle architecture du projet, tout en simplifiant la structure des données.
+Les récentes évolutions permettent désormais de sauvegarder les données de soumission pour France Transfert et renforcent la fiabilité du projet grâce à de nouveaux tests. La gestion de la documentation a également été simplifiée pour s'appuyer directement sur l'historique des commits.
+
+### Évolutions fonctionnelles
+- Ajout de la fonctionnalité de sauvegarde des données de soumission pour France Transfert.
 
 ### Évolutions techniques
-- Mise à jour de la démo pour assurer sa compatibilité avec la nouvelle architecture du projet.
-- Simplification du modèle `Indicator` par la suppression de deux champs obsolètes.
-- Renforcement de la fiabilité avec l'ajout de tests pour la partie démo.
+- Amélioration de la couverture de tests avec l'ajout de tests pour la partie démonstration.
 
 ### Autres changements
-- Ajustement de la configuration du linting pour exclure les dossiers de migrations.
+- Simplification de la documentation par la suppression du fichier `CHANGELOG.md` au profit de l'historique des commits.
+- Corrections de diverses fautes de frappe.
