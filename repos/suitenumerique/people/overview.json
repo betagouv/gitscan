@@ -1,56 +1,64 @@
 {
   "url": "https://github.com/suitenumerique/people",
   "name": "people",
-  "description": "Une application dédiée à la gestion des utilisateurs et des équipes, permettant de distribuer les permissions au sein de l'écosystème La Suite.",
+  "description": "Application de gestion des utilisateurs, des équipes et de la distribution des permissions pour l'écosystème La Suite. Elle permet également la gestion des domaines de messagerie et des alias.",
   "language": "Python",
   "features": [
     "Gestion des utilisateurs & Permissions",
     "Gestion des équipes & Partenaires",
     "Authentification & Accès",
     "Administration & Backoffice",
-    "Gestion métier générale"
+    "Gestion des profils & Comptes"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
     "Django Rest Framework",
     "PostgreSQL",
     "Redis",
-    "Celery",
     "Keycloak",
-    "Docker"
+    "Celery",
+    "Docker",
+    "Next.js",
+    "uv"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "TypeScript / JavaScript",
-    "Python (scripts & backend)",
+    "React / Next.js",
     "Docker & Conteneurs",
-    "Node.js / NestJS",
+    "Python (scripts & backend)",
     "Authentification (composant)",
-    "Celery & Queue asynchrone"
+    "Celery & Queue asynchrone",
+    "Node.js / NestJS"
   ],
   "auth": {
     "methods": [
       "oauth2",
       "jwt",
-      "sso",
-      "session"
+      "session",
+      "sso"
     ],
     "providers": [
       "Keycloak"
     ]
   },
-  "tests": "pytest",
-  "lastActivity": "2026-08-19T14:56:16+02:00",
+  "tests": [
+    "pytest"
+  ],
+  "workflows": [
+    "GitHub Actions"
+  ],
+  "lastActivity": "2026-09-21T16:51:15Z",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
-    "TypeScript",
     "Python",
     "Bases de données SQL",
     "Sécurité & Auth",
-    "Docker & Conteneurs"
+    "Docker & Conteneurs",
+    "CI/CD & GitHub Actions",
+    "Node.js, NestJS & Express"
   ]
 }
