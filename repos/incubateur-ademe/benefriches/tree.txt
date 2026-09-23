@@ -1,4 +1,41 @@
 .
+├── .agents
+│   └── skills
+│       ├── adr
+│       │   └── SKILL.md
+│       ├── code-reviewer
+│       │   ├── SKILL.md
+│       │   └── reference
+│       │       ├── api.md
+│       │       ├── cross-cutting.md
+│       │       └── web.md
+│       ├── create-database-migration
+│       │   └── SKILL.md
+│       ├── create-e2e-test
+│       │   └── SKILL.md
+│       ├── e2e-coverage-check
+│       │   └── SKILL.md
+│       ├── fix-ci
+│       │   └── SKILL.md
+│       ├── react-best-practices
+│       │   ├── SKILL.md
+│       │   └── examples.md
+│       ├── reflect
+│       │   └── SKILL.md
+│       ├── run-e2e-tests
+│       │   └── SKILL.md
+│       ├── security-review
+│       │   └── SKILL.md
+│       ├── to-spec
+│       │   └── SKILL.md
+│       ├── to-tickets
+│       │   └── SKILL.md
+│       ├── wizard-form
+│       │   └── SKILL.md
+│       ├── worktree
+│       │   └── SKILL.md
+│       └── worktree-merge
+│           └── SKILL.md
 ├── .claude
 │   ├── agents
 │   │   ├── e2e-coverage-checker.md
@@ -61,6 +98,16 @@
 │       │   └── SKILL.md
 │       └── worktree-merge
 │           └── SKILL.md
+├── .codex
+│   ├── agents
+│   │   ├── e2e-coverage-checker.toml
+│   │   └── security-reviewer.toml
+│   ├── config.toml
+│   ├── hooks
+│   │   ├── block-env-read.sh
+│   │   ├── format-check.sh
+│   │   └── worktree-setup.sh
+│   └── hooks.json
 ├── .dockerignore
 ├── .env.e2e
 ├── .github
@@ -721,6 +768,8 @@
 │   │   │   ├── HomePage.ts
 │   │   │   ├── LoginPage.ts
 │   │   │   ├── MyEvaluationsPage.ts
+│   │   │   ├── OnboardingLegacyFlowPage.ts
+│   │   │   ├── OnboardingStepPage.ts
 │   │   │   ├── PhotovoltaicProjectCreationPage.ts
 │   │   │   ├── PhotovoltaicProjectUpdatePage.ts
 │   │   │   ├── SignupPage.ts
@@ -742,7 +791,8 @@
 │   │   │   ├── homepage
 │   │   │   │   └── homepage.spec.ts
 │   │   │   ├── onboarding
-│   │   │   │   ├── onboarding.fixtures.ts
+│   │   │   │   ├── fixtures.ts
+│   │   │   │   ├── onboarding-compatibility-legacy-flow.spec.ts
 │   │   │   │   └── onboarding.spec.ts
 │   │   │   ├── project-creation
 │   │   │   │   ├── photovoltaic
@@ -911,6 +961,8 @@
 │       │   │   │   ├── services-ecosystemiques.png
 │       │   │   │   └── valeurs-usage-services-ecosystemiques.png
 │       │   │   ├── mutabilite-hero.svg
+│       │   │   ├── onboarding
+│       │   │   │   └── mintsa.png
 │       │   │   ├── pictograms
 │       │   │   │   ├── buildings-uses
 │       │   │   │   │   ├── economic-activity
@@ -1761,7 +1813,9 @@
 │       │   │   │       │   └── useStepBack.tsx
 │       │   │   │       ├── mainHtmlTitle.ts
 │       │   │   │       ├── onboarding-from-compatibility-evaluation
-│       │   │   │       │   └── ProjectCreationFromCompatibilityEvaluationOnboarding.tsx
+│       │   │   │       │   ├── ProjectCreationFromCompatibilityEvaluationOnboarding.tsx
+│       │   │   │       │   ├── UseCaseList.tsx
+│       │   │   │       │   └── UseItem.tsx
 │       │   │   │       ├── photovoltaic-power-station
 │       │   │   │       │   ├── PhotovoltaicPowerStationCreationWizard.tsx
 │       │   │   │       │   ├── PhotovoltaicPowerStationStepper.tsx
@@ -2712,12 +2766,25 @@
 │       │   │   │           │   │   ├── CreateUserStructureForm.tsx
 │       │   │   │           │   │   └── index.tsx
 │       │   │   │           │   └── OnBoardingIdentityPage.tsx
+│       │   │   │           ├── methodology
+│       │   │   │           │   ├── OnboardingMethodologyPage.spec.tsx
+│       │   │   │           │   └── OnboardingMethodologyPage.tsx
+│       │   │   │           ├── step-shell
+│       │   │   │           │   ├── OnboardingSpeechBubble.tsx
+│       │   │   │           │   ├── OnboardingStepProgress.tsx
+│       │   │   │           │   ├── OnboardingStepShell.tsx
+│       │   │   │           │   ├── onboardingSteps.spec.ts
+│       │   │   │           │   ├── onboardingSteps.ts
+│       │   │   │           │   └── onboardingVariant.ts
+│       │   │   │           ├── testimonials
+│       │   │   │           │   └── OnboardingTestimonialsPage.tsx
+│       │   │   │           ├── welcome
+│       │   │   │           │   ├── OnboardingWelcomePage.spec.tsx
+│       │   │   │           │   └── OnboardingWelcomePage.tsx
 │       │   │   │           ├── when-not-to-use
 │       │   │   │           │   └── OnboardingWhenNotToUsePage.tsx
 │       │   │   │           └── when-to-use
-│       │   │   │               ├── OnboardingWhenToUsePage.tsx
-│       │   │   │               ├── UseCaseList.tsx
-│       │   │   │               └── UseItem.tsx
+│       │   │   │               └── OnboardingWhenToUsePage.tsx
 │       │   │   ├── projects
 │       │   │   │   ├── application
 │       │   │   │   │   ├── project-features
@@ -3249,11 +3316,13 @@
 │       │   │   │   │   ├── __tests__
 │       │   │   │   │   │   ├── authLinkNotReceivedHelpRequested.action.spec.ts
 │       │   │   │   │   │   ├── authTokenErrorHelpRequested.action.spec.ts
+│       │   │   │   │   │   ├── onboardingWelcomeHelpRequested.action.spec.ts
 │       │   │   │   │   │   └── supportChatListeners.spec.ts
 │       │   │   │   │   ├── authLinkNotReceivedHelpRequested.action.ts
 │       │   │   │   │   ├── authTokenErrorHelpRequested.action.ts
 │       │   │   │   │   ├── gateways
 │       │   │   │   │   │   └── SupportChatGateway.ts
+│       │   │   │   │   ├── onboardingWelcomeHelpRequested.action.ts
 │       │   │   │   │   └── supportChatListeners.ts
 │       │   │   │   └── infrastructure
 │       │   │   │       └── support-chat-service
@@ -3312,7 +3381,6 @@
 │       │   │   │       ├── SiteUpdateNavigationBlockerDialog.spec.tsx
 │       │   │   │       ├── SiteUpdateNavigationBlockerDialog.tsx
 │       │   │   │       ├── SiteUpdateStepper.tsx
-│       │   │   │       ├── SiteUpdateUrbanZoneStepper.tsx
 │       │   │   │       ├── SiteUpdateView.spec.tsx
 │       │   │   │       ├── SiteUpdateView.tsx
 │       │   │   │       ├── UpdateSiteMenuItem.spec.tsx
@@ -3506,6 +3574,10 @@
 │       │   │       │   │   └── StickyBottomBar.tsx
 │       │   │       │   ├── TabItem
 │       │   │       │   │   └── TabItem.tsx
+│       │   │       │   ├── Testimonies
+│       │   │       │   │   ├── TestimoniesCarousel.tsx
+│       │   │       │   │   ├── TestimonyCard.tsx
+│       │   │       │   │   └── testimonies.ts
 │       │   │       │   └── form
 │       │   │       │       ├── Address
 │       │   │       │       │   ├── SearchAddressAutocompleteContainer.tsx
@@ -3535,8 +3607,6 @@
 │       │   │       ├── hooks
 │       │   │       │   ├── useAddressSearch.spec.ts
 │       │   │       │   ├── useAddressSearch.ts
-│       │   │       │   ├── useBeforeUnloadWarning.spec.ts
-│       │   │       │   ├── useBeforeUnloadWarning.ts
 │       │   │       │   ├── useDebounce.ts
 │       │   │       │   ├── useHeaderHeight.ts
 │       │   │       │   ├── useIsSmallScreen.ts
@@ -3614,6 +3684,7 @@
 │   ├── feature-example.md
 │   ├── incidents
 │   │   └── 2026-06-connect-crm-outage.md
+│   ├── onboarding.md
 │   ├── scripts.md
 │   └── specs
 │       ├── 2026-03-23-buildings-reuse-and-construction-design.md
@@ -3896,4 +3967,4 @@
     ├── create-worktree.sh
     ├── prime-worktree.sh
     └── remove-worktree.sh
-1014 directories, 2884 files
+1041 directories, 2928 files
