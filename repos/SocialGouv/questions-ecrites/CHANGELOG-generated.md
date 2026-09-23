@@ -1,30 +1,29 @@
-## Changelog : questions-ecrites (30 derniers jours, au 21/08/2026)
+## Changelog : questions-ecrites (30 derniers jours, au 22/09/2026)
 
 ### Résumé
-Ce mois-ci, le projet a franchi une étape importante dans l'amélioration de la qualité des données extraites du Journal Officiel (JO). Les efforts se sont concentrés sur la modernisation de l'intelligence artificielle (passage au modèle Albert) et sur une extraction beaucoup plus précise des questions et de leur contexte. Parallèlement, une refonte majeure de la base de données a été effectuée pour stabiliser l'architecture et faciliter les évolutions futures.
+Ce mois-ci, les efforts se sont concentrés sur l'optimisation des performances de recherche et la fiabilisation de l'ingestion des données. Les recherches de questions similaires sont désormais plus rapides et plus robustes grâce à une meilleure gestion des index vectoriels. La gestion des structures administratives (bureaux et directions) a également été affinée pour garantir une meilleure précision dans l'attribution des données.
 
 ### Évolutions fonctionnelles
-- **Précision de l'extraction** : Amélioration significative de la capacité du système à isoler la question réelle et son contexte textuel au sein des documents du JO.
-- **Fiabilité de l'attribution** : Optimisation de l'attribution des questions aux bureaux grâce à l'intégration de nouveaux algorithmes et une meilleure gestion des workflows.
+- **Amélioration de l'ingestion** : Les téléchargements de données peuvent désormais reprendre là où ils s'étaient arrêtés au lieu de recommencer intégralement.
+- **Gestion des bureaux et directions** : Amélioration de la synchronisation et de la reconnaissance des structures administratives (bureaux/directions) à partir des données MIN15.
+- **Retours utilisateurs** : Ajout d'un champ de commentaire pour enrichir les retours de correction ([#59](https://github.com/SocialGouv/questions-ecrites/issues/59)).
 
 ### Évolutions techniques
-- **Intelligence Artificielle & NLP** :
-    - Migration des embeddings vers le modèle **Albert** pour améliorer la recherche sémantique.
-    - Amélioration de la robustesse du processus d'embedding face aux refus des garde-fous (guardrails).
-    - Ajout d'une fonction sigmoïde stable pour les calculs mathématiques.
-- **Base de données** :
-    - Refonte complète de l'historique des migrations via un "squash" d'Alembic pour simplifier la gestion du schéma.
-    - Création de nouvelles vues SQL pour la gestion des attributions et des allotissements du JO.
-    - Ajout de colonnes de cache et d'analyse (ex: `direction_algo_id`, colonnes d'analyse de questions) pour optimiser les performances.
-- **Ingestion & Analyse** :
-    - Amélioration du parsing des textes du JO (gestion des phrases uniques, élargissement des patterns de détection de questions).
-    - Optimisation de la déduplication des réponses et amélioration de l'ingestion des données historiques de l'Assemblée Nationale.
-    - Passage au streaming pour l'extraction des questions depuis PostgreSQL afin de réduire l'empreinte mémoire.
+- **Optimisation de la recherche vectorielle (pgvector)** :
+  - Amélioration des performances via l'utilisation d'index HNSW partiels pour accélérer les recherches par bureau ou direction.
+  - Renforcement de la compatibilité et de la détection de version de l'extension `pgvector`.
+  - Création de la table `question_similar_cache` pour accélérer l'affichage des résultats similaires.
+- **Intelligence Artificielle & Reranking** :
+  - Optimisation du processus de "reranking" par l'envoi des documents à l'API Albert par lots (batching), améliorant la stabilité et la vitesse.
+  - Meilleure gestion des erreurs et des timeouts lors des appels de calcul de similarité.
+- **Base de données & Performance** :
+  - Matérialisation de la vue `question_attributions_all` pour optimiser les requêtes de jointure.
+  - Sécurisation et robustesse des migrations de base de données (Alembic), notamment sur les procédures de retour en arrière (downgrade).
 - **Infrastructure & CI/CD** :
-    - Mise en conformité pour Kubernetes (gestion des UID/GID numériques).
-    - Renforcement de la qualité du code avec l'intégration de tests de type (**mypy**) et de sécurité (**bandit**) dans la CI.
-    - Mise à jour des pipelines de déploiement et des tâches planifiées (cronjobs).
+  - Simplification de l'architecture : suppression de Qdrant, `pgvector` étant désormais l'unique moteur de stockage vectoriel.
+  - Correction des pipelines de déploiement via ArgoCD.
+  - Optimisation de la consommation mémoire lors de l'ingestion des données du Sénat pour éviter les plantages.
 
 ### Autres changements
-- **Nettoyage** : Suppression de la fonctionnalité `office-attribution` et de plusieurs scripts d'ingestion obsolètes.
-- **Documentation** : Mise à jour de la documentation technique suite aux changements de schémas de base de données et aux nouvelles méthodes d'extraction.
+- **Documentation** : Mise à jour de la documentation technique concernant les mécanismes de scan itératif.
+- **CI/CD** : Mise à jour de la gestion des tags pour les jobs de backfill.
