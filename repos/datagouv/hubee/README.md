@@ -41,7 +41,7 @@ bin/rails db:migrate
 
 #### Brancher le portail sur le socle de développement
 
-Le portail consulte les démarches par l'API V1. En local, c'est le socle de développement (dépôt `hubee-socle-et-tests`) qui la sert, et qui fournit les variables du bloc « Client de l'API V1 » de `.env.example` :
+Le portail consulte les télédossiers par l'API V1. En local, c'est le socle de développement (dépôt `hubee-socle-et-tests`) qui la sert, et qui fournit les variables du bloc « Client de l'API V1 » de `.env.example` :
 
 1. Depuis le dépôt du socle, `rake env-portail` imprime ce bloc `.env` : le coller dans le `.env` du portail. La tâche ne lit que la configuration locale, le socle peut être éteint.
 2. Toujours depuis le socle, une fois celui-ci démarré et seedé (`rake start`), `rake portail-dossiers` crée des dossiers sur les deux démarches en accès portail du seed, `CERTDC` et `EtatCivil`, adressés au « Service instructeur de test 3 ». Chaque exécution en ajoute de nouveaux.
@@ -53,9 +53,9 @@ Tous les comptes de test du portail vivent dans un seul catalogue, `db/seeds/tes
 
 Le semis est déclaratif et rejouable : il réaligne rôle et habilitations sur le catalogue, sans jamais supprimer un agent, un rattachement ni une trace d'accès.
 
-Les codes des flux sensibles ne sont pas dans ce dépôt public : le catalogue les désigne par un symbole, résolu depuis `SEED_SENSITIVE_PROCESS_CODE_1` et `SEED_SENSITIVE_PROCESS_CODE_2`. Sans elles, les comptes concernés ne sont pas enrôlés et le semis le dit. En local, la première vaut le code de `SENSITIVE_PROCESS_CODES`.
+Les codes des flux sensibles ne sont pas dans ce dépôt public : le catalogue les désigne par un symbole, résolu depuis `SEED_SENSITIVE_DATA_STREAM_CODE_1` et `SEED_SENSITIVE_DATA_STREAM_CODE_2`. Sans elles, les comptes concernés ne sont pas enrôlés et le semis le dit. En local, la première vaut le code de `SENSITIVE_DATA_STREAM_CODES`.
 
-Il imprime le périmètre effectif et la MFA attendue de chaque compte : un `voit rien` signale une habilitation manquante, un `sans MFA` inattendu un code absent de `SENSITIVE_PROCESS_CODES`.
+Il imprime le périmètre effectif et la MFA attendue de chaque compte : un `voit rien` signale une habilitation manquante, un `sans MFA` inattendu un code absent de `SENSITIVE_DATA_STREAM_CODES`.
 
 ### 4. Lancer les tests
 

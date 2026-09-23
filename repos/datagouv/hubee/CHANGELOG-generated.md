@@ -1,24 +1,37 @@
-## Changelog : hubee (30 derniers jours, au 15 septembre 2026)
+## Changelog : hubee (30 derniers jours, au 22 septembre 2026)
 
 ### Résumé
-Ce mois-ci, hubee a franchi une étape importante dans la sécurisation des échanges et l'amélioration de l'expérience utilisateur. Les agents bénéficient désormais de fonctionnalités de recherche et de filtrage plus performantes sur le portail, ainsi que de la possibilité de télécharger des pièces jointes. Parallèlement, la sécurité a été considérablement renforcée par l'intégration de l'authentification multi-facteur (MFA) et la mise en place d'un socle OAuth2 pour l'API.
+Ce mois-ci, hubee a franchi des étapes importantes pour améliorer l'expérience des agents, notamment grâce à une meilleure gestion des pièces jointes (téléchargement facilité) et des outils de recherche de dossiers plus performants. La sécurité a été considérablement renforcée par l'intégration de nouveaux standards d'authentification et l'exigence d'une double authentification (MFA) pour les accès sensibles.
 
 ### Évolutions fonctionnelles
-- **Portail** : possibilité de télécharger les pièces reçues [#163](https://github.com/datagouv/hubee/issues/163).
-- **Portail** : amélioration de la recherche et du filtrage des démarches (recherche par numéro, filtrage sur plusieurs flux simultanés et maintien du tri).
-- **Portail** : consultation des démarches liées à son organisation [#128](https://github.com/datagouv/hubee/issues/128).
-- **Portail** : amélioration de la gestion des erreurs (affichage de pages 404 pour les démarches introuvables [#149](https://github.com/datagouv/hubee/issues/149) et pages 503 en cas de panne du service amont).
-- **Sécurité** : support de l'authentification multi-facteur (MFA) imposée par le fournisseur d'identité et exigence d'un second facteur pour les comptes à privilèges.
-- **Sécurité** : renforcement de la validation de l'identité pour les liens d'organisation (SIRET/INSEE).
+- **Gestion documentaire** : 
+    - Possibilité de télécharger des pièces reçues ([#163](https://github.com/datagouv/hubee/issues/163)).
+    - Amélioration de la visibilité des erreurs lors des échecs de téléchargement ou de remise de pièces.
+    - Enrichissement de l'historique avec l'inscription des actions de récupération de pièces.
+- **Recherche et navigation** :
+    - Recherche de dossiers par numéro (partiel ou complet).
+    - Filtrage amélioré permettant de sélectionner plusieurs flux simultanément.
+    - Amélioration du tri et de la persistance des filtres dans les listes.
+- **Interface utilisateur (Portail)** :
+    - Changement de terminologie pour plus de clarté : utilisation du terme "télédossiers" au lieu de "démarches".
+    - Affichage des noms de flux à côté de leurs codes pour une meilleure lisibilité.
+    - Amélioration de l'affichage des récapitulatifs et de l'historique des changements d'état.
+- **Accès** :
+    - Possibilité de consulter les dossiers liés à son organisation ([#128](https://github.com/datagouv/hubee/issues/128)).
 
 ### Évolutions techniques
-- **API & Sécurité** : mise en place du socle OAuth2 (mode `client_credentials`) et protection des endpoints par token avec attribution des appels.
-- **API & Sécurité** : intégration du protocole OpenID Connect (OIDC) avec ProConnect.
-- **API & Sécurité** : gestion automatique de la purge quotidienne des tokens expirés et uniformisation des réponses d'erreur (401 Unauthorized).
-- **Architecture** : refonte majeure de la logique du portail (organisation des données, gestion des accès via Pundit et séparation des responsabilités de livraison).
-- **CI/CD & Tests** : mise en place de "Review Apps" pour les Pull Requests [#134](https://github.com/datagouv/hubee/issues/134).
-- **CI/CD & Tests** : enrôlement automatique de comptes de test dans les environnements déployés [#154](https://github.com/datagouv/hubee/issues/154).
+- **Sécurité et Authentification** :
+    - Mise en place du socle OAuth2 (client_credentials) et support du protocole OIDC avec ProConnect.
+    - Renforcement de la sécurité pour les comptes à privilèges via l'exigence d'une authentification multi-facteur (MFA).
+    - Amélioration de la gestion des sessions et de la traçabilité des décisions d'accès en base de données.
+- **Architecture et API** :
+    - Montée de version majeure de la dépendance `hub-api-v1` (passage à la v5.0.0).
+    - Refactorisation importante de la gestion des accès (Pundit) et de la logique métier (utilisation d'organizers).
+    - Optimisation de la gestion des abonnements via la mise en cache.
+- **DevOps et Tests** :
+    - Mise en place de "Review Apps" pour tester les modifications directement sur les Pull Requests ([#134](https://github.com/datagouv/hubee/issues/134)).
+    - Amélioration de la suite de tests E2E (bout en bout) avec l'utilisation de navigateurs réels.
 
 ### Autres changements
-- **Documentation** : mise à jour des guides d'utilisation de l'API (runbooks), des processus de lecture du portail et des couches d'authentification.
-- **Maintenance** : amélioration de la journalisation (logging) des erreurs et des décisions d'accès.
+- **Documentation** : Mise à jour de la documentation de l'API et ajout de guides d'utilisation (runbooks) pour les clients API.
+- **Nettoyage** : Suppression de termes et de configurations obsolètes pour simplifier le code.

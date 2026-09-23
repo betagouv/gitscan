@@ -57,6 +57,8 @@
 │   │       ├── attachments_controller.rb
 │   │       ├── base_controller.rb
 │   │       ├── dashboard_controller.rb
+│   │       ├── deliveries
+│   │       │   └── states_controller.rb
 │   │       ├── deliveries_controller.rb
 │   │       ├── errors_controller.rb
 │   │       └── sessions_controller.rb
@@ -88,8 +90,8 @@
 │   │   └── portail
 │   │       ├── attachments
 │   │       │   ├── show
-│   │       │   │   ├── ensure_received_state.rb
-│   │       │   │   └── fetch_content.rb
+│   │       │   │   ├── download.rb
+│   │       │   │   └── ensure_received_state.rb
 │   │       │   └── show.rb
 │   │       ├── deliveries
 │   │       │   ├── index
@@ -98,7 +100,12 @@
 │   │       │   ├── index.rb
 │   │       │   ├── show
 │   │       │   │   └── find_delivery.rb
-│   │       │   └── show.rb
+│   │       │   ├── show.rb
+│   │       │   └── states
+│   │       │       ├── update
+│   │       │       │   ├── ensure_transition_allowed.rb
+│   │       │       │   └── write_state.rb
+│   │       │       └── update.rb
 │   │       └── sessions
 │   │           ├── create
 │   │           │   ├── check_authentication_level.rb
@@ -137,6 +144,7 @@
 │   │   ├── current.rb
 │   │   ├── data_package.rb
 │   │   ├── data_stream.rb
+│   │   ├── data_stream_access.rb
 │   │   ├── membership.rb
 │   │   ├── notification.rb
 │   │   ├── organization.rb
@@ -144,10 +152,12 @@
 │   │   ├── portail
 │   │   │   ├── access
 │   │   │   │   ├── authentication_levels.rb
+│   │   │   │   ├── data_stream_perimeter.rb
 │   │   │   │   ├── organization_perimeter.rb
-│   │   │   │   ├── process_perimeter.rb
 │   │   │   │   ├── second_factor.rb
-│   │   │   │   └── sensitive_processes.rb
+│   │   │   │   ├── sensitive_data_streams.rb
+│   │   │   │   ├── state_perimeter.rb
+│   │   │   │   └── state_transitions.rb
 │   │   │   ├── data_stream.rb
 │   │   │   ├── delivery
 │   │   │   │   ├── applicant.rb
@@ -159,11 +169,11 @@
 │   │   │   │   ├── recipient.rb
 │   │   │   │   └── summary.rb
 │   │   │   ├── delivery.rb
+│   │   │   ├── event_author.rb
 │   │   │   ├── pagination.rb
 │   │   │   ├── subscription
 │   │   │   │   └── list.rb
 │   │   │   └── subscription.rb
-│   │   ├── process_access.rb
 │   │   ├── provider_session.rb
 │   │   └── subscription.rb
 │   ├── policies
@@ -210,10 +220,13 @@
 │       │   │   ├── _filters.html.erb
 │       │   │   ├── _heading.html.erb
 │       │   │   ├── _pagination.html.erb
+│       │   │   ├── _state_form.html.erb
 │       │   │   ├── _state_menu.html.erb
 │       │   │   ├── index.html.erb
 │       │   │   └── show.html.erb
 │       │   ├── errors
+│       │   │   ├── attachment_content_unavailable.html.erb
+│       │   │   ├── delivery_event_limit_reached.html.erb
 │       │   │   ├── internal_server_error.html.erb
 │       │   │   ├── not_found.html.erb
 │       │   │   ├── service_unavailable.html.erb
@@ -272,7 +285,7 @@
 │   │   ├── inflections.rb
 │   │   ├── pagy.rb
 │   │   ├── pro_connect.rb
-│   │   ├── sensitive_processes.rb
+│   │   ├── sensitive_data_streams.rb
 │   │   ├── sentry.rb
 │   │   └── strong_migrations.rb
 │   ├── locales
@@ -306,7 +319,8 @@
 │   │   ├── 20260805141910_create_process_accesses.rb
 │   │   ├── 20260806092109_create_access_decisions.rb
 │   │   ├── 20260826153010_add_insee_code_to_organization_links.rb
-│   │   └── 20260827133749_create_doorkeeper_tables.rb
+│   │   ├── 20260827133749_create_doorkeeper_tables.rb
+│   │   └── 20260918140000_rename_process_accesses_to_data_stream_accesses.rb
 │   ├── queue_schema.rb
 │   ├── schema.rb
 │   ├── seeds
@@ -322,7 +336,7 @@
 │   ├── portail
 │   │   ├── accueil.feature
 │   │   ├── connexion_proconnect.feature
-│   │   └── demarches.feature
+│   │   └── teledossiers.feature
 │   ├── step_definitions
 │   │   ├── .keep
 │   │   └── portail_steps.rb
@@ -336,6 +350,7 @@
 │   │   ├── hub_api
 │   │   │   ├── attachments.rb
 │   │   │   ├── calendar_day.rb
+│   │   │   ├── data_streams.rb
 │   │   │   ├── deliveries.rb
 │   │   │   └── subscriptions.rb
 │   │   ├── hub_api.rb
@@ -378,6 +393,7 @@
 │   │   ├── access_decisions.rb
 │   │   ├── agents.rb
 │   │   ├── data_packages.rb
+│   │   ├── data_stream_accesses.rb
 │   │   ├── data_streams.rb
 │   │   ├── memberships.rb
 │   │   ├── notifications.rb
@@ -386,7 +402,6 @@
 │   │   ├── organization_links.rb
 │   │   ├── organizations.rb
 │   │   ├── portail_deliveries.rb
-│   │   ├── process_accesses.rb
 │   │   ├── provider_sessions.rb
 │   │   └── subscriptions.rb
 │   ├── helpers
@@ -406,8 +421,8 @@
 │   │   └── portail
 │   │       ├── attachments
 │   │       │   ├── show
-│   │       │   │   ├── ensure_received_state_spec.rb
-│   │       │   │   └── fetch_content_spec.rb
+│   │       │   │   ├── download_spec.rb
+│   │       │   │   └── ensure_received_state_spec.rb
 │   │       │   └── show_spec.rb
 │   │       ├── deliveries
 │   │       │   ├── index
@@ -416,7 +431,12 @@
 │   │       │   ├── index_spec.rb
 │   │       │   ├── show
 │   │       │   │   └── find_delivery_spec.rb
-│   │       │   └── show_spec.rb
+│   │       │   ├── show_spec.rb
+│   │       │   └── states
+│   │       │       ├── update
+│   │       │       │   ├── ensure_transition_allowed_spec.rb
+│   │       │       │   └── write_state_spec.rb
+│   │       │       └── update_spec.rb
 │   │       └── sessions
 │   │           ├── create
 │   │           │   ├── check_authentication_level_spec.rb
@@ -442,6 +462,7 @@
 │   │       ├── hub_api
 │   │       │   ├── attachments_spec.rb
 │   │       │   ├── calendar_day_spec.rb
+│   │       │   ├── data_streams_spec.rb
 │   │       │   ├── deliveries_spec.rb
 │   │       │   └── subscriptions_spec.rb
 │   │       └── pro_connect
@@ -451,6 +472,7 @@
 │   │   ├── access_decision_spec.rb
 │   │   ├── agent_spec.rb
 │   │   ├── data_package_spec.rb
+│   │   ├── data_stream_access_spec.rb
 │   │   ├── data_stream_spec.rb
 │   │   ├── membership_spec.rb
 │   │   ├── notification_spec.rb
@@ -459,18 +481,21 @@
 │   │   ├── portail
 │   │   │   ├── access
 │   │   │   │   ├── authentication_levels_spec.rb
+│   │   │   │   ├── data_stream_perimeter_spec.rb
 │   │   │   │   ├── organization_perimeter_spec.rb
-│   │   │   │   ├── process_perimeter_spec.rb
 │   │   │   │   ├── second_factor_spec.rb
-│   │   │   │   └── sensitive_processes_spec.rb
+│   │   │   │   ├── sensitive_data_streams_spec.rb
+│   │   │   │   ├── state_perimeter_spec.rb
+│   │   │   │   └── state_transitions_spec.rb
+│   │   │   ├── data_stream_spec.rb
 │   │   │   ├── delivery
 │   │   │   │   ├── applicant_spec.rb
 │   │   │   │   ├── attachment_spec.rb
 │   │   │   │   └── criteria_spec.rb
+│   │   │   ├── event_author_spec.rb
 │   │   │   ├── subscription
 │   │   │   │   └── list_spec.rb
 │   │   │   └── subscription_spec.rb
-│   │   ├── process_access_spec.rb
 │   │   ├── provider_session_spec.rb
 │   │   └── subscription_spec.rb
 │   ├── policies
@@ -499,6 +524,8 @@
 │   │   └── portail
 │   │       ├── attachments_spec.rb
 │   │       ├── dashboard_spec.rb
+│   │       ├── deliveries
+│   │       │   └── states_spec.rb
 │   │       ├── deliveries_spec.rb
 │   │       └── sessions_spec.rb
 │   ├── routing
@@ -509,6 +536,7 @@
 │   ├── spec_helper.rb
 │   ├── support
 │   │   ├── hub_api.rb
+│   │   ├── portail_hub_api.rb
 │   │   ├── proconnect.rb
 │   │   ├── semantic_logger.rb
 │   │   ├── shared_examples_for_boolean_filter_scope.rb
@@ -529,4 +557,4 @@
     ├── .keep
     └── javascript
         └── .keep
-149 directories, 382 files
+155 directories, 404 files
