@@ -48,6 +48,13 @@
 │   ├── database_manager.py
 │   └── models.py
 ├── deleted_dossiers_checker.py
+├── dn
+│   ├── README.md
+│   ├── __init__.py
+│   ├── __main__.py
+│   ├── client.py
+│   ├── extract.py
+│   └── formatter.py
 ├── docker-compose.override.yml
 ├── docker-compose.yml
 ├── docs
@@ -87,9 +94,11 @@
 │   │   │   ├── README.md
 │   │   │   ├── __tests__
 │   │   │   │   ├── README.md
+│   │   │   │   ├── useAutoSync.spec.js
 │   │   │   │   ├── useDemarcheContext.spec.js
 │   │   │   │   ├── useNotification.spec.js
 │   │   │   │   └── useSyncStatus.spec.js
+│   │   │   ├── useAutoSync.js
 │   │   │   ├── useDemarcheContext.js
 │   │   │   ├── useNotification.js
 │   │   │   └── useSyncStatus.js
@@ -120,10 +129,6 @@
 ├── package.json
 ├── poetry.lock
 ├── pyproject.toml
-├── queries.py
-├── queries_extract.py
-├── queries_graphql.py
-├── queries_util.py
 ├── repetable_processor.py
 ├── schema_utils.py
 ├── static
@@ -200,6 +205,11 @@
 │           ├── database
 │           │   ├── test_database_manager.py
 │           │   └── test_models.py
+│           ├── dn
+│           │   ├── __init__.py
+│           │   ├── test_client.py
+│           │   ├── test_extract.py
+│           │   └── test_formatter.py
 │           ├── grist
 │           │   ├── test_client.py
 │           │   └── test_column_cache.py
@@ -215,7 +225,6 @@
 │           ├── test_deleted_dossiers_checker.py
 │           ├── test_grist_processor.py
 │           ├── test_hide_id_columns.py
-│           ├── test_queries_util.py
 │           ├── test_repetable_processor.py
 │           ├── test_schema_utils.py
 │           ├── test_sync_manager.py
@@ -224,7 +233,7 @@
 │               ├── test_formatter.py
 │               ├── test_log.py
 │               ├── test_log_progress.py
-│               └── test_queries_extract.py
+│               └── test_timing.py
 └── utils
     ├── README.md
     ├── __init__.py
@@ -232,5 +241,6 @@
     ├── constants.py
     ├── formatter.py
     ├── log.py
-    └── socketio.py
-40 directories, 195 files
+    ├── socketio.py
+    └── timing.py
+42 directories, 203 files

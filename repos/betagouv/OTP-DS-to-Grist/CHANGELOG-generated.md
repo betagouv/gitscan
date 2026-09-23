@@ -1,17 +1,16 @@
-## Changelog : OTP-DS-to-Grist (30 derniers jours, au 11 septembre 2026)
+## Changelog : OTP-DS-to-Grist (30 derniers jours, au 21 septembre 2026)
 
 ### Résumé
-Cette période a été marquée par l'amélioration de la précision des données exportées grâce à l'introduction de filtres multiples et la correction de problèmes d'affichage dans les tableaux. Le projet a également bénéficié d'un nettoyage important du code et d'une optimisation des processus de synchronisation pour gagner en stabilité.
+Ce mois-ci, le connecteur a gagné en puissance avec l'introduction de la synchronisation automatique pour plusieurs démarches simultanées et l'ajout de filtres multiples. Nous avons également renforcé la fiabilité du système en corrigeant des problèmes de perte de données et en améliorant l'assistance utilisateur grâce à la mise à jour des agents intelligents.
 
 ### Évolutions fonctionnelles
-- Ajout de la gestion de filtres multiples pour affiner l'exportation des données ([#459](https://github.com/betagouv/OTP-DS-to-Grist/issues/459))
-- Amélioration de la section d'aide (mise à jour des liens et support des variables d'environnement) ([#487](https://github.com/betagouv/OTP-DS-to-Grist/issues/487))
-- Correction de l'affichage des blocs répétables (suppression des colonnes vides dans la table des champs) ([#468](https://github.com/betagouv/OTP-DS-to-Grist/issues/468))
+- **Synchronisation et filtrage :** gestion de la synchronisation automatique pour plusieurs démarches en parallèle ([#491](https://github.com/betagouv/OTP-DS-to-Grist/issues/491)) et ajout de la possibilité d'utiliser plusieurs filtres ([#459](https://github.com/betagouv/OTP-DS-to-Grist/issues/459)).
+- **Fiabilité :** correction d'un bug provoquant la perte de données dans les champs de type "carte" ([#497](https://github.com/betagouv/OTP-DS-to-Grist/issues/497)).
+- **Assistance :** mise à jour des agents d'aide (IA) et amélioration de la gestion des liens d'aide via des variables d'environnement ([#487](https://github.com/betagouv/OTP-DS-to-Grist/issues/487)).
 
 ### Évolutions techniques
-- Optimisation de la synchronisation automatique : suppression de routes inutilisées et renforcement de la couverture de tests ([#478](https://github.com/betagouv/OTP-DS-to-Grist/issues/478))
-- Refactoring du code : extraction de la classe `ColumnCache` pour une meilleure modularité ([#472](https://github.com/betagouv/OTP-DS-to-Grist/issues/472))
-- Nettoyage technique : suppression de code mort et maintenance des agents ([#477](https://github.com/betagouv/OTP-DS-to-Grist/issues/477), [#501](https://github.com/betagouv/OTP-DS-to-Grist/issues/501))
+- **Refactorisation et optimisation :** extraction de la classe `ColumnCache` ([#472](https://github.com/betagouv/OTP-DS-to-Grist/issues/472)) et nettoyage du code via la suppression de code mort et de routes inutilisées ([#477](https://github.com/betagouv/OTP-DS-to-Grist/issues/477), [#478](https://github.com/betagouv/OTP-DS-to-Grist/issues/478)).
+- **Architecture :** mise en place de sous-agents pour le module Opencode ([#501](https://github.com/betagouv/OTP-DS-to-Grist/issues/501)).
 
 ### Autres changements
-- Documentation : suppression du fichier `technique.md`
+- **Maintenance et environnement :** optimisation de la configuration Docker et de l'environnement Codespace ([#509](https://github.com/betagouv/OTP-DS-to-Grist/issues/509)), maintenance du module DN ([#515](https://github.com/betagouv/OTP-DS-to-Grist/issues/515)) et mise à jour de la documentation.
