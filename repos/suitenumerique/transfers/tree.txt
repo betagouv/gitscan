@@ -27,6 +27,7 @@
 │   ├── scalingo_postcompile
 │   ├── scalingo_postfrontend
 │   ├── scalingo_run_web
+│   ├── smoke-test-front
 │   └── update_openapi_schema
 ├── compose.yaml
 ├── docs
@@ -85,20 +86,25 @@
     │   │   │   ├── 0004_alter_user_sub.py
     │   │   │   ├── 0005_transferfile_scan_fields.py
     │   │   │   ├── 0006_transfer_confidential_transfer_encryption_chunk_size_and_more.py
+    │   │   │   ├── 0007_recipient_token_and_download_receipts.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── services
     │   │   │   ├── __init__.py
     │   │   │   ├── email.py
     │   │   │   ├── encryption.py
+    │   │   │   ├── recipient_activity.py
     │   │   │   ├── s3.py
     │   │   │   ├── s3_sweep.py
-    │   │   │   └── scan_auth.py
+    │   │   │   ├── scan_auth.py
+    │   │   │   └── scan_budget.py
     │   │   ├── tasks.py
     │   │   ├── templates
     │   │   │   └── core
     │   │   │       └── emails
     │   │   │           ├── _base.html
+    │   │   │           ├── download_receipt.html
+    │   │   │           ├── download_receipt.txt
     │   │   │           ├── recipient_invitation.html
     │   │   │           └── recipient_invitation.txt
     │   │   ├── templatetags
@@ -123,7 +129,9 @@
     │   │   │   ├── test_s3_cleanup_transfer.py
     │   │   │   ├── test_s3_content_disposition.py
     │   │   │   ├── test_s3_live_smoke.py
-    │   │   │   └── test_scan_auth.py
+    │   │   │   ├── test_scan_auth.py
+    │   │   │   ├── test_services_email.py
+    │   │   │   └── test_tasks_invitations.py
     │   │   └── urls.py
     │   ├── entrypoint
     │   ├── gunicorn.conf.py
@@ -143,7 +151,8 @@
     │   ├── Dockerfile
     │   ├── README.md
     │   ├── caddy
-    │   │   └── Caddyfile
+    │   │   ├── Caddyfile
+    │   │   └── Caddyfile.test.ts
     │   ├── cunningham.ts
     │   ├── eslint.config.mjs
     │   ├── i18next.config.ts
@@ -153,10 +162,9 @@
     │   ├── package.json
     │   ├── public
     │   │   ├── images
-    │   │   │   ├── lasuite-territoriale.svg
-    │   │   │   ├── republique-francaise.svg
     │   │   │   ├── transferts-favicon.svg
     │   │   │   ├── transferts-icon.svg
+    │   │   │   ├── transferts-logo.png
     │   │   │   ├── transferts-logo.svg
     │   │   │   └── transferts-wordmark.svg
     │   │   ├── locales
@@ -183,6 +191,7 @@
     │   │   │   │   └── utils.ts
     │   │   │   ├── layouts
     │   │   │   │   └── components
+    │   │   │   │       ├── gaufre.tsx
     │   │   │   │       ├── main
     │   │   │   │       │   ├── MainLayout.tsx
     │   │   │   │       │   ├── _index.scss
@@ -215,8 +224,8 @@
     │   │   │   │   │   ├── FileItem.tsx
     │   │   │   │   │   ├── HomeLanding.tsx
     │   │   │   │   │   ├── RecipientInput.tsx
+    │   │   │   │   │   ├── RecipientStatusList.tsx
     │   │   │   │   │   ├── TransferDetail.tsx
-    │   │   │   │   │   ├── TransferFailed.tsx
     │   │   │   │   │   ├── TransferForm.tsx
     │   │   │   │   │   ├── TransferStatusBadge.tsx
     │   │   │   │   │   ├── TransferSuccess.tsx
@@ -249,15 +258,16 @@
     │   │   │       │   └── index.ts
     │   │   │       ├── string-helper
     │   │   │       │   └── index.ts
-    │   │   │       └── use-debounced-value
+    │   │   │       ├── use-debounced-value
+    │   │   │       │   └── index.ts
+    │   │   │       └── user-facing-error
+    │   │   │           ├── index.test.ts
     │   │   │           └── index.ts
     │   │   ├── main.tsx
     │   │   ├── routes
     │   │   │   ├── __root.tsx
     │   │   │   ├── _app
     │   │   │   │   ├── confirm
-    │   │   │   │   │   └── $id.tsx
-    │   │   │   │   ├── confirm-failed
     │   │   │   │   │   └── $id.tsx
     │   │   │   │   ├── index.tsx
     │   │   │   │   └── transfers
@@ -283,4 +293,4 @@
     │   └── vitest.config.ts
     └── keycloak
         └── realm.json
-70 directories, 215 files
+70 directories, 225 files
