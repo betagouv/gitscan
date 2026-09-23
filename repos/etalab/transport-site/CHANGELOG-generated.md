@@ -1,14 +1,14 @@
-## Changelog : transport-site (30 derniers jours, au 19 septembre 2026)
+## Changelog : transport-site (30 derniers jours, au 22 septembre 2026)
 
 ### Résumé
-Ce mois-ci, les évolutions se sont concentrées sur le renforcement de la validation des données de transport (notamment le format NeTEx) et l'amélioration de l'interface utilisateur. Des optimisations techniques ont également été apportées pour améliorer la sécurité, la stabilité et la maintenance de la plateforme.
+Ce mois-ci, les évolutions se sont concentrées sur l'amélioration de l'interface d'administration (recherche et gestion des jeux de données) et sur le perfectionnement des outils de validation des données NeTEx. Des optimisations techniques ont également été apportées pour renforcer la sécurité (chiffrement des cookies) et la précision du traitement des flux de données (GTFS-RT, GBFS).
 
 ### Évolutions fonctionnelles
-- **Amélioration de la validation NeTEx** : sélection automatique de la version XSD selon la date de publication [#5602, #5600, #5599], affichage de la version utilisée [#5607], tri des erreurs par criticité décroissante [#5604] et correction de l'affichage en cas d'erreur de validation [#5606].
-- **Interface utilisateur** : optimisation de la mise en page des réutilisations [#5623], correction de la hiérarchie des titres HTML pour l'accessibilité [#5624] et ajout de nouvelles variantes pour le composant `ColorfulButton` [#5603].
-- **Données** : mise à jour de la logique de détection des opérateurs pour le format GBFS [#5626].
+- **Interface d'administration** : Amélioration de la recherche des jeux de données [#5633](https://github.com/etalab/transport-site/issues/5633) et ajout d'un menu contextuel pour faciliter les actions sur les jeux de données [#5631](https://github.com/etalab/transport-site/issues/5631).
+- **Validation NeTEx** : Amélioration de l'expérience de validation avec le tri par criticité décroissante [#5604](https://github.com/etalab/transport-site/issues/5604), l'affichage de la version XSD utilisée [#5607](https://github.com/etalab/transport-site/issues/5607) et la correction de l'affichage en cas de données non valides [#5606](https://github.com/etalab/transport-site/issues/5606).
+- **Interface utilisateur** : Optimisation des mises en page pour les réutilisations [#5623](https://github.com/etalab/transport-site/issues/5623), correction de la hiérarchie des titres HTML [#5624](https://github.com/etalab/transport-site/issues/5624) et ajout de nouvelles variantes pour les composants de boutons [#5603](https://github.com/etalab/transport-site/issues/5603).
 
 ### Évolutions techniques
-- **Sécurité** : mise en place du chiffrement des cookies [#5619].
-- **Refactoring** : réduction de la duplication de code [#5618] et refonte de la page de détails des datasets [#5629].
-- **Infrastructure et maintenance** : désactivation du polling IRVE dynamique sur les environnements de staging, de développement et sur le worker de production [#5621], mise à jour du fichier de protocole GTFS-RT [#5617], correction d'un bug d'affichage CSS lié à la minification [#5616] et résolution d'une erreur de suivi via Sentry [#5610].
+- **Traitement des données et protocoles** : Mise à jour du fichier `.proto` GTFS-RT [#5617](https://github.com/etalab/transport-site/issues/5617), amélioration de la détection des opérateurs GBFS [#5626](https://github.com/etalab/transport-site/issues/5626) et affinement de la logique de sélection des schémas XSD pour NeTEx (basée sur la date de publication et les métadonnées) [#5602](https://github.com/etalab/transport-site/issues/5602), [#5600](https://github.com/etalab/transport-site/issues/5600), [#5599](https://github.com/etalab/transport-site/issues/5599).
+- **Sécurité et infrastructure** : Mise en place du chiffrement des cookies [#5619](https://github.com/etalab/transport-site/issues/5619) et désactivation du polling dynamique IRVE sur les environnements de développement et de staging [#5621](https://github.com/etalab/transport-site/issues/5621).
+- **Maintenance et refactoring** : Refactorisation de la page de détails des jeux de données [#5629](https://github.com/etalab/transport-site/issues/5629) et réduction de la duplication de code [#5618](https://github.com/etalab/transport-site/issues/5618). Correction d'un bug d'affichage CSS via la mise à jour de `css-loader` [#5616](https://github.com/etalab/transport-site/issues/5616) et résolution d'une erreur de monitoring Sentry [#5610](https://github.com/etalab/transport-site/issues/5610).
