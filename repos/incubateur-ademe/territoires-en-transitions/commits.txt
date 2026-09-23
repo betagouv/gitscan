@@ -1,3 +1,78 @@
+2026-09-22T22:50:10+02:00 - aacee69 - Fred Arnoux : feat(indicateurs): permet de déclarer un indicateur non applicable à une collectivité
+2026-09-22T21:29:59+02:00 - 0220ea2 - Fred Arnoux : chore(plans): retire les liens vers l'application panier
+2026-09-22T17:59:18+02:00 - 38631da - Gaël Servaud : feat(collectivites): chaque levier affiche les actions déjà rattachées
+2026-09-22T16:37:25+02:00 - 6293ecc - Gaël Servaud : feat(collectivites): page des leviers de la collectivité, en lecture
+2026-09-22T16:25:07+02:00 - 1cfe344 - Fred Arnoux : fix(webhooks): send collectiviteId as a string in commun fiche-action payload
+2026-09-22T15:53:05+02:00 - 93acc94 - Marc Rutkowski : refactor(referentiels): rend l'écriture des statuts composable dans une transaction
+2026-09-22T15:53:05+02:00 - 8d4497b - Marc Rutkowski : feat(referentiels): dérive le statut d'une action TE de sa valeur d'indicateur
+2026-09-22T15:53:05+02:00 - 696312b - Marc Rutkowski : feat(referentiels): dérive l'avancement d'une action de son score indicatif
+2026-09-22T15:53:05+02:00 - 4eb53fd - Marc Rutkowski : feat(referentiels): réactualise le score indicatif quand la valeur sélectionnée est modifiée ou supprimée
+2026-09-22T15:53:05+02:00 - 416b82b - Marc Rutkowski : feat(referentiels): gère la désélection d'une valeur d'indicateur utilisée dans le calcul de score
+2026-09-22T15:53:05+02:00 - 3e66a3e - Marc Rutkowski : fix(referentiels): réinitialise le statut quand la suppression en cascade vide la sélection
+2026-09-22T15:53:05+02:00 - 348c422 - Marc Rutkowski : fix(referentiels): valide l'action, l'indicateur et les valeurs avant d'écrire setValeursUtilisees
+2026-09-22T15:42:50+02:00 - b8decf5 - Emilien Escalle : ci(deployment): add environment URL to deployment workflows
+2026-09-22T15:40:35+02:00 - f3d32e3 - Leny Bernard : feat(collectivites): add identite(commune_membre, …) to the rules DSL
+2026-09-22T15:40:35+02:00 - 76756d8 - Leny Bernard : feat(pcaet): expect the plan chaleur froid from EPCI with a commune over 45 000 inhabitants
+2026-09-22T15:40:35+02:00 - 52930a3 - Leny Bernard : fix(pcaet): read only communes and keep the plan chaleur froid when an EPCI's composition is unknown
+2026-09-22T15:40:35+02:00 - 29b4960 - Leny Bernard : test(indicateurs): expect commune_membre among the allowed identite() fields
+2026-09-22T15:40:35+02:00 - 2337e67 - Leny Bernard : wording: remore MRAE
+2026-09-22T15:24:05+02:00 - e5a2e20 - Gaël Servaud : perf(collectivites): indexe la dernière analyse d'une collectivité
+2026-09-22T15:24:05+02:00 - 0816f96 - Gaël Servaud : feat(collectivites): l'analyse d'une collectivité se lit par collectivité, pas par identifiant de job
+2026-09-22T14:47:04+02:00 - df1fc26 - Gaël Servaud : fix(referentiels): nomme l'archive d'une mesure en UTF-8 encodé
+2026-09-22T14:47:04+02:00 - d41d5bd - Gaël Servaud : test(app): vérifie de bout en bout que l'archive vient du backend
+2026-09-22T14:47:04+02:00 - 62bd671 - Gaël Servaud : feat(app): télécharge l'archive d'une mesure depuis le backend
+2026-09-22T14:42:20+02:00 - b0ed292 - Gaël Servaud : feat(collectivites): une analyse sans levier aboutit et vide la mobilisation
+2026-09-22T14:42:20+02:00 - 95987e6 - Gaël Servaud : refactor(collectivites): le jsonb du job d'analyse s'appelle report, pas draft
+2026-09-22T12:12:17+02:00 - 5037f38 - Gaël Servaud : feat(collectivites): les admins de la collectivité qualifient la pertinence de ses leviers et de leurs catégories
+2026-09-22T12:07:55+02:00 - cb03893 - Gaël Servaud : refactor(collectivites): le mappeur de classification quitte le service, les erreurs de volet quittent tRPC
+2026-09-22T12:00:11+02:00 - c4566d6 - Gaël Servaud : feat(collectivites): la mobilisation se lit en nombre de fiches, par tout utilisateur vérifié
+2026-09-22T11:18:57+02:00 - 5e0b268 - Gaël Servaud : feat(collectivites): la pertinence d'un levier et de ses catégories se stocke par collectivité
+2026-09-22T11:16:55+02:00 - b7c6293 - Gaël Servaud : feat(referentiels): télécharge en une archive les documents d'une mesure
+2026-09-22T11:16:55+02:00 - 5dc07db - Gaël Servaud : test(preuves-archive): ancre les mocks du collecteur sur leur type réel
+2026-09-22T11:16:55+02:00 - 51e7492 - Gaël Servaud : refactor(archive): laisse l'appelant fixer les plafonds de l'archive
+2026-09-22T11:16:55+02:00 - 2532054 - Gaël Servaud : feat(documents): lit les documents d'une mesure et de ses sous-mesures
+2026-09-22T10:50:12+02:00 - a1d4947 - Gaël Servaud : feat(ui): ButtonGroup expose le bouton actif et le nom du groupe
+2026-09-22T10:50:05+02:00 - f42732c - Gaël Servaud : feat(collectivites): borne l'analyse à 60 min et conserve les jetons déjà dépensés
+2026-09-22T10:50:05+02:00 - 0c997b1 - Gaël Servaud : refactor(collectivites): centralise le routage par enjeu et nomme l'analyse partout
+2026-09-22T10:41:28+02:00 - fd85068 - Gaël Servaud : refactor(documents): lit les documents par portée, au lieu d'une méthode par origine
+2026-09-22T10:36:54+02:00 - f136ede - Fred Arnoux : chore(app): une seule image par commit, la config arrive au runtime
+2026-09-22T10:05:45+02:00 - fa67f0f - Gaël Servaud : test(ui): l'en-tête de l'Accordion réagit à la touche Entrée
+2026-09-22T10:05:45+02:00 - 23c9028 - Gaël Servaud : fix(ui): l'Accordion s'ouvre avec la touche Entrée
+2026-09-22T09:09:03+02:00 - da20900 - Gaël Servaud : refactor(collectivites): les types pg des volets GES sortent du module d'analyse
+2026-09-21T18:49:40+02:00 - f0e4342 - Leny Bernard : feat(pcaet): declare a SCoT-AEC at step 0
+2026-09-21T18:49:40+02:00 - bd449fa - Leny Bernard : fix(pcaet): do not submit the SCoT-AEC declaration before its context lands
+2026-09-21T18:49:40+02:00 - 8b56972 - Leny Bernard : fix(pcaet): align "Dossier non transmis" left in the instruction list
+2026-09-21T18:49:40+02:00 - 8a4c0c3 - Leny Bernard : fix(pcaet): complete the instruction rules fixture with isScotAec
+2026-09-21T18:20:33+02:00 - 6063891 - Gaël Servaud : fix(documents): nomme le fichier introuvable sur les documents d'une demande ou d'un audit
+2026-09-21T17:50:36+02:00 - 92e3515 - Gaël Servaud : feat(collectivites): note de 0 a 3 la mobilisation d'une collectivite sur chaque volet
+2026-09-21T17:50:36+02:00 - 8f69734 - Gaël Servaud : fix(plans): le schema de classification cesse d'etre refuse par Gemini
+2026-09-21T17:50:36+02:00 - 748290d - Gaël Servaud : feat(llm): enregistre les jetons servis depuis le cache
+2026-09-21T17:35:14+02:00 - 065b7db - Leny Bernard : fix(pcaet): move the published alert inside the published step
+2026-09-21T17:34:59+02:00 - 7b93ab5 - Leny Bernard : feat(pcaet): open the plan from the instruction dossier
+2026-09-21T16:46:27+02:00 - 98db8c3 - Leny Bernard : feat(pcaet): add transport to the vulnérabilité socle
+2026-09-21T16:29:35+02:00 - 091e836 - Gaël Servaud : fix(documents): un fichier sans octets ne fait plus disparaître le document d'une demande ou d'un audit
+2026-09-21T16:27:20+02:00 - f7bacb7 - Leny Bernard : fix(pcaet): complete the domain spec fixture with parentId
+2026-09-21T16:27:20+02:00 - 1e6a858 - Leny Bernard : feat(pcaet): decline a vulnérabilité thématique into sub-thématiques
+2026-09-21T16:07:59+02:00 - 7411b9a - Emilien Escalle : chore: enhance db-restore-local-from-prod-backup command
+2026-09-21T15:50:08+02:00 - a2f7a9b - Gaël Servaud : fix(documents): décrit le fichier introuvable sur les documents du référentiel
+2026-09-21T15:37:24+02:00 - b93c7b8 - Gaël Servaud : refactor(app): nomme document ce que l'interface appelle document
+2026-09-21T15:20:22+02:00 - c497e32 - Gaël Servaud : fix(documents): un fichier confidentiel ne fait plus disparaître le document attendu
+2026-09-21T14:52:08+02:00 - ca60b58 - Gaël Servaud : fix(documents): décrit le fichier introuvable au lieu de faire échouer la liste des documents d'une mesure
+2026-09-21T14:12:18+02:00 - c618b4f - Fred Arnoux : feat(webhooks): send collectiviteId in commun fiche-action payload
+2026-09-21T11:10:25+02:00 - 7ee92e2 - Leny Bernard : feat(pcaet): drop the impact study, the EES was the same piece
+2026-09-21T10:48:38+02:00 - 36687cb - Emilien Escalle : feat(electrification): add logo to header
+2026-09-21T09:44:17+02:00 - c9a765d - Gaël Servaud : test(documents): couvre le menu dont chaque action est masquée
+2026-09-21T09:44:17+02:00 - b5622fc - Gaël Servaud : refactor(documents): déclare la visibilité des actions par `visibleWhen`
+2026-09-21T09:44:17+02:00 - 686ee9f - Gaël Servaud : refactor(documents): déclare chaque action de DocumentCard comme un enfant
+2026-09-21T09:17:12+02:00 - e40e2e5 - Leny Bernard : fix(pcaet): name the démarche after its launch year, and settle the adoption date on Paris time
+2026-09-21T09:17:12+02:00 - 907d0fd - Leny Bernard : feat(pcaet): let an off-platform deposit reach the services that cover the collectivité
+2026-09-21T09:17:12+02:00 - 88d2293 - Leny Bernard : feat(pcaet): start a démarche at finalisation when the PCAET was reviewed off-platform
+2026-09-18T17:27:13+02:00 - e960143 - Leny Bernard : refactor(pcaet): rename the instruction list sort key to dateLancement
+2026-09-18T17:27:13+02:00 - 798ed47 - Leny Bernard : feat(pcaet): allow bypassing the diagnostic guard with DEMARCHE_PCAET_BYPASS_DIAGNOSTIC
+2026-09-18T17:27:13+02:00 - 66df87f - Leny Bernard : feat(pcaet): ask for the adoption date when validating the final deposit
+2026-09-18T17:27:13+02:00 - 6595786 - Leny Bernard : fix(ui): drop the date field's calendar button where the native one shows
+2026-09-18T15:35:55+02:00 - 00c07da - Leny Bernard : feat(pcaet): notify services and pilotes along the instruction cycle
+2026-09-18T09:59:54+02:00 - cc0e334 - Fred Arnoux : fix(plans): redirige /actions/:actionId vers l'onglet détails
 2026-09-17T16:17:43+02:00 - c5c0c8c - Marc Rutkowski : feat(referentiels): ajoute le filtre et la colonne "Volets" dans le tableau du référentiel CR
 2026-09-17T16:17:43+02:00 - a7bbf7c - Marc Rutkowski : feat(referentiels): expose les volets du programme associés aux actions du référentiel CR
 2026-09-16T15:23:12+02:00 - 929fc8e - Gaël Servaud : refactor(documents): aligne les fichiers de la bibliothèque sur l'ADR 0003

@@ -1,55 +1,21 @@
-## Changelog : territoires-en-transitions (30 derniers jours, au 17 septembre 2026)
+## Changelog : territoires-en-transitions (30 derniers jours, au 22 septembre 2026)
 
 ### Résumé
-Ce mois a été marqué par trois évolutions majeures : l'intégration complète de l'authentification via les fournisseurs d'identité (OIDC/ProConnect), le déploiement du nouveau processus d'instruction pour les PCAET (permettant un suivi en trois étapes et un tableau de bord dédié), et la transition vers le nouveau référentiel CR. La plateforme est devenue plus robuste avec un système de dépôt de documents sécurisé et une interface utilisateur plus intuitive et accessible.
+Ce mois a été marqué par une avancée majeure dans la gestion des démarches de transition, notamment pour le PCAET, avec l'intégration complète du cycle d'instruction et de validation par les services de l'État. La plateforme renforce également sa sécurité et sa fluidité grâce à l'implémentation de l'authentification SSO (OIDC) et une refonte profonde de la gestion des documents et des référentiels réglementaires.
 
 ### Évolutions fonctionnelles
-
-**Authentification et Gestion des Utilisateurs**
-- Mise en œuvre de la connexion et de l'inscription via les fournisseurs d'identité OIDC (ProConnect et MonCompteAdeme).
-- Automatisation de l'affectation des agents à leur service respectif lors de la connexion.
-- Amélioration du parcours d'invitation et de liaison d'identité pour une gestion plus fluide des comptes.
-
-**Instruction PCAET et Démarches**
-- Nouveau parcours d'instruction en trois étapes pour les dossiers PCAET, avec un tableau de bord dédié pour suivre les demandes d'avis.
-- Ouverture des dossiers d'instruction aux services déconcentrés (DREAL, DDT) et aux services nationaux/régionaux.
-- Amélioration de la visibilité des dossiers pour les collectivités : accès aux avis, révision des pièces et suivi de l'avancement.
-- Intégration de l'IA pour l'analyse des plans par levier et la classification automatique des fiches.
-
-**Référentiels et Scoring**
-- Déploiement de la bascule vers le référentiel CR avec une modale de confirmation et une gestion améliorée de la navigation (affichage des référentiels archivés).
-- Amélioration de l'export des scores incluant désormais une feuille de "Personnalisation".
-- Mise à jour des indicateurs et des libellés pour plus de clarté dans le suivi des mesures.
-
-**Gestion des Documents**
-- Nouveau système de dépôt de documents sécurisé utilisant des jetons signés et un transport résumable.
-- Amélioration de la bibliothèque de documents : gestion des droits de lecture synchronisée avec le backend et possibilité de reclasser les documents.
-
-**Interface Utilisateur (UI/UX)**
-- Ajout de nouveaux composants : boutons "Split Button", variantes de boutons "Danger" et boutons de lien.
-- Amélioration de l'accessibilité des tableaux et de la navigation (en-têtes de colonnes fixes, indicateurs de tri visibles).
-- Optimisation des bannières d'information avec mémorisation de la fermeture.
+- **Gestion des démarches (PCAET) :** Mise en place du cycle complet d'instruction, incluant le dépôt de dossiers, la gestion des avis des services (DREAL, services nationaux), la validation par étapes et un tableau de bord de suivi des demandes.
+- **Transition de référentiels :** Déploiement de la bascule vers le nouveau référentiel (CR), incluant la migration automatique des commentaires et le recalcul des scores de conformité.
+- **Authentification et accès :** Intégration de l'authentification via ProConnect et MonCompteAdeme (OIDC), permettant une connexion simplifiée, la création automatique de comptes et une meilleure gestion des rôles utilisateurs.
+- **Gestion documentaire :** Nouveau système de dépôt de fichiers plus robuste (support du transport résumable) et sécurisé (utilisation d'URLs signées), ainsi que la possibilité de télécharger des archives de mesures.
+- **Expérience utilisateur :** Amélioration de l'accessibilité (navigation au clavier sur les composants) et mise à jour de l'interface pour une meilleure clarté des indicateurs et des tableaux de bord.
 
 ### Évolutions techniques
-
-**Infrastructure et CI/CD**
-- Migration majeure de la stratégie de déploiement : remplacement d'Earthly par des Dockerfiles natifs pour les applications.
-- Mise en place de Nx Cloud pour optimiser les performances des workflows de CI.
-- Optimisation des tests E2E via le partitionnement (sharding) et amélioration de la visibilité des logs de tâches.
-
-**Architecture et Backend**
-- Refactorisation importante des modules "Référentiels" et "Documents" pour une meilleure séparation des responsabilités.
-- Migration de la lecture de l'arborescence des plans vers tRPC pour remplacer les vues Supabase.
-- Amélioration de la gestion des sessions en distinguant les états (anonyme, connecté, session en cours).
-- Renforcement de la sécurité des recherches en échappant les caractères spéciaux (jokers LIKE) côté backend.
+- **Architecture et Refactoring :** Restructuration importante des modules de gestion des documents, des référentiels et des règles de calcul des scores pour améliorer la modularité et la maintenabilité du code.
+- **Infrastructure et CI/CD :** Migration des processus de construction et de déploiement vers des Dockerfiles natifs (sortie d'Earthly) et optimisation des pipelines de tests via Nx Cloud.
+- **Performance et Sécurité :** Optimisation de l'upload des fichiers, amélioration de l'indexation des analyses de collectivités et renforcement des contrôles d'accès aux documents et aux données sensibles.
+- **Gestion des données :** Amélioration des processus de maintenance de la base de données et de la gestion des identités OIDC.
 
 ### Autres changements
-
-**Documentation**
-- Mise à jour importante des ADR (Architecture Decision Records) concernant le déploiement, la gestion de la périodicité des indicateurs et la sortie d'Earthly.
-- Amélioration de la documentation sur les spécifications de géocodage.
-
-**Maintenance et Nettoyage**
-- Suppression de workflows obsolètes et de code mort.
-- Nettoyage des labels et uniformisation des nomenclatures (passage au camelCase pour plusieurs modèles de données).
-- Correction de divers bugs d'affichage et de typage suite aux retours de revue [#5053](https://github.com/incubateur-ademe/territoires-en-transitions/pull/5053).
+- **Documentation :** Mise à jour importante des documents de décision d'architecture (ADR) concernant la périodicité des indicateurs, le déploiement et les choix structurels.
+- **Wording :** Travail d'harmonisation des libellés et des textes de l'interface pour une meilleure compréhension par les agents.
