@@ -166,7 +166,8 @@
 │   │   │   ├── __init__.py
 │   │   │   ├── factories.py
 │   │   │   ├── test_models.py
-│   │   │   └── test_templatetags.py
+│   │   │   ├── test_templatetags.py
+│   │   │   └── test_views.py
 │   │   ├── utils.py
 │   │   └── views.py
 │   ├── conftest.py
@@ -373,6 +374,7 @@
 │   │   ├── tests
 │   │   │   ├── __init__.py
 │   │   │   ├── factories.py
+│   │   │   ├── test_extract_map.py
 │   │   │   ├── test_management_commands.py
 │   │   │   ├── test_models.py
 │   │   │   ├── test_utils.py
@@ -652,6 +654,16 @@
 │   │   │   ├── 0131_migrate_coeff_compensation_hedge_types.py
 │   │   │   ├── 0132_merge_20260729_1142.py
 │   │   │   ├── 0133_alter_moulinettetemplate_key.py
+│   │   │   ├── 0134_bcae8_regime_unique_criteria.py
+│   │   │   ├── 0134_code_rural_multi_category_criteria.py
+│   │   │   ├── 0134_confighaie_guh_address_confighaie_guh_email_and_more.py
+│   │   │   ├── 0135_migrate_contact_fields.py
+│   │   │   ├── 0136_remove_confighaie_contacts_info.py
+│   │   │   ├── 0137_change_guh_structure_for_maritime_departments.py
+│   │   │   ├── 0138_confighaie_prohibition_range_and_more.py
+│   │   │   ├── 0138_merge_20260922_0824.py
+│   │   │   ├── 0139_merge_20260922_1018.py
+│   │   │   ├── 0140_merge_20260922_1445.py
 │   │   │   ├── __init__.py
 │   │   │   ├── haie_department_configs.json
 │   │   │   ├── moulinette_haie.json
@@ -705,6 +717,7 @@
 │   │   │   ├── test_loi_sur_leau_haie.py
 │   │   │   ├── test_loisurleau.py
 │   │   │   ├── test_models.py
+│   │   │   ├── test_moulinette_catalog.py
 │   │   │   ├── test_n2000_evalenv.py
 │   │   │   ├── test_n2000_iota.py
 │   │   │   ├── test_natura2000.py
@@ -720,6 +733,7 @@
 │   │   │   ├── test_sites_proteges_haie.py
 │   │   │   ├── test_staff_only_criteria.py
 │   │   │   ├── test_templatetags.py
+│   │   │   ├── test_urbanisme_haie.py
 │   │   │   ├── test_utils.py
 │   │   │   ├── test_validity_date.py
 │   │   │   ├── test_views.py
@@ -858,6 +872,7 @@
 │   │   │   ├── 0054_rename_demarches_simplifiees_fields_to_demarche_numerique_and_more.py
 │   │   │   ├── 0055_statuslog_applicant_message_and_more.py
 │   │   │   ├── 0056_merge_20260710_0758.py
+│   │   │   ├── 0057_simulation_created_by.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── regulations
@@ -907,6 +922,7 @@
 │   │   │   ├── arracher.svg
 │   │   │   ├── arrow-down-s-line.svg
 │   │   │   ├── crisp.svg
+│   │   │   ├── file-copy-line.svg
 │   │   │   ├── focus-mode.svg
 │   │   │   ├── haie.svg
 │   │   │   ├── hourglass-2-fill.svg
@@ -1288,6 +1304,7 @@
 │   │   │   │       └── project_stage.html
 │   │   │   ├── moulinette
 │   │   │   │   ├── _actions_banner.html
+│   │   │   │   ├── _alternative_simulation_notice.html
 │   │   │   │   ├── _category_hedges.html
 │   │   │   │   ├── _city_hall_submission_callout.html
 │   │   │   │   ├── _department_alert.html
@@ -1411,6 +1428,8 @@
 │   │   │   │   ├── _follow_form.html
 │   │   │   │   ├── _hedge_category.html
 │   │   │   │   ├── _hedges_compensation_details.html
+│   │   │   │   ├── _instructor_actions.html
+│   │   │   │   ├── _instructor_side_menu.html
 │   │   │   │   ├── _invitation_token_email_body.html
 │   │   │   │   ├── _invitation_token_email_body.txt
 │   │   │   │   ├── _invitation_token_modal.html
@@ -1463,6 +1482,7 @@
 │   │   │   │   │       └── simulation_check.html
 │   │   │   │   ├── instructor_dossier_list.html
 │   │   │   │   ├── instructor_view.html
+│   │   │   │   ├── instructor_view_alternative_display.html
 │   │   │   │   ├── instructor_view_alternatives.html
 │   │   │   │   ├── instructor_view_base.html
 │   │   │   │   ├── instructor_view_consultations.html
@@ -1605,51 +1625,41 @@
 │   │   │   ├── code_rural_haie
 │   │   │   │   ├── hru
 │   │   │   │   │   └── code_rural_a_verifier.html
-│   │   │   │   ├── result_non_active.html
-│   │   │   │   └── result_non_disponible.html
-│   │   │   ├── conditionnalite_pac
-│   │   │   │   ├── hru
-│   │   │   │   │   ├── bcae8_dispense_petit.html
-│   │   │   │   │   ├── bcae8_interdit_amelioration_culture.html
-│   │   │   │   │   ├── bcae8_interdit_amelioration_ecologique.html
-│   │   │   │   │   ├── bcae8_interdit_amenagement.html
-│   │   │   │   │   ├── bcae8_interdit_autre.html
-│   │   │   │   │   ├── bcae8_interdit_chemin_acces.html
-│   │   │   │   │   ├── bcae8_interdit_embellissement.html
-│   │   │   │   │   ├── bcae8_interdit_meilleur_emplacement.html
-│   │   │   │   │   ├── bcae8_interdit_securite.html
-│   │   │   │   │   ├── bcae8_interdit_transfert_parcelles.html
-│   │   │   │   │   ├── bcae8_non_soumis.html
-│   │   │   │   │   ├── bcae8_soumis_amenagement.html
-│   │   │   │   │   ├── bcae8_soumis_chemin_acces.html
-│   │   │   │   │   ├── bcae8_soumis_fosse.html
-│   │   │   │   │   ├── bcae8_soumis_incendie.html
-│   │   │   │   │   ├── bcae8_soumis_maladie.html
-│   │   │   │   │   ├── bcae8_soumis_meilleur_emplacement.html
-│   │   │   │   │   ├── bcae8_soumis_remplacement.html
-│   │   │   │   │   └── bcae8_soumis_transfert_parcelles.html
+│   │   │   │   ├── l350_3
+│   │   │   │   │   └── code_rural_a_verifier.html
 │   │   │   │   ├── result_non_active.html
 │   │   │   │   ├── result_non_disponible.html
 │   │   │   │   └── ru
-│   │   │   │       ├── bcae8_dispense_petit.html
-│   │   │   │       ├── bcae8_interdit_amelioration_culture.html
-│   │   │   │       ├── bcae8_interdit_amelioration_ecologique.html
-│   │   │   │       ├── bcae8_interdit_amenagement.html
-│   │   │   │       ├── bcae8_interdit_autre.html
-│   │   │   │       ├── bcae8_interdit_chemin_acces.html
-│   │   │   │       ├── bcae8_interdit_embellissement.html
-│   │   │   │       ├── bcae8_interdit_meilleur_emplacement.html
-│   │   │   │       ├── bcae8_interdit_securite.html
-│   │   │   │       ├── bcae8_interdit_transfert_parcelles.html
-│   │   │   │       ├── bcae8_non_soumis.html
-│   │   │   │       ├── bcae8_soumis_amenagement.html
-│   │   │   │       ├── bcae8_soumis_chemin_acces.html
-│   │   │   │       ├── bcae8_soumis_fosse.html
-│   │   │   │       ├── bcae8_soumis_incendie.html
-│   │   │   │       ├── bcae8_soumis_maladie.html
-│   │   │   │       ├── bcae8_soumis_meilleur_emplacement.html
-│   │   │   │       ├── bcae8_soumis_remplacement.html
-│   │   │   │       └── bcae8_soumis_transfert_parcelles.html
+│   │   │   │       └── code_rural_a_verifier.html
+│   │   │   ├── conditionnalite_pac
+│   │   │   │   ├── hru
+│   │   │   │   │   ├── bcae8_before_ru_dispense_petit.html
+│   │   │   │   │   ├── bcae8_before_ru_interdit_amelioration_culture.html
+│   │   │   │   │   ├── bcae8_before_ru_interdit_amelioration_ecologique.html
+│   │   │   │   │   ├── bcae8_before_ru_interdit_amenagement.html
+│   │   │   │   │   ├── bcae8_before_ru_interdit_autre.html
+│   │   │   │   │   ├── bcae8_before_ru_interdit_chemin_acces.html
+│   │   │   │   │   ├── bcae8_before_ru_interdit_embellissement.html
+│   │   │   │   │   ├── bcae8_before_ru_interdit_meilleur_emplacement.html
+│   │   │   │   │   ├── bcae8_before_ru_interdit_securite.html
+│   │   │   │   │   ├── bcae8_before_ru_interdit_transfert_parcelles.html
+│   │   │   │   │   ├── bcae8_before_ru_non_soumis.html
+│   │   │   │   │   ├── bcae8_before_ru_soumis_amenagement.html
+│   │   │   │   │   ├── bcae8_before_ru_soumis_chemin_acces.html
+│   │   │   │   │   ├── bcae8_before_ru_soumis_fosse.html
+│   │   │   │   │   ├── bcae8_before_ru_soumis_incendie.html
+│   │   │   │   │   ├── bcae8_before_ru_soumis_maladie.html
+│   │   │   │   │   ├── bcae8_before_ru_soumis_meilleur_emplacement.html
+│   │   │   │   │   ├── bcae8_before_ru_soumis_remplacement.html
+│   │   │   │   │   ├── bcae8_before_ru_soumis_transfert_parcelles.html
+│   │   │   │   │   └── bcae8_non_concerne.html
+│   │   │   │   ├── l350_3
+│   │   │   │   │   └── bcae8_non_concerne.html
+│   │   │   │   ├── result_non_active.html
+│   │   │   │   ├── result_non_disponible.html
+│   │   │   │   └── ru
+│   │   │   │       ├── bcae8_non_concerne.html
+│   │   │   │       └── bcae8_soumis.html
 │   │   │   ├── debug.html
 │   │   │   ├── debug_result_non_disponible.html
 │   │   │   ├── ep
@@ -1874,6 +1884,7 @@
 │   │   │           └── urbanisme_haie_a_verifier.html
 │   │   ├── multisite_base.html
 │   │   ├── pages
+│   │   │   ├── _sidemenu_item.html
 │   │   │   ├── about.html
 │   │   │   ├── accessibility.html
 │   │   │   ├── contact_us.html
@@ -1905,6 +1916,7 @@
 │   │   │   ├── 0003_alter_urlmapping_url.py
 │   │   │   ├── 0004_add_contexte_to_moulinette_haie.py
 │   │   │   ├── 0005_delete_external_url_mappings.py
+│   │   │   ├── 0006_alternative_to_project_reference.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── tests.py
@@ -1981,6 +1993,7 @@
 │       │   └── admin.py
 │       ├── tests
 │       │   ├── __init__.py
+│       │   ├── test_storages.py
 │       │   ├── test_tchap.py
 │       │   ├── test_tools.py
 │       │   └── test_validators.py
@@ -2024,4 +2037,4 @@
                 │   ├── favicon.ico
                 │   └── favicon.svg
                 └── index.html
-254 directories, 1791 files
+257 directories, 1801 files
