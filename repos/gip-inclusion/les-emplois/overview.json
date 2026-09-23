@@ -1,41 +1,49 @@
 {
   "url": "https://github.com/gip-inclusion/les-emplois",
   "name": "les-emplois",
-  "description": "Service numérique de délivrance des PASS IAE et de mise en relation d'employeurs inclusifs avec des candidats éloignés de l'emploi via des tiers ou en autoprescription.",
+  "description": "Service numérique de délivrance des PASS IAE et de mise en relation d'employeurs inclusifs avec des candidats éloignés de l'emploi via des prescripteurs ou en autoprescription.",
   "language": "Python",
   "features": [
-    "Gestion des utilisateurs & Permissions",
+    "Authentification & Accès",
     "Recherche & Filtres",
     "Statistiques & Rapports",
-    "Authentification & Accès",
-    "Gestion métier générale",
-    "Tableaux & Affichage",
+    "Formulaires & Démarches",
+    "Notifications & Alertes",
+    "Gestion des utilisateurs & Permissions",
     "Suivi & Traçabilité",
-    "Formulaires & Démarches"
+    "Administration & Backoffice",
+    "Gestion des établissements & Structures",
+    "Aides & Éligibilité",
+    "Tableaux & Affichage"
   ],
-  "audience": "Professionnels",
+  "audience": "Professionnels, Agents de l'Administration",
   "dependencies": [
     "Django",
     "PostgreSQL",
     "PostGIS",
-    "Redis",
     "MinIO",
+    "Redis",
     "GDAL",
-    "Metabase",
-    "Matomo"
+    "GEOS",
+    "uv",
+    "pytest"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
+    "Django",
     "Docker & Conteneurs",
     "Authentification (composant)",
-    "Templates & Moteurs de rendu",
-    "Reporting & BI"
+    "SIG & Géospatial",
+    "Tests",
+    "Stockage objet"
   ],
   "auth": {
     "methods": [
+      "oauth2",
       "sso",
+      "magic-link",
       "mfa",
       "session"
     ],
@@ -44,19 +52,17 @@
     ]
   },
   "tests": "pytest",
-  "workflows": [
-    "pre-commit"
-  ],
-  "lastActivity": "2026-09-14T00:00:00Z",
+  "lastActivity": "2026-09-21T00:00:00Z",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
   "tags": [
     "Emploi, Social & Logement",
-    "Écosystème beta.gouv / État",
     "Python",
     "Bases de données SQL",
+    "SIG & Géospatial",
     "Docker & Conteneurs",
-    "Git & DevOps"
+    "Accessibilité",
+    "Écosystème beta.gouv / État"
   ]
 }

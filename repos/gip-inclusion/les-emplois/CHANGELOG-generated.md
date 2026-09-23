@@ -1,37 +1,40 @@
-## Changelog : les-emplois (30 derniers jours, au 18 septembre 2026)
+## Changelog : les-emplois (30 derniers jours, au 22 septembre 2026)
 
 ### Résumé
-Ce mois a été marqué par une refonte de l'identité visuelle de la plateforme (rebranding) et une amélioration significative de l'expérience utilisateur. Les bénéficiaires disposent désormais d'un nouvel onglet "Aperçu" pour centraliser leurs informations clés, et les professionnels bénéficient d'outils de suivi plus précis, notamment via des alertes de fin de contrat et une gestion simplifiée des accompagnements.
+Ce mois a été marqué par un changement d'identité majeur : le service devient officiellement **La plateforme de l'inclusion**. Parallèlement, l'expérience utilisateur a été enrichie par la création d'un nouvel onglet "Synthèse" pour les bénéficiaires et par une gestion plus fine des accompagnements (création, modification, archivage). Les outils de suivi pour les prescripteurs et employeurs ont également été renforcés, notamment pour anticiper les fins de contrat.
 
 ### Évolutions fonctionnelles
-- **Identité et interface** :
-    - Refonte de l'identité visuelle (rebranding) incluant le changement de nom, la mise à jour des logos et l'actualisation des pages légales et d'accessibilité.
-    - Refonte de la page d'accueil (landing page).
-    - Réorganisation des menus pour les employeurs et les prescripteurs afin de faciliter la navigation.
-- **Suivi des bénéficiaires (Job Seekers)** :
-    - Création d'un nouvel onglet "Aperçu" centralisant les informations sur les conseillers, les contrats et la dernière candidature.
-    - Mise en place de bannières et de compteurs d'alerte pour signaler les fins de contrat imminentes aux employeurs et prescripteurs.
-    - Amélioration de la gestion des accompagnements : possibilité de créer, modifier ou archiver des affectations directement depuis l'interface.
-- **Gestion des PASS IAE** :
-    - Internalisation du processus de clôture des PASS IAE via un formulaire interne (remplaçant l'outil Tally) et ajout de notifications automatiques pour les bénéficiaires.
-- **Recherche et Administration** :
-    - Amélioration des filtres de recherche pour les villes et les structures.
-    - Ajout de fonctionnalités de gestion des liens magiques d'orientation pour l'administration.
+- **Identité visuelle** : Rebranding complet du projet vers "La plateforme de l'inclusion" (nouveau nom, logos, textes légaux et documentation).
+- **Gestion des bénéficiaires** : 
+    - Création d'un onglet "Synthèse" (Overview) regroupant les informations clés : conseillers référents, détails du contrat et dernières candidatures.
+    - Amélioration de la visibilité des alertes concernant les fins de contrat pour les prescripteurs et les employeurs.
+- **Accompagnements** : 
+    - Mise en place de nouvelles actions pour les accompagnements : création, édition et archivage.
+    - Ajout de filtres de recherche pour mieux gérer les listes d'accompagnements.
+- **Processus d'approbation (PASS IAE)** : 
+    - Possibilité pour les employeurs de clôturer un PASS IAE directement via un formulaire interne.
+    - Notification automatique des bénéficiaires lors de la clôture de leur dossier.
+- **Orientation et Insertion** : 
+    - Amélioration du processus d'orientation avec la gestion des pièces jointes et une nouvelle API de récupération par structure.
+    - Possibilité de forcer la synchronisation des données d'insertion.
+- **Interface et Accessibilité** : 
+    - Ajout d'une déclaration d'accessibilité détaillant les non-conformités.
+    - Amélioration de l'ergonomie des formulaires de recherche (villes) et de l'affichage des messages d'erreur.
 
 ### Évolutions techniques
-- **Traçabilité et Audit** :
-    - Implémentation d'une piste d'audit (audit trail) de base et ajout d'un identifiant de navigateur pour améliorer la précision des logs.
-- **Reporting et Données (Metabase)** :
-    - Optimisation des tableaux de bord Metabase, incluant la création de nouvelles tables pour le suivi GEIQ et l'amélioration des requêtes de transition.
-    - Organisation du schéma de données pour le reporting.
-- **API et Sécurité** :
-    - Affinement des périmètres de sécurité (scopes) des API.
-    - Renforcement de la protection des données personnelles en filtrant les identités des bénéficiaires dans les logs Sentry.
-- **Automatisation et Maintenance** :
-    - Ajout de commandes de gestion (management commands) pour la détection de fichiers manquants et la récupération de pièces jointes.
-    - Optimisation de certaines tâches planifiées (cron jobs) pour améliorer les performances de traitement.
+- **Traçabilité et Audit** : Implémentation d'une piste d'audit (audit trail) de base incluant l'utilisation de `X-Forwarded-For` et l'ajout d'un identifiant de navigateur pour le suivi.
+- **Sécurité et Confidentialité** : 
+    - Sécurisation des mises à jour des données des salariés.
+    - Renforcement de la protection des données : l'identité des bénéficiaires est désormais exclue des rapports Sentry.
+    - Généralisation de l'usage de ProConnect pour les professionnels et les institutionnels.
+- **Qualité de code et Performance** : 
+    - Correction massive des erreurs de typage (mypy) et mise en conformité avec les règles de formatage (djlint).
+    - Optimisation de certaines tâches planifiées (cron) pour améliorer la rapidité des migrations de données.
+    - Refactoring de la logique métier (extraction de fonctions communes pour l'administration et les approbations).
+- **Infrastructure et CI/CD** : 
+    - Modification du workflow de CI (arrêt du build automatique sur la branche main).
+    - Optimisation de la verbosité des tests pour faciliter le débogage.
 
 ### Autres changements
-- **Documentation** : Mise à jour de la documentation technique, notamment sur le SSO et la configuration de l'environnement local.
-- **Qualité et UI** : Nettoyage important de la typographie, des espaces et de la formulation des messages d'erreur et d'aide sur l'ensemble de la plateforme.
-- **Accessibilité** : Ajout d'une déclaration d'accessibilité détaillant les non-conformités et exemptions.
+- **Documentation** : Mise à jour de la documentation technique (explications SSO, procédures d'installation locale).
+- **Nettoyage** : Suppression de composants obsolètes (application GPS, application de recommandations) et nettoyage général du formatage du code (espaces, typographies).
