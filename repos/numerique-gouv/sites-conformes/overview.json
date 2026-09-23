@@ -5,11 +5,12 @@
   "language": "Python",
   "features": [
     "Gestion documentaire & Fichiers",
-    "Recherche & Filtres",
+    "Authentification & Accès",
     "Sécurité & Conformité",
     "Administration & Backoffice",
     "Interface utilisateur & Design",
-    "Accessibilité & i18n"
+    "Accessibilité & i18n",
+    "Notifications & Alertes"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -17,25 +18,24 @@
     "Wagtail",
     "PostgreSQL",
     "DSFR",
-    "django-storages",
-    "boto3",
-    "mozilla-django-oidc"
+    "Sentry",
+    "Gunicorn",
+    "Boto3"
   ],
   "components": [
-    "API REST & GraphQL",
-    "PostgreSQL & SQL",
     "Python (scripts & backend)",
-    "Design System (DSFR & UI libs)",
+    "Django",
+    "Wagtail, CMS & générateurs statiques",
+    "PostgreSQL & SQL",
     "Docker & Conteneurs",
-    "CMS (Strapi, Wagtail…)",
+    "Documentation & Schémas",
     "Authentification (composant)",
-    "Templates & Moteurs de rendu"
+    "Design System (DSFR & UI libs)"
   ],
   "auth": {
     "methods": [
       "mfa",
-      "sso",
-      "jwt",
+      "oauth2",
       "session"
     ],
     "providers": [
@@ -46,11 +46,8 @@
     "Playwright",
     "coverage"
   ],
-  "workflows": [
-    "GitHub Actions"
-  ],
-  "lastActivity": "2026-09-10T10:22:26+02:00",
-  "status": "active",
+  "lastActivity": "2026-09-22T14:41:24+02:00",
+  "status": "maintained",
   "license": null,
   "hasDocumentation": true,
   "tags": [
@@ -60,7 +57,7 @@
     "Wagtail, CMS & générateurs statiques",
     "Design System & UI",
     "Accessibilité",
-    "CI/CD & GitHub Actions",
+    "Sécurité & Auth",
     "Docker & Conteneurs"
   ]
 }
