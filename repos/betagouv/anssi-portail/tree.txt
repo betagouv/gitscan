@@ -23,6 +23,8 @@
 │       │   ├── SKILL.md
 │       │   └── references
 │       │       └── design-system-et-assets.md
+│       ├── mettre-a-jour-playwright-cli
+│       │   └── SKILL.md
 │       ├── nouvelle-migration-knex
 │       │   └── SKILL.md
 │       └── playwright-cli
@@ -71,7 +73,6 @@
 │   │   └── memory_maintenance.md
 │   └── project.yml
 ├── AGENTS.md
-├── CLAUDE.md -> AGENTS.md
 ├── DEVELOPER.md
 ├── LICENSE
 ├── README.md
@@ -87,7 +88,6 @@
 │   └── vitest.config.ts
 ├── back
 │   ├── AGENTS.md
-│   ├── CLAUDE.md -> AGENTS.md
 │   ├── eslint.config.mjs
 │   ├── knexfile.ts
 │   ├── migrations
@@ -190,6 +190,7 @@
 │   │   │   │   │   ├── badge.png
 │   │   │   │   │   ├── banniere.svg
 │   │   │   │   │   ├── ressourceRecompensesCyberDepart.ts
+│   │   │   │   │   ├── ressourceRecompensesCyberDepartSansBadge.ts
 │   │   │   │   │   └── serviceRecompensesCyberDepart.ts
 │   │   │   │   └── schemaRessourceModule.schema.ts
 │   │   │   ├── middlewares
@@ -528,6 +529,7 @@
 │   │   │   │   ├── ressourcePriseEnCompte.spec.ts
 │   │   │   │   └── ressourceRecompensesCyberDepart
 │   │   │   │       ├── ressourceRecompensesCyberDepart.spec.ts
+│   │   │   │       ├── ressourceRecompensesCyberDepartSansBadge.spec.ts
 │   │   │   │       ├── serviceRecompensesCyberDepart.spec.ts
 │   │   │   │       └── snapshot-banniere.png
 │   │   │   ├── middlewares
@@ -705,7 +707,6 @@
 ├── comparaison-grist
 │   ├── .env.template
 │   ├── AGENTS.md
-│   ├── CLAUDE.md -> AGENTS.md
 │   ├── eslint.config.mjs
 │   ├── package.json
 │   ├── src
@@ -743,7 +744,6 @@
 ├── demande-diag
 │   ├── .gitignore
 │   ├── AGENTS.md
-│   ├── CLAUDE.md -> AGENTS.md
 │   ├── README.md
 │   ├── package.json
 │   ├── plugin
@@ -773,7 +773,6 @@
 │   ├── 403.html
 │   ├── 404.html
 │   ├── AGENTS.md
-│   ├── CLAUDE.md -> AGENTS.md
 │   ├── Gemfile
 │   ├── Gemfile.lock
 │   ├── _config.yml
@@ -1150,10 +1149,10 @@
 │   │   │   │   │   ├── heros-parcours-basique.avif
 │   │   │   │   │   ├── heros-parcours-complet.avif
 │   │   │   │   │   └── section-pedagogique.avif
-│   │   │   │   ├── badge-cyberdepart.svg
 │   │   │   │   ├── illustration-diagnostic.png
 │   │   │   │   ├── mesure-*.avif  (58 files)
-│   │   │   │   └── module-*.svg  (6 files)
+│   │   │   │   ├── module-*.svg  (6 files)
+│   │   │   │   └── visuel-cyberdepart.svg
 │   │   │   ├── personne-reflechissant-devant-un-ecran.svg
 │   │   │   ├── photo-livret-nis2.avif
 │   │   │   ├── piles-de-pieces.svg
@@ -1234,7 +1233,6 @@
 │   │   ├── .gitignore
 │   │   ├── .prettierrc.cjs
 │   │   ├── AGENTS.md
-│   │   ├── CLAUDE.md -> AGENTS.md
 │   │   ├── README.md
 │   │   ├── eslint.config.mjs
 │   │   ├── index.html
@@ -1556,6 +1554,7 @@
 │   │   │   │   │   ├── IllustrationRecyf.svelte
 │   │   │   │   │   ├── IllustrationTuto.svelte
 │   │   │   │   │   ├── SectionBadge.svelte
+│   │   │   │   │   ├── SectionCyberdepart.svelte
 │   │   │   │   │   ├── SectionMesure.svelte
 │   │   │   │   │   ├── SectionModules.svelte
 │   │   │   │   │   ├── SectionPedagogique.svelte
@@ -1832,7 +1831,6 @@
 ├── mise-a-jour-financements
 │   ├── .env.template
 │   ├── AGENTS.md
-│   ├── CLAUDE.md -> AGENTS.md
 │   ├── eslint.config.mjs
 │   ├── package.json
 │   ├── src
@@ -1879,6 +1877,25 @@
 │   └── get-node-version.sh
 ├── shell.nix
 └── webc-externes
+    ├── mini-test-exposition
+    │   ├── package.json
+    │   ├── plugin
+    │   │   └── remplaceVersionsDansPhp.ts
+    │   ├── public
+    │   │   ├── README.md
+    │   │   └── mini-test-exposition.php
+    │   ├── src
+    │   │   ├── MiniTestExposition.svelte
+    │   │   ├── index.ts
+    │   │   ├── styles.scss
+    │   │   └── vite.d.ts
+    │   ├── tests
+    │   │   ├── page-test-demo-composant.html
+    │   │   ├── page-test-local-composant.html
+    │   │   └── page-test-prod-composant.html
+    │   ├── tsconfig.json
+    │   ├── tsconfig.node.json
+    │   └── vite.config.ts
     └── mini-test-vrai-faux
         ├── package.json
         ├── plugin
@@ -1898,4 +1915,4 @@
         ├── tsconfig.json
         ├── tsconfig.node.json
         └── vite.config.ts
-297 directories, 1719 files
+303 directories, 1730 files

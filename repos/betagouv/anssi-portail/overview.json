@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/betagouv/anssi-portail",
   "name": "anssi-portail",
-  "description": "Portail de l'ANSSI proposant des outils interactifs de cybersécurité, tels que des mini-tests, des simulations et des parcours de sécurisation pour les organisations.",
+  "description": "Portail de l'ANSSI proposant des outils interactifs de cybersécurité, tels que des tests d'exposition, des parcours de sécurisation et des guides pratiques pour accompagner les organisations.",
   "language": "TypeScript",
   "features": [
     "Simulation & Calcul",
@@ -9,45 +9,45 @@
     "Formulaires & Démarches",
     "Contenu éditorial",
     "Recherche & Filtres",
-    "Statistiques & Rapports"
+    "Statistiques & Rapports",
+    "Interface utilisateur & Design"
   ],
   "audience": "Professionnels",
   "dependencies": [
-    "Svelte",
+    "Svelte 5",
     "Express",
     "PostgreSQL",
     "Knex",
-    "Axios",
-    "Zod",
-    "Jekyll"
+    "Jekyll",
+    "Vitest",
+    "AWS SDK",
+    "OpenID Client"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "Angular / Svelte / Autres SPA",
     "TypeScript / JavaScript",
     "Docker & Conteneurs",
+    "Node.js / NestJS",
+    "HTML / CSS / Templates visuels",
+    "Sites statiques & SSG",
     "Authentification (composant)",
-    "Design System (DSFR & UI libs)",
-    "Sites statiques & SSG"
+    "Angular / Svelte / Autres SPA"
   ],
   "auth": {
     "methods": [
       "jwt",
-      "mfa",
       "session",
-      "sso"
+      "mfa",
+      "sso",
+      "oauth2"
     ]
   },
-  "tests": [
-    "Vitest",
-    "Supertest",
-    "Playwright"
-  ],
+  "tests": "Vitest, Supertest",
   "workflows": [
-    "CI/CD (Nix, Ruby, Playwright)"
+    "GitHub Actions"
   ],
-  "lastActivity": "2026-09-18T14:57:04+02:00",
+  "lastActivity": "2026-09-22T17:48:25+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
