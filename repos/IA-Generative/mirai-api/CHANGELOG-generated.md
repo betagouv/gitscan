@@ -1,15 +1,17 @@
-## Changelog : mirai-api (30 derniers jours, au 26 juin 2026)
+## Changelog : mirai-api (30 derniers jours, au 23 septembre 2026)
 
 ### Résumé
-Cette mise à jour se concentre sur l'amélioration de la documentation de l'API MirAI, notamment en clarifiant les informations sur la passerelle, les niveaux d'accès (quotas) et la gestion des données sensibles (PII). Les modifications apportées visent à faciliter l'intégration et l'utilisation de l'API par les partenaires et les utilisateurs internes.
+Ce mois-ci, l'accent a été mis sur l'amélioration de l'expérience utilisateur grâce à une documentation plus complète et pédagogique, ainsi que sur l'optimisation des processus de développement via l'automatisation des environnements de prévisualisation.
 
 ### Évolutions fonctionnelles
-- Modification de la durée de rétention des données à 72 heures (au lieu de 24h).
-- Clarification des niveaux d'accès (Découverte, Intégration, Production, Critique) et de leurs quotas respectifs [#f540a17](https://github.com/IA-Generative/mirai-api/commit/f540a17).
+- Clarification des modalités d'accès individuel pour les jetons (tokens).
+- Mise à jour de la terminologie pour une meilleure clarté : la section "Comparatif des services" est renommée "Catalogue de services".
 
 ### Évolutions techniques
-- Suppression des références à Kafka dans la documentation, indiquant potentiellement une simplification de l'architecture ou un changement d'infrastructure. [#4c18e02](https://github.com/IA-Generative/mirai-api/commit/4c18e02)
-- Complétion de la liste des données personnellement identifiables (PII) dans la documentation, renforçant la conformité et la transparence en matière de protection des données. [#4c18e02](https://github.com/IA-Generative/mirai-api/commit/4c18e02)
+- Automatisation des environnements de preview pour chaque Pull Request.
+- Optimisation de la gestion des environnements de preview (utilisation du domaine `mirai-hp` et nettoyage automatique des images lors de la fermeture).
 
 ### Autres changements
-- Ajout d'une section dédiée à la passerelle dans la documentation, améliorant la compréhension de l'architecture de l'API. [#f540a17](https://github.com/IA-Generative/mirai-api/commit/f540a17)
+- Enrichissement de la documentation avec un guide pas à pas illustré par des captures d'écran pour le portail d'accès.
+- Ajout d'informations relatives à l'ouverture du service (contacts d'accompagnement, accès au portail et détails sur les quotas par axe).
+- Mise à jour du nombre de modèles LLM et amélioration des liens de navigation vers la page dédiée à la vision.
