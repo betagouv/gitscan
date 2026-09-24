@@ -1,0 +1,380 @@
+.
+├── .env.example
+├── .github
+│   ├── releases
+│   │   ├── .release-please-manifest-prerelease.json
+│   │   ├── .release-please-manifest.json
+│   │   ├── release-please-config-prerelease.json
+│   │   └── release-please-config-release.json
+│   └── workflows
+│       ├── cd.yml
+│       ├── ci.yml
+│       ├── clean-cache.yml
+│       ├── lint.yml
+│       └── unit-tests.yml
+├── .gitignore
+├── .gitlab-ci-dso.yml
+├── .gitleaks.toml
+├── .pre-commit-config.yaml
+├── .trivyignore.yaml
+├── CHANGELOG.md
+├── LICENSE
+├── Makefile
+├── README.md
+├── backend
+│   ├── Dockerfile
+│   ├── README.md
+│   ├── alembic.ini
+│   ├── app
+│   │   ├── __init__.py
+│   │   ├── celery_client.py
+│   │   ├── config
+│   │   │   ├── __init__.py
+│   │   │   ├── database.py
+│   │   │   ├── keycloak.py
+│   │   │   ├── llm.py
+│   │   │   ├── redis.py
+│   │   │   ├── sharing.py
+│   │   │   └── storage.py
+│   │   ├── connectors.py
+│   │   ├── core
+│   │   │   ├── __init__.py
+│   │   │   └── security
+│   │   │       ├── __init__.py
+│   │   │       ├── claims.py
+│   │   │       ├── factory.py
+│   │   │       ├── internal.py
+│   │   │       ├── keycloak_client.py
+│   │   │       ├── session.py
+│   │   │       └── share_token.py
+│   │   ├── db.py
+│   │   ├── main.py
+│   │   ├── models
+│   │   │   ├── __init__.py
+│   │   │   ├── analyse.py
+│   │   │   ├── analyse_share.py
+│   │   │   ├── app_token.py
+│   │   │   ├── base.py
+│   │   │   ├── chat_event.py
+│   │   │   ├── conversation.py
+│   │   │   ├── document_page.py
+│   │   │   ├── dossier.py
+│   │   │   ├── execution_log.py
+│   │   │   ├── feedback.py
+│   │   │   └── report.py
+│   │   ├── repositories
+│   │   │   ├── analyse_repository.py
+│   │   │   ├── app_token_repository.py
+│   │   │   ├── dossier_repository.py
+│   │   │   └── report_repository.py
+│   │   ├── routers
+│   │   │   ├── __init__.py
+│   │   │   ├── admin_reports.py
+│   │   │   ├── analyses.py
+│   │   │   ├── app_tokens.py
+│   │   │   ├── assist.py
+│   │   │   ├── auth.py
+│   │   │   ├── conversations.py
+│   │   │   ├── dossiers.py
+│   │   │   ├── health.py
+│   │   │   ├── internal.py
+│   │   │   ├── models.py
+│   │   │   └── reports.py
+│   │   └── schemas
+│   │       ├── __init__.py
+│   │       ├── analyse.py
+│   │       ├── app_token.py
+│   │       ├── dossier.py
+│   │       ├── health.py
+│   │       ├── llm.py
+│   │       ├── models.py
+│   │       ├── pagination.py
+│   │       └── report.py
+│   ├── migrations
+│   │   ├── env.py
+│   │   ├── script.py.mako
+│   │   └── versions
+│   │       ├── 20260922_2207_80d46debbe61_initial_schema.py
+│   │       ├── 20260922_2236_42c763907a77_conversations_and_document_metadata.py
+│   │       ├── 20260922_2257_e64f2799cc05_execution_logs_document_pages_and_.py
+│   │       ├── 20260923_0834_0464cba98183_bounding_boxes_as_their_own_table.py
+│   │       ├── 20260923_0843_4c1ea39cba4b_predictions_and_message_sources_as_sets_.py
+│   │       ├── 20260923_0910_c624935c6b31_app_tokens_for_machine_to_machine_access.py
+│   │       ├── 20260923_0949_f3ace41df805_screenshot_key_on_document_pages.py
+│   │       ├── 20260923_1007_597c7128b6c2_text_extraction_status_on_dossier_.py
+│   │       ├── 20260923_1310_a1b2c3d4e5f6_unique_conversation_per_dossier_user.py
+│   │       ├── 20260923_1320_b2c3d4e5f6a7_conversation_model_column.py
+│   │       ├── 20260923_1400_d4e5f6a7b8c9_chat_events_table.py
+│   │       ├── 20260923_1601_572981f30ad1_model_field_on_conversations_and_agents.py
+│   │       ├── 20260923_1700_fc20e773c29f_message_feedback_thumbs_up_down_reasons_.py
+│   │       └── 20260923_1711_6b724f3d02fa_reports_bug_idea_question_with_admin_.py
+│   ├── pyproject.toml
+│   ├── tests
+│   │   ├── .env.testing
+│   │   ├── conftest.py
+│   │   ├── test_analyses.py
+│   │   ├── test_app_tokens.py
+│   │   ├── test_assist.py
+│   │   ├── test_auth.py
+│   │   ├── test_conversations.py
+│   │   ├── test_dossiers.py
+│   │   ├── test_health.py
+│   │   ├── test_models.py
+│   │   ├── test_reports.py
+│   │   └── test_session_store.py
+│   └── uv.lock
+├── ct.yaml
+├── digdigdoc
+│   ├── .helmignore
+│   ├── Chart.lock
+│   ├── Chart.yaml
+│   ├── README.md
+│   ├── README.md.gotmpl
+│   ├── charts
+│   │   ├── postgres-0.19.6.tgz
+│   │   └── redis-0.27.9.tgz
+│   ├── templates
+│   │   ├── NOTES.txt
+│   │   ├── _helpers.tpl
+│   │   ├── backend
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── grpcroute.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── httproute.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── metrics.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pullsecret.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── statefulset.yaml
+│   │   ├── cronjobs.yaml
+│   │   ├── extra-objects.yaml
+│   │   ├── frontend
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── grpcroute.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── httproute.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── metrics.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pullsecret.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── statefulset.yaml
+│   │   ├── gateway.yaml
+│   │   ├── httproute.yaml
+│   │   ├── ingress.yaml
+│   │   ├── jobs.yaml
+│   │   ├── pullsecret.yaml
+│   │   ├── validation.yaml
+│   │   ├── worker_agent
+│   │   │   ├── clusterrole.yaml
+│   │   │   ├── clusterrolebinding.yaml
+│   │   │   ├── configmap.yaml
+│   │   │   ├── daemonset.yaml
+│   │   │   ├── deployment.yaml
+│   │   │   ├── grpcroute.yaml
+│   │   │   ├── hpa.yaml
+│   │   │   ├── httproute.yaml
+│   │   │   ├── ingress.yaml
+│   │   │   ├── metrics.yaml
+│   │   │   ├── networkpolicy.yaml
+│   │   │   ├── pdb.yaml
+│   │   │   ├── pullsecret.yaml
+│   │   │   ├── role.yaml
+│   │   │   ├── rolebinding.yaml
+│   │   │   ├── secret.yaml
+│   │   │   ├── service.yaml
+│   │   │   ├── serviceaccount.yaml
+│   │   │   ├── servicemonitor.yaml
+│   │   │   └── statefulset.yaml
+│   │   └── worker_document
+│   │       ├── clusterrole.yaml
+│   │       ├── clusterrolebinding.yaml
+│   │       ├── configmap.yaml
+│   │       ├── daemonset.yaml
+│   │       ├── deployment.yaml
+│   │       ├── grpcroute.yaml
+│   │       ├── hpa.yaml
+│   │       ├── httproute.yaml
+│   │       ├── ingress.yaml
+│   │       ├── metrics.yaml
+│   │       ├── networkpolicy.yaml
+│   │       ├── pdb.yaml
+│   │       ├── pullsecret.yaml
+│   │       ├── role.yaml
+│   │       ├── rolebinding.yaml
+│   │       ├── secret.yaml
+│   │       ├── service.yaml
+│   │       ├── serviceaccount.yaml
+│   │       ├── servicemonitor.yaml
+│   │       └── statefulset.yaml
+│   ├── test-values-daemonset.yaml
+│   ├── test-values-statefulset.yaml
+│   ├── test-values.yaml
+│   ├── values.schema.json
+│   └── values.yaml
+├── docker
+│   └── keycloak
+│       └── dig-dig-doc-realm.json
+├── docker-compose.override.yaml
+├── docker-compose.yaml
+├── docs
+│   ├── backend
+│   │   └── data-model.png
+│   ├── features.md
+│   └── frontend
+│       ├── App-collapsed.png
+│       ├── App.png
+│       ├── components
+│       │   ├── analyses
+│       │   │   ├── AddAgentModal.png
+│       │   │   ├── AgentCard.png
+│       │   │   ├── EntitiesEditor.png
+│       │   │   └── LabelsEditor.png
+│       │   └── dossiers
+│       │       ├── CreateDossierModal.png
+│       │       └── ExecutionPanel.png
+│       └── pages
+│           ├── AnalyseDetailPage.png
+│           ├── AnalysesPage.png
+│           ├── DossierDetailPage.png
+│           └── DossiersPage.png
+├── frontend
+│   ├── .dockerignore
+│   ├── .dsfr.yml
+│   ├── Dockerfile
+│   ├── Dockerfile.dev
+│   ├── docker
+│   │   └── nginx.conf
+│   ├── index.html
+│   ├── package.json
+│   ├── pnpm-lock.yaml
+│   ├── public
+│   │   ├── CHANGELOG.md
+│   │   └── cgu.md
+│   ├── scripts
+│   │   └── screenshot.mjs
+│   ├── src
+│   │   ├── App.vue
+│   │   ├── components
+│   │   │   ├── InfoModal.vue
+│   │   │   ├── MarkdownText.vue
+│   │   │   ├── ReportFormModal.vue
+│   │   │   ├── UserMenu.vue
+│   │   │   ├── analyses
+│   │   │   │   ├── AddAgentModal.vue
+│   │   │   │   ├── AgentCard.vue
+│   │   │   │   ├── AgentToolsEditor.vue
+│   │   │   │   ├── CreateAnalyseModal.vue
+│   │   │   │   ├── EntitiesEditor.vue
+│   │   │   │   ├── LabelsEditor.vue
+│   │   │   │   ├── LlmAssistButton.vue
+│   │   │   │   ├── PromptEditor.vue
+│   │   │   │   └── VersionHistory.vue
+│   │   │   └── dossiers
+│   │   │       ├── CreateDossierModal.vue
+│   │   │       ├── DossierDocuments.vue
+│   │   │       ├── DossierResults.vue
+│   │   │       └── FeedbackReasonsModal.vue
+│   │   ├── composables
+│   │   │   ├── useAnalyses.ts
+│   │   │   ├── useAuth.ts
+│   │   │   ├── useConversations.ts
+│   │   │   ├── useDossiers.ts
+│   │   │   ├── useLlmAssist.ts
+│   │   │   ├── useLlmComplete.ts
+│   │   │   ├── useModels.ts
+│   │   │   ├── useMyConversations.ts
+│   │   │   ├── useReports.ts
+│   │   │   └── useReportsAdmin.ts
+│   │   ├── env.d.ts
+│   │   ├── main.ts
+│   │   ├── pages
+│   │   │   ├── AdministrationPage.vue
+│   │   │   ├── AnalyseDetailPage.vue
+│   │   │   ├── AnalysesPage.vue
+│   │   │   ├── DossierDetailPage.vue
+│   │   │   ├── DossiersPage.vue
+│   │   │   ├── WelcomePage.vue
+│   │   │   └── analyse
+│   │   │       ├── AnalyseAgentsTab.vue
+│   │   │       ├── AnalyseClassificationTab.vue
+│   │   │       └── AnalyseExtractionTab.vue
+│   │   ├── router
+│   │   │   └── index.ts
+│   │   ├── types
+│   │   │   ├── analyse.ts
+│   │   │   ├── conversation.ts
+│   │   │   ├── dossier.ts
+│   │   │   └── report.ts
+│   │   └── utils
+│   │       ├── api.ts
+│   │       └── markdown.ts
+│   ├── tsconfig.json
+│   └── vite.config.ts
+└── worker
+    ├── agent_execution
+    │   ├── Dockerfile
+    │   ├── app
+    │   │   ├── __init__.py
+    │   │   ├── agent_graph.py
+    │   │   ├── api_client.py
+    │   │   ├── bm25.py
+    │   │   ├── celery_app.py
+    │   │   ├── chat_graph.py
+    │   │   ├── config.py
+    │   │   ├── llm.py
+    │   │   ├── storage.py
+    │   │   ├── tasks
+    │   │   │   ├── __init__.py
+    │   │   │   ├── agent.py
+    │   │   │   ├── chat.py
+    │   │   │   ├── classification.py
+    │   │   │   └── extraction.py
+    │   │   └── tools.py
+    │   ├── pyproject.toml
+    │   ├── tests
+    │   │   ├── test_agent_task.py
+    │   │   ├── test_api_client.py
+    │   │   ├── test_bm25_tools.py
+    │   │   ├── test_celery_app.py
+    │   │   ├── test_llm.py
+    │   │   └── test_tasks.py
+    │   └── uv.lock
+    └── document_process
+        ├── Dockerfile
+        ├── app
+        │   ├── __init__.py
+        │   ├── api_client.py
+        │   ├── celery_app.py
+        │   ├── config.py
+        │   ├── parsing.py
+        │   ├── storage.py
+        │   └── tasks.py
+        ├── pyproject.toml
+        ├── tests
+        │   ├── test_api_client.py
+        │   ├── test_celery_app.py
+        │   └── test_tasks.py
+        └── uv.lock
+54 directories, 325 files
