@@ -11,6 +11,7 @@
 ├── .npmrc
 ├── .slugignore
 ├── Aptfile
+├── LICENSE
 ├── README.md
 ├── biome
 │   ├── no-direct-api-endpoint.grit
@@ -93,6 +94,9 @@
 │   │   │   │   └── AddressSearch.tsx
 │   │   │   ├── AutoClose
 │   │   │   │   └── AutoClose.tsx
+│   │   │   ├── BackToTopButton
+│   │   │   │   ├── BackToTopButton.scss
+│   │   │   │   └── BackToTopButton.tsx
 │   │   │   ├── CircleProgress
 │   │   │   │   ├── CircleProgress.stories.tsx
 │   │   │   │   └── CircleProgress.tsx
@@ -103,8 +107,6 @@
 │   │   │   │   ├── CompanySearch.scss
 │   │   │   │   ├── CompanySearch.stories.tsx
 │   │   │   │   └── CompanySearch.tsx
-│   │   │   ├── CompletionBadge
-│   │   │   │   └── CompletionBadge.tsx
 │   │   │   ├── ConfirmationModal
 │   │   │   │   └── ConfirmationModal.tsx
 │   │   │   ├── DashboardNotice
@@ -145,23 +147,9 @@
 │   │   │   │       ├── LaboratoryAgreementTag.scss
 │   │   │   │       └── LaboratoryAgreementTag.tsx
 │   │   │   ├── LaboratorySelect
+│   │   │   │   ├── LaboratorySelect.scss
 │   │   │   │   ├── LaboratorySelect.stories.tsx
 │   │   │   │   └── LaboratorySelect.tsx
-│   │   │   ├── LocalPrescription
-│   │   │   │   ├── LocalPrescriptionButtons
-│   │   │   │   │   ├── LocalPrescriptionButtons.scss
-│   │   │   │   │   └── LocalPrescriptionButtons.tsx
-│   │   │   │   ├── LocalPrescriptionDepartmentalDistribution
-│   │   │   │   │   ├── LocalPrescriptionDepartmentalDistribution.tsx
-│   │   │   │   │   └── LocalPrescriptionDepartmentalDistributionTable.tsx
-│   │   │   │   ├── LocalPrescriptionDistributionBadge
-│   │   │   │   │   └── LocalPrescriptionDistributionBadge.tsx
-│   │   │   │   ├── LocalPrescriptionModal
-│   │   │   │   │   └── LocalPrescriptionModal.tsx
-│   │   │   │   ├── LocalPrescriptionSlaughterhouseDistribution
-│   │   │   │   │   └── LocalPrescriptionSlaughterhouseDistribution.tsx
-│   │   │   │   └── LocalPrescriptionSubstanceKindsLaboratories
-│   │   │   │       └── LocalPrescriptionSubstanceKindsLaboratories.tsx
 │   │   │   ├── Mascarade
 │   │   │   │   ├── MascaradeButton.tsx
 │   │   │   │   ├── MascaradeModal.tsx
@@ -187,20 +175,12 @@
 │   │   │   │   │   └── PrescriptionModal.tsx
 │   │   │   │   ├── PrescriptionNotes
 │   │   │   │   │   └── PrescriptionNotes.tsx
-│   │   │   │   ├── PrescriptionProgrammingInstruction
-│   │   │   │   │   └── PrescriptionProgrammingInstruction.tsx
 │   │   │   │   ├── PrescriptionStages
 │   │   │   │   │   └── PrescriptionStages.tsx
 │   │   │   │   └── PrescriptionSubstances
 │   │   │   │       └── PrescriptionSubstances.tsx
-│   │   │   ├── ProgrammingPlanNotification
-│   │   │   │   ├── ProgrammingPlanNotification.scss
-│   │   │   │   ├── ProgrammingPlanNotificationDepartmentalToSampler
-│   │   │   │   │   └── ProgrammingPlanNotificationDepartmentalToSampler.tsx
-│   │   │   │   ├── ProgrammingPlanNotificationNationalToRegional
-│   │   │   │   │   └── ProgrammingPlanNotificationNationalToRegional.tsx
-│   │   │   │   └── ProgrammingPlanNotificationRegionalToDepartmental
-│   │   │   │       └── ProgrammingPlanNotificationRegionalToDepartmental.tsx
+│   │   │   ├── ProgrammingPlanDisplayStatusBadge
+│   │   │   │   └── ProgrammingPlanDisplayStatusBadge.tsx
 │   │   │   ├── RegionsFilter
 │   │   │   │   └── RegionsFilter.tsx
 │   │   │   ├── ResidueResultAlert
@@ -217,7 +197,9 @@
 │   │   │   │   ├── SampleItems
 │   │   │   │   │   ├── SampleItemContent.tsx
 │   │   │   │   │   ├── SampleItems.tsx
-│   │   │   │   │   └── SampleItemsContent.tsx
+│   │   │   │   │   ├── SampleItemsContent.tsx
+│   │   │   │   │   ├── sampleItemCopies.test.ts
+│   │   │   │   │   └── sampleItemCopies.ts
 │   │   │   │   ├── SampleMap
 │   │   │   │   │   └── SampleMap.tsx
 │   │   │   │   └── SampleProcedure
@@ -238,6 +220,11 @@
 │   │   │   ├── SectionHeader
 │   │   │   │   ├── SectionHeader.scss
 │   │   │   │   └── SectionHeader.tsx
+│   │   │   ├── SelectionActionBar
+│   │   │   │   ├── SelectionActionBar.scss
+│   │   │   │   └── SelectionActionBar.tsx
+│   │   │   ├── SelectionCheckbox
+│   │   │   │   └── SelectionCheckbox.tsx
 │   │   │   ├── SubstanceSearch
 │   │   │   │   └── SubstanceSearch.tsx
 │   │   │   ├── SupportDocumentSelect
@@ -245,8 +232,8 @@
 │   │   │   │   └── SupportDocumentSelect.tsx
 │   │   │   ├── TableHeaderCell
 │   │   │   │   └── TableHeaderCell.tsx
-│   │   │   ├── UnsavedChangesModal
-│   │   │   │   └── UnsavedChangesModal.tsx
+│   │   │   ├── UnsavedChangesGuard
+│   │   │   │   └── UnsavedChangesGuard.tsx
 │   │   │   ├── UserFeedback
 │   │   │   │   ├── UserFeedback.scss
 │   │   │   │   └── UserFeedback.tsx
@@ -256,6 +243,9 @@
 │   │   │   ├── YearTitle
 │   │   │   │   └── YearTitle.tsx
 │   │   │   └── _app
+│   │   │       ├── AppCheckboxSelect
+│   │   │       │   ├── AppCheckboxSelect.scss
+│   │   │       │   └── AppCheckboxSelect.tsx
 │   │   │       ├── AppErrorAlert
 │   │   │       │   └── AppServiceErrorAlert.tsx
 │   │   │       ├── AppMultiSelect
@@ -295,7 +285,6 @@
 │   │   │   ├── useDocumentTitle.tsx
 │   │   │   ├── useForm.tsx
 │   │   │   ├── useMatomoTagManager.tsx
-│   │   │   ├── useOnLine.tsx
 │   │   │   ├── usePartialSample.tsx
 │   │   │   ├── usePrescriptionFilters.tsx
 │   │   │   ├── useSamplesLink.tsx
@@ -345,6 +334,8 @@
 │   │   │   ├── fetchUtils.test.ts
 │   │   │   ├── fetchUtils.ts
 │   │   │   ├── maplibre.ts
+│   │   │   ├── sampleLaboratories.test.ts
+│   │   │   ├── sampleLaboratories.ts
 │   │   │   ├── stringUtils.test.ts
 │   │   │   ├── stringUtils.ts
 │   │   │   └── zodJitless.ts
@@ -443,6 +434,12 @@
 │   │       │   │   └── ProgrammingPlanGlobalSettings.tsx
 │   │       │   ├── ProgrammingPlanNationalCoordinators
 │   │       │   │   └── ProgrammingPlanNationalCoordinators.tsx
+│   │       │   ├── ProgrammingPlanSampleSettings
+│   │       │   │   ├── ProgrammingPlanSampleCopyModal.tsx
+│   │       │   │   ├── ProgrammingPlanSampleSettings.scss
+│   │       │   │   ├── ProgrammingPlanSampleSettings.tsx
+│   │       │   │   ├── programmingPlanSamples.test.ts
+│   │       │   │   └── programmingPlanSamples.ts
 │   │       │   ├── ProgrammingPlanSamplerFormSettings
 │   │       │   │   ├── AddFieldToProgrammingSubPlanModal.tsx
 │   │       │   │   ├── ProgrammingPlanSamplerFormSettings.tsx
@@ -464,7 +461,6 @@
 │   │       │   │   ├── ProgrammingPlanSettingsCard.stories.tsx
 │   │       │   │   └── ProgrammingPlanSettingsCard.tsx
 │   │       │   ├── ProgrammingPlanSettingsTabs
-│   │       │   │   ├── ProgrammingPlanSettingsTabs.scss
 │   │       │   │   └── ProgrammingPlanSettingsTabs.tsx
 │   │       │   ├── ProgrammingPlanSettingsView.stories.tsx
 │   │       │   ├── ProgrammingPlanSettingsView.tsx
@@ -483,28 +479,40 @@
 │   │       ├── ProgrammingView
 │   │       │   ├── ProgrammingCommentList
 │   │       │   │   └── ProgrammingCommentList.tsx
-│   │       │   ├── ProgrammingPlanDepartmentalValidationList
-│   │       │   │   └── ProgrammingPlanDepartmentalValidationList.tsx
-│   │       │   ├── ProgrammingPlanRegionalValidationList
-│   │       │   │   └── ProgrammingPlanRegionalValidationList.tsx
+│   │       │   ├── ProgrammingPlanTrackingTable
+│   │       │   │   ├── ProgrammingPlanTrackingActionBar
+│   │       │   │   │   ├── ProgrammingPlanBulkLaunchModal.tsx
+│   │       │   │   │   ├── ProgrammingPlanBulkSendAdminModal.tsx
+│   │       │   │   │   ├── ProgrammingPlanBulkSendDepartmentalModal.tsx
+│   │       │   │   │   ├── ProgrammingPlanBulkSendNationalModal.tsx
+│   │       │   │   │   ├── ProgrammingPlanBulkSendRegionalModal.tsx
+│   │       │   │   │   └── ProgrammingPlanTrackingActionBar.tsx
+│   │       │   │   ├── ProgrammingPlanTrackingFilters.tsx
+│   │       │   │   ├── ProgrammingPlanTrackingTable.scss
+│   │       │   │   ├── ProgrammingPlanTrackingTable.tsx
+│   │       │   │   ├── ProgrammingPlanTrackingTable.utils.ts
+│   │       │   │   └── useProgrammingPlanTrackingStatus.ts
 │   │       │   ├── ProgrammingPrescriptionFilters
+│   │       │   │   ├── ProgrammingPrescriptionFilters.scss
 │   │       │   │   └── ProgrammingPrescriptionFilters.tsx
 │   │       │   ├── ProgrammingPrescriptionList
+│   │       │   │   ├── BulkAssignLaboratoriesModal.tsx
+│   │       │   │   ├── PrescriptionImportModal.tsx
 │   │       │   │   ├── ProgrammingPrescriptionList.scss
 │   │       │   │   ├── ProgrammingPrescriptionList.tsx
-│   │       │   │   ├── ProgrammingPrescriptionListGroupedUpdate.tsx
 │   │       │   │   └── ProgrammingPrescriptionListHeader.tsx
 │   │       │   ├── ProgrammingPrescriptionTable
-│   │       │   │   ├── ProgrammingLocalPrescriptionTable.tsx
+│   │       │   │   ├── ProgrammingPrescriptionRow.tsx
 │   │       │   │   ├── ProgrammingPrescriptionTable.scss
-│   │       │   │   └── ProgrammingPrescriptionTable.tsx
+│   │       │   │   ├── ProgrammingPrescriptionTable.tsx
+│   │       │   │   └── ProgrammingPrescriptionTableParts.tsx
+│   │       │   ├── ProgrammingView.scss
 │   │       │   ├── ProgrammingView.tsx
 │   │       │   └── stories
 │   │       │       ├── ProgrammingViewDAOAInProgress.stories.tsx
 │   │       │       ├── ProgrammingViewDAOASubmittedToDepartments.stories.tsx
 │   │       │       ├── ProgrammingViewDAOASubmittedToRegion.stories.tsx
 │   │       │       ├── ProgrammingViewDAOAValidated.stories.tsx
-│   │       │       ├── ProgrammingViewPPVApprovedByRegion.stories.tsx
 │   │       │       ├── ProgrammingViewPPVInProgress.stories.tsx
 │   │       │       ├── ProgrammingViewPPVSubmittedToRegion.stories.tsx
 │   │       │       └── ProgrammingViewPPVValidated.stories.tsx
@@ -796,7 +804,18 @@
 │   │   │   ├── 118-programming-plan-national-coordinators.ts
 │   │   │   ├── 119-national-coordinators-without-stages.ts
 │   │   │   ├── 120-sub-plan-settings-cascade.ts
-│   │   │   └── 121-substance-kinds-managed.ts
+│   │   │   ├── 121-substance-kinds-managed.ts
+│   │   │   ├── 122-programming-plan-national-status.ts
+│   │   │   ├── 122-samplers-without-slaughterhouse-department.ts
+│   │   │   ├── 122-samples-managed.ts
+│   │   │   ├── 123-programming-plan-local-status-tracking.ts
+│   │   │   ├── 124-local-prescription-changes.ts
+│   │   │   ├── 125-prescription-changes.ts
+│   │   │   ├── 126-programming-plan-launch.ts
+│   │   │   ├── 127-diffusion-watermarks.ts
+│   │   │   ├── 128-sample-settings-substance-kinds.ts
+│   │   │   ├── 129-draft-sample-items-from-settings.ts
+│   │   │   └── 130-document-year-from-programming-plans.ts
 │   │   └── seeds
 │   │       ├── departments
 │   │       │   ├── departmentsSeed.ts
@@ -858,6 +877,7 @@
 │   │   ├── db.ts
 │   │   ├── departmentRepository.test.ts
 │   │   ├── departmentRepository.ts
+│   │   ├── documentRepository.test.ts
 │   │   ├── documentRepository.ts
 │   │   ├── kysely.ts
 │   │   ├── kysely.type.ts
@@ -868,17 +888,20 @@
 │   │   ├── laboratoryRepository.ts
 │   │   ├── laboratoryResidueMappingRepository.test.ts
 │   │   ├── laboratoryResidueMappingRepository.ts
+│   │   ├── localPrescriptionChangeRepository.ts
 │   │   ├── localPrescriptionCommentRepository.ts
 │   │   ├── localPrescriptionRepository.ts
 │   │   ├── localPrescriptionSubstanceKindLaboratoryRepository.ts
 │   │   ├── noticesRepository.test.ts
 │   │   ├── noticesRepository.ts
 │   │   ├── notificationRepository.ts
+│   │   ├── prescriptionChangeRepository.ts
 │   │   ├── prescriptionRepository.ts
 │   │   ├── prescriptionSubstanceRepository.ts
 │   │   ├── programmingPlanDomainRepository.test.ts
 │   │   ├── programmingPlanDomainRepository.ts
 │   │   ├── programmingPlanRepository.ts
+│   │   ├── programmingPlanSettingsRow.ts
 │   │   ├── programmingSubPlanRepository.ts
 │   │   ├── residueAnalyteRepository.ts
 │   │   ├── sachaCommemoratifRepository.test.ts
@@ -1024,6 +1047,7 @@
 │   │   │   ├── script.ts
 │   │   │   ├── utils.test.ts
 │   │   │   └── utils.ts
+│   │   ├── localPrescriptionDiffusionService.ts
 │   │   ├── mailService
 │   │   │   ├── brevoService.ts
 │   │   │   ├── fakeService.ts
@@ -1032,14 +1056,20 @@
 │   │   │   └── nodemailerService.ts
 │   │   ├── notificationService.ts
 │   │   ├── pdfService
+│   │   │   ├── pdfService.test.ts
 │   │   │   └── pdfService.ts
+│   │   ├── prescriptionDiffusionService.ts
+│   │   ├── prescriptionImportService.ts
 │   │   ├── programmingPlanDeletionService.ts
 │   │   ├── programmingPlanSettingsService.integration.test.ts
 │   │   ├── programmingPlanSettingsService.ts
 │   │   ├── s3Service.ts
+│   │   ├── sampleItemService.test.ts
+│   │   ├── sampleItemService.ts
 │   │   ├── supportDocumentProcessor.ts
 │   │   ├── tchapService.test.ts
 │   │   ├── tchapService.ts
+│   │   ├── userService.test.ts
 │   │   ├── userService.ts
 │   │   └── zipService.ts
 │   ├── templates
@@ -1222,7 +1252,10 @@
 │   │   │   └── SachaCommunicationMethod.ts
 │   │   ├── LocalPrescription
 │   │   │   ├── FindLocalPrescriptionOptions.ts
+│   │   │   ├── LocalPrescription.test.ts
 │   │   │   ├── LocalPrescription.ts
+│   │   │   ├── LocalPrescriptionChange.test.ts
+│   │   │   ├── LocalPrescriptionChange.ts
 │   │   │   ├── LocalPrescriptionComment.ts
 │   │   │   ├── LocalPrescriptionKey.ts
 │   │   │   └── LocalPrescriptionSubstanceKindLaboratory.ts
@@ -1233,9 +1266,13 @@
 │   │   │   ├── Notification.ts
 │   │   │   └── NotificationCategory.ts
 │   │   ├── Prescription
+│   │   │   ├── FindPrescriptionOptions.test.ts
 │   │   │   ├── FindPrescriptionOptions.ts
 │   │   │   ├── Prescription.ts
+│   │   │   ├── PrescriptionChange.ts
 │   │   │   ├── PrescriptionComments.ts
+│   │   │   ├── PrescriptionCounts.ts
+│   │   │   ├── PrescriptionImport.ts
 │   │   │   └── PrescriptionSubstance.ts
 │   │   ├── ProgrammingPlan
 │   │   │   ├── Context.ts
@@ -1243,10 +1280,14 @@
 │   │   │   ├── FindProgrammingPlanOptions.test.ts
 │   │   │   ├── FindProgrammingPlanOptions.ts
 │   │   │   ├── FindProgrammingSubPlanOptions.ts
+│   │   │   ├── ProgrammingPlanDisplayStatus.test.ts
+│   │   │   ├── ProgrammingPlanDisplayStatus.ts
 │   │   │   ├── ProgrammingPlanDomain.ts
 │   │   │   ├── ProgrammingPlanLocalStatus.ts
 │   │   │   ├── ProgrammingPlanNationalCoordinator.test.ts
 │   │   │   ├── ProgrammingPlanNationalCoordinator.ts
+│   │   │   ├── ProgrammingPlanSampleSetting.test.ts
+│   │   │   ├── ProgrammingPlanSampleSetting.ts
 │   │   │   ├── ProgrammingPlanSettings.test.ts
 │   │   │   ├── ProgrammingPlanSettings.ts
 │   │   │   ├── ProgrammingPlanSettingsForm.test.ts
@@ -1254,7 +1295,9 @@
 │   │   │   ├── ProgrammingPlanStatus.ts
 │   │   │   ├── ProgrammingPlans.test.ts
 │   │   │   ├── ProgrammingPlans.ts
-│   │   │   └── ProgrammingSubPlan.ts
+│   │   │   ├── ProgrammingSubPlan.ts
+│   │   │   ├── completedSubPlanSettings.test.ts
+│   │   │   └── completedSubPlanSettings.ts
 │   │   ├── SachaCommemoratif
 │   │   │   └── SachaCommemoratif.ts
 │   │   ├── Sample
@@ -1264,6 +1307,7 @@
 │   │   │   ├── Sample.test.ts
 │   │   │   ├── Sample.ts
 │   │   │   ├── SampleCompliance.ts
+│   │   │   ├── SampleItem.test.ts
 │   │   │   ├── SampleItem.ts
 │   │   │   ├── SampleItemRecipientKind.ts
 │   │   │   ├── SampleSpecificDataAttribute.ts
@@ -1329,4 +1373,4 @@
     ├── express-jwt
     │   └── index.d.ts
     └── knex-stringcase.d.ts
-244 directories, 1087 files
+237 directories, 1138 files

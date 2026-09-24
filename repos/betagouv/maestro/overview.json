@@ -1,28 +1,27 @@
 {
   "url": "https://github.com/betagouv/maestro",
   "name": "maestro",
-  "description": "Maestro est une plateforme de gestion de données et de prélèvements permettant le suivi de domaines, de plans et de processus métier. Elle intègre des outils de cartographie, de génération de rapports et de communication institutionnelle.",
+  "description": "Maestro est une plateforme de coordination et de suivi de prélèvements et de plans d'action. Elle permet la gestion des domaines, des utilisateurs, de la cartographie et des statistiques liées aux prélèvements.",
   "language": "TypeScript",
   "features": [
-    "Gestion documentaire & Fichiers",
-    "Authentification & Accès",
-    "Statistiques & Rapports",
-    "Recherche & Filtres",
     "Gestion des utilisateurs & Permissions",
-    "Gestion métier générale",
     "Visualisation de données & Cartographie",
-    "Notifications & Alertes"
+    "Statistiques & Rapports",
+    "Notifications & Alertes",
+    "Gestion métier générale",
+    "Données & Schémas",
+    "Administration & Backoffice"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "PostgreSQL",
     "KnexJS",
+    "PostgreSQL",
     "S3",
     "Dex",
     "Vitest",
     "Zod",
     "Lodash-es",
-    "Browserless"
+    "Biome"
   ],
   "components": [
     "API REST & GraphQL",
@@ -30,6 +29,7 @@
     "TypeScript / JavaScript",
     "Docker & Conteneurs",
     "Authentification (composant)",
+    "Design System (DSFR & UI libs)",
     "Scripts & Utilitaires"
   ],
   "auth": {
@@ -41,19 +41,23 @@
       "Dex"
     ]
   },
-  "tests": "Vitest",
+  "tests": [
+    "Vitest"
+  ],
   "workflows": [
     "Semantic-release"
   ],
-  "lastActivity": "2026-09-15T09:03:14+02:00",
+  "lastActivity": "2026-09-23T15:46:27+02:00",
   "status": "active",
-  "license": "AGPL-3.0",
+  "license": "MIT",
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "TypeScript",
     "Docker & Conteneurs",
     "Bases de données SQL",
-    "SIG & Géospatial"
+    "Design System & UI",
+    "SIG & Géospatial",
+    "CI/CD & GitHub Actions"
   ]
 }

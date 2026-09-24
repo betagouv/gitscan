@@ -1,44 +1,36 @@
-## Changelog : maestro (30 derniers jours, au 15 septembre 2026)
+## Changelog : maestro (30 derniers jours, au 23 septembre 2026)
 
 ### Résumé
-Ce mois-ci, Maestro a connu une évolution majeure de son module de paramétrage, offrant une plus grande flexibilité dans la gestion des plans, des sous-plans et des analytes. La gestion des utilisateurs et des droits d'accès a été renforcée pour mieux coller aux réalités métier, tandis que la gestion des domaines et des prélèvements a été fluidifiée. Ces changements visent à offrir un outil plus précis et mieux adapté aux processus de coordination nationale et régionale.
+Ce mois-ci, les évolutions de Maestro se sont concentrées sur l'enrichissement des capacités de paramétrage et la gestion des données métier. Les outils de configuration des échantillons et des plans ont été considérablement étendus, tandis que les droits d'accès et la visibilité des informations ont été affinés pour les coordinateurs nationaux et régionaux. L'expérience utilisateur a également été améliorée par des corrections de navigation et de recherche.
 
 ### Évolutions fonctionnelles
 
-**Gestion du paramétrage**
-- Possibilité de paramétrer les analytes [#1476], les sous-plans [#1399, #1365] et de gérer la notion de "Terminer" [#1441].
-- Introduction de nouvelles notions métier : gestion des propriétaires [#1453] et gestion de la surcharge entre un plan et ses sous-plans [#1412].
-- Amélioration de l'interface de configuration : ajout d'un fil d'ariane et de nouvelles actions [#1351], et réorganisation de la page de configuration des champs spécifiques [#1400].
-- Possibilité de supprimer les domaines, plans et sous-plans lorsqu'ils ne sont pas terminés [#1475].
-- Suppression de la version "cartes" dans le module de programmation [#1325].
+**Configuration et Paramétrage**
+- Extension des capacités de paramétrage : gestion des sous-plans [#1399], notion de surcharge entre plans et sous-plans [#1412], et ajout d'un statut "Terminer" [#1441].
+- Gestion avancée des échantillons : possibilité de configurer les analytes (plusieurs analytes par échantillon [#1513], [#1476]), gestion des propriétaires [#1453], et calcul automatique des exemplaires via le paramétrage [#1524].
+- Évolution des domaines et ressources : ajout de la notion d'année pour les domaines [#1372], possibilité de rendre l'année optionnelle pour les ressources [#1540], et simplification de l'interface d'assignation des domaines [#1373], [#1387].
+- Amélioration de la gestion des données : possibilité de supprimer les domaines, plans et sous-plans non terminés [#1475] et déplacement de la configuration des champs spécifiques [#1400].
 
-**Domaines et Cartographie**
-- Amélioration de la gestion des domaines : ajout de nouveaux domaines [#1343], consultation via une page dédiée [#1349] et intégration des informations directement dans la carte du domaine [#1344].
-- Ajout de la notion d'année pour les domaines [#1372].
-- Suppression de l'interface temporaire d'assignation des domaines aux plans au profit d'un système intégré [#1387].
+**Gestion des utilisateurs et des droits**
+- Renforcement des droits des coordinateurs nationaux : accès en lecture seule au dictionnaire des descripteurs [#1536], visibilité sur l'ensemble des domaines [#1462] et correction de l'importation [#1535].
+- Amélioration du support et de la visibilité : ajout de fonctionnalités pour le support utilisateur [#1538] et visibilité accrue des commentaires de la coordination nationale pour les coordinateurs régionaux [#1452].
+- Corrections d'accès : correction de l'accès à la programmation pour les prélèveurs [#1502].
 
-**Utilisateurs et Permissions**
-- Évolution des rôles et accès : création du rôle administrateur BGIR [#1337], obligation de formation pour les préleveurs [#1335], et extension des droits des coordinateurs nationaux pour voir tous les domaines [#1462].
-- Amélioration de la visibilité : les coordinateurs régionaux peuvent désormais voir les commentaires de la coordination nationale [#1452].
-- Optimisation de l'affichage et de la recherche : affichage des laboratoires dans la liste des utilisateurs [#1366], gestion de l'affichage des stades uniquement si nécessaire [#1350], et corrections de la recherche (sensibilité à la casse [#1324], gestion des plans multi-stages [#1411]).
+**Programmation et Prélèvements**
+- Nouvelles fonctionnalités : ajout du suivi de la programmation [#1221] et ajout d'un type "date" pour les descripteurs [#1491].
+- Améliorations de l'expérience utilisateur : ajout d'un bouton "haut de page" [#1539], tri des sous-plans par numéro [#1537], et possibilité de modifier la localisation à l'étape 4 du prélèvement [#1414].
+- Corrections : correction de la recherche d'entreprises [#1473], de la recherche pour les plans multi-étapes [#1411] et de la suppression d'un prélèvement à envoyer [#1454].
 
-**Prélèvements, Alertes et Statistiques**
-- Amélioration du suivi des prélèvements : possibilité de modifier la localisation à l'étape 4 [#1414] et correction d'un bug lors de la suppression d'un prélèvement à envoyer [#1454].
-- Optimisation des alertes de correction en PPV [#1474] et correction des statistiques de prélèvements non conformes sur le tableau de bord [#1384].
-
-**Notifications**
-- Intégration d'une boîte email institutionnelle pour la notification des détections [#1388].
-
-**Autres corrections**
-- Correction du moteur de recherche pour les entreprises [#1473].
+**Notifications et Statistiques**
+- Migration des notifications vers l'outil Tchap [#1430].
+- Ajout d'une boîte email institutionnelle pour les notifications de détection [#1388].
+- Correction des statistiques de prélèvements non conformes sur le tableau de bord [#1384].
 
 ### Évolutions techniques
 
-**Architecture et Données**
-- Migration de la gestion des domaines vers la base de données [#1342].
-- Migration de l'outil de communication de Mattermost vers Tchap [#1430].
+**Maintenance et Infrastructure**
+- Refactoring : suppression du code de gestion du mode hors-ligne pour les prélèvements [#1523] et nettoyage du code mort dans la partie programmation [#1522].
+- Fiabilité et Build : amélioration de la gestion des erreurs du script de sauvegarde (backup) [#1386], correction des types de routes lors du build et initialisation des départements sur les environnements de test (review apps) [#1367].
 
-**Infrastructure et Tests**
-- Amélioration de la fiabilité du script de sauvegarde (backup) en cas d'erreur [#1386].
-- Initialisation automatique des départements sur les environnements de test (review apps) [#1367].
-- Stabilisation des tests automatisés concernant l'ouverture des fenêtres modales [#1451].
+### Autres changements
+- Passage du projet sous licence MIT [#1489].
