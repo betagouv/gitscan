@@ -35,14 +35,11 @@
 │       ├── env-destroy.yml
 │       ├── env-stop-cron.yml
 │       ├── env-stop.yml
-│       ├── eslint_report.yml
-│       ├── metrics.yml
 │       ├── mirroring.yml
 │       ├── pr-title-checker.yml
 │       ├── release.yml
 │       ├── run-tests.yml
 │       ├── scw-deploy.yml
-│       ├── scw-docker-build.yml
 │       ├── test-deploy-ci.yml
 │       └── test-deploy-production.yml
 ├── .gitignore
@@ -54,6 +51,7 @@
 │   ├── settings.json
 │   └── tasks.json
 ├── CHANGELOG.md
+├── CLAUDE.md
 ├── LICENSE
 ├── README.md
 ├── admin
@@ -353,7 +351,6 @@
 │   │   │   │   │   ├── Mail.jsx
 │   │   │   │   │   ├── Map.jsx
 │   │   │   │   │   ├── Message.jsx
-│   │   │   │   │   ├── Schema.jsx
 │   │   │   │   │   ├── Sejour.jsx
 │   │   │   │   │   ├── Selector.jsx
 │   │   │   │   │   ├── Settings.jsx
@@ -533,15 +530,17 @@
 │   │   │   │   └── index.tsx
 │   │   │   ├── auth
 │   │   │   │   ├── components
-│   │   │   │   │   └── header.jsx
+│   │   │   │   │   ├── header.jsx
+│   │   │   │   │   └── unavailabilityBanner.jsx
 │   │   │   │   ├── forgot.jsx
 │   │   │   │   ├── index.jsx
 │   │   │   │   ├── invitationexpired.jsx
 │   │   │   │   ├── reset.jsx
 │   │   │   │   ├── signin.jsx
 │   │   │   │   ├── signin2FA.jsx
-│   │   │   │   ├── signup.jsx
-│   │   │   │   └── signupInvite.jsx
+│   │   │   │   ├── signupInvite.jsx
+│   │   │   │   └── utils
+│   │   │   │       └── redirectAfterSignin.ts
 │   │   │   ├── centersV2
 │   │   │   │   ├── ListPresence.jsx
 │   │   │   │   ├── components
@@ -554,7 +553,6 @@
 │   │   │   │   │   ├── Toggle.tsx
 │   │   │   │   │   ├── commons.jsx
 │   │   │   │   │   ├── modals
-│   │   │   │   │   │   ├── ModalExportMail.jsx
 │   │   │   │   │   │   ├── ModalExportPdfFile.jsx
 │   │   │   │   │   │   ├── ModalMultiPointageDepart.jsx
 │   │   │   │   │   │   ├── ModalMultiPointageFicheSanitaire.jsx
@@ -585,25 +583,15 @@
 │   │   │   │   │   ├── HistoryRow.tsx
 │   │   │   │   │   ├── NavbarClasse.tsx
 │   │   │   │   │   ├── ReferentInfos.tsx
-│   │   │   │   │   ├── ReferentInfosConfirmerModal.tsx
-│   │   │   │   │   ├── ReferentInfosModifierModal.tsx
 │   │   │   │   │   ├── SejourInfos.tsx
 │   │   │   │   │   ├── StatsInfos.tsx
-│   │   │   │   │   ├── WithdrawButton.tsx
-│   │   │   │   │   ├── modaleCohort.tsx
 │   │   │   │   │   └── types.ts
-│   │   │   │   ├── create.tsx
 │   │   │   │   ├── header
-│   │   │   │   │   ├── ButtonCertificateDownload.tsx
 │   │   │   │   │   ├── ButtonDownloadEmptyFile.tsx
 │   │   │   │   │   ├── ButtonHandleInscription.tsx
 │   │   │   │   │   ├── ButtonInscriptionEnMasse.tsx
 │   │   │   │   │   ├── ButtonInscriptionManuelle.tsx
-│   │   │   │   │   ├── ButtonLinkInvite.tsx
-│   │   │   │   │   ├── ButtonRelanceVerif.tsx
 │   │   │   │   │   ├── ClasseHeader.tsx
-│   │   │   │   │   ├── DeleteButton.tsx
-│   │   │   │   │   ├── VerifClassButton.tsx
 │   │   │   │   │   └── index.tsx
 │   │   │   │   ├── index.tsx
 │   │   │   │   ├── inscriptionEnMasse
@@ -765,18 +753,8 @@
 │   │   │   ├── email-preview
 │   │   │   │   └── index.tsx
 │   │   │   ├── etablissement
-│   │   │   │   ├── Create
-│   │   │   │   │   ├── Create.tsx
-│   │   │   │   │   ├── ModalConfirmation.tsx
-│   │   │   │   │   ├── ModalError.tsx
-│   │   │   │   │   ├── ModalValidation.tsx
-│   │   │   │   │   ├── ModalWarning.tsx
-│   │   │   │   │   └── type.ts
 │   │   │   │   ├── List.tsx
 │   │   │   │   ├── components
-│   │   │   │   │   ├── ButtonAddCoordinator.tsx
-│   │   │   │   │   ├── ButtonDeleteCoordinator.tsx
-│   │   │   │   │   ├── ButtonEditChefEtablissement.tsx
 │   │   │   │   │   ├── Contact.tsx
 │   │   │   │   │   ├── GeneralInfos.tsx
 │   │   │   │   │   └── modale
@@ -878,9 +856,6 @@
 │   │   │   ├── plan-transport
 │   │   │   │   ├── components
 │   │   │   │   │   ├── Buttons.jsx
-│   │   │   │   │   ├── PlanTransportBreadcrumb.jsx
-│   │   │   │   │   ├── ProgressArc.jsx
-│   │   │   │   │   ├── ProgressBar.jsx
 │   │   │   │   │   ├── Select.jsx
 │   │   │   │   │   └── commons.jsx
 │   │   │   │   ├── lib
@@ -933,55 +908,12 @@
 │   │   │   │   │   │   ├── Select.tsx
 │   │   │   │   │   │   ├── Tags.jsx
 │   │   │   │   │   │   └── Toggle.jsx
-│   │   │   │   │   ├── import
-│   │   │   │   │   │   ├── components
-│   │   │   │   │   │   │   ├── Download.tsx
-│   │   │   │   │   │   │   ├── Import.tsx
-│   │   │   │   │   │   │   ├── NavBar.tsx
-│   │   │   │   │   │   │   └── Resum.tsx
-│   │   │   │   │   │   ├── index.tsx
-│   │   │   │   │   │   └── type.ts
 │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   ├── modificationPanel
 │   │   │   │   │   │   ├── Creation.jsx
 │   │   │   │   │   │   ├── List.jsx
 │   │   │   │   │   │   └── View.jsx
 │   │   │   │   │   └── utils.tsx
-│   │   │   │   ├── schema-repartition
-│   │   │   │   │   ├── GroupEditor.jsx
-│   │   │   │   │   ├── GroupSelector.jsx
-│   │   │   │   │   ├── SchemaDepartmentDetail.jsx
-│   │   │   │   │   ├── SchemaEditor.jsx
-│   │   │   │   │   ├── SchemaRepartition.jsx
-│   │   │   │   │   ├── components
-│   │   │   │   │   │   ├── BoxAffectation.tsx
-│   │   │   │   │   │   ├── BoxCentres.tsx
-│   │   │   │   │   │   ├── BoxDisponibilite.tsx
-│   │   │   │   │   │   ├── BoxVolontaires.tsx
-│   │   │   │   │   │   ├── DetailTable.tsx
-│   │   │   │   │   │   └── types.ts
-│   │   │   │   │   ├── group
-│   │   │   │   │   │   ├── GroupAffectationSummary.jsx
-│   │   │   │   │   │   ├── GroupCenter.jsx
-│   │   │   │   │   │   ├── GroupConfirmDelete.jsx
-│   │   │   │   │   │   ├── GroupConfirmDeleteCenter.jsx
-│   │   │   │   │   │   ├── GroupCreator.jsx
-│   │   │   │   │   │   ├── GroupGatheringPlaces.jsx
-│   │   │   │   │   │   ├── GroupModificationEnhanced.jsx
-│   │   │   │   │   │   ├── GroupUpdateYoungCounts.jsx
-│   │   │   │   │   │   └── GroupYoungVolumeEditor.jsx
-│   │   │   │   │   ├── index.jsx
-│   │   │   │   │   └── utils
-│   │   │   │   │       └── index.ts
-│   │   │   │   ├── table-repartition
-│   │   │   │   │   ├── NationalView.tsx
-│   │   │   │   │   ├── RegionalView.jsx
-│   │   │   │   │   ├── components
-│   │   │   │   │   │   ├── InTable.jsx
-│   │   │   │   │   │   ├── OutTable.jsx
-│   │   │   │   │   │   ├── RegionRow.jsx
-│   │   │   │   │   │   └── SelectHostRegion.jsx
-│   │   │   │   │   └── index.jsx
 │   │   │   │   └── util.tsx
 │   │   │   ├── planMarketing
 │   │   │   │   ├── campagne
@@ -1035,15 +967,6 @@
 │   │   │   ├── school
 │   │   │   │   ├── List.jsx
 │   │   │   │   └── index.jsx
-│   │   │   ├── session-phase1
-│   │   │   │   ├── components
-│   │   │   │   │   ├── Select.jsx
-│   │   │   │   │   └── SelectFilter.jsx
-│   │   │   │   ├── index.jsx
-│   │   │   │   └── view
-│   │   │   │       ├── List.jsx
-│   │   │   │       ├── MobileList.jsx
-│   │   │   │       └── Unauthorized.jsx
 │   │   │   ├── settings
 │   │   │   │   ├── eligibility
 │   │   │   │   │   └── EligibilityTab.tsx
@@ -1139,16 +1062,6 @@
 │   │   │   │           │   └── BasculeJeuneValidesResultCell.tsx
 │   │   │   │           └── desistement
 │   │   │   │               └── DesistementResultCell.tsx
-│   │   │   ├── signup
-│   │   │   │   ├── CodeForm.tsx
-│   │   │   │   ├── ConfirmationForm.tsx
-│   │   │   │   ├── EmailForm.tsx
-│   │   │   │   ├── InformationsForm.tsx
-│   │   │   │   ├── RoleForm.tsx
-│   │   │   │   ├── components
-│   │   │   │   │   ├── Input.jsx
-│   │   │   │   │   └── Stepper.tsx
-│   │   │   │   └── index.tsx
 │   │   │   ├── structure
 │   │   │   │   ├── components
 │   │   │   │   │   ├── Button.jsx
@@ -1385,6 +1298,35 @@
 │   ├── .prettierrc
 │   ├── README.md
 │   ├── docs
+│   │   ├── 2026-09-22-H65-H66-pieces-volontaire.md
+│   │   ├── 2026-09-22-H7-fuite-document-brevo.md
+│   │   ├── 2026-09-22-lot-C-anti-abus.md
+│   │   ├── 2026-09-22-lot-E-missions-programmes.md
+│   │   ├── 2026-09-22-lot-M-perimetre-cle.md
+│   │   ├── 2026-09-22-lot-apiv2-H73-H79.md
+│   │   ├── 2026-09-23-GOO-10-contrats-jetons-signature.md
+│   │   ├── 2026-09-23-GOO-12-autorisations-cote-api.md
+│   │   ├── 2026-09-23-GOO-14-injections-html-et-liens.md
+│   │   ├── 2026-09-23-GOO-6-snupport-app-contenus-tiers.md
+│   │   ├── 2026-09-23-GOO-7-base-de-connaissance-sessions.md
+│   │   ├── 2026-09-23-GOO-8-telemetrie-sentry-plausible.md
+│   │   ├── 2026-09-23-GOO-9-redirection-apres-connexion.md
+│   │   ├── 2026-09-23-decommissionnement-parcours-representants-legaux.md
+│   │   ├── 2026-09-23-goo-11-dossier-jeune-champs-par-role.md
+│   │   ├── 2026-09-23-lot-H1-tunnel-inscription-reinscription.md
+│   │   ├── 2026-09-23-lot-H2-statuts-auto-servis.md
+│   │   ├── 2026-09-23-lot-I-sejour-point-rassemblement-eligibilite.md
+│   │   ├── 2026-09-23-lot-K1-sessions-phase1-perimetre.md
+│   │   ├── 2026-09-23-lot-K2-centres-de-cohesion-perimetre.md
+│   │   ├── 2026-09-23-lot-L1-plan-de-transport-perimetre.md
+│   │   ├── 2026-09-23-lot-L2-schema-table-repartition.md
+│   │   ├── 2026-09-23-lot-O1-plan-marketing.md
+│   │   ├── 2026-09-23-lot-P-support-administration-centrale.md
+│   │   ├── 2026-09-23-lot-Q-support-contact-messages-imap.md
+│   │   ├── 2026-09-23-lot-R2-base-de-connaissance-feedback.md
+│   │   ├── 2026-09-23-lot-S-snupport.md
+│   │   ├── 2026-09-23-lot-T2-integrations-externes-routes-publiques.md
+│   │   ├── 2026-09-23-lot-T3-suppression-franceconnect-purge-s3.md
 │   │   ├── MDD.md
 │   │   └── generate-models-documentation.js
 │   ├── jest.config.js
@@ -1504,7 +1446,12 @@
 │   │   ├── 20250812113059-983-jvaMission-end-date.js
 │   │   ├── 20250903143809-975-migrate-mission-with-wrong-period.js
 │   │   ├── 20250918102656-1011-wrong-end-date.js
-│   │   └── 20260611160720-bandeau-consentement-non-eligibles.js
+│   │   ├── 20260611160720-bandeau-consentement-non-eligibles.js
+│   │   ├── 20260713144238-archivage-cohortes-2024-2025.js
+│   │   ├── 20260922070805-decommissionnement-cle-permissions-et-comptes.js
+│   │   ├── 20260922103000-h56-purge-jetons-historique.js
+│   │   ├── 20260923120000-decommissionnement-representants-legaux-jetons.js
+│   │   └── 20260923200000-goo-14-assainissement-description-structures.js
 │   ├── nodemon.json
 │   ├── package.json
 │   ├── public
@@ -1522,21 +1469,43 @@
 │   │   │   │   ├── passport.ts
 │   │   │   │   └── redis.ts
 │   │   │   ├── alerte-message.test.ts
+│   │   │   ├── anonymization.test.ts
+│   │   │   ├── application-security.test.ts
 │   │   │   ├── application.test.ts
+│   │   │   ├── auth-2fa-trust-token.test.ts
+│   │   │   ├── auth-anti-abus.test.ts
+│   │   │   ├── brevo-mail-redaction.test.ts
+│   │   │   ├── brevo-sync.test.ts
 │   │   │   ├── certificate-generation.test.ts
 │   │   │   ├── certificate-template.test.ts
+│   │   │   ├── cle-classe-security.test.ts
+│   │   │   ├── cle-perimetre-security.test.ts
+│   │   │   ├── cle-routes-supprimees.test.ts
+│   │   │   ├── cohesion-center-perimetre.test.ts
 │   │   │   ├── cohesion-center.test.ts
 │   │   │   ├── cohort-group.test.ts
 │   │   │   ├── cohort-session.test.ts
 │   │   │   ├── cohort.test.ts
 │   │   │   ├── config-jwt-secret.test.ts
 │   │   │   ├── contract.test.ts
+│   │   │   ├── correction-request-security.test.ts
 │   │   │   ├── crons
 │   │   │   │   ├── deleteLegalRepresentatives.e2e.test.ts
 │   │   │   │   └── missionsJVA
+│   │   │   │       ├── JVAService.security.test.ts
 │   │   │   │       └── JVAService.test.ts
+│   │   │   ├── department-service-security.test.ts
 │   │   │   ├── department-service.test.ts
+│   │   │   ├── elasticsearch-mission-export.test.ts
+│   │   │   ├── elasticsearch-perimeter.test.ts
+│   │   │   ├── elasticsearch-scope.test.ts
+│   │   │   ├── elasticsearch-structure-scope.test.ts
+│   │   │   ├── elasticsearch-structure-team.test.ts
+│   │   │   ├── email-content.test.ts
+│   │   │   ├── email-input.test.ts
 │   │   │   ├── email-preview.test.ts
+│   │   │   ├── email-scope.test.ts
+│   │   │   ├── email-sending-security.test.ts
 │   │   │   ├── email.test.ts
 │   │   │   ├── equivalence-matrix.test.ts
 │   │   │   ├── equivalence.test.ts
@@ -1556,7 +1525,6 @@
 │   │   │   │   ├── busTeam.ts
 │   │   │   │   ├── classe.ts
 │   │   │   │   ├── cle
-│   │   │   │   │   ├── appelAProjet.ts
 │   │   │   │   │   └── schoolRamses.ts
 │   │   │   │   ├── cohesionCenter.ts
 │   │   │   │   ├── cohort.ts
@@ -1568,6 +1536,7 @@
 │   │   │   │   ├── inscriptionGoal.ts
 │   │   │   │   ├── meetingPoint.ts
 │   │   │   │   ├── mission.ts
+│   │   │   │   ├── password.ts
 │   │   │   │   ├── presets.ts
 │   │   │   │   ├── program.ts
 │   │   │   │   ├── providers
@@ -1577,6 +1546,7 @@
 │   │   │   │   ├── sessionPhase1.ts
 │   │   │   │   ├── structure.ts
 │   │   │   │   └── young.ts
+│   │   │   ├── france-connect-routes-supprimees.test.ts
 │   │   │   ├── helpers
 │   │   │   │   ├── PlanDeTransport
 │   │   │   │   │   ├── planDeTransport.ts
@@ -1605,19 +1575,26 @@
 │   │   │   │   └── young.ts
 │   │   │   ├── iam
 │   │   │   │   ├── acl.helper.ts
-│   │   │   │   └── acl.test.ts
+│   │   │   │   ├── acl.test.ts
+│   │   │   │   └── permission-catalogue.test.ts
+│   │   │   ├── importRoadCodeRefund.helpers.test.ts
 │   │   │   ├── infra
 │   │   │   │   ├── accessControl.test.ts
 │   │   │   │   └── fakeEndpoint.ts
+│   │   │   ├── invitation-impersonation-security.test.ts
+│   │   │   ├── knowledge-base-session.test.ts
+│   │   │   ├── logger-redaction.test.ts
+│   │   │   ├── logging-middleware.test.ts
+│   │   │   ├── lot-t2-integrations-externes.test.ts
+│   │   │   ├── migrations
+│   │   │   │   └── archivage-cohortes-2024-2025.test.ts
+│   │   │   ├── mission-security.test.ts
 │   │   │   ├── mission.test.ts
 │   │   │   ├── phase1
 │   │   │   │   ├── bus.test.ts
 │   │   │   │   ├── cle
-│   │   │   │   │   ├── appelAProjet.test.ts
 │   │   │   │   │   ├── classe.test.ts
-│   │   │   │   │   ├── classes.test.ts
 │   │   │   │   │   ├── etablissement.test.ts
-│   │   │   │   │   ├── referent-signup.test.ts
 │   │   │   │   │   ├── referent.test.ts
 │   │   │   │   │   └── young.test.ts
 │   │   │   │   ├── correction-request.test.ts
@@ -1625,25 +1602,44 @@
 │   │   │   │   ├── inscription-goal.test.ts
 │   │   │   │   ├── ligne-de-bus.test.ts
 │   │   │   │   ├── ligne-to-point.test.ts
-│   │   │   │   ├── plan-de-transport.test.ts
 │   │   │   │   ├── point-de-rassemblement.test.ts
 │   │   │   │   ├── session-phase1.test.ts
 │   │   │   │   ├── sessionPhase1
 │   │   │   │   │   └── getPlanDeTransport.test.ts
-│   │   │   │   ├── table-de-repartition.test.ts
-│   │   │   │   ├── waiting-list.test.ts
 │   │   │   │   ├── young-meeting-point.test.ts
 │   │   │   │   ├── young-phase1.test.ts
 │   │   │   │   └── young-preinscription.test.ts
+│   │   │   ├── plan-de-transport-perimetre-lot-l1.test.ts
+│   │   │   ├── program-security.test.ts
 │   │   │   ├── program.test.ts
 │   │   │   ├── referent-auth.test.ts
+│   │   │   ├── referent-inactive-session.test.ts
+│   │   │   ├── referent-security.test.ts
+│   │   │   ├── referent-young-file-security.test.ts
+│   │   │   ├── referent-young-security.test.ts
 │   │   │   ├── referent.test.ts
+│   │   │   ├── repartition-routes-supprimees.test.ts
+│   │   │   ├── representants-legaux-routes-supprimees.test.ts
+│   │   │   ├── sejours-transport-security.test.ts
+│   │   │   ├── sentry-redaction.test.ts
+│   │   │   ├── session-phase1-perimetre.test.ts
+│   │   │   ├── slack-channel.test.ts
+│   │   │   ├── snupport-client.test.ts
+│   │   │   ├── snupport.test.ts
 │   │   │   ├── structure.test.ts
+│   │   │   ├── tunnel-inscription-routes-supprimees.test.ts
+│   │   │   ├── validate-custom-header.test.ts
 │   │   │   ├── young-auth.test.ts
 │   │   │   ├── young-documents.test.ts
+│   │   │   ├── young-edition-security.test.ts
 │   │   │   ├── young-edition.test.ts
-│   │   │   ├── young-inscription.test.ts
 │   │   │   ├── young-node.test.ts
+│   │   │   ├── young-patches-security.test.ts
+│   │   │   ├── young-restricted-fields.test.ts
+│   │   │   ├── young-security.test.ts
+│   │   │   ├── young-session-eligibility-security.test.ts
+│   │   │   ├── young-soft-delete-files.test.ts
+│   │   │   ├── young-statuts-auto-servis.test.ts
 │   │   │   └── young.test.ts
 │   │   ├── anonymization
 │   │   │   ├── PlanDeTransport
@@ -1687,37 +1683,26 @@
 │   │   ├── auth.ts
 │   │   ├── brevo.ts
 │   │   ├── cle
-│   │   │   ├── appelAProjetCle
-│   │   │   │   ├── appelAProjetClasseService.ts
-│   │   │   │   ├── appelAProjetController.ts
-│   │   │   │   ├── appelAProjetEtablissementService.ts
-│   │   │   │   ├── appelAProjetReferentService.ts
-│   │   │   │   ├── appelAProjetService.test.ts
-│   │   │   │   ├── appelAProjetService.ts
-│   │   │   │   └── appelAProjetType.ts
 │   │   │   ├── classe
 │   │   │   │   ├── classeController.ts
+│   │   │   │   ├── classeScope.ts
 │   │   │   │   ├── classeService.test.ts
 │   │   │   │   ├── classeService.ts
 │   │   │   │   ├── classeValidator.ts
 │   │   │   │   ├── export
 │   │   │   │   │   └── classeExportService.ts
 │   │   │   │   └── stateManager.ts
-│   │   │   ├── classes
-│   │   │   │   ├── classesController.ts
-│   │   │   │   ├── classesService.test.ts
-│   │   │   │   ├── classesService.ts
-│   │   │   │   └── classesValidator.ts
 │   │   │   ├── etablissement
 │   │   │   │   ├── etablissementController.ts
-│   │   │   │   └── etablissementMapper.ts
+│   │   │   │   ├── etablissementMapper.ts
+│   │   │   │   └── etablissementScope.ts
 │   │   │   ├── index.ts
 │   │   │   ├── referent
 │   │   │   │   ├── referentController.ts
 │   │   │   │   ├── referentRepository.ts
 │   │   │   │   ├── referentService.ts
-│   │   │   │   ├── referentSignupController.ts
 │   │   │   │   └── referentValidator.ts
+│   │   │   ├── referentProjection.ts
 │   │   │   └── young
 │   │   │       └── youngController.ts
 │   │   ├── cohesionCenter
@@ -1736,8 +1721,7 @@
 │   │   │   ├── cohortService.ts
 │   │   │   └── cohortValidator.ts
 │   │   ├── cohortGroup
-│   │   │   ├── cohortGroupController.ts
-│   │   │   └── cohortGroupService.ts
+│   │   │   └── cohortGroupController.ts
 │   │   ├── config.ts
 │   │   ├── controllers
 │   │   │   ├── SNUpport.ts
@@ -1785,9 +1769,6 @@
 │   │   │   ├── emailPreview.ts
 │   │   │   ├── event.js
 │   │   │   ├── filters.ts
-│   │   │   ├── gouv.fr
-│   │   │   │   ├── api-education.js
-│   │   │   │   └── index.js
 │   │   │   ├── inscription-goal.ts
 │   │   │   ├── mission.ts
 │   │   │   ├── patches.ts
@@ -1795,30 +1776,24 @@
 │   │   │   │   ├── commons.js
 │   │   │   │   ├── demande-de-modification.js
 │   │   │   │   ├── edit-transport.ts
-│   │   │   │   ├── import.ts
-│   │   │   │   ├── ligne-to-point.ts
-│   │   │   │   ├── schema-de-repartition.ts
-│   │   │   │   └── table-de-repartition.ts
+│   │   │   │   └── ligne-to-point.ts
 │   │   │   ├── program.ts
-│   │   │   ├── representants-legaux.js
 │   │   │   ├── request.ts
 │   │   │   ├── session-phase1.ts
 │   │   │   ├── signin.js
 │   │   │   ├── structure.ts
 │   │   │   ├── tags.js
-│   │   │   ├── waiting-list.js
 │   │   │   └── young
 │   │   │       ├── account.ts
 │   │   │       ├── documents.js
 │   │   │       ├── index.ts
-│   │   │       ├── inscription2023.js
 │   │   │       ├── meeting-point.js
 │   │   │       ├── note.ts
 │   │   │       ├── phase1.ts
 │   │   │       ├── phase2.ts
 │   │   │       ├── point-de-rassemblement.js
-│   │   │       ├── reinscription.js
-│   │   │       └── session.js
+│   │   │       ├── session.js
+│   │   │       └── youngPerimeterMiddleware.ts
 │   │   ├── cookie-options.js
 │   │   ├── crons
 │   │   │   ├── ReferentDepartmentOnBoarding.ts
@@ -1868,6 +1843,10 @@
 │   │   │   ├── syncReferentSupport.js
 │   │   │   └── utils.js
 │   │   ├── cryptoUtils.ts
+│   │   ├── email
+│   │   │   ├── emailContent.ts
+│   │   │   ├── emailInput.ts
+│   │   │   └── emailNotificationScope.ts
 │   │   ├── emails
 │   │   │   ├── cle
 │   │   │   │   ├── classe.ts
@@ -1904,6 +1883,7 @@
 │   │   │   ├── optionalAuth.ts
 │   │   │   ├── permissionAccessControlMiddleware.test.ts
 │   │   │   ├── permissionAccessControlMiddleware.ts
+│   │   │   ├── rateLimit.ts
 │   │   │   ├── requestValidatorMiddleware.test.ts
 │   │   │   ├── requestValidatorMiddleware.ts
 │   │   │   └── validateCustomHeader.js
@@ -1983,16 +1963,6 @@
 │   │   │       │   └── pointDeRassemblementImportValidator.ts
 │   │   │       ├── index.ts
 │   │   │       └── pointDeRassemblementController.ts
-│   │   ├── preinscription
-│   │   │   ├── preinscriptionController.ts
-│   │   │   └── preinscriptionValidator.ts
-│   │   ├── providers
-│   │   │   └── demarcheSimplifiee
-│   │   │       ├── demarcheSimplifieeDto.ts
-│   │   │       ├── demarcheSimplifieeProvider.test.ts
-│   │   │       ├── demarcheSimplifieeProvider.ts
-│   │   │       ├── demarcheSimplifieeQueryBuilder.test.ts
-│   │   │       └── demarcheSimplifieeQueryBuilder.ts
 │   │   ├── queues
 │   │   │   ├── cronsQueue.ts
 │   │   │   ├── redisQueue.ts
@@ -2001,30 +1971,40 @@
 │   │   ├── rateLimiters.js
 │   │   ├── redis.js
 │   │   ├── referent
-│   │   │   └── referentController.ts
+│   │   │   ├── referentController.ts
+│   │   │   └── referentScope.ts
 │   │   ├── routes.ts
 │   │   ├── scripts
-│   │   │   └── mission
-│   │   │       └── FixMissionMissingEndAt.ts
+│   │   │   ├── anonymizeOldCohorts.effect.ts
+│   │   │   ├── anonymizeOldCohorts.helpers.ts
+│   │   │   ├── exportOldCohortSupportEmails.ts
+│   │   │   ├── importRoadCodeRefund.helpers.ts
+│   │   │   ├── importRoadCodeRefund.ts
+│   │   │   ├── mission
+│   │   │   │   └── FixMissionMissingEndAt.ts
+│   │   │   ├── purgeSoftDeletedYoungFiles.effect.ts
+│   │   │   └── suggestRoadCodeRefundMatches.ts
 │   │   ├── sentry.js
 │   │   ├── services
+│   │   │   ├── auth
+│   │   │   │   └── attemptCounters.ts
 │   │   │   ├── cle
 │   │   │   │   └── referent.ts
 │   │   │   ├── contract.js
+│   │   │   ├── contractAccess.ts
 │   │   │   ├── dashboard
 │   │   │   │   ├── todo-engagement.service.js
 │   │   │   │   ├── todo-inscription.service.js
 │   │   │   │   ├── todo-sejour.service.js
 │   │   │   │   ├── todo.helper.js
 │   │   │   │   └── todo.service.js
+│   │   │   ├── departmentServiceScope.ts
 │   │   │   ├── fileService.test.ts
 │   │   │   ├── fileService.ts
 │   │   │   ├── gdpr.js
 │   │   │   ├── gouv.fr
 │   │   │   │   ├── api-adresse.ts
-│   │   │   │   ├── api-education.test.ts
-│   │   │   │   ├── api-education.ts
-│   │   │   │   ├── api-engagement.js
+│   │   │   │   ├── api-engagement.ts
 │   │   │   │   └── etablissementType.ts
 │   │   │   ├── iam
 │   │   │   │   ├── Permission.repository.ts
@@ -2033,16 +2013,22 @@
 │   │   │   ├── inscription-goal.test.ts
 │   │   │   ├── inscription-goal.ts
 │   │   │   ├── jeveuxaider.js
+│   │   │   ├── knowledgeBaseReader.ts
 │   │   │   ├── mission.ts
+│   │   │   ├── missionAccess.ts
 │   │   │   ├── pointDeRassemblement.service.js
 │   │   │   ├── regionService.test.ts
 │   │   │   ├── regionService.ts
+│   │   │   ├── rgpdEmailGuard.ts
+│   │   │   ├── sejourAccess.ts
 │   │   │   ├── stats.service
 │   │   │   │   ├── engagement.js
 │   │   │   │   ├── index.js
 │   │   │   │   ├── inscription.js
 │   │   │   │   └── sejour.js
-│   │   │   └── support.js
+│   │   │   ├── support.js
+│   │   │   ├── supportAttachments.ts
+│   │   │   └── supportFormAttributes.ts
 │   │   ├── sessionPhase1
 │   │   │   ├── import
 │   │   │   │   ├── sessionPhase1Import.ts
@@ -2077,6 +2063,7 @@
 │   │   │   ├── es-serializer.js
 │   │   │   ├── file.ts
 │   │   │   ├── index.ts
+│   │   │   ├── logRedaction.ts
 │   │   │   ├── old_cohorts_logic.js
 │   │   │   ├── pdf-renderer.ts
 │   │   │   ├── serializer.js
@@ -2093,6 +2080,8 @@
 │   │       ├── youngCertificateService.ts
 │   │       ├── youngController.ts
 │   │       ├── youngDocument.ts
+│   │       ├── youngFilesPurge.ts
+│   │       ├── youngScope.ts
 │   │       ├── youngSendDocumentEmailService.ts
 │   │       ├── youngService.test.ts
 │   │       └── youngService.ts
@@ -2120,6 +2109,7 @@
 │   │   │   │   │   │   └── Candidature.model.ts
 │   │   │   │   │   ├── mission
 │   │   │   │   │   │   ├── ExportMission.service.ts
+│   │   │   │   │   │   ├── ExporterMissionCanditatures.perimetre.spec.ts
 │   │   │   │   │   │   ├── ExporterMissionCanditatures.ts
 │   │   │   │   │   │   ├── ExporterMissions.ts
 │   │   │   │   │   │   └── cron
@@ -2133,13 +2123,9 @@
 │   │   │   │   ├── iam
 │   │   │   │   │   ├── Referent.gateway.ts
 │   │   │   │   │   ├── Referent.model.ts
-│   │   │   │   │   ├── ReferentAuth.gateway.ts
-│   │   │   │   │   ├── ReferentToken.model.ts
-│   │   │   │   │   ├── service
-│   │   │   │   │   │   ├── Referent.service.spec.ts
-│   │   │   │   │   │   └── Referent.service.ts
-│   │   │   │   │   └── useCase
-│   │   │   │   │       └── SigninReferent.ts
+│   │   │   │   │   └── service
+│   │   │   │   │       ├── Referent.service.spec.ts
+│   │   │   │   │       └── Referent.service.ts
 │   │   │   │   ├── referentiel
 │   │   │   │   │   ├── Referentiel.service.spec.ts
 │   │   │   │   │   ├── Referentiel.service.ts
@@ -2308,6 +2294,7 @@
 │   │   │   │           │   └── ValiderBasculeJeunesValides.ts
 │   │   │   │           ├── jeune
 │   │   │   │           │   ├── ExporterJeune.service.ts
+│   │   │   │           │   ├── ExporterJeunes.perimetre.spec.ts
 │   │   │   │           │   ├── ExporterJeunes.ts
 │   │   │   │           │   └── cron
 │   │   │   │           │       └── NettoyageExportJeune.ts
@@ -2341,7 +2328,10 @@
 │   │   │       │   │       └── Mission.validation.ts
 │   │   │       │   └── structure
 │   │   │       │       ├── api
+│   │   │       │       │   ├── Structure.controller.spec.ts
 │   │   │       │       │   ├── Structure.controller.ts
+│   │   │       │       │   ├── Structure.scope.spec.ts
+│   │   │       │       │   ├── Structure.scope.ts
 │   │   │       │       │   └── Structure.validation.ts
 │   │   │       │       ├── provider
 │   │   │       │       │   └── StructureMongo.provider.ts
@@ -2362,15 +2352,13 @@
 │   │   │       ├── iam
 │   │   │       │   ├── Contact.gateway.ts
 │   │   │       │   ├── api
-│   │   │       │   │   ├── Auth.controller.ts
 │   │   │       │   │   ├── Referent.controller.ts
 │   │   │       │   │   └── Referent.validation.ts
 │   │   │       │   ├── auth
+│   │   │       │   │   ├── AddUserToRequest.middleware.spec.ts
 │   │   │       │   │   ├── AddUserToRequest.middleware.ts
 │   │   │       │   │   ├── Auth.provider.ts
-│   │   │       │   │   ├── JwtToken.service.ts
-│   │   │       │   │   ├── ReferentAuth.facade.ts
-│   │   │       │   │   └── ReferentAuthFacade.spec.ts
+│   │   │       │   │   └── JwtToken.service.ts
 │   │   │       │   ├── guard
 │   │   │       │   │   ├── Admin.guard.ts
 │   │   │       │   │   ├── AdminCle.guard.ts
@@ -2421,6 +2409,7 @@
 │   │   │       │   │   │   ├── guard
 │   │   │       │   │   │   │   ├── ClasseAdminCle.guard.spec.ts
 │   │   │       │   │   │   │   ├── ClasseAdminCle.guard.ts
+│   │   │       │   │   │   │   ├── ClasseDepartement.guard.spec.ts
 │   │   │       │   │   │   │   ├── ClasseDepartement.guard.ts
 │   │   │       │   │   │   │   ├── ClasseGuard.service.ts
 │   │   │       │   │   │   │   ├── ClasseGuardService.spec.ts
@@ -2451,6 +2440,7 @@
 │   │   │       │   │       └── mongo
 │   │   │       │   │           └── JeuneMongo.repository.ts
 │   │   │       │   └── phase1
+│   │   │       │       ├── OperationsDeMasse.guards.spec.ts
 │   │   │       │       ├── affectation
 │   │   │       │       │   └── api
 │   │   │       │       │       ├── Affectation.controller.ts
@@ -2648,6 +2638,7 @@
 │   │   │   │   ├── Campagne.model.ts
 │   │   │   │   ├── ListeDiffusion.model.ts
 │   │   │   │   ├── PlanMarketing.model.ts
+│   │   │   │   ├── PlanMarketingActionSelector.service.spec.ts
 │   │   │   │   ├── PlanMarketingActionSelector.service.ts
 │   │   │   │   ├── Programmation.model.ts
 │   │   │   │   ├── gateway
@@ -2665,6 +2656,8 @@
 │   │   │   │   │   ├── CampagneProcessor.service.ts
 │   │   │   │   │   ├── ListeDiffusion.service.spec.ts
 │   │   │   │   │   ├── ListeDiffusion.service.ts
+│   │   │   │   │   ├── PlanMarketingWebhook.service.spec.ts
+│   │   │   │   │   ├── PlanMarketingWebhook.service.ts
 │   │   │   │   │   ├── Programmation.service.spec.ts
 │   │   │   │   │   └── Programmation.service.ts
 │   │   │   │   └── useCase
@@ -2706,8 +2699,8 @@
 │   │   │   │   │   ├── ListeDiffusion.validation.ts
 │   │   │   │   │   └── PlanMarketing.controller.ts
 │   │   │   │   ├── guard
-│   │   │   │   │   ├── BrevoIpGuard.spec.ts
-│   │   │   │   │   └── BrevoIpGuard.ts
+│   │   │   │   │   ├── BrevoWebhook.guard.spec.ts
+│   │   │   │   │   └── BrevoWebhook.guard.ts
 │   │   │   │   └── provider
 │   │   │   │       ├── PlanMarketing.factory.ts
 │   │   │   │       ├── PlanMarketingBrevo.provider.ts
@@ -2737,11 +2730,14 @@
 │   │   │       ├── CustomRequest.ts
 │   │   │       ├── File.controller.ts
 │   │   │       ├── File.provider.ts
+│   │   │       ├── FileAccess.service.spec.ts
+│   │   │       ├── FileAccess.service.ts
 │   │   │       ├── LoggerRequest.middleware.ts
 │   │   │       ├── Queue.ts
 │   │   │       ├── RepositoryHelper.spec.ts
 │   │   │       ├── RepositoryHelper.ts
 │   │   │       ├── TechnicalException.ts
+│   │   │       ├── escapeRegExp.ts
 │   │   │       └── featureFlag
 │   │   │           ├── FeatureFlag.provider.ts
 │   │   │           └── FeatureFlagMongo.repository.ts
@@ -2758,7 +2754,6 @@
 │   │   ├── admin
 │   │   │   ├── TaskHelper.ts
 │   │   │   ├── iam
-│   │   │   │   ├── AuthController.spec.ts
 │   │   │   │   ├── ReferentHelper.ts
 │   │   │   │   ├── ReferentMongo.repository.spec.ts
 │   │   │   │   └── UseAny.guard.spec.ts
@@ -2828,9 +2823,14 @@
 │   │   │   ├── CampagneHelper.ts
 │   │   │   ├── CampagneMongo.repository.spec.ts
 │   │   │   ├── EnvoyerCampagneProgrammee.spec.ts
+│   │   │   ├── ListeDiffusion.controller.spec.ts
+│   │   │   ├── PlanMarketing.controller.spec.ts
 │   │   │   └── setUpPlanMarketingTest.ts
 │   │   ├── shared
-│   │   │   └── AllExceptionsCorrelationId.filter.spec.ts
+│   │   │   ├── AllExceptionsCorrelationId.filter.spec.ts
+│   │   │   ├── AllExceptionsSentry.filter.spec.ts
+│   │   │   ├── File.controller.spec.ts
+│   │   │   └── Sentry.provider.spec.ts
 │   │   ├── stopMongoContainer.ts
 │   │   └── testDatabaseProvider.ts
 │   ├── tsconfig.build.json
@@ -2860,19 +2860,8 @@
 │   │   │   ├── Close.jsx
 │   │   │   ├── CloseBlue.svg
 │   │   │   ├── FileIcon.jsx
-│   │   │   ├── IDProof
-│   │   │   │   ├── cniNewBack.jpg
-│   │   │   │   ├── cniNewDate.jpg
-│   │   │   │   ├── cniNewFront.jpg
-│   │   │   │   ├── cniOldBack.jpg
-│   │   │   │   ├── cniOldDate.jpg
-│   │   │   │   ├── cniOldFront.jpg
-│   │   │   │   ├── passport.jpg
-│   │   │   │   └── passportDate.jpg
 │   │   │   ├── Iceberg.jsx
-│   │   │   ├── IconFrance.jsx
 │   │   │   ├── Voiture.jsx
-│   │   │   ├── arrowRightBlue.svg
 │   │   │   ├── attachment.svg
 │   │   │   ├── avatar.jpg
 │   │   │   ├── big-angle-blue.svg
@@ -2885,27 +2874,24 @@
 │   │   │   ├── close.svg
 │   │   │   ├── cross.png
 │   │   │   ├── editIcon.svg
+│   │   │   ├── error.png
 │   │   │   ├── external-link.svg
 │   │   │   ├── eye-slash.svg
 │   │   │   ├── eye.svg
 │   │   │   ├── fr.png
-│   │   │   ├── gray-arrow.svg
 │   │   │   ├── hero
 │   │   │   │   ├── home.png
 │   │   │   │   ├── phase1.png
 │   │   │   │   └── phase2.png
-│   │   │   ├── humanCooperation.svg
 │   │   │   ├── icons
 │   │   │   │   ├── AcademicCap.jsx
 │   │   │   │   ├── AddImage.jsx
-│   │   │   │   ├── ArrowRightBlueSquare.jsx
 │   │   │   │   ├── ArrowUpRight.jsx
 │   │   │   │   ├── Bin.jsx
 │   │   │   │   ├── Calendar.jsx
 │   │   │   │   ├── CalendarBig.jsx
 │   │   │   │   ├── CalendarFill.jsx
 │   │   │   │   ├── Check.jsx
-│   │   │   │   ├── Check2.jsx
 │   │   │   │   ├── CheckCircle.jsx
 │   │   │   │   ├── CheckCircleFill.jsx
 │   │   │   │   ├── CheckCircleStroke.jsx
@@ -2913,13 +2899,11 @@
 │   │   │   │   ├── ChevronLeft.jsx
 │   │   │   │   ├── ChevronRight.jsx
 │   │   │   │   ├── Clock.jsx
-│   │   │   │   ├── ConsentDone.jsx
 │   │   │   │   ├── CurvedArrowLeft.jsx
 │   │   │   │   ├── DangerCircled.jsx
 │   │   │   │   ├── DiscoverStay.jsx
 │   │   │   │   ├── DiscoverStayWithArrow.jsx
 │   │   │   │   ├── Download.jsx
-│   │   │   │   ├── EditPen.jsx
 │   │   │   │   ├── ErrorIcon.jsx
 │   │   │   │   ├── ErrorIconFill.jsx
 │   │   │   │   ├── Eye.jsx
@@ -2942,7 +2926,6 @@
 │   │   │   │   └── XCircleFill.jsx
 │   │   │   ├── image-diagorente.png
 │   │   │   ├── image.svg
-│   │   │   ├── infoSquared.svg
 │   │   │   ├── infobulleIcon.svg
 │   │   │   ├── information.svg
 │   │   │   ├── jva.png
@@ -2988,9 +2971,7 @@
 │   │   │   ├── phase3.jpg
 │   │   │   ├── pictograms
 │   │   │   │   ├── Avatar.jsx
-│   │   │   │   ├── MailSend.jsx
-│   │   │   │   ├── School.jsx
-│   │   │   │   └── pen.svg
+│   │   │   │   └── School.jsx
 │   │   │   ├── pm.png
 │   │   │   ├── police-station.svg
 │   │   │   ├── prépa.png
@@ -3023,7 +3004,6 @@
 │   │   │   ├── ExternalRedirect.tsx
 │   │   │   ├── FallBackComponent.jsx
 │   │   │   ├── FileUpload.jsx
-│   │   │   ├── InfoIcon.jsx
 │   │   │   ├── JDMA.jsx
 │   │   │   ├── Loader.jsx
 │   │   │   ├── MailCloseIcon.jsx
@@ -3043,23 +3023,13 @@
 │   │   │   ├── dndFileInputV2.jsx
 │   │   │   ├── dsfr
 │   │   │   │   ├── forms
-│   │   │   │   │   ├── AddressForm
-│   │   │   │   │   │   ├── AddressDisplay.jsx
-│   │   │   │   │   │   ├── AddressDropdown.jsx
-│   │   │   │   │   │   ├── AddressSearch.jsx
-│   │   │   │   │   │   └── index.jsx
-│   │   │   │   │   ├── AsyncCombobox.tsx
-│   │   │   │   │   ├── DatePicker.jsx
 │   │   │   │   │   ├── DatePickerList.jsx
 │   │   │   │   │   ├── EnhancedRadioButton.jsx
 │   │   │   │   │   ├── ErrorMessage.jsx
-│   │   │   │   │   ├── FileImport.jsx
-│   │   │   │   │   ├── PhoneField.jsx
 │   │   │   │   │   ├── SearchableSelect.jsx
 │   │   │   │   │   ├── Select.jsx
 │   │   │   │   │   ├── Textarea.jsx
-│   │   │   │   │   ├── input.jsx
-│   │   │   │   │   └── toggle.jsx
+│   │   │   │   │   └── input.jsx
 │   │   │   │   ├── layout
 │   │   │   │   │   ├── DSFRContainer.jsx
 │   │   │   │   │   ├── DSFRLayout.jsx
@@ -3069,19 +3039,20 @@
 │   │   │   │   └── ui
 │   │   │   │       ├── Alert.jsx
 │   │   │   │       ├── CardLink.jsx
-│   │   │   │       ├── Stepper.jsx
 │   │   │   │       └── buttons
 │   │   │   │           ├── Button.jsx
 │   │   │   │           ├── GhostButton.jsx
 │   │   │   │           ├── InlineButton.jsx
 │   │   │   │           ├── PrimaryButton.jsx
-│   │   │   │           ├── RadioButton.jsx
-│   │   │   │           ├── SecondaryButton.jsx
 │   │   │   │           └── stickyButton.jsx
+│   │   │   ├── engagement
+│   │   │   │   ├── EngagementCard.jsx
+│   │   │   │   └── EngagementPrograms.jsx
 │   │   │   ├── error.tsx
 │   │   │   ├── footer.jsx
 │   │   │   ├── forms
 │   │   │   │   ├── ErrorMessage.tsx
+│   │   │   │   ├── ErrorMessageOld.jsx
 │   │   │   │   ├── inputs
 │   │   │   │   │   ├── Checkbox.tsx
 │   │   │   │   │   ├── Field.tsx
@@ -3096,7 +3067,6 @@
 │   │   │   │   └── layout
 │   │   │   │       ├── FormRow.jsx
 │   │   │   │       └── Label.jsx
-│   │   │   ├── info.jsx
 │   │   │   ├── layout
 │   │   │   │   ├── Container.tsx
 │   │   │   │   ├── HomeContainer.tsx
@@ -3133,9 +3103,9 @@
 │   │   │   │   ├── ModalConfirm.jsx
 │   │   │   │   ├── ModalForm.jsx
 │   │   │   │   ├── ModalMonday.jsx
-│   │   │   │   ├── ModalRI.jsx
 │   │   │   │   ├── ModalResumePhase1ForWithdrawn.jsx
-│   │   │   │   └── ResponsiveModal.tsx
+│   │   │   │   ├── ResponsiveModal.tsx
+│   │   │   │   └── dsfrModals.ts
 │   │   │   ├── nav
 │   │   │   │   ├── MobileMenu.tsx
 │   │   │   │   ├── Pagination.jsx
@@ -3164,10 +3134,6 @@
 │   │   │           ├── ConfirmationModal.jsx
 │   │   │           └── Modal.jsx
 │   │   ├── config.ts
-│   │   ├── context
-│   │   │   ├── PreInscriptionContextProvider.jsx
-│   │   │   ├── ReinscriptionContextProvider.jsx
-│   │   │   └── RepresentantsLegauxContextProvider.jsx
 │   │   ├── fonts
 │   │   │   └── Marianne
 │   │   │       ├── Marianne-Bold.woff
@@ -3250,12 +3216,16 @@
 │   │   │   ├── all-engagements
 │   │   │   │   └── index.jsx
 │   │   │   ├── auth
+│   │   │   │   ├── components
+│   │   │   │   │   └── UnavailabilityNotice.tsx
 │   │   │   │   ├── forgot.tsx
 │   │   │   │   ├── index.tsx
 │   │   │   │   ├── reset.tsx
 │   │   │   │   ├── signin.tsx
 │   │   │   │   ├── signin2FA.tsx
-│   │   │   │   └── signupInvite.tsx
+│   │   │   │   ├── signupInvite.tsx
+│   │   │   │   └── utils
+│   │   │   │       └── redirectAfterSignin.ts
 │   │   │   ├── candidature
 │   │   │   │   ├── desktop
 │   │   │   │   │   ├── components
@@ -3275,9 +3245,7 @@
 │   │   │   │   ├── index.jsx
 │   │   │   │   ├── lib
 │   │   │   │   │   ├── useChangeSejour.ts
-│   │   │   │   │   ├── useCohortGroups.ts
 │   │   │   │   │   ├── useInscriptionGoal.ts
-│   │   │   │   │   ├── useReinscription.ts
 │   │   │   │   │   └── useSejours.ts
 │   │   │   │   └── scenes
 │   │   │   │       ├── ChangeSejourMenu.tsx
@@ -3288,6 +3256,8 @@
 │   │   │   ├── cle
 │   │   │   │   ├── MyClass.jsx
 │   │   │   │   ├── OnBoarding.tsx
+│   │   │   │   ├── components
+│   │   │   │   │   └── AlreadyHaveAnAccountModal.tsx
 │   │   │   │   └── useClass.ts
 │   │   │   ├── contact
 │   │   │   │   ├── Thanks.jsx
@@ -3317,9 +3287,7 @@
 │   │   │   │   ├── HomePhase2.jsx
 │   │   │   │   ├── InscriptionClosedCLE.jsx
 │   │   │   │   ├── Phase1NotDone.tsx
-│   │   │   │   ├── WaitingReinscription.jsx
 │   │   │   │   ├── components
-│   │   │   │   │   ├── CorrectionRequests.tsx
 │   │   │   │   │   ├── Engagement.tsx
 │   │   │   │   │   ├── NonEligibleBanner.tsx
 │   │   │   │   │   └── StatusNotice.tsx
@@ -3328,41 +3296,6 @@
 │   │   │   │   ├── refusedV2.jsx
 │   │   │   │   ├── waitingAffectation.jsx
 │   │   │   │   └── withdrawn.jsx
-│   │   │   ├── inscription2023
-│   │   │   │   ├── FutureCohort.jsx
-│   │   │   │   ├── InscriptionClosed.jsx
-│   │   │   │   ├── assets
-│   │   │   │   │   ├── avatar.png
-│   │   │   │   │   └── error.png
-│   │   │   │   ├── components
-│   │   │   │   │   ├── DatePickerList.jsx
-│   │   │   │   │   ├── ErrorMessageOld.jsx
-│   │   │   │   │   ├── FranceConnectButton.jsx
-│   │   │   │   │   ├── Help.jsx
-│   │   │   │   │   ├── Input.jsx
-│   │   │   │   │   ├── ModalSejour.jsx
-│   │   │   │   │   ├── ModalSejourCorrection.jsx
-│   │   │   │   │   ├── MyDocs.jsx
-│   │   │   │   │   ├── SchoolInFrance.tsx
-│   │   │   │   │   ├── ShoolOutOfFrance.jsx
-│   │   │   │   │   ├── StepUploadDesktop.jsx
-│   │   │   │   │   ├── StepUploadMobile.jsx
-│   │   │   │   │   └── VerifyDocument.jsx
-│   │   │   │   ├── index.jsx
-│   │   │   │   ├── steps
-│   │   │   │   │   ├── correction
-│   │   │   │   │   │   ├── stepEligibilite.jsx
-│   │   │   │   │   │   └── stepProfil.jsx
-│   │   │   │   │   ├── stepConfirm.jsx
-│   │   │   │   │   ├── stepConsentements.jsx
-│   │   │   │   │   ├── stepCoordonnees.jsx
-│   │   │   │   │   ├── stepDocuments.jsx
-│   │   │   │   │   ├── stepDone.jsx
-│   │   │   │   │   ├── stepRepresentants.jsx
-│   │   │   │   │   └── stepUpload.jsx
-│   │   │   │   └── utils
-│   │   │   │       ├── index.ts
-│   │   │   │       └── useSchools.ts
 │   │   │   ├── maintenance
 │   │   │   │   ├── header.jsx
 │   │   │   │   └── index.jsx
@@ -3523,79 +3456,29 @@
 │   │   │   │       │   ├── MissionList.jsx
 │   │   │   │       │   └── index.jsx
 │   │   │   │       └── usePrograms.ts
-│   │   │   ├── phase3
-│   │   │   │   ├── components
-│   │   │   │   │   ├── YoungMissionCard.jsx
-│   │   │   │   │   └── missionCard.jsx
-│   │   │   │   ├── home
-│   │   │   │   │   ├── index.jsx
-│   │   │   │   │   ├── validated.jsx
-│   │   │   │   │   ├── waitingRealisation.jsx
-│   │   │   │   │   └── waitingValidation.jsx
-│   │   │   │   ├── index.jsx
-│   │   │   │   ├── missions.jsx
-│   │   │   │   └── valider
-│   │   │   │       ├── Validated.jsx
-│   │   │   │       ├── WaitingRealisation.jsx
-│   │   │   │       ├── WaitingValidation.jsx
-│   │   │   │       └── index.jsx
-│   │   │   ├── preinscription
-│   │   │   │   ├── Done.jsx
-│   │   │   │   ├── EmailValidation.jsx
-│   │   │   │   ├── components
-│   │   │   │   │   ├── AlreadyHaveAnAccountModal.tsx
-│   │   │   │   │   ├── CreateContactForm.tsx
-│   │   │   │   │   ├── DidNotReceiveActivationCodeModal.jsx
-│   │   │   │   │   ├── EngagementCard.jsx
-│   │   │   │   │   ├── EngagementPrograms.jsx
-│   │   │   │   │   ├── InfoMessage.jsx
-│   │   │   │   │   ├── ModalRecap.jsx
-│   │   │   │   │   ├── Modals.ts
-│   │   │   │   │   ├── ModifyEmailModal.jsx
-│   │   │   │   │   └── ProgressBar.jsx
-│   │   │   │   ├── index.jsx
-│   │   │   │   ├── preinscription.repository.ts
-│   │   │   │   └── steps
-│   │   │   │       ├── stepConfirm.jsx
-│   │   │   │       ├── stepEligibilite.jsx
-│   │   │   │       ├── stepNoSejour.tsx
-│   │   │   │       ├── stepNonEligible.jsx
-│   │   │   │       ├── stepProfil.jsx
-│   │   │   │       └── stepSejour.jsx
-│   │   │   ├── reinscription
-│   │   │   │   ├── ReinscriptionClosed.tsx
-│   │   │   │   └── index.tsx
-│   │   │   └── representants-legaux
-│   │   │       ├── commons.js
+│   │   │   └── phase3
 │   │   │       ├── components
-│   │   │       │   ├── AuthorizeBlock.jsx
-│   │   │       │   ├── Buttons.jsx
-│   │   │       │   ├── Check.jsx
-│   │   │       │   ├── FranceConnectCallback.jsx
-│   │   │       │   ├── Navbar.jsx
-│   │   │       │   └── RadioButton.jsx
+│   │   │       │   ├── YoungMissionCard.jsx
+│   │   │       │   └── missionCard.jsx
+│   │   │       ├── home
+│   │   │       │   ├── index.jsx
+│   │   │       │   ├── validated.jsx
+│   │   │       │   ├── waitingRealisation.jsx
+│   │   │       │   └── waitingValidation.jsx
 │   │   │       ├── index.jsx
-│   │   │       ├── mobile
-│   │   │       │   ├── RiConsentement.jsx
-│   │   │       │   ├── cni-invalide-done.jsx
-│   │   │       │   ├── cni-invalide.jsx
-│   │   │       │   ├── consentement.jsx
-│   │   │       │   ├── done.jsx
-│   │   │       │   ├── image-rights-done.jsx
-│   │   │       │   ├── image-rights.jsx
-│   │   │       │   ├── presentation.jsx
-│   │   │       │   ├── token-invalide.jsx
-│   │   │       │   └── verification.jsx
-│   │   │       └── utils.js
+│   │   │       ├── missions.jsx
+│   │   │       └── valider
+│   │   │           ├── Validated.jsx
+│   │   │           ├── WaitingRealisation.jsx
+│   │   │           ├── WaitingValidation.jsx
+│   │   │           └── index.jsx
 │   │   ├── sentry.js
 │   │   ├── services
 │   │   │   ├── api.js
 │   │   │   ├── classe.service.js
 │   │   │   ├── cohort.service.ts
-│   │   │   ├── file.service.js
 │   │   │   ├── plausible.js
 │   │   │   ├── react-query.ts
-│   │   │   ├── reinscription.service.ts
 │   │   │   ├── stylesheets.service.js
 │   │   │   ├── useAuth.ts
 │   │   │   ├── useCohort.ts
@@ -3676,6 +3559,7 @@
 │   │   │   └── package.json
 │   │   ├── build-all.sh
 │   │   ├── build.sh
+│   │   ├── copy-packages.sh
 │   │   ├── docker
 │   │   │   ├── Dockerfile.back
 │   │   │   ├── Dockerfile.front
@@ -3738,8 +3622,9 @@
 │   │   ├── collections.csv
 │   │   ├── docker_start.sh
 │   │   ├── generate_config.sh
-│   │   └── local
-│   │       └── Dockerfile
+│   │   ├── local
+│   │   │   └── Dockerfile
+│   │   └── sensitive-fields.csv
 │   ├── heartbeat
 │   │   ├── Dockerfile
 │   │   ├── entrypoint.sh
@@ -3760,9 +3645,10 @@
 │   │   ├── cc-list-environments.sh
 │   │   ├── cc-watch-deploy.sh
 │   │   ├── generate_changelog.sh
-│   │   └── scw
-│   │       ├── get-secrets-from-cc.sh
-│   │       └── update-secrets-from-cc.sh
+│   │   ├── scw
+│   │   │   ├── get-secrets-from-cc.sh
+│   │   │   └── update-secrets-from-cc.sh
+│   │   └── worktree-setup.sh
 │   └── send-in-blue
 │       ├── .eslintrc.js
 │       ├── .gitignore
@@ -3775,6 +3661,14 @@
 │       ├── package.json
 │       ├── sentry.js
 │       └── test_jest_unused.js
+├── docs
+│   └── superpowers
+│       ├── plans
+│       │   ├── 2026-09-08-idor-structure-impact-roles-ecrans.md
+│       │   ├── 2026-09-08-idor-structure-remediation.md
+│       │   └── 2026-09-22-decommissionnement-cle-lot-1a.md
+│       └── specs
+│           └── 2026-09-21-decommissionnement-cle-design.md
 ├── knowledge-base-public
 │   ├── .eslintrc.js
 │   ├── .gitignore
@@ -3820,6 +3714,7 @@
 │   │   │   │   ├── index.js
 │   │   │   │   └── styles.css
 │   │   │   ├── Buttons.js
+│   │   │   ├── ClosureBanner.jsx
 │   │   │   ├── Emoji.jsx
 │   │   │   ├── FeedBack.jsx
 │   │   │   ├── FolderIcon.js
@@ -3877,6 +3772,7 @@
 │   │       ├── index.js
 │   │       ├── knowledgeBaseTree.js
 │   │       ├── material-icons.js
+│   │       ├── safeUrl.js
 │   │       └── ticketsFolders.js
 │   └── tailwind.config.js
 ├── package-lock.json
@@ -3977,312 +3873,327 @@
 │   │   │   ├── tailwind.config.ts
 │   │   │   └── utils.tsx
 │   │   └── tsconfig.json
-│   └── lib
-│       ├── .eslintrc.js
+│   ├── lib
+│   │   ├── .eslintrc.js
+│   │   ├── .gitignore
+│   │   ├── .nvmrc
+│   │   ├── .prettierrc
+│   │   ├── README.md
+│   │   ├── jest.config.js
+│   │   ├── package.json
+│   │   ├── rollup-base.mjs
+│   │   ├── rollup.config.mjs
+│   │   ├── src
+│   │   │   ├── SNUpport.ts
+│   │   │   ├── __tests__
+│   │   │   │   └── sessions.spec.ts
+│   │   │   ├── actions
+│   │   │   │   └── index.ts
+│   │   │   ├── cohort
+│   │   │   │   ├── cohortService.spec.ts
+│   │   │   │   ├── cohortService.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── common.spec.ts
+│   │   │   ├── common.ts
+│   │   │   ├── constants
+│   │   │   │   ├── academy.ts
+│   │   │   │   ├── cle
+│   │   │   │   │   ├── classeConstants.ts
+│   │   │   │   │   └── classeImportEnMasse.ts
+│   │   │   │   ├── cohesionCenter.ts
+│   │   │   │   ├── cohort.ts
+│   │   │   │   ├── colors.ts
+│   │   │   │   ├── constants.spec.ts
+│   │   │   │   ├── constants.ts
+│   │   │   │   ├── elasticsearch.ts
+│   │   │   │   ├── email.ts
+│   │   │   │   ├── errors.ts
+│   │   │   │   ├── featureFlags.ts
+│   │   │   │   ├── functionalErrors.ts
+│   │   │   │   ├── plan-de-transport.ts
+│   │   │   │   ├── referentConstants.ts
+│   │   │   │   ├── referentiel.ts
+│   │   │   │   ├── task.ts
+│   │   │   │   └── todo.constants.ts
+│   │   │   ├── domains
+│   │   │   │   ├── analytics
+│   │   │   │   │   └── constants.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── planMarketing
+│   │   │   │   │   ├── campagne.ts
+│   │   │   │   │   └── constants.ts
+│   │   │   │   └── sejours
+│   │   │   │       └── phase1
+│   │   │   │           └── contants.ts
+│   │   │   ├── dto
+│   │   │   │   ├── PermissionDto.ts
+│   │   │   │   ├── alerteMessageDto.ts
+│   │   │   │   ├── classeDto.ts
+│   │   │   │   ├── classeImportEnMasseValidationDto.ts
+│   │   │   │   ├── cohortDto.ts
+│   │   │   │   ├── contactDto.ts
+│   │   │   │   ├── contractDto.ts
+│   │   │   │   ├── etablissementDto.ts
+│   │   │   │   ├── filterLabelDto.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── ligneDeBus.ts
+│   │   │   │   ├── phase1
+│   │   │   │   │   ├── Phase1CLETaskDto.ts
+│   │   │   │   │   ├── Phase1HTSTaskDto.ts
+│   │   │   │   │   ├── affectation
+│   │   │   │   │   │   ├── SimulationAffectationCLEDromComTaskDto.ts
+│   │   │   │   │   │   ├── SimulationAffectationCLETaskDto.ts
+│   │   │   │   │   │   ├── SimulationAffectationHTSDromComTaskDto.ts
+│   │   │   │   │   │   ├── SimulationAffectationHTSTaskDto.ts
+│   │   │   │   │   │   ├── ValiderAffectationCLEDromComTaskDto.ts
+│   │   │   │   │   │   ├── ValiderAffectationCLETaskDto.ts
+│   │   │   │   │   │   ├── ValiderAffectationHTSDromComTaskDto.ts
+│   │   │   │   │   │   ├── ValiderAffectationHTSTaskDto.ts
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── desistement
+│   │   │   │   │   │   ├── DesistementSimulationTaskDto.ts
+│   │   │   │   │   │   ├── DesistementValiderTaskDto.ts
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── inscription
+│   │   │   │   │       ├── ExportJeunesTaskDto.ts
+│   │   │   │   │       ├── SimulationBasculeJeunesNonValidesTaskDto.ts
+│   │   │   │   │       ├── SimulationBasculeJeunesValidesTaskDto.ts
+│   │   │   │   │       ├── ValiderBasculeJeunesNonValidesTaskDto.ts
+│   │   │   │   │       ├── ValiderBasculeJeunesValidesTaskDto.ts
+│   │   │   │   │       └── index.ts
+│   │   │   │   ├── phase2
+│   │   │   │   │   ├── Phase2HTSTaskDto.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── mission
+│   │   │   │   │       ├── ExportMissionCandidaturesTaskDto.ts
+│   │   │   │   │       ├── ExportMissionsTaskDto.ts
+│   │   │   │   │       └── index.ts
+│   │   │   │   ├── referentDto.ts
+│   │   │   │   ├── referentiel
+│   │   │   │   │   ├── ReferentielTaskDto.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── taskDto.ts
+│   │   │   │   ├── userDto.ts
+│   │   │   │   └── youngDto.ts
+│   │   │   ├── excelExports.ts
+│   │   │   ├── features.ts
+│   │   │   ├── hooks
+│   │   │   │   └── useAddress.ts
+│   │   │   ├── index.ts
+│   │   │   ├── mongoSchema
+│   │   │   │   ├── alerteMessage.ts
+│   │   │   │   ├── application.ts
+│   │   │   │   ├── areas.ts
+│   │   │   │   ├── bus.ts
+│   │   │   │   ├── campagne.ts
+│   │   │   │   ├── cle
+│   │   │   │   │   ├── classe.ts
+│   │   │   │   │   └── etablissement.ts
+│   │   │   │   ├── cohesionCenter.ts
+│   │   │   │   ├── cohort.spec.ts
+│   │   │   │   ├── cohort.ts
+│   │   │   │   ├── cohortGroup.ts
+│   │   │   │   ├── constantes
+│   │   │   │   │   └── collections.ts
+│   │   │   │   ├── contract.ts
+│   │   │   │   ├── departmentService.ts
+│   │   │   │   ├── email.ts
+│   │   │   │   ├── engagement
+│   │   │   │   │   ├── mission.ts
+│   │   │   │   │   ├── missionAPI.ts
+│   │   │   │   │   └── missionEquivalence.ts
+│   │   │   │   ├── event.ts
+│   │   │   │   ├── featureFlag.ts
+│   │   │   │   ├── filters.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── inscriptionGoal.ts
+│   │   │   │   ├── listeDiffusion.ts
+│   │   │   │   ├── meetingPoint.ts
+│   │   │   │   ├── patch.ts
+│   │   │   │   ├── permissions
+│   │   │   │   │   ├── permission.ts
+│   │   │   │   │   └── role.ts
+│   │   │   │   ├── planDeTransport
+│   │   │   │   │   ├── importPlanTransport.ts
+│   │   │   │   │   ├── ligneBus.ts
+│   │   │   │   │   ├── ligneToPoint.ts
+│   │   │   │   │   ├── modificationBus.ts
+│   │   │   │   │   ├── planTransport.ts
+│   │   │   │   │   ├── pointDeRassemblement.ts
+│   │   │   │   │   ├── schemaDeRepartition.ts
+│   │   │   │   │   └── tableDeRepartition.ts
+│   │   │   │   ├── program.ts
+│   │   │   │   ├── referent.ts
+│   │   │   │   ├── referentiel
+│   │   │   │   │   ├── academie.ts
+│   │   │   │   │   ├── departement.ts
+│   │   │   │   │   └── regionAcademique.ts
+│   │   │   │   ├── school.ts
+│   │   │   │   ├── schoolRAMSES.ts
+│   │   │   │   ├── sessionPhase1.ts
+│   │   │   │   ├── sessionPhase1Token.ts
+│   │   │   │   ├── structure.ts
+│   │   │   │   ├── tags.ts
+│   │   │   │   ├── task.ts
+│   │   │   │   ├── types.ts
+│   │   │   │   ├── waitingList.ts
+│   │   │   │   └── young.ts
+│   │   │   ├── permissions
+│   │   │   │   ├── accessControl.spec.ts
+│   │   │   │   ├── accessControl.ts
+│   │   │   │   ├── constantes
+│   │   │   │   │   ├── actions.ts
+│   │   │   │   │   ├── codes.ts
+│   │   │   │   │   └── resources.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── permissionPrecedence.spec.ts
+│   │   │   │   ├── policyQuery.spec.ts
+│   │   │   │   ├── policyQuery.ts
+│   │   │   │   ├── types.ts
+│   │   │   │   └── utils.ts
+│   │   │   ├── phone-number.ts
+│   │   │   ├── plandetransport
+│   │   │   │   ├── import.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── ligneService.spec.ts
+│   │   │   │   ├── ligneService.ts
+│   │   │   │   └── pdrService.ts
+│   │   │   ├── region-and-departments.spec.ts
+│   │   │   ├── region-and-departments.ts
+│   │   │   ├── roles.spec.ts
+│   │   │   ├── roles.ts
+│   │   │   ├── rolesConfig
+│   │   │   │   └── index.ts
+│   │   │   ├── routes
+│   │   │   │   ├── analytics
+│   │   │   │   │   ├── getYoungCount.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── cle
+│   │   │   │   │   ├── classe
+│   │   │   │   │   │   ├── InscriptionEnMasseImporter.ts
+│   │   │   │   │   │   ├── InscriptionEnMasseStatut.ts
+│   │   │   │   │   │   ├── InscriptionEnMasseValider.ts
+│   │   │   │   │   │   ├── InscriptionManuelle.ts
+│   │   │   │   │   │   ├── create.ts
+│   │   │   │   │   │   ├── delete.ts
+│   │   │   │   │   │   ├── getOne.ts
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── modifierReferent.ts
+│   │   │   │   │   │   └── update.ts
+│   │   │   │   │   └── referent
+│   │   │   │   │       ├── getMany.ts
+│   │   │   │   │       └── index.ts
+│   │   │   │   ├── cohort
+│   │   │   │   │   ├── get.ts
+│   │   │   │   │   ├── getIsIncriptionOpen.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── postEligibility.ts
+│   │   │   │   ├── cohortGroup
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── departmentService
+│   │   │   │   │   ├── exportContactsRoute.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── filterLabel
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── iam
+│   │   │   │   │   ├── getByRole.ts
+│   │   │   │   │   └── referent.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── inscriptiongoal
+│   │   │   │   │   ├── getTauxRemplissage.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── phase1
+│   │   │   │   │   ├── affectation
+│   │   │   │   │   │   ├── getAffectation.ts
+│   │   │   │   │   │   ├── getSimulationAnalytics.ts
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── postSimulationAffectationCLEDromCom.ts
+│   │   │   │   │   │   ├── postSimulationAffectationCLEMetropole.ts
+│   │   │   │   │   │   ├── postSimulationAffectationHTSDromCom.ts
+│   │   │   │   │   │   ├── postSimulationAffectationHTSMetropole.ts
+│   │   │   │   │   │   ├── postSyncPlacesCentreRoute.ts
+│   │   │   │   │   │   ├── postSyncPlacesCentresRoute.ts
+│   │   │   │   │   │   ├── postSyncPlacesLignesDeBus.ts
+│   │   │   │   │   │   ├── postValiderAffectationCLEDromCom_.ts
+│   │   │   │   │   │   ├── postValiderAffectationCLEMetropole.ts
+│   │   │   │   │   │   ├── postValiderAffectationHTSDromCom.ts
+│   │   │   │   │   │   └── postValiderAffectationHTSMetropole.ts
+│   │   │   │   │   ├── deleteLigneBus.ts
+│   │   │   │   │   ├── deletePlanDeTransport.ts
+│   │   │   │   │   ├── desistement
+│   │   │   │   │   │   └── index.ts
+│   │   │   │   │   ├── getSimulation.ts
+│   │   │   │   │   ├── getSimulations.ts
+│   │   │   │   │   ├── getTraitements.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── inscription
+│   │   │   │   │   │   ├── getBasculeJeunesNonValidesRoute.ts
+│   │   │   │   │   │   ├── getBasculeJeunesValidesRoute.ts
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── postBasculeJeunesNonValidesRoute.ts
+│   │   │   │   │   │   ├── postBasculeJeunesValidesRoute.ts
+│   │   │   │   │   │   ├── postInscriptionsExportRoute.ts
+│   │   │   │   │   │   ├── postInscriptionsScolariseExportRoute.ts
+│   │   │   │   │   │   ├── postValiderBasculeJeunesValidesRoute.ts
+│   │   │   │   │   │   └── postValiderBasculeNonJeunesValidesRoute.ts
+│   │   │   │   │   └── jeune
+│   │   │   │   │       ├── index.ts
+│   │   │   │   │       ├── postJeunesExportRoute.ts
+│   │   │   │   │       └── postJeunesScolariseExportRoute.ts
+│   │   │   │   ├── phase2
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── mission.ts
+│   │   │   │   │   ├── postCandidaturesExport.ts
+│   │   │   │   │   └── postMissionsExport.ts
+│   │   │   │   ├── planMarketing
+│   │   │   │   │   ├── createDistributionList.ts
+│   │   │   │   │   ├── importContacts.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   └── listeDiffusion.ts
+│   │   │   │   ├── referentiel
+│   │   │   │   │   ├── getImportsReferentiel.ts
+│   │   │   │   │   ├── index.ts
+│   │   │   │   │   ├── postImportReferentiel.ts
+│   │   │   │   │   └── postImportsReferentiel.ts
+│   │   │   │   └── structure
+│   │   │   │       ├── index.ts
+│   │   │   │       └── postFindAll.ts
+│   │   │   ├── sessions.spec.ts
+│   │   │   ├── sessions.ts
+│   │   │   ├── translation.ts
+│   │   │   ├── transport-info.ts
+│   │   │   ├── utils
+│   │   │   │   ├── cohortUtils.ts
+│   │   │   │   ├── csvGenerator.ts
+│   │   │   │   ├── date.spec.ts
+│   │   │   │   ├── date.ts
+│   │   │   │   ├── file.ts
+│   │   │   │   ├── location.spec.ts
+│   │   │   │   ├── location.ts
+│   │   │   │   ├── parseEnv.ts
+│   │   │   │   ├── patchUtils.ts
+│   │   │   │   ├── request.spec.ts
+│   │   │   │   ├── request.ts
+│   │   │   │   └── string.ts
+│   │   │   ├── young.spec.ts
+│   │   │   └── young.ts
+│   │   ├── tsconfig.base.json
+│   │   └── tsconfig.json
+│   └── log-redaction
 │       ├── .gitignore
-│       ├── .nvmrc
-│       ├── .prettierrc
 │       ├── README.md
 │       ├── jest.config.js
 │       ├── package.json
-│       ├── rollup-base.mjs
-│       ├── rollup.config.mjs
 │       ├── src
-│       │   ├── SNUpport.ts
 │       │   ├── __tests__
-│       │   │   └── sessions.spec.ts
-│       │   ├── actions
-│       │   │   └── index.ts
-│       │   ├── cohort
-│       │   │   ├── cohortService.spec.ts
-│       │   │   ├── cohortService.ts
-│       │   │   └── index.ts
-│       │   ├── common.ts
-│       │   ├── constants
-│       │   │   ├── academy.ts
-│       │   │   ├── cle
-│       │   │   │   ├── classeConstants.ts
-│       │   │   │   └── classeImportEnMasse.ts
-│       │   │   ├── cohesionCenter.ts
-│       │   │   ├── cohort.ts
-│       │   │   ├── colors.ts
-│       │   │   ├── constants.spec.ts
-│       │   │   ├── constants.ts
-│       │   │   ├── email.ts
-│       │   │   ├── errors.ts
-│       │   │   ├── featureFlags.ts
-│       │   │   ├── functionalErrors.ts
-│       │   │   ├── plan-de-transport.ts
-│       │   │   ├── referentConstants.ts
-│       │   │   ├── referentiel.ts
-│       │   │   ├── task.ts
-│       │   │   └── todo.constants.ts
-│       │   ├── domains
-│       │   │   ├── analytics
-│       │   │   │   └── constants.ts
-│       │   │   ├── index.ts
-│       │   │   ├── planMarketing
-│       │   │   │   ├── campagne.ts
-│       │   │   │   └── constants.ts
-│       │   │   └── sejours
-│       │   │       └── phase1
-│       │   │           └── contants.ts
-│       │   ├── dto
-│       │   │   ├── PermissionDto.ts
-│       │   │   ├── alerteMessageDto.ts
-│       │   │   ├── classeDto.ts
-│       │   │   ├── classeImportEnMasseValidationDto.ts
-│       │   │   ├── cohortDto.ts
-│       │   │   ├── contactDto.ts
-│       │   │   ├── contractDto.ts
-│       │   │   ├── etablissementDto.ts
-│       │   │   ├── filterLabelDto.ts
-│       │   │   ├── index.ts
-│       │   │   ├── ligneDeBus.ts
-│       │   │   ├── phase1
-│       │   │   │   ├── Phase1CLETaskDto.ts
-│       │   │   │   ├── Phase1HTSTaskDto.ts
-│       │   │   │   ├── affectation
-│       │   │   │   │   ├── SimulationAffectationCLEDromComTaskDto.ts
-│       │   │   │   │   ├── SimulationAffectationCLETaskDto.ts
-│       │   │   │   │   ├── SimulationAffectationHTSDromComTaskDto.ts
-│       │   │   │   │   ├── SimulationAffectationHTSTaskDto.ts
-│       │   │   │   │   ├── ValiderAffectationCLEDromComTaskDto.ts
-│       │   │   │   │   ├── ValiderAffectationCLETaskDto.ts
-│       │   │   │   │   ├── ValiderAffectationHTSDromComTaskDto.ts
-│       │   │   │   │   ├── ValiderAffectationHTSTaskDto.ts
-│       │   │   │   │   └── index.ts
-│       │   │   │   ├── desistement
-│       │   │   │   │   ├── DesistementSimulationTaskDto.ts
-│       │   │   │   │   ├── DesistementValiderTaskDto.ts
-│       │   │   │   │   └── index.ts
-│       │   │   │   ├── index.ts
-│       │   │   │   └── inscription
-│       │   │   │       ├── ExportJeunesTaskDto.ts
-│       │   │   │       ├── SimulationBasculeJeunesNonValidesTaskDto.ts
-│       │   │   │       ├── SimulationBasculeJeunesValidesTaskDto.ts
-│       │   │   │       ├── ValiderBasculeJeunesNonValidesTaskDto.ts
-│       │   │   │       ├── ValiderBasculeJeunesValidesTaskDto.ts
-│       │   │   │       └── index.ts
-│       │   │   ├── phase2
-│       │   │   │   ├── Phase2HTSTaskDto.ts
-│       │   │   │   ├── index.ts
-│       │   │   │   └── mission
-│       │   │   │       ├── ExportMissionCandidaturesTaskDto.ts
-│       │   │   │       ├── ExportMissionsTaskDto.ts
-│       │   │   │       └── index.ts
-│       │   │   ├── referentDto.ts
-│       │   │   ├── referentiel
-│       │   │   │   ├── ReferentielTaskDto.ts
-│       │   │   │   └── index.ts
-│       │   │   ├── taskDto.ts
-│       │   │   ├── userDto.ts
-│       │   │   └── youngDto.ts
-│       │   ├── excelExports.ts
-│       │   ├── features.ts
-│       │   ├── hooks
-│       │   │   └── useAddress.ts
+│       │   │   ├── index.test.ts
+│       │   │   └── sentryFront.test.ts
 │       │   ├── index.ts
-│       │   ├── mongoSchema
-│       │   │   ├── alerteMessage.ts
-│       │   │   ├── application.ts
-│       │   │   ├── areas.ts
-│       │   │   ├── bus.ts
-│       │   │   ├── campagne.ts
-│       │   │   ├── cle
-│       │   │   │   ├── classe.ts
-│       │   │   │   └── etablissement.ts
-│       │   │   ├── cohesionCenter.ts
-│       │   │   ├── cohort.spec.ts
-│       │   │   ├── cohort.ts
-│       │   │   ├── cohortGroup.ts
-│       │   │   ├── constantes
-│       │   │   │   └── collections.ts
-│       │   │   ├── contract.ts
-│       │   │   ├── departmentService.ts
-│       │   │   ├── email.ts
-│       │   │   ├── engagement
-│       │   │   │   ├── mission.ts
-│       │   │   │   ├── missionAPI.ts
-│       │   │   │   └── missionEquivalence.ts
-│       │   │   ├── event.ts
-│       │   │   ├── featureFlag.ts
-│       │   │   ├── filters.ts
-│       │   │   ├── index.ts
-│       │   │   ├── inscriptionGoal.ts
-│       │   │   ├── listeDiffusion.ts
-│       │   │   ├── meetingPoint.ts
-│       │   │   ├── patch.ts
-│       │   │   ├── permissions
-│       │   │   │   ├── permission.ts
-│       │   │   │   └── role.ts
-│       │   │   ├── planDeTransport
-│       │   │   │   ├── importPlanTransport.ts
-│       │   │   │   ├── ligneBus.ts
-│       │   │   │   ├── ligneToPoint.ts
-│       │   │   │   ├── modificationBus.ts
-│       │   │   │   ├── planTransport.ts
-│       │   │   │   ├── pointDeRassemblement.ts
-│       │   │   │   ├── schemaDeRepartition.ts
-│       │   │   │   └── tableDeRepartition.ts
-│       │   │   ├── program.ts
-│       │   │   ├── referent.ts
-│       │   │   ├── referentiel
-│       │   │   │   ├── academie.ts
-│       │   │   │   ├── departement.ts
-│       │   │   │   └── regionAcademique.ts
-│       │   │   ├── school.ts
-│       │   │   ├── schoolRAMSES.ts
-│       │   │   ├── sessionPhase1.ts
-│       │   │   ├── sessionPhase1Token.ts
-│       │   │   ├── structure.ts
-│       │   │   ├── tags.ts
-│       │   │   ├── task.ts
-│       │   │   ├── types.ts
-│       │   │   ├── waitingList.ts
-│       │   │   └── young.ts
-│       │   ├── permissions
-│       │   │   ├── accessControl.spec.ts
-│       │   │   ├── accessControl.ts
-│       │   │   ├── constantes
-│       │   │   │   ├── actions.ts
-│       │   │   │   ├── codes.ts
-│       │   │   │   └── resources.ts
-│       │   │   ├── index.ts
-│       │   │   ├── types.ts
-│       │   │   └── utils.ts
-│       │   ├── phone-number.ts
-│       │   ├── plandetransport
-│       │   │   ├── import.ts
-│       │   │   ├── index.ts
-│       │   │   ├── ligneService.spec.ts
-│       │   │   ├── ligneService.ts
-│       │   │   └── pdrService.ts
-│       │   ├── region-and-departments.spec.ts
-│       │   ├── region-and-departments.ts
-│       │   ├── roles.spec.ts
-│       │   ├── roles.ts
-│       │   ├── rolesConfig
-│       │   │   └── index.ts
-│       │   ├── routes
-│       │   │   ├── analytics
-│       │   │   │   ├── getYoungCount.ts
-│       │   │   │   └── index.ts
-│       │   │   ├── cle
-│       │   │   │   ├── classe
-│       │   │   │   │   ├── InscriptionEnMasseImporter.ts
-│       │   │   │   │   ├── InscriptionEnMasseStatut.ts
-│       │   │   │   │   ├── InscriptionEnMasseValider.ts
-│       │   │   │   │   ├── InscriptionManuelle.ts
-│       │   │   │   │   ├── create.ts
-│       │   │   │   │   ├── delete.ts
-│       │   │   │   │   ├── getOne.ts
-│       │   │   │   │   ├── index.ts
-│       │   │   │   │   ├── modifierReferent.ts
-│       │   │   │   │   └── update.ts
-│       │   │   │   └── referent
-│       │   │   │       ├── getMany.ts
-│       │   │   │       └── index.ts
-│       │   │   ├── cohort
-│       │   │   │   ├── get.ts
-│       │   │   │   ├── getIsIncriptionOpen.ts
-│       │   │   │   ├── getIsReIncriptionOpen.ts
-│       │   │   │   ├── index.ts
-│       │   │   │   └── postEligibility.ts
-│       │   │   ├── cohortGroup
-│       │   │   │   └── index.ts
-│       │   │   ├── departmentService
-│       │   │   │   ├── exportContactsRoute.ts
-│       │   │   │   └── index.ts
-│       │   │   ├── filterLabel
-│       │   │   │   └── index.ts
-│       │   │   ├── iam
-│       │   │   │   ├── getByRole.ts
-│       │   │   │   └── referent.ts
-│       │   │   ├── index.ts
-│       │   │   ├── inscriptiongoal
-│       │   │   │   ├── getTauxRemplissage.ts
-│       │   │   │   └── index.ts
-│       │   │   ├── phase1
-│       │   │   │   ├── affectation
-│       │   │   │   │   ├── getAffectation.ts
-│       │   │   │   │   ├── getSimulationAnalytics.ts
-│       │   │   │   │   ├── index.ts
-│       │   │   │   │   ├── postSimulationAffectationCLEDromCom.ts
-│       │   │   │   │   ├── postSimulationAffectationCLEMetropole.ts
-│       │   │   │   │   ├── postSimulationAffectationHTSDromCom.ts
-│       │   │   │   │   ├── postSimulationAffectationHTSMetropole.ts
-│       │   │   │   │   ├── postSyncPlacesCentreRoute.ts
-│       │   │   │   │   ├── postSyncPlacesCentresRoute.ts
-│       │   │   │   │   ├── postSyncPlacesLignesDeBus.ts
-│       │   │   │   │   ├── postValiderAffectationCLEDromCom_.ts
-│       │   │   │   │   ├── postValiderAffectationCLEMetropole.ts
-│       │   │   │   │   ├── postValiderAffectationHTSDromCom.ts
-│       │   │   │   │   └── postValiderAffectationHTSMetropole.ts
-│       │   │   │   ├── deleteLigneBus.ts
-│       │   │   │   ├── deletePlanDeTransport.ts
-│       │   │   │   ├── desistement
-│       │   │   │   │   └── index.ts
-│       │   │   │   ├── getSimulation.ts
-│       │   │   │   ├── getSimulations.ts
-│       │   │   │   ├── getTraitements.ts
-│       │   │   │   ├── index.ts
-│       │   │   │   ├── inscription
-│       │   │   │   │   ├── getBasculeJeunesNonValidesRoute.ts
-│       │   │   │   │   ├── getBasculeJeunesValidesRoute.ts
-│       │   │   │   │   ├── index.ts
-│       │   │   │   │   ├── postBasculeJeunesNonValidesRoute.ts
-│       │   │   │   │   ├── postBasculeJeunesValidesRoute.ts
-│       │   │   │   │   ├── postInscriptionsExportRoute.ts
-│       │   │   │   │   ├── postInscriptionsScolariseExportRoute.ts
-│       │   │   │   │   ├── postValiderBasculeJeunesValidesRoute.ts
-│       │   │   │   │   └── postValiderBasculeNonJeunesValidesRoute.ts
-│       │   │   │   └── jeune
-│       │   │   │       ├── index.ts
-│       │   │   │       ├── postJeunesExportRoute.ts
-│       │   │   │       └── postJeunesScolariseExportRoute.ts
-│       │   │   ├── phase2
-│       │   │   │   ├── index.ts
-│       │   │   │   ├── mission.ts
-│       │   │   │   ├── postCandidaturesExport.ts
-│       │   │   │   └── postMissionsExport.ts
-│       │   │   ├── planMarketing
-│       │   │   │   ├── createDistributionList.ts
-│       │   │   │   ├── importContacts.ts
-│       │   │   │   ├── index.ts
-│       │   │   │   └── listeDiffusion.ts
-│       │   │   ├── preinscription
-│       │   │   │   ├── index.ts
-│       │   │   │   └── postEligibility.ts
-│       │   │   ├── referentiel
-│       │   │   │   ├── getImportsReferentiel.ts
-│       │   │   │   ├── index.ts
-│       │   │   │   ├── postImportReferentiel.ts
-│       │   │   │   └── postImportsReferentiel.ts
-│       │   │   └── structure
-│       │   │       ├── index.ts
-│       │   │       └── postFindAll.ts
-│       │   ├── sessions.spec.ts
-│       │   ├── sessions.ts
-│       │   ├── translation.ts
-│       │   ├── transport-info.ts
-│       │   ├── utils
-│       │   │   ├── cohortUtils.ts
-│       │   │   ├── csvGenerator.ts
-│       │   │   ├── date.spec.ts
-│       │   │   ├── date.ts
-│       │   │   ├── file.ts
-│       │   │   ├── location.spec.ts
-│       │   │   ├── location.ts
-│       │   │   ├── parseEnv.ts
-│       │   │   ├── patchUtils.ts
-│       │   │   ├── request.spec.ts
-│       │   │   ├── request.ts
-│       │   │   └── string.ts
-│       │   ├── young.spec.ts
-│       │   └── young.ts
-│       ├── tsconfig.base.json
-│       └── tsconfig.json
+│       │   └── sentryFront.ts
+│       ├── tsconfig.esm.json
+│       ├── tsconfig.json
+│       └── tsconfig.spec.json
 ├── patches
 │   └── mongoose-patch-history+2.0.0.patch
 ├── renovate.json
@@ -4291,6 +4202,8 @@
 │   ├── .gitignore
 │   ├── .prettierrc
 │   ├── README.md
+│   ├── docs
+│   │   └── purge-contacts-support.md
 │   ├── jest.config.js
 │   ├── nodemon.json
 │   ├── package.json
@@ -4300,8 +4213,46 @@
 │   │   │       └── index.d.ts
 │   │   ├── __tests__
 │   │   │   ├── README.md
+│   │   │   ├── agentAdminScope.test.js
+│   │   │   ├── agentRoles.test.js
+│   │   │   ├── attachmentPathSchema.test.js
+│   │   │   ├── attachments.test.js
+│   │   │   ├── brevoSecretRedaction.test.js
+│   │   │   ├── contactScope.test.js
+│   │   │   ├── folder.routes.test.js
+│   │   │   ├── imapTicketMatching.test.js
+│   │   │   ├── imapTicketMatchingHelper.test.js
+│   │   │   ├── knowledgeBaseContent.routes.test.js
+│   │   │   ├── knowledgeBaseContent.test.js
+│   │   │   ├── knowledgeBaseReader.routes.test.js
+│   │   │   ├── knowledgeBaseScope.test.js
+│   │   │   ├── logger-redaction.test.ts
+│   │   │   ├── macro.scope.test.js
+│   │   │   ├── message.agent.lotq.test.js
+│   │   │   ├── message.dest.scope.test.js
 │   │   │   ├── message.test.js
-│   │   │   └── resetToken.test.js
+│   │   │   ├── messageAttachments.test.js
+│   │   │   ├── messageHtml.test.js
+│   │   │   ├── organisationSerializer.test.js
+│   │   │   ├── ownedResourceScope.test.js
+│   │   │   ├── passportKnowledgeBaseOrigin.test.js
+│   │   │   ├── purgeContacts.helpers.test.js
+│   │   │   ├── resetToken.test.js
+│   │   │   ├── roleMatrix.routes.test.js
+│   │   │   ├── searchRegex.test.js
+│   │   │   ├── sentry-redaction.test.ts
+│   │   │   ├── shortcut.routes.test.js
+│   │   │   ├── shortcutScope.test.js
+│   │   │   ├── ssoAgent.test.js
+│   │   │   ├── tag.routes.test.js
+│   │   │   ├── templateRouteGuards.test.js
+│   │   │   ├── ticketParticipants.test.js
+│   │   │   ├── ticketScope.test.js
+│   │   │   ├── ticketUpdate.test.js
+│   │   │   ├── userContent.test.js
+│   │   │   ├── v0.message.contact.test.js
+│   │   │   ├── v0.ticket.referent.test.js
+│   │   │   └── ventilation.routes.test.js
 │   │   ├── brevo.ts
 │   │   ├── config.ts
 │   │   ├── controllers
@@ -4321,6 +4272,7 @@
 │   │   │   ├── ticket.ts
 │   │   │   ├── v0
 │   │   │   │   ├── contact.js
+│   │   │   │   ├── knowledgeBase.js
 │   │   │   │   ├── message.js
 │   │   │   │   ├── referent.js
 │   │   │   │   ├── sso.js
@@ -4337,8 +4289,10 @@
 │   │   ├── logger.ts
 │   │   ├── mailcatcher.ts
 │   │   ├── middlewares
+│   │   │   ├── attachmentUpload.js
 │   │   │   ├── authenticationGuards.ts
 │   │   │   ├── errorHandler.ts
+│   │   │   ├── knowledgeBaseReader.js
 │   │   │   ├── userRoleGuards.ts
 │   │   │   └── validation.ts
 │   │   ├── models
@@ -4371,6 +4325,8 @@
 │   │   │   ├── importMails.js
 │   │   │   ├── invalidatePasswordResetTokens.js
 │   │   │   ├── messageToTicket.js
+│   │   │   ├── purgeContacts.helpers.js
+│   │   │   ├── purgeContacts.js
 │   │   │   ├── securiseFiles.js
 │   │   │   ├── updateFieldsTickets.js
 │   │   │   ├── updateTag.js
@@ -4379,16 +4335,36 @@
 │   │   ├── sentry.js
 │   │   ├── slack.js
 │   │   └── utils
+│   │       ├── agentAdminScope.js
+│   │       ├── attachments.js
+│   │       ├── contactScope.js
+│   │       ├── contactTicketSerializer.js
 │   │       ├── crypto.js
 │   │       ├── email.js
 │   │       ├── file.js
+│   │       ├── imapTicketMatching.js
 │   │       ├── index.js
+│   │       ├── knowledgeBaseContent.js
+│   │       ├── knowledgeBaseReader.js
+│   │       ├── knowledgeBaseScope.js
+│   │       ├── messageAttachments.js
+│   │       ├── messageHtml.js
+│   │       ├── organisation.js
+│   │       ├── ownedResourceScope.js
 │   │       ├── resetToken.js
+│   │       ├── searchRegex.js
+│   │       ├── shortcutScope.js
 │   │       ├── sitemap.utils.js
+│   │       ├── ssoAgent.js
+│   │       ├── ticketParticipants.js
+│   │       ├── ticketScope.js
+│   │       ├── ticketUpdate.js
+│   │       ├── userContent.js
 │   │       └── ventilation.js
 │   ├── tsconfig.build.json
 │   ├── tsconfig.build.tsbuildinfo
 │   ├── tsconfig.check.json
+│   ├── tsconfig.check.tsbuildinfo
 │   └── tsconfig.json
 ├── snupport-app
 │   ├── .eslintrc.js
@@ -4538,7 +4514,8 @@
 │   │   │   │   ├── index.jsx
 │   │   │   │   └── utils
 │   │   │   │       ├── knowledgeBaseTree.js
-│   │   │   │       └── material-icons.js
+│   │   │   │       ├── material-icons.js
+│   │   │   │       └── safeUrl.js
 │   │   │   ├── profil
 │   │   │   │   └── index.jsx
 │   │   │   ├── setting
@@ -4643,11 +4620,16 @@
 │   │   │   └── plausible.js
 │   │   ├── style.css
 │   │   └── utils
+│   │       ├── __tests__
+│   │       │   ├── html.test.js
+│   │       │   └── safeUrl.test.js
 │   │       ├── cohort.utils.js
 │   │       ├── date.ts
 │   │       ├── dayjs.utils.ts
+│   │       ├── html.js
 │   │       ├── index.js
 │   │       ├── region-and-departments.utils.ts
+│   │       ├── safeUrl.js
 │   │       └── searchParams.utils.ts
 │   ├── tailwind.config.js
 │   ├── tsconfig.ci.json
@@ -4657,4 +4639,4 @@
 ├── tsconfig.front.json
 ├── turbo.json
 └── workspace.code-workspace
-868 directories, 3791 files
+847 directories, 3794 files
