@@ -14,6 +14,9 @@
 │   │   ├── sentry-deploy.sh
 │   │   └── sentry-release.sh
 │   └── shared
+├── .biome
+│   └── plugins
+│       └── lien-nouvelle-fenetre.grit
 ├── .claude
 │   └── launch.json
 ├── .dockerignore
@@ -176,6 +179,7 @@
 │   └── releases
 │       └── yarn-3.8.7.cjs
 ├── .yarnrc.yml
+├── CLAUDE.md
 ├── Dockerfile
 ├── LICENSE
 ├── README.md
@@ -268,10 +272,12 @@
 │   │   │   │   ├── google-indexing
 │   │   │   │   │   ├── google-indexing.client.test.ts
 │   │   │   │   │   └── google-indexing.client.ts
-│   │   │   │   └── inserjeunes
-│   │   │   │       ├── inserjeunes.client.fixture.ts
-│   │   │   │       ├── inserjeunes.client.test.ts
-│   │   │   │       └── inserjeunes.client.ts
+│   │   │   │   ├── inserjeunes
+│   │   │   │   │   ├── inserjeunes.client.fixture.ts
+│   │   │   │   │   ├── inserjeunes.client.test.ts
+│   │   │   │   │   └── inserjeunes.client.ts
+│   │   │   │   └── linkedin
+│   │   │   │       └── linkedin.client.ts
 │   │   │   ├── filename.ts
 │   │   │   ├── logger.ts
 │   │   │   ├── sentry
@@ -291,6 +297,7 @@
 │   │   │       ├── encrypt-string.ts
 │   │   │       ├── error-manager.ts
 │   │   │       ├── file-utils.ts
+│   │   │       ├── ftp-utils.test.ts
 │   │   │       ├── ftp-utils.ts
 │   │   │       ├── geolib.test.ts
 │   │   │       ├── geolib.ts
@@ -384,17 +391,23 @@
 │   │   ├── jobs
 │   │   │   ├── anonymization
 │   │   │   │   ├── anonimize-users-with-accounts.ts
+│   │   │   │   ├── anonymize-applicant-and-applications.test.ts
 │   │   │   │   ├── anonymize-applicant-and-applications.ts
+│   │   │   │   ├── anonymize-applications.test.ts
 │   │   │   │   ├── anonymize-applications.ts
 │   │   │   │   ├── anonymize-appointments.ts
+│   │   │   │   ├── anonymize-individual.test.ts
 │   │   │   │   ├── anonymize-individual.ts
 │   │   │   │   ├── anonymize-reported-reasons.ts
 │   │   │   │   ├── anonymize-users.ts
+│   │   │   │   ├── notify-cv-deletion-failures.ts
 │   │   │   │   └── remove-brevo-contacts.ts
 │   │   │   ├── applications
 │   │   │   │   ├── process-applications.test.ts
 │   │   │   │   ├── process-applications.ts
 │   │   │   │   ├── process-recruiter-intentions.ts
+│   │   │   │   ├── purge-application-cv-files.test.ts
+│   │   │   │   ├── purge-application-cv-files.ts
 │   │   │   │   ├── relance-candidats-inactifs.test.ts
 │   │   │   │   ├── relance-candidats-inactifs.ts
 │   │   │   │   ├── relance-incitation-spontanee.test.ts
@@ -640,6 +653,15 @@
 │   │   │   │   │   ├── import-leboncoin.ts
 │   │   │   │   │   ├── leboncoin-mapper.ts
 │   │   │   │   │   └── process-leboncoin.ts
+│   │   │   │   ├── linkedin
+│   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   └── import-linkedin.test.ts.snap
+│   │   │   │   │   ├── import-linkedin.test.input.xml
+│   │   │   │   │   ├── import-linkedin.test.ts
+│   │   │   │   │   ├── import-linkedin.ts
+│   │   │   │   │   ├── linkedin-mapper.test.ts
+│   │   │   │   │   ├── linkedin-mapper.ts
+│   │   │   │   │   └── process-linkedin.ts
 │   │   │   │   ├── pass
 │   │   │   │   │   ├── __snapshots__
 │   │   │   │   │   │   ├── import-pass.test.ts.snap
@@ -775,7 +797,9 @@
 │   │   │   ├── 20260901120000-reindex-delegated-offers-cfa-name.ts
 │   │   │   ├── 20260901163000-normalize-naf-jobs-partners.ts
 │   │   │   ├── 20260911180000-backfill-search-items-admin-codes.ts
-│   │   │   └── 20260915103000-cancel-cfa-jobs-5447.ts
+│   │   │   ├── 20260915103000-cancel-cfa-jobs-5447.ts
+│   │   │   ├── 20260922170000-backfill-application-cv-deleted-at-5495.ts
+│   │   │   └── 20260922180000-merge-orphan-anonymized-applications.ts
 │   │   ├── security
 │   │   │   ├── access-log.service.ts
 │   │   │   ├── access-log.types.ts
@@ -790,6 +814,8 @@
 │   │       │   └── formulaire.service.test.ts.snap
 │   │       ├── app-links.service.ts
 │   │       ├── applicant.service.ts
+│   │       ├── application-cv.service.test.ts
+│   │       ├── application-cv.service.ts
 │   │       ├── application.service.test.ts
 │   │       ├── application.service.ts
 │   │       ├── appointment.service.ts
@@ -959,6 +985,7 @@
 │   │   │   ├── common
 │   │   │   │   └── model.test.ts
 │   │   │   └── migrations
+│   │   │       ├── backfill-application-cv-deleted-at-5495.test.ts
 │   │   │       └── normalize-naf-jobs-partners.test.ts
 │   │   ├── mocks
 │   │   │   ├── mockApiBal.ts
@@ -1113,6 +1140,7 @@
 │   │   │   ├── raw-kelio.model.ts
 │   │   │   ├── raw-laposte.model.ts
 │   │   │   ├── raw-leboncoin.model.ts
+│   │   │   ├── raw-linkedin.model.ts
 │   │   │   ├── raw-meteojob.model.ts
 │   │   │   ├── raw-monster.model.ts
 │   │   │   ├── raw-nos-talents-nos-emplois.model.ts
@@ -1517,6 +1545,8 @@
 │   │   │       ├── StatistiquesClient.tsx
 │   │   │       └── page.tsx
 │   │   ├── (editorial-with-notion)
+│   │   │   ├── _components
+│   │   │   │   └── NotionExternalLink.tsx
 │   │   │   ├── accessibilite
 │   │   │   │   ├── AccessibilitePage.tsx
 │   │   │   │   └── page.tsx
@@ -1955,6 +1985,7 @@
 │   │   │   │       ├── get-schema.ts
 │   │   │   │       └── submit-candidature.ts
 │   │   │   ├── CandidatureParTelephone.tsx
+│   │   │   ├── ConseilsEntretienBlock.tsx
 │   │   │   ├── DidYouKnow.tsx
 │   │   │   ├── GoingToContactQuestion.tsx
 │   │   │   ├── ItemDetailLoading.css
@@ -2024,7 +2055,9 @@
 │   │   │   └── services
 │   │   │       └── utils.ts
 │   │   ├── dsfr
-│   │   │   └── DsfrLink.tsx
+│   │   │   ├── DsfrLink.tsx
+│   │   │   ├── link.utils.test.ts
+│   │   │   └── link.utils.ts
 │   │   ├── espace_pro
 │   │   │   ├── Authentification
 │   │   │   │   ├── CreationCompte.tsx
@@ -2692,18 +2725,11 @@
 │   │       │   ├── BarberGuy.tsx
 │   │       │   ├── ChevronLeft.tsx
 │   │       │   ├── ChevronRight.tsx
-│   │       │   ├── CircleCheck.tsx
-│   │       │   ├── Close.tsx
-│   │       │   ├── Disquette.tsx
 │   │       │   ├── Download-line.tsx
 │   │       │   ├── Edit-2-fill.tsx
 │   │       │   ├── IconeLogo.tsx
 │   │       │   ├── Info-circle.tsx
-│   │       │   ├── MenuFill.tsx
-│   │       │   ├── OctogoneCross.tsx
-│   │       │   ├── Parametre.tsx
 │   │       │   ├── Plus.tsx
-│   │       │   ├── SearchLine.tsx
 │   │       │   ├── SuccessCircle.tsx
 │   │       │   ├── Warning.tsx
 │   │       │   └── index.ts
@@ -2748,4 +2774,4 @@
 │       └── use-search-params-record.ts
 ├── vitest.config.ts
 └── yarn.lock
-502 directories, 2816 files
+508 directories, 2836 files

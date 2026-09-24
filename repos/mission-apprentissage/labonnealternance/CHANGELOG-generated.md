@@ -1,42 +1,37 @@
-## Changelog : labonnealternance (30 derniers jours, au 2026-09-18)
+## Changelog : labonnealternance (30 derniers jours, au 23 septembre 2026)
 
 ### Résumé
-Ce mois a été marqué par un effort important sur le référencement naturel (SEO) et l'accessibilité de la plateforme. Les utilisateurs bénéficient désormais de meilleures capacités de recherche (par région et département) et d'une expérience mobile améliorée grâce au support des Progressive Web Apps (PWA). Plusieurs optimisations techniques ont été réalisées pour stabiliser l'indexation des offres et la fiabilité des flux de données.
+Ce mois a été marqué par une amélioration majeure de l'accessibilité numérique (RGAA) et du référencement naturel (SEO) de la plateforme. Les outils pour les recruteurs ont été enrichis, notamment avec de nouvelles options de gestion d'offres et de suivi des engagements. Parallèlement, la gestion des données a été renforcée avec l'automatisation de la conservation et de la purge des CV, garantissant une meilleure conformité et fiabilité du système.
 
 ### Évolutions fonctionnelles
-
-**Recherche et Découverte**
-- Amélioration de la recherche de lieux avec la possibilité de filtrer par département et région ([#5461](https://github.com/mission-apprentissage/labonnealternance/issues/5461)).
-- Assouplissement des critères de recherche pour les liens de formation (trainingLinks) ([#5393](https://github.com/mission-apprentissage/labonnealternance/issues/5393)).
-- Affichage du nom du CFA sur les offres déléguées dans les résultats de recherche ([#5343](https://github.com/mission-apprentissage/labonnealternance/issues/5359)).
-
-**Expérience Utilisateur et Accessibilité**
-- Mise en conformité RGAA pour l'accessibilité des images et des icônes ([#5396](https://github.com/mission-apprentissage/labonnealternance/issues/5396)).
-- Transformation de l'application en PWA pour une utilisation optimale sur mobile ([#5221](https://github.com/mission-apprentissage/labonnealternance/issues/5221)).
-- Optimisation de l'ergonomie de la recherche sur mobile (modale et suggestions clavier) ([#5219](https://github.com/mission-apprentissage/labonnealternance/issues/5219)).
-- Correction de divers bugs d'interface : formulaires de candidature ([#5492](https://github.com/mission-apprentissage/labonnealternance/issues/5492), [#5464](https://github.com/mission-apprentissage/labonnealternance/issues/5464)), navigation et tabulation ([#5469](https://github.com/mission-apprentissage/labonnealternance/issues/5469)), et affichage des éléments de l'espace pro ([#5345](https://github.com/mission-apprentissage/labonnealternance/issues/5345)).
-
-**Contenu et Recrutement**
-- Création d'une page guide "Recruter un alternant" pour améliorer le conseil aux recruteurs ([#5128](https://github.com/mission-apprentissage/labonnealternance/issues/5128)).
-- Collecte des engagements en faveur du handicap auprès des recruteurs ([#5222](https://github.com/mission-apprentissage/labonnealternance/issues/5222)).
-- Ajout d'un compteur d'alternants recrutés sur les trois dernières années ([#5201](https://github.com/mission-apprentissage/labonnealternance/issues/5201)).
-
-**Référencement (SEO)**
-- Optimisation massive du SEO via l'ajout de données structurées (Schema.org), de balises canonical et de notifications automatiques aux moteurs de recherche (Google Indexing API, IndexNow) ([#5293](https://github.com/mission-apprentissage/labonnealternance/issues/5293), [#5280](https://github.com/mission-apprentissage/labonnealternance/issues/5280), [#5271](https://github.com/mission-apprentissage/labonnealternance/issues/5271), [#5270](https://github.com/mission-apprentissage/labonnealternance/issues/5270)).
+- **Recherche et navigation :**
+  - Amélioration de la recherche de lieux avec la possibilité de filtrer par département et région ([#5248](https://github.com/mission-apprentissage/labonnealternance/issues/5248)).
+  - Assouplissement des critères de recherche de formations pour les liens de formation ([#5393](https://github.com/mission-apprentissage/labonnealternance/issues/5393)).
+  - Optimisation de la saisie du champ "métier" avec support de la saisie libre et raccourci clavier Entrée ([#5508](https://github.com/mission-apprentissage/labonnealternance/issues/5508)).
+- **Outils Recruteurs :**
+  - Ajout d'un motif de clôture d'offre : "J'ai reçu assez de candidatures" ([#5501](https://github.com/mission-apprentissage/labonnealternance/issues/5501)).
+  - Mise en place d'un compteur d'alternants recrutés sur les trois dernières années ([#5201](https://github.com/mission-apprentissage/labonnealternance/issues/5201)).
+  - Collecte des engagements en faveur du handicap auprès des recruteurs ([#5222](https://github.com/mission-apprentissage/labonnealternance/issues/5222)).
+- **Contenu et SEO :**
+  - Création d'une nouvelle page guide pour les recruteurs ("Recruter un alternant") ([#5128](https://github.com/mission-apprentissage/labonnealternance/issues/5128)).
+  - Ajout de balises canonical ([#5280](https://github.com/mission-apprentissage/labonnealternance/issues/5280)) et de données structurées Schema.org ([#5270](https://github.com/mission-apprentissage/labonnealternance/issues/5270)) pour améliorer la visibilité des offres et formations.
+- **Nouveautés :**
+  - Intégration du flux LinkedIn ([#5482](https://github.com/mission-apprentissage/labonnealternance/issues/5482)).
 
 ### Évolutions techniques
-
-**Performance et Fiabilité**
-- Amélioration de la résilience face aux limites de requêtes (erreurs 429) sur les pages Notion ([#5485](https://github.com/mission-apprentissage/labonnealternance/issues/5485)).
-- Optimisation de l'indexation des offres importées ([#5322](https://github.com/mission-apprentissage/labonnealternance/issues/5322)).
-- Automatisation de la purge du cache du reverse proxy lors des déploiements ([#5366](https://github.com/mission-apprentissage/labonnealternance/issues/5367)).
-- Migration du moteur de classification vers Mistral ([#5231](https://github.com/mission-apprentissage/labonnealternance/issues/5231)).
-
-**Architecture et API**
-- Suppression des anciens endpoints de l'API v1 (formations et métiers) ([#5261](https://github.com/mission-apprentissage/labonnealternance/issues/5261)).
-- Bascule sur le nouveau flux de données Hellowork ([#5363](https://github.com/mission-apprentissage/labonnealternance/issues/5363)).
-- Sécurisation des logs en empêchant la fuite de secrets vers Sentry ([#5301](https://github.com/mission-apprentissage/labonnealternance/issues/5301)).
+- **Indexation et visibilité :**
+  - Automatisation de la notification des offres (publication/retrait) via Google Indexing API ([#5293](https://github.com/mission-apprentissage/labonnealternance/issues/5293)) et IndexNow ([#5271](https://github.com/mission-apprentissage/labonnealternance/issues/5271)).
+- **Gestion des données et conformité :**
+  - Mise en place d'un système de conservation des CV pendant un an avec purge automatique ([#5495](https://github.com/mission-apprentissage/labonnealternance/issues/5495)).
+  - Amélioration du processus d'anonymisation des candidatures ([#5516](https://github.com/mission-apprentissage/labonnealternance/issues/5516)).
+- **Infrastructure et performance :**
+  - Mise à jour de l'environnement technique (Node 26, images Docker Metabase) et des workflows GitHub Actions ([#5335](https://github.com/mission-apprentissage/labonnealternance/issues/5335)).
+  - Optimisation de la résilience face aux limites de taux (rate limiting) de l'API Notion ([#5485](https://github.com/mission-apprentissage/labonnealternance/issues/5485)).
+  - Amélioration de la gestion du cache du reverse proxy lors des déploiements ([#5366](https://github.com/mission-apprentissage/labonnealternance/issues/5366)).
+- **Sécurité et fiabilité :**
+  - Correction de fuites potentielles de secrets vers l'outil de monitoring Sentry ([#5294](https://github.com/mission-apprentissage/labonnealternance/issues/5294)).
+  - Résolution de plusieurs boucles de redirection critiques sur les espaces professionnels ([#5383](https://github.com/mission-apprentissage/labonnealternance/issues/5383), [#5388](https://github.com/mission-apprentissage/labonnealternance/issues/5388)).
 
 ### Autres changements
-- Mise à jour de l'infrastructure : passage à Node 26, mise à jour des GitHub Actions et de l'image Docker Metabase ([#5335](https://github.com/mission-apprentissage/labonnealternance/issues/5335), [#5392](https://github.com/mission-apprentissage/labonnealternance/issues/5392)).
-- Alignement des composants d'interface avec le design system ([#5470](https://github.com/mission-apprentissage/labonnealternance/issues/5470)).
+- **Accessibilité (RGAA) :** Travail important de mise en conformité sur les images, les icônes et la structure des liens ([#5494](https://github.com/mission-apprentissage/labonnealternance/issues/5494), [#5483](https://github.com/mission-apprentissage/labonnealternance/issues/5483), [#5396](https://github.com/mission-apprentissage/labonnealternance/issues/5396)).
+- **Expérience de développement :** Alignement des conventions de titres de Pull Requests et mise à jour des instructions pour les outils d'assistance IA (Claude/Copilot) ([#5522](https://github.com/mission-apprentissage/labonnealternance/issues/5522), [#5519](https://github.com/mission-apprentissage/labonnealternance/issues/5519)).
