@@ -1,25 +1,40 @@
 .
 ├── .env.integration.example
-├── .github
-│   └── workflows
-│       └── gitleaks.yml
 ├── .gitignore
 ├── .gitleaks.toml
 ├── CLAUDE.md
 ├── README.md
 ├── TODO.md
-├── brief-linagora-integration-openrag.md
 ├── docker-compose.integration.yaml
 ├── docs
-│   └── drive-find-architecture.md
+│   ├── adr
+│   │   └── ADR-0001-collections-collaboratives-modele-et-etats.md
+│   ├── collectif.md
+│   ├── drive-find-architecture.md
+│   ├── images
+│   │   ├── accueil.png
+│   │   ├── source-bulle.png
+│   │   ├── source-fenetre-de-lecture.png
+│   │   └── source-page-en-onglet.png
+│   └── sources.md
 ├── myrag
 │   ├── DEPLOYMENT.md
 │   ├── Dockerfile
 │   ├── app
 │   │   ├── __init__.py
+│   │   ├── amorces
+│   │   │   ├── __init__.py
+│   │   │   └── catalogue.json
 │   │   ├── auth.py
 │   │   ├── config.py
 │   │   ├── database.py
+│   │   ├── guide
+│   │   │   ├── 1-dire-ce-qui-manque.md
+│   │   │   ├── 2-rassembler-cinq-collegues-et-un-garant.md
+│   │   │   ├── 3-amorcer-depuis-ce-qui-existe.md
+│   │   │   ├── 4-verifier-avant-de-publier.md
+│   │   │   ├── 5-entretenir.md
+│   │   │   └── 6-interroger-depuis-vos-si.md
 │   │   ├── main.py
 │   │   ├── models
 │   │   │   ├── __init__.py
@@ -27,11 +42,21 @@
 │   │   │   └── db.py
 │   │   ├── routers
 │   │   │   ├── __init__.py
+│   │   │   ├── _collectif_commun.py
+│   │   │   ├── accueil.py
+│   │   │   ├── amorces.py
 │   │   │   ├── articles.py
+│   │   │   ├── bus.py
+│   │   │   ├── categories.py
+│   │   │   ├── collectif.py
 │   │   │   ├── collections.py
+│   │   │   ├── corpus.py
+│   │   │   ├── demandes.py
 │   │   │   ├── eval_datasets.py
 │   │   │   ├── feedback.py
+│   │   │   ├── fiches.py
 │   │   │   ├── graph.py
+│   │   │   ├── guide.py
 │   │   │   ├── ingest.py
 │   │   │   ├── playground.py
 │   │   │   ├── playground_bank.py
@@ -43,24 +68,51 @@
 │   │   ├── services
 │   │   │   ├── __init__.py
 │   │   │   ├── access.py
+│   │   │   ├── accueil.py
+│   │   │   ├── amorces
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── baac.py
+│   │   │   │   ├── banque.py
+│   │   │   │   ├── cli.py
+│   │   │   │   ├── guide.py
+│   │   │   │   ├── ingestion.py
+│   │   │   │   ├── justice_administrative.py
+│   │   │   │   ├── natinf.py
+│   │   │   │   ├── reseau.py
+│   │   │   │   ├── rne.py
+│   │   │   │   ├── sdis.py
+│   │   │   │   ├── ssmsi.py
+│   │   │   │   └── tabulaire.py
+│   │   │   ├── capacites.py
+│   │   │   ├── categorie_store.py
 │   │   │   ├── chunker.py
+│   │   │   ├── collectif_store.py
 │   │   │   ├── collection_store.py
 │   │   │   ├── connectors
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── base.py
 │   │   │   │   └── drive.py
+│   │   │   ├── corpus.py
+│   │   │   ├── doublons.py
+│   │   │   ├── etats.py
 │   │   │   ├── eval_service.py
 │   │   │   ├── feedback_service.py
 │   │   │   ├── feedback_store.py
+│   │   │   ├── fiche_assistant.py
 │   │   │   ├── graph_builder.py
 │   │   │   ├── job_store.py
 │   │   │   ├── job_tracker.py
+│   │   │   ├── journal.py
 │   │   │   ├── keycloak_client.py
 │   │   │   ├── legifrance_client.py
+│   │   │   ├── morceau.py
+│   │   │   ├── nommage.py
 │   │   │   ├── openrag_client.py
 │   │   │   ├── owui_client.py
 │   │   │   ├── owui_feedback_sync.py
+│   │   │   ├── pseudo.py
 │   │   │   ├── qr_cache.py
+│   │   │   ├── relais.py
 │   │   │   └── sync_service.py
 │   │   ├── static
 │   │   │   └── graph_view.html
@@ -78,20 +130,36 @@
 │   │   ├── assets
 │   │   │   └── main.css
 │   │   ├── components
+│   │   │   ├── CarteCollection.vue
 │   │   │   ├── WizardStepper.vue
+│   │   │   ├── collectif
+│   │   │   │   ├── Avancement.vue
+│   │   │   │   ├── EtapesCollection.vue
+│   │   │   │   ├── FormulaireDemande.vue
+│   │   │   │   ├── GrilleControle.vue
+│   │   │   │   ├── JePeuxAider.vue
+│   │   │   │   ├── Propositions.vue
+│   │   │   │   └── Signalements.vue
+│   │   │   ├── corpus
+│   │   │   │   └── Documents.vue
 │   │   │   └── playground
 │   │   │       ├── BankCard.vue
 │   │   │       ├── BankFilter.vue
 │   │   │       ├── ChatMessage.vue
 │   │   │       ├── DebugAccordion.vue
 │   │   │       ├── SourceChip.vue
+│   │   │       ├── SourceViewer.vue
 │   │   │       └── VoteBar.vue
 │   │   ├── composables
 │   │   │   ├── useAdminAuth.ts
 │   │   │   ├── useApi.ts
 │   │   │   ├── useAuth.ts
 │   │   │   ├── useBank.ts
-│   │   │   └── useChat.ts
+│   │   │   ├── useCapacites.ts
+│   │   │   ├── useCategories.ts
+│   │   │   ├── useChat.ts
+│   │   │   ├── useCollectif.ts
+│   │   │   └── useTitreCollection.ts
 │   │   ├── layouts
 │   │   │   └── default.vue
 │   │   ├── middleware
@@ -102,7 +170,9 @@
 │   │   ├── package.json
 │   │   ├── pages
 │   │   │   ├── admin
+│   │   │   │   ├── amorces.vue
 │   │   │   │   ├── catalog.vue
+│   │   │   │   ├── categories.vue
 │   │   │   │   ├── create
 │   │   │   │   │   ├── index.vue
 │   │   │   │   │   ├── step-2.vue
@@ -121,7 +191,15 @@
 │   │   │   │       ├── prompt.vue
 │   │   │   │       ├── publish.vue
 │   │   │   │       └── upload.vue
-│   │   │   └── index.vue
+│   │   │   ├── deconnexion.vue
+│   │   │   ├── demandes
+│   │   │   │   ├── [id].vue
+│   │   │   │   └── index.vue
+│   │   │   ├── guide
+│   │   │   │   ├── [slug].vue
+│   │   │   │   └── index.vue
+│   │   │   ├── index.vue
+│   │   │   └── mes-collections.vue
 │   │   ├── public
 │   │   │   ├── apple-touch-icon.png
 │   │   │   ├── exemple-evaluation.json
@@ -129,11 +207,24 @@
 │   │   ├── tests
 │   │   │   └── unit
 │   │   │       ├── access.test.ts
-│   │   │       └── collectionName.test.ts
+│   │   │       ├── accueil.test.ts
+│   │   │       ├── catalogue.test.ts
+│   │   │       ├── collectif.test.ts
+│   │   │       ├── collectionName.test.ts
+│   │   │       ├── corpus.test.ts
+│   │   │       └── extrait.test.ts
 │   │   ├── tsconfig.json
+│   │   ├── types
+│   │   │   └── collection.ts
 │   │   ├── utils
 │   │   │   ├── access.ts
+│   │   │   ├── accueil.ts
+│   │   │   ├── capacites.ts
+│   │   │   ├── catalogue.ts
+│   │   │   ├── collectif.ts
 │   │   │   ├── collectionName.ts
+│   │   │   ├── corpus.ts
+│   │   │   ├── extrait.ts
 │   │   │   ├── playground.ts
 │   │   │   └── sanitize.ts
 │   │   └── vitest.config.ts
@@ -160,37 +251,18 @@
 │   ├── requirements.txt
 │   ├── tests
 │   │   ├── __init__.py
+│   │   ├── conftest.py
 │   │   ├── e2e
 │   │   │   └── __init__.py
 │   │   ├── integration
 │   │   │   └── __init__.py
 │   │   └── unit
 │   │       ├── __init__.py
-│   │       ├── test_access_model.py
-│   │       ├── test_archive_purge.py
-│   │       ├── test_auth_current_user.py
-│   │       ├── test_chunker.py
-│   │       ├── test_collection_access.py
-│   │       ├── test_collection_create_provisioning.py
-│   │       ├── test_collections.py
-│   │       ├── test_collections_authz.py
-│   │       ├── test_eval.py
-│   │       ├── test_feedback.py
-│   │       ├── test_graph_builder.py
-│   │       ├── test_health.py
-│   │       ├── test_keycloak_client.py
-│   │       ├── test_legifrance_client.py
-│   │       ├── test_openrag_client.py
-│   │       ├── test_owui_feedback_sync.py
-│   │       ├── test_playground_bank.py
-│   │       ├── test_playground_generate_eval.py
-│   │       ├── test_publication.py
-│   │       ├── test_qr_cache.py
-│   │       └── test_sync_service.py
+│   │       └── test_*.py  (53 files)
 │   └── watch-ingest.sh
 ├── openwebui
 │   ├── README.md
 │   └── feedback_forwarder.py
 ├── setup-keycloak.sh
 └── sync_keycloak_openrag.py
-39 directories, 156 files
+47 directories, 272 files
