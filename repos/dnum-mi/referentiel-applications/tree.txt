@@ -410,6 +410,10 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260911120000_preserve_auth_contexts
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260922100000_add_service_token_mode
+│   │   │   │   └── migration.sql
+│   │   │   ├── 20260922143431_add_value_for_data_update_frequency
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   ├── schema
 │   │   │   ├── action-log.prisma
@@ -549,6 +553,8 @@
 │   │   │   ├── service
 │   │   │   │   ├── check-permissions.service.spec.ts
 │   │   │   │   ├── check-permissions.service.ts
+│   │   │   │   ├── contact-admin.service.spec.ts
+│   │   │   │   ├── contact-admin.service.ts
 │   │   │   │   ├── excel-builder.service.ts
 │   │   │   │   ├── prisma-query-builder.service.spec.ts
 │   │   │   │   └── prisma-query-builder.service.ts
@@ -596,6 +602,8 @@
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── jwt-validation.config.spec.ts
 │   │   │   │   ├── jwt-validation.config.ts
+│   │   │   │   ├── maia.config.spec.ts
+│   │   │   │   ├── maia.config.ts
 │   │   │   │   ├── oidc.config.ts
 │   │   │   │   ├── technology.config.spec.ts
 │   │   │   │   └── technology.config.ts
@@ -781,6 +789,8 @@
 │   │   │   ├── organizations.service.ts
 │   │   │   └── prisma-query-builder.service.ts
 │   │   ├── permissions
+│   │   │   ├── delegated-auth.spec.ts
+│   │   │   ├── delegated-auth.ts
 │   │   │   ├── role-to-permissions.spec.ts
 │   │   │   └── role-to-permissions.ts
 │   │   ├── prisma
@@ -965,18 +975,21 @@
 │   │   │   ├── entities
 │   │   │   │   └── user.entity.ts
 │   │   │   ├── errors
+│   │   │   │   ├── maia-unavailable.exception.ts
 │   │   │   │   └── scope-permissions.exception.ts
 │   │   │   ├── scope-permission
 │   │   │   │   ├── scoped-permission.service.spec.ts
 │   │   │   │   └── scoped-permission.service.ts
 │   │   │   ├── user-connexion-log.service.spec.ts
 │   │   │   ├── user-connexion-log.service.ts
+│   │   │   ├── user-maia.service.spec.ts
 │   │   │   ├── user-permission-log.service.ts
 │   │   │   ├── user-permissions.interceptor.ts
 │   │   │   ├── user.controller.ts
 │   │   │   ├── user.module.ts
 │   │   │   ├── user.service.ts
 │   │   │   └── utils
+│   │   │       ├── maia.tools.spec.ts
 │   │   │       └── maia.tools.ts
 │   │   └── utils
 │   │       ├── constants.util.ts
@@ -1003,6 +1016,7 @@
 │   │   ├── data-catalog.e2e-spec.ts
 │   │   ├── data-family.e2e-spec.ts
 │   │   ├── data-sensibility.e2e-spec.ts
+│   │   ├── delegated-auth.e2e-spec.ts
 │   │   ├── fakers
 │   │   │   ├── actor-type.faker.ts
 │   │   │   ├── actor.faker.ts
@@ -1055,10 +1069,12 @@
 │   │   ├── technologies.e2e-spec.ts
 │   │   ├── test-database.utils.ts
 │   │   ├── token-impersonation.e2e-spec.ts
+│   │   ├── token-lifecycle.e2e-spec.ts
 │   │   ├── user-block.e2e-spec.ts
 │   │   ├── user-connexion-log.e2e-spec.ts
 │   │   ├── user-list-scope-format.e2e-spec.ts
 │   │   ├── user-list-scope.e2e-spec.ts
+│   │   ├── user-maia-resilience.e2e-spec.ts
 │   │   ├── user-permission-log-impersonator.e2e-spec.ts
 │   │   ├── user-rights-hardening.e2e-spec.ts
 │   │   └── user.e2e-spec.ts
@@ -1100,7 +1116,8 @@
 │   ├── assets
 │   │   ├── database-erd-full.svg
 │   │   └── database-erd-overview.svg
-│   └── catalogue-donnees.md
+│   ├── catalogue-donnees.md
+│   └── server-paginated-tables.md
 ├── e2e
 │   ├── .gitignore
 │   ├── fixtures
@@ -1109,6 +1126,7 @@
 │   │   └── test.ts
 │   ├── package.json
 │   ├── playwright.config.ts
+│   ├── playwright.unit.config.ts
 │   ├── pnpm-lock.yaml
 │   ├── pnpm-workspace.yaml
 │   ├── pom
@@ -1136,6 +1154,8 @@
 │   │   ├── helpers.ts
 │   │   ├── import-xlsx.ts
 │   │   ├── mailpit.ts
+│   │   ├── optional-data.ts
+│   │   ├── required-fixtures.ts
 │   │   └── screenshots.ts
 │   ├── tests
 │   │   ├── accueil.spec.ts
@@ -1157,7 +1177,9 @@
 │   │   ├── signalements-abonnements.spec.ts
 │   │   ├── time.spec.ts
 │   │   └── transverse.spec.ts
-│   └── tsconfig.json
+│   ├── tsconfig.json
+│   └── unit
+│       └── required-fixtures.spec.ts
 ├── eslint.config.js
 ├── frontend
 │   ├── .editorconfig
@@ -1207,6 +1229,10 @@
 │   ├── src
 │   │   ├── App.vue
 │   │   ├── api
+│   │   │   ├── call-api.spec.ts
+│   │   │   ├── call-api.ts
+│   │   │   ├── fetch-with-timeout.spec.ts
+│   │   │   ├── fetch-with-timeout.ts
 │   │   │   ├── index.ts
 │   │   │   ├── init-clients.spec.ts
 │   │   │   └── init-clients.ts
@@ -1225,7 +1251,6 @@
 │   │   │   ├── ApplicationTableView.vue
 │   │   │   ├── BlockedAccessScreen.vue
 │   │   │   ├── ColumnCustomization.vue
-│   │   │   ├── EditRelationModal.vue
 │   │   │   ├── EmailPreviewModal.vue
 │   │   │   ├── ImpersonationBanner.vue
 │   │   │   ├── InformationsGenerales.vue
@@ -1249,6 +1274,7 @@
 │   │   │   │   └── ReportsTab.vue
 │   │   │   ├── ReportPermissionSelect.vue
 │   │   │   ├── StatusTab.vue
+│   │   │   ├── SuggestionsInput.spec.ts
 │   │   │   ├── SuggestionsInput.vue
 │   │   │   ├── WeakAuthBanner.spec.ts
 │   │   │   ├── WeakAuthBanner.vue
@@ -1269,7 +1295,9 @@
 │   │   │   │   ├── AdminOrganizationsTab.vue
 │   │   │   │   ├── AdminPermsMatrixTab.vue
 │   │   │   │   ├── AdminQualityCampaignsTab.vue
+│   │   │   │   ├── AdminServerPaginatedTabs.spec.ts
 │   │   │   │   ├── AdminTagsTab.vue
+│   │   │   │   ├── AdminTokensTab.spec.ts
 │   │   │   │   ├── AdminTokensTab.vue
 │   │   │   │   ├── AdminUsersTab.vue
 │   │   │   │   ├── AppPermsMatrix.vue
@@ -1292,6 +1320,7 @@
 │   │   │   ├── business-division
 │   │   │   │   └── BusinessDivisionSearch.vue
 │   │   │   ├── common
+│   │   │   │   ├── OrganizationSearchSelect.spec.ts
 │   │   │   │   ├── OrganizationSearchSelect.vue
 │   │   │   │   └── TagSearchSelect.vue
 │   │   │   ├── compliances
@@ -1301,6 +1330,7 @@
 │   │   │   ├── data-application
 │   │   │   │   ├── DataApplicationDetail.spec.ts
 │   │   │   │   ├── DataApplicationDetail.vue
+│   │   │   │   ├── DataApplicationModal.spec.ts
 │   │   │   │   ├── DataApplicationModal.vue
 │   │   │   │   ├── DataApplicationTab.spec.ts
 │   │   │   │   ├── DataApplicationTab.vue
@@ -1317,9 +1347,10 @@
 │   │   │   │   ├── LabelList.vue
 │   │   │   │   └── LabelModal.vue
 │   │   │   ├── modal
-│   │   │   │   ├── AddRelationModal.vue
 │   │   │   │   ├── CreateQualityCampaignModal.vue
 │   │   │   │   ├── DeleteConfirmationModal.vue
+│   │   │   │   ├── RelationModal.spec.ts
+│   │   │   │   ├── RelationModal.vue
 │   │   │   │   └── ReportModal.vue
 │   │   │   ├── notification
 │   │   │   │   ├── NotificationBell.spec.ts
@@ -1356,6 +1387,7 @@
 │   │   │   │   ├── TechnologyTab.spec.ts
 │   │   │   │   └── TechnologyTab.vue
 │   │   │   └── users
+│   │   │       ├── UserInfoTab.spec.ts
 │   │   │       ├── UserInfoTab.vue
 │   │   │       ├── UserPermissionList.vue
 │   │   │       ├── UserPermissions.vue
@@ -1369,13 +1401,17 @@
 │   │   │   ├── use-app-permission.ts
 │   │   │   ├── use-app-update.spec.ts
 │   │   │   ├── use-app-update.ts
+│   │   │   ├── use-application-search.spec.ts
 │   │   │   ├── use-application-search.ts
+│   │   │   ├── use-async-search.spec.ts
+│   │   │   ├── use-async-search.ts
 │   │   │   ├── use-auth-level.spec.ts
 │   │   │   ├── use-auth-level.ts
 │   │   │   ├── use-blocked-access.ts
 │   │   │   ├── use-column-preferences.ts
 │   │   │   ├── use-d3-graph.ts
 │   │   │   ├── use-date.ts
+│   │   │   ├── use-filter-watcher.spec.ts
 │   │   │   ├── use-filter-watcher.ts
 │   │   │   ├── use-graph-style.spec.ts
 │   │   │   ├── use-graph-style.ts
@@ -1390,6 +1426,8 @@
 │   │   │   ├── use-relation-manager.ts
 │   │   │   ├── use-rgaa-a11y.ts
 │   │   │   ├── use-sanitize-utils.ts
+│   │   │   ├── use-server-paginated-table.spec.ts
+│   │   │   ├── use-server-paginated-table.ts
 │   │   │   └── use-technical-debt-chart.ts
 │   │   ├── constants
 │   │   │   ├── accessibility-declaration.ts
@@ -1538,6 +1576,9 @@
 │   │   └── transverse.md
 │   └── scripts
 │       ├── campaign.mjs
-│       └── sync-issue.mjs
+│       ├── report-summary.mjs
+│       ├── report-summary.test.mjs
+│       ├── sync-issue.mjs
+│       └── sync-issue.test.mjs
 └── release-please-config.json
-387 directories, 1155 files
+390 directories, 1193 files

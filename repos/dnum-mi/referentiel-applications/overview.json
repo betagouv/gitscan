@@ -1,16 +1,17 @@
 {
   "url": "https://github.com/dnum-mi/referentiel-applications",
   "name": "referentiel-applications",
-  "description": "RefApp est un catalogue et un outil de gouvernance pour les applications du ministère de l'Intérieur. Il permet de centraliser les métadonnées (statut, acteurs, conformité, dette technique) pour fournir un point de vérité unique.",
+  "description": "RefApp est un catalogue et un outil de gouvernance pour les applications du ministère de l'Intérieur. Il permet de centraliser les métadonnées telles que le statut, la conformité, l'hébergement et la dette technique des applications.",
   "language": "TypeScript",
   "features": [
     "Gestion métier générale",
-    "Administration & Backoffice",
+    "Authentification & Accès",
+    "Statistiques & Rapports",
+    "Recherche & Filtres",
     "Notifications & Alertes",
     "Suivi & Traçabilité",
-    "Données & Schémas",
-    "Sécurité & Conformité",
-    "Recherche & Filtres"
+    "Administration & Backoffice",
+    "Données & Schémas"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -19,7 +20,6 @@
     "PostgreSQL",
     "Vue.js",
     "Keycloak",
-    "DSFR",
     "Docker"
   ],
   "components": [
@@ -28,9 +28,10 @@
     "Vue.js / Nuxt",
     "TypeScript / JavaScript",
     "Docker & Conteneurs",
+    "Node.js / NestJS",
     "Authentification (composant)",
-    "Design System (DSFR & UI libs)",
-    "Documentation & Schémas"
+    "Documentation & Schémas",
+    "CI/CD & Déploiement"
   ],
   "auth": {
     "methods": [
@@ -42,11 +43,13 @@
       "Keycloak"
     ]
   },
-  "tests": "Tests end-to-end (e2e)",
-  "workflows": [
-    "GitHub Actions"
+  "tests": [
+    "e2e tests"
   ],
-  "lastActivity": "2026-09-14T00:00:00Z",
+  "workflows": [
+    "main-ci.yml"
+  ],
+  "lastActivity": "2026-09-22T00:00:00Z",
   "status": "maintained",
   "license": "MIT",
   "hasDocumentation": true,
@@ -55,9 +58,10 @@
     "TypeScript",
     "Vue.js & Nuxt",
     "Node.js, NestJS & Express",
-    "Docker & Conteneurs",
     "Bases de données SQL",
+    "Docker & Conteneurs",
     "CI/CD & GitHub Actions",
-    "Design System & UI"
+    "Sécurité & Auth",
+    "Documentation"
   ]
 }
