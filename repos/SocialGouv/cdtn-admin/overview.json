@@ -1,59 +1,60 @@
 {
   "url": "https://github.com/SocialGouv/cdtn-admin",
   "name": "cdtn-admin",
-  "description": "Cet outil d'administration permet de gérer et de configurer le site du Code du travail numérique, notamment l'ingestion de données, la publication de contenu et la configuration des paramètres.",
+  "description": "Outil d'administration pour le projet Code du travail numérique. Il permet la gestion des contenus, l'ingestion de données externes et le suivi des statistiques via Metabase.",
   "language": "TypeScript",
   "features": [
-    "Gestion documentaire & Fichiers",
-    "API & Intégrations",
-    "Authentification & Accès",
-    "Recherche & Filtres",
-    "Gestion des utilisateurs & Permissions",
-    "Notifications & Alertes",
     "Administration & Backoffice",
-    "Sécurité & Conformité",
-    "Données & Schémas"
+    "Statistiques & Rapports",
+    "Gestion documentaire & Fichiers",
+    "Données & Schémas",
+    "Gestion des utilisateurs & Permissions"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "React",
     "Next.js",
-    "PostgreSQL",
     "Hasura",
+    "PostgreSQL",
     "Elasticsearch",
-    "Docker",
-    "Minio"
+    "Minio",
+    "Metabase",
+    "Tiptap",
+    "Lerna",
+    "pnpm"
   ],
   "components": [
-    "Frontend React",
     "API REST & GraphQL",
     "PostgreSQL & SQL",
+    "React / Next.js",
     "TypeScript / JavaScript",
-    "Docker & Conteneurs"
+    "Docker & Conteneurs",
+    "Reporting & BI",
+    "Stockage objet",
+    "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
-      "email-password"
-    ]
+      "jwt",
+      "session"
+    ],
+    "providers": []
   },
-  "tests": null,
-  "workflows": [
-    "CI/CD & GitHub Actions"
+  "tests": [
+    "e2e",
+    "lint",
+    "test",
+    "type-check"
   ],
-  "lastActivity": "2026-07-31T00:00:00Z",
-  "status": "active",
+  "lastActivity": "2026-09-22T00:00:00Z",
+  "status": "maintained",
   "license": null,
   "hasDocumentation": true,
-  "metrics": null,
   "tags": [
-    "Données & Open Data",
-    "JavaScript",
+    "Écosystème beta.gouv / État",
+    "React & Next.js",
     "TypeScript",
-    "React",
-    "PostgreSQL",
-    "Docker",
-    "Sécurité",
-    "Administration",
-    "Gestion de contenu"
+    "Docker & Conteneurs",
+    "Bases de données SQL",
+    "Reporting & BI"
   ]
 }
