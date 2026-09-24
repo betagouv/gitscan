@@ -1,46 +1,59 @@
 {
   "url": "https://github.com/tchapgouv/tchap-web-v4",
   "name": "tchap-web-v4",
-  "description": "Tchap est un système de messagerie instantanée pour le secteur public français, basé sur le protocole Matrix. Il s'agit d'un fork d'Element web, avec des modifications spécifiques pour répondre aux besoins du gouvernement français.",
+  "description": "Application web de messagerie instantanée sécurisée basée sur le protocole Matrix, conçue pour le secteur public français. Elle permet des communications chiffrées, des appels audio/vidéo et la gestion d'espaces de travail collaboratifs.",
   "language": "TypeScript",
   "features": [
-    "Authentification utilisateur",
-    "Gestion des utilisateurs & Permissions",
-    "Sécurité & Conformité",
     "Collaboration & Workflow",
-    "Commentaires & Discussions"
+    "Authentification & Accès",
+    "Notifications & Alertes",
+    "Interface utilisateur & Design",
+    "Temps réel & WebSocket",
+    "Gestion des utilisateurs & Permissions"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
+    "Matrix protocol",
     "React",
-    "matrix-js-sdk",
-    "Node.js"
+    "pnpm",
+    "Element Web",
+    "Vitepress"
   ],
   "components": [
-    "Frontend React",
-    "API REST",
-    "TypeScript"
+    "React / Next.js",
+    "TypeScript / JavaScript",
+    "Design System (DSFR & UI libs)",
+    "CI/CD & Déploiement",
+    "Tests",
+    "Authentification (composant)"
   ],
   "auth": {
     "methods": [
-      "email-password",
-      "oauth2"
+      "oauth2",
+      "session"
+    ],
+    "providers": [
+      "OIDC"
     ]
   },
-  "tests": "Jest",
-  "workflows": [
-    "scalingo-postbuild"
+  "tests": [
+    "Jest",
+    "Playwright",
+    "BrowserStack"
   ],
-  "lastActivity": "2024-06-26T00:00:00Z",
-  "status": "active",
+  "workflows": [
+    "GitHub Actions"
+  ],
+  "lastActivity": "2026-07-04T00:00:00Z",
+  "status": "maintained",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
-  "metrics": null,
   "tags": [
-    "Messagerie",
-    "Secteur public",
-    "Matrix",
+    "Écosystème beta.gouv / État",
     "TypeScript",
-    "React"
+    "React & Next.js",
+    "CI/CD & GitHub Actions",
+    "Design System & UI",
+    "Accessibilité"
   ]
 }

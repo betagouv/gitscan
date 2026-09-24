@@ -985,6 +985,7 @@
 │       │   │   │       │   ├── _ContentScanningFileBody.pcss
 │       │   │   │       │   ├── _ContentScanningImageBody.pcss
 │       │   │   │       │   ├── _ContentScanningVideoBody.pcss
+│       │   │   │       │   ├── _RoomSearchAuxPanel.pcss
 │       │   │   │       │   └── _TchapExportMembersButton.pcss
 │       │   │   │       └── sso
 │       │   │   │           └── _TchapSSO.pcss
@@ -2962,13 +2963,13 @@
 │       │   │   │               ├── ContentScanningVideoBody.tsx
 │       │   │   │               ├── ContentScanningVideoBodyView.tsx
 │       │   │   │               └── ContentScanningVoiceMessageBody.tsx
-│       │   │   ├── i18n
-│       │   │   │   └── Tchapi18nUtils.tsx
-│       │   │   ├── lib
+│       │   │   ├── ext
 │       │   │   │   ├── ExpiredAccountHandler.ts
 │       │   │   │   ├── ExternalAccountHandler.ts
 │       │   │   │   ├── IncomingKeyRequestHandler.ts
 │       │   │   │   └── createTchapRoom.ts
+│       │   │   ├── i18n
+│       │   │   │   └── Tchapi18nUtils.tsx
 │       │   │   └── util
 │       │   │       ├── TchapApi.ts
 │       │   │       ├── TchapCommands.ts
@@ -4277,6 +4278,10 @@
 │       │   │   │   │       │       ├── BugReportDialog-test.tsx.snap
 │       │   │   │   │       │       ├── CreateSecretStoragedialog-test.tsx.snap
 │       │   │   │   │       │       └── InviteDialog-test.tsx.snap
+│       │   │   │   │       ├── elements
+│       │   │   │   │       │   ├── SearchWarning-test.tsx
+│       │   │   │   │       │   └── __snapshots__
+│       │   │   │   │       │       └── SearchWarning-test.tsx.snap
 │       │   │   │   │       ├── messages
 │       │   │   │   │       │   ├── LegacyCallEvent-test.tsx
 │       │   │   │   │       │   └── __snapshots__
@@ -4285,6 +4290,7 @@
 │       │   │   │   │       │   └── RoomSummaryCard-test.tsx
 │       │   │   │   │       ├── rooms
 │       │   │   │   │       │   ├── RoomHeaders-test.tsx
+│       │   │   │   │       │   ├── RoomSearchAuxPanel-test.tsx
 │       │   │   │   │       │   ├── TchapRoomLinkAccess-test.tsx
 │       │   │   │   │       │   └── __snapshots__
 │       │   │   │   │       │       ├── RoomHeaders-test.tsx.snap
@@ -4325,7 +4331,8 @@
 │       │   │   │       ├── TchapRoomHook-test.ts
 │       │   │   │       ├── TchapRoomUtils-test.ts
 │       │   │   │       ├── TchapToPermalinkConstructor-test.ts
-│       │   │   │       └── TchapUIFeature-test.ts
+│       │   │   │       ├── TchapUIFeature-test.ts
+│       │   │   │       └── TchapUtils-test.ts
 │       │   │   ├── theme-test.ts
 │       │   │   ├── toasts
 │       │   │   │   ├── IncomingCallToast-test.tsx
@@ -5851,12 +5858,5 @@
 │       ├── makePatch.ts
 │       ├── merge-patches.sh
 │       └── postinstall.sh
-├── sonar-project.properties
-└── src
-    └── components
-        └── views
-            └── messages
-                ├── DecryptionFailureBody.tsx
-                ├── MVideoBody.tsx
-                └── MessageActionBar.tsx
-1136 directories, 4725 files
+└── sonar-project.properties
+1134 directories, 4727 files
