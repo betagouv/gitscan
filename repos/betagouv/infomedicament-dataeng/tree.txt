@@ -8,10 +8,10 @@
 ├── Procfile
 ├── README.md
 ├── data_sources
+│   ├── ansm.yml
 │   └── has.yml
 ├── infra_s3
 │   └── policy.json
-├── poetry.lock
 ├── pyproject.toml
 ├── scripts
 │   ├── explore_opensearch_sections.py
@@ -48,27 +48,35 @@
 │       │   └── specialites.py
 │       ├── parsing
 │       │   ├── __init__.py
-│       │   └── parser.py
+│       │   ├── parser.py
+│       │   └── semantic_parser.py
 │       ├── pediatric
 │       │   ├── __init__.py
 │       │   ├── config.py
 │       │   └── pediatric.py
 │       └── s3.py
-└── tests
-    ├── __init__.py
-    ├── conftest.py
-    ├── fixtures
-    │   ├── ClasseATC_sample.sql
-    │   ├── N0314839.htm
-    │   ├── abasaglar-epar-product-information_fr.pdf
-    │   └── test_datagouv.yml
-    ├── test_centralise.py
-    ├── test_centralise_parser.py
-    ├── test_datagouv.py
-    ├── test_db_import.py
-    ├── test_notice_chunks.py
-    ├── test_opensearch_etl.py
-    ├── test_parser.py
-    ├── test_pediatric.py
-    └── test_sql_to_csv.py
-17 directories, 56 files
+├── tests
+│   ├── __init__.py
+│   ├── conftest.py
+│   ├── fixtures
+│   │   ├── ClasseATC_sample.sql
+│   │   ├── N0314839.htm
+│   │   ├── abasaglar-epar-product-information_fr.pdf
+│   │   ├── semantic_document_expected.html
+│   │   └── test_datagouv.yml
+│   ├── test_centralise.py
+│   ├── test_centralise_parser.py
+│   ├── test_config.py
+│   ├── test_datagouv.py
+│   ├── test_datapackage_importer.py
+│   ├── test_db_import.py
+│   ├── test_notice_chunks.py
+│   ├── test_opensearch_etl.py
+│   ├── test_parser.py
+│   ├── test_pediatric.py
+│   ├── test_s3.py
+│   ├── test_semantic_cli.py
+│   ├── test_semantic_parser.py
+│   └── test_sql_to_csv.py
+└── uv.lock
+17 directories, 64 files

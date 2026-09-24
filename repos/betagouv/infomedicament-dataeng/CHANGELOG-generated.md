@@ -1,21 +1,12 @@
-## Changelog : infomedicament-dataeng (30 derniers jours, au 16 juillet 2026)
+## Changelog : infomedicament-dataeng (30 derniers jours, au 21 septembre 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur l'importation et le traitement des données des médicaments, notamment en ajoutant la prise en charge des documents PDF centralisés de l'EMA (Agence Européenne des Médicaments) et en optimisant les performances d'importation des données. De nouvelles fonctionnalités ont également été ajoutées pour faciliter l'importation de datapackages.
+Les récentes évolutions se concentrent sur l'enrichissement des données via l'importation automatique de sources externes (DataGouv) et la modernisation de la structure de la base de données. Le système de traitement a également été renforcé pour améliorer la précision de l'analyse des documents et la fiabilité des imports.
 
 ### Évolutions fonctionnelles
-- Ajout d'une commande CLI `import-datapackage` pour faciliter l'importation de datapackages. [#1234](https://github.com/betagouv/infomedicament-dataeng/issues/1234)
-- Intégration de la table `specialite_titulaire` lors de l'importation de datapackages.
-- Ajout d'une nouvelle source de données `url_has`.
-- Extraction et rendu des images présentes dans les notices d'EMA.
+- Automatisation de l'importation des données de l'ANSM depuis la plateforme DataGouv [#21](https://github.com/betagouv/infomedicament-dataeng/issues/21)
 
 ### Évolutions techniques
-- Amélioration du traitement des PDF centralisés de l'EMA :
-    - Gestion de la limitation de débit (rate-limiting) de l'EMA lors de la récupération des PDF.
-    - Rendu des tableaux et parsing par lots (resumable, batched parse).
-    - Parsing des PDF centralisés de l'EMA en listes de nodes Notice/RCP.
-- Optimisation des performances d'importation des données en utilisant la commande `COPY` au lieu d'insertions ligne par ligne dans la base de données.
-- Changement du préfixe des tables en `ansm_`.
-
-### Autres changements
-- Documentation du pipeline pour la gestion du rate-limiting de l'EMA.
+- **Base de données** : Extension du schéma avec l'ajout de nouvelles tables et colonnes, incluant de nouvelles tables dédiées aux génériques [#19](https://github.com/betagouv/infomedicament-dataeng/issues/19), [#22](https://github.com/betagouv/infomedicament-dataeng/issues/22)
+- **Parsing et traitement** : Implémentation d'un parseur HTML sémantique [#16](https://github.com/betagouv/infomedicament-dataeng/issues/16) et ajout d'une logique de gestion de préfixes [#20](https://github.com/betagouv/infomedicament-dataeng/issues/20)
+- **Fiabilité et monitoring** : Renforcement du processus d'importation avec l'ajout d'un contrôle de dérive des séquences d'identifiants (ID sequence drift) et de diagnostics plus détaillés [#17](https://github.com/betagouv/infomedicament-dataeng/issues/17)
