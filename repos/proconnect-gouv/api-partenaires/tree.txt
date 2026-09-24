@@ -2,8 +2,12 @@
 ├── .dockerignore
 ├── .editorconfig
 ├── .github
+│   ├── actions
+│   │   └── dila-cache
+│   │       └── action.yml
 │   ├── dependabot.yml
 │   └── workflows
+│       ├── apotropaic-cron.yml
 │       ├── ci.yml
 │       ├── config-lint.yml
 │       └── docker.yml
@@ -32,8 +36,20 @@
 │       └── integration.test.ts
 ├── package.json
 ├── scripts
+│   ├── apotropaic.ts
 │   └── lint_config.ts
 ├── src
+│   ├── apotropaic
+│   │   ├── declared_by.test.ts
+│   │   ├── declared_by.ts
+│   │   ├── dila.test.ts
+│   │   ├── dila.ts
+│   │   ├── dila_ok.test.ts
+│   │   ├── dila_ok.ts
+│   │   ├── not_allowed.test.ts
+│   │   ├── not_allowed.ts
+│   │   ├── source.test.ts
+│   │   └── source.ts
 │   ├── app.test.ts
 │   ├── app.ts
 │   ├── config.test.ts
@@ -49,4 +65,4 @@
 │   ├── oidc_providers_config.ts
 │   └── signature_middleware.ts
 └── tsconfig.json
-12 directories, 39 files
+15 directories, 52 files
