@@ -1,35 +1,38 @@
 {
   "url": "https://github.com/cloud-gouv/securix",
   "name": "securix",
-  "description": "SécurixOS est une distribution NixOS développée pour équiper des ordinateurs sécurisés, permettant des accès à la production avec un niveau de sécurité variable selon la configuration.",
+  "description": "SécurixOS est une distribution NixOS conçue pour fournir un environnement de travail hautement sécurisé et durci, conforme aux recommandations de l'ANSSI, pour l'administration et le développement.",
   "language": "Nix",
   "features": [
     "Authentification & Accès",
     "Sécurité & Conformité",
-    "Gestion des utilisateurs & Permissions"
+    "Gestion des utilisateurs & Permissions",
+    "Suivi & Traçabilité"
   ],
   "audience": "Professionnels",
   "dependencies": [
     "NixOS",
     "Linux",
     "TPM2",
-    "Yubikey"
+    "Yubikey",
+    "FIDO2",
+    "age",
+    "Vault"
   ],
   "components": [
-    "Système d'exploitation NixOS",
-    "Modules de sécurité intégrés",
-    "Configuration selon les recommandations ANSSI"
+    "Authentification (composant)",
+    "Scripts & Utilitaires",
+    "CI/CD & Déploiement",
+    "Documentation & Schémas"
   ],
   "auth": {
     "methods": [
-      "session",
       "mfa",
-      "passkey"
+      "passkey",
+      "session"
     ]
   },
-  "tests": [
-    "NixOS test framework"
-  ],
+  "tests": "Framework de test NixOS (exécution en VM)",
   "workflows": [
     "securix-cd-docs.yaml",
     "securix-check-formatting.yaml",
@@ -38,18 +41,20 @@
     "securix-cleanup-docs.yaml",
     "securix-testsuite.yaml"
   ],
-  "lastActivity": "2026-06-18T17:22:47+02:00",
+  "lastActivity": "2026-09-23T14:17:44+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
   "metrics": {
-    "stars": 1000,
-    "forks": 46,
-    "openIssues": 28
+    "stars": 1042,
+    "forks": 50,
+    "openIssues": 34
   },
   "tags": [
     "Sécurité & Auth",
-    "NixOS",
-    "Écosystème beta.gouv / État"
+    "Écosystème beta.gouv / État",
+    "Git & DevOps",
+    "Documentation",
+    "Legal & Conformité"
   ]
 }

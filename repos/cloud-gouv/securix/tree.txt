@@ -35,19 +35,63 @@
 ├── docs
 │   └── manual
 │       ├── .gitignore
-│       ├── book.toml
-│       └── src
-│           ├── SUMMARY.md
-│           ├── about
-│           │   └── securix.md
-│           ├── testing
-│           │   ├── physical.md
-│           │   └── vm.md
-│           └── user
-│               ├── cache.md
-│               ├── deployment.md
-│               ├── quick_start.md
-│               └── variants.md
+│       ├── book-en
+│       │   ├── book.toml
+│       │   ├── src
+│       │   │   ├── SUMMARY.md
+│       │   │   ├── about
+│       │   │   │   └── securix.md
+│       │   │   ├── contributor
+│       │   │   │   └── docs.md
+│       │   │   ├── deployment
+│       │   │   │   └── initialization
+│       │   │   │       ├── README.md
+│       │   │   │       ├── context.md
+│       │   │   │       ├── inventory.md
+│       │   │   │       ├── prepare-repo.md
+│       │   │   │       └── tools.md
+│       │   │   ├── external
+│       │   │   │   └── links.md
+│       │   │   ├── reference
+│       │   │   │   ├── cache.md
+│       │   │   │   └── deployment.md
+│       │   │   ├── testing
+│       │   │   │   ├── physical.md
+│       │   │   │   └── vm.md
+│       │   │   └── user
+│       │   │       └── hardware.md
+│       │   └── theme
+│       │       ├── language-switcher.css
+│       │       └── language-switcher.js
+│       ├── book-fr
+│       │   ├── book.toml
+│       │   ├── src
+│       │   │   ├── SUMMARY.md
+│       │   │   ├── about
+│       │   │   │   └── securix.md
+│       │   │   ├── contributor
+│       │   │   │   └── docs.md
+│       │   │   ├── deployment
+│       │   │   │   └── initialization
+│       │   │   │       ├── README.md
+│       │   │   │       ├── context.md
+│       │   │   │       ├── inventory.md
+│       │   │   │       ├── prepare-repo.md
+│       │   │   │       └── tools.md
+│       │   │   ├── external
+│       │   │   │   └── links.md
+│       │   │   ├── reference
+│       │   │   │   ├── cache.md
+│       │   │   │   └── deployment.md
+│       │   │   ├── testing
+│       │   │   │   ├── physical.md
+│       │   │   │   └── vm.md
+│       │   │   └── user
+│       │   │       └── hardware.md
+│       │   └── theme
+│       │       ├── language-switcher.css
+│       │       └── language-switcher.js
+│       └── index.html
 ├── examples
 │   └── basic
 │       ├── README.md
@@ -65,8 +109,7 @@
 │   ├── x390.nix
 │   └── x9-15.nix
 ├── lib
-│   ├── default.nix
-│   └── utils.nix
+│   └── default.nix
 ├── modules
 │   ├── admins
 │   │   └── default.nix
@@ -87,10 +130,10 @@
 │   │   ├── default.nix
 │   │   └── plymouth.nix
 │   ├── bootloader.nix
+│   ├── chromium
+│   │   └── default.nix
 │   ├── console.nix
 │   ├── default.nix
-│   ├── developer-mode
-│   │   └── default.nix
 │   ├── distribution.nix
 │   ├── filesystems
 │   │   ├── default.nix
@@ -188,7 +231,9 @@
 │   ├── default.nix
 │   ├── idempotent-autoinstall.nix
 │   ├── minimal.nix
-│   └── portail.nix
+│   ├── portail.nix
+│   ├── sway-keybindings.nix
+│   └── tools.nix
 └── workflows
     └── check-licensing.nix
-47 directories, 146 files
+65 directories, 173 files
