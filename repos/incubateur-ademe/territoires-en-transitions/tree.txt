@@ -185,7 +185,6 @@
 │       ├── backup-database.yml
 │       ├── cd-app.yml
 │       ├── cd-backend.yml
-│       ├── cd-panier.yml
 │       ├── cd-restore-preprod.yml
 │       ├── cd-site.yml
 │       ├── cd-test-app-destroy.yml
@@ -488,9 +487,13 @@
 │   │   │   │   │   │   │   ├── layout.tsx
 │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   ├── instruction
-│   │   │   │   │   │   │   └── [demandeAvisId]
-│   │   │   │   │   │   │       ├── layout.tsx
-│   │   │   │   │   │   │       └── page.tsx
+│   │   │   │   │   │   │   ├── [demandeAvisId]
+│   │   │   │   │   │   │   │   ├── layout.tsx
+│   │   │   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   │   │   └── demarche
+│   │   │   │   │   │   │       └── [demarcheId]
+│   │   │   │   │   │   │           ├── layout.tsx
+│   │   │   │   │   │   │           └── page.tsx
 │   │   │   │   │   │   ├── layout.tsx
 │   │   │   │   │   │   ├── modifier
 │   │   │   │   │   │   │   ├── layout.tsx
@@ -833,10 +836,85 @@
 │   │   │   │   ├── collectivites
 │   │   │   │   │   └── use-get-collectivite.ts
 │   │   │   │   ├── documents
-│   │   │   │   │   └── upload
-│   │   │   │   │       ├── hash-file.utils.ts
-│   │   │   │   │       ├── upload-to-storage.ts
-│   │   │   │   │       └── use-upload-file.ts
+│   │   │   │   │   ├── action-documents.stories.tsx
+│   │   │   │   │   ├── action-documents.view.tsx
+│   │   │   │   │   ├── add-document
+│   │   │   │   │   │   ├── add-document.tabs.stories.tsx
+│   │   │   │   │   │   ├── add-document.tabs.tsx
+│   │   │   │   │   │   ├── add-file.stories.tsx
+│   │   │   │   │   │   ├── add-file.tsx
+│   │   │   │   │   │   ├── add-file.utils.spec.ts
+│   │   │   │   │   │   ├── add-file.utils.ts
+│   │   │   │   │   │   ├── add-from-bibliotheque.stories.tsx
+│   │   │   │   │   │   ├── add-from-bibliotheque.tsx
+│   │   │   │   │   │   ├── add-link.tsx
+│   │   │   │   │   │   ├── confidentiel.checkbox.tsx
+│   │   │   │   │   │   ├── file-item.spec.tsx
+│   │   │   │   │   │   ├── file-item.stories.tsx
+│   │   │   │   │   │   ├── file-item.tsx
+│   │   │   │   │   │   ├── file-items-list.stories.tsx
+│   │   │   │   │   │   ├── file-items-list.tsx
+│   │   │   │   │   │   ├── files-to-upload-list.utils.ts
+│   │   │   │   │   │   ├── types.ts
+│   │   │   │   │   │   ├── upload-file-result-to-status.ts
+│   │   │   │   │   │   ├── use-file-upload-list.spec.ts
+│   │   │   │   │   │   └── use-file-upload-list.ts
+│   │   │   │   │   ├── add-preuve-complementaire.modal.tsx
+│   │   │   │   │   ├── add-preuve-reglementaire.modal.tsx
+│   │   │   │   │   ├── bibliotheque
+│   │   │   │   │   │   ├── delete-confirmation.alert.tsx
+│   │   │   │   │   │   ├── document-card
+│   │   │   │   │   │   │   ├── __snapshots__
+│   │   │   │   │   │   │   │   └── index.spec.tsx.snap
+│   │   │   │   │   │   │   ├── actions.tsx
+│   │   │   │   │   │   │   ├── content.tsx
+│   │   │   │   │   │   │   ├── context.ts
+│   │   │   │   │   │   │   ├── declared-children.ts
+│   │   │   │   │   │   │   ├── index.spec.tsx
+│   │   │   │   │   │   │   ├── index.tsx
+│   │   │   │   │   │   │   ├── menu.tsx
+│   │   │   │   │   │   │   └── opened-modal.ts
+│   │   │   │   │   │   ├── document-label.utils.spec.ts
+│   │   │   │   │   │   ├── document-label.utils.ts
+│   │   │   │   │   │   ├── documents.fixture.ts
+│   │   │   │   │   │   ├── duplicated-document.alert.spec.tsx
+│   │   │   │   │   │   ├── duplicated-document.alert.tsx
+│   │   │   │   │   │   ├── edit-document.modal.tsx
+│   │   │   │   │   │   ├── edit-fichier.modal.tsx
+│   │   │   │   │   │   ├── edit-lien.modal.tsx
+│   │   │   │   │   │   ├── edit-state.input.tsx
+│   │   │   │   │   │   ├── identifiant-action.tsx
+│   │   │   │   │   │   ├── missing-file.badge.tsx
+│   │   │   │   │   │   ├── preuve-reglementaire.stories.tsx
+│   │   │   │   │   │   ├── preuve-reglementaire.tsx
+│   │   │   │   │   │   ├── referentiel-document.card.stories.tsx
+│   │   │   │   │   │   ├── referentiel-document.card.tsx
+│   │   │   │   │   │   ├── to-document-collectivite.utils.ts
+│   │   │   │   │   │   ├── types.ts
+│   │   │   │   │   │   ├── use-edit-preuve.ts
+│   │   │   │   │   │   ├── use-edit-state.ts
+│   │   │   │   │   │   ├── use-fichiers.ts
+│   │   │   │   │   │   ├── use-open-preuve.spec.ts
+│   │   │   │   │   │   ├── use-open-preuve.ts
+│   │   │   │   │   │   └── use-replace-audit-report-file.ts
+│   │   │   │   │   ├── data
+│   │   │   │   │   │   ├── has-downloadable-file.spec.ts
+│   │   │   │   │   │   ├── has-downloadable-file.ts
+│   │   │   │   │   │   ├── use-download-document.ts
+│   │   │   │   │   │   ├── use-download-documents-mesure.ts
+│   │   │   │   │   │   └── use-list-documents-mesure.ts
+│   │   │   │   │   ├── duplicated-document-state.utils.spec.ts
+│   │   │   │   │   ├── duplicated-document-state.utils.ts
+│   │   │   │   │   ├── upload
+│   │   │   │   │   │   ├── constants.ts
+│   │   │   │   │   │   ├── hash-file.utils.ts
+│   │   │   │   │   │   ├── upload-to-storage.ts
+│   │   │   │   │   │   ├── use-upload-file.ts
+│   │   │   │   │   │   ├── validate-file.spec.ts
+│   │   │   │   │   │   └── validate-file.ts
+│   │   │   │   │   ├── use-action-preuves-count.ts
+│   │   │   │   │   ├── use-add-preuve-to-action.ts
+│   │   │   │   │   └── use-add-preuves.ts
 │   │   │   │   ├── membres
 │   │   │   │   │   ├── invite-membre
 │   │   │   │   │   │   ├── invite-membre.button.tsx
@@ -909,10 +987,19 @@
 │   │   │   │   │   ├── affichage-referentiels.page.tsx
 │   │   │   │   │   └── use-update-collectivite-preferences.ts
 │   │   │   │   ├── priorisation-leviers
+│   │   │   │   │   ├── categories.accordion.spec.tsx
+│   │   │   │   │   ├── categories.accordion.tsx
 │   │   │   │   │   ├── data
-│   │   │   │   │   │   └── use-levier-cards.ts
+│   │   │   │   │   │   ├── to-pertinences-list-input.ts
+│   │   │   │   │   │   ├── upsert-pertinence.spec.ts
+│   │   │   │   │   │   ├── upsert-pertinence.ts
+│   │   │   │   │   │   ├── use-levier-cards.ts
+│   │   │   │   │   │   └── use-upsert-pertinence.ts
+│   │   │   │   │   ├── levier-card-info.tsx
 │   │   │   │   │   ├── levier-summary.card.spec.tsx
 │   │   │   │   │   ├── levier-summary.card.tsx
+│   │   │   │   │   ├── pertinence-field.tsx
+│   │   │   │   │   ├── pertinence-selector.tsx
 │   │   │   │   │   ├── priorisation-leviers.view.tsx
 │   │   │   │   │   ├── to-levier-cards.spec.ts
 │   │   │   │   │   └── to-levier-cards.ts
@@ -1057,6 +1144,7 @@
 │   │   │   │   │   │   │   └── use-etapes-instruction-side-panel.tsx
 │   │   │   │   │   │   ├── dossier-instruction-path.spec.ts
 │   │   │   │   │   │   ├── dossier-instruction-path.ts
+│   │   │   │   │   │   ├── dossier-instruction-ref.ts
 │   │   │   │   │   │   ├── dossiers-instruction.cells.tsx
 │   │   │   │   │   │   ├── dossiers-instruction.header-filters.tsx
 │   │   │   │   │   │   ├── dossiers-instruction.metrics.tsx
@@ -1091,7 +1179,8 @@
 │   │   │   │   │   └── use-trajectoire-leviers.ts
 │   │   │   │   ├── trajectoires
 │   │   │   │   │   ├── trajectoire-colors.ts
-│   │   │   │   │   └── trajectoire-constants.ts
+│   │   │   │   │   ├── trajectoire-constants.ts
+│   │   │   │   │   └── trajectoire-reference.alert.tsx
 │   │   │   │   └── valeurs
 │   │   │   │       ├── grid
 │   │   │   │       │   ├── __tests__
@@ -1141,6 +1230,7 @@
 │   │   │   │   ├── plans.labels.ts
 │   │   │   │   ├── referentiels.labels.ts
 │   │   │   │   ├── shared.labels.ts
+│   │   │   │   ├── trajectoires-snbc.labels.ts
 │   │   │   │   └── utilisateurs-and-entity.labels.ts
 │   │   │   ├── lib
 │   │   │   │   ├── crisp.widget.lazy-load.tsx
@@ -1853,82 +1943,6 @@
 │   │   │   │   │   ├── useLabellisationParcours.ts
 │   │   │   │   │   ├── useRemovePreuveFromDemande.ts
 │   │   │   │   │   └── useStartAudit.ts
-│   │   │   │   ├── preuves
-│   │   │   │   │   ├── AddPreuveComplementaire.tsx
-│   │   │   │   │   ├── AddPreuveModal
-│   │   │   │   │   │   ├── AddFile.spec.tsx
-│   │   │   │   │   │   ├── AddFile.stories.tsx
-│   │   │   │   │   │   ├── AddFile.tsx
-│   │   │   │   │   │   ├── AddFromLib.stories.tsx
-│   │   │   │   │   │   ├── AddFromLib.tsx
-│   │   │   │   │   │   ├── AddLink.tsx
-│   │   │   │   │   │   ├── AddPreuveModal.stories.tsx
-│   │   │   │   │   │   ├── CheckboxConfidentiel.tsx
-│   │   │   │   │   │   ├── FileItem.spec.tsx
-│   │   │   │   │   │   ├── FileItem.stories.tsx
-│   │   │   │   │   │   ├── FileItem.tsx
-│   │   │   │   │   │   ├── FileItemsList.stories.tsx
-│   │   │   │   │   │   ├── FileItemsList.tsx
-│   │   │   │   │   │   ├── filesToUploadList.tsx
-│   │   │   │   │   │   ├── index.tsx
-│   │   │   │   │   │   ├── types.ts
-│   │   │   │   │   │   ├── upload-file-result-to-status.ts
-│   │   │   │   │   │   ├── use-file-upload-list.spec.ts
-│   │   │   │   │   │   └── use-file-upload-list.ts
-│   │   │   │   │   ├── AddPreuveReglementaire.tsx
-│   │   │   │   │   ├── Bibliotheque
-│   │   │   │   │   │   ├── delete-confirmation.alert.tsx
-│   │   │   │   │   │   ├── document-card
-│   │   │   │   │   │   │   ├── __snapshots__
-│   │   │   │   │   │   │   │   └── index.spec.tsx.snap
-│   │   │   │   │   │   │   ├── actions.tsx
-│   │   │   │   │   │   │   ├── content.tsx
-│   │   │   │   │   │   │   ├── context.ts
-│   │   │   │   │   │   │   ├── declared-children.ts
-│   │   │   │   │   │   │   ├── index.spec.tsx
-│   │   │   │   │   │   │   ├── index.tsx
-│   │   │   │   │   │   │   ├── menu.tsx
-│   │   │   │   │   │   │   └── opened-modal.ts
-│   │   │   │   │   │   ├── document-label.utils.spec.ts
-│   │   │   │   │   │   ├── document-label.utils.ts
-│   │   │   │   │   │   ├── documents.fixture.ts
-│   │   │   │   │   │   ├── duplicated-document.alert.spec.tsx
-│   │   │   │   │   │   ├── duplicated-document.alert.tsx
-│   │   │   │   │   │   ├── edit-document.modal.tsx
-│   │   │   │   │   │   ├── edit-fichier.modal.tsx
-│   │   │   │   │   │   ├── edit-lien.modal.tsx
-│   │   │   │   │   │   ├── edit-state.input.tsx
-│   │   │   │   │   │   ├── identifiant-action.tsx
-│   │   │   │   │   │   ├── missing-file.badge.tsx
-│   │   │   │   │   │   ├── preuve-reglementaire.stories.tsx
-│   │   │   │   │   │   ├── preuve-reglementaire.tsx
-│   │   │   │   │   │   ├── referentiel-document.card.stories.tsx
-│   │   │   │   │   │   ├── referentiel-document.card.tsx
-│   │   │   │   │   │   ├── to-document-collectivite.utils.ts
-│   │   │   │   │   │   ├── types.ts
-│   │   │   │   │   │   ├── use-edit-preuve.ts
-│   │   │   │   │   │   ├── use-edit-state.ts
-│   │   │   │   │   │   ├── use-fichiers.ts
-│   │   │   │   │   │   ├── use-open-preuve.spec.ts
-│   │   │   │   │   │   ├── use-open-preuve.ts
-│   │   │   │   │   │   └── use-replace-audit-report-file.ts
-│   │   │   │   │   ├── PreuvesAction.stories.tsx
-│   │   │   │   │   ├── PreuvesAction.tsx
-│   │   │   │   │   ├── data
-│   │   │   │   │   │   ├── has-downloadable-file.spec.ts
-│   │   │   │   │   │   ├── has-downloadable-file.ts
-│   │   │   │   │   │   ├── use-download-document.ts
-│   │   │   │   │   │   ├── use-download-documents-mesure.ts
-│   │   │   │   │   │   └── use-list-documents-mesure.ts
-│   │   │   │   │   ├── duplicated-document-state.utils.spec.ts
-│   │   │   │   │   ├── duplicated-document-state.utils.ts
-│   │   │   │   │   ├── upload
-│   │   │   │   │   │   ├── constants.ts
-│   │   │   │   │   │   ├── validate-file.spec.ts
-│   │   │   │   │   │   └── validate-file.ts
-│   │   │   │   │   ├── use-action-preuves-count.ts
-│   │   │   │   │   ├── useAddPreuveToAction.ts
-│   │   │   │   │   └── useAddPreuves.ts
 │   │   │   │   ├── referentiel-context.tsx
 │   │   │   │   ├── referentiel-mode
 │   │   │   │   │   ├── mode-banner-alert.tsx
@@ -2540,6 +2554,7 @@
 │   │   │   │   │   │   ├── edit-preuve-document.router.e2e-spec.ts
 │   │   │   │   │   │   ├── edit-preuve-document.router.ts
 │   │   │   │   │   │   └── edit-preuve-document.service.ts
+│   │   │   │   │   ├── file-info.utils.e2e-spec.ts
 │   │   │   │   │   ├── file-info.utils.ts
 │   │   │   │   │   ├── get-download-url
 │   │   │   │   │   │   ├── get-download-url.errors.ts
@@ -2776,6 +2791,7 @@
 │   │   │   │   │   ├── pertinence-leviers.trpc-errors.ts
 │   │   │   │   │   └── upsert-pertinence-levier
 │   │   │   │   │       ├── upsert-pertinence-levier.input.ts
+│   │   │   │   │       ├── upsert-pertinence-levier.service.e2e-spec.ts
 │   │   │   │   │       └── upsert-pertinence-levier.service.ts
 │   │   │   │   ├── recherches
 │   │   │   │   │   ├── collectivites.response.ts
@@ -3098,6 +3114,7 @@
 │   │   │   │   │   │   ├── depot-permissions.errors.ts
 │   │   │   │   │   │   ├── depot-permissions.service.e2e-spec.ts
 │   │   │   │   │   │   ├── depot-permissions.service.ts
+│   │   │   │   │   │   ├── dossier-instruction-ref.input.ts
 │   │   │   │   │   │   ├── models
 │   │   │   │   │   │   │   ├── demarche-pcaet-source-metadonnee.table.ts
 │   │   │   │   │   │   │   ├── demarche-pcaet-vulnerabilite-thematique.table.ts
@@ -3170,6 +3187,8 @@
 │   │   │   │   │   ├── indicateur-categorie-tag.table.ts
 │   │   │   │   │   ├── indicateur-collectivite.table.ts
 │   │   │   │   │   ├── indicateur-definition.table.ts
+│   │   │   │   │   ├── indicateur-periodicite.column.ts
+│   │   │   │   │   ├── indicateur-periodicite.router.e2e-spec.ts
 │   │   │   │   │   ├── list-collectivite-definitions
 │   │   │   │   │   │   └── list-collectivite-definitions.repository.ts
 │   │   │   │   │   ├── list-platform-definitions
@@ -3190,6 +3209,7 @@
 │   │   │   │   ├── import-indicateurs
 │   │   │   │   │   ├── import-indicateur-definition.controller.e2e-spec.ts
 │   │   │   │   │   ├── import-indicateur-definition.controller.ts
+│   │   │   │   │   ├── import-indicateur-definition.dto.spec.ts
 │   │   │   │   │   ├── import-indicateur-definition.dto.ts
 │   │   │   │   │   ├── import-indicateur-definition.service.spec.ts
 │   │   │   │   │   ├── import-indicateur-definition.service.ts
@@ -3226,10 +3246,12 @@
 │   │   │   │   │   └── list-indicateurs
 │   │   │   │   │       ├── get-favoris-count.request.ts
 │   │   │   │   │       ├── get-path.request.ts
+│   │   │   │   │       ├── list-indicateurs-summary.router.e2e-spec.ts
 │   │   │   │   │       ├── list-indicateurs.api-request.ts
 │   │   │   │   │       ├── list-indicateurs.controller.ts
 │   │   │   │   │       ├── list-indicateurs.input.ts
 │   │   │   │   │       ├── list-indicateurs.output.ts
+│   │   │   │   │       ├── list-indicateurs.repository.ts
 │   │   │   │   │       ├── list-indicateurs.router.e2e-spec.ts
 │   │   │   │   │       ├── list-indicateurs.router.ts
 │   │   │   │   │       └── list-indicateurs.service.ts
@@ -3311,6 +3333,7 @@
 │   │   │   │       │   └── fixture.ts
 │   │   │   │       ├── upsert-indicateurs-valeurs.request.ts
 │   │   │   │       ├── upsert-indicateurs-valeurs.response.ts
+│   │   │   │       ├── upsert-valeur-indicateur.request.spec.ts
 │   │   │   │       ├── upsert-valeur-indicateur.request.ts
 │   │   │   │       ├── valeurs-moyenne.dto.ts
 │   │   │   │       ├── valeurs-moyenne.service.ts
@@ -3589,6 +3612,10 @@
 │   │   │   │   │   │   │   ├── fiche-action-relations.fixture.ts
 │   │   │   │   │   │   │   └── fiche-action.fixture.ts
 │   │   │   │   │   │   └── models
+│   │   │   │   │   │       ├── action-impact-action.table.ts
+│   │   │   │   │   │       ├── action-impact-fourchette-budgetaire.table.ts
+│   │   │   │   │   │       ├── action-impact-tier.table.ts
+│   │   │   │   │   │       ├── action-impact.table.ts
 │   │   │   │   │   │       ├── axe-indicateur.table.ts
 │   │   │   │   │   │       ├── axe.table.ts
 │   │   │   │   │   │       ├── fiche-action-action-impact.table.ts
@@ -3624,44 +3651,6 @@
 │   │   │   │   │       ├── update-fiche.router.ts
 │   │   │   │   │       ├── update-fiche.service.ts
 │   │   │   │   │       └── validate-fiches-in-collectivite.ts
-│   │   │   │   ├── paniers
-│   │   │   │   │   ├── actions
-│   │   │   │   │   │   ├── actions.errors.ts
-│   │   │   │   │   │   ├── actions.input.ts
-│   │   │   │   │   │   ├── actions.repository.ts
-│   │   │   │   │   │   ├── actions.router.e2e-spec.ts
-│   │   │   │   │   │   ├── actions.router.ts
-│   │   │   │   │   │   └── actions.service.ts
-│   │   │   │   │   ├── checkout
-│   │   │   │   │   │   ├── checkout.errors.ts
-│   │   │   │   │   │   ├── checkout.input.ts
-│   │   │   │   │   │   ├── checkout.router.e2e-spec.ts
-│   │   │   │   │   │   ├── checkout.router.ts
-│   │   │   │   │   │   ├── checkout.service.ts
-│   │   │   │   │   │   ├── panier-checkout-line-to-fiche-action.spec.ts
-│   │   │   │   │   │   ├── panier-checkout-line-to-fiche-action.ts
-│   │   │   │   │   │   └── panier-checkout.repository.ts
-│   │   │   │   │   ├── models
-│   │   │   │   │   │   ├── action-impact-action.table.ts
-│   │   │   │   │   │   ├── action-impact-banatic-competence.table.ts
-│   │   │   │   │   │   ├── action-impact-categorie.table.ts
-│   │   │   │   │   │   ├── action-impact-cateorie-fnv.table.ts
-│   │   │   │   │   │   ├── action-impact-effet-attendu.table.ts
-│   │   │   │   │   │   ├── action-impact-fourchette-budgetaire.table.ts
-│   │   │   │   │   │   ├── action-impact-indicateur.table.ts
-│   │   │   │   │   │   ├── action-impact-panier.table.ts
-│   │   │   │   │   │   ├── action-impact-partenaire.table.ts
-│   │   │   │   │   │   ├── action-impact-sous-thematique.table.ts
-│   │   │   │   │   │   ├── action-impact-statut.table.ts
-│   │   │   │   │   │   ├── action-impact-thematique.table.ts
-│   │   │   │   │   │   ├── action-impact-tier.table.ts
-│   │   │   │   │   │   ├── action-impact.table.ts
-│   │   │   │   │   │   ├── panier-partenaire.table.ts
-│   │   │   │   │   │   └── panier.table.ts
-│   │   │   │   │   ├── paniers.module.ts
-│   │   │   │   │   ├── paniers.router.ts
-│   │   │   │   │   └── shared
-│   │   │   │   │       └── panier.repository.ts
 │   │   │   │   ├── plans
 │   │   │   │   │   ├── compute-budget
 │   │   │   │   │   │   ├── compute-budget.rules.spec.ts
@@ -4633,104 +4622,6 @@
 │   │   ├── tsconfig.project.json
 │   │   ├── tsconfig.spec.json
 │   │   └── vitest.config.mts
-│   ├── panier
-│   │   ├── .env
-│   │   ├── Dockerfile
-│   │   ├── README.md
-│   │   ├── app
-│   │   │   ├── global.css
-│   │   │   ├── landing
-│   │   │   │   ├── collectivite
-│   │   │   │   │   └── [id]
-│   │   │   │   │       └── page.tsx
-│   │   │   │   ├── page.tsx
-│   │   │   │   └── panier
-│   │   │   │       └── [id]
-│   │   │   │           └── page.tsx
-│   │   │   ├── layout.tsx
-│   │   │   ├── page.tsx
-│   │   │   └── panier
-│   │   │       ├── [id]
-│   │   │       │   ├── PagePanier.tsx
-│   │   │       │   ├── page.tsx
-│   │   │       │   └── utils.ts
-│   │   │       └── page.tsx
-│   │   ├── components
-│   │   │   ├── ActionImpact
-│   │   │   │   ├── CarteActionImpact.tsx
-│   │   │   │   ├── ModaleActionImpact.tsx
-│   │   │   │   ├── NiveauBudget.tsx
-│   │   │   │   ├── index.tsx
-│   │   │   │   └── types.ts
-│   │   │   ├── FiltresActions
-│   │   │   │   ├── BadgesFilters.tsx
-│   │   │   │   ├── index.tsx
-│   │   │   │   └── types.ts
-│   │   │   ├── Landing
-│   │   │   │   ├── CestParti.tsx
-│   │   │   │   ├── CommentCaMarche.tsx
-│   │   │   │   ├── ReprendrePanier.tsx
-│   │   │   │   ├── SelectCollectivite.tsx
-│   │   │   │   ├── index.tsx
-│   │   │   │   ├── useCollectiviteInfo.ts
-│   │   │   │   └── useFilteredCollectivites.ts
-│   │   │   ├── Layout
-│   │   │   │   ├── Footer.tsx
-│   │   │   │   └── Header.tsx
-│   │   │   ├── ListeActions
-│   │   │   │   ├── ListeActionsFiltrees.tsx
-│   │   │   │   ├── ListeVide.tsx
-│   │   │   │   └── index.tsx
-│   │   │   ├── Markdown
-│   │   │   │   └── index.tsx
-│   │   │   ├── PanierActions
-│   │   │   │   ├── AjouterActionsRealiseesOuEnCours.tsx
-│   │   │   │   ├── index.tsx
-│   │   │   │   └── useAjouterActionsRealiseesOuEnCoursState.tsx
-│   │   │   ├── PanierRealtime
-│   │   │   │   ├── PartagerLeLien.tsx
-│   │   │   │   └── index.tsx
-│   │   │   ├── Picto
-│   │   │   │   ├── BasketPicto.tsx
-│   │   │   │   ├── BigBasketPicto.tsx
-│   │   │   │   ├── CollectiviteEngageePicto.tsx
-│   │   │   │   ├── DashboardPicto.tsx
-│   │   │   │   ├── EmptyBasketPicto.tsx
-│   │   │   │   ├── Membres.tsx
-│   │   │   │   ├── SearchPicto.tsx
-│   │   │   │   └── SuccessPicto.tsx
-│   │   │   ├── Section
-│   │   │   │   └── index.tsx
-│   │   │   ├── Stepper
-│   │   │   │   └── StepperValidation.tsx
-│   │   │   └── ValidationPanier
-│   │   │       ├── ValiderPanierButton.tsx
-│   │   │       └── ValiderPanierModale.tsx
-│   │   ├── eslint.config.mjs
-│   │   ├── hooks
-│   │   │   └── useLandingPathname.ts
-│   │   ├── next-env.d.ts
-│   │   ├── next.config.mjs
-│   │   ├── package.json
-│   │   ├── postcss.config.js
-│   │   ├── providers
-│   │   │   ├── collectivite.tsx
-│   │   │   ├── index.ts
-│   │   │   ├── panier.tsx
-│   │   │   ├── posthog.tsx
-│   │   │   ├── store.tsx
-│   │   │   └── user.tsx
-│   │   ├── proxy.ts
-│   │   ├── public
-│   │   │   ├── favicon-16x16.png
-│   │   │   ├── favicon-32x32.png
-│   │   │   └── favicon.ico
-│   │   ├── src
-│   │   │   └── utils
-│   │   │       └── extractIdsFromParam.ts
-│   │   ├── svgr.d.ts
-│   │   ├── tailwind.config.ts
-│   │   └── tsconfig.json
 │   ├── site
 │   │   ├── .env
 │   │   ├── Dockerfile
@@ -5234,6 +5125,7 @@
 │       │   │   ├── airtable-row.dto.ts
 │       │   │   ├── airtable-user.record.ts
 │       │   │   ├── airtable.module.ts
+│       │   │   ├── airtable.service.spec.ts
 │       │   │   └── airtable.service.ts
 │       │   ├── app.module.ts
 │       │   ├── assets
@@ -5268,6 +5160,11 @@
 │       │   │   │   ├── get-crisp-session-messages.response.ts
 │       │   │   │   └── get-crisp-session.response.ts
 │       │   │   └── services
+│       │   │       ├── build-crisp-crm-note.service.spec.ts
+│       │   │       ├── build-crisp-crm-note.service.ts
+│       │   │       ├── build-crisp-user-data.service.spec.ts
+│       │   │       ├── build-crisp-user-data.service.ts
+│       │   │       ├── crisp.service.spec.ts
 │       │   │       └── crisp.service.ts
 │       │   ├── cron
 │       │   │   ├── cron-consumer.service.ts
@@ -5500,6 +5397,7 @@
 │   │   │   │   ├── crm@v4.2.0.sql
 │   │   │   │   ├── crm@v4.3.0.sql
 │   │   │   │   ├── crm_refresh.sql
+│   │   │   │   ├── drop_newsletters_pai.sql
 │   │   │   │   ├── newsletters.sql
 │   │   │   │   ├── newsletters@v2.90.0.sql
 │   │   │   │   └── newsletters_pai.sql
@@ -5510,7 +5408,7 @@
 │   │   │   │   ├── bucket.sql
 │   │   │   │   ├── bucket@v2.93.0.sql
 │   │   │   │   ├── bucket@v4.36.0.sql
-│   │   │   │   ├── bucket_*.sql  (5 files)
+│   │   │   │   ├── bucket_*.sql  (6 files)
 │   │   │   │   ├── code_siren_commune.sql
 │   │   │   │   ├── collectivite.sql
 │   │   │   │   ├── collectivite@v2.8.0.sql
@@ -5525,6 +5423,7 @@
 │   │   │   │   ├── departement.sql
 │   │   │   │   ├── departement@v2.55.0.sql
 │   │   │   │   ├── dreal_unique_region_code.sql
+│   │   │   │   ├── drop_mes_collectivites.sql
 │   │   │   │   ├── epci_perimetre_secondaire.sql
 │   │   │   │   ├── fusion.sql
 │   │   │   │   ├── historique.sql
@@ -6107,6 +6006,7 @@
 │   │   │   │   ├── crm@v4.2.0.sql
 │   │   │   │   ├── crm@v4.3.0.sql
 │   │   │   │   ├── crm_refresh.sql
+│   │   │   │   ├── drop_newsletters_pai.sql
 │   │   │   │   ├── newsletters.sql
 │   │   │   │   ├── newsletters@v2.90.0.sql
 │   │   │   │   └── newsletters_pai.sql
@@ -6117,7 +6017,7 @@
 │   │   │   │   ├── bucket.sql
 │   │   │   │   ├── bucket@v2.93.0.sql
 │   │   │   │   ├── bucket@v4.36.0.sql
-│   │   │   │   ├── bucket_*.sql  (5 files)
+│   │   │   │   ├── bucket_*.sql  (6 files)
 │   │   │   │   ├── code_siren_commune.sql
 │   │   │   │   ├── collectivite.sql
 │   │   │   │   ├── collectivite@v2.8.0.sql
@@ -6132,6 +6032,7 @@
 │   │   │   │   ├── departement.sql
 │   │   │   │   ├── departement@v2.55.0.sql
 │   │   │   │   ├── dreal_unique_region_code.sql
+│   │   │   │   ├── drop_mes_collectivites.sql
 │   │   │   │   ├── epci_perimetre_secondaire.sql
 │   │   │   │   ├── fusion.sql
 │   │   │   │   ├── historique.sql
@@ -6716,6 +6617,7 @@
 │   │       │   ├── crm@v4.2.0.sql
 │   │       │   ├── crm@v4.3.0.sql
 │   │       │   ├── crm_refresh.sql
+│   │       │   ├── drop_newsletters_pai.sql
 │   │       │   ├── newsletters.sql
 │   │       │   ├── newsletters@v2.90.0.sql
 │   │       │   └── newsletters_pai.sql
@@ -6726,7 +6628,7 @@
 │   │       │   ├── bucket.sql
 │   │       │   ├── bucket@v2.93.0.sql
 │   │       │   ├── bucket@v4.36.0.sql
-│   │       │   ├── bucket_*.sql  (5 files)
+│   │       │   ├── bucket_*.sql  (6 files)
 │   │       │   ├── code_siren_commune.sql
 │   │       │   ├── collectivite.sql
 │   │       │   ├── collectivite@v2.8.0.sql
@@ -6741,6 +6643,7 @@
 │   │       │   ├── departement.sql
 │   │       │   ├── departement@v2.55.0.sql
 │   │       │   ├── dreal_unique_region_code.sql
+│   │       │   ├── drop_mes_collectivites.sql
 │   │       │   ├── epci_perimetre_secondaire.sql
 │   │       │   ├── fusion.sql
 │   │       │   ├── historique.sql
@@ -7501,10 +7404,6 @@
 │   │   │   │       ├── lecteur-readonly-description.spec.ts
 │   │   │   │       ├── mutualiser-action.spec.ts
 │   │   │   │       └── sous-actions.pom.ts
-│   │   │   ├── paniers
-│   │   │   │   ├── creer-plan-depuis-panier.spec.ts
-│   │   │   │   ├── paniers.fixture.ts
-│   │   │   │   └── rattachement-collectivite.spec.ts
 │   │   │   └── plans
 │   │   │       ├── create-plan
 │   │   │       │   ├── create-plan.pom.ts
@@ -7627,11 +7526,6 @@
 │   │   │   │   └── domain
 │   │   │   │       └── valeur.schema.ts
 │   │   │   ├── json.types.ts
-│   │   │   ├── panier_action_impact
-│   │   │   │   ├── index.ts
-│   │   │   │   ├── integration.test.ts
-│   │   │   │   ├── panierAPI.ts
-│   │   │   │   └── types.ts
 │   │   │   ├── plan-actions
 │   │   │   │   ├── fiche-resumes.list
 │   │   │   │   │   └── data-access
@@ -7646,7 +7540,6 @@
 │   │   │   │   ├── dcp.fetch.ts
 │   │   │   │   ├── index.server.ts
 │   │   │   │   ├── index.ts
-│   │   │   │   ├── user-collectivites.fetch.server.ts
 │   │   │   │   ├── user-context
 │   │   │   │   │   ├── use-subscribe-to-user-auth-events.ts
 │   │   │   │   │   ├── user-context-store.client.tsx
@@ -7757,10 +7650,14 @@
 │   │   │   │   ├── personne-tag-or-user.schema.ts
 │   │   │   │   ├── personne-tag.schema.ts
 │   │   │   │   ├── pertinence-leviers
-│   │   │   │   │   ├── index-pertinences.spec.ts
-│   │   │   │   │   ├── index-pertinences.ts
+│   │   │   │   │   ├── can-categories-have-own-pertinence.spec.ts
+│   │   │   │   │   ├── can-categories-have-own-pertinence.ts
 │   │   │   │   │   ├── pertinence-leviers.schema.ts
-│   │   │   │   │   └── pertinence.enum.ts
+│   │   │   │   │   ├── pertinence.enum.ts
+│   │   │   │   │   ├── resolve-pertinence-volet.spec.ts
+│   │   │   │   │   ├── resolve-pertinence-volet.ts
+│   │   │   │   │   ├── to-pertinences-by-levier.spec.ts
+│   │   │   │   │   └── to-pertinences-by-levier.ts
 │   │   │   │   ├── service-deconcentre.rules.spec.ts
 │   │   │   │   ├── service-deconcentre.rules.ts
 │   │   │   │   ├── service-tag.schema.ts
@@ -7824,7 +7721,10 @@
 │   │   │   │               └── demarche-pcaet.transitions.ts
 │   │   │   ├── indicateurs
 │   │   │   │   ├── definitions
+│   │   │   │   │   ├── indicateur-definition.schema.spec.ts
 │   │   │   │   │   ├── indicateur-definition.schema.ts
+│   │   │   │   │   ├── indicateur-periodicite.schema.spec.ts
+│   │   │   │   │   ├── indicateur-periodicite.schema.ts
 │   │   │   │   │   ├── indicateur-segmentations.enum.ts
 │   │   │   │   │   └── list-definitions.input.ts
 │   │   │   │   ├── index.ts
@@ -7851,6 +7751,7 @@
 │   │   │   │   │   └── verification-trajectoire.rules.ts
 │   │   │   │   ├── valeurs
 │   │   │   │   │   ├── indicateur-valeur-type.enum.ts
+│   │   │   │   │   ├── indicateur-valeur.schema.spec.ts
 │   │   │   │   │   ├── indicateur-valeur.schema.ts
 │   │   │   │   │   ├── iso-date.utils.ts
 │   │   │   │   │   └── values.constants.ts
@@ -7886,10 +7787,6 @@
 │   │   │   │   ├── filters.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── labels.ts
-│   │   │   │   ├── paniers
-│   │   │   │   │   ├── action-impact-statut.schema.ts
-│   │   │   │   │   ├── action-impact.schema.ts
-│   │   │   │   │   └── panier-checkout.schema.ts
 │   │   │   │   └── plans
 │   │   │   │       ├── flat-axe.schema.ts
 │   │   │   │       ├── generate-report
@@ -8224,9 +8121,6 @@
 │       │   │   ├── EmptyCard
 │       │   │   │   ├── EmptyCard.stories.tsx
 │       │   │   │   └── EmptyCard.tsx
-│       │   │   ├── InfoActionImpact
-│       │   │   │   ├── InfoActionImpact.tsx
-│       │   │   │   └── index.ts
 │       │   │   ├── PageHeader
 │       │   │   │   ├── EditableTitle.behavior.test.tsx
 │       │   │   │   ├── EditableTitle.tsx
@@ -8808,20 +8702,11 @@
 │   │   │   ├── mailer.ts
 │   │   │   ├── serveUtils.ts
 │   │   │   └── typeUtils.ts
-│   │   ├── get_panier_data_from_directus
-│   │   │   ├── README.md
-│   │   │   ├── fetchData.ts
-│   │   │   ├── index.ts
-│   │   │   ├── saveData.ts
-│   │   │   └── types.ts
 │   │   ├── import_indicateur_emt
 │   │   │   ├── cleanData.ts
 │   │   │   ├── fetchData.ts
 │   │   │   ├── index.ts
 │   │   │   └── saveData.ts
-│   │   ├── send_user_pai_to_brevo
-│   │   │   ├── fetchData.ts
-│   │   │   └── index.ts
 │   │   ├── send_users_to_brevo
 │   │   │   ├── fetchData.ts
 │   │   │   └── index.ts
@@ -8839,4 +8724,4 @@
 ├── tsconfig.json
 ├── vitest.config.ts
 └── vitest.workspace.ts
-1450 directories, 7669 files
+1412 directories, 7595 files
