@@ -503,6 +503,7 @@
 │   │   │   │   ├── 0018_service_conditions_acces_and_more.py
 │   │   │   │   ├── 0019_service_horaires_accueil.py
 │   │   │   │   ├── 0020_alter_service_forms.py
+│   │   │   │   ├── 0021_recompute_sync_checksums_update_frequency.py
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── data
 │   │   │   │       └── assignation-thematiques.csv
@@ -754,6 +755,7 @@
 │   │   │   │   │       └── Marianne-Regular_Italic.woff2
 │   │   │   │   ├── icons
 │   │   │   │   │   ├── circle.png
+│   │   │   │   │   ├── ico-road-map.svelte
 │   │   │   │   │   ├── ico-sync.svelte
 │   │   │   │   │   └── loop.svg
 │   │   │   │   ├── illustrations
@@ -919,6 +921,7 @@
 │   │   │   │   │   │   ├── detail-card.svelte
 │   │   │   │   │   │   ├── detail-panel.svelte
 │   │   │   │   │   │   └── general-panel.svelte
+│   │   │   │   │   ├── department-selector.svelte
 │   │   │   │   │   ├── establishment-search
 │   │   │   │   │   │   ├── search-by-commune.svelte
 │   │   │   │   │   │   ├── search-by-safir.svelte
@@ -994,6 +997,7 @@
 │   │   │   │   ├── file.ts
 │   │   │   │   ├── forms.ts
 │   │   │   │   ├── logger.ts
+│   │   │   │   ├── manager-department.ts
 │   │   │   │   ├── matomo.ts
 │   │   │   │   ├── misc.ts
 │   │   │   │   ├── moderation.ts
@@ -1227,10 +1231,13 @@
 │   │   │   │   └── sub-menu.svelte
 │   │   │   ├── admin
 │   │   │   │   ├── +layout.ts
-│   │   │   │   ├── +page.svelte
-│   │   │   │   ├── +page.ts
 │   │   │   │   ├── copyable-text.svelte
 │   │   │   │   ├── email-line.svelte
+│   │   │   │   ├── gerer-mon-territoire
+│   │   │   │   │   ├── +page.svelte
+│   │   │   │   │   ├── +page.ts
+│   │   │   │   │   ├── territory-card.svelte
+│   │   │   │   │   └── territory-link.svelte
 │   │   │   │   ├── google-search-link.svelte
 │   │   │   │   ├── history.svelte
 │   │   │   │   ├── info-line.svelte
@@ -1258,7 +1265,6 @@
 │   │   │   │   │   ├── creer
 │   │   │   │   │   │   ├── +page.svelte
 │   │   │   │   │   │   └── +page.ts
-│   │   │   │   │   ├── department-list.svelte
 │   │   │   │   │   ├── filters.svelte
 │   │   │   │   │   ├── structure-modal.svelte
 │   │   │   │   │   ├── structures-filters.ts
@@ -1470,4 +1476,4 @@
 └── tools
     ├── create-review-apps.sh
     └── release.sh
-276 directories, 1196 files
+277 directories, 1201 files
