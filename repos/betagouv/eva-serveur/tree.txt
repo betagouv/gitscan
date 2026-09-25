@@ -233,6 +233,7 @@
 │   │   │   ├── comparer_evaluations_positionnement.js
 │   │   │   ├── deplace_modales_dsfr.js
 │   │   │   ├── evaluation_eva.js.erb
+│   │   │   ├── export_pdf_modal.js
 │   │   │   ├── filtres_dates.js
 │   │   │   ├── form_toggle_submit.js
 │   │   │   ├── hotjar.js.erb
@@ -240,6 +241,7 @@
 │   │   │   ├── liens_evitement.js
 │   │   │   ├── modal_fusion.js
 │   │   │   ├── modal_verification.js
+│   │   │   ├── pdf_generation_channel.js
 │   │   │   ├── plausible.js.erb
 │   │   │   ├── recherche_structure.js
 │   │   │   ├── reset_password.js
@@ -247,6 +249,7 @@
 │   │   │   ├── siret_input.js
 │   │   │   ├── structure_confirmation.js
 │   │   │   ├── tarteaucitron-init.js
+│   │   │   ├── telecharge_pdf.js
 │   │   │   ├── toggle_usage_structure.js
 │   │   │   └── vendor
 │   │   │       ├── clipboard.min.js
@@ -308,6 +311,7 @@
 │   │       │   │   ├── _menu_transverse.scss
 │   │       │   │   ├── _mesure_chiffre_cle.scss
 │   │       │   │   ├── _modal_invitation.scss
+│   │       │   │   ├── _modale_generation_pdf.scss
 │   │       │   │   ├── _navigation.scss
 │   │       │   │   ├── _nom_anonymisable.scss
 │   │       │   │   ├── _panel.scss
@@ -403,6 +407,7 @@
 │   │       │   │       ├── _mesure_des_impacts.scss
 │   │       │   │       └── _numeratie.scss
 │   │       │   └── variables
+│   │       │       ├── _breakpoints.scss
 │   │       │       ├── _colors.scss
 │   │       │       ├── _fonts.scss
 │   │       │       ├── _sizes.scss
@@ -423,9 +428,11 @@
 │   │       ├── print.pdf.scss
 │   │       └── ui_kit.scss
 │   ├── channels
-│   │   └── application_cable
-│   │       ├── channel.rb
-│   │       └── connection.rb
+│   │   ├── application_cable
+│   │   │   ├── channel.rb
+│   │   │   └── connection.rb
+│   │   └── pdf
+│   │       └── generation_channel.rb
 │   ├── components
 │   │   ├── badge
 │   │   │   └── profil_component.rb
@@ -570,6 +577,7 @@
 │   │   ├── admin
 │   │   │   ├── controle_syntheses_restitutions_controller.rb
 │   │   │   ├── evaluations_controller.rb
+│   │   │   ├── pdf_generations_controller.rb
 │   │   │   ├── positionnement
 │   │   │   │   └── reponses_controller.rb
 │   │   │   └── ui_kit_controller.rb
@@ -585,7 +593,8 @@
 │   │   │   └── questionnaires_controller.rb
 │   │   ├── application_controller.rb
 │   │   ├── concerns
-│   │   │   └── .keep
+│   │   │   ├── .keep
+│   │   │   └── pdf_generation_responder.rb
 │   │   ├── demo_controller.rb
 │   │   ├── erreurs_controller.rb
 │   │   ├── eva
@@ -645,6 +654,9 @@
 │   │   ├── application_job.rb
 │   │   ├── nettoyage_comptes_structure_demo_job.rb
 │   │   ├── notification_admin_comptes_en_attente_job.rb
+│   │   ├── pdf
+│   │   │   ├── generation_job.rb
+│   │   │   └── recyclage_navigateur_job.rb
 │   │   ├── persiste_collection_evenements_job.rb
 │   │   ├── persiste_metriques_partie_job.rb
 │   │   ├── persiste_restitution_job.rb
@@ -765,8 +777,9 @@
 │   │   ├── partie.rb
 │   │   ├── password_validator.rb
 │   │   ├── pdf
-│   │   │   ├── browser.rb
-│   │   │   └── generator.rb
+│   │   │   ├── generateur.rb
+│   │   │   ├── generation_token.rb
+│   │   │   └── navigateur.rb
 │   │   ├── prise_en_main.rb
 │   │   ├── question.rb
 │   │   ├── question_clic_dans_image.rb
@@ -933,6 +946,7 @@
 │       │           ├── _links.erb
 │       │           └── _messages_erreurs_generales.html.erb
 │       ├── admin
+│       │   ├── _modale_generation_pdf.html.erb
 │       │   ├── actualites
 │       │   │   ├── _actualites.html.arb
 │       │   │   ├── _autres_actualites_sidebar.html.arb
@@ -1007,6 +1021,7 @@
 │       │   │   └── _panel_administration.html.arb
 │       │   ├── evaluations_eva
 │       │   │   ├── _beneficiaire.erb
+│       │   │   ├── _categorie_bienvenue.arb
 │       │   │   ├── _communication_ecrite.arb
 │       │   │   ├── _competence_niveau1.arb
 │       │   │   ├── _correspondance_anlci.arb
@@ -1030,7 +1045,6 @@
 │       │   │   ├── _recherche_responsable_suivi.html.erb
 │       │   │   ├── _referentiel_europeen.arb
 │       │   │   ├── _restitution_globale.arb
-│       │   │   ├── _sante.arb
 │       │   │   ├── _show.html.arb
 │       │   │   ├── _suivi_accompagnement_illettrisme.erb
 │       │   │   ├── _telechargement_reponses.erb
@@ -1067,6 +1081,8 @@
 │       │   ├── parcours_type
 │       │   │   ├── _form.html.arb
 │       │   │   └── _show.html.arb
+│       │   ├── pdf_generations
+│       │   │   └── show.html.erb
 │       │   ├── question_qcms
 │       │   │   ├── _form.html.arb
 │       │   │   └── _show.html.arb
@@ -1155,6 +1171,7 @@
 │       │       ├── menu_actions.html.erb
 │       │       ├── mesure_chiffre_cle.html.erb
 │       │       ├── mise_en_avant.html.erb
+│       │       ├── modale_generation_pdf.html.erb
 │       │       ├── nom_anonymisable.html.erb
 │       │       ├── panel.html.erb
 │       │       ├── pastille.html.erb
@@ -1253,7 +1270,6 @@
 │           ├── nouvelle_structure.html.erb
 │           └── relance_creation_campagne.erb
 ├── bin
-│   ├── bundle
 │   ├── lint_locale_opco
 │   ├── lint_locale_typography
 │   ├── postdeploy.sh
@@ -1304,6 +1320,7 @@
 │   │   ├── mailjet.rb
 │   │   ├── mime_types.rb
 │   │   ├── monkey_patching.rb
+│   │   ├── pdf_navigateur_reload.rb
 │   │   ├── rack_attack.rb
 │   │   ├── ransack.rb
 │   │   ├── rollbar.rb
@@ -1340,6 +1357,7 @@
 │   │   │       └── campagnes_controller.yml
 │   │   ├── date.yml
 │   │   ├── devise.yml
+│   │   ├── errors.yml
 │   │   ├── inputs
 │   │   │   ├── email_input.yml
 │   │   │   ├── image_file_input.yml
@@ -1351,6 +1369,7 @@
 │   │   │   ├── campagne.yml
 │   │   │   ├── choix.yml
 │   │   │   ├── compte.yml
+│   │   │   ├── donnee_sociodemographique.yml
 │   │   │   ├── evaluation.yml
 │   │   │   ├── evaluation_eva.yml
 │   │   │   ├── evaluation_evapro.yml
@@ -1373,7 +1392,6 @@
 │   │   ├── pro_connect.yml
 │   │   ├── ransack.fr.yml
 │   │   └── views
-│   │       ├── actualites.yml
 │   │       ├── aide.yml
 │   │       ├── beneficiaire.yml
 │   │       ├── bloc_opco_partenaire.yml
@@ -1397,10 +1415,12 @@
 │   │       ├── litteratie.yml
 │   │       ├── mailer.yml
 │   │       ├── modal_invitation.yml
+│   │       ├── modale_generation_pdf.yml
 │   │       ├── nouveaux_comptes.yml
 │   │       ├── numeratie.yml
 │   │       ├── parcours_type.yml
 │   │       ├── parties.yml
+│   │       ├── pdf_generations.yml
 │   │       ├── questions.yml
 │   │       ├── questions_clic_dans_image.yml
 │   │       ├── questions_glisser_deposer.yml
@@ -1734,7 +1754,8 @@
 │   │   ├── 20260527135709_ajoute_colonne_siret_a_compte.rb
 │   │   ├── 20260617151736_add_unique_index_to_comptes_id_pro_connect.rb
 │   │   ├── 20260625131631_ajoute_type_pour_evaluation.rb
-│   │   └── 20260625143253_initialise_type_pour_evaluation.rb
+│   │   ├── 20260625143253_initialise_type_pour_evaluation.rb
+│   │   └── 20260910143807_ajoute_donnees_sante_aux_donnees_sociodemographiques.rb
 │   ├── schema.rb
 │   └── seeds.rb
 ├── docs
@@ -1858,6 +1879,8 @@
 ├── package-lock.json
 ├── package.json
 ├── public
+│   ├── apple-touch-icon-precomposed.png
+│   ├── apple-touch-icon.png
 │   ├── favicon.ico
 │   ├── images
 │   │   └── signature.png
@@ -1866,10 +1889,14 @@
 ├── script
 │   └── create_structure_siret_non_officiel.rb
 ├── spec
+│   ├── channels
+│   │   └── pdf
+│   │       └── generation_channel_spec.rb
 │   ├── components
 │   │   ├── badge_component_spec.rb
 │   │   ├── banniere_solutions_illettrisme_component_spec.rb
 │   │   ├── barre_segmentee_component_spec.rb
+│   │   ├── base_input_component_spec.rb
 │   │   ├── bouton_copier_component_spec.rb
 │   │   ├── card_diagnostique_component_spec.rb
 │   │   ├── code_postal_input_component_spec.rb
@@ -1888,6 +1915,7 @@
 │   │   └── statistiques_structure_metabase_component_spec.rb
 │   ├── config
 │   │   └── initializers
+│   │       ├── rack_attack_spec.rb
 │   │       └── ransack_spec.rb
 │   ├── controllers
 │   │   ├── admin
@@ -2017,6 +2045,9 @@
 │   │   ├── anonymisation_beneficiaires_job_spec.rb
 │   │   ├── nettoyage_comptes_structure_demo_job_spec.rb
 │   │   ├── notification_admin_comptes_en_attente_job_spec.rb
+│   │   ├── pdf
+│   │   │   ├── generation_job_spec.rb
+│   │   │   └── recyclage_navigateur_job_spec.rb
 │   │   ├── persiste_metriques_partie_job_spec.rb
 │   │   ├── persiste_restitution_job_spec.rb
 │   │   ├── purge_comptes_supprimes_job_spec.rb
@@ -2116,6 +2147,9 @@
 │   │   ├── parcours_type_spec.rb
 │   │   ├── partie_spec.rb
 │   │   ├── password_validator_spec.rb
+│   │   ├── pdf
+│   │   │   ├── generateur_spec.rb
+│   │   │   └── generation_token_spec.rb
 │   │   ├── prise_en_main_spec.rb
 │   │   ├── question_clic_dans_image_spec.rb
 │   │   ├── question_clic_dans_texte_spec.rb
@@ -2248,7 +2282,8 @@
 │   ├── rails_helper.rb
 │   ├── requests
 │   │   ├── admin
-│   │   │   └── evaluations_spec.rb
+│   │   │   ├── evaluations_spec.rb
+│   │   │   └── pdf_generations_spec.rb
 │   │   ├── beneficiaire_spec.rb
 │   │   ├── beneficiaires_spec.rb
 │   │   ├── campagnes_spec.rb
@@ -2310,6 +2345,8 @@
 │   ├── tasks
 │   │   ├── ajoute_evenements_termines_spec.rb
 │   │   ├── date_evenements_fin_spec.rb
+│   │   ├── persiste_donnees_sante_spec.rb
+│   │   ├── recalcule_completude_positionnement_spec.rb
 │   │   ├── recalcule_metriques_spec.rb
 │   │   ├── supprime_controle_campagne_spec.rb
 │   │   ├── supprime_evenements_apres_la_fin_spec.rb
@@ -2326,4 +2363,4 @@
 │   └── .keep
 └── vendor
     └── .keep
-330 directories, 2052 files
+337 directories, 2082 files

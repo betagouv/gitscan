@@ -1,34 +1,36 @@
-## Changelog : eva-serveur (30 derniers jours, au 07/09/2026)
+## Changelog : eva-serveur (30 derniers jours, au 24 septembre 2026)
 
 ### Résumé
-Ce mois a été marqué par une mise à jour majeure de l'infrastructure technique (passage à Rails 8) et une séparation plus nette des processus entre les modules "eva" et "evapro". Les travaux ont également permis d'améliorer la performance du traitement des images et la stabilité de la génération de documents PDF, tout en affinant l'expérience utilisateur via des corrections d'affichage et une meilleure accessibilité.
+Ce mois-ci, le projet a bénéficié d'une modernisation importante de son interface utilisateur, notamment via l'alignement sur les composants DSFR, et d'une refonte complète du système de génération de documents PDF pour plus de fiabilité. Les capacités de gestion des données (sociodémographiques, SIRET) ont été enrichies, tandis que l'infrastructure a été mise à jour vers les dernières versions de Rails et Ruby pour garantir la pérennité du service.
 
 ### Évolutions fonctionnelles
-- **Nouvelles fonctionnalités** : les conseillers peuvent désormais modifier les bénéficiaires.
-- **Expérience utilisateur et interface** :
-    - Amélioration de l'accessibilité (indications pour les lecteurs d'écran sur les champs email).
-    - Optimisation de l'affichage : tri des structures par date de création, correction du défilement horizontal dans les tableaux de comptes et amélioration de la mise en page des listes de bénéficiaires.
-- **Corrections de bugs** :
-    - Résolution d'un problème de redirection après la suppression d'une évaluation.
-    - Correction de la logique de restitution pour les situations non diagnostiques (affichage du dernier essai).
-    - Masquage automatique des métriques d'impact de coûts lorsqu'elles ne sont pas disponibles.
-- **Localisation** : corrections et ajouts de traductions pour les métriques de synthèse (notamment pour evapro).
+- **Interface utilisateur & Ergonomie** :
+    - Refonte de l'écran de connexion : design plus épuré, centré et entièrement responsive.
+    - Modernisation des cartes d'actualités : utilisation des composants DSFR, rendu plus cliquable et ajout d'illustrations.
+    - Amélioration de l'expérience d'export PDF : ajout d'une fenêtre modale pour suivre la progression de la génération.
+    - Optimisation de l'affichage des tableaux et de la navigation pour éviter les défilements horizontaux indésirables.
+- **Gestion des données et fonctionnalités** :
+    - Enrichissement des exports : intégration des données sociodémographiques et de santé dans les exports d'évaluations.
+    - Amélioration de la validation SIRET : distinction plus précise entre un SIRET fermé et invalide, et gestion plus souple pour les administrateurs en cas d'indisponibilité de l'API SIRENE.
+    - Nouveaux droits : les conseillers peuvent désormais modifier les informations des bénéficiaires.
+    - Outils d'administration : ajout de boutons pour forcer le recalcul des restitutions et affichage du nombre d'événements dans les informations générales.
+- **Accessibilité** :
+    - Améliorations pour les lecteurs d'écran (champs email, erreurs de connexion) et optimisation des contrastes.
 
 ### Évolutions techniques
-- **Montée de version majeure** : migration vers Rails 8.0.5 et Ruby 4.0.6.
-- **Optimisation des performances et stabilité** :
-    - Amélioration du traitement des images : limitation de la concurrence et division du travail de redimensionnement par question.
-    - Stabilisation de la génération de PDF : gestion de la concurrence pour l'instance Chrome headless via un mutex pour éviter les conflits lors d'exports simultanés.
-    - Optimisation des requêtes de calcul (StandardisateurGlissant).
-- **Refactorisation et architecture** :
-    - Séparation structurelle des modules "eva" et "evapro" (restitution, calcul de complétude et organisation des répertoires).
-    - Nettoyage et réorganisation du code (suppression de helpers obsolètes et réécriture de méthodes).
-- **Infrastructure et intégrations** :
-    - Configuration de la concurrence du serveur Puma.
-    - Ajout d'un User-Agent pour les requêtes vers l'API Sirene.
-    - Amélioration de la gestion des logs en ignorant les erreurs 404 générées par des bots (WordPress, ASP.NET, etc.).
-    - Correction du script d'initialisation des environnements de test (reviewapps).
+- **Refonte du moteur PDF** :
+    - Migration de la génération de PDF vers des tâches de fond (Sidekiq) avec notifications en temps réel (ActionCable) pour éviter les blocages de l'interface.
+    - Amélioration de la robustesse du navigateur Chromium utilisé pour la génération (gestion des crashs, redémarrage automatique, limitation de la consommation mémoire).
+- **Mises à jour majeures** :
+    - Migration de l'application vers Rails 8.0.5 et Ruby 4.0.6.
+- **Performance et Scalabilité** :
+    - Optimisation du redimensionnement des images via une répartition des tâches par question.
+    - Optimisation des requêtes SQL pour le calcul de complétude et le composant de standardisation.
+    - Mise en place de protections contre les rafales de requêtes (rate limiting) via Rack::Attack.
+- **Architecture** :
+    - Séparation logique des processus et des calculs entre les flux EVA et EVAPRO.
 
 ### Autres changements
-- Documentation d'une investigation technique sur l'ordre d'exécution des rappels de transactions (callbacks).
-- Renommage de fichiers de vue pour une meilleure clarté des formats de templates.
+- **Sécurité** : Blocage des scans de vulnérabilités automatisés (WordPress/OWA) pour réduire le bruit dans les logs.
+- **Assets** : Mise à jour des icônes, des favicons et vectorisation de certains éléments graphiques.
+- **Tests** : Amélioration de la qualité des données de test et correction de tests instables.
