@@ -1,11 +1,12 @@
-## Changelog : assistant-declaration (30 derniers jours, au 29 février 2024)
+## Changelog : assistant-declaration (30 derniers jours, au 24 septembre 2026)
 
 ### Résumé
-Ce changelog relate les efforts récents pour renforcer la sécurité de la plateforme. Une mise à jour majeure des dépendances a été effectuée pour corriger des vulnérabilités critiques identifiées dans les librairies utilisées. Ces mises à jour garantissent une meilleure protection contre les failles de sécurité potentielles.
+Les récentes interventions ont été exclusivement dédiées à la maintenance technique et à la mise à jour des outils de développement. L'objectif était de garantir la stabilité de l'environnement de travail et la compatibilité des tests automatisés. Aucun changement n'est visible pour les utilisateurs finaux.
 
 ### Évolutions techniques
-- Mise à jour de Next.js vers la version 16.
-- Mise à jour de Node.js vers la version 24.
-- Correction de vulnérabilités critiques dans les paquets NPM [#8c639b8](https://github.com/betagouv/assistant-declaration/commit/8c639b8).
-- Correction de vulnérabilités dans les paquets NPM [#aa496a2](https://github.com/betagouv/assistant-declaration/commit/aa496a2).
-- Correction de vulnérabilités dans les paquets NPM [#fff1a3f](https://github.com/betagouv/assistant-declaration/commit/fff1a3f).
+- Mise à jour du framework Next.js et de l'outillage de développement associé.
+- Migration de l'environnement d'exécution GitHub Actions vers Node 24.
+- Correction du runner de tests Storybook pour assurer la compatibilité avec Jest 30.5.
+
+### Autres changements
+- Formatage du code source suite aux mises à jour de dépendances.
