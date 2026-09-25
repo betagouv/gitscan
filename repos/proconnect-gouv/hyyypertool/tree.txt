@@ -94,23 +94,16 @@
 │   │   ├── delivrability-domain
 │   │   │   └── delivrability-email-domain.feature
 │   │   ├── moderations
-│   │   │   ├── accept_blocking_moderation.feature
-│   │   │   ├── add_external_member.feature
-│   │   │   ├── add_internal_member.feature
 │   │   │   ├── filter_by_moderator.feature
 │   │   │   ├── filter_by_service_provider.feature
 │   │   │   ├── handle_big_organization.feature
-│   │   │   ├── handle_duplicate_requests.feature
 │   │   │   ├── manage_external_domain.feature
-│   │   │   ├── manage_internal_domain.feature
 │   │   │   ├── moderation_detail.feature
-│   │   │   ├── moderation_list.feature
 │   │   │   ├── reject_blocking_moderation.feature
 │   │   │   ├── reprocess_completed_moderation.feature
 │   │   │   ├── select_verification_type.feature
 │   │   │   ├── tab_navigation.feature
-│   │   │   ├── validate_similar_moderations.feature
-│   │   │   └── verify_domain.feature
+│   │   │   └── validate_similar_moderations.feature
 │   │   ├── organizations
 │   │   │   ├── dinum.feature
 │   │   │   ├── domains_copy_button_after_refresh.feature
@@ -170,6 +163,8 @@
 │   └── tailwind-dsfr
 │       ├── package.json
 │       └── theme.css
+├── patches
+│   └── bunwright@0.3.2.patch
 ├── scalingo.json
 ├── scripts
 │   ├── dev.ts
@@ -394,6 +389,7 @@
 │       │   │   │       ├── ValidateSimilarModerations.test.ts
 │       │   │   │       ├── ValidateSimilarModerations.ts
 │       │   │   │       ├── index.ts
+│       │   │   │       ├── send_crisp_notification.test.ts
 │       │   │   │       └── send_crisp_notification.ts
 │       │   │   ├── organizations
 │       │   │   │   ├── event.ts
@@ -529,6 +525,8 @@
 │       │   │       ├── UpdateUserByIdInOrganization.ts
 │       │   │       ├── get_authenticators_by_user_id.test.ts
 │       │   │       └── index.ts
+│       │   ├── router
+│       │   │   └── index.ts
 │       │   ├── routes
 │       │   │   ├── ___dev___
 │       │   │   │   ├── api.crisp.chat
@@ -599,6 +597,9 @@
 │       │   │   │   │   └── validate
 │       │   │   │   │       ├── index.test.ts
 │       │   │   │   │       └── index.ts
+│       │   │   │   ├── accept_blocking_moderation.feature.test.ts
+│       │   │   │   ├── add_external_member.feature.test.ts
+│       │   │   │   ├── add_internal_member.feature.test.ts
 │       │   │   │   ├── context.test.ts
 │       │   │   │   ├── context.ts
 │       │   │   │   ├── get_moderations_list.query.test.ts
@@ -606,12 +607,16 @@
 │       │   │   │   ├── get_moderators_list.query.test.ts
 │       │   │   │   ├── get_moderators_list.query.ts
 │       │   │   │   ├── get_sp_names_list.query.ts
+│       │   │   │   ├── handle_duplicate_requests.feature.test.ts
 │       │   │   │   ├── ids.attr.ts
 │       │   │   │   ├── index.test.ts
 │       │   │   │   ├── index.tsx
+│       │   │   │   ├── manage_internal_domain.feature.test.ts
+│       │   │   │   ├── moderation_list.feature.test.ts
 │       │   │   │   ├── page.tsx
 │       │   │   │   ├── parse_q.test.ts
-│       │   │   │   └── parse_q.ts
+│       │   │   │   ├── parse_q.ts
+│       │   │   │   └── verify_domain.feature.test.ts
 │       │   │   ├── not-found.tsx
 │       │   │   ├── organizations
 │       │   │   │   ├── :id
@@ -719,7 +724,9 @@
 │       │   │   └── z_username.ts
 │       │   ├── testing
 │       │   │   ├── cartesian.ts
-│       │   │   └── index.ts
+│       │   │   ├── feature.ts
+│       │   │   ├── index.ts
+│       │   │   └── router.ts
 │       │   ├── time
 │       │   │   ├── date_format.ts
 │       │   │   └── index.ts
@@ -926,4 +933,4 @@
 │       └── tsconfig.json
 ├── test-teardown.preload.ts
 └── tsconfig.json
-212 directories, 716 files
+214 directories, 721 files
