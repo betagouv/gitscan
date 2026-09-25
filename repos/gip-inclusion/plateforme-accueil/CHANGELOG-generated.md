@@ -1,37 +1,34 @@
-## Changelog : plateforme-accueil (30 derniers jours, au 16 septembre 2026)
+## Changelog : plateforme-accueil (30 derniers jours, au 23 septembre 2026)
 
 ### Résumé
-Ce mois a été marqué par une refonte majeure de l'interface d'édition (back-office) pour offrir une gestion de contenu plus intuitive et simplifiée. Parallèlement, l'expérience utilisateur a été affinée grâce à de nouveaux contenus visuels et une terminologie plus adaptée, tandis que la sécurité et les performances de l'application intégrée ont été renforcées.
+Ce mois-ci, la plateforme a été optimisée pour une intégration plus fluide et sécurisée en tant qu'élément embarqué (iframe). Les évolutions majeures concernent le renforcement de la sécurité des échanges, l'amélioration de la précision du suivi analytique avec la page hôte, et l'enrichissement des outils d'administration pour les gestionnaires de contenu.
 
 ### Évolutions fonctionnelles
-- **Nouvelles sections de contenu** : Ajout de sections pour l'introduction, les accompagnateurs, une frise chronologique et un menu déroulant thématique.
-- **Refonte de l'interface d'édition (Back-office)** :
-    - Mise en place d'une interface d'édition dédiée, plus ergonomique que l'administration Django standard.
-    - Possibilité d'éditer directement les en-têtes de section et d'utiliser des listes répétables avec téléchargement d'illustrations [#18].
-    - Amélioration du flux de travail : sélection d'icônes avec redirection automatique après duplication [#29] et rafraîchissement immédiat de la page après sauvegarde.
-- **Améliorations de l'expérience utilisateur (UX) et du design** :
-    - Mise à jour visuelle du "Hero" avec des visuels haute résolution et un nouveau montage photographique.
-    - Unification du formulaire de recherche dans la zone "Hero" [#26].
-    - Optimisation des textes : passage du terme "candidat" à "usager" [#43], reformulation des libellés des chiffres clés et des en-têtes Emplois/Services, et suppression des tirets cadratins dans les témoignages.
-    - Ajustements graphiques : retrait des chiffres de la frise de parcours [#41] et amélioration de l'espacement des éléments.
-- **Corrections mineures** : Ajout d'un lien vers le bouton de changement de mot de passe [#36] et ajustement de l'affichage de la boîte de dialogue de sélection de ville.
+- **Expérience utilisateur & Design** :
+    - Unification de la recherche dans la section "héros" en un seul formulaire [#26].
+    - Simplification visuelle de la frise de parcours par le retrait des chiffres [#41].
+    - Mise à jour de la terminologie pour utiliser le terme "usager" au lieu de "candidat" [#43].
+    - Ajout d'un lien direct vers le bouton de changement de mot de passe [#36].
+- **Authentification** :
+    - Mise en place de la connexion via le SSO [#24].
+- **Administration** :
+    - Amélioration du processus de duplication de contenu (choix de l'icône et redirection automatique après duplication) [#29].
+    - Ajout de fonctionnalités de répétition de listes et de possibilité de téléverser des illustrations [#18].
 
 ### Évolutions techniques
-- **Sécurité renforcée** :
-    - Durcissement de la politique CSP (`frame-ancestors`) en listant explicitement les hôtes autorisés.
-    - Ajout de headers CORS pour les ressources requises [#23].
-    - Sécurisation de l'iframe via un bac à sable (sandbox) permettant l'utilisation de formulaires [#25].
-    - Interdiction stricte de l'encapsulation (framing) de l'interface d'administration.
-- **Authentification** : Intégration complète du SSO via Authentik [#24] et sécurisation de l'accès à l'interface d'édition via ce système.
-- **Analyses et suivi** :
-    - Amélioration de la remontée des événements d'analyse vers la page hôte pour un suivi plus précis.
-    - Alignement de l'identité et du consentement Matomo sur ceux de la page hôte [#31].
-    - Mise en place de mesures d'utilisation par section via le Tag Manager [#20].
-- **Performance et Architecture** :
-    - Mise en place d'un système de cache sur la page d'accueil pour accélérer le chargement.
-    - Modernisation du chargement des scripts via l'utilisation des modules ES.
-    - Refonte de la structure des données : les sections (frise, témoignages, parcours) sont désormais gérées comme des données structurées pour plus de flexibilité.
-    - Optimisation du déploiement : automatisation des migrations et séparation des dépendances de développement du processus de production.
+- **Sécurité & Intégration (Iframe)** :
+    - Durcissement de la politique de sécurité (CSP) via la définition explicite des hôtes autorisés (`frame-ancestors`).
+    - Amélioration de la précision des sources des messages échangés via l'iframe [#51].
+    - Optimisation du bac à sable (sandbox) de l'iframe pour permettre l'utilisation de formulaires tout en vérifiant la conformité avec la page hôte [#25].
+    - Ajout de headers CORS pour les ressources nécessaires [#23].
+- **Analytique & Suivi** :
+    - Amélioration de la remontée de données en permettant à l'iframe de notifier la page hôte des événements et d'adopter son identité/consentement Matomo [#31].
+    - Mise en place du suivi des interactions avec les sections et du déploiement de la plateforme [#32, #37].
+    - Mesure de l'utilisation de chaque section via le Tag Manager [#20].
+- **Performance & Infrastructure** :
+    - Ajout d'un système de cache sur la page d'accueil pour optimiser les temps de chargement.
+    - Ajustement des permissions de lecture pour les objets téléversés afin de les rendre publics [#19].
+    - Suppression de l'utilisation d'OIDC [#34].
 
 ### Autres changements
-- **Documentation** : Mise à jour de la documentation concernant la configuration des hôtes autorisés [#30], le contenu des sections et l'utilisation des scripts de suivi.
+- Documentation sur la procédure d'ouverture des ancêtres de cadres (`frame-ancestors`) lors des déploiements [#30].
