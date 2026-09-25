@@ -10,9 +10,11 @@
 │   ├── auto_add_reviewers.yml
 │   ├── dependabot.yml
 │   └── workflows
+│       ├── backend.yml
 │       ├── clever-cloud-review-app.yml
 │       ├── codeql-analysis.yml
-│       ├── main.yml
+│       ├── dbt.yml
+│       ├── frontend.yml
 │       ├── pr-auto-reviewers-and-assignee.yml
 │       ├── release-please-pr-title-check.yml
 │       └── release-please.yml
@@ -84,6 +86,7 @@
 │   │   │   ├── CanteenTeledeclarationPdf.vue
 │   │   │   ├── CanteensTable.vue
 │   │   │   ├── CanteensTableSatellites.vue
+│   │   │   ├── DiagnosticEgalimComplete.vue
 │   │   │   ├── DiagnosticEgalimSimple.vue
 │   │   │   ├── DiagnosticPurchasesLinked.vue
 │   │   │   ├── DiagnosticSatellitesLinked.vue
@@ -101,6 +104,7 @@
 │   │   │   ├── FilterByYears.vue
 │   │   │   ├── GestionnaireEmptyCanteen.vue
 │   │   │   ├── GestionnaireGuides.vue
+│   │   │   ├── GestionnaireTeledeclarationNav.vue
 │   │   │   ├── GraphBase.vue
 │   │   │   ├── GraphGauge.vue
 │   │   │   ├── GraphPie.vue
@@ -137,10 +141,13 @@
 │   │   │   ├── PurchaseFormSuccessModal.vue
 │   │   │   ├── PurchaseInvoice.vue
 │   │   │   ├── SourceChart.vue
-│   │   │   ├── TunnelTeledeclarationAccordions.vue
-│   │   │   ├── TunnelTeledeclarationErrors.vue
+│   │   │   ├── TunnelTeledeclarationAccordionItem.vue
+│   │   │   ├── TunnelTeledeclarationAccordionsGroup.vue
 │   │   │   ├── TunnelTeledeclarationField.vue
+│   │   │   ├── TunnelTeledeclarationIconCheck.vue
 │   │   │   ├── TunnelTeledeclarationModal.vue
+│   │   │   ├── TunnelTeledeclarationModalErrors.vue
+│   │   │   ├── TunnelTeledeclarationModalQuit.vue
 │   │   │   ├── TunnelTeledeclarationSidebar.vue
 │   │   │   ├── TunnelTeledeclarationTopNav.vue
 │   │   │   ├── WasteMeasurementDetail.vue
@@ -184,7 +191,7 @@
 │   │   ├── main.js
 │   │   ├── router
 │   │   │   ├── authenticated-routes.js
-│   │   │   ├── cantine-routes.js
+│   │   │   ├── canteen-routes.js
 │   │   │   ├── index.js
 │   │   │   ├── public-routes.js
 │   │   │   ├── tunnel-routes.js
@@ -212,6 +219,7 @@
 │   │   │   ├── strings.js
 │   │   │   └── urls.js
 │   │   ├── stores
+│   │   │   ├── campaignDates.js
 │   │   │   ├── canteen.js
 │   │   │   ├── filters.js
 │   │   │   ├── purchaseSummary.js
@@ -460,7 +468,6 @@
 │   │   │   │   ├── teledeclaration_error.csv
 │   │   │   │   └── teledeclaration_simple.csv
 │   │   │   ├── diagnostics_complete
-│   │   │   │   ├── .~lock.diagnostics_complete_good.xlsx#
 │   │   │   │   ├── diagnostics_complete_bad.csv
 │   │   │   │   ├── diagnostics_complete_bad_empty_rows.csv
 │   │   │   │   ├── diagnostics_complete_bad_file_format.ods
@@ -1008,6 +1015,7 @@
 │   │   ├── 0273_diagnostic_nombre_repas_an_and_more.py
 │   │   ├── 0274_diagnostic_valeur_france_europe_circuit_court_local.py
 │   │   ├── 0275_diagnostic_valeur_famille_aocaop_igp_stg.py
+│   │   ├── 0276_alter_canteen_textfield_to_charfield_max_255.py
 │   │   └── __init__.py
 │   ├── models
 │   │   ├── __init__.py
@@ -1018,6 +1026,8 @@
 │   │   ├── creation_source.py
 │   │   ├── diagnostic.py
 │   │   ├── diagnostic_teledeclaration_dates.py
+│   │   ├── diagnostic_teledeclaration_field_groups.py
+│   │   ├── diagnostic_teledeclaration_fields.py
 │   │   ├── geo.py
 │   │   ├── historyauthenticationmethod.py
 │   │   ├── importfailure.py
@@ -1373,7 +1383,6 @@
 │   │       │   ├── Resources.vue
 │   │       │   ├── ToolsBlock.vue
 │   │       │   └── index.vue
-│   │       ├── ManagerLanding.vue
 │   │       ├── MyProgress
 │   │       │   ├── ProgressTab.vue
 │   │       │   ├── index.vue
@@ -1742,6 +1751,7 @@
     │   │   ├── badges
     │   │   │   ├── badge-appro-disabled.svg
     │   │   │   ├── badge-appro.svg
+    │   │   │   ├── badge-canteen.svg
     │   │   │   ├── badge-diversification-disabled.svg
     │   │   │   ├── badge-diversification.svg
     │   │   │   ├── badge-info-disabled.svg
@@ -1795,12 +1805,13 @@
     │   │   │   ├── flow-list.svg
     │   │   │   ├── food.svg
     │   │   │   ├── money.svg
-    │   │   │   ├── saisie-automatique.svg
-    │   │   │   ├── saisie-simplifiee.svg
     │   │   │   ├── school.svg
     │   │   │   ├── search.svg
     │   │   │   ├── self-training.svg
     │   │   │   ├── success.svg
+    │   │   │   ├── teledeclaration-saisie-automatique.svg
+    │   │   │   ├── teledeclaration-saisie-detaillee.svg
+    │   │   │   ├── teledeclaration-saisie-simplifiee.svg
     │   │   │   └── voir-webinaires.svg
     │   │   ├── quality-labels
     │   │   │   ├── IGP.png
@@ -1871,4 +1882,4 @@
     │   └── test_sitemap.py
     ├── urls.py
     └── views.py
-147 directories, 1799 files
+147 directories, 1810 files
