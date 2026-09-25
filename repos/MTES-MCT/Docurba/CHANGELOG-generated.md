@@ -1,30 +1,31 @@
-## Changelog : Docurba (30 derniers jours, au 22 septembre 2026)
+## Changelog : Docurba (30 derniers jours, au 24 septembre 2026)
 
 ### Résumé
-Ce mois-ci, les efforts se sont concentrés sur le renforcement de la sécurité et de la conformité, notamment via une gestion plus stricte des mots de passe et des accès. Des contrôles supplémentaires ont été ajoutés pour sécuriser la création de procédures administratives, et l'infrastructure a été optimisée pour une meilleure gestion des communications (emails) et des performances.
+Ce mois-ci, les efforts se sont concentrés sur le renforcement de la sécurité et la fiabilisation de la gestion des utilisateurs. La plateforme a bénéficié de nouvelles mesures de protection des données (mots de passe, accès API) et d'une meilleure maîtrise administrative, notamment sur les inscriptions et les communications par email.
 
 ### Évolutions fonctionnelles
-- **Gestion des mots de passe** : Mise en place d'un système de réinitialisation globale, validation des mots de passe selon les recommandations de la CNIL et nouveau processus de mise à jour avec confirmation par email.
-- **Contrôle des procédures** : Blocage de la création de procédures en l'absence de commune ou dans certains cas spécifiques de communes uniques sur un EPCI.
-- **Administration et utilisateurs** : 
-    - Possibilité de désactiver les inscriptions d'utilisateurs.
-    - Amélioration de l'interface d'administration Django avec l'affichage des dates de création pour les profils et les procédures.
-    - Amélioration de la clarté des messages d'erreur lors de la connexion.
+- **Gestion des accès et sécurité** : 
+    - Mise en place d'un nouveau processus de réinitialisation de mot de passe avec validation renforcée selon les recommandations de la CNIL.
+    - Amélioration de la gestion des sessions pour éviter les durées de connexion infinies.
+    - Amélioration de l'expérience utilisateur via des messages d'erreur plus explicites lors de la connexion et de l'inscription.
+- **Administration** : 
+    - Possibilité pour les administrateurs de désactiver les inscriptions d'utilisateurs.
+    - Amélioration de la visibilité des profils et du suivi des changements de mots de passe dans l'interface d'administration.
+- **Règles métier** : 
+    - Ajout de restrictions sur la création de procédures pour empêcher les erreurs de saisie liées au contexte territorial (communes et EPCI).
 
 ### Évolutions techniques
-- **Sécurité et Authentification** : 
-    - Renforcement des politiques d'accès (RLS) et sécurisation des APIs par défaut.
-    - Gestion de la durée des sessions utilisateurs pour éviter les sessions infinies.
-    - Amélioration de la gestion des erreurs d'inscription (emails existants, validation des champs).
-- **Architecture et API** : 
-    - Migration de l'envoi d'emails vers Sendgrid, désormais centralisé côté Django.
-    - Réorganisation des applications API et migration vers Django Rest Framework (DRF).
-    - Nettoyage du code : suppression de fonctions, de dépendances et d'endpoints API inutilisés.
-- **Infrastructure et DevOps** : 
-    - Optimisation des performances via Nginx (augmentation du rate limit).
-    - Mise à jour et harmonisation des configurations Supabase.
-    - Amélioration des workflows CI/CD (mise à jour de la CLI Supabase dans GitHub Actions).
+- **Sécurité et API** : 
+    - Migration des API vers Django Rest Framework (DRF) et application du principe de "privé par défaut".
+    - Renforcement de la sécurité de la base de données via l'optimisation des politiques de sécurité (RLS).
+    - Réorganisation structurelle du backend pour mieux isoler les API publiques des API internes.
+- **Système d'emailing** : 
+    - Migration de la logique d'envoi d'emails du frontend (Nuxt) vers le backend (Django) avec intégration de Sendgrid pour une meilleure fiabilité.
+- **Optimisation et Maintenance** : 
+    - Nettoyage important du code avec la suppression de nombreux points de terminaison (endpoints) API et de fonctions inutilisés.
+    - Optimisation des performances via une configuration ajustée de Nginx.
+- **Infrastructure et CI/CD** : 
+    - Mise à jour des outils de déploiement et de gestion de base de données (Supabase, Scalingo, GitHub Actions).
 
 ### Autres changements
-- **Sécurité** : Ajout d'un fichier `security.txt` pour faciliter le signalement de vulnérabilités par les chercheurs.
-- **Maintenance** : Ajustements de la configuration de l'outil de linting Ruff et optimisation de la vitesse de mise à jour des snapshots via le Makefile.
+- **Sécurité** : Ajout d'un fichier `security.txt` pour faciliter le signalement de vulnérabilités par les chercheurs en sécurité.
