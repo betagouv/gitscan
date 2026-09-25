@@ -131,7 +131,7 @@
 │   │   ├── .prettierignore
 │   │   ├── CRON.md
 │   │   ├── Dockerfile
-│   │   ├── jest.config.js
+│   │   ├── jest.config.ts
 │   │   ├── nest-cli.json
 │   │   ├── nodemon.json
 │   │   ├── package.json
@@ -253,6 +253,9 @@
 │   │   │   │               ├── UserUsagerAuthenticated.type.ts
 │   │   │   │               └── index.ts
 │   │   │   ├── _migrations
+│   │   │   │   ├── 1786973009184-add-usager-date-anciennete-dom.ts
+│   │   │   │   ├── 1789650923733-auto-migration.ts
+│   │   │   │   ├── 1789650942380-email-delivery-issue-report.ts
 │   │   │   │   └── _init-db
 │   │   │   │       ├── 1603812391580-pr-env-create-database.ts
 │   │   │   │       └── domifa_test_schema.sql
@@ -631,7 +634,10 @@
 │   │   │   │   │   │   ├── brevo-sender
 │   │   │   │   │   │   │   ├── brevo-sender.service.spec.ts
 │   │   │   │   │   │   │   ├── brevo-sender.service.ts
+│   │   │   │   │   │   │   ├── brevo-senders.const.ts
 │   │   │   │   │   │   │   └── deleted-email.guard.ts
+│   │   │   │   │   │   ├── brevo-sync-cron.helpers.spec.ts
+│   │   │   │   │   │   ├── brevo-sync-cron.helpers.ts
 │   │   │   │   │   │   └── brevo-sync-cron.service.ts
 │   │   │   │   │   └── types
 │   │   │   │   │       ├── MessageEmailAttachment.type.ts
@@ -1168,6 +1174,7 @@
 │   │   │       │   └── stringUtils.ts
 │   │   │       ├── index.ts
 │   │   │       ├── logs
+│   │   │       │   ├── AppLogger.service.spec.ts
 │   │   │       │   ├── AppLogger.service.ts
 │   │   │       │   ├── CustomTypeOrmLogger.ts
 │   │   │       │   ├── index.ts
@@ -1179,7 +1186,9 @@
 │   │   │       │   └── phoneUtils.service.ts
 │   │   │       ├── sentry
 │   │   │       │   ├── AppSentryInterceptor.service.ts
-│   │   │       │   └── index.ts
+│   │   │       │   ├── index.ts
+│   │   │       │   ├── sentryScrubbing.helper.spec.ts
+│   │   │       │   └── sentryScrubbing.helper.ts
 │   │   │       ├── territoires
 │   │   │       │   ├── constants
 │   │   │       │   │   ├── STREET_ABREVIATIONS.const.ts
@@ -3787,4 +3796,4 @@
 ├── pnpm-workspace.yaml
 ├── sonar-project.properties
 └── tech.yaml
-879 directories, 2910 files
+879 directories, 2919 files
