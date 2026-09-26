@@ -1,8 +1,11 @@
-## Changelog : upptime (30 derniers jours, au 23 septembre 2026)
+## Changelog : upptime (30 derniers jours, au 26 septembre 2026)
 
 ### Résumé
-L'activité récente est principalement constituée de tâches de maintenance automatisées. Le système de surveillance a assuré la mise à jour continue des indicateurs de disponibilité et des rapports visuels pour refléter l'état de santé des services monitorés.
+Le système de surveillance continue d'assurer la remontée automatique des indicateurs de disponibilité et la mise à jour régulière des rapports visuels pour l'ensemble des services monitorés.
+
+### Évolutions techniques
+- Mise à jour du moteur Upptime vers les versions v1.44.1, v1.44.0 et v1.43.16.
 
 ### Autres changements
-- Actualisation automatique des graphiques de disponibilité et de performance.
-- Mise à jour régulière des résumés de statut et du fichier README.
+- Actualisation automatique et régulière des graphiques de disponibilité.
+- Mise à jour automatisée des résumés de statut dans le README et les fichiers de synthèse.
