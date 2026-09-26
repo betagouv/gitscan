@@ -18,8 +18,6 @@
 │   ├── badges.ts
 │   ├── organizations.ts
 │   └── users.ts
-├── app
-│   └── router.options.ts
 ├── app.vue
 ├── assets
 │   ├── config
@@ -116,6 +114,7 @@
 │   ├── Captchetat.client.vue
 │   ├── CdataLink.vue
 │   ├── Charts
+│   │   ├── AdminChartsPage.vue
 │   │   ├── ChartConfigurator.vue
 │   │   └── ChartFilterRow.vue
 │   ├── CommunityResources
@@ -174,8 +173,8 @@
 │   │   ├── EditCommentModal.vue
 │   │   ├── NewDiscussionForm.vue
 │   │   ├── RespondForm.vue
-│   │   ├── RespondModal.vue
-│   │   └── ThreadHeader.vue
+│   │   ├── ThreadHeader.vue
+│   │   └── ThreadModal.vue
 │   ├── Divider.vue
 │   ├── Elections
 │   │   └── ElectionCard.vue
@@ -589,6 +588,7 @@
 │   │   │   ├── Chart
 │   │   │   │   ├── ChartViewer.vue
 │   │   │   │   └── ChartViewerWrapper.vue
+│   │   │   ├── ChartCard.vue
 │   │   │   ├── ClientOnly.vue
 │   │   │   ├── CopyButton.vue
 │   │   │   ├── DataserviceCard.vue
@@ -736,6 +736,8 @@
 │   │   │   │   ├── TabularCell.vue
 │   │   │   │   ├── TabularCellPopover.vue
 │   │   │   │   ├── TabularColumnsMenu.vue
+│   │   │   │   ├── TabularDateField.vue
+│   │   │   │   ├── TabularDateFilter.vue
 │   │   │   │   ├── TabularExplorer.vue
 │   │   │   │   ├── TabularFilterContent.vue
 │   │   │   │   ├── TabularFilterPopover.vue
@@ -791,6 +793,7 @@
 │   │   │   ├── resources.ts
 │   │   │   ├── reuses.ts
 │   │   │   ├── schemas.ts
+│   │   │   ├── scroll.ts
 │   │   │   ├── tabular.ts
 │   │   │   ├── tabularApi.ts
 │   │   │   └── users.ts
@@ -858,6 +861,8 @@
 │   ├── admin
 │   │   ├── beta
 │   │   │   ├── chart.vue
+│   │   │   ├── charts
+│   │   │   │   └── [cid].vue
 │   │   │   ├── preview-dashboard
 │   │   │   │   ├── fichiers.vue
 │   │   │   │   └── index.vue
@@ -950,6 +955,7 @@
 │   │   │   ├── [id].vue
 │   │   │   └── new.vue
 │   │   ├── site
+│   │   │   ├── charts.vue
 │   │   │   ├── community-resources.vue
 │   │   │   ├── dataservices.vue
 │   │   │   ├── datasets.vue
@@ -1436,7 +1442,8 @@
 │   │           └── pages.ts
 │   ├── tsconfig.json
 │   └── utils
-│       └── albert-api-client.ts
+│       ├── albert-api-client.ts
+│       └── pages-slug.ts
 ├── tests
 │   ├── admin
 │   │   ├── badges.spec.ts
@@ -1489,8 +1496,10 @@
 │   │   └── index.spec.ts
 │   ├── fixtures
 │   │   └── structured-publication
+│   │       ├── lave-linge-point-virgule-latin1.csv
 │   │       ├── lave-linge-point-virgule.csv
 │   │       ├── lave-linge-tabulation.csv
+│   │       ├── lave-linge-utf8-64ko.csv
 │   │       ├── lave-linge-virgule.csv
 │   │       ├── lave-linge.ods
 │   │       ├── lave-linge.xlsx
@@ -1526,6 +1535,7 @@
 │   │   ├── [oid].spec.ts
 │   │   ├── index.spec.ts
 │   │   ├── invitations.spec.ts
+│   │   ├── membership-requests.spec.ts
 │   │   ├── organizations.spec.ts
 │   │   ├── pagination.spec.ts
 │   │   ├── partial-editor.spec.ts
@@ -1545,6 +1555,7 @@
 │   │   ├── creation.spec.ts
 │   │   ├── edition.spec.ts
 │   │   └── search.spec.ts
+│   ├── scroll.spec.ts
 │   ├── suivi-de-publication
 │   │   ├── donnees-de-forte-valeur.spec.ts
 │   │   ├── engagements-et-demandes.spec.ts
@@ -1553,19 +1564,25 @@
 │   │   └── transfer.spec.ts
 │   ├── translation.spec.ts
 │   └── visualizations
+│       ├── admin-site-charts.normal-user.spec.ts
+│       ├── admin-site-charts.spec.ts
+│       ├── chart-card.spec.ts
 │       ├── chart-configurator.spec.ts
 │       ├── data.json
+│       ├── fixtures.ts
 │       └── profile.json
 ├── tests-unit
 │   ├── composables
 │   │   └── use-form.spec.ts
 │   ├── datagouv-components
 │   │   ├── charts.spec.ts
+│   │   ├── column-metadata.spec.ts
 │   │   ├── dates.spec.ts
 │   │   ├── formatted-date.spec.ts
 │   │   ├── helpers.spec.ts
 │   │   ├── markdown.spec.ts
 │   │   ├── organizations.spec.ts
+│   │   ├── owned.spec.ts
 │   │   ├── paginate.spec.ts
 │   │   ├── resource-capabilities.spec.ts
 │   │   ├── resources.spec.ts
@@ -1573,6 +1590,8 @@
 │   │   ├── tabular-parsing-error.spec.ts
 │   │   ├── tabular.spec.ts
 │   │   └── translation.spec.ts
+│   ├── server
+│   │   └── pages-slug.spec.ts
 │   ├── setup.ts
 │   ├── shims
 │   │   └── datagouv-components.ts
@@ -1582,6 +1601,7 @@
 │       ├── cada.spec.ts
 │       ├── charts.spec.ts
 │       ├── datasets.spec.ts
+│       ├── encoding.spec.ts
 │       ├── harvesters.spec.ts
 │       ├── helpers.spec.ts
 │       ├── openapi-bouquet.spec.ts
@@ -1616,6 +1636,7 @@
 │   ├── dataservices.ts
 │   ├── datasets.ts
 │   ├── discussions.ts
+│   ├── encoding.ts
 │   ├── grist.ts
 │   ├── harvesters.ts
 │   ├── helpers.ts
@@ -1629,6 +1650,7 @@
 │   ├── pages.ts
 │   ├── posts.ts
 │   ├── previewDashboard.ts
-│   └── reuses.ts
+│   ├── reuses.ts
+│   └── scroll.ts
 └── vitest.config.ts
-244 directories, 1389 files
+245 directories, 1410 files
