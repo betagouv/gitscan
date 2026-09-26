@@ -1,28 +1,26 @@
-# Synthèse d'activité : datagouv (du 01/09 au 07/09)
+# Synthèse d'activité : datagouv (du DD/MM au DD/MM)
 
 ## Résumé de l'activité
-L'activité de la semaine est marquée par des avancées majeures sur les interfaces utilisateurs et les outils de gestion de données. Les plateformes [hubee](/repos/datagouv/hubee), [passemarche](/repos/datagouv/passemarche) et [simplifions](/repos/datagouv/simplifions) ont bénéficié d'améliorations significatives, facilitant la recherche, le filtrage et le parcours de candidature pour les utilisateurs finaux. Parallèlement, l'écosystème d'outils de ligne de commande a été profondément restructuré avec la création de [datagouv-cli](/repos/datagouv/datagouv-cli), offrant une meilleure expérience de développement et de distribution.
+L'activité de la période est marquée par une amélioration significative de l'expérience utilisateur sur plusieurs services clés. Les plateformes de gestion de candidatures et de dossiers, notamment [simplifions](/repos/datagouv/simplifions), [passemarche](/repos/datagouv/passemarche) et [hubee](/repos/datagouv/hubee), ont bénéficié de nouvelles interfaces (nouveaux catalogues, assistants de saisie, gestion documentaire facilitée) visant à fluidifier le parcours des agents et des usagers.
 
-L'organisation renforce également la fiabilité de ses pipelines de données et de ses infrastructures, notamment via la mise à jour des données administratives 2026 ([cadastre](/repos/datagouv/cadastre), [decoupage-administratif](/repos/datagouv/decoupage-administratif)) et la modernisation des outils de traitement ([datagouvfr_data_pipelines](/repos/datagouv/datagouvfr_data_pipelines), [hydra](/repos/datagouv/hydra)).
+Parallèlement, l'organisation a engagé des transitions techniques majeures pour moderniser ses infrastructures. Cela inclut une refonte de l'outillage en ligne de commande, la migration vers de nouveaux standards de gestion de dépendances et de pipelines de données, ainsi qu'une mise à jour massive des données de découpage administratif pour l'année 2026.
 
 ## Sécurité
-- Renforcement de l'authentification sur [hubee](/repos/datagouv/hubee) avec l'intégration du multi-facteur (MFA) et du socle OAuth2.
-- Correction d'une vulnérabilité (CVE) liée à la gestion des fichiers dans [apistration](/repos/datagouv/apistration).
-- Amélioration de la protection de la vie privée dans [roles.data](/repos/datagouv/roles.data) via l'anonymisation des adresses email dans les logs d'erreur.
-- Sécurisation du rendu du contenu Markdown dans [simplifions](/repos/datagouv/simplifions).
+- **Renforcement de l'authentification et des accès** : Mise en place de l'authentification multi-facteur (MFA) pour les comptes à privilèges et support des protocoles OAuth2/OIDC dans [hubee](/repos/datagouv/hubee), ainsi qu'une nouvelle version de l'introspection de jetons dans [apistration](/repos/datagouv/apistration).
+- **Protection de la vie privée** : Amélioration de l'anonymisation des données sensibles (adresses email, requêtes de support) dans les logs et les processus d'évaluation pour [roles.data](/repos/datagouv/roles.data) et [datagouv-ai-evaluation](/repos/datagouv/datagouv-ai-evaluation).
+- **Corrections de vulnérabilités** : Résolution de failles de sécurité auditées dans [cdata](/repos/datagouv/cdata).
 
 ## Autres changements notables
-- Refonte majeure de l'infrastructure et de l'architecture de [relais](/repos/datagouv/relais) (passage à Rails 8.1 et intégration de GoodJob).
-- Migration de l'interface en ligne de commande vers un dépôt dédié, [datagouv-cli](/repos/datagouv/datagouv-cli), permettant une distribution autonome sur Windows et macOS.
-- Modernisation technique de plusieurs composants, incluant la migration vers PNPM pour [ouverture.data.gouv.fr](/repos/datagouv/ouverture.data.gouv.fr) et le passage à Airflow 3 pour [data-engineering-stack](/repos/datagouv/data-engineering-stack).
-- Évolution de la stack HTTP pour [datagouv-client](/repos/datagouv/datagouv-client) et [datagouv-mcp](/repos/datagouv/datagouv-mcp) avec l'adoption de la librairie `niquests`.
-- Introduction d'une couche sémantique majeure dans [datagouv-ai-evaluation](/repos/datagouv/datagouv-ai-evaluation) pour l'évaluation des modèles d'IA.
+- **Refonte de l'outillage CLI** : Migration et séparation du code de l'interface en ligne de commande entre [datagouv-client](/repos/datagouv/datagouv-client) et [datagouv-cli](/repos/datagouv/datagouv-cli) pour une meilleure autonomie de distribution.
+- **Modernisation des infrastructures et frameworks** : Migrations majeures vers Airflow 3 pour [data-engineering-stack](/repos/datagouv/data-engineering-stack), vers Rails 8.1 pour [relais](/repos/datagouv/relais), et adoption de PNPM pour [ouverture.data.gouv.fr](/repos/datagouv/ouverture.data.gouv.fr).
+- **Optimisation des communications HTTP** : Remplacement de la librairie `httpx` par `niquests` pour améliorer la stabilité et les performances dans [datagouv-mcp](/repos/datagouv/datagouv-mcp), [datagouv-client](/repos/datagouv/datagouv-client) et [datagouv_client](/repos/datagouv/datagouv_client).
+- **Mise à jour des données de référence** : Intégration des nouvelles données de découpage administratif (COG/DGCL 2026) dans [decoupage-administratif](/repos/datagouv/decoupage-administratif), [cadastre](/repos/datagouv/cadastre) et [contours-administratifs](/repos/datagouv/contours-administratifs).
+- **Optimisation des pipelines de données** : Amélioration de la gestion des fichiers compressés et de la fiabilité des connexions de stockage (S3/SFTP) dans [hydra](/repos/datagouv/hydra) et [datagouvfr_data_pipelines](/repos/datagouv/datagouvfr_data_pipelines).
 
 ## Dépôts les plus actifs
-- [hubee](/repos/datagouv/hubee) : Améliorations importantes du portail (recherche, téléchargement) et renforcement de la sécurité.
-- [passemarche](/repos/datagouv/passemarche) : Refonte du parcours de candidature et de la navigation (mode wizard).
-- [simplifions](/repos/datagouv/simplifions) : Mise en service d'un nouveau catalogue avec recherche et filtrage.
-- [datagouv-cli](/repos/datagouv/datagouv-cli) : Refonte majeure pour une distribution indépendante et multi-plateforme.
-- [datagouv-ai-evaluation](/repos/datagouv/datagouv-ai-evaluation) : Refonte structurelle axée sur l'évaluation sémantique et la qualité du code.
-- [cdata](/repos/datagouv/cdata) : Optimisations de performance (mise en cache) et améliorations de l'interface de recherche.
-- [datagouv-client](/repos/datagouv/datagouv-client) : Migration vers une nouvelle structure CLI et optimisation des appels API.
+- [hubee](/repos/datagouv/hubee) : Évolutions majeures sur l'expérience agent, la recherche et la sécurité.
+- [simplifions](/repos/datagouv/simplifions) : Mise en service d'un nouveau catalogue et refonte de l'architecture de données.
+- [passemarche](/repos/datagouv/passemarche) : Refonte du parcours de candidature avec un système de navigation assistée (wizard).
+- [datagouv-cli](/repos/datagouv/datagouv-cli) : Refonte complète et migration de l'interface en ligne de commande.
+- [datagouv-ai-evaluation](/repos/datagouv/datagouv-ai-evaluation) : Refonte structurelle profonde pour l'évaluation des modèles d'IA.
+- [datagouvfr_data_pipelines](/repos/datagouv/datagouvfr_data_pipelines) : Optimisation des pipelines de données immobilières et fiabilisation des connexions.

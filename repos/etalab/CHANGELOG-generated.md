@@ -1,22 +1,21 @@
-# Synthèse d'activité : etalab (du 01/09 au 17/09)
+# Synthèse d'activité : etalab (du DD/MM au DD/MM)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation a été marquée par des avancées significatives dans la gestion des données de transport et l'enrichissement des services de données publiques. Les efforts sur les standards de mobilité ont permis d'améliorer la précision et la validation des données NeTEx ([transport-site](/repos/etalab/transport-site), [transport-profil-netex-fr](/repos/etalab/transport-profil-netex-fr)) ainsi que l'optimisation des performances de validation GTFS ([transport-validator](/repos/etalab/transport-validator)).
+L'activité récente est marquée par un renforcement significatif des outils de gestion et de validation des données de transport. Les efforts se sont concentrés sur l'amélioration de l'interface d'administration et la précision des processus de validation des données NeTEx et GTFS ([transport-site], [transport-profil-netex-fr]), garantissant ainsi une meilleure fiabilité des informations de mobilité pour les utilisateurs.
 
-Parallèlement, l'écosystème de données publiques s'est enrichi avec l'intégration de nouveaux services et formulaires dans [data_pass](/repos/etalab/data_pass), ainsi que de nouvelles intégrations API pour la gestion des entreprises ([admin_api_entreprise](/repos/etalab/admin_api_entreprise)). Ces évolutions visent à offrir des outils plus flexibles, sécurisés et harmonisés pour les utilisateurs et les services de l'État.
+Parallèlement, les plateformes de services et d'échange de données ont bénéficié d'évolutions majeures visant à accroître leur flexibilité et leur robustesse. L'introduction de nouvelles architectures pour l'extension des schémas ([schema-dispositif-aide]) et l'enrichissement des cas d'usage des API ([data_pass], [admin_api_entreprise]) permettent de mieux répondre aux besoins variés des acteurs du numérique.
 
 ## Sécurité
-- **Protection des données et des accès** : mise en œuvre du chiffrement des cookies ([transport-site](/repos/etalab/transport-site)), protection des tableaux de bord contre les injections SQL ([data_pass](/repos/etalab/data_pass)) et rotation annuelle des tokens webhook ([admin_api_entreprise](/repos/etalab/admin_api_entreprise)).
-- **Gestion des authentifications** : correction des scopes OAuth ([data_pass](/repos/etalab/data_pass)) et migration des scopes des tokens vers les demandes d'autorisation ([admin_api_entreprise](/repos/etalab/admin_api_entreprise)).
-- **Fiabilité du stockage** : correction de bugs critiques liés à la suppression de fichiers et à l'identification des types de contenu sur le backend S3 ([flask-storage](/repos/etalab/flask-storage)).
+- **Renforcement des accès et de l'authentification** : Mise en place du chiffrement des cookies ([transport-site]), restriction des accès locaux sur les environnements sensibles et automatisation des scopes OAuth ([data_pass]), ainsi que la migration des scopes de tokens vers les demandes d'autorisation ([admin_api_entreprise]).
+- **Gestion des secrets** : Rotation annuelle du token webhook ([admin_api_entreprise]) et restauration des droits d'accès (scope) pour certains composants ([formulaire-qf]).
 
 ## Autres changements notables
-- **Évolutions architecturales** : introduction de l'architecture "data packages" pour permettre une extension flexible des schémas de données ([schema-dispositif-aide](/repos/etalab/schema-dispositif-aide)).
-- **Optimisation des performances** : passage à l'allocateur mémoire `jemalloc` pour améliorer la stabilité en production ([transport-validator](/repos/etalab/transport-validator)) et utilisation de DataFrames pour accélérer la validation NeTEx ([transport-site](/repos/etalab/transport-site)).
-- **Modernisation technique** : implémentation du chargement asynchrone via Turbo Frame ([admin_api_entreprise](/repos/etalab/admin_api_entreprise)) et simplification des dépendances pour les schémas ([schema-irve](/repos/etalab/schema-irve)).
+- **Évolutions architecturales et structurelles** : Introduction de l'architecture "data packages" pour permettre l'extension dynamique des schémas de données ([schema-dispositif-aide]) et refonte de l'organisation des fichiers pour le profil NeTEx France ([transport-profil-netex-fr]).
+- **Optimisations de performance et de stabilité** : Passage à l'allocateur `jemalloc` pour optimiser la consommation mémoire du validateur GTFS ([transport-validator]) et corrections critiques du backend S3 concernant la suppression de fichiers et la gestion des types MIME ([flask-storage]).
+- **Évolutions majeures des données et des services** : Publication de la version 2.4.0 du profil France NeTEx ([transport-profil-netex-fr]) et intégration de nouveaux flux de données (CNOUS, MSA, MEN) dans l'API entreprise ([admin_api_entreprise]).
 
 ## Dépôts les plus actifs
-- [transport-site](/repos/etalab/transport-site) : Améliorations majeures de la validation NeTEx, de l'interface utilisateur et de la gestion des rapports.
-- [data_pass](/repos/etalab/data_pass) : Extension du catalogue de formulaires, harmonisation de l'interface et renforcement de la sécurité.
-- [admin_api_entreprise](/repos/etalab/admin_api_entreprise) : Nouvelles intégrations API, gestion avancée des tokens et améliorations de l'interface.
-- [transport-profil-netex-fr](/repos/etalab/transport-profil-netex-fr) : Publication de la version 2.4.0 du profil France avec des clarifications structurelles.
+- [transport-site](/repos/etalab/transport-site) : Améliorations importantes de l'interface d'administration, de la validation NeTEx et du traitement des protocoles de transport.
+- [data_pass](/repos/etalab/data_pass) : Évolutions majeures sur le parcours utilisateur, la sécurité des accès et l'enrichissement des cas d'usage de l'API.
+- [admin_api_entreprise](/repos/etalab/admin_api_entreprise) : Nouvelles intégrations API, gestion renforcée des tokens et optimisation de l'interface.
+- [transport-profil-netex-fr](/repos/etalab/transport-profil-netex-fr) : Mise à jour majeure (v2.4.0) apportant des clarifications et des améliorations structurelles au profil France.

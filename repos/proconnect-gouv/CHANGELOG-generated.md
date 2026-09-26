@@ -1,23 +1,23 @@
-# Synthèse d'activité : proconnect-gouv (du 07/09 au 14/09)
+# Synthèse d'activité : proconnect-gouv (du 14/07 au 23/09)
 
 ## Résumé de l'activité
-L'activité de la période est marquée par une montée en maturité des services d'identité et une refonte structurelle majeure visant à accroître la modularité de l'organisation. Les utilisateurs bénéficieront d'une expérience plus fluide grâce à l'automatisation des Passkeys et à une gestion optimisée des flux d'authentification dans [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) et [proconnect-test-client](/repos/proconnect-gouv/proconnect-test-client).
+L'activité récente de l'organisation est marquée par une expansion significative de son écosystème avec le lancement de nouveaux outils d'infrastructure, de test et de déploiement ([tailwindcss-dsfr-theme](/repos/proconnect-gouv/tailwindcss-dsfr-theme), [mx-resolver](/repos/proconnect-gouv/mx-resolver), [bun-buildpack](/repos/proconnect-gouv/bun-buildpack)). 
 
-Parallèlement, l'écosystème s'enrichit de nouveaux outils et services, notamment le thème visuel [tailwindcss-dsfr-theme](/repos/proconnect-gouv/tailwindcss-dsfr-theme) pour l'intégration des standards de l'État, le service de résolution DNS [mx-resolver](/repos/proconnect-gouv/mx-resolver), ainsi que le buildpack [bun-buildpack](/repos/proconnect-gouv/bun-buildpack) pour faciliter les déploiements.
+Parallèlement, un effort majeur a été déployé pour renforcer la fiabilité et la sécurité des services de gestion d'identité et de l'espace partenaires. Cela se traduit par une meilleure intégration des données administratives officielles (RNE, DILA), une amélioration de la résilience face aux services tiers et une optimisation de l'expérience utilisateur sur l'ensemble des plateformes.
 
 ## Sécurité
-- Correction d'une faille permettant le contournement du code de vérification des contacts officiels dans [proconnect-identite](/repos/proconnect-gouv/proconnect-identite).
-- Mise à jour des dépendances pour corriger des vulnérabilités dans [class-validator](/repos/proconnect-gouv/class-validator).
-- Renforcement de la sécurité par l'adoption de l'algorithme RS256 par défaut dans [federation](/repos/proconnect-gouv/federation).
+- **Protection des données et confidentialité** : Anonymisation des données professionnelles lors des exports ([proconnect-identite](/repos/proconnect-gouv/proconnect-identite)) et renforcement de la protection contre les abus via le rate limiting ([proconnect-identite](/repos/proconnect-gouv/proconnect-identite)).
+- **Contrôle des accès et des domaines** : Sécurisation de la liste blanche de domaines par l'intégration automatisée de l'annuaire DILA et le blocage des domaines de messagerie génériques ([api-partenaires](/repos/proconnect-gouv/api-partenaires)).
+- **Durcissement technique** : Adoption de l'algorithme RS256 pour les réponses signées ([federation](/repos/proconnect-gouv/federation)) et correction de vulnérabilités sur les dépendances ([class-validator](/repos/proconnect-gouv/class-validator)).
 
 ## Autres changements notables
-- **Refonte architecturale** : Migration massive de la logique métier vers un nouveau système de "connecteurs" pour améliorer la modularité dans [proconnect-identite](/repos/proconnect-gouv/proconnect-identite).
-- **Résilience du système** : Mise en place de mécanismes de secours (fallback) utilisant des données en cache pour pallier l'indisponibilité des API externes (Entreprise, SIRENE) dans [federation](/repos/proconnect-gouv/federation).
-- **Modernisation technique** : Introduction d'un environnement de développement sans privilèges via Nix dans [hyyypertool](/repos/proconnect-gouv/hyyypertool) et extension du support de l'architecture arm64 dans [api-partenaires](/repos/proconnect-gouv/api-partenaires).
-- **Nouveaux projets** : Initialisation de [proconnect-test-idp](/repos/proconnect-gouv/proconnect-test-idp) pour les tests OIDC et de [mx-resolver](/repos/proconnect-gouv/mx-resolver) pour la résolution de domaines.
+- **Résilience et fiabilité** : Mise en place de mécanismes de secours (fallback) utilisant des données en cache pour pallier l'indisponibilité des API externes ([federation](/repos/proconnect-gouv/federation)).
+- **Qualité logicielle et tests** : Migration massive de la suite de tests de bout en bout vers Bunwright ([hyyypertool](/repos/proconnect-gouv/hyyypertool)) et amélioration de l'automatisation des tests d'intégration ([idp-status-monitoring](/repos/proconnect-gouv/idp-status-monitoring)).
+- **Architecture et infrastructure** : Modularisation du thème DSFR dans un package dédié ([hyyypertool](/repos/proconnect-gouv/hyyypertool)) et initialisation de nouveaux services de résolution DNS ([mx-resolver](/repos/proconnect-gouv/mx-resolver)).
 
 ## Dépôts les plus actifs
-- [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) : Refonte architecturale majeure et enrichissement des fonctionnalités d'identité.
-- [federation](/repos/proconnect-gouv/federation) : Amélioration de la résilience face aux services tiers et renforcement de la sécurité.
-- [hyyypertool](/repos/proconnect-gouv/hyyypertool) : Optimisation de la gestion des organisations et modernisation de l'infrastructure.
-- [class-validator](/repos/proconnect-gouv/class-validator) : Extension des capacités de validation de données et maintenance de sécurité.
+- [proconnect-identite](/repos/proconnect-gouv/proconnect-identite) : Évolutions majeures sur la sécurité, la confidentialité et la fiabilité des données.
+- [hyyypertool](/repos/proconnect-gouv/hyyypertool) : Refonte technique importante de la suite de tests et nouvelles fonctionnalités de gestion.
+- [federation](/repos/proconnect-gouv/federation) : Amélioration de la résilience du système et optimisations de l'infrastructure.
+- [api-partenaires](/repos/proconnect-gouv/api-partenaires) : Automatisation poussée de la gestion et de la vérification des domaines autorisés.
+- [proconnect-espace-partenaires](/repos/proconnect-gouv/proconnect-espace-partenaires) : Renforcement des mécanismes d'authentification et enrichissement de la documentation.

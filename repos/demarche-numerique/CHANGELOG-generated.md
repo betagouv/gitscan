@@ -1,21 +1,21 @@
-# Synthèse d'activité : demarche-numerique (du 01/09 au 07/09)
+# Synthèse d'activité : demarche-numerique (du 01/07 au 21/09)
 
 ## Résumé de l'activité
-L'activité récente est marquée par une modernisation profonde de la plateforme principale [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr), tant sur le plan de l'expérience utilisateur (gestion des fichiers, recherche) que de l'infrastructure. Parallèlement, l'outil d'extraction [la_taupe](/repos/demarche-numerique/la_taupe) gagne en précision et en productivité grâce à l'intégration d'un nouveau moteur OCR et à la possibilité de traiter des documents par lots.
+L'activité récente de l'organisation est marquée par une montée en puissance de la fiabilité des outils de traitement de données et une amélioration de la résilience des services. [la_taupe](/repos/demarche-numerique/la_taupe) a franchi une étape clé avec un moteur d'OCR plus performant, permettant une extraction plus précise des informations bancaires (RIB), tandis que [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) a renforcé sa robustesse face aux indisponibilités de services externes.
 
-Enfin, l'écosystème s'enrichit avec le lancement du projet de documentation V2 [doc-v2.demarche.numerique.gouv.fr](/repos/demarche-numerique/doc-v2.demarche.numerique.gouv.fr) et une meilleure compatibilité de stockage pour le proxy [ds_proxy](/repos/demarche-numerique/ds_proxy).
+Parallèlement, l'écosystème s'étend avec l'initialisation de nouveaux projets structurants, notamment la documentation de la version 2 ([doc-v2.demarche.numerique.gouv.fr](/repos/demarche-numerique/doc-v2.demarche.numerique.gouv.fr)) et un espace dédié aux échanges communautaires ([commun.demarche.numerique.gouv.fr](/repos/demarche-numerique/commun.demarche.numerique.gouv.fr)).
 
 ## Sécurité
-- Renforcement de la sécurité des comptes "Super Admin" et mise en place d'un registre de sessions sur [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
-- Amélioration de la validation des jetons JWT sur [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
+- Renforcement de la sécurité des accès pour les administrateurs via la généralisation de ProConnect dans [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
+- Sécurisation du traitement des fichiers par l'introduction d'un bac à sable (sandbox) et durcissement de la validation des URLs dans [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
 
 ## Autres changements notables
-- **Modernisation logicielle :** Migration de la plateforme vers Rails 8.1 et création d'un environnement sandbox sécurisé pour l'exécution de commandes sur [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
-- **Évolution de l'OCR :** Passage au moteur PP-OCR v6 pour une extraction de données (notamment les RIB) plus performante dans [la_taupe](/repos/demarche-numerique/la_taupe).
-- **Interopérabilité de stockage :** Ajout du support pour S3 et Swift dans [ds_proxy](/repos/demarche-numerique/ds_proxy).
-- **Lancement de projet :** Initialisation de la structure de la nouvelle documentation sur [doc-v2.demarche.numerique.gouv.fr](/repos/demarche-numerique/doc-v2.demarche.numerique.gouv.fr).
+- **Optimisation de l'extraction de données :** Passage à un nouveau moteur OCR (PP-OCR v6 tiny) et mise en place d'outils de benchmarking pour garantir la précision de l'extraction dans [la_taupe](/repos/demarche-numerique/la_taupe).
+- **Évolutions de l'infrastructure et du stockage :** Extension de la compatibilité avec les protocoles S3 et Swift, et simplification des dépendances dans [ds_proxy](/repos/demarche-numerique/ds_proxy).
+- **Refonte technique de la plateforme :** Modernisation du moteur de recherche (PostgreSQL `tsvector`), migration des templates (HAML vers ERB) et optimisation des performances de requêtes dans [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr).
+- **Lancement de nouveaux projets :** Initialisation des dépôts de documentation ([doc-v2.demarche.numerique.gouv.fr](/repos/demarche-numerique/doc-v2.demarche.numerique.gouv.fr)) et de l'espace de partage communautaire ([commun.demarche.numerique.gouv.fr](/repos/demarche-numerique/commun.demarche.numerique.gouv.fr)).
 
 ## Dépôts les plus actifs
-- [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) : Mise à jour majeure de la plateforme (infrastructure, sécurité et expérience utilisateur).
-- [la_taupe](/repos/demarche-numerique/la_taupe) : Montée en puissance de l'extraction de données et du traitement par lots.
-- [ds_proxy](/repos/demarche-numerique/ds_proxy) : Extension des capacités de stockage et optimisation technique.
+- [la_taupe](/repos/demarche-numerique/la_taupe) : Amélioration majeure de la précision de l'OCR et ajout du traitement par lots.
+- [demarche.numerique.gouv.fr](/repos/demarche-numerique/demarche.numerique.gouv.fr) : Évolutions de sécurité, de performance et d'accessibilité de la plateforme principale.
+- [ds_proxy](/repos/demarche-numerique/ds_proxy) : Amélioration de la flexibilité du stockage et optimisation technique.

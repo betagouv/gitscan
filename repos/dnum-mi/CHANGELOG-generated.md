@@ -1,23 +1,23 @@
-# Synthèse d'activité : dnum-mi (du 05/08 au 12/08)
+# Synthèse d'activité : dnum-mi (du 08/06 au 24/09)
 
 ## Résumé de l'activité
-L'activité récente de l'organisation est marquée par une montée en puissance de la sécurité et une automatisation accrue des processus de déploiement. Des évolutions majeures ont été apportées aux produits pour améliorer l'expérience utilisateur et la conformité, notamment avec la mise en place de la gestion des conditions générales d'utilisation dans [bibliotheque-numerique](/repos/dnum-mi/bibliotheque-numerique) et l'enrichissement des capacités de surveillance et de notification dans [referentiel-applications](/repos/dnum-mi/referentiel-applications).
+L'activité récente de l'organisation est marquée par une montée en maturité significative des produits, avec un accent particulier mis sur la sécurité, la conformité et l'observabilité. Les efforts ont permis de renforcer la protection des données et des accès, tout en améliorant l'expérience utilisateur à travers des refontes d'interfaces et l'intégration de nouvelles fonctionnalités de conformité légale, comme la gestion des conditions générales d'utilisation dans [bibliotheque-numerique](/repos/dnum-mi/bibliotheque-numerique).
 
-Parallèlement, l'organisation a consolidé ses outils de développement et de monitoring, garantissant une meilleure fiabilité des services publics suivis par [dashlord](/repos/dnum-mi/dashlord) et une infrastructure de build plus robuste pour [vue-dsfr](/repos/dnum-mi/vue-dsfr). Le passage à la version 1.0.0 de [test-app](/repos/dnum-mi/test-app) marque également une étape clé dans la maturité de nos applications.
+Parallèlement, l'organisation a étendu ses capacités de surveillance des services publics via [dashlord](/repos/dnum-mi/dashlord) et a stabilisé ses infrastructures de développement et de déploiement pour garantir des cycles de livraison plus fiables et sécurisés.
 
 ## Sécurité
-- **Authentification et accès** : Généralisation de l'utilisation des GitHub Apps pour sécuriser les workflows d'automatisation ([test-helm](/repos/dnum-mi/test-helm), [test-app](/repos/dnum-mi/test-app), [fabnum-cicd](/repos/dnum-mi/fabnum-cicd)) et renforcement de l'authentification forte pour l'administration ([referentiel-applications](/repos/dnum-mi/referentiel-applications)).
-- **Protection contre les attaques** : Mise en place de protections contre les injections SQL, SSRF, IDOR et les injections de commandes shell ([referentiel-applications](/repos/dnum-mi/referentiel-applications), [fabnum-cicd](/repos/dnum-mi/fabnum-cicd)).
-- **Gestion des vulnérabilités** : Correction de vulnérabilités dans les modules ([ds-api-client](/repos/dnum-mi/ds-api-client)) et intégration de scans de secrets via Gitleaks ([fabnum-cicd](/repos/dnum-mi/fabnum-cicd)).
+- **Renforcement de la sécurité applicative** : Prévention de l'escalade de privilèges, authentification forte et protection contre les injections SQL/SSRF dans [referentiel-applications](/repos/dnum-mi/referentiel-applications).
+- **Sécurisation des accès et de l'infrastructure** : Migration vers l'authentification par GitHub App et application du principe de moindre privilège pour les processus CI/CD dans [test-helm](/repos/dnum-mi/test-helm) et [test-app](/repos/dnum-mi/test-app).
+- **Correction de vulnérabilités** : Résolution de failles identifiées dans les modules de [ds-api-client](/repos/dnum-mi/ds-api-client).
 
 ## Autres changements notables
-- **Optimisation CI/CD et DevOps** : Amélioration significative de la gestion des charts Helm, des images Docker (génération de SBOMs avec Cosign) et de la publication de paquets NPM ([fabnum-cicd](/repos/dnum-mi/fabnum-cicd), [test-app](/repos/dnum-mi/test-app)).
-- **Infrastructure et Build** : Stabilisation des environnements de build et mise à jour des outils de gestion de paquets ([vue-dsfr](/repos/dnum-mi/vue-dsfr), [bibliotheque-numerique](/repos/dnum-mi/bibliotheque-numerique)).
-- **Maintenance des données de surveillance** : Actualisation massive des listes d'URLs pour le monitoring des services de l'État ([dashlord](/repos/dnum-mi/dashlord), [dashlord-extended](/repos/dnum-mi/dashlord-extended)).
+- **Évolutions de l'expérience utilisateur et produit** : Amélioration de la gestion des icônes (support hors-ligne et rendu serveur) dans [vue-dsfr](/repos/dnum-mi/vue-dsfr) et mise en place d'un système complet d'acceptation des CGU dans [bibliotheque-numerique](/repos/dnum-mi/bibliotheque-numerique).
+- **Expansion du monitoring** : Mise à jour massive du périmètre de surveillance des services de l'État (ANTS, préfectures, administration centrale) dans [dashlord](/repos/dnum-mi/dashlord) et [dashlord-extended](/repos/dnum-mi/dashlord-extended).
+- **Standardisation technique** : Adoption des normes OCI pour la construction des images Docker dans [fabnum-cicd](/repos/dnum-mi/fabnum-cicd) et passage à une version fonctionnelle avec tests d'accessibilité automatisés pour [a11y-toolkit](/repos/dnum-mi/a11y-toolkit).
 
 ## Dépôts les plus actifs
-- [fabnum-cicd](/repos/dnum-mi/fabnum-cicd) : Refonte majeure de la sécurité et de l'automatisation des processus de publication.
-- [referentiel-applications](/repos/dnum-mi/referentiel-applications) : Ajout de fonctionnalités de notification, de corrélation et renforcement de la sécurité applicative.
-- [test-app](/repos/dnum-mi/test-app) : Passage en version 1.0.0 et optimisation de l'infrastructure de déploiement.
-- [vue-dsfr](/repos/dnum-mi/vue-dsfr) : Amélioration de la gestion des icônes (mode hors-ligne/SSR) et stabilisation du build.
-- [bibliotheque-numerique](/repos/dnum-mi/bibliotheque-numerique) : Implémentation complète du cycle de gestion et d'acceptation des CGU.
+- [vue-dsfr](/repos/dnum-mi/vue-dsfr) : Amélioration de la gestion des icônes et stabilisation de l'infrastructure de build.
+- [test-app](/repos/dnum-mi/test-app) : Passage à la version 1.0.0 et optimisation majeure de l'automatisation CI/CD.
+- [referentiel-applications](/repos/dnum-mi/referentiel-applications) : Durcissement de la sécurité et refonte de l'interface d'administration.
+- [bibliotheque-numerique](/repos/dnum-mi/bibliotheque-numerique) : Implémentation du flux de conformité pour les conditions générales d'utilisation.
+- [dashlord](/repos/dnum-mi/dashlord) : Extension importante du catalogue de services publics surveillés.

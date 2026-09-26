@@ -1,26 +1,33 @@
-# Synthèse d'activité : suitenumerique (du 01/05 au 20/09/2026)
+# Synthèse d'activité : suitenumérique (du 17/09 au 24/09)
 
 ## Résumé de l'activité
-L'activité récente de la suite est marquée par une montée en puissance significative des outils de collaboration et de communication. L'intégration de la messagerie Matrix dans [hub](/repos/suitenumerique/hub), l'amélioration des capacités vidéo de [meet](/repos/suitenumerique/meet) et l'ajout de fonctionnalités d'intelligence artificielle dans [conversations](/repos/suitenumerique/conversations) offrent des expériences utilisateur de plus en plus riches et interactives.
+L'activité récente de la suite est marquée par une montée en puissance des fonctionnalités de communication et de gestion documentaire. Les utilisateurs bénéficient de nouvelles capacités de collaboration en temps réel avec l'intégration de Matrix dans [hub](/repos/suitenumerique/hub), d'une qualité vidéo accrue dans [meet](/repos/suitenumerique/meet) et d'un contrôle beaucoup plus fin sur la confidentialité des fichiers dans [drive](/repos/suitenumerique/drive).
 
-Parallèlement, l'organisation renforce la souveraineté et la sécurité des données. Cela se traduit par l'introduction de nouveaux mécanismes de chiffrement dans [transfers](/repos/suitenumerique/transfers) et une gestion beaucoup plus granulaire des accès et des permissions dans [drive](/repos/suitenumerique/drive). Ces évolutions garantissent un contrôle accru pour les administrateurs tout en simplifiant l'usage quotidien pour les utilisateurs finaux.
+Parallèlement, un effort majeur est porté sur la robustesse et la sécurité des services, notamment via la protection contre les attaques SSRF dans [file-scanner](/repos/suitenumerique/file-scanner) et le renforcement des protocoles d'authentification dans [menshen](/repos/suitenumerique/menshen) et [accounts](/repos/suitenumerique/accounts). Ces évolutions garantissent une plateforme plus fiable, sécurisée et performante pour l'ensemble des utilisateurs.
 
 ## Sécurité
-- **Confidentialité et contrôle des données** : Introduction du chiffrement de bout en bout (E2EE) en option pour [transfers](/repos/suitenumerique/transfers) et mise en place de liens de téléchargement uniques à usage unique dans [st-transfers](/repos/suitenumerique/st-transfers).
-- **Protection contre les attaques** : Blocage des requêtes de type SSRF (Server-Side Request Forgery) dans [file-scanner](/repos/suitenumerique/file-scanner) et correction de vulnérabilités critiques (CVE) dans [meet](/repos/suitenumerique/meet).
-- **Durcissement des accès et des protocoles** : Implémentation du protocole PKCE pour sécuriser les connexions dans [drive-migrator](/repos/suitenumerique/drive-migrator), renforcement de la sécurité du serveur de mail dans [messages](/repos/suitenumerique/messages) et mise à jour de bibliothèques critiques pour la protection des données dans [people](/repos/suitenumerique/people).
-- **Correction de fuites de données** : Résolution d'une potentielle fuite de fichiers temporaires dans [meet-whisperx](/repos/suitenumerique/meet-whisperx).
+- Protection contre les attaques SSRF (Server-Side Request Forgery) dans [file-scanner](/repos/suitenumerique/file-scanner).
+- Renforcement de la sécurité des secrets et adoption de l'algorithme de hachage Argon2 dans [menshen](/repos/suitenumerique/menshen).
+- Sécurisation des accès administrateur via des listes blanches d'adresses IP dans [transfers](/repos/suitenumerique/transfers) et [messages](/repos/suitenumerique/messages).
+- Mise en œuvre du protocole PKCE pour sécuriser et stabiliser les connexions dans [drive-migrator](/repos/suitenumerique/drive-migrator).
+- Correction de vulnérabilités critiques (CVE) et durcissement des pipelines de CI dans [meet](/repos/suitenumerique/meet) et [meet-whisperx](/repos/suitenumerique/meet-whisperx).
+- Amélioration de la gestion de la déconnexion pour une sécurité accrue dans [accounts](/repos/suitenumerique/accounts).
+- Sécurisation du traitement des données ICS dans [calendars](/repos/suitenumerique/calendars).
 
 ## Autres changements notables
-- **Modernisation de l'architecture et des outils de développement** : Migration de [ui-kit](/repos/suitenumerique/ui-kit) vers une structure monorepo et reconstruction complète du site [docs-website](/repos/suitenumerique/docs-website) avec le framework Astro.
-- **Optimisation des performances et de l'expérience utilisateur** : Refonte majeure de l'architecture des permissions dans [drive](/repos/suitenumerique/drive), migration du frontend vers Vite pour [calendars](/repos/suitenumerique/calendars) et optimisation des temps d'inférence pour le traitement vidéo dans [meet-matting](/repos/suitenumerique/meet-matting).
-- **Évolutions de l'infrastructure et du déploiement** : Amélioration des capacités de déploiement automatisé via [st-ansible](/repos/suitenumerique/st-ansible) et [st-deploycenter](/repos/suitenumerique/st-deploycenter).
+- Migrations technologiques majeures : passage au monorepo pour [ui-kit](/repos/suitenumerique/ui-kit), migration vers Vite pour [calendars](/repos/suitenumerique/calendars) et vers Astro pour [docs-website](/repos/suitenumerique/docs-website).
+- Optimisations de l'infrastructure : utilisation de Caddy pour la gestion du trafic dans [st-ansible](/repos/suitenumerique/st-ansible) et [st-deploycenter](/repos/suitenumerique/st-deploycenter), et déploiement d'images "distroless" pour [transfers](/repos/suitenumerique/transfers).
+- Évolutions architecturales : refonte complète du système de permissions dans [drive](/repos/suitenumerique/drive), intégration de la messagerie Matrix dans [hub](/repos/suitenumerique/hub) et mise en place de workers dédiés pour le traitement audio dans [dictaphone](/repos/suitenumerique/dictaphone).
+- Amélioration de l'expérience développeur (DevX) : introduction d'environnements basés sur Nix et Podman dans [meet](/repos/suitenumerique/meet) et migration vers le SDK Vercel AI dans [conversations](/repos/suitenumerique/conversations).
 
 ## Dépôts les plus actifs
-- [meet](/repos/suitenumerique/meet) : Évolutions majeures de l'interface mobile, de la résolution vidéo (1080p) et de l'accessibilité.
-- [docs](/repos/suitenumerique/docs) : Enrichissement des capacités d'édition (mathématiques, diagrammes) et amélioration de l'accessibilité.
-- [drive](/repos/suitenumerique/drive) : Mise en place d'un système de restrictions d'accès granulaire et refonte de l'architecture des permissions.
-- [hub](/repos/suitenumerique/hub) : Intégration complète de la messagerie Matrix (temps réel, threads, réactions).
-- [dictaphone](/repos/suitenumerique/dictaphone) : Optimisation du suivi des transcriptions et de l'expérience mobile (téléchargements en arrière-plan).
-- [conversations](/repos/suitenumerique/conversations) : Ajout de nouveaux outils d'IA (génération de présentations) et optimisation de l'interface de chat.
-- [ui-kit](/repos/suitenumerique/ui-kit) : Consolidation de la bibliothèque de composants en monorepo et création d'outils de migration.
+- [drive](/repos/suitenumerique/drive) : Refonte majeure du système de permissions et optimisation des performances.
+- [meet](/repos/suitenumerique/meet) : Amélioration de la qualité vidéo, de l'interface mobile et de l'infrastructure de développement.
+- [docs](/repos/suitenumerique/docs) : Enrichissement des capacités d'édition et optimisation des performances système.
+- [hub](/repos/suitenumerique/hub) : Intégration complète de la messagerie Matrix.
+- [messages](/repos/suitenumerique/messages) : Amélioration des outils d'administration et de la sécurité du transport de mail.
+- [menshen](/repos/suitenumerique/menshen) : Passage à la version 0.3.0 avec un focus sur la sécurité des secrets.
+- [dictaphone](/repos/suitenumerique/dictaphone) : Amélioration de la fiabilité du traitement audio et de l'expérience mobile.
+- [conversations](/repos/suitenumerique/conversations) : Ajout de connecteurs de données et refonte de l'interface de chat IA.
+- [accounts](/repos/suitenumerique/accounts) : Passage à la version 0.1.0 avec de nouvelles fonctionnalités de profil et de déconnexion sécurisée.
+- [ui-kit](/repos/suitenumerique/ui-kit) : Migration vers une structure monorepo et consolidation des composants.
