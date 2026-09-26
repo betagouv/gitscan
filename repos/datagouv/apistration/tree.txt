@@ -130,6 +130,7 @@
 │   │   │   │   │   ├── probtp.ts
 │   │   │   │   │   ├── qualibat.ts
 │   │   │   │   │   ├── qualifelec.ts
+│   │   │   │   │   ├── token.ts
 │   │   │   │   │   └── urssaf.ts
 │   │   │   │   └── version.ts
 │   │   │   ├── test
@@ -173,7 +174,8 @@
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── men.ts
 │   │   │   │   │   ├── mesri.ts
-│   │   │   │   │   └── sdh.ts
+│   │   │   │   │   ├── sdh.ts
+│   │   │   │   │   └── token.ts
 │   │   │   │   └── version.ts
 │   │   │   ├── test
 │   │   │   │   └── client.test.ts
@@ -273,13 +275,15 @@
 │       │   │   │   │   ├── probtp.rb
 │       │   │   │   │   ├── qualibat.rb
 │       │   │   │   │   ├── qualifelec.rb
+│       │   │   │   │   ├── token.rb
 │       │   │   │   │   └── urssaf.rb
 │       │   │   │   └── version.rb
 │       │   │   └── api_entreprise.rb
 │       │   └── spec
 │       │       ├── client_spec.rb
 │       │       ├── resources
-│       │       │   └── scaffold_smoke_spec.rb
+│       │       │   ├── scaffold_smoke_spec.rb
+│       │       │   └── token_spec.rb
 │       │       └── spec_helper.rb
 │       ├── api_particulier
 │       │   ├── .rspec
@@ -326,13 +330,15 @@
 │       │   │   │   │   ├── gip_mds.rb
 │       │   │   │   │   ├── men.rb
 │       │   │   │   │   ├── mesri.rb
-│       │   │   │   │   └── sdh.rb
+│       │   │   │   │   ├── sdh.rb
+│       │   │   │   │   └── token.rb
 │       │   │   │   └── version.rb
 │       │   │   └── api_particulier.rb
 │       │   └── spec
 │       │       ├── client_spec.rb
 │       │       ├── resources
-│       │       │   └── scaffold_smoke_spec.rb
+│       │       │   ├── scaffold_smoke_spec.rb
+│       │       │   └── token_spec.rb
 │       │       └── spec_helper.rb
 │       ├── bin
 │       │   ├── scaffold_resources
@@ -1808,6 +1814,7 @@
 │   │   │   │       │   ├── successions_controller.rb
 │   │   │   │       │   ├── unites_legales_controller.rb
 │   │   │   │       │   └── unites_legales_diffusables_controller.rb
+│   │   │   │       ├── introspect_controller.rb
 │   │   │   │       ├── mi
 │   │   │   │       │   ├── associations_controller.rb
 │   │   │   │       │   ├── documents_associations_controller.rb
@@ -1893,6 +1900,7 @@
 │   │   │   │       ├── gip_mds
 │   │   │   │       │   ├── service_civique_with_civility_controller.rb
 │   │   │   │       │   └── service_civique_with_france_connect_controller.rb
+│   │   │   │       ├── introspect_controller.rb
 │   │   │   │       ├── men
 │   │   │   │       │   └── scolarites_with_civility_controller.rb
 │   │   │   │       ├── mesri
@@ -1919,6 +1927,7 @@
 │   │   │   │   ├── handle_editor_delegation.rb
 │   │   │   │   ├── handle_ping_providers.rb
 │   │   │   │   ├── handle_tokens.rb
+│   │   │   │   ├── introspects_token.rb
 │   │   │   │   ├── logs_rendered_error.rb
 │   │   │   │   ├── organizers_methods_helpers.rb
 │   │   │   │   ├── recipient_management.rb
@@ -1965,10 +1974,12 @@
 │   │   │   ├── not_implemented_yet_error.rb
 │   │   │   ├── open_api_example_error.rb
 │   │   │   ├── partial_content_error.rb
+│   │   │   ├── production_token_on_staging_error.rb
 │   │   │   ├── provider_*.rb  (9 files)
 │   │   │   ├── proxy_file_error.rb
 │   │   │   ├── rna_error.rb
 │   │   │   ├── ssl_certificate_error.rb
+│   │   │   ├── staging_token_on_production_error.rb
 │   │   │   ├── token_not_found_error.rb
 │   │   │   ├── too_many_requests_error.rb
 │   │   │   ├── unauthorized_error.rb
@@ -2111,7 +2122,7 @@
 │   │   │   │   │   └── document_url_helper.rb
 │   │   │   │   ├── host_methods_helpers.rb
 │   │   │   │   ├── resource_helpers.rb
-│   │   │   │   ├── use_wildcard_ssl_certificate.rb
+│   │   │   │   ├── use_ants_issued_ssl_certificate.rb
 │   │   │   │   └── validate_prenoms_format.rb
 │   │   │   ├── data_subvention
 │   │   │   │   └── subventions
@@ -2881,7 +2892,9 @@
 │   │   │   │       └── base_serializer.rb
 │   │   │   ├── base_collection_serializer.rb
 │   │   │   ├── base_serializer.rb
-│   │   │   └── errors_serializer.rb
+│   │   │   ├── errors_serializer.rb
+│   │   │   └── introspection_serializer
+│   │   │       └── v3.rb
 │   │   ├── services
 │   │   │   ├── api_entreprise_swagger_data.rb
 │   │   │   ├── app_config.rb
@@ -3284,6 +3297,7 @@
 │   │   │   ├── not_implemented_yet_error_spec.rb
 │   │   │   ├── open_api_example_error_spec.rb
 │   │   │   ├── partial_content_error_spec.rb
+│   │   │   ├── production_token_on_staging_error_spec.rb
 │   │   │   ├── provider_authentication_error_spec.rb
 │   │   │   ├── provider_conflict_error_spec.rb
 │   │   │   ├── provider_internal_server_error_spec.rb
@@ -3294,6 +3308,7 @@
 │   │   │   ├── provider_unprocessable_entity_error_spec.rb
 │   │   │   ├── proxy_file_error_spec.rb
 │   │   │   ├── rna_error_spec.rb
+│   │   │   ├── staging_token_on_production_error_spec.rb
 │   │   │   ├── token_not_found_error_spec.rb
 │   │   │   ├── too_many_requests_error_spec.rb
 │   │   │   ├── unavailable_for_legal_reasons_error_spec.rb
@@ -4121,7 +4136,8 @@
 │   │   │   ├── seeds_spec.rb
 │   │   │   ├── string_normalizer_spec.rb
 │   │   │   ├── swagger_data_spec.rb
-│   │   │   └── transliterator_spec.rb
+│   │   │   ├── transliterator_spec.rb
+│   │   │   └── user_resolution_middleware_spec.rb
 │   │   ├── models
 │   │   │   ├── authorization_request_security_settings_spec.rb
 │   │   │   ├── editor_delegation_spec.rb
@@ -4411,6 +4427,7 @@
 │   │   │   │       │   └── unite_legale_diffusable
 │   │   │   │       │       ├── v3_spec.rb
 │   │   │   │       │       └── v4_spec.rb
+│   │   │   │       ├── introspect_spec.rb
 │   │   │   │       ├── mi
 │   │   │   │       │   ├── associations
 │   │   │   │       │   │   ├── documents
@@ -4518,6 +4535,7 @@
 │   │   │   │       │   └── service_civique
 │   │   │   │       │       ├── service_civique_with_civility_spec.rb
 │   │   │   │       │       └── service_civique_with_france_connect_spec.rb
+│   │   │   │       ├── introspect_spec.rb
 │   │   │   │       ├── men
 │   │   │   │       │   └── scolarites_with_civility
 │   │   │   │       │       ├── v3_spec.rb
@@ -4536,6 +4554,7 @@
 │   │   │   ├── cors_spec.rb
 │   │   │   ├── custom_rate_limit_spec.rb
 │   │   │   ├── editor_delegation_spec.rb
+│   │   │   ├── introspect_v3_spec.rb
 │   │   │   ├── ip_whitelist_spec.rb
 │   │   │   ├── mockable_in_staging_spec.rb
 │   │   │   ├── not_found_page_spec.rb
@@ -4545,7 +4564,8 @@
 │   │   │   ├── rack_attack_for_api_entreprise_spec.rb
 │   │   │   ├── rack_attack_for_api_particulier_spec.rb
 │   │   │   ├── rack_attack_for_api_particulier_v2_spec.rb
-│   │   │   └── throttle_override_spec.rb
+│   │   │   ├── throttle_override_spec.rb
+│   │   │   └── wrong_environment_token_spec.rb
 │   │   ├── serializers
 │   │   │   ├── api_entreprise
 │   │   │   │   ├── acoss
@@ -7583,4 +7603,4 @@
 │       └── .keep
 └── worktrees
     └── .gitkeep
-1527 directories, 6389 files
+1528 directories, 6408 files

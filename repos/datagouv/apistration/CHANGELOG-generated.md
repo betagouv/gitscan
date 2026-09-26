@@ -1,30 +1,27 @@
-## Changelog : apistration (30 derniers jours, au 23 septembre 2026)
+## Changelog : apistration (30 derniers jours, au 25 septembre 2026)
 
 ### Résumé
-Ce mois-ci, apistration a franchi des étapes importantes avec le lancement des ressources pour les associations (incluant la sortie du SDK 0.4.0), l'introduction de preuves d'attestation pour l'EAJE, et une amélioration majeure de la clarté des erreurs pour les développeurs utilisant les services INSEE et CNAV.
+Ce mois a été marqué par des évolutions majeures concernant la sécurité et l'extension des services. L'introduction d'une nouvelle version de l'introspection des jetons, le déploiement de preuves d'attestation vérifiables pour le service EAJE et l'enrichissement du catalogue des services "Associations" sont les points clés. Parallèlement, l'expérience d'administration a été améliorée grâce à une meilleure visibilité des erreurs et une interface plus intuitive.
 
 ### Évolutions fonctionnelles
-- **Associations** : Ajout de nouveaux points de terminaison (MI/SIAF), mise à jour du catalogue et publication des SDK 0.4.0. [#384](https://github.com/datagouv/apistration/pull/384)
-- **EAJE** : Mise en place de la gestion des preuves d'attestation, incluant la génération de PDF vérifiables, l'utilisation de jetons chiffrés et la possibilité de demander une preuve via un en-tête HTTP. [#432](https://github.com/datagouv/apistration/pull/432)
-- **Transparence des erreurs** : 
-    - Amélioration du détail des refus d'authentification INSEE pour identifier précisément le motif de l'échec. [#429](https://github.com/datagouv/apistration/pull/429)
-    - Meilleure catégorisation des erreurs 400 de la CNAV par code d'erreur fournisseur. [#401](https://github.com/datagouv/apistration/pull/401)
-- **Administration & Back-office** : 
-    - Affichage des réponses brutes des fournisseurs pour faciliter le débogage. [#397](https://github.com/datagouv/apistration/pull/397)
-    - Suivi des changements d'adhésion des éditeurs dans les activités d'administration. [#379](https://github.com/datagouv/apistration/pull/379)
-    - Amélioration de l'interface de requêtes manuelles (support des en-têtes OpenAPI et listes déroulantes pour les énumérations). [#410](https://github.com/datagouv/apistration/pull/410)
-- **Expérience utilisateur** : Mise à jour de la terminologie pour plus de clarté (ex: passage de "nom de naissance" à "nom de famille"). [#362](https://github.com/datagouv/apistration/pull/362)
+- **Nouvelle version de l'introspection de jetons** : Introduction d'un endpoint d'introspection en version 3, incluant la mise à jour des SDK officiels pour supporter cette nouvelle norme ([#415](https://github.com/datagouv/apistration/pull/415)).
+- **Attestations EAJE** : Mise en place d'un système de preuve d'attestation vérifiable, permettant le rendu de PDF signés et la possibilité de demander une preuve via un en-tête HTTP.
+- **Extension du service Associations** : Ajout de nouveaux points de terminaison pour les ressources "Associations" et mise à jour des SDK (v0.4.0).
+- **Améliorations de l'interface (Back-office & Portails)** :
+    - Optimisation visuelle du tableau de bord (succès affichés en vert).
+    - Amélioration des formulaires de requêtes manuelles : intégration de menus déroulants pour les valeurs énumérées OpenAPI et gestion facilitée des paramètres d'en-tête.
+    - Meilleure lisibilité des verdicts de vérification et alignement des champs de saisie.
+- **Transparence des erreurs** : Amélioration de la précision des messages d'erreur lors des échecs d'authentification (notamment pour les services INSEE et les jetons invalides) et affichage des réponses brutes des fournisseurs dans le back-office pour faciliter le diagnostic.
 
 ### Évolutions techniques
-- **CI/CD** : Optimisation des workflows GitHub Actions, notamment via la variabilisation des cibles de déploiement et la résolution de problèmes de concurrence lors des merges. [#437](https://github.com/datagouv/apistration/pull/437), [#412](https://github.com/datagouv/apistration/pull/412)
-- **Gestion des erreurs et logs** : 
-    - Introduction de sous-codes d'erreur dans les logs d'accès pour un meilleur diagnostic. [#380](https://github.com/datagouv/apistration/pull/380)
-    - Amélioration de la gestion des erreurs de handshake TLS (conversion en erreur 502 propre). [#363](https://github.com/datagouv/apistration/pull/363)
-- **Sécurité** : 
-    - Automatisation de la rotation des mots de passe INSEE. [#383](https://github.com/datagouv/apistration/pull/383)
-    - Mise en place de la révocation en cascade des habilitations sur leurs délégations respectives. [#397](https://github.com/datagouv/apistration/pull/397)
-- **Refactoring** : Nettoyage du code et suppression d'exemples de tests HTTP inutilisés. [#426](https://github.com/datagouv/apistration/pull/426)
+- **Gestion de l'authentification** : Automatisation de la rotation des mots de passe pour le service INSEE et amélioration de la gestion des jetons par environnement.
+- **Architecture et compatibilité** : Mise à jour pour la compatibilité avec JSON 3 et ajustements des dépendances liées à Rails.
+- **DevOps et CI/CD** :
+    - Optimisation des workflows GitHub Actions via la variabilisation des cibles de déploiement.
+    - Amélioration de l'environnement de développement avec la gestion de bases de données de test via des *worktrees*.
+    - Résolution de problèmes de concurrence (race conditions) dans les pipelines de déploiement.
+- **Observabilité** : Amélioration du suivi des erreurs via Sentry et enrichissement des logs d'accès avec des codes d'erreur détaillés.
 
 ### Autres changements
-- **Documentation** : Enrichissement des documentations techniques concernant l'authentification INSEE, les règles de l'API-SECU, les régimes de formation MESRI et le dictionnaire DGFiP. [#402](https://github.com/datagouv/apistration/pull/402), [#411](https://github.com/datagouv/apistration/pull/411)
-- **Configuration** : Ajustement du fichier `robots.txt` pour interdire l'indexation des environnements hors production. [#399](https://github.com/datagouv/apistration/pull/399)
+- **Documentation** : Mises à jour importantes de la documentation technique pour les services INSEE, CNAV, MESRI et DGFiP.
+- **Nettoyage** : Suppression de composants obsolètes, ajustement des règles du fichier `robots.txt` pour les environnements hors production et nettoyage des fichiers de configuration.
