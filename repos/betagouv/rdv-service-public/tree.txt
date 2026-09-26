@@ -17,14 +17,12 @@
 │   ├── pull_request_template.md
 │   └── workflows
 │       ├── ci.yml
-│       ├── dependency_review.yml
-│       └── pull_requests_reminder.yml
+│       └── dependency_review.yml
 ├── .gitignore
 ├── .node-version
 ├── .npmrc
 ├── .prettierignore
 ├── .rspec
-├── .rspec_parallel
 ├── .rubocop.yml
 ├── .ruby-version
 ├── .slim-lint.yml
@@ -173,6 +171,7 @@
 │   │   │   │   ├── agendas_controller.rb
 │   │   │   │   └── plage_ouvertures_controller.rb
 │   │   │   ├── prescription_controller.rb
+│   │   │   ├── rdv_invitations_controller.rb
 │   │   │   ├── rdv_wizard_steps_controller.rb
 │   │   │   ├── rdvs_collectifs
 │   │   │   │   └── motif_selections_controller.rb
@@ -215,6 +214,7 @@
 │   │   │   ├── caldav_sync_controller.rb
 │   │   │   ├── calendar_sync_controller.rb
 │   │   │   ├── exports_controller.rb
+│   │   │   ├── external_calendar_sync_executions_controller.rb
 │   │   │   ├── inscription_via_operateur_controller.rb
 │   │   │   ├── instance_exports_controller.rb
 │   │   │   ├── mot_de_passes_controller.rb
@@ -222,6 +222,8 @@
 │   │   │   ├── pages_controller.rb
 │   │   │   ├── passwords_controller.rb
 │   │   │   ├── preferences_controller.rb
+│   │   │   ├── pro_connect_linking_controller.rb
+│   │   │   ├── pro_connect_step_up_controller.rb
 │   │   │   ├── rdv_plans_controller.rb
 │   │   │   ├── rdvs_controller.rb
 │   │   │   ├── registrations_controller.rb
@@ -308,6 +310,7 @@
 │   │   │   └── sessions_controller.rb
 │   │   ├── prescripteur_rdv_wizard_controller.rb
 │   │   ├── pro_connect_controller.rb
+│   │   ├── rdv_invitations_controller.rb
 │   │   ├── redirect_controller.rb
 │   │   ├── robots_controller.rb
 │   │   ├── search_controller.rb
@@ -324,6 +327,7 @@
 │   │   │   ├── lieux_controller.rb
 │   │   │   ├── migrations_controller.rb
 │   │   │   ├── motifs_controller.rb
+│   │   │   ├── oauth_applications_controller.rb
 │   │   │   ├── operator_managers_controller.rb
 │   │   │   ├── operators_controller.rb
 │   │   │   ├── organisations_controller.rb
@@ -339,6 +343,8 @@
 │   │   │   └── users_controller.rb
 │   │   ├── user_auth_controller.rb
 │   │   ├── users
+│   │   │   ├── email_change_confirmations_controller.rb
+│   │   │   ├── email_change_requests_controller.rb
 │   │   │   ├── file_attentes_controller.rb
 │   │   │   ├── login_codes_controller.rb
 │   │   │   ├── participations_controller.rb
@@ -360,6 +366,7 @@
 │   │   ├── compte_dashboard.rb
 │   │   ├── lieu_dashboard.rb
 │   │   ├── motif_dashboard.rb
+│   │   ├── oauth_application_dashboard.rb
 │   │   ├── operator_dashboard.rb
 │   │   ├── operator_manager_dashboard.rb
 │   │   ├── organisation_dashboard.rb
@@ -375,10 +382,12 @@
 │   ├── fields
 │   │   ├── enum_field.rb
 │   │   ├── has_many_with_names_field.rb
+│   │   ├── logo_field.rb
 │   │   ├── places_field.rb
 │   │   └── siret_field.rb
 │   ├── form_models
 │   │   ├── admin
+│   │   │   ├── agents_search_form.rb
 │   │   │   ├── create_motifs.rb
 │   │   │   ├── edit_rdv_form.rb
 │   │   │   ├── edit_rdv_status_form.rb
@@ -398,6 +407,7 @@
 │   │   │   └── user_form.rb
 │   │   ├── agent_creneaux_search_form.rb
 │   │   ├── agent_prescripteur_rdv_wizard.rb
+│   │   ├── aiguillage_agent_form.rb
 │   │   ├── aiguillage_usager_form.rb
 │   │   ├── beneficiaire_form.rb
 │   │   ├── compte.rb
@@ -412,6 +422,7 @@
 │   │   ├── relative_user_form.rb
 │   │   ├── users
 │   │   │   ├── edit_form.rb
+│   │   │   ├── email_change_request_form.rb
 │   │   │   ├── login_code_request_form.rb
 │   │   │   ├── rdv_booking_form
 │   │   │   │   ├── ants_concern.rb
@@ -480,6 +491,7 @@
 │   │   │   ├── plage_ouverture.js
 │   │   │   ├── planning-agents-select.js
 │   │   │   ├── prevent-default.js
+│   │   │   ├── rdv-invitation-user-select.js
 │   │   │   ├── rdv-user-select.js
 │   │   │   ├── rdv_lieu.js
 │   │   │   ├── rdv_wizard_step2.js
@@ -564,6 +576,9 @@
 │   │   │       └── proconnect_button_dsfr.scss
 │   │   └── super_admin.js
 │   ├── jobs
+│   │   ├── ami
+│   │   │   ├── send_event_job.rb
+│   │   │   └── update_consent_job.rb
 │   │   ├── ants
 │   │   │   └── sync_appointment_job.rb
 │   │   ├── application_job.rb
@@ -579,6 +594,7 @@
 │   │   ├── create_crm_page_job.rb
 │   │   ├── create_zammad_ticket_job.rb
 │   │   ├── cron_job
+│   │   │   ├── destroy_expired_agent_trusted_devices_job.rb
 │   │   │   ├── destroy_old_oauth_objects.rb
 │   │   │   ├── destroy_old_versions.rb
 │   │   │   ├── ign_health_check_job.rb
@@ -593,7 +609,6 @@
 │   │   │   │   ├── both_instances_1_month_rdvs_count.sql
 │   │   │   │   └── both_instances_1_year_rdvs_count.sql
 │   │   │   ├── refresh_carto_anct_stats_job.rb
-│   │   │   ├── send_mattermost_notifications_for_zammad_tickets_job.rb
 │   │   │   └── synchronize_crm.rb
 │   │   ├── cron_job.rb
 │   │   ├── export_job.rb
@@ -626,6 +641,7 @@
 │   │   ├── webhook_job.rb
 │   │   └── webhook_send_job.rb
 │   ├── lib
+│   │   ├── ami_client.rb
 │   │   ├── ants_api.rb
 │   │   ├── carto_anct.rb
 │   │   ├── cron_monitor.rb
@@ -656,8 +672,10 @@
 │   │   ├── custom_devise_mailer.rb
 │   │   ├── prescripteur_mailer.rb
 │   │   └── users
+│   │       ├── email_change_mailer.rb
 │   │       ├── file_attente_mailer.rb
 │   │       ├── login_code_mailer.rb
+│   │       ├── rdv_invitation_mailer.rb
 │   │       └── rdv_mailer.rb
 │   ├── models
 │   │   ├── absence.rb
@@ -668,6 +686,7 @@
 │   │   ├── agent_team.rb
 │   │   ├── agent_territorial_access_right.rb
 │   │   ├── agent_territorial_role.rb
+│   │   ├── agent_trusted_device.rb
 │   │   ├── agent_with_token_auth.rb
 │   │   ├── agents_rdv.rb
 │   │   ├── annotation.rb
@@ -720,6 +739,8 @@
 │   │   ├── export.rb
 │   │   ├── export_file_blob.rb
 │   │   ├── external_calendar_event.rb
+│   │   ├── external_calendar_sync_execution.rb
+│   │   ├── external_calendar_sync_execution_log.rb
 │   │   ├── external_reference.rb
 │   │   ├── file_attente.rb
 │   │   ├── instance_export.rb
@@ -738,12 +759,13 @@
 │   │   ├── plage_ouverture.rb
 │   │   ├── prescripteur.rb
 │   │   ├── rdv.rb
+│   │   ├── rdv_invitation.rb
 │   │   ├── rdv_plan.rb
 │   │   ├── receipt.rb
 │   │   ├── recurrence
 │   │   │   └── occurrence.rb
 │   │   ├── referent_assignation.rb
-│   │   ├── restricted_auth.rb
+│   │   ├── restricted_auth_session_state.rb
 │   │   ├── sector.rb
 │   │   ├── sector_attribution.rb
 │   │   ├── service.rb
@@ -756,6 +778,7 @@
 │   │   ├── territory_service.rb
 │   │   ├── territory_tag.rb
 │   │   ├── user.rb
+│   │   ├── user_ami_profile.rb
 │   │   ├── user_profile.rb
 │   │   ├── webhook_endpoint.rb
 │   │   └── zone.rb
@@ -768,12 +791,14 @@
 │   │   │   ├── agent_territorial_access_right_policy.rb
 │   │   │   ├── agent_territorial_role_policy.rb
 │   │   │   ├── export_policy.rb
+│   │   │   ├── external_calendar_sync_execution_policy.rb
 │   │   │   ├── instance_export_policy.rb
 │   │   │   ├── lieu_policy.rb
 │   │   │   ├── motif_policy.rb
 │   │   │   ├── organisation_policy.rb
 │   │   │   ├── participation_policy.rb
 │   │   │   ├── plage_ouverture_policy.rb
+│   │   │   ├── rdv_invitation_policy.rb
 │   │   │   ├── rdv_plan_policy.rb
 │   │   │   ├── rdv_policy.rb
 │   │   │   ├── referent_assignation_policy.rb
@@ -806,6 +831,7 @@
 │   │   │   ├── lieu_policy.rb
 │   │   │   ├── migration_policy.rb
 │   │   │   ├── motif_policy.rb
+│   │   │   ├── oauth_application_policy.rb
 │   │   │   ├── operator_manager_policy.rb
 │   │   │   ├── operator_policy.rb
 │   │   │   ├── organisation_policy.rb
@@ -819,6 +845,7 @@
 │   │   │   ├── user_policy.rb
 │   │   │   └── user_profile_policy.rb
 │   │   └── user
+│   │       ├── file_attente_policy.rb
 │   │       ├── participation_policy.rb
 │   │       ├── rdv_booking_policy.rb
 │   │       ├── rdv_policy.rb
@@ -846,8 +873,10 @@
 │   │   ├── admin_updates_agent.rb
 │   │   ├── agent_prescription_search_context.rb
 │   │   ├── agent_removal.rb
+│   │   ├── agent_sensitive_account_calculator.rb
 │   │   ├── agents
 │   │   │   └── login_code_sender.rb
+│   │   ├── ami.rb
 │   │   ├── annuaire_service_public.rb
 │   │   ├── base_service.rb
 │   │   ├── create_rdv_in_new_instance.rb
@@ -1004,12 +1033,14 @@
 │       │   │   ├── _restriction_for_rdv_recap.html.slim
 │       │   │   ├── _visibility.html.slim
 │       │   │   ├── edit.html.slim
+│       │   │   ├── edit_advanced_options.html.slim
+│       │   │   ├── edit_consignes.html.slim
 │       │   │   ├── form
 │       │   │   │   ├── _advanced_options.html.slim
 │       │   │   │   ├── _configuration_principale.html.slim
+│       │   │   │   ├── _consignes.html.slim
 │       │   │   │   ├── _location_types.html.slim
 │       │   │   │   ├── _organisations_picker.html.slim
-│       │   │   │   ├── _resa_en_ligne.html.slim
 │       │   │   │   └── _sectorisation_field.html.slim
 │       │   │   ├── index.html.slim
 │       │   │   ├── new.html.slim
@@ -1036,6 +1067,7 @@
 │       │   │   │   ├── _motif_card.html.slim
 │       │   │   │   ├── edit_user_type.html.slim
 │       │   │   │   ├── form.html.slim
+│       │   │   │   ├── not_configured.html.slim
 │       │   │   │   └── show.html.slim
 │       │   │   ├── show.html.slim
 │       │   │   └── stats
@@ -1085,6 +1117,10 @@
 │       │   │   ├── recapitulatif.html.slim
 │       │   │   ├── search_creneau.html.slim
 │       │   │   └── user_selection.html.slim
+│       │   ├── rdv_invitations
+│       │   │   ├── new.html.slim
+│       │   │   ├── show.html.slim
+│       │   │   └── show_confirmation.html.slim
 │       │   ├── rdv_wizard_steps
 │       │   │   ├── _actions.html.slim
 │       │   │   ├── _card.html.slim
@@ -1180,6 +1216,7 @@
 │       │   │   │   ├── new.html.slim
 │       │   │   │   └── show.html.slim
 │       │   │   ├── services
+│       │   │   │   ├── _service_toggle.html.slim
 │       │   │   │   ├── edit.html.slim
 │       │   │   │   └── new.html.slim
 │       │   │   ├── show.html.slim
@@ -1210,6 +1247,7 @@
 │       │   │   ├── _form.html.slim
 │       │   │   ├── _identity.html.slim
 │       │   │   ├── _notifications_preferences.html.slim
+│       │   │   ├── _pending_invitations.html.slim
 │       │   │   ├── _responsible_form_fields.html.slim
 │       │   │   ├── _responsible_form_wrapper.html.slim
 │       │   │   ├── _responsible_information.html.slim
@@ -1224,6 +1262,9 @@
 │       │       ├── _resource_versions_row.html.slim
 │       │       ├── _version.html.slim
 │       │       └── _versions.html.slim
+│       ├── administrate
+│       │   └── application
+│       │       └── _pagination.html.erb
 │       ├── agents
 │       │   ├── _preferences_menu.html.slim
 │       │   ├── agents
@@ -1240,6 +1281,8 @@
 │       │   ├── exports
 │       │   │   ├── _export_badge.html.slim
 │       │   │   └── index.html.slim
+│       │   ├── external_calendar_sync_executions
+│       │   │   └── index.html.slim
 │       │   ├── inscription_via_operateur
 │       │   │   └── show.html.slim
 │       │   ├── mailer
@@ -1253,16 +1296,21 @@
 │       │   │   └── home.html.slim
 │       │   ├── preferences
 │       │   │   └── show.html.slim
+│       │   ├── pro_connect_linking
+│       │   │   └── show.html.slim
+│       │   ├── pro_connect_step_up
+│       │   │   └── new.html.slim
 │       │   ├── rdv_plans
 │       │   │   ├── _calendar.html.slim
 │       │   │   ├── _header.html.slim
-│       │   │   ├── _modalites_field.html.slim
-│       │   │   ├── edit_modalites.html.slim
+│       │   │   ├── edit_lieu.html.slim
 │       │   │   ├── edit_motif.html.slim
+│       │   │   ├── edit_rdv_invitation.html.slim
 │       │   │   ├── edit_starts_at.html.slim
+│       │   │   ├── edit_starts_at_and_duration.html.slim
 │       │   │   ├── edit_user.html.slim
 │       │   │   ├── rdv.html.slim
-│       │   │   ├── show_starts_at.html.slim
+│       │   │   ├── rdv_invitation.html.slim
 │       │   │   └── summary
 │       │   │       ├── _agent.html.slim
 │       │   │       ├── _location_type.html.slim
@@ -1286,6 +1334,7 @@
 │       │   ├── demandes_support
 │       │   │   └── new.html.slim
 │       │   └── pages
+│       │       ├── aiguillage_agent.html.slim
 │       │       ├── aiguillage_role.html.slim
 │       │       └── aiguillage_usager.html.slim
 │       ├── application
@@ -1345,6 +1394,9 @@
 │       │   ├── has_many_with_names_field
 │       │   │   ├── _index.html.erb
 │       │   │   └── _show.html.erb
+│       │   ├── logo_field
+│       │   │   ├── _index.html.slim
+│       │   │   └── _show.html.slim
 │       │   ├── places_field
 │       │   │   ├── _form.html.slim
 │       │   │   ├── _index.html.slim
@@ -1354,7 +1406,14 @@
 │       │       ├── _index.html.slim
 │       │       └── _show.html.slim
 │       ├── kaminari
-│       │   └── dsfr
+│       │   ├── _first_page.html.slim
+│       │   ├── _gap.html.slim
+│       │   ├── _last_page.html.slim
+│       │   ├── _next_page.html.slim
+│       │   ├── _page.html.slim
+│       │   ├── _paginator.html.slim
+│       │   ├── _prev_page.html.slim
+│       │   └── administrate
 │       │       ├── _first_page.html.slim
 │       │       ├── _gap.html.slim
 │       │       ├── _last_page.html.slim
@@ -1369,12 +1428,13 @@
 │       │   ├── _degraded_service.html.slim
 │       │   ├── _flash.html.slim
 │       │   ├── _footer.html.slim
-│       │   ├── _force_2fa_notice.html.slim
 │       │   ├── _instance_migration_banner.html.slim
 │       │   ├── _lagaufre_button.html.erb
 │       │   ├── _left_menu.html.slim
 │       │   ├── _meet_the_team_banner.html.slim
+│       │   ├── _pro_connect_visio_notice.html.slim
 │       │   ├── _rdv_a_renseigner.html.slim
+│       │   ├── _rdv_plan_banner.html.slim
 │       │   ├── _rdv_solidarites_instance_name.html.slim
 │       │   ├── _super_admin_sign_in_as_warning.html.slim
 │       │   ├── application.html.slim
@@ -1428,15 +1488,20 @@
 │       │   │   └── webhook_mailer
 │       │   │       └── new_webhook_url.html.slim
 │       │   ├── common
+│       │   │   ├── _login_code.html.slim
 │       │   │   ├── _rdv_cancellable.html.slim
 │       │   │   └── _rdv_overview.html.slim
 │       │   ├── prescripteur_mailer
 │       │   │   └── rdv_created.html.slim
 │       │   └── users
+│       │       ├── email_change_mailer
+│       │       │   └── confirmation_code.html.slim
 │       │       ├── file_attente_mailer
 │       │       │   └── new_creneau_available.html.slim
 │       │       ├── login_code_mailer
 │       │       │   └── login_code.html.slim
+│       │       ├── rdv_invitation_mailer
+│       │       │   └── new_invitation.html.slim
 │       │       └── rdv_mailer
 │       │           ├── participation_cancelled.html.slim
 │       │           ├── rdv_cancelled.html.slim
@@ -1463,6 +1528,9 @@
 │       │   ├── confirmation.html.slim
 │       │   ├── new_beneficiaire.html.slim
 │       │   ├── new_prescripteur.html.slim
+│       │   └── show.html.slim
+│       ├── rdv_invitations
+│       │   ├── _details.html.slim
 │       │   └── show.html.slim
 │       ├── robots
 │       │   └── robots.text.erb
@@ -1540,6 +1608,10 @@
 │       │   └── users
 │       │       └── show.html.erb
 │       ├── users
+│       │   ├── email_change_confirmations
+│       │   │   └── new.html.slim
+│       │   ├── email_change_requests
+│       │   │   └── new.html.slim
 │       │   ├── file_attentes
 │       │   │   └── unsubscribe.html.slim
 │       │   ├── organisations
@@ -1580,7 +1652,6 @@
 ├── babel.config.js
 ├── bin
 │   ├── brakeman
-│   ├── bundle
 │   ├── rails
 │   ├── rake
 │   ├── rspec
@@ -1602,6 +1673,7 @@
 │   │   ├── production.rb
 │   │   └── test.rb
 │   ├── initializers
+│   │   ├── admin_basic_auth_password.rb
 │   │   ├── application_controller_renderer.rb
 │   │   ├── backtrace_silencers.rb
 │   │   ├── console.rb
@@ -1658,6 +1730,7 @@
 │   │   │   ├── lieu.fr.yml
 │   │   │   ├── motif.fr.yml
 │   │   │   ├── motif_category.fr.yml
+│   │   │   ├── oauth_application.fr.yml
 │   │   │   ├── operator.fr.yml
 │   │   │   ├── operator_manager.fr.yml
 │   │   │   ├── organisation.fr.yml
@@ -2035,12 +2108,29 @@
 │   │   ├── 20260630124356_add_index_on_text_search_terms.rb
 │   │   ├── 20260810170821_delete_devise_columns.rb
 │   │   ├── 20260812083736_add_api_call_params.rb
-│   │   └── 20260817155729_create_caldav_configs.rb
+│   │   ├── 20260812110917_add_rdv_invitations.rb
+│   │   ├── 20260813125613_backfill_participations_restricted_auth_tokens.rb
+│   │   ├── 20260817155729_create_caldav_configs.rb
+│   │   ├── 20260819121548_add_caldav_calendar_name_and_color_to_caldav_configs.rb
+│   │   ├── 20260819162425_set_null_false_to_access_rights_allow_to_manage_teams.rb
+│   │   ├── 20260819165403_validate_set_null_false_to_access_rights_allow_to_manage_teams.rb
+│   │   ├── 20260824085938_add_user_ami_profile_table.rb
+│   │   ├── 20260824141913_validate_rdv_invitation_foreign_keys.rb
+│   │   ├── 20260826074818_add_notifications_enabled_to_ami_hashes.rb
+│   │   ├── 20260902074544_add_index_on_agent_roles_agent_id_organisation_id.rb
+│   │   ├── 20260902132711_create_external_calendar_sync_executions.rb
+│   │   ├── 20260908124620_add_rdv_plans_by_invitation.rb
+│   │   ├── 20260908132903_add_rdv_plans_rdv_invitation_id_index.rb
+│   │   ├── 20260908133203_validate_rdv_plans_rdv_invitation_index_and_key.rb
+│   │   ├── 20260908153024_create_agent_trusted_devices.rb
+│   │   ├── 20260917124417_add_rdv_invitations_cancelled.rb
+│   │   └── 20260921135003_remove_caldav_columns_from_agents.rb
 │   ├── schema.rb
 │   ├── seeds
 │   │   ├── ccas.rb
 │   │   ├── cdad.rb
 │   │   ├── cnfs.rb
+│   │   ├── demarche_numerique.rb
 │   │   ├── medico_social.rb
 │   │   ├── rdv_insertion.rb
 │   │   ├── rdv_mairie.rb
@@ -2063,7 +2153,6 @@
 │   │   │   ├── zimbra_02.png
 │   │   │   └── zimbra_03.png
 │   │   └── write_doc.md
-│   ├── architecture-technique.md
 │   ├── bonnes-pratiques-de-tests.md
 │   ├── charger-territoire-sur-review-app.md
 │   ├── decisions
@@ -2089,9 +2178,11 @@
 │   ├── guide_integration.md
 │   ├── homepage.png
 │   ├── interconnexions
+│   │   ├── ami.md
 │   │   ├── ants.md
 │   │   ├── brevo.md
 │   │   ├── carto_anct.md
+│   │   ├── demarche_numerique.md
 │   │   ├── franceconnect.md
 │   │   ├── oauth.md
 │   │   ├── proconnect.md
@@ -2202,6 +2293,7 @@
 │   │   │   ├── lieux_controller_spec.rb
 │   │   │   ├── motifs_controller_spec.rb
 │   │   │   ├── organisations
+│   │   │   │   ├── configurations_controller_spec.rb
 │   │   │   │   └── stats_controller_spec.rb
 │   │   │   ├── organisations_controller_spec.rb
 │   │   │   ├── planning
@@ -2228,6 +2320,9 @@
 │   │   │   ├── caldav_sync_controller_spec.rb
 │   │   │   ├── inscription_via_operateur_controller_spec.rb
 │   │   │   ├── pages_controller_spec.rb
+│   │   │   ├── pro_connect_linking_controller_spec.rb
+│   │   │   ├── pro_connect_step_up_controller_spec.rb
+│   │   │   ├── registrations_controller_spec.rb
 │   │   │   ├── sessions_by_code_controller_spec.rb
 │   │   │   └── sessions_controller_spec.rb
 │   │   ├── concerns
@@ -2252,10 +2347,7 @@
 │   │   ├── absence.rb
 │   │   ├── access_token.rb
 │   │   ├── agent.rb
-│   │   ├── agent_role.rb
-│   │   ├── agent_service.rb
-│   │   ├── agent_territorial_access_right.rb
-│   │   ├── agent_territorial_role.rb
+│   │   ├── agent_*.rb  (5 files)
 │   │   ├── agents_rdv.rb
 │   │   ├── annotations.rb
 │   │   ├── blog_post.rb
@@ -2263,6 +2355,8 @@
 │   │   ├── creneau.rb
 │   │   ├── export.rb
 │   │   ├── external_calendar_event.rb
+│   │   ├── external_calendar_sync_execution.rb
+│   │   ├── external_calendar_sync_execution_log.rb
 │   │   ├── external_reference.rb
 │   │   ├── file_attente.rb
 │   │   ├── instance_export.rb
@@ -2278,6 +2372,7 @@
 │   │   ├── plage_ouverture.rb
 │   │   ├── prescripteur.rb
 │   │   ├── rdv.rb
+│   │   ├── rdv_invitation.rb
 │   │   ├── rdv_plan.rb
 │   │   ├── receipt.rb
 │   │   ├── referent_assignation.rb
@@ -2291,6 +2386,7 @@
 │   │   ├── territory_creation_request.rb
 │   │   ├── territory_service.rb
 │   │   ├── user.rb
+│   │   ├── user_ami_profile.rb
 │   │   ├── user_profile.rb
 │   │   ├── webhook_endpoint.rb
 │   │   └── zone.rb
@@ -2318,12 +2414,16 @@
 │   │   │   ├── agent_can_sync_his_account_to_outlook_spec.rb
 │   │   │   ├── agents
 │   │   │   │   ├── agent_can_crud_intervenants_spec.rb
+│   │   │   │   ├── agent_can_search_agents_spec.rb
 │   │   │   │   ├── crud_on_agents_spec.rb
 │   │   │   │   └── with_or_without_service_spec.rb
+│   │   │   ├── caldav
+│   │   │   │   └── agent_can_see_caldav_sync_logs_spec.rb
 │   │   │   ├── calendar_export_spec.rb
 │   │   │   ├── configuration
 │   │   │   │   ├── admin_can_configure_the_organisation_spec.rb
-│   │   │   │   └── admin_can_configure_the_territory_spec.rb
+│   │   │   │   ├── admin_can_configure_the_territory_spec.rb
+│   │   │   │   └── basic_agent_can_view_configuration_read_only_spec.rb
 │   │   │   ├── create_rdv_with_rdv_plan_spec.rb
 │   │   │   ├── disabled_fields_spec.rb
 │   │   │   ├── editing_territorial_admins_spec.rb
@@ -2335,6 +2435,7 @@
 │   │   │   │   └── with_or_without_service_spec.rb
 │   │   │   ├── oauth_provider_spec.rb
 │   │   │   ├── online_booking
+│   │   │   │   ├── agent_access_spec.rb
 │   │   │   │   ├── agent_can_test_online_booking_spec.rb
 │   │   │   │   ├── configuration_spec.rb
 │   │   │   │   └── motif_spec.rb
@@ -2350,6 +2451,12 @@
 │   │   │   │   └── warning_on_plage_ouverture_spec.rb
 │   │   │   ├── rdv_collectifs
 │   │   │   │   └── finding_creneau_spec.rb
+│   │   │   ├── rdv_invitations
+│   │   │   │   ├── cancelling_spec.rb
+│   │   │   │   └── creating_spec.rb
+│   │   │   ├── rdv_plans
+│   │   │   │   ├── edit_starts_at_and_duration_spec.rb
+│   │   │   │   └── switching_from_invitation_to_direct_choice_spec.rb
 │   │   │   ├── rdv_wizard
 │   │   │   │   ├── agent_can_create_rdv_with_wizard_spec.rb
 │   │   │   │   ├── step2_spec.rb
@@ -2403,6 +2510,7 @@
 │   │   │   ├── integration_demarches_simplifiees
 │   │   │   │   ├── configuration_par_administrateur_spec.rb
 │   │   │   │   ├── connexion_par_administrateur_spec.rb
+│   │   │   │   ├── prise_de_rdv_avec_invitation_spec.rb
 │   │   │   │   └── prise_de_rdv_spec.rb
 │   │   │   ├── liens_vers_rdv_aide_num_spec.rb
 │   │   │   ├── managing_dead_ends_for_new_accounts_spec.rb
@@ -2414,6 +2522,7 @@
 │   │   │   │   └── en_doublon_spec.rb
 │   │   │   ├── produit
 │   │   │   │   ├── infos_de_contact_dans_reservation_en_ligne_spec.rb
+│   │   │   │   ├── invitation_a_prendre_rdv_spec.rb
 │   │   │   │   ├── planning_multi_agents_spec.rb
 │   │   │   │   ├── rendez_vous_entre_agents_spec.rb
 │   │   │   │   ├── rendez_vous_prescripteur_externe_spec.rb
@@ -2426,8 +2535,7 @@
 │   │   │   ├── can_add_a_user_to_a_rdv_collectif_spec.rb
 │   │   │   ├── can_cancel_rdv_for_a_user_spec.rb
 │   │   │   ├── can_create_rdv_for_a_user_in_rdv_mairie_spec.rb
-│   │   │   ├── can_create_rdv_for_a_user_spec.rb
-│   │   │   └── motifs_for_invitation_only_spec.rb
+│   │   │   └── can_create_rdv_for_a_user_spec.rb
 │   │   ├── super_admin
 │   │   │   ├── can_search_user_spec.rb
 │   │   │   ├── creating_a_new_account_spec.rb
@@ -2448,6 +2556,7 @@
 │   │   └── users
 │   │       ├── account
 │   │       │   ├── logout_spec.rb
+│   │       │   ├── user_can_change_their_email_spec.rb
 │   │       │   ├── user_can_delete_account_spec.rb
 │   │       │   ├── user_can_login_using_code_spec.rb
 │   │       │   ├── user_can_login_using_france_connect_spec.rb
@@ -2458,6 +2567,7 @@
 │   │       ├── prise_de_rdv
 │   │       │   ├── creneau_devenu_indisponible_spec.rb
 │   │       │   ├── depuis_invitation_spec.rb
+│   │       │   ├── depuis_lien_du_motif_spec.rb
 │   │       │   ├── depuis_lien_public_organisation_spec.rb
 │   │       │   ├── depuis_lien_resin_spec.rb
 │   │       │   ├── login_multi_fiche_spec.rb
@@ -2468,6 +2578,7 @@
 │   │       │   ├── motif_sans_service_spec.rb
 │   │       │   ├── motif_telephonique_spec.rb
 │   │       │   ├── motif_visio_spec.rb
+│   │       │   ├── par_invitation_spec.rb
 │   │       │   ├── pour_un_proche_spec.rb
 │   │       │   ├── reprendre_rdv_apres_annulation_spec.rb
 │   │       │   ├── sectorisation_with_two_territories_spec.rb
@@ -2477,6 +2588,8 @@
 │   │       │   ├── selection_dune_organisation_spec.rb
 │   │       │   ├── sur_rdv_service_public_spec.rb
 │   │       │   └── sur_rdv_solidarites_spec.rb
+│   │       ├── rdv_invitations
+│   │       │   └── cancelled_spec.rb
 │   │       ├── reminders_spec.rb
 │   │       ├── reschedule_rdv_spec.rb
 │   │       ├── user_can_access_rdv_via_short_link_spec.rb
@@ -2532,6 +2645,7 @@
 │   │   │   │   ├── step1_spec.rb
 │   │   │   │   └── step2_spec.rb
 │   │   │   └── user_form_spec.rb
+│   │   ├── aiguillage_agent_form_spec.rb
 │   │   ├── beneficiaire_form_spec.rb
 │   │   ├── compte_spec.rb
 │   │   ├── demande_support_form_spec.rb
@@ -2539,6 +2653,7 @@
 │   │   ├── prescripteur_rdv_wizard_spec.rb
 │   │   ├── relative_user_form_spec.rb
 │   │   └── users
+│   │       ├── email_change_request_form_spec.rb
 │   │       ├── login_code_request_form_spec.rb
 │   │       ├── rdv_booking_form_cas_ants_multiple_predemandes_spec.rb
 │   │       ├── rdv_booking_form_cas_ants_unique_predemande_spec.rb
@@ -2570,6 +2685,7 @@
 │   │   │   └── mass_destroy_events_and_absences_job_spec.rb
 │   │   ├── cron_job
 │   │   │   ├── anonymize_old_receipts_spec.rb
+│   │   │   ├── destroy_expired_agent_trusted_devices_job_spec.rb
 │   │   │   ├── destroy_expired_export_file_blobs_spec.rb
 │   │   │   ├── destroy_inactive_agents_spec.rb
 │   │   │   ├── destroy_old_absences_job_spec.rb
@@ -2596,6 +2712,7 @@
 │   │   │   └── sync_event_job_spec.rb
 │   │   ├── participations_export_job_spec.rb
 │   │   ├── rdv_upcoming_reminder_job_spec.rb
+│   │   ├── rdvs_export_job_spec.rb
 │   │   ├── sms_job_spec.rb
 │   │   ├── synchronize_crm_page_job_spec.rb
 │   │   ├── transfer_email_reply_job_spec.rb
@@ -2628,6 +2745,7 @@
 │   │   │   │   ├── absence_mailer_preview.rb
 │   │   │   │   ├── account_deletion_mailer_preview.rb
 │   │   │   │   ├── export_mailer_preview.rb
+│   │   │   │   ├── login_code_mailer_preview.rb
 │   │   │   │   ├── plage_ouverture_mailer_preview.rb
 │   │   │   │   ├── rdv_mailer_preview.rb
 │   │   │   │   ├── reply_transfer_mailer_preview.rb
@@ -2636,6 +2754,7 @@
 │   │   │   ├── custom_devise_mailer_preview.rb
 │   │   │   ├── prescripteur_mailer_preview.rb
 │   │   │   └── users
+│   │   │       ├── email_change_mailer_preview.rb
 │   │   │       ├── file_attente_mailer_preview.rb
 │   │   │       ├── login_code_mailer_preview.rb
 │   │   │       └── rdv_mailer_preview.rb
@@ -2647,9 +2766,11 @@
 │   │   ├── agent_role_spec.rb
 │   │   ├── agent_spec.rb
 │   │   ├── agent_territorial_role_spec.rb
+│   │   ├── agent_trusted_device_spec.rb
 │   │   ├── agents_rdv_spec.rb
 │   │   ├── annotation_spec.rb
 │   │   ├── blog_post_spec.rb
+│   │   ├── caldav_config_spec.rb
 │   │   ├── concerns
 │   │   │   ├── agent
 │   │   │   │   ├── custom_devise_token_auth_user_omniauth_callbacks_spec.rb
@@ -2686,6 +2807,7 @@
 │   │   ├── creneau_spec.rb
 │   │   ├── domain_spec.rb
 │   │   ├── export_spec.rb
+│   │   ├── external_calendar_sync_execution_spec.rb
 │   │   ├── factories_spec.rb
 │   │   ├── lieu_spec.rb
 │   │   ├── login_code_spec.rb
@@ -2697,6 +2819,7 @@
 │   │   ├── participation_spec.rb
 │   │   ├── plage_ouverture_spec.rb
 │   │   ├── prescripteur_spec.rb
+│   │   ├── rdv_invitation_spec.rb
 │   │   ├── rdv_plan_spec.rb
 │   │   ├── rdv_spec.rb
 │   │   ├── sector_attribution_spec.rb
@@ -2718,7 +2841,9 @@
 │   │   │   ├── agent_territorial_role_policy_spec.rb
 │   │   │   ├── lieu_policy_spec.rb
 │   │   │   ├── motif_policy_spec.rb
+│   │   │   ├── organisation_policy_spec.rb
 │   │   │   ├── plage_ouverture_policy_spec.rb
+│   │   │   ├── rdv_invitation_policy_spec.rb
 │   │   │   ├── rdv_policy_spec.rb
 │   │   │   ├── sector_attribution_policy_spec.rb
 │   │   │   ├── sector_policy_spec.rb
@@ -2736,6 +2861,7 @@
 │   │   │   ├── lieu_policy_spec.rb
 │   │   │   ├── migration_policy_spec.rb
 │   │   │   ├── motif_policy_spec.rb
+│   │   │   ├── oauth_application_policy_spec.rb
 │   │   │   ├── organisation_policy_spec.rb
 │   │   │   ├── prescripteur_policy_spec.rb
 │   │   │   ├── rdv_policy_spec.rb
@@ -2745,9 +2871,11 @@
 │   │   │   ├── user_policy_spec.rb
 │   │   │   └── user_profile_policy_spec.rb
 │   │   └── user
+│   │       ├── file_attente_policy_spec.rb
 │   │       ├── participation_policy_spec.rb
 │   │       ├── rdv_booking_policy_spec.rb
-│   │       └── rdv_policy_spec.rb
+│   │       ├── rdv_policy_spec.rb
+│   │       └── user_policy_spec.rb
 │   ├── presenters
 │   │   ├── admin
 │   │   │   └── participation_presenter_spec.rb
@@ -2773,6 +2901,7 @@
 │   │   │   ├── agents_controller_search_spec.rb
 │   │   │   ├── blog
 │   │   │   │   └── posts_controller_index_spec.rb
+│   │   │   ├── rdv_plans_spec.rb
 │   │   │   ├── sessions_controller_spec.rb
 │   │   │   └── users_controller_search_spec.rb
 │   │   ├── api
@@ -2785,6 +2914,7 @@
 │   │   │   ├── justice
 │   │   │   │   └── lieu_spec.rb
 │   │   │   ├── rdvinsertion
+│   │   │   │   ├── agent_auth_spec.rb
 │   │   │   │   ├── creneau_availability_request_spec.rb
 │   │   │   │   ├── motif_categories_request_spec.rb
 │   │   │   │   ├── motif_category_territories_request_spec.rb
@@ -2793,11 +2923,11 @@
 │   │   │   │   └── users_request_spec.rb
 │   │   │   ├── v1
 │   │   │   │   ├── absences_spec.rb
+│   │   │   │   ├── agent_auth_base_controller_spec.rb
 │   │   │   │   ├── agents_spec.rb
 │   │   │   │   ├── api_call_logging_spec.rb
 │   │   │   │   ├── authentication
-│   │   │   │   │   ├── devise_token_auth_spec.rb
-│   │   │   │   │   └── shared_secret_spec.rb
+│   │   │   │   │   └── devise_token_auth_spec.rb
 │   │   │   │   ├── lieux_spec.rb
 │   │   │   │   ├── motifs_spec.rb
 │   │   │   │   ├── organisations_spec.rb
@@ -2844,16 +2974,22 @@
 │   │   ├── participations_spec.rb
 │   │   ├── prendre_rdv_spec.rb
 │   │   ├── redirect_controller_spec.rb
+│   │   ├── restricted_auth_token_rate_limits_spec.rb
 │   │   ├── robots_spec.rb
 │   │   ├── super_admins
-│   │   │   └── organisations_spec.rb
+│   │   │   ├── organisations_spec.rb
+│   │   │   └── sessions_spec.rb
 │   │   └── users
 │   │       ├── creneaux_short_link_spec.rb
 │   │       ├── participations_spec.rb
+│   │       ├── rdv_invitations_spec.rb
 │   │       └── redirect_to_rdv_insertion_spec.rb
 │   ├── services
 │   │   ├── admin_creates_agent_spec.rb
+│   │   ├── admin_updates_agent_spec.rb
 │   │   ├── agent_removal_spec.rb
+│   │   ├── agent_sensitive_account_calculator_spec.rb
+│   │   ├── ami_spec.rb
 │   │   ├── annuaire_service_public_spec.rb
 │   │   ├── ants_api_spec.rb
 │   │   ├── creneau_wizard_for_users
@@ -2985,4 +3121,4 @@
 ├── vendor
 │   └── .keep
 └── yarn.lock
-459 directories, 2528 files
+476 directories, 2651 files
