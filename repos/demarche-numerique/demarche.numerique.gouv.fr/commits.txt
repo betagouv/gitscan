@@ -1,6 +1,400 @@
+2026-09-25T14:09:44Z - 7f1226426 - Paul Chavard : Merge pull request #14094 from demarche-numerique/push-owltlowyswml
+2026-09-25T11:40:46+02:00 - 1095ee2c1 - Paul Chavard : ci: run the WarpBuild jobs on Ubuntu 24.04, our production version
+2026-09-25T11:37:14+02:00 - 1bf920aa3 - Paul Chavard : ci: bump GitHub Actions off Node 20 and CodeQL v3
+2026-09-25T11:11:33+02:00 - 82db2f13e - simon lehericey : fix(procedure): check the scheme of the lien_dpo link before rendering it
+2026-09-25T11:11:33+02:00 - 6ec9df92a - simon lehericey : feat(links): normalize the links already stored
+2026-09-25T11:11:33+02:00 - 481176270 - simon lehericey : feat(links): normalize the links an admin types
+2026-09-25T11:11:08+02:00 - 7782e99f9 - simon lehericey : fix(url_validator): reject local hosts by default, and match emails with StrictEmailValidator
+2026-09-25T11:11:08+02:00 - 3bec032ec - simon lehericey : fix(service): check the faq and contact links with the url validator
+2026-09-25T11:02:16+02:00 - ff24127c5 - simon lehericey : fix(no_private_ip_url): classify the host with IPAddr and reject internal names
+2026-09-25T10:20:11+02:00 - bbfb3c812 - Colin Darie : perf(expired): skip the warnings that delivery would drop
+2026-09-25T10:20:11+02:00 - 5ec48d99a - Colin Darie : refactor(expired): fix the typo in INACTIVE_USER_RETENTION_IN_YEAR
+2026-09-25T10:20:10+02:00 - f97494367 - Colin Darie : fix(user): record the deletion reason it was given
+2026-09-25T10:20:10+02:00 - 84cc25e43 - Colin Darie : fix(expired): one failing phase no longer skips the others
+2026-09-25T10:20:09+02:00 - f16f29eed - Colin Darie : perf(expired): drop the leftover GROUP BY on the second segment
+2026-09-25T10:20:08+02:00 - 92986585f - Colin Darie : fix(expired): notify the least recently active users first
+2026-09-25T10:20:08+02:00 - 433b8dc6f - Colin Darie : feat(expired): expire accounts that never signed in
+2026-09-25T10:20:04+02:00 - 1015f3b0e - Colin Darie : perf(users): index the inactivity clock expression
+2026-09-25T09:45:16Z - 640bf7faf - Eric Leroy-Terquem : Merge pull request #14079 from demarche-numerique/feat/rna-degraded-4-value
+2026-09-25T09:37:48Z - fabf0bcec - simon lehericey : refactor(champs): a degraded fetch no longer writes data
+2026-09-25T09:37:48Z - f587dba02 - simon lehericey : refactor(champs): write the siret and rna value as the usager types it
+2026-09-25T09:37:48Z - 36878a333 - simon lehericey : fix(maintenance): follow the rna fetch result, which no longer carries the value
+2026-09-25T09:31:44Z - d8c56e2d8 - Eric Leroy-Terquem : Merge pull request #14072 from demarche-numerique/feat/rna-degraded-3-rna
+2026-09-25T09:24:05Z - f38a21ce8 - Eric Leroy-Terquem : feat(rna): keep the graphql contract and word the blocking messages for two champs
+2026-09-25T09:24:05Z - e66871f7c - simon lehericey : fix(rna): name the champs that block the decision in the instructeur message
+2026-09-25T09:24:05Z - cbb5555a5 - simon lehericey : fix(rna): only degrade on a payload we cannot read, not on any error
+2026-09-25T09:24:05Z - 67aef3c81 - Eric Leroy-Terquem : feat(rna): show the degraded state to the usager and the instructeur
+2026-09-25T09:24:05Z - 64e21d1d7 - Eric Leroy-Terquem : feat(rna): degrade instead of blocking when API Entreprise cannot answer
+2026-09-25T09:24:05Z - 4ee6be7d0 - simon lehericey : refactor(rna): let callers pass the key the association API looks up
+2026-09-25T09:24:05Z - 3768e8949 - simon lehericey : test(graphql): pin rna to a verified association, not to a typed value
+2026-09-25T09:24:05Z - 185e7a01a - Eric Leroy-Terquem : feat(rna): replay degraded rna champs every two hours
+2026-09-25T09:22:50Z - 275793413 - Paul Chavard : Merge pull request #14093 from demarche-numerique/harden-url-validator
+2026-09-25T09:18:22Z - a872d5bf3 - Eric Leroy-Terquem : Merge pull request #14059 from demarche-numerique/feat/rna-degraded-2-cron-base
+2026-09-25T09:16:08Z - 0e07ce6f3 - Eric Leroy-Terquem : Merge pull request #14058 from demarche-numerique/feat/rna-degraded-1-concern
+2026-09-25T08:31:53Z - 02ba59405 - Colin Darie : Merge pull request #14051 from demarche-numerique/purge-comptes-inactifs
+2026-09-25T07:31:01Z - 301f430cd - Colin Darie : Merge pull request #14089 from demarche-numerique/search-tsvector-cleanup
+2026-09-24T20:28:00Z - 3635f6d33 - Paul Chavard : Merge pull request #14074 from demarche-numerique/push-vxmnwxmmtmmw
+2026-09-24T19:20:42Z - 6f6525cc8 - Mathieu Magnin : Merge pull request #14082 from demarche-numerique/tech-worktreeinclude
+2026-09-24T19:15:00+02:00 - 48d610cf6 - Mathieu Magnin : chore: copy .envrc into new git worktrees too
+2026-09-24T17:19:12+02:00 - 3b8bf3bdd - Colin Darie : refactor(search): stop writing the search_terms text columns
+2026-09-24T17:19:02+02:00 - eb977ef45 - Colin Darie : test(search): check the indexing on the stored tsvectors
+2026-09-24T16:55:47Z - 73f97aa12 - Benoit Queyron : Merge pull request #14038 from demarche-numerique/feat/annuaire-education-export-columns
+2026-09-24T16:54:17+02:00 - 89eb2a584 - Colin Darie : chore(flipper): remove the search_terms_tsvector feature row
+2026-09-24T16:54:17+02:00 - 1d0411c5f - Colin Darie : test(search): index the usager dossier before searching it
+2026-09-24T16:54:16+02:00 - b0dd9062b - Colin Darie : chore(db): drop the search_terms expression indexes
+2026-09-24T16:54:15+02:00 - 6b437bb76 - Colin Darie : chore(maintenance): run the search tsvector backfill on first deploy
+2026-09-24T16:54:11+02:00 - c9bf435b1 - Colin Darie : refactor(search): drop the tsvector expression path and its flag
+2026-09-24T14:56:12+02:00 - 5a6dcb4ef - Corinne Durrmeyer : fix(a11y): Prevent overflow in help menu due to some email addresses
+2026-09-24T13:49:21Z - c0ea05778 - Mathieu Magnin : Merge pull request #14088 from demarche-numerique/a11y-overflow-help-menu
+2026-09-24T13:09:38Z - 2f19e1543 - Corinne Durrmeyer : Merge pull request #14086 from demarche-numerique/a11y-instructor-page-title
+2026-09-24T11:14:27+02:00 - a3510cf39 - Corinne Durrmeyer : fix(a11y): Adapt page title in the instructor view
+2026-09-24T07:20:44Z - a8228bdd2 - Corinne Durrmeyer : Merge pull request #14044 from demarche-numerique/a11y-avis-nav-link-explicit
+2026-09-24T07:19:22Z - 07bc836ba - Corinne Durrmeyer : Merge pull request #14046 from demarche-numerique/gaufre-inline-svg-icon
+2026-09-24T05:26:58Z - 2b0f5b8e6 - mfo : Merge pull request #14016 from demarche-numerique/auto/haml-migration/batch-eadc202f
+2026-09-23T21:39:19+02:00 - befc3e01c - Paul Chavard : feat(revision): aggregated type de champ tree of a procedure
+2026-09-23T21:39:19+02:00 - 7ba756cdf - Paul Chavard : feat(revision): store the type de champ tree of new drafts and procedure clones
+2026-09-23T21:39:19+02:00 - 644198e6b - Paul Chavard : chore(revision): maintenance task backfilling the type de champ trees
+2026-09-23T21:39:19+02:00 - 3387b6aa5 - Paul Chavard : feat(revision): store the type de champ tree with every edit of a draft
+2026-09-23T21:39:19+02:00 - 1b9956893 - Paul Chavard : feat(revision): store the type de champ tree on publication
+2026-09-23T21:39:18+02:00 - 88542afac - Paul Chavard : feat(revision): type de champ tree value objects built from coordinates
+2026-09-23T19:50:48Z - a6c5a6048 - Paul Chavard : Merge pull request #14005 from demarche-numerique/push-xostwssxxkuz
+2026-09-23T18:49:06+02:00 - 9f11783c4 - Mathieu Magnin : chore: copy .env into new git worktrees
+2026-09-23T18:45:29+02:00 - 569a96951 - Mathieu Magnin : test: keep generated type de champ ids clear of hand-picked stable ids
+2026-09-23T17:24:37+02:00 - 36abcc01f - Paul Chavard : fix(llm): clone a shared header section before the structure improver edits it
+2026-09-23T17:17:28+02:00 - 113c78f30 - simon lehericey : fix(task): walk etablissements by id ranges to destroy orphans
+2026-09-23T16:51:01Z - e5fef0e6f - Mathieu Magnin : Merge pull request #14060 from demarche-numerique/fix-flaky-rebase-spec-stable-id
+2026-09-23T16:44:03Z - 4cca7dffa - Mathieu Magnin : Merge pull request #14056 from demarche-numerique/fix/expert-mail-revocation-guard
+2026-09-23T16:14:59+02:00 - 4ef5f8f8f - Eric Leroy-Terquem : refactor(cron): turn the degraded champ retry into a parametrized base class
+2026-09-23T16:14:58+02:00 - d06bdea73 - Eric Leroy-Terquem : refactor(api_entreprise): extract the failure mapping out of the siret champ
+2026-09-23T16:13:41+02:00 - bbc865e0d - Paul Chavard : test(referentiel): look up the source referentiel champ in layout order
+2026-09-23T16:11:20+02:00 - 1baf7f1a4 - mfo : refactor(haml): migrate identite_entreprise to ERB
+2026-09-23T16:11:12+02:00 - a10de3dda - mfo : refactor(haml): migrate mandataire_infos to ERB
+2026-09-23T16:11:04+02:00 - 8f6d1417f - mfo : refactor(haml): migrate infos_generales to ERB
+2026-09-23T16:11:00+02:00 - 74bb0b959 - mfo : refactor(haml): migrate identite_entreprise_bilan_detail to ERB
+2026-09-23T16:10:56+02:00 - d31a427cf - mfo : refactor(haml): migrate france_connect_informations_notice to ERB
+2026-09-23T16:10:51+02:00 - 454dec7ee - mfo : refactor(haml): migrate piece_justificative show to ERB
+2026-09-23T16:10:41+02:00 - 33b708ca1 - mfo : refactor(haml): migrate multiple_drop_down_list show to ERB
+2026-09-23T15:36:00Z - 3e389b6fa - Paul Chavard : Merge pull request #14076 from demarche-numerique/push-kytxuozttoux
+2026-09-23T15:27:35+02:00 - bfbffb4c3 - Paul Chavard : feat(logic): check conditions against the validation limits of number champs
+2026-09-23T15:27:35+02:00 - 83a8000f7 - Paul Chavard : feat(logic): reject conditions with a branch that can never be true
+2026-09-23T15:27:34+02:00 - f266a8d5d - Paul Chavard : feat(admin): reject conditions that can never be true
+2026-09-23T15:27:34+02:00 - 7efa7cc6f - Paul Chavard : feat(logic): add Logic::Solver, the check that a condition can be true
+2026-09-23T15:27:26+02:00 - 11adbb4df - Paul Chavard : feat(logic): add Logic::PossibleValues, the values a conditionable champ can still take
+2026-09-23T15:25:14Z - 7502d0064 - LeSim : Merge pull request #14077 from demarche-numerique/fix-destroy-orphan-etablissements-timeout
+2026-09-23T14:44:01+02:00 - d852f7f86 - benoitqueyron : refactor(annuaire_education): read the dossier view from value_json
+2026-09-23T14:44:01+02:00 - 160a57f2a - benoitqueyron : feat(annuaire_education): backfill value_json for existing champs
+2026-09-23T14:44:01+02:00 - 1239ec5c9 - benoitqueyron : feat(annuaire_education): expose standard address export columns
+2026-09-23T14:43:50+02:00 - 951e6dad3 - benoitqueyron : feat(annuaire_education): populate value_json from fetched data
+2026-09-23T14:23:20Z - 06910752c - Paul Chavard : Merge pull request #13756 from demarche-numerique/push-ozuuvqvvmvnv
+2026-09-23T13:31:22Z - 2331f8823 - Kara Diaby : Merge pull request #14065 from demarche-numerique/footer-numerique-gouv
+2026-09-23T13:01:49+02:00 - 2ea0758b6 - Kara Diaby : feat(footer): replace dinum logo with numerique.gouv marker
+2026-09-23T11:21:05+02:00 - 7e4c1a582 - Paul Chavard : ci: run the linter, JavaScript and report jobs on WarpBuild
+2026-09-23T11:07:57+02:00 - dde3f7bd4 - Mathieu Magnin : fix(avis): guard every expert mail against a revocation
+2026-09-23T11:02:26+02:00 - 69d9f29d9 - Mathieu Magnin : refactor(procedures): migrate the labels tile template to ERB
+2026-09-23T10:48:14+02:00 - dcd642231 - Mathieu Magnin : fix(procedures): align the labels tile title with the other tiles
+2026-09-23T10:45:24Z - bee642670 - Mathieu Magnin : Merge pull request #14057 from demarche-numerique/labels-tile-title-alignment
+2026-09-23T10:24:58+02:00 - 970a459e8 - Paul Chavard : ci: cancel the previous run of a pull request on a new push
+2026-09-23T10:21:13+02:00 - 13d6f8d13 - Paul Chavard : ci: run the workflows on every pull request, whatever its base
+2026-09-23T10:13:28+02:00 - e0a3c24ac - Eric Leroy-Terquem : feat(siret): enter the degraded state instead of building a stub
+2026-09-23T10:13:28+02:00 - ae077b802 - Eric Leroy-Terquem : feat(usager): tell the user a degraded SIRET is kept
+2026-09-23T10:13:28+02:00 - 028a5ca62 - Eric Leroy-Terquem : fix(api_entreprise): refuse an etablissement the champ cannot save
+2026-09-23T09:57:44+02:00 - b1356d2a3 - simon lehericey : fix(api_entreprise): treat a 409 as retryable
+2026-09-23T09:57:44+02:00 - 550918b91 - simon lehericey : fix(api_entreprise): retry a 200 we cannot read
+2026-09-23T09:57:44+02:00 - 51c7648a6 - simon lehericey : fix(champs): keep a state transition from dating the dossier
+2026-09-23T09:57:44+02:00 - 47a8a48c4 - Eric Leroy-Terquem : feat(api_entreprise): fetch an etablissement without the adapter layer
+2026-09-23T09:57:44+02:00 - 2319a663b - Eric Leroy-Terquem : feat(external_data): add a degraded state to the champ state machine
+2026-09-23T09:50:01+02:00 - 6e985f620 - simon lehericey : feat(usager): show an error when an identity document could not be processed
+2026-09-23T09:42:31+02:00 - 88fd39f91 - Mathieu Magnin : fix(messagerie): stop notifying experts whose access has been revoked
+2026-09-23T09:30:00Z - d27891f98 - Paul Chavard : Merge pull request #14052 from demarche-numerique/push-rqpksnmwsxvl
+2026-09-23T09:26:06Z - bee5df8ff - Paul Chavard : Merge pull request #14061 from demarche-numerique/push-mowktwkrmqrs
+2026-09-23T09:17:57Z - 725127b54 - Paul Chavard : Merge pull request #14017 from demarche-numerique/push-rxxnumvsoqlq
+2026-09-23T08:56:48Z - fea577856 - Eric Leroy-Terquem : Merge pull request #13928 from demarche-numerique/feat/siret-degraded-5-conditions
+2026-09-23T08:49:57Z - ed2242745 - Eric Leroy-Terquem : feat(siret): block submission when the siret champ feeds a condition
+2026-09-23T08:49:57Z - 663e81944 - Eric Leroy-Terquem : fix(siret): block on every rule a degraded champ feeds
+2026-09-23T08:48:41Z - d96a4b1cb - Mathieu Magnin : Merge pull request #14054 from demarche-numerique/no-message-notification-to-revoked-experts
+2026-09-23T08:43:02Z - 6bc6759ca - LeSim : Merge pull request #13919 from demarche-numerique/feat/siret-degraded-4-token
+2026-09-23T08:41:53Z - a9bc79b7e - LeSim : Merge pull request #13918 from demarche-numerique/feat/siret-degraded-3-cron
+2026-09-23T08:41:43Z - 2fe51e1da - Paul Chavard : Merge pull request #14025 from demarche-numerique/push-pzvqmlznxlwy
+2026-09-23T08:24:41Z - fd233d015 - Eric Leroy-Terquem : db(procedures): record when API Entreprise rejects the token
+2026-09-23T08:24:41Z - f04a1ace4 - simon lehericey : fix(siret): keep a procedure with an unusable token out of the batch
+2026-09-23T08:24:41Z - 83280a521 - Eric Leroy-Terquem : feat(instructeur): tell apart an INSEE outage from a rejected token
+2026-09-23T08:24:41Z - 7af8ac043 - Eric Leroy-Terquem : feat(admin): warn the administrateur when their token is rejected
+2026-09-23T08:24:41Z - 20554d8bf - Eric Leroy-Terquem : feat(siret): stop retrying a procedure whose token is rejected
+2026-09-23T08:24:41Z - 15ffba08f - Eric Leroy-Terquem : feat(api_entreprise): alert operations when the instance token is refused
+2026-09-23T08:24:40Z - d6730f7fc - Eric Leroy-Terquem : feat(siret): retry degraded champs from a cron
+2026-09-23T08:24:40Z - 794f43bfa - Eric Leroy-Terquem : db(champs): index the degraded champs scanned by the cron
+2026-09-23T08:24:40Z - 29128003d - simon lehericey : chore(siret): degrade the champs left with a stub etablissement
+2026-09-23T08:24:40Z - 22861ecdc - simon lehericey : fix(siret): keep the user free to submit while a retry is scheduled
+2026-09-23T08:19:27Z - 6017d5da0 - LeSim : Merge pull request #13917 from demarche-numerique/feat/siret-degraded-2-champ
+2026-09-23T08:14:02Z - 9b2498edd - Paul Chavard : Merge pull request #14040 from demarche-numerique/push-spyonuwxwluw
+2026-09-23T08:01:51Z - 4be1cedc1 - LeSim : Merge pull request #13901 from demarche-numerique/usager-processing-error
+2026-09-23T07:35:55Z - 7999edfef - LeSim : Merge pull request #14039 from demarche-numerique/remove-trivial-prod-gems
+2026-09-22T21:46:35+02:00 - 9d280d4cd - simon lehericey : chore(deps): parse the FAQ front matter with a regexp and YAML
+2026-09-22T21:46:35+02:00 - 40fc4280f - simon lehericey : fix: hide the language selector from browsers preferring french
+2026-09-22T17:49:45+02:00 - f3dd0e03b - Mathieu Magnin : fix(a11y): draw the gaufre trigger icon as inline SVG
+2026-09-22T17:38:54+02:00 - 40277ab12 - simon lehericey : docs: what the sandboxed decoders change for the ops
+2026-09-22T17:38:54+02:00 - 326bb9a21 - simon lehericey : feat(security): patch the sandbox onto Active Storage where BWRAP_ISOLATION asks
+2026-09-22T17:32:00+02:00 - 3570fe70b - Paul Chavard : fix(ineligibilite): the alert answers an edit of what the rule reads
+2026-09-22T17:02:19+02:00 - 655f07ce3 - Colin Darie : fix(instructeur): dossier url in near deletion email
+2026-09-22T17:01:40+02:00 - 587eb7683 - Paul Chavard : fix(columns): an untouched checkbox reads false, not nil
+2026-09-22T17:01:39+02:00 - 3d47e0d00 - Paul Chavard : refactor(dossier): champs are the projected champs, drop filled_champs
+2026-09-22T16:37:12+02:00 - 4dca158c8 - simon lehericey : perf(instructeur): preload notices and templates of private annotations
+2026-09-22T16:00:29Z - 3d502f0aa - Colin Darie : Merge pull request #14045 from colinux/fix-near-deletion-administration-url
+2026-09-22T15:45:53Z - 493a5f1af - LeSim : Merge pull request #13855 from demarche-numerique/sandbox-previewer-variant
+2026-09-22T15:38:29Z - 38ecd6950 - LeSim : Merge pull request #14043 from demarche-numerique/perf-instructeur-quick-wins
+2026-09-22T15:25:08Z - d813bbb4a - Colin Darie : Merge pull request #14036 from demarche-numerique/justificatif-motivation-empty-file
+2026-09-22T15:08:03Z - 886eb3fa7 - Paul Chavard : Merge pull request #14024 from demarche-numerique/push-nkrntznollwn
+2026-09-22T14:04:12+02:00 - bf8483ad5 - simon lehericey : perf: preload blob attachments and their record in the messagerie
+2026-09-22T14:02:26+02:00 - 2bb46ea0c - Mathieu Magnin : fix(a11y): tell assistive technologies what the Avis badge counts
+2026-09-22T14:00:33+02:00 - 9c7a5f3df - Mathieu Magnin : refactor(main_navigation): convert the instructeur/expert navigation to ERB
+2026-09-22T13:26:23+02:00 - eb98ec33c - simon lehericey : perf(instructeur): resolve followed dossiers in one query for batch operations
+2026-09-22T13:26:23+02:00 - a5af986eb - simon lehericey : perf(instructeur): load attachment variants only on the gallery tab
+2026-09-22T13:26:23+02:00 - 9e89566c0 - simon lehericey : perf(instructeur): stop preloading the procedure logo
+2026-09-22T13:26:22+02:00 - 51bf18e45 - simon lehericey : perf(instructeur): memoize the procedure loaded from params
+2026-09-22T12:10:42+02:00 - d9f67a301 - Paul Chavard : Compute the stats map legend from quintiles of the data
+2026-09-22T11:45:46+02:00 - 1b440d003 - simon lehericey : chore(deps): drop logstash-event, build the logstash fields inline
+2026-09-22T11:43:51+02:00 - a0bdb8cec - simon lehericey : chore(deps): replace http_accept_language with Rack::Utils.q_values
+2026-09-22T11:41:50+02:00 - 409569b62 - simon lehericey : chore(deps): replace string-similarity with DidYouMean::Levenshtein
+2026-09-22T11:29:44+02:00 - e68264024 - simon lehericey : feat(security): the two hooks Active Storage decodes through
+2026-09-22T11:28:21+02:00 - b81578f3b - simon lehericey : feat(security): a transformer that resizes in a subprocess
+2026-09-22T11:27:55+02:00 - 9cb30ff28 - Paul Chavard : refactor(dossier): flat champs are derived from the root champs
+2026-09-22T11:22:00+02:00 - 8124bc9fd - Colin Darie : fix(instruction): reject an empty justificatif de motivation
+2026-09-22T11:21:58+02:00 - 6a26f91dd - Colin Darie : refactor(dossier): attach the justificatif with the state transition
+2026-09-22T11:11:10+02:00 - 17548a12e - simon lehericey : feat(monitoring): tag Sentry events with the blob a job was handed
+2026-09-22T11:10:51+02:00 - 47b925d2f - simon lehericey : feat(security): refuse to boot where the isolation is asked for and impossible
+2026-09-22T11:10:51+02:00 - 3d44f3891 - simon lehericey : feat(monitoring): export what the sandboxed decoders cost
+2026-09-22T11:10:50+02:00 - d0e1d09b5 - simon lehericey : feat(security): decode the uploads BlobProcessorJob mutates through SandboxedVips
+2026-09-22T11:10:25+02:00 - 40735240b - simon lehericey : feat(security): libvips reached through a subprocess
+2026-09-22T10:29:00+02:00 - 71dedbac8 - Eric Leroy-Terquem : refactor(experts): name the ExpertsProcedure revocation filter with a scope
+2026-09-22T10:29:00+02:00 - 6a8a0e2f1 - Eric Leroy-Terquem : fix(experts): only enforce an admin revocation on predefined-list procedures
+2026-09-22T09:29:28+02:00 - 3b6ed1835 - Colin Darie : fix(dossier): skip the antivirus scan on the attestation de dépôt
+2026-09-22T09:19:36Z - 5e0ba8652 - LeSim : Merge pull request #13854 from demarche-numerique/sandbox-vips-blob-processor
+2026-09-22T09:13:17+02:00 - 977dc7c99 - Eric Leroy-Terquem : fix(experts): stop emailing the dossier decision to revoked experts
+2026-09-22T09:09:22+02:00 - 0f5018f51 - simon lehericey : chore: remove sendinblue initializer duplicated by brevo.rb
+2026-09-22T09:09:21+02:00 - c700579d4 - simon lehericey : chore(deps): remove unused production gems
+2026-09-22T08:42:18Z - a73388faf - Eric Leroy-Terquem : Merge pull request #14029 from demarche-numerique/fix/expert-revocation-only-in-predefined-list-mode
+2026-09-22T08:20:43Z - e674a0c2a - Eric Leroy-Terquem : Merge pull request #14032 from demarche-numerique/fix/no-decision-email-to-revoked-experts
+2026-09-22T08:20:35Z - b6279355f - Eric Leroy-Terquem : Merge pull request #14030 from demarche-numerique/fix/expert-avis-badge-uses-scopes
+2026-09-22T08:11:40Z - d0113c282 - Paul Chavard : Merge pull request #14007 from demarche-numerique/push-oupnqmosssly
+2026-09-22T08:08:21Z - bcb66aafe - Paul Chavard : Merge pull request #14006 from demarche-numerique/push-okyyqsrwuxor
+2026-09-22T07:56:53Z - 5a416d74c - Colin Darie : Merge pull request #14023 from colinux/fix-estimation-admin
+2026-09-22T07:35:36Z - efe1dc9d1 - Colin Darie : Merge pull request #14033 from colinux/attestation-depot-antivirus
+2026-09-22T07:16:24Z - 8e89d59cf - LeSim : Merge pull request #14026 from demarche-numerique/remove-unused-gems
+2026-09-21T19:14:29+02:00 - 24fdcd5f6 - Eric Leroy-Terquem : fix(experts): leave revoked avis out of the badge count
+2026-09-21T19:14:25+02:00 - 5af5c5c73 - Eric Leroy-Terquem : refactor(experts): count the avis badge with the Avis scopes
+2026-09-21T14:57:30+02:00 - 159b10051 - Colin Darie : fix(stats): always respects visible flag, even for admins
+2026-09-21T14:02:20Z - 2f802e412 - Colin Darie : Merge pull request #13736 from demarche-numerique/emails-declaratifs-switch
+2026-09-21T14:02:19Z - e86694f4e - Colin Darie : Merge pull request #13734 from demarche-numerique/emails-declaratifs-feature
+2026-09-21T12:00:36+02:00 - 312b103f7 - Colin Darie : chore(maintenance): drop the legacy mail tables copy task
+2026-09-21T12:00:35+02:00 - 70db82dd1 - Colin Darie : feat(admin): stop cloning the depose email template of a legacy declarative procedure
+2026-09-21T12:00:34+02:00 - 2d7406591 - Colin Darie : feat(admin): warn before a declarative setting change drops the depose template
+2026-09-21T12:00:33+02:00 - d8378c510 - Colin Darie : feat(admin): let an admin switch a declarative procedure to the combined email
+2026-09-21T12:00:30+02:00 - c54aeff74 - Colin Darie : feat(procedure): reset the depose email template when the declarative setting changes
+2026-09-21T12:00:08+02:00 - ed8382d54 - Colin Darie : feat(admin): announce the declarative setting on the email templates screen
+2026-09-21T12:00:08+02:00 - 76c8f3782 - Colin Darie : fix(admin): show the attestation alert on the combined declarative email
+2026-09-21T12:00:07+02:00 - b35ab7990 - Colin Darie : feat(admin): serve the email card descriptions by declarative context
+2026-09-21T12:00:06+02:00 - c8d9bf235 - Colin Darie : fix(procedure): check the attestation tag on the combined declarative email
+2026-09-21T12:00:06+02:00 - 4f48ded8b - Colin Darie : feat(procedure): order the email cards by declarative setting
+2026-09-21T12:00:05+02:00 - 83035d77e - Colin Darie : feat(dossier): send a single email on declarative submission
+2026-09-21T12:00:05+02:00 - 119e374c0 - Colin Darie : feat(dossier): post a single messagerie comment on declarative submission
+2026-09-21T12:00:04+02:00 - ade03fbe9 - Colin Darie : feat(procedure): resolve the depose email type from the declarative setting
+2026-09-21T12:00:03+02:00 - 2a4561c62 - Colin Darie : feat(emails): add the two combined declarative email templates
+2026-09-21T12:00:03+02:00 - 0a4e515c6 - Colin Darie : feat(procedure): keep customized declarative procedures on the legacy emails
+2026-09-21T12:00:02+02:00 - 7c7961bb7 - Colin Darie : feat(procedure): add the combined declarative email flag
+2026-09-21T12:00:01+02:00 - a74843866 - Colin Darie : refactor(admin): scope the email template form on a constant param key
+2026-09-21T12:00:01+02:00 - 2948985d0 - Colin Darie : refactor(procedure): extract the email templates concern
+2026-09-21T12:00:00+02:00 - b135c0ae0 - Colin Darie : refactor(mailer): rename send_en_construction_notification to send_depose_notification
+2026-09-21T11:59:59+02:00 - 085fd0ef3 - Colin Darie : refactor(emails): pick the attestation paragraph inside the default template
+2026-09-21T11:59:56Z - e6c9fc44d - Mathieu Magnin : Merge pull request #13995 from demarche-numerique/admin-routing-options-get-state-change
+2026-09-21T11:32:19+02:00 - d32b684c0 - Paul Chavard : Cap the emails listed in groupe instructeurs flash messages
+2026-09-21T11:20:34+02:00 - 1962c3965 - Paul Chavard : fix(repetition): refresh the edit footer when a row is added or removed
+2026-09-21T11:06:11+02:00 - 2ba67f8f5 - Paul Chavard : test: give factory types de champ a stable id from the sequence
+2026-09-21T10:49:08+02:00 - 2e62ef217 - Paul Chavard : Read the champ modification date from value_updated_at everywhere
+2026-09-21T10:49:07+02:00 - d6385a8ce - Paul Chavard : Date the arrival of external data on a champ like an edit
+2026-09-21T10:20:44Z - 87af40dcf - Paul Chavard : Merge pull request #13946 from demarche-numerique/push-klqxvyspzktk
+2026-09-21T10:11:02Z - b648da994 - Paul Chavard : Merge pull request #14019 from demarche-numerique/push-vtrorlkovlzs
+2026-09-21T10:10:51Z - 36890261a - Paul Chavard : Merge pull request #14018 from demarche-numerique/push-tvzpmnrnrqsm
+2026-09-21T10:05:06+02:00 - 6c999bfa8 - Paul Chavard : fix(type_de_champ): keep the notice of an explication when cloning it
+2026-09-21T10:01:50+02:00 - 44f4efbd2 - Paul Chavard : chore(type_de_champ): maintenance task splitting the types de champ shared between procedures
+2026-09-21T09:49:15+02:00 - 7febb582f - simon lehericey : fix(sentry): tag the dossier of every job argument
+2026-09-21T09:49:13+02:00 - d009cf796 - simon lehericey : fix(sentry): tag the dossier from the route
+2026-09-21T09:28:09Z - c4aa0aba8 - LeSim : Merge pull request #14010 from demarche-numerique/sentry-tag-dossier
+2026-09-21T09:04:04Z - 9d1c39699 - Paul Chavard : Merge pull request #14013 from demarche-numerique/claude/bold-darwin-d5rrxr
+2026-09-21T08:36:56Z - a60e8ed4f - Paul Chavard : Merge pull request #14015 from demarche-numerique/push-ulyxyxxmyxsr
+2026-09-21T07:43:44Z - c55181ab1 - Mathieu Magnin : Merge pull request #13996 from demarche-numerique/instructeur-pro-connect-restriction-all-actions
+2026-09-19T14:01:26+02:00 - 41dd78900 - Paul Chavard : feat(type_de_champ): attach types de champ to their procedure
+2026-09-18T15:00:48+02:00 - 82876545c - Paul Chavard : chore(deps): bump tiptap from 2.2.4 to 2.27.3
+2026-09-18T14:30:26+02:00 - aa3ab6c33 - Pierre de La Morinerie : config: improve documentation of env vars
+2026-09-18T14:12:54+02:00 - 01c818325 - Pierre de La Morinerie : config: increase default DB_POOL size
+2026-09-18T13:37:02Z - 79a5ecfd9 - LeSim : Merge pull request #14002 from demarche-numerique/increase-db-pool-size
+2026-09-18T13:23:51Z - a8fd8ffab - LeSim : Merge pull request #14000 from demarche-numerique/secu-graphql-label-type-confusion
+2026-09-18T13:05:51Z - d91a1f84e - Paul Chavard : Merge pull request #14003 from demarche-numerique/push-vvrpvvkvytmt
+2026-09-18T12:35:08Z - d26d19714 - LeSim : Merge pull request #13985 from adullact/improve-env-docs
+2026-09-18T11:20:46+02:00 - b3a059681 - mfo : fix(security): resolve a Label to its own type in the v2 schema
+2026-09-18T11:20:38+02:00 - 121aafb95 - mfo : test(security): prove a Label global id passes as another type
+2026-09-18T11:09:14+02:00 - a322f9c5e - Paul Chavard : refactor(champs): return RepetitionRow objects from RepetitionChamp#rows
+2026-09-18T11:09:13+02:00 - 98d2c4cd7 - Paul Chavard : chore(ujs): remove @rails/ujs
+2026-09-18T11:09:13+02:00 - 401f10e5b - Paul Chavard : refactor(ujs): drop the three remote: true forms
+2026-09-18T10:52:33+02:00 - 07a041a6a - Paul Chavard : refactor(ujs): drop the three remote: true forms
+2026-09-18T10:50:26+02:00 - dddf443aa - simon lehericey : db: drop the per-state counters from stats
+2026-09-18T10:50:05+02:00 - 83cbfe32a - simon lehericey : feat(stats): drop the dossiers repartition pie chart
+2026-09-18T10:50:05+02:00 - 535a1f590 - simon lehericey : refactor(stats): stop computing the per-state dossier counters
+2026-09-18T09:49:54+02:00 - bd7b6c00a - Paul Chavard : fix(dossiers): respond with html to Turbo form redirects on dossier pages
+2026-09-18T09:15:55Z - 8585c4d78 - Paul Chavard : Merge pull request #13971 from demarche-numerique/push-rlkmnpqzsxzv
+2026-09-18T09:15:28+02:00 - 9414cb502 - Paul Chavard : fix(spec): keep Capybara.save_path set while capybara-screenshot saves a failure dump
+2026-09-18T08:59:28Z - 29f4962b0 - LeSim : Merge pull request #13944 from demarche-numerique/push-tskvxolnmxts
+2026-09-18T08:55:45Z - 335356f89 - LeSim : Merge pull request #13888 from demarche-numerique/stats-remove-dossiers-repartition
+2026-09-18T08:51:29Z - a76cfb8fa - Paul Chavard : Merge pull request #13998 from demarche-numerique/push-pnvlotwyynny
+2026-09-18T08:51:13Z - 8e0758a32 - LeSim : Merge pull request #13926 from demarche-numerique/sidekiq-8
+2026-09-18T08:40:06Z - d73259ced - LeSim : Merge pull request #13943 from demarche-numerique/push-zomllllvtyno
+2026-09-18T08:26:20Z - b2fc95a30 - LeSim : Merge pull request #13949 from demarche-numerique/push-xrrqnsqnpolm
+2026-09-18T08:24:39Z - 038a6878c - LeSim : Merge pull request #13961 from demarche-numerique/push-ktzolrwlluxp
+2026-09-18T08:22:03Z - 13352398c - LeSim : Merge pull request #13978 from demarche-numerique/job-arguments-telemetry
+2026-09-18T07:47:30Z - 468987aee - LeSim : Merge pull request #13997 from demarche-numerique/push-xxnwzxlxtqul
+2026-09-17T23:16:36+02:00 - c9a8a4314 - Paul Chavard : refactor(ujs): replace data-disable-with with Turbo's submitter handling
+2026-09-17T23:05:29+02:00 - d63d13b0c - Paul Chavard : refactor(ujs): replace data-confirm with data-turbo-confirm
+2026-09-17T22:47:37+02:00 - c182e2f7f - Paul Chavard : refactor(batch): render the instruction modal outside the batch operation form
+2026-09-17T22:13:38+02:00 - 03961aa39 - Paul Chavard : fix: re-selecting the current referentiel value no longer submits undecryptable data
+2026-09-17T21:10:16Z - dd0056bd7 - Paul Chavard : Merge pull request #13941 from demarche-numerique/push-yqlowwuqmuux
+2026-09-17T20:15:58Z - 6116ab354 - Paul Chavard : Merge pull request #13940 from demarche-numerique/push-ruputlmqtpto
+2026-09-17T18:53:47Z - 8a12193cd - mfo : Merge pull request #13992 from demarche-numerique/experimental-remove-dead-views
+2026-09-17T18:44:48+02:00 - 35b3d92db - Mathieu Magnin : refactor(pro_connect): share the redirection for a procedure restricted to ProConnect
+2026-09-17T18:44:43+02:00 - d6ca6644d - Mathieu Magnin : fix(instructeur): apply the procedure ProConnect restriction to every instructeur action
+2026-09-17T18:44:40+02:00 - 3fbf22924 - Mathieu Magnin : fix(routing): stop configuring custom routing on a GET request
+2026-09-17T17:53:57+02:00 - e06f40a23 - Colin Darie : feat(sentry): tag the mail and the blob a failing job names
+2026-09-17T17:53:57+02:00 - 1f8cf3954 - Colin Darie : fix(sentry): drop the arguments of a mail delivery job
+2026-09-17T17:53:56+02:00 - 604dc8bf7 - Colin Darie : fix(logs): stop printing what a mail is handed in the Rails log
+2026-09-17T17:53:55+02:00 - b0d28f5fb - Colin Darie : fix(logs): filter the strings a mailer receives
+2026-09-17T17:53:53+02:00 - de658f507 - Colin Darie : fix(logs): convert nested job arguments to global ids
+2026-09-17T17:26:23+02:00 - d84eb9de2 - Paul Chavard : refactor(ujs): replace data-method links with button_to opted into Turbo
+2026-09-17T17:21:40+02:00 - 9809b4050 - mfo : chore: remove dead views
+2026-09-17T16:07:25+02:00 - 60d45304b - Paul Chavard : Hand maplibre-gl its worker URL through Vite
+2026-09-17T16:06:28+02:00 - 862e22035 - Paul Chavard : Require WebGL2 in the map support check
+2026-09-17T16:01:59+02:00 - c598cb232 - mfo : refactor: remove dead shared/champs/epci/_show partial
+2026-09-17T16:01:55+02:00 - 2065a87e6 - mfo : refactor(haml): migrate shared dossiers header to ERB
+2026-09-17T16:01:48+02:00 - ae7b69efe - mfo : refactor(haml): migrate shared/champs/iban/_show to ERB
+2026-09-17T16:00:57+02:00 - 3d7e395d2 - mfo : refactor(avis): share the blocked avis message between both views
+2026-09-17T15:47:57+02:00 - be4776229 - Colin Darie : fix(operation_log): hash the content that is kept
+2026-09-17T15:47:48+02:00 - 53212594b - Colin Darie : fix(bill_signature): read the attachment that was requested
+2026-09-17T15:47:33Z - 284100a05 - Colin Darie : Merge pull request #13990 from demarche-numerique/dol-canonical-digest
+2026-09-17T15:43:43+02:00 - 2c1078c7c - Paul Chavard : Bump maplibre-gl from 4.5 to 6.10
+2026-09-17T15:43:42+02:00 - d9db4eb39 - Paul Chavard : Remove unused updated_since? scopes
+2026-09-17T15:31:40Z - 856283076 - LeSim : Merge pull request #13968 from demarche-numerique/tech/api-entreprise-token-nil-only
+2026-09-17T15:30:50+02:00 - 9d17f78ef - Mathieu Magnin : Style the gaufre trigger with DSFR classes instead of custom CSS
+2026-09-17T15:24:44+02:00 - 7daafa542 - Mathieu Magnin : Tech: load the gaufre from the ANCT CDN
+2026-09-17T15:24:44+02:00 - 1910d22e1 - Mathieu Magnin : Tech: label the gaufre "Services de LaSuite"
+2026-09-17T15:23:44+02:00 - f39aec699 - Mathieu Magnin : a11y: keep the gaufre trigger responsive after a window resize
+2026-09-17T15:23:44+02:00 - 528b98fb1 - Mathieu Magnin : style(herb): format lasuite_gaufre_component
+2026-09-17T15:23:43+02:00 - ad379ccbb - Mathieu Magnin : Tech: move gaufre init/dark-mode into a Stimulus controller
+2026-09-17T15:23:43+02:00 - 07f5e1815 - Mathieu Magnin : Tech: drop dead BUTTON_IDS constant and make gaufre init idempotent
+2026-09-17T15:23:42+02:00 - d8ae96822 - Mathieu Magnin : Tech: extract the gaufre integration into a dedicated component with i18n
+2026-09-17T15:23:42+02:00 - 70f33bf62 - Mathieu Magnin : Tech: i18n the gaufre button aria-label via a shared key
+2026-09-17T15:23:41+02:00 - c8e366f67 - Mathieu Magnin : Tech: support dark mode for the La Suite gaufre
+2026-09-17T15:23:41+02:00 - 84fda5666 - Mathieu Magnin : Tech: fix gaufre icon color in dark mode via currentColor
+2026-09-17T15:23:41+02:00 - 152f2a22e - Mathieu Magnin : Tech: translate the gaufre "show more" labels to French
+2026-09-17T15:23:40+02:00 - beac1a7cf - Mathieu Magnin : Tech: use La Suite's exact gaufre SVG, scoping its id per button
+2026-09-17T15:23:40+02:00 - 342ae9197 - Mathieu Magnin : Tech: migrate La Suite gaufre widget to v2
+2026-09-17T15:21:00+02:00 - b2d37727a - simon lehericey : test(mailers): expect LF line breaks in mail bodies
+2026-09-17T15:16:34Z - bd7a2645c - Paul Chavard : Merge pull request #13954 from demarche-numerique/push-qywvnoppxnwo
+2026-09-17T15:16:04Z - accd91d60 - Paul Chavard : Merge pull request #13958 from demarche-numerique/push-wzwlxkrvrktk
+2026-09-17T15:08:24+02:00 - 2c6a4c3ef - dependabot[bot] : chore(deps): bump mail from 2.8.1 to 2.9.1
+2026-09-17T15:07:51+02:00 - 64b97720f - Colin Darie : fix(search): evaluate the tsvector flag against the current user
+2026-09-17T15:01:35Z - 939a295fc - Paul Chavard : Merge pull request #13983 from demarche-numerique/push-tsknlrrsktzs
+2026-09-17T14:55:40Z - da0c6efbf - mfo : feat(maintenance): add a task that re-syncs the cron schedules
+2026-09-17T14:55:40Z - c8657ba45 - mfo : Upgrade to sidekiq 8, sidekiq-cron 2 and connection_pool 3
+2026-09-17T14:55:40Z - 9bfc168d0 - mfo : refactor(cron): move the jobs:schedule logic onto Cron::CronJob
+2026-09-17T14:54:42+02:00 - 772fd0394 - mfo : fix(security): resolve presentation columns within their own procedure
+2026-09-17T14:54:30+02:00 - 5b48c38d7 - mfo : test(security): prove cross-procedure Column reference in ProcedurePresentation
+2026-09-17T14:50:06Z - 535304fea - mfo : Merge pull request #13889 from demarche-numerique/reliable-fetch-sidekiq-8
+2026-09-17T14:49:46+02:00 - 8f22f9954 - Colin Darie : fix(search): pass the annotations flag as a keyword argument
+2026-09-17T14:47:29Z - dabac1bca - Mathieu Magnin : Merge pull request #13955 from demarche-numerique/public-stats-throttle-and-cache
+2026-09-17T14:39:54+02:00 - 375283f90 - simon lehericey : test(select): load the DSFR select styles in Select.test.tsx
+2026-09-17T14:37:39Z - 038b51273 - Paul Chavard : Merge pull request #13988 from demarche-numerique/push-plmrmxmxkxml
+2026-09-17T14:07:02Z - 16a65ec7c - mfo : Merge pull request #13963 from demarche-numerique/auto/haml-migration/batch-c94c2850
+2026-09-17T14:05:25Z - 9dc4a0d2c - mfo : Merge pull request #13991 from demarche-numerique/refacto-avis-creatable-rule
+2026-09-17T13:44:29Z - 721790b5e - Mathieu Magnin : Merge pull request #13262 from demarche-numerique/gaufre-v2-lasuite
+2026-09-17T13:40:59Z - f9ed6df0e - LeSim : Merge pull request #13795 from demarche-numerique/dependabot/bundler/mail-2.9.1
+2026-09-17T13:23:33Z - e1f494d1c - Colin Darie : Merge pull request #13974 from demarche-numerique/rnf-ca-bundle
+2026-09-17T13:17:43Z - 8eb40beab - Colin Darie : Merge pull request #13947 from demarche-numerique/manager-otp-confirmation
+2026-09-17T13:14:55Z - d5d512e67 - Colin Darie : Merge pull request #13989 from demarche-numerique/search-tsvector-flag-actor
+2026-09-17T13:00:46Z - dd3b87430 - mfo : Merge pull request #13973 from demarche-numerique/secu-column-idor-cross-procedure
+2026-09-17T12:52:48Z - 95afa6dc7 - Paul Chavard : Merge pull request #13987 from demarche-numerique/fix-select-test-contain-inline-size
+2026-09-17T12:52:33Z - c2ab4314a - Mathieu Magnin : Merge pull request #13957 from demarche-numerique/attachment-destroy-updatable-dossier
+2026-09-17T11:45:27+02:00 - 823de4813 - mfo : fix(drop-down): read the referentiel items instead of querying per champ
+2026-09-17T11:45:27+02:00 - 3d537c2ac - mfo : fix(drop-down): compare the referentiel item ids as strings
+2026-09-17T11:45:27+02:00 - 129a2aad3 - mfo : fix(drop-down): accept exactly the options the advanced select offers
+2026-09-17T11:45:26+02:00 - 2e913a2b7 - Paul Chavard : Give the drop-down "value in options" rule a single owner
+2026-09-17T11:26:11+02:00 - c4724ab81 - Paul Chavard : Count procedures instead of listing them when a service cannot be deleted
+2026-09-17T11:16:37+02:00 - 58b630d28 - Paul Chavard : Keep a long selected label from widening the Select trigger
+2026-09-17T10:58:02+02:00 - 0a1af5aab - Mathieu Magnin : fix(avis): list in the avis form only the linked dossiers that accept avis
+2026-09-17T10:57:17Z - 192668b39 - Mathieu Magnin : Merge pull request #13975 from demarche-numerique/avis-creation-server-side-checks
+2026-09-17T10:55:25+02:00 - b6ae8c4fe - Mathieu Magnin : refactor(avis): share the avis creation rule between the views and the controllers
+2026-09-17T10:29:52+02:00 - 1ab0acc72 - mfo : perf(tests): aggregate_failures — spec/mailers/dossier_mailer_spec.rb
+2026-09-17T10:29:48+02:00 - 4f0571fc2 - mfo : perf(tests): seeds + let_it_be + aggregate_failures — spec/mailers/avis_mailer_spec.rb
+2026-09-17T10:29:40+02:00 - 15cb8437c - mfo : perf(tests): let_it_be + seed accessor — spec/lib/recovery/dossier_life_cycle_spec.rb
+2026-09-17T10:17:30Z - 2c7ffdadc - Paul Chavard : Merge pull request #13976 from demarche-numerique/push-rotyqvqonoww
+2026-09-17T10:13:19+02:00 - fd0a01a4b - benoitqueyron : fix(prefill service): both api return the name of the 'organisme', not the name of the 'service'
+2026-09-17T10:13:19+02:00 - 993a2be02 - benoitqueyron : converts the service form to herb
+2026-09-17T10:13:15+02:00 - 536b43a90 - benoitqueyron : refactor(service): simplifies messages relating to pre-filling
+2026-09-17T10:11:47+02:00 - f3c82a713 - benoitqueyron : fix(service): handle organisations whose information cannot be disclosed
+2026-09-17T10:11:47+02:00 - cf7336a63 - benoitqueyron : fix(prefill service): pre-filled if data has been successfully retrieved (not only if the user has not entered any data) in order to ensure consistency between the SIRET and the information of service
+2026-09-17T10:11:47+02:00 - c5da1e48e - benoitqueyron : fix(service): handle department for abroad service
+2026-09-17T10:11:47+02:00 - 20782c078 - benoitqueyron : fix(service): it is better to have imprecise information than false information for type_organisme
+2026-09-17T10:11:38+02:00 - 8862871f4 - benoitqueyron : refactor(services controller): uses siret validator to valid siret for prefill
+2026-09-17T10:09:24+02:00 - 15053e8a8 - Colin Darie : Anchor the RNF API call on the ministry root CA
+2026-09-17T09:58:23+02:00 - 4df86ef97 - benoitqueyron : fix(service): prefill also when updating an existing service
+2026-09-17T09:54:31+02:00 - 2889bd8e3 - Mathieu Magnin : fix(avis): limit linked and batch avis to the dossiers that accept them
+2026-09-17T09:54:25+02:00 - 08ca37550 - Mathieu Magnin : fix(avis): check on the server that a dossier still accepts avis requests
+2026-09-17T09:50:42Z - 13aa0383e - Paul Chavard : Merge pull request #13921 from demarche-numerique/push-mnpsunruqtxx
+2026-09-17T09:48:39+02:00 - f4bfd2c98 - mfo : fix(security): make /invites landing uniform for unknown emails
+2026-09-17T09:48:29+02:00 - 6b0147130 - mfo : test(security): prove anonymous account-existence oracle on /invites/:id
+2026-09-17T09:42:27Z - b95c28432 - Paul Chavard : Merge pull request #13977 from demarche-numerique/push-plpukqnxppkl
+2026-09-17T09:22:41+02:00 - b74d3d18f - Mathieu Magnin : fix(stats): keep the public stats endpoint within its cache and rate limits
+2026-09-17T08:34:23Z - d69d0ee4c - mfo : Merge pull request #13972 from demarche-numerique/auto/test-optimization/batch-262ca3d1
+2026-09-17T08:26:02+02:00 - e6b24461a - Mathieu Magnin : Remove the super admin and huge title stylesheets
+2026-09-17T08:22:23Z - e585e0249 - Benoit Queyron : Merge pull request #13644 from demarche-numerique/etq-admin-improvements-services-data
+2026-09-17T07:52:55Z - d5a4b9193 - mfo : Merge pull request #13970 from demarche-numerique/secu-invites-enumeration-oracle
+2026-09-17T06:31:34Z - 87aef4441 - Mathieu Magnin : Merge pull request #13942 from demarche-numerique/cleanup-super-admin-scss
+2026-09-17T06:27:17Z - 586907fd3 - Mathieu Magnin : Merge pull request #13798 from demarche-numerique/api-token-backfill-eternal
+2026-09-16T17:40:09+02:00 - 6704687c8 - Eric Leroy-Terquem : perf(siret): walk the primary key in ranges
+2026-09-16T17:30:10+02:00 - cca7b18ba - simon lehericey : refactor(admin): stop permitting api_entreprise_token on the procedure form
+2026-09-16T17:30:04+02:00 - 6b6a81c32 - simon lehericey : refactor(procedures): test the API Entreprise token against nil alone
+2026-09-16T17:27:31+02:00 - 22ae2baa6 - simon lehericey : chore(procedures): nullify the blank API Entreprise tokens
+2026-09-16T16:52:45+02:00 - 01460db28 - simon lehericey : fix(openstack): replay the bulk delete on transient failures
+2026-09-16T15:46:01Z - 741aa900d - LeSim : Merge pull request #13965 from demarche-numerique/perf/strip-whitespace-siret-task
+2026-09-16T15:35:29Z - 23fcc0d4d - Eric Leroy-Terquem : Merge pull request #13967 from demarche-numerique/tech/nullify-blank-api-entreprise-token
+2026-09-16T15:33:00Z - e969ba855 - LeSim : Merge pull request #13966 from demarche-numerique/fix/openstack-bulk-delete-retry
+2026-09-16T13:33:44+02:00 - 4a39fb81f - Mathieu Magnin : fix(attachments): only delete a champ attachment while the dossier can be updated
+2026-09-16T13:28:51Z - a51a3ae44 - Mathieu Magnin : Merge pull request #13945 from demarche-numerique/admin-pro-connect-restriction-all-actions
+2026-09-16T12:08:35+02:00 - f3072e190 - Colin Darie : feat(manager): route super admin deletion through a confirmation page
+2026-09-16T12:08:34+02:00 - b5a4e5821 - Colin Darie : feat(manager): confirm role account deletion with a fresh OTP code
+2026-09-16T12:08:28+02:00 - a33b859ad - Colin Darie : feat(manager): confirm user deletion with a fresh OTP code
+2026-09-16T11:58:19+02:00 - f8351835c - Paul Chavard : chore: remove the dead attachments#show endpoint and invites modal partial
+2026-09-16T11:37:28+02:00 - e4575efc5 - Eric Leroy-Terquem : chore(siret): strip the whitespace left in external_id
+2026-09-16T11:16:46+02:00 - e5c85043c - Paul Chavard : fix(graphql): resolve global ids only for the models the API loads
+2026-09-16T11:03:32+02:00 - 002df5cf8 - Colin Darie : feat(manager): confirm the procedure access grant
+2026-09-16T11:03:30+02:00 - faeb11f0f - Colin Darie : refactor(manager): extract the OTP confirmation page
+2026-09-16T10:58:48+02:00 - e7c05c80c - Mathieu Magnin : fix(rack_attack): throttle the prefill API on its real nested path
+2026-09-16T10:48:31Z - 2182ecfcb - Colin Darie : Merge pull request #13930 from demarche-numerique/admin-confirmation-redirect
+2026-09-16T10:39:54+02:00 - 5f0919a18 - Colin Darie : Precompile the test assets outside of public/assets
+2026-09-16T10:15:01+02:00 - e6a08c695 - Paul Chavard : test(editor): guard typed values against a neighbour's re-render
+2026-09-16T10:15:01+02:00 - 7022a0fbd - Paul Chavard : test: load the email verification spec and run the account merge in a browser
+2026-09-16T09:43:10Z - 41df5226f - Eric Leroy-Terquem : Merge pull request #13956 from demarche-numerique/chore/strip-whitespace-siret-external-id
+2026-09-16T09:24:47+02:00 - a43912d51 - Paul Chavard : editor: pick a field's type in a React select with icons and search
+2026-09-16T09:24:45+02:00 - 230a08005 - Paul Chavard : test: pin the clock at noon in the date-vs-timestamp specs
+2026-09-16T09:23:26Z - 11e1fb22e - Mathieu Magnin : Merge pull request #13951 from demarche-numerique/prefill-api-throttle-path
+2026-09-16T08:56:08Z - 9cbc41c79 - Colin Darie : Merge pull request #13950 from demarche-numerique/dev-assets-skip-manifest
+2026-09-16T08:05:20Z - 564bfc12b - Mathieu Magnin : Merge pull request #13923 from demarche-numerique/referentiel-url-domain-validation
+2026-09-16T08:04:56Z - b178e0561 - Paul Chavard : Merge pull request #13948 from demarche-numerique/push-wuswkstqwvlq
+2026-09-16T07:46:26Z - dc4c15cdc - Paul Chavard : Merge pull request #13935 from demarche-numerique/push-suvtwozyvolk
 2026-09-16T00:03:12Z - d115d885b - Kara Diaby : Merge pull request #13841 from demarche-numerique/fix-messagerie-pieces-jointes
+2026-09-15T19:23:05+02:00 - 35748d569 - Mathieu Magnin : fix(api_tokens): keep removing a procedure from a token without ProConnect
+2026-09-15T19:23:05+02:00 - 076446536 - Mathieu Magnin : fix(admin): apply the procedure ProConnect restriction to every admin action
 2026-09-15T19:07:59+02:00 - 793556db4 - Kara Diaby : refactor(messagerie): translate the file size error and use token_list
 2026-09-15T18:27:56+02:00 - 7bfe61d06 - Mathieu Magnin : Keep a locked super admin account locked until unlocked from a console
+2026-09-15T17:40:17+02:00 - 2b9f876c1 - Colin Darie : fix(expert): refuse an email that is not a string
+2026-09-15T17:40:16+02:00 - a694b1ccd - Colin Darie : fix(expert): read the confirmation token from one place
+2026-09-15T17:40:15+02:00 - a70d28e4a - Colin Darie : fix(expert): refuse a confirmation token that is not a string
 2026-09-15T17:10:03+02:00 - b50a3e157 - Paul Chavard : select: render an icon and a description on options
 2026-09-15T17:04:01+02:00 - e80dca79d - Mathieu Magnin : Lay out the super admin OTP enrollment page in the DSFR grid
 2026-09-15T17:03:42+02:00 - a44f0f03e - Mathieu Magnin : Limit password and OTP guesses when a super admin enrolls OTP
@@ -34,13 +428,21 @@
 2026-09-15T09:05:52Z - 2b00cf6ac - mfo : Merge pull request #13932 from demarche-numerique/faq-corrections
 2026-09-15T08:55:45Z - 33027d99d - mfo : Merge pull request #13759 from demarche-numerique/auto/haml-migration/batch-d9710306
 2026-09-14T22:42:37+02:00 - dc5be4382 - Mathieu Magnin : fix(referentiel): limit a usager's autocomplete to the referentiels of public champs
+2026-09-14T19:04:58+02:00 - 1c1223495 - Colin Darie : fix(pro_connect): do not sign in administrateurs on email confirmation
 2026-09-14T17:14:57Z - 923aff487 - Kara Diaby : Merge pull request #13922 from demarche-numerique/personnalisation-liste-dossiers-visible
 2026-09-14T17:09:08+02:00 - c8af19569 - Kara Diaby : feat(dossiers): label the personnalisation link on the dossiers list
+2026-09-14T17:05:28+02:00 - e813702ca - Mathieu Magnin : fix(i18n): add the missing english messages of the referentiel url errors
+2026-09-14T17:04:42+02:00 - 8029aadd8 - Mathieu Magnin : fix(referentiels): require the domain of an api url to be set before the first tag
+2026-09-14T17:00:10+02:00 - 843a8337a - mfo : Bump gitlab-sidekiq-fetcher to the sidekiq-8-ready fork
 2026-09-14T16:18:25Z - bd928fe13 - Mathieu Magnin : Merge pull request #13880 from demarche-numerique/map-popup-description-text
 2026-09-14T15:45:55+02:00 - faf9b6996 - Paul Chavard : Drop the Sentry scope side channel of the API client and no-op level arguments
 2026-09-14T15:40:24Z - d1b4bdb5b - Paul Chavard : Merge pull request #13920 from demarche-numerique/push-pplkrqnqzzto
 2026-09-14T15:21:45+02:00 - 85db80f43 - Paul Chavard : Report an unparsable education API body as a provider failure
 2026-09-14T15:21:44+02:00 - 79e4789dd - Paul Chavard : Answer 502 when the commune API sends an unparsable body
+2026-09-14T15:12:57+02:00 - dc9a83322 - benoitqueyron : task(service): clean old siret used for test
+2026-09-14T15:12:57+02:00 - 44c3bd7a2 - benoitqueyron : refactor services controller
+2026-09-14T15:12:56+02:00 - 7edfd190d - benoitqueyron : fix(service): does not include unnecessary data for initiation procedure
+2026-09-14T15:12:56+02:00 - 266a89a48 - benoitqueyron : fix(alert missing siret): indicates the name of the procedure (in particular to avoid duplication alert)
 2026-09-14T15:12:24+02:00 - 38a4fd583 - Paul Chavard : Answer 502 when the address API sends an unparsable body
 2026-09-14T15:02:45+02:00 - 2095ccc5a - Eric Leroy-Terquem : refactor(dossiers): the degraded component takes a siret, not an etablissement
 2026-09-14T15:02:42+02:00 - 376c408f4 - Eric Leroy-Terquem : refactor(api_entreprise): map the etablissement payload in one place
@@ -228,6 +630,11 @@
 2026-09-09T06:46:22Z - b5a062ed6 - mfo : Merge pull request #13835 from demarche-numerique/auto/n1-query-fix/m-label
 2026-09-09T06:43:28Z - bb1753d9b - mfo : Merge pull request #13809 from demarche-numerique/auto/test-optimization/batch-cba7fbd0
 2026-09-08T18:36:38+02:00 - cd7329ae9 - Colin Darie : fix(tiptap): render the line breaks a champ value carries
+2026-09-08T16:51:57+02:00 - 4d13ed63d - Mathieu Magnin : fix(api_token): key the network guard on IP pinning, not on expiration
+2026-09-08T16:51:57+02:00 - 3a469c543 - Mathieu Magnin : fix(api_token): switch the expiration mail to the présent
+2026-09-08T16:51:56+02:00 - 6608eff7e - Mathieu Magnin : refactor: drop the v1/v2 token expiration warning, mailer and rake
+2026-09-08T16:51:56+02:00 - 6269c6807 - Mathieu Magnin : refactor(api_token): convert the expiration mail from HAML to ERB
+2026-09-08T16:51:55+02:00 - 20e9eedc0 - Mathieu Magnin : feat(api_token): give the existing eternal tokens an expiration date
 2026-09-08T16:20:00+02:00 - f8eb5623d - mfo : refactor(haml): migrate shared/_procedure_description to ERB
 2026-09-08T16:20:00+02:00 - 7f28341ef - mfo : chore(views): remove dead partial shared/champs/communes/_show
 2026-09-08T16:20:00+02:00 - 33c95d034 - mfo : chore(views): remove dead partial shared/champs/address/_show
@@ -244,6 +651,7 @@
 2026-09-08T15:44:40+02:00 - 6339a1580 - Paul Chavard : fix(markdown): keep an autolink valid when Redcarpet swallows the next character's lead byte
 2026-09-08T14:13:33Z - a39d09baa - Paul Chavard : Merge pull request #13829 from demarche-numerique/push-zunuplvvnppw
 2026-09-08T13:27:13+02:00 - 0c4c3b813 - Paul Chavard : fix(dossier vide): parse a linked drop-down list once instead of once per primary option
+2026-09-08T11:59:53+02:00 - f6262dec0 - Mathieu Magnin : fix(api_token): never announce the expiration of a token that cannot authenticate
 2026-09-08T11:40:11+02:00 - 37c1d9a22 - mfo : perf(tests): let_it_be — champ_column_spec
 2026-09-08T10:06:10+02:00 - 57591a611 - Kara Diaby : fix(referentiel): authorize autocomplete on the dossier revision
 2026-09-08T09:55:43Z - 64b06fc4f - Kara Diaby : Merge pull request #13824 from demarche-numerique/referentiel-configurable-preview-broken

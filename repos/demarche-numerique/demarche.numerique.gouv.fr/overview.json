@@ -1,29 +1,33 @@
 {
   "url": "https://github.com/demarche-numerique/demarche.numerique.gouv.fr",
   "name": "demarche.numerique.gouv.fr",
-  "description": "Plateforme web conçue pour accompagner la dématérialisation des démarches administratives françaises. Elle permet la gestion complète de formulaires, de dossiers et de procédures en ligne pour les usagers et l'administration.",
+  "description": "Plateforme web conçue pour la dématérialisation des procédures administratives françaises. Elle permet aux usagers de réaliser des démarches en ligne et aux agents de l'administration de gérer les dossiers.",
   "language": "Ruby",
   "features": [
-    "Formulaires & Démarches",
-    "Gestion des utilisateurs & Permissions",
-    "Authentification & Accès",
+    "Gestion documentaire & Fichiers",
     "API & Intégrations",
-    "Accessibilité & i18n",
+    "Authentification & Accès",
+    "Recherche & Filtres",
+    "Gestion des utilisateurs & Permissions",
+    "Formulaires & Démarches",
+    "Notifications & Alertes",
     "Administration & Backoffice",
-    "Notifications & Alertes"
+    "Interface utilisateur & Design",
+    "Accessibilité & i18n",
+    "Suivi & Traçabilité"
   ],
-  "audience": "Grand public",
+  "audience": "Agents de l'Administration",
   "dependencies": [
     "Ruby on Rails",
-    "React",
     "PostgreSQL",
     "Redis",
-    "Sidekiq",
-    "GraphQL",
-    "Devise",
-    "Playwright",
+    "React",
     "TypeScript",
-    "Vite"
+    "Sidekiq",
+    "Devise",
+    "GraphQL",
+    "AWS S3",
+    "Playwright"
   ],
   "components": [
     "API REST & GraphQL",
@@ -32,7 +36,8 @@
     "TypeScript / JavaScript",
     "Design System (DSFR & UI libs)",
     "Authentification (composant)",
-    "Templates & Moteurs de rendu"
+    "CI/CD & Déploiement",
+    "Celery & Queue asynchrone"
   ],
   "auth": {
     "methods": [
@@ -42,15 +47,20 @@
       "session",
       "mfa",
       "sso"
+    ],
+    "providers": [
+      "FranceConnect"
     ]
   },
   "tests": [
     "RSpec",
     "Playwright",
-    "Vitest",
-    "Capybara"
+    "Vitest"
   ],
-  "lastActivity": "2026-09-16T00:03:12Z",
+  "workflows": [
+    "GitHub Actions"
+  ],
+  "lastActivity": "2026-09-25T14:09:44Z",
   "status": "active",
   "license": "AGPL-3.0",
   "hasDocumentation": true,
@@ -62,7 +72,7 @@
     "Sécurité & Auth",
     "Design System & UI",
     "JavaScript",
-    "Accessibilité",
-    "Documentation"
+    "CI/CD & GitHub Actions",
+    "Accessibilité"
   ]
 }
