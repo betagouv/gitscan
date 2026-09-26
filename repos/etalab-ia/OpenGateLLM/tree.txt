@@ -93,19 +93,13 @@
 │   │       ├── 2026_09_04_1000-a7f3c91b2e04_rename_providercarbonfootprintzone_to_hostingzone.py
 │   │       ├── 2026_09_11_1340-c8e1a04b7f12_drop_provider_qos_columns.py
 │   │       ├── 2026_09_14_1100-f4b7c2a91e30_require_user_organization.py
-│   │       └── 2026_09_18_1000-e7a1c4d8b902_replace_image_text_to_text_with_text_generation.py
+│   │       ├── 2026_09_18_1000-e7a1c4d8b902_replace_image_text_to_text_with_text_generation.py
+│   │       ├── 2026_09_21_1826-b7e4c1a90f23_add_token_revoked_drop_unique_name.py
+│   │       ├── 2026_09_22_1539-a9c2e7b41d35_rename_modeltype_enum_to_routertype.py
+│   │       ├── 2026_09_23_1612-c4f8e2d91a70_drop_usage_method.py
+│   │       └── 2026_09_24_1200-d1e2f3a4b5c6_add_usage_request_id.py
 │   ├── alembic.ini
 │   ├── app.py
-│   ├── clients
-│   │   ├── __init__.py
-│   │   └── model
-│   │       ├── __init__.py
-│   │       ├── _albertmodelprovider.py
-│   │       ├── _basemodelprovider.py
-│   │       ├── _mistralmodelprovider.py
-│   │       ├── _openaimodelprovider.py
-│   │       ├── _teimodelprovider.py
-│   │       └── _vllmmodelprovider.py
 │   ├── dependencies.py
 │   ├── domain
 │   │   ├── __init__.py
@@ -171,7 +165,7 @@
 │   │   │   └── errors.py
 │   │   ├── usage
 │   │   │   ├── __init__.py
-│   │   │   ├── _usagerecorder.py
+│   │   │   ├── _usagecontext.py
 │   │   │   ├── _usagerepository.py
 │   │   │   └── entities.py
 │   │   └── user
@@ -182,36 +176,22 @@
 │   │       ├── entities.py
 │   │       ├── errors.py
 │   │       └── views.py
-│   ├── endpoints
-│   │   ├── __init__.py
-│   │   └── monitoring.py
-│   ├── helpers
-│   │   ├── __init__.py
-│   │   ├── _accesscontroller.py
-│   │   ├── _identityaccessmanager.py
-│   │   ├── _langfusemanager.py
-│   │   ├── _limiter.py
-│   │   ├── _usagetokenizer.py
-│   │   ├── load_balancing
-│   │   │   ├── __init__.py
-│   │   │   ├── _baseloadbalancingstrategy.py
-│   │   │   ├── _leastbusyloadbalancingstrategy.py
-│   │   │   └── _shuffleloadbalancingstrategy.py
-│   │   └── models
-│   │       ├── __init__.py
-│   │       └── _modelregistry.py
 │   ├── infrastructure
 │   │   ├── __init__.py
 │   │   ├── bcrypt
 │   │   │   ├── __init__.py
 │   │   │   └── _bcryptuserpasswordencoder.py
+│   │   ├── configuration.py
+│   │   ├── context.py
+│   │   ├── contextvars
+│   │   │   ├── __init__.py
+│   │   │   └── _contextvarsusagecontext.py
 │   │   ├── ecologit
 │   │   │   ├── __init__.py
 │   │   │   └── _ecologitmodelenvironmentalimpactscomputer.py
 │   │   ├── fastapi
 │   │   │   ├── __init__.py
 │   │   │   ├── _requestcontext.py
-│   │   │   ├── _requestcontextusagerecorder.py
 │   │   │   ├── _streamingresponsewithstatuscode.py
 │   │   │   ├── accesscontroller.py
 │   │   │   ├── decorators.py
@@ -237,8 +217,11 @@
 │   │   │   │   ├── me.py
 │   │   │   │   ├── models.py
 │   │   │   │   ├── ocr.py
+│   │   │   │   ├── organizations.py
 │   │   │   │   ├── rerank.py
 │   │   │   │   └── usage.py
+│   │   │   ├── monitoring.py
+│   │   │   ├── routes.py
 │   │   │   └── schemas
 │   │   │       ├── __init__.py
 │   │   │       ├── admin
@@ -369,6 +352,10 @@
 │   │   ├── jwt
 │   │   │   ├── __init__.py
 │   │   │   └── _jwtkeyencoder.py
+│   │   ├── langfuse
+│   │   │   ├── __init__.py
+│   │   │   └── _langfuseusagerepository.py
+│   │   ├── logging.py
 │   │   ├── postgres
 │   │   │   ├── __init__.py
 │   │   │   ├── _autocommitsession.py
@@ -384,65 +371,22 @@
 │   │   │   ├── _postgresrouterrepository.py
 │   │   │   ├── _postgresusagerepository.py
 │   │   │   ├── _postgresusersrepository.py
-│   │   │   └── decorators.py
+│   │   │   ├── decorators.py
+│   │   │   └── models.py
 │   │   ├── redis
 │   │   │   ├── __init__.py
+│   │   │   ├── _keys.py
 │   │   │   ├── _redisproviderloadbalancer.py
 │   │   │   ├── _redisprovidermetricslogger.py
 │   │   │   └── _redisrouterratelimiter.py
 │   │   └── tiktoken
 │   │       ├── __init__.py
 │   │       └── _tiktokenmodeltokenizer.py
+│   ├── lifespan.py
 │   ├── main.py
-│   ├── schemas
-│   │   ├── __init__.py
-│   │   ├── admin
-│   │   │   ├── __init__.py
-│   │   │   ├── organizations.py
-│   │   │   ├── routers.py
-│   │   │   ├── tokens.py
-│   │   │   └── users.py
-│   │   ├── audio.py
-│   │   ├── chat.py
-│   │   ├── core
-│   │   │   ├── __init__.py
-│   │   │   ├── configuration.py
-│   │   │   ├── context.py
-│   │   │   └── models.py
-│   │   ├── exception.py
-│   │   ├── me
-│   │   │   ├── __init__.py
-│   │   │   └── info.py
-│   │   ├── models.py
-│   │   └── usage.py
-│   ├── sql
-│   │   └── models.py
 │   ├── tests
 │   │   ├── __init__.py
 │   │   ├── helpers.py
-│   │   ├── integ
-│   │   │   ├── __init__.py
-│   │   │   ├── assets
-│   │   │   │   ├── audio.mp3
-│   │   │   │   └── audio.wav
-│   │   │   ├── config.test.yml
-│   │   │   ├── conftest.py
-│   │   │   ├── test_admin
-│   │   │   │   ├── __init__.py
-│   │   │   │   ├── test_admin.py
-│   │   │   │   ├── test_admin_providers.py
-│   │   │   │   ├── test_admin_routers.py
-│   │   │   │   └── test_identityaccessmanager.py
-│   │   │   ├── test_audio.py
-│   │   │   ├── test_chat.py
-│   │   │   ├── test_me.py
-│   │   │   ├── test_models.py
-│   │   │   ├── test_providers
-│   │   │   │   ├── __init__.py
-│   │   │   │   ├── test_mistral_image_to_text.py
-│   │   │   │   ├── test_mistral_speech_automatic_regonition.py
-│   │   │   │   └── test_mistral_text_image_to_text.py
-│   │   │   └── utils.py
 │   │   ├── integration
 │   │   │   ├── __init__.py
 │   │   │   ├── app
@@ -511,11 +455,15 @@
 │   │   │   │   │   ├── test_create_key.py
 │   │   │   │   │   ├── test_delete_key.py
 │   │   │   │   │   ├── test_get_key.py
-│   │   │   │   │   └── test_get_keys.py
+│   │   │   │   │   ├── test_get_keys.py
+│   │   │   │   │   └── test_update_key.py
 │   │   │   │   ├── me
 │   │   │   │   │   ├── __init__.py
 │   │   │   │   │   ├── test_get_me.py
 │   │   │   │   │   └── test_update_me.py
+│   │   │   │   ├── organizations
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   └── test_get_organization.py
 │   │   │   │   ├── test_audiotranscriptions.py
 │   │   │   │   ├── test_auth_login.py
 │   │   │   │   ├── test_auth_sso_login.py
@@ -533,6 +481,7 @@
 │   │   │   ├── factories
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── albert.py
+│   │   │   │   ├── langfuse.py
 │   │   │   │   ├── mistral.py
 │   │   │   │   ├── openai.py
 │   │   │   │   ├── redis.py
@@ -550,6 +499,10 @@
 │   │   │   ├── jwt
 │   │   │   │   ├── __init__.py
 │   │   │   │   └── test_jwtkeyencoder.py
+│   │   │   ├── langfuse
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── conftest.py
+│   │   │   │   └── test_langfuseusagerepository.py
 │   │   │   ├── postgres
 │   │   │   │   ├── __init__.py
 │   │   │   │   ├── role_repository
@@ -560,7 +513,8 @@
 │   │   │   │   │   ├── test_get_role_name.py
 │   │   │   │   │   ├── test_get_roles_page.py
 │   │   │   │   │   └── test_update_role.py
-│   │   │   │   ├── test_autocommit_releases_connection_during_model_forward.py
+│   │   │   │   ├── test_autocommitsession.py
+│   │   │   │   ├── test_decorators.py
 │   │   │   │   ├── test_postgresauthenticateduserquery.py
 │   │   │   │   ├── test_postgreskeyrepository.py
 │   │   │   │   ├── test_postgreslimitrepository.py
@@ -601,6 +555,9 @@
 │   │       │   ├── embeddings
 │   │       │   │   ├── __init__.py
 │   │       │   │   └── test_embeddingsentities.py
+│   │       │   ├── key
+│   │       │   │   ├── __init__.py
+│   │       │   │   └── test_keyentities.py
 │   │       │   ├── ocr
 │   │       │   │   ├── __init__.py
 │   │       │   │   └── test_ocrentities.py
@@ -623,47 +580,21 @@
 │   │       │   ├── factories.py
 │   │       │   ├── fastapi
 │   │       │   │   ├── __init__.py
-│   │       │   │   ├── endpoints
-│   │       │   │   │   ├── __init__.py
-│   │       │   │   │   └── admin
-│   │       │   │   │       ├── __init__.py
-│   │       │   │   │       └── keys
-│   │       │   │   │           ├── __init__.py
-│   │       │   │   │           ├── test_get_key.py
-│   │       │   │   │           └── test_get_keys.py
 │   │       │   │   ├── schemas
 │   │       │   │   │   ├── __init__.py
 │   │       │   │   │   └── test_chat.py
 │   │       │   │   ├── test_decorators.py
 │   │       │   │   └── test_streamingresponsewithstatuscode.py
-│   │       │   ├── http
-│   │       │   │   ├── __init__.py
-│   │       │   │   ├── adapters
-│   │       │   │   │   ├── __init__.py
-│   │       │   │   │   ├── test_audiotranscriptionsadapter.py
-│   │       │   │   │   ├── test_embeddingsadapter.py
-│   │       │   │   │   ├── test_metricsadapter.py
-│   │       │   │   │   ├── test_modelsadapter.py
-│   │       │   │   │   └── test_rerankadapter.py
-│   │       │   │   └── test_httpprovideradapterbuilder.py
-│   │       │   └── postgres
+│   │       │   └── http
 │   │       │       ├── __init__.py
-│   │       │       ├── test_autocommitsession.py
-│   │       │       └── test_decorators.py
-│   │       ├── legacy
-│   │       │   ├── __init__.py
-│   │       │   ├── test_accesscontroller.py
-│   │       │   ├── test_carbon.py
-│   │       │   ├── test_identityaccessmanager
-│   │       │   │   ├── __init__.py
-│   │       │   │   ├── test_encryption.py
-│   │       │   │   ├── test_login.py
-│   │       │   │   ├── test_organization.py
-│   │       │   │   ├── test_roles.py
-│   │       │   │   ├── test_tokens.py
-│   │       │   │   └── test_users.py
-│   │       │   └── test_limiter.py
-│   │       ├── test_configuration.py
+│   │       │       ├── adapters
+│   │       │       │   ├── __init__.py
+│   │       │       │   ├── test_audiotranscriptionsadapter.py
+│   │       │       │   ├── test_embeddingsadapter.py
+│   │       │       │   ├── test_metricsadapter.py
+│   │       │       │   ├── test_modelsadapter.py
+│   │       │       │   └── test_rerankadapter.py
+│   │       │       └── test_httpprovideradapterbuilder.py
 │   │       └── use_case
 │   │           ├── __init__.py
 │   │           ├── admin
@@ -673,7 +604,8 @@
 │   │           │   │   ├── test_createkeyusecase.py
 │   │           │   │   ├── test_deletekeyusecase.py
 │   │           │   │   ├── test_getkeysusecase.py
-│   │           │   │   └── test_getonekeyusecase.py
+│   │           │   │   ├── test_getonekeyusecase.py
+│   │           │   │   └── test_updatekeyusecase.py
 │   │           │   ├── organizations
 │   │           │   │   ├── __init__.py
 │   │           │   │   ├── test_createorganizationusecase.py
@@ -749,105 +681,91 @@
 │   │           └── usage
 │   │               ├── __init__.py
 │   │               └── test_getusagesusecase.py
-│   ├── use_cases
-│   │   ├── __init__.py
-│   │   ├── _providerrequestforwardingusecase.py
-│   │   ├── admin
-│   │   │   ├── __init__.py
-│   │   │   ├── _bootstrapadminusecase.py
-│   │   │   ├── keys
-│   │   │   │   ├── __init__.py
-│   │   │   │   ├── _createkeyusecase.py
-│   │   │   │   ├── _deletekeyusecase.py
-│   │   │   │   ├── _getkeysusecase.py
-│   │   │   │   └── _getonekeyusecase.py
-│   │   │   ├── organizations
-│   │   │   │   ├── __init__.py
-│   │   │   │   ├── _createorganizationusecase.py
-│   │   │   │   ├── _deleteorganizationusecase.py
-│   │   │   │   ├── _getoneorganizationusecase.py
-│   │   │   │   ├── _getorganizationsusecase.py
-│   │   │   │   └── _updateorganizationusecase.py
-│   │   │   ├── providers
-│   │   │   │   ├── __init__.py
-│   │   │   │   ├── _createproviderusecase.py
-│   │   │   │   ├── _deleteproviderusecase.py
-│   │   │   │   ├── _getoneproviderusecase.py
-│   │   │   │   ├── _getprovidersusecase.py
-│   │   │   │   └── _updateproviderusecase.py
-│   │   │   ├── roles
-│   │   │   │   ├── __init__.py
-│   │   │   │   ├── _createroleusecase.py
-│   │   │   │   ├── _deleteroleusecase.py
-│   │   │   │   ├── _getoneroleusecase.py
-│   │   │   │   ├── _getrolesusecase.py
-│   │   │   │   └── _updateroleusecase.py
-│   │   │   ├── routers
-│   │   │   │   ├── __init__.py
-│   │   │   │   ├── _createrouterusecase.py
-│   │   │   │   ├── _deleterouterusecase.py
-│   │   │   │   ├── _getonerouterusecase.py
-│   │   │   │   ├── _getroutersusecase.py
-│   │   │   │   └── _updaterouterusecase.py
-│   │   │   └── users
-│   │   │       ├── __init__.py
-│   │   │       ├── _createuserusecase.py
-│   │   │       ├── _deleteuserusecase.py
-│   │   │       ├── _getoneuserusecase.py
-│   │   │       ├── _getusersusecase.py
-│   │   │       └── _updateuserusecase.py
-│   │   ├── audio
-│   │   │   ├── __init__.py
-│   │   │   └── _createaudiotranscriptionsusecase.py
-│   │   ├── auth
-│   │   │   ├── __init__.py
-│   │   │   ├── _authloginusecase.py
-│   │   │   └── _authssologinusecase.py
-│   │   ├── chat
-│   │   │   ├── __init__.py
-│   │   │   └── _createchatcompletionsusecase.py
-│   │   ├── embeddings
-│   │   │   ├── __init__.py
-│   │   │   └── _createembeddingsusecase.py
-│   │   ├── health
-│   │   │   ├── __init__.py
-│   │   │   └── _gethealthmodelsusecase.py
-│   │   ├── me
-│   │   │   ├── __init__.py
-│   │   │   ├── _getmeusecase.py
-│   │   │   └── _updatemeusecase.py
-│   │   ├── models
-│   │   │   ├── __init__.py
-│   │   │   ├── _bootstrapmodelsusecase.py
-│   │   │   ├── _getmodelsusecase.py
-│   │   │   └── _getonemodelusecase.py
-│   │   ├── ocr
-│   │   │   ├── __init__.py
-│   │   │   └── _createocrusecase.py
-│   │   ├── reranks
-│   │   │   ├── __init__.py
-│   │   │   └── _creatererankusecase.py
-│   │   ├── services
-│   │   │   ├── __init__.py
-│   │   │   └── _providercapabilitiesprobe.py
-│   │   └── usage
-│   │       ├── __init__.py
-│   │       └── _getusagesusecase.py
-│   └── utils
+│   └── use_cases
 │       ├── __init__.py
-│       ├── carbon.py
-│       ├── configuration.py
-│       ├── context.py
-│       ├── dependencies.py
-│       ├── exceptions.py
-│       ├── hooks_decorator.py
-│       ├── lifespan.py
-│       ├── load_balancing.py
-│       ├── logging.py
-│       ├── monitoring.py
-│       ├── redis.py
-│       ├── routing.py
-│       └── variables.py
+│       ├── _providerrequestforwardingusecase.py
+│       ├── admin
+│       │   ├── __init__.py
+│       │   ├── _bootstrapadminusecase.py
+│       │   ├── keys
+│       │   │   ├── __init__.py
+│       │   │   ├── _createkeyusecase.py
+│       │   │   ├── _deletekeyusecase.py
+│       │   │   ├── _getkeysusecase.py
+│       │   │   ├── _getonekeyusecase.py
+│       │   │   └── _updatekeyusecase.py
+│       │   ├── organizations
+│       │   │   ├── __init__.py
+│       │   │   ├── _createorganizationusecase.py
+│       │   │   ├── _deleteorganizationusecase.py
+│       │   │   ├── _getoneorganizationusecase.py
+│       │   │   ├── _getorganizationsusecase.py
+│       │   │   └── _updateorganizationusecase.py
+│       │   ├── providers
+│       │   │   ├── __init__.py
+│       │   │   ├── _createproviderusecase.py
+│       │   │   ├── _deleteproviderusecase.py
+│       │   │   ├── _getoneproviderusecase.py
+│       │   │   ├── _getprovidersusecase.py
+│       │   │   └── _updateproviderusecase.py
+│       │   ├── roles
+│       │   │   ├── __init__.py
+│       │   │   ├── _createroleusecase.py
+│       │   │   ├── _deleteroleusecase.py
+│       │   │   ├── _getoneroleusecase.py
+│       │   │   ├── _getrolesusecase.py
+│       │   │   └── _updateroleusecase.py
+│       │   ├── routers
+│       │   │   ├── __init__.py
+│       │   │   ├── _createrouterusecase.py
+│       │   │   ├── _deleterouterusecase.py
+│       │   │   ├── _getonerouterusecase.py
+│       │   │   ├── _getroutersusecase.py
+│       │   │   └── _updaterouterusecase.py
+│       │   └── users
+│       │       ├── __init__.py
+│       │       ├── _createuserusecase.py
+│       │       ├── _deleteuserusecase.py
+│       │       ├── _getoneuserusecase.py
+│       │       ├── _getusersusecase.py
+│       │       └── _updateuserusecase.py
+│       ├── audio
+│       │   ├── __init__.py
+│       │   └── _createaudiotranscriptionsusecase.py
+│       ├── auth
+│       │   ├── __init__.py
+│       │   ├── _authloginusecase.py
+│       │   └── _authssologinusecase.py
+│       ├── chat
+│       │   ├── __init__.py
+│       │   └── _createchatcompletionsusecase.py
+│       ├── embeddings
+│       │   ├── __init__.py
+│       │   └── _createembeddingsusecase.py
+│       ├── health
+│       │   ├── __init__.py
+│       │   └── _gethealthmodelsusecase.py
+│       ├── me
+│       │   ├── __init__.py
+│       │   ├── _getmeusecase.py
+│       │   └── _updatemeusecase.py
+│       ├── models
+│       │   ├── __init__.py
+│       │   ├── _bootstrapmodelsusecase.py
+│       │   ├── _getmodelsusecase.py
+│       │   └── _getonemodelusecase.py
+│       ├── ocr
+│       │   ├── __init__.py
+│       │   └── _createocrusecase.py
+│       ├── reranks
+│       │   ├── __init__.py
+│       │   └── _creatererankusecase.py
+│       ├── services
+│       │   ├── __init__.py
+│       │   └── _providercapabilitiesprobe.py
+│       └── usage
+│           ├── __init__.py
+│           └── _getusagesusecase.py
 ├── cli.py
 ├── compose.example.yml
 ├── config.example.yml
@@ -877,7 +795,8 @@
 │   │   │   │   ├── centralsupelec_logo.png
 │   │   │   │   ├── dinum_logo.png
 │   │   │   │   ├── environmental_footprint_1.png
-│   │   │   │   └── environmental_footprint_2.png
+│   │   │   │   ├── environmental_footprint_2.png
+│   │   │   │   └── playground_usage_page.png
 │   │   │   ├── logo.svg
 │   │   │   ├── make_quickstart.cast
 │   │   │   └── make_quickstart.gif
@@ -1104,4 +1023,4 @@
     ├── gunicorn.conf.py
     ├── manage_docs_dns.py
     └── startup_api.sh
-231 directories, 875 files
+214 directories, 811 files
