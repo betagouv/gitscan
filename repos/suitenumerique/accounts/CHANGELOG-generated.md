@@ -1,24 +1,32 @@
-## Changelog : accounts (30 derniers jours, au 14 septembre 2026)
+## Changelog : accounts (30 derniers jours, au 24 septembre 2026)
 
 ### Résumé
-Les récentes évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment avec l'ajout de nouvelles pages d'interface (profil et connexion intermédiaire) et une gestion plus fluide et sécurisée des déconnexions. Le socle technique a également été renforcé par des optimisations de l'authentification OIDC et une mise à jour des environnements de développement et d'infrastructure.
+Ce mois a été marqué par le passage à la version 0.1.0. L'expérience utilisateur s'enrichit avec l'arrivée de nouvelles pages (profil, connexion intermédiaire) et d'un menu utilisateur plus accessible. Le système d'authentification a été considérablement renforcé pour offrir une gestion de la déconnexion plus fluide et sécurisée, tout en améliorant la visibilité technique via un nouveau système de suivi des événements.
 
 ### Évolutions fonctionnelles
-- **Interface utilisateur** :
-    - Ajout d'une page d'accueil pour le profil utilisateur.
-    - Ajout d'une page de connexion intermédiaire.
-    - Correction des routes d'export statique du frontend pour assurer une navigation fluide.
-- **Gestion des sessions** :
-    - Amélioration du processus de déconnexion : support de la déconnexion initiée par le client (RP-initiated logout) et déconnexion automatique des fournisseurs d'identité externes (upstream IdP).
-    - Transmission de la confirmation de déconnexion vers l'interface utilisateur.
+- **Amélioration de l'interface utilisateur** : ajout d'une page d'accueil pour le profil utilisateur, d'une page de connexion intermédiaire et d'un menu utilisateur dans le pied de page.
+- **Gestion de la déconnexion** : support de la déconnexion initiée par l'application (RP-initiated logout), permettant de se déconnecter simultanément de l'application et du fournisseur d'identité (IdP) pour une sécurité accrue.
 
 ### Évolutions techniques
-- **Authentification & OIDC** :
-    - Optimisation du protocole OIDC : génération d'identifiants `sub` personnalisés, transmission du `login_hint` et amélioration de la gestion des paramètres d'introspection.
-    - Nettoyage et correction des URIs de redirection pour Keycloak.
-- **Infrastructure & Environnement** :
-    - Mise à jour des images de base (MinIO) et des outils de gestion de projet (Python et `uv`).
-    - Fixation de la version Node.js pour garantir la stabilité du frontend.
-- **Core & Tests** :
-    - Ajout d'utilitaires internes pour la gestion des URLs et des états (state).
-    - Amélioration de la robustesse des tests : suppression des avertissements de compatibilité Django et optimisation de la gestion des paramètres de requête.
+- **Authentification et OIDC** : 
+    - Génération d'identifiants `sub` propres au système.
+    - Support du paramètre `login_hint` vers les fournisseurs d'identité amont.
+    - Configuration des niveaux d'assurance (ACR) pour le backend ProConnect.
+    - Optimisation de la gestion des URI de redirection dans Keycloak.
+- **Backend et Monitoring** : 
+    - Mise en place du suivi (tracking) des événements de connexion, de déconnexion et des événements OIDC.
+    - Ajout d'utilitaires pour la gestion des états (state) et des URLs.
+- **Infrastructure et DevOps** : 
+    - Mise à jour de l'environnement de développement (Python 3.14.7 et `uv`).
+    - Ajustement des sources d'images pour MinIO.
+    - Clarification des paramètres de déploiement concernant la mutabilité de `sub`.
+- **Tests et Qualité** : 
+    - Meilleure isolation des tests par rapport aux variables d'environnement.
+    - Suppression des avertissements de dépréciation (Django 7.0) pour stabiliser les logs de test.
+- **Frontend** : 
+    - Correction des routes pour assurer le bon fonctionnement de l'export statique.
+    - Verrouillage de la version Node.js pour garantir la stabilité des outils de traduction.
+
+### Autres changements
+- **Internationalisation** : mise à jour des chaînes de caractères traduites.
+- **Nettoyage** : suppression des langues inutilisées dans le frontend.

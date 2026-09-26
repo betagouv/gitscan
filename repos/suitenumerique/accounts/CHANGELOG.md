@@ -8,12 +8,19 @@ and this project adheres to
 
 ### Added
 
+- 📈(backend) track login, logout, and some OIDC events
+
+## [v0.1.0] - 2026-09-24
+
+### Added
+- 💄(frontend) add userMenu on footer
 - 💄(frontend) add profile home page
 - 💄(frontend) add intermediate login page
 - ✨(frontend) init the frontend app (webapp + e2e)
 - ✨(authentication) support multiple identity providers
 - ✨(OIDC Provider) configure and customize the Authorization Server
 - ✨(OIDC Provider) add a `guest` claim and the `account` scope
+- ✨(OIDC Provider) handle POST request for RP-initiated logout
 
 ### Changed
 
@@ -29,6 +36,8 @@ and this project adheres to
 
 ### Fixed
 
+- 🩹(frontend) remove unused language
 - 🩹(frontend) enable trailingSlash to fix static export routes
 
-[unreleased]: https://github.com/suitenumerique/accounts/compare/main
+[unreleased]: https://github.com/suitenumerique/accounts/compare/v0.1.0...main
+[v0.1.0]: https://github.com/suitenumerique/accounts/releases/v0.1.0
