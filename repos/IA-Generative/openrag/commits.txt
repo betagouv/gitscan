@@ -93,26 +93,26 @@
 2026-04-18T18:05:41+02:00 - dc01975 - etiquet : feat(myrag): init FastAPI skeleton + Dockerfile + docker-compose
 2026-04-18T14:20:28+02:00 - 75bfa59 - etiquet : feat: add integrations (OIDC, connectors, notifications, admin, eval) + harden gitignore
 2026-04-17T17:27:59+02:00 - d6fd8e7 - Yadd : Add warnings to SSO doc
-2026-04-17T14:44:41+02:00 - d70048f - Yadd : style(tests): ruff format test_oidc_lifecycle.py + gitignore compose override
-2026-04-17T14:44:41+02:00 - 1919736 - Yadd : Add AUTH_MODE=oidc
-2026-04-17T14:44:41+02:00 - 6fa0c13 - Yadd : refactor(auth): no default for OIDC_POST_LOGOUT_REDIRECT_URI
-2026-04-17T14:44:41+02:00 - 738cef4 - Yadd : fix(tests): force kid on JWKS key + add SSO quick-start doc
+2026-04-17T14:44:41+02:00 - fb91921 - Yadd : refactor(auth): simplify OIDC matching to sub-only + add claim mapping
 2026-04-17T14:44:41+02:00 - f8f8e97 - Yadd : Add docs/sso-quickstart.md
 2026-04-17T14:44:41+02:00 - ee60761 - Yadd : fix(auth): address CI + Copilot review
-2026-04-17T14:44:41+02:00 - 30060db - Yadd : feat(auth): add GET / root redirect to avoid 404 after OIDC login
-2026-04-17T14:44:41+02:00 - 78e6a42 - Yadd : fix(tests): authlib JsonWebToken() needs algorithms + respx MockRouter
-2026-04-17T14:44:41+02:00 - fb91921 - Yadd : refactor(auth): simplify OIDC matching to sub-only + add claim mapping
+2026-04-17T14:44:41+02:00 - d70048f - Yadd : style(tests): ruff format test_oidc_lifecycle.py + gitignore compose override
 2026-04-17T14:44:41+02:00 - 7b22ca6 - Yadd : feat(auth): add OpenID Connect authentication mode
-2026-04-15T15:14:24Z - a91ad6d - Ahmath-Gadji : Merge branch 'dev'
+2026-04-17T14:44:41+02:00 - 78e6a42 - Yadd : fix(tests): authlib JsonWebToken() needs algorithms + respx MockRouter
+2026-04-17T14:44:41+02:00 - 738cef4 - Yadd : fix(tests): force kid on JWKS key + add SSO quick-start doc
+2026-04-17T14:44:41+02:00 - 6fa0c13 - Yadd : refactor(auth): no default for OIDC_POST_LOGOUT_REDIRECT_URI
+2026-04-17T14:44:41+02:00 - 30060db - Yadd : feat(auth): add GET / root redirect to avoid 404 after OIDC login
+2026-04-17T14:44:41+02:00 - 1919736 - Yadd : Add AUTH_MODE=oidc
 2026-04-15T16:02:55+02:00 - a3f5070 - Ahmath-Gadji : Merge pull request #304 from linagora/MarkerRetries
+2026-04-15T15:14:24Z - a91ad6d - Ahmath-Gadji : Merge branch 'dev'
 2026-04-14T14:01:18Z - c565cfa - EnjoyBacon7 : style: ruff format ray_utils
 2026-04-14T13:53:18Z - 903f8f3 - EnjoyBacon7 : feat: add exponential-backoff retries to loader worker pools
 2026-04-13T15:27:38+02:00 - 922714e - Ahmath-Gadji : Merge pull request #301 from linagora/release/v1.1.8
 2026-04-13T13:13:49Z - 484f828 - Ahmath-Gadji : chore: setting new release version
 2026-04-10T11:13:48+02:00 - 064ac3c - Ahmath-Gadji : Merge pull request #297 from linagora/feat/marker_pdf_chunking
 2026-04-09T10:24:21+02:00 - 26e1a15 - Ahmath-Gadji : Merge pull request #296 from linagora/feature/monitoring
-2026-04-09T08:12:11Z - 6989e64 - Ahmath-Gadji : chore: add benchmark for marker pdf chunking
 2026-04-09T09:32:30+02:00 - 4972fdd - Ahmath-Gadji : feat: add Prometheus monitoring at /metrics
+2026-04-09T08:12:11Z - 6989e64 - Ahmath-Gadji : chore: add benchmark for marker pdf chunking
 2026-04-08T18:09:11+02:00 - e063576 - Ahmath-Gadji : feat: add VDB_ENABLE_INSERTION to disable insertion to vectordb. Useful for testing
 2026-04-08T18:09:11+02:00 - 33b7f75 - Ahmath-Gadji : feat: add page chunking for parallel PDF processing across Marker workers
 2026-04-08T10:49:55+02:00 - 93ac130 - EnjoyBacon7 : Merge pull request #292 from linagora/fix/file-put-patch-no-delete
@@ -132,21 +132,21 @@
 2026-04-01T18:31:55+02:00 - 4ffafee - EnjoyBacon7 : fix: read reranker timeout from config instead of hardcoding
 2026-04-01T17:58:33+02:00 - db697e4 - Ahmath-Gadji : feat(reranker): add RERANKER_PROVIDER to select reranker backend
 2026-04-01T17:58:33+02:00 - 027ea8d - Ahmath-Gadji : chore: refactoring reranking module
-2026-04-01T15:05:20Z - 2ce98b8 - EnjoyBacon7 : fix(vectordb): simplify upsert_file_metadata and document strict PUT semantics
-2026-04-01T14:54:40Z - f41d419 - EnjoyBacon7 : fix(vectordb): remove unused delete_file_chunks method
-2026-04-01T14:31:54Z - ac9cc5b - Camille Bizeul : fix(vectordb): check return value from PG update methods
-2026-04-01T14:31:54Z - 01b2df8 - Camille Bizeul : fix(vectordb): add logger binding and catch-all handlers for consistency
-2026-04-01T14:31:54Z - 26ef39e - Camille Bizeul : fix(vectordb): use bound logger in exception handlers
-2026-04-01T14:31:54Z - 7b4443c - Camille Bizeul : fix(vectordb): add catch-all exception handler to delete_file_chunks
-2026-04-01T14:31:54Z - 5e6b8ff - Camille Bizeul : fix(vectordb): capture bound logger in add_documents_for_existing_file
-2026-04-01T14:31:54Z - f40f07b - Camille Bizeul : fix(indexer): insert-before-delete for PUT to avoid half-replaced state
-2026-04-01T14:31:54Z - 9e5a61c - Camille Bizeul : fix(vectordb): use parameterized filter in delete_file_chunks
-2026-04-01T14:31:54Z - 69a5c9c - Camille Bizeul : fix(utils): allow clearing relationship fields in update_file_in_partition
-2026-04-01T14:31:54Z - 40c01f9 - Camille Bizeul : fix(utils): sync structured File columns in update_file_metadata_in_db
-2026-04-01T14:31:54Z - 1b3dc75 - Camille Bizeul : fix(vectordb): strip chunk-order fields before persisting file metadata
-2026-04-01T14:31:54Z - 5079ac2 - Camille Bizeul : fix(indexer): eliminate delete/insert cycle on file PUT and PATCH
 2026-04-01T16:16:33+02:00 - 651902c - EnjoyBacon7 : Merge pull request #295 from linagora/refactor/hydra-to-pydantic
 2026-04-01T15:53:45+02:00 - b75089b - Ahmath-Gadji : refactor(config): use discriminated unions for RetrieverConfig and WebSearchConfig
+2026-04-01T15:05:20Z - 2ce98b8 - EnjoyBacon7 : fix(vectordb): simplify upsert_file_metadata and document strict PUT semantics
+2026-04-01T14:54:40Z - f41d419 - EnjoyBacon7 : fix(vectordb): remove unused delete_file_chunks method
+2026-04-01T14:31:54Z - f40f07b - Camille Bizeul : fix(indexer): insert-before-delete for PUT to avoid half-replaced state
+2026-04-01T14:31:54Z - ac9cc5b - Camille Bizeul : fix(vectordb): check return value from PG update methods
+2026-04-01T14:31:54Z - 9e5a61c - Camille Bizeul : fix(vectordb): use parameterized filter in delete_file_chunks
+2026-04-01T14:31:54Z - 7b4443c - Camille Bizeul : fix(vectordb): add catch-all exception handler to delete_file_chunks
+2026-04-01T14:31:54Z - 69a5c9c - Camille Bizeul : fix(utils): allow clearing relationship fields in update_file_in_partition
+2026-04-01T14:31:54Z - 5e6b8ff - Camille Bizeul : fix(vectordb): capture bound logger in add_documents_for_existing_file
+2026-04-01T14:31:54Z - 5079ac2 - Camille Bizeul : fix(indexer): eliminate delete/insert cycle on file PUT and PATCH
+2026-04-01T14:31:54Z - 40c01f9 - Camille Bizeul : fix(utils): sync structured File columns in update_file_metadata_in_db
+2026-04-01T14:31:54Z - 26ef39e - Camille Bizeul : fix(vectordb): use bound logger in exception handlers
+2026-04-01T14:31:54Z - 1b3dc75 - Camille Bizeul : fix(vectordb): strip chunk-order fields before persisting file metadata
+2026-04-01T14:31:54Z - 01b2df8 - Camille Bizeul : fix(vectordb): add logger binding and catch-all handlers for consistency
 2026-04-01T13:52:12+02:00 - 8832429 - Ahmath-Gadji : feat(api): add GET /config endpoint for admins to visualize configuration
 2026-04-01T13:16:11+02:00 - 8a823a6 - Ahmath-Gadji : fix: add default password for rdb
 2026-03-30T17:11:46+02:00 - 86ce467 - EnjoyBacon7 : fix: remove extra trailing space to satisfy ruff format
@@ -171,21 +171,21 @@
 2026-03-20T12:40:33Z - 6432151 - Camille Bizeul : test(users): add comprehensive tests for user update endpoint
 2026-03-20T10:55:16Z - 3955628 - Camille Bizeul : fix(users): only block explicit admin revocation for user 1
 2026-03-20T10:55:11Z - 1d529b7 - Camille Bizeul : fix(models): add ConfigDict(extra='allow') to user request models
-2026-03-19T16:17:28Z - 6823456 - Ahmath-Gadji : feat(users): replace form endpoints with JSON body and unified PATCH /{user_id}
 2026-03-19T16:26:33+01:00 - fb3474c - Ahmath-Gadji : Merge pull request #258 from linagora/chore/upgrade_milvus
+2026-03-19T16:17:28Z - 6823456 - Ahmath-Gadji : feat(users): replace form endpoints with JSON body and unified PATCH /{user_id}
 2026-03-19T14:14:21+01:00 - e3988a5 - Paul Tran-Van : feat(api+vdb): Enable advanced filtering in search endpoints
 2026-03-19T14:13:57+01:00 - ff657f3 - Paul Tran-Van : docs: Document milvus migration to 2.6.11
-2026-03-19T12:45:48Z - c4f946b - Camille Bizeul : fix(workspaces): eliminate TOCTOU race in add_files_to_workspace
 2026-03-19T13:38:05+01:00 - 6a7732b - EnjoyBacon7 : Merge pull request #281 from linagora/fix/workspace-ghost-file-ids
+2026-03-19T13:15:27+01:00 - e312799 - EnjoyBacon7 : Merge pull request #285 from linagora/fix/workspace-delete-orphan-check
+2026-03-19T12:46:34+01:00 - 643ba81 - EnjoyBacon7 : Merge pull request #283 from linagora/fix/workspace-id-validation
+2026-03-19T12:45:48Z - c4f946b - Camille Bizeul : fix(workspaces): eliminate TOCTOU race in add_files_to_workspace
 2026-03-19T12:29:45Z - f6d6456 - Camille Bizeul : fix(workspaces): fix integration tests and remaining review issues
 2026-03-19T12:19:05Z - 8a41e71 - Camille Bizeul : fix(workspaces): fix delete_workspace orphan logic, migration ambiguity, and remove_file_from_workspace cross-product
 2026-03-19T12:19:05Z - 1b154df - Camille Bizeul : fix(workspaces): use files.id (int) FK in workspace_files instead of files.file_id (string)
-2026-03-19T12:17:46Z - 31859f6 - Camille Bizeul : test(workspaces): add unit tests for get_existing_file_ids validation
-2026-03-19T12:17:46Z - 484e23e - Camille Bizeul : fix(models): add FK from workspace_files.file_id to files.file_id
 2026-03-19T12:17:46Z - 877dcef - Camille Bizeul : fix(workspaces): reject non-existent file IDs in add_files_to_workspace
-2026-03-19T13:15:27+01:00 - e312799 - EnjoyBacon7 : Merge pull request #285 from linagora/fix/workspace-delete-orphan-check
+2026-03-19T12:17:46Z - 484e23e - Camille Bizeul : fix(models): add FK from workspace_files.file_id to files.file_id
+2026-03-19T12:17:46Z - 31859f6 - Camille Bizeul : test(workspaces): add unit tests for get_existing_file_ids validation
 2026-03-19T11:50:58Z - 3f8a24e - Camille Bizeul : refactor(workspaces): simplify subquery usage and add nonexistent workspace test
-2026-03-19T12:46:34+01:00 - 643ba81 - EnjoyBacon7 : Merge pull request #283 from linagora/fix/workspace-id-validation
 2026-03-19T11:27:36Z - 5585cc8 - Camille Bizeul : fix(workspaces): scope subq_indexed to workspace partition in delete_workspace
 2026-03-19T11:25:55Z - 858197d - Camille Bizeul : refactor(workspaces): rename test_workspace_id_validation.py to test_workspace.py
 2026-03-17T15:33:42+01:00 - 896764e - Camille Bizeul : fix(indexer): wrap workspace validation Ray call with call_ray_actor_with_timeout
@@ -196,83 +196,83 @@
 2026-03-12T16:01:31Z - 00d72a4 - Camille Bizeul : test(workspaces): add unit tests for workspace_id validation
 2026-03-12T16:01:23Z - 7d66c08 - Camille Bizeul : fix(workspaces): validate workspace_id rejects URL-unsafe characters
 2026-03-12T15:41:03+01:00 - c1fe53a - EnjoyBacon7 : Merge pull request #261 from linagora/worktree-refactor-alembic-models
+2026-03-12T14:49:05+01:00 - a662eed - EnjoyBacon7 : Merge pull request #266 from linagora/feat/query_decomposition_for_search
 2026-03-12T14:30:11Z - cc6aca5 - Camille Bizeul : fix(models): add missing index on Workspace.partition_name
 2026-03-12T14:19:29Z - 6348929 - Paul Tran-Van : refactor: extract SQLAlchemy models to standalone module
-2026-03-12T14:49:05+01:00 - a662eed - EnjoyBacon7 : Merge pull request #266 from linagora/feat/query_decomposition_for_search
+2026-03-12T14:17:00+01:00 - fc30796 - EnjoyBacon7 : Merge pull request #267 from linagora/fix/overridden_llm_dependency_check
+2026-03-12T13:51:05+01:00 - 6da2d24 - EnjoyBacon7 : Merge pull request #272 from linagora/feat/workspace
 2026-03-12T13:41:08Z - 7e55e4f - Camille Bizeul : fix(prompt): fix typo 'carbone' -> 'carbon', complete truncated example, add trailing newline
 2026-03-12T13:39:14Z - dd9cf01 - Ahmath-Gadji : fix(tests): add function calling support to mock VLLM
 2026-03-12T13:38:51Z - 55af5af - Camille Bizeul : feat: implement query decomposition for search and enhance reranking functionality
-2026-03-12T14:17:00+01:00 - fc30796 - EnjoyBacon7 : Merge pull request #267 from linagora/fix/overridden_llm_dependency_check
 2026-03-12T13:08:21Z - b15fbf0 - Camille Bizeul : fix: show '(none)' in 404 detail when endpoint returns empty model list
 2026-03-12T13:08:21Z - 37837bc - Camille Bizeul : fix: use configured LLM timeout instead of hardcoded 30s
 2026-03-12T13:08:21Z - 0ef1b7d - Camille Bizeul : fix: raise HTTP 500 early when LLM config fields are missing
 2026-03-12T13:08:20Z - 995740e - Paul Tran-Van : refactor: remove unused all_sources_json parameter
-2026-03-12T13:51:05+01:00 - 6da2d24 - EnjoyBacon7 : Merge pull request #272 from linagora/feat/workspace
 2026-03-12T10:59:00Z - 66232a2 - Camille Bizeul : fix(lint): fix ruff formatting in test_files.py
 2026-03-12T10:56:32Z - 1f18e54 - Camille Bizeul : fix(lint): fix ruff errors in files.py, test_files.py, indexer.py, search.py
-2026-03-12T10:51:14Z - 66bbf7a - Camille Bizeul : fix: report accurate orphaned file counts on workspace delete
-2026-03-12T10:51:14Z - a9f8c05 - Camille Bizeul : fix: preserve workspace filter when partition==["all"]
-2026-03-12T10:51:14Z - 24d05fb - Camille Bizeul : fix: guard workspace association in add_file against DB errors
 2026-03-12T10:51:14Z - fe36e19 - Camille Bizeul : fix(workspace): pin workspace search to workspace's partition in async_search
-2026-03-12T10:51:14Z - 060a910 - Camille Bizeul : fix(workspace): allow vendor-specific extra fields on request models
 2026-03-12T10:51:14Z - f531dcc - Camille Bizeul : fix(workspace): route all workspace Ray actor calls through call_ray_actor_with_timeout
-2026-03-12T10:49:52Z - a8ed1ad - Camille Bizeul : fix: defer workspace association until after file indexing completes
-2026-03-12T10:49:52Z - 030bae0 - Camille Bizeul : fix(workspace): scope remove_file_from_all_workspaces to the file's partition to prevent cross-partition collisions
-2026-03-12T10:49:52Z - 131e143 - Camille Bizeul : fix(workspace): make add_files_to_workspace idempotent with ON CONFLICT DO NOTHING
-2026-03-12T10:49:52Z - 5100e19 - Camille Bizeul : fix(workspace): return 409 on duplicate workspace_id instead of unhandled 500
+2026-03-12T10:51:14Z - a9f8c05 - Camille Bizeul : fix: preserve workspace filter when partition==["all"]
+2026-03-12T10:51:14Z - 66bbf7a - Camille Bizeul : fix: report accurate orphaned file counts on workspace delete
+2026-03-12T10:51:14Z - 24d05fb - Camille Bizeul : fix: guard workspace association in add_file against DB errors
+2026-03-12T10:51:14Z - 060a910 - Camille Bizeul : fix(workspace): allow vendor-specific extra fields on request models
 2026-03-12T10:49:52Z - ea78003 - Camille Bizeul : fix(security): validate workspace belongs to target partition before filtering search results
-2026-03-12T10:49:52Z - 45c0dc5 - Camille Bizeul : fix(workspace): make workspace actor methods async def for consistency with Ray actor pattern
 2026-03-12T10:49:52Z - db041be - Camille Bizeul : fix(docs): correct workspace_files.file_id description — no FK constraint in implementation
-2026-03-12T10:49:52Z - 9731c96 - Camille Bizeul : fix(docs): correct workspace endpoint base path from /indexer to /partition
-2026-03-12T10:49:52Z - 70d5da5 - Camille Bizeul : fix(workspace): prevent partial deletion from crashing delete_workspace
-2026-03-12T10:49:52Z - 38207de - Camille Bizeul : fix(workspace): return 404 when removing a file not in the workspace
-2026-03-12T10:49:52Z - 81f0ee4 - Camille Bizeul : fix(workspace): align list_workspaces response shape with get_workspace
 2026-03-12T10:49:52Z - b40f37d - Camille Bizeul : fix(workspace): return 201 on creation, use named user dependency
-2026-03-12T10:49:52Z - 7b089e2 - Paul Tran-Van : docs: add alternative migration methods to sql_migration guide
-2026-03-12T10:49:52Z - 21d5466 - Paul Tran-Van : chore: Exlude superpowers plans
 2026-03-12T10:49:52Z - a95bd04 - Paul Tran-Van : docs(workspace): add workspace documentation and update data model
+2026-03-12T10:49:52Z - a8ed1ad - Camille Bizeul : fix: defer workspace association until after file indexing completes
+2026-03-12T10:49:52Z - 9731c96 - Camille Bizeul : fix(docs): correct workspace endpoint base path from /indexer to /partition
+2026-03-12T10:49:52Z - 81f0ee4 - Camille Bizeul : fix(workspace): align list_workspaces response shape with get_workspace
+2026-03-12T10:49:52Z - 7b089e2 - Paul Tran-Van : docs: add alternative migration methods to sql_migration guide
+2026-03-12T10:49:52Z - 70d5da5 - Camille Bizeul : fix(workspace): prevent partial deletion from crashing delete_workspace
+2026-03-12T10:49:52Z - 5100e19 - Camille Bizeul : fix(workspace): return 409 on duplicate workspace_id instead of unhandled 500
+2026-03-12T10:49:52Z - 45c0dc5 - Camille Bizeul : fix(workspace): make workspace actor methods async def for consistency with Ray actor pattern
 2026-03-12T10:49:52Z - 42c06cd - Paul Tran-Van : test(workspace): add API integration tests
+2026-03-12T10:49:52Z - 38207de - Camille Bizeul : fix(workspace): return 404 when removing a file not in the workspace
+2026-03-12T10:49:52Z - 21d5466 - Paul Tran-Van : chore: Exlude superpowers plans
 2026-03-12T10:49:52Z - 1e2620d - Paul Tran-Van : feat(workspace): add workspace_ids parameter to file upload
 2026-03-12T10:49:52Z - 1ab2d08 - Paul Tran-Van : feat(workspace): add workspace filtering to search and chat pipelines
+2026-03-12T10:49:52Z - 131e143 - Camille Bizeul : fix(workspace): make add_files_to_workspace idempotent with ON CONFLICT DO NOTHING
+2026-03-12T10:49:52Z - 030bae0 - Camille Bizeul : fix(workspace): scope remove_file_from_all_workspaces to the file's partition to prevent cross-partition collisions
 2026-03-12T10:49:12Z - 6d3b665 - Paul Tran-Van : feat(workspace): add workspace CRUD and file management router
-2026-03-12T10:48:51Z - 76c8ac4 - Paul Tran-Van : feat(workspace): expose workspace methods on MilvusDB Ray actor
 2026-03-12T10:48:51Z - bcdfb1e - Paul Tran-Van : feat(workspace): add alembic migration for workspaces tables
+2026-03-12T10:48:51Z - 76c8ac4 - Paul Tran-Van : feat(workspace): expose workspace methods on MilvusDB Ray actor
 2026-03-12T10:48:51Z - 04ef5ed - Paul Tran-Van : feat(workspace)!: add workspace models with CRUD methods
 2026-03-12T10:48:41Z - b17bf1d - Ahmath-Gadji : new release 1.1.7
 2026-03-12T10:47:45Z - 7adf225 - Paul Tran-Van : feat: Add tools endpoint
 2026-03-12T10:46:17Z - bb966fc - Paul Tran-Van : refactor: Move file serialization in common module
-2026-03-12T10:45:31Z - 9c93fe3 - Paul Tran-Van : tests: Add unit test for disk file saving
 2026-03-12T10:45:31Z - 9de614d - Paul Tran-Van : feat: Make disk file saving more robust
-2026-03-10T11:56:26+01:00 - 266a418 - Paul Tran-Van : refactor(websearch): deduplicate defaults and separators
+2026-03-12T10:45:31Z - 9c93fe3 - Paul Tran-Van : tests: Add unit test for disk file saving
+2026-03-10T11:56:26+01:00 - f232387 - Paul Tran-Van : docs: clarify that extra options go in metadata field
 2026-03-10T11:56:26+01:00 - e865537 - Paul Tran-Van : feat(websearch): add chainlit WebSearch command and sources
 2026-03-10T11:56:26+01:00 - c46f27a - Paul Tran-Van : feat(websearch): global token budget for web sources
-2026-03-10T11:56:26+01:00 - 59b978b - Paul Tran-Van : refactor(websearch): provider config and factory pattern
-2026-03-10T11:56:26+01:00 - 2828a49 - Paul Tran-Van : fix(websearch): guard against null metadata in payload
-2026-03-10T11:56:26+01:00 - 8fea0d8 - Paul Tran-Van : fix(websearch): sanitize web result URLs with scheme check
 2026-03-10T11:56:26+01:00 - a628379 - Paul Tran-Van : feat(websearch): add SSRF protection and configurable SSL verification
-2026-03-10T11:56:26+01:00 - f232387 - Paul Tran-Van : docs: clarify that extra options go in metadata field
-2026-03-10T11:56:26+01:00 - 748b7e6 - Paul Tran-Van : docs: add web search feature documentation
-2026-03-10T11:56:26+01:00 - 4ae66c5 - Paul Tran-Van : feat(websearch): add content fetching for search results
+2026-03-10T11:56:26+01:00 - 8fea0d8 - Paul Tran-Van : fix(websearch): sanitize web result URLs with scheme check
 2026-03-10T11:56:26+01:00 - 89989cf - Paul Tran-Van : feat: add web search integration with pluggable provider
-2026-03-06T15:23:34+01:00 - 37e6332 - Paul Tran-Van : chore: update .gitignore with AI tooling directories
+2026-03-10T11:56:26+01:00 - 748b7e6 - Paul Tran-Van : docs: add web search feature documentation
+2026-03-10T11:56:26+01:00 - 59b978b - Paul Tran-Van : refactor(websearch): provider config and factory pattern
+2026-03-10T11:56:26+01:00 - 4ae66c5 - Paul Tran-Van : feat(websearch): add content fetching for search results
+2026-03-10T11:56:26+01:00 - 2828a49 - Paul Tran-Van : fix(websearch): guard against null metadata in payload
+2026-03-10T11:56:26+01:00 - 266a418 - Paul Tran-Van : refactor(websearch): deduplicate defaults and separators
 2026-03-06T15:23:34+01:00 - d7a9bc5 - Paul Tran-Van : feat(benchmarks): add S6 scenario — 5000 files with no batching
-2026-03-06T15:23:34+01:00 - 9aacae0 - Paul Tran-Van : feat(benchmark): reorder scenarios by file count, add S2 (10 files = top_k)
 2026-03-06T15:23:34+01:00 - aa27eca - Paul Tran-Van : feat(benchmark): skip data insertion when collection already populated
-2026-03-06T15:23:34+01:00 - 641761e - Paul Tran-Van : feat(benchmark): add -o/--output flag to write results to markdown file
+2026-03-06T15:23:34+01:00 - 9aacae0 - Paul Tran-Van : feat(benchmark): reorder scenarios by file count, add S2 (10 files = top_k)
 2026-03-06T15:23:34+01:00 - 72ab0e8 - Paul Tran-Van : feat(benchmark): add workspace search benchmark suite
+2026-03-06T15:23:34+01:00 - 641761e - Paul Tran-Van : feat(benchmark): add -o/--output flag to write results to markdown file
+2026-03-06T15:23:34+01:00 - 37e6332 - Paul Tran-Van : chore: update .gitignore with AI tooling directories
 2026-03-06T15:23:01+01:00 - 96e9458 - Paul Tran-Van : fix: avoid loguru PicklingError when logging Ray exceptions
 2026-03-06T12:26:55+01:00 - 7277ed1 - Paul Tran-Van : fix: fallback to python-docx when MarkItDown DOCX conversion fails
 2026-03-06T12:12:51+01:00 - ff2f598 - Paul Tran-Van : fix: downgrade auth failure log from exception to info level
 2026-03-03T15:05:49+01:00 - 26c5ab3 - Paul Tran-Van : chore: Bump version to 1.1.7
 2026-03-03T14:31:12+01:00 - c643c4f - Paul Tran-Van : Merge branch 'release/1.1.7'
 2026-03-03T14:20:01+01:00 - b8b2585 - Paul Tran-Van : chore: Bump version to 1.1.7
-2026-03-03T14:19:10+01:00 - 7e4ebaf - Paul Tran-Van : refactor: remove unused all_sources_json parameter
 2026-03-03T14:19:10+01:00 - 84fe313 - Paul Tran-Van : fix: send filtered sources on streaming content chunks
+2026-03-03T14:19:10+01:00 - 7e4ebaf - Paul Tran-Van : refactor: remove unused all_sources_json parameter
 2026-03-03T14:19:10+01:00 - 69f4f0b - Paul Tran-Van : fix: tolerate trailing period in [Sources: ...] tag
 2026-03-03T14:15:58+01:00 - c8d7fb0 - Ahmath-Gadji : Merge pull request #264 from linagora/fix/ray_actors_and_ray_tasks
-2026-03-03T10:55:41Z - 34c3c4f - Ahmath-Gadji : chore: using new version of indexerui that goes with the fixes
-2026-03-03T10:55:41Z - b0bb28c - Ahmath-Gadji : chore: refactor ray actor mapping
 2026-03-03T10:55:41Z - f421658 - Ahmath-Gadji : fix: Label cancelled tasks as "CANCELLED" instead of leaving it wrongly in "SERIALIZATION" state
+2026-03-03T10:55:41Z - b0bb28c - Ahmath-Gadji : chore: refactor ray actor mapping
+2026-03-03T10:55:41Z - 34c3c4f - Ahmath-Gadji : chore: using new version of indexerui that goes with the fixes
 2026-03-02T17:04:22+01:00 - 0f4fd43 - Paul Tran-Van : feat: handle LLM [Sources: none] to filter out unused sources
 2026-03-02T12:54:54+01:00 - 2c5477e - Ahmath-Gadji : Merge pull request #229 from linagora/feat/add_local_whisper_loader
 2026-03-02T11:44:14Z - cbcd054 - Ahmath-Gadji : feat: add local Whisper support with Ray workers and new AudioLoader config
