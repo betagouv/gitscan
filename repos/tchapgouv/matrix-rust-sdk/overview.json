@@ -1,44 +1,52 @@
 {
   "url": "https://github.com/tchapgouv/matrix-rust-sdk",
   "name": "matrix-rust-sdk",
-  "description": "Le SDK Rust Matrix est une collection de bibliothèques facilitant la création de clients Matrix en Rust, des bots simples aux applications complètes. Il gère les détails de bas niveau tels que le chiffrement, la synchronisation et l'état des salles, permettant aux développeurs de se concentrer sur la logique et l'interface utilisateur de leurs applications.",
+  "description": "Un kit de développement (SDK) complet pour créer des clients Matrix en Rust. Il gère les aspects complexes comme le chiffrement de bout en bout, la synchronisation et l'état des salons.",
   "language": "Rust",
   "features": [
     "Authentification & Accès",
     "Sécurité & Conformité",
-    "Temps réel & WebSocket"
+    "Temps réel & WebSocket",
+    "Collaboration & Workflow"
   ],
   "audience": "Développeurs",
-  "dependencies": [],
+  "dependencies": [
+    "UniFFI"
+  ],
   "components": [
-    "API REST & GraphQL",
-    "TypeScript / JavaScript",
-    "Rust & Go"
+    "Rust & Go",
+    "Bibliothèques & Packages",
+    "Tests",
+    "CI/CD & Déploiement",
+    "Authentification (composant)"
   ],
   "auth": {
     "methods": [
       "oauth2"
     ]
   },
-  "tests": "Tests d'intégration",
+  "tests": "nextest, tests d'intégration",
   "workflows": [
-    "ci.yml",
+    "benchmarks.yml",
     "bindings_ci.yml",
-    "coverage.yml"
+    "ci.yml",
+    "coverage.yml",
+    "deny.yml",
+    "documentation.yml"
   ],
-  "lastActivity": "2026-06-09T23:05:07Z",
+  "lastActivity": "2026-09-25T15:46:47Z",
   "status": "active",
   "license": "Apache-2.0",
   "hasDocumentation": true,
   "metrics": {
     "stars": 0,
     "forks": 1,
-    "contributors": null,
-    "openIssues": 1
+    "openIssues": 0
   },
   "tags": [
-    "Rust",
-    "SDK",
-    "Sécurité & Auth"
+    "Communication & Messagerie",
+    "Sécurité & Auth",
+    "Git & DevOps",
+    "Documentation"
   ]
 }
