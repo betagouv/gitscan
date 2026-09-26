@@ -1,5 +1,8 @@
 .
 ├── .envrc
+├── .github
+│   └── workflows
+│       └── tests.yml
 ├── .gitignore
 ├── CHANGELOG.md
 ├── CLAUDE.md
@@ -14,6 +17,7 @@
 │   └── run_benches.sh
 ├── cmd
 │   ├── claw-code-go
+│   │   ├── codex_auth_test.go
 │   │   └── main.go
 │   └── claw-store-init
 │       └── main.go
@@ -56,6 +60,7 @@
 │   │   ├── identity.go
 │   │   ├── identity_test.go
 │   │   ├── marshal_test.go
+│   │   ├── opus55_test.go
 │   │   ├── provider.go
 │   │   ├── providers
 │   │   │   ├── anthropic
@@ -68,21 +73,34 @@
 │   │   │   │   ├── provider.go
 │   │   │   │   ├── provider_live_test.go
 │   │   │   │   └── provider_test.go
+│   │   │   ├── moonshot
+│   │   │   │   ├── provider.go
+│   │   │   │   ├── provider_live_test.go
+│   │   │   │   └── provider_test.go
 │   │   │   ├── openai
+│   │   │   │   ├── gpt6_test.go
 │   │   │   │   ├── identity_test.go
+│   │   │   │   ├── images.go
+│   │   │   │   ├── images_test.go
 │   │   │   │   ├── provider.go
 │   │   │   │   ├── provider_chatgpt_test.go
 │   │   │   │   ├── reasoning_test.go
 │   │   │   │   ├── responses.go
 │   │   │   │   ├── responses_schema_test.go
-│   │   │   │   └── responses_test.go
+│   │   │   │   ├── responses_test.go
+│   │   │   │   └── usage_input_tokens_test.go
 │   │   │   ├── openaiwire
 │   │   │   │   ├── convert.go
 │   │   │   │   ├── convert_test.go
 │   │   │   │   ├── normalized_parameters_test.go
 │   │   │   │   ├── stream.go
-│   │   │   │   └── types.go
-│   │   │   └── vertex
+│   │   │   │   ├── types.go
+│   │   │   │   └── usage_input_tokens_test.go
+│   │   │   ├── vertex
+│   │   │   │   ├── provider.go
+│   │   │   │   ├── provider_live_test.go
+│   │   │   │   └── provider_test.go
+│   │   │   └── zai
 │   │   │       ├── provider.go
 │   │   │       ├── provider_live_test.go
 │   │   │       └── provider_test.go
@@ -98,6 +116,7 @@
 │   │   ├── types_schema_type_test.go
 │   │   └── types_test.go
 │   ├── apikit
+│   │   ├── current_models_test.go
 │   │   ├── doc.go
 │   │   ├── effort.go
 │   │   ├── effort_test.go
@@ -133,7 +152,11 @@
 │   │   ├── telemetry_sinks.go
 │   │   └── telemetry_test.go
 │   ├── auth
+│   │   ├── codex.go
+│   │   ├── codex_test.go
 │   │   ├── credentials.go
+│   │   ├── credentials_test.go
+│   │   ├── foreign_hint_test.go
 │   │   ├── manager.go
 │   │   ├── oauth.go
 │   │   ├── resolver.go
@@ -173,7 +196,9 @@
 │   │   ├── status_cmds.go
 │   │   ├── status_cmds_test.go
 │   │   ├── ux_cmds.go
-│   │   └── ux_cmds_test.go
+│   │   ├── ux_cmds_test.go
+│   │   ├── workspace_commands.go
+│   │   └── workspace_commands_test.go
 │   ├── compat
 │   │   ├── bootstrap.go
 │   │   ├── bootstrap_test.go
@@ -288,6 +313,7 @@
 │   │   ├── execute_tool_hooks_test.go
 │   │   ├── green_contracts.go
 │   │   ├── green_contracts_test.go
+│   │   ├── image_gen_test.go
 │   │   ├── lane
 │   │   │   ├── branch_lock.go
 │   │   │   ├── branch_lock_test.go
@@ -375,6 +401,7 @@
 │   │   ├── ask_user_test.go
 │   │   ├── bash.go
 │   │   ├── bash_env_test.go
+│   │   ├── bash_output_test.go
 │   │   ├── bash_pipeline.go
 │   │   ├── bash_timeout_test.go
 │   │   ├── bash_unix.go
@@ -586,6 +613,8 @@
 │   │   ├── files.go
 │   │   ├── glob.go
 │   │   ├── grep.go
+│   │   ├── image_gen.go
+│   │   ├── image_gen_test.go
 │   │   ├── lsp_tool.go
 │   │   ├── lsp_tool_test.go
 │   │   ├── mcp_resource_tools.go
@@ -653,6 +682,9 @@
 │   │   ├── api_smoke_test.go
 │   │   ├── auth.go
 │   │   ├── client.go
+│   │   ├── commands
+│   │   │   ├── commands.go
+│   │   │   └── commands_test.go
 │   │   ├── hooks
 │   │   │   └── hooks.go
 │   │   ├── lsp
@@ -671,9 +703,13 @@
 │   │   │   │   └── provider.go
 │   │   │   ├── foundry
 │   │   │   │   └── provider.go
+│   │   │   ├── moonshot
+│   │   │   │   └── provider.go
 │   │   │   ├── openai
 │   │   │   │   └── provider.go
-│   │   │   └── vertex
+│   │   │   ├── vertex
+│   │   │   │   └── provider.go
+│   │   │   └── zai
 │   │   │       └── provider.go
 │   │   ├── sse.go
 │   │   ├── task
@@ -681,10 +717,12 @@
 │   │   ├── team
 │   │   │   └── team.go
 │   │   ├── tools
+│   │   │   ├── bash_timeout_test.go
 │   │   │   ├── builtins.go
 │   │   │   ├── computer_use.go
 │   │   │   ├── cron.go
 │   │   │   ├── extended_test.go
+│   │   │   ├── image_gen.go
 │   │   │   ├── lsp.go
 │   │   │   ├── mcp.go
 │   │   │   ├── plan_mode.go
@@ -743,4 +781,4 @@
         ├── telemetry_event_http_started.json
         ├── telemetry_event_http_succeeded.json
         └── telemetry_event_session_trace.json
-148 directories, 597 files
+155 directories, 628 files

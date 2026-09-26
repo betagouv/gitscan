@@ -1,15 +1,17 @@
 {
   "url": "https://github.com/SocialGouv/claw-code-go",
   "name": "claw-code-go",
-  "description": "Un runtime de codage agentique en Go, multi-fournisseur et natif MCP. Il permet des sessions de codage automatisées avec une gestion des permissions, un sandboxing et une intégration d'outils riche.",
+  "description": "Un runtime de codage agentique écrit en Go, offrant un support multi-fournisseurs LLM, une intégration native au protocole MCP et un système de plugins extensible pour des sessions de codage autonomes.",
   "language": "Go",
   "features": [
-    "Intelligence Artificielle & NLP",
     "API & Intégrations",
+    "Authentification & Accès",
     "Gestion des utilisateurs & Permissions",
+    "Intelligence Artificielle & NLP",
+    "Infrastructure & Stockage",
     "Collaboration & Workflow",
-    "Sécurité & Conformité",
-    "Gestion documentaire & Fichiers"
+    "Interface utilisateur & Design",
+    "Suivi & Traçabilité"
   ],
   "audience": "Développeurs",
   "dependencies": [
@@ -18,21 +20,26 @@
     "AWS Bedrock",
     "Google Vertex AI",
     "Azure AI Foundry",
-    "Bubble Tea",
-    "Goja",
-    "OpenTelemetry"
+    "goja",
+    "bubbletea",
+    "OpenTelemetry",
+    "xdotool",
+    "ImageMagick"
   ],
   "components": [
     "Rust & Go",
-    "Intelligence Artificielle / ML",
     "Scripts & Utilitaires",
+    "Authentification (composant)",
+    "Intégrations services externes",
     "Tests",
+    "Bibliothèques & Packages",
     "Docker & Conteneurs"
   ],
   "auth": {
     "methods": [
       "oauth2",
-      "api-key"
+      "api-key",
+      "session"
     ],
     "providers": [
       "Anthropic",
@@ -42,8 +49,8 @@
       "Azure"
     ]
   },
-  "tests": "go test, go vet, smoke tests",
-  "lastActivity": "2026-09-05T00:00:00Z",
+  "tests": "go test, go vet, et tests de fumée (smoke tests) pour les fournisseurs via le build tag 'live'",
+  "lastActivity": "2026-09-25T10:29:54+02:00",
   "status": "experimental",
   "license": "MIT",
   "hasDocumentation": true,
@@ -51,6 +58,7 @@
     "Intelligence Artificielle & LLM",
     "Git & DevOps",
     "Docker & Conteneurs",
-    "Documentation"
+    "Autres langages",
+    "Tests & Qualité"
   ]
 }
