@@ -1,16 +1,18 @@
-## Changelog : mon-aide-cyber (30 derniers jours, au 08/09/2026)
+## Changelog : mon-aide-cyber (30 derniers jours, au 18/09/2026)
 
 ### Résumé
-Les récentes évolutions se concentrent sur l'amélioration du suivi analytique des parcours utilisateurs et sur la consolidation de la chaîne de développement. Le projet bénéficie d'une meilleure automatisation de la gestion des dépendances et d'une optimisation de la construction des environnements de production (Docker).
+Ce mois-ci, les développements se sont concentrés sur le renforcement de la sécurité des comptes utilisateurs, l'amélioration de la clarté des informations fournies lors des diagnostics et la stabilisation de l'environnement de développement et de déploiement.
 
 ### Évolutions fonctionnelles
-- **Suivi et analytique** : Intégration d'un pixel de suivi (via Brevo) pour analyser le parcours des nouveaux aidants et des utilisateurs inscrits.
-- **Interface** : Suppression de la page de statistiques.
+- **Clarté du diagnostic** : Ajout de détails explicatifs pour les réponses du référentiel afin de mieux accompagner l'utilisateur.
+- **Suivi statistique** : Intégration d'un pixel de suivi (Brevo) pour analyser le parcours d'inscription des aidants et des utilisateurs.
+- **Gestion de compte** : Correction du processus de changement de mot de passe.
 
 ### Évolutions techniques
-- **Infrastructure et CI/CD** :
-    - Optimisation de la construction des images Docker pour garantir l'utilisation des modules Node.js corrects.
-    - Automatisation de la gestion et de la sécurité des dépendances via la configuration de Renovate.
-- **Qualité du code et Workflow** :
-    - Amélioration du processus de formatage automatique du code avec Prettier.
-    - Correction et stabilisation des fichiers de verrouillage des dépendances (`pnpm-lock.json`).
+- **Sécurité** : Renforcement de la gestion des mots de passe (hachage lors de l'authentification et script de migration des hashs) et correction de la génération d'IV (vecteur d'initialisation).
+- **Infrastructure & CI/CD** : Optimisation de la construction des images Docker et réactivation de la pipeline Storybook.
+- **Qualité & Tests** : Stabilisation de la suite de tests suite aux montées de version de Vitest et Storybook, et mise en conformité du code avec les nouvelles règles de linting (ESLint) et de formatage (Prettier).
+- **Maintenance** : Nettoyage des dépendances obsolètes et correction des fichiers de verrouillage (pnpm-lock).
+
+### Autres changements
+- Configuration de l'outil Renovate pour automatiser et sécuriser la gestion des dépendances.
