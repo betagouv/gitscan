@@ -1,15 +1,16 @@
 {
   "url": "https://github.com/MTES-MCT/monitorenv",
   "name": "monitorenv",
-  "description": "Application destinée au CACEM pour centraliser les outils de protection de l'environnement marin. Elle permet la coordination des contrôles, le suivi des missions et l'analyse des données pour l'aide à la décision.",
+  "description": "Application destinée au CACEM pour centraliser les outils de protection de l'environnement marin. Elle permet le suivi des missions de contrôle, l'analyse de données et l'aide à la décision pour la biodiversité marine.",
   "language": "Java",
   "features": [
-    "Administration & Backoffice",
     "Visualisation de données & Cartographie",
     "Statistiques & Rapports",
-    "Suivi & Traçabilité",
     "Gestion des utilisateurs & Permissions",
-    "Monitoring & Logs"
+    "Suivi & Traçabilité",
+    "Administration & Backoffice",
+    "Monitoring & Logs",
+    "Données & Schémas"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -18,29 +19,28 @@
     "GeoServer",
     "Keycloak",
     "Kafka",
-    "Flyway",
-    "Sentry",
-    "Metabase",
-    "Mapbox",
-    "Google Maps",
     "Carto",
+    "Mapbox",
+    "Metabase",
+    "Sentry",
     "Prefect",
-    "Cypress"
+    "Cypress",
+    "Pytest"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "Docker & Conteneurs",
     "TypeScript / JavaScript",
     "Python (scripts & backend)",
-    "Authentification (composant)",
+    "Docker & Conteneurs",
     "SIG & Géospatial",
-    "Pipeline de données",
-    "Webhooks & Événements"
+    "Authentification (composant)",
+    "Pipeline de données"
   ],
   "auth": {
     "methods": [
       "oauth2",
+      "jwt",
       "sso"
     ],
     "providers": [
@@ -51,8 +51,12 @@
     "Cypress",
     "Pytest"
   ],
-  "lastActivity": "2026-09-16T12:52:13+02:00",
-  "status": "maintained",
+  "workflows": [
+    "GitHub Actions"
+  ],
+  "lastActivity": "2026-09-23T11:28:52+02:00",
+  "status": "active",
+  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Environnement & Énergie",
@@ -62,6 +66,6 @@
     "Python",
     "Bases de données SQL",
     "Monitoring & Observabilité",
-    "Écosystème beta.gouv / État"
+    "CI/CD & GitHub Actions"
   ]
 }

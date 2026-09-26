@@ -173,7 +173,8 @@
 │   │   │   │                   │   │   │   ├── AdditionalRefRegEntity.kt
 │   │   │   │                   │   │   │   ├── AreaTypeEnum.kt
 │   │   │   │                   │   │   │   ├── RegulatoryAreaEntity.kt
-│   │   │   │                   │   │   │   └── RegulatoryAreaGroupEntity.kt
+│   │   │   │                   │   │   │   ├── RegulatoryAreaGroupEntity.kt
+│   │   │   │                   │   │   │   └── SearchFilters.kt
 │   │   │   │                   │   │   ├── reporting
 │   │   │   │                   │   │   │   ├── ControlStatusEnum.kt
 │   │   │   │                   │   │   │   ├── ReportingEntity.kt
@@ -369,6 +370,7 @@
 │   │   │   │                   │   │   │   ├── CreateOrUpdateRegulatoryAreaGroup.kt
 │   │   │   │                   │   │   │   ├── GetAllLayerNames.kt
 │   │   │   │                   │   │   │   ├── GetAllRegulatoryAreas.kt
+│   │   │   │                   │   │   │   ├── GetAllRegulatoryAreasTiles.kt
 │   │   │   │                   │   │   │   ├── GetAllRegulatoryAreasToComplete.kt
 │   │   │   │                   │   │   │   ├── GetRegulatoryAreaById.kt
 │   │   │   │                   │   │   │   ├── GetRegulatoryAreaByIds.kt
@@ -1069,7 +1071,8 @@
 │   │   │       │   │   │   ├── V0.229__re_add_regulatory_areas_group.sql
 │   │   │       │   │   │   ├── V0.230__add_control_unit_resources_registrationid_and_radiofrequency.sql
 │   │   │       │   │   │   ├── V0.231__update_refReg_regulatory_area_group.sql
-│   │   │       │   │   │   └── V0.232__create_table_species.sql
+│   │   │       │   │   │   ├── V0.232__create_table_species.sql
+│   │   │       │   │   │   └── V0.233__add_column_regulatory_areas_geom_3857.sql
 │   │   │       │   │   └── layers
 │   │   │       │   │       ├── V0.001__create_fao_areas.sql
 │   │   │       │   │       ├── V0.002__create_eez_areas.sql
@@ -1273,8 +1276,8 @@
 │   │       │                   │   │   │   ├── CreateOrUpdateRegulatoryAreaGroupUTest.kt
 │   │       │                   │   │   │   ├── CreateOrUpdateRegulatoryAreaUTest.kt
 │   │       │                   │   │   │   ├── GetAllLayerNamesUTest.kt
-│   │       │                   │   │   │   ├── GetAllNewRegulatoryAreasUTest.kt
 │   │       │                   │   │   │   ├── GetAllRegulatoryAreasToCompleteUTest.kt
+│   │       │                   │   │   │   ├── GetAllRegulatoryAreasUTest.kt
 │   │       │                   │   │   │   ├── GetNewRegulatoryAreaByIdUTest.kt
 │   │       │                   │   │   │   ├── GetRegulatoryAreaByIdsUTest.kt
 │   │       │                   │   │   │   ├── GetRegulatoryAreasGroupByIdUTest.kt
@@ -3495,4 +3498,4 @@
 │       │   └── test_update_queries.py
 │       └── test_utils.py
 └── sonar-project.properties
-648 directories, 2849 files
+648 directories, 2852 files
