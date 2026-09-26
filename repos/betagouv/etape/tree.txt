@@ -29,18 +29,153 @@
 │       └── web-design-guidelines
 │           └── SKILL.md
 ├── .claude
+│   ├── agents
+│   │   └── revue-front.md
+│   ├── hooks
+│   │   └── eslint-fix.sh
+│   ├── rules
+│   │   ├── accessibilite.md
+│   │   ├── api.md
+│   │   ├── design-system.md
+│   │   ├── react.md
+│   │   └── typescript.md
 │   ├── settings.json
 │   └── skills
+│       ├── composant-ui
+│       │   └── SKILL.md
+│       ├── convention-nommage
+│       │   └── SKILL.md
 │       ├── frontend-design -> ../../.agents/skills/frontend-design
+│       ├── review-pr
+│       │   └── SKILL.md
 │       ├── vercel-react-best-practices -> ../../.agents/skills/vercel-react-best-practices
 │       └── web-design-guidelines -> ../../.agents/skills/web-design-guidelines
+├── .dockerignore
+├── .editorconfig
 ├── .github
-│   └── pull_request_template.md
+│   ├── actions
+│   │   └── deployer-statique
+│   │       └── action.yml
+│   ├── dependabot.yml
+│   ├── pull_request_template.md
+│   └── workflows
+│       ├── ci.yml
+│       ├── deploy-dev.yml
+│       ├── harbor-smoke.yml
+│       ├── preview-gc.yml
+│       ├── preview.yml
+│       └── setup-vm.yml
 ├── .gitignore
+├── .husky
+│   └── pre-commit
 ├── .mcp.json
+├── .nvmrc
 ├── .prettierignore
+├── CLAUDE.md
+├── Dockerfile
 ├── README.md
 ├── apps
+│   ├── api
+│   │   ├── .env.example
+│   │   ├── eslint.config.mjs
+│   │   ├── nest-cli.json
+│   │   ├── package.json
+│   │   ├── prisma
+│   │   │   ├── migrations
+│   │   │   │   ├── 20260917141651_create_auth_tables
+│   │   │   │   │   └── migration.sql
+│   │   │   │   └── migration_lock.toml
+│   │   │   └── schema.prisma
+│   │   ├── prisma.config.ts
+│   │   ├── src
+│   │   │   ├── account
+│   │   │   │   ├── account.module.ts
+│   │   │   │   └── account.service.ts
+│   │   │   ├── app.module.ts
+│   │   │   ├── auth
+│   │   │   │   ├── auth-flow-error.ts
+│   │   │   │   ├── auth-flow-exception.filter.ts
+│   │   │   │   ├── auth.controller.ts
+│   │   │   │   ├── auth.module.ts
+│   │   │   │   ├── identity-claims.test.ts
+│   │   │   │   ├── identity-claims.ts
+│   │   │   │   ├── identity-provider.test.ts
+│   │   │   │   ├── identity-provider.ts
+│   │   │   │   ├── oidc.service.ts
+│   │   │   │   ├── return-to.test.ts
+│   │   │   │   ├── return-to.ts
+│   │   │   │   └── session
+│   │   │   │       ├── cookie-cipher.test.ts
+│   │   │   │       ├── cookie-cipher.ts
+│   │   │   │       ├── session.guard.ts
+│   │   │   │       ├── session.service.test.ts
+│   │   │   │       ├── session.service.ts
+│   │   │   │       ├── session.store.ts
+│   │   │   │       └── session.types.ts
+│   │   │   ├── config
+│   │   │   │   └── env.ts
+│   │   │   ├── database
+│   │   │   │   ├── database.module.ts
+│   │   │   │   └── prisma.service.ts
+│   │   │   └── main.ts
+│   │   ├── tsconfig.build.json
+│   │   └── tsconfig.json
+│   ├── keycloak-theme
+│   │   ├── README.md
+│   │   ├── eslint.config.mjs
+│   │   ├── index.html
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── assets
+│   │   │   │   ├── fonts
+│   │   │   │   │   ├── Marianne-Bold.woff2
+│   │   │   │   │   └── Marianne-Regular.woff2
+│   │   │   │   ├── franceconnect-logo.svg
+│   │   │   │   └── login-illustration.jpg
+│   │   │   ├── email
+│   │   │   │   ├── html
+│   │   │   │   │   ├── email-verification.ftl
+│   │   │   │   │   ├── password-reset.ftl
+│   │   │   │   │   └── template.ftl
+│   │   │   │   ├── messages
+│   │   │   │   │   ├── messages_en.properties
+│   │   │   │   │   └── messages_fr.properties
+│   │   │   │   ├── text
+│   │   │   │   │   ├── email-verification.ftl
+│   │   │   │   │   └── password-reset.ftl
+│   │   │   │   └── theme.properties
+│   │   │   ├── login
+│   │   │   │   ├── KcContext.ts
+│   │   │   │   ├── KcPage.tsx
+│   │   │   │   ├── Template.tsx
+│   │   │   │   ├── components
+│   │   │   │   │   ├── alert.tsx
+│   │   │   │   │   ├── form.tsx
+│   │   │   │   │   ├── franceconnect.tsx
+│   │   │   │   │   ├── password-rules.test.ts
+│   │   │   │   │   ├── password-rules.ts
+│   │   │   │   │   ├── prose.tsx
+│   │   │   │   │   └── user-profile-fields.tsx
+│   │   │   │   ├── i18n.ts
+│   │   │   │   └── pages
+│   │   │   │       ├── Error.tsx
+│   │   │   │       ├── Info.tsx
+│   │   │   │       ├── Login.tsx
+│   │   │   │       ├── LoginIdpLinkConfirm.tsx
+│   │   │   │       ├── LoginIdpLinkEmail.tsx
+│   │   │   │       ├── LoginPageExpired.tsx
+│   │   │   │       ├── LoginResetPassword.tsx
+│   │   │   │       ├── LoginUpdatePassword.tsx
+│   │   │   │       ├── LoginVerifyEmail.tsx
+│   │   │   │       ├── LogoutConfirm.tsx
+│   │   │   │       ├── PageProps.ts
+│   │   │   │       └── Register.tsx
+│   │   │   ├── main.tsx
+│   │   │   └── styles
+│   │   │       └── theme.css
+│   │   ├── tsconfig.json
+│   │   ├── vite.config.ts
+│   │   └── vitest.config.ts
 │   ├── simulateur
 │   │   ├── .gitignore
 │   │   ├── AGENTS.md
@@ -53,6 +188,10 @@
 │   │   ├── postcss.config.mjs
 │   │   ├── public
 │   │   │   ├── file.svg
+│   │   │   ├── fonts
+│   │   │   │   ├── OpenSans-Bold.ttf
+│   │   │   │   ├── OpenSans-Regular.ttf
+│   │   │   │   └── OpenSans-SemiBold.ttf
 │   │   │   ├── globe.svg
 │   │   │   ├── ministere-travail-logo.svg
 │   │   │   ├── next.svg
@@ -76,46 +215,55 @@
 │   │   │   │   │   ├── Navbar.tsx
 │   │   │   │   │   ├── OutcomeScreen.tsx
 │   │   │   │   │   ├── QuestionCta.tsx
+│   │   │   │   │   ├── QuestionFields.tsx
 │   │   │   │   │   ├── QuestionHeader.tsx
 │   │   │   │   │   ├── QuestionScreen.tsx
 │   │   │   │   │   └── fields
 │   │   │   │   │       ├── CheckboxField.tsx
-│   │   │   │   │       ├── CityAutocompleteField.tsx
+│   │   │   │   │       ├── FieldError.tsx
+│   │   │   │   │       ├── FieldHeader.tsx
+│   │   │   │   │       ├── MonthYearField.tsx
+│   │   │   │   │       ├── NumberField.tsx
 │   │   │   │   │       ├── OptionRow.tsx
-│   │   │   │   │       └── RadioField.tsx
+│   │   │   │   │       ├── RadioField.tsx
+│   │   │   │   │       ├── RegionField.tsx
+│   │   │   │   │       ├── ToggleField.tsx
+│   │   │   │   │       └── aria.ts
 │   │   │   │   ├── domain
 │   │   │   │   │   ├── conditions.ts
 │   │   │   │   │   ├── flags.ts
 │   │   │   │   │   ├── flow.ts
+│   │   │   │   │   ├── month.ts
 │   │   │   │   │   ├── questions.ts
 │   │   │   │   │   ├── regions.ts
 │   │   │   │   │   ├── types.ts
 │   │   │   │   │   └── validation.ts
 │   │   │   │   ├── hooks
-│   │   │   │   │   ├── useCityAutocomplete.ts
-│   │   │   │   │   ├── useDebouncedValue.ts
 │   │   │   │   │   ├── useFlow.ts
 │   │   │   │   │   └── useFlowNavigation.ts
-│   │   │   │   ├── lib
-│   │   │   │   │   └── address-api.ts
 │   │   │   │   └── state
 │   │   │   │       ├── flow-reducer.ts
 │   │   │   │       └── flow-store.ts
 │   │   │   └── resultats
 │   │   │       ├── components
 │   │   │       │   ├── AnswersRecap.tsx
-│   │   │       │   ├── CriteriaList.tsx
-│   │   │       │   ├── DeviceCard.tsx
+│   │   │       │   ├── CategorieTag.tsx
+│   │   │       │   ├── DownloadPdfButton.tsx
 │   │   │       │   ├── EmptyResults.tsx
-│   │   │       │   ├── ResultsScreen.tsx
-│   │   │       │   ├── ResultsTabs.tsx
-│   │   │       │   └── ScrollToTopButton.tsx
-│   │   │       └── domain
-│   │   │           ├── cep.ts
-│   │   │           ├── devices.ts
-│   │   │           ├── eligibility.ts
-│   │   │           ├── recap.ts
-│   │   │           └── types.ts
+│   │   │       │   ├── ResultCard.tsx
+│   │   │       │   └── ResultsScreen.tsx
+│   │   │       ├── domain
+│   │   │       │   ├── catalogue.ts
+│   │   │       │   ├── conseil-regional.ts
+│   │   │       │   ├── profil.ts
+│   │   │       │   ├── recap.ts
+│   │   │       │   ├── selection.ts
+│   │   │       │   ├── transitions-pro.ts
+│   │   │       │   └── types.ts
+│   │   │       └── pdf
+│   │   │           ├── ResultsPdfDocument.tsx
+│   │   │           ├── fonts.ts
+│   │   │           └── pdf-styles.ts
 │   │   └── tsconfig.json
 │   └── site
 │       ├── .gitignore
@@ -133,15 +281,23 @@
 │       │   └── transitions-pro-logo.svg
 │       ├── src
 │       │   ├── app
+│       │   │   ├── compte
+│       │   │   │   └── page.tsx
 │       │   │   ├── favicon.ico
 │       │   │   ├── globals.css
 │       │   │   ├── layout.tsx
+│       │   │   ├── mentions-legales
+│       │   │   │   └── page.tsx
 │       │   │   └── page.tsx
 │       │   ├── assets
 │       │   │   ├── accompagnement-equipe.jpg
 │       │   │   ├── formation-collective.jpg
 │       │   │   └── hero-reflexion.jpg
 │       │   ├── components
+│       │   │   ├── account-details.tsx
+│       │   │   ├── auth-flow-notice.tsx
+│       │   │   ├── auth-menu.tsx
+│       │   │   ├── footer-anchor.tsx
 │       │   │   ├── main-nav.tsx
 │       │   │   ├── nav-link.figma.tsx
 │       │   │   ├── nav-link.tsx
@@ -162,13 +318,58 @@
 │       │   │   └── site-header.tsx
 │       │   ├── content
 │       │   │   ├── faq.ts
-│       │   │   └── home.ts
+│       │   │   ├── home.ts
+│       │   │   └── mentions-legales.ts
 │       │   └── lib
+│       │       ├── auth.ts
 │       │       ├── footer.ts
-│       │       └── navigation.ts
+│       │       ├── navigation.ts
+│       │       └── use-session.ts
 │       └── tsconfig.json
+├── deploy
+│   ├── .env.example
+│   ├── api-start.sh
+│   ├── keycloak-init.sh
+│   ├── keycloak-start.sh
+│   ├── nginx-auth-proxy.inc
+│   ├── nginx-auth.conf
+│   └── nginx.conf
+├── docker-compose.prod.yml
+├── docker-compose.yml
 ├── docs
+│   ├── authentification.md
+│   ├── conventions
+│   │   ├── accessibilite.md
+│   │   ├── architecture-api.md
+│   │   ├── audit-nommage.md
+│   │   ├── glossaire.md
+│   │   ├── nommage.md
+│   │   ├── outillage-agent.md
+│   │   ├── react.md
+│   │   ├── stack-front.md
+│   │   └── typescript.md
+│   ├── deploiement.md
+│   ├── donnees.md
+│   ├── infra
+│   │   ├── installation-previews.md
+│   │   └── reprise-cle-runner.md
 │   └── previews.md
+├── infra
+│   ├── ansible
+│   │   ├── README.md
+│   │   ├── back.yml
+│   │   ├── front.yml
+│   │   ├── group_vars
+│   │   │   └── all.yml
+│   │   ├── inventaire.ini
+│   │   └── taches
+│   │       └── cle-runner.yml
+│   └── nginx
+│       └── previews.conf
+├── keycloak
+│   └── realms
+│       ├── README.md
+│       └── etape-realm.json
 ├── package-lock.json
 ├── package.json
 ├── packages
@@ -192,6 +393,7 @@
 │       │   │   ├── back-to-top.tsx
 │       │   │   ├── badge.tsx
 │       │   │   ├── button.tsx
+│       │   │   ├── callout.tsx
 │       │   │   ├── card.tsx
 │       │   │   ├── checkbox.tsx
 │       │   │   ├── container.tsx
@@ -200,6 +402,7 @@
 │       │   │   ├── form.tsx
 │       │   │   ├── input.tsx
 │       │   │   ├── label.tsx
+│       │   │   ├── prose.tsx
 │       │   │   ├── radio-group.tsx
 │       │   │   ├── section.tsx
 │       │   │   ├── select.tsx
@@ -217,7 +420,7 @@
 │       └── tsconfig.json
 ├── paths.mjs
 ├── scripts
-│   └── vercel-out.mjs
+│   └── assemble-static.mjs
 ├── skills-lock.json
 └── turbo.json
-48 directories, 230 files
+93 directories, 388 files

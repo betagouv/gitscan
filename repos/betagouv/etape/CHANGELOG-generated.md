@@ -1,41 +1,33 @@
-## Changelog : etape (30 derniers jours, au 05/08/2026)
+## Changelog : etape (30 derniers jours, au 24 septembre 2026)
 
 ### Résumé
-Le projet a connu une progression majeure, passant d'une structure initiale à un site complet et fonctionnel. Les efforts se sont concentrés sur l'intégration de la page d'accueil, le développement du parcours complet du simulateur d'éligibilité et la mise en place d'un système de design robuste pour garantir une expérience utilisateur fluide et accessible.
+Ce mois a été marqué par une refonte majeure de l'expérience utilisateur du simulateur, incluant une réécriture des règles métier et une nouvelle interface pour le questionnaire et les résultats. Parallèlement, la plateforme a franchi des étapes importantes de maturité technique avec la migration de son infrastructure de déploiement et la mise en place de standards de développement plus stricts.
 
 ### Évolutions fonctionnelles
-- **Simulateur d'éligibilité** :
-    - Intégration du parcours complet des questions et du flux de navigation.
-    - Amélioration de l'autocomplétion des communes avec une interface plus accessible et des états de statut clairs.
-    - Ajout d'une sécurité de navigation : confirmation de sortie lors de la première question et amélioration du retour en arrière.
-    - Optimisation des résultats : les dispositifs non éligibles sont désormais clairement identifiés au lieu d'être simplement filtrés.
-- **Personnalisation des liens et résultats** :
-    - Régionalisation des liens vers les portails "Avenir Actifs" en fonction de la localisation (travail/résidence) de l'utilisateur [#12](https://github.com/betagouv/etape/pull/12).
-    - Affinement des liens CPF pour les agents publics en les distinguant par versant (État, territorial, hospitalier).
-    - Suppression des doublons d'URL pour les services CEP.
-- **Site vitrine** :
-    - Mise en ligne de la page d'accueil avec son contenu éditorial et ses visuels.
-    - Intégration d'une section FAQ via un composant accordéon [#13](https://github.com/betagouv/etape/pull/13).
-    - Ajout d'une navigation complète incluant un menu, un pied de page et un bouton de retour en haut de page.
-    - Mise à jour des éléments de réassurance (ex: remplacement de "Sans engagement" par "Tous profils").
+- **Refonte du simulateur** : Révision complète du parcours de questionnement et de la page de résultats pour mieux correspondre aux règles métier ([#56](https://github.com/betagouv/etape/issues/56)).
+- **Nouvelles fonctionnalités** :
+    - Intégration de l'authentification via FranceConnect ([#16](https://github.com/betagouv/etape/issues/16)).
+    - Possibilité de télécharger les résultats de la simulation au format PDF, avec des liens cliquables et une mise en page optimisée ([#49](https://github.com/betagouv/etape/issues/49)).
+- **Améliorations de l'expérience utilisateur (UX/UI)** :
+    - Optimisation du questionnaire : gestion de la barre de progression, meilleur positionnement des messages d'erreur, et comportement plus intuitif des boutons "Suivant" et "Précédent".
+    - Affichage de l'ancienneté amélioré (format date) et simplification de l'écran de situation.
+    - Correction de l'affichage des données dans les tableaux de rendu.
+- **Contenu** : Mise à jour du glossaire (ajout des notions de brouillon, accusé et historique) et bascule vers le service du portail CEP national.
 
 ### Évolutions techniques
-- **Architecture et infrastructure** :
-    - Mise en place d'un monorepo utilisant Turborepo.
-    - Déploiement de l'application simulateur en mode SSG (Static Site Generation) pour optimiser les performances.
-    - Automatisation des déploiements de prévisualisation via Vercel [#9](https://github.com/betagouv/etape/pull/9).
-- **Design System et UI** :
-    - Création d'une bibliothèque de composants partagés (basée sur Shadcn UI et Radix UI) incluant les boutons, cartes, accordéons, onglets et sections.
-    - Implémentation d'une échelle typographique responsive et de breakpoints conformes aux maquettes.
-    - Migration des icônes vers la bibliothèque Lucide.
-- **Accessibilité (A11y)** :
-    - Renforcement de la navigation au clavier et gestion des anneaux de focus.
-    - Implémentation de liens d'évitement (SkipLinks) et de conteneurs accessibles.
-    - Refonte de l'autocomplétion des communes pour respecter les standards d'accessibilité (APG).
+- **Backend & Architecture** :
+    - Migration de NestJS de la version 11 vers la version 12.
+    - Refactorisation de l'API avec une séparation plus nette des couches et adoption de TanStack Query.
+    - Mise en place de contrats de routes partagés.
+- **Infrastructure & CI/CD** :
+    - Migration du système de déploiement : abandon de Vercel au profit d'un nouveau circuit basé sur des machines virtuelles gérées via Ansible.
+    - Automatisation du déploiement sur l'environnement de développement à chaque fusion sur la branche principale.
+    - Renforcement de la chaîne de tests avec l'ajout de tests de bout en bout pour le registre Harbor ([#57](https://github.com/betagouv/etape/issues/57)).
+    - Intégration d'outils de suivi (Matomo et Sentry).
+- **Qualité du code** :
+    - Instauration de nouvelles conventions de nommage (français/anglais) et de règles de typage strictes.
+    - Mise en place d'outils de revue automatique pour les pratiques React et l'accessibilité.
 
 ### Autres changements
-- **Qualité de code** : Centralisation de la configuration ESLint et Prettier pour l'ensemble du projet [#2](https://github.com/betagouv/etape/pull/2).
-- **Documentation et workflow** : 
-    - Mise à jour du README (ajustement de la terminologie "salarié").
-    - Ajout d'un modèle de Pull Request pour faciliter les contributions.
-    - Configuration du `.gitignore` pour la sécurité des variables d'environnement.
+- **Documentation** : Mise à jour massive de la documentation technique (stack front-end, pratiques React, procédures d'infrastructure Ansible et guides d'accessibilité).
+- **Nettoyage** : Correction de nombreux écarts de nommage et alignement avec le Design System.
