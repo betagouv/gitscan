@@ -1,12 +1,12 @@
-## Changelog : inclusion-connect (30 derniers jours, au 21 septembre 2026)
+## Changelog : inclusion-connect (30 derniers jours, au 25 septembre 2026)
 
 ### Résumé
-Les récentes évolutions se sont concentrées sur le renforcement de la sécurité des protocoles d'authentification et l'optimisation de la base de code.
+Les évolutions de ce mois se sont concentrées sur le renforcement de la sécurité des protocoles d'authentification et la maintenance technique du projet afin d'en assurer la robustesse.
 
 ### Évolutions techniques
-- Sécurisation de la configuration OIDC via l'implémentation de `hash_client_secret`.
-- Amélioration de la rigueur des tests en supprimant l'attribution automatique d'un `client_secret` par défaut.
-- Mise à jour de la bibliothèque de gestion OAuth (`django-oauth-toolkit`).
+- Renforcement de la sécurité du protocole OIDC via la configuration du `hash_client_secret`.
+- Mise à jour de la bibliothèque de gestion OAuth2 (`django-oauth-toolkit`) pour garantir la conformité et la sécurité.
+- Amélioration de la qualité des tests en supprimant l'utilisation de secrets par défaut.
 
 ### Autres changements
-- Nettoyage du projet par la suppression d'un ancien template.
+- Nettoyage du code par la suppression d'anciens templates.
