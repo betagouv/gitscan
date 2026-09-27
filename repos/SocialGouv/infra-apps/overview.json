@@ -1,32 +1,32 @@
 {
   "url": "https://github.com/SocialGouv/infra-apps",
   "name": "infra-apps",
-  "description": "Ce dépôt permet de gérer et de positionner des ressources Kubernetes via ArgoCD pour la plateforme Iterion. Il assure le déploiement et la configuration de l'infrastructure applicative.",
+  "description": "Ce dépôt contient les manifestes Kubernetes pour le déploiement et la gestion de l'infrastructure via ArgoCD, notamment pour la plateforme Iterion.",
+  "language": "Python",
   "features": [
     "Infrastructure & Stockage",
     "Monitoring & Logs",
-    "Sécurité & Conformité"
+    "Sécurité & Conformité",
+    "Gestion des utilisateurs & Permissions"
   ],
   "audience": "Développeurs",
   "dependencies": [
-    "ArgoCD",
     "Kubernetes",
-    "Helm",
+    "ArgoCD",
     "KEDA",
-    "NATS",
+    "Sentry",
+    "Mattermost",
     "MinIO",
     "Metabase",
-    "Mattermost",
-    "Sentry",
-    "Kyverno",
-    "Traefik",
-    "Cert-manager"
+    "Elasticsearch",
+    "NATS"
   ],
   "components": [
+    "Kubernetes & Helm",
     "CI/CD & Déploiement",
     "Docker & Conteneurs",
-    "Kubernetes & Helm",
-    "Serveurs web & Proxy"
+    "Authentification (composant)",
+    "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
@@ -37,19 +37,18 @@
       "GitHub"
     ]
   },
-  "tests": "Tests E2E",
   "workflows": [
     "ArgoCD"
   ],
-  "lastActivity": "2026-09-18T21:53:38+02:00",
+  "lastActivity": "2026-09-25T23:06:36+02:00",
   "status": "active",
-  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Git & DevOps",
     "Docker & Conteneurs",
     "Kubernetes & Helm",
     "CI/CD & GitHub Actions",
-    "Sécurité & Auth"
+    "Déploiement & Hosting",
+    "Écosystème beta.gouv / État"
   ]
 }
