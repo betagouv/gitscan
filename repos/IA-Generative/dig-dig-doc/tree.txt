@@ -42,6 +42,7 @@
 │   │   │   └── security
 │   │   │       ├── __init__.py
 │   │   │       ├── claims.py
+│   │   │       ├── ephemeral.py
 │   │   │       ├── factory.py
 │   │   │       ├── internal.py
 │   │   │       ├── keycloak_client.py
@@ -49,47 +50,84 @@
 │   │   │       └── share_token.py
 │   │   ├── db.py
 │   │   ├── main.py
+│   │   ├── mcp
+│   │   │   ├── README.md
+│   │   │   ├── __init__.py
+│   │   │   ├── auth.py
+│   │   │   ├── helper_server.py
+│   │   │   └── server.py
 │   │   ├── models
 │   │   │   ├── __init__.py
+│   │   │   ├── agent_chat_event.py
+│   │   │   ├── agent_conversation.py
 │   │   │   ├── analyse.py
+│   │   │   ├── analyse_ephemere.py
 │   │   │   ├── analyse_share.py
 │   │   │   ├── app_token.py
 │   │   │   ├── base.py
+│   │   │   ├── cgu.py
+│   │   │   ├── cgu_acceptance.py
 │   │   │   ├── chat_event.py
 │   │   │   ├── conversation.py
 │   │   │   ├── document_page.py
 │   │   │   ├── dossier.py
+│   │   │   ├── dossier_ephemere.py
 │   │   │   ├── execution_log.py
 │   │   │   ├── feedback.py
-│   │   │   └── report.py
+│   │   │   ├── report.py
+│   │   │   ├── summary.py
+│   │   │   ├── user_preference.py
+│   │   │   └── user_task.py
 │   │   ├── repositories
+│   │   │   ├── agent_conversation_repository.py
 │   │   │   ├── analyse_repository.py
 │   │   │   ├── app_token_repository.py
+│   │   │   ├── cgu_acceptance_repository.py
+│   │   │   ├── cgu_repository.py
 │   │   │   ├── dossier_repository.py
-│   │   │   └── report_repository.py
+│   │   │   ├── ephemeral_repository.py
+│   │   │   ├── report_repository.py
+│   │   │   └── user_preference_repository.py
 │   │   ├── routers
 │   │   │   ├── __init__.py
 │   │   │   ├── admin_reports.py
+│   │   │   ├── admin_stats.py
+│   │   │   ├── admin_tasks.py
+│   │   │   ├── agent_conversations.py
 │   │   │   ├── analyses.py
 │   │   │   ├── app_tokens.py
 │   │   │   ├── assist.py
 │   │   │   ├── auth.py
+│   │   │   ├── cgu.py
 │   │   │   ├── conversations.py
 │   │   │   ├── dossiers.py
+│   │   │   ├── ephemeral.py
 │   │   │   ├── health.py
 │   │   │   ├── internal.py
+│   │   │   ├── internal_agent.py
 │   │   │   ├── models.py
-│   │   │   └── reports.py
-│   │   └── schemas
-│   │       ├── __init__.py
-│   │       ├── analyse.py
-│   │       ├── app_token.py
-│   │       ├── dossier.py
-│   │       ├── health.py
-│   │       ├── llm.py
-│   │       ├── models.py
-│   │       ├── pagination.py
-│   │       └── report.py
+│   │   │   ├── profile.py
+│   │   │   ├── reports.py
+│   │   │   └── user_tasks.py
+│   │   ├── schemas
+│   │   │   ├── __init__.py
+│   │   │   ├── agent_conversation.py
+│   │   │   ├── analyse.py
+│   │   │   ├── app_token.py
+│   │   │   ├── cgu.py
+│   │   │   ├── dossier.py
+│   │   │   ├── ephemeral.py
+│   │   │   ├── health.py
+│   │   │   ├── llm.py
+│   │   │   ├── models.py
+│   │   │   ├── pagination.py
+│   │   │   ├── profile.py
+│   │   │   ├── report.py
+│   │   │   └── user_task.py
+│   │   ├── services
+│   │   │   ├── __init__.py
+│   │   │   └── user_task_service.py
+│   │   └── tasks.py
 │   ├── migrations
 │   │   ├── env.py
 │   │   ├── script.py.mako
@@ -107,21 +145,40 @@
 │   │       ├── 20260923_1400_d4e5f6a7b8c9_chat_events_table.py
 │   │       ├── 20260923_1601_572981f30ad1_model_field_on_conversations_and_agents.py
 │   │       ├── 20260923_1700_fc20e773c29f_message_feedback_thumbs_up_down_reasons_.py
-│   │       └── 20260923_1711_6b724f3d02fa_reports_bug_idea_question_with_admin_.py
+│   │       ├── 20260923_1711_6b724f3d02fa_reports_bug_idea_question_with_admin_.py
+│   │       ├── 20260924_1017_7f1e8bb1c9da_ephemeral_analysis_and_dossier_.py
+│   │       ├── 20260924_1058_6b349e53d77a_add_created_by_to_analyse_ephemere.py
+│   │       ├── 20260924_1112_2b084dba1bc8_add_created_by_to_dossier_ephemere.py
+│   │       ├── 20260925_0849_d44d56718aa9_add_agent_conversations_agent_messages_.py
+│   │       ├── 20260925_1000_a1b2c3d4e5f7_add_summaries_file_hash_summary_status.py
+│   │       ├── 20260925_1400_b3c4d5e6f7a8_dossier_a_ranger_suggestions.py
+│   │       ├── 20260925_1900_c5d6e7f8a9b0_cgus_versioned_terms_of_service.py
+│   │       ├── 20260925_2000_d6e7f8a9b0c1_cgu_acceptances_table.py
+│   │       ├── 20260925_2100_e7f8a9b0c1d2_user_preferences_table.py
+│   │       └── 20260925_2200_f8a9b0c1d2e3_user_tasks_table.py
 │   ├── pyproject.toml
 │   ├── tests
 │   │   ├── .env.testing
 │   │   ├── conftest.py
+│   │   ├── test_admin.py
 │   │   ├── test_analyses.py
 │   │   ├── test_app_tokens.py
 │   │   ├── test_assist.py
 │   │   ├── test_auth.py
+│   │   ├── test_cgu.py
 │   │   ├── test_conversations.py
 │   │   ├── test_dossiers.py
+│   │   ├── test_ephemeral.py
 │   │   ├── test_health.py
+│   │   ├── test_mcp.py
+│   │   ├── test_mcp_helper.py
 │   │   ├── test_models.py
+│   │   ├── test_profile.py
+│   │   ├── test_purge.py
 │   │   ├── test_reports.py
-│   │   └── test_session_store.py
+│   │   ├── test_session_store.py
+│   │   ├── test_summaries.py
+│   │   └── test_user_tasks.py
 │   └── uv.lock
 ├── ct.yaml
 ├── digdigdoc
@@ -131,7 +188,7 @@
 │   ├── README.md
 │   ├── README.md.gotmpl
 │   ├── charts
-│   │   ├── postgres-0.19.6.tgz
+│   │   ├── cluster-0.8.1.tgz
 │   │   └── redis-0.27.9.tgz
 │   ├── templates
 │   │   ├── NOTES.txt
@@ -231,6 +288,8 @@
 │   ├── test-values-daemonset.yaml
 │   ├── test-values-statefulset.yaml
 │   ├── test-values.yaml
+│   ├── values
+│   │   └── common-values.yaml
 │   ├── values.schema.json
 │   └── values.yaml
 ├── docker
@@ -241,24 +300,27 @@
 ├── docs
 │   ├── backend
 │   │   └── data-model.png
+│   ├── ephemeral-api.md
 │   ├── features.md
-│   └── frontend
-│       ├── App-collapsed.png
-│       ├── App.png
-│       ├── components
-│       │   ├── analyses
-│       │   │   ├── AddAgentModal.png
-│       │   │   ├── AgentCard.png
-│       │   │   ├── EntitiesEditor.png
-│       │   │   └── LabelsEditor.png
-│       │   └── dossiers
-│       │       ├── CreateDossierModal.png
-│       │       └── ExecutionPanel.png
-│       └── pages
-│           ├── AnalyseDetailPage.png
-│           ├── AnalysesPage.png
-│           ├── DossierDetailPage.png
-│           └── DossiersPage.png
+│   ├── frontend
+│   │   ├── App-collapsed.png
+│   │   ├── App.png
+│   │   ├── components
+│   │   │   ├── analyses
+│   │   │   │   ├── AddAgentModal.png
+│   │   │   │   ├── AgentCard.png
+│   │   │   │   ├── EntitiesEditor.png
+│   │   │   │   └── LabelsEditor.png
+│   │   │   └── dossiers
+│   │   │       ├── CreateDossierModal.png
+│   │   │       └── ExecutionPanel.png
+│   │   └── pages
+│   │       ├── AnalyseDetailPage.png
+│   │       ├── AnalysesPage.png
+│   │       ├── DossierDetailPage.png
+│   │       └── DossiersPage.png
+│   ├── mcp-helper-agent-plan.md
+│   └── secrets.md
 ├── frontend
 │   ├── .dockerignore
 │   ├── .dsfr.yml
@@ -271,16 +333,34 @@
 │   ├── pnpm-lock.yaml
 │   ├── public
 │   │   ├── CHANGELOG.md
-│   │   └── cgu.md
+│   │   ├── cgu.md
+│   │   ├── favicon.svg
+│   │   ├── marianne-icone.png
+│   │   └── tutorials
+│   │       ├── 01-demarrage.md
+│   │       ├── 02-documents.md
+│   │       ├── 03-pipeline.md
+│   │       ├── 04-assistant.md
+│   │       └── 05-partage.md
 │   ├── scripts
 │   │   └── screenshot.mjs
 │   ├── src
 │   │   ├── App.vue
 │   │   ├── components
+│   │   │   ├── CguGate.vue
+│   │   │   ├── ChatWindow.vue
+│   │   │   ├── HelperAgentModal.vue
 │   │   │   ├── InfoModal.vue
 │   │   │   ├── MarkdownText.vue
 │   │   │   ├── ReportFormModal.vue
+│   │   │   ├── TaskDrawer.vue
+│   │   │   ├── TutorialModal.vue
 │   │   │   ├── UserMenu.vue
+│   │   │   ├── admin
+│   │   │   │   ├── AdminCguTab.vue
+│   │   │   │   ├── AdminReportsTab.vue
+│   │   │   │   ├── AdminStatsTab.vue
+│   │   │   │   └── AdminTasksTab.vue
 │   │   │   ├── analyses
 │   │   │   │   ├── AddAgentModal.vue
 │   │   │   │   ├── AgentCard.vue
@@ -297,16 +377,25 @@
 │   │   │       ├── DossierResults.vue
 │   │   │       └── FeedbackReasonsModal.vue
 │   │   ├── composables
+│   │   │   ├── useAdminStats.ts
+│   │   │   ├── useAdminTasks.ts
+│   │   │   ├── useAgentConversations.ts
 │   │   │   ├── useAnalyses.ts
 │   │   │   ├── useAuth.ts
+│   │   │   ├── useCgu.ts
+│   │   │   ├── useChatStream.ts
 │   │   │   ├── useConversations.ts
 │   │   │   ├── useDossiers.ts
 │   │   │   ├── useLlmAssist.ts
 │   │   │   ├── useLlmComplete.ts
 │   │   │   ├── useModels.ts
 │   │   │   ├── useMyConversations.ts
+│   │   │   ├── useProfile.ts
 │   │   │   ├── useReports.ts
-│   │   │   └── useReportsAdmin.ts
+│   │   │   ├── useReportsAdmin.ts
+│   │   │   ├── useTheme.ts
+│   │   │   ├── useTutorials.ts
+│   │   │   └── useUserTasks.ts
 │   │   ├── env.d.ts
 │   │   ├── main.ts
 │   │   ├── pages
@@ -315,6 +404,7 @@
 │   │   │   ├── AnalysesPage.vue
 │   │   │   ├── DossierDetailPage.vue
 │   │   │   ├── DossiersPage.vue
+│   │   │   ├── ProfilePage.vue
 │   │   │   ├── WelcomePage.vue
 │   │   │   └── analyse
 │   │   │       ├── AnalyseAgentsTab.vue
@@ -323,10 +413,15 @@
 │   │   ├── router
 │   │   │   └── index.ts
 │   │   ├── types
+│   │   │   ├── admin.ts
+│   │   │   ├── agentConversation.ts
 │   │   │   ├── analyse.ts
+│   │   │   ├── cgu.ts
 │   │   │   ├── conversation.ts
 │   │   │   ├── dossier.ts
-│   │   │   └── report.ts
+│   │   │   ├── profile.ts
+│   │   │   ├── report.ts
+│   │   │   └── userTask.ts
 │   │   └── utils
 │   │       ├── api.ts
 │   │       └── markdown.ts
@@ -343,6 +438,8 @@
     │   │   ├── celery_app.py
     │   │   ├── chat_graph.py
     │   │   ├── config.py
+    │   │   ├── helper_graph.py
+    │   │   ├── helper_tools.py
     │   │   ├── llm.py
     │   │   ├── storage.py
     │   │   ├── tasks
@@ -350,7 +447,10 @@
     │   │   │   ├── agent.py
     │   │   │   ├── chat.py
     │   │   │   ├── classification.py
-    │   │   │   └── extraction.py
+    │   │   │   ├── extraction.py
+    │   │   │   ├── helper_chat.py
+    │   │   │   ├── suggestion.py
+    │   │   │   └── summary.py
     │   │   └── tools.py
     │   ├── pyproject.toml
     │   ├── tests
@@ -358,7 +458,11 @@
     │   │   ├── test_api_client.py
     │   │   ├── test_bm25_tools.py
     │   │   ├── test_celery_app.py
+    │   │   ├── test_helper_chat_task.py
+    │   │   ├── test_helper_tools.py
     │   │   ├── test_llm.py
+    │   │   ├── test_suggestion.py
+    │   │   ├── test_summary.py
     │   │   └── test_tasks.py
     │   └── uv.lock
     └── document_process
@@ -377,4 +481,4 @@
         │   ├── test_celery_app.py
         │   └── test_tasks.py
         └── uv.lock
-54 directories, 325 files
+59 directories, 424 files

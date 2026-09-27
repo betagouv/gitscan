@@ -1,35 +1,38 @@
-## Changelog : dig-dig-doc (30 derniers jours, au 24 septembre 2026)
+## Changelog : dig-dig-doc (30 derniers jours, au 25 septembre 2026)
 
 ### Résumé
-Le projet a connu une progression massive, passant d'un socle initial à une plateforme fonctionnelle et structurée. Les utilisateurs disposent désormais d'une interface moderne basée sur le design système DSFR, de capacités d'intelligence artificielle avancées (chat en streaming, choix du modèle LLM, extraction d'entités) et d'outils complets pour l'analyse et le reporting de documents.
+Ce mois a marqué une étape majeure avec l'introduction de l'**Agent Helper**, un assistant intelligent capable d'interagir avec l'utilisateur via une interface de chat pour faciliter les analyses. La plateforme a également gagné en flexibilité grâce aux **analyses éphémères** (pour des tests rapides) et à l'automatisation des **résumés de documents et de dossiers**. L'interface utilisateur a été largement modernisée pour offrir une expérience plus fluide, plus intuitive et conforme aux standards du design système DSFR.
 
 ### Évolutions fonctionnelles
-- **Intelligence Artificielle & Chat :**
-    - Interface de chat interactive avec support du streaming de texte, rendu Markdown et citation des sources.
-    - Possibilité de sélectionner le modèle LLM utilisé pour les conversations et les agents.
-    - Nouvelles fonctionnalités d'analyse : classification automatique, extraction d'entités et génération de rapports.
-    - Affichage de jauges de confiance pour les résultats d'analyse.
-- **Traitement Documentaire :**
-    - Amélioration de l'extraction de texte ([#4](https://github.com/IA-Generative/dig-dig-doc/issues/4)) incluant la détection des blocs de mise en page (bounding boxes).
-    - Visualisation enrichie des résultats via des carrousels de cartes et des onglets dédiés par type d'analyse.
-    - Gestion des métadonnées de documents et partage d'analyses.
-- **Interface Utilisateur (UI) :**
-    - Refonte complète de l'interface utilisateur basée sur le socle DSFR (Design Système de l'État).
-    - Navigation optimisée avec une barre latérale (sidebar) rétractable, gestion du profil et pagination des listes.
-    - Mise en place d'une page d'accueil et d'une organisation structurée pour les dossiers et les analyses.
+- **Assistant Intelligent (Agent Helper) :**
+  - Mise en place d'une interface de chat interactive pour l'agent ([#50](https://github.com/IA-Generative/dig-dig-doc/issues/50)).
+  - Possibilité de choisir le modèle LLM utilisé pour les conversations et les agents.
+  - Ajout d'indicateurs visuels pour le suivi de la progression des tâches de l'agent.
+  - Support du protocole MCP pour étendre les capacités de l'assistant ([#50](https://github.com/IA-Generative/dig-dig-doc/issues/50)).
+- **Analyses Éphémères :** Création d'un mode d'analyse temporaire permettant de lancer des processus rapides avec suppression automatique des données et nettoyage du stockage S3 ([#22](https://github.com/IA-Generative/dig-dig-doc/issues/22), [#23](https://github.com/IA-Generative/dig-dig-doc/issues/23), [#24](https://github.com/IA-Generative/dig-dig-doc/issues/24)).
+- **Gestion Documentaire Intelligente :**
+  - Génération automatique de résumés pour les documents et les dossiers avec système de versioning ([#52](https://github.com/IA-Generative/dig-dig-doc/issues/52)).
+  - Fonctionnalité « Dossier à ranger » proposant des suggestions d'analyse basées sur les résumés existants ([#54](https://github.com/IA-Generative/dig-dig-doc/issues/54)).
+- **Expérience Utilisateur & Interface :**
+  - **Profil & Statistiques :** Nouvelle page profil avec statistiques d'utilisation et respect du thème DSFR ([#61](https://github.com/IA-Generative/dig-dig-doc/issues/61)).
+  - **Navigation :** Modernisation de la page d'accueil, ajout d'une barre latérale (sidebar) rétractable, et réorganisation du menu utilisateur (déplacement du bouton Tâches) ([#62](https://github.com/IA-Generative/dig-dig-doc/issues/62)).
+  - **Aide & Tutoriels :** Intégration d'un système de tutoriels avec suivi de la progression de l'utilisateur.
+  - **Monitoring :** Ajout d'un accès direct aux tâches en cours et d'un tableau de bord de statistiques plateforme ([#60](https://github.com/IA-Generative/dig-dig-doc/issues/60)).
 
 ### Évolutions techniques
-- **Infrastructure & Déploiement :**
-    - Création de charts Helm incluant la gestion des dépendances (Redis, PostgreSQL) et les jobs de migration.
-    - Automatisation complète du cycle de vie (CI/CD) via GitHub Actions et GitLab (publication d'images, gestion des versions).
-    - Ajout de Docker-compose pour faciliter l'environnement de développement local.
+- **Intelligence Artificielle :**
+  - Intégration de **LangGraph** pour la gestion des workflows de l'agent helper ([#50](https://github.com/IA-Generative/dig-dig-doc/issues/50)).
+  - Optimisation de la compatibilité avec les modèles **Scaleway AI** (gestion des appels d'outils parallèles).
 - **Architecture Backend :**
-    - Intégration de l'authentification Keycloak pour le Backend-for-Frontend (BFF).
-    - Implémentation de Server-Sent Events (SSE) pour la communication en temps réel.
-    - Renforcement de la robustesse avec des health checks étendus (PostgreSQL, S3) et un système de jetons d'application.
-    - Refonte du modèle de données pour optimiser la gestion des analyses, des dossiers et des coordonnées de mise en page.
+  - Implémentation du modèle de données et des API REST pour la gestion des conversations de l'agent ([#50](https://github.com/IA-Generative/dig-dig-doc/issues/50)).
+  - Refactoring des composants d'administration pour une meilleure modularité.
+- **Infrastructure & DevOps :**
+  - Mise en place de charts **Helm** incluant la gestion de l'autoscaling avec KEDA et des probes de santé.
+  - Renforcement des pipelines CI/CD via GitHub Actions et GitLab CI.
+  - Amélioration de l'authentification **Keycloak** (mapping des rôles et gestion des profils).
+- **Qualité du code :** Nettoyage et formatage massif du code via **Ruff** pour le backend et le worker.
 
 ### Autres changements
-- Correction de fichiers de migration en doublon.
-- Mise en place de l'étape de linting et de tests unitaires dans le workflow de pré-commit.
-- Nettoyage et optimisation de la configuration Docker.
+- **Conformité :** Mise en place de conditions générales d'utilisation (CGU) versionnées avec blocage de l'accès en cas de non-acceptation ([#58](https://github.com/IA-Generative/dig-dig-doc/issues/58)).
+- **Design :** Mise à jour de l'identité visuelle avec l'intégration du logo officiel Marianne (DSFR).
+- **Documentation :** Amélioration de la documentation de l'API OpenAPI et ajout de guides pour l'utilisation du serveur MCP.
