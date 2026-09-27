@@ -1,31 +1,32 @@
 ## Changelog : Docurba (30 derniers jours, au 24 septembre 2026)
 
 ### Résumé
-Ce mois-ci, les efforts se sont concentrés sur le renforcement de la sécurité et la fiabilisation de la gestion des utilisateurs. La plateforme a bénéficié de nouvelles mesures de protection des données (mots de passe, accès API) et d'une meilleure maîtrise administrative, notamment sur les inscriptions et les communications par email.
+Ce mois-ci, les efforts se sont concentrés sur le renforcement de la sécurité de la plateforme et la fiabilisation des communications. Une refonte importante de la gestion des mots de passe et des processus d'inscription a été réalisée pour répondre aux standards de sécurité. Parallèlement, une phase de nettoyage approfondie a permis de supprimer des fonctionnalités obsolètes et de restructurer l'architecture des API pour gagner en robustesse et en clarté.
 
 ### Évolutions fonctionnelles
-- **Gestion des accès et sécurité** : 
-    - Mise en place d'un nouveau processus de réinitialisation de mot de passe avec validation renforcée selon les recommandations de la CNIL.
-    - Amélioration de la gestion des sessions pour éviter les durées de connexion infinies.
-    - Amélioration de l'expérience utilisateur via des messages d'erreur plus explicites lors de la connexion et de l'inscription.
-- **Administration** : 
-    - Possibilité pour les administrateurs de désactiver les inscriptions d'utilisateurs.
-    - Amélioration de la visibilité des profils et du suivi des changements de mots de passe dans l'interface d'administration.
-- **Règles métier** : 
-    - Ajout de restrictions sur la création de procédures pour empêcher les erreurs de saisie liées au contexte territorial (communes et EPCI).
+- **Gestion des accès et sécurité :**
+  - Amélioration complète du cycle de vie des mots de passe (réinitialisation, mise à jour et validation renforcée selon les recommandations de la CNIL).
+  - Mise en place de messages d'erreur de connexion plus génériques pour éviter de divulguer des informations sensibles.
+  - Possibilité pour l'administrateur de désactiver l'inscription libre des nouveaux utilisateurs.
+- **Gestion métier :**
+  - Ajout de règles de validation pour la création de procédures : blocage automatique si aucune commune n'est sélectionnée ou si une seule commune est présente sur un EPCI.
 
 ### Évolutions techniques
-- **Sécurité et API** : 
-    - Migration des API vers Django Rest Framework (DRF) et application du principe de "privé par défaut".
-    - Renforcement de la sécurité de la base de données via l'optimisation des politiques de sécurité (RLS).
-    - Réorganisation structurelle du backend pour mieux isoler les API publiques des API internes.
-- **Système d'emailing** : 
-    - Migration de la logique d'envoi d'emails du frontend (Nuxt) vers le backend (Django) avec intégration de Sendgrid pour une meilleure fiabilité.
-- **Optimisation et Maintenance** : 
-    - Nettoyage important du code avec la suppression de nombreux points de terminaison (endpoints) API et de fonctions inutilisés.
-    - Optimisation des performances via une configuration ajustée de Nginx.
-- **Infrastructure et CI/CD** : 
-    - Mise à jour des outils de déploiement et de gestion de base de données (Supabase, Scalingo, GitHub Actions).
+- **Sécurité et conformité :**
+  - Implémentation d'un fichier `security.txt` pour faciliter le signalement de vulnérabilités par les chercheurs.
+  - Renforcement des politiques de sécurité de la base de données (RLS) et gestion plus stricte des sessions utilisateurs.
+  - Migration de la logique d'envoi d'emails vers le backend via l'intégration de Sendgrid pour une meilleure fiabilité.
+- **Architecture API et Backend :**
+  - Restructuration majeure des API : migration vers Django Rest Framework (DRF) et application du principe de "privé par défaut".
+  - Nettoyage massif des points d'accès (endpoints) inutilisés sur le frontend (Nuxt).
+  - Réorganisation de l'arborescence du projet Django pour une meilleure séparation entre les API publiques et internes.
+- **Infrastructure et DevOps :**
+  - Optimisation de la configuration Nginx (gestion des taux de requêtes).
+  - Mise à jour des outils de CI/CD (Supabase CLI) et de l'infrastructure d'hébergement (Scalingo).
+  - Nettoyage du code mort et des fonctions non utilisées dans l'application Nuxt.
 
 ### Autres changements
-- **Sécurité** : Ajout d'un fichier `security.txt` pour faciliter le signalement de vulnérabilités par les chercheurs en sécurité.
+- **Administration :**
+  - Amélioration de l'interface d'administration Django avec l'ajout de colonnes de suivi (dates de création) pour les profils et les procédures.
+- **Développement :**
+  - Optimisation du Makefile pour accélérer la mise à jour des snapshots de tests.
