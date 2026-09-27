@@ -1,7 +1,10 @@
-## Changelog : le-marche (30 derniers jours, au 24 septembre 2026)
+## Changelog : le-marche (30 derniers jours, au 25 septembre 2026)
 
 ### Résumé
-L'activité de ce mois a été principalement consacrée à la maintenance de sécurité et à la mise à jour des dépendances du projet. Une optimisation technique a été apportée pour améliorer la stabilité des processus de synchronisation de données.
+Les évolutions récentes se sont concentrées sur l'amélioration de l'accès aux outils de pilotage et l'optimisation technique des processus de synchronisation de données.
+
+### Évolutions fonctionnelles
+- Correction de l'affichage du tableau de bord Metabase via son lien public.
 
 ### Évolutions techniques
-- Optimisation du processus de synchronisation complète avec Nexus par la réduction de la taille des lots de données (chunks) traités.
+- Optimisation de la synchronisation complète Nexus par la réduction de la taille des lots de données traités (chunk size).
