@@ -52,31 +52,40 @@
 │   ├── pyproject.toml
 │   ├── request.http
 │   └── srdt_analysis
-│       ├── anonymiser.py
 │       ├── api
 │       │   ├── launcher.py
 │       │   ├── main.py
 │       │   └── schemas.py
-│       ├── chunker.py
-│       ├── collections.py
-│       ├── constants.py
-│       ├── corpus.py
-│       ├── data_exploiter.py
-│       ├── data_exploiter_embed.py
-│       ├── elastic_handler.py
-│       ├── exceptions.py
-│       ├── legi_data.py
-│       ├── llm_client.py
-│       ├── llm_runner.py
-│       ├── logger.py
-│       ├── mapper.py
-│       ├── models.py
-│       ├── postgresql_manager.py
-│       ├── reference_extractor.py
+│       ├── clients
+│       │   ├── collections.py
+│       │   ├── elastic_handler.py
+│       │   ├── judilibre_client.py
+│       │   ├── llm_client.py
+│       │   └── postgresql_manager.py
+│       ├── core
+│       │   ├── constants.py
+│       │   ├── exceptions.py
+│       │   ├── logger.py
+│       │   └── models.py
+│       ├── ingestion
+│       │   ├── agreements.py
+│       │   ├── data_exploiter.py
+│       │   ├── data_exploiter_embed.py
+│       │   ├── judilibre.py
+│       │   ├── legi_data.py
+│       │   └── mapper.py
 │       ├── scripts
+│       │   ├── fetch_judilibre.py
 │       │   └── ingest.py
-│       ├── tokenizer.py
-│       └── url_cleaner.py
+│       ├── services
+│       │   ├── corpus.py
+│       │   └── llm_runner.py
+│       └── text
+│           ├── anonymiser.py
+│           ├── chunker.py
+│           ├── reference_extractor.py
+│           ├── tokenizer.py
+│           └── url_cleaner.py
 ├── docker-compose.yml
 ├── package.json
 └── web
@@ -173,9 +182,15 @@
     │   │   │   ├── ChatHistory.tsx
     │   │   │   ├── ChatInput.tsx
     │   │   │   ├── ChatMessage.tsx
+    │   │   │   ├── CopyAnswerMenu.tsx
     │   │   │   ├── NewConversationView.tsx
+    │   │   │   ├── SourcesPanel.tsx
+    │   │   │   ├── add-cc.svg
+    │   │   │   ├── answer-sections.ts
     │   │   │   ├── conversation-storage.ts
     │   │   │   ├── justice-scales.svg
+    │   │   │   ├── marianne.png
+    │   │   │   ├── sources.ts
     │   │   │   ├── types.ts
     │   │   │   └── useSidebarNav.ts
     │   │   ├── common
@@ -187,6 +202,8 @@
     │   │   │   ├── markdown.ts
     │   │   │   └── markdownComponents.tsx
     │   │   ├── convention-collective
+    │   │   │   ├── AgreementModal.module.css
+    │   │   │   ├── AgreementModal.tsx
     │   │   │   ├── AgreementSearchInput.tsx
     │   │   │   └── search.ts
     │   │   ├── dsfr
@@ -216,7 +233,8 @@
     │   │       └── StatistiquesContent.tsx
     │   ├── types
     │   │   ├── next-auth.d.ts
+    │   │   ├── png.d.ts
     │   │   └── svg.d.ts
     │   └── types.ts
     └── tsconfig.json
-56 directories, 165 files
+61 directories, 178 files
