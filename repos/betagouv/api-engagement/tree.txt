@@ -156,13 +156,15 @@
 │   │       │   │   │   ├── __models.yml
 │   │       │   │   │   ├── int_internal_distinct_ids.sql
 │   │       │   │   │   ├── int_tracking_backend_conversion.sql
+│   │       │   │   │   ├── int_tracking_campaign.sql
 │   │       │   │   │   ├── int_tracking_mission_click.sql
 │   │       │   │   │   ├── int_tracking_page_view.sql
 │   │       │   │   │   ├── int_tracking_quiz_backend.sql
 │   │       │   │   │   ├── int_tracking_quiz_funnel_step.sql
 │   │       │   │   │   ├── int_tracking_quiz_session.sql
 │   │       │   │   │   ├── int_tracking_recommendation.sql
-│   │       │   │   │   └── int_tracking_results_session.sql
+│   │       │   │   │   ├── int_tracking_results_session.sql
+│   │       │   │   │   └── int_tracking_session.sql
 │   │       │   │   └── widget
 │   │       │   │       └── int_widget.sql
 │   │       │   ├── marts
@@ -233,6 +235,8 @@
 │   │       │   │   │   └── mean_from_publisher_sources_enriched.sql
 │   │       │   │   ├── tracking
 │   │       │   │   │   ├── __models.yml
+│   │       │   │   │   ├── tracking_campaign_funnel_daily.sql
+│   │       │   │   │   ├── tracking_campaign_session.sql
 │   │       │   │   │   ├── tracking_engagement_kpi_daily.sql
 │   │       │   │   │   ├── tracking_funnel_step_daily.sql
 │   │       │   │   │   ├── tracking_matching_engine_ranking_daily.sql
@@ -339,6 +343,8 @@
 │   │       └── tests
 │   │           ├── .gitkeep
 │   │           ├── assert_backend_conversion_apply_consistency.sql
+│   │           ├── assert_campaign_funnel_daily_unique_key.sql
+│   │           ├── assert_campaign_session_apply_implies_backend_click.sql
 │   │           ├── assert_mission_click_matched_has_backend_rank.sql
 │   │           └── assert_results_click_implies_has_click.sql
 │   ├── docker-entrypoint.sh
@@ -623,6 +629,8 @@
 │   │   │   │   └── migration.sql
 │   │   │   ├── 20260813132806_add_mission_diffusion_soft_delete
 │   │   │   │   └── migration.sql
+│   │   │   ├── 20260915120000_add_mfa_challenge
+│   │   │   │   └── migration.sql
 │   │   │   └── migration_lock.toml
 │   │   └── schema.prisma
 │   ├── prisma.config.ts
@@ -650,6 +658,12 @@
 │   │   │   ├── README.md
 │   │   │   ├── archive-phantom-piloty-jobs.ts
 │   │   │   └── archive-piloty-jobs.ts
+│   │   ├── matching-engine-evaluation
+│   │   │   ├── README.md
+│   │   │   ├── evaluate.ts
+│   │   │   ├── profiles.template.json
+│   │   │   └── utils
+│   │   │       └── evaluate-expected-taxonomies.ts
 │   │   ├── migrate-mission-activities.ts
 │   │   ├── migrate-widget-rules-reseaux.ts
 │   │   ├── mission-enrichment
@@ -665,23 +679,26 @@
 │   │   │   ├── police
 │   │   │   │   ├── create-police-missions.ts
 │   │   │   │   └── data.ts
-│   │   │   └── pompiers
-│   │   │       ├── addresses.csv
-│   │   │       ├── create-spv-missions.ts
-│   │   │       ├── data.ts
-│   │   │       ├── fetch-addresses.ts
-│   │   │       ├── logos
-│   │   │       │   ├── SDIS_*.jpg  (25 files)
-│   │   │       │   ├── SDIS_*.png  (52 files)
-│   │   │       │   ├── SDIS_*.svg  (5 files)
-│   │   │       │   ├── SDIS_*.jpeg  (8 files)
-│   │   │       │   ├── SDIS_13.webp
-│   │   │       │   ├── SDIS_25.webp
-│   │   │       │   ├── SDIS_33.webp
-│   │   │       │   ├── SDIS_82.webp
-│   │   │       │   └── sdis_80.jpeg
-│   │   │       ├── publisher.ts
-│   │   │       └── update-sdis-publishers.ts
+│   │   │   ├── pompiers
+│   │   │   │   ├── addresses.csv
+│   │   │   │   ├── create-spv-missions.ts
+│   │   │   │   ├── data.ts
+│   │   │   │   ├── fetch-addresses.ts
+│   │   │   │   ├── logos
+│   │   │   │   │   ├── SDIS_*.jpg  (25 files)
+│   │   │   │   │   ├── SDIS_*.png  (52 files)
+│   │   │   │   │   ├── SDIS_*.svg  (5 files)
+│   │   │   │   │   ├── SDIS_*.jpeg  (8 files)
+│   │   │   │   │   ├── SDIS_13.webp
+│   │   │   │   │   ├── SDIS_25.webp
+│   │   │   │   │   ├── SDIS_33.webp
+│   │   │   │   │   ├── SDIS_82.webp
+│   │   │   │   │   └── sdis_80.jpeg
+│   │   │   │   ├── publisher.ts
+│   │   │   │   └── update-sdis-publishers.ts
+│   │   │   └── roc
+│   │   │       ├── create-roc-missions.ts
+│   │   │       └── data.ts
 │   │   ├── mongo-backfill
 │   │   │   ├── README.md
 │   │   │   ├── backfill-campaign.ts
@@ -724,6 +741,8 @@
 │   │   │   ├── organization-verification.ts
 │   │   │   └── rome-macro-competences.ts
 │   │   ├── controllers
+│   │   │   ├── __tests__
+│   │   │   │   └── metabase.test.ts
 │   │   │   ├── admin-report.ts
 │   │   │   ├── brevo-webhook
 │   │   │   │   ├── controller.ts
@@ -759,6 +778,7 @@
 │   │   │   └── postgres.ts
 │   │   ├── error.ts
 │   │   ├── index.ts
+│   │   ├── instrument.ts
 │   │   ├── jobs
 │   │   │   ├── base
 │   │   │   │   └── handler.ts
@@ -803,6 +823,15 @@
 │   │   │   │   ├── handler.ts
 │   │   │   │   └── zip.ts
 │   │   │   ├── leboncoin
+│   │   │   │   ├── __tests__
+│   │   │   │   │   ├── transformers.test.ts
+│   │   │   │   │   └── utils.test.ts
+│   │   │   │   ├── config.ts
+│   │   │   │   ├── handler.ts
+│   │   │   │   ├── transformers.ts
+│   │   │   │   ├── types.ts
+│   │   │   │   └── utils.ts
+│   │   │   ├── leboncoin-alerts
 │   │   │   │   └── handler.ts
 │   │   │   ├── letudiant
 │   │   │   │   ├── __tests__
@@ -912,6 +941,7 @@
 │   │   │   ├── import-rna.ts
 │   │   │   ├── import.ts
 │   │   │   ├── login-history.ts
+│   │   │   ├── mfa-challenge.ts
 │   │   │   ├── mission-activity.ts
 │   │   │   ├── mission-address.ts
 │   │   │   ├── mission-diffusion.ts
@@ -938,6 +968,8 @@
 │   │   │   └── widget.ts
 │   │   ├── services
 │   │   │   ├── __tests__
+│   │   │   │   ├── metabase.test.ts
+│   │   │   │   ├── mfa.test.ts
 │   │   │   │   ├── mission.test.ts
 │   │   │   │   ├── moderation-event.test.ts
 │   │   │   │   └── organization.test.ts
@@ -971,7 +1003,9 @@
 │   │   │   │       └── scaleway.ts
 │   │   │   ├── brevo
 │   │   │   │   ├── __tests__
-│   │   │   │   │   └── mission-content.test.ts
+│   │   │   │   │   ├── email.spec.ts
+│   │   │   │   │   ├── mission-content.test.ts
+│   │   │   │   │   └── utils.spec.ts
 │   │   │   │   ├── attachment.ts
 │   │   │   │   ├── client.ts
 │   │   │   │   ├── contact.ts
@@ -985,6 +1019,8 @@
 │   │   │   │   ├── api.ts
 │   │   │   │   └── types.ts
 │   │   │   ├── demarches-simplifiees
+│   │   │   │   ├── __tests__
+│   │   │   │   │   └── utils.test.ts
 │   │   │   │   ├── client.ts
 │   │   │   │   ├── functions.ts
 │   │   │   │   ├── index.ts
@@ -1003,6 +1039,7 @@
 │   │   │   │   ├── index.ts
 │   │   │   │   └── types.ts
 │   │   │   ├── metabase.ts
+│   │   │   ├── mfa.ts
 │   │   │   ├── mission-browse
 │   │   │   │   ├── __tests__
 │   │   │   │   │   ├── index.test.ts
@@ -1107,7 +1144,8 @@
 │   │   │   │   │       │   ├── v2.ts
 │   │   │   │   │       │   ├── v3.ts
 │   │   │   │   │       │   ├── v4.ts
-│   │   │   │   │       │   └── v5.ts
+│   │   │   │   │       │   ├── v5.ts
+│   │   │   │   │       │   └── v6.ts
 │   │   │   │   │       └── types.ts
 │   │   │   │   ├── collections.ts
 │   │   │   │   ├── filter.ts
@@ -1127,8 +1165,10 @@
 │   │   │   ├── stat-event.ts
 │   │   │   ├── user-scoring
 │   │   │   │   ├── __tests__
+│   │   │   │   │   ├── scoring-rules.test.ts
 │   │   │   │   │   └── user-scoring.test.ts
-│   │   │   │   └── index.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── scoring-rules.ts
 │   │   │   ├── user.ts
 │   │   │   ├── warning-bot.ts
 │   │   │   ├── warning.ts
@@ -1187,6 +1227,7 @@
 │   │   │   ├── index.ts
 │   │   │   ├── job.ts
 │   │   │   ├── llm.ts
+│   │   │   ├── mission-cursor.ts
 │   │   │   ├── mission-moderation-status.ts
 │   │   │   ├── mission-moderation.ts
 │   │   │   ├── mission-remote.ts
@@ -1205,7 +1246,8 @@
 │   │   │   ├── safe-fetch.ts
 │   │   │   ├── string.ts
 │   │   │   ├── url.ts
-│   │   │   └── widget.ts
+│   │   │   ├── widget.ts
+│   │   │   └── xml.ts
 │   │   ├── v0
 │   │   │   ├── diffusion-rule
 │   │   │   │   └── controller.ts
@@ -1232,13 +1274,16 @@
 │   │   └── worker
 │   │       ├── __tests__
 │   │       │   ├── mission-enrichment.test.ts
-│   │       │   └── mission-scoring.test.ts
+│   │       │   ├── mission-scoring.test.ts
+│   │       │   └── publisher-diffusion.test.ts
 │   │       ├── app.ts
 │   │       ├── errors.ts
 │   │       ├── handlers
+│   │       │   ├── mission-diffusion.ts
 │   │       │   ├── mission-enrichment.ts
 │   │       │   ├── mission-index.ts
-│   │       │   └── mission-scoring.ts
+│   │       │   ├── mission-scoring.ts
+│   │       │   └── publisher-diffusion.ts
 │   │       ├── index.ts
 │   │       ├── registry.ts
 │   │       ├── run-handler.ts
@@ -1267,6 +1312,7 @@
 │   │   │   │   │   │   ├── search.test.ts
 │   │   │   │   │   │   └── widget.test.ts
 │   │   │   │   │   ├── import.test.ts
+│   │   │   │   │   ├── mfa.test.ts
 │   │   │   │   │   ├── mission-browse.test.ts
 │   │   │   │   │   ├── mission.test.ts
 │   │   │   │   │   ├── moderation.test.ts
@@ -1310,6 +1356,8 @@
 │   │   │   │   │   │   ├── invalid-compensation-feed.xml
 │   │   │   │   │   │   └── missing-logo-feed.xml
 │   │   │   │   │   └── import-missions.handler.test.ts
+│   │   │   │   ├── leboncoin
+│   │   │   │   │   └── leboncoin.handler.test.ts
 │   │   │   │   ├── letudiant
 │   │   │   │   │   └── letudiant.handler.test.ts
 │   │   │   │   ├── linkedin
@@ -1323,6 +1371,7 @@
 │   │   │   │   └── talent
 │   │   │   │       └── talent.handler.test.ts
 │   │   │   └── services
+│   │   │       ├── mission-diffusion.test.ts
 │   │   │       ├── mission.test.ts
 │   │   │       └── publisher.test.ts
 │   │   ├── mocks
@@ -1579,6 +1628,9 @@
 │   │       └── url.js
 │   ├── tests
 │   │   └── e2e
+│   │       ├── accessibility
+│   │       │   ├── axe.ts
+│   │       │   └── pages.spec.ts
 │   │       ├── dashboard
 │   │       │   ├── fixtures.ts
 │   │       │   └── user-navigation.spec.ts
@@ -1596,6 +1648,16 @@
 ├── cliff.toml
 ├── commitlint.config.cjs
 ├── docker-compose.yml
+├── functions
+│   ├── .gitignore
+│   ├── README.md
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── src
+│   │   └── functions
+│   │       └── sentry-webhook
+│   │           └── handler.ts
+│   └── tsconfig.json
 ├── package-lock.json
 ├── package.json
 ├── packages
@@ -1652,20 +1714,28 @@
 │   ├── app
 │   │   ├── assets
 │   │   │   ├── images
-│   │   │   │   ├── asc-logo.png
-│   │   │   │   ├── jva-logo.png
+│   │   │   │   ├── home
+│   │   │   │   │   ├── hero-background-desktop.webp
+│   │   │   │   │   ├── hero-background-mobile.webp
+│   │   │   │   │   ├── testimonial-education.webp
+│   │   │   │   │   ├── testimonial-memory.webp
+│   │   │   │   │   ├── testimonial-prevention-1.webp
+│   │   │   │   │   ├── testimonial-prevention-2.webp
+│   │   │   │   │   ├── testimonial-prevention-3.webp
+│   │   │   │   │   ├── testimonial-skill.webp
+│   │   │   │   │   └── testimonial-solidarity.webp
 │   │   │   │   ├── landings
 │   │   │   │   │   └── defis-engagement
-│   │   │   │   │       ├── temoignage-1.jpg
-│   │   │   │   │       ├── temoignage-2.jpg
-│   │   │   │   │       └── temoignage-3.jpg
-│   │   │   │   ├── people-landing.png
-│   │   │   │   ├── roc-logo.png
-│   │   │   │   ├── spv-logo.png
-│   │   │   │   ├── testimonial-adrien.jpg
-│   │   │   │   ├── testimonial-marie.jpg
-│   │   │   │   ├── testimonial-seb.jpg
-│   │   │   │   └── testimonial-sophie.jpg
+│   │   │   │   │       ├── hero.webp
+│   │   │   │   │       ├── temoignage-1.webp
+│   │   │   │   │       ├── temoignage-2.webp
+│   │   │   │   │       └── temoignage-3.webp
+│   │   │   │   └── logo
+│   │   │   │       ├── asc-logo.png
+│   │   │   │       ├── gendarmerie-logo.png
+│   │   │   │       ├── jva-logo.png
+│   │   │   │       ├── roc-logo.png
+│   │   │   │       └── spv-logo.png
 │   │   │   └── svg
 │   │   │       ├── double-quotes.svg
 │   │   │       ├── long-trace.svg
@@ -1673,11 +1743,12 @@
 │   │   │       ├── ttm-logo.svg
 │   │   │       └── zig-zag-arrow.svg
 │   │   ├── components
-│   │   │   ├── landing
+│   │   │   ├── home
+│   │   │   │   ├── about.tsx
 │   │   │   │   ├── hero.tsx
 │   │   │   │   ├── how-it-works.tsx
 │   │   │   │   ├── mission-examples.tsx
-│   │   │   │   ├── pro-space.tsx
+│   │   │   │   ├── partners.tsx
 │   │   │   │   └── testimonials.tsx
 │   │   │   ├── landings
 │   │   │   │   └── defis-engagement
@@ -1689,6 +1760,7 @@
 │   │   │   │       ├── questions.tsx
 │   │   │   │       └── terrain-de-jeu.tsx
 │   │   │   ├── layout
+│   │   │   │   ├── beta-banner.tsx
 │   │   │   │   ├── cookie-consent-manager.tsx
 │   │   │   │   ├── footer.tsx
 │   │   │   │   ├── header.tsx
@@ -1737,10 +1809,12 @@
 │   │   │       ├── highlight.tsx
 │   │   │       ├── location-map.tsx
 │   │   │       ├── mail-illustration.tsx
-│   │   │       └── pagination.tsx
+│   │   │       ├── pagination.tsx
+│   │   │       └── spinner.tsx
 │   │   ├── config
 │   │   │   ├── __tests__
 │   │   │   │   └── quiz-flow.test.ts
+│   │   │   ├── partners.ts
 │   │   │   ├── quiz-flow
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── q1.ts
@@ -1805,7 +1879,8 @@
 │   │   ├── routes.ts
 │   │   ├── services
 │   │   │   ├── __tests__
-│   │   │   │   └── cookie-consent.test.ts
+│   │   │   │   ├── cookie-consent.test.ts
+│   │   │   │   └── matching.test.ts
 │   │   │   ├── api
 │   │   │   │   ├── __tests__
 │   │   │   │   │   ├── index.test.ts
@@ -1822,9 +1897,11 @@
 │   │   │   ├── matching.ts
 │   │   │   ├── mission-browse.ts
 │   │   │   ├── newsletter.ts
+│   │   │   ├── sentry.ts
 │   │   │   ├── tracking
 │   │   │   │   ├── __tests__
 │   │   │   │   │   ├── consent.test.ts
+│   │   │   │   │   ├── gtm.test.ts
 │   │   │   │   │   ├── index-consent.test.ts
 │   │   │   │   │   ├── posthog.test.ts
 │   │   │   │   │   └── utils.test.ts
@@ -1832,6 +1909,7 @@
 │   │   │   │   ├── events.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── providers
+│   │   │   │   │   ├── gtm.ts
 │   │   │   │   │   ├── index.ts
 │   │   │   │   │   ├── local.ts
 │   │   │   │   │   └── posthog.ts
@@ -1844,6 +1922,7 @@
 │   │   │   └── quiz.ts
 │   │   └── utils
 │   │       ├── __tests__
+│   │       │   ├── beta-banner.test.ts
 │   │       │   ├── campaign-attribution.test.ts
 │   │       │   ├── conditions.test.ts
 │   │       │   ├── geo.test.ts
@@ -1853,6 +1932,7 @@
 │   │       │   ├── quiz.test.ts
 │   │       │   ├── results-filters.test.ts
 │   │       │   └── string.test.ts
+│   │       ├── beta-banner.ts
 │   │       ├── campaign-attribution.ts
 │   │       ├── conditions.ts
 │   │       ├── geo.ts
@@ -1865,7 +1945,13 @@
 │   │       └── string.ts
 │   ├── eslint.config.cjs
 │   ├── package.json
+│   ├── playwright.config.ts
 │   ├── react-router.config.ts
+│   ├── tests
+│   │   └── e2e
+│   │       └── accessibility
+│   │           ├── axe.ts
+│   │           └── pages.spec.ts
 │   ├── tsconfig.json
 │   ├── vite.config.ts
 │   └── vitest.config.ts
@@ -1879,6 +1965,7 @@
 │   │   ├── production.tfvars
 │   │   ├── sandbox.tfvars
 │   │   └── staging.tfvars
+│   ├── functions.tf
 │   ├── jobs-analytics.tf
 │   ├── jobs.tf
 │   ├── locals.tf
@@ -2002,6 +2089,8 @@
     ├── tests
     │   └── e2e
     │       ├── fixtures
+    │       │   ├── images
+    │       │   │   └── mission.jpg
     │       │   └── mockData.ts
     │       ├── middleware
     │       │   └── blockedPaths.spec.ts
@@ -2033,4 +2122,4 @@
         ├── sentry.ts
         ├── store.ts
         └── utils.ts
-465 directories, 1656 files
+485 directories, 1725 files
