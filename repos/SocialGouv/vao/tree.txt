@@ -652,6 +652,7 @@
 │   │   │   │   │   ├── eigHelper.ts
 │   │   │   │   │   ├── featureFlagHelper.ts
 │   │   │   │   │   ├── fileHelper.ts
+│   │   │   │   │   ├── hebergementDoubleEntryHelper.ts
 │   │   │   │   │   ├── hebergementHelper.ts
 │   │   │   │   │   ├── organismeHelper.ts
 │   │   │   │   │   ├── territoireHelper.ts
@@ -1058,6 +1059,14 @@
 │   │   │   │   │   ├── agrements.mapper.ts
 │   │   │   │   │   ├── agrements.repository.ts
 │   │   │   │   │   └── agrements.service.ts
+│   │   │   │   ├── hebergements
+│   │   │   │   │   ├── hebergements.entity.ts
+│   │   │   │   │   ├── hebergements.mapper.ts
+│   │   │   │   │   ├── hebergements.mapping.spec.ts
+│   │   │   │   │   ├── hebergements.mapping.ts
+│   │   │   │   │   ├── hebergements.repository.ts
+│   │   │   │   │   ├── hebergements.service.ts
+│   │   │   │   │   └── hebergementsSite.repository.ts
 │   │   │   │   ├── usagers
 │   │   │   │   │   └── users
 │   │   │   │   │       ├── users.entity.ts
@@ -1523,6 +1532,7 @@
 │   │   │   │   ├── PersonneActionsCell.vue
 │   │   │   │   ├── SyntheseVerificationAlert.vue
 │   │   │   │   ├── address
+│   │   │   │   │   ├── search-address-confirm.vue
 │   │   │   │   │   ├── search-address-municipality.vue
 │   │   │   │   │   └── search-address.vue
 │   │   │   │   ├── agrement
@@ -1576,8 +1586,11 @@
 │   │   │   │   │   └── tableFilters.vue
 │   │   │   │   ├── hebergements
 │   │   │   │   │   ├── HebergementStatusBadge.vue
+│   │   │   │   │   ├── SiteForm.vue
 │   │   │   │   │   ├── filters.vue
-│   │   │   │   │   └── liste.vue
+│   │   │   │   │   ├── liste.vue
+│   │   │   │   │   ├── siteFormValidation.ts
+│   │   │   │   │   └── stepper.vue
 │   │   │   │   ├── organisme
 │   │   │   │   │   ├── agrement.vue
 │   │   │   │   │   ├── confirm-update-siret.vue
@@ -1658,7 +1671,8 @@
 │   │   │   │   │   └── mentions-legales.vue
 │   │   │   │   ├── hebergements
 │   │   │   │   │   ├── [[hebergementId]].vue
-│   │   │   │   │   └── liste.vue
+│   │   │   │   │   ├── liste.vue
+│   │   │   │   │   └── site.vue
 │   │   │   │   ├── index.vue
 │   │   │   │   ├── messagerie
 │   │   │   │   │   └── index.vue
@@ -1714,6 +1728,7 @@
 │   │   │       ├── fetchBackend.ts
 │   │   │       ├── fo-user.js
 │   │   │       ├── geo.js
+│   │   │       ├── hebergementSiteMenu.ts
 │   │   │       ├── hebergements.js
 │   │   │       ├── informationsPersonnel.js
 │   │   │       ├── informationsPersonnelListe.js
@@ -1730,6 +1745,7 @@
 │   │   │       ├── protocoleTransport.js
 │   │   │       ├── random.js
 │   │   │       ├── regex.js
+│   │   │       ├── siteFormValidation.spec.ts
 │   │   │       ├── telephoneValidators.js
 │   │   │       └── telephoneValidators.spec.ts
 │   │   ├── start.sh
@@ -1828,7 +1844,9 @@
 │   │   │   │   ├── 20260615174703_public.__add__featureflag_otp.js
 │   │   │   │   ├── 20260717103727_front.declaration__add_correlated_subquery_indexes.js
 │   │   │   │   ├── 20260902153134_add_feature-flag_module_hebergement.js
-│   │   │   │   └── 20260927113215_add_site_unite_hebergement.js
+│   │   │   │   ├── 20260927113215_add_site_unite_hebergement.js
+│   │   │   │   ├── 20260928155011_front.unite_hebergement_site_adjustment.js
+│   │   │   │   └── 20260929071549_migrate_hebergement_to_site_unite_hebergement.js
 │   │   │   ├── scripts
 │   │   │   │   ├── migrate-files-to-s3.js
 │   │   │   │   └── reset-s3.js
@@ -2070,6 +2088,7 @@
 │       │   ├── types
 │       │   │   ├── Auth.type.ts
 │       │   │   ├── DsfrDataTableV2.type.ts
+│       │   │   ├── address.ts
 │       │   │   ├── index.ts
 │       │   │   └── toaster.type.ts
 │       │   └── utils
@@ -2092,8 +2111,6 @@
 │       ├── tsconfig.json
 │       └── vitest.config.mts
 ├── pg
-│   ├── Dockerfile
-│   ├── entrypoint.sh
 │   ├── lancement.sh
 │   ├── scripts
 │   │   ├── 01-init.sql
@@ -2117,4 +2134,4 @@
 ├── renovate.json
 ├── script.sh
 └── sonar-project.properties
-305 directories, 1819 files
+306 directories, 1835 files
