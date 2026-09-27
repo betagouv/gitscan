@@ -1,34 +1,33 @@
-## Changelog : lab-anssi-ui-kit (30 derniers jours, au 18 septembre 2026)
+## Changelog : lab-anssi-ui-kit (30 derniers jours, au 25 septembre 2026)
 
 ### Résumé
-Ce mois a été marqué par une montée en version majeure de l'infrastructure de build (Vite 8) et un travail important de fiabilisation des composants. La bibliothèque gagne en réactivité et en accessibilité, avec l'ajout de nouveaux éléments (composant de partage, nouvelles icônes) et une meilleure gestion des états pour de nombreux composants existants.
+Ce mois a été marqué par un effort important de stabilisation et de montée en qualité du code. Outre l'ajout de nouveaux composants (partage et icônes), les corrections ont porté sur l'accessibilité (focus) et la réactivité des composants sur mobile. La robustesse technique a été renforcée par une gestion plus stricte des types et des règles de qualité de code automatisées.
 
 ### Évolutions fonctionnelles
-- **Nouveautés et composants**
-  - Ajout du composant `DsfrShare` (partage).
-  - Ajout d'un slot 'hint' pour le composant `DsfrToggle`.
-  - Ajout de nouvelles icônes (notamment l'icône gamepad).
-- **Améliorations de l'expérience et de l'accessibilité**
-  - **Réactivité accrue** : Plusieurs composants ont été optimisés pour une meilleure synchronisation de leurs états (langue pour `DsfrTranslate`, pagination pour `DsfrTable`, sélection pour `MultiSelect`, valeur active pour `DsfrSegmented`, etc.).
-  - **Accessibilité** : Amélioration de la visibilité du focus, nommage des boutons de fermeture pour les alertes et suppression de rôles ARIA redondants sur les groupes de cases à cocher et de boutons radio.
-  - **Interface et Responsive** : Ajustements visuels sur les points de rupture (padding, position des icônes) et meilleure gestion de la taille des icônes en fonction du texte.
-- **Corrections**
-  - Correction d'un bug d'affichage mobile sur la variation sans image du `LabAnssiBandeauPage`.
-  - Résolution de problèmes de navigation et de recherche dans le composant `DsfrDropdown`.
+- **Nouveaux composants et ressources** : Ajout du composant de partage `DsfrShare` et intégration de nouvelles icônes (gamepad).
+- **Améliorations de l'interface** : 
+    - Meilleure visibilité du focus pour l'accessibilité.
+    - Possibilité de personnaliser la taille des icônes.
+    - Meilleure compatibilité des icônes avec les styles du DSFR.
+    - Rendu de la propriété `disabled` désormais réactive.
+- **Corrections d'expérience utilisateur** :
+    - Résolution de problèmes de navigation dans les modales (boucle de focus sur les boutons).
+    - Correction de l'affichage du bandeau de page sur mobile (variante sans image).
+    - Correction du comportement des menus déroulants (`DsfrDropdown`).
+- **Optimisation responsive** : Ajustements des espacements (padding, entêtes) et de la position des éléments (Centre d'aide) selon la taille de l'écran.
 
 ### Évolutions techniques
-- **Infrastructure et Build**
-  - Migration vers **Vite 8**, incluant le passage aux modules ESM et la correction de l'injection du nonce CSP.
-  - Consolidation de la configuration `pnpm` et utilisation systématique du lockfile.
-- **Qualité et Outillage**
-  - Intégration de `svelte-check` pour renforcer la vérification des types.
-  - Optimisation de la gestion des dépendances et de la configuration de mise à jour.
-  - Nettoyage des logs de build (filtrage des warnings Vite).
-- **Refactoring et Sécurité**
-  - Renforcement de la sécurité via la correction de violations CSP sur la navigation du header.
-  - Suppression de blocs de code "legacy" dans les composants `CentreAide` et `PageCrisp`.
-  - Élargissement de la version supportée de Svelte en `peerDependency`.
+- **Qualité et conformité du code** : 
+    - Refonte majeure de la configuration ESLint pour supprimer les faux positifs et imposer des règles plus strictes.
+    - Intégration de `lint-staged` et de l'analyse ESLint directement dans la chaîne de CI pour garantir la qualité avant chaque commit.
+- **Robustesse du typage** : 
+    - Renforcement de la sécurité du code via `svelte-check` (correction des erreurs de types, gestion des valeurs `null/undefined` et typage explicite des paramètres).
+    - Remplacement des types `any` par des types explicites.
+- **Outils de développement** : 
+    - Alignement des Storybook sur les standards ISO du DSFR.
+    - Optimisation du processus de release et des hooks de pré-commit.
+    - Mise à jour de l'environnement de développement (Svelte, pnpm, Vite).
 
 ### Autres changements
-- **Storybook** : Mise en conformité des stories avec les standards du DSFR et correction de bugs de mutation d'état et de chemins d'images.
-- **Maintenance** : Mise à jour de la documentation du processus de release et du formatage des fichiers (Prettier).
+- **Documentation** : Mise à jour de la description du processus de release.
+- **Versions** : Plusieurs montées de version effectuées (passage de la 1.60.10 à la 1.61.3).
