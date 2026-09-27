@@ -1,3 +1,52 @@
+2026-09-25T18:21:21+02:00 - bdf6c7e - Kevin GALLET : fix: expect availabilityUpdatedAt in residence typology integration tests
+2026-09-25T17:35:04+02:00 - ff2b9c9 - Kevin GALLET : chore: rename accessible wording to adapté PMR and expand student space subtitle
+2026-09-25T17:35:04+02:00 - d83acf0 - Kevin GALLET : feat: show last availability update date in the landlord space
+2026-09-25T17:35:04+02:00 - b6c8fee - Kevin GALLET : feat: keep unpublished residences in student favorites and redirect their page to the city search
+2026-09-25T17:35:04+02:00 - 6d91e58 - Kevin GALLET : feat: add contact follow-up CSV export and restrict landlord linking to manager accounts
+2026-09-25T17:35:04+02:00 - 3a23622 - Kevin GALLET : chore: drop IE-only color overrides and switch budget illustration to SVG
+2026-09-25T17:35:04+02:00 - 121a771 - Kevin GALLET : feat: add geolocated city search and stabilize the results map
+2026-09-21T16:04:20Z - 264fa8e - Kevin GALLET : feat: suspend applications + mails
+2026-09-21T12:02:46+02:00 - fd0315c - Kevin GALLET : fix: add session user_)id index + counnt owner login from both tables
+2026-09-21T10:08:46+02:00 - b49cb29 - Kevin GALLET : fix: redirect from admin
+2026-09-18T08:47:16Z - fddbb3d - Kevin GALLET : fix: only link confirmed guest contact requests to student accounts
+2026-09-18T08:47:16Z - f7ffcc0 - Kevin GALLET : chore: adding i18n where it was missed
+2026-09-18T08:47:16Z - f6949ea - Kevin GALLET : chore: replace SheetJS CDN tarball with read-excel-file for CROUS spreadsheet imports
+2026-09-18T08:47:16Z - ecb00e3 - Kevin GALLET : fix: persist virtual tour, equipments and apartment counts on residence creation
+2026-09-18T08:47:16Z - e2c57d6 - Kevin GALLET : fix: scope tenant application lookup to the caller's owner for DossierFacile document access
+2026-09-18T08:47:16Z - e1e5751 - Kevin GALLET : fix: disable api-key HTTP endpoints so only admins can issue v1 keys
+2026-09-18T08:47:16Z - df6f1fe - Kevin GALLET : fix: stop collecting the unused referer in accommodation view tracking
+2026-09-18T08:47:16Z - dd1a78a - Kevin GALLET : fix: remove youtube no cookie from authorized virtual tour url
+2026-09-18T08:47:16Z - da3fa62 - Kevin GALLET : fix: force rel=noopener noreferrer on sanitized links opening a new tab
+2026-09-18T08:47:16Z - cd2948b - Kevin GALLET : chore: remove redundant and outdated comments
+2026-09-18T08:47:16Z - bb60107 - Kevin GALLET : fix: merge case-duplicate legacy student accounts before lowercasing emails, indexing tracking_event.user_id
+2026-09-18T08:47:16Z - b814175 - Kevin GALLET : fix: mask student emails in cron logs
+2026-09-18T08:47:16Z - aaed0e4 - Kevin GALLET : fix: verify legacy Django password hashes asynchronously with an iteration cap
+2026-09-18T08:47:16Z - a9068e4 - Kevin GALLET : fix: show contact mode activation prompts only to owner administrators
+2026-09-18T08:47:16Z - a4b4688 - Kevin GALLET : chore: remove Django password verification and clean up imported Django credentials
+2026-09-18T08:47:16Z - a308876 - Kevin GALLET : chore: remove paraphrasing, historical and exploit-oriented comments across the codebase
+2026-09-18T08:47:16Z - 9a0b341 - Kevin GALLET : fix: hash all verification tokens and stop sending password reset links to owners and admins
+2026-09-18T08:47:16Z - 97ed30e - Kevin GALLET : fix: normalize account emails to lowercase on write and migrate non-conflicting legacy addresses
+2026-09-18T08:47:16Z - 95617ce - Kevin GALLET : chore: BC better auth
+2026-09-18T08:47:16Z - 917139e - Kevin GALLET : chore: update deps
+2026-09-18T08:47:16Z - 90aea4c - Kevin GALLET : feat: add nonce-based strict CSP in report-only mode
+2026-09-18T08:47:16Z - 89554c3 - Kevin GALLET : fix: share role allowlists across tRPC, layouts and magic link sending
+2026-09-18T08:47:16Z - 80670a2 - Kevin GALLET : chore: reword security comments to describe behavior rather than attack scenarios
+2026-09-18T08:47:16Z - 6cc6d0c - Kevin GALLET : fix: require manage_residences to view a residence detail page
+2026-09-18T08:47:16Z - 5f5472c - Kevin GALLET : chore: upgrade deps
+2026-09-18T08:47:16Z - 598efea - Kevin GALLET : fix: allowlist roles in owner and student tRPC procedures
+2026-09-18T08:47:16Z - 596ec68 - Kevin GALLET : fix: type unknown-role test caller
+2026-09-18T08:47:16Z - 56004c3 - Kevin GALLET : fix: mask unexpected tRPC error messages in production to avoid leaking SQL
+2026-09-18T08:47:16Z - 55ee247 - Kevin GALLET : fix: refuse applications, favorites and tracking on unpublished residences
+2026-09-18T08:47:16Z - 5335624 - Kevin GALLET : fix: allowlist virtual tour platforms and sandbox their iframe
+2026-09-18T08:47:16Z - 507bb78 - Kevin GALLET : fix: restrict contact mode changes to owner administrators
+2026-09-18T08:47:16Z - 3df743a - Kevin GALLET : fix: reject non-JSON and cross-origin POSTs on tRPC and cookie-authenticated route handlers
+2026-09-18T08:47:16Z - 338afe6 - Kevin GALLET : fix: hash magic link tokens, disable magic link sign-up, revoke sessions on password change and drop localhost origin outside dev
+2026-09-18T08:47:16Z - 29c626b - Kevin GALLET : fix: disable unused better-auth admin and verify-password HTTP routes
+2026-09-18T08:47:16Z - 2134a0f - Kevin GALLET : fix: bound public tRPC and API v1 inputs and cap tRPC batch size
+2026-09-18T08:47:16Z - 20679a5 - Kevin GALLET : chore: remove public_rate_limit table and tracking rate limit in favor of an upstream WAF
+2026-09-18T08:47:16Z - 1fa8b97 - Kevin GALLET : feat: purge login attempts, expired sessions and verification tokens, and stop recording unknown magic link tokens
+2026-09-18T08:47:16Z - 0bc3ba9 - Kevin GALLET : chore: purge remaining owner and admin passwords and cover magic link sign-in
+2026-09-18T08:47:16Z - 0a5757f - Kevin GALLET : fix: restrict WordPress proxy to GET HTML pages with validated slugs and allowlisted query params
 2026-09-15T15:48:07+02:00 - c974aec - Kevin GALLET : fix: width admin tables
 2026-09-15T13:21:24Z - db7b41b - Kevin GALLET : feat: allow specific manager owner to manage contacts + per residences
 2026-09-14T12:51:25+02:00 - 9db3791 - Kevin GALLET : feat: export gestoinnaires slug + contactMode

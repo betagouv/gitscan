@@ -56,7 +56,6 @@
 │   │   ├── import-fac-habitat.ts
 │   │   ├── import-initiall.ts
 │   │   ├── import-utils.ts
-│   │   ├── migrate-users.ts
 │   │   ├── migrate.ts
 │   │   ├── purge-contact-requests.ts
 │   │   ├── purge-logs.ts
@@ -79,6 +78,10 @@
 │   ├── lib
 │   │   ├── __tests__
 │   │   │   ├── backup-storage.test.ts
+│   │   │   ├── crous-helpers.test.ts
+│   │   │   ├── fixtures
+│   │   │   │   ├── crous-residences.sheetjs-expected.json
+│   │   │   │   └── crous-residences.xlsx
 │   │   │   ├── geocoder.test.ts
 │   │   │   └── matomo.test.ts
 │   │   ├── backup-storage.ts
@@ -162,6 +165,15 @@
 │   ├── 0062_impersonation.sql
 │   ├── 0063_bailleur_accommodation_scope.sql
 │   ├── 0064_accommodation_accepts_applications.sql
+│   ├── 0065_account_issuer.sql
+│   ├── 0066_public_rate_limit.sql
+│   ├── 0067_tracking_event_user_id_index.sql
+│   ├── 0068_merge_case_duplicate_accounts.sql
+│   ├── 0069_drop_public_rate_limit.sql
+│   ├── 0070_remove_django_credentials.sql
+│   ├── 0071_drop_non_student_passwords.sql
+│   ├── 0072_session_user_id_index.sql
+│   ├── 0073_accommodation_applications_suspended.sql
 │   └── meta
 │       ├── 0000_snapshot.json
 │       ├── 0001_snapshot.json
@@ -228,11 +240,23 @@
 │       ├── 0062_snapshot.json
 │       ├── 0063_snapshot.json
 │       ├── 0064_snapshot.json
+│       ├── 0065_snapshot.json
+│       ├── 0066_snapshot.json
+│       ├── 0067_snapshot.json
+│       ├── 0068_snapshot.json
+│       ├── 0069_snapshot.json
+│       ├── 0070_snapshot.json
+│       ├── 0071_snapshot.json
+│       ├── 0072_snapshot.json
+│       ├── 0073_snapshot.json
 │       └── _journal.json
 ├── drizzle.config.ts
 ├── messages
 │   ├── en.json
-│   └── fr.json
+│   ├── fr.json
+│   └── schemas
+│       ├── en.json
+│       └── fr.json
 ├── next.config.mjs
 ├── package.json
 ├── pnpm-lock.yaml
@@ -291,7 +315,7 @@
 │   │   │   ├── logement-etudiant-chambre-4.jpg
 │   │   │   └── logement-etudiant-chambre-5.jpg
 │   │   ├── poing-ferme.svg
-│   │   ├── prepare-budget-content.webp
+│   │   ├── prepare-budget-content.svg
 │   │   ├── prepare-budget.webp
 │   │   ├── preparer-sa-vie-etudiante.webp
 │   │   ├── sofa-student.svg
@@ -311,7 +335,9 @@
 ├── sentry.server.config.ts
 ├── src
 │   ├── __tests__
+│   │   ├── accommodation-my-access.integration.test.ts
 │   │   ├── accommodations.integration.test.ts
+│   │   ├── account-case-merge.integration.test.ts
 │   │   ├── admin-owner-link.integration.test.ts
 │   │   ├── admin-owner-logo-export.integration.test.ts
 │   │   ├── admin-users.integration.test.ts
@@ -319,15 +345,20 @@
 │   │   ├── alert-expiration.integration.test.ts
 │   │   ├── alerts.integration.test.ts
 │   │   ├── api.integration.test.ts
+│   │   ├── applications-management.integration.test.ts
+│   │   ├── auth-hardening.integration.test.ts
 │   │   ├── bailleur-application-scope.integration.test.ts
 │   │   ├── bailleur-permissions.test.ts
 │   │   ├── bailleur-user-email-change.integration.test.ts
 │   │   ├── bailleur-users.integration.test.ts
 │   │   ├── bailleur.integration.test.ts
 │   │   ├── budget-simulation.integration.test.ts
+│   │   ├── contact-follow-up-export.integration.test.ts
 │   │   ├── contact-mode-monitoring.integration.test.ts
 │   │   ├── contacts.integration.test.ts
+│   │   ├── csrf.integration.test.ts
 │   │   ├── df-redirect.integration.test.ts
+│   │   ├── django-credentials-cleanup.integration.test.ts
 │   │   ├── dossier-facile.integration.test.ts
 │   │   ├── email-verification-login.integration.test.ts
 │   │   ├── favorites.integration.test.ts
@@ -349,7 +380,6 @@
 │   │   ├── owner-statistics-export.integration.test.ts
 │   │   ├── owner-statistics.integration.test.ts
 │   │   ├── owner-update-tracking.integration.test.ts
-│   │   ├── password-verify.integration.test.ts
 │   │   ├── residence-create-update.integration.test.ts
 │   │   ├── residence-form-typologies.integration.test.ts
 │   │   ├── residences-csv-export.integration.test.ts
@@ -358,6 +388,7 @@
 │   │   ├── territories-get-by-slug.integration.test.ts
 │   │   ├── territories-list.integration.test.ts
 │   │   ├── territories-search.integration.test.ts
+│   │   ├── tracking.integration.test.ts
 │   │   ├── typology-availability-backfill.integration.test.ts
 │   │   └── typology-availability-tracking.integration.test.ts
 │   ├── app
@@ -608,8 +639,11 @@
 │   │   │   │   │       └── preview
 │   │   │   │   │           └── route.ts
 │   │   │   │   └── residences
-│   │   │   │       └── export
-│   │   │   │           └── route.ts
+│   │   │   │       ├── export
+│   │   │   │       │   └── route.ts
+│   │   │   │       └── suivi-coordonnees
+│   │   │   │           └── export
+│   │   │   │               └── route.ts
 │   │   │   ├── auth
 │   │   │   │   └── [...all]
 │   │   │   │       └── route.ts
@@ -723,9 +757,9 @@
 │   │   │   │   │   ├── moderation-manager-card.tsx
 │   │   │   │   │   ├── moderation-settings-form.module.css
 │   │   │   │   │   └── moderation-settings-form.tsx
+│   │   │   │   ├── residence-applications-toggle.tsx
 │   │   │   │   ├── residence-contact-card.module.css
 │   │   │   │   ├── residence-contact-card.tsx
-│   │   │   │   ├── residences-grid.module.css
 │   │   │   │   └── residences-grid.tsx
 │   │   │   ├── details
 │   │   │   │   ├── create-residence-accommodation-list.module.css
@@ -799,6 +833,7 @@
 │   │   │   ├── crous-alert
 │   │   │   │   └── find-student-accommodation-crous-alert.tsx
 │   │   │   ├── find-student-accommodation-banner.tsx
+│   │   │   ├── geolocation-button.tsx
 │   │   │   ├── header
 │   │   │   │   ├── find-student-accessible-accomodation-switch.tsx
 │   │   │   │   ├── find-student-accommodation-active-filters.tsx
@@ -1032,6 +1067,8 @@
 │   │   │   ├── required-mark.tsx
 │   │   │   ├── rich-text-editor.module.css
 │   │   │   ├── rich-text-editor.tsx
+│   │   │   ├── search-input.module.css
+│   │   │   ├── search-input.tsx
 │   │   │   ├── skeleton
 │   │   │   │   ├── card-skeleton.module.css
 │   │   │   │   ├── card-skeleton.tsx
@@ -1078,7 +1115,7 @@
 │   │   ├── skeleton.css
 │   │   └── text.css
 │   ├── hooks
-│   │   └── use-*.ts  (61 files)
+│   │   └── use-*.ts  (62 files)
 │   ├── i18n
 │   │   ├── locales.ts
 │   │   └── request.ts
@@ -1088,12 +1125,14 @@
 │   │   ├── TRACKING.md
 │   │   ├── accommodations-expanded-search.ts
 │   │   ├── accommodations-search-params.ts
-│   │   ├── django-password.ts
 │   │   ├── features.ts
+│   │   ├── roles.test.ts
+│   │   ├── roles.ts
 │   │   ├── tracking.ts
 │   │   └── types.ts
 │   ├── providers
 │   │   └── trpc-client.tsx
+│   ├── proxy.ts
 │   ├── schemas
 │   │   ├── accommodations
 │   │   │   ├── accommodation-selection.ts
@@ -1103,6 +1142,7 @@
 │   │   │   ├── typology.test.ts
 │   │   │   ├── typology.ts
 │   │   │   ├── update-residence-list.ts
+│   │   │   ├── update-residence.test.ts
 │   │   │   └── update-residence.ts
 │   │   ├── alerts
 │   │   │   ├── create-alert.test.ts
@@ -1126,6 +1166,7 @@
 │   │   ├── dossier-facile
 │   │   │   ├── dossier-facile-profile.ts
 │   │   │   └── dossier-facile-webhook.ts
+│   │   ├── email.ts
 │   │   ├── faq
 │   │   │   └── faq-questions-answers.ts
 │   │   ├── favorites
@@ -1146,6 +1187,8 @@
 │   │   │   └── natures.ts
 │   │   ├── reset-password
 │   │   │   └── reset-password.ts
+│   │   ├── schema-translator.test.ts
+│   │   ├── schema-translator.ts
 │   │   ├── sign-up
 │   │   │   └── sign-up.ts
 │   │   ├── student
@@ -1175,10 +1218,13 @@
 │   │   │   ├── accommodation-access.ts
 │   │   │   ├── accommodation-scope.ts
 │   │   │   ├── administrator-limit.ts
+│   │   │   ├── application-notifications.ts
+│   │   │   ├── applications-open.ts
 │   │   │   ├── get-accommodation-my-by-id.ts
 │   │   │   ├── get-bailleur-context.ts
 │   │   │   ├── get-my-accommodations.ts
 │   │   │   ├── get-owner-for-user.ts
+│   │   │   ├── get-owner-last-availability-update.ts
 │   │   │   └── permissions.ts
 │   │   ├── candidatures
 │   │   │   ├── student-identity.ts
@@ -1226,6 +1272,8 @@
 │   │   │       ├── student-alerts.ts
 │   │   │       └── tracking-events.ts
 │   │   ├── env.ts
+│   │   ├── exports
+│   │   │   └── contact-follow-up.ts
 │   │   ├── favorites
 │   │   │   └── ensure-favorite.ts
 │   │   ├── lib
@@ -1288,7 +1336,10 @@
 │   │   │   ├── get-popular-cities.ts
 │   │   │   └── get-territories.ts
 │   │   ├── trpc
+│   │   │   ├── __tests__
+│   │   │   │   └── error-formatter.test.ts
 │   │   │   ├── client.ts
+│   │   │   ├── error-formatter.ts
 │   │   │   ├── init.ts
 │   │   │   ├── query-client.ts
 │   │   │   ├── router.ts
@@ -1320,6 +1371,8 @@
 │   │       ├── jwt-secret.ts
 │   │       ├── normalize-city-search.test.ts
 │   │       ├── normalize-city-search.ts
+│   │       ├── same-origin.test.ts
+│   │       ├── same-origin.ts
 │   │       ├── slug.ts
 │   │       ├── sort-cities-by-relevance.test.ts
 │   │       └── sort-cities-by-relevance.ts
@@ -1334,6 +1387,8 @@
 │       ├── calculateAvailability.test.ts
 │       ├── calculateAvailability.ts
 │       ├── canonical.ts
+│       ├── csp.test.ts
+│       ├── csp.ts
 │       ├── csv.test.ts
 │       ├── csv.ts
 │       ├── date-helpers.ts
@@ -1341,9 +1396,10 @@
 │       ├── debugPromiseTiming.ts
 │       ├── detect-mime-type.test.ts
 │       ├── detect-mime-type.ts
+│       ├── dompurify.ts
 │       ├── feature-flags.ts
 │       ├── formatDate.ts
-│       ├── formatRelativeTime.ts
+│       ├── french-contraction.test.ts
 │       ├── french-contraction.ts
 │       ├── french-regions.test.ts
 │       ├── french-regions.ts
@@ -1352,6 +1408,9 @@
 │       ├── get-accommodation-url.ts
 │       ├── get-favicon-url.ts
 │       ├── is-per-person-typology.ts
+│       ├── last-availability-update.ts
+│       ├── mask-email.test.ts
+│       ├── mask-email.ts
 │       ├── normalize-accommodation-name.test.ts
 │       ├── normalize-accommodation-name.ts
 │       ├── normalize-text.ts
@@ -1370,10 +1429,13 @@
 │       ├── time.ts
 │       ├── typology-form-defaults.test.ts
 │       ├── typology-form-defaults.ts
+│       ├── virtual-tour.test.ts
+│       ├── virtual-tour.ts
 │       ├── widget-campaign.test.ts
 │       ├── widget-campaign.ts
 │       ├── widget-resize.ts
+│       ├── wp-proxy.test.ts
 │       └── wp-proxy.ts
 ├── tsconfig.json
 └── vitest.config.ts
-276 directories, 1162 files
+282 directories, 1219 files
