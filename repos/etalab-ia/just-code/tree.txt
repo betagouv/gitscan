@@ -13,27 +13,59 @@
 ├── LICENSE
 ├── README.md
 ├── assets
+│   ├── agentvm-base-prep.sh
 │   ├── assets.go
 │   ├── assets_test.go
-│   ├── opencode-config.json
-│   └── start-script.sh
+│   ├── guest-prep.sh
+│   └── opencode-config.json
 ├── cmd
 │   └── just-code
+│       ├── auth.go
+│       ├── auth_password.go
+│       ├── auth_test.go
+│       ├── bindings.go
+│       ├── bindings_test.go
+│       ├── init.go
+│       ├── init_test.go
 │       ├── main.go
 │       ├── main_test.go
-│       └── version.go
+│       ├── models.go
+│       ├── setup.go
+│       ├── setup_test.go
+│       ├── trust.go
+│       ├── version.go
+│       ├── workspace.go
+│       └── workspace_test.go
 ├── docs
-│   └── development.md
+│   ├── config.md
+│   ├── decisions
+│   │   ├── 2026-09-23-opencode-configuration-contract.md
+│   │   ├── 2026-09-24-microsandbox-credential-transport.md
+│   │   ├── 2026-09-24-microsandbox-guest-capabilities.md
+│   │   └── 2026-09-24-sealed-workspace.md
+│   ├── development.md
+│   └── plans
+│       ├── albert-code-parity-architecture.md
+│       └── albert-code-parity.md
 ├── go.mod
 ├── go.sum
 ├── internal
 │   └── justcode
 │       ├── agentvm.go
 │       ├── agentvm_test.go
+│       ├── agentvmtemplate.go
+│       ├── agentvmtemplate_test.go
+│       ├── approvals.go
+│       ├── bindings.go
+│       ├── bindings_test.go
 │       ├── config.go
 │       ├── config_test.go
+│       ├── credentials.go
+│       ├── credentials_*.go  (13 files)
 │       ├── detach_unix.go
 │       ├── detach_windows.go
+│       ├── diskfree_unix.go
+│       ├── diskfree_windows.go
 │       ├── dispatcher.go
 │       ├── dispatcher_test.go
 │       ├── exec.go
@@ -42,23 +74,73 @@
 │       ├── guest_test.go
 │       ├── health.go
 │       ├── health_test.go
+│       ├── initwizard.go
+│       ├── initwizard_test.go
+│       ├── isolation.go
+│       ├── isolation_test.go
 │       ├── legacy_docker.go
 │       ├── legacy_docker_test.go
+│       ├── legacy_import.go
+│       ├── lifecycle_test.go
 │       ├── microsandbox.go
+│       ├── microsandbox_credentials_contract_test.go
 │       ├── microsandbox_sdk.go
+│       ├── microsandbox_sealed_mount_test.go
 │       ├── microsandbox_test.go
+│       ├── modelcatalog.go
+│       ├── modelcatalog_test.go
 │       ├── msb_runtime_install.go
 │       ├── msb_runtime_install_test.go
 │       ├── mtu.go
 │       ├── mtu_test.go
 │       ├── name.go
 │       ├── name_test.go
+│       ├── opencodeconfig.go
+│       ├── opencodeconfig_test.go
+│       ├── opencodetrust.go
+│       ├── opencodetrust_test.go
 │       ├── paths.go
+│       ├── project.go
+│       ├── project_test.go
+│       ├── projectconfig.go
+│       ├── projectconfig_test.go
+│       ├── reconcile.go
+│       ├── reconcile_test.go
+│       ├── resolve.go
+│       ├── resolve_files.go
+│       ├── resolve_test.go
+│       ├── revoke.go
+│       ├── revoke_test.go
 │       ├── runtime.go
 │       ├── runtime_test.go
+│       ├── setup_test.go
+│       ├── setupkvm_linux_test.go
+│       ├── setupkvm_unix.go
+│       ├── setupkvm_windows.go
+│       ├── setuppreflight.go
+│       ├── setupstate.go
+│       ├── setupwizard.go
 │       ├── tart.go
 │       ├── tart_test.go
+│       ├── transfer.go
+│       ├── transfer_test.go
 │       ├── workspace.go
+│       ├── workspace_sealed.go
+│       ├── workspace_sealed_test.go
 │       └── workspace_test.go
-└── release-please-config.json
-9 directories, 54 files
+├── release-please-config.json
+└── tests
+    └── integration
+        ├── credentials
+        │   ├── README.md
+        │   ├── pin.json
+        │   └── run.sh
+        ├── guest-capabilities
+        │   ├── README.md
+        │   ├── pin.json
+        │   └── run.sh
+        └── opencode
+            ├── README.md
+            ├── pin.json
+            └── run.sh
+16 directories, 141 files
