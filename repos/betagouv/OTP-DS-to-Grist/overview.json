@@ -1,14 +1,15 @@
 {
   "url": "https://github.com/betagouv/OTP-DS-to-Grist",
   "name": "OTP-DS-to-Grist",
-  "description": "Ce projet est un connecteur permettant de synchroniser les données de Démarches Simplifiées vers des documents Grist. Il permet de configurer des filtres de synchronisation et de suivre l'exécution en temps réel via une interface web.",
+  "description": "Connecteur permettant de synchroniser les données de Démarches Simplifiées vers des documents Grist. Il permet l'exportation, le filtrage et la synchronisation automatique des dossiers.",
   "language": "Python",
   "features": [
     "API & Intégrations",
     "Données & Schémas",
+    "Recherche & Filtres",
     "Administration & Backoffice",
-    "Tableaux & Affichage",
-    "Collaboration & Workflow"
+    "Collaboration & Workflow",
+    "Tableaux & Affichage"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -18,27 +19,29 @@
     "PostgreSQL",
     "SQLAlchemy",
     "APScheduler",
-    "Socket.io",
-    "Jest"
+    "Socket.io"
   ],
   "components": [
     "Python (scripts & backend)",
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "Docker & Conteneurs",
-    "Scripts & Utilitaires",
-    "Pipeline de données"
+    "Pipeline de données",
+    "Intégrations services externes",
+    "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
       "api-key"
     ]
   },
-  "tests": "pytest pour le backend et jest pour le frontend",
+  "tests": [
+    "pytest",
+    "jest"
+  ],
   "workflows": [
     "ci.yml"
   ],
-  "lastActivity": "2026-09-11T00:00:00Z",
+  "lastActivity": "2026-09-21T00:00:00Z",
   "status": "maintained",
   "license": "ISC",
   "hasDocumentation": true,
@@ -47,7 +50,7 @@
     "Écosystème beta.gouv / État",
     "Python",
     "ETL & Pipelines de données",
-    "Docker & Conteneurs",
-    "Bases de données SQL"
+    "Bases de données SQL",
+    "CI/CD & GitHub Actions"
   ]
 }
