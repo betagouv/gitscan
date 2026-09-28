@@ -94,6 +94,34 @@
 │   │   ├── README.md
 │   │   ├── main.bot
 │   │   └── manifest.yaml
+│   ├── assessment
+│   │   ├── README.md
+│   │   ├── devbox.json
+│   │   ├── devbox.lock
+│   │   ├── main.bot
+│   │   ├── manifest.yaml
+│   │   └── skills
+│   │       ├── assessment-brief.md
+│   │       ├── assessment-report.md
+│   │       ├── assessment-survey.md
+│   │       ├── measurement-profile.md
+│   │       ├── plan-contract.md
+│   │       ├── stack-go.md
+│   │       ├── stack-node.md
+│   │       └── upgrade-archetypes.md
+│   ├── assessment_agent_tools_test.go
+│   ├── assessment_commit_test.go
+│   ├── assessment_contract_lint_test.go
+│   ├── assessment_coverage_gate_test.go
+│   ├── assessment_declaration_lint_test.go
+│   ├── assessment_entry_test.go
+│   ├── assessment_extractor_env_test.go
+│   ├── assessment_measure_inputs_test.go
+│   ├── assessment_measure_render_test.go
+│   ├── assessment_review2_test.go
+│   ├── assessment_shared_skills_test.go
+│   ├── assessment_survey_write_test.go
+│   ├── assessment_tools_test.go
 │   ├── bmady
 │   │   ├── README.md
 │   │   ├── main.bot
@@ -131,6 +159,8 @@
 │   ├── catalog_command_refs_test.go
 │   ├── catalog_current_models_test.go
 │   ├── catalog_expr_concat_test.go
+│   ├── catalog_fail_message_test.go
+│   ├── catalog_foreign_identity_test.go
 │   ├── catalog_freshness_test.go
 │   ├── catalog_input_mapping_test.go
 │   ├── catalog_model_specs_test.go
@@ -346,6 +376,13 @@
 │   ├── plan_phase_split_test.go
 │   ├── plan_phase_test.go
 │   ├── porcelain_scaffold_test.go
+│   ├── prod-watch
+│   │   ├── README.md
+│   │   ├── main.bot
+│   │   ├── manifest.yaml
+│   │   └── skills
+│   │       ├── argus-config.md
+│   │       └── signals-and-queries.md
 │   ├── product-docs
 │   │   ├── README.md
 │   │   ├── deploy
@@ -1408,6 +1445,8 @@
 │   ├── plan_review_test.go
 │   ├── port_test.go
 │   ├── privacy_test.go
+│   ├── prod_watch_edges_test.go
+│   ├── prod_watch_test.go
 │   ├── product_docs_test.go
 │   ├── review_pr_convergence_test.go
 │   ├── review_pr_tiers_test.go
@@ -1770,6 +1809,7 @@
 │   │   │   ├── claude_code_model_defaults_test.go
 │   │   │   ├── claude_code_model_meta_test.go
 │   │   │   ├── claude_code_model_spawn_test.go
+│   │   │   ├── claude_code_model_test.go
 │   │   │   ├── claude_code_modelunavail_test.go
 │   │   │   ├── claude_code_native_disallow_test.go
 │   │   │   ├── claude_code_orch_stall_test.go
@@ -2445,7 +2485,7 @@
 │   │   ├── resume.go
 │   │   ├── resume_*.go  (5 files)
 │   │   ├── run.go
-│   │   ├── run_*.go  (8 files)
+│   │   ├── run_*.go  (9 files)
 │   │   ├── runs_prune.go
 │   │   ├── runs_prune_guard_test.go
 │   │   ├── runs_prune_test.go
@@ -2680,6 +2720,7 @@
 │   │   ├── main_test.go
 │   │   ├── manager.go
 │   │   ├── manager_*.go  (5 files)
+│   │   ├── mirror_cwd_guard_test.go
 │   │   ├── native
 │   │   │   ├── adapter.go
 │   │   │   ├── adapter_late_renew_test.go
@@ -2835,7 +2876,10 @@
 │   │   │   └── provenance_test.go
 │   │   ├── author
 │   │   │   ├── author.go
+│   │   │   ├── author_lows_test.go
 │   │   │   ├── block_values_test.go
+│   │   │   ├── block_word_test.go
+│   │   │   ├── comment_value_test.go
 │   │   │   ├── comments.go
 │   │   │   ├── comments_test.go
 │   │   │   ├── declared_tools_test.go
@@ -2845,6 +2889,7 @@
 │   │   │   ├── doc_fences_test.go
 │   │   │   ├── enum_or_env_test.go
 │   │   │   ├── fixtures_test.go
+│   │   │   ├── flow_comments_dedupe_test.go
 │   │   │   ├── frontmatter_reader_test.go
 │   │   │   ├── gate_fixes_test.go
 │   │   │   ├── golden_test.go
@@ -2864,6 +2909,7 @@
 │   │   │   ├── roundtrip_test.go
 │   │   │   ├── scanner_breaks_test.go
 │   │   │   ├── spell.go
+│   │   │   ├── stale_float_raw_test.go
 │   │   │   ├── testdata
 │   │   │   │   └── every-kind-v2.written.yaml
 │   │   │   ├── write.go
@@ -2945,6 +2991,7 @@
 │   │   │   ├── group_expansion_test.go
 │   │   │   ├── images_test.go
 │   │   │   ├── included_files_test.go
+│   │   │   ├── inputs.go
 │   │   │   ├── int_division_warning_test.go
 │   │   │   ├── ir.go
 │   │   │   ├── literal_template_test.go
@@ -3037,6 +3084,7 @@
 │   │   │   ├── prompt_body_profile_test.go
 │   │   │   ├── prompt_body_test.go
 │   │   │   ├── token.go
+│   │   │   ├── utf8_test.go
 │   │   │   ├── var_constraints_test.go
 │   │   │   ├── writable_json.go
 │   │   │   ├── writable_json_test.go
@@ -3078,6 +3126,7 @@
 │   │   │       └── author
 │   │   │           ├── invalid
 │   │   │           │   ├── attachment-entry-null.yaml
+│   │   │           │   ├── backend-line-break.yaml
 │   │   │           │   ├── catalog-unknown-key.yaml
 │   │   │           │   ├── contract-port-type-number.yaml
 │   │   │           │   ├── cursor-band-value-number.yaml
@@ -3701,6 +3750,7 @@
 │   │   ├── loop_*.go  (15 files)
 │   │   ├── main_test.go
 │   │   ├── metrics_test.go
+│   │   ├── mirror_cwd_guard_test.go
 │   │   ├── model_overrides_test.go
 │   │   ├── oauth_refresh.go
 │   │   ├── oauth_refresh_ownership_test.go
@@ -3759,7 +3809,7 @@
 │   │   ├── bundle_test.go
 │   │   ├── chaos_test.go
 │   │   ├── checkpoint.go
-│   │   ├── child_*.go  (8 files)
+│   │   ├── child_*.go  (9 files)
 │   │   ├── commit_uncommitted.go
 │   │   ├── compute_failure_code_test.go
 │   │   ├── conflict.go
@@ -3806,7 +3856,9 @@
 │   │   ├── llm_router_test.go
 │   │   ├── loop_*.go  (6 files)
 │   │   ├── main_test.go
+│   │   ├── mirror_cwd_guard_test.go
 │   │   ├── mirrored_skills_wiring_test.go
+│   │   ├── nested_checkout_test.go
 │   │   ├── node_fields.go
 │   │   ├── node_output.go
 │   │   ├── node_output_test.go
@@ -3932,6 +3984,7 @@
 │   │   ├── merge_claim_test.go
 │   │   ├── merge_remote.go
 │   │   ├── merge_remote_test.go
+│   │   ├── mirror_cwd_guard_test.go
 │   │   ├── model_override_validation.go
 │   │   ├── model_override_validation_test.go
 │   │   ├── node_changes.go
@@ -3969,7 +4022,7 @@
 │   │   │   ├── tail.go
 │   │   │   └── tail_test.go
 │   │   ├── service.go
-│   │   ├── service_*.go  (38 files)
+│   │   ├── service_*.go  (39 files)
 │   │   ├── settled_floor_test.go
 │   │   ├── skills.go
 │   │   ├── snapshot.go
@@ -4239,10 +4292,7 @@
 │   │   ├── invocation_dispatch.go
 │   │   ├── invocation_dispatch_provenance_test.go
 │   │   ├── invocation_dispatch_test.go
-│   │   ├── launch_gate.go
-│   │   ├── launch_gate_test.go
-│   │   ├── launch_gate_vanished_tenant_test.go
-│   │   ├── launch_runid_test.go
+│   │   ├── launch_*.go  (5 files)
 │   │   ├── limits.go
 │   │   ├── limits_test.go
 │   │   ├── local_*.go  (5 files)
@@ -4349,6 +4399,7 @@
 │   │   ├── triggers_routes.go
 │   │   ├── triggers_routes_test.go
 │   │   ├── valkey_cross_replica_test.go
+│   │   ├── valkey_refund_test.go
 │   │   ├── valkey_stores.go
 │   │   ├── valkey_stores_test.go
 │   │   ├── watch_coordinator.go
@@ -13611,4 +13662,4 @@
                 ├── pbkdf.go
                 ├── pkcs12.go
                 └── safebags.go
-1803 directories, 13329 files
+1807 directories, 13383 files

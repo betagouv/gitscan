@@ -3,6 +3,157 @@
 Generated from Conventional Commits at each release. Older majors are archived
 under [docs/changelog/](https://github.com/SocialGouv/iterion/tree/main/docs/changelog).
 
+## [3.205.2](https://github.com/SocialGouv/iterion/compare/v3.205.1...v3.205.2) (2026-09-27)
+
+### Bug Fixes
+
+* **author:** the flow comment counts — one physical comment, one entry ([#1892](https://github.com/SocialGouv/iterion/issues/1892)) ([7819d88](https://github.com/SocialGouv/iterion/commit/7819d880e01c777ef24a6f067fbda98769c820f4)), references [#1814](https://github.com/SocialGouv/iterion/issues/1814)
+
+    <details><summary>why</summary>
+
+    The last two items of #1814. author.Comments read a flow collection's comments off its source AND listed the copies yaml.v3 hung on the node's head, line and foot: `[a: # c` + a line break counted "# c" twice. And the old text-based dedupe swallowed a same-text comment written on ANOTHER line — the head's lines are now derived from the source (the contiguous block ending above the opening bracket, blanks skipped), and only a sourced read ON those lines is the head's copy.
+
+    </details>
+
+## [3.205.1](https://github.com/SocialGouv/iterion/compare/v3.205.0...v3.205.1) (2026-09-27)
+
+### Bug Fixes
+
+* **author:** the author twin's remaining lows — raw folds, remedies that exist, one mistake one message ([#1884](https://github.com/SocialGouv/iterion/issues/1884)) ([ac2a192](https://github.com/SocialGouv/iterion/commit/ac2a192444dc519331f60d5d8c69a207f28239ba))
+
+    <details><summary>why</summary>
+
+    Eight of #1814's ten items, each with its witness:
+
+    </details>
+* **runtime:** the engine writes only what is its own — the wip bank proves its worktree, the finish hook carries the run's context, no test mirror lands in the checkout ([#1889](https://github.com/SocialGouv/iterion/issues/1889)) ([3e2ede4](https://github.com/SocialGouv/iterion/commit/3e2ede4eb2235a9d6a726dbbbec893e3c6e314b8)), references [#1805](https://github.com/SocialGouv/iterion/issues/1805)
+
+    <details><summary>why</summary>
+
+    Three tickets, one seam: nothing the engine writes may land in a repository or a directory that is not the run's.
+
+    </details>
+
+## [3.205.0](https://github.com/SocialGouv/iterion/compare/v3.204.2...v3.205.0) (2026-09-27)
+
+### Features
+
+* **assessment:** the bot that writes the contract a campaign executes ([#1776](https://github.com/SocialGouv/iterion/issues/1776)) ([8c7a130](https://github.com/SocialGouv/iterion/commit/8c7a1309a8118f8b9126c873adb20bdb5880e94e))
+
+    <details><summary>why</summary>
+
+    A modernisation campaign starts from a contract an operator writes by hand. This bundle is the step that writes it: survey the repository, measure it against a versioned profile, propose the programme, and emit `.modernize/plan.yaml` validated lot by lot.
+
+    </details>
+
+## [3.204.2](https://github.com/SocialGouv/iterion/compare/v3.204.1...v3.204.2) (2026-09-27)
+
+### Bug Fixes
+
+* **delegate:** the claude_code model id reaches the wire bare — the facade trio's prefixes are stripped ([#1885](https://github.com/SocialGouv/iterion/issues/1885)) ([8b1f51e](https://github.com/SocialGouv/iterion/commit/8b1f51e3a7aabe8ccbd6adbad43abe4a2e917148))
+
+    <details><summary>why</summary>
+
+    `teams switch <slug>` minted a PAT with the slug stored verbatim as the team pin. A PAT identity resolves its team on every use — GetMembership(user, "pic-graal") finds nothing — so the token answered 401 "token team unavailable" on every call, and the CLI (sharing one credential file with the MCP server) carried the break into every surface. Paid in production: two studio re-logins and a blocked phase.
+
+    </details>
+
+## [3.204.1](https://github.com/SocialGouv/iterion/compare/v3.204.0...v3.204.1) (2026-09-27)
+
+### Bug Fixes
+
+* **author:** the document reads as it is written — stale floats, block scalars under words, a comment that ends a value ([#1881](https://github.com/SocialGouv/iterion/issues/1881)) ([c157dc3](https://github.com/SocialGouv/iterion/commit/c157dc3598ed493a74cf9b8d6de07f34a691b5e7)), references [#1821](https://github.com/SocialGouv/iterion/issues/1821) [#1781](https://github.com/SocialGouv/iterion/issues/1781) [#1781](https://github.com/SocialGouv/iterion/issues/1781) [#1780](https://github.com/SocialGouv/iterion/issues/1780)
+
+    <details><summary>why</summary>
+
+    Adversarial-Rounds: 2 (opus-5.5: 6 + 4 verified findings, all fixed) Adversarial-Model: claude-opus-5-5
+
+    </details>
+
+## [3.204.0](https://github.com/SocialGouv/iterion/compare/v3.203.2...v3.204.0) (2026-09-27)
+
+### Features
+
+* **product-docs:** prove exhaustiveness in a gate, not on the agent's word ([#1774](https://github.com/SocialGouv/iterion/issues/1774)) ([c5f4dcb](https://github.com/SocialGouv/iterion/commit/c5f4dcbe0b62941093fc719eed9ef53dad5e97b1))
+
+    <details><summary>why</summary>
+
+    Prody's convergence rested on `scope_ok ∧ lint_ok ∧ docs_aligned`, and `docs_aligned` is the agent's own answer to the one question it cannot honestly answer about itself: did I document EVERYTHING, and does everything I documented EXIST? Surface coverage was an advisory hint. The catalog's doctrine is that the truth lives in the gates.
+
+    </details>
+
+## [3.203.2](https://github.com/SocialGouv/iterion/compare/v3.203.1...v3.203.2) (2026-09-27)
+
+### Bug Fixes
+
+* **server,cli:** a team-pinned token cannot be minted for a team that does not exist ([#1880](https://github.com/SocialGouv/iterion/issues/1880)) ([8efbe48](https://github.com/SocialGouv/iterion/commit/8efbe481ba4c474e43a5ca2f44faf3bf68b13f61))
+
+    <details><summary>why</summary>
+
+    `teams switch <slug>` minted a PAT with the slug stored verbatim as the team pin. A PAT identity resolves its team on every use — GetMembership(user, "pic-graal") finds nothing — so the token answered 401 "token team unavailable" on every call, and the CLI (sharing one credential file with the MCP server) carried the break into every surface. Paid in production: two studio re-logins and a blocked phase.
+
+    </details>
+
+## [3.203.1](https://github.com/SocialGouv/iterion/compare/v3.203.0...v3.203.1) (2026-09-26)
+
+### Bug Fixes
+
+* **launch:** admission gives back what it takes; unknown inputs refuse, not drop ([#1726](https://github.com/SocialGouv/iterion/issues/1726) [#1757](https://github.com/SocialGouv/iterion/issues/1757)) ([#1872](https://github.com/SocialGouv/iterion/issues/1872)) ([74f4035](https://github.com/SocialGouv/iterion/commit/74f403519907c14b91a9659ebcd22ca781cc4bcd))
+
+    <details><summary>why</summary>
+
+    gateLaunchRate consumed a token from the org's per-minute launch bucket, but launchAdmission carried only the monthly usage key — so a client looping a malformed body emptied the bucket while every 400 handed the monthly unit back, and the FIRST well-formed launch was 429'd with nothing running (measured, #1726).
+
+    </details>
+
+## [3.203.0](https://github.com/SocialGouv/iterion/compare/v3.202.3...v3.203.0) (2026-09-26)
+
+### Features
+
+* **bots:** prod-watch (Argus) — slice A: the deterministic, zero-LLM watch tick ([#1869](https://github.com/SocialGouv/iterion/issues/1869)) ([1e7ed5e](https://github.com/SocialGouv/iterion/commit/1e7ed5e11762c8292a206b167bee34c71cfe7ec3)), references [#1695](https://github.com/SocialGouv/iterion/issues/1695) [#1696](https://github.com/SocialGouv/iterion/issues/1696) [#1704](https://github.com/SocialGouv/iterion/issues/1704) [#1697](https://github.com/SocialGouv/iterion/issues/1697) [#1698](https://github.com/SocialGouv/iterion/issues/1698) [#1699](https://github.com/SocialGouv/iterion/issues/1699) [#1700](https://github.com/SocialGouv/iterion/issues/1700) [#1701](https://github.com/SocialGouv/iterion/issues/1701) [#1702](https://github.com/SocialGouv/iterion/issues/1702) [#1708](https://github.com/SocialGouv/iterion/issues/1708)
+
+    <details><summary>why</summary>
+
+    ## Argus — slice A: the deterministic, zero-LLM watch tick (`bots/prod-watch`)
+
+    </details>
+
+## [3.202.3](https://github.com/SocialGouv/iterion/compare/v3.202.2...v3.202.3) (2026-09-26)
+
+### Bug Fixes
+
+* **server:** the metering surfaces read the slot's fact off the error, not off err != nil ([#1875](https://github.com/SocialGouv/iterion/issues/1875)) ([6414f2a](https://github.com/SocialGouv/iterion/commit/6414f2acc695f437fb018cb4fa1f494fef5e12f8)), closes [#1725](https://github.com/SocialGouv/iterion/issues/1725), references [#1725](https://github.com/SocialGouv/iterion/issues/1725)
+
+    <details><summary>why</summary>
+
+    Three sibling surfaces (the trigger spine, the board dispatcher, the retry sweeper) refunded the metered slot on ANY error out of Launch/Resume, on the strength of a comment saying "every error means no run started" — and the repo already knew that sentence was false (RunPersistedError, #1638's own aftermath). The ticket measured it: a publish that reports failure AFTER the message landed leaves a run the runner may claim, and the refund under-counts it.
+
+    </details>
+
+## [3.202.2](https://github.com/SocialGouv/iterion/compare/v3.202.1...v3.202.2) (2026-09-26)
+
+### Bug Fixes
+
+* the .bot file is read and validated by one rule ([#1728](https://github.com/SocialGouv/iterion/issues/1728) [#1808](https://github.com/SocialGouv/iterion/issues/1808) [#1762](https://github.com/SocialGouv/iterion/issues/1762)) ([#1871](https://github.com/SocialGouv/iterion/issues/1871)) ([2336861](https://github.com/SocialGouv/iterion/commit/2336861cd167467c1859ea01349a77e360364d28))
+
+    <details><summary>why</summary>
+
+    A file with no workflow got valid:false and nothing else on the JSON path: the reason was the human renderer's alone. It now rides the result as a parse diagnostic naming the declared remedy — and a file that failed to PARSE carries only its parse error, never a second "no workflow found" counting one cause twice.
+
+    </details>
+
+## [3.202.1](https://github.com/SocialGouv/iterion/compare/v3.202.0...v3.202.1) (2026-09-26)
+
+### Bug Fixes
+
+* **mcp:** the project-scoped engine server no longer squats the reserved iterion namespace ([#1870](https://github.com/SocialGouv/iterion/issues/1870)) ([c8e0d32](https://github.com/SocialGouv/iterion/commit/c8e0d32aa12bfbfbeb3bc8be4abbe9ce107d948b))
+
+    <details><summary>why</summary>
+
+    The runner refuses any project-declared MCP server whose normalized tool namespace lands on iterion's own (a project server named `iterion*` could forge infrastructure tools — ask_user, board, control — past the permission gate), so the refusal is load-bearing and stays. The repo's own `.mcp.json` predates the check and has parked every PR review on the runner's DLQ since it deployed (10 entries since 2026-09-25 21:31 UTC, this repository's reviews included). The local engine server is renamed…
+
+    </details>
+
 ## [3.202.0](https://github.com/SocialGouv/iterion/compare/v3.201.0...v3.202.0) (2026-09-25)
 
 ### Features

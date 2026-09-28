@@ -1,34 +1,37 @@
-## Changelog : iterion (30 derniers jours, au 25 septembre 2026)
+## Changelog : iterion (30 derniers jours, au 27 septembre 2026)
 
 ### Résumé
-Ce mois a été marqué par une transformation majeure de la structure du langage de programmation d'Iterion (DSL), passant à une version beaucoup plus robuste et prévisible. L'écosystème s'est considérablement enrichi avec l'arrivée de nombreux nouveaux agents spécialisés (bots) pour l'audit, la revue de code et le développement. Parallèlement, l'interface de gestion (Studio) a été refondue pour offrir un contrôle administratif plus fin sur les équipes, la consommation des crédits et l'orchestration des tâches.
+Ce mois a été marqué par une étape majeure de modernisation de la plateforme. L'accent a été mis sur la robustesse du langage de définition des agents (DSL) et sur l'automatisation des processus de mise à niveau. L'expérience utilisateur a été enrichie par de nouveaux agents spécialisés (audit, revue de code, surveillance) et par une interface de gestion (Studio) plus complète, permettant un contrôle fin des ressources et des accès.
 
 ### Évolutions fonctionnelles
-- **Expansion du catalogue d'agents :** Déploiement de plusieurs vagues de nouveaux bots spécialisés, notamment pour la revue de Pull Requests, le développement de fonctionnalités, l'audit de sécurité et la gestion de campagnes ([#1344](https://github.com/SocialGouv/iterion/issues/1344)).
-- **Refonte de l'interface Studio :** 
-    - Nouvelle page d'accueil du Cloud centrée sur l'orchestration.
-    - Introduction d'une vue "Source" par fichier pour une meilleure inspection du code des agents.
-    - Amélioration de la navigation et de la gestion des onglets de projet.
-- **Administration et Gouvernance :**
-    - Nouveaux tableaux de bord pour la gestion des équipes et des membres depuis la console Cloud ([#1559](https://github.com/SocialGouv/iterion/issues/1559)).
-    - Suivi détaillé de la consommation des crédits et des limites d'utilisation de la plateforme ([#1442](https://github.com/SocialGouv/iterion/issues/1442), [#1444](https://github.com/SocialGouv/iterion/issues/1444)).
-    - Possibilité pour une organisation de partager ses propres clés LLM avec ses équipes ([#1000](https://github.com/SocialGouv/iterion/issues/1000)).
-- **Nouveaux agents spécialisés :** Intégration de nouveaux modèles d'assistance comme Revi, Billy, Vetty et Senti pour des missions de surveillance et d'analyse.
+- **Nouveaux agents et capacités :**
+    - Introduction de l'agent **Argus** pour la surveillance déterministe des processus [#1869].
+    - Ajout de l'agent **Assessment** capable de générer automatiquement les contrats d'exécution pour les campagnes [#1776].
+    - Amélioration des capacités de revue de code avec l'agent **Revi**, incluant désormais des détails sur les exécutions liées [#1173, #1167].
+    - Déploiement de capacités d'audit de sécurité profond (deep scan) pour les sources et les dépendances [#1347, #1141, #1104].
+- **Améliorations du Studio (Interface) :**
+    - Nouvelle vue "Source" par fichier, incluant le contrôle des permissions des nœuds et la réparation via le cloud [#1738].
+    - Optimisation de la gestion des onglets et de la navigation entre les projets [#1840, #1830].
+    - Ajout d'écrans d'administration pour le suivi de la consommation des crédentials et des capacités de la plateforme [#1444, #1442, #1441].
+- **Administration et Cloud :**
+    - Gestion directe des équipes et des membres depuis la console cloud [#1559].
+    - Refonte de la page d'accueil du Studio pour se concentrer sur l'orchestration [#1028].
+    - Mise en place d'un système de gestion des abonnements et des paliers (tiers) pour les fournisseurs [#1818].
 
 ### Évolutions techniques
-- **Migration majeure du DSL (Profil 2) :** Refonte complète du langage de description pour inclure une validation plus stricte à la compilation, une gestion améliorée des variables et un outil de migration automatique (`iterion dsl migrate`) ([#1010](https://github.com/SocialGouv/iterion/issues/1010)).
-- **Optimisation du Runtime et de l'Exécution :**
-    - Amélioration de l'isolation des sous-agents (subbots) via des environnements sécurisés (sandboxes).
-    - Renforcement des capacités de reprise après interruption (checkpoint/resume) pour les exécutions de workflows ([#988](https://github.com/SocialGouv/iterion/issues/988)).
-    - Gestion plus fine des budgets et des quotas lors de l'exécution des nœuds.
-- **Infrastructure et Cloud :**
-    - Amélioration du déploiement Kubernetes avec une meilleure gestion des ressources (requests/limits) et de la répartition des pods ([#694](https://github.com/SocialGouv/iterion/issues/694), [#802](https://github.com/SocialGouv/iterion/issues/802)).
-    - Support des runners auto-hébergés pour les processus de CI.
-- **Sécurité et Authentification :**
-    - Correction de failles de sécurité (CSRF) sur l'API ([#1058](https://github.com/SocialGouv/iterion/issues/1058)).
-    - Renforcement de la gestion des secrets et des permissions d'accès aux credentials ([#1863](https://github.com/SocialGouv/iterion/issues/1863)).
-- **Connecteurs :** Mise en place d'un catalogue de connecteurs plus déterministe ([#1119](https://github.com/SocialGouv/iterion/issues/1119)).
+- **Refonte du DSL (Langage Déclaratif) :**
+    - Déploiement massif de la "Lot 5" du DSL : amélioration de l'admission, du transport, de la validation et génération de schémas JSON [#1720, #1664, #1584, #1631].
+    - Migration vers le profil de syntaxe `dsl: 2` pour une meilleure précision lexicale [#1154].
+    - Amélioration de la validation à la compilation pour les variables et les contraintes de groupe [#1660, #1628].
+- **Runtime et Exécution :**
+    - Renforcement de l'isolation des sandboxes et de la gestion des worktrees pour garantir que l'exécution ne modifie que son propre environnement [#1889, #1806, #1303].
+    - Optimisation de la gestion des processus de "fan-out" et de "convergence" dans les workflows complexes [#1193, #1187].
+    - Amélioration de la résilience des exécutions lors des reprises (resume) après échec [#1490, #988].
+- **Sécurité et Infrastructure :**
+    - Amélioration du cloisonnement des tokens et des credentials par équipe et par organisation [#1880, #1670, #1065].
+    - Renforcement de la sécurité des endpoints OAuth et de l'audit des credentials refusés [#819, #1863].
+    - Optimisation des déploiements Kubernetes (gestion des `priorityClassName` et des ressources des pods) [#802, #694].
 
 ### Autres changements
-- **Identité visuelle :** Introduction de la mascotte officielle d'Iterion sur l'ensemble de la plateforme (avatars, icônes, logos) ([#794](https://github.com/SocialGouv/iterion/issues/794)).
-- **Documentation :** Mise à jour importante de la documentation technique et ajout de guides de comparaison de produits en français ([#1129](https://github.com/SocialGouv/iterion/issues/1129)).
+- **Documentation :** Mise à jour importante des guides sur le DSL, les processus de déploiement cloud et les politiques de comparaison de produits [#1342, #832, #1142, #1129].
+- **Identité visuelle :** Intégration de la nouvelle mascotte d'Iterion sur l'ensemble de la plateforme (avatars, favicons, logos) [#794].
