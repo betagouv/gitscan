@@ -6,6 +6,7 @@
 │   └── workflows
 │       └── ci.yml
 ├── .gitignore
+├── CHANGELOG.md
 ├── FIX-telemetry-endpoint-double-bootstrap.md
 ├── LICENSE
 ├── README.md
@@ -18,7 +19,8 @@
 │       ├── 002_extension_update_metadata.py
 │       ├── 003_experiment_versions.py
 │       ├── 003_runtime_config.py
-│       └── 004_llm_quota.py
+│       ├── 004_llm_quota.py
+│       └── 005_general_version.py
 ├── alembic.ini
 ├── app
 │   ├── __init__.py
@@ -105,8 +107,10 @@
 │   │   ├── db.py
 │   │   ├── health.py
 │   │   ├── parc_export.py
-│   │   └── parc_mapping.py
+│   │   ├── parc_mapping.py
+│   │   └── versions.py
 │   ├── settings.py
+│   ├── version.py
 │   └── worker_main.py
 ├── config
 │   └── config.json
@@ -292,17 +296,24 @@
 │   ├── setup-wireguard.sh
 │   ├── test-all.sh
 │   ├── test-scaleway-key.py
-│   └── validation
-│       └── issue5
-│           ├── README.md
-│           ├── banc.yaml
-│           ├── carryover.py
-│           ├── concordance.py
-│           ├── docker-compose.repro.yml
-│           ├── multi_replicas.py
-│           └── scenario.py
+│   ├── validation
+│   │   └── issue5
+│   │       ├── README.md
+│   │       ├── banc.yaml
+│   │       ├── carryover.py
+│   │       ├── concordance.py
+│   │       ├── docker-compose.repro.yml
+│   │       ├── multi_replicas.py
+│   │       └── scenario.py
+│   ├── verif-changelog.py
+│   ├── verif-version.sh
+│   └── version_json.py
 └── tests
     ├── conftest.py
+    ├── int
+    │   ├── __init__.py
+    │   ├── test_int_general_version.py
+    │   └── test_int_nonreg.py
     ├── llm_utils.py
     ├── test_admin_playwright.py
     ├── test_admin_ui.py
@@ -310,6 +321,7 @@
     ├── test_binaries_storage.py
     ├── test_bootstrap_urls.py
     ├── test_campaign_plugin_scoping.py
+    ├── test_communications.py
     ├── test_dashboard_telemetry.py
     ├── test_dashboard_version.py
     ├── test_e2e_deployment.py
@@ -319,6 +331,10 @@
     ├── test_experiment_versions.py
     ├── test_extract_version.py
     ├── test_feature_flags_v2.py
+    ├── test_general_version.py
+    ├── test_general_version_pg.py
+    ├── test_libreoffice_update_feed.py
+    ├── test_libreoffice_update_feed_pg.py
     ├── test_llm_config_override.py
     ├── test_llm_pipeline.py
     ├── test_llm_proxy.py
@@ -345,5 +361,6 @@
     ├── test_runtime_config.py
     ├── test_security_suggest.py
     ├── test_telemetry.py
+    ├── test_version_route.py
     └── test_worker_heartbeat.py
-48 directories, 300 files
+49 directories, 316 files
