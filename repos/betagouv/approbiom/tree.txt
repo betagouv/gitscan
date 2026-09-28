@@ -19,23 +19,10 @@
 ├── index.html
 ├── package.json
 ├── pnpm-lock.yaml
-├── pytest.ini
 ├── scripts
-│   ├── deploy
-│   │   ├── build.mjs
-│   │   └── promote.mjs
-│   └── import
-│       ├── BCIAT_test_Plan_dapprovisionnement.xlsx
-│       ├── bciat_bcib.py
-│       ├── provenance
-│       │   ├── __init__.py
-│       │   ├── reference_data.py
-│       │   ├── test_reference_data.py
-│       │   ├── test_transform_provenance_data.py
-│       │   └── transform_provenance_data.py
-│       ├── requirements-dev.txt
-│       ├── requirements.txt
-│       └── test_bciat_bcib.py
+│   └── deploy
+│       ├── build.mjs
+│       └── promote.mjs
 ├── shared
 │   ├── core
 │   │   ├── application
@@ -47,9 +34,9 @@
 │   │   │   │   ├── entreprise.ts
 │   │   │   │   ├── installation.ts
 │   │   │   │   ├── instruction.ts
-│   │   │   │   ├── localization.ts
 │   │   │   │   ├── plan-d-approvisionnement.ts
 │   │   │   │   ├── programme-aide.ts
+│   │   │   │   ├── referentiel-geo.ts
 │   │   │   │   └── ressource.ts
 │   │   │   └── services
 │   │   │       ├── approvisionnement-stats.test.ts
@@ -79,6 +66,7 @@
 │   │   │       ├── departement.ts
 │   │   │       ├── pays.ts
 │   │   │       ├── phase-instruction.ts
+│   │   │       ├── plan-statut.ts
 │   │   │       ├── provenance.ts
 │   │   │       ├── region.ts
 │   │   │       └── usage.ts
@@ -86,6 +74,7 @@
 │   ├── infrastructure
 │   │   ├── grist
 │   │   │   ├── adapters
+│   │   │   │   ├── grist-adapter-a-importer-approvisionnement.ts
 │   │   │   │   ├── grist-adapter-approvisionnement.test.ts
 │   │   │   │   ├── grist-adapter-approvisionnement.ts
 │   │   │   │   ├── grist-adapter-attachment.ts
@@ -95,33 +84,46 @@
 │   │   │   │   ├── grist-adapter-installation.test.ts
 │   │   │   │   ├── grist-adapter-installation.ts
 │   │   │   │   ├── grist-adapter-instruction.ts
-│   │   │   │   ├── grist-adapter-localization.ts
 │   │   │   │   ├── grist-adapter-plan.test.ts
 │   │   │   │   ├── grist-adapter-plan.ts
 │   │   │   │   ├── grist-adapter-programme-aide.ts
-│   │   │   │   └── grist-adapter-ressource.ts
-│   │   │   ├── grist-helpers.test.ts
-│   │   │   ├── grist-helpers.ts
-│   │   │   ├── grist-plugin-api.d.ts
-│   │   │   ├── grist-ready.ts
-│   │   │   └── grist-tables.ts
-│   │   ├── insee
-│   │   │   └── generate-departements-contours.ts
-│   │   └── localization
+│   │   │   │   ├── grist-adapter-referentiel-geo.ts
+│   │   │   │   ├── grist-adapter-ressource.ts
+│   │   │   │   └── grist-on-record-attachment.ts
+│   │   │   ├── helpers
+│   │   │   │   ├── grist-attachments.ts
+│   │   │   │   ├── grist-get-access-token.ts
+│   │   │   │   ├── grist-helpers.test.ts
+│   │   │   │   ├── grist-helpers.ts
+│   │   │   │   └── grist-ready.ts
+│   │   │   └── types
+│   │   │       ├── grist-plugin-api.d.ts
+│   │   │       └── grist-tables.ts
+│   │   ├── import-bcib-bciat
+│   │   │   ├── helpers.test.ts
+│   │   │   ├── helpers.ts
+│   │   │   ├── importRows.ts
+│   │   │   └── transform-provenance
+│   │   │       ├── generate-place-names.ts
+│   │   │       ├── place-names.json
+│   │   │       ├── reference-data.ts
+│   │   │       └── transform-provenance.ts
+│   │   └── referentiel-geo
 │   │       ├── communes.json
 │   │       ├── countries-contours.json
 │   │       ├── departements-contours.json
 │   │       ├── generate-communes.ts
 │   │       ├── generate-countries-contours.ts
 │   │       ├── generate-departements-contours.ts
-│   │       ├── localization-adapter.test.ts
-│   │       └── localization-adapter.ts
+│   │       ├── generate-referentiels.ts
+│   │       ├── referentiel-geo-adapter.test.ts
+│   │       └── referentiel-geo-adapter.ts
 │   └── react
-│       ├── AsyncGate.tsx
 │       ├── components
 │       │   ├── Alert
 │       │   │   ├── Alert.tsx
 │       │   │   └── index.ts
+│       │   ├── AsyncGate.tsx
 │       │   ├── Badge
 │       │   │   ├── Badge.test.tsx
 │       │   │   ├── Badge.tsx
@@ -144,6 +146,7 @@
 │       │   │   ├── MultiSelect.test.tsx
 │       │   │   ├── MultiSelect.tsx
 │       │   │   ├── MultiSelect.types.ts
+│       │   │   ├── getOptions.ts
 │       │   │   └── index.ts
 │       │   ├── Radio
 │       │   │   ├── Radio.test.tsx
@@ -186,15 +189,15 @@
 │       │   │   ├── Tag.tsx
 │       │   │   ├── Tag.types.ts
 │       │   │   └── index.ts
-│       │   └── Toggle
-│       │       ├── Toggle.test.tsx
-│       │       ├── Toggle.tsx
-│       │       ├── Toggle.types.ts
-│       │       └── index.ts
-│       ├── getOptions.ts
-│       ├── render-error.tsx
-│       ├── useAsyncData.test.ts
-│       └── useAsyncData.ts
+│       │   ├── Toggle
+│       │   │   ├── Toggle.test.tsx
+│       │   │   ├── Toggle.tsx
+│       │   │   ├── Toggle.types.ts
+│       │   │   └── index.ts
+│       │   └── grist-render-error.tsx
+│       └── hooks
+│           ├── UseAsyncState.ts
+│           └── useAsyncState.test.ts
 ├── tsconfig.json
 ├── vite.config.js
 └── widgets
@@ -244,6 +247,14 @@
     │       ├── index.css
     │       ├── load-concurrence.ts
     │       └── main.tsx
+    ├── import
+    │   ├── index.html
+    │   └── src
+    │       ├── App.test.tsx
+    │       ├── App.tsx
+    │       ├── components
+    │       │   └── Import.tsx
+    │       └── main.tsx
     ├── playground
     │   ├── index.html
     │   └── src
@@ -258,4 +269,4 @@
             │   ├── RechercheDePlan.css
             │   └── RechercheDePlan.tsx
             └── main.tsx
-54 directories, 206 files
+59 directories, 212 files

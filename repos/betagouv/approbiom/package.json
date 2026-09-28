@@ -12,12 +12,7 @@
         "dev": "vite",
         "build:staging": "node scripts/deploy/build.mjs",
         "build:prod": "node scripts/deploy/promote.mjs",
-        "py:setup": "python3 -m venv .venv && .venv/bin/pip install -r scripts/import/requirements-dev.txt",
-        "import:bciat": ".venv/bin/python scripts/import/bciat_bcib.py",
-        "py:test": ".venv/bin/pytest",
-        "generate:communes": "node --experimental-strip-types shared/infrastructure/localization/generate-communes.ts",
-        "generate:departements-contours": "node --experimental-strip-types shared/infrastructure/localization/generate-departements-contours.ts",
-        "generate:countries-contours": "node --experimental-strip-types shared/infrastructure/localization/generate-countries-contours.ts",
+        "generate:referentiels": "node --experimental-strip-types shared/infrastructure/referentiel-geo/generate-referentiels.ts",
         "typecheck": "tsc --noEmit",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
@@ -31,7 +26,8 @@
         "@gouvfr/dsfr": "1.14.4",
         "leaflet": "^1.9.4",
         "react": "^19.2.7",
-        "react-dom": "^19.2.7"
+        "react-dom": "^19.2.7",
+        "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
     },
     "devDependencies": {
         "@eslint/js": "^10.0.1",

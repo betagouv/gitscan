@@ -1,30 +1,31 @@
-## Changelog : approbiom (30 derniers jours, au 02/09/2026)
+## Changelog : approbiom (30 derniers jours, au 25 septembre 2026)
 
 ### Résumé
-Ce mois-ci, le projet a franchi des étapes importantes dans l'automatisation et la visualisation des données. L'ajout de nouvelles fonctionnalités cartographiques, l'automatisation de l'importation de fichiers externes (BCIB/BCIAT) et une refonte de l'interface utilisateur permettent une navigation plus intuitive et une exploitation plus efficace des plans d'approvisionnement.
+Ce mois-ci, le projet a franchi une étape majeure avec le développement d'un nouvel outil d'importation automatisée des données BCIB/BCIAT, simplifiant grandement la transformation de fichiers Excel complexes en données exploitables. Les capacités de visualisation cartographique ont été enrichies et l'interface utilisateur a été optimisée pour offrir une expérience plus fluide et compacte.
 
 ### Évolutions fonctionnelles
-- **Nouveaux outils** : Introduction du widget "Concurrence" [#17](https://github.com/betagouv/approbiom/issues/17).
-- **Enrichissement du widget Accueil** : 
-    - Ajout de filtres multicritères (fournisseurs, programmes d'aide, départements et régions).
-    - Ajout d'un onglet "Ressources" et gestion des pièces jointes [#21](https://github.com/betagouv/approbiom/issues/21).
-    - Amélioration de la clarté avec l'affichage des noms de plans plutôt que des départements.
-- **Visualisation cartographique** : Intégration de cartes affichant des polygones de provenance et des marqueurs d'installation.
-- **Optimisation de l'interface (UI)** : 
-    - Remplacement des tags par des badges pour la chronologie.
-    - Organisation des tableaux de ventilation sous forme d'onglets.
-    - Changement de terminologie pour plus de cohérence (remplacement de "Dossier" par "Plan").
-- **Performance** : Accélération du temps de mise à jour des données dans l'onglet Accueil.
+- **Importation de données (BCIB/BCIAT) :**
+  - Mise en place d'un nouveau système d'importation pour les fichiers BCIB/BCIAT [#20](https://github.com/betagouv/approbiom/pull/20).
+  - Amélioration de la robustesse de l'import : gestion des noms de feuilles non standards, détection automatique des départements et nettoyage des données de provenance [#19](https://github.com/betagouv/approbiom/pull/19).
+  - Ajout de contrôles de validation pour vérifier la structure des fichiers et la cohérence des données après transformation [#22](https://github.com/betagouv/approbiom/pull/22).
+  - Enrichissement des données exportées (ajout de champs tels que le PCI ou les certifications fournisseurs).
+- **Cartographie et Visualisation :**
+  - Amélioration de la carte de provenance : l'opacité des zones (polygones) varie désormais proportionnellement au tonnage.
+  - Intégration du fond de carte "Plan IGN".
+- **Interface Utilisateur (UI) :**
+  - Ajout d'un filtre par statut de plan.
+  - Optimisation de l'affichage pour une interface plus compacte et lisible.
+  - Ajout d'une fonctionnalité permettant de copier l'URL des widgets directement depuis la page d'accueil.
 
 ### Évolutions techniques
-- **Automatisation des imports** : Développement d'un script Python permettant l'extraction, la transformation et l'exportation automatisée des données depuis les fichiers Excel (BCIB/BCIAT) vers le format CSV.
-- **Refonte architecturale** : Application de l'architecture hexagonale aux widgets "Accueil" et "Ressource" [#18](https://github.com/betagouv/approbiom/issues/18), [#19](https://github.com/betagouv/approbiom/issues/19).
-- **Qualité et structure du code** : 
-    - Refactorisation globale de la structure du code [#16](https://github.com/betagouv/approbiom/issues/16).
-    - Création d'un environnement de développement ("playground") dédié aux composants cartographiques [#18](https://github.com/betagouv/approbiom/issues/18).
-    - Implémentation d'une fonction de nettoyage et de standardisation des données de provenance [#19](https://github.com/betagouv/approbiom/issues/19).
-- **Maintenance CI/CD** : Correction des scripts de déploiement et de la configuration de formatage (Prettier).
+- **Refactoring et Architecture :**
+  - Réorganisation de la structure des composants React (création d'un dossier `hooks` et centralisation des composants).
+  - Simplification du processus d'importation par la suppression de la logique Python au profit de solutions plus intégrées.
+  - Renommage du référentiel géographique (`localization` devient `refrentiel-geo`).
+- **Infrastructure et CI/CD :**
+  - Correction et optimisation des pipelines de déploiement continu (CI/CD).
+  - Nettoyage de l'infrastructure liée à Grist.
 
 ### Autres changements
-- Mise à jour de la documentation relative aux décisions d'architecture.
-- Nettoyage général du dépôt (suppression de fichiers inutilisés et réorganisation des dossiers).
+- **Documentation :** Mise à jour du guide de développement et des templates ADR.
+- **Maintenance :** Nettoyage du dépôt avec la suppression de plusieurs dossiers obsolètes (`script/import`, `insee`).
