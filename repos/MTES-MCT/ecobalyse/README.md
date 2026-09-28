@@ -24,9 +24,9 @@ Les variables d’environnement décrites ci-dessous doivent être définies. En
 
 - `ENABLE_FOOD_SECTION` : affichage ou non de la section dédiée à l’alimentaire (valeur `True` ou `False`, par défaut `False`)
 - `ENABLE_FOOD1_API_DOCS`: affichage ou non de la documentation de l'API alimentaire historique (valeur `True` ou `False`, par défaut `False`; forcé à `False` si `ENABLE_FOOD_SECTION` l'est également)
-- `ENABLE_FOOD2_SECTION` : affichage ou non de la nouvelle section dédiée à l’alimentaire utilisant le moteur générique (valeur `True` ou `False`, par défaut `False`)
-- `ENABLE_OBJECTS_SECTION` : affichage ou non de la section expérimentale dédiée aux objets génériques (valeur `True` ou `False`, par défaut `False`
-- `ENABLE_VELI_SECTION` : affichage ou non de la section expérimentale dédiée aux véhicules intermédiaires (valeur `True` ou `False`, par défaut `False`)
+- `ENABLE_FOOD2_SECTION` : affichage de la section “Alimentaire BÉTA” (moteur générique) et activation de l'api associée (valeur `True` ou `False`, par défaut `False`)
+- `ENABLE_OBJECTS_SECTION` : affichage de la section “Objets” et activation de l'api associée (valeur `True` ou `False`, par défaut `False`)
+- `ENABLE_VELI_SECTION` : affichage de la section “Véhicules” et activation de l'api associée (valeur `True` ou `False`, par défaut `False`)
 - `ENCRYPTION_KEY` : la clé utilisée par les scripts `npm run encrypt` et  `npm run decrypt` pour chiffrer/déchiffrer les fichiers d’impacts détaillés inclus dans chaque archive de release. Pour générer une nouvelle clé, vous pouvez utiliser le script `bin/generate-crypto-key`
 - `GITHUB_TOKEN` : le jeton GitHub utilisé côté serveur pour créer les branches, commits et pull requests de contribution (requis)
 - `GITHUB_REPOSITORY` : dépôt cible au format `owner/repo` (par défaut `MTES-MCT/ecobalyse`).
@@ -35,7 +35,8 @@ Les variables d’environnement décrites ci-dessous doivent être définies. En
 - `MATOMO_SITE_ID` : l’identifiant du site Ecobalyse sur l’instance Matomo permettant le suivi d’audience du produit
 - `MATOMO_TOKEN` : le token Matomo permettant le suivi d’audience du produit
 - `NODE_ENV` : l’environnement d’exécution `nodejs` (par défaut, `development`)
-- `PLAUSIBLE_HOST` : le domaine du serveur [Plausible](https://plausible.io/) (optionnel)
+- `PLAUSIBLE_HOST` : le domaine du serveur [Plausible](https://plausible.io/) (optionnel ; probablement `plausible.io`)
+- `PLAUSIBLE_SCRIPT` : le chemin sur `PLAUSIBLE_SERVER` du script Plausible à charger(optionnel ; ex : `/js/xx-yy-zz.js` ; visible dans les paramètres de Plausible.)
 - `RATELIMIT_MAX_RPM` : le nombre de requêtes maximum par minute et par ip (par défaut: 5000)
 - `RATELIMIT_WHITELIST` : liste des adresses IP non soumises au rate-limiting, séparées par des virgules
 - `SECRET_KEY` : le secret 32bits pour le backend ; vous pouvez en générer une avec `openssl rand -hex 32`

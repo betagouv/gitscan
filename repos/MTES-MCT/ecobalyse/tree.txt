@@ -87,7 +87,8 @@
 │           │   │       ├── 2026-05-22_rename_waste_qtyvariationratio_bcba8b753777.py
 │           │   │       ├── 2026-06-03_store_component_as_json_21f0598992ca.py
 │           │   │       ├── 2026-06-24_resync_db_migrations_06e520393a50.py
-│           │   │       └── 2026-06-30_elec_mj_to_kwh_e93537b074f9.py
+│           │   │       ├── 2026-06-30_elec_mj_to_kwh_e93537b074f9.py
+│           │   │       └── 2026-09-17_add_beta_test_user_fbae656f0ee6.py
 │           │   └── models
 │           │       ├── __init__.py
 │           │       ├── component.py
@@ -191,6 +192,7 @@
 ├── data
 │   ├── README.md
 │   ├── bin
+│   │   ├── compare_volca.py
 │   │   ├── export.py
 │   │   ├── export_bw_db.py
 │   │   ├── export_datagouv.py
@@ -266,21 +268,6 @@
 │   │   │   ├── ecs_transformations.png
 │   │   │   ├── feed.json
 │   │   │   └── raw_to_transformed_ratios.json
-│   │   ├── metadata
-│   │   │   ├── README.md
-│   │   │   ├── agb_inedible.csv
-│   │   │   ├── cooked_to_raw.csv
-│   │   │   ├── cropgroup.csv
-│   │   │   ├── density.csv
-│   │   │   ├── fao_density.csv
-│   │   │   ├── food_type.csv
-│   │   │   ├── food_type_cooked_to_raw.csv
-│   │   │   ├── food_type_density.csv
-│   │   │   ├── food_type_inedible_part.csv
-│   │   │   ├── inedible_part.csv
-│   │   │   ├── nova_classification.csv
-│   │   │   ├── processing_state.csv
-│   │   │   └── transport_cooling.csv
 │   │   ├── taxonomy.json
 │   │   └── taxonomy_with_aliases.json
 │   ├── impacts.json
@@ -760,7 +747,7 @@
 │   │   │   ├── banana-pulp-raw.json
 │   │   │   ├── barley-flour-fr-energy-wfldb.json
 │   │   │   ├── barley-flour.json
-│   │   │   ├── battery-*.json  (5 files)
+│   │   │   ├── battery-*.json  (7 files)
 │   │   │   ├── beaufort-cheese-v1.json
 │   │   │   ├── beaufort-cheese-v2.json
 │   │   │   ├── beef-*.json  (10 files)
@@ -813,7 +800,7 @@
 │   │   │   ├── egg-shelled-raw-wfldb.json
 │   │   │   ├── emmental-cheese-v1.json
 │   │   │   ├── emmental-cheese-v2.json
-│   │   │   ├── eol-*.json  (15 files)
+│   │   │   ├── eol-*.json  (16 files)
 │   │   │   ├── faisselle-6pct-fat-v1.json
 │   │   │   ├── faisselle-6pct-fat-v2.json
 │   │   │   ├── feta-type-cheese-cow-milk-v1.json
@@ -963,6 +950,8 @@
 │   │   │   ├── aluminum-extrusion.json
 │   │   │   ├── aluminum-rolling-0-2-mm.json
 │   │   │   ├── aluminum-rolling-0-26-mm.json
+│   │   │   ├── assembly-plant-based-milk-high.json
+│   │   │   ├── assembly-plant-based-milk-low.json
 │   │   │   ├── battery-assembling.json
 │   │   │   ├── bleaching-average-aquatic-pollution-scenario.json
 │   │   │   ├── bleaching.json
@@ -1333,6 +1322,7 @@
 │   ├── json.js
 │   ├── matomo.js
 │   ├── plausible.js
+│   ├── scopes.js
 │   ├── sentry.js
 │   └── store.js
 ├── nodemon.json
@@ -1415,6 +1405,7 @@
 │   │   └── republique-francaise.svg
 │   ├── pages
 │   │   ├── accessibilité.md
+│   │   ├── api-docs.md
 │   │   ├── api-faq.md
 │   │   ├── cgu-ecoinvent.md
 │   │   ├── changelog.md -> ../../CHANGELOG.md
@@ -1450,6 +1441,7 @@
 │   │   ├── Component
 │   │   │   ├── Amount.elm
 │   │   │   ├── Config.elm
+│   │   │   ├── Consumption.elm
 │   │   │   └── ProductCategory.elm
 │   │   ├── Component.elm
 │   │   ├── Country
@@ -1678,8 +1670,9 @@
 │   │   ├── index.spec.js
 │   │   ├── json.test.js
 │   │   ├── plausible.spec.js
+│   │   ├── scopes.spec.js
 │   │   └── store.spec.js
 │   ├── rate-limiting.spec.js
 │   └── server.spec.js
 └── uv.lock
-133 directories, 1915 files
+132 directories, 1912 files
