@@ -127,6 +127,47 @@ sudo apt-get install -y --no-install-recommends \
 brew install pkg-config cairo pango libpng jpeg giflib librsvg
 ```
 
+#### Surcharges de versions (`pnpm.overrides`)
+
+Le bloc `pnpm.overrides` du `package.json` racine force la résolution de quelques
+dépendances **transitives** épinglées trop bas par leurs parents, qui laissaient
+sinon des alertes Dependabot ouvertes sans qu'aucune dépendance directe soit en
+cause :
+
+| Surcharge | Parent qui épingle | Pourquoi |
+| --- | --- | --- |
+| `next` | `@react-email/preview-server` | tirait `next` 16.2.x (+ `postcss`, `sharp` anciens) |
+| `axios`, `brace-expansion@5` | `nx` | épinglages exacts |
+| `handlebars` | `@hey-api/openapi-ts` | épinglage exact |
+| `undici@7` | `@module-federation/dts-plugin` | épinglage exact |
+| `svgo@3` | `@svgr/plugin-svgo` | **downgrade volontaire**, voir ci-dessous |
+| `eslint-plugin-react-hooks` | `eslint-config-next` | **gel volontaire**, voir ci-dessous |
+| les autres | divers | correctif de sécurité disponible sans changement de majeure |
+
+Règles de maintenance :
+
+- N'ajouter une surcharge que si le correctif **ne change pas de majeure** — sinon
+  c'est une montée de version à traiter comme telle, avec relecture du code appelant.
+- Cibler la majeure concernée (`ws@8`, `js-yaml@4`…) plutôt que le paquet nu, pour
+  ne pas remplacer silencieusement une vieille copie d'une autre majeure.
+- Retirer une surcharge dès que le parent a relâché son épinglage.
+
+⚠️ `svgo@3` est **volontairement figé à 3.3.2**. À partir de 3.3.5, `svgo` remplace
+le fork `@trysound/sax` par `sax` ≥ 1.5, qui impose une limite d'entités XML et fait
+échouer le build de `app` sur `remixicon/fonts/remixicon.svg` (« Parsed entity count
+exceeds max entity count »). `svgo` 4 corrigerait le problème mais reste inatteignable :
+`@svgr/webpack` est bloqué en 8.1.0 et exige `svgo` ^3. Ne pas remonter ce pin sans
+remplacer d'abord la chaîne `@svgr/*`.
+
+⚠️ `eslint-plugin-react-hooks` est **gelé en 7.0.1**, et ce pour une raison qui n'a
+rien à voir avec la sécurité : `eslint-config-next` le déclare en `^7.0.0`, donc un
+`pnpm update` fait glisser vers 7.1.x, qui promeut en **erreurs** les règles du React
+Compiler (`react-hooks/refs`, `react-hooks/set-state-in-effect`). Cela remonte 18
+erreurs sur du code préexistant (`ui` 3, `site` 12, `app` 3) et casse le lint.
+
+Adopter ces règles est un chantier à part entière — chaque cas demande de revoir
+l'effet ou la ref concernés. Le jour où il est mené, retirer cette surcharge.
+
 ### Variables d'environnement
 
 Les fichiers `.env` du projet (racine **et** apps) sont **versionnés** et gérés avec [dotenvx](https://dotenvx.com) via les commandes `make` (voir `make help`) :
@@ -270,7 +311,7 @@ make cms-pull   # ⚠ remplace tout le contenu Strapi local
 
 Prérequis : `STRAPI_REMOTE_URL` et `STRAPI_TRANSFER_TOKEN` dans le `.env` racine (via `make env-set`). Le token doit être un **transfer token** (Settings → Transfer tokens sur le remote, permission *pull*) — un API token classique ne fonctionne pas.
 
-Les edge functions Deno ([`supabase/functions/`](./supabase/functions/)) sont un composant cochable de `make up`, décoché par défaut : elles ne servent en local que pour tester le formulaire de contact du site (`site_send_message`). Tant qu'elles ne tournent pas, kong répond simplement 503 sur `/functions/v1/`.
+Il ne reste qu'une edge function Deno ([`supabase/functions/`](./supabase/functions/)) : `send_users_to_brevo`, appelée uniquement par des fonctions SQL via `net.http_post`, et seulement en production — la table `automatisation.supabase_function_url` qui porte son URL n'est pas alimentée en local. Rien ne l'exécute donc sur la stack de développement, et kong répond 503 sur `/functions/v1/`.
 
 ### Réinitialiser complètement la base
 

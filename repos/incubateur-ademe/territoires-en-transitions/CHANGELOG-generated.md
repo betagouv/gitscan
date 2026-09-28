@@ -1,42 +1,40 @@
-## Changelog : territoires-en-transitions (30 derniers jours, au 24 septembre 2026)
+## Changelog : territoires-en-transitions (30 derniers jours, au 25 septembre 2026)
 
 ### Résumé
-Ce mois a été marqué par une restructuration majeure de la gestion des démarches (notamment le PCAET) et une transition importante vers les nouveaux référentiels. Les capacités d'analyse des collectivités ont été renforcées avec une meilleure gestion de la pertinence des leviers d'action. Parallèlement, le système de gestion documentaire a été profondément modernisé pour offrir plus de sécurité et de fiabilité lors des dépôts de fichiers.
+Ce mois a été marqué par une intégration majeure de l'intelligence artificielle pour automatiser l'importation et la classification des plans de transition. La plateforme a également évolué pour offrir une gestion plus fine des leviers d'action des collectivités et a préparé la transition vers le nouveau référentiel CR, tout en renforçant la robustesse de la gestion documentaire.
 
 ### Évolutions fonctionnelles
-- **Gestion des démarches (PCAET) :**
-  - Amélioration du cycle d'instruction avec un suivi précis des avis, des notifications aux services et des étapes de validation.
-  - Possibilité pour les services instructeurs de consulter des dossiers encore en cours d'élaboration.
-  - Meilleure gestion des périmètres géographiques (EPCI, communes membres) et des dossiers de révision.
-- **Référentiels et Bascule :**
-  - Mise en œuvre de la transition vers le référentiel CR, incluant la gestion des commentaires, des scores et des actions d'origine.
-  - Affichage des référentiels archivés dans la navigation avec un indicateur spécifique.
-- **Analyse des collectivités et leviers :**
-  - Les administrateurs peuvent désormais qualifier la pertinence des leviers et de leurs catégories.
-  - Affichage détaillé des actions déjà rattachées à chaque levier et visualisation de la mobilisation par volet.
-  - Introduction de la possibilité de déclarer un indicateur comme "non applicable".
-- **Gestion documentaire :**
-  - Amélioration du processus de dépôt de fichiers (gestion des signatures, détection des doublons et téléchargement sécurisé via le backend).
-  - Possibilité de reclasser des documents directement depuis l'interface.
-  - Amélioration de la visibilité des documents (gestion des fichiers confidentiels et des erreurs de lecture).
-- **Interface utilisateur (UI) :**
-  - Mise en conformité de la page des leviers avec les maquettes de design.
-  - Améliorations de l'accessibilité (navigation au clavier pour les accordéons, tableaux plus lisibles et conformes au design system).
+- **Intelligence Artificielle (Bêta) :** 
+  - Introduction d'un outil d'importation de plans assisté par l'IA (Gemini), permettant la classification automatique des fiches par levier.
+  - Mise en place d'un contrôle humain obligatoire : les plans importés par IA doivent être vérifiés avant le dépôt du PCAET.
+  - Système de quotas pour limiter l'utilisation des ressources IA par collectivité.
+- **Gestion des Collectivités & Leviers :**
+  - Refonte de l'interface des leviers : affichage détaillé des catégories, des actions rattachées et de la mobilisation par volet.
+  - Ajout d'un système de notation (0 à 3) pour évaluer la mobilisation d'une collectivité sur chaque volet.
+  - Gestion des périmètres géographiques secondaires pour les EPCI.
+- **Suivi des PCAET & Instructions :**
+  - Amélioration du cycle d'instruction avec un vocabulaire de statuts unifié et des notifications automatiques pour les services et pilotes.
+  - Meilleure visibilité sur les dossiers en cours d'élaboration et les dépôts effectués hors plateforme.
+- **Référentiels & Indicateurs :**
+  - Automatisation du calcul des scores indicatifs en fonction des valeurs d'indicateurs et de leur suivi.
+  - Possibilité pour les utilisateurs de déclarer un indicateur comme "non applicable".
+  - Déploiement de la procédure de bascule vers le référentiel CR (avec modale de confirmation et gestion des archives).
+- **Gestion Documentaire :**
+  - Possibilité de télécharger l'ensemble des documents d'une mesure via une archive ZIP.
+  - Amélioration de la gestion des fichiers volumineux et des doublons lors du dépôt.
 
 ### Évolutions techniques
-- **Architecture et Backend :**
-  - Refactoring massif des services de gestion des documents, des plans et des indicateurs pour une meilleure modularité.
-  - Optimisation du moteur de classification par IA (gestion des accents, découpage en lots pour plus de résilience).
-  - Amélioration de la gestion des jetons (tokens) pour les appels LLM et les téléchargements de fichiers.
-- **Infrastructure et CI/CD :**
-  - Migration des processus de déploiement d'Earthly vers des Dockerfile natifs et des workflows GitHub Actions.
-  - Mise en place de Nx Cloud pour optimiser les performances des tâches de CI.
-  - Renforcement des workflows de maintenance de la base de données et de gestion des migrations (Sqitch).
-- **Outils et Automatisation :**
-  - Amélioration de l'intégration CRM/Crisp pour enrichir les conversations avec les données des collectivités et des utilisateurs.
-  - Synchronisation quotidienne des groupes PostHog pour le suivi analytique.
+- **IA & LLM :** Migration de l'appel aux modèles vers Vertex AI (Gemini) via un compte de service backend pour une meilleure gestion de la sécurité et des quotas.
+- **Architecture & Refactoring :**
+  - Suppression définitive du module "Panier" et de ses composants associés.
+  - Migration de la gestion des formulaires de contact vers un endpoint backend dédié.
+  - Refonte du système de dépôt de documents utilisant des jetons signés et le transport résumable.
+- **Infrastructure & CI/CD :**
+  - Mise en place de Nx Cloud pour optimiser les performances des builds et des tests.
+  - Transition des processus de déploiement vers des Dockerfiles natifs (sortie d'Earthly).
+  - Optimisation des workflows de maintenance de la base de données et de la CI.
+- **Outils de support :** Enrichissement de l'intégration avec Crisp pour permettre aux agents de support de visualiser les informations CRM directement dans les conversations.
 
 ### Autres changements
-- **Documentation :** Mise à jour de plusieurs ADR (Architecture Decision Records) concernant la périodicité des indicateurs et les choix d'architecture.
-- **Nettoyage :** Suppression complète de l'application "panier" et de ses dépendances techniques associées.
-- **Qualité :** Augmentation de la couverture de tests (E2E et unitaires) sur les modules critiques (PCAET, documents, référentiels).
+- **Documentation :** Mise à jour importante des décisions d'architecture (ADR) concernant la périodicité des indicateurs, l'utilisation de l'IA et les stratégies de déploiement.
+- **Nettoyage :** Suppression de nombreuses fonctions obsolètes (Supabase edge functions, vues inutilisées) et de code mort.

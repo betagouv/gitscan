@@ -84,16 +84,12 @@
 │   │   ├── app-entrypoint.sh
 │   │   ├── base.Dockerfile
 │   │   └── nx-daemon-entrypoint.sh
-│   ├── edge-runtime
-│   │   └── main
-│   │       └── index.ts
 │   ├── kong
 │   │   └── kong.template.yml
 │   ├── postgres
 │   │   └── init
 │   │       ├── 98-webhooks.sql
 │   │       ├── 99-jwt.sql
-│   │       ├── 99-realtime.sql
 │   │       └── 99-roles.sql
 │   └── strapi
 │       └── Dockerfile
@@ -1049,12 +1045,14 @@
 │   │   │   │   │   ├── documents.table.stories.tsx
 │   │   │   │   │   ├── documents.table.tsx
 │   │   │   │   │   ├── fichier-depose.tsx
+│   │   │   │   │   ├── import-plan.modal.tsx
 │   │   │   │   │   ├── pilotes-info.tooltip.tsx
 │   │   │   │   │   ├── pilotes.field.tsx
 │   │   │   │   │   ├── plan.section.tsx
 │   │   │   │   │   ├── progress.stepper.stories.tsx
 │   │   │   │   │   ├── progress.stepper.tsx
 │   │   │   │   │   ├── publier-depot-final.modal.tsx
+│   │   │   │   │   ├── request-plan-import.modal.tsx
 │   │   │   │   │   ├── section.tsx
 │   │   │   │   │   ├── shell.tsx
 │   │   │   │   │   ├── steps-nav.tsx
@@ -1097,6 +1095,7 @@
 │   │   │   │   │   │   ├── data
 │   │   │   │   │   │   │   ├── use-get-pcaet-diagnostic.ts
 │   │   │   │   │   │   │   ├── use-set-diagnostic-reference-year.ts
+│   │   │   │   │   │   │   ├── use-set-indicateur-applicable.spec.tsx
 │   │   │   │   │   │   │   ├── use-set-indicateur-applicable.ts
 │   │   │   │   │   │   │   ├── use-source-labels.ts
 │   │   │   │   │   │   │   ├── use-update-diagnostic-indicateurs-valeurs.ts
@@ -1543,18 +1542,22 @@
 │   │   │   │   │   │   ├── create-plan.modal.tsx
 │   │   │   │   │   │   └── create-plan.view.tsx
 │   │   │   │   │   ├── import-plan
+│   │   │   │   │   │   ├── ai-import-beta-label.tsx
 │   │   │   │   │   │   ├── ai-import-progress.tsx
 │   │   │   │   │   │   ├── ai-import-steps.model.spec.ts
 │   │   │   │   │   │   ├── ai-import-steps.model.ts
+│   │   │   │   │   │   ├── ai-import.flow.tsx
 │   │   │   │   │   │   ├── ai-import.form.tsx
 │   │   │   │   │   │   ├── ai-import.view.tsx
 │   │   │   │   │   │   ├── data
 │   │   │   │   │   │   │   ├── use-enqueue-ai-import.ts
 │   │   │   │   │   │   │   ├── use-get-ai-import-status.ts
 │   │   │   │   │   │   │   ├── use-get-current-ai-import.ts
-│   │   │   │   │   │   │   ├── use-import-plan.ts
-│   │   │   │   │   │   │   └── use-redirect-to-created-plan.ts
-│   │   │   │   │   │   └── request-plan-import-view.tsx
+│   │   │   │   │   │   │   └── use-import-plan.ts
+│   │   │   │   │   │   ├── import-plan-support.links.ts
+│   │   │   │   │   │   ├── request-plan-import-steps.tsx
+│   │   │   │   │   │   ├── request-plan-import-view.tsx
+│   │   │   │   │   │   └── use-is-ai-plan-import-enabled.ts
 │   │   │   │   │   ├── list-all-plans
 │   │   │   │   │   │   ├── all-plans.view.tsx
 │   │   │   │   │   │   ├── data
@@ -1594,12 +1597,14 @@
 │   │   │   │   │   │   │   ├── use-get-plan.ts
 │   │   │   │   │   │   │   ├── use-list-axe-indicateurs.ts
 │   │   │   │   │   │   │   ├── use-update-axe.ts
-│   │   │   │   │   │   │   └── use-update-plan.ts
+│   │   │   │   │   │   │   ├── use-update-plan.ts
+│   │   │   │   │   │   │   └── use-verify-plan.ts
 │   │   │   │   │   │   ├── empty-plan.view.tsx
 │   │   │   │   │   │   ├── filters
 │   │   │   │   │   │   │   ├── filtered-results.tsx
 │   │   │   │   │   │   │   ├── filters.button-menu.tsx
 │   │   │   │   │   │   │   └── plan-filters.context.tsx
+│   │   │   │   │   │   ├── imported-plan.banner.tsx
 │   │   │   │   │   │   ├── index.tsx
 │   │   │   │   │   │   ├── plan-actions.button-props.tsx
 │   │   │   │   │   │   ├── plan-arborescence.view
@@ -1630,7 +1635,8 @@
 │   │   │   │   │   │   ├── plan-metadata.tsx
 │   │   │   │   │   │   ├── plan-status.chart.tsx
 │   │   │   │   │   │   ├── plan.header.tsx
-│   │   │   │   │   │   └── plan.view.tsx
+│   │   │   │   │   │   ├── plan.view.tsx
+│   │   │   │   │   │   └── verify-imported-plan.modal.tsx
 │   │   │   │   │   ├── types
 │   │   │   │   │   │   └── index.ts
 │   │   │   │   │   ├── upsert-plan
@@ -2060,7 +2066,8 @@
 │   │   │   │   │   │   ├── personne-filter-label.spec.ts
 │   │   │   │   │   │   ├── personne-filter-label.ts
 │   │   │   │   │   │   └── use-module-filter-categories.ts
-│   │   │   │   │   └── module.page.tsx
+│   │   │   │   │   ├── module.page.tsx
+│   │   │   │   │   └── personal-module-titres.ts
 │   │   │   │   ├── plans-action
 │   │   │   │   │   ├── data
 │   │   │   │   │   │   ├── use-delete-module.ts
@@ -3328,6 +3335,8 @@
 │   │   │   │       ├── indicateur-expression.service.ts
 │   │   │   │       ├── indicateur-valeur.table.ts
 │   │   │   │       ├── list-indicateur-valeurs.input.ts
+│   │   │   │       ├── progression.rules.spec.ts
+│   │   │   │       ├── progression.rules.ts
 │   │   │   │       ├── referenced-indicateur.dto.ts
 │   │   │   │       ├── tests
 │   │   │   │       │   └── fixture.ts
@@ -3400,6 +3409,10 @@
 │   │   │   │   │   │   ├── disableable-field.ts
 │   │   │   │   │   │   ├── extracted-action.ts
 │   │   │   │   │   │   └── plan-draft.ts
+│   │   │   │   │   ├── notify-plan-imported
+│   │   │   │   │   │   ├── notify-plan-imported.email.tsx
+│   │   │   │   │   │   ├── notify-plan-imported.props.ts
+│   │   │   │   │   │   └── notify-plan-imported.service.ts
 │   │   │   │   │   ├── pipeline
 │   │   │   │   │   │   ├── __fixtures__
 │   │   │   │   │   │   │   └── sample.pdf
@@ -3762,13 +3775,20 @@
 │   │   │   │   │   ├── progress
 │   │   │   │   │   │   ├── plan-progress.rules.spec.ts
 │   │   │   │   │   │   └── plan-progress.rules.ts
-│   │   │   │   │   └── upsert-plan
-│   │   │   │   │       ├── upsert-plan.errors.ts
-│   │   │   │   │       ├── upsert-plan.input.ts
-│   │   │   │   │       ├── upsert-plan.repository.ts
-│   │   │   │   │       ├── upsert-plan.router.e2e-spec.ts
-│   │   │   │   │       ├── upsert-plan.router.ts
-│   │   │   │   │       └── upsert-plan.service.ts
+│   │   │   │   │   ├── upsert-plan
+│   │   │   │   │   │   ├── upsert-plan.errors.ts
+│   │   │   │   │   │   ├── upsert-plan.input.ts
+│   │   │   │   │   │   ├── upsert-plan.repository.ts
+│   │   │   │   │   │   ├── upsert-plan.router.e2e-spec.ts
+│   │   │   │   │   │   ├── upsert-plan.router.ts
+│   │   │   │   │   │   └── upsert-plan.service.ts
+│   │   │   │   │   └── verify-plan
+│   │   │   │   │       ├── plan-verification.repository.ts
+│   │   │   │   │       ├── verify-plan.errors.ts
+│   │   │   │   │       ├── verify-plan.input.ts
+│   │   │   │   │       ├── verify-plan.router.e2e-spec.ts
+│   │   │   │   │       ├── verify-plan.router.ts
+│   │   │   │   │       └── verify-plan.service.ts
 │   │   │   │   ├── plans-main.module.ts
 │   │   │   │   ├── plans-main.router.ts
 │   │   │   │   ├── reports
@@ -4133,6 +4153,8 @@
 │   │   │   │   │   └── reset-display-preferences.test-fixture.ts
 │   │   │   │   ├── score-indicatif
 │   │   │   │   │   ├── build-evaluation-context.service.ts
+│   │   │   │   │   ├── calcul-score-indicatif.rules.spec.ts
+│   │   │   │   │   ├── calcul-score-indicatif.rules.ts
 │   │   │   │   │   ├── compute-score-indicatif.rules.spec.ts
 │   │   │   │   │   ├── compute-score-indicatif.rules.ts
 │   │   │   │   │   ├── get-indicateurs-associes.service.ts
@@ -4151,6 +4173,8 @@
 │   │   │   │   │   ├── score-indicatif.rules.ts
 │   │   │   │   │   ├── score-indicatif.service.ts
 │   │   │   │   │   ├── set-valeurs-utilisees.request.ts
+│   │   │   │   │   ├── valeurs-progression.rules.spec.ts
+│   │   │   │   │   ├── valeurs-progression.rules.ts
 │   │   │   │   │   ├── valeurs-utilisables.rules.spec.ts
 │   │   │   │   │   └── valeurs-utilisables.rules.ts
 │   │   │   │   ├── set-score-from-indicateur
@@ -4255,6 +4279,14 @@
 │   │   │   │       ├── update-action-statut.router.ts
 │   │   │   │       └── update-action-statut.service.ts
 │   │   │   ├── shared
+│   │   │   │   ├── contact
+│   │   │   │   │   ├── send-contact-message.email.tsx
+│   │   │   │   │   ├── send-contact-message.errors.ts
+│   │   │   │   │   ├── send-contact-message.input.ts
+│   │   │   │   │   ├── send-contact-message.router.e2e-spec.ts
+│   │   │   │   │   ├── send-contact-message.router.ts
+│   │   │   │   │   ├── send-contact-message.service.ts
+│   │   │   │   │   └── site-contact.table.ts
 │   │   │   │   ├── departements
 │   │   │   │   │   └── departement.service.ts
 │   │   │   │   ├── effet-attendu
@@ -4591,6 +4623,7 @@
 │   │   │       │   ├── trpc.module.ts
 │   │   │       │   ├── trpc.router.e2e-spec.ts
 │   │   │       │   ├── trpc.router.ts
+│   │   │       │   ├── trpc.service.spec.ts
 │   │   │       │   └── trpc.service.ts
 │   │   │       ├── unaccent.utils.test.ts
 │   │   │       ├── unaccent.utils.ts
@@ -5456,6 +5489,7 @@
 │   │   │   │   ├── structure_sans_statut_juridique_unique_nom.sql
 │   │   │   │   ├── tableau_de_bord.sql
 │   │   │   │   ├── tableau_de_bord@v4.36.0.sql
+│   │   │   │   ├── tableau_de_bord_module_titre_nullable.sql
 │   │   │   │   ├── toutes_les_collectivites.sql
 │   │   │   │   ├── toutes_les_collectivites@v2.67.0.sql
 │   │   │   │   ├── toutes_les_collectivites@v2.89.0.sql
@@ -5712,6 +5746,7 @@
 │   │   │   │   ├── annexe.sql
 │   │   │   │   ├── axe_description.sql
 │   │   │   │   ├── axe_indicateur.sql
+│   │   │   │   ├── axe_source_verification.sql
 │   │   │   │   ├── budget.sql
 │   │   │   │   ├── budget@v4.50.0.sql
 │   │   │   │   ├── classification_leviers_job.sql
@@ -6066,6 +6101,7 @@
 │   │   │   │   ├── structure_sans_statut_juridique_unique_nom.sql
 │   │   │   │   ├── tableau_de_bord.sql
 │   │   │   │   ├── tableau_de_bord@v4.36.0.sql
+│   │   │   │   ├── tableau_de_bord_module_titre_nullable.sql
 │   │   │   │   ├── toutes_les_collectivites.sql
 │   │   │   │   ├── toutes_les_collectivites@v2.67.0.sql
 │   │   │   │   ├── toutes_les_collectivites@v2.89.0.sql
@@ -6322,6 +6358,7 @@
 │   │   │   │   ├── annexe.sql
 │   │   │   │   ├── axe_description.sql
 │   │   │   │   ├── axe_indicateur.sql
+│   │   │   │   ├── axe_source_verification.sql
 │   │   │   │   ├── budget.sql
 │   │   │   │   ├── budget@v4.50.0.sql
 │   │   │   │   ├── classification_leviers_job.sql
@@ -6676,6 +6713,7 @@
 │   │       │   ├── structure_sans_statut_juridique_unique_nom.sql
 │   │       │   ├── tableau_de_bord.sql
 │   │       │   ├── tableau_de_bord@v4.36.0.sql
+│   │       │   ├── tableau_de_bord_module_titre_nullable.sql
 │   │       │   ├── toutes_les_collectivites.sql
 │   │       │   ├── toutes_les_collectivites@v2.67.0.sql
 │   │       │   ├── toutes_les_collectivites@v2.89.0.sql
@@ -6932,6 +6970,7 @@
 │   │       │   ├── annexe.sql
 │   │       │   ├── axe_description.sql
 │   │       │   ├── axe_indicateur.sql
+│   │       │   ├── axe_source_verification.sql
 │   │       │   ├── budget.sql
 │   │       │   ├── budget@v4.50.0.sql
 │   │       │   ├── classification_leviers_job.sql
@@ -7795,6 +7834,7 @@
 │   │   │   │       │   ├── report-generation-status.enum.ts
 │   │   │   │       │   ├── report-generation.schema.ts
 │   │   │   │       │   └── report-templates.enum.ts
+│   │   │   │       ├── plan-source.enum.schema.ts
 │   │   │   │       ├── plan-type.schema.ts
 │   │   │   │       └── plan.schema.ts
 │   │   │   ├── referentiels
@@ -8694,25 +8734,10 @@
 │   │   ├── .env.sample
 │   │   ├── README.md
 │   │   ├── _shared
-│   │   │   ├── cors.ts
-│   │   │   ├── database.types.ts
-│   │   │   ├── getSupabaseClient.ts
-│   │   │   ├── groupBy.ts
-│   │   │   ├── indexBy.ts
-│   │   │   ├── mailer.ts
-│   │   │   ├── serveUtils.ts
-│   │   │   └── typeUtils.ts
-│   │   ├── import_indicateur_emt
-│   │   │   ├── cleanData.ts
-│   │   │   ├── fetchData.ts
-│   │   │   ├── index.ts
-│   │   │   └── saveData.ts
-│   │   ├── send_users_to_brevo
-│   │   │   ├── fetchData.ts
-│   │   │   └── index.ts
-│   │   └── site_send_message
-│   │       ├── index.ts
-│   │       └── test.http
+│   │   │   └── cors.ts
+│   │   └── send_users_to_brevo
+│   │       ├── fetchData.ts
+│   │       └── index.ts
 │   ├── seed.sql
 │   └── templates
 │       ├── README.md
@@ -8724,4 +8749,4 @@
 ├── tsconfig.json
 ├── vitest.config.ts
 └── vitest.workspace.ts
-1412 directories, 7595 files
+1411 directories, 7621 files
