@@ -349,6 +349,7 @@
 │   │   ├── admin.py
 │   │   ├── admin_forms.py
 │   │   ├── apps.py
+│   │   ├── constants.py
 │   │   ├── enums.py
 │   │   ├── fixtures
 │   │   │   ├── fluxIAE_AnnexeFinanciere_22022022_112211.csv.gz
@@ -586,6 +587,7 @@
 │   │   ├── apps.py
 │   │   ├── division_labels.py
 │   │   ├── enums.py
+│   │   ├── fixtures.py
 │   │   ├── management
 │   │   │   ├── __init__.py
 │   │   │   └── commands
@@ -832,7 +834,6 @@
 │   │   │       ├── add_admin_for_company_group.py
 │   │   │       ├── create_asp_employee_records.py
 │   │   │       ├── export_auto_prescriptions.py
-│   │   │       ├── fill_employee_record_logs_history.py
 │   │   │       ├── fill_job_seeker_profile_asp_uid_changes.py
 │   │   │       ├── geolocate_jobseeker_addresses.py
 │   │   │       ├── move_job_applications.py
@@ -1008,22 +1009,22 @@
 │   │   │   ├── account_inactive.html
 │   │   │   ├── activate_pro_connect_account.html
 │   │   │   ├── email
-│   │   │   │   ├── email_archive_user_body.txt
+│   │   │   │   ├── email_archive_user_body.md
 │   │   │   │   ├── email_archive_user_subject.txt
 │   │   │   │   ├── email_confirmation_message.txt
 │   │   │   │   ├── email_confirmation_signup_message.txt
 │   │   │   │   ├── email_confirmation_subject.txt
-│   │   │   │   ├── email_disable_password_auth_body.txt
+│   │   │   │   ├── email_disable_password_auth_body.md
 │   │   │   │   ├── email_disable_password_auth_subject.txt
-│   │   │   │   ├── email_inactive_user_body.txt
+│   │   │   │   ├── email_inactive_user_body.md
 │   │   │   │   ├── email_inactive_user_subject.txt
-│   │   │   │   ├── email_jobseeker_created_by_third_party_body.txt
+│   │   │   │   ├── email_jobseeker_created_by_third_party_body.md
 │   │   │   │   ├── email_jobseeker_created_by_third_party_subject.txt
-│   │   │   │   ├── email_jobseeker_email_edited_body.txt
+│   │   │   │   ├── email_jobseeker_email_edited_body.md
 │   │   │   │   ├── email_jobseeker_email_edited_subject.txt
-│   │   │   │   ├── email_jobseeker_personal_info_edited_body.txt
+│   │   │   │   ├── email_jobseeker_personal_info_edited_body.md
 │   │   │   │   ├── email_jobseeker_personal_info_edited_subject.txt
-│   │   │   │   ├── email_new_API_token_body.txt
+│   │   │   │   ├── email_new_API_token_body.md
 │   │   │   │   ├── email_new_API_token_subject.txt
 │   │   │   │   ├── password_reset_key_message.txt
 │   │   │   │   ├── password_reset_key_subject.txt
@@ -1082,38 +1083,38 @@
 │   │   ├── apply
 │   │   │   ├── edit_contract_start_date.html
 │   │   │   ├── email
-│   │   │   │   ├── accept_for_job_seeker_body.txt
+│   │   │   │   ├── accept_for_job_seeker_body.md
 │   │   │   │   ├── accept_for_job_seeker_subject.txt
-│   │   │   │   ├── accept_for_proxy_body.txt
+│   │   │   │   ├── accept_for_proxy_body.md
 │   │   │   │   ├── accept_for_proxy_subject.txt
-│   │   │   │   ├── add_to_pool_for_job_seeker_body.txt
+│   │   │   │   ├── add_to_pool_for_job_seeker_body.md
 │   │   │   │   ├── add_to_pool_for_job_seeker_subject.txt
-│   │   │   │   ├── add_to_pool_for_proxy_body.txt
+│   │   │   │   ├── add_to_pool_for_proxy_body.md
 │   │   │   │   ├── add_to_pool_for_proxy_subject.txt
-│   │   │   │   ├── cancel_body.txt
+│   │   │   │   ├── cancel_body.md
 │   │   │   │   ├── cancel_subject.txt
-│   │   │   │   ├── diagoriente_job_seeker_invite_body.txt
+│   │   │   │   ├── diagoriente_job_seeker_invite_body.md
 │   │   │   │   ├── diagoriente_job_seeker_invite_subject.txt
-│   │   │   │   ├── diagoriente_prescriber_invite_body.txt
+│   │   │   │   ├── diagoriente_prescriber_invite_body.md
 │   │   │   │   ├── diagoriente_prescriber_invite_subject.txt
-│   │   │   │   ├── new_for_employer_body.txt
+│   │   │   │   ├── new_for_employer_body.md
 │   │   │   │   ├── new_for_employer_subject.txt
-│   │   │   │   ├── new_for_job_seeker_body.txt
+│   │   │   │   ├── new_for_job_seeker_body.md
 │   │   │   │   ├── new_for_job_seeker_subject.txt
-│   │   │   │   ├── new_for_prescriber_body.txt
+│   │   │   │   ├── new_for_prescriber_body.md
 │   │   │   │   ├── new_for_prescriber_subject.txt
-│   │   │   │   ├── postpone_for_job_seeker_body.txt
+│   │   │   │   ├── postpone_for_job_seeker_body.md
 │   │   │   │   ├── postpone_for_job_seeker_subject.txt
-│   │   │   │   ├── postpone_for_proxy_body.txt
+│   │   │   │   ├── postpone_for_proxy_body.md
 │   │   │   │   ├── postpone_for_proxy_subject.txt
-│   │   │   │   ├── refuse_body_for_job_seeker.txt
-│   │   │   │   ├── refuse_body_for_proxy.txt
+│   │   │   │   ├── refuse_body_for_job_seeker.md
+│   │   │   │   ├── refuse_body_for_proxy.md
 │   │   │   │   ├── refuse_subject.txt
-│   │   │   │   ├── transfer_job_seeker_body.txt
+│   │   │   │   ├── transfer_job_seeker_body.md
 │   │   │   │   ├── transfer_job_seeker_subject.txt
-│   │   │   │   ├── transfer_prescriber_body.txt
+│   │   │   │   ├── transfer_prescriber_body.md
 │   │   │   │   ├── transfer_prescriber_subject.txt
-│   │   │   │   ├── transfer_source_employer_body.txt
+│   │   │   │   ├── transfer_source_employer_body.md
 │   │   │   │   └── transfer_source_employer_subject.txt
 │   │   │   ├── hire_step_check_prev_applications.html
 │   │   │   ├── includes
@@ -1214,6 +1215,7 @@
 │   │   │   ├── submit
 │   │   │   │   ├── application
 │   │   │   │   │   ├── base.html
+│   │   │   │   │   ├── conflict_of_interest.html
 │   │   │   │   │   ├── eligibility.html
 │   │   │   │   │   ├── end.html
 │   │   │   │   │   ├── geiq_eligibility.html
@@ -1239,28 +1241,28 @@
 │   │   │   ├── details.html
 │   │   │   ├── email
 │   │   │   │   ├── closed
-│   │   │   │   │   ├── jobseeker_body.txt
+│   │   │   │   │   ├── jobseeker_body.md
 │   │   │   │   │   └── jobseeker_subject.txt
-│   │   │   │   ├── deliver_body.txt
+│   │   │   │   ├── deliver_body.md
 │   │   │   │   ├── deliver_subject.txt
-│   │   │   │   ├── manual_delivery_required_notification_body.txt
+│   │   │   │   ├── manual_delivery_required_notification_body.md
 │   │   │   │   ├── manual_delivery_required_notification_subject.txt
 │   │   │   │   ├── prolongation_request
-│   │   │   │   │   ├── created_body.txt
-│   │   │   │   │   ├── created_reminder_body.txt
+│   │   │   │   │   ├── created_body.md
+│   │   │   │   │   ├── created_reminder_body.md
 │   │   │   │   │   ├── created_reminder_subject.txt
 │   │   │   │   │   ├── created_subject.txt
 │   │   │   │   │   ├── denied
-│   │   │   │   │   │   ├── employer_body.txt
+│   │   │   │   │   │   ├── employer_body.md
 │   │   │   │   │   │   ├── employer_subject.txt
-│   │   │   │   │   │   ├── jobseeker_body.txt
+│   │   │   │   │   │   ├── jobseeker_body.md
 │   │   │   │   │   │   └── jobseeker_subject.txt
 │   │   │   │   │   └── granted
-│   │   │   │   │       ├── employer_body.txt
+│   │   │   │   │       ├── employer_body.md
 │   │   │   │   │       ├── employer_subject.txt
-│   │   │   │   │       ├── jobseeker_body.txt
+│   │   │   │   │       ├── jobseeker_body.md
 │   │   │   │   │       └── jobseeker_subject.txt
-│   │   │   │   ├── refuse_manually_body.txt
+│   │   │   │   ├── refuse_manually_body.md
 │   │   │   │   └── refuse_manually_subject.txt
 │   │   │   ├── includes
 │   │   │   │   ├── approvals_filters
@@ -1291,17 +1293,17 @@
 │   │   │   └── suspension_update_enddate.html
 │   │   ├── common
 │   │   │   ├── emails
-│   │   │   │   ├── add_admin_email_body.txt
+│   │   │   │   ├── add_admin_email_body.md
 │   │   │   │   ├── add_admin_email_subject.txt
-│   │   │   │   ├── auto_admin_attribution_email_body.txt
+│   │   │   │   ├── auto_admin_attribution_email_body.md
 │   │   │   │   ├── auto_admin_attribution_email_subject.txt
-│   │   │   │   ├── member_deactivation_email_body.txt
+│   │   │   │   ├── member_deactivation_email_body.md
 │   │   │   │   ├── member_deactivation_email_subject.txt
-│   │   │   │   ├── remove_admin_email_body.txt
+│   │   │   │   ├── remove_admin_email_body.md
 │   │   │   │   ├── remove_admin_email_subject.txt
-│   │   │   │   ├── request_for_invitation_body.txt
+│   │   │   │   ├── request_for_invitation_body.md
 │   │   │   │   ├── request_for_invitation_subject.txt
-│   │   │   │   ├── used_otp_backup_code_body.txt
+│   │   │   │   ├── used_otp_backup_code_body.md
 │   │   │   │   └── used_otp_backup_code_subject.txt
 │   │   │   └── tables
 │   │   │       └── th_with_sort.html
@@ -1319,15 +1321,15 @@
 │   │   │   ├── edit_siae_description.html
 │   │   │   ├── edit_siae_preview.html
 │   │   │   ├── email
-│   │   │   │   ├── activate_your_account_body.txt
+│   │   │   │   ├── activate_your_account_body.md
 │   │   │   │   ├── activate_your_account_subject.txt
-│   │   │   │   ├── admin_request_email_body.txt
+│   │   │   │   ├── admin_request_email_body.md
 │   │   │   │   ├── admin_request_email_subject.txt
-│   │   │   │   ├── new_signup_activation_email_to_official_contact_body.txt
+│   │   │   │   ├── new_signup_activation_email_to_official_contact_body.md
 │   │   │   │   ├── new_signup_activation_email_to_official_contact_subject.txt
-│   │   │   │   ├── old_job_description_deactivated_body.txt
+│   │   │   │   ├── old_job_description_deactivated_body.md
 │   │   │   │   ├── old_job_description_deactivated_subject.txt
-│   │   │   │   ├── spontaneous_jobapps_deactivated_body.txt
+│   │   │   │   ├── spontaneous_jobapps_deactivated_body.md
 │   │   │   │   └── spontaneous_jobapps_deactivated_subject.txt
 │   │   │   ├── includes
 │   │   │   │   ├── _card_jobdescription.html
@@ -1463,19 +1465,17 @@
 │   │   │   ├── nir_already_used.html
 │   │   │   ├── reactivate.html
 │   │   │   └── summary.html
-│   │   ├── employees
-│   │   │   └── detail.html
 │   │   ├── geiq_assessments
 │   │   │   └── email
-│   │   │       ├── assessment_fix_requested_for_geiq_body.txt
+│   │   │       ├── assessment_fix_requested_for_geiq_body.md
 │   │   │       ├── assessment_fix_requested_for_geiq_subject.txt
-│   │   │       ├── assessment_fix_requested_for_institution_body.txt
+│   │   │       ├── assessment_fix_requested_for_institution_body.md
 │   │   │       ├── assessment_fix_requested_for_institution_subject.txt
-│   │   │       ├── assessment_review_for_dreets_body.txt
+│   │   │       ├── assessment_review_for_dreets_body.md
 │   │   │       ├── assessment_review_for_dreets_subject.txt
-│   │   │       ├── assessment_review_for_geiq_body.txt
+│   │   │       ├── assessment_review_for_geiq_body.md
 │   │   │       ├── assessment_review_for_geiq_subject.txt
-│   │   │       ├── assessment_submission_body.txt
+│   │   │       ├── assessment_submission_body.md
 │   │   │       └── assessment_submission_subject.txt
 │   │   ├── geiq_assessments_views
 │   │   │   ├── _assessment_base_for_geiq.html
@@ -1598,9 +1598,9 @@
 │   │   ├── invitations_views
 │   │   │   ├── create.html
 │   │   │   ├── email
-│   │   │   │   ├── accepted_notif_establishment_sender_body.txt
+│   │   │   │   ├── accepted_notif_establishment_sender_body.md
 │   │   │   │   ├── accepted_notif_sender_subject.txt
-│   │   │   │   ├── invitation_establishment_body.txt
+│   │   │   │   ├── invitation_establishment_body.md
 │   │   │   │   └── invitation_establishment_subject.txt
 │   │   │   ├── includes
 │   │   │   │   └── pending_invitations.html
@@ -1680,7 +1680,7 @@
 │   │   │   ├── _organization_switcher_offcanvas.html
 │   │   │   ├── base.html
 │   │   │   ├── base_email_signature.txt
-│   │   │   ├── base_email_text_body.txt
+│   │   │   ├── base_email_text_body.md
 │   │   │   ├── base_email_text_subject.txt
 │   │   │   ├── base_printable.html
 │   │   │   └── previous_step.html
@@ -1718,11 +1718,11 @@
 │   │   │   ├── deactivate_member.html
 │   │   │   ├── edit_organization.html
 │   │   │   ├── email
-│   │   │   │   ├── must_validate_prescriber_organization_email_body.txt
+│   │   │   │   ├── must_validate_prescriber_organization_email_body.md
 │   │   │   │   ├── must_validate_prescriber_organization_email_subject.txt
-│   │   │   │   ├── refused_prescriber_organization_email_body.txt
+│   │   │   │   ├── refused_prescriber_organization_email_body.md
 │   │   │   │   ├── refused_prescriber_organization_email_subject.txt
-│   │   │   │   ├── validated_prescriber_organization_email_body.txt
+│   │   │   │   ├── validated_prescriber_organization_email_body.md
 │   │   │   │   └── validated_prescriber_organization_email_subject.txt
 │   │   │   ├── list_accredited_organizations.html
 │   │   │   ├── members.html
@@ -1775,43 +1775,43 @@
 │   │   │   ├── campaign_calendar.html
 │   │   │   ├── default_calendar_html.html
 │   │   │   ├── email
-│   │   │   │   ├── to_institution_campaign_close_body.txt
+│   │   │   │   ├── to_institution_campaign_close_body.md
 │   │   │   │   ├── to_institution_campaign_close_subject.txt
-│   │   │   │   ├── to_institution_ratio_to_select_body.txt
+│   │   │   │   ├── to_institution_ratio_to_select_body.md
 │   │   │   │   ├── to_institution_ratio_to_select_subject.txt
-│   │   │   │   ├── to_institution_selected_siae_body.txt
+│   │   │   │   ├── to_institution_selected_siae_body.md
 │   │   │   │   ├── to_institution_selected_siae_subject.txt
-│   │   │   │   ├── to_institution_siaes_submission_frozen_body.txt
-│   │   │   │   ├── to_institution_siaes_submission_frozen_reminder_body.txt
+│   │   │   │   ├── to_institution_siaes_submission_frozen_body.md
+│   │   │   │   ├── to_institution_siaes_submission_frozen_reminder_body.md
 │   │   │   │   ├── to_institution_siaes_submission_frozen_reminder_subject.txt
 │   │   │   │   ├── to_institution_siaes_submission_frozen_subject.txt
-│   │   │   │   ├── to_institution_siaes_transition_to_adversarial_stage_body.txt
+│   │   │   │   ├── to_institution_siaes_transition_to_adversarial_stage_body.md
 │   │   │   │   ├── to_institution_siaes_transition_to_adversarial_stage_subject.txt
-│   │   │   │   ├── to_institution_submitted_by_siae_body.txt
+│   │   │   │   ├── to_institution_submitted_by_siae_body.md
 │   │   │   │   ├── to_institution_submitted_by_siae_subject.txt
-│   │   │   │   ├── to_siae_accepted_body.txt
-│   │   │   │   ├── to_siae_accepted_from_certified_criteria_body.txt
+│   │   │   │   ├── to_siae_accepted_body.md
+│   │   │   │   ├── to_siae_accepted_from_certified_criteria_body.md
 │   │   │   │   ├── to_siae_accepted_from_certified_criteria_subject.txt
 │   │   │   │   ├── to_siae_accepted_subject.txt
-│   │   │   │   ├── to_siae_adversarial_stage_body.txt
+│   │   │   │   ├── to_siae_adversarial_stage_body.md
 │   │   │   │   ├── to_siae_adversarial_stage_subject.txt
-│   │   │   │   ├── to_siae_force_accepted_body.txt
+│   │   │   │   ├── to_siae_force_accepted_body.md
 │   │   │   │   ├── to_siae_force_accepted_subject.txt
-│   │   │   │   ├── to_siae_forced_to_adversarial_stage_body.txt
+│   │   │   │   ├── to_siae_forced_to_adversarial_stage_body.md
 │   │   │   │   ├── to_siae_forced_to_adversarial_stage_subject.txt
-│   │   │   │   ├── to_siae_not_sanctioned_body.txt
+│   │   │   │   ├── to_siae_not_sanctioned_body.md
 │   │   │   │   ├── to_siae_not_sanctioned_subject.txt
-│   │   │   │   ├── to_siae_notify_before_adversarial_stage_body.txt
+│   │   │   │   ├── to_siae_notify_before_adversarial_stage_body.md
 │   │   │   │   ├── to_siae_notify_before_adversarial_stage_subject.txt
-│   │   │   │   ├── to_siae_notify_before_campaign_close_body.txt
+│   │   │   │   ├── to_siae_notify_before_campaign_close_body.md
 │   │   │   │   ├── to_siae_notify_before_campaign_close_subject.txt
-│   │   │   │   ├── to_siae_refused_body.txt
-│   │   │   │   ├── to_siae_refused_no_proofs_body.txt
+│   │   │   │   ├── to_siae_refused_body.md
+│   │   │   │   ├── to_siae_refused_no_proofs_body.md
 │   │   │   │   ├── to_siae_refused_no_proofs_subject.txt
 │   │   │   │   ├── to_siae_refused_subject.txt
-│   │   │   │   ├── to_siae_sanctioned_with_training_session_body.txt
+│   │   │   │   ├── to_siae_sanctioned_with_training_session_body.md
 │   │   │   │   ├── to_siae_sanctioned_with_training_session_subject.txt
-│   │   │   │   ├── to_siae_selected_body.txt
+│   │   │   │   ├── to_siae_selected_body.md
 │   │   │   │   └── to_siae_selected_subject.txt
 │   │   │   ├── evaluated_job_application.html
 │   │   │   ├── evaluated_siae_detail.html
@@ -1883,9 +1883,9 @@
 │   │   │   └── stats.html
 │   │   ├── users
 │   │   │   └── emails
-│   │   │       ├── check_authorized_members_email_body.txt
+│   │   │       ├── check_authorized_members_email_body.md
 │   │   │       ├── check_authorized_members_email_subject.txt
-│   │   │       ├── nir_modification_request_body.txt
+│   │   │       ├── nir_modification_request_body.md
 │   │   │       └── nir_modification_request_subject.txt
 │   │   ├── utils
 │   │   │   ├── modal_includes
@@ -2167,10 +2167,6 @@
 │       │   ├── __init__.py
 │       │   ├── enums.py
 │       │   ├── forms.py
-│       │   ├── urls.py
-│       │   └── views.py
-│       ├── employees_views
-│       │   ├── __init__.py
 │       │   ├── urls.py
 │       │   └── views.py
 │       ├── error.py
@@ -2889,11 +2885,6 @@
         │   ├── test_reactivate.py
         │   ├── test_summary.py
         │   └── test_template.py
-        ├── employees_views
-        │   ├── __init__.py
-        │   ├── __snapshots__
-        │   │   └── test_detail.ambr
-        │   └── test_detail.py
         ├── geiq_assessments_views
         │   ├── __init__.py
         │   ├── __snapshots__
@@ -3034,4 +3025,4 @@
         └── welcoming_tour
             ├── __init__.py
             └── tests.py
-503 directories, 2533 files
+499 directories, 2528 files

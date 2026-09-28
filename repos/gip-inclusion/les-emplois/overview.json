@@ -4,19 +4,16 @@
   "description": "Service numérique de délivrance des PASS IAE et de mise en relation d'employeurs inclusifs avec des candidats éloignés de l'emploi via des prescripteurs ou en autoprescription.",
   "language": "Python",
   "features": [
-    "Authentification & Accès",
     "Recherche & Filtres",
-    "Statistiques & Rapports",
+    "Gestion des utilisateurs & Permissions",
     "Formulaires & Démarches",
     "Notifications & Alertes",
-    "Gestion des utilisateurs & Permissions",
+    "Statistiques & Rapports",
     "Suivi & Traçabilité",
-    "Administration & Backoffice",
-    "Gestion des établissements & Structures",
-    "Aides & Éligibilité",
+    "Gestion métier générale",
     "Tableaux & Affichage"
   ],
-  "audience": "Professionnels, Agents de l'Administration",
+  "audience": "Professionnels",
   "dependencies": [
     "Django",
     "PostgreSQL",
@@ -24,31 +21,30 @@
     "MinIO",
     "Redis",
     "GDAL",
-    "GEOS",
+    "pytest",
     "uv",
-    "pytest"
+    "psycopg"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
-    "Django",
     "Docker & Conteneurs",
+    "Django",
+    "HTML / CSS / Templates visuels",
     "Authentification (composant)",
-    "SIG & Géospatial",
-    "Tests",
-    "Stockage objet"
+    "Scripts & Utilitaires",
+    "ORM & Accès aux données"
   ],
   "auth": {
     "methods": [
       "oauth2",
       "sso",
-      "magic-link",
-      "mfa",
-      "session"
+      "mfa"
     ],
     "providers": [
-      "ProConnect"
+      "ProConnect",
+      "FranceConnect"
     ]
   },
   "tests": "pytest",
@@ -58,11 +54,11 @@
   "hasDocumentation": true,
   "tags": [
     "Emploi, Social & Logement",
+    "Écosystème beta.gouv / État",
     "Python",
     "Bases de données SQL",
-    "SIG & Géospatial",
     "Docker & Conteneurs",
     "Accessibilité",
-    "Écosystème beta.gouv / État"
+    "Données & Open Data"
   ]
 }
