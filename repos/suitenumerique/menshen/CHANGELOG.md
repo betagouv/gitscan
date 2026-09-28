@@ -8,6 +8,11 @@ Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
+- Allow to configure client secret generation complexity using the
+  `TOKEN_EXCHANGE_CLIENT_SECRET_USE_SPECIAL_CHARS` configuration switch
+
 ### Changed
 
 #### Dependencies
@@ -19,6 +24,8 @@ Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to
 - Restore alternate password hashers list to automatically upgrade users' hash
 - Support client secrets containing percent sequences (see
   [Django-Ninja #1780](https://github.com/vitalik/django-ninja/pull/1780))
+- Support subject opaque access token introspection
+- Support missing or empty `email` field in token introspection response
 
 ## [v0.3.0] - 2026-09-17
 

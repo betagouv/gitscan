@@ -1,22 +1,20 @@
-## Changelog : menshen (30 derniers jours, au 21 septembre 2026)
+## Changelog : menshen (30 derniers jours, au 23 septembre 2026)
 
 ### Résumé
-Ce mois-ci, menshen a franchi une étape importante avec le passage à la version 0.3.0. Les efforts se sont concentrés sur le renforcement de la sécurité (chiffrement des secrets et nouveaux standards de hachage) et sur la clarification de l'interface de programmation (SDK client) pour rendre l'intégration plus intuitive pour les développeurs.
+Les récentes évolutions se concentrent sur le renforcement de la sécurité et la robustesse de l'API. Le serveur supporte désormais mieux les différents types de jetons et propose des mécanismes de chiffrement pour les secrets. Le client a également été simplifié pour offrir une meilleure expérience de développement.
 
 ### Évolutions fonctionnelles
-- **Sécurité des secrets :** Amélioration de la gestion des secrets clients, incluant désormais le support des séquences de pourcentage et le chiffrement des secrets des fournisseurs de services (SP).
-- **Gestion des jetons :** Support étendu des types de jetons introspectés (bearer ou MAC).
-- **Outil de test (Playground) :** Amélioration de l'expérience de test permettant l'envoi de contenus encodés en formulaire.
+- **Amélioration de l'introspection des jetons** : support étendu des types de jetons (bearer ou MAC), des jetons d'accès opaques et gestion des réponses contenant des champs email vides.
+- **Gestion sécurisée des secrets** : support des secrets clients contenant des séquences de caractères spéciaux (%) et ajout d'une option de configuration pour contrôler la complexité de leur génération.
+- **Protection des données** : ajout du support du chiffrement pour les secrets clients des fournisseurs de services (SP).
 
 ### Évolutions techniques
-- **Sécurité renforcée :** Adoption d'Argon2 comme algorithme de hachage par défaut pour les mots de passe.
-- **Refactoring du client :** Simplification de l'API du client pour une meilleure clarté (renommage de `MenshenClient` en `TokenExchangeClient` et simplification des autres classes de configuration).
-- **Optimisation des performances :** Réduction des appels inutiles à la base de données lors de la gestion des identifiants des fournisseurs de services.
-- **Infrastructure et CI/CD :** 
-    - Migration vers le système de build `uv` pour le client.
-    - Optimisation des workflows GitHub Actions (publication PyPI, gestion des versions Docker et amélioration du linting).
-- **Nettoyage de l'architecture :** Suppression de l'ancien backend d'authentification OIDC et mise à jour des choix de types de jetons échangés.
+- **Sécurité** : adoption d'Argon2 comme algorithme de hachage de mot de passe par défaut.
+- **Performance** : optimisation de l'enregistrement des identifiants des fournisseurs de services en évitant des appels inutiles à la base de données.
+- **Refactorisation du client** : simplification de l'API client via le renommage de classes pour plus de clarté (ex: `MenshenClient` devient `TokenExchangeClient`) et migration vers le système de build `uv`.
+- **CI/CD** : correction du workflow de publication des paquets sur PyPI.
 
 ### Autres changements
-- **Documentation :** Ajout de la documentation concernant les actions disponibles depuis les services de la suite.
-- **Maintenance :** Correction des fixtures de démonstration dans le playground et résolution de problèmes de linting suite aux mises à jour de version.
+- **Documentation** : ajout de la documentation concernant les actions disponibles pour les services de la suite.
+- **Environnement de test** : amélioration du playground avec la correction des données de test (fixtures) et le support de l'envoi de contenu encodé en formulaire.
+- **Maintenance** : correction de problèmes de linting suite aux mises à jour de version.
