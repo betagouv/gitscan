@@ -1,22 +1,29 @@
-## Changelog : ultra11y (30 derniers jours, au 21 septembre 2026)
+## Changelog : ultra11y (30 derniers jours, au 30 septembre 2026)
 
 ### Résumé
-Ce mois-ci, ultra11y a franchi une étape importante dans la qualité de ses rapports et la précision de ses audits. L'outil propose désormais des formats de comptes rendus adaptés aux différents profils (métier vs technique) et améliore significativement la couverture des critères RGAA. Les capacités d'analyse par intelligence artificielle ont également été affinées pour offrir un raisonnement plus robuste et une meilleure gestion des coûts.
+Ce mois-ci, ultra11y a franchi une étape importante dans la communication des résultats d'audit. L'outil propose désormais des rapports différenciés, permettant aux décideurs de consulter une synthèse métier tandis que les experts disposent d'annexes techniques détaillées. Parallèlement, la précision des audits a été renforcée par une meilleure détection des indicateurs de focus et une réduction des faux positifs, tout en stabilisant les processus de publication et de gestion des coûts d'IA.
 
 ### Évolutions fonctionnelles
-- **Nouveaux formats de rapports** : Introduction d'un compte rendu synthétique destiné aux profils métier, avec les détails techniques placés en annexe [#38](https://github.com/SocialGouv/ultra11y/pull/38).
-- **Amélioration de la couverture RGAA** : Extension de la couverture automatique des critères et rendu de l'audit plus exhaustif.
-- **Précision des audits** : Correction de plusieurs faux positifs et négatifs, notamment sur la détection des indicateurs de focus, des pièges au clavier et des éléments animés.
-- **Meilleure visibilité des résultats** : Les non-conformités sont désormais regroupées par critère dans les sorties CI, et de nouveaux résultats compacts par page sont disponibles.
-- **Gestion des référentiels** : Possibilité de sélectionner un standard spécifique (WCAG ou RGAA) de manière globale pour l'ensemble des commandes.
+- **Nouveaux formats de rapports** : Introduction d'un compte rendu structuré comprenant une synthèse pour les profils métier et une annexe technique détaillée [#38](https://github.com/SocialGouv/ultra11y/pull/38).
+- **Flexibilité des analyses** : Distinction entre les rapports détaillés (via Claude) et les rapports compacts optimisés pour les environnements CI.
+- **Amélioration de la précision des audits** :
+    - Meilleure détection du focus clavier (gestion des animations et des pseudo-éléments).
+    - Correction de faux positifs de conformité dans les rapports et les sondes.
+    - Utilisation du taux de conformité officiel du référentiel dans les rapports.
+    - Correction de la règle RGAA 10.1.
+- **Nouveautés GitHub Actions** : Publication de résultats de statut compacts par page pour un suivi rapide.
 
 ### Évolutions techniques
-- **Optimisation de l'IA** : Amélioration du raisonnement des agents IA (tier "agent") et intégration de la capacité de décision critère par critère via l'interface Claude Code.
-- **Optimisation des coûts et performances** : Réduction des coûts d'adjudication par critère et optimisation du traitement des lots pour l'IA.
-- **Amélioration de la CI/CD** : Simplification des vérifications automatiques et ajout d'options pour un reporting granulaire par critère dans GitHub Actions.
-- **Refactoring de l'architecture** : Rendre le moteur d'adjudication agnostique vis-à-vis du transport utilisé pour les appels LLM.
-- **Correction du processus de release** : Correction du flux de publication pour s'assurer que les releases proviennent du dépôt principal et non d'un fork [#39](https://github.com/SocialGouv/ultra11y/pull/39).
+- **Optimisation de la CI/CD** :
+    - Simplification des vérifications automatiques.
+    - Meilleure gestion du budget d'adjudication par IA (limitation des coûts par lot et par clé).
+    - Réduction de la taille des artefacts pour les rapports compacts.
+- **Stabilité et Release** :
+    - Correction du processus de publication pour utiliser le dépôt principal au lieu d'un fork [#39](https://github.com/SocialGouv/ultra11y/pull/39).
+    - Verrouillage (re-pin) des moteurs d'audit intégrés pour garantir la reproductibilité des tests.
+- **Amélioration du moteur** :
+    - Renforcement de la complétude de l'adjudication et optimisation du passage à l'échelle.
+    - Optimisation du processus de build (gestion des chunks `dist/`).
 
 ### Autres changements
-- **Documentation** : Mise à jour de la documentation concernant les limites de la couverture déterministe du RGAA et le fonctionnement des nouveaux rapports.
-- **Maintenance des standards** : Mises à jour régulières des sources de référence WCAG et RGAA intégrées au projet.
+- Mise à jour régulière des sources de référence pour les normes WCAG et RGAA.
