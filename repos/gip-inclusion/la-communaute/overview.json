@@ -1,45 +1,40 @@
 {
   "url": "https://github.com/gip-inclusion/la-communaute",
   "name": "la-communaute",
-  "description": "Plateforme communautaire dédiée à l'inclusion, permettant l'échange via des forums, la consultation de fiches pratiques et la gestion de partenaires.",
+  "description": "Plateforme communautaire dédiée à l'inclusion, permettant l'échange de contenus, la modération et la gestion de fiches pratiques.",
   "language": "Python",
   "features": [
     "Authentification & Accès",
-    "Commentaires & Discussions",
-    "Contenu éditorial",
     "Gestion des utilisateurs & Permissions",
-    "Gestion des établissements & Structures",
+    "Contenu éditorial",
+    "Commentaires & Discussions",
     "Statistiques & Rapports",
-    "Notifications & Alertes",
-    "Recherche & Filtres",
     "Sécurité & Conformité",
-    "Administration & Backoffice"
+    "Gestion des médias & Assets",
+    "Recherche & Filtres"
   ],
-  "audience": "Grand public, Professionnels, Associations",
+  "audience": "Grand public",
   "dependencies": [
     "Django",
-    "PostgreSQL",
-    "Minio",
-    "htmx",
-    "Sentry",
+    "psycopg",
+    "MinIO",
     "Matomo",
-    "uv"
+    "Sentry",
+    "HTMX"
   ],
   "components": [
+    "Django",
     "PostgreSQL & SQL",
     "Python (scripts & backend)",
-    "Django",
     "Docker & Conteneurs",
     "Authentification (composant)",
-    "Documentation & Schémas",
-    "Tests",
     "HTML / CSS / Templates visuels"
   ],
   "auth": {
     "methods": [
-      "email-password",
       "magic-link",
-      "oauth2"
+      "oauth2",
+      "session"
     ],
     "providers": [
       "ProConnect"
@@ -59,12 +54,12 @@
   "license": "ETALAB-2.0",
   "hasDocumentation": true,
   "tags": [
-    "Écosystème beta.gouv / État",
     "Python",
-    "Bases de données SQL",
     "Django & FastAPI",
+    "Bases de données SQL",
     "Docker & Conteneurs",
     "CI/CD & GitHub Actions",
-    "Territoire & Collectivités"
+    "Accessibilité",
+    "Données & Open Data"
   ]
 }

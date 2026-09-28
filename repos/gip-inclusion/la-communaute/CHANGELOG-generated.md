@@ -1,12 +1,14 @@
-## Changelog : la-communaute (30 derniers jours, au 17 septembre 2026)
+## Changelog : la-communaute (30 derniers jours, au 25 septembre 2026)
 
 ### Résumé
-Les activités de ces 30 derniers jours ont été exclusivement consacrées à la maintenance technique et à l'optimisation de l'environnement de développement. Aucun changement n'a été apporté aux fonctionnalités utilisées par les membres de la communauté.
+Ce mois-ci, le projet a entamé une transition importante vers un nouveau domaine. En parallèle, un travail de simplification technique a été réalisé pour alléger la gestion des dépendances et nettoyer la configuration du système, rendant l'infrastructure plus légère et plus facile à maintenir.
+
+### Évolutions fonctionnelles
+- Mise en place de la redirection vers le nouveau domaine de la plateforme.
 
 ### Évolutions techniques
-- Simplification de la gestion des dépendances (suppression de `html5lib`, `itoutils[django-testing]` et des contraintes de versions minimales).
-- Mise à jour de l'environnement de tests avec `pytest`.
-- Nettoyage de la configuration de développement et suppression de paramètres obsolètes.
+- Simplification de la gestion des dépendances : suppression de bibliothèques non essentielles (`html5lib`, `itoutils[django-testing]`) et retrait des contraintes de versions minimales.
+- Optimisation de la configuration : suppression d'anciens paramètres et mise à jour de la configuration de développement.
 
 ### Autres changements
-- Amélioration du formatage des snapshots de tests.
+- Nettoyage du code : correction de l'indentation des snapshots.
