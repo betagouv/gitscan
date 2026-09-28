@@ -1,36 +1,39 @@
 ## Changelog : eva-serveur (30 derniers jours, au 24 septembre 2026)
 
 ### Résumé
-Ce mois-ci, le projet a bénéficié d'une modernisation importante de son interface utilisateur, notamment via l'alignement sur les composants DSFR, et d'une refonte complète du système de génération de documents PDF pour plus de fiabilité. Les capacités de gestion des données (sociodémographiques, SIRET) ont été enrichies, tandis que l'infrastructure a été mise à jour vers les dernières versions de Rails et Ruby pour garantir la pérennité du service.
+Ce mois a été marqué par une modernisation importante de l'interface utilisateur pour s'aligner sur les standards DSFR et une refonte majeure du système de génération de documents PDF pour plus de fiabilité. Les capacités de gestion des données ont été enrichies (données sociodémographiques et santé) et l'infrastructure a été mise à jour vers les dernières versions de Rails et Ruby pour garantir la stabilité et la performance du serveur.
 
 ### Évolutions fonctionnelles
-- **Interface utilisateur & Ergonomie** :
-    - Refonte de l'écran de connexion : design plus épuré, centré et entièrement responsive.
-    - Modernisation des cartes d'actualités : utilisation des composants DSFR, rendu plus cliquable et ajout d'illustrations.
-    - Amélioration de l'expérience d'export PDF : ajout d'une fenêtre modale pour suivre la progression de la génération.
-    - Optimisation de l'affichage des tableaux et de la navigation pour éviter les défilements horizontaux indésirables.
-- **Gestion des données et fonctionnalités** :
-    - Enrichissement des exports : intégration des données sociodémographiques et de santé dans les exports d'évaluations.
-    - Amélioration de la validation SIRET : distinction plus précise entre un SIRET fermé et invalide, et gestion plus souple pour les administrateurs en cas d'indisponibilité de l'API SIRENE.
-    - Nouveaux droits : les conseillers peuvent désormais modifier les informations des bénéficiaires.
-    - Outils d'administration : ajout de boutons pour forcer le recalcul des restitutions et affichage du nombre d'événements dans les informations générales.
-- **Accessibilité** :
-    - Améliorations pour les lecteurs d'écran (champs email, erreurs de connexion) et optimisation des contrastes.
+- **Modernisation de l'interface (UI/UX) :**
+    - Adoption des composants DSFR pour les cartes d'actualités, les badges et les boutons.
+    - Mise en place d'un design responsive (grille DSFR) et amélioration de l'affichage sur mobile.
+    - Amélioration de l'accessibilité : gestion des erreurs de connexion sous les champs de saisie, indication des types de champs pour les lecteurs d'écran et éclaircissement des contrastes.
+    - Amélioration de la navigation : les cartes d'actualités sont désormais entièrement cliquables.
+- **Gestion des données et structures :**
+    - Amélioration de la validation des SIRET : distinction entre un SIRET invalide et un SIRET fermé, et ajout d'alertes pour les administrateurs en cas de SIRET non vérifiable.
+    - Inclusion des données sociodémographiques et de santé dans les exports d'évaluations EVA.
+    - Possibilité pour les conseillers de modifier les informations des bénéficiaires.
+- **Expérience de génération PDF :**
+    - Nouvelle interface de téléchargement avec une modale de suivi permettant de patienter pendant la génération.
+    - Possibilité de lancer plusieurs générations de PDF simultanément.
+- **Pilotage des restitutions :**
+    - Ajout d'un bouton pour forcer le recalcul d'une restitution et affichage du nombre d'événements concernés.
 
 ### Évolutions techniques
-- **Refonte du moteur PDF** :
-    - Migration de la génération de PDF vers des tâches de fond (Sidekiq) avec notifications en temps réel (ActionCable) pour éviter les blocages de l'interface.
-    - Amélioration de la robustesse du navigateur Chromium utilisé pour la génération (gestion des crashs, redémarrage automatique, limitation de la consommation mémoire).
-- **Mises à jour majeures** :
-    - Migration de l'application vers Rails 8.0.5 et Ruby 4.0.6.
-- **Performance et Scalabilité** :
-    - Optimisation du redimensionnement des images via une répartition des tâches par question.
-    - Optimisation des requêtes SQL pour le calcul de complétude et le composant de standardisation.
-    - Mise en place de protections contre les rafales de requêtes (rate limiting) via Rack::Attack.
-- **Architecture** :
-    - Séparation logique des processus et des calculs entre les flux EVA et EVAPRO.
+- **Mises à jour majeures :**
+    - Migration du framework vers Rails 8.0.5.
+    - Mise à jour de la version de Ruby (4.0.6).
+- **Optimisation du moteur PDF :**
+    - Déportation de la génération de PDF dans des tâches de fond (Sidekiq) avec notification en temps réel (ActionCable).
+    - Amélioration de la gestion de la mémoire et de la stabilité de Chromium (redémarrage nocturne, gestion des crashs et verrouillage des accès concurrents).
+    - Accélération du service des fichiers PDF en les servant directement depuis le disque.
+- **Performance et robustesse :**
+    - Optimisation du calcul de la complétude des évaluations et du redimensionnement des images.
+    - Renforcement de la sécurité contre les attaques par rafale de requêtes via l'implémentation de `Rack::Attack`.
+    - Amélioration de la résilience de l'API en cas d'indisponibilité des services tiers (SIRENE).
 
 ### Autres changements
-- **Sécurité** : Blocage des scans de vulnérabilités automatisés (WordPress/OWA) pour réduire le bruit dans les logs.
-- **Assets** : Mise à jour des icônes, des favicons et vectorisation de certains éléments graphiques.
-- **Tests** : Amélioration de la qualité des données de test et correction de tests instables.
+- **Maintenance et tests :**
+    - Enrichissement des jeux de données de test (données d'opérateurs de compétences, illustrations, parcours types).
+    - Nettoyage de code et harmonisation des traductions en français.
+    - Correction de divers bugs mineurs (favicons, icônes iOS, erreurs de routage).

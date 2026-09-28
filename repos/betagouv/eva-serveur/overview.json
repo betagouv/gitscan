@@ -1,36 +1,39 @@
 {
   "url": "https://github.com/betagouv/eva-serveur",
   "name": "eva-serveur",
-  "description": "Serveur et espace d'administration pour le projet eva, permettant la gestion des campagnes, des questionnaires et des évaluations via une API REST.",
+  "description": "Serveur et espace d'administration pour l'application EVA, permettant la gestion de campagnes d'évaluation, de questionnaires et le suivi des données via une API REST.",
   "language": "Ruby",
   "features": [
     "API & Intégrations",
-    "Administration & Backoffice",
+    "Authentification & Accès",
     "Gestion des utilisateurs & Permissions",
+    "Administration & Backoffice",
     "Données & Schémas",
-    "Formulaires & Démarches"
+    "Formulaires & Démarches",
+    "Gestion documentaire & Fichiers",
+    "Statistiques & Rapports"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "Rails",
+    "Ruby on Rails",
     "PostgreSQL",
     "Redis",
     "Sidekiq",
     "ActiveAdmin",
     "Devise",
-    "Puma",
-    "@gouvfr/dsfr"
+    "DSFR",
+    "Puppeteer"
   ],
   "components": [
     "API REST & GraphQL",
     "PostgreSQL & SQL",
-    "Authentification (composant)",
+    "Docker & Conteneurs",
     "ORM & Accès aux données",
-    "Serveurs web & Proxy",
     "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
+      "email-password",
       "jwt",
       "session"
     ]
@@ -38,8 +41,8 @@
   "tests": [
     "RSpec",
     "Capybara",
-    "FactoryBot",
-    "Selenium"
+    "Selenium",
+    "FactoryBot"
   ],
   "lastActivity": "2026-09-24T17:23:58+02:00",
   "status": "active",
@@ -48,8 +51,7 @@
   "tags": [
     "Écosystème beta.gouv / État",
     "Bases de données SQL",
-    "Sécurité & Auth",
-    "Standards & Schémas",
-    "Documentation"
+    "Docker & Conteneurs",
+    "Standards & Schémas"
   ]
 }
