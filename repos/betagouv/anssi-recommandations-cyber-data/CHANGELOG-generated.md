@@ -1,21 +1,23 @@
-## Changelog : anssi-recommandations-cyber-data (30 derniers jours, au 03/09/2026)
+## Changelog : anssi-recommandations-cyber-data (30 derniers jours, au 23/09/2026)
 
 ### Résumé
-Cette période a été marquée par l'ajout de fonctionnalités clés pour l'évaluation des modèles et une amélioration significative de la robustesse du processus d'indexation des documents. Un effort majeur a également été consacré à la sécurisation du projet via la correction de plusieurs vulnérabilités critiques dans les dépendances.
+Cette période a été marquée par l'amélioration de l'interface d'évaluation de l'IA et par un renforcement significatif de la précision de l'extraction de données (OCR et RAG). Le projet a également bénéficié de mises à jour de sécurité importantes pour corriger plusieurs vulnérabilités critiques.
 
 ### Évolutions fonctionnelles
-- **Évaluation** : Mise en place d'une interface dédiée permettant de lancer et de piloter les processus d'évaluation.
-- **Gestion du Backoffice** :
-    - Possibilité de sélectionner une collection spécifique pour modification.
-    - Ajout d'une visibilité sur les pages n'ayant pas pu être indexées.
-- **Interface utilisateur** : Amélioration de la lisibilité en résumant les chemins de sections trop longs.
+- **Interface d'évaluation** : Ajout d'une nouvelle page dédiée permettant de lancer et de piloter les évaluations du bot.
+- **Exploration des données** : Mise en place d'une interface permettant de visualiser les segments de texte (*chunks*), de consulter leurs sources et d'explorer leur contenu directement depuis le tableau de bord.
+- **Gestion documentaire** : Possibilité d'ajouter des fichiers PDF via des liens distants depuis le dashboard.
 
 ### Évolutions techniques
-- **Sécurité** : Correction de nombreuses vulnérabilités critiques et modérées via la mise à jour de dépendances clés (`transformers`, `cryptography`, `idna`, `pip`, `setuptools`, etc.) suite aux alertes Dependabot ([#149](https://github.com/betagouv/anssi-recommandations-cyber-data/security/dependabot/149), [#150](https://github.com/betagouv/anssi-recommandations-cyber-data/security/dependabot/150), [#141](https://github.com/betagouv/anssi-recommandations-cyber-data/security/dependabot/141), [#107](https://github.com/betagouv/anssi-recommandations-cyber-data/security/dependabot/107), etc.).
-- **Robustesse de l'indexation** :
-    - Amélioration de la résilience de l'OCR face aux erreurs de lecture de pages.
-    - L'indexation des documents peut désormais se poursuivre même si certaines pages présentent des erreurs d'OCR.
-- **Optimisation** : Réduction de la fréquence de suivi de l'indexation pour optimiser les ressources système.
+- **Amélioration du traitement documentaire (OCR & Parsing)** :
+    - Optimisation de l'extraction des sommaires (gestion de la hiérarchie, des continuations et nettoyage des pointillés).
+    - Amélioration de la précision de l'OCR pour le traitement des légendes et la conservation des sections après une figure.
+- **Optimisation du RAG (Retrieval-Augmented Generation)** :
+    - Contextualisation accrue des segments de texte (*chunks*) pour améliorer la qualité de l'indexation.
+    - Tri des segments par identifiant pour une meilleure organisation.
+- **Sécurité** :
+    - Résolution de plusieurs vulnérabilités de niveau élevé et modéré via la mise à jour de dépendances critiques, notamment `transformers` ([#149](https://github.com/betagouv/anssi-recommandations-cyber-data/security/dependabot/149)), `cryptography`, `idna`, et `json-repair`.
+- **Tests** : Amélioration de la couverture et de l'annotation des tests concernant le contexte documentaire.
 
 ### Autres changements
-- Mise à jour de la documentation (README).
+- Normalisation du nommage des documents (gestion des tirets).

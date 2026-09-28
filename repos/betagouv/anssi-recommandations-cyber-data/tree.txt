@@ -56,6 +56,8 @@
 │   ├── adaptateurs
 │   │   ├── __init__.py
 │   │   ├── authentification.py
+│   │   ├── client_albert_chunks.py
+│   │   ├── client_albert_chunks_reel.py
 │   │   ├── client_albert_collections_reel.py
 │   │   ├── client_albert_indexation_reel.py
 │   │   ├── client_albert_reformulation_reel.py
@@ -76,6 +78,7 @@
 │   │   ├── ajoute_document_a_la_collection.py
 │   │   ├── collecte
 │   │   │   └── collecte.py
+│   │   ├── contexte_documentaire.py
 │   │   ├── docling
 │   │   │   ├── chunker_docling.py
 │   │   │   ├── chunker_docling_mqc.py
@@ -100,6 +103,7 @@
 │   │   │   ├── _normalisateur_ocr.py
 │   │   │   ├── _rattacheur_blocs.py
 │   │   │   ├── _rendeur_pages_pdf.py
+│   │   │   ├── _sommaire_hierarchique.py
 │   │   │   ├── assembleur_blocs_json.py
 │   │   │   ├── convertisseur_ocr_json.py
 │   │   │   ├── cree_document_pdf.py
@@ -108,6 +112,7 @@
 │   │   │   ├── pages_avec_texte.py
 │   │   │   └── prompt_ocr_json.py
 │   │   ├── service_collections.py
+│   │   ├── service_exploration_chunks.py
 │   │   ├── service_indexation_collections.py
 │   │   └── service_indexation_documents.py
 │   ├── evaluation
@@ -183,6 +188,8 @@
 │   └── serveur.py
 ├── tests
 │   ├── adaptateurs
+│   │   ├── conftest.py
+│   │   ├── test_client_albert_chunks_reel.py
 │   │   ├── test_client_albert_collections_reel.py
 │   │   └── test_client_albert_indexation_reel.py
 │   ├── api
@@ -192,6 +199,7 @@
 │   │   ├── test_api_documents.py
 │   │   ├── test_api_evaluation.py
 │   │   ├── test_api_evaluation_reformulation.py
+│   │   ├── test_api_exploration_chunks.py
 │   │   ├── test_api_jeopardy.py
 │   │   ├── test_auth.py
 │   │   └── test_securite.py
@@ -215,9 +223,12 @@
 │   │   │   ├── test_composants_assembleur_blocs_json.py
 │   │   │   ├── test_convertisseur_ocr_json.py
 │   │   │   ├── test_document_pdf.py
-│   │   │   └── test_pages_avec_texte.py
+│   │   │   ├── test_pages_avec_texte.py
+│   │   │   └── test_sommaire_hierarchique.py
+│   │   ├── test_contexte_documentaire.py
 │   │   ├── test_indexe_documents_rag.py
 │   │   ├── test_service_collections.py
+│   │   ├── test_service_exploration_chunks.py
 │   │   ├── test_service_indexation_collection.py
 │   │   ├── test_service_indexation_collections.py
 │   │   └── test_service_indexation_document.py
@@ -304,6 +315,7 @@
 │   │   │   ├── Documents.svelte
 │   │   │   ├── JeopardyseCollectionEntiere.svelte
 │   │   │   ├── PageEvaluation.svelte
+│   │   │   ├── PageExplorationChunks.svelte
 │   │   │   ├── PageInformationsCollections.svelte
 │   │   │   ├── SelecteurCollection.svelte
 │   │   │   ├── SupprimeDocuments.svelte
@@ -311,6 +323,8 @@
 │   │   │   ├── TableauDeDocuments.svelte
 │   │   │   ├── collection-filters.test.ts
 │   │   │   ├── collection-filters.ts
+│   │   │   ├── exploration-chunks.test.ts
+│   │   │   ├── exploration-chunks.ts
 │   │   │   ├── indexation.test.ts
 │   │   │   ├── indexation.ts
 │   │   │   ├── jeopardy-document.test.ts
@@ -326,4 +340,4 @@
 │   ├── tsconfig.node.json
 │   └── vite.config.ts
 └── uv.lock
-61 directories, 267 files
+61 directories, 281 files
