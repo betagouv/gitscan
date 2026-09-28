@@ -1,37 +1,44 @@
 {
   "url": "https://github.com/betagouv/depenses-eclairees-waf",
   "name": "depenses-eclairees-waf",
-  "description": "Ce projet configure un Web Application Firewall (WAF) pour protéger une application web, probablement liée aux dépenses publiques. Il utilise des règles personnalisées pour Metabase et une configuration Nginx.",
-  "language": "HTML",
+  "description": "Proxy inverse Nginx avec ModSecurity (WAF) pour protéger les applications de depenses-eclairees. Il utilise des règles personnalisées pour sécuriser les services comme Metabase et n8n.",
+  "language": "Shell",
   "features": [
     "Sécurité & Conformité"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
-    "Nginx"
+    "Nginx",
+    "ModSecurity",
+    "OWASP Core Rule Set",
+    "Docker",
+    "Scalingo nginx-buildpack"
   ],
   "components": [
-    "Serveurs web & Proxy"
+    "Serveurs web & Proxy",
+    "Docker & Conteneurs",
+    "Scripts & Utilitaires"
   ],
   "auth": {
     "methods": [
       "none"
     ]
   },
-  "tests": null,
-  "workflows": null,
-  "lastActivity": "2026-06-23T18:37:01+02:00",
+  "tests": "Docker, scripts shell (rate-limit.sh, crs-rule.sh) et vérification de la configuration nginx.",
+  "workflows": [],
+  "lastActivity": "2026-09-25T23:16:02+02:00",
   "status": "active",
   "license": null,
   "hasDocumentation": true,
   "metrics": {
-    "stars": 0,
+    "stars": 1,
     "forks": 0,
     "contributors": 1,
     "openIssues": 0
   },
   "tags": [
     "Sécurité & Conformité",
-    "WAF"
+    "Docker & Conteneurs",
+    "Git & DevOps"
   ]
 }

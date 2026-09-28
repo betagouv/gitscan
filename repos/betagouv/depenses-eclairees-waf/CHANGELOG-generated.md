@@ -1,16 +1,25 @@
-## Changelog : depenses-eclairees-waf (30 derniers jours, au 23 juin 2026)
+## Changelog : depenses-eclairees-waf (30 derniers jours, au 25 septembre 2026)
 
 ### Résumé
-Ce mois-ci, les améliorations se concentrent sur la sécurité et la flexibilité de la configuration du WAF. Des corrections ont été apportées pour renforcer la protection contre les attaques CSRF et améliorer la gestion du DNS. De plus, la configuration a été revue pour forcer le protocole HTTPS et permettre une plus grande souplesse dans la configuration de Metabase.
+Les récentes interventions ont principalement porté sur l'ajustement des règles de sécurité (WAF) pour assurer une compatibilité fluide avec les applications protégées, notamment n8n et Metabase. L'objectif a été de supprimer les blocages injustifiés (faux positifs) tout en renforçant les outils de test et la documentation pour faciliter la maintenance du proxy.
 
 ### Évolutions fonctionnelles
-- Correction d'une vulnérabilité CSRF pour renforcer la sécurité de l'application. [#issue à investiguer]
-- Forçage du protocole HTTPS pour toutes les requêtes, améliorant la sécurité des communications. [#issue à investiguer]
-- Amélioration de la souplesse de la configuration pour Metabase, permettant une adaptation plus fine aux besoins spécifiques. [#issue à investiguer]
+- **Amélioration de l'expérience utilisateur sur Metabase** : Autorisation des téléchargements de résultats de questions sur les jeux de données.
+- **Correction de connectivité sur n8n** : Rétablissement du fonctionnement des WebSockets via le transfert correct de l'en-tête `Upgrade`.
 
 ### Évolutions techniques
-- Amélioration de la résolution DNS avec un rafraîchissement plus performant. [#issue à investiguer]
-- Ajout d'une configuration de base pour une webapp. [#issue à investiguer]
+- **Sécurité et gestion des exceptions (ModSecurity/CRS)** :
+    - Optimisation des règles pour n8n : ajout de nombreuses exceptions pour éviter les blocages sur les routes `/rest/`, les corps de workflows, les identifiants et les cookies PostHog.
+    - Blocage préventif (erreur 403) du proxy de télémétrie PostHog pour n8n avant l'analyse des règles de sécurité.
+    - Exemption de certaines requêtes JSON (`/api/card`) des contrôles d'injection (SQLi, RCE et PHP).
+- **Optimisation et architecture** :
+    - Amélioration des performances en utilisant un cache local pour les règles CRS au lieu de les charger depuis l'image Docker.
+    - Refactorisation de la génération des blocs d'application via l'utilisation d'un tableau `apps`.
+- **Tests et outils de développement** :
+    - Mise en place d'un environnement de test Docker local pour valider la configuration Nginx générée.
+    - Ajout d'un script de vérification de la limitation de débit (rate-limit) lors de la connexion.
+    - Amélioration de la structure des tests (déplacement vers le répertoire `test/`) et mise à jour des images de test.
+    - Ajout d'une commande dédiée pour faciliter l'ajout d'exceptions WAF.
 
 ### Autres changements
-- Travaux en cours (WIP) sur des fonctionnalités non spécifiées. [#issue à investiguer]
+- **Documentation** : Documentation complète du projet, ajout d'instructions pour les agents et documentation de la procédure de vérification de la configuration Nginx (`nginx -T`).
