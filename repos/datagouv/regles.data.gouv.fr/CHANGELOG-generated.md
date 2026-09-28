@@ -1,10 +1,10 @@
 ## Changelog : regles.data.gouv.fr (30 derniers jours, au 22 septembre 2026)
 
 ### Résumé
-Le projet est en phase de démarrage et de structuration. Les récents travaux ont porté sur la mise en place des outils de développement de base et de la documentation initiale pour établir un socle de travail solide.
+Le projet est en phase de lancement. Les activités récentes ont porté sur la mise en place des fondations techniques et documentaires nécessaires pour structurer le dépôt et ses outils de développement.
 
 ### Évolutions techniques
-- Initialisation de l'outillage et de la structure de documentation du projet [#7](https://github.com/datagouv/regles.data.gouv.fr/pull/7)
+- Initialisation de l'infrastructure de base (scaffolding) incluant les outils de développement et la documentation initiale [#7](https://github.com/datagouv/regles.data.gouv.fr/pull/7)
 
 ### Autres changements
-- Ajout de documents de décision relatifs à la configuration du dépôt [#16](https://github.com/datagouv/regles.data.gouv.fr/pull/16)
+- Ajout de documents de décision (decision records) concernant la configuration et l'organisation du dépôt [#16](https://github.com/datagouv/regles.data.gouv.fr/pull/16)
