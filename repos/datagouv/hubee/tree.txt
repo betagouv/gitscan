@@ -52,12 +52,15 @@
 │   │   ├── concerns
 │   │   │   ├── .keep
 │   │   │   └── portail
-│   │   │       └── authentication.rb
+│   │   │       ├── authentication.rb
+│   │   │       ├── download_refusals.rb
+│   │   │       └── nested_in_delivery.rb
 │   │   └── portail
 │   │       ├── attachments_controller.rb
 │   │       ├── base_controller.rb
 │   │       ├── dashboard_controller.rb
 │   │       ├── deliveries
+│   │       │   ├── archives_controller.rb
 │   │       │   └── states_controller.rb
 │   │       ├── deliveries_controller.rb
 │   │       ├── errors_controller.rb
@@ -94,6 +97,11 @@
 │   │       │   │   └── ensure_received_state.rb
 │   │       │   └── show.rb
 │   │       ├── deliveries
+│   │       │   ├── archives
+│   │       │   │   ├── show
+│   │       │   │   │   ├── download.rb
+│   │       │   │   │   └── ensure_received_attachments.rb
+│   │       │   │   └── show.rb
 │   │       │   ├── index
 │   │       │   │   ├── fetch_list.rb
 │   │       │   │   └── resolve_data_streams.rb
@@ -158,6 +166,8 @@
 │   │   │   │   ├── sensitive_data_streams.rb
 │   │   │   │   ├── state_perimeter.rb
 │   │   │   │   └── state_transitions.rb
+│   │   │   ├── data_stream
+│   │   │   │   └── v1_rules.rb
 │   │   │   ├── data_stream.rb
 │   │   │   ├── delivery
 │   │   │   │   ├── applicant.rb
@@ -167,10 +177,12 @@
 │   │   │   │   ├── list.rb
 │   │   │   │   ├── page.rb
 │   │   │   │   ├── recipient.rb
+│   │   │   │   ├── reply.rb
 │   │   │   │   └── summary.rb
 │   │   │   ├── delivery.rb
 │   │   │   ├── event_author.rb
 │   │   │   ├── pagination.rb
+│   │   │   ├── safe_filename.rb
 │   │   │   ├── subscription
 │   │   │   │   └── list.rb
 │   │   │   └── subscription.rb
@@ -216,10 +228,12 @@
 │       │   │   └── index.html.erb
 │       │   ├── deliveries
 │       │   │   ├── _active_filters.html.erb
+│       │   │   ├── _archive_access.html.erb
 │       │   │   ├── _attachments.html.erb
 │       │   │   ├── _filters.html.erb
 │       │   │   ├── _heading.html.erb
 │       │   │   ├── _pagination.html.erb
+│       │   │   ├── _receipt_callout.html.erb
 │       │   │   ├── _state_form.html.erb
 │       │   │   ├── _state_menu.html.erb
 │       │   │   ├── index.html.erb
@@ -347,6 +361,7 @@
 ├── lib
 │   ├── phone_number.rb
 │   ├── portail
+│   │   ├── archive.rb
 │   │   ├── hub_api
 │   │   │   ├── attachments.rb
 │   │   │   ├── calendar_day.rb
@@ -425,6 +440,11 @@
 │   │       │   │   └── ensure_received_state_spec.rb
 │   │       │   └── show_spec.rb
 │   │       ├── deliveries
+│   │       │   ├── archives
+│   │       │   │   ├── show
+│   │       │   │   │   ├── download_spec.rb
+│   │       │   │   │   └── ensure_received_attachments_spec.rb
+│   │       │   │   └── show_spec.rb
 │   │       │   ├── index
 │   │       │   │   ├── fetch_list_spec.rb
 │   │       │   │   └── resolve_data_streams_spec.rb
@@ -459,6 +479,7 @@
 │   ├── lib
 │   │   ├── phone_number_spec.rb
 │   │   └── portail
+│   │       ├── archive_spec.rb
 │   │       ├── hub_api
 │   │       │   ├── attachments_spec.rb
 │   │       │   ├── calendar_day_spec.rb
@@ -491,8 +512,11 @@
 │   │   │   ├── delivery
 │   │   │   │   ├── applicant_spec.rb
 │   │   │   │   ├── attachment_spec.rb
-│   │   │   │   └── criteria_spec.rb
+│   │   │   │   ├── criteria_spec.rb
+│   │   │   │   └── reply_spec.rb
+│   │   │   ├── delivery_spec.rb
 │   │   │   ├── event_author_spec.rb
+│   │   │   ├── safe_filename_spec.rb
 │   │   │   ├── subscription
 │   │   │   │   └── list_spec.rb
 │   │   │   └── subscription_spec.rb
@@ -525,6 +549,7 @@
 │   │       ├── attachments_spec.rb
 │   │       ├── dashboard_spec.rb
 │   │       ├── deliveries
+│   │       │   ├── archives_spec.rb
 │   │       │   └── states_spec.rb
 │   │       ├── deliveries_spec.rb
 │   │       └── sessions_spec.rb
@@ -537,11 +562,14 @@
 │   ├── support
 │   │   ├── hub_api.rb
 │   │   ├── portail_hub_api.rb
+│   │   ├── portail_sign_in.rb
+│   │   ├── portail_uploads.rb
 │   │   ├── proconnect.rb
 │   │   ├── semantic_logger.rb
 │   │   ├── shared_examples_for_boolean_filter_scope.rb
 │   │   ├── shared_examples_for_pagination.rb
-│   │   └── shared_examples_for_uuid_v7.rb
+│   │   ├── shared_examples_for_uuid_v7.rb
+│   │   └── tempfile_watch.rb
 │   └── validators
 │       └── data_package
 │           └── delivery_criteria_validator_spec.rb
@@ -557,4 +585,4 @@
     ├── .keep
     └── javascript
         └── .keep
-155 directories, 404 files
+160 directories, 427 files

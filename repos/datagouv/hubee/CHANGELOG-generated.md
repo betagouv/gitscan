@@ -1,37 +1,34 @@
-## Changelog : hubee (30 derniers jours, au 22 septembre 2026)
+## Changelog : hubee (30 derniers jours, au 28 septembre 2026)
 
 ### Résumé
-Ce mois-ci, hubee a franchi des étapes importantes pour améliorer l'expérience des agents, notamment grâce à une meilleure gestion des pièces jointes (téléchargement facilité) et des outils de recherche de dossiers plus performants. La sécurité a été considérablement renforcée par l'intégration de nouveaux standards d'authentification et l'exigence d'une double authentification (MFA) pour les accès sensibles.
+Ce mois-ci, Hubee a considérablement amélioré la gestion des documents et la sécurité des accès. Les utilisateurs disposent désormais de fonctionnalités plus complètes pour manipuler les pièces jointes (téléchargement, archivage, consultation) et une navigation plus intuitive dans les dossiers. La sécurité a également été renforcée par l'introduction de l'authentification à deux facteurs (MFA) pour les comptes sensibles et une modernisation des protocoles d'échange.
 
 ### Évolutions fonctionnelles
-- **Gestion documentaire** : 
-    - Possibilité de télécharger des pièces reçues ([#163](https://github.com/datagouv/hubee/issues/163)).
-    - Amélioration de la visibilité des erreurs lors des échecs de téléchargement ou de remise de pièces.
-    - Enrichissement de l'historique avec l'inscription des actions de récupération de pièces.
-- **Recherche et navigation** :
-    - Recherche de dossiers par numéro (partiel ou complet).
-    - Filtrage amélioré permettant de sélectionner plusieurs flux simultanément.
-    - Amélioration du tri et de la persistance des filtres dans les listes.
-- **Interface utilisateur (Portail)** :
-    - Changement de terminologie pour plus de clarté : utilisation du terme "télédossiers" au lieu de "démarches".
-    - Affichage des noms de flux à côté de leurs codes pour une meilleure lisibilité.
-    - Amélioration de l'affichage des récapitulatifs et de l'historique des changements d'état.
-- **Accès** :
-    - Possibilité de consulter les dossiers liés à son organisation ([#128](https://github.com/datagouv/hubee/issues/128)).
+- **Gestion des pièces jointes** : 
+    - Possibilité de télécharger les pièces reçues [#163] et d'en consulter le contenu [#162].
+    - Amélioration de la visibilité des types de fichiers et ajout de liens de téléchargement direct via DSFR.
+    - Nouvelle fonctionnalité permettant de télécharger des archives regroupant les pièces reçues.
+- **Gestion des dossiers (télédossiers)** :
+    - Transition de la terminologie "démarches" vers "télédossiers" pour plus de clarté.
+    - Amélioration de la recherche et du filtrage (recherche par numéro partiel, filtrage multi-flux et tri amélioré).
+    - Nouvelles actions disponibles : accuser réception d'un nouveau dossier et faire avancer un dossier directement depuis sa page de détail.
+- **Sécurité et accès** :
+    - Renforcement de la sécurité avec l'exigence du second facteur (MFA) pour les comptes à privilèges.
+    - Amélioration de la visibilité des droits d'accès et de l'identité de l'agent connecté.
 
 ### Évolutions techniques
-- **Sécurité et Authentification** :
-    - Mise en place du socle OAuth2 (client_credentials) et support du protocole OIDC avec ProConnect.
-    - Renforcement de la sécurité pour les comptes à privilèges via l'exigence d'une authentification multi-facteur (MFA).
-    - Amélioration de la gestion des sessions et de la traçabilité des décisions d'accès en base de données.
-- **Architecture et API** :
-    - Montée de version majeure de la dépendance `hub-api-v1` (passage à la v5.0.0).
-    - Refactorisation importante de la gestion des accès (Pundit) et de la logique métier (utilisation d'organizers).
-    - Optimisation de la gestion des abonnements via la mise en cache.
-- **DevOps et Tests** :
-    - Mise en place de "Review Apps" pour tester les modifications directement sur les Pull Requests ([#134](https://github.com/datagouv/hubee/issues/134)).
-    - Amélioration de la suite de tests E2E (bout en bout) avec l'utilisation de navigateurs réels.
+- **Sécurité et API** :
+    - Mise en place du socle OAuth2 (client credentials) et protection des endpoints par token.
+    - Montée en version majeure et itérative de la dépendance `hub-api-v1` (passage aux versions 3, 4 et 5).
+    - Transition vers le protocole OIDC pour les échanges avec ProConnect.
+- **Architecture et Infrastructure** :
+    - Migration des images de runtime Docker vers une base *distroless* pour renforcer la sécurité.
+    - Refactorisation importante du portail via l'utilisation de patterns "Organizer" pour la gestion des listes et des détails de dossiers.
+    - Optimisation de la gestion des sessions et de la traçabilité des événements.
+- **CI/CD** :
+    - Mise en place et correction du système de "review apps" pour les tests de Pull Requests.
 
 ### Autres changements
-- **Documentation** : Mise à jour de la documentation de l'API et ajout de guides d'utilisation (runbooks) pour les clients API.
-- **Nettoyage** : Suppression de termes et de configurations obsolètes pour simplifier le code.
+- **Documentation** : 
+    - Rédaction de nouveaux guides (runbooks) pour l'utilisation de l'API.
+    - Amélioration de la documentation technique concernant la lecture des démarches et la couche d'authentification.
