@@ -1486,6 +1486,8 @@
 │   │   │   ├── common_instruction_model.rb
 │   │   │   ├── demandes_habilitations_searchable.rb
 │   │   │   ├── dgfip_extensions
+│   │   │   │   ├── adresse_ip_publique.rb
+│   │   │   │   ├── adresse_postale_contact_technique.rb
 │   │   │   │   ├── api_impot_particulier_modalities.rb
 │   │   │   │   ├── api_impot_particulier_scopes.rb
 │   │   │   │   └── extra_contacts_infos.rb
@@ -1528,6 +1530,7 @@
 │   │   ├── role_hierarchy.rb
 │   │   ├── role_set.rb
 │   │   ├── service_provider.rb
+│   │   ├── setting.rb
 │   │   ├── static_application_record.rb
 │   │   ├── subdomain.rb
 │   │   ├── user.rb
@@ -1686,6 +1689,7 @@
 │   │   ├── hubee_api_client.rb
 │   │   ├── hubspot_api.rb
 │   │   ├── insee_api_authentication.rb
+│   │   ├── insee_calls_pause.rb
 │   │   ├── insee_sirene_api_client.rb
 │   │   ├── je_clique_ou_pas_api_client.rb
 │   │   ├── local_sign_in_policy.rb
@@ -1693,6 +1697,7 @@
 │   │   ├── message_template_interpolator.rb
 │   │   ├── message_template_preview_renderer.rb
 │   │   ├── piste_api_client.rb
+│   │   ├── reopening_changes_checker.rb
 │   │   ├── scope_migration_service.rb
 │   │   ├── skip_links_implemented_checker.rb
 │   │   ├── title_defined_checker.rb
@@ -1701,6 +1706,7 @@
 │   ├── validators
 │   │   ├── email_recently_verified_validator.rb
 │   │   ├── french_phone_number_validator.rb
+│   │   ├── public_ip_address_validator.rb
 │   │   └── siret_validator.rb
 │   └── views
 │       ├── admin
@@ -2164,7 +2170,8 @@
 │       │   └── responsable_traitement.text.erb
 │       ├── hubee_mailer
 │       │   ├── administrateur_metier_cert_dc.text.erb
-│       │   └── administrateur_metier_dila.text.erb
+│       │   ├── administrateur_metier_dila.text.erb
+│       │   └── formulaire_qf_validation.text.erb
 │       ├── instruction
 │       │   ├── approve_authorization_requests
 │       │   │   └── new.html.erb
@@ -2647,7 +2654,9 @@
 │   │   ├── 20260608193914_enforce_single_default_form_template_per_habilitation_type.rb
 │   │   ├── 20260615100802_backfill_default_form_templates.rb
 │   │   ├── 20260619070911_migrate_api_entreprise_tva_scope_from_vies_to_dgfip.rb
-│   │   └── 20260909164402_add_read_webhooks_scope_to_oauth_applications.rb
+│   │   ├── 20260909164402_add_read_webhooks_scope_to_oauth_applications.rb
+│   │   ├── 20260918115707_create_bulk_update_for_api_entreprise_on_responsable_traitement.rb
+│   │   └── 20260921180000_create_settings.rb
 │   ├── rails_pulse_migrate
 │   │   └── .keep
 │   ├── rails_pulse_schema.rb
@@ -2690,9 +2699,11 @@
 │   │   ├── feature_flags.md
 │   │   ├── geo_data.md
 │   │   ├── habilitation_type_dynamique.md
+│   │   ├── insee_coupure_et_rattrapage.md
 │   │   ├── modal.md
 │   │   ├── modification_scopes.md
 │   │   ├── nouveau_type_d_habilitation.md
+│   │   ├── parametrage_en_base.md
 │   │   ├── pre_remplissage_query_params.md
 │   │   ├── scopes_config.md
 │   │   ├── templates_messages.md
@@ -2770,7 +2781,8 @@
 │   │   │   ├── api_impots_particuliers_editeur_extra_contacts.feature
 │   │   │   ├── api_infinoe_choix_formulaire.feature
 │   │   │   ├── api_r2p_deprecie.feature
-│   │   │   └── api_sfip_choix_formulaire.feature
+│   │   │   ├── api_sfip_choix_formulaire.feature
+│   │   │   └── champs_apim_dgfip.feature
 │   │   ├── france_connect_test_france_connect_eidas_block.feature
 │   │   ├── le_taxi_test_technical_team_block.feature
 │   │   ├── page_unique
@@ -3279,6 +3291,7 @@
 │   │   ├── run_malware_scan_on_documents_spec.rb
 │   │   ├── stats
 │   │   │   └── fetch_stats_data_spec.rb
+│   │   ├── update_organization_insee_payload_spec.rb
 │   │   └── validate_api_data_keys_spec.rb
 │   ├── jobs
 │   │   ├── backfill_malware_scan_sha256_job_spec.rb
@@ -3331,11 +3344,13 @@
 │   │   ├── authorization_definition_spec.rb
 │   │   ├── authorization_document_spec.rb
 │   │   ├── authorization_request
+│   │   │   ├── api_ficoba_spec.rb
 │   │   │   ├── api_impot_particulier_spec.rb
 │   │   │   ├── api_particulier_demarche_numerique_spec.rb
 │   │   │   ├── api_particulier_spec.rb
 │   │   │   ├── api_particulier_with_france_connect_embedded_fields_spec.rb
 │   │   │   ├── api_sfip_spec.rb
+│   │   │   ├── formulaire_qf_spec.rb
 │   │   │   ├── hubee_cert_dc_spec.rb
 │   │   │   ├── hubee_dila_spec.rb
 │   │   │   └── produits_dinum_spec.rb
@@ -3356,6 +3371,9 @@
 │   │   │   │   └── documents_spec.rb
 │   │   │   ├── authorization_extensions
 │   │   │   │   └── cnous_data_extraction_criteria_spec.rb
+│   │   │   ├── dgfip_extensions
+│   │   │   │   ├── adresse_ip_publique_spec.rb
+│   │   │   │   └── adresse_postale_contact_technique_spec.rb
 │   │   │   └── user_roles_spec.rb
 │   │   ├── contact_definition_spec.rb
 │   │   ├── contact_spec.rb
@@ -3390,6 +3408,7 @@
 │   │   ├── role_hierarchy_spec.rb
 │   │   ├── role_set_spec.rb
 │   │   ├── service_provider_spec.rb
+│   │   ├── setting_spec.rb
 │   │   ├── static_application_record_spec.rb
 │   │   ├── subdomain_spec.rb
 │   │   ├── user_spec.rb
@@ -3529,6 +3548,8 @@
 │   │   ├── france_connect_data_builder_spec.rb
 │   │   ├── geo_api_gouv_client_spec.rb
 │   │   ├── hubee_api_client_spec.rb
+│   │   ├── insee_api_authentication_spec.rb
+│   │   ├── insee_calls_pause_spec.rb
 │   │   ├── insee_sirene_api_client_spec.rb
 │   │   ├── je_clique_ou_pas_api_client_spec.rb
 │   │   ├── local_sign_in_policy_spec.rb
@@ -3575,6 +3596,7 @@
 │   └── validators
 │       ├── email_recently_verified_validator_spec.rb
 │       ├── french_phone_number_validator_spec.rb
+│       ├── public_ip_address_validator_spec.rb
 │       └── siret_validator_spec.rb
 ├── storage
 │   └── .keep
@@ -3594,4 +3616,4 @@
     ├── .keep
     └── javascript
         └── .keep
-511 directories, 3224 files
+512 directories, 3245 files
