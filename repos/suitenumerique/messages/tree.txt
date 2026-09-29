@@ -35,6 +35,7 @@
 │   ├── scalingo_postcompile
 │   ├── scalingo_postfrontend
 │   ├── smoke-test-front
+│   ├── smoke-test-keycloak
 │   ├── test-keycloak
 │   ├── update_app_cacert.sh
 │   └── update_openapi_schema
@@ -56,9 +57,11 @@
 │   │   ├── postgresql.defaults
 │   │   └── socks-proxy.defaults
 │   ├── paas
+│   │   ├── scalingo_ota_promote.py
 │   │   ├── scalingo_postcompile
 │   │   ├── scalingo_postfrontend
-│   │   └── scalingo_run_web
+│   │   ├── scalingo_run_web
+│   │   └── scalingo_stage_ota
 │   └── python-uv
 │       ├── Dockerfile
 │       └── strip-python.sh
@@ -74,10 +77,12 @@
 │   ├── env.md
 │   ├── frontend-threads-cache.md
 │   ├── identity-provider.md
-│   ├── imports-mbox.md
 │   ├── imports-pst.md
 │   ├── imports.md
 │   ├── internationalization.md
+│   ├── mbox.md
+│   ├── mobile-assets.md
+│   ├── mobile-release.md
 │   ├── mobile.md
 │   ├── model-custom-attributes.md
 │   ├── permissions.md
@@ -369,7 +374,8 @@
     │   │   │   │   └── test_oidc_sync.py
     │   │   │   ├── exporter
     │   │   │   │   ├── __init__.py
-    │   │   │   │   └── test_export_task.py
+    │   │   │   │   ├── test_export_task.py
+    │   │   │   │   └── test_s3_multipart_uploader.py
     │   │   │   ├── importer
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── conftest.py
@@ -500,6 +506,7 @@
     │   ├── src
     │   │   ├── __tests__
     │   │   │   ├── attachment-preview.spec.ts
+    │   │   │   ├── compose-floating-window.spec.ts
     │   │   │   ├── link-preview.spec.ts
     │   │   │   ├── login.spec.ts
     │   │   │   ├── mailbox-settings.spec.ts
@@ -549,57 +556,11 @@
     │   │   │       │   └── res
     │   │   │       │       ├── drawable
     │   │   │       │       │   ├── ic_launcher_background.xml
-    │   │   │       │       │   └── splash.png
-    │   │   │       │       ├── drawable-land-hdpi
-    │   │   │       │       │   └── splash.png
-    │   │   │       │       ├── drawable-land-ldpi
-    │   │   │       │       │   └── splash.png
-    │   │   │       │       ├── drawable-land-mdpi
-    │   │   │       │       │   └── splash.png
-    │   │   │       │       ├── drawable-land-night-hdpi
-    │   │   │       │       │   └── splash.png
-    │   │   │       │       ├── drawable-land-night-ldpi
-    │   │   │       │       │   └── splash.png
-    │   │   │       │       ├── drawable-land-night-mdpi
-    │   │   │       │       │   └── splash.png
-    │   │   │       │       ├── drawable-land-night-xhdpi
-    │   │   │       │       │   └── splash.png
-    │   │   │       │       ├── drawable-land-night-xxhdpi
-    │   │   │       │       │   └── splash.png
-    │   │   │       │       ├── drawable-land-night-xxxhdpi
-    │   │   │       │       │   └── splash.png
-    │   │   │       │       ├── drawable-land-xhdpi
-    │   │   │       │       │   └── splash.png
-    │   │   │       │       ├── drawable-land-xxhdpi
-    │   │   │       │       │   └── splash.png
-    │   │   │       │       ├── drawable-land-xxxhdpi
-    │   │   │       │       │   └── splash.png
-    │   │   │       │       ├── drawable-night
-    │   │   │       │       │   └── splash.png
-    │   │   │       │       ├── drawable-port-hdpi
-    │   │   │       │       │   └── splash.png
-    │   │   │       │       ├── drawable-port-ldpi
-    │   │   │       │       │   └── splash.png
-    │   │   │       │       ├── drawable-port-mdpi
-    │   │   │       │       │   └── splash.png
-    │   │   │       │       ├── drawable-port-night-hdpi
-    │   │   │       │       │   └── splash.png
-    │   │   │       │       ├── drawable-port-night-ldpi
-    │   │   │       │       │   └── splash.png
-    │   │   │       │       ├── drawable-port-night-mdpi
-    │   │   │       │       │   └── splash.png
-    │   │   │       │       ├── drawable-port-night-xhdpi
-    │   │   │       │       │   └── splash.png
-    │   │   │       │       ├── drawable-port-night-xxhdpi
-    │   │   │       │       │   └── splash.png
-    │   │   │       │       ├── drawable-port-night-xxxhdpi
-    │   │   │       │       │   └── splash.png
-    │   │   │       │       ├── drawable-port-xhdpi
-    │   │   │       │       │   └── splash.png
-    │   │   │       │       ├── drawable-port-xxhdpi
-    │   │   │       │       │   └── splash.png
-    │   │   │       │       ├── drawable-port-xxxhdpi
-    │   │   │       │       │   └── splash.png
+    │   │   │       │       │   └── splash_legacy.xml
+    │   │   │       │       ├── drawable-night-nodpi
+    │   │   │       │       │   └── splash_icon.png
+    │   │   │       │       ├── drawable-nodpi
+    │   │   │       │       │   └── splash_icon.png
     │   │   │       │       ├── drawable-v24
     │   │   │       │       │   └── ic_launcher_foreground.xml
     │   │   │       │       ├── drawable-xxhdpi
@@ -641,6 +602,7 @@
     │   │   │       │       │   └── ic_launcher_round.png
     │   │   │       │       ├── values
     │   │   │       │       │   ├── colors.xml
+    │   │   │       │       │   ├── ic_launcher_background.xml
     │   │   │       │       │   ├── strings.xml
     │   │   │       │       │   └── styles.xml
     │   │   │       │       ├── values-fr
@@ -667,9 +629,12 @@
     │   │   ├── settings.gradle
     │   │   └── variables.gradle
     │   ├── assets
+    │   │   ├── icon-background.png
     │   │   ├── icon-dark.png
     │   │   ├── icon-foreground.png
     │   │   ├── icon-only.png
+    │   │   ├── logo-dark.png
+    │   │   ├── logo.png
     │   │   ├── splash-dark.png
     │   │   └── splash.png
     │   ├── caddy
@@ -703,6 +668,7 @@
     │   │   │   │   │   └── Main.storyboard
     │   │   │   │   ├── Info.plist
     │   │   │   │   ├── MainViewController.swift
+    │   │   │   │   ├── SceneDelegate.swift
     │   │   │   │   ├── WebAuthSessionPlugin.swift
     │   │   │   │   ├── en.lproj
     │   │   │   │   │   └── Localizable.strings
@@ -781,32 +747,12 @@
     │   │   │   │   │   │   ├── launchericon-72x72.png
     │   │   │   │   │   │   └── launchericon-96x96.png
     │   │   │   │   │   ├── ios
-    │   │   │   │   │   │   ├── 100.png
-    │   │   │   │   │   │   ├── 1024.png
-    │   │   │   │   │   │   ├── 114.png
-    │   │   │   │   │   │   ├── 120.png
-    │   │   │   │   │   │   ├── 128.png
     │   │   │   │   │   │   ├── 144.png
     │   │   │   │   │   │   ├── 152.png
     │   │   │   │   │   │   ├── 16.png
     │   │   │   │   │   │   ├── 167.png
     │   │   │   │   │   │   ├── 180.png
-    │   │   │   │   │   │   ├── 192.png
-    │   │   │   │   │   │   ├── 20.png
-    │   │   │   │   │   │   ├── 256.png
-    │   │   │   │   │   │   ├── 29.png
-    │   │   │   │   │   │   ├── 32.png
-    │   │   │   │   │   │   ├── 40.png
-    │   │   │   │   │   │   ├── 50.png
-    │   │   │   │   │   │   ├── 512.png
-    │   │   │   │   │   │   ├── 57.png
-    │   │   │   │   │   │   ├── 58.png
-    │   │   │   │   │   │   ├── 60.png
-    │   │   │   │   │   │   ├── 64.png
-    │   │   │   │   │   │   ├── 72.png
-    │   │   │   │   │   │   ├── 76.png
-    │   │   │   │   │   │   ├── 80.png
-    │   │   │   │   │   │   └── 87.png
+    │   │   │   │   │   │   └── 32.png
     │   │   │   │   │   └── pwa
     │   │   │   │   │       ├── icon-120.png
     │   │   │   │   │       ├── icon-128.png
@@ -912,10 +858,12 @@
     │   │   ├── check-node-modules.mjs
     │   │   ├── create-ota-bucket.mjs
     │   │   ├── generate-ios-xcconfig.mjs
+    │   │   ├── generate-mobile-assets.mjs
     │   │   ├── generate-ota-keys.mjs
     │   │   ├── ota-lib.mjs
     │   │   ├── print-bundle-stats.mjs
-    │   │   └── publish-ota.mjs
+    │   │   ├── publish-ota.mjs
+    │   │   └── rollback-ota.mjs
     │   ├── src
     │   │   ├── bootstrap.tsx
     │   │   ├── features
@@ -1089,6 +1037,17 @@
     │   │   │   │   ├── message-template-block
     │   │   │   │   │   ├── _index.scss
     │   │   │   │   │   └── index.tsx
+    │   │   │   │   ├── mobile-toolbar
+    │   │   │   │   │   ├── _index.scss
+    │   │   │   │   │   ├── buttons.tsx
+    │   │   │   │   │   ├── drawer-context.ts
+    │   │   │   │   │   ├── file-block-buttons.tsx
+    │   │   │   │   │   ├── format-panel.tsx
+    │   │   │   │   │   ├── hooks.ts
+    │   │   │   │   │   ├── index.tsx
+    │   │   │   │   │   ├── insert-file-button.tsx
+    │   │   │   │   │   └── link-editor.tsx
+    │   │   │   │   ├── native-file-url-resolver.test.ts
     │   │   │   │   ├── paste-sanitizer.test.ts
     │   │   │   │   ├── paste-sanitizer.ts
     │   │   │   │   ├── quoted-message-block
@@ -1096,7 +1055,12 @@
     │   │   │   │   ├── signature-block
     │   │   │   │   │   ├── _index.scss
     │   │   │   │   │   └── index.tsx
+    │   │   │   │   ├── smart-trailing-block.test.ts
     │   │   │   │   ├── smart-trailing-block.ts
+    │   │   │   │   ├── toolbar-focus.test.ts
+    │   │   │   │   ├── toolbar-focus.ts
+    │   │   │   │   ├── toolbar-menus.tsx
+    │   │   │   │   ├── toolbar-separator.tsx
     │   │   │   │   ├── toolbar.tsx
     │   │   │   │   ├── utils.test.ts
     │   │   │   │   └── utils.ts
@@ -1119,6 +1083,7 @@
     │   │   │   │   │   ├── combobox
     │   │   │   │   │   │   ├── _index.scss
     │   │   │   │   │   │   ├── chip.tsx
+    │   │   │   │   │   │   ├── index.test.tsx
     │   │   │   │   │   │   └── index.tsx
     │   │   │   │   │   ├── message-composer
     │   │   │   │   │   │   ├── index.tsx
@@ -1127,6 +1092,8 @@
     │   │   │   │   │   ├── message-form
     │   │   │   │   │   │   ├── _index.scss
     │   │   │   │   │   │   ├── attachment-uploader.tsx
+    │   │   │   │   │   │   ├── draft-save-status.test.tsx
+    │   │   │   │   │   │   ├── draft-save-status.tsx
     │   │   │   │   │   │   ├── drive-attachment-picker.tsx
     │   │   │   │   │   │   ├── drive-icon.tsx
     │   │   │   │   │   │   ├── dropzone.tsx
@@ -1135,6 +1102,7 @@
     │   │   │   │   │   │   ├── index.tsx
     │   │   │   │   │   │   ├── rhf-checkbox.tsx
     │   │   │   │   │   │   ├── rhf-contact-combobox.tsx
+    │   │   │   │   │   │   ├── rhf-file-uploader.test.tsx
     │   │   │   │   │   │   ├── rhf-file-uploader.tsx
     │   │   │   │   │   │   ├── rhf-input.tsx
     │   │   │   │   │   │   ├── rhf-json-schema-field.tsx
@@ -1143,14 +1111,21 @@
     │   │   │   │   │   ├── search-filters-form
     │   │   │   │   │   │   ├── _index.scss
     │   │   │   │   │   │   └── index.tsx
+    │   │   │   │   │   ├── search-filters-modal
+    │   │   │   │   │   │   └── index.tsx
     │   │   │   │   │   ├── search-input
     │   │   │   │   │   │   ├── _index.scss
-    │   │   │   │   │   │   └── index.tsx
+    │   │   │   │   │   │   ├── index.tsx
+    │   │   │   │   │   │   └── use-search-query.ts
     │   │   │   │   │   └── zod-json-schema-serializer
     │   │   │   │   │       └── index.ts
     │   │   │   │   └── hooks
     │   │   │   │       └── use-attachments.tsx
     │   │   │   ├── hooks
+    │   │   │   │   ├── use-app-version.test.tsx
+    │   │   │   │   ├── use-app-version.ts
+    │   │   │   │   ├── use-compact-tab-drill-down.test.tsx
+    │   │   │   │   ├── use-compact-tab-drill-down.ts
     │   │   │   │   ├── use-confirm-before-close.tsx
     │   │   │   │   └── use-restore-focus-on-nested-modal-close.tsx
     │   │   │   ├── i18n
@@ -1197,6 +1172,28 @@
     │   │   │   │       │       ├── compose-signature-action.tsx
     │   │   │   │       │       ├── page-content.tsx
     │   │   │   │       │       └── signature-data-grid.tsx
+    │   │   │   │       ├── compose
+    │   │   │   │       │   ├── compose-dock-overflow
+    │   │   │   │       │   │   └── index.tsx
+    │   │   │   │       │   ├── compose-mobile-stack
+    │   │   │   │       │   │   ├── _index.scss
+    │   │   │   │       │   │   └── index.tsx
+    │   │   │   │       │   ├── compose-overview
+    │   │   │   │       │   │   ├── _index.scss
+    │   │   │   │       │   │   ├── index.test.tsx
+    │   │   │   │       │   │   └── index.tsx
+    │   │   │   │       │   ├── compose-standalone.scss
+    │   │   │   │       │   ├── compose-window
+    │   │   │   │       │   │   ├── _index.scss
+    │   │   │   │       │   │   ├── close-confirm-modal.tsx
+    │   │   │   │       │   │   ├── compose-window-form.tsx
+    │   │   │   │       │   │   └── index.tsx
+    │   │   │   │       │   ├── compose-windows-layer
+    │   │   │   │       │   │   ├── _index.scss
+    │   │   │   │       │   │   └── index.tsx
+    │   │   │   │       │   ├── use-compact-compose.ts
+    │   │   │   │       │   ├── use-compose-draft-data.ts
+    │   │   │   │       │   └── use-compose-sender.ts
     │   │   │   │       ├── labels-widget
     │   │   │   │       │   ├── _index.scss
     │   │   │   │       │   └── index.tsx
@@ -1306,6 +1303,20 @@
     │   │   │   │       │   │   ├── _index.scss
     │   │   │   │       │   │   └── index.tsx
     │   │   │   │       │   └── no-mailbox.tsx
+    │   │   │   │       ├── mobile
+    │   │   │   │       │   ├── bottom-bar
+    │   │   │   │       │   │   ├── _index.scss
+    │   │   │   │       │   │   └── index.tsx
+    │   │   │   │       │   ├── filter-compose-bar
+    │   │   │   │       │   │   ├── _index.scss
+    │   │   │   │       │   │   ├── index.test.tsx
+    │   │   │   │       │   │   └── index.tsx
+    │   │   │   │       │   ├── thread-header
+    │   │   │   │       │   │   ├── _index.scss
+    │   │   │   │       │   │   └── index.tsx
+    │   │   │   │       │   └── thread-toolbar
+    │   │   │   │       │       ├── _index.scss
+    │   │   │   │       │       └── index.tsx
     │   │   │   │       ├── notifications-settings
     │   │   │   │       │   └── modal-notifications.tsx
     │   │   │   │       ├── thread-panel
@@ -1314,15 +1325,17 @@
     │   │   │   │       │   │   ├── thread-item
     │   │   │   │       │   │   │   ├── _index.scss
     │   │   │   │       │   │   │   ├── index.tsx
-    │   │   │   │       │   │   │   ├── thread-action-bar
-    │   │   │   │       │   │   │   │   └── index.tsx
     │   │   │   │       │   │   │   ├── thread-drag-preview.tsx
-    │   │   │   │       │   │   │   └── thread-item-senders.tsx
+    │   │   │   │       │   │   │   ├── thread-item-senders.tsx
+    │   │   │   │       │   │   │   └── thread-item-swipe.tsx
+    │   │   │   │       │   │   ├── thread-panel-filter.test.tsx
     │   │   │   │       │   │   ├── thread-panel-filter.tsx
     │   │   │   │       │   │   └── thread-panel-header.tsx
     │   │   │   │       │   ├── hooks
     │   │   │   │       │   │   ├── listbox-navigation.test.ts
     │   │   │   │       │   │   ├── listbox-navigation.ts
+    │   │   │   │       │   │   ├── use-selected-filters.ts
+    │   │   │   │       │   │   ├── use-thread-listbox.test.tsx
     │   │   │   │       │   │   ├── use-thread-listbox.ts
     │   │   │   │       │   │   └── use-thread-panel-filters.ts
     │   │   │   │       │   └── index.tsx
@@ -1340,7 +1353,9 @@
     │   │   │   │           │   │   ├── _index.scss
     │   │   │   │           │   │   ├── index.tsx
     │   │   │   │           │   │   ├── sidebar-drive-action.tsx
-    │   │   │   │           │   │   └── sidebar.tsx
+    │   │   │   │           │   │   ├── sidebar.tsx
+    │   │   │   │           │   │   ├── without-print-action.test.tsx
+    │   │   │   │           │   │   └── without-print-action.ts
     │   │   │   │           │   ├── calendar-invite
     │   │   │   │           │   │   ├── _index.scss
     │   │   │   │           │   │   ├── calendar-helper.tsx
@@ -1349,6 +1364,9 @@
     │   │   │   │           │   │   ├── event-display.ts
     │   │   │   │           │   │   ├── ics-samples-check.test.ts
     │   │   │   │           │   │   ├── index.test.ts
+    │   │   │   │           │   │   └── index.tsx
+    │   │   │   │           │   ├── compose-draft-placeholder
+    │   │   │   │           │   │   ├── _index.scss
     │   │   │   │           │   │   └── index.tsx
     │   │   │   │           │   ├── message-reply-form
     │   │   │   │           │   │   ├── _index.scss
@@ -1422,45 +1440,79 @@
     │   │   │   │   ├── use-archive.tsx
     │   │   │   │   ├── use-assigned-users.ts
     │   │   │   │   ├── use-can-edit-threads.tsx
+    │   │   │   │   ├── use-compose-message.ts
     │   │   │   │   ├── use-copy-deep-link.tsx
     │   │   │   │   ├── use-delete-drafts.tsx
     │   │   │   │   ├── use-delete-label.tsx
     │   │   │   │   ├── use-delete-thread-access.tsx
     │   │   │   │   ├── use-delete.tsx
     │   │   │   │   ├── use-flag.tsx
+    │   │   │   │   ├── use-leave-thread.tsx
     │   │   │   │   ├── use-mention-read.tsx
+    │   │   │   │   ├── use-open-draft-in-window.tsx
     │   │   │   │   ├── use-print.tsx
     │   │   │   │   ├── use-read.tsx
     │   │   │   │   ├── use-spam.tsx
     │   │   │   │   ├── use-split-thread.tsx
     │   │   │   │   ├── use-starred.tsx
     │   │   │   │   ├── use-thread-assignment.ts
+    │   │   │   │   ├── use-thread-row-actions.ts
+    │   │   │   │   ├── use-thread-unread.ts
     │   │   │   │   └── use-trash.tsx
     │   │   │   ├── native
+    │   │   │   │   ├── auth-errors.ts
     │   │   │   │   ├── auth-session.ts
+    │   │   │   │   ├── auth.test.ts
     │   │   │   │   ├── auth.ts
     │   │   │   │   ├── csrf.test.ts
     │   │   │   │   ├── csrf.ts
+    │   │   │   │   ├── deep-link.test.ts
+    │   │   │   │   ├── deep-link.ts
     │   │   │   │   ├── download.test.ts
     │   │   │   │   ├── download.ts
+    │   │   │   │   ├── drive-picker.test.ts
+    │   │   │   │   ├── drive-picker.ts
+    │   │   │   │   ├── fetch.test.ts
+    │   │   │   │   ├── fetch.ts
+    │   │   │   │   ├── haptics.ts
+    │   │   │   │   ├── keyboard.ts
+    │   │   │   │   ├── media-url.test.ts
+    │   │   │   │   ├── media-url.ts
+    │   │   │   │   ├── ota-version.mjs
+    │   │   │   │   ├── ota-version.test.ts
     │   │   │   │   ├── ota.test.ts
     │   │   │   │   ├── ota.ts
     │   │   │   │   ├── pkce.test.ts
     │   │   │   │   ├── pkce.ts
     │   │   │   │   ├── platform.ts
+    │   │   │   │   ├── pull-to-refresh-indicator
+    │   │   │   │   │   ├── _index.scss
+    │   │   │   │   │   └── index.tsx
     │   │   │   │   ├── push.test.ts
     │   │   │   │   ├── push.ts
     │   │   │   │   ├── sso-invariants.test.ts
-    │   │   │   │   └── use-native-download.tsx
+    │   │   │   │   ├── use-native-download.tsx
+    │   │   │   │   ├── use-ota-update-toast.tsx
+    │   │   │   │   └── use-pull-to-refresh.ts
     │   │   │   ├── providers
     │   │   │   │   ├── admin-maildomain.tsx
     │   │   │   │   ├── attachment-preview.tsx
+    │   │   │   │   ├── compose-windows
+    │   │   │   │   │   ├── broadcast.ts
+    │   │   │   │   │   ├── core.test.ts
+    │   │   │   │   │   ├── core.ts
+    │   │   │   │   │   ├── index.tsx
+    │   │   │   │   │   ├── persistence.test.ts
+    │   │   │   │   │   ├── persistence.ts
+    │   │   │   │   │   └── types.ts
     │   │   │   │   ├── config.tsx
     │   │   │   │   ├── fold.tsx
     │   │   │   │   ├── mailbox-cache.test.ts
     │   │   │   │   ├── mailbox-cache.ts
     │   │   │   │   ├── mailbox.test.ts
     │   │   │   │   ├── mailbox.tsx
+    │   │   │   │   ├── message-templates-cache.test.ts
+    │   │   │   │   ├── message-templates-cache.ts
     │   │   │   │   ├── modal-store
     │   │   │   │   │   ├── controlled-modal.tsx
     │   │   │   │   │   ├── global-store.ts
@@ -1513,6 +1565,10 @@
     │   │   │   │       ├── copyable-input
     │   │   │   │       │   ├── _index.scss
     │   │   │   │       │   └── index.tsx
+    │   │   │   │       ├── drawer
+    │   │   │   │       │   ├── _index.scss
+    │   │   │   │       │   ├── index.test.tsx
+    │   │   │   │       │   └── index.tsx
     │   │   │   │       ├── dropdown-button
     │   │   │   │       │   ├── _index.scss
     │   │   │   │       │   └── index.tsx
@@ -1524,6 +1580,32 @@
     │   │   │   │       │   ├── _index.scss
     │   │   │   │       │   └── index.tsx
     │   │   │   │       ├── feedback-widget
+    │   │   │   │       │   └── index.tsx
+    │   │   │   │       ├── icon
+    │   │   │   │       │   ├── _index.scss
+    │   │   │   │       │   ├── assets
+    │   │   │   │       │   │   ├── assign.svg
+    │   │   │   │       │   │   ├── at-sign.svg
+    │   │   │   │       │   │   ├── circle-dashed.svg
+    │   │   │   │       │   │   ├── dns.svg
+    │   │   │   │       │   │   ├── error-off.svg
+    │   │   │   │       │   │   ├── filter-notification.svg
+    │   │   │   │       │   │   ├── fold.svg
+    │   │   │   │       │   │   ├── forward.svg
+    │   │   │   │       │   │   ├── inbox.svg
+    │   │   │   │       │   │   ├── mail-open.svg
+    │   │   │   │       │   │   ├── mail-out.svg
+    │   │   │   │       │   │   ├── mail-plus.svg
+    │   │   │   │       │   │   ├── mail-unread.svg
+    │   │   │   │       │   │   ├── reply-all.svg
+    │   │   │   │       │   │   ├── reply.svg
+    │   │   │   │       │   │   ├── sign.svg
+    │   │   │   │       │   │   ├── signature.svg
+    │   │   │   │       │   │   ├── tag-fill.svg
+    │   │   │   │       │   │   ├── tag.svg
+    │   │   │   │       │   │   ├── text-wrap.svg
+    │   │   │   │       │   │   └── unfold.svg
+    │   │   │   │       │   ├── index.test.tsx
     │   │   │   │       │   └── index.tsx
     │   │   │   │       ├── label-badge
     │   │   │   │       │   ├── _index.scss
@@ -1587,6 +1669,7 @@
     │   │   │       │   ├── index.test.ts
     │   │   │       │   ├── index.ts
     │   │   │       │   └── types.ts
+    │   │   │       ├── uuid.ts
     │   │   │       ├── view-helper
     │   │   │       │   ├── index.test.ts
     │   │   │       │   └── index.ts
@@ -1597,13 +1680,24 @@
     │   │   │   ├── use-current-folder-name.ts
     │   │   │   ├── use-debounce-callback.ts
     │   │   │   ├── use-document-title.ts
+    │   │   │   ├── use-drag-gesture.test.ts
+    │   │   │   ├── use-drag-gesture.ts
     │   │   │   ├── use-feature.ts
+    │   │   │   ├── use-focus-trap.test.tsx
+    │   │   │   ├── use-focus-trap.ts
     │   │   │   ├── use-is-shared-context.ts
+    │   │   │   ├── use-long-press.test.tsx
+    │   │   │   ├── use-long-press.ts
     │   │   │   ├── use-mailbox-access-management.ts
     │   │   │   ├── use-popup-position.ts
     │   │   │   ├── use-previous.ts
+    │   │   │   ├── use-refresh-feedback.ts
+    │   │   │   ├── use-restore-focus.test.tsx
+    │   │   │   ├── use-restore-focus.ts
     │   │   │   ├── use-safe-router-push.ts
     │   │   │   ├── use-searchable-pagination.ts
+    │   │   │   ├── use-swipe-actions.test.tsx
+    │   │   │   ├── use-swipe-actions.ts
     │   │   │   ├── use-task-status.ts
     │   │   │   ├── use-url-search-params.ts
     │   │   │   └── use-visibility-observer.ts
@@ -1618,13 +1712,16 @@
     │   │   │   │   └── index.tsx
     │   │   │   ├── index.tsx
     │   │   │   └── mailbox
-    │   │   │       └── $mailboxId
-    │   │   │           ├── index.tsx
-    │   │   │           ├── new
-    │   │   │           │   └── index.tsx
-    │   │   │           ├── route.tsx
-    │   │   │           └── thread
-    │   │   │               └── $threadId.tsx
+    │   │   │       ├── $mailboxId
+    │   │   │       │   ├── index.tsx
+    │   │   │       │   ├── new
+    │   │   │       │   │   └── index.tsx
+    │   │   │       │   ├── route.tsx
+    │   │   │       │   └── thread
+    │   │   │       │       └── $threadId.tsx
+    │   │   │       └── $mailboxId_
+    │   │   │           └── draft
+    │   │   │               └── $draftId.tsx
     │   │   ├── styles
     │   │   │   ├── cunningham-tokens.css
     │   │   │   ├── cunningham-tokens.scss
@@ -1633,6 +1730,7 @@
     │   │   │   ├── main.scss
     │   │   │   ├── reset.scss
     │   │   │   ├── utils
+    │   │   │   │   ├── _controls.scss
     │   │   │   │   ├── _index.scss
     │   │   │   │   └── breakpoints.scss
     │   │   │   └── views
@@ -1640,9 +1738,7 @@
     │   │   │       ├── domain
     │   │   │       │   └── _index.scss
     │   │   │       └── mailbox
-    │   │   │           ├── _index.scss
-    │   │   │           └── new
-    │   │   │               └── _index.scss
+    │   │   │           └── _index.scss
     │   │   └── vite-env.d.ts
     │   ├── tsconfig.json
     │   ├── tsr.config.json
@@ -1676,6 +1772,7 @@
     │   ├── pyproject.toml
     │   ├── tests
     │   │   ├── __init__.py
+    │   │   ├── conftest.py
     │   │   ├── test_address_fuzz.py
     │   │   ├── test_ambiguity_defects.py
     │   │   ├── test_composer.py
@@ -1695,10 +1792,6 @@
     │   └── uv.lock
     ├── keycloak
     │   ├── Dockerfile
-    │   ├── Procfile
-    │   ├── buildpack
-    │   │   ├── scalingo_env.sh
-    │   │   └── scalingo_postcompile.sh
     │   ├── bulk-role-membership
     │   │   ├── .gitignore
     │   │   ├── README.md
@@ -1717,12 +1810,14 @@
     │   │               └── META-INF
     │   │                   └── services
     │   │                       └── org.keycloak.services.resource.RealmResourceProviderFactory
+    │   ├── caddy
+    │   │   └── Caddyfile
+    │   ├── entrypoint.sh
     │   ├── realm.json
     │   ├── scripts
     │   │   ├── META-INF
     │   │   │   └── keycloak-scripts.json
     │   │   └── map-group-attribute.js
-    │   ├── system.properties
     │   ├── tests
     │   │   └── test_bulk_role_membership.py
     │   └── themes
@@ -1800,4 +1895,4 @@
             ├── requirements.txt
             ├── test_smtp.py
             └── test_socks_proxy.py
-395 directories, 1620 files
+391 directories, 1719 files

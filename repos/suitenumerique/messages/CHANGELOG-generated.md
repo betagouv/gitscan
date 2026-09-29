@@ -1,20 +1,28 @@
-## Changelog : messages (30 derniers jours, au 10 septembre 2026)
+## Changelog : messages (30 derniers jours, au 28 septembre 2026)
 
 ### Résumé
-Ce mois-ci, les développements se sont concentrés sur le renforcement de la sécurité (protection du serveur de mail, accès administrateur) et l'extension des capacités de gestion pour les administrateurs (export de données, gestion DNS). L'expérience utilisateur a également été affinée, notamment sur mobile et via une meilleure gestion des adresses e-mail internationales.
+Ce mois-ci, le projet a franchi une étape importante avec une refonte complète de l'interface utilisateur de l'application mobile pour une expérience plus fluide. Les administrateurs de domaine disposent désormais de nouvelles capacités d'exportation de boîtes de réception, tandis que l'expérience sur le web a été enrichie par la possibilité de rédiger des messages dans des fenêtres flottantes et une meilleure mémorisation des préférences de navigation.
 
 ### Évolutions fonctionnelles
-- **Administration** : Ajout de la possibilité d'exporter des boîtes mail pour les administrateurs de domaine [#789](https://github.com/suitenumerique/messages/issues/789) et de lister les enregistrements DNS pour l'ensemble des domaines [#780](https://github.com/suitenumerique/messages/issues/780).
-- **Messagerie** : Support des adresses e-mail internationales (i18n) et normalisation automatique des boîtes mail en minuscules [#785](https://github.com/suitenumerique/messages/issues/785).
-- **Interface utilisateur** : Amélioration de l'affichage des extraits de messages et de l'expéditeur dans les fils de discussion, et masquage des statistiques du dossier "Envoyés".
-- **Statistiques** : Les messages classés comme spam ou déplacés vers la corbeille sont désormais exclus par défaut des statistiques.
-- **Mobile** : Amélioration du processus de déconnexion pour garantir la fermeture complète de la session d'identité.
+- **Expérience Mobile** : Refonte complète de l'interface utilisateur (UI overhaul) et amélioration de l'ergonomie (gestion du clavier, focus du rédacteur et support du mode paysage).
+- **Expérience Web** : Introduction de la rédaction de messages dans des fenêtres flottantes.
+- **Navigation** : Amélioration de la fluidité avec la mémorisation de la dernière boîte de réception active et redirection automatique vers l'inbox lors d'un changement de boîte.
+- **Administration** : Possibilité pour les administrateurs de domaine d'exporter des boîtes de réception [#789](https://github.com/suitenumerique/messages/issues/789).
+- **Gestion des messages** : Amélioration du support du format mbox (gestion des mots-clés) et exclusion par défaut des spams et de la corbeille des statistiques.
+- **Corrections** : Résolution de problèmes sur le popover de recherche (tablettes), le parsing des noms de dossiers IMAP et l'affichage des expéditeurs dans les fils de discussion.
+- **API** : Ajout de la gestion des canaux lors de l'utilisation de l'API de soumission [#794](https://github.com/suitenumerique/messages/issues/794).
 
 ### Évolutions techniques
-- **Sécurité** : Renforcement du composant de transport de mail (pymta) avec de nouvelles limites et paramètres [#777](https://github.com/suitenumerique/messages/issues/777) et amélioration de la précision du vérificateur SPF [#782](https://github.com/suitenumerique/messages/issues/782).
-- **Sécurité** : Mise en place d'une liste blanche d'adresses IP pour l'accès à l'administration Django et durcissement des workflows GitHub Actions.
-- **Backend** : Optimisation du MTA (pymta) concernant la gestion des variables d'environnement, la cohérence et la journalisation (logging) [#783](https://github.com/suitenumerique/messages/issues/783).
-- **Mobile** : Migration de la configuration de l'identité et du schéma d'authentification vers un système piloté par les variables d'environnement.
+- **Infrastructure Mobile** : Mise à jour de Capacitor (v8.5), adoption du cycle de vie UIScene et automatisation de la publication des mises à jour "Over-The-Air" (OTA) depuis Scalingo.
+- **Sécurité** : 
+    - Renforcement de la protection via l'ajout de listes d'autorisation d'IP (allowlists) pour la console Keycloak [#793](https://github.com/suitenumerique/messages/issues/793) et l'administration Django.
+    - Gestion de la suspension des clés API personnelles et des brouillons [#804](https://github.com/suitenumerique/messages/issues/804).
+    - Durcissement des workflows GitHub Actions.
+- **Backend** : Optimisation des performances en déplaçant les tâches d'exportation vers le worker d'importation [#805](https://github.com/suitenumerique/messages/issues/805).
+- **Frontend** : Migration vers les nouveaux packages `ui-kit` et optimisation du redimensionnement des iframes de mails via `ResizeObserver`.
+- **Maintenance** : Mise à jour de Keycloak [#798](https://github.com/suitenumerique/messages/issues/798) et amélioration du fuzzing pour `jmap-email` [#792](https://github.com/suitenumerique/messages/issues/792).
 
 ### Autres changements
-- **Documentation** : Ajout d'un guide de configuration pour le fournisseur d'identité [#781](https://github.com/suitenumerique/messages/issues/781).
+- **Documentation** : Restructuration de la documentation mobile en guides distincts (onboarding et release).
+- **Design** : Régénération des icônes et des écrans de démarrage (splash screens) de l'application mobile.
+- **Versioning** : Mise à jour de la distribution et des packages [#800](https://github.com/suitenumerique/messages/issues/800).

@@ -1,15 +1,14 @@
 {
   "url": "https://github.com/suitenumerique/messages",
   "name": "messages",
-  "description": "Une plateforme de messagerie collaborative conçue pour les équipes, permettant la gestion de boîtes de réception partagées ou personnelles. Elle intègre des fonctionnalités d'intelligence artificielle et repose sur des standards ouverts pour une communication sécurisée.",
+  "description": "Une plateforme de messagerie collaborative conçue pour les équipes, permettant la gestion de boîtes de réception partagées ou personnelles. Elle intègre des fonctionnalités d'intelligence artificielle, une recherche plein texte et une architecture basée sur des standards ouverts.",
   "language": "Python",
   "features": [
     "Collaboration & Workflow",
     "Recherche & Filtres",
-    "Notifications & Alertes",
     "Intelligence Artificielle & NLP",
     "Gestion des médias & Assets",
-    "Sécurité & Conformité"
+    "Notifications & Alertes"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -17,12 +16,13 @@
     "Vite",
     "TanStack Router",
     "BlockNote.js",
+    "Postfix",
+    "Keycloak",
     "PostgreSQL",
     "Redis",
-    "Celery",
-    "Keycloak",
     "OpenSearch",
-    "Postfix"
+    "Celery",
+    "Docker"
   ],
   "components": [
     "API REST & GraphQL",
@@ -32,8 +32,7 @@
     "Docker & Conteneurs",
     "Celery & Queue asynchrone",
     "Authentification (composant)",
-    "Webhooks & Événements",
-    "Microservices & Architecture"
+    "Webhooks & Événements"
   ],
   "auth": {
     "methods": [
@@ -44,11 +43,11 @@
       "Keycloak"
     ]
   },
-  "tests": "Tests via Makefile (test-front-distroless, test-keycloak)",
+  "tests": "Tests d'images de production (smoke tests) pour le frontend et Keycloak via Makefile",
   "workflows": [
     "GitHub Actions"
   ],
-  "lastActivity": "2026-09-10T22:22:50+02:00",
+  "lastActivity": "2026-09-28T21:41:46+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
@@ -59,7 +58,6 @@
     "TypeScript",
     "Docker & Conteneurs",
     "CI/CD & GitHub Actions",
-    "Intelligence Artificielle & LLM",
-    "Standards & Schémas"
+    "Bases de données SQL"
   ]
 }
