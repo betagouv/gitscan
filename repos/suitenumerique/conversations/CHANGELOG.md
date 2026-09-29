@@ -11,10 +11,12 @@ and this project adheres to
 ### Added
 
 - ✨(back) add the data.gouv connector for a beta cohort
+- ✨(back) add Staan web search tool
 
 ### Changed
 
 - ✨(front) replace input actions with a + dropdown menu
+- 🔧(project) replace MinIO with RustFS for local development and CI
 
 ### Fixed
 

@@ -1,31 +1,20 @@
-## Changelog : conversations (30 derniers jours, au 21 septembre 2026)
+## Changelog : conversations (30 derniers jours, au 28 septembre 2026)
 
 ### Résumé
-Ce mois-ci, le projet a franchi des étapes importantes avec l'ajout de nouvelles capacités, notamment un connecteur pour data.gouv et un outil de génération de présentations. L'expérience utilisateur a été considérablement fluidifiée, particulièrement lors des échanges avec l'IA, tandis que la robustesse technique a été renforcée par une mise à jour majeure de l'infrastructure IA et l'implémentation de nouveaux outils d'évaluation de la qualité des réponses.
+Ce mois-ci, Conversations s'enrichit de nouveaux outils puissants (recherche web, génération de présentations, connecteur data.gouv) et améliore significativement la fluidité de l'interface de chat. Le projet renforce également sa robustesse technique via une mise à jour majeure de son SDK d'IA et l'implémentation de nouveaux cadres d'évaluation pour garantir la qualité des réponses.
 
 ### Évolutions fonctionnelles
-- **Nouvelles fonctionnalités** :
-    - Ajout d'un connecteur pour les données de data.gouv.
-    - Introduction d'un outil de génération de présentations (slide decks).
-- **Interface utilisateur (UI/UX)** :
-    - Refonte de la zone de saisie avec un nouveau menu déroulant "+" pour les actions.
-    - Amélioration de la fluidité du chat : meilleure gestion de l'affichage des questions pendant le streaming de la réponse et gestion plus intuitive des erreurs de saisie ou de l'historique.
-    - Ajout de messages d'information pour expliquer les délais en cas de limitation de débit (rate limiting).
-- **Administration** :
-    - Amélioration de la gestion des conversations : affichage de leur taille et augmentation du nombre de conversations visibles par page pour faciliter les actions groupées.
+- **Nouveaux outils IA** : ajout de la recherche web via Staan, de la génération de présentations (slide decks) et d'un connecteur pour data.gouv.
+- **Amélioration de l'interface (UI/UX)** : remplacement des actions d'entrée par un menu déroulant "+", affichage de la taille des conversations dans l'administration, et meilleure gestion visuelle du streaming des réponses.
+- **Fiabilité du chat** : corrections sur la gestion de l'historique, la prévention des doubles envois et la reprise après échec de connexion.
+- **Gestion de l'usage** : introduction de limitations de débit (throttling) pour la création de projets et de conversations, avec des messages d'information pour l'utilisateur en cas de limite atteinte.
 
 ### Évolutions techniques
-- **Intelligence Artificielle** :
-    - Migration vers la version 5 du Vercel AI SDK et mise à jour du format de stockage des messages.
-    - Mise en place d'un nouveau framework d'évaluation comportementale pour tester la fiabilité des réponses de l'IA.
-- **Sécurité et Performance** :
-    - Implémentation de limitations de débit (throttling) sur la création de projets et de conversations pour protéger le système.
-    - Optimisation des requêtes de la liste des projets pour garantir un ordre de tri stable.
-- **Infrastructure et CI/CD** :
-    - Audit de sécurité des workflows GitHub Actions.
-    - Optimisation de la CI : correction des vérifications de changelog et modification de la source des images MinIO.
-    - Résolution de problèmes liés à l'environnement de développement (Vite/Dev Container).
+- **Mise à jour majeure** : migration vers le SDK Vercel AI v5 et adaptation du format de stockage des messages.
+- **Tests et évaluation** : déploiement d'un nouveau framework d'évaluation comportementale pour mesurer la qualité des réponses de l'IA.
+- **Infrastructure et CI/CD** : remplacement de MinIO par RustFS pour le développement local et la CI, optimisation des images de conteneurs et audit de sécurité des workflows GitHub Actions.
+- **Optimisations backend** : refactorisation du module de configuration et amélioration de la stabilité des requêtes de listes.
 
 ### Autres changements
-- **Documentation** : Refonte de la procédure de release et documentation des paramètres de limitation de débit de l'API.
-- **Internationalisation** : Mise à jour des chaînes de traduction ([#717](https://github.com/suitenumerique/conversations/pull/717), [#711](https://github.com/suitenumerique/conversations/pull/711)).
+- **Documentation** : révision de la procédure de publication des versions (release).
+- **Internationalisation** : mises à jour des traductions ([#717](https://github.com/suitenumerique/conversations/pull/717), [#711](https://github.com/suitenumerique/conversations/pull/711)).
