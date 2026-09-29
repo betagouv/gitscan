@@ -8,6 +8,31 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
+- ✨(oidc) allow to send the RP-initiated logout request with POST
+
+## [0.0.29] - 2026-08-25
+
+### Changed
+
+- ✨(malware) fill all free slots in launch_next_analysis
+- ♻️(malware) rename launch_next_analysis to launch_next_analyses
+
+### Fixed
+
+- 🐛(malware) handle polling retry exhaustion in analyse_file_async
+- 🐛(malware) pass file_hash to failed_analysis in retry guards
+- 🐛(malware) make delete_detection tolerant to duplicate paths
+- 🐛(malware) make failed_analysis tolerant to duplicate paths
+- 🐛(malware) stop stacking duplicate detections in analyse_file
+
+## [0.0.28] - 2026-08-21
+
+### Removed
+
+- 🔥(malware) remove unicity constraint on path column
+
 ## [0.0.27] - 2026-06-22
 
 ### Added
@@ -220,7 +245,9 @@ and this project adheres to
 - ✨(oidc) add the authentication backends #2
 - ✨(oidc) add refresh token tools #3
 
-[unreleased]: https://github.com/suitenumerique/django-lasuite/compare/v0.0.27...main
+[unreleased]: https://github.com/suitenumerique/django-lasuite/compare/v0.0.29...main
+[0.0.29]: https://github.com/suitenumerique/django-lasuite/releases/v0.0.29
+[0.0.28]: https://github.com/suitenumerique/django-lasuite/releases/v0.0.28
 [0.0.27]: https://github.com/suitenumerique/django-lasuite/releases/v0.0.27
 [0.0.26]: https://github.com/suitenumerique/django-lasuite/releases/v0.0.26
 [0.0.25]: https://github.com/suitenumerique/django-lasuite/releases/v0.0.25
