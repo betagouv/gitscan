@@ -1,27 +1,25 @@
-## Changelog : service-national-universel (30 derniers jours, au 23 septembre 2026)
+## Changelog : service-national-universel (30 derniers jours, au 28 septembre 2026)
 
 ### Résumé
-Ce mois a été principalement consacré à un renforcement massif de la sécurité de la plateforme et à une simplification de l'écosystème. De nombreux correctifs ont été apportés pour garantir la confidentialité des données (protection des informations personnelles et des secrets) et pour mieux cloisonner les accès entre les différents types d'utilisateurs (jeunes, référents, administration). Parallèlement, plusieurs parcours de gestion obsolètes ont été supprimés pour alléger le service.
+Ce mois-ci a été principalement consacré à un effort massif de sécurisation de la plateforme et à un nettoyage important des fonctionnalités obsolètes. Plusieurs anciens parcours (inscription, phase 1, représentants légaux) ont été retirés pour simplifier l'expérience, tandis que de nombreux correctifs ont été déployés pour renforcer la protection des données personnelles et la robustesse des accès.
 
 ### Évolutions fonctionnelles
-- **Simplification des parcours :**
-    - Suppression des tunnels d'inscription et de réinscription ([#5358](https://github.com/betagouv/service-national-universel/issues/5358)).
-    - Suppression du parcours dédié aux représentants légaux ([#5357](https://github.com/betagouv/service-national-universel/issues/5357)).
-    - Suppression des fonctionnalités d'inscription pour les structures ([#5290](https://github.com/betagouv/service-national-universel/issues/5290)).
-- **Information utilisateur :**
-    - Ajout de bandeaux d'information concernant l'indisponibilité du service sur les pages de connexion et la base de connaissance ([#5296](https://github.com/betagouv/service-national-universel/issues/5296), [#5289](https://github.com/betagouv/service-national-universel/issues/5289)).
-- **Nouveauté :**
-    - Mise en place de l'import en masse pour les remboursements liés au code de la route ([#5286](https://github.com/betagouv/service-national-universel/issues/5286)).
+- **Simplification du parcours utilisateur**
+  - Décommissionnement de plusieurs parcours et écrans devenus obsolètes : tunnel d'inscription et de réinscription [#5358](https://github.com/betagouv/service-national-universel/issues/5358), écran "jeune affecté" [#5412](https://github.com/betagouv/service-national-universel/issues/5412), parcours des représentants légaux [#5357](https://github.com/betagouv/service-national-universel/issues/5357) et fonctionnalités d'inscription pour les structures [#5290](https://github.com/betagouv/service-national-universel/issues/5290).
+  - Retrait des écritures liées à la phase 1 et des objectifs d'inscription [#5449](https://github.com/betagouv/service-national-universel/issues/5449).
+- **Information utilisateur**
+  - Ajout de bandeaux d'information concernant l'indisponibilité temporaire de la plateforme sur les pages de connexion et la base de connaissance [#5296](https://github.com/betagouv/service-national-universel/issues/5296) [#5289](https://github.com/betagouv/service-national-universel/issues/5289).
 
 ### Évolutions techniques
-- **Sécurité (Renforcement majeur) :**
-    - **Contrôle d'accès et cloisonnement :** Application stricte de la matrice de rôles côté serveur et cloisonnement des données (dossiers jeunes, missions, centres de cohésion, candidatures) pour éviter qu'un utilisateur n'accède aux données d'un autre ([#5378](https://github.com/betagouv/service-national-universel/issues/5378), [#5375](https://github.com/betagouv/service-national-universel/issues/5375), [#5338](https://github.com/betagouv/service-national-universel/issues/5338), [#5319](https://github.com/betagouv/service-national-universel/issues/5319)).
-    - **Protection de la vie privée (PII) :** Masquage des données personnelles et des secrets dans les logs, les outils de télémétrie (Sentry, Plausible) et les flux d'emails ([#5370](https://github.com/betagouv/service-national-universel/issues/5370), [#5337](https://github.com/betagouv/service-national-universel/issues/5337), [#5330](https://github.com/betagouv/service-national-universel/issues/5330), [#5293](https://github.com/betagouv/service-national-universel/issues/5293)).
-    - **Correction de vulnérabilités :** Résolution de nombreuses failles de type IDOR (accès non autorisé via l'ID d'une ressource) sur les tickets support et les données utilisateurs ([#5302](https://github.com/betagouv/service-national-universel/issues/5302), [#5294](https://github.com/betagouv/service-national-universel/issues/5294), [#5298](https://github.com/betagouv/service-national-universel/issues/5298), [#5299](https://github.com/betagouv/service-national-universel/issues/5299), [#5300](https://github.com/betagouv/service-national-universel/issues/5300)).
-    - **Prévention des injections :** Contrôle des injections HTML et sécurisation des redirections après connexion ([#5377](https://github.com/betagouv/service-national-universel/issues/5377), [#5366](https://github.com/betagouv/service-national-universel/issues/5366)).
-    - **Authentification :** Sécurisation des jetons de signature, de la gestion des sessions et du processus 2FA ([#5368](https://github.com/betagouv/service-national-universel/issues/5368), [#5348](https://github.com/betagouv/service-national-universel/issues/5348), [#5325](https://github.com/betagouv/service-national-universel/issues/5325)).
-- **Infrastructure & CI/CD :**
-    - Optimisation des workflows GitHub Actions (gestion du cache et pilotage des runners) ([#5329](https://github.com/betagouv/service-national-universel/issues/5329), [#5327](https://github.com/betagouv/service-national-universel/issues/5327), [#5326](https://github.com/betagouv/service-national-universel/issues/5326), [#5316](https://github.com/betagouv/service-national-universel/issues/5316)).
-    - Nettoyage de l'environnement de test (suppression de conteneurs MongoDB résiduels et sécurisation des fixtures de test) ([#5328](https://github.com/betagouv/service-national-universel/issues/5328), [#5324](https://github.com/betagouv/service-national-universel/issues/5324), [#5331](https://github.com/betagouv/service-national-universel/issues/5331)).
-- **Architecture :**
-    - Décommissionnement de l'administration CLE ([#5315](https://github.com/betagouv/service-national-universel/issues/5315)) et retrait de schémas de données obsolètes ([#5356](https://github.com/betagouv/service-national-universel/issues/5356)).
+- **Sécurité et protection des données**
+  - **Contrôle d'accès et étanchéité** : Renforcement massif des permissions pour prévenir les accès non autorisés (IDOR) et cloisonnement des données par rôle (agents, référents, structures) [#5302](https://github.com/betagouv/service-national-universel/issues/5302) [#5319](https://github.com/betagouv/service-national-universel/issues/5319) [#5342](https://github.com/betagouv/service-national-universel/issues/5342).
+  - **Confidentialité (RGPD)** : Protection de la vie privée par le masquage des données personnelles (PII) et des secrets dans les journaux d'erreurs (Sentry) et les logs applicatifs [#5446](https://github.com/betagouv/service-national-universel/issues/5446) [#5431](https://github.com/betagouv/service-national-universel/issues/5431) [#5337](https://github.com/betagouv/service-national-universel/issues/5337). Suppression de l'outil de télémétrie Plausible [#5401](https://github.com/betagouv/service-national-universel/issues/5401).
+  - **Authentification et sessions** : Sécurisation des jetons (invalidation des jetons exposés ou obsolètes) [#5451](https://github.com/betagouv/service-national-universel/issues/5451), protection contre les attaques CSRF [#5428](https://github.com/betagouv/service-national-universel/issues/5428) et durcissement de la gestion des cookies de session [#5406](https://github.com/betagouv/service-national-universel/issues/5406).
+  - **Intégrité des échanges** : Protection contre les injections HTML [#5377](https://github.com/betagouv/service-national-universel/issues/5377), sécurisation des pièces jointes (analyse antivirus) [#5443](https://github.com/betagouv/service-national-universel/issues/5443) et assainissement des contenus des emails officiels [#5452](https://github.com/betagouv/service-national-universel/issues/5452).
+- **Infrastructure et DevOps**
+  - **Optimisation de la CI/CD** : Intégration des suites de tests du support dans la CI [#5436](https://github.com/betagouv/service-national-universel/issues/5436) et optimisation de la gestion du cache npm sur les runners pour accélérer les déploiements [#5327](https://github.com/betagouv/service-national-universel/issues/5327).
+  - **Performance** : Optimisation de la consommation mémoire des tâches planifiées (cron) pour éviter les surcharges lors des mises à jour [#5448](https://github.com/betagouv/service-national-universel/issues/5448).
+
+### Autres changements
+- **Maintenance du système**
+  - Nettoyage de la base de données et retrait de composants d'administration obsolètes (administration CLE, tables de répartition) [#5315](https://github.com/betagouv/service-national-universel/issues/5315) [#5356](https://github.com/betagouv/service-national-universel/issues/5356).
