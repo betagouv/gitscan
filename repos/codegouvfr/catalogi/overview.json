@@ -1,15 +1,14 @@
 {
   "url": "https://github.com/codegouvfr/catalogi",
   "name": "catalogi",
-  "description": "Application de gestion de catalogues de logiciels permettant de répertorier et de centraliser des solutions logicielles. Elle est utilisée pour fournir des listes de logiciels recommandés aux administrations françaises.",
+  "description": "Une application web de catalogue de logiciels conçue pour gérer et répertorier des solutions logicielles, utilisée notamment par les administrations françaises.",
   "language": "TypeScript",
   "features": [
     "Gestion métier générale",
     "API & Intégrations",
     "Recherche & Filtres",
     "Administration & Backoffice",
-    "Données & Schémas",
-    "Gestion des utilisateurs & Permissions"
+    "Données & Schémas"
   ],
   "audience": "Agents de l'Administration",
   "dependencies": [
@@ -17,11 +16,11 @@
     "PostgreSQL",
     "Kysely",
     "Zod",
-    "Vitest",
     "Playwright",
+    "Vitest",
     "Turbo",
-    "Keycloak",
-    "Nginx"
+    "pnpm",
+    "Keycloak"
   ],
   "components": [
     "API REST & GraphQL",
@@ -30,27 +29,22 @@
     "Docker & Conteneurs",
     "Tests",
     "Design System (DSFR & UI libs)",
-    "Scripts & Utilitaires"
+    "CI/CD & Déploiement"
   ],
   "auth": {
     "methods": [
-      "oauth2",
       "sso",
-      "jwt"
+      "oauth2"
     ],
     "providers": [
       "Keycloak"
     ]
   },
-  "tests": [
-    "Vitest",
-    "Playwright",
-    "Testcontainers"
-  ],
+  "tests": "Vitest pour les tests unitaires et d'intégration de l'API, et Playwright pour les tests de bout en bout (E2E).",
   "workflows": [
     "GitHub Actions"
   ],
-  "lastActivity": "2026-09-22T12:14:28+02:00",
+  "lastActivity": "2026-09-25T10:37:59+02:00",
   "status": "active",
   "license": "MIT",
   "hasDocumentation": true,
