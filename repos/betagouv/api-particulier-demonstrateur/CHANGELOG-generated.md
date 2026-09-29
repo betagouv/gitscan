@@ -1,25 +1,23 @@
-## Changelog : api-particulier-demonstrateur (30 derniers jours, au 14/09/2026)
+## Changelog : api-particulier-demonstrateur (30 derniers jours, au 28 septembre 2026)
 
 ### Résumé
-Les récentes évolutions se concentrent sur l'amélioration de l'expérience utilisateur, notamment via une meilleure gestion des messages d'information et une interface plus fluide pour les cas d'usage "Cantine" et "Transport". La stabilité technique est également renforcée par une mise à jour de l'environnement de développement et de la chaîne de tests.
+Ce mois-ci, les évolutions se sont concentrées sur l'amélioration de l'expérience utilisateur et de la clarté de l'interface. L'accent a été mis sur l'optimisation des parcours "Cantine" et "Transport", notamment pour mieux guider les utilisateurs lors des étapes d'authentification FranceConnect et de téléchargement de documents.
 
 ### Évolutions fonctionnelles
-- **Amélioration du parcours utilisateur** :
-    - Ajout de messages d'information concernant la récupération automatique des justificatifs avant l'étape FranceConnect ([#99](https://github.com/betagouv/api-particulier-demonstrateur/issues/99)).
-    - Optimisation de la page de connexion : déplacement du panneau d'information FranceConnect vers la connexion et masquage automatique pour les profils (personas) non concernés.
-- **Corrections d'interface (UI)** :
-    - Ajustements visuels dans le cas d'usage "Cantine" pour garantir la visibilité des alertes et un espacement correct des boutons.
-    - Correction de l'affichage des boîtes d'aide (Transport/COG) pour respecter la largeur des colonnes.
-    - Nettoyage de la typographie (suppression d'espaces superflus dans les textes d'aide).
+- **Parcours Cantine** :
+    - Ajout d'un message d'information sur la récupération automatique des justificatifs avant l'étape FranceConnect [#6944](https://github.com/betagouv/api-particulier-demonstrateur/issues/6944).
+    - Amélioration de l'interface de connexion : ajustement des espacements et correction de l'affichage des alertes pour éviter qu'elles ne soient masquées par le pied de page.
+    - Correction d'une coquille (espace superflu) dans le texte d'aide au téléchargement.
+- **Parcours Transport** :
+    - Déplacement du panneau d'information FranceConnect de la section éligibilité vers la section connexion pour une meilleure cohérence de parcours.
+    - Ajustement de la largeur de la boîte d'aide COG pour un meilleur rendu visuel dans ses colonnes.
+- **Authentification** :
+    - Masquage du panneau d'information FranceConnect pour les profils utilisateurs n'utilisant pas ce mode d'authentification.
 
 ### Évolutions techniques
-- **Infrastructure et CI/CD** :
-    - Mise à jour de l'environnement de CI pour utiliser Node 24 avec `npm ci`.
-- **Logique applicative** :
-    - Correction de la méthode de résolution des cas d'usage basée sur le segment de l'URL (pathname).
+- **Infrastructure & CI** : Mise à jour de la chaîne de CI pour l'exécution sous Node 24 avec `npm ci`.
+- **Routage** : Correction de la logique de résolution des cas d'usage basée sur les segments de l'URL (pathname).
 
 ### Autres changements
-- **Maintenance et qualité du code** :
-    - Mise à jour de Prettier (3.9) et reformatage de plusieurs layouts pour assurer la cohérence du style.
-    - Stabilisation de l'environnement via le verrouillage des versions majeures des dépendances.
-    - Automatisation des mises à jour de dépendances sur un cycle hebdomadaire.
+- **Qualité du code** : Mise à jour de la configuration Prettier (version 3.9) et reformatage de certains layouts.
+- **Maintenance** : Optimisation de la gestion des dépendances via la configuration de mises à jour hebdomadaires et le verrouillage des versions majeures pour Dependabot.
