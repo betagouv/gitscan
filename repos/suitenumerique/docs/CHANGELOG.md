@@ -8,15 +8,96 @@ and this project adheres to
 
 ### Added
 
+- 🚩(setting) add feature flag on Duplicate with Children #2721
+- 💄(frontend) redesign 404 error standalone page #2696
+- 💄(frontend) redesign 403 access denied page #2720
+- ✨(frontend) duplicate with subdocuments #2584
 - ✨(helm) allow disallowing search engine indexing per instance #2694
 - 🐛(frontend) reduce PostHog volume from web vitals and opt_in spam #2701
 - ✨(backend) expose the attachment max size in the config endpoint #2577
 - ✨(frontend) warn before uploading an attachment over the size limit #2577
+- ✨(loadtest) add a websocket load generator for the collaboration server
+- ✨(loadtest) add k6 scenarios for the page-open sequence and the heavy
+  endpoints
+- ✨(loadtest) add browser canaries measuring what a user feels under load
+- ✨(loadtest) add the grafana dashboards of the load-test campaign, valkey
+  included
+- 📝(documentation) add the load-testing guide
+- 🔧(helm) run grafana with those dashboards in the dev cluster, in place of
+  the prometheus console
+- ✨(backend) measure the calls to yhub and to the converters, the database
+  pool and the celery queue
+- ✨(backend) add a `LoadTest` configuration and its `loadtest` application,
+  minting sessions for load tests
+- ✨(collaboration) add opt-in prometheus metrics to yhub, server and worker,
+  protected by a bearer token
+- ✨(collaboration) report yhub errors to sentry, configured through
+  `SENTRY_*`
+- ✨(backend) add opt-in prometheus metrics on `/metrics`, protected by a
+  bearer token
+- ✨(helm) add a dedicated ingress for the prometheus metrics of the backend
+  and of yhub
+- ✨(helm) add a ServiceMonitor and a PodMonitor per component whose metrics
+  are enabled, and `backend.metrics.enabled`
+- 🔧(helm) scrape the metrics of the dev cluster with a trimmed
+  kube-prometheus-stack and the ServiceMonitors of the chart
+- 🔧(helm) serve the example console of django-prometheus on the dev
+  Prometheus
+- ✨(backend) add a service generating cached RS256 JWT tokens
+- ✨(backend) publish the JWT public key on a JWKS endpoint
+- 🔧(dev) generate the JWT signing key when bootstrapping the dev stack
+- ✨(collaboration) add an admin reset-connections endpoint on yhub
+- ✨(collaboration) add a create-ydoc endpoint on yhub
+- 🔧(backend) fine tune redis cache options
+- ✨(collaboration) soft-migrate legacy S3 documents into yhub
+- ✨(collaboration) replay legacy s3 version history into yhub
+- ✨(backend) add a service to call the yhub REST API
+- ✨(backend) call YHubService to seed initial document content
+- ✨(collaboration) add a get-ydoc endpoint on yhub
+- ✨(backend) duplicate a document through the collaboration server
+- ✨(backend) serve `documents/{id}/formatted-content/` from yhub
+- ✨(collaboration) notify the backend when the worker persists new content
+- 🐛(frontend) stop reconnecting to the websocket based on the status code
+- ✨(collaboration) let a user read the document's editing history
+- ✨(frontend) fall back to http polling when the websocket cannot be opened.
+- 🔧(collaboration) make the version-history granularity configurable through
+  `COLLABORATION_VERSION_GRANULARITY_MS`
+- ✨(frontend) keep a local copy of documents, so they open and stay editable
+  offline
+- 🐛(frontend) stop the service worker from caching the collaboration server's
+  rest api
+
+### Changed
+
+- ♻️(collaboration) migrate the collaboration server from hocuspocus to yhub
+- 💥(y-provider) y-provider becomes converter-only
+- 💥(backend) move the resource server JWKS from `/api/{version}/jwks` to
+  `/external_api/{version}/jwks`
+- 🔧(collaboration) adapt docker stack for development purpose
+- 🔧(helm) run a valkey for the backend and one for yhub in dev and feature
+- ✨(frontend) turn pasted doc links into interlinks #2713
 
 ### Fixed
 
+- 🐛(frontend) open search results in a new tab with ctrl/cmd+click #2719
+- 🐛(docker) pull minio images from pgsty
+- 🐛(backend) retry the duplicate of a document on a tree path collision
+- 🐛(frontend) clear callout background on Backspace #2052
 - 🐛(export) keep image aspect ratio in PDF columns #2670
 - 🐛(frontend) fix redirect after deleting a document #2706
+- 🐛(frontend) keep documents draggable with a mouse when zoomed #2727
+
+### Removed
+
+- 🔥(backend) remove the unused `CollaborationService`
+- 💥(backend) remove the `documents/{id}/can-edit/` endpoint
+- 💥(backend) remove the `documents/{id}/content/` endpoint
+- 🔥(backend) remove the document version endpoints.
+- 🔥(backend) remove `Document.content`
+
+### Security
+
+- 🔒️(collaboration) stop read-only users from sharing their cursor
 
 ## [v5.7.0] - 2026-09-15
 
@@ -25,6 +106,7 @@ and this project adheres to
 - 🔧(backend) fine tune redis cache options #2658
 - ✨(frontend) make the full last-update date available #1215
 - 💄(frontend) redesign email confirmation standalone page #2601
+- ✨(frontend) add markdown download option #2608
 
 ### Changed
 

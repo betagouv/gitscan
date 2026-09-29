@@ -28,6 +28,7 @@
 ├── .gitlint
 ├── .gitmodules
 ├── .sops.yaml
+├── AGENTS.md
 ├── CHANGELOG.md
 ├── CODE_OF_CONDUCT.md
 ├── CONTRIBUTING.md
@@ -45,6 +46,7 @@
 │   ├── buildpack_postfrontend.sh
 │   ├── buildpack_start.sh
 │   ├── compose
+│   ├── generate-jwt-private-key.sh
 │   ├── generate-oidc-store-refresh-token-key.sh
 │   ├── install-hooks.sh
 │   ├── manage
@@ -92,6 +94,26 @@
 │   ├── architecture.md
 │   ├── assets
 │   │   ├── banner-docs.png
+│   │   ├── diagrams
+│   │   │   ├── architecture-collaboration.mmd
+│   │   │   ├── architecture-collaboration.png
+│   │   │   ├── architecture-collaboration.svg
+│   │   │   ├── architecture-services.mmd
+│   │   │   ├── architecture-services.png
+│   │   │   ├── architecture-services.svg
+│   │   │   ├── architecture-trust.mmd
+│   │   │   ├── architecture-trust.png
+│   │   │   ├── architecture-trust.svg
+│   │   │   ├── render.sh
+│   │   │   ├── sequence-attachment.mmd
+│   │   │   ├── sequence-attachment.png
+│   │   │   ├── sequence-attachment.svg
+│   │   │   ├── sequence-conversion.mmd
+│   │   │   ├── sequence-conversion.png
+│   │   │   ├── sequence-conversion.svg
+│   │   │   ├── sequence-open-document.mmd
+│   │   │   ├── sequence-open-document.png
+│   │   │   └── sequence-open-document.svg
 │   │   ├── docs-logo.png
 │   │   ├── docs_ai_feature_v1.gif
 │   │   ├── docs_ai_feature_v2.gif
@@ -131,6 +153,8 @@
 │   │   └── scalingo.md
 │   ├── instances.md
 │   ├── languages-configuration.md
+│   ├── load-testing.md
+│   ├── metrics.md
 │   ├── profiling.md
 │   ├── release.md
 │   ├── resource_server.md
@@ -147,13 +171,16 @@
 │   │   ├── crowdin
 │   │   ├── kc_auth
 │   │   ├── kc_postgresql
-│   │   └── postgresql
+│   │   ├── postgresql
+│   │   ├── yhub
+│   │   └── yhub-postgres
 │   └── production.dist
 │       ├── backend
 │       ├── common
 │       ├── kc_postgresql
 │       ├── keycloak
 │       ├── postgresql
+│       ├── yhub
 │       └── yprovider
 ├── gitlint
 │   └── gitlint_emoji.py
@@ -187,6 +214,7 @@
     │   │   │   ├── permissions.py
     │   │   │   └── viewsets.py
     │   │   ├── factories.py
+    │   │   ├── instrumentation.py
     │   │   ├── malware_detection.py
     │   │   ├── management
     │   │   │   ├── __init__.py
@@ -196,9 +224,11 @@
     │   │   │       ├── clean_document.py
     │   │   │       ├── generate_volumetry.py
     │   │   │       ├── index.py
+    │   │   │       ├── migrate_documents.py
     │   │   │       ├── profile_volumetry.py
     │   │   │       ├── purge_silk_profiles.py
     │   │   │       └── update_files_content_type_metadata.py
+    │   │   ├── metrics.py
     │   │   ├── middleware.py
     │   │   ├── migrations
     │   │   │   ├── 0001_initial.py
@@ -234,6 +264,7 @@
     │   │   │   ├── 0031_clean_onboarding_accesses.py
     │   │   │   ├── 0032_remove_linktrace_is_masked.py
     │   │   │   ├── 0033_document_document_attachments_gin.py
+    │   │   │   ├── 0034_documentmigration.py
     │   │   │   └── __init__.py
     │   │   ├── models.py
     │   │   ├── services
@@ -241,10 +272,11 @@
     │   │   │   ├── ai_services
     │   │   │   │   ├── blocknote.py
     │   │   │   │   └── legacy.py
-    │   │   │   ├── collaboration_services.py
     │   │   │   ├── converter_services.py
+    │   │   │   ├── jwt_services.py
     │   │   │   ├── mime_types.py
-    │   │   │   └── search_indexers.py
+    │   │   │   ├── search_indexers.py
+    │   │   │   └── yhub_services.py
     │   │   ├── signals.py
     │   │   ├── static
     │   │   │   └── images
@@ -252,6 +284,7 @@
     │   │   ├── tasks
     │   │   │   ├── __init__.py
     │   │   │   ├── access.py
+    │   │   │   ├── documents.py
     │   │   │   ├── mail.py
     │   │   │   ├── search.py
     │   │   │   └── user_reconciliation.py
@@ -266,6 +299,7 @@
     │   │   │   ├── commands
     │   │   │   │   ├── test_clean_document.py
     │   │   │   │   ├── test_index.py
+    │   │   │   │   ├── test_migrate_documents.py
     │   │   │   │   └── test_update_files_content_type_metadata.py
     │   │   │   ├── conftest.py
     │   │   │   ├── data
@@ -277,26 +311,25 @@
     │   │   │   ├── documents
     │   │   │   │   ├── test_api_document_accesses.py
     │   │   │   │   ├── test_api_document_accesses_create.py
+    │   │   │   │   ├── test_api_document_accesses_me.py
     │   │   │   │   ├── test_api_document_invitations.py
-    │   │   │   │   ├── test_api_document_versions.py
     │   │   │   │   ├── test_api_documents_ai_proxy.py
     │   │   │   │   ├── test_api_documents_ai_transform.py
     │   │   │   │   ├── test_api_documents_ai_translate.py
     │   │   │   │   ├── test_api_documents_all.py
     │   │   │   │   ├── test_api_documents_ask_for_access.py
     │   │   │   │   ├── test_api_documents_attachment_upload.py
-    │   │   │   │   ├── test_api_documents_can_edit.py
     │   │   │   │   ├── test_api_documents_children_create.py
     │   │   │   │   ├── test_api_documents_children_list.py
     │   │   │   │   ├── test_api_documents_comments.py
-    │   │   │   │   ├── test_api_documents_content_retrieve.py
-    │   │   │   │   ├── test_api_documents_content_update.py
+    │   │   │   │   ├── test_api_documents_content_updated.py
     │   │   │   │   ├── test_api_documents_cors_proxy.py
     │   │   │   │   ├── test_api_documents_create.py
     │   │   │   │   ├── test_api_documents_create_for_owner.py
     │   │   │   │   ├── test_api_documents_create_with_file.py
     │   │   │   │   ├── test_api_documents_delete.py
     │   │   │   │   ├── test_api_documents_duplicate.py
+    │   │   │   │   ├── test_api_documents_duplicate_path_collision.py
     │   │   │   │   ├── test_api_documents_favorite.py
     │   │   │   │   ├── test_api_documents_favorite_list.py
     │   │   │   │   ├── test_api_documents_formatted_content.py
@@ -315,8 +348,7 @@
     │   │   │   │   ├── test_api_documents_threads.py
     │   │   │   │   ├── test_api_documents_trashbin.py
     │   │   │   │   ├── test_api_documents_tree.py
-    │   │   │   │   ├── test_api_documents_update.py
-    │   │   │   │   └── test_api_documents_update_extract_attachments.py
+    │   │   │   │   └── test_api_documents_update.py
     │   │   │   ├── external_api
     │   │   │   │   ├── __init__.py
     │   │   │   │   ├── test_external_api_documents.py
@@ -327,7 +359,6 @@
     │   │   │   │   ├── test_external_api_documents_invitation.py
     │   │   │   │   ├── test_external_api_documents_link_configuration.py
     │   │   │   │   ├── test_external_api_documents_media_auth.py
-    │   │   │   │   ├── test_external_api_documents_versions.py
     │   │   │   │   └── test_external_api_users.py
     │   │   │   ├── migrations
     │   │   │   │   ├── __init__.py
@@ -341,6 +372,7 @@
     │   │   │   │   ├── __init__.py
     │   │   │   │   └── test_openapi_schema.py
     │   │   │   ├── test_api_config.py
+    │   │   │   ├── test_api_jwks.py
     │   │   │   ├── test_api_throttling_document_throttle.py
     │   │   │   ├── test_api_user_reconciliation.py
     │   │   │   ├── test_api_users.py
@@ -349,7 +381,8 @@
     │   │   │   ├── test_api_utils_conditional_refresh_oidc_token.py
     │   │   │   ├── test_api_utils_filter_root_paths.py
     │   │   │   ├── test_api_utils_nest_tree.py
-    │   │   │   ├── test_api_utils_parse_http_conditional_headers.py
+    │   │   │   ├── test_instrumentation.py
+    │   │   │   ├── test_integration_yhub_migration.py
     │   │   │   ├── test_malware_detection.py
     │   │   │   ├── test_middleware.py
     │   │   │   ├── test_models_comment.py
@@ -358,22 +391,26 @@
     │   │   │   ├── test_models_invitations.py
     │   │   │   ├── test_models_user_reconciliation.py
     │   │   │   ├── test_models_users.py
+    │   │   │   ├── test_prometheus_metrics.py
     │   │   │   ├── test_services_ai_services.py
-    │   │   │   ├── test_services_collaboration_services.py
     │   │   │   ├── test_services_converter_orchestration.py
     │   │   │   ├── test_services_converter_services.py
     │   │   │   ├── test_services_docspec_converter.py
     │   │   │   ├── test_services_find_document_indexer.py
+    │   │   │   ├── test_services_jwks_client.py
+    │   │   │   ├── test_services_jwt_services.py
     │   │   │   ├── test_services_search_indexers.py
+    │   │   │   ├── test_services_yhub_services.py
     │   │   │   ├── test_settings.py
     │   │   │   ├── test_tasks_access.py
+    │   │   │   ├── test_tasks_documents.py
     │   │   │   ├── test_utils.py
     │   │   │   ├── test_utils_analytics.py
     │   │   │   ├── test_utils_create_tree_node_with_retry.py
     │   │   │   ├── test_utils_filter_descendants.py
-    │   │   │   ├── test_utils_s3_response_stream.py
     │   │   │   ├── test_utils_users_sharing_documents_with.py
     │   │   │   └── utils
+    │   │   │       ├── jwt_helper.py
     │   │   │       └── urls.py
     │   │   ├── urls.py
     │   │   ├── utils
@@ -382,7 +419,6 @@
     │   │   │   ├── dicts.py
     │   │   │   ├── paths.py
     │   │   │   ├── s3.py
-    │   │   │   ├── s3_response_stream.py
     │   │   │   ├── treebeard.py
     │   │   │   ├── users.py
     │   │   │   └── yjs.py
@@ -409,6 +445,22 @@
     │   │   ├── settings.py
     │   │   ├── urls.py
     │   │   └── wsgi.py
+    │   ├── loadtest
+    │   │   ├── __init__.py
+    │   │   ├── apps.py
+    │   │   ├── management
+    │   │   │   ├── __init__.py
+    │   │   │   └── commands
+    │   │   │       ├── __init__.py
+    │   │   │       ├── create_load_test_sessions.py
+    │   │   │       └── revoke_load_test_sessions.py
+    │   │   ├── manifests.py
+    │   │   ├── sessions.py
+    │   │   └── tests
+    │   │       ├── __init__.py
+    │   │       ├── conftest.py
+    │   │       ├── test_commands_sessions.py
+    │   │       └── test_settings.py
     │   ├── locale
     │   │   ├── br_FR
     │   │   │   └── LC_MESSAGES
@@ -596,16 +648,18 @@
     │   │       │   │   │   └── utils.test.ts
     │   │       │   │   ├── config.ts
     │   │       │   │   ├── fetchApi.ts
+    │   │       │   │   ├── fetchCollaborationApi.ts
     │   │       │   │   ├── helpers.tsx
     │   │       │   │   ├── index.ts
     │   │       │   │   ├── types.ts
     │   │       │   │   └── utils.ts
     │   │       │   ├── assets
     │   │       │   │   └── icons
+    │   │       │   │       ├── error-403.svg
+    │   │       │   │       ├── error-404.svg
     │   │       │   │       ├── error-coffee.png
     │   │       │   │       ├── error-planetes.png
     │   │       │   │       ├── icon-401.png
-    │   │       │   │       ├── icon-403.png
     │   │       │   │       ├── icon-404.svg
     │   │       │   │       ├── icon-docs.svg
     │   │       │   │       ├── icon-group.svg
@@ -1147,13 +1201,21 @@
     │   │       │   │   │   │   │   │   ├── CodeBlock.tsx
     │   │       │   │   │   │   │   │   ├── PdfBlock.tsx
     │   │       │   │   │   │   │   │   ├── UploadLoaderBlock.tsx
+    │   │       │   │   │   │   │   │   ├── __tests__
+    │   │       │   │   │   │   │   │   │   └── CalloutBlockShortcuts.test.ts
     │   │       │   │   │   │   │   │   └── index.ts
     │   │       │   │   │   │   │   ├── custom-inline-content
     │   │       │   │   │   │   │   │   ├── Interlinking
     │   │       │   │   │   │   │   │   │   ├── InterlinkingLinkInlineContent.tsx
     │   │       │   │   │   │   │   │   │   ├── LinkSelected.tsx
     │   │       │   │   │   │   │   │   │   ├── SearchPage.tsx
-    │   │       │   │   │   │   │   │   │   └── index.ts
+    │   │       │   │   │   │   │   │   │   ├── __tests__
+    │   │       │   │   │   │   │   │   │   │   ├── InterlinkingLinkInlineContent.test.tsx
+    │   │       │   │   │   │   │   │   │   │   ├── LinkSelected.test.tsx
+    │   │       │   │   │   │   │   │   │   │   ├── SearchPage.test.tsx
+    │   │       │   │   │   │   │   │   │   │   └── pasteInterlink.test.ts
+    │   │       │   │   │   │   │   │   │   ├── index.ts
+    │   │       │   │   │   │   │   │   │   └── pasteInterlink.ts
     │   │       │   │   │   │   │   │   └── index.ts
     │   │       │   │   │   │   │   ├── index.ts
     │   │       │   │   │   │   │   └── xl-multi-column
@@ -1161,12 +1223,10 @@
     │   │       │   │   │   │   ├── conf.ts
     │   │       │   │   │   │   ├── hook
     │   │       │   │   │   │   │   ├── __tests__
-    │   │       │   │   │   │   │   │   ├── useSaveDoc.test.tsx
     │   │       │   │   │   │   │   │   └── useUploadFile.test.tsx
     │   │       │   │   │   │   │   ├── index.ts
     │   │       │   │   │   │   │   ├── useCollaboration.tsx
     │   │       │   │   │   │   │   ├── useHeadings.tsx
-    │   │       │   │   │   │   │   ├── useSaveDoc.tsx
     │   │       │   │   │   │   │   ├── useScrollToBlockAnchor.tsx
     │   │       │   │   │   │   │   ├── useShortcuts.tsx
     │   │       │   │   │   │   │   └── useUploadFile.tsx
@@ -1181,11 +1241,14 @@
     │   │       │   │   │   ├── doc-export
     │   │       │   │   │   │   ├── __tests__
     │   │       │   │   │   │   │   ├── ExportMIT.test.tsx
+    │   │       │   │   │   │   │   ├── ModalExport.test.tsx
     │   │       │   │   │   │   │   ├── TablePDF.test.tsx
     │   │       │   │   │   │   │   ├── exportResolveFileUrl.test.ts
     │   │       │   │   │   │   │   ├── imagePDF.test.tsx
     │   │       │   │   │   │   │   ├── utils.test.ts
+    │   │       │   │   │   │   │   ├── utilsFilename.test.ts
     │   │       │   │   │   │   │   ├── utilsHtmlAccessibility.test.ts
+    │   │       │   │   │   │   │   ├── utilsMarkdown.test.ts
     │   │       │   │   │   │   │   ├── utilsMediaFilename.test.ts
     │   │       │   │   │   │   │   └── utilsPrint.test.ts
     │   │       │   │   │   │   ├── api
@@ -1228,6 +1291,7 @@
     │   │       │   │   │   │   ├── types.ts
     │   │       │   │   │   │   ├── utils.ts
     │   │       │   │   │   │   ├── utils_html.ts
+    │   │       │   │   │   │   ├── utils_markdown.ts
     │   │       │   │   │   │   └── utils_print.ts
     │   │       │   │   │   ├── doc-find-replace
     │   │       │   │   │   │   ├── components
@@ -1243,7 +1307,7 @@
     │   │       │   │   │   │   │   ├── DocHeaderEmoji.spec.tsx
     │   │       │   │   │   │   │   └── DocHeaderInfo.spec.tsx
     │   │       │   │   │   │   ├── components
-    │   │       │   │   │   │   │   ├── AlertNetwork.tsx
+    │   │       │   │   │   │   │   ├── AlertOffline.tsx
     │   │       │   │   │   │   │   ├── AlertRestore.tsx
     │   │       │   │   │   │   │   ├── DocFloatingBar.tsx
     │   │       │   │   │   │   │   ├── DocHeader.tsx
@@ -1254,6 +1318,7 @@
     │   │       │   │   │   │   └── index.tsx
     │   │       │   │   │   ├── doc-management
     │   │       │   │   │   │   ├── __tests__
+    │   │       │   │   │   │   │   ├── localDocs.test.tsx
     │   │       │   │   │   │   │   └── utils.test.tsx
     │   │       │   │   │   │   ├── api
     │   │       │   │   │   │   │   ├── index.ts
@@ -1262,9 +1327,6 @@
     │   │       │   │   │   │   │   ├── useCreateFavoriteDoc.tsx
     │   │       │   │   │   │   │   ├── useDeleteFavoriteDoc.tsx
     │   │       │   │   │   │   │   ├── useDoc.tsx
-    │   │       │   │   │   │   │   ├── useDocCanEdit.tsx
-    │   │       │   │   │   │   │   ├── useDocContent.tsx
-    │   │       │   │   │   │   │   ├── useDocContentUpdate.tsx
     │   │       │   │   │   │   │   ├── useDocOptions.tsx
     │   │       │   │   │   │   │   ├── useDocs.tsx
     │   │       │   │   │   │   │   ├── useDocsFavorite.tsx
@@ -1280,6 +1342,7 @@
     │   │       │   │   │   │   │   ├── icon-edit.svg
     │   │       │   │   │   │   │   └── simple-document.svg
     │   │       │   │   │   │   ├── components
+    │   │       │   │   │   │   │   ├── ConfirmationDuplicateModal.tsx
     │   │       │   │   │   │   │   ├── DocIcon.tsx
     │   │       │   │   │   │   │   ├── DocMoveModal.tsx
     │   │       │   │   │   │   │   ├── DocPage403.tsx
@@ -1288,6 +1351,8 @@
     │   │       │   │   │   │   │   ├── ModalRemoveDoc.tsx
     │   │       │   │   │   │   │   ├── NewDocButton.tsx
     │   │       │   │   │   │   │   ├── SimpleDocItem.tsx
+    │   │       │   │   │   │   │   ├── __tests__
+    │   │       │   │   │   │   │   │   └── DocToolBox.spec.tsx
     │   │       │   │   │   │   │   └── index.ts
     │   │       │   │   │   │   ├── hooks
     │   │       │   │   │   │   │   ├── __tests__
@@ -1299,10 +1364,12 @@
     │   │       │   │   │   │   │   ├── useDocTitleUpdate.tsx
     │   │       │   │   │   │   │   ├── useDocUtils.tsx
     │   │       │   │   │   │   │   ├── useImport.tsx
-    │   │       │   │   │   │   │   ├── useIsCollaborativeEditable.tsx
     │   │       │   │   │   │   │   └── useTrans.tsx
     │   │       │   │   │   │   ├── index.ts
+    │   │       │   │   │   │   ├── localDocs.ts
     │   │       │   │   │   │   ├── stores
+    │   │       │   │   │   │   │   ├── __tests__
+    │   │       │   │   │   │   │   │   └── useProviderStore.test.tsx
     │   │       │   │   │   │   │   ├── index.tsx
     │   │       │   │   │   │   │   ├── useDocStore.tsx
     │   │       │   │   │   │   │   └── useProviderStore.tsx
@@ -1313,6 +1380,7 @@
     │   │       │   │   │   │   │   ├── PresenterPrintDocument.spec.tsx
     │   │       │   │   │   │   │   ├── useBrowserFullscreen.spec.ts
     │   │       │   │   │   │   │   ├── useFitScale.spec.ts
+    │   │       │   │   │   │   │   ├── useOpenPresenterShortcut.spec.ts
     │   │       │   │   │   │   │   ├── usePresenterShortcuts.spec.ts
     │   │       │   │   │   │   │   └── useSlides.spec.ts
     │   │       │   │   │   │   ├── assets
@@ -1332,6 +1400,7 @@
     │   │       │   │   │   │   │   ├── useBrowserFullscreen.ts
     │   │       │   │   │   │   │   ├── useCopyPresenterLink.tsx
     │   │       │   │   │   │   │   ├── useFitScale.ts
+    │   │       │   │   │   │   │   ├── useOpenPresenterShortcut.ts
     │   │       │   │   │   │   │   ├── usePresenterShortcuts.ts
     │   │       │   │   │   │   │   └── useSlides.ts
     │   │       │   │   │   │   ├── index.ts
@@ -1423,10 +1492,13 @@
     │   │       │   │   │   │   ├── index.ts
     │   │       │   │   │   │   └── utils.ts
     │   │       │   │   │   ├── doc-versioning
+    │   │       │   │   │   │   ├── __tests__
+    │   │       │   │   │   │   │   └── utils.test.ts
     │   │       │   │   │   │   ├── api
     │   │       │   │   │   │   │   ├── index.ts
+    │   │       │   │   │   │   │   ├── useDocActivity.tsx
     │   │       │   │   │   │   │   ├── useDocVersion.tsx
-    │   │       │   │   │   │   │   └── useDocVersions.tsx
+    │   │       │   │   │   │   │   └── useRestoreDocVersion.tsx
     │   │       │   │   │   │   ├── components
     │   │       │   │   │   │   │   ├── DocVersionEditor.tsx
     │   │       │   │   │   │   │   ├── DocVersionHeader.tsx
@@ -1451,6 +1523,7 @@
     │   │       │   │   │       │   ├── DocsGridItem.tsx
     │   │       │   │   │       │   ├── DocsGridItemSharedButton.tsx
     │   │       │   │   │       │   ├── __tests__
+    │   │       │   │   │       │   │   ├── DocGridContentList.test.tsx
     │   │       │   │   │       │   │   └── DocsGridItemDate.test.tsx
     │   │       │   │   │       │   └── index.ts
     │   │       │   │   │       ├── conf.ts
@@ -1702,19 +1775,15 @@
     │   │   └── y-provider
     │   │       ├── Dockerfile
     │   │       ├── __tests__
-    │   │       │   ├── collaborationBackend.test.ts
-    │   │       │   ├── collaborationResetConnections.test.ts
-    │   │       │   ├── collaborationWSHandler.test.ts
     │   │       │   ├── convert.test.ts
-    │   │       │   ├── getDocumentConnectionInfoHandler.test.ts
-    │   │       │   ├── hocuspocusWS.test.ts
-    │   │       │   └── server.test.ts
+    │   │       │   ├── middlewares.test.ts
+    │   │       │   ├── server.test.ts
+    │   │       │   └── testUtils
+    │   │       │       └── adminJwt.ts
     │   │       ├── eslint.config.mjs
     │   │       ├── nodemon.json
     │   │       ├── package.json
     │   │       ├── src
-    │   │       │   ├── api
-    │   │       │   │   └── collaborationBackend.ts
     │   │       │   ├── blockSpecs
     │   │       │   │   ├── Callout.ts
     │   │       │   │   ├── InterlinkingLinkInline.ts
@@ -1723,17 +1792,13 @@
     │   │       │   │   └── index.ts
     │   │       │   ├── env.ts
     │   │       │   ├── handlers
-    │   │       │   │   ├── collaborationResetConnectionsHandler.ts
-    │   │       │   │   ├── collaborationWSHandler.ts
     │   │       │   │   ├── convertHandler.ts
-    │   │       │   │   ├── getDocumentConnectionInfoHandler.ts
     │   │       │   │   └── index.ts
     │   │       │   ├── helpers.ts
     │   │       │   ├── middlewares.ts
     │   │       │   ├── routes.ts
     │   │       │   ├── servers
     │   │       │   │   ├── appServer.ts
-    │   │       │   │   ├── hocuspocusServer.ts
     │   │       │   │   └── index.ts
     │   │       │   ├── services
     │   │       │   │   └── sentry.ts
@@ -1750,10 +1815,13 @@
     │   │   │   │   └── theme
     │   │   │   │       └── demo.json
     │   │   │   ├── values.dev-backend.yaml.gotmpl
-    │   │   │   └── values.impress.yaml.gotmpl
+    │   │   │   ├── values.impress.yaml.gotmpl
+    │   │   │   ├── values.prometheus.yaml.gotmpl
+    │   │   │   └── values.valkey.yaml.gotmpl
     │   │   └── feature
     │   │       ├── values.dev-backend.yaml.gotmpl
-    │   │       └── values.impress.yaml.gotmpl
+    │   │       ├── values.impress.yaml.gotmpl
+    │   │       └── values.valkey.yaml.gotmpl
     │   ├── helmfile.yaml.gotmpl
     │   └── impress
     │       ├── Chart.yaml
@@ -1778,27 +1846,129 @@
     │       │   ├── ingress_collaboration_api.yaml
     │       │   ├── ingress_collaboration_ws.yaml
     │       │   ├── ingress_media.yaml
+    │       │   ├── ingress_metrics.yaml
     │       │   ├── ingress_posthog.yaml
     │       │   ├── ingress_posthog_assets.yaml
+    │       │   ├── jwt_keys_job.yaml
+    │       │   ├── jwt_keys_rbac.yaml
     │       │   ├── media_svc.yaml
+    │       │   ├── podmonitor.yaml
     │       │   ├── posthog_assets_svc.yaml
     │       │   ├── posthog_svc.yaml
     │       │   ├── robots_txt_cm.yaml
+    │       │   ├── servicemonitor.yaml
     │       │   ├── theme_customization_file_cm.yaml
+    │       │   ├── yhub_deployment.yaml
+    │       │   ├── yhub_job_init_db.yaml
+    │       │   ├── yhub_svc.yaml
+    │       │   ├── yhub_worker_deployment.yaml
+    │       │   ├── yhub_worker_metrics_svc.yaml
     │       │   ├── yprovider_deployment.yaml
-    │       │   ├── yprovider_deployment_converter.yaml
-    │       │   ├── yprovider_svc.yaml
-    │       │   └── yprovider_svc_converter.yaml
+    │       │   └── yprovider_svc.yaml
     │       └── values.yaml
-    └── mail
-        ├── bin
-        │   ├── html-to-plain-text
-        │   └── mjml-to-html
-        ├── html-to-text.config.json
-        ├── mjml
-        │   ├── partial
-        │   │   └── header.mjml
-        │   └── template.mjml
+    ├── loadtest
+    │   ├── canary
+    │   │   ├── Dockerfile
+    │   │   ├── README.md
+    │   │   ├── __tests__
+    │   │   │   ├── canary.spec.ts
+    │   │   │   ├── config.spec.ts
+    │   │   │   ├── manifest.spec.ts
+    │   │   │   └── stats.spec.ts
+    │   │   ├── eslint.config.mjs
+    │   │   ├── package.json
+    │   │   ├── src
+    │   │   │   ├── canary.ts
+    │   │   │   ├── config.ts
+    │   │   │   ├── index.ts
+    │   │   │   ├── manifest.ts
+    │   │   │   ├── metrics.ts
+    │   │   │   └── stats.ts
+    │   │   ├── tsconfig.build.json
+    │   │   ├── tsconfig.json
+    │   │   ├── vitest.config.mts
+    │   │   └── yarn.lock
+    │   ├── dashboards
+    │   │   ├── README.md
+    │   │   ├── backend.json
+    │   │   ├── collaboration.json
+    │   │   ├── django.json
+    │   │   ├── generate.py
+    │   │   ├── users.json
+    │   │   └── valkey.json
+    │   ├── k6
+    │   │   ├── README.md
+    │   │   ├── lib
+    │   │   │   ├── api.js
+    │   │   │   └── session.js
+    │   │   └── scenarios
+    │   │       ├── heavy.js
+    │   │       └── page-open.js
+    │   └── swarm
+    │       ├── Dockerfile
+    │       ├── README.md
+    │       ├── __tests__
+    │       │   ├── _server.ts
+    │       │   ├── config.spec.ts
+    │       │   ├── manifest.spec.ts
+    │       │   ├── stats.spec.ts
+    │       │   └── swarm.spec.ts
+    │       ├── eslint.config.mjs
+    │       ├── package.json
+    │       ├── src
+    │       │   ├── client.ts
+    │       │   ├── config.ts
+    │       │   ├── index.ts
+    │       │   ├── manifest.ts
+    │       │   ├── metrics.ts
+    │       │   ├── stats.ts
+    │       │   └── swarm.ts
+    │       ├── tsconfig.build.json
+    │       ├── tsconfig.json
+    │       ├── vitest.config.mts
+    │       └── yarn.lock
+    ├── mail
+    │   ├── bin
+    │   │   ├── html-to-plain-text
+    │   │   └── mjml-to-html
+    │   ├── html-to-text.config.json
+    │   ├── mjml
+    │   │   ├── partial
+    │   │   │   └── header.mjml
+    │   │   └── template.mjml
+    │   ├── package.json
+    │   └── yarn.lock
+    └── yhub-server
+        ├── .gitignore
+        ├── Dockerfile
+        ├── LICENSE
+        ├── README.md
+        ├── __tests__
+        │   ├── _helpers.ts
+        │   ├── backend.spec.ts
+        │   ├── config.spec.ts
+        │   ├── dependencies.spec.ts
+        │   ├── metrics.spec.ts
+        │   ├── migration.spec.ts
+        │   ├── permissions.spec.ts
+        │   ├── sentry.spec.ts
+        │   └── server.spec.ts
+        ├── eslint.config.mjs
+        ├── nodemon.json
         ├── package.json
+        ├── src
+        │   ├── api.ts
+        │   ├── backend.ts
+        │   ├── config.ts
+        │   ├── env.ts
+        │   ├── metrics.ts
+        │   ├── migration.ts
+        │   ├── permissions.ts
+        │   ├── sentry.ts
+        │   ├── server.ts
+        │   └── yhub.ts
+        ├── tsconfig.build.json
+        ├── tsconfig.json
+        ├── vitest.config.mts
         └── yarn.lock
-316 directories, 1563 files
+340 directories, 1709 files
