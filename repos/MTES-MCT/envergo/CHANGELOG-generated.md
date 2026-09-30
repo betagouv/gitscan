@@ -1,28 +1,32 @@
-## Changelog : envergo (30 derniers jours, au 22 septembre 2026)
+## Changelog : envergo (30 derniers jours, au 29 septembre 2026)
 
 ### Résumé
-Ce mois-ci, envergo franchit une étape majeure avec le déploiement de la version 2 de l'outil de simulation, offrant une interface nettement améliorée pour visualiser les résultats et explorer des parcours alternatifs. Le projet a également renforcé la précision de ses données réglementaires (notamment sur les périodes d'interdiction et la gestion des haies) tout en consolidant la sécurité et la gestion du stockage des fichiers.
+Ce mois a été marqué par une refonte majeure de l'expérience de simulation (passage à la version 2) et une amélioration significative de la précision des données réglementaires. L'outil est désormais plus performant dans la gestion et la catégorisation des espèces protégées et des zones réglementées (Natura 2000, sites classés, etc.), tout en offrant une interface plus claire et mieux structurée pour l'utilisateur.
 
 ### Évolutions fonctionnelles
-- **Déploiement de la Simulation V2** : Nouvelle interface de visualisation des résultats, gestion des parcours de simulation alternatifs et possibilité de partager des résultats spécifiques. [#1236](https://github.com/MTES-MCT/envergo/pull/1236), [#1254](https://github.com/MTES-MCT/envergo/pull/1254), [#1255](https://github.com/MTES-MCT/envergo/pull/1255)
-- **Amélioration de la gestion réglementaire** : 
-    - Gestion précise des périodes d'interdiction (AHR) avec de nouveaux champs et contrôles de validité. [#1272](https://github.com/MTES-MCT/envergo/pull/1272)
-    - Restructuration des contacts pour les haies (GUH) et mise à jour des informations de contact. [#1262](https://github.com/MTES-MCT/envergo/pull/1262)
-    - Support multi-catégories pour les évaluateurs BCAE8. [#1268](https://github.com/MTES-MCT/envergo/pull/1268), [#1263](https://github.com/MTES-MCT/envergo/pull/1263)
-- **Optimisation de l'expérience utilisateur (UX)** : 
-    - Refonte complète du menu de navigation pour une meilleure clarté.
-    - Amélioration de l'accessibilité (annonce de la page active).
-    - Mise à jour de la terminologie pour plus de cohérence (ex: passage de "instructeur" à "coordonnateur").
-    - Ajout de bulles d'aide (tooltips) pour les commentaires et amélioration de l'affichage des tableaux.
+- **Nouvelle expérience de simulation (V2) :** Déploiement d'un nouveau parcours utilisateur incluant une nouvelle page d'affichage des résultats et la possibilité de consulter des scénarios alternatifs [#1236](https://github.com/MTES-MCT/envergo/issues/1236), [#1254](https://github.com/MTES-MCT/envergo/issues/1254), [#1255](https://github.com/MTES-MCT/envergo/issues/1255).
+- **Amélioration de la gestion réglementaire :** 
+    - Optimisation de la catégorisation des espèces et des réglementations (RU, Natura 2000, sites protégés, sites classés, etc.).
+    - Meilleure gestion des périodes d'interdiction (AHR) avec l'utilisation de plages de dates.
+- **Interface utilisateur (UI) et expérience (UX) :**
+    - Refonte de la présentation des espèces : utilisation de tableaux rétractables pour plus de clarté et meilleure organisation des listes.
+    - Mise à jour de la navigation : nouveau menu plus intuitif et ajout de filtres par catégorie [#1231](https://github.com/MTES-MCT/envergo/issues/1231).
+    - Amélioration de la lisibilité des informations de contact et des libellés (ex: passage de "point d'eau" à "pièce d'eau").
+    - Ajout d'informations sur les alignements d'arbres directement sur la page d'accueil.
+- **Cartographie :** Ajout d'infobulles (tooltips) sur les cartes et mise à jour du logo Dossier Nature.
 
 ### Évolutions techniques
-- **Sécurité** : Correction de vulnérabilités XSS par l'échappement des données soumises par les utilisateurs et renforcement de l'API d'autorisation. [#1251](https://github.com/MTES-MCT/envergo/pull/1251), [#1244](https://github.com/MTES-MCT/envergo/pull/1244)
-- **Infrastructure & Stockage** : Intégration de Scaleway S3 pour le stockage des fichiers et configuration de l'accès sécurisé via un proxy Nginx. [#1261](https://github.com/MTES-MCT/envergo/pull/1261)
-- **Performance** : Optimisation des requêtes de zones (HRU) et mise en place d'un système de cache pour la densité. [#1266](https://github.com/MTES-MCT/envergo/pull/1266), [#1238](https://github.com/MTES-MCT/envergo/pull/1238)
-- **CI/CD & Data** : 
-    - Automatisation de la détection des migrations de base de données manquantes dans le pipeline CI. [#1259](https://github.com/MTES-MCT/envergo/pull/1259)
-    - Création de nouveaux scripts pour la synchronisation des données de production vers la base de statistiques et pour l'anonymisation des données.
+- **Architecture et structure :** 
+    - Restructuration profonde des URLs du projet et de l'architecture des pages pour une meilleure maintenance [#1282](https://github.com/MTES-MCT/envergo/issues/1282).
+    - Séparation des pages de résumé de projet et de résultats de la "moulinette".
+- **Stockage et infrastructure :** 
+    - Implémentation complète du stockage sur S3 pour la gestion des fichiers et sécurisation de l'accès aux fichiers privés [#1261](https://github.com/MTES-MCT/envergo/issues/1261).
+- **Performances et sécurité :**
+    - Optimisation des requêtes de données (HRU) et mise en place d'un système de cache pour la densité [#1266](https://github.com/MTES-MCT/envergo/issues/1266), [#1238](https://github.com/MTES-MCT/envergo/issues/1238).
+    - Renforcement de la sécurité des données de statistiques [#1265](https://github.com/MTES-MCT/envergo/issues/1265) et amélioration de l'API d'autorisation [#1244](https://github.com/MTES-MCT/envergo/issues/1244).
+- **Qualité logicielle (CI/CD) :** 
+    - Ajout d'une vérification automatique des migrations de base de données dans le pipeline d'intégration continue [#1259](https://github.com/MTES-MCT/envergo/issues/1259).
 
 ### Autres changements
-- Nettoyage général du code (suppression de commentaires obsolètes et de variables inutiles).
-- Mise à jour de la documentation, notamment concernant les processus d'anonymisation.
+- **Documentation :** Mise à jour du README concernant les procédures d'anonymisation des données.
+- **Maintenance :** Nettoyage important du code (suppression de fichiers et de fonctions obsolètes) et amélioration de la couverture des tests automatisés.

@@ -440,6 +440,7 @@
 │   │   │   ├── 0040_alter_species_level_of_concern.py
 │   │   │   ├── 0040_remove_hedgedata_density.py
 │   │   │   ├── 0041_merge_20260908_1518.py
+│   │   │   ├── 0042_wording_specieshabitat_hedge_properties.py
 │   │   │   ├── __init__.py
 │   │   │   └── ep_aisne.csv
 │   │   ├── models.py
@@ -660,10 +661,27 @@
 │   │   │   ├── 0135_migrate_contact_fields.py
 │   │   │   ├── 0136_remove_confighaie_contacts_info.py
 │   │   │   ├── 0137_change_guh_structure_for_maritime_departments.py
+│   │   │   ├── 0138_alignement_arbres_multi_category_criteria.py
 │   │   │   ├── 0138_confighaie_prohibition_range_and_more.py
 │   │   │   ├── 0138_merge_20260922_0824.py
+│   │   │   ├── 0138_natura2000_haie_multi_category_criteria.py
+│   │   │   ├── 0138_regime_unique_haie_multi_category_criteria.py
+│   │   │   ├── 0138_reserves_naturelles_multi_category_criteria.py
+│   │   │   ├── 0138_sites_classes_multi_category_criteria.py
+│   │   │   ├── 0138_sites_inscrits_multi_category_criteria.py
+│   │   │   ├── 0138_sites_proteges_multi_category_criteria.py
+│   │   │   ├── 0139_confighaie_l350_3_authorization_coefficient_and_more.py
+│   │   │   ├── 0139_merge_20260917_0647.py
 │   │   │   ├── 0139_merge_20260922_1018.py
 │   │   │   ├── 0140_merge_20260922_1445.py
+│   │   │   ├── 0141_merge_20260923_0908.py
+│   │   │   ├── 0141_merge_20260924_1203.py
+│   │   │   ├── 0141_merge_20260925_1056.py
+│   │   │   ├── 0142_ep_regime_unique_multi_category_criteria.py
+│   │   │   ├── 0142_merge_20260928_1359.py
+│   │   │   ├── 0142_merge_20260928_1751.py
+│   │   │   ├── 0143_merge_20260929_0836.py
+│   │   │   ├── 0144_alter_moulinettetemplate_key.py
 │   │   │   ├── __init__.py
 │   │   │   ├── haie_department_configs.json
 │   │   │   ├── moulinette_haie.json
@@ -872,7 +890,9 @@
 │   │   │   ├── 0054_rename_demarches_simplifiees_fields_to_demarche_numerique_and_more.py
 │   │   │   ├── 0055_statuslog_applicant_message_and_more.py
 │   │   │   ├── 0056_merge_20260710_0758.py
+│   │   │   ├── 0057_remove_petitionproject_onagre_number.py
 │   │   │   ├── 0057_simulation_created_by.py
+│   │   │   ├── 0058_merge_20260915_1647.py
 │   │   │   └── __init__.py
 │   │   ├── models.py
 │   │   ├── regulations
@@ -881,7 +901,12 @@
 │   │   │   ├── conditionnalitepac.py
 │   │   │   ├── ep.py
 │   │   │   ├── loi_sur_leau_haie.py
+│   │   │   ├── natura2000_haie.py
+│   │   │   ├── perimeter_hedges.py
 │   │   │   ├── regime_unique_haie.py
+│   │   │   ├── reserves_naturelles.py
+│   │   │   ├── sites_classes_haie.py
+│   │   │   ├── sites_inscrits_haie.py
 │   │   │   └── sites_proteges_haie.py
 │   │   ├── services.py
 │   │   ├── signals.py
@@ -1481,7 +1506,6 @@
 │   │   │   │   │   └── fields
 │   │   │   │   │       └── simulation_check.html
 │   │   │   │   ├── instructor_dossier_list.html
-│   │   │   │   ├── instructor_view.html
 │   │   │   │   ├── instructor_view_alternative_display.html
 │   │   │   │   ├── instructor_view_alternatives.html
 │   │   │   │   ├── instructor_view_base.html
@@ -1511,10 +1535,12 @@
 │   │   │   │   ├── mattermost_project_request_additional_info.txt
 │   │   │   │   ├── mattermost_project_resume_instruction.txt
 │   │   │   │   ├── mattermost_unlinked_dossier_notif.txt
+│   │   │   │   ├── moulinette_result.html
 │   │   │   │   ├── natura2000_haie
 │   │   │   │   │   ├── consultation.html
 │   │   │   │   │   ├── instruction_guidelines.html
 │   │   │   │   │   └── key_elements.html
+│   │   │   │   ├── project_summary.html
 │   │   │   │   ├── protection_captages
 │   │   │   │   │   ├── consultation.html
 │   │   │   │   │   └── instruction_guidelines.html
@@ -1530,10 +1556,12 @@
 │   │   │   │   │   └── key_elements.html
 │   │   │   │   ├── sites_classes_haie
 │   │   │   │   │   ├── consultation.html
-│   │   │   │   │   └── instruction_guidelines.html
+│   │   │   │   │   ├── instruction_guidelines.html
+│   │   │   │   │   └── key_elements.html
 │   │   │   │   ├── sites_inscrits_haie
 │   │   │   │   │   ├── consultation.html
-│   │   │   │   │   └── instruction_guidelines.html
+│   │   │   │   │   ├── instruction_guidelines.html
+│   │   │   │   │   └── key_elements.html
 │   │   │   │   ├── sites_proteges_haie
 │   │   │   │   │   ├── consultation.html
 │   │   │   │   │   ├── instruction_guidelines.html
@@ -1615,6 +1643,7 @@
 │   │   │   │   │   ├── alignement_arbres_calvados_before_ru_soumis_esthetique.html
 │   │   │   │   │   └── alignement_arbres_calvados_before_ru_soumis_securite.html
 │   │   │   │   ├── l350_3
+│   │   │   │   │   ├── _replantation_doctrine.html
 │   │   │   │   │   ├── alignement_arbres_soumis_autorisation.html
 │   │   │   │   │   ├── alignement_arbres_soumis_esthetique.html
 │   │   │   │   │   └── alignement_arbres_soumis_securite.html
@@ -1663,6 +1692,7 @@
 │   │   │   ├── debug.html
 │   │   │   ├── debug_result_non_disponible.html
 │   │   │   ├── ep
+│   │   │   │   ├── _species_cortege_non_evalue.html
 │   │   │   │   ├── _species_cortege_ru.html
 │   │   │   │   ├── hru
 │   │   │   │   │   ├── ep_aisne_derogation_inventaire.html
@@ -1676,7 +1706,10 @@
 │   │   │   │   │   ├── ep_normandie_dispense_L350.html
 │   │   │   │   │   ├── ep_normandie_dispense_coupe_a_blanc.html
 │   │   │   │   │   ├── ep_normandie_interdit.html
+│   │   │   │   │   ├── ep_regime_unique_a_verifier.html
 │   │   │   │   │   └── ep_simple_soumis.html
+│   │   │   │   ├── l350_3
+│   │   │   │   │   └── ep_regime_unique_a_verifier.html
 │   │   │   │   ├── result_non_active.html
 │   │   │   │   ├── result_non_disponible.html
 │   │   │   │   └── ru
@@ -1802,9 +1835,16 @@
 │   │   │   │   │   ├── natura2000_haie_non_soumis.html
 │   │   │   │   │   ├── natura2000_haie_non_soumis_aa.html
 │   │   │   │   │   └── natura2000_haie_soumis.html
+│   │   │   │   ├── l350_3
+│   │   │   │   │   ├── natura2000_haie_non_soumis.html
+│   │   │   │   │   ├── natura2000_haie_non_soumis_aa.html
+│   │   │   │   │   └── natura2000_haie_soumis.html
 │   │   │   │   ├── result_non_active.html
 │   │   │   │   ├── result_non_concerne.html
-│   │   │   │   └── result_non_disponible.html
+│   │   │   │   ├── result_non_disponible.html
+│   │   │   │   └── ru
+│   │   │   │       ├── natura2000_haie_non_soumis.html
+│   │   │   │       └── natura2000_haie_soumis.html
 │   │   │   ├── protection_captages
 │   │   │   │   ├── result_a_verifier.html
 │   │   │   │   ├── result_non_active.html
@@ -1823,9 +1863,15 @@
 │   │   │   │   ├── hru
 │   │   │   │   │   ├── reserves_naturelles_soumis_autorisation.html
 │   │   │   │   │   └── reserves_naturelles_soumis_declaration.html
+│   │   │   │   ├── l350_3
+│   │   │   │   │   ├── reserves_naturelles_soumis_autorisation.html
+│   │   │   │   │   └── reserves_naturelles_soumis_declaration.html
 │   │   │   │   ├── result_non_active.html
 │   │   │   │   ├── result_non_concerne.html
-│   │   │   │   └── result_non_disponible.html
+│   │   │   │   ├── result_non_disponible.html
+│   │   │   │   └── ru
+│   │   │   │       ├── reserves_naturelles_soumis_autorisation.html
+│   │   │   │       └── reserves_naturelles_soumis_declaration.html
 │   │   │   ├── result_available_soon.html
 │   │   │   ├── result_layout.html
 │   │   │   ├── result_non_disponible.html
@@ -1861,20 +1907,36 @@
 │   │   │   │   ├── result_non_soumis.html
 │   │   │   │   └── result_non_soumis_single_perimeter.html
 │   │   │   ├── sites_classes_haie
+│   │   │   │   ├── hru
+│   │   │   │   │   └── result_soumis.html
+│   │   │   │   ├── l350_3
+│   │   │   │   │   └── result_soumis.html
 │   │   │   │   ├── result_non_active.html
 │   │   │   │   ├── result_non_concerne.html
 │   │   │   │   ├── result_non_disponible.html
-│   │   │   │   └── result_soumis.html
+│   │   │   │   └── ru
+│   │   │   │       └── result_soumis.html
 │   │   │   ├── sites_inscrits_haie
+│   │   │   │   ├── hru
+│   │   │   │   │   └── result_soumis.html
+│   │   │   │   ├── l350_3
+│   │   │   │   │   └── result_soumis.html
 │   │   │   │   ├── result_non_active.html
 │   │   │   │   ├── result_non_concerne.html
 │   │   │   │   ├── result_non_disponible.html
-│   │   │   │   └── result_soumis.html
+│   │   │   │   ├── result_soumis.html
+│   │   │   │   └── ru
+│   │   │   │       └── result_soumis.html
 │   │   │   ├── sites_proteges_haie
+│   │   │   │   ├── hru
+│   │   │   │   │   └── result_soumis.html
+│   │   │   │   ├── l350_3
+│   │   │   │   │   └── result_soumis.html
 │   │   │   │   ├── result_non_active.html
 │   │   │   │   ├── result_non_concerne.html
 │   │   │   │   ├── result_non_disponible.html
-│   │   │   │   └── result_soumis.html
+│   │   │   │   └── ru
+│   │   │   │       └── result_soumis.html
 │   │   │   └── urbanisme_haie
 │   │   │       ├── hru
 │   │   │       │   └── urbanisme_haie_a_verifier.html
@@ -1884,6 +1946,7 @@
 │   │   │           └── urbanisme_haie_a_verifier.html
 │   │   ├── multisite_base.html
 │   │   ├── pages
+│   │   │   ├── _sidemenu_group_button.html
 │   │   │   ├── _sidemenu_item.html
 │   │   │   ├── about.html
 │   │   │   ├── accessibility.html
@@ -2037,4 +2100,4 @@
                 │   ├── favicon.ico
                 │   └── favicon.svg
                 └── index.html
-257 directories, 1801 files
+271 directories, 1850 files
