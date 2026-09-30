@@ -1,17 +1,16 @@
 {
   "url": "https://github.com/betagouv/ma-cantine",
   "name": "ma-cantine",
-  "description": "Plateforme destinée à accompagner les acteurs de la restauration collective pour promouvoir une alimentation de qualité, saine et durable, notamment via le respect des normes EGalim.",
+  "description": "Plateforme destinée à accompagner les acteurs de la restauration collective pour promouvoir une alimentation de qualité, saine et durable. Elle permet notamment la télédéclaration des données liées à l'offre alimentaire.",
   "language": "Python",
   "features": [
     "Formulaires & Démarches",
     "Statistiques & Rapports",
-    "Authentification & Accès",
-    "Gestion des établissements & Structures",
-    "Administration & Backoffice",
     "Visualisation de données & Cartographie",
+    "Gestion des utilisateurs & Permissions",
+    "Administration & Backoffice",
     "Sécurité & Conformité",
-    "Gestion des utilisateurs & Permissions"
+    "Gestion métier générale"
   ],
   "audience": "Professionnels",
   "dependencies": [
@@ -20,10 +19,11 @@
     "Celery",
     "Redis",
     "PostgreSQL",
-    "dbt",
     "Wagtail",
+    "dbt",
     "Metabase",
     "Sentry",
+    "Brevo",
     "Authlib"
   ],
   "components": [
@@ -32,40 +32,43 @@
     "Vue.js / Nuxt",
     "Python (scripts & backend)",
     "Design System (DSFR & UI libs)",
-    "CI/CD & Déploiement",
+    "Django",
     "Celery & Queue asynchrone",
-    "ORM & Accès aux données"
+    "Authentification (composant)",
+    "ORM & Accès aux données",
+    "CI/CD & Déploiement"
   ],
   "auth": {
     "methods": [
-      "email-password",
       "oauth2",
       "magic-link",
-      "mfa"
+      "mfa",
+      "session",
+      "jwt"
     ]
   },
   "tests": [
     "pytest",
     "pytest-django",
-    "sqlfluff"
+    "sqlfluff",
+    "ruff"
   ],
   "workflows": [
-    "CI Backend",
-    "CI Frontend",
-    "CI dbt"
+    "CI/CD backend",
+    "CI/CD frontend",
+    "CI/CD dbt"
   ],
-  "lastActivity": "2026-09-23T00:00:00Z",
+  "lastActivity": "2026-09-28T00:00:00Z",
   "status": "active",
-  "license": null,
   "hasDocumentation": true,
   "tags": [
     "Écosystème beta.gouv / État",
     "Python",
     "Vue.js & Nuxt",
+    "Django & FastAPI",
     "Bases de données SQL",
     "CI/CD & GitHub Actions",
-    "Données & Open Data",
     "Design System & UI",
-    "Accessibilité"
+    "Données & Open Data"
   ]
 }
