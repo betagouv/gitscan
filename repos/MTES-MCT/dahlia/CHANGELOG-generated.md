@@ -1,30 +1,15 @@
-## Changelog : dahlia (30 derniers jours, au 27 juillet 2026)
+## Changelog : dahlia (30 derniers jours, au 28 septembre 2026)
 
 ### Résumé
-Les dernières mises à jour de Dahlia se concentrent sur l'amélioration de la gestion des dossiers et des pièces jointes, ainsi que sur l'ajout de nouvelles fonctionnalités pour faciliter le travail des agents de l'administration. Des améliorations de l'interface utilisateur et des corrections de bugs ont également été apportées.
+Ce mois a été marqué par l'introduction de nouvelles capacités de classification et de gestion documentaire, notamment via l'ajout de mots-clés et l'exportation de résultats. L'expérience utilisateur a été affinée par une meilleure gestion des téléchargements et une interface plus claire, tandis que la sécurité et la traçabilité de l'application ont été considérablement renforcées.
 
 ### Évolutions fonctionnelles
-- Ajout d'un bouton pour télécharger la liste des dossiers [#57](https://github.com/MTES-MCT/dahlia/issues/57).
-- Possibilité de télécharger plusieurs pièces jointes dans un fichier ZIP [#64](https://github.com/MTES-MCT/dahlia/issues/64).
-- Récupération de tous les acteurs liés à un dossier [#79](https://github.com/MTES-MCT/dahlia/issues/79).
-- Affichage du dernier jugement si celui-ci existe [#78](https://github.com/MTES-MCT/dahlia/issues/78).
-- Ajout d'un script pour créer des dossiers inscrits au rôle d'une audience [#77](https://github.com/MTES-MCT/dahlia/issues/77).
-- Ajout d'un formulaire pour éditer les métadonnées des pièces d'un dossier [#51](https://github.com/MTES-MCT/dahlia/issues/51).
-- Ajout d'un warning si la date limite de production est dans le passé [#80](https://github.com/MTES-MCT/dahlia/issues/80).
-- Affichage de fichiers anonymisés dans les environnements autres que la production [#55](https://github.com/MTES-MCT/dahlia/issues/55).
-- Ajustements d'affichage de l'interface utilisateur [#90](https://github.com/MTES-MCT/dahlia/issues/90).
+- **Classification et enrichissement** : Introduction d'un service de classification [#123](https://github.com/MTES-MCT/dahlia/issues/123), possibilité d'ajouter des mots-clés (anciennement tags) aux dossiers [#137](https://github.com/MTES-MCT/dahlia/issues/137) et ajout d'une option pour cibler précisément les dossiers à enrichir [#144](https://github.com/MTES-MCT/dahlia/issues/144).
+- **Exports et téléchargements** : Exportation des résultats de classification [#129](https://github.com/MTES-MCT/dahlia/issues/129) (incluant désormais le statut des dossiers [#153](https://github.com/MTES-MCT/dahlia/issues/153)) et amélioration de la nomenclature des fichiers ZIP téléchargés pour utiliser le nom du dossier [#143](https://github.com/MTES-MCT/dahlia/issues/143) [#118](https://github.com/MTES-MCT/dahlia/issues/118).
+- **Gestion des dossiers** : Identification des décisions de la COMED [#156](https://github.com/MTES-MCT/dahlia/issues/156), synchronisation automatique lors de l'accès à un dossier [#145](https://github.com/MTES-MCT/dahlia/issues/145) et possibilité de synchronisation massive pour certains départements [#159](https://github.com/MTES-MCT/dahlia/issues/159).
+- **Interface et accessibilité** : Amélioration de l'ergonomie via le renommage de certains éléments (Tags $\rightarrow$ Mots clés, Admin $\rightarrow$ Juridiction, etc.) [#146](https://github.com/MTES-MCT/dahlia/issues/146) et mise à disposition des pages de mentions légales pour l'ensemble des utilisateurs [#151](https://github.com/MTES-MCT/dahlia/issues/151) [#155](https://github.com/MTES-MCT/dahlia/issues/155).
 
 ### Évolutions techniques
-- Utilisation d'une instance XL pour l'exécution des tâches planifiées (crons) [#93](https://github.com/MTES-MCT/dahlia/issues/93).
-- Ajout d'un hook de precommit pour garantir la qualité du code [#75](https://github.com/MTES-MCT/dahlia/issues/75).
-- Mise à jour des dépendances : TypeScript, Vite, PostCSS, better-auth, @types/node, @tailwindcss/postcss, vitest-mock-extended [#60, #61, #62, #63, #67, #70, #71, #73, #84, #86, #87].
-- Mise à jour de l'action checkout de GitHub [#58](https://github.com/MTES-MCT/dahlia/issues/58).
-- Pin de la version de l'action pnpm/action-setup en CI [#68](https://github.com/MTES-MCT/dahlia/issues/68).
-- Réorganisation des tests unitaires et d'intégration [#56](https://github.com/MTES-MCT/dahlia/issues/56).
-- Remplacement de "vs" par "c/" dans le code [#82](https://github.com/MTES-MCT/dahlia/issues/82).
-- Renommage d'un dossier [#81](https://github.com/MTES-MCT/dahlia/issues/81).
-- Ajustement des interfaces [#74](https://github.com/MTES-MCT/dahlia/issues/74).
-
-### Autres changements
-- Mise à jour du scrapping et de la gestion des dates de mise à jour [#66](https://github.com/MTES-MCT/dahlia/issues/66).
-- Amélioration de la gestion des tableaux [#53](https://github.com/MTES-MCT/dahlia/issues/53).
+- **Sécurité et traçabilité** : Renforcement de la sécurité via l'ajout de headers de sécurité [#131](https://github.com/MTES-MCT/dahlia/issues/131) et l'ajustement des règles de sécurité du navigateur (CSP) [#142](https://github.com/MTES-MCT/dahlia/issues/142). Mise en place de logs pour les actions administratives afin d'assurer la traçabilité [#158](https://github.com/MTES-MCT/dahlia/issues/158) et masquage des erreurs techniques (Prisma) pour éviter toute fuite d'information [#157](https://github.com/MTES-MCT/dahlia/issues/157).
+- **Performance et architecture** : Passage de la synchronisation des dossiers en mode asynchrone [#152](https://github.com/MTES-MCT/dahlia/issues/152) et gestion d'instances distinctes pour répondre à des besoins spécifiques [#160](https://github.com/MTES-MCT/dahlia/issues/160).
+- **Maintenance de sécurité** : Plusieurs mises à jour critiques de dépendances pour corriger des failles de sécurité [#124](https://github.com/MTES-MCT/dahlia/issues/124) [#125](https://github.com/MTES-MCT/dahlia/issues/125) [#126](https://github.com/MTES-MCT/dahlia/issues/126) [#127](https://github.com/MTES-MCT/dahlia/issues/127) [#128](https://github.com/MTES-MCT/dahlia/issues/128).

@@ -94,19 +94,43 @@
 ├── README.md
 ├── app
 │   ├── (protected)
+│   │   ├── admin
+│   │   │   ├── divisions
+│   │   │   │   ├── actions.ts
+│   │   │   │   ├── actions.unit.test.ts
+│   │   │   │   └── page.tsx
+│   │   │   ├── jurisdiction
+│   │   │   │   ├── actions.ts
+│   │   │   │   ├── actions.unit.test.ts
+│   │   │   │   └── page.tsx
+│   │   │   ├── layout.tsx
+│   │   │   ├── page.tsx
+│   │   │   ├── tags
+│   │   │   │   ├── actions.ts
+│   │   │   │   ├── actions.unit.test.ts
+│   │   │   │   └── page.tsx
+│   │   │   └── users
+│   │   │       ├── actions.integration.test.ts
+│   │   │       ├── actions.ts
+│   │   │       ├── actions.unit.test.ts
+│   │   │       └── page.tsx
 │   │   ├── case_files
 │   │   │   ├── [caseFileNumber]
 │   │   │   │   ├── actions.integration.test.ts
 │   │   │   │   ├── actions.ts
 │   │   │   │   ├── page.tsx
-│   │   │   │   └── pieces
-│   │   │   │       ├── [encodedFileId]
-│   │   │   │       │   ├── actions.ts
-│   │   │   │       │   └── data
-│   │   │   │       │       └── route.ts
-│   │   │   │       └── download
-│   │   │   │           ├── route.ts
-│   │   │   │           └── route.unit.test.ts
+│   │   │   │   ├── pieces
+│   │   │   │   │   ├── [encodedFileId]
+│   │   │   │   │   │   ├── actions.ts
+│   │   │   │   │   │   ├── actions.unit.test.ts
+│   │   │   │   │   │   └── data
+│   │   │   │   │   │       └── route.ts
+│   │   │   │   │   └── download
+│   │   │   │   │       ├── route.ts
+│   │   │   │   │       └── route.unit.test.ts
+│   │   │   │   └── telerecours-sync
+│   │   │   │       ├── route.ts
+│   │   │   │       └── route.unit.test.ts
 │   │   │   ├── export
 │   │   │   │   └── route.ts
 │   │   │   └── page.tsx
@@ -121,11 +145,19 @@
 │   ├── apple-icon.png
 │   ├── connexion
 │   │   └── page.tsx
+│   ├── declaration-accessibilite
+│   │   └── page.tsx
+│   ├── donnees-personnelles
+│   │   └── page.tsx
 │   ├── favicon.ico
 │   ├── globals.css
 │   ├── icon.svg
 │   ├── layout.tsx
+│   ├── layout.unit.test.tsx
 │   ├── lib
+│   │   ├── admin-actions.ts
+│   │   ├── audit-log.ts
+│   │   ├── audit-log.unit.test.ts
 │   │   ├── auth-client.ts
 │   │   ├── auth.ts
 │   │   ├── auth.unit.test.ts
@@ -134,10 +166,14 @@
 │   │   ├── case-file-enums.ts
 │   │   ├── case-file-format.ts
 │   │   ├── case-file-format.unit.test.ts
+│   │   ├── case-file-scope.integration.test.ts
+│   │   ├── case-file-scope.ts
+│   │   ├── case-file-scope.unit.test.ts
 │   │   ├── case-file-search.ts
 │   │   ├── case-file-search.unit.test.ts
 │   │   ├── case-file-tabs.ts
 │   │   ├── case-file-tabs.unit.test.ts
+│   │   ├── case-file-tags.ts
 │   │   ├── case-files-dashboard-columns.ts
 │   │   ├── case-files-dashboard-columns.unit.test.ts
 │   │   ├── dashboard-filter.ts
@@ -149,19 +185,35 @@
 │   │   │   ├── case-file-pieces.integration.test.tsx
 │   │   │   ├── case-files.ts
 │   │   │   ├── case-files.unit.test.ts
+│   │   │   ├── divisions.ts
+│   │   │   ├── divisions.unit.test.ts
+│   │   │   ├── jurisdictions.ts
+│   │   │   ├── jurisdictions.unit.test.ts
 │   │   │   ├── piece-content.ts
 │   │   │   ├── piece-content.unit.test.ts
 │   │   │   ├── statuses.ts
-│   │   │   └── statuses.unit.test.ts
+│   │   │   ├── statuses.unit.test.ts
+│   │   │   ├── tags.ts
+│   │   │   ├── tags.unit.test.ts
+│   │   │   ├── users.ts
+│   │   │   └── users.unit.test.ts
+│   │   ├── divisions-table.ts
 │   │   ├── fetch-paginated-table-data.ts
+│   │   ├── form-actions.ts
+│   │   ├── form-actions.unit.test.ts
 │   │   ├── historique-table.ts
+│   │   ├── jurisdictions-table.ts
 │   │   ├── mocked-pieces.ts
 │   │   ├── mocked-pieces.unit.test.ts
 │   │   ├── piece-display.ts
 │   │   ├── piece-display.unit.test.ts
 │   │   ├── pieces-table.ts
 │   │   ├── prisma.ts
+│   │   ├── proconnect-user.ts
+│   │   ├── proconnect-user.unit.test.ts
 │   │   ├── search-where.ts
+│   │   ├── security-headers.ts
+│   │   ├── security-headers.unit.test.ts
 │   │   ├── status-badge-accentuation.ts
 │   │   ├── status-badge-accentuation.unit.test.ts
 │   │   ├── status-label-plural.ts
@@ -172,12 +224,34 @@
 │   │   ├── table-search-context.ts
 │   │   ├── table-search-context.unit.test.ts
 │   │   ├── table-sort.ts
+│   │   ├── tag-colors.ts
+│   │   ├── tag-colors.unit.test.ts
+│   │   ├── tags-table.ts
 │   │   ├── telerecours.ts
-│   │   └── test-support
-│   │       └── case-file-actors.fixture.ts
+│   │   ├── test-support
+│   │   │   └── case-file-actors.fixture.ts
+│   │   └── users-table.ts
+│   ├── mentions-legales
+│   │   └── page.tsx
+│   ├── page-titles.unit.test.tsx
 │   ├── page.integration.test.tsx
 │   ├── page.tsx
 │   └── ui
+│       ├── admin
+│       │   ├── admin-side-menu.tsx
+│       │   ├── admin-side-menu.unit.test.tsx
+│       │   ├── create-tag-button.tsx
+│       │   ├── create-user-button.tsx
+│       │   ├── divisions-actions.tsx
+│       │   ├── divisions-admin.unit.test.tsx
+│       │   ├── jurisdictions-actions.tsx
+│       │   ├── jurisdictions-admin.unit.test.tsx
+│       │   ├── tag-form-fields.tsx
+│       │   ├── tags-actions.tsx
+│       │   ├── tags-admin.unit.test.tsx
+│       │   ├── user-form-fields.tsx
+│       │   ├── users-actions.tsx
+│       │   └── users-admin.unit.test.tsx
 │       ├── breadcrumb
 │       │   ├── case-file-breadcrumb.tsx
 │       │   └── case-file-breadcrumb.unit.test.tsx
@@ -193,6 +267,12 @@
 │       ├── card
 │       │   ├── case-file-details-card.tsx
 │       │   └── case-file-details-card.unit.test.tsx
+│       ├── case-file
+│       │   ├── case-file-identity.tsx
+│       │   ├── case-file-identity.unit.test.tsx
+│       │   ├── case-file-telerecours-sync.tsx
+│       │   ├── case-file-telerecours-sync.unit.test.tsx
+│       │   └── tag-badge.tsx
 │       ├── form
 │       │   ├── case-file-details-editor.tsx
 │       │   ├── case-files-search-by-status.tsx
@@ -206,7 +286,9 @@
 │       │   ├── table-search-bar.tsx
 │       │   ├── table-search-bar.unit.test.tsx
 │       │   ├── table-search-form.tsx
-│       │   └── table-search-form.unit.test.tsx
+│       │   ├── table-search-form.unit.test.tsx
+│       │   ├── tag-picker.tsx
+│       │   └── tag-picker.unit.test.tsx
 │       ├── header
 │       │   ├── environment-banner.tsx
 │       │   ├── environment-banner.unit.test.tsx
@@ -249,11 +331,36 @@
 ├── data
 │   ├── anonymize.ts
 │   ├── anonymize.unit.test.ts
+│   ├── classification
+│   │   ├── classification-csv.ts
+│   │   ├── classification-csv.unit.test.ts
+│   │   ├── classify-case-files.ts
+│   │   ├── classify-case-files.unit.test.ts
+│   │   ├── engine.ts
+│   │   ├── engine.unit.test.ts
+│   │   ├── normalize.ts
+│   │   ├── normalize.unit.test.ts
+│   │   ├── rules.md
+│   │   ├── rules.ts
+│   │   ├── rules.unit.test.ts
+│   │   └── types.ts
 │   ├── cli
+│   │   ├── classify-case-files.ts
+│   │   ├── find-comed-decisions.ts
 │   │   ├── parse-args.ts
 │   │   ├── parse-args.unit.test.ts
+│   │   ├── parse-classify-args.ts
+│   │   ├── parse-classify-args.unit.test.ts
+│   │   ├── parse-comed-args.ts
+│   │   ├── parse-comed-args.unit.test.ts
 │   │   ├── reschedule-deliberation-case-files.ts
 │   │   └── scrape-telerecours.ts
+│   ├── comed
+│   │   ├── comed-decision-csv.ts
+│   │   ├── comed-decision-csv.unit.test.ts
+│   │   ├── find-comed-decisions.ts
+│   │   ├── match-comed-decision.ts
+│   │   └── match-comed-decision.unit.test.ts
 │   ├── persistence
 │   │   ├── content-hash.ts
 │   │   ├── content-hash.unit.test.ts
@@ -261,7 +368,14 @@
 │   │   ├── enrich-case-file.unit.test.ts
 │   │   ├── paginate.ts
 │   │   ├── upsert-case-file-actors.ts
+│   │   ├── upsert-case-file-actors.unit.test.ts
 │   │   ├── upsert-case-file.ts
+│   │   ├── upsert-case-file.unit.test.ts
+│   │   ├── upsert-hearing.ts
+│   │   ├── upsert-jurisdiction.ts
+│   │   ├── upsert-jurisdiction.unit.test.ts
+│   │   ├── upsert-legal-entity-division.ts
+│   │   ├── upsert-legal-entity-division.unit.test.ts
 │   │   ├── upsert-status-catalog.ts
 │   │   └── upsert-status-catalog.unit.test.ts
 │   ├── scrape
@@ -271,6 +385,7 @@
 │   │   ├── phase-a0-status-catalog.unit.test.ts
 │   │   ├── phase-b-enrich.ts
 │   │   ├── phase-c-related.ts
+│   │   ├── phase-d-classify.ts
 │   │   ├── pipeline.ts
 │   │   ├── pipeline.unit.test.ts
 │   │   ├── where.ts
@@ -465,6 +580,20 @@
 │   │   │   └── migration.sql
 │   │   ├── 20260722220651_memory_deadline_requires_hearing_status
 │   │   │   └── migration.sql
+│   │   ├── 20260729100000_user_is_admin
+│   │   │   └── migration.sql
+│   │   ├── 20260729120000_user_validated_rename_is_validated
+│   │   │   └── migration.sql
+│   │   ├── 20260803104734_jurisdiction
+│   │   │   └── migration.sql
+│   │   ├── 20260803142214_user_jurisdiction_scopes
+│   │   │   └── migration.sql
+│   │   ├── 20260805140000_hearing_case_file_m2m_conclusion_composite
+│   │   │   └── migration.sql
+│   │   ├── 20260916073328_tags
+│   │   │   └── migration.sql
+│   │   ├── 20260928155030_optional_assigned_division
+│   │   │   └── migration.sql
 │   │   └── migration_lock.toml
 │   └── schema
 │       ├── actor.prisma
@@ -474,14 +603,17 @@
 │       ├── chamber.prisma
 │       ├── conclusion.prisma
 │       ├── hearing.prisma
+│       ├── jurisdiction.prisma
 │       ├── last_decision_reading.prisma
 │       ├── legal_entity_division.prisma
 │       ├── measure.prisma
 │       ├── related_case_file.prisma
 │       ├── schema.prisma
 │       ├── status.prisma
+│       ├── tag.prisma
 │       ├── urgency.prisma
-│       └── user.prisma
+│       ├── user.prisma
+│       └── user_jurisdiction_scope.prisma
 ├── prisma.config.ts
 ├── proxy.ts
 ├── proxy.unit.test.ts
@@ -495,4 +627,4 @@
 ├── vitest.config.mts
 ├── vitest.integration.config.mts
 └── vitest.unit.config.mts
-85 directories, 459 files
+105 directories, 571 files
