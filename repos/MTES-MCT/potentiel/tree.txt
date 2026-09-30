@@ -6,19 +6,21 @@
 │   ├── permissions
 │   │   ├── grant.sql
 │   │   └── grant_test.sql
+│   ├── potentiel-dev-empty.dump
 │   ├── potentiel-dev.dump
 │   └── scripts
 │       ├── restore-dev-db.sh
+│       ├── restore-test-env-db-empty.sh
 │       ├── restore-test-env-db.sh
 │       ├── update-metabase-dump.sh
 │       └── update-potentiel-dump.sh
 ├── .demo
 │   ├── demo.dump
 │   ├── exampleCandidatsCRE4.csv
-│   ├── exempleCandidatsAPIEDFOA.csv
 │   ├── exempleCandidatsPPE2.csv
 │   ├── exempleCandidatsPPE2BatimentPériode6.csv
 │   ├── exempleCandidatsPetitPV.csv
+│   ├── exempleCandidatsPetitPVPériode1.apiEdfOa.csv
 │   ├── import-instruction-ds.csv
 │   └── test-projects-seed.csv
 ├── .editorconfig
@@ -200,7 +202,8 @@
 │   │   │   │   │   │   ├── rename.ts
 │   │   │   │   │   │   └── seed.ts
 │   │   │   │   │   ├── gf
-│   │   │   │   │   │   └── ajouter-event-gf-demandee.ts
+│   │   │   │   │   │   ├── ajouter-event-gf-demandee.ts
+│   │   │   │   │   │   └── ajouter-tâche-attestation-constitution.ts
 │   │   │   │   │   ├── lauréat
 │   │   │   │   │   │   └── modifier-statut.ts
 │   │   │   │   │   ├── load-test
@@ -245,7 +248,9 @@
 │   │   │   │   │   │   ├── index.ts
 │   │   │   │   │   │   ├── référencielGRD.ts
 │   │   │   │   │   │   └── updateGRDs.ts
-│   │   │   │   │   └── setupLogger.ts
+│   │   │   │   │   ├── setupLogger.ts
+│   │   │   │   │   ├── throwIfEnvIsNotProduction.ts
+│   │   │   │   │   └── throwIfEnvProduction.ts
 │   │   │   │   └── hooks
 │   │   │   │       ├── finally.ts
 │   │   │   │       ├── healthcheck
@@ -1157,7 +1162,6 @@
 │   │   │   │   │   │   ├── getCahierDesCharges.ts
 │   │   │   │   │   │   ├── getCandidature.ts
 │   │   │   │   │   │   ├── getFeatureFlag.ts
-│   │   │   │   │   │   ├── getFiltersFromSearch.ts
 │   │   │   │   │   │   ├── getFiltresActifs.test.ts
 │   │   │   │   │   │   ├── getFiltresActifs.ts
 │   │   │   │   │   │   ├── getNatureDeLExploitationTypeLabel.ts
@@ -1375,6 +1379,7 @@
 │   │   │   │   │   │   │   │   ├── TableauDeBord.page.tsx
 │   │   │   │   │   │   │   │   ├── _helpers
 │   │   │   │   │   │   │   │   │   ├── Badges.tsx
+│   │   │   │   │   │   │   │   │   ├── MapPreview.tsx
 │   │   │   │   │   │   │   │   │   └── getLauréatMenuItems.tsx
 │   │   │   │   │   │   │   │   ├── documents
 │   │   │   │   │   │   │   │   │   ├── (sections)
@@ -1523,7 +1528,9 @@
 │   │   │   │   │   │   │   │   │   │   ├── Producteur.section.tsx
 │   │   │   │   │   │   │   │   │   │   ├── ProducteurDétails.tsx
 │   │   │   │   │   │   │   │   │   │   ├── ReprésentantLégal.section.tsx
-│   │   │   │   │   │   │   │   │   │   └── ReprésentantLégalDétails.tsx
+│   │   │   │   │   │   │   │   │   │   ├── ReprésentantLégalDétails.tsx
+│   │   │   │   │   │   │   │   │   │   ├── SiteDeProduction.section.tsx
+│   │   │   │   │   │   │   │   │   │   └── SiteDeProductionDétail.tsx
 │   │   │   │   │   │   │   │   │   ├── InformationsGénérales.page.tsx
 │   │   │   │   │   │   │   │   │   └── page.tsx
 │   │   │   │   │   │   │   │   ├── installation
@@ -2820,6 +2827,7 @@
 │   │   │   │   │   │   ├── enregistrerDocument.command.ts
 │   │   │   │   │   │   └── enregistrerDocumentSubstitut.command.ts
 │   │   │   │   │   └── index.ts
+│   │   │   │   ├── getFiltersFromSearch.ts
 │   │   │   │   ├── getProjetAggregateRoot.port.ts
 │   │   │   │   ├── getScopeProjetUtilisateur.port.ts
 │   │   │   │   ├── identifiantProjet.valueType.ts
@@ -4726,4 +4734,4 @@
 ├── scalingo.json
 ├── turbo.json
 └── update-ts-references.yaml
-1141 directories, 3587 files
+1141 directories, 3595 files
